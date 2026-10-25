@@ -13,10 +13,21 @@ import numpy as np
 from PIL import Image
 
 
+def count_added_core_pixels(alpha, old_rect, candidate_rect, threshold=16):
+    """Count visible pixels in candidate AND outside old_rect, never net totals."""
+    old_x, old_y, old_w, old_h = old_rect
+    x, y, w, h = candidate_rect
+    rows = np.arange(y, y + h)[:, None]
+    columns = np.arange(x, x + w)[None, :]
+    outside_old = ((columns < old_x) | (columns >= old_x + old_w) |
+                   (rows < old_y) | (rows >= old_y + old_h))
+    return int(np.count_nonzero((alpha[y:y + h, x:x + w] > threshold) & outside_old))
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--delivery', default='docs/suivi-production/v109-pit-forward/native-frame-delivery.json')
-    parser.add_argument('--output', default='docs/suivi-production/v109-pit-forward/native-uv-border-review.json')
+    parser.add_argument('--output', default='docs/suivi-production/v109-pit-forward/native-uv-border-review-spatial.json')
     parser.add_argument('--corrections')
     parser.add_argument('--strict', action='store_true')
     args = parser.parse_args()
@@ -43,7 +54,6 @@ def main():
                 sources[page['path']] = {'path': page['path'], 'sha256': digest, 'bytes': len(raw)}
             alpha = images[page['path']]
             height, width = alpha.shape
-            x, y, w, h = frame['rect']
             x0, y0, x1, y1 = frame['visibleBodyBox']
             previous = None
             while previous != (x0, y0, x1, y1):
@@ -58,20 +68,25 @@ def main():
                     y1 += 1
             border = int(max(alpha[y0:y1 + 1, x0].max(), alpha[y0:y1 + 1, x1].max(),
                              alpha[y0, x0:x1 + 1].max(), alpha[y1, x0:x1 + 1].max()))
-            added = int((alpha[y0:y1 + 1, x0:x1 + 1] > 16).sum()) - int((alpha[y:y + h, x:x + w] > 16).sum())
+            candidate_rect = [x0, y0, x1 - x0 + 1, y1 - y0 + 1]
+            added = count_added_core_pixels(alpha, frame['rect'], candidate_rect)
+            removed = count_added_core_pixels(alpha, candidate_rect, frame['rect'])
             slots.append({
                 'slot': f"{group['fighterId']}/{group['role']}/{group['facing']}/{frame['index']}",
                 'fighterId': group['fighterId'], 'role': group['role'], 'facing': group['facing'],
                 'frameIndex': frame['index'], 'pageId': page['pageId'], 'sourcePath': page['path'],
-                'oldRect': frame['rect'], 'zeroBorderCandidate': [x0, y0, x1 - x0 + 1, y1 - y0 + 1],
+                'oldRect': frame['rect'], 'zeroBorderCandidate': candidate_rect,
                 'boundaryMaxAlpha': border, 'addedForeignCorePixels': added,
+                'removedOriginalCorePixels': removed,
                 'valid': border == 0 and added == 0 and frame['otherPosePixelsAboveAlpha16'] == 0,
             })
     report = {
         'schemaVersion': 1,
+        'pixelComparison': 'spatial-set-difference',
         'scope': 'Read-only native alpha geometry. Minimal expanding alpha0 rectangle around the reviewed body bbox; any extra alpha>16 body pixel or nonzero page edge blocks admission. No PNG or decoded pixel modified.',
         'invocation': f'python scripts/review-pit-native-borders-v109.py --delivery {args.delivery} --output {args.output}' +
-                      (f' --corrections {args.corrections}' if args.corrections else ''),
+                      (f' --corrections {args.corrections}' if args.corrections else '') +
+                      (' --strict' if args.strict else ''),
         'sourceDeliveryPath': args.delivery,
         'correctionDeliveryPath': args.corrections,
         'validNativeRegions': sum(slot['valid'] for slot in slots),

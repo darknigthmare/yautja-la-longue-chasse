@@ -20,7 +20,7 @@ const bootstrap=await build({stdin:{contents:"import * as saves from './app/game
 const checks=[],captures=[],errors=[],consoleErrors=[],fixtures=[],observations=[],servedBuilds=[];let failure=null;
 const journeys=mode==='development'&&process.env.YAUTJA_QA_JOURNEYS?process.env.YAUTJA_QA_JOURNEYS.split(','):['A','B','C'];assert(journeys.length&&journeys.every(value=>['A','B','C'].includes(value)));
 const check=(name,ok,detail)=>{checks.push({name,status:ok?'PASS':'FAIL',...(detail===undefined?{}:{detail})});console.log(`${ok?'PASS':'FAIL'} ${name}`);assert.ok(ok,name);};
-const browser=await chromium.launch({headless:true,executablePath:process.env.CHROMIUM_EXECUTABLE_PATH??'/usr/bin/chromium',args:['--no-sandbox','--disable-dev-shm-usage','--mute-audio']});
+const browser=await chromium.launch({headless:true,executablePath:process.env.CHROMIUM_EXECUTABLE_PATH??process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH??'/usr/bin/chromium',args:['--no-sandbox','--disable-dev-shm-usage','--mute-audio']});
 const contexts=[];
 async function journey(option){
  const context=await browser.newContext({viewport:{width:1440,height:1050},reducedMotion:'reduce'});contexts.push(context);const page=await context.newPage();page.setDefaultTimeout(30000);page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')consoleErrors.push(m.text());});await page.clock.install();let pausedClock=false;

@@ -1,0 +1,27 @@
+✔ all eight families retain every V108 source field and all56 still-open source requirements (3634.157684ms)
+✔ missing families, count-only source closures, reused recipes and naked promotions cannot validate V109 (11.523334ms)
+Traceback (most recent call last):
+  File "/workspace/yautja-la-longue-chasse/scripts/build-excel-followup-v109.py", line 25, in <module>
+    json.dump(append.verify_workbook(payload), sys.stdout, ensure_ascii=True)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/yautja-la-longue-chasse/scripts/lib/excel_followup_append.py", line 105, in verify_workbook
+    assert set(changed) <= ASSEMBLY_PARTS, changed
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ['[Content_Types].xml', 'xl/_rels/workbook.xml.rels', 'xl/styles.xml', 'xl/workbook.xml', 'xl/worksheets/sheet1.xml']
+✔ 97 worksheets preserve all85 historical cells, formulas, tables, styles and ZIP sheet parts (2085.975637ms)
+✔ missing, duplicated, uninspected or relabelled screenshots cannot certify a V109 production report (2.209437ms)
+✔ the current V109 follow-up regenerates exactly without pretending to run a browser or native Excel (4119.57605ms)
+✔ all original V108 tests and inputs live in a private context while current imports remain current (2831.340228ms)
+✔ tampering with private V108 source is rejected and cannot alter the current game (1386.699515ms)
+✔ the V109 wrapper executes unchanged V108 save assertions and refuses unreviewed test files (1433.942695ms)
+✔ publication rejects exploratory modes, console errors, changed sources, wrong builds and incomplete inspection (10.366354ms)
+✔ served HTML evidence retains its actual SHA and refuses missing or contradictory identity (0.996969ms)
+✔ current runtime inventory contains all native deliveries, four source-only references and every real receipt (1746.379678ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 17625.662749

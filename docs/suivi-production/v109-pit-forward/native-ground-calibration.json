@@ -778,5 +778,7 @@
     "foregroundSpearSupportSourceY": 795,
     "observation": "On the actual 1440 px runtime capture, body supports sit around 748\u2013751 within the illustrated floor surface 744\u2013766, while the forward spear butt reaches the front edge at 766. This native perspective is retained: moving the palm down to 766 would put the spear about 16 px into the platform facade. No pixel, anatomical scale or geometry is changed to resolve this perspective.",
     "acceptedScope": "Visual floor registration for the unvaried duo; no universal canonical physical geography claim."
-  }
+  },
+  "nativeUvReviewPath": "docs/suivi-production/v109-pit-forward/native-uv-border-review-spatial.json",
+  "nativeUvReviewMethod": "Spatial set difference counts every alpha>16 pixel inside the candidate and outside the original UV independently from pixels removed elsewhere. All 48 selected regions keep their existing rectangles and source hashes, with zero additions and zero removals."
 }

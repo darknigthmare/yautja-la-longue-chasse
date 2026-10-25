@@ -17,13 +17,9 @@
     "evidenceCopiesVerified": 72,
     "currentRuntimeCovered": false
   },
-  "baselineFreeze": "FROZEN",
-  "runtimeFreeze": {
-    "path": "docs/v109-runtime-freeze.json",
-    "sha256": "e01f55d66dbae26b350101d3b06a9c306a2aa42ac19510944e82dcd60a1d19d1",
-    "bytes": 251341
-  },
-  "freezeEntriesVerified": 1359,
+  "baselineFreeze": "PENDING_RUNTIME_FREEZE",
+  "runtimeFreeze": null,
+  "freezeEntriesVerified": 0,
   "method": "Append-only continuation of 85 published V108 worksheets. All 56 original source requirements stay visible. Current application definitions, native art admissions, tests and actually executed journeys have distinct scopes. No browser or native Excel is launched by the generator.",
   "facts": {
     "inheritedOpenItems": 56,
@@ -91,12 +87,7 @@
     "pitForwardVictimFeralDrawings": 12,
     "pitForwardVictimScarDrawings": 12
   },
-  "production": {
-    "runtimeCommit": "63cfb392a72438623f8031257e54497ece390aa8",
-    "buildId": "FJ6IbT6OZx1H51wYnNmex",
-    "browserChecks": 208,
-    "inspectedCaptures": 65
-  },
+  "production": null,
   "delivery": {
     "completeKits": "OUVERT",
     "sourceCampaigns": "OUVERT",
@@ -381,11 +372,11 @@
       "domain": "Guerre de clans",
       "title": "Tournée physique de ravitaillement entre ouvrages",
       "source": "Quai, montures, confinement, duel consenti, sons situés et navire orbital.",
-      "status": "VALIDE_CIBLE",
-      "validationScope": "Depuis un checkpoint V108 préparé et explicitement déclaré, le navigateur joue les six livraisons ordonnées, le même skiff, le rechargement physique, le retour au dépôt et la séparation des deux montures. Les six constructions et soins antérieurs appartiennent à la fixture.",
+      "status": "A_VALIDER",
+      "validationScope": "Trois corrections de revue en cours : le certificat FJ6 est conservé comme contexte historique. Nouveau gel/build commun et quatre nouvelles recettes requis avant toute promotion.",
       "runtime": "Tournée physique de deux à six étapes, réservation et débit de stocks finis dans le même dépôt/skiff, chargement réel, déplacement, livraisons ordonnées, reprise et retour. Archive version2 conservant l’archive V108 exacte dans la même clé et sous le même verrou ; deux places de montures et séparation continue de56 unités.",
-      "tests": "PASS_LOCAL : tournée réellement simulée, RAV finis, mêmeU19/skiff, navette/retour, refus géométriques, migration atomique, quota, conflits et archives différées. Groupe courant50tests inter-domaines épinglé.",
-      "browser": "PASS_CIBLE_PRODUCTION : 38 contrôles, 8 captures toutes inspectées ; build FJ6IbT6OZx1H51wYnNmex, runtime 63cfb392a72438623f8031257e54497ece390aa8.",
+      "tests": "A_VALIDER_CODE_CORRIGE : tests et vérifications de revue à rattacher après stabilisation ; anciens95tests et11contrôles finaux conservés dans les métadonnées du certificat précédent.",
+      "browser": "A_VALIDER_PRODUCTION_R3 : aucune nouvelle preuve du code corrigé ; ancien certificat208/65 archivé, non réutilisé comme validation courante.",
       "implementation": [
         "app/game/systems/clanSupplyRouteV109.ts",
         "app/game/systems/clanSupplySessionV109.ts",
@@ -395,29 +386,9 @@
       ],
       "proof": [
         {
-          "path": "docs/v109-validation-summary.json",
-          "sha256": "615663776d68f75a97aad3df7112d07757c8c5807f11a8ecda2db171a315af02",
-          "bytes": 17959
-        },
-        {
-          "path": "docs/v109-clans-validation.json",
-          "sha256": "addd0125f08e17b3cf639521fb561a6872200c4cff1bb7d0eb5dddf67ae62b48",
-          "bytes": 15490
-        },
-        {
-          "path": "docs/qa/v109-clans/visual-inspection.json",
-          "sha256": "725c4c874750285a347494bec463f8086f36514fe2922eda7d2b76dd6a524c8a",
-          "bytes": 306
-        },
-        {
-          "path": "docs/qa/v109-validation/clans-browser-r2.log",
-          "sha256": "c44862e523a1072d23bbd81d9fa30642abeb28bf7f87602e272d008189ebf0f7",
-          "bytes": 2777
-        },
-        {
-          "path": "docs/qa/v109-validation/unit-tests.log",
-          "sha256": "ad51723c8277d92f7edc9aa7144efdd8d62c6e03746a5d5e49dbd27c771576ea",
-          "bytes": 12263
+          "path": "docs/qa/v109-review-corrections/previous-certified-manifest.json",
+          "bytes": 5062,
+          "sha256": "5b884fcb1a6c71c3186a361d9967b1a7c34d04e42aad569ad5f0ac791da648cd"
         }
       ],
       "remaining": "R2-M021 et les acquisitions de campagne restent ouverts : aucun reçu d’autorité de moyens/accord fourni au chantierV89, aucune coque gagnée, récompense, rang, annexion ou correspondanceK01→CON-T. Les six ouvrages initiaux de la recette sont une fixtureV108 déclarée."
@@ -441,11 +412,11 @@
       "domain": "Preserve Hunt",
       "title": "Deux géographies adaptées : désert et glace",
       "source": "4/80 secteurs et8/100 combattants hérités :76 secteurs et92 combattants restent visés, sans noms source inventés.",
-      "status": "VALIDE_CIBLE",
-      "validationScope": "Deux entrées publiques V5 neuves à seize adultes sains chacune, un combat/prélèvement réel par biome, clavier/tactile, entrée de campagne, stocks/travaux vivants. Les trajets terrain/quatre postes/caches/retour utilisent des fixtures déclarées à seize adultes déjà neutralisés. Les objectifs mécaniciens/interception Iskhel ne sont pas crédités par ce trajet préparé.",
+      "status": "A_VALIDER",
+      "validationScope": "Trois corrections de revue en cours : le certificat FJ6 est conservé comme contexte historique. Nouveau gel/build commun et quatre nouvelles recettes requis avant toute promotion.",
       "runtime": "Deux réserves V5 distinctes : Khar-Duun désertique et Iskhel glacée, huit secteurs et seize adultes chacune. Les quatre réserves donnent 32 secteurs et 64 adultes aux IDs uniques ; huit nouveaux relevés, caches et objectifs d’interception physiques. Les sprites humains sont réutilisés.",
-      "tests": "PASS_LOCAL :19scénarios métier/persistance/rendu, quatre postes par réserve par marche/sauts/canaux, caches distinctes,12 000ticks vivants par réserve, interception réellement préparée, tracesV1–V4 et protections des archives. Groupe courant50tests inter-domaines épinglé.",
-      "browser": "PASS_CIBLE_PRODUCTION : 50 contrôles, 27 captures toutes inspectées ; build FJ6IbT6OZx1H51wYnNmex, runtime 63cfb392a72438623f8031257e54497ece390aa8.",
+      "tests": "A_VALIDER_CODE_CORRIGE : tests et vérifications de revue à rattacher après stabilisation ; anciens95tests et11contrôles finaux conservés dans les métadonnées du certificat précédent.",
+      "browser": "A_VALIDER_PRODUCTION_R3 : aucune nouvelle preuve du code corrigé ; ancien certificat208/65 archivé, non réutilisé comme validation courante.",
       "implementation": [
         "app/game/systems/gameReserveExpeditionV109.ts",
         "docs/v109-preserve-public-inputs.json",
@@ -456,34 +427,9 @@
       ],
       "proof": [
         {
-          "path": "docs/v109-validation-summary.json",
-          "sha256": "615663776d68f75a97aad3df7112d07757c8c5807f11a8ecda2db171a315af02",
-          "bytes": 17959
-        },
-        {
-          "path": "docs/v109-preserve-validation.json",
-          "sha256": "f3347498c8944de20abb19ffef4ec741e54a6781f02aa244e878ab80efb8229d",
-          "bytes": 30495
-        },
-        {
-          "path": "docs/qa/v109-preserve/visual-inspection.json",
-          "sha256": "3b82b2ef9ba97058363abe0487e20b74bccd2bf8869bad1ef599ea35d2e1e3e4",
-          "bytes": 740
-        },
-        {
-          "path": "docs/qa/v109-validation/preserve-browser-r2-retry.log",
-          "sha256": "321bff4846f214ab3633e837ff3eb120c291f3541a50ce260c4a7216f448a308",
-          "bytes": 3170
-        },
-        {
-          "path": "docs/qa/v109-validation/unit-tests.log",
-          "sha256": "ad51723c8277d92f7edc9aa7144efdd8d62c6e03746a5d5e49dbd27c771576ea",
-          "bytes": 12263
-        },
-        {
-          "path": "docs/v109-preserve-public-inputs.json",
-          "sha256": "b6c4ce01157802ec1fb12cf1240c3a53b30ec9f573e8d2365f20c22a84443ffc",
-          "bytes": 3291
+          "path": "docs/qa/v109-review-corrections/previous-certified-manifest.json",
+          "bytes": 5062,
+          "sha256": "5b884fcb1a6c71c3186a361d9967b1a7c34d04e42aad569ad5f0ac791da648cd"
         }
       ],
       "remaining": "Les cibles de 80 secteurs et 100 adultes restent ouvertes : 48 secteurs et 36 adultes à définir. Les trois atlas partagés ne livrent pas les fiches H001–H100 ; aucune canonicité 1:1 admise."
@@ -532,11 +478,11 @@
       "domain": "The Pit · action",
       "title": "Projections avant avec deux acteurs natifs indépendants",
       "source": "4 projections,2 spéciaux à entités (mine/shuriken),6 conclusions avec partenaire.",
-      "status": "VALIDE_CIBLE",
-      "validationScope": "Duo Feral/Scar sans costume, deux ordres, deux sens natifs : saisie, vol, impact, déchoppe fraîche, échec, commandes clavier/manette/bouton, victoire réellement jouée et replay V16 exporté/public. Les neuf actions source restent ouvertes.",
+      "status": "A_VALIDER",
+      "validationScope": "Trois corrections de revue en cours : le certificat FJ6 est conservé comme contexte historique. Nouveau gel/build commun et quatre nouvelles recettes requis avant toute promotion.",
       "runtime": "Deux projections avant liées M_F006_TH_F et M_F003_TH_F pour le duo sans costume. Huit admissions natives, 48 rectangles BODY distincts dans 29 pages utilisées, 12 dessins par héros/rôle. Les 48 bords UV alpha0, pivots et appuis sont revus ; les vrais appels drawImage montrent les deux corps au tick/rôle attendu, sans miroir ni pixel retouché. Capture, récupération punie indéchoppable, échappée fraîche, vol borné, impact et relève réellement joués ; sourceCompletion=false.",
-      "tests": "PASS_LOCAL : 34 tests Pit physique/PNG/UV/replay et compatibilité V11–V15 contre la capsule V108 ; passage inclus dans les 95 tests V109. La recette compilée compte séparément 65 contrôles.",
-      "browser": "PASS_CIBLE_PRODUCTION : 65 contrôles, 19 captures toutes inspectées ; build FJ6IbT6OZx1H51wYnNmex, runtime 63cfb392a72438623f8031257e54497ece390aa8.",
+      "tests": "PASS_LOCAL_CORRECTION : 6 tests de différence spatiale et revue stricte48/48 sans ajout/retrait ; 34tests Pit/typecheck/lint confirmés par le responsable. Nouveau build commun et parcours compilé encore à exécuter.",
+      "browser": "A_VALIDER_PRODUCTION_R3 : aucune nouvelle preuve du code corrigé ; ancien certificat208/65 archivé, non réutilisé comme validation courante.",
       "implementation": [
         "app/game/pitWorkbookRegistryV109.ts",
         "app/game/systems/pitWorkbookCombatV109.ts",
@@ -551,53 +497,15 @@
         "docs/suivi-production/v109-pit-forward/visual-review-gutters.json",
         "docs/suivi-production/v109-pit-forward/native-ground-calibration.json",
         "docs/suivi-production/v109-pit-forward/final-source-selection.json",
-        "docs/suivi-production/v109-pit-forward/native-uv-border-review-final.json"
+        "docs/suivi-production/v109-pit-forward/native-uv-border-review-final.json",
+        "scripts/review-pit-native-borders-v109.py",
+        "docs/suivi-production/v109-pit-forward/native-uv-border-review-spatial.json"
       ],
       "proof": [
         {
-          "path": "docs/v109-validation-summary.json",
-          "sha256": "615663776d68f75a97aad3df7112d07757c8c5807f11a8ecda2db171a315af02",
-          "bytes": 17959
-        },
-        {
-          "path": "docs/v109-pit-validation.json",
-          "sha256": "8d47e48f73fe9e32c2c229bc9706c3896b6259fbca616cb26b385cabc610ca86",
-          "bytes": 90858
-        },
-        {
-          "path": "docs/qa/v109-pit/visual-inspection.json",
-          "sha256": "12542998eab84b9734b97911d061538130fe1967d2c27c96c699456456e96808",
-          "bytes": 6187
-        },
-        {
-          "path": "docs/qa/v109-validation/pit-browser-r2.log",
-          "sha256": "6322bafd56ebcca07b7f916e6927e832837f45e4682dcfb334dc86b571978f98",
-          "bytes": 6609
-        },
-        {
-          "path": "docs/qa/v109-validation/unit-tests.log",
-          "sha256": "ad51723c8277d92f7edc9aa7144efdd8d62c6e03746a5d5e49dbd27c771576ea",
-          "bytes": 12263
-        },
-        {
-          "path": "docs/qa/v109-validation/pit-tests.log",
-          "sha256": "f8b13f1a7926f13310634de70745ae3271a09bc1b33ff323048539ede0bff67e",
-          "bytes": 4066
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/final-source-selection.json",
-          "sha256": "f1d848a4597cd8a4d5c1b2b2a5c6559c26e24768153799507520a19ff09a68fc",
-          "bytes": 34465
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/native-uv-border-review-final.json",
-          "sha256": "fffa66897a902c2808a90c2ad074fabeb385eaebc7b43f512bb71d0871a854bc",
-          "bytes": 34430
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/native-ground-calibration.json",
-          "sha256": "f736f225bb3198331bc4b47e27ec34f1a209fa5cdc29134dbe0531cb9f5c711f",
-          "bytes": 23649
+          "path": "docs/qa/v109-review-corrections/previous-certified-manifest.json",
+          "bytes": 5062,
+          "sha256": "5b884fcb1a6c71c3186a361d9967b1a7c34d04e42aad569ad5f0ac791da648cd"
         }
       ],
       "remaining": "Les neuf actions source restent ouvertes : autres partenaires/costumes, TH_B, réactions xéno, conclusions et kits complets ne sont pas livrés par ce duo. Les campagnes et leurs acteurs manquants restent distincts. La sélection native n’atteste pas une fidélité cinématographique 1:1."
@@ -635,11 +543,11 @@
       "domain": "Homeworld",
       "title": "Plaque et empreinte ROLE03 ; guidage des charges",
       "source": "ROLE03 V6 : Scènes de dialogue383 ; Choix et actions788/789 ; Répliques3183–3190. ROLE19 hérité distinct : scène398, choix818/819, répliques3303–3310.",
-      "status": "VALIDE_CIBLE",
-      "validationScope": "Deux checkpoints initiaux vides jouent ROLE03 A/B par marche native, accord, lieux copiés, portages séparés, comparaison, échec/reprise et rapport. Un troisième joue l’Atlas autour de lots initiaux puis d’un lot réellement porté/posé/recalculé ; il ne prouve pas une nouvelle livraison ROLE19 complète.",
+      "status": "A_VALIDER",
+      "validationScope": "Trois corrections de revue en cours : le certificat FJ6 est conservé comme contexte historique. Nouveau gel/build commun et quatre nouvelles recettes requis avant toute promotion.",
       "runtime": "Scène ROLE03 : trois objets natifs distincts plaque/empreinte/fragment candidat, trois surfaces, accord, observation, lieux copiés, portage séparé, comparaison sans pression, échec/reprise et rapport. L’Atlas tient compte des lots ROLE19 existants puis réellement portés/posés ; déplacement d’une cible invalide le trajet. Aucun geste BODY du PNJ, réparation ou lignée admis.",
-      "tests": "PASS_LOCAL : carnetROLE03, propriété/choix/transport/refus, Atlas/Worker aux collisions cargo réelles, invalidation de cible déplacée, retours multiétages et point d’étude interrompu. Groupe courant50tests et135régressions d’entrées épinglés.",
-      "browser": "PASS_CIBLE_PRODUCTION : 55 contrôles, 11 captures toutes inspectées ; build FJ6IbT6OZx1H51wYnNmex, runtime 63cfb392a72438623f8031257e54497ece390aa8.",
+      "tests": "A_VALIDER_CODE_CORRIGE : tests et vérifications de revue à rattacher après stabilisation ; anciens95tests et11contrôles finaux conservés dans les métadonnées du certificat précédent.",
+      "browser": "A_VALIDER_PRODUCTION_R3 : aucune nouvelle preuve du code corrigé ; ancien certificat208/65 archivé, non réutilisé comme validation courante.",
       "implementation": [
         "app/game/systems/homeworldArchivePlaqueDefinitionV109.ts",
         "app/game/systems/homeworldArchivePlaqueV109.ts",
@@ -652,29 +560,9 @@
       ],
       "proof": [
         {
-          "path": "docs/v109-validation-summary.json",
-          "sha256": "615663776d68f75a97aad3df7112d07757c8c5807f11a8ecda2db171a315af02",
-          "bytes": 17959
-        },
-        {
-          "path": "docs/v109-homeworld-validation.json",
-          "sha256": "d5ba15653acb2b813923b0fe82a178eebb261f0b83da0e8812a33c9ff38c0227",
-          "bytes": 23496
-        },
-        {
-          "path": "docs/qa/v109-homeworld/visual-inspection.json",
-          "sha256": "7e57e7c96c1d68d7f3f40ceff16824910e35032c034be60f32b995c37b485932",
-          "bytes": 6596
-        },
-        {
-          "path": "docs/qa/v109-validation/homeworld-browser-r2.log",
-          "sha256": "ef6a121e51d6789dbef48174a821d43bb23a4d0d9f1650b404154614c9f1a902",
-          "bytes": 3637
-        },
-        {
-          "path": "docs/qa/v109-validation/unit-tests.log",
-          "sha256": "ad51723c8277d92f7edc9aa7144efdd8d62c6e03746a5d5e49dbd27c771576ea",
-          "bytes": 12263
+          "path": "docs/qa/v109-review-corrections/previous-certified-manifest.json",
+          "bytes": 5062,
+          "sha256": "5b884fcb1a6c71c3186a361d9967b1a7c34d04e42aad569ad5f0ac791da648cd"
         }
       ],
       "remaining": "Gestes BODY du PNJ, réparation effective du bord, attribution de l’empreinte, lignée et récompenses restent non livrés. ROLE03 (383/788–789/3183–3190) et ROLE19 (398/818–819/3303–3310) gardent leurs corpus, objets et états séparés."
@@ -2917,29 +2805,9 @@
       "remainingV109": "R2-M021 et les acquisitions de campagne restent ouverts : aucun reçu d’autorité de moyens/accord fourni au chantierV89, aucune coque gagnée, récompense, rang, annexion ou correspondanceK01→CON-T. Les six ouvrages initiaux de la recette sont une fixtureV108 déclarée.",
       "evidenceV109": [
         {
-          "path": "docs/v109-validation-summary.json",
-          "sha256": "615663776d68f75a97aad3df7112d07757c8c5807f11a8ecda2db171a315af02",
-          "bytes": 17959
-        },
-        {
-          "path": "docs/v109-clans-validation.json",
-          "sha256": "addd0125f08e17b3cf639521fb561a6872200c4cff1bb7d0eb5dddf67ae62b48",
-          "bytes": 15490
-        },
-        {
-          "path": "docs/qa/v109-clans/visual-inspection.json",
-          "sha256": "725c4c874750285a347494bec463f8086f36514fe2922eda7d2b76dd6a524c8a",
-          "bytes": 306
-        },
-        {
-          "path": "docs/qa/v109-validation/clans-browser-r2.log",
-          "sha256": "c44862e523a1072d23bbd81d9fa30642abeb28bf7f87602e272d008189ebf0f7",
-          "bytes": 2777
-        },
-        {
-          "path": "docs/qa/v109-validation/unit-tests.log",
-          "sha256": "ad51723c8277d92f7edc9aa7144efdd8d62c6e03746a5d5e49dbd27c771576ea",
-          "bytes": 12263
+          "path": "docs/qa/v109-review-corrections/previous-certified-manifest.json",
+          "bytes": 5062,
+          "sha256": "5b884fcb1a6c71c3186a361d9967b1a7c34d04e42aad569ad5f0ac791da648cd"
         }
       ]
     },
@@ -2987,29 +2855,9 @@
       "remainingV109": "R2-M021 et les acquisitions de campagne restent ouverts : aucun reçu d’autorité de moyens/accord fourni au chantierV89, aucune coque gagnée, récompense, rang, annexion ou correspondanceK01→CON-T. Les six ouvrages initiaux de la recette sont une fixtureV108 déclarée.",
       "evidenceV109": [
         {
-          "path": "docs/v109-validation-summary.json",
-          "sha256": "615663776d68f75a97aad3df7112d07757c8c5807f11a8ecda2db171a315af02",
-          "bytes": 17959
-        },
-        {
-          "path": "docs/v109-clans-validation.json",
-          "sha256": "addd0125f08e17b3cf639521fb561a6872200c4cff1bb7d0eb5dddf67ae62b48",
-          "bytes": 15490
-        },
-        {
-          "path": "docs/qa/v109-clans/visual-inspection.json",
-          "sha256": "725c4c874750285a347494bec463f8086f36514fe2922eda7d2b76dd6a524c8a",
-          "bytes": 306
-        },
-        {
-          "path": "docs/qa/v109-validation/clans-browser-r2.log",
-          "sha256": "c44862e523a1072d23bbd81d9fa30642abeb28bf7f87602e272d008189ebf0f7",
-          "bytes": 2777
-        },
-        {
-          "path": "docs/qa/v109-validation/unit-tests.log",
-          "sha256": "ad51723c8277d92f7edc9aa7144efdd8d62c6e03746a5d5e49dbd27c771576ea",
-          "bytes": 12263
+          "path": "docs/qa/v109-review-corrections/previous-certified-manifest.json",
+          "bytes": 5062,
+          "sha256": "5b884fcb1a6c71c3186a361d9967b1a7c34d04e42aad569ad5f0ac791da648cd"
         }
       ]
     },
@@ -3057,29 +2905,9 @@
       "remainingV109": "R2-M021 et les acquisitions de campagne restent ouverts : aucun reçu d’autorité de moyens/accord fourni au chantierV89, aucune coque gagnée, récompense, rang, annexion ou correspondanceK01→CON-T. Les six ouvrages initiaux de la recette sont une fixtureV108 déclarée.",
       "evidenceV109": [
         {
-          "path": "docs/v109-validation-summary.json",
-          "sha256": "615663776d68f75a97aad3df7112d07757c8c5807f11a8ecda2db171a315af02",
-          "bytes": 17959
-        },
-        {
-          "path": "docs/v109-clans-validation.json",
-          "sha256": "addd0125f08e17b3cf639521fb561a6872200c4cff1bb7d0eb5dddf67ae62b48",
-          "bytes": 15490
-        },
-        {
-          "path": "docs/qa/v109-clans/visual-inspection.json",
-          "sha256": "725c4c874750285a347494bec463f8086f36514fe2922eda7d2b76dd6a524c8a",
-          "bytes": 306
-        },
-        {
-          "path": "docs/qa/v109-validation/clans-browser-r2.log",
-          "sha256": "c44862e523a1072d23bbd81d9fa30642abeb28bf7f87602e272d008189ebf0f7",
-          "bytes": 2777
-        },
-        {
-          "path": "docs/qa/v109-validation/unit-tests.log",
-          "sha256": "ad51723c8277d92f7edc9aa7144efdd8d62c6e03746a5d5e49dbd27c771576ea",
-          "bytes": 12263
+          "path": "docs/qa/v109-review-corrections/previous-certified-manifest.json",
+          "bytes": 5062,
+          "sha256": "5b884fcb1a6c71c3186a361d9967b1a7c34d04e42aad569ad5f0ac791da648cd"
         }
       ]
     },
@@ -3127,29 +2955,9 @@
       "remainingV109": "R2-M021 et les acquisitions de campagne restent ouverts : aucun reçu d’autorité de moyens/accord fourni au chantierV89, aucune coque gagnée, récompense, rang, annexion ou correspondanceK01→CON-T. Les six ouvrages initiaux de la recette sont une fixtureV108 déclarée.",
       "evidenceV109": [
         {
-          "path": "docs/v109-validation-summary.json",
-          "sha256": "615663776d68f75a97aad3df7112d07757c8c5807f11a8ecda2db171a315af02",
-          "bytes": 17959
-        },
-        {
-          "path": "docs/v109-clans-validation.json",
-          "sha256": "addd0125f08e17b3cf639521fb561a6872200c4cff1bb7d0eb5dddf67ae62b48",
-          "bytes": 15490
-        },
-        {
-          "path": "docs/qa/v109-clans/visual-inspection.json",
-          "sha256": "725c4c874750285a347494bec463f8086f36514fe2922eda7d2b76dd6a524c8a",
-          "bytes": 306
-        },
-        {
-          "path": "docs/qa/v109-validation/clans-browser-r2.log",
-          "sha256": "c44862e523a1072d23bbd81d9fa30642abeb28bf7f87602e272d008189ebf0f7",
-          "bytes": 2777
-        },
-        {
-          "path": "docs/qa/v109-validation/unit-tests.log",
-          "sha256": "ad51723c8277d92f7edc9aa7144efdd8d62c6e03746a5d5e49dbd27c771576ea",
-          "bytes": 12263
+          "path": "docs/qa/v109-review-corrections/previous-certified-manifest.json",
+          "bytes": 5062,
+          "sha256": "5b884fcb1a6c71c3186a361d9967b1a7c34d04e42aad569ad5f0ac791da648cd"
         }
       ]
     },
@@ -3197,29 +3005,9 @@
       "remainingV109": "R2-M021 et les acquisitions de campagne restent ouverts : aucun reçu d’autorité de moyens/accord fourni au chantierV89, aucune coque gagnée, récompense, rang, annexion ou correspondanceK01→CON-T. Les six ouvrages initiaux de la recette sont une fixtureV108 déclarée.",
       "evidenceV109": [
         {
-          "path": "docs/v109-validation-summary.json",
-          "sha256": "615663776d68f75a97aad3df7112d07757c8c5807f11a8ecda2db171a315af02",
-          "bytes": 17959
-        },
-        {
-          "path": "docs/v109-clans-validation.json",
-          "sha256": "addd0125f08e17b3cf639521fb561a6872200c4cff1bb7d0eb5dddf67ae62b48",
-          "bytes": 15490
-        },
-        {
-          "path": "docs/qa/v109-clans/visual-inspection.json",
-          "sha256": "725c4c874750285a347494bec463f8086f36514fe2922eda7d2b76dd6a524c8a",
-          "bytes": 306
-        },
-        {
-          "path": "docs/qa/v109-validation/clans-browser-r2.log",
-          "sha256": "c44862e523a1072d23bbd81d9fa30642abeb28bf7f87602e272d008189ebf0f7",
-          "bytes": 2777
-        },
-        {
-          "path": "docs/qa/v109-validation/unit-tests.log",
-          "sha256": "ad51723c8277d92f7edc9aa7144efdd8d62c6e03746a5d5e49dbd27c771576ea",
-          "bytes": 12263
+          "path": "docs/qa/v109-review-corrections/previous-certified-manifest.json",
+          "bytes": 5062,
+          "sha256": "5b884fcb1a6c71c3186a361d9967b1a7c34d04e42aad569ad5f0ac791da648cd"
         }
       ]
     },
@@ -3267,29 +3055,9 @@
       "remainingV109": "R2-M021 et les acquisitions de campagne restent ouverts : aucun reçu d’autorité de moyens/accord fourni au chantierV89, aucune coque gagnée, récompense, rang, annexion ou correspondanceK01→CON-T. Les six ouvrages initiaux de la recette sont une fixtureV108 déclarée.",
       "evidenceV109": [
         {
-          "path": "docs/v109-validation-summary.json",
-          "sha256": "615663776d68f75a97aad3df7112d07757c8c5807f11a8ecda2db171a315af02",
-          "bytes": 17959
-        },
-        {
-          "path": "docs/v109-clans-validation.json",
-          "sha256": "addd0125f08e17b3cf639521fb561a6872200c4cff1bb7d0eb5dddf67ae62b48",
-          "bytes": 15490
-        },
-        {
-          "path": "docs/qa/v109-clans/visual-inspection.json",
-          "sha256": "725c4c874750285a347494bec463f8086f36514fe2922eda7d2b76dd6a524c8a",
-          "bytes": 306
-        },
-        {
-          "path": "docs/qa/v109-validation/clans-browser-r2.log",
-          "sha256": "c44862e523a1072d23bbd81d9fa30642abeb28bf7f87602e272d008189ebf0f7",
-          "bytes": 2777
-        },
-        {
-          "path": "docs/qa/v109-validation/unit-tests.log",
-          "sha256": "ad51723c8277d92f7edc9aa7144efdd8d62c6e03746a5d5e49dbd27c771576ea",
-          "bytes": 12263
+          "path": "docs/qa/v109-review-corrections/previous-certified-manifest.json",
+          "bytes": 5062,
+          "sha256": "5b884fcb1a6c71c3186a361d9967b1a7c34d04e42aad569ad5f0ac791da648cd"
         }
       ]
     },
@@ -3337,34 +3105,9 @@
       "remainingV109": "Les cibles de 80 secteurs et 100 adultes restent ouvertes : 48 secteurs et 36 adultes à définir. Les trois atlas partagés ne livrent pas les fiches H001–H100 ; aucune canonicité 1:1 admise.",
       "evidenceV109": [
         {
-          "path": "docs/v109-validation-summary.json",
-          "sha256": "615663776d68f75a97aad3df7112d07757c8c5807f11a8ecda2db171a315af02",
-          "bytes": 17959
-        },
-        {
-          "path": "docs/v109-preserve-validation.json",
-          "sha256": "f3347498c8944de20abb19ffef4ec741e54a6781f02aa244e878ab80efb8229d",
-          "bytes": 30495
-        },
-        {
-          "path": "docs/qa/v109-preserve/visual-inspection.json",
-          "sha256": "3b82b2ef9ba97058363abe0487e20b74bccd2bf8869bad1ef599ea35d2e1e3e4",
-          "bytes": 740
-        },
-        {
-          "path": "docs/qa/v109-validation/preserve-browser-r2-retry.log",
-          "sha256": "321bff4846f214ab3633e837ff3eb120c291f3541a50ce260c4a7216f448a308",
-          "bytes": 3170
-        },
-        {
-          "path": "docs/qa/v109-validation/unit-tests.log",
-          "sha256": "ad51723c8277d92f7edc9aa7144efdd8d62c6e03746a5d5e49dbd27c771576ea",
-          "bytes": 12263
-        },
-        {
-          "path": "docs/v109-preserve-public-inputs.json",
-          "sha256": "b6c4ce01157802ec1fb12cf1240c3a53b30ec9f573e8d2365f20c22a84443ffc",
-          "bytes": 3291
+          "path": "docs/qa/v109-review-corrections/previous-certified-manifest.json",
+          "bytes": 5062,
+          "sha256": "5b884fcb1a6c71c3186a361d9967b1a7c34d04e42aad569ad5f0ac791da648cd"
         }
       ]
     },
@@ -3412,34 +3155,9 @@
       "remainingV109": "Les cibles de 80 secteurs et 100 adultes restent ouvertes : 48 secteurs et 36 adultes à définir. Les trois atlas partagés ne livrent pas les fiches H001–H100 ; aucune canonicité 1:1 admise.",
       "evidenceV109": [
         {
-          "path": "docs/v109-validation-summary.json",
-          "sha256": "615663776d68f75a97aad3df7112d07757c8c5807f11a8ecda2db171a315af02",
-          "bytes": 17959
-        },
-        {
-          "path": "docs/v109-preserve-validation.json",
-          "sha256": "f3347498c8944de20abb19ffef4ec741e54a6781f02aa244e878ab80efb8229d",
-          "bytes": 30495
-        },
-        {
-          "path": "docs/qa/v109-preserve/visual-inspection.json",
-          "sha256": "3b82b2ef9ba97058363abe0487e20b74bccd2bf8869bad1ef599ea35d2e1e3e4",
-          "bytes": 740
-        },
-        {
-          "path": "docs/qa/v109-validation/preserve-browser-r2-retry.log",
-          "sha256": "321bff4846f214ab3633e837ff3eb120c291f3541a50ce260c4a7216f448a308",
-          "bytes": 3170
-        },
-        {
-          "path": "docs/qa/v109-validation/unit-tests.log",
-          "sha256": "ad51723c8277d92f7edc9aa7144efdd8d62c6e03746a5d5e49dbd27c771576ea",
-          "bytes": 12263
-        },
-        {
-          "path": "docs/v109-preserve-public-inputs.json",
-          "sha256": "b6c4ce01157802ec1fb12cf1240c3a53b30ec9f573e8d2365f20c22a84443ffc",
-          "bytes": 3291
+          "path": "docs/qa/v109-review-corrections/previous-certified-manifest.json",
+          "bytes": 5062,
+          "sha256": "5b884fcb1a6c71c3186a361d9967b1a7c34d04e42aad569ad5f0ac791da648cd"
         }
       ]
     },
@@ -3653,49 +3371,9 @@
       "remainingV109": "Les neuf actions source restent ouvertes : autres partenaires/costumes, TH_B, réactions xéno, conclusions et kits complets ne sont pas livrés par ce duo. Les campagnes et leurs acteurs manquants restent distincts. La sélection native n’atteste pas une fidélité cinématographique 1:1.",
       "evidenceV109": [
         {
-          "path": "docs/v109-validation-summary.json",
-          "sha256": "615663776d68f75a97aad3df7112d07757c8c5807f11a8ecda2db171a315af02",
-          "bytes": 17959
-        },
-        {
-          "path": "docs/v109-pit-validation.json",
-          "sha256": "8d47e48f73fe9e32c2c229bc9706c3896b6259fbca616cb26b385cabc610ca86",
-          "bytes": 90858
-        },
-        {
-          "path": "docs/qa/v109-pit/visual-inspection.json",
-          "sha256": "12542998eab84b9734b97911d061538130fe1967d2c27c96c699456456e96808",
-          "bytes": 6187
-        },
-        {
-          "path": "docs/qa/v109-validation/pit-browser-r2.log",
-          "sha256": "6322bafd56ebcca07b7f916e6927e832837f45e4682dcfb334dc86b571978f98",
-          "bytes": 6609
-        },
-        {
-          "path": "docs/qa/v109-validation/unit-tests.log",
-          "sha256": "ad51723c8277d92f7edc9aa7144efdd8d62c6e03746a5d5e49dbd27c771576ea",
-          "bytes": 12263
-        },
-        {
-          "path": "docs/qa/v109-validation/pit-tests.log",
-          "sha256": "f8b13f1a7926f13310634de70745ae3271a09bc1b33ff323048539ede0bff67e",
-          "bytes": 4066
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/final-source-selection.json",
-          "sha256": "f1d848a4597cd8a4d5c1b2b2a5c6559c26e24768153799507520a19ff09a68fc",
-          "bytes": 34465
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/native-uv-border-review-final.json",
-          "sha256": "fffa66897a902c2808a90c2ad074fabeb385eaebc7b43f512bb71d0871a854bc",
-          "bytes": 34430
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/native-ground-calibration.json",
-          "sha256": "f736f225bb3198331bc4b47e27ec34f1a209fa5cdc29134dbe0531cb9f5c711f",
-          "bytes": 23649
+          "path": "docs/qa/v109-review-corrections/previous-certified-manifest.json",
+          "bytes": 5062,
+          "sha256": "5b884fcb1a6c71c3186a361d9967b1a7c34d04e42aad569ad5f0ac791da648cd"
         }
       ]
     },
@@ -3743,49 +3421,9 @@
       "remainingV109": "Les neuf actions source restent ouvertes : autres partenaires/costumes, TH_B, réactions xéno, conclusions et kits complets ne sont pas livrés par ce duo. Les campagnes et leurs acteurs manquants restent distincts. La sélection native n’atteste pas une fidélité cinématographique 1:1.",
       "evidenceV109": [
         {
-          "path": "docs/v109-validation-summary.json",
-          "sha256": "615663776d68f75a97aad3df7112d07757c8c5807f11a8ecda2db171a315af02",
-          "bytes": 17959
-        },
-        {
-          "path": "docs/v109-pit-validation.json",
-          "sha256": "8d47e48f73fe9e32c2c229bc9706c3896b6259fbca616cb26b385cabc610ca86",
-          "bytes": 90858
-        },
-        {
-          "path": "docs/qa/v109-pit/visual-inspection.json",
-          "sha256": "12542998eab84b9734b97911d061538130fe1967d2c27c96c699456456e96808",
-          "bytes": 6187
-        },
-        {
-          "path": "docs/qa/v109-validation/pit-browser-r2.log",
-          "sha256": "6322bafd56ebcca07b7f916e6927e832837f45e4682dcfb334dc86b571978f98",
-          "bytes": 6609
-        },
-        {
-          "path": "docs/qa/v109-validation/unit-tests.log",
-          "sha256": "ad51723c8277d92f7edc9aa7144efdd8d62c6e03746a5d5e49dbd27c771576ea",
-          "bytes": 12263
-        },
-        {
-          "path": "docs/qa/v109-validation/pit-tests.log",
-          "sha256": "f8b13f1a7926f13310634de70745ae3271a09bc1b33ff323048539ede0bff67e",
-          "bytes": 4066
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/final-source-selection.json",
-          "sha256": "f1d848a4597cd8a4d5c1b2b2a5c6559c26e24768153799507520a19ff09a68fc",
-          "bytes": 34465
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/native-uv-border-review-final.json",
-          "sha256": "fffa66897a902c2808a90c2ad074fabeb385eaebc7b43f512bb71d0871a854bc",
-          "bytes": 34430
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/native-ground-calibration.json",
-          "sha256": "f736f225bb3198331bc4b47e27ec34f1a209fa5cdc29134dbe0531cb9f5c711f",
-          "bytes": 23649
+          "path": "docs/qa/v109-review-corrections/previous-certified-manifest.json",
+          "bytes": 5062,
+          "sha256": "5b884fcb1a6c71c3186a361d9967b1a7c34d04e42aad569ad5f0ac791da648cd"
         }
       ]
     },
@@ -3833,49 +3471,9 @@
       "remainingV109": "Les neuf actions source restent ouvertes : autres partenaires/costumes, TH_B, réactions xéno, conclusions et kits complets ne sont pas livrés par ce duo. Les campagnes et leurs acteurs manquants restent distincts. La sélection native n’atteste pas une fidélité cinématographique 1:1.",
       "evidenceV109": [
         {
-          "path": "docs/v109-validation-summary.json",
-          "sha256": "615663776d68f75a97aad3df7112d07757c8c5807f11a8ecda2db171a315af02",
-          "bytes": 17959
-        },
-        {
-          "path": "docs/v109-pit-validation.json",
-          "sha256": "8d47e48f73fe9e32c2c229bc9706c3896b6259fbca616cb26b385cabc610ca86",
-          "bytes": 90858
-        },
-        {
-          "path": "docs/qa/v109-pit/visual-inspection.json",
-          "sha256": "12542998eab84b9734b97911d061538130fe1967d2c27c96c699456456e96808",
-          "bytes": 6187
-        },
-        {
-          "path": "docs/qa/v109-validation/pit-browser-r2.log",
-          "sha256": "6322bafd56ebcca07b7f916e6927e832837f45e4682dcfb334dc86b571978f98",
-          "bytes": 6609
-        },
-        {
-          "path": "docs/qa/v109-validation/unit-tests.log",
-          "sha256": "ad51723c8277d92f7edc9aa7144efdd8d62c6e03746a5d5e49dbd27c771576ea",
-          "bytes": 12263
-        },
-        {
-          "path": "docs/qa/v109-validation/pit-tests.log",
-          "sha256": "f8b13f1a7926f13310634de70745ae3271a09bc1b33ff323048539ede0bff67e",
-          "bytes": 4066
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/final-source-selection.json",
-          "sha256": "f1d848a4597cd8a4d5c1b2b2a5c6559c26e24768153799507520a19ff09a68fc",
-          "bytes": 34465
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/native-uv-border-review-final.json",
-          "sha256": "fffa66897a902c2808a90c2ad074fabeb385eaebc7b43f512bb71d0871a854bc",
-          "bytes": 34430
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/native-ground-calibration.json",
-          "sha256": "f736f225bb3198331bc4b47e27ec34f1a209fa5cdc29134dbe0531cb9f5c711f",
-          "bytes": 23649
+          "path": "docs/qa/v109-review-corrections/previous-certified-manifest.json",
+          "bytes": 5062,
+          "sha256": "5b884fcb1a6c71c3186a361d9967b1a7c34d04e42aad569ad5f0ac791da648cd"
         }
       ]
     },
@@ -3923,49 +3521,9 @@
       "remainingV109": "Les neuf actions source restent ouvertes : autres partenaires/costumes, TH_B, réactions xéno, conclusions et kits complets ne sont pas livrés par ce duo. Les campagnes et leurs acteurs manquants restent distincts. La sélection native n’atteste pas une fidélité cinématographique 1:1.",
       "evidenceV109": [
         {
-          "path": "docs/v109-validation-summary.json",
-          "sha256": "615663776d68f75a97aad3df7112d07757c8c5807f11a8ecda2db171a315af02",
-          "bytes": 17959
-        },
-        {
-          "path": "docs/v109-pit-validation.json",
-          "sha256": "8d47e48f73fe9e32c2c229bc9706c3896b6259fbca616cb26b385cabc610ca86",
-          "bytes": 90858
-        },
-        {
-          "path": "docs/qa/v109-pit/visual-inspection.json",
-          "sha256": "12542998eab84b9734b97911d061538130fe1967d2c27c96c699456456e96808",
-          "bytes": 6187
-        },
-        {
-          "path": "docs/qa/v109-validation/pit-browser-r2.log",
-          "sha256": "6322bafd56ebcca07b7f916e6927e832837f45e4682dcfb334dc86b571978f98",
-          "bytes": 6609
-        },
-        {
-          "path": "docs/qa/v109-validation/unit-tests.log",
-          "sha256": "ad51723c8277d92f7edc9aa7144efdd8d62c6e03746a5d5e49dbd27c771576ea",
-          "bytes": 12263
-        },
-        {
-          "path": "docs/qa/v109-validation/pit-tests.log",
-          "sha256": "f8b13f1a7926f13310634de70745ae3271a09bc1b33ff323048539ede0bff67e",
-          "bytes": 4066
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/final-source-selection.json",
-          "sha256": "f1d848a4597cd8a4d5c1b2b2a5c6559c26e24768153799507520a19ff09a68fc",
-          "bytes": 34465
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/native-uv-border-review-final.json",
-          "sha256": "fffa66897a902c2808a90c2ad074fabeb385eaebc7b43f512bb71d0871a854bc",
-          "bytes": 34430
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/native-ground-calibration.json",
-          "sha256": "f736f225bb3198331bc4b47e27ec34f1a209fa5cdc29134dbe0531cb9f5c711f",
-          "bytes": 23649
+          "path": "docs/qa/v109-review-corrections/previous-certified-manifest.json",
+          "bytes": 5062,
+          "sha256": "5b884fcb1a6c71c3186a361d9967b1a7c34d04e42aad569ad5f0ac791da648cd"
         }
       ]
     },
@@ -4013,49 +3571,9 @@
       "remainingV109": "Les neuf actions source restent ouvertes : autres partenaires/costumes, TH_B, réactions xéno, conclusions et kits complets ne sont pas livrés par ce duo. Les campagnes et leurs acteurs manquants restent distincts. La sélection native n’atteste pas une fidélité cinématographique 1:1.",
       "evidenceV109": [
         {
-          "path": "docs/v109-validation-summary.json",
-          "sha256": "615663776d68f75a97aad3df7112d07757c8c5807f11a8ecda2db171a315af02",
-          "bytes": 17959
-        },
-        {
-          "path": "docs/v109-pit-validation.json",
-          "sha256": "8d47e48f73fe9e32c2c229bc9706c3896b6259fbca616cb26b385cabc610ca86",
-          "bytes": 90858
-        },
-        {
-          "path": "docs/qa/v109-pit/visual-inspection.json",
-          "sha256": "12542998eab84b9734b97911d061538130fe1967d2c27c96c699456456e96808",
-          "bytes": 6187
-        },
-        {
-          "path": "docs/qa/v109-validation/pit-browser-r2.log",
-          "sha256": "6322bafd56ebcca07b7f916e6927e832837f45e4682dcfb334dc86b571978f98",
-          "bytes": 6609
-        },
-        {
-          "path": "docs/qa/v109-validation/unit-tests.log",
-          "sha256": "ad51723c8277d92f7edc9aa7144efdd8d62c6e03746a5d5e49dbd27c771576ea",
-          "bytes": 12263
-        },
-        {
-          "path": "docs/qa/v109-validation/pit-tests.log",
-          "sha256": "f8b13f1a7926f13310634de70745ae3271a09bc1b33ff323048539ede0bff67e",
-          "bytes": 4066
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/final-source-selection.json",
-          "sha256": "f1d848a4597cd8a4d5c1b2b2a5c6559c26e24768153799507520a19ff09a68fc",
-          "bytes": 34465
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/native-uv-border-review-final.json",
-          "sha256": "fffa66897a902c2808a90c2ad074fabeb385eaebc7b43f512bb71d0871a854bc",
-          "bytes": 34430
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/native-ground-calibration.json",
-          "sha256": "f736f225bb3198331bc4b47e27ec34f1a209fa5cdc29134dbe0531cb9f5c711f",
-          "bytes": 23649
+          "path": "docs/qa/v109-review-corrections/previous-certified-manifest.json",
+          "bytes": 5062,
+          "sha256": "5b884fcb1a6c71c3186a361d9967b1a7c34d04e42aad569ad5f0ac791da648cd"
         }
       ]
     },
@@ -4103,49 +3621,9 @@
       "remainingV109": "Les neuf actions source restent ouvertes : autres partenaires/costumes, TH_B, réactions xéno, conclusions et kits complets ne sont pas livrés par ce duo. Les campagnes et leurs acteurs manquants restent distincts. La sélection native n’atteste pas une fidélité cinématographique 1:1.",
       "evidenceV109": [
         {
-          "path": "docs/v109-validation-summary.json",
-          "sha256": "615663776d68f75a97aad3df7112d07757c8c5807f11a8ecda2db171a315af02",
-          "bytes": 17959
-        },
-        {
-          "path": "docs/v109-pit-validation.json",
-          "sha256": "8d47e48f73fe9e32c2c229bc9706c3896b6259fbca616cb26b385cabc610ca86",
-          "bytes": 90858
-        },
-        {
-          "path": "docs/qa/v109-pit/visual-inspection.json",
-          "sha256": "12542998eab84b9734b97911d061538130fe1967d2c27c96c699456456e96808",
-          "bytes": 6187
-        },
-        {
-          "path": "docs/qa/v109-validation/pit-browser-r2.log",
-          "sha256": "6322bafd56ebcca07b7f916e6927e832837f45e4682dcfb334dc86b571978f98",
-          "bytes": 6609
-        },
-        {
-          "path": "docs/qa/v109-validation/unit-tests.log",
-          "sha256": "ad51723c8277d92f7edc9aa7144efdd8d62c6e03746a5d5e49dbd27c771576ea",
-          "bytes": 12263
-        },
-        {
-          "path": "docs/qa/v109-validation/pit-tests.log",
-          "sha256": "f8b13f1a7926f13310634de70745ae3271a09bc1b33ff323048539ede0bff67e",
-          "bytes": 4066
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/final-source-selection.json",
-          "sha256": "f1d848a4597cd8a4d5c1b2b2a5c6559c26e24768153799507520a19ff09a68fc",
-          "bytes": 34465
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/native-uv-border-review-final.json",
-          "sha256": "fffa66897a902c2808a90c2ad074fabeb385eaebc7b43f512bb71d0871a854bc",
-          "bytes": 34430
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/native-ground-calibration.json",
-          "sha256": "f736f225bb3198331bc4b47e27ec34f1a209fa5cdc29134dbe0531cb9f5c711f",
-          "bytes": 23649
+          "path": "docs/qa/v109-review-corrections/previous-certified-manifest.json",
+          "bytes": 5062,
+          "sha256": "5b884fcb1a6c71c3186a361d9967b1a7c34d04e42aad569ad5f0ac791da648cd"
         }
       ]
     },
@@ -4193,49 +3671,9 @@
       "remainingV109": "Les neuf actions source restent ouvertes : autres partenaires/costumes, TH_B, réactions xéno, conclusions et kits complets ne sont pas livrés par ce duo. Les campagnes et leurs acteurs manquants restent distincts. La sélection native n’atteste pas une fidélité cinématographique 1:1.",
       "evidenceV109": [
         {
-          "path": "docs/v109-validation-summary.json",
-          "sha256": "615663776d68f75a97aad3df7112d07757c8c5807f11a8ecda2db171a315af02",
-          "bytes": 17959
-        },
-        {
-          "path": "docs/v109-pit-validation.json",
-          "sha256": "8d47e48f73fe9e32c2c229bc9706c3896b6259fbca616cb26b385cabc610ca86",
-          "bytes": 90858
-        },
-        {
-          "path": "docs/qa/v109-pit/visual-inspection.json",
-          "sha256": "12542998eab84b9734b97911d061538130fe1967d2c27c96c699456456e96808",
-          "bytes": 6187
-        },
-        {
-          "path": "docs/qa/v109-validation/pit-browser-r2.log",
-          "sha256": "6322bafd56ebcca07b7f916e6927e832837f45e4682dcfb334dc86b571978f98",
-          "bytes": 6609
-        },
-        {
-          "path": "docs/qa/v109-validation/unit-tests.log",
-          "sha256": "ad51723c8277d92f7edc9aa7144efdd8d62c6e03746a5d5e49dbd27c771576ea",
-          "bytes": 12263
-        },
-        {
-          "path": "docs/qa/v109-validation/pit-tests.log",
-          "sha256": "f8b13f1a7926f13310634de70745ae3271a09bc1b33ff323048539ede0bff67e",
-          "bytes": 4066
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/final-source-selection.json",
-          "sha256": "f1d848a4597cd8a4d5c1b2b2a5c6559c26e24768153799507520a19ff09a68fc",
-          "bytes": 34465
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/native-uv-border-review-final.json",
-          "sha256": "fffa66897a902c2808a90c2ad074fabeb385eaebc7b43f512bb71d0871a854bc",
-          "bytes": 34430
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/native-ground-calibration.json",
-          "sha256": "f736f225bb3198331bc4b47e27ec34f1a209fa5cdc29134dbe0531cb9f5c711f",
-          "bytes": 23649
+          "path": "docs/qa/v109-review-corrections/previous-certified-manifest.json",
+          "bytes": 5062,
+          "sha256": "5b884fcb1a6c71c3186a361d9967b1a7c34d04e42aad569ad5f0ac791da648cd"
         }
       ]
     },
@@ -4283,49 +3721,9 @@
       "remainingV109": "Les neuf actions source restent ouvertes : autres partenaires/costumes, TH_B, réactions xéno, conclusions et kits complets ne sont pas livrés par ce duo. Les campagnes et leurs acteurs manquants restent distincts. La sélection native n’atteste pas une fidélité cinématographique 1:1.",
       "evidenceV109": [
         {
-          "path": "docs/v109-validation-summary.json",
-          "sha256": "615663776d68f75a97aad3df7112d07757c8c5807f11a8ecda2db171a315af02",
-          "bytes": 17959
-        },
-        {
-          "path": "docs/v109-pit-validation.json",
-          "sha256": "8d47e48f73fe9e32c2c229bc9706c3896b6259fbca616cb26b385cabc610ca86",
-          "bytes": 90858
-        },
-        {
-          "path": "docs/qa/v109-pit/visual-inspection.json",
-          "sha256": "12542998eab84b9734b97911d061538130fe1967d2c27c96c699456456e96808",
-          "bytes": 6187
-        },
-        {
-          "path": "docs/qa/v109-validation/pit-browser-r2.log",
-          "sha256": "6322bafd56ebcca07b7f916e6927e832837f45e4682dcfb334dc86b571978f98",
-          "bytes": 6609
-        },
-        {
-          "path": "docs/qa/v109-validation/unit-tests.log",
-          "sha256": "ad51723c8277d92f7edc9aa7144efdd8d62c6e03746a5d5e49dbd27c771576ea",
-          "bytes": 12263
-        },
-        {
-          "path": "docs/qa/v109-validation/pit-tests.log",
-          "sha256": "f8b13f1a7926f13310634de70745ae3271a09bc1b33ff323048539ede0bff67e",
-          "bytes": 4066
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/final-source-selection.json",
-          "sha256": "f1d848a4597cd8a4d5c1b2b2a5c6559c26e24768153799507520a19ff09a68fc",
-          "bytes": 34465
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/native-uv-border-review-final.json",
-          "sha256": "fffa66897a902c2808a90c2ad074fabeb385eaebc7b43f512bb71d0871a854bc",
-          "bytes": 34430
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/native-ground-calibration.json",
-          "sha256": "f736f225bb3198331bc4b47e27ec34f1a209fa5cdc29134dbe0531cb9f5c711f",
-          "bytes": 23649
+          "path": "docs/qa/v109-review-corrections/previous-certified-manifest.json",
+          "bytes": 5062,
+          "sha256": "5b884fcb1a6c71c3186a361d9967b1a7c34d04e42aad569ad5f0ac791da648cd"
         }
       ]
     },
@@ -4373,49 +3771,9 @@
       "remainingV109": "Les neuf actions source restent ouvertes : autres partenaires/costumes, TH_B, réactions xéno, conclusions et kits complets ne sont pas livrés par ce duo. Les campagnes et leurs acteurs manquants restent distincts. La sélection native n’atteste pas une fidélité cinématographique 1:1.",
       "evidenceV109": [
         {
-          "path": "docs/v109-validation-summary.json",
-          "sha256": "615663776d68f75a97aad3df7112d07757c8c5807f11a8ecda2db171a315af02",
-          "bytes": 17959
-        },
-        {
-          "path": "docs/v109-pit-validation.json",
-          "sha256": "8d47e48f73fe9e32c2c229bc9706c3896b6259fbca616cb26b385cabc610ca86",
-          "bytes": 90858
-        },
-        {
-          "path": "docs/qa/v109-pit/visual-inspection.json",
-          "sha256": "12542998eab84b9734b97911d061538130fe1967d2c27c96c699456456e96808",
-          "bytes": 6187
-        },
-        {
-          "path": "docs/qa/v109-validation/pit-browser-r2.log",
-          "sha256": "6322bafd56ebcca07b7f916e6927e832837f45e4682dcfb334dc86b571978f98",
-          "bytes": 6609
-        },
-        {
-          "path": "docs/qa/v109-validation/unit-tests.log",
-          "sha256": "ad51723c8277d92f7edc9aa7144efdd8d62c6e03746a5d5e49dbd27c771576ea",
-          "bytes": 12263
-        },
-        {
-          "path": "docs/qa/v109-validation/pit-tests.log",
-          "sha256": "f8b13f1a7926f13310634de70745ae3271a09bc1b33ff323048539ede0bff67e",
-          "bytes": 4066
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/final-source-selection.json",
-          "sha256": "f1d848a4597cd8a4d5c1b2b2a5c6559c26e24768153799507520a19ff09a68fc",
-          "bytes": 34465
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/native-uv-border-review-final.json",
-          "sha256": "fffa66897a902c2808a90c2ad074fabeb385eaebc7b43f512bb71d0871a854bc",
-          "bytes": 34430
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/native-ground-calibration.json",
-          "sha256": "f736f225bb3198331bc4b47e27ec34f1a209fa5cdc29134dbe0531cb9f5c711f",
-          "bytes": 23649
+          "path": "docs/qa/v109-review-corrections/previous-certified-manifest.json",
+          "bytes": 5062,
+          "sha256": "5b884fcb1a6c71c3186a361d9967b1a7c34d04e42aad569ad5f0ac791da648cd"
         }
       ]
     },
@@ -5812,29 +5170,9 @@
       "remainingV109": "R2-M021 et les acquisitions de campagne restent ouverts : aucun reçu d’autorité de moyens/accord fourni au chantierV89, aucune coque gagnée, récompense, rang, annexion ou correspondanceK01→CON-T. Les six ouvrages initiaux de la recette sont une fixtureV108 déclarée.",
       "evidenceV109": [
         {
-          "path": "docs/v109-validation-summary.json",
-          "sha256": "615663776d68f75a97aad3df7112d07757c8c5807f11a8ecda2db171a315af02",
-          "bytes": 17959
-        },
-        {
-          "path": "docs/v109-clans-validation.json",
-          "sha256": "addd0125f08e17b3cf639521fb561a6872200c4cff1bb7d0eb5dddf67ae62b48",
-          "bytes": 15490
-        },
-        {
-          "path": "docs/qa/v109-clans/visual-inspection.json",
-          "sha256": "725c4c874750285a347494bec463f8086f36514fe2922eda7d2b76dd6a524c8a",
-          "bytes": 306
-        },
-        {
-          "path": "docs/qa/v109-validation/clans-browser-r2.log",
-          "sha256": "c44862e523a1072d23bbd81d9fa30642abeb28bf7f87602e272d008189ebf0f7",
-          "bytes": 2777
-        },
-        {
-          "path": "docs/qa/v109-validation/unit-tests.log",
-          "sha256": "ad51723c8277d92f7edc9aa7144efdd8d62c6e03746a5d5e49dbd27c771576ea",
-          "bytes": 12263
+          "path": "docs/qa/v109-review-corrections/previous-certified-manifest.json",
+          "bytes": 5062,
+          "sha256": "5b884fcb1a6c71c3186a361d9967b1a7c34d04e42aad569ad5f0ac791da648cd"
         }
       ]
     },
@@ -5882,29 +5220,9 @@
       "remainingV109": "R2-M021 et les acquisitions de campagne restent ouverts : aucun reçu d’autorité de moyens/accord fourni au chantierV89, aucune coque gagnée, récompense, rang, annexion ou correspondanceK01→CON-T. Les six ouvrages initiaux de la recette sont une fixtureV108 déclarée.",
       "evidenceV109": [
         {
-          "path": "docs/v109-validation-summary.json",
-          "sha256": "615663776d68f75a97aad3df7112d07757c8c5807f11a8ecda2db171a315af02",
-          "bytes": 17959
-        },
-        {
-          "path": "docs/v109-clans-validation.json",
-          "sha256": "addd0125f08e17b3cf639521fb561a6872200c4cff1bb7d0eb5dddf67ae62b48",
-          "bytes": 15490
-        },
-        {
-          "path": "docs/qa/v109-clans/visual-inspection.json",
-          "sha256": "725c4c874750285a347494bec463f8086f36514fe2922eda7d2b76dd6a524c8a",
-          "bytes": 306
-        },
-        {
-          "path": "docs/qa/v109-validation/clans-browser-r2.log",
-          "sha256": "c44862e523a1072d23bbd81d9fa30642abeb28bf7f87602e272d008189ebf0f7",
-          "bytes": 2777
-        },
-        {
-          "path": "docs/qa/v109-validation/unit-tests.log",
-          "sha256": "ad51723c8277d92f7edc9aa7144efdd8d62c6e03746a5d5e49dbd27c771576ea",
-          "bytes": 12263
+          "path": "docs/qa/v109-review-corrections/previous-certified-manifest.json",
+          "bytes": 5062,
+          "sha256": "5b884fcb1a6c71c3186a361d9967b1a7c34d04e42aad569ad5f0ac791da648cd"
         }
       ]
     },
@@ -5952,29 +5270,9 @@
       "remainingV109": "R2-M021 et les acquisitions de campagne restent ouverts : aucun reçu d’autorité de moyens/accord fourni au chantierV89, aucune coque gagnée, récompense, rang, annexion ou correspondanceK01→CON-T. Les six ouvrages initiaux de la recette sont une fixtureV108 déclarée.",
       "evidenceV109": [
         {
-          "path": "docs/v109-validation-summary.json",
-          "sha256": "615663776d68f75a97aad3df7112d07757c8c5807f11a8ecda2db171a315af02",
-          "bytes": 17959
-        },
-        {
-          "path": "docs/v109-clans-validation.json",
-          "sha256": "addd0125f08e17b3cf639521fb561a6872200c4cff1bb7d0eb5dddf67ae62b48",
-          "bytes": 15490
-        },
-        {
-          "path": "docs/qa/v109-clans/visual-inspection.json",
-          "sha256": "725c4c874750285a347494bec463f8086f36514fe2922eda7d2b76dd6a524c8a",
-          "bytes": 306
-        },
-        {
-          "path": "docs/qa/v109-validation/clans-browser-r2.log",
-          "sha256": "c44862e523a1072d23bbd81d9fa30642abeb28bf7f87602e272d008189ebf0f7",
-          "bytes": 2777
-        },
-        {
-          "path": "docs/qa/v109-validation/unit-tests.log",
-          "sha256": "ad51723c8277d92f7edc9aa7144efdd8d62c6e03746a5d5e49dbd27c771576ea",
-          "bytes": 12263
+          "path": "docs/qa/v109-review-corrections/previous-certified-manifest.json",
+          "bytes": 5062,
+          "sha256": "5b884fcb1a6c71c3186a361d9967b1a7c34d04e42aad569ad5f0ac791da648cd"
         }
       ]
     },
@@ -6022,29 +5320,9 @@
       "remainingV109": "R2-M021 et les acquisitions de campagne restent ouverts : aucun reçu d’autorité de moyens/accord fourni au chantierV89, aucune coque gagnée, récompense, rang, annexion ou correspondanceK01→CON-T. Les six ouvrages initiaux de la recette sont une fixtureV108 déclarée.",
       "evidenceV109": [
         {
-          "path": "docs/v109-validation-summary.json",
-          "sha256": "615663776d68f75a97aad3df7112d07757c8c5807f11a8ecda2db171a315af02",
-          "bytes": 17959
-        },
-        {
-          "path": "docs/v109-clans-validation.json",
-          "sha256": "addd0125f08e17b3cf639521fb561a6872200c4cff1bb7d0eb5dddf67ae62b48",
-          "bytes": 15490
-        },
-        {
-          "path": "docs/qa/v109-clans/visual-inspection.json",
-          "sha256": "725c4c874750285a347494bec463f8086f36514fe2922eda7d2b76dd6a524c8a",
-          "bytes": 306
-        },
-        {
-          "path": "docs/qa/v109-validation/clans-browser-r2.log",
-          "sha256": "c44862e523a1072d23bbd81d9fa30642abeb28bf7f87602e272d008189ebf0f7",
-          "bytes": 2777
-        },
-        {
-          "path": "docs/qa/v109-validation/unit-tests.log",
-          "sha256": "ad51723c8277d92f7edc9aa7144efdd8d62c6e03746a5d5e49dbd27c771576ea",
-          "bytes": 12263
+          "path": "docs/qa/v109-review-corrections/previous-certified-manifest.json",
+          "bytes": 5062,
+          "sha256": "5b884fcb1a6c71c3186a361d9967b1a7c34d04e42aad569ad5f0ac791da648cd"
         }
       ]
     },
@@ -6092,29 +5370,9 @@
       "remainingV109": "R2-M021 et les acquisitions de campagne restent ouverts : aucun reçu d’autorité de moyens/accord fourni au chantierV89, aucune coque gagnée, récompense, rang, annexion ou correspondanceK01→CON-T. Les six ouvrages initiaux de la recette sont une fixtureV108 déclarée.",
       "evidenceV109": [
         {
-          "path": "docs/v109-validation-summary.json",
-          "sha256": "615663776d68f75a97aad3df7112d07757c8c5807f11a8ecda2db171a315af02",
-          "bytes": 17959
-        },
-        {
-          "path": "docs/v109-clans-validation.json",
-          "sha256": "addd0125f08e17b3cf639521fb561a6872200c4cff1bb7d0eb5dddf67ae62b48",
-          "bytes": 15490
-        },
-        {
-          "path": "docs/qa/v109-clans/visual-inspection.json",
-          "sha256": "725c4c874750285a347494bec463f8086f36514fe2922eda7d2b76dd6a524c8a",
-          "bytes": 306
-        },
-        {
-          "path": "docs/qa/v109-validation/clans-browser-r2.log",
-          "sha256": "c44862e523a1072d23bbd81d9fa30642abeb28bf7f87602e272d008189ebf0f7",
-          "bytes": 2777
-        },
-        {
-          "path": "docs/qa/v109-validation/unit-tests.log",
-          "sha256": "ad51723c8277d92f7edc9aa7144efdd8d62c6e03746a5d5e49dbd27c771576ea",
-          "bytes": 12263
+          "path": "docs/qa/v109-review-corrections/previous-certified-manifest.json",
+          "bytes": 5062,
+          "sha256": "5b884fcb1a6c71c3186a361d9967b1a7c34d04e42aad569ad5f0ac791da648cd"
         }
       ]
     },
@@ -6162,29 +5420,9 @@
       "remainingV109": "R2-M021 et les acquisitions de campagne restent ouverts : aucun reçu d’autorité de moyens/accord fourni au chantierV89, aucune coque gagnée, récompense, rang, annexion ou correspondanceK01→CON-T. Les six ouvrages initiaux de la recette sont une fixtureV108 déclarée.",
       "evidenceV109": [
         {
-          "path": "docs/v109-validation-summary.json",
-          "sha256": "615663776d68f75a97aad3df7112d07757c8c5807f11a8ecda2db171a315af02",
-          "bytes": 17959
-        },
-        {
-          "path": "docs/v109-clans-validation.json",
-          "sha256": "addd0125f08e17b3cf639521fb561a6872200c4cff1bb7d0eb5dddf67ae62b48",
-          "bytes": 15490
-        },
-        {
-          "path": "docs/qa/v109-clans/visual-inspection.json",
-          "sha256": "725c4c874750285a347494bec463f8086f36514fe2922eda7d2b76dd6a524c8a",
-          "bytes": 306
-        },
-        {
-          "path": "docs/qa/v109-validation/clans-browser-r2.log",
-          "sha256": "c44862e523a1072d23bbd81d9fa30642abeb28bf7f87602e272d008189ebf0f7",
-          "bytes": 2777
-        },
-        {
-          "path": "docs/qa/v109-validation/unit-tests.log",
-          "sha256": "ad51723c8277d92f7edc9aa7144efdd8d62c6e03746a5d5e49dbd27c771576ea",
-          "bytes": 12263
+          "path": "docs/qa/v109-review-corrections/previous-certified-manifest.json",
+          "bytes": 5062,
+          "sha256": "5b884fcb1a6c71c3186a361d9967b1a7c34d04e42aad569ad5f0ac791da648cd"
         }
       ]
     },
@@ -6232,34 +5470,9 @@
       "remainingV109": "Les cibles de 80 secteurs et 100 adultes restent ouvertes : 48 secteurs et 36 adultes à définir. Les trois atlas partagés ne livrent pas les fiches H001–H100 ; aucune canonicité 1:1 admise.",
       "evidenceV109": [
         {
-          "path": "docs/v109-validation-summary.json",
-          "sha256": "615663776d68f75a97aad3df7112d07757c8c5807f11a8ecda2db171a315af02",
-          "bytes": 17959
-        },
-        {
-          "path": "docs/v109-preserve-validation.json",
-          "sha256": "f3347498c8944de20abb19ffef4ec741e54a6781f02aa244e878ab80efb8229d",
-          "bytes": 30495
-        },
-        {
-          "path": "docs/qa/v109-preserve/visual-inspection.json",
-          "sha256": "3b82b2ef9ba97058363abe0487e20b74bccd2bf8869bad1ef599ea35d2e1e3e4",
-          "bytes": 740
-        },
-        {
-          "path": "docs/qa/v109-validation/preserve-browser-r2-retry.log",
-          "sha256": "321bff4846f214ab3633e837ff3eb120c291f3541a50ce260c4a7216f448a308",
-          "bytes": 3170
-        },
-        {
-          "path": "docs/qa/v109-validation/unit-tests.log",
-          "sha256": "ad51723c8277d92f7edc9aa7144efdd8d62c6e03746a5d5e49dbd27c771576ea",
-          "bytes": 12263
-        },
-        {
-          "path": "docs/v109-preserve-public-inputs.json",
-          "sha256": "b6c4ce01157802ec1fb12cf1240c3a53b30ec9f573e8d2365f20c22a84443ffc",
-          "bytes": 3291
+          "path": "docs/qa/v109-review-corrections/previous-certified-manifest.json",
+          "bytes": 5062,
+          "sha256": "5b884fcb1a6c71c3186a361d9967b1a7c34d04e42aad569ad5f0ac791da648cd"
         }
       ]
     },
@@ -6307,34 +5520,9 @@
       "remainingV109": "Les cibles de 80 secteurs et 100 adultes restent ouvertes : 48 secteurs et 36 adultes à définir. Les trois atlas partagés ne livrent pas les fiches H001–H100 ; aucune canonicité 1:1 admise.",
       "evidenceV109": [
         {
-          "path": "docs/v109-validation-summary.json",
-          "sha256": "615663776d68f75a97aad3df7112d07757c8c5807f11a8ecda2db171a315af02",
-          "bytes": 17959
-        },
-        {
-          "path": "docs/v109-preserve-validation.json",
-          "sha256": "f3347498c8944de20abb19ffef4ec741e54a6781f02aa244e878ab80efb8229d",
-          "bytes": 30495
-        },
-        {
-          "path": "docs/qa/v109-preserve/visual-inspection.json",
-          "sha256": "3b82b2ef9ba97058363abe0487e20b74bccd2bf8869bad1ef599ea35d2e1e3e4",
-          "bytes": 740
-        },
-        {
-          "path": "docs/qa/v109-validation/preserve-browser-r2-retry.log",
-          "sha256": "321bff4846f214ab3633e837ff3eb120c291f3541a50ce260c4a7216f448a308",
-          "bytes": 3170
-        },
-        {
-          "path": "docs/qa/v109-validation/unit-tests.log",
-          "sha256": "ad51723c8277d92f7edc9aa7144efdd8d62c6e03746a5d5e49dbd27c771576ea",
-          "bytes": 12263
-        },
-        {
-          "path": "docs/v109-preserve-public-inputs.json",
-          "sha256": "b6c4ce01157802ec1fb12cf1240c3a53b30ec9f573e8d2365f20c22a84443ffc",
-          "bytes": 3291
+          "path": "docs/qa/v109-review-corrections/previous-certified-manifest.json",
+          "bytes": 5062,
+          "sha256": "5b884fcb1a6c71c3186a361d9967b1a7c34d04e42aad569ad5f0ac791da648cd"
         }
       ]
     },
@@ -6548,49 +5736,9 @@
       "remainingV109": "Les neuf actions source restent ouvertes : autres partenaires/costumes, TH_B, réactions xéno, conclusions et kits complets ne sont pas livrés par ce duo. Les campagnes et leurs acteurs manquants restent distincts. La sélection native n’atteste pas une fidélité cinématographique 1:1.",
       "evidenceV109": [
         {
-          "path": "docs/v109-validation-summary.json",
-          "sha256": "615663776d68f75a97aad3df7112d07757c8c5807f11a8ecda2db171a315af02",
-          "bytes": 17959
-        },
-        {
-          "path": "docs/v109-pit-validation.json",
-          "sha256": "8d47e48f73fe9e32c2c229bc9706c3896b6259fbca616cb26b385cabc610ca86",
-          "bytes": 90858
-        },
-        {
-          "path": "docs/qa/v109-pit/visual-inspection.json",
-          "sha256": "12542998eab84b9734b97911d061538130fe1967d2c27c96c699456456e96808",
-          "bytes": 6187
-        },
-        {
-          "path": "docs/qa/v109-validation/pit-browser-r2.log",
-          "sha256": "6322bafd56ebcca07b7f916e6927e832837f45e4682dcfb334dc86b571978f98",
-          "bytes": 6609
-        },
-        {
-          "path": "docs/qa/v109-validation/unit-tests.log",
-          "sha256": "ad51723c8277d92f7edc9aa7144efdd8d62c6e03746a5d5e49dbd27c771576ea",
-          "bytes": 12263
-        },
-        {
-          "path": "docs/qa/v109-validation/pit-tests.log",
-          "sha256": "f8b13f1a7926f13310634de70745ae3271a09bc1b33ff323048539ede0bff67e",
-          "bytes": 4066
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/final-source-selection.json",
-          "sha256": "f1d848a4597cd8a4d5c1b2b2a5c6559c26e24768153799507520a19ff09a68fc",
-          "bytes": 34465
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/native-uv-border-review-final.json",
-          "sha256": "fffa66897a902c2808a90c2ad074fabeb385eaebc7b43f512bb71d0871a854bc",
-          "bytes": 34430
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/native-ground-calibration.json",
-          "sha256": "f736f225bb3198331bc4b47e27ec34f1a209fa5cdc29134dbe0531cb9f5c711f",
-          "bytes": 23649
+          "path": "docs/qa/v109-review-corrections/previous-certified-manifest.json",
+          "bytes": 5062,
+          "sha256": "5b884fcb1a6c71c3186a361d9967b1a7c34d04e42aad569ad5f0ac791da648cd"
         }
       ]
     },
@@ -6638,49 +5786,9 @@
       "remainingV109": "Les neuf actions source restent ouvertes : autres partenaires/costumes, TH_B, réactions xéno, conclusions et kits complets ne sont pas livrés par ce duo. Les campagnes et leurs acteurs manquants restent distincts. La sélection native n’atteste pas une fidélité cinématographique 1:1.",
       "evidenceV109": [
         {
-          "path": "docs/v109-validation-summary.json",
-          "sha256": "615663776d68f75a97aad3df7112d07757c8c5807f11a8ecda2db171a315af02",
-          "bytes": 17959
-        },
-        {
-          "path": "docs/v109-pit-validation.json",
-          "sha256": "8d47e48f73fe9e32c2c229bc9706c3896b6259fbca616cb26b385cabc610ca86",
-          "bytes": 90858
-        },
-        {
-          "path": "docs/qa/v109-pit/visual-inspection.json",
-          "sha256": "12542998eab84b9734b97911d061538130fe1967d2c27c96c699456456e96808",
-          "bytes": 6187
-        },
-        {
-          "path": "docs/qa/v109-validation/pit-browser-r2.log",
-          "sha256": "6322bafd56ebcca07b7f916e6927e832837f45e4682dcfb334dc86b571978f98",
-          "bytes": 6609
-        },
-        {
-          "path": "docs/qa/v109-validation/unit-tests.log",
-          "sha256": "ad51723c8277d92f7edc9aa7144efdd8d62c6e03746a5d5e49dbd27c771576ea",
-          "bytes": 12263
-        },
-        {
-          "path": "docs/qa/v109-validation/pit-tests.log",
-          "sha256": "f8b13f1a7926f13310634de70745ae3271a09bc1b33ff323048539ede0bff67e",
-          "bytes": 4066
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/final-source-selection.json",
-          "sha256": "f1d848a4597cd8a4d5c1b2b2a5c6559c26e24768153799507520a19ff09a68fc",
-          "bytes": 34465
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/native-uv-border-review-final.json",
-          "sha256": "fffa66897a902c2808a90c2ad074fabeb385eaebc7b43f512bb71d0871a854bc",
-          "bytes": 34430
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/native-ground-calibration.json",
-          "sha256": "f736f225bb3198331bc4b47e27ec34f1a209fa5cdc29134dbe0531cb9f5c711f",
-          "bytes": 23649
+          "path": "docs/qa/v109-review-corrections/previous-certified-manifest.json",
+          "bytes": 5062,
+          "sha256": "5b884fcb1a6c71c3186a361d9967b1a7c34d04e42aad569ad5f0ac791da648cd"
         }
       ]
     },
@@ -6728,49 +5836,9 @@
       "remainingV109": "Les neuf actions source restent ouvertes : autres partenaires/costumes, TH_B, réactions xéno, conclusions et kits complets ne sont pas livrés par ce duo. Les campagnes et leurs acteurs manquants restent distincts. La sélection native n’atteste pas une fidélité cinématographique 1:1.",
       "evidenceV109": [
         {
-          "path": "docs/v109-validation-summary.json",
-          "sha256": "615663776d68f75a97aad3df7112d07757c8c5807f11a8ecda2db171a315af02",
-          "bytes": 17959
-        },
-        {
-          "path": "docs/v109-pit-validation.json",
-          "sha256": "8d47e48f73fe9e32c2c229bc9706c3896b6259fbca616cb26b385cabc610ca86",
-          "bytes": 90858
-        },
-        {
-          "path": "docs/qa/v109-pit/visual-inspection.json",
-          "sha256": "12542998eab84b9734b97911d061538130fe1967d2c27c96c699456456e96808",
-          "bytes": 6187
-        },
-        {
-          "path": "docs/qa/v109-validation/pit-browser-r2.log",
-          "sha256": "6322bafd56ebcca07b7f916e6927e832837f45e4682dcfb334dc86b571978f98",
-          "bytes": 6609
-        },
-        {
-          "path": "docs/qa/v109-validation/unit-tests.log",
-          "sha256": "ad51723c8277d92f7edc9aa7144efdd8d62c6e03746a5d5e49dbd27c771576ea",
-          "bytes": 12263
-        },
-        {
-          "path": "docs/qa/v109-validation/pit-tests.log",
-          "sha256": "f8b13f1a7926f13310634de70745ae3271a09bc1b33ff323048539ede0bff67e",
-          "bytes": 4066
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/final-source-selection.json",
-          "sha256": "f1d848a4597cd8a4d5c1b2b2a5c6559c26e24768153799507520a19ff09a68fc",
-          "bytes": 34465
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/native-uv-border-review-final.json",
-          "sha256": "fffa66897a902c2808a90c2ad074fabeb385eaebc7b43f512bb71d0871a854bc",
-          "bytes": 34430
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/native-ground-calibration.json",
-          "sha256": "f736f225bb3198331bc4b47e27ec34f1a209fa5cdc29134dbe0531cb9f5c711f",
-          "bytes": 23649
+          "path": "docs/qa/v109-review-corrections/previous-certified-manifest.json",
+          "bytes": 5062,
+          "sha256": "5b884fcb1a6c71c3186a361d9967b1a7c34d04e42aad569ad5f0ac791da648cd"
         }
       ]
     },
@@ -6818,49 +5886,9 @@
       "remainingV109": "Les neuf actions source restent ouvertes : autres partenaires/costumes, TH_B, réactions xéno, conclusions et kits complets ne sont pas livrés par ce duo. Les campagnes et leurs acteurs manquants restent distincts. La sélection native n’atteste pas une fidélité cinématographique 1:1.",
       "evidenceV109": [
         {
-          "path": "docs/v109-validation-summary.json",
-          "sha256": "615663776d68f75a97aad3df7112d07757c8c5807f11a8ecda2db171a315af02",
-          "bytes": 17959
-        },
-        {
-          "path": "docs/v109-pit-validation.json",
-          "sha256": "8d47e48f73fe9e32c2c229bc9706c3896b6259fbca616cb26b385cabc610ca86",
-          "bytes": 90858
-        },
-        {
-          "path": "docs/qa/v109-pit/visual-inspection.json",
-          "sha256": "12542998eab84b9734b97911d061538130fe1967d2c27c96c699456456e96808",
-          "bytes": 6187
-        },
-        {
-          "path": "docs/qa/v109-validation/pit-browser-r2.log",
-          "sha256": "6322bafd56ebcca07b7f916e6927e832837f45e4682dcfb334dc86b571978f98",
-          "bytes": 6609
-        },
-        {
-          "path": "docs/qa/v109-validation/unit-tests.log",
-          "sha256": "ad51723c8277d92f7edc9aa7144efdd8d62c6e03746a5d5e49dbd27c771576ea",
-          "bytes": 12263
-        },
-        {
-          "path": "docs/qa/v109-validation/pit-tests.log",
-          "sha256": "f8b13f1a7926f13310634de70745ae3271a09bc1b33ff323048539ede0bff67e",
-          "bytes": 4066
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/final-source-selection.json",
-          "sha256": "f1d848a4597cd8a4d5c1b2b2a5c6559c26e24768153799507520a19ff09a68fc",
-          "bytes": 34465
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/native-uv-border-review-final.json",
-          "sha256": "fffa66897a902c2808a90c2ad074fabeb385eaebc7b43f512bb71d0871a854bc",
-          "bytes": 34430
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/native-ground-calibration.json",
-          "sha256": "f736f225bb3198331bc4b47e27ec34f1a209fa5cdc29134dbe0531cb9f5c711f",
-          "bytes": 23649
+          "path": "docs/qa/v109-review-corrections/previous-certified-manifest.json",
+          "bytes": 5062,
+          "sha256": "5b884fcb1a6c71c3186a361d9967b1a7c34d04e42aad569ad5f0ac791da648cd"
         }
       ]
     },
@@ -6908,49 +5936,9 @@
       "remainingV109": "Les neuf actions source restent ouvertes : autres partenaires/costumes, TH_B, réactions xéno, conclusions et kits complets ne sont pas livrés par ce duo. Les campagnes et leurs acteurs manquants restent distincts. La sélection native n’atteste pas une fidélité cinématographique 1:1.",
       "evidenceV109": [
         {
-          "path": "docs/v109-validation-summary.json",
-          "sha256": "615663776d68f75a97aad3df7112d07757c8c5807f11a8ecda2db171a315af02",
-          "bytes": 17959
-        },
-        {
-          "path": "docs/v109-pit-validation.json",
-          "sha256": "8d47e48f73fe9e32c2c229bc9706c3896b6259fbca616cb26b385cabc610ca86",
-          "bytes": 90858
-        },
-        {
-          "path": "docs/qa/v109-pit/visual-inspection.json",
-          "sha256": "12542998eab84b9734b97911d061538130fe1967d2c27c96c699456456e96808",
-          "bytes": 6187
-        },
-        {
-          "path": "docs/qa/v109-validation/pit-browser-r2.log",
-          "sha256": "6322bafd56ebcca07b7f916e6927e832837f45e4682dcfb334dc86b571978f98",
-          "bytes": 6609
-        },
-        {
-          "path": "docs/qa/v109-validation/unit-tests.log",
-          "sha256": "ad51723c8277d92f7edc9aa7144efdd8d62c6e03746a5d5e49dbd27c771576ea",
-          "bytes": 12263
-        },
-        {
-          "path": "docs/qa/v109-validation/pit-tests.log",
-          "sha256": "f8b13f1a7926f13310634de70745ae3271a09bc1b33ff323048539ede0bff67e",
-          "bytes": 4066
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/final-source-selection.json",
-          "sha256": "f1d848a4597cd8a4d5c1b2b2a5c6559c26e24768153799507520a19ff09a68fc",
-          "bytes": 34465
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/native-uv-border-review-final.json",
-          "sha256": "fffa66897a902c2808a90c2ad074fabeb385eaebc7b43f512bb71d0871a854bc",
-          "bytes": 34430
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/native-ground-calibration.json",
-          "sha256": "f736f225bb3198331bc4b47e27ec34f1a209fa5cdc29134dbe0531cb9f5c711f",
-          "bytes": 23649
+          "path": "docs/qa/v109-review-corrections/previous-certified-manifest.json",
+          "bytes": 5062,
+          "sha256": "5b884fcb1a6c71c3186a361d9967b1a7c34d04e42aad569ad5f0ac791da648cd"
         }
       ]
     },
@@ -6998,49 +5986,9 @@
       "remainingV109": "Les neuf actions source restent ouvertes : autres partenaires/costumes, TH_B, réactions xéno, conclusions et kits complets ne sont pas livrés par ce duo. Les campagnes et leurs acteurs manquants restent distincts. La sélection native n’atteste pas une fidélité cinématographique 1:1.",
       "evidenceV109": [
         {
-          "path": "docs/v109-validation-summary.json",
-          "sha256": "615663776d68f75a97aad3df7112d07757c8c5807f11a8ecda2db171a315af02",
-          "bytes": 17959
-        },
-        {
-          "path": "docs/v109-pit-validation.json",
-          "sha256": "8d47e48f73fe9e32c2c229bc9706c3896b6259fbca616cb26b385cabc610ca86",
-          "bytes": 90858
-        },
-        {
-          "path": "docs/qa/v109-pit/visual-inspection.json",
-          "sha256": "12542998eab84b9734b97911d061538130fe1967d2c27c96c699456456e96808",
-          "bytes": 6187
-        },
-        {
-          "path": "docs/qa/v109-validation/pit-browser-r2.log",
-          "sha256": "6322bafd56ebcca07b7f916e6927e832837f45e4682dcfb334dc86b571978f98",
-          "bytes": 6609
-        },
-        {
-          "path": "docs/qa/v109-validation/unit-tests.log",
-          "sha256": "ad51723c8277d92f7edc9aa7144efdd8d62c6e03746a5d5e49dbd27c771576ea",
-          "bytes": 12263
-        },
-        {
-          "path": "docs/qa/v109-validation/pit-tests.log",
-          "sha256": "f8b13f1a7926f13310634de70745ae3271a09bc1b33ff323048539ede0bff67e",
-          "bytes": 4066
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/final-source-selection.json",
-          "sha256": "f1d848a4597cd8a4d5c1b2b2a5c6559c26e24768153799507520a19ff09a68fc",
-          "bytes": 34465
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/native-uv-border-review-final.json",
-          "sha256": "fffa66897a902c2808a90c2ad074fabeb385eaebc7b43f512bb71d0871a854bc",
-          "bytes": 34430
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/native-ground-calibration.json",
-          "sha256": "f736f225bb3198331bc4b47e27ec34f1a209fa5cdc29134dbe0531cb9f5c711f",
-          "bytes": 23649
+          "path": "docs/qa/v109-review-corrections/previous-certified-manifest.json",
+          "bytes": 5062,
+          "sha256": "5b884fcb1a6c71c3186a361d9967b1a7c34d04e42aad569ad5f0ac791da648cd"
         }
       ]
     },
@@ -7088,49 +6036,9 @@
       "remainingV109": "Les neuf actions source restent ouvertes : autres partenaires/costumes, TH_B, réactions xéno, conclusions et kits complets ne sont pas livrés par ce duo. Les campagnes et leurs acteurs manquants restent distincts. La sélection native n’atteste pas une fidélité cinématographique 1:1.",
       "evidenceV109": [
         {
-          "path": "docs/v109-validation-summary.json",
-          "sha256": "615663776d68f75a97aad3df7112d07757c8c5807f11a8ecda2db171a315af02",
-          "bytes": 17959
-        },
-        {
-          "path": "docs/v109-pit-validation.json",
-          "sha256": "8d47e48f73fe9e32c2c229bc9706c3896b6259fbca616cb26b385cabc610ca86",
-          "bytes": 90858
-        },
-        {
-          "path": "docs/qa/v109-pit/visual-inspection.json",
-          "sha256": "12542998eab84b9734b97911d061538130fe1967d2c27c96c699456456e96808",
-          "bytes": 6187
-        },
-        {
-          "path": "docs/qa/v109-validation/pit-browser-r2.log",
-          "sha256": "6322bafd56ebcca07b7f916e6927e832837f45e4682dcfb334dc86b571978f98",
-          "bytes": 6609
-        },
-        {
-          "path": "docs/qa/v109-validation/unit-tests.log",
-          "sha256": "ad51723c8277d92f7edc9aa7144efdd8d62c6e03746a5d5e49dbd27c771576ea",
-          "bytes": 12263
-        },
-        {
-          "path": "docs/qa/v109-validation/pit-tests.log",
-          "sha256": "f8b13f1a7926f13310634de70745ae3271a09bc1b33ff323048539ede0bff67e",
-          "bytes": 4066
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/final-source-selection.json",
-          "sha256": "f1d848a4597cd8a4d5c1b2b2a5c6559c26e24768153799507520a19ff09a68fc",
-          "bytes": 34465
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/native-uv-border-review-final.json",
-          "sha256": "fffa66897a902c2808a90c2ad074fabeb385eaebc7b43f512bb71d0871a854bc",
-          "bytes": 34430
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/native-ground-calibration.json",
-          "sha256": "f736f225bb3198331bc4b47e27ec34f1a209fa5cdc29134dbe0531cb9f5c711f",
-          "bytes": 23649
+          "path": "docs/qa/v109-review-corrections/previous-certified-manifest.json",
+          "bytes": 5062,
+          "sha256": "5b884fcb1a6c71c3186a361d9967b1a7c34d04e42aad569ad5f0ac791da648cd"
         }
       ]
     },
@@ -7178,49 +6086,9 @@
       "remainingV109": "Les neuf actions source restent ouvertes : autres partenaires/costumes, TH_B, réactions xéno, conclusions et kits complets ne sont pas livrés par ce duo. Les campagnes et leurs acteurs manquants restent distincts. La sélection native n’atteste pas une fidélité cinématographique 1:1.",
       "evidenceV109": [
         {
-          "path": "docs/v109-validation-summary.json",
-          "sha256": "615663776d68f75a97aad3df7112d07757c8c5807f11a8ecda2db171a315af02",
-          "bytes": 17959
-        },
-        {
-          "path": "docs/v109-pit-validation.json",
-          "sha256": "8d47e48f73fe9e32c2c229bc9706c3896b6259fbca616cb26b385cabc610ca86",
-          "bytes": 90858
-        },
-        {
-          "path": "docs/qa/v109-pit/visual-inspection.json",
-          "sha256": "12542998eab84b9734b97911d061538130fe1967d2c27c96c699456456e96808",
-          "bytes": 6187
-        },
-        {
-          "path": "docs/qa/v109-validation/pit-browser-r2.log",
-          "sha256": "6322bafd56ebcca07b7f916e6927e832837f45e4682dcfb334dc86b571978f98",
-          "bytes": 6609
-        },
-        {
-          "path": "docs/qa/v109-validation/unit-tests.log",
-          "sha256": "ad51723c8277d92f7edc9aa7144efdd8d62c6e03746a5d5e49dbd27c771576ea",
-          "bytes": 12263
-        },
-        {
-          "path": "docs/qa/v109-validation/pit-tests.log",
-          "sha256": "f8b13f1a7926f13310634de70745ae3271a09bc1b33ff323048539ede0bff67e",
-          "bytes": 4066
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/final-source-selection.json",
-          "sha256": "f1d848a4597cd8a4d5c1b2b2a5c6559c26e24768153799507520a19ff09a68fc",
-          "bytes": 34465
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/native-uv-border-review-final.json",
-          "sha256": "fffa66897a902c2808a90c2ad074fabeb385eaebc7b43f512bb71d0871a854bc",
-          "bytes": 34430
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/native-ground-calibration.json",
-          "sha256": "f736f225bb3198331bc4b47e27ec34f1a209fa5cdc29134dbe0531cb9f5c711f",
-          "bytes": 23649
+          "path": "docs/qa/v109-review-corrections/previous-certified-manifest.json",
+          "bytes": 5062,
+          "sha256": "5b884fcb1a6c71c3186a361d9967b1a7c34d04e42aad569ad5f0ac791da648cd"
         }
       ]
     },
@@ -7268,49 +6136,9 @@
       "remainingV109": "Les neuf actions source restent ouvertes : autres partenaires/costumes, TH_B, réactions xéno, conclusions et kits complets ne sont pas livrés par ce duo. Les campagnes et leurs acteurs manquants restent distincts. La sélection native n’atteste pas une fidélité cinématographique 1:1.",
       "evidenceV109": [
         {
-          "path": "docs/v109-validation-summary.json",
-          "sha256": "615663776d68f75a97aad3df7112d07757c8c5807f11a8ecda2db171a315af02",
-          "bytes": 17959
-        },
-        {
-          "path": "docs/v109-pit-validation.json",
-          "sha256": "8d47e48f73fe9e32c2c229bc9706c3896b6259fbca616cb26b385cabc610ca86",
-          "bytes": 90858
-        },
-        {
-          "path": "docs/qa/v109-pit/visual-inspection.json",
-          "sha256": "12542998eab84b9734b97911d061538130fe1967d2c27c96c699456456e96808",
-          "bytes": 6187
-        },
-        {
-          "path": "docs/qa/v109-validation/pit-browser-r2.log",
-          "sha256": "6322bafd56ebcca07b7f916e6927e832837f45e4682dcfb334dc86b571978f98",
-          "bytes": 6609
-        },
-        {
-          "path": "docs/qa/v109-validation/unit-tests.log",
-          "sha256": "ad51723c8277d92f7edc9aa7144efdd8d62c6e03746a5d5e49dbd27c771576ea",
-          "bytes": 12263
-        },
-        {
-          "path": "docs/qa/v109-validation/pit-tests.log",
-          "sha256": "f8b13f1a7926f13310634de70745ae3271a09bc1b33ff323048539ede0bff67e",
-          "bytes": 4066
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/final-source-selection.json",
-          "sha256": "f1d848a4597cd8a4d5c1b2b2a5c6559c26e24768153799507520a19ff09a68fc",
-          "bytes": 34465
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/native-uv-border-review-final.json",
-          "sha256": "fffa66897a902c2808a90c2ad074fabeb385eaebc7b43f512bb71d0871a854bc",
-          "bytes": 34430
-        },
-        {
-          "path": "docs/suivi-production/v109-pit-forward/native-ground-calibration.json",
-          "sha256": "f736f225bb3198331bc4b47e27ec34f1a209fa5cdc29134dbe0531cb9f5c711f",
-          "bytes": 23649
+          "path": "docs/qa/v109-review-corrections/previous-certified-manifest.json",
+          "bytes": 5062,
+          "sha256": "5b884fcb1a6c71c3186a361d9967b1a7c34d04e42aad569ad5f0ac791da648cd"
         }
       ]
     },
@@ -8414,119 +7242,9 @@
   "closedOpenItemIds": [],
   "inputs": [
     {
-      "path": "app/game/ClanChroniclePanel.tsx",
-      "sha256": "9bc2168dcde2dd26e8dc7344bc77c053f09783ca98d4394c48fe6dd73f0c2070",
-      "bytes": 12439
-    },
-    {
-      "path": "app/game/ClanLogisticsV108.module.css",
-      "sha256": "00dd97b435e7cb2ced371fc17ee641d96b290718b5cd8dba960044c437324e05",
-      "bytes": 2221
-    },
-    {
-      "path": "app/game/ClanSupplyRouteV109.module.css",
-      "sha256": "22925f657bc54483a5ce20a154505ee3e9487a3f156fea2e7196bba321cc9a60",
-      "bytes": 1287
-    },
-    {
       "path": "app/game/ClanSupplyRouteV109.tsx",
       "sha256": "4d6c76f78dd5cc86cf7c93fcad2f79bf5093dae72b800bc20ef46c3e5225c35f",
       "bytes": 39155
-    },
-    {
-      "path": "app/game/ClanWarBibleV6Panel.tsx",
-      "sha256": "15e11fcae50ee228edea67a5c4b182b09c9a05d459c72563fb6f2c9167eb8116",
-      "bytes": 19794
-    },
-    {
-      "path": "app/game/ClanWarSpecializedV107.tsx",
-      "sha256": "9ad47974359e52d231b12f49bb3fa3d4439706b4f550ef86bf618fcaddc7d244",
-      "bytes": 30687
-    },
-    {
-      "path": "app/game/GameClient.tsx",
-      "sha256": "a20b1ec8363b727882a68380b193a0a6924adf5b79405cb7f3134fbc3891bcdb",
-      "bytes": 280343
-    },
-    {
-      "path": "app/game/GameReserveEntryV104.module.css",
-      "sha256": "670e0f1ebca8bd823ac05fab0988e717a9d41ba23fcb05ee13e6456bdfbdbb4c",
-      "bytes": 380
-    },
-    {
-      "path": "app/game/GameReserveEntryV66.tsx",
-      "sha256": "59701fe1532d9ef17c0cd15d381dd56dc490e6d0903fa60b4231d0040c4ea9a9",
-      "bytes": 5656
-    },
-    {
-      "path": "app/game/GameReserveTacticalV98.tsx",
-      "sha256": "f749e46edd4c5d813a507504591327f8173e550e65c8fc90f0b1f47f1958858d",
-      "bytes": 10564
-    },
-    {
-      "path": "app/game/GameReserveV66.module.css",
-      "sha256": "a119b98893d28290a6f15834b4871f34c9677adb82a0ee84766dfc316bce976d",
-      "bytes": 8614
-    },
-    {
-      "path": "app/game/GameReserveV66.tsx",
-      "sha256": "9cbc427119142d64f63e002f73851eeb70f20ee0f4141b281d006b4ab4d928e9",
-      "bytes": 27075
-    },
-    {
-      "path": "app/game/HomeworldArchivePlaqueV109.module.css",
-      "sha256": "487c7dfbbceb5d3acce3306545144d98c5a53b9776f3db10ac179e7202ae87fa",
-      "bytes": 2167
-    },
-    {
-      "path": "app/game/HomeworldArchivePlaqueV109.tsx",
-      "sha256": "ab6222b169c5ba58a1289686c2e3511f316f1ba0a6d7664a29fd182fa447d7e8",
-      "bytes": 10020
-    },
-    {
-      "path": "app/game/HomeworldArchivePlaqueWorldV109.tsx",
-      "sha256": "56cc6a0e67bf9135fd74ae6ed9d93cd46f41da7817c57565a4e00f3b6a0c85ba",
-      "bytes": 2984
-    },
-    {
-      "path": "app/game/HomeworldHub.tsx",
-      "sha256": "e36e3745941d03ca72d44ea7f3ea58296588a359ac51f171d0d4cff3ab45d23b",
-      "bytes": 153844
-    },
-    {
-      "path": "app/game/HomeworldRouteGuideV109.tsx",
-      "sha256": "e77395167b1376ca19223d2435e963bad81f1eba1da90e84a5800738509a5ceb",
-      "bytes": 1917
-    },
-    {
-      "path": "app/game/HomeworldWorldMapV77.tsx",
-      "sha256": "b192b6da5e2386f7b5108160b32e30a9e939b2f2d9f073512ede49aa05986130",
-      "bytes": 25504
-    },
-    {
-      "path": "app/game/HomeworldWorldSceneV77.tsx",
-      "sha256": "e054fe121a3b2c145cc631411622dbbcdf98191f5eb87cfa5d27586b6199ff65",
-      "bytes": 23799
-    },
-    {
-      "path": "app/game/MainMenuBonusModesV81.tsx",
-      "sha256": "28db02e8ddb4c9dbd50e680d2e3182efc827a3010c6c62dfcd61e4cac4cab010",
-      "bytes": 17155
-    },
-    {
-      "path": "app/game/PitCanvas.tsx",
-      "sha256": "985a12c3831c983542b9e1d79fb525a58d50e9a45c7a8f09878179cac270e398",
-      "bytes": 290831
-    },
-    {
-      "path": "app/game/PitExperienceV79.tsx",
-      "sha256": "2f938301d497eb58b826d3e941eb2496a821f2a04b2f138f1035053510e96074",
-      "bytes": 24829
-    },
-    {
-      "path": "app/game/buildInfo.ts",
-      "sha256": "73b38b865e54cec63e31e5a898167a9c8a241c682cd830d72a5eea946fd47fc4",
-      "bytes": 268
     },
     {
       "path": "app/game/clanWarBibleV6Source.json",
@@ -8635,18 +7353,8 @@
     },
     {
       "path": "app/game/data/pitWorkbookThrowsV109.json",
-      "sha256": "14f842f36b28b0b3746f5bf4c2b1b2ac2069803d750e8c60569389974b074b9e",
-      "bytes": 73745
-    },
-    {
-      "path": "app/game/gameReserveV66Rendering.ts",
-      "sha256": "112530576ceb396d9cfee9cd13d2cfa21d6b8cc2864fc96715417fb526c10a13",
-      "bytes": 16060
-    },
-    {
-      "path": "app/game/homeworldRouteWorkerV109.ts",
-      "sha256": "8cc3e7be1cabcf0df8fd0e60a1f2f3549e6b1510cd2001b3416201f8ca5b9c8d",
-      "bytes": 791
+      "sha256": "0560d64c106375fdc578856e6f87bfcb863b0843dd54404bdb7a3b6e251097f3",
+      "bytes": 73747
     },
     {
       "path": "app/game/hunterSpriteAtlas.ts",
@@ -8662,11 +7370,6 @@
       "path": "app/game/pitArenaProductionData.generated.json",
       "sha256": "c07d5d314269548b50f7a4d564fd6e9c6583d2ac5d6033c56254340909d01f5b",
       "bytes": 1758885
-    },
-    {
-      "path": "app/game/pitCombatBitmapArt.ts",
-      "sha256": "e7cc545d20865be7ff2ea5c38ecbfd7016783627fd369d7089bc775dfdb581d9",
-      "bytes": 22279
     },
     {
       "path": "app/game/pitFighterPresentation.ts",
@@ -8694,11 +7397,6 @@
       "bytes": 1239
     },
     {
-      "path": "app/game/pitWorkbookDeviceRenderingV107.ts",
-      "sha256": "7cf27ee14130863a56d1f5023a6ebf9a44167cb8e3496f6a270ac9ce0916e888",
-      "bytes": 6658
-    },
-    {
       "path": "app/game/pitWorkbookNormalRegistryV104.ts",
       "sha256": "f8886674588f3adbe7a034142c5ee462cc6a61a971fe50f7ff95cacf7060268d",
       "bytes": 3956
@@ -8724,19 +7422,9 @@
       "bytes": 9537
     },
     {
-      "path": "app/game/save.ts",
-      "sha256": "1543b0520d311fa3aee66a0989991f656db92459f681588714edc73ae3d34e70",
-      "bytes": 81910
-    },
-    {
       "path": "app/game/spriteContact.ts",
       "sha256": "3267276073ad8e006dfc9e0aa8a1f4c299287d0c2ab9bec9839e4564b4f53a10",
       "bytes": 3886
-    },
-    {
-      "path": "app/game/systems/clanLogisticsSessionV108.ts",
-      "sha256": "84cd1bf9fdd2731accc9bf888229971b7ee6671e183e1f9dcde24dcbe232e6bf",
-      "bytes": 3734
     },
     {
       "path": "app/game/systems/clanLogisticsV108.ts",
@@ -8764,11 +7452,6 @@
       "bytes": 41365
     },
     {
-      "path": "app/game/systems/controlBindings.ts",
-      "sha256": "75d493beb7c72279152408ab1903d0537c9544ce1fecf23220e7c9d36583a51e",
-      "bytes": 32661
-    },
-    {
       "path": "app/game/systems/gameReserveExpeditionV107.ts",
       "sha256": "a7ed34b0c944c490d4e8bc28d1ad3c35901670069e0a116a7137790b9d861b73",
       "bytes": 6360
@@ -8789,19 +7472,9 @@
       "bytes": 937
     },
     {
-      "path": "app/game/systems/gameReserveTacticalV98.ts",
-      "sha256": "fa68d2e3ad1cecf339b97da71b2b1ef023d7d1bcbcb1271310d014220db55eb6",
-      "bytes": 6307
-    },
-    {
       "path": "app/game/systems/gameReserveV66.ts",
       "sha256": "fc7427c1c2e4e53ce11344c3823d2ea8e2961f39b0bd18c02db8dba24a9df386",
       "bytes": 59161
-    },
-    {
-      "path": "app/game/systems/homeworld.ts",
-      "sha256": "240db0472f047ad720527f9ffd0b7a09a31d0f9ac5eea3d2dc26d4cc667f428c",
-      "bytes": 30471
     },
     {
       "path": "app/game/systems/homeworldArchivePlaqueDefinitionV109.ts",
@@ -8809,44 +7482,9 @@
       "bytes": 2129
     },
     {
-      "path": "app/game/systems/homeworldArchivePlaqueLandmarksV109.ts",
-      "sha256": "781280a8459eb8df660cdc8a7503e9b37e3eb46eceaa2dd12121462b620c8e77",
-      "bytes": 2036
-    },
-    {
-      "path": "app/game/systems/homeworldArchivePlaqueLedgerV109.ts",
-      "sha256": "0b9fa5793fdace1d3b45ade89882480da55c03f5c4f3c7a59477f29f4e061bf5",
-      "bytes": 7792
-    },
-    {
       "path": "app/game/systems/homeworldArchivePlaqueV109.ts",
       "sha256": "2ad8ba3c87bacefead1a5858f87c93cd7e4b0e85222325b8d6db12f52c83c4bb",
       "bytes": 12685
-    },
-    {
-      "path": "app/game/systems/homeworldAtlasLandmarksV109.ts",
-      "sha256": "c9cd0869c97483afdf3d407f652c5376a0cd54344448800520254bfdb2df6a4e",
-      "bytes": 1628
-    },
-    {
-      "path": "app/game/systems/homeworldCargoLedgerV108.ts",
-      "sha256": "5ace5c6c1e606a74fe9353278e6281179123b9e052ad8b621435a96b83d31451",
-      "bytes": 5888
-    },
-    {
-      "path": "app/game/systems/homeworldCargoSolidsV108.ts",
-      "sha256": "73b6d14139685afe6f78e17b0827f11a1251350aa10e05c61cbda8fd6fdbb96b",
-      "bytes": 2068
-    },
-    {
-      "path": "app/game/systems/homeworldCargoV108.ts",
-      "sha256": "1be8191cd2e4760d268acf04086093bcf1357dcded8faa54141e49ea604fa33b",
-      "bytes": 15850
-    },
-    {
-      "path": "app/game/systems/homeworldCivicWorldV80.ts",
-      "sha256": "02b3461609c7aafb6bafb50443f9af490fc29fb5819323f404d5efc95eebf772",
-      "bytes": 2315
     },
     {
       "path": "app/game/systems/homeworldNavigationV109.ts",
@@ -8910,8 +7548,8 @@
     },
     {
       "path": "app/game/systems/pitForwardThrowControlsV109.ts",
-      "sha256": "aa64fa0f1b1413d8a04b455c45e70f42b7a0c5fbeebf10c6e0efc5b23209c333",
-      "bytes": 1571
+      "sha256": "92b25f27468676bc3399adceed087e289906f944c702924c480ab5d35b434da9",
+      "bytes": 1757
     },
     {
       "path": "app/game/systems/pitLoreStages.ts",
@@ -8937,11 +7575,6 @@
       "path": "app/game/systems/pitOriginalFightersV56.ts",
       "sha256": "33ecf5fe798ba2e2e52b98976ac1359b1ff5c9afddcd91b188247ba67b26728c",
       "bytes": 7371
-    },
-    {
-      "path": "app/game/systems/pitReplay.ts",
-      "sha256": "ca4bddb62b669c33f5cbd98109a0c794218ed42fe2f9fab1de596f38dde6ab03",
-      "bytes": 35683
     },
     {
       "path": "app/game/systems/pitRosterExpansion.ts",
@@ -9019,11 +7652,6 @@
       "bytes": 3882
     },
     {
-      "path": "app/game/systems/pitWorkbookPresentationClockV105.ts",
-      "sha256": "6a8d1320cd695566f65f929bcfb59d9a68fe52194cdc8b28e9b5ef0cbf7339fa",
-      "bytes": 1460
-    },
-    {
       "path": "app/game/systems/pitWorkbookProjectileSourceV106.ts",
       "sha256": "7966090dc4e86739c943ca63c3a7f84be09cf38389163f5270c776c0e8aa20c3",
       "bytes": 5760
@@ -9064,129 +7692,9 @@
       "bytes": 15364
     },
     {
-      "path": "docs/qa/v109-clans/01-original-migration-refused.png",
-      "sha256": "a1a2a04d67333dce2662fb3a85dd0afc148773f392b14eeeb49aec9ccc97eabd",
-      "bytes": 14072
-    },
-    {
-      "path": "docs/qa/v109-clans/02-reservation-in-existing-source.png",
-      "sha256": "1fb7b6868bd88f753eae07b2dcdcdadad1146372f7f6f3b0f377f0776de79f88",
-      "bytes": 253733
-    },
-    {
-      "path": "docs/qa/v109-clans/03-same-lot-mid-channel.png",
-      "sha256": "ab1ed73167d43f44532b9fcbcd5dba7b13be5dd0a2e017b09ac8e8074a51a9a1",
-      "bytes": 252153
-    },
-    {
-      "path": "docs/qa/v109-clans/04-six-stops-closed-at-depot.png",
-      "sha256": "fc9d6defdf18c15be0691942a6acddb2c58fcbdb6dfc6774db687e8559a75a1c",
-      "bytes": 54631
-    },
-    {
-      "path": "docs/qa/v109-clans/05-two-mounts-real-distinct-parking.png",
-      "sha256": "ec7f316fb220a5014e4b5e16160d9d5ce287d4c26ade43ed1ce2085c1d2846f4",
-      "bytes": 254432
-    },
-    {
-      "path": "docs/qa/v109-clans/06-current-write-refused.png",
-      "sha256": "1b48a7b6a4c827e4aa0da437ae458d591e72d1fb2e16a01840fb4a7dbaa0b20b",
-      "bytes": 3924
-    },
-    {
-      "path": "docs/qa/v109-clans/07-mobile-terrain-and-zoom.png",
-      "sha256": "061e372e42e2aeadce83350b13d91999a6c9113624929f0198e01827646c21a6",
-      "bytes": 67003
-    },
-    {
-      "path": "docs/qa/v109-clans/08-mobile-actor-selection.png",
-      "sha256": "21387f9cf0d4f7096aeaa4149b55d270c847fd42df47315d20d6d35067daf2bf",
-      "bytes": 14503
-    },
-    {
-      "path": "docs/qa/v109-clans/browser-result.json.gz",
-      "sha256": "df9b3a4fe1e2008172d01424c215b01ac319767ae748e9b46f6b87ca0f3c2bc5",
-      "bytes": 100872
-    },
-    {
-      "path": "docs/qa/v109-clans/visual-inspection.json",
-      "sha256": "725c4c874750285a347494bec463f8086f36514fe2922eda7d2b76dd6a524c8a",
-      "bytes": 306
-    },
-    {
-      "path": "docs/qa/v109-excel-followup/excel-tests.log",
-      "sha256": "a9764836328e4b489da19bb9f27a29d4295d065f1fedaaa32f1c5971e21699f5",
-      "bytes": 1990
-    },
-    {
       "path": "docs/qa/v109-excel-followup/historical-v108.log",
       "sha256": "56f4ab935a8ef864ca176f4e5615e6aa6e71729c43974b0a5673a4c8c281fe69",
       "bytes": 20591
-    },
-    {
-      "path": "docs/qa/v109-homeworld/a-01-opening-native-props.png",
-      "sha256": "b93e933db436d639726e168cfcaa9ff4d24e0d601313974ee6575d38a2da688e",
-      "bytes": 191275
-    },
-    {
-      "path": "docs/qa/v109-homeworld/a-02-carried-native-plaque.png",
-      "sha256": "9ff0c32a65802b55333ce63843f0b1af385b8f6e2406ee05178d902b5470b7a5",
-      "bytes": 1301576
-    },
-    {
-      "path": "docs/qa/v109-homeworld/a-03-confirmed-mismatch.png",
-      "sha256": "6a0348cb176665418f53eeb0b9544f5207176561658744728707b089c211e528",
-      "bytes": 186842
-    },
-    {
-      "path": "docs/qa/v109-homeworld/a-04-voluntary-reprise.png",
-      "sha256": "b5d1b6883ad191060874e3dd9f01ef75274db3fa8fa59656c2fbd14e6b131b64",
-      "bytes": 189942
-    },
-    {
-      "path": "docs/qa/v109-homeworld/a-05-completed-independent-pieces.png",
-      "sha256": "8ea937a5ca1df46e0d1bff4069b5275fb2d7c887ec2c3c6242f3541bab678ccd",
-      "bytes": 194736
-    },
-    {
-      "path": "docs/qa/v109-homeworld/a-06-mobile-confirmed-study.png",
-      "sha256": "bdc0b34e94f8fa0346335b00a5e85f652945dc9fecdfec780a4d3620a0dd5b54",
-      "bytes": 123040
-    },
-    {
-      "path": "docs/qa/v109-homeworld/b-01-opening-native-props.png",
-      "sha256": "b93e933db436d639726e168cfcaa9ff4d24e0d601313974ee6575d38a2da688e",
-      "bytes": 191275
-    },
-    {
-      "path": "docs/qa/v109-homeworld/b-05-completed-independent-pieces.png",
-      "sha256": "a001754617b6f9fd2d7e77c413ce5b9b582b4e08f387dda00abb41186bfb7cc3",
-      "bytes": 192349
-    },
-    {
-      "path": "docs/qa/v109-homeworld/b-06-mobile-confirmed-study.png",
-      "sha256": "6739a7d7fd693e95b8f8c345dba8410de91314728125cc4a7815091a7aa461ff",
-      "bytes": 123693
-    },
-    {
-      "path": "docs/qa/v109-homeworld/browser-result.json.gz",
-      "sha256": "e464939a29fa8ad326be0789861036b7b13accf84e2845e21feadcb25af0166c",
-      "bytes": 4976
-    },
-    {
-      "path": "docs/qa/v109-homeworld/c-01-real-atlas-initial-obstacles.png",
-      "sha256": "847b5bae7f55c86ca3d8ec94daa468197661edbe0c48b5288c50fedc7010574a",
-      "bytes": 106712
-    },
-    {
-      "path": "docs/qa/v109-homeworld/c-02-real-atlas-parked-load.png",
-      "sha256": "9f1ec7df92394d7344942df6e918a23421b34d3b3e911841f62461af92e34219",
-      "bytes": 135674
-    },
-    {
-      "path": "docs/qa/v109-homeworld/visual-inspection.json",
-      "sha256": "7e57e7c96c1d68d7f3f40ceff16824910e35032c034be60f32b995c37b485932",
-      "bytes": 6596
     },
     {
       "path": "docs/qa/v109-pit-first-production/browser-failed.log",
@@ -9227,111 +7735,6 @@
       "path": "docs/qa/v109-pit-first-production/manifest.json",
       "sha256": "1d347647db5d5ea880d164bdad8b4ebba6eb2079a915916b8c4fb42ea5c7ad41",
       "bytes": 2153
-    },
-    {
-      "path": "docs/qa/v109-pit/browser-result.json.gz",
-      "sha256": "95a5fcb6bfe33434819bb7cd5c009378e175ac1608f6b9e02f655135cf439219",
-      "bytes": 82376
-    },
-    {
-      "path": "docs/qa/v109-pit/feral-hunter-vs-scar-J1-capture.png",
-      "sha256": "8db6d30670d1326a16e667c817bad677f49b99a30681a72f31dcdb037bc2a233",
-      "bytes": 1325104
-    },
-    {
-      "path": "docs/qa/v109-pit/feral-hunter-vs-scar-J1-flight.png",
-      "sha256": "ea5643718b743e8855a4fd4a4f6404aedb08e295c7154290068c1443831142c0",
-      "bytes": 1371805
-    },
-    {
-      "path": "docs/qa/v109-pit/feral-hunter-vs-scar-J1-landing.png",
-      "sha256": "50a40965e4985144ccbe56554a6a7ecc5e577970d9dc1628f424655623971eb2",
-      "bytes": 1329149
-    },
-    {
-      "path": "docs/qa/v109-pit/feral-hunter-vs-scar-J1-recovered.png",
-      "sha256": "0ba67a2adb1a27b6cdec1e1e82387fc80f06f2553c6ba52f7096ad2277d20f3d",
-      "bytes": 1322829
-    },
-    {
-      "path": "docs/qa/v109-pit/feral-hunter-vs-scar-J2-capture.png",
-      "sha256": "e6bb2768c9769cd95a022a643033deb7513cfc8f4ad366d784a094fb16028f27",
-      "bytes": 1341356
-    },
-    {
-      "path": "docs/qa/v109-pit/feral-hunter-vs-scar-J2-flight.png",
-      "sha256": "9b3a54cc5a91899b24deeb9504c01d64b725dab3b110cb26ae839c392110e790",
-      "bytes": 1373228
-    },
-    {
-      "path": "docs/qa/v109-pit/feral-hunter-vs-scar-J2-landing.png",
-      "sha256": "61b6d6e9fb9d27f48c66b50d11fa84fb7ab9689fdffe2370e551e38767cc9db4",
-      "bytes": 1353062
-    },
-    {
-      "path": "docs/qa/v109-pit/feral-hunter-vs-scar-J2-recovered.png",
-      "sha256": "fac212aeaacd55540aeb4527a72755a1b97422eab29707fdaed5fc5cb8a3a46f",
-      "bytes": 1336390
-    },
-    {
-      "path": "docs/qa/v109-pit/feral-hunter-vs-scar-actual-victory.png",
-      "sha256": "04ce93ae09960ae20eb405c981812615e6d9183e8559000885a2f44518c46668",
-      "bytes": 356860
-    },
-    {
-      "path": "docs/qa/v109-pit/feral-hunter-vs-scar-tech.png",
-      "sha256": "91fa6eb09833386df92d992431a81c4ce67d80d10a1f708f32eb1891b4949d5b",
-      "bytes": 1341348
-    },
-    {
-      "path": "docs/qa/v109-pit/scar-vs-feral-hunter-J1-capture.png",
-      "sha256": "adc209318c84ba466e626259bd077200492717476d10f56885b3f7e4281a444c",
-      "bytes": 1321893
-    },
-    {
-      "path": "docs/qa/v109-pit/scar-vs-feral-hunter-J1-flight.png",
-      "sha256": "54fb5b4687b7cdcf3480c5149d7dc01e6db71bd54e94bcb2f6b2ffe05bc74c3f",
-      "bytes": 1367023
-    },
-    {
-      "path": "docs/qa/v109-pit/scar-vs-feral-hunter-J1-landing.png",
-      "sha256": "88bedb9067cb888c5bdd3e51d73ec9bed9d7327b5d758b9950f0a345b5f49b02",
-      "bytes": 1321867
-    },
-    {
-      "path": "docs/qa/v109-pit/scar-vs-feral-hunter-J1-recovered.png",
-      "sha256": "bcf697d957d7b8c5f609f42304ed43c3135f19a94e7c4932573d8541a7363f36",
-      "bytes": 1327553
-    },
-    {
-      "path": "docs/qa/v109-pit/scar-vs-feral-hunter-J2-capture.png",
-      "sha256": "4ff6821013e830fddbf2d59177293a5062a0cf5133a74a6d246e463f9f71c0a8",
-      "bytes": 1328408
-    },
-    {
-      "path": "docs/qa/v109-pit/scar-vs-feral-hunter-J2-flight.png",
-      "sha256": "2a2fba6095faf8ecdfe47f7fda98a62d963bc9a6cc004e2d6645ee395b0cc487",
-      "bytes": 1356058
-    },
-    {
-      "path": "docs/qa/v109-pit/scar-vs-feral-hunter-J2-landing.png",
-      "sha256": "094e42c2228ee7e3ae603cebe57b56ed17410beabed379e40be0cda688d67bec",
-      "bytes": 1340303
-    },
-    {
-      "path": "docs/qa/v109-pit/scar-vs-feral-hunter-J2-recovered.png",
-      "sha256": "fb06f2defc5a33d955ae9f8d1ddb5e4c0ab8e8f2602a6edf712c8d7708bb6069",
-      "bytes": 1326601
-    },
-    {
-      "path": "docs/qa/v109-pit/scar-vs-feral-hunter-tech.png",
-      "sha256": "9f30b9f154e9281afc36a57d4e49e9faaf3e988c51f28743e6f362254b6424a1",
-      "bytes": 1323825
-    },
-    {
-      "path": "docs/qa/v109-pit/visual-inspection.json",
-      "sha256": "12542998eab84b9734b97911d061538130fe1967d2c27c96c699456456e96808",
-      "bytes": 6187
     },
     {
       "path": "docs/qa/v109-preserve-paused-trial/browser-failed.log",
@@ -9394,159 +7797,94 @@
       "bytes": 8840
     },
     {
-      "path": "docs/qa/v109-preserve/browser-result.json.gz",
-      "sha256": "f7f3203a1c5cd940eac25e22d4623fa8b0011b92637104cc5a2fa4d2852190bd",
-      "bytes": 29469
+      "path": "docs/qa/v109-review-corrections/excel-native-border-unit.log",
+      "sha256": "661071561a82b98930e7bbb8acd7c04616741f2493c5fbbc05064d13b5f65280",
+      "bytes": 1302
     },
     {
-      "path": "docs/qa/v109-preserve/iskhel-campaign-entry.png",
-      "sha256": "d8fcbbf4abd3715b14bf12d23041807deb96b626a2570034995ebe9ecddabbf7",
-      "bytes": 400882
+      "path": "docs/qa/v109-review-corrections/excel-pending-tests.log",
+      "sha256": "993cb9365567115566a5e39adde928c285ef4aeca35c179ea0c1d8e1a0991f73",
+      "bytes": 1992
     },
     {
-      "path": "docs/qa/v109-preserve/iskhel-choice.png",
-      "sha256": "405489043549805e52f3cc29e004f0a36c021990f484ebf71a1220ff7cb94e10",
-      "bytes": 347519
+      "path": "docs/qa/v109-review-corrections/previous-certified-manifest.json",
+      "sha256": "5b884fcb1a6c71c3186a361d9967b1a7c34d04e42aad569ad5f0ac791da648cd",
+      "bytes": 5062
     },
     {
-      "path": "docs/qa/v109-preserve/iskhel-living-logistics.png",
-      "sha256": "47b787bf8f63b614868bca9958b946f7688fa230645a8373672497d2aa71708a",
-      "bytes": 398943
+      "path": "docs/qa/v109-review-corrections/previous-certified/excel-followup-v109.md",
+      "sha256": "6d85074fe2e5725d41c80deaf5dd69dfde521430b300645efe86813d152f0dd2",
+      "bytes": 7426
     },
     {
-      "path": "docs/qa/v109-preserve/iskhel-native-landscape-touch.png",
-      "sha256": "f2f1f9b75beee5903a00d909c2c2c95a0a9c88dceb87fffc4d2b7fd32bcd1498",
-      "bytes": 416360
+      "path": "docs/qa/v109-review-corrections/previous-certified/v109-clans-validation.json",
+      "sha256": "addd0125f08e17b3cf639521fb561a6872200c4cff1bb7d0eb5dddf67ae62b48",
+      "bytes": 15490
     },
     {
-      "path": "docs/qa/v109-preserve/iskhel-notebook-mobile.png",
-      "sha256": "bb73434465a429da20bcdd3ad9ffb0364306efc4e78471545f383ef8834c9cc3",
-      "bytes": 125035
+      "path": "docs/qa/v109-review-corrections/previous-certified/v109-excel-followup-qa.json",
+      "sha256": "920e5af00e985d9ac368b66da311d0afc4bef789d6cfad9887f3b4af156be48a",
+      "bytes": 5356
     },
     {
-      "path": "docs/qa/v109-preserve/iskhel-notebook.png",
-      "sha256": "06de5861ecda4c5ca3d6ea4244cebd14471669be3dd4b0da95daad3dcbfeebfc",
-      "bytes": 355725
+      "path": "docs/qa/v109-review-corrections/previous-certified/v109-homeworld-validation.json",
+      "sha256": "d5ba15653acb2b813923b0fe82a178eebb261f0b83da0e8812a33c9ff38c0227",
+      "bytes": 23496
     },
     {
-      "path": "docs/qa/v109-preserve/iskhel-objectives-mobile.png",
-      "sha256": "3d380f6294bc8ae439ca5cf760074ddb519d89806280073c7028d13452673b39",
-      "bytes": 149289
+      "path": "docs/qa/v109-review-corrections/previous-certified/v109-pit-validation.json",
+      "sha256": "8d47e48f73fe9e32c2c229bc9706c3896b6259fbca616cb26b385cabc610ca86",
+      "bytes": 90858
     },
     {
-      "path": "docs/qa/v109-preserve/iskhel-played-one-adult.png",
-      "sha256": "4d54b00d34ff1d44deae3e3078dfcbe654de52a1222d3d6b0602072bf2d334f9",
-      "bytes": 399480
+      "path": "docs/qa/v109-review-corrections/previous-certified/v109-preserve-validation.json",
+      "sha256": "f3347498c8944de20abb19ffef4ec741e54a6781f02aa244e878ab80efb8229d",
+      "bytes": 30495
     },
     {
-      "path": "docs/qa/v109-preserve/iskhel-post-1.png",
-      "sha256": "8045d5d471db5feddd9404e015c65f1505c2103e7b21b12e6c3d2cb6063efdb8",
-      "bytes": 1741201
+      "path": "docs/qa/v109-review-corrections/previous-certified/v109-runtime-freeze.json",
+      "sha256": "e01f55d66dbae26b350101d3b06a9c306a2aa42ac19510944e82dcd60a1d19d1",
+      "bytes": 251341
     },
     {
-      "path": "docs/qa/v109-preserve/iskhel-post-2.png",
-      "sha256": "757c068f0e91e8db350c956a292a1c70b92140a2a1c578e1e296cf3facf9c086",
-      "bytes": 1718258
+      "path": "docs/qa/v109-review-corrections/previous-certified/v109-runtime-public-inputs.json",
+      "sha256": "e9bcb1caedaecef71c4db979ba21c411234cbbdab244ed1609a5a3ce998e176f",
+      "bytes": 17780
     },
     {
-      "path": "docs/qa/v109-preserve/iskhel-post-3.png",
-      "sha256": "3eaee7aefe9ab8f8d2306fb078c4dca55b8bb4a58f567898f58e54a51e39ffc7",
-      "bytes": 1730524
+      "path": "docs/qa/v109-review-corrections/previous-certified/v109-validation-summary.json",
+      "sha256": "615663776d68f75a97aad3df7112d07757c8c5807f11a8ecda2db171a315af02",
+      "bytes": 17959
     },
     {
-      "path": "docs/qa/v109-preserve/iskhel-post-4.png",
-      "sha256": "327600ce19c0cf9e9eb8754bc993e6ea2e8340bb95e0ad0abed97ecd86aa5c07",
-      "bytes": 1713201
+      "path": "docs/qa/v109-review-corrections/previous-certified/v109-workstreams-source.json",
+      "sha256": "572a16ce8d2bf64587f2ad0d9740c44d965ef82f01bc300e684213d299878a79",
+      "bytes": 60235
     },
     {
-      "path": "docs/qa/v109-preserve/iskhel-returned.png",
-      "sha256": "dd06bdbc8d2234b08fedbe4048fded4b33525cb8cbaf89775adff26cc0ba6c92",
-      "bytes": 204029
+      "path": "docs/qa/v109-review-corrections/previous-certified/v109-workstreams.json",
+      "sha256": "09a18d720399564c5e19e72de4d95cf6b50f2f933addfdb9e8544fb8355cd566",
+      "bytes": 791608
     },
     {
-      "path": "docs/qa/v109-preserve/khar-campaign-entry.png",
-      "sha256": "faaeba4734752c070f8d077a39d1b73cf09ebcc041abb42e314d85799324f13d",
-      "bytes": 388177
+      "path": "docs/qa/v109-review-corrections/previous-certified/visual-inspection-clans.json",
+      "sha256": "725c4c874750285a347494bec463f8086f36514fe2922eda7d2b76dd6a524c8a",
+      "bytes": 306
     },
     {
-      "path": "docs/qa/v109-preserve/khar-choice.png",
-      "sha256": "a92421caee8ff4174cd5145c6c41e94f93e0c5e6c9c1eb3e1ee567130f899171",
-      "bytes": 347924
+      "path": "docs/qa/v109-review-corrections/previous-certified/visual-inspection-homeworld.json",
+      "sha256": "7e57e7c96c1d68d7f3f40ceff16824910e35032c034be60f32b995c37b485932",
+      "bytes": 6596
     },
     {
-      "path": "docs/qa/v109-preserve/khar-living-logistics.png",
-      "sha256": "1f88619b3261aaf8cca8ad95684d4bdc72850a119f7b456b64f5ada714abade9",
-      "bytes": 386766
+      "path": "docs/qa/v109-review-corrections/previous-certified/visual-inspection-pit.json",
+      "sha256": "12542998eab84b9734b97911d061538130fe1967d2c27c96c699456456e96808",
+      "bytes": 6187
     },
     {
-      "path": "docs/qa/v109-preserve/khar-native-landscape-touch.png",
-      "sha256": "9f57fc304c2e0acf9bc000c8fbcf6e1589c8af3a04e9c1be1db01ef4793831ff",
-      "bytes": 384506
-    },
-    {
-      "path": "docs/qa/v109-preserve/khar-notebook-mobile.png",
-      "sha256": "3aca628376899eba09f721aea2877122261f2e691aba173391db63849682aa7c",
-      "bytes": 130565
-    },
-    {
-      "path": "docs/qa/v109-preserve/khar-notebook.png",
-      "sha256": "21dd689524656a6daa9c5442f1f27b1b85a161e400a1d6402384d815223086c2",
-      "bytes": 342896
-    },
-    {
-      "path": "docs/qa/v109-preserve/khar-objectives-mobile.png",
-      "sha256": "7a209d29d9d5257217624616274a6d90e0579f1e097bc3fe238e23472f190f2e",
-      "bytes": 150697
-    },
-    {
-      "path": "docs/qa/v109-preserve/khar-played-one-adult.png",
-      "sha256": "40a398c8db03a86ec5d570a52edc44ca5ff63a0ec5d0cdabe8922a78f611dcbd",
-      "bytes": 385908
-    },
-    {
-      "path": "docs/qa/v109-preserve/khar-post-1.png",
-      "sha256": "56b3e769a6fe8065c0cfafbe4d71ee759b51df9305d1262d9c666e8e9aa7d854",
-      "bytes": 1597286
-    },
-    {
-      "path": "docs/qa/v109-preserve/khar-post-2.png",
-      "sha256": "0226d26e418c278885bbc06fa9e48b435d421b781aab52a4aa32bb71f9a6fcc1",
-      "bytes": 1565137
-    },
-    {
-      "path": "docs/qa/v109-preserve/khar-post-3.png",
-      "sha256": "41ca3ef27726eafc2469b30c0674b93af38817871ab33209877905a76cb7a4f3",
-      "bytes": 1538614
-    },
-    {
-      "path": "docs/qa/v109-preserve/khar-post-4.png",
-      "sha256": "b1a576911cea299425945ee525b712062064224681fdf88e0b1ece5a8fddf578",
-      "bytes": 1507504
-    },
-    {
-      "path": "docs/qa/v109-preserve/khar-returned.png",
-      "sha256": "f466df043ff2967df2ec4e2e85e9432e5e9b151bf45bcc34082ae65a61d882f8",
-      "bytes": 205448
-    },
-    {
-      "path": "docs/qa/v109-preserve/legacy-v4-preserved.png",
-      "sha256": "6643e1c221b98262c960e6bb894930d9f89996695b53a90bb45043b757d6d954",
-      "bytes": 363471
-    },
-    {
-      "path": "docs/qa/v109-preserve/visual-inspection.json",
+      "path": "docs/qa/v109-review-corrections/previous-certified/visual-inspection-preserve.json",
       "sha256": "3b82b2ef9ba97058363abe0487e20b74bccd2bf8869bad1ef599ea35d2e1e3e4",
       "bytes": 740
-    },
-    {
-      "path": "docs/qa/v109-validation/archive-regressions.log",
-      "sha256": "5a102fe4450e1e7f4a45bd8978a58fea6d1b44c6c8c7bf58726160b21007008d",
-      "bytes": 8629
-    },
-    {
-      "path": "docs/qa/v109-validation/clans-browser-r2.log",
-      "sha256": "c44862e523a1072d23bbd81d9fa30642abeb28bf7f87602e272d008189ebf0f7",
-      "bytes": 2777
     },
     {
       "path": "docs/qa/v109-validation/first-runtime-freeze.json",
@@ -9554,69 +7892,9 @@
       "bytes": 251341
     },
     {
-      "path": "docs/qa/v109-validation/homeworld-browser-r2.log",
-      "sha256": "ef6a121e51d6789dbef48174a821d43bb23a4d0d9f1650b404154614c9f1a902",
-      "bytes": 3637
-    },
-    {
-      "path": "docs/qa/v109-validation/input-runtime-regressions.log",
-      "sha256": "430252078c7ef82cab0ab61ec833c1c5fbbe8119881f7c58b6b4468f59650a1b",
-      "bytes": 13289
-    },
-    {
-      "path": "docs/qa/v109-validation/lint.log",
-      "sha256": "ed752271e85241243cad663606cb3db64747cafbf5ff5f601f1a367fc1eb7e05",
-      "bytes": 23874
-    },
-    {
-      "path": "docs/qa/v109-validation/pit-browser-r2.log",
-      "sha256": "6322bafd56ebcca07b7f916e6927e832837f45e4682dcfb334dc86b571978f98",
-      "bytes": 6609
-    },
-    {
       "path": "docs/qa/v109-validation/pit-corrected-diagnostic.log",
       "sha256": "d67bf1902d5836b0ac4a0887bb09284493d2a34c73064ed89e3cf6b31bc971ef",
       "bytes": 1455
-    },
-    {
-      "path": "docs/qa/v109-validation/pit-tests.log",
-      "sha256": "f8b13f1a7926f13310634de70745ae3271a09bc1b33ff323048539ede0bff67e",
-      "bytes": 4066
-    },
-    {
-      "path": "docs/qa/v109-validation/preserve-browser-r2-retry.log",
-      "sha256": "321bff4846f214ab3633e837ff3eb120c291f3541a50ce260c4a7216f448a308",
-      "bytes": 3170
-    },
-    {
-      "path": "docs/qa/v109-validation/production-build-r2.log",
-      "sha256": "42b04a784f6117987a68e9b67495041f5f87cc7c6c35869ac47200b7894127f2",
-      "bytes": 4541
-    },
-    {
-      "path": "docs/qa/v109-validation/typecheck.log",
-      "sha256": "7e963cd266edc6da8946458eef070015c14509120a807963ef61b9535323931b",
-      "bytes": 59
-    },
-    {
-      "path": "docs/qa/v109-validation/unit-tests.log",
-      "sha256": "ad51723c8277d92f7edc9aa7144efdd8d62c6e03746a5d5e49dbd27c771576ea",
-      "bytes": 12263
-    },
-    {
-      "path": "docs/qa/v109-validation/v104-regressions.log",
-      "sha256": "e05fcaa3c70f181751af473df534ddd484015cbb7d609d1db5f1ca3f9dc3cf7f",
-      "bytes": 5370
-    },
-    {
-      "path": "docs/qa/v109-validation/v105-v106-regressions.log",
-      "sha256": "4e0c56e1e2206c0f45dc903504947c82f1235b88ea299bd26a7327dd7221f747",
-      "bytes": 14684
-    },
-    {
-      "path": "docs/qa/v109-validation/worlds-tests.log",
-      "sha256": "13b7dfaff411ca9d85627188b548832b81566b564cae95d6e0dacc9c863828cd",
-      "bytes": 6446
     },
     {
       "path": "docs/suivi-production/v109-pit-forward/final-source-selection.json",
@@ -9630,8 +7908,8 @@
     },
     {
       "path": "docs/suivi-production/v109-pit-forward/native-ground-calibration.json",
-      "sha256": "f736f225bb3198331bc4b47e27ec34f1a209fa5cdc29134dbe0531cb9f5c711f",
-      "bytes": 23649
+      "sha256": "ebff201b8e89549aba240cb976b61ac315e6e8db3da22e5303b510d4ffaf0c4a",
+      "bytes": 24039
     },
     {
       "path": "docs/suivi-production/v109-pit-forward/native-gutter-delivery.json",
@@ -9644,159 +7922,14 @@
       "bytes": 34430
     },
     {
-      "path": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-forward-left-isolated-2-gutter-r1.json",
-      "sha256": "6858b1e3afda3d6391da849faaef3335843ecbe25e97ed67d7cb397429623408",
-      "bytes": 2791
-    },
-    {
-      "path": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-forward-left-isolated-3-r2.json",
-      "sha256": "2e65952f0e423f6049679406d68b841bff6fe2f0c369f9f08f91ad36b114eac9",
-      "bytes": 2592
-    },
-    {
-      "path": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-forward-left-isolated-4-r2.json",
-      "sha256": "85e283a74fef9ad9cfc95db6e7bc1f8f08c60384b458ed7266f6a122c33752ef",
-      "bytes": 2517
-    },
-    {
-      "path": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-forward-left-isolated-5-gutter-r1.json",
-      "sha256": "271b825d70f95a88a94eb47be7a32c6dd870184cd6effb1f625582d7fdb210f0",
-      "bytes": 2771
-    },
-    {
-      "path": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-forward-left-r2.json",
-      "sha256": "9cc3a79a54d1cb28c523500fd3d750460a00717b9928b0d9cf5c28ddc3eed698",
-      "bytes": 2569
-    },
-    {
-      "path": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-forward-right.json",
-      "sha256": "c5a41038029fd5ecca50c25a343d8763ae003d5f3402cfd263a12ad49aef7ceb",
-      "bytes": 3665
-    },
-    {
-      "path": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-victim-left-isolated-3.json",
-      "sha256": "0d9c623cffc9d61f5a9849c840ebb9184f47e36f2fcf06235966c13f6dfdd780",
-      "bytes": 2510
-    },
-    {
-      "path": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-victim-left-isolated-4-gutter-r1.json",
-      "sha256": "d398df2c1e37526f663f123c5b4373b3a1e0bd7be45ec131b3697a0a128d26a0",
-      "bytes": 2915
-    },
-    {
-      "path": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-victim-left.json",
-      "sha256": "d168c0d8cbe01cf49d0e393942f57e01f75e83b134e7ce76b2ea739deefbd60f",
-      "bytes": 3444
-    },
-    {
-      "path": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-victim-right-isolated-3.json",
-      "sha256": "183f01fb2ba39e12b9d84a66e815cc187ecc76bda90b350367c5f51129772e34",
-      "bytes": 2513
-    },
-    {
-      "path": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-victim-right-isolated-4.json",
-      "sha256": "5ef2abc506efce28ba326c8e1d025e1ba008cbd013f9196c40355b04f400d616",
-      "bytes": 2517
-    },
-    {
-      "path": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-victim-right.json",
-      "sha256": "0fa95046ec7fd83f2cd8aa545b7c951070ffa3bc4d60c46df21f9175fea927f1",
-      "bytes": 3466
-    },
-    {
-      "path": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-forward-left-isolated-0.json",
-      "sha256": "4f1b5404583f39293a1167f0510d39f1f2787d6eb55cc795221e19f31b8c1ae4",
-      "bytes": 2447
-    },
-    {
-      "path": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-forward-left-isolated-1.json",
-      "sha256": "6a750370045edaa274d2580ffc0ffb8d94835154d944192b3526d3a43fa6955a",
-      "bytes": 2450
-    },
-    {
-      "path": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-forward-left-isolated-2-gutter-r1.json",
-      "sha256": "f89a37edde3796fb3b4bc8b4f0ad76d2aafe35c03f8ed9e7de34522682f2603b",
-      "bytes": 2866
-    },
-    {
-      "path": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-forward-left-isolated-3.json",
-      "sha256": "a465348eb06d91d3dbe2f577de14e1029861f9743af6587c3248d4952fd3cba8",
-      "bytes": 2450
-    },
-    {
-      "path": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-forward-left-isolated-4.json",
-      "sha256": "b74e300710c897b63c12d5306f06d1f8f6e478a82f1706e7ecdb0df606681876",
-      "bytes": 2455
-    },
-    {
-      "path": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-forward-left-isolated-5-gutter-r1.json",
-      "sha256": "9ef6fd20ed905093813a9f46efafc88ff29bd5e1c47f6c4e2139d96b8a11dd2e",
-      "bytes": 2881
-    },
-    {
-      "path": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-forward-right.json",
-      "sha256": "fea2dc78cd09d5f02a7923be0616acde2da78518c83f9c090820ff0d117ce70c",
-      "bytes": 3375
-    },
-    {
-      "path": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-left-isolated-2-gutter-r1.json",
-      "sha256": "faf0afce94bf24f12f739b9e530ae6fa019c00083203f41bc2f9ffcc24300631",
-      "bytes": 2925
-    },
-    {
-      "path": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-left-isolated-3.json",
-      "sha256": "92eed272838413066cf1bce51f2618405c6339a7925a1ee3b16df3d7ccfa47ee",
-      "bytes": 2491
-    },
-    {
-      "path": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-left-isolated-4-r2.json",
-      "sha256": "bd2b3dcfda7d0a442627f2cc863753e87f316dc0e5faac7c0d3ad5e58d4d6e01",
-      "bytes": 2124
-    },
-    {
-      "path": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-left-isolated-5-gutter-r1.json",
-      "sha256": "700e4f1106a3c0a9de67fb34496f9b7c75b86a7668824e8f8f77ef6195fdde77",
-      "bytes": 2909
-    },
-    {
-      "path": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-left.json",
-      "sha256": "972af7c3d010a48b15e144645af33e1a8cc404fcdeb1997cc5a3548745937780",
-      "bytes": 3488
-    },
-    {
-      "path": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-right-isolated-2-gutter-r1.json",
-      "sha256": "83da69f28c36153f98b995efb6502006faff8db6d64664125f4c308de5988fa1",
-      "bytes": 2929
-    },
-    {
-      "path": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-right-isolated-3.json",
-      "sha256": "ac1349b9e747a6d6008a8536b157cb03323fb0e20188830bcf4f1ba2fbe52ddd",
-      "bytes": 2494
-    },
-    {
-      "path": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-right-isolated-4.json",
-      "sha256": "2606213c61c6ff4d83b31af5242510571d75e52772fe90c324bf7c6be43b983d",
-      "bytes": 2498
-    },
-    {
-      "path": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-right-isolated-5.json",
-      "sha256": "c39564507decbe9f0d68a7392ba1e40e215bf16128ed8d0db2123e2372e66486",
-      "bytes": 2498
-    },
-    {
-      "path": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-right.json",
-      "sha256": "a5774557f356ebf1dfde87327496b6dd59d3fefd66cd5d10d599ffdce0c66250",
-      "bytes": 3502
+      "path": "docs/suivi-production/v109-pit-forward/native-uv-border-review-spatial.json",
+      "sha256": "560a552eccb4c3085b4d6250c4ab3f553e79ba8b7e771a2d5c2525c7762f6d96",
+      "bytes": 36312
     },
     {
       "path": "docs/suivi-production/v109-pit-forward/visual-review-gutters.json",
       "sha256": "8c6f9aa34b47b47ff8c0e5eb47071d0a4ff395c0613d56a8686ef17e4831bebd",
       "bytes": 12316
-    },
-    {
-      "path": "docs/suivi-production/v109-pit-forward/visual-review.json",
-      "sha256": "8fb42a808f767300d059c4c1c58d57598dd2d910caa3cbb5149d9c922cf0d39d",
-      "bytes": 13313
     },
     {
       "path": "docs/v108-workstreams.json",
@@ -9809,11 +7942,6 @@
       "bytes": 7592
     },
     {
-      "path": "docs/v109-clans-validation.json",
-      "sha256": "addd0125f08e17b3cf639521fb561a6872200c4cff1bb7d0eb5dddf67ae62b48",
-      "bytes": 15490
-    },
-    {
       "path": "docs/v109-homeworld-archive-plaque.md",
       "sha256": "0ec411a0e209201781fa7ad1e77f7bccef651f5e4315e93a2f90ed5081eeaadf",
       "bytes": 4827
@@ -9824,19 +7952,9 @@
       "bytes": 3478
     },
     {
-      "path": "docs/v109-homeworld-validation.json",
-      "sha256": "d5ba15653acb2b813923b0fe82a178eebb261f0b83da0e8812a33c9ff38c0227",
-      "bytes": 23496
-    },
-    {
       "path": "docs/v109-pit-forward-throws.md",
       "sha256": "ac01cf41d9f952a8141c805cfdf220401131da46070c0592f88c2264c1764337",
       "bytes": 5643
-    },
-    {
-      "path": "docs/v109-pit-validation.json",
-      "sha256": "8d47e48f73fe9e32c2c229bc9706c3896b6259fbca616cb26b385cabc610ca86",
-      "bytes": 90858
     },
     {
       "path": "docs/v109-preserve-hunt-biomes.md",
@@ -9849,784 +7967,14 @@
       "bytes": 3291
     },
     {
-      "path": "docs/v109-preserve-validation.json",
-      "sha256": "f3347498c8944de20abb19ffef4ec741e54a6781f02aa244e878ab80efb8229d",
-      "bytes": 30495
-    },
-    {
-      "path": "docs/v109-runtime-freeze.json",
-      "sha256": "e01f55d66dbae26b350101d3b06a9c306a2aa42ac19510944e82dcd60a1d19d1",
-      "bytes": 251341
-    },
-    {
       "path": "docs/v109-runtime-public-inputs.json",
-      "sha256": "e9bcb1caedaecef71c4db979ba21c411234cbbdab244ed1609a5a3ce998e176f",
-      "bytes": 17780
-    },
-    {
-      "path": "docs/v109-validation-summary.json",
-      "sha256": "615663776d68f75a97aad3df7112d07757c8c5807f11a8ecda2db171a315af02",
-      "bytes": 17959
+      "sha256": "972b492a9d13c9982da52b743c60c651c35219bda7224a31a62d9f32e0427702",
+      "bytes": 17829
     },
     {
       "path": "docs/v109-workstreams-source.json",
-      "sha256": "572a16ce8d2bf64587f2ad0d9740c44d965ef82f01bc300e684213d299878a79",
-      "bytes": 60235
-    },
-    {
-      "path": "public/audio/ambience/ship/v54.wav",
-      "sha256": "b2ed760f17352aca514eb2a7aa6f6295127188bf2e7b02390a25ec12295d3371",
-      "bytes": 418994
-    },
-    {
-      "path": "public/audio/sfx/scan/v54.wav",
-      "sha256": "86e2562187736d346c8fac42eeeeb87ff3e77fd75fb8ede2ee562f2a8632907d",
-      "bytes": 33560
-    },
-    {
-      "path": "public/game/assets/v19/biome-decor/desert/cov/cov-obsidian-glass-fin-01-narrow.webp",
-      "sha256": "ae3d881f50099ddeb0b6e4c10d2a6495d2203f7f439a91ec659397b9e5b859e0",
-      "bytes": 75608
-    },
-    {
-      "path": "public/game/assets/v19/biome-decor/desert/plt/plt-mining-gantry-01-low-wide.webp",
-      "sha256": "3038342df81ac14f6ca746f48bedba967064dfa1f5ab035b7d1ee3994e049826",
-      "bytes": 61558
-    },
-    {
-      "path": "public/game/assets/v19/biome-decor/desert/plt/plt-sandstone-ledge-01-low-wide.webp",
-      "sha256": "2d3e4087b21e908ad426e078075dcb876914eae3d36124ad3c6487fbba87e436",
-      "bytes": 32790
-    },
-    {
-      "path": "public/game/assets/v19/biome-decor/ice/cov/cov-fractured-ice-pillar-01-narrow.webp",
-      "sha256": "639f7980e1f5095fa436437ffd2d72182c5043689b6f17348d43a766c1532b94",
-      "bytes": 95224
-    },
-    {
-      "path": "public/game/assets/v19/biome-decor/ice/plt/plt-glacier-shelf-01-low-wide.webp",
-      "sha256": "398b8f1fdcaf204059880d37319cf999aa64428f9c1f9b49fb6a01ed39700811",
-      "bytes": 64856
-    },
-    {
-      "path": "public/game/assets/v19/biome-decor/ice/plt/plt-mine-gantry-01-low-wide.webp",
-      "sha256": "5796163e19fd6cd08cc83ec261175fe40e373aa56c019a4d2a8ca837a810e3c9",
-      "bytes": 67188
-    },
-    {
-      "path": "public/game/assets/v2/environments/jungle/layers/far-lake.webp",
-      "sha256": "f49837b76f10080e669c080ab97b3fb8a75f04d5f05ad78077ae980ccc2b76c4",
-      "bytes": 275164
-    },
-    {
-      "path": "public/game/backgrounds/desert-depth-v8.png",
-      "sha256": "a279858aa2a18323d76f32e1f96d1d8d3e2971dd92d44f13801b29e8b44a6138",
-      "bytes": 2581256
-    },
-    {
-      "path": "public/game/backgrounds/ice-depth-v4.webp",
-      "sha256": "f045a1806c4237c4a88de1959316c00815ad11d2ad822274d859d40f0c0eadf7",
-      "bytes": 343328
-    },
-    {
-      "path": "public/game/homeworld/v109/archive-plaque-atlas-v109.png",
-      "sha256": "a47fb32cfc7b5f2c4e5721c660c9a2d68ac4dee1ee869d5175f41dd2278c49fe",
-      "bytes": 1582702
-    },
-    {
-      "path": "public/game/homeworld/v64/clan-shuttle.png",
-      "sha256": "c9868a99fc4af4716150cdecbdeda502e662fd8bcc6334acfa3f0055c59deedd",
-      "bytes": 1982506
-    },
-    {
-      "path": "public/game/homeworld/v77/fauna/yautja-horse-corrected.png",
-      "sha256": "d7d8014ff3ace59f3eca4070cca8fa6534accd17b6a38d26cc8b8aecb95a130f",
-      "bytes": 1463703
-    },
-    {
-      "path": "public/game/homeworld/v77/lava-transit-skiff.png",
-      "sha256": "ad4e5303e5a6d2a84cdf69e647aa904919fdf6f796e723aa4f22ef811a71d0b1",
-      "bytes": 2422116
-    },
-    {
-      "path": "public/game/homeworld/v78/port-cargo-sorting-cart.png",
-      "sha256": "0354f5848f6a921fe8f8f16f9bcf68f73f81b3c85d665d1122cf2597a0c84e7f",
-      "bytes": 2572525
-    },
-    {
-      "path": "public/game/homeworld/v80/sealed-cargo-case-left.png",
-      "sha256": "0d27b2eec19ddbd8d1ea65a8071971b34e24d93abb0052c98e7bd32058d98012",
-      "bytes": 1801987
-    },
-    {
-      "path": "public/game/homeworld/v83/cargo-rack-right.png",
-      "sha256": "c6146c0577b832012a099e87b6008f5315771c72725932ce8eb850e4f9f43eb4",
-      "bytes": 1922894
-    },
-    {
-      "path": "public/game/props/v4/expedition-platform.png",
-      "sha256": "e525a4a4b1393c0b4f61ef0174418512578386908f8a7b96b2c0e87f816512dd",
-      "bytes": 130406
-    },
-    {
-      "path": "public/game/props/v4/foreground-ferns.png",
-      "sha256": "ce81d33f394f9e53188f4c0476d7c22d3a8f18e8f8514c6349bff6a0f13eb8bf",
-      "bytes": 232859
-    },
-    {
-      "path": "public/game/props/v4/root-platform.png",
-      "sha256": "8a7abf0d92d9d38b985d2c6d18bb7e441c9d5f7bd7b2c22c4bae83bbf57319db",
-      "bytes": 140243
-    },
-    {
-      "path": "public/game/ship-interior/v21/wall-machinery.webp",
-      "sha256": "3cd834ad4097567f202f8610253531e8162669447691e30c459b61a8a9d4727f",
-      "bytes": 326832
-    },
-    {
-      "path": "public/game/ships/v14/game-preserve-ship.webp",
-      "sha256": "cce2adbdc45991fa2c5764d5de74bda3cf96403da7b13c5bbb05a5ccd441f8e2",
-      "bytes": 131904
-    },
-    {
-      "path": "public/game/sprites/hunter.webp",
-      "sha256": "629a996bda8940091263287c9ef54d100ab3e49f450ce4974e3806a54f346c6a",
-      "bytes": 134824
-    },
-    {
-      "path": "public/game/sprites/v100/pit/feral/001-normals-5l-5m.png",
-      "sha256": "cc17f91b2471c6731d3449983d35cf627162ae4803cafdfed997007354fc5735",
-      "bytes": 2018648
-    },
-    {
-      "path": "public/game/sprites/v100/pit/feral/002-crouch-2l.png",
-      "sha256": "9cc63fc5a91565f6bb281c11138000e3b1078245581aabd65b60d53d372eb605",
-      "bytes": 2248775
-    },
-    {
-      "path": "public/game/sprites/v100/pit/feral/005-crouch-2m.png",
-      "sha256": "91ab7a7ac6dc903dce4aa15ee2f39a9b8bf35113eb8d2bb3ea688debe610208f",
-      "bytes": 2166671
-    },
-    {
-      "path": "public/game/sprites/v100/pit/feral/007-stand-5m-forward.png",
-      "sha256": "c1b95635c5581dd0fa520e779e461433528640a1e83f2b0488ad05bc1acdcdbd",
-      "bytes": 2351936
-    },
-    {
-      "path": "public/game/sprites/v100/pit/feral/011-crouch-2h-right.png",
-      "sha256": "4f094d0f2d3cccadd5f661158d4b4f412c1d769da823fca2e9e00cabd5b3d40d",
-      "bytes": 2214051
-    },
-    {
-      "path": "public/game/sprites/v100/pit/feral/012-crouch-2h-left.png",
-      "sha256": "1cf32461860771ded634e7ec9ba119a15f29c13f4ef5341d97c1ae5129042c6b",
-      "bytes": 2154824
-    },
-    {
-      "path": "public/game/sprites/v100/pit/feral/013-crouch-2l-left.png",
-      "sha256": "d6faa6692304c6191bc28f1ee1d3e8856603a62b263c320f3de4f9e7f169fdb6",
-      "bytes": 2145770
-    },
-    {
-      "path": "public/game/sprites/v100/pit/feral/020-command-6m-right.png",
-      "sha256": "3b608ea248c440fe50a21139e0c46b82d0e435382c87b64ea300900743118b98",
-      "bytes": 2107336
-    },
-    {
-      "path": "public/game/sprites/v100/pit/feral/021-command-6m-left.png",
-      "sha256": "b46a33dfa318da52d4815b9f2fb1a480a4d1bc5f7e66abc9daf59ba5288290fc",
-      "bytes": 2098102
-    },
-    {
-      "path": "public/game/sprites/v100/pit/feral/030-air-jl-right-calibrated.png",
-      "sha256": "f6dd75cb124e7db1224ab9f35c4273c4469464e0f14ac36b4ec6fbfcd5380cb5",
-      "bytes": 2062492
-    },
-    {
-      "path": "public/game/sprites/v100/pit/feral/031-air-jl-left-calibrated.png",
-      "sha256": "e40afc5ae89cdb482467ced9bdca55ed5ce8aad690b5dd648dedb7e64f9f9650",
-      "bytes": 2145482
-    },
-    {
-      "path": "public/game/sprites/v100/pit/feral/034-air-jh-right-calibrated.png",
-      "sha256": "f5ac5871db20a4bb8dd4512538979fa6bd75b0b032afaaa5c40032dd5aed04a4",
-      "bytes": 2119746
-    },
-    {
-      "path": "public/game/sprites/v100/pit/feral/035-air-jh-left-calibrated.png",
-      "sha256": "da38a240b9bdb96b99152ce3d222de3f47ee321d2a902f972dfd37355fe5c5e0",
-      "bytes": 2088633
-    },
-    {
-      "path": "public/game/sprites/v100/pit/feral/041-air-jm-right-spaced.png",
-      "sha256": "922ca6e1397c90865c513a5ee022fcab6f54d25630f21fcdf3c3019e9ace3088",
-      "bytes": 1739401
-    },
-    {
-      "path": "public/game/sprites/v100/pit/feral/042-air-jm-left-spaced.png",
-      "sha256": "af39b7568c24d53e5b2834932553f651e747ec4cf2e9db936c862562b8e56ae8",
-      "bytes": 1957052
-    },
-    {
-      "path": "public/game/sprites/v100/pit/feral/feral-special-defaite-a-left-v100.png",
-      "sha256": "bd175f7ba5c24368d6a10d92f754987e27c422f36e08fb2255ef0c171a82aae4",
-      "bytes": 2143222
-    },
-    {
-      "path": "public/game/sprites/v100/pit/feral/feral-special-defaite-a-right-v100.png",
-      "sha256": "3920d1909a6a4937a8b20755f755216d5f15758635b81ddb8b3102ceade2051d",
-      "bytes": 2122116
-    },
-    {
-      "path": "public/game/sprites/v100/pit/feral/feral-special-defaite-b-v100.png",
-      "sha256": "7176468913588842dcefafca72fa8e7bade281233dc23d79bf7bc651a3a3e89c",
-      "bytes": 1925293
-    },
-    {
-      "path": "public/game/sprites/v100/pit/feral/feral-special-equip-a-v100.png",
-      "sha256": "13d9fad90636ef74015db295d4ec42522f16470cfa64579dfb215a1a636f80e2",
-      "bytes": 2196464
-    },
-    {
-      "path": "public/game/sprites/v100/pit/feral/feral-special-equip-b-v100.png",
-      "sha256": "1acfa7baec435e75fafe61f8c3354c217db6f40c0747243738314fb4edff9cc0",
-      "bytes": 1948073
-    },
-    {
-      "path": "public/game/sprites/v100/pit/feral/feral-special-intro-a-left-v100.png",
-      "sha256": "7d3de548392b8bc8497ae89ca27598d8beded14401351c842b3e785560ea2935",
-      "bytes": 1916556
-    },
-    {
-      "path": "public/game/sprites/v100/pit/feral/feral-special-intro-a-right-v100.png",
-      "sha256": "088a5226203be27f8c7247270b79d88e1b6fe0fec93c1d684bb522d236d57bcf",
-      "bytes": 1891725
-    },
-    {
-      "path": "public/game/sprites/v100/pit/feral/feral-special-intro-b-left-v100.png",
-      "sha256": "11ab7b8b0ff4b5d7db2461ea964650181decf7d8e6fd6b0d1675faa50d34dac0",
-      "bytes": 1839505
-    },
-    {
-      "path": "public/game/sprites/v100/pit/feral/feral-special-intro-b-right-v100.png",
-      "sha256": "049c6eac23a174a3e2b1f4739d9b594213e1ff82ee10d8b9b86075be9420721a",
-      "bytes": 1915805
-    },
-    {
-      "path": "public/game/sprites/v100/pit/feral/feral-special-s2-a-v100.png",
-      "sha256": "a45d64a6c524828225f29fc1757e58a1218fdfbea9f81a9acd5b1db820112c1e",
-      "bytes": 2081254
-    },
-    {
-      "path": "public/game/sprites/v100/pit/feral/feral-special-s2-b-v100.png",
-      "sha256": "1a341c55ddd26ecf1c626eb8baf791f558d2bc9ada9ac01c27463f0286c1cfce",
-      "bytes": 2037749
-    },
-    {
-      "path": "public/game/sprites/v100/pit/feral/feral-special-s3-a-v100.png",
-      "sha256": "986553c12a4dda1292935c99a119482f215aebe7fbc8bd378f1d1e357bc2bdcd",
-      "bytes": 2295353
-    },
-    {
-      "path": "public/game/sprites/v100/pit/feral/feral-special-s3-b-v100.png",
-      "sha256": "533a0a9c0c56e774f7a0c909c1ad67a93cde787edf392d6440f8d29427d37a74",
-      "bytes": 2261491
-    },
-    {
-      "path": "public/game/sprites/v100/pit/feral/feral-special-s3-counter-v100.png",
-      "sha256": "a65adbb501b510662ef710195b699ba25b0b7f6e6f672e6d448b2f10d8acd4dc",
-      "bytes": 1726682
-    },
-    {
-      "path": "public/game/sprites/v100/pit/feral/feral-special-s3-strike-v100.png",
-      "sha256": "82447a6278e2f49d27550926e3fb4f101a96db2f0858d41ad498342dc936576f",
-      "bytes": 2061057
-    },
-    {
-      "path": "public/game/sprites/v100/pit/feral/feral-special-s4-a-v100.png",
-      "sha256": "0eb7806546e452659c5b72ce0255d265eac4172a030bf669d1bcb6bf1fa1b7bc",
-      "bytes": 2229817
-    },
-    {
-      "path": "public/game/sprites/v100/pit/feral/feral-special-s4-b-v100.png",
-      "sha256": "05ee37080b250599bba1754a6c3908eafd95ad37cb08fc66ceee0f93ee06a830",
-      "bytes": 2022900
-    },
-    {
-      "path": "public/game/sprites/v100/pit/feral/feral-special-super-a-left-v100.png",
-      "sha256": "5e87eb2053b679c58fccc4bc82562460d7f2a0d777d4ffe77c45b083971e93e3",
-      "bytes": 2249370
-    },
-    {
-      "path": "public/game/sprites/v100/pit/feral/feral-special-super-a-right-v100.png",
-      "sha256": "9f232d2c2104f1c8a452ab75abb505b3438baeab46e8a5273b2f326cf560d976",
-      "bytes": 2147314
-    },
-    {
-      "path": "public/game/sprites/v100/pit/feral/feral-special-super-b-left-v100.png",
-      "sha256": "814836061d85e0b3707811a2180f074077b648b1b44f4f24976163509aabc62b",
-      "bytes": 1824704
-    },
-    {
-      "path": "public/game/sprites/v100/pit/feral/feral-special-super-b-right-v100.png",
-      "sha256": "15fc0979e956c650eed1d8594cfc2a6686c8bec3fda47a4b4dc6207fc0b92ced",
-      "bytes": 2223295
-    },
-    {
-      "path": "public/game/sprites/v100/pit/feral/feral-special-taunt-1-a-v100.png",
-      "sha256": "c0b8623089e33f4fbdab9ecde11a7e61a09feb173d683d296b2bb40fb18bd9ec",
-      "bytes": 2153597
-    },
-    {
-      "path": "public/game/sprites/v100/pit/feral/feral-special-taunt-1-b-v100.png",
-      "sha256": "f9be913fdf8ef3d07d27cc0c9fb5d552892bf969cd06ef69b0c7cd1aa2268177",
-      "bytes": 1921471
-    },
-    {
-      "path": "public/game/sprites/v100/pit/feral/feral-special-taunt-2-a-v100.png",
-      "sha256": "0ac7341b1336007b9bf7fb32717c2af5749b03fc0183ac2ef96c74d9b12365d0",
-      "bytes": 1705757
-    },
-    {
-      "path": "public/game/sprites/v100/pit/feral/feral-special-taunt-2-b-v100.png",
-      "sha256": "8d0aeb93ef02cc77ac522e9fd32fe8f9d3dc52522ce82214e960c2eba46b882f",
-      "bytes": 2224587
-    },
-    {
-      "path": "public/game/sprites/v100/pit/feral/feral-special-victoire-a-v100.png",
-      "sha256": "0373a5e8025c8c4b7ae7dbad9d50a6764af38d52989f7c98d4495828a6d4b25b",
-      "bytes": 2185217
-    },
-    {
-      "path": "public/game/sprites/v100/pit/feral/feral-special-victoire-b-left-v100.png",
-      "sha256": "2d3a80a33be972b20a725c6a1c671ca500f2bf1d4beb8cd028be7e9b13f3cb53",
-      "bytes": 1886824
-    },
-    {
-      "path": "public/game/sprites/v100/pit/feral/feral-special-victoire-b-right-v100.png",
-      "sha256": "91fcac8364df3f192a94e1538fb7cb9537788f7ec4c00fa94bfda15302f80bd4",
-      "bytes": 1938065
-    },
-    {
-      "path": "public/game/sprites/v100/pit/scar/scar-2H-left-contact-recovery-native.png",
-      "sha256": "ebb4dd8320217091c3bbd8a8e6486231d19cf9b6c959b92d49231eaa419e5456",
-      "bytes": 1644642
-    },
-    {
-      "path": "public/game/sprites/v100/pit/scar/scar-2H-right-native.png",
-      "sha256": "50cb107f553f54bf7519bd97939046c510f0aebae82223358ddc44ac1d9245d0",
-      "bytes": 1664701
-    },
-    {
-      "path": "public/game/sprites/v100/pit/scar/scar-2L-native.png",
-      "sha256": "ba74a5756a0951847bdf7e78ae90761f131a17d1b63863e31124f51b4420f644",
-      "bytes": 1571563
-    },
-    {
-      "path": "public/game/sprites/v100/pit/scar/scar-2M-left-native.png",
-      "sha256": "74ad6714525cbba91bc6ef65c4d3798ce835b339893041b175ee2f40a530e283",
-      "bytes": 1746646
-    },
-    {
-      "path": "public/game/sprites/v100/pit/scar/scar-2M-right-native.png",
-      "sha256": "5cd1f926dd04d74e139fe88faef820262eec047c2ad266febda6b23f5610d384",
-      "bytes": 1680416
-    },
-    {
-      "path": "public/game/sprites/v100/pit/scar/scar-5H-left-alpha-native.png",
-      "sha256": "658a0587a4e2ca496c950028569c595bc5fec3ee614d164c760225845d17fee8",
-      "bytes": 1736766
-    },
-    {
-      "path": "public/game/sprites/v100/pit/scar/scar-5H-right-alpha-native.png",
-      "sha256": "3da7a25a272d0e9398170b2b5fff7f295494a56043336009e2c29ca55268521b",
-      "bytes": 1868855
-    },
-    {
-      "path": "public/game/sprites/v100/pit/scar/scar-5L-native.png",
-      "sha256": "c4e42f89fc367b442ed1cb4ac67cd1bf45868de4cc97cabf072ae5caac0d0cac",
-      "bytes": 2204395
-    },
-    {
-      "path": "public/game/sprites/v100/pit/scar/scar-5M-left-native.png",
-      "sha256": "56de9c7ca3110ed40ec810320788d37305b3f57dd8664b2abae54a0d612181f5",
-      "bytes": 1708232
-    },
-    {
-      "path": "public/game/sprites/v100/pit/scar/scar-5M-right-native.png",
-      "sha256": "54a70c307c11f41fc1252174cc863141eef3f10957972774493f9962dddf90d4",
-      "bytes": 1716500
-    },
-    {
-      "path": "public/game/sprites/v100/pit/scar/scar-6M-left-native.png",
-      "sha256": "5fe2379e13bbcd90478302652cc5534b42ee8e6e5f95d6cb3dccf02fd2e2ed51",
-      "bytes": 1940871
-    },
-    {
-      "path": "public/game/sprites/v100/pit/scar/scar-6M-right-native.png",
-      "sha256": "08e3c2586fb7ec07fd2ac2294f272580bf2a08bdf0677c8ae9d87c38f21e8fa9",
-      "bytes": 1722876
-    },
-    {
-      "path": "public/game/sprites/v100/pit/scar/scar-jH-left-contact-recovery-native.png",
-      "sha256": "9b3bb6de48183ddaec9e89268564012d8465d7bec120664b60b7adf1b307fbbe",
-      "bytes": 2026413
-    },
-    {
-      "path": "public/game/sprites/v100/pit/scar/scar-jH-left-startup-native.png",
-      "sha256": "d906629e65873b4fba00377fec0a8f7528e98ce6791b02727f18cc596c9b5501",
-      "bytes": 2049049
-    },
-    {
-      "path": "public/game/sprites/v100/pit/scar/scar-jH-right-native.png",
-      "sha256": "9b48ac15b53a50d62ddea8a77189744352b3fb5661c5366940f77c87836fe199",
-      "bytes": 1715074
-    },
-    {
-      "path": "public/game/sprites/v100/pit/scar/scar-jL-left-native.png",
-      "sha256": "e3d2bc9e010351e37f9b208d6f8c06f417b9f0475c8bc9c991b578cfc82babc9",
-      "bytes": 1848518
-    },
-    {
-      "path": "public/game/sprites/v100/pit/scar/scar-jL-right-native.png",
-      "sha256": "fdb5f6a6dc8e4ca68b9c96a04bdea057748a6ad796b223fb377dd006e8810fb7",
-      "bytes": 1573763
-    },
-    {
-      "path": "public/game/sprites/v100/pit/scar/scar-jM-left-native.png",
-      "sha256": "4d714b5f7f334d22250adfca8231a3abf3fa147dd18c1f5d9b36498f45560388",
-      "bytes": 1926192
-    },
-    {
-      "path": "public/game/sprites/v100/pit/scar/scar-jM-right-native.png",
-      "sha256": "63c91bce12397c460cd8f5a60b41eb0dcb3a02261e819a269db42337c26d8a7f",
-      "bytes": 1738717
-    },
-    {
-      "path": "public/game/sprites/v100/pit/scar/scar-special-defaite.png",
-      "sha256": "659bda952b0fee7db73036e9e8faf2f2ce3a7809c35d493055044e534fbc2784",
-      "bytes": 1976748
-    },
-    {
-      "path": "public/game/sprites/v100/pit/scar/scar-special-equip.png",
-      "sha256": "82bd27b0ee0df00afb124728014167f46bf17c7d290c71815ea346adcd87e1b5",
-      "bytes": 2416511
-    },
-    {
-      "path": "public/game/sprites/v100/pit/scar/scar-special-intro.png",
-      "sha256": "b02db6fa75d8a486e20bfc8525aac4dd0a161276a8a5488ed21f190a6ed156a8",
-      "bytes": 2395061
-    },
-    {
-      "path": "public/game/sprites/v100/pit/scar/scar-special-s1.png",
-      "sha256": "1cb5fa122d709f6065dcc5cbf824a97f4801495c375875a4270a0c8fdb736949",
-      "bytes": 1963780
-    },
-    {
-      "path": "public/game/sprites/v100/pit/scar/scar-special-s2-corrected.png",
-      "sha256": "fa8e84622de3acde190f6cd564c28fc82dc082f681ac518ff8ff2b5c036af752",
-      "bytes": 1904733
-    },
-    {
-      "path": "public/game/sprites/v100/pit/scar/scar-special-s3-left.png",
-      "sha256": "3bb94e42a714645f89ff8ce0c7567ac46193179676e28adbcc0bf760ba3b4481",
-      "bytes": 1447965
-    },
-    {
-      "path": "public/game/sprites/v100/pit/scar/scar-special-s3-right.png",
-      "sha256": "8eb97e8038899ff9d7f9967b804fa00701f63722035339cc9a74000212048c6f",
-      "bytes": 1595986
-    },
-    {
-      "path": "public/game/sprites/v100/pit/scar/scar-special-s4.png",
-      "sha256": "4dd3be59ccb5582a232652981a011367f7cc639836c18799859649ff5e7066ef",
-      "bytes": 2465196
-    },
-    {
-      "path": "public/game/sprites/v100/pit/scar/scar-special-super.png",
-      "sha256": "cd81a0503a546ad34281f2b8d221763aea15bcd54d5d1c92ed583bdbfd6830c3",
-      "bytes": 1789099
-    },
-    {
-      "path": "public/game/sprites/v100/pit/scar/scar-special-taunt-1.png",
-      "sha256": "eabe0c8d9b21e61a0d477697006d11a03bd27b3aa5d314cc9b77c560672b3302",
-      "bytes": 1953793
-    },
-    {
-      "path": "public/game/sprites/v100/pit/scar/scar-special-taunt-2-left.png",
-      "sha256": "36d0760f8121c997a76710973c2a7ab377e96577e4e3b22959a667b5d1f99cd8",
-      "bytes": 1520330
-    },
-    {
-      "path": "public/game/sprites/v100/pit/scar/scar-special-taunt-2-right.png",
-      "sha256": "e7e54ccfc5470d422df8d4e4c149934eb67a2390041970bfe5b9922407da8550",
-      "bytes": 1568011
-    },
-    {
-      "path": "public/game/sprites/v100/pit/scar/scar-special-victoire.png",
-      "sha256": "e532637f7cfbff5c67ec05a6eff25e3c0df0246d3a46781a882f9b26e92dcd9c",
-      "bytes": 2463701
-    },
-    {
-      "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-isolated-2-gutter-r1-v109.png",
-      "sha256": "6ff3767df2283b599f7a204e20e3a8c03a943fb1a8dc9b7531f7a3c6778c1931",
-      "bytes": 1706509
-    },
-    {
-      "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-isolated-3-r2-v109.png",
-      "sha256": "151b49c54a3ec2321c5793bd10b6232a1e7542d48a8d1c09da2f8fb3cdd76ddb",
-      "bytes": 2071095
-    },
-    {
-      "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-isolated-4-r2-v109.png",
-      "sha256": "fa54dd3f5a8e926c211d48dba1edd1b35a813cab02d013ee0294f68d3dd47ddc",
-      "bytes": 2138067
-    },
-    {
-      "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-isolated-5-gutter-r1-v109.png",
-      "sha256": "2411a5307a67bad68b4e2b1fc2fbbb52b3320d6dc10a956039a68bce30318046",
-      "bytes": 1553500
-    },
-    {
-      "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-r2-v109.png",
-      "sha256": "5dce6483d4ba9fb1848613d3a76abf255a163cbfb9dba1ed3554cc9a74615d15",
-      "bytes": 2390859
-    },
-    {
-      "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-right-v109.png",
-      "sha256": "8324320252c00e84cf0e50b7fb850dc96fb472dc1d5c933d0e14925b4fdf37ec",
-      "bytes": 2316771
-    },
-    {
-      "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-left-isolated-3-v109.png",
-      "sha256": "8b91bf81569d5da2f5107c3515272ada6d19ad0acaefcdc5234626dc4a11c8ad",
-      "bytes": 2201016
-    },
-    {
-      "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-left-isolated-4-gutter-r1-v109.png",
-      "sha256": "3ee1f59c32a1204957aac968b0c22f74cfde5297393985d953c1cf1de65f7c98",
-      "bytes": 1600619
-    },
-    {
-      "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-left-v109.png",
-      "sha256": "9203da249bb1756a545758125a88c63f66f8945dbf5a1e883b53532a4a51bfed",
-      "bytes": 2261067
-    },
-    {
-      "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-right-isolated-3-v109.png",
-      "sha256": "b8ab2d58ffaf3f47853f01ef4a0e36104c6e6a0cfb1462b4d0155365ebb74d2a",
-      "bytes": 1807014
-    },
-    {
-      "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-right-isolated-4-v109.png",
-      "sha256": "f3b14134eaa1ba660342d52de1d84925f5888657d9c14c7c53ecb8647158d4f8",
-      "bytes": 1442943
-    },
-    {
-      "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-right-v109.png",
-      "sha256": "3039f5ff15c73a5a6ef4b6054d3b949b22e99141268bcb5314984a652bdc331a",
-      "bytes": 2236163
-    },
-    {
-      "path": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-0-v109.png",
-      "sha256": "c5fb6df337079a263350702ddea4299b7ddb61f060dd7bed02eb6010632c9c96",
-      "bytes": 1707824
-    },
-    {
-      "path": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-1-v109.png",
-      "sha256": "6153788ab03fc3f246cae0b1b30990edd57b777283f2eff4c24d9a6ae5b7e95a",
-      "bytes": 1582563
-    },
-    {
-      "path": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-2-gutter-r1-v109.png",
-      "sha256": "08c29f9c49d71aef046968c86000a4fd1607486934ab764c80718c86aa816454",
-      "bytes": 1606038
-    },
-    {
-      "path": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-3-v109.png",
-      "sha256": "13561262646615582d4c0687b4b59dc203e58747f62f8cf924a609abfeea44c6",
-      "bytes": 1748850
-    },
-    {
-      "path": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-4-v109.png",
-      "sha256": "0f2081b177fe949c0f52fa2d27dd4accfbd3aaf1da891ec8ffa11547cde0a00d",
-      "bytes": 1761722
-    },
-    {
-      "path": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-5-gutter-r1-v109.png",
-      "sha256": "7d1eee2349555a1eab15c2ce60d0bae9e858d66fd183f4aa62e3f97e3d2ff157",
-      "bytes": 1461409
-    },
-    {
-      "path": "public/game/sprites/v109/pit/scar/scar-throw-forward-right-v109.png",
-      "sha256": "4615795ab410033a000dcdf7fdfe197b431aedb07ad279a7acfbef5e93910c02",
-      "bytes": 2258882
-    },
-    {
-      "path": "public/game/sprites/v109/pit/scar/scar-throw-victim-left-isolated-2-gutter-r1-v109.png",
-      "sha256": "b0811cc9418578e58157139809783f127ed46322ea9d705325b34e908958a6ce",
-      "bytes": 1518305
-    },
-    {
-      "path": "public/game/sprites/v109/pit/scar/scar-throw-victim-left-isolated-3-v109.png",
-      "sha256": "89fa6f3142850eccf99932528a23ae67b0f115de00dce9db8ad1da124b2baf1a",
-      "bytes": 2110431
-    },
-    {
-      "path": "public/game/sprites/v109/pit/scar/scar-throw-victim-left-isolated-4-r2-v109.png",
-      "sha256": "f102c0e286a3d566854b4581757aadf46728f64e548e14dfceabb7e6dd2dfca5",
-      "bytes": 1194875
-    },
-    {
-      "path": "public/game/sprites/v109/pit/scar/scar-throw-victim-left-isolated-5-gutter-r1-v109.png",
-      "sha256": "34fa8678d6d979ffc80200eecff09708baf3cca3dd07f54d094d6887fd20a97c",
-      "bytes": 1499671
-    },
-    {
-      "path": "public/game/sprites/v109/pit/scar/scar-throw-victim-left-v109.png",
-      "sha256": "46adfc94048c75e60f01590aa7619cacc6c934f20489c7003d24209477af0429",
-      "bytes": 2341573
-    },
-    {
-      "path": "public/game/sprites/v109/pit/scar/scar-throw-victim-right-isolated-2-gutter-r1-v109.png",
-      "sha256": "a83f6621c6312f4080cd428358e89369d5c9f3e257742bbb8513b9c2dba2856e",
-      "bytes": 1458006
-    },
-    {
-      "path": "public/game/sprites/v109/pit/scar/scar-throw-victim-right-isolated-3-v109.png",
-      "sha256": "bd1ca19aecfc3e6c1579838d826461dad56b885c167644452c91a276cd54bd2a",
-      "bytes": 1876383
-    },
-    {
-      "path": "public/game/sprites/v109/pit/scar/scar-throw-victim-right-isolated-4-v109.png",
-      "sha256": "07f216fb8e1145169bb377fc5f11bc6da8193848a962ba23a8aea6f34c07cff6",
-      "bytes": 1377113
-    },
-    {
-      "path": "public/game/sprites/v109/pit/scar/scar-throw-victim-right-isolated-5-v109.png",
-      "sha256": "2105306a7d2462540ba864498659c44f193983a49daac0e2a68c2b75053157e8",
-      "bytes": 1516350
-    },
-    {
-      "path": "public/game/sprites/v109/pit/scar/scar-throw-victim-right-v109.png",
-      "sha256": "24cdb66b63f585ac952d035a27006805d3b04136448fb3c22f4a9b3d6c7dfcf9",
-      "bytes": 2164133
-    },
-    {
-      "path": "public/game/sprites/v34/pit/feral-hunter/feral-hunter-crouch-v34.png",
-      "sha256": "b4d325c71e9ff6b8b799f4b7d3681b40dc1fb58db759cd51fc0ae51c92ff88f3",
-      "bytes": 2112400
-    },
-    {
-      "path": "public/game/sprites/v34/pit/feral-hunter/feral-hunter-guard-v34.png",
-      "sha256": "e9ff3cd206cdb3751bcad44ae116f8c9b9fc0ecc528a7fd75917dd4293226806",
-      "bytes": 2236911
-    },
-    {
-      "path": "public/game/sprites/v34/pit/feral-hunter/feral-hunter-hurt-v34.png",
-      "sha256": "779612a2564d8823582d2ff12f8f969947f33b8212113107c3bbef0907a14e0b",
-      "bytes": 2056250
-    },
-    {
-      "path": "public/game/sprites/v34/pit/feral-hunter/feral-hunter-idle-v34.png",
-      "sha256": "db5aebcd23175ce3efec94cb6bcebf9e4bb3d099f02fb20d49224d7b36f57f33",
-      "bytes": 2100765
-    },
-    {
-      "path": "public/game/sprites/v34/pit/feral-hunter/feral-hunter-light-v34.png",
-      "sha256": "35a34210df4018ab0b6140f1985e1144a90a652e5fb96e6742a5ef6aeb7324fb",
-      "bytes": 2107382
-    },
-    {
-      "path": "public/game/sprites/v34/pit/feral-hunter/feral-hunter-repair-medium-spacing-v34.png",
-      "sha256": "85d86cd6297f251ae21bf2c2862ff796b8c59edac87aaddbd6ccd402970d0a23",
-      "bytes": 1749435
-    },
-    {
-      "path": "public/game/sprites/v34/pit/feral-hunter/feral-hunter-repair-walk-backward-contacts-v34.png",
-      "sha256": "7c74e35203814a394f1790eb34b378ff4bba62ee3e20494392baeea6a4009507",
-      "bytes": 2020691
-    },
-    {
-      "path": "public/game/sprites/v34/pit/feral-hunter/feral-hunter-repair-walk-forward-cycle-v34.png",
-      "sha256": "71374a2cff78917a4944e21e0fe5df6e35a0c1821af69fac41e755b94e53e5e1",
-      "bytes": 2064810
-    },
-    {
-      "path": "public/game/sprites/v34/pit/scar/scar-crouch-v34.png",
-      "sha256": "7b4a04c23132c2f89ddbfebed5fb715ddf5c0f266d0eae3ea8858d815f5a703e",
-      "bytes": 2062567
-    },
-    {
-      "path": "public/game/sprites/v34/pit/scar/scar-guard-v34.png",
-      "sha256": "220d62176002c2695ce57f51179cbe11c324f8e0708ba47442ac979cd590d590",
-      "bytes": 2174399
-    },
-    {
-      "path": "public/game/sprites/v34/pit/scar/scar-heavy-v34.png",
-      "sha256": "3bd289a8ddcb5dfd483f4e5dc5eaaf028b5dca02c565d1cb85f54bfbf5e498e3",
-      "bytes": 2232291
-    },
-    {
-      "path": "public/game/sprites/v34/pit/scar/scar-hurt-v34.png",
-      "sha256": "7090d329fd96402ff5b73079345ed52dadb2effda04e3c5a74ad05e5ea5ea8de",
-      "bytes": 2126041
-    },
-    {
-      "path": "public/game/sprites/v34/pit/scar/scar-idle-v34.png",
-      "sha256": "725a14de4bf905122f4585663b2654d7925f57089fdbdae383e06da1290ec8c4",
-      "bytes": 2216119
-    },
-    {
-      "path": "public/game/sprites/v34/pit/scar/scar-medium-v34.png",
-      "sha256": "caa475bb7001a6795bdd677ce1d97b94f1078ccd1679f2d2961ea2498a5e1919",
-      "bytes": 1981066
-    },
-    {
-      "path": "public/game/sprites/v34/pit/scar/scar-repair-light-mount-v34.png",
-      "sha256": "2c52131d1721389e910d3c48d90445d73fb833495ed38d7b173ca3d6a8b66486",
-      "bytes": 2036690
-    },
-    {
-      "path": "public/game/sprites/v34/pit/scar/scar-repair-walk-backward-support-v34.png",
-      "sha256": "a235f315b4e00bdfabec9d49830d039a153a4e8b23d6743965fe99d4af838599",
-      "bytes": 2147132
-    },
-    {
-      "path": "public/game/sprites/v59/pit/feral/launcher-left.png",
-      "sha256": "531d9a0e6b300e957bd633ba2300872c41c7ba766e7e2e12b70e505335ae3f14",
-      "bytes": 2212312
-    },
-    {
-      "path": "public/game/sprites/v59/pit/feral/launcher-right.png",
-      "sha256": "feb0b99112cb55470b0c9211461793a85ac8c4538a59ed24026366ff8e7a31ca",
-      "bytes": 2148287
-    },
-    {
-      "path": "public/game/sprites/v59/pit/feral/shield-left.png",
-      "sha256": "b5f2f91c9beb78c9d78bd83f30ae40af54f3f5546e919a6016ac3299eff27585",
-      "bytes": 2340749
-    },
-    {
-      "path": "public/game/sprites/v59/pit/feral/shield-right.png",
-      "sha256": "a562123e1c19cc98b8614d479ef9f70b5499482142a8895f2aaaa7e8cd0953d2",
-      "bytes": 2267581
-    },
-    {
-      "path": "public/game/sprites/v7/enemies/humanoid-badblood/colonial-marine-sheet.png",
-      "sha256": "ee0549e4e4c97c4a9ec625069a785f3300313a99b12adbc275d46619ddacdb22",
-      "bytes": 214515
-    },
-    {
-      "path": "public/game/sprites/v7/enemies/humanoid-badblood/colonial-sniper-sheet.png",
-      "sha256": "2bd8587014c13569142372a6b0cadbe2a34df046843536078b8c5ac6588c6599",
-      "bytes": 167539
-    },
-    {
-      "path": "public/game/sprites/v7/enemies/humanoid-badblood/frontier-raider-sheet.png",
-      "sha256": "1469c756acd68d3085e9b27c1179d637813ff42a5a7790f14cbfb36bf6c4e1bb",
-      "bytes": 202638
+      "sha256": "b6f66c44520b769f70c386f37c4bd80d46331bcada047e5108827ad45ba79352",
+      "bytes": 51563
     },
     {
       "path": "scripts/build-excel-followup-v100.py",
@@ -10647,11 +7995,6 @@
       "path": "scripts/build-validation-summary-v109.mjs",
       "sha256": "47167f324b8366eae1749e4b75e79ede9d010c22976e2869fc4f015e0f7b2972",
       "bytes": 2961
-    },
-    {
-      "path": "scripts/campaign-browser-helpers.mjs",
-      "sha256": "e2498c702c844d41a902697cbd4e2058c406c180f17b5bd990f530902cdf7aea",
-      "bytes": 1399
     },
     {
       "path": "scripts/historical-excel-context-v109.mjs",
@@ -10679,34 +8022,14 @@
       "bytes": 6852
     },
     {
-      "path": "scripts/pit-selection-browser-helpers.mjs",
-      "sha256": "c09d2a4b15dd66f1fe42d5d0728f2c1cd9b12ff599c213d383fc3aa9cfb34430",
-      "bytes": 4665
-    },
-    {
       "path": "scripts/publish-validation-domain-v109.mjs",
       "sha256": "bc26f0dba9d93685bf4f35a94e83cea5ef548a7d55012ead15d7513f229723c9",
       "bytes": 7315
     },
     {
-      "path": "scripts/qa-clan-supply-route-v109.mjs",
-      "sha256": "8acad384d3fb9074fd84aa523808e34db2e477c90d9c132b6242c832b5cb954b",
-      "bytes": 32081
-    },
-    {
-      "path": "scripts/qa-homeworld-plaque-v109.mjs",
-      "sha256": "3935bb6fc5e20f497ea177dd8a18778a0e1736a4e2f050505b49a71b5b64c446",
-      "bytes": 23588
-    },
-    {
-      "path": "scripts/qa-pit-forward-throws-v109.mjs",
-      "sha256": "ea592c0b0a8ece2268ad284e48621ac53231d634b2693ad0aa86ed1530b09fad",
-      "bytes": 27771
-    },
-    {
-      "path": "scripts/qa-preserve-biomes-v109.mjs",
-      "sha256": "54c5a059b8815423cc243ca77bcfbb1cbf75a2d21a5e6fa3c0b458ba25954e5a",
-      "bytes": 21903
+      "path": "scripts/review-pit-native-borders-v109.py",
+      "sha256": "fc39ea46cb48c4040a44e042be5c6a0a96ae879747a5e7b10309918c2427fc07",
+      "bytes": 5625
     },
     {
       "path": "scripts/snapshot-runtime-v109.mjs",
@@ -10720,8 +8043,8 @@
     },
     {
       "path": "tests/excel-followup-v109.test.mjs",
-      "sha256": "93f063e67f9895d388e1657b8deff9a7b33821aa76ffcdd06b4d129bb1235334",
-      "bytes": 7854
+      "sha256": "f8c40c1ce0a45c728da34d19df59cfd44b77449e887215a9949c0dcbe8fbff5f",
+      "bytes": 8304
     },
     {
       "path": "tests/excel-history-v109.test.mjs",
@@ -10752,21 +8075,6 @@
       "path": "tests/game-reserve-rendering-v109.test.mjs",
       "sha256": "d21430a21ca973876777364c3d7f74e11b3eeedce0069fa236160c4d73e03427",
       "bytes": 4872
-    },
-    {
-      "path": "tests/helpers/archive-plaque-v109-route.mjs",
-      "sha256": "229d92e30046602d46f244ff5f3818db5ead1918f12a418f609c664376a290c7",
-      "bytes": 3355
-    },
-    {
-      "path": "tests/helpers/clan-supply-route-v109-fixture.mjs",
-      "sha256": "200c305dd23bc4b2572c4364e8a7f22c4b5378638a5ea63cd66c11beff64b45f",
-      "bytes": 5236
-    },
-    {
-      "path": "tests/helpers/solo-v67-campaign-route.mjs",
-      "sha256": "50dc9c5ddbd91306cca8fc6bf1eebca9829cd46242cbe78f254c87f738e6c411",
-      "bytes": 1270
     },
     {
       "path": "tests/homeworld-archive-plaque-v109.test.mjs",
@@ -10802,6 +8110,11 @@
       "path": "tests/production-publication-v109.test.mjs",
       "sha256": "d2800b58ec7f0bee174f277c9a5359144048421d5cfa931c1626e712313f316a",
       "bytes": 4702
+    },
+    {
+      "path": "tests/test_pit_native_borders_v109.py",
+      "sha256": "3b8a9ba46c156d9bfc50dad7f8b75ed3ad8d207ba492ac164e6659e5ab41d184",
+      "bytes": 4701
     }
   ],
   "validations": [
@@ -10828,216 +8141,6 @@
         }
       ],
       "limit": "Ces tests vérifient les vrais fichiers V108 au commit 2d888 ; ils ne certifient pas le jeu V109. Les 72 PNG/reçus sont copiés dans le package privé pour garder le refus original des symlinks."
-    },
-    {
-      "id": "V109-EXCEL-STRUCTURE",
-      "status": "PASS_STRUCTURE_TARGETED",
-      "scope": "11 assertions finales après promotion : 97 feuilles dont85historiques intactes,56besoins toujours ouverts,1359entrées gelées,208contrôles/65captures du même build, reproductibilité, capsule privée et invariants de publication/inventaire.",
-      "command": "node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/excel-history-v109.test.mjs tests/excel-followup-v109.test.mjs tests/production-publication-v109.test.mjs",
-      "evidence": [
-        {
-          "path": "docs/qa/v109-excel-followup/excel-tests.log",
-          "sha256": "a9764836328e4b489da19bb9f27a29d4295d065f1fedaaa32f1c5971e21699f5",
-          "bytes": 1990
-        },
-        {
-          "path": "tests/excel-followup-v109.test.mjs",
-          "sha256": "93f063e67f9895d388e1657b8deff9a7b33821aa76ffcdd06b4d129bb1235334",
-          "bytes": 7854
-        },
-        {
-          "path": "tests/excel-history-v109.test.mjs",
-          "sha256": "18253aea7c45260b051b3a228d091c4a00c4d1977e7383c4f10b21312856b7ce",
-          "bytes": 2985
-        },
-        {
-          "path": "tests/production-publication-v109.test.mjs",
-          "sha256": "d2800b58ec7f0bee174f277c9a5359144048421d5cfa931c1626e712313f316a",
-          "bytes": 4702
-        }
-      ],
-      "limit": "Vérifie structure et preuves locales ; ne lance ni navigateur ni Excel natif. Le refus d’un classeur historique falsifié est un cas négatif attendu."
-    },
-    {
-      "id": "V109-INPUT-REGRESSIONS",
-      "status": "PASS_LOCAL_REGRESSION",
-      "scope": "135assertions,0échec/0ignorée. Entrées, interruptions, focus, stockage, manettes et chargeurs d’images du jeu courant.",
-      "command": "node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/homeworld-input-runtime.test.mjs tests/ship-hub-input-runtime.test.mjs tests/ash-expedition-input-runtime.test.mjs tests/regional-input-edges-v94.test.mjs tests/homeworld-motion-assets-v74.test.mjs tests/hunt-input-runtime.test.mjs tests/pit-gamepad-assignments.test.mjs tests/regional-lifecycle-v94.test.mjs tests/scene-image-loader-v94.test.mjs",
-      "evidence": [
-        {
-          "path": "docs/qa/v109-validation/input-runtime-regressions.log",
-          "sha256": "430252078c7ef82cab0ab61ec833c1c5fbbe8119881f7c58b6b4468f59650a1b",
-          "bytes": 13289
-        }
-      ],
-      "limit": "Exécution Node22 du code et des fixtures indiqués ; ne constitue ni un parcours navigateur du buildV109 ni une clôture source. Les5groupes portent438assertions ; aucun contrôle navigateur n’y est additionné."
-    },
-    {
-      "id": "V109-V104-REGRESSIONS",
-      "status": "PASS_LOCAL_REGRESSION",
-      "scope": "46assertions,0échec/0ignorée. Normales/UV, carte, frontières et suivi V104 ; anciennes preuves gardent leur contexte historique.",
-      "command": "node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v104.test.mjs",
-      "evidence": [
-        {
-          "path": "docs/qa/v109-validation/v104-regressions.log",
-          "sha256": "e05fcaa3c70f181751af473df534ddd484015cbb7d609d1db5f1ca3f9dc3cf7f",
-          "bytes": 5370
-        }
-      ],
-      "limit": "Exécution Node22 du code et des fixtures indiqués ; ne constitue ni un parcours navigateur du buildV109 ni une clôture source. Les5groupes portent438assertions ; aucun contrôle navigateur n’y est additionné."
-    },
-    {
-      "id": "V109-V105-V106-REGRESSIONS",
-      "status": "PASS_LOCAL_REGRESSION",
-      "scope": "126assertions,0échec/0ignorée. Régressions V105/V106 et cohérence de leurs artefacts versionnés ; aucun ancien gel requalifié en V109.",
-      "command": "node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v105.test.mjs tests/*-v106.test.mjs",
-      "evidence": [
-        {
-          "path": "docs/qa/v109-validation/v105-v106-regressions.log",
-          "sha256": "4e0c56e1e2206c0f45dc903504947c82f1235b88ea299bd26a7327dd7221f747",
-          "bytes": 14684
-        }
-      ],
-      "limit": "Exécution Node22 du code et des fixtures indiqués ; ne constitue ni un parcours navigateur du buildV109 ni une clôture source. Les5groupes portent438assertions ; aucun contrôle navigateur n’y est additionné."
-    },
-    {
-      "id": "V109-WORLDS-LOCAL",
-      "status": "PASS_LOCAL_REGRESSION",
-      "scope": "50assertions,0échec/0ignorée. Tournée physique et stockage, deux réservesV5, carnetROLE03 et navigation cargo dynamiques du vrai code courant.",
-      "command": "node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/clan-supply-route-v109.test.mjs tests/game-reserve-biomes-persistence-v109.test.mjs tests/game-reserve-biomes-v109.test.mjs tests/game-reserve-rendering-v109.test.mjs tests/homeworld-archive-plaque-v109.test.mjs tests/homeworld-dynamic-navigation-v109.test.mjs",
-      "evidence": [
-        {
-          "path": "docs/qa/v109-validation/worlds-tests.log",
-          "sha256": "13b7dfaff411ca9d85627188b548832b81566b564cae95d6e0dacc9c863828cd",
-          "bytes": 6446
-        }
-      ],
-      "limit": "Exécution Node22 du code et des fixtures indiqués ; ne constitue ni un parcours navigateur du buildV109 ni une clôture source. Les5groupes portent438assertions ; aucun contrôle navigateur n’y est additionné."
-    },
-    {
-      "id": "V109-ARCHIVE-REGRESSIONS",
-      "status": "PASS_LOCAL_REGRESSION",
-      "scope": "81assertions,0échec/0ignorée. Slots, archives complètes et adversariales, transferts et intégrité atomique.",
-      "command": "node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/campaign-slots.test.mjs tests/complete-archive.test.mjs tests/complete-archive-adversarial.test.mjs tests/archive-transfer-guard.test.mjs",
-      "evidence": [
-        {
-          "path": "docs/qa/v109-validation/archive-regressions.log",
-          "sha256": "5a102fe4450e1e7f4a45bd8978a58fea6d1b44c6c8c7bf58726160b21007008d",
-          "bytes": 8629
-        }
-      ],
-      "limit": "Exécution Node22 du code et des fixtures indiqués ; ne constitue ni un parcours navigateur du buildV109 ni une clôture source. Les5groupes portent438assertions ; aucun contrôle navigateur n’y est additionné."
-    },
-    {
-      "id": "V109-ALL-UNIT-TESTS",
-      "status": "PASS_LOCAL_95",
-      "scope": "95 assertions V109, zéro échec ni test ignoré : Pit, Clans, Preserve, ROLE03/Atlas, capsule et structure Excel. Les 11 contrôles Excel/histoire/publication sont rejoués après la promotion du registre.",
-      "command": "node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v109.test.mjs",
-      "evidence": [
-        {
-          "path": "docs/qa/v109-validation/unit-tests.log",
-          "sha256": "ad51723c8277d92f7edc9aa7144efdd8d62c6e03746a5d5e49dbd27c771576ea",
-          "bytes": 12263
-        },
-        {
-          "path": "docs/qa/v109-validation/pit-tests.log",
-          "sha256": "f8b13f1a7926f13310634de70745ae3271a09bc1b33ff323048539ede0bff67e",
-          "bytes": 4066
-        }
-      ],
-      "limit": "Exécution locale Node22 précédant la finalisation du classeur ; les 34 tests Pit en sont un sous-ensemble et ne sont pas additionnés à 95."
-    },
-    {
-      "id": "V109-TYPES-LINT",
-      "status": "PASS_TYPES_ZERO_LINT_ERRORS",
-      "scope": "TypeScript sans erreur ; lint global zéro erreur, 171 avertissements sur fichiers historiques inchangés. Les fichiers modifiés ont leur lint ciblé propre.",
-      "command": "npm run typecheck ; npm run lint",
-      "evidence": [
-        {
-          "path": "docs/qa/v109-validation/typecheck.log",
-          "sha256": "7e963cd266edc6da8946458eef070015c14509120a807963ef61b9535323931b",
-          "bytes": 59
-        },
-        {
-          "path": "docs/qa/v109-validation/lint.log",
-          "sha256": "ed752271e85241243cad663606cb3db64747cafbf5ff5f601f1a367fc1eb7e05",
-          "bytes": 23874
-        }
-      ],
-      "limit": "Les 171 avertissements historiques restent déclarés ; ceci ne remplace ni une preuve navigateur ni Excel natif."
-    },
-    {
-      "id": "V109-PRODUCTION-BUILD-R2",
-      "status": "PASS_COMPILED_BUILD",
-      "scope": "Build de production R2 FJ6IbT6OZx1H51wYnNmex pour runtime 63cfb392a72438623f8031257e54497ece390aa8, sur les 1359 entrées du gel final. Aucun fichier app/art ni règle de jeu changé par le correctif de lecture Pit.",
-      "command": "npm run build:production",
-      "evidence": [
-        {
-          "path": "docs/qa/v109-validation/production-build-r2.log",
-          "sha256": "42b04a784f6117987a68e9b67495041f5f87cc7c6c35869ac47200b7894127f2",
-          "bytes": 4541
-        },
-        {
-          "path": "docs/v109-runtime-freeze.json",
-          "sha256": "e01f55d66dbae26b350101d3b06a9c306a2aa42ac19510944e82dcd60a1d19d1",
-          "bytes": 251341
-        }
-      ],
-      "limit": "La compilation et les vérifications serveur sont complétées par quatre recettes réelles ; ni déploiement externe, ni fumée native-origin/static-output hors du contexte Vercel exact n’est prétendue."
-    },
-    {
-      "id": "V109-CURRENT-PRODUCTION",
-      "status": "PASS_CIBLE_PRODUCTION",
-      "scope": "Quatre parcours ciblés sur l’unique build R2 FJ6IbT6OZx1H51wYnNmex : 208 contrôles et 65 captures inspectées, erreurs navigateur/console nulles et sources exactes avant/après.",
-      "command": "node scripts/build-validation-summary-v109.mjs --entry docs/qa/v109-pit/entry.json --entry docs/qa/v109-homeworld/entry.json --entry docs/qa/v109-clans/entry.json --entry docs/qa/v109-preserve/entry.json --runtime-commit 63cfb392a72438623f8031257e54497ece390aa8 --build-id FJ6IbT6OZx1H51wYnNmex",
-      "evidence": [
-        {
-          "path": "docs/v109-validation-summary.json",
-          "sha256": "615663776d68f75a97aad3df7112d07757c8c5807f11a8ecda2db171a315af02",
-          "bytes": 17959
-        },
-        {
-          "path": "docs/v109-pit-validation.json",
-          "sha256": "8d47e48f73fe9e32c2c229bc9706c3896b6259fbca616cb26b385cabc610ca86",
-          "bytes": 90858
-        },
-        {
-          "path": "docs/v109-homeworld-validation.json",
-          "sha256": "d5ba15653acb2b813923b0fe82a178eebb261f0b83da0e8812a33c9ff38c0227",
-          "bytes": 23496
-        },
-        {
-          "path": "docs/v109-clans-validation.json",
-          "sha256": "addd0125f08e17b3cf639521fb561a6872200c4cff1bb7d0eb5dddf67ae62b48",
-          "bytes": 15490
-        },
-        {
-          "path": "docs/v109-preserve-validation.json",
-          "sha256": "f3347498c8944de20abb19ffef4ec741e54a6781f02aa244e878ab80efb8229d",
-          "bytes": 30495
-        },
-        {
-          "path": "docs/qa/v109-pit/visual-inspection.json",
-          "sha256": "12542998eab84b9734b97911d061538130fe1967d2c27c96c699456456e96808",
-          "bytes": 6187
-        },
-        {
-          "path": "docs/qa/v109-homeworld/visual-inspection.json",
-          "sha256": "7e57e7c96c1d68d7f3f40ceff16824910e35032c034be60f32b995c37b485932",
-          "bytes": 6596
-        },
-        {
-          "path": "docs/qa/v109-clans/visual-inspection.json",
-          "sha256": "725c4c874750285a347494bec463f8086f36514fe2922eda7d2b76dd6a524c8a",
-          "bytes": 306
-        },
-        {
-          "path": "docs/qa/v109-preserve/visual-inspection.json",
-          "sha256": "3b82b2ef9ba97058363abe0487e20b74bccd2bf8869bad1ef599ea35d2e1e3e4",
-          "bytes": 740
-        }
-      ],
-      "limit": "65 Pit, 55 Homeworld, 38 Clans et 50 Preserve ; captures 19/11/8/27. Les anciens 175 contrôles et 47 captures V108 ne sont pas additionnés. Tous les 56 besoins source et les neuf actions restent ouverts."
     },
     {
       "id": "V109-PIT-FIRST-PRODUCTION",
@@ -11175,6 +8278,161 @@
         }
       ],
       "limit": "Résultat non promu, conservé sans réécriture ; aucun contrôle ni capture de cet essai n’entre dans les totaux PASS. Les observations diagnostiques sont bornées : aucun blur constaté dans ce diagnostic, transitions de visibilité non journalisées ; aucune cause de pause n’est déduite."
+    },
+    {
+      "id": "V109-PRE-REVIEW-CERTIFICATE",
+      "status": "HERITE_FJ6_NON_COURANT",
+      "scope": "Ancien certificat FJ6 :208contrôles/65captures,95testsV109,438assertions de groupes partiellement recouvrants, types/lint/build. Les métadonnées exactes sont archivées avant correction ; elles ne certifient pas les nouveaux fichiers.",
+      "command": "Conservation byte exacte des métadonnées du contexte revu1252 ; voir previous-certified-manifest.json.",
+      "evidence": [
+        {
+          "path": "docs/qa/v109-review-corrections/previous-certified-manifest.json",
+          "bytes": 5062,
+          "sha256": "5b884fcb1a6c71c3186a361d9967b1a7c34d04e42aad569ad5f0ac791da648cd"
+        },
+        {
+          "path": "docs/qa/v109-review-corrections/previous-certified/v109-workstreams-source.json",
+          "sha256": "572a16ce8d2bf64587f2ad0d9740c44d965ef82f01bc300e684213d299878a79",
+          "bytes": 60235
+        },
+        {
+          "path": "docs/qa/v109-review-corrections/previous-certified/v109-workstreams.json",
+          "sha256": "09a18d720399564c5e19e72de4d95cf6b50f2f933addfdb9e8544fb8355cd566",
+          "bytes": 791608
+        },
+        {
+          "path": "docs/qa/v109-review-corrections/previous-certified/v109-excel-followup-qa.json",
+          "sha256": "920e5af00e985d9ac368b66da311d0afc4bef789d6cfad9887f3b4af156be48a",
+          "bytes": 5356
+        },
+        {
+          "path": "docs/qa/v109-review-corrections/previous-certified/v109-validation-summary.json",
+          "sha256": "615663776d68f75a97aad3df7112d07757c8c5807f11a8ecda2db171a315af02",
+          "bytes": 17959
+        },
+        {
+          "path": "docs/qa/v109-review-corrections/previous-certified/v109-runtime-freeze.json",
+          "sha256": "e01f55d66dbae26b350101d3b06a9c306a2aa42ac19510944e82dcd60a1d19d1",
+          "bytes": 251341
+        },
+        {
+          "path": "docs/qa/v109-review-corrections/previous-certified/v109-runtime-public-inputs.json",
+          "sha256": "e9bcb1caedaecef71c4db979ba21c411234cbbdab244ed1609a5a3ce998e176f",
+          "bytes": 17780
+        },
+        {
+          "path": "docs/qa/v109-review-corrections/previous-certified/excel-followup-v109.md",
+          "sha256": "6d85074fe2e5725d41c80deaf5dd69dfde521430b300645efe86813d152f0dd2",
+          "bytes": 7426
+        },
+        {
+          "path": "docs/qa/v109-review-corrections/previous-certified/v109-pit-validation.json",
+          "sha256": "8d47e48f73fe9e32c2c229bc9706c3896b6259fbca616cb26b385cabc610ca86",
+          "bytes": 90858
+        },
+        {
+          "path": "docs/qa/v109-review-corrections/previous-certified/v109-homeworld-validation.json",
+          "sha256": "d5ba15653acb2b813923b0fe82a178eebb261f0b83da0e8812a33c9ff38c0227",
+          "bytes": 23496
+        },
+        {
+          "path": "docs/qa/v109-review-corrections/previous-certified/v109-clans-validation.json",
+          "sha256": "addd0125f08e17b3cf639521fb561a6872200c4cff1bb7d0eb5dddf67ae62b48",
+          "bytes": 15490
+        },
+        {
+          "path": "docs/qa/v109-review-corrections/previous-certified/v109-preserve-validation.json",
+          "sha256": "f3347498c8944de20abb19ffef4ec741e54a6781f02aa244e878ab80efb8229d",
+          "bytes": 30495
+        },
+        {
+          "path": "docs/qa/v109-review-corrections/previous-certified/visual-inspection-pit.json",
+          "sha256": "12542998eab84b9734b97911d061538130fe1967d2c27c96c699456456e96808",
+          "bytes": 6187
+        },
+        {
+          "path": "docs/qa/v109-review-corrections/previous-certified/visual-inspection-homeworld.json",
+          "sha256": "7e57e7c96c1d68d7f3f40ceff16824910e35032c034be60f32b995c37b485932",
+          "bytes": 6596
+        },
+        {
+          "path": "docs/qa/v109-review-corrections/previous-certified/visual-inspection-clans.json",
+          "sha256": "725c4c874750285a347494bec463f8086f36514fe2922eda7d2b76dd6a524c8a",
+          "bytes": 306
+        },
+        {
+          "path": "docs/qa/v109-review-corrections/previous-certified/visual-inspection-preserve.json",
+          "sha256": "3b82b2ef9ba97058363abe0487e20b74bccd2bf8869bad1ef599ea35d2e1e3e4",
+          "bytes": 740
+        }
+      ],
+      "limit": "Ancien classeur6ea conservé en Git. Les références internes des JSON archivés ne sont pas redirigées vers le code corrigé ; aucune nouvelle recette ni nouveau gel ne sont prétendus."
+    },
+    {
+      "id": "V109-REVIEW-SPATIAL-ALPHA",
+      "status": "PASS_LOCAL_CORRECTION",
+      "scope": "Six cas de différence alpha spatiale : nombres égaux/disjonction/retrait seul/seuil/bords demi-ouverts/CLI stricte. Le nouveau rapport couvre48poses sans ajout ni retrait de pixels du cœur ; UV/SHA inchangés.",
+      "command": "python3 -m unittest discover -s tests -p test_pit_native_borders_v109.py -v",
+      "evidence": [
+        {
+          "path": "docs/qa/v109-review-corrections/excel-native-border-unit.log",
+          "bytes": 1302,
+          "sha256": "661071561a82b98930e7bbb8acd7c04616741f2493c5fbbc05064d13b5f65280"
+        },
+        {
+          "path": "tests/test_pit_native_borders_v109.py",
+          "bytes": 4701,
+          "sha256": "3b8a9ba46c156d9bfc50dad7f8b75ed3ad8d207ba492ac164e6659e5ab41d184"
+        },
+        {
+          "path": "scripts/review-pit-native-borders-v109.py",
+          "bytes": 5625,
+          "sha256": "fc39ea46cb48c4040a44e042be5c6a0a96ae879747a5e7b10309918c2427fc07"
+        },
+        {
+          "path": "docs/suivi-production/v109-pit-forward/native-uv-border-review-spatial.json",
+          "bytes": 36312,
+          "sha256": "560a552eccb4c3085b4d6250c4ab3f553e79ba8b7e771a2d5c2525c7762f6d96"
+        }
+      ],
+      "limit": "Vérification locale du calcul corrigé et de ses vrais PNG, sans réécrire le rapport précédent ni certifier le futur build. AucunPNG, UV, pivot ou admission modifié."
+    },
+    {
+      "id": "V109-EXCEL-STRUCTURE",
+      "status": "PASS_STRUCTURE_PENDING",
+      "scope": "11 assertions du suivi intermédiaire :97feuilles/85historiques,56besoins ouverts, quatrepérimètresA_VALIDER, production:null, aucunanciencertificat promu ; reproductibilité, capsuleV108 et inventaire exacts.",
+      "command": "node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/excel-history-v109.test.mjs tests/excel-followup-v109.test.mjs tests/production-publication-v109.test.mjs",
+      "evidence": [
+        {
+          "path": "docs/qa/v109-review-corrections/excel-pending-tests.log",
+          "bytes": 1992,
+          "sha256": "993cb9365567115566a5e39adde928c285ef4aeca35c179ea0c1d8e1a0991f73"
+        },
+        {
+          "path": "tests/excel-followup-v109.test.mjs",
+          "bytes": 8304,
+          "sha256": "f8c40c1ce0a45c728da34d19df59cfd44b77449e887215a9949c0dcbe8fbff5f"
+        },
+        {
+          "path": "tests/excel-history-v109.test.mjs",
+          "bytes": 2985,
+          "sha256": "18253aea7c45260b051b3a228d091c4a00c4d1977e7383c4f10b21312856b7ce"
+        },
+        {
+          "path": "tests/production-publication-v109.test.mjs",
+          "bytes": 4702,
+          "sha256": "d2800b58ec7f0bee174f277c9a5359144048421d5cfa931c1626e712313f316a"
+        }
+      ],
+      "limit": "Le statutPENDING est testé explicitement ; le nombre d’entrées du nouveau gel et les nouvelles preuves seront vérifiés seulement après leur publication. Aucun navigateur niExcel natif lancé."
+    },
+    {
+      "id": "V109-REVIEW-CORRECTIONS-PENDING",
+      "status": "A_VALIDER",
+      "scope": "Titre/notice Preserve quatre réserves ; compatibilité des deux variables Chromium dans cinq lanceurs QA ; différence alpha spatiale sur les48poses et constantes CPU nommées à valeurs inchangées.",
+      "command": "Attendre stabilité de la revue native, tests du code corrigé, puis nouveau gel/build et quatre recettes complètes.",
+      "evidence": [],
+      "limit": "AucunPNG ni mécanique de combat changés attendus ; les56besoins source, neufactions et sourceCompletion=false restent conservés."
     }
   ],
   "limits": [
@@ -11187,8 +8445,7 @@
     "Les six ouvrages restent des exercices sans acquisition de campagne ni correspondance arbitraire K01→CON-T.",
     "Les 21 reçus V6.13 et 36 traces/PNG V6.10 restent non récupérés ; le contrôle de cohérence local ne certifie pas un fournisseur externe.",
     "Le générateur contrôle le ZIP/XML et les caches de formules ; il ne lance pas Excel natif ni le navigateur.",
-    "La validation production concerne le seul runtime63cfb392a72438623f8031257e54497ece390aa8, buildFJ6IbT6OZx1H51wYnNmex ; anciens builds et essais échoués restent non promus.",
     "Une pause isolée Preserve au contrôle tactile reste de cause non attribuée ; l’essai brut est conservé et la répétition complète inchangée passe. Aucun défaut reproductible confirmé ni correction causale n’est affirmé.",
-    "Les95assertions V109 incluent les34tests Pit et les contrôles Excel antérieurs ; le nouveau passage ciblé de11tests après promotion est consigné séparément, sans double comptage."
+    "Le précédent certificatFJ6/63cf et ses208contrôles/65captures restent historiques. Après corrections de revue, aucun résultat production courant n’est revendiqué tant que quatre nouvelles recettes du nouveau build ne sont pas publiées."
   ]
 }

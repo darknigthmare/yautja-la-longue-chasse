@@ -1,7 +1,7 @@
 {
   "scope": "All current app sources and production configuration; immutable V108 public inputs; explicit V109 public native pages, source-only references and tool receipts; exact four V109 browser drivers. Generated V109 freeze/master/report files are excluded.",
-  "files": 1359,
-  "bytes": 816443621,
+  "files": 1361,
+  "bytes": 816486400,
   "entries": [
     {
       "path": ".openai/hosting.json",
@@ -80,8 +80,8 @@
     },
     {
       "path": "app/game/ClanChroniclePanel.tsx",
-      "sha256": "9bc2168dcde2dd26e8dc7344bc77c053f09783ca98d4394c48fe6dd73f0c2070",
-      "bytes": 12439
+      "sha256": "4512720dfd5898afbdbfb98aa5e417744eed3f48adcbd35b9e5b53353db4ea99",
+      "bytes": 12467
     },
     {
       "path": "app/game/ClanLogisticsV108.module.css",
@@ -1790,8 +1790,8 @@
     },
     {
       "path": "app/game/data/pitWorkbookThrowsV109.json",
-      "sha256": "14f842f36b28b0b3746f5bf4c2b1b2ac2069803d750e8c60569389974b074b9e",
-      "bytes": 73745
+      "sha256": "0560d64c106375fdc578856e6f87bfcb863b0843dd54404bdb7a3b6e251097f3",
+      "bytes": 73747
     },
     {
       "path": "app/game/data/recentApprovedHuntersV85.json",
@@ -3795,8 +3795,8 @@
     },
     {
       "path": "app/game/systems/pitForwardThrowControlsV109.ts",
-      "sha256": "aa64fa0f1b1413d8a04b455c45e70f42b7a0c5fbeebf10c6e0efc5b23209c333",
-      "bytes": 1571
+      "sha256": "92b25f27468676bc3399adceed087e289906f944c702924c480ab5d35b434da9",
+      "bytes": 1757
     },
     {
       "path": "app/game/systems/pitGamepadAssignments.ts",
@@ -4470,8 +4470,8 @@
     },
     {
       "path": "docs/suivi-production/v109-pit-forward/native-ground-calibration.json",
-      "sha256": "f736f225bb3198331bc4b47e27ec34f1a209fa5cdc29134dbe0531cb9f5c711f",
-      "bytes": 23649
+      "sha256": "ebff201b8e89549aba240cb976b61ac315e6e8db3da22e5303b510d4ffaf0c4a",
+      "bytes": 24039
     },
     {
       "path": "docs/suivi-production/v109-pit-forward/native-gutter-delivery.json",
@@ -4482,6 +4482,11 @@
       "path": "docs/suivi-production/v109-pit-forward/native-uv-border-review-final.json",
       "sha256": "fffa66897a902c2808a90c2ad074fabeb385eaebc7b43f512bb71d0871a854bc",
       "bytes": 34430
+    },
+    {
+      "path": "docs/suivi-production/v109-pit-forward/native-uv-border-review-spatial.json",
+      "sha256": "560a552eccb4c3085b4d6250c4ab3f553e79ba8b7e771a2d5c2525c7762f6d96",
+      "bytes": 36312
     },
     {
       "path": "docs/suivi-production/v109-pit-forward/native-uv-border-review.json",
@@ -4705,8 +4710,8 @@
     },
     {
       "path": "docs/v109-runtime-public-inputs.json",
-      "sha256": "e9bcb1caedaecef71c4db979ba21c411234cbbdab244ed1609a5a3ce998e176f",
-      "bytes": 17780
+      "sha256": "972b492a9d13c9982da52b743c60c651c35219bda7224a31a62d9f32e0427702",
+      "bytes": 17829
     },
     {
       "path": "next.config.ts",
@@ -6745,23 +6750,28 @@
     },
     {
       "path": "scripts/qa-clan-supply-route-v109.mjs",
-      "sha256": "8acad384d3fb9074fd84aa523808e34db2e477c90d9c132b6242c832b5cb954b",
-      "bytes": 32081
+      "sha256": "54bb7a9722fcfb9b8384ff64d17b34a107e7cc798efbe5c16fdca86c5513810c",
+      "bytes": 32119
     },
     {
       "path": "scripts/qa-homeworld-plaque-v109.mjs",
-      "sha256": "3935bb6fc5e20f497ea177dd8a18778a0e1736a4e2f050505b49a71b5b64c446",
-      "bytes": 23588
+      "sha256": "75bbec9606d09392f8680c1c265665e337fa38e0b4d42892ee17df9eb1b590f6",
+      "bytes": 23637
     },
     {
       "path": "scripts/qa-pit-forward-throws-v109.mjs",
-      "sha256": "ea592c0b0a8ece2268ad284e48621ac53231d634b2693ad0aa86ed1530b09fad",
-      "bytes": 27771
+      "sha256": "208f49f649883251688e36b85782b4467dc64690ef6f5836ee069c772c435ca2",
+      "bytes": 27822
     },
     {
       "path": "scripts/qa-preserve-biomes-v109.mjs",
-      "sha256": "54c5a059b8815423cc243ca77bcfbb1cbf75a2d21a5e6fa3c0b458ba25954e5a",
-      "bytes": 21903
+      "sha256": "9a6574e731c3c3bc7f992c65f10ff234f34cfef6a2880dd54940225053f252e6",
+      "bytes": 21952
+    },
+    {
+      "path": "scripts/review-pit-native-borders-v109.py",
+      "sha256": "fc39ea46cb48c4040a44e042be5c6a0a96ae879747a5e7b10309918c2427fc07",
+      "bytes": 5625
     },
     {
       "path": "scripts/snapshot-runtime-v107.mjs",

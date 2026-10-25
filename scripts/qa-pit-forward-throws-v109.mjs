@@ -67,7 +67,7 @@ for (const admission of admissions) {
 assert.equal(pixelDrawings.size, 48);
 const check = (name, condition, detail) => {checks.push({name, status: condition ? 'PASS' : 'FAIL', ...(detail === undefined ? {} : {detail})}); console.log(condition ? 'PASS' : 'FAIL', name); assert(condition, name);};
 const profile = firstTracksCompleted(); profile.settings.masterVolume = 0; profile.settings.reducedGore = true;
-const browser = await chromium.launch({executablePath: process.env.CHROMIUM_EXECUTABLE_PATH ?? '/usr/bin/chromium', headless: true, args: ['--no-sandbox', '--disable-dev-shm-usage', '--mute-audio']});
+const browser = await chromium.launch({executablePath: process.env.CHROMIUM_EXECUTABLE_PATH ?? process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH ?? '/usr/bin/chromium', headless: true, args: ['--no-sandbox', '--disable-dev-shm-usage', '--mute-audio']});
 let page, context, failure;
 const canvas = () => page.locator('canvas[data-pit-technique-entities]');
 const read = () => page.evaluate(() => {
