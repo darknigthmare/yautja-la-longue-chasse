@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "status": "FAILED_PAUSED_TRIAL_NOT_PROMOTED",
+  "runtimeCommit": "63cfb392a72438623f8031257e54497ece390aa8",
+  "buildId": "FJ6IbT6OZx1H51wYnNmex",
+  "recordedAt": "2026-10-25T10:12:56.015450+00:00",
+  "scope": "An unchanged full Preserve recipe timed out while the Iskhel page showed its native paused dialog during the touch-control step. The original raw result and PNG bytes are preserved. No browser/console error or source mutation occurred. A subsequent complete unchanged recipe passed in a separate output directory. The cause of this isolated pause is not conclusively attributed; this trial is not a PASS certificate.",
+  "files": [
+    {
+      "path": "docs/qa/v109-preserve-paused-trial/browser-result-failed.json.gz",
+      "sha256": "2b73da2a284f973d4a3a27019a6dd66f8ca9d0226081035cebb373511f6c2107",
+      "bytes": 7533,
+      "decodedSha256": "a5abe34710462ac114832b2ad3cf45ddc9ffb6d3b4aee9a7b1c70e2d8f7a2fd1",
+      "decodedBytes": 54492
+    },
+    {
+      "path": "docs/qa/v109-preserve-paused-trial/browser-failed.log",
+      "sha256": "d492ca398e1d0f3bc89c4ebba60384aa1697a591fe4147e4063da169a47b13ba",
+      "bytes": 987
+    },
+    {
+      "path": "docs/qa/v109-preserve-paused-trial/failure-0.png",
+      "sha256": "9c98c781b9c7c97e0c36b3ad7a35bc4042a059e7e00cfcee077d19f93f5f7dad",
+      "bytes": 172304
+    },
+    {
+      "path": "docs/qa/v109-preserve-paused-trial/failure-1.png",
+      "sha256": "a77c6b1826f5f69ad6bceb24c3428c414b8de9d080fed1fefc7d77c328b87afb",
+      "bytes": 246660
+    },
+    {
+      "path": "docs/qa/v109-preserve-paused-trial/iskhel-choice.png",
+      "sha256": "405489043549805e52f3cc29e004f0a36c021990f484ebf71a1220ff7cb94e10",
+      "bytes": 347519
+    },
+    {
+      "path": "docs/qa/v109-preserve-paused-trial/iskhel-played-one-adult.png",
+      "sha256": "440fca7f75fbc63d55ef53deb33c9e32217bccb7087b20f0046e57e5cdfac93b",
+      "bytes": 399296
+    },
+    {
+      "path": "docs/qa/v109-preserve-paused-trial/khar-choice.png",
+      "sha256": "a92421caee8ff4174cd5145c6c41e94f93e0c5e6c9c1eb3e1ee567130f899171",
+      "bytes": 347924
+    },
+    {
+      "path": "docs/qa/v109-preserve-paused-trial/khar-native-landscape-touch.png",
+      "sha256": "302a16ffc62677869387ae050d9b20d6531c7b4f3911fd7ae186db866000ff27",
+      "bytes": 384436
+    },
+    {
+      "path": "docs/qa/v109-preserve-paused-trial/khar-played-one-adult.png",
+      "sha256": "61775ce58d50a9a3cdf8ad5cb69b5240ccb28f676954aac1462dc2ed6985c9ae",
+      "bytes": 386036
+    },
+    {
+      "path": "docs/qa/v109-preserve-paused-trial/diagnostic-note.json",
+      "sha256": "921d38976c4a4caaee7b8cda1b71ea03129fc771a226e91cece70b57fe97d722",
+      "bytes": 2471
+    },
+    {
+      "path": "docs/qa/v109-preserve-paused-trial/passive-diagnostic.json.gz",
+      "sha256": "d8d946d84a043c53b6b5e40781c9db1a600ab8d1c9a7f261a14ef174be06c248",
+      "bytes": 8840,
+      "decodedSha256": "e421be82ac1e6223e5821e0a050c4160ab11ed9d02b1be482c9101bff81db057",
+      "decodedBytes": 75612,
+      "scope": "Diagnostic JSON only, not a production PASS certificate."
+    }
+  ]
+}
