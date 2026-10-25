@@ -163,10 +163,13 @@ export async function verifyProductionSummaryV108(master, freeze) {
     const rawReference = row.portableFiles.find(item => evidencePath(item) === evidencePath(report.rawEvidence));
     assert.ok(rawReference, 'Complete executed raw evidence is required'); assert.deepEqual(rawReference, report.rawEvidence);
     const raw = portableJson.get(evidencePath(rawReference)); assert.ok(raw, 'Raw evidence must be a portable JSON result');
-    assert.equal(raw.status, 'PASS'); assert.ok(['compiled-app', 'production'].includes(raw.mode));
-    assert.equal(raw.runtimeCommit, master.runtimeCommit); assert.equal(raw.buildId, master.productionBuildId);
-    assert.deepEqual(raw.sourceBefore, before); assert.deepEqual(raw.sourceAfter, after); assert.deepEqual(raw.servedBuilds, served);
+    const rawProduction = raw.production ?? raw;
+    assert.equal(raw.status, 'PASS'); assert.ok(['compiled-app', 'production'].includes(rawProduction.mode));
+    assert.equal(rawProduction.runtimeCommit, master.runtimeCommit); assert.equal(rawProduction.buildId, master.productionBuildId);
+    assert.deepEqual(raw.sourceBefore, before); assert.deepEqual(raw.sourceAfter, after); assert.deepEqual(rawProduction.servedBuilds, served);
     assert.deepEqual(raw.errors ?? raw.browserErrors, []); assert.ok(Array.isArray(raw.checks) && raw.checks.length === production.checksPassed && raw.checks.every(check => check.status === 'PASS'));
+    for (const [field, expected] of [['checksPassed', raw.checks.length], ['checksFailed', 0], ['browserErrors', 0]]) if (Object.hasOwn(rawProduction, field)) assert.equal(rawProduction[field], expected);
+    if (row.domain === 'Clans') {assert.equal(raw.scope.context, 'linked-physical-logistics-v108'); assert.equal(raw.scope.stateInjection, false); assert.equal(raw.scope.resumedFrom, null, 'Exploratory resumed runs cannot certify the final full convoy');}
     assert.deepEqual(report.checks, raw.checks);
     if (raw.invocation) {assert.ok(raw.invocation.command?.includes('node ' + row.driver), 'Executed raw invocation must match its domain'); assert.deepEqual(report.invocation, raw.invocation);}
     else {if (raw.command?.script) assert.equal(raw.command.script, row.driver, 'Executed raw script must match its domain'); assert.deepEqual(report.invocation, {command: 'node ' + row.driver}, 'A wrapper fallback must identify exactly the source-pinned driver');}

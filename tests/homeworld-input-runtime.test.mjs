@@ -12,7 +12,7 @@ import {archiveComparisonRouteV107} from './helpers/archive-comparison-v107-rout
 
 const source = await readFile(new URL("../app/game/HomeworldHub.tsx", import.meta.url), "utf8");
 const tree = ts.createSourceFile("HomeworldHub.tsx", source, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
-const bundle = await build({ stdin: { contents: "export * from './app/game/systems/homeworldCity.ts'; export * from './app/game/systems/homeworldWorldV77.ts'; export {stepHomeworldCivicActorV80 as stepHomeworldWorldActorV77} from './app/game/systems/homeworldCivicWorldV80.ts'; export * from './app/game/systems/homeworldInteriorsV64.ts'; export * from './app/game/hunterDreadsV63.ts'; export * from './app/game/systems/homeworldYouthMotionV74.ts'; export * from './app/game/systems/homeworldLiftStationV83.ts'; export * from './app/game/systems/homeworldCartographyLedgerV104.ts'; export * from './app/game/systems/homeworldCartographyV104.ts'; export * from './app/game/systems/homeworldCartographyLedgerV105.ts'; export * from './app/game/systems/homeworldCartographyV105.ts'; export * from './app/game/systems/homeworldArchiveLedgerV106.ts'; export * from './app/game/systems/homeworldArchiveV106.ts'; export * from './app/game/systems/homeworldArchiveDefinitionV106.ts'; export * from './app/game/systems/homeworldArchiveComparisonLedgerV107.ts'; export * from './app/game/systems/homeworldArchiveComparisonV107.ts'; export * from './app/game/systems/homeworldArchiveComparisonDefinitionV107.ts';", resolveDir: process.cwd() }, bundle: true, write: false, format: "esm", platform: "node" });
+const bundle = await build({ stdin: { contents: "export * from './app/game/systems/homeworldCity.ts'; export * from './app/game/systems/homeworldWorldV77.ts'; export {stepHomeworldCivicActorV80 as stepHomeworldWorldActorV77} from './app/game/systems/homeworldCivicWorldV80.ts'; export * from './app/game/systems/homeworldInteriorsV64.ts'; export * from './app/game/hunterDreadsV63.ts'; export * from './app/game/systems/homeworldYouthMotionV74.ts'; export * from './app/game/systems/homeworldLiftStationV83.ts'; export * from './app/game/systems/homeworldCartographyLedgerV104.ts'; export * from './app/game/systems/homeworldCartographyV104.ts'; export * from './app/game/systems/homeworldCartographyLedgerV105.ts'; export * from './app/game/systems/homeworldCartographyV105.ts'; export * from './app/game/systems/homeworldArchiveLedgerV106.ts'; export * from './app/game/systems/homeworldArchiveV106.ts'; export * from './app/game/systems/homeworldArchiveDefinitionV106.ts'; export * from './app/game/systems/homeworldArchiveComparisonLedgerV107.ts'; export * from './app/game/systems/homeworldArchiveComparisonV107.ts'; export * from './app/game/systems/homeworldArchiveComparisonDefinitionV107.ts'; export * from './app/game/systems/homeworldCargoV108.ts'; export * from './app/game/systems/homeworldCargoLedgerV108.ts';", resolveDir: process.cwd() }, bundle: true, write: false, format: "esm", platform: "node" });
 const city = await import("data:text/javascript;base64," + Buffer.from(bundle.outputFiles[0].text).toString("base64"));
 
 function liveLiftOrPollingCallback(environment, name = 'poll') {
@@ -20,7 +20,7 @@ function liveLiftOrPollingCallback(environment, name = 'poll') {
   const visit = node => {
     if ((name === 'poll' || name === 'liftHydration') && ts.isCallExpression(node) && node.expression.getText(tree) === "useEffect"
       && node.arguments[0]?.getText(tree).includes(name === 'poll' ? "stepHomeworldGamepad" : "restoreHomeworldLiftStationV83")) implementation = node.arguments[0];
-    else if (['updateLiftStationV83', 'cartographyContextV104', 'sampleCartographyV104', 'interruptCartographyV104', 'cartographyContextV105', 'sampleCartographyV105', 'interruptCartographyV105', 'recordCartographyTransitV105','archiveContextV106','sampleArchiveV106','interruptArchiveV106','comparisonContextV107','sampleComparisonV107','interruptComparisonV107'].includes(name)
+    else if (['updateLiftStationV83', 'cartographyContextV104', 'sampleCartographyV104', 'interruptCartographyV104', 'cartographyContextV105', 'sampleCartographyV105', 'interruptCartographyV105', 'recordCartographyTransitV105','archiveContextV106','sampleArchiveV106','interruptArchiveV106','comparisonContextV107','sampleComparisonV107','interruptComparisonV107','cargoContextV108','sampleCargoV108','interruptCargoV108'].includes(name)
       && ts.isVariableDeclaration(node) && node.name.getText(tree) === name) implementation = node.initializer.arguments[0];
     else ts.forEachChild(node, visit);
   };
@@ -69,6 +69,9 @@ function fixture() {
     suspendedRef: { current: false }, pausedRef: { current: false }, dialogStateRef: { current: null },
     spatialCodexOpenRef: { current: false },
     wayfindingOpenRefV75: { current: false },
+    cargoWritePausedRefV108:{current:false},
+    cargoDraftRefV108:{current:city.defaultHomeworldCargoV108(owner)},
+    submitCargoV108(){throw new Error('No active V108 cargo in these declared input cases');},
     comparisonWritePausedRefV107:{current:false},
     comparisonDraftRefV107:{current:city.defaultHomeworldArchiveComparisonV107(owner)},
     submitComparisonV107(){throw new Error('No active V107 comparison in these declared input cases');},
@@ -116,7 +119,7 @@ function fixture() {
     navigator: { getGamepads: () => [pad] },
     requestAnimationFrame: frames.requestAnimationFrame, cancelAnimationFrame: frames.cancelAnimationFrame,
     stepHomeworldActor: city.stepHomeworldActor, districtAtHomeworldActor: city.districtAtHomeworldPosition,
-    persistVisit() {}, setActor() {}, setPhase() {}, setArchiveViewV106() {}, setComparisonViewV107() {},
+    persistVisit() {}, setActor() {}, setPhase() {}, setArchiveViewV106() {}, setComparisonViewV107() {}, setCargoViewV108() {},
     setDreadAngles(value) { env.dreadAngles = value; },
     setInactive(value) { inactive = value; env.pausedRef.current = paused || inactive || env.spatialCodexOpenRef.current || env.wayfindingOpenRefV75.current; },
     setPaused(value) { paused = typeof value === "function" ? value(paused) : value; env.pausedRef.current = paused || inactive || env.spatialCodexOpenRef.current || env.wayfindingOpenRefV75.current; events.push(["paused", paused]); },
@@ -125,7 +128,7 @@ function fixture() {
     closeDialog() { events.push(["close"]); env.clearInputs(); env.dialogStateRef.current = null; env.document.activeElement = world; },
   };
   env.updateLiftStationV83 = liveLiftOrPollingCallback(env, 'updateLiftStationV83');
-  for (const name of ['comparisonContextV107','sampleComparisonV107','interruptComparisonV107','archiveContextV106','sampleArchiveV106','interruptArchiveV106','cartographyContextV104', 'interruptCartographyV104', 'sampleCartographyV104', 'cartographyContextV105', 'interruptCartographyV105', 'sampleCartographyV105', 'recordCartographyTransitV105']) env[name] = liveLiftOrPollingCallback(env, name);
+  for (const name of ['cargoContextV108','sampleCargoV108','interruptCargoV108','comparisonContextV107','sampleComparisonV107','interruptComparisonV107','archiveContextV106','sampleArchiveV106','interruptArchiveV106','cartographyContextV104', 'interruptCartographyV104', 'sampleCartographyV104', 'cartographyContextV105', 'interruptCartographyV105', 'sampleCartographyV105', 'recordCartographyTransitV105']) env[name] = liveLiftOrPollingCallback(env, name);
   liveLiftOrPollingCallback(env, 'liftHydration')();
   const effect = liveLiftOrPollingCallback(env);
   const render = () => { cleanup?.(); cleanup = effect(); };

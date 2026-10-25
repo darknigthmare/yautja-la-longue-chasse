@@ -1,0 +1,84 @@
+{
+  "domain": "Pit",
+  "status": "PASS_CIBLE",
+  "buildId": "xymWQOgijMpjLfRYw7ynF",
+  "runtimeCommit": "24ea9071b673c080325a39a50afeeab6695e4926",
+  "driver": "scripts/qa-pit-campaign-v108.mjs",
+  "command": "node scripts/qa-pit-campaign-v108.mjs",
+  "report": {
+    "path": "docs/v108-pit-validation.json",
+    "sha256": "bc576bc0f8e48a923b4fa3d7715151e8e8c64eb675a2cf9150705303463717ad",
+    "bytes": 51247
+  },
+  "browserChecksPassed": 38,
+  "capturesInspected": 12,
+  "portableFiles": [
+    {
+      "path": "docs/qa/v108-pit/browser-result.json.gz",
+      "sha256": "382640a72071608e8433a1f8972c168845cb999a64be45ce66ecc5c2a918fd12",
+      "bytes": 17204,
+      "decodedSha256": "3864c3946b4001eb834d284873066fb900c529bca95008230f6d28884dd36338",
+      "decodedBytes": 276650
+    },
+    {
+      "path": "docs/qa/v108-pit/feral-hunter-physical-mine-visible-0.png",
+      "sha256": "8fbb3f759ed2edcef5366787896cae8acc51acef3323959946fc92d110b83f6a",
+      "bytes": 1920339
+    },
+    {
+      "path": "docs/qa/v108-pit/feral-hunter-first-victory-carry.png",
+      "sha256": "790bc886005b35b330538b6df1a6ae5f2129ef15c9581be679add34daaf5cbfb",
+      "bytes": 121035
+    },
+    {
+      "path": "docs/qa/v108-pit/feral-hunter-voluntary-replay.png",
+      "sha256": "139360b1dbda8200876e23371ea6ad80995298dd2460045f3a66459cf436a3c2",
+      "bytes": 1336916
+    },
+    {
+      "path": "docs/qa/v108-pit/feral-hunter-model-prepared-native-equipment-right.png",
+      "sha256": "de23bb487bed708738ed2a3729916a7663db4c2f9ac5b94eda271476fcd90649",
+      "bytes": 985098
+    },
+    {
+      "path": "docs/qa/v108-pit/feral-hunter-model-prepared-native-equipment-left.png",
+      "sha256": "bda09d795953cbafacbd2d458afe6a7c6338f2d64695cb0c94a27ab0bd66d887",
+      "bytes": 983561
+    },
+    {
+      "path": "docs/qa/v108-pit/feral-hunter-model-prepared-inspection-receipt.png",
+      "sha256": "27ae395c0f982c4df302881e69eaa31e4d5aaf6ff1205d810b1a2c6bef3c271e",
+      "bytes": 125840
+    },
+    {
+      "path": "docs/qa/v108-pit/scar-physical-shuriken-blocked-immediate-contact-6.png",
+      "sha256": "43f96cdc922a3cc4097aca585d222a84d23f44c2714c25ac3d24281ef800b61e",
+      "bytes": 1594290
+    },
+    {
+      "path": "docs/qa/v108-pit/scar-first-victory-carry.png",
+      "sha256": "fac324d24fac19a65fdb1b3c78c27a8279ae10c029d912831867926b9ea45885",
+      "bytes": 123272
+    },
+    {
+      "path": "docs/qa/v108-pit/scar-voluntary-replay.png",
+      "sha256": "2cbc4e6f55ef975d476579640026cd83ccc06089eb1a7a2e6f3007989fdea5f5",
+      "bytes": 1137474
+    },
+    {
+      "path": "docs/qa/v108-pit/scar-model-prepared-native-equipment-right.png",
+      "sha256": "12012f31e425184521a72a39567387db40694f24c189b30d60042d213dc68f00",
+      "bytes": 913876
+    },
+    {
+      "path": "docs/qa/v108-pit/scar-model-prepared-native-equipment-left.png",
+      "sha256": "5144597300fafdca8bd4439e15b50e1ed9151c8410af91f19f2dcdf0fb885561",
+      "bytes": 912282
+    },
+    {
+      "path": "docs/qa/v108-pit/scar-model-prepared-inspection-receipt.png",
+      "sha256": "b7ddd659ea4e1ed01965d4021a38fc64cd96de98b3b300467bcf252597156d8b",
+      "bytes": 127683
+    }
+  ]
+}

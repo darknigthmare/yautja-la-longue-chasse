@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
   "release": "V108",
-  "asOf": "2026-10-24",
+  "asOf": "2026-10-25",
   "baseline": {
     "path": "docs/YAUTJA_V107_SUIVI.xlsx",
     "sha256": "a9a2419702387868f6f54efd068008422609bc880b58e9a85c35a51e5fdfb66d"
   },
-  "baselineFreeze": "PENDING_RUNTIME_FREEZE",
+  "baselineFreeze": "FROZEN",
   "runtimeModules": [
     {
       "id": "reserve",
@@ -322,19 +322,37 @@
       "domain": "Guerre de clans",
       "title": "Guerre de clans : six ouvrages physiques",
       "source": "Quai, montures, confinement, duel consenti, sons situés et navire orbital.",
-      "status": "A_VALIDER",
-      "validationScope": "Amélioration partielle ; portée source complète non certifiée.",
+      "status": "VALIDE_CIBLE",
+      "validationScope": "Un convoi frais joué depuis le début, mêmes U19 et ressources finies sur les six ouvrages, duel, écoutes et trajet orbital. Exercice distinct des acquisitions de campagne ; l’identité et les soins des deux montures sont contrôlés, sans certification de leur séparation visuelle.",
       "runtime": "Chaîne logistique physique commune aux six ouvrages : même U19, stocks finis, kits et objets transportés, contrats limités, skiff/navette uniques et carnet transactionnel.",
-      "tests": "À VALIDER",
-      "browser": "À VALIDER",
+      "tests": "PASS_UNIT : 14 tests du convoi commun, des six constructions, contrats, stocks, montures, duel, navette et sauvegarde transactionnelle.",
+      "browser": "PASS_CIBLE_PRODUCTION : 42 contrôles et 7 captures inspectées sur le build commun xymWQOgijMpjLfRYw7ynF ; six constructions conservées dans le même convoi, skiff et navette identifiés, stocks finis, deux montures soignées, rails et duel, deux écoutes physiques, aller-retour orbital, rechargement et archives atomiques. Aucun état de modèle injecté ; aucun point de reprise exploratoire dans ce passage frais.",
       "implementation": [
         "app/game/systems/clanLogisticsV108.ts",
         "app/game/systems/clanLogisticsSessionV108.ts",
         "app/game/ClanLogisticsV108.tsx",
-        "app/game/ClanLogisticsV108.module.css"
+        "app/game/ClanLogisticsV108.module.css",
+        "scripts/qa-clan-logistics-v108.mjs",
+        "docs/v108-clan-logistics-contract.md"
       ],
-      "proof": [],
-      "remaining": "Six ouvrages en exercice distinct ; aucune acquisition de campagne ni correspondance K01 vers CON-T."
+      "proof": [
+        {
+          "path": "docs/v108-validation-summary.json",
+          "sha256": "0199ea1a0a4bbbe83711cae92ce79e8bcb414718a49823b5e3d4860e42d0d0e4",
+          "bytes": 14102
+        },
+        {
+          "path": "docs/v108-clans-validation.json",
+          "sha256": "f0d42e405b3eb45d5006d64f01591bc91dcf85a874c6137b345f24e511ece848",
+          "bytes": 14017
+        },
+        {
+          "path": "docs/qa/v108-validation/unit-tests.log",
+          "sha256": "54cd063b347ef589e596ec0fbd5b631c36af88efa798a0d439be0e8ddfb2e7d9",
+          "bytes": 9146
+        }
+      ],
+      "remaining": "Six ouvrages en exercice distinct ; aucune acquisition de campagne ni correspondance K01 vers CON-T. Les deux sprites de monture peuvent se superposer ; leur séparation visuelle reste à améliorer."
     },
     {
       "id": "enforcer-pngs",
@@ -355,16 +373,34 @@
       "domain": "Preserve Hunt",
       "title": "Preserve : secteurs et combattants",
       "source": "4/80 secteurs et8/100 combattants hérités :76 secteurs et92 combattants restent visés, sans noms source inventés.",
-      "status": "A_VALIDER",
-      "validationScope": "Amélioration partielle ; portée source complète non certifiée.",
+      "status": "VALIDE_CIBLE",
+      "validationScope": "Deuxième réserve originale V4 et persistance : combat réel séparé contre un adulte initialement sain. Les huit secteurs, quatre postes et retour utilisent une fixture déclarée des seize adultes déjà neutralisés ; aucune victoire complète de combat ou interception certifiée.",
       "runtime": "Deuxième réserve originale Avar’Kesh V4 : huit nouveaux secteurs contigus et seize adultes ; catalogue unique mesuré dans le code : 16 secteurs et 32 adultes sans addition des versions historiques recouvrantes.",
-      "tests": "À VALIDER",
-      "browser": "À VALIDER",
+      "tests": "PASS_UNIT : 15 tests de la réserve V4, de ses comportements et de la conservation des matériaux ; les anciens formats et traces restent compatibles.",
+      "browser": "PASS_CIBLE_PRODUCTION : 39 contrôles et 15 captures inspectées sur le build commun xymWQOgijMpjLfRYw7ynF ; entrée avec seize adultes sains, commandes clavier/tactiles, trois comportements, quatre réparations, trente-deux lots conservés, combat et trophée réels sur un adulte. Parcours terrain/postes/retour et persistance vérifiés séparément avec la fixture neutralisée déclarée.",
       "implementation": [
         "app/game/systems/gameReserveExpeditionV108.ts",
-        "app/game/systems/gameReserveV66.ts"
+        "app/game/systems/gameReserveV66.ts",
+        "scripts/qa-preserve-expedition-v108.mjs",
+        "docs/v108-preserve-hunt-second-reserve.md"
       ],
-      "proof": [],
+      "proof": [
+        {
+          "path": "docs/v108-validation-summary.json",
+          "sha256": "0199ea1a0a4bbbe83711cae92ce79e8bcb414718a49823b5e3d4860e42d0d0e4",
+          "bytes": 14102
+        },
+        {
+          "path": "docs/v108-preserve-validation.json",
+          "sha256": "c2c674a86349a6f3358fe02c978fac933f189c3cef35b7f78e5c8480ea95d21d",
+          "bytes": 21442
+        },
+        {
+          "path": "docs/qa/v108-validation/unit-tests.log",
+          "sha256": "54cd063b347ef589e596ec0fbd5b631c36af88efa798a0d439be0e8ddfb2e7d9",
+          "bytes": 9146
+        }
+      ],
       "remaining": "La cible80 secteurs / 100 adultes reste ouverte ; trois atlas partagés ne livrent pas les fiches H001–H100. Avar’Kesh est une réserve originale supplémentaire ; les neuf géographies historiques nommées restent à livrer."
     },
     {
@@ -411,19 +447,37 @@
       "domain": "The Pit · action",
       "title": "Feral/Scar : douze actions sans liaison",
       "source": "4 projections,2 spéciaux à entités (mine/shuriken),6 conclusions avec partenaire.",
-      "status": "A_VALIDER",
-      "validationScope": "Amélioration partielle ; portée source complète non certifiée.",
+      "status": "VALIDE_CIBLE",
+      "validationScope": "Exercices alternatifs Feral et Scar : continuité du même kit après une victoire CPU avec libération physique, reprise/rejeu et inspection native. Les fixtures préparant l’inspection ne sont pas des victoires navigateur ; aucune route complète de huit étapes navigateur ni nouvelle animation BODY certifiée.",
       "runtime": "Inspection EQUIP native de 40 ticks dans chaque sens ; santé, Traque et même objet mine/étoile conservés entre vraies rencontres de l’exercice V108. Rejeu volontaire du dernier duel gagné : victoire et progrès ultérieurs retirés avant restauration du même kit d’entrée ; fermé pendant un duel actif et après la fin de route, journal borné à seize rejeux. Verrou de sauvegarde et comparaison du dernier état durable pour refuser les écritures périmées.",
-      "tests": "À VALIDER",
-      "browser": "À VALIDER",
+      "tests": "PASS_UNIT : 17 tests de continuité, moteur, rejeu et sauvegarde, dont les deux routes complètes d’exercice, les reprises, les conflits, quotas et retours différés.",
+      "browser": "PASS_CIBLE_PRODUCTION : 38 contrôles et 12 captures inspectées sur le build commun xymWQOgijMpjLfRYw7ynF ; premier terrain, victoire CPU et consommation physique, carnet rechargé, vraie défaite à la rencontre suivante, reprise et rejeu volontaire. Feral : mine présente et dessinée. Scar : contact immédiat bloqué source 26→27, sans vol visible ni dégâts revendiqués. Inspection native jouée dans deux contextes isolés préparés par le moteur, avec interruption sans reçu et six dessins dans chaque sens.",
       "implementation": [
         "app/game/systems/pitWorkbookCampaignV108.ts",
         "app/game/PitWorkbookCampaignV108.tsx",
         "app/game/pitWorkbookEquipmentInspectionV108.ts",
         "app/game/systems/pitWorkbookSaveSessionV108.ts",
-        "docs/pit-campaign-continuity-v108.md"
+        "docs/pit-campaign-continuity-v108.md",
+        "scripts/qa-pit-campaign-v108.mjs",
+        "scripts/pit-inspection-fixture-v108.mjs"
       ],
-      "proof": [],
+      "proof": [
+        {
+          "path": "docs/v108-validation-summary.json",
+          "sha256": "0199ea1a0a4bbbe83711cae92ce79e8bcb414718a49823b5e3d4860e42d0d0e4",
+          "bytes": 14102
+        },
+        {
+          "path": "docs/v108-pit-validation.json",
+          "sha256": "bc576bc0f8e48a923b4fa3d7715151e8e8c64eb675a2cf9150705303463717ad",
+          "bytes": 51247
+        },
+        {
+          "path": "docs/qa/v108-validation/unit-tests.log",
+          "sha256": "54cd063b347ef589e596ec0fbd5b631c36af88efa798a0d439be0e8ddfb2e7d9",
+          "bytes": 9146
+        }
+      ],
       "remaining": "43 liaisons source héritées ; neuf actions restent ouvertes. Aucun nouveauBODY ni réaction xéno/prise composite promue."
     },
     {
@@ -431,18 +485,36 @@
       "domain": "The Pit · campagne",
       "title": "Feral/Scar : seize étapes de campagne",
       "source": "Deux routes de8 étapes, avec alliés/opposants, blessures, choix et fin alternative distincts.",
-      "status": "A_VALIDER",
-      "validationScope": "Amélioration partielle ; portée source complète non certifiée.",
+      "status": "VALIDE_CIBLE",
+      "validationScope": "Exercices alternatifs Feral et Scar : continuité du même kit après une victoire CPU avec libération physique, reprise/rejeu et inspection native. Les fixtures préparant l’inspection ne sont pas des victoires navigateur ; aucune route complète de huit étapes navigateur ni nouvelle animation BODY certifiée.",
       "runtime": "Continuité d’équipement après victoire physique, libération dépensée persistante et reprise depuis l’entrée de rencontre dans les deux routes d’exercice. Rejeu volontaire du dernier duel gagné : victoire et progrès ultérieurs retirés avant restauration du même kit d’entrée ; fermé pendant un duel actif et après la fin de route, journal borné à seize rejeux. Verrou de sauvegarde et comparaison du dernier état durable pour refuser les écritures périmées.",
-      "tests": "À VALIDER",
-      "browser": "À VALIDER",
+      "tests": "PASS_UNIT : 17 tests de continuité, moteur, rejeu et sauvegarde, dont les deux routes complètes d’exercice, les reprises, les conflits, quotas et retours différés.",
+      "browser": "PASS_CIBLE_PRODUCTION : 38 contrôles et 12 captures inspectées sur le build commun xymWQOgijMpjLfRYw7ynF ; premier terrain, victoire CPU et consommation physique, carnet rechargé, vraie défaite à la rencontre suivante, reprise et rejeu volontaire. Feral : mine présente et dessinée. Scar : contact immédiat bloqué source 26→27, sans vol visible ni dégâts revendiqués. Inspection native jouée dans deux contextes isolés préparés par le moteur, avec interruption sans reçu et six dessins dans chaque sens.",
       "implementation": [
         "app/game/systems/pitWorkbookCampaignV108.ts",
         "app/game/PitWorkbookCampaignV108.tsx",
         "app/game/systems/pitWorkbookSaveSessionV108.ts",
-        "docs/pit-campaign-continuity-v108.md"
+        "docs/pit-campaign-continuity-v108.md",
+        "scripts/qa-pit-campaign-v108.mjs",
+        "scripts/pit-inspection-fixture-v108.mjs"
       ],
-      "proof": [],
+      "proof": [
+        {
+          "path": "docs/v108-validation-summary.json",
+          "sha256": "0199ea1a0a4bbbe83711cae92ce79e8bcb414718a49823b5e3d4860e42d0d0e4",
+          "bytes": 14102
+        },
+        {
+          "path": "docs/v108-pit-validation.json",
+          "sha256": "bc576bc0f8e48a923b4fa3d7715151e8e8c64eb675a2cf9150705303463717ad",
+          "bytes": 51247
+        },
+        {
+          "path": "docs/qa/v108-validation/unit-tests.log",
+          "sha256": "54cd063b347ef589e596ec0fbd5b631c36af88efa798a0d439be0e8ddfb2e7d9",
+          "bytes": 9146
+        }
+      ],
       "remaining": "Les 16 scènes source et leurs cinq acteurs absents restent ouvertes ; les substitutions d’exercice ne les remplacent pas."
     },
     {
@@ -464,11 +536,11 @@
       "domain": "Homeworld",
       "title": "Intendante : tri physique et coursive libre",
       "source": "V6 Scènes de dialogue398 ; Choix et actions818/819 ; Répliques3303–3310",
-      "status": "A_VALIDER",
-      "validationScope": "Opération locale ROLE19, sans plaque ni lignée ROLE03 inventée.",
+      "status": "VALIDE_CIBLE",
+      "validationScope": "Opération locale ROLE19 avec deux choix source, charges et accords identifiés, collision native, marche effective, rangement et rapport. Migration annoncée des anciens checkpoints avec copie préalable confirmée. Aucun parcours ROLE03 plaque/lignée ni geste natif nouveau certifié.",
       "runtime": "Deux lots identifiés et propriétaires distincts, accord de l’intendante/gardien, racks compatibles et traversée réelle de la coursive ; portage unique, dépôt autorisé, interruption/reprise et reprise atomique. Ancien checkpoint occupé : récupération locale annoncée avec charge et carnets couplés, sans crédit de marche. Copie de récupération relue exactement avant réécriture cohérente ; refus de stockage bloquant jusqu’à la nouvelle tentative.",
-      "tests": "PASS_UNIT_COMPATIBILITE : trois tests de fixtures V104–V107, sans accomplissement narratif revendiqué. Le parcours production reste à valider.",
-      "browser": "À VALIDER",
+      "tests": "PASS_UNIT : 13 tests de tri, collision, consentement et compatibilité des anciens checkpoints ; les trois tests de migration utilisent des fixtures déclarées sans accomplissement narratif.",
+      "browser": "PASS_CIBLE_PRODUCTION : 56 contrôles et 13 captures inspectées sur le build commun xymWQOgijMpjLfRYw7ynF ; deux parcours A/B avec accords et gardien, charges réellement portées et placées, rack incompatible refusé, traverse parcourue et retour au rapport ; refus de sauvegarde/Retry, copie de migration, Continue exact et cibles mobiles de 44px.",
       "implementation": [
         "app/game/systems/homeworldCargoDefinitionV108.ts",
         "app/game/systems/homeworldCargoLedgerV108.ts",
@@ -479,9 +551,26 @@
         "app/game/HomeworldCargoV108.module.css",
         "app/game/systems/homeworldCargoSolidsV108.ts",
         "app/game/systems/homeworldCargoArrivalV108.ts",
-        "docs/homeworld-cargo-compatibility-v108.md"
+        "docs/homeworld-cargo-compatibility-v108.md",
+        "scripts/qa-homeworld-cargo-v108.mjs"
       ],
-      "proof": [],
+      "proof": [
+        {
+          "path": "docs/v108-validation-summary.json",
+          "sha256": "0199ea1a0a4bbbe83711cae92ce79e8bcb414718a49823b5e3d4860e42d0d0e4",
+          "bytes": 14102
+        },
+        {
+          "path": "docs/v108-homeworld-validation.json",
+          "sha256": "6a0a8b79c401e3a3e4929019bc62d7ee8c35b629d838e6ac9c896215166aa765",
+          "bytes": 25284
+        },
+        {
+          "path": "docs/qa/v108-validation/unit-tests.log",
+          "sha256": "54cd063b347ef589e596ec0fbd5b631c36af88efa798a0d439be0e8ddfb2e7d9",
+          "bytes": 9146
+        }
+      ],
       "remaining": "Les lignes ROLE03 plaque 3183 / échec 3185 / reprise 3186 restent ouvertes ; aucun nouveau geste natif ou récompense de lignée certifié."
     }
   ],
@@ -504,13 +593,13 @@
     {
       "id": "V108-EXCEL-STRUCTURE",
       "status": "PASS_STRUCTURE_TARGETED",
-      "scope": "8 contrôles du suivi V108 : 56 lignes conservées, 73 feuilles historiques, caches de formules, contexte privé et inventaires de captures complets sans duplication.",
-      "command": "node --experimental-strip-types --test --test-concurrency=1 tests/excel-followup-v108.test.mjs tests/excel-history-v108.test.mjs",
+      "scope": "8 contrôles finaux du suivi V108 après collecte FROZEN : 56 lignes conservées, 73 feuilles historiques, caches de formules, contexte privé, preuves du build commun et inventaires de captures complets sans duplication.",
+      "command": "node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/excel-followup-v108.test.mjs tests/excel-history-v108.test.mjs",
       "evidence": [
         {
           "path": "docs/qa/v108-excel-followup/excel-tests.log",
-          "sha256": "57b6e020d58fb6f5c783994aa4d4368054bfe6fb1ebd1a29c70bd991e6b99b2f",
-          "bytes": 2790
+          "sha256": "aaceb5a6a68c1c5cb172aab3468e0cdfd1eae2dc17f99973458536d319d0db41",
+          "bytes": 1614
         }
       ],
       "limit": "Le générateur ne lance ni navigateur ni Excel natif ; les preuves de production sont ajoutées séparément."
@@ -541,6 +630,210 @@
         }
       ],
       "limit": "Fixtures contrôlées de compatibilité et cohérence locale des dossiers fournis. Aucun parcours navigateur, récupération historique, art nouveau ou récompense certifié."
+    },
+    {
+      "id": "V108-INPUT-RUNTIME-REGRESSIONS",
+      "status": "PASS_TARGETED_REGRESSION",
+      "scope": "133 tests du lot complet de résilience des entrées, interruptions et cycles de vie. La fixture Homeworld fournit les vrais callbacks de la cargaison dormante ; les assertions du moteur restent conservées.",
+      "command": "node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/homeworld-input-runtime.test.mjs tests/ship-hub-input-runtime.test.mjs tests/ash-expedition-input-runtime.test.mjs tests/regional-input-edges-v94.test.mjs tests/homeworld-motion-assets-v74.test.mjs tests/hunt-input-runtime.test.mjs tests/pit-gamepad-assignments.test.mjs tests/regional-lifecycle-v94.test.mjs tests/scene-image-loader-v94.test.mjs",
+      "evidence": [
+        {
+          "path": "docs/qa/v108-validation/input-runtime-regressions.log",
+          "sha256": "ef943601a17890f82c66acf71be84b284c783b7946d3dbea7c2a13bba9babc48",
+          "bytes": 13087
+        },
+        {
+          "path": "tests/homeworld-input-runtime.test.mjs",
+          "sha256": "3749a887a1c0877ab81f19cdd21349fa125a017b13b5eaa1595d49c14f14e70f",
+          "bytes": 38919
+        }
+      ],
+      "limit": "Tests ciblés de compatibilité du code courant ; aucun contrôle ajouté au total des quatre recettes de production."
+    },
+    {
+      "id": "V108-V104-REGRESSIONS",
+      "status": "PASS_TARGETED_REGRESSION",
+      "scope": "46 tests V104 exécutés avec le format V4 courant accepté et le format futur V5 explicitement refusé. Les anciens formats, géographies et limites du suivi restent vérifiés.",
+      "command": "node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v104.test.mjs",
+      "evidence": [
+        {
+          "path": "docs/qa/v108-validation/v104-regressions.log",
+          "sha256": "cb549894c92104067849cae774214683115558d00ec35bc053aa6825596a2095",
+          "bytes": 5378
+        },
+        {
+          "path": "tests/game-reserve-lookout-persistence-v104.test.mjs",
+          "sha256": "f9f2705cd5c3df7c33d2de4d9e9e2ebc84e6c1709e30d76a9885d17fcc02da34",
+          "bytes": 5377
+        }
+      ],
+      "limit": "Compatibilité V104 et contrôles structurels ; aucune réserve supplémentaire ou victoire de combat ajoutée par ce journal."
+    },
+    {
+      "id": "V108-LEGACY-CLAN-PANEL",
+      "status": "PASS_TARGETED_BROWSER_REGRESSION",
+      "scope": "Neuf contrôles du panneau React historique de guerre de clans, dont verrouillage natif, conflits entre onglets, interruption et absence d’exception navigateur.",
+      "command": "node scripts/qa-clan-war-browser-v94.mjs",
+      "evidence": [
+        {
+          "path": "docs/qa/v108-validation/legacy-clan-browser.log",
+          "sha256": "901de0fd8d23eae1d8fb0e4f82b9460ad287b4c7b0305a3157f5ef9836128182",
+          "bytes": 2402
+        },
+        {
+          "path": "scripts/qa-clan-war-browser-v94.mjs",
+          "sha256": "b1a5d5cf5a97c7f3883d6d20bb1eae92bc39aecbaca2eb1018409831cd8fd23e",
+          "bytes": 13455
+        }
+      ],
+      "limit": "Panneau isolé et images de remplacement de 1 pixel ; ces neuf contrôles ne font pas partie des quatre recettes de production V108 et ne certifient pas leur rendu."
+    },
+    {
+      "id": "V108-CURRENT-UNIT-SUITE",
+      "status": "PASS_UNITARY_CURRENT",
+      "scope": "75 tests V108 réellement exécutés sur le code applicatif du build 24ea : continuité et sauvegarde Pit, cargaisons et migration, logistique commune, seconde réserve, admission des preuves et suivi Excel.",
+      "command": "node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v108.test.mjs",
+      "evidence": [
+        {
+          "path": "docs/qa/v108-validation/unit-tests.log",
+          "sha256": "54cd063b347ef589e596ec0fbd5b631c36af88efa798a0d439be0e8ddfb2e7d9",
+          "bytes": 9146
+        }
+      ],
+      "limit": "Suite ciblée V108. Les tests de structure et de capsule sont réexécutés après la collecte finale dans leur journal distinct ; aucun de ces tests unitaires n’est compté comme parcours navigateur."
+    },
+    {
+      "id": "V108-LOCAL-PRODUCTION-BUILD",
+      "status": "PASS_LOCAL_BUILD",
+      "scope": "Compilation de production locale du runtime 24ea et des sélecteurs/styles contrôlés. Les quatre recettes servent ce même build xymWQOgijMpjLfRYw7ynF.",
+      "command": "npm run build",
+      "evidence": [
+        {
+          "path": "docs/qa/v108-validation/production-build.log",
+          "sha256": "1ec5cfa705bef67b20a4f15907c70ea27fbfedbff24d18079650eb7db918faac",
+          "bytes": 4542
+        }
+      ],
+      "limit": "Compilation locale ; les étapes réservées à une racine Vercel exacte ne sont pas exécutées localement. Ce journal ne certifie ni déploiement ni contenus CDN."
+    },
+    {
+      "id": "V108-RUNTIME-INVENTORY-COMPLETION",
+      "status": "PASS_METADATA_COMPLETION",
+      "scope": "Inventaire final complété après les recettes : six PNG Wolf déjà présents au commit 24ea et observés dans le rapport brut Pit, ajoutés sans filtrer ce rapport. Les 1 242 entrées du gel final conservent les mêmes octets applicatifs, de configuration et d’images.",
+      "command": "node scripts/snapshot-runtime-v108.mjs --check docs/v108-runtime-freeze.json",
+      "evidence": [
+        {
+          "path": "docs/v108-runtime-freeze.json",
+          "sha256": "acdd5ba55003bab6c5766d2036cbe76153b1bbfe858a82c855d0b3574cc82727",
+          "bytes": 227172
+        },
+        {
+          "path": "docs/qa/v108-validation/runtime-inventory-completion.json",
+          "sha256": "9f0a2f4dff784214ef59ee927dd048c937ecdffc100c5f9d73087623b4cf35ec",
+          "bytes": 3633
+        },
+        {
+          "path": "docs/qa/v108-validation/initial-runtime-freeze.json",
+          "sha256": "c371efed6da1dad8ce2fce740903a0a7646e105e2164e61e2e632a44fd439976",
+          "bytes": 225968
+        },
+        {
+          "path": "docs/qa/v108-validation/initial-runtime-public-inputs.json",
+          "sha256": "bcaba4855489185bba43cc5758abc4b8f4e86049c89dbe0d38f13826842e4dbd",
+          "bytes": 147540
+        }
+      ],
+      "limit": "La préparation initiale n’était pas exhaustive. Seul son document d’inventaire change ; les versions préparatoires, la justification, la comparaison Git des six images et les rapports bruts restent conservés. Aucun nouveau build ni nouveau PNG n’est revendiqué."
+    },
+    {
+      "id": "V108-FOUR-DOMAIN-PRODUCTION",
+      "status": "PASS_CIBLE_PRODUCTION",
+      "scope": "Quatre recettes du même build compilé : 175 contrôles réussis et 47 captures réellement inspectées, rapports bruts intacts et portables, SHA des sources avant/après identiques.",
+      "command": "node scripts/build-validation-summary-v108.mjs --entry docs/qa/v108-pit/entry.json --entry docs/qa/v108-homeworld/entry.json --entry docs/qa/v108-clans/entry.json --entry docs/qa/v108-preserve/entry.json --runtime-commit 24ea9071b673c080325a39a50afeeab6695e4926 --build-id xymWQOgijMpjLfRYw7ynF",
+      "evidence": [
+        {
+          "path": "docs/v108-validation-summary.json",
+          "sha256": "0199ea1a0a4bbbe83711cae92ce79e8bcb414718a49823b5e3d4860e42d0d0e4",
+          "bytes": 14102
+        }
+      ],
+      "limit": "Portées locales bornées : fixtures d’inspection Pit et de route Preserve déclarées ; pas de campagne source complète, acquisition de campagne, nouveaux BODY, géographie canonique, cible80/100 ou déploiement certifié."
+    },
+    {
+      "id": "V108-PRODUCTION-PIT",
+      "status": "PASS_CIBLE_PRODUCTION",
+      "scope": "38 contrôles, 12 captures inspectées : premier terrain, victoire CPU et consommation physique, carnet rechargé, vraie défaite à la rencontre suivante, reprise et rejeu volontaire. Feral : mine présente et dessinée. Scar : contact immédiat bloqué source 26→27, sans vol visible ni dégâts revendiqués. Inspection native jouée dans deux contextes isolés préparés par le moteur, avec interruption sans reçu et six dessins dans chaque sens.",
+      "command": "node scripts/qa-pit-campaign-v108.mjs",
+      "evidence": [
+        {
+          "path": "docs/v108-validation-summary.json",
+          "sha256": "0199ea1a0a4bbbe83711cae92ce79e8bcb414718a49823b5e3d4860e42d0d0e4",
+          "bytes": 14102
+        },
+        {
+          "path": "docs/v108-pit-validation.json",
+          "sha256": "bc576bc0f8e48a923b4fa3d7715151e8e8c64eb675a2cf9150705303463717ad",
+          "bytes": 51247
+        }
+      ],
+      "limit": "Exercices alternatifs Feral et Scar : continuité du même kit après une victoire CPU avec libération physique, reprise/rejeu et inspection native. Les fixtures préparant l’inspection ne sont pas des victoires navigateur ; aucune route complète de huit étapes navigateur ni nouvelle animation BODY certifiée."
+    },
+    {
+      "id": "V108-PRODUCTION-HOMEWORLD",
+      "status": "PASS_CIBLE_PRODUCTION",
+      "scope": "56 contrôles, 13 captures inspectées : deux parcours A/B avec accords et gardien, charges réellement portées et placées, rack incompatible refusé, traverse parcourue et retour au rapport ; refus de sauvegarde/Retry, copie de migration, Continue exact et cibles mobiles44px.",
+      "command": "node scripts/qa-homeworld-cargo-v108.mjs",
+      "evidence": [
+        {
+          "path": "docs/v108-validation-summary.json",
+          "sha256": "0199ea1a0a4bbbe83711cae92ce79e8bcb414718a49823b5e3d4860e42d0d0e4",
+          "bytes": 14102
+        },
+        {
+          "path": "docs/v108-homeworld-validation.json",
+          "sha256": "6a0a8b79c401e3a3e4929019bc62d7ee8c35b629d838e6ac9c896215166aa765",
+          "bytes": 25284
+        }
+      ],
+      "limit": "Opération locale ROLE19 avec deux choix source, charges et accords identifiés, collision native, marche effective, rangement et rapport. Migration annoncée des anciens checkpoints avec copie préalable confirmée. Aucun parcours ROLE03 plaque/lignée ni geste natif nouveau certifié."
+    },
+    {
+      "id": "V108-PRODUCTION-CLANS",
+      "status": "PASS_CIBLE_PRODUCTION",
+      "scope": "42 contrôles, 7 captures inspectées : six constructions conservées dans le même convoi, skiff et navette identifiés, stocks finis, deux montures soignées, rails et duel, deux écoutes physiques, aller-retour orbital, rechargement et archives atomiques. Aucun état de modèle injecté ; aucun point de reprise exploratoire dans ce passage frais.",
+      "command": "node scripts/qa-clan-logistics-v108.mjs",
+      "evidence": [
+        {
+          "path": "docs/v108-validation-summary.json",
+          "sha256": "0199ea1a0a4bbbe83711cae92ce79e8bcb414718a49823b5e3d4860e42d0d0e4",
+          "bytes": 14102
+        },
+        {
+          "path": "docs/v108-clans-validation.json",
+          "sha256": "f0d42e405b3eb45d5006d64f01591bc91dcf85a874c6137b345f24e511ece848",
+          "bytes": 14017
+        }
+      ],
+      "limit": "Un convoi frais joué depuis le début, mêmes U19 et ressources finies sur les six ouvrages, duel, écoutes et trajet orbital. Exercice distinct des acquisitions de campagne ; l’identité et les soins des deux montures sont contrôlés, sans certification de leur séparation visuelle."
+    },
+    {
+      "id": "V108-PRODUCTION-PRESERVE",
+      "status": "PASS_CIBLE_PRODUCTION",
+      "scope": "39 contrôles, 15 captures inspectées : entrée avec seize adultes sains, commandes clavier/tactiles, trois comportements, quatre réparations, trente-deux lots conservés, combat et trophée réels sur un adulte. Parcours terrain/postes/retour et persistance vérifiés séparément avec la fixture neutralisée déclarée.",
+      "command": "node scripts/qa-preserve-expedition-v108.mjs",
+      "evidence": [
+        {
+          "path": "docs/v108-validation-summary.json",
+          "sha256": "0199ea1a0a4bbbe83711cae92ce79e8bcb414718a49823b5e3d4860e42d0d0e4",
+          "bytes": 14102
+        },
+        {
+          "path": "docs/v108-preserve-validation.json",
+          "sha256": "c2c674a86349a6f3358fe02c978fac933f189c3cef35b7f78e5c8480ea95d21d",
+          "bytes": 21442
+        }
+      ],
+      "limit": "Deuxième réserve originale V4 et persistance : combat réel séparé contre un adulte initialement sain. Les huit secteurs, quatre postes et retour utilisent une fixture déclarée des seize adultes déjà neutralisés ; aucune victoire complète de combat ou interception certifiée."
     }
   ],
   "limits": [
@@ -553,6 +846,14 @@
     "Les 21 reçus historiques et 36 traces/PNG absents ne sont pas récupérés par le contrôle des fichiers fournis.",
     "Le générateur ne lance ni navigateur ni Excel natif.",
     "Le rejeu volontaire du dernier duel retire la victoire et les étapes ultérieures avant de restaurer le kit d’entrée ; aucune victoire conservée ne fournit de repos gratuit.",
-    "La reprise géométrique d’un ancien checkpoint du quai est annoncée ; la copie d’origine est relue avant réécriture, sans crédit de marche, de progression ou de récompense."
-  ]
+    "La reprise géométrique d’un ancien checkpoint du quai est annoncée ; la copie d’origine est relue avant réécriture, sans crédit de marche, de progression ou de récompense.",
+    "Les scripts et documents de recette épinglés décrivent la vérification prévue ; seuls leurs rapports réellement exécutés sur le build commun peuvent promouvoir un parcours de production. Les fixtures d’inspection Pit préparées par le moteur ne sont pas des victoires navigateur.",
+    "Le trajet Preserve des huit secteurs, quatre postes et retour utilise une fixture déclarée des seize adultes déjà neutralisés ; le combat réel est vérifié séparément sur un adulte initialement sain. Aucune victoire complète de combat ni interception n’est certifiée par cette route.",
+    "Le gel documentaire final a été complété après les recettes par six PNG Wolf déjà présents au commit 24ea et dans le rapport brut Pit. La préparation initiale, sa copie et la justification restent conservées ; aucun octet applicatif, de configuration ou d’image ni identifiant de build n’est modifié."
+  ],
+  "runtimeFreeze": {
+    "path": "docs/v108-runtime-freeze.json",
+    "sha256": "acdd5ba55003bab6c5766d2036cbe76153b1bbfe858a82c855d0b3574cc82727",
+    "bytes": 227172
+  }
 }
