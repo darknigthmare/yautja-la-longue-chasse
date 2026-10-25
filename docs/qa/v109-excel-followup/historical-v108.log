@@ -1,0 +1,469 @@
+TAP version 13
+# Subtest: source prices, initial finite resources, unique people and immutable state
+ok 1 - source prices, initial finite resources, unique people and immutable state
+  ---
+  duration_ms: 1.947208
+  type: 'test'
+  ...
+# Subtest: source delays and PC refuse remote, duplicate and excess recruitment
+ok 2 - source delays and PC refuse remote, duplicate and excess recruitment
+  ---
+  duration_ms: 4.261582
+  type: 'test'
+  ...
+# Subtest: all six sites are reached, built and supplied with one identified U19 and finite stocks
+ok 3 - all six sites are reached, built and supplied with one identified U19 and finite stocks
+  ---
+  duration_ms: 1600.543791
+  type: 'test'
+  ...
+# Subtest: nonworked kit cancellation requires a real return and refunds exactly once
+ok 4 - nonworked kit cancellation requires a real return and refunds exactly once
+  ---
+  duration_ms: 26.466648
+  type: 'test'
+  ...
+# Subtest: boat crosses physically with one manifest and holds all its original cargo
+ok 5 - boat crosses physically with one manifest and holds all its original cargo
+  ---
+  duration_ms: 17.238087
+  type: 'test'
+  ...
+# Subtest: real cell and water return preserve their consumed contents
+ok 6 - real cell and water return preserve their consumed contents
+  ---
+  duration_ms: 71.346913
+  type: 'test'
+  ...
+# Subtest: source-shaped narrow gap admits people and rejects mounted footprint; orbital area is separate
+ok 7 - source-shaped narrow gap admits people and rejects mounted footprint; orbital area is separate
+  ---
+  duration_ms: 0.312071
+  type: 'test'
+  ...
+# Subtest: checkpoint replay resumes the exact physical state; inflated/future/extra-field/reused-ID imports reject
+ok 8 - checkpoint replay resumes the exact physical state; inflated/future/extra-field/reused-ID imports reject
+  ---
+  duration_ms: 50.432397
+  type: 'test'
+  ...
+# Subtest: bounded contracts stop service without moving or restoring anybody
+ok 9 - bounded contracts stop service without moving or restoring anybody
+  ---
+  duration_ms: 15.893449
+  type: 'test'
+  ...
+# Subtest: persistent session writes and reloads the exact whole archive without campaign keys
+ok 10 - persistent session writes and reloads the exact whole archive without campaign keys
+  ---
+  duration_ms: 2.461691
+  type: 'test'
+  ...
+# Subtest: quota denial rolls back, incompatible and concurrent bytes remain untouched
+ok 11 - quota denial rolls back, incompatible and concurrent bytes remain untouched
+  ---
+  duration_ms: 1.489213
+  type: 'test'
+  ...
+# Subtest: two pre-existing mounted footprints return to a staffed area and consume one shared finite bidon
+ok 12 - two pre-existing mounted footprints return to a staffed area and consume one shared finite bidon
+  ---
+  duration_ms: 106.37159
+  type: 'test'
+  ...
+# Subtest: third-party interruption, renewed signatures, actual movement dodge and one chest handover
+ok 13 - third-party interruption, renewed signatures, actual movement dodge and one chest handover
+  ---
+  duration_ms: 43.471821
+  type: 'test'
+  ...
+# Subtest: same U19, hull and finite cargo resume midflight and return across physically distinct layers
+ok 14 - same U19, hull and finite cargo resume midflight and return across physically distinct layers
+  ---
+  duration_ms: 124.647993
+  type: 'test'
+  ...
+# Subtest: all eight families and the separate Homeworld operation retain all56 still-open source rows
+ok 15 - all eight families and the separate Homeworld operation retain all56 still-open source rows
+  ---
+  duration_ms: 1877.34547
+  type: 'test'
+  ...
+# Subtest: missing families, source closures and naked production promotions cannot validate a follow-up
+ok 16 - missing families, source closures and naked production promotions cannot validate a follow-up
+  ---
+  duration_ms: 10.261548
+  type: 'test'
+  ...
+# Traceback (most recent call last):
+#   File "/tmp/yautja-excel-history-v108-XLgaro/scripts/build-excel-followup-v108.py", line 25, in <module>
+#     json.dump(append.verify_workbook(payload), sys.stdout, ensure_ascii=True)
+#               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+#   File "/tmp/yautja-excel-history-v108-XLgaro/scripts/lib/excel_followup_append.py", line 105, in verify_workbook
+#     assert set(changed) <= ASSEMBLY_PARTS, changed
+#            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# AssertionError: ['[Content_Types].xml', 'xl/_rels/workbook.xml.rels', 'xl/styles.xml', 'xl/workbook.xml', 'xl/worksheets/sheet1.xml']
+# Subtest: 85 worksheets preserve every historical cell, formula, table, style prefix and ZIP sheet part
+ok 17 - 85 worksheets preserve every historical cell, formula, table, style prefix and ZIP sheet part
+  ---
+  duration_ms: 1998.491828
+  type: 'test'
+  ...
+# Subtest: missing, duplicated, uninspected or relabelled portable screenshots cannot certify a production report
+ok 18 - missing, duplicated, uninspected or relabelled portable screenshots cannot certify a production report
+  ---
+  duration_ms: 2.456263
+  type: 'test'
+  ...
+# Subtest: current V108 products regenerate exactly without claiming a browser or native Excel execution
+ok 19 - current V108 products regenerate exactly without claiming a browser or native Excel execution
+  ---
+  duration_ms: 3747.918899
+  type: 'test'
+  ...
+# Subtest: the original V107 sources and assertions live in a private context while current imports stay current
+ok 20 - the original V107 sources and assertions live in a private context while current imports stay current
+  ---
+  duration_ms: 2460.559756
+  type: 'test'
+  ...
+# Subtest: an edited historical source is rejected and cannot change the current application file
+ok 21 - an edited historical source is rejected and cannot change the current application file
+  ---
+  duration_ms: 1182.121052
+  type: 'test'
+  ...
+# Subtest: the wrapper executes original assertions and refuses an unreviewed test path
+ok 22 - the wrapper executes original assertions and refuses an unreviewed test path
+  ---
+  duration_ms: 1863.306768
+  type: 'test'
+  ...
+# Subtest: all four exact reserve identities roundtrip through campaign import; future five and mixed worlds are refused
+ok 23 - all four exact reserve identities roundtrip through campaign import; future five and mixed worlds are refused
+  ---
+  duration_ms: 14.046098
+  type: 'test'
+  ...
+# Subtest: V4 sixteen adults, ship events and four route records survive real slots and complete archives
+ok 24 - V4 sixteen adults, ship events and four route records survive real slots and complete archives
+  ---
+  duration_ms: 67.843602
+  type: 'test'
+  ...
+# Subtest: a declared four-site persistence fixture physically returns, and an intercepted launch remains an event rather than a free reward
+ok 25 - a declared four-site persistence fixture physically returns, and an intercepted launch remains an event rather than a free reward
+  ---
+  duration_ms: 19.076429
+  type: 'test'
+  ...
+# Subtest: refused V4 checkpoint writes preserve durable bytes and retry the original expedition
+ok 26 - refused V4 checkpoint writes preserve durable bytes and retry the original expedition
+  ---
+  duration_ms: 32.818979
+  type: 'test'
+  ...
+# Subtest: V4 is a second eight-sector reserve with sixteen distinct adults and four physical groups; Vharuun is deduplicated
+ok 27 - V4 is a second eight-sector reserve with sixteen distinct adults and four physical groups; Vharuun is deduplicated
+  ---
+  duration_ms: 5.201128
+  type: 'test'
+  ...
+# Subtest: all V1/V2/V3 factory bytes and played traces retain the V107 hashes captured before V108 editing
+ok 28 - all V1/V2/V3 factory bytes and played traces retain the V107 hashes captured before V108 editing
+  ---
+  duration_ms: 553.857483
+  type: 'test'
+  ...
+# Subtest: the four high posts, eight different sectors and return require actual walking and landing geometry
+ok 29 - the four high posts, eight different sectors and return require actual walking and landing geometry
+  ---
+  duration_ms: 348.172053
+  type: 'test'
+  ...
+# Subtest: V4 observation channels interrupt on movement or real injury and notes cannot regress or be backdated
+ok 30 - V4 observation channels interrupt on movement or real injury and notes cannot regress or be backdated
+  ---
+  duration_ms: 68.646652
+  type: 'test'
+  ...
+# Subtest: V4 normalization rejects mixed identities, hidden authority, inventory creation, invalid geometry and future versions
+ok 31 - V4 normalization rejects mixed identities, hidden authority, inventory creation, invalid geometry and future versions
+  ---
+  duration_ms: 1.961352
+  type: 'test'
+  ...
+# Subtest: escorts actually follow nearby visible carriers instead of collecting; unseen or threatened partners do not guide them
+ok 32 - escorts actually follow nearby visible carriers instead of collecting; unseen or threatened partners do not guide them
+  ---
+  duration_ms: 0.89511
+  type: 'test'
+  ...
+# Subtest: ramp defenders and cover observers take different physical posts, release them for boarding and repair alone
+ok 33 - ramp defenders and cover observers take different physical posts, release them for boarding and repair alone
+  ---
+  duration_ms: 1.23468
+  type: 'test'
+  ...
+# Subtest: cover observers cannot see through vegetation or leak distant contacts to the notebook
+ok 34 - cover observers cannot see through vegetation or leak distant contacts to the notebook
+  ---
+  duration_ms: 277.496724
+  type: 'test'
+  ...
+# Subtest: four living teams genuinely use all three behaviors, carry conserved materials, repair, walk aboard and depart
+ok 35 - four living teams genuinely use all three behaviors, carry conserved materials, repair, walk aboard and depart
+  ---
+  duration_ms: 847.225186
+  type: 'test'
+  ...
+# Subtest: a naturally prepared V4 launch is physically interrupted at its ramp and passengers exit without free material or healing
+ok 36 - a naturally prepared V4 launch is physically interrupted at its ramp and passengers exit without free material or healing
+  ---
+  duration_ms: 487.811359
+  type: 'test'
+  ...
+# Subtest: an observer whose aircraft departed walks towards the observation post of the actual replacement team
+ok 37 - an observer whose aircraft departed walks towards the observation post of the actual replacement team
+  ---
+  duration_ms: 0.791507
+  type: 'test'
+  ...
+# Subtest: all four newly occupied checkpoints recover each valid old operation without fabricating route progress
+ok 38 - all four newly occupied checkpoints recover each valid old operation without fabricating route progress
+  ---
+  duration_ms: 264.138724
+  type: 'test'
+  ...
+# Subtest: old A/C carriers move with their own checkpoint and keep identity, source observations and pickup distance
+ok 39 - old A/C carriers move with their own checkpoint and keep identity, source observations and pickup distance
+  ---
+  duration_ms: 82.039348
+  type: 'test'
+  ...
+# Subtest: safe checkpoints and foreign owners do not acquire a migration or a new source receipt
+ok 40 - safe checkpoints and foreign owners do not acquire a migration or a new source receipt
+  ---
+  duration_ms: 5.594228
+  type: 'test'
+  ...
+# Subtest: V108 ROLE19 source capsule pins original 139-sheet workbook and exact physical action cells
+ok 41 - V108 ROLE19 source capsule pins original 139-sheet workbook and exact physical action cells
+  ---
+  duration_ms: 55.634497
+  type: 'test'
+  ...
+# Subtest: V108 A physically carries each owned lot into a compatible rack and walks the freed passage before reporting
+ok 42 - V108 A physically carries each owned lot into a compatible rack and walks the freed passage before reporting
+  ---
+  duration_ms: 227.46275
+  type: 'test'
+  ...
+# Subtest: V108 B obtains actual local guardian consent, deposits the wide lot and preserves every owner
+ok 43 - V108 B obtains actual local guardian consent, deposits the wide lot and preserves every owner
+  ---
+  duration_ms: 413.588211
+  type: 'test'
+  ...
+# Subtest: V108 real blockers, wrong-rack refusal and early success cannot remove or duplicate a load
+ok 44 - V108 real blockers, wrong-rack refusal and early success cannot remove or duplicate a load
+  ---
+  duration_ms: 84.181395
+  type: 'test'
+  ...
+# Subtest: V108 diagonal native keyboard proposals slide against a load corner without an involuntary interruption
+ok 45 - V108 diagonal native keyboard proposals slide against a load corner without an involuntary interruption
+  ---
+  duration_ms: 363.387597
+  type: 'test'
+  ...
+# Subtest: V108 refused save is atomic, interrupted loads park safely and voluntary retry preserves placements
+ok 46 - V108 refused save is atomic, interrupted loads park safely and voluntary retry preserves placements
+  ---
+  duration_ms: 114.081878
+  type: 'test'
+  ...
+# Subtest: V108 strict save import rejects owner, version, carried teleport, active conflicts and invisible port state
+ok 47 - V108 strict save import rejects owner, version, carried teleport, active conflicts and invisible port state
+  ---
+  duration_ms: 385.802771
+  type: 'test'
+  ...
+# Subtest: V108 arrival recovers an old checkpoint under a new load once, while valid active load checkpoints stay exact
+ok 48 - V108 arrival recovers an old checkpoint under a new load once, while valid active load checkpoints stay exact
+  ---
+  duration_ms: 19.020564
+  type: 'test'
+  ...
+# Subtest: V108 passage test requires a continuous supported traverse and stale ownership cannot write
+ok 49 - V108 passage test requires a continuous supported traverse and stale ownership cannot write
+  ---
+  duration_ms: 58.17223
+  type: 'test'
+  ...
+# Subtest: V108 rendered source dialogue follows real choice, response, failure, retry and verified success
+ok 50 - V108 rendered source dialogue follows real choice, response, failure, retry and verified success
+  ---
+  duration_ms: 253.799658
+  type: 'test'
+  ...
+# Subtest: both heroes keep the same physically released device spent across two real decisive duels and reload
+ok 51 - both heroes keep the same physically released device spent across two real decisive duels and reload
+  ---
+  duration_ms: 188.421876
+  type: 'test'
+  ...
+# Subtest: an unused object survives V107 round cleanup and an observed defeat retries with the entry kit
+ok 52 - an unused object survives V107 round cleanup and an observed defeat retries with the entry kit
+  ---
+  duration_ms: 19.651164
+  type: 'test'
+  ...
+# Subtest: native equipment inspection has six unchanged drawings and40ticks in each facing, without replenishing the kit
+ok 53 - native equipment inspection has six unchanged drawings and40ticks in each facing, without replenishing the kit
+  ---
+  duration_ms: 119.81942
+  type: 'test'
+  ...
+# Subtest: a result without its observed terminal frame, foreign kit IDs, gauge overflow and resurrection are refused
+ok 54 - a result without its observed terminal frame, foreign kit IDs, gauge overflow and resurrection are refused
+  ---
+  duration_ms: 35.992946
+  type: 'test'
+  ...
+# Subtest: both full alternative routes earn three real counters and preserve all four victory carries
+ok 55 - both full alternative routes earn three real counters and preserve all four victory carries
+  ---
+  duration_ms: 134.128729
+  type: 'test'
+  ...
+# Subtest: voluntary replay rescinds the latest victory and later field progress, restoring only its real entry kit
+ok 56 - voluntary replay rescinds the latest victory and later field progress, restoring only its real entry kit
+  ---
+  duration_ms: 93.665706
+  type: 'test'
+  ...
+# Subtest: replaying the first victory restores its existing ready device but removes the victory before it can be used again
+ok 57 - replaying the first victory restores its existing ready device but removes the victory before it can be used again
+  ---
+  duration_ms: 35.255518
+  type: 'test'
+  ...
+# Subtest: replaying the passage removes its counter proofs while replaying the rival preserves all three earned passage counters
+ok 58 - replaying the passage removes its counter proofs while replaying the rival preserves all three earned passage counters
+  ---
+  duration_ms: 42.143356
+  type: 'test'
+  ...
+# Subtest: a second tab cannot overwrite a newer valid spent checkpoint, including repeated retries
+ok 59 - a second tab cannot overwrite a newer valid spent checkpoint, including repeated retries
+  ---
+  duration_ms: 1.54092
+  type: 'test'
+  ...
+# Subtest: deferred lock acquisition compares the originally observed bytes after the other tab wins
+ok 60 - deferred lock acquisition compares the originally observed bytes after the other tab wins
+  ---
+  duration_ms: 0.263324
+  type: 'test'
+  ...
+# Subtest: own queued saves are FIFO and duplicate pending-result/leave writes are idempotent
+ok 61 - own queued saves are FIFO and duplicate pending-result/leave writes are idempotent
+  ---
+  duration_ms: 0.170759
+  type: 'test'
+  ...
+# Subtest: quota failures keep the previous bytes and allow a confirmed retry, while missing locks refuse all writes
+ok 62 - quota failures keep the previous bytes and allow a confirmed retry, while missing locks refuse all writes
+  ---
+  duration_ms: 0.313117
+  type: 'test'
+  ...
+# Subtest: a failed readback never advances the session observation or overwrites a concurrent correction on retry
+ok 63 - a failed readback never advances the session observation or overwrites a concurrent correction on retry
+  ---
+  duration_ms: 0.230847
+  type: 'test'
+  ...
+# Subtest: incompatible replacement requires an exact confirmed archive; stale archives and cancelled saves preserve the checkpoint
+ok 64 - incompatible replacement requires an exact confirmed archive; stale archives and cancelled saves preserve the checkpoint
+  ---
+  duration_ms: 0.565686
+  type: 'test'
+  ...
+# Subtest: button, Escape and gamepad exits wait synchronously for a deferred confirmed write
+ok 65 - button, Escape and gamepad exits wait synchronously for a deferred confirmed write
+  ---
+  duration_ms: 0.316012
+  type: 'test'
+  ...
+# Subtest: a refused or indefinite save keeps navigation pending until the explicit unconfirmed-exit choice
+ok 66 - a refused or indefinite save keeps navigation pending until the explicit unconfirmed-exit choice
+  ---
+  duration_ms: 0.144671
+  type: 'test'
+  ...
+# Subtest: a duplicate pending-result save cannot release navigation before its latest FIFO write settles
+ok 67 - a duplicate pending-result save cannot release navigation before its latest FIFO write settles
+  ---
+  duration_ms: 0.281301
+  type: 'test'
+  ...
+# Subtest: decodes alpha and preserves the limits of a supplied submission record
+ok 68 - decodes alpha and preserves the limits of a supplied submission record
+  ---
+  duration_ms: 12.079969
+  type: 'test'
+  ...
+# Subtest: a planned prompt, even accepted visually, is not a submission record
+ok 69 - a planned prompt, even accepted visually, is not a submission record
+  ---
+  duration_ms: 3.168076
+  type: 'test'
+  ...
+# Subtest: selected attempts must match the final pixels, prompt and output
+ok 70 - selected attempts must match the final pixels, prompt and output
+  ---
+  duration_ms: 10.9306
+  type: 'test'
+  ...
+# Subtest: IDs, duplicate rows and pinned receipt bytes are checked independently
+ok 71 - IDs, duplicate rows and pinned receipt bytes are checked independently
+  ---
+  duration_ms: 7.003797
+  type: 'test'
+  ...
+# Subtest: rejects traversal and symlink escapes without reporting supplied paths
+ok 72 - rejects traversal and symlink escapes without reporting supplied paths
+  ---
+  duration_ms: 4.443428
+  type: 'test'
+  ...
+# Subtest: changed PNG bytes and future manifest formats are refused
+ok 73 - changed PNG bytes and future manifest formats are refused
+  ---
+  duration_ms: 5.82093
+  type: 'test'
+  ...
+# Subtest: real V107 and PR15 records are admissible without recovering the older gaps
+ok 74 - real V107 and PR15 records are admissible without recovering the older gaps
+  ---
+  duration_ms: 80.08792
+  type: 'test'
+  ...
+# Subtest: all 36 published consistency results regenerate from their actual pinned PNG and receipt bytes
+ok 75 - all 36 published consistency results regenerate from their actual pinned PNG and receipt bytes
+  ---
+  duration_ms: 1163.16276
+  type: 'test'
+  ...
+1..75
+# tests 75
+# suites 0
+# pass 75
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 27916.227446
+{"result":"PASS_HISTORICAL_REGENERATION","sourceCommit":"2d88854b44c7cac14063f4445b8e0855646e7dec","sourcesVerified":1486,"sharedVerified":835,"evidenceCopiesVerified":72,"currentRuntimeCovered":false,"originalTestsExecuted":true,"release":"V108","sha256":"2a9490d4e37ff63405039f4f7e7b8c473373f15f83414ca5ff46e142ca5cdaba","bytes":4757180,"inputFingerprintsVerified":343}

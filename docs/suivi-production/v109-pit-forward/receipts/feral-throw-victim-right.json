@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-25T08:44:27.238196+00:00",
+  "tool": "image_gen.imagegen",
+  "attemptId": "feral-throw-victim-right",
+  "submittedPrompt": "Using the supplied hunter atlas as the exact character appearance reference, draw a NEW independent VICTIM animation atlas of FERAL from the bone-mask reference: ochre mottled skin, bony mask, long black dreadlocks, rough hide skirt, LEFT anatomical forearm round shield, RIGHT anatomical wrist blades, no shoulder cannon. ONLY this hunter's own body and its OWN equipment, never a throwing partner, mannequin, extra arms/hands, ground or opponent weapon. True RGBA transparent background, no brown glow or vignette. Landscape1536x1024, EXACTLY6 separate natural drawings in THREEcolumns by TWOrows; each512x512cell isolated by≥64px transparent gutters, entire silhouette including spear/blades/dreadlocks inside x65..447,y55..460. Full character silhouette max380px wide and390pxhigh so even horizontal airborne/lying poses fit; same bodily proportions/pixel scale across the six phases. Render independently in orientationRIGHT, head/face oriented toward screenRIGHT (not a mirror of the opposite orientation), correct actual equipment sides. Six phases reading left to right then top to bottom: 0 standing recoil as a close grab begins, arms drawing inward; 1 torso bends towardRIGHT, knees yielding as gripped by an INVISIBLE partner; 2 fully folded/lifted over the invisible hip, both feet off balance, anatomical trunk and joints complete; 3 entirely airborne in a backward arc, head towardRIGHT, feet toward the opposite direction, limbs naturally bracing; 4 genuine ground-impact/prone pose with same head direction and knees/arms absorbing the landing, no drawn floor; 5 distinct kneeling get-up/recovery facingRIGHT. Do not substitute6standing hit poses: airborne, impact and kneeling must be visually unmistakable, original native drawings. Maintain exactly two arms/twolegs and intact same mask/armor/skin/owned equipment in every frame. Feral retains shield and wrist blades. Scar keeps his own full spear in the same hand THROUGH capture, air, landing and recovery, naturally angled parallel to his body where needed; no dropping, vanishing, magically stowing, duplication or impalement. No blood or gore, no text, no numbered cells. There is NEVER another person's body behind or in front. Separate production BODY animation for a game, original adaptation not a claimed movie frame.",
+  "submittedReferences": [
+    {
+      "submittedPath": "/workspace/generated_images/exec-e0413089-db5f-41e5-9e03-25ccc601c0ab.png",
+      "preservedPath": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-right-v109.png",
+      "sha256": "8324320252c00e84cf0e50b7fb850dc96fb472dc1d5c933d0e14925b4fdf37ec",
+      "bytes": 2316771
+    }
+  ],
+  "transparentBackgroundRequested": true,
+  "originalNativeOutput": "/workspace/generated_images/exec-5773481e-a608-422c-a971-e8c59b697214.png",
+  "output": {
+    "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-right-v109.png",
+    "sha256": "3039f5ff15c73a5a6ef4b6054d3b949b22e99141268bcb5314984a652bdc331a",
+    "bytes": 2236163,
+    "width": 1536,
+    "height": 1024
+  },
+  "status": "SELECTED_SOURCE_REGIONS",
+  "filesEditedAfterGeneration": false,
+  "scope": "Local tool call record, not an external signed certificate. Original adaptations; no film-exact fidelity or source action completion is inferred."
+}

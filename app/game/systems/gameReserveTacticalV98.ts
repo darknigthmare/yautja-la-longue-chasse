@@ -1,5 +1,5 @@
-import { GAME_RESERVE_EXPEDITION_V108_SITES } from "./gameReserveExpeditionV108";
-import { gameReserveV66People, gameReserveV66Ships, gameReserveV66Supplies, gameReserveV66Interaction, gameReserveV66InteractionDuration, gameReserveV66LineClear, gameReserveV66Sector, gameReserveV66Sectors, gameReserveV66World, type GameReserveV66State } from "./gameReserveV66";
+import { gameReserveV66People, gameReserveV66Ships, gameReserveV66Supplies, gameReserveV66Interaction, gameReserveV66InteractionDuration, gameReserveV66LineClear, gameReserveV66Sector, gameReserveV66Sectors, gameReserveV66World, gameReserveV66Sites, gameReserveV66Name, gameReserveV109Objectives, type GameReserveV66State } from "./gameReserveV66";
+import {gameReserveV109Definition} from './gameReserveExpeditionV109';
 import { GAME_RESERVE_LOOKOUT_V104_SURVEY } from "./gameReserveLookoutV104";
 import { GAME_RESERVE_EXPEDITION_V107_SITES } from "./gameReserveExpeditionV107";
 
@@ -10,11 +10,11 @@ export function gameReserveTacticalV98(state: GameReserveV66State) {
   const duration = gameReserveV66InteractionDuration(interaction.kind);
   const channelTicks = state.channel.kind === interaction.kind && state.channel.target === interaction.target ? state.channel.ticks : 0;
   const launching = interaction.kind === "sabotage" && state.ships[interaction.target].launch !== null;
-  const sites = state.version === 4 ? GAME_RESERVE_EXPEDITION_V108_SITES : GAME_RESERVE_EXPEDITION_V107_SITES;
-  const surveyDetail = (state.version === 3 || state.version === 4) && interaction.kind === "survey" ? sites[interaction.target].description + " Maintenir Interagir 2 s au poste, immobile et exposé. Puis rejoindre physiquement l’extraction à l’ouest." : "Maintenir Interagir 2 s sur la plateforme haute, immobile et exposé. Puis rejoindre physiquement l’extraction à l’ouest.";
+  const sites = gameReserveV66Sites(state);
+  const surveyDetail = (state.version === 3 || state.version === 4 || state.version === 5) && interaction.kind === "survey" ? sites[interaction.target].description + " Maintenir Interagir 2 s au poste, immobile et exposé. Puis rejoindre physiquement l’extraction à l’ouest." : "Maintenir Interagir 2 s sur la plateforme haute, immobile et exposé. Puis rejoindre physiquement l’extraction à l’ouest.";
   const action = {
     kind: interaction.kind,
-    title: state.status !== "active" ? "Expédition close" : interaction.kind === "return" ? "Point de retour" : interaction.kind === "trophy" ? "Prélèvement à portée" : interaction.kind === "cache" ? "Neutraliser un lot du dépôt" : interaction.kind === "survey" ? state.version === 3 || state.version === 4 ? sites[interaction.target].name : "Relever les repères des Balises" : interaction.kind === "sabotage" ? launching ? "Intercepter le décollage" : "Endommager le circuit" : "Rejoindre la piste",
+    title: state.status !== "active" ? "Expédition close" : interaction.kind === "return" ? "Point de retour" : interaction.kind === "trophy" ? "Prélèvement à portée" : interaction.kind === "cache" ? "Neutraliser un lot du dépôt" : interaction.kind === "survey" ? state.version === 3 || state.version === 4 || state.version === 5 ? sites[interaction.target].name : "Relever les repères des Balises" : interaction.kind === "sabotage" ? launching ? "Intercepter le décollage" : "Endommager le circuit" : "Rejoindre la piste",
     detail: state.status !== "active" ? "Le carnet conserve le dernier état de cette sortie." : interaction.kind === "return" ? "Maintenir Interagir 1 s pour terminer la sortie." : interaction.kind === "trophy" ? "Maintenir Interagir 3 s, immobile et exposé." : interaction.kind === "cache" ? "Maintenir Interagir 2 s au sol. Un lot devient inutilisable ; les composants déjà emportés restent sur leurs porteurs." : interaction.kind === "survey" ? surveyDetail : interaction.kind === "sabotage" ? launching ? "Maintenir Interagir 1,5 s avant le départ. Les passagers ressortiront à la rampe." : "Maintenir Interagir 1,5 s. Les pièces restent sur place et les survivants pourront réparer." : "Observer les traces, rejoindre un dépôt ou un appareil, ou retrouver l’extraction à gauche.",
     progress: duration ? channelTicks / duration : 0,
     remaining: duration ? Math.ceil((duration - channelTicks) / 6) / 10 : 0,
@@ -45,9 +45,10 @@ export function gameReserveTacticalV98(state: GameReserveV66State) {
     denied: state.deniedSupplies?.[index] ?? 0 }));
   return {
     action, ships, contacts, caches, denied: caches.reduce((sum, cache) => sum + cache.denied, 0),
+    objectives: gameReserveV109Objectives(state), reserveName: gameReserveV66Name(state), factions: gameReserveV109Definition(state)?.factions ?? null,
     worldWidth: gameReserveV66World(state).width,
     lookout: state.version === 2 ? { ...state.lookout, x: GAME_RESERVE_LOOKOUT_V104_SURVEY.x, y: GAME_RESERVE_LOOKOUT_V104_SURVEY.y } : null,
-    route: state.version === 4 ? sites.map((site, index) => ({ ...site, ...state.routeV108.siteRecords[index] })) : state.version === 3 ? GAME_RESERVE_EXPEDITION_V107_SITES.map((site, index) => ({ ...site, ...state.routeV107.siteRecords[index] })) : null,
+    route: state.version === 5 ? sites.map((site,index)=>({...site,...state.routeV109.siteRecords[index]})) : state.version === 4 ? sites.map((site, index) => ({ ...site, ...state.routeV108.siteRecords[index] })) : state.version === 3 ? GAME_RESERVE_EXPEDITION_V107_SITES.map((site, index) => ({ ...site, ...state.routeV107.siteRecords[index] })) : null,
     sectors: gameReserveV66Sectors(state).map((sector, index) => ({ ...sector, visited: state.visited.includes(index), current: gameReserveV66Sector(state.player.x, state).id === sector.id })),
   };
 }

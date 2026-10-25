@@ -1,5 +1,7 @@
 import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
+  // Independent local QA servers keep the compiled production build untouched.
+  distDir: process.env.YAUTJA_NEXT_DIST_DIR || '.next',
   async rewrites() {
     if (process.env.VERCEL !== "1") return { beforeFiles: [], afterFiles: [], fallback: [] };
     if (process.env.VERCEL_GIT_PROVIDER !== "github" || process.env.VERCEL_GIT_REPO_OWNER !== "darknigthmare" || process.env.VERCEL_GIT_REPO_SLUG !== "yautja-la-longue-chasse") throw new Error("Unexpected published Git repository");

@@ -1,0 +1,1783 @@
+{
+  "schemaVersion": 1,
+  "status": "SOURCE_REVIEWED_RUNTIME_CALIBRATION_PENDING",
+  "sourceReviewPath": "docs/suivi-production/v109-pit-forward/visual-review.json",
+  "nativePageCount": 22,
+  "frameCount": 48,
+  "visibleAnalysisThreshold": 16,
+  "scope": "Selected original native frames only. Source pixels are unedited; rectangles are native render UV regions. Four nonselected outputs are preserved only as submitted references. No source action is marked complete.",
+  "groups": [
+    {
+      "fighterId": "feral-hunter",
+      "role": "attacker",
+      "facing": "right",
+      "frames": [
+        {
+          "index": 0,
+          "pageId": "v109-feral-throw-forward-right",
+          "rect": [
+            136,
+            33,
+            335,
+            472
+          ],
+          "pivot": [
+            120.0,
+            467.0
+          ],
+          "bodyHeightPx": 464.0,
+          "jobId": "feral-throw-forward-right",
+          "visibleBodyBox": [
+            140,
+            37,
+            467,
+            501
+          ],
+          "otherPosePixelsAboveAlpha16": 0,
+          "calibration": "Initial uniform page scale from the same original pose diagonal; runtime size/contact review remains required."
+        },
+        {
+          "index": 1,
+          "pageId": "v109-feral-throw-forward-right",
+          "rect": [
+            586,
+            52,
+            483,
+            451
+          ],
+          "pivot": [
+            182.0,
+            448.0
+          ],
+          "bodyHeightPx": 464.0,
+          "jobId": "feral-throw-forward-right",
+          "visibleBodyBox": [
+            590,
+            56,
+            1065,
+            499
+          ],
+          "otherPosePixelsAboveAlpha16": 0,
+          "calibration": "Initial uniform page scale from the same original pose diagonal; runtime size/contact review remains required."
+        },
+        {
+          "index": 2,
+          "pageId": "v109-feral-throw-forward-right",
+          "rect": [
+            1094,
+            120,
+            385,
+            389
+          ],
+          "pivot": [
+            186.0,
+            380.0
+          ],
+          "bodyHeightPx": 464.0,
+          "jobId": "feral-throw-forward-right",
+          "visibleBodyBox": [
+            1098,
+            124,
+            1475,
+            505
+          ],
+          "otherPosePixelsAboveAlpha16": 0,
+          "calibration": "Initial uniform page scale from the same original pose diagonal; runtime size/contact review remains required."
+        },
+        {
+          "index": 3,
+          "pageId": "v109-feral-throw-forward-right",
+          "rect": [
+            45,
+            574,
+            529,
+            427
+          ],
+          "pivot": [
+            211.0,
+            438.0
+          ],
+          "bodyHeightPx": 464.0,
+          "jobId": "feral-throw-forward-right",
+          "visibleBodyBox": [
+            49,
+            578,
+            570,
+            997
+          ],
+          "otherPosePixelsAboveAlpha16": 0,
+          "calibration": "Initial uniform page scale from the same original pose diagonal; runtime size/contact review remains required."
+        },
+        {
+          "index": 4,
+          "pageId": "v109-feral-throw-forward-right",
+          "rect": [
+            589,
+            569,
+            502,
+            432
+          ],
+          "pivot": [
+            179.0,
+            443.0
+          ],
+          "bodyHeightPx": 464.0,
+          "jobId": "feral-throw-forward-right",
+          "visibleBodyBox": [
+            593,
+            573,
+            1087,
+            997
+          ],
+          "otherPosePixelsAboveAlpha16": 0,
+          "calibration": "Initial uniform page scale from the same original pose diagonal; runtime size/contact review remains required."
+        },
+        {
+          "index": 5,
+          "pageId": "v109-feral-throw-forward-right",
+          "rect": [
+            1163,
+            537,
+            311,
+            464
+          ],
+          "pivot": [
+            117.0,
+            475.0
+          ],
+          "bodyHeightPx": 464.0,
+          "jobId": "feral-throw-forward-right",
+          "visibleBodyBox": [
+            1167,
+            541,
+            1470,
+            997
+          ],
+          "otherPosePixelsAboveAlpha16": 0,
+          "calibration": "Initial uniform page scale from the same original pose diagonal; runtime size/contact review remains required."
+        }
+      ],
+      "referenceBodyHeightPx": 464,
+      "pages": [
+        {
+          "pageId": "v109-feral-throw-forward-right",
+          "src": "/game/sprites/v109/pit/feral-hunter/feral-throw-forward-right-v109.png",
+          "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-right-v109.png",
+          "sha256": "8324320252c00e84cf0e50b7fb850dc96fb472dc1d5c933d0e14925b4fdf37ec",
+          "bytes": 2316771,
+          "width": 1536,
+          "height": 1024,
+          "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-forward-right.json"
+        }
+      ]
+    },
+    {
+      "fighterId": "feral-hunter",
+      "role": "attacker",
+      "facing": "left",
+      "frames": [
+        {
+          "index": 0,
+          "pageId": "v109-feral-throw-forward-left-r2",
+          "rect": [
+            91,
+            23,
+            388,
+            482
+          ],
+          "pivot": [
+            165.0,
+            477.0
+          ],
+          "bodyHeightPx": 474.0,
+          "jobId": "feral-throw-forward-left-r2",
+          "visibleBodyBox": [
+            95,
+            27,
+            475,
+            501
+          ],
+          "otherPosePixelsAboveAlpha16": 0,
+          "calibration": "Initial uniform page scale from the same original pose diagonal; runtime size/contact review remains required."
+        },
+        {
+          "index": 1,
+          "pageId": "v109-feral-throw-forward-left-r2",
+          "rect": [
+            498,
+            39,
+            550,
+            467
+          ],
+          "pivot": [
+            270.0,
+            461.0
+          ],
+          "bodyHeightPx": 474.0,
+          "jobId": "feral-throw-forward-left-r2",
+          "visibleBodyBox": [
+            502,
+            43,
+            1044,
+            502
+          ],
+          "otherPosePixelsAboveAlpha16": 0,
+          "calibration": "Initial uniform page scale from the same original pose diagonal; runtime size/contact review remains required."
+        },
+        {
+          "index": 2,
+          "pageId": "v109-feral-throw-forward-left-r2",
+          "rect": [
+            1087,
+            130,
+            438,
+            376
+          ],
+          "pivot": [
+            193.0,
+            370.0
+          ],
+          "bodyHeightPx": 474.0,
+          "jobId": "feral-throw-forward-left-r2",
+          "visibleBodyBox": [
+            1091,
+            134,
+            1521,
+            502
+          ],
+          "otherPosePixelsAboveAlpha16": 0,
+          "calibration": "Initial uniform page scale from the same original pose diagonal; runtime size/contact review remains required."
+        },
+        {
+          "index": 3,
+          "pageId": "v109-feral-throw-forward-left-isolated-3-r2",
+          "rect": [
+            50,
+            22,
+            1420,
+            945
+          ],
+          "pivot": [
+            588.053,
+            1032.46
+          ],
+          "bodyHeightPx": 1111.595,
+          "jobId": "feral-throw-forward-left-isolated-3-r2",
+          "visibleBodyBox": [
+            54,
+            26,
+            1466,
+            963
+          ],
+          "otherPosePixelsAboveAlpha16": 0,
+          "calibration": "Initial uniform page scale from the same original pose diagonal; runtime size/contact review remains required."
+        },
+        {
+          "index": 4,
+          "pageId": "v109-feral-throw-forward-left-isolated-4-r2",
+          "rect": [
+            36,
+            24,
+            1481,
+            956
+          ],
+          "pivot": [
+            651.509,
+            1040.991
+          ],
+          "bodyHeightPx": 1240.634,
+          "jobId": "feral-throw-forward-left-isolated-4-r2",
+          "visibleBodyBox": [
+            40,
+            28,
+            1513,
+            976
+          ],
+          "otherPosePixelsAboveAlpha16": 0,
+          "calibration": "Initial uniform page scale from the same original pose diagonal; runtime size/contact review remains required."
+        },
+        {
+          "index": 5,
+          "pageId": "v109-feral-throw-forward-left-r2",
+          "rect": [
+            1120,
+            523,
+            381,
+            468
+          ],
+          "pivot": [
+            160.0,
+            489.0
+          ],
+          "bodyHeightPx": 474.0,
+          "jobId": "feral-throw-forward-left-r2",
+          "visibleBodyBox": [
+            1124,
+            527,
+            1497,
+            987
+          ],
+          "otherPosePixelsAboveAlpha16": 0,
+          "calibration": "Initial uniform page scale from the same original pose diagonal; runtime size/contact review remains required."
+        }
+      ],
+      "referenceBodyHeightPx": 474,
+      "pages": [
+        {
+          "pageId": "v109-feral-throw-forward-left-r2",
+          "src": "/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-r2-v109.png",
+          "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-r2-v109.png",
+          "sha256": "5dce6483d4ba9fb1848613d3a76abf255a163cbfb9dba1ed3554cc9a74615d15",
+          "bytes": 2390859,
+          "width": 1536,
+          "height": 1024,
+          "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-forward-left-r2.json"
+        },
+        {
+          "pageId": "v109-feral-throw-forward-left-isolated-3-r2",
+          "src": "/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-isolated-3-r2-v109.png",
+          "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-isolated-3-r2-v109.png",
+          "sha256": "151b49c54a3ec2321c5793bd10b6232a1e7542d48a8d1c09da2f8fb3cdd76ddb",
+          "bytes": 2071095,
+          "width": 1536,
+          "height": 1024,
+          "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-forward-left-isolated-3-r2.json"
+        },
+        {
+          "pageId": "v109-feral-throw-forward-left-isolated-4-r2",
+          "src": "/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-isolated-4-r2-v109.png",
+          "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-isolated-4-r2-v109.png",
+          "sha256": "fa54dd3f5a8e926c211d48dba1edd1b35a813cab02d013ee0294f68d3dd47ddc",
+          "bytes": 2138067,
+          "width": 1536,
+          "height": 1024,
+          "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-forward-left-isolated-4-r2.json"
+        }
+      ]
+    },
+    {
+      "fighterId": "scar",
+      "role": "attacker",
+      "facing": "right",
+      "frames": [
+        {
+          "index": 0,
+          "pageId": "v109-scar-throw-forward-right",
+          "rect": [
+            65,
+            6,
+            417,
+            495
+          ],
+          "pivot": [
+            191.0,
+            494.0
+          ],
+          "bodyHeightPx": 407.0,
+          "jobId": "scar-throw-forward-right",
+          "visibleBodyBox": [
+            69,
+            10,
+            478,
+            497
+          ],
+          "otherPosePixelsAboveAlpha16": 0,
+          "calibration": "Initial uniform page scale from the same original pose diagonal; runtime size/contact review remains required."
+        },
+        {
+          "index": 1,
+          "pageId": "v109-scar-throw-forward-right",
+          "rect": [
+            563,
+            8,
+            498,
+            491
+          ],
+          "pivot": [
+            205.0,
+            492.0
+          ],
+          "bodyHeightPx": 407.0,
+          "jobId": "scar-throw-forward-right",
+          "visibleBodyBox": [
+            567,
+            12,
+            1057,
+            495
+          ],
+          "otherPosePixelsAboveAlpha16": 0,
+          "calibration": "Initial uniform page scale from the same original pose diagonal; runtime size/contact review remains required."
+        },
+        {
+          "index": 2,
+          "pageId": "v109-scar-throw-forward-right",
+          "rect": [
+            1082,
+            15,
+            414,
+            486
+          ],
+          "pivot": [
+            198.0,
+            485.0
+          ],
+          "bodyHeightPx": 407.0,
+          "jobId": "scar-throw-forward-right",
+          "visibleBodyBox": [
+            1086,
+            19,
+            1492,
+            497
+          ],
+          "otherPosePixelsAboveAlpha16": 0,
+          "calibration": "Initial uniform page scale from the same original pose diagonal; runtime size/contact review remains required."
+        },
+        {
+          "index": 3,
+          "pageId": "v109-scar-throw-forward-right",
+          "rect": [
+            17,
+            516,
+            529,
+            482
+          ],
+          "pivot": [
+            239.0,
+            496.0
+          ],
+          "bodyHeightPx": 407.0,
+          "jobId": "scar-throw-forward-right",
+          "visibleBodyBox": [
+            21,
+            520,
+            542,
+            994
+          ],
+          "otherPosePixelsAboveAlpha16": 0,
+          "calibration": "Initial uniform page scale from the same original pose diagonal; runtime size/contact review remains required."
+        },
+        {
+          "index": 4,
+          "pageId": "v109-scar-throw-forward-right",
+          "rect": [
+            562,
+            517,
+            478,
+            476
+          ],
+          "pivot": [
+            206.0,
+            495.0
+          ],
+          "bodyHeightPx": 407.0,
+          "jobId": "scar-throw-forward-right",
+          "visibleBodyBox": [
+            566,
+            521,
+            1036,
+            989
+          ],
+          "otherPosePixelsAboveAlpha16": 0,
+          "calibration": "Initial uniform page scale from the same original pose diagonal; runtime size/contact review remains required."
+        },
+        {
+          "index": 5,
+          "pageId": "v109-scar-throw-forward-right",
+          "rect": [
+            1104,
+            515,
+            386,
+            484
+          ],
+          "pivot": [
+            176.0,
+            497.0
+          ],
+          "bodyHeightPx": 407.0,
+          "jobId": "scar-throw-forward-right",
+          "visibleBodyBox": [
+            1108,
+            519,
+            1486,
+            995
+          ],
+          "otherPosePixelsAboveAlpha16": 0,
+          "calibration": "Initial uniform page scale from the same original pose diagonal; runtime size/contact review remains required."
+        }
+      ],
+      "referenceBodyHeightPx": 407,
+      "pages": [
+        {
+          "pageId": "v109-scar-throw-forward-right",
+          "src": "/game/sprites/v109/pit/scar/scar-throw-forward-right-v109.png",
+          "path": "public/game/sprites/v109/pit/scar/scar-throw-forward-right-v109.png",
+          "sha256": "4615795ab410033a000dcdf7fdfe197b431aedb07ad279a7acfbef5e93910c02",
+          "bytes": 2258882,
+          "width": 1536,
+          "height": 1024,
+          "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-forward-right.json"
+        }
+      ]
+    },
+    {
+      "fighterId": "scar",
+      "role": "attacker",
+      "facing": "left",
+      "frames": [
+        {
+          "index": 0,
+          "pageId": "v109-scar-throw-forward-left-isolated-0",
+          "rect": [
+            230,
+            9,
+            1002,
+            1007
+          ],
+          "pivot": [
+            352.491,
+            963.258
+          ],
+          "bodyHeightPx": 888.961,
+          "jobId": "scar-throw-forward-left-isolated-0",
+          "visibleBodyBox": [
+            234,
+            13,
+            1228,
+            1012
+          ],
+          "otherPosePixelsAboveAlpha16": 0,
+          "calibration": "Initial uniform page scale from the same original pose diagonal; runtime size/contact review remains required."
+        },
+        {
+          "index": 1,
+          "pageId": "v109-scar-throw-forward-left-isolated-1",
+          "rect": [
+            317,
+            6,
+            961,
+            975
+          ],
+          "pivot": [
+            423.917,
+            932.639
+          ],
+          "bodyHeightPx": 815.174,
+          "jobId": "scar-throw-forward-left-isolated-1",
+          "visibleBodyBox": [
+            321,
+            10,
+            1274,
+            977
+          ],
+          "otherPosePixelsAboveAlpha16": 0,
+          "calibration": "Initial uniform page scale from the same original pose diagonal; runtime size/contact review remains required."
+        },
+        {
+          "index": 2,
+          "pageId": "v109-scar-throw-forward-left-r2",
+          "rect": [
+            1091,
+            20,
+            432,
+            495
+          ],
+          "pivot": [
+            189.0,
+            480.0
+          ],
+          "bodyHeightPx": 425.0,
+          "jobId": "scar-throw-forward-left-r2",
+          "visibleBodyBox": [
+            1095,
+            24,
+            1519,
+            511
+          ],
+          "otherPosePixelsAboveAlpha16": 0,
+          "calibration": "Initial uniform page scale from the same original pose diagonal; runtime size/contact review remains required."
+        },
+        {
+          "index": 3,
+          "pageId": "v109-scar-throw-forward-left-isolated-3",
+          "rect": [
+            14,
+            7,
+            1281,
+            1002
+          ],
+          "pivot": [
+            503.734,
+            1034.615
+          ],
+          "bodyHeightPx": 915.365,
+          "jobId": "scar-throw-forward-left-isolated-3",
+          "visibleBodyBox": [
+            18,
+            11,
+            1291,
+            1005
+          ],
+          "otherPosePixelsAboveAlpha16": 0,
+          "calibration": "Initial uniform page scale from the same original pose diagonal; runtime size/contact review remains required."
+        },
+        {
+          "index": 4,
+          "pageId": "v109-scar-throw-forward-left-isolated-4",
+          "rect": [
+            154,
+            9,
+            1211,
+            1005
+          ],
+          "pivot": [
+            473.109,
+            1027.701
+          ],
+          "bodyHeightPx": 945.647,
+          "jobId": "scar-throw-forward-left-isolated-4",
+          "visibleBodyBox": [
+            158,
+            13,
+            1361,
+            1010
+          ],
+          "otherPosePixelsAboveAlpha16": 0,
+          "calibration": "Initial uniform page scale from the same original pose diagonal; runtime size/contact review remains required."
+        },
+        {
+          "index": 5,
+          "pageId": "v109-scar-throw-forward-left-r2",
+          "rect": [
+            1147,
+            512,
+            389,
+            494
+          ],
+          "pivot": [
+            133.0,
+            500.0
+          ],
+          "bodyHeightPx": 425.0,
+          "jobId": "scar-throw-forward-left-r2",
+          "visibleBodyBox": [
+            1151,
+            516,
+            1534,
+            1002
+          ],
+          "otherPosePixelsAboveAlpha16": 0,
+          "calibration": "Initial uniform page scale from the same original pose diagonal; runtime size/contact review remains required."
+        }
+      ],
+      "referenceBodyHeightPx": 425,
+      "pages": [
+        {
+          "pageId": "v109-scar-throw-forward-left-isolated-0",
+          "src": "/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-0-v109.png",
+          "path": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-0-v109.png",
+          "sha256": "c5fb6df337079a263350702ddea4299b7ddb61f060dd7bed02eb6010632c9c96",
+          "bytes": 1707824,
+          "width": 1536,
+          "height": 1024,
+          "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-forward-left-isolated-0.json"
+        },
+        {
+          "pageId": "v109-scar-throw-forward-left-isolated-1",
+          "src": "/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-1-v109.png",
+          "path": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-1-v109.png",
+          "sha256": "6153788ab03fc3f246cae0b1b30990edd57b777283f2eff4c24d9a6ae5b7e95a",
+          "bytes": 1582563,
+          "width": 1536,
+          "height": 1024,
+          "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-forward-left-isolated-1.json"
+        },
+        {
+          "pageId": "v109-scar-throw-forward-left-r2",
+          "src": "/game/sprites/v109/pit/scar/scar-throw-forward-left-r2-v109.png",
+          "path": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-r2-v109.png",
+          "sha256": "64b53fe5abfaed37324a809419cfb216aca16b83467115a1e555ee0864f7d048",
+          "bytes": 2358596,
+          "width": 1536,
+          "height": 1024,
+          "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-forward-left-r2.json"
+        },
+        {
+          "pageId": "v109-scar-throw-forward-left-isolated-3",
+          "src": "/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-3-v109.png",
+          "path": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-3-v109.png",
+          "sha256": "13561262646615582d4c0687b4b59dc203e58747f62f8cf924a609abfeea44c6",
+          "bytes": 1748850,
+          "width": 1536,
+          "height": 1024,
+          "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-forward-left-isolated-3.json"
+        },
+        {
+          "pageId": "v109-scar-throw-forward-left-isolated-4",
+          "src": "/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-4-v109.png",
+          "path": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-4-v109.png",
+          "sha256": "0f2081b177fe949c0f52fa2d27dd4accfbd3aaf1da891ec8ffa11547cde0a00d",
+          "bytes": 1761722,
+          "width": 1536,
+          "height": 1024,
+          "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-forward-left-isolated-4.json"
+        }
+      ]
+    },
+    {
+      "fighterId": "feral-hunter",
+      "role": "victim",
+      "facing": "right",
+      "frames": [
+        {
+          "index": 0,
+          "pageId": "v109-feral-throw-victim-right",
+          "rect": [
+            90,
+            49,
+            370,
+            444
+          ],
+          "pivot": [
+            166.0,
+            451.0
+          ],
+          "bodyHeightPx": 436.0,
+          "jobId": "feral-throw-victim-right",
+          "visibleBodyBox": [
+            94,
+            53,
+            456,
+            489
+          ],
+          "otherPosePixelsAboveAlpha16": 0,
+          "calibration": "Initial uniform page scale from the same original pose diagonal; runtime size/contact review remains required."
+        },
+        {
+          "index": 1,
+          "pageId": "v109-feral-throw-victim-right",
+          "rect": [
+            582,
+            94,
+            371,
+            400
+          ],
+          "pivot": [
+            186.0,
+            406.0
+          ],
+          "bodyHeightPx": 436.0,
+          "jobId": "feral-throw-victim-right",
+          "visibleBodyBox": [
+            586,
+            98,
+            949,
+            490
+          ],
+          "otherPosePixelsAboveAlpha16": 0,
+          "calibration": "Initial uniform page scale from the same original pose diagonal; runtime size/contact review remains required."
+        },
+        {
+          "index": 2,
+          "pageId": "v109-feral-throw-victim-right",
+          "rect": [
+            1153,
+            41,
+            307,
+            397
+          ],
+          "pivot": [
+            127.0,
+            459.0
+          ],
+          "bodyHeightPx": 436.0,
+          "jobId": "feral-throw-victim-right",
+          "visibleBodyBox": [
+            1157,
+            45,
+            1456,
+            434
+          ],
+          "otherPosePixelsAboveAlpha16": 0,
+          "calibration": "Initial uniform page scale from the same original pose diagonal; runtime size/contact review remains required."
+        },
+        {
+          "index": 3,
+          "pageId": "v109-feral-throw-victim-right-isolated-3",
+          "rect": [
+            55,
+            206,
+            1468,
+            670
+          ],
+          "pivot": [
+            539.458,
+            951.954
+          ],
+          "bodyHeightPx": 1021.933,
+          "jobId": "feral-throw-victim-right-isolated-3",
+          "visibleBodyBox": [
+            59,
+            210,
+            1519,
+            872
+          ],
+          "otherPosePixelsAboveAlpha16": 0,
+          "calibration": "Initial uniform page scale from the same original pose diagonal; runtime size/contact review remains required."
+        },
+        {
+          "index": 4,
+          "pageId": "v109-feral-throw-victim-right-isolated-4",
+          "rect": [
+            62,
+            267,
+            1361,
+            471
+          ],
+          "pivot": [
+            599.994,
+            603.413
+          ],
+          "bodyHeightPx": 975.021,
+          "jobId": "feral-throw-victim-right-isolated-4",
+          "visibleBodyBox": [
+            66,
+            271,
+            1419,
+            734
+          ],
+          "otherPosePixelsAboveAlpha16": 0,
+          "calibration": "Initial uniform page scale from the same original pose diagonal; runtime size/contact review remains required."
+        },
+        {
+          "index": 5,
+          "pageId": "v109-feral-throw-victim-right",
+          "rect": [
+            1139,
+            598,
+            365,
+            344
+          ],
+          "pivot": [
+            141.0,
+            414.0
+          ],
+          "bodyHeightPx": 436.0,
+          "jobId": "feral-throw-victim-right",
+          "visibleBodyBox": [
+            1143,
+            602,
+            1500,
+            938
+          ],
+          "otherPosePixelsAboveAlpha16": 0,
+          "calibration": "Initial uniform page scale from the same original pose diagonal; runtime size/contact review remains required."
+        }
+      ],
+      "referenceBodyHeightPx": 436,
+      "pages": [
+        {
+          "pageId": "v109-feral-throw-victim-right",
+          "src": "/game/sprites/v109/pit/feral-hunter/feral-throw-victim-right-v109.png",
+          "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-right-v109.png",
+          "sha256": "3039f5ff15c73a5a6ef4b6054d3b949b22e99141268bcb5314984a652bdc331a",
+          "bytes": 2236163,
+          "width": 1536,
+          "height": 1024,
+          "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-victim-right.json"
+        },
+        {
+          "pageId": "v109-feral-throw-victim-right-isolated-3",
+          "src": "/game/sprites/v109/pit/feral-hunter/feral-throw-victim-right-isolated-3-v109.png",
+          "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-right-isolated-3-v109.png",
+          "sha256": "b8ab2d58ffaf3f47853f01ef4a0e36104c6e6a0cfb1462b4d0155365ebb74d2a",
+          "bytes": 1807014,
+          "width": 1536,
+          "height": 1024,
+          "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-victim-right-isolated-3.json"
+        },
+        {
+          "pageId": "v109-feral-throw-victim-right-isolated-4",
+          "src": "/game/sprites/v109/pit/feral-hunter/feral-throw-victim-right-isolated-4-v109.png",
+          "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-right-isolated-4-v109.png",
+          "sha256": "f3b14134eaa1ba660342d52de1d84925f5888657d9c14c7c53ecb8647158d4f8",
+          "bytes": 1442943,
+          "width": 1536,
+          "height": 1024,
+          "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-victim-right-isolated-4.json"
+        }
+      ]
+    },
+    {
+      "fighterId": "feral-hunter",
+      "role": "victim",
+      "facing": "left",
+      "frames": [
+        {
+          "index": 0,
+          "pageId": "v109-feral-throw-victim-left",
+          "rect": [
+            91,
+            43,
+            346,
+            474
+          ],
+          "pivot": [
+            165.0,
+            457.0
+          ],
+          "bodyHeightPx": 466.0,
+          "jobId": "feral-throw-victim-left",
+          "visibleBodyBox": [
+            95,
+            47,
+            433,
+            513
+          ],
+          "otherPosePixelsAboveAlpha16": 0,
+          "calibration": "Initial uniform page scale from the same original pose diagonal; runtime size/contact review remains required."
+        },
+        {
+          "index": 1,
+          "pageId": "v109-feral-throw-victim-left",
+          "rect": [
+            589,
+            106,
+            401,
+            411
+          ],
+          "pivot": [
+            179.0,
+            394.0
+          ],
+          "bodyHeightPx": 466.0,
+          "jobId": "feral-throw-victim-left",
+          "visibleBodyBox": [
+            593,
+            110,
+            986,
+            513
+          ],
+          "otherPosePixelsAboveAlpha16": 0,
+          "calibration": "Initial uniform page scale from the same original pose diagonal; runtime size/contact review remains required."
+        },
+        {
+          "index": 2,
+          "pageId": "v109-feral-throw-victim-left",
+          "rect": [
+            1079,
+            110,
+            386,
+            344
+          ],
+          "pivot": [
+            201.0,
+            390.0
+          ],
+          "bodyHeightPx": 466.0,
+          "jobId": "feral-throw-victim-left",
+          "visibleBodyBox": [
+            1083,
+            114,
+            1461,
+            450
+          ],
+          "otherPosePixelsAboveAlpha16": 0,
+          "calibration": "Initial uniform page scale from the same original pose diagonal; runtime size/contact review remains required."
+        },
+        {
+          "index": 3,
+          "pageId": "v109-feral-throw-victim-left-isolated-3",
+          "rect": [
+            116,
+            91,
+            1381,
+            867
+          ],
+          "pivot": [
+            623.525,
+            1164.387
+          ],
+          "bodyHeightPx": 1300.428,
+          "jobId": "feral-throw-victim-left-isolated-3",
+          "visibleBodyBox": [
+            120,
+            95,
+            1493,
+            954
+          ],
+          "otherPosePixelsAboveAlpha16": 0,
+          "calibration": "Initial uniform page scale from the same original pose diagonal; runtime size/contact review remains required."
+        },
+        {
+          "index": 4,
+          "pageId": "v109-feral-throw-victim-left",
+          "rect": [
+            475,
+            753,
+            615,
+            211
+          ],
+          "pivot": [
+            293.0,
+            259.0
+          ],
+          "bodyHeightPx": 466.0,
+          "jobId": "feral-throw-victim-left",
+          "visibleBodyBox": [
+            479,
+            757,
+            1086,
+            960
+          ],
+          "otherPosePixelsAboveAlpha16": 0,
+          "calibration": "Initial uniform page scale from the same original pose diagonal; runtime size/contact review remains required."
+        },
+        {
+          "index": 5,
+          "pageId": "v109-feral-throw-victim-left",
+          "rect": [
+            1107,
+            645,
+            419,
+            335
+          ],
+          "pivot": [
+            173.0,
+            367.0
+          ],
+          "bodyHeightPx": 466.0,
+          "jobId": "feral-throw-victim-left",
+          "visibleBodyBox": [
+            1111,
+            649,
+            1522,
+            976
+          ],
+          "otherPosePixelsAboveAlpha16": 0,
+          "calibration": "Initial uniform page scale from the same original pose diagonal; runtime size/contact review remains required."
+        }
+      ],
+      "referenceBodyHeightPx": 466,
+      "pages": [
+        {
+          "pageId": "v109-feral-throw-victim-left",
+          "src": "/game/sprites/v109/pit/feral-hunter/feral-throw-victim-left-v109.png",
+          "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-left-v109.png",
+          "sha256": "9203da249bb1756a545758125a88c63f66f8945dbf5a1e883b53532a4a51bfed",
+          "bytes": 2261067,
+          "width": 1536,
+          "height": 1024,
+          "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-victim-left.json"
+        },
+        {
+          "pageId": "v109-feral-throw-victim-left-isolated-3",
+          "src": "/game/sprites/v109/pit/feral-hunter/feral-throw-victim-left-isolated-3-v109.png",
+          "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-left-isolated-3-v109.png",
+          "sha256": "8b91bf81569d5da2f5107c3515272ada6d19ad0acaefcdc5234626dc4a11c8ad",
+          "bytes": 2201016,
+          "width": 1536,
+          "height": 1024,
+          "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-victim-left-isolated-3.json"
+        }
+      ]
+    },
+    {
+      "fighterId": "scar",
+      "role": "victim",
+      "facing": "right",
+      "frames": [
+        {
+          "index": 0,
+          "pageId": "v109-scar-throw-victim-right",
+          "rect": [
+            66,
+            8,
+            369,
+            490
+          ],
+          "pivot": [
+            190.0,
+            492.0
+          ],
+          "bodyHeightPx": 402.0,
+          "jobId": "scar-throw-victim-right",
+          "visibleBodyBox": [
+            70,
+            12,
+            431,
+            494
+          ],
+          "otherPosePixelsAboveAlpha16": 0,
+          "calibration": "Initial uniform page scale from the same original pose diagonal; runtime size/contact review remains required."
+        },
+        {
+          "index": 1,
+          "pageId": "v109-scar-throw-victim-right",
+          "rect": [
+            595,
+            14,
+            366,
+            484
+          ],
+          "pivot": [
+            173.0,
+            486.0
+          ],
+          "bodyHeightPx": 402.0,
+          "jobId": "scar-throw-victim-right",
+          "visibleBodyBox": [
+            599,
+            18,
+            957,
+            494
+          ],
+          "otherPosePixelsAboveAlpha16": 0,
+          "calibration": "Initial uniform page scale from the same original pose diagonal; runtime size/contact review remains required."
+        },
+        {
+          "index": 2,
+          "pageId": "v109-scar-throw-victim-right",
+          "rect": [
+            1055,
+            23,
+            410,
+            428
+          ],
+          "pivot": [
+            225.0,
+            477.0
+          ],
+          "bodyHeightPx": 402.0,
+          "jobId": "scar-throw-victim-right",
+          "visibleBodyBox": [
+            1059,
+            27,
+            1461,
+            447
+          ],
+          "otherPosePixelsAboveAlpha16": 0,
+          "calibration": "Initial uniform page scale from the same original pose diagonal; runtime size/contact review remains required."
+        },
+        {
+          "index": 3,
+          "pageId": "v109-scar-throw-victim-right-isolated-3",
+          "rect": [
+            59,
+            145,
+            1444,
+            755
+          ],
+          "pivot": [
+            563.221,
+            1106.064
+          ],
+          "bodyHeightPx": 1005.181,
+          "jobId": "scar-throw-victim-right-isolated-3",
+          "visibleBodyBox": [
+            63,
+            149,
+            1499,
+            896
+          ],
+          "otherPosePixelsAboveAlpha16": 0,
+          "calibration": "Initial uniform page scale from the same original pose diagonal; runtime size/contact review remains required."
+        },
+        {
+          "index": 4,
+          "pageId": "v109-scar-throw-victim-right-isolated-4",
+          "rect": [
+            21,
+            361,
+            1497,
+            385
+          ],
+          "pivot": [
+            526.993,
+            530.201
+          ],
+          "bodyHeightPx": 922.753,
+          "jobId": "scar-throw-victim-right-isolated-4",
+          "visibleBodyBox": [
+            25,
+            365,
+            1514,
+            742
+          ],
+          "otherPosePixelsAboveAlpha16": 0,
+          "calibration": "Initial uniform page scale from the same original pose diagonal; runtime size/contact review remains required."
+        },
+        {
+          "index": 5,
+          "pageId": "v109-scar-throw-victim-right-isolated-5",
+          "rect": [
+            480,
+            9,
+            830,
+            986
+          ],
+          "pivot": [
+            287.258,
+            1096.055
+          ],
+          "bodyHeightPx": 917.003,
+          "jobId": "scar-throw-victim-right-isolated-5",
+          "visibleBodyBox": [
+            484,
+            13,
+            1306,
+            991
+          ],
+          "otherPosePixelsAboveAlpha16": 0,
+          "calibration": "Initial uniform page scale from the same original pose diagonal; runtime size/contact review remains required."
+        }
+      ],
+      "referenceBodyHeightPx": 402,
+      "pages": [
+        {
+          "pageId": "v109-scar-throw-victim-right",
+          "src": "/game/sprites/v109/pit/scar/scar-throw-victim-right-v109.png",
+          "path": "public/game/sprites/v109/pit/scar/scar-throw-victim-right-v109.png",
+          "sha256": "24cdb66b63f585ac952d035a27006805d3b04136448fb3c22f4a9b3d6c7dfcf9",
+          "bytes": 2164133,
+          "width": 1536,
+          "height": 1024,
+          "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-right.json"
+        },
+        {
+          "pageId": "v109-scar-throw-victim-right-isolated-3",
+          "src": "/game/sprites/v109/pit/scar/scar-throw-victim-right-isolated-3-v109.png",
+          "path": "public/game/sprites/v109/pit/scar/scar-throw-victim-right-isolated-3-v109.png",
+          "sha256": "bd1ca19aecfc3e6c1579838d826461dad56b885c167644452c91a276cd54bd2a",
+          "bytes": 1876383,
+          "width": 1536,
+          "height": 1024,
+          "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-right-isolated-3.json"
+        },
+        {
+          "pageId": "v109-scar-throw-victim-right-isolated-4",
+          "src": "/game/sprites/v109/pit/scar/scar-throw-victim-right-isolated-4-v109.png",
+          "path": "public/game/sprites/v109/pit/scar/scar-throw-victim-right-isolated-4-v109.png",
+          "sha256": "07f216fb8e1145169bb377fc5f11bc6da8193848a962ba23a8aea6f34c07cff6",
+          "bytes": 1377113,
+          "width": 1536,
+          "height": 1024,
+          "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-right-isolated-4.json"
+        },
+        {
+          "pageId": "v109-scar-throw-victim-right-isolated-5",
+          "src": "/game/sprites/v109/pit/scar/scar-throw-victim-right-isolated-5-v109.png",
+          "path": "public/game/sprites/v109/pit/scar/scar-throw-victim-right-isolated-5-v109.png",
+          "sha256": "2105306a7d2462540ba864498659c44f193983a49daac0e2a68c2b75053157e8",
+          "bytes": 1516350,
+          "width": 1536,
+          "height": 1024,
+          "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-right-isolated-5.json"
+        }
+      ]
+    },
+    {
+      "fighterId": "scar",
+      "role": "victim",
+      "facing": "left",
+      "frames": [
+        {
+          "index": 0,
+          "pageId": "v109-scar-throw-victim-left",
+          "rect": [
+            50,
+            11,
+            429,
+            504
+          ],
+          "pivot": [
+            206.0,
+            489.0
+          ],
+          "bodyHeightPx": 416.0,
+          "jobId": "scar-throw-victim-left",
+          "visibleBodyBox": [
+            54,
+            15,
+            475,
+            511
+          ],
+          "otherPosePixelsAboveAlpha16": 0,
+          "calibration": "Initial uniform page scale from the same original pose diagonal; runtime size/contact review remains required."
+        },
+        {
+          "index": 1,
+          "pageId": "v109-scar-throw-victim-left",
+          "rect": [
+            556,
+            13,
+            400,
+            504
+          ],
+          "pivot": [
+            212.0,
+            487.0
+          ],
+          "bodyHeightPx": 416.0,
+          "jobId": "scar-throw-victim-left",
+          "visibleBodyBox": [
+            560,
+            17,
+            952,
+            513
+          ],
+          "otherPosePixelsAboveAlpha16": 0,
+          "calibration": "Initial uniform page scale from the same original pose diagonal; runtime size/contact review remains required."
+        },
+        {
+          "index": 2,
+          "pageId": "v109-scar-throw-victim-left",
+          "rect": [
+            1035,
+            15,
+            460,
+            474
+          ],
+          "pivot": [
+            245.0,
+            485.0
+          ],
+          "bodyHeightPx": 416.0,
+          "jobId": "scar-throw-victim-left",
+          "visibleBodyBox": [
+            1039,
+            19,
+            1491,
+            485
+          ],
+          "otherPosePixelsAboveAlpha16": 0,
+          "calibration": "Initial uniform page scale from the same original pose diagonal; runtime size/contact review remains required."
+        },
+        {
+          "index": 3,
+          "pageId": "v109-scar-throw-victim-left-isolated-3",
+          "rect": [
+            26,
+            11,
+            1357,
+            957
+          ],
+          "pivot": [
+            632.171,
+            1169.201
+          ],
+          "bodyHeightPx": 1070.707,
+          "jobId": "scar-throw-victim-left-isolated-3",
+          "visibleBodyBox": [
+            30,
+            15,
+            1379,
+            964
+          ],
+          "otherPosePixelsAboveAlpha16": 0,
+          "calibration": "Initial uniform page scale from the same original pose diagonal; runtime size/contact review remains required."
+        },
+        {
+          "index": 4,
+          "pageId": "v109-scar-throw-victim-left-isolated-4-r2",
+          "rect": [
+            82,
+            161,
+            1614,
+            639
+          ],
+          "pivot": [
+            719.996,
+            691.218
+          ],
+          "bodyHeightPx": 1113.649,
+          "jobId": "scar-throw-victim-left-isolated-4-r2",
+          "visibleBodyBox": [
+            86,
+            165,
+            1692,
+            796
+          ],
+          "otherPosePixelsAboveAlpha16": 0,
+          "calibration": "Initial uniform page scale from the same original pose diagonal; runtime size/contact review remains required."
+        },
+        {
+          "index": 5,
+          "pageId": "v109-scar-throw-victim-left",
+          "rect": [
+            1106,
+            512,
+            416,
+            462
+          ],
+          "pivot": [
+            174.0,
+            500.0
+          ],
+          "bodyHeightPx": 416.0,
+          "jobId": "scar-throw-victim-left",
+          "visibleBodyBox": [
+            1110,
+            516,
+            1518,
+            970
+          ],
+          "otherPosePixelsAboveAlpha16": 0,
+          "calibration": "Initial uniform page scale from the same original pose diagonal; runtime size/contact review remains required."
+        }
+      ],
+      "referenceBodyHeightPx": 416,
+      "pages": [
+        {
+          "pageId": "v109-scar-throw-victim-left",
+          "src": "/game/sprites/v109/pit/scar/scar-throw-victim-left-v109.png",
+          "path": "public/game/sprites/v109/pit/scar/scar-throw-victim-left-v109.png",
+          "sha256": "46adfc94048c75e60f01590aa7619cacc6c934f20489c7003d24209477af0429",
+          "bytes": 2341573,
+          "width": 1536,
+          "height": 1024,
+          "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-left.json"
+        },
+        {
+          "pageId": "v109-scar-throw-victim-left-isolated-3",
+          "src": "/game/sprites/v109/pit/scar/scar-throw-victim-left-isolated-3-v109.png",
+          "path": "public/game/sprites/v109/pit/scar/scar-throw-victim-left-isolated-3-v109.png",
+          "sha256": "89fa6f3142850eccf99932528a23ae67b0f115de00dce9db8ad1da124b2baf1a",
+          "bytes": 2110431,
+          "width": 1536,
+          "height": 1024,
+          "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-left-isolated-3.json"
+        },
+        {
+          "pageId": "v109-scar-throw-victim-left-isolated-4-r2",
+          "src": "/game/sprites/v109/pit/scar/scar-throw-victim-left-isolated-4-r2-v109.png",
+          "path": "public/game/sprites/v109/pit/scar/scar-throw-victim-left-isolated-4-r2-v109.png",
+          "sha256": "f102c0e286a3d566854b4581757aadf46728f64e548e14dfceabb7e6dd2dfca5",
+          "bytes": 1194875,
+          "width": 1774,
+          "height": 887,
+          "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-left-isolated-4-r2.json"
+        }
+      ]
+    }
+  ],
+  "jobs": [
+    {
+      "id": "feral-throw-forward-right",
+      "status": "selected",
+      "output": {
+        "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-right-v109.png",
+        "sha256": "8324320252c00e84cf0e50b7fb850dc96fb472dc1d5c933d0e14925b4fdf37ec",
+        "bytes": 2316771,
+        "width": 1536,
+        "height": 1024
+      },
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-forward-right.json"
+    },
+    {
+      "id": "feral-throw-forward-left",
+      "status": "reference-only",
+      "output": {
+        "path": "art-source/v109-pit-forward/feral-throw-forward-left-v109.png",
+        "sha256": "75ddb07fa2db78118494f20a8634aafbb453c64bd654ca8a9560bc8b35c30686",
+        "bytes": 2405332,
+        "width": 1536,
+        "height": 1024
+      },
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-forward-left.json"
+    },
+    {
+      "id": "scar-throw-forward-right",
+      "status": "selected",
+      "output": {
+        "path": "public/game/sprites/v109/pit/scar/scar-throw-forward-right-v109.png",
+        "sha256": "4615795ab410033a000dcdf7fdfe197b431aedb07ad279a7acfbef5e93910c02",
+        "bytes": 2258882,
+        "width": 1536,
+        "height": 1024
+      },
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-forward-right.json"
+    },
+    {
+      "id": "scar-throw-forward-left",
+      "status": "reference-only",
+      "output": {
+        "path": "art-source/v109-pit-forward/scar-throw-forward-left-v109.png",
+        "sha256": "6d407f9378c7e15c5e0212ec1746fce121e39fc5cd0d230f24a5dea7e2338550",
+        "bytes": 2404783,
+        "width": 1536,
+        "height": 1024
+      },
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-forward-left.json"
+    },
+    {
+      "id": "feral-throw-forward-left-r2",
+      "status": "selected",
+      "output": {
+        "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-r2-v109.png",
+        "sha256": "5dce6483d4ba9fb1848613d3a76abf255a163cbfb9dba1ed3554cc9a74615d15",
+        "bytes": 2390859,
+        "width": 1536,
+        "height": 1024
+      },
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-forward-left-r2.json"
+    },
+    {
+      "id": "scar-throw-forward-left-r2",
+      "status": "selected",
+      "output": {
+        "path": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-r2-v109.png",
+        "sha256": "64b53fe5abfaed37324a809419cfb216aca16b83467115a1e555ee0864f7d048",
+        "bytes": 2358596,
+        "width": 1536,
+        "height": 1024
+      },
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-forward-left-r2.json"
+    },
+    {
+      "id": "feral-throw-victim-right",
+      "status": "selected",
+      "output": {
+        "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-right-v109.png",
+        "sha256": "3039f5ff15c73a5a6ef4b6054d3b949b22e99141268bcb5314984a652bdc331a",
+        "bytes": 2236163,
+        "width": 1536,
+        "height": 1024
+      },
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-victim-right.json"
+    },
+    {
+      "id": "feral-throw-victim-left",
+      "status": "selected",
+      "output": {
+        "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-left-v109.png",
+        "sha256": "9203da249bb1756a545758125a88c63f66f8945dbf5a1e883b53532a4a51bfed",
+        "bytes": 2261067,
+        "width": 1536,
+        "height": 1024
+      },
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-victim-left.json"
+    },
+    {
+      "id": "scar-throw-victim-right",
+      "status": "selected",
+      "output": {
+        "path": "public/game/sprites/v109/pit/scar/scar-throw-victim-right-v109.png",
+        "sha256": "24cdb66b63f585ac952d035a27006805d3b04136448fb3c22f4a9b3d6c7dfcf9",
+        "bytes": 2164133,
+        "width": 1536,
+        "height": 1024
+      },
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-right.json"
+    },
+    {
+      "id": "scar-throw-victim-left",
+      "status": "selected",
+      "output": {
+        "path": "public/game/sprites/v109/pit/scar/scar-throw-victim-left-v109.png",
+        "sha256": "46adfc94048c75e60f01590aa7619cacc6c934f20489c7003d24209477af0429",
+        "bytes": 2341573,
+        "width": 1536,
+        "height": 1024
+      },
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-left.json"
+    },
+    {
+      "id": "feral-throw-forward-left-isolated-3",
+      "status": "reference-only",
+      "output": {
+        "path": "art-source/v109-pit-forward/feral-throw-forward-left-isolated-3-v109.png",
+        "sha256": "ea841e87b7f6a224b3c32216479025675148d6e9369b424ce2520c73b513d50e",
+        "bytes": 1998476,
+        "width": 1536,
+        "height": 1024
+      },
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-forward-left-isolated-3.json"
+    },
+    {
+      "id": "feral-throw-forward-left-isolated-4",
+      "status": "reference-only",
+      "output": {
+        "path": "art-source/v109-pit-forward/feral-throw-forward-left-isolated-4-v109.png",
+        "sha256": "9dffca70a09cf4febf84e5904b3c58e8305e935f3dd2c666bf0776561053f3fa",
+        "bytes": 1943838,
+        "width": 1536,
+        "height": 1024
+      },
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-forward-left-isolated-4.json"
+    },
+    {
+      "id": "scar-throw-forward-left-isolated-0",
+      "status": "selected",
+      "output": {
+        "path": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-0-v109.png",
+        "sha256": "c5fb6df337079a263350702ddea4299b7ddb61f060dd7bed02eb6010632c9c96",
+        "bytes": 1707824,
+        "width": 1536,
+        "height": 1024
+      },
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-forward-left-isolated-0.json"
+    },
+    {
+      "id": "scar-throw-forward-left-isolated-1",
+      "status": "selected",
+      "output": {
+        "path": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-1-v109.png",
+        "sha256": "6153788ab03fc3f246cae0b1b30990edd57b777283f2eff4c24d9a6ae5b7e95a",
+        "bytes": 1582563,
+        "width": 1536,
+        "height": 1024
+      },
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-forward-left-isolated-1.json"
+    },
+    {
+      "id": "scar-throw-forward-left-isolated-3",
+      "status": "selected",
+      "output": {
+        "path": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-3-v109.png",
+        "sha256": "13561262646615582d4c0687b4b59dc203e58747f62f8cf924a609abfeea44c6",
+        "bytes": 1748850,
+        "width": 1536,
+        "height": 1024
+      },
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-forward-left-isolated-3.json"
+    },
+    {
+      "id": "scar-throw-forward-left-isolated-4",
+      "status": "selected",
+      "output": {
+        "path": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-4-v109.png",
+        "sha256": "0f2081b177fe949c0f52fa2d27dd4accfbd3aaf1da891ec8ffa11547cde0a00d",
+        "bytes": 1761722,
+        "width": 1536,
+        "height": 1024
+      },
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-forward-left-isolated-4.json"
+    },
+    {
+      "id": "feral-throw-victim-right-isolated-3",
+      "status": "selected",
+      "output": {
+        "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-right-isolated-3-v109.png",
+        "sha256": "b8ab2d58ffaf3f47853f01ef4a0e36104c6e6a0cfb1462b4d0155365ebb74d2a",
+        "bytes": 1807014,
+        "width": 1536,
+        "height": 1024
+      },
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-victim-right-isolated-3.json"
+    },
+    {
+      "id": "feral-throw-victim-right-isolated-4",
+      "status": "selected",
+      "output": {
+        "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-right-isolated-4-v109.png",
+        "sha256": "f3b14134eaa1ba660342d52de1d84925f5888657d9c14c7c53ecb8647158d4f8",
+        "bytes": 1442943,
+        "width": 1536,
+        "height": 1024
+      },
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-victim-right-isolated-4.json"
+    },
+    {
+      "id": "feral-throw-victim-left-isolated-3",
+      "status": "selected",
+      "output": {
+        "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-left-isolated-3-v109.png",
+        "sha256": "8b91bf81569d5da2f5107c3515272ada6d19ad0acaefcdc5234626dc4a11c8ad",
+        "bytes": 2201016,
+        "width": 1536,
+        "height": 1024
+      },
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-victim-left-isolated-3.json"
+    },
+    {
+      "id": "scar-throw-victim-right-isolated-3",
+      "status": "selected",
+      "output": {
+        "path": "public/game/sprites/v109/pit/scar/scar-throw-victim-right-isolated-3-v109.png",
+        "sha256": "bd1ca19aecfc3e6c1579838d826461dad56b885c167644452c91a276cd54bd2a",
+        "bytes": 1876383,
+        "width": 1536,
+        "height": 1024
+      },
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-right-isolated-3.json"
+    },
+    {
+      "id": "scar-throw-victim-right-isolated-4",
+      "status": "selected",
+      "output": {
+        "path": "public/game/sprites/v109/pit/scar/scar-throw-victim-right-isolated-4-v109.png",
+        "sha256": "07f216fb8e1145169bb377fc5f11bc6da8193848a962ba23a8aea6f34c07cff6",
+        "bytes": 1377113,
+        "width": 1536,
+        "height": 1024
+      },
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-right-isolated-4.json"
+    },
+    {
+      "id": "scar-throw-victim-right-isolated-5",
+      "status": "selected",
+      "output": {
+        "path": "public/game/sprites/v109/pit/scar/scar-throw-victim-right-isolated-5-v109.png",
+        "sha256": "2105306a7d2462540ba864498659c44f193983a49daac0e2a68c2b75053157e8",
+        "bytes": 1516350,
+        "width": 1536,
+        "height": 1024
+      },
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-right-isolated-5.json"
+    },
+    {
+      "id": "scar-throw-victim-left-isolated-3",
+      "status": "selected",
+      "output": {
+        "path": "public/game/sprites/v109/pit/scar/scar-throw-victim-left-isolated-3-v109.png",
+        "sha256": "89fa6f3142850eccf99932528a23ae67b0f115de00dce9db8ad1da124b2baf1a",
+        "bytes": 2110431,
+        "width": 1536,
+        "height": 1024
+      },
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-left-isolated-3.json"
+    },
+    {
+      "id": "scar-throw-victim-left-isolated-4",
+      "status": "no-image",
+      "output": null,
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-left-isolated-4.json"
+    },
+    {
+      "id": "feral-throw-forward-left-isolated-3-r2",
+      "status": "selected",
+      "output": {
+        "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-isolated-3-r2-v109.png",
+        "sha256": "151b49c54a3ec2321c5793bd10b6232a1e7542d48a8d1c09da2f8fb3cdd76ddb",
+        "bytes": 2071095,
+        "width": 1536,
+        "height": 1024
+      },
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-forward-left-isolated-3-r2.json"
+    },
+    {
+      "id": "feral-throw-forward-left-isolated-4-r2",
+      "status": "selected",
+      "output": {
+        "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-isolated-4-r2-v109.png",
+        "sha256": "fa54dd3f5a8e926c211d48dba1edd1b35a813cab02d013ee0294f68d3dd47ddc",
+        "bytes": 2138067,
+        "width": 1536,
+        "height": 1024
+      },
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-forward-left-isolated-4-r2.json"
+    },
+    {
+      "id": "scar-throw-victim-left-isolated-4-r2",
+      "status": "selected",
+      "output": {
+        "path": "public/game/sprites/v109/pit/scar/scar-throw-victim-left-isolated-4-r2-v109.png",
+        "sha256": "f102c0e286a3d566854b4581757aadf46728f64e548e14dfceabb7e6dd2dfca5",
+        "bytes": 1194875,
+        "width": 1774,
+        "height": 887
+      },
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-left-isolated-4-r2.json"
+    }
+  ]
+}

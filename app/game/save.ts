@@ -1,6 +1,7 @@
 import {normalizeHomeworldArchiveV106} from './systems/homeworldArchiveLedgerV106';
 import {normalizeHomeworldArchiveComparisonV107} from './systems/homeworldArchiveComparisonLedgerV107';
 import {normalizeHomeworldCargoV108} from './systems/homeworldCargoLedgerV108';
+import {normalizeHomeworldArchivePlaqueV109} from './systems/homeworldArchivePlaqueLedgerV109';
 import { normalizeYouthCampaign, youthCampaignMatchesSave } from "./systems/youthCampaign";
 import { normalizeNurseryCampaign } from "./systems/nurseryCampaign";
 import { archiveTransferPending } from "./systems/archiveTransferGuard";
@@ -1444,6 +1445,25 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
     }
   }
   if(isRecord(value.homeworld)){
+    if(value.homeworld.archivePlaqueV109!==undefined){
+      const raw=value.homeworld.archivePlaqueV109;
+      if(isRecord(raw)&&Number(raw.version)>1)return {save:null,failure:'future-version'};
+      const ledger=normalizeHomeworldArchivePlaqueV109(raw);
+      if(!ledger||ledger.ownerCreatedAt!==value.createdAt)return {save:null,failure:'invalid-save'};
+      if(ledger.receipt){
+        if(!Array.isArray(value.homeworld.visitedDistrictIds)||!value.homeworld.visitedDistrictIds.includes('port'))return {save:null,failure:'invalid-save'};
+        if(!['offer','completed'].includes(ledger.receipt.phase)){
+          const a=normalizeHomeworldCartographyV104(value.homeworld.cartographyV104),b=normalizeHomeworldCartographyV105(value.homeworld.cartographyV105);
+          const c=normalizeHomeworldArchiveV106(value.homeworld.archiveV106),d=normalizeHomeworldArchiveComparisonV107(value.homeworld.archiveComparisonV107),e=normalizeHomeworldCargoV108(value.homeworld.cargoV108);
+          if([a,b,c,d,e].some(l=>l?.receipt&&l.receipt.phase!=='completed'))return {save:null,failure:'invalid-save'};
+        }
+        if(ledger.receipt.carrier||ledger.receipt.phase==='working'||ledger.receipt.phase==='return'){
+          const location=value.homeworld.locationV77,status=inspectHomeworldCheckpointV77(location);
+          if(status==='future-version')return {save:null,failure:'future-version'};
+          if(status!=='valid'||!isRecord(location)||!isRecord(location.exterior)||location.ownerCreatedAt!==value.createdAt||location.levelId!=='0'||location.interiorId!==null||typeof location.exterior.x!=='number'||typeof location.exterior.y!=='number'||Math.hypot(location.exterior.x-ledger.receipt.last.x,location.exterior.y-ledger.receipt.last.y)>.001)return {save:null,failure:'invalid-save'};
+        }
+      }
+    }
     if(value.homeworld.cargoV108!==undefined){
       const raw=value.homeworld.cargoV108;
       if(isRecord(raw)&&Number(raw.version)>1)return {save:null,failure:'future-version'};
@@ -1594,7 +1614,7 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
       prologue: normalizeNurseryCampaign(value.prologue), homeworld: normalizeHomeworldProgress(value.homeworld),
     }, passage.regionId).allowed) return { save: null, failure: "invalid-save" };
   }
-  if (isRecord(value.gameReserveV66) && Number(value.gameReserveV66.version) > 4) return { save: null, failure: "future-version" };
+  if (isRecord(value.gameReserveV66) && Number(value.gameReserveV66.version) > 5) return { save: null, failure: "future-version" };
   if (!gameReserveV66Supported(value.gameReserveV66) || value.gameReserveV66 && isRecord(value.prologue)) return { save: null, failure: "invalid-save" };
   if (!soloV66MatchesSave(value) || isRecord(value.homeworld) && (
       value.homeworld.sideStoryV66 !== undefined && !isHomeworldSideStoryV66State(value.homeworld.sideStoryV66) ||

@@ -15,6 +15,7 @@ import TribeArtGallery from "./TribeArtGallery";
 import tribeArt from "./tribeArtV37.json";
 import CompanionCataloguePanel from "./CompanionCataloguePanel";
 import GameReserveEntryV66 from "./GameReserveEntryV66";
+import type {GameReserveChoiceV109} from './systems/gameReserveV66';
 
 const regions = [
   ["Désert", "Unblooded", "Dunes, oueds, citerne tribale et canyons de chasse."],
@@ -46,7 +47,7 @@ function HomeworldRegionArt({ name }: { name: string }) {
 }
 
 /** Read-only design dossier. Never grants evidence, equipment, ownership or XP. */
-export default function ClanChroniclePanel({ save, onClose, onGameReserveV66 }: { save: SaveGame; onClose: () => void; onGameReserveV66?: (fresh: boolean, version?: 1 | 2 | 3 | 4) => boolean }) {
+export default function ClanChroniclePanel({ save, onClose, onGameReserveV66 }: { save: SaveGame; onClose: () => void; onGameReserveV66?: (fresh: boolean, version?: GameReserveChoiceV109) => boolean }) {
   const [section, setSection] = useState<"journey" | "worlds" | "humans" | "companions">("journey");
   const [query, setQuery] = useState("");
   const chronicle = useMemo(() => save.prologue?.chronicle ?? migrateV35ClanChronicle(save), [save]);
@@ -101,8 +102,8 @@ export default function ClanChroniclePanel({ save, onClose, onGameReserveV66 }: 
       <div className={styles.cards}>{regions.map(([name, rank, description]) => <article key={name} tabIndex={0}><HomeworldRegionArt name={name} /><span className={styles.badge}>{rank} · normal et tribal</span><h4>{name}</h4><p>{description}</p></article>)}</div>
       <TribeArtGallery />
       <h3 className={styles.subheading}>Deux réserves jouables · dix propositions historiques</h3>
-      <p>Les noms et géographies ci-dessous sont des créations proposées pour le jeu. Chaque proposition prévoit huit secteurs reliés et deux voies d’évasion à préparer. Vharuun dispose désormais de huit secteurs et quatre appareils ; Avar’Kesh est une seconde adaptation originale de huit secteurs, avec quatre appareils, distincte des noms de ce catalogue. Ce ne sont pas les arènes de THE PIT ni un Battle Royale à 100 joueurs.</p>
-      <div className={styles.cards}>{preserves.map(([name, biome, layout]) => <article key={name} tabIndex={0}><span className={styles.badge}>{name === "Vharuun" ? "3 secteurs · première sortie / 4 · Balises / 8 · traversée" : "Non jouable"}</span><h4>{name} · {biome}</h4><p>{layout}.</p></article>)}</div>
+      <p>Les noms et géographies ci-dessous sont des créations proposées pour le jeu. Chaque proposition prévoit huit secteurs reliés et des voies d’évasion à préparer. Vharuun dispose de huit secteurs et quatre appareils ; Avar’Kesh est une seconde réserve originale, distincte des noms de ce catalogue. Khar-Duun et Iskhel disposent chacun d’une adaptation jouable de huit secteurs : routes hautes du chasseur et passage bas continu des équipes humaines. Ce ne sont pas les arènes de THE PIT ni un Battle Royale à 100 joueurs.</p>
+      <div className={styles.cards}>{preserves.map(([name, biome, layout]) => <article key={name} tabIndex={0}><span className={styles.badge}>{name === "Vharuun" ? "3 secteurs · première sortie / 4 · Balises / 8 · traversée" : name === 'Khar-Duun' || name === 'Iskhel' ? '8 secteurs · adaptation jouable' : "Non jouable"}</span><h4>{name} · {biome}</h4><p>{layout}.</p></article>)}</div>
       <div className={styles.opening}><h3>Xeno Prime · Le Berceau enfoui</h3><p>Interprétation originale, pas une déclaration de planète natale canonique des xénomorphes. Le secteur proposé relie douze tableaux et des raccourcis persistants jusqu’à la tête gigantesque de la Matriarche couchée au sol. Sa défaite ouvre des passages sans effacer toute l’infestation.</p></div>
     </div>}
 

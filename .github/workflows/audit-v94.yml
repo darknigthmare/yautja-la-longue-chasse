@@ -51,6 +51,23 @@ on:
       - 'docs/qa/v106*/**'
       - 'docs/YAUTJA_V107_SUIVI.xlsx'
       - 'docs/YAUTJA_V108_SUIVI.xlsx'
+      - 'docs/YAUTJA_V109_SUIVI.xlsx'
+      - 'docs/*v109*'
+      - 'docs/qa/v109*/**'
+      - 'public/game/sprites/v109/**'
+      - 'public/game/homeworld/v109/**'
+      - 'public/game/backgrounds/desert-depth-v8.png'
+      - 'public/game/backgrounds/ice-depth-v4.webp'
+      - 'public/game/assets/v19/biome-decor/desert/plt/plt-sandstone-ledge-01-low-wide.webp'
+      - 'public/game/assets/v19/biome-decor/desert/plt/plt-mining-gantry-01-low-wide.webp'
+      - 'public/game/assets/v19/biome-decor/desert/cov/cov-obsidian-glass-fin-01-narrow.webp'
+      - 'public/game/assets/v19/biome-decor/ice/plt/plt-glacier-shelf-01-low-wide.webp'
+      - 'public/game/assets/v19/biome-decor/ice/plt/plt-mine-gantry-01-low-wide.webp'
+      - 'public/game/assets/v19/biome-decor/ice/cov/cov-fractured-ice-pillar-01-narrow.webp'
+      - 'art-source/v109/**'
+      - 'art-source/v109-pit-forward/**'
+      - 'docs/suivi-production/v109-pit-forward/**'
+      - 'docs/suivi-production/v109-homeworld-plaque/**'
       - 'docs/*v108*'
       - 'docs/qa/v108*/**'
       - 'docs/homeworld-asset-gap-v81.md'
@@ -252,6 +269,23 @@ jobs:
             /docs/qa/v106*/
             /docs/YAUTJA_V107_SUIVI.xlsx
             /docs/YAUTJA_V108_SUIVI.xlsx
+            /docs/YAUTJA_V109_SUIVI.xlsx
+            /docs/*v109*
+            /docs/qa/v109*/
+            /public/game/sprites/v109/
+            /public/game/homeworld/v109/
+            /public/game/backgrounds/desert-depth-v8.png
+            /public/game/backgrounds/ice-depth-v4.webp
+            /public/game/assets/v19/biome-decor/desert/plt/plt-sandstone-ledge-01-low-wide.webp
+            /public/game/assets/v19/biome-decor/desert/plt/plt-mining-gantry-01-low-wide.webp
+            /public/game/assets/v19/biome-decor/desert/cov/cov-obsidian-glass-fin-01-narrow.webp
+            /public/game/assets/v19/biome-decor/ice/plt/plt-glacier-shelf-01-low-wide.webp
+            /public/game/assets/v19/biome-decor/ice/plt/plt-mine-gantry-01-low-wide.webp
+            /public/game/assets/v19/biome-decor/ice/cov/cov-fractured-ice-pillar-01-narrow.webp
+            /art-source/v109/
+            /art-source/v109-pit-forward/
+            /docs/suivi-production/v109-pit-forward/
+            /docs/suivi-production/v109-homeworld-plaque/
             /docs/*v108*
             /docs/qa/v108*/
             /docs/homeworld-asset-gap-v81.md
@@ -562,6 +596,7 @@ jobs:
           app/game/*V106.ts app/game/*V106.tsx app/game/systems/*V106.ts
           app/game/*V107.ts app/game/*V107.tsx app/game/systems/*V107.ts
           app/game/*V108.ts app/game/*V108.tsx app/game/systems/*V108.ts
+          app/game/*V109.ts app/game/*V109.tsx app/game/systems/*V109.ts
           app/game/PitExperienceV79.tsx app/game/ClanWarBibleV6Panel.tsx
       - name: Exercise input resilience, fixed-step edges and original V74 metadata
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
@@ -680,12 +715,15 @@ jobs:
       - name: Execute unchanged V107 assertions and regenerate its immutable published workbook
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: node scripts/check-excel-history-v108.mjs --check --tests
-      - name: Exercise current V108 cargo, logistics, Preserve, Pit continuity and evidence admission
+      - name: Execute unchanged V108 assertions and regenerate its immutable published workbook
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
-        run: node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v108.test.mjs
-      - name: Verify reproducible V108 follow-up and all 73 preserved historical worksheets
+        run: node scripts/check-excel-history-v109.mjs --check --tests
+      - name: Exercise current V109 throws, supply routes, Preserve biomes, plaque and evidence boundaries
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
-        run: node scripts/build-excel-followup-v108.mjs --check
+        run: node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v109.test.mjs
+      - name: Verify reproducible V109 follow-up and all 85 preserved historical worksheets
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node scripts/build-excel-followup-v109.mjs --check
       - name: Exercise actual clan-war panel and native locked storage
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         env:

@@ -1,0 +1,1269 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-25T09:27:25.670472+00:00",
+  "status": "NATIVE_SELECTION_CONFIRMED_RUNTIME_PROOF_SEPARATE",
+  "scope": "Current selection of exact native source regions. Earlier delivery and tool records preserve their original review state; this ledger records which regions are actually selected now. No generated PNG or decoded source pixel was modified. A runtime-selected page is not a whole-source action completion or film-exact fidelity certificate.",
+  "sourceCompletion": false,
+  "partnerScope": "unvaried-feral-scar-duo",
+  "toolAttempts": 35,
+  "successfulNativeOutputs": 34,
+  "runtimeNativePages": 29,
+  "runtimeNativeFrameSlots": 48,
+  "publicNativeOutputs": 30,
+  "preservedSourceOnlyOutputs": 5,
+  "rejectedWithoutImage": 1,
+  "sourceReviews": [
+    "docs/suivi-production/v109-pit-forward/visual-review.json",
+    "docs/suivi-production/v109-pit-forward/visual-review-gutters.json",
+    "docs/suivi-production/v109-pit-forward/native-uv-border-review-final.json",
+    "docs/suivi-production/v109-pit-forward/native-ground-calibration.json"
+  ],
+  "attempts": [
+    {
+      "attemptId": "feral-throw-forward-left-isolated-2-gutter-r1",
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-forward-left-isolated-2-gutter-r1.json",
+      "selection": "runtime-native-regions",
+      "output": {
+        "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-isolated-2-gutter-r1-v109.png",
+        "sha256": "6ff3767df2283b599f7a204e20e3a8c03a943fb1a8dc9b7531f7a3c6778c1931",
+        "bytes": 1706509,
+        "width": 1536,
+        "height": 1024
+      },
+      "admittedFrames": [
+        {
+          "fighterId": "feral-hunter",
+          "role": "attacker",
+          "facing": "left",
+          "index": 2,
+          "rect": [
+            271,
+            146,
+            1044,
+            769
+          ],
+          "pivot": [
+            465.694,
+            762
+          ]
+        }
+      ]
+    },
+    {
+      "attemptId": "feral-throw-forward-left-isolated-3-r2",
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-forward-left-isolated-3-r2.json",
+      "selection": "runtime-native-regions",
+      "output": {
+        "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-isolated-3-r2-v109.png",
+        "sha256": "151b49c54a3ec2321c5793bd10b6232a1e7542d48a8d1c09da2f8fb3cdd76ddb",
+        "bytes": 2071095,
+        "width": 1536,
+        "height": 1024
+      },
+      "admittedFrames": [
+        {
+          "fighterId": "feral-hunter",
+          "role": "attacker",
+          "facing": "left",
+          "index": 3,
+          "rect": [
+            49,
+            22,
+            1422,
+            945
+          ],
+          "pivot": [
+            589.053,
+            940
+          ]
+        }
+      ]
+    },
+    {
+      "attemptId": "feral-throw-forward-left-isolated-3",
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-forward-left-isolated-3.json",
+      "selection": "preserved-reference-only",
+      "output": {
+        "path": "art-source/v109-pit-forward/feral-throw-forward-left-isolated-3-v109.png",
+        "sha256": "ea841e87b7f6a224b3c32216479025675148d6e9369b424ce2520c73b513d50e",
+        "bytes": 1998476,
+        "width": 1536,
+        "height": 1024
+      },
+      "admittedFrames": []
+    },
+    {
+      "attemptId": "feral-throw-forward-left-isolated-4-r2",
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-forward-left-isolated-4-r2.json",
+      "selection": "runtime-native-regions",
+      "output": {
+        "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-isolated-4-r2-v109.png",
+        "sha256": "fa54dd3f5a8e926c211d48dba1edd1b35a813cab02d013ee0294f68d3dd47ddc",
+        "bytes": 2138067,
+        "width": 1536,
+        "height": 1024
+      },
+      "admittedFrames": [
+        {
+          "fighterId": "feral-hunter",
+          "role": "attacker",
+          "facing": "left",
+          "index": 4,
+          "rect": [
+            37,
+            25,
+            1482,
+            954
+          ],
+          "pivot": [
+            650.509,
+            949
+          ]
+        }
+      ]
+    },
+    {
+      "attemptId": "feral-throw-forward-left-isolated-4",
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-forward-left-isolated-4.json",
+      "selection": "preserved-reference-only",
+      "output": {
+        "path": "art-source/v109-pit-forward/feral-throw-forward-left-isolated-4-v109.png",
+        "sha256": "9dffca70a09cf4febf84e5904b3c58e8305e935f3dd2c666bf0776561053f3fa",
+        "bytes": 1943838,
+        "width": 1536,
+        "height": 1024
+      },
+      "admittedFrames": []
+    },
+    {
+      "attemptId": "feral-throw-forward-left-isolated-5-gutter-r1",
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-forward-left-isolated-5-gutter-r1.json",
+      "selection": "runtime-native-regions",
+      "output": {
+        "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-isolated-5-gutter-r1-v109.png",
+        "sha256": "2411a5307a67bad68b4e2b1fc2fbbb52b3320d6dc10a956039a68bce30318046",
+        "bytes": 1553500,
+        "width": 1536,
+        "height": 1024
+      },
+      "admittedFrames": [
+        {
+          "fighterId": "feral-hunter",
+          "role": "attacker",
+          "facing": "left",
+          "index": 5,
+          "rect": [
+            424,
+            79,
+            727,
+            846
+          ],
+          "pivot": [
+            305.673,
+            839
+          ]
+        }
+      ]
+    },
+    {
+      "attemptId": "feral-throw-forward-left-r2",
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-forward-left-r2.json",
+      "selection": "runtime-native-regions",
+      "output": {
+        "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-r2-v109.png",
+        "sha256": "5dce6483d4ba9fb1848613d3a76abf255a163cbfb9dba1ed3554cc9a74615d15",
+        "bytes": 2390859,
+        "width": 1536,
+        "height": 1024
+      },
+      "admittedFrames": [
+        {
+          "fighterId": "feral-hunter",
+          "role": "attacker",
+          "facing": "left",
+          "index": 0,
+          "rect": [
+            90,
+            18,
+            392,
+            495
+          ],
+          "pivot": [
+            166.0,
+            482
+          ]
+        },
+        {
+          "fighterId": "feral-hunter",
+          "role": "attacker",
+          "facing": "left",
+          "index": 1,
+          "rect": [
+            492,
+            16,
+            556,
+            499
+          ],
+          "pivot": [
+            276.0,
+            485
+          ]
+        }
+      ]
+    },
+    {
+      "attemptId": "feral-throw-forward-left",
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-forward-left.json",
+      "selection": "preserved-reference-only",
+      "output": {
+        "path": "art-source/v109-pit-forward/feral-throw-forward-left-v109.png",
+        "sha256": "75ddb07fa2db78118494f20a8634aafbb453c64bd654ca8a9560bc8b35c30686",
+        "bytes": 2405332,
+        "width": 1536,
+        "height": 1024
+      },
+      "admittedFrames": []
+    },
+    {
+      "attemptId": "feral-throw-forward-right",
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-forward-right.json",
+      "selection": "runtime-native-regions",
+      "output": {
+        "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-right-v109.png",
+        "sha256": "8324320252c00e84cf0e50b7fb850dc96fb472dc1d5c933d0e14925b4fdf37ec",
+        "bytes": 2316771,
+        "width": 1536,
+        "height": 1024
+      },
+      "admittedFrames": [
+        {
+          "fighterId": "feral-hunter",
+          "role": "attacker",
+          "facing": "right",
+          "index": 0,
+          "rect": [
+            110,
+            18,
+            361,
+            496
+          ],
+          "pivot": [
+            146.0,
+            482
+          ]
+        },
+        {
+          "fighterId": "feral-hunter",
+          "role": "attacker",
+          "facing": "right",
+          "index": 1,
+          "rect": [
+            574,
+            16,
+            505,
+            489
+          ],
+          "pivot": [
+            194.0,
+            482
+          ]
+        },
+        {
+          "fighterId": "feral-hunter",
+          "role": "attacker",
+          "facing": "right",
+          "index": 2,
+          "rect": [
+            1078,
+            16,
+            401,
+            497
+          ],
+          "pivot": [
+            202.0,
+            487
+          ]
+        },
+        {
+          "fighterId": "feral-hunter",
+          "role": "attacker",
+          "facing": "right",
+          "index": 3,
+          "rect": [
+            46,
+            536,
+            535,
+            465
+          ],
+          "pivot": [
+            210.0,
+            460
+          ]
+        },
+        {
+          "fighterId": "feral-hunter",
+          "role": "attacker",
+          "facing": "right",
+          "index": 4,
+          "rect": [
+            580,
+            512,
+            513,
+            495
+          ],
+          "pivot": [
+            188.0,
+            484
+          ]
+        },
+        {
+          "fighterId": "feral-hunter",
+          "role": "attacker",
+          "facing": "right",
+          "index": 5,
+          "rect": [
+            1163,
+            535,
+            311,
+            471
+          ],
+          "pivot": [
+            117.0,
+            461
+          ]
+        }
+      ]
+    },
+    {
+      "attemptId": "feral-throw-victim-left-isolated-3",
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-victim-left-isolated-3.json",
+      "selection": "runtime-native-regions",
+      "output": {
+        "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-left-isolated-3-v109.png",
+        "sha256": "8b91bf81569d5da2f5107c3515272ada6d19ad0acaefcdc5234626dc4a11c8ad",
+        "bytes": 2201016,
+        "width": 1536,
+        "height": 1024
+      },
+      "admittedFrames": [
+        {
+          "fighterId": "feral-hunter",
+          "role": "victim",
+          "facing": "left",
+          "index": 3,
+          "rect": [
+            112,
+            90,
+            1391,
+            870
+          ],
+          "pivot": [
+            627.525,
+            1165.387
+          ]
+        }
+      ]
+    },
+    {
+      "attemptId": "feral-throw-victim-left-isolated-4-gutter-r1",
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-victim-left-isolated-4-gutter-r1.json",
+      "selection": "runtime-native-regions",
+      "output": {
+        "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-left-isolated-4-gutter-r1-v109.png",
+        "sha256": "3ee1f59c32a1204957aac968b0c22f74cfde5297393985d953c1cf1de65f7c98",
+        "bytes": 1600619,
+        "width": 1536,
+        "height": 1024
+      },
+      "admittedFrames": [
+        {
+          "fighterId": "feral-hunter",
+          "role": "victim",
+          "facing": "left",
+          "index": 4,
+          "rect": [
+            44,
+            268,
+            1445,
+            531
+          ],
+          "pivot": [
+            687.634,
+            486
+          ]
+        }
+      ]
+    },
+    {
+      "attemptId": "feral-throw-victim-left",
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-victim-left.json",
+      "selection": "runtime-native-regions",
+      "output": {
+        "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-left-v109.png",
+        "sha256": "9203da249bb1756a545758125a88c63f66f8945dbf5a1e883b53532a4a51bfed",
+        "bytes": 2261067,
+        "width": 1536,
+        "height": 1024
+      },
+      "admittedFrames": [
+        {
+          "fighterId": "feral-hunter",
+          "role": "victim",
+          "facing": "left",
+          "index": 0,
+          "rect": [
+            74,
+            32,
+            377,
+            485
+          ],
+          "pivot": [
+            182.0,
+            480
+          ]
+        },
+        {
+          "fighterId": "feral-hunter",
+          "role": "victim",
+          "facing": "left",
+          "index": 1,
+          "rect": [
+            588,
+            98,
+            405,
+            419
+          ],
+          "pivot": [
+            180.0,
+            415
+          ]
+        },
+        {
+          "fighterId": "feral-hunter",
+          "role": "victim",
+          "facing": "left",
+          "index": 2,
+          "rect": [
+            1070,
+            70,
+            403,
+            549
+          ],
+          "pivot": [
+            210.0,
+            430.0
+          ]
+        },
+        {
+          "fighterId": "feral-hunter",
+          "role": "victim",
+          "facing": "left",
+          "index": 5,
+          "rect": [
+            1104,
+            632,
+            422,
+            347
+          ],
+          "pivot": [
+            176.0,
+            342
+          ]
+        }
+      ]
+    },
+    {
+      "attemptId": "feral-throw-victim-right-isolated-3",
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-victim-right-isolated-3.json",
+      "selection": "runtime-native-regions",
+      "output": {
+        "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-right-isolated-3-v109.png",
+        "sha256": "b8ab2d58ffaf3f47853f01ef4a0e36104c6e6a0cfb1462b4d0155365ebb74d2a",
+        "bytes": 1807014,
+        "width": 1536,
+        "height": 1024
+      },
+      "admittedFrames": [
+        {
+          "fighterId": "feral-hunter",
+          "role": "victim",
+          "facing": "right",
+          "index": 3,
+          "rect": [
+            54,
+            206,
+            1469,
+            667
+          ],
+          "pivot": [
+            540.458,
+            951.954
+          ]
+        }
+      ]
+    },
+    {
+      "attemptId": "feral-throw-victim-right-isolated-4",
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-victim-right-isolated-4.json",
+      "selection": "runtime-native-regions",
+      "output": {
+        "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-right-isolated-4-v109.png",
+        "sha256": "f3b14134eaa1ba660342d52de1d84925f5888657d9c14c7c53ecb8647158d4f8",
+        "bytes": 1442943,
+        "width": 1536,
+        "height": 1024
+      },
+      "admittedFrames": [
+        {
+          "fighterId": "feral-hunter",
+          "role": "victim",
+          "facing": "right",
+          "index": 4,
+          "rect": [
+            63,
+            268,
+            1360,
+            469
+          ],
+          "pivot": [
+            598.994,
+            461
+          ]
+        }
+      ]
+    },
+    {
+      "attemptId": "feral-throw-victim-right",
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-victim-right.json",
+      "selection": "runtime-native-regions",
+      "output": {
+        "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-right-v109.png",
+        "sha256": "3039f5ff15c73a5a6ef4b6054d3b949b22e99141268bcb5314984a652bdc331a",
+        "bytes": 2236163,
+        "width": 1536,
+        "height": 1024
+      },
+      "admittedFrames": [
+        {
+          "fighterId": "feral-hunter",
+          "role": "victim",
+          "facing": "right",
+          "index": 0,
+          "rect": [
+            84,
+            30,
+            387,
+            469
+          ],
+          "pivot": [
+            172.0,
+            458
+          ]
+        },
+        {
+          "fighterId": "feral-hunter",
+          "role": "victim",
+          "facing": "right",
+          "index": 1,
+          "rect": [
+            580,
+            92,
+            387,
+            407
+          ],
+          "pivot": [
+            188.0,
+            397
+          ]
+        },
+        {
+          "fighterId": "feral-hunter",
+          "role": "victim",
+          "facing": "right",
+          "index": 2,
+          "rect": [
+            1148,
+            31,
+            312,
+            407
+          ],
+          "pivot": [
+            132.0,
+            469.0
+          ]
+        },
+        {
+          "fighterId": "feral-hunter",
+          "role": "victim",
+          "facing": "right",
+          "index": 5,
+          "rect": [
+            1135,
+            586,
+            384,
+            369
+          ],
+          "pivot": [
+            145.0,
+            352
+          ]
+        }
+      ]
+    },
+    {
+      "attemptId": "scar-throw-forward-left-isolated-0",
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-forward-left-isolated-0.json",
+      "selection": "runtime-native-regions",
+      "output": {
+        "path": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-0-v109.png",
+        "sha256": "c5fb6df337079a263350702ddea4299b7ddb61f060dd7bed02eb6010632c9c96",
+        "bytes": 1707824,
+        "width": 1536,
+        "height": 1024
+      },
+      "admittedFrames": [
+        {
+          "fighterId": "scar",
+          "role": "attacker",
+          "facing": "left",
+          "index": 0,
+          "rect": [
+            229,
+            1,
+            1005,
+            1016
+          ],
+          "pivot": [
+            353.491,
+            1010
+          ]
+        }
+      ]
+    },
+    {
+      "attemptId": "scar-throw-forward-left-isolated-1",
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-forward-left-isolated-1.json",
+      "selection": "runtime-native-regions",
+      "output": {
+        "path": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-1-v109.png",
+        "sha256": "6153788ab03fc3f246cae0b1b30990edd57b777283f2eff4c24d9a6ae5b7e95a",
+        "bytes": 1582563,
+        "width": 1536,
+        "height": 1024
+      },
+      "admittedFrames": [
+        {
+          "fighterId": "scar",
+          "role": "attacker",
+          "facing": "left",
+          "index": 1,
+          "rect": [
+            318,
+            6,
+            961,
+            975
+          ],
+          "pivot": [
+            422.917,
+            969
+          ]
+        }
+      ]
+    },
+    {
+      "attemptId": "scar-throw-forward-left-isolated-2-gutter-r1",
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-forward-left-isolated-2-gutter-r1.json",
+      "selection": "runtime-native-regions",
+      "output": {
+        "path": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-2-gutter-r1-v109.png",
+        "sha256": "08c29f9c49d71aef046968c86000a4fd1607486934ab764c80718c86aa816454",
+        "bytes": 1606038,
+        "width": 1536,
+        "height": 1024
+      },
+      "admittedFrames": [
+        {
+          "fighterId": "scar",
+          "role": "attacker",
+          "facing": "left",
+          "index": 2,
+          "rect": [
+            336,
+            12,
+            947,
+            952
+          ],
+          "pivot": [
+            418.854,
+            948
+          ]
+        }
+      ]
+    },
+    {
+      "attemptId": "scar-throw-forward-left-isolated-3",
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-forward-left-isolated-3.json",
+      "selection": "runtime-native-regions",
+      "output": {
+        "path": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-3-v109.png",
+        "sha256": "13561262646615582d4c0687b4b59dc203e58747f62f8cf924a609abfeea44c6",
+        "bytes": 1748850,
+        "width": 1536,
+        "height": 1024
+      },
+      "admittedFrames": [
+        {
+          "fighterId": "scar",
+          "role": "attacker",
+          "facing": "left",
+          "index": 3,
+          "rect": [
+            15,
+            8,
+            1282,
+            1001
+          ],
+          "pivot": [
+            502.734,
+            996
+          ]
+        }
+      ]
+    },
+    {
+      "attemptId": "scar-throw-forward-left-isolated-4",
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-forward-left-isolated-4.json",
+      "selection": "runtime-native-regions",
+      "output": {
+        "path": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-4-v109.png",
+        "sha256": "0f2081b177fe949c0f52fa2d27dd4accfbd3aaf1da891ec8ffa11547cde0a00d",
+        "bytes": 1761722,
+        "width": 1536,
+        "height": 1024
+      },
+      "admittedFrames": [
+        {
+          "fighterId": "scar",
+          "role": "attacker",
+          "facing": "left",
+          "index": 4,
+          "rect": [
+            154,
+            8,
+            1213,
+            1007
+          ],
+          "pivot": [
+            473.109,
+            1001
+          ]
+        }
+      ]
+    },
+    {
+      "attemptId": "scar-throw-forward-left-isolated-5-gutter-r1",
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-forward-left-isolated-5-gutter-r1.json",
+      "selection": "runtime-native-regions",
+      "output": {
+        "path": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-5-gutter-r1-v109.png",
+        "sha256": "7d1eee2349555a1eab15c2ce60d0bae9e858d66fd183f4aa62e3f97e3d2ff157",
+        "bytes": 1461409,
+        "width": 1536,
+        "height": 1024
+      },
+      "admittedFrames": [
+        {
+          "fighterId": "scar",
+          "role": "attacker",
+          "facing": "left",
+          "index": 5,
+          "rect": [
+            361,
+            37,
+            801,
+            906
+          ],
+          "pivot": [
+            278.851,
+            901
+          ]
+        }
+      ]
+    },
+    {
+      "attemptId": "scar-throw-forward-left-r2",
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-forward-left-r2.json",
+      "selection": "preserved-reference-only",
+      "output": {
+        "path": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-r2-v109.png",
+        "sha256": "64b53fe5abfaed37324a809419cfb216aca16b83467115a1e555ee0864f7d048",
+        "bytes": 2358596,
+        "width": 1536,
+        "height": 1024
+      },
+      "admittedFrames": []
+    },
+    {
+      "attemptId": "scar-throw-forward-left",
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-forward-left.json",
+      "selection": "preserved-reference-only",
+      "output": {
+        "path": "art-source/v109-pit-forward/scar-throw-forward-left-v109.png",
+        "sha256": "6d407f9378c7e15c5e0212ec1746fce121e39fc5cd0d230f24a5dea7e2338550",
+        "bytes": 2404783,
+        "width": 1536,
+        "height": 1024
+      },
+      "admittedFrames": []
+    },
+    {
+      "attemptId": "scar-throw-forward-right",
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-forward-right.json",
+      "selection": "runtime-native-regions",
+      "output": {
+        "path": "public/game/sprites/v109/pit/scar/scar-throw-forward-right-v109.png",
+        "sha256": "4615795ab410033a000dcdf7fdfe197b431aedb07ad279a7acfbef5e93910c02",
+        "bytes": 2258882,
+        "width": 1536,
+        "height": 1024
+      },
+      "admittedFrames": [
+        {
+          "fighterId": "scar",
+          "role": "attacker",
+          "facing": "right",
+          "index": 0,
+          "rect": [
+            64,
+            6,
+            423,
+            501
+          ],
+          "pivot": [
+            192.0,
+            490
+          ]
+        },
+        {
+          "fighterId": "scar",
+          "role": "attacker",
+          "facing": "right",
+          "index": 1,
+          "rect": [
+            536,
+            9,
+            524,
+            490
+          ],
+          "pivot": [
+            232.0,
+            485
+          ]
+        },
+        {
+          "fighterId": "scar",
+          "role": "attacker",
+          "facing": "right",
+          "index": 2,
+          "rect": [
+            1082,
+            15,
+            415,
+            486
+          ],
+          "pivot": [
+            198.0,
+            482
+          ]
+        },
+        {
+          "fighterId": "scar",
+          "role": "attacker",
+          "facing": "right",
+          "index": 3,
+          "rect": [
+            13,
+            516,
+            536,
+            481
+          ],
+          "pivot": [
+            243.0,
+            477
+          ]
+        },
+        {
+          "fighterId": "scar",
+          "role": "attacker",
+          "facing": "right",
+          "index": 4,
+          "rect": [
+            560,
+            512,
+            481,
+            485
+          ],
+          "pivot": [
+            208.0,
+            476
+          ]
+        },
+        {
+          "fighterId": "scar",
+          "role": "attacker",
+          "facing": "right",
+          "index": 5,
+          "rect": [
+            1104,
+            516,
+            391,
+            485
+          ],
+          "pivot": [
+            176.0,
+            478
+          ]
+        }
+      ]
+    },
+    {
+      "attemptId": "scar-throw-victim-left-isolated-2-gutter-r1",
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-left-isolated-2-gutter-r1.json",
+      "selection": "runtime-native-regions",
+      "output": {
+        "path": "public/game/sprites/v109/pit/scar/scar-throw-victim-left-isolated-2-gutter-r1-v109.png",
+        "sha256": "b0811cc9418578e58157139809783f127ed46322ea9d705325b34e908958a6ce",
+        "bytes": 1518305,
+        "width": 1536,
+        "height": 1024
+      },
+      "admittedFrames": [
+        {
+          "fighterId": "scar",
+          "role": "victim",
+          "facing": "left",
+          "index": 2,
+          "rect": [
+            262,
+            84,
+            1029,
+            813
+          ],
+          "pivot": [
+            545.519,
+            839.019
+          ]
+        }
+      ]
+    },
+    {
+      "attemptId": "scar-throw-victim-left-isolated-3",
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-left-isolated-3.json",
+      "selection": "runtime-native-regions",
+      "output": {
+        "path": "public/game/sprites/v109/pit/scar/scar-throw-victim-left-isolated-3-v109.png",
+        "sha256": "89fa6f3142850eccf99932528a23ae67b0f115de00dce9db8ad1da124b2baf1a",
+        "bytes": 2110431,
+        "width": 1536,
+        "height": 1024
+      },
+      "admittedFrames": [
+        {
+          "fighterId": "scar",
+          "role": "victim",
+          "facing": "left",
+          "index": 3,
+          "rect": [
+            26,
+            12,
+            1356,
+            971
+          ],
+          "pivot": [
+            632.171,
+            1168.201
+          ]
+        }
+      ]
+    },
+    {
+      "attemptId": "scar-throw-victim-left-isolated-4-r2",
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-left-isolated-4-r2.json",
+      "selection": "runtime-native-regions",
+      "output": {
+        "path": "public/game/sprites/v109/pit/scar/scar-throw-victim-left-isolated-4-r2-v109.png",
+        "sha256": "f102c0e286a3d566854b4581757aadf46728f64e548e14dfceabb7e6dd2dfca5",
+        "bytes": 1194875,
+        "width": 1774,
+        "height": 887
+      },
+      "admittedFrames": [
+        {
+          "fighterId": "scar",
+          "role": "victim",
+          "facing": "left",
+          "index": 4,
+          "rect": [
+            81,
+            159,
+            1615,
+            648
+          ],
+          "pivot": [
+            720.996,
+            636
+          ]
+        }
+      ]
+    },
+    {
+      "attemptId": "scar-throw-victim-left-isolated-4",
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-left-isolated-4.json",
+      "selection": "rejected-without-image",
+      "output": null,
+      "admittedFrames": []
+    },
+    {
+      "attemptId": "scar-throw-victim-left-isolated-5-gutter-r1",
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-left-isolated-5-gutter-r1.json",
+      "selection": "runtime-native-regions",
+      "output": {
+        "path": "public/game/sprites/v109/pit/scar/scar-throw-victim-left-isolated-5-gutter-r1-v109.png",
+        "sha256": "34fa8678d6d979ffc80200eecff09708baf3cca3dd07f54d094d6887fd20a97c",
+        "bytes": 1499671,
+        "width": 1536,
+        "height": 1024
+      },
+      "admittedFrames": [
+        {
+          "fighterId": "scar",
+          "role": "victim",
+          "facing": "left",
+          "index": 5,
+          "rect": [
+            357,
+            45,
+            891,
+            862
+          ],
+          "pivot": [
+            376.496,
+            856
+          ]
+        }
+      ]
+    },
+    {
+      "attemptId": "scar-throw-victim-left",
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-left.json",
+      "selection": "runtime-native-regions",
+      "output": {
+        "path": "public/game/sprites/v109/pit/scar/scar-throw-victim-left-v109.png",
+        "sha256": "46adfc94048c75e60f01590aa7619cacc6c934f20489c7003d24209477af0429",
+        "bytes": 2341573,
+        "width": 1536,
+        "height": 1024
+      },
+      "admittedFrames": [
+        {
+          "fighterId": "scar",
+          "role": "victim",
+          "facing": "left",
+          "index": 0,
+          "rect": [
+            46,
+            9,
+            435,
+            508
+          ],
+          "pivot": [
+            210.0,
+            501
+          ]
+        },
+        {
+          "fighterId": "scar",
+          "role": "victim",
+          "facing": "left",
+          "index": 1,
+          "rect": [
+            554,
+            13,
+            407,
+            506
+          ],
+          "pivot": [
+            214.0,
+            499
+          ]
+        }
+      ]
+    },
+    {
+      "attemptId": "scar-throw-victim-right-isolated-2-gutter-r1",
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-right-isolated-2-gutter-r1.json",
+      "selection": "runtime-native-regions",
+      "output": {
+        "path": "public/game/sprites/v109/pit/scar/scar-throw-victim-right-isolated-2-gutter-r1-v109.png",
+        "sha256": "a83f6621c6312f4080cd428358e89369d5c9f3e257742bbb8513b9c2dba2856e",
+        "bytes": 1458006,
+        "width": 1536,
+        "height": 1024
+      },
+      "admittedFrames": [
+        {
+          "fighterId": "scar",
+          "role": "victim",
+          "facing": "right",
+          "index": 2,
+          "rect": [
+            267,
+            81,
+            1024,
+            825
+          ],
+          "pivot": [
+            556.366,
+            940.895
+          ]
+        }
+      ]
+    },
+    {
+      "attemptId": "scar-throw-victim-right-isolated-3",
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-right-isolated-3.json",
+      "selection": "runtime-native-regions",
+      "output": {
+        "path": "public/game/sprites/v109/pit/scar/scar-throw-victim-right-isolated-3-v109.png",
+        "sha256": "bd1ca19aecfc3e6c1579838d826461dad56b885c167644452c91a276cd54bd2a",
+        "bytes": 1876383,
+        "width": 1536,
+        "height": 1024
+      },
+      "admittedFrames": [
+        {
+          "fighterId": "scar",
+          "role": "victim",
+          "facing": "right",
+          "index": 3,
+          "rect": [
+            60,
+            134,
+            1443,
+            765
+          ],
+          "pivot": [
+            562.221,
+            1117.064
+          ]
+        }
+      ]
+    },
+    {
+      "attemptId": "scar-throw-victim-right-isolated-4",
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-right-isolated-4.json",
+      "selection": "runtime-native-regions",
+      "output": {
+        "path": "public/game/sprites/v109/pit/scar/scar-throw-victim-right-isolated-4-v109.png",
+        "sha256": "07f216fb8e1145169bb377fc5f11bc6da8193848a962ba23a8aea6f34c07cff6",
+        "bytes": 1377113,
+        "width": 1536,
+        "height": 1024
+      },
+      "admittedFrames": [
+        {
+          "fighterId": "scar",
+          "role": "victim",
+          "facing": "right",
+          "index": 4,
+          "rect": [
+            21,
+            361,
+            1496,
+            382
+          ],
+          "pivot": [
+            526.993,
+            375
+          ]
+        }
+      ]
+    },
+    {
+      "attemptId": "scar-throw-victim-right-isolated-5",
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-right-isolated-5.json",
+      "selection": "runtime-native-regions",
+      "output": {
+        "path": "public/game/sprites/v109/pit/scar/scar-throw-victim-right-isolated-5-v109.png",
+        "sha256": "2105306a7d2462540ba864498659c44f193983a49daac0e2a68c2b75053157e8",
+        "bytes": 1516350,
+        "width": 1536,
+        "height": 1024
+      },
+      "admittedFrames": [
+        {
+          "fighterId": "scar",
+          "role": "victim",
+          "facing": "right",
+          "index": 5,
+          "rect": [
+            481,
+            9,
+            830,
+            985
+          ],
+          "pivot": [
+            286.258,
+            981
+          ]
+        }
+      ]
+    },
+    {
+      "attemptId": "scar-throw-victim-right",
+      "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-right.json",
+      "selection": "runtime-native-regions",
+      "output": {
+        "path": "public/game/sprites/v109/pit/scar/scar-throw-victim-right-v109.png",
+        "sha256": "24cdb66b63f585ac952d035a27006805d3b04136448fb3c22f4a9b3d6c7dfcf9",
+        "bytes": 2164133,
+        "width": 1536,
+        "height": 1024
+      },
+      "admittedFrames": [
+        {
+          "fighterId": "scar",
+          "role": "victim",
+          "facing": "right",
+          "index": 0,
+          "rect": [
+            62,
+            9,
+            373,
+            490
+          ],
+          "pivot": [
+            194.0,
+            484
+          ]
+        },
+        {
+          "fighterId": "scar",
+          "role": "victim",
+          "facing": "right",
+          "index": 1,
+          "rect": [
+            590,
+            16,
+            373,
+            484
+          ],
+          "pivot": [
+            178.0,
+            477
+          ]
+        }
+      ]
+    }
+  ]
+}

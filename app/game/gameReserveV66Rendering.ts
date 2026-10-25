@@ -1,4 +1,5 @@
 import { GAME_RESERVE_EXPEDITION_V108_SECTORS, GAME_RESERVE_EXPEDITION_V108_SITES } from "./systems/gameReserveExpeditionV108";
+import {gameReserveV109Definition, GAME_RESERVE_V109_ART_DIMENSIONS} from './systems/gameReserveExpeditionV109';
 import { drawActorContactShadow } from "./spriteContact";
 import { GAME_RESERVE_V99_RECOVERY_TICKS, gameReserveV66People, gameReserveV66Ships, gameReserveV66Supplies, gameReserveV66Interaction, gameReserveV66InteractionDuration, gameReserveV66LineClear, gameReserveV66Sector, gameReserveV66World, gameReserveV66Sectors, gameReserveV66Platforms, gameReserveV66Cover, type GameReserveV66State } from "./systems/gameReserveV66";
 import { GAME_RESERVE_LOOKOUT_V104_SURVEY } from "./systems/gameReserveLookoutV104";
@@ -15,14 +16,20 @@ export const GAME_RESERVE_V66_ART = {
   sniper: "/game/sprites/v7/enemies/humanoid-badblood/colonial-sniper-sheet.png",
 } as const;
 export type GameReserveV66Art = Record<keyof typeof GAME_RESERVE_V66_ART, HTMLImageElement>;
-export async function loadGameReserveV66Art(): Promise<GameReserveV66Art> {
-  const items = await Promise.all(Object.entries(GAME_RESERVE_V66_ART).map(([key, src]) => new Promise<[string, HTMLImageElement]>((resolve, reject) => {
+export async function loadGameReserveV66Art(state?: GameReserveV66State | null): Promise<GameReserveV66Art> {
+  const biome = gameReserveV109Definition(state ?? undefined);
+  const sources = biome ? {...GAME_RESERVE_V66_ART, background: biome.art.background, branch: biome.art.ledge, industrialPlatform: biome.art.gantry, ferns: biome.art.cover} : GAME_RESERVE_V66_ART;
+  const items = await Promise.all(Object.entries(sources).map(([key, src]) => new Promise<[string, HTMLImageElement]>((resolve, reject) => {
     const image = new Image(); image.decoding = "async";
     image.onload = () => image.naturalWidth > 0 && image.naturalHeight > 0 ? resolve([key, image]) : reject(new Error("Image vide : " + src));
     image.onerror = () => reject(new Error("Image indisponible : " + src)); image.src = src;
   })));
   const bank = Object.fromEntries(items) as GameReserveV66Art;
   for (const id of ["raider", "marine", "sniper"] as const) if (bank[id].naturalWidth !== 1536 || bank[id].naturalHeight !== 192) throw new Error("Atlas humain incompatible : " + id);
+  if (biome) for (const [id, size] of Object.entries(GAME_RESERVE_V109_ART_DIMENSIONS[biome.biome])) {
+    const image = bank[id as keyof GameReserveV66Art];
+    if (image.naturalWidth !== size[0] || image.naturalHeight !== size[1]) throw new Error('Décor natif incompatible : '+id+' · '+biome.name);
+  }
   return bank;
 }
 function label(ctx: CanvasRenderingContext2D, text: string, x: number, y: number, color = "#e9efd4") {
@@ -46,12 +53,13 @@ export function drawGameReserveV66(ctx: CanvasRenderingContext2D, s: GameReserve
   const camera = Math.max(0, Math.min(Math.max(0, worldWidth - viewportWidth), s.player.x - viewportWidth * .4));
   // One cover panorama keeps the moon and skyline unique; only its bounded overscan can scroll.
   // A high focal point retains the sky on wide screens. The ground strip remains independently tiled.
-  const bg = bank.background, overscan = Math.min(160, viewportWidth * .12);
-  const scale = Math.max((viewportWidth + overscan) / bg.naturalWidth, 438 / 770);
-  const width = bg.naturalWidth * scale, height = 770 * scale;
+  const biome = gameReserveV109Definition(s);
+  const bg = bank.background, overscan = Math.min(160, viewportWidth * .12), horizon = biome ? Math.round(bg.naturalHeight * .82) : 770;
+  const scale = Math.max((viewportWidth + overscan) / bg.naturalWidth, 438 / horizon);
+  const width = bg.naturalWidth * scale, height = horizon * scale;
   const travel = camera / Math.max(1, worldWidth - viewportWidth);
-  ctx.drawImage(bg, 0, 0, bg.naturalWidth, 770, -(width - viewportWidth) * travel, -(height - 438) * .15, width, height);
-  for (let x = -camera % 700 - 700; x < viewportWidth; x += 700) ctx.drawImage(bg, 0, 770, bg.naturalWidth, bg.naturalHeight - 770, x, 438, 700, 102);
+  ctx.drawImage(bg, 0, 0, bg.naturalWidth, horizon, -(width - viewportWidth) * travel, -(height - 438) * .15, width, height);
+  for (let x = -camera % 700 - 700; x < viewportWidth; x += 700) ctx.drawImage(bg, 0, horizon, bg.naturalWidth, bg.naturalHeight - horizon, x, 438, 700, 102);
   ctx.translate(-camera, 0);
   if (s.version === 3 || s.version === 4) {
     for (const sector of s.version === 4 ? GAME_RESERVE_EXPEDITION_V108_SECTORS : GAME_RESERVE_EXPEDITION_V107_SECTORS) {
@@ -63,7 +71,10 @@ export function drawGameReserveV66(ctx: CanvasRenderingContext2D, s: GameReserve
     ctx.drawImage(bank.machinery, 12310, 145, 310, 142);
   }
   // Derelict machine walls stay behind the walkable strip. Native hulls never sit on the canopy route.
-  ctx.drawImage(bank.machinery, 1960, 200, 690, 233); ctx.drawImage(bank.machinery, 4310, 251, 380, 182);
+  if (biome) {
+    for (const sector of biome.sectors) {const atmosphere = ctx.createLinearGradient(0,120,0,540);atmosphere.addColorStop(0,sector.atmosphere+'10');atmosphere.addColorStop(1,sector.atmosphere+'45');ctx.fillStyle=atmosphere;ctx.fillRect(sector.left,0,1600,540);}
+    for (const ship of ships) ctx.drawImage(bank.machinery,ship.x-140,310,280,125);
+  } else {ctx.drawImage(bank.machinery, 1960, 200, 690, 233); ctx.drawImage(bank.machinery, 4310, 251, 380, 182);}
   if (s.version === 2) {
     // Existing native machinery marks the lookout; the survey icon is functional HUD, not a new prop asset.
     const site = GAME_RESERVE_LOOKOUT_V104_SURVEY;
@@ -77,9 +88,15 @@ export function drawGameReserveV66(ctx: CanvasRenderingContext2D, s: GameReserve
     ctx.strokeStyle = recorded ? "#8dcbb8" : "#e9ce94"; ctx.lineWidth = 2; ctx.strokeRect(site.x - 12, site.y - 46, 24, 32);
     label(ctx, recorded ? site.name + " · CONSIGNÉ" : site.name + " · RELEVÉ (2 s)", site.x, site.y - 70, recorded ? "#a1dac3" : "#e9ce94");
   }
+  if (s.version === 5 && biome) for (const [index, site] of biome.sites.entries()) {
+    const recorded = s.routeV109.siteRecords[index].recordedAt !== null;
+    ctx.strokeStyle=recorded?'#8dcbb8':'#f0dba6';ctx.lineWidth=2;ctx.strokeRect(site.x-12,site.y-46,24,32);
+    label(ctx,recorded?site.name+' · CONSIGNÉ':site.name+' · RELEVÉ (2 s)',site.x,site.y-70,recorded?'#a1dac3':'#f0dba6');
+  }
   for (const platform of platforms) {
-    const image = s.version === 4 ? [2, 3, 5, 7].includes(Math.floor(platform.x / 1600)) ? bank.industrialPlatform : bank.branch : platform.x >= 1700 && platform.x < 3000 || s.version === 3 && platform.x >= 8000 && platform.x < 9600 || s.version === 3 && platform.x >= 11200 ? bank.industrialPlatform : bank.branch;
-    ctx.drawImage(image, platform.x, platform.y - 3, platform.w, Math.min(115, platform.w * image.naturalHeight / image.naturalWidth));
+    const image = biome ? 'kind' in platform && platform.kind === 'gantry' ? bank.industrialPlatform : bank.branch : s.version === 4 ? [2, 3, 5, 7].includes(Math.floor(platform.x / 1600)) ? bank.industrialPlatform : bank.branch : platform.x >= 1700 && platform.x < 3000 || s.version === 3 && platform.x >= 8000 && platform.x < 9600 || s.version === 3 && platform.x >= 11200 ? bank.industrialPlatform : bank.branch;
+    if (biome) ctx.drawImage(image,24,24,image.naturalWidth-48,image.naturalHeight-48,platform.x,platform.y,platform.w,platform.w*(image.naturalHeight-48)/(image.naturalWidth-48));
+    else ctx.drawImage(image, platform.x, platform.y - 3, platform.w, Math.min(115, platform.w * image.naturalHeight / image.naturalWidth));
     ctx.strokeStyle = "#a9c68988"; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(platform.x + 8, platform.y); ctx.lineTo(platform.x + platform.w - 8, platform.y); ctx.stroke();
   }
   for (const track of s.tracks) {
@@ -124,7 +141,10 @@ export function drawGameReserveV66(ctx: CanvasRenderingContext2D, s: GameReserve
   ctx.save(); ctx.translate(p.x, p.y); ctx.scale(p.facing, 1); ctx.globalAlpha = p.cloak ? .34 : 1;
   ctx.drawImage(bank.hunter, 308, 56, 667, 1013, -41, -124, 82, 124); ctx.restore();
   for (const b of s.projectiles) { ctx.strokeStyle = b.owner === "hunter" ? "#8ee9ff" : "#ffd990"; ctx.lineWidth = b.owner === "hunter" ? 4 : 2; ctx.beginPath(); ctx.moveTo(b.x - b.vx * 1.6, b.y - b.vy * 1.6); ctx.lineTo(b.x, b.y); ctx.stroke(); }
-  for (const cover of gameReserveV66Cover(s)) { ctx.globalAlpha = p.x > cover.x - 30 && p.x < cover.x + cover.w + 30 ? .5 : .85; ctx.drawImage(bank.ferns, cover.x - 12, cover.top, cover.w + 24, 438 - cover.top + 7); } ctx.globalAlpha = 1;
+  for (const cover of gameReserveV66Cover(s)) { ctx.globalAlpha = p.x > cover.x - 30 && p.x < cover.x + cover.w + 30 ? .5 : .85;
+    if (biome) ctx.drawImage(bank.ferns,24,24,bank.ferns.naturalWidth-48,bank.ferns.naturalHeight-48,cover.x,cover.top,cover.w,438-cover.top);
+    else ctx.drawImage(bank.ferns, cover.x - 12, cover.top, cover.w + 24, 438 - cover.top + 7);
+  } ctx.globalAlpha = 1;
   label(ctx, "EXTRACTION · maintenir Interagir", 150, 294, "#b9e5c0");
   ctx.strokeStyle = "#b9e5c0"; ctx.setLineDash([7, 4]); ctx.beginPath(); ctx.moveTo(65, 441); ctx.lineTo(165, 441); ctx.stroke(); ctx.setLineDash([]);
   const interaction = gameReserveV66Interaction(s);

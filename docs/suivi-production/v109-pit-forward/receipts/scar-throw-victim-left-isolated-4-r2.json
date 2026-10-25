@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-25T08:44:27.274396+00:00",
+  "tool": "image_gen.imagegen",
+  "attemptId": "scar-throw-victim-left-isolated-4-r2",
+  "submittedPrompt": "Create one isolated game sprite by editing this reference atlas: retain ONLY the BOTTOM MIDDLE pose, the fully equipped silver-helmeted armored science-fiction hunter lying face-down after a non-graphic fall and bracing with his forearms, head toward SCREEN LEFT. Remove the other five figures entirely. Preserve his full existing suit, silver helmet, mesh undersuit, armor, wrist gauntlets, shoulder cannon and the same full spear visibly held in the same hand along the floor direction. The entire figure stays equipped and covered exactly as the reference; no clothing removal or injury detail. Exactly two arms and two legs, complete visible feet and own equipment, no other person, mannequin, extra limbs or duplicate spear. Keep the pose and bodily proportions intact. Transparent RGBA canvas, no floor, background, glow, text or extra phases. One complete single armored warrior sprite, suitable for a standard game landing-and-recovery animation.",
+  "submittedReferences": [
+    {
+      "submittedPath": "/workspace/generated_images/exec-0f0c9148-0a95-44f6-bbb6-2d2fdb812f14.png",
+      "preservedPath": "public/game/sprites/v109/pit/scar/scar-throw-victim-left-v109.png",
+      "sha256": "46adfc94048c75e60f01590aa7619cacc6c934f20489c7003d24209477af0429",
+      "bytes": 2341573
+    }
+  ],
+  "transparentBackgroundRequested": true,
+  "originalNativeOutput": "/workspace/generated_images/exec-653418d8-a56f-4c84-8fbe-68226ad238e1.png",
+  "output": {
+    "path": "public/game/sprites/v109/pit/scar/scar-throw-victim-left-isolated-4-r2-v109.png",
+    "sha256": "f102c0e286a3d566854b4581757aadf46728f64e548e14dfceabb7e6dd2dfca5",
+    "bytes": 1194875,
+    "width": 1774,
+    "height": 887
+  },
+  "status": "SELECTED_SOURCE_REGIONS",
+  "filesEditedAfterGeneration": false,
+  "scope": "Local tool call record, not an external signed certificate. Original adaptations; no film-exact fidelity or source action completion is inferred."
+}

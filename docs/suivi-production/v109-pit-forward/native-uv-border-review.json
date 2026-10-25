@@ -1,0 +1,1274 @@
+{
+  "schemaVersion": 1,
+  "scope": "Read-only native alpha geometry. Minimal expanding alpha0 rectangle around the reviewed body bbox; any extra alpha>16 body pixel or nonzero page edge blocks admission. No PNG or decoded pixel modified.",
+  "invocation": "python scripts/review-pit-native-borders-v109.py --delivery docs/suivi-production/v109-pit-forward/native-frame-delivery.json --output docs/suivi-production/v109-pit-forward/native-uv-border-review.json",
+  "sourceDeliveryPath": "docs/suivi-production/v109-pit-forward/native-frame-delivery.json",
+  "validNativeRegions": 40,
+  "pendingNativeReplacements": 8,
+  "sources": [
+    {
+      "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-right-v109.png",
+      "sha256": "8324320252c00e84cf0e50b7fb850dc96fb472dc1d5c933d0e14925b4fdf37ec",
+      "bytes": 2316771
+    },
+    {
+      "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-r2-v109.png",
+      "sha256": "5dce6483d4ba9fb1848613d3a76abf255a163cbfb9dba1ed3554cc9a74615d15",
+      "bytes": 2390859
+    },
+    {
+      "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-isolated-3-r2-v109.png",
+      "sha256": "151b49c54a3ec2321c5793bd10b6232a1e7542d48a8d1c09da2f8fb3cdd76ddb",
+      "bytes": 2071095
+    },
+    {
+      "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-isolated-4-r2-v109.png",
+      "sha256": "fa54dd3f5a8e926c211d48dba1edd1b35a813cab02d013ee0294f68d3dd47ddc",
+      "bytes": 2138067
+    },
+    {
+      "path": "public/game/sprites/v109/pit/scar/scar-throw-forward-right-v109.png",
+      "sha256": "4615795ab410033a000dcdf7fdfe197b431aedb07ad279a7acfbef5e93910c02",
+      "bytes": 2258882
+    },
+    {
+      "path": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-0-v109.png",
+      "sha256": "c5fb6df337079a263350702ddea4299b7ddb61f060dd7bed02eb6010632c9c96",
+      "bytes": 1707824
+    },
+    {
+      "path": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-1-v109.png",
+      "sha256": "6153788ab03fc3f246cae0b1b30990edd57b777283f2eff4c24d9a6ae5b7e95a",
+      "bytes": 1582563
+    },
+    {
+      "path": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-r2-v109.png",
+      "sha256": "64b53fe5abfaed37324a809419cfb216aca16b83467115a1e555ee0864f7d048",
+      "bytes": 2358596
+    },
+    {
+      "path": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-3-v109.png",
+      "sha256": "13561262646615582d4c0687b4b59dc203e58747f62f8cf924a609abfeea44c6",
+      "bytes": 1748850
+    },
+    {
+      "path": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-4-v109.png",
+      "sha256": "0f2081b177fe949c0f52fa2d27dd4accfbd3aaf1da891ec8ffa11547cde0a00d",
+      "bytes": 1761722
+    },
+    {
+      "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-right-v109.png",
+      "sha256": "3039f5ff15c73a5a6ef4b6054d3b949b22e99141268bcb5314984a652bdc331a",
+      "bytes": 2236163
+    },
+    {
+      "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-right-isolated-3-v109.png",
+      "sha256": "b8ab2d58ffaf3f47853f01ef4a0e36104c6e6a0cfb1462b4d0155365ebb74d2a",
+      "bytes": 1807014
+    },
+    {
+      "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-right-isolated-4-v109.png",
+      "sha256": "f3b14134eaa1ba660342d52de1d84925f5888657d9c14c7c53ecb8647158d4f8",
+      "bytes": 1442943
+    },
+    {
+      "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-left-v109.png",
+      "sha256": "9203da249bb1756a545758125a88c63f66f8945dbf5a1e883b53532a4a51bfed",
+      "bytes": 2261067
+    },
+    {
+      "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-left-isolated-3-v109.png",
+      "sha256": "8b91bf81569d5da2f5107c3515272ada6d19ad0acaefcdc5234626dc4a11c8ad",
+      "bytes": 2201016
+    },
+    {
+      "path": "public/game/sprites/v109/pit/scar/scar-throw-victim-right-v109.png",
+      "sha256": "24cdb66b63f585ac952d035a27006805d3b04136448fb3c22f4a9b3d6c7dfcf9",
+      "bytes": 2164133
+    },
+    {
+      "path": "public/game/sprites/v109/pit/scar/scar-throw-victim-right-isolated-3-v109.png",
+      "sha256": "bd1ca19aecfc3e6c1579838d826461dad56b885c167644452c91a276cd54bd2a",
+      "bytes": 1876383
+    },
+    {
+      "path": "public/game/sprites/v109/pit/scar/scar-throw-victim-right-isolated-4-v109.png",
+      "sha256": "07f216fb8e1145169bb377fc5f11bc6da8193848a962ba23a8aea6f34c07cff6",
+      "bytes": 1377113
+    },
+    {
+      "path": "public/game/sprites/v109/pit/scar/scar-throw-victim-right-isolated-5-v109.png",
+      "sha256": "2105306a7d2462540ba864498659c44f193983a49daac0e2a68c2b75053157e8",
+      "bytes": 1516350
+    },
+    {
+      "path": "public/game/sprites/v109/pit/scar/scar-throw-victim-left-v109.png",
+      "sha256": "46adfc94048c75e60f01590aa7619cacc6c934f20489c7003d24209477af0429",
+      "bytes": 2341573
+    },
+    {
+      "path": "public/game/sprites/v109/pit/scar/scar-throw-victim-left-isolated-3-v109.png",
+      "sha256": "89fa6f3142850eccf99932528a23ae67b0f115de00dce9db8ad1da124b2baf1a",
+      "bytes": 2110431
+    },
+    {
+      "path": "public/game/sprites/v109/pit/scar/scar-throw-victim-left-isolated-4-r2-v109.png",
+      "sha256": "f102c0e286a3d566854b4581757aadf46728f64e548e14dfceabb7e6dd2dfca5",
+      "bytes": 1194875
+    }
+  ],
+  "slots": [
+    {
+      "slot": "feral-hunter/attacker/right/0",
+      "fighterId": "feral-hunter",
+      "role": "attacker",
+      "facing": "right",
+      "frameIndex": 0,
+      "pageId": "v109-feral-throw-forward-right",
+      "sourcePath": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-right-v109.png",
+      "oldRect": [
+        136,
+        33,
+        335,
+        472
+      ],
+      "zeroBorderCandidate": [
+        110,
+        18,
+        361,
+        496
+      ],
+      "boundaryMaxAlpha": 0,
+      "addedForeignCorePixels": 0,
+      "valid": true
+    },
+    {
+      "slot": "feral-hunter/attacker/right/1",
+      "fighterId": "feral-hunter",
+      "role": "attacker",
+      "facing": "right",
+      "frameIndex": 1,
+      "pageId": "v109-feral-throw-forward-right",
+      "sourcePath": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-right-v109.png",
+      "oldRect": [
+        586,
+        52,
+        483,
+        451
+      ],
+      "zeroBorderCandidate": [
+        574,
+        16,
+        505,
+        489
+      ],
+      "boundaryMaxAlpha": 0,
+      "addedForeignCorePixels": 0,
+      "valid": true
+    },
+    {
+      "slot": "feral-hunter/attacker/right/2",
+      "fighterId": "feral-hunter",
+      "role": "attacker",
+      "facing": "right",
+      "frameIndex": 2,
+      "pageId": "v109-feral-throw-forward-right",
+      "sourcePath": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-right-v109.png",
+      "oldRect": [
+        1094,
+        120,
+        385,
+        389
+      ],
+      "zeroBorderCandidate": [
+        1078,
+        16,
+        401,
+        497
+      ],
+      "boundaryMaxAlpha": 0,
+      "addedForeignCorePixels": 0,
+      "valid": true
+    },
+    {
+      "slot": "feral-hunter/attacker/right/3",
+      "fighterId": "feral-hunter",
+      "role": "attacker",
+      "facing": "right",
+      "frameIndex": 3,
+      "pageId": "v109-feral-throw-forward-right",
+      "sourcePath": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-right-v109.png",
+      "oldRect": [
+        45,
+        574,
+        529,
+        427
+      ],
+      "zeroBorderCandidate": [
+        46,
+        536,
+        535,
+        465
+      ],
+      "boundaryMaxAlpha": 0,
+      "addedForeignCorePixels": 0,
+      "valid": true
+    },
+    {
+      "slot": "feral-hunter/attacker/right/4",
+      "fighterId": "feral-hunter",
+      "role": "attacker",
+      "facing": "right",
+      "frameIndex": 4,
+      "pageId": "v109-feral-throw-forward-right",
+      "sourcePath": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-right-v109.png",
+      "oldRect": [
+        589,
+        569,
+        502,
+        432
+      ],
+      "zeroBorderCandidate": [
+        580,
+        512,
+        513,
+        495
+      ],
+      "boundaryMaxAlpha": 0,
+      "addedForeignCorePixels": 0,
+      "valid": true
+    },
+    {
+      "slot": "feral-hunter/attacker/right/5",
+      "fighterId": "feral-hunter",
+      "role": "attacker",
+      "facing": "right",
+      "frameIndex": 5,
+      "pageId": "v109-feral-throw-forward-right",
+      "sourcePath": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-right-v109.png",
+      "oldRect": [
+        1163,
+        537,
+        311,
+        464
+      ],
+      "zeroBorderCandidate": [
+        1163,
+        535,
+        311,
+        471
+      ],
+      "boundaryMaxAlpha": 0,
+      "addedForeignCorePixels": 0,
+      "valid": true
+    },
+    {
+      "slot": "feral-hunter/attacker/left/0",
+      "fighterId": "feral-hunter",
+      "role": "attacker",
+      "facing": "left",
+      "frameIndex": 0,
+      "pageId": "v109-feral-throw-forward-left-r2",
+      "sourcePath": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-r2-v109.png",
+      "oldRect": [
+        91,
+        23,
+        388,
+        482
+      ],
+      "zeroBorderCandidate": [
+        90,
+        18,
+        392,
+        495
+      ],
+      "boundaryMaxAlpha": 0,
+      "addedForeignCorePixels": 0,
+      "valid": true
+    },
+    {
+      "slot": "feral-hunter/attacker/left/1",
+      "fighterId": "feral-hunter",
+      "role": "attacker",
+      "facing": "left",
+      "frameIndex": 1,
+      "pageId": "v109-feral-throw-forward-left-r2",
+      "sourcePath": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-r2-v109.png",
+      "oldRect": [
+        498,
+        39,
+        550,
+        467
+      ],
+      "zeroBorderCandidate": [
+        492,
+        16,
+        556,
+        499
+      ],
+      "boundaryMaxAlpha": 0,
+      "addedForeignCorePixels": 0,
+      "valid": true
+    },
+    {
+      "slot": "feral-hunter/attacker/left/2",
+      "fighterId": "feral-hunter",
+      "role": "attacker",
+      "facing": "left",
+      "frameIndex": 2,
+      "pageId": "v109-feral-throw-forward-left-r2",
+      "sourcePath": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-r2-v109.png",
+      "oldRect": [
+        1087,
+        130,
+        438,
+        376
+      ],
+      "zeroBorderCandidate": [
+        1084,
+        124,
+        441,
+        874
+      ],
+      "boundaryMaxAlpha": 0,
+      "addedForeignCorePixels": 83860,
+      "valid": false
+    },
+    {
+      "slot": "feral-hunter/attacker/left/3",
+      "fighterId": "feral-hunter",
+      "role": "attacker",
+      "facing": "left",
+      "frameIndex": 3,
+      "pageId": "v109-feral-throw-forward-left-isolated-3-r2",
+      "sourcePath": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-isolated-3-r2-v109.png",
+      "oldRect": [
+        50,
+        22,
+        1420,
+        945
+      ],
+      "zeroBorderCandidate": [
+        49,
+        22,
+        1422,
+        945
+      ],
+      "boundaryMaxAlpha": 0,
+      "addedForeignCorePixels": 0,
+      "valid": true
+    },
+    {
+      "slot": "feral-hunter/attacker/left/4",
+      "fighterId": "feral-hunter",
+      "role": "attacker",
+      "facing": "left",
+      "frameIndex": 4,
+      "pageId": "v109-feral-throw-forward-left-isolated-4-r2",
+      "sourcePath": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-isolated-4-r2-v109.png",
+      "oldRect": [
+        36,
+        24,
+        1481,
+        956
+      ],
+      "zeroBorderCandidate": [
+        37,
+        25,
+        1482,
+        954
+      ],
+      "boundaryMaxAlpha": 0,
+      "addedForeignCorePixels": 0,
+      "valid": true
+    },
+    {
+      "slot": "feral-hunter/attacker/left/5",
+      "fighterId": "feral-hunter",
+      "role": "attacker",
+      "facing": "left",
+      "frameIndex": 5,
+      "pageId": "v109-feral-throw-forward-left-r2",
+      "sourcePath": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-r2-v109.png",
+      "oldRect": [
+        1120,
+        523,
+        381,
+        468
+      ],
+      "zeroBorderCandidate": [
+        1084,
+        124,
+        441,
+        874
+      ],
+      "boundaryMaxAlpha": 0,
+      "addedForeignCorePixels": 78634,
+      "valid": false
+    },
+    {
+      "slot": "scar/attacker/right/0",
+      "fighterId": "scar",
+      "role": "attacker",
+      "facing": "right",
+      "frameIndex": 0,
+      "pageId": "v109-scar-throw-forward-right",
+      "sourcePath": "public/game/sprites/v109/pit/scar/scar-throw-forward-right-v109.png",
+      "oldRect": [
+        65,
+        6,
+        417,
+        495
+      ],
+      "zeroBorderCandidate": [
+        64,
+        6,
+        423,
+        501
+      ],
+      "boundaryMaxAlpha": 0,
+      "addedForeignCorePixels": 0,
+      "valid": true
+    },
+    {
+      "slot": "scar/attacker/right/1",
+      "fighterId": "scar",
+      "role": "attacker",
+      "facing": "right",
+      "frameIndex": 1,
+      "pageId": "v109-scar-throw-forward-right",
+      "sourcePath": "public/game/sprites/v109/pit/scar/scar-throw-forward-right-v109.png",
+      "oldRect": [
+        563,
+        8,
+        498,
+        491
+      ],
+      "zeroBorderCandidate": [
+        536,
+        9,
+        524,
+        490
+      ],
+      "boundaryMaxAlpha": 0,
+      "addedForeignCorePixels": 0,
+      "valid": true
+    },
+    {
+      "slot": "scar/attacker/right/2",
+      "fighterId": "scar",
+      "role": "attacker",
+      "facing": "right",
+      "frameIndex": 2,
+      "pageId": "v109-scar-throw-forward-right",
+      "sourcePath": "public/game/sprites/v109/pit/scar/scar-throw-forward-right-v109.png",
+      "oldRect": [
+        1082,
+        15,
+        414,
+        486
+      ],
+      "zeroBorderCandidate": [
+        1082,
+        15,
+        415,
+        486
+      ],
+      "boundaryMaxAlpha": 0,
+      "addedForeignCorePixels": 0,
+      "valid": true
+    },
+    {
+      "slot": "scar/attacker/right/3",
+      "fighterId": "scar",
+      "role": "attacker",
+      "facing": "right",
+      "frameIndex": 3,
+      "pageId": "v109-scar-throw-forward-right",
+      "sourcePath": "public/game/sprites/v109/pit/scar/scar-throw-forward-right-v109.png",
+      "oldRect": [
+        17,
+        516,
+        529,
+        482
+      ],
+      "zeroBorderCandidate": [
+        13,
+        516,
+        536,
+        481
+      ],
+      "boundaryMaxAlpha": 0,
+      "addedForeignCorePixels": 0,
+      "valid": true
+    },
+    {
+      "slot": "scar/attacker/right/4",
+      "fighterId": "scar",
+      "role": "attacker",
+      "facing": "right",
+      "frameIndex": 4,
+      "pageId": "v109-scar-throw-forward-right",
+      "sourcePath": "public/game/sprites/v109/pit/scar/scar-throw-forward-right-v109.png",
+      "oldRect": [
+        562,
+        517,
+        478,
+        476
+      ],
+      "zeroBorderCandidate": [
+        560,
+        512,
+        481,
+        485
+      ],
+      "boundaryMaxAlpha": 0,
+      "addedForeignCorePixels": 0,
+      "valid": true
+    },
+    {
+      "slot": "scar/attacker/right/5",
+      "fighterId": "scar",
+      "role": "attacker",
+      "facing": "right",
+      "frameIndex": 5,
+      "pageId": "v109-scar-throw-forward-right",
+      "sourcePath": "public/game/sprites/v109/pit/scar/scar-throw-forward-right-v109.png",
+      "oldRect": [
+        1104,
+        515,
+        386,
+        484
+      ],
+      "zeroBorderCandidate": [
+        1104,
+        516,
+        391,
+        485
+      ],
+      "boundaryMaxAlpha": 0,
+      "addedForeignCorePixels": 0,
+      "valid": true
+    },
+    {
+      "slot": "scar/attacker/left/0",
+      "fighterId": "scar",
+      "role": "attacker",
+      "facing": "left",
+      "frameIndex": 0,
+      "pageId": "v109-scar-throw-forward-left-isolated-0",
+      "sourcePath": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-0-v109.png",
+      "oldRect": [
+        230,
+        9,
+        1002,
+        1007
+      ],
+      "zeroBorderCandidate": [
+        229,
+        1,
+        1005,
+        1016
+      ],
+      "boundaryMaxAlpha": 0,
+      "addedForeignCorePixels": 0,
+      "valid": true
+    },
+    {
+      "slot": "scar/attacker/left/1",
+      "fighterId": "scar",
+      "role": "attacker",
+      "facing": "left",
+      "frameIndex": 1,
+      "pageId": "v109-scar-throw-forward-left-isolated-1",
+      "sourcePath": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-1-v109.png",
+      "oldRect": [
+        317,
+        6,
+        961,
+        975
+      ],
+      "zeroBorderCandidate": [
+        318,
+        6,
+        961,
+        975
+      ],
+      "boundaryMaxAlpha": 0,
+      "addedForeignCorePixels": 0,
+      "valid": true
+    },
+    {
+      "slot": "scar/attacker/left/2",
+      "fighterId": "scar",
+      "role": "attacker",
+      "facing": "left",
+      "frameIndex": 2,
+      "pageId": "v109-scar-throw-forward-left-r2",
+      "sourcePath": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-r2-v109.png",
+      "oldRect": [
+        1091,
+        20,
+        432,
+        495
+      ],
+      "zeroBorderCandidate": [
+        16,
+        10,
+        1520,
+        999
+      ],
+      "boundaryMaxAlpha": 6,
+      "addedForeignCorePixels": 385547,
+      "valid": false
+    },
+    {
+      "slot": "scar/attacker/left/3",
+      "fighterId": "scar",
+      "role": "attacker",
+      "facing": "left",
+      "frameIndex": 3,
+      "pageId": "v109-scar-throw-forward-left-isolated-3",
+      "sourcePath": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-3-v109.png",
+      "oldRect": [
+        14,
+        7,
+        1281,
+        1002
+      ],
+      "zeroBorderCandidate": [
+        15,
+        8,
+        1282,
+        1001
+      ],
+      "boundaryMaxAlpha": 0,
+      "addedForeignCorePixels": 0,
+      "valid": true
+    },
+    {
+      "slot": "scar/attacker/left/4",
+      "fighterId": "scar",
+      "role": "attacker",
+      "facing": "left",
+      "frameIndex": 4,
+      "pageId": "v109-scar-throw-forward-left-isolated-4",
+      "sourcePath": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-4-v109.png",
+      "oldRect": [
+        154,
+        9,
+        1211,
+        1005
+      ],
+      "zeroBorderCandidate": [
+        154,
+        8,
+        1213,
+        1007
+      ],
+      "boundaryMaxAlpha": 0,
+      "addedForeignCorePixels": 0,
+      "valid": true
+    },
+    {
+      "slot": "scar/attacker/left/5",
+      "fighterId": "scar",
+      "role": "attacker",
+      "facing": "left",
+      "frameIndex": 5,
+      "pageId": "v109-scar-throw-forward-left-r2",
+      "sourcePath": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-r2-v109.png",
+      "oldRect": [
+        1147,
+        512,
+        389,
+        494
+      ],
+      "zeroBorderCandidate": [
+        16,
+        10,
+        1520,
+        999
+      ],
+      "boundaryMaxAlpha": 6,
+      "addedForeignCorePixels": 391821,
+      "valid": false
+    },
+    {
+      "slot": "feral-hunter/victim/right/0",
+      "fighterId": "feral-hunter",
+      "role": "victim",
+      "facing": "right",
+      "frameIndex": 0,
+      "pageId": "v109-feral-throw-victim-right",
+      "sourcePath": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-right-v109.png",
+      "oldRect": [
+        90,
+        49,
+        370,
+        444
+      ],
+      "zeroBorderCandidate": [
+        84,
+        30,
+        387,
+        469
+      ],
+      "boundaryMaxAlpha": 0,
+      "addedForeignCorePixels": 0,
+      "valid": true
+    },
+    {
+      "slot": "feral-hunter/victim/right/1",
+      "fighterId": "feral-hunter",
+      "role": "victim",
+      "facing": "right",
+      "frameIndex": 1,
+      "pageId": "v109-feral-throw-victim-right",
+      "sourcePath": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-right-v109.png",
+      "oldRect": [
+        582,
+        94,
+        371,
+        400
+      ],
+      "zeroBorderCandidate": [
+        580,
+        92,
+        387,
+        407
+      ],
+      "boundaryMaxAlpha": 0,
+      "addedForeignCorePixels": 0,
+      "valid": true
+    },
+    {
+      "slot": "feral-hunter/victim/right/2",
+      "fighterId": "feral-hunter",
+      "role": "victim",
+      "facing": "right",
+      "frameIndex": 2,
+      "pageId": "v109-feral-throw-victim-right",
+      "sourcePath": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-right-v109.png",
+      "oldRect": [
+        1153,
+        41,
+        307,
+        397
+      ],
+      "zeroBorderCandidate": [
+        1148,
+        31,
+        312,
+        407
+      ],
+      "boundaryMaxAlpha": 0,
+      "addedForeignCorePixels": 0,
+      "valid": true
+    },
+    {
+      "slot": "feral-hunter/victim/right/3",
+      "fighterId": "feral-hunter",
+      "role": "victim",
+      "facing": "right",
+      "frameIndex": 3,
+      "pageId": "v109-feral-throw-victim-right-isolated-3",
+      "sourcePath": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-right-isolated-3-v109.png",
+      "oldRect": [
+        55,
+        206,
+        1468,
+        670
+      ],
+      "zeroBorderCandidate": [
+        54,
+        206,
+        1469,
+        667
+      ],
+      "boundaryMaxAlpha": 0,
+      "addedForeignCorePixels": 0,
+      "valid": true
+    },
+    {
+      "slot": "feral-hunter/victim/right/4",
+      "fighterId": "feral-hunter",
+      "role": "victim",
+      "facing": "right",
+      "frameIndex": 4,
+      "pageId": "v109-feral-throw-victim-right-isolated-4",
+      "sourcePath": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-right-isolated-4-v109.png",
+      "oldRect": [
+        62,
+        267,
+        1361,
+        471
+      ],
+      "zeroBorderCandidate": [
+        63,
+        268,
+        1360,
+        469
+      ],
+      "boundaryMaxAlpha": 0,
+      "addedForeignCorePixels": 0,
+      "valid": true
+    },
+    {
+      "slot": "feral-hunter/victim/right/5",
+      "fighterId": "feral-hunter",
+      "role": "victim",
+      "facing": "right",
+      "frameIndex": 5,
+      "pageId": "v109-feral-throw-victim-right",
+      "sourcePath": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-right-v109.png",
+      "oldRect": [
+        1139,
+        598,
+        365,
+        344
+      ],
+      "zeroBorderCandidate": [
+        1135,
+        586,
+        384,
+        369
+      ],
+      "boundaryMaxAlpha": 0,
+      "addedForeignCorePixels": 0,
+      "valid": true
+    },
+    {
+      "slot": "feral-hunter/victim/left/0",
+      "fighterId": "feral-hunter",
+      "role": "victim",
+      "facing": "left",
+      "frameIndex": 0,
+      "pageId": "v109-feral-throw-victim-left",
+      "sourcePath": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-left-v109.png",
+      "oldRect": [
+        91,
+        43,
+        346,
+        474
+      ],
+      "zeroBorderCandidate": [
+        74,
+        32,
+        377,
+        485
+      ],
+      "boundaryMaxAlpha": 0,
+      "addedForeignCorePixels": 0,
+      "valid": true
+    },
+    {
+      "slot": "feral-hunter/victim/left/1",
+      "fighterId": "feral-hunter",
+      "role": "victim",
+      "facing": "left",
+      "frameIndex": 1,
+      "pageId": "v109-feral-throw-victim-left",
+      "sourcePath": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-left-v109.png",
+      "oldRect": [
+        589,
+        106,
+        401,
+        411
+      ],
+      "zeroBorderCandidate": [
+        588,
+        98,
+        405,
+        419
+      ],
+      "boundaryMaxAlpha": 0,
+      "addedForeignCorePixels": 0,
+      "valid": true
+    },
+    {
+      "slot": "feral-hunter/victim/left/2",
+      "fighterId": "feral-hunter",
+      "role": "victim",
+      "facing": "left",
+      "frameIndex": 2,
+      "pageId": "v109-feral-throw-victim-left",
+      "sourcePath": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-left-v109.png",
+      "oldRect": [
+        1079,
+        110,
+        386,
+        344
+      ],
+      "zeroBorderCandidate": [
+        1070,
+        70,
+        403,
+        549
+      ],
+      "boundaryMaxAlpha": 0,
+      "addedForeignCorePixels": 0,
+      "valid": true
+    },
+    {
+      "slot": "feral-hunter/victim/left/3",
+      "fighterId": "feral-hunter",
+      "role": "victim",
+      "facing": "left",
+      "frameIndex": 3,
+      "pageId": "v109-feral-throw-victim-left-isolated-3",
+      "sourcePath": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-left-isolated-3-v109.png",
+      "oldRect": [
+        116,
+        91,
+        1381,
+        867
+      ],
+      "zeroBorderCandidate": [
+        112,
+        90,
+        1391,
+        870
+      ],
+      "boundaryMaxAlpha": 0,
+      "addedForeignCorePixels": 0,
+      "valid": true
+    },
+    {
+      "slot": "feral-hunter/victim/left/4",
+      "fighterId": "feral-hunter",
+      "role": "victim",
+      "facing": "left",
+      "frameIndex": 4,
+      "pageId": "v109-feral-throw-victim-left",
+      "sourcePath": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-left-v109.png",
+      "oldRect": [
+        475,
+        753,
+        615,
+        211
+      ],
+      "zeroBorderCandidate": [
+        30,
+        526,
+        1061,
+        485
+      ],
+      "boundaryMaxAlpha": 0,
+      "addedForeignCorePixels": 76380,
+      "valid": false
+    },
+    {
+      "slot": "feral-hunter/victim/left/5",
+      "fighterId": "feral-hunter",
+      "role": "victim",
+      "facing": "left",
+      "frameIndex": 5,
+      "pageId": "v109-feral-throw-victim-left",
+      "sourcePath": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-left-v109.png",
+      "oldRect": [
+        1107,
+        645,
+        419,
+        335
+      ],
+      "zeroBorderCandidate": [
+        1104,
+        632,
+        422,
+        347
+      ],
+      "boundaryMaxAlpha": 0,
+      "addedForeignCorePixels": 0,
+      "valid": true
+    },
+    {
+      "slot": "scar/victim/right/0",
+      "fighterId": "scar",
+      "role": "victim",
+      "facing": "right",
+      "frameIndex": 0,
+      "pageId": "v109-scar-throw-victim-right",
+      "sourcePath": "public/game/sprites/v109/pit/scar/scar-throw-victim-right-v109.png",
+      "oldRect": [
+        66,
+        8,
+        369,
+        490
+      ],
+      "zeroBorderCandidate": [
+        62,
+        9,
+        373,
+        490
+      ],
+      "boundaryMaxAlpha": 0,
+      "addedForeignCorePixels": 0,
+      "valid": true
+    },
+    {
+      "slot": "scar/victim/right/1",
+      "fighterId": "scar",
+      "role": "victim",
+      "facing": "right",
+      "frameIndex": 1,
+      "pageId": "v109-scar-throw-victim-right",
+      "sourcePath": "public/game/sprites/v109/pit/scar/scar-throw-victim-right-v109.png",
+      "oldRect": [
+        595,
+        14,
+        366,
+        484
+      ],
+      "zeroBorderCandidate": [
+        590,
+        16,
+        373,
+        484
+      ],
+      "boundaryMaxAlpha": 0,
+      "addedForeignCorePixels": 0,
+      "valid": true
+    },
+    {
+      "slot": "scar/victim/right/2",
+      "fighterId": "scar",
+      "role": "victim",
+      "facing": "right",
+      "frameIndex": 2,
+      "pageId": "v109-scar-throw-victim-right",
+      "sourcePath": "public/game/sprites/v109/pit/scar/scar-throw-victim-right-v109.png",
+      "oldRect": [
+        1055,
+        23,
+        410,
+        428
+      ],
+      "zeroBorderCandidate": [
+        31,
+        9,
+        1492,
+        1015
+      ],
+      "boundaryMaxAlpha": 1,
+      "addedForeignCorePixels": 325587,
+      "valid": false
+    },
+    {
+      "slot": "scar/victim/right/3",
+      "fighterId": "scar",
+      "role": "victim",
+      "facing": "right",
+      "frameIndex": 3,
+      "pageId": "v109-scar-throw-victim-right-isolated-3",
+      "sourcePath": "public/game/sprites/v109/pit/scar/scar-throw-victim-right-isolated-3-v109.png",
+      "oldRect": [
+        59,
+        145,
+        1444,
+        755
+      ],
+      "zeroBorderCandidate": [
+        60,
+        134,
+        1443,
+        765
+      ],
+      "boundaryMaxAlpha": 0,
+      "addedForeignCorePixels": 0,
+      "valid": true
+    },
+    {
+      "slot": "scar/victim/right/4",
+      "fighterId": "scar",
+      "role": "victim",
+      "facing": "right",
+      "frameIndex": 4,
+      "pageId": "v109-scar-throw-victim-right-isolated-4",
+      "sourcePath": "public/game/sprites/v109/pit/scar/scar-throw-victim-right-isolated-4-v109.png",
+      "oldRect": [
+        21,
+        361,
+        1497,
+        385
+      ],
+      "zeroBorderCandidate": [
+        21,
+        361,
+        1496,
+        382
+      ],
+      "boundaryMaxAlpha": 0,
+      "addedForeignCorePixels": 0,
+      "valid": true
+    },
+    {
+      "slot": "scar/victim/right/5",
+      "fighterId": "scar",
+      "role": "victim",
+      "facing": "right",
+      "frameIndex": 5,
+      "pageId": "v109-scar-throw-victim-right-isolated-5",
+      "sourcePath": "public/game/sprites/v109/pit/scar/scar-throw-victim-right-isolated-5-v109.png",
+      "oldRect": [
+        480,
+        9,
+        830,
+        986
+      ],
+      "zeroBorderCandidate": [
+        481,
+        9,
+        830,
+        985
+      ],
+      "boundaryMaxAlpha": 0,
+      "addedForeignCorePixels": 0,
+      "valid": true
+    },
+    {
+      "slot": "scar/victim/left/0",
+      "fighterId": "scar",
+      "role": "victim",
+      "facing": "left",
+      "frameIndex": 0,
+      "pageId": "v109-scar-throw-victim-left",
+      "sourcePath": "public/game/sprites/v109/pit/scar/scar-throw-victim-left-v109.png",
+      "oldRect": [
+        50,
+        11,
+        429,
+        504
+      ],
+      "zeroBorderCandidate": [
+        46,
+        9,
+        435,
+        508
+      ],
+      "boundaryMaxAlpha": 0,
+      "addedForeignCorePixels": 0,
+      "valid": true
+    },
+    {
+      "slot": "scar/victim/left/1",
+      "fighterId": "scar",
+      "role": "victim",
+      "facing": "left",
+      "frameIndex": 1,
+      "pageId": "v109-scar-throw-victim-left",
+      "sourcePath": "public/game/sprites/v109/pit/scar/scar-throw-victim-left-v109.png",
+      "oldRect": [
+        556,
+        13,
+        400,
+        504
+      ],
+      "zeroBorderCandidate": [
+        554,
+        13,
+        407,
+        506
+      ],
+      "boundaryMaxAlpha": 0,
+      "addedForeignCorePixels": 0,
+      "valid": true
+    },
+    {
+      "slot": "scar/victim/left/2",
+      "fighterId": "scar",
+      "role": "victim",
+      "facing": "left",
+      "frameIndex": 2,
+      "pageId": "v109-scar-throw-victim-left",
+      "sourcePath": "public/game/sprites/v109/pit/scar/scar-throw-victim-left-v109.png",
+      "oldRect": [
+        1035,
+        15,
+        460,
+        474
+      ],
+      "zeroBorderCandidate": [
+        12,
+        9,
+        1509,
+        1010
+      ],
+      "boundaryMaxAlpha": 0,
+      "addedForeignCorePixels": 372139,
+      "valid": false
+    },
+    {
+      "slot": "scar/victim/left/3",
+      "fighterId": "scar",
+      "role": "victim",
+      "facing": "left",
+      "frameIndex": 3,
+      "pageId": "v109-scar-throw-victim-left-isolated-3",
+      "sourcePath": "public/game/sprites/v109/pit/scar/scar-throw-victim-left-isolated-3-v109.png",
+      "oldRect": [
+        26,
+        11,
+        1357,
+        957
+      ],
+      "zeroBorderCandidate": [
+        26,
+        12,
+        1356,
+        971
+      ],
+      "boundaryMaxAlpha": 0,
+      "addedForeignCorePixels": 0,
+      "valid": true
+    },
+    {
+      "slot": "scar/victim/left/4",
+      "fighterId": "scar",
+      "role": "victim",
+      "facing": "left",
+      "frameIndex": 4,
+      "pageId": "v109-scar-throw-victim-left-isolated-4-r2",
+      "sourcePath": "public/game/sprites/v109/pit/scar/scar-throw-victim-left-isolated-4-r2-v109.png",
+      "oldRect": [
+        82,
+        161,
+        1614,
+        639
+      ],
+      "zeroBorderCandidate": [
+        81,
+        159,
+        1615,
+        648
+      ],
+      "boundaryMaxAlpha": 0,
+      "addedForeignCorePixels": 0,
+      "valid": true
+    },
+    {
+      "slot": "scar/victim/left/5",
+      "fighterId": "scar",
+      "role": "victim",
+      "facing": "left",
+      "frameIndex": 5,
+      "pageId": "v109-scar-throw-victim-left",
+      "sourcePath": "public/game/sprites/v109/pit/scar/scar-throw-victim-left-v109.png",
+      "oldRect": [
+        1106,
+        512,
+        416,
+        462
+      ],
+      "zeroBorderCandidate": [
+        12,
+        9,
+        1509,
+        1010
+      ],
+      "boundaryMaxAlpha": 0,
+      "addedForeignCorePixels": 374651,
+      "valid": false
+    }
+  ]
+}

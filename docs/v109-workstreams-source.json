@@ -1,0 +1,1171 @@
+{
+  "schemaVersion": 1,
+  "release": "V109",
+  "asOf": "2026-10-25",
+  "baseline": {
+    "path": "docs/YAUTJA_V108_SUIVI.xlsx",
+    "sha256": "2a9490d4e37ff63405039f4f7e7b8c473373f15f83414ca5ff46e142ca5cdaba"
+  },
+  "baselineFreeze": "PENDING_RUNTIME_FREEZE",
+  "closedOpenItemIds": [],
+  "runtimeModules": [
+    {
+      "id": "reserve",
+      "path": "app/game/systems/gameReserveV66.ts"
+    },
+    {
+      "id": "biomes",
+      "path": "app/game/systems/gameReserveExpeditionV109.ts"
+    },
+    {
+      "id": "pitForward",
+      "path": "app/game/pitWorkbookRegistryV109.ts"
+    },
+    {
+      "id": "homeworldPlaque",
+      "path": "app/game/systems/homeworldArchivePlaqueDefinitionV109.ts"
+    },
+    {
+      "id": "clanSupply",
+      "path": "app/game/systems/clanSupplyRouteV109.ts"
+    }
+  ],
+  "factProbes": [
+    {
+      "id": "preserveCurrentVersion",
+      "operation": "value",
+      "calls": [
+        {
+          "module": "reserve",
+          "export": "createGameReserveV109",
+          "args": [
+            109,
+            "khar-duun-canyon-expedition"
+          ],
+          "path": [
+            "version"
+          ]
+        }
+      ],
+      "expected": 5
+    },
+    {
+      "id": "preserveNewReserveIds",
+      "operation": "ids",
+      "calls": [
+        {
+          "module": "biomes",
+          "export": "GAME_RESERVE_V109_IDS"
+        }
+      ],
+      "expected": [
+        "iskhel-ice-expedition",
+        "khar-duun-canyon-expedition"
+      ]
+    },
+    {
+      "id": "preserveNewReserves",
+      "operation": "length",
+      "calls": [
+        {
+          "module": "biomes",
+          "export": "GAME_RESERVE_CATALOGUE_V109"
+        }
+      ],
+      "expected": 2
+    },
+    {
+      "id": "preserveUniqueSectors",
+      "operation": "uniqueIds",
+      "calls": [
+        {
+          "module": "reserve",
+          "export": "gameReserveV66Sectors",
+          "args": [
+            {
+              "call": {
+                "module": "reserve",
+                "export": "createGameReserveV107",
+                "args": [
+                  109
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "module": "reserve",
+          "export": "gameReserveV66Sectors",
+          "args": [
+            {
+              "call": {
+                "module": "reserve",
+                "export": "createGameReserveV108",
+                "args": [
+                  109
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "module": "reserve",
+          "export": "gameReserveV66Sectors",
+          "args": [
+            {
+              "call": {
+                "module": "reserve",
+                "export": "createGameReserveV109",
+                "args": [
+                  109,
+                  "khar-duun-canyon-expedition"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "module": "reserve",
+          "export": "gameReserveV66Sectors",
+          "args": [
+            {
+              "call": {
+                "module": "reserve",
+                "export": "createGameReserveV109",
+                "args": [
+                  109,
+                  "iskhel-ice-expedition"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expected": 32
+    },
+    {
+      "id": "preserveNewSectors",
+      "operation": "uniqueIds",
+      "calls": [
+        {
+          "module": "reserve",
+          "export": "gameReserveV66Sectors",
+          "args": [
+            {
+              "call": {
+                "module": "reserve",
+                "export": "createGameReserveV109",
+                "args": [
+                  109,
+                  "khar-duun-canyon-expedition"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "module": "reserve",
+          "export": "gameReserveV66Sectors",
+          "args": [
+            {
+              "call": {
+                "module": "reserve",
+                "export": "createGameReserveV109",
+                "args": [
+                  109,
+                  "iskhel-ice-expedition"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expected": 16
+    },
+    {
+      "id": "preserveUniqueAdults",
+      "operation": "uniqueIds",
+      "calls": [
+        {
+          "module": "reserve",
+          "export": "gameReserveV66People",
+          "args": [
+            {
+              "call": {
+                "module": "reserve",
+                "export": "createGameReserveV107",
+                "args": [
+                  109
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "module": "reserve",
+          "export": "gameReserveV66People",
+          "args": [
+            {
+              "call": {
+                "module": "reserve",
+                "export": "createGameReserveV108",
+                "args": [
+                  109
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "module": "reserve",
+          "export": "gameReserveV66People",
+          "args": [
+            {
+              "call": {
+                "module": "reserve",
+                "export": "createGameReserveV109",
+                "args": [
+                  109,
+                  "khar-duun-canyon-expedition"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "module": "reserve",
+          "export": "gameReserveV66People",
+          "args": [
+            {
+              "call": {
+                "module": "reserve",
+                "export": "createGameReserveV109",
+                "args": [
+                  109,
+                  "iskhel-ice-expedition"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expected": 64
+    },
+    {
+      "id": "preserveNewAdults",
+      "operation": "uniqueIds",
+      "calls": [
+        {
+          "module": "reserve",
+          "export": "gameReserveV66People",
+          "args": [
+            {
+              "call": {
+                "module": "reserve",
+                "export": "createGameReserveV109",
+                "args": [
+                  109,
+                  "khar-duun-canyon-expedition"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "module": "reserve",
+          "export": "gameReserveV66People",
+          "args": [
+            {
+              "call": {
+                "module": "reserve",
+                "export": "createGameReserveV109",
+                "args": [
+                  109,
+                  "iskhel-ice-expedition"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expected": 32
+    },
+    {
+      "id": "preserveUniqueShips",
+      "operation": "uniqueIds",
+      "calls": [
+        {
+          "module": "reserve",
+          "export": "gameReserveV66Ships",
+          "args": [
+            {
+              "call": {
+                "module": "reserve",
+                "export": "createGameReserveV107",
+                "args": [
+                  109
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "module": "reserve",
+          "export": "gameReserveV66Ships",
+          "args": [
+            {
+              "call": {
+                "module": "reserve",
+                "export": "createGameReserveV108",
+                "args": [
+                  109
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "module": "reserve",
+          "export": "gameReserveV66Ships",
+          "args": [
+            {
+              "call": {
+                "module": "reserve",
+                "export": "createGameReserveV109",
+                "args": [
+                  109,
+                  "khar-duun-canyon-expedition"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "module": "reserve",
+          "export": "gameReserveV66Ships",
+          "args": [
+            {
+              "call": {
+                "module": "reserve",
+                "export": "createGameReserveV109",
+                "args": [
+                  109,
+                  "iskhel-ice-expedition"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expected": 16
+    },
+    {
+      "id": "preserveNewShips",
+      "operation": "uniqueIds",
+      "calls": [
+        {
+          "module": "reserve",
+          "export": "gameReserveV66Ships",
+          "args": [
+            {
+              "call": {
+                "module": "reserve",
+                "export": "createGameReserveV109",
+                "args": [
+                  109,
+                  "khar-duun-canyon-expedition"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "module": "reserve",
+          "export": "gameReserveV66Ships",
+          "args": [
+            {
+              "call": {
+                "module": "reserve",
+                "export": "createGameReserveV109",
+                "args": [
+                  109,
+                  "iskhel-ice-expedition"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expected": 8
+    },
+    {
+      "id": "preserveUniqueSurveyPosts",
+      "operation": "uniqueIds",
+      "calls": [
+        {
+          "module": "reserve",
+          "export": "gameReserveV66Sites",
+          "args": [
+            {
+              "call": {
+                "module": "reserve",
+                "export": "createGameReserveV107",
+                "args": [
+                  109
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "module": "reserve",
+          "export": "gameReserveV66Sites",
+          "args": [
+            {
+              "call": {
+                "module": "reserve",
+                "export": "createGameReserveV108",
+                "args": [
+                  109
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "module": "reserve",
+          "export": "gameReserveV66Sites",
+          "args": [
+            {
+              "call": {
+                "module": "reserve",
+                "export": "createGameReserveV109",
+                "args": [
+                  109,
+                  "khar-duun-canyon-expedition"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "module": "reserve",
+          "export": "gameReserveV66Sites",
+          "args": [
+            {
+              "call": {
+                "module": "reserve",
+                "export": "createGameReserveV109",
+                "args": [
+                  109,
+                  "iskhel-ice-expedition"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expected": 16
+    },
+    {
+      "id": "preserveNewSurveyPosts",
+      "operation": "uniqueIds",
+      "calls": [
+        {
+          "module": "reserve",
+          "export": "gameReserveV66Sites",
+          "args": [
+            {
+              "call": {
+                "module": "reserve",
+                "export": "createGameReserveV109",
+                "args": [
+                  109,
+                  "khar-duun-canyon-expedition"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "module": "reserve",
+          "export": "gameReserveV66Sites",
+          "args": [
+            {
+              "call": {
+                "module": "reserve",
+                "export": "createGameReserveV109",
+                "args": [
+                  109,
+                  "iskhel-ice-expedition"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expected": 8
+    },
+    {
+      "id": "pitForwardNativeBodyDrawings",
+      "operation": "value",
+      "calls": [
+        {
+          "module": "pitForward",
+          "export": "getPitForwardThrowWorkbookFactsV109",
+          "args": [],
+          "path": [
+            "nativeBodyDrawings"
+          ]
+        }
+      ],
+      "expected": 48
+    },
+    {
+      "id": "pitForwardFeralBound",
+      "operation": "value",
+      "calls": [
+        {
+          "module": "pitForward",
+          "export": "getPitForwardThrowWorkbookFactsV109",
+          "args": [],
+          "path": [
+            "feralBound"
+          ]
+        }
+      ],
+      "expected": true
+    },
+    {
+      "id": "pitForwardScarBound",
+      "operation": "value",
+      "calls": [
+        {
+          "module": "pitForward",
+          "export": "getPitForwardThrowWorkbookFactsV109",
+          "args": [],
+          "path": [
+            "scarBound"
+          ]
+        }
+      ],
+      "expected": true
+    },
+    {
+      "id": "pitForwardPartnerScope",
+      "operation": "value",
+      "calls": [
+        {
+          "module": "pitForward",
+          "export": "getPitForwardThrowWorkbookFactsV109",
+          "args": [],
+          "path": [
+            "partnerScope"
+          ]
+        }
+      ],
+      "expected": "unvaried-feral-scar-duo"
+    },
+    {
+      "id": "pitForwardSourceCompletion",
+      "operation": "value",
+      "calls": [
+        {
+          "module": "pitForward",
+          "export": "getPitForwardThrowWorkbookFactsV109",
+          "args": [],
+          "path": [
+            "sourceCompletion"
+          ]
+        }
+      ],
+      "expected": false
+    },
+    {
+      "id": "pitForwardBoundActionIds",
+      "operation": "ids",
+      "calls": [
+        {
+          "module": "pitForward",
+          "export": "getPitForwardThrowWorkbookFactsV109",
+          "args": [],
+          "path": [
+            "boundActionIds"
+          ]
+        }
+      ],
+      "expected": [
+        "M_F003_TH_F",
+        "M_F006_TH_F"
+      ]
+    },
+    {
+      "id": "homeworldPlaqueSceneId",
+      "operation": "value",
+      "calls": [
+        {
+          "module": "homeworldPlaque",
+          "export": "HOMEWORLD_ARCHIVE_PLAQUE_V109",
+          "path": [
+            "sceneId"
+          ]
+        }
+      ],
+      "expected": "D6-W-PNJ-ROLE-03"
+    },
+    {
+      "id": "homeworldPlaqueObjects",
+      "operation": "length",
+      "calls": [
+        {
+          "module": "homeworldPlaque",
+          "export": "HOMEWORLD_ARCHIVE_PLAQUE_V109",
+          "path": [
+            "objects"
+          ]
+        }
+      ],
+      "expected": 3
+    },
+    {
+      "id": "homeworldPlaqueSupports",
+      "operation": "length",
+      "calls": [
+        {
+          "module": "homeworldPlaque",
+          "export": "HOMEWORLD_ARCHIVE_PLAQUE_V109",
+          "path": [
+            "supports"
+          ]
+        }
+      ],
+      "expected": 3
+    },
+    {
+      "id": "homeworldPlaqueSourceLines",
+      "operation": "length",
+      "calls": [
+        {
+          "module": "homeworldPlaque",
+          "export": "HOMEWORLD_ARCHIVE_PLAQUE_LINES_V109"
+        }
+      ],
+      "expected": 8
+    },
+    {
+      "id": "homeworldPlaqueNativeArtAdmitted",
+      "operation": "value",
+      "calls": [
+        {
+          "module": "homeworldPlaque",
+          "export": "archivePlaqueArtAdmittedV109",
+          "args": []
+        }
+      ],
+      "expected": true
+    },
+    {
+      "id": "clanSupplyArchiveVersion",
+      "operation": "value",
+      "calls": [
+        {
+          "module": "clanSupply",
+          "export": "createSupplyV109",
+          "args": [],
+          "path": [
+            "version"
+          ]
+        }
+      ],
+      "expected": 2
+    },
+    {
+      "id": "clanSupplyContext",
+      "operation": "value",
+      "calls": [
+        {
+          "module": "clanSupply",
+          "export": "CLAN_SUPPLY_CONTEXT_V109"
+        }
+      ],
+      "expected": "physical-supply-route-v109"
+    },
+    {
+      "id": "clanSupplyMountParkingCount",
+      "operation": "length",
+      "calls": [
+        {
+          "module": "clanSupply",
+          "export": "CLAN_MOUNT_PARKING_V109"
+        }
+      ],
+      "expected": 2
+    },
+    {
+      "id": "clanSupplyMountClearance",
+      "operation": "value",
+      "calls": [
+        {
+          "module": "clanSupply",
+          "export": "CLAN_MOUNT_CLEARANCE_V109"
+        }
+      ],
+      "expected": 56
+    },
+    {
+      "id": "clanSupplyInitialConservation",
+      "operation": "value",
+      "calls": [
+        {
+          "module": "clanSupply",
+          "export": "supplyConservationV109",
+          "args": [
+            {
+              "call": {
+                "module": "clanSupply",
+                "export": "createSupplyV109",
+                "args": []
+              }
+            }
+          ]
+        }
+      ],
+      "expected": true
+    },
+    {
+      "id": "pitForwardNativeAdmittedRoles",
+      "operation": "length",
+      "calls": [
+        {
+          "module": "pitForward",
+          "export": "PIT_FORWARD_THROW_NATIVE_ADMISSIONS_V109"
+        }
+      ],
+      "expected": 8
+    },
+    {
+      "id": "pitForwardAttackerFeralDrawings",
+      "operation": "value",
+      "calls": [
+        {
+          "module": "pitForward",
+          "export": "getPitForwardThrowWorkbookFactsV109",
+          "path": [
+            "attackerDrawings",
+            "feral-hunter"
+          ],
+          "args": []
+        }
+      ],
+      "expected": 12
+    },
+    {
+      "id": "pitForwardAttackerScarDrawings",
+      "operation": "value",
+      "calls": [
+        {
+          "module": "pitForward",
+          "export": "getPitForwardThrowWorkbookFactsV109",
+          "path": [
+            "attackerDrawings",
+            "scar"
+          ],
+          "args": []
+        }
+      ],
+      "expected": 12
+    },
+    {
+      "id": "pitForwardVictimFeralDrawings",
+      "operation": "value",
+      "calls": [
+        {
+          "module": "pitForward",
+          "export": "getPitForwardThrowWorkbookFactsV109",
+          "path": [
+            "victimDrawings",
+            "feral-hunter"
+          ],
+          "args": []
+        }
+      ],
+      "expected": 12
+    },
+    {
+      "id": "pitForwardVictimScarDrawings",
+      "operation": "value",
+      "calls": [
+        {
+          "module": "pitForward",
+          "export": "getPitForwardThrowWorkbookFactsV109",
+          "path": [
+            "victimDrawings",
+            "scar"
+          ],
+          "args": []
+        }
+      ],
+      "expected": 12
+    }
+  ],
+  "workstreams": [
+    {
+      "id": "pit-roster-kits",
+      "domain": "The Pit",
+      "title": "The Pit : quatre identités/visuels à établir, deux références partielles et les kits",
+      "source": "4 dossiers avec visuel/incarnation encore à établir ; 2 références V79 déjà présentes mais une seule pose native droite ; 1 agrégat kits recouvrant actions/campagnes/variantes.",
+      "status": "OUVERT",
+      "validationScope": "Amélioration partielle ; portée source complète non certifiée.",
+      "runtime": "Héritage V108 : Les deux références statiques V79 et les dossiers distincts restent suivis ; aucune nouvelle incarnation ni kit complet admis.",
+      "tests": "Héritage V108 dans sa capsule originale ; tests V109 distincts.",
+      "browser": "A_VALIDER : aucun contenu source complet V109 livré.",
+      "implementation": [],
+      "proof": [],
+      "remaining": "Les quatre identités visuelles non résolues et les sept dossiers/kit agrégés restent ouverts."
+    },
+    {
+      "id": "war-structures",
+      "domain": "Guerre de clans",
+      "title": "Tournée physique de ravitaillement entre ouvrages",
+      "source": "Quai, montures, confinement, duel consenti, sons situés et navire orbital.",
+      "status": "A_VALIDER",
+      "validationScope": "Implémentation courante et tests locaux disponibles ; calibration finale et quatre parcours sur le nouveau build commun encore à valider.",
+      "runtime": "Tournée physique de deux à six étapes, réservation et débit de stocks finis dans le même dépôt/skiff, chargement réel, déplacement, livraisons ordonnées, reprise et retour. Archive version2 conservant l’archive V108 exacte dans la même clé et sous le même verrou ; deux places de montures et séparation continue de56 unités.",
+      "tests": "PASS_LOCAL : tournée réellement simulée, RAV finis, mêmeU19/skiff, navette/retour, refus géométriques, migration atomique, quota, conflits et archives différées. Groupe courant50tests inter-domaines épinglé.",
+      "browser": "A_VALIDER_PRODUCTION : aucune recette V109 compilée publiée ; les rodages restent exploratoires.",
+      "implementation": [
+        "app/game/systems/clanSupplyRouteV109.ts",
+        "app/game/systems/clanSupplySessionV109.ts",
+        "app/game/ClanSupplyRouteV109.tsx",
+        "docs/v109-clan-supply-route.md",
+        "tests/clan-supply-route-v109.test.mjs"
+      ],
+      "proof": [
+        {
+          "path": "docs/qa/v109-validation/worlds-tests.log",
+          "sha256": "13b7dfaff411ca9d85627188b548832b81566b564cae95d6e0dacc9c863828cd",
+          "bytes": 6446
+        }
+      ],
+      "remaining": "R2-M021 et les acquisitions de campagne restent ouverts : aucun reçu d’autorité de moyens/accord fourni au chantierV89, aucune coque gagnée, récompense, rang, annexion ou correspondanceK01→CON-T. Les six ouvrages initiaux de la recette sont une fixtureV108 déclarée."
+    },
+    {
+      "id": "enforcer-pngs",
+      "domain": "Enforcers",
+      "title": "Enforcers : dixième variante de18 groupes",
+      "source": "18 PNG de variante10 réellement absents de la ligne suivie ; une fiche n’est pas une soumission image.",
+      "status": "HERITE_STATIQUE",
+      "validationScope": "Portée historique explicitement héritée, sans nouvelle récupération ni nouvelle admission V109.",
+      "runtime": "Héritage V108 uniquement. Les 18 PNG source réconciliés V107 restent conservés ; les 18 poses alternatives gardent leurs identités stables.",
+      "tests": "Héritage ou contrôle de cohérence indépendant du gameplay.",
+      "browser": "HERITE_V108 : aucune nouvelle recette de provenance V109.",
+      "implementation": [],
+      "proof": [],
+      "remaining": "Aucune animation complète ou fidélité canonique certifiée par une pose."
+    },
+    {
+      "id": "preserve-expansion",
+      "domain": "Preserve Hunt",
+      "title": "Deux géographies adaptées : désert et glace",
+      "source": "4/80 secteurs et8/100 combattants hérités :76 secteurs et92 combattants restent visés, sans noms source inventés.",
+      "status": "A_VALIDER",
+      "validationScope": "Implémentation courante et tests locaux disponibles ; calibration finale et quatre parcours sur le nouveau build commun encore à valider.",
+      "runtime": "Deux réserves V5 distinctes : Khar-Duun désertique et Iskhel glacée, huit secteurs et seize adultes chacune. Les quatre réserves donnent 32 secteurs et 64 adultes aux IDs uniques ; huit nouveaux relevés, caches et objectifs d’interception physiques. Les sprites humains sont réutilisés.",
+      "tests": "PASS_LOCAL :19scénarios métier/persistance/rendu, quatre postes par réserve par marche/sauts/canaux, caches distinctes,12 000ticks vivants par réserve, interception réellement préparée, tracesV1–V4 et protections des archives. Groupe courant50tests inter-domaines épinglé.",
+      "browser": "A_VALIDER_PRODUCTION : aucune recette V109 compilée publiée ; les rodages restent exploratoires.",
+      "implementation": [
+        "app/game/systems/gameReserveExpeditionV109.ts",
+        "docs/v109-preserve-public-inputs.json",
+        "docs/v109-preserve-hunt-biomes.md",
+        "tests/game-reserve-biomes-v109.test.mjs",
+        "tests/game-reserve-biomes-persistence-v109.test.mjs",
+        "tests/game-reserve-rendering-v109.test.mjs"
+      ],
+      "proof": [
+        {
+          "path": "docs/v109-preserve-public-inputs.json",
+          "sha256": "b6c4ce01157802ec1fb12cf1240c3a53b30ec9f573e8d2365f20c22a84443ffc",
+          "bytes": 3291
+        },
+        {
+          "path": "docs/qa/v109-validation/worlds-tests.log",
+          "sha256": "13b7dfaff411ca9d85627188b548832b81566b564cae95d6e0dacc9c863828cd",
+          "bytes": 6446
+        }
+      ],
+      "remaining": "Les cibles de 80 secteurs et 100 adultes restent ouvertes : 48 secteurs et 36 adultes à définir. Les trois atlas partagés ne livrent pas les fiches H001–H100 ; aucune canonicité 1:1 admise."
+    },
+    {
+      "id": "enforcer-provenance",
+      "domain": "Provenance Enforcers",
+      "title": "Provenance Enforcers : reçus et traces",
+      "source": "21 reçus finaux V6.13 non retrouvés ;36 traces V6.10 sans PNG récupéré.",
+      "status": "LIVRE_PARTIEL",
+      "validationScope": "Portée historique explicitement héritée, sans nouvelle récupération ni nouvelle admission V109.",
+      "runtime": "Héritage V108 uniquement. Outil en lecture seule d’admission des preuves PNG/reçus fournis : SHA, tentative sélectionnée, prompt effectivement soumis et limites alpha. Vérification de deux lots distincts de 18 fichiers chacun.",
+      "tests": "PASS_COHERENCE_LOCALE : huit cas de test, incluant la régénération des 36 résultats publiés depuis leurs vrais PNG et reçus épinglés. Aucune origine externe authentifiée.",
+      "browser": "HERITE_V108 : aucune nouvelle recette de provenance V109.",
+      "implementation": [
+        "scripts/inspect-production-evidence-v108.mjs",
+        "tests/production-evidence-admission-v108.test.mjs",
+        "docs/production-evidence-v108.md"
+      ],
+      "proof": [
+        {
+          "path": "docs/qa/v108-production-evidence/v107-enforcer-poses-input.json",
+          "sha256": "4cd7b3523d87cffd0e788321215a5a22b9c152e9276b16c3fca4d769b4ec8b5c",
+          "bytes": 8563
+        },
+        {
+          "path": "docs/qa/v108-production-evidence/v107-enforcer-poses-report.json",
+          "sha256": "5a6c421a3481bebcf77273d023c9c665af4b8bcaa3713f2db7f0f45514de2ec3",
+          "bytes": 15464
+        },
+        {
+          "path": "docs/qa/v108-production-evidence/v614-input.json",
+          "sha256": "95bca6bb1bde8b1c378a9250db3db93f46ca95b8d38b956b9697de926b23a784",
+          "bytes": 8077
+        },
+        {
+          "path": "docs/qa/v108-production-evidence/v614-report.json",
+          "sha256": "6a4c16bcdc6e39370ab3e75a1583a1b870a31260806de10deeebc6f90317544d",
+          "bytes": 15364
+        }
+      ],
+      "remaining": "Les 21 reçus V6.13 et 36 traces/PNG V6.10 historiques restent non récupérés ; contrôle de cohérence sans certification de provenance externe."
+    },
+    {
+      "id": "pit-actions",
+      "domain": "The Pit · action",
+      "title": "Projections avant avec deux acteurs natifs indépendants",
+      "source": "4 projections,2 spéciaux à entités (mine/shuriken),6 conclusions avec partenaire.",
+      "status": "A_VALIDER",
+      "validationScope": "Implémentation courante et tests locaux disponibles ; calibration finale et quatre parcours sur le nouveau build commun encore à valider.",
+      "runtime": "Deux projections avant liées M_F006_TH_F et M_F003_TH_F, limitées au duo Feral/Scar sans costume. Huit admissions natives (attaquant/victime × deux héros × deux orientations),48rectangles BODY distincts dans29pages utilisées ; aucune image du partenaire peinte dans l’attaquant. Saisie, échappée par nouvel appui, récupération punie indéchoppable, vol borné, impact, relève et replayV16. sourceCompletion=false ; calibration des pivots/contact/sol et recette production encore à valider.",
+      "tests": "Tests physiques V16, décodage des vrais PNG/UV et compatibilité courante V11–V15 contre la capsuleV108. Les34tests Pit locaux passent selon le journal du responsable ; leur passage compilé reste à produire.",
+      "browser": "A_VALIDER_PRODUCTION : aucune recette V109 compilée publiée ; les rodages restent exploratoires.",
+      "implementation": [
+        "app/game/pitWorkbookRegistryV109.ts",
+        "app/game/systems/pitWorkbookCombatV109.ts",
+        "app/game/systems/pitForwardThrowControlsV109.ts",
+        "app/game/data/pitWorkbookThrowsV109.json",
+        "tests/pit-forward-throws-v109.test.mjs",
+        "tests/pit-forward-throw-art-v109.test.mjs",
+        "tests/pit-engine-compatibility-v109.test.mjs",
+        "docs/v109-pit-forward-throws.md",
+        "docs/suivi-production/v109-pit-forward/native-frame-delivery.json",
+        "docs/suivi-production/v109-pit-forward/native-gutter-delivery.json",
+        "docs/suivi-production/v109-pit-forward/visual-review-gutters.json",
+        "docs/suivi-production/v109-pit-forward/native-ground-calibration.json"
+      ],
+      "proof": [],
+      "remaining": "Les neuf actions source restent ouvertes tant que les exigences source ne sont pas intégralement satisfaites ; un duo borné ne termine pas tous les partenaires, costumes ou conclusions."
+    },
+    {
+      "id": "pit-campaigns",
+      "domain": "The Pit · campagne",
+      "title": "Routes de campagne source toujours ouvertes",
+      "source": "Deux routes de8 étapes, avec alliés/opposants, blessures, choix et fin alternative distincts.",
+      "status": "HERITE_STATIQUE",
+      "validationScope": "Héritage V108 uniquement ; aucune nouvelle scène ou recette de campagne V109 livrée.",
+      "runtime": "La continuité V108 est héritée. Les projections V109 ne livrent pas les seize scènes de campagne ni leurs acteurs manquants.",
+      "tests": "HERITE_V108 : assertions originales dans la capsule ; les tests de combat V109 ne couvrent pas les scènes source.",
+      "browser": "HERITE_V108 : aucune nouvelle recette de campagne V109.",
+      "implementation": [],
+      "proof": [],
+      "remaining": "Les seize scènes source et les cinq acteurs absents restent ouverts ; aucun parcours substitut ne les remplace."
+    },
+    {
+      "id": "pit-variants",
+      "domain": "The Pit · variante",
+      "title": "Feral/Scar : quatorze contraintes de variantes",
+      "source": "7 contraintes par personnage : incarnation, masque/visage, équipement, dommages, directions et camouflage.",
+      "status": "OUVERT",
+      "validationScope": "Amélioration partielle ; portée source complète non certifiée.",
+      "runtime": "Héritage V108 : Contraintes source et deux sens natifs conservés dans le suivi ; aucune tenue statique ou miroir promu en animation de variante.",
+      "tests": "Héritage V108 dans sa capsule originale ; tests V109 distincts.",
+      "browser": "A_VALIDER : aucun contenu source complet V109 livré.",
+      "implementation": [],
+      "proof": [],
+      "remaining": "Quatorze contraintes source restent ouvertes, notamment pertes/armures et transitions de masque."
+    },
+    {
+      "id": "homeworld-cargo",
+      "domain": "Homeworld",
+      "title": "Plaque et empreinte ROLE03 ; guidage des charges",
+      "source": "ROLE03 V6 : Scènes de dialogue383 ; Choix et actions788/789 ; Répliques3183–3190. ROLE19 hérité distinct : scène398, choix818/819, répliques3303–3310.",
+      "status": "A_VALIDER",
+      "validationScope": "Implémentation courante et tests locaux disponibles ; calibration finale et quatre parcours sur le nouveau build commun encore à valider.",
+      "runtime": "Scène ROLE03 : trois objets natifs distincts plaque/empreinte/fragment candidat, trois surfaces, accord, observation, lieux copiés, portage séparé, comparaison sans pression, échec/reprise et rapport. L’Atlas tient compte des lots ROLE19 existants puis réellement portés/posés ; déplacement d’une cible invalide le trajet. Aucun geste BODY du PNJ, réparation ou lignée admis.",
+      "tests": "PASS_LOCAL : carnetROLE03, propriété/choix/transport/refus, Atlas/Worker aux collisions cargo réelles, invalidation de cible déplacée, retours multiétages et point d’étude interrompu. Groupe courant50tests et135régressions d’entrées épinglés.",
+      "browser": "A_VALIDER_PRODUCTION : aucune recette V109 compilée publiée ; les rodages restent exploratoires.",
+      "implementation": [
+        "app/game/systems/homeworldArchivePlaqueDefinitionV109.ts",
+        "app/game/systems/homeworldArchivePlaqueV109.ts",
+        "app/game/systems/homeworldNavigationV109.ts",
+        "app/game/systems/homeworldWayfindingV109.ts",
+        "docs/v109-homeworld-archive-plaque.md",
+        "docs/v109-homeworld-dynamic-atlas.md",
+        "tests/homeworld-archive-plaque-v109.test.mjs",
+        "tests/homeworld-dynamic-navigation-v109.test.mjs"
+      ],
+      "proof": [
+        {
+          "path": "docs/qa/v109-validation/worlds-tests.log",
+          "sha256": "13b7dfaff411ca9d85627188b548832b81566b564cae95d6e0dacc9c863828cd",
+          "bytes": 6446
+        },
+        {
+          "path": "docs/qa/v109-validation/input-runtime-regressions.log",
+          "sha256": "430252078c7ef82cab0ab61ec833c1c5fbbe8119881f7c58b6b4468f59650a1b",
+          "bytes": 13289
+        }
+      ],
+      "remaining": "Recette production V109 à exécuter sur le build commun. Les gestes BODY, réparation effective du bord, attribution de l’empreinte, lignée et récompenses ne sont pas livrés. ROLE19 et ROLE03 gardent leurs sources et états séparés."
+    }
+  ],
+  "validations": [
+    {
+      "id": "V109-HISTORICAL-V108",
+      "status": "PASS_HISTORICAL_ORIGINAL",
+      "scope": "Dix fichiers originaux,75 assertions inchangées et régénération exacte du classeur V108 dans son contexte privé.",
+      "command": "node scripts/check-excel-history-v109.mjs --check --tests",
+      "evidence": [
+        {
+          "path": "docs/qa/v109-excel-followup/historical-v108.log",
+          "sha256": "56f4ab935a8ef864ca176f4e5615e6aa6e71729c43974b0a5673a4c8c281fe69",
+          "bytes": 20591
+        },
+        {
+          "path": "tests/fixtures/excel-history-v108-v109.json",
+          "sha256": "006c9fe4001c7a68fbc34776b4b9d3097d52369441b2940bf4255abd8b39fa6c",
+          "bytes": 430476
+        },
+        {
+          "path": "tests/fixtures/excel-history-v108-v109.json.gz",
+          "sha256": "0746d5176474cb5249ea262ec6ef0e0ad70ba439c1ec70de51bd8320d57e420c",
+          "bytes": 10463984
+        }
+      ],
+      "limit": "Ces tests vérifient les vrais fichiers V108 au commit 2d888 ; ils ne certifient pas le jeu V109. Les 72 PNG/reçus sont copiés dans le package privé pour garder le refus original des symlinks."
+    },
+    {
+      "id": "V109-EXCEL-STRUCTURE",
+      "status": "PASS_STRUCTURE_TARGETED",
+      "scope": "11 assertions courantes : préservation des85feuilles et56besoins ouverts, reproductibilité, capsule V108 privée, invariants de publication, tous39pixels publics/4références/36reçus exacts.",
+      "command": "node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/excel-history-v109.test.mjs tests/excel-followup-v109.test.mjs tests/production-publication-v109.test.mjs",
+      "evidence": [
+        {
+          "path": "docs/qa/v109-excel-followup/excel-tests.log",
+          "sha256": "9ca755f883675154453f68e5da7c24d197f1a2b0e1edd2af5610b7f1e864a5b1",
+          "bytes": 1992
+        },
+        {
+          "path": "tests/excel-followup-v109.test.mjs",
+          "sha256": "b55061a59d66aa05f4b5e3d1c07930c11e22100278c666a997e417b3e7a036dc",
+          "bytes": 7449
+        },
+        {
+          "path": "tests/excel-history-v109.test.mjs",
+          "sha256": "18253aea7c45260b051b3a228d091c4a00c4d1977e7383c4f10b21312856b7ce",
+          "bytes": 2985
+        },
+        {
+          "path": "tests/production-publication-v109.test.mjs",
+          "sha256": "d2800b58ec7f0bee174f277c9a5359144048421d5cfa931c1626e712313f316a",
+          "bytes": 4702
+        }
+      ],
+      "limit": "Vérifie structure et preuves locales ; ne lance ni navigateur ni Excel natif. Le refus d’un classeur historique falsifié est un cas négatif attendu."
+    },
+    {
+      "id": "V109-INPUT-REGRESSIONS",
+      "status": "PASS_LOCAL_REGRESSION",
+      "scope": "135assertions,0échec/0ignorée. Entrées, interruptions, focus, stockage, manettes et chargeurs d’images du jeu courant.",
+      "command": "node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/homeworld-input-runtime.test.mjs tests/ship-hub-input-runtime.test.mjs tests/ash-expedition-input-runtime.test.mjs tests/regional-input-edges-v94.test.mjs tests/homeworld-motion-assets-v74.test.mjs tests/hunt-input-runtime.test.mjs tests/pit-gamepad-assignments.test.mjs tests/regional-lifecycle-v94.test.mjs tests/scene-image-loader-v94.test.mjs",
+      "evidence": [
+        {
+          "path": "docs/qa/v109-validation/input-runtime-regressions.log",
+          "sha256": "430252078c7ef82cab0ab61ec833c1c5fbbe8119881f7c58b6b4468f59650a1b",
+          "bytes": 13289
+        }
+      ],
+      "limit": "Exécution Node22 du code et des fixtures indiqués ; ne constitue ni un parcours navigateur du buildV109 ni une clôture source. Les5groupes portent438assertions ; aucun contrôle navigateur n’y est additionné."
+    },
+    {
+      "id": "V109-V104-REGRESSIONS",
+      "status": "PASS_LOCAL_REGRESSION",
+      "scope": "46assertions,0échec/0ignorée. Normales/UV, carte, frontières et suivi V104 ; anciennes preuves gardent leur contexte historique.",
+      "command": "node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v104.test.mjs",
+      "evidence": [
+        {
+          "path": "docs/qa/v109-validation/v104-regressions.log",
+          "sha256": "e05fcaa3c70f181751af473df534ddd484015cbb7d609d1db5f1ca3f9dc3cf7f",
+          "bytes": 5370
+        }
+      ],
+      "limit": "Exécution Node22 du code et des fixtures indiqués ; ne constitue ni un parcours navigateur du buildV109 ni une clôture source. Les5groupes portent438assertions ; aucun contrôle navigateur n’y est additionné."
+    },
+    {
+      "id": "V109-V105-V106-REGRESSIONS",
+      "status": "PASS_LOCAL_REGRESSION",
+      "scope": "126assertions,0échec/0ignorée. Régressions V105/V106 et cohérence de leurs artefacts versionnés ; aucun ancien gel requalifié en V109.",
+      "command": "node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v105.test.mjs tests/*-v106.test.mjs",
+      "evidence": [
+        {
+          "path": "docs/qa/v109-validation/v105-v106-regressions.log",
+          "sha256": "4e0c56e1e2206c0f45dc903504947c82f1235b88ea299bd26a7327dd7221f747",
+          "bytes": 14684
+        }
+      ],
+      "limit": "Exécution Node22 du code et des fixtures indiqués ; ne constitue ni un parcours navigateur du buildV109 ni une clôture source. Les5groupes portent438assertions ; aucun contrôle navigateur n’y est additionné."
+    },
+    {
+      "id": "V109-WORLDS-LOCAL",
+      "status": "PASS_LOCAL_REGRESSION",
+      "scope": "50assertions,0échec/0ignorée. Tournée physique et stockage, deux réservesV5, carnetROLE03 et navigation cargo dynamiques du vrai code courant.",
+      "command": "node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/clan-supply-route-v109.test.mjs tests/game-reserve-biomes-persistence-v109.test.mjs tests/game-reserve-biomes-v109.test.mjs tests/game-reserve-rendering-v109.test.mjs tests/homeworld-archive-plaque-v109.test.mjs tests/homeworld-dynamic-navigation-v109.test.mjs",
+      "evidence": [
+        {
+          "path": "docs/qa/v109-validation/worlds-tests.log",
+          "sha256": "13b7dfaff411ca9d85627188b548832b81566b564cae95d6e0dacc9c863828cd",
+          "bytes": 6446
+        }
+      ],
+      "limit": "Exécution Node22 du code et des fixtures indiqués ; ne constitue ni un parcours navigateur du buildV109 ni une clôture source. Les5groupes portent438assertions ; aucun contrôle navigateur n’y est additionné."
+    },
+    {
+      "id": "V109-ARCHIVE-REGRESSIONS",
+      "status": "PASS_LOCAL_REGRESSION",
+      "scope": "81assertions,0échec/0ignorée. Slots, archives complètes et adversariales, transferts et intégrité atomique.",
+      "command": "node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/campaign-slots.test.mjs tests/complete-archive.test.mjs tests/complete-archive-adversarial.test.mjs tests/archive-transfer-guard.test.mjs",
+      "evidence": [
+        {
+          "path": "docs/qa/v109-validation/archive-regressions.log",
+          "sha256": "5a102fe4450e1e7f4a45bd8978a58fea6d1b44c6c8c7bf58726160b21007008d",
+          "bytes": 8629
+        }
+      ],
+      "limit": "Exécution Node22 du code et des fixtures indiqués ; ne constitue ni un parcours navigateur du buildV109 ni une clôture source. Les5groupes portent438assertions ; aucun contrôle navigateur n’y est additionné."
+    },
+    {
+      "id": "V109-CURRENT-PRODUCTION-PENDING",
+      "status": "A_VALIDER",
+      "scope": "Nouveaux atlas, projections, plaque, tournée et réserves du jeu courant.",
+      "command": "À consigner après stabilisation et exécution des nouvelles recettes.",
+      "evidence": [],
+      "limit": "Aucune capture, ancien passage ou valeur de définition ne vaut validation production V109."
+    }
+  ],
+  "limits": [
+    "Les 56 exigences source restent ouvertes et toutes les anciennes colonnes/lignes sont conservées.",
+    "Les productions artistiques et liaisons V109 restent conditionnées à des admissions sur leurs vrais pixels et comportements ; aucune clôture par compteur.",
+    "Les projections prévues sont limitées aux deux personnages sans costume Feral/Scar ; elles ne livrent pas les réactions xéno, les prises avec tout partenaire ni les conclusions.",
+    "Les scènes de campagne, kits complets et quatorze contraintes de variantes restent ouverts.",
+    "Les deux nouveaux biomes sont des adaptations originales de géographies déjà proposées ; humains au sol et terrain continu, pas de navigation humaine verticale ou crevasse mortelle annoncée.",
+    "Trois atlas humains partagés ne livrent pas les fiches H001–H100.",
+    "Les six ouvrages restent des exercices sans acquisition de campagne ni correspondance arbitraire K01→CON-T.",
+    "Les 21 reçus V6.13 et 36 traces/PNG V6.10 restent non récupérés ; le contrôle de cohérence local ne certifie pas un fournisseur externe.",
+    "Le générateur contrôle le ZIP/XML et les caches de formules ; il ne lance pas Excel natif ni le navigateur."
+  ]
+}

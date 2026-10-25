@@ -1,0 +1,2253 @@
+{
+  "schemaVersion": 1,
+  "scope": "48 independently reviewed native BODY drawings on 29 selected unchanged PNG pages, bounded to the unvaried Feral/Scar duo. All selected UV borders are alpha0. Per-page anatomical calibration does not fit a lying body to a standing bbox. No source action completion is inferred.",
+  "sourceDeliveryPath": "docs/suivi-production/v109-pit-forward/native-frame-delivery.json",
+  "sourceReviewPath": "docs/suivi-production/v109-pit-forward/visual-review.json",
+  "admissions": [
+    {
+      "fighterId": "feral-hunter",
+      "role": "attacker",
+      "facing": "right",
+      "sources": [
+        {
+          "pageId": "v109-feral-throw-forward-right",
+          "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-right-v109.png",
+          "sha256": "8324320252c00e84cf0e50b7fb850dc96fb472dc1d5c933d0e14925b4fdf37ec",
+          "bytes": 2316771,
+          "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-forward-right.json"
+        }
+      ],
+      "review": {
+        "status": "validated",
+        "scope": "Independent native BODY review: unvaried Feral/Scar forward throw only, with separate attacker/victim drawings and independently drawn orientations. Runtime body scale and partner contact are calibrated in the actual renderer.",
+        "notes": "Sources personally reviewed in visual-review.json and visual-review-gutters.json. All 48 native UV regions have strictly transparent borders, preserving original page pixels and native anchors. No reflection, pose interpolation, composite mannequin crop, PNG edit or decoded-pixel filtering. Source completion and other partner/costume requirements remain open. Grounded attacker poses and captured/landing/rising victim poses use the measured alpha128 support edge as their floor pivot. Loaded/flight victims preserve the authored airborne anchor; page anatomical scale remains uniform."
+      },
+      "definition": {
+        "fighterId": "feral-hunter",
+        "bodyHeightPx": 464,
+        "pageBodyHeightPx": {
+          "v109-feral-throw-forward-right": 464.0
+        },
+        "visibleFrameBounds": [
+          {
+            "pageId": "v109-feral-throw-forward-right",
+            "rect": [
+              110,
+              18,
+              361,
+              496
+            ],
+            "visibleRect": [
+              140,
+              37,
+              328,
+              465
+            ]
+          },
+          {
+            "pageId": "v109-feral-throw-forward-right",
+            "rect": [
+              574,
+              16,
+              505,
+              489
+            ],
+            "visibleRect": [
+              590,
+              56,
+              476,
+              444
+            ]
+          },
+          {
+            "pageId": "v109-feral-throw-forward-right",
+            "rect": [
+              1078,
+              16,
+              401,
+              497
+            ],
+            "visibleRect": [
+              1098,
+              124,
+              378,
+              382
+            ]
+          },
+          {
+            "pageId": "v109-feral-throw-forward-right",
+            "rect": [
+              46,
+              536,
+              535,
+              465
+            ],
+            "visibleRect": [
+              49,
+              578,
+              522,
+              420
+            ]
+          },
+          {
+            "pageId": "v109-feral-throw-forward-right",
+            "rect": [
+              580,
+              512,
+              513,
+              495
+            ],
+            "visibleRect": [
+              593,
+              573,
+              495,
+              425
+            ]
+          },
+          {
+            "pageId": "v109-feral-throw-forward-right",
+            "rect": [
+              1163,
+              535,
+              311,
+              471
+            ],
+            "visibleRect": [
+              1167,
+              541,
+              304,
+              457
+            ]
+          }
+        ],
+        "atlas": {
+          "schemaVersion": 1,
+          "id": "feral-hunter-forward-throw-attacker-right-v109",
+          "characterId": "feral-hunter",
+          "variantId": "BODY",
+          "sourceKind": "authored-frames",
+          "status": "validated",
+          "pages": [
+            {
+              "id": "v109-feral-throw-forward-right",
+              "src": "/game/sprites/v109/pit/feral-hunter/feral-throw-forward-right-v109.png",
+              "width": 1536,
+              "height": 1024,
+              "status": "validated",
+              "transparency": {
+                "mode": "alpha"
+              }
+            }
+          ],
+          "clips": [
+            {
+              "id": "workbook.M_F006_TH_F",
+              "facing": "right",
+              "status": "validated",
+              "loop": false,
+              "ticksPerSecond": 60,
+              "frames": [
+                {
+                  "pageId": "v109-feral-throw-forward-right",
+                  "rect": [
+                    110,
+                    18,
+                    361,
+                    496
+                  ],
+                  "pivot": [
+                    146.0,
+                    482
+                  ],
+                  "durationTicks": 4
+                },
+                {
+                  "pageId": "v109-feral-throw-forward-right",
+                  "rect": [
+                    574,
+                    16,
+                    505,
+                    489
+                  ],
+                  "pivot": [
+                    194.0,
+                    482
+                  ],
+                  "durationTicks": 4
+                },
+                {
+                  "pageId": "v109-feral-throw-forward-right",
+                  "rect": [
+                    1078,
+                    16,
+                    401,
+                    497
+                  ],
+                  "pivot": [
+                    202.0,
+                    487
+                  ],
+                  "durationTicks": 1
+                },
+                {
+                  "pageId": "v109-feral-throw-forward-right",
+                  "rect": [
+                    46,
+                    536,
+                    535,
+                    465
+                  ],
+                  "pivot": [
+                    210.0,
+                    460
+                  ],
+                  "durationTicks": 2
+                },
+                {
+                  "pageId": "v109-feral-throw-forward-right",
+                  "rect": [
+                    580,
+                    512,
+                    513,
+                    495
+                  ],
+                  "pivot": [
+                    188.0,
+                    484
+                  ],
+                  "durationTicks": 15
+                },
+                {
+                  "pageId": "v109-feral-throw-forward-right",
+                  "rect": [
+                    1163,
+                    535,
+                    311,
+                    471
+                  ],
+                  "pivot": [
+                    117.0,
+                    461
+                  ],
+                  "durationTicks": 15
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fighterId": "feral-hunter",
+      "role": "attacker",
+      "facing": "left",
+      "sources": [
+        {
+          "pageId": "v109-feral-throw-forward-left-r2",
+          "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-r2-v109.png",
+          "sha256": "5dce6483d4ba9fb1848613d3a76abf255a163cbfb9dba1ed3554cc9a74615d15",
+          "bytes": 2390859,
+          "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-forward-left-r2.json"
+        },
+        {
+          "pageId": "v109-feral-throw-forward-left-isolated-3-r2",
+          "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-isolated-3-r2-v109.png",
+          "sha256": "151b49c54a3ec2321c5793bd10b6232a1e7542d48a8d1c09da2f8fb3cdd76ddb",
+          "bytes": 2071095,
+          "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-forward-left-isolated-3-r2.json"
+        },
+        {
+          "pageId": "v109-feral-throw-forward-left-isolated-4-r2",
+          "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-isolated-4-r2-v109.png",
+          "sha256": "fa54dd3f5a8e926c211d48dba1edd1b35a813cab02d013ee0294f68d3dd47ddc",
+          "bytes": 2138067,
+          "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-forward-left-isolated-4-r2.json"
+        },
+        {
+          "pageId": "v109-feral-throw-forward-left-isolated-2-gutter-r1",
+          "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-isolated-2-gutter-r1-v109.png",
+          "sha256": "6ff3767df2283b599f7a204e20e3a8c03a943fb1a8dc9b7531f7a3c6778c1931",
+          "bytes": 1706509,
+          "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-forward-left-isolated-2-gutter-r1.json"
+        },
+        {
+          "pageId": "v109-feral-throw-forward-left-isolated-5-gutter-r1",
+          "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-isolated-5-gutter-r1-v109.png",
+          "sha256": "2411a5307a67bad68b4e2b1fc2fbbb52b3320d6dc10a956039a68bce30318046",
+          "bytes": 1553500,
+          "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-forward-left-isolated-5-gutter-r1.json"
+        }
+      ],
+      "review": {
+        "status": "validated",
+        "scope": "Independent native BODY review: unvaried Feral/Scar forward throw only, with separate attacker/victim drawings and independently drawn orientations. Runtime body scale and partner contact are calibrated in the actual renderer.",
+        "notes": "Sources personally reviewed in visual-review.json and visual-review-gutters.json. All 48 native UV regions have strictly transparent borders, preserving original page pixels and native anchors. No reflection, pose interpolation, composite mannequin crop, PNG edit or decoded-pixel filtering. Source completion and other partner/costume requirements remain open. Grounded attacker poses and captured/landing/rising victim poses use the measured alpha128 support edge as their floor pivot. Loaded/flight victims preserve the authored airborne anchor; page anatomical scale remains uniform."
+      },
+      "definition": {
+        "fighterId": "feral-hunter",
+        "bodyHeightPx": 474,
+        "pageBodyHeightPx": {
+          "v109-feral-throw-forward-left-r2": 474.0,
+          "v109-feral-throw-forward-left-isolated-3-r2": 1111.595,
+          "v109-feral-throw-forward-left-isolated-4-r2": 1240.634,
+          "v109-feral-throw-forward-left-isolated-2-gutter-r1": 1072.071,
+          "v109-feral-throw-forward-left-isolated-5-gutter-r1": 883.146
+        },
+        "visibleFrameBounds": [
+          {
+            "pageId": "v109-feral-throw-forward-left-r2",
+            "rect": [
+              90,
+              18,
+              392,
+              495
+            ],
+            "visibleRect": [
+              95,
+              27,
+              381,
+              475
+            ]
+          },
+          {
+            "pageId": "v109-feral-throw-forward-left-r2",
+            "rect": [
+              492,
+              16,
+              556,
+              499
+            ],
+            "visibleRect": [
+              502,
+              43,
+              543,
+              460
+            ]
+          },
+          {
+            "pageId": "v109-feral-throw-forward-left-isolated-2-gutter-r1",
+            "rect": [
+              271,
+              146,
+              1044,
+              769
+            ],
+            "visibleRect": [
+              279,
+              155,
+              1034,
+              757
+            ]
+          },
+          {
+            "pageId": "v109-feral-throw-forward-left-isolated-3-r2",
+            "rect": [
+              49,
+              22,
+              1422,
+              945
+            ],
+            "visibleRect": [
+              54,
+              26,
+              1413,
+              938
+            ]
+          },
+          {
+            "pageId": "v109-feral-throw-forward-left-isolated-4-r2",
+            "rect": [
+              37,
+              25,
+              1482,
+              954
+            ],
+            "visibleRect": [
+              40,
+              28,
+              1474,
+              949
+            ]
+          },
+          {
+            "pageId": "v109-feral-throw-forward-left-isolated-5-gutter-r1",
+            "rect": [
+              424,
+              79,
+              727,
+              846
+            ],
+            "visibleRect": [
+              427,
+              83,
+              720,
+              838
+            ]
+          }
+        ],
+        "atlas": {
+          "schemaVersion": 1,
+          "id": "feral-hunter-forward-throw-attacker-left-v109",
+          "characterId": "feral-hunter",
+          "variantId": "BODY",
+          "sourceKind": "authored-frames",
+          "status": "validated",
+          "pages": [
+            {
+              "id": "v109-feral-throw-forward-left-r2",
+              "src": "/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-r2-v109.png",
+              "width": 1536,
+              "height": 1024,
+              "status": "validated",
+              "transparency": {
+                "mode": "alpha"
+              }
+            },
+            {
+              "id": "v109-feral-throw-forward-left-isolated-3-r2",
+              "src": "/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-isolated-3-r2-v109.png",
+              "width": 1536,
+              "height": 1024,
+              "status": "validated",
+              "transparency": {
+                "mode": "alpha"
+              }
+            },
+            {
+              "id": "v109-feral-throw-forward-left-isolated-4-r2",
+              "src": "/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-isolated-4-r2-v109.png",
+              "width": 1536,
+              "height": 1024,
+              "status": "validated",
+              "transparency": {
+                "mode": "alpha"
+              }
+            },
+            {
+              "id": "v109-feral-throw-forward-left-isolated-2-gutter-r1",
+              "src": "/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-isolated-2-gutter-r1-v109.png",
+              "width": 1536,
+              "height": 1024,
+              "status": "validated",
+              "transparency": {
+                "mode": "alpha"
+              }
+            },
+            {
+              "id": "v109-feral-throw-forward-left-isolated-5-gutter-r1",
+              "src": "/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-isolated-5-gutter-r1-v109.png",
+              "width": 1536,
+              "height": 1024,
+              "status": "validated",
+              "transparency": {
+                "mode": "alpha"
+              }
+            }
+          ],
+          "clips": [
+            {
+              "id": "workbook.M_F006_TH_F",
+              "facing": "left",
+              "status": "validated",
+              "loop": false,
+              "ticksPerSecond": 60,
+              "frames": [
+                {
+                  "pageId": "v109-feral-throw-forward-left-r2",
+                  "rect": [
+                    90,
+                    18,
+                    392,
+                    495
+                  ],
+                  "pivot": [
+                    166.0,
+                    482
+                  ],
+                  "durationTicks": 4
+                },
+                {
+                  "pageId": "v109-feral-throw-forward-left-r2",
+                  "rect": [
+                    492,
+                    16,
+                    556,
+                    499
+                  ],
+                  "pivot": [
+                    276.0,
+                    485
+                  ],
+                  "durationTicks": 4
+                },
+                {
+                  "pageId": "v109-feral-throw-forward-left-isolated-2-gutter-r1",
+                  "rect": [
+                    271,
+                    146,
+                    1044,
+                    769
+                  ],
+                  "pivot": [
+                    465.694,
+                    762
+                  ],
+                  "durationTicks": 1
+                },
+                {
+                  "pageId": "v109-feral-throw-forward-left-isolated-3-r2",
+                  "rect": [
+                    49,
+                    22,
+                    1422,
+                    945
+                  ],
+                  "pivot": [
+                    589.053,
+                    940
+                  ],
+                  "durationTicks": 2
+                },
+                {
+                  "pageId": "v109-feral-throw-forward-left-isolated-4-r2",
+                  "rect": [
+                    37,
+                    25,
+                    1482,
+                    954
+                  ],
+                  "pivot": [
+                    650.509,
+                    949
+                  ],
+                  "durationTicks": 15
+                },
+                {
+                  "pageId": "v109-feral-throw-forward-left-isolated-5-gutter-r1",
+                  "rect": [
+                    424,
+                    79,
+                    727,
+                    846
+                  ],
+                  "pivot": [
+                    305.673,
+                    839
+                  ],
+                  "durationTicks": 15
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fighterId": "scar",
+      "role": "attacker",
+      "facing": "right",
+      "sources": [
+        {
+          "pageId": "v109-scar-throw-forward-right",
+          "path": "public/game/sprites/v109/pit/scar/scar-throw-forward-right-v109.png",
+          "sha256": "4615795ab410033a000dcdf7fdfe197b431aedb07ad279a7acfbef5e93910c02",
+          "bytes": 2258882,
+          "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-forward-right.json"
+        }
+      ],
+      "review": {
+        "status": "validated",
+        "scope": "Independent native BODY review: unvaried Feral/Scar forward throw only, with separate attacker/victim drawings and independently drawn orientations. Runtime body scale and partner contact are calibrated in the actual renderer.",
+        "notes": "Sources personally reviewed in visual-review.json and visual-review-gutters.json. All 48 native UV regions have strictly transparent borders, preserving original page pixels and native anchors. No reflection, pose interpolation, composite mannequin crop, PNG edit or decoded-pixel filtering. Source completion and other partner/costume requirements remain open. Grounded attacker poses and captured/landing/rising victim poses use the measured alpha128 support edge as their floor pivot. Loaded/flight victims preserve the authored airborne anchor; page anatomical scale remains uniform."
+      },
+      "definition": {
+        "fighterId": "scar",
+        "bodyHeightPx": 407,
+        "pageBodyHeightPx": {
+          "v109-scar-throw-forward-right": 407.0
+        },
+        "visibleFrameBounds": [
+          {
+            "pageId": "v109-scar-throw-forward-right",
+            "rect": [
+              64,
+              6,
+              423,
+              501
+            ],
+            "visibleRect": [
+              69,
+              10,
+              410,
+              488
+            ]
+          },
+          {
+            "pageId": "v109-scar-throw-forward-right",
+            "rect": [
+              536,
+              9,
+              524,
+              490
+            ],
+            "visibleRect": [
+              567,
+              12,
+              491,
+              484
+            ]
+          },
+          {
+            "pageId": "v109-scar-throw-forward-right",
+            "rect": [
+              1082,
+              15,
+              415,
+              486
+            ],
+            "visibleRect": [
+              1086,
+              19,
+              407,
+              479
+            ]
+          },
+          {
+            "pageId": "v109-scar-throw-forward-right",
+            "rect": [
+              13,
+              516,
+              536,
+              481
+            ],
+            "visibleRect": [
+              21,
+              520,
+              522,
+              475
+            ]
+          },
+          {
+            "pageId": "v109-scar-throw-forward-right",
+            "rect": [
+              560,
+              512,
+              481,
+              485
+            ],
+            "visibleRect": [
+              566,
+              521,
+              471,
+              469
+            ]
+          },
+          {
+            "pageId": "v109-scar-throw-forward-right",
+            "rect": [
+              1104,
+              516,
+              391,
+              485
+            ],
+            "visibleRect": [
+              1108,
+              519,
+              379,
+              477
+            ]
+          }
+        ],
+        "atlas": {
+          "schemaVersion": 1,
+          "id": "scar-forward-throw-attacker-right-v109",
+          "characterId": "scar",
+          "variantId": "BODY",
+          "sourceKind": "authored-frames",
+          "status": "validated",
+          "pages": [
+            {
+              "id": "v109-scar-throw-forward-right",
+              "src": "/game/sprites/v109/pit/scar/scar-throw-forward-right-v109.png",
+              "width": 1536,
+              "height": 1024,
+              "status": "validated",
+              "transparency": {
+                "mode": "alpha"
+              }
+            }
+          ],
+          "clips": [
+            {
+              "id": "workbook.M_F003_TH_F",
+              "facing": "right",
+              "status": "validated",
+              "loop": false,
+              "ticksPerSecond": 60,
+              "frames": [
+                {
+                  "pageId": "v109-scar-throw-forward-right",
+                  "rect": [
+                    64,
+                    6,
+                    423,
+                    501
+                  ],
+                  "pivot": [
+                    192.0,
+                    490
+                  ],
+                  "durationTicks": 4
+                },
+                {
+                  "pageId": "v109-scar-throw-forward-right",
+                  "rect": [
+                    536,
+                    9,
+                    524,
+                    490
+                  ],
+                  "pivot": [
+                    232.0,
+                    485
+                  ],
+                  "durationTicks": 4
+                },
+                {
+                  "pageId": "v109-scar-throw-forward-right",
+                  "rect": [
+                    1082,
+                    15,
+                    415,
+                    486
+                  ],
+                  "pivot": [
+                    198.0,
+                    482
+                  ],
+                  "durationTicks": 1
+                },
+                {
+                  "pageId": "v109-scar-throw-forward-right",
+                  "rect": [
+                    13,
+                    516,
+                    536,
+                    481
+                  ],
+                  "pivot": [
+                    243.0,
+                    477
+                  ],
+                  "durationTicks": 2
+                },
+                {
+                  "pageId": "v109-scar-throw-forward-right",
+                  "rect": [
+                    560,
+                    512,
+                    481,
+                    485
+                  ],
+                  "pivot": [
+                    208.0,
+                    476
+                  ],
+                  "durationTicks": 15
+                },
+                {
+                  "pageId": "v109-scar-throw-forward-right",
+                  "rect": [
+                    1104,
+                    516,
+                    391,
+                    485
+                  ],
+                  "pivot": [
+                    176.0,
+                    478
+                  ],
+                  "durationTicks": 15
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fighterId": "scar",
+      "role": "attacker",
+      "facing": "left",
+      "sources": [
+        {
+          "pageId": "v109-scar-throw-forward-left-isolated-0",
+          "path": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-0-v109.png",
+          "sha256": "c5fb6df337079a263350702ddea4299b7ddb61f060dd7bed02eb6010632c9c96",
+          "bytes": 1707824,
+          "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-forward-left-isolated-0.json"
+        },
+        {
+          "pageId": "v109-scar-throw-forward-left-isolated-1",
+          "path": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-1-v109.png",
+          "sha256": "6153788ab03fc3f246cae0b1b30990edd57b777283f2eff4c24d9a6ae5b7e95a",
+          "bytes": 1582563,
+          "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-forward-left-isolated-1.json"
+        },
+        {
+          "pageId": "v109-scar-throw-forward-left-isolated-3",
+          "path": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-3-v109.png",
+          "sha256": "13561262646615582d4c0687b4b59dc203e58747f62f8cf924a609abfeea44c6",
+          "bytes": 1748850,
+          "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-forward-left-isolated-3.json"
+        },
+        {
+          "pageId": "v109-scar-throw-forward-left-isolated-4",
+          "path": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-4-v109.png",
+          "sha256": "0f2081b177fe949c0f52fa2d27dd4accfbd3aaf1da891ec8ffa11547cde0a00d",
+          "bytes": 1761722,
+          "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-forward-left-isolated-4.json"
+        },
+        {
+          "pageId": "v109-scar-throw-forward-left-isolated-2-gutter-r1",
+          "path": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-2-gutter-r1-v109.png",
+          "sha256": "08c29f9c49d71aef046968c86000a4fd1607486934ab764c80718c86aa816454",
+          "bytes": 1606038,
+          "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-forward-left-isolated-2-gutter-r1.json"
+        },
+        {
+          "pageId": "v109-scar-throw-forward-left-isolated-5-gutter-r1",
+          "path": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-5-gutter-r1-v109.png",
+          "sha256": "7d1eee2349555a1eab15c2ce60d0bae9e858d66fd183f4aa62e3f97e3d2ff157",
+          "bytes": 1461409,
+          "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-forward-left-isolated-5-gutter-r1.json"
+        }
+      ],
+      "review": {
+        "status": "validated",
+        "scope": "Independent native BODY review: unvaried Feral/Scar forward throw only, with separate attacker/victim drawings and independently drawn orientations. Runtime body scale and partner contact are calibrated in the actual renderer.",
+        "notes": "Sources personally reviewed in visual-review.json and visual-review-gutters.json. All 48 native UV regions have strictly transparent borders, preserving original page pixels and native anchors. No reflection, pose interpolation, composite mannequin crop, PNG edit or decoded-pixel filtering. Source completion and other partner/costume requirements remain open. Grounded attacker poses and captured/landing/rising victim poses use the measured alpha128 support edge as their floor pivot. Loaded/flight victims preserve the authored airborne anchor; page anatomical scale remains uniform."
+      },
+      "definition": {
+        "fighterId": "scar",
+        "bodyHeightPx": 425,
+        "pageBodyHeightPx": {
+          "v109-scar-throw-forward-left-isolated-0": 888.961,
+          "v109-scar-throw-forward-left-isolated-1": 815.174,
+          "v109-scar-throw-forward-left-isolated-3": 915.365,
+          "v109-scar-throw-forward-left-isolated-4": 945.647,
+          "v109-scar-throw-forward-left-isolated-2-gutter-r1": 875.907,
+          "v109-scar-throw-forward-left-isolated-5-gutter-r1": 823.816
+        },
+        "visibleFrameBounds": [
+          {
+            "pageId": "v109-scar-throw-forward-left-isolated-0",
+            "rect": [
+              229,
+              1,
+              1005,
+              1016
+            ],
+            "visibleRect": [
+              234,
+              13,
+              995,
+              1000
+            ]
+          },
+          {
+            "pageId": "v109-scar-throw-forward-left-isolated-1",
+            "rect": [
+              318,
+              6,
+              961,
+              975
+            ],
+            "visibleRect": [
+              321,
+              10,
+              954,
+              968
+            ]
+          },
+          {
+            "pageId": "v109-scar-throw-forward-left-isolated-2-gutter-r1",
+            "rect": [
+              336,
+              12,
+              947,
+              952
+            ],
+            "visibleRect": [
+              342,
+              15,
+              938,
+              946
+            ]
+          },
+          {
+            "pageId": "v109-scar-throw-forward-left-isolated-3",
+            "rect": [
+              15,
+              8,
+              1282,
+              1001
+            ],
+            "visibleRect": [
+              18,
+              11,
+              1274,
+              995
+            ]
+          },
+          {
+            "pageId": "v109-scar-throw-forward-left-isolated-4",
+            "rect": [
+              154,
+              8,
+              1213,
+              1007
+            ],
+            "visibleRect": [
+              158,
+              13,
+              1204,
+              998
+            ]
+          },
+          {
+            "pageId": "v109-scar-throw-forward-left-isolated-5-gutter-r1",
+            "rect": [
+              361,
+              37,
+              801,
+              906
+            ],
+            "visibleRect": [
+              364,
+              40,
+              795,
+              900
+            ]
+          }
+        ],
+        "atlas": {
+          "schemaVersion": 1,
+          "id": "scar-forward-throw-attacker-left-v109",
+          "characterId": "scar",
+          "variantId": "BODY",
+          "sourceKind": "authored-frames",
+          "status": "validated",
+          "pages": [
+            {
+              "id": "v109-scar-throw-forward-left-isolated-0",
+              "src": "/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-0-v109.png",
+              "width": 1536,
+              "height": 1024,
+              "status": "validated",
+              "transparency": {
+                "mode": "alpha"
+              }
+            },
+            {
+              "id": "v109-scar-throw-forward-left-isolated-1",
+              "src": "/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-1-v109.png",
+              "width": 1536,
+              "height": 1024,
+              "status": "validated",
+              "transparency": {
+                "mode": "alpha"
+              }
+            },
+            {
+              "id": "v109-scar-throw-forward-left-isolated-3",
+              "src": "/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-3-v109.png",
+              "width": 1536,
+              "height": 1024,
+              "status": "validated",
+              "transparency": {
+                "mode": "alpha"
+              }
+            },
+            {
+              "id": "v109-scar-throw-forward-left-isolated-4",
+              "src": "/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-4-v109.png",
+              "width": 1536,
+              "height": 1024,
+              "status": "validated",
+              "transparency": {
+                "mode": "alpha"
+              }
+            },
+            {
+              "id": "v109-scar-throw-forward-left-isolated-2-gutter-r1",
+              "src": "/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-2-gutter-r1-v109.png",
+              "width": 1536,
+              "height": 1024,
+              "status": "validated",
+              "transparency": {
+                "mode": "alpha"
+              }
+            },
+            {
+              "id": "v109-scar-throw-forward-left-isolated-5-gutter-r1",
+              "src": "/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-5-gutter-r1-v109.png",
+              "width": 1536,
+              "height": 1024,
+              "status": "validated",
+              "transparency": {
+                "mode": "alpha"
+              }
+            }
+          ],
+          "clips": [
+            {
+              "id": "workbook.M_F003_TH_F",
+              "facing": "left",
+              "status": "validated",
+              "loop": false,
+              "ticksPerSecond": 60,
+              "frames": [
+                {
+                  "pageId": "v109-scar-throw-forward-left-isolated-0",
+                  "rect": [
+                    229,
+                    1,
+                    1005,
+                    1016
+                  ],
+                  "pivot": [
+                    353.491,
+                    1010
+                  ],
+                  "durationTicks": 4
+                },
+                {
+                  "pageId": "v109-scar-throw-forward-left-isolated-1",
+                  "rect": [
+                    318,
+                    6,
+                    961,
+                    975
+                  ],
+                  "pivot": [
+                    422.917,
+                    969
+                  ],
+                  "durationTicks": 4
+                },
+                {
+                  "pageId": "v109-scar-throw-forward-left-isolated-2-gutter-r1",
+                  "rect": [
+                    336,
+                    12,
+                    947,
+                    952
+                  ],
+                  "pivot": [
+                    418.854,
+                    948
+                  ],
+                  "durationTicks": 1
+                },
+                {
+                  "pageId": "v109-scar-throw-forward-left-isolated-3",
+                  "rect": [
+                    15,
+                    8,
+                    1282,
+                    1001
+                  ],
+                  "pivot": [
+                    502.734,
+                    996
+                  ],
+                  "durationTicks": 2
+                },
+                {
+                  "pageId": "v109-scar-throw-forward-left-isolated-4",
+                  "rect": [
+                    154,
+                    8,
+                    1213,
+                    1007
+                  ],
+                  "pivot": [
+                    473.109,
+                    1001
+                  ],
+                  "durationTicks": 15
+                },
+                {
+                  "pageId": "v109-scar-throw-forward-left-isolated-5-gutter-r1",
+                  "rect": [
+                    361,
+                    37,
+                    801,
+                    906
+                  ],
+                  "pivot": [
+                    278.851,
+                    901
+                  ],
+                  "durationTicks": 15
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fighterId": "feral-hunter",
+      "role": "victim",
+      "facing": "right",
+      "sources": [
+        {
+          "pageId": "v109-feral-throw-victim-right",
+          "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-right-v109.png",
+          "sha256": "3039f5ff15c73a5a6ef4b6054d3b949b22e99141268bcb5314984a652bdc331a",
+          "bytes": 2236163,
+          "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-victim-right.json"
+        },
+        {
+          "pageId": "v109-feral-throw-victim-right-isolated-3",
+          "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-right-isolated-3-v109.png",
+          "sha256": "b8ab2d58ffaf3f47853f01ef4a0e36104c6e6a0cfb1462b4d0155365ebb74d2a",
+          "bytes": 1807014,
+          "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-victim-right-isolated-3.json"
+        },
+        {
+          "pageId": "v109-feral-throw-victim-right-isolated-4",
+          "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-right-isolated-4-v109.png",
+          "sha256": "f3b14134eaa1ba660342d52de1d84925f5888657d9c14c7c53ecb8647158d4f8",
+          "bytes": 1442943,
+          "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-victim-right-isolated-4.json"
+        }
+      ],
+      "review": {
+        "status": "validated",
+        "scope": "Independent native BODY review: unvaried Feral/Scar forward throw only, with separate attacker/victim drawings and independently drawn orientations. Runtime body scale and partner contact are calibrated in the actual renderer.",
+        "notes": "Sources personally reviewed in visual-review.json and visual-review-gutters.json. All 48 native UV regions have strictly transparent borders, preserving original page pixels and native anchors. No reflection, pose interpolation, composite mannequin crop, PNG edit or decoded-pixel filtering. Source completion and other partner/costume requirements remain open. Grounded attacker poses and captured/landing/rising victim poses use the measured alpha128 support edge as their floor pivot. Loaded/flight victims preserve the authored airborne anchor; page anatomical scale remains uniform."
+      },
+      "definition": {
+        "fighterId": "feral-hunter",
+        "bodyHeightPx": 436,
+        "pageBodyHeightPx": {
+          "v109-feral-throw-victim-right": 436.0,
+          "v109-feral-throw-victim-right-isolated-3": 1021.933,
+          "v109-feral-throw-victim-right-isolated-4": 975.021
+        },
+        "visibleFrameBounds": [
+          {
+            "pageId": "v109-feral-throw-victim-right",
+            "rect": [
+              84,
+              30,
+              387,
+              469
+            ],
+            "visibleRect": [
+              94,
+              53,
+              363,
+              437
+            ]
+          },
+          {
+            "pageId": "v109-feral-throw-victim-right",
+            "rect": [
+              580,
+              92,
+              387,
+              407
+            ],
+            "visibleRect": [
+              586,
+              98,
+              364,
+              393
+            ]
+          },
+          {
+            "pageId": "v109-feral-throw-victim-right",
+            "rect": [
+              1148,
+              31,
+              312,
+              407
+            ],
+            "visibleRect": [
+              1157,
+              45,
+              300,
+              390
+            ]
+          },
+          {
+            "pageId": "v109-feral-throw-victim-right-isolated-3",
+            "rect": [
+              54,
+              206,
+              1469,
+              667
+            ],
+            "visibleRect": [
+              59,
+              210,
+              1461,
+              663
+            ]
+          },
+          {
+            "pageId": "v109-feral-throw-victim-right-isolated-4",
+            "rect": [
+              63,
+              268,
+              1360,
+              469
+            ],
+            "visibleRect": [
+              66,
+              271,
+              1354,
+              464
+            ]
+          },
+          {
+            "pageId": "v109-feral-throw-victim-right",
+            "rect": [
+              1135,
+              586,
+              384,
+              369
+            ],
+            "visibleRect": [
+              1143,
+              602,
+              358,
+              337
+            ]
+          }
+        ],
+        "atlas": {
+          "schemaVersion": 1,
+          "id": "feral-hunter-forward-throw-victim-right-v109",
+          "characterId": "feral-hunter",
+          "variantId": "BODY",
+          "sourceKind": "authored-frames",
+          "status": "validated",
+          "pages": [
+            {
+              "id": "v109-feral-throw-victim-right",
+              "src": "/game/sprites/v109/pit/feral-hunter/feral-throw-victim-right-v109.png",
+              "width": 1536,
+              "height": 1024,
+              "status": "validated",
+              "transparency": {
+                "mode": "alpha"
+              }
+            },
+            {
+              "id": "v109-feral-throw-victim-right-isolated-3",
+              "src": "/game/sprites/v109/pit/feral-hunter/feral-throw-victim-right-isolated-3-v109.png",
+              "width": 1536,
+              "height": 1024,
+              "status": "validated",
+              "transparency": {
+                "mode": "alpha"
+              }
+            },
+            {
+              "id": "v109-feral-throw-victim-right-isolated-4",
+              "src": "/game/sprites/v109/pit/feral-hunter/feral-throw-victim-right-isolated-4-v109.png",
+              "width": 1536,
+              "height": 1024,
+              "status": "validated",
+              "transparency": {
+                "mode": "alpha"
+              }
+            }
+          ],
+          "clips": [
+            {
+              "id": "workbook.forward-throw-v109.victim",
+              "facing": "right",
+              "status": "validated",
+              "loop": false,
+              "ticksPerSecond": 60,
+              "frames": [
+                {
+                  "pageId": "v109-feral-throw-victim-right",
+                  "rect": [
+                    84,
+                    30,
+                    387,
+                    469
+                  ],
+                  "pivot": [
+                    172.0,
+                    458
+                  ],
+                  "durationTicks": 4
+                },
+                {
+                  "pageId": "v109-feral-throw-victim-right",
+                  "rect": [
+                    580,
+                    92,
+                    387,
+                    407
+                  ],
+                  "pivot": [
+                    188.0,
+                    397
+                  ],
+                  "durationTicks": 4
+                },
+                {
+                  "pageId": "v109-feral-throw-victim-right",
+                  "rect": [
+                    1148,
+                    31,
+                    312,
+                    407
+                  ],
+                  "pivot": [
+                    132.0,
+                    469.0
+                  ],
+                  "durationTicks": 2
+                },
+                {
+                  "pageId": "v109-feral-throw-victim-right-isolated-3",
+                  "rect": [
+                    54,
+                    206,
+                    1469,
+                    667
+                  ],
+                  "pivot": [
+                    540.458,
+                    951.954
+                  ],
+                  "durationTicks": 9
+                },
+                {
+                  "pageId": "v109-feral-throw-victim-right-isolated-4",
+                  "rect": [
+                    63,
+                    268,
+                    1360,
+                    469
+                  ],
+                  "pivot": [
+                    598.994,
+                    461
+                  ],
+                  "durationTicks": 24
+                },
+                {
+                  "pageId": "v109-feral-throw-victim-right",
+                  "rect": [
+                    1135,
+                    586,
+                    384,
+                    369
+                  ],
+                  "pivot": [
+                    145.0,
+                    352
+                  ],
+                  "durationTicks": 18
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fighterId": "feral-hunter",
+      "role": "victim",
+      "facing": "left",
+      "sources": [
+        {
+          "pageId": "v109-feral-throw-victim-left",
+          "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-left-v109.png",
+          "sha256": "9203da249bb1756a545758125a88c63f66f8945dbf5a1e883b53532a4a51bfed",
+          "bytes": 2261067,
+          "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-victim-left.json"
+        },
+        {
+          "pageId": "v109-feral-throw-victim-left-isolated-3",
+          "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-left-isolated-3-v109.png",
+          "sha256": "8b91bf81569d5da2f5107c3515272ada6d19ad0acaefcdc5234626dc4a11c8ad",
+          "bytes": 2201016,
+          "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-victim-left-isolated-3.json"
+        },
+        {
+          "pageId": "v109-feral-throw-victim-left-isolated-4-gutter-r1",
+          "path": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-left-isolated-4-gutter-r1-v109.png",
+          "sha256": "3ee1f59c32a1204957aac968b0c22f74cfde5297393985d953c1cf1de65f7c98",
+          "bytes": 1600619,
+          "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-victim-left-isolated-4-gutter-r1.json"
+        }
+      ],
+      "review": {
+        "status": "validated",
+        "scope": "Independent native BODY review: unvaried Feral/Scar forward throw only, with separate attacker/victim drawings and independently drawn orientations. Runtime body scale and partner contact are calibrated in the actual renderer.",
+        "notes": "Sources personally reviewed in visual-review.json and visual-review-gutters.json. All 48 native UV regions have strictly transparent borders, preserving original page pixels and native anchors. No reflection, pose interpolation, composite mannequin crop, PNG edit or decoded-pixel filtering. Source completion and other partner/costume requirements remain open. Grounded attacker poses and captured/landing/rising victim poses use the measured alpha128 support edge as their floor pivot. Loaded/flight victims preserve the authored airborne anchor; page anatomical scale remains uniform."
+      },
+      "definition": {
+        "fighterId": "feral-hunter",
+        "bodyHeightPx": 466,
+        "pageBodyHeightPx": {
+          "v109-feral-throw-victim-left": 466.0,
+          "v109-feral-throw-victim-left-isolated-3": 1300.428,
+          "v109-feral-throw-victim-left-isolated-4-gutter-r1": 1104.45
+        },
+        "visibleFrameBounds": [
+          {
+            "pageId": "v109-feral-throw-victim-left",
+            "rect": [
+              74,
+              32,
+              377,
+              485
+            ],
+            "visibleRect": [
+              95,
+              47,
+              339,
+              467
+            ]
+          },
+          {
+            "pageId": "v109-feral-throw-victim-left",
+            "rect": [
+              588,
+              98,
+              405,
+              419
+            ],
+            "visibleRect": [
+              593,
+              110,
+              394,
+              404
+            ]
+          },
+          {
+            "pageId": "v109-feral-throw-victim-left",
+            "rect": [
+              1070,
+              70,
+              403,
+              549
+            ],
+            "visibleRect": [
+              1083,
+              114,
+              379,
+              337
+            ]
+          },
+          {
+            "pageId": "v109-feral-throw-victim-left-isolated-3",
+            "rect": [
+              112,
+              90,
+              1391,
+              870
+            ],
+            "visibleRect": [
+              120,
+              95,
+              1374,
+              860
+            ]
+          },
+          {
+            "pageId": "v109-feral-throw-victim-left-isolated-4-gutter-r1",
+            "rect": [
+              44,
+              268,
+              1445,
+              531
+            ],
+            "visibleRect": [
+              47,
+              273,
+              1439,
+              484
+            ]
+          },
+          {
+            "pageId": "v109-feral-throw-victim-left",
+            "rect": [
+              1104,
+              632,
+              422,
+              347
+            ],
+            "visibleRect": [
+              1111,
+              649,
+              412,
+              328
+            ]
+          }
+        ],
+        "atlas": {
+          "schemaVersion": 1,
+          "id": "feral-hunter-forward-throw-victim-left-v109",
+          "characterId": "feral-hunter",
+          "variantId": "BODY",
+          "sourceKind": "authored-frames",
+          "status": "validated",
+          "pages": [
+            {
+              "id": "v109-feral-throw-victim-left",
+              "src": "/game/sprites/v109/pit/feral-hunter/feral-throw-victim-left-v109.png",
+              "width": 1536,
+              "height": 1024,
+              "status": "validated",
+              "transparency": {
+                "mode": "alpha"
+              }
+            },
+            {
+              "id": "v109-feral-throw-victim-left-isolated-3",
+              "src": "/game/sprites/v109/pit/feral-hunter/feral-throw-victim-left-isolated-3-v109.png",
+              "width": 1536,
+              "height": 1024,
+              "status": "validated",
+              "transparency": {
+                "mode": "alpha"
+              }
+            },
+            {
+              "id": "v109-feral-throw-victim-left-isolated-4-gutter-r1",
+              "src": "/game/sprites/v109/pit/feral-hunter/feral-throw-victim-left-isolated-4-gutter-r1-v109.png",
+              "width": 1536,
+              "height": 1024,
+              "status": "validated",
+              "transparency": {
+                "mode": "alpha"
+              }
+            }
+          ],
+          "clips": [
+            {
+              "id": "workbook.forward-throw-v109.victim",
+              "facing": "left",
+              "status": "validated",
+              "loop": false,
+              "ticksPerSecond": 60,
+              "frames": [
+                {
+                  "pageId": "v109-feral-throw-victim-left",
+                  "rect": [
+                    74,
+                    32,
+                    377,
+                    485
+                  ],
+                  "pivot": [
+                    182.0,
+                    480
+                  ],
+                  "durationTicks": 4
+                },
+                {
+                  "pageId": "v109-feral-throw-victim-left",
+                  "rect": [
+                    588,
+                    98,
+                    405,
+                    419
+                  ],
+                  "pivot": [
+                    180.0,
+                    415
+                  ],
+                  "durationTicks": 4
+                },
+                {
+                  "pageId": "v109-feral-throw-victim-left",
+                  "rect": [
+                    1070,
+                    70,
+                    403,
+                    549
+                  ],
+                  "pivot": [
+                    210.0,
+                    430.0
+                  ],
+                  "durationTicks": 2
+                },
+                {
+                  "pageId": "v109-feral-throw-victim-left-isolated-3",
+                  "rect": [
+                    112,
+                    90,
+                    1391,
+                    870
+                  ],
+                  "pivot": [
+                    627.525,
+                    1165.387
+                  ],
+                  "durationTicks": 9
+                },
+                {
+                  "pageId": "v109-feral-throw-victim-left-isolated-4-gutter-r1",
+                  "rect": [
+                    44,
+                    268,
+                    1445,
+                    531
+                  ],
+                  "pivot": [
+                    687.634,
+                    486
+                  ],
+                  "durationTicks": 24
+                },
+                {
+                  "pageId": "v109-feral-throw-victim-left",
+                  "rect": [
+                    1104,
+                    632,
+                    422,
+                    347
+                  ],
+                  "pivot": [
+                    176.0,
+                    342
+                  ],
+                  "durationTicks": 18
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fighterId": "scar",
+      "role": "victim",
+      "facing": "right",
+      "sources": [
+        {
+          "pageId": "v109-scar-throw-victim-right",
+          "path": "public/game/sprites/v109/pit/scar/scar-throw-victim-right-v109.png",
+          "sha256": "24cdb66b63f585ac952d035a27006805d3b04136448fb3c22f4a9b3d6c7dfcf9",
+          "bytes": 2164133,
+          "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-right.json"
+        },
+        {
+          "pageId": "v109-scar-throw-victim-right-isolated-3",
+          "path": "public/game/sprites/v109/pit/scar/scar-throw-victim-right-isolated-3-v109.png",
+          "sha256": "bd1ca19aecfc3e6c1579838d826461dad56b885c167644452c91a276cd54bd2a",
+          "bytes": 1876383,
+          "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-right-isolated-3.json"
+        },
+        {
+          "pageId": "v109-scar-throw-victim-right-isolated-4",
+          "path": "public/game/sprites/v109/pit/scar/scar-throw-victim-right-isolated-4-v109.png",
+          "sha256": "07f216fb8e1145169bb377fc5f11bc6da8193848a962ba23a8aea6f34c07cff6",
+          "bytes": 1377113,
+          "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-right-isolated-4.json"
+        },
+        {
+          "pageId": "v109-scar-throw-victim-right-isolated-5",
+          "path": "public/game/sprites/v109/pit/scar/scar-throw-victim-right-isolated-5-v109.png",
+          "sha256": "2105306a7d2462540ba864498659c44f193983a49daac0e2a68c2b75053157e8",
+          "bytes": 1516350,
+          "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-right-isolated-5.json"
+        },
+        {
+          "pageId": "v109-scar-throw-victim-right-isolated-2-gutter-r1",
+          "path": "public/game/sprites/v109/pit/scar/scar-throw-victim-right-isolated-2-gutter-r1-v109.png",
+          "sha256": "a83f6621c6312f4080cd428358e89369d5c9f3e257742bbb8513b9c2dba2856e",
+          "bytes": 1458006,
+          "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-right-isolated-2-gutter-r1.json"
+        }
+      ],
+      "review": {
+        "status": "validated",
+        "scope": "Independent native BODY review: unvaried Feral/Scar forward throw only, with separate attacker/victim drawings and independently drawn orientations. Runtime body scale and partner contact are calibrated in the actual renderer.",
+        "notes": "Sources personally reviewed in visual-review.json and visual-review-gutters.json. All 48 native UV regions have strictly transparent borders, preserving original page pixels and native anchors. No reflection, pose interpolation, composite mannequin crop, PNG edit or decoded-pixel filtering. Source completion and other partner/costume requirements remain open. Grounded attacker poses and captured/landing/rising victim poses use the measured alpha128 support edge as their floor pivot. Loaded/flight victims preserve the authored airborne anchor; page anatomical scale remains uniform."
+      },
+      "definition": {
+        "fighterId": "scar",
+        "bodyHeightPx": 402,
+        "pageBodyHeightPx": {
+          "v109-scar-throw-victim-right": 402.0,
+          "v109-scar-throw-victim-right-isolated-3": 1005.181,
+          "v109-scar-throw-victim-right-isolated-4": 922.753,
+          "v109-scar-throw-victim-right-isolated-5": 917.003,
+          "v109-scar-throw-victim-right-isolated-2-gutter-r1": 901.811
+        },
+        "visibleFrameBounds": [
+          {
+            "pageId": "v109-scar-throw-victim-right",
+            "rect": [
+              62,
+              9,
+              373,
+              490
+            ],
+            "visibleRect": [
+              70,
+              12,
+              362,
+              483
+            ]
+          },
+          {
+            "pageId": "v109-scar-throw-victim-right",
+            "rect": [
+              590,
+              16,
+              373,
+              484
+            ],
+            "visibleRect": [
+              599,
+              18,
+              359,
+              477
+            ]
+          },
+          {
+            "pageId": "v109-scar-throw-victim-right-isolated-2-gutter-r1",
+            "rect": [
+              267,
+              81,
+              1024,
+              825
+            ],
+            "visibleRect": [
+              271,
+              84,
+              1016,
+              820
+            ]
+          },
+          {
+            "pageId": "v109-scar-throw-victim-right-isolated-3",
+            "rect": [
+              60,
+              134,
+              1443,
+              765
+            ],
+            "visibleRect": [
+              63,
+              149,
+              1437,
+              748
+            ]
+          },
+          {
+            "pageId": "v109-scar-throw-victim-right-isolated-4",
+            "rect": [
+              21,
+              361,
+              1496,
+              382
+            ],
+            "visibleRect": [
+              25,
+              365,
+              1490,
+              378
+            ]
+          },
+          {
+            "pageId": "v109-scar-throw-victim-right-isolated-5",
+            "rect": [
+              481,
+              9,
+              830,
+              985
+            ],
+            "visibleRect": [
+              484,
+              13,
+              823,
+              979
+            ]
+          }
+        ],
+        "atlas": {
+          "schemaVersion": 1,
+          "id": "scar-forward-throw-victim-right-v109",
+          "characterId": "scar",
+          "variantId": "BODY",
+          "sourceKind": "authored-frames",
+          "status": "validated",
+          "pages": [
+            {
+              "id": "v109-scar-throw-victim-right",
+              "src": "/game/sprites/v109/pit/scar/scar-throw-victim-right-v109.png",
+              "width": 1536,
+              "height": 1024,
+              "status": "validated",
+              "transparency": {
+                "mode": "alpha"
+              }
+            },
+            {
+              "id": "v109-scar-throw-victim-right-isolated-3",
+              "src": "/game/sprites/v109/pit/scar/scar-throw-victim-right-isolated-3-v109.png",
+              "width": 1536,
+              "height": 1024,
+              "status": "validated",
+              "transparency": {
+                "mode": "alpha"
+              }
+            },
+            {
+              "id": "v109-scar-throw-victim-right-isolated-4",
+              "src": "/game/sprites/v109/pit/scar/scar-throw-victim-right-isolated-4-v109.png",
+              "width": 1536,
+              "height": 1024,
+              "status": "validated",
+              "transparency": {
+                "mode": "alpha"
+              }
+            },
+            {
+              "id": "v109-scar-throw-victim-right-isolated-5",
+              "src": "/game/sprites/v109/pit/scar/scar-throw-victim-right-isolated-5-v109.png",
+              "width": 1536,
+              "height": 1024,
+              "status": "validated",
+              "transparency": {
+                "mode": "alpha"
+              }
+            },
+            {
+              "id": "v109-scar-throw-victim-right-isolated-2-gutter-r1",
+              "src": "/game/sprites/v109/pit/scar/scar-throw-victim-right-isolated-2-gutter-r1-v109.png",
+              "width": 1536,
+              "height": 1024,
+              "status": "validated",
+              "transparency": {
+                "mode": "alpha"
+              }
+            }
+          ],
+          "clips": [
+            {
+              "id": "workbook.forward-throw-v109.victim",
+              "facing": "right",
+              "status": "validated",
+              "loop": false,
+              "ticksPerSecond": 60,
+              "frames": [
+                {
+                  "pageId": "v109-scar-throw-victim-right",
+                  "rect": [
+                    62,
+                    9,
+                    373,
+                    490
+                  ],
+                  "pivot": [
+                    194.0,
+                    484
+                  ],
+                  "durationTicks": 4
+                },
+                {
+                  "pageId": "v109-scar-throw-victim-right",
+                  "rect": [
+                    590,
+                    16,
+                    373,
+                    484
+                  ],
+                  "pivot": [
+                    178.0,
+                    477
+                  ],
+                  "durationTicks": 4
+                },
+                {
+                  "pageId": "v109-scar-throw-victim-right-isolated-2-gutter-r1",
+                  "rect": [
+                    267,
+                    81,
+                    1024,
+                    825
+                  ],
+                  "pivot": [
+                    556.366,
+                    940.895
+                  ],
+                  "durationTicks": 2
+                },
+                {
+                  "pageId": "v109-scar-throw-victim-right-isolated-3",
+                  "rect": [
+                    60,
+                    134,
+                    1443,
+                    765
+                  ],
+                  "pivot": [
+                    562.221,
+                    1117.064
+                  ],
+                  "durationTicks": 9
+                },
+                {
+                  "pageId": "v109-scar-throw-victim-right-isolated-4",
+                  "rect": [
+                    21,
+                    361,
+                    1496,
+                    382
+                  ],
+                  "pivot": [
+                    526.993,
+                    375
+                  ],
+                  "durationTicks": 24
+                },
+                {
+                  "pageId": "v109-scar-throw-victim-right-isolated-5",
+                  "rect": [
+                    481,
+                    9,
+                    830,
+                    985
+                  ],
+                  "pivot": [
+                    286.258,
+                    981
+                  ],
+                  "durationTicks": 18
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fighterId": "scar",
+      "role": "victim",
+      "facing": "left",
+      "sources": [
+        {
+          "pageId": "v109-scar-throw-victim-left",
+          "path": "public/game/sprites/v109/pit/scar/scar-throw-victim-left-v109.png",
+          "sha256": "46adfc94048c75e60f01590aa7619cacc6c934f20489c7003d24209477af0429",
+          "bytes": 2341573,
+          "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-left.json"
+        },
+        {
+          "pageId": "v109-scar-throw-victim-left-isolated-3",
+          "path": "public/game/sprites/v109/pit/scar/scar-throw-victim-left-isolated-3-v109.png",
+          "sha256": "89fa6f3142850eccf99932528a23ae67b0f115de00dce9db8ad1da124b2baf1a",
+          "bytes": 2110431,
+          "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-left-isolated-3.json"
+        },
+        {
+          "pageId": "v109-scar-throw-victim-left-isolated-4-r2",
+          "path": "public/game/sprites/v109/pit/scar/scar-throw-victim-left-isolated-4-r2-v109.png",
+          "sha256": "f102c0e286a3d566854b4581757aadf46728f64e548e14dfceabb7e6dd2dfca5",
+          "bytes": 1194875,
+          "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-left-isolated-4-r2.json"
+        },
+        {
+          "pageId": "v109-scar-throw-victim-left-isolated-2-gutter-r1",
+          "path": "public/game/sprites/v109/pit/scar/scar-throw-victim-left-isolated-2-gutter-r1-v109.png",
+          "sha256": "b0811cc9418578e58157139809783f127ed46322ea9d705325b34e908958a6ce",
+          "bytes": 1518305,
+          "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-left-isolated-2-gutter-r1.json"
+        },
+        {
+          "pageId": "v109-scar-throw-victim-left-isolated-5-gutter-r1",
+          "path": "public/game/sprites/v109/pit/scar/scar-throw-victim-left-isolated-5-gutter-r1-v109.png",
+          "sha256": "34fa8678d6d979ffc80200eecff09708baf3cca3dd07f54d094d6887fd20a97c",
+          "bytes": 1499671,
+          "receiptPath": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-left-isolated-5-gutter-r1.json"
+        }
+      ],
+      "review": {
+        "status": "validated",
+        "scope": "Independent native BODY review: unvaried Feral/Scar forward throw only, with separate attacker/victim drawings and independently drawn orientations. Runtime body scale and partner contact are calibrated in the actual renderer.",
+        "notes": "Sources personally reviewed in visual-review.json and visual-review-gutters.json. All 48 native UV regions have strictly transparent borders, preserving original page pixels and native anchors. No reflection, pose interpolation, composite mannequin crop, PNG edit or decoded-pixel filtering. Source completion and other partner/costume requirements remain open. Grounded attacker poses and captured/landing/rising victim poses use the measured alpha128 support edge as their floor pivot. Loaded/flight victims preserve the authored airborne anchor; page anatomical scale remains uniform."
+      },
+      "definition": {
+        "fighterId": "scar",
+        "bodyHeightPx": 416,
+        "pageBodyHeightPx": {
+          "v109-scar-throw-victim-left": 416.0,
+          "v109-scar-throw-victim-left-isolated-3": 1070.707,
+          "v109-scar-throw-victim-left-isolated-4-r2": 1113.649,
+          "v109-scar-throw-victim-left-isolated-2-gutter-r1": 832.532,
+          "v109-scar-throw-victim-left-isolated-5-gutter-r1": 838.163
+        },
+        "visibleFrameBounds": [
+          {
+            "pageId": "v109-scar-throw-victim-left",
+            "rect": [
+              46,
+              9,
+              435,
+              508
+            ],
+            "visibleRect": [
+              54,
+              15,
+              422,
+              497
+            ]
+          },
+          {
+            "pageId": "v109-scar-throw-victim-left",
+            "rect": [
+              554,
+              13,
+              407,
+              506
+            ],
+            "visibleRect": [
+              560,
+              17,
+              393,
+              497
+            ]
+          },
+          {
+            "pageId": "v109-scar-throw-victim-left-isolated-2-gutter-r1",
+            "rect": [
+              262,
+              84,
+              1029,
+              813
+            ],
+            "visibleRect": [
+              268,
+              87,
+              1020,
+              807
+            ]
+          },
+          {
+            "pageId": "v109-scar-throw-victim-left-isolated-3",
+            "rect": [
+              26,
+              12,
+              1356,
+              971
+            ],
+            "visibleRect": [
+              30,
+              15,
+              1350,
+              950
+            ]
+          },
+          {
+            "pageId": "v109-scar-throw-victim-left-isolated-4-r2",
+            "rect": [
+              81,
+              159,
+              1615,
+              648
+            ],
+            "visibleRect": [
+              86,
+              165,
+              1607,
+              632
+            ]
+          },
+          {
+            "pageId": "v109-scar-throw-victim-left-isolated-5-gutter-r1",
+            "rect": [
+              357,
+              45,
+              891,
+              862
+            ],
+            "visibleRect": [
+              360,
+              48,
+              885,
+              856
+            ]
+          }
+        ],
+        "atlas": {
+          "schemaVersion": 1,
+          "id": "scar-forward-throw-victim-left-v109",
+          "characterId": "scar",
+          "variantId": "BODY",
+          "sourceKind": "authored-frames",
+          "status": "validated",
+          "pages": [
+            {
+              "id": "v109-scar-throw-victim-left",
+              "src": "/game/sprites/v109/pit/scar/scar-throw-victim-left-v109.png",
+              "width": 1536,
+              "height": 1024,
+              "status": "validated",
+              "transparency": {
+                "mode": "alpha"
+              }
+            },
+            {
+              "id": "v109-scar-throw-victim-left-isolated-3",
+              "src": "/game/sprites/v109/pit/scar/scar-throw-victim-left-isolated-3-v109.png",
+              "width": 1536,
+              "height": 1024,
+              "status": "validated",
+              "transparency": {
+                "mode": "alpha"
+              }
+            },
+            {
+              "id": "v109-scar-throw-victim-left-isolated-4-r2",
+              "src": "/game/sprites/v109/pit/scar/scar-throw-victim-left-isolated-4-r2-v109.png",
+              "width": 1774,
+              "height": 887,
+              "status": "validated",
+              "transparency": {
+                "mode": "alpha"
+              }
+            },
+            {
+              "id": "v109-scar-throw-victim-left-isolated-2-gutter-r1",
+              "src": "/game/sprites/v109/pit/scar/scar-throw-victim-left-isolated-2-gutter-r1-v109.png",
+              "width": 1536,
+              "height": 1024,
+              "status": "validated",
+              "transparency": {
+                "mode": "alpha"
+              }
+            },
+            {
+              "id": "v109-scar-throw-victim-left-isolated-5-gutter-r1",
+              "src": "/game/sprites/v109/pit/scar/scar-throw-victim-left-isolated-5-gutter-r1-v109.png",
+              "width": 1536,
+              "height": 1024,
+              "status": "validated",
+              "transparency": {
+                "mode": "alpha"
+              }
+            }
+          ],
+          "clips": [
+            {
+              "id": "workbook.forward-throw-v109.victim",
+              "facing": "left",
+              "status": "validated",
+              "loop": false,
+              "ticksPerSecond": 60,
+              "frames": [
+                {
+                  "pageId": "v109-scar-throw-victim-left",
+                  "rect": [
+                    46,
+                    9,
+                    435,
+                    508
+                  ],
+                  "pivot": [
+                    210.0,
+                    501
+                  ],
+                  "durationTicks": 4
+                },
+                {
+                  "pageId": "v109-scar-throw-victim-left",
+                  "rect": [
+                    554,
+                    13,
+                    407,
+                    506
+                  ],
+                  "pivot": [
+                    214.0,
+                    499
+                  ],
+                  "durationTicks": 4
+                },
+                {
+                  "pageId": "v109-scar-throw-victim-left-isolated-2-gutter-r1",
+                  "rect": [
+                    262,
+                    84,
+                    1029,
+                    813
+                  ],
+                  "pivot": [
+                    545.519,
+                    839.019
+                  ],
+                  "durationTicks": 2
+                },
+                {
+                  "pageId": "v109-scar-throw-victim-left-isolated-3",
+                  "rect": [
+                    26,
+                    12,
+                    1356,
+                    971
+                  ],
+                  "pivot": [
+                    632.171,
+                    1168.201
+                  ],
+                  "durationTicks": 9
+                },
+                {
+                  "pageId": "v109-scar-throw-victim-left-isolated-4-r2",
+                  "rect": [
+                    81,
+                    159,
+                    1615,
+                    648
+                  ],
+                  "pivot": [
+                    720.996,
+                    636
+                  ],
+                  "durationTicks": 24
+                },
+                {
+                  "pageId": "v109-scar-throw-victim-left-isolated-5-gutter-r1",
+                  "rect": [
+                    357,
+                    45,
+                    891,
+                    862
+                  ],
+                  "pivot": [
+                    376.496,
+                    856
+                  ],
+                  "durationTicks": 18
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "correctionDeliveryPath": "docs/suivi-production/v109-pit-forward/native-gutter-delivery.json",
+  "nativeUvReviewPath": "docs/suivi-production/v109-pit-forward/native-uv-border-review-final.json",
+  "correctionReviewPath": "docs/suivi-production/v109-pit-forward/visual-review-gutters.json"
+}

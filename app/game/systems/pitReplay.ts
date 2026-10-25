@@ -1,4 +1,5 @@
-import {PIT_WORKBOOK_COMBAT_RECIPE_V107, PIT_WORKBOOK_COMBAT_STATE_VERSION_V107, isPitWorkbookRecipeV107 as isPitWorkbookRecipe, isPitWorkbookActionInputV107} from './pitWorkbookCombatV107';
+import {PIT_WORKBOOK_COMBAT_RECIPE_V109, PIT_WORKBOOK_COMBAT_STATE_VERSION_V109, isPitWorkbookRecipeV109 as isPitWorkbookRecipe} from './pitWorkbookCombatV109';
+import {PIT_WORKBOOK_COMBAT_RECIPE_V107, PIT_WORKBOOK_COMBAT_STATE_VERSION_V107, isPitWorkbookActionInputV107} from './pitWorkbookCombatV107';
 import {PIT_WORKBOOK_COMBAT_RECIPE_V106, PIT_WORKBOOK_COMBAT_STATE_VERSION_V106, isPitWorkbookActionInputV106} from './pitWorkbookCombatV106';
 import {PIT_WORKBOOK_COMBAT_RECIPE_V105, PIT_WORKBOOK_COMBAT_STATE_VERSION_V105} from './pitWorkbookCombatV105';
 import { PIT_WORKBOOK_NORMALS_RECIPE_V104, PIT_WORKBOOK_NORMALS_STATE_VERSION_V104, ownsPitWorkbookNormalsV104 } from './pitWorkbookNormalsV104';
@@ -33,7 +34,7 @@ import {
 } from "./pitCombat";
 
 export const PIT_REPLAY_VERSION = 3;
-export const PIT_REPLAY_MAX_ENGINE_VERSION = PIT_WORKBOOK_COMBAT_STATE_VERSION_V107;
+export const PIT_REPLAY_MAX_ENGINE_VERSION = PIT_WORKBOOK_COMBAT_STATE_VERSION_V109;
 export const PIT_REPLAY_ENCODING = "input-rle-v3";
 export const PIT_REPLAY_MAX_SERIALIZED_BYTES = 64 * 1024;
 export const PIT_REPLAY_MAX_TICKS = PIT_TICK_RATE * 60 * 10;
@@ -129,7 +130,7 @@ export interface PitReplayMetadata {
 export interface PitReplay {
   houndVariantId?: PitHoundVariantId;
   version: typeof PIT_REPLAY_VERSION;
-  engineVersion: 4 | 5 | 6 | 7 | 8 | 9 | 10 | typeof PIT_STATE_VERSION | typeof PIT_WORKBOOK_NORMALS_STATE_VERSION_V104 | typeof PIT_WORKBOOK_COMBAT_STATE_VERSION_V105 | typeof PIT_WORKBOOK_COMBAT_STATE_VERSION_V106 | typeof PIT_WORKBOOK_COMBAT_STATE_VERSION_V107;
+  engineVersion: 4 | 5 | 6 | 7 | 8 | 9 | 10 | typeof PIT_STATE_VERSION | typeof PIT_WORKBOOK_NORMALS_STATE_VERSION_V104 | typeof PIT_WORKBOOK_COMBAT_STATE_VERSION_V105 | typeof PIT_WORKBOOK_COMBAT_STATE_VERSION_V106 | typeof PIT_WORKBOOK_COMBAT_STATE_VERSION_V107 | typeof PIT_WORKBOOK_COMBAT_STATE_VERSION_V109;
   tickRate: typeof PIT_TICK_RATE;
   arenaId: PitArenaId;
   encoding: typeof PIT_REPLAY_ENCODING;
@@ -247,7 +248,7 @@ function replayRejectionCode(value: unknown): PitReplayRejectionCode {
   }
   if (value.version === PIT_REPLAY_VERSION &&
     value.engineVersion !== undefined &&
-    value.engineVersion !== 4 && value.engineVersion !== 5 && value.engineVersion !== 6 && value.engineVersion !== 7 && value.engineVersion !== 8 && value.engineVersion !== 9 && value.engineVersion !== 10 && value.engineVersion !== PIT_STATE_VERSION && value.engineVersion !== PIT_WORKBOOK_NORMALS_STATE_VERSION_V104 && value.engineVersion !== PIT_WORKBOOK_COMBAT_STATE_VERSION_V105 && value.engineVersion !== PIT_WORKBOOK_COMBAT_STATE_VERSION_V106 && value.engineVersion !== PIT_WORKBOOK_COMBAT_STATE_VERSION_V107) {
+    value.engineVersion !== 4 && value.engineVersion !== 5 && value.engineVersion !== 6 && value.engineVersion !== 7 && value.engineVersion !== 8 && value.engineVersion !== 9 && value.engineVersion !== 10 && value.engineVersion !== PIT_STATE_VERSION && value.engineVersion !== PIT_WORKBOOK_NORMALS_STATE_VERSION_V104 && value.engineVersion !== PIT_WORKBOOK_COMBAT_STATE_VERSION_V105 && value.engineVersion !== PIT_WORKBOOK_COMBAT_STATE_VERSION_V106 && value.engineVersion !== PIT_WORKBOOK_COMBAT_STATE_VERSION_V107 && value.engineVersion !== PIT_WORKBOOK_COMBAT_STATE_VERSION_V109) {
     return "incompatible-engine";
   }
   return "invalid-replay";
@@ -263,7 +264,7 @@ function assertInput(input: unknown, engineVersion: number): asserts input is Pi
   for (const key of BOOLEAN_INPUT_KEYS) {
     if (input[key] !== undefined && typeof input[key] !== "boolean") throw replayError();
   }
-  if (input.workbookAction !== undefined && ((engineVersion === PIT_WORKBOOK_COMBAT_STATE_VERSION_V107 ? !isPitWorkbookActionInputV107(input.workbookAction) : engineVersion === PIT_WORKBOOK_COMBAT_STATE_VERSION_V106 ? !isPitWorkbookActionInputV106(input.workbookAction) : engineVersion !== PIT_WORKBOOK_COMBAT_STATE_VERSION_V105 ||
+  if (input.workbookAction !== undefined && (((engineVersion === PIT_WORKBOOK_COMBAT_STATE_VERSION_V107 || engineVersion === PIT_WORKBOOK_COMBAT_STATE_VERSION_V109) ? !isPitWorkbookActionInputV107(input.workbookAction) : engineVersion === PIT_WORKBOOK_COMBAT_STATE_VERSION_V106 ? !isPitWorkbookActionInputV106(input.workbookAction) : engineVersion !== PIT_WORKBOOK_COMBAT_STATE_VERSION_V105 ||
     (input.workbookAction !== 'equipment' && input.workbookAction !== 'contact' && input.workbookAction !== 'counter')) || input.attack !== undefined)) throw replayError();
   if (input.attack !== undefined &&
     (typeof input.attack !== "string" || !(input.attack in ATTACK_CODE))) {
@@ -278,7 +279,7 @@ function validPackedInput(mask: unknown, engineVersion: number = PIT_STATE_VERSI
   if (!Number.isInteger(engineVersion) || engineVersion < 4 || engineVersion > PIT_REPLAY_MAX_ENGINE_VERSION) return false;
   if (!isIntegerBetween(mask, 0, replayInputMask(engineVersion))) return false;
   const attackCode = (mask >> ATTACK_SHIFT) & (engineVersion >= PIT_WORKBOOK_COMBAT_STATE_VERSION_V106 ? 15 : 7);
-  return attackCode <= (engineVersion === PIT_WORKBOOK_COMBAT_STATE_VERSION_V107 ? 12 : engineVersion === PIT_WORKBOOK_COMBAT_STATE_VERSION_V106 ? 10 : engineVersion === PIT_WORKBOOK_COMBAT_STATE_VERSION_V105 ? 7 : 4);
+  return attackCode <= ((engineVersion === PIT_WORKBOOK_COMBAT_STATE_VERSION_V107 || engineVersion === PIT_WORKBOOK_COMBAT_STATE_VERSION_V109) ? 12 : engineVersion === PIT_WORKBOOK_COMBAT_STATE_VERSION_V106 ? 10 : engineVersion === PIT_WORKBOOK_COMBAT_STATE_VERSION_V105 ? 7 : 4);
 }
 export function encodePitReplayInput(input: PitInput = {}, engineVersion: number = PIT_STATE_VERSION): number {
   assertInput(input, engineVersion);
@@ -439,7 +440,7 @@ function normalizeRecordingOptions(options: PitReplayRecordingOptions): Normaliz
 function structuralReplay(value: unknown): PitReplay | null {
   if (!isRecord(value) || !hasOnlyKeys(value, REPLAY_KEYS) ||
     value.version !== PIT_REPLAY_VERSION ||
-    (value.engineVersion !== 4 && value.engineVersion !== 5 && value.engineVersion !== 6 && value.engineVersion !== 7 && value.engineVersion !== 8 && value.engineVersion !== 9 && value.engineVersion !== 10 && value.engineVersion !== PIT_STATE_VERSION && value.engineVersion !== PIT_WORKBOOK_NORMALS_STATE_VERSION_V104 && value.engineVersion !== PIT_WORKBOOK_COMBAT_STATE_VERSION_V105 && value.engineVersion !== PIT_WORKBOOK_COMBAT_STATE_VERSION_V106 && value.engineVersion !== PIT_WORKBOOK_COMBAT_STATE_VERSION_V107) ||
+    (value.engineVersion !== 4 && value.engineVersion !== 5 && value.engineVersion !== 6 && value.engineVersion !== 7 && value.engineVersion !== 8 && value.engineVersion !== 9 && value.engineVersion !== 10 && value.engineVersion !== PIT_STATE_VERSION && value.engineVersion !== PIT_WORKBOOK_NORMALS_STATE_VERSION_V104 && value.engineVersion !== PIT_WORKBOOK_COMBAT_STATE_VERSION_V105 && value.engineVersion !== PIT_WORKBOOK_COMBAT_STATE_VERSION_V106 && value.engineVersion !== PIT_WORKBOOK_COMBAT_STATE_VERSION_V107 && value.engineVersion !== PIT_WORKBOOK_COMBAT_STATE_VERSION_V109) ||
     value.tickRate !== PIT_TICK_RATE ||
     !isArenaId(value.arenaId) ||
     value.encoding !== PIT_REPLAY_ENCODING ||
@@ -451,7 +452,8 @@ function structuralReplay(value: unknown): PitReplay | null {
   if ((value.engineVersion === PIT_WORKBOOK_NORMALS_STATE_VERSION_V104) !== (value.rules.normalMoves === PIT_WORKBOOK_NORMALS_RECIPE_V104) ||
     (value.engineVersion === PIT_WORKBOOK_COMBAT_STATE_VERSION_V105) !== (value.rules.normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V105) ||
     (value.engineVersion === PIT_WORKBOOK_COMBAT_STATE_VERSION_V106) !== (value.rules.normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V106) ||
-    (value.engineVersion === PIT_WORKBOOK_COMBAT_STATE_VERSION_V107) !== (value.rules.normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V107)) return null;
+    (value.engineVersion === PIT_WORKBOOK_COMBAT_STATE_VERSION_V107) !== (value.rules.normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V107) ||
+    (value.engineVersion === PIT_WORKBOOK_COMBAT_STATE_VERSION_V109) !== (value.rules.normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V109)) return null;
   if (value.rules.stageJourney !== undefined && !isPitStageJourneyForArena(value.rules.stageJourney, value.arenaId)) return null;
   if (!Array.isArray(value.fighters) || value.fighters.length !== 2 ||
     !isFighterId(value.fighters[0]) || !isFighterId(value.fighters[1]) ||
@@ -762,7 +764,9 @@ export function createPitReplayReader(value: unknown): PitReplayReader {
 export function stepPitReplayCombat(
   state: PitCombatState, inputs: readonly [PitInput, PitInput], engineVersion: PitReplay["engineVersion"],
 ): PitCombatState {
-  if ((state.version === PIT_WORKBOOK_COMBAT_STATE_VERSION_V107) !== (engineVersion === PIT_WORKBOOK_COMBAT_STATE_VERSION_V107) ||
+  if ((state.version === PIT_WORKBOOK_COMBAT_STATE_VERSION_V109) !== (engineVersion === PIT_WORKBOOK_COMBAT_STATE_VERSION_V109) ||
+    (state.version === PIT_WORKBOOK_COMBAT_STATE_VERSION_V109 && state.rules.normalMoves !== PIT_WORKBOOK_COMBAT_RECIPE_V109) ||
+    (state.version === PIT_WORKBOOK_COMBAT_STATE_VERSION_V107) !== (engineVersion === PIT_WORKBOOK_COMBAT_STATE_VERSION_V107) ||
     (state.version === PIT_WORKBOOK_COMBAT_STATE_VERSION_V107 && state.rules.normalMoves !== PIT_WORKBOOK_COMBAT_RECIPE_V107) ||
     (state.version === PIT_WORKBOOK_COMBAT_STATE_VERSION_V106) !== (engineVersion === PIT_WORKBOOK_COMBAT_STATE_VERSION_V106) ||
     (state.version === PIT_WORKBOOK_COMBAT_STATE_VERSION_V106 && state.rules.normalMoves !== PIT_WORKBOOK_COMBAT_RECIPE_V106) ||
@@ -777,7 +781,7 @@ export function stepPitReplayCombat(
   if (engineVersion === 8) return stepPitCombatV8Compatibility(state, inputs);
   if (engineVersion === 9) return stepPitCombatV9Compatibility(state, inputs);
   if (engineVersion === 10) return stepPitCombatV10Compatibility(state, inputs);
-  if (engineVersion === PIT_STATE_VERSION || engineVersion === PIT_WORKBOOK_NORMALS_STATE_VERSION_V104 || engineVersion === PIT_WORKBOOK_COMBAT_STATE_VERSION_V105 || engineVersion === PIT_WORKBOOK_COMBAT_STATE_VERSION_V106 || engineVersion === PIT_WORKBOOK_COMBAT_STATE_VERSION_V107) return stepPitCombat(state, inputs);
+  if (engineVersion === PIT_STATE_VERSION || engineVersion === PIT_WORKBOOK_NORMALS_STATE_VERSION_V104 || engineVersion === PIT_WORKBOOK_COMBAT_STATE_VERSION_V105 || engineVersion === PIT_WORKBOOK_COMBAT_STATE_VERSION_V106 || engineVersion === PIT_WORKBOOK_COMBAT_STATE_VERSION_V107 || engineVersion === PIT_WORKBOOK_COMBAT_STATE_VERSION_V109) return stepPitCombat(state, inputs);
   throw replayError("incompatible-engine");
 }
 
