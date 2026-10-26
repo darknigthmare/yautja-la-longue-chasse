@@ -248,8 +248,11 @@ async function journey(kind){
       check('K17 route guidance never resumes or moves a piece by itself',(await receipt()).phase==='interrupted'&&JSON.stringify((await receipt()).objects)===JSON.stringify(parked.objects));
       await capture('05-preserved-point-arrival',page.locator('[data-homeworld-viewport]'));
       await resumeLocal();
-      await waitUntil(async()=>await page.locator(`[data-homeworld-route-target-v98="${destination}"][data-homeworld-route-current-v109="false"]`).count()===1,'completed resume invalidates its old objective route');
-      check('K17 voluntary resume invalidates the old current-objective destination',await page.locator(`[data-homeworld-route-target-v98="${destination}"][data-homeworld-route-current-v109="false"]`).count()===1);
+      const oldGuide=page.locator(`[data-homeworld-route-target-v98="${destination}"]`);
+      await waitUntil(async()=>await oldGuide.count()===0||await oldGuide.getAttribute('data-homeworld-route-current-v109')==='false','completed resume invalidates or removes its old objective route');
+      const resumedReceipt=await receipt(),currentObjective=model.qa.load('app/game/systems/homeworldObjectivesV110.ts').homeworldCurrentObjectiveV110(await disk());
+      observations.push({journey:kind,kind:'current-policy-read-after-actual-voluntary-resume',currentObjectiveId:currentObjective?.destinationId??null,oldGuideCount:await oldGuide.count(),receiptPhase:resumedReceipt.phase});
+      check('K17 voluntary resume invalidates the old current-objective destination',resumedReceipt.phase==='working'&&currentObjective?.operation==='plaque'&&currentObjective.destinationId!==destination&&await page.locator(`[data-homeworld-route-target-v98="${destination}"][data-homeworld-route-current-v109="true"]`).count()===0);
       await interact();check('K17 the same parked piece is picked up with its original provenance',(await receipt()).carrier==='plaque'&&(await receipt()).provenances.includes('plaque'));
       await walk('archive-plaque-support-plaque-v109');await interact();
       check('K17 recovered original piece is physically deposited on its separate surface',(await receipt()).objects[0].place==='support'&&(await receipt()).carrier===null);
@@ -296,9 +299,10 @@ async function journey(kind){
       await tick(5000);await waitUntil(async()=>await page.locator('[data-homeworld-hub][data-homeworld-transit-v77]').count()===0,'occupied final landing admission');
       const refused=await actor();
       check('Arrival blocked by a real load returns to the exact safe departure',refused.level===start.level&&Math.hypot(refused.x-start.x,refused.y-start.y)<=.01);
-      check('Arrival refusal is explicitly announced in the real interface',(await page.locator('[data-homeworld-hub]').innerText()).includes('Le palier est occupé par une charge'));
+      const notification=page.locator('.toast[role="status"]');
+      check('Arrival refusal is visibly announced to the player',await notification.isVisible()&&(await notification.innerText()).includes('Le palier est occupé par une charge'));
       check('Arrival refusal leaves both load owners and positions byte-exact',JSON.stringify((await disk()).homeworld.cargoV108)===savedCargo);
-      await capture('02-refused-safe-upper-landing',page.locator('[data-homeworld-hub]'));
+      await capture('02-refused-safe-upper-landing');
       await focus();await page.keyboard.down('ArrowRight');await tick(120);await page.keyboard.up('ArrowRight');await tick();
       const egress=await actor();check('Arrival retained departure permits real ordinary walking',egress.level===start.level&&Math.hypot(egress.x-refused.x,egress.y-refused.y)>1);
       observations.push({journey:kind,kind:'actual-ui-refused-arrival',start,refused,egress,cargoUnchanged:JSON.stringify((await disk()).homeworld.cargoV108)===savedCargo});

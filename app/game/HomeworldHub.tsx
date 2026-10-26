@@ -252,7 +252,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
     const frame = requestAnimationFrame(() => {
       if(saveRef.current.createdAt!==expectedOwner||appliedArrivalV67.current===arrivalV67.requestId)return;
       const arriving = homeworldWorldArrivalV110(point.regionId!,cargoDraftRefV108.current,saveRef.current.createdAt);
-      if(!arriving){appliedArrivalV67.current=arrivalV67.requestId;setAnnouncement('Le retour est encombré. Position sûre conservée ; dégage le passage avant de refaire la traversée.');return;}
+      if(!arriving){appliedArrivalV67.current=arrivalV67.requestId;const message='Le retour est encombré. Position sûre conservée ; dégage le passage avant de refaire la traversée.';setAnnouncement(message);onNotify(message);return;}
       appliedArrivalV67.current = arrivalV67.requestId;
       held.current.clear(); touch.current = { left: false, right: false, up: false, down: false, jump: false, sprint: false }; setTouchRunningV81(false);
       actorRef.current = arriving.actor; setActor(arriving.actor); exteriorAnchorRef.current = arriving.actor; interiorRef.current = null; setInteriorId(null);
@@ -263,7 +263,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
       wayfindingOpenRefV75.current = false; setWayfindingOpenV75(false); setWayfindingRequestV75(null);
     });
     return () => cancelAnimationFrame(frame);
-  }, [arrivalV67,save.createdAt]);
+  }, [arrivalV67,save.createdAt,onNotify]);
 
   useEffect(() => {
     // GameClient also keys this component by createdAt. Keep the local queue
@@ -582,7 +582,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
     if (!room) return;
     const entry=actorRef.current;
     if(!homeworldExteriorArrivalAllowedV110(levelRefV77.current,entry,cargoDraftRefV108.current,saveRef.current.createdAt)){
-      setAnnouncement('L’entrée est encombrée. Rejoins un point libre devant la porte avant de réessayer.');return;
+      const message='L’entrée est encombrée. Rejoins un point libre devant la porte avant de réessayer.';setAnnouncement(message);onNotify(message);return;
     }
     clearInputs();
     // Preserve the real supported entrance. Snapping to the authored centre
@@ -595,7 +595,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
     setInteriorId(room.buildingId); setActor(next); recordLocationV77();
     setAnnouncement(`Entrée dans ${room.title}. Approche les personnages ou rejoins la sortie au sud.`);
     requestAnimationFrame(() => viewportRef.current?.focus({ preventScroll: true }));
-  }, [clearInputs, recordLocationV77]);
+  }, [clearInputs, recordLocationV77,onNotify]);
 
   const exitInterior = useCallback(() => {
     const room = interiorRef.current;
@@ -603,11 +603,11 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
       || nearestHomeworldInteriorTargetV64(room, actorRef.current)?.kind !== "exit") return;
     clearInputs();
     const next = homeworldInteriorExitV110(levelRefV77.current,exteriorAnchorRef.current,cargoDraftRefV108.current,saveRef.current.createdAt);
-    if (!next) { setAnnouncement('Le seuil extérieur est occupé. Tu restes à l’intérieur ; dégage le passage avant de sortir.'); return; }
+    if (!next) { const message='Le seuil extérieur est occupé. Tu restes à l’intérieur ; dégage le passage avant de sortir.';setAnnouncement(message);onNotify(message);return; }
     interiorRef.current = null; actorRef.current = next;
     setInteriorId(null); setActor(next); recordLocationV77(); setAnnouncement("Retour au seuil extérieur.");
     requestAnimationFrame(() => viewportRef.current?.focus({ preventScroll: true }));
-  }, [clearInputs, recordLocationV77]);
+  }, [clearInputs, recordLocationV77,onNotify]);
 
   const persistAction = useCallback((action: HomeworldAction, announce = true) => {
     const currentSave = saveRef.current;
@@ -894,7 +894,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
             : homeworldLiftPassengerV83(liftRefV83.current, moving.transit ?? ride, liftConnector, moving.done));
           next = moving.actor; transitRefV77.current = moving.transit; setTransitV77(moving.transit);
           setElevationV77(moving.elevation); levelRefV77.current = moving.levelId; setLevelIdV77(moving.levelId);
-          if (moving.error) setAnnouncement(moving.error);
+          if (moving.error) {setAnnouncement(moving.error);onNotify(moving.error);}
           if (moving.done) { actorRef.current = next; exteriorAnchorRef.current = next; recordCartographyTransitV105(ride,next,dt); if(!recordLocationV77()&&cartographyActiveV105(cartographyDraftRefV105.current))cartographyWriteRefusedV105('Le passage d’escalier n’a pas été enregistré. Réessaie sur ce palier avant de poursuivre.'); setAnnouncement('Arrivée · ' + homeworldLevelV77(moving.levelId).name); }
         } else next = room ? stepHomeworldActorOnFloor(before, controls, dt,
           point => isHomeworldInteriorWalkableV64(room, point), () => ({ ...createHomeworldActor(), ...room.spawn }))
@@ -945,7 +945,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
     };
     request = requestAnimationFrame(frame);
     return () => cancelAnimationFrame(request);
-  }, [bindings, clearInputs, closeDialog, interact, persistVisit, recordLocationV77, onRegionV68, updateLiftStationV83,sampleCartographyV104,interruptCartographyV104,sampleCartographyV105,interruptCartographyV105,recordCartographyTransitV105,cartographyWriteRefusedV105,sampleArchiveV106,interruptArchiveV106,sampleComparisonV107,interruptComparisonV107,sampleCargoV108,interruptCargoV108,samplePlaqueV109,interruptPlaqueV109]);
+  }, [bindings, clearInputs, closeDialog, interact, persistVisit, recordLocationV77, onNotify, onRegionV68, updateLiftStationV83,sampleCartographyV104,interruptCartographyV104,sampleCartographyV105,interruptCartographyV105,recordCartographyTransitV105,cartographyWriteRefusedV105,sampleArchiveV106,interruptArchiveV106,sampleComparisonV107,interruptComparisonV107,sampleCargoV108,interruptCargoV108,samplePlaqueV109,interruptPlaqueV109]);
 
   const onWorldKey = (event: KeyboardEvent<HTMLDivElement>) => {
     if (event.target !== viewportRef.current || blocked || event.altKey || event.ctrlKey || event.metaKey) return;
