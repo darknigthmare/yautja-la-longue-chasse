@@ -1,0 +1,36 @@
+{
+  "kind": "isolated-dev-worker-diagnostic",
+  "scope": "Captured failed R3 save passed directly to actual DEV worker; no application input, UI journey or production certification.",
+  "results": [
+    {
+      "index": 0,
+      "status": "message",
+      "planStatus": "reachable",
+      "stages": [
+        {
+          "end": {
+            "x": 7378.5657141399715,
+            "y": 5350
+          },
+          "radius": 3
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "status": "message",
+      "planStatus": "reachable",
+      "stages": [
+        {
+          "end": {
+            "x": 7378.5657141399715,
+            "y": 5350
+          },
+          "radius": 3
+        }
+      ]
+    }
+  ],
+  "network": [],
+  "errors": []
+}

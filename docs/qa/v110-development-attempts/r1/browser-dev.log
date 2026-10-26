@@ -1,0 +1,42 @@
+locator.click: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for getByRole('button', { name: /^Continuer/ })[22m
+[2m    - locator resolved to <button disabled type="button">…</button>[22m
+[2m  - attempting click action[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is not enabled[22m
+[2m    - retrying click action[22m
+[2m    - waiting 20ms[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is not enabled[22m
+[2m    - retrying click action[22m
+[2m      - waiting 100ms[22m
+[2m    57 × waiting for element to be visible, enabled and stable[22m
+[2m       - element is not enabled[22m
+[2m     - retrying click action[22m
+[2m       - waiting 500ms[22m
+
+    at enter (/workspace/yautja-homeworld-v110/scripts/qa-homeworld-coherence-v110.mjs:72:70)
+    at async journey (/workspace/yautja-homeworld-v110/scripts/qa-homeworld-coherence-v110.mjs:173:5)
+    at async file:///workspace/yautja-homeworld-v110/scripts/qa-homeworld-coherence-v110.mjs:274:30 {
+  log: [
+    "  - waiting for getByRole('button', { name: /^Continuer/ })",
+    '    - locator resolved to <button disabled type="button">…</button>',
+    '  - attempting click action',
+    '    2 × waiting for element to be visible, enabled and stable',
+    '      - element is not enabled',
+    '    - retrying click action',
+    '    - waiting 20ms',
+    '    2 × waiting for element to be visible, enabled and stable',
+    '      - element is not enabled',
+    '    - retrying click action',
+    '      - waiting 100ms',
+    '    57 × waiting for element to be visible, enabled and stable',
+    '       - element is not enabled',
+    '     - retrying click action',
+    '       - waiting 500ms'
+  ],
+  name: 'TimeoutError'
+}
+PASS Executed sources unchanged
+{"status":"FAIL","checks":2,"captures":1,"output":"/workspace/yautja-homeworld-v110/outputs/qa-v110-development-r1"}

@@ -1,0 +1,49 @@
+PASS K17 begins with no seeded plaque operation
+PASS K17 present archivist consent and source choice are actually played
+PASS K17 actual observation, copied provenance and pickup precede carrying
+PASS K17 carried record distinguishes observed discovery from current position
+PASS K17 unexamined candidate fragment is absent from record and map
+locator.screenshot: Timeout 29994.165ms exceeded.
+Call log:
+[2m  - taking element screenshot[22m
+[2m  - waiting for fonts to load...[22m
+[2m  - fonts loaded[22m
+[2m  - attempting scroll into view action[22m
+[2m    2 × waiting for element to be stable[22m
+[2m      - element is not visible[22m
+[2m    - retrying scroll into view action[22m
+[2m    - waiting 20ms[22m
+[2m    2 × waiting for element to be stable[22m
+[2m      - element is not visible[22m
+[2m    - retrying scroll into view action[22m
+[2m      - waiting 100ms[22m
+[2m    58 × waiting for element to be stable[22m
+[2m       - element is not visible[22m
+[2m     - retrying scroll into view action[22m
+[2m       - waiting 500ms[22m
+
+    at capture (/workspace/yautja-homeworld-v110/scripts/qa-homeworld-coherence-v110.mjs:81:19)
+    at async journey (/workspace/yautja-homeworld-v110/scripts/qa-homeworld-coherence-v110.mjs:187:49)
+    at async file:///workspace/yautja-homeworld-v110/scripts/qa-homeworld-coherence-v110.mjs:277:30 {
+  log: [
+    '  - taking element screenshot',
+    '  - waiting for fonts to load...',
+    '  - fonts loaded',
+    '  - attempting scroll into view action',
+    '    2 × waiting for element to be stable',
+    '      - element is not visible',
+    '    - retrying scroll into view action',
+    '    - waiting 20ms',
+    '    2 × waiting for element to be stable',
+    '      - element is not visible',
+    '    - retrying scroll into view action',
+    '      - waiting 100ms',
+    '    58 × waiting for element to be stable',
+    '       - element is not visible',
+    '     - retrying scroll into view action',
+    '       - waiting 500ms'
+  ],
+  name: 'TimeoutError'
+}
+PASS Executed sources unchanged
+{"status":"FAIL","checks":7,"captures":2,"output":"/workspace/yautja-homeworld-v110/outputs/qa-v110-development-r2"}

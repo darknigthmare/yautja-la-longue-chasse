@@ -1,0 +1,124 @@
+{
+  "domain": "Homeworld",
+  "status": "PASS_CIBLE",
+  "buildId": "lKVX-RK9EV3tJNCiGVJSV",
+  "runtimeCommit": "80123ba7ec1f77c266ce8532b9f3d8d45beb7110",
+  "driver": "scripts/qa-homeworld-coherence-v110.mjs",
+  "command": "node scripts/qa-homeworld-coherence-v110.mjs",
+  "sourceFreeze": {
+    "path": "docs/v110-runtime-freeze.json",
+    "sha256": "c54a5e97c199d16584a229f332692f5890874f5494b015657f66cf9659bfe3f1",
+    "bytes": 256333
+  },
+  "report": {
+    "path": "docs/v110-homeworld-validation.json",
+    "sha256": "216df558057ef2151bbb0b2e7a589c2d56544383897e73744ecefcde8ff9f473",
+    "bytes": 329470
+  },
+  "browserChecksPassed": 47,
+  "capturesInspected": 19,
+  "portableFiles": [
+    {
+      "path": "docs/qa/v110-homeworld/browser-result.json.gz",
+      "sha256": "e4d9e61fa8967a00efb93addbb0fa12412977873fe67eb6cccb97742a05e5aea",
+      "bytes": 105392,
+      "decodedSha256": "00a5f7347cb462597b95e0ab965174c53ba2cdbe512ff9e0beb3f3cab39cfd38",
+      "decodedBytes": 464910
+    },
+    {
+      "path": "docs/qa/v110-homeworld/k17-01-carried-record-map.png",
+      "sha256": "c3fca2f00eac20a38e45be9e64cd6c0ce3d913cede3b5107272204e3d9d233b9",
+      "bytes": 5848
+    },
+    {
+      "path": "docs/qa/v110-homeworld/k17-01-carried-record-plaque-facts.png",
+      "sha256": "e4098d56eac333e2baddabd7c00c2037b6283e699f8983d0cee1b33b04f85dd8",
+      "bytes": 18940
+    },
+    {
+      "path": "docs/qa/v110-homeworld/k17-02-native-carried-plaque.png",
+      "sha256": "b3eba0c4b95353c98569c68c549ae0d6b292df734ef74aa2e4bee88b0700df79",
+      "bytes": 1098580
+    },
+    {
+      "path": "docs/qa/v110-homeworld/k17-03-outside-parked-record-map.png",
+      "sha256": "79ef400896a239425e56e78199af4e7fa7f53920ac59303d7f8b9ad285860401",
+      "bytes": 7971
+    },
+    {
+      "path": "docs/qa/v110-homeworld/k17-03-outside-parked-record-plaque-facts.png",
+      "sha256": "17723c1c7600bb9649b5bc2d70f1f0f9aae91c24ff2cf0e579e4e2c9446ddae7",
+      "bytes": 19974
+    },
+    {
+      "path": "docs/qa/v110-homeworld/k17-04-operation-aware-atlas.png",
+      "sha256": "069e123dc2e53884d22761e2f997114d712b7e9d754c0db0cb6c84cdef5f256d",
+      "bytes": 592002
+    },
+    {
+      "path": "docs/qa/v110-homeworld/k17-05-preserved-point-arrival.png",
+      "sha256": "1f8774f0d1db3c8251ece1f3fcd7d25fc2c00d0ca796b392217d0ab1667a43b2",
+      "bytes": 1192199
+    },
+    {
+      "path": "docs/qa/v110-homeworld/k17-06-mobile-recovered-record-map.png",
+      "sha256": "b178c91df133bacc2caf4e1b0efc62a1079173a4369cbb36e845bd8eb81d09d6",
+      "bytes": 6230
+    },
+    {
+      "path": "docs/qa/v110-homeworld/k17-06-mobile-recovered-record-plaque-facts.png",
+      "sha256": "323f01954b504bf97959209886b612c4e37e90c74fb66c7d7b88fb12f605d5f9",
+      "bytes": 17258
+    },
+    {
+      "path": "docs/qa/v110-homeworld/k17-07-mobile-terrain-and-record.png",
+      "sha256": "8cd6be1f8a403108b8fc9bd346eae4bd5f8cc3e6979070f8bb0532ce5eb8f6f2",
+      "bytes": 169175
+    },
+    {
+      "path": "docs/qa/v110-homeworld/residents-01-normal-known-place-advice.png",
+      "sha256": "9ecadd0c96f7afdc906d033ac843a755b8c89d42fcd64e18574f4f05335978ac",
+      "bytes": 105547
+    },
+    {
+      "path": "docs/qa/v110-homeworld/residents-02-suspended-advice.png",
+      "sha256": "bb040c8df5fe0bbcc3e42e2bb3ebaabbb1f764de9e52c9c37f3471434535bcfa",
+      "bytes": 114249
+    },
+    {
+      "path": "docs/qa/v110-homeworld/residents-03-advice-atlas.png",
+      "sha256": "8fd9a6651215a05978b8228d7f0cec60ff4843da4a175b6fcce245c3f20d6786",
+      "bytes": 912864
+    },
+    {
+      "path": "docs/qa/v110-homeworld/residents-04-out-of-reach-no-old-speaker.png",
+      "sha256": "ba7f9f00d673e6da5a553deb60648d1a8ff7bf7896d59907ad7f9915bdb30e9c",
+      "bytes": 2321245
+    },
+    {
+      "path": "docs/qa/v110-homeworld/blockedarrival-01-actual-descent.png",
+      "sha256": "208c28cbe0a005866642cef184bf3a9b1ad4fdfd07d3a2d9e1da957a97c148eb",
+      "bytes": 1422862
+    },
+    {
+      "path": "docs/qa/v110-homeworld/blockedarrival-02-refused-safe-upper-landing.png",
+      "sha256": "3ab101e5c97c0433851c802d20229e5a7528aaf2138f957b1bb0ebe488ca899b",
+      "bytes": 1510877
+    },
+    {
+      "path": "docs/qa/v110-homeworld/doorway-01-real-free-side-entry.png",
+      "sha256": "e28c233f91fd627df2da5fb535b2c98ec790b93f04370be0c7f853621199643a",
+      "bytes": 1586805
+    },
+    {
+      "path": "docs/qa/v110-homeworld/doorway-02-entered-domestic-room.png",
+      "sha256": "487673d6a14d2f19b90f490220e5fea518153ca007f7a744c543e2716a025c88",
+      "bytes": 318320
+    },
+    {
+      "path": "docs/qa/v110-homeworld/doorway-03-returned-to-safe-anchor.png",
+      "sha256": "f163d01901f89aab29e608c5533c73c80f42cfdb794e429aba19daab49a5ed4a",
+      "bytes": 1586633
+    }
+  ]
+}

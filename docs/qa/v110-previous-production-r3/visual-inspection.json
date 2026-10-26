@@ -1,0 +1,41 @@
+{
+  "status": "PASS_VISUAL_CIBLE",
+  "runtimeCommit": "73c1b8200459378990e524a229221757ab1a9a68",
+  "buildId": "AjKoBdneruy12Ho19qdOR",
+  "mode": "compiled-app",
+  "imageFiles": [
+    "k17-01-carried-record-map.png",
+    "k17-01-carried-record-plaque-facts.png",
+    "k17-02-native-carried-plaque.png",
+    "k17-03-outside-parked-record-map.png",
+    "k17-03-outside-parked-record-plaque-facts.png",
+    "k17-04-operation-aware-atlas.png",
+    "k17-05-preserved-point-arrival.png",
+    "k17-06-mobile-recovered-record-map.png",
+    "k17-06-mobile-recovered-record-plaque-facts.png",
+    "k17-07-mobile-terrain-and-record.png",
+    "residents-01-normal-known-place-advice.png",
+    "residents-02-suspended-advice.png",
+    "residents-03-advice-atlas.png",
+    "residents-04-out-of-reach-no-old-speaker.png",
+    "blockedarrival-01-actual-descent.png",
+    "blockedarrival-02-refused-safe-upper-landing.png",
+    "doorway-01-real-free-side-entry.png",
+    "doorway-02-entered-domestic-room.png",
+    "doorway-03-returned-to-safe-anchor.png"
+  ],
+  "scope": "All19 actual screenshots opened and inspected. Bounded Homeworld coherence journeys; no art admission or whole-city completion.",
+  "observations": [
+    "K-17: discovery coordinates remain distinct from current carried/parked placement. Outside-frame markers and numerical positions are legible. Desktop and mobile terrain remain present with the bounded record open.",
+    "Atlas: chosen current-objective and resident-advice targets are visible; the preserved-point guide arrives. Atlas captures show the scroll panel and selected destination, without claiming a complete visual review of every floor.",
+    "Residents: the actual Convoyeur conversation shows a local recommendation; subject/advice controls visibly disable during the declared blur suspension.",
+    "Council stair: the actual descent and safe upper return are pictured. The occupied-landing refusal is visible in the final toast.",
+    "Doorway: exterior entry and returned anchor match visually; the domestic room and its exit are shown."
+  ],
+  "limits": [
+    "The council and doorway cargo placements are declared model-played preconditions (1418 and603 native steps), not browser-played deliveries.",
+    "The inactivity check uses a declared synthetic window blur event delivered to the real registered listener. No hardware controller is certified.",
+    "The partial K-17 recovery journey does not finish all ROLE03 branches or establish a repaired plaque, footprint author, lineage or reward.",
+    "Existing resident advice still contains inherited technical codex wording such as 'lot implémenté, non vérifié'; this inspection does not certify all NPC dialogue copy."
+  ]
+}

@@ -1,0 +1,23 @@
+PASS K17 begins with no seeded plaque operation
+PASS K17 present archivist consent and source choice are actually played
+PASS K17 actual observation, copied provenance and pickup precede carrying
+PASS K17 carried record distinguishes observed discovery from current position
+PASS K17 unexamined candidate fragment is absent from record and map
+PASS K17 open desktop record preserves an actual playable terrain viewport
+PASS K17 actual keyboard walking remains possible while the record stays open
+PASS K17 actual pause keeps the carried piece and interrupts work
+PASS K17 paused resume action is disabled
+PASS K17 ordinary Continue restores the exact carried piece and local checkpoint
+PASS K17 actual keyboard carry then park leaves a real piece outside the local map
+PASS K17 map retains an outside marker and actual numerical placement
+PASS K17 parked provenance retains the original observed discovery
+PASS K17 ordinary Continue restores the parked piece without moving it
+PASS K17 actual Atlas chooses the current interrupted study rather than the introduction
+PASS K17 actual current-objective Worker guide reaches the exact preserved point
+PASS K17 route guidance never resumes or moves a piece by itself
+Error: Bounded UI wait failed: completed resume invalidates its old objective route
+    at waitUntil (file:///workspace/yautja-homeworld-v110/scripts/qa-homeworld-coherence-v110.mjs:114:11)
+    at async journey (file:///workspace/yautja-homeworld-v110/scripts/qa-homeworld-coherence-v110.mjs:251:7)
+    at async file:///workspace/yautja-homeworld-v110/scripts/qa-homeworld-coherence-v110.mjs:339:30
+PASS Executed sources unchanged
+{"status":"FAIL","checks":19,"captures":8,"output":"/workspace/yautja-homeworld-v110/outputs/qa-v110-production-r1"}
