@@ -1,4 +1,5 @@
 import { getPitWorkbookNormalV104 } from './systems/pitWorkbookNormalsV104';
+import { PIT_WORKBOOK_THROW_LANDING_AGE_V109, getPitWorkbookThrowPhaseV109 } from './systems/pitWorkbookCombatV109';
 import { getPitCombatActionTimingV105, getPitCombatAttackDefinition, getPitCombatFighterDefinition } from './systems/pitCombat';
 /**
  * Pure PIT-to-authored-sprite adapter. No Canvas, rig, interpolation, gameplay
@@ -99,7 +100,7 @@ export function describePitHunterSpriteMotion(
   fighter: PitFighterState,
   simulationFrame: number,
   previous?: PitHunterSpriteCursor | null,
-  combat?: Pick<PitCombatState, "frame" | "pendingThrow" | "events">,
+  combat?: Pick<PitCombatState, "frame" | "pendingThrow" | "events" | "sourceThrowV109">,
 ): PitHunterSpriteMotion | null {
   if ((combat && combat.frame !== simulationFrame) || !tick(simulationFrame) ||
     !Object.prototype.hasOwnProperty.call(PIT_FIGHTERS, fighter.definitionId) ||
@@ -110,10 +111,12 @@ export function describePitHunterSpriteMotion(
     !tick(fighter.cloakFramesRemaining)) return null;
   const definition = getPitCombatFighterDefinition(fighter);
   const facing = fighter.facing === 1 ? "right" : "left";
-  const normal = (fighter.normalMovesRecipe === 'workbook-v104' || fighter.normalMovesRecipe === 'workbook-v105' || fighter.normalMovesRecipe === 'workbook-v106' || fighter.normalMovesRecipe === 'workbook-v107') && fighter.action?.normalMove
+  const normal = (fighter.normalMovesRecipe === 'workbook-v104' || fighter.normalMovesRecipe === 'workbook-v105' || fighter.normalMovesRecipe === 'workbook-v106' || fighter.normalMovesRecipe === 'workbook-v107' || fighter.normalMovesRecipe === 'workbook-v109') && fighter.action?.normalMove
     ? getPitWorkbookNormalV104(fighter.definitionId, fighter.action.normalMove) : undefined;
   const workbookTimingV105 = getPitCombatActionTimingV105(fighter);
-  const posture: PitHunterSpritePosture = normal?.posture ?? (workbookTimingV105 ? 'stand' :
+  const sourceThrow = fighter.normalMovesRecipe === 'workbook-v109' ? combat?.sourceThrowV109 : null;
+  const sourceVictim = sourceThrow && sourceThrow.attackerSlot !== fighter.slot ? sourceThrow : null;
+  const posture: PitHunterSpritePosture = sourceVictim ? 'stand' : normal?.posture ?? (workbookTimingV105 ? 'stand' :
     !fighter.grounded ? "air" : fighter.crouching || fighter.guard === "low" ? "crouch" : "stand");
   const prefix = "pit." + posture + ".";
   let clipId = "idle";
@@ -129,7 +132,18 @@ export function describePitHunterSpriteMotion(
   if (cloakTicks !== null && (fighter.cloakFramesRemaining < 1 || fighter.cloakFramesRemaining > cloakTicks)) return null;
   const cloakProgress = cloakTicks === null ? null : (cloakTicks - fighter.cloakFramesRemaining) / cloakTicks;
 
-  if (fighter.health <= 0) {
+  if (sourceVictim) {
+    // This independent body follows the serialised capture clock, including a
+    // mid-flight replay seek. Its actual x/y belongs to the combat model.
+    const knockedOut = fighter.health <= 0;
+    clipId = 'pit.stand.workbook-v109.TH_F.victim' + (knockedOut ? '.ko' : '');
+    phase = knockedOut ? 'ko' : getPitWorkbookThrowPhaseV109(sourceVictim.age) === 'landing' ? 'knockdown' : 'capture';
+    action = 'throw';
+    throwOutcome = 'connected';
+    clock = 'throw-phase';
+    elapsedTicks = knockedOut ? sourceVictim.age - PIT_WORKBOOK_THROW_LANDING_AGE_V109 : sourceVictim.age;
+    durationTicks = knockedOut ? 60 : 61;
+  } else if (fighter.health <= 0) {
     clipId = prefix + "ko";
     phase = "ko";
   } else if (fighter.phase === "knockdown") {
@@ -157,7 +171,8 @@ export function describePitHunterSpriteMotion(
       !combat.events.some(event => event.frame === simulationFrame &&
         (event.type === "hit" || event.type === "block") && event.defenderId === fighter.definitionId)
       ? previous.clipId : null;
-    const techedRecovery = tech || continuing === prefix + "throw.recovery.teched";
+    const techClip = prefix + (fighter.normalMovesRecipe === 'workbook-v109' ? 'workbook-v109.TH_F.' : 'throw.') + 'recovery.teched';
+    const techedRecovery = tech || continuing === techClip;
     const connectedRecovery = connected || continuing === prefix + "throw.recovery.connected";
     if (pending) {
       if (fighter.action || !fighter.grounded || fighter.stunFrames !== 1 ||
@@ -173,7 +188,7 @@ export function describePitHunterSpriteMotion(
       elapsedTicks = durationTicks - pending.framesRemaining;
     } else if (combat && !fighter.action && (techedRecovery || connectedRecovery)) {
       throwOutcome = techedRecovery ? "teched" : "connected";
-      clipId = prefix + "throw.recovery." + throwOutcome;
+      clipId = techedRecovery ? techClip : prefix + "throw.recovery." + throwOutcome;
       phase = "recovery";
       action = "throw";
       clock = "throw-phase";
@@ -191,7 +206,7 @@ export function describePitHunterSpriteMotion(
     const current = fighter.action;
     const workbookTiming = workbookTimingV105;
     if (current.workbookMove !== undefined && (!workbookTiming || fighter.variantId !== undefined || current.normalMove !== undefined ||
-      (current.workbookMove === 'EQUIP' ? current.kind !== 'equipment' || current.attack !== null :
+      (current.workbookMove === 'TH_F' ? current.kind !== 'throw' || current.attack !== null : current.workbookMove === 'EQUIP' ? current.kind !== 'equipment' || current.attack !== null :
         current.kind !== 'attack' || current.attack !== (current.workbookMove === '6M' ? 'medium' : 'technique')))) return null;
     if (!tick(current.frame) ||
       (current.kind !== "throw" && current.kind !== "attack" && current.kind !== "equipment") ||
@@ -210,17 +225,18 @@ export function describePitHunterSpriteMotion(
     durationTicks = timing[phase];
     clock = "action-phase";
     techniqueId = action === "technique" && !workbookTiming ? definition.technique.id : null;
-    const additionalV106 = (fighter.normalMovesRecipe === 'workbook-v106' || fighter.normalMovesRecipe === 'workbook-v107') &&
+    const additionalV106 = (fighter.normalMovesRecipe === 'workbook-v106' || fighter.normalMovesRecipe === 'workbook-v107' || fighter.normalMovesRecipe === 'workbook-v109') &&
       (current.workbookMove === 'SUPER' || fighter.definitionId === 'feral-hunter' && (current.workbookMove === 'S1' || current.workbookMove === 'S2') ||
         fighter.definitionId === 'scar' && current.workbookMove === 'S3');
-    const additionalV107 = fighter.normalMovesRecipe === 'workbook-v107' &&
+    const additionalV107 = (fighter.normalMovesRecipe === 'workbook-v107' || fighter.normalMovesRecipe === 'workbook-v109') &&
       (fighter.definitionId === 'feral-hunter' && current.workbookMove === 'S4' || fighter.definitionId === 'scar' && current.workbookMove === 'S2');
-    const actionId = workbookTiming ? (additionalV107 ? 'workbook-v107.' : additionalV106 ? 'workbook-v106.' : 'workbook-v105.') + current.workbookMove : normal ? "workbook-v104." + normal.key : techniqueId ? "technique." + techniqueId : action;
+    const actionId = workbookTiming ? (current.workbookMove === 'TH_F' ? 'workbook-v109.' : additionalV107 ? 'workbook-v107.' : additionalV106 ? 'workbook-v106.' : 'workbook-v105.') + current.workbookMove : normal ? "workbook-v104." + normal.key : techniqueId ? "technique." + techniqueId : action;
     clipId = prefix + actionId + "." + phase;
     if (additionalV106 && current.workbookMove === 'SUPER' && phase === 'recovery' && current.workbookSuperV106) clipId += '.confirmed';
     if (action === "throw") {
       throwOutcome = phase === "recovery" ? current.connected ? "connected" : "whiff" : "pending";
       if (phase === "recovery") clipId += "." + throwOutcome;
+      if (current.workbookMove === 'TH_F' && phase === 'active' && !current.connected) clipId += '.whiff';
     }
   } else {
     if (fighter.phase !== "idle") return null;

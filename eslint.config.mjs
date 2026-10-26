@@ -9,6 +9,7 @@ const eslintConfig = defineConfig([
   globalIgnores([
     // Default ignores of eslint-config-next:
     ".next/**",
+    ".next-dev-*/**",
     "out/**",
     // Vinext production bundles are generated output, like Next's .next.
     "dist/**",

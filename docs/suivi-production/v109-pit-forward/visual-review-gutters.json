@@ -1,0 +1,395 @@
+{
+  "version": "v109",
+  "reviewedAtUtc": "2026-10-25T09:08:44.580791+00:00",
+  "reviewer": "v109_art_review",
+  "status": "supplementary-source-art-visual-review-complete",
+  "previousReviewPath": "docs/suivi-production/v109-pit-forward/visual-review.json",
+  "scope": "Independent visual review of the eight additional untouched native isolation outputs supplied in /tmp/v109-gutter-jobs.json. Each listed PNG was personally opened at original resolution, and the Scar left victim reference atlas was reopened to compare its pose. This supplements the original source review without changing it.",
+  "coverage": {
+    "replacementNativePages": 8,
+    "replacementNativeFrameSlots": 8
+  },
+  "conclusion": "No confirmed blocking P1 or P2 visual finding in the eight replacement illustrations. Identity, full silhouettes, two arms/two legs or natural limb occlusion, role pose, facing and visible owned equipment were checked against the supplied references. Feral retains the left-forearm round shield and right wrist blades with no shoulder cannon. Scar retains its held spear, shoulder cannon, silver biomask and original adaptation appearance.",
+  "visualFindings": [],
+  "alphaMeasurementNotes": [
+    "All eight PNGs are RGBA with actual alpha-zero pixels. Whole-PNG outer-border measurements are reported below, separately from any selected runtime UV rect.",
+    "The Feral left attacker frame5 whole-PNG left border and Scar left victim frame5 whole-PNG bottom border contain sparse alpha1 pixels. The other six entire PNG borders have alpha0 on all four sides. These values alone do not establish whether a separately selected internal frame rect has an exact alpha-zero gutter.",
+    "The production integrator reports that an internal native UV rect with exact alpha-zero borders was found for each replacement. This supplementary illustration review does not independently certify those final rects."
+  ],
+  "limits": [
+    "Runtime frame rects, pivots, body scale per page, paired actor contact, timing, damage, replay, clipping and camera framing remain outside this illustration verdict and require the separate production checks.",
+    "No public copy byte equality is claimed here before its final path is supplied. The SHA256 and byte count pin each untouched native file for comparison with the eventual public copy.",
+    "Raw native images were not edited, masked, flipped, rotated or segmented. Read-only pixel inspection was used only to measure alpha and metadata.",
+    "No film-exact 1:1 fidelity claim and no spreadsheet source-completion claim is made."
+  ],
+  "sources": [
+    {
+      "jobId": "feral-throw-forward-left-isolated-2-gutter-r1",
+      "fighterId": "feral-hunter",
+      "role": "attacker",
+      "facing": "left",
+      "selectedFrameIndex": 2,
+      "nativeSourcePath": "/workspace/generated_images/exec-a8bf27a1-0d76-47ab-b5ae-2385a615ca9a.png",
+      "submittedReferences": [
+        "/workspace/generated_images/exec-5fd1bec6-8473-4151-bd5a-df16f56de687.png"
+      ],
+      "sha256": "6ff3767df2283b599f7a204e20e3a8c03a943fb1a8dc9b7531f7a3c6778c1931",
+      "bytes": 1706509,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "allNonzeroAlphaBounds": [
+        49,
+        9,
+        1514,
+        998
+      ],
+      "wholePngBorderAlpha": {
+        "top": {
+          "maxAlpha": 0,
+          "nonzeroPixels": 0
+        },
+        "bottom": {
+          "maxAlpha": 0,
+          "nonzeroPixels": 0
+        },
+        "left": {
+          "maxAlpha": 0,
+          "nonzeroPixels": 0
+        },
+        "right": {
+          "maxAlpha": 0,
+          "nonzeroPixels": 0
+        }
+      },
+      "personallyViewed": true,
+      "sourceIllustrationVerdict": "no-confirmed-blocking-visual-finding"
+    },
+    {
+      "jobId": "feral-throw-forward-left-isolated-5-gutter-r1",
+      "fighterId": "feral-hunter",
+      "role": "attacker",
+      "facing": "left",
+      "selectedFrameIndex": 5,
+      "nativeSourcePath": "/workspace/generated_images/exec-b309dead-e7fd-42ea-b80c-a1dcf6424f7f.png",
+      "submittedReferences": [
+        "/workspace/generated_images/exec-5fd1bec6-8473-4151-bd5a-df16f56de687.png"
+      ],
+      "sha256": "2411a5307a67bad68b4e2b1fc2fbbb52b3320d6dc10a956039a68bce30318046",
+      "bytes": 1553500,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "allNonzeroAlphaBounds": [
+        0,
+        20,
+        1514,
+        1008
+      ],
+      "wholePngBorderAlpha": {
+        "top": {
+          "maxAlpha": 0,
+          "nonzeroPixels": 0
+        },
+        "bottom": {
+          "maxAlpha": 0,
+          "nonzeroPixels": 0
+        },
+        "left": {
+          "maxAlpha": 1,
+          "nonzeroPixels": 6
+        },
+        "right": {
+          "maxAlpha": 0,
+          "nonzeroPixels": 0
+        }
+      },
+      "personallyViewed": true,
+      "sourceIllustrationVerdict": "no-confirmed-blocking-visual-finding"
+    },
+    {
+      "jobId": "scar-throw-forward-left-isolated-2-gutter-r1",
+      "fighterId": "scar",
+      "role": "attacker",
+      "facing": "left",
+      "selectedFrameIndex": 2,
+      "nativeSourcePath": "/workspace/generated_images/exec-ddaa2016-75ee-4d68-8194-e23f0b2e03fb.png",
+      "submittedReferences": [
+        "/workspace/generated_images/exec-fd1ca4b6-42fe-4dd7-b26e-5ef6ef4dee8c.png"
+      ],
+      "sha256": "08c29f9c49d71aef046968c86000a4fd1607486934ab764c80718c86aa816454",
+      "bytes": 1606038,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "allNonzeroAlphaBounds": [
+        31,
+        13,
+        1498,
+        984
+      ],
+      "wholePngBorderAlpha": {
+        "top": {
+          "maxAlpha": 0,
+          "nonzeroPixels": 0
+        },
+        "bottom": {
+          "maxAlpha": 0,
+          "nonzeroPixels": 0
+        },
+        "left": {
+          "maxAlpha": 0,
+          "nonzeroPixels": 0
+        },
+        "right": {
+          "maxAlpha": 0,
+          "nonzeroPixels": 0
+        }
+      },
+      "personallyViewed": true,
+      "sourceIllustrationVerdict": "no-confirmed-blocking-visual-finding"
+    },
+    {
+      "jobId": "scar-throw-forward-left-isolated-5-gutter-r1",
+      "fighterId": "scar",
+      "role": "attacker",
+      "facing": "left",
+      "selectedFrameIndex": 5,
+      "nativeSourcePath": "/workspace/generated_images/exec-6ed9efbb-c7e5-4092-8fc0-4a4b4629fc11.png",
+      "submittedReferences": [
+        "/workspace/generated_images/exec-fd1ca4b6-42fe-4dd7-b26e-5ef6ef4dee8c.png"
+      ],
+      "sha256": "7d1eee2349555a1eab15c2ce60d0bae9e858d66fd183f4aa62e3f97e3d2ff157",
+      "bytes": 1461409,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "allNonzeroAlphaBounds": [
+        171,
+        17,
+        1466,
+        1004
+      ],
+      "wholePngBorderAlpha": {
+        "top": {
+          "maxAlpha": 0,
+          "nonzeroPixels": 0
+        },
+        "bottom": {
+          "maxAlpha": 0,
+          "nonzeroPixels": 0
+        },
+        "left": {
+          "maxAlpha": 0,
+          "nonzeroPixels": 0
+        },
+        "right": {
+          "maxAlpha": 0,
+          "nonzeroPixels": 0
+        }
+      },
+      "personallyViewed": true,
+      "sourceIllustrationVerdict": "no-confirmed-blocking-visual-finding"
+    },
+    {
+      "jobId": "feral-throw-victim-left-isolated-4-gutter-r1",
+      "fighterId": "feral-hunter",
+      "role": "victim",
+      "facing": "left",
+      "selectedFrameIndex": 4,
+      "nativeSourcePath": "/workspace/generated_images/exec-98fc422f-5b9f-4ee0-9f08-76adec70e1d5.png",
+      "submittedReferences": [
+        "/workspace/generated_images/exec-efd5df1b-af04-4562-8367-29137af6c83a.png"
+      ],
+      "sha256": "3ee1f59c32a1204957aac968b0c22f74cfde5297393985d953c1cf1de65f7c98",
+      "bytes": 1600619,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "allNonzeroAlphaBounds": [
+        39,
+        31,
+        1520,
+        984
+      ],
+      "wholePngBorderAlpha": {
+        "top": {
+          "maxAlpha": 0,
+          "nonzeroPixels": 0
+        },
+        "bottom": {
+          "maxAlpha": 0,
+          "nonzeroPixels": 0
+        },
+        "left": {
+          "maxAlpha": 0,
+          "nonzeroPixels": 0
+        },
+        "right": {
+          "maxAlpha": 0,
+          "nonzeroPixels": 0
+        }
+      },
+      "personallyViewed": true,
+      "sourceIllustrationVerdict": "no-confirmed-blocking-visual-finding"
+    },
+    {
+      "jobId": "scar-throw-victim-right-isolated-2-gutter-r1",
+      "fighterId": "scar",
+      "role": "victim",
+      "facing": "right",
+      "selectedFrameIndex": 2,
+      "nativeSourcePath": "/workspace/generated_images/exec-ee3c7eb8-3bfd-4e26-9d2f-a3df79cb4e2f.png",
+      "submittedReferences": [
+        "/workspace/generated_images/exec-76f8a6c6-fc3f-4d0b-9fb0-a3916308d6ca.png"
+      ],
+      "sha256": "a83f6621c6312f4080cd428358e89369d5c9f3e257742bbb8513b9c2dba2856e",
+      "bytes": 1458006,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "allNonzeroAlphaBounds": [
+        33,
+        69,
+        1496,
+        988
+      ],
+      "wholePngBorderAlpha": {
+        "top": {
+          "maxAlpha": 0,
+          "nonzeroPixels": 0
+        },
+        "bottom": {
+          "maxAlpha": 0,
+          "nonzeroPixels": 0
+        },
+        "left": {
+          "maxAlpha": 0,
+          "nonzeroPixels": 0
+        },
+        "right": {
+          "maxAlpha": 0,
+          "nonzeroPixels": 0
+        }
+      },
+      "personallyViewed": true,
+      "sourceIllustrationVerdict": "no-confirmed-blocking-visual-finding"
+    },
+    {
+      "jobId": "scar-throw-victim-left-isolated-2-gutter-r1",
+      "fighterId": "scar",
+      "role": "victim",
+      "facing": "left",
+      "selectedFrameIndex": 2,
+      "nativeSourcePath": "/workspace/generated_images/exec-5288b671-daa1-446f-9f65-fdbeab56881f.png",
+      "submittedReferences": [
+        "/workspace/generated_images/exec-0f0c9148-0a95-44f6-bbb6-2d2fdb812f14.png"
+      ],
+      "sha256": "b0811cc9418578e58157139809783f127ed46322ea9d705325b34e908958a6ce",
+      "bytes": 1518305,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "allNonzeroAlphaBounds": [
+        57,
+        23,
+        1506,
+        985
+      ],
+      "wholePngBorderAlpha": {
+        "top": {
+          "maxAlpha": 0,
+          "nonzeroPixels": 0
+        },
+        "bottom": {
+          "maxAlpha": 0,
+          "nonzeroPixels": 0
+        },
+        "left": {
+          "maxAlpha": 0,
+          "nonzeroPixels": 0
+        },
+        "right": {
+          "maxAlpha": 0,
+          "nonzeroPixels": 0
+        }
+      },
+      "personallyViewed": true,
+      "sourceIllustrationVerdict": "no-confirmed-blocking-visual-finding"
+    },
+    {
+      "jobId": "scar-throw-victim-left-isolated-5-gutter-r1",
+      "fighterId": "scar",
+      "role": "victim",
+      "facing": "left",
+      "selectedFrameIndex": 5,
+      "nativeSourcePath": "/workspace/generated_images/exec-e3b507f0-8494-499a-979d-0135306df441.png",
+      "submittedReferences": [
+        "/workspace/generated_images/exec-0f0c9148-0a95-44f6-bbb6-2d2fdb812f14.png"
+      ],
+      "sha256": "34fa8678d6d979ffc80200eecff09708baf3cca3dd07f54d094d6887fd20a97c",
+      "bytes": 1499671,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "allNonzeroAlphaBounds": [
+        57,
+        25,
+        1508,
+        1024
+      ],
+      "wholePngBorderAlpha": {
+        "top": {
+          "maxAlpha": 0,
+          "nonzeroPixels": 0
+        },
+        "bottom": {
+          "maxAlpha": 1,
+          "nonzeroPixels": 98
+        },
+        "left": {
+          "maxAlpha": 0,
+          "nonzeroPixels": 0
+        },
+        "right": {
+          "maxAlpha": 0,
+          "nonzeroPixels": 0
+        }
+      },
+      "personallyViewed": true,
+      "sourceIllustrationVerdict": "no-confirmed-blocking-visual-finding"
+    }
+  ]
+}

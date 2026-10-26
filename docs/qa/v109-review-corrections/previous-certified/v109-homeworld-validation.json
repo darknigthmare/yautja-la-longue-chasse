@@ -1,0 +1,694 @@
+{
+  "schemaVersion": 1,
+  "release": "V109",
+  "status": "PASS_CIBLE",
+  "scope": "Two declared empty initial campaign checkpoints play ROLE03 A/B via native walking, consent, provenance, separately carried objects, real mismatch/reprise and explicit report. A third empty checkpoint plays the real Atlas around initial cargo, then an actually carried/parked load. No new NPC gesture, repaired plaque, lineage, source BODY or campaign reward is claimed.",
+  "production": {
+    "mode": "production",
+    "runtimeCommit": "63cfb392a72438623f8031257e54497ece390aa8",
+    "buildId": "FJ6IbT6OZx1H51wYnNmex",
+    "browserErrors": 0,
+    "checksFailed": 0,
+    "checksPassed": 55,
+    "servedBuilds": [
+      {
+        "status": 200,
+        "expectedBuildId": "FJ6IbT6OZx1H51wYnNmex",
+        "foundInHtml": true,
+        "htmlSha256": "422caa9465fea7ad708f0f4f23760ad2b1c18aedef519d1dd2ea8abecf6dd77d",
+        "url": "http://127.0.0.1:3101/"
+      },
+      {
+        "status": 200,
+        "expectedBuildId": "FJ6IbT6OZx1H51wYnNmex",
+        "foundInHtml": true,
+        "htmlSha256": "422caa9465fea7ad708f0f4f23760ad2b1c18aedef519d1dd2ea8abecf6dd77d",
+        "url": "http://127.0.0.1:3101/"
+      },
+      {
+        "status": 200,
+        "expectedBuildId": "FJ6IbT6OZx1H51wYnNmex",
+        "foundInHtml": true,
+        "htmlSha256": "422caa9465fea7ad708f0f4f23760ad2b1c18aedef519d1dd2ea8abecf6dd77d",
+        "url": "http://127.0.0.1:3101/"
+      },
+      {
+        "status": 200,
+        "expectedBuildId": "FJ6IbT6OZx1H51wYnNmex",
+        "foundInHtml": true,
+        "htmlSha256": "422caa9465fea7ad708f0f4f23760ad2b1c18aedef519d1dd2ea8abecf6dd77d",
+        "url": "http://127.0.0.1:3101/"
+      },
+      {
+        "status": 200,
+        "expectedBuildId": "FJ6IbT6OZx1H51wYnNmex",
+        "foundInHtml": true,
+        "htmlSha256": "422caa9465fea7ad708f0f4f23760ad2b1c18aedef519d1dd2ea8abecf6dd77d",
+        "url": "http://127.0.0.1:3101/"
+      },
+      {
+        "status": 200,
+        "expectedBuildId": "FJ6IbT6OZx1H51wYnNmex",
+        "foundInHtml": true,
+        "htmlSha256": "422caa9465fea7ad708f0f4f23760ad2b1c18aedef519d1dd2ea8abecf6dd77d",
+        "url": "http://127.0.0.1:3101/"
+      },
+      {
+        "status": 200,
+        "expectedBuildId": "FJ6IbT6OZx1H51wYnNmex",
+        "foundInHtml": true,
+        "htmlSha256": "422caa9465fea7ad708f0f4f23760ad2b1c18aedef519d1dd2ea8abecf6dd77d",
+        "url": "http://127.0.0.1:3101/"
+      },
+      {
+        "status": 200,
+        "expectedBuildId": "FJ6IbT6OZx1H51wYnNmex",
+        "foundInHtml": true,
+        "htmlSha256": "422caa9465fea7ad708f0f4f23760ad2b1c18aedef519d1dd2ea8abecf6dd77d",
+        "url": "http://127.0.0.1:3101/"
+      },
+      {
+        "status": 200,
+        "expectedBuildId": "FJ6IbT6OZx1H51wYnNmex",
+        "foundInHtml": true,
+        "htmlSha256": "422caa9465fea7ad708f0f4f23760ad2b1c18aedef519d1dd2ea8abecf6dd77d",
+        "url": "http://127.0.0.1:3101/"
+      }
+    ]
+  },
+  "invocation": {
+    "command": "node scripts/qa-homeworld-plaque-v109.mjs",
+    "environment": {
+      "YAUTJA_QA_BASE_URL": "http://127.0.0.1:3101",
+      "YAUTJA_QA_BUILD_ID": "FJ6IbT6OZx1H51wYnNmex",
+      "YAUTJA_QA_RUNTIME_COMMIT": "63cfb392a72438623f8031257e54497ece390aa8",
+      "YAUTJA_QA_MODE": "compiled-app",
+      "YAUTJA_QA_JOURNEYS": "A,B,C",
+      "YAUTJA_PLAQUE_V109_OUTPUT": "/workspace/yautja-la-longue-chasse/outputs/qa-v109-production-r2/homeworld"
+    }
+  },
+  "sourceBefore": [
+    {
+      "file": "scripts/qa-homeworld-plaque-v109.mjs",
+      "sha256": "3935bb6fc5e20f497ea177dd8a18778a0e1736a4e2f050505b49a71b5b64c446",
+      "bytes": 23588
+    },
+    {
+      "file": "tests/helpers/solo-v67-campaign-route.mjs",
+      "sha256": "50dc9c5ddbd91306cca8fc6bf1eebca9829cd46242cbe78f254c87f738e6c411",
+      "bytes": 1270
+    },
+    {
+      "file": "tests/helpers/archive-plaque-v109-route.mjs",
+      "sha256": "229d92e30046602d46f244ff5f3818db5ead1918f12a418f609c664376a290c7",
+      "bytes": 3355
+    },
+    {
+      "file": "app/game/HomeworldHub.tsx",
+      "sha256": "e36e3745941d03ca72d44ea7f3ea58296588a359ac51f171d0d4cff3ab45d23b",
+      "bytes": 153844
+    },
+    {
+      "file": "app/game/HomeworldWorldSceneV77.tsx",
+      "sha256": "e054fe121a3b2c145cc631411622dbbcdf98191f5eb87cfa5d27586b6199ff65",
+      "bytes": 23799
+    },
+    {
+      "file": "app/game/HomeworldArchivePlaqueV109.tsx",
+      "sha256": "ab6222b169c5ba58a1289686c2e3511f316f1ba0a6d7664a29fd182fa447d7e8",
+      "bytes": 10020
+    },
+    {
+      "file": "app/game/HomeworldArchivePlaqueWorldV109.tsx",
+      "sha256": "56cc6a0e67bf9135fd74ae6ed9d93cd46f41da7817c57565a4e00f3b6a0c85ba",
+      "bytes": 2984
+    },
+    {
+      "file": "app/game/HomeworldArchivePlaqueV109.module.css",
+      "sha256": "487c7dfbbceb5d3acce3306545144d98c5a53b9776f3db10ac179e7202ae87fa",
+      "bytes": 2167
+    },
+    {
+      "file": "app/game/systems/homeworldArchivePlaqueDefinitionV109.ts",
+      "sha256": "271d4b3cba7a61dcfca6ea702a16b72493a7184cab5a324d47068a32860b597f",
+      "bytes": 2129
+    },
+    {
+      "file": "app/game/systems/homeworldArchivePlaqueLedgerV109.ts",
+      "sha256": "0b9fa5793fdace1d3b45ade89882480da55c03f5c4f3c7a59477f29f4e061bf5",
+      "bytes": 7792
+    },
+    {
+      "file": "app/game/systems/homeworldArchivePlaqueV109.ts",
+      "sha256": "2ad8ba3c87bacefead1a5858f87c93cd7e4b0e85222325b8d6db12f52c83c4bb",
+      "bytes": 12685
+    },
+    {
+      "file": "app/game/systems/homeworldArchivePlaqueLandmarksV109.ts",
+      "sha256": "781280a8459eb8df660cdc8a7503e9b37e3eb46eceaa2dd12121462b620c8e77",
+      "bytes": 2036
+    },
+    {
+      "file": "app/game/data/homeworldArchivePlaqueArtV109.json",
+      "sha256": "2335dfc4586fac84f22fe18c6073fd46887d552ee80ef30338123d8516be9ec1",
+      "bytes": 1273
+    },
+    {
+      "file": "app/game/data/bibleArchiveSceneV106.json",
+      "sha256": "1460ecc3362a9ba4da794762e64dc36a110fade7233298808eafb23e8f6857f4",
+      "bytes": 19332
+    },
+    {
+      "file": "app/game/systems/homeworld.ts",
+      "sha256": "240db0472f047ad720527f9ffd0b7a09a31d0f9ac5eea3d2dc26d4cc667f428c",
+      "bytes": 30471
+    },
+    {
+      "file": "app/game/save.ts",
+      "sha256": "1543b0520d311fa3aee66a0989991f656db92459f681588714edc73ae3d34e70",
+      "bytes": 81910
+    },
+    {
+      "file": "app/game/HomeworldWorldMapV77.tsx",
+      "sha256": "b192b6da5e2386f7b5108160b32e30a9e939b2f2d9f073512ede49aa05986130",
+      "bytes": 25504
+    },
+    {
+      "file": "app/game/HomeworldRouteGuideV109.tsx",
+      "sha256": "e77395167b1376ca19223d2435e963bad81f1eba1da90e84a5800738509a5ceb",
+      "bytes": 1917
+    },
+    {
+      "file": "app/game/homeworldRouteWorkerV109.ts",
+      "sha256": "8cc3e7be1cabcf0df8fd0e60a1f2f3549e6b1510cd2001b3416201f8ca5b9c8d",
+      "bytes": 791
+    },
+    {
+      "file": "app/game/systems/homeworldWayfindingV109.ts",
+      "sha256": "6652acbd6b2302d84c1b1b83e6ad5df938ac97f413aa69c39f679e6dc9f4d7b3",
+      "bytes": 15970
+    },
+    {
+      "file": "app/game/systems/homeworldNavigationV109.ts",
+      "sha256": "8203bed6ba14ae3b15d6eb6b1834eb884ff4804438b079bc6eb7d90bb86863f9",
+      "bytes": 8669
+    },
+    {
+      "file": "app/game/systems/homeworldAtlasLandmarksV109.ts",
+      "sha256": "c9cd0869c97483afdf3d407f652c5376a0cd54344448800520254bfdb2df6a4e",
+      "bytes": 1628
+    },
+    {
+      "file": "app/game/systems/homeworldCargoV108.ts",
+      "sha256": "1be8191cd2e4760d268acf04086093bcf1357dcded8faa54141e49ea604fa33b",
+      "bytes": 15850
+    },
+    {
+      "file": "app/game/systems/homeworldCargoLedgerV108.ts",
+      "sha256": "5ace5c6c1e606a74fe9353278e6281179123b9e052ad8b621435a96b83d31451",
+      "bytes": 5888
+    },
+    {
+      "file": "app/game/systems/homeworldCargoSolidsV108.ts",
+      "sha256": "73b6d14139685afe6f78e17b0827f11a1251350aa10e05c61cbda8fd6fdbb96b",
+      "bytes": 2068
+    },
+    {
+      "file": "app/game/systems/homeworldCivicWorldV80.ts",
+      "sha256": "02b3461609c7aafb6bafb50443f9af490fc29fb5819323f404d5efc95eebf772",
+      "bytes": 2315
+    },
+    {
+      "file": "public/game/homeworld/v109/archive-plaque-atlas-v109.png",
+      "sha256": "a47fb32cfc7b5f2c4e5721c660c9a2d68ac4dee1ee869d5175f41dd2278c49fe",
+      "bytes": 1582702
+    },
+    {
+      "file": "public/game/homeworld/v78/port-cargo-sorting-cart.png",
+      "sha256": "0354f5848f6a921fe8f8f16f9bcf68f73f81b3c85d665d1122cf2597a0c84e7f",
+      "bytes": 2572525
+    },
+    {
+      "file": "public/game/homeworld/v83/cargo-rack-right.png",
+      "sha256": "c6146c0577b832012a099e87b6008f5315771c72725932ce8eb850e4f9f43eb4",
+      "bytes": 1922894
+    },
+    {
+      "file": "public/game/homeworld/v80/sealed-cargo-case-left.png",
+      "sha256": "0d27b2eec19ddbd8d1ea65a8071971b34e24d93abb0052c98e7bd32058d98012",
+      "bytes": 1801987
+    }
+  ],
+  "sourceAfter": [
+    {
+      "file": "scripts/qa-homeworld-plaque-v109.mjs",
+      "sha256": "3935bb6fc5e20f497ea177dd8a18778a0e1736a4e2f050505b49a71b5b64c446",
+      "bytes": 23588
+    },
+    {
+      "file": "tests/helpers/solo-v67-campaign-route.mjs",
+      "sha256": "50dc9c5ddbd91306cca8fc6bf1eebca9829cd46242cbe78f254c87f738e6c411",
+      "bytes": 1270
+    },
+    {
+      "file": "tests/helpers/archive-plaque-v109-route.mjs",
+      "sha256": "229d92e30046602d46f244ff5f3818db5ead1918f12a418f609c664376a290c7",
+      "bytes": 3355
+    },
+    {
+      "file": "app/game/HomeworldHub.tsx",
+      "sha256": "e36e3745941d03ca72d44ea7f3ea58296588a359ac51f171d0d4cff3ab45d23b",
+      "bytes": 153844
+    },
+    {
+      "file": "app/game/HomeworldWorldSceneV77.tsx",
+      "sha256": "e054fe121a3b2c145cc631411622dbbcdf98191f5eb87cfa5d27586b6199ff65",
+      "bytes": 23799
+    },
+    {
+      "file": "app/game/HomeworldArchivePlaqueV109.tsx",
+      "sha256": "ab6222b169c5ba58a1289686c2e3511f316f1ba0a6d7664a29fd182fa447d7e8",
+      "bytes": 10020
+    },
+    {
+      "file": "app/game/HomeworldArchivePlaqueWorldV109.tsx",
+      "sha256": "56cc6a0e67bf9135fd74ae6ed9d93cd46f41da7817c57565a4e00f3b6a0c85ba",
+      "bytes": 2984
+    },
+    {
+      "file": "app/game/HomeworldArchivePlaqueV109.module.css",
+      "sha256": "487c7dfbbceb5d3acce3306545144d98c5a53b9776f3db10ac179e7202ae87fa",
+      "bytes": 2167
+    },
+    {
+      "file": "app/game/systems/homeworldArchivePlaqueDefinitionV109.ts",
+      "sha256": "271d4b3cba7a61dcfca6ea702a16b72493a7184cab5a324d47068a32860b597f",
+      "bytes": 2129
+    },
+    {
+      "file": "app/game/systems/homeworldArchivePlaqueLedgerV109.ts",
+      "sha256": "0b9fa5793fdace1d3b45ade89882480da55c03f5c4f3c7a59477f29f4e061bf5",
+      "bytes": 7792
+    },
+    {
+      "file": "app/game/systems/homeworldArchivePlaqueV109.ts",
+      "sha256": "2ad8ba3c87bacefead1a5858f87c93cd7e4b0e85222325b8d6db12f52c83c4bb",
+      "bytes": 12685
+    },
+    {
+      "file": "app/game/systems/homeworldArchivePlaqueLandmarksV109.ts",
+      "sha256": "781280a8459eb8df660cdc8a7503e9b37e3eb46eceaa2dd12121462b620c8e77",
+      "bytes": 2036
+    },
+    {
+      "file": "app/game/data/homeworldArchivePlaqueArtV109.json",
+      "sha256": "2335dfc4586fac84f22fe18c6073fd46887d552ee80ef30338123d8516be9ec1",
+      "bytes": 1273
+    },
+    {
+      "file": "app/game/data/bibleArchiveSceneV106.json",
+      "sha256": "1460ecc3362a9ba4da794762e64dc36a110fade7233298808eafb23e8f6857f4",
+      "bytes": 19332
+    },
+    {
+      "file": "app/game/systems/homeworld.ts",
+      "sha256": "240db0472f047ad720527f9ffd0b7a09a31d0f9ac5eea3d2dc26d4cc667f428c",
+      "bytes": 30471
+    },
+    {
+      "file": "app/game/save.ts",
+      "sha256": "1543b0520d311fa3aee66a0989991f656db92459f681588714edc73ae3d34e70",
+      "bytes": 81910
+    },
+    {
+      "file": "app/game/HomeworldWorldMapV77.tsx",
+      "sha256": "b192b6da5e2386f7b5108160b32e30a9e939b2f2d9f073512ede49aa05986130",
+      "bytes": 25504
+    },
+    {
+      "file": "app/game/HomeworldRouteGuideV109.tsx",
+      "sha256": "e77395167b1376ca19223d2435e963bad81f1eba1da90e84a5800738509a5ceb",
+      "bytes": 1917
+    },
+    {
+      "file": "app/game/homeworldRouteWorkerV109.ts",
+      "sha256": "8cc3e7be1cabcf0df8fd0e60a1f2f3549e6b1510cd2001b3416201f8ca5b9c8d",
+      "bytes": 791
+    },
+    {
+      "file": "app/game/systems/homeworldWayfindingV109.ts",
+      "sha256": "6652acbd6b2302d84c1b1b83e6ad5df938ac97f413aa69c39f679e6dc9f4d7b3",
+      "bytes": 15970
+    },
+    {
+      "file": "app/game/systems/homeworldNavigationV109.ts",
+      "sha256": "8203bed6ba14ae3b15d6eb6b1834eb884ff4804438b079bc6eb7d90bb86863f9",
+      "bytes": 8669
+    },
+    {
+      "file": "app/game/systems/homeworldAtlasLandmarksV109.ts",
+      "sha256": "c9cd0869c97483afdf3d407f652c5376a0cd54344448800520254bfdb2df6a4e",
+      "bytes": 1628
+    },
+    {
+      "file": "app/game/systems/homeworldCargoV108.ts",
+      "sha256": "1be8191cd2e4760d268acf04086093bcf1357dcded8faa54141e49ea604fa33b",
+      "bytes": 15850
+    },
+    {
+      "file": "app/game/systems/homeworldCargoLedgerV108.ts",
+      "sha256": "5ace5c6c1e606a74fe9353278e6281179123b9e052ad8b621435a96b83d31451",
+      "bytes": 5888
+    },
+    {
+      "file": "app/game/systems/homeworldCargoSolidsV108.ts",
+      "sha256": "73b6d14139685afe6f78e17b0827f11a1251350aa10e05c61cbda8fd6fdbb96b",
+      "bytes": 2068
+    },
+    {
+      "file": "app/game/systems/homeworldCivicWorldV80.ts",
+      "sha256": "02b3461609c7aafb6bafb50443f9af490fc29fb5819323f404d5efc95eebf772",
+      "bytes": 2315
+    },
+    {
+      "file": "public/game/homeworld/v109/archive-plaque-atlas-v109.png",
+      "sha256": "a47fb32cfc7b5f2c4e5721c660c9a2d68ac4dee1ee869d5175f41dd2278c49fe",
+      "bytes": 1582702
+    },
+    {
+      "file": "public/game/homeworld/v78/port-cargo-sorting-cart.png",
+      "sha256": "0354f5848f6a921fe8f8f16f9bcf68f73f81b3c85d665d1122cf2597a0c84e7f",
+      "bytes": 2572525
+    },
+    {
+      "file": "public/game/homeworld/v83/cargo-rack-right.png",
+      "sha256": "c6146c0577b832012a099e87b6008f5315771c72725932ce8eb850e4f9f43eb4",
+      "bytes": 1922894
+    },
+    {
+      "file": "public/game/homeworld/v80/sealed-cargo-case-left.png",
+      "sha256": "0d27b2eec19ddbd8d1ea65a8071971b34e24d93abb0052c98e7bd32058d98012",
+      "bytes": 1801987
+    }
+  ],
+  "checks": [
+    {
+      "name": "A native K-17 objects precede any source choice",
+      "status": "PASS"
+    },
+    {
+      "name": "A exact opening names the actual plaque and distinct impression",
+      "status": "PASS"
+    },
+    {
+      "name": "A refused choice keeps durable K-17 bytes",
+      "status": "PASS"
+    },
+    {
+      "name": "A refused choice stops native movement",
+      "status": "PASS"
+    },
+    {
+      "name": "A repeated refusal retains retry",
+      "status": "PASS"
+    },
+    {
+      "name": "A retry does not replay choice",
+      "status": "PASS"
+    },
+    {
+      "name": "A source choice is an intention with all objects still at their original places",
+      "status": "PASS"
+    },
+    {
+      "name": "A the present archivist explicitly authorizes handling",
+      "status": "PASS"
+    },
+    {
+      "name": "A refused pickup keeps durable K-17 bytes",
+      "status": "PASS"
+    },
+    {
+      "name": "A refused pickup stops native movement",
+      "status": "PASS"
+    },
+    {
+      "name": "A repeated refusal retains retry",
+      "status": "PASS"
+    },
+    {
+      "name": "A retry does not replay pickup",
+      "status": "PASS"
+    },
+    {
+      "name": "A plaque carries only after actual observation and copied discovery point",
+      "status": "PASS"
+    },
+    {
+      "name": "A pause preserves the actual carried plaque and interrupts its work",
+      "status": "PASS"
+    },
+    {
+      "name": "A normal Continue keeps the exact native plaque/carry checkpoint",
+      "status": "PASS"
+    },
+    {
+      "name": "A plaque is physically placed on its own separate surface",
+      "status": "PASS"
+    },
+    {
+      "name": "A trace carries only after actual observation and copied discovery point",
+      "status": "PASS"
+    },
+    {
+      "name": "A trace is physically placed on its own separate surface",
+      "status": "PASS"
+    },
+    {
+      "name": "A actual inspection records the visibly missing edge",
+      "status": "PASS"
+    },
+    {
+      "name": "A comparison preserves both objects and does not attribute a lineage",
+      "status": "PASS"
+    },
+    {
+      "name": "A exact failure waits for a played comparison and walked report",
+      "status": "PASS"
+    },
+    {
+      "name": "A exact reprise follows a new post interaction with both traces still separate",
+      "status": "PASS"
+    },
+    {
+      "name": "A the transported fragment remains a separate candidate, without a repaired plaque",
+      "status": "PASS"
+    },
+    {
+      "name": "A conclusion waits for actual separately placed pieces",
+      "status": "PASS"
+    },
+    {
+      "name": "A refused report keeps durable K-17 bytes",
+      "status": "PASS"
+    },
+    {
+      "name": "A refused report stops native movement",
+      "status": "PASS"
+    },
+    {
+      "name": "A repeated refusal retains retry",
+      "status": "PASS"
+    },
+    {
+      "name": "A retry does not replay report",
+      "status": "PASS"
+    },
+    {
+      "name": "A exact success is emitted only after the physical study and return",
+      "status": "PASS"
+    },
+    {
+      "name": "A no profile, inventory, trophy or lineage reward is invented",
+      "status": "PASS"
+    },
+    {
+      "name": "A mobile scene has no page overflow and a44px close control",
+      "status": "PASS"
+    },
+    {
+      "name": "A completed ordinary Continue preserves all physical pieces and source lines",
+      "status": "PASS"
+    },
+    {
+      "name": "B native K-17 objects precede any source choice",
+      "status": "PASS"
+    },
+    {
+      "name": "B exact opening names the actual plaque and distinct impression",
+      "status": "PASS"
+    },
+    {
+      "name": "B source choice is an intention with all objects still at their original places",
+      "status": "PASS"
+    },
+    {
+      "name": "B the present archivist explicitly authorizes handling",
+      "status": "PASS"
+    },
+    {
+      "name": "B plaque carries only after actual observation and copied discovery point",
+      "status": "PASS"
+    },
+    {
+      "name": "B plaque is physically placed on its own separate surface",
+      "status": "PASS"
+    },
+    {
+      "name": "B trace carries only after actual observation and copied discovery point",
+      "status": "PASS"
+    },
+    {
+      "name": "B trace is physically placed on its own separate surface",
+      "status": "PASS"
+    },
+    {
+      "name": "B conclusion waits for actual separately placed pieces",
+      "status": "PASS"
+    },
+    {
+      "name": "B exact success is emitted only after the physical study and return",
+      "status": "PASS"
+    },
+    {
+      "name": "B leaves the unexamined fragment at its source and invents no failure or repair",
+      "status": "PASS"
+    },
+    {
+      "name": "B no profile, inventory, trophy or lineage reward is invented",
+      "status": "PASS"
+    },
+    {
+      "name": "B mobile scene has no page overflow and a44px close control",
+      "status": "PASS"
+    },
+    {
+      "name": "B completed ordinary Continue preserves all physical pieces and source lines",
+      "status": "PASS"
+    },
+    {
+      "name": "C actual Atlas paints two known load footprints and fixed rack/cart hulls",
+      "status": "PASS"
+    },
+    {
+      "name": "C actual guide is followed by native keyboard around initial loads without creating a cargo operation",
+      "status": "PASS"
+    },
+    {
+      "name": "C cargo owner consent is obtained by an actual post interaction",
+      "status": "PASS"
+    },
+    {
+      "name": "C actual original wide lot is carried, without a seeded moved obstacle",
+      "status": "PASS"
+    },
+    {
+      "name": "C a real carried lot is parked at its actual new point with the same owner",
+      "status": "PASS"
+    },
+    {
+      "name": "C actual visible guide refuses the previous obstacle geometry",
+      "status": "PASS"
+    },
+    {
+      "name": "C recalculated route is actually followed around the newly parked load",
+      "status": "PASS"
+    },
+    {
+      "name": "No uncaught browser exception",
+      "status": "PASS"
+    },
+    {
+      "name": "No browser console error",
+      "status": "PASS",
+      "detail": []
+    }
+  ],
+  "captures": [
+    {
+      "file": "docs/qa/v109-homeworld/a-01-opening-native-props.png",
+      "sha256": "b93e933db436d639726e168cfcaa9ff4d24e0d601313974ee6575d38a2da688e",
+      "bytes": 191275
+    },
+    {
+      "file": "docs/qa/v109-homeworld/a-02-carried-native-plaque.png",
+      "sha256": "9ff0c32a65802b55333ce63843f0b1af385b8f6e2406ee05178d902b5470b7a5",
+      "bytes": 1301576
+    },
+    {
+      "file": "docs/qa/v109-homeworld/a-03-confirmed-mismatch.png",
+      "sha256": "6a0348cb176665418f53eeb0b9544f5207176561658744728707b089c211e528",
+      "bytes": 186842
+    },
+    {
+      "file": "docs/qa/v109-homeworld/a-04-voluntary-reprise.png",
+      "sha256": "b5d1b6883ad191060874e3dd9f01ef75274db3fa8fa59656c2fbd14e6b131b64",
+      "bytes": 189942
+    },
+    {
+      "file": "docs/qa/v109-homeworld/a-05-completed-independent-pieces.png",
+      "sha256": "8ea937a5ca1df46e0d1bff4069b5275fb2d7c887ec2c3c6242f3541bab678ccd",
+      "bytes": 194736
+    },
+    {
+      "file": "docs/qa/v109-homeworld/a-06-mobile-confirmed-study.png",
+      "sha256": "bdc0b34e94f8fa0346335b00a5e85f652945dc9fecdfec780a4d3620a0dd5b54",
+      "bytes": 123040
+    },
+    {
+      "file": "docs/qa/v109-homeworld/b-01-opening-native-props.png",
+      "sha256": "b93e933db436d639726e168cfcaa9ff4d24e0d601313974ee6575d38a2da688e",
+      "bytes": 191275
+    },
+    {
+      "file": "docs/qa/v109-homeworld/b-05-completed-independent-pieces.png",
+      "sha256": "a001754617b6f9fd2d7e77c413ce5b9b582b4e08f387dda00abb41186bfb7cc3",
+      "bytes": 192349
+    },
+    {
+      "file": "docs/qa/v109-homeworld/b-06-mobile-confirmed-study.png",
+      "sha256": "6739a7d7fd693e95b8f8c345dba8410de91314728125cc4a7815091a7aa461ff",
+      "bytes": 123693
+    },
+    {
+      "file": "docs/qa/v109-homeworld/c-01-real-atlas-initial-obstacles.png",
+      "sha256": "847b5bae7f55c86ca3d8ec94daa468197661edbe0c48b5288c50fedc7010574a",
+      "bytes": 106712
+    },
+    {
+      "file": "docs/qa/v109-homeworld/c-02-real-atlas-parked-load.png",
+      "sha256": "9f1ec7df92394d7344942df6e918a23421b34d3b3e911841f62461af92e34219",
+      "bytes": 135674
+    }
+  ],
+  "capturesOpened": [
+    "docs/qa/v109-homeworld/a-01-opening-native-props.png",
+    "docs/qa/v109-homeworld/a-02-carried-native-plaque.png",
+    "docs/qa/v109-homeworld/a-03-confirmed-mismatch.png",
+    "docs/qa/v109-homeworld/a-04-voluntary-reprise.png",
+    "docs/qa/v109-homeworld/a-05-completed-independent-pieces.png",
+    "docs/qa/v109-homeworld/a-06-mobile-confirmed-study.png",
+    "docs/qa/v109-homeworld/b-01-opening-native-props.png",
+    "docs/qa/v109-homeworld/b-05-completed-independent-pieces.png",
+    "docs/qa/v109-homeworld/b-06-mobile-confirmed-study.png",
+    "docs/qa/v109-homeworld/c-01-real-atlas-initial-obstacles.png",
+    "docs/qa/v109-homeworld/c-02-real-atlas-parked-load.png"
+  ],
+  "rawEvidence": {
+    "path": "docs/qa/v109-homeworld/browser-result.json.gz",
+    "sha256": "e464939a29fa8ad326be0789861036b7b13accf84e2845e21feadcb25af0166c",
+    "bytes": 4976,
+    "decodedSha256": "b148f7938e051fe381003b05780e735038ade6a8afb00250ddd447036a2a6daa",
+    "decodedBytes": 26290
+  }
+}

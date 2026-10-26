@@ -1,4 +1,5 @@
-import {PIT_WORKBOOK_COMBAT_RECIPE_V107, getPitWorkbookCombatMoveV107, usesPitWorkbookMechanicsV106, isPitWorkbookActionInputV107} from './pitWorkbookCombatV107';
+import {PIT_WORKBOOK_COMBAT_RECIPE_V107, getPitWorkbookCombatMoveV107, isPitWorkbookActionInputV107} from './pitWorkbookCombatV107';
+import {usesPitWorkbookMechanicsV109 as usesPitWorkbookMechanicsV106, getPitWorkbookCombatMoveV109, PIT_WORKBOOK_FORWARD_THROW_V109, PIT_WORKBOOK_THROW_LANDING_AGE_V109} from './pitWorkbookCombatV109';
 import {PIT_WORKBOOK_COMBAT_RECIPE_V106, getPitWorkbookCombatMoveV106, isPitWorkbookActionInputV106} from './pitWorkbookCombatV106';
 import {getPitWorkbookCombatMoveV105} from './pitWorkbookCombatV105';
 import { getPitCombatAttackDefinition, getPitCombatFighterDefinition } from './pitCombat';
@@ -402,7 +403,16 @@ export function getPitTrainingFrameReadout(
   let phaseTotalFrames: number | null = null;
   let framesRemaining: number | null = null;
 
-  if (state.pendingThrow) {
+  if (state.sourceThrowV109 && state.sourceThrowV109.attackerSlot !== fighterSlot) {
+    const age = state.sourceThrowV109.age;
+    const captured = age < PIT_WORKBOOK_FORWARD_THROW_V109.techTicks;
+    const airborne = age < PIT_WORKBOOK_THROW_LANDING_AGE_V109;
+    actionLabel = captured ? state.sourceThrowV109.techEligible ? 'Cible saisie · déchoppe' : 'Récupération punie · saisie' : airborne ? 'Cible projetée' : 'Chute de projection avant';
+    phaseTotalFrames = captured ? PIT_WORKBOOK_FORWARD_THROW_V109.techTicks : airborne
+      ? PIT_WORKBOOK_THROW_LANDING_AGE_V109 - PIT_WORKBOOK_FORWARD_THROW_V109.techTicks : fighter.knockdownFrames + age - PIT_WORKBOOK_THROW_LANDING_AGE_V109;
+    phaseFrame = age - (captured ? 0 : airborne ? PIT_WORKBOOK_FORWARD_THROW_V109.techTicks : PIT_WORKBOOK_THROW_LANDING_AGE_V109) + 1;
+    framesRemaining = phaseTotalFrames - phaseFrame + 1;
+  } else if (state.pendingThrow) {
     actionLabel = state.pendingThrow.attackerSlot === fighterSlot ? "Saisie en attente" : "Fenêtre de déchoppe";
     framesRemaining = state.pendingThrow.framesRemaining;
   } else if (action?.kind === "attack" && action.attack) {
@@ -424,7 +434,7 @@ export function getPitTrainingFrameReadout(
     phaseFrame = phaseTotalFrames === null ? null : Math.max(1, action.frame - phaseStart + 1);
     framesRemaining = Math.max(0, actionTotalFrames - action.frame);
   } else if (action?.kind === 'equipment') {
-    const move = fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V107 ? getPitWorkbookCombatMoveV107(fighter.definitionId, action.workbookMove) : fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V106 ? getPitWorkbookCombatMoveV106(fighter.definitionId, action.workbookMove) : getPitWorkbookCombatMoveV105(fighter.definitionId, action.workbookMove);
+    const move = fighter.normalMovesRecipe === 'workbook-v109' ? getPitWorkbookCombatMoveV109(fighter.definitionId, action.workbookMove) : fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V107 ? getPitWorkbookCombatMoveV107(fighter.definitionId, action.workbookMove) : fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V106 ? getPitWorkbookCombatMoveV106(fighter.definitionId, action.workbookMove) : getPitWorkbookCombatMoveV105(fighter.definitionId, action.workbookMove);
     if (move) {
       actionLabel = move.label;
       actionTotalFrames = move.startup + move.recovery;
@@ -433,8 +443,17 @@ export function getPitTrainingFrameReadout(
       framesRemaining = actionTotalFrames - action.frame;
     }
   } else if (action?.kind === "throw") {
-    actionLabel = "Projection";
-    phaseFrame = action.frame + 1;
+    if (fighter.normalMovesRecipe === 'workbook-v109' && action.workbookMove === 'TH_F') {
+      const timing = PIT_WORKBOOK_FORWARD_THROW_V109;
+      actionLabel = 'Projection avant · TH_F';
+      actionTotalFrames = timing.startup + timing.active + timing.recovery;
+      phaseTotalFrames = fighter.phase === 'startup' ? timing.startup : fighter.phase === 'active' ? timing.active : timing.recovery;
+      phaseFrame = action.frame - (fighter.phase === 'startup' ? 0 : fighter.phase === 'active' ? timing.startup : timing.startup + timing.active) + 1;
+      framesRemaining = actionTotalFrames - action.frame;
+    } else {
+      actionLabel = "Projection";
+      phaseFrame = action.frame + 1;
+    }
   } else if (fighter.phase === "hitstun" || fighter.phase === "blockstun") {
     framesRemaining = fighter.stunFrames;
   } else if (fighter.phase === "knockdown") {

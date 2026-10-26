@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-25T08:44:27.264676+00:00",
+  "tool": "image_gen.imagegen",
+  "attemptId": "scar-throw-victim-left-isolated-3",
+  "submittedPrompt": "Edit this EXISTING six-pose hunter sprite sheet to deliver EXACTLY ONE isolated native sprite. Keep ONLY pose index3 counting0,1,2 left-to-right on top row and3,4,5 on bottom row: the wanted hunter is the BOTTOM row, LEFT figure. Its complete existing body is approximately inside x16..532, y548..928 on the1536x1024 source. REMOVE EVERY OTHER FIGURE and every limb/weapon belonging to a neighboring pose. Reconstruct no other actor, no mannequin or partner. Preserve the wanted pose's full exact anatomy, mask, owned equipment, attached weapons, proportions, orientation and painted style, all two arms and two legs visible as in that pose. Do NOT cut off its reaching fingers, foot, shield, dreadlocks or spear. Keep the wanted pose at the SAME physical pixel scale and same location on a1536x1024 canvas if possible; all remaining canvas must be true RGBA TRANSPARENT, no brown glow, ground, vignette, captions, grid or checkerboard. This is ONE SINGLE hunter, never a new sheet and never multiple phases. Target the victim reaction pose, including its own original held spear if Scar. Do not mirror, rotate, stretch, change outfit, replace it with standingidle, add third arms, duplicate weapons, or remove any owned equipment. The purpose is safe independent game rendering without adjacent sprites leaking into the crop.",
+  "submittedReferences": [
+    {
+      "submittedPath": "/workspace/generated_images/exec-0f0c9148-0a95-44f6-bbb6-2d2fdb812f14.png",
+      "preservedPath": "public/game/sprites/v109/pit/scar/scar-throw-victim-left-v109.png",
+      "sha256": "46adfc94048c75e60f01590aa7619cacc6c934f20489c7003d24209477af0429",
+      "bytes": 2341573
+    }
+  ],
+  "transparentBackgroundRequested": true,
+  "originalNativeOutput": "/workspace/generated_images/exec-df9ecf7d-edf2-41e6-a6eb-2f9eeeea9058.png",
+  "output": {
+    "path": "public/game/sprites/v109/pit/scar/scar-throw-victim-left-isolated-3-v109.png",
+    "sha256": "89fa6f3142850eccf99932528a23ae67b0f115de00dce9db8ad1da124b2baf1a",
+    "bytes": 2110431,
+    "width": 1536,
+    "height": 1024
+  },
+  "status": "SELECTED_SOURCE_REGIONS",
+  "filesEditedAfterGeneration": false,
+  "scope": "Local tool call record, not an external signed certificate. Original adaptations; no film-exact fidelity or source action completion is inferred."
+}

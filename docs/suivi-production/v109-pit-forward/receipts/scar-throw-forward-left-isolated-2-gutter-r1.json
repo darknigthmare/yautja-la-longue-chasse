@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-25T09:06:24.082112+00:00",
+  "tool": "image_gen.imagegen",
+  "attemptId": "scar-throw-forward-left-isolated-2-gutter-r1",
+  "submittedPrompt": "Create ONE isolated native game-animation drawing of SCAR, using the supplied six-pose page as appearance and pose reference. Reproduce ONLY the TOP RIGHT pose: deep bent knees and lowered hips, torso forward LEFT, loading the hip throw, own spear still in the rear hand. This is a SINGLE complete character in exactly that one pose, NOT an atlas. Render facing screen LEFT as independently illustrated, not mirrored. Preserve gold-brown mottled skin, silver biomask with no initiation mark, black dreadlocks with gold ties, mesh suit, silver armor, shoulder cannon, wrist blades; complete owned spear stays firmly held in the SAME anatomical hand as in reference, never vanishes or changes hands. Exactly two arms and two legs, natural joint anatomy, full mask/armor/feet/hands and all owned equipment present and contained. Do not add any other person, hands, partner, mannequin, loose limb, floor or contact shadow. Draw this one full silhouette in the CENTER of a 1536x1024 canvas with VERY LARGE completely transparent margins on ALL FOUR SIDES: at least 180px left/right and120px top/bottom. The figure including every spear/blade/dreadlock must fit entirely inside central x200..1336,y140..884. Use true RGBA transparency, with alpha exactly0 everywhere outside the one character; no haze, vignette, brown glow, texture, gradient, checkerboard or ground on the transparent area. Crisp hand-drawn outlined game art matching reference. Keep the same pose, equipment sides, mask and proportions. Fully armored athletic game character, no gore or text. Original adaptation; not a movie frame.",
+  "submittedReferences": [
+    {
+      "submittedPath": "/workspace/generated_images/exec-fd1ca4b6-42fe-4dd7-b26e-5ef6ef4dee8c.png",
+      "preservedPath": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-r2-v109.png",
+      "sha256": "64b53fe5abfaed37324a809419cfb216aca16b83467115a1e555ee0864f7d048",
+      "bytes": 2358596
+    }
+  ],
+  "transparentBackgroundRequested": true,
+  "originalNativeOutput": "/workspace/generated_images/exec-ddaa2016-75ee-4d68-8194-e23f0b2e03fb.png",
+  "output": {
+    "path": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-2-gutter-r1-v109.png",
+    "sha256": "08c29f9c49d71aef046968c86000a4fd1607486934ab764c80718c86aa816454",
+    "bytes": 1606038,
+    "width": 1536,
+    "height": 1024
+  },
+  "status": "SOURCE_REVIEW_PENDING",
+  "filesEditedAfterGeneration": false,
+  "scope": "Actual local tool call record for one isolated replacement of an atlas UV whose alpha-zero boundary would include another pose. No pixel editing, signed external certificate, canonical fidelity or source completion is inferred."
+}

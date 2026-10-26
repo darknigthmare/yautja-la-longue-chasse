@@ -1,0 +1,64 @@
+{
+  "domain": "Clans",
+  "status": "PASS_CIBLE",
+  "buildId": "pVNPLCZV9ZFtFCd87NSTa",
+  "runtimeCommit": "c97c7d903486ed2c7cb2529ac27f713c0aba8987",
+  "driver": "scripts/qa-clan-supply-route-v109.mjs",
+  "command": "node scripts/qa-clan-supply-route-v109.mjs",
+  "report": {
+    "path": "docs/v109-clans-validation.json",
+    "sha256": "8e2e2c5de4d16b178039bd80ff91d75ff0ac2d803d6dfbc39882cf97eab637d9",
+    "bytes": 15490
+  },
+  "browserChecksPassed": 38,
+  "capturesInspected": 8,
+  "portableFiles": [
+    {
+      "path": "docs/qa/v109-clans/browser-result.json.gz",
+      "sha256": "70fd0d11c9aff38c7ac508f11f8e76e0194914f529dea9840872ce55b4e790e9",
+      "bytes": 100874,
+      "decodedSha256": "a1537e9075b39ef563e50e70d1c71258ad4f8a8008701fe1fba36737d98a8c85",
+      "decodedBytes": 1324504
+    },
+    {
+      "path": "docs/qa/v109-clans/01-original-migration-refused.png",
+      "sha256": "a1a2a04d67333dce2662fb3a85dd0afc148773f392b14eeeb49aec9ccc97eabd",
+      "bytes": 14072
+    },
+    {
+      "path": "docs/qa/v109-clans/02-reservation-in-existing-source.png",
+      "sha256": "1fb7b6868bd88f753eae07b2dcdcdadad1146372f7f6f3b0f377f0776de79f88",
+      "bytes": 253733
+    },
+    {
+      "path": "docs/qa/v109-clans/03-same-lot-mid-channel.png",
+      "sha256": "ab1ed73167d43f44532b9fcbcd5dba7b13be5dd0a2e017b09ac8e8074a51a9a1",
+      "bytes": 252153
+    },
+    {
+      "path": "docs/qa/v109-clans/04-six-stops-closed-at-depot.png",
+      "sha256": "fc9d6defdf18c15be0691942a6acddb2c58fcbdb6dfc6774db687e8559a75a1c",
+      "bytes": 54631
+    },
+    {
+      "path": "docs/qa/v109-clans/05-two-mounts-real-distinct-parking.png",
+      "sha256": "ec7f316fb220a5014e4b5e16160d9d5ce287d4c26ade43ed1ce2085c1d2846f4",
+      "bytes": 254432
+    },
+    {
+      "path": "docs/qa/v109-clans/06-current-write-refused.png",
+      "sha256": "1b48a7b6a4c827e4aa0da437ae458d591e72d1fb2e16a01840fb4a7dbaa0b20b",
+      "bytes": 3924
+    },
+    {
+      "path": "docs/qa/v109-clans/07-mobile-terrain-and-zoom.png",
+      "sha256": "061e372e42e2aeadce83350b13d91999a6c9113624929f0198e01827646c21a6",
+      "bytes": 67003
+    },
+    {
+      "path": "docs/qa/v109-clans/08-mobile-actor-selection.png",
+      "sha256": "21387f9cf0d4f7096aeaa4149b55d270c847fd42df47315d20d6d35067daf2bf",
+      "bytes": 14503
+    }
+  ]
+}

@@ -1,0 +1,784 @@
+{
+  "schemaVersion": 1,
+  "scope": "Only metadata registration of actual grounded support. Native RGBA pixels and anatomical per-page scales are unchanged. Victim loaded/flight anchors are retained, without fitting a lying bbox to standing height.",
+  "method": "Lowest source row with alpha>=128 on at least max(2,min(8,ceil(rectWidth*0.003))) pixels, plus one pixel for the support edge; same threshold as production spriteContact.",
+  "records": [
+    {
+      "fighterId": "feral-hunter",
+      "role": "attacker",
+      "facing": "right",
+      "frameIndex": 0,
+      "pageId": "v109-feral-throw-forward-right",
+      "rect": [
+        110,
+        18,
+        361,
+        496
+      ],
+      "sourcePath": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-right-v109.png",
+      "sha256": "8324320252c00e84cf0e50b7fb850dc96fb472dc1d5c933d0e14925b4fdf37ec",
+      "previousPivotY": 482.0,
+      "groundSupportPivotY": 482,
+      "oldGroundGapPx": 0.0,
+      "bodyHeightPx": 464.0
+    },
+    {
+      "fighterId": "feral-hunter",
+      "role": "attacker",
+      "facing": "right",
+      "frameIndex": 1,
+      "pageId": "v109-feral-throw-forward-right",
+      "rect": [
+        574,
+        16,
+        505,
+        489
+      ],
+      "sourcePath": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-right-v109.png",
+      "sha256": "8324320252c00e84cf0e50b7fb850dc96fb472dc1d5c933d0e14925b4fdf37ec",
+      "previousPivotY": 484.0,
+      "groundSupportPivotY": 482,
+      "oldGroundGapPx": 2.0,
+      "bodyHeightPx": 464.0
+    },
+    {
+      "fighterId": "feral-hunter",
+      "role": "attacker",
+      "facing": "right",
+      "frameIndex": 2,
+      "pageId": "v109-feral-throw-forward-right",
+      "rect": [
+        1078,
+        16,
+        401,
+        497
+      ],
+      "sourcePath": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-right-v109.png",
+      "sha256": "8324320252c00e84cf0e50b7fb850dc96fb472dc1d5c933d0e14925b4fdf37ec",
+      "previousPivotY": 484.0,
+      "groundSupportPivotY": 487,
+      "oldGroundGapPx": -3.0,
+      "bodyHeightPx": 464.0
+    },
+    {
+      "fighterId": "feral-hunter",
+      "role": "attacker",
+      "facing": "right",
+      "frameIndex": 3,
+      "pageId": "v109-feral-throw-forward-right",
+      "rect": [
+        46,
+        536,
+        535,
+        465
+      ],
+      "sourcePath": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-right-v109.png",
+      "sha256": "8324320252c00e84cf0e50b7fb850dc96fb472dc1d5c933d0e14925b4fdf37ec",
+      "previousPivotY": 476.0,
+      "groundSupportPivotY": 460,
+      "oldGroundGapPx": 16.0,
+      "bodyHeightPx": 464.0
+    },
+    {
+      "fighterId": "feral-hunter",
+      "role": "attacker",
+      "facing": "right",
+      "frameIndex": 4,
+      "pageId": "v109-feral-throw-forward-right",
+      "rect": [
+        580,
+        512,
+        513,
+        495
+      ],
+      "sourcePath": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-right-v109.png",
+      "sha256": "8324320252c00e84cf0e50b7fb850dc96fb472dc1d5c933d0e14925b4fdf37ec",
+      "previousPivotY": 500.0,
+      "groundSupportPivotY": 484,
+      "oldGroundGapPx": 16.0,
+      "bodyHeightPx": 464.0
+    },
+    {
+      "fighterId": "feral-hunter",
+      "role": "attacker",
+      "facing": "right",
+      "frameIndex": 5,
+      "pageId": "v109-feral-throw-forward-right",
+      "rect": [
+        1163,
+        535,
+        311,
+        471
+      ],
+      "sourcePath": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-right-v109.png",
+      "sha256": "8324320252c00e84cf0e50b7fb850dc96fb472dc1d5c933d0e14925b4fdf37ec",
+      "previousPivotY": 477.0,
+      "groundSupportPivotY": 461,
+      "oldGroundGapPx": 16.0,
+      "bodyHeightPx": 464.0
+    },
+    {
+      "fighterId": "feral-hunter",
+      "role": "attacker",
+      "facing": "left",
+      "frameIndex": 0,
+      "pageId": "v109-feral-throw-forward-left-r2",
+      "rect": [
+        90,
+        18,
+        392,
+        495
+      ],
+      "sourcePath": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-r2-v109.png",
+      "sha256": "5dce6483d4ba9fb1848613d3a76abf255a163cbfb9dba1ed3554cc9a74615d15",
+      "previousPivotY": 482.0,
+      "groundSupportPivotY": 482,
+      "oldGroundGapPx": 0.0,
+      "bodyHeightPx": 474.0
+    },
+    {
+      "fighterId": "feral-hunter",
+      "role": "attacker",
+      "facing": "left",
+      "frameIndex": 1,
+      "pageId": "v109-feral-throw-forward-left-r2",
+      "rect": [
+        492,
+        16,
+        556,
+        499
+      ],
+      "sourcePath": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-r2-v109.png",
+      "sha256": "5dce6483d4ba9fb1848613d3a76abf255a163cbfb9dba1ed3554cc9a74615d15",
+      "previousPivotY": 484.0,
+      "groundSupportPivotY": 485,
+      "oldGroundGapPx": -1.0,
+      "bodyHeightPx": 474.0
+    },
+    {
+      "fighterId": "feral-hunter",
+      "role": "attacker",
+      "facing": "left",
+      "frameIndex": 2,
+      "pageId": "v109-feral-throw-forward-left-isolated-2-gutter-r1",
+      "rect": [
+        271,
+        146,
+        1044,
+        769
+      ],
+      "sourcePath": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-isolated-2-gutter-r1-v109.png",
+      "sha256": "6ff3767df2283b599f7a204e20e3a8c03a943fb1a8dc9b7531f7a3c6778c1931",
+      "previousPivotY": 760.476,
+      "groundSupportPivotY": 762,
+      "oldGroundGapPx": -1.524,
+      "bodyHeightPx": 1072.071
+    },
+    {
+      "fighterId": "feral-hunter",
+      "role": "attacker",
+      "facing": "left",
+      "frameIndex": 3,
+      "pageId": "v109-feral-throw-forward-left-isolated-3-r2",
+      "rect": [
+        49,
+        22,
+        1422,
+        945
+      ],
+      "sourcePath": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-isolated-3-r2-v109.png",
+      "sha256": "151b49c54a3ec2321c5793bd10b6232a1e7542d48a8d1c09da2f8fb3cdd76ddb",
+      "previousPivotY": 1032.46,
+      "groundSupportPivotY": 940,
+      "oldGroundGapPx": 92.46,
+      "bodyHeightPx": 1111.595
+    },
+    {
+      "fighterId": "feral-hunter",
+      "role": "attacker",
+      "facing": "left",
+      "frameIndex": 4,
+      "pageId": "v109-feral-throw-forward-left-isolated-4-r2",
+      "rect": [
+        37,
+        25,
+        1482,
+        954
+      ],
+      "sourcePath": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-isolated-4-r2-v109.png",
+      "sha256": "fa54dd3f5a8e926c211d48dba1edd1b35a813cab02d013ee0294f68d3dd47ddc",
+      "previousPivotY": 1039.991,
+      "groundSupportPivotY": 949,
+      "oldGroundGapPx": 90.991,
+      "bodyHeightPx": 1240.634
+    },
+    {
+      "fighterId": "feral-hunter",
+      "role": "attacker",
+      "facing": "left",
+      "frameIndex": 5,
+      "pageId": "v109-feral-throw-forward-left-isolated-5-gutter-r1",
+      "rect": [
+        424,
+        79,
+        727,
+        846
+      ],
+      "sourcePath": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-isolated-5-gutter-r1-v109.png",
+      "sha256": "2411a5307a67bad68b4e2b1fc2fbbb52b3320d6dc10a956039a68bce30318046",
+      "previousPivotY": 887.579,
+      "groundSupportPivotY": 839,
+      "oldGroundGapPx": 48.579,
+      "bodyHeightPx": 883.146
+    },
+    {
+      "fighterId": "scar",
+      "role": "attacker",
+      "facing": "right",
+      "frameIndex": 0,
+      "pageId": "v109-scar-throw-forward-right",
+      "rect": [
+        64,
+        6,
+        423,
+        501
+      ],
+      "sourcePath": "public/game/sprites/v109/pit/scar/scar-throw-forward-right-v109.png",
+      "sha256": "4615795ab410033a000dcdf7fdfe197b431aedb07ad279a7acfbef5e93910c02",
+      "previousPivotY": 494.0,
+      "groundSupportPivotY": 490,
+      "oldGroundGapPx": 4.0,
+      "bodyHeightPx": 407.0
+    },
+    {
+      "fighterId": "scar",
+      "role": "attacker",
+      "facing": "right",
+      "frameIndex": 1,
+      "pageId": "v109-scar-throw-forward-right",
+      "rect": [
+        536,
+        9,
+        524,
+        490
+      ],
+      "sourcePath": "public/game/sprites/v109/pit/scar/scar-throw-forward-right-v109.png",
+      "sha256": "4615795ab410033a000dcdf7fdfe197b431aedb07ad279a7acfbef5e93910c02",
+      "previousPivotY": 491.0,
+      "groundSupportPivotY": 485,
+      "oldGroundGapPx": 6.0,
+      "bodyHeightPx": 407.0
+    },
+    {
+      "fighterId": "scar",
+      "role": "attacker",
+      "facing": "right",
+      "frameIndex": 2,
+      "pageId": "v109-scar-throw-forward-right",
+      "rect": [
+        1082,
+        15,
+        415,
+        486
+      ],
+      "sourcePath": "public/game/sprites/v109/pit/scar/scar-throw-forward-right-v109.png",
+      "sha256": "4615795ab410033a000dcdf7fdfe197b431aedb07ad279a7acfbef5e93910c02",
+      "previousPivotY": 485.0,
+      "groundSupportPivotY": 482,
+      "oldGroundGapPx": 3.0,
+      "bodyHeightPx": 407.0
+    },
+    {
+      "fighterId": "scar",
+      "role": "attacker",
+      "facing": "right",
+      "frameIndex": 3,
+      "pageId": "v109-scar-throw-forward-right",
+      "rect": [
+        13,
+        516,
+        536,
+        481
+      ],
+      "sourcePath": "public/game/sprites/v109/pit/scar/scar-throw-forward-right-v109.png",
+      "sha256": "4615795ab410033a000dcdf7fdfe197b431aedb07ad279a7acfbef5e93910c02",
+      "previousPivotY": 496.0,
+      "groundSupportPivotY": 477,
+      "oldGroundGapPx": 19.0,
+      "bodyHeightPx": 407.0
+    },
+    {
+      "fighterId": "scar",
+      "role": "attacker",
+      "facing": "right",
+      "frameIndex": 4,
+      "pageId": "v109-scar-throw-forward-right",
+      "rect": [
+        560,
+        512,
+        481,
+        485
+      ],
+      "sourcePath": "public/game/sprites/v109/pit/scar/scar-throw-forward-right-v109.png",
+      "sha256": "4615795ab410033a000dcdf7fdfe197b431aedb07ad279a7acfbef5e93910c02",
+      "previousPivotY": 500.0,
+      "groundSupportPivotY": 476,
+      "oldGroundGapPx": 24.0,
+      "bodyHeightPx": 407.0
+    },
+    {
+      "fighterId": "scar",
+      "role": "attacker",
+      "facing": "right",
+      "frameIndex": 5,
+      "pageId": "v109-scar-throw-forward-right",
+      "rect": [
+        1104,
+        516,
+        391,
+        485
+      ],
+      "sourcePath": "public/game/sprites/v109/pit/scar/scar-throw-forward-right-v109.png",
+      "sha256": "4615795ab410033a000dcdf7fdfe197b431aedb07ad279a7acfbef5e93910c02",
+      "previousPivotY": 496.0,
+      "groundSupportPivotY": 478,
+      "oldGroundGapPx": 18.0,
+      "bodyHeightPx": 407.0
+    },
+    {
+      "fighterId": "scar",
+      "role": "attacker",
+      "facing": "left",
+      "frameIndex": 0,
+      "pageId": "v109-scar-throw-forward-left-isolated-0",
+      "rect": [
+        229,
+        1,
+        1005,
+        1016
+      ],
+      "sourcePath": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-0-v109.png",
+      "sha256": "c5fb6df337079a263350702ddea4299b7ddb61f060dd7bed02eb6010632c9c96",
+      "previousPivotY": 971.258,
+      "groundSupportPivotY": 1010,
+      "oldGroundGapPx": -38.742,
+      "bodyHeightPx": 888.961
+    },
+    {
+      "fighterId": "scar",
+      "role": "attacker",
+      "facing": "left",
+      "frameIndex": 1,
+      "pageId": "v109-scar-throw-forward-left-isolated-1",
+      "rect": [
+        318,
+        6,
+        961,
+        975
+      ],
+      "sourcePath": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-1-v109.png",
+      "sha256": "6153788ab03fc3f246cae0b1b30990edd57b777283f2eff4c24d9a6ae5b7e95a",
+      "previousPivotY": 932.639,
+      "groundSupportPivotY": 969,
+      "oldGroundGapPx": -36.361,
+      "bodyHeightPx": 815.174
+    },
+    {
+      "fighterId": "scar",
+      "role": "attacker",
+      "facing": "left",
+      "frameIndex": 2,
+      "pageId": "v109-scar-throw-forward-left-isolated-2-gutter-r1",
+      "rect": [
+        336,
+        12,
+        947,
+        952
+      ],
+      "sourcePath": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-2-gutter-r1-v109.png",
+      "sha256": "08c29f9c49d71aef046968c86000a4fd1607486934ab764c80718c86aa816454",
+      "previousPivotY": 925.329,
+      "groundSupportPivotY": 948,
+      "oldGroundGapPx": -22.671,
+      "bodyHeightPx": 875.907
+    },
+    {
+      "fighterId": "scar",
+      "role": "attacker",
+      "facing": "left",
+      "frameIndex": 3,
+      "pageId": "v109-scar-throw-forward-left-isolated-3",
+      "rect": [
+        15,
+        8,
+        1282,
+        1001
+      ],
+      "sourcePath": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-3-v109.png",
+      "sha256": "13561262646615582d4c0687b4b59dc203e58747f62f8cf924a609abfeea44c6",
+      "previousPivotY": 1033.615,
+      "groundSupportPivotY": 996,
+      "oldGroundGapPx": 37.615,
+      "bodyHeightPx": 915.365
+    },
+    {
+      "fighterId": "scar",
+      "role": "attacker",
+      "facing": "left",
+      "frameIndex": 4,
+      "pageId": "v109-scar-throw-forward-left-isolated-4",
+      "rect": [
+        154,
+        8,
+        1213,
+        1007
+      ],
+      "sourcePath": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-4-v109.png",
+      "sha256": "0f2081b177fe949c0f52fa2d27dd4accfbd3aaf1da891ec8ffa11547cde0a00d",
+      "previousPivotY": 1028.701,
+      "groundSupportPivotY": 1001,
+      "oldGroundGapPx": 27.701,
+      "bodyHeightPx": 945.647
+    },
+    {
+      "fighterId": "scar",
+      "role": "attacker",
+      "facing": "left",
+      "frameIndex": 5,
+      "pageId": "v109-scar-throw-forward-left-isolated-5-gutter-r1",
+      "rect": [
+        361,
+        37,
+        801,
+        906
+      ],
+      "sourcePath": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-5-gutter-r1-v109.png",
+      "sha256": "7d1eee2349555a1eab15c2ce60d0bae9e858d66fd183f4aa62e3f97e3d2ff157",
+      "previousPivotY": 921.384,
+      "groundSupportPivotY": 901,
+      "oldGroundGapPx": 20.384,
+      "bodyHeightPx": 823.816
+    },
+    {
+      "fighterId": "feral-hunter",
+      "role": "victim",
+      "facing": "right",
+      "frameIndex": 0,
+      "pageId": "v109-feral-throw-victim-right",
+      "rect": [
+        84,
+        30,
+        387,
+        469
+      ],
+      "sourcePath": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-right-v109.png",
+      "sha256": "3039f5ff15c73a5a6ef4b6054d3b949b22e99141268bcb5314984a652bdc331a",
+      "previousPivotY": 470.0,
+      "groundSupportPivotY": 458,
+      "oldGroundGapPx": 12.0,
+      "bodyHeightPx": 436.0
+    },
+    {
+      "fighterId": "feral-hunter",
+      "role": "victim",
+      "facing": "right",
+      "frameIndex": 1,
+      "pageId": "v109-feral-throw-victim-right",
+      "rect": [
+        580,
+        92,
+        387,
+        407
+      ],
+      "sourcePath": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-right-v109.png",
+      "sha256": "3039f5ff15c73a5a6ef4b6054d3b949b22e99141268bcb5314984a652bdc331a",
+      "previousPivotY": 408.0,
+      "groundSupportPivotY": 397,
+      "oldGroundGapPx": 11.0,
+      "bodyHeightPx": 436.0
+    },
+    {
+      "fighterId": "feral-hunter",
+      "role": "victim",
+      "facing": "right",
+      "frameIndex": 4,
+      "pageId": "v109-feral-throw-victim-right-isolated-4",
+      "rect": [
+        63,
+        268,
+        1360,
+        469
+      ],
+      "sourcePath": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-right-isolated-4-v109.png",
+      "sha256": "f3b14134eaa1ba660342d52de1d84925f5888657d9c14c7c53ecb8647158d4f8",
+      "previousPivotY": 602.413,
+      "groundSupportPivotY": 461,
+      "oldGroundGapPx": 141.413,
+      "bodyHeightPx": 975.021
+    },
+    {
+      "fighterId": "feral-hunter",
+      "role": "victim",
+      "facing": "right",
+      "frameIndex": 5,
+      "pageId": "v109-feral-throw-victim-right",
+      "rect": [
+        1135,
+        586,
+        384,
+        369
+      ],
+      "sourcePath": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-right-v109.png",
+      "sha256": "3039f5ff15c73a5a6ef4b6054d3b949b22e99141268bcb5314984a652bdc331a",
+      "previousPivotY": 426.0,
+      "groundSupportPivotY": 352,
+      "oldGroundGapPx": 74.0,
+      "bodyHeightPx": 436.0
+    },
+    {
+      "fighterId": "feral-hunter",
+      "role": "victim",
+      "facing": "left",
+      "frameIndex": 0,
+      "pageId": "v109-feral-throw-victim-left",
+      "rect": [
+        74,
+        32,
+        377,
+        485
+      ],
+      "sourcePath": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-left-v109.png",
+      "sha256": "9203da249bb1756a545758125a88c63f66f8945dbf5a1e883b53532a4a51bfed",
+      "previousPivotY": 468.0,
+      "groundSupportPivotY": 480,
+      "oldGroundGapPx": -12.0,
+      "bodyHeightPx": 466.0
+    },
+    {
+      "fighterId": "feral-hunter",
+      "role": "victim",
+      "facing": "left",
+      "frameIndex": 1,
+      "pageId": "v109-feral-throw-victim-left",
+      "rect": [
+        588,
+        98,
+        405,
+        419
+      ],
+      "sourcePath": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-left-v109.png",
+      "sha256": "9203da249bb1756a545758125a88c63f66f8945dbf5a1e883b53532a4a51bfed",
+      "previousPivotY": 402.0,
+      "groundSupportPivotY": 415,
+      "oldGroundGapPx": -13.0,
+      "bodyHeightPx": 466.0
+    },
+    {
+      "fighterId": "feral-hunter",
+      "role": "victim",
+      "facing": "left",
+      "frameIndex": 4,
+      "pageId": "v109-feral-throw-victim-left-isolated-4-gutter-r1",
+      "rect": [
+        44,
+        268,
+        1445,
+        531
+      ],
+      "sourcePath": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-left-isolated-4-gutter-r1-v109.png",
+      "sha256": "3ee1f59c32a1204957aac968b0c22f74cfde5297393985d953c1cf1de65f7c98",
+      "previousPivotY": 611.243,
+      "groundSupportPivotY": 486,
+      "oldGroundGapPx": 125.243,
+      "bodyHeightPx": 1104.45
+    },
+    {
+      "fighterId": "feral-hunter",
+      "role": "victim",
+      "facing": "left",
+      "frameIndex": 5,
+      "pageId": "v109-feral-throw-victim-left",
+      "rect": [
+        1104,
+        632,
+        422,
+        347
+      ],
+      "sourcePath": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-left-v109.png",
+      "sha256": "9203da249bb1756a545758125a88c63f66f8945dbf5a1e883b53532a4a51bfed",
+      "previousPivotY": 380.0,
+      "groundSupportPivotY": 342,
+      "oldGroundGapPx": 38.0,
+      "bodyHeightPx": 466.0
+    },
+    {
+      "fighterId": "scar",
+      "role": "victim",
+      "facing": "right",
+      "frameIndex": 0,
+      "pageId": "v109-scar-throw-victim-right",
+      "rect": [
+        62,
+        9,
+        373,
+        490
+      ],
+      "sourcePath": "public/game/sprites/v109/pit/scar/scar-throw-victim-right-v109.png",
+      "sha256": "24cdb66b63f585ac952d035a27006805d3b04136448fb3c22f4a9b3d6c7dfcf9",
+      "previousPivotY": 491.0,
+      "groundSupportPivotY": 484,
+      "oldGroundGapPx": 7.0,
+      "bodyHeightPx": 402.0
+    },
+    {
+      "fighterId": "scar",
+      "role": "victim",
+      "facing": "right",
+      "frameIndex": 1,
+      "pageId": "v109-scar-throw-victim-right",
+      "rect": [
+        590,
+        16,
+        373,
+        484
+      ],
+      "sourcePath": "public/game/sprites/v109/pit/scar/scar-throw-victim-right-v109.png",
+      "sha256": "24cdb66b63f585ac952d035a27006805d3b04136448fb3c22f4a9b3d6c7dfcf9",
+      "previousPivotY": 484.0,
+      "groundSupportPivotY": 477,
+      "oldGroundGapPx": 7.0,
+      "bodyHeightPx": 402.0
+    },
+    {
+      "fighterId": "scar",
+      "role": "victim",
+      "facing": "right",
+      "frameIndex": 4,
+      "pageId": "v109-scar-throw-victim-right-isolated-4",
+      "rect": [
+        21,
+        361,
+        1496,
+        382
+      ],
+      "sourcePath": "public/game/sprites/v109/pit/scar/scar-throw-victim-right-isolated-4-v109.png",
+      "sha256": "07f216fb8e1145169bb377fc5f11bc6da8193848a962ba23a8aea6f34c07cff6",
+      "previousPivotY": 530.201,
+      "groundSupportPivotY": 375,
+      "oldGroundGapPx": 155.201,
+      "bodyHeightPx": 922.753
+    },
+    {
+      "fighterId": "scar",
+      "role": "victim",
+      "facing": "right",
+      "frameIndex": 5,
+      "pageId": "v109-scar-throw-victim-right-isolated-5",
+      "rect": [
+        481,
+        9,
+        830,
+        985
+      ],
+      "sourcePath": "public/game/sprites/v109/pit/scar/scar-throw-victim-right-isolated-5-v109.png",
+      "sha256": "2105306a7d2462540ba864498659c44f193983a49daac0e2a68c2b75053157e8",
+      "previousPivotY": 1096.055,
+      "groundSupportPivotY": 981,
+      "oldGroundGapPx": 115.055,
+      "bodyHeightPx": 917.003
+    },
+    {
+      "fighterId": "scar",
+      "role": "victim",
+      "facing": "left",
+      "frameIndex": 0,
+      "pageId": "v109-scar-throw-victim-left",
+      "rect": [
+        46,
+        9,
+        435,
+        508
+      ],
+      "sourcePath": "public/game/sprites/v109/pit/scar/scar-throw-victim-left-v109.png",
+      "sha256": "46adfc94048c75e60f01590aa7619cacc6c934f20489c7003d24209477af0429",
+      "previousPivotY": 491.0,
+      "groundSupportPivotY": 501,
+      "oldGroundGapPx": -10.0,
+      "bodyHeightPx": 416.0
+    },
+    {
+      "fighterId": "scar",
+      "role": "victim",
+      "facing": "left",
+      "frameIndex": 1,
+      "pageId": "v109-scar-throw-victim-left",
+      "rect": [
+        554,
+        13,
+        407,
+        506
+      ],
+      "sourcePath": "public/game/sprites/v109/pit/scar/scar-throw-victim-left-v109.png",
+      "sha256": "46adfc94048c75e60f01590aa7619cacc6c934f20489c7003d24209477af0429",
+      "previousPivotY": 487.0,
+      "groundSupportPivotY": 499,
+      "oldGroundGapPx": -12.0,
+      "bodyHeightPx": 416.0
+    },
+    {
+      "fighterId": "scar",
+      "role": "victim",
+      "facing": "left",
+      "frameIndex": 4,
+      "pageId": "v109-scar-throw-victim-left-isolated-4-r2",
+      "rect": [
+        81,
+        159,
+        1615,
+        648
+      ],
+      "sourcePath": "public/game/sprites/v109/pit/scar/scar-throw-victim-left-isolated-4-r2-v109.png",
+      "sha256": "f102c0e286a3d566854b4581757aadf46728f64e548e14dfceabb7e6dd2dfca5",
+      "previousPivotY": 693.218,
+      "groundSupportPivotY": 636,
+      "oldGroundGapPx": 57.218,
+      "bodyHeightPx": 1113.649
+    },
+    {
+      "fighterId": "scar",
+      "role": "victim",
+      "facing": "left",
+      "frameIndex": 5,
+      "pageId": "v109-scar-throw-victim-left-isolated-5-gutter-r1",
+      "rect": [
+        357,
+        45,
+        891,
+        862
+      ],
+      "sourcePath": "public/game/sprites/v109/pit/scar/scar-throw-victim-left-isolated-5-gutter-r1-v109.png",
+      "sha256": "34fa8678d6d979ffc80200eecff09708baf3cca3dd07f54d094d6887fd20a97c",
+      "previousPivotY": 942.622,
+      "groundSupportPivotY": 856,
+      "oldGroundGapPx": 86.622,
+      "bodyHeightPx": 838.163
+    }
+  ],
+  "perspectiveReview": {
+    "fighterId": "scar",
+    "role": "victim",
+    "facing": "left",
+    "frameIndex": 4,
+    "sourcePath": "public/game/sprites/v109/pit/scar/scar-throw-victim-left-isolated-4-r2-v109.png",
+    "bodySupportSourceY": {
+      "rightToes": 733,
+      "grippingPalm": 726,
+      "knee": 689
+    },
+    "foregroundSpearSupportSourceY": 795,
+    "observation": "On the actual 1440 px runtime capture, body supports sit around 748\u2013751 within the illustrated floor surface 744\u2013766, while the forward spear butt reaches the front edge at 766. This native perspective is retained: moving the palm down to 766 would put the spear about 16 px into the platform facade. No pixel, anatomical scale or geometry is changed to resolve this perspective.",
+    "acceptedScope": "Visual floor registration for the unvaried duo; no universal canonical physical geography claim."
+  },
+  "nativeUvReviewPath": "docs/suivi-production/v109-pit-forward/native-uv-border-review-spatial.json",
+  "nativeUvReviewMethod": "Spatial set difference counts every alpha>16 pixel inside the candidate and outside the original UV independently from pixels removed elsewhere. All 48 selected regions keep their existing rectangles and source hashes, with zero additions and zero removals."
+}

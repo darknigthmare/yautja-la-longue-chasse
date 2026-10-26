@@ -1,6 +1,8 @@
 import { GAME_RESERVE_EXPEDITION_V108_WORLD, GAME_RESERVE_EXPEDITION_V108_SECTORS, GAME_RESERVE_EXPEDITION_V108_PLATFORMS, GAME_RESERVE_EXPEDITION_V108_COVER, GAME_RESERVE_EXPEDITION_V108_PEOPLE, GAME_RESERVE_EXPEDITION_V108_SUPPLIES, GAME_RESERVE_EXPEDITION_V108_SHIPS, GAME_RESERVE_EXPEDITION_V108_SITES, type GameReserveV108RouteRecord, type GameReserveV108Behavior } from "./gameReserveExpeditionV108";
 import { GAME_RESERVE_LOOKOUT_V104_WORLD, GAME_RESERVE_LOOKOUT_V104_SECTOR, GAME_RESERVE_LOOKOUT_V104_PLATFORMS, GAME_RESERVE_LOOKOUT_V104_COVER, GAME_RESERVE_LOOKOUT_V104_SURVEY, type GameReserveLookoutV104Record } from "./gameReserveLookoutV104";
 import { GAME_RESERVE_EXPEDITION_V107_WORLD, GAME_RESERVE_EXPEDITION_V107_SECTORS, GAME_RESERVE_EXPEDITION_V107_PLATFORMS, GAME_RESERVE_EXPEDITION_V107_COVER, GAME_RESERVE_EXPEDITION_V107_PEOPLE, GAME_RESERVE_EXPEDITION_V107_SUPPLIES, GAME_RESERVE_EXPEDITION_V107_SHIPS, GAME_RESERVE_EXPEDITION_V107_SITES, type GameReserveV107RouteRecord, type GameReserveV107Tactics } from "./gameReserveExpeditionV107";
+import {GAME_RESERVE_CATALOGUE_V109, gameReserveV109Definition, type GameReserveV109Behavior, type GameReserveV109Id, type GameReserveV109RouteRecord} from './gameReserveExpeditionV109';
+export type {GameReserveChoiceV109, GameReserveV109Id} from './gameReserveExpeditionV109';
 
 /** Vharuun is an original game reserve, not a canonical planet or a 100-player mode. */
 export const GAME_RESERVE_V66_WORLD = { width: 4800, height: 540, ground: 438, returnX: 115 } as const;
@@ -21,7 +23,7 @@ export const GAME_RESERVE_V66_COVER = [
   { x: 2920, w: 90, top: 350 }, { x: 3480, w: 75, top: 342 }, { x: 4070, w: 80, top: 350 },
 ] as const;
 export type GameReserveV66Role = "leader" | "technician" | "marksman" | "veteran";
-export interface GameReserveV66Person { id: string; name: string; role: GameReserveV66Role; description: string; art: "raider" | "marine" | "sniper"; tactics?: GameReserveV107Tactics; behavior?: GameReserveV108Behavior; observationX?: number }
+export interface GameReserveV66Person { id: string; name: string; role: GameReserveV66Role; description: string; art: "raider" | "marine" | "sniper"; tactics?: GameReserveV107Tactics; behavior?: GameReserveV108Behavior | GameReserveV109Behavior; observationX?: number }
 export const GAME_RESERVE_V66_PEOPLE = [
   { id: "reserve-veyra", name: "Veyra", role: "leader", description: "Ancienne cheffe d'escorte, adulte armée d'un fusil. Rassemble les témoins proches.", art: "raider" },
   { id: "reserve-marek", name: "Marek", role: "technician", description: "Sapeur vétéran adulte, fusil et outillage. Répare plus vite les moteurs.", art: "marine" },
@@ -71,9 +73,10 @@ export type GameReserveV66State = GameReserveV66BaseState & (
   { version: 1; reserveId: "vharuun-first-expedition" } |
   { version: 2; reserveId: "vharuun-lookout-expedition"; lookout: GameReserveLookoutV104Record } |
   { version: 3; reserveId: "vharuun-transect-expedition"; routeV107: GameReserveV107RouteRecord } |
-  { version: 4; reserveId: "kesh-watch-expedition"; routeV108: GameReserveV108RouteRecord }
+  { version: 4; reserveId: "kesh-watch-expedition"; routeV108: GameReserveV108RouteRecord } |
+  { version: 5; reserveId: GameReserveV109Id; routeV109: GameReserveV109RouteRecord }
 );
-type TerrainVersion = Pick<GameReserveV66State, "version">;
+type TerrainVersion = Pick<GameReserveV66State, "version"> & {reserveId?: string};
 const LOOKOUT_SECTORS = [...GAME_RESERVE_V66_SECTORS, GAME_RESERVE_LOOKOUT_V104_SECTOR];
 const LOOKOUT_PLATFORMS = [...GAME_RESERVE_V66_PLATFORMS, ...GAME_RESERVE_LOOKOUT_V104_PLATFORMS];
 const LOOKOUT_COVER = [...GAME_RESERVE_V66_COVER, ...GAME_RESERVE_LOOKOUT_V104_COVER];
@@ -83,13 +86,15 @@ const EXPEDITION_COVER = [...LOOKOUT_COVER, ...GAME_RESERVE_EXPEDITION_V107_COVE
 const EXPEDITION_PEOPLE: readonly GameReserveV66Person[] = [...GAME_RESERVE_V66_PEOPLE, ...GAME_RESERVE_EXPEDITION_V107_PEOPLE];
 const EXPEDITION_SHIPS = [...GAME_RESERVE_V66_SHIPS, ...GAME_RESERVE_EXPEDITION_V107_SHIPS];
 const EXPEDITION_SUPPLIES = [...GAME_RESERVE_V66_SUPPLIES, ...GAME_RESERVE_EXPEDITION_V107_SUPPLIES];
-export const gameReserveV66World = (state?: TerrainVersion) => state?.version === 4 ? GAME_RESERVE_EXPEDITION_V108_WORLD : state?.version === 3 ? GAME_RESERVE_EXPEDITION_V107_WORLD : state?.version === 2 ? GAME_RESERVE_LOOKOUT_V104_WORLD : GAME_RESERVE_V66_WORLD;
-export const gameReserveV66Sectors = (state?: TerrainVersion) => state?.version === 4 ? GAME_RESERVE_EXPEDITION_V108_SECTORS : state?.version === 3 ? EXPEDITION_SECTORS : state?.version === 2 ? LOOKOUT_SECTORS : GAME_RESERVE_V66_SECTORS;
-export const gameReserveV66Platforms = (state?: TerrainVersion) => state?.version === 4 ? GAME_RESERVE_EXPEDITION_V108_PLATFORMS : state?.version === 3 ? EXPEDITION_PLATFORMS : state?.version === 2 ? LOOKOUT_PLATFORMS : GAME_RESERVE_V66_PLATFORMS;
-export const gameReserveV66Cover = (state?: TerrainVersion) => state?.version === 4 ? GAME_RESERVE_EXPEDITION_V108_COVER : state?.version === 3 ? EXPEDITION_COVER : state?.version === 2 ? LOOKOUT_COVER : GAME_RESERVE_V66_COVER;
-export const gameReserveV66People = (state?: TerrainVersion): readonly GameReserveV66Person[] => state?.version === 4 ? GAME_RESERVE_EXPEDITION_V108_PEOPLE : state?.version === 3 ? EXPEDITION_PEOPLE : GAME_RESERVE_V66_PEOPLE;
-export const gameReserveV66Ships = (state?: TerrainVersion): readonly { id: string; name: string; x: number }[] => state?.version === 4 ? GAME_RESERVE_EXPEDITION_V108_SHIPS : state?.version === 3 ? EXPEDITION_SHIPS : GAME_RESERVE_V66_SHIPS;
-export const gameReserveV66Supplies = (state?: TerrainVersion): readonly number[] => state?.version === 4 ? GAME_RESERVE_EXPEDITION_V108_SUPPLIES : state?.version === 3 ? EXPEDITION_SUPPLIES : GAME_RESERVE_V66_SUPPLIES;
+export const gameReserveV66World = (state?: TerrainVersion) => gameReserveV109Definition(state)?.world ?? (state?.version === 4 ? GAME_RESERVE_EXPEDITION_V108_WORLD : state?.version === 3 ? GAME_RESERVE_EXPEDITION_V107_WORLD : state?.version === 2 ? GAME_RESERVE_LOOKOUT_V104_WORLD : GAME_RESERVE_V66_WORLD);
+export const gameReserveV66Sectors = (state?: TerrainVersion) => gameReserveV109Definition(state)?.sectors ?? (state?.version === 4 ? GAME_RESERVE_EXPEDITION_V108_SECTORS : state?.version === 3 ? EXPEDITION_SECTORS : state?.version === 2 ? LOOKOUT_SECTORS : GAME_RESERVE_V66_SECTORS);
+export const gameReserveV66Platforms = (state?: TerrainVersion) => gameReserveV109Definition(state)?.platforms ?? (state?.version === 4 ? GAME_RESERVE_EXPEDITION_V108_PLATFORMS : state?.version === 3 ? EXPEDITION_PLATFORMS : state?.version === 2 ? LOOKOUT_PLATFORMS : GAME_RESERVE_V66_PLATFORMS);
+export const gameReserveV66Cover = (state?: TerrainVersion) => gameReserveV109Definition(state)?.cover ?? (state?.version === 4 ? GAME_RESERVE_EXPEDITION_V108_COVER : state?.version === 3 ? EXPEDITION_COVER : state?.version === 2 ? LOOKOUT_COVER : GAME_RESERVE_V66_COVER);
+export const gameReserveV66People = (state?: TerrainVersion): readonly GameReserveV66Person[] => gameReserveV109Definition(state)?.people ?? (state?.version === 4 ? GAME_RESERVE_EXPEDITION_V108_PEOPLE : state?.version === 3 ? EXPEDITION_PEOPLE : GAME_RESERVE_V66_PEOPLE);
+export const gameReserveV66Ships = (state?: TerrainVersion): readonly { id: string; name: string; x: number }[] => gameReserveV109Definition(state)?.ships ?? (state?.version === 4 ? GAME_RESERVE_EXPEDITION_V108_SHIPS : state?.version === 3 ? EXPEDITION_SHIPS : GAME_RESERVE_V66_SHIPS);
+export const gameReserveV66Supplies = (state?: TerrainVersion): readonly number[] => gameReserveV109Definition(state)?.supplies ?? (state?.version === 4 ? GAME_RESERVE_EXPEDITION_V108_SUPPLIES : state?.version === 3 ? EXPEDITION_SUPPLIES : GAME_RESERVE_V66_SUPPLIES);
+export const gameReserveV66Sites = (state?: TerrainVersion) => gameReserveV109Definition(state)?.sites ?? (state?.version === 4 ? GAME_RESERVE_EXPEDITION_V108_SITES : GAME_RESERVE_EXPEDITION_V107_SITES);
+export const gameReserveV66Name = (state?: TerrainVersion) => gameReserveV109Definition(state)?.name ?? (state?.version === 4 ? 'Avar’Kesh' : 'Vharuun');
 export interface GameReserveV66Input { move?: -1 | 0 | 1; jump?: boolean; attack?: boolean; melee?: boolean; cloak?: boolean; scan?: boolean; interact?: boolean }
 const clamp = (v: number, min: number, max: number) => Math.max(min, Math.min(max, v));
 const record = (v: unknown): v is Record<string, unknown> => typeof v === "object" && v !== null && !Array.isArray(v);
@@ -143,6 +148,59 @@ export function createGameReserveV108(seed: number): GameReserveV66State {
     supplies: GAME_RESERVE_EXPEDITION_V108_SUPPLIES.map(() => 2),
     log: [{ tick: 0, message: "Avar’Kesh : seconde réserve originale, huit secteurs, seize adultes armés et quatre appareils. Escortes, gardes de rampe et observateurs utilisent des décisions distinctes. Quatre relevés à rapporter ; atlas natifs partagés." }] };
 }
+/** Two independently selected biome expeditions; old checkpoints are never converted. */
+export function createGameReserveV109(seed: number, reserveId: GameReserveV109Id): GameReserveV66State {
+  const definition = GAME_RESERVE_CATALOGUE_V109.find(candidate => candidate.id === reserveId);
+  if (!definition) throw new RangeError('Réserve V109 inconnue.');
+  const base = createGameReserveV66(seed), safeSeed = base.seed;
+  return {...base, version: 5, reserveId,
+    routeV109: {siteRecords: definition.sites.map(() => ({recordedAt: null, hunterX: null, hunterY: null}))},
+    humans: definition.people.map((person, index) => ({id: person.id,
+      x: Math.floor(index / 4) * 3200 + 480 + index % 4 * 330 + (safeSeed + index * 41) % 65,
+      facing: 1, hp: 70, status: 'active', team: Math.floor(index / 4) as 0 | 1 | 2 | 3,
+      carrying: false, targetSupply: index, work: 0, lastSeenX: null, lastSeenY: 395,
+      alertUntil: 0, shotCooldown: 55 + index * 8, windup: 0, moving: false, identified: false, scan: 0, secured: false, downAt: null})),
+    ships: definition.ships.map(() => ({parts: 0, repair: 0, launch: null, departedAt: null, sabotages: 0})),
+    supplies: definition.supplies.map(() => 2), log: [{tick: 0, message: definition.introduction}],
+  };
+}
+/** Objectives are derived from physical events; no separate counter can grant success. */
+export function gameReserveV109Objectives(state: GameReserveV66State) {
+  const definition = gameReserveV109Definition(state); if (!definition) return null;
+  const caches = definition.cacheObjectives.map(index => ({index, x: definition.supplies[index],
+    sector: gameReserveV66Sector(definition.supplies[index], state).name, denied: state.deniedSupplies?.[index] ?? 0}));
+  const mechanics = state.humans.filter((human, index) => human.identified && definition.people[index].role === 'technician').length;
+  const interceptions = state.ships.filter(ship => ship.interception !== undefined).length;
+  return {name: definition.name, caches, cacheGoal: caches.length, cachesCompleted: caches.filter(cache => cache.denied > 0).length,
+    mechanics, mechanicGoal: definition.mechanicGoal, interceptions, interceptionGoal: definition.interceptionGoal,
+    completed: caches.every(cache => cache.denied > 0) && mechanics >= definition.mechanicGoal && interceptions >= definition.interceptionGoal,
+    returned: state.status === 'returned'};
+}
+/** V5 posts use known local resources and visible co-workers, never hidden hunter coordinates. */
+export function gameReserveV109Behavior(state: GameReserveV66State, index: number): {kind: GameReserveV109Behavior; destination: number; partnerId?: string} | null {
+  const definition = gameReserveV109Definition(state), human = state.humans[index], person = definition?.people[index];
+  if (!definition || !human || !person || human.status !== 'active' || human.carrying || human.lastSeenX !== null && human.alertUntil > state.tick) return null;
+  const ship = state.ships[human.team], shipX = definition.ships[human.team].x;
+  if (ship.launch !== null || ship.departedAt !== null) return null;
+  const allies = state.humans.filter(ally => ally !== human && ally.team === human.team && ally.status === 'active');
+  if (!allies.length) return null;
+  if (person.behavior === 'carrier-escort') {
+    const carrier = allies.filter(ally => ally.carrying && Math.abs(ally.x - human.x) <= 520 && gameReserveV66LineClear(human.x, 387, ally.x, 387, state))
+      .sort((a, b) => Math.abs(a.x - human.x) - Math.abs(b.x - human.x))[0];
+    return carrier ? {kind: 'carrier-escort', destination: clamp(carrier.x - Math.sign(shipX - carrier.x || 1) * 75, 40, definition.world.width - 40), partnerId: carrier.id} : null;
+  }
+  if (person.behavior === 'cache-guard' && ship.parts < 3) {
+    const cache = human.team * 4 + 2;
+    const worker = allies.some(ally => !definition.people.find(candidate => candidate.id === ally.id)?.behavior || ally.carrying);
+    return worker && state.supplies[cache] > 0 ? {kind: 'cache-guard', destination: definition.supplies[cache] - 85} : null;
+  }
+  if (person.behavior === 'repair-cover' && ship.parts >= 3 && ship.repair < 3600) {
+    const mechanic = allies.find(ally => definition.people.find(candidate => candidate.id === ally.id)?.role === 'technician' && !ally.carrying &&
+      Math.abs(ally.x - shipX) <= 30 && !(ally.lastSeenX !== null && ally.alertUntil > state.tick) && gameReserveV66LineClear(human.x, 387, ally.x, 387, state));
+    return mechanic ? {kind: 'repair-cover', destination: shipX - 135, partnerId: mechanic.id} : null;
+  }
+  return null;
+}
 /** Work decisions use a nearby visible ally or a known own ramp, never hidden hunter coordinates. */
 export function gameReserveV108Behavior(state: GameReserveV66State, index: number): { kind: GameReserveV108Behavior; destination: number; partnerId?: string } | null {
   if (state.version !== 4) return null;
@@ -171,11 +229,11 @@ export function gameReserveV108Behavior(state: GameReserveV66State, index: numbe
 }
 /** Reject unsupported and contradictory saves; no implicit reset and no free inventory or canonical rewards. */
 export function normalizeGameReserveV66(value: unknown): GameReserveV66State | null {
-  if (!record(value) || !(value.version === 1 && value.reserveId === "vharuun-first-expedition" || value.version === 2 && value.reserveId === "vharuun-lookout-expedition" || value.version === 3 && value.reserveId === "vharuun-transect-expedition" || value.version === 4 && value.reserveId === "kesh-watch-expedition")) return null;
-  if (value.version !== 2 && value.lookout !== undefined || value.version !== 3 && value.routeV107 !== undefined || value.version !== 4 && value.routeV108 !== undefined) return null;
-  const extended = value.version === 2, expedition = value.version === 3 || value.version === 4;
-  const sites = value.version === 4 ? GAME_RESERVE_EXPEDITION_V108_SITES : GAME_RESERVE_EXPEDITION_V107_SITES;
-  const terrain = { version: value.version as 1 | 2 | 3 | 4 }, width = gameReserveV66World(terrain).width;
+  if (!record(value) || !(value.version === 1 && value.reserveId === "vharuun-first-expedition" || value.version === 2 && value.reserveId === "vharuun-lookout-expedition" || value.version === 3 && value.reserveId === "vharuun-transect-expedition" || value.version === 4 && value.reserveId === "kesh-watch-expedition" || value.version === 5 && GAME_RESERVE_CATALOGUE_V109.some(definition => definition.id === value.reserveId))) return null;
+  if (value.version !== 2 && value.lookout !== undefined || value.version !== 3 && value.routeV107 !== undefined || value.version !== 4 && value.routeV108 !== undefined || value.version !== 5 && value.routeV109 !== undefined) return null;
+  const extended = value.version === 2, expedition = value.version === 3 || value.version === 4 || value.version === 5;
+  const terrain = { version: value.version as 1 | 2 | 3 | 4 | 5, reserveId: value.reserveId as string }, width = gameReserveV66World(terrain).width;
+  const sites = gameReserveV66Sites(terrain);
   const people = gameReserveV66People(terrain), ships = gameReserveV66Ships(terrain), supplies = gameReserveV66Supplies(terrain);
   if (!integer(value.seed, 0, 4294967295) ||
     !integer(value.tick, 0, 100000000) || !GAME_RESERVE_V66_STATUSES.includes(value.status as GameReserveV66Status) || !record(value.player) ||
@@ -185,15 +243,15 @@ export function normalizeGameReserveV66(value: unknown): GameReserveV66State | n
     !Array.isArray(value.visited) || !value.visited.includes(0) || new Set(value.visited).size !== value.visited.length || !value.visited.every(v => integer(v, 0, gameReserveV66Sectors(terrain).length - 1)) ||
     !Array.isArray(value.log) || value.log.length > 18 || !record(value.channel) || !record(value.previous) || !bool(value.inputArmed)) return null;
   const p = value.player;
-  if (!number(p.x, 40, width - 40) || !number(p.y, 120, 438) || !number(p.vy, -13, 18) || !facing(p.facing) || !number(p.hp, 0, 100) ||
+  if (!number(p.x, 40, width - 40) || !number(p.y, value.version === 5 ? 0 : 120, 438) || !number(p.vy, -13, 18) || !facing(p.facing) || !number(p.hp, 0, 100) ||
     !number(p.energy, 0, 100) || !bool(p.cloak) || !integer(p.cooldown, 0, 60) || !bool(p.moving) ||
     !["jump", "attack", "melee", "cloak"].every(k => bool((value.previous as Record<string, unknown>)[k]))) return null;
   const tick = value.tick;
-  if (expedition && (!Object.keys(value).every(key => ["version", "reserveId", "seed", "tick", "status", "player", "humans", "ships", "supplies", "deniedSupplies", "tracks", "projectiles", "channel", "visited", "log", "terminalTick", "inputArmed", "previous", value.version === 4 ? "routeV108" : "routeV107"].includes(key)) ||
+  if (expedition && (!Object.keys(value).every(key => ["version", "reserveId", "seed", "tick", "status", "player", "humans", "ships", "supplies", "deniedSupplies", "tracks", "projectiles", "channel", "visited", "log", "terminalTick", "inputArmed", "previous", value.version === 5 ? "routeV109" : value.version === 4 ? "routeV108" : "routeV107"].includes(key)) ||
     !Object.keys(p).every(key => ["x", "y", "vy", "facing", "hp", "energy", "cloak", "cooldown", "moving"].includes(key)))) return null;
   if (value.deniedSupplies !== undefined && (!Array.isArray(value.deniedSupplies) || value.deniedSupplies.length !== supplies.length ||
     !value.deniedSupplies.every((count, index) => integer(count, 0, 2) && count + (value.supplies as number[])[index] <= 2))) return null;
-  if (value.version === 4) {
+  if (value.version === 4 || value.version === 5) {
     const keys = (item: unknown, allowed: readonly string[]) => record(item) && Object.keys(item).every(key => allowed.includes(key));
     if (!keys(value.channel, ["kind", "target", "ticks"]) || !keys(value.previous, ["jump", "attack", "melee", "cloak"]) ||
       !value.tracks.every(item => keys(item, ["x", "tick", "direction"])) ||
@@ -209,7 +267,7 @@ export function normalizeGameReserveV66(value: unknown): GameReserveV66State | n
     if (expedition && (!record(h) || !Object.keys(h).every(key => ["id", "x", "facing", "hp", "status", "team", "carrying", "targetSupply", "work", "lastSeenX", "lastSeenY", "alertUntil", "shotCooldown", "windup", "moving", "identified", "scan", "secured", "downAt", "disembarkation", "recovering"].includes(key)))) return null;
     if (!record(h) || h.id !== people[n].id || !number(h.x, 40, width - 40) || !facing(h.facing) || !number(h.hp, 0, 70) ||
       typeof h.status !== "string" || !["active", "down", "boarded", "escaped"].includes(h.status) || !integer(h.team, 0, ships.length - 1) || !bool(h.carrying) || !integer(h.targetSupply, 0, supplies.length - 1) ||
-      !number(h.work, 0, 180) || h.lastSeenX !== null && !number(h.lastSeenX, 40, width - 40) || !number(h.lastSeenY, 60, 438) ||
+      !number(h.work, 0, 180) || h.lastSeenX !== null && !number(h.lastSeenX, 40, width - 40) || !number(h.lastSeenY, value.version === 5 ? 0 : 60, 438) ||
       !integer(h.alertUntil, 0, tick + 360) || !integer(h.shotCooldown, 0, 200) || !integer(h.windup, 0, 24) || !bool(h.moving) || !bool(h.identified) ||
       !integer(h.scan, 0, 90) || !bool(h.secured) || h.downAt !== null && !integer(h.downAt, 0, tick)) return null;
     if ((h.status === "down") !== (h.hp === 0) || (h.status === "down") !== (h.downAt !== null) || h.secured && h.status !== "down" ||
@@ -263,7 +321,7 @@ export function normalizeGameReserveV66(value: unknown): GameReserveV66State | n
     if (c.kind === "survey" && (observation.recordedAt !== null || Math.abs(p.x as number - site.x) > site.range || p.y !== site.y || p.vy !== 0)) return null;
   }
   if (expedition) {
-    const route = value.version === 4 ? value.routeV108 : value.routeV107;
+    const route = value.version === 5 ? value.routeV109 : value.version === 4 ? value.routeV108 : value.routeV107;
     if (!record(route) || Object.keys(route).length !== 1 || !Array.isArray(route.siteRecords) || route.siteRecords.length !== sites.length) return null;
     for (let index = 0; index < route.siteRecords.length; index++) {
       const observation = route.siteRecords[index], site = sites[index];
@@ -275,7 +333,7 @@ export function normalizeGameReserveV66(value: unknown): GameReserveV66State | n
   }
   if (value.status === "active" ? value.terminalTick !== null || p.hp === 0 : !integer(value.terminalTick, 0, tick) ||
     value.status === "incapacitated" && p.hp !== 0 || value.status === "returned" && (p.hp === 0 || Math.abs(p.x - 115) > 55)) return null;
-  if (value.version === 4 && gameReserveV66MaterialTotal(value as unknown as GameReserveV66State) !== 32) return null;
+  if ((value.version === 4 || value.version === 5) && gameReserveV66MaterialTotal(value as unknown as GameReserveV66State) !== 32) return null;
   return structuredClone(value) as unknown as GameReserveV66State;
 }
 export const gameReserveV66Supported = (value: unknown) => value === undefined || value === null || normalizeGameReserveV66(value) !== null;
@@ -297,6 +355,10 @@ export function canAdvanceGameReserveV66(previous: unknown, next: unknown): bool
   })) return false;
   if (a.version === 4 && b.version === 4 && a.routeV108.siteRecords.some((before, index) => {
     const after = b.routeV108.siteRecords[index];
+    return before.recordedAt !== null ? JSON.stringify(before) !== JSON.stringify(after) : after.recordedAt !== null && after.recordedAt <= a.tick;
+  })) return false;
+  if (a.version === 5 && b.version === 5 && a.routeV109.siteRecords.some((before, index) => {
+    const after = b.routeV109.siteRecords[index];
     return before.recordedAt !== null ? JSON.stringify(before) !== JSON.stringify(after) : after.recordedAt !== null && after.recordedAt <= a.tick;
   })) return false;
   if (!a.visited.every(v => b.visited.includes(v)) || b.player.hp > a.player.hp || a.supplies.some((count, i) => b.supplies[i] > count)) return false;
@@ -335,6 +397,11 @@ export function gameReserveV66Summary(s: GameReserveV66State) {
 export function gameReserveV66Interaction(s: GameReserveV66State): GameReserveV66State["channel"] {
   if (s.version === 2 && s.lookout.recordedAt === null && Math.abs(s.player.x - GAME_RESERVE_LOOKOUT_V104_SURVEY.x) <= GAME_RESERVE_LOOKOUT_V104_SURVEY.range &&
     s.player.y === GAME_RESERVE_LOOKOUT_V104_SURVEY.y && s.player.vy === 0) return { kind: "survey", target: 0, ticks: 0 };
+  if (s.version === 5) {
+    const site = gameReserveV66Sites(s).findIndex((point, index) => s.routeV109.siteRecords[index].recordedAt === null &&
+      Math.abs(s.player.x - point.x) <= point.range && s.player.y === point.y && s.player.vy === 0);
+    if (site >= 0) return {kind: 'survey', target: site, ticks: 0};
+  }
   if (s.version === 4) {
     const site = GAME_RESERVE_EXPEDITION_V108_SITES.findIndex((point, index) => s.routeV108.siteRecords[index].recordedAt === null &&
       Math.abs(s.player.x - point.x) <= point.range && s.player.y === point.y && s.player.vy === 0);
@@ -433,7 +500,7 @@ export function stepGameReserveV66(state: GameReserveV66State, input: GameReserv
     h.windup = 0;
     let ship = s.ships[h.team];
     if (ship.departedAt !== null) {
-      const other = s.version === 3 || s.version === 4 ? s.ships.map((candidate, index) => ({ candidate, index, distance: Math.abs(ships[index].x - h.x) }))
+      const other = s.version === 3 || s.version === 4 || s.version === 5 ? s.ships.map((candidate, index) => ({ candidate, index, distance: Math.abs(ships[index].x - h.x) }))
         .filter(item => item.candidate.departedAt === null).sort((a, b) => a.distance - b.distance)[0]?.index : h.team === 0 ? 1 : 0;
       delete h.recovering;
       if (other !== undefined && s.ships[other].departedAt === null) { h.team = other as 0 | 1 | 2 | 3; ship = s.ships[other]; } else continue;
@@ -456,7 +523,7 @@ export function stepGameReserveV66(state: GameReserveV66State, input: GameReserv
       if (h.moving && (s.tick + index * 17) % 90 === 0) s.tracks.push({ x: h.x, tick: s.tick, direction: h.facing });
       continue;
     }
-    const assignment = gameReserveV108Behavior(s, index);
+    const assignment = gameReserveV109Behavior(s, index) ?? gameReserveV108Behavior(s, index);
     if (assignment) {
       const delta = assignment.destination - h.x;
       h.work = 0;
@@ -541,6 +608,10 @@ export function stepGameReserveV66(state: GameReserveV66State, input: GameReserv
       if (action.kind === "survey" && s.version === 4) {
         s.routeV108.siteRecords[action.target] = { recordedAt: s.tick, hunterX: p.x, hunterY: p.y };
         log(s, GAME_RESERVE_EXPEDITION_V108_SITES[action.target].name + " : notes consignées. Le retour à l’extraction reste nécessaire.");
+      }
+      if (action.kind === 'survey' && s.version === 5) {
+        s.routeV109.siteRecords[action.target] = {recordedAt: s.tick, hunterX: p.x, hunterY: p.y};
+        log(s, gameReserveV66Sites(s)[action.target].name + ' : relevé consigné. Reviens physiquement à l’extraction pour le rapporter.');
       }
       if (action.kind === "return") { s.status = "returned"; s.terminalTick = s.tick; log(s, "Retour au point d'extraction. Fin de cette expédition."); }
       s.channel = { kind: "none", target: -1, ticks: 0 };

@@ -1,0 +1,454 @@
+{
+  "schemaVersion": 1,
+  "release": "V109",
+  "status": "PASS_CIBLE",
+  "scope": "V109 physical supply route from an explicitly model-prepared V108 legacy front. The six constructions and prior mount care belong to that declared fixture. This browser earns the six ordered supply deliveries, same-hull water travel/reload, physical return, and separation of both legacy mounts; no campaign hull, territory mapping, resources, XP or new native art is awarded.",
+  "production": {
+    "mode": "production",
+    "runtimeCommit": "63cfb392a72438623f8031257e54497ece390aa8",
+    "buildId": "FJ6IbT6OZx1H51wYnNmex",
+    "browserErrors": 0,
+    "checksFailed": 0,
+    "checksPassed": 38,
+    "servedBuilds": [
+      {
+        "status": 200,
+        "expectedBuildId": "FJ6IbT6OZx1H51wYnNmex",
+        "foundInHtml": true,
+        "htmlSha256": "422caa9465fea7ad708f0f4f23760ad2b1c18aedef519d1dd2ea8abecf6dd77d"
+      },
+      {
+        "status": 200,
+        "expectedBuildId": "FJ6IbT6OZx1H51wYnNmex",
+        "foundInHtml": true,
+        "htmlSha256": "422caa9465fea7ad708f0f4f23760ad2b1c18aedef519d1dd2ea8abecf6dd77d"
+      },
+      {
+        "status": 200,
+        "expectedBuildId": "FJ6IbT6OZx1H51wYnNmex",
+        "foundInHtml": true,
+        "htmlSha256": "422caa9465fea7ad708f0f4f23760ad2b1c18aedef519d1dd2ea8abecf6dd77d"
+      }
+    ]
+  },
+  "invocation": {
+    "command": "node scripts/qa-clan-supply-route-v109.mjs",
+    "nodeExecutable": "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+    "nodeVersion": "v22.23.3",
+    "environment": {
+      "YAUTJA_QA_MODE": "compiled-app",
+      "YAUTJA_QA_BASE_URL": "http://127.0.0.1:3101",
+      "YAUTJA_QA_BUILD_ID": "FJ6IbT6OZx1H51wYnNmex",
+      "YAUTJA_QA_RUNTIME_COMMIT": "63cfb392a72438623f8031257e54497ece390aa8",
+      "YAUTJA_CLAN_SUPPLY_V109_OUTPUT": "/workspace/yautja-la-longue-chasse/outputs/qa-v109-production-r2/clans"
+    }
+  },
+  "sourceBefore": [
+    {
+      "file": "scripts/qa-clan-supply-route-v109.mjs",
+      "sha256": "8acad384d3fb9074fd84aa523808e34db2e477c90d9c132b6242c832b5cb954b",
+      "bytes": 32081
+    },
+    {
+      "file": "tests/helpers/clan-supply-route-v109-fixture.mjs",
+      "sha256": "200c305dd23bc4b2572c4364e8a7f22c4b5378638a5ea63cd66c11beff64b45f",
+      "bytes": 5236
+    },
+    {
+      "file": "app/game/ClanSupplyRouteV109.tsx",
+      "sha256": "4d6c76f78dd5cc86cf7c93fcad2f79bf5093dae72b800bc20ef46c3e5225c35f",
+      "bytes": 39155
+    },
+    {
+      "file": "app/game/ClanSupplyRouteV109.module.css",
+      "sha256": "22925f657bc54483a5ce20a154505ee3e9487a3f156fea2e7196bba321cc9a60",
+      "bytes": 1287
+    },
+    {
+      "file": "app/game/ClanLogisticsV108.module.css",
+      "sha256": "00dd97b435e7cb2ced371fc17ee641d96b290718b5cd8dba960044c437324e05",
+      "bytes": 2221
+    },
+    {
+      "file": "app/game/ClanWarBibleV6Panel.tsx",
+      "sha256": "15e11fcae50ee228edea67a5c4b182b09c9a05d459c72563fb6f2c9167eb8116",
+      "bytes": 19794
+    },
+    {
+      "file": "app/game/ClanWarSpecializedV107.tsx",
+      "sha256": "9ad47974359e52d231b12f49bb3fa3d4439706b4f550ef86bf618fcaddc7d244",
+      "bytes": 30687
+    },
+    {
+      "file": "app/game/systems/clanSupplyRouteV109.ts",
+      "sha256": "8995dd078adb79a03d5c5c0c6a9343e1d0e8aa377287d7ebb77684e41352fb51",
+      "bytes": 19153
+    },
+    {
+      "file": "app/game/systems/clanSupplySessionV109.ts",
+      "sha256": "b8d8f20737418cf51a13ee77c0b9eebd799d5b4bc072f90feb11355aa6c81ede",
+      "bytes": 5157
+    },
+    {
+      "file": "app/game/systems/clanLogisticsV108.ts",
+      "sha256": "164c846a0cb9c44e826309b0ffd8e4d31a5d2fefc22f17f477de6588578a44dd",
+      "bytes": 31921
+    },
+    {
+      "file": "app/game/systems/clanLogisticsSessionV108.ts",
+      "sha256": "84cd1bf9fdd2731accc9bf888229971b7ee6671e183e1f9dcde24dcbe232e6bf",
+      "bytes": 3734
+    },
+    {
+      "file": "app/game/systems/clanWarSpecializedV107.ts",
+      "sha256": "dd8fc139aab8a20e64e93e00cd78211eb938119a58f6dcc03e13a55b7720410c",
+      "bytes": 41365
+    },
+    {
+      "file": "app/game/systems/clanWarBibleV6.ts",
+      "sha256": "66de0c9d66d9f9fffa65fd1037b9f1b428cdbe7545211c08a9afe77162833dab",
+      "bytes": 22223
+    },
+    {
+      "file": "app/game/clanWarBibleV6Source.json",
+      "sha256": "ce27085c44196fefa600407f0bc46cbb74934eb5437126b29d03d35a1e7a751d",
+      "bytes": 1362699
+    },
+    {
+      "file": "public/game/homeworld/v77/lava-transit-skiff.png",
+      "sha256": "ad4e5303e5a6d2a84cdf69e647aa904919fdf6f796e723aa4f22ef811a71d0b1",
+      "bytes": 2422116
+    },
+    {
+      "file": "public/game/homeworld/v77/fauna/yautja-horse-corrected.png",
+      "sha256": "d7d8014ff3ace59f3eca4070cca8fa6534accd17b6a38d26cc8b8aecb95a130f",
+      "bytes": 1463703
+    },
+    {
+      "file": "public/game/homeworld/v64/clan-shuttle.png",
+      "sha256": "c9868a99fc4af4716150cdecbdeda502e662fd8bcc6334acfa3f0055c59deedd",
+      "bytes": 1982506
+    },
+    {
+      "file": "public/audio/ambience/ship/v54.wav",
+      "sha256": "b2ed760f17352aca514eb2a7aa6f6295127188bf2e7b02390a25ec12295d3371",
+      "bytes": 418994
+    },
+    {
+      "file": "public/audio/sfx/scan/v54.wav",
+      "sha256": "86e2562187736d346c8fac42eeeeb87ff3e77fd75fb8ede2ee562f2a8632907d",
+      "bytes": 33560
+    }
+  ],
+  "sourceAfter": [
+    {
+      "file": "scripts/qa-clan-supply-route-v109.mjs",
+      "sha256": "8acad384d3fb9074fd84aa523808e34db2e477c90d9c132b6242c832b5cb954b",
+      "bytes": 32081
+    },
+    {
+      "file": "tests/helpers/clan-supply-route-v109-fixture.mjs",
+      "sha256": "200c305dd23bc4b2572c4364e8a7f22c4b5378638a5ea63cd66c11beff64b45f",
+      "bytes": 5236
+    },
+    {
+      "file": "app/game/ClanSupplyRouteV109.tsx",
+      "sha256": "4d6c76f78dd5cc86cf7c93fcad2f79bf5093dae72b800bc20ef46c3e5225c35f",
+      "bytes": 39155
+    },
+    {
+      "file": "app/game/ClanSupplyRouteV109.module.css",
+      "sha256": "22925f657bc54483a5ce20a154505ee3e9487a3f156fea2e7196bba321cc9a60",
+      "bytes": 1287
+    },
+    {
+      "file": "app/game/ClanLogisticsV108.module.css",
+      "sha256": "00dd97b435e7cb2ced371fc17ee641d96b290718b5cd8dba960044c437324e05",
+      "bytes": 2221
+    },
+    {
+      "file": "app/game/ClanWarBibleV6Panel.tsx",
+      "sha256": "15e11fcae50ee228edea67a5c4b182b09c9a05d459c72563fb6f2c9167eb8116",
+      "bytes": 19794
+    },
+    {
+      "file": "app/game/ClanWarSpecializedV107.tsx",
+      "sha256": "9ad47974359e52d231b12f49bb3fa3d4439706b4f550ef86bf618fcaddc7d244",
+      "bytes": 30687
+    },
+    {
+      "file": "app/game/systems/clanSupplyRouteV109.ts",
+      "sha256": "8995dd078adb79a03d5c5c0c6a9343e1d0e8aa377287d7ebb77684e41352fb51",
+      "bytes": 19153
+    },
+    {
+      "file": "app/game/systems/clanSupplySessionV109.ts",
+      "sha256": "b8d8f20737418cf51a13ee77c0b9eebd799d5b4bc072f90feb11355aa6c81ede",
+      "bytes": 5157
+    },
+    {
+      "file": "app/game/systems/clanLogisticsV108.ts",
+      "sha256": "164c846a0cb9c44e826309b0ffd8e4d31a5d2fefc22f17f477de6588578a44dd",
+      "bytes": 31921
+    },
+    {
+      "file": "app/game/systems/clanLogisticsSessionV108.ts",
+      "sha256": "84cd1bf9fdd2731accc9bf888229971b7ee6671e183e1f9dcde24dcbe232e6bf",
+      "bytes": 3734
+    },
+    {
+      "file": "app/game/systems/clanWarSpecializedV107.ts",
+      "sha256": "dd8fc139aab8a20e64e93e00cd78211eb938119a58f6dcc03e13a55b7720410c",
+      "bytes": 41365
+    },
+    {
+      "file": "app/game/systems/clanWarBibleV6.ts",
+      "sha256": "66de0c9d66d9f9fffa65fd1037b9f1b428cdbe7545211c08a9afe77162833dab",
+      "bytes": 22223
+    },
+    {
+      "file": "app/game/clanWarBibleV6Source.json",
+      "sha256": "ce27085c44196fefa600407f0bc46cbb74934eb5437126b29d03d35a1e7a751d",
+      "bytes": 1362699
+    },
+    {
+      "file": "public/game/homeworld/v77/lava-transit-skiff.png",
+      "sha256": "ad4e5303e5a6d2a84cdf69e647aa904919fdf6f796e723aa4f22ef811a71d0b1",
+      "bytes": 2422116
+    },
+    {
+      "file": "public/game/homeworld/v77/fauna/yautja-horse-corrected.png",
+      "sha256": "d7d8014ff3ace59f3eca4070cca8fa6534accd17b6a38d26cc8b8aecb95a130f",
+      "bytes": 1463703
+    },
+    {
+      "file": "public/game/homeworld/v64/clan-shuttle.png",
+      "sha256": "c9868a99fc4af4716150cdecbdeda502e662fd8bcc6334acfa3f0055c59deedd",
+      "bytes": 1982506
+    },
+    {
+      "file": "public/audio/ambience/ship/v54.wav",
+      "sha256": "b2ed760f17352aca514eb2a7aa6f6295127188bf2e7b02390a25ec12295d3371",
+      "bytes": 418994
+    },
+    {
+      "file": "public/audio/sfx/scan/v54.wav",
+      "sha256": "86e2562187736d346c8fac42eeeeb87ff3e77fd75fb8ede2ee562f2a8632907d",
+      "bytes": 33560
+    }
+  ],
+  "checks": [
+    {
+      "name": "Served compiled HTML identifies the common build",
+      "status": "PASS"
+    },
+    {
+      "name": "A refused migration preserves the exact original V108 archive",
+      "status": "PASS"
+    },
+    {
+      "name": "Unconfirmed migration cannot move the native U19 or spend stocks",
+      "status": "PASS"
+    },
+    {
+      "name": "Repeated migration refusal still preserves every original byte",
+      "status": "PASS"
+    },
+    {
+      "name": "The real legacy-controller tab shares the compiled build",
+      "status": "PASS"
+    },
+    {
+      "name": "Retry confirms one envelope containing the exact old archive before play",
+      "status": "PASS"
+    },
+    {
+      "name": "A real stale V108 tab cannot overwrite the confirmed V109 envelope",
+      "status": "PASS"
+    },
+    {
+      "name": "Six stops reserve16 existing RAV without creating another stock",
+      "status": "PASS"
+    },
+    {
+      "name": "The native U19 physically load the exact lot and its four provisions",
+      "status": "PASS"
+    },
+    {
+      "name": "Same skiff and all original U19 carry the reservation seven actual water steps",
+      "status": "PASS"
+    },
+    {
+      "name": "Served compiled HTML identifies the common build",
+      "status": "PASS"
+    },
+    {
+      "name": "Ordinary reload resumes the exact whole convoy and its mid-channel reservation",
+      "status": "PASS"
+    },
+    {
+      "name": "Disembarking cannot teleport the reserved lot out of the skiff",
+      "status": "PASS"
+    },
+    {
+      "name": "Paused route disables delivery without losing its real carried load",
+      "status": "PASS"
+    },
+    {
+      "name": "An inert settings boundary stops movement without altering the reservation",
+      "status": "PASS"
+    },
+    {
+      "name": "Leaving settings does not resume a buffered walk",
+      "status": "PASS"
+    },
+    {
+      "name": "W3-S10 receives its own actual two RAV once, in order",
+      "status": "PASS"
+    },
+    {
+      "name": "W3-S13 receives its own actual two RAV once, in order",
+      "status": "PASS"
+    },
+    {
+      "name": "W3-S14 receives its own actual two RAV once, in order",
+      "status": "PASS"
+    },
+    {
+      "name": "W3-S15 receives its own actual two RAV once, in order",
+      "status": "PASS"
+    },
+    {
+      "name": "W3-S18 receives its own actual two RAV once, in order",
+      "status": "PASS"
+    },
+    {
+      "name": "The six-step route waits for an actual return instead of closing remotely",
+      "status": "PASS"
+    },
+    {
+      "name": "Remote closure cannot move or refund the remaining provisions",
+      "status": "PASS"
+    },
+    {
+      "name": "U19 physically return and deposit the exact remainder before one completed tour",
+      "status": "PASS"
+    },
+    {
+      "name": "Both legacy mount IDs occupy two physically separated native parking places",
+      "status": "PASS"
+    },
+    {
+      "name": "Actual repeated movement refuses a new mounted overlap",
+      "status": "PASS"
+    },
+    {
+      "name": "The actual UI download retains the complete envelope and exact original despite its bounded preview",
+      "status": "PASS"
+    },
+    {
+      "name": "Selecting a pending file invalidates the previous import text immediately",
+      "status": "PASS"
+    },
+    {
+      "name": "A late old file cannot replace the current complete file preview",
+      "status": "PASS"
+    },
+    {
+      "name": "The current full file imports with its exact route instead of rewinding to the older one",
+      "status": "PASS"
+    },
+    {
+      "name": "Cancelling an old pending read leaves an empty non-importable draft",
+      "status": "PASS"
+    },
+    {
+      "name": "A future version import refuses atomically with the complete confirmed route intact",
+      "status": "PASS"
+    },
+    {
+      "name": "A denied current write retains the whole previously confirmed route and convoy",
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile component has no page overflow and its actor selection targets reach44px",
+      "status": "PASS"
+    },
+    {
+      "name": "Campaign and other historical storage bytes remain unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "Every native RAV remains accounted for and the old archive is still byte-exact",
+      "status": "PASS"
+    },
+    {
+      "name": "No JavaScript or console error occurred",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "name": "Source, driver and public bytes unchanged",
+      "status": "PASS"
+    }
+  ],
+  "captures": [
+    {
+      "file": "docs/qa/v109-clans/01-original-migration-refused.png",
+      "sha256": "a1a2a04d67333dce2662fb3a85dd0afc148773f392b14eeeb49aec9ccc97eabd",
+      "bytes": 14072
+    },
+    {
+      "file": "docs/qa/v109-clans/02-reservation-in-existing-source.png",
+      "sha256": "1fb7b6868bd88f753eae07b2dcdcdadad1146372f7f6f3b0f377f0776de79f88",
+      "bytes": 253733
+    },
+    {
+      "file": "docs/qa/v109-clans/03-same-lot-mid-channel.png",
+      "sha256": "ab1ed73167d43f44532b9fcbcd5dba7b13be5dd0a2e017b09ac8e8074a51a9a1",
+      "bytes": 252153
+    },
+    {
+      "file": "docs/qa/v109-clans/04-six-stops-closed-at-depot.png",
+      "sha256": "fc9d6defdf18c15be0691942a6acddb2c58fcbdb6dfc6774db687e8559a75a1c",
+      "bytes": 54631
+    },
+    {
+      "file": "docs/qa/v109-clans/05-two-mounts-real-distinct-parking.png",
+      "sha256": "ec7f316fb220a5014e4b5e16160d9d5ce287d4c26ade43ed1ce2085c1d2846f4",
+      "bytes": 254432
+    },
+    {
+      "file": "docs/qa/v109-clans/06-current-write-refused.png",
+      "sha256": "1b48a7b6a4c827e4aa0da437ae458d591e72d1fb2e16a01840fb4a7dbaa0b20b",
+      "bytes": 3924
+    },
+    {
+      "file": "docs/qa/v109-clans/07-mobile-terrain-and-zoom.png",
+      "sha256": "061e372e42e2aeadce83350b13d91999a6c9113624929f0198e01827646c21a6",
+      "bytes": 67003
+    },
+    {
+      "file": "docs/qa/v109-clans/08-mobile-actor-selection.png",
+      "sha256": "21387f9cf0d4f7096aeaa4149b55d270c847fd42df47315d20d6d35067daf2bf",
+      "bytes": 14503
+    }
+  ],
+  "capturesOpened": [
+    "docs/qa/v109-clans/01-original-migration-refused.png",
+    "docs/qa/v109-clans/02-reservation-in-existing-source.png",
+    "docs/qa/v109-clans/03-same-lot-mid-channel.png",
+    "docs/qa/v109-clans/04-six-stops-closed-at-depot.png",
+    "docs/qa/v109-clans/05-two-mounts-real-distinct-parking.png",
+    "docs/qa/v109-clans/06-current-write-refused.png",
+    "docs/qa/v109-clans/07-mobile-terrain-and-zoom.png",
+    "docs/qa/v109-clans/08-mobile-actor-selection.png"
+  ],
+  "rawEvidence": {
+    "path": "docs/qa/v109-clans/browser-result.json.gz",
+    "sha256": "df9b3a4fe1e2008172d01424c215b01ac319767ae748e9b46f6b87ca0f3c2bc5",
+    "bytes": 100872,
+    "decodedSha256": "121f681e4d8a5775c254bf55e23790fbc128e84755440d58c679bf83505e4a1a",
+    "decodedBytes": 1324801
+  }
+}

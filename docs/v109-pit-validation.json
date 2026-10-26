@@ -1,0 +1,2303 @@
+{
+  "schemaVersion": 1,
+  "release": "V109",
+  "status": "PASS_CIBLE",
+  "scope": "Two unvaried Feral/Scar local duels, independent attacker/victim BODY in both native orientations, actual walking/capture/flight/landing, L+M keyboard/pad/button, fresh tech, whiff, one complete played victory and exact exported/public V16 replay. Other partners/costumes, TH_B and source kit completion remain open.",
+  "production": {
+    "mode": "production",
+    "runtimeCommit": "c97c7d903486ed2c7cb2529ac27f713c0aba8987",
+    "buildId": "pVNPLCZV9ZFtFCd87NSTa",
+    "browserErrors": 0,
+    "checksFailed": 0,
+    "checksPassed": 65,
+    "servedBuilds": [
+      {
+        "label": "feral-hunter-vs-scar",
+        "status": 200,
+        "buildId": "pVNPLCZV9ZFtFCd87NSTa",
+        "foundInHtml": true,
+        "sha256": "c90a7831a09a57c6ac5b05e7c1a4b5d4d9790274a325175d1533cc9289568fe8",
+        "expectedBuildId": "pVNPLCZV9ZFtFCd87NSTa"
+      },
+      {
+        "label": "scar-vs-feral-hunter",
+        "status": 200,
+        "buildId": "pVNPLCZV9ZFtFCd87NSTa",
+        "foundInHtml": true,
+        "sha256": "c90a7831a09a57c6ac5b05e7c1a4b5d4d9790274a325175d1533cc9289568fe8",
+        "expectedBuildId": "pVNPLCZV9ZFtFCd87NSTa"
+      }
+    ]
+  },
+  "invocation": {
+    "command": "node scripts/qa-pit-forward-throws-v109.mjs",
+    "nodeExecutable": "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+    "nodeVersion": "v22.23.3",
+    "environment": {
+      "YAUTJA_QA_BASE_URL": "http://127.0.0.1:3101",
+      "YAUTJA_QA_MODE": "compiled-app",
+      "YAUTJA_QA_BUILD_ID": "pVNPLCZV9ZFtFCd87NSTa",
+      "YAUTJA_QA_RUNTIME_COMMIT": "c97c7d903486ed2c7cb2529ac27f713c0aba8987",
+      "YAUTJA_PIT_FORWARD_THROW_V109_OUTPUT": "/workspace/yautja-la-longue-chasse/outputs/qa-v109-production-r3/pit"
+    }
+  },
+  "sourceBefore": [
+    {
+      "file": "scripts/qa-pit-forward-throws-v109.mjs",
+      "sha256": "208f49f649883251688e36b85782b4467dc64690ef6f5836ee069c772c435ca2",
+      "bytes": 27822
+    },
+    {
+      "file": "scripts/pit-selection-browser-helpers.mjs",
+      "sha256": "c09d2a4b15dd66f1fe42d5d0728f2c1cd9b12ff599c213d383fc3aa9cfb34430",
+      "bytes": 4665
+    },
+    {
+      "file": "tests/helpers/solo-v67-campaign-route.mjs",
+      "sha256": "50dc9c5ddbd91306cca8fc6bf1eebca9829cd46242cbe78f254c87f738e6c411",
+      "bytes": 1270
+    },
+    {
+      "file": "app/game/buildInfo.ts",
+      "sha256": "73b38b865e54cec63e31e5a898167a9c8a241c682cd830d72a5eea946fd47fc4",
+      "bytes": 268
+    },
+    {
+      "file": "app/game/PitCanvas.tsx",
+      "sha256": "985a12c3831c983542b9e1d79fb525a58d50e9a45c7a8f09878179cac270e398",
+      "bytes": 290831
+    },
+    {
+      "file": "app/game/PitExperienceV79.tsx",
+      "sha256": "2f938301d497eb58b826d3e941eb2496a821f2a04b2f138f1035053510e96074",
+      "bytes": 24829
+    },
+    {
+      "file": "app/game/hunterSpriteMotion.ts",
+      "sha256": "11852e3170e8a3cbd82e289de3b9c3779430e3770a68e62b1cb3efeac2d01658",
+      "bytes": 19041
+    },
+    {
+      "file": "app/game/hunterSpriteAtlas.ts",
+      "sha256": "be0c4d820b2900708a3391a546269fa1c9bdd6b27f4f9a610d6ed43ce4ad606e",
+      "bytes": 32604
+    },
+    {
+      "file": "app/game/pitSpriteSheetAnimation.ts",
+      "sha256": "e6280f97b234e4c4d19ad2aab96ff9ad67c60c7a9bdba880b88a650f57b92f65",
+      "bytes": 41328
+    },
+    {
+      "file": "app/game/pitCombatBitmapArt.ts",
+      "sha256": "e7cc545d20865be7ff2ea5c38ecbfd7016783627fd369d7089bc775dfdb581d9",
+      "bytes": 22279
+    },
+    {
+      "file": "app/game/spriteContact.ts",
+      "sha256": "3267276073ad8e006dfc9e0aa8a1f4c299287d0c2ab9bec9839e4564b4f53a10",
+      "bytes": 3886
+    },
+    {
+      "file": "app/game/pitWorkbookRegistryV109.ts",
+      "sha256": "db322c7ada5e25bfa7a971d446994a0b31cd37ea771595d0dc9b44db0cd240bb",
+      "bytes": 9537
+    },
+    {
+      "file": "app/game/data/pitWorkbookThrowsV109.json",
+      "sha256": "0560d64c106375fdc578856e6f87bfcb863b0843dd54404bdb7a3b6e251097f3",
+      "bytes": 73747
+    },
+    {
+      "file": "app/game/pitWorkbookDeviceRenderingV107.ts",
+      "sha256": "7cf27ee14130863a56d1f5023a6ebf9a44167cb8e3496f6a270ac9ce0916e888",
+      "bytes": 6658
+    },
+    {
+      "file": "app/game/systems/pitCombat.ts",
+      "sha256": "bbdd29361cc6af081258cf0da2ecfa95c6a2fcc3ee77ea78f03b6105d8766430",
+      "bytes": 158279
+    },
+    {
+      "file": "app/game/systems/pitReplay.ts",
+      "sha256": "ca4bddb62b669c33f5cbd98109a0c794218ed42fe2f9fab1de596f38dde6ab03",
+      "bytes": 35683
+    },
+    {
+      "file": "app/game/systems/pitWorkbookCombatV109.ts",
+      "sha256": "6a714c465921e4eeeed2885a2362cd53e5dbd4d013ee8dd3809fb7b47da78618",
+      "bytes": 4479
+    },
+    {
+      "file": "app/game/systems/pitForwardThrowControlsV109.ts",
+      "sha256": "92b25f27468676bc3399adceed087e289906f944c702924c480ab5d35b434da9",
+      "bytes": 1757
+    },
+    {
+      "file": "app/game/systems/controlBindings.ts",
+      "sha256": "75d493beb7c72279152408ab1903d0537c9544ce1fecf23220e7c9d36583a51e",
+      "bytes": 32661
+    },
+    {
+      "file": "app/game/systems/pitWorkbookPresentationClockV105.ts",
+      "sha256": "6a8d1320cd695566f65f929bcfb59d9a68fe52194cdc8b28e9b5ef0cbf7339fa",
+      "bytes": 1460
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/native-frame-delivery.json",
+      "sha256": "107fd696973157960a3efe411ddfc7ae60c135a9708d2b0cd162566bb0606db3",
+      "bytes": 57763
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/visual-review.json",
+      "sha256": "8fb42a808f767300d059c4c1c58d57598dd2d910caa3cbb5149d9c922cf0d39d",
+      "bytes": 13313
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/native-gutter-delivery.json",
+      "sha256": "cf7030418008ddc34c1259d2060844eee65e5ca8fb85838c6150ac4d1365d5d8",
+      "bytes": 10972
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/visual-review-gutters.json",
+      "sha256": "8c6f9aa34b47b47ff8c0e5eb47071d0a4ff395c0613d56a8686ef17e4831bebd",
+      "bytes": 12316
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/native-uv-border-review-spatial.json",
+      "sha256": "560a552eccb4c3085b4d6250c4ab3f553e79ba8b7e771a2d5c2525c7762f6d96",
+      "bytes": 36312
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/native-ground-calibration.json",
+      "sha256": "ebff201b8e89549aba240cb976b61ac315e6e8db3da22e5303b510d4ffaf0c4a",
+      "bytes": 24039
+    },
+    {
+      "file": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-right-v109.png",
+      "sha256": "8324320252c00e84cf0e50b7fb850dc96fb472dc1d5c933d0e14925b4fdf37ec",
+      "bytes": 2316771
+    },
+    {
+      "file": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-r2-v109.png",
+      "sha256": "5dce6483d4ba9fb1848613d3a76abf255a163cbfb9dba1ed3554cc9a74615d15",
+      "bytes": 2390859
+    },
+    {
+      "file": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-isolated-3-r2-v109.png",
+      "sha256": "151b49c54a3ec2321c5793bd10b6232a1e7542d48a8d1c09da2f8fb3cdd76ddb",
+      "bytes": 2071095
+    },
+    {
+      "file": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-isolated-4-r2-v109.png",
+      "sha256": "fa54dd3f5a8e926c211d48dba1edd1b35a813cab02d013ee0294f68d3dd47ddc",
+      "bytes": 2138067
+    },
+    {
+      "file": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-isolated-2-gutter-r1-v109.png",
+      "sha256": "6ff3767df2283b599f7a204e20e3a8c03a943fb1a8dc9b7531f7a3c6778c1931",
+      "bytes": 1706509
+    },
+    {
+      "file": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-isolated-5-gutter-r1-v109.png",
+      "sha256": "2411a5307a67bad68b4e2b1fc2fbbb52b3320d6dc10a956039a68bce30318046",
+      "bytes": 1553500
+    },
+    {
+      "file": "public/game/sprites/v109/pit/scar/scar-throw-forward-right-v109.png",
+      "sha256": "4615795ab410033a000dcdf7fdfe197b431aedb07ad279a7acfbef5e93910c02",
+      "bytes": 2258882
+    },
+    {
+      "file": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-0-v109.png",
+      "sha256": "c5fb6df337079a263350702ddea4299b7ddb61f060dd7bed02eb6010632c9c96",
+      "bytes": 1707824
+    },
+    {
+      "file": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-1-v109.png",
+      "sha256": "6153788ab03fc3f246cae0b1b30990edd57b777283f2eff4c24d9a6ae5b7e95a",
+      "bytes": 1582563
+    },
+    {
+      "file": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-3-v109.png",
+      "sha256": "13561262646615582d4c0687b4b59dc203e58747f62f8cf924a609abfeea44c6",
+      "bytes": 1748850
+    },
+    {
+      "file": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-4-v109.png",
+      "sha256": "0f2081b177fe949c0f52fa2d27dd4accfbd3aaf1da891ec8ffa11547cde0a00d",
+      "bytes": 1761722
+    },
+    {
+      "file": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-2-gutter-r1-v109.png",
+      "sha256": "08c29f9c49d71aef046968c86000a4fd1607486934ab764c80718c86aa816454",
+      "bytes": 1606038
+    },
+    {
+      "file": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-5-gutter-r1-v109.png",
+      "sha256": "7d1eee2349555a1eab15c2ce60d0bae9e858d66fd183f4aa62e3f97e3d2ff157",
+      "bytes": 1461409
+    },
+    {
+      "file": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-right-v109.png",
+      "sha256": "3039f5ff15c73a5a6ef4b6054d3b949b22e99141268bcb5314984a652bdc331a",
+      "bytes": 2236163
+    },
+    {
+      "file": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-right-isolated-3-v109.png",
+      "sha256": "b8ab2d58ffaf3f47853f01ef4a0e36104c6e6a0cfb1462b4d0155365ebb74d2a",
+      "bytes": 1807014
+    },
+    {
+      "file": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-right-isolated-4-v109.png",
+      "sha256": "f3b14134eaa1ba660342d52de1d84925f5888657d9c14c7c53ecb8647158d4f8",
+      "bytes": 1442943
+    },
+    {
+      "file": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-left-v109.png",
+      "sha256": "9203da249bb1756a545758125a88c63f66f8945dbf5a1e883b53532a4a51bfed",
+      "bytes": 2261067
+    },
+    {
+      "file": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-left-isolated-3-v109.png",
+      "sha256": "8b91bf81569d5da2f5107c3515272ada6d19ad0acaefcdc5234626dc4a11c8ad",
+      "bytes": 2201016
+    },
+    {
+      "file": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-left-isolated-4-gutter-r1-v109.png",
+      "sha256": "3ee1f59c32a1204957aac968b0c22f74cfde5297393985d953c1cf1de65f7c98",
+      "bytes": 1600619
+    },
+    {
+      "file": "public/game/sprites/v109/pit/scar/scar-throw-victim-right-v109.png",
+      "sha256": "24cdb66b63f585ac952d035a27006805d3b04136448fb3c22f4a9b3d6c7dfcf9",
+      "bytes": 2164133
+    },
+    {
+      "file": "public/game/sprites/v109/pit/scar/scar-throw-victim-right-isolated-3-v109.png",
+      "sha256": "bd1ca19aecfc3e6c1579838d826461dad56b885c167644452c91a276cd54bd2a",
+      "bytes": 1876383
+    },
+    {
+      "file": "public/game/sprites/v109/pit/scar/scar-throw-victim-right-isolated-4-v109.png",
+      "sha256": "07f216fb8e1145169bb377fc5f11bc6da8193848a962ba23a8aea6f34c07cff6",
+      "bytes": 1377113
+    },
+    {
+      "file": "public/game/sprites/v109/pit/scar/scar-throw-victim-right-isolated-5-v109.png",
+      "sha256": "2105306a7d2462540ba864498659c44f193983a49daac0e2a68c2b75053157e8",
+      "bytes": 1516350
+    },
+    {
+      "file": "public/game/sprites/v109/pit/scar/scar-throw-victim-right-isolated-2-gutter-r1-v109.png",
+      "sha256": "a83f6621c6312f4080cd428358e89369d5c9f3e257742bbb8513b9c2dba2856e",
+      "bytes": 1458006
+    },
+    {
+      "file": "public/game/sprites/v109/pit/scar/scar-throw-victim-left-v109.png",
+      "sha256": "46adfc94048c75e60f01590aa7619cacc6c934f20489c7003d24209477af0429",
+      "bytes": 2341573
+    },
+    {
+      "file": "public/game/sprites/v109/pit/scar/scar-throw-victim-left-isolated-3-v109.png",
+      "sha256": "89fa6f3142850eccf99932528a23ae67b0f115de00dce9db8ad1da124b2baf1a",
+      "bytes": 2110431
+    },
+    {
+      "file": "public/game/sprites/v109/pit/scar/scar-throw-victim-left-isolated-4-r2-v109.png",
+      "sha256": "f102c0e286a3d566854b4581757aadf46728f64e548e14dfceabb7e6dd2dfca5",
+      "bytes": 1194875
+    },
+    {
+      "file": "public/game/sprites/v109/pit/scar/scar-throw-victim-left-isolated-2-gutter-r1-v109.png",
+      "sha256": "b0811cc9418578e58157139809783f127ed46322ea9d705325b34e908958a6ce",
+      "bytes": 1518305
+    },
+    {
+      "file": "public/game/sprites/v109/pit/scar/scar-throw-victim-left-isolated-5-gutter-r1-v109.png",
+      "sha256": "34fa8678d6d979ffc80200eecff09708baf3cca3dd07f54d094d6887fd20a97c",
+      "bytes": 1499671
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-s4-a-v100.png",
+      "sha256": "0eb7806546e452659c5b72ce0255d265eac4172a030bf669d1bcb6bf1fa1b7bc",
+      "bytes": 2229817
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-s4-b-v100.png",
+      "sha256": "05ee37080b250599bba1754a6c3908eafd95ad37cb08fc66ceee0f93ee06a830",
+      "bytes": 2022900
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-special-s2-corrected.png",
+      "sha256": "fa8e84622de3acde190f6cd564c28fc82dc082f681ac518ff8ff2b5c036af752",
+      "bytes": 1904733
+    },
+    {
+      "file": "public/game/sprites/v59/pit/feral/launcher-right.png",
+      "sha256": "feb0b99112cb55470b0c9211461793a85ac8c4538a59ed24026366ff8e7a31ca",
+      "bytes": 2148287
+    },
+    {
+      "file": "public/game/sprites/v59/pit/feral/launcher-left.png",
+      "sha256": "531d9a0e6b300e957bd633ba2300872c41c7ba766e7e2e12b70e505335ae3f14",
+      "bytes": 2212312
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-special-s3-right.png",
+      "sha256": "8eb97e8038899ff9d7f9967b804fa00701f63722035339cc9a74000212048c6f",
+      "bytes": 1595986
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-special-s3-left.png",
+      "sha256": "3bb94e42a714645f89ff8ce0c7567ac46193179676e28adbcc0bf760ba3b4481",
+      "bytes": 1447965
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-s2-a-v100.png",
+      "sha256": "a45d64a6c524828225f29fc1757e58a1218fdfbea9f81a9acd5b1db820112c1e",
+      "bytes": 2081254
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-s2-b-v100.png",
+      "sha256": "1a341c55ddd26ecf1c626eb8baf791f558d2bc9ada9ac01c27463f0286c1cfce",
+      "bytes": 2037749
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-super-a-right-v100.png",
+      "sha256": "9f232d2c2104f1c8a452ab75abb505b3438baeab46e8a5273b2f326cf560d976",
+      "bytes": 2147314
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-super-a-left-v100.png",
+      "sha256": "5e87eb2053b679c58fccc4bc82562460d7f2a0d777d4ffe77c45b083971e93e3",
+      "bytes": 2249370
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-super-b-right-v100.png",
+      "sha256": "15fc0979e956c650eed1d8594cfc2a6686c8bec3fda47a4b4dc6207fc0b92ced",
+      "bytes": 2223295
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-super-b-left-v100.png",
+      "sha256": "814836061d85e0b3707811a2180f074077b648b1b44f4f24976163509aabc62b",
+      "bytes": 1824704
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-special-super.png",
+      "sha256": "cd81a0503a546ad34281f2b8d221763aea15bcd54d5d1c92ed583bdbfd6830c3",
+      "bytes": 1789099
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/020-command-6m-right.png",
+      "sha256": "3b608ea248c440fe50a21139e0c46b82d0e435382c87b64ea300900743118b98",
+      "bytes": 2107336
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/021-command-6m-left.png",
+      "sha256": "b46a33dfa318da52d4815b9f2fb1a480a4d1bc5f7e66abc9daf59ba5288290fc",
+      "bytes": 2098102
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-s3-a-v100.png",
+      "sha256": "986553c12a4dda1292935c99a119482f215aebe7fbc8bd378f1d1e357bc2bdcd",
+      "bytes": 2295353
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-s3-strike-v100.png",
+      "sha256": "82447a6278e2f49d27550926e3fb4f101a96db2f0858d41ad498342dc936576f",
+      "bytes": 2061057
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-s3-counter-v100.png",
+      "sha256": "a65adbb501b510662ef710195b699ba25b0b7f6e6f672e6d448b2f10d8acd4dc",
+      "bytes": 1726682
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-s3-b-v100.png",
+      "sha256": "533a0a9c0c56e774f7a0c909c1ad67a93cde787edf392d6440f8d29427d37a74",
+      "bytes": 2261491
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-equip-a-v100.png",
+      "sha256": "13d9fad90636ef74015db295d4ec42522f16470cfa64579dfb215a1a636f80e2",
+      "bytes": 2196464
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-equip-b-v100.png",
+      "sha256": "1acfa7baec435e75fafe61f8c3354c217db6f40c0747243738314fb4edff9cc0",
+      "bytes": 1948073
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-6M-right-native.png",
+      "sha256": "08e3c2586fb7ec07fd2ac2294f272580bf2a08bdf0677c8ae9d87c38f21e8fa9",
+      "bytes": 1722876
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-6M-left-native.png",
+      "sha256": "5fe2379e13bbcd90478302652cc5534b42ee8e6e5f95d6cb3dccf02fd2e2ed51",
+      "bytes": 1940871
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-special-s1.png",
+      "sha256": "1cb5fa122d709f6065dcc5cbf824a97f4801495c375875a4270a0c8fdb736949",
+      "bytes": 1963780
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-special-s4.png",
+      "sha256": "4dd3be59ccb5582a232652981a011367f7cc639836c18799859649ff5e7066ef",
+      "bytes": 2465196
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-special-equip.png",
+      "sha256": "82bd27b0ee0df00afb124728014167f46bf17c7d290c71815ea346adcd87e1b5",
+      "bytes": 2416511
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-intro-a-right-v100.png",
+      "sha256": "088a5226203be27f8c7247270b79d88e1b6fe0fec93c1d684bb522d236d57bcf",
+      "bytes": 1891725
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-intro-a-left-v100.png",
+      "sha256": "7d3de548392b8bc8497ae89ca27598d8beded14401351c842b3e785560ea2935",
+      "bytes": 1916556
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-intro-b-right-v100.png",
+      "sha256": "049c6eac23a174a3e2b1f4739d9b594213e1ff82ee10d8b9b86075be9420721a",
+      "bytes": 1915805
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-intro-b-left-v100.png",
+      "sha256": "11ab7b8b0ff4b5d7db2461ea964650181decf7d8e6fd6b0d1675faa50d34dac0",
+      "bytes": 1839505
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-victoire-a-v100.png",
+      "sha256": "0373a5e8025c8c4b7ae7dbad9d50a6764af38d52989f7c98d4495828a6d4b25b",
+      "bytes": 2185217
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-victoire-b-right-v100.png",
+      "sha256": "91fcac8364df3f192a94e1538fb7cb9537788f7ec4c00fa94bfda15302f80bd4",
+      "bytes": 1938065
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-victoire-b-left-v100.png",
+      "sha256": "2d3a80a33be972b20a725c6a1c671ca500f2bf1d4beb8cd028be7e9b13f3cb53",
+      "bytes": 1886824
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-defaite-a-right-v100.png",
+      "sha256": "3920d1909a6a4937a8b20755f755216d5f15758635b81ddb8b3102ceade2051d",
+      "bytes": 2122116
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-defaite-a-left-v100.png",
+      "sha256": "bd175f7ba5c24368d6a10d92f754987e27c422f36e08fb2255ef0c171a82aae4",
+      "bytes": 2143222
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-defaite-b-v100.png",
+      "sha256": "7176468913588842dcefafca72fa8e7bade281233dc23d79bf7bc651a3a3e89c",
+      "bytes": 1925293
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-taunt-1-a-v100.png",
+      "sha256": "c0b8623089e33f4fbdab9ecde11a7e61a09feb173d683d296b2bb40fb18bd9ec",
+      "bytes": 2153597
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-taunt-1-b-v100.png",
+      "sha256": "f9be913fdf8ef3d07d27cc0c9fb5d552892bf969cd06ef69b0c7cd1aa2268177",
+      "bytes": 1921471
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-taunt-2-a-v100.png",
+      "sha256": "0ac7341b1336007b9bf7fb32717c2af5749b03fc0183ac2ef96c74d9b12365d0",
+      "bytes": 1705757
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-taunt-2-b-v100.png",
+      "sha256": "8d0aeb93ef02cc77ac522e9fd32fe8f9d3dc52522ce82214e960c2eba46b882f",
+      "bytes": 2224587
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-special-intro.png",
+      "sha256": "b02db6fa75d8a486e20bfc8525aac4dd0a161276a8a5488ed21f190a6ed156a8",
+      "bytes": 2395061
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-special-victoire.png",
+      "sha256": "e532637f7cfbff5c67ec05a6eff25e3c0df0246d3a46781a882f9b26e92dcd9c",
+      "bytes": 2463701
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-special-defaite.png",
+      "sha256": "659bda952b0fee7db73036e9e8faf2f2ce3a7809c35d493055044e534fbc2784",
+      "bytes": 1976748
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-special-taunt-1.png",
+      "sha256": "eabe0c8d9b21e61a0d477697006d11a03bd27b3aa5d314cc9b77c560672b3302",
+      "bytes": 1953793
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-special-taunt-2-right.png",
+      "sha256": "e7e54ccfc5470d422df8d4e4c149934eb67a2390041970bfe5b9922407da8550",
+      "bytes": 1568011
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-special-taunt-2-left.png",
+      "sha256": "36d0760f8121c997a76710973c2a7ab377e96577e4e3b22959a667b5d1f99cd8",
+      "bytes": 1520330
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/001-normals-5l-5m.png",
+      "sha256": "cc17f91b2471c6731d3449983d35cf627162ae4803cafdfed997007354fc5735",
+      "bytes": 2018648
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/007-stand-5m-forward.png",
+      "sha256": "c1b95635c5581dd0fa520e779e461433528640a1e83f2b0488ad05bc1acdcdbd",
+      "bytes": 2351936
+    },
+    {
+      "file": "public/game/sprites/v59/pit/feral/shield-right.png",
+      "sha256": "a562123e1c19cc98b8614d479ef9f70b5499482142a8895f2aaaa7e8cd0953d2",
+      "bytes": 2267581
+    },
+    {
+      "file": "public/game/sprites/v59/pit/feral/shield-left.png",
+      "sha256": "b5f2f91c9beb78c9d78bd83f30ae40af54f3f5546e919a6016ac3299eff27585",
+      "bytes": 2340749
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/002-crouch-2l.png",
+      "sha256": "9cc63fc5a91565f6bb281c11138000e3b1078245581aabd65b60d53d372eb605",
+      "bytes": 2248775
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/013-crouch-2l-left.png",
+      "sha256": "d6faa6692304c6191bc28f1ee1d3e8856603a62b263c320f3de4f9e7f169fdb6",
+      "bytes": 2145770
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/005-crouch-2m.png",
+      "sha256": "91ab7a7ac6dc903dce4aa15ee2f39a9b8bf35113eb8d2bb3ea688debe610208f",
+      "bytes": 2166671
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/011-crouch-2h-right.png",
+      "sha256": "4f094d0f2d3cccadd5f661158d4b4f412c1d769da823fca2e9e00cabd5b3d40d",
+      "bytes": 2214051
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/012-crouch-2h-left.png",
+      "sha256": "1cf32461860771ded634e7ec9ba119a15f29c13f4ef5341d97c1ae5129042c6b",
+      "bytes": 2154824
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/030-air-jl-right-calibrated.png",
+      "sha256": "f6dd75cb124e7db1224ab9f35c4273c4469464e0f14ac36b4ec6fbfcd5380cb5",
+      "bytes": 2062492
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/031-air-jl-left-calibrated.png",
+      "sha256": "e40afc5ae89cdb482467ced9bdca55ed5ce8aad690b5dd648dedb7e64f9f9650",
+      "bytes": 2145482
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/041-air-jm-right-spaced.png",
+      "sha256": "922ca6e1397c90865c513a5ee022fcab6f54d25630f21fcdf3c3019e9ace3088",
+      "bytes": 1739401
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/042-air-jm-left-spaced.png",
+      "sha256": "af39b7568c24d53e5b2834932553f651e747ec4cf2e9db936c862562b8e56ae8",
+      "bytes": 1957052
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/034-air-jh-right-calibrated.png",
+      "sha256": "f5ac5871db20a4bb8dd4512538979fa6bd75b0b032afaaa5c40032dd5aed04a4",
+      "bytes": 2119746
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/035-air-jh-left-calibrated.png",
+      "sha256": "da38a240b9bdb96b99152ce3d222de3f47ee321d2a902f972dfd37355fe5c5e0",
+      "bytes": 2088633
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-5L-native.png",
+      "sha256": "c4e42f89fc367b442ed1cb4ac67cd1bf45868de4cc97cabf072ae5caac0d0cac",
+      "bytes": 2204395
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-5M-right-native.png",
+      "sha256": "54a70c307c11f41fc1252174cc863141eef3f10957972774493f9962dddf90d4",
+      "bytes": 1716500
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-5M-left-native.png",
+      "sha256": "56de9c7ca3110ed40ec810320788d37305b3f57dd8664b2abae54a0d612181f5",
+      "bytes": 1708232
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-5H-right-alpha-native.png",
+      "sha256": "3da7a25a272d0e9398170b2b5fff7f295494a56043336009e2c29ca55268521b",
+      "bytes": 1868855
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-5H-left-alpha-native.png",
+      "sha256": "658a0587a4e2ca496c950028569c595bc5fec3ee614d164c760225845d17fee8",
+      "bytes": 1736766
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-2L-native.png",
+      "sha256": "ba74a5756a0951847bdf7e78ae90761f131a17d1b63863e31124f51b4420f644",
+      "bytes": 1571563
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-2M-right-native.png",
+      "sha256": "5cd1f926dd04d74e139fe88faef820262eec047c2ad266febda6b23f5610d384",
+      "bytes": 1680416
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-2M-left-native.png",
+      "sha256": "74ad6714525cbba91bc6ef65c4d3798ce835b339893041b175ee2f40a530e283",
+      "bytes": 1746646
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-2H-right-native.png",
+      "sha256": "50cb107f553f54bf7519bd97939046c510f0aebae82223358ddc44ac1d9245d0",
+      "bytes": 1664701
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-2H-left-contact-recovery-native.png",
+      "sha256": "ebb4dd8320217091c3bbd8a8e6486231d19cf9b6c959b92d49231eaa419e5456",
+      "bytes": 1644642
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-jL-right-native.png",
+      "sha256": "fdb5f6a6dc8e4ca68b9c96a04bdea057748a6ad796b223fb377dd006e8810fb7",
+      "bytes": 1573763
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-jL-left-native.png",
+      "sha256": "e3d2bc9e010351e37f9b208d6f8c06f417b9f0475c8bc9c991b578cfc82babc9",
+      "bytes": 1848518
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-jM-left-native.png",
+      "sha256": "4d714b5f7f334d22250adfca8231a3abf3fa147dd18c1f5d9b36498f45560388",
+      "bytes": 1926192
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-jM-right-native.png",
+      "sha256": "63c91bce12397c460cd8f5a60b41eb0dcb3a02261e819a269db42337c26d8a7f",
+      "bytes": 1738717
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-jH-right-native.png",
+      "sha256": "9b48ac15b53a50d62ddea8a77189744352b3fb5661c5366940f77c87836fe199",
+      "bytes": 1715074
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-jH-left-startup-native.png",
+      "sha256": "d906629e65873b4fba00377fec0a8f7528e98ce6791b02727f18cc596c9b5501",
+      "bytes": 2049049
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-jH-left-contact-recovery-native.png",
+      "sha256": "9b3bb6de48183ddaec9e89268564012d8465d7bec120664b60b7adf1b307fbbe",
+      "bytes": 2026413
+    },
+    {
+      "file": "public/game/sprites/v34/pit/feral-hunter/feral-hunter-idle-v34.png",
+      "sha256": "db5aebcd23175ce3efec94cb6bcebf9e4bb3d099f02fb20d49224d7b36f57f33",
+      "bytes": 2100765
+    },
+    {
+      "file": "public/game/sprites/v34/pit/feral-hunter/feral-hunter-repair-walk-forward-cycle-v34.png",
+      "sha256": "71374a2cff78917a4944e21e0fe5df6e35a0c1821af69fac41e755b94e53e5e1",
+      "bytes": 2064810
+    },
+    {
+      "file": "public/game/sprites/v34/pit/feral-hunter/feral-hunter-repair-walk-backward-contacts-v34.png",
+      "sha256": "7c74e35203814a394f1790eb34b378ff4bba62ee3e20494392baeea6a4009507",
+      "bytes": 2020691
+    },
+    {
+      "file": "public/game/sprites/v34/pit/feral-hunter/feral-hunter-crouch-v34.png",
+      "sha256": "b4d325c71e9ff6b8b799f4b7d3681b40dc1fb58db759cd51fc0ae51c92ff88f3",
+      "bytes": 2112400
+    },
+    {
+      "file": "public/game/sprites/v34/pit/feral-hunter/feral-hunter-guard-v34.png",
+      "sha256": "e9ff3cd206cdb3751bcad44ae116f8c9b9fc0ecc528a7fd75917dd4293226806",
+      "bytes": 2236911
+    },
+    {
+      "file": "public/game/sprites/v34/pit/feral-hunter/feral-hunter-hurt-v34.png",
+      "sha256": "779612a2564d8823582d2ff12f8f969947f33b8212113107c3bbef0907a14e0b",
+      "bytes": 2056250
+    },
+    {
+      "file": "public/game/sprites/v34/pit/feral-hunter/feral-hunter-light-v34.png",
+      "sha256": "35a34210df4018ab0b6140f1985e1144a90a652e5fb96e6742a5ef6aeb7324fb",
+      "bytes": 2107382
+    },
+    {
+      "file": "public/game/sprites/v34/pit/feral-hunter/feral-hunter-repair-medium-spacing-v34.png",
+      "sha256": "85d86cd6297f251ae21bf2c2862ff796b8c59edac87aaddbd6ccd402970d0a23",
+      "bytes": 1749435
+    },
+    {
+      "file": "public/game/sprites/v34/pit/scar/scar-idle-v34.png",
+      "sha256": "725a14de4bf905122f4585663b2654d7925f57089fdbdae383e06da1290ec8c4",
+      "bytes": 2216119
+    },
+    {
+      "file": "public/game/sprites/v34/pit/scar/scar-repair-walk-backward-support-v34.png",
+      "sha256": "a235f315b4e00bdfabec9d49830d039a153a4e8b23d6743965fe99d4af838599",
+      "bytes": 2147132
+    },
+    {
+      "file": "public/game/sprites/v34/pit/scar/scar-crouch-v34.png",
+      "sha256": "7b4a04c23132c2f89ddbfebed5fb715ddf5c0f266d0eae3ea8858d815f5a703e",
+      "bytes": 2062567
+    },
+    {
+      "file": "public/game/sprites/v34/pit/scar/scar-guard-v34.png",
+      "sha256": "220d62176002c2695ce57f51179cbe11c324f8e0708ba47442ac979cd590d590",
+      "bytes": 2174399
+    },
+    {
+      "file": "public/game/sprites/v34/pit/scar/scar-hurt-v34.png",
+      "sha256": "7090d329fd96402ff5b73079345ed52dadb2effda04e3c5a74ad05e5ea5ea8de",
+      "bytes": 2126041
+    },
+    {
+      "file": "public/game/sprites/v34/pit/scar/scar-repair-light-mount-v34.png",
+      "sha256": "2c52131d1721389e910d3c48d90445d73fb833495ed38d7b173ca3d6a8b66486",
+      "bytes": 2036690
+    },
+    {
+      "file": "public/game/sprites/v34/pit/scar/scar-medium-v34.png",
+      "sha256": "caa475bb7001a6795bdd677ce1d97b94f1078ccd1679f2d2961ea2498a5e1919",
+      "bytes": 1981066
+    },
+    {
+      "file": "public/game/sprites/v34/pit/scar/scar-heavy-v34.png",
+      "sha256": "3bd289a8ddcb5dfd483f4e5dc5eaaf028b5dca02c565d1cb85f54bfbf5e498e3",
+      "bytes": 2232291
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-forward-right.json",
+      "sha256": "c5a41038029fd5ecca50c25a343d8763ae003d5f3402cfd263a12ad49aef7ceb",
+      "bytes": 3665
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-forward-left-r2.json",
+      "sha256": "9cc3a79a54d1cb28c523500fd3d750460a00717b9928b0d9cf5c28ddc3eed698",
+      "bytes": 2569
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-forward-left-isolated-3-r2.json",
+      "sha256": "2e65952f0e423f6049679406d68b841bff6fe2f0c369f9f08f91ad36b114eac9",
+      "bytes": 2592
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-forward-left-isolated-4-r2.json",
+      "sha256": "85e283a74fef9ad9cfc95db6e7bc1f8f08c60384b458ed7266f6a122c33752ef",
+      "bytes": 2517
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-forward-left-isolated-2-gutter-r1.json",
+      "sha256": "6858b1e3afda3d6391da849faaef3335843ecbe25e97ed67d7cb397429623408",
+      "bytes": 2791
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-forward-left-isolated-5-gutter-r1.json",
+      "sha256": "271b825d70f95a88a94eb47be7a32c6dd870184cd6effb1f625582d7fdb210f0",
+      "bytes": 2771
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-forward-right.json",
+      "sha256": "fea2dc78cd09d5f02a7923be0616acde2da78518c83f9c090820ff0d117ce70c",
+      "bytes": 3375
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-forward-left-isolated-0.json",
+      "sha256": "4f1b5404583f39293a1167f0510d39f1f2787d6eb55cc795221e19f31b8c1ae4",
+      "bytes": 2447
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-forward-left-isolated-1.json",
+      "sha256": "6a750370045edaa274d2580ffc0ffb8d94835154d944192b3526d3a43fa6955a",
+      "bytes": 2450
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-forward-left-isolated-3.json",
+      "sha256": "a465348eb06d91d3dbe2f577de14e1029861f9743af6587c3248d4952fd3cba8",
+      "bytes": 2450
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-forward-left-isolated-4.json",
+      "sha256": "b74e300710c897b63c12d5306f06d1f8f6e478a82f1706e7ecdb0df606681876",
+      "bytes": 2455
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-forward-left-isolated-2-gutter-r1.json",
+      "sha256": "f89a37edde3796fb3b4bc8b4f0ad76d2aafe35c03f8ed9e7de34522682f2603b",
+      "bytes": 2866
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-forward-left-isolated-5-gutter-r1.json",
+      "sha256": "9ef6fd20ed905093813a9f46efafc88ff29bd5e1c47f6c4e2139d96b8a11dd2e",
+      "bytes": 2881
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-victim-right.json",
+      "sha256": "0fa95046ec7fd83f2cd8aa545b7c951070ffa3bc4d60c46df21f9175fea927f1",
+      "bytes": 3466
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-victim-right-isolated-3.json",
+      "sha256": "183f01fb2ba39e12b9d84a66e815cc187ecc76bda90b350367c5f51129772e34",
+      "bytes": 2513
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-victim-right-isolated-4.json",
+      "sha256": "5ef2abc506efce28ba326c8e1d025e1ba008cbd013f9196c40355b04f400d616",
+      "bytes": 2517
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-victim-left.json",
+      "sha256": "d168c0d8cbe01cf49d0e393942f57e01f75e83b134e7ce76b2ea739deefbd60f",
+      "bytes": 3444
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-victim-left-isolated-3.json",
+      "sha256": "0d9c623cffc9d61f5a9849c840ebb9184f47e36f2fcf06235966c13f6dfdd780",
+      "bytes": 2510
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-victim-left-isolated-4-gutter-r1.json",
+      "sha256": "d398df2c1e37526f663f123c5b4373b3a1e0bd7be45ec131b3697a0a128d26a0",
+      "bytes": 2915
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-right.json",
+      "sha256": "a5774557f356ebf1dfde87327496b6dd59d3fefd66cd5d10d599ffdce0c66250",
+      "bytes": 3502
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-right-isolated-3.json",
+      "sha256": "ac1349b9e747a6d6008a8536b157cb03323fb0e20188830bcf4f1ba2fbe52ddd",
+      "bytes": 2494
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-right-isolated-4.json",
+      "sha256": "2606213c61c6ff4d83b31af5242510571d75e52772fe90c324bf7c6be43b983d",
+      "bytes": 2498
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-right-isolated-5.json",
+      "sha256": "c39564507decbe9f0d68a7392ba1e40e215bf16128ed8d0db2123e2372e66486",
+      "bytes": 2498
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-right-isolated-2-gutter-r1.json",
+      "sha256": "83da69f28c36153f98b995efb6502006faff8db6d64664125f4c308de5988fa1",
+      "bytes": 2929
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-left.json",
+      "sha256": "972af7c3d010a48b15e144645af33e1a8cc404fcdeb1997cc5a3548745937780",
+      "bytes": 3488
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-left-isolated-3.json",
+      "sha256": "92eed272838413066cf1bce51f2618405c6339a7925a1ee3b16df3d7ccfa47ee",
+      "bytes": 2491
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-left-isolated-4-r2.json",
+      "sha256": "bd2b3dcfda7d0a442627f2cc863753e87f316dc0e5faac7c0d3ad5e58d4d6e01",
+      "bytes": 2124
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-left-isolated-2-gutter-r1.json",
+      "sha256": "faf0afce94bf24f12f739b9e530ae6fa019c00083203f41bc2f9ffcc24300631",
+      "bytes": 2925
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-left-isolated-5-gutter-r1.json",
+      "sha256": "700e4f1106a3c0a9de67fb34496f9b7c75b86a7668824e8f8f77ef6195fdde77",
+      "bytes": 2909
+    }
+  ],
+  "sourceAfter": [
+    {
+      "file": "scripts/qa-pit-forward-throws-v109.mjs",
+      "sha256": "208f49f649883251688e36b85782b4467dc64690ef6f5836ee069c772c435ca2",
+      "bytes": 27822
+    },
+    {
+      "file": "scripts/pit-selection-browser-helpers.mjs",
+      "sha256": "c09d2a4b15dd66f1fe42d5d0728f2c1cd9b12ff599c213d383fc3aa9cfb34430",
+      "bytes": 4665
+    },
+    {
+      "file": "tests/helpers/solo-v67-campaign-route.mjs",
+      "sha256": "50dc9c5ddbd91306cca8fc6bf1eebca9829cd46242cbe78f254c87f738e6c411",
+      "bytes": 1270
+    },
+    {
+      "file": "app/game/buildInfo.ts",
+      "sha256": "73b38b865e54cec63e31e5a898167a9c8a241c682cd830d72a5eea946fd47fc4",
+      "bytes": 268
+    },
+    {
+      "file": "app/game/PitCanvas.tsx",
+      "sha256": "985a12c3831c983542b9e1d79fb525a58d50e9a45c7a8f09878179cac270e398",
+      "bytes": 290831
+    },
+    {
+      "file": "app/game/PitExperienceV79.tsx",
+      "sha256": "2f938301d497eb58b826d3e941eb2496a821f2a04b2f138f1035053510e96074",
+      "bytes": 24829
+    },
+    {
+      "file": "app/game/hunterSpriteMotion.ts",
+      "sha256": "11852e3170e8a3cbd82e289de3b9c3779430e3770a68e62b1cb3efeac2d01658",
+      "bytes": 19041
+    },
+    {
+      "file": "app/game/hunterSpriteAtlas.ts",
+      "sha256": "be0c4d820b2900708a3391a546269fa1c9bdd6b27f4f9a610d6ed43ce4ad606e",
+      "bytes": 32604
+    },
+    {
+      "file": "app/game/pitSpriteSheetAnimation.ts",
+      "sha256": "e6280f97b234e4c4d19ad2aab96ff9ad67c60c7a9bdba880b88a650f57b92f65",
+      "bytes": 41328
+    },
+    {
+      "file": "app/game/pitCombatBitmapArt.ts",
+      "sha256": "e7cc545d20865be7ff2ea5c38ecbfd7016783627fd369d7089bc775dfdb581d9",
+      "bytes": 22279
+    },
+    {
+      "file": "app/game/spriteContact.ts",
+      "sha256": "3267276073ad8e006dfc9e0aa8a1f4c299287d0c2ab9bec9839e4564b4f53a10",
+      "bytes": 3886
+    },
+    {
+      "file": "app/game/pitWorkbookRegistryV109.ts",
+      "sha256": "db322c7ada5e25bfa7a971d446994a0b31cd37ea771595d0dc9b44db0cd240bb",
+      "bytes": 9537
+    },
+    {
+      "file": "app/game/data/pitWorkbookThrowsV109.json",
+      "sha256": "0560d64c106375fdc578856e6f87bfcb863b0843dd54404bdb7a3b6e251097f3",
+      "bytes": 73747
+    },
+    {
+      "file": "app/game/pitWorkbookDeviceRenderingV107.ts",
+      "sha256": "7cf27ee14130863a56d1f5023a6ebf9a44167cb8e3496f6a270ac9ce0916e888",
+      "bytes": 6658
+    },
+    {
+      "file": "app/game/systems/pitCombat.ts",
+      "sha256": "bbdd29361cc6af081258cf0da2ecfa95c6a2fcc3ee77ea78f03b6105d8766430",
+      "bytes": 158279
+    },
+    {
+      "file": "app/game/systems/pitReplay.ts",
+      "sha256": "ca4bddb62b669c33f5cbd98109a0c794218ed42fe2f9fab1de596f38dde6ab03",
+      "bytes": 35683
+    },
+    {
+      "file": "app/game/systems/pitWorkbookCombatV109.ts",
+      "sha256": "6a714c465921e4eeeed2885a2362cd53e5dbd4d013ee8dd3809fb7b47da78618",
+      "bytes": 4479
+    },
+    {
+      "file": "app/game/systems/pitForwardThrowControlsV109.ts",
+      "sha256": "92b25f27468676bc3399adceed087e289906f944c702924c480ab5d35b434da9",
+      "bytes": 1757
+    },
+    {
+      "file": "app/game/systems/controlBindings.ts",
+      "sha256": "75d493beb7c72279152408ab1903d0537c9544ce1fecf23220e7c9d36583a51e",
+      "bytes": 32661
+    },
+    {
+      "file": "app/game/systems/pitWorkbookPresentationClockV105.ts",
+      "sha256": "6a8d1320cd695566f65f929bcfb59d9a68fe52194cdc8b28e9b5ef0cbf7339fa",
+      "bytes": 1460
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/native-frame-delivery.json",
+      "sha256": "107fd696973157960a3efe411ddfc7ae60c135a9708d2b0cd162566bb0606db3",
+      "bytes": 57763
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/visual-review.json",
+      "sha256": "8fb42a808f767300d059c4c1c58d57598dd2d910caa3cbb5149d9c922cf0d39d",
+      "bytes": 13313
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/native-gutter-delivery.json",
+      "sha256": "cf7030418008ddc34c1259d2060844eee65e5ca8fb85838c6150ac4d1365d5d8",
+      "bytes": 10972
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/visual-review-gutters.json",
+      "sha256": "8c6f9aa34b47b47ff8c0e5eb47071d0a4ff395c0613d56a8686ef17e4831bebd",
+      "bytes": 12316
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/native-uv-border-review-spatial.json",
+      "sha256": "560a552eccb4c3085b4d6250c4ab3f553e79ba8b7e771a2d5c2525c7762f6d96",
+      "bytes": 36312
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/native-ground-calibration.json",
+      "sha256": "ebff201b8e89549aba240cb976b61ac315e6e8db3da22e5303b510d4ffaf0c4a",
+      "bytes": 24039
+    },
+    {
+      "file": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-right-v109.png",
+      "sha256": "8324320252c00e84cf0e50b7fb850dc96fb472dc1d5c933d0e14925b4fdf37ec",
+      "bytes": 2316771
+    },
+    {
+      "file": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-r2-v109.png",
+      "sha256": "5dce6483d4ba9fb1848613d3a76abf255a163cbfb9dba1ed3554cc9a74615d15",
+      "bytes": 2390859
+    },
+    {
+      "file": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-isolated-3-r2-v109.png",
+      "sha256": "151b49c54a3ec2321c5793bd10b6232a1e7542d48a8d1c09da2f8fb3cdd76ddb",
+      "bytes": 2071095
+    },
+    {
+      "file": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-isolated-4-r2-v109.png",
+      "sha256": "fa54dd3f5a8e926c211d48dba1edd1b35a813cab02d013ee0294f68d3dd47ddc",
+      "bytes": 2138067
+    },
+    {
+      "file": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-isolated-2-gutter-r1-v109.png",
+      "sha256": "6ff3767df2283b599f7a204e20e3a8c03a943fb1a8dc9b7531f7a3c6778c1931",
+      "bytes": 1706509
+    },
+    {
+      "file": "public/game/sprites/v109/pit/feral-hunter/feral-throw-forward-left-isolated-5-gutter-r1-v109.png",
+      "sha256": "2411a5307a67bad68b4e2b1fc2fbbb52b3320d6dc10a956039a68bce30318046",
+      "bytes": 1553500
+    },
+    {
+      "file": "public/game/sprites/v109/pit/scar/scar-throw-forward-right-v109.png",
+      "sha256": "4615795ab410033a000dcdf7fdfe197b431aedb07ad279a7acfbef5e93910c02",
+      "bytes": 2258882
+    },
+    {
+      "file": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-0-v109.png",
+      "sha256": "c5fb6df337079a263350702ddea4299b7ddb61f060dd7bed02eb6010632c9c96",
+      "bytes": 1707824
+    },
+    {
+      "file": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-1-v109.png",
+      "sha256": "6153788ab03fc3f246cae0b1b30990edd57b777283f2eff4c24d9a6ae5b7e95a",
+      "bytes": 1582563
+    },
+    {
+      "file": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-3-v109.png",
+      "sha256": "13561262646615582d4c0687b4b59dc203e58747f62f8cf924a609abfeea44c6",
+      "bytes": 1748850
+    },
+    {
+      "file": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-4-v109.png",
+      "sha256": "0f2081b177fe949c0f52fa2d27dd4accfbd3aaf1da891ec8ffa11547cde0a00d",
+      "bytes": 1761722
+    },
+    {
+      "file": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-2-gutter-r1-v109.png",
+      "sha256": "08c29f9c49d71aef046968c86000a4fd1607486934ab764c80718c86aa816454",
+      "bytes": 1606038
+    },
+    {
+      "file": "public/game/sprites/v109/pit/scar/scar-throw-forward-left-isolated-5-gutter-r1-v109.png",
+      "sha256": "7d1eee2349555a1eab15c2ce60d0bae9e858d66fd183f4aa62e3f97e3d2ff157",
+      "bytes": 1461409
+    },
+    {
+      "file": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-right-v109.png",
+      "sha256": "3039f5ff15c73a5a6ef4b6054d3b949b22e99141268bcb5314984a652bdc331a",
+      "bytes": 2236163
+    },
+    {
+      "file": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-right-isolated-3-v109.png",
+      "sha256": "b8ab2d58ffaf3f47853f01ef4a0e36104c6e6a0cfb1462b4d0155365ebb74d2a",
+      "bytes": 1807014
+    },
+    {
+      "file": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-right-isolated-4-v109.png",
+      "sha256": "f3b14134eaa1ba660342d52de1d84925f5888657d9c14c7c53ecb8647158d4f8",
+      "bytes": 1442943
+    },
+    {
+      "file": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-left-v109.png",
+      "sha256": "9203da249bb1756a545758125a88c63f66f8945dbf5a1e883b53532a4a51bfed",
+      "bytes": 2261067
+    },
+    {
+      "file": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-left-isolated-3-v109.png",
+      "sha256": "8b91bf81569d5da2f5107c3515272ada6d19ad0acaefcdc5234626dc4a11c8ad",
+      "bytes": 2201016
+    },
+    {
+      "file": "public/game/sprites/v109/pit/feral-hunter/feral-throw-victim-left-isolated-4-gutter-r1-v109.png",
+      "sha256": "3ee1f59c32a1204957aac968b0c22f74cfde5297393985d953c1cf1de65f7c98",
+      "bytes": 1600619
+    },
+    {
+      "file": "public/game/sprites/v109/pit/scar/scar-throw-victim-right-v109.png",
+      "sha256": "24cdb66b63f585ac952d035a27006805d3b04136448fb3c22f4a9b3d6c7dfcf9",
+      "bytes": 2164133
+    },
+    {
+      "file": "public/game/sprites/v109/pit/scar/scar-throw-victim-right-isolated-3-v109.png",
+      "sha256": "bd1ca19aecfc3e6c1579838d826461dad56b885c167644452c91a276cd54bd2a",
+      "bytes": 1876383
+    },
+    {
+      "file": "public/game/sprites/v109/pit/scar/scar-throw-victim-right-isolated-4-v109.png",
+      "sha256": "07f216fb8e1145169bb377fc5f11bc6da8193848a962ba23a8aea6f34c07cff6",
+      "bytes": 1377113
+    },
+    {
+      "file": "public/game/sprites/v109/pit/scar/scar-throw-victim-right-isolated-5-v109.png",
+      "sha256": "2105306a7d2462540ba864498659c44f193983a49daac0e2a68c2b75053157e8",
+      "bytes": 1516350
+    },
+    {
+      "file": "public/game/sprites/v109/pit/scar/scar-throw-victim-right-isolated-2-gutter-r1-v109.png",
+      "sha256": "a83f6621c6312f4080cd428358e89369d5c9f3e257742bbb8513b9c2dba2856e",
+      "bytes": 1458006
+    },
+    {
+      "file": "public/game/sprites/v109/pit/scar/scar-throw-victim-left-v109.png",
+      "sha256": "46adfc94048c75e60f01590aa7619cacc6c934f20489c7003d24209477af0429",
+      "bytes": 2341573
+    },
+    {
+      "file": "public/game/sprites/v109/pit/scar/scar-throw-victim-left-isolated-3-v109.png",
+      "sha256": "89fa6f3142850eccf99932528a23ae67b0f115de00dce9db8ad1da124b2baf1a",
+      "bytes": 2110431
+    },
+    {
+      "file": "public/game/sprites/v109/pit/scar/scar-throw-victim-left-isolated-4-r2-v109.png",
+      "sha256": "f102c0e286a3d566854b4581757aadf46728f64e548e14dfceabb7e6dd2dfca5",
+      "bytes": 1194875
+    },
+    {
+      "file": "public/game/sprites/v109/pit/scar/scar-throw-victim-left-isolated-2-gutter-r1-v109.png",
+      "sha256": "b0811cc9418578e58157139809783f127ed46322ea9d705325b34e908958a6ce",
+      "bytes": 1518305
+    },
+    {
+      "file": "public/game/sprites/v109/pit/scar/scar-throw-victim-left-isolated-5-gutter-r1-v109.png",
+      "sha256": "34fa8678d6d979ffc80200eecff09708baf3cca3dd07f54d094d6887fd20a97c",
+      "bytes": 1499671
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-s4-a-v100.png",
+      "sha256": "0eb7806546e452659c5b72ce0255d265eac4172a030bf669d1bcb6bf1fa1b7bc",
+      "bytes": 2229817
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-s4-b-v100.png",
+      "sha256": "05ee37080b250599bba1754a6c3908eafd95ad37cb08fc66ceee0f93ee06a830",
+      "bytes": 2022900
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-special-s2-corrected.png",
+      "sha256": "fa8e84622de3acde190f6cd564c28fc82dc082f681ac518ff8ff2b5c036af752",
+      "bytes": 1904733
+    },
+    {
+      "file": "public/game/sprites/v59/pit/feral/launcher-right.png",
+      "sha256": "feb0b99112cb55470b0c9211461793a85ac8c4538a59ed24026366ff8e7a31ca",
+      "bytes": 2148287
+    },
+    {
+      "file": "public/game/sprites/v59/pit/feral/launcher-left.png",
+      "sha256": "531d9a0e6b300e957bd633ba2300872c41c7ba766e7e2e12b70e505335ae3f14",
+      "bytes": 2212312
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-special-s3-right.png",
+      "sha256": "8eb97e8038899ff9d7f9967b804fa00701f63722035339cc9a74000212048c6f",
+      "bytes": 1595986
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-special-s3-left.png",
+      "sha256": "3bb94e42a714645f89ff8ce0c7567ac46193179676e28adbcc0bf760ba3b4481",
+      "bytes": 1447965
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-s2-a-v100.png",
+      "sha256": "a45d64a6c524828225f29fc1757e58a1218fdfbea9f81a9acd5b1db820112c1e",
+      "bytes": 2081254
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-s2-b-v100.png",
+      "sha256": "1a341c55ddd26ecf1c626eb8baf791f558d2bc9ada9ac01c27463f0286c1cfce",
+      "bytes": 2037749
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-super-a-right-v100.png",
+      "sha256": "9f232d2c2104f1c8a452ab75abb505b3438baeab46e8a5273b2f326cf560d976",
+      "bytes": 2147314
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-super-a-left-v100.png",
+      "sha256": "5e87eb2053b679c58fccc4bc82562460d7f2a0d777d4ffe77c45b083971e93e3",
+      "bytes": 2249370
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-super-b-right-v100.png",
+      "sha256": "15fc0979e956c650eed1d8594cfc2a6686c8bec3fda47a4b4dc6207fc0b92ced",
+      "bytes": 2223295
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-super-b-left-v100.png",
+      "sha256": "814836061d85e0b3707811a2180f074077b648b1b44f4f24976163509aabc62b",
+      "bytes": 1824704
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-special-super.png",
+      "sha256": "cd81a0503a546ad34281f2b8d221763aea15bcd54d5d1c92ed583bdbfd6830c3",
+      "bytes": 1789099
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/020-command-6m-right.png",
+      "sha256": "3b608ea248c440fe50a21139e0c46b82d0e435382c87b64ea300900743118b98",
+      "bytes": 2107336
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/021-command-6m-left.png",
+      "sha256": "b46a33dfa318da52d4815b9f2fb1a480a4d1bc5f7e66abc9daf59ba5288290fc",
+      "bytes": 2098102
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-s3-a-v100.png",
+      "sha256": "986553c12a4dda1292935c99a119482f215aebe7fbc8bd378f1d1e357bc2bdcd",
+      "bytes": 2295353
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-s3-strike-v100.png",
+      "sha256": "82447a6278e2f49d27550926e3fb4f101a96db2f0858d41ad498342dc936576f",
+      "bytes": 2061057
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-s3-counter-v100.png",
+      "sha256": "a65adbb501b510662ef710195b699ba25b0b7f6e6f672e6d448b2f10d8acd4dc",
+      "bytes": 1726682
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-s3-b-v100.png",
+      "sha256": "533a0a9c0c56e774f7a0c909c1ad67a93cde787edf392d6440f8d29427d37a74",
+      "bytes": 2261491
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-equip-a-v100.png",
+      "sha256": "13d9fad90636ef74015db295d4ec42522f16470cfa64579dfb215a1a636f80e2",
+      "bytes": 2196464
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-equip-b-v100.png",
+      "sha256": "1acfa7baec435e75fafe61f8c3354c217db6f40c0747243738314fb4edff9cc0",
+      "bytes": 1948073
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-6M-right-native.png",
+      "sha256": "08e3c2586fb7ec07fd2ac2294f272580bf2a08bdf0677c8ae9d87c38f21e8fa9",
+      "bytes": 1722876
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-6M-left-native.png",
+      "sha256": "5fe2379e13bbcd90478302652cc5534b42ee8e6e5f95d6cb3dccf02fd2e2ed51",
+      "bytes": 1940871
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-special-s1.png",
+      "sha256": "1cb5fa122d709f6065dcc5cbf824a97f4801495c375875a4270a0c8fdb736949",
+      "bytes": 1963780
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-special-s4.png",
+      "sha256": "4dd3be59ccb5582a232652981a011367f7cc639836c18799859649ff5e7066ef",
+      "bytes": 2465196
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-special-equip.png",
+      "sha256": "82bd27b0ee0df00afb124728014167f46bf17c7d290c71815ea346adcd87e1b5",
+      "bytes": 2416511
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-intro-a-right-v100.png",
+      "sha256": "088a5226203be27f8c7247270b79d88e1b6fe0fec93c1d684bb522d236d57bcf",
+      "bytes": 1891725
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-intro-a-left-v100.png",
+      "sha256": "7d3de548392b8bc8497ae89ca27598d8beded14401351c842b3e785560ea2935",
+      "bytes": 1916556
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-intro-b-right-v100.png",
+      "sha256": "049c6eac23a174a3e2b1f4739d9b594213e1ff82ee10d8b9b86075be9420721a",
+      "bytes": 1915805
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-intro-b-left-v100.png",
+      "sha256": "11ab7b8b0ff4b5d7db2461ea964650181decf7d8e6fd6b0d1675faa50d34dac0",
+      "bytes": 1839505
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-victoire-a-v100.png",
+      "sha256": "0373a5e8025c8c4b7ae7dbad9d50a6764af38d52989f7c98d4495828a6d4b25b",
+      "bytes": 2185217
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-victoire-b-right-v100.png",
+      "sha256": "91fcac8364df3f192a94e1538fb7cb9537788f7ec4c00fa94bfda15302f80bd4",
+      "bytes": 1938065
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-victoire-b-left-v100.png",
+      "sha256": "2d3a80a33be972b20a725c6a1c671ca500f2bf1d4beb8cd028be7e9b13f3cb53",
+      "bytes": 1886824
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-defaite-a-right-v100.png",
+      "sha256": "3920d1909a6a4937a8b20755f755216d5f15758635b81ddb8b3102ceade2051d",
+      "bytes": 2122116
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-defaite-a-left-v100.png",
+      "sha256": "bd175f7ba5c24368d6a10d92f754987e27c422f36e08fb2255ef0c171a82aae4",
+      "bytes": 2143222
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-defaite-b-v100.png",
+      "sha256": "7176468913588842dcefafca72fa8e7bade281233dc23d79bf7bc651a3a3e89c",
+      "bytes": 1925293
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-taunt-1-a-v100.png",
+      "sha256": "c0b8623089e33f4fbdab9ecde11a7e61a09feb173d683d296b2bb40fb18bd9ec",
+      "bytes": 2153597
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-taunt-1-b-v100.png",
+      "sha256": "f9be913fdf8ef3d07d27cc0c9fb5d552892bf969cd06ef69b0c7cd1aa2268177",
+      "bytes": 1921471
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-taunt-2-a-v100.png",
+      "sha256": "0ac7341b1336007b9bf7fb32717c2af5749b03fc0183ac2ef96c74d9b12365d0",
+      "bytes": 1705757
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/feral-special-taunt-2-b-v100.png",
+      "sha256": "8d0aeb93ef02cc77ac522e9fd32fe8f9d3dc52522ce82214e960c2eba46b882f",
+      "bytes": 2224587
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-special-intro.png",
+      "sha256": "b02db6fa75d8a486e20bfc8525aac4dd0a161276a8a5488ed21f190a6ed156a8",
+      "bytes": 2395061
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-special-victoire.png",
+      "sha256": "e532637f7cfbff5c67ec05a6eff25e3c0df0246d3a46781a882f9b26e92dcd9c",
+      "bytes": 2463701
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-special-defaite.png",
+      "sha256": "659bda952b0fee7db73036e9e8faf2f2ce3a7809c35d493055044e534fbc2784",
+      "bytes": 1976748
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-special-taunt-1.png",
+      "sha256": "eabe0c8d9b21e61a0d477697006d11a03bd27b3aa5d314cc9b77c560672b3302",
+      "bytes": 1953793
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-special-taunt-2-right.png",
+      "sha256": "e7e54ccfc5470d422df8d4e4c149934eb67a2390041970bfe5b9922407da8550",
+      "bytes": 1568011
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-special-taunt-2-left.png",
+      "sha256": "36d0760f8121c997a76710973c2a7ab377e96577e4e3b22959a667b5d1f99cd8",
+      "bytes": 1520330
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/001-normals-5l-5m.png",
+      "sha256": "cc17f91b2471c6731d3449983d35cf627162ae4803cafdfed997007354fc5735",
+      "bytes": 2018648
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/007-stand-5m-forward.png",
+      "sha256": "c1b95635c5581dd0fa520e779e461433528640a1e83f2b0488ad05bc1acdcdbd",
+      "bytes": 2351936
+    },
+    {
+      "file": "public/game/sprites/v59/pit/feral/shield-right.png",
+      "sha256": "a562123e1c19cc98b8614d479ef9f70b5499482142a8895f2aaaa7e8cd0953d2",
+      "bytes": 2267581
+    },
+    {
+      "file": "public/game/sprites/v59/pit/feral/shield-left.png",
+      "sha256": "b5f2f91c9beb78c9d78bd83f30ae40af54f3f5546e919a6016ac3299eff27585",
+      "bytes": 2340749
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/002-crouch-2l.png",
+      "sha256": "9cc63fc5a91565f6bb281c11138000e3b1078245581aabd65b60d53d372eb605",
+      "bytes": 2248775
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/013-crouch-2l-left.png",
+      "sha256": "d6faa6692304c6191bc28f1ee1d3e8856603a62b263c320f3de4f9e7f169fdb6",
+      "bytes": 2145770
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/005-crouch-2m.png",
+      "sha256": "91ab7a7ac6dc903dce4aa15ee2f39a9b8bf35113eb8d2bb3ea688debe610208f",
+      "bytes": 2166671
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/011-crouch-2h-right.png",
+      "sha256": "4f094d0f2d3cccadd5f661158d4b4f412c1d769da823fca2e9e00cabd5b3d40d",
+      "bytes": 2214051
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/012-crouch-2h-left.png",
+      "sha256": "1cf32461860771ded634e7ec9ba119a15f29c13f4ef5341d97c1ae5129042c6b",
+      "bytes": 2154824
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/030-air-jl-right-calibrated.png",
+      "sha256": "f6dd75cb124e7db1224ab9f35c4273c4469464e0f14ac36b4ec6fbfcd5380cb5",
+      "bytes": 2062492
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/031-air-jl-left-calibrated.png",
+      "sha256": "e40afc5ae89cdb482467ced9bdca55ed5ce8aad690b5dd648dedb7e64f9f9650",
+      "bytes": 2145482
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/041-air-jm-right-spaced.png",
+      "sha256": "922ca6e1397c90865c513a5ee022fcab6f54d25630f21fcdf3c3019e9ace3088",
+      "bytes": 1739401
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/042-air-jm-left-spaced.png",
+      "sha256": "af39b7568c24d53e5b2834932553f651e747ec4cf2e9db936c862562b8e56ae8",
+      "bytes": 1957052
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/034-air-jh-right-calibrated.png",
+      "sha256": "f5ac5871db20a4bb8dd4512538979fa6bd75b0b032afaaa5c40032dd5aed04a4",
+      "bytes": 2119746
+    },
+    {
+      "file": "public/game/sprites/v100/pit/feral/035-air-jh-left-calibrated.png",
+      "sha256": "da38a240b9bdb96b99152ce3d222de3f47ee321d2a902f972dfd37355fe5c5e0",
+      "bytes": 2088633
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-5L-native.png",
+      "sha256": "c4e42f89fc367b442ed1cb4ac67cd1bf45868de4cc97cabf072ae5caac0d0cac",
+      "bytes": 2204395
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-5M-right-native.png",
+      "sha256": "54a70c307c11f41fc1252174cc863141eef3f10957972774493f9962dddf90d4",
+      "bytes": 1716500
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-5M-left-native.png",
+      "sha256": "56de9c7ca3110ed40ec810320788d37305b3f57dd8664b2abae54a0d612181f5",
+      "bytes": 1708232
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-5H-right-alpha-native.png",
+      "sha256": "3da7a25a272d0e9398170b2b5fff7f295494a56043336009e2c29ca55268521b",
+      "bytes": 1868855
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-5H-left-alpha-native.png",
+      "sha256": "658a0587a4e2ca496c950028569c595bc5fec3ee614d164c760225845d17fee8",
+      "bytes": 1736766
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-2L-native.png",
+      "sha256": "ba74a5756a0951847bdf7e78ae90761f131a17d1b63863e31124f51b4420f644",
+      "bytes": 1571563
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-2M-right-native.png",
+      "sha256": "5cd1f926dd04d74e139fe88faef820262eec047c2ad266febda6b23f5610d384",
+      "bytes": 1680416
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-2M-left-native.png",
+      "sha256": "74ad6714525cbba91bc6ef65c4d3798ce835b339893041b175ee2f40a530e283",
+      "bytes": 1746646
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-2H-right-native.png",
+      "sha256": "50cb107f553f54bf7519bd97939046c510f0aebae82223358ddc44ac1d9245d0",
+      "bytes": 1664701
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-2H-left-contact-recovery-native.png",
+      "sha256": "ebb4dd8320217091c3bbd8a8e6486231d19cf9b6c959b92d49231eaa419e5456",
+      "bytes": 1644642
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-jL-right-native.png",
+      "sha256": "fdb5f6a6dc8e4ca68b9c96a04bdea057748a6ad796b223fb377dd006e8810fb7",
+      "bytes": 1573763
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-jL-left-native.png",
+      "sha256": "e3d2bc9e010351e37f9b208d6f8c06f417b9f0475c8bc9c991b578cfc82babc9",
+      "bytes": 1848518
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-jM-left-native.png",
+      "sha256": "4d714b5f7f334d22250adfca8231a3abf3fa147dd18c1f5d9b36498f45560388",
+      "bytes": 1926192
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-jM-right-native.png",
+      "sha256": "63c91bce12397c460cd8f5a60b41eb0dcb3a02261e819a269db42337c26d8a7f",
+      "bytes": 1738717
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-jH-right-native.png",
+      "sha256": "9b48ac15b53a50d62ddea8a77189744352b3fb5661c5366940f77c87836fe199",
+      "bytes": 1715074
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-jH-left-startup-native.png",
+      "sha256": "d906629e65873b4fba00377fec0a8f7528e98ce6791b02727f18cc596c9b5501",
+      "bytes": 2049049
+    },
+    {
+      "file": "public/game/sprites/v100/pit/scar/scar-jH-left-contact-recovery-native.png",
+      "sha256": "9b3bb6de48183ddaec9e89268564012d8465d7bec120664b60b7adf1b307fbbe",
+      "bytes": 2026413
+    },
+    {
+      "file": "public/game/sprites/v34/pit/feral-hunter/feral-hunter-idle-v34.png",
+      "sha256": "db5aebcd23175ce3efec94cb6bcebf9e4bb3d099f02fb20d49224d7b36f57f33",
+      "bytes": 2100765
+    },
+    {
+      "file": "public/game/sprites/v34/pit/feral-hunter/feral-hunter-repair-walk-forward-cycle-v34.png",
+      "sha256": "71374a2cff78917a4944e21e0fe5df6e35a0c1821af69fac41e755b94e53e5e1",
+      "bytes": 2064810
+    },
+    {
+      "file": "public/game/sprites/v34/pit/feral-hunter/feral-hunter-repair-walk-backward-contacts-v34.png",
+      "sha256": "7c74e35203814a394f1790eb34b378ff4bba62ee3e20494392baeea6a4009507",
+      "bytes": 2020691
+    },
+    {
+      "file": "public/game/sprites/v34/pit/feral-hunter/feral-hunter-crouch-v34.png",
+      "sha256": "b4d325c71e9ff6b8b799f4b7d3681b40dc1fb58db759cd51fc0ae51c92ff88f3",
+      "bytes": 2112400
+    },
+    {
+      "file": "public/game/sprites/v34/pit/feral-hunter/feral-hunter-guard-v34.png",
+      "sha256": "e9ff3cd206cdb3751bcad44ae116f8c9b9fc0ecc528a7fd75917dd4293226806",
+      "bytes": 2236911
+    },
+    {
+      "file": "public/game/sprites/v34/pit/feral-hunter/feral-hunter-hurt-v34.png",
+      "sha256": "779612a2564d8823582d2ff12f8f969947f33b8212113107c3bbef0907a14e0b",
+      "bytes": 2056250
+    },
+    {
+      "file": "public/game/sprites/v34/pit/feral-hunter/feral-hunter-light-v34.png",
+      "sha256": "35a34210df4018ab0b6140f1985e1144a90a652e5fb96e6742a5ef6aeb7324fb",
+      "bytes": 2107382
+    },
+    {
+      "file": "public/game/sprites/v34/pit/feral-hunter/feral-hunter-repair-medium-spacing-v34.png",
+      "sha256": "85d86cd6297f251ae21bf2c2862ff796b8c59edac87aaddbd6ccd402970d0a23",
+      "bytes": 1749435
+    },
+    {
+      "file": "public/game/sprites/v34/pit/scar/scar-idle-v34.png",
+      "sha256": "725a14de4bf905122f4585663b2654d7925f57089fdbdae383e06da1290ec8c4",
+      "bytes": 2216119
+    },
+    {
+      "file": "public/game/sprites/v34/pit/scar/scar-repair-walk-backward-support-v34.png",
+      "sha256": "a235f315b4e00bdfabec9d49830d039a153a4e8b23d6743965fe99d4af838599",
+      "bytes": 2147132
+    },
+    {
+      "file": "public/game/sprites/v34/pit/scar/scar-crouch-v34.png",
+      "sha256": "7b4a04c23132c2f89ddbfebed5fb715ddf5c0f266d0eae3ea8858d815f5a703e",
+      "bytes": 2062567
+    },
+    {
+      "file": "public/game/sprites/v34/pit/scar/scar-guard-v34.png",
+      "sha256": "220d62176002c2695ce57f51179cbe11c324f8e0708ba47442ac979cd590d590",
+      "bytes": 2174399
+    },
+    {
+      "file": "public/game/sprites/v34/pit/scar/scar-hurt-v34.png",
+      "sha256": "7090d329fd96402ff5b73079345ed52dadb2effda04e3c5a74ad05e5ea5ea8de",
+      "bytes": 2126041
+    },
+    {
+      "file": "public/game/sprites/v34/pit/scar/scar-repair-light-mount-v34.png",
+      "sha256": "2c52131d1721389e910d3c48d90445d73fb833495ed38d7b173ca3d6a8b66486",
+      "bytes": 2036690
+    },
+    {
+      "file": "public/game/sprites/v34/pit/scar/scar-medium-v34.png",
+      "sha256": "caa475bb7001a6795bdd677ce1d97b94f1078ccd1679f2d2961ea2498a5e1919",
+      "bytes": 1981066
+    },
+    {
+      "file": "public/game/sprites/v34/pit/scar/scar-heavy-v34.png",
+      "sha256": "3bd289a8ddcb5dfd483f4e5dc5eaaf028b5dca02c565d1cb85f54bfbf5e498e3",
+      "bytes": 2232291
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-forward-right.json",
+      "sha256": "c5a41038029fd5ecca50c25a343d8763ae003d5f3402cfd263a12ad49aef7ceb",
+      "bytes": 3665
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-forward-left-r2.json",
+      "sha256": "9cc3a79a54d1cb28c523500fd3d750460a00717b9928b0d9cf5c28ddc3eed698",
+      "bytes": 2569
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-forward-left-isolated-3-r2.json",
+      "sha256": "2e65952f0e423f6049679406d68b841bff6fe2f0c369f9f08f91ad36b114eac9",
+      "bytes": 2592
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-forward-left-isolated-4-r2.json",
+      "sha256": "85e283a74fef9ad9cfc95db6e7bc1f8f08c60384b458ed7266f6a122c33752ef",
+      "bytes": 2517
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-forward-left-isolated-2-gutter-r1.json",
+      "sha256": "6858b1e3afda3d6391da849faaef3335843ecbe25e97ed67d7cb397429623408",
+      "bytes": 2791
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-forward-left-isolated-5-gutter-r1.json",
+      "sha256": "271b825d70f95a88a94eb47be7a32c6dd870184cd6effb1f625582d7fdb210f0",
+      "bytes": 2771
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-forward-right.json",
+      "sha256": "fea2dc78cd09d5f02a7923be0616acde2da78518c83f9c090820ff0d117ce70c",
+      "bytes": 3375
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-forward-left-isolated-0.json",
+      "sha256": "4f1b5404583f39293a1167f0510d39f1f2787d6eb55cc795221e19f31b8c1ae4",
+      "bytes": 2447
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-forward-left-isolated-1.json",
+      "sha256": "6a750370045edaa274d2580ffc0ffb8d94835154d944192b3526d3a43fa6955a",
+      "bytes": 2450
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-forward-left-isolated-3.json",
+      "sha256": "a465348eb06d91d3dbe2f577de14e1029861f9743af6587c3248d4952fd3cba8",
+      "bytes": 2450
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-forward-left-isolated-4.json",
+      "sha256": "b74e300710c897b63c12d5306f06d1f8f6e478a82f1706e7ecdb0df606681876",
+      "bytes": 2455
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-forward-left-isolated-2-gutter-r1.json",
+      "sha256": "f89a37edde3796fb3b4bc8b4f0ad76d2aafe35c03f8ed9e7de34522682f2603b",
+      "bytes": 2866
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-forward-left-isolated-5-gutter-r1.json",
+      "sha256": "9ef6fd20ed905093813a9f46efafc88ff29bd5e1c47f6c4e2139d96b8a11dd2e",
+      "bytes": 2881
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-victim-right.json",
+      "sha256": "0fa95046ec7fd83f2cd8aa545b7c951070ffa3bc4d60c46df21f9175fea927f1",
+      "bytes": 3466
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-victim-right-isolated-3.json",
+      "sha256": "183f01fb2ba39e12b9d84a66e815cc187ecc76bda90b350367c5f51129772e34",
+      "bytes": 2513
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-victim-right-isolated-4.json",
+      "sha256": "5ef2abc506efce28ba326c8e1d025e1ba008cbd013f9196c40355b04f400d616",
+      "bytes": 2517
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-victim-left.json",
+      "sha256": "d168c0d8cbe01cf49d0e393942f57e01f75e83b134e7ce76b2ea739deefbd60f",
+      "bytes": 3444
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-victim-left-isolated-3.json",
+      "sha256": "0d9c623cffc9d61f5a9849c840ebb9184f47e36f2fcf06235966c13f6dfdd780",
+      "bytes": 2510
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/feral-throw-victim-left-isolated-4-gutter-r1.json",
+      "sha256": "d398df2c1e37526f663f123c5b4373b3a1e0bd7be45ec131b3697a0a128d26a0",
+      "bytes": 2915
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-right.json",
+      "sha256": "a5774557f356ebf1dfde87327496b6dd59d3fefd66cd5d10d599ffdce0c66250",
+      "bytes": 3502
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-right-isolated-3.json",
+      "sha256": "ac1349b9e747a6d6008a8536b157cb03323fb0e20188830bcf4f1ba2fbe52ddd",
+      "bytes": 2494
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-right-isolated-4.json",
+      "sha256": "2606213c61c6ff4d83b31af5242510571d75e52772fe90c324bf7c6be43b983d",
+      "bytes": 2498
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-right-isolated-5.json",
+      "sha256": "c39564507decbe9f0d68a7392ba1e40e215bf16128ed8d0db2123e2372e66486",
+      "bytes": 2498
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-right-isolated-2-gutter-r1.json",
+      "sha256": "83da69f28c36153f98b995efb6502006faff8db6d64664125f4c308de5988fa1",
+      "bytes": 2929
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-left.json",
+      "sha256": "972af7c3d010a48b15e144645af33e1a8cc404fcdeb1997cc5a3548745937780",
+      "bytes": 3488
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-left-isolated-3.json",
+      "sha256": "92eed272838413066cf1bce51f2618405c6339a7925a1ee3b16df3d7ccfa47ee",
+      "bytes": 2491
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-left-isolated-4-r2.json",
+      "sha256": "bd2b3dcfda7d0a442627f2cc863753e87f316dc0e5faac7c0d3ad5e58d4d6e01",
+      "bytes": 2124
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-left-isolated-2-gutter-r1.json",
+      "sha256": "faf0afce94bf24f12f739b9e530ae6fa019c00083203f41bc2f9ffcc24300631",
+      "bytes": 2925
+    },
+    {
+      "file": "docs/suivi-production/v109-pit-forward/receipts/scar-throw-victim-left-isolated-5-gutter-r1.json",
+      "sha256": "700e4f1106a3c0a9de67fb34496f9b7c75b86a7668824e8f8f77ef6195fdde77",
+      "bytes": 2909
+    }
+  ],
+  "checks": [
+    {
+      "name": "feral-hunter-vs-scar: local app serves the declared build",
+      "status": "PASS"
+    },
+    {
+      "name": "feral-hunter-vs-scar: public option enters the separate V16 source recipe",
+      "status": "PASS"
+    },
+    {
+      "name": "feral-hunter-vs-scar: real out-of-range L+M whiffs without damage or an invented target",
+      "status": "PASS"
+    },
+    {
+      "name": "feral-hunter-vs-scar-J1: the independent target is caught with its actual source ID",
+      "status": "PASS"
+    },
+    {
+      "name": "feral-hunter-vs-scar-J1: capture PNG remains inside the real capture phase",
+      "status": "PASS"
+    },
+    {
+      "name": "feral-hunter-vs-scar-J1: the expired tech notice becomes a projection notice during flight",
+      "status": "PASS"
+    },
+    {
+      "name": "feral-hunter-vs-scar-J1: flight PNG remains in the actual airborne native phase",
+      "status": "PASS"
+    },
+    {
+      "name": "feral-hunter-vs-scar-J1: impact PNG shows the real landing pose on the ground",
+      "status": "PASS"
+    },
+    {
+      "name": "feral-hunter-vs-scar-J1: real flight lands once for110 base damage, without replacing identity or stock",
+      "status": "PASS"
+    },
+    {
+      "name": "feral-hunter-vs-scar-J1: every painted capture/flight/landing tick0–60 is observed without a gap or conflicting duplicate",
+      "status": "PASS",
+      "detail": {
+        "paintedCount": 61,
+        "inconsistentDrawFrames": [],
+        "missingPollingAges": [
+          26,
+          31,
+          39,
+          41,
+          51,
+          56
+        ]
+      }
+    },
+    {
+      "name": "feral-hunter-vs-scar-J1: every age paints the exact independent victim PNG and native pose without reflection or deformation",
+      "status": "PASS"
+    },
+    {
+      "name": "feral-hunter-vs-scar-J1: every painted target coordinate follows the bounded real trajectory with rounding tolerance only",
+      "status": "PASS"
+    },
+    {
+      "name": "feral-hunter-vs-scar-J1: adjacent actually painted target positions are continuous without a jump",
+      "status": "PASS"
+    },
+    {
+      "name": "feral-hunter-vs-scar-J2: the independent target is caught with its actual source ID",
+      "status": "PASS"
+    },
+    {
+      "name": "feral-hunter-vs-scar-J2: capture PNG remains inside the real capture phase",
+      "status": "PASS"
+    },
+    {
+      "name": "feral-hunter-vs-scar-J2: the expired tech notice becomes a projection notice during flight",
+      "status": "PASS"
+    },
+    {
+      "name": "feral-hunter-vs-scar-J2: flight PNG remains in the actual airborne native phase",
+      "status": "PASS"
+    },
+    {
+      "name": "feral-hunter-vs-scar-J2: impact PNG shows the real landing pose on the ground",
+      "status": "PASS"
+    },
+    {
+      "name": "feral-hunter-vs-scar-J2: real flight lands once for110 base damage, without replacing identity or stock",
+      "status": "PASS"
+    },
+    {
+      "name": "feral-hunter-vs-scar-J2: every painted capture/flight/landing tick0–60 is observed without a gap or conflicting duplicate",
+      "status": "PASS",
+      "detail": {
+        "paintedCount": 61,
+        "inconsistentDrawFrames": [],
+        "missingPollingAges": [
+          24,
+          26,
+          33,
+          43,
+          45,
+          48,
+          56
+        ]
+      }
+    },
+    {
+      "name": "feral-hunter-vs-scar-J2: every age paints the exact independent victim PNG and native pose without reflection or deformation",
+      "status": "PASS"
+    },
+    {
+      "name": "feral-hunter-vs-scar-J2: every painted target coordinate follows the bounded real trajectory with rounding tolerance only",
+      "status": "PASS"
+    },
+    {
+      "name": "feral-hunter-vs-scar-J2: adjacent actually painted target positions are continuous without a jump",
+      "status": "PASS"
+    },
+    {
+      "name": "feral-hunter-vs-scar-tech: accessible fresh Projection escapes without HP or free Traque",
+      "status": "PASS"
+    },
+    {
+      "name": "feral-hunter-vs-scar-tech: J1 escape visibly holds its own admitted guard drawing",
+      "status": "PASS"
+    },
+    {
+      "name": "feral-hunter-vs-scar-tech: J2 escape visibly holds its own admitted guard drawing",
+      "status": "PASS"
+    },
+    {
+      "name": "feral-hunter-vs-scar: actual attacks finish the complete two-round duel",
+      "status": "PASS"
+    },
+    {
+      "name": "feral-hunter-vs-scar: exported real V16 inputs reproduce the actual terminal health, stock and frame",
+      "status": "PASS"
+    },
+    {
+      "name": "feral-hunter-vs-scar: public replay reaches the same genuine outcome",
+      "status": "PASS"
+    },
+    {
+      "name": "feral-hunter-vs-scar: feral-hunter attacker right paints all six actual native drawings without reflection, rotation or deformation",
+      "status": "PASS",
+      "detail": {
+        "missing": []
+      }
+    },
+    {
+      "name": "feral-hunter-vs-scar: scar attacker left paints all six actual native drawings without reflection, rotation or deformation",
+      "status": "PASS",
+      "detail": {
+        "missing": []
+      }
+    },
+    {
+      "name": "feral-hunter-vs-scar: feral-hunter victim right paints all six actual native drawings without reflection, rotation or deformation",
+      "status": "PASS",
+      "detail": {
+        "missing": []
+      }
+    },
+    {
+      "name": "feral-hunter-vs-scar: scar victim left paints all six actual native drawings without reflection, rotation or deformation",
+      "status": "PASS",
+      "detail": {
+        "missing": []
+      }
+    },
+    {
+      "name": "scar-vs-feral-hunter: local app serves the declared build",
+      "status": "PASS"
+    },
+    {
+      "name": "scar-vs-feral-hunter: public option enters the separate V16 source recipe",
+      "status": "PASS"
+    },
+    {
+      "name": "scar-vs-feral-hunter: real out-of-range L+M whiffs without damage or an invented target",
+      "status": "PASS"
+    },
+    {
+      "name": "scar-vs-feral-hunter-J1: the independent target is caught with its actual source ID",
+      "status": "PASS"
+    },
+    {
+      "name": "scar-vs-feral-hunter-J1: capture PNG remains inside the real capture phase",
+      "status": "PASS"
+    },
+    {
+      "name": "scar-vs-feral-hunter-J1: the expired tech notice becomes a projection notice during flight",
+      "status": "PASS"
+    },
+    {
+      "name": "scar-vs-feral-hunter-J1: flight PNG remains in the actual airborne native phase",
+      "status": "PASS"
+    },
+    {
+      "name": "scar-vs-feral-hunter-J1: impact PNG shows the real landing pose on the ground",
+      "status": "PASS"
+    },
+    {
+      "name": "scar-vs-feral-hunter-J1: real flight lands once for110 base damage, without replacing identity or stock",
+      "status": "PASS"
+    },
+    {
+      "name": "scar-vs-feral-hunter-J1: every painted capture/flight/landing tick0–60 is observed without a gap or conflicting duplicate",
+      "status": "PASS",
+      "detail": {
+        "paintedCount": 61,
+        "inconsistentDrawFrames": [],
+        "missingPollingAges": [
+          0,
+          21,
+          24,
+          38,
+          40,
+          45,
+          54,
+          57
+        ]
+      }
+    },
+    {
+      "name": "scar-vs-feral-hunter-J1: every age paints the exact independent victim PNG and native pose without reflection or deformation",
+      "status": "PASS"
+    },
+    {
+      "name": "scar-vs-feral-hunter-J1: every painted target coordinate follows the bounded real trajectory with rounding tolerance only",
+      "status": "PASS"
+    },
+    {
+      "name": "scar-vs-feral-hunter-J1: adjacent actually painted target positions are continuous without a jump",
+      "status": "PASS"
+    },
+    {
+      "name": "scar-vs-feral-hunter-J2: the independent target is caught with its actual source ID",
+      "status": "PASS"
+    },
+    {
+      "name": "scar-vs-feral-hunter-J2: capture PNG remains inside the real capture phase",
+      "status": "PASS"
+    },
+    {
+      "name": "scar-vs-feral-hunter-J2: the expired tech notice becomes a projection notice during flight",
+      "status": "PASS"
+    },
+    {
+      "name": "scar-vs-feral-hunter-J2: flight PNG remains in the actual airborne native phase",
+      "status": "PASS"
+    },
+    {
+      "name": "scar-vs-feral-hunter-J2: impact PNG shows the real landing pose on the ground",
+      "status": "PASS"
+    },
+    {
+      "name": "scar-vs-feral-hunter-J2: real flight lands once for110 base damage, without replacing identity or stock",
+      "status": "PASS"
+    },
+    {
+      "name": "scar-vs-feral-hunter-J2: every painted capture/flight/landing tick0–60 is observed without a gap or conflicting duplicate",
+      "status": "PASS",
+      "detail": {
+        "paintedCount": 61,
+        "inconsistentDrawFrames": [],
+        "missingPollingAges": [
+          27,
+          29,
+          31,
+          34,
+          38,
+          46,
+          49,
+          55,
+          60
+        ]
+      }
+    },
+    {
+      "name": "scar-vs-feral-hunter-J2: every age paints the exact independent victim PNG and native pose without reflection or deformation",
+      "status": "PASS"
+    },
+    {
+      "name": "scar-vs-feral-hunter-J2: every painted target coordinate follows the bounded real trajectory with rounding tolerance only",
+      "status": "PASS"
+    },
+    {
+      "name": "scar-vs-feral-hunter-J2: adjacent actually painted target positions are continuous without a jump",
+      "status": "PASS"
+    },
+    {
+      "name": "scar-vs-feral-hunter-tech: accessible fresh Projection escapes without HP or free Traque",
+      "status": "PASS"
+    },
+    {
+      "name": "scar-vs-feral-hunter-tech: J1 escape visibly holds its own admitted guard drawing",
+      "status": "PASS"
+    },
+    {
+      "name": "scar-vs-feral-hunter-tech: J2 escape visibly holds its own admitted guard drawing",
+      "status": "PASS"
+    },
+    {
+      "name": "scar-vs-feral-hunter: feral-hunter attacker left paints all six actual native drawings without reflection, rotation or deformation",
+      "status": "PASS",
+      "detail": {
+        "missing": []
+      }
+    },
+    {
+      "name": "scar-vs-feral-hunter: scar attacker right paints all six actual native drawings without reflection, rotation or deformation",
+      "status": "PASS",
+      "detail": {
+        "missing": []
+      }
+    },
+    {
+      "name": "scar-vs-feral-hunter: feral-hunter victim left paints all six actual native drawings without reflection, rotation or deformation",
+      "status": "PASS",
+      "detail": {
+        "missing": []
+      }
+    },
+    {
+      "name": "scar-vs-feral-hunter: scar victim right paints all six actual native drawings without reflection, rotation or deformation",
+      "status": "PASS",
+      "detail": {
+        "missing": []
+      }
+    },
+    {
+      "name": "No JavaScript exception or console.error",
+      "status": "PASS"
+    },
+    {
+      "name": "Executed sources, driver, admitted art and receipts stay exact",
+      "status": "PASS"
+    }
+  ],
+  "captures": [
+    {
+      "file": "docs/qa/v109-pit/feral-hunter-vs-scar-J1-capture.png",
+      "sha256": "ae9bf6b170be77a3b59be23bb4a644f57d92fb95b653e3c9a6a27aba28498d24",
+      "bytes": 1327136
+    },
+    {
+      "file": "docs/qa/v109-pit/feral-hunter-vs-scar-J1-flight.png",
+      "sha256": "ea5643718b743e8855a4fd4a4f6404aedb08e295c7154290068c1443831142c0",
+      "bytes": 1371805
+    },
+    {
+      "file": "docs/qa/v109-pit/feral-hunter-vs-scar-J1-landing.png",
+      "sha256": "50a40965e4985144ccbe56554a6a7ecc5e577970d9dc1628f424655623971eb2",
+      "bytes": 1329149
+    },
+    {
+      "file": "docs/qa/v109-pit/feral-hunter-vs-scar-J1-recovered.png",
+      "sha256": "0ba67a2adb1a27b6cdec1e1e82387fc80f06f2553c6ba52f7096ad2277d20f3d",
+      "bytes": 1322829
+    },
+    {
+      "file": "docs/qa/v109-pit/feral-hunter-vs-scar-J2-capture.png",
+      "sha256": "e6bb2768c9769cd95a022a643033deb7513cfc8f4ad366d784a094fb16028f27",
+      "bytes": 1341356
+    },
+    {
+      "file": "docs/qa/v109-pit/feral-hunter-vs-scar-J2-flight.png",
+      "sha256": "9b3a54cc5a91899b24deeb9504c01d64b725dab3b110cb26ae839c392110e790",
+      "bytes": 1373228
+    },
+    {
+      "file": "docs/qa/v109-pit/feral-hunter-vs-scar-J2-landing.png",
+      "sha256": "61b6d6e9fb9d27f48c66b50d11fa84fb7ab9689fdffe2370e551e38767cc9db4",
+      "bytes": 1353062
+    },
+    {
+      "file": "docs/qa/v109-pit/feral-hunter-vs-scar-J2-recovered.png",
+      "sha256": "fac212aeaacd55540aeb4527a72755a1b97422eab29707fdaed5fc5cb8a3a46f",
+      "bytes": 1336390
+    },
+    {
+      "file": "docs/qa/v109-pit/feral-hunter-vs-scar-tech.png",
+      "sha256": "91fa6eb09833386df92d992431a81c4ce67d80d10a1f708f32eb1891b4949d5b",
+      "bytes": 1341348
+    },
+    {
+      "file": "docs/qa/v109-pit/feral-hunter-vs-scar-actual-victory.png",
+      "sha256": "c1f5ac4e02f03c18eb725c7e6b02021876ac24e35de70d2eb42e6af7293403b5",
+      "bytes": 357540
+    },
+    {
+      "file": "docs/qa/v109-pit/scar-vs-feral-hunter-J1-capture.png",
+      "sha256": "7f2282ecdd260dd431e8e0d471cf21c214ee5af4edf322353b10427009f6fd6c",
+      "bytes": 1321245
+    },
+    {
+      "file": "docs/qa/v109-pit/scar-vs-feral-hunter-J1-flight.png",
+      "sha256": "177bfba3439cab05e6e396dea3716f77bebe9b267e6e6daacaa68e8fed38356e",
+      "bytes": 1366954
+    },
+    {
+      "file": "docs/qa/v109-pit/scar-vs-feral-hunter-J1-landing.png",
+      "sha256": "90e3c15cfbfcffad75dc7c05e777cd052f2957ec87ea3840f8bb5205c72ae100",
+      "bytes": 1321840
+    },
+    {
+      "file": "docs/qa/v109-pit/scar-vs-feral-hunter-J1-recovered.png",
+      "sha256": "6b06f21c039a08e07b539ebd3e19284bde19dc4afb0600f57ee391379b0090f1",
+      "bytes": 1327645
+    },
+    {
+      "file": "docs/qa/v109-pit/scar-vs-feral-hunter-J2-capture.png",
+      "sha256": "dcd02b86c12776a3b1c8a7a7b427c3be35823c2549112b236d84ebc97c3d0f01",
+      "bytes": 1328015
+    },
+    {
+      "file": "docs/qa/v109-pit/scar-vs-feral-hunter-J2-flight.png",
+      "sha256": "4f1da0e107bf959539cb6eb453ee68ff740252ef8d44a6c1098ad8d9bea98645",
+      "bytes": 1359008
+    },
+    {
+      "file": "docs/qa/v109-pit/scar-vs-feral-hunter-J2-landing.png",
+      "sha256": "464f3a58b2152acc78cefc32df688c72d1e4e20c8d09154c4da3a7d0df9686b1",
+      "bytes": 1338513
+    },
+    {
+      "file": "docs/qa/v109-pit/scar-vs-feral-hunter-J2-recovered.png",
+      "sha256": "c530b768d0abfee8f85afabac22c4d68819446e05f985dc3c2c1ee55cb1850a0",
+      "bytes": 1326413
+    },
+    {
+      "file": "docs/qa/v109-pit/scar-vs-feral-hunter-tech.png",
+      "sha256": "db884d53a1b800438c7151508e148403eaaff836f75c78639cb527478719b7ab",
+      "bytes": 1310286
+    }
+  ],
+  "capturesOpened": [
+    "docs/qa/v109-pit/feral-hunter-vs-scar-J1-capture.png",
+    "docs/qa/v109-pit/feral-hunter-vs-scar-J1-flight.png",
+    "docs/qa/v109-pit/feral-hunter-vs-scar-J1-landing.png",
+    "docs/qa/v109-pit/feral-hunter-vs-scar-J1-recovered.png",
+    "docs/qa/v109-pit/feral-hunter-vs-scar-J2-capture.png",
+    "docs/qa/v109-pit/feral-hunter-vs-scar-J2-flight.png",
+    "docs/qa/v109-pit/feral-hunter-vs-scar-J2-landing.png",
+    "docs/qa/v109-pit/feral-hunter-vs-scar-J2-recovered.png",
+    "docs/qa/v109-pit/feral-hunter-vs-scar-tech.png",
+    "docs/qa/v109-pit/feral-hunter-vs-scar-actual-victory.png",
+    "docs/qa/v109-pit/scar-vs-feral-hunter-J1-capture.png",
+    "docs/qa/v109-pit/scar-vs-feral-hunter-J1-flight.png",
+    "docs/qa/v109-pit/scar-vs-feral-hunter-J1-landing.png",
+    "docs/qa/v109-pit/scar-vs-feral-hunter-J1-recovered.png",
+    "docs/qa/v109-pit/scar-vs-feral-hunter-J2-capture.png",
+    "docs/qa/v109-pit/scar-vs-feral-hunter-J2-flight.png",
+    "docs/qa/v109-pit/scar-vs-feral-hunter-J2-landing.png",
+    "docs/qa/v109-pit/scar-vs-feral-hunter-J2-recovered.png",
+    "docs/qa/v109-pit/scar-vs-feral-hunter-tech.png"
+  ],
+  "rawEvidence": {
+    "path": "docs/qa/v109-pit/browser-result.json.gz",
+    "sha256": "7930fa249a9b052c282a41b52d30abee38fb906aa815c7f4a4bafe819fd69a76",
+    "bytes": 82244,
+    "decodedSha256": "2301047d7a68f8cd747af1ecd95481b60130d6996c1bfae6e98a5febb22ee987",
+    "decodedBytes": 4774768
+  }
+}
