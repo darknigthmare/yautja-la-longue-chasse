@@ -30,6 +30,7 @@ jobs:
             /app/
             /tests/
             /scripts/
+            /.openai/hosting.json
             /docs/hunt-mechanics-v111.json
             /docs/YAUTJA_V111_MECANIQUES_CHASSE.xlsx
             /public/**/manifest.json
@@ -40,6 +41,10 @@ jobs:
       - name: Install locked dependencies without lifecycle scripts
         id: dependencies
         run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Generate Next route types and check application TypeScript
+        run: |
+          node node_modules/next/dist/bin/next typegen
+          npm run typecheck
       - name: Simulated full youth routes and native hunt helpers (not whole-game QA)
         run: >-
           node --experimental-strip-types --test --test-reporter=spec --test-concurrency=4
