@@ -5,29 +5,29 @@
   "scope": "V109 physical supply route from an explicitly model-prepared V108 legacy front. The six constructions and prior mount care belong to that declared fixture. This browser earns the six ordered supply deliveries, same-hull water travel/reload, physical return, and separation of both legacy mounts; no campaign hull, territory mapping, resources, XP or new native art is awarded.",
   "production": {
     "mode": "production",
-    "runtimeCommit": "63cfb392a72438623f8031257e54497ece390aa8",
-    "buildId": "FJ6IbT6OZx1H51wYnNmex",
+    "runtimeCommit": "c97c7d903486ed2c7cb2529ac27f713c0aba8987",
+    "buildId": "pVNPLCZV9ZFtFCd87NSTa",
     "browserErrors": 0,
     "checksFailed": 0,
     "checksPassed": 38,
     "servedBuilds": [
       {
         "status": 200,
-        "expectedBuildId": "FJ6IbT6OZx1H51wYnNmex",
+        "expectedBuildId": "pVNPLCZV9ZFtFCd87NSTa",
         "foundInHtml": true,
-        "htmlSha256": "422caa9465fea7ad708f0f4f23760ad2b1c18aedef519d1dd2ea8abecf6dd77d"
+        "htmlSha256": "c90a7831a09a57c6ac5b05e7c1a4b5d4d9790274a325175d1533cc9289568fe8"
       },
       {
         "status": 200,
-        "expectedBuildId": "FJ6IbT6OZx1H51wYnNmex",
+        "expectedBuildId": "pVNPLCZV9ZFtFCd87NSTa",
         "foundInHtml": true,
-        "htmlSha256": "422caa9465fea7ad708f0f4f23760ad2b1c18aedef519d1dd2ea8abecf6dd77d"
+        "htmlSha256": "c90a7831a09a57c6ac5b05e7c1a4b5d4d9790274a325175d1533cc9289568fe8"
       },
       {
         "status": 200,
-        "expectedBuildId": "FJ6IbT6OZx1H51wYnNmex",
+        "expectedBuildId": "pVNPLCZV9ZFtFCd87NSTa",
         "foundInHtml": true,
-        "htmlSha256": "422caa9465fea7ad708f0f4f23760ad2b1c18aedef519d1dd2ea8abecf6dd77d"
+        "htmlSha256": "c90a7831a09a57c6ac5b05e7c1a4b5d4d9790274a325175d1533cc9289568fe8"
       }
     ]
   },
@@ -38,16 +38,16 @@
     "environment": {
       "YAUTJA_QA_MODE": "compiled-app",
       "YAUTJA_QA_BASE_URL": "http://127.0.0.1:3101",
-      "YAUTJA_QA_BUILD_ID": "FJ6IbT6OZx1H51wYnNmex",
-      "YAUTJA_QA_RUNTIME_COMMIT": "63cfb392a72438623f8031257e54497ece390aa8",
-      "YAUTJA_CLAN_SUPPLY_V109_OUTPUT": "/workspace/yautja-la-longue-chasse/outputs/qa-v109-production-r2/clans"
+      "YAUTJA_QA_BUILD_ID": "pVNPLCZV9ZFtFCd87NSTa",
+      "YAUTJA_QA_RUNTIME_COMMIT": "c97c7d903486ed2c7cb2529ac27f713c0aba8987",
+      "YAUTJA_CLAN_SUPPLY_V109_OUTPUT": "/workspace/yautja-la-longue-chasse/outputs/qa-v109-production-r3/clans"
     }
   },
   "sourceBefore": [
     {
       "file": "scripts/qa-clan-supply-route-v109.mjs",
-      "sha256": "8acad384d3fb9074fd84aa523808e34db2e477c90d9c132b6242c832b5cb954b",
-      "bytes": 32081
+      "sha256": "54bb7a9722fcfb9b8384ff64d17b34a107e7cc798efbe5c16fdca86c5513810c",
+      "bytes": 32119
     },
     {
       "file": "tests/helpers/clan-supply-route-v109-fixture.mjs",
@@ -143,8 +143,8 @@
   "sourceAfter": [
     {
       "file": "scripts/qa-clan-supply-route-v109.mjs",
-      "sha256": "8acad384d3fb9074fd84aa523808e34db2e477c90d9c132b6242c832b5cb954b",
-      "bytes": 32081
+      "sha256": "54bb7a9722fcfb9b8384ff64d17b34a107e7cc798efbe5c16fdca86c5513810c",
+      "bytes": 32119
     },
     {
       "file": "tests/helpers/clan-supply-route-v109-fixture.mjs",
@@ -446,9 +446,9 @@
   ],
   "rawEvidence": {
     "path": "docs/qa/v109-clans/browser-result.json.gz",
-    "sha256": "df9b3a4fe1e2008172d01424c215b01ac319767ae748e9b46f6b87ca0f3c2bc5",
-    "bytes": 100872,
-    "decodedSha256": "121f681e4d8a5775c254bf55e23790fbc128e84755440d58c679bf83505e4a1a",
-    "decodedBytes": 1324801
+    "sha256": "70fd0d11c9aff38c7ac508f11f8e76e0194914f529dea9840872ce55b4e790e9",
+    "bytes": 100874,
+    "decodedSha256": "a1537e9075b39ef563e50e70d1c71258ad4f8a8008701fe1fba36737d98a8c85",
+    "decodedBytes": 1324504
   }
 }

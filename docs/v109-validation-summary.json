@@ -2,42 +2,42 @@
   "schemaVersion": 1,
   "release": "V109",
   "status": "PASS_CIBLE",
-  "recordedAt": "2026-10-25T10:13:53.669Z",
-  "runtimeCommit": "63cfb392a72438623f8031257e54497ece390aa8",
-  "productionBuildId": "FJ6IbT6OZx1H51wYnNmex",
+  "recordedAt": "2026-10-26T08:34:29.244Z",
+  "runtimeCommit": "c97c7d903486ed2c7cb2529ac27f713c0aba8987",
+  "productionBuildId": "pVNPLCZV9ZFtFCd87NSTa",
   "scope": "Four bounded actual journeys on one compiled production build: Feral/Scar unvaried native forward throws; ROLE03 plaque/impression comparison and dynamic cargo navigation; physical six-stage clan supply route from an explicit legacy checkpoint; two new adapted desert/ice reserves with declared geometry fixtures. Complete kits, all partners/costumes, source campaigns, campaign acquisitions, canonical fidelity and the 80/100 Preserve target remain open. All 56 original source requirements remain open.",
   "sourceFreeze": {
     "path": "docs/v109-runtime-freeze.json",
-    "sha256": "e01f55d66dbae26b350101d3b06a9c306a2aa42ac19510944e82dcd60a1d19d1",
-    "bytes": 251341
+    "sha256": "b4f097daa655b119051675bd7acc2540a90cb4fd466c69955de6c0858519c4c0",
+    "bytes": 251728
   },
   "production": [
     {
       "domain": "Pit",
       "status": "PASS_CIBLE",
-      "buildId": "FJ6IbT6OZx1H51wYnNmex",
-      "runtimeCommit": "63cfb392a72438623f8031257e54497ece390aa8",
+      "buildId": "pVNPLCZV9ZFtFCd87NSTa",
+      "runtimeCommit": "c97c7d903486ed2c7cb2529ac27f713c0aba8987",
       "driver": "scripts/qa-pit-forward-throws-v109.mjs",
       "command": "node scripts/qa-pit-forward-throws-v109.mjs",
       "report": {
         "path": "docs/v109-pit-validation.json",
-        "sha256": "8d47e48f73fe9e32c2c229bc9706c3896b6259fbca616cb26b385cabc610ca86",
-        "bytes": 90858
+        "sha256": "d1e7ae6f075ba8a9a640c9d84f8eb1c258d2141792d53e14a4607dce0727a6c5",
+        "bytes": 90890
       },
       "browserChecksPassed": 65,
       "capturesInspected": 19,
       "portableFiles": [
         {
           "path": "docs/qa/v109-pit/browser-result.json.gz",
-          "sha256": "95a5fcb6bfe33434819bb7cd5c009378e175ac1608f6b9e02f655135cf439219",
-          "bytes": 82376,
-          "decodedSha256": "f63def06979cdce106d7dd16ffcf4964781bffbd36ef7faeb2fb5675ff4b64ed",
-          "decodedBytes": 4800751
+          "sha256": "7930fa249a9b052c282a41b52d30abee38fb906aa815c7f4a4bafe819fd69a76",
+          "bytes": 82244,
+          "decodedSha256": "2301047d7a68f8cd747af1ecd95481b60130d6996c1bfae6e98a5febb22ee987",
+          "decodedBytes": 4774768
         },
         {
           "path": "docs/qa/v109-pit/feral-hunter-vs-scar-J1-capture.png",
-          "sha256": "8db6d30670d1326a16e667c817bad677f49b99a30681a72f31dcdb037bc2a233",
-          "bytes": 1325104
+          "sha256": "ae9bf6b170be77a3b59be23bb4a644f57d92fb95b653e3c9a6a27aba28498d24",
+          "bytes": 1327136
         },
         {
           "path": "docs/qa/v109-pit/feral-hunter-vs-scar-J1-flight.png",
@@ -81,66 +81,66 @@
         },
         {
           "path": "docs/qa/v109-pit/feral-hunter-vs-scar-actual-victory.png",
-          "sha256": "04ce93ae09960ae20eb405c981812615e6d9183e8559000885a2f44518c46668",
-          "bytes": 356860
+          "sha256": "c1f5ac4e02f03c18eb725c7e6b02021876ac24e35de70d2eb42e6af7293403b5",
+          "bytes": 357540
         },
         {
           "path": "docs/qa/v109-pit/scar-vs-feral-hunter-J1-capture.png",
-          "sha256": "adc209318c84ba466e626259bd077200492717476d10f56885b3f7e4281a444c",
-          "bytes": 1321893
+          "sha256": "7f2282ecdd260dd431e8e0d471cf21c214ee5af4edf322353b10427009f6fd6c",
+          "bytes": 1321245
         },
         {
           "path": "docs/qa/v109-pit/scar-vs-feral-hunter-J1-flight.png",
-          "sha256": "54fb5b4687b7cdcf3480c5149d7dc01e6db71bd54e94bcb2f6b2ffe05bc74c3f",
-          "bytes": 1367023
+          "sha256": "177bfba3439cab05e6e396dea3716f77bebe9b267e6e6daacaa68e8fed38356e",
+          "bytes": 1366954
         },
         {
           "path": "docs/qa/v109-pit/scar-vs-feral-hunter-J1-landing.png",
-          "sha256": "88bedb9067cb888c5bdd3e51d73ec9bed9d7327b5d758b9950f0a345b5f49b02",
-          "bytes": 1321867
+          "sha256": "90e3c15cfbfcffad75dc7c05e777cd052f2957ec87ea3840f8bb5205c72ae100",
+          "bytes": 1321840
         },
         {
           "path": "docs/qa/v109-pit/scar-vs-feral-hunter-J1-recovered.png",
-          "sha256": "bcf697d957d7b8c5f609f42304ed43c3135f19a94e7c4932573d8541a7363f36",
-          "bytes": 1327553
+          "sha256": "6b06f21c039a08e07b539ebd3e19284bde19dc4afb0600f57ee391379b0090f1",
+          "bytes": 1327645
         },
         {
           "path": "docs/qa/v109-pit/scar-vs-feral-hunter-J2-capture.png",
-          "sha256": "4ff6821013e830fddbf2d59177293a5062a0cf5133a74a6d246e463f9f71c0a8",
-          "bytes": 1328408
+          "sha256": "dcd02b86c12776a3b1c8a7a7b427c3be35823c2549112b236d84ebc97c3d0f01",
+          "bytes": 1328015
         },
         {
           "path": "docs/qa/v109-pit/scar-vs-feral-hunter-J2-flight.png",
-          "sha256": "2a2fba6095faf8ecdfe47f7fda98a62d963bc9a6cc004e2d6645ee395b0cc487",
-          "bytes": 1356058
+          "sha256": "4f1da0e107bf959539cb6eb453ee68ff740252ef8d44a6c1098ad8d9bea98645",
+          "bytes": 1359008
         },
         {
           "path": "docs/qa/v109-pit/scar-vs-feral-hunter-J2-landing.png",
-          "sha256": "094e42c2228ee7e3ae603cebe57b56ed17410beabed379e40be0cda688d67bec",
-          "bytes": 1340303
+          "sha256": "464f3a58b2152acc78cefc32df688c72d1e4e20c8d09154c4da3a7d0df9686b1",
+          "bytes": 1338513
         },
         {
           "path": "docs/qa/v109-pit/scar-vs-feral-hunter-J2-recovered.png",
-          "sha256": "fb06f2defc5a33d955ae9f8d1ddb5e4c0ab8e8f2602a6edf712c8d7708bb6069",
-          "bytes": 1326601
+          "sha256": "c530b768d0abfee8f85afabac22c4d68819446e05f985dc3c2c1ee55cb1850a0",
+          "bytes": 1326413
         },
         {
           "path": "docs/qa/v109-pit/scar-vs-feral-hunter-tech.png",
-          "sha256": "9f30b9f154e9281afc36a57d4e49e9faaf3e988c51f28743e6f362254b6424a1",
-          "bytes": 1323825
+          "sha256": "db884d53a1b800438c7151508e148403eaaff836f75c78639cb527478719b7ab",
+          "bytes": 1310286
         }
       ]
     },
     {
       "domain": "Homeworld",
       "status": "PASS_CIBLE",
-      "buildId": "FJ6IbT6OZx1H51wYnNmex",
-      "runtimeCommit": "63cfb392a72438623f8031257e54497ece390aa8",
+      "buildId": "pVNPLCZV9ZFtFCd87NSTa",
+      "runtimeCommit": "c97c7d903486ed2c7cb2529ac27f713c0aba8987",
       "driver": "scripts/qa-homeworld-plaque-v109.mjs",
       "command": "node scripts/qa-homeworld-plaque-v109.mjs",
       "report": {
         "path": "docs/v109-homeworld-validation.json",
-        "sha256": "d5ba15653acb2b813923b0fe82a178eebb261f0b83da0e8812a33c9ff38c0227",
+        "sha256": "d899f03817cd74e5e6726b1777de4f5f7f70b6d6def3b9cf0ce90664d7f002ae",
         "bytes": 23496
       },
       "browserChecksPassed": 55,
@@ -148,10 +148,10 @@
       "portableFiles": [
         {
           "path": "docs/qa/v109-homeworld/browser-result.json.gz",
-          "sha256": "e464939a29fa8ad326be0789861036b7b13accf84e2845e21feadcb25af0166c",
-          "bytes": 4976,
-          "decodedSha256": "b148f7938e051fe381003b05780e735038ade6a8afb00250ddd447036a2a6daa",
-          "decodedBytes": 26290
+          "sha256": "7446dda0bd77834939b1d093db27401c0e913d3f3deee054f3a4930947e7dec1",
+          "bytes": 4981,
+          "decodedSha256": "c0f3b4c341fd814d454f9c94bc8d716735bc40db80612ecdf3ee010822c4e888",
+          "decodedBytes": 26289
         },
         {
           "path": "docs/qa/v109-homeworld/a-01-opening-native-props.png",
@@ -160,8 +160,8 @@
         },
         {
           "path": "docs/qa/v109-homeworld/a-02-carried-native-plaque.png",
-          "sha256": "9ff0c32a65802b55333ce63843f0b1af385b8f6e2406ee05178d902b5470b7a5",
-          "bytes": 1301576
+          "sha256": "8ffc81d27acc48c4a9958d14c9439a0984b42042b0212179a871f4822bd0e4a1",
+          "bytes": 1314598
         },
         {
           "path": "docs/qa/v109-homeworld/a-03-confirmed-mismatch.png",
@@ -180,8 +180,8 @@
         },
         {
           "path": "docs/qa/v109-homeworld/a-06-mobile-confirmed-study.png",
-          "sha256": "bdc0b34e94f8fa0346335b00a5e85f652945dc9fecdfec780a4d3620a0dd5b54",
-          "bytes": 123040
+          "sha256": "41d77175b36ec678c03ec48b988a64b819ae5986d397adb050ce6441946429e9",
+          "bytes": 122860
         },
         {
           "path": "docs/qa/v109-homeworld/b-01-opening-native-props.png",
@@ -195,31 +195,31 @@
         },
         {
           "path": "docs/qa/v109-homeworld/b-06-mobile-confirmed-study.png",
-          "sha256": "6739a7d7fd693e95b8f8c345dba8410de91314728125cc4a7815091a7aa461ff",
-          "bytes": 123693
+          "sha256": "b0344543fd671686faad389129cd6dae09b369541034d4b772768bab98651799",
+          "bytes": 123507
         },
         {
           "path": "docs/qa/v109-homeworld/c-01-real-atlas-initial-obstacles.png",
-          "sha256": "847b5bae7f55c86ca3d8ec94daa468197661edbe0c48b5288c50fedc7010574a",
-          "bytes": 106712
+          "sha256": "89e7c18614f415451968d906e818140261e96354e357961cc782d847c40c00f5",
+          "bytes": 106697
         },
         {
           "path": "docs/qa/v109-homeworld/c-02-real-atlas-parked-load.png",
-          "sha256": "9f1ec7df92394d7344942df6e918a23421b34d3b3e911841f62461af92e34219",
-          "bytes": 135674
+          "sha256": "0d52e20596db57b63e102888d09333913901968f93b154748cac2b82b2c5482b",
+          "bytes": 134455
         }
       ]
     },
     {
       "domain": "Clans",
       "status": "PASS_CIBLE",
-      "buildId": "FJ6IbT6OZx1H51wYnNmex",
-      "runtimeCommit": "63cfb392a72438623f8031257e54497ece390aa8",
+      "buildId": "pVNPLCZV9ZFtFCd87NSTa",
+      "runtimeCommit": "c97c7d903486ed2c7cb2529ac27f713c0aba8987",
       "driver": "scripts/qa-clan-supply-route-v109.mjs",
       "command": "node scripts/qa-clan-supply-route-v109.mjs",
       "report": {
         "path": "docs/v109-clans-validation.json",
-        "sha256": "addd0125f08e17b3cf639521fb561a6872200c4cff1bb7d0eb5dddf67ae62b48",
+        "sha256": "8e2e2c5de4d16b178039bd80ff91d75ff0ac2d803d6dfbc39882cf97eab637d9",
         "bytes": 15490
       },
       "browserChecksPassed": 38,
@@ -227,10 +227,10 @@
       "portableFiles": [
         {
           "path": "docs/qa/v109-clans/browser-result.json.gz",
-          "sha256": "df9b3a4fe1e2008172d01424c215b01ac319767ae748e9b46f6b87ca0f3c2bc5",
-          "bytes": 100872,
-          "decodedSha256": "121f681e4d8a5775c254bf55e23790fbc128e84755440d58c679bf83505e4a1a",
-          "decodedBytes": 1324801
+          "sha256": "70fd0d11c9aff38c7ac508f11f8e76e0194914f529dea9840872ce55b4e790e9",
+          "bytes": 100874,
+          "decodedSha256": "a1537e9075b39ef563e50e70d1c71258ad4f8a8008701fe1fba36737d98a8c85",
+          "decodedBytes": 1324504
         },
         {
           "path": "docs/qa/v109-clans/01-original-migration-refused.png",
@@ -277,24 +277,24 @@
     {
       "domain": "Preserve",
       "status": "PASS_CIBLE",
-      "buildId": "FJ6IbT6OZx1H51wYnNmex",
-      "runtimeCommit": "63cfb392a72438623f8031257e54497ece390aa8",
+      "buildId": "pVNPLCZV9ZFtFCd87NSTa",
+      "runtimeCommit": "c97c7d903486ed2c7cb2529ac27f713c0aba8987",
       "driver": "scripts/qa-preserve-biomes-v109.mjs",
       "command": "node scripts/qa-preserve-biomes-v109.mjs",
       "report": {
         "path": "docs/v109-preserve-validation.json",
-        "sha256": "f3347498c8944de20abb19ffef4ec741e54a6781f02aa244e878ab80efb8229d",
-        "bytes": 30495
+        "sha256": "c578a4290e2a6dbf49d8426d5c0a96d0637e62fc5e8568e0b086fad2eb415d38",
+        "bytes": 30489
       },
       "browserChecksPassed": 50,
       "capturesInspected": 27,
       "portableFiles": [
         {
           "path": "docs/qa/v109-preserve/browser-result.json.gz",
-          "sha256": "f7f3203a1c5cd940eac25e22d4623fa8b0011b92637104cc5a2fa4d2852190bd",
-          "bytes": 29469,
-          "decodedSha256": "2834166259e4b8e329c828b454027c1ccc7121861f4b9f51097fb994e2c8695f",
-          "decodedBytes": 552817
+          "sha256": "7454594cd49b25f33a3f6c85b4a2df59c057bf97e1f1f32517a35851f131190a",
+          "bytes": 29447,
+          "decodedSha256": "d66fe8ad92540944a2545844e785da272885eafe2fc0d8682a8c3ae0da7fdbe7",
+          "decodedBytes": 554380
         },
         {
           "path": "docs/qa/v109-preserve/khar-choice.png",
@@ -303,13 +303,13 @@
         },
         {
           "path": "docs/qa/v109-preserve/khar-played-one-adult.png",
-          "sha256": "40a398c8db03a86ec5d570a52edc44ca5ff63a0ec5d0cdabe8922a78f611dcbd",
-          "bytes": 385908
+          "sha256": "dd9d6c407aedf4ed4072ae8c46b2ab07293440a3438dae4ee12749394d86214b",
+          "bytes": 385981
         },
         {
           "path": "docs/qa/v109-preserve/khar-native-landscape-touch.png",
-          "sha256": "9f57fc304c2e0acf9bc000c8fbcf6e1589c8af3a04e9c1be1db01ef4793831ff",
-          "bytes": 384506
+          "sha256": "77a0eecddf55cde7244327c3ac5ba55a45bd40220c78e25ebb8926517e6bb389",
+          "bytes": 384119
         },
         {
           "path": "docs/qa/v109-preserve/iskhel-choice.png",
@@ -318,13 +318,13 @@
         },
         {
           "path": "docs/qa/v109-preserve/iskhel-played-one-adult.png",
-          "sha256": "4d54b00d34ff1d44deae3e3078dfcbe654de52a1222d3d6b0602072bf2d334f9",
-          "bytes": 399480
+          "sha256": "a96207fd0f21f1f742818e6281ec8cbc731da091ede8b70f06308de08d90d4b9",
+          "bytes": 399340
         },
         {
           "path": "docs/qa/v109-preserve/iskhel-native-landscape-touch.png",
-          "sha256": "f2f1f9b75beee5903a00d909c2c2c95a0a9c88dceb87fffc4d2b7fd32bcd1498",
-          "bytes": 416360
+          "sha256": "e5166ce89df33fb666495ea32d410ae1d4a3cdea723dcb404507c34d7ebda63e",
+          "bytes": 416520
         },
         {
           "path": "docs/qa/v109-preserve/legacy-v4-preserved.png",
@@ -363,8 +363,8 @@
         },
         {
           "path": "docs/qa/v109-preserve/khar-objectives-mobile.png",
-          "sha256": "7a209d29d9d5257217624616274a6d90e0579f1e097bc3fe238e23472f190f2e",
-          "bytes": 150697
+          "sha256": "a0f80a95b463ae78204998fff220944dd23b03dd16b10499c3382295f97ec72d",
+          "bytes": 150677
         },
         {
           "path": "docs/qa/v109-preserve/khar-returned.png",
@@ -423,13 +423,13 @@
         },
         {
           "path": "docs/qa/v109-preserve/khar-campaign-entry.png",
-          "sha256": "faaeba4734752c070f8d077a39d1b73cf09ebcc041abb42e314d85799324f13d",
-          "bytes": 388177
+          "sha256": "c9cda7bdd094bb24bc6261585bc0fc47c05f73441ea2a3c6218745b3c23d7738",
+          "bytes": 388838
         },
         {
           "path": "docs/qa/v109-preserve/iskhel-campaign-entry.png",
-          "sha256": "d8fcbbf4abd3715b14bf12d23041807deb96b626a2570034995ebe9ecddabbf7",
-          "bytes": 400882
+          "sha256": "14a4062765f90092bc2abca3b3a3f331495c6b8ad2a422971cccb0465e255922",
+          "bytes": 400831
         }
       ]
     }

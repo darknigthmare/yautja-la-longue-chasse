@@ -1,6 +1,6 @@
 # Validation ciblée V109
 
-Les quatre parcours finaux utilisent le même build de production `FJ6IbT6OZx1H51wYnNmex`, construit depuis `63cfb392a72438623f8031257e54497ece390aa8`. Le gel courant contient 1 359 entrées, dont 398 fichiers publics ; son SHA256 est `e01f55d66dbae26b350101d3b06a9c306a2aa42ac19510944e82dcd60a1d19d1`.
+Les quatre parcours finaux utilisent le même build de production `pVNPLCZV9ZFtFCd87NSTa`, construit depuis `c97c7d903486ed2c7cb2529ac27f713c0aba8987` après les corrections de revue. Le gel courant contient 1 361 entrées, dont 398 fichiers publics ; son SHA256 est `b4f097daa655b119051675bd7acc2540a90cb4fd466c69955de6c0858519c4c0`.
 
 Le [certificat commun](v109-validation-summary.json) vérifie les quatre résultats bruts complets, leurs sources avant/après, les réponses HTML du build attendu, les empreintes de toutes les captures et leur inspection effective. Les JSON bruts sont conservés en gzip sans perte. Aucun résultat de développement ne certifie ce build.
 
@@ -16,9 +16,15 @@ Les sources et les images admises restent identiques pendant chaque exécution. 
 
 ## Vérifications locales
 
-La suite V109 complète passe ses 95 tests. Les régressions supplémentaires passent également : 135 contrôles de commandes et de cycle de vie, 46 tests V104, 126 tests V105/V106 et 81 tests d’archives. Les 75 assertions V108 originales sont exécutées dans leur capsule historique privée ; elles ne prétendent pas couvrir l’app courante. Les journaux intégraux se trouvent dans `docs/qa/v109-validation/` et `docs/qa/v109-excel-followup/`.
+La suite V109 initiale a passé ses 95 tests. Après corrections, les 34 tests Pit ont été rejoués et les 11 contrôles du suivi Excel, de son histoire et de la publication sont exécutés sur le suivi final. Les régressions supplémentaires conservées passent également : 135 contrôles de commandes et de cycle de vie, 46 tests V104, 126 tests V105/V106 et 81 tests d’archives. Ces groupes se recouvrent et ne sont pas additionnés. Les 75 assertions V108 originales sont exécutées dans leur capsule historique privée ; elles ne prétendent pas couvrir l’app courante. Les journaux intégraux se trouvent dans `docs/qa/v109-validation/` et `docs/qa/v109-excel-followup/`.
 
 Le build Next de production et les contrôles de types passent. Le lint global termine sans erreur ; ses 171 avertissements concernent des fichiers historiques inchangés. Les contrôles ciblés des nouveaux chantiers terminent sans avertissement.
+
+## Corrections de revue et nouveau certificat
+
+Le titre et la notice Preserve présentent les quatre réserves disponibles. Les cinq lanceurs QA acceptent les deux variables Chromium. Le contrôle des bords natifs compte désormais les pixels ajoutés à leur position réelle et refuse aussi tout retrait du cœur opaque : six cas Python complémentaires et la revue stricte des 48 poses passent. Aucun PNG, rectangle UV ou pivot n’a changé ; les constantes CPU nommées conservent leurs valeurs. Les outils Python locaux n’ajoutent pas de dépendance à la CI.
+
+Les quatre recettes R3 ont été rejouées intégralement sur le nouveau build et leurs 65 captures ouvertes. Le certificat précédent `FJ6IbT6OZx1H51wYnNmex` reste historique, avec ses [métadonnées exactes](qa/v109-review-corrections/previous-certified-manifest.json) et son classeur dans le commit `1252a5909b317d4e0c400683818a3f736b7e6431` ; ses résultats ne sont pas réutilisés dans les totaux courants.
 
 ## Essais conservés et mesure des animations
 

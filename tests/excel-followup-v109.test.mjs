@@ -22,7 +22,7 @@ test('all eight families retain every V108 source field and all56 still-open sou
   assert.equal(snapshot.definitionFacts.pitForwardSourceCompletion, false); assert.equal(snapshot.definitionFacts.pitForwardPartnerScope, 'unvaried-feral-scar-duo');
   for (const id of ['pitForwardAttackerFeralDrawings', 'pitForwardAttackerScarDrawings', 'pitForwardVictimFeralDrawings', 'pitForwardVictimScarDrawings']) assert.equal(snapshot.definitionFacts[id], 12);
   if (snapshot.baselineFreeze === 'FROZEN') {
-    assert.equal(snapshot.freezeEntriesVerified, 1359);
+    assert.equal(snapshot.freezeEntriesVerified, 1361);
     assert.equal(snapshot.production.browserChecks, 208); assert.equal(snapshot.production.inspectedCaptures, 65);
     assert.deepEqual(snapshot.workstreams.filter(row => row.status === 'VALIDE_CIBLE').map(row => row.id).sort(), ['homeworld-cargo', 'pit-actions', 'preserve-expansion', 'war-structures']);
   } else {

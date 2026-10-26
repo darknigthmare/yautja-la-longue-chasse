@@ -3,10 +3,10 @@
   "release": "V109",
   "result": "PASS_STRUCTURE",
   "workbook": "docs/YAUTJA_V109_SUIVI.xlsx",
-  "sha256": "1f445d30073dbdead0ced572c7a607d62b6e583a22ed4879d0fc7d5dd572d664",
-  "bytes": 5111169,
-  "inputFingerprintsVerified": 175,
-  "freezeEntriesVerified": 0,
+  "sha256": "e80fcea5fdf768d5c9b6fd1874f89bc42badee24fbac9a3cf7cecb447c49ed3f",
+  "bytes": 5277296,
+  "inputFingerprintsVerified": 500,
+  "freezeEntriesVerified": 1361,
   "facts": {
     "inheritedOpenItems": 56,
     "openItems": 56,
@@ -55,7 +55,12 @@
     "pitForwardVictimFeralDrawings": 12,
     "pitForwardVictimScarDrawings": 12
   },
-  "production": null,
+  "production": {
+    "runtimeCommit": "c97c7d903486ed2c7cb2529ac27f713c0aba8987",
+    "buildId": "pVNPLCZV9ZFtFCd87NSTa",
+    "browserChecks": 208,
+    "inspectedCaptures": 65
+  },
   "historicalIntegrity": {
     "sourceCommit": "2d88854b44c7cac14063f4445b8e0855646e7dec",
     "sourcesVerified": 1486,
@@ -185,7 +190,7 @@
     {
       "cell": "B15",
       "formula": "COUNTIF('ChantiersV109'!E5:E13,\"A_VALIDER\")",
-      "cached": 4
+      "cached": 0
     },
     {
       "cell": "B16",
@@ -195,7 +200,7 @@
     {
       "cell": "B17",
       "formula": "COUNTIF('ChantiersV109'!E5:E13,\"VALIDE_CIBLE\")",
-      "cached": 0
+      "cached": 4
     },
     {
       "cell": "B18",
