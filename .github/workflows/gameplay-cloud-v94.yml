@@ -30,6 +30,10 @@ jobs:
             /app/
             /tests/
             /scripts/
+            /build/
+            /.openai/hosting.json
+            /docs/hunt-mechanics-v111.json
+            /docs/YAUTJA_V111_MECANIQUES_CHASSE.xlsx
             /public/**/manifest.json
             /public/game/sprites/v7/enemies/flora-other/xeno-drone-sheet.png
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
@@ -38,6 +42,10 @@ jobs:
       - name: Install locked dependencies without lifecycle scripts
         id: dependencies
         run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Generate Next route types and check application TypeScript
+        run: |
+          node node_modules/next/dist/bin/next typegen
+          npm run typecheck
       - name: Simulated full youth routes and native hunt helpers (not whole-game QA)
         run: >-
           node --experimental-strip-types --test --test-reporter=spec --test-concurrency=4
@@ -46,6 +54,17 @@ jobs:
           tests/metroidvania-pilot*.test.mjs tests/campaign-training-v90.test.mjs
           tests/hunt-campaign-runtime.test.mjs tests/hunt-exploration-save-runtime.test.mjs
           tests/hunt-jump-assist-runtime.test.mjs
+      - name: Exercise V111 native harvesting, field-tool ownership and purchase acknowledgement
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: >-
+          node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1
+          tests/field-tools-rites-v111.test.mjs tests/field-tool-purchase-ui-v111.test.mjs
+          tests/trophy-harvest-v111.test.mjs tests/hunt-harvest-runtime-v111.test.mjs
+      - name: Verify deterministic V111 workbook and OpenXML
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: |
+          node scripts/build-hunt-mechanics-workbook.mjs --check
+          python3 scripts/verify-hunt-mechanics-workbook-v111.py
       - name: Cloud account, archive, controller and response bounds (offline fixtures)
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: node --test --test-reporter=spec tests/cloud*.test.mjs

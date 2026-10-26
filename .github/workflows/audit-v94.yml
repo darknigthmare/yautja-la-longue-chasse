@@ -55,6 +55,8 @@ on:
       - 'docs/*v109*'
       - 'docs/qa/v109*/**'
       - 'docs/YAUTJA_V110_SUIVI.xlsx'
+      - 'docs/YAUTJA_V111_MECANIQUES_CHASSE.xlsx'
+      - 'docs/hunt-mechanics-v111.*'
       - 'docs/*v110*'
       - 'docs/qa/v110*/**'
       - 'docs/YAUTJA_V111*.xlsx'
@@ -214,6 +216,7 @@ jobs:
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           persist-credentials: false
+          fetch-depth: 3
           sparse-checkout-cone-mode: false
           sparse-checkout: |
             /*
@@ -282,6 +285,8 @@ jobs:
             /docs/*v109*
             /docs/qa/v109*/
             /docs/YAUTJA_V110_SUIVI.xlsx
+            /docs/YAUTJA_V111_MECANIQUES_CHASSE.xlsx
+            /docs/hunt-mechanics-v111.*
             /docs/*v110*
             /docs/qa/v110*/
             /docs/YAUTJA_V111*.xlsx
@@ -527,6 +532,12 @@ jobs:
         run: node node_modules/next/dist/bin/next typegen
       - name: Check application TypeScript
         run: npm run typecheck
+      - name: Verify V111 hunt compatibility guards and reproducible hunting workbook
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: |
+          node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/hunt-jump-assist-runtime.test.mjs tests/jump-assist.test.mjs tests/enemy-trophy-runtime-v18.test.mjs tests/hunt-rites-v77.test.mjs tests/trophy-ritual.test.mjs
+          node scripts/build-hunt-mechanics-workbook.mjs --check
+          python3 scripts/verify-hunt-mechanics-workbook-v111.py
       - name: Verify V6.14 native images, cumulative history and unchanged sprite defaults
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: node --experimental-strip-types --test tests/enforcer-production-v614.test.mjs
@@ -619,6 +630,8 @@ jobs:
           app/game/*V109.ts app/game/*V109.tsx app/game/systems/*V109.ts
           app/game/*V110.ts app/game/*V110.tsx app/game/systems/*V110.ts
           app/game/*V111.ts app/game/*V111.tsx app/game/systems/*V111.ts
+          app/game/HuntRitesMenuV77.tsx app/game/systems/ritesOfHuntV77.ts
+          app/game/systems/huntRitesRuntimeV77.ts
           app/game/PitExperienceV79.tsx app/game/ClanWarBibleV6Panel.tsx
       - name: Exercise input resilience, fixed-step edges and original V74 metadata
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
@@ -770,6 +783,9 @@ jobs:
       - name: Verify reproducible V111 Homeworld follow-up and all 105 historical worksheets
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: node scripts/build-homeworld-followup-v111.mjs --check
+      - name: Re-run unchanged V110 assertions and preserve its published workbook from pinned Git preimages
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node scripts/check-excel-history-v111.mjs --check --tests
       - name: Exercise actual clan-war panel and native locked storage
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         env:

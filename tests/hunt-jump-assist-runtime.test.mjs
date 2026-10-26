@@ -15,7 +15,7 @@ const ast = ts.createSourceFile("HuntCanvas.tsx", source, ts.ScriptTarget.Latest
 const bundled = await build({
   stdin: {
     contents: `${source.replace("export default function HuntCanvas", "function HuntCanvas")}
-export { makeGameState, applyPlayerJump, updatePlayerJump, updatePlayer, stepGame, pollGamepad, isHeldKeyboardAction, HUNT_CONTROL_ACTIONS, captureCheckpoint, restoreCheckpoint, snapshot, discoverWorldScreen, freshJumpAssistState, matchingControlActions, firstHuntObservation, createFirstHuntLearning, firstHuntHint }; export { defaultSave } from "./save"; export { MISSION_BY_ID } from "./data"; export { DEFAULT_CONTROL_BINDINGS } from "./systems/controlBindings";`,
+export { makeGameState, applyPlayerJump, updatePlayerJump, updatePlayer, stepGame, pollGamepad, isHeldKeyboardAction, HUNT_CONTROL_ACTIONS, captureCheckpoint, restoreCheckpoint, snapshot, discoverWorldScreen, freshJumpAssistState, matchingControlActions, firstHuntObservation, createFirstHuntLearning, firstHuntHint, serializeActiveHuntCheckpoint, deserializeActiveHuntCheckpoint }; export { defaultSave } from "./save"; export { MISSION_BY_ID } from "./data"; export { DEFAULT_CONTROL_BINDINGS } from "./systems/controlBindings";`,
     resolveDir: fileURLToPath(new URL("../app/game/", import.meta.url)),
     sourcefile: fileURLToPath(canvasUrl), loader: "tsx",
   },
@@ -272,5 +272,124 @@ test("real retry without checkpoint resets the guide from the new hunt and keeps
     assert.deepEqual(plain(f.environment.openingHint), missionId === "jungle-vey"
       ? plain(runtime.firstHuntHint(f.environment.guideLearning)) : null);
     assert.equal(restarted.jumpAssist.requiresRelease, true);
+  }
+});
+
+
+function climbFixture(kind = "tree") {
+  const f = fixture();
+  const support = {
+    id: "test-support", x: 100, y: 100, width: 100, height: 440,
+    kind, routeId: "canopy", climbSpeedMultiplier: 1,
+    staminaPerSecond: 4, dismounts: [],
+  };
+  f.state.world = { ...f.state.world, climbables: [support] };
+  Object.assign(f.state.player, {
+    x: 112, y: 240, previousY: 240,
+    grounded: false, climbing: true, climbZoneId: support.id,
+    velocityX: 0, velocityY: 0,
+  });
+  return { ...f, support };
+}
+
+test("direction plus jump launches from each support without spending an aerial boost", () => {
+  for (const kind of ["tree", "vine", "rope", "chain"]) {
+    for (const direction of [-1, 1]) {
+      const f = climbFixture(kind);
+      f.state.player.facing = -direction;
+      f.input.keyboardHeld.add(direction > 0 ? "right" : "left");
+      f.input.keyboardHeld.add("jump");
+      f.input.pressed.add("jump");
+      f.frame();
+      assert.equal(f.state.player.climbing, false);
+      assert.equal(f.state.player.facing, direction);
+      assert.ok(f.state.player.velocityX * direction >= 350);
+      assert.ok(f.state.player.velocityY < 0);
+      assert.equal(f.state.player.aerialBoostUsed, false);
+      assert.ok(f.state.player.climbReattachSeconds > 0);
+      assert.equal(jumps(f.state), 1);
+    }
+  }
+});
+
+test("a real support leap preserves momentum and catches the next vine with up and direction held", () => {
+  const f = climbFixture();
+  f.state.world.climbables.push({
+    ...f.support, id: "next-vine", x: 245, width: 70, kind: "vine",
+  });
+  f.input.keyboardHeld.add("right");
+  f.input.keyboardHeld.add("jump");
+  f.input.pressed.add("jump");
+  f.frame();
+  const launchedVelocity = f.state.player.velocityX;
+  f.input.keyboardHeld.add("up");
+  for (let frame = 0; frame < 10; frame++) f.frame();
+  assert.equal(f.state.player.climbing, false, "release window prevents grabbing the original tree");
+  close(f.state.player.velocityX, launchedVelocity);
+  for (let frame = 0; frame < 35; frame++) f.frame();
+  assert.equal(f.state.player.climbing, true);
+  assert.equal(f.state.player.climbZoneId, "next-vine");
+  assert.equal(f.state.player.aerialBoostUsed, false);
+});
+
+test("an active support wins over an earlier overlapping climbable", () => {
+  const f = climbFixture("rope");
+  f.state.world.climbables.unshift({ ...f.support, id: "overlapping-tree", kind: "tree" });
+  f.input.keyboardHeld.add("up");
+  f.frame();
+  assert.equal(f.state.player.climbZoneId, "test-support");
+});
+
+test("exhaustion cannot be bypassed by airborne regeneration or checkpoint resume", () => {
+  const f = climbFixture();
+  f.state.player.stamina = 0.001;
+  f.input.keyboardHeld.add("up");
+  f.frame();
+  assert.equal(f.state.player.climbing, false);
+  assert.equal(f.state.player.climbGripExhausted, true);
+  for (let frame = 0; frame < 10; frame++) f.frame();
+  assert.ok(f.state.player.stamina > 0);
+  assert.equal(f.state.player.climbing, false);
+  f.state.player.stamina = 60;
+  f.frame();
+  assert.equal(f.state.player.climbing, false, "even recovered stamina requires grounded recovery");
+  const checkpoint = runtime.captureCheckpoint(f.state);
+  const resumed = runtime.restoreCheckpoint(f.state, checkpoint, "resume");
+  assert.equal(resumed.player.climbGripExhausted, true);
+  assert.equal(resumed.player.climbReattachSeconds, 0);
+  const retried = runtime.restoreCheckpoint(f.state, checkpoint, "retry");
+  assert.equal(retried.player.climbGripExhausted, false);
+  Object.assign(f.state.player, {
+    x: 112, y: 508, previousY: 508,
+    grounded: true, velocityX: 0, velocityY: 0,
+  });
+  f.frame();
+  assert.equal(f.state.player.climbGripExhausted, false);
+  assert.equal(f.state.player.climbing, true);
+});
+
+test("climb snapshot fields accept legacy checkpoints and reject malformed optional values", () => {
+  const f = climbFixture();
+  const readCheckpoint = checkpoint => runtime.deserializeActiveHuntCheckpoint(
+    runtime.serializeActiveHuntCheckpoint(checkpoint, 0));
+  const legacy = runtime.captureCheckpoint(f.state);
+  delete legacy.player.climbReattachSeconds;
+  delete legacy.player.climbGripExhausted;
+  assert.ok(readCheckpoint(legacy), "old checkpoints need no climb control fields");
+  for (const delay of [0, 0.24]) {
+    const checkpoint = runtime.captureCheckpoint(f.state);
+    checkpoint.player.climbReattachSeconds = delay;
+    checkpoint.player.climbGripExhausted = true;
+    assert.ok(readCheckpoint(checkpoint));
+  }
+  for (const delay of [-0.001, 0.241, "0.1", null, Infinity, NaN]) {
+    const checkpoint = runtime.captureCheckpoint(f.state);
+    checkpoint.player.climbReattachSeconds = delay;
+    assert.equal(readCheckpoint(checkpoint), null, `invalid release delay ${String(delay)}`);
+  }
+  for (const exhausted of [0, 1, "true", null, {}]) {
+    const checkpoint = runtime.captureCheckpoint(f.state);
+    checkpoint.player.climbGripExhausted = exhausted;
+    assert.equal(readCheckpoint(checkpoint), null, `invalid exhaustion flag ${String(exhausted)}`);
   }
 });

@@ -25,7 +25,12 @@ function codeFor(names) {
   return names.map(name => { const declaration = ast.statements.find(node => ts.isFunctionDeclaration(node) && node.name?.text === name); assert.ok(declaration, name); return declaration.getText(ast); }).join("\n");
 }
 function runtime(names, dependencies) {
-  const code = ts.transpileModule(codeFor(names), { compilerOptions: { target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.None } }).outputText;
+  // Extract shared tuning from production alongside the functions that close over it.
+  const climbTraversal = ast.statements.find(node =>
+    ts.isVariableStatement(node) && node.declarationList.declarations.some(declaration =>
+      ts.isIdentifier(declaration.name) && declaration.name.text === "CLIMB_TRAVERSAL"));
+  assert.ok(climbTraversal, "production CLIMB_TRAVERSAL declaration exists");
+  const code = ts.transpileModule(`${climbTraversal.getText(ast)}\n${codeFor(names)}`, { compilerOptions: { target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.None } }).outputText;
   return runInNewContext(`${code}\n({${names.join(",")}})`, dependencies);
 }
 // The VM and host have different Object prototypes; bridge only JSON data to

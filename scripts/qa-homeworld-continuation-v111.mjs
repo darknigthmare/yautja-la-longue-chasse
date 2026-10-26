@@ -262,7 +262,8 @@ async function journey(kind){
     const origin=kind==='Recovery'?recoveryRoom.spawn:station.post;
     await title();await page.addScriptTag({content:bootstrap.outputFiles[0].text});
     const fixture=await page.evaluate(async({source,origin,kind,prepared,interiorId})=>{
-      const api=window.__continuationQaV111,save=api.normalizeSave(source);
+      const api=window.__continuationQaV111,currentDefaults=api.defaultSave(source.createdAt);
+      const save=api.normalizeSave({...currentDefaults,...source,inventory:{...currentDefaults.inventory,...source.inventory,fieldToolIds:['flaying-tool']}});
       save.profile.hunterName='QA V111 · '+kind;save.settings.masterVolume=0;save.homeworld.visitedDistrictIds=['port'];
       const exterior=kind==='Recovery'?prepared.approach:origin;
       save.homeworld.locationV77=kind==='Recovery'?prepared.checkpoint:api.createHomeworldCheckpointV77(save.createdAt,'0',origin,interiorId,exterior);
@@ -272,9 +273,9 @@ async function journey(kind){
       localStorage.setItem(api.SAVE_STORAGE_KEY,JSON.stringify(save));
       const migrated=await api.migrateLegacyCampaignSlot();if(!migrated.ok)throw Error(migrated.message);
       const write=await api.saveCampaignCheckpoint(1,{kind:'manual',index:1,location:'homeworld',expectedRevision:api.loadCampaignSlots().slots[0].revision});if(!write.ok)throw Error(write.message);
-      return{journey:kind,owner:save.createdAt,origin,exterior,initialInteriorId:interiorId,profile:save.profile,inventory:save.inventory,trophies:save.trophies,initialPlaque:save.homeworld.archivePlaqueV109??null,initialCargo:save.homeworld.cargoV108??null};
+      return{journey:kind,owner:save.createdAt,origin,exterior,initialInteriorId:interiorId,profile:save.profile,inventory:save.inventory,preOwnedFieldToolIds:[...save.inventory.fieldToolIds],trophies:save.trophies,initialPlaque:save.homeworld.archivePlaqueV109??null,initialCargo:save.homeworld.cargoV108??null};
     },{source,origin,kind,prepared,interiorId:recoveryRoom?.buildingId??null});
-    fixtures.push({...fixture,description:kind==='Recovery'?'Precondition: a real603-step cargo model prepares the narrow load on a doorway approach; an old authored-centre interior checkpoint is then explicitly seeded. This is a legacy recovery fixture, not a claim that these preparation steps were played in the browser.':kind==='MobileGuide'?'Precondition: the complete real V109 model plays B and conserves its two deposits and report. Only this prior B is seeded for the compact guide journey; continuation consent, route Worker and mobile controls are played in the browser.':'Only an empty known-port campaign checkpoint is seeded. Every observation, consent, copied provenance, carry, report and continuation below is actual UI play.'});
+    fixtures.push({...fixture,description:(kind==='Recovery'?'Precondition: a real603-step cargo model prepares the narrow load on a doorway approach; an old authored-centre interior checkpoint is then explicitly seeded. This is a legacy recovery fixture, not a claim that these preparation steps were played in the browser.':kind==='MobileGuide'?'Precondition: the complete real V109 model plays B and conserves its two deposits and report. Only this prior B is seeded for the compact guide journey; continuation consent, route Worker and mobile controls are played in the browser.':'Only an empty known-port campaign checkpoint is seeded. Every observation, consent, copied provenance, carry, report and continuation below is actual UI play.')+' A flaying-tool is explicitly seeded as already owned using the current defaultSave; no tool purchase or reward is played or claimed.'});
     await enter();
     if(kind==='Continuation'){
       check('Continuation begins with no seeded study',!(await baseLedger())?.receipt&&!(await continuation())?.receipt);
@@ -385,7 +386,9 @@ async function journey(kind){
       const returned=await actor();await focus();await page.keyboard.down('ArrowRight');await tick(100);await page.keyboard.up('ArrowRight');await tick();
       check('Recovery restored exterior permits ordinary keyboard movement',Math.hypot((await actor()).x-returned.x,(await actor()).y-returned.y)>1);
     }
-    observations.push({journey:kind,kind:'final-durable-save',save:await disk(),actor:await actor()});
+    const finalSave=await disk();
+    check(kind+' durable Homeworld save preserves its explicitly pre-owned flaying tool',JSON.stringify(finalSave.inventory.fieldToolIds)==='["flaying-tool"]'&&JSON.stringify(finalSave.inventory.fieldToolIds)===JSON.stringify(fixture.preOwnedFieldToolIds));
+    observations.push({journey:kind,kind:'final-durable-save',save:finalSave,actor:await actor()});
   }catch(error){
     observations.push({journey:kind,kind:'failure-visible-state',text:await page.locator('body').innerText().catch(()=>null),storage:await page.evaluate(()=>Object.fromEntries(Object.keys(localStorage).map(key=>[key,localStorage.getItem(key)]))).catch(()=>null)});
     await capture('failure').catch(()=>{});throw error;

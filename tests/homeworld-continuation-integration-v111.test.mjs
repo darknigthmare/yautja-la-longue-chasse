@@ -163,7 +163,7 @@ test('V111 actual motor and render gates stop an interrupted carried candidate, 
   assert.equal(sampled.ledger,ledger,'paused physical receipt itself never invents fragment movement');
 });
 
-test('V111 pure Save11 to12 migration preserves the genuine V110 campaign and its complete B document exactly',async()=>{
+test('V111 Save11 to12 preserves the genuine V110 campaign and B document while initializing empty fieldToolIds',async()=>{
   const history=await getHistoricalHomeworldExcelContextV111(),old=homeworldSceneSsrV78(history.root).load('app/game/save.ts');
   assert.equal(old.SAVE_VERSION,11);assert.equal(saves.SAVE_VERSION,12);
   const state=stateAt('working'),legacy=old.defaultSave(owner);
@@ -173,7 +173,7 @@ test('V111 pure Save11 to12 migration preserves the genuine V110 campaign and it
   legacy.homeworld.locationV77=oldLocation.createHomeworldCheckpointV77(owner,'0',state.actor,null,state.actor);
   const previous=old.parseSaveImport(JSON.stringify(legacy)).save;assert(previous);
   const migrated=saves.parseSaveImport(JSON.stringify(previous)).save;assert(migrated);
-  assert.deepEqual(migrated,{...previous,version:12},'every pre-existing campaign field survives the schema-only migration');
+  assert.deepEqual(migrated,{...previous,version:12,inventory:{...previous.inventory,fieldToolIds:[]}},'every pre-existing campaign field survives; the newly integrated field-tool inventory defaults to empty');
   assert.equal(JSON.stringify(migrated.homeworld.archivePlaqueV109),JSON.stringify(previous.homeworld.archivePlaqueV109));
   assert.equal(migrated.homeworld.archiveContinuationV111,undefined,'migration does not create or auto-start an A continuation');
 });
@@ -190,4 +190,47 @@ test('V111 actual V110 client treats a12 campaign as future and cannot drop its 
   assert.equal(old.writeSaveWithStatus(actual,storage,key).persisted,false);
   assert.equal(values.get(key),exact,'the older client cannot erase the continued study through its normal load/write APIs');
   assert(saves.loadSaveWithStatus(storage,key).loaded);
+});
+
+test('V111 integrated main keeps a real field-tool purchase through Save11 migration and a quota-refused B to A continuation write',()=>{
+  const tools=qa.load('app/game/systems/fieldToolsV111.ts'),state=stateAt('working');
+  const legacy=campaign(state);legacy.version=11;delete legacy.homeworld.archiveContinuationV111;
+  legacy.profile.clanMarks=240;
+  // PR21 kept campaign schema11. Declare that pre-continuation shape before
+  // buying through its unchanged production purchase function.
+  const purchase=tools.purchaseFieldToolV111(legacy,'flaying-tool');
+  assert(purchase.ok);assert.equal(purchase.save.version,11);assert.equal(purchase.spentClanMarks,120);
+  assert.equal(purchase.save.profile.clanMarks,120);assert.deepEqual(purchase.save.inventory.fieldToolIds,['flaying-tool']);
+  assert.equal(purchase.save.homeworld.archiveContinuationV111,undefined);
+  const migrated=saves.parseSaveImport(JSON.stringify(purchase.save));assert.equal(migrated.failure,null);
+  assert.equal(migrated.save.version,12);assert.deepEqual(migrated.save.inventory.fieldToolIds,['flaying-tool']);
+  assert.equal(migrated.save.profile.clanMarks,120);assert.deepEqual(migrated.save.loadout,purchase.save.loadout);
+  assert.equal(JSON.stringify(migrated.save.homeworld.archivePlaqueV109),JSON.stringify(state.base));
+  assert.equal(migrated.save.homeworld.archiveContinuationV111,undefined,'migration does not invent a continuation alongside the purchased tool');
+  const combined={...migrated.save,homeworld:{...migrated.save.homeworld,archiveContinuationV111:state.ledger}};
+  const baseJson=JSON.stringify(combined.homeworld.archivePlaqueV109),continuationJson=JSON.stringify(combined.homeworld.archiveContinuationV111);
+  const values=new Map(),key='v111-integrated-main';let quota=false;
+  const storage={getItem:name=>values.get(name)??null,setItem(name,value){if(quota)throw Error('quota');values.set(name,value);},removeItem:name=>values.delete(name)};
+  assert(saves.writeSaveWithStatus(combined,storage,key).persisted);
+  const loaded=saves.loadSaveWithStatus(storage,key);assert(loaded.loaded);
+  assert.equal(JSON.stringify(loaded.save.homeworld.archivePlaqueV109),baseJson);
+  assert.equal(JSON.stringify(loaded.save.homeworld.archiveContinuationV111),continuationJson);
+  assert.deepEqual(loaded.save.inventory.fieldToolIds,['flaying-tool']);assert.equal(loaded.save.profile.clanMarks,120);
+  const action=api.applyArchiveContinuationV111(loaded.save.homeworld.archiveContinuationV111,'inspect-edge',state.ledger.revision,{...route.context(state.actor),basePlaque:state.base});
+  assert(action.ok&&action.changed);
+  const candidate={...loaded.save,homeworld:{...loaded.save.homeworld,archiveContinuationV111:action.ledger}};
+  const inputBefore=JSON.stringify(candidate),durableBefore=[...values];
+  quota=true;const refused=saves.writeSaveWithStatus(candidate,storage,key);
+  assert.equal(refused.persisted,false);assert.equal(refused.failure,'write-failed');
+  assert.deepEqual([...values],durableBefore,'quota does not change either durable document, tool ownership, marks or backup');
+  assert.equal(JSON.stringify(candidate),inputBefore,'a refused durable write does not mutate the proposed campaign');
+  const reloaded=saves.loadSaveWithStatus(storage,key);assert(reloaded.loaded);
+  assert.equal(JSON.stringify(reloaded.save.homeworld.archivePlaqueV109),baseJson);
+  assert.equal(JSON.stringify(reloaded.save.homeworld.archiveContinuationV111),continuationJson);
+  assert.deepEqual(reloaded.save.inventory.fieldToolIds,['flaying-tool']);assert.equal(reloaded.save.profile.clanMarks,120);
+  quota=false;assert(saves.writeSaveWithStatus(candidate,storage,key).persisted);
+  const retried=saves.loadSaveWithStatus(storage,key);assert(retried.loaded);
+  assert.equal(JSON.stringify(retried.save.homeworld.archivePlaqueV109),baseJson);
+  assert.deepEqual(retried.save.inventory.fieldToolIds,['flaying-tool']);assert.equal(retried.save.profile.clanMarks,120);
+  assert(retried.save.homeworld.archiveContinuationV111.receipt.study.receipt.edgeObserved);
 });
