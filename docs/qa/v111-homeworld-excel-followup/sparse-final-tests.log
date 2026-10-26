@@ -1,0 +1,25 @@
+✔ current354 art families retain their original source IDs and candidate statuses without pretending to be all absent or complete (21.375793ms)
+✔ a family candidate, copied native asset or mismatched count cannot be promoted to visual/source completion (76.283453ms)
+✔ current source bytes and four new PNGs are mandatory; old image repository identity is checked without claiming visual quality (490.473847ms)
+✔ V111 preserves its exact 105 sheet baseline, 56 open requirements and 354 art targets as separate inventories (3383.799912ms)
+✔ unrelated closures, invented art, duplicate workstreams and unsupported browser promotions are refused (34.672764ms)
+Traceback (most recent call last):
+  File "/tmp/v111-ci-sparse-402b238f/scripts/build-homeworld-followup-v111.py", line 25, in <module>
+    json.dump(append.verify_workbook(payload), sys.stdout, ensure_ascii=True)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/v111-ci-sparse-402b238f/scripts/lib/excel_followup_append.py", line 105, in verify_workbook
+    assert set(changed) <= ASSEMBLY_PARTS, changed
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ['[Content_Types].xml', 'xl/_rels/workbook.xml.rels', 'xl/styles.xml', 'xl/workbook.xml', 'xl/worksheets/v110-sheet-98.xml']
+✔ 113 worksheets retain all 105 historical parts, styles, formulas and cells exactly (4591.848976ms)
+✔ a V110 browser recipe cannot be relabelled as V111 validation (9.440676ms)
+✔ V111 workbook and metadata regenerate exactly without executing browser or native Excel (9049.050204ms)
+✔ historical art fallback binds the audited bytes to the current regular Git blob, while sparse identity is not visual admission (2.725504ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 18534.590806
