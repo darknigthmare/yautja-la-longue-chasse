@@ -6032,7 +6032,8 @@ function updateHuntRitesV77(state:GameState,delta:number):void {
   const context=riteContextV77(state);
   let before=state.huntRites.operation;
   if(before?.action==='flay'){
-    const corpse=state.huntRites.corpses.find(entry=>entry.id===before.corpseId);
+    const corpseId=before.corpseId;
+    const corpse=state.huntRites.corpses.find(entry=>entry.id===corpseId);
     if(!corpse||!state.player.grounded||state.player.climbing||
       huntStructuralBarrierV94(context.actor,corpse,state.world.platforms)){
       state.huntRites={...state.huntRites,operation:null};
