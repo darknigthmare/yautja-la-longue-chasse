@@ -9,6 +9,8 @@ export interface RiteRuntimeActorV77 {
   riteDefeatedAt?:number;riteFallVelocity?:number;
   riteInvestigate?:{x:number;y:number;until:number};
 }
+export interface RiteRuntimeOptionsV110 { readonly flayingToolOwned:boolean }
+const DEFAULT_RITE_RUNTIME_OPTIONS_V110:RiteRuntimeOptionsV110={flayingToolOwned:false};
 export const huntRitesRunIdV77=(missionId:string,encounterRun:string|number)=>`${missionId}:${encounterRun}`;
 export function ritePreyProofsV77(actors:readonly RiteRuntimeActorV77[],label:(id:string)=>string):RitePreyProofV77[]{
   return actors.filter(a=>!a.boss&&!a.alive&&a.active&&a.health===0&&Number.isFinite(a.riteDefeatedAt)&&a.riteDefeatedAt!>=0)
@@ -17,15 +19,17 @@ export function ritePreyProofsV77(actors:readonly RiteRuntimeActorV77[],label:(i
       worthy:a.maxHealth>0,protectedPrey:false,defeatedAt:a.riteDefeatedAt!}));
 }
 export function riteRuntimeContextV77(state:RitesOfHuntV77,player:{x:number;y:number;width:number;height:number;health:number},
-  actors:readonly RiteRuntimeActorV77[],label:(id:string)=>string,suspended:boolean):RiteLiveContextV77{
+  actors:readonly RiteRuntimeActorV77[],label:(id:string)=>string,suspended:boolean,
+  options:RiteRuntimeOptionsV110=DEFAULT_RITE_RUNTIME_OPTIONS_V110):RiteLiveContextV77{
   return {runId:state.runId,missionId:state.missionId,actor:{x:player.x+player.width/2,y:player.y+player.height},
-    health:player.health,suspended,flayingToolOwned:false,supports:[],prey:ritePreyProofsV77(actors,label)};
+    health:player.health,suspended,flayingToolOwned:options.flayingToolOwned===true,supports:[],prey:ritePreyProofsV77(actors,label)};
 }
 /** A resumed body must be the exact real defeated actor in this checkpoint.
  * Foreign owners, invented corpses/tool actions/witnesses, altered source or
  * coordinates fail the hunt restore. No corpse is inferred from an old save. */
 export function restoreRitesRuntimeV77(raw:unknown,runId:string,missionId:string,
-  actors:readonly RiteRuntimeActorV77[],elapsed:number,label:(id:string)=>string):RitesOfHuntV77|null{
+  actors:readonly RiteRuntimeActorV77[],elapsed:number,label:(id:string)=>string,
+  options:RiteRuntimeOptionsV110=DEFAULT_RITE_RUNTIME_OPTIONS_V110):RitesOfHuntV77|null{
   if(!Number.isFinite(elapsed)||elapsed<0)return null;
   const state=normalizeRitesOfHuntV77(raw,runId,missionId);if(!state)return null;
   if(raw===undefined)return state;
@@ -40,13 +44,14 @@ export function restoreRitesRuntimeV77(raw:unknown,runId:string,missionId:string
   for(const corpse of state.corpses){const proof=proofs.find(p=>p.id===corpse.id);
     if(!proof||corpse.sourceEnemyId!==proof.sourceEnemyId||corpse.kind!==proof.kind||corpse.label!==proof.label
       ||Math.abs(corpse.x-proof.x)>1e-6||Math.abs(corpse.y-proof.y)>1e-6||corpse.defeatedAt!==proof.defeatedAt
-      ||corpse.worthy!==proof.worthy||corpse.protectedPrey!==proof.protectedPrey||corpse.flayed||corpse.supportId!==null||corpse.hangingAt!==null)return null;
-    if(corpse.witnesses.length&&!corpse.marked)return null;
+      ||corpse.worthy!==proof.worthy||corpse.protectedPrey!==proof.protectedPrey||corpse.flayed&&options.flayingToolOwned!==true||corpse.supportId!==null||corpse.hangingAt!==null)return null;
+    if(corpse.witnesses.length&&!corpse.marked&&!corpse.flayed)return null;
     for(const id of corpse.witnesses){const actor=actors.find(a=>a.id===id);if(!actor||!actor.active||actor.boss||actor.kind==='beast'||id===corpse.id)return null;}
   }
   const discoveries=state.corpses.reduce((count,c)=>count+c.witnesses.length,0);
-  if(state.fear!==Math.min(100,discoveries*8)||state.awareness!==Math.min(100,discoveries*8))return null;
-  if(state.operation&&(state.operation.action==='flay'||state.operation.action==='hang'))return null;
+  const witnessedFear=state.corpses.reduce((total,c)=>total+(c.witnessFear??c.witnesses.map(()=>8)).reduce((sum,value)=>sum+value,0),0);
+  if(state.fear!==Math.min(100,witnessedFear)||state.awareness!==Math.min(100,discoveries*8))return null;
+  if(state.operation&&(state.operation.action==='hang'||state.operation.action==='flay'&&options.flayingToolOwned!==true))return null;
   return state;
 }
 /** Landing moves the real dead actor first. The ledger follows this same anchor,
@@ -79,12 +84,15 @@ export function reactToRiteWitnessV77<T extends {mode:string;suspicion:number;mo
     mode:brain.mode==='patrol'?'suspicion':brain.mode,timeInMode:brain.mode==='patrol'?0:brain.timeInMode};
 }
 export interface HuntRiteMenuSnapshotV77 {
-  corpseId:string;label:string;analyzed:boolean;marked:boolean;open:boolean;
+  corpseId:string;label:string;analyzed:boolean;marked:boolean;flayed:boolean;canFlay:boolean;flayLockedReason:string|null;open:boolean;
   operation:{action:HuntRiteActionV77;progress:number}|null;witnessCount:number;
 }
-export function huntRiteMenuSnapshotV77(state:RitesOfHuntV77,actor:{x:number;y:number},selectedId:string|null,available:boolean):HuntRiteMenuSnapshotV77|null{
+export function huntRiteMenuSnapshotV77(state:RitesOfHuntV77,actor:{x:number;y:number},selectedId:string|null,available:boolean,
+  options:RiteRuntimeOptionsV110=DEFAULT_RITE_RUNTIME_OPTIONS_V110):HuntRiteMenuSnapshotV77|null{
   if(!available)return null;const corpse=nearestRiteCorpseV77(state,actor);if(!corpse)return null;
-  return {corpseId:corpse.id,label:corpse.label,analyzed:corpse.analyzed,marked:corpse.marked,open:selectedId===corpse.id,
+  const flayLockedReason=corpse.flayed?'Dépeçage déjà terminé.':options.flayingToolOwned!==true?'Acheter le Flaying Tool à l’armurerie.':
+    corpse.protectedPrey||!corpse.worthy?'Le Code protège cette proie.':null;
+  return {corpseId:corpse.id,label:corpse.label,analyzed:corpse.analyzed,marked:corpse.marked,flayed:corpse.flayed,canFlay:flayLockedReason===null,flayLockedReason,open:selectedId===corpse.id,
     operation:state.operation?.corpseId===corpse.id?{action:state.operation.action,progress:Math.min(1,state.operation.elapsed/RITE_DURATIONS_V77[state.operation.action])}:null,
     witnessCount:corpse.witnesses.length};
 }

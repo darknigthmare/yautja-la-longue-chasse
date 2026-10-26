@@ -14,10 +14,10 @@ export default function HuntRitesMenuV77({menu,onOpen,onClose,onAction}:{menu:Hu
         <button type="button" disabled={menu.marked} onClick={()=>onAction('mark')}>Marquer · 1 s{menu.marked?' · fait':''}</button>
         <button type="button" onClick={()=>onAction('leave')}>Laisser sur place</button>
         <button type="button" onClick={()=>onAction('erase')}>Effacer la trace · 1,8 s</button>
-        <button type="button" disabled title="Flaying Tool réellement acquis et animation dédiée indisponibles">Dépecer · verrouillé</button>
+        <button type="button" disabled={!menu.canFlay} title={menu.flayLockedReason??"La chasse continue pendant le dépeçage."} onClick={()=>onAction('flay')}>Dépecer · 3,2 s{menu.flayed?' · fait':''}</button>
         <button type="button" disabled title="Dépeçage terminé, appui authoré et animation dédiée indisponibles">Suspendre · verrouillé</button>
       </div>}
-      <small>{menu.witnessCount} témoin{menu.witnessCount===1?'':'s'} de la marque. Aucune prise ou découverte de bestiaire accordée.</small>
+      <small>{menu.flayLockedReason&&!menu.flayed?`${menu.flayLockedReason} `:'' }{menu.witnessCount} témoin{menu.witnessCount===1?'':'s'} de la mise en scène. Le dépeçage reste distinct de la récolte d’un trophée.</small>
     </>}
   </section>;
 }

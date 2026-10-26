@@ -1,0 +1,1455 @@
+{
+  "schemaVersion": 1,
+  "release": "V110",
+  "asOf": "2026-10-26",
+  "title": "Yautja : La Longue Chasse — dépeçage, trophées et canopée",
+  "repository": "darknigthmare/yautja-la-longue-chasse",
+  "baseCommit": "9f412db553d16c4323a0b730f9523f86eddfb939",
+  "reviewRef": "codex/hunt-mechanics-v110",
+  "scope": "Améliorations de chasse et cahier de conception. Les extensions proposées ne sont pas annoncées jouables. Aucune session Excel native ou validation de partie complète n'est revendiquée.",
+  "legend": {
+    "EXISTANT": "Règle déjà présente dans le code source.",
+    "MODIFIE_DANS_PR": "Comportement ou raccord ajouté par cette PR ; validation distincte.",
+    "PROPOSE": "Extension de conception non implémentée.",
+    "A_EXECUTER": "Scénario prévu ; aucun résultat PASS déclaré."
+  },
+  "sheets": [
+    {
+      "name": "Sources",
+      "title": "Périmètre, sources et lecture du classeur",
+      "columns": [
+        {
+          "key": "id",
+          "label": "ID",
+          "width": 15
+        },
+        {
+          "key": "status",
+          "label": "Statut",
+          "width": 24
+        },
+        {
+          "key": "topic",
+          "label": "Étape / sujet",
+          "width": 28
+        },
+        {
+          "key": "rule",
+          "label": "Règle et retour joueur",
+          "width": 62
+        },
+        {
+          "key": "source",
+          "label": "Source vérifiable",
+          "width": 55
+        },
+        {
+          "key": "acceptance",
+          "label": "Critère d'acceptation / limite",
+          "width": 64
+        }
+      ],
+      "rows": [
+        {
+          "id": "SRC-01",
+          "status": "MODIFIE_DANS_PR",
+          "topic": "Livraison V110",
+          "rule": "Dépeçage raccordé à un outil permanent, récolte secondaire liée au corps réel et bonds entre supports corrigés.",
+          "source": "app/game/HuntCanvas.tsx",
+          "acceptance": "La présence d'une règle dans ce classeur ne constitue pas une preuve d'exécution."
+        },
+        {
+          "id": "SRC-02",
+          "status": "EXISTANT",
+          "topic": "Projet confirmé",
+          "rule": "Le projet demandé est yautja-la-longue-chasse, jeu d'action 2D en vue latérale.",
+          "source": "README.md",
+          "acceptance": "Ne pas transférer ces valeurs vers Apex Hunt ou Hive Warriors."
+        },
+        {
+          "id": "SRC-03",
+          "status": "EXISTANT",
+          "topic": "Rites existants",
+          "rule": "Le moteur V77 conserve les identités de chasse et de proie ; analyser, marquer, laisser et effacer sont déjà définis.",
+          "source": "app/game/systems/ritesOfHuntV77.ts",
+          "acceptance": "Conserver les effets et identifiants historiques."
+        },
+        {
+          "id": "SRC-04",
+          "status": "MODIFIE_DANS_PR",
+          "topic": "Outil distinct",
+          "rule": "Flaying Tool permanent acquis à l'armurerie, séparé des deux emplacements de gadgets actifs.",
+          "source": "app/game/systems/fieldToolsV110.ts",
+          "acceptance": "Aucun remplacement automatique par les lames de poignet."
+        },
+        {
+          "id": "SRC-05",
+          "status": "EXISTANT",
+          "topic": "Conception originale",
+          "rule": "Durées, peur, honneur, prix et déplacements sont des adaptations de gameplay du fan game.",
+          "source": "app/game/systems/ritesOfHuntV77.ts",
+          "acceptance": "Ne pas présenter ces valeurs comme des règles canoniques de la franchise."
+        },
+        {
+          "id": "SRC-06",
+          "status": "MODIFIE_DANS_PR",
+          "topic": "Ancienne discussion",
+          "rule": "La recherche de conversations n'a pas abouti : les outils de lecture des projets/chats n'ont pas répondu.",
+          "source": "",
+          "acceptance": "Constat de session : aucune décision provenant du chat historique n'est revendiquée."
+        },
+        {
+          "id": "SRC-07",
+          "status": "MODIFIE_DANS_PR",
+          "topic": "Validation séparée",
+          "rule": "Les scénarios de la feuille Validation sont A_EXECUTER ; compléter après exécution avec commande et résultat.",
+          "source": "tests/hunt-rites-v77.test.mjs",
+          "acceptance": "Ne pas déduire PASS d'une simple revue du code."
+        },
+        {
+          "id": "SRC-08",
+          "status": "MODIFIE_DANS_PR",
+          "topic": "Historique préservé",
+          "rule": "Classeur V110 dédié aux mécaniques de chasse ; les anciens classeurs de suivi V109 restent distincts.",
+          "source": "docs/YAUTJA_V109_SUIVI.xlsx",
+          "acceptance": "Ne pas remplacer ni réécrire les feuilles historiques dans ce lot."
+        },
+        {
+          "id": "SRC-09",
+          "status": "PROPOSE",
+          "topic": "Extensions ouvertes",
+          "rule": "Pendule physique, gestion de masse, qualité de peau, séchage et suspension de carcasse sont des propositions détaillées en Backlog.",
+          "source": "app/game/systems/ritesOfHuntV77.ts",
+          "acceptance": "Ces extensions demandent des ressources, interfaces, sauvegardes et essais propres."
+        },
+        {
+          "id": "SRC-10",
+          "status": "MODIFIE_DANS_PR",
+          "topic": "Reproductibilité",
+          "rule": "Le JSON est la source éditable du classeur ; le générateur utilise un ZIP/OOXML déterministe sans dépendance.",
+          "source": "scripts/build-hunt-mechanics-workbook.mjs",
+          "acceptance": "La commande --check compare les octets ; ce contrôle ne lance pas Excel."
+        },
+        {
+          "id": "SRC-11",
+          "status": "MODIFIE_DANS_PR",
+          "topic": "Liens de revue",
+          "rule": "Les cellules de source renvoient au fichier de la branche de PR ; les sources historiques restent épinglées au commit de départ.",
+          "source": "docs/hunt-mechanics-v110.json",
+          "acceptance": "Ouvrir la PR liée avant d'interpréter un fichier comme livré dans main."
+        }
+      ]
+    },
+    {
+      "name": "Depecage",
+      "title": "Dépeçage : acquisition, gestes et persistance",
+      "columns": [
+        {
+          "key": "id",
+          "label": "ID",
+          "width": 15
+        },
+        {
+          "key": "status",
+          "label": "Statut",
+          "width": 24
+        },
+        {
+          "key": "topic",
+          "label": "Étape / sujet",
+          "width": 28
+        },
+        {
+          "key": "rule",
+          "label": "Règle et retour joueur",
+          "width": 62
+        },
+        {
+          "key": "source",
+          "label": "Source vérifiable",
+          "width": 55
+        },
+        {
+          "key": "acceptance",
+          "label": "Critère d'acceptation / limite",
+          "width": 64
+        }
+      ],
+      "rows": [
+        {
+          "id": "DEP-01",
+          "status": "MODIFIE_DANS_PR",
+          "topic": "Acquisition permanente",
+          "rule": "Acheter une fois le Flaying Tool à l'armurerie pour 120 marques du clan.",
+          "source": "app/game/systems/fieldToolsV110.ts",
+          "acceptance": "Solde insuffisant ou outil déjà possédé : aucun débit ni ajout répété."
+        },
+        {
+          "id": "DEP-02",
+          "status": "MODIFIE_DANS_PR",
+          "topic": "Inventaire réel",
+          "rule": "La capacité de dépecer dépend des fieldToolIds de la campagne courante, pas d'un catalogue visuel ou d'un preset.",
+          "source": "app/game/types.ts",
+          "acceptance": "Ancienne sauvegarde sans champ : aucun outil accordé par migration."
+        },
+        {
+          "id": "DEP-03",
+          "status": "MODIFIE_DANS_PR",
+          "topic": "Emport",
+          "rule": "Le Flaying Tool n'occupe pas les deux emplacements de gadgets ; pas de charge active à déclencher.",
+          "source": "app/game/GameClient.tsx",
+          "acceptance": "Les gadgets équipés et leurs charges restent cohérents après achat."
+        },
+        {
+          "id": "DEP-04",
+          "status": "EXISTANT",
+          "topic": "Preuve de décès",
+          "rule": "Le registre n'accepte qu'un acteur réellement vaincu, actif, non Apex et à santé nulle dans la rencontre courante.",
+          "source": "app/game/systems/huntRitesRuntimeV77.ts",
+          "acceptance": "Une proie vivante, étrangère ou un décès historique sans preuve n'est pas recréé."
+        },
+        {
+          "id": "DEP-05",
+          "status": "EXISTANT",
+          "topic": "Portée de travail",
+          "rule": "Approcher la proie à 88 pixels au maximum pour démarrer et poursuivre un geste.",
+          "source": "app/game/systems/ritesOfHuntV77.ts",
+          "acceptance": "La distance est vérifiée depuis le point d'acteur fourni au moteur de rites."
+        },
+        {
+          "id": "DEP-06",
+          "status": "EXISTANT",
+          "topic": "Analyse",
+          "rule": "Analyser prend 1,4 seconde et inscrit la proie dans le registre de cette chasse.",
+          "source": "app/game/systems/ritesOfHuntV77.ts",
+          "acceptance": "Une nouvelle analyse de la même proie est refusée sans nouvel effet."
+        },
+        {
+          "id": "DEP-07",
+          "status": "EXISTANT",
+          "topic": "Marquage",
+          "rule": "Marquer prend 1 seconde et permet aux témoins admissibles de découvrir la mise en scène.",
+          "source": "app/game/systems/ritesOfHuntV77.ts",
+          "acceptance": "Aucun trophée ou rang n'est accordé par le marquage."
+        },
+        {
+          "id": "DEP-08",
+          "status": "MODIFIE_DANS_PR",
+          "topic": "Dépeçage disponible",
+          "rule": "Le menu rend Dépecer accessible quand le véritable outil est possédé et la proie n'est pas déjà dépecée.",
+          "source": "app/game/HuntRitesMenuV77.tsx",
+          "acceptance": "Le bouton et le moteur concordent ; une invocation directe sans outil échoue."
+        },
+        {
+          "id": "DEP-09",
+          "status": "EXISTANT",
+          "topic": "Durée et exposition",
+          "rule": "Le dépeçage prend 3,2 secondes ; les ennemis et dangers continuent d'agir autour du chasseur.",
+          "source": "app/game/systems/ritesOfHuntV77.ts",
+          "acceptance": "L'ouverture du menu ne met pas la chasse en pause."
+        },
+        {
+          "id": "DEP-10",
+          "status": "EXISTANT",
+          "topic": "Interruption",
+          "rule": "Dégâts, éloignement, perte de propriétaire ou perte de l'outil interrompent le geste sans confirmer son achèvement.",
+          "source": "app/game/systems/ritesOfHuntV77.ts",
+          "acceptance": "Après interruption, aucun événement flay et aucun corps flayed ne sont créés."
+        },
+        {
+          "id": "DEP-11",
+          "status": "EXISTANT",
+          "topic": "Annulation et pause",
+          "rule": "Fermer le menu interrompt le geste ; suspendre la chasse conserve un état cohérent sans progression hors simulation.",
+          "source": "app/game/HuntCanvas.tsx",
+          "acceptance": "Le temps réel passé dans un autre écran ne termine pas le geste."
+        },
+        {
+          "id": "DEP-12",
+          "status": "MODIFIE_DANS_PR",
+          "topic": "Reprise vérifiée",
+          "rule": "La restauration d'un corps dépecé vérifie le vrai acteur vaincu, la chasse et la possession effective du Flaying Tool.",
+          "source": "app/game/systems/huntRitesRuntimeV77.ts",
+          "acceptance": "Un payload inventant l'outil ou une autre proie est refusé."
+        },
+        {
+          "id": "DEP-13",
+          "status": "EXISTANT",
+          "topic": "Un seul achèvement",
+          "rule": "L'événement flay:<id de proie> est unique ; répétitions et callbacks ne fournissent aucun nouvel effet.",
+          "source": "app/game/systems/ritesOfHuntV77.ts",
+          "acceptance": "Sauvegarder, reprendre et réessayer ne multiplie ni corps ni récompense."
+        },
+        {
+          "id": "DEP-14",
+          "status": "MODIFIE_DANS_PR",
+          "topic": "Témoins et vigilance",
+          "rule": "Un corps dépecé découvert produit 20 points de peur (contre 8 pour une marque) et la vigilance existante ; chaque témoin ne réagit qu'une fois.",
+          "source": "app/game/systems/huntRitesRuntimeV77.ts",
+          "acceptance": "Marquer puis dépecer le même corps ne redéclenche pas le témoin déjà enregistré ; valeurs plafonnées et reprise cohérentes."
+        },
+        {
+          "id": "DEP-15",
+          "status": "EXISTANT",
+          "topic": "Trace et effacement",
+          "rule": "Effacer une trace prend 1,8 seconde ; laisser sur place est immédiat.",
+          "source": "app/game/systems/ritesOfHuntV77.ts",
+          "acceptance": "La suppression de la trace ne ressuscite pas la proie et ne restitue aucun butin."
+        },
+        {
+          "id": "DEP-16",
+          "status": "MODIFIE_DANS_PR",
+          "topic": "Périmètre du butin",
+          "rule": "Dépecer met à jour la mise en scène de cette chasse ; le geste ne fabrique ni peau, viande, monnaie, rang ou entrée de bestiaire.",
+          "source": "app/game/HuntCanvas.tsx",
+          "acceptance": "Les récompenses de trophée suivent leur collecte et leur extraction existantes."
+        },
+        {
+          "id": "DEP-17",
+          "status": "PROPOSE",
+          "topic": "Suspension corporelle",
+          "rule": "La suspension reste verrouillée tant qu'un véritable support, une masse admissible, un rendu et une restauration physique ne sont pas raccordés.",
+          "source": "app/game/HuntRitesMenuV77.tsx",
+          "acceptance": "Ne pas annoncer le corps suspendu comme une fonctionnalité livrée."
+        }
+      ]
+    },
+    {
+      "name": "Trophees",
+      "title": "Récolte : source physique, rite et extraction",
+      "columns": [
+        {
+          "key": "id",
+          "label": "ID",
+          "width": 15
+        },
+        {
+          "key": "status",
+          "label": "Statut",
+          "width": 24
+        },
+        {
+          "key": "topic",
+          "label": "Étape / sujet",
+          "width": 28
+        },
+        {
+          "key": "rule",
+          "label": "Règle et retour joueur",
+          "width": 62
+        },
+        {
+          "key": "source",
+          "label": "Source vérifiable",
+          "width": 55
+        },
+        {
+          "key": "acceptance",
+          "label": "Critère d'acceptation / limite",
+          "width": 64
+        }
+      ],
+      "rows": [
+        {
+          "id": "TRO-01",
+          "status": "EXISTANT",
+          "topic": "Admissibilité",
+          "rule": "Les trophées secondaires proviennent des définitions de gameplay de l'ennemi réellement vaincu.",
+          "source": "app/game/enemyTrophyGameplayV18.ts",
+          "acceptance": "Un identifiant absent du catalogue ne donne pas un trophée de substitution inventé."
+        },
+        {
+          "id": "TRO-02",
+          "status": "MODIFIE_DANS_PR",
+          "topic": "Position du prélèvement",
+          "rule": "Le point de récolte suit l'ancrage du corps réel, y compris sur une plateforme ou dans la canopée.",
+          "source": "app/game/HuntCanvas.tsx",
+          "acceptance": "Une proie abattue en hauteur ne fait pas apparaître son prélèvement au sol global."
+        },
+        {
+          "id": "TRO-03",
+          "status": "MODIFIE_DANS_PR",
+          "topic": "Corps en déplacement",
+          "rule": "La récolte reste attachée à la même proie lorsque son corps tombe et se pose sur la collision existante.",
+          "source": "app/game/HuntCanvas.tsx",
+          "acceptance": "Aucune copie au point de mort et au point d'arrivée."
+        },
+        {
+          "id": "TRO-04",
+          "status": "MODIFIE_DANS_PR",
+          "topic": "Vraie proximité",
+          "rule": "Le chasseur doit avoir un appui réel, ne pas être en escalade et se trouver dans la portée 2D du point de prélèvement.",
+          "source": "app/game/HuntCanvas.tsx",
+          "acceptance": "Le prélèvement n'est pas amorcé en vol, suspendu ou depuis un autre étage hors portée."
+        },
+        {
+          "id": "TRO-05",
+          "status": "MODIFIE_DANS_PR",
+          "topic": "Obstacle solide",
+          "rule": "La proximité ne permet pas de prélever à travers une paroi solide.",
+          "source": "app/game/HuntCanvas.tsx",
+          "acceptance": "Un plancher ou une plateforme à sens unique n'est pas traité automatiquement comme un mur opaque."
+        },
+        {
+          "id": "TRO-06",
+          "status": "MODIFIE_DANS_PR",
+          "topic": "Source toujours valide",
+          "rule": "Le rite secondaire vérifie que sa proie source existe encore, est vaincue et correspond au prélèvement sélectionné.",
+          "source": "app/game/HuntCanvas.tsx",
+          "acceptance": "Une source absente ou réactivée interrompt le rite sans collecte."
+        },
+        {
+          "id": "TRO-07",
+          "status": "MODIFIE_DANS_PR",
+          "topic": "Revalidation continue",
+          "rule": "Appui du chasseur, absence d'escalade, distance, visibilité et état de source sont revérifiés pendant le rite et avant confirmation.",
+          "source": "app/game/HuntCanvas.tsx",
+          "acceptance": "L'élan, une chute ou un déplacement du corps ne produisent pas une récolte à distance."
+        },
+        {
+          "id": "TRO-17",
+          "status": "MODIFIE_DANS_PR",
+          "topic": "Apex : portée propre",
+          "rule": "Le prélèvement principal conserve une portée distincte de 125 pixels ; le secondaire utilise 110 pixels.",
+          "source": "app/game/HuntCanvas.tsx",
+          "acceptance": "Les deux parcours exigent une présence physique admissible, sans réutiliser la mauvaise portée."
+        },
+        {
+          "id": "TRO-08",
+          "status": "EXISTANT",
+          "topic": "Lecture avant action",
+          "rule": "Le rite prépare le joueur pendant 1,8 seconde avant de lancer la séquence de glyphes.",
+          "source": "app/game/systems/trophyRitual.ts",
+          "acceptance": "Une entrée prématurée ne saute pas la préparation."
+        },
+        {
+          "id": "TRO-09",
+          "status": "EXISTANT",
+          "topic": "Séquence rituelle",
+          "rule": "Le rite comporte 6 glyphes et une fenêtre d'action bornée par glyphe.",
+          "source": "app/game/systems/trophyRitual.ts",
+          "acceptance": "Les commandes attendues sont affichées par la séquence courante."
+        },
+        {
+          "id": "TRO-10",
+          "status": "EXISTANT",
+          "topic": "Erreurs bornées",
+          "rule": "Le moteur termine en échec après le maximum d'erreurs défini ; un échec ne marque pas le drop collecté.",
+          "source": "app/game/systems/trophyRitual.ts",
+          "acceptance": "Réessayer ne double ni l'objet ni la première découverte."
+        },
+        {
+          "id": "TRO-11",
+          "status": "EXISTANT",
+          "topic": "Interruption par dégâts",
+          "rule": "Un impact interrompt le prélèvement et restitue le contrôle suivant les règles de chasse existantes.",
+          "source": "app/game/HuntCanvas.tsx",
+          "acceptance": "Aucun résultat de collecte n'est annoncé au seul démarrage du rite."
+        },
+        {
+          "id": "TRO-12",
+          "status": "EXISTANT",
+          "topic": "Qualité",
+          "rule": "La qualité du trophée reste calculée par les règles de rite et de mission existantes.",
+          "source": "app/game/systems/trophyRitual.ts",
+          "acceptance": "Cette PR ne certifie aucun nouvel équilibrage de qualité ou multiplicateur de récompense."
+        },
+        {
+          "id": "TRO-13",
+          "status": "EXISTANT",
+          "topic": "Collecte unique",
+          "rule": "Le drapeau collected interdit de réclamer plusieurs fois le même prélèvement secondaire.",
+          "source": "app/game/HuntCanvas.tsx",
+          "acceptance": "Double interaction et reprise du checkpoint ne fournissent pas plusieurs revendications."
+        },
+        {
+          "id": "TRO-14",
+          "status": "EXISTANT",
+          "topic": "Extraction requise",
+          "rule": "Les revendications de cette chasse sont remises au résultat de mission réussi ; la possession pendant la chasse reste distincte.",
+          "source": "app/game/HuntCanvas.tsx",
+          "acceptance": "Un échec ou abandon ne transforme pas le drop en récompense de campagne réussie."
+        },
+        {
+          "id": "TRO-15",
+          "status": "EXISTANT",
+          "topic": "Apex distinct",
+          "rule": "La proie dominante et son trophée principal suivent leurs propres phases de combat, prélèvement et extraction.",
+          "source": "app/game/HuntCanvas.tsx",
+          "acceptance": "Le rite sur corps secondaire ne contourne pas la victoire contre l'Apex."
+        },
+        {
+          "id": "TRO-16",
+          "status": "MODIFIE_DANS_PR",
+          "topic": "Compatibilité de reprise",
+          "rule": "La reprise conserve les identités et drapeaux de collecte existants et revalide la géométrie physique au retour.",
+          "source": "app/game/HuntCanvas.tsx",
+          "acceptance": "Une ancienne chasse ne reçoit pas de corps ni de trophées historiques inventés."
+        }
+      ]
+    },
+    {
+      "name": "Locomotion",
+      "title": "Arbres, lianes et supports : commandes et limites",
+      "columns": [
+        {
+          "key": "id",
+          "label": "ID",
+          "width": 15
+        },
+        {
+          "key": "status",
+          "label": "Statut",
+          "width": 24
+        },
+        {
+          "key": "topic",
+          "label": "Étape / sujet",
+          "width": 28
+        },
+        {
+          "key": "rule",
+          "label": "Règle et retour joueur",
+          "width": 62
+        },
+        {
+          "key": "source",
+          "label": "Source vérifiable",
+          "width": 55
+        },
+        {
+          "key": "acceptance",
+          "label": "Critère d'acceptation / limite",
+          "width": 64
+        }
+      ],
+      "rows": [
+        {
+          "id": "LOC-01",
+          "status": "EXISTANT",
+          "topic": "Supports physiques",
+          "rule": "Les arbres, lianes, cordes, chaînes et autres prises proviennent des blueprints du monde courant.",
+          "source": "app/game/systems/worldBlueprints.ts",
+          "acceptance": "Pas de cible d'accroche hors niveau ni de téléportation vers une branche décorative."
+        },
+        {
+          "id": "LOC-02",
+          "status": "MODIFIE_DANS_PR",
+          "topic": "Prise verticale",
+          "rule": "Haut ou Bas engage l'escalade quand le chasseur recouvre une prise admissible et dispose d'au moins 8 points d'endurance.",
+          "source": "app/game/HuntCanvas.tsx",
+          "acceptance": "La prise n'est pas créée simplement parce que le joueur regarde un arbre."
+        },
+        {
+          "id": "LOC-03",
+          "status": "MODIFIE_DANS_PR",
+          "topic": "Direction et saut",
+          "rule": "Depuis une prise, le saut est traité avant que la direction horizontale puisse annuler l'état d'escalade.",
+          "source": "app/game/HuntCanvas.tsx",
+          "acceptance": "Haut + direction + saut produit bien un bond depuis le support."
+        },
+        {
+          "id": "LOC-04",
+          "status": "MODIFIE_DANS_PR",
+          "topic": "Direction du bond",
+          "rule": "La direction horizontale oriente le départ ; à défaut, orientation du chasseur. Impulsion 360 px/s sur prise rigide et 420 px/s sur liane, corde ou chaîne.",
+          "source": "app/game/HuntCanvas.tsx",
+          "acceptance": "Le joueur peut partir à gauche comme à droite sans repositionnement artificiel."
+        },
+        {
+          "id": "LOC-05",
+          "status": "MODIFIE_DANS_PR",
+          "topic": "Conservation de l'élan",
+          "rule": "Un bref délai de transfert conserve l'impulsion du saut d'accroche avant le retour au mouvement aérien habituel.",
+          "source": "app/game/HuntCanvas.tsx",
+          "acceptance": "Le lissage horizontal ne supprime pas instantanément le bond au départ."
+        },
+        {
+          "id": "LOC-06",
+          "status": "MODIFIE_DANS_PR",
+          "topic": "Pas de reprise immédiate",
+          "rule": "Le délai de transfert bloque la réaccroche immédiate sur le support de départ.",
+          "source": "app/game/HuntCanvas.tsx",
+          "acceptance": "Maintenir Haut ne neutralise pas le saut en réaccrochant au premier pas de simulation."
+        },
+        {
+          "id": "LOC-07",
+          "status": "MODIFIE_DANS_PR",
+          "topic": "Rattraper la prise suivante",
+          "rule": "Après le délai, Haut permet de saisir un support réellement recouvert même si la direction horizontale reste maintenue.",
+          "source": "app/game/HuntCanvas.tsx",
+          "acceptance": "Le joueur n'a pas à relâcher puis réappuyer artificiellement toutes les commandes."
+        },
+        {
+          "id": "LOC-08",
+          "status": "EXISTANT",
+          "topic": "Endurance des supports",
+          "rule": "La prise consomme l'endurance au taux propre au support ; arbre et liane ont des valeurs de blueprint distinctes.",
+          "source": "app/game/systems/worldBlueprints.ts",
+          "acceptance": "Le coût continue tant que l'escalade est active, même sans gain de hauteur."
+        },
+        {
+          "id": "LOC-09",
+          "status": "MODIFIE_DANS_PR",
+          "topic": "Épuisement",
+          "rule": "Une prise épuisée provoque un lâcher et bloque les nouvelles accroches jusqu'à une réception au sol ou sur plateforme.",
+          "source": "app/game/HuntCanvas.tsx",
+          "acceptance": "La régénération en l'air ne permet plus de se suspendre indéfiniment par petites reprises."
+        },
+        {
+          "id": "LOC-10",
+          "status": "MODIFIE_DANS_PR",
+          "topic": "Réception et reprise",
+          "rule": "Une vraie collision de réception réarme la prise et conserve les règles de saut et de boost existantes.",
+          "source": "app/game/HuntCanvas.tsx",
+          "acceptance": "Un simple changement d'animation ou de support ne réarme pas la fatigue."
+        },
+        {
+          "id": "LOC-11",
+          "status": "EXISTANT",
+          "topic": "Collision conservée",
+          "rule": "Le mouvement passe par la résolution de collision balayée existante ; les parois solides restent bloquantes.",
+          "source": "app/game/systems/platformCollision.ts",
+          "acceptance": "Un bond vers un support ne traverse pas les murs ou les plafonds."
+        },
+        {
+          "id": "LOC-12",
+          "status": "EXISTANT",
+          "topic": "Saut assisté",
+          "rule": "Temps de coyote, mémoire courte d'entrée et hauteur variable restent gérés par le contrôleur commun.",
+          "source": "app/game/systems/jumpAssist.ts",
+          "acceptance": "Le bond de support ne consomme pas un boost aérien à sa place."
+        },
+        {
+          "id": "LOC-13",
+          "status": "MODIFIE_DANS_PR",
+          "topic": "Pause et reprise",
+          "rule": "Le délai de transfert transitoire est réinitialisé en reprise ; la fatigue durable du chasseur reste cohérente.",
+          "source": "app/game/HuntCanvas.tsx",
+          "acceptance": "Une sauvegarde ne recrée pas une impulsion ni une prise fraîche après épuisement."
+        },
+        {
+          "id": "LOC-14",
+          "status": "PROPOSE",
+          "topic": "Balancement pendulaire",
+          "rule": "Les lianes de ce lot sont des supports d'escalade et de bond ; un pendule avec tension, longueur et lâcher piloté reste à concevoir.",
+          "source": "app/game/systems/worldBlueprints.ts",
+          "acceptance": "Ne pas annoncer de simulation physique de balancement dans la livraison."
+        }
+      ]
+    },
+    {
+      "name": "Parametres",
+      "title": "Valeurs du moteur et choix V110 à tester",
+      "columns": [
+        {
+          "key": "id",
+          "label": "ID",
+          "width": 15
+        },
+        {
+          "key": "status",
+          "label": "Statut",
+          "width": 24
+        },
+        {
+          "key": "topic",
+          "label": "Paramètre",
+          "width": 34
+        },
+        {
+          "key": "value",
+          "label": "Valeur",
+          "width": 18
+        },
+        {
+          "key": "unit",
+          "label": "Unité / portée",
+          "width": 33
+        },
+        {
+          "key": "source",
+          "label": "Source vérifiable",
+          "width": 55
+        },
+        {
+          "key": "limit",
+          "label": "Justification et limite",
+          "width": 65
+        }
+      ],
+      "rows": [
+        {
+          "id": "PAR-01",
+          "status": "MODIFIE_DANS_PR",
+          "topic": "Prix Flaying Tool",
+          "value": 120,
+          "unit": "marques du clan ; achat unique",
+          "source": "app/game/systems/fieldToolsV110.ts",
+          "limit": "Choix de conception V110 ; pas d'équilibrage de campagne certifié."
+        },
+        {
+          "id": "PAR-02",
+          "status": "EXISTANT",
+          "topic": "Analyser",
+          "value": 1.4,
+          "unit": "secondes de simulation",
+          "source": "app/game/systems/ritesOfHuntV77.ts",
+          "limit": "Durée existante, conservée."
+        },
+        {
+          "id": "PAR-03",
+          "status": "EXISTANT",
+          "topic": "Marquer",
+          "value": 1,
+          "unit": "seconde de simulation",
+          "source": "app/game/systems/ritesOfHuntV77.ts",
+          "limit": "Durée existante, conservée."
+        },
+        {
+          "id": "PAR-04",
+          "status": "EXISTANT",
+          "topic": "Dépecer",
+          "value": 3.2,
+          "unit": "secondes de simulation",
+          "source": "app/game/systems/ritesOfHuntV77.ts",
+          "limit": "Durée existante ; l'accès par l'outil devient jouable."
+        },
+        {
+          "id": "PAR-05",
+          "status": "EXISTANT",
+          "topic": "Effacer",
+          "value": 1.8,
+          "unit": "secondes de simulation",
+          "source": "app/game/systems/ritesOfHuntV77.ts",
+          "limit": "Laisser est immédiat, sans nouvelle récompense."
+        },
+        {
+          "id": "PAR-06",
+          "status": "EXISTANT",
+          "topic": "Portée de rite sur corps",
+          "value": 88,
+          "unit": "pixels du monde",
+          "source": "app/game/systems/ritesOfHuntV77.ts",
+          "limit": "Même borne au démarrage et pendant le geste."
+        },
+        {
+          "id": "PAR-07",
+          "status": "MODIFIE_DANS_PR",
+          "topic": "Portée de récolte secondaire",
+          "value": 110,
+          "unit": "pixels du monde ; distance2D",
+          "source": "app/game/HuntCanvas.tsx",
+          "limit": "Portée existante ; revalidation physique ajoutée."
+        },
+        {
+          "id": "PAR-08",
+          "status": "EXISTANT",
+          "topic": "Préparation trophée",
+          "value": 1.8,
+          "unit": "secondes de simulation",
+          "source": "app/game/systems/trophyRitual.ts",
+          "limit": "Précède les glyphes ; aucune réussite automatique."
+        },
+        {
+          "id": "PAR-09",
+          "status": "EXISTANT",
+          "topic": "Nombre de glyphes",
+          "value": 6,
+          "unit": "actions par rite",
+          "source": "app/game/systems/trophyRitual.ts",
+          "limit": "Séquence du moteur existant."
+        },
+        {
+          "id": "PAR-10",
+          "status": "EXISTANT",
+          "topic": "Fenêtre de validation",
+          "value": "0,18 à 0,84",
+          "unit": "secondes depuis le glyphe",
+          "source": "app/game/systems/trophyRitual.ts",
+          "limit": "Temps idéal existant : 0,50 s ; timeout : 1,08 s."
+        },
+        {
+          "id": "PAR-11",
+          "status": "EXISTANT",
+          "topic": "Maximum d'erreurs",
+          "value": 3,
+          "unit": "erreurs par tentative",
+          "source": "app/game/systems/trophyRitual.ts",
+          "limit": "Borne du moteur ; l'ergonomie des modes accessibles reste à valider."
+        },
+        {
+          "id": "PAR-12",
+          "status": "MODIFIE_DANS_PR",
+          "topic": "Délai de transfert d'accroche",
+          "value": 0.24,
+          "unit": "seconde ; bond depuis prise",
+          "source": "app/game/HuntCanvas.tsx",
+          "limit": "Choix V110 : maintien bref d'élan et anti-réaccroche ; à tester avec les distances des niveaux."
+        },
+        {
+          "id": "PAR-13",
+          "status": "EXISTANT",
+          "topic": "Vitesse verticale du bond de prise",
+          "value": -560,
+          "unit": "pixels par seconde ; haut négatif",
+          "source": "app/game/systems/jumpAssist.ts",
+          "limit": "Valeur existante ; gravité et collision restent communes."
+        },
+        {
+          "id": "PAR-14",
+          "status": "EXISTANT",
+          "topic": "Coyote / mémoire d'entrée",
+          "value": "0,10 / 0,12",
+          "unit": "secondes",
+          "source": "app/game/systems/jumpAssist.ts",
+          "limit": "Assistances existantes, distinctes du délai de transfert."
+        },
+        {
+          "id": "PAR-15",
+          "status": "EXISTANT",
+          "topic": "Coût arbre jungle de référence",
+          "value": 3,
+          "unit": "endurance par seconde",
+          "source": "app/game/systems/worldBlueprints.ts",
+          "limit": "Exemple j-tree-west ; les supports peuvent avoir leurs propres valeurs."
+        },
+        {
+          "id": "PAR-16",
+          "status": "EXISTANT",
+          "topic": "Coût liane jungle de référence",
+          "value": 4,
+          "unit": "endurance par seconde",
+          "source": "app/game/systems/worldBlueprints.ts",
+          "limit": "Exemple j-vine-west ; aucune uniformisation de tous les biomes."
+        },
+        {
+          "id": "PAR-17",
+          "status": "EXISTANT",
+          "topic": "Portée maximale de témoin",
+          "value": 480,
+          "unit": "pixels du monde",
+          "source": "app/game/systems/ritesOfHuntV77.ts",
+          "limit": "Nécessite aussi le témoin admissible, sa vue et un événement non déjà découvert."
+        },
+        {
+          "id": "PAR-18",
+          "status": "EXISTANT",
+          "topic": "Capacité du registre de corps",
+          "value": 128,
+          "unit": "corps par chasse",
+          "source": "app/game/systems/ritesOfHuntV77.ts",
+          "limit": "À saturation, aucune ancienne prise n'est effacée pour en ajouter une nouvelle."
+        },
+        {
+          "id": "PAR-19",
+          "status": "MODIFIE_DANS_PR",
+          "topic": "Endurance minimale de prise",
+          "value": 8,
+          "unit": "points d'endurance",
+          "source": "app/game/HuntCanvas.tsx",
+          "limit": "Seuil d'engagement V110 ; le verrou après épuisement attend en plus une vraie réception."
+        },
+        {
+          "id": "PAR-20",
+          "status": "MODIFIE_DANS_PR",
+          "topic": "Impulsion horizontale rigide",
+          "value": 360,
+          "unit": "pixels par seconde",
+          "source": "app/game/HuntCanvas.tsx",
+          "limit": "Départ d'un arbre ou autre support rigide ; choix V110 à tester dans les niveaux."
+        },
+        {
+          "id": "PAR-21",
+          "status": "MODIFIE_DANS_PR",
+          "topic": "Impulsion horizontale flexible",
+          "value": 420,
+          "unit": "pixels par seconde",
+          "source": "app/game/HuntCanvas.tsx",
+          "limit": "Départ de liane, corde ou chaîne ; pas une simulation de pendule."
+        },
+        {
+          "id": "PAR-22",
+          "status": "EXISTANT",
+          "topic": "Gravité de chasse",
+          "value": 1850,
+          "unit": "pixels par seconde carrée",
+          "source": "app/game/HuntCanvas.tsx",
+          "limit": "Valeur du moteur existant ; tous les bonds passent par la collision commune."
+        },
+        {
+          "id": "PAR-23",
+          "status": "MODIFIE_DANS_PR",
+          "topic": "Portée du trophée Apex",
+          "value": 125,
+          "unit": "pixels du monde ; distance2D",
+          "source": "app/game/HuntCanvas.tsx",
+          "limit": "Portée distincte du secondaire 110 ; appui réel requis pour prélever."
+        },
+        {
+          "id": "PAR-24",
+          "status": "MODIFIE_DANS_PR",
+          "topic": "Ancrages de prélèvement",
+          "value": "−24 / −52",
+          "unit": "pixels depuis les pieds source ; secondaire/Apex",
+          "source": "app/game/HuntCanvas.tsx",
+          "limit": "Mesure de portée depuis le centre du chasseur vers le point de prélèvement réel."
+        }
+      ]
+    },
+    {
+      "name": "Transitions",
+      "title": "États, déclencheurs et retours contrôlés",
+      "columns": [
+        {
+          "key": "id",
+          "label": "ID",
+          "width": 15
+        },
+        {
+          "key": "domain",
+          "label": "Domaine",
+          "width": 22
+        },
+        {
+          "key": "from",
+          "label": "État de départ",
+          "width": 30
+        },
+        {
+          "key": "trigger",
+          "label": "Déclencheur / garde",
+          "width": 58
+        },
+        {
+          "key": "to",
+          "label": "État d'arrivée",
+          "width": 35
+        },
+        {
+          "key": "limit",
+          "label": "Annulation / invariant",
+          "width": 64
+        }
+      ],
+      "rows": [
+        {
+          "id": "ETA-01",
+          "domain": "Outil",
+          "from": "Non possédé",
+          "trigger": "Achat armurerie, campagne courante, solde ≥ 120",
+          "to": "Possédé ; 120 marques débitées",
+          "limit": "Deuxième achat : état et solde inchangés."
+        },
+        {
+          "id": "ETA-02",
+          "domain": "Rite",
+          "from": "Acteur vivant",
+          "trigger": "Décès confirmé de l'acteur non Apex",
+          "to": "Trace de corps enregistrée",
+          "limit": "La même preuve ne crée pas une seconde entrée."
+        },
+        {
+          "id": "ETA-03",
+          "domain": "Rite",
+          "from": "Corps proche",
+          "trigger": "Analyser ou marquer, aucune autre opération",
+          "to": "Opération en cours",
+          "limit": "Dégâts, distance et propriétaire sont revérifiés."
+        },
+        {
+          "id": "ETA-04",
+          "domain": "Dépeçage",
+          "from": "Corps non dépecé",
+          "trigger": "Flaying Tool réel + proie admissible + 3,2 s valides",
+          "to": "Corps flayed ; événement unique",
+          "limit": "Aucun objet peau, monnaie ou trophée ajouté par ce seul geste."
+        },
+        {
+          "id": "ETA-05",
+          "domain": "Dépeçage",
+          "from": "Opération en cours",
+          "trigger": "Dégâts, fermeture du menu ou éloignement",
+          "to": "Opération annulée",
+          "limit": "Ne pas confirmer l'événement de fin."
+        },
+        {
+          "id": "ETA-06",
+          "domain": "Témoin",
+          "from": "Mise en scène non découverte",
+          "trigger": "Témoin admissible visible et non déjà enregistré",
+          "to": "Témoin consigné ; peur et vigilance",
+          "limit": "Répétition par le même témoin sans nouvel effet."
+        },
+        {
+          "id": "ETA-07",
+          "domain": "Trophée",
+          "from": "Proie vaincue admissible",
+          "trigger": "Création du prélèvement à l'ancrage réel du corps",
+          "to": "Drop non collecté",
+          "limit": "Le point suit le corps, pas le sol global du niveau."
+        },
+        {
+          "id": "ETA-08",
+          "domain": "Trophée",
+          "from": "Drop non collecté",
+          "trigger": "Appui réel, aucune escalade, interaction dans la portée et sans obstacle solide",
+          "to": "Préparation puis glyphes",
+          "limit": "Aucun gain de campagne à l'ouverture."
+        },
+        {
+          "id": "ETA-09",
+          "domain": "Trophée",
+          "from": "Rite secondaire en cours",
+          "trigger": "Source perdue, portée rompue, paroi ou dégâts",
+          "to": "Tentative interrompue",
+          "limit": "Le drop reste non collecté ; aucune récompense finale."
+        },
+        {
+          "id": "ETA-10",
+          "domain": "Trophée",
+          "from": "Rite secondaire valide",
+          "trigger": "Séquence achevée et dernière revalidation",
+          "to": "Drop collecté une fois",
+          "limit": "La remise de campagne attend la réussite et l'extraction existantes."
+        },
+        {
+          "id": "ETA-11",
+          "domain": "Escalade",
+          "from": "Libre près d'une prise",
+          "trigger": "Axe vertical, recouvrement réel, endurance≥8 et prise autorisée",
+          "to": "Accroché / escalade",
+          "limit": "Refus si fatigue verrouillée ou délai de transfert actif."
+        },
+        {
+          "id": "ETA-12",
+          "domain": "Transfert",
+          "from": "Accroché",
+          "trigger": "Entrée saut fraîche ou mémorisée, direction éventuelle",
+          "to": "Bond depuis support",
+          "limit": "Le saut a priorité sur le détachement horizontal."
+        },
+        {
+          "id": "ETA-13",
+          "domain": "Transfert",
+          "from": "Bond depuis support",
+          "trigger": "Délai 0,24 s écoulé, Haut et nouveau support recouvert",
+          "to": "Nouvelle prise",
+          "limit": "Aucune téléportation ; collision et géométrie déterminent la portée réelle."
+        },
+        {
+          "id": "ETA-14",
+          "domain": "Fatigue",
+          "from": "Escalade sans endurance",
+          "trigger": "Épuisement",
+          "to": "Lâcher ; prise verrouillée",
+          "limit": "La régénération en l'air ne déverrouille pas la prise."
+        },
+        {
+          "id": "ETA-15",
+          "domain": "Fatigue",
+          "from": "Prise verrouillée",
+          "trigger": "Réception physique au sol ou sur plateforme",
+          "to": "Nouvelle prise admissible",
+          "limit": "Les murs et les animations ne constituent pas une réception."
+        },
+        {
+          "id": "ETA-16",
+          "domain": "Reprise",
+          "from": "Chasse suspendue",
+          "trigger": "Reprise validée de la même rencontre",
+          "to": "État durable restauré ; temporisations transitoires réinitialisées",
+          "limit": "Ni impulsion rejouée, ni outil, corps ou drop historique inventé."
+        }
+      ]
+    },
+    {
+      "name": "Validation",
+      "title": "Scénarios d'acceptation — résultats à renseigner",
+      "columns": [
+        {
+          "key": "id",
+          "label": "ID",
+          "width": 15
+        },
+        {
+          "key": "status",
+          "label": "État d'exécution",
+          "width": 22
+        },
+        {
+          "key": "domain",
+          "label": "Domaine",
+          "width": 23
+        },
+        {
+          "key": "scenario",
+          "label": "Scénario à exécuter",
+          "width": 64
+        },
+        {
+          "key": "expected",
+          "label": "Résultat attendu",
+          "width": 66
+        },
+        {
+          "key": "recipe",
+          "label": "Recette / preuve à renseigner",
+          "width": 55
+        }
+      ],
+      "rows": [
+        {
+          "id": "QA-01",
+          "status": "A_EXECUTER",
+          "domain": "Outil",
+          "scenario": "Ancienne sauvegarde sans fieldToolIds.",
+          "expected": "Normalisation vers aucun outil possédé ; reste jouable sans migration payante.",
+          "recipe": "À renseigner après exécution : commande, commit, résultat et limite."
+        },
+        {
+          "id": "QA-02",
+          "status": "A_EXECUTER",
+          "domain": "Outil",
+          "scenario": "Acheter à 119, puis à 120 marques.",
+          "expected": "À 119 refus sans mutation ; à 120 un outil et un seul débit de 120.",
+          "recipe": "À renseigner après exécution : commande, commit, résultat et limite."
+        },
+        {
+          "id": "QA-03",
+          "status": "A_EXECUTER",
+          "domain": "Outil",
+          "scenario": "Déclencher deux achats successifs sur le même état actualisé.",
+          "expected": "Le deuxième achat refuse et ne retire aucune marque.",
+          "recipe": "À renseigner après exécution : commande, commit, résultat et limite."
+        },
+        {
+          "id": "QA-04",
+          "status": "A_EXECUTER",
+          "domain": "Dépeçage",
+          "scenario": "Appeler Dépecer sans outil, y compris hors bouton.",
+          "expected": "Menu indisponible et moteur refuse ; les wristblades ne valent pas preuve d'outil.",
+          "recipe": "À renseigner après exécution : commande, commit, résultat et limite."
+        },
+        {
+          "id": "QA-05",
+          "status": "A_EXECUTER",
+          "domain": "Dépeçage",
+          "scenario": "Vaincre une proie réelle, approcher puis dépecer sans interruption.",
+          "expected": "Après 3,2 s, un événement unique et le corps dépecé ; pas de nouveau butin inventé.",
+          "recipe": "À renseigner après exécution : commande, commit, résultat et limite."
+        },
+        {
+          "id": "QA-06",
+          "status": "A_EXECUTER",
+          "domain": "Dépeçage",
+          "scenario": "Recevoir un dégât au milieu du geste, y compris avec soin avant la frame suivante.",
+          "expected": "L'opération s'interrompt sur les dégâts cumulés sans confirmer flay.",
+          "recipe": "À renseigner après exécution : commande, commit, résultat et limite."
+        },
+        {
+          "id": "QA-07",
+          "status": "A_EXECUTER",
+          "domain": "Dépeçage",
+          "scenario": "S'éloigner de plus de 88 pixels puis revenir.",
+          "expected": "Aucun achèvement hors portée ; un nouveau geste repart selon les règles.",
+          "recipe": "À renseigner après exécution : commande, commit, résultat et limite."
+        },
+        {
+          "id": "QA-08",
+          "status": "A_EXECUTER",
+          "domain": "Dépeçage",
+          "scenario": "Suspendre et reprendre un corps déjà dépecé avec/sans outil.",
+          "expected": "La reprise légitime conserve le corps ; un outil ou acteur inventé est refusé.",
+          "recipe": "À renseigner après exécution : commande, commit, résultat et limite."
+        },
+        {
+          "id": "QA-09",
+          "status": "A_EXECUTER",
+          "domain": "Dépeçage",
+          "scenario": "Un témoin voit le même corps marqué puis dépecé.",
+          "expected": "Pas de répétition du même événement de témoin ; valeurs peur/vigilance cohérentes en reprise.",
+          "recipe": "À renseigner après exécution : commande, commit, résultat et limite."
+        },
+        {
+          "id": "QA-10",
+          "status": "A_EXECUTER",
+          "domain": "Trophée",
+          "scenario": "Abattre une proie sur une plateforme haute.",
+          "expected": "Le prélèvement reste auprès du corps et ne descend pas au sol global.",
+          "recipe": "À renseigner après exécution : commande, commit, résultat et limite."
+        },
+        {
+          "id": "QA-11",
+          "status": "A_EXECUTER",
+          "domain": "Trophée",
+          "scenario": "Laisser tomber un corps depuis une plateforme.",
+          "expected": "Un seul prélèvement suit son vrai ancrage puis sa réception.",
+          "recipe": "À renseigner après exécution : commande, commit, résultat et limite."
+        },
+        {
+          "id": "QA-12",
+          "status": "A_EXECUTER",
+          "domain": "Trophée",
+          "scenario": "Interagir depuis sous une proie séparée verticalement.",
+          "expected": "Refus hors portée 2D, même avec un faible écart horizontal.",
+          "recipe": "À renseigner après exécution : commande, commit, résultat et limite."
+        },
+        {
+          "id": "QA-13",
+          "status": "A_EXECUTER",
+          "domain": "Trophée",
+          "scenario": "Proie proche mais située derrière une paroi solide.",
+          "expected": "Démarrage refusé ; aucun rite et aucun drapeau collected.",
+          "recipe": "À renseigner après exécution : commande, commit, résultat et limite."
+        },
+        {
+          "id": "QA-14",
+          "status": "A_EXECUTER",
+          "domain": "Trophée",
+          "scenario": "Commencer puis tomber ou être déplacé hors portée.",
+          "expected": "Interruption pendant le rite ; aucune collecte sur la dernière entrée.",
+          "recipe": "À renseigner après exécution : commande, commit, résultat et limite."
+        },
+        {
+          "id": "QA-15",
+          "status": "A_EXECUTER",
+          "domain": "Trophée",
+          "scenario": "Retirer ou réactiver la source avant la dernière entrée.",
+          "expected": "Dernière revalidation refuse ; aucune revendication créée.",
+          "recipe": "À renseigner après exécution : commande, commit, résultat et limite."
+        },
+        {
+          "id": "QA-16",
+          "status": "A_EXECUTER",
+          "domain": "Trophée",
+          "scenario": "Achever, interagir encore, sauvegarder et reprendre.",
+          "expected": "Une seule collecte ; identités et drapeau collected préservés.",
+          "recipe": "À renseigner après exécution : commande, commit, résultat et limite."
+        },
+        {
+          "id": "QA-17",
+          "status": "A_EXECUTER",
+          "domain": "Trophée",
+          "scenario": "Prélever puis échouer ou abandonner la mission.",
+          "expected": "Aucune remise de campagne de mission réussie.",
+          "recipe": "À renseigner après exécution : commande, commit, résultat et limite."
+        },
+        {
+          "id": "QA-26",
+          "status": "A_EXECUTER",
+          "domain": "Trophée",
+          "scenario": "Tenter une récolte en chute, en escalade, puis après réception.",
+          "expected": "Démarrage refusé sans appui ou en escalade ; autorisé après vraie réception si les autres conditions sont valides.",
+          "recipe": "À renseigner après exécution : commande, commit, résultat et limite."
+        },
+        {
+          "id": "QA-18",
+          "status": "A_EXECUTER",
+          "domain": "Locomotion",
+          "scenario": "Sur arbre/liane, maintenir direction et appuyer saut.",
+          "expected": "Bond depuis support dans la direction demandée, sans boost consommé à sa place.",
+          "recipe": "À renseigner après exécution : commande, commit, résultat et limite."
+        },
+        {
+          "id": "QA-19",
+          "status": "A_EXECUTER",
+          "domain": "Locomotion",
+          "scenario": "Maintenir Haut pendant un bond depuis support.",
+          "expected": "Pas de réaccroche immédiate pendant 0,24 s ; élan de départ conservé.",
+          "recipe": "À renseigner après exécution : commande, commit, résultat et limite."
+        },
+        {
+          "id": "QA-27",
+          "status": "A_EXECUTER",
+          "domain": "Locomotion",
+          "scenario": "Tenter une nouvelle prise à 7 puis 8 points d'endurance.",
+          "expected": "À 7, prise refusée ; à8 possible si géométrie et fatigue le permettent. Un état épuisé reste verrouillé jusqu'à réception.",
+          "recipe": "À renseigner après exécution : commande, commit, résultat et limite."
+        },
+        {
+          "id": "QA-20",
+          "status": "A_EXECUTER",
+          "domain": "Locomotion",
+          "scenario": "Rejoindre une autre prise avec Haut et direction maintenus.",
+          "expected": "Accroche après délai seulement en recouvrant une prise réelle.",
+          "recipe": "À renseigner après exécution : commande, commit, résultat et limite."
+        },
+        {
+          "id": "QA-21",
+          "status": "A_EXECUTER",
+          "domain": "Locomotion",
+          "scenario": "Épuiser l'endurance puis maintenir Haut en chute.",
+          "expected": "Pas de reprise grâce à la régénération aérienne ; réception nécessaire.",
+          "recipe": "À renseigner après exécution : commande, commit, résultat et limite."
+        },
+        {
+          "id": "QA-22",
+          "status": "A_EXECUTER",
+          "domain": "Locomotion",
+          "scenario": "Recevoir au sol ou sur plateforme après épuisement.",
+          "expected": "Réarmement de la prise sur vraie réception, jamais sur une simple paroi.",
+          "recipe": "À renseigner après exécution : commande, commit, résultat et limite."
+        },
+        {
+          "id": "QA-23",
+          "status": "A_EXECUTER",
+          "domain": "Locomotion",
+          "scenario": "Suspendre pendant un transfert puis reprendre.",
+          "expected": "Pas d'impulsion rejouée ; délai transitoire réinitialisé et fatigue cohérente.",
+          "recipe": "À renseigner après exécution : commande, commit, résultat et limite."
+        },
+        {
+          "id": "QA-24",
+          "status": "A_EXECUTER",
+          "domain": "Régression",
+          "scenario": "Sauts sol/coyote/buffer/boost, combat et anciennes reprises.",
+          "expected": "Assistances et règles antérieures conservent leur comportement attendu.",
+          "recipe": "À renseigner après exécution : commande, commit, résultat et limite."
+        },
+        {
+          "id": "QA-25",
+          "status": "A_EXECUTER",
+          "domain": "Classeur",
+          "scenario": "Régénérer puis exécuter --check.",
+          "expected": "Octets identiques, 8 feuilles, liens de source, filtres, gel et statuts A_EXECUTER présents.",
+          "recipe": "À renseigner après exécution : commande, commit, résultat et limite."
+        }
+      ]
+    },
+    {
+      "name": "Backlog",
+      "title": "Extensions de conception — non implémentées",
+      "columns": [
+        {
+          "key": "id",
+          "label": "ID",
+          "width": 15
+        },
+        {
+          "key": "status",
+          "label": "Statut",
+          "width": 18
+        },
+        {
+          "key": "priority",
+          "label": "Priorité",
+          "width": 15
+        },
+        {
+          "key": "topic",
+          "label": "Extension",
+          "width": 32
+        },
+        {
+          "key": "design",
+          "label": "Règles à concevoir",
+          "width": 76
+        },
+        {
+          "key": "acceptance",
+          "label": "Conditions avant activation",
+          "width": 76
+        }
+      ],
+      "rows": [
+        {
+          "id": "FUT-01",
+          "status": "PROPOSE",
+          "priority": "P1",
+          "topic": "Balancement de liane",
+          "design": "Pendule avec longueur de corde, angle, vitesse tangentielle, tension et collision ; commande de pompage, lâcher libre et trajectoire lisible. Réserve d'endurance annoncée avant l'engagement.",
+          "acceptance": "Prototype jouable sur plusieurs longueurs ; pas d'énergie infinie, de traversée de murs ou de saut téléporté. Scénarios de relâchement, support perdu, pause et reprise."
+        },
+        {
+          "id": "FUT-02",
+          "status": "PROPOSE",
+          "priority": "P1",
+          "topic": "Routes de canopée",
+          "design": "Composer des séquences de branches, troncs, lianes, corniches et points de repos. Définir les distances depuis les trajectoires réellement atteignables, avec route de repli et dangers lisibles.",
+          "acceptance": "Parcours complets sur clavier, manette et tactile ; aucun passage obligatoire inaccessible à une armure autorisée."
+        },
+        {
+          "id": "FUT-03",
+          "status": "PROPOSE",
+          "priority": "P1",
+          "topic": "Suspension de carcasse",
+          "design": "Supports authorés avec hauteur, solidité, capacité de masse et espace libre. Transport et attache séparés ; interruption sûre et corps unique. Rendu et témoins placés au nouvel ancrage.",
+          "acceptance": "Tests de masse, support disparu, occlusion et sauvegarde ; aucune suspension acceptée depuis une décoration ou un support inventé."
+        },
+        {
+          "id": "FUT-04",
+          "status": "PROPOSE",
+          "priority": "P2",
+          "topic": "Prélèvements anatomiques",
+          "design": "Définir par espèce les parties disponibles et leurs dépendances : peau, crâne, mandibule, colonne ou autre organe. Stock fini par corps ; compatibilité entre gestes et qualité.",
+          "acceptance": "Catalogue sourcé, rendu disponible, inventaire limité et absence de duplication après interruption/reprise. Aucune partie universelle sur toutes les espèces."
+        },
+        {
+          "id": "FUT-05",
+          "status": "PROPOSE",
+          "priority": "P2",
+          "topic": "Intégrité de trophée",
+          "design": "Séparer état initial de la proie, dommages causés aux parties et précision du prélèvement. Montrer le risque et la valeur potentielle avant de confirmer un geste irréversible.",
+          "acceptance": "Critères compréhensibles et reproductibles ; aucun malus invisible ou simple hasard impossible à lire."
+        },
+        {
+          "id": "FUT-06",
+          "status": "PROPOSE",
+          "priority": "P2",
+          "topic": "Charge et encombrement",
+          "design": "Masse et volume par prise, méthode de portage, limites d'armure et influence explicite sur saut, escalade et bruit. Dépôt temporaire ou rappel d'extraction avec coût annoncé.",
+          "acceptance": "Règles communes inventaire/locomotion ; refus clair du surpoids et politique sans perte silencieuse lorsque l'emport est plein."
+        },
+        {
+          "id": "FUT-07",
+          "status": "PROPOSE",
+          "priority": "P2",
+          "topic": "Outil et entretien",
+          "design": "Introduire précision, usure et entretien seulement si le joueur dispose d'un moyen clair de prévoir puis réparer. Séparer coût au démarrage, interruption et coût au succès.",
+          "acceptance": "Aucun double coût après reprise ; aucun blocage définitif de campagne si l'outil est abîmé. Économie testée avant fixation de chiffres."
+        },
+        {
+          "id": "FUT-08",
+          "status": "PROPOSE",
+          "priority": "P2",
+          "topic": "Atelier de conservation",
+          "design": "Nettoyage, traitement, séchage et montage avec files de travaux et états persistants. Le trophée possédé reste distinct de son entrée de collection ou de son exposition.",
+          "acceptance": "Opérations idempotentes et coût lisible ; sauvegarde confirmée avant succès affiché ; aucun achèvement du temps réel sans règle explicite."
+        },
+        {
+          "id": "FUT-09",
+          "status": "PROPOSE",
+          "priority": "P1",
+          "topic": "Accessibilité des rites",
+          "design": "Options de maintien/bascule, fenêtres ajustables, glyphes lisibles, alternatives au seul code couleur et commandes remappables. Indiquer les effets éventuels sur score avant le choix.",
+          "acceptance": "Essais sur petits écrans et différentes entrées ; toutes les actions restent réalisables sans précision temporelle non expliquée."
+        },
+        {
+          "id": "FUT-10",
+          "status": "PROPOSE",
+          "priority": "P2",
+          "topic": "Écosystème et découverte",
+          "design": "Différencier témoin qui voit un corps, alerte radio, investigation d'allié et peur d'une zone ; conserver l'identité des événements. Les bêtes ont des comportements propres au lieu d'une peur humaine.",
+          "acceptance": "Budget IA mesuré, propagation bornée et sauvegarde cohérente ; pas d'alerte mondiale déclenchée par une trace invisible."
+        },
+        {
+          "id": "FUT-11",
+          "status": "PROPOSE",
+          "priority": "P2",
+          "topic": "Apprentissage et signalétique",
+          "design": "Tutoriel court sur prise, bond, récupération et choix de route ; afficher l'action disponible et l'état d'outil près du corps sans encombrer le combat.",
+          "acceptance": "Un nouveau joueur distingue corps, trophée et objectif d'extraction ; sorties et annulations compréhensibles."
+        },
+        {
+          "id": "FUT-12",
+          "status": "PROPOSE",
+          "priority": "P1",
+          "topic": "Qualification de campagne",
+          "design": "Relier les mécaniques à des chasses complètes, à toutes les armures admissibles et aux contraintes de performance. Conserver les limites entre test unitaire, navigateur et partie jouée.",
+          "acceptance": "Parcours répétés sur appareils cibles, captures inspectées, absence d'erreurs et résultats documentés avec commit et périmètre exacts."
+        }
+      ]
+    }
+  ]
+}

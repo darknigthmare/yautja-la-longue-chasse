@@ -1,3 +1,4 @@
+import { normalizeFieldToolIdsV110 } from "./systems/fieldToolsV110";
 import {normalizeHomeworldArchiveV106} from './systems/homeworldArchiveLedgerV106';
 import {normalizeHomeworldArchiveComparisonV107} from './systems/homeworldArchiveComparisonLedgerV107';
 import {normalizeHomeworldCargoV108} from './systems/homeworldCargoLedgerV108';
@@ -325,6 +326,7 @@ export function defaultSave(now = new Date().toISOString()): SaveGame {
       playTimeSeconds: 0,
     },
     inventory: {
+      fieldToolIds: [],
       unlockedWeaponIds: [
         "wristblades",
         "combistick",
@@ -1186,6 +1188,7 @@ export function normalizeSave(value: unknown): SaveGame {
       ),
     },
     inventory: {
+      fieldToolIds: normalizeFieldToolIdsV110(rawInventory.fieldToolIds),
       unlockedWeaponIds,
       unlockedGearIds,
       unlockedArmorIds,

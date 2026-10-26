@@ -1,4 +1,5 @@
 "use client";
+import { FIELD_TOOLS_V110, quoteFieldToolV110, purchaseFieldToolV110 } from "./systems/fieldToolsV110";
 import {recoverAnyArchiveV71} from "./systems/archiveRecoveryV71";
 import { REFERENCE_BIOMASKS_V62, PRESERVED_BIOMASKS_V62 } from "./biomaskCatalogueV62";
 
@@ -2053,7 +2054,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   // City choices are acknowledged only after durable storage confirms the write.
   // A failed write must not announce a completed investigation or apply a reward.
-  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "profile" | "homeworld" | "justice" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88" | "shipAcquisitionV89">>): boolean => {
+  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "inventory" | "profile" | "homeworld" | "justice" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88" | "shipAcquisitionV89">>): boolean => {
     if (!sessionAliveRef.current) return false;
     const current = saveRef.current;
     if (pendingTrophyCommitRef.current) {
@@ -2063,7 +2064,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       setToast("Termine la sauvegarde du résultat de chasse avant de poursuivre le dossier.");
       return false;
     }
-    const updateSerialized = JSON.stringify({ profile: update.profile, homeworld: update.homeworld, justice: update.justice, gameReserveV66: update.gameReserveV66, homeworldPassageV67: update.homeworldPassageV67, homeworldRegionV68: update.homeworldRegionV68, shipPreparationV88: update.shipPreparationV88, shipAcquisitionV89: update.shipAcquisitionV89 });
+    const updateSerialized = JSON.stringify({ inventory: update.inventory, profile: update.profile, homeworld: update.homeworld, justice: update.justice, gameReserveV66: update.gameReserveV66, homeworldPassageV67: update.homeworldPassageV67, homeworldRegionV68: update.homeworldRegionV68, shipPreparationV88: update.shipPreparationV88, shipAcquisitionV89: update.shipAcquisitionV89 });
     const pending = pendingSocialWriteRef.current;
     if (pending) {
       const recovered = reconcileSaveWrite(pending.attempt, current.createdAt);
@@ -2872,6 +2873,25 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     },
     [persist, playSound, save],
   );
+
+  const purchasePermanentFieldTool = useCallback((id: string) => {
+    const current = saveRef.current;
+    const result = purchaseFieldToolV110(current, id);
+    if (!result.ok) {
+      setToast(result.quote.failure === "already-owned"
+        ? "Cet outil de terrain est déjà acquis."
+        : result.quote.failure === "insufficient-clan-marks"
+          ? `Cet outil requiert ${result.quote.cost ?? 0} marques du clan.`
+          : "Achat indisponible : vérifie l’outil et le solde du clan.");
+      return;
+    }
+    if (!persistSocialProgress({profile: result.save.profile, inventory: result.save.inventory})) {
+      setToast("Achat non confirmé : aucun outil accordé. Réessaie son enregistrement avant de poursuivre.");
+      return;
+    }
+    setToast(`Outil de dépeçage acquis pour ${result.spentClanMarks} marques du clan.`);
+    void playSound("select");
+  }, [persistSocialProgress, playSound]);
 
   const purchaseEquipmentUpgrade = useCallback(
     (request: UpgradePurchaseRequest) => {
@@ -4179,6 +4199,22 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 </div>
               </aside>
               <div className="armory-sections">
+                <ArmorySection title="Outils de terrain permanents">
+                  {FIELD_TOOLS_V110.map((tool) => {
+                    const quote = quoteFieldToolV110(save, tool.id);
+                    return <article key={tool.id} className="panel" aria-label={tool.name}>
+                      <h3>{tool.name}</h3>
+                      <p>{tool.description}</p>
+                      <p>Outil permanent · aucun emplacement d’équipement actif.</p>
+                      <button type="button" className="button" disabled={!quote.canPurchase}
+                        onClick={() => purchasePermanentFieldTool(tool.id)}>
+                        {quote.owned ? "Acquis" : quote.canPurchase
+                          ? `Acquérir · ${tool.clanMarkCost} marques`
+                          : `Solde insuffisant · ${tool.clanMarkCost} marques`}
+                      </button>
+                    </article>;
+                  })}
+                </ArmorySection>
                 <ArmorySection title="Armes de chasse">
                   {WEAPONS.map((weapon) => {
                     const unlocked =

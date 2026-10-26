@@ -54,6 +54,9 @@ export type WeaponId =
   | "smart-disc"
   | "yautja-bow";
 
+/** Permanent field tools are carried independently of the two charged gear slots. */
+export type FieldToolId = "flaying-tool";
+
 export type GearId =
   | "netgun"
   | "motion-sensor"
@@ -594,6 +597,8 @@ export interface PlayerProfile {
 }
 
 export interface PlayerInventory {
+  /** Purchased once at the armory; absence in an older save grants nothing. */
+  fieldToolIds: FieldToolId[];
   unlockedWeaponIds: WeaponId[];
   unlockedGearIds: GearId[];
   unlockedArmorIds: ArmorId[];
