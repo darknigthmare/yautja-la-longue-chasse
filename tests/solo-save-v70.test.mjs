@@ -65,7 +65,7 @@ test('manual slots retain active V70 routing, completed return and the exact fif
 test('V10 migration preserves prior chapters and does not infer temple or Blooded from rank',()=>{
   const legacy=structuredClone(p.parseSaveImport(JSON.stringify(run.origin)).save);legacy.version=10;delete legacy.soloV70;
   const restored=p.parseSaveImport(JSON.stringify(legacy));assert.equal(restored.failure,null);
-  assert.equal(restored.save.version,11);assert.equal(restored.save.soloV70,null);
+  assert.equal(restored.save.version,p.SAVE_VERSION);assert.equal(restored.save.soloV70,null);
   for(const field of ['prologue','youthTraining','soloV66','soloV67','soloV68','soloV69','homeworld','appearance','inventory','trophies'])assert.deepEqual(restored.save[field],legacy[field],field);
   const future=storage({...run.save,version:p.SAVE_VERSION+1}),raw=future.getItem(key);
   assert.equal(p.loadSaveWithStatus(future).failure,'future-version');assert.equal(future.getItem(key),raw);

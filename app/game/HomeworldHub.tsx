@@ -1,10 +1,20 @@
 "use client";
 
+import {HOMEWORLD_ARCHIVIST_SCENE_SOURCES_V111} from './systems/homeworldArchivistMotionV111';
+
 /* eslint-disable @next/next/no-img-element -- local transparent whole-character plates and game props */
 
 import HomeworldArchiveComparisonV107,{HomeworldArchiveComparisonJournalV107} from './HomeworldArchiveComparisonV107';
 import HomeworldCargoV108,{HomeworldCargoJournalV108} from './HomeworldCargoV108';
-import HomeworldArchivePlaqueV109,{HomeworldArchivePlaqueJournalV109} from './HomeworldArchivePlaqueV109';
+import {HomeworldArchivePlaqueJournalV109} from './HomeworldArchivePlaqueV109';
+import HomeworldArchivePlaqueV111 from './HomeworldArchivePlaqueV111';
+import HomeworldArchiveContinuationV111,{HomeworldArchiveContinuationJournalV111} from './HomeworldArchiveContinuationV111';
+import HomeworldArrivalRecoveryV111 from './HomeworldArrivalRecoveryV111';
+import HomeworldArchivistPortraitV111 from './HomeworldArchivistPortraitV111';
+import {defaultHomeworldArrivalRecoveryV111,normalizeHomeworldArrivalRecoveryV111,homeworldArrivalRecoveryLedgersV111} from './systems/homeworldArrivalRecoveryLedgerV111';
+import {planHomeworldArrivalRecoveryV111,createHomeworldArrivalRecoveryTransactionV111,type HomeworldArrivalRecoveryPlanV111} from './systems/homeworldArrivalRecoveryV111';
+import {defaultHomeworldArchiveContinuationV111,normalizeHomeworldArchiveContinuationV111,archiveContinuationActiveV111,archiveContinuationBaseV111,archiveContinuationViewV111} from './systems/homeworldArchiveContinuationLedgerV111';
+import {createArchiveContinuationTransactionV111,sampleArchiveContinuationWalkV111,type ArchiveContinuationActionV111} from './systems/homeworldArchiveContinuationV111';
 import {HOMEWORLD_ARCHIVE_PLAQUE_V109,HOMEWORLD_ARCHIVE_PLAQUE_ART_V109,archivePlaqueArtAdmittedV109} from './systems/homeworldArchivePlaqueDefinitionV109';
 import {defaultHomeworldArchivePlaqueV109,normalizeHomeworldArchivePlaqueV109} from './systems/homeworldArchivePlaqueLedgerV109';
 import {archivePlaqueActiveV109,archivePlaquePostReachedV109,archivePlaqueNearbyV109,createArchivePlaqueTransactionV109,sampleArchivePlaqueWalkV109,type ArchivePlaqueActionV109} from './systems/homeworldArchivePlaqueV109';
@@ -130,7 +140,7 @@ export interface HomeworldHubProps {
   onExpedition?(id: HomeworldPlayableRegionId): void;
   onNotify(message: string): void;
 }
-const sceneSourcesV77=[...(archivePlaqueArtAdmittedV109()?[{src:HOMEWORLD_ARCHIVE_PLAQUE_ART_V109.src,sourceWidth:HOMEWORLD_ARCHIVE_PLAQUE_ART_V109.width,sourceHeight:HOMEWORLD_ARCHIVE_PLAQUE_ART_V109.height,kind:'scene' as const}]:[]),...HOMEWORLD_SCENE_ASSETS_V76,...HOMEWORLD_CONNECTOR_SCENE_SOURCES_V82,...HOMEWORLD_LIFT_CABIN_SCENE_SOURCES_V82,...HOMEWORLD_BACKDROP_SCENE_SOURCES_V82,...HOMEWORLD_CNTLIP_HOST_ASSETS_V77,...HOMEWORLD_CITY_NATIVE_SCENE_SOURCES_V78,...HOMEWORLD_CIVIC_SCENE_SOURCES_V80,...HOMEWORLD_NATIVE_SCENE_SOURCES_V81,...HOMEWORLD_STREET_DECOR_SCENE_SOURCES_V83,...HOMEWORLD_STREET_DECOR_SCENE_SOURCES_V84,...HOMEWORLD_LAVA_NATIVE_SOURCES_V77.map(source=>({src:source.src,sourceWidth:source.width,sourceHeight:source.height,kind:'scene' as const}))];
+const sceneSourcesV77=[...HOMEWORLD_ARCHIVIST_SCENE_SOURCES_V111.map(source=>({...source,kind:'scene' as const})),...(archivePlaqueArtAdmittedV109()?[{src:HOMEWORLD_ARCHIVE_PLAQUE_ART_V109.src,sourceWidth:HOMEWORLD_ARCHIVE_PLAQUE_ART_V109.width,sourceHeight:HOMEWORLD_ARCHIVE_PLAQUE_ART_V109.height,kind:'scene' as const}]:[]),...HOMEWORLD_SCENE_ASSETS_V76,...HOMEWORLD_CONNECTOR_SCENE_SOURCES_V82,...HOMEWORLD_LIFT_CABIN_SCENE_SOURCES_V82,...HOMEWORLD_BACKDROP_SCENE_SOURCES_V82,...HOMEWORLD_CNTLIP_HOST_ASSETS_V77,...HOMEWORLD_CITY_NATIVE_SCENE_SOURCES_V78,...HOMEWORLD_CIVIC_SCENE_SOURCES_V80,...HOMEWORLD_NATIVE_SCENE_SOURCES_V81,...HOMEWORLD_STREET_DECOR_SCENE_SOURCES_V83,...HOMEWORLD_STREET_DECOR_SCENE_SOURCES_V84,...HOMEWORLD_LAVA_NATIVE_SOURCES_V77.map(source=>({src:source.src,sourceWidth:source.width,sourceHeight:source.height,kind:'scene' as const}))];
 
 function pointInCurrentSpace(actor: { x: number; y: number }, room: HomeworldInteriorV64 | null, levelId: HomeworldLevelV77): HomeworldPoint | null {
   if (!room) return nearestHomeworldPointV77(levelId, actor);
@@ -176,7 +186,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
   const [wayfindingOpenV75, setWayfindingOpenV75] = useState(false);
   const wayfindingOpenRefV75 = useRef(false);
   const [wayfindingRequestV75, setWayfindingRequestV75] = useState<{ id: string; nonce: number } | null>(null);
-  const [dialog, setDialog] = useState<{ point: HomeworldPoint | null; message?: string; navigation?: boolean; residentV110?: {id:string;owner:string}; streetContactV100?:{id:string;owner:string}; archivePlaqueV109?:{owner:string}; cargoV108?:{owner:string}; archiveComparisonV107?:{owner:string;at:'post'|'table'}; archiveV106?:{owner:string}; cartographyV104?:{owner:string}; cartographyObservationV105?:{owner:string}; cntlipSiteId?:CntlipSiteIdV77 } | null>(null);
+  const [dialog, setDialog] = useState<{ point: HomeworldPoint | null; message?: string; navigation?: boolean; residentV110?: {id:string;owner:string}; recoveryV111?: {owner:string}; streetContactV100?:{id:string;owner:string}; archivePlaqueV109?:{owner:string}; cargoV108?:{owner:string}; archiveComparisonV107?:{owner:string;at:'post'|'table'}; archiveV106?:{owner:string}; cartographyV104?:{owner:string}; cartographyObservationV105?:{owner:string}; cntlipSiteId?:CntlipSiteIdV77 } | null>(null);
   const [announcement, setAnnouncement] = useState(initialLocationV77.cargoRecoveryMessage);
   const viewportRef = useRef<HTMLDivElement>(null);
   const rootRef = useRef<HTMLElement>(null);
@@ -211,6 +221,13 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
   const [plaqueViewV109,setPlaqueViewV109]=useState(()=>normalizeHomeworldArchivePlaqueV109(save.homeworld.archivePlaqueV109)??defaultHomeworldArchivePlaqueV109(save.createdAt));
   const plaqueDraftRefV109=useRef(plaqueViewV109),plaqueWritePausedRefV109=useRef(false);
   const [plaqueWritePausedV109,setPlaqueWritePausedV109]=useState(false),[plaqueMessageV109,setPlaqueMessageV109]=useState('');
+  const [continuationViewV111,setContinuationViewV111]=useState(()=>normalizeHomeworldArchiveContinuationV111(save.homeworld.archiveContinuationV111,save.homeworld.archivePlaqueV109)??defaultHomeworldArchiveContinuationV111(save.createdAt));
+  const continuationDraftRefV111=useRef(continuationViewV111);
+  const plaqueEffectiveViewV111=archiveContinuationViewV111(continuationViewV111)??plaqueViewV109;
+  const deferredPlaqueV111=!!archiveContinuationBaseV111(plaqueViewV109);
+  const [recoveryPlanV111,setRecoveryPlanV111]=useState<HomeworldArrivalRecoveryPlanV111|null>(null);
+  const [recoveryMessageV111,setRecoveryMessageV111]=useState('');
+  const [recoveryWriteRefusedV111,setRecoveryWriteRefusedV111]=useState(false);
   const saveRef = useRef(save);
   const suspendedRef = useRef(suspended);
   const pausedRef = useRef(paused || inactive || spatialCodexOpen || wayfindingOpenV75 || cargoMigrationPendingV108);
@@ -242,7 +259,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
     residentAdmissionRefV110.current={owner:save.createdAt,active:!cargoMigrationPendingV108&&!suspended&&!paused&&!inactive&&!spatialCodexOpen&&!wayfindingOpenV75&&motionAssetsV74.ready};
   },[save.createdAt,cargoMigrationPendingV108,suspended,paused,inactive,spatialCodexOpen,wayfindingOpenV75,motionAssetsV74.ready]);
   const villagesOpenV69 = canVisitHomeworldVillagesV69(save);
-  const blocked = cargoMigrationPendingV108 || suspended || paused || inactive || !!dialog || spatialCodexOpen || wayfindingOpenV75 || !!transitV77 || !!skiffV77 || !motionAssetsV74.ready || liftSessionOwnerV83 !== save.createdAt || cartographyWritePausedV104 || cartographyWritePausedV105 || archiveWritePausedV106 || (archiveViewV106.receipt?.phase==='interrupted'&&!!archiveViewV106.receipt.carrier) || comparisonWritePausedV107 || (comparisonViewV107.receipt?.phase==='interrupted'&&comparisonViewV107.receipt.evidence.place==='carried') || cargoWritePausedV108 || (cargoViewV108.receipt?.phase==='interrupted'&&!!cargoViewV108.receipt.carrier) || plaqueWritePausedV109 || (plaqueViewV109.receipt?.phase==='interrupted'&&!!plaqueViewV109.receipt.carrier);
+  const blocked = cargoMigrationPendingV108 || suspended || paused || inactive || !!dialog || spatialCodexOpen || wayfindingOpenV75 || !!transitV77 || !!skiffV77 || !motionAssetsV74.ready || liftSessionOwnerV83 !== save.createdAt || cartographyWritePausedV104 || cartographyWritePausedV105 || archiveWritePausedV106 || (archiveViewV106.receipt?.phase==='interrupted'&&!!archiveViewV106.receipt.carrier) || comparisonWritePausedV107 || (comparisonViewV107.receipt?.phase==='interrupted'&&comparisonViewV107.receipt.evidence.place==='carried') || cargoWritePausedV108 || (cargoViewV108.receipt?.phase==='interrupted'&&!!cargoViewV108.receipt.carrier) || plaqueWritePausedV109 || (plaqueEffectiveViewV111.receipt?.phase==='interrupted'&&!!plaqueEffectiveViewV111.receipt.carrier);
   const appliedArrivalV67 = useRef<string | null>(null);
   useEffect(() => {
     if (!arrivalV67 || appliedArrivalV67.current === arrivalV67.requestId) return;
@@ -289,6 +306,8 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
     const incomingPlaqueV109=normalizeHomeworldArchivePlaqueV109(save.homeworld.archivePlaqueV109)??defaultHomeworldArchivePlaqueV109(save.createdAt);
     if(plaqueDraftRefV109.current.ownerCreatedAt!==save.createdAt){plaqueWritePausedRefV109.current=false;setPlaqueWritePausedV109(false);setPlaqueMessageV109('');}
     if(plaqueDraftRefV109.current.ownerCreatedAt!==save.createdAt||incomingPlaqueV109.revision>plaqueDraftRefV109.current.revision){plaqueDraftRefV109.current=incomingPlaqueV109;setPlaqueViewV109(incomingPlaqueV109);}
+    const incomingContinuationV111=normalizeHomeworldArchiveContinuationV111(save.homeworld.archiveContinuationV111,save.homeworld.archivePlaqueV109)??defaultHomeworldArchiveContinuationV111(save.createdAt);
+    if(continuationDraftRefV111.current.ownerCreatedAt!==save.createdAt||incomingContinuationV111.revision>continuationDraftRefV111.current.revision){continuationDraftRefV111.current=incomingContinuationV111;setContinuationViewV111(incomingContinuationV111);}
     const incomingCargoV108=normalizeHomeworldCargoV108(save.homeworld.cargoV108)??defaultHomeworldCargoV108(save.createdAt);
     if(cargoDraftRefV108.current.ownerCreatedAt!==save.createdAt){cargoWritePausedRefV108.current=false;setCargoWritePausedV108(false);setCargoMessageV108('');}
     if(cargoDraftRefV108.current.ownerCreatedAt!==save.createdAt||incomingCargoV108.revision>cargoDraftRefV108.current.revision){cargoDraftRefV108.current=incomingCargoV108;setCargoViewV108(incomingCargoV108);}
@@ -323,6 +342,8 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
 
   const onProgress = useCallback((next: HomeworldProgress) => {
     if (!cargoMigrationWriteReadyRefV108.current || saveRef.current.createdAt !== save.createdAt || transitRefV77.current || skiffRefV77.current) return false;
+    if(progressRef.current.arrivalRecoveryV111?.receipt&&JSON.stringify(next.arrivalRecoveryV111)!==JSON.stringify(progressRef.current.arrivalRecoveryV111))return false;
+    if(next.arrivalRecoveryV111&&(!normalizeHomeworldArrivalRecoveryV111(next.arrivalRecoveryV111)||next.arrivalRecoveryV111.ownerCreatedAt!==save.createdAt))return false;
     const locationV77 = createHomeworldCheckpointV77(save.createdAt, levelRefV77.current, actorRef.current, interiorRef.current?.buildingId ?? null, exteriorAnchorRef.current);
     // Carry the sampled walk into every ordinary city save, including visit
     // and location checkpoints. A reload never pairs a newer position with
@@ -360,9 +381,19 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
     if((archivePlaqueV109?.revision??0)===(progressRef.current.archivePlaqueV109?.revision??0)&&plaqueDraft.ownerCreatedAt===save.createdAt&&plaqueDraft.receipt&&JSON.stringify(plaqueDraft)!==JSON.stringify(archivePlaqueV109))archivePlaqueV109={...plaqueDraft,revision:plaqueDraft.revision+1};
     if(archivePlaqueV109&&(!normalizeHomeworldArchivePlaqueV109(archivePlaqueV109)||archivePlaqueV109.ownerCreatedAt!==save.createdAt))return false;
     if(archivePlaqueActiveV109(archivePlaqueV109)&&(cargoActiveV108(cargoV108)||archiveComparisonActiveV107(archiveComparisonV107)||archiveActiveV106(archiveV106)||cartographyActiveV105(cartographyV105)||!!cartographyV104?.receipt&&cartographyV104.receipt.phase!=='completed'))return false;
-    const durable = { ...next, locationV77,...(archivePlaqueV109?{archivePlaqueV109}:{}),...(cargoV108?{cargoV108}:{}),...(archiveComparisonV107?{archiveComparisonV107}:{}),...(archiveV106?{archiveV106}:{}),...(cartographyV104?{cartographyV104}:{}),...(cartographyV105?{cartographyV105}:{}) };
+    let archiveContinuationV111=next.archiveContinuationV111;const continuationDraft=continuationDraftRefV111.current;
+    if((archiveContinuationV111?.revision??0)<(progressRef.current.archiveContinuationV111?.revision??0))return false;
+    if((archiveContinuationV111?.revision??0)===(progressRef.current.archiveContinuationV111?.revision??0)&&continuationDraft.ownerCreatedAt===save.createdAt&&continuationDraft.receipt&&JSON.stringify(continuationDraft)!==JSON.stringify(archiveContinuationV111))archiveContinuationV111={...continuationDraft,revision:continuationDraft.revision+1};
+    if(archiveContinuationV111&&(!normalizeHomeworldArchiveContinuationV111(archiveContinuationV111,archivePlaqueV109)||archiveContinuationV111.ownerCreatedAt!==save.createdAt))return false;
+    if(archiveContinuationActiveV111(archiveContinuationV111)&&(archivePlaqueActiveV109(archivePlaqueV109)||cargoActiveV108(cargoV108)||archiveComparisonActiveV107(archiveComparisonV107)||archiveActiveV106(archiveV106)||cartographyActiveV105(cartographyV105)||!!cartographyV104?.receipt&&cartographyV104.receipt.phase!=='completed'))return false;
+    const durable = { ...next, locationV77,...(archiveContinuationV111?{archiveContinuationV111}:{}),...(archivePlaqueV109?{archivePlaqueV109}:{}),...(cargoV108?{cargoV108}:{}),...(archiveComparisonV107?{archiveComparisonV107}:{}),...(archiveV106?{archiveV106}:{}),...(cartographyV104?{cartographyV104}:{}),...(cartographyV105?{cartographyV105}:{}) };
+    if(next.arrivalRecoveryV111?.receipt&&!progressRef.current.arrivalRecoveryV111?.receipt){
+      const receipt=next.arrivalRecoveryV111.receipt;
+      if(receipt.originalCheckpointJson!==JSON.stringify(progressRef.current.locationV77)||receipt.originalLedgersJson!==JSON.stringify(homeworldArrivalRecoveryLedgersV111(durable))||JSON.stringify(receipt.restoredCheckpoint)!==JSON.stringify(locationV77))return false;
+    }
     if (!persistProgress(durable)) return false;
     progressRef.current = durable;
+    if(archiveContinuationV111){continuationDraftRefV111.current=archiveContinuationV111;setContinuationViewV111(archiveContinuationV111);}
     if(archivePlaqueV109){plaqueDraftRefV109.current=archivePlaqueV109;setPlaqueViewV109(archivePlaqueV109);}
     plaqueWritePausedRefV109.current=false;setPlaqueWritePausedV109(false);
     if(cargoV108){cargoDraftRefV108.current=cargoV108;setCargoViewV108(cargoV108);}
@@ -398,7 +429,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
     cartographyWritePausedRefV104.current=true;setCartographyWritePausedV104(true);setCartographyMessageV104(message);clearInputs();
   },[clearInputs]);
   const submitCartographyV104=useCallback((action:CartographyActionV104,expectedRevision:number)=>{
-    if(archivePlaqueActiveV109(plaqueDraftRefV109.current)){setCartographyMessageV104('Termine l’étude K-17 avant un autre relevé.');return false;}
+    if((archivePlaqueActiveV109(plaqueDraftRefV109.current)||archiveContinuationActiveV111(continuationDraftRefV111.current))){setCartographyMessageV104('Termine l’étude K-17 avant un autre relevé.');return false;}
     if(cargoActiveV108(cargoDraftRefV108.current)){setCartographyMessageV104('Termine la répartition des lots avant un autre relevé.');return false;}
     if(archiveComparisonActiveV107(comparisonDraftRefV107.current)){setCartographyMessageV104('Termine l’étude située avant un autre relevé.');return false;}
     if(archiveActiveV106(archiveDraftRefV106.current)){setCartographyMessageV104('Termine les dossiers séparés avant un autre relevé.');return false;}
@@ -426,7 +457,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
     if(onProgress(progressRef.current))setCartographyMessageV104(!cartographyDraftRefV104.current.receipt||['choice','ready'].includes(cartographyDraftRefV104.current.receipt.phase)?'L’enregistrement est disponible. Reprends ta demande auprès du cartographe.':'Le relevé est enregistré. Tu peux reprendre la marche.');
     else cartographyWriteRefusedV104('L’enregistrement reste indisponible ; le relevé est conservé ici.');
   };
-  const cartographyContextV105=useCallback(()=>({...cartographyContextV104(),otherOperationActive:archivePlaqueActiveV109(plaqueDraftRefV109.current)||cargoActiveV108(cargoDraftRefV108.current)||archiveComparisonActiveV107(comparisonDraftRefV107.current)||archiveActiveV106(archiveDraftRefV106.current)||!!progressRef.current.cartographyV104?.receipt&&progressRef.current.cartographyV104.receipt.phase!=='completed'}),[cartographyContextV104]);
+  const cartographyContextV105=useCallback(()=>({...cartographyContextV104(),otherOperationActive:(archivePlaqueActiveV109(plaqueDraftRefV109.current)||archiveContinuationActiveV111(continuationDraftRefV111.current))||cargoActiveV108(cargoDraftRefV108.current)||archiveComparisonActiveV107(comparisonDraftRefV107.current)||archiveActiveV106(archiveDraftRefV106.current)||!!progressRef.current.cartographyV104?.receipt&&progressRef.current.cartographyV104.receipt.phase!=='completed'}),[cartographyContextV104]);
   const cartographyWriteRefusedV105=useCallback((message:string)=>{cartographyWritePausedRefV105.current=true;setCartographyWritePausedV105(true);setCartographyMessageV105(message);clearInputs();},[clearInputs]);
   const submitCartographyV105=useCallback((action:CartographyActionV105,revision:number)=>{
     const transaction=createCartographyTransactionV105(()=>cartographyDraftRefV105.current,cartographyContextV105,next=>onProgress({...progressRef.current,cartographyV105:next}));
@@ -453,7 +484,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
     clearInputs();viewportRef.current?.focus({preventScroll:true});if(!onProgress(progressRef.current)){cartographyWriteRefusedV105('La position d’observation n’a pas été enregistrée. Réessaie ici.');return false;}
     const next={point:null,cartographyObservationV105:{owner:saveRef.current.createdAt}};dialogStateRef.current=next;setDialog(next);return true;
   },[cartographyContextV105,clearInputs,onProgress,cartographyWriteRefusedV105]);
-  const archiveContextV106=useCallback(()=>({...cartographyContextV104(),otherOperationActive:archivePlaqueActiveV109(plaqueDraftRefV109.current)||cargoActiveV108(cargoDraftRefV108.current)||cartographyActiveV105(cartographyDraftRefV105.current)||!!cartographyDraftRefV104.current.receipt&&cartographyDraftRefV104.current.receipt.phase!=='completed'}),[cartographyContextV104]);
+  const archiveContextV106=useCallback(()=>({...cartographyContextV104(),otherOperationActive:(archivePlaqueActiveV109(plaqueDraftRefV109.current)||archiveContinuationActiveV111(continuationDraftRefV111.current))||cargoActiveV108(cargoDraftRefV108.current)||cartographyActiveV105(cartographyDraftRefV105.current)||!!cartographyDraftRefV104.current.receipt&&cartographyDraftRefV104.current.receipt.phase!=='completed'}),[cartographyContextV104]);
   const archiveWriteRefusedV106=useCallback((message:string)=>{archiveWritePausedRefV106.current=true;setArchiveWritePausedV106(true);setArchiveMessageV106(message);clearInputs();},[clearInputs]);
   const submitArchiveV106=useCallback((action:ArchiveActionV106,revision:number)=>{
     const transaction=createArchiveTransactionV106(()=>archiveDraftRefV106.current,archiveContextV106,next=>onProgress({...progressRef.current,archiveV106:next}));
@@ -475,7 +506,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
   },[archiveContextV106,interruptArchiveV106,clearInputs]);
   const retryArchiveV106=()=>{viewportRef.current?.focus({preventScroll:true});if(onProgress(progressRef.current))setArchiveMessageV106('Dossiers et dernier point enregistrés. Reprends l’action ici.');else archiveWriteRefusedV106('L’enregistrement reste indisponible. Les dossiers sont conservés ici.');};
   const actArchiveFromWorldV106=(action:ArchiveActionV106,revision:number)=>{viewportRef.current?.focus({preventScroll:true});clearInputs();return submitArchiveV106(action,revision);};
-  const comparisonContextV107=useCallback(()=>({...cartographyContextV104(),legacyArchive:archiveDraftRefV106.current,otherOperationActive:archivePlaqueActiveV109(plaqueDraftRefV109.current)||cargoActiveV108(cargoDraftRefV108.current)||archiveActiveV106(archiveDraftRefV106.current)||cartographyActiveV105(cartographyDraftRefV105.current)||!!cartographyDraftRefV104.current.receipt&&cartographyDraftRefV104.current.receipt.phase!=='completed'}),[cartographyContextV104]);
+  const comparisonContextV107=useCallback(()=>({...cartographyContextV104(),legacyArchive:archiveDraftRefV106.current,otherOperationActive:(archivePlaqueActiveV109(plaqueDraftRefV109.current)||archiveContinuationActiveV111(continuationDraftRefV111.current))||cargoActiveV108(cargoDraftRefV108.current)||archiveActiveV106(archiveDraftRefV106.current)||cartographyActiveV105(cartographyDraftRefV105.current)||!!cartographyDraftRefV104.current.receipt&&cartographyDraftRefV104.current.receipt.phase!=='completed'}),[cartographyContextV104]);
   const comparisonWriteRefusedV107=useCallback((message:string)=>{comparisonWritePausedRefV107.current=true;setComparisonWritePausedV107(true);setComparisonMessageV107(message);clearInputs();},[clearInputs]);
   const submitComparisonV107=useCallback((action:ArchiveComparisonActionV107,revision:number)=>{
     const tx=createArchiveComparisonTransactionV107(()=>comparisonDraftRefV107.current,comparisonContextV107,next=>onProgress({...progressRef.current,archiveComparisonV107:next})),out=tx(action,revision);
@@ -491,7 +522,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
   },[comparisonContextV107,interruptComparisonV107,clearInputs]);
   const actComparisonFromWorldV107=(action:ArchiveComparisonActionV107,revision:number)=>{viewportRef.current?.focus({preventScroll:true});clearInputs();return submitComparisonV107(action,revision);};
   const retryComparisonV107=()=>{viewportRef.current?.focus({preventScroll:true});if(onProgress(progressRef.current))setComparisonMessageV107('Étude et dernier point enregistrés. Reprends l’action ici.');else comparisonWriteRefusedV107('L’enregistrement reste indisponible ; l’objet et les relevés sont conservés.');};
-  const cargoContextV108=useCallback(()=>({...cartographyContextV104(),otherOperationActive:archivePlaqueActiveV109(plaqueDraftRefV109.current)||archiveComparisonActiveV107(comparisonDraftRefV107.current)||archiveActiveV106(archiveDraftRefV106.current)||cartographyActiveV105(cartographyDraftRefV105.current)||!!cartographyDraftRefV104.current.receipt&&cartographyDraftRefV104.current.receipt.phase!=='completed'}),[cartographyContextV104]);
+  const cargoContextV108=useCallback(()=>({...cartographyContextV104(),otherOperationActive:(archivePlaqueActiveV109(plaqueDraftRefV109.current)||archiveContinuationActiveV111(continuationDraftRefV111.current))||archiveComparisonActiveV107(comparisonDraftRefV107.current)||archiveActiveV106(archiveDraftRefV106.current)||cartographyActiveV105(cartographyDraftRefV105.current)||!!cartographyDraftRefV104.current.receipt&&cartographyDraftRefV104.current.receipt.phase!=='completed'}),[cartographyContextV104]);
   const cargoWriteRefusedV108=useCallback((message:string)=>{cargoWritePausedRefV108.current=true;setCargoWritePausedV108(true);setCargoMessageV108(message);clearInputs();},[clearInputs]);
   const submitCargoV108=useCallback((action:CargoActionV108,revision:number)=>{
     const tx=createCargoTransactionV108(()=>cargoDraftRefV108.current,cargoContextV108,next=>onProgress({...progressRef.current,cargoV108:next})),out=tx(action,revision);
@@ -509,18 +540,38 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
   const retryCargoV108=()=>{viewportRef.current?.focus({preventScroll:true});if(onProgress(progressRef.current))setCargoMessageV108('Lots et dernier point enregistrés. Reprends l’action ici.');else cargoWriteRefusedV108('L’enregistrement reste indisponible ; chaque lot garde sa place et son propriétaire.');};
   const plaqueContextV109=useCallback(()=>({...cartographyContextV104(),artAvailable:motionAssetsV74.ready&&archivePlaqueArtAdmittedV109(),cargo:cargoDraftRefV108.current,otherOperationActive:cargoActiveV108(cargoDraftRefV108.current)||archiveComparisonActiveV107(comparisonDraftRefV107.current)||archiveActiveV106(archiveDraftRefV106.current)||cartographyActiveV105(cartographyDraftRefV105.current)||!!cartographyDraftRefV104.current.receipt&&cartographyDraftRefV104.current.receipt.phase!=='completed'}),[cartographyContextV104,motionAssetsV74.ready]);
   const plaqueWriteRefusedV109=useCallback((message:string)=>{plaqueWritePausedRefV109.current=true;setPlaqueWritePausedV109(true);setPlaqueMessageV109(message);clearInputs();},[clearInputs]);
+  const continuationContextV111=useCallback(()=>({...plaqueContextV109(),currentOwnerCreatedAt:residentAdmissionRefV110.current.owner,active:plaqueContextV109().active&&residentAdmissionRefV110.current.active,basePlaque:plaqueDraftRefV109.current}),[plaqueContextV109]);
+  const submitContinuationV111=useCallback((action:ArchiveContinuationActionV111,revision:number)=>{
+    if(plaqueWritePausedRefV109.current)return false;
+    const tx=createArchiveContinuationTransactionV111(()=>continuationDraftRefV111.current,continuationContextV111,next=>onProgress({...progressRef.current,archiveContinuationV111:next})),out=tx(action,revision);
+    if(!out.ok){if(out.writeRefused)plaqueWriteRefusedV109(out.message);else setPlaqueMessageV109(out.message);return false;}
+    setPlaqueMessageV109(out.message);return true;
+  },[continuationContextV111,onProgress,plaqueWriteRefusedV109]);
+  const actContinuationFromWorldV111=(action:ArchiveContinuationActionV111,revision:number)=>{viewportRef.current?.focus({preventScroll:true});clearInputs();return submitContinuationV111(action,revision);};
   const submitPlaqueV109=useCallback((action:ArchivePlaqueActionV109,revision:number)=>{
+    if(plaqueWritePausedRefV109.current)return false;
+    if(continuationDraftRefV111.current.receipt)return false;
     const tx=createArchivePlaqueTransactionV109(()=>plaqueDraftRefV109.current,plaqueContextV109,next=>onProgress({...progressRef.current,archivePlaqueV109:next})),out=tx(action,revision);
     if(!out.ok){if(out.writeRefused)plaqueWriteRefusedV109(out.message);else setPlaqueMessageV109(out.message);return false;}
     setPlaqueMessageV109(out.message);return true;
   },[plaqueContextV109,onProgress,plaqueWriteRefusedV109]);
-  const interruptPlaqueV109=useCallback(()=>{const l=plaqueDraftRefV109.current;return !l.receipt||!['working','return'].includes(l.receipt.phase)||submitPlaqueV109('interrupt',l.revision);},[submitPlaqueV109]);
+  const submitEffectivePlaqueV111=useCallback((action:ArchivePlaqueActionV109,revision:number)=>{
+    const continuation=continuationDraftRefV111.current;
+    if(continuation.receipt?.phase==='active')return action!=='choose-b'&&revision===continuation.receipt.study?.revision&&submitContinuationV111(action,continuation.revision);
+    return submitPlaqueV109(action,revision);
+  },[submitContinuationV111,submitPlaqueV109]);
+  const interruptPlaqueV109=useCallback(()=>{const l=archiveContinuationViewV111(continuationDraftRefV111.current)??plaqueDraftRefV109.current;return !l.receipt||!['working','return'].includes(l.receipt.phase)||submitEffectivePlaqueV111('interrupt',l.revision);},[submitEffectivePlaqueV111]);
   const samplePlaqueV109=useCallback((before:HomeworldActor,after:HomeworldActor,seconds:number)=>{
     if(plaqueWritePausedRefV109.current)return false;
+    if(continuationDraftRefV111.current.receipt?.phase==='active'){
+      const out=sampleArchiveContinuationWalkV111(continuationDraftRefV111.current,before,after,seconds,continuationContextV111());
+      if(out.invalid){const stopped={...before,vx:0,vy:0};actorRef.current=stopped;setActor(stopped);clearInputs();interruptPlaqueV109();return false;}
+      continuationDraftRefV111.current=out.ledger;return true;
+    }
     const out=sampleArchivePlaqueWalkV109(plaqueDraftRefV109.current,before,after,seconds,plaqueContextV109());
     if(out.invalid){const stopped={...before,vx:0,vy:0};actorRef.current=stopped;setActor(stopped);clearInputs();interruptPlaqueV109();return false;}
     plaqueDraftRefV109.current=out.ledger;return true;
-  },[plaqueContextV109,interruptPlaqueV109,clearInputs]);
+  },[plaqueContextV109,continuationContextV111,interruptPlaqueV109,clearInputs]);
   const actPlaqueFromWorldV109=(action:ArchivePlaqueActionV109,revision:number)=>{viewportRef.current?.focus({preventScroll:true});clearInputs();return submitPlaqueV109(action,revision);};
   const retryPlaqueV109=()=>{viewportRef.current?.focus({preventScroll:true});if(onProgress(progressRef.current))setPlaqueMessageV109('Pièces et dernier point K-17 enregistrés.');else plaqueWriteRefusedV109('L’enregistrement reste indisponible ; les pièces sont conservées.');};
   const commitCargoArrivalV108=useCallback(()=>{
@@ -575,6 +626,35 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
     cargo:cargoDraftRefV108.current,
   }),[save.createdAt]);
 
+  const recoveryContextV111=useCallback(()=>({ownerCreatedAt:save.createdAt,currentOwnerCreatedAt:residentAdmissionRefV110.current.owner,
+    checkpoint:progressRef.current.locationV77,ledgers:homeworldArrivalRecoveryLedgersV111(progressRef.current),actor:actorRef.current,
+    levelId:levelRefV77.current,interiorId:interiorRef.current?.buildingId??null,inTransit:!!transitRefV77.current||!!skiffRefV77.current,
+    active:residentAdmissionRefV110.current.active&&!suspendedRef.current&&!pausedRef.current&&!document.hidden&&document.hasFocus(),
+  }),[save.createdAt]);
+  const prepareRecoveryV111=()=>{
+    const dialog=dialogStateRef.current?.recoveryV111;if(!dialog||dialog.owner!==saveRef.current.createdAt)return;
+    const ledger=progressRef.current.arrivalRecoveryV111??defaultHomeworldArrivalRecoveryV111(saveRef.current.createdAt);
+    const inspected=planHomeworldArrivalRecoveryV111(ledger,recoveryContextV111());
+    setRecoveryPlanV111(inspected.plan);setRecoveryMessageV111(inspected.reason);setRecoveryWriteRefusedV111(false);
+  };
+  const confirmRecoveryV111=(key:string)=>{
+    const dialog=dialogStateRef.current?.recoveryV111;if(!dialog||dialog.owner!==saveRef.current.createdAt)return;
+    const transaction=createHomeworldArrivalRecoveryTransactionV111(()=>progressRef.current.arrivalRecoveryV111??defaultHomeworldArrivalRecoveryV111(saveRef.current.createdAt),recoveryContextV111,proposal=>{
+      const previous={actor:actorRef.current,exterior:exteriorAnchorRef.current,room:interiorRef.current,level:levelRefV77.current};
+      const restored={...previous.actor,...proposal.checkpoint.exterior,vx:0,vy:0};let acknowledged=false;
+      actorRef.current=restored;exteriorAnchorRef.current=restored;interiorRef.current=null;levelRefV77.current=proposal.checkpoint.levelId;
+      try{
+        acknowledged=onProgress({...progressRef.current,arrivalRecoveryV111:proposal.ledger});
+        if(acknowledged){setActor(restored);setInteriorId(null);setLevelIdV77(proposal.checkpoint.levelId);setElevationV77(homeworldLevelV77(proposal.checkpoint.levelId).elevation);}
+        return acknowledged;
+      }finally{
+        if(!acknowledged){actorRef.current=previous.actor;exteriorAnchorRef.current=previous.exterior;interiorRef.current=previous.room;levelRefV77.current=previous.level;}
+      }
+    });
+    const result=transaction(key);setRecoveryMessageV111(result.message);setRecoveryWriteRefusedV111(!!result.writeRefused);
+    if(result.ok){dialogStateRef.current=null;setDialog(null);clearInputs();setRecoveryPlanV111(null);setAnnouncement(result.message);onNotify(result.message);requestAnimationFrame(()=>viewportRef.current?.focus({preventScroll:true}));}
+    else if(result.stale)setRecoveryPlanV111(null);
+  };
   const enterInterior = useCallback((buildingId: string) => {
     const building = nearestHomeworldDoorV77(levelRefV77.current, actorRef.current);
     if (interiorRef.current || transitRefV77.current || suspendedRef.current || pausedRef.current || dialogStateRef.current || building?.id !== buildingId) return;
@@ -603,11 +683,17 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
       || nearestHomeworldInteriorTargetV64(room, actorRef.current)?.kind !== "exit") return;
     clearInputs();
     const next = homeworldInteriorExitV110(levelRefV77.current,exteriorAnchorRef.current,cargoDraftRefV108.current,saveRef.current.createdAt);
-    if (!next) { const message='Le seuil extérieur est occupé. Tu restes à l’intérieur ; dégage le passage avant de sortir.';setAnnouncement(message);onNotify(message);return; }
+    if (!next) {
+      const message='Le seuil extérieur est occupé. Tu peux consulter un ancien point extérieur conservé.';setAnnouncement(message);onNotify(message);
+      const inspection=planHomeworldArrivalRecoveryV111(progressRef.current.arrivalRecoveryV111??defaultHomeworldArrivalRecoveryV111(saveRef.current.createdAt),recoveryContextV111());
+      if(inspection.plan){setRecoveryPlanV111(null);setRecoveryMessageV111('');setRecoveryWriteRefusedV111(false);const next={point:null,recoveryV111:{owner:saveRef.current.createdAt}};dialogStateRef.current=next;setDialog(next);}
+      else {setAnnouncement(inspection.reason);onNotify(inspection.reason);}
+      return;
+    }
     interiorRef.current = null; actorRef.current = next;
     setInteriorId(null); setActor(next); recordLocationV77(); setAnnouncement("Retour au seuil extérieur.");
     requestAnimationFrame(() => viewportRef.current?.focus({ preventScroll: true }));
-  }, [clearInputs, recordLocationV77,onNotify]);
+  }, [clearInputs, recordLocationV77,onNotify,recoveryContextV111]);
 
   const persistAction = useCallback((action: HomeworldAction, announce = true) => {
     const currentSave = saveRef.current;
@@ -681,8 +767,9 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
     const room = interiorRef.current;
     if(cartographyWritePausedRefV104.current||cartographyWritePausedRefV105.current||archiveWritePausedRefV106.current||comparisonWritePausedRefV107.current||cargoWritePausedRefV108.current||plaqueWritePausedRefV109.current)return;
     if(!room){
-      const plaqueAction=archivePlaqueNearbyV109(plaqueDraftRefV109.current,plaqueContextV109());
-      if(plaqueAction){clearInputs();submitPlaqueV109(plaqueAction.action,plaqueDraftRefV109.current.revision);return;}
+      const effectivePlaque=archiveContinuationViewV111(continuationDraftRefV111.current)??plaqueDraftRefV109.current;
+      const plaqueAction=archivePlaqueNearbyV109(effectivePlaque,plaqueContextV109());
+      if(plaqueAction){clearInputs();submitEffectivePlaqueV111(plaqueAction.action,effectivePlaque.revision);return;}
       if(archivePlaquePostReachedV109(plaqueContextV109())){clearInputs();if(!plaqueDraftRefV109.current.receipt){if(!submitPlaqueV109('open',plaqueDraftRefV109.current.revision))return;}else if(!onProgress(progressRef.current)){plaqueWriteRefusedV109('Le point de l’étude K-17 n’a pas été enregistré. Réessaie ici.');return;}const stopped={...actorRef.current,vx:0,vy:0};actorRef.current=stopped;setActor(stopped);const next={point:null,archivePlaqueV109:{owner:saveRef.current.createdAt}};dialogStateRef.current=next;setDialog(next);return;}
       const cargoAction=cargoNearbyV108(cargoDraftRefV108.current,cargoContextV108());
       if(cargoAction){clearInputs();submitCargoV108(cargoAction.action,cargoDraftRefV108.current.revision);return;}
@@ -776,7 +863,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
     }
     if (!youthWelcome && point.kind === "evidence" && point.evidenceId) message = persistAction({ type: "inspect", evidenceId: point.evidenceId }).message;
     setDialog({ point, message });
-  }, [clearInputs, enterInterior, exitInterior, persistAction, residentContextV110, youthWelcome,openCntlipV77,updateLiftStationV83,interruptCartographyV104,cartographyContextV104,cartographyContextV105,interruptCartographyV105,openObservationV105,archiveContextV106,submitArchiveV106,interruptArchiveV106,onProgress,archiveWriteRefusedV106,comparisonContextV107,submitComparisonV107,interruptComparisonV107,comparisonWriteRefusedV107,cargoContextV108,submitCargoV108,interruptCargoV108,cargoWriteRefusedV108,plaqueContextV109,submitPlaqueV109,interruptPlaqueV109,plaqueWriteRefusedV109]);
+  }, [clearInputs, enterInterior, exitInterior, persistAction, residentContextV110, youthWelcome,openCntlipV77,updateLiftStationV83,interruptCartographyV104,cartographyContextV104,cartographyContextV105,interruptCartographyV105,openObservationV105,archiveContextV106,submitArchiveV106,interruptArchiveV106,onProgress,archiveWriteRefusedV106,comparisonContextV107,submitComparisonV107,interruptComparisonV107,comparisonWriteRefusedV107,cargoContextV108,submitCargoV108,interruptCargoV108,cargoWriteRefusedV108,plaqueContextV109,submitPlaqueV109,submitEffectivePlaqueV111,interruptPlaqueV109,plaqueWriteRefusedV109]);
 
   useEffect(() => {
     const element = viewportRef.current;
@@ -827,7 +914,9 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
       previous = time;
       const ownsFocus = !!rootRef.current?.contains(document.activeElement) && document.hasFocus();
       const active = ownsFocus && !document.hidden && !suspendedRef.current && !spatialCodexOpenRef.current && !wayfindingOpenRefV75.current;
-      const context = !active ? "inactive" : dialogStateRef.current ? "dialog" : pausedRef.current ? "paused" : "world";
+      const guideOptionsV111=rootRef.current?.querySelector?.<HTMLDetailsElement>('[data-homeworld-guide-options-v111][open]')??null;
+      const guideOptionsFocusedV111=!!guideOptionsV111?.contains(document.activeElement);
+      const context = !active ? "inactive" : dialogStateRef.current||guideOptionsFocusedV111 ? "dialog" : pausedRef.current ? "paused" : "world";
       let pad: Gamepad | null = null;
       if (active) {
         try { pad = [...(navigator.getGamepads?.() ?? [])].find(value => value?.connected) ?? null; }
@@ -838,11 +927,11 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
       if (gamepad.actions.pause) {
         setPaused(!pausedRef.current); setInactive(false); clearInputs();
       }
-      if (!suspendedRef.current && (!pausedRef.current || dialogStateRef.current)) {
+      if (!suspendedRef.current && (!pausedRef.current || dialogStateRef.current || guideOptionsFocusedV111)) {
         if (dialogStateRef.current) {
-          const choices = [...(dialogRef.current?.querySelectorAll<HTMLButtonElement>("button:not(:disabled)") ?? [])];
+          const choices = [...(dialogRef.current?.querySelectorAll<HTMLElement>("button:not(:disabled),summary") ?? [])].filter(choice=>!choice.getClientRects||choice.getClientRects().length>0);
           if (gamepad.actions.menuDirection && choices.length) {
-            const selected = choices.indexOf(document.activeElement as HTMLButtonElement);
+            const selected = choices.indexOf(document.activeElement as HTMLElement);
             choices[nextHomeworldDialogChoice(selected, choices.length, gamepad.actions.menuDirection)]?.focus();
           }
           if (gamepad.actions.cancel) closeDialog();
@@ -850,11 +939,18 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
             const selected = choices.find(choice => choice === document.activeElement);
             (selected ?? choices[0])?.click();
           }
+        } else if(guideOptionsFocusedV111&&guideOptionsV111){
+          const summary=guideOptionsV111.querySelector<HTMLElement>('summary');
+          const choices=[...(summary?[summary]:[]),...guideOptionsV111.querySelectorAll<HTMLButtonElement>('button:not(:disabled)')];
+          if(gamepad.actions.menuDirection&&choices.length){const selected=choices.indexOf(document.activeElement as HTMLElement);choices[nextHomeworldDialogChoice(selected,choices.length,gamepad.actions.menuDirection)]?.focus();}
+          if(gamepad.actions.cancel){guideOptionsV111.open=false;clearInputs();viewportRef.current?.focus({preventScroll:true});}
+          else if(gamepad.actions.confirm){const selected=choices.find(choice=>choice===document.activeElement);(selected??choices[0])?.click();}
         } else if (gamepad.actions.confirm) interact();
       }
       // Context-changing actions cannot move the actor in the same frame.
       const handledAction = gamepad.actions.pause || gamepad.actions.confirm || gamepad.actions.cancel;
-      if (active && !suspendedRef.current && !pausedRef.current && !dialogStateRef.current && !document.hidden && !handledAction && !cartographyWritePausedRefV104.current && !cartographyWritePausedRefV105.current && !archiveWritePausedRefV106.current && !(archiveDraftRefV106.current.receipt?.phase==='interrupted'&&archiveDraftRefV106.current.receipt.carrier) && !comparisonWritePausedRefV107.current && !(comparisonDraftRefV107.current.receipt?.phase==='interrupted'&&comparisonDraftRefV107.current.receipt.evidence.place==='carried') && !cargoWritePausedRefV108.current && !(cargoDraftRefV108.current.receipt?.phase==='interrupted'&&cargoDraftRefV108.current.receipt.carrier) && !plaqueWritePausedRefV109.current && !(plaqueDraftRefV109.current.receipt?.phase==='interrupted'&&plaqueDraftRefV109.current.receipt.carrier)) {
+      const plaqueLiveV111=continuationDraftRefV111.current.receipt?.study?.receipt??plaqueDraftRefV109.current.receipt;
+      if (active && !suspendedRef.current && !pausedRef.current && !dialogStateRef.current && !guideOptionsFocusedV111 && !document.hidden && !handledAction && !cartographyWritePausedRefV104.current && !cartographyWritePausedRefV105.current && !archiveWritePausedRefV106.current && !(archiveDraftRefV106.current.receipt?.phase==='interrupted'&&archiveDraftRefV106.current.receipt.carrier) && !comparisonWritePausedRefV107.current && !(comparisonDraftRefV107.current.receipt?.phase==='interrupted'&&comparisonDraftRefV107.current.receipt.evidence.place==='carried') && !cargoWritePausedRefV108.current && !(cargoDraftRefV108.current.receipt?.phase==='interrupted'&&cargoDraftRefV108.current.receipt.carrier) && !plaqueWritePausedRefV109.current && !(plaqueLiveV111?.phase==='interrupted'&&plaqueLiveV111.carrier)) {
         // Empty machinery and passengers share this focus/modal-gated clock.
         // An empty arrival never boards the hunter or writes a campaign save.
         if (liftSessionReadyRefV83.current && liftRefV83.current.ownerCreatedAt === saveRef.current.createdAt) {
@@ -931,10 +1027,10 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
           visitedAttempt.current = entered.id;
           persistVisit(entered.id);
         }
-        if (time - renderedAt >= 1000 / 30) { setPlaqueViewV109(plaqueDraftRefV109.current); setCargoViewV108(cargoDraftRefV108.current); setComparisonViewV107(comparisonDraftRefV107.current); setArchiveViewV106(archiveDraftRefV106.current); setActor(next); setPhase(clock); setYouthMotionV74(youthMotionRefV74.current); setDreadAngles(dreadMotionRef.current.angles); renderedAt = time; }
+        if (time - renderedAt >= 1000 / 30) { setPlaqueViewV109(plaqueDraftRefV109.current); setContinuationViewV111(continuationDraftRefV111.current); setCargoViewV108(cargoDraftRefV108.current); setComparisonViewV107(comparisonDraftRefV107.current); setArchiveViewV106(archiveDraftRefV106.current); setActor(next); setPhase(clock); setYouthMotionV74(youthMotionRefV74.current); setDreadAngles(dreadMotionRef.current.angles); renderedAt = time; }
       } else {
         jumpWasPressed = false;
-        if(!plaqueWritePausedRefV109.current&&(!active||suspendedRef.current||pausedRef.current||dialogStateRef.current&&!dialogStateRef.current.archivePlaqueV109||document.hidden)&&['working','return'].includes(plaqueDraftRefV109.current.receipt?.phase??''))interruptPlaqueV109();
+        if(!plaqueWritePausedRefV109.current&&(!active||suspendedRef.current||pausedRef.current||dialogStateRef.current&&!dialogStateRef.current.archivePlaqueV109||document.hidden)&&['working','return'].includes((archiveContinuationViewV111(continuationDraftRefV111.current)??plaqueDraftRefV109.current).receipt?.phase??''))interruptPlaqueV109();
         if(!cargoWritePausedRefV108.current&&(!active||suspendedRef.current||pausedRef.current||dialogStateRef.current&&!dialogStateRef.current.cargoV108||document.hidden)&&['working','return'].includes(cargoDraftRefV108.current.receipt?.phase??''))interruptCargoV108();
         if(!comparisonWritePausedRefV107.current&&(!active||suspendedRef.current||pausedRef.current||dialogStateRef.current&&!dialogStateRef.current.archiveComparisonV107||document.hidden)&&['search','carrying','compare','return'].includes(comparisonDraftRefV107.current.receipt?.phase??''))interruptComparisonV107();
         if(!archiveWritePausedRefV106.current&&(!active||suspendedRef.current||pausedRef.current||dialogStateRef.current&&!dialogStateRef.current.archiveV106||document.hidden)&&['working','return'].includes(archiveDraftRefV106.current.receipt?.phase??''))interruptArchiveV106();
@@ -973,7 +1069,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
   const dialogKey = (event: KeyboardEvent<HTMLDivElement>) => {
     if (event.key === "Escape") { event.preventDefault(); event.stopPropagation(); closeDialog(); return; }
     if (event.key !== "Tab") return;
-    const buttons = [...(dialogRef.current?.querySelectorAll<HTMLButtonElement>("button:not(:disabled)") ?? [])];
+    const buttons = [...(dialogRef.current?.querySelectorAll<HTMLElement>("button:not(:disabled),summary") ?? [])].filter(choice=>!choice.getClientRects||choice.getClientRects().length>0);
     if (!buttons.length) { event.preventDefault(); return; }
     const first = buttons[0]; const last = buttons[buttons.length - 1];
     if (event.shiftKey && (document.activeElement === first || document.activeElement === dialogRef.current)) { event.preventDefault(); last.focus(); }
@@ -1050,7 +1146,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
   const nearbyStreetContactV100=!nearbyResidentV68&&!interior?nearestHomeworldStreetContactV100(streetContextV100):null;
   const plaqueRenderContextV109={ownerCreatedAt:save.createdAt,currentOwnerCreatedAt:save.createdAt,actor,levelId:levelIdV77,visitedDistrictIds:progress.visitedDistrictIds,interiorId,inTransit:!!transitV77||!!skiffV77,active:true,artAvailable:motionAssetsV74.ready&&archivePlaqueArtAdmittedV109(),cargo:cargoViewV108};
   const nearbyPlaqueHostV109=archivePlaquePostReachedV109(plaqueRenderContextV109);
-  const nearbyPlaqueActionV109=archivePlaqueNearbyV109(plaqueViewV109,plaqueRenderContextV109);
+  const nearbyPlaqueActionV109=archivePlaqueNearbyV109(plaqueEffectiveViewV111,plaqueRenderContextV109);
   const cargoRenderContextV108={ownerCreatedAt:save.createdAt,currentOwnerCreatedAt:save.createdAt,actor,levelId:levelIdV77,visitedDistrictIds:progress.visitedDistrictIds,interiorId,inTransit:!!transitV77||!!skiffV77,active:true};
   const nearbyCargoHostV108=cargoPostReachedV108(cargoRenderContextV108,cargoViewV108);
   const nearbyCargoActionV108=cargoNearbyV108(cargoViewV108,cargoRenderContextV108);
@@ -1138,7 +1234,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
     "arena-steward": "Le temps des arènes viendra après ta formation. Présente-toi d’abord au chef, puis à l’instructeur.",
   };
   const youthServiceLocked = youthWelcome && !!selectedPoint?.service && ["armory", "customization", "training", "medbay", "pit"].includes(selectedPoint.service);
-  const title = dialog?.archivePlaqueV109 ? HOMEWORLD_ARCHIVE_PLAQUE_V109.npcName : dialog?.cargoV108 ? 'Intendante · lots et passage du quai' : dialog?.archiveComparisonV107 ? dialog.archiveComparisonV107.at==='table'?'Comparaison · objet C et contexte':'Archiviste · étude située' : dialog?.archiveV106 ? HOMEWORLD_ARCHIVE_V106.npcName : dialog?.cartographyObservationV105 ? 'Relevé depuis le point haut' : dialog?.cartographyV104 ? HOMEWORLD_CARTOGRAPHY_V104.npcName : dialog?.cntlipSiteId ? 'C’ntlip · réception originale du clan' : dialog?.navigation ? "Navigation de la cité" : selectedStreetContactV100?.role ?? selectedResidentV68?.role ?? (youthWelcome && selectedNpc?.id === "hunt-king" ? "Accueil du chef du clan" : youthWelcome && selectedPoint?.kind === "ship" ? "Quais du clan" : selectedNpc?.name ?? selectedPoint?.label ?? "La Couronne de Cendres");
+  const title = dialog?.recoveryV111 ? 'Restaurer un point extérieur conservé' : dialog?.archivePlaqueV109 ? HOMEWORLD_ARCHIVE_PLAQUE_V109.npcName : dialog?.cargoV108 ? 'Intendante · lots et passage du quai' : dialog?.archiveComparisonV107 ? dialog.archiveComparisonV107.at==='table'?'Comparaison · objet C et contexte':'Archiviste · étude située' : dialog?.archiveV106 ? HOMEWORLD_ARCHIVE_V106.npcName : dialog?.cartographyObservationV105 ? 'Relevé depuis le point haut' : dialog?.cartographyV104 ? HOMEWORLD_CARTOGRAPHY_V104.npcName : dialog?.cntlipSiteId ? 'C’ntlip · réception originale du clan' : dialog?.navigation ? "Navigation de la cité" : selectedStreetContactV100?.role ?? selectedResidentV68?.role ?? (youthWelcome && selectedNpc?.id === "hunt-king" ? "Accueil du chef du clan" : youthWelcome && selectedPoint?.kind === "ship" ? "Quais du clan" : selectedNpc?.name ?? selectedPoint?.label ?? "La Couronne de Cendres");
   const heroPlate = youthWelcome ? HOMEWORLD_YOUTH_PLATE_V69 : homeworldHeroPlate(save.appearance.presetId);
   const actorSpeed = Math.hypot(actor.vx, actor.vy);
   const youthSpeedV74 = Math.hypot(youthMotionV74.velocity.x, youthMotionV74.velocity.y);
@@ -1156,6 +1252,9 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
   const heroPlacement = !youthWelcome && heroPlate.status === "custom-modular-body"
     ? homeworldModularPlacementV64(save.appearance.bodyMorphId, save.appearance.headStyleId)
     : homeworldPortraitPlacementV64(heroPlate.plateId, heroPlate.src, youthWelcome ? HOMEWORLD_YOUTH_PLATE_V69.physicalHeight : 100);
+
+  const archivistPausedV111=cargoMigrationPendingV108||suspended||paused||inactive||!motionAssetsV74.ready;
+  const archivistSequenceV111=save.createdAt+':'+(continuationViewV111.receipt?.lineIds.at(-1)??plaqueEffectiveViewV111.receipt?.lineIds.at(-1)??'')+':'+(continuationViewV111.receipt?.phase??plaqueEffectiveViewV111.receipt?.phase??'')+':'+String(continuationViewV111.receipt?.ownerConsent??plaqueEffectiveViewV111.receipt?.ownerConsent);
 
   return <section ref={rootRef} className={styles.hub} style={suspended ? { display: "none" } : undefined}
     aria-label="Homeworld — Cité des Premiers Trophées" data-homeworld-hub="true" data-homeworld-motion-ready={motionAssetsV74.ready} data-homeworld-interior-id={interior?.buildingId} data-homeworld-level-v77={levelIdV77} data-homeworld-elevation-v77={elevationV77.toFixed(3)} data-homeworld-transit-v77={transitV77?.connectorId} data-homeworld-skiff-v77={skiffV77?.regionId} data-homeworld-lift-position-v83={liftStateV83.position.toFixed(4)} data-homeworld-lift-motion-v83={liftStateV83.journey?.kind ?? 'docked'}>
@@ -1177,7 +1276,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
       {!interior && <div className={styles.sky} aria-hidden="true" />}
       <div className={styles.world} aria-hidden="true" data-homeworld-camera-mode={camera.mode} data-homeworld-camera-zoom={zoom.toFixed(3)} style={{ pointerEvents: 'none', width: sceneWidth, height: sceneDepth * HOMEWORLD_GEOMETRY_V64.depthScale, transform: `translate(${-cameraX * zoom}px,${-cameraY * zoom}px) scale(${zoom})` }}>
         {interior ? <HomeworldInteriorSurface room={interior} actorPosition={actor} activePointId={nearest?.id ?? null} trophies={save.trophies} />
-          : <HomeworldWorldSceneV77 archivePlaqueV109={progress.visitedDistrictIds.includes('port')&&motionAssetsV74.ready?plaqueViewV109:undefined} cargoV108={cargoViewV108} comparisonV107={comparisonViewV107} archiveV106={archiveViewV106} archiveActiveV106={nearbyArchivistV106} actor={actor} levelId={levelIdV77} camera={camera} seconds={phase} activeDoorId={activeDoorId} activePointId={nearest?.id ?? null} activeCartographyV104={nearbyCartographerV104} cartographyHighPointV105={cartographyActiveV105(progress.cartographyV105)} activeStreetContactV100={!nearbyConnectorV77&&!nearestDoor&&!nearest&&!nearbyCntlipHostV77&&!nearbyCartographerV104?nearbyStreetContactV100?.id:null} youthWelcome={youthWelcome} skiffActive={!!skiffV77} reducedMotion={reducedMotionV77} transit={transitV77} liftStateV83={liftSessionOwnerV83 === save.createdAt ? liftStateV83 : null} />}
+          : <HomeworldWorldSceneV77 archivistActiveV111={!!dialog?.archivePlaqueV109&&dialog.archivePlaqueV109.owner===save.createdAt&&nearbyPlaqueHostV109} archivistPausedV111={archivistPausedV111} archivistSequenceV111={archivistSequenceV111} archivePlaqueV109={progress.visitedDistrictIds.includes('port')&&motionAssetsV74.ready?plaqueEffectiveViewV111:undefined} cargoV108={cargoViewV108} comparisonV107={comparisonViewV107} archiveV106={archiveViewV106} archiveActiveV106={nearbyArchivistV106} actor={actor} levelId={levelIdV77} camera={camera} seconds={phase} activeDoorId={activeDoorId} activePointId={nearest?.id ?? null} activeCartographyV104={nearbyCartographerV104} cartographyHighPointV105={cartographyActiveV105(progress.cartographyV105)} activeStreetContactV100={!nearbyConnectorV77&&!nearestDoor&&!nearest&&!nearbyCntlipHostV77&&!nearbyCartographerV104?nearbyStreetContactV100?.id:null} youthWelcome={youthWelcome} skiffActive={!!skiffV77} reducedMotion={reducedMotionV77} transit={transitV77} liftStateV83={liftSessionOwnerV83 === save.createdAt ? liftStateV83 : null} />}
         <div className={styles.hero} data-homeworld-actor="true" data-homeworld-depth-layer-v81="1" data-homeworld-level-v77={levelIdV77} data-homeworld-elevation-v77={elevationV77.toFixed(3)} data-x={Math.round(actor.x)} data-y={Math.round(actor.y)} data-moving={(youthWelcome ? youthSpeedV74 : actorSpeed) > 5} data-homeworld-running-v81={!blocked && Math.hypot(actor.vx / HOMEWORLD_ACTOR.walkSpeed, actor.vy / HOMEWORLD_ACTOR.depthSpeed) > 1.01} data-facing={actor.facing} data-youth-distance-v74={youthWelcome ? youthMotionV74.distanceWorld.toFixed(3) : undefined} style={{ transform: `translate(${projectedActor.x}px,${projectedActor.y + heroBob}px)`, zIndex: interior ? Math.round(actor.y) : homeworldSceneDepthV78(actor.y,elevationV77) }}>
           <span className={styles.heroVisual} style={youthWelcome ? { transform: "none" } : undefined}>
           {youthWelcome ? (motionAssetsV74.ready ? <HomeworldYouthMotionV74 seconds={phase} moving={youthSpeedV74 > 5} velocity={youthMotionV74.velocity} lastDirection={youthMotionV74.direction} distanceWorld={youthMotionV74.distanceWorld} height={HOMEWORLD_YOUTH_PLATE_V69.physicalHeight} /> : <HomeworldYouthMotionV72 seconds={0} moving={false} facing={actor.facing} height={HOMEWORLD_YOUTH_PLATE_V69.physicalHeight} />) : heroPlate.status === "custom-modular-body" ? <HomeworldModularHunter className={styles.heroPlate}
@@ -1236,7 +1335,8 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
     <div id="homeworld-controls" className={styles.srOnly}>Clique dans la cité pour jouer. Marche libre <kbd>{controlActionShortcut("hunt.moveLeft", bindings)}</kbd> / <kbd>{controlActionShortcut("hunt.moveRight", bindings)}</kbd> / <kbd>{controlActionShortcut("hunt.moveUp", bindings)}</kbd> / <kbd>{controlActionShortcut("hunt.moveDown", bindings)}</kbd> · Course en maintenant <kbd>{controlActionShortcut("hunt.aim", bindings)}</kbd> · Interaction <kbd>{controlActionShortcut("hunt.interact", bindings)}</kbd>. Manette : stick / croix, maintenir L3 pour courir, A interaction, B fermer. Sur écran tactile, active Course puis une direction ; désactive Course pour marcher. Les services publics sont reliés au sol : aucun saut ni ascenseur obligatoire. {youthWelcome ? "Présente-toi au chef puis au mentor. Son dialogue ouvre les exercices du dojo, l’armurerie et le camp. Après le premier repos, reviens auprès du maître pour la reconnaissance accompagnée du désert." : "Les dix routes rejoignent des villages de clan. Reçois les contrats à l’armurerie du marché et auprès des commanditaires ; consigne les preuves sur le terrain avant de les remettre."}</div>
     <div className={styles.srOnly} aria-live="polite" aria-atomic="true">{announcement}</div>
     {cargoMigrationMessageV108&&<aside className={cargoStylesV108.migration} role={cargoMigrationPendingV108?'alert':'status'} data-cargo-arrival-recovery-v108><strong>Reprise du point d’arrivée</strong><p>{cargoMigrationMessageV108}</p>{cargoMigrationPendingV108&&<button onClick={()=>{viewportRef.current?.focus({preventScroll:true});commitCargoArrivalV108();}}>Réessayer la reprise du point d’arrivée</button>}</aside>}
-    {!dialog&&<HomeworldArchivePlaqueJournalV109 ledger={plaqueViewV109} actor={actor} actorInStudySpace={levelIdV77==='0'&&!interiorId&&!transitV77&&!skiffV77} blocked={cargoMigrationPendingV108||suspended||paused||inactive||spatialCodexOpen||wayfindingOpenV75||!motionAssetsV74.ready} writePaused={plaqueWritePausedV109} message={plaqueMessageV109} onAction={actPlaqueFromWorldV109} onRetry={retryPlaqueV109} onGuide={requestLandmarkV75}/>}
+    {!dialog&&deferredPlaqueV111&&<HomeworldArchiveContinuationJournalV111 ledger={continuationViewV111} base={plaqueViewV109} actor={actor} actorInStudySpace={levelIdV77==='0'&&!interiorId&&!transitV77&&!skiffV77} blocked={cargoMigrationPendingV108||suspended||paused||inactive||spatialCodexOpen||wayfindingOpenV75||!motionAssetsV74.ready} writePaused={plaqueWritePausedV109} message={plaqueMessageV109} onAction={actContinuationFromWorldV111} onRetry={retryPlaqueV109} onGuide={requestLandmarkV75}/>}
+    {!dialog&&!deferredPlaqueV111&&<HomeworldArchivePlaqueJournalV109 ledger={plaqueViewV109} actor={actor} actorInStudySpace={levelIdV77==='0'&&!interiorId&&!transitV77&&!skiffV77} blocked={cargoMigrationPendingV108||suspended||paused||inactive||spatialCodexOpen||wayfindingOpenV75||!motionAssetsV74.ready} writePaused={plaqueWritePausedV109} message={plaqueMessageV109} onAction={actPlaqueFromWorldV109} onRetry={retryPlaqueV109} onGuide={requestLandmarkV75}/>}
     {!dialog&&<HomeworldCargoJournalV108 ledger={cargoViewV108} actor={actor} blocked={cargoMigrationPendingV108||suspended||paused||inactive||spatialCodexOpen||wayfindingOpenV75||!motionAssetsV74.ready} message={cargoMessageV108} writePaused={cargoWritePausedV108} onAction={actCargoFromWorldV108} onRetry={retryCargoV108}/>}
     {!dialog&&<HomeworldArchiveComparisonJournalV107 ledger={comparisonViewV107} actor={actor} blocked={cargoMigrationPendingV108||suspended||paused||inactive||spatialCodexOpen||wayfindingOpenV75||!motionAssetsV74.ready} message={comparisonMessageV107} writePaused={comparisonWritePausedV107} onAction={actComparisonFromWorldV107} onRetry={retryComparisonV107} onGuide={requestLandmarkV75}/>}
     {!dialog&&<HomeworldArchiveJournalV106 ledger={archiveViewV106} actor={actor} blocked={cargoMigrationPendingV108||suspended||paused||inactive||!motionAssetsV74.ready} message={archiveMessageV106} writePaused={archiveWritePausedV106} onAction={actArchiveFromWorldV106} onRetry={retryArchiveV106}/>}
@@ -1249,7 +1349,8 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
       <div ref={dialogRef} className={styles.dialog} role="dialog" aria-modal="true" aria-labelledby="homeworld-dialog-title" tabIndex={-1} onKeyDown={dialogKey}>
         <div className={styles.eyebrow}>{selectedNpc?.role ?? (selectedPoint?.kind === "region" ? selectedRegion?.status === "playable-introduction" ? selectedRegion.name + " · enquête régionale" : "Route vers le village de clan" : "La Couronne de Cendres")}</div>
         <h3 id="homeworld-dialog-title">{title}</h3>
-        {dialog.archivePlaqueV109 ? dialog.archivePlaqueV109.owner===save.createdAt&&nearbyPlaqueHostV109 ? <HomeworldArchivePlaqueV109 ledger={plaqueViewV109} disabled={cargoMigrationPendingV108||suspended||paused||inactive||!motionAssetsV74.ready||plaqueWritePausedV109} message={plaqueMessageV109} onAction={submitPlaqueV109} onClose={closeDialog}/> : <><p>Rejoins le poste K-17 pour cet échange.</p><button onClick={closeDialog}>Revenir au quai</button></>
+        {dialog.recoveryV111 ? dialog.recoveryV111.owner===save.createdAt ? <HomeworldArrivalRecoveryV111 plan={recoveryPlanV111} message={recoveryMessageV111} writeRefused={recoveryWriteRefusedV111} disabled={cargoMigrationPendingV108||suspended||paused||inactive||!motionAssetsV74.ready} onPrepare={prepareRecoveryV111} onConfirm={confirmRecoveryV111} onClose={closeDialog}/> : <><p>Cette restauration appartient à une autre partie.</p><button onClick={closeDialog}>Revenir à la cité</button></>
+        : dialog.archivePlaqueV109 ? dialog.archivePlaqueV109.owner===save.createdAt&&nearbyPlaqueHostV109 ? <><HomeworldArchivistPortraitV111 active={true} paused={archivistPausedV111} reducedMotion={reducedMotionV77} sequenceKey={archivistSequenceV111}/>{deferredPlaqueV111?<HomeworldArchiveContinuationV111 ledger={continuationViewV111} base={plaqueViewV109} disabled={cargoMigrationPendingV108||suspended||paused||inactive||!motionAssetsV74.ready||plaqueWritePausedV109} message={plaqueMessageV109} onAction={submitContinuationV111} onClose={closeDialog}/>: <HomeworldArchivePlaqueV111 ledger={plaqueViewV109} disabled={cargoMigrationPendingV108||suspended||paused||inactive||!motionAssetsV74.ready||plaqueWritePausedV109} message={plaqueMessageV109} onAction={submitPlaqueV109} onClose={closeDialog}/>}</> : <><p>Rejoins le poste K-17 pour cet échange.</p><button onClick={closeDialog}>Revenir au quai</button></>
         : dialog.cargoV108 ? dialog.cargoV108.owner===save.createdAt&&nearbyCargoHostV108 ? <HomeworldCargoV108 ledger={cargoViewV108} disabled={cargoMigrationPendingV108||suspended||paused||inactive||!motionAssetsV74.ready||cargoWritePausedV108} message={cargoMessageV108} onAction={submitCargoV108} onClose={closeDialog} reducedMotion={reducedMotionV77}/> : <><p>Rejoins l’intendante au poste de manutention.</p><button onClick={closeDialog}>Revenir au quai</button></>
         : dialog.archiveComparisonV107 ? dialog.archiveComparisonV107.owner===save.createdAt&&(dialog.archiveComparisonV107.at==='table'?comparisonTableV107:nearbyComparisonHostV107) ? <HomeworldArchiveComparisonV107 ledger={comparisonViewV107} mode={dialog.archiveComparisonV107.at} disabled={cargoMigrationPendingV108||suspended||paused||inactive||!motionAssetsV74.ready||comparisonWritePausedV107} message={comparisonMessageV107} onAction={submitComparisonV107} onClose={closeDialog} reducedMotion={reducedMotionV77} onLegacy={()=>{const next={point:null,archiveV106:{owner:save.createdAt}};dialogStateRef.current=next;setDialog(next);dialogRef.current?.focus({preventScroll:true});}}/> : <><p>Rejoins l’archiviste ou le pupitre de comparaison.</p><button onClick={closeDialog}>Revenir au quai</button></>
         : dialog.archiveV106 ? dialog.archiveV106.owner===save.createdAt&&nearbyArchivistV106 ? <HomeworldArchiveV106 ledger={archiveViewV106} disabled={cargoMigrationPendingV108||suspended||paused||inactive||!motionAssetsV74.ready||archiveWritePausedV106} message={archiveMessageV106} onAction={submitArchiveV106} onClose={closeDialog} reducedMotion={reducedMotionV77}/> : <><p>Rejoins l’archiviste au quai oriental.</p><button onClick={closeDialog}>Revenir au quai</button></>

@@ -1,6 +1,6 @@
 import HomeworldArchiveComparisonWorldV107 from './HomeworldArchiveComparisonWorldV107';
 import HomeworldCargoWorldV108 from './HomeworldCargoWorldV108';
-import HomeworldArchivePlaqueWorldV109 from './HomeworldArchivePlaqueWorldV109';
+import HomeworldArchivePlaqueWorldV111 from './HomeworldArchivePlaqueWorldV111';
 import type {HomeworldArchivePlaqueV109} from './systems/homeworldArchivePlaqueLedgerV109';
 import type {HomeworldCargoLedgerV108} from './systems/homeworldCargoLedgerV108';
 import type {HomeworldArchiveComparisonV107} from './systems/homeworldArchiveComparisonLedgerV107';
@@ -58,8 +58,8 @@ const visible=(box:{left:number;top:number;width:number;height:number},camera:Ca
 /** Replacement for the exterior draw pass only. Character/input/dialogue/rooms
  * remain in HomeworldHub. Every bitmap is an existing source without raster or
  * CSS camera alteration; all six ground planes use the same physical records. */
-export default memo(function HomeworldWorldSceneV77({actor,levelId,camera,seconds,archivePlaqueV109,cargoV108,comparisonV107,archiveV106,archiveActiveV106=false,activeDoorId,activePointId,activeStreetContactV100=null,activeCartographyV104=false,cartographyHighPointV105=false,youthWelcome=false,skiffActive=false,reducedMotion=false,transit=null,liftStateV83=null}:{
- archivePlaqueV109?:HomeworldArchivePlaqueV109;
+export default memo(function HomeworldWorldSceneV77({actor,levelId,camera,seconds,archivePlaqueV109,archivistActiveV111=false,archivistPausedV111=true,archivistSequenceV111='',cargoV108,comparisonV107,archiveV106,archiveActiveV106=false,activeDoorId,activePointId,activeStreetContactV100=null,activeCartographyV104=false,cartographyHighPointV105=false,youthWelcome=false,skiffActive=false,reducedMotion=false,transit=null,liftStateV83=null}:{
+ archivePlaqueV109?:HomeworldArchivePlaqueV109;archivistActiveV111?:boolean;archivistPausedV111?:boolean;archivistSequenceV111?:string;
  cargoV108?:HomeworldCargoLedgerV108;comparisonV107?:HomeworldArchiveComparisonV107;archiveV106?:HomeworldArchiveLedgerV106;archiveActiveV106?:boolean;actor:{x:number;y:number};levelId:HomeworldLevelV77;camera:Camera;seconds:number;activeDoorId:string|null;activePointId:string|null;activeStreetContactV100?:string|null;activeCartographyV104?:boolean;cartographyHighPointV105?:boolean;youthWelcome?:boolean;skiffActive?:boolean;reducedMotion?:boolean;transit?:HomeworldTransitV77|null;liftStateV83?:HomeworldLiftStationV83|null;
 }){
  const id=useId().replace(/:/g,'-'),d=HOMEWORLD_GEOMETRY_V64.depthScale;
@@ -74,7 +74,7 @@ export default memo(function HomeworldWorldSceneV77({actor,levelId,camera,second
   return <HomeworldNativePropV64 key={key} id={key} artId={artId} art={art} x={p.x} y={p.y} depth={depth(level,point.y,extraElevation)} heightWorld={heightWorld} style={{opacity}}/>;
  };
  return <>
-  {archivePlaqueV109&&<HomeworldArchivePlaqueWorldV109 levelId={levelId} ledger={archivePlaqueV109} seconds={seconds}/>}
+  {archivePlaqueV109&&<HomeworldArchivePlaqueWorldV111 levelId={levelId} ledger={archivePlaqueV109} seconds={seconds} archivistActiveV111={archivistActiveV111} archivistPausedV111={archivistPausedV111} archivistSequenceV111={archivistSequenceV111} reducedMotionV111={reducedMotion}/>}
   {cargoV108&&<HomeworldCargoWorldV108 levelId={levelId} ledger={cargoV108} seconds={seconds}/>}
   {comparisonV107&&<HomeworldArchiveComparisonWorldV107 levelId={levelId} ledger={comparisonV107}/>}
   {archiveV106&&<HomeworldArchiveWorldV106 levelId={levelId} seconds={seconds} ledger={archiveV106} active={archiveActiveV106}/>}

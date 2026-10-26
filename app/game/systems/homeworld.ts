@@ -1,3 +1,5 @@
+import {normalizeHomeworldArrivalRecoveryV111,type HomeworldArrivalRecoveryV111} from './homeworldArrivalRecoveryLedgerV111';
+import {normalizeHomeworldArchiveContinuationV111,type HomeworldArchiveContinuationV111} from './homeworldArchiveContinuationLedgerV111';
 import {normalizeHomeworldCargoV108, type HomeworldCargoV108} from './homeworldCargoLedgerV108';
 import {normalizeHomeworldArchivePlaqueV109,type HomeworldArchivePlaqueV109} from './homeworldArchivePlaqueLedgerV109';
 import {normalizeHomeworldArchiveComparisonV107,type HomeworldArchiveComparisonV107} from './homeworldArchiveComparisonLedgerV107';
@@ -155,7 +157,7 @@ export const HOMEWORLD_POINTS: readonly HomeworldPoint[] = HOMEWORLD_POINT_BLUEP
   return { ...point, ...position };
 });
 
-export interface HomeworldProgress { version: 1; cntlipV77:CntlipLedgerV77; locationV77?:HomeworldCheckpointV77; bibleScenesV86?:BibleSceneLedgerV86; archiveV106?:HomeworldArchiveLedgerV106; archiveComparisonV107?:HomeworldArchiveComparisonV107; cargoV108?:HomeworldCargoV108; archivePlaqueV109?:HomeworldArchivePlaqueV109; cartographyV104?:HomeworldCartographyLedgerV104; cartographyV105?:HomeworldCartographyLedgerV105; contractsV68: HomeworldContractsV68; sideStoryV66: HomeworldSideStoryV66Progress; npcMissionsV66: NpcMissionsV66; mausoleum: MausoleumProgress; inquiry: HomeworldInquiryProgress; expeditions: { "ash-marches": HomeworldExpeditionProof | null; "glass-desert": GlassDesertProof | null }; visitedDistrictIds: string[]; evidenceIds: HomeworldEvidenceId[]; greetedNpcIds: string[]; witnessChoice: HomeworldWitnessChoice | null; audienceOutcome: HomeworldAudienceOutcome | null; relations: Record<string, number> }
+export interface HomeworldProgress { version: 1; cntlipV77:CntlipLedgerV77; locationV77?:HomeworldCheckpointV77; bibleScenesV86?:BibleSceneLedgerV86; archiveV106?:HomeworldArchiveLedgerV106; archiveComparisonV107?:HomeworldArchiveComparisonV107; cargoV108?:HomeworldCargoV108; archivePlaqueV109?:HomeworldArchivePlaqueV109; archiveContinuationV111?:HomeworldArchiveContinuationV111; arrivalRecoveryV111?:HomeworldArrivalRecoveryV111; cartographyV104?:HomeworldCartographyLedgerV104; cartographyV105?:HomeworldCartographyLedgerV105; contractsV68: HomeworldContractsV68; sideStoryV66: HomeworldSideStoryV66Progress; npcMissionsV66: NpcMissionsV66; mausoleum: MausoleumProgress; inquiry: HomeworldInquiryProgress; expeditions: { "ash-marches": HomeworldExpeditionProof | null; "glass-desert": GlassDesertProof | null }; visitedDistrictIds: string[]; evidenceIds: HomeworldEvidenceId[]; greetedNpcIds: string[]; witnessChoice: HomeworldWitnessChoice | null; audienceOutcome: HomeworldAudienceOutcome | null; relations: Record<string, number> }
 const record = (value: unknown): value is Record<string, unknown> => typeof value === "object" && value !== null && !Array.isArray(value);
 const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
 const finite = (value: unknown, fallback = 0) => typeof value === "number" && Number.isFinite(value) ? value : fallback;
@@ -171,6 +173,8 @@ export function normalizeHomeworldProgress(value: unknown): HomeworldProgress {
   if(value.locationV77!==undefined)clean.locationV77=normalizeHomeworldCheckpointV77(value.locationV77);
   if(value.bibleScenesV86!==undefined){const ledger=normalizeBibleSceneLedgerV86(value.bibleScenesV86);if(ledger)clean.bibleScenesV86=ledger;}
   if(value.archivePlaqueV109!==undefined){const ledger=normalizeHomeworldArchivePlaqueV109(value.archivePlaqueV109);if(ledger)clean.archivePlaqueV109=ledger;}
+  if(value.arrivalRecoveryV111!==undefined){const ledger=normalizeHomeworldArrivalRecoveryV111(value.arrivalRecoveryV111);if(ledger)clean.arrivalRecoveryV111=ledger;}
+  if(value.archiveContinuationV111!==undefined){const ledger=normalizeHomeworldArchiveContinuationV111(value.archiveContinuationV111,value.archivePlaqueV109);if(ledger)clean.archiveContinuationV111=ledger;}
   if(value.cargoV108!==undefined){const ledger=normalizeHomeworldCargoV108(value.cargoV108);if(ledger)clean.cargoV108=ledger;}
   if(value.archiveComparisonV107!==undefined){const ledger=normalizeHomeworldArchiveComparisonV107(value.archiveComparisonV107);if(ledger)clean.archiveComparisonV107=ledger;}
   if(value.archiveV106!==undefined){const ledger=normalizeHomeworldArchiveV106(value.archiveV106);if(ledger)clean.archiveV106=ledger;}

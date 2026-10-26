@@ -1,3 +1,5 @@
+import {normalizeHomeworldArrivalRecoveryV111} from './systems/homeworldArrivalRecoveryLedgerV111';
+import {normalizeHomeworldArchiveContinuationV111,archiveContinuationActiveV111} from './systems/homeworldArchiveContinuationLedgerV111';
 import {normalizeHomeworldArchiveV106} from './systems/homeworldArchiveLedgerV106';
 import {normalizeHomeworldArchiveComparisonV107} from './systems/homeworldArchiveComparisonLedgerV107';
 import {normalizeHomeworldCargoV108} from './systems/homeworldCargoLedgerV108';
@@ -83,7 +85,7 @@ import type {
 // Storage schema and defaults
 // ---------------------------------------------------------------------------
 
-export const SAVE_VERSION = 11;
+export const SAVE_VERSION = 12;
 export const SAVE_STORAGE_KEY = "yautja-long-hunt.save";
 export const SAVE_MAX_SERIALIZED_BYTES = 1024 * 1024;
 const SAVE_EXPORT_FORMAT = "yautja-long-hunt.save-export";
@@ -562,6 +564,9 @@ const SAVE_MIGRATIONS: Readonly<
   8: (input) => ({ ...input, version: 9, youthTraining: null }),
   9: (input) => ({ ...input, version: 10, soloV69: input.soloV69 ?? null }),
   10: (input) => ({ ...input, version: 11, soloV70: input.soloV70 ?? null }),
+  // Preserve all existing documents. Older clients must refuse new continuation
+  // and restoration receipts instead of silently dropping their optional fields.
+  11: (input) => ({ ...input, version: 12 }),
 };
 
 function migrateSavePayload(value: unknown): UnknownRecord | null {
@@ -1445,6 +1450,31 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
     }
   }
   if(isRecord(value.homeworld)){
+    if(value.homeworld.arrivalRecoveryV111!==undefined){
+      const raw=value.homeworld.arrivalRecoveryV111;
+      if(isRecord(raw)&&Number(raw.version)>1)return {save:null,failure:'future-version'};
+      const recovery=normalizeHomeworldArrivalRecoveryV111(raw);
+      if(!recovery||recovery.ownerCreatedAt!==value.createdAt)return {save:null,failure:'invalid-save'};
+    }
+    if(value.homeworld.archiveContinuationV111!==undefined){
+      const raw=value.homeworld.archiveContinuationV111;
+      if(isRecord(raw)&&Number(raw.version)>1)return {save:null,failure:'future-version'};
+      const continuation=normalizeHomeworldArchiveContinuationV111(raw,value.homeworld.archivePlaqueV109);
+      if(!continuation||continuation.ownerCreatedAt!==value.createdAt)return {save:null,failure:'invalid-save'};
+      if(continuation.receipt){
+        if(!Array.isArray(value.homeworld.visitedDistrictIds)||!value.homeworld.visitedDistrictIds.includes('port'))return {save:null,failure:'invalid-save'};
+        if(archiveContinuationActiveV111(continuation)){
+          const ledgers=[normalizeHomeworldCartographyV104(value.homeworld.cartographyV104),normalizeHomeworldCartographyV105(value.homeworld.cartographyV105),normalizeHomeworldArchiveV106(value.homeworld.archiveV106),normalizeHomeworldArchiveComparisonV107(value.homeworld.archiveComparisonV107),normalizeHomeworldCargoV108(value.homeworld.cargoV108)];
+          if(ledgers.some(ledger=>ledger?.receipt&&!['offer','completed'].includes(ledger.receipt.phase)))return {save:null,failure:'invalid-save'};
+        }
+        const study=continuation.receipt.study?.receipt;
+        if(study&&(study.carrier||study.phase==='working'||study.phase==='return')){
+          const location=value.homeworld.locationV77,status=inspectHomeworldCheckpointV77(location);
+          if(status==='future-version')return {save:null,failure:'future-version'};
+          if(status!=='valid'||!isRecord(location)||!isRecord(location.exterior)||location.ownerCreatedAt!==value.createdAt||location.levelId!=='0'||location.interiorId!==null||typeof location.exterior.x!=='number'||typeof location.exterior.y!=='number'||Math.hypot(location.exterior.x-study.last.x,location.exterior.y-study.last.y)>.001)return {save:null,failure:'invalid-save'};
+        }
+      }
+    }
     if(value.homeworld.archivePlaqueV109!==undefined){
       const raw=value.homeworld.archivePlaqueV109;
       if(isRecord(raw)&&Number(raw.version)>1)return {save:null,failure:'future-version'};
