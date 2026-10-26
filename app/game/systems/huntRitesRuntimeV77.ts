@@ -9,8 +9,8 @@ export interface RiteRuntimeActorV77 {
   riteDefeatedAt?:number;riteFallVelocity?:number;
   riteInvestigate?:{x:number;y:number;until:number};
 }
-export interface RiteRuntimeOptionsV110 { readonly flayingToolOwned:boolean }
-const DEFAULT_RITE_RUNTIME_OPTIONS_V110:RiteRuntimeOptionsV110={flayingToolOwned:false};
+export interface RiteRuntimeOptionsV111 { readonly flayingToolOwned:boolean }
+const DEFAULT_RITE_RUNTIME_OPTIONS_V111:RiteRuntimeOptionsV111={flayingToolOwned:false};
 export const huntRitesRunIdV77=(missionId:string,encounterRun:string|number)=>`${missionId}:${encounterRun}`;
 export function ritePreyProofsV77(actors:readonly RiteRuntimeActorV77[],label:(id:string)=>string):RitePreyProofV77[]{
   return actors.filter(a=>!a.boss&&!a.alive&&a.active&&a.health===0&&Number.isFinite(a.riteDefeatedAt)&&a.riteDefeatedAt!>=0)
@@ -20,7 +20,7 @@ export function ritePreyProofsV77(actors:readonly RiteRuntimeActorV77[],label:(i
 }
 export function riteRuntimeContextV77(state:RitesOfHuntV77,player:{x:number;y:number;width:number;height:number;health:number},
   actors:readonly RiteRuntimeActorV77[],label:(id:string)=>string,suspended:boolean,
-  options:RiteRuntimeOptionsV110=DEFAULT_RITE_RUNTIME_OPTIONS_V110):RiteLiveContextV77{
+  options:RiteRuntimeOptionsV111=DEFAULT_RITE_RUNTIME_OPTIONS_V111):RiteLiveContextV77{
   return {runId:state.runId,missionId:state.missionId,actor:{x:player.x+player.width/2,y:player.y+player.height},
     health:player.health,suspended,flayingToolOwned:options.flayingToolOwned===true,supports:[],prey:ritePreyProofsV77(actors,label)};
 }
@@ -29,7 +29,7 @@ export function riteRuntimeContextV77(state:RitesOfHuntV77,player:{x:number;y:nu
  * coordinates fail the hunt restore. No corpse is inferred from an old save. */
 export function restoreRitesRuntimeV77(raw:unknown,runId:string,missionId:string,
   actors:readonly RiteRuntimeActorV77[],elapsed:number,label:(id:string)=>string,
-  options:RiteRuntimeOptionsV110=DEFAULT_RITE_RUNTIME_OPTIONS_V110):RitesOfHuntV77|null{
+  options:RiteRuntimeOptionsV111=DEFAULT_RITE_RUNTIME_OPTIONS_V111):RitesOfHuntV77|null{
   if(!Number.isFinite(elapsed)||elapsed<0)return null;
   const state=normalizeRitesOfHuntV77(raw,runId,missionId);if(!state)return null;
   if(raw===undefined)return state;
@@ -88,7 +88,7 @@ export interface HuntRiteMenuSnapshotV77 {
   operation:{action:HuntRiteActionV77;progress:number}|null;witnessCount:number;
 }
 export function huntRiteMenuSnapshotV77(state:RitesOfHuntV77,actor:{x:number;y:number},selectedId:string|null,available:boolean,
-  options:RiteRuntimeOptionsV110=DEFAULT_RITE_RUNTIME_OPTIONS_V110):HuntRiteMenuSnapshotV77|null{
+  options:RiteRuntimeOptionsV111=DEFAULT_RITE_RUNTIME_OPTIONS_V111):HuntRiteMenuSnapshotV77|null{
   if(!available)return null;const corpse=nearestRiteCorpseV77(state,actor);if(!corpse)return null;
   const flayLockedReason=corpse.flayed?'Dépeçage déjà terminé.':options.flayingToolOwned!==true?'Acheter le Flaying Tool à l’armurerie.':
     corpse.protectedPrey||!corpse.worthy?'Le Code protège cette proie.':null;

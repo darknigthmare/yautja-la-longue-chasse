@@ -1,5 +1,5 @@
 "use client";
-import { FIELD_TOOLS_V110, quoteFieldToolV110, purchaseFieldToolV110 } from "./systems/fieldToolsV110";
+import { FIELD_TOOLS_V111, quoteFieldToolV111, purchaseFieldToolV111 } from "./systems/fieldToolsV111";
 import {recoverAnyArchiveV71} from "./systems/archiveRecoveryV71";
 import { REFERENCE_BIOMASKS_V62, PRESERVED_BIOMASKS_V62 } from "./biomaskCatalogueV62";
 
@@ -2876,7 +2876,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   const purchasePermanentFieldTool = useCallback((id: string) => {
     const current = saveRef.current;
-    const result = purchaseFieldToolV110(current, id);
+    const result = purchaseFieldToolV111(current, id);
     if (!result.ok) {
       setToast(result.quote.failure === "already-owned"
         ? "Cet outil de terrain est déjà acquis."
@@ -4200,8 +4200,8 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
               </aside>
               <div className="armory-sections">
                 <ArmorySection title="Outils de terrain permanents">
-                  {FIELD_TOOLS_V110.map((tool) => {
-                    const quote = quoteFieldToolV110(save, tool.id);
+                  {FIELD_TOOLS_V111.map((tool) => {
+                    const quote = quoteFieldToolV111(save, tool.id);
                     return <article key={tool.id} className="panel" aria-label={tool.name}>
                       <h3>{tool.name}</h3>
                       <p>{tool.description}</p>

@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "release": "V110",
+  "status": "FAILED_FIRST_PRODUCTION_ATTEMPT_PRESERVED_NOT_PROMOTED",
+  "mode": "compiled-app",
+  "runtimeCommit": "dc9e2ea548df1bc0950c7ff8b81408580040f918",
+  "buildId": "UV7GoRY1M4egPl1ykZJ8J",
+  "originalOutput": "outputs/qa-v110-production-r1",
+  "countsIncludedInCurrentProduction": false,
+  "productionChecksCredited": 0,
+  "productionCapturesCredited": 0,
+  "recordedChecks": 19,
+  "recordedChecksPassed": 18,
+  "recordedChecksFailed": 1,
+  "browserExceptions": 0,
+  "consoleErrors": 0,
+  "workerErrors": 0,
+  "recordedRequestFailures": 0,
+  "sourceBeforeEqualsAfter": true,
+  "executedScope": "Actual local application: K-17 consent, observation, copied provenance, native keyboard carry/park outside map, pause, ordinary Continue, voluntary recovery and current-objective Atlas Worker route; an actual nearby resident subject/advice interaction plus declared blur input suspension and physical out-of-reach refusal; actual council-stair descent refused by a precondition load placed through the real offline cargo model; actual domestic doorway entry, save/Continue and walked exit retain the genuinely free side anchor beside another precondition parked load. No complete ROLE03 investigation, new body animation, cargo campaign completion or canon fidelity is certified.",
+  "rawEvidence": {
+    "path": "docs/qa/v110-first-production/browser-result-failed.json.gz",
+    "sha256": "9cf9f8cfe4306af63ae4594c28df65f20bce58c2a623c3172004bbb5e52ac1f9",
+    "bytes": 115780,
+    "decodedBytes": 494241,
+    "decodedSha256": "c2808e8e9034397c10749c4be317943b014c09583fe1a6ccbd521d9e1800b1b4"
+  },
+  "captures": [
+    {
+      "path": "docs/qa/v110-first-production/k17-01-carried-record-map.png",
+      "sha256": "c3fca2f00eac20a38e45be9e64cd6c0ce3d913cede3b5107272204e3d9d233b9",
+      "bytes": 5848
+    },
+    {
+      "path": "docs/qa/v110-first-production/k17-01-carried-record-plaque-facts.png",
+      "sha256": "e4098d56eac333e2baddabd7c00c2037b6283e699f8983d0cee1b33b04f85dd8",
+      "bytes": 18940
+    },
+    {
+      "path": "docs/qa/v110-first-production/k17-02-native-carried-plaque.png",
+      "sha256": "d5ccfdd463966249bcda5a4481d3004656b0a613af87c06443757a69aa7aaf46",
+      "bytes": 1098589
+    },
+    {
+      "path": "docs/qa/v110-first-production/k17-03-outside-parked-record-map.png",
+      "sha256": "79ef400896a239425e56e78199af4e7fa7f53920ac59303d7f8b9ad285860401",
+      "bytes": 7971
+    },
+    {
+      "path": "docs/qa/v110-first-production/k17-03-outside-parked-record-plaque-facts.png",
+      "sha256": "17723c1c7600bb9649b5bc2d70f1f0f9aae91c24ff2cf0e579e4e2c9446ddae7",
+      "bytes": 19974
+    },
+    {
+      "path": "docs/qa/v110-first-production/k17-04-operation-aware-atlas.png",
+      "sha256": "a7678220af8b8aa36029506936dd8e7bef603db007dfc59fd2be54e79ef1094b",
+      "bytes": 591209
+    },
+    {
+      "path": "docs/qa/v110-first-production/k17-05-preserved-point-arrival.png",
+      "sha256": "1f8774f0d1db3c8251ece1f3fcd7d25fc2c00d0ca796b392217d0ab1667a43b2",
+      "bytes": 1192199
+    },
+    {
+      "path": "docs/qa/v110-first-production/k17-failure.png",
+      "sha256": "7f6f5272a8b07a0e2baa5d3f7fc977d4768f75d9d40aff9a080c6135032023ed",
+      "bytes": 1145535
+    }
+  ],
+  "openedList": {
+    "path": "docs/qa/v110-first-production/opened.json",
+    "sha256": "1c340c23ed751ac1b22f6dc5d1670848377875b58997e05a0adb0301570a0d40",
+    "bytes": 312
+  },
+  "log": {
+    "path": "docs/qa/v110-first-production/browser-production-r1.log",
+    "sha256": "8165217e7ba26b0a7c054276892e00b2f887be358c75b4a8517220053c1c08b5",
+    "bytes": 1760
+  },
+  "observations": {
+    "savedPhaseAfterVoluntaryResume": "working",
+    "failure": "Le pilote attend que l’ancien guide reste monté avec current=false, mais l’objectif interrompu disparaît après reprise et son guide est démonté.",
+    "protocolCorrection": "Accepter un guide absent ou current=false, tout en refusant explicitement la présence d’un ancien guide current=true.",
+    "scope": "Correction de l’observation QA ; application inchangée. Le nouveau fichier pilote doit être épinglé dans un nouveau gel et un nouveau build avant toute nouvelle certification."
+  },
+  "limits": [
+    "Cet essai reste FAIL et ses 19 contrôles / 8 captures ne sont pas promus.",
+    "La phase working est observée dans la sauvegarde brute ; cela ne certifie pas un scénario ROLE03 complet ni les autres parcours qui n’ont pas été atteints.",
+    "Les sources avant/après identiques ne remplacent pas une recette complète réussie sur le nouveau protocole."
+  ],
+  "readme": {
+    "path": "docs/qa/v110-first-production/README.md",
+    "sha256": "525b474eb2c73e18af4e0fd8155b7f1e99a3f600845ac1bc4aac76c84cc3984d",
+    "bytes": 1643
+  }
+}

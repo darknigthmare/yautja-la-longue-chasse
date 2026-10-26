@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * V110 hunting-mechanics workbook. Deterministic OOXML ZIP, without dependencies.
+ * V111 hunting-mechanics workbook. Deterministic OOXML ZIP, without dependencies.
  * The JSON is the editable source. Validation statuses describe execution only
  * when the source explicitly includes its command, commit and result.
  */
@@ -8,8 +8,8 @@ const XML = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>';
 const MAIN = 'http://schemas.openxmlformats.org/spreadsheetml/2006/main';
 const REL = 'http://schemas.openxmlformats.org/officeDocument/2006/relationships';
 const PKG = 'http://schemas.openxmlformats.org/package/2006/relationships';
-const SOURCE_PATH = 'docs/hunt-mechanics-v110.json';
-const OUTPUT_PATH = 'docs/YAUTJA_V110_MECANIQUES_CHASSE.xlsx';
+const SOURCE_PATH = 'docs/hunt-mechanics-v111.json';
+const OUTPUT_PATH = 'docs/YAUTJA_V111_MECANIQUES_CHASSE.xlsx';
 const escapeXml = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[c]));
 
 /** Explicit UTF-8 encoder also usable in tool isolates without TextEncoder. */
@@ -120,7 +120,7 @@ function worksheet(source, sheet) {
 const STYLES = XML + '<styleSheet xmlns="' + MAIN + '"><fonts count="4"><font><sz val="10"/><color rgb="FF20332D"/><name val="Calibri"/><family val="2"/></font><font><b/><sz val="19"/><color rgb="FF173D32"/><name val="Calibri"/></font><font><sz val="10"/><color rgb="FF51685F"/><name val="Calibri"/></font><font><b/><sz val="10"/><color rgb="FFFFFFFF"/><name val="Calibri"/></font></fonts><fills count="8"><fill><patternFill patternType="none"/></fill><fill><patternFill patternType="gray125"/></fill><fill><patternFill patternType="solid"><fgColor rgb="FF173D32"/><bgColor indexed="64"/></patternFill></fill><fill><patternFill patternType="solid"><fgColor rgb="FFF0F5F2"/><bgColor indexed="64"/></patternFill></fill><fill><patternFill patternType="solid"><fgColor rgb="FFCAE9DC"/><bgColor indexed="64"/></patternFill></fill><fill><patternFill patternType="solid"><fgColor rgb="FFFFE5AC"/><bgColor indexed="64"/></patternFill></fill><fill><patternFill patternType="solid"><fgColor rgb="FFFFD6CC"/><bgColor indexed="64"/></patternFill></fill><fill><patternFill patternType="solid"><fgColor rgb="FFE2EAF0"/><bgColor indexed="64"/></patternFill></fill></fills><borders count="2"><border><left/><right/><top/><bottom/><diagonal/></border><border><left/><right/><top/><bottom style="hair"><color rgb="FFCFDCD5"/></bottom><diagonal/></border></borders><cellStyleXfs count="1"><xf numFmtId="0" fontId="0" fillId="0" borderId="0"/></cellStyleXfs><cellXfs count="9"><xf numFmtId="0" fontId="0" fillId="0" borderId="1" xfId="0" applyAlignment="1"><alignment vertical="top" wrapText="1"/></xf><xf numFmtId="0" fontId="1" fillId="0" borderId="0" xfId="0" applyAlignment="1"><alignment vertical="center"/></xf><xf numFmtId="0" fontId="2" fillId="0" borderId="0" xfId="0" applyAlignment="1"><alignment vertical="center" wrapText="1"/></xf><xf numFmtId="0" fontId="3" fillId="2" borderId="1" xfId="0" applyAlignment="1"><alignment vertical="center" wrapText="1"/></xf><xf numFmtId="0" fontId="0" fillId="3" borderId="1" xfId="0" applyAlignment="1"><alignment vertical="top" wrapText="1"/></xf><xf numFmtId="0" fontId="0" fillId="4" borderId="1" xfId="0" applyAlignment="1"><alignment vertical="top" wrapText="1"/></xf><xf numFmtId="0" fontId="0" fillId="5" borderId="1" xfId="0" applyAlignment="1"><alignment vertical="top" wrapText="1"/></xf><xf numFmtId="0" fontId="0" fillId="6" borderId="1" xfId="0" applyAlignment="1"><alignment vertical="top" wrapText="1"/></xf><xf numFmtId="0" fontId="0" fillId="7" borderId="1" xfId="0" applyAlignment="1"><alignment vertical="top" wrapText="1"/></xf></cellXfs><cellStyles count="1"><cellStyle name="Normal" xfId="0" builtinId="0"/></cellStyles></styleSheet>';
 
 export function buildHuntMechanicsWorkbook(source) {
-  if (source.schemaVersion !== 1 || source.release !== 'V110' || !/^\d{4}-\d{2}-\d{2}$/.test(source.asOf) || !/^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/.test(source.repository) || !/^[a-f0-9]{40}$/.test(source.baseCommit) || !source.reviewRef) throw new TypeError('Invalid V110 source metadata');
+  if (source.schemaVersion !== 1 || source.release !== 'V111' || !/^\d{4}-\d{2}-\d{2}$/.test(source.asOf) || !/^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/.test(source.repository) || !/^[a-f0-9]{40}$/.test(source.baseCommit) || !source.reviewRef) throw new TypeError('Invalid V111 source metadata');
   if (!Array.isArray(source.sheets) || source.sheets.length !== 8 || new Set(source.sheets.map(s => s.name)).size !== 8) throw new TypeError('Eight uniquely named worksheets required');
   const seen = new Set();
   for (const sheet of source.sheets) {
@@ -161,7 +161,7 @@ async function cli() {
   const workbook = buildHuntMechanicsWorkbook(source);
   if (args.includes('--check')) {
     const current = await readFile(resolve(root, OUTPUT_PATH));
-    if (current.length !== workbook.length || current.some((byte, i) => byte !== workbook[i])) throw new Error('V110 workbook differs from its JSON source');
+    if (current.length !== workbook.length || current.some((byte, i) => byte !== workbook[i])) throw new Error('V111 workbook differs from its JSON source');
   } else await writeFile(resolve(root, OUTPUT_PATH), workbook);
   console.log(JSON.stringify({result: args.includes('--check') ? 'PASS_REPRODUCIBLE_BYTES' : 'GENERATED', sheets: source.sheets.length, rows: source.sheets.reduce((count, s) => count + s.rows.length, 0), bytes: workbook.length, nativeExcelExecuted: false}));
 }

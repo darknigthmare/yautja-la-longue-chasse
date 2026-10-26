@@ -19,9 +19,9 @@ import {
   WEAPON_BY_ID,
 } from "./data";
 import { trophyHuntVisualForDefinitionId } from "./trophyVisualRegistry";
-import { ownsFieldToolV110 } from "./systems/fieldToolsV110";
+import { ownsFieldToolV111 } from "./systems/fieldToolsV111";
 import { trophyHarvestPoint, trophyHarvestSourceForDrop, trophyHarvestInReach,
-  SECONDARY_TROPHY_REACH, APEX_TROPHY_REACH } from "./systems/trophyHarvestV110";
+  SECONDARY_TROPHY_REACH, APEX_TROPHY_REACH } from "./systems/trophyHarvestV111";
 import { drawEnvironmentProp } from "./environmentPropDrawing";
 import { ExplorationMap } from "./ExplorationMap";
 import FirstHuntGuide from "./FirstHuntGuide";
@@ -1337,7 +1337,7 @@ function makeGameState(
     world.bossArena.x + world.bossArena.width - bossWidth - 30;
 
   const state: GameState = {
-    flayingToolOwned: ownsFieldToolV110(inventory, "flaying-tool"),
+    flayingToolOwned: ownsFieldToolV111(inventory, "flaying-tool"),
     huntRites: createRitesOfHuntV77(huntRitesRunIdV77(mission.id, ecologyRunSeed), mission.id),
     riteMenuCorpseId: null,
     riteOperationDamageStart: null,
@@ -6920,14 +6920,14 @@ function uniqueTrophyClaimId(
 }
 
 /** Secondary positions are checkpoint-compatible, but their live source owns the anchor. */
-function syncSecondaryTrophyAnchorsV110(state: GameState): void {
+function syncSecondaryTrophyAnchorsV111(state: GameState): void {
   for (const drop of state.regularTrophyDrops) {
     const source = trophyHarvestSourceForDrop(drop, state.enemies);
     if (source) Object.assign(drop, trophyHarvestPoint(source));
   }
 }
 
-function activeTrophyHarvestTargetV110(state: GameState): { point: Vec2; reach: number } | null {
+function activeTrophyHarvestTargetV111(state: GameState): { point: Vec2; reach: number } | null {
   if (state.regularTrophyDropId) {
     const drop = state.regularTrophyDrops.find(entry => entry.id === state.regularTrophyDropId);
     const source = drop ? trophyHarvestSourceForDrop(drop, state.enemies) : null;
@@ -6938,14 +6938,14 @@ function activeTrophyHarvestTargetV110(state: GameState): { point: Vec2; reach: 
     ? { point: trophyHarvestPoint(state.boss, 52), reach: APEX_TROPHY_REACH } : null;
 }
 
-function canContinueTrophyHarvestV110(state: GameState): boolean {
-  const target = activeTrophyHarvestTargetV110(state);
+function canContinueTrophyHarvestV111(state: GameState): boolean {
+  const target = activeTrophyHarvestTargetV111(state);
   return target !== null && trophyHarvestInReach(
     state.player, target.point, state.world.platforms, target.reach,
   );
 }
 
-function interruptTrophyHarvestV110(state: GameState): void {
+function interruptTrophyHarvestV111(state: GameState): void {
   state.trophyExtracting = false;
   state.trophyExtraction = 0;
   state.trophyRitual = null;
@@ -6959,8 +6959,8 @@ function finishTrophyExtraction(
 ): void {
   // The final gesture rechecks the same real source and physical reach.
   if (!state.trophyExtracting || state.trophyRitual?.status !== "complete" ||
-      !canContinueTrophyHarvestV110(state)) {
-    interruptTrophyHarvestV110(state);
+      !canContinueTrophyHarvestV111(state)) {
+    interruptTrophyHarvestV111(state);
     return;
   }
   if (state.regularTrophyDropId) {
@@ -7066,7 +7066,7 @@ function interact(
   state: GameState,
   mission: MissionDefinition,
 ): void {
-  syncSecondaryTrophyAnchorsV110(state);
+  syncSecondaryTrophyAnchorsV111(state);
   if (isExplorationMission(mission.id) && !state.trophyExtracting) {
     const interaction = interactWithExplorationRegion(mission.id, state.exploration, state.player);
     if (interaction) {
@@ -7523,9 +7523,9 @@ function updatePlayer(
     }
   }
 
-  syncSecondaryTrophyAnchorsV110(state);
-  if (state.trophyExtracting && state.trophyRitual && !canContinueTrophyHarvestV110(state)) {
-    interruptTrophyHarvestV110(state);
+  syncSecondaryTrophyAnchorsV111(state);
+  if (state.trophyExtracting && state.trophyRitual && !canContinueTrophyHarvestV111(state)) {
+    interruptTrophyHarvestV111(state);
   }
   if (state.trophyExtracting && state.trophyRitual) {
     const ritualActions: readonly TrophyRitualAction[] = [

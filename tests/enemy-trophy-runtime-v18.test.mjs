@@ -16,7 +16,7 @@ test("V18 secondary claims are wired from kill through checkpoint and success re
   assert.match(source, /regularTrophyDrops: checkpoint\.regularTrophyDrops\.map/);
   assert.match(source, /const trophy = enemyTrophyGameplayForEnemyId\(enemy\.archetype\)/);
   assert.match(source, /\.\.\.trophyHarvestPoint\(enemy\)/);
-  assert.match(source, /syncSecondaryTrophyAnchorsV110/);
+  assert.match(source, /syncSecondaryTrophyAnchorsV111/);
   assert.match(source, /definitionId: trophy\.id/);
   assert.match(source, /sourceEnemyId: enemy\.archetype/);
   assert.match(source, /createTrophyRitual\([\s\S]*nearbyDrop[\s\S]*,\s*3,\s*\)/);

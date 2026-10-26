@@ -1,4 +1,4 @@
-import { normalizeFieldToolIdsV110 } from "./systems/fieldToolsV110";
+import { normalizeFieldToolIdsV111 } from "./systems/fieldToolsV111";
 import {normalizeHomeworldArchiveV106} from './systems/homeworldArchiveLedgerV106';
 import {normalizeHomeworldArchiveComparisonV107} from './systems/homeworldArchiveComparisonLedgerV107';
 import {normalizeHomeworldCargoV108} from './systems/homeworldCargoLedgerV108';
@@ -1188,7 +1188,7 @@ export function normalizeSave(value: unknown): SaveGame {
       ),
     },
     inventory: {
-      fieldToolIds: normalizeFieldToolIdsV110(rawInventory.fieldToolIds),
+      fieldToolIds: normalizeFieldToolIdsV111(rawInventory.fieldToolIds),
       unlockedWeaponIds,
       unlockedGearIds,
       unlockedArmorIds,

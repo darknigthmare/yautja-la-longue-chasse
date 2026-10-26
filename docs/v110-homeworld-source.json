@@ -1,0 +1,400 @@
+{
+  "schemaVersion": 1,
+  "release": "V110",
+  "asOf": "2026-10-26",
+  "baseline": {
+    "path": "docs/YAUTJA_V109_SUIVI.xlsx",
+    "sha256": "e80fcea5fdf768d5c9b6fd1874f89bc42badee24fbac9a3cf7cecb447c49ed3f"
+  },
+  "baselineSheets": 97,
+  "closedSourceIds": [],
+  "newArtAssets": 0,
+  "sourceCompletion": false,
+  "production": {
+    "path": "docs/v110-homeworld-validation.json",
+    "sha256": "216df558057ef2151bbb0b2e7a589c2d56544383897e73744ecefcde8ff9f473",
+    "bytes": 329470
+  },
+  "workstreams": [
+    {
+      "id": "HW110-RESIDENTS",
+      "title": "Approcher et conserver un dialogue résident physiquement possible",
+      "source": "Brief utilisateur Homeworld V81 §15, lignes736–774 : population et interactions situées. Incohérence reproduite avec resident-port-1 sur sol public mais personne masquée ou segment bloqué.",
+      "status": "VALIDE_CIBLE",
+      "behavior": "Revalider propriétaire, pose native, étage, espace, distance, trajet et visibilité au choix du résident et au clic ; désactiver les commandes pendant pause/suspension.",
+      "implementation": [
+        "app/game/systems/homeworldResidentContactsV110.ts",
+        "app/game/HomeworldResidentConversationV75.tsx",
+        "app/game/HomeworldHub.tsx"
+      ],
+      "proof": [
+        {
+          "path": "docs/v110-homeworld-validation.json",
+          "sha256": "216df558057ef2151bbb0b2e7a589c2d56544383897e73744ecefcde8ff9f473",
+          "bytes": 329470
+        },
+        {
+          "path": "docs/qa/v110-homeworld/current-v110-suite-r5.log",
+          "sha256": "74dbf7c5ef819157b537707ed509f039cd1f4dc8a6e509a0219f3ce47bc0d2c4",
+          "bytes": 17147
+        },
+        {
+          "path": "docs/qa/v110-homeworld/browser-production-r4.log",
+          "sha256": "05ea156e310731f7bb20a72926607103aca6ae232f0a165b98a29ef2c18788da",
+          "bytes": 3486
+        },
+        {
+          "path": "docs/qa/v110-homeworld/visual-inspection.json",
+          "sha256": "ec494a28c6882b871c75c7e2353521a0d5a47472e8ca3dcb76d5cada40bca821",
+          "bytes": 2979
+        },
+        {
+          "path": "docs/homeworld-resident-contacts-v110.md",
+          "sha256": "9319dd0d05ff90c624566d628dad64d8a625139df58b0f02d148f7f35fed295d",
+          "bytes": 6380
+        }
+      ],
+      "remaining": "Aucun nouveau dessin BODY, cycle métier, nouveau résident ni interaction artistique n'est livré par ce correctif."
+    },
+    {
+      "id": "HW110-ARRIVALS",
+      "title": "Ne pas terminer un passage dans un lot cargo posé",
+      "source": "ROLE19, scène398, choix818/819, répliques3303–3310 ; continuité des lots physiques V108. Deux reproductions par gestes réels du moteur : 1 418 pas vers le palier du Conseil et 603 pas après prise du lot étroit vers la porte residence-port-2.",
+      "status": "VALIDE_CIBLE",
+      "behavior": "Contrôler les charges au terme des passages, retours régionaux, entrées et sorties intérieures. Une arrivée occupée est refusée au départ sûr. L’entrée conserve le point libre réellement atteint à côté du seuil, au lieu du centre occupé ; cet ancrage traverse sauvegarde, Continuer et sortie sans déplacer les lots.",
+      "implementation": [
+        "app/game/systems/homeworldTransitionsV110.ts",
+        "app/game/HomeworldHub.tsx"
+      ],
+      "proof": [
+        {
+          "path": "docs/v110-homeworld-validation.json",
+          "sha256": "216df558057ef2151bbb0b2e7a589c2d56544383897e73744ecefcde8ff9f473",
+          "bytes": 329470
+        },
+        {
+          "path": "docs/qa/v110-homeworld/current-v110-suite-r5.log",
+          "sha256": "74dbf7c5ef819157b537707ed509f039cd1f4dc8a6e509a0219f3ce47bc0d2c4",
+          "bytes": 17147
+        },
+        {
+          "path": "docs/qa/v110-homeworld/browser-production-r4.log",
+          "sha256": "05ea156e310731f7bb20a72926607103aca6ae232f0a165b98a29ef2c18788da",
+          "bytes": 3486
+        },
+        {
+          "path": "docs/qa/v110-homeworld/visual-inspection.json",
+          "sha256": "ec494a28c6882b871c75c7e2353521a0d5a47472e8ca3dcb76d5cada40bca821",
+          "bytes": 2979
+        },
+        {
+          "path": "docs/v110-homeworld-transition-admission.md",
+          "sha256": "bb297fc05d64f613e66a78486800454f2c5dd62909373c99c5e38851f29ca9ec",
+          "bytes": 4061
+        }
+      ],
+      "remaining": "Les anciens checkpoints intérieurs possédant déjà un ancrage occupé restent refusés sans migration de récupération générale. Les registres, propriétaires et dimensions des lots restent inchangés. Le transport fixture précède les parcours navigateur et n’est pas déclaré joué dans le navigateur."
+    },
+    {
+      "id": "HW110-OBJECTIVES",
+      "title": "Guider l'opération réellement en cours dans l'Atlas",
+      "source": "Registres physiques V104–V109 ; incohérence entre Objectif actuel V75 et les études, relevés ou transports actifs. ROLE03 etROLE19 restent séparés.",
+      "status": "VALIDE_CIBLE",
+      "behavior": "Choisir la prochaine étape depuis le registre du propriétaire courant, dont le dernier point exact d’une étude interrompue ; utiliser ce repère dans le vrai Worker et invalider un ancien trajet lorsque la cible ou les lots changent. Sans opération active, conserver le guide introductif.",
+      "implementation": [
+        "app/game/systems/homeworldObjectivesV110.ts",
+        "app/game/HomeworldWorldMapV77.tsx",
+        "app/game/HomeworldHub.tsx",
+        "app/game/systems/homeworldWayfindingV110.ts",
+        "app/game/homeworldRouteWorkerV110.ts"
+      ],
+      "proof": [
+        {
+          "path": "docs/v110-homeworld-validation.json",
+          "sha256": "216df558057ef2151bbb0b2e7a589c2d56544383897e73744ecefcde8ff9f473",
+          "bytes": 329470
+        },
+        {
+          "path": "docs/qa/v110-homeworld/current-v110-suite-r5.log",
+          "sha256": "74dbf7c5ef819157b537707ed509f039cd1f4dc8a6e509a0219f3ce47bc0d2c4",
+          "bytes": 17147
+        },
+        {
+          "path": "docs/qa/v110-homeworld/browser-production-r4.log",
+          "sha256": "05ea156e310731f7bb20a72926607103aca6ae232f0a165b98a29ef2c18788da",
+          "bytes": 3486
+        },
+        {
+          "path": "docs/qa/v110-homeworld/visual-inspection.json",
+          "sha256": "ec494a28c6882b871c75c7e2353521a0d5a47472e8ca3dcb76d5cada40bca821",
+          "bytes": 2979
+        },
+        {
+          "path": "docs/v110-homeworld-objectives.md",
+          "sha256": "8a0890b379988336544cca85aec3900b57b70e2348f249512e76c7828b92d607",
+          "bytes": 2508
+        }
+      ],
+      "remaining": "Le guide indique une destination ; il n'exécute ni action, déplacement, consentement ou progression."
+    },
+    {
+      "id": "HW110-ARCHIVE-CLARITY",
+      "title": "Retrouver les pièces K-17 et lire leur provenance sans ambiguïté",
+      "source": "ROLE03 V6 : scène383, choix788/789, répliques3183–3190, notamment3188(avec son lieu de découverte). Trois études V106/V107/V109 partagent un corpus sans partager leurs pièces.",
+      "status": "VALIDE_CIBLE",
+      "behavior": "Distinguer lieu de découverte observé, relevé copié et emplacement actuel ; signaler acteur et pièces hors du cadre du poste ; ouvrir carte et relevés dans un carnet défilant qui conserve une surface de jeu et la marche clavier sur ordinateur/mobile ; préciser les objets distincts des trois études ROLE03.",
+      "implementation": [
+        "app/game/HomeworldArchivePlaqueV109.tsx",
+        "app/game/HomeworldArchiveComparisonV107.tsx",
+        "app/game/HomeworldArchiveV106.tsx",
+        "app/game/systems/homeworldArchivePlaqueRecordV110.ts",
+        "app/game/HomeworldArchivePlaqueRecordV110.tsx",
+        "app/game/HomeworldArchivePlaqueRecordV110.module.css",
+        "app/game/HomeworldCity.module.css"
+      ],
+      "proof": [
+        {
+          "path": "docs/v110-homeworld-validation.json",
+          "sha256": "216df558057ef2151bbb0b2e7a589c2d56544383897e73744ecefcde8ff9f473",
+          "bytes": 329470
+        },
+        {
+          "path": "docs/qa/v110-homeworld/current-v110-suite-r5.log",
+          "sha256": "74dbf7c5ef819157b537707ed509f039cd1f4dc8a6e509a0219f3ce47bc0d2c4",
+          "bytes": 17147
+        },
+        {
+          "path": "docs/qa/v110-homeworld/browser-production-r4.log",
+          "sha256": "05ea156e310731f7bb20a72926607103aca6ae232f0a165b98a29ef2c18788da",
+          "bytes": 3486
+        },
+        {
+          "path": "docs/qa/v110-homeworld/visual-inspection.json",
+          "sha256": "ec494a28c6882b871c75c7e2353521a0d5a47472e8ca3dcb76d5cada40bca821",
+          "bytes": 2979
+        },
+        {
+          "path": "docs/v110-homeworld-archive-record.md",
+          "sha256": "b0a8cadb69787b5bd5560ec341e0a6b1dab27fecbd2b9642cc843c513145140f",
+          "bytes": 3408
+        }
+      ],
+      "remaining": "L'identité de l'empreinte et le fragment restent incertains ; aucune réparation, lignée ou récompense n'est exigée par ce corpus."
+    }
+  ],
+  "remaining": [
+    {
+      "id": "HW110-ROLE03-DEFERRED-CONTINUATION",
+      "title": "Permettre une reprise volontaire de l'étude différée B vers A",
+      "source": "ROLE03, option789 et réplique3189 : pour l'instant ; conserver les états acquis.",
+      "status": "OUVERT",
+      "detail": "La branche B de V109 reste terminée sans voie B→A. Une future continuation devra conserver le reçu et les traces B, leurs lieux et propriétaires, sans réécrire l'historique ni redéposer artificiellement les pièces. Aucun changement de registre de continuation n'est livré ici."
+    },
+    {
+      "id": "HW110-ART-CATALOGUE",
+      "title": "Produire et valider les variantes, décors et animations Homeworld restantes",
+      "source": "Brief utilisateur V81 §55–76 ; app/game/data/homeworldAssetCatalogueTargetV81.json,354 besoins.",
+      "status": "OUVERT",
+      "detail": "354 cibles artistiques sont reprises individuellement sans les déclarer toutes manquantes ou toutes livrées. Leur inventaire V81 historique n'est pas une nouvelle revue du rendu courant. Aucun nouvel asset ni BODY n'est créé par V110."
+    }
+  ],
+  "validations": [
+    {
+      "id": "V110-BOUNDED-SUITE-BEFORE-R3",
+      "status": "PASS_LOCAL",
+      "scope": "56 tests V110 avant le dernier message visible de refus et la correction du protocole navigateur : suivi Excel5, isolation historique3, relevés K-17 sept, entrée intérieure3, publication5, objectifs13, résidents11, transitions9. Huit sorties TAP conservées.",
+      "command": "node --experimental-strip-types --test --test-concurrency=1 tests/*-v110.test.mjs (huit suites, sorties séparées)",
+      "evidence": [
+        {
+          "path": "docs/qa/v110-homeworld/current-v110-suite.log",
+          "sha256": "bcc4622404d5c1207af8f1f6f45900298173f7d3632bf014a0775166ee653cc0",
+          "bytes": 17150
+        }
+      ],
+      "limit": "Journal antérieur au runtime final73c1 et à sa certification de production. Les56tests seront repassés séparément ; ce journal n’est pas une preuve navigateur."
+    },
+    {
+      "id": "V110-HISTORICAL-V109",
+      "status": "PASS_HISTORICAL",
+      "scope": "Contexte privé V109 du commit876a : 12 fichiers de tests originaux,95 assertions, générateur original --check et classeur e80f exact de5277296octets. Trois tests d’isolation actuels et reconstruction exacte de la capsule passent.",
+      "command": "node scripts/check-excel-history-v110.mjs --check --tests ; node --experimental-strip-types --test tests/excel-history-v110.test.mjs ; python3 scripts/build-excel-history-snapshot-v110.py --check",
+      "evidence": [
+        {
+          "path": "docs/qa/v110-excel-history/context-tests.log",
+          "sha256": "9d6f41c7e2936dffde37fc9b7202324beef9adc44e5865f41aa3946716d83466",
+          "bytes": 460
+        },
+        {
+          "path": "docs/qa/v110-excel-history/historical-v109.log",
+          "sha256": "e9b8808df871181b4c656d66b74de99ad6ffcea9a9014413ead08fa221775ee7",
+          "bytes": 27547
+        },
+        {
+          "path": "docs/qa/v110-excel-history/capsule-rebuild.log",
+          "sha256": "805fede2ebab43e85b7ddb92dc261e8ec717118ed01a6bc0b387a1dc2585544f",
+          "bytes": 127
+        }
+      ],
+      "limit": "Les95assertions certifient le contexte historique V109, pas le jeu V110. Les capsules précédentes, le classeurV109 et ses97feuilles restent immuables."
+    },
+    {
+      "id": "V110-PREVIOUS-PRODUCTION-BUILD-R2",
+      "status": "PASS_BUILD",
+      "scope": "Compilation antérieure du runtime dc9e2ea548df1bc0950c7ff8b81408580040f918, build UV7GoRY1M4egPl1ykZJ8J. Ancien gel1386entrées39e4e5d705fc4da51976622ce72e9cd0ecfdbc842e15a24e3a204ea8b6bd1716. Le gel courant n’est pas réétiqueté comme ce gel antérieur.",
+      "command": "npm run build:production",
+      "evidence": [
+        {
+          "path": "docs/qa/v110-homeworld/production-build-r2.log",
+          "sha256": "66dacafceb75f91272d5bc1403d9e31859e5eb32da00a358536dc30d5474decb",
+          "bytes": 4540
+        }
+      ],
+      "limit": "Build historique après libération des caches ENOSPC ; ne certifie pas le runtime final73c1 ni le protocole corrigé. Le premier parcours de ce build reste FAIL."
+    },
+    {
+      "id": "V110-PREVIOUS-INFRASTRUCTURE-FAILURES",
+      "status": "ECHEC_INFRA_CONSERVE",
+      "scope": "Premier build : ENOSPC au pré-rendu. Premier passage de la suite :4/5tests Excel, création du dossier temporaire refusée ENOSPC. Journaux originaux conservés.",
+      "command": "npm run build:production ; node --experimental-strip-types --test --test-concurrency=1 tests/*-v110.test.mjs",
+      "evidence": [
+        {
+          "path": "docs/qa/v110-homeworld/production-build.log",
+          "sha256": "2cb2c209553c415f759eed361141e4a012c32dbe8ae756a07f0f3780d595cca0",
+          "bytes": 1245
+        },
+        {
+          "path": "docs/qa/v110-homeworld/current-v110-suite-failed-disk.log",
+          "sha256": "9f0746e6ec53c438faf06a72e5fc41224dc5e530e5d213c8f536fa6aac17a9c8",
+          "bytes": 2545
+        }
+      ],
+      "limit": "Ces essais restent des échecs historiques et ne sont pas additionnés aux validations courantes. Le build et la suite ont ensuite repassé leurs contrôles avec des sorties séparées."
+    },
+    {
+      "id": "V110-FIRST-PRODUCTION-FAILURE",
+      "status": "ECHEC_PROTOCOLE_CONSERVE",
+      "scope": "Premier parcours compilé conservé :19contrôles,8captures, échec de l’attente d’un ancien guide démonté après une reprise réelle. Le protocole a été corrigé séparément et quatreparcours de rodage ont ensuite passé47contrôles/19captures.",
+      "command": "node scripts/qa-homeworld-coherence-v110.mjs",
+      "evidence": [
+        {
+          "path": "docs/qa/v110-first-production/manifest.json",
+          "sha256": "be63a1526136ecdeb0b2788d929ae4dcee45eab17fadb8df48d8c880720ccd08",
+          "bytes": 4783
+        },
+        {
+          "path": "docs/qa/v110-development-attempts/manifest.json",
+          "sha256": "c1bcaf5fd20d5a60383bbabeba465611cce78ea4a7babf059244be34fb899074",
+          "bytes": 18709
+        }
+      ],
+      "limit": "L’essai compilé reste FAIL et le rodage reste développement ; aucun n’est promu en certificat du runtime final. Aucune erreur JavaScript/console n’avait été enregistrée dans cet essai compilé."
+    },
+    {
+      "id": "V110-PREVIOUS-PRODUCTION-R3",
+      "status": "PASS_HISTORIQUE_NON_COURANT",
+      "scope": "Quatre parcours compilés antérieurs du runtime 73c1, build AjKo : 47 contrôles et 19 captures inspectées, gel original b53 conservé. Les26fichiers archivés comprennent résultat brut, captures, inspection et journaux ;903sources correspondent à cet ancien gel.",
+      "command": "node scripts/qa-homeworld-coherence-v110.mjs",
+      "evidence": [
+        {
+          "path": "docs/qa/v110-previous-production-r3/manifest.json",
+          "sha256": "2371b3f7a342c551d3fabd00cd4cb149357bd29038fb3e9c21ed3d4727bbcc34",
+          "bytes": 7735
+        }
+      ],
+      "limit": "Ce résultat reste PASS pour son ancien code. Le texte de conseil résident et son assertion ont changé ensuite : R3 ne certifie pas 80123/R4 et ses47/19 ne sont pas additionnés au résultat courant."
+    },
+    {
+      "id": "V110-CURRENT-PRODUCTION-BUILD-R4",
+      "status": "PASS_BUILD",
+      "scope": "Compilation de production du runtime 80123ba7ec1f77c266ce8532b9f3d8d45beb7110, build lKVX-RK9EV3tJNCiGVJSV. Gel courant 1386 entrées c54a5e97c199d16584a229f332692f5890874f5494b015657f66cf9659bfe3f1, 256333 octets.",
+      "command": "npm run build:production",
+      "evidence": [
+        {
+          "path": "docs/qa/v110-homeworld/production-build-r4.log",
+          "sha256": "57ac5834d770cdb7aeb702acf2eb31c26e0cbbe2eb96fb2c1bbca0e56c5f4f23",
+          "bytes": 4540
+        },
+        {
+          "path": "docs/v110-runtime-freeze.json",
+          "sha256": "c54a5e97c199d16584a229f332692f5890874f5494b015657f66cf9659bfe3f1",
+          "bytes": 256333
+        }
+      ],
+      "limit": "Compilation du même code et gel que les quatre parcours R4 publiés. Le build ne remplace pas ces parcours ; les anciens builds restent historiques."
+    },
+    {
+      "id": "V110-CURRENT-SUITE-R5",
+      "status": "PASS_LOCAL",
+      "scope": "56 tests de la version finale 80123, dont cinq tests du suivi avec son nouveau gel : huit suites,56 PASS et0 FAIL. Les tests Excel de promotion production sont repassés ensuite dans un journal distinct.",
+      "command": "node --experimental-strip-types --test --test-concurrency=1 tests/*-v110.test.mjs (huit suites, sorties séparées)",
+      "evidence": [
+        {
+          "path": "docs/qa/v110-homeworld/current-v110-suite-r5.log",
+          "sha256": "74dbf7c5ef819157b537707ed509f039cd1f4dc8a6e509a0219f3ce47bc0d2c4",
+          "bytes": 17147
+        }
+      ],
+      "limit": "Tests de modèle, callbacks, rendu serveur, publication et structure. Ces 56ne sont ni 47 contrôles navigateur supplémentaires ni 95 assertions historiques supplémentaires."
+    },
+    {
+      "id": "V110-CURRENT-PRODUCTION-R4",
+      "status": "PASS_CIBLE_PRODUCTION",
+      "scope": "Quatre parcours complets K17,Residents,BlockedArrival,Doorway sur le même code 80123/build lKVX/gel c54 : 47 contrôles PASS et 19 captures toutes inspectées. Résultat brut gzip conservé, 903 sources avant/après identiques, zéro erreur JavaScript/console/Worker.",
+      "command": "node scripts/qa-homeworld-coherence-v110.mjs",
+      "evidence": [
+        {
+          "path": "docs/v110-homeworld-validation.json",
+          "sha256": "216df558057ef2151bbb0b2e7a589c2d56544383897e73744ecefcde8ff9f473",
+          "bytes": 329470
+        },
+        {
+          "path": "docs/qa/v110-homeworld/entry.json",
+          "sha256": "d65c5b35da0131571362dd27efb522135e7d9c632ad7ba09f6493b525dee7469",
+          "bytes": 4745
+        },
+        {
+          "path": "docs/qa/v110-homeworld/browser-production-r4.log",
+          "sha256": "05ea156e310731f7bb20a72926607103aca6ae232f0a165b98a29ef2c18788da",
+          "bytes": 3486
+        },
+        {
+          "path": "docs/qa/v110-homeworld/visual-inspection.json",
+          "sha256": "ec494a28c6882b871c75c7e2353521a0d5a47472e8ca3dcb76d5cada40bca821",
+          "bytes": 2979
+        },
+        {
+          "path": "docs/v110-runtime-freeze.json",
+          "sha256": "c54a5e97c199d16584a229f332692f5890874f5494b015657f66cf9659bfe3f1",
+          "bytes": 256333
+        }
+      ],
+      "limit": "Campagnes et poses initiales sont des fixtures déclarées. Les transports cargo 1 418/603 pas préparent les charges dans le vrai modèle ; ils ne sont pas présentés comme déplacements navigateur. Les interactions, marches, refus, Continuer et sorties observés ensuite passent par l’interface réelle. B→A, 354 cibles artistiques et 56 exigences source restent ouverts."
+    },
+    {
+      "id": "V110-EXCEL-FINAL",
+      "status": "PASS_STRUCTURE",
+      "scope": "Cinq tests finaux sur les 105 feuilles, les 97 historiques exactes, 56 exigences source ouvertes, 354 cibles non clôturées, le certificat courant 47/19 et sa chaîne brute/gel.",
+      "command": "node --experimental-strip-types --test --test-concurrency=1 tests/excel-followup-v110.test.mjs ; node scripts/build-excel-followup-v110.mjs --check",
+      "evidence": [
+        {
+          "path": "docs/qa/v110-excel-followup/final-tests.log",
+          "sha256": "b4d546bf999a1d0e17a9732b2f045645a0eb56459c9d9552bb1b3a3e0e33bffa",
+          "bytes": 1974
+        }
+      ],
+      "limit": "Les cinq tests vérifient la promotion production et la régénération exacte des produits en dossier temporaire ; le journal est ensuite épinglé avant la génération publiée et son --check. Aucun navigateur ni Excel natif n’est exécuté par ces tests."
+    }
+  ],
+  "limits": [
+    "Les 56 exigences source et neuf actions encore ouvertes en V109 restent ouvertes. Ces lignes ne recensaient pas la famille Homeworld.",
+    "Les quatre correctifs Homeworld, les 56 exigences héritées et les 354 cibles artistiques sont des inventaires distincts ; leurs quantités ne s'additionnent pas en pourcentage d'achèvement.",
+    "Le classeur conserve 97 feuilles historiques, ajoute des feuilles V110 et ne réexécute pas le générateur V109 contre le nouveau jeu.",
+    "Les vérifications ZIP/XML et caches de formules n'exécutent pas Excel natif. Un test de modèle ou de structure ne certifie pas un parcours navigateur.",
+    "L'étude différée B→A reste ouverte. Ni animation professionnelle BODY, ni fidélité canonique 1:1 globale, ni achèvement du Homeworld ne sont revendiqués."
+  ],
+  "runtimeFreeze": {
+    "path": "docs/v110-runtime-freeze.json",
+    "sha256": "c54a5e97c199d16584a229f332692f5890874f5494b015657f66cf9659bfe3f1",
+    "bytes": 256333
+  }
+}

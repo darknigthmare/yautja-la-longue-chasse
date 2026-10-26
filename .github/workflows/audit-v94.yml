@@ -52,10 +52,13 @@ on:
       - 'docs/YAUTJA_V107_SUIVI.xlsx'
       - 'docs/YAUTJA_V108_SUIVI.xlsx'
       - 'docs/YAUTJA_V109_SUIVI.xlsx'
-      - 'docs/YAUTJA_V110_MECANIQUES_CHASSE.xlsx'
-      - 'docs/hunt-mechanics-v110.*'
       - 'docs/*v109*'
       - 'docs/qa/v109*/**'
+      - 'docs/YAUTJA_V110_SUIVI.xlsx'
+      - 'docs/YAUTJA_V111_MECANIQUES_CHASSE.xlsx'
+      - 'docs/hunt-mechanics-v111.*'
+      - 'docs/*v110*'
+      - 'docs/qa/v110*/**'
       - 'public/game/sprites/v109/**'
       - 'public/game/homeworld/v109/**'
       - 'public/game/backgrounds/desert-depth-v8.png'
@@ -273,10 +276,14 @@ jobs:
             /docs/YAUTJA_V107_SUIVI.xlsx
             /docs/YAUTJA_V108_SUIVI.xlsx
             /docs/YAUTJA_V109_SUIVI.xlsx
-            /docs/YAUTJA_V110_MECANIQUES_CHASSE.xlsx
-            /docs/hunt-mechanics-v110.*
             /docs/*v109*
             /docs/qa/v109*/
+            /docs/YAUTJA_V110_SUIVI.xlsx
+            /docs/YAUTJA_V111_MECANIQUES_CHASSE.xlsx
+            /docs/hunt-mechanics-v111.*
+            /docs/*v110*
+            /docs/qa/v110*/
+            /docs/specifications/homeworld-v81/mission-homeworld-original.txt
             /public/game/sprites/v109/
             /public/game/homeworld/v109/
             /public/game/backgrounds/desert-depth-v8.png
@@ -512,12 +519,12 @@ jobs:
         run: node node_modules/next/dist/bin/next typegen
       - name: Check application TypeScript
         run: npm run typecheck
-      - name: Verify V110 field tools, physical trophies, canopy leaps and workbook
+      - name: Verify V111 field tools, physical trophies, canopy leaps and workbook
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: |
-          node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v110.test.mjs tests/hunt-jump-assist-runtime.test.mjs tests/jump-assist.test.mjs tests/enemy-trophy-runtime-v18.test.mjs tests/hunt-rites-v77.test.mjs tests/trophy-ritual.test.mjs
+          node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v111.test.mjs tests/hunt-jump-assist-runtime.test.mjs tests/jump-assist.test.mjs tests/enemy-trophy-runtime-v18.test.mjs tests/hunt-rites-v77.test.mjs tests/trophy-ritual.test.mjs
           node scripts/build-hunt-mechanics-workbook.mjs --check
-          python3 scripts/verify-hunt-mechanics-workbook-v110.py
+          python3 scripts/verify-hunt-mechanics-workbook-v111.py
       - name: Verify V6.14 native images, cumulative history and unchanged sprite defaults
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: node --experimental-strip-types --test tests/enforcer-production-v614.test.mjs
@@ -608,8 +615,9 @@ jobs:
           app/game/*V107.ts app/game/*V107.tsx app/game/systems/*V107.ts
           app/game/*V108.ts app/game/*V108.tsx app/game/systems/*V108.ts
           app/game/*V109.ts app/game/*V109.tsx app/game/systems/*V109.ts
+          app/game/*V110.ts app/game/*V110.tsx app/game/systems/*V110.ts
           app/game/HuntRitesMenuV77.tsx app/game/systems/ritesOfHuntV77.ts
-          app/game/systems/huntRitesRuntimeV77.ts app/game/systems/*V110.ts
+          app/game/systems/huntRitesRuntimeV77.ts app/game/systems/*V111.ts
           app/game/PitExperienceV79.tsx app/game/ClanWarBibleV6Panel.tsx
       - name: Exercise input resilience, fixed-step edges and original V74 metadata
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
@@ -731,9 +739,22 @@ jobs:
       - name: Execute unchanged V108 assertions and regenerate its immutable published workbook
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: node scripts/check-excel-history-v109.mjs --check --tests
-      - name: Re-run original V109 assertions and preserve its published workbook from pinned Git preimages
+      - name: Exercise current V109 throws, supply routes, Preserve biomes, plaque and evidence boundaries
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: >-
+          node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1
+          tests/clan-supply-route-v109.test.mjs tests/excel-history-v109.test.mjs
+          tests/game-reserve-biomes-persistence-v109.test.mjs tests/game-reserve-biomes-v109.test.mjs
+          tests/game-reserve-rendering-v109.test.mjs tests/homeworld-archive-plaque-v109.test.mjs
+          tests/homeworld-dynamic-navigation-v109.test.mjs tests/pit-engine-compatibility-v109.test.mjs
+          tests/pit-forward-throw-art-v109.test.mjs tests/pit-forward-throws-v109.test.mjs
+          tests/production-publication-v109.test.mjs
+      - name: Execute unchanged V109 assertions and regenerate its immutable certified workbook
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: node scripts/check-excel-history-v110.mjs --check --tests
+      - name: Re-run unchanged V110 assertions and preserve its published workbook from pinned Git preimages
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node scripts/check-excel-history-v111.mjs --check --tests
       - name: Exercise actual clan-war panel and native locked storage
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         env:
