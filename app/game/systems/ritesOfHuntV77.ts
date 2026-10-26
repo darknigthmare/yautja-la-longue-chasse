@@ -20,6 +20,8 @@ export interface RiteCorpseV77 extends RitePointV77 {
   analyzed:boolean; marked:boolean; flayed:boolean; erased:boolean;
   supportId:string|null; hangingAt:RitePointV77|null;
   witnesses:string[];
+  /** Fear at the actual discovery time; older runtime traces only caused eight. */
+  witnessFear?:number[];
 }
 export interface RiteOperationV77 {
   corpseId:string; action:HuntRiteActionV77; elapsed:number;
@@ -59,7 +61,7 @@ export function registerRitePreyV77(state:RitesOfHuntV77,proof:RitePreyProofV77,
   if(state.corpses.some(c=>c.id===proof.id))return result(state,false,'Cette proie est déjà conservée.');
   if(state.corpses.length>=128)return result(state,false,'Le registre de cette chasse est plein ; aucune prise n’est effacée.');
   const corpse:RiteCorpseV77={id:proof.id,sourceEnemyId:proof.sourceEnemyId,label:proof.label,kind:proof.kind,x:proof.x,y:proof.y,
-    worthy:proof.worthy,protectedPrey:proof.protectedPrey,defeatedAt:proof.defeatedAt,analyzed:false,marked:false,flayed:false,erased:false,supportId:null,hangingAt:null,witnesses:[]};
+    worthy:proof.worthy,protectedPrey:proof.protectedPrey,defeatedAt:proof.defeatedAt,analyzed:false,marked:false,flayed:false,erased:false,supportId:null,hangingAt:null,witnesses:[],witnessFear:[]};
   return result({...state,elapsed:Math.max(state.elapsed,proof.defeatedAt),corpses:[...state.corpses,corpse]},true,'Trace de chasse conservée ; aucun trophée encore prélevé.');
 }
 export function nearestRiteCorpseV77(state:RitesOfHuntV77,actor:RitePointV77):RiteCorpseV77|null {
@@ -100,7 +102,7 @@ export function stepHuntRiteV77(state:RitesOfHuntV77,delta:number,context:RiteLi
   if(elapsed+1e-9<RITE_DURATIONS_V77[operation.action])return result({...next,operation:{...operation,elapsed}},false,'Geste en cours.');
   const eventId=operation.action+':'+corpse.id;
   if(state.completedEventIds.includes(eventId))return result({...next,operation:null},false,'Geste déjà confirmé.');
-  const changed={...corpse,witnesses:[...corpse.witnesses]};
+  const changed={...corpse,witnesses:[...corpse.witnesses],witnessFear:[...(corpse.witnessFear??corpse.witnesses.map(()=>8))]};
   if(operation.action==='analyze')changed.analyzed=true;
   if(operation.action==='mark')changed.marked=true;
   if(operation.action==='flay')changed.flayed=true;
@@ -119,7 +121,7 @@ export function discoverHuntRiteV77(state:RitesOfHuntV77,corpseId:string,witness
     ||(!corpse.marked&&!corpse.flayed&&!corpse.supportId))return result(state,false,'Aucune découverte nouvelle de mise en scène.');
   const fear=corpse.supportId?35:corpse.flayed?20:8;
   return result({...state,fear:Math.min(100,state.fear+fear),awareness:Math.min(100,state.awareness+(corpse.supportId?20:8)),
-    corpses:state.corpses.map(c=>c.id===corpseId?{...c,witnesses:[...c.witnesses,witness.id]}:c)},true,
+    corpses:state.corpses.map(c=>c.id===corpseId?{...c,witnesses:[...c.witnesses,witness.id],witnessFear:[...(c.witnessFear??c.witnesses.map(()=>8)),fear]}:c)},true,
     'La mise en scène a été découverte : terreur et vigilance augmentent ensemble.');
 }
 /** Legacy absence creates no historic corpses. Malformed/future payloads fail
@@ -135,6 +137,7 @@ export function normalizeRitesOfHuntV77(raw:unknown,runId:string,missionId:strin
   for(const c of s.corpses){if(!c||!point(c)||!idValid(c.id)||!idValid(c.sourceEnemyId)||!idValid(c.label)||!['human','beast','yautja'].includes(c.kind)
     ||!finite(c.defeatedAt)||c.defeatedAt<0||c.defeatedAt>s.elapsed||['worthy','protectedPrey','analyzed','marked','flayed','erased'].some(k=>typeof c[k as keyof RiteCorpseV77]!=='boolean')
     ||!Array.isArray(c.witnesses)||c.witnesses.length>64||c.witnesses.some(id=>!idValid(id))||new Set(c.witnesses).size!==c.witnesses.length
+    ||c.witnessFear!==undefined&&(!Array.isArray(c.witnessFear)||c.witnessFear.length!==c.witnesses.length||c.witnessFear.some(value=>value!==8&&value!==20&&value!==35||value===20&&!c.flayed||value===35&&!c.supportId))
     ||c.supportId!==null&&!idValid(c.supportId)||c.hangingAt!==null&&!point(c.hangingAt)||!!c.supportId!==!!c.hangingAt||c.supportId&&!c.flayed)return null;}
   if(new Set(s.corpses.map(c=>c.id)).size!==s.corpses.length)return null;
   const expectedEvents=s.corpses.flatMap(c=>[
