@@ -1,0 +1,101 @@
+TAP version 13
+# Subtest: V110 preserves its exact97 sheet baseline,56 open requirements and354 art targets as separate inventories
+not ok 1 - V110 preserves its exact97 sheet baseline,56 open requirements and354 art targets as separate inventories
+  ---
+  duration_ms: 34.696088
+  type: 'test'
+  location: '/workspace/yautja-homeworld-v110/tests/excel-followup-v110.test.mjs:13:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Changed evidence: docs/v110-runtime-freeze.json
+    + actual - expected
+    
+    + 'b53e493caa78c2ccca591f5f73981bb9d5a65a056ceb0f04db94828342d5fa5f'
+    - '39e4e5d705fc4da51976622ce72e9cd0ecfdbc842e15a24e3a204ea8b6bd1716'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '39e4e5d705fc4da51976622ce72e9cd0ecfdbc842e15a24e3a204ea8b6bd1716'
+  actual: 'b53e493caa78c2ccca591f5f73981bb9d5a65a056ceb0f04db94828342d5fa5f'
+  operator: 'strictEqual'
+  stack: |-
+    verifyProof (file:///workspace/yautja-homeworld-v110/scripts/build-excel-followup-v110.mjs:32:150)
+    async collectFollowupV110 (file:///workspace/yautja-homeworld-v110/scripts/build-excel-followup-v110.mjs:131:28)
+    async TestContext.<anonymous> (file:///workspace/yautja-homeworld-v110/tests/excel-followup-v110.test.mjs:14:20)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: unrelated closures, invented art, duplicate workstreams and unsupported browser promotions are refused
+ok 2 - unrelated closures, invented art, duplicate workstreams and unsupported browser promotions are refused
+  ---
+  duration_ms: 6.191204
+  type: 'test'
+  ...
+# Subtest: 105 worksheets retain all97 historical parts, styles, formulas and cells exactly
+not ok 3 - 105 worksheets retain all97 historical parts, styles, formulas and cells exactly
+  ---
+  duration_ms: 53.180633
+  type: 'test'
+  location: '/workspace/yautja-homeworld-v110/tests/excel-followup-v110.test.mjs:33:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Changed evidence: docs/v110-runtime-freeze.json
+    + actual - expected
+    
+    + 'b53e493caa78c2ccca591f5f73981bb9d5a65a056ceb0f04db94828342d5fa5f'
+    - '39e4e5d705fc4da51976622ce72e9cd0ecfdbc842e15a24e3a204ea8b6bd1716'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '39e4e5d705fc4da51976622ce72e9cd0ecfdbc842e15a24e3a204ea8b6bd1716'
+  actual: 'b53e493caa78c2ccca591f5f73981bb9d5a65a056ceb0f04db94828342d5fa5f'
+  operator: 'strictEqual'
+  stack: |-
+    verifyProof (file:///workspace/yautja-homeworld-v110/scripts/build-excel-followup-v110.mjs:32:150)
+    async collectFollowupV110 (file:///workspace/yautja-homeworld-v110/scripts/build-excel-followup-v110.mjs:131:28)
+    async TestContext.<anonymous> (file:///workspace/yautja-homeworld-v110/tests/excel-followup-v110.test.mjs:34:20)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: a V109 browser recipe cannot be relabelled as V110 validation
+ok 4 - a V109 browser recipe cannot be relabelled as V110 validation
+  ---
+  duration_ms: 9.773289
+  type: 'test'
+  ...
+# Subtest: V110 workbook and metadata regenerate exactly without executing browser or nativeExcel
+not ok 5 - V110 workbook and metadata regenerate exactly without executing browser or nativeExcel
+  ---
+  duration_ms: 29.305403
+  type: 'test'
+  location: '/workspace/yautja-homeworld-v110/tests/excel-followup-v110.test.mjs:64:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Changed evidence: docs/v110-runtime-freeze.json
+    + actual - expected
+    
+    + 'b53e493caa78c2ccca591f5f73981bb9d5a65a056ceb0f04db94828342d5fa5f'
+    - '39e4e5d705fc4da51976622ce72e9cd0ecfdbc842e15a24e3a204ea8b6bd1716'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '39e4e5d705fc4da51976622ce72e9cd0ecfdbc842e15a24e3a204ea8b6bd1716'
+  actual: 'b53e493caa78c2ccca591f5f73981bb9d5a65a056ceb0f04db94828342d5fa5f'
+  operator: 'strictEqual'
+  stack: |-
+    verifyProof (file:///workspace/yautja-homeworld-v110/scripts/build-excel-followup-v110.mjs:32:150)
+    async collectFollowupV110 (file:///workspace/yautja-homeworld-v110/scripts/build-excel-followup-v110.mjs:131:28)
+    async generateFollowupV110 (file:///workspace/yautja-homeworld-v110/scripts/build-excel-followup-v110.mjs:164:20)
+    async TestContext.<anonymous> (file:///workspace/yautja-homeworld-v110/tests/excel-followup-v110.test.mjs:66:17)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 2
+# fail 3
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 138.779345

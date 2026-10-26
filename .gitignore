@@ -34,6 +34,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# Independent local QA build directories
+.next-dev-*/
+
 # typescript
 next-env.d.ts
 *.tsbuildinfo

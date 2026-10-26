@@ -1,0 +1,508 @@
+TAP version 13
+# Subtest: V110: the visible existing resident is reached through the same native pose and floor without rewriting the 98 people
+ok 1 - V110: the visible existing resident is reached through the same native pose and floor without rewriting the 98 people
+  ---
+  duration_ms: 12.712311
+  type: 'test'
+  ...
+# Subtest: V110: both real invisible-port reproductions retain a supported player but stop selecting the hidden speaker
+ok 2 - V110: both real invisible-port reproductions retain a supported player but stop selecting the hidden speaker
+  ---
+  duration_ms: 4.588368
+  type: 'test'
+  ...
+# Subtest: V110: a genuinely visible courier behind a blocked short approach cannot be addressed through the obstruction
+ok 3 - V110: a genuinely visible courier behind a blocked short approach cannot be addressed through the obstruction
+  ---
+  duration_ms: 3.345515
+  type: 'test'
+  ...
+# Subtest: V110: owner, room, floor, paused activity, transit, finite clock and exact radius are rechecked before dialogue admission
+ok 4 - V110: owner, room, floor, paused activity, transit, finite clock and exact radius are rechecked before dialogue admission
+  ---
+  duration_ms: 0.329526
+  type: 'test'
+  ...
+# Subtest: V110: resident advice retains only existing public buildings in the acknowledged speaker district and cannot grant discoveries
+ok 5 - V110: resident advice retains only existing public buildings in the acknowledged speaker district and cannot grant discoveries
+  ---
+  duration_ms: 9.026424
+  type: 'test'
+  ...
+# Subtest: V110: the retained callback reads live refs, rejects a replacement dialogue and can recover only after the same current context becomes valid again
+ok 6 - V110: the retained callback reads live refs, rejects a replacement dialogue and can recover only after the same current context becomes valid again
+  ---
+  duration_ms: 6.191993
+  type: 'test'
+  ...
+# Subtest: V110: a lot carried by the actual motor and parked beside the real resident invalidates the old callback until physically picked up again
+ok 7 - V110: a lot carried by the actual motor and parked beside the real resident invalidates the old callback until physically picked up again
+  ---
+  duration_ms: 2800.019062
+  type: 'test'
+  ...
+# Subtest: V110: real conversation subjects and recommended landmark buttons all disable during suspension or pause, while known-place filtering renders explicitly
+ok 8 - V110: real conversation subjects and recommended landmark buttons all disable during suspension or pause, while known-place filtering renders explicitly
+  ---
+  duration_ms: 79.342453
+  type: 'test'
+  ...
+# Subtest: V110: the actual Hub event closure rejects replaced dialogue refs and admission changes before passive owner/pause effects run
+ok 9 - V110: the actual Hub event closure rejects replaced dialogue refs and admission changes before passive owner/pause effects run
+  ---
+  duration_ms: 9.553252
+  type: 'test'
+  ...
+# Subtest: V110: a queued invalid-dialogue close cannot dismiss a newer conversation and otherwise returns focus once
+ok 10 - V110: a queued invalid-dialogue close cannot dismiss a newer conversation and otherwise returns focus once
+  ---
+  duration_ms: 2.844075
+  type: 'test'
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 10
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2948.769777
+TAP version 13
+# Subtest: V110: real 1418-step cargo placement no longer traps a hunter descending the council stair
+ok 1 - V110: real 1418-step cargo placement no longer traps a hunter descending the council stair
+  ---
+  duration_ms: 3957.765901
+  type: 'test'
+  ...
+# Subtest: V110: every unchanged connector journey has frame-by-frame no-cargo parity
+ok 2 - V110: every unchanged connector journey has frame-by-frame no-cargo parity
+  ---
+  duration_ms: 25.073142
+  type: 'test'
+  ...
+# Subtest: V110: last-frame admission reads the latest placements and does not reuse a stale clear result
+ok 3 - V110: last-frame admission reads the latest placements and does not reuse a stale clear result
+  ---
+  duration_ms: 1.226745
+  type: 'test'
+  ...
+# Subtest: V110: paused and non-advancing transitions keep their exact previous objects even above an occupied arrival
+ok 4 - V110: paused and non-advancing transitions keep their exact previous objects even above an occupied arrival
+  ---
+  duration_ms: 0.406352
+  type: 'test'
+  ...
+# Subtest: V110: arrival admission uses the full current body, genuine static solids and the actual floor
+ok 5 - V110: arrival admission uses the full current body, genuine static solids and the actual floor
+  ---
+  duration_ms: 0.858961
+  type: 'test'
+  ...
+# Subtest: V110: all ordinary regional returns preserve the original authored arrival
+ok 6 - V110: all ordinary regional returns preserve the original authored arrival
+  ---
+  duration_ms: 2.222659
+  type: 'test'
+  ...
+# Subtest: V110: regional return skips occupied public approaches and refuses when all authored sockets are blocked
+ok 7 - V110: regional return skips occupied public approaches and refuses when all authored sockets are blocked
+  ---
+  duration_ms: 3.154337
+  type: 'test'
+  ...
+# Subtest: V110: interior exits retain every exact doorway and refuse a newly occupied anchor without changing it
+ok 8 - V110: interior exits retain every exact doorway and refuse a newly occupied anchor without changing it
+  ---
+  duration_ms: 8.212603
+  type: 'test'
+  ...
+# Subtest: V110: malformed, future or foreign cargo cannot be ignored to admit an exterior arrival
+ok 9 - V110: malformed, future or foreign cargo cannot be ignored to admit an exterior arrival
+  ---
+  duration_ms: 1.337219
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4077.720517
+TAP version 13
+# Subtest: an actually carried then parked piece stays legible outside the K-17 map without changing its saved coordinates
+ok 1 - an actually carried then parked piece stays legible outside the K-17 map without changing its saved coordinates
+  ---
+  duration_ms: 251.390454
+  type: 'test'
+  ...
+# Subtest: the recorded discovery place stays distinct from current placement after moving and parking the actual object
+ok 2 - the recorded discovery place stays distinct from current placement after moving and parking the actual object
+  ---
+  duration_ms: 58.487406
+  type: 'test'
+  ...
+# Subtest: observation and copied provenance remain separate facts and unrevealed fragment records remain hidden
+ok 3 - observation and copied provenance remain separate facts and unrevealed fragment records remain hidden
+  ---
+  duration_ms: 27.987875
+  type: 'test'
+  ...
+# Subtest: the live journal exposes the map, real actor, provenance and preserved point while another floor never aliases the quay
+ok 4 - the live journal exposes the map, real actor, provenance and preserved point while another floor never aliases the quay
+  ---
+  duration_ms: 64.861609
+  type: 'test'
+  ...
+# Subtest: both completed approaches keep only their genuine observed pieces and retain uncertainty in the displayed record
+ok 5 - both completed approaches keep only their genuine observed pieces and retain uncertainty in the displayed record
+  ---
+  duration_ms: 347.153033
+  type: 'test'
+  ...
+# Subtest: all four outside directions remain projected inside the map while actual coordinates remain available
+ok 6 - all four outside directions remain projected inside the map while actual coordinates remain available
+  ---
+  duration_ms: 0.29766
+  type: 'test'
+  ...
+# Subtest: the two older archive interfaces distinguish their sealed dossiers from the K-17 pieces
+ok 7 - the two older archive interfaces distinguish their sealed dossiers from the K-17 pieces
+  ---
+  duration_ms: 69.467394
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 863.91624
+TAP version 13
+# Subtest: V110 empty and historical saves preserve intro recommendation and registered routes without ledger writes
+ok 1 - V110 empty and historical saves preserve intro recommendation and registered routes without ledger writes
+  ---
+  duration_ms: 510.363416
+  type: 'test'
+  ...
+# Subtest: V110 K-17 objective tracks real observe, provenance, pickup and own-surface deposit actions
+ok 2 - V110 K-17 objective tracks real observe, provenance, pickup and own-surface deposit actions
+  ---
+  duration_ms: 218.976553
+  type: 'test'
+  ...
+# Subtest: V110 interrupted K-17 retains the exact resumable point and rejects a worker proposal after its step changes
+ok 3 - V110 interrupted K-17 retains the exact resumable point and rejects a worker proposal after its step changes
+  ---
+  duration_ms: 51.103327
+  type: 'test'
+  ...
+# Subtest: V110 source failure recommends the consenting post and B report never invents a fragment objective
+ok 4 - V110 source failure recommends the consenting post and B report never invents a fragment objective
+  ---
+  duration_ms: 190.92418
+  type: 'test'
+  ...
+# Subtest: V110 cargo objective respects owner and depot consent, actual carried destination and physical passage test
+ok 5 - V110 cargo objective respects owner and depot consent, actual carried destination and physical passage test
+  ---
+  duration_ms: 1679.930145
+  type: 'test'
+  ...
+# Subtest: V110 comparison C requires preserved A/B, then directs to discovery, copied provenance, carried C and unobserved supports
+ok 6 - V110 comparison C requires preserved A/B, then directs to discovery, copied provenance, carried C and unobserved supports
+  ---
+  duration_ms: 1542.569271
+  type: 'test'
+  ...
+# Subtest: V110 separate A/B records follow the actual next dossier, carried support and walked report
+ok 7 - V110 separate A/B records follow the actual next dossier, carried support and walked report
+  ---
+  duration_ms: 1151.4311
+  type: 'test'
+  ...
+# Subtest: V110 active manipulation precedes a paused study in a contradictory input without changing either receipt
+ok 8 - V110 active manipulation precedes a paused study in a contradictory input without changing either receipt
+  ---
+  duration_ms: 918.215967
+  type: 'test'
+  ...
+# Subtest: V110 strict foreign, future, malformed and unseen-port receipts never supply an operation objective
+ok 9 - V110 strict foreign, future, malformed and unseen-port receipts never supply an operation objective
+  ---
+  duration_ms: 4.787717
+  type: 'test'
+  ...
+# Subtest: V110 rejects historical phase lookalikes even where a legacy schema coerces them, without indexing a missing item
+ok 10 - V110 rejects historical phase lookalikes even where a legacy schema coerces them, without indexing a missing item
+  ---
+  duration_ms: 1055.636685
+  type: 'test'
+  ...
+# Subtest: V110 cartography A uses its actual +1 high point and exact interrupted floor instead of an unrelated intro service
+ok 11 - V110 cartography A uses its actual +1 high point and exact interrupted floor instead of an unrelated intro service
+  ---
+  duration_ms: 29.005348
+  type: 'test'
+  ...
+# Subtest: V110 local cartography uses the next real waypoint and frozen historical recommendation remains unchanged
+ok 12 - V110 local cartography uses the next real waypoint and frozen historical recommendation remains unchanged
+  ---
+  duration_ms: 5.999582
+  type: 'test'
+  ...
+# Subtest: V110 atlas renders the operational next action and its selectable marker using the same owner-scoped registry
+ok 13 - V110 atlas renders the operational next action and its selectable marker using the same owner-scoped registry
+  ---
+  duration_ms: 90.671866
+  type: 'test'
+  ...
+1..13
+# tests 13
+# suites 0
+# pass 13
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 7479.13352
+TAP version 13
+# Subtest: the live V104 cartography hook samples resolved movement while dormant, and a refused write freezes the city clock
+ok 1 - the live V104 cartography hook samples resolved movement while dormant, and a refused write freezes the city clock
+  ---
+  duration_ms: 164.160019
+  type: 'test'
+  ...
+# Subtest: the live V105 cartography hook stays dormant and its refused write freezes the physical city
+ok 2 - the live V105 cartography hook stays dormant and its refused write freezes the physical city
+  ---
+  duration_ms: 90.218242
+  type: 'test'
+  ...
+# Subtest: held stick and A on first focus cannot move or open a dialogue until a neutral frame
+ok 3 - held stick and A on first focus cannot move or open a dialogue until a neutral frame
+  ---
+  duration_ms: 91.956787
+  type: 'test'
+  ...
+# Subtest: V54 spatial atlas owns controller input exclusively and closing requires a neutral world frame
+ok 4 - V54 spatial atlas owns controller input exclusively and closing requires a neutral world frame
+  ---
+  duration_ms: 85.675343
+  type: 'test'
+  ...
+# Subtest: V75 destination finder consumes no city controller action and requires release after closing
+ok 5 - V75 destination finder consumes no city controller action and requires release after closing
+  ---
+  duration_ms: 86.87621
+  type: 'test'
+  ...
+# Subtest: Homeworld focus return requires release, without losing position
+ok 6 - Homeworld focus return requires release, without losing position
+  ---
+  duration_ms: 73.127966
+  type: 'test'
+  ...
+# Subtest: Homeworld window return requires release, without losing position
+ok 7 - Homeworld window return requires release, without losing position
+  ---
+  duration_ms: 81.748274
+  type: 'test'
+  ...
+# Subtest: Homeworld hidden return requires release, without losing position
+ok 8 - Homeworld hidden return requires release, without losing position
+  ---
+  duration_ms: 74.156601
+  type: 'test'
+  ...
+# Subtest: Homeworld service return requires release, without losing position
+ok 9 - Homeworld service return requires release, without losing position
+  ---
+  duration_ms: 78.928076
+  type: 'test'
+  ...
+# Subtest: Start pauses and resumes intentionally but held Start/stick never repeats across the transition
+ok 10 - Start pauses and resumes intentionally but held Start/stick never repeats across the transition
+  ---
+  duration_ms: 75.500709
+  type: 'test'
+  ...
+# Subtest: dialog up starts at the last enabled choice, wraps and never repeats on render
+ok 11 - dialog up starts at the last enabled choice, wraps and never repeats on render
+  ---
+  duration_ms: 60.59504
+  type: 'test'
+  ...
+# Subtest: navigation dialog remains controller-accessible above an already paused city
+ok 12 - navigation dialog remains controller-accessible above an already paused city
+  ---
+  duration_ms: 61.275096
+  type: 'test'
+  ...
+# Subtest: the live city clock freezes strand position and velocity in pause, then settles after release
+ok 13 - the live city clock freezes strand position and velocity in pause, then settles after release
+  ---
+  duration_ms: 151.929646
+  type: 'test'
+  ...
+# Subtest: closing a dialogue by B cannot start walking on its still-held stick
+ok 14 - closing a dialogue by B cannot start walking on its still-held stick
+  ---
+  duration_ms: 67.488731
+  type: 'test'
+  ...
+# Subtest: controller replacement and reconnect require neutral; harmless dead-zone drift remains neutral
+ok 15 - controller replacement and reconnect require neutral; harmless dead-zone drift remains neutral
+  ---
+  duration_ms: 70.209894
+  type: 'test'
+  ...
+# Subtest: Start resumes after window inactivity in one intentional press, without toggling into another pause
+ok 16 - Start resumes after window inactivity in one intentional press, without toggling into another pause
+  ---
+  duration_ms: 66.380659
+  type: 'test'
+  ...
+# Subtest: real Council transit selects native walking from resolved XY without changing motor velocity; pause freezes its gait
+not ok 17 - real Council transit selects native walking from resolved XY without changing motor velocity; pause freezes its gait
+  ---
+  duration_ms: 66.569405
+  type: 'test'
+  location: '/workspace/yautja-homeworld-v110/tests/homeworld-input-runtime.test.mjs:319:1'
+  failureType: 'testCodeFailure'
+  error: 'stepHomeworldTransitV110 is not defined'
+  code: 'ERR_TEST_FAILURE'
+  name: 'ReferenceError'
+  stack: |-
+    frame (evalmachine.<anonymous>:86:32)
+    Object.tick (file:///workspace/yautja-homeworld-v110/tests/helpers/animation-frame-fixture.mjs:23:11)
+    Object.tick (file:///workspace/yautja-homeworld-v110/tests/homeworld-input-runtime.test.mjs:140:98)
+    TestContext.<anonymous> (file:///workspace/yautja-homeworld-v110/tests/homeworld-input-runtime.test.mjs:327:53)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+  ...
+# Subtest: stationary lift and moving skiff retain native idle; vehicle translation cannot activate walking
+not ok 18 - stationary lift and moving skiff retain native idle; vehicle translation cannot activate walking
+  ---
+  duration_ms: 69.982912
+  type: 'test'
+  location: '/workspace/yautja-homeworld-v110/tests/homeworld-input-runtime.test.mjs:342:1'
+  failureType: 'testCodeFailure'
+  error: 'stepHomeworldTransitV110 is not defined'
+  code: 'ERR_TEST_FAILURE'
+  name: 'ReferenceError'
+  stack: |-
+    frame (evalmachine.<anonymous>:86:32)
+    Object.tick (file:///workspace/yautja-homeworld-v110/tests/helpers/animation-frame-fixture.mjs:23:11)
+    Object.tick (file:///workspace/yautja-homeworld-v110/tests/homeworld-input-runtime.test.mjs:140:98)
+    TestContext.<anonymous> (file:///workspace/yautja-homeworld-v110/tests/homeworld-input-runtime.test.mjs:351:7)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+  ...
+# Subtest: the mounted RAF makes L3 1.8 times faster and advances native gait by resolved travel
+ok 19 - the mounted RAF makes L3 1.8 times faster and advances native gait by resolved travel
+  ---
+  duration_ms: 140.825362
+  type: 'test'
+  ...
+# Subtest: keyboard sprint uses the configured hold action, and touch sprint shares the same motor
+ok 20 - keyboard sprint uses the configured hold action, and touch sprint shares the same motor
+  ---
+  duration_ms: 138.298503
+  type: 'test'
+  ...
+# Subtest: held L3 alone cannot arm sprint across pause, dialog or focus ownership changes
+ok 21 - held L3 alone cannot arm sprint across pause, dialog or focus ownership changes
+  ---
+  duration_ms: 217.020267
+  type: 'test'
+  ...
+# Subtest: the actual viewport key handler accepts remapped sprint and rejects the old key, blocked input and browser shortcuts
+ok 22 - the actual viewport key handler accepts remapped sprint and rejects the old key, blocked input and browser shortcuts
+  ---
+  duration_ms: 72.40039
+  type: 'test'
+  ...
+# Subtest: the actual tactile Course button toggles the input without movement, announces state, and respects modal blocking
+ok 23 - the actual tactile Course button toggles the input without movement, announces state, and respects modal blocking
+  ---
+  duration_ms: 78.831705
+  type: 'test'
+  ...
+# Subtest: V94 gamepad policy method-throws cannot stop the live city clock or keyboard movement
+ok 24 - V94 gamepad policy method-throws cannot stop the live city clock or keyboard movement
+  ---
+  duration_ms: 66.38808
+  type: 'test'
+  ...
+# Subtest: V94 gamepad policy getter-throws cannot stop the live city clock or keyboard movement
+ok 25 - V94 gamepad policy getter-throws cannot stop the live city clock or keyboard movement
+  ---
+  duration_ms: 67.232957
+  type: 'test'
+  ...
+# Subtest: V94 gamepad recovery requires neutral after a denied poll instead of replaying a held interaction
+ok 26 - V94 gamepad recovery requires neutral after a denied poll instead of replaying a held interaction
+  ---
+  duration_ms: 71.214415
+  type: 'test'
+  ...
+# Subtest: the live V106 archive hook remains dormant during ordinary movement and a refused archive write freezes and resumes the physical clock
+ok 27 - the live V106 archive hook remains dormant during ordinary movement and a refused archive write freezes and resumes the physical clock
+  ---
+  duration_ms: 66.726696
+  type: 'test'
+  ...
+# Subtest: the live V106 archive callback rolls an invalid proposed step back before interruption and preserves an importable carried pair
+ok 28 - the live V106 archive callback rolls an invalid proposed step back before interruption and preserves an importable carried pair
+  ---
+  duration_ms: 1668.846793
+  type: 'test'
+  ...
+# Subtest: the live V107 comparison remains dormant and a refused write freezes and resumes the physical clock
+ok 29 - the live V107 comparison remains dormant and a refused write freezes and resumes the physical clock
+  ---
+  duration_ms: 69.188749
+  type: 'test'
+  ...
+# Subtest: the live V107 comparison callback rolls an invalid step back before interruption and saves the exact carried pair
+ok 30 - the live V107 comparison callback rolls an invalid step back before interruption and saves the exact carried pair
+  ---
+  duration_ms: 1872.235717
+  type: 'test'
+  ...
+# Subtest: the live V109 plaque stays dormant and freezes native movement on a refused write
+ok 31 - the live V109 plaque stays dormant and freezes native movement on a refused write
+  ---
+  duration_ms: 85.648109
+  type: 'test'
+  ...
+# Subtest: the live V109 plaque callback rolls back an unsupported step before preserving the carried pair
+ok 32 - the live V109 plaque callback rolls back an unsupported step before preserving the carried pair
+  ---
+  duration_ms: 1699.915561
+  type: 'test'
+  ...
+1..32
+# tests 32
+# suites 0
+# pass 30
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 7852.977654
