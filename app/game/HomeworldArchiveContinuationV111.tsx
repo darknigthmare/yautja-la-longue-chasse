@@ -6,10 +6,11 @@ import {HOMEWORLD_ARCHIVE_PLAQUE_LINES_V109,HOMEWORLD_ARCHIVE_PLAQUE_V109} from 
 import {archiveContinuationViewV111,archiveContinuationWalkedV111,type HomeworldArchiveContinuationV111} from './systems/homeworldArchiveContinuationLedgerV111';
 import type {ArchiveContinuationActionV111} from './systems/homeworldArchiveContinuationV111';
 import styles from './HomeworldArchivePlaqueV109.module.css';
+import continuationStyles from './HomeworldArchiveContinuationV111.module.css';
 
 function FirstArchiveRecordV111({base}:{base:PlaqueLedger}){
   const receipt=base.receipt,line=HOMEWORLD_ARCHIVE_PLAQUE_LINES_V109.find(value=>value.id===receipt?.lineIds.at(-1));
-  return <details data-homeworld-first-archive-record-v111><summary>Premier constat conservé</summary>
+  return <details className={continuationStyles.firstRecord} data-homeworld-first-archive-record-v111><summary>Premier constat conservé</summary>
     {line&&<article className={styles.line}><strong>{line.speaker}</strong><p>{line.text}</p></article>}
     <p>Ces relevés décrivent le premier constat différé, conservé avec ses deux surfaces séparées.</p>
     <ArchivePlaqueRecordsV110 ledger={base}/>
@@ -43,13 +44,13 @@ export default function HomeworldArchiveContinuationV111({ledger,base,disabled,m
 
 export function HomeworldArchiveContinuationJournalV111({ledger,base,actor,actorInStudySpace,blocked,writePaused,message,onAction,onRetry,onGuide}:{base:PlaqueLedger;ledger:HomeworldArchiveContinuationV111;actor:{x:number;y:number};actorInStudySpace:boolean;blocked:boolean;writePaused:boolean;message:string;onAction(action:ArchiveContinuationActionV111,revision:number):boolean;onRetry():void;onGuide(id:string):void}){
   const r=ledger.receipt,view=archiveContinuationViewV111(ledger);
-  if(r?.phase==='active'&&view)return <section data-homeworld-continuation-journal-v111>
+  if(r?.phase==='active'&&view)return <section className={continuationStyles.journal} aria-label="Carnet de la continuation K-17" data-homeworld-continuation-journal-v111 data-homeworld-continuation-scroll-v111>
     <p>Marche de cette nouvelle recherche : {Math.floor(archiveContinuationWalkedV111(ledger))} unités. Les fiches conservent aussi la marche du premier constat.</p>
     <FirstArchiveRecordV111 base={base}/>
     <HomeworldArchivePlaqueJournalV109 ledger={view} actor={actor} actorInStudySpace={actorInStudySpace} blocked={blocked} writePaused={writePaused} message={message}
       onAction={(action,revision)=>action!=='choose-b'&&revision===view.revision&&onAction(action,ledger.revision)} onRetry={onRetry} onGuide={onGuide}/>
   </section>;
-  return <aside className={styles.journal} data-homeworld-continuation-journal-v111>
+  return <aside className={continuationStyles.journal} aria-label="Carnet de la continuation K-17" data-homeworld-continuation-journal-v111 data-homeworld-continuation-scroll-v111>
     <strong>Étude différée · deux traces conservées</strong>
     <FirstArchiveRecordV111 base={base}/>
     <span>Rejoins l’archiviste K-17 si tu souhaites poursuivre la recherche. Le premier constat et ses pièces restent conservés.</span>

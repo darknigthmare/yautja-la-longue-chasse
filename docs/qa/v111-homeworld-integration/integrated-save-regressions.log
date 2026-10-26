@@ -1,0 +1,1072 @@
+TAP version 13
+# Subtest: legacy defaults/import/export leave the optional scene ledger absent and preserve history and 474 marks
+ok 1 - legacy defaults/import/export leave the optional scene ledger absent and preserve history and 474 marks
+  ---
+  duration_ms: 14.291815
+  type: 'test'
+  ...
+# Subtest: active, interrupted and resolved receipts survive main-save normalization, export, import, durable write and reload
+ok 2 - active, interrupted and resolved receipts survive main-save normalization, export, import, durable write and reload
+  ---
+  duration_ms: 27.622533
+  type: 'test'
+  ...
+# Subtest: ordinary Homeworld progress updates keep existing scene choices and do not grant or replay campaign marks
+ok 3 - ordinary Homeworld progress updates keep existing scene choices and do not grant or replay campaign marks
+  ---
+  duration_ms: 2.154209
+  type: 'test'
+  ...
+# Subtest: present malformed/future/foreign-owner scene ledgers refuse import and cannot replace valid stored receipts
+ok 4 - present malformed/future/foreign-owner scene ledgers refuse import and cannot replace valid stored receipts
+  ---
+  duration_ms: 10.688683
+  type: 'test'
+  ...
+# Subtest: a future nested primary keeps its original bytes and does not fall back to an older scene backup
+ok 5 - a future nested primary keeps its original bytes and does not fall back to an older scene backup
+  ---
+  duration_ms: 1.282409
+  type: 'test'
+  ...
+# Subtest: a child campaign cannot import an adult scene receipt or acquire progression by loading it
+ok 6 - a child campaign cannot import an adult scene receipt or acquire progression by loading it
+  ---
+  duration_ms: 3.734357
+  type: 'test'
+  ...
+# Subtest: actual save quota refusal preserves phase and bytes; retry advances once without changing inventory, culture or marks
+ok 7 - actual save quota refusal preserves phase and bytes; retry advances once without changing inventory, culture or marks
+  ---
+  duration_ms: 8.420735
+  type: 'test'
+  ...
+# Subtest: uncertain readback reconciles the same owner receipt without duplicate phase or another write
+ok 8 - uncertain readback reconciles the same owner receipt without duplicate phase or another write
+  ---
+  duration_ms: 6.986572
+  type: 'test'
+  ...
+# Subtest: explicit campaign reset does not adopt or resurrect the previous owner dialogue ledger
+ok 9 - explicit campaign reset does not adopt or resurrect the previous owner dialogue ledger
+  ---
+  duration_ms: 5.268519
+  type: 'test'
+  ...
+# Subtest: the real component close handler keeps its dialog open if saving interruption fails and closes only after confirmation
+ok 10 - the real component close handler keeps its dialog open if saving interruption fails and closes only after confirmation
+  ---
+  duration_ms: 16.280319
+  type: 'test'
+  ...
+# Subtest: light export and legacy JSON commit one full slot only, preserve source identity/progress and never activate
+ok 11 - light export and legacy JSON commit one full slot only, preserve source identity/progress and never activate
+  ---
+  duration_ms: 95.265183
+  type: 'test'
+  ...
+# Subtest: activation is a separate existing checkpoint operation, not an import side effect
+ok 12 - activation is a separate existing checkpoint operation, not an import side effect
+  ---
+  duration_ms: 14.149676
+  type: 'test'
+  ...
+# Subtest: matching orphan annexes are captured read-only, including existing ship training and PIT progress
+ok 13 - matching orphan annexes are captured read-only, including existing ship training and PIT progress
+  ---
+  duration_ms: 10.280828
+  type: 'test'
+  ...
+# Subtest: unowned legacy ship progress stays local and cannot be claimed by an older foreign campaign
+ok 14 - unowned legacy ship progress stays local and cannot be claimed by an older foreign campaign
+  ---
+  duration_ms: 37.876297
+  type: 'test'
+  ...
+# Subtest: empty means no primary AND no backup; occupied, corrupt and future slots are never replaced
+ok 15 - empty means no primary AND no backup; occupied, corrupt and future slots are never replaced
+  ---
+  duration_ms: 10.375378
+  type: 'test'
+  ...
+# Subtest: owner cloning is refused in every slot primary/backup and working primary/backup
+ok 16 - owner cloning is refused in every slot primary/backup and working primary/backup
+  ---
+  duration_ms: 25.668526
+  type: 'test'
+  ...
+# Subtest: future or corrupt hidden backups, working saves and pending journal fail closed with zero writes
+ok 17 - future or corrupt hidden backups, working saves and pending journal fail closed with zero writes
+  ---
+  duration_ms: 35.083313
+  type: 'test'
+  ...
+# Subtest: future export/save, missing owner, malformed JSON and excessive UTF8 bytes never create owners
+ok 18 - future export/save, missing owner, malformed JSON and excessive UTF8 bytes never create owners
+  ---
+  duration_ms: 2.577876
+  type: 'test'
+  ...
+# Subtest: a changed target, workspace, source annex or sibling slot invalidates the pinned preview before any write
+ok 19 - a changed target, workspace, source annex or sibling slot invalidates the pinned preview before any write
+  ---
+  duration_ms: 41.836599
+  type: 'test'
+  ...
+# Subtest: matching future or malformed sidecars are protected and preview reads cannot hide a new transfer journal
+ok 20 - matching future or malformed sidecars are protected and preview reads cannot hide a new transfer journal
+  ---
+  duration_ms: 9.567933
+  type: 'test'
+  ...
+# Subtest: lock missing/occupied and expired session journal refuse confirmed import without an unsafe fallback
+ok 21 - lock missing/occupied and expired session journal refuse confirmed import without an unsafe fallback
+  ---
+  duration_ms: 4.342057
+  type: 'test'
+  ...
+# Subtest: quota and unconfirmed writes never report success; persisted-before-throw is verified instead of duplicated
+ok 22 - quota and unconfirmed writes never report success; persisted-before-throw is verified instead of duplicated
+  ---
+  duration_ms: 19.920798
+  type: 'test'
+  ...
+# Subtest: actual menu previews the selected empty slot, confirms separately, and submits the exact opaque plan without continuing
+ok 23 - actual menu previews the selected empty slot, confirms separately, and submits the exact opaque plan without continuing
+  ---
+  duration_ms: 215.85105
+  type: 'test'
+  ...
+# Subtest: actual menu refuses oversized files before reading and invalidates previews on slot selection or changed catalog
+ok 24 - actual menu refuses oversized files before reading and invalidates previews on slot selection or changed catalog
+  ---
+  duration_ms: 93.062076
+  type: 'test'
+  ...
+# Subtest: actual menu ignores late file resolution after cancellation or unmount, with no storage write
+ok 25 - actual menu ignores late file resolution after cancellation or unmount, with no storage write
+  ---
+  duration_ms: 100.462191
+  type: 'test'
+  ...
+# Subtest: actual FrontEnd imports without activation, serializes repeated confirmations and rejects callbacks from an older menu generation
+ok 26 - actual FrontEnd imports without activation, serializes repeated confirmations and rejects callbacks from an older menu generation
+  ---
+  duration_ms: 34.544796
+  type: 'test'
+  ...
+# Subtest: actual FrontEnd discards an import result after session generation changes or the frontend unmounts
+ok 27 - actual FrontEnd discards an import result after session generation changes or the frontend unmounts
+  ---
+  duration_ms: 30.441381
+  type: 'test'
+  ...
+# Subtest: pasted JSON uses the existing real preparation and separate protected confirmation without direct import or activation
+ok 28 - pasted JSON uses the existing real preparation and separate protected confirmation without direct import or activation
+  ---
+  duration_ms: 264.264618
+  type: 'test'
+  ...
+# Subtest: invalid JSON and UTF-8 byte overflow leave all slots untouched; overflow is rejected before preparation
+ok 29 - invalid JSON and UTF-8 byte overflow leave all slots untouched; overflow is rejected before preparation
+  ---
+  duration_ms: 110.787097
+  type: 'test'
+  ...
+# Subtest: busy, occupied or protected destination refuses even its current preparation handler without storing anything
+ok 30 - busy, occupied or protected destination refuses even its current preparation handler without storing anything
+  ---
+  duration_ms: 180.622535
+  type: 'test'
+  ...
+# Subtest: editing text invalidates both preview and confirmation; switching slots or returning requires a fresh preparation
+ok 31 - editing text invalidates both preview and confirmation; switching slots or returning requires a fresh preparation
+  ---
+  duration_ms: 70.014081
+  type: 'test'
+  ...
+# Subtest: editing pasted text cancels a late file read and preserves the new text preview
+ok 32 - editing pasted text cancels a late file read and preserves the new text preview
+  ---
+  duration_ms: 57.783326
+  type: 'test'
+  ...
+# Subtest: a late file read is discarded after busy state, slot change, return or unmount
+ok 33 - a late file read is discarded after busy state, slot change, return or unmount
+  ---
+  duration_ms: 171.633188
+  type: 'test'
+  ...
+# Subtest: busy cancellation unlocks the picker without reviving its old read or submitting an import
+ok 34 - busy cancellation unlocks the picker without reviving its old read or submitting an import
+  ---
+  duration_ms: 44.703846
+  type: 'test'
+  ...
+# Subtest: existing file import still prepares its exact original source through the same protected preview
+ok 35 - existing file import still prepares its exact original source through the same protected preview
+  ---
+  duration_ms: 49.436006
+  type: 'test'
+  ...
+# Subtest: textarea arrow keys retain text editing instead of being redirected by menu navigation
+ok 36 - textarea arrow keys retain text editing instead of being redirected by menu navigation
+  ---
+  duration_ms: 30.493923
+  type: 'test'
+  ...
+# Subtest: new campaign exploration is empty and all default collections have separate ownership
+ok 37 - new campaign exploration is empty and all default collections have separate ownership
+  ---
+  duration_ms: 2.567759
+  type: 'test'
+  ...
+# Subtest: exploration normalization rejects malformed collections and arbitrary ids or fields
+ok 38 - exploration normalization rejects malformed collections and arbitrary ids or fields
+  ---
+  duration_ms: 0.902525
+  type: 'test'
+  ...
+# Subtest: exploration merges preserve both routes and are deterministic, idempotent and immutable
+ok 39 - exploration merges preserve both routes and are deterministic, idempotent and immutable
+  ---
+  duration_ms: 0.817769
+  type: 'test'
+  ...
+# Subtest: the clan cache adds exactly fifteen maximum energy once without accepting serialized bonus values
+ok 40 - the clan cache adds exactly fifteen maximum energy once without accepting serialized bonus values
+  ---
+  duration_ms: 0.457217
+  type: 'test'
+  ...
+# Subtest: schema four migration preserves the campaign but cannot infer or inject exploration unlocks
+ok 41 - schema four migration preserves the campaign but cannot infer or inject exploration unlocks
+  ---
+  duration_ms: 12.544809
+  type: 'test'
+  ...
+# Subtest: schema six normalization retains authored exploration and strips unknown data
+ok 42 - schema six normalization retains authored exploration and strips unknown data
+  ---
+  duration_ms: 1.56142
+  type: 'test'
+  ...
+# Subtest: failed and abandoned hunts retain discoveries while preserving previous gates and currency
+ok 43 - failed and abandoned hunts retain discoveries while preserving previous gates and currency
+  ---
+  duration_ms: 4.290383
+  type: 'test'
+  ...
+# Subtest: a legitimate victory merges exploration without altering its honor or clan-mark settlement
+ok 44 - a legitimate victory merges exploration without altering its honor or clan-mark settlement
+  ---
+  duration_ms: 1.929234
+  type: 'test'
+  ...
+# Subtest: rejected successes cannot smuggle in an ability or secret, and legacy results preserve acquisitions
+ok 45 - rejected successes cannot smuggle in an ability or secret, and legacy results preserve acquisitions
+  ---
+  duration_ms: 1.73772
+  type: 'test'
+  ...
+# Subtest: another mission cannot claim pilot discoveries but never erases existing acquisitions
+ok 46 - another mission cannot claim pilot discoveries but never erases existing acquisitions
+  ---
+  duration_ms: 1.343507
+  type: 'test'
+  ...
+# Subtest: campaign storage and exported save round-trip permanent unlocks with existing owner metadata
+ok 47 - campaign storage and exported save round-trip permanent unlocks with existing owner metadata
+  ---
+  duration_ms: 4.400179
+  type: 'test'
+  ...
+# Subtest: exploration mission provenance separates authored missions from malformed ids
+ok 48 - exploration mission provenance separates authored missions from malformed ids
+  ---
+  duration_ms: 0.276149
+  type: 'test'
+  ...
+# Subtest: two authored caches provide thirty energy once while either individual cache provides fifteen
+ok 49 - two authored caches provide thirty energy once while either individual cache provides fifteen
+  ---
+  duration_ms: 0.190221
+  type: 'test'
+  ...
+# Subtest: schema five migrates existing jungle discoveries without granting future ice fields
+ok 50 - schema five migrates existing jungle discoveries without granting future ice fields
+  ---
+  duration_ms: 3.936053
+  type: 'test'
+  ...
+# Subtest: ice failure or abandonment unions both regions without awarding the jungle ability or repeated currency
+ok 51 - ice failure or abandonment unions both regions without awarding the jungle ability or repeated currency
+  ---
+  duration_ms: 6.704369
+  type: 'test'
+  ...
+# Subtest: jungle and locked ice results cannot smuggle in discoveries outside their playable mission
+ok 52 - jungle and locked ice results cannot smuggle in discoveries outside their playable mission
+  ---
+  duration_ms: 1.53478
+  type: 'test'
+  ...
+# Subtest: normal villages open after the actually completed youth and First Tracks chapters
+ok 53 - normal villages open after the actually completed youth and First Tracks chapters
+  ---
+  duration_ms: 46.564648
+  type: 'test'
+  ...
+# Subtest: profile rank or loose chronicle evidence cannot open a youth village without the completed playable chain
+ok 54 - profile rank or loose chronicle evidence cannot open a youth village without the completed playable chain
+  ---
+  duration_ms: 2.571955
+  type: 'test'
+  ...
+# Subtest: new save schema protects future content and preserves original bytes
+ok 55 - new save schema protects future content and preserves original bytes
+  ---
+  duration_ms: 5.065795
+  type: 'test'
+  ...
+# Subtest: queued lift hydration never restores a previous owner and replacement hydration shares the polling frame
+ok 56 - queued lift hydration never restores a previous owner and replacement hydration shares the polling frame
+  ---
+  duration_ms: 332.610454
+  type: 'test'
+  ...
+# Subtest: a refused actual Port entry stays pending without a frame-write loop, then retries in place
+ok 57 - a refused actual Port entry stays pending without a frame-write loop, then retries in place
+  ---
+  duration_ms: 286.822466
+  type: 'test'
+  ...
+# Subtest: repeated refusal keeps the same visit available and writes at most once per explicit retry
+ok 58 - repeated refusal keeps the same visit available and writes at most once per explicit retry
+  ---
+  duration_ms: 224.038106
+  type: 'test'
+  ...
+# Subtest: several refused visited districts recover progressively; a second refusal does not erase the first ack
+ok 59 - several refused visited districts recover progressively; a second refusal does not erase the first ack
+  ---
+  duration_ms: 143.302755
+  type: 'test'
+  ...
+# Subtest: retry uses latest acknowledged evidence and relations, never a stale failed snapshot
+ok 60 - retry uses latest acknowledged evidence and relations, never a stale failed snapshot
+  ---
+  duration_ms: 150.127786
+  type: 'test'
+  ...
+# Subtest: a visit already durably acknowledged elsewhere clears pending state without another write
+ok 61 - a visit already durably acknowledged elsewhere clears pending state without another write
+  ---
+  duration_ms: 139.505753
+  type: 'test'
+  ...
+# Subtest: the retry is inert behind a suspended city and resumes only on a new explicit action
+ok 62 - the retry is inert behind a suspended city and resumes only on a new explicit action
+  ---
+  duration_ms: 187.171756
+  type: 'test'
+  ...
+# Subtest: owner replacement cannot replay pending visits before or after the live save-sync effect
+ok 63 - owner replacement cannot replay pending visits before or after the live save-sync effect
+  ---
+  duration_ms: 180.369102
+  type: 'test'
+  ...
+# Subtest: successful inline retry restores world focus and dialog retry stays navigable without held-A spill
+ok 64 - successful inline retry restores world focus and dialog retry stays navigable without held-A spill
+  ---
+  duration_ms: 289.412577
+  type: 'test'
+  ...
+# Subtest: entering youth training keeps refused visits alive until an explicit successful retry
+ok 65 - entering youth training keeps refused visits alive until an explicit successful retry
+  ---
+  duration_ms: 163.064576
+  type: 'test'
+  ...
+# Subtest: a partially recovered visit queue still blocks departure for youth training
+ok 66 - a partially recovered visit queue still blocks departure for youth training
+  ---
+  duration_ms: 148.428553
+  type: 'test'
+  ...
+# Subtest: youth entry ignores a suspended or stale-owner city even with no pending visits
+ok 67 - youth entry ignores a suspended or stale-owner city even with no pending visits
+  ---
+  duration_ms: 138.445634
+  type: 'test'
+  ...
+# Subtest: with no pending visits youth entry preserves the existing save-refusal feedback
+ok 68 - with no pending visits youth entry preserves the existing save-refusal feedback
+  ---
+  duration_ms: 138.349245
+  type: 'test'
+  ...
+# Subtest: Solo physical departure retains refused visits, then retries and handles a refused chapter save
+ok 69 - Solo physical departure retains refused visits, then retries and handles a refused chapter save
+  ---
+  duration_ms: 118.193473
+  type: 'test'
+  ...
+# Subtest: Solo entry stays blocked while one of several refused visits remains pending
+ok 70 - Solo entry stays blocked while one of several refused visits remains pending
+  ---
+  duration_ms: 133.155623
+  type: 'test'
+  ...
+# Subtest: Solo departure keeps its physical, suspension and owner guards even after visit recovery
+ok 71 - Solo departure keeps its physical, suspension and owner guards even after visit recovery
+  ---
+  duration_ms: 126.393319
+  type: 'test'
+  ...
+# Subtest: v6 campaign migrates without inventing a city investigation or spending honor
+ok 72 - v6 campaign migrates without inventing a city investigation or spending honor
+  ---
+  duration_ms: 7.114614
+  type: 'test'
+  ...
+# Subtest: city evidence and irreversible first choice survive durable write and reload
+ok 73 - city evidence and irreversible first choice survive durable write and reload
+  ---
+  duration_ms: 2.923336
+  type: 'test'
+  ...
+# Subtest: a truncated or invented city dossier cannot grant an audience
+ok 74 - a truncated or invented city dossier cannot grant an audience
+  ---
+  duration_ms: 0.698041
+  type: 'test'
+  ...
+# Subtest: failed city storage keeps the last durable campaign untouched
+ok 75 - failed city storage keeps the last durable campaign untouched
+  ---
+  duration_ms: 2.927843
+  type: 'test'
+  ...
+# Subtest: a newer campaign writer wins over a stale city choice
+ok 76 - a newer campaign writer wins over a stale city choice
+  ---
+  duration_ms: 2.057398
+  type: 'test'
+  ...
+# Subtest: mandates survive save reload and a lawful release preserves the inventory
+ok 77 - mandates survive save reload and a lawful release preserves the inventory
+  ---
+  duration_ms: 4.759667
+  type: 'test'
+  ...
+# Subtest: only a complete expedition report survives serialization, without duplicating a trophy
+ok 78 - only a complete expedition report survives serialization, without duplicating a trophy
+  ---
+  duration_ms: 2.156263
+  type: 'test'
+  ...
+# Subtest: corrupt and future campaigns are reported and never overwritten by normal autosave
+ok 79 - corrupt and future campaigns are reported and never overwritten by normal autosave
+  ---
+  duration_ms: 8.688928
+  type: 'test'
+  ...
+# Subtest: the previous valid campaign recovers a corrupt primary without any hydration write
+ok 80 - the previous valid campaign recovers a corrupt primary without any hydration write
+  ---
+  duration_ms: 5.538097
+  type: 'test'
+  ...
+# Subtest: a future primary is not silently replaced with its older backup
+ok 81 - a future primary is not silently replaced with its older backup
+  ---
+  duration_ms: 0.737158
+  type: 'test'
+  ...
+# Subtest: quota failures retain the previous primary and optional backup cannot block a successful save
+ok 82 - quota failures retain the previous primary and optional backup cannot block a successful save
+  ---
+  duration_ms: 2.432271
+  type: 'test'
+  ...
+# Subtest: reset is explicit and its backup cannot resurrect a previous owner
+ok 83 - reset is explicit and its backup cannot resurrect a previous owner
+  ---
+  duration_ms: 2.570886
+  type: 'test'
+  ...
+# Subtest: portable exports and legacy imports preserve normalized campaign progress
+ok 84 - portable exports and legacy imports preserve normalized campaign progress
+  ---
+  duration_ms: 7.520894
+  type: 'test'
+  ...
+# Subtest: invalid, oversized and future imports cannot mutate a valid campaign
+ok 85 - invalid, oversized and future imports cannot mutate a valid campaign
+  ---
+  duration_ms: 2.574661
+  type: 'test'
+  ...
+# Subtest: an autosave detects another tab replacing the loaded campaign
+ok 86 - an autosave detects another tab replacing the loaded campaign
+  ---
+  duration_ms: 1.662445
+  type: 'test'
+  ...
+# Subtest: read errors and silently dropped writes never report durable persistence
+ok 87 - read errors and silently dropped writes never report durable persistence
+  ---
+  duration_ms: 0.913709
+  type: 'test'
+  ...
+# Subtest: corrupt numeric counters are normalized to safe integers
+ok 88 - corrupt numeric counters are normalized to safe integers
+  ---
+  duration_ms: 0.624112
+  type: 'test'
+  ...
+# Subtest: a reset cannot revive a foreign backup when redundancy storage fails
+ok 89 - a reset cannot revive a foreign backup when redundancy storage fails
+  ---
+  duration_ms: 1.897251
+  type: 'test'
+  ...
+# Subtest: a failed confirmation stays explicit even when the primary write actually succeeded
+ok 90 - a failed confirmation stays explicit even when the primary write actually succeeded
+  ---
+  duration_ms: 0.559115
+  type: 'test'
+  ...
+# Subtest: a failed replacement preserves the only recoverable backup of a corrupt campaign
+ok 91 - a failed replacement preserves the only recoverable backup of a corrupt campaign
+  ---
+  duration_ms: 1.074116
+  type: 'test'
+  ...
+# Subtest: an unconfirmed replacement never retires a recovery backup
+ok 92 - an unconfirmed replacement never retires a recovery backup
+  ---
+  duration_ms: 0.482262
+  type: 'test'
+  ...
+# Subtest: an unconfirmed exact primary is acknowledged without another write and its observation advances
+ok 93 - an unconfirmed exact primary is acknowledged without another write and its observation advances
+  ---
+  duration_ms: 13.140961
+  type: 'test'
+  ...
+# Subtest: quota failure and a silently dropped write permit retry only while the original bytes remain
+ok 94 - quota failure and a silently dropped write permit retry only while the original bytes remain
+  ---
+  duration_ms: 5.590775
+  type: 'test'
+  ...
+# Subtest: a temporary reconciliation read denial retains the receipt for a later retry
+ok 95 - a temporary reconciliation read denial retains the receipt for a later retry
+  ---
+  duration_ms: 2.117306
+  type: 'test'
+  ...
+# Subtest: a different primary from the same owner remains a conflict and does not refresh observation
+ok 96 - a different primary from the same owner remains a conflict and does not refresh observation
+  ---
+  duration_ms: 1.895839
+  type: 'test'
+  ...
+# Subtest: equivalent parsed data with different bytes cannot be mistaken for the attempted write
+ok 97 - equivalent parsed data with different bytes cannot be mistaken for the attempted write
+  ---
+  duration_ms: 1.607894
+  type: 'test'
+  ...
+# Subtest: a foreign owner, storage key or storage instance cannot use an old receipt
+ok 98 - a foreign owner, storage key or storage instance cannot use an old receipt
+  ---
+  duration_ms: 2.278734
+  type: 'test'
+  ...
+# Subtest: a replaced campaign cannot be adopted or overwritten by the previous owner's receipt
+ok 99 - a replaced campaign cannot be adopted or overwritten by the previous owner's receipt
+  ---
+  duration_ms: 4.144229
+  type: 'test'
+  ...
+# Subtest: a newer local observation cannot be rewound even if the old attempted bytes reappear
+ok 100 - a newer local observation cannot be rewound even if the old attempted bytes reappear
+  ---
+  duration_ms: 1.913676
+  type: 'test'
+  ...
+# Subtest: caller mutation or a fabricated result cannot change the private attempted bytes
+ok 101 - caller mutation or a fabricated result cannot change the private attempted bytes
+  ---
+  duration_ms: 1.749112
+  type: 'test'
+  ...
+# Subtest: GameClient retries the identical city choice without duplicating it or changing inventory
+ok 102 - GameClient retries the identical city choice without duplicating it or changing inventory
+  ---
+  duration_ms: 4.853806
+  type: 'test'
+  ...
+# Subtest: GameClient refreshes then rejects a different stale action before it can erase the confirmed one
+ok 103 - GameClient refreshes then rejects a different stale action before it can erase the confirmed one
+  ---
+  duration_ms: 2.858751
+  type: 'test'
+  ...
+# Subtest: GameClient also requires a fresh action when a different social subsystem triggered recovery
+ok 104 - GameClient also requires a fresh action when a different social subsystem triggered recovery
+  ---
+  duration_ms: 5.948633
+  type: 'test'
+  ...
+# Subtest: GameClient retries quota failures and continues to refuse a genuinely concurrent writer
+ok 105 - GameClient retries quota failures and continues to refuse a genuinely concurrent writer
+  ---
+  duration_ms: 3.188898
+  type: 'test'
+  ...
+# Subtest: GameClient drops an old owner's pending receipt without rolling a replacement back
+ok 106 - GameClient drops an old owner's pending receipt without rolling a replacement back
+  ---
+  duration_ms: 2.635991
+  type: 'test'
+  ...
+# Subtest: a detached campaign cannot commit a queued social decision
+ok 107 - a detached campaign cannot commit a queued social decision
+  ---
+  duration_ms: 0.563202
+  type: 'test'
+  ...
+# Subtest: GameClient refuses social writes while preserving a pending trophy receipt, then resumes
+ok 108 - GameClient refuses social writes while preserving a pending trophy receipt, then resumes
+  ---
+  duration_ms: 1.324155
+  type: 'test'
+  ...
+# Subtest: save writes report durable persistence
+ok 109 - save writes report durable persistence
+  ---
+  duration_ms: 8.368305
+  type: 'test'
+  ...
+# Subtest: a fresh hunt owner stays stable after its bootstrap write and reload
+ok 110 - a fresh hunt owner stays stable after its bootstrap write and reload
+  ---
+  duration_ms: 3.930384
+  type: 'test'
+  ...
+# Subtest: save writes distinguish unavailable storage and quota failures
+ok 111 - save writes distinguish unavailable storage and quota failures
+  ---
+  duration_ms: 1.534506
+  type: 'test'
+  ...
+# Subtest: legacy writeSave callers keep receiving an in-memory snapshot
+ok 112 - legacy writeSave callers keep receiving an in-memory snapshot
+  ---
+  duration_ms: 0.813
+  type: 'test'
+  ...
+# Subtest: the game shell reports autosave failures instead of promising persistence
+ok 113 - the game shell reports autosave failures instead of promising persistence
+  ---
+  duration_ms: 4.901376
+  type: 'test'
+  ...
+# Subtest: V62 canonical and renamed original mask selections roundtrip without losing save identity
+ok 114 - V62 canonical and renamed original mask selections roundtrip without losing save identity
+  ---
+  duration_ms: 22.068878
+  type: 'test'
+  ...
+# Subtest: v1 saves migrate to the current schema without losing legacy trophy data
+ok 115 - v1 saves migrate to the current schema without losing legacy trophy data
+  ---
+  duration_ms: 1.320914
+  type: 'test'
+  ...
+# Subtest: keyboard bindings persist custom keys and repair malformed profiles
+ok 116 - keyboard bindings persist custom keys and repair malformed profiles
+  ---
+  duration_ms: 1.834154
+  type: 'test'
+  ...
+# Subtest: bestiary discoveries normalize to unique authored V7 and V8 roster ids
+ok 117 - bestiary discoveries normalize to unique authored V7 and V8 roster ids
+  ---
+  duration_ms: 1.0409
+  type: 'test'
+  ...
+# Subtest: legacy saves derive defeated V8 bosses without replacing an explicit discovery list
+ok 118 - legacy saves derive defeated V8 bosses without replacing an explicit discovery list
+  ---
+  duration_ms: 0.958789
+  type: 'test'
+  ...
+# Subtest: mission results persistently merge only valid bestiary discoveries
+ok 119 - mission results persistently merge only valid bestiary discoveries
+  ---
+  duration_ms: 1.739073
+  type: 'test'
+  ...
+# Subtest: v3 completion at Cinder reopens the five-mission V4 campaign extension
+ok 120 - v3 completion at Cinder reopens the five-mission V4 campaign extension
+  ---
+  duration_ms: 0.543324
+  type: 'test'
+  ...
+# Subtest: a current save cannot retain Elder before the extended story is complete
+ok 121 - a current save cannot retain Elder before the extended story is complete
+  ---
+  duration_ms: 0.39161
+  type: 'test'
+  ...
+# Subtest: Elder remains selected when final mission progress proves the unlock
+ok 122 - Elder remains selected when final mission progress proves the unlock
+  ---
+  duration_ms: 0.45998
+  type: 'test'
+  ...
+# Subtest: a corrupted completed status without a completion cannot unlock the campaign
+ok 123 - a corrupted completed status without a completion cannot unlock the campaign
+  ---
+  duration_ms: 0.61487
+  type: 'test'
+  ...
+# Subtest: appearance normalization accepts an unmasked hunter and repairs invalid ids
+ok 124 - appearance normalization accepts an unmasked hunter and repairs invalid ids
+  ---
+  duration_ms: 0.362206
+  type: 'test'
+  ...
+# Subtest: every production hunter preset survives save normalization
+ok 125 - every production hunter preset survives save normalization
+  ---
+  duration_ms: 16.27079
+  type: 'test'
+  ...
+# Subtest: dedicated V14 biomasks survive an exact normalized save round-trip
+ok 126 - dedicated V14 biomasks survive an exact normalized save round-trip
+  ---
+  duration_ms: 3.425558
+  type: 'test'
+  ...
+# Subtest: a legendary id is downgraded to custom after any module changes
+ok 127 - a legendary id is downgraded to custom after any module changes
+  ---
+  duration_ms: 128.68834
+  type: 'test'
+  ...
+# Subtest: legacy v3 legendary saves may omit only the former optional laser color
+ok 128 - legacy v3 legendary saves may omit only the former optional laser color
+  ---
+  duration_ms: 0.346413
+  type: 'test'
+  ...
+# Subtest: every legendary playable kit survives a normalized save round-trip
+ok 129 - every legendary playable kit survives a normalized save round-trip
+  ---
+  duration_ms: 9.450942
+  type: 'test'
+  ...
+# Subtest: Scout loadouts use upgraded capacity and never fall back to Hunter
+ok 130 - Scout loadouts use upgraded capacity and never fall back to Hunter
+  ---
+  duration_ms: 0.519248
+  type: 'test'
+  ...
+# Subtest: a locked mission cannot accept an otherwise complete success
+ok 131 - a locked mission cannot accept an otherwise complete success
+  ---
+  duration_ms: 0.985648
+  type: 'test'
+  ...
+# Subtest: Elder success is rejected before the story is complete
+ok 132 - Elder success is rejected before the story is complete
+  ---
+  duration_ms: 0.646286
+  type: 'test'
+  ...
+# Subtest: success requires every required objective including extraction
+ok 133 - success requires every required objective including extraction
+  ---
+  duration_ms: 1.951286
+  type: 'test'
+  ...
+# Subtest: modern success requires an explicit Apex claim
+ok 134 - modern success requires an explicit Apex claim
+  ---
+  duration_ms: 0.734537
+  type: 'test'
+  ...
+# Subtest: mission claims persist separately and deduplicate only by claim id
+ok 135 - mission claims persist separately and deduplicate only by claim id
+  ---
+  duration_ms: 0.592937
+  type: 'test'
+  ...
+# Subtest: legacy mission results infer a complete claim from trophyQuality
+ok 136 - legacy mission results infer a complete claim from trophyQuality
+  ---
+  duration_ms: 0.575622
+  type: 'test'
+  ...
+# Subtest: perfect replays award renewable but bounded mastery honor
+ok 137 - perfect replays award renewable but bounded mastery honor
+  ---
+  duration_ms: 1.850307
+  type: 'test'
+  ...
+# Subtest: trophy normalization retains the newest 500 unique claim ids
+ok 138 - trophy normalization retains the newest 500 unique claim ids
+  ---
+  duration_ms: 2.009543
+  type: 'test'
+  ...
+# Subtest: trophy workshop progress survives normalization
+ok 139 - trophy workshop progress survives normalization
+  ---
+  duration_ms: 0.303269
+  type: 'test'
+  ...
+# Subtest: old saves keep shipyard absent and explicit null compatible
+ok 140 - old saves keep shipyard absent and explicit null compatible
+  ---
+  duration_ms: 12.961776
+  type: 'test'
+  ...
+# Subtest: physically earned inspection and report survive durable save/export without free ship or rewards
+ok 141 - physically earned inspection and report survive durable save/export without free ship or rewards
+  ---
+  duration_ms: 17.572972
+  type: 'test'
+  ...
+# Subtest: future, foreign, malformed and invented rights cannot replace existing bytes
+ok 142 - future, foreign, malformed and invented rights cannot replace existing bytes
+  ---
+  duration_ms: 7.491654
+  type: 'test'
+  ...
+# Subtest: future primary remains protected even beside a valid older shipyard backup
+ok 143 - future primary remains protected even beside a valid older shipyard backup
+  ---
+  duration_ms: 3.605705
+  type: 'test'
+  ...
+# Subtest: quota and uncertain readback do not acknowledge or replay physical work
+ok 144 - quota and uncertain readback do not acknowledge or replay physical work
+  ---
+  duration_ms: 7.332708
+  type: 'test'
+  ...
+# Subtest: complete/account archives preserve shipyard and refuse nested incompatible versions
+ok 145 - complete/account archives preserve shipyard and refuse nested incompatible versions
+  ---
+  duration_ms: 25.263264
+  type: 'test'
+  ...
+# Subtest: replacing campaign cannot borrow the previous owner shipyard work
+ok 146 - replacing campaign cannot borrow the previous owner shipyard work
+  ---
+  duration_ms: 14.969376
+  type: 'test'
+  ...
+# Subtest: old saves keep the optional inspection field absent; null remains compatible without a borrowed record
+ok 147 - old saves keep the optional inspection field absent; null remains compatible without a borrowed record
+  ---
+  duration_ms: 9.486815
+  type: 'test'
+  ...
+# Subtest: real station receipts survive durable write, readonly load, export and import without campaign rewards
+ok 148 - real station receipts survive durable write, readonly load, export and import without campaign rewards
+  ---
+  duration_ms: 17.616439
+  type: 'test'
+  ...
+# Subtest: malformed, future, duplicate and foreign receipts cannot replace existing save bytes
+ok 149 - malformed, future, duplicate and foreign receipts cannot replace existing save bytes
+  ---
+  duration_ms: 12.487207
+  type: 'test'
+  ...
+# Subtest: future primary bytes remain protected even when an older inspection backup is valid
+ok 150 - future primary bytes remain protected even when an older inspection backup is valid
+  ---
+  duration_ms: 2.97161
+  type: 'test'
+  ...
+# Subtest: failed quota and uncertain readback do not confirm an inspection twice or modify kit, honor or missions
+ok 151 - failed quota and uncertain readback do not confirm an inspection twice or modify kit, honor or missions
+  ---
+  duration_ms: 6.775418
+  type: 'test'
+  ...
+# Subtest: complete and account archives retain actual inspection bytes and refuse incompatible nested versions
+ok 152 - complete and account archives retain actual inspection bytes and refuse incompatible nested versions
+  ---
+  duration_ms: 16.115997
+  type: 'test'
+  ...
+# Subtest: new campaign replacement cannot adopt the previous owner inspection checkpoint
+ok 153 - new campaign replacement cannot adopt the previous owner inspection checkpoint
+  ---
+  duration_ms: 3.053532
+  type: 'test'
+  ...
+# Subtest: the real parser accepts old, active and completed chapters but refuses orphan proofs or malformed/future data
+ok 154 - the real parser accepts old, active and completed chapters but refuses orphan proofs or malformed/future data
+  ---
+  duration_ms: 24.925142
+  type: 'test'
+  ...
+# Subtest: quota and silent write loss at all seven receipts preserve the old chapter and retry exactly once
+ok 155 - quota and silent write loss at all seven receipts preserve the old chapter and retry exactly once
+  ---
+  duration_ms: 130.967294
+  type: 'test'
+  ...
+# Subtest: post-write exception reconciles the terminal proof and concurrent same/different owners cannot be overwritten
+ok 156 - post-write exception reconciles the terminal proof and concurrent same/different owners cannot be overwritten
+  ---
+  duration_ms: 18.713847
+  type: 'test'
+  ...
+# Subtest: manual campaign checkpoints route active Solo back to its scene and the completed assessment to Homeworld
+ok 157 - manual campaign checkpoints route active Solo back to its scene and the completed assessment to Homeworld
+  ---
+  duration_ms: 656.36007
+  type: 'test'
+  ...
+# Subtest: the real parser accepts old, active and completed chapters but refuses orphan proofs or malformed/future data
+ok 158 - the real parser accepts old, active and completed chapters but refuses orphan proofs or malformed/future data
+  ---
+  duration_ms: 54.320297
+  type: 'test'
+  ...
+# Subtest: quota and silent write loss at all nine receipts preserve the old chapter and retry exactly once
+ok 159 - quota and silent write loss at all nine receipts preserve the old chapter and retry exactly once
+  ---
+  duration_ms: 260.035881
+  type: 'test'
+  ...
+# Subtest: post-write exception reconciles the terminal proof and concurrent same/different owners cannot be overwritten
+ok 160 - post-write exception reconciles the terminal proof and concurrent same/different owners cannot be overwritten
+  ---
+  duration_ms: 23.257687
+  type: 'test'
+  ...
+# Subtest: manual campaign checkpoints route active Solo back to its scene and the completed assessment to Homeworld
+ok 161 - manual campaign checkpoints route active Solo back to its scene and the completed assessment to Homeworld
+  ---
+  duration_ms: 947.118345
+  type: 'test'
+  ...
+# Subtest: every actual V69 receipt survives the real save parser, while orphan and future chapters stay refused
+ok 162 - every actual V69 receipt survives the real save parser, while orphan and future chapters stay refused
+  ---
+  duration_ms: 120.732589
+  type: 'test'
+  ...
+# Subtest: quota or a dropped write at all twelve physical receipts preserves old progression and retries once
+ok 163 - quota or a dropped write at all twelve physical receipts preserves old progression and retries once
+  ---
+  duration_ms: 788.766483
+  type: 'test'
+  ...
+# Subtest: uncertain durable confirmation and a replaced owner cannot duplicate or import V69 receipts
+ok 164 - uncertain durable confirmation and a replaced owner cannot duplicate or import V69 receipts
+  ---
+  duration_ms: 56.612685
+  type: 'test'
+  ...
+# Subtest: manual slots retain active V69 routing, completed return and the exact twelve receipts
+ok 165 - manual slots retain active V69 routing, completed return and the exact twelve receipts
+  ---
+  duration_ms: 452.990939
+  type: 'test'
+  ...
+# Subtest: every actual V70 receipt survives the real save parser, while orphan and future chapters stay refused
+ok 166 - every actual V70 receipt survives the real save parser, while orphan and future chapters stay refused
+  ---
+  duration_ms: 161.173904
+  type: 'test'
+  ...
+# Subtest: quota or a dropped write at all fifteen physical receipts preserves old progression and retries once
+ok 167 - quota or a dropped write at all fifteen physical receipts preserves old progression and retries once
+  ---
+  duration_ms: 1094.092401
+  type: 'test'
+  ...
+# Subtest: uncertain durable confirmation and a replaced owner cannot duplicate or import V70 receipts
+ok 168 - uncertain durable confirmation and a replaced owner cannot duplicate or import V70 receipts
+  ---
+  duration_ms: 84.954049
+  type: 'test'
+  ...
+# Subtest: manual slots retain active V70 routing, completed return and the exact fifteen receipts
+ok 169 - manual slots retain active V70 routing, completed return and the exact fifteen receipts
+  ---
+  duration_ms: 504.110531
+  type: 'test'
+  ...
+# Subtest: V10 migration preserves prior chapters and does not infer temple or Blooded from rank
+ok 170 - V10 migration preserves prior chapters and does not infer temple or Blooded from rank
+  ---
+  duration_ms: 12.367617
+  type: 'test'
+  ...
+# Subtest: every played V90 checkpoint survives real save/export/import, with no Blooded, inventory or ship grant
+ok 171 - every played V90 checkpoint survives real save/export/import, with no Blooded, inventory or ship grant
+  ---
+  duration_ms: 1363.353531
+  type: 'test'
+  ...
+# Subtest: foreign owner, wrong source, orphan progression and persisted unconfirmed commands stay refused
+ok 172 - foreign owner, wrong source, orphan progression and persisted unconfirmed commands stay refused
+  ---
+  duration_ms: 30.467432
+  type: 'test'
+  ...
+# Subtest: nested future V90 versions preserve primary bytes rather than downgrading or borrowing an old backup
+ok 173 - nested future V90 versions preserve primary bytes rather than downgrading or borrowing an old backup
+  ---
+  duration_ms: 2.698671
+  type: 'test'
+  ...
+# Subtest: quota and a dropped write never acknowledge physical progress, and retry consumes the same commands once
+ok 174 - quota and a dropped write never acknowledge physical progress, and retry consumes the same commands once
+  ---
+  duration_ms: 504.271421
+  type: 'test'
+  ...
+# Subtest: uncertain readback confirms durable commands and a replaced campaign cannot receive them
+ok 175 - uncertain readback confirms durable commands and a replaced campaign cannot receive them
+  ---
+  duration_ms: 37.179667
+  type: 'test'
+  ...
+# Subtest: manual slots route an active preparation back to its scene and completed returns to the Homeworld
+ok 176 - manual slots route an active preparation back to its scene and completed returns to the Homeworld
+  ---
+  duration_ms: 647.002125
+  type: 'test'
+  ...
+# Subtest: old absent and explicit null preparation remain valid and do not infer a completed chapter
+ok 177 - old absent and explicit null preparation remain valid and do not infer a completed chapter
+  ---
+  duration_ms: 9.744659
+  type: 'test'
+  ...
+1..177
+# tests 177
+# suites 0
+# pass 177
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 63411.77944

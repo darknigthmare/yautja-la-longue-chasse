@@ -786,7 +786,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
         const next={point:null,archiveV106:{owner:saveRef.current.createdAt}};dialogStateRef.current=next;setDialog(next);return;
       }
     }
-    if(plaqueDraftRefV109.current.receipt?.carrier){setPlaqueMessageV109('Dépose la pièce, ou interromps et conserve-la au sol avant une autre activité.');clearInputs();return;}
+    if((archiveContinuationViewV111(continuationDraftRefV111.current)??plaqueDraftRefV109.current).receipt?.carrier){setPlaqueMessageV109('Dépose la pièce, ou interromps et conserve-la au sol avant une autre activité.');clearInputs();return;}
     if(!interruptPlaqueV109())return;
     if(cargoDraftRefV108.current.receipt?.carrier){setCargoMessageV108('Dépose le lot à sa place, ou interromps et pose-le au sol avant une autre activité.');clearInputs();return;}
     if(!interruptCargoV108())return;

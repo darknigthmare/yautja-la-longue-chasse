@@ -321,6 +321,30 @@ async function journey(kind){
     }else if(kind==='MobileGuide'){
       const baseJson=JSON.stringify(await baseLedger());await startContinuation();
       await page.setViewportSize({width:390,height:844});await tick();
+      const continuationJournal=page.locator('[data-homeworld-continuation-scroll-v111]');
+      const conservedRecord=continuationJournal.locator('[data-homeworld-first-archive-record-v111]'),conservedSummary=conservedRecord.locator(':scope > summary');
+      const studyBeforeRecord=JSON.stringify(await continuation());
+      await conservedSummary.focus();await page.keyboard.press('Enter');await tick();
+      check('Mobile active continuation opens its conserved first record through actual keyboard input',await conservedRecord.evaluate(element=>element.open)&&await page.locator('[data-homeworld-viewport]').evaluate(element=>element.getBoundingClientRect().height>=100));
+      const beforeRecordScroll=await continuationJournal.evaluate(element=>({scrollTop:element.scrollTop,scrollHeight:element.scrollHeight,clientHeight:element.clientHeight,overflowY:getComputedStyle(element).overflowY}));
+      check('Mobile entire continuation notebook has a native bounded scrollport',beforeRecordScroll.clientHeight>0&&beforeRecordScroll.scrollHeight>beforeRecordScroll.clientHeight&&['auto','scroll'].includes(beforeRecordScroll.overflowY));
+      await capture('00-open-conserved-notebook',page.locator('[data-homeworld-hub]'));
+      await continuationJournal.hover();await page.mouse.wheel(0,720);await tick();
+      await waitUntil(async()=>await continuationJournal.evaluate(element=>element.scrollTop)>beforeRecordScroll.scrollTop+1,'native wheel scroll of the entire continuation notebook');
+      const afterRecordScroll=await continuationJournal.evaluate(element=>({scrollTop:element.scrollTop,scrollHeight:element.scrollHeight,clientHeight:element.clientHeight}));
+      observations.push({journey:kind,kind:'mobile-conserved-notebook-native-scroll',before:beforeRecordScroll,after:afterRecordScroll});
+      check('Mobile conserved notebook scrolls through actual wheel input',afterRecordScroll.scrollTop>beforeRecordScroll.scrollTop+1);
+      await conservedSummary.focus();
+      for(const name of ['Interrompre et conserver les pièces','Afficher le prochain repère à pied']){
+        const button=continuationJournal.getByRole('button',{name,exact:true});
+        for(let attempt=0;attempt<12&&!await button.evaluate(element=>document.activeElement===element);attempt++){await page.keyboard.press('Tab');await tick(25);}
+        const actual=await button.evaluate(element=>{const rect=element.getBoundingClientRect(),host=element.closest('[data-homeworld-continuation-scroll-v111]'),box=host.getBoundingClientRect(),point={x:rect.left+rect.width/2,y:rect.top+rect.height/2},hit=document.elementFromPoint(point.x,point.y);return{name:element.textContent,focused:document.activeElement===element,height:rect.height,point,visible:point.x>=box.left&&point.x<=box.right&&point.y>=box.top&&point.y<=box.bottom&&point.x>=0&&point.x<=innerWidth&&point.y>=0&&point.y<=innerHeight&&!!hit&&(hit===element||element.contains(hit))};});
+        observations.push({journey:kind,kind:'mobile-conserved-notebook-keyboard-action',...actual});
+        check('Mobile conserved notebook '+name+' remains keyboard reachable with a visible44px target',actual.focused&&actual.visible&&actual.height>=44);
+      }
+      await capture('00-keyboard-conserved-notebook',page.locator('[data-homeworld-hub]'));
+      await conservedSummary.focus();await page.keyboard.press('Space');await tick();
+      check('Mobile first record closes without a study action or mutation of the original B',!await conservedRecord.evaluate(element=>element.open)&&JSON.stringify(await continuation())===studyBeforeRecord&&JSON.stringify(await baseLedger())===baseJson&&await page.locator('[data-homeworld-viewport]').evaluate(element=>element.getBoundingClientRect().height>=100));
       const atlas=await openAtlas();
       // Opening the actual Atlas safely interrupts active field work. Read the
       // current objective after that transition, exactly as the UI does.
@@ -400,6 +424,7 @@ try{
   check('No uncaught browser exceptions',errors.length===0,errors);
   check('No unfiltered browser console errors',consoleErrors.length===0,consoleErrors);
   check('No native Worker construction or error events',workerErrors.length===0,workerErrors);
+  if(mode==='compiled-app')check('No failed network requests',requestsFailed.length===0,requestsFailed);
 }catch(error){failure=error;checks.push({name:error.message,status:'FAIL'});console.error(error);}
 finally{
   const sourceAfter=await snapshot();

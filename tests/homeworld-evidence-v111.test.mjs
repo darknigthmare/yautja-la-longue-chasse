@@ -11,7 +11,7 @@ const sha = bytes => createHash('sha256').update(bytes).digest('hex');
 const options = {driver: V111_RECIPE, opened: ['played.png'], runtimeCommit: 'a'.repeat(40), buildId: 'actual-compiled-build'};
 const result = () => ({
   status: 'PASS', mode: 'compiled-app', runtimeCommit: options.runtimeCommit, buildId: options.buildId,
-  checks: [{name: 'A bounded executed interaction', status: 'PASS'}], errors: [], consoleErrors: [], workerErrors: [],
+  checks: [{name: 'A bounded executed interaction', status: 'PASS'}], errors: [], consoleErrors: [], workerErrors: [], requestsFailed: [],
   scope: 'Actual UI interaction with declared initial model fixtures and no source closure claim',
   servedBuilds: [{status: 200, expectedBuildId: options.buildId, foundInHtml: true, htmlSha256: 'b'.repeat(64)}],
   sourceBefore: [{file: options.driver, sha256: 'c'.repeat(64), bytes: 11}],
@@ -32,6 +32,8 @@ test('V111 evidence: only a complete compiled recipe with every opened PNG can b
     raw => raw.errors.push({message: 'Uncaught runtime error'}),
     raw => raw.consoleErrors.push({text: 'Hydration failed', location: {url: 'app.js'}}),
     raw => raw.workerErrors.push({kind: 'error-event', message: 'Navigation Worker failed'}),
+    raw => raw.requestsFailed.push({url: 'http://127.0.0.1:3103/native.png', failure: {errorText: 'net::ERR_FAILED'}}),
+    raw => delete raw.requestsFailed,
     raw => delete raw.workerErrors,
     raw => delete raw.consoleErrors, raw => delete raw.errors,
     raw => raw.sourceAfter[0].sha256 = 'e'.repeat(64),

@@ -36,6 +36,7 @@ export function validateExecutedResultV111(raw, {driver = V111_RECIPE, opened, r
   assert.deepEqual(raw.errors, [], 'Uncaught browser errors must remain unfiltered and empty');
   assert.deepEqual(raw.consoleErrors, [], 'All console.error records must remain unfiltered and empty');
   assert.deepEqual(raw.workerErrors, [], 'Native Worker construction and error events must remain empty');
+  assert.deepEqual(raw.requestsFailed, [], 'All failed network requests must remain unfiltered and empty');
   const servedBuilds = normalizeServedBuilds(production.servedBuilds, buildId);
   for (const response of servedBuilds) {
     if (Object.hasOwn(response, 'sha256') && Object.hasOwn(response, 'htmlSha256')) assert.equal(response.sha256, response.htmlSha256, 'Ambiguous served HTML fingerprint');

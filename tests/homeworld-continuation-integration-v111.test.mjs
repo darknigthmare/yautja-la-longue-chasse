@@ -48,8 +48,8 @@ function campaign(state){
   save.homeworld.locationV77=api.createHomeworldCheckpointV77(owner,'0',state.actor,null,state.actor);
   return save;
 }
-function fixture(phase='working'){
-  const state=stateAt(phase),values=new Map(),key='homeworld-continuation-v111';let quota=false,writes=0;
+function fixture(phase='working',state=stateAt(phase)){
+  const values=new Map(),key='homeworld-continuation-v111';let quota=false,writes=0;
   const storage={getItem:name=>values.get(name)??null,setItem(name,value){if(quota)throw Error('quota');values.set(name,value);},removeItem:name=>values.delete(name)};
   const save=campaign(state);assert(saves.writeSaveWithStatus(save,storage,key).persisted);
   const env={...api,save,saveRef:{current:save},progressRef:{current:save.homeworld},
@@ -161,6 +161,42 @@ test('V111 actual motor and render gates stop an interrupted carried candidate, 
   assert.equal(runInNewContext(renderGuard.getText(tree),environment),true,'rendered world controls stay blocked until Resume or Park');
   const sampled=api.sampleArchiveContinuationWalkV111(ledger,state.actor,{...state.actor,x:state.actor.x+2},1/60,{...route.context(state.actor),basePlaque:state.base});
   assert.equal(sampled.ledger,ledger,'paused physical receipt itself never invents fragment movement');
+});
+
+test('V111 actual interact refuses an available doorway while A carries the fragment and B is completed',()=>{
+  route.restore(stateAt('carried'));
+  const geometry=qa.load('app/game/systems/homeworldGeometryV64.ts');
+  const building=route.world.HOMEWORLD_BUILDINGS_V77.find(value=>value.id==='residence-port-2');assert(building);
+  const steps=route.state().motorSteps;
+  route.walkTo(geometry.homeworldBuildingDoorwayV64(building).approach);
+  assert(route.state().motorSteps>steps,'the fragment reaches the doorway through the actual motor');
+  const state=fixture('carried',structuredClone(route.state())),{env}=state,events=[];
+  assert.equal(env.plaqueDraftRefV109.current.receipt.phase,'completed');
+  assert.equal(env.plaqueDraftRefV109.current.receipt.carrier,null);
+  assert.equal(env.continuationDraftRefV111.current.receipt.study.receipt.carrier,'fragment');
+  assert.equal(api.nearestHomeworldDoorV77('0',env.actorRef.current)?.id,building.id,'the real doorway is available before interacting');
+  assert.equal(api.nearestHomeworldConnectorV77('0',env.actorRef.current),null);
+  Object.assign(env,qa.load('app/game/systems/homeworldCartographyDefinitionV105.ts'),qa.load('app/game/systems/homeworldCntlipPhysicalV77.ts'),{
+    cargoMigrationPendingRefV108:{current:false},dialogStateRef:{current:null},
+    clearInputs(){env.cleared=(env.cleared??0)+1;},
+    setActor(){events.push('move');},setDialog(){events.push('dialog');},
+    enterInterior(id){events.push('enter:'+id);},exitInterior(){events.push('exit');},
+    openObservationV105(){return false;},
+  });
+  for(const name of ['cargoContextV108','comparisonContextV107','archiveContextV106','cartographyContextV105'])env[name]=callback(name,env);
+  const interrupt=env.interruptPlaqueV109,progress=env.onProgress;
+  env.interruptPlaqueV109=()=>{events.push('interrupt-plaque');return interrupt();};
+  env.onProgress=next=>{events.push('progress');return progress(next);};
+  for(const name of ['interruptCargoV108','interruptComparisonV107','interruptArchiveV106','interruptCartographyV104','interruptCartographyV105'])env[name]=()=>{events.push(name);return true;};
+  const actor=env.actorRef.current,actorJson=JSON.stringify(actor),baseJson=JSON.stringify(env.plaqueDraftRefV109.current),continuationJson=JSON.stringify(env.continuationDraftRefV111.current),durable=[...state.values];
+  callback('interact',env)();
+  assert.deepEqual(events,[],'carrying cannot dispatch an interruption, write, room/activity entry or actor movement');
+  assert.equal(env.cleared,1);assert.match(env.message,/Dépose la pièce/);
+  assert.equal(env.actorRef.current,actor);assert.equal(JSON.stringify(env.actorRef.current),actorJson);
+  assert.equal(env.interiorRef.current,null);assert.equal(env.dialogStateRef.current,null);
+  assert.equal(JSON.stringify(env.plaqueDraftRefV109.current),baseJson);
+  assert.equal(JSON.stringify(env.continuationDraftRefV111.current),continuationJson);
+  assert.deepEqual([...state.values],durable);assert.equal(state.writes,0);
 });
 
 test('V111 Save11 to12 preserves the genuine V110 campaign and B document while initializing empty fieldToolIds',async()=>{
