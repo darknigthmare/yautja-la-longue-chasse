@@ -15,7 +15,7 @@ const ast = ts.createSourceFile("HuntCanvas.tsx", source, ts.ScriptTarget.Latest
 const bundled = await build({
   stdin: {
     contents: `${source.replace("export default function HuntCanvas", "function HuntCanvas")}
-export { makeGameState, makeEnemy, damageEnemy, hurtPlayer, interact, updatePlayer, updateBoss, updateRegularEnemy, stepGame, finishTrophyExtraction, syncSecondaryTrophyAnchorsV111, canContinueTrophyHarvestV111, captureCheckpoint, serializeActiveHuntCheckpoint, deserializeActiveHuntCheckpoint, restoreCheckpoint, updateHuntRitesV77, riteContextV77, huntRiteMenuSnapshotV77, startHuntRiteV77, announce, snapshot, stepTrophyRitual };
+export { makeGameState, makeEnemy, damageEnemy, hurtPlayer, interact, updatePlayer, updateBoss, updateRegularEnemy, stepGame, finishTrophyExtraction, syncSecondaryTrophyAnchorsV111, canContinueTrophyHarvestV111, captureCheckpoint, serializeActiveHuntCheckpoint, deserializeActiveHuntCheckpoint, restoreCheckpoint, updateHuntRitesV77, riteContextV77, huntRiteMenuSnapshotV77, startHuntRiteV77, forceDecloak, announce, snapshot, stepTrophyRitual };
 export { defaultSave } from "./save";
 export { MISSION_BY_ID } from "./data";
 export { ENEMY_TROPHY_GAMEPLAY_V18_ASSETS } from "./enemyTrophyGameplayV18";`,
@@ -270,4 +270,80 @@ test("a flayed native checkpoint passes structural preflight but final restore s
   assert.equal(denied.huntRites.corpses.length, 0, "preflight cannot manufacture ownership or corpse work");
   assert.match(denied.message, /reprise refusée/);
   assert.equal(plain(f.save.inventory).fieldToolIds[0], "flaying-tool");
+});
+
+function fieldResources(f) {
+  const player=f.state.player;
+  return plain({
+    health:player.health, stamina:player.stamina, energy:player.energy, medicomps:player.medicomps,
+    weaponAmmo:player.weaponAmmo, weaponCooldown:player.weaponCooldown, healCooldown:player.healCooldown,
+    scanCooldown:player.scanCooldown, cloaked:player.cloaked, maskOn:player.maskOn,
+    gear:f.state.arsenal.slots, inventory:f.save.inventory, honor:f.state.honor,
+  });
+}
+for(const [name,action,prepare,held] of [
+  ["melee","melee",()=>{},false],
+  ["weapon trigger","weapon",()=>{},false],
+  ["held weapon charge","weapon",()=>{},true],
+  ["heal","heal",f=>{f.state.player.health-=40;},false],
+  ["gear","gearOne",()=>{},false],
+  ["cloak","cloak",()=>{},false],
+  ["mask","mask",()=>{},false],
+  ["scan","scan",()=>{},false],
+  ["interact","interact",()=>{},false],
+  ["jump","jump",()=>{},false],
+  ["movement","right",()=>{},true],
+]) test(`real player ${name} cancels flaying before executing with its ordinary costs exactly once`,()=>{
+  const f=fixture({owned:true}),control=fixture({owned:true}),handler=riteHandler(f);
+  prepare(f);prepare(control);
+  handler("open");handler("flay");
+  assert.equal(f.state.huntRites.operation?.action,"flay");
+  const originalInventory=plain(f.save.inventory),medicompsBefore=f.state.player.medicomps;
+  for(const current of [f,control]){
+    if(held)current.input.keyboardHeld.add(action);
+    else current.input.pressed.add(action);
+  }
+  f.frame();control.frame();
+  assert.equal(f.state.huntRites.operation,null);
+  assert.equal(f.state.riteOperationDamageStart,null);
+  assert.equal(f.state.huntRites.corpses[0].flayed,false);
+  assert.deepEqual(plain(f.state.huntRites.completedEventIds),[]);
+  assert.equal(f.drop.collected,false);
+  assert.deepEqual(plain(f.save.inventory),originalInventory,"an interrupted preparation never grants a skin or tool");
+  assert.deepEqual(fieldResources(f),fieldResources(control),"the original action keeps its normal single cost");
+  if(action==="heal")assert.equal(f.state.player.medicomps,medicompsBefore-1);
+});
+test("a quiet production player frame preserves flaying and its following simulation tick advances the gesture",()=>{
+  const f=fixture({owned:true}),handler=riteHandler(f);
+  handler("open");handler("flay");
+  const before=f.state.huntRites.operation.elapsed;
+  f.frame();
+  assert.equal(f.state.huntRites.operation.action,"flay");
+  f.riteFrame();
+  assert.ok(f.state.huntRites.operation.elapsed>before);
+  assert.equal(f.state.huntRites.corpses[0].flayed,false);
+  assert.equal(f.drop.collected,false);
+});
+test("an accepted flay reveals the hunter while analysis and marking preserve their earlier cloak rules",()=>{
+  const denied=fixture(),deniedHandler=riteHandler(denied);
+  denied.state.player.cloaked=true;
+  deniedHandler("open");deniedHandler("flay");
+  assert.equal(denied.state.huntRites.operation,null);
+  assert.equal(denied.state.player.cloaked,true,"a refused gesture cannot reveal the hunter");
+  const f=fixture({owned:true}),handler=riteHandler(f);
+  f.state.player.cloaked=true;
+  handler("open");handler("flay");
+  assert.equal(f.state.huntRites.operation.action,"flay");
+  assert.equal(f.state.player.cloaked,false);
+  assert.ok(f.state.soundEvents.includes("cloak-off"));
+  for(const action of ["analyze","mark"]){
+    const other=fixture({owned:true}),otherHandler=riteHandler(other);
+    other.state.player.cloaked=true;
+    otherHandler("open");otherHandler(action);
+    assert.equal(other.state.huntRites.operation.action,action);
+    assert.equal(other.state.player.cloaked,true);
+    other.input.pressed.add("heal");other.state.player.health-=40;
+    other.frame();
+    assert.equal(other.state.huntRites.operation.action,action,"the new input rule applies only to flaying");
+  }
 });

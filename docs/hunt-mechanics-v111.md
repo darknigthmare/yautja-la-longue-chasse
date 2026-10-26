@@ -2,7 +2,7 @@
 
 Le Flaying Tool devient un outil permanent acquis à l’armurerie pour 120 marques du clan. L’achat associe débit et inventaire dans une écriture confirmée ; un double clic relit la sauvegarde courante. Les anciennes sauvegardes ne reçoivent aucun outil gratuitement.
 
-Près d’une proie réellement vaincue, « Examiner la proie vaincue » permet de dépecer en 3,2 secondes. Le geste exige l’outil, un appui et un accès dégagé ; dégâts, départ ou perte d’appui l’interrompent. Une proie préparée conserve son état et ses témoins à la reprise. La mise en scène ne crée aucune peau, viande, récompense ou montée de rang. La suspension des corps reste à produire.
+Près d’une proie réellement vaincue, « Examiner la proie vaincue » permet de dépecer en 3,2 secondes. Le geste exige l’outil, un appui et un accès dégagé ; dégâts, départ, perte d’appui ou autre action volontaire l’interrompent. Le geste accepté retire le camouflage. Une proie préparée conserve son état et ses témoins à la reprise. La mise en scène ne crée aucune peau, viande, récompense ou montée de rang. La suspension des corps reste à produire.
 
 Les trophées secondaires apparaissent à la position du corps réel et suivent sa chute sur les plateformes. Le prélèvement vérifie à son démarrage, pendant les gestes et à sa conclusion l’identité de la proie, l’appui du chasseur, la portée et les obstacles solides. L’Apex tombe également sur la géométrie réelle ; son corps et ses glyphes utilisent sa hauteur réelle.
 

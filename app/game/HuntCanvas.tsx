@@ -7488,6 +7488,20 @@ function updatePlayer(
     (isHeld(input, "right") ? 1 : 0) - (isHeld(input, "left") ? 1 : 0);
   const climbAxis =
     (isHeld(input, "down") ? 1 : 0) - (isHeld(input, "up") ? 1 : 0);
+  // Preparing a body occupies the hunter until they deliberately act again.
+  // Preserve the input edge: its normal handler must still pay its cost once.
+  if (state.huntRites?.operation?.action === "flay") {
+    const interruptingActions: readonly Action[] = [
+      "melee", "weapon", "weaponOne", "weaponTwo", "weaponNext", "aim",
+      "heal", "gearOne", "gearTwo", "cloak", "mask", "scan", "interact", "jump",
+    ];
+    if (moveAxis !== 0 || climbAxis !== 0 ||
+      interruptingActions.some(action => input.pressed.has(action) || isHeld(input, action))) {
+      state.huntRites = { ...state.huntRites, operation: null };
+      state.riteOperationDamageStart = null;
+      announce(state, "Dépeçage interrompu : le chasseur reprend son action.", 2.4);
+    }
+  }
   const meleeInputQueued = input.pressed.has("melee");
   const dodgeRequested =
     player.grounded &&
@@ -10403,7 +10417,11 @@ export default function HuntCanvas({
           announce(game,'Rejoins la proie sur un appui dégagé pour la dépecer.',3);return;
         }
         const started=startHuntRiteV77(game.huntRites,menu.corpseId,action,context);
-        game.huntRites=started.state;if(started.accepted&&started.state.operation)game.riteOperationDamageStart=game.damageTaken;
+        game.huntRites=started.state;
+        if(started.accepted&&started.state.operation){
+          game.riteOperationDamageStart=game.damageTaken;
+          if(action==='flay')forceDecloak(game);
+        }
         announce(game,started.message,3);
         if(action==='leave'&&started.accepted)game.riteMenuCorpseId=null;
       }
