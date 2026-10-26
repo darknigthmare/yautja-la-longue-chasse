@@ -5,8 +5,8 @@
     "bytes": 256333,
     "sha256": "c54a5e97c199d16584a229f332692f5890874f5494b015657f66cf9659bfe3f1"
   },
-  "files": 1430,
-  "bytes": 836899316,
+  "files": 1433,
+  "bytes": 836924886,
   "entries": [
     {
       "path": ".openai/hosting.json",
@@ -355,8 +355,8 @@
     },
     {
       "path": "app/game/GameClient.tsx",
-      "sha256": "a20b1ec8363b727882a68380b193a0a6924adf5b79405cb7f3134fbc3891bcdb",
-      "bytes": 280343
+      "sha256": "d5ba07b8dc20220f528739a2fc45fcd362c12e852daee7d5867953e0c430790c",
+      "bytes": 282382
     },
     {
       "path": "app/game/GameReserveEntryV104.module.css",
@@ -414,9 +414,14 @@
       "bytes": 1944
     },
     {
+      "path": "app/game/HomeworldArchiveContinuationV111.module.css",
+      "sha256": "582d43934b30d77378b3c56c3533b21152096c10eac1bbba959dc6c5e75fe1e5",
+      "bytes": 1586
+    },
+    {
       "path": "app/game/HomeworldArchiveContinuationV111.tsx",
-      "sha256": "f8fa4fcb84bc166288021f4717a1b171d73060f9774e4d10851c146caed4f5ba",
-      "bytes": 5941
+      "sha256": "ef83a43146f7962f90350051b09dd1a82c4bdc42bca5f830960e1f3ccff92cd8",
+      "bytes": 6283
     },
     {
       "path": "app/game/HomeworldArchivePlaqueRecordV110.module.css",
@@ -625,8 +630,8 @@
     },
     {
       "path": "app/game/HomeworldHub.tsx",
-      "sha256": "caf8b70b3f8bd314ac0f9a920f7527fff513dbb4d205d6d72a56afdc6a46520e",
-      "bytes": 172169
+      "sha256": "aa067000d8b519c9a0c5ccbf919a6d4474e10721881ff513089cb2c5c633ec49",
+      "bytes": 172234
     },
     {
       "path": "app/game/HomeworldInteriorDecorV76.tsx",
@@ -860,8 +865,8 @@
     },
     {
       "path": "app/game/HuntCanvas.tsx",
-      "sha256": "7e835446ae67282f96dcd1d9939a207b4c35f8bebd98ec90432a7266dfd9e0e8",
-      "bytes": 364409
+      "sha256": "d166e8b3ee50e3b36568ecced4536bb19c304dbba79195cf4982122e5f20b32f",
+      "bytes": 374055
     },
     {
       "path": "app/game/HuntRitesMenuV77.module.css",
@@ -870,8 +875,8 @@
     },
     {
       "path": "app/game/HuntRitesMenuV77.tsx",
-      "sha256": "25206a0fdaa335db101e3530f169a4c063da1d0a8a18dc3ea2226da45044887f",
-      "bytes": 2113
+      "sha256": "bab02b869f0bc8037a0c3e260a9732cb9e3afecf253d6f2bfd898a1df1afbd3a",
+      "bytes": 2266
     },
     {
       "path": "app/game/HunterRigPreview.tsx",
@@ -1220,8 +1225,8 @@
     },
     {
       "path": "app/game/buildInfo.ts",
-      "sha256": "73b38b865e54cec63e31e5a898167a9c8a241c682cd830d72a5eea946fd47fc4",
-      "bytes": 268
+      "sha256": "714a5c751f035a773539ca5643a1ac6afa03690344ea180c8091be471526630b",
+      "bytes": 224
     },
     {
       "path": "app/game/catalogueAppearance.ts",
@@ -2405,8 +2410,8 @@
     },
     {
       "path": "app/game/save.ts",
-      "sha256": "781d87dacd36eca3283a28e11e52abc136b215cdada1a9089e5ad60b64fc2ad5",
-      "bytes": 84656
+      "sha256": "c44b1845bd59323c93d777dd9ca3cac4b88f1b3d4b5d2e83044c3df8accabfce",
+      "bytes": 84824
     },
     {
       "path": "app/game/ship-level.css",
@@ -2787,6 +2792,11 @@
       "path": "app/game/systems/explorationRegions.ts",
       "sha256": "9824aea152c22fabfa8a1bf0e589134a04ef073335df07406ae6aa32ffbd59c5",
       "bytes": 3483
+    },
+    {
+      "path": "app/game/systems/fieldToolsV111.ts",
+      "sha256": "91d56bd815dedc2daf993b1dd4a53e7df072f69c1105e05f622c78b666d30c6d",
+      "bytes": 2428
     },
     {
       "path": "app/game/systems/firstHuntGuide.ts",
@@ -3730,8 +3740,8 @@
     },
     {
       "path": "app/game/systems/huntRitesRuntimeV77.ts",
-      "sha256": "8308aa461fe6b730acde1f2b8e115190ff63d6e3ab5f31403664e20925a58fd7",
-      "bytes": 7132
+      "sha256": "e04dff87bd2ade99e8e7bda7b42ea500a958f894b2e66e3d0a7eb90825c40369",
+      "bytes": 8103
     },
     {
       "path": "app/game/systems/huntStructuralBarrierV94.ts",
@@ -4200,8 +4210,8 @@
     },
     {
       "path": "app/game/systems/ritesOfHuntV77.ts",
-      "sha256": "414c2bf3c568e5b20cc9a4231bd65be064686ac23650324fdc84ab1b4011bbc6",
-      "bytes": 13093
+      "sha256": "f64885ba3d7b972c7f3c8582de61c52560681bf63de3313846d93d1bafa4e93e",
+      "bytes": 13565
     },
     {
       "path": "app/game/systems/shipAcquisitionV89.ts",
@@ -4252,6 +4262,11 @@
       "path": "app/game/systems/trainingDrill.ts",
       "sha256": "dd14e02ed3ce573be2731c7eed3397ae0b967a5c032732896f7a6b47b4096536",
       "bytes": 8685
+    },
+    {
+      "path": "app/game/systems/trophyHarvestV111.ts",
+      "sha256": "7c277fb297d92da817f18027e0c429ec54877e3b85788c5de9c5fd17f3696526",
+      "bytes": 2699
     },
     {
       "path": "app/game/systems/trophyRitual.ts",
@@ -4325,8 +4340,8 @@
     },
     {
       "path": "app/game/types.ts",
-      "sha256": "928c6f30e88a4e45f71b569f6f26db4ce7a7afd8917446e9f13f3d592b00fe19",
-      "bytes": 17088
+      "sha256": "af0b6ffa1bde3002b8e910f9278e26e6e29b9acf79ce04001560f56f9c41e05c",
+      "bytes": 17328
     },
     {
       "path": "app/game/useGeneratedWarCatalogV102.ts",
@@ -6995,8 +7010,8 @@
     },
     {
       "path": "scripts/publish-validation-homeworld-v111.mjs",
-      "sha256": "8f34bb7c4be13f77a6131cfa810584958fb365417fccb55f4f0399a31691aca9",
-      "bytes": 10177
+      "sha256": "68d639ebc9643c9bfe26a231e3099b82fb41d02f1e901f58e525194049871722",
+      "bytes": 10285
     },
     {
       "path": "scripts/qa-clan-supply-route-v109.mjs",
@@ -7010,8 +7025,8 @@
     },
     {
       "path": "scripts/qa-homeworld-continuation-v111.mjs",
-      "sha256": "8708149907af5c28f13c60f7ed7f049d33a2026bcd6b9e2a2d1bbdb9a2e2ad59",
-      "bytes": 43641
+      "sha256": "c7e3056e7c1b77d36ded05f87e4eee54a46740cac2ca6a8559607144d38925e2",
+      "bytes": 48160
     },
     {
       "path": "scripts/qa-homeworld-plaque-v109.mjs",
@@ -7145,8 +7160,8 @@
     },
     {
       "path": "tests/homeworld-evidence-v111.test.mjs",
-      "sha256": "52b6a3b2263c4f2c8c974e699f744ef39495791e2ca669cc14a77fe2a85b0f91",
-      "bytes": 8842
+      "sha256": "bb4868844be11b317ac6b2ec5d85d4621271cd4aef2b363bc5db97b919b9cfe4",
+      "bytes": 9020
     },
     {
       "path": "tsconfig.json",

@@ -1,29 +1,29 @@
 {
   "domain": "Homeworld",
   "status": "PASS_CIBLE",
-  "buildId": "WNCgNY2MxAHaQy90_a7T5",
-  "runtimeCommit": "402b238f098def39fbdf81ce624e3f841fdebc20",
+  "buildId": "tj39nnduLIdi202JSGX7p",
+  "runtimeCommit": "4202c8a003c342d86f4749933a2a3c65cff2e613",
   "driver": "scripts/qa-homeworld-continuation-v111.mjs",
   "command": "node scripts/qa-homeworld-continuation-v111.mjs",
   "sourceFreeze": {
     "path": "docs/v111-runtime-freeze.json",
-    "sha256": "d3e67f9404aea0936b24398c9b16ff75c8c69a4a6748f6c04a80da425ec494bd",
-    "bytes": 264471
+    "sha256": "8eee8a5f5a043f2a67477bc6bcff97fffb1ee1666864bd7aed60c7a6c21ca138",
+    "bytes": 264999
   },
   "report": {
     "path": "docs/v111-homeworld-validation.json",
-    "sha256": "902cd2a6c1f05a0685b9573b05d3e7ce4ad4aad24db7aae21a9d96a7c0fd07a0",
-    "bytes": 546722
+    "sha256": "808c4d76e512207c9a0b757cb517624e836ac696c08614638e81e122bcd478b0",
+    "bytes": 549822
   },
-  "browserChecksPassed": 76,
-  "capturesInspected": 12,
+  "browserChecksPassed": 87,
+  "capturesInspected": 14,
   "portableFiles": [
     {
       "path": "docs/qa/v111-homeworld/browser-result.json.gz",
-      "sha256": "def3d7ed0e14ed5c13a2d140d80e240747fb3be3aa98e59bba94269940aee320",
-      "bytes": 168851,
-      "decodedSha256": "4e70c4fc04d237a9899577dbb7ffa009754c5e7ffffefc4669109b732075029d",
-      "decodedBytes": 696128
+      "sha256": "de78ff4cf179bf58220e63973b564b09b704343fc37be411f1cf8d8f1d1739a7",
+      "bytes": 169798,
+      "decodedSha256": "666ff5cf17708a20d3a7b088ddf0597c7bc427a5e5c058a13ffb2938bbe530d0",
+      "decodedBytes": 701298
     },
     {
       "path": "docs/qa/v111-homeworld/continuation-00-native-explanation-pose.png",
@@ -37,18 +37,18 @@
     },
     {
       "path": "docs/qa/v111-homeworld/continuation-01-conserved-b-keyboard-record.png",
-      "sha256": "7c2dece397029c716adfca01441b46ffd5de554cbfd5463180d286f749b1651f",
-      "bytes": 207134
+      "sha256": "f8574654304bc03b6e2647074d65f12a7b2e301e7b3a62afd08aef98f6d4c629",
+      "bytes": 207741
     },
     {
       "path": "docs/qa/v111-homeworld/continuation-01-completed-deferred-b.png",
-      "sha256": "2a6b65322503a0a365317ea55b893cdece35f90659f121e418ee8e3f70209ea5",
-      "bytes": 170180
+      "sha256": "dc52225ada39683dcd43792672e54e2f8e9ffdd8a6a8f0f41f2595427816aebd",
+      "bytes": 168936
     },
     {
       "path": "docs/qa/v111-homeworld/continuation-02-new-consented-continuation.png",
-      "sha256": "d76eee600d2fa8782eba95430f9b015409b5923e78aa9c22b81eb8c3d1ad252a",
-      "bytes": 1111126
+      "sha256": "6c171a534d81b56caf539b5d338a177f53611d4972dfa6fdaf408ccdabdcdae9",
+      "bytes": 973754
     },
     {
       "path": "docs/qa/v111-homeworld/continuation-03-completed-independent-a.png",
@@ -62,23 +62,33 @@
     },
     {
       "path": "docs/qa/v111-homeworld/recovery-02-confirmed-exterior-restoration.png",
-      "sha256": "882e74d503b170940b53bce601aea131f93564ac5e3094d848afee3038ffcb25",
-      "bytes": 1676479
+      "sha256": "1943d318430c874f5f3c71cd0a3a8b119b954ea872dc45067f2ed3d96b326737",
+      "bytes": 1676477
+    },
+    {
+      "path": "docs/qa/v111-homeworld/mobileguide-00-open-conserved-notebook.png",
+      "sha256": "5337cbb2adc0ae2ab9c1253bbdc0ca4d69198fe1af763c03e54012a0aa211ab4",
+      "bytes": 222575
+    },
+    {
+      "path": "docs/qa/v111-homeworld/mobileguide-00-keyboard-conserved-notebook.png",
+      "sha256": "d62c47446b4d2bb339a5bfa1239c4e54f137004e6f2dea2b2b9a51300ca824d3",
+      "bytes": 217903
     },
     {
       "path": "docs/qa/v111-homeworld/mobileguide-01-compact-arrived-guide.png",
-      "sha256": "afdaf94b4803f2f61e1ce30fb75e94dce5c1fcb6f98a5ea842e402ea9692541d",
-      "bytes": 162678
+      "sha256": "4cb5bcc2ab32b3cd346f5184f2ba6dfd8f881543b6f5aaf1cd56f2764574b683",
+      "bytes": 201642
     },
     {
       "path": "docs/qa/v111-homeworld/mobileguide-02-requested-route-options.png",
-      "sha256": "959414fd0e8b92bfa74273455bc75f9fbfd4177234be51dc7a2e3d90b6339712",
-      "bytes": 107205
+      "sha256": "a32b22ccd4221c5e5f8cd6518af3f4573681b8cdaabf328cfd51e9ebb59ec412",
+      "bytes": 114512
     },
     {
       "path": "docs/qa/v111-homeworld/mobileguide-03-keyboard-route-options.png",
-      "sha256": "0749574cce0d5a4d5783ab8cad34c70b698e72b2fda12518f45465e552b0d75c",
-      "bytes": 106474
+      "sha256": "6e0ce831d2fdcc29aeba197b0285048f63683216828729397bfb9249e6c697ec",
+      "bytes": 114736
     },
     {
       "path": "docs/qa/v111-homeworld/legacya-01-direct-a-completed.png",
