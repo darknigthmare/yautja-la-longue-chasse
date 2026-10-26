@@ -15,7 +15,7 @@ const ast = ts.createSourceFile("HuntCanvas.tsx", source, ts.ScriptTarget.Latest
 const bundled = await build({
   stdin: {
     contents: `${source.replace("export default function HuntCanvas", "function HuntCanvas")}
-export { makeGameState, makeEnemy, damageEnemy, hurtPlayer, interact, updatePlayer, updateBoss, updateRegularEnemy, stepGame, finishTrophyExtraction, syncSecondaryTrophyAnchorsV111, canContinueTrophyHarvestV111, captureCheckpoint, serializeActiveHuntCheckpoint, deserializeActiveHuntCheckpoint, restoreCheckpoint, updateHuntRitesV77, riteContextV77, huntRiteMenuSnapshotV77, startHuntRiteV77, forceDecloak, announce, snapshot, stepTrophyRitual };
+export { makeGameState, makeEnemy, damageEnemy, hurtPlayer, interact, updatePlayer, updateBoss, updateRegularEnemy, stepGame, finishTrophyExtraction, syncSecondaryTrophyAnchorsV111, canContinueTrophyHarvestV111, captureCheckpoint, serializeActiveHuntCheckpoint, deserializeActiveHuntCheckpoint, restoreCheckpoint, updateHuntRitesV77, riteContextV77, huntRiteMenuSnapshotV77, startHuntRiteV77, forceDecloak, huntStructuralBarrierV94, announce, snapshot, stepTrophyRitual };
 export { defaultSave } from "./save";
 export { MISSION_BY_ID } from "./data";
 export { ENEMY_TROPHY_GAMEPLAY_V18_ASSETS } from "./enemyTrophyGameplayV18";`,
