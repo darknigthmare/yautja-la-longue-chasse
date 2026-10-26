@@ -2,6 +2,7 @@ import {useId,useRef} from 'react';
 import {HOMEWORLD_ARCHIVE_PLAQUE_V109 as b,HOMEWORLD_ARCHIVE_PLAQUE_ART_V109 as art,HOMEWORLD_ARCHIVE_PLAQUE_LINES_V109,type ArchivePlaqueIdV109} from './systems/homeworldArchivePlaqueDefinitionV109';
 import type {HomeworldArchivePlaqueV109} from './systems/homeworldArchivePlaqueLedgerV109';
 import type {ArchivePlaqueActionV109} from './systems/homeworldArchivePlaqueV109';
+import {ArchivePlaqueMapV110,ArchivePlaqueProvenanceV110,ArchivePlaqueRecordJournalV110} from './HomeworldArchivePlaqueRecordV110';
 import styles from './HomeworldArchivePlaqueV109.module.css';
 
 export function archivePlaqueObjectiveV109(ledger:HomeworldArchivePlaqueV109){
@@ -30,7 +31,7 @@ export function archivePlaqueNextTargetV109(ledger:HomeworldArchivePlaqueV109){
  return 'archive-plaque-support-plaque-v109';
 }
 export function ArchivePlaqueNativePreviewV109({id}:{id:ArchivePlaqueIdV109}){const frame=art.frames[id],clipId=useId();return <span className={styles.preview}><svg viewBox={`0 0 ${frame.width} ${frame.height}`} role="img" aria-label={b.objects.find(o=>o.id===id)!.label}><defs><clipPath id={clipId}><rect width={frame.width} height={frame.height}/></clipPath></defs><g clipPath={`url(#${clipId})`}><image href={art.src} x={-frame.x} y={-frame.y} width={art.width} height={art.height}/></g></svg></span>;}
-export function ArchivePlaqueMapV109({ledger}:{ledger:HomeworldArchivePlaqueV109}){const objects=ledger.receipt?.objects??b.objects.map(o=>({id:o.id,...o.origin,place:'source'}));return <svg viewBox="7440 5180 540 410" className={styles.map} role="img" aria-label="Poste K-17, pièces indépendantes et surfaces séparées du quai"><title>Étude locale K-17 · positions conservées</title>{b.supports.map(s=><g key={s.id}><rect x={s.x-27} y={s.y-14} width="54" height="28"/><text x={s.x} y={s.y+35} textAnchor="middle">{s.id==='plaque'?'Plaque':s.id==='trace'?'Empreinte':'Fragment'}</text></g>)}<circle cx={b.post.x} cy={b.post.y} r="10"/><text x={b.post.x+14} y={b.post.y+5}>Archiviste</text>{objects.map(o=>o.id==='fragment'&&!ledger.receipt?.resumeSpoken?null:<circle key={o.id} cx={o.x} cy={o.y} r="8" data-plaque-map-object-v109={o.id}><title>{`${b.objects.find(d=>d.id===o.id)!.label} · ${o.place}`}</title></circle>)}</svg>;}
+export function ArchivePlaqueMapV109({ledger,actor}:{ledger:HomeworldArchivePlaqueV109;actor?:{x:number;y:number}}){return <ArchivePlaqueMapV110 ledger={ledger} actor={actor}/>;}
 export default function HomeworldArchivePlaqueV109({ledger,disabled,message,onAction,onClose}:{ledger:HomeworldArchivePlaqueV109;disabled:boolean;message:string;onAction(action:ArchivePlaqueActionV109,revision:number):boolean;onClose():void}){
  const ref=useRef<HTMLElement>(null),r=ledger.receipt,lastLine=HOMEWORLD_ARCHIVE_PLAQUE_LINES_V109.find(l=>l.id===r?.lineIds.at(-1));
  const act=(action:ArchivePlaqueActionV109,close=false)=>{ref.current?.focus({preventScroll:true});if(onAction(action,ledger.revision)&&close)onClose();};
@@ -39,7 +40,7 @@ export default function HomeworldArchivePlaqueV109({ledger,disabled,message,onAc
   <ArchivePlaqueMapV109 ledger={ledger}/>
   {lastLine&&<article className={styles.line} data-plaque-source-line-v109={lastLine.id}><small>Dernier échange confirmé au poste</small><strong>{lastLine.speaker}</strong><p>{lastLine.text}</p></article>}
   <p>{archivePlaqueObjectiveV109(ledger)}</p>
-  <div className={styles.objects}>{b.objects.filter(o=>o.id!=='fragment'||r?.resumeSpoken).map(d=>{const o=r?.objects.find(o=>o.id===d.id);return <article key={d.id} className={styles.object}><ArchivePlaqueNativePreviewV109 id={d.id}/><strong>{d.label}</strong><p>{o?.place==='support'?'Sur sa surface séparée':o?.place==='carried'?'Porté avec son relevé':o?.place==='ground'?'Conservé au sol':'Lieu à relever avant déplacement'}</p><p>{r?.observations.includes(d.id)?'Observé sur place':'Observation à faire'} · {r?.provenances.includes(d.id)?'Lieu copié':'Lieu non copié'}</p>{d.id==='fragment'&&<p>Candidat conservé à part ; aucune réparation certifiée.</p>}</article>;})}</div>
+  <div className={styles.objects}>{b.objects.filter(o=>o.id!=='fragment'||r?.resumeSpoken).map(d=><article key={d.id} className={styles.object}><ArchivePlaqueNativePreviewV109 id={d.id}/><strong>{d.label}</strong><ArchivePlaqueProvenanceV110 ledger={ledger} id={d.id}/>{d.id==='fragment'&&<p>Candidat conservé à part ; aucune réparation certifiée.</p>}</article>)}</div>
   <div className={styles.actions}>
    {r?.phase==='offer'&&<><button disabled={disabled} onClick={()=>act('choose-a')}>Chercher une preuve située · A</button><button disabled={disabled} onClick={()=>act('choose-b')}>Conserver les deux traces séparées · B</button></>}
    {r?.phase==='choice'&&<button disabled={disabled} onClick={()=>act('reply')}>Écouter l’archiviste</button>}
@@ -51,12 +52,13 @@ export default function HomeworldArchivePlaqueV109({ledger,disabled,message,onAc
    <button onClick={onClose}>Revenir au quai</button>
   </div>
   {message&&<p className={styles.message} role="status">{message}</p>}
-  <details className={styles.source}><summary>Origine de cette étude</summary><p>Poste et objets locaux originaux, avec trois régions natives indépendantes d’un atlas transparent. K-17 est une désignation opérationnelle ; aucune personne canonique ni lignée ne lui est attribuée. Le fragment reste un candidat distinct et le bord n’est jamais déclaré réparé.</p><p>Le corps de l’archiviste réutilise les dessins existants. Aucun nouveau geste de main, de parole ou de manipulation du PNJ n’est certifié.</p><small>Scène de dialogue V6!383 · Choix788/789 · Répliques3183–3190</small></details>
+  <details className={styles.source}><summary>Origine de cette étude</summary><p>Les pièces K-17 appartiennent à ce poste. Les dossiers A/B et le contenant C de l’autre archiviste restent des études distinctes : leurs dépôts ne déplacent aucune pièce K-17.</p><p>Poste et objets locaux originaux, avec trois régions natives indépendantes d’un atlas transparent. K-17 est une désignation opérationnelle ; aucune personne canonique ni lignée ne lui est attribuée. Le fragment reste un candidat distinct et le bord n’est jamais déclaré réparé.</p><p>Le corps de l’archiviste réutilise les dessins existants. Aucun nouveau geste de main, de parole ou de manipulation du PNJ n’est certifié.</p><small>Scène de dialogue V6!383 · Choix788/789 · Répliques3183–3190</small></details>
  </section>;
 }
-export function HomeworldArchivePlaqueJournalV109({ledger,actor,blocked,writePaused,message,onAction,onRetry,onGuide}:{ledger:HomeworldArchivePlaqueV109;actor:{x:number;y:number};blocked:boolean;writePaused:boolean;message:string;onAction(action:ArchivePlaqueActionV109,revision:number):boolean;onRetry():void;onGuide(id:string):void}){
+export function HomeworldArchivePlaqueJournalV109({ledger,actor,actorInStudySpace=true,blocked,writePaused,message,onAction,onRetry,onGuide}:{ledger:HomeworldArchivePlaqueV109;actor:{x:number;y:number};actorInStudySpace?:boolean;blocked:boolean;writePaused:boolean;message:string;onAction(action:ArchivePlaqueActionV109,revision:number):boolean;onRetry():void;onGuide(id:string):void}){
  const r=ledger.receipt;if(!r&&!writePaused)return null;
  return <aside className={styles.journal} aria-label="Carnet des pièces K-17" data-homeworld-plaque-journal-v109 data-plaque-phase-v109={r?.phase??'offer'}><strong>Étude K-17 · pièces séparées</strong><span>{archivePlaqueObjectiveV109(ledger)}</span>{r?.carrier&&<span>Pièce portée : {b.objects.find(o=>o.id===r.carrier)!.label}</span>}
+  <ArchivePlaqueRecordJournalV110 ledger={ledger} actor={actor} actorInStudySpace={actorInStudySpace}/>
   {r?.phase==='interrupted'&&!(r.failureSpoken&&!r.resumeSpoken)&&<button disabled={blocked||writePaused||Math.hypot(actor.x-r.last.x,actor.y-r.last.y)>4} onClick={()=>onAction('resume',ledger.revision)}>Reprendre l’étude ici</button>}
   {r?.phase==='interrupted'&&r.carrier&&<button disabled={blocked||writePaused} onClick={()=>onAction('park',ledger.revision)}>Poser la pièce au sol ici</button>}
   {r&&['working','return'].includes(r.phase)&&<button disabled={blocked||writePaused} onClick={()=>onAction('interrupt',ledger.revision)}>Interrompre et conserver les pièces</button>}

@@ -54,6 +54,9 @@ on:
       - 'docs/YAUTJA_V109_SUIVI.xlsx'
       - 'docs/*v109*'
       - 'docs/qa/v109*/**'
+      - 'docs/YAUTJA_V110_SUIVI.xlsx'
+      - 'docs/*v110*'
+      - 'docs/qa/v110*/**'
       - 'public/game/sprites/v109/**'
       - 'public/game/homeworld/v109/**'
       - 'public/game/backgrounds/desert-depth-v8.png'
@@ -597,6 +600,7 @@ jobs:
           app/game/*V107.ts app/game/*V107.tsx app/game/systems/*V107.ts
           app/game/*V108.ts app/game/*V108.tsx app/game/systems/*V108.ts
           app/game/*V109.ts app/game/*V109.tsx app/game/systems/*V109.ts
+          app/game/*V110.ts app/game/*V110.tsx app/game/systems/*V110.ts
           app/game/PitExperienceV79.tsx app/game/ClanWarBibleV6Panel.tsx
       - name: Exercise input resilience, fixed-step edges and original V74 metadata
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
@@ -720,10 +724,23 @@ jobs:
         run: node scripts/check-excel-history-v109.mjs --check --tests
       - name: Exercise current V109 throws, supply routes, Preserve biomes, plaque and evidence boundaries
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
-        run: node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v109.test.mjs
-      - name: Verify reproducible V109 follow-up and all 85 preserved historical worksheets
+        run: >-
+          node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1
+          tests/clan-supply-route-v109.test.mjs tests/excel-history-v109.test.mjs
+          tests/game-reserve-biomes-persistence-v109.test.mjs tests/game-reserve-biomes-v109.test.mjs
+          tests/game-reserve-rendering-v109.test.mjs tests/homeworld-archive-plaque-v109.test.mjs
+          tests/homeworld-dynamic-navigation-v109.test.mjs tests/pit-engine-compatibility-v109.test.mjs
+          tests/pit-forward-throw-art-v109.test.mjs tests/pit-forward-throws-v109.test.mjs
+          tests/production-publication-v109.test.mjs
+      - name: Execute unchanged V109 assertions and regenerate its immutable certified workbook
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
-        run: node scripts/build-excel-followup-v109.mjs --check
+        run: node scripts/check-excel-history-v110.mjs --check --tests
+      - name: Exercise current V110 Homeworld coherence and historical isolation
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v110.test.mjs
+      - name: Verify reproducible V110 follow-up and all 97 preserved historical worksheets
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node scripts/build-excel-followup-v110.mjs --check
       - name: Exercise actual clan-war panel and native locked storage
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         env:
