@@ -25,7 +25,7 @@ export default function HomeworldResidentConversationV75({ resident, seconds, pa
   const [topic, setTopic] = useState<HomeworldResidentTopicV75>('daily');
   const controlsDisabled = paused || disabled;
   const text = topic === 'places' && places !== undefined
-    ? places.length ? places.map(place => `${place.label} — ${place.description}`).join(' ') + ' Rejoins la porte à pied ; la personne sur place recevra ta demande.'
+    ? places.length ? 'Dans ce quartier, je peux t’indiquer : ' + places.map(place => place.label).join(' · ') + '. Rejoins la porte à pied ; la personne sur place recevra ta demande.'
       : 'Parcours ce quartier pour en conserver les repères. Une conversation ne découvre pas les lieux à ta place.'
     : homeworldResidentConversationV75(resident, topic, seconds);
   return <section data-homeworld-conversation-v75={resident.id} className={styles.conversation}>

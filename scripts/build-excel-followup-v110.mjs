@@ -9,6 +9,7 @@ import {execFileSync} from 'node:child_process';
 import {gunzipSync} from 'node:zlib';
 import {fileURLToPath, pathToFileURL} from 'node:url';
 import {local, proofShape, evidencePath, normalizeServedBuilds, verifyCaptureCoverage} from './lib/excel-followup-evidence.mjs';
+import {validateExecutedResultV110} from './publish-validation-homeworld-v110.mjs';
 
 export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 export const REGISTRY_V110 = 'docs/v110-homeworld-source.json';
@@ -33,6 +34,7 @@ async function verifyProof(proof) {proofShape(proof); const bytes = await read(e
 export function verifyRegistryV110(registry) {
   assert.equal(registry.schemaVersion, 1); assert.equal(registry.release, 'V110'); assert.match(registry.asOf, /^\d{4}-\d{2}-\d{2}$/);
   assert.deepEqual(registry.baseline, BASELINE_V110); assert.equal(registry.baselineSheets, 97);
+  assert.equal(registry.runtimeFreeze?.path, 'docs/v110-runtime-freeze.json'); proofShape(registry.runtimeFreeze);
   assert.deepEqual(registry.closedSourceIds, [], 'Homeworld fixes cannot close unrelated source requirements');
   assert.equal(registry.newArtAssets, 0); assert.equal(registry.sourceCompletion, false);
   assert.deepEqual(registry.workstreams.map(row => row.id), WORKSTREAM_IDS_V110);
@@ -71,7 +73,10 @@ export async function verifyProductionV110(proof) {
   if (report.rawEvidence.decodedBytes !== undefined) assert.equal(rawBytes.length, report.rawEvidence.decodedBytes);
   if (report.rawEvidence.decodedSha256 !== undefined) assert.equal(sha(rawBytes), report.rawEvidence.decodedSha256);
   const raw = JSON.parse(rawBytes), actual = raw.production ?? raw;
-  assert.equal(raw.status, 'PASS'); assert.ok(['compiled-app', 'production'].includes(actual.mode));
+  validateExecutedResultV110(raw, {driver: DRIVER, opened: raw.captures.map(row => row.file), runtimeCommit: production.runtimeCommit, buildId: production.buildId});
+  assert.deepEqual(raw.workerErrors, []);
+  assert.equal(raw.invocation.environment.YAUTJA_QA_JOURNEYS, 'K17,Residents,BlockedArrival,Doorway');
+  assert.equal(raw.status, 'PASS'); assert.equal(actual.mode, 'compiled-app');
   assert.equal(actual.runtimeCommit, production.runtimeCommit); assert.equal(actual.buildId, production.buildId);
   for (const [field, expected] of [['checksPassed', report.checks.length], ['checksFailed', 0], ['browserErrors', 0]]) if (Object.hasOwn(actual, field)) assert.equal(actual[field], expected);
   if (raw.consoleErrors !== undefined) assert.deepEqual(raw.consoleErrors, []);
@@ -85,15 +90,21 @@ export async function verifyProductionV110(proof) {
   const sourceFreeze = report.sourceFreeze;
   assert.equal(sourceFreeze?.path, 'docs/v110-runtime-freeze.json', 'An exact V110 runtime freeze is required');
   const frozenInputs = [];
+  let freezeEntriesVerified = 0;
   {
     const freeze = JSON.parse(await verifyProof(sourceFreeze));
     assert.ok(Array.isArray(freeze.entries) && freeze.entries.length); assert.equal(new Set(freeze.entries.map(evidencePath)).size, freeze.entries.length);
+    assert.equal(freeze.files, freeze.entries.length); assert.equal(freeze.bytes, freeze.entries.reduce((sum, row) => sum + row.bytes, 0));
+    freezeEntriesVerified = freeze.entries.length;
     for (const row of freeze.entries) {await verifyProof(row); frozenInputs.push(evidencePath(row));}
     const index = new Map(freeze.entries.map(row => [evidencePath(row), row]));
-    for (const row of report.sourceAfter) assert.deepEqual(index.get(evidencePath(row)), row, 'Executed source absent from freeze');
+    for (const row of report.sourceAfter) {
+      const expected = index.get(evidencePath(row)); assert.ok(expected, 'Executed source absent from freeze');
+      assert.equal(expected.sha256, row.sha256, 'Executed source differs from freeze'); assert.equal(expected.bytes, row.bytes);
+    }
     frozenInputs.push(evidencePath(sourceFreeze));
   }
-  return {runtimeCommit: production.runtimeCommit, buildId: production.buildId, browserChecks: report.checks.length, inspectedCaptures: report.captures.length,
+  return {runtimeCommit: production.runtimeCommit, buildId: production.buildId, browserChecks: report.checks.length, inspectedCaptures: report.captures.length, freezeEntriesVerified,
     inputs: [proof.path, ...portable.map(evidencePath), ...report.sourceAfter.map(evidencePath), ...frozenInputs]};
 }
 
@@ -116,19 +127,19 @@ export async function collectFollowupV110(registry = undefined) {
   assert.equal(previous.release, 'V109'); assert.equal(previous.openItems.length, 56); assert.equal(previous.facts.sourceActionsRemaining, 9);
   assert.equal(previousQa.sha256, BASELINE_V110.sha256); assert.equal(previousQa.sheetNames.length, 97); assert.equal(previousQa.result, 'PASS_STRUCTURE');
   const targets = await json(ART_TARGETS); assert.equal(targets.entries.length, 354); assert.equal(new Set(targets.entries.map(row => row.id)).size, 354);
-  const guarded = [REGISTRY_V110, 'docs/excel-followup-v110.md', 'tests/excel-followup-v110.test.mjs', BASELINE_V110.path, SOURCE_ITEMS, 'docs/v109-excel-followup-qa.json', ART_TARGETS, 'docs/homeworld-asset-gap-v81.md', 'docs/specifications/homeworld-v81/mission-homeworld-original.txt', 'app/game/data/bibleArchiveSceneV106.json', WRITER, 'scripts/build-excel-followup-v110.mjs', 'scripts/lib/excel_followup_append.py', 'scripts/build-excel-followup-v100.py', 'scripts/lib/excel-followup-evidence.mjs', ...registry.workstreams.flatMap(row => row.implementation)];
-  const before = await fingerprint(guarded), proof = [...registry.workstreams.flatMap(row => row.proof), ...registry.validations.flatMap(row => row.evidence)];
+  const guarded = [REGISTRY_V110, 'docs/excel-followup-v110.md', 'tests/excel-followup-v110.test.mjs', BASELINE_V110.path, SOURCE_ITEMS, 'docs/v109-excel-followup-qa.json', ART_TARGETS, 'docs/homeworld-asset-gap-v81.md', 'docs/specifications/homeworld-v81/mission-homeworld-original.txt', 'app/game/data/bibleArchiveSceneV106.json', WRITER, 'scripts/build-excel-followup-v110.mjs', 'scripts/lib/excel_followup_append.py', 'scripts/build-excel-followup-v100.py', 'scripts/lib/excel-followup-evidence.mjs', 'scripts/publish-validation-homeworld-v110.mjs', 'scripts/snapshot-runtime-v110.mjs', ...registry.workstreams.flatMap(row => row.implementation)];
+  const before = await fingerprint(guarded), proof = [registry.runtimeFreeze, ...registry.workstreams.flatMap(row => row.proof), ...registry.validations.flatMap(row => row.evidence)];
   for (const row of proof) await verifyProof(row);
   const production = registry.production ? await verifyProductionV110(registry.production) : null;
   const sourceItems = previous.openItems.map(row => ({...row, statusV110: 'OUVERT_SOURCE', progressV110: 'Exigence héritée V109 conservée ; ces correctifs Homeworld ne la clôturent pas.'}));
   const artTargets = targets.entries.map(row => ({...row, statusV110: 'OUVERT_ART', scopeV110: 'Cible du catalogue, non revue ni clôturée par les correctifs V110. Répartition V81 historique :313 variantes,40 manquants,1 animation ; aucune nouvelle admission.'}));
   const inputs = await fingerprint([...guarded, ...proof.map(evidencePath), ...(production?.inputs ?? [])]);
   assert.deepEqual(await fingerprint(guarded), before, 'Sources changed during V110 collection');
-  return {schemaVersion: 1, release: 'V110', asOf: registry.asOf, baseline: BASELINE_V110, historicalSheetCount: 97,
+  return {schemaVersion: 1, release: 'V110', asOf: registry.asOf, baseline: BASELINE_V110, historicalSheetCount: 97, runtimeFreeze: registry.runtimeFreeze,
     method: 'Append-only extension of the exact certified V109 workbook. The 97 historical worksheets remain byte-identical. Homeworld defects, 56 inherited source requirements and 354 artistic targets remain separate. No historical generator, browser or native spreadsheet engine is run by this tool.',
     facts: {inheritedSourceRequirementsOpen: sourceItems.length, sourceActionsRemaining: 9, newlyClosedSourceRequirements: 0, homeworldBoundedWorkstreams: registry.workstreams.length, homeworldDeferredWorkstreamsOpen: registry.remaining.length, artisticTargetsNotClosed: artTargets.length, newArtAssets: 0, sourceCompletion: false},
     workstreams: registry.workstreams, remaining: registry.remaining, sourceItems, artTargets, closedSourceIds: [], inputs,
-    production: production ? {runtimeCommit: production.runtimeCommit, buildId: production.buildId, browserChecks: production.browserChecks, inspectedCaptures: production.inspectedCaptures} : null,
+    production: production ? {runtimeCommit: production.runtimeCommit, buildId: production.buildId, browserChecks: production.browserChecks, inspectedCaptures: production.inspectedCaptures, freezeEntriesVerified: production.freezeEntriesVerified} : null,
     validations: registry.validations, limits: registry.limits};
 }
 

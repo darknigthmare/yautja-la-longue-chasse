@@ -267,7 +267,8 @@ async function journey(kind){
       check('Resident normal nearby interaction opens the actual visible Convoyeur',await conversation.count()===1);
       await conversation.getByRole('button',{name:'Les lieux proches',exact:true}).click();await tick();
       const advice=conversation.locator('[data-homeworld-resident-landmark="building:dock-control"]');
-      check('Resident normal subject click shows only a known local public destination',await advice.count()===1&&await conversation.locator('[data-homeworld-resident-landmark]').count()===1);
+      const spokenPlaces=await conversation.locator('[data-homeworld-conversation-topic="places"]').innerText();
+      check('Resident normal subject click shows only a known local public destination',await advice.count()===1&&await conversation.locator('[data-homeworld-resident-landmark]').count()===1&&spokenPlaces.includes('Contrôle des quais')&&!/impl[eé]ment[eé](?:es?|s)?|non\s+v[eé]rifi[eé](?:es?|s)?/iu.test(spokenPlaces));
       await capture('01-normal-known-place-advice',page.getByRole('dialog'));
       const beforeSuspension=JSON.stringify((await disk()).homeworld);
       // A declared input event fixture exercises the real blur handler while
