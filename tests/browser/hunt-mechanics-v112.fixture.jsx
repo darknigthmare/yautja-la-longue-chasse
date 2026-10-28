@@ -29,7 +29,7 @@ const blankAssets={
 };
 const pad={connected:true,index:0,id:'V112 browser emulated standard pad',axes:[0,0,0,0],buttons:Array.from({length:16},()=>({pressed:false,value:0,touched:false}))};
 Object.defineProperty(navigator,'getGamepads',{configurable:true,value:()=>[pad]});
-const audit={failWrites:false,events:[],show(){},reset(){},save(){},settings(){},guide(){},tick(){},resetCanopy(){},state(){},pad(){},resetRites(){}};
+const audit={failWrites:false,events:[],show(){},reset(){},save(){},settings(){},guide(){},tick(){},nativeTick(){},resetCanopy(){},state(){},pad(){},resetRites(){}};
 window.__huntMechanicsQaV112=audit;
 function Fixture(){
  const [save,setSave]=useState(fresh),saveRef=useRef(save),[view,setView]=useState('accessibility'),[revision,bump]=useState(0);
@@ -60,15 +60,20 @@ function Fixture(){
    r.updateHuntRitesV77(f.game,1/120);
   }bump(v=>v+1);
  };
+ const nativeTick=(frames=1)=>{
+  const current=runtime.current;if(!current)return;
+  for(let index=0;index<frames;index++)r.stepGame(current.game,current.mission,saveRef.current.loadout,saveRef.current.inventory,saveRef.current.appearance,'hunter',current.input,1/120,()=>{});
+  bump(value=>value+1);
+ };
  useLayoutEffect(()=>{
   Object.assign(audit,{
    show:value=>setView(value),save:()=>JSON.parse(JSON.stringify(saveRef.current)),settings:()=>saveRef.current.settings.huntAccessibility,
    reset(){audit.failWrites=false;audit.events=[];pad.axes.fill(0);pad.buttons.forEach(b=>{b.pressed=false;b.value=0;});commit(fresh());newRuntime('canopy');setView('accessibility');bump(v=>v+1);},
-   guide:(phase,gripExhausted=false)=>setGuide({phase,gripExhausted}),tick,
+   guide:(phase,gripExhausted=false)=>setGuide({phase,gripExhausted}),tick,nativeTick,
    resetCanopy(){pad.axes.fill(0);pad.buttons.forEach(b=>{b.pressed=false;b.value=0;});newRuntime('canopy');setView('canopy');bump(v=>v+1);},
    resetRites(){newRuntime('rites');setView('rites');bump(v=>v+1);},
-   state:()=>{const f=runtime.current;return f?JSON.parse(JSON.stringify({player:f.game.player,corpses:f.game.huntRites.corpses,operation:f.game.huntRites.operation,menu:menuFor(f)})):null;},
-   pad(action,value){if(action==='right')pad.axes[0]=value?1:0;else{const button=saveRef.current.settings.huntAccessibility.gamepadButtons[action];pad.buttons[button].pressed=!!value;pad.buttons[button].value=value?1:0;}},
+   state:()=>{const f=runtime.current;return f?JSON.parse(JSON.stringify({elapsed:f.game.elapsed,paused:f.game.paused,riteMenuCorpseId:f.game.riteMenuCorpseId,trophyExtracting:f.game.trophyExtracting,player:f.game.player,corpses:f.game.huntRites.corpses,operation:f.game.huntRites.operation,menu:menuFor(f)})):null;},
+   pad(action,value){if(action==='right')pad.axes[0]=value?1:0;else if(action==='down')pad.axes[1]=value?1:0;else{const button=saveRef.current.settings.huntAccessibility.gamepadButtons[action];pad.buttons[button].pressed=!!value;pad.buttons[button].value=value?1:0;}},
   });
   if(!runtime.current)newRuntime('canopy');
  },[]);
@@ -77,6 +82,7 @@ function Fixture(){
   if(!canvas.current||!runtime.current)return;const f=runtime.current;
   f.game.cameraX=Math.max(0,f.game.player.x+f.game.player.width/2-r.VIEW_WIDTH/2);
   const context=canvas.current.getContext('2d');r.renderGame(context,f.game,f.mission,saveRef.current.loadout,saveRef.current.appearance,blankAssets,0,1);
+  if(view==='rites')r.flushCorpseRiteGamepadV112(f.game,f.input,document.querySelector('main'),()=>bump(value=>value+1),()=>canvas.current?.focus());
  },[view,revision]);
  const onConservation=(action,id)=>{
   if(audit.failWrites){audit.events.push({action,id,ok:false});return {ok:false,message:'Travail non confirmé : sauvegarde de contrôle refusée.'};}
@@ -98,7 +104,7 @@ function Fixture(){
  {view==='accessibility'&&<><HuntAccessibilityPanelV112 value={save.settings.huntAccessibility} onChange={value=>commit({...saveRef.current,settings:{...saveRef.current.settings,huntAccessibility:value}})}/>
  <HuntFieldGuideV112 bindings={save.settings.controlBindings} gamepadButtons={save.settings.huntAccessibility.gamepadButtons} phase={guide.phase} climbing={false} grounded={!guide.gripExhausted} stamina={guide.gripExhausted?0:100} corpseNearby={false} gripExhausted={guide.gripExhausted}/></>}
  {view==='workshop'&&<ConservationPanelV112 inventory={save.inventory} clanMarks={save.profile.clanMarks} onAction={onConservation}/>}
- {view==='rites'&&<div style={{position:'relative',minHeight:480}}><canvas ref={canvas} width={r.VIEW_WIDTH} height={r.VIEW_HEIGHT} tabIndex={0} aria-label="Simulation native de chasse" onKeyDown={event=>key(event,true)} onKeyUp={event=>key(event,false)}/><HuntRitesMenuV77 menu={menu} onOpen={()=>{__runRiteMenuQaV112(f.game,f.mission,'open');bump(v=>v+1);}} onClose={()=>{__runRiteMenuQaV112(f.game,f.mission,'close');bump(v=>v+1);}} onAction={action=>{__runRiteMenuQaV112(f.game,f.mission,action);bump(v=>v+1);}}/>
+ {view==='rites'&&<div style={{position:'relative',minHeight:480}}><canvas ref={canvas} width={r.VIEW_WIDTH} height={r.VIEW_HEIGHT} tabIndex={0} aria-label="Simulation native de chasse" onKeyDown={event=>key(event,true)} onKeyUp={event=>key(event,false)}/><HuntRitesMenuV77 gamepadButtons={save.settings.huntAccessibility.gamepadButtons} menu={menu} onOpen={()=>{__runRiteMenuQaV112(f.game,f.mission,'open');bump(v=>v+1);}} onClose={()=>{__runRiteMenuQaV112(f.game,f.mission,'close');bump(v=>v+1);}} onAction={action=>{__runRiteMenuQaV112(f.game,f.mission,action);bump(v=>v+1);}}/>
  <p role="status">Corps réels : {f?.game.huntRites.corpses.length??0} · Préparation : {f?.game.huntRites.corpses[0]?.flayed?'terminée':'non terminée'}</p></div>}
  {view==='canopy'&&<><canvas ref={canvas} width={r.VIEW_WIDTH} height={r.VIEW_HEIGHT} tabIndex={0} aria-label="Simulation native de chasse" onKeyDown={event=>key(event,true)} onKeyUp={event=>key(event,false)}/>
  {view==='canopy'&&<div role="group" aria-label="Commandes tactiles de contrôle">{[['right','Droite'],['up','Haut'],['jump','Saut']].map(([action,label])=><button type="button" key={action} onPointerDown={()=>touch(action,true)} onPointerUp={()=>touch(action,false)} onPointerCancel={()=>touch(action,false)}>QA {label}</button>)}</div>}</>}

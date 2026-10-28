@@ -26,7 +26,7 @@ const bundle=await build({absWorkingDir:root,entryPoints:['tests/browser/hunt-me
     ts.forEachChild(node,visit);
    };visit(ast);assert.ok(arrow,'The actual production rite menu action must be exercised');
    return{loader:'tsx',resolveDir:path.join(root,'app/game'),contents:source+'\n'+
-    'export const __huntRuntimeQaV112={makeGameState,makeEnemy,damageEnemy,updatePlayer,updateHuntRitesV77,riteContextV77,huntRiteMenuSnapshotV77,riteRuntimeOptionsV112,renderGame,pollGamepad,HUNT_CONTROL_ACTIONS,isHeldKeyboardAction,VIEW_WIDTH,VIEW_HEIGHT};\n'+
+    'export const __huntRuntimeQaV112={makeGameState,makeEnemy,damageEnemy,updatePlayer,updateHuntRitesV77,riteContextV77,huntRiteMenuSnapshotV77,riteRuntimeOptionsV112,renderGame,pollGamepad,stepGame,flushCorpseRiteGamepadV112,HUNT_CONTROL_ACTIONS,isHeldKeyboardAction,VIEW_WIDTH,VIEW_HEIGHT};\n'+
     'export {MISSION_BY_ID} from "./data"; export {ENEMY_TROPHY_GAMEPLAY_V18_ASSETS} from "./enemyTrophyGameplayV18";\n'+
     'export function __runRiteMenuQaV112(game,mission,action){const setUi=()=>{};const emitPersistence=()=>{};const persistHuntRef={current:null};const handler='+arrow.getText(ast)+';return handler(action);}\n'+
     'import {MISSION_BY_ID as __missionsQaV112} from "./data"; import {ENEMY_TROPHY_GAMEPLAY_V18_ASSETS as __trophiesQaV112} from "./enemyTrophyGameplayV18";Object.assign(__huntRuntimeQaV112,{MISSION_BY_ID:__missionsQaV112,ENEMY_TROPHY_GAMEPLAY_V18_ASSETS:__trophiesQaV112});'};
@@ -138,8 +138,49 @@ try{
   else {await page.evaluate(()=>{window.__huntMechanicsQaV112.pad('right',false);window.__huntMechanicsQaV112.pad('jump',false);});}
   if(device==='keyboard')await capture('canopy-native-release');
  });
+ for(const remapped of [false,true])await scenario((remapped?'remapped':'default')+': real gamepad opens, navigates, activates and closes the actual corpse menu while simulation continues',async()=>{
+  await reset();await page.setViewportSize({width:1120,height:850});
+  if(remapped){
+   await show('accessibility');
+   await page.getByText('Remapper la manette de chasse',{exact:true}).click();
+   await page.getByLabel('Manette : Saut / lâcher',{exact:true}).selectOption('2');
+   await page.getByLabel('Manette : Interagir',{exact:true}).selectOption('3');
+  }
+  await page.evaluate(()=>window.__huntMechanicsQaV112.resetRites());await paint();
+  await page.getByLabel('Simulation native de chasse',{exact:true}).focus();
+  await page.evaluate(()=>window.__huntMechanicsQaV112.nativeTick(1));await paint();
+  await page.evaluate(()=>{window.__huntMechanicsQaV112.pad('down',true);window.__huntMechanicsQaV112.pad('interact',true);window.__huntMechanicsQaV112.nativeTick(1);});await paint();
+  const menu=page.locator('[data-hunt-rites-v77][data-rite-open-v112="true"]');
+  await menu.waitFor({state:'visible'});
+  let state=await page.evaluate(()=>window.__huntMechanicsQaV112.state());
+  assert.ok(state.riteMenuCorpseId);assert.equal(state.paused,false);assert.equal(state.trophyExtracting,false);
+  await page.evaluate(()=>{window.__huntMechanicsQaV112.pad('down',false);window.__huntMechanicsQaV112.pad('interact',false);window.__huntMechanicsQaV112.nativeTick(1);});await paint();
+  for(let index=0;index<20;index++){
+   if(await page.evaluate(()=>document.activeElement?.getAttribute('data-rite-action-v112'))==='flay')break;
+   await page.evaluate(()=>{window.__huntMechanicsQaV112.pad('down',true);window.__huntMechanicsQaV112.nativeTick(1);});await paint();
+   await page.evaluate(()=>{window.__huntMechanicsQaV112.pad('down',false);window.__huntMechanicsQaV112.nativeTick(1);});await paint();
+  }
+  assert.equal(await page.evaluate(()=>document.activeElement?.getAttribute('data-rite-action-v112')),'flay');
+  assert.equal(await menu.locator('[data-rite-action-v112="flay"]').getAttribute('data-gamepad-focus-v112'),'true');
+  if(!remapped)await capture('corpse-rites-gamepad');
+  const elapsed=state.elapsed;
+  await page.evaluate(()=>{window.__huntMechanicsQaV112.pad('jump',true);window.__huntMechanicsQaV112.nativeTick(1);});await paint();
+  state=await page.evaluate(()=>window.__huntMechanicsQaV112.state());
+  assert.equal(state.operation?.action,'flay');assert.equal(state.player.grounded,true);assert.equal(state.player.aerialBoostUsed,false);
+  await page.evaluate(()=>window.__huntMechanicsQaV112.nativeTick(8));await paint();
+  state=await page.evaluate(()=>window.__huntMechanicsQaV112.state());
+  assert.equal(state.operation?.action,'flay','the held activation does not cancel or repeat the chosen action');
+  assert.ok(state.operation.elapsed>0);assert.ok(state.elapsed>elapsed);assert.equal(state.paused,false);
+  await page.evaluate(()=>{window.__huntMechanicsQaV112.pad('interact',true);window.__huntMechanicsQaV112.nativeTick(1);});await paint();
+  state=await page.evaluate(()=>window.__huntMechanicsQaV112.state());
+  assert.equal(state.riteMenuCorpseId,null);assert.equal(state.operation,null);assert.equal(state.corpses[0].flayed,false);
+  await page.evaluate(()=>window.__huntMechanicsQaV112.nativeTick(2));await paint();
+  state=await page.evaluate(()=>window.__huntMechanicsQaV112.state());
+  assert.equal(state.riteMenuCorpseId,null);assert.equal(state.trophyExtracting,false);assert.equal(state.paused,false);
+  await page.evaluate(()=>{window.__huntMechanicsQaV112.pad('jump',false);window.__huntMechanicsQaV112.pad('interact',false);window.__huntMechanicsQaV112.nativeTick(1);});await paint();
+ });
  assert.deepEqual(errors,[]);
- const report={schemaVersion:1,release:'V112',runtimeCommit:process.env.GITHUB_SHA??'unrecorded-local',scope:'Actual React components and hunt source functions; fixture keyboard/pointer adapters, actual gamepad polling with an emulated pad, localStorage acknowledgement and fallback renderer; no whole-component input lifecycle, full campaign or physical-device qualification',results,errors,captures};
+ const report={schemaVersion:1,release:'V112',runtimeCommit:process.env.GITHUB_SHA??'unrecorded-local',scope:'Actual React components and hunt source functions; fixture keyboard/pointer adapters, actual gamepad polling and stepGame/DOM routing with an emulated pad, localStorage acknowledgement and fallback renderer; no whole-component input lifecycle, full campaign or physical-device qualification',results,errors,captures};
  await fs.writeFile(path.join(out,'report.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report,null,2));
  assert.ok(results.length>=8);assert.equal(results.filter(row=>row.status!=='PASS').length,0);
 }finally{await browser?.close();server.closeAllConnections();await new Promise(resolve=>server.close(resolve));}
