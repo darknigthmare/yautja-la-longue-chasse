@@ -173,6 +173,8 @@ test("the shared maximum refuses an overlong grasp gracefully and caps reeling w
  assert.equal(maximum,2048);
  const tall={...support,id:"future-long-rope",y:0,height:maximum+600};
  const atLength=length=>({...body,x:tall.x+tall.width/2-body.width/2,y:length-body.height*.28,velocityX:0,velocityY:0});
+ for(const malformed of [{...tall,id:""},{...tall,x:NaN},{...tall,height:Infinity}])
+  assert.equal(runtime.attachCanopySwingV112(atLength(maximum),malformed),null);
  const limitSwing=runtime.attachCanopySwingV112(atLength(maximum),tall);
  assert.ok(limitSwing);assert.ok(runtime.isCanopySwingSnapshotV112(limitSwing));
  for(const length of [maximum+.001,maximum+1,tall.height]){

@@ -81,9 +81,11 @@ export function attachCanopySwingV112(body: PlatformMotionBody, support: WorldCl
   const grip = hand(body), dx = grip.x - support.x - support.width/2, dy = grip.y - support.y;
   const length = Math.hypot(dx,dy), angle = Math.atan2(dx,dy);
   if (length < CANOPY_PHYSICS_V112.minimumLength || length > maximumLengthForSupportV112(support) || Math.abs(angle) > CANOPY_PHYSICS_V112.maximumAngle) return null;
-  return {supportId:support.id,length,angle,
+  const swing = {supportId:support.id,length,angle,
     angularVelocity:limit((body.velocityX*Math.cos(angle)-body.velocityY*Math.sin(angle))/length,
       -CANOPY_PHYSICS_V112.maximumSpeed/length,CANOPY_PHYSICS_V112.maximumSpeed/length)};
+  // Every created grasp must already satisfy the schema consumed by step/save.
+  return isCanopySwingSnapshotV112(swing) ? swing : null;
 }
 export function releaseCanopySwingV112(swing: CanopySwingV112) {
   return {velocityX:Math.cos(swing.angle)*swing.length*swing.angularVelocity,
