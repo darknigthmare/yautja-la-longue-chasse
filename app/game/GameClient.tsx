@@ -1,6 +1,7 @@
 "use client";
 import ConservationPanelV112, {type ConservationPanelActionV112} from "./ConservationPanelV112";
 import {startConservationV112,workConservationV112,repairFieldToolV112,archiveMountedSpecimenV112,deliverHarvestV112,harvestInventoryForV112,capacityForArmorV112} from "./systems/harvestInventoryV112";
+import { normalizeHuntAccessibilityV112 } from "./systems/huntAccessibilityV112";
 import { FIELD_TOOLS_V111, quoteFieldToolV111, purchaseFieldToolV111 } from "./systems/fieldToolsV111";
 import {recoverAnyArchiveV71} from "./systems/archiveRecoveryV71";
 import { REFERENCE_BIOMASKS_V62, PRESERVED_BIOMASKS_V62 } from "./biomaskCatalogueV62";
@@ -297,6 +298,7 @@ const CatalogueHunterBrowser = React.lazy(() =>
     default: module.CatalogueHunterBrowser,
   })),
 );
+const HuntAccessibilityPanelV112 = React.lazy(() => import("./HuntAccessibilityPanelV112"));
 const ControlBindingsPanel = React.lazy(
   () => import("./ControlBindingsPanel"),
 );
@@ -431,6 +433,7 @@ function huntConfiguration(save: SaveGame, elapsed = 0): JsonObject {
       screenShake: save.settings.screenShake,
       reducedGore: save.settings.reducedGore,
       highContrastVision: save.settings.highContrastVision,
+      huntAccessibility: normalizeHuntAccessibilityV112(save.settings.huntAccessibility) as unknown as JsonObject,
     },
     elapsedSeconds: Math.max(0, Number.isFinite(elapsed) ? elapsed : 0),
   };
@@ -468,6 +471,7 @@ function normalizeHuntConfiguration(
       screenShake: visualOptions.screenShake,
       reducedGore: visualOptions.reducedGore,
       highContrastVision: visualOptions.highContrastVision,
+      huntAccessibility: visualOptions.huntAccessibility ?? baseSave.settings.huntAccessibility,
     },
   });
   return normalized.settings.difficultyId === sidecar.difficultyId
@@ -5139,6 +5143,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             appearance={activeMissionSave.appearance}
             difficulty={activeMissionSave.settings.difficultyId}
             controlBindings={activeMissionSave.settings.controlBindings}
+            huntAccessibility={activeMissionSave.settings.huntAccessibility}
             reducedGore={activeMissionSave.settings.reducedGore}
             screenShake={activeMissionSave.settings.screenShake}
             highContrastVision={
@@ -5421,6 +5426,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                   updateSettings({ highContrastVision })
                 }
               />
+              <Suspense fallback={<p role="status">Chargement des aides de chasse…</p>}>
+                <HuntAccessibilityPanelV112 value={save.settings.huntAccessibility} onChange={(huntAccessibility) => updateSettings({ huntAccessibility })}/>
+              </Suspense>
               <section aria-labelledby="keyboard-controls-title">
                 <h3 id="keyboard-controls-title">Commandes clavier</h3>
                 <Suspense
