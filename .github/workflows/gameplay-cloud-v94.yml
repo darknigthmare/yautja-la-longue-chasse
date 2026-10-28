@@ -34,6 +34,8 @@ jobs:
             /.openai/hosting.json
             /docs/hunt-mechanics-v111.json
             /docs/YAUTJA_V111_MECANIQUES_CHASSE.xlsx
+            /docs/hunt-mechanics-v112.json
+            /docs/YAUTJA_V112_MECANIQUES_CHASSE.xlsx
             /public/**/manifest.json
             /public/game/sprites/v7/enemies/flora-other/xeno-drone-sheet.png
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
@@ -46,6 +48,9 @@ jobs:
         run: |
           node node_modules/next/dist/bin/next typegen
           npm run typecheck
+      - name: Exercise V112 canopy, carcass, logistics, accessibility and ecosystem production rules
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v112.test.mjs
       - name: Simulated full youth routes and native hunt helpers (not whole-game QA)
         run: >-
           node --experimental-strip-types --test --test-reporter=spec --test-concurrency=4
