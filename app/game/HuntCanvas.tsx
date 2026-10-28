@@ -6118,7 +6118,7 @@ function updateCorpseDiscoveryV112(state:GameState):void {
             timeInMode:brain.mode==="patrol"?0:brain.timeInMode}
         : reactToRiteWitnessV77(brain);
       witness.riteInvestigate={x:corpse.x,y:corpse.y,until:state.elapsed+6};
-      audibleAlert=true;
+      if(Math.hypot(witness.x-state.player.x,witness.y-state.player.y)<=720)audibleAlert=true;
     }
   }
   if(audibleAlert)queueSound(state,"enemy-alert");
