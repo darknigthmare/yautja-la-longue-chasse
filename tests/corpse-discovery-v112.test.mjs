@@ -149,7 +149,7 @@ function fixture(){
   Object.assign(prey,{x:1300,y:624-prey.height,knockbackRestY:624-prey.height});
   state.enemies.push(prey);r.damageEnemy(state,mission,prey,prey.maxHealth+1,"melee");
   const makeWitness=(id="observer",archetype="scout",x=1500)=>{
-    const e=r.makeEnemy(id,archetype,mission.id,x,state.world.width,80,10,0,1,1);
+    const e=r.makeEnemy(id,archetype,mission.id,x,state.world.width,80,10,100,1,1);
     Object.assign(e,{x,y:624-e.height,knockbackRestY:624-e.height,facing:-1,active:true});
     state.enemies.push(e);return e;
   };
@@ -187,9 +187,34 @@ test("native animal avoidance changes real movement and suppresses a corpse-dire
   r.updateCorpseDiscoveryV112(f.state);
   const reaction=r.corpseDiscoveryReactionV112(f.state.ecosystem,grazer.id,0);
   assert.equal(reaction.response,"avoid");assert.equal(f.state.aiBrains[grazer.id]?.morale,undefined);
-  const previous=grazer.x;r.updateRegularEnemy(f.state,grazer,f.mission,.05);
-  assert.ok(grazer.x>previous,"grazer moves away from corpse to the left");
+  assert.ok(grazer.moveSpeed>0,"fixture uses a mobile grazer, not a zero-speed actor");
+  const previous=grazer.x,bodyX=f.state.huntRites.corpses[0].x;
+  assert.ok(bodyX<grazer.x+grazer.width/2,"the observed body is to the grazer’s left");
+  r.updateRegularEnemy(f.state,grazer,f.mission,.05);
+  assert.ok(grazer.velocityX>0,"avoidance requests movement away from the body");
+  assert.ok(grazer.x>previous,"grazer moves right, away from the corpse on its left");
+  assert.equal(f.state.aiBrains[grazer.id].lastKnownTarget,null,"body avoidance does not reveal the distant hunter");
   assert.equal(grazer.pendingAttackId,null);
+});
+test("native predator examines a body instead of inheriting herbivore avoidance",()=>{
+  const f=fixture(),predator=f.makeWitness("predator","oseris-iv--amber-jaw-stalker",1500);
+  r.updateCorpseDiscoveryV112(f.state);
+  assert.equal(r.corpseDiscoveryReactionV112(f.state.ecosystem,predator.id,0)?.response,"inspect");
+  assert.ok(predator.moveSpeed>0);
+  const previous=predator.x;r.updateRegularEnemy(f.state,predator,f.mission,.05);
+  assert.ok(predator.velocityX<0);assert.ok(predator.x<previous,"predator approaches the observed body");
+  assert.equal(predator.pendingAttackId,null);
+});
+test("native territorial wildlife gives space to the body and keeps a guard radius",()=>{
+  const f=fixture(),guard=f.makeWitness("guard","nivalis-k--brine-crawler",1400);
+  const bodyX=f.state.huntRites.corpses[0].x;
+  guard.x=bodyX+20-guard.width/2;
+  r.updateCorpseDiscoveryV112(f.state);
+  assert.equal(r.corpseDiscoveryReactionV112(f.state.ecosystem,guard.id,0)?.response,"guard");
+  assert.ok(guard.moveSpeed>0);
+  const previous=guard.x;r.updateRegularEnemy(f.state,guard,f.mission,.05);
+  assert.ok(guard.velocityX>0);assert.ok(guard.x>previous,"guard moves toward its readable standoff radius");
+  assert.equal(guard.pendingAttackId,null);
 });
 test("native discovery archive round-trips without replaying evidence or source coordinates",()=>{
   const f=fixture();f.makeWitness();r.updateCorpseDiscoveryV112(f.state);
