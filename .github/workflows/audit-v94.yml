@@ -806,7 +806,7 @@ jobs:
         run: node scripts/check-excel-history-homeworld-v111.mjs --check --tests
       - name: Exercise current V111 regressions across the parallel workstreams
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
-        run: node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v111.test.mjs
+        run: node scripts/test-current-v111-v112.mjs
       - name: Verify reproducible V111 Homeworld follow-up and all 105 historical worksheets
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: node scripts/check-homeworld-history-v112.mjs --check --tests

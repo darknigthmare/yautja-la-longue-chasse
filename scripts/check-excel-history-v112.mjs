@@ -204,6 +204,11 @@ export async function prepareHistoricalV110V112(repository = REPOSITORY) {
       file => Promise.resolve(git(repository, ['show', SOURCE_COMMIT_V112 + ':' + file])));
     const restoredAdditionalSources = await restoreChangedFrozenSourceV112(root, freeze,
       file => Promise.resolve(git(repository, ['show', SOURCE_COMMIT_V112 + ':' + file])));
+    // The parallel V111 Homeworld work also adapted some assertion imports.
+    // Restore every original assertion explicitly, including files not named
+    // in the runtime input freeze, before proving and executing its Git identity.
+    for (const row of V110_ORIGINAL_TESTS_V112) await restorePinnedSourceV112(root, row,
+      file => Promise.resolve(git(repository, ['show', SOURCE_COMMIT_V112 + ':' + file])));
     for (const row of V110_ORIGINAL_TESTS_V112) {
       assert.equal(gitBlobHashV112(await fs.readFile(path.join(root, row.path))), row.gitBlobSha,
         'Original V110 assertion changed: ' + row.path);
