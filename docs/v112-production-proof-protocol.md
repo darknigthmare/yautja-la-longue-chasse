@@ -8,6 +8,8 @@ La recette Homeworld couvre six familles : `Foundations`, `PublicPlaces`, `Publi
 
 La recette Pit couvre `FeralScar` puis `ScarFeral`. Les huit admissions représentent 48 dessins sélectionnés dans 22 PNG originaux : 34 régions des huit feuilles et 14 dessins isolés remplaçant les cases refusées. Les régions remplacées ne sont pas des dessins supplémentaires livrés. Les contrôles suivent les entrées réelles, les partenaires, orientations, saisies, réactions, refus, déchoppes et relectures ; la fixture initiale du menu n'est pas un combat joué.
 
+Le premier essai hors portée doit montrer un vrai démarrage `TH_B`, puis sa récupération selon les images effectives du moteur. Une attente de durée fixe ou une entrée non consommée ne prouve pas un échec de saisie. Chaque lecture conservée vérifie l'absence de cible capturée et de dégâts ; les fenêtres d'action et le nombre maximal d'appels sont bornés. L'export et la relecture du duel complet portent sur le parcours Feral contre Scar ; le parcours inverse vérifie séparément les projections, les partenaires, les orientations, la déchoppe et le mur.
+
 Les erreurs de page, `console.error`, Workers et requêtes échouées restent enregistrées sans filtrage. Un parcours partiel, une source modifiée, un inventaire incomplet, un résultat exploratoire ou une image non inspectée interdit toute publication. Toutes les captures finales sont ouvertes avant leur copie, sans retouche, dans les preuves portables. Les captures diagnostiques avec éléments temporairement masqués ne certifient aucun rendu final.
 
 ```sh

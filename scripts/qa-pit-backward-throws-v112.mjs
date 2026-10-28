@@ -161,6 +161,55 @@ async function launch(slot, input = 'button') {
     for(const key of keys)await page.keyboard.down(key); await page.clock.runFor(17); for(const key of keys)await page.keyboard.up(key);
   }
 }
+async function observedOutOfRangeWhiff(slot, label, ids) {
+  const spec = api.PIT_WORKBOOK_BACKWARD_THROW_V112, totalFrames = spec.startup + spec.active + spec.recovery;
+  const before = await read(), observation = {kind: 'played-observed-whiff', label, slot, before,
+    started: null, recovered: null, startFrame: null, effectiveFrames: null, samples: [before], maximumPolls: 180};
+  observations.push(observation);
+  const require = (name, condition, state) => {if (!condition) check(label + ': ' + name, false, {before, started: observation.started, state, samples: observation.samples});};
+  const validate = state => {
+    require('every observed whiff state remains ready in the live round', state.blocked === 'false' && state.phase === 'fight' && state.combatPhase === 'round', state);
+    require('every observed whiff state has no capture or damage', !state.throw && !state.forwardThrow && JSON.stringify(state.life) === JSON.stringify(before.life), state);
+    require('the observed simulation frame never reverses', Number.isInteger(state.frame) && state.frame >= observation.samples.at(-1).frame, state);
+  };
+  validate(before);
+  require('the actual whiff starts from idle', before.actions[slot].phase === 'idle' && before.actions[slot].workbookMove === null, before);
+  const reach = api.getPitCombatFighterDefinition({definitionId: ids[slot]}).bodyWidth * .2 + spec.range +
+    api.getPitCombatFighterDefinition({definitionId: ids[1 - slot]}).bodyWidth / 2;
+  check(label + ': the actual two bodies begin beyond source throw reach', Math.abs(before.positions[slot].x - before.positions[1 - slot].x) > reach, {before, reach});
+  await launch(slot, 'keyboard');
+  let state = await read();
+  for (let poll = 0; poll < observation.maximumPolls; poll++) {
+    validate(state); observation.samples.push(state);
+    const action = state.actions[slot];
+    if (!observation.started) {
+      if (action.workbookMove === 'TH_B') {
+        require('the real input enters TH_B startup', action.phase === 'startup' && Number.isInteger(action.actionFrame) && action.actionFrame >= 0 && action.actionFrame < spec.startup, state);
+        observation.started = state; observation.startFrame = state.frame - action.actionFrame;
+        require('startup follows the actual input edge', observation.startFrame > before.frame, state);
+      } else {
+        require('the real input must produce TH_B startup within its bounded launch window', action.workbookMove === null && state.frame - before.frame <= spec.startup, state);
+      }
+    }
+    if (observation.started) {
+      const elapsed = state.frame - observation.startFrame;
+      require('recovery stays inside the source-frame bound', elapsed <= totalFrames + 1, state);
+      if (action.workbookMove === null && action.phase === 'idle') {
+        require('the real whiff cannot finish before all source frames', elapsed >= totalFrames, state);
+        observation.recovered = state; observation.effectiveFrames = elapsed; break;
+      }
+      const expectedPhase = action.actionFrame < spec.startup ? 'startup' : action.actionFrame < spec.startup + spec.active ? 'active' : 'recovery';
+      require('the actual TH_B action clock and source windows stay coherent', action.workbookMove === 'TH_B' &&
+        Number.isInteger(action.actionFrame) && action.actionFrame >= 0 && action.actionFrame < totalFrames &&
+        state.frame - action.actionFrame === observation.startFrame && action.phase === expectedPhase, state);
+    }
+    await page.clock.runFor(17); state = await read();
+  }
+  check(label + ': actual startup and recovery are both observed within the bounded whiff', Boolean(observation.started && observation.recovered), observation);
+  check(label + ': real out-of-range4+L+M whiffs without damage or an invented target', observation.samples.every(sample =>
+    !sample.throw && !sample.forwardThrow && JSON.stringify(sample.life) === JSON.stringify(before.life)) &&
+    observation.recovered.actions[slot].workbookMove === null, observation);
+}
 async function explicitForwardWhileRetreatHeld(slot,label) {
   await approach(slot);const before=await read(),direction=before.facings[slot];
   const retreat=slot===0?direction===1?'ArrowLeft':'ArrowRight':direction===1?'Numpad4':'Numpad6';
@@ -290,8 +339,7 @@ async function finishAndReplay(label) {
 try {
   for (const [index, ids] of [['feral-hunter', 'scar'], ['scar', 'feral-hunter']].entries()) {
     const label = ids.join('-vs-'); await openMatch(ids, label);
-    const before = await read(); await launch(0, 'keyboard'); await page.clock.runFor(750); const whiff = await read();
-    check(label + ': real out-of-range L+M whiffs without damage or an invented target', !whiff.throw && JSON.stringify(whiff.life) === JSON.stringify(before.life) && !whiff.actions[0].workbookMove);
+    await observedOutOfRangeWhiff(0, label + '-first-whiff', ids);
     await explicitForwardWhileRetreatHeld(0,label+'-forward-button');
     await connected(0, label + '-J1-initial', index === 0 ? 'pad' : 'keyboard', ids);
     await connected(0, label + '-J1-return', 'button', ids);

@@ -5,8 +5,8 @@
     "bytes": 264999,
     "sha256": "8eee8a5f5a043f2a67477bc6bcff97fffb1ee1666864bd7aed60c7a6c21ca138"
   },
-  "files": 1560,
-  "bytes": 935336199,
+  "files": 1561,
+  "bytes": 935345146,
   "entries": [
     {
       "path": ".openai/hosting.json",
@@ -5210,8 +5210,8 @@
     },
     {
       "path": "docs/v112-production-proof-protocol.md",
-      "bytes": 3277,
-      "sha256": "c46d0261a1c56ed270f9594f0e6ec810523d25b3716fb46044e12aacb48cb054"
+      "bytes": 3853,
+      "sha256": "269ed42a4eac9a0434cccc399709dbe33c9a844a18e29214977d35ac6802a52c"
     },
     {
       "path": "docs/v112-runtime-public-inputs.json",
@@ -7560,8 +7560,8 @@
     },
     {
       "path": "scripts/qa-pit-backward-throws-v112.mjs",
-      "bytes": 31940,
-      "sha256": "2d51c2ef0373a1ac97b965e55a4a4bf8f4cd1970f1d1afa8f6e7df567f5a7db4"
+      "bytes": 35704,
+      "sha256": "9c4992f4536259fb7f9423f8fcda5ba5c078be05042f6aff19160e0cc896a70a"
     },
     {
       "path": "scripts/qa-pit-forward-throws-v109.mjs",
@@ -7605,8 +7605,8 @@
     },
     {
       "path": "scripts/snapshot-runtime-v112.mjs",
-      "bytes": 7842,
-      "sha256": "344731f6aaf47a6d635521b87f761147edf3bd02a08c65d27b2f23bf543a161b"
+      "bytes": 7899,
+      "sha256": "ecc8e91d63a13f9fc965aa1bc581ac577cd4bfdf78e8d059cdd4f49b92bbbd2d"
     },
     {
       "path": "scripts/vercel-native-origin-v89.mjs",
@@ -7782,6 +7782,11 @@
       "path": "tests/pit-backward-throw-art-v112.test.mjs",
       "bytes": 12252,
       "sha256": "19a20a49544b69a9dcce493a3fe22fbf924da3ba4e5d8fbd08e543314cfb2249"
+    },
+    {
+      "path": "tests/pit-browser-whiff-observation-v112.test.mjs",
+      "bytes": 4550,
+      "sha256": "54c68ef25e63ecaafa2b4be05d65bd1baabad1c9f54c708e47fdd1947e79bb65"
     },
     {
       "path": "tests/pit-browser-worker-observation-v112.test.mjs",
