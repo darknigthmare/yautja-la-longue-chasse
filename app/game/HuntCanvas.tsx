@@ -20,6 +20,9 @@ import {
 } from "./data";
 import { trophyHuntVisualForDefinitionId } from "./trophyVisualRegistry";
 import { ownsFieldToolV111 } from "./systems/fieldToolsV111";
+import { applyAnatomyDamageV112, anatomyIntegrityV112 } from "./systems/anatomyHarvestV112";
+import { carcassSupportsForWorldV112, carcassSupportAccessibleV112, CARCASS_HANG_DROP_V112 } from "./systems/carcassSupportsV112";
+import { harvestInventoryForV112, tryCarrySpecimenV112, HARVEST_DEPOT_LIMIT_V112, flayingToolWorkMultiplierV112, toolConditionAfterUsesV112 } from "./systems/harvestInventoryV112";
 import { trophyHarvestPoint, trophyHarvestSourceForDrop, trophyHarvestInReach,
   SECONDARY_TROPHY_REACH, APEX_TROPHY_REACH } from "./systems/trophyHarvestV111";
 import { drawEnvironmentProp } from "./environmentPropDrawing";
@@ -419,6 +422,7 @@ interface EnemyState extends Vec2 {
   waveActivationAt: number | null;
   /** Only actual new deaths receive this proof; legacy corpses are never invented. */
   riteDefeatedAt?: number;
+  riteIntegrityLossV112?: number;
   riteFallVelocity?: number;
   riteInvestigate?: { x:number; y:number; until:number };
   lastTrackX: number;
@@ -683,6 +687,9 @@ interface InputHub {
 interface GameState {
   /** Campaign inventory owns the tool; never trust a hunt checkpoint to grant it. */
   flayingToolOwned: boolean;
+  harvestArmorIdV112: Loadout['armorId'];
+  harvestDepotFreeV112: number;
+  riteToolInitialConditionV112: number;
   huntRites: RitesOfHuntV77;
   riteMenuCorpseId: string | null;
   riteOperationDamageStart: number | null;
@@ -1338,6 +1345,9 @@ function makeGameState(
 
   const state: GameState = {
     flayingToolOwned: ownsFieldToolV111(inventory, "flaying-tool"),
+    harvestArmorIdV112: loadout.armorId,
+    harvestDepotFreeV112: HARVEST_DEPOT_LIMIT_V112 - harvestInventoryForV112(inventory).specimens.length,
+    riteToolInitialConditionV112: harvestInventoryForV112(inventory).toolCondition,
     huntRites: createRitesOfHuntV77(huntRitesRunIdV77(mission.id, ecologyRunSeed), mission.id),
     riteMenuCorpseId: null,
     riteOperationDamageStart: null,
@@ -2002,7 +2012,7 @@ function deserializeActiveHuntCheckpoint(
   if (checkpoint.huntRites !== undefined) {
     const raw = checkpoint.huntRites;
     if (!isJsonObject(raw) || typeof raw.runId !== 'string' || typeof raw.missionId !== 'string' ||
-      !restoreRitesRuntimeV77(raw, raw.runId, raw.missionId, checkpoint.enemies as unknown as EnemyState[], checkpoint.elapsed as number, riteSourceLabelV77, {flayingToolOwned:true})) return null;
+      !restoreRitesRuntimeV77(raw, raw.runId, raw.missionId, checkpoint.enemies as unknown as EnemyState[], checkpoint.elapsed as number, riteSourceLabelV77, {flayingToolOwned:true,supports:carcassSupportsForWorldV112(worldBlueprintFor(raw.missionId as MissionDefinition['id']))})) return null;
     if(raw.operation!==null&&(!isFiniteJsonNumber(checkpoint.riteOperationDamageStart)||
       (checkpoint.riteOperationDamageStart as number)<0||(checkpoint.riteOperationDamageStart as number)>(checkpoint.damageTaken as number)))return null;
     if(raw.operation===null&&checkpoint.riteOperationDamageStart!==undefined&&checkpoint.riteOperationDamageStart!==null)return null;
@@ -2057,7 +2067,7 @@ function restoreCheckpoint(
   const restoredRites = checkpoint.huntRites===undefined
     ? state.huntRites ? {...state.huntRites,elapsed:checkpoint.elapsed,corpses:[],operation:null,honorDelta:0,awareness:0,fear:0,completedEventIds:[]} : undefined
     : restoreRitesRuntimeV77(checkpoint.huntRites, state.huntRites.runId,
-    state.world.missionId, checkpoint.enemies, checkpoint.elapsed, riteSourceLabelV77, {flayingToolOwned:state.flayingToolOwned});
+    state.world.missionId, checkpoint.enemies, checkpoint.elapsed, riteSourceLabelV77, {flayingToolOwned:state.flayingToolOwned,supports:carcassSupportsForWorldV112(state.world)});
   if (checkpoint.huntRites!==undefined&&!restoredRites) return {...state, paused:true, message:'Les traces de chasse ne correspondent pas à cette rencontre ; reprise refusée.', messageTimer:5};
   const player = clonePlayerState(checkpoint.player);
   // Permanent discoveries survive a retry and are merged with the current
@@ -2705,7 +2715,7 @@ function snapshot(state: GameState, mission: MissionDefinition): UiSnapshot {
   return {
     huntRiteMenu: huntRiteMenuSnapshotV77(state.huntRites,
       {x:state.player.x+state.player.width/2,y:state.player.y+state.player.height},state.riteMenuCorpseId,
-      !state.paused && (state.phase==='tracking'||state.phase==='target') && !state.trophyExtracting && state.player.health>0, {flayingToolOwned:state.flayingToolOwned}),
+      !state.paused && (state.phase==='tracking'||state.phase==='target') && !state.trophyExtracting && state.player.health>0, riteRuntimeOptionsV112(state)),
     musicContext: state.boss.active && state.boss.alive ? "boss"
       : state.enemies.some(enemy => enemy.active && enemy.alive &&
           state.aiBrains[enemy.id]?.mode === "engage") ? "combat" : "exploration",
@@ -2885,6 +2895,10 @@ function resultFor(
               .map((drop) => ({ ...drop.claim })),
           ]
         : [],
+    specimensV112: outcome === "success" ? [...(state.huntRites.specimensV112 ?? [])] : [],
+    toolUseIdsV112: state.huntRites.completedEventIds.filter(id=>id.startsWith("flay:")||id.startsWith("harvest-"))
+      .map(id=>state.huntRites.runId+":"+id),
+    harvestEncounterRunV112: Number.isInteger(Number(state.huntRites.runId.slice(mission.id.length+1))) ? Number(state.huntRites.runId.slice(mission.id.length+1)) : undefined,
     kills: state.kills,
     scans: state.scans,
     discoveredEnemyIds: [
@@ -5926,6 +5940,7 @@ function hurtPlayer(
     return;
   }
   player.health -= amount;
+  if(state.huntRites?.carryingCorpseId)state.huntRites={...state.huntRites,carryingCorpseId:null};
   player.invulnerability = 0.55;
   forceDecloak(state);
   state.damageTaken += amount;
@@ -6011,14 +6026,50 @@ function spawnGore(
 function riteSourceLabelV77(id:string):string {
   return ecologyV8EnemyForId(id)?.name ?? enemyV7ForId(id)?.name ?? id;
 }
+function riteRuntimeOptionsV112(state:GameState) {
+  const actor={x:state.player.x+state.player.width/2,y:state.player.y+state.player.height};
+  const uses=state.huntRites.completedEventIds.filter(id=>id.startsWith('flay:')||id.startsWith('harvest-')).length;
+  return {flayingToolOwned:state.flayingToolOwned,
+    toolWorkMultiplier:flayingToolWorkMultiplierV112(toolConditionAfterUsesV112(state.riteToolInitialConditionV112??100,uses)),
+    supports:carcassSupportsForWorldV112(state.world).filter(s=>carcassSupportAccessibleV112(actor,s,state.world)),
+    acceptSpecimen:(item:import("./systems/harvestInventoryV112").FieldSpecimenV112)=>{
+      const items=state.huntRites.specimensV112??[];
+      return items.length<(state.harvestDepotFreeV112??HARVEST_DEPOT_LIMIT_V112)&&items.length<64&&
+        tryCarrySpecimenV112(items,item,state.harvestArmorIdV112??'hunter').ok;
+    }};
+}
+function syncCarcassTransportV112(state:GameState):void {
+  const carriedId=state.huntRites.carryingCorpseId;
+  if(carriedId&&(state.player.health<=0||!state.player.grounded||state.player.climbing)){
+    state.huntRites={...state.huntRites,carryingCorpseId:null};
+  }
+  const supports=carcassSupportsForWorldV112(state.world);
+  for(const corpse of state.huntRites.corpses){
+    const enemy=state.enemies.find(e=>e.id===corpse.id&&!e.alive&&e.active&&e.health===0&&e.archetype===corpse.sourceEnemyId);
+    if(!enemy)continue;
+    if(corpse.supportId){
+      const support=supports.find(s=>s.id===corpse.supportId&&s.suitable&&s.maximumMass>=(corpse.massKg??70));
+      if(!support){corpse.supportId=null;corpse.hangingAt=null;enemy.riteFallVelocity=0;continue;}
+      enemy.x=support.x-enemy.width/2;enemy.y=support.y+CARCASS_HANG_DROP_V112-enemy.height;enemy.riteFallVelocity=0;
+      corpse.x=support.x;corpse.y=support.y+CARCASS_HANG_DROP_V112;
+    }else if(state.huntRites.carryingCorpseId===corpse.id){
+      const target={...enemy,x:state.player.x+state.player.width/2+state.player.facing*38-enemy.width/2,y:state.player.y+state.player.height-enemy.height};
+      if(overlapsSolidPlatform(target,state.world.platforms)){
+        state.huntRites={...state.huntRites,carryingCorpseId:null};
+        announce(state,'Carcasse déposée : espace de portage obstrué.',2);
+      }else {enemy.x=target.x;enemy.y=target.y;enemy.riteFallVelocity=0;corpse.x=enemy.x+enemy.width/2;corpse.y=enemy.y+enemy.height;}
+    }
+  }
+}
 function riteContextV77(state:GameState) {
   return riteRuntimeContextV77(state.huntRites,state.player,state.enemies,riteSourceLabelV77,
-    state.paused||state.phase==='dead'||state.phase==='finished', {flayingToolOwned:state.flayingToolOwned});
+    state.paused||state.phase==='dead'||state.phase==='finished', riteRuntimeOptionsV112(state));
 }
 function ritePersistenceKeyV77(state:RitesOfHuntV77):string {
   return state.corpses.length+':'+state.completedEventIds.length+':'+state.corpses.reduce((count,c)=>count+c.witnesses.length,0);
 }
 function updateHuntRitesV77(state:GameState,delta:number):void {
+  syncCarcassTransportV112(state);
   state.huntRites=followRiteCorpseAnchorsV77(state.huntRites,state.enemies);
   if (state.phase!=='tracking'&&state.phase!=='target'||state.trophyExtracting) {
     state.riteMenuCorpseId=null;
@@ -6031,7 +6082,7 @@ function updateHuntRitesV77(state:GameState,delta:number):void {
   }
   const context=riteContextV77(state);
   let before=state.huntRites.operation;
-  if(before?.action==='flay'){
+  if(before&&(before.action==='flay'||before.action==='hang'||before.action.startsWith('harvest-'))){
     const corpseId=before.corpseId;
     const corpse=state.huntRites.corpses.find(entry=>entry.id===corpseId);
     if(!corpse||!state.player.grounded||state.player.climbing||
@@ -6044,9 +6095,10 @@ function updateHuntRitesV77(state:GameState,delta:number):void {
   }
   const stepped=stepHuntRiteV77(state.huntRites,delta,context);
   state.huntRites={...stepped.state,elapsed:state.elapsed};
+  syncCarcassTransportV112(state);
   if(!state.huntRites.operation)state.riteOperationDamageStart=null;
   if(stepped.accepted||before&&!state.huntRites.operation)announce(state,stepped.message,2.8);
-  if(state.riteMenuCorpseId&&!huntRiteMenuSnapshotV77(state.huntRites,context.actor,state.riteMenuCorpseId,true,{flayingToolOwned:state.flayingToolOwned})?.open)state.riteMenuCorpseId=null;
+  if(state.riteMenuCorpseId&&!huntRiteMenuSnapshotV77(state.huntRites,context.actor,state.riteMenuCorpseId,true,riteRuntimeOptionsV112(state))?.open)state.riteMenuCorpseId=null;
   for(const corpse of state.huntRites.corpses){
     if(corpse.erased||!corpse.marked&&!corpse.flayed)continue;
     for(const witness of state.enemies){
@@ -6083,6 +6135,14 @@ function riteDeathCellV77(image:HTMLImageElement) {
   riteDeathCellsV77.set(image,result);return result;
 }
 function drawHuntRiteCorpsesV77(context:CanvasRenderingContext2D,state:GameState,assets:AssetBank):void {
+  for(const support of carcassSupportsForWorldV112(state.world)){
+    if(Math.abs(support.x-state.player.x)>520)continue;
+    context.save();context.strokeStyle='#d3bd8d';context.lineWidth=3;
+    context.beginPath();context.moveTo(support.x-15,support.y-12);context.lineTo(support.x,support.y-12);
+    context.lineTo(support.x,support.y+8);context.arc(support.x-5,support.y+8,5,0,Math.PI);context.stroke();
+    context.font='10px monospace';context.textAlign='center';context.fillStyle='#f1dfbc';
+    context.fillText('CROCHET · '+support.maximumMass+' kg',support.x,support.y-20);context.restore();
+  }
   for(const corpse of state.huntRites.corpses){
     if(corpse.erased)continue;const enemy=state.enemies.find(e=>e.id===corpse.id&&!e.alive&&e.active&&e.health===0&&e.archetype===corpse.sourceEnemyId);
     if(!enemy)continue;
@@ -6094,6 +6154,21 @@ function drawHuntRiteCorpsesV77(context:CanvasRenderingContext2D,state:GameState
         corpse.x-cell.pivotX*scale,corpse.y-cell.pivotY*scale,sourceWidth*scale,image.naturalHeight*scale);
     }else{context.fillStyle='#24312ee6';context.strokeStyle='#879183';context.lineWidth=1;
       context.beginPath();context.ellipse(corpse.x,corpse.y-7,Math.max(15,enemy.width*.4),7,0,0,Math.PI*2);context.fill();context.stroke();}
+    if(corpse.supportId&&corpse.hangingAt){
+      context.strokeStyle='#d7c39c';context.lineWidth=2.5;context.beginPath();context.moveTo(corpse.hangingAt.x,corpse.hangingAt.y);
+      context.lineTo(corpse.x,corpse.y-22);context.stroke();context.fillStyle='#f1dfbc';context.font='10px monospace';context.textAlign='center';
+      context.fillText('SUSPENDUE',corpse.x,corpse.y-34);
+    }else if(state.huntRites.carryingCorpseId===corpse.id){
+      context.strokeStyle='#d7c39c';context.lineWidth=2;context.beginPath();
+      context.moveTo(state.player.x+state.player.width/2,state.player.y+state.player.height*.55);context.lineTo(corpse.x,corpse.y-12);context.stroke();
+      context.fillStyle='#f1dfbc';context.font='10px monospace';context.textAlign='center';context.fillText('CORPS PORTÉ',corpse.x,corpse.y-34);
+    }
+    if(state.huntRites.operation?.action==='hang'&&state.huntRites.operation.corpseId===corpse.id){
+      const support=carcassSupportsForWorldV112(state.world).find(p=>p.id===state.huntRites.operation?.supportId);
+      if(support){const progress=Math.min(1,state.huntRites.operation.elapsed/2.5);
+        context.setLineDash([4,4]);context.strokeStyle='#e0d2b2';context.beginPath();context.moveTo(support.x,support.y);
+        context.lineTo(support.x+(corpse.x-support.x)*progress,support.y+(corpse.y-18-support.y)*progress);context.stroke();context.setLineDash([]);}
+    }
     if(corpse.flayed){
       // A readable prepared state respects reduced gore without inventing a new asset.
       context.strokeStyle='#d9bd83';context.lineWidth=2;context.setLineDash([4,3]);
@@ -6124,6 +6199,7 @@ function damageEnemy(
   if (!enemy.alive || !enemy.active) return;
   const appliedAmount =
     amount * (enemy.boss ? state.bossVulnerabilityMultiplier : 1);
+  enemy.riteIntegrityLossV112=applyAnatomyDamageV112(enemy.riteIntegrityLossV112,appliedAmount,enemy.health,enemy.maxHealth,source);
   enemy.health -= appliedAmount;
   enemy.hitFlash = 0.12;
   spawnGore(state, enemy, "hit");
@@ -6175,7 +6251,7 @@ function damageEnemy(
     );
     announce(
       state,
-      `${mission.targetName} est vaincu. Réclame le trophée avec [E].`,
+      `${mission.targetName} est vaincu. Intégrité du trophée ${anatomyIntegrityV112(enemy.riteIntegrityLossV112)} %. Réclame le trophée avec [E].`,
       6,
     );
   } else {
@@ -6184,11 +6260,10 @@ function damageEnemy(
       ecologyV8EnemyForId(enemy.archetype) ??
       enemyV7ForId(enemy.archetype);
     if (state.phase !== "extraction" && trophy && enemyDefinition) {
-      const condition: TrophyClaim["condition"] = !enemy.scanned
+      const integrity=anatomyIntegrityV112(enemy.riteIntegrityLossV112);
+      const condition: TrophyClaim["condition"] = !enemy.scanned||integrity<55
         ? "damaged"
-        : source === "melee"
-          ? "pristine"
-          : "intact";
+        : integrity>=85 ? "pristine" : "intact";
       const threat = enemyDefinition.threat;
       const quality: TrophyQuality =
         condition === "damaged"
@@ -7018,12 +7093,8 @@ function finishTrophyExtraction(
         : healthRatio >= 0.25
           ? "blooded"
           : "worthy";
-  const condition: TrophyClaim["condition"] =
-    quality === "flawless"
-      ? "pristine"
-      : quality === "elite"
-        ? "intact"
-        : "damaged";
+  const trophyIntegrity=anatomyIntegrityV112(state.boss.riteIntegrityLossV112);
+  const condition: TrophyClaim["condition"] = trophyIntegrity>=85 ? "pristine" : trophyIntegrity>=55 ? "intact" : "damaged";
 
   state.trophyQuality = quality;
   state.trophyClaimedAt = state.elapsed;
@@ -7491,7 +7562,7 @@ function updatePlayer(
     (isHeld(input, "down") ? 1 : 0) - (isHeld(input, "up") ? 1 : 0);
   // Preparing a body occupies the hunter until they deliberately act again.
   // Preserve the input edge: its normal handler must still pay its cost once.
-  if (state.huntRites?.operation?.action === "flay") {
+  if (state.huntRites?.operation && (state.huntRites.operation.action === "flay" || state.huntRites.operation.action === "hang" || state.huntRites.operation.action.startsWith("harvest-"))) {
     const interruptingActions: readonly Action[] = [
       "melee", "weapon", "weaponOne", "weaponTwo", "weaponNext", "aim",
       "heal", "gearOne", "gearTwo", "cloak", "mask", "scan", "interact", "jump",
@@ -7502,6 +7573,11 @@ function updatePlayer(
       state.riteOperationDamageStart = null;
       announce(state, "Dépeçage interrompu : le chasseur reprend son action.", 2.4);
     }
+  }
+  if(state.huntRites?.carryingCorpseId && (climbAxis!==0 ||
+    (['jump','melee','weapon','aim','gearOne','gearTwo','heal','cloak'] as const).some(action=>input.pressed.has(action)||isHeld(input,action)))){
+    state.huntRites={...state.huntRites,carryingCorpseId:null};
+    announce(state,'Carcasse déposée avant l’action ; aucune prise perdue.',2);
   }
   const meleeInputQueued = input.pressed.has("melee");
   const dodgeRequested =
@@ -8060,7 +8136,7 @@ function updateRegularEnemy(
     enemy.telegraph = 0;
     enemy.pendingAttackId = null;
     enemy.deathAnimation = Math.max(0, enemy.deathAnimation - delta);
-    if(enemy.riteDefeatedAt!==undefined){
+    if(enemy.riteDefeatedAt!==undefined&&!state.huntRites.corpses.some(c=>c.id===enemy.id&&c.supportId)&&state.huntRites.carryingCorpseId!==enemy.id){
       const velocity=Math.min(1200,(enemy.riteFallVelocity??0)+GRAVITY*delta);
       const landed=resolvePlatformMotion({...enemy,velocityX:0,velocityY:velocity},
         {x:enemy.x,y:enemy.y+velocity*delta},state.world.platforms,state.world.floorY);
@@ -9826,9 +9902,9 @@ export default function HuntCanvas({
       (resumeSnapshot != null && !restoredHunt) ||
       (resumeRetryCheckpoint != null && !restoredRetry) ||
       (restoredHunt && !restoreRitesRuntimeV77(restoredHunt.checkpoint.huntRites,game.huntRites.runId,mission.id,
-        restoredHunt.checkpoint.enemies,restoredHunt.checkpoint.elapsed,riteSourceLabelV77,{flayingToolOwned:game.flayingToolOwned})) ||
+        restoredHunt.checkpoint.enemies,restoredHunt.checkpoint.elapsed,riteSourceLabelV77,{flayingToolOwned:game.flayingToolOwned,supports:carcassSupportsForWorldV112(game.world)})) ||
       (restoredRetry && !restoreRitesRuntimeV77(restoredRetry.checkpoint.huntRites,game.huntRites.runId,mission.id,
-        restoredRetry.checkpoint.enemies,restoredRetry.checkpoint.elapsed,riteSourceLabelV77,{flayingToolOwned:game.flayingToolOwned}));
+        restoredRetry.checkpoint.enemies,restoredRetry.checkpoint.elapsed,riteSourceLabelV77,{flayingToolOwned:game.flayingToolOwned,supports:carcassSupportsForWorldV112(game.world)}));
     if (restoredHunt && !invalidResume) {
       game = restoreCheckpoint(game, restoredHunt.checkpoint, "resume");
       game.nextCheckpointIndex = Math.min(
@@ -10406,22 +10482,23 @@ export default function HuntCanvas({
 
     riteMenuActionRef.current = (action) => {
       if(game.paused||game.phase!=='tracking'&&game.phase!=='target'||game.trophyExtracting||game.player.health<=0)return;
-      const context=riteContextV77(game),menu=huntRiteMenuSnapshotV77(game.huntRites,context.actor,game.riteMenuCorpseId,true,{flayingToolOwned:game.flayingToolOwned});
+      const context=riteContextV77(game),menu=huntRiteMenuSnapshotV77(game.huntRites,context.actor,game.riteMenuCorpseId,true,riteRuntimeOptionsV112(game));
       if(action==='close'){game.riteMenuCorpseId=null;game.huntRites={...game.huntRites,operation:null};game.riteOperationDamageStart=null;}
       else if(action==='open'){if(menu)game.riteMenuCorpseId=menu.corpseId;}
       else if(menu&&menu.open){
-        if(action==='hang') {announce(game,'La suspension attend un appui et une mise en scène dédiés.',3);return;}
+        if(action==='hang'&&!menu.canHang) {announce(game,menu.hangReason,3);return;}
         if(action==='flay'&&!menu.canFlay) {announce(game,menu.flayLockedReason??'Dépeçage indisponible.',3);return;}
         const corpse=game.huntRites.corpses.find(entry=>entry.id===menu.corpseId);
-        if(action==='flay'&&(!corpse||!game.player.grounded||game.player.climbing||
+        if((action==='flay'||action==='hang'||action==='carry'||action.startsWith('harvest-'))&&(!corpse||!game.player.grounded||game.player.climbing||
           huntStructuralBarrierV94(context.actor,corpse,game.world.platforms))){
           announce(game,'Rejoins la proie sur un appui dégagé pour la dépecer.',3);return;
         }
-        const started=startHuntRiteV77(game.huntRites,menu.corpseId,action,context);
+        const started=startHuntRiteV77(game.huntRites,menu.corpseId,action,context,{supportId:menu.hangSupportId??undefined});
         game.huntRites=started.state;
+        syncCarcassTransportV112(game);
         if(started.accepted&&started.state.operation){
           game.riteOperationDamageStart=game.damageTaken;
-          if(action==='flay')forceDecloak(game);
+          if(action==='flay'||action==='hang'||action.startsWith('harvest-'))forceDecloak(game);
         }
         announce(game,started.message,3);
         if(action==='leave'&&started.accepted)game.riteMenuCorpseId=null;
