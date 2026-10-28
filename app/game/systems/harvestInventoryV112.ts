@@ -1,4 +1,4 @@
-import type { ArmorId, PlayerInventory, SaveGame } from "../types";
+import type { ArmorId, MissionId, PlayerInventory, SaveGame } from "../types";
 
 export type SpecimenStageV112 = "raw" | "cleaned" | "treated" | "dried" | "mounted";
 export interface FieldSpecimenV112 {
@@ -12,6 +12,8 @@ export interface ConservationJobV112 {
 export interface HarvestInventoryV112 {
   version: 1; specimens: FieldSpecimenV112[]; toolCondition: number;
   toolUseIds: string[]; jobs: ConservationJobV112[];
+  settledEncounterRuns: Partial<Record<MissionId,number>>;
+  archive: Array<{speciesId:string;partId:string;label:string;count:number;qualityTotal:number}>;
 }
 export const SPECIMEN_STAGE_LABELS_V112: Readonly<Record<SpecimenStageV112,string>> = Object.freeze({
   raw: "Brut", cleaned: "Nettoyé", treated: "Traité", dried: "Séché", mounted: "Monté",
@@ -24,13 +26,14 @@ export const CONSERVATION_STEPS_V112 = Object.freeze([
 ] as const);
 export const TOOL_WEAR_PER_COMPLETION_V112 = 5;
 export const HARVEST_DEPOT_LIMIT_V112 = 256;
-const MAX_TOOL_RECEIPTS = 2048;
+const MISSION_IDS: MissionId[]=["jungle-vey","ice-cryostalker","volcano-bad-blood","swamp-hydra","desert-sandmaw","ocean-leviathan","fungal-hivemind","ruins-ancient-guardian"];
+const MAX_TOOL_RECEIPTS = 256;
 const object = (x: unknown): x is Record<string,unknown> => !!x && typeof x === "object" && !Array.isArray(x);
 const id = (x: unknown): x is string => typeof x === "string" && x.length > 0 && x.length <= 192 && !/[\u0000-\u001f]/.test(x);
 const bounded = (x:unknown,min:number,max:number): x is number => typeof x==="number" && Number.isFinite(x) && x>=min && x<=max;
 const stages: SpecimenStageV112[] = ["raw","cleaned","treated","dried","mounted"];
 export function emptyHarvestInventoryV112(): HarvestInventoryV112 {
-  return {version:1,specimens:[],toolCondition:100,toolUseIds:[],jobs:[]};
+  return {version:1,specimens:[],toolCondition:100,toolUseIds:[],jobs:[],settledEncounterRuns:{},archive:[]};
 }
 export function normalizeFieldSpecimenV112(raw:unknown): FieldSpecimenV112 | null {
   if (!object(raw) || !id(raw.id) || !id(raw.sourceId) || !id(raw.speciesId) || !id(raw.partId) ||
@@ -47,6 +50,17 @@ export function normalizeHarvestInventoryV112(raw:unknown): HarvestInventoryV112
       !Number.isInteger(raw.toolCondition) || !bounded(raw.toolCondition,0,100) || !Array.isArray(raw.toolUseIds) ||
       raw.toolUseIds.length>MAX_TOOL_RECEIPTS || raw.toolUseIds.some(x=>!id(x)) ||
       new Set(raw.toolUseIds).size!==raw.toolUseIds.length || !Array.isArray(raw.jobs) || raw.jobs.length>HARVEST_DEPOT_LIMIT_V112*4) return null;
+  if(!object(raw.settledEncounterRuns)||Object.entries(raw.settledEncounterRuns).some(([key,value])=>
+    !MISSION_IDS.includes(key as MissionId)||!Number.isSafeInteger(value)||(value as number)<0)||
+    !Array.isArray(raw.archive)||raw.archive.length>512)return null;
+  const archive:HarvestInventoryV112["archive"]=[];
+  for(const entry of raw.archive) {
+    if(!object(entry)||!id(entry.speciesId)||!id(entry.partId)||!id(entry.label)||
+      !Number.isSafeInteger(entry.count)||!bounded(entry.count,1,Number.MAX_SAFE_INTEGER/100)||
+      !Number.isSafeInteger(entry.qualityTotal)||!bounded(entry.qualityTotal,0,entry.count*100)||
+      archive.some(a=>a.speciesId===entry.speciesId&&a.partId===entry.partId))return null;
+    archive.push({speciesId:entry.speciesId,partId:entry.partId,label:entry.label,count:entry.count,qualityTotal:entry.qualityTotal});
+  }
   const specimens = raw.specimens.map(normalizeFieldSpecimenV112);
   if(specimens.some(x=>!x) || new Set(specimens.map(x=>x!.id)).size!==specimens.length ||
       new Set(specimens.map(x=>x!.sourceId+":"+x!.partId)).size!==specimens.length) return null;
@@ -72,7 +86,7 @@ export function normalizeHarvestInventoryV112(raw:unknown): HarvestInventoryV112
     if(completed.length!==stages.indexOf(item.stage) ||
       completed.some(j=>!CONSERVATION_STEPS_V112.slice(0,stages.indexOf(item.stage)).some(s=>s.to===j.toStage))) return null;
   }
-  return {version:1,specimens:typed,toolCondition:raw.toolCondition,toolUseIds:[...raw.toolUseIds] as string[],jobs};
+  return {version:1,specimens:typed,toolCondition:raw.toolCondition,toolUseIds:[...raw.toolUseIds] as string[],jobs,settledEncounterRuns:{...raw.settledEncounterRuns} as Partial<Record<MissionId,number>>,archive};
 }
 export function harvestInventoryForV112(inventory: Pick<PlayerInventory,"harvestV112">):HarvestInventoryV112 {
   return normalizeHarvestInventoryV112(inventory.harvestV112) ?? emptyHarvestInventoryV112();
@@ -106,35 +120,40 @@ export function flayingToolWorkMultiplierV112(condition:number):number {
 export function toolConditionAfterUsesV112(condition:number,completedUses:number):number {
   return Math.max(0,Math.min(100,condition)-Math.max(0,Math.floor(completedUses))*TOOL_WEAR_PER_COMPLETION_V112);
 }
-/** The extraction reducer calls this within the existing terminal save write.
- * Full depot refuses the entire delivery: caller must keep the terminal write pending. */
-export function deliverHarvestV112(save:SaveGame,rawItems:unknown,rawUseIds:unknown,success:boolean):
-  {ok:boolean;inventory:PlayerInventory;reason:string} {
+/** One terminal write atomically records the monotone mission encounter.
+ * A per-mission watermark retains idempotence without an ever-growing ID list.
+ * Existing GameClient session checks also reject stale terminal callbacks. */
+export function deliverHarvestV112(save:SaveGame,rawItems:unknown,rawUseIds:unknown,success:boolean,
+  missionId?:MissionId,encounterRun?:number):{ok:boolean;inventory:PlayerInventory;reason:string} {
+  const refuse=(reason:string)=>({ok:false,inventory:save.inventory,reason});
   const ledger=normalizeHarvestInventoryV112(save.inventory.harvestV112);
-  if(!ledger)return {ok:false,inventory:save.inventory,reason:"Registre de conservation incompatible."};
+  if(!ledger)return refuse("Registre de conservation incompatible.");
+  if(rawItems!==undefined&&!Array.isArray(rawItems)||rawUseIds!==undefined&&!Array.isArray(rawUseIds))return refuse("Prélèvements de mission invalides.");
   const items=Array.isArray(rawItems)?rawItems.map(normalizeFieldSpecimenV112):[];
-  if(items.some(x=>!x||x.stage!=="raw")||items.length>64)
-    return {ok:false,inventory:save.inventory,reason:"Prélèvements de mission invalides."};
+  if(items.some(x=>!x||x.stage!=="raw")||items.length>64)return refuse("Prélèvements de mission invalides.");
   const uses=Array.isArray(rawUseIds)?rawUseIds:[];
-  if(uses.length>256||uses.some(x=>!id(x))||new Set(uses).size!==uses.length)
-    return {ok:false,inventory:save.inventory,reason:"Usages d'outil invalides."};
-  const freshUses=(uses as string[]).filter(x=>!ledger.toolUseIds.includes(x));
-  if(ledger.toolUseIds.length+freshUses.length>MAX_TOOL_RECEIPTS)
-    return {ok:false,inventory:save.inventory,reason:"Registre d'entretien plein : conservez le résultat de chasse pour récupération."};
+  if(uses.length>MAX_TOOL_RECEIPTS||uses.some(x=>!id(x))||new Set(uses).size!==uses.length)
+    return refuse("Usages d'outil invalides.");
+  if(encounterRun===undefined&&items.length===0&&uses.length===0)return {ok:true,inventory:save.inventory,reason:""};
+  if(!missionId||!MISSION_IDS.includes(missionId)||typeof encounterRun!=="number"||!Number.isSafeInteger(encounterRun)||encounterRun<0)
+    return refuse("Identité de rencontre manquante.");
+  const run=encounterRun as number,watermark=ledger.settledEncounterRuns[missionId]??-1;
+  if(run<=watermark)return {ok:true,inventory:save.inventory,reason:"Rencontre déjà enregistrée."};
+  if(run!==save.missionProgress[missionId].attempts)return refuse("Cette rencontre ne correspond plus à la campagne.");
+  const prefix=missionId+":"+run+":";
+  if((items as FieldSpecimenV112[]).some(s=>!s.sourceId.startsWith(prefix)||s.id!==s.sourceId+":"+s.partId)||
+    (uses as string[]).some(x=>!x.startsWith(prefix)))return refuse("Prélèvement d'une autre rencontre.");
+  if(uses.length&&!save.inventory.fieldToolIds.includes("flaying-tool"))return refuse("Aucun outil acquis pour ces opérations.");
   const next=[...ledger.specimens];
   if(success)for(const value of items as FieldSpecimenV112[]) {
     const previous=next.find(x=>x.id===value.id||x.sourceId===value.sourceId&&x.partId===value.partId);
-    if(previous) {
-      if(previous.id!==value.id||previous.sourceId!==value.sourceId||previous.partId!==value.partId||
-        previous.speciesId!==value.speciesId||previous.quality!==value.quality||previous.massKg!==value.massKg||previous.volumeUnits!==value.volumeUnits)
-        return {ok:false,inventory:save.inventory,reason:"Identité de prélèvement incohérente."};
-    } else next.push(value);
+    if(previous) return refuse("Prélèvement déjà enregistré dans une autre rencontre.");
+    next.push(value);
   }
-  if(next.length>HARVEST_DEPOT_LIMIT_V112)return {ok:false,inventory:save.inventory,reason:"Dépôt plein : résultat conservé en attente, aucune prise détruite."};
-  const changed=next.length!==ledger.specimens.length||freshUses.length>0;
-  return {ok:true,reason:"",inventory:changed?{...save.inventory,harvestV112:{...ledger,specimens:next,
-    toolCondition:save.inventory.fieldToolIds.includes("flaying-tool")?toolConditionAfterUsesV112(ledger.toolCondition,freshUses.length):ledger.toolCondition,
-    toolUseIds:[...ledger.toolUseIds,...freshUses]}}:save.inventory};
+  if(next.length>HARVEST_DEPOT_LIMIT_V112)return refuse("Dépôt plein : archivez des prises montées avant une nouvelle chasse.");
+  return {ok:true,reason:"",inventory:{...save.inventory,harvestV112:{...ledger,specimens:next,
+    toolCondition:toolConditionAfterUsesV112(ledger.toolCondition,uses.length),
+    toolUseIds:[...uses] as string[],settledEncounterRuns:{...ledger.settledEncounterRuns,[missionId]:run}}}};
 }
 export interface ConservationActionResultV112 {ok:boolean;save:SaveGame;message:string}
 export function startConservationV112(save:SaveGame,specimenId:string):ConservationActionResultV112 {
@@ -166,4 +185,19 @@ export function repairFieldToolV112(save:SaveGame):ConservationActionResultV112 
   if(ledger.toolCondition===100)return {ok:false,save,message:"L'outil est déjà affûté."};
   return {ok:true,message:"Outil affûté gratuitement. Les reçus d'usure restent conservés.",
     save:{...save,inventory:{...save.inventory,harvestV112:{...ledger,toolCondition:100}}}};
+}
+
+/** Explicit storage action: the mounted physical collection remains owned in
+ * counted reserve; detail cards and finished work receipts leave the workbench. */
+export function archiveMountedSpecimenV112(save:SaveGame,specimenId:string):ConservationActionResultV112 {
+  const ledger=normalizeHarvestInventoryV112(save.inventory.harvestV112),item=ledger?.specimens.find(s=>s.id===specimenId);
+  if(!ledger||!item||item.stage!=="mounted")return {ok:false,save,message:"Seule une prise entièrement montée peut rejoindre la réserve."};
+  const existing=ledger.archive.find(a=>a.speciesId===item.speciesId&&a.partId===item.partId);
+  if(!existing&&ledger.archive.length>=512)return {ok:false,save,message:"Le catalogue de réserve est plein ; la prise reste exposée."};
+  if(existing&&existing.count>=Math.floor(Number.MAX_SAFE_INTEGER/100))return {ok:false,save,message:"Comptage de réserve maximal ; la prise reste exposée."};
+  const archive=existing?ledger.archive.map(a=>a===existing?{...a,count:a.count+1,qualityTotal:a.qualityTotal+item.quality}:a):
+    [...ledger.archive,{speciesId:item.speciesId,partId:item.partId,label:item.label,count:1,qualityTotal:item.quality}];
+  return {ok:true,message:"Prise rangée dans la réserve permanente ; sa possession et son intégrité restent comptées.",
+    save:{...save,inventory:{...save.inventory,harvestV112:{...ledger,archive,
+      specimens:ledger.specimens.filter(s=>s.id!==item.id),jobs:ledger.jobs.filter(j=>j.specimenId!==item.id)}}}};
 }
