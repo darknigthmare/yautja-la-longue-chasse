@@ -8352,8 +8352,9 @@ function updateRegularEnemy(
   },state.huntRites?.corpses??[],state.elapsed);
   const discoveryDirection=riteInvestigation?riteInvestigation.x>selfPosition.x?1:-1:0;
   const discoveryDistance=riteInvestigation?Math.abs(riteInvestigation.x-selfPosition.x):0;
-  const discoveryMove=ecosystemReaction?.response==="avoid" ? discoveryDistance<220?-discoveryDirection:0
-    : ecosystemReaction?.response==="guard" ? discoveryDistance<90?-discoveryDirection:discoveryDistance>160?discoveryDirection:0
+  const discoveryAway:-1|0|1=discoveryDirection===0?0:discoveryDirection===1?-1:1;
+  const discoveryMove:-1|0|1=ecosystemReaction?.response==="avoid" ? discoveryDistance<220?discoveryAway:0
+    : ecosystemReaction?.response==="guard" ? discoveryDistance<90?discoveryAway:discoveryDistance>160?discoveryDirection:0
     : discoveryDistance<38?0:discoveryDirection;
   if(riteInvestigation&&riteInvestigation.until<=state.elapsed&&aiStep.brain.mode==='patrol')enemy.riteInvestigate=undefined;
   const moveIntent = ecologyProfile?.mobility === "stationary" ? 0 : inspectingRite
