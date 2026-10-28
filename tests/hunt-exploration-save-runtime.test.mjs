@@ -27,6 +27,7 @@ const nativeBundle = await build({ stdin: {
   contents: `${source.replace("export default function HuntCanvas", "function HuntCanvas")}
 export {huntFieldLoadV112,discoveryActorsV112,riteSourceLabelV77,riteRuntimeOptionsV112};
 export * from "./systems/canopyTraversalV112";
+export * from "./systems/fieldStashV112";
 export * from "./systems/corpseDiscoveryV112";
 export * from "./systems/huntRitesRuntimeV77";
 export * from "./systems/carcassSupportsV112";

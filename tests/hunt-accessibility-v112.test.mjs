@@ -10,7 +10,7 @@ import {createElement} from "react";
 import {renderToStaticMarkup} from "react-dom/server";
 const source=await readFile(new URL("../app/game/HuntCanvas.tsx",import.meta.url),"utf8");
 const built=await build({stdin:{contents:source.replace("export default function HuntCanvas","function HuntCanvas")+`
-export {pollGamepad,stepGame,updatePlayer,isHeld,makeGameState,snapshot};
+export {pollGamepad,stepGame,updatePlayer,isHeld,makeGameState,snapshot,resultFor};
 export {default as HuntRitualMeterV112} from "./HuntRitualMeterV112";
 export {default as HuntRitesMenuV77} from "./HuntRitesMenuV77";
 export {huntRiteMenuSnapshotV77} from "./systems/huntRitesRuntimeV77";
@@ -215,5 +215,30 @@ test("flaying duration preview and real menu match the timed operation for sharp
     assert.ok(elapsed+1e-8>=preview.flaySeconds&&elapsed<=preview.flaySeconds+step+1e-8,
       "completion must occur at the previewed duration within one fixed tick");
     assert.equal(state.completedEventIds.filter(id=>id==="flay:"+proof.id).length,1);
+  }
+});
+
+test("the native score formula has no direct accessibility modifier and still counts elapsed hunt time",()=>{
+  // This probes synthetic result inputs, not completion of a campaign hunt.
+  const scoreAt=(settings,timeMultiplier)=>{
+    const f=fixture(settings),state=f.game;
+    state.elapsed=f.mission.parTimeSeconds*timeMultiplier;
+    state.player.health=state.player.maxHealth*.7;
+    state.damageTaken=state.player.maxHealth-state.player.health;
+    state.kills=2;state.scans=1;state.honor=12;state.trophyQuality="blooded";
+    state.completedObjectives=new Set([f.mission.objectives[0].id]);
+    const {completedAt,...result}=api.resultFor(state,f.mission,"hunter","success");
+    assert.equal(typeof completedAt,"string");
+    return plain(result);
+  };
+  const baseline=scoreAt(profile(),2),baselineSlower=scoreAt(profile(),4);
+  assert.ok(baselineSlower.score<baseline.score,"the existing formula must retain its elapsed-time effect");
+  for(const ritualTiming of ["normal","generous","unlimited"])for(const ritualConfirm of ["press","hold","toggle"]){
+    const settings=profile({ritualTiming,ritualConfirm});
+    const actual=scoreAt(settings,2),slower=scoreAt(settings,4);
+    assert.deepEqual(actual,baseline,"identical mission facts must give the same result under "+ritualTiming+"/"+ritualConfirm);
+    assert.deepEqual(slower,baselineSlower);
+    assert.ok(slower.elapsedSeconds>actual.elapsedSeconds);
+    assert.ok(slower.score<actual.score,"spending more real hunt time still affects the announced time score");
   }
 });

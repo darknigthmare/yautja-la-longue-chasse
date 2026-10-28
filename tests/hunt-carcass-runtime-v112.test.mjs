@@ -8,10 +8,11 @@ import {build} from "esbuild";
 const canvasUrl=new URL("../app/game/HuntCanvas.tsx",import.meta.url);
 const source=await readFile(canvasUrl,"utf8");
 const compiled=await build({stdin:{contents:`${source.replace("export default function HuntCanvas","function HuntCanvas")}
-export {makeGameState,makeEnemy,damageEnemy,updateHuntRitesV77,riteContextV77,riteRuntimeOptionsV112,syncCarcassTransportV112,resultFor,captureCheckpoint,serializeActiveHuntCheckpoint,deserializeActiveHuntCheckpoint,restoreCheckpoint,updateRegularEnemy};
+export {makeGameState,makeEnemy,damageEnemy,updateHuntRitesV77,riteContextV77,riteRuntimeOptionsV112,syncCarcassTransportV112,resultFor,captureCheckpoint,serializeActiveHuntCheckpoint,deserializeActiveHuntCheckpoint,restoreCheckpoint,updateRegularEnemy,riteSourceLabelV77};
 export {defaultSave} from "./save";
 export {MISSION_BY_ID} from "./data";
 export {startHuntRiteV77} from "./systems/ritesOfHuntV77";
+export {restoreRitesRuntimeV77} from "./systems/huntRitesRuntimeV77";
 export {carcassSupportsForWorldV112} from "./systems/carcassSupportsV112";`,resolveDir:fileURLToPath(new URL("../app/game/",import.meta.url)),sourcefile:fileURLToPath(canvasUrl),loader:"tsx"},
   bundle:true,write:false,format:"cjs",platform:"node",jsx:"automatic",loader:{".module.css":"empty"},external:["react","react/jsx-runtime","react-dom"],logLevel:"silent"});
 const mod={exports:{}};
@@ -105,4 +106,30 @@ test("an authored hook cannot attach an actual wide body through a wall outside 
   assert.equal(r.carcassSupportsForWorldV112(f.state.world).length,1,"compact socket icon remains clear");
   const start=r.startHuntRiteV77(f.state.huntRites,"body","hang",r.riteContextV77(f.state),{supportId:hook.id});
   assert.equal(start.accepted,false,"actual source width must be checked before source consumption");
+});
+
+test("native suspended corpse restore admits the real source and refuses the same ledger when that actor is removed",()=>{
+  const f=fixture();
+  act(f,"flay");act(f,"carry");
+  assert.equal(f.state.huntRites.carryingCorpseId,f.enemy.id);
+  act(f,"hang");
+  const checkpoint=r.captureCheckpoint(f.state),ledger=checkpoint.huntRites;
+  assert.ok(ledger);
+  assert.equal(ledger.corpses.length,1);
+  assert.equal(ledger.corpses[0].flayed,true);
+  assert.ok(ledger.corpses[0].supportId);
+  assert.equal(ledger.carryingCorpseId,null);
+  const options=r.riteRuntimeOptionsV112(f.state);
+  assert.ok(options.supports.some(support=>support.id===ledger.corpses[0].supportId));
+  const before=JSON.stringify(ledger);
+  const restore=actors=>r.restoreRitesRuntimeV77(ledger,ledger.runId,f.mission.id,actors,
+    checkpoint.elapsed,r.riteSourceLabelV77,options);
+  const admitted=restore(checkpoint.enemies);
+  assert.ok(admitted,"the genuinely defeated, prepared and attached source must restore");
+  assert.equal(admitted.corpses[0].id,f.enemy.id);
+  assert.equal(admitted.corpses[0].supportId,ledger.corpses[0].supportId);
+  const missingSource=checkpoint.enemies.filter(actor=>actor.id!==f.enemy.id);
+  assert.equal(missingSource.length,checkpoint.enemies.length-1);
+  assert.equal(restore(missingSource),null,"a surviving support cannot replace the missing real corpse actor");
+  assert.equal(JSON.stringify(ledger),before,"neither admission nor rejection may rewrite the same input ledger");
 });

@@ -170,3 +170,42 @@ test("actual failed/abandoned campaign results retain wear and no raw specimens"
     assert.equal(depot(next).specimens.length,0);assert.equal(depot(next).toolCondition,95);
     assert.equal(next.missionProgress[mission].attempts,1);}
 });
+
+test("a worn owned field tool can be sharpened with zero clan marks without blocking the campaign",()=>{
+  const s=save();s.profile.clanMarks=0;s.inventory.harvestV112.toolCondition=0;
+  const before=structuredClone(s),repaired=api.repairFieldToolV112(s);
+  assert.equal(repaired.ok,true);assert.deepEqual(s,before,"repair is still a pure save proposal");
+  assert.equal(repaired.save.profile.clanMarks,0);assert.equal(depot(repaired.save).toolCondition,100);
+  assert.deepEqual(repaired.save.inventory.fieldToolIds,["flaying-tool"]);
+  assert.deepEqual(repaired.save.missionProgress,s.missionProgress);
+  assert.deepEqual(repaired.save.statistics,s.statistics);
+  assert.deepEqual(repaired.save.trophies,s.trophies);
+  assert.ok(api.parseSaveImport(JSON.stringify(repaired.save)).save);
+});
+test("manual preservation keeps its paid partial work across a much later real save normalization",()=>{
+  let s=withItem();s=api.startConservationV112(s,item().id).save;
+  const jobId=depot(s).jobs[0].id;s=api.workConservationV112(s,jobId).save;
+  const before=structuredClone(depot(s)),marks=s.profile.clanMarks,stored=JSON.stringify(s);
+  const RealDate=globalThis.Date,future="2036-10-28T00:00:00.000Z";
+  class FutureDate extends RealDate {
+    constructor(...args){super(...(args.length?args:[future]));}
+    static now(){return RealDate.parse(future);}
+  }
+  let normalized,imported;
+  try{
+    globalThis.Date=FutureDate;
+    normalized=api.normalizeSave(JSON.parse(stored));
+    imported=api.parseSaveImport(stored);
+  }finally{globalThis.Date=RealDate;}
+  assert.deepEqual(depot(normalized),before);
+  assert.ok(imported.save);assert.deepEqual(depot(imported.save),before);
+  assert.equal(depot(normalized).jobs[0].unitsDone,1);
+  assert.equal(depot(normalized).jobs[0].unitsRequired,3);
+  assert.equal(depot(normalized).jobs[0].costPaid,2);
+  assert.equal(depot(normalized).jobs[0].status,"active");
+  assert.equal(depot(normalized).specimens[0].stage,"raw");
+  assert.equal(normalized.profile.clanMarks,marks);
+  assert.equal(normalized.profile.playTimeSeconds,s.profile.playTimeSeconds);
+  assert.equal(api.workConservationV112(normalized,jobId).save.inventory.harvestV112.jobs[0].unitsDone,2,
+    "only the next explicit manual gesture advances the work after return");
+});
