@@ -26,7 +26,7 @@ import { trophyHuntVisualForDefinitionId } from "./trophyVisualRegistry";
 import { ownsFieldToolV111 } from "./systems/fieldToolsV111";
 import { applyAnatomyDamageV112, anatomyIntegrityV112 } from "./systems/anatomyHarvestV112";
 import { carcassSupportsForWorldV112, carcassSupportAccessibleV112, CARCASS_HANG_DROP_V112 } from "./systems/carcassSupportsV112";
-import { harvestInventoryForV112, tryCarrySpecimenV112, HARVEST_DEPOT_LIMIT_V112, flayingToolWorkMultiplierV112, toolConditionAfterUsesV112 } from "./systems/harvestInventoryV112";
+import { fieldLoadV112, harvestInventoryForV112, tryCarrySpecimenV112, HARVEST_DEPOT_LIMIT_V112, flayingToolWorkMultiplierV112, toolConditionAfterUsesV112 } from "./systems/harvestInventoryV112";
 import { trophyHarvestPoint, trophyHarvestSourceForDrop, trophyHarvestInReach,
   SECONDARY_TROPHY_REACH, APEX_TROPHY_REACH } from "./systems/trophyHarvestV111";
 import { drawEnvironmentProp } from "./environmentPropDrawing";
@@ -709,6 +709,8 @@ interface GameState {
   /** Campaign inventory owns the tool; never trust a hunt checkpoint to grant it. */
   flayingToolOwned: boolean;
   harvestArmorIdV112: Loadout['armorId'];
+  /** Derived every simulation step from the real field stock; never checkpoint authority. */
+  fieldLoadV112?: ReturnType<typeof fieldLoadV112>;
   harvestDepotFreeV112: number;
   riteToolInitialConditionV112: number;
   huntRites: RitesOfHuntV77;
@@ -792,6 +794,8 @@ interface GameState {
 }
 
 interface UiSnapshot {
+  fieldLoadV112: ReturnType<typeof fieldLoadV112>;
+  toolConditionV112: number;
   gripExhaustedV112?: boolean;
   trophyAssistArmedV112?: boolean;
   huntRiteMenu: HuntRiteMenuSnapshotV77 | null;
@@ -892,6 +896,8 @@ function isHeldKeyboardAction(action: Action): boolean {
 const DEFAULT_HUNT_ACCESSIBILITY_CANVAS_V112 = normalizeHuntAccessibilityV112(undefined);
 
 const EMPTY_UI: UiSnapshot = {
+  fieldLoadV112: fieldLoadV112([], "hunter"),
+  toolConditionV112: 100,
   huntRiteMenu: null,
   musicContext: "exploration",
   playerX: 0,
@@ -2759,6 +2765,9 @@ function snapshot(state: GameState, mission: MissionDefinition): UiSnapshot {
         )
       : null;
   return {
+    fieldLoadV112: huntFieldLoadV112(state),
+    toolConditionV112: toolConditionAfterUsesV112(state.riteToolInitialConditionV112 ?? 100,
+      state.huntRites.completedEventIds.filter(id => id.startsWith("flay:") || id.startsWith("harvest-")).length),
     huntRiteMenu: huntRiteMenuSnapshotV77(state.huntRites,
       {x:state.player.x+state.player.width/2,y:state.player.y+state.player.height},state.riteMenuCorpseId,
       !state.paused && (state.phase==='tracking'||state.phase==='target') && !state.trophyExtracting && state.player.health>0, riteRuntimeOptionsV112(state)),
@@ -5508,14 +5517,16 @@ function emitNoise(
   position: Vec2,
   sourceId = "hunter",
 ): void {
+  const loadNoise = sourceId === "hunter" && (kind === "footstep" || kind === "landing")
+    ? (state.fieldLoadV112?.noiseMultiplier ?? 1) : 1;
   state.noiseEvents.push({
     id: `noise-${state.nextSignalId++}`,
     sourceId,
     kind,
     x: position.x,
     y: position.y,
-    loudness: clamp(loudness, 0, 1),
-    radius,
+    loudness: clamp(loudness * loadNoise, 0, 1),
+    radius: radius * loadNoise,
     createdAtSeconds: state.elapsed,
     durationSeconds: kind === "weapon" ? 1.4 : 0.8,
     highFrequency:
@@ -6090,6 +6101,12 @@ function spawnGore(
 
 function riteSourceLabelV77(id:string):string {
   return ecologyV8EnemyForId(id)?.name ?? enemyV7ForId(id)?.name ?? id;
+}
+function huntFieldLoadV112(state: GameState): ReturnType<typeof fieldLoadV112> {
+  const carried = state.huntRites?.corpses.find(corpse =>
+    corpse.id === state.huntRites.carryingCorpseId && !corpse.erased && !corpse.supportId);
+  return fieldLoadV112(state.huntRites?.specimensV112 ?? [],
+    state.harvestArmorIdV112 ?? "hunter", carried ? (carried.massKg ?? 70) : 0);
 }
 function riteRuntimeOptionsV112(state:GameState) {
   const actor={x:state.player.x+state.player.width/2,y:state.player.y+state.player.height};
@@ -7598,7 +7615,9 @@ function updateHunterRig(player: PlayerState, delta: number, extracting: boolean
 function applyPlayerJump(state: GameState, result: JumpAssistResult, direction: -1 | 1 = state.player.facing): void {
   const player = state.player;
   state.jumpAssist = result.state;
-  player.velocityY = result.velocityY;
+  player.velocityY = result.jump
+    ? result.velocityY * (state.fieldLoadV112?.jumpMultiplier ?? 1)
+    : result.velocityY;
   if (!result.jump) return;
   const origin = { x: player.x + player.width / 2, y: player.y + player.height / 2 };
   player.grounded = false;
@@ -7617,7 +7636,7 @@ function applyPlayerJump(state: GameState, result: JumpAssistResult, direction: 
     } else {
       player.velocityX = direction * (flexible
         ? CLIMB_TRAVERSAL.flexibleLaunchSpeed
-        : CLIMB_TRAVERSAL.rigidLaunchSpeed);
+        : CLIMB_TRAVERSAL.rigidLaunchSpeed) * (state.fieldLoadV112?.movementMultiplier ?? 1);
     }
     emitNoise(state, "landing", 0.24, 210, origin);
   } else if (result.jump === "boost") {
@@ -7849,19 +7868,21 @@ function updatePlayer(
   if (!player.climbing || actionLocked) player.canopySwing = null;
   updatePlayerMeleeCombat(state, mission, delta, actionLocked);
 
+  state.fieldLoadV112 = huntFieldLoadV112(state);
+  const fieldLoad = state.fieldLoadV112;
   const dodgeVelocity = huntMeleeDodgeVelocity(player.melee);
   const targetVelocity =
     dodgeVelocity !== 0
       ? dodgeVelocity *
         armor.moveSpeedMultiplier *
         movementSurface.movementMultiplier *
-        hazardMovementMultiplier
+        hazardMovementMultiplier * fieldLoad.movementMultiplier
       : (actionLocked ? 0 : moveAxis) *
         300 *
         huntMeleeMovementMultiplier(player.melee) *
         armor.moveSpeedMultiplier *
         movementSurface.movementMultiplier *
-        hazardMovementMultiplier;
+        hazardMovementMultiplier * fieldLoad.movementMultiplier;
   player.climbReattachSeconds = Math.max(0,
     (Number.isFinite(player.climbReattachSeconds)
       ? Math.min(CLIMB_TRAVERSAL.releaseSeconds, player.climbReattachSeconds ?? 0)
@@ -8082,7 +8103,7 @@ function updatePlayer(
   let swingMotion: PlatformMotionResult | null = null;
   if (player.climbing && currentClimbZone && player.canopySwing) {
     const swing = stepCanopySwingV112(player.canopySwing, player, currentClimbZone,
-      {moveAxis, climbAxis}, delta, state.world.platforms, state.world.floorY);
+      {moveAxis, climbAxis}, delta, state.world.platforms, state.world.floorY, fieldLoad.climbStaminaMultiplier);
     player.canopySwing = swing.swing;
     player.x = swing.body.x; player.y = swing.body.y;
     player.velocityX = swing.body.velocityX; player.velocityY = swing.body.velocityY;
@@ -8110,12 +8131,12 @@ function updatePlayer(
       Math.min(1, delta * (flexibleClimb ? 6 : 9));
     player.velocityX *= Math.pow(0.001, delta);
     player.velocityY +=
-      (climbAxis * 235 * currentClimbZone.climbSpeedMultiplier -
+      (climbAxis * 235 * currentClimbZone.climbSpeedMultiplier * fieldLoad.movementMultiplier -
         player.velocityY) *
       Math.min(1, delta * 14);
     player.stamina = Math.max(
       0,
-      player.stamina - currentClimbZone.staminaPerSecond * delta,
+      player.stamina - currentClimbZone.staminaPerSecond * delta * fieldLoad.climbStaminaMultiplier,
     );
     player.y = clamp(
       player.y + player.velocityY * delta,
@@ -11103,6 +11124,16 @@ export default function HuntCanvas({
         </button>
       </header>
 
+      <details className={presentationStyles.fieldLoadV112}>
+        <summary>Emport {ui.fieldLoadV112.massKg.toFixed(1)} / {ui.fieldLoadV112.capacityMassKg} kg
+          {" · "}{ui.fieldLoadV112.volumeUnits.toFixed(1)} / {ui.fieldLoadV112.capacityVolumeUnits} volumes
+          {" · "}Outil {ui.toolConditionV112}/100</summary>
+        <p>Déplacement −{Math.round((1 - ui.fieldLoadV112.movementMultiplier) * 100)} %
+          {" · "}Saut −{Math.round((1 - ui.fieldLoadV112.jumpMultiplier) * 100)} %
+          {" · "}Effort d’escalade +{Math.round((ui.fieldLoadV112.climbStaminaMultiplier - 1) * 100)} %
+          {" · "}Bruit des pas et réceptions +{Math.round((ui.fieldLoadV112.noiseMultiplier - 1) * 100)} %.
+          {" "}Les carcasses se déplacent au sol et sont déposées avant un saut, une prise ou le combat.</p>
+      </details>
       {activeAccessibility.fieldGuide && <HuntFieldGuideV112 bindings={activeBindings} gamepadButtons={activeAccessibility.gamepadButtons}
         phase={ui.phase} climbing={ui.climbing} grounded={ui.grounded} stamina={ui.stamina} corpseNearby={!!ui.huntRiteMenu}
         gripExhausted={ui.gripExhaustedV112}/>}
