@@ -1,4 +1,6 @@
 "use client";
+import ConservationPanelV112, {type ConservationPanelActionV112} from "./ConservationPanelV112";
+import {startConservationV112,workConservationV112,repairFieldToolV112,archiveMountedSpecimenV112,deliverHarvestV112,harvestInventoryForV112,capacityForArmorV112} from "./systems/harvestInventoryV112";
 import { FIELD_TOOLS_V111, quoteFieldToolV111, purchaseFieldToolV111 } from "./systems/fieldToolsV111";
 import {recoverAnyArchiveV71} from "./systems/archiveRecoveryV71";
 import { REFERENCE_BIOMASKS_V62, PRESERVED_BIOMASKS_V62 } from "./biomaskCatalogueV62";
@@ -2763,6 +2765,10 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         if (activeHuntSessionRef.current) setPendingHuntResult({ result, returnToDeck });
         return;
       }
+      const delivery=deliverHarvestV112(saveRef.current,result.specimensV112,result.toolUseIdsV112,result.outcome==="success",result.missionId,result.harvestEncounterRunV112);
+      if(!delivery.ok) {
+        setPendingHuntResult({result,returnToDeck});setToast(delivery.reason);return;
+      }
       setPendingHuntResult(null);
       missionSettlementRef.current = true;
       const current = saveRef.current;
@@ -2892,6 +2898,17 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     setToast(`Outil de dépeçage acquis pour ${result.spentClanMarks} marques du clan.`);
     void playSound("select");
   }, [persistSocialProgress, playSound]);
+
+  const performConservationActionV112=useCallback((action:ConservationPanelActionV112,id:string)=>{
+    if(settingsOpen||archiveTransferBusy||archiveRecoveryIssue||campaignSaveBusy||!(screen==="armory"||screen==="trophies"))
+      return {ok:false,message:"Atelier suspendu : reprenez le poste actif avant de travailler."};
+    const current=saveRef.current;
+    const result=action==="start"?startConservationV112(current,id):action==="work"?workConservationV112(current,id):action==="archive"?archiveMountedSpecimenV112(current,id):repairFieldToolV112(current);
+    if(!result.ok)return {ok:false,message:result.message};
+    if(!persistSocialProgress({profile:result.save.profile,inventory:result.save.inventory}))
+      return {ok:false,message:"Travail non confirmé : aucun succès annoncé. Réessayez le même geste pour récupérer son enregistrement."};
+    return {ok:true,message:result.message};
+  },[archiveRecoveryIssue,archiveTransferBusy,campaignSaveBusy,persistSocialProgress,screen,settingsOpen]);
 
   const purchaseEquipmentUpgrade = useCallback(
     (request: UpgradePurchaseRequest) => {
@@ -4206,6 +4223,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                       <h3>{tool.name}</h3>
                       <p>{tool.description}</p>
                       <p>Outil permanent · aucun emplacement d’équipement actif.</p>
+                      {quote.owned&&<p>Affûtage {harvestInventoryForV112(save.inventory).toolCondition}/100 · entretien gratuit dans l’atelier.</p>}
                       <button type="button" className="button" disabled={!quote.canPurchase}
                         onClick={() => purchasePermanentFieldTool(tool.id)}>
                         {quote.owned ? "Acquis" : quote.canPurchase
@@ -4215,6 +4233,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                     </article>;
                   })}
                 </ArmorySection>
+                <ConservationPanelV112 inventory={save.inventory} clanMarks={save.profile.clanMarks}
+                  disabled={settingsOpen||archiveTransferBusy||!!archiveRecoveryIssue||campaignSaveBusy} onAction={performConservationActionV112}/>
+                <p>Emport de l’armure : {capacityForArmorV112(save.loadout.armorId).massKg} kg / {capacityForArmorV112(save.loadout.armorId).volumeUnits} volumes. Au maximum : déplacement −32 %, saut −16 %, effort d’escalade +60 %, bruit +80 %. Une partie trop lourde reste sur la proie.</p>
                 <ArmorySection title="Armes de chasse">
                   {WEAPONS.map((weapon) => {
                     const unlocked =
@@ -4784,6 +4805,8 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             <Suspense fallback={<p>Lecture des distinctions THE PIT…</p>}>
               <PitHonorsPanel owner={save.createdAt} onOpenPit={openPit} />
             </Suspense>
+            <ConservationPanelV112 inventory={save.inventory} clanMarks={save.profile.clanMarks}
+              disabled={settingsOpen||archiveTransferBusy||!!archiveRecoveryIssue||campaignSaveBusy} onAction={performConservationActionV112}/>
             <div className="trophy-grid">
               <details className="franchise-trophy-archive">
                 <summary>
