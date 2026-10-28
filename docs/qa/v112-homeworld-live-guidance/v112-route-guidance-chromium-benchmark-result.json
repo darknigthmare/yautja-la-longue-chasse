@@ -1,0 +1,156 @@
+{
+  "scope": "Pure homeworldRouteGuidanceV112 function bundled into an isolated Chromium page; no product function, React state, actor, motor or input is replaced. Three rounds over unique consecutive rendered foot positions from the genuinely played remote-last diagnostic. Planning cost is separately reported and excluded from per-guidance timings.",
+  "limitations": [
+    "390px is viewport/mobile emulation on the same cloud CPU, not a physical phone.",
+    "Pure function timings exclude React render/layout/paint, request scheduling and Worker/A* planning.",
+    "30Hz and2.86Hz costs are projections from the measured mean; unchanged scalar coordinates cause0memo recalculations in the proposed component."
+  ],
+  "traceSource": "/tmp/v112-homeworld-r3-controller-diagnostic-original/result.json",
+  "saveSource": "/tmp/v112-homeworld-production-r3/result.json",
+  "sources": [
+    {
+      "path": "app/game/systems/homeworldWayfindingV112.ts",
+      "sha256": "43e3739b03546faae38469d3111d1ceb5992c1f4151d539f074e1a6a963c1049"
+    },
+    {
+      "path": "app/game/systems/homeworldWayfindingV111.ts",
+      "sha256": "3774cc61b564a407be7bfb242cbd0f647452ab2074f8b923d183410af414e873"
+    },
+    {
+      "path": "app/game/systems/homeworldWayfindingV109.ts",
+      "sha256": "6652acbd6b2302d84c1b1b83e6ad5df938ac97f413aa69c39f679e6dc9f4d7b3"
+    },
+    {
+      "path": "app/game/systems/homeworldNavigationV109.ts",
+      "sha256": "8203bed6ba14ae3b15d6eb6b1834eb884ff4804438b079bc6eb7d90bb86863f9"
+    },
+    {
+      "path": "app/game/systems/homeworldNavigationV77.ts",
+      "sha256": "372896bc10acc6389af30234e0ae2934fa8efedf6a624df17a4514961a2ff078"
+    }
+  ],
+  "results": [
+    {
+      "name": "desktop1440",
+      "viewport": {
+        "width": 1440,
+        "height": 1050
+      },
+      "isMobile": false,
+      "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+      "positions": 254,
+      "rounds": 3,
+      "calls": 762,
+      "planningMs": 430.80000000447035,
+      "stages": 1,
+      "routePointCount": 6,
+      "measuredTotalMs": 3938.9999999776483,
+      "batchElapsedMs": 3940.89999999851,
+      "medianMs": 5,
+      "p95Ms": 6.800000004470348,
+      "maxMs": 13.100000001490116,
+      "meanMs": 5.169291338553344,
+      "projectedBeforeMsPerSecond": 14.769403824438125,
+      "projectedAfterMsPerSecond": 155.0787401566003,
+      "projectedMedian30HzMsPerSecond": 150,
+      "projectedP9530HzMsPerSecond": 204.00000013411045,
+      "states": {
+        "walking": 747,
+        "arrived": 15
+      },
+      "sink": 1035784.0065154561,
+      "route": [
+        {
+          "kind": "interact",
+          "points": [
+            {
+              "x": 7520,
+              "y": 5350
+            },
+            {
+              "x": 6816,
+              "y": 5280
+            },
+            {
+              "x": 6048,
+              "y": 5280
+            },
+            {
+              "x": 5280,
+              "y": 5280
+            },
+            {
+              "x": 4992,
+              "y": 5280
+            },
+            {
+              "x": 4827.379122065994,
+              "y": 5030.736907870462
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "mobile390-emulated",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "isMobile": true,
+      "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+      "positions": 254,
+      "rounds": 3,
+      "calls": 762,
+      "planningMs": 448.3999999985099,
+      "stages": 1,
+      "routePointCount": 6,
+      "measuredTotalMs": 3782.3000000044703,
+      "batchElapsedMs": 3784.5,
+      "medianMs": 4.799999997019768,
+      "p95Ms": 6.399999998509884,
+      "maxMs": 12.100000001490116,
+      "meanMs": 4.963648293969121,
+      "projectedBeforeMsPerSecond": 14.181852268483203,
+      "projectedAfterMsPerSecond": 148.90944881907365,
+      "projectedMedian30HzMsPerSecond": 143.99999991059303,
+      "projectedP9530HzMsPerSecond": 191.99999995529652,
+      "states": {
+        "walking": 747,
+        "arrived": 15
+      },
+      "sink": 1035784.0065154561,
+      "route": [
+        {
+          "kind": "interact",
+          "points": [
+            {
+              "x": 7520,
+              "y": 5350
+            },
+            {
+              "x": 6816,
+              "y": 5280
+            },
+            {
+              "x": 6048,
+              "y": 5280
+            },
+            {
+              "x": 5280,
+              "y": 5280
+            },
+            {
+              "x": 4992,
+              "y": 5280
+            },
+            {
+              "x": 4827.379122065994,
+              "y": 5030.736907870462
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

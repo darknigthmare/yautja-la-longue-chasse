@@ -56,6 +56,12 @@ export function verifySourceFreezeCoverageV112(observed, freeze) {
   return {sourcesVerified: sources.length, frozenSources: entries.length};
 }
 
+export function verifyProductionIdentityV112(reference, actual) {
+  assert.match(reference.runtimeCommit, /^[a-f0-9]{40}$/); assert.ok(typeof reference.buildId === 'string' && reference.buildId);
+  assert.equal(actual.runtimeCommit, reference.runtimeCommit, 'Domain certificates must use the same runtime commit');
+  assert.equal(actual.buildId, reference.buildId, 'Domain certificates must use the same compiled build');
+}
+
 export function verifyRegistryV112(registry, inherited) {
   assert.equal(registry.schemaVersion, 1); assert.equal(registry.release, 'V112');
   assert.match(registry.asOf, /^\d{4}-\d{2}-\d{2}$/); assert.deepEqual(registry.baseline, BASELINE_V112);
@@ -107,6 +113,8 @@ export function verifyRegistryV112(registry, inherited) {
 export async function verifyProductionV112(proof, expectedFreeze = undefined) {
   const report = JSON.parse(await verifyProof(proof));
   assert.equal(report.release, 'V112'); assert.equal(report.status, 'PASS_CIBLE');
+  if (evidencePath(proof) === 'docs/v112-homeworld-validation.json') assert.equal(report.domain, 'Homeworld', 'The Homeworld certificate must cover the Homeworld recipe');
+  if (evidencePath(proof) === 'docs/v112-pit-validation.json') assert.equal(report.domain, 'Pit', 'The Pit certificate must cover the Pit recipe');
   assert.equal(report.production?.mode, 'compiled-app');
   assert.match(report.production.runtimeCommit, /^[a-f0-9]{40}$/); assert.ok(report.production.buildId);
   assert.equal(report.production.browserErrors, 0); assert.equal(report.production.checksFailed, 0);
@@ -188,11 +196,16 @@ export async function collectFollowupV112(registry = undefined) {
   const productions = [];
   for (const row of registry.workstreams.filter(row => row.production)) {
     const verified = await verifyProductionV112(row.production, registry.runtimeFreeze);
+    const reference = production ?? productions[0];
+    if (reference) verifyProductionIdentityV112(reference, verified);
     if (row.id.startsWith('HW112-')) assert.equal(verified.domain, 'Homeworld', 'Homeworld workstream requires Homeworld production evidence');
     if (row.id.startsWith('PIT112-')) assert.equal(verified.domain, 'Pit', 'Pit workstream requires Pit production evidence');
     productions.push({id: row.id, report: row.production, ...verified});
   }
-  for (const row of registry.sourceProgress.filter(row => row.status === 'CLOTURE_CIBLE')) await verifyProductionV112(row.production);
+  for (const row of registry.sourceProgress.filter(row => row.status === 'CLOTURE_CIBLE')) {
+    const verified = await verifyProductionV112(row.production), reference = production ?? productions[0];
+    if (reference) verifyProductionIdentityV112(reference, verified);
+  }
   const progress = new Map(registry.sourceProgress.map(row => [row.id, row]));
   const sourceItems = inherited.sourceItems.map(row => ({...row,
     statusV112: registry.closedSourceIds.includes(row.id) ? 'CLOTURE_CIBLE' : 'OUVERT_SOURCE',
@@ -235,8 +248,11 @@ export function buildSheetsV112(snapshot) {
     metric('Cibles artistiques non clôturées', 354, 'Inventaire V111 historique, pas une déclaration d’absences.', 'COUNTIF(\'CatalogueArtV112\'!E5:E358,"NON_CLOTURE_ART")'),
     ...['EN_COURS', 'LIVRE_PARTIEL', 'VALIDE_CIBLE'].map(status => metric('Chantiers ' + status, snapshot.workstreams.filter(row => row.status === status).length,
       'Portée limitée aux cas et preuves déclarés.', `COUNTIF('ChantiersV112'!E5:E${snapshot.workstreams.length + 4},"${status}")`)),
-    metric('Contrôles navigateur V112', snapshot.production?.browserChecks ?? 'A_VALIDER', 'Recette compilée courante, indépendante des preuves V111.'),
-    metric('Captures V112 inspectées', snapshot.production?.inspectedCaptures ?? 'A_VALIDER', 'Toutes les captures publiées doivent être inspectées.'),
+    metric('Contrôles Homeworld compilé', snapshot.production?.browserChecks ?? 'A_VALIDER', 'Recette Homeworld courante, indépendante des preuves V111 et Pit.'),
+    metric('Captures Homeworld inspectées', snapshot.production?.inspectedCaptures ?? 'A_VALIDER', 'Toutes les captures Homeworld publiées sont inspectées.'),
+    ...snapshot.productions.filter(row => row.domain === 'Pit').flatMap(row => [
+      metric('Contrôles Pit compilé', row.browserChecks, row.id + ' · recette Pit sur le même commit et Build ID.'),
+      metric('Captures Pit inspectées', row.inspectedCaptures, 'Deux parcours complets du duo d’origine ; les exigences source restent ouvertes.')]),
     metric('Excel natif exécuté', 'NON', 'ZIP/XML et caches de formules uniquement.')];
   return [sheet('SyntheseV112', 'YAUTJA · suivi V112', [column('label', 'Indicateur', 65), column('value', 'Valeur', 35), column('scope', 'Portée', 145)], summary),
     sheet('ChantiersV112', 'Avancées bornées et vérifiables', [column('id', 'ID', 50), column('title', 'Chantier', 80), column('source', 'Besoin exact', 145), column('behavior', 'Comportement V112', 145), column('status', 'État', 30), column('implementation', 'Fichiers', 145), column('proof', 'Preuves SHA', 145), column('remaining', 'Limites', 145)], snapshot.workstreams),

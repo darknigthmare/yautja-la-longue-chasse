@@ -11,3 +11,11 @@ Les 790 images anciennes du recensement restent optionnelles selon la règle ori
 Le premier essai est conservé dans `initial-missing-hunt-manifest.log` : un JSON public de trophées n’était pas partagé, si bien que le bundle HuntCanvas n’atteignait pas ses 34 assertions. Le partage a été complété avec les 23 JSON publics originaux ; aucune assertion n’a été retirée, remplacée ou assouplie.
 
 Cette recette certifie l’historique V111, **pas le runtime V112**. Les preuves du jeu courant sont publiées séparément.
+
+## Vérification indépendante par les préimages Git
+
+`original-independent-v111-guard.log` exécute aussi le checker indépendant `check-excel-history-v111.mjs` original : ses huit fichiers et 56 assertions passent, ainsi que les 1 386 empreintes du gel V110 et le classeur de 105 feuilles `0b7d7890…dbd7c`.
+
+Le wrapper `check-excel-history-compat-v112.mjs` lui fournit une vraie copie privée des sources V111, puis le laisse restaurer ses quatorze préimages Git V110 par sa méthode inchangée. Le relancer directement contre l’application V112 introduirait douze autres fichiers modifiés dans son ancien gel. Aucun ancien checker n’est réécrit, aucune assertion n’est supprimée et aucun import du jeu courant n’est détourné. L’accès aux objets Git reste celui de la méthode originale, avec son fetch ciblé d’un seul commit si un checkout réduit ne le contient pas.
+
+Ces 56 assertions recouvrent la suite historique V110 déjà vérifiée par l’autre méthode ; elles ne sont pas additionnées comme 56 nouveaux comportements du jeu.

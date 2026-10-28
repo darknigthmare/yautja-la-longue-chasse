@@ -5,7 +5,7 @@ import path from 'node:path';
 import os from 'node:os';
 import {execFileSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
-import {BASELINE_V112, collectFollowupV112, verifyRegistryV112, verifyProductionV112, normalizeSourceIdentityV112, verifySourceFreezeCoverageV112, buildSheetsV112, writeWorkbookV112, verifyWorkbookV112, generateFollowupV112} from '../scripts/build-homeworld-followup-v112.mjs';
+import {BASELINE_V112, collectFollowupV112, verifyRegistryV112, verifyProductionV112, verifyProductionIdentityV112, normalizeSourceIdentityV112, verifySourceFreezeCoverageV112, buildSheetsV112, writeWorkbookV112, verifyWorkbookV112, generateFollowupV112} from '../scripts/build-homeworld-followup-v112.mjs';
 
 const registry = async () => JSON.parse(await fs.readFile('docs/v112-homeworld-source.json', 'utf8'));
 const inherited = async () => JSON.parse(await fs.readFile('docs/v111-homeworld-followup.json', 'utf8'));
@@ -102,6 +102,14 @@ test('conflicting path aliases, duplicate observations and changed frozen bytes 
     assert.throws(() => verifySourceFreezeCoverageV112([row], freeze), /Executed source absent or different/);
   assert.throws(() => verifySourceFreezeCoverageV112([entry, entry], freeze), /Duplicate executed source path/);
   assert.throws(() => verifySourceFreezeCoverageV112([entry], {...freeze, files: 2, bytes: 40, entries: [entry, entry]}), /Duplicate frozen source path/);
+});
+
+test('individually valid domain certificates cannot be mixed across runtime commits or compiled builds', () => {
+  const homeworld = {domain: 'Homeworld', runtimeCommit: 'a'.repeat(40), buildId: 'shared-compiled-build'};
+  const pit = {...homeworld, domain: 'Pit'};
+  assert.doesNotThrow(() => verifyProductionIdentityV112(homeworld, pit));
+  assert.throws(() => verifyProductionIdentityV112(homeworld, {...pit, runtimeCommit: 'b'.repeat(40)}), /same runtime commit/);
+  assert.throws(() => verifyProductionIdentityV112(homeworld, {...pit, buildId: 'another-otherwise-valid-build'}), /same compiled build/);
 });
 
 test('V112 workbook and metadata reproduce exactly without executing historical gameplay or native Excel', async () => {

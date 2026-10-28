@@ -13,8 +13,8 @@
     {
       "id": "M_F006_TH_B",
       "status": "LIVRE_PARTIEL",
-      "progress": "Projection arrière raccordée au moteur V17 pour le duo Feral/Scar d’origine ; trajectoire physique, murs, déchoppe, reprise et replay testés. Les contrôles publics sont vérifiés par cinq tests de vraie closure. Les 48 dessins runtime sélectionnés couvrent deux rôles et deux orientations initiales par chasseur, sur 22 PNG natifs.",
-      "remaining": "Autres partenaires, costumes et variantes restent ouverts. Les admissions natives et le contrôle du duo ne clôturent pas l’exigence source globale ; le parcours compilé est une preuve distincte à publier.",
+      "progress": "Projection arrière V17 raccordée et vérifiée pour le duo Feral/Scar d’origine : fenêtres10/3/32, cible réelle, arc continu, mur, déchoppe, reprise et replay ; 48 dessins natifs sur22PNG. Le compilé R4 passe127contrôles sur deux parcours ; une victoire Feral–Scar est exportée et relue publiquement. Le parcours inverse vérifie les prises et réactions sans prétendre à une seconde victoire exportée.",
+      "remaining": "Exigence source toujours ouverte : autres partenaires, costumes et variantes non couverts. La validation ciblée du duo et des deux orientations ne clôture ni cette exigence globale ni les kits. La première tentative R4 échouée et sa seule reprise identique restent documentées, sans cause attribuée au lancement manqué.",
       "proof": [
         {
           "path": "docs/qa/v112-pit-backward/model-tests.log",
@@ -60,14 +60,19 @@
           "path": "docs/suivi-production/v112-pit-backward/visual-review.json",
           "sha256": "d54f5b7eee907d2182e720148b46310679c7a22b08ac08f7a1c62185b505d9cf",
           "bytes": 6147
+        },
+        {
+          "path": "docs/v112-pit-validation.json",
+          "sha256": "6f357c742ee396fc94add6210116e163620df358e3cb3d18909fc38564710872",
+          "bytes": 931415
         }
       ]
     },
     {
       "id": "M_F003_TH_B",
       "status": "LIVRE_PARTIEL",
-      "progress": "Projection arrière raccordée au moteur V17 pour le duo Feral/Scar d’origine ; trajectoire physique, murs, déchoppe, reprise et replay testés. Les contrôles publics sont vérifiés par cinq tests de vraie closure. Les 48 dessins runtime sélectionnés couvrent deux rôles et deux orientations initiales par chasseur, sur 22 PNG natifs.",
-      "remaining": "Autres partenaires, costumes et variantes restent ouverts. Les admissions natives et le contrôle du duo ne clôturent pas l’exigence source globale ; le parcours compilé est une preuve distincte à publier.",
+      "progress": "Projection arrière V17 raccordée et vérifiée pour le duo Feral/Scar d’origine : fenêtres10/3/32, cible réelle, arc continu, mur, déchoppe, reprise et replay ; 48 dessins natifs sur22PNG. Le compilé R4 passe127contrôles sur deux parcours ; une victoire Feral–Scar est exportée et relue publiquement. Le parcours inverse vérifie les prises et réactions sans prétendre à une seconde victoire exportée.",
+      "remaining": "Exigence source toujours ouverte : autres partenaires, costumes et variantes non couverts. La validation ciblée du duo et des deux orientations ne clôture ni cette exigence globale ni les kits. La première tentative R4 échouée et sa seule reprise identique restent documentées, sans cause attribuée au lancement manqué.",
       "proof": [
         {
           "path": "docs/qa/v112-pit-backward/model-tests.log",
@@ -113,6 +118,11 @@
           "path": "docs/suivi-production/v112-pit-backward/visual-review.json",
           "sha256": "d54f5b7eee907d2182e720148b46310679c7a22b08ac08f7a1c62185b505d9cf",
           "bytes": 6147
+        },
+        {
+          "path": "docs/v112-pit-validation.json",
+          "sha256": "6f357c742ee396fc94add6210116e163620df358e3cb3d18909fc38564710872",
+          "bytes": 931415
         }
       ]
     }
@@ -122,8 +132,8 @@
       "id": "HW112-SPATIAL-COHERENCE",
       "title": "Cohérence des placements et des passages du Homeworld",
       "source": "Brief Homeworld V81 §§12, 18, 23",
-      "behavior": "Six socles corrigent 95 points sans support sur 51 façades et 20 098 échantillons ; six instances de mobilier admises sur dix propositions remplissent cinq cours. Sur 392 origines naturelles, 315 instances sont admises et 77 refusées sans relocalisation, laissant zéro intersection résiduelle avec le pavement ; 39 formations et les onze écotones actuels utilisent ce même registre. Les faces rocheuses s’arrêtent au premier pavement.",
-      "status": "LIVRE_PARTIEL",
+      "behavior": "Six socles corrigent 95 points sans support sur 51 façades et 20 098 échantillons. Deux raccords exacts devant le mausolée ajoutent 1 507,446455 unités² de sol commun au moteur et au rendu : deux poches locales deviennent nulles, les 34 485 échantillons extérieurs restent inchangés. Six meubles admis sur dix propositions occupent cinq cours. Sur 392 origines naturelles, 315 instances sont admises et 77 refusées sans relocalisation, avec 39 formations et onze écotones.",
+      "status": "VALIDE_CIBLE",
       "implementation": [
         "app/game/systems/homeworldFoundationSupportsV112.ts",
         "app/game/systems/homeworldNaturalRockFacesV112.ts",
@@ -142,35 +152,54 @@
         "app/game/systems/homeworldEcotonesV112.ts",
         "app/game/HomeworldEcotonesV112.tsx",
         "tests/homeworld-natural-placements-v112.test.mjs",
-        "tests/homeworld-ecotones-v112.test.mjs"
+        "tests/homeworld-ecotones-v112.test.mjs",
+        "app/game/systems/homeworldGroundJointsV112.ts",
+        "tests/homeworld-ground-joints-v112.test.mjs"
       ],
       "proof": [
         {
           "path": "docs/qa/v112-spatial/audit.json",
-          "sha256": "2355523724f462fcf5396a7701b962e8deacf5d54ea4cdf32d90946dff51d192",
-          "bytes": 25301
+          "sha256": "228baa46b79e25e17a15a647941d2eb381bb08455679588319db509003b7c74d",
+          "bytes": 27632
         },
         {
-          "path": "docs/qa/v112-spatial/current-21-assertions.log",
-          "sha256": "5f1fb365d4ebd25ae4dc6884c9e7c59bbc04e4fa50f78febcf6ce16bbd9c8131",
-          "bytes": 6604
+          "path": "docs/qa/v112-spatial/ground-joints-previous-21-assertions.log",
+          "sha256": "43886cc2501d30fbb47024112389e2fd321f39881b53b4608038439dee79552d",
+          "bytes": 6606
+        },
+        {
+          "path": "docs/qa/v112-spatial/ground-joints-six-assertions.log",
+          "sha256": "aeee8d12961cc00897f606ea09d592fe22e37759c9cefa0d439108635c9b4fcc",
+          "bytes": 1668
+        },
+        {
+          "path": "docs/qa/v112-spatial/ground-joints-model-audit.log",
+          "sha256": "228baa46b79e25e17a15a647941d2eb381bb08455679588319db509003b7c74d",
+          "bytes": 27632
+        },
+        {
+          "path": "docs/v112-homeworld-validation.json",
+          "sha256": "b9a0ba49b28dd042813861c2909cb913cd9eb2049c38979f819aeee6ebf8323e",
+          "bytes": 712807
         }
       ],
-      "remaining": "Vingt et un tests couvrent les quatorze scénarios naturels/faces/socles/places et les sept critères d’écotones sur le provider V112. Les sept assertions V90 d’origine restent privées et distinctes. Rendu et accès du jeu compilé à certifier ; réemplois natifs, zéro nouveau dessin, service ou clôture des 354 cibles."
+      "remaining": "Six socles, deux raccords locaux et les instances déclarées sont validés dans le jeu compilé R4. Les autres géographies, façades, variantes artistiques et besoins de toute la cité restent ouverts. Les sources natives sont réemployées ; aucun nouveau dessin Homeworld, service ou fermeture des 354 cibles n’est déduit."
     },
     {
       "id": "HW112-MOBILITY-ACCESS",
       "title": "Accès, destinations et mobilité cohérents",
       "source": "Brief Homeworld V81 §§18, 20, 23",
-      "behavior": "Les arrivées vers quinze services se terminent dans leur rayon réel ; l’ancien faux arrivé à 68/64 ou 75/74 unités est refusé. Le guidage intérieur vérifie les segments à une unité et garde les arêtes réellement praticables avant de marquer un nœud visité.",
-      "status": "LIVRE_PARTIEL",
+      "behavior": "Les arrivées vers quinze services utilisent leur rayon réel, avec segments intérieurs vérifiés à une unité avant validation des arêtes. La direction et l’arrivée du guide se calculent maintenant depuis la position publiée du personnage, sans retard de 350ms ; les réponses Worker périmées restent refusées.",
+      "status": "VALIDE_CIBLE",
       "implementation": [
         "app/game/systems/homeworldWayfindingV112.ts",
         "app/game/systems/homeworldInteriorNavigationV112.ts",
         "app/game/homeworldRouteWorkerV112.ts",
         "app/game/HomeworldWorldMapV77.tsx",
         "tests/homeworld-mobility-v112.test.mjs",
-        "docs/v112-homeworld-mobility.md"
+        "docs/v112-homeworld-mobility.md",
+        "tests/homeworld-live-guidance-v112.test.mjs",
+        "scripts/qa-homeworld-live-guidance-v112.mjs"
       ],
       "proof": [
         {
@@ -182,16 +211,56 @@
           "path": "docs/qa/v112-homeworld-mobility/model-validation.json",
           "sha256": "5769f4b67f598128cd7bf128bafef60a45c66a21bc4daec68aca98420f3d9fe2",
           "bytes": 993
+        },
+        {
+          "path": "docs/qa/v112-homeworld-live-guidance/README.md",
+          "sha256": "8bf24a997276cbb99edc375585c18644b4dfb38d433f11efa5f98b5027d6ebdd",
+          "bytes": 622
+        },
+        {
+          "path": "docs/qa/v112-homeworld-live-guidance/v112-live-guidance-direct-tests.log",
+          "sha256": "f3915ddaf81fd6a88c41b42ad2b2cd9538872ec5256c2b088bd6c161e058766a",
+          "bytes": 981
+        },
+        {
+          "path": "docs/qa/v112-homeworld-live-guidance/component-react-r2/result.json",
+          "sha256": "81afa44983e7b515b95a1d85c33aff3bca8092ed76da11e6649983b97bcb77ed",
+          "bytes": 3377
+        },
+        {
+          "path": "docs/qa/v112-homeworld-live-guidance/component-react-r2/1440px-live-guidance.png",
+          "sha256": "d3b39ffa02879f1272a2c28a75c1e1314af2489c6dbe56d5a1dbd631f4ec9b25",
+          "bytes": 24664
+        },
+        {
+          "path": "docs/qa/v112-homeworld-live-guidance/component-react-r2/390px-live-guidance.png",
+          "sha256": "80025a626865acead7a3f374588c63d298e3c1b7c0025cc9ccb015ab88472870",
+          "bytes": 19300
+        },
+        {
+          "path": "docs/qa/v112-homeworld-live-guidance/v112-final-live-guidance-evidence-tests-r4b.log",
+          "sha256": "1a832bb1b8bb7d76c9615242b90eefe7304b3478419d1bd52dea978ae7a34c18",
+          "bytes": 904
+        },
+        {
+          "path": "docs/qa/v112-homeworld-live-guidance/v112-route-guidance-chromium-benchmark-result.json",
+          "sha256": "602aabe5da017b7fe18bf49adb8626856278b8932f533887bf8a2cd092a189d7",
+          "bytes": 4830
+        },
+        {
+          "path": "docs/v112-homeworld-validation.json",
+          "sha256": "b9a0ba49b28dd042813861c2909cb913cd9eb2049c38979f819aeee6ebf8323e",
+          "bytes": 712807
         }
       ],
-      "remaining": "Neuf scénarios couvrent 90 positions, quinze services et plus de 500 pas du vrai moteur sans reset. Le transport Worker et les interactions du navigateur compilé restent une validation distincte ; les obstacles, volumes et règles de propriétaire sont conservés."
+      "remaining": "Le modèle couvre 90 positions et quinze services ; le compilé vérifie officier, mausolée, archives, route après restauration et mobile390. Il ne parcourt pas toutes les combinaisons de charges et d’études. Le calcul pur mesuré≈5ms/appel exclut React/layout/peinture ; le profil390px est une émulation, pas une mesure sur téléphone physique."
     },
     {
       "id": "HW112-CITY-LIFE",
       "title": "Tissu urbain et espaces visuellement vides",
       "source": "Brief Homeworld V81 §§12, 15, 16, 21",
       "behavior": "Sept circuits passifs de 180 à 200 unités habitent les longs passages : deux courriers, une artisane, une veilleuse du quai et trois gardes. Les 674 échantillons utilisent la géométrie fixe et des distances de protection ; trois atlas V74 et leurs deux sens natifs sont réemployés.",
-      "status": "LIVRE_PARTIEL",
+      "status": "VALIDE_CIBLE",
       "implementation": [
         "app/game/HomeworldPublicLifeV112.tsx",
         "app/game/systems/homeworldPublicLifeV112.ts",
@@ -205,16 +274,21 @@
           "path": "docs/qa/v112-public-life/model-motor-native-ssr-tests.log",
           "sha256": "4a4deedda75433fab7af916cda762d1826d887b4e5ce3abb28a2bcf2f15155bb",
           "bytes": 1995
+        },
+        {
+          "path": "docs/v112-homeworld-validation.json",
+          "sha256": "b9a0ba49b28dd042813861c2909cb913cd9eb2049c38979f819aeee6ebf8323e",
+          "bytes": 712807
         }
       ],
-      "remaining": "Six tests de modèle, moteur, source native et rendu React passent. Figurants passifs, pas de nouveau PNG, idle, service, quête, gain ou sauvegarde ; pas d’évitement autonome des charges déplacées après admission. Le rendu compilé reste à certifier."
+      "remaining": "Sept figurants passifs réemploient trois atlas V74 et leurs deux sens natifs. Pas de nouveau PNG, idle, geste social, service, quête, gain ou sauvegarde. L’admission est vérifiée contre la géométrie fixe ; pas d’évitement autonome des charges déplacées après coup ni clôture globale des rôles ou du catalogue."
     },
     {
       "id": "HW112-UPGRADE-RECOVERY",
       "title": "Reprendre un ancien checkpoint ou point de phase occupé par un nouveau meuble",
       "source": "Brief Homeworld V81 §§23 et 26, QA 7 sauvegarde ; reprise V111 interrompue au poste K-17",
       "behavior": "Après consultation puis confirmation, les checkpoints, derniers points incomplets et pièces au sol occupés par un nouveau meuble sont restaurés localement à au plus 96 unités. Une copie exacte externe du point et des sept documents précède l’écriture. Seuls les points concernés changent ; le personnage distant, les accords, provenances et distances sont conservés. La reprise K-17 s’ancre au point physique réellement atteint, y compris dans la tolérance de quatre unités.",
-      "status": "LIVRE_PARTIEL",
+      "status": "VALIDE_CIBLE",
       "implementation": [
         "app/game/HomeworldHub.tsx",
         "app/game/HomeworldUpgradeRecoveryV112.tsx",
@@ -241,23 +315,28 @@
       "proof": [
         {
           "path": "docs/qa/v112-homeworld-upgrade-recovery/model-and-hub-tests.log",
-          "sha256": "0716b0d254350be4458b4a48c6702ae16511cf1e1494cb07c6fc2f518012d72d",
-          "bytes": 8690
+          "sha256": "4ff3bc9792742efe79ad4fc0717bc49061e2065604f6579cc5abcf9b2110d36f",
+          "bytes": 8689
         },
         {
           "path": "docs/qa/v112-homeworld-upgrade-recovery/validation.json",
-          "sha256": "3718024444b8ad15c32a3e864a4858a1c95304963caa3eaf636f4e5b24c76039",
-          "bytes": 2122
+          "sha256": "3ef5cd4e8c39f721e8d4b27e2811e3733f168b0144c4b196d551609601a81dbd",
+          "bytes": 3721
+        },
+        {
+          "path": "docs/v112-homeworld-validation.json",
+          "sha256": "b9a0ba49b28dd042813861c2909cb913cd9eb2049c38979f819aeee6ebf8323e",
+          "bytes": 712807
         }
       ],
-      "remaining": "27 scénarios de modèle, vrai moteur et callbacks Hub passent. Cette migration locale explicite ne compte pas comme une marche et ne crée ni accord, récompense ou objet. Aucun nouveau champ Save12 ; les acquittements différés sont finalisés seulement sur les octets confirmés. La recette compilée complète UpgradeRecovery reste à certifier."
+      "remaining": "Les 27 scénarios modèle/moteur/Hub et cinq témoins compilés couvrent checkpoint desktop/mobile, last distant, plaque au sol et lot de cargaison au sol. La copie des sept originaux reste exacte ; seuls les points concernés migrent localement. Ni marche créditée, accord, récompense ou objet créé. Les autres opérations/campagnes et les exigences source héritées restent ouvertes."
     },
     {
       "id": "PIT112-BACKWARD-THROWS",
       "title": "Projections arrière Feral et Scar avec deux sens natifs",
       "source": "M_F006_TH_B · 05_MOVES_PROPOSES!N10 ; M_F003_TH_B · 05_MOVES_PROPOSES!N7",
       "behavior": "Le moteur V17 de workbook-v112 raccorde 4 + L + M aux projections arrière Feral/Scar : fenêtres 10/3/32, 110 dégâts, zéro coût, cible réelle, arc continu, point arrière valide, huit ticks de déchoppe, reprise et replay exacts. Les archives V16 restent inchangées. Le runtime sélectionne 48 dessins natifs dans 22 PNG : 34 cases de huit feuilles et quatorze poses isolées remplaçant quatorze cases non retenues.",
-      "status": "LIVRE_PARTIEL",
+      "status": "VALIDE_CIBLE",
       "implementation": [
         "app/game/PitCanvas.tsx",
         "app/game/systems/pitCombat.ts",
@@ -274,7 +353,8 @@
         "tests/pit-backward-throw-art-v112.test.mjs",
         "tests/pit-backward-controls-v112.test.mjs",
         "tests/pit-backward-art-provenance-v112.test.mjs",
-        "docs/suivi-production/v112-pit-backward/README.md"
+        "docs/suivi-production/v112-pit-backward/README.md",
+        "tests/pit-replay-export-v112.test.mjs"
       ],
       "proof": [
         {
@@ -361,9 +441,59 @@
           "path": "docs/qa/v112-pit-backward/worker-observation-validation.json",
           "sha256": "166dbe70e14909360911acc1747fbf4dbc5fa3756150d051116de32330c6cdb6",
           "bytes": 874
+        },
+        {
+          "path": "docs/qa/v112-pit-backward/replay-export-tests.log",
+          "sha256": "59f44711625c15fedc7241a9e701e9bf3632dd5e2232592f6f11fca55d4cdee5",
+          "bytes": 1229
+        },
+        {
+          "path": "docs/qa/v112-pit-backward/replay-export-validation.json",
+          "sha256": "e41b1d0483140f292c48f13f7074fa8d852fea502a8b113d569fb8a72008d746",
+          "bytes": 1670
+        },
+        {
+          "path": "docs/qa/v112-pit-backward/observed-whiff/index.json",
+          "sha256": "2bad669fc9130c993a5f54264f8b992d25176395cd198336325ce18621d3929b",
+          "bytes": 1415
+        },
+        {
+          "path": "docs/qa/v112-pit-backward/observed-whiff/v112-pit-driver-r3-validation.json",
+          "sha256": "a8b6128773c41a23ed370dde2c4439a941dbd5829ddfb8703fee2cec7746340f",
+          "bytes": 1576
+        },
+        {
+          "path": "docs/qa/v112-pit-backward/observed-whiff/diagnostic.json",
+          "sha256": "df98c696ef0857ab399c97ffc32b38eb2db25262b44503883cdd23fc83c4a35c",
+          "bytes": 805607
+        },
+        {
+          "path": "docs/qa/v112-pit-backward/observed-whiff/v112-r3-pit-browser-whiff-observation-v112-direct.log",
+          "sha256": "37a6c776bbb8739f66b59a3ca7d71417d33236013ad3eaf8442885c8aab4dff9",
+          "bytes": 1729
+        },
+        {
+          "path": "docs/qa/v112-pit-backward/observed-whiff/v112-r3-pit-browser-worker-observation-v112-direct.log",
+          "sha256": "fcb86c7062d97fc0e5ac1f9cd7b8821a869480496ab5381e67c1b8922bcc74cf",
+          "bytes": 953
+        },
+        {
+          "path": "docs/qa/v112-pit-backward/observed-whiff/v112-r3-pit-replay-export-v112-direct.log",
+          "sha256": "ff44fdd2a8f4c189d160c16505f058485f58fe8bf4312eb7e76c247342de5fd5",
+          "bytes": 1230
+        },
+        {
+          "path": "docs/v112-pit-validation.json",
+          "sha256": "6f357c742ee396fc94add6210116e163620df358e3cb3d18909fc38564710872",
+          "bytes": 931415
         }
       ],
-      "remaining": "Portée du duo d’origine seulement ; autres partenaires, costumes et variantes ouverts. Les 23 productions comprennent un rejet conservé hors public, sans doubler les cases remplacées dans le compte des 48 dessins admis. Aucun finisher, campagne ou kit complet n’est déduit. La recette publique compilée reste à certifier séparément."
+      "remaining": "Le compilé valide deux parcours du duo d’origine, huit groupes de rôles/orientations et 48 dessins runtime sélectionnés sur 22 PNG. Une victoire Feral–Scar est réellement jouée, exportée et relue publiquement ; le parcours inverse vérifie prises, orientations, déchoppe et mur. La première tentative R4 expire sur le lancement J2, cause non attribuée ; sa seule reprise complète byte-identique passe127/39 sans changement de code ou de critère. Autres partenaires, costumes, variantes, finishers, campagnes et kits complets restent ouverts.",
+      "production": {
+        "path": "docs/v112-pit-validation.json",
+        "sha256": "6f357c742ee396fc94add6210116e163620df358e3cb3d18909fc38564710872",
+        "bytes": 931415
+      }
     },
     {
       "id": "HW112-EXCEL-FOLLOWUP",
@@ -383,7 +513,8 @@
         "docs/v112-open-workstreams-audit.json",
         "docs/v112-open-workstreams-audit.md",
         "docs/excel-followup-homeworld-v112.md",
-        "tests/homeworld-ecotones-v90.test.mjs"
+        "tests/homeworld-ecotones-v90.test.mjs",
+        "scripts/check-excel-history-compat-v112.mjs"
       ],
       "proof": [
         {
@@ -410,6 +541,21 @@
           "path": "docs/qa/v112-excel-history/extended-capsule-reproduction.log",
           "sha256": "54f8eb75d215061b9418f0c690a1d2efc03474d9abdfdba2a95975dcaadab8a4",
           "bytes": 240
+        },
+        {
+          "path": "docs/qa/v112-excel-history/original-independent-v111-guard.log",
+          "sha256": "d737be2965d534cfb26083f27f4bcd41f7370339427135e7d341dace227bba9a",
+          "bytes": 16784
+        },
+        {
+          "path": "docs/qa/v112-excel-followup/final-followup-and-history-14-tests.log",
+          "sha256": "3dbe7e2adc429452352d211eecbeff78504a1023bed57d37361338e705b02b56",
+          "bytes": 6818
+        },
+        {
+          "path": "docs/qa/v112-excel-followup/final-metadata-tools-lint.json",
+          "sha256": "2ad40aa66eb572280e4d7652a98836e674d9b1659f77777b4aa015bf594a5d5f",
+          "bytes": 272
         }
       ],
       "remaining": "Les contrôles ZIP/XML et de préservation ne sont pas une exécution d’Excel natif ; les clôtures source demandent leurs propres preuves gameplay complètes."
@@ -449,32 +595,52 @@
     {
       "id": "V112-EXCEL-STRUCTURE-AND-HISTORY-GUARDS",
       "status": "PASS_STRUCTURE",
-      "scope": "Neuf tests du suivi V112 : 113 feuilles préservées, 122 feuilles finales, altération du seul texte historique détectée, compteurs 56/9/354, refus des preuves V111 ou avec erreur réseau, identité Git privée et onze assertions V111 de porte inchangées.",
-      "command": "node --experimental-strip-types --test --test-concurrency=1 tests/homeworld-excel-followup-v112.test.mjs tests/homeworld-excel-history-v112.test.mjs",
+      "scope": "14 contrôles de premier niveau : neuf sur le suivi/classeur V112, quatre sur la capsule historique et un wrapper original V90. Préservation des 113 feuilles, 122 finales, cinq formules, mutation de texte détectée, compteurs 56/9/354, refus des erreurs/régressions de provenance et de mélange de builds, régénération exacte. Lint de trois outils courants sans erreur.",
+      "command": "node --experimental-strip-types --test --test-concurrency=1 tests/homeworld-excel-followup-v112.test.mjs tests/homeworld-excel-history-v112.test.mjs tests/homeworld-ecotones-v90.test.mjs ; node node_modules/eslint/bin/eslint.js scripts/build-homeworld-followup-v112.mjs scripts/check-excel-history-compat-v112.mjs tests/homeworld-excel-followup-v112.test.mjs",
       "evidence": [
         {
           "path": "docs/qa/v112-excel-followup/initial-followup-and-history-tests.log",
           "sha256": "33745b2c20ae67deed3a28119cf766a428806051b7a28e0f20a588974c091560",
           "bytes": 2752
+        },
+        {
+          "path": "docs/qa/v112-excel-followup/final-followup-and-history-14-tests.log",
+          "sha256": "3dbe7e2adc429452352d211eecbeff78504a1023bed57d37361338e705b02b56",
+          "bytes": 6818
+        },
+        {
+          "path": "docs/qa/v112-excel-followup/final-metadata-tools-lint.json",
+          "sha256": "2ad40aa66eb572280e4d7652a98836e674d9b1659f77777b4aa015bf594a5d5f",
+          "bytes": 272
         }
       ],
-      "limit": "Suite structurelle et garde historique ; ne certifie ni le rendu V112 ni Excel natif. Les 125 assertions V111 complètes sont une validation historique séparée."
+      "limit": "Structure ZIP/XML et provenance, sans Excel natif. Le journal initial couvre neuf contrôles antérieurs ; le journal final couvre les 14 actuels. Les onze assertions de porte et les sept assertions V90 imbriquées recouvrent la suite historique de 132, sans addition comme comportements distincts. Les rendus compilés sont certifiés séparément par domaine."
     },
     {
       "id": "V112-SPATIAL-MODEL",
       "status": "PASS_MODELE",
-      "scope": "Vingt et un scénarios : quatorze sur nature, faces, socles et places, plus sept critères courants d’écotones. 51 façades, 20 098 points ; six socles ; six meubles admis ; 315/392 instances naturelles admises, 77 refusées, zéro intersection résiduelle ; 39 formations et onze écotones.",
-      "command": "node --experimental-strip-types --test --test-concurrency=1 tests/homeworld-natural-placements-v112.test.mjs tests/homeworld-natural-rock-faces-v112.test.mjs tests/homeworld-spatial-v112.test.mjs tests/homeworld-public-places-v112.test.mjs tests/homeworld-ecotones-v112.test.mjs",
+      "scope": "27 scénarios actuels : 21 précédents repassent et six nouveaux couvrent les deux raccords exacts du mausolée. Deux poches locales à pas1u deviennent nulles ; les 34 485 échantillons extérieurs restent inchangés. Six socles, six meubles, 315/392 instances naturelles admises, 77 refusées, 39 formations, onze écotones.",
+      "command": "Commandes exactes dans ground-joints-previous-21-assertions.log, ground-joints-six-assertions.log et ground-joints-model-audit.log.",
       "evidence": [
         {
           "path": "docs/qa/v112-spatial/audit.json",
-          "sha256": "2355523724f462fcf5396a7701b962e8deacf5d54ea4cdf32d90946dff51d192",
-          "bytes": 25301
+          "sha256": "228baa46b79e25e17a15a647941d2eb381bb08455679588319db509003b7c74d",
+          "bytes": 27632
         },
         {
-          "path": "docs/qa/v112-spatial/current-21-assertions.log",
-          "sha256": "5f1fb365d4ebd25ae4dc6884c9e7c59bbc04e4fa50f78febcf6ce16bbd9c8131",
-          "bytes": 6604
+          "path": "docs/qa/v112-spatial/ground-joints-previous-21-assertions.log",
+          "sha256": "43886cc2501d30fbb47024112389e2fd321f39881b53b4608038439dee79552d",
+          "bytes": 6606
+        },
+        {
+          "path": "docs/qa/v112-spatial/ground-joints-six-assertions.log",
+          "sha256": "aeee8d12961cc00897f606ea09d592fe22e37759c9cefa0d439108635c9b4fcc",
+          "bytes": 1668
+        },
+        {
+          "path": "docs/qa/v112-spatial/ground-joints-model-audit.log",
+          "sha256": "228baa46b79e25e17a15a647941d2eb381bb08455679588319db509003b7c74d",
+          "bytes": 27632
         }
       ],
       "limit": "Ni capture navigateur ni admission artistique globale."
@@ -641,13 +807,13 @@
       "evidence": [
         {
           "path": "docs/qa/v112-homeworld-upgrade-recovery/model-and-hub-tests.log",
-          "sha256": "0716b0d254350be4458b4a48c6702ae16511cf1e1494cb07c6fc2f518012d72d",
-          "bytes": 8690
+          "sha256": "4ff3bc9792742efe79ad4fc0717bc49061e2065604f6579cc5abcf9b2110d36f",
+          "bytes": 8689
         },
         {
           "path": "docs/qa/v112-homeworld-upgrade-recovery/validation.json",
-          "sha256": "3718024444b8ad15c32a3e864a4858a1c95304963caa3eaf636f4e5b24c76039",
-          "bytes": 2122
+          "sha256": "3ef5cd4e8c39f721e8d4b27e2811e3733f168b0144c4b196d551609601a81dbd",
+          "bytes": 3721
         }
       ],
       "limit": "Modèle/moteur/Hub, pas navigateur. Les dix fixtures versionnées sont réellement jouées dans V111 ; le test de capacité 512 ajoute explicitement des échantillons de distance nulle et ne prétend pas provenir de l’ancien UI."
@@ -680,6 +846,511 @@
         }
       ],
       "limit": "Pas une recette navigateur compilée. Le typecheck global encore en cours lors de la production de ces journaux n’est pas utilisé comme preuve positive ; le rapport compilé final reste distinct."
+    },
+    {
+      "id": "V112-PIT-REPLAY-EXPORT-GUARD",
+      "status": "PASS_MODELE",
+      "scope": "La tentative compilée R1 a révélé que le vrai prédicat JSX réservait l’export à V16. Quatre tests ciblés du prédicat public et du pilote passent après admission explicite de V17 et attente de visibilité/Promise.all. Lint ciblé de trois fichiers réussi.",
+      "command": "Commandes et exitCode0 consignés dans replay-export-validation.json et replay-export-tests.log.",
+      "evidence": [
+        {
+          "path": "docs/qa/v112-pit-backward/replay-export-tests.log",
+          "sha256": "59f44711625c15fedc7241a9e701e9bf3632dd5e2232592f6f11fca55d4cdee5",
+          "bytes": 1229
+        },
+        {
+          "path": "docs/qa/v112-pit-backward/replay-export-validation.json",
+          "sha256": "e41b1d0483140f292c48f13f7074fa8d852fea502a8b113d569fb8a72008d746",
+          "bytes": 1670
+        }
+      ],
+      "limit": "Régression ciblée après le vrai défaut R1 ; aucune production R1 déclarée PASS, aucun result.json R1 fabriqué. Le nouveau build gelé R2 et sa recette complète restent nécessaires."
+    },
+    {
+      "id": "V112-INDEPENDENT-ORIGINAL-V111-HISTORY-GUARD",
+      "status": "PASS_HISTORIQUE",
+      "scope": "Le checker indépendant V111 original, inchangé, reconstruit V110 depuis ses quatorze préimages Git et exécute ses huit fichiers et 56 assertions. Les 1 386 entrées du gel et le classeur V110 105 feuilles/0b7d… sont reproduits exactement. La base de départ privée V111 évite que douze fichiers supplémentaires modifiés par V112 contaminent ce contrôle historique.",
+      "command": "node scripts/check-excel-history-compat-v112.mjs --check --tests",
+      "evidence": [
+        {
+          "path": "docs/qa/v112-excel-history/original-independent-v111-guard.log",
+          "sha256": "d737be2965d534cfb26083f27f4bcd41f7370339427135e7d341dace227bba9a",
+          "bytes": 16784
+        }
+      ],
+      "limit": "Méthode indépendante historique V110, pas un test du runtime V112. Ces 56 assertions recouvrent la suite V110 déjà exécutée par les autres capsules ; elles ne sont pas additionnées comme 56 nouveaux comportements. Aucun ancien checker ou test n’est réécrit."
+    },
+    {
+      "id": "V112-LEGACY-UI-COMPATIBILITY-R2",
+      "status": "PASS_COMPATIBILITY_R2",
+      "scope": "87 contrôles, quatre parcours V111 complets, quatorze captures réellement inspectées et quatre Save12 conservant flaying-tool, exécutés sur le runtime V112 R2 433ca03c651aad52de1cae02926152f4abfb4da3 / Build ID NRapDZCMK0dVatwXlwZcw. Les 1 458 sources observées restent identiques et vérifiées comme sous-ensemble du gel R2 de 1 560 entrées.",
+      "command": "node scripts/qa-homeworld-continuation-v111.mjs ; paramètres exacts et déclaration des fixtures conservés dans le brut archivé.",
+      "evidence": [
+        {
+          "path": "docs/qa/v112-legacy-ui-regressions/README.md",
+          "sha256": "74b248f8b350e96eff4d37d9b0125221ee033832167c13cf9cb079a271f84f7f",
+          "bytes": 2258
+        },
+        {
+          "path": "docs/qa/v112-legacy-ui-regressions/browser-result.json.gz",
+          "sha256": "f7915601d2c1950fbbb7aa86df2e62a1884ccb541182e028240d222019520a10",
+          "bytes": 180258
+        },
+        {
+          "path": "docs/qa/v112-legacy-ui-regressions/browser.log",
+          "sha256": "cefdb91c39930b986a15b6a1f7b5beb43b3fcb6a3cfcc402202b6d24c181d17c",
+          "bytes": 6840
+        },
+        {
+          "path": "docs/qa/v112-legacy-ui-regressions/continuation-00-native-explanation-pose.png",
+          "sha256": "68f5c304ffa955a12a6e72eddb6f9f04a65b10943cc8914fef923b5f710d9dc1",
+          "bytes": 23917
+        },
+        {
+          "path": "docs/qa/v112-legacy-ui-regressions/continuation-00-native-indication-pose.png",
+          "sha256": "d8b20c1ddb40f3737f3ec03fd77fffa703ed3527d56b6a822f8cd9141d9fec5c",
+          "bytes": 23981
+        },
+        {
+          "path": "docs/qa/v112-legacy-ui-regressions/continuation-01-completed-deferred-b.png",
+          "sha256": "4d62afe1813bec82e5de65f75f67367dfcf9238a53f53f3b363e476b561e0154",
+          "bytes": 168917
+        },
+        {
+          "path": "docs/qa/v112-legacy-ui-regressions/continuation-01-conserved-b-keyboard-record.png",
+          "sha256": "f8574654304bc03b6e2647074d65f12a7b2e301e7b3a62afd08aef98f6d4c629",
+          "bytes": 207741
+        },
+        {
+          "path": "docs/qa/v112-legacy-ui-regressions/continuation-02-new-consented-continuation.png",
+          "sha256": "7dd8c5088b3b00fa34f0e81f22f207e4df2b19916e2a57d98876193660094728",
+          "bytes": 993473
+        },
+        {
+          "path": "docs/qa/v112-legacy-ui-regressions/continuation-03-completed-independent-a.png",
+          "sha256": "3f8bab7abe6a109167c0275ff483e00245b384d693d9c02250b9385ba806acf6",
+          "bytes": 205048
+        },
+        {
+          "path": "docs/qa/v112-legacy-ui-regressions/entry.json",
+          "sha256": "832877443650375063f7b2e1aa410cd733b8396ebdda16e91e4fab14119b303d",
+          "bytes": 6994
+        },
+        {
+          "path": "docs/qa/v112-legacy-ui-regressions/legacya-01-direct-a-completed.png",
+          "sha256": "53a41d929a30efdf775153355977da747ca4a9f2eeefabb31d2268364d7c4569",
+          "bytes": 204879
+        },
+        {
+          "path": "docs/qa/v112-legacy-ui-regressions/mobileguide-00-keyboard-conserved-notebook.png",
+          "sha256": "2f53a95e2cd24af6f268ef815645316823cc7c049460235f682658baea3c8064",
+          "bytes": 218188
+        },
+        {
+          "path": "docs/qa/v112-legacy-ui-regressions/mobileguide-00-open-conserved-notebook.png",
+          "sha256": "92d6f562582d854d4a38cc631e8b186250714d602900d9086b6afa8e59f78d81",
+          "bytes": 222856
+        },
+        {
+          "path": "docs/qa/v112-legacy-ui-regressions/mobileguide-01-compact-arrived-guide.png",
+          "sha256": "95c76694ad24763865b341964fc105dcb99d22e6dd7e672718f7e5b742dadeb4",
+          "bytes": 201801
+        },
+        {
+          "path": "docs/qa/v112-legacy-ui-regressions/mobileguide-02-requested-route-options.png",
+          "sha256": "ef2b79f1008c19346a151019aba0e8f6481aee263abe4686d9c076c852ac09a4",
+          "bytes": 114563
+        },
+        {
+          "path": "docs/qa/v112-legacy-ui-regressions/mobileguide-03-keyboard-route-options.png",
+          "sha256": "f9fc3c06c0abc2c2c3aef8e1b1e0c28ac8752039e53ec51408106ddc7e878253",
+          "bytes": 114769
+        },
+        {
+          "path": "docs/qa/v112-legacy-ui-regressions/opened.json",
+          "sha256": "20708a8c21b3a60e783473041fffca580efbe54c3e86d2faa69864c750494000",
+          "bytes": 679
+        },
+        {
+          "path": "docs/qa/v112-legacy-ui-regressions/recovery-01-explicit-recovery-preview.png",
+          "sha256": "5fd988bec92ea082911cec04e48e7dbe02a463b193d392174046266d2b152cd8",
+          "bytes": 88775
+        },
+        {
+          "path": "docs/qa/v112-legacy-ui-regressions/recovery-02-confirmed-exterior-restoration.png",
+          "sha256": "a34e031332ffa9bd3afb92a89120af8321b7aa0c177cb0dd923288c23a70d3a3",
+          "bytes": 1549333
+        },
+        {
+          "path": "docs/qa/v112-legacy-ui-regressions/runtime-freeze-r2.json",
+          "sha256": "b9f6c61d12dc0bd65c6888b551a26ed028e89967dc232860c5b4afbab448186a",
+          "bytes": 290542
+        },
+        {
+          "path": "docs/qa/v112-legacy-ui-regressions/verification.json",
+          "sha256": "af8df5fc2768153a30286bf863c40ed980060477a84f811afde8fc5db228ca94",
+          "bytes": 2395
+        }
+      ],
+      "limit": "Régression de compatibilité R2 uniquement : pas un nouveau certificat V111, pas une validation de production V112 R3 et pas une observation du gel complet. Le vrai gel R2 est archivé à l’identique ; aucun ancien Build ID n’est relabelisé. Les deux certificats courants Homeworld/Pit restent distincts."
+    },
+    {
+      "id": "V112-PIT-OBSERVED-WHIFF-OBSERVER-R3",
+      "status": "PASS_MODELE",
+      "scope": "Treize contrôles d’observateur regroupent six nouveaux tests de whiff observé, trois tests Worker et quatre tests export déjà suivis. Le pilote exige le vrai début TH_B puis les 45 frames effectives jusqu’à idle, avec zéro capture et santé inchangée dans toute la trace ; aucun délai fixe de 750ms ne sert de preuve.",
+      "command": "Invocations originales inchangées dans observed-whiff/v112-pit-driver-r3-validation.json ; liens portables et empreintes dans observed-whiff/index.json.",
+      "evidence": [
+        {
+          "path": "docs/qa/v112-pit-backward/observed-whiff/index.json",
+          "sha256": "2bad669fc9130c993a5f54264f8b992d25176395cd198336325ce18621d3929b",
+          "bytes": 1415
+        },
+        {
+          "path": "docs/qa/v112-pit-backward/observed-whiff/v112-pit-driver-r3-validation.json",
+          "sha256": "a8b6128773c41a23ed370dde2c4439a941dbd5829ddfb8703fee2cec7746340f",
+          "bytes": 1576
+        },
+        {
+          "path": "docs/qa/v112-pit-backward/observed-whiff/diagnostic.json",
+          "sha256": "df98c696ef0857ab399c97ffc32b38eb2db25262b44503883cdd23fc83c4a35c",
+          "bytes": 805607
+        },
+        {
+          "path": "docs/qa/v112-pit-backward/observed-whiff/v112-r3-pit-browser-whiff-observation-v112-direct.log",
+          "sha256": "37a6c776bbb8739f66b59a3ca7d71417d33236013ad3eaf8442885c8aab4dff9",
+          "bytes": 1729
+        },
+        {
+          "path": "docs/qa/v112-pit-backward/observed-whiff/v112-r3-pit-browser-worker-observation-v112-direct.log",
+          "sha256": "fcb86c7062d97fc0e5ac1f9cd7b8821a869480496ab5381e67c1b8922bcc74cf",
+          "bytes": 953
+        },
+        {
+          "path": "docs/qa/v112-pit-backward/observed-whiff/v112-r3-pit-replay-export-v112-direct.log",
+          "sha256": "ff44fdd2a8f4c189d160c16505f058485f58fe8bf4312eb7e76c247342de5fd5",
+          "bytes": 1230
+        }
+      ],
+      "limit": "Tests de pilote et diagnostic exploratoire uniquement, pas une recette compilée. Les trois Worker et quatre export recouvrent les validations précédentes ; aucun R2 échoué ou retry n’est promu. Le log lint vide est conservé original et n’est pas utilisé comme preuve positive autonome."
+    },
+    {
+      "id": "V112-INTEGRATION-BUILD-TYPES-INPUT-SAVE",
+      "status": "PASS_CODE_ET_MODELE",
+      "scope": "Build compilé R3 et TypeScript réussis ; lint de 36 fichiers applicatifs réussi ; suites par périmètre : 109 tests V112 hors Excel, 17 gardes/observateurs R3, 48 entrées/visites, 177 sauvegardes, 51 régressions V110 et 116 V111 courantes. Les sources applicatives/config/images restent identiques de R2 à R3 ; seules les recettes et leurs gardes ont évolué.",
+      "command": "Commandes exactes conservées dans les journaux et save-command.json ; build npm run build:production, typecheck tsc --noEmit --incremental false.",
+      "evidence": [
+        {
+          "path": "docs/qa/v112-integration/production-build-r3.log",
+          "sha256": "eafd7d01036daec341f6e63ec632f9256526dc22120617757ae9f23c0335d7b8",
+          "bytes": 4679
+        },
+        {
+          "path": "docs/qa/v112-integration/final-typecheck.log",
+          "sha256": "b1c01805936547c238d36bec9233242a14d91e361400a5878e562e52395bd79a",
+          "bytes": 79
+        },
+        {
+          "path": "docs/qa/v112-integration/final-app-lint.json",
+          "sha256": "23619de56bd56c335e36a06fb20131d09026dd429d612a8d5aef2957ab606f3c",
+          "bytes": 1973
+        },
+        {
+          "path": "docs/qa/v112-integration/final-app-lint.log",
+          "sha256": "bac7d211312f069ae6fdd8b90ec05720f4e1202412477ba30dd17b3c84aaadc8",
+          "bytes": 1667
+        },
+        {
+          "path": "docs/qa/v112-integration/input-visit-final-regressions.log",
+          "sha256": "a3f65f30d1be2c0bcde03108925b02af258f431c20f63342b14b9a1eb1002c7b",
+          "bytes": 5429
+        },
+        {
+          "path": "docs/qa/v112-integration/save-command.json",
+          "sha256": "56883700034dbdc34dfae46f0e191d4e5a59b5c9fda3d2578046e92d9855671b",
+          "bytes": 1737
+        },
+        {
+          "path": "docs/qa/v112-integration/save-regressions.log",
+          "sha256": "20c08749fb093b6e450ba1677320061718a109745773a5f3c89755a7e1cb2413",
+          "bytes": 18504
+        },
+        {
+          "path": "docs/qa/v112-integration/current-v110-final-regressions.log",
+          "sha256": "b0eb2e1d2d596b6ef9bb1a4409f4b94db72d8d1d43f1ab33a7a4905449b5a51e",
+          "bytes": 6433
+        },
+        {
+          "path": "docs/qa/v112-integration/current-v111-final-regressions.log",
+          "sha256": "9062ee15f44efcbb268cf01e0db1278bc16c247c2dd35abe66056108d68442e2",
+          "bytes": 13386
+        },
+        {
+          "path": "docs/qa/v112-integration/final-17-observer-proof-tests-r3.log",
+          "sha256": "c3f259868fb1422f8daadbd69cbef3ecddbb80f2fe588f89092301226295caa7",
+          "bytes": 2081
+        },
+        {
+          "path": "docs/qa/v112-integration/final-v112-109-regressions-r2.log",
+          "sha256": "f4198bbc201c00b01711fb542f0601e5da332e1f57a658369b70a759ae1a8e7d",
+          "bytes": 14025
+        }
+      ],
+      "limit": "Ces suites se recouvrent et ne sont pas additionnées comme des comportements uniques. Validation du build local et du code ; pas un déploiement/CDN ni une exécution d’Excel natif. Les recettes complètes R3 des deux domaines restent leurs propres preuves de navigateur."
+    },
+    {
+      "id": "V112-LIVE-GUIDANCE-POSITION-AND-WORKER",
+      "status": "PASS_COMPOSANT",
+      "scope": "Trois tests directs de position fraîche, onze contrôles du véritable composant React et du vrai Worker avec coordonnées/owner/pause explicitement préparés, sept gardes du pilote. Le guidage n’attend plus350ms avant d’utiliser la position affichée.",
+      "command": "node tests/homeworld-live-guidance-v112.test.mjs ; node scripts/qa-homeworld-live-guidance-v112.mjs ; commandes des gardes et mesures conservées dans les preuves portables.",
+      "evidence": [
+        {
+          "path": "docs/qa/v112-homeworld-live-guidance/README.md",
+          "sha256": "8bf24a997276cbb99edc375585c18644b4dfb38d433f11efa5f98b5027d6ebdd",
+          "bytes": 622
+        },
+        {
+          "path": "docs/qa/v112-homeworld-live-guidance/v112-live-guidance-direct-tests.log",
+          "sha256": "f3915ddaf81fd6a88c41b42ad2b2cd9538872ec5256c2b088bd6c161e058766a",
+          "bytes": 981
+        },
+        {
+          "path": "docs/qa/v112-homeworld-live-guidance/component-react-r2/result.json",
+          "sha256": "81afa44983e7b515b95a1d85c33aff3bca8092ed76da11e6649983b97bcb77ed",
+          "bytes": 3377
+        },
+        {
+          "path": "docs/qa/v112-homeworld-live-guidance/component-react-r2/1440px-live-guidance.png",
+          "sha256": "d3b39ffa02879f1272a2c28a75c1e1314af2489c6dbe56d5a1dbd631f4ec9b25",
+          "bytes": 24664
+        },
+        {
+          "path": "docs/qa/v112-homeworld-live-guidance/component-react-r2/390px-live-guidance.png",
+          "sha256": "80025a626865acead7a3f374588c63d298e3c1b7c0025cc9ccb015ab88472870",
+          "bytes": 19300
+        },
+        {
+          "path": "docs/qa/v112-homeworld-live-guidance/v112-final-live-guidance-evidence-tests-r4b.log",
+          "sha256": "1a832bb1b8bb7d76c9615242b90eefe7304b3478419d1bd52dea978ae7a34c18",
+          "bytes": 904
+        },
+        {
+          "path": "docs/qa/v112-homeworld-live-guidance/v112-route-guidance-chromium-benchmark-result.json",
+          "sha256": "602aabe5da017b7fe18bf49adb8626856278b8932f533887bf8a2cd092a189d7",
+          "bytes": 4830
+        }
+      ],
+      "limit": "Les coordonnées de composant ne sont pas du déplacement joué, et ces contrôles ne constituent pas la recette complète du jeu compilé. Mesure pure Chromium≈5ms/appel, hors React/layout/peinture ;390px est une émulation, pas un téléphone physique. Aucun parcours R3 échoué n’est relabellisé."
+    },
+    {
+      "id": "V112-LEGACY-UI-COMPATIBILITY-R4",
+      "status": "PASS_COMPATIBILITY_R4",
+      "scope": "87 contrôles, quatre parcours V111 complets, quatorze captures inspectées et quatre Save12 conservant flaying-tool sur le vrai runtime V112 R4 aa891dfff9bc022d1b7363d4b7085aca19b4d1e3 / WZwxZDYUZhpepqlaPWKpe. Les 1 458 sources observées sont identiques et présentes dans le gel R4 de 1 563 entrées.",
+      "command": "node scripts/qa-homeworld-continuation-v111.mjs ; invocation et fixtures exactes conservées dans le brut archivé R4.",
+      "evidence": [
+        {
+          "path": "docs/qa/v112-legacy-ui-regressions-r4/README.md",
+          "sha256": "2f4b347a7b12fe8432c9280c6743054449088c3473a1b988dbb831169a1e59b5",
+          "bytes": 2175
+        },
+        {
+          "path": "docs/qa/v112-legacy-ui-regressions-r4/browser-result.json.gz",
+          "sha256": "7ed61c1b153477a9d0044c9a0f1b7dd31ddbc157ceb2de859ac32450e7bc826e",
+          "bytes": 180273
+        },
+        {
+          "path": "docs/qa/v112-legacy-ui-regressions-r4/browser.log",
+          "sha256": "56a2a1dcd0b9e471c5824b84676fe5c3cab9041702a5d0f7286c16e732aa4748",
+          "bytes": 6840
+        },
+        {
+          "path": "docs/qa/v112-legacy-ui-regressions-r4/continuation-00-native-explanation-pose.png",
+          "sha256": "68f5c304ffa955a12a6e72eddb6f9f04a65b10943cc8914fef923b5f710d9dc1",
+          "bytes": 23917
+        },
+        {
+          "path": "docs/qa/v112-legacy-ui-regressions-r4/continuation-00-native-indication-pose.png",
+          "sha256": "d8b20c1ddb40f3737f3ec03fd77fffa703ed3527d56b6a822f8cd9141d9fec5c",
+          "bytes": 23981
+        },
+        {
+          "path": "docs/qa/v112-legacy-ui-regressions-r4/continuation-01-completed-deferred-b.png",
+          "sha256": "245aed467435dabf68d4c370307309063975a1f40e8dfc3768d4bbd948728348",
+          "bytes": 168952
+        },
+        {
+          "path": "docs/qa/v112-legacy-ui-regressions-r4/continuation-01-conserved-b-keyboard-record.png",
+          "sha256": "f8574654304bc03b6e2647074d65f12a7b2e301e7b3a62afd08aef98f6d4c629",
+          "bytes": 207741
+        },
+        {
+          "path": "docs/qa/v112-legacy-ui-regressions-r4/continuation-02-new-consented-continuation.png",
+          "sha256": "58b118ac5370825ef91663eb5d220301980aabcc0a172c9f5e9767db1283f40c",
+          "bytes": 1007850
+        },
+        {
+          "path": "docs/qa/v112-legacy-ui-regressions-r4/continuation-03-completed-independent-a.png",
+          "sha256": "3f8bab7abe6a109167c0275ff483e00245b384d693d9c02250b9385ba806acf6",
+          "bytes": 205048
+        },
+        {
+          "path": "docs/qa/v112-legacy-ui-regressions-r4/entry.json",
+          "sha256": "aad2dac7c93125911617ceb073540ace18472546362eecac1f70ea3db3d35685",
+          "bytes": 7106
+        },
+        {
+          "path": "docs/qa/v112-legacy-ui-regressions-r4/legacya-01-direct-a-completed.png",
+          "sha256": "53a41d929a30efdf775153355977da747ca4a9f2eeefabb31d2268364d7c4569",
+          "bytes": 204879
+        },
+        {
+          "path": "docs/qa/v112-legacy-ui-regressions-r4/mobileguide-00-keyboard-conserved-notebook.png",
+          "sha256": "d62c47446b4d2bb339a5bfa1239c4e54f137004e6f2dea2b2b9a51300ca824d3",
+          "bytes": 217903
+        },
+        {
+          "path": "docs/qa/v112-legacy-ui-regressions-r4/mobileguide-00-open-conserved-notebook.png",
+          "sha256": "5337cbb2adc0ae2ab9c1253bbdc0ca4d69198fe1af763c03e54012a0aa211ab4",
+          "bytes": 222575
+        },
+        {
+          "path": "docs/qa/v112-legacy-ui-regressions-r4/mobileguide-01-compact-arrived-guide.png",
+          "sha256": "4cb5bcc2ab32b3cd346f5184f2ba6dfd8f881543b6f5aaf1cd56f2764574b683",
+          "bytes": 201642
+        },
+        {
+          "path": "docs/qa/v112-legacy-ui-regressions-r4/mobileguide-02-requested-route-options.png",
+          "sha256": "a32b22ccd4221c5e5f8cd6518af3f4573681b8cdaabf328cfd51e9ebb59ec412",
+          "bytes": 114512
+        },
+        {
+          "path": "docs/qa/v112-legacy-ui-regressions-r4/mobileguide-03-keyboard-route-options.png",
+          "sha256": "6e0ce831d2fdcc29aeba197b0285048f63683216828729397bfb9249e6c697ec",
+          "bytes": 114736
+        },
+        {
+          "path": "docs/qa/v112-legacy-ui-regressions-r4/opened.json",
+          "sha256": "32dfa6521bfce5f7138fd906638cdcc06331ce6e6ffb15fdac5c91e126f657be",
+          "bytes": 679
+        },
+        {
+          "path": "docs/qa/v112-legacy-ui-regressions-r4/recovery-01-explicit-recovery-preview.png",
+          "sha256": "5fd988bec92ea082911cec04e48e7dbe02a463b193d392174046266d2b152cd8",
+          "bytes": 88775
+        },
+        {
+          "path": "docs/qa/v112-legacy-ui-regressions-r4/recovery-02-confirmed-exterior-restoration.png",
+          "sha256": "185090bdfcb85c25dd1fb405b34b6dece963ceafd31f738c820a5142754dc61d",
+          "bytes": 1548748
+        },
+        {
+          "path": "docs/qa/v112-legacy-ui-regressions-r4/runtime-freeze-r4.json",
+          "sha256": "988097f754c3cc8fa825190b6644e21926c0515557cbad72912bb003f7e44df6",
+          "bytes": 291082
+        },
+        {
+          "path": "docs/qa/v112-legacy-ui-regressions-r4/verification.json",
+          "sha256": "62f8314dad73e6c4ee28680dc0aac7b07f6558a7ca25e4952db6da9f3c683c55",
+          "bytes": 5484
+        }
+      ],
+      "limit": "Compatibilité seulement, observation partielle du gel ; ne remplace ni le certificat complet Homeworld ni celui de Pit. Archive R2 et anciens certificats V111 préservés à l’octet ; aucune identité de build relabellisée."
+    },
+    {
+      "id": "V112-HOMEWORLD-COMPILED-R4",
+      "status": "PASS_COMPILE_CIBLE",
+      "scope": "248 contrôles et 39 captures réellement inspectées, six familles complètes sur le build WZwxZDYUZhpepqlaPWKpe/runtime aa891dfff9bc022d1b7363d4b7085aca19b4d1e3. Les 1 563 sources sont identiques avant/après et au gel. Les cinq témoins de restauration incluent les refus d’écriture, copie exacte, départ/reprise volontaires et contrôle mobile.",
+      "command": "node scripts/qa-homeworld-public-spaces-v112.mjs ; invocation et environnement exacts du brut publiés.",
+      "evidence": [
+        {
+          "path": "docs/v112-homeworld-validation.json",
+          "sha256": "b9a0ba49b28dd042813861c2909cb913cd9eb2049c38979f819aeee6ebf8323e",
+          "bytes": 712807
+        },
+        {
+          "path": "docs/qa/v112-homeworld/entry.json",
+          "sha256": "bf2798617053468f32f727ea2bc7e12322bf05542ba11a6cafd4baa3cf83bf55",
+          "bytes": 9208
+        },
+        {
+          "path": "docs/v112-runtime-freeze.json",
+          "sha256": "988097f754c3cc8fa825190b6644e21926c0515557cbad72912bb003f7e44df6",
+          "bytes": 291082
+        }
+      ],
+      "limit": "Fixtures initiales déclarées : First Tracks préparé par modèle, quartiers connus et outil préacquis. Chaque scénario a son checkpoint, sans prétendre que le déplacement entre eux a été joué. Aucun achèvement global Homeworld/source/art ni déplacement fictif n’est déduit."
+    },
+    {
+      "id": "V112-PIT-COMPILED-R4",
+      "status": "PASS_COMPILE_CIBLE",
+      "scope": "127 contrôles et39captures réellement inspectées, deux parcours complets du duo Feral/Scar sur le runtime aa891dfff9bc022d1b7363d4b7085aca19b4d1e3 / build WZwxZDYUZhpepqlaPWKpe. Les1563sources restent exactes avant/après et au gel ; JS,console,Worker et requêtes échouées sont vides.",
+      "command": "node scripts/qa-pit-backward-throws-v112.mjs ; invocation canonique complète et environnement exacts conservés dans le brut de l’unique reprise R4.",
+      "evidence": [
+        {
+          "path": "docs/v112-pit-validation.json",
+          "sha256": "6f357c742ee396fc94add6210116e163620df358e3cb3d18909fc38564710872",
+          "bytes": 931415
+        },
+        {
+          "path": "docs/v112-runtime-freeze.json",
+          "sha256": "988097f754c3cc8fa825190b6644e21926c0515557cbad72912bb003f7e44df6",
+          "bytes": 291082
+        },
+        {
+          "path": "docs/qa/v112-pit/entry.json",
+          "sha256": "6db9a5638967c997bfacf8a33a61af590014c5fc45a8e8c01ca7efba5c900ad4",
+          "bytes": 8701
+        },
+        {
+          "path": "docs/qa/v112-integration/pit-launch-r4/attempt-sequence.json",
+          "sha256": "bda2e6935ddb2d600348f9bf9bb096bb706ad1bd2f122f1bd7e9725c313730ec",
+          "bytes": 2243
+        },
+        {
+          "path": "docs/qa/v112-integration/pit-launch-r4/disposition.json",
+          "sha256": "056c879520f992c3358ac1c20023bc1657e63bdd704883d27f3d212574149dce",
+          "bytes": 668
+        },
+        {
+          "path": "docs/qa/v112-integration/pit-launch-r4/failed-raw.json.gz",
+          "sha256": "2db0eb974f55e8ee3d1a5e1ace9e00714b1ee4335375a2276962d755d9f1f50c",
+          "bytes": 280258
+        },
+        {
+          "path": "docs/qa/v112-integration/pit-launch-r4/launch-diagnostic-unattributed.json",
+          "sha256": "7693b630306139d1c9b83ac3d1ef26a64e9c4c83584b462166183db7ce1057c7",
+          "bytes": 5637
+        }
+      ],
+      "limit": "Première tentative R4 FAIL92contrôles/29captures sur capture J2, cause non attribuée. Une seule reprise complète avec sources/build/assertions byte-identiques passe127/39 ; le premier brut reste conservé, sans relabellage. Une seule victoire Feral–Scar exportée et relue ; autres partenaires/variantes et exigences source globales restent ouverts."
+    },
+    {
+      "id": "V112-CURRENT-COMPILED-BUILD-R4",
+      "status": "PASS_BUILD_ET_PUBLICATION",
+      "scope": "Build R4 terminé, même runtime et Build ID pour les deux domaines publiés. Les contrôles de publication vérifient les1563blobs réguliers du commit, les octets observés, le gel988097f754c3cc8fa825190b6644e21926c0515557cbad72912bb003f7e44df6, le brut et les78captures copiées à l’identique.",
+      "command": "npm run build:production ; node scripts/publish-validation-v112.mjs --domain Homeworld puis --domain Pit avec les paramètres exacts conservés dans les journaux.",
+      "evidence": [
+        {
+          "path": "docs/qa/v112-integration/production-build-r4.log",
+          "sha256": "7160fb3dcc24a9a4edd1de1772b52cd6db35067fa3ad4ac656b35611f40cb256",
+          "bytes": 4691
+        },
+        {
+          "path": "docs/qa/v112-integration/published-homeworld-r4.log",
+          "sha256": "d136072c1430804e1c724c5412e80adb4767c3fc8dc81866bd5d40f33de330af",
+          "bytes": 197
+        },
+        {
+          "path": "docs/qa/v112-integration/published-pit-r4.log",
+          "sha256": "d7428b78de337de76c43b0c99226c09f24bcc62cbd247cc14c5be3e8402332a1",
+          "bytes": 185
+        },
+        {
+          "path": "docs/qa/v112-integration/final-compiled-release.md",
+          "sha256": "6949a190643d0e1139a32380ef36548f25aa3e9543226794b29bd45ac2ff64d3",
+          "bytes": 2492
+        }
+      ],
+      "limit": "Build et recettes locales compilées, pas une validation de déploiement/CDN. Les phases R1–R3 et la première tentative Pit R4 ne deviennent pas des preuves finales par changement de nom."
     }
   ],
   "limits": [
@@ -687,6 +1358,20 @@
     "Les neuf actions source sont incluses dans les 56 exigences héritées, pas additionnées à ce total.",
     "Les 354 cibles artistiques sont un catalogue distinct, pas une liste de 354 absences.",
     "Les tests de modèle, les captures du jeu compilé et la structure Excel certifient des périmètres différents.",
-    "L'application Excel native et son moteur de calcul ne sont pas exécutés par ce suivi."
-  ]
+    "L'application Excel native et son moteur de calcul ne sont pas exécutés par ce suivi.",
+    "La passe UI de compatibilité Legacy conserve son identité R2 433ca03 / NRapDZCMK0dVatwXlwZcw (87 contrôles, 14 captures, 1 458 sources sur 1 560). Elle ne remplace ni ne relabelise les certificats complets des domaines sur le build courant R4.",
+    "Les deux certificats de domaines courants utilisent aa891dfff9bc022d1b7363d4b7085aca19b4d1e3 / WZwxZDYUZhpepqlaPWKpe et le même gel1563 ; la compatibilité Legacy R4 reste une validation distincte sur1458sources observées, pas un remplacement du gel complet.",
+    "La première tentative Pit R4 a échoué sur le lancement J2 du second parcours sans cause attribuée. Sa seule reprise complète, mêmes sources/build/assertions, passe127contrôles. Les deux tentatives sont conservées ; aucune absence générale d’intermittence n’est déduite de ce succès.",
+    "Les mesures du calcul de guidage Chromium coûtent environ5ms/appel et excluent React, mise en page et peinture. Le profil390px est une émulation sur le même CPU, pas une mesure sur téléphone physique."
+  ],
+  "runtimeFreeze": {
+    "path": "docs/v112-runtime-freeze.json",
+    "sha256": "988097f754c3cc8fa825190b6644e21926c0515557cbad72912bb003f7e44df6",
+    "bytes": 291082
+  },
+  "production": {
+    "path": "docs/v112-homeworld-validation.json",
+    "sha256": "b9a0ba49b28dd042813861c2909cb913cd9eb2049c38979f819aeee6ebf8323e",
+    "bytes": 712807
+  }
 }
