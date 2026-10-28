@@ -710,6 +710,8 @@ interface InputHub {
   gamepadRiteMenuIdV112?: string | null;
   gamepadRiteNeedsRenderV112?: boolean;
   gamepadRiteFocusPendingV112?: boolean;
+  gamepadGripToggleV112?: boolean;
+  gamepadAimToggleV112?: boolean;
   pointerScreen: Vec2 | null;
 }
 
@@ -9820,12 +9822,18 @@ function routeCorpseRiteGamepadV112(state:GameState,input:InputHub):InputHub {
   const masked=()=>{
     for(const action of input.gamepadAddedPressedV112??[])if(action!=="pause")input.pressed.delete(action);
     return {...input,gamepadHeld:new Set<Action>(),holdTogglesV112:input.holdTogglesV112?
-      {...input.holdTogglesV112,upLatched:false,aimLatched:false}:undefined};
+      {...input.holdTogglesV112,upLatched:input.gamepadGripToggleV112?false:input.holdTogglesV112.upLatched,
+        aimLatched:input.gamepadAimToggleV112?false:input.holdTogglesV112.aimLatched}:undefined};
   };
   const close=()=>{
     state.riteMenuCorpseId=null;state.huntRites={...state.huntRites,operation:null};state.riteOperationDamageStart=null;
     input.gamepadRiteMenuIdV112=null;input.gamepadRiteNeedsRenderV112=true;input.gamepadRiteFocusPendingV112=true;
     input.gamepadNeedsNeutral=true;queue.length=0;input.gamepadDialogActions.length=0;
+    if(input.holdTogglesV112){
+      if(input.gamepadGripToggleV112)input.holdTogglesV112.upLatched=false;
+      if(input.gamepadAimToggleV112)input.holdTogglesV112.aimLatched=false;
+    }
+    input.gamepadGripToggleV112=false;input.gamepadAimToggleV112=false;
   };
   if(menu?.open) {
     if(previousId!==menu.corpseId){input.gamepadRiteNeedsRenderV112=true;input.gamepadRiteFocusPendingV112=true;}
@@ -9883,6 +9891,8 @@ function stepGame(
     const physical={up:input.keyboardHeld.has("up")||input.touchHeld.has("up")||(!state.riteMenuCorpseId&&input.gamepadHeld.has("up")),
       aim:input.keyboardHeld.has("aim")||input.touchHeld.has("aim")||(!state.riteMenuCorpseId&&input.gamepadHeld.has("aim"))};
     const previousGrip=input.holdTogglesV112?.upLatched;
+    if(physical.up&&!input.holdTogglesV112?.upPhysical)input.gamepadGripToggleV112=!input.keyboardHeld.has("up")&&!input.touchHeld.has("up");
+    if(physical.aim&&!input.holdTogglesV112?.aimPhysical)input.gamepadAimToggleV112=!input.keyboardHeld.has("aim")&&!input.touchHeld.has("aim");
     input.holdTogglesV112=stepHoldTogglesV112(input.holdTogglesV112,physical,!!interruption||state.paused||input.pressed.has("pause"));
     input.gripReleaseV112=input.accessibility.gripInput==="toggle"&&previousGrip===true&&!input.holdTogglesV112.upLatched;
     if(interruption||state.paused||input.pressed.has("pause")) {

@@ -312,6 +312,16 @@ test("corpse pad suppression keeps simultaneous keyboard and touch actions, incl
   f.input.keyboardHeld.clear();f.pad.axes[0]=1;f.input.touchHeld.add("left");f.game.player.velocityX=0;f.step();assert.ok(f.game.player.velocityX<0);
   f.input.touchHeld.clear();f.pad.axes[0]=0;f.input.pressed.add("melee");f.action("melee",true);f.step();
   assert.notEqual(f.game.player.melee.phase,"idle","a keyboard/touch edge already present is not owned or deleted by the pad");
+  for(const origin of ["keyboard","touch","pad"]){
+    const toggled=corpsePadFixture(profile({aimInput:"toggle"}));
+    if(origin==="pad")toggled.action("aim",true);else toggled.input[origin==="keyboard"?"keyboardHeld":"touchHeld"].add("aim");
+    toggled.step();assert.equal(toggled.input.holdTogglesV112.aimLatched,true);
+    if(origin==="pad")toggled.action("aim",false);else toggled.input[origin==="keyboard"?"keyboardHeld":"touchHeld"].delete("aim");
+    toggled.step();toggled.open();
+    assert.equal(toggled.game.player.aiming,origin!=="pad","only controller-owned toggles are suppressed in the corpse menu");
+    toggled.release();toggled.action("interact",true);toggled.step();
+    assert.equal(toggled.input.holdTogglesV112.aimLatched,origin!=="pad","closing disarms only the controller toggle");
+  }
 });
 test("opening requires a real nearby corpse and focus loss still pauses before any corpse UI action",()=>{
   const f=fixture(),pad={index:3,connected:true,axes:[0,0],buttons:Array.from({length:16},()=>({pressed:false,value:0}))};
