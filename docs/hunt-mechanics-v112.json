@@ -5,11 +5,11 @@
   "title": "Yautja : La Longue Chasse — chasse, anatomie et canopée",
   "repository": "darknigthmare/yautja-la-longue-chasse",
   "baseCommit": "96ba117a35b54142640ad2915fe3e9847fe060ad",
-  "reviewRef": "codex/v112-complete-hunt",
-  "scope": "Continuation des douze extensions FUT-01 à FUT-12. Implémentation et preuve d'exécution séparées ; aucune session Excel native ou qualification d'appareil physique revendiquée.",
+  "reviewRef": "e407979502d1cd4986e2e1810a4ed013f8abac8a",
+  "scope": "Douze extensions FUT-01 à FUT-12 implémentées. Qualification automatique bornée et preuves identifiées séparément ; compréhension d'un débutant, campagne interactive complète, performances et appareils physiques NON_QUALIFIE.",
   "legend": {
     "BASE_V111": "Règle livrée par PR21 ; régressions courantes exécutées séparément.",
-    "IMPLEMENTE_A_VALIDER": "Code V112 présent ; résultat d'exécution à consulter séparément.",
+    "IMPLEMENTE_A_VALIDER": "Règle implémentée ; son périmètre automatique et ses résultats figurent dans Qualification/Preuves, sans qualification humaine implicite.",
     "VALIDE_AUTOMATISE": "Exécution réelle consignée avec commande, commit et résultat.",
     "A_EXECUTER": "Scénario prévu sans résultat consigné.",
     "NON_QUALIFIE": "Matériel ou usage non essayé."
@@ -65,7 +65,7 @@
           "topic": "Base chasse",
           "rule": "La PR21 a livré outil permanent, rites corporels et trophées ancrés au corps.",
           "source": "docs/hunt-mechanics-v112.md",
-          "acceptance": "Commit96 ba117 a35 b54142640 ad2915 fe3 e9847 fe060 ad."
+          "acceptance": "Commit de base 96ba117a35b54142640ad2915fe3e9847fe060ad, PR21 fusionnée."
         },
         {
           "id": "SRC112-03",
@@ -125,7 +125,7 @@
         },
         {
           "id": "SRC112-10",
-          "status": "IMPLEMENTE_A_VALIDER",
+          "status": "NON_QUALIFIE",
           "topic": "Appareils",
           "rule": "Le navigateur et la manette émulée valident des chemins logiciels.",
           "source": "docs/hunt-mechanics-v112.md",
@@ -687,9 +687,9 @@
           "id": "CAN112-05",
           "status": "IMPLEMENTE_A_VALIDER",
           "topic": "Longueur",
-          "rule": "Haut/Bas ajustent la longueur à80 px/s entre70 px et hauteur du support.",
+          "rule": "Haut/Bas ajustent la longueur à80 px/s entre70 px et min(hauteur du support,2048 px).",
           "source": "app/game/systems/canopyTraversalV112.ts",
-          "acceptance": "Pas de corde négative ni extension hors support."
+          "acceptance": "Longues lianes Oseris862/1054 px admises ; saisie dépassant le plafond ou état non fini refusés avant simulation."
         },
         {
           "id": "CAN112-06",
@@ -899,9 +899,9 @@
           "id": "SUS112-03",
           "status": "IMPLEMENTE_A_VALIDER",
           "topic": "Masse",
-          "rule": "Corps transportable jusqu'à170 kg selon règle explicite.",
+          "rule": "Masse de gameplay = arrondi(borne(largeur×hauteur/60, 12, 300)) kg ; transport possible jusqu'à170 kg.",
           "source": "app/game/systems/carcassSupportsV112.ts",
-          "acceptance": "Refus annoncé avant mutation."
+          "acceptance": "Recalculée depuis l'acteur réel, y compris anciens checkpoints ; dimensions en pixels et valeurs non canoniques."
         },
         {
           "id": "SUS112-04",
@@ -1503,9 +1503,9 @@
           "id": "CHA112-01",
           "status": "IMPLEMENTE_A_VALIDER",
           "topic": "Inventaire",
-          "rule": "Masse et volume calculés depuis les spécimens réellement présents.",
+          "rule": "Masse et volume des nouveaux prélèvements anatomiques portés, plus masse du corps porté, recomptés depuis le registre canonique.",
           "source": "app/game/systems/harvestInventoryV112.ts",
-          "acceptance": "Un total sauvegardé seul n'accorde pas de capacité."
+          "acceptance": "Les TrophyClaim principaux/secondaires historiques conservent leur contrat de collection et n'ajoutent pas de poids dans ce lot."
         },
         {
           "id": "CHA112-02",
@@ -1559,9 +1559,9 @@
           "id": "CHA112-08",
           "status": "IMPLEMENTE_A_VALIDER",
           "topic": "Dépôt",
-          "rule": "Dépôt temporaire et reprise gardent chaque identité.",
-          "source": "app/game/systems/harvestInventoryV112.ts",
-          "acceptance": "Refus de reprise plein sans perte silencieuse."
+          "rule": "Dans le sac de pause, déposer/reprendre les nouvelles parties anatomiques au sol conserve leur identité canonique unique.",
+          "source": "app/game/systems/fieldStashV112.ts",
+          "acceptance": "Reprise à110 px, visibilité/appui/capacité ; gravité1850 px/s², chute plafonnée1200 px/s et collision balayée. Registre canonique borné64 ; seuls objets portés exportés."
         },
         {
           "id": "CHA112-09",
@@ -1621,9 +1621,9 @@
           "id": "OUT112-02",
           "status": "IMPLEMENTE_A_VALIDER",
           "topic": "Usure",
-          "rule": "Coût appliqué au succès confirmé seulement.",
+          "rule": "Usure de 5 points par dépeçage ou prélèvement anatomique achevé, y compris si la mission échoue ou est abandonnée ensuite.",
           "source": "app/game/systems/harvestInventoryV112.ts",
-          "acceptance": "Démarrer ou interrompre ne paie pas le succès."
+          "acceptance": "Démarrer ou interrompre use de 0 point ; analyse, marque, suspension et gestes d'atelier ne sont pas ce coût."
         },
         {
           "id": "OUT112-03",
@@ -1647,7 +1647,7 @@
           "topic": "Réparation",
           "rule": "L'armurerie propose un affûtage gratuit au poste, confirmé avant message de réussite.",
           "source": "app/game/systems/harvestInventoryV112.ts",
-          "acceptance": "Débit et état confirmés ensemble avant succès."
+          "acceptance": "Coût nul, même à zéro marque ; condition remise à 100 après confirmation de l'enregistrement."
         },
         {
           "id": "OUT112-06",
@@ -1661,9 +1661,9 @@
           "id": "OUT112-07",
           "status": "IMPLEMENTE_A_VALIDER",
           "topic": "Refus",
-          "rule": "Solde insuffisant ou opération répétée ne mute pas la sauvegarde.",
+          "rule": "Une écriture refusée ne confirme pas l'affûtage ; les réducteurs normalisent l'état courant.",
           "source": "app/game/systems/harvestInventoryV112.ts",
-          "acceptance": "Double clic utilise le dernier état confirmé."
+          "acceptance": "Double clic utilise le dernier état confirmé et ne crée ni marque ni pièce."
         },
         {
           "id": "OUT112-08",
@@ -1905,9 +1905,9 @@
           "id": "ACC112-09",
           "status": "IMPLEMENTE_A_VALIDER",
           "topic": "Remappage",
-          "rule": "Affectation manette avec permutation anti-conflit.",
+          "rule": "Douze affectations manette permutées sans conflit ; Bas+Interagir ouvre le menu d'un corps voisin.",
           "source": "app/game/systems/huntAccessibilityV112.ts",
-          "acceptance": "Ancien bouton ne continue pas d'agir silencieusement."
+          "acceptance": "Navigation Haut/Bas, Saut affecté confirme, Interagir affecté ferme ; les événements du pad sont consommés sans effacer les commandes clavier/tactiles concurrentes."
         },
         {
           "id": "ACC112-10",
@@ -1921,9 +1921,9 @@
           "id": "ACC112-11",
           "status": "IMPLEMENTE_A_VALIDER",
           "topic": "Petit écran",
-          "rule": "Réglages et sortie atteignables à390 px.",
-          "source": "app/game/systems/huntAccessibilityV112.ts",
-          "acceptance": "Pas de contrôle indispensable hors écran."
+          "rule": "Réglages et sortie atteignables dans le viewport Chromium de 390 px.",
+          "source": "app/game/HuntAccessibilityPanelV112.tsx",
+          "acceptance": "Pas de débordement horizontal ; défilement normal. Aucun téléphone physique qualifié."
         },
         {
           "id": "ACC112-12",
@@ -1931,7 +1931,7 @@
           "topic": "Score",
           "rule": "Les effets des options sur score sont explicités.",
           "source": "app/game/systems/huntAccessibilityV112.ts",
-          "acceptance": "Aucun malus caché lié à l'accessibilité."
+          "acceptance": "Aucun coefficient de score direct ajouté par le profil ; la chasse continue et son temps peut toujours affecter le score et la qualité Apex."
         }
       ]
     },
@@ -2472,11 +2472,11 @@
         {
           "id": "PAR112-02",
           "status": "IMPLEMENTE_A_VALIDER",
-          "topic": "Longueur minimale",
+          "topic": "Longueur admissible",
           "value": 70,
-          "unit": "px",
+          "unit": "px minimum ; plafond2048",
           "source": "app/game/systems/canopyTraversalV112.ts",
-          "limit": "Maximale bornée par la hauteur du vrai support."
+          "limit": "Longueur maximale = min(hauteur réelle du support, 2048 px), même domaine pour attache, pas physique et snapshot."
         },
         {
           "id": "PAR112-03",
@@ -3155,323 +3155,323 @@
       "rows": [
         {
           "id": "QA112-01",
-          "status": "A_EXECUTER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Outil",
           "rule": "Ancien save sans fieldToolIds",
           "source": "tests/field-tools-rites-v111.test.mjs",
-          "acceptance": "Aucun outil gratuit et aucun prélèvement autorisé sans achat."
+          "acceptance": "commit e407979502d1cd4986e2e1810a4ed013f8abac8a ; commande node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/field-tools-rites-v111.test.mjs tests/field-tool-purchase-ui-v111.test.mjs tests/trophy-harvest-v111.test.mjs tests/hunt-harvest-runtime-v111.test.mjs ; Aucun outil gratuit et aucun prélèvement autorisé sans achat."
         },
         {
           "id": "QA112-02",
-          "status": "A_EXECUTER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Outil",
           "rule": "Achat à119 puis120 marques et double appel",
           "source": "tests/field-tool-purchase-ui-v111.test.mjs",
-          "acceptance": "Débit unique à120, propriété permanente et persistence confirmée."
+          "acceptance": "commit e407979502d1cd4986e2e1810a4ed013f8abac8a ; commande node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/field-tools-rites-v111.test.mjs tests/field-tool-purchase-ui-v111.test.mjs tests/trophy-harvest-v111.test.mjs tests/hunt-harvest-runtime-v111.test.mjs ; Débit unique à120, propriété permanente et persistence confirmée."
         },
         {
           "id": "QA112-03",
-          "status": "A_EXECUTER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Dépeçage",
           "rule": "Préparer corps natif puis interruption",
           "source": "tests/hunt-harvest-runtime-v111.test.mjs",
-          "acceptance": "Geste3,2 s ajusté usure, annulation sans succès ni coût d'opération achevée."
+          "acceptance": "commit e407979502d1cd4986e2e1810a4ed013f8abac8a ; commande node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/field-tools-rites-v111.test.mjs tests/field-tool-purchase-ui-v111.test.mjs tests/trophy-harvest-v111.test.mjs tests/hunt-harvest-runtime-v111.test.mjs ; Geste3,2 s ajusté usure, annulation sans succès ni coût d'opération achevée."
         },
         {
           "id": "QA112-04",
-          "status": "A_EXECUTER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Trophées",
           "rule": "Proie haute, morte puis tombante",
           "source": "tests/hunt-harvest-runtime-v111.test.mjs",
-          "acceptance": "Prélèvement suit source réelle et ne traverse pas de mur."
+          "acceptance": "commit e407979502d1cd4986e2e1810a4ed013f8abac8a ; commande node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/field-tools-rites-v111.test.mjs tests/field-tool-purchase-ui-v111.test.mjs tests/trophy-harvest-v111.test.mjs tests/hunt-harvest-runtime-v111.test.mjs ; Prélèvement suit source réelle et ne traverse pas de mur."
         },
         {
           "id": "QA112-05",
-          "status": "A_EXECUTER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Pendule",
-          "rule": "Clavier normalisé : accroche, pompage, lâcher",
+          "rule": "Entrée clavier normalisée : accroche, pompage, lâcher",
           "source": "tests/hunt-canopy-runtime-v112.test.mjs",
-          "acceptance": "Vitesse tangentielle réelle, delai anti-réaccroche sans boost."
+          "acceptance": "commit e407979502d1cd4986e2e1810a4ed013f8abac8a ; commande node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v112.test.mjs ; Simulation native, vitesse tangentielle et verrou anti-réaccroche ; les adaptateurs d'entrée ne qualifient pas un clavier physique."
         },
         {
           "id": "QA112-06",
-          "status": "A_EXECUTER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Pendule",
-          "rule": "Tactile normalisé : accroche, pompage, lâcher",
+          "rule": "Entrée tactile normalisée : accroche, pompage, lâcher",
           "source": "tests/hunt-canopy-runtime-v112.test.mjs",
-          "acceptance": "Même simulation et coût que clavier."
+          "acceptance": "commit e407979502d1cd4986e2e1810a4ed013f8abac8a ; commande node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v112.test.mjs ; Même simulation native et coûts ; injection InputHub et pointeur de fixture, sans téléphone physique."
         },
         {
           "id": "QA112-07",
-          "status": "A_EXECUTER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Pendule",
-          "rule": "Manette normalisée : accroche, pompage, lâcher",
+          "rule": "Entrée manette normalisée : accroche, pompage, lâcher",
           "source": "tests/hunt-canopy-runtime-v112.test.mjs",
-          "acceptance": "Même simulation et coût que clavier."
+          "acceptance": "commit e407979502d1cd4986e2e1810a4ed013f8abac8a ; commande node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v112.test.mjs ; Simulation native ; polling réel testé séparément au navigateur avec manette émulée, sans contrôleur physique."
         },
         {
           "id": "QA112-08",
-          "status": "A_EXECUTER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Pendule",
           "rule": "Pompage borné et friction sans entrée",
           "source": "tests/canopy-traversal-v112.test.mjs",
-          "acceptance": "Vitesse plafonnée ; sans entrée pas de gain d'énergie."
+          "acceptance": "commit e407979502d1cd4986e2e1810a4ed013f8abac8a ; commande node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v112.test.mjs ; Vitesse plafonnée ; sans entrée pas de gain d'énergie."
         },
         {
           "id": "QA112-09",
-          "status": "A_EXECUTER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Pendule",
-          "rule": "Paroi, support absent et delta long",
+          "rule": "Paroi, support absent, grand delta et longues lianes Oseris",
           "source": "tests/canopy-traversal-v112.test.mjs",
-          "acceptance": "Pas de traversée, attache distante ni état non fini."
+          "acceptance": "commit e407979502d1cd4986e2e1810a4ed013f8abac8a ; commande node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v112.test.mjs ; Tests purs sur vrais supports862/1054 px et frontière2048 ; attache, reeling et validateur partagent le même domaine, refus gracieux au-delà et sur données invalides. Pas de traversée ni état non fini."
         },
         {
           "id": "QA112-10",
-          "status": "A_EXECUTER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Pendule",
           "rule": "Checkpoint pendant balancement",
           "source": "tests/hunt-canopy-runtime-v112.test.mjs",
-          "acceptance": "Reprise sans impulse gratuite ; longueur/angle/ancrage invalides refusés."
+          "acceptance": "commit e407979502d1cd4986e2e1810a4ed013f8abac8a ; commande node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v112.test.mjs ; Checkpoint réel et reprise sur Oseris déverrouillé aux longueurs760/900 px : 19 pas, puis lâcher sans boost. Longueur>2048, angle/ancrage invalides refusés, aucune impulsion rejouée."
         },
         {
           "id": "QA112-11",
-          "status": "A_EXECUTER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Pendule",
           "rule": "Épuisement et Haut maintenu",
           "source": "tests/hunt-canopy-runtime-v112.test.mjs",
-          "acceptance": "Chute puis vraie réception requise ; pas de réaccroche aérienne."
+          "acceptance": "commit e407979502d1cd4986e2e1810a4ed013f8abac8a ; commande node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v112.test.mjs ; Chute puis vraie réception requise ; pas de réaccroche aérienne."
         },
         {
           "id": "QA112-12",
-          "status": "A_EXECUTER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Route",
           "rule": "8 missions ×3 armures ×3 sources d'entrée",
           "source": "tests/hunt-canopy-runtime-v112.test.mjs",
-          "acceptance": "Sol->prise entrée->six contacts de repos->descente, sans reposition intermédiaire."
+          "acceptance": "commit e407979502d1cd4986e2e1810a4ed013f8abac8a ; commande node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v112.test.mjs ; 72 traversées natives isolées : ennemis retirés, état placé au pied de l'entrée, puis sol→grimpée→six contacts réels→sol sans repositionnement ; trois armures et trois InputHub normalisés. Aucune chasse complète revendiquée."
         },
         {
           "id": "QA112-13",
-          "status": "A_EXECUTER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Route",
           "rule": "Routes dans world final après exploration",
           "source": "tests/canopy-traversal-v112.test.mjs",
-          "acceptance": "Au moins une séquence réelle de six repos par mission ; repli terrain conservé."
+          "acceptance": "commit e407979502d1cd4986e2e1810a4ed013f8abac8a ; commande node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v112.test.mjs ; Au moins une séquence réelle de six repos par mission ; repli terrain conservé."
         },
         {
           "id": "QA112-14",
-          "status": "A_EXECUTER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Carcasse",
           "rule": "Mort réelle->analyse->flay->carry->hang",
           "source": "tests/hunt-carcass-runtime-v112.test.mjs",
-          "acceptance": "Un acteur et un corps, ancrage socket puis chute si support supprimé."
+          "acceptance": "commit e407979502d1cd4986e2e1810a4ed013f8abac8a ; commande node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v112.test.mjs ; Un acteur et un corps, ancrage socket puis chute si support supprimé."
         },
         {
           "id": "QA112-15",
-          "status": "A_EXECUTER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Carcasse",
           "rule": "Masse/surface/socket invalide",
           "source": "tests/carcass-anatomy-v112.test.mjs",
-          "acceptance": "Refus sans déplacer ni dupliquer la carcasse."
+          "acceptance": "commit e407979502d1cd4986e2e1810a4ed013f8abac8a ; commande node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v112.test.mjs ; Refus sans déplacer ni dupliquer la carcasse."
         },
         {
           "id": "QA112-16",
-          "status": "A_EXECUTER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Carcasse",
           "rule": "Transport vers espace bloqué",
           "source": "tests/hunt-carcass-runtime-v112.test.mjs",
-          "acceptance": "Relâche le même corps sans traverser le mur."
+          "acceptance": "commit e407979502d1cd4986e2e1810a4ed013f8abac8a ; commande node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v112.test.mjs ; Relâche le même corps sans traverser le mur."
         },
         {
           "id": "QA112-17",
-          "status": "A_EXECUTER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Carcasse",
           "rule": "Suspension checkpoint source absente",
-          "source": "tests/carcass-anatomy-v112.test.mjs",
-          "acceptance": "Restore revalide support, capacité, acteur et position."
+          "source": "tests/hunt-carcass-runtime-v112.test.mjs",
+          "acceptance": "commit e407979502d1cd4986e2e1810a4ed013f8abac8a ; commande node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v112.test.mjs ; Mort réelle→préparation→portage→suspension→checkpoint ; restore de production admet les acteurs puis refuse le même registre si seul l'acteur source est retiré, sans mutation entrante."
         },
         {
           "id": "QA112-18",
-          "status": "A_EXECUTER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Anatomie",
           "rule": "Catalogue espèces et parties compatibles",
           "source": "tests/carcass-anatomy-v112.test.mjs",
-          "acceptance": "Stock explicite ; synthétique sans chair et xéno sans peau universelle."
+          "acceptance": "commit e407979502d1cd4986e2e1810a4ed013f8abac8a ; commande node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v112.test.mjs ; Stock explicite ; synthétique sans chair et xéno sans peau universelle."
         },
         {
           "id": "QA112-19",
-          "status": "A_EXECUTER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Anatomie",
           "rule": "Dommages mêlée/tir/surkill et analyse",
           "source": "tests/carcass-anatomy-v112.test.mjs",
-          "acceptance": "Qualité reproductible annoncée, pas de nouveau tirage sur reload."
+          "acceptance": "commit e407979502d1cd4986e2e1810a4ed013f8abac8a ; commande node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v112.test.mjs ; Qualité reproductible annoncée, pas de nouveau tirage sur reload."
         },
         {
           "id": "QA112-20",
-          "status": "A_EXECUTER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Anatomie",
           "rule": "Interruption/dépôt plein avant dernier tick",
           "source": "tests/hunt-carcass-runtime-v112.test.mjs",
-          "acceptance": "Aucune partie consommée ni prise inventée."
+          "acceptance": "commit e407979502d1cd4986e2e1810a4ed013f8abac8a ; commande node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v112.test.mjs ; Aucune partie consommée ni prise inventée."
         },
         {
           "id": "QA112-21",
-          "status": "A_EXECUTER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Anatomie",
           "rule": "Prélèvement puis succès/échec",
           "source": "tests/hunt-carcass-runtime-v112.test.mjs",
-          "acceptance": "Succès verse identité/qualité exacte ; échec n'accorde pas le stock."
+          "acceptance": "commit e407979502d1cd4986e2e1810a4ed013f8abac8a ; commande node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v112.test.mjs ; Succès verse identité/qualité exacte ; échec n'accorde pas le stock."
         },
         {
           "id": "QA112-22",
-          "status": "A_EXECUTER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Charge",
           "rule": "Budgets scout24/18, hunter36/24, berserker52/30",
           "source": "tests/harvest-inventory-v112.test.mjs",
-          "acceptance": "Masses/volumes calculés depuis les pièces ; refus atomique si dépassement."
+          "acceptance": "commit e407979502d1cd4986e2e1810a4ed013f8abac8a ; commande node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v112.test.mjs ; Masses/volumes calculés depuis les pièces ; refus atomique si dépassement."
         },
         {
           "id": "QA112-23",
-          "status": "A_EXECUTER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Charge",
           "rule": "Plein déplacement/saut/grimpe/bruit",
-          "source": "tests/harvest-inventory-v112.test.mjs",
-          "acceptance": "Coefficients bornés .68/.84/1.6/1.8 aux limites."
+          "source": "tests/hunt-field-load-v112.test.mjs",
+          "acceptance": "commit e407979502d1cd4986e2e1810a4ed013f8abac8a ; commande node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v112.test.mjs ; Vrais updatePlayer/applyPlayerJump et HUD : plein ×.68/.84/1.6/1.8, charge recomptée ; un corps déposé avant saut cesse de peser."
         },
         {
           "id": "QA112-24",
-          "status": "A_EXECUTER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Charge",
-          "rule": "Dépôt/reprise et campagne répétée",
-          "source": "tests/harvest-inventory-v112.test.mjs",
-          "acceptance": "Aucune perte silencieuse ni duplication des IDs."
+          "rule": "Dépôt/reprise physique des nouvelles parties anatomiques",
+          "source": "tests/hunt-field-stash-runtime-v112.test.mjs",
+          "acceptance": "commit e407979502d1cd4986e2e1810a4ed013f8abac8a ; commande node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v112.test.mjs ; Tests purs field-stash et runtime natif : appui réel, portée/LOS/capacité, chute balayée, registre unique, reprise checkpoint dans monde recomposé, export des seuls portés. Aucun TrophyClaim obligatoire déposé."
         },
         {
           "id": "QA112-25",
-          "status": "A_EXECUTER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Entretien",
-          "rule": "Succès vs interruption/rejeu",
+          "rule": "Geste de terrain achevé, interruption et reçu rejoué",
           "source": "tests/harvest-inventory-v112.test.mjs",
-          "acceptance": "5 points par opération achevée, reçu unique, condition0..100."
+          "acceptance": "commit e407979502d1cd4986e2e1810a4ed013f8abac8a ; commande node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v112.test.mjs ; Usure de 5 points par dépeçage ou prélèvement anatomique achevé, même si la mission échoue ensuite ; 0 pour geste interrompu, reçu unique et condition bornée."
         },
         {
           "id": "QA112-26",
-          "status": "A_EXECUTER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Entretien",
           "rule": "Réparation outil0 et aucune marque",
           "source": "tests/harvest-inventory-v112.test.mjs",
-          "acceptance": "Affûtage gratuit et campagne débloquable."
+          "acceptance": "commit e407979502d1cd4986e2e1810a4ed013f8abac8a ; commande node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v112.test.mjs ; Avec outil à 0 et solde 0, affûtage gratuit réussi et campagne conservée ; aucune dépense de marque."
         },
         {
           "id": "QA112-27",
-          "status": "A_EXECUTER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Atelier",
-          "rule": "4 phasescoûts2/4/3/5 gestes3/4/5/3",
+          "rule": "Quatre phases : coûts 2/4/3/5, gestes 3/4/5/3",
           "source": "tests/harvest-inventory-v112.test.mjs",
-          "acceptance": "Transitions ordonnées, aucun progrès en absence, qualité conservée."
+          "acceptance": "commit e407979502d1cd4986e2e1810a4ed013f8abac8a ; commande node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v112.test.mjs ; Transitions manuelles ordonnées et qualité conservée ; JSON→normalizeSave→parseSaveImport sous Date simulée en 2036 ne fait progresser ni travail ni coût/temps ; seul un nouveau geste ajoute une unité."
         },
         {
           "id": "QA112-28",
-          "status": "A_EXECUTER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Atelier",
           "rule": "Double clic et erreur durabilité",
           "source": "tests/conservation-persistence-ui-v112.test.mjs",
-          "acceptance": "Coût/statut confirmés ensemble ; aucune réussite prématurée."
+          "acceptance": "commit e407979502d1cd4986e2e1810a4ed013f8abac8a ; commande node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v112.test.mjs ; Coût/statut confirmés ensemble ; aucune réussite prématurée."
         },
         {
           "id": "QA112-29",
-          "status": "A_EXECUTER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Atelier",
           "rule": "Archive explicite pièce montée",
           "source": "tests/harvest-inventory-v112.test.mjs",
-          "acceptance": "Réserve compte possession/qualité et libère le dépôt."
+          "acceptance": "commit e407979502d1cd4986e2e1810a4ed013f8abac8a ; commande node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v112.test.mjs ; Réserve compte possession/qualité et libère le dépôt."
         },
         {
           "id": "QA112-30",
-          "status": "A_EXECUTER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Accessibilité",
           "rule": "Fenêtres normal/generous/unlimited",
           "source": "tests/hunt-accessibility-v112.test.mjs",
-          "acceptance": "Règle réelle exécutée ; aucune prise automatique ni malus caché."
+          "acceptance": "commit e407979502d1cd4986e2e1810a4ed013f8abac8a ; commande node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v112.test.mjs ; Fenêtres et compteurs réels ; resultFor compare neuf profils sur faits synthétiques identiques : aucun coefficient direct caché. Le score temporel diminue pareil à 2× et 4× parTime ; aucune chasse complète jouée."
         },
         {
           "id": "QA112-31",
-          "status": "A_EXECUTER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Accessibilité",
           "rule": "Confirmpress/hold/toggle et annulation",
           "source": "tests/hunt-accessibility-v112.test.mjs",
-          "acceptance": "Un acte par glyph, maintien min.35 s, bascule réarmée par nouveau glyph."
+          "acceptance": "commit e407979502d1cd4986e2e1810a4ed013f8abac8a ; commande node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v112.test.mjs ; Un acte par glyph, maintien min.35 s, bascule réarmée par nouveau glyph."
         },
         {
           "id": "QA112-32",
-          "status": "A_EXECUTER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Accessibilité",
           "rule": "Remapmanette +focus perdu",
           "source": "tests/hunt-accessibility-v112.test.mjs",
-          "acceptance": "Permutation sans commande perdue ; bascule désarmée au blur."
+          "acceptance": "commit e407979502d1cd4986e2e1810a4ed013f8abac8a ; commande node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v112.test.mjs ; Permutation sans commande perdue ; bascule désarmée au blur."
         },
         {
           "id": "QA112-33",
-          "status": "A_EXECUTER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Accessibilité",
           "rule": "Migration et sérialisation réglages",
           "source": "tests/hunt-accessibility-v112.test.mjs",
-          "acceptance": "Valeurs futures/malformed normalisées, latches transitoires non persistés."
+          "acceptance": "commit e407979502d1cd4986e2e1810a4ed013f8abac8a ; commande node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v112.test.mjs ; Valeurs futures/malformed normalisées, latches transitoires non persistés."
         },
         {
           "id": "QA112-34",
-          "status": "A_EXECUTER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Écosystème",
           "rule": "Témoin visible vs derrière mur",
           "source": "tests/corpse-discovery-v112.test.mjs",
-          "acceptance": "Vision réelle déclenche un événement local unique."
+          "acceptance": "commit e407979502d1cd4986e2e1810a4ed013f8abac8a ; commande node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v112.test.mjs ; Vision réelle déclenche un événement local unique."
         },
         {
           "id": "QA112-35",
-          "status": "A_EXECUTER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Écosystème",
           "rule": "Radio bornée, investigation et animaux",
           "source": "tests/corpse-discovery-v112.test.mjs",
-          "acceptance": "Profils distincts, pas de boucle oualerte globale."
+          "acceptance": "commit e407979502d1cd4986e2e1810a4ed013f8abac8a ; commande node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v112.test.mjs ; Profils distincts, pas de boucle oualerte globale."
         },
         {
           "id": "QA112-36",
-          "status": "A_EXECUTER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Écosystème",
           "rule": "Budget et checkpoint",
           "source": "tests/corpse-discovery-v112.test.mjs",
-          "acceptance": "File/traitement bornés et identités restaurées sans rejouer."
+          "acceptance": "commit e407979502d1cd4986e2e1810a4ed013f8abac8a ; commande node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v112.test.mjs ; File/traitement bornés et identités restaurées sans rejouer."
         },
         {
           "id": "QA112-37",
-          "status": "A_EXECUTER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Navigateur",
-          "rule": "Paramètres natifs et téléphone390 px",
+          "rule": "Paramètres natifs dans un viewport Chromium de 390 px",
           "source": "scripts/qa-hunt-mechanics-browser-v112.mjs",
-          "acceptance": "Vrais composants utilisables ; stockage natif de fixture ; captures inspectables."
+          "acceptance": "commit ab47a9c2d2bf4b0a866c109efa2c96f68d526de8 ; commande node scripts/qa-hunt-mechanics-browser-v112.mjs ; Contrôles React natifs, remappage et guide lisibles ; stockage localStorage du parent de fixture et capture inspectée, sans téléphone physique."
         },
         {
           "id": "QA112-38",
-          "status": "A_EXECUTER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Navigateur",
-          "rule": "Atelier manuel jusqu'au montage puisréserve",
+          "rule": "Panneau d'atelier manuel jusqu'au montage et à la réserve",
           "source": "scripts/qa-hunt-mechanics-browser-v112.mjs",
-          "acceptance": "Vrai panneau et règles, aucune écriture avant acknowledgement."
+          "acceptance": "commit ab47a9c2d2bf4b0a866c109efa2c96f68d526de8 ; commande node scripts/qa-hunt-mechanics-browser-v112.mjs ; Vrai composant et réducteurs de production, parent localStorage de fixture ; écriture refusée laisse stock/progression inchangés. Durabilité GameClient vérifiée séparément par les tests AST, sans parcours complet GameClient au navigateur."
         },
         {
           "id": "QA112-39",
-          "status": "A_EXECUTER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Navigateur",
-          "rule": "Rites natifs flayinterrompu et terminé",
+          "rule": "Rites natifs et menu manette par défaut puis remappée",
           "source": "scripts/qa-hunt-mechanics-browser-v112.mjs",
-          "acceptance": "Vraie mort, vrai handler AST et simulation ; un corps."
+          "acceptance": "commit ab47a9c2d2bf4b0a866c109efa2c96f68d526de8 ; commande node scripts/qa-hunt-mechanics-browser-v112.mjs ; Mort et handler AST réels ; flay interrompu/terminé. Polling→stepGame→DOM réels : Bas+Interagir ouvre, navigation et Saut activent, Interagir ferme ; simulation continue et maintien ne fuit pas vers une autre action."
         },
         {
           "id": "QA112-40",
-          "status": "A_EXECUTER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Navigateur",
-          "rule": "Pendule clavier, tactile, manette émulée",
+          "rule": "Pendule : adaptateurs clavier/pointeur et manette émulée",
           "source": "scripts/qa-hunt-mechanics-browser-v112.mjs",
-          "acceptance": "Vrai polling/matchinginput/mouvement/rendu de repli ; vitesse réelle."
+          "acceptance": "commit ab47a9c2d2bf4b0a866c109efa2c96f68d526de8 ; commande node scripts/qa-hunt-mechanics-browser-v112.mjs ; Clavier/pointeur de fixture alimentent les vrais bindings et mouvements ; manette utilise pollGamepad réel. Rendu de repli et vitesse de lâcher inspectés, sans cycle d'entrée complet du composant HuntCanvas ni matériel réel."
         },
         {
           "id": "QA112-41",
@@ -3479,31 +3479,31 @@
           "topic": "Excel",
           "rule": "Génération deux fois et comparaison",
           "source": "scripts/build-hunt-mechanics-workbook-v112.mjs",
-          "acceptance": "Octets identiques au JSON ; ZIP/XML indépendant valide."
+          "acceptance": "commit e407979502d1cd4986e2e1810a4ed013f8abac8a ; commande node scripts/build-hunt-mechanics-workbook-v112.mjs --check ; python3 scripts/verify-hunt-mechanics-workbook-v112.py ; version avant consignation validée (427476 octets,2264 cellules,327 liens). La comparaison indépendante des nouveaux octets documentaires attend la CI de ce lot ; son résultat définitif figurera dans la PR. Aucun Excel natif."
         },
         {
           "id": "QA112-42",
-          "status": "A_EXECUTER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Historique",
           "rule": "V110 exact avec sources restaurées",
           "source": "scripts/check-excel-history-v112.mjs",
-          "acceptance": "Freeze1386 vérifié, testsoriginaux et workbookinchangé ; aucune redirection prod."
+          "acceptance": "commit ab47a9c2d2bf4b0a866c109efa2c96f68d526de8 ; commande node scripts/check-excel-history-v112.mjs --check --tests ; Copie privée depuis Git V110 épinglé : 1 386 entrées et préimages exactes des huit tests originaux vérifiées, 56 assertions et ancien XLSX inchangés ; aucune redirection du runtime V112. Résultat réel : 56 assertions originales PASS, SHA256 XLSX 0b7d7890c8d235a9cda0f6d61c62001efe150f2c4022924c20d88196afcdbd7c."
         },
         {
           "id": "QA112-43",
-          "status": "A_EXECUTER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Historique",
           "rule": "V111 Homeworld exact avec sources restaurées",
           "source": "scripts/check-homeworld-history-v112.mjs",
-          "acceptance": "Freeze1433 vérifié, testsoriginaux et workbookinchangé."
+          "acceptance": "commit ab47a9c2d2bf4b0a866c109efa2c96f68d526de8 ; commande node scripts/check-homeworld-history-v112.mjs --check --tests ; Copie privée depuis a5a951e : 1 433 entrées gelées et onze fichiers de tests originaux vérifiés, XLSX historique inchangé. Le test de publication gelée est ici ; les autres régressions V111 exécutent le runtime actuel. Résultat réel : 68 assertions originales PASS, SHA256 XLSX fa5ebf78a08c36b4a567246dfae41de535a8e36c7294ba33190e3e1e2ec9ad05."
         },
         {
           "id": "QA112-44",
-          "status": "A_EXECUTER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Régression",
-          "rule": "TypeScript, lint, compilation et HTTP",
+          "rule": "TypeScript, lint, Next compilé, HTTP et régressions",
           "source": "docs/hunt-mechanics-v112.md",
-          "acceptance": "Tous workflows finalHEAD verts, captures/limites consignées."
+          "acceptance": "commit e407979502d1cd4986e2e1810a4ed013f8abac8a ; commande npm run typecheck ; node node_modules/next/dist/bin/next build --webpack ; npm run qa:next-production ; commande ESLint exacte dans .github/workflows/audit-v94.yml ; Résultats du run qualifié et commandes détaillés dans docs/qa/v112-hunt ; aucune performance sur appareil cible ni qualification de production déduite de cette CI."
         }
       ]
     },
@@ -3545,99 +3545,99 @@
       "rows": [
         {
           "id": "FUT-01",
-          "status": "IMPLEMENTE_A_VALIDER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Balancement de liane",
-          "rule": "Pendule avec longueur de corde, angle, vitesse tangentielle, tension et collision ; commande de pompage, lâcher libre et trajectoire lisible. Réserve d'endurance annoncée avant l'engagement.",
+          "rule": "Pendule natif : longueur, angle et vitesse tangentielle, pompage, friction, collision, endurance et lâcher sans boost.",
           "source": "docs/hunt-mechanics-v112.md",
-          "acceptance": "Prototype jouable sur plusieurs longueurs ; pas d'énergie infinie, de traversée de murs ou de saut téléporté. Scénarios de relâchement, support perdu, pause et reprise."
+          "acceptance": "Tests purs et HuntCanvas natif : plafonds, perte de support, checkpoint, épuisement et lâcher vers une autre liane. Pas de contrôleur physique qualifié."
         },
         {
           "id": "FUT-02",
-          "status": "IMPLEMENTE_A_VALIDER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Routes de canopée",
-          "rule": "Composer des séquences de branches, troncs, lianes, corniches et points de repos. Définir les distances depuis les trajectoires réellement atteignables, avec route de repli et dangers lisibles.",
+          "rule": "Routes optionnelles dans le monde final : jusqu'à trois séquences selon géométrie, chacune de six vrais repos et accès depuis/vers le sol.",
           "source": "docs/hunt-mechanics-v112.md",
-          "acceptance": "Parcours complets sur clavier, manette et tactile ; aucun passage obligatoire inaccessible à une armure autorisée."
+          "acceptance": "72 traversées isolées natives (8 missions×3 armures×3 entrées normalisées) avec tous les contacts ; ennemis retirés pour isoler la locomotion. Aucun combat complet prétendu."
         },
         {
           "id": "FUT-03",
-          "status": "IMPLEMENTE_A_VALIDER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Suspension de carcasse",
-          "rule": "Supports authorés avec hauteur, solidité, capacité de masse et espace libre. Transport et attache séparés ; interruption sûre et corps unique. Rendu et témoins placés au nouvel ancrage.",
+          "rule": "Préparer, porter puis suspendre le même acteur mort ; sockets arbre/chaîne avec dimensions, masse, volume libre, distance et visibilité réelles.",
           "source": "docs/hunt-mechanics-v112.md",
-          "acceptance": "Tests de masse, support disparu, occlusion et sauvegarde ; aucune suspension acceptée depuis une décoration ou un support inventé."
+          "acceptance": "Tests natifs : murs, transport bloqué, support perdu, source retirée au restore ; aucune décoration inventée comme ancrage."
         },
         {
           "id": "FUT-04",
-          "status": "IMPLEMENTE_A_VALIDER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Prélèvements anatomiques",
-          "rule": "Définir par espèce les parties disponibles et leurs dépendances : peau, crâne, mandibule, colonne ou autre organe. Stock fini par corps ; compatibilité entre gestes et qualité.",
+          "rule": "Catalogue explicite de 39 espèces : peau, tissus et os secondaires uniquement lorsque disponibles ; stocks finis, gestes distincts, pièces identifiées.",
           "source": "docs/hunt-mechanics-v112.md",
-          "acceptance": "Catalogue sourcé, rendu disponible, inventaire limité et absence de duplication après interruption/reprise. Aucune partie universelle sur toutes les espèces."
+          "acceptance": "Prérequis, interruption, capacité pleine, extraction et identité/qualité vérifiés automatiquement. Les trophées principaux historiques gardent leur règle distincte."
         },
         {
           "id": "FUT-05",
-          "status": "IMPLEMENTE_A_VALIDER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Intégrité de trophée",
-          "rule": "Séparer état initial de la proie, dommages causés aux parties et précision du prélèvement. Montrer le risque et la valeur potentielle avant de confirmer un geste irréversible.",
+          "rule": "Intégrité déterministe liée aux dégâts mêlée/tir/surkill ; analyse réduit la pénalité d'inconnu et aperçu par partie avant confirmation.",
           "source": "docs/hunt-mechanics-v112.md",
-          "acceptance": "Critères compréhensibles et reproductibles ; aucun malus invisible ou simple hasard impossible à lire."
+          "acceptance": "Tests purs/natifs des coefficients et des dommages cumulés, qualité bornée et réutilisation du même état à la reprise ; pas d'étude de compréhension humaine."
         },
         {
           "id": "FUT-06",
-          "status": "IMPLEMENTE_A_VALIDER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Charge et encombrement",
-          "rule": "Masse et volume par prise, méthode de portage, limites d'armure et influence explicite sur saut, escalade et bruit. Dépôt temporaire ou rappel d'extraction avec coût annoncé.",
+          "rule": "Masse/volume des nouvelles pièces anatomiques et du corps porté ; limites par armure et effets explicites sur mouvement, saut, grimpe, bruit.",
           "source": "docs/hunt-mechanics-v112.md",
-          "acceptance": "Règles communes inventaire/locomotion ; refus clair du surpoids et politique sans perte silencieuse lorsque l'emport est plein."
+          "acceptance": "Sac de pause avec dépôt/reprise physique, collision/LOS et registre unique ; seuls portés exportés. Les anciens TrophyClaim ne reçoivent pas de poids supplémentaire."
         },
         {
           "id": "FUT-07",
-          "status": "IMPLEMENTE_A_VALIDER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Outil et entretien",
-          "rule": "Introduire précision, usure et entretien seulement si le joueur dispose d'un moyen clair de prévoir puis réparer. Séparer coût au démarrage, interruption et coût au succès.",
+          "rule": "Outil borné 0..100 ; 5 points par dépeçage/prélèvement achevé, durée jusqu'à×1,65 ; prévision réelle avant geste et affûtage gratuit.",
           "source": "docs/hunt-mechanics-v112.md",
-          "acceptance": "Aucun double coût après reprise ; aucun blocage définitif de campagne si l'outil est abîmé. Économie testée avant fixation de chiffres."
+          "acceptance": "Tests natifs de durée, reçus et interruption ; réparation à zéro marque vérifiée. L'usure acquise subsiste même si la mission échoue ensuite."
         },
         {
           "id": "FUT-08",
-          "status": "IMPLEMENTE_A_VALIDER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Atelier de conservation",
-          "rule": "Nettoyage, traitement, séchage et montage avec files de travaux et états persistants. Le trophée possédé reste distinct de son entrée de collection ou de son exposition.",
+          "rule": "Nettoyer, traiter, sécher et monter par gestes manuels persistants ; coûts 2/4/3/5, unités 3/4/5/3, réserve explicite comptée.",
           "source": "docs/hunt-mechanics-v112.md",
-          "acceptance": "Opérations idempotentes et coût lisible ; sauvegarde confirmée avant succès affiché ; aucun achèvement du temps réel sans règle explicite."
+          "acceptance": "Réducteurs, acknowledgements et panneau React testés. Avance du calendrier simulée jusqu'en 2036 n'avance aucun travail ; aucune maturation réelle hors jeu."
         },
         {
           "id": "FUT-09",
-          "status": "IMPLEMENTE_A_VALIDER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Accessibilité des rites",
-          "rule": "Options de maintien/bascule, fenêtres ajustables, glyphes lisibles, alternatives au seul code couleur et commandes remappables. Indiquer les effets éventuels sur score avant le choix.",
+          "rule": "Fenêtres normale/large/sans limite, confirmation pression/maintien/bascule, glyphes lisibles, visée/prise basculées et douze commandes manette remappables.",
           "source": "docs/hunt-mechanics-v112.md",
-          "acceptance": "Essais sur petits écrans et différentes entrées ; toutes les actions restent réalisables sans précision temporelle non expliquée."
+          "acceptance": "Natif et Chromium : profils persistés, compteurs, remap, viewport390, menu corporel manette par défaut/remappée. Aucun appareil physique ni score d'une chasse complète qualifié."
         },
         {
           "id": "FUT-10",
-          "status": "IMPLEMENTE_A_VALIDER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Écosystème et découverte",
-          "rule": "Différencier témoin qui voit un corps, alerte radio, investigation d'allié et peur d'une zone ; conserver l'identité des événements. Les bêtes ont des comportements propres au lieu d'une peur humaine.",
+          "rule": "Découverte locale par vue, odeur ou radio à un saut ; identités conservées, réactions animales distinctes et files bornées.",
           "source": "docs/hunt-mechanics-v112.md",
-          "acceptance": "Budget IA mesuré, propagation bornée et sauvegarde cohérente ; pas d'alerte mondiale déclenchée par une trace invisible."
+          "acceptance": "Tests des murs, visibilité, destinataires, rôles et reprise. Les plafonds de traitement sont vérifiés, sans mesure de performance matérielle."
         },
         {
           "id": "FUT-11",
-          "status": "IMPLEMENTE_A_VALIDER",
+          "status": "NON_QUALIFIE",
           "topic": "Apprentissage et signalétique",
-          "rule": "Tutoriel court sur prise, bond, récupération et choix de route ; afficher l'action disponible et l'état d'outil près du corps sans encombrer le combat.",
+          "rule": "Guide contextuel implémenté, commandes réelles, épuisement, corps/trophée/extraction et choix de route distingués ; états React testés.",
           "source": "docs/hunt-mechanics-v112.md",
-          "acceptance": "Un nouveau joueur distingue corps, trophée et objectif d'extraction ; sorties et annulations compréhensibles."
+          "acceptance": "NON_QUALIFIE pour compréhension d'un nouveau joueur et sorties comprises sans aide humaine ; seuls le rendu, le texte et les chemins logiciels sont vérifiés."
         },
         {
           "id": "FUT-12",
-          "status": "IMPLEMENTE_A_VALIDER",
+          "status": "NON_QUALIFIE",
           "topic": "Qualification de campagne",
-          "rule": "Relier les mécaniques à des chasses complètes, à toutes les armures admissibles et aux contraintes de performance. Conserver les limites entre test unitaire, navigateur et partie jouée.",
+          "rule": "Qualification automatique implémentée : matrice native 72 traversées, registres/transactions, 18 groupes Chromium et captures inspectées ; CI et historique séparés.",
           "source": "docs/hunt-mechanics-v112.md",
-          "acceptance": "Parcours répétés sur appareils cibles, captures inspectées, absence d'erreurs et résultats documentés avec commit et périmètre exacts."
+          "acceptance": "NON_QUALIFIE pour campagne interactive de combat complète, novice, téléphone/manette physiques et performance sur matériel cible. Les résultats automatisés bornés restent détaillés dans Qualification/Preuves."
         }
       ]
     },
@@ -3679,51 +3679,51 @@
       "rows": [
         {
           "id": "PRF112-01",
-          "status": "A_EXECUTER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Tests natifs",
-          "rule": "node --experimental-strip-types --test --test-concurrency=1 tests/*-v112.test.mjs",
-          "source": "tests/hunt-canopy-runtime-v112.test.mjs",
-          "acceptance": "Résultat à consigner depuis GitHub Actions sur le commit intégré."
+          "rule": "237/237 tests V112, dont 72 traversées et quatre cas longs supports/plafond.",
+          "source": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/40673101025",
+          "acceptance": "commit e407979502d1cd4986e2e1810a4ed013f8abac8a ; merge exécuté37c472f2f727ae56cea52708a4c1e4922348fe82, arbre identique e1b5e0cec9da90e2efaeb879630545b1e6b862e0 ; commande node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v112.test.mjs ; PASS0fail0skip."
         },
         {
           "id": "PRF112-02",
-          "status": "A_EXECUTER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "Navigateur",
-          "rule": "node scripts/qa-hunt-mechanics-browser-v112.mjs",
-          "source": "scripts/qa-hunt-mechanics-browser-v112.mjs",
-          "acceptance": "Rapport et captures dans outputs/qa-hunt-v112 ; pas de qualification matériel physique."
+          "rule": "18 groupes Chromium PASS,0 exception pageerror ; cinq PNG conservés et inspectés.",
+          "source": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/40667918140",
+          "acceptance": "commit ab47a9c2d2bf4b0a866c109efa2c96f68d526de8 ; merge exécuté87a66e187a94616e46c657876d93aaaa933ba868, arbre identique ; commande node scripts/qa-hunt-mechanics-browser-v112.mjs. PNG/rapport dans docs/qa/v112-hunt au commit documentaire, pas au SHA antérieur. Ces captures ne prétendent pas qualifier les longues lianes du correctif suivant."
         },
         {
           "id": "PRF112-03",
           "status": "A_EXECUTER",
           "topic": "Excel déterministe",
-          "rule": "node scripts/build-hunt-mechanics-workbook-v112.mjs --check",
+          "rule": "Contrôle binaire du classeur documentaire livré.",
           "source": "scripts/build-hunt-mechanics-workbook-v112.mjs",
-          "acceptance": "Comparaison binaire ; ne lance pas Excel."
+          "acceptance": "Générateur et version avant consignation PASS au commit e407979502d1cd4986e2e1810a4ed013f8abac8a (427476 octets). Nouveaux octets avec preuves à comparer par la CI de ce lot ; résultat définitif dans la PR, sans inventer un SHA documentaire futur."
         },
         {
           "id": "PRF112-04",
           "status": "A_EXECUTER",
           "topic": "Excel indépendant",
-          "rule": "python3 scripts/verify-hunt-mechanics-workbook-v112.py",
+          "rule": "Contrôle indépendant ZIP/XML du classeur documentaire livré.",
           "source": "scripts/verify-hunt-mechanics-workbook-v112.py",
-          "acceptance": "ZIP, CRC, XML, cellules, liens, noms et filtres."
+          "acceptance": "Avant consignation :2 264 cellules/327 liens PASS au commit e407979502d1cd4986e2e1810a4ed013f8abac8a. Vérification des contenus documentaires mis à jour attend la CI de ce lot ; aucun moteur Excel."
         },
         {
           "id": "PRF112-05",
-          "status": "A_EXECUTER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "V110 historique",
           "rule": "node scripts/check-excel-history-v112.mjs --check --tests",
-          "source": "scripts/check-excel-history-v112.mjs",
-          "acceptance": "Régressions actuelles restent distinctes."
+          "source": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/40667918140",
+          "acceptance": "commit ab47a9c2d2bf4b0a866c109efa2c96f68d526de8 ; commande node scripts/check-excel-history-v112.mjs --check --tests ; contexte dff1f6734284891b5a24238f890070616a8325cc,1 386 empreintes,8 fichiers / 56 assertions originales PASS ; XLSX de 6 260 095 octets inchangé. Aucun test du runtime courant déduit de ce rejeu."
         },
         {
           "id": "PRF112-06",
-          "status": "A_EXECUTER",
+          "status": "VALIDE_AUTOMATISE",
           "topic": "V111 Homeworld historique",
           "rule": "node scripts/check-homeworld-history-v112.mjs --check --tests",
-          "source": "scripts/check-homeworld-history-v112.mjs",
-          "acceptance": "Code à son commit a5 a951 e3 f6 dbb3 fa399 bd38 f774 a1 f0 b6 ec58 f5 e."
+          "source": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/40667918140",
+          "acceptance": "commit ab47a9c2d2bf4b0a866c109efa2c96f68d526de8 ; commande node scripts/check-homeworld-history-v112.mjs --check --tests ; contexte a5a951e3f6dbb3fa399bd38f774a1f0b6ec58f5e,1 433 empreintes,11 fichiers / 68 assertions originales PASS ; XLSX de 8 150 642 octets inchangé. Séparément119régressions V111 actuelles PASS."
         },
         {
           "id": "PRF112-07",
