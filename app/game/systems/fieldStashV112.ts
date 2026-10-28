@@ -17,9 +17,9 @@ export const FIELD_STASH_REACH_V112=110;
 const number=(v:unknown):v is number=>typeof v==="number"&&Number.isFinite(v)&&Math.abs(v)<1e8;
 /** The canonical harvested stock never shrinks when deposited: consumed anatomy
  * remains consumed. Only one optional world position moves its physical item. */
-export function carriedFieldSpecimensV112(state:FieldStashStateV112):FieldSpecimenV112[] {
-  const stashed=new Set((state.stashedSpecimensV112??[]).map(e=>e.specimenId));
-  return (state.specimensV112??[]).filter(item=>!stashed.has(item.id));
+export function carriedFieldSpecimensV112(state:FieldStashStateV112|null|undefined):FieldSpecimenV112[] {
+  const stashed=new Set((state?.stashedSpecimensV112??[]).map(e=>e.specimenId));
+  return (state?.specimensV112??[]).filter(item=>!stashed.has(item.id));
 }
 export function normalizeFieldStashesV112(raw:unknown,items:readonly FieldSpecimenV112[]):FieldStashEntryV112[]|null {
   if(raw===undefined)return [];
