@@ -213,3 +213,54 @@ test("a pumped native pendulum releases and catches the next authored vine witho
  assert.equal(f.state.player.aerialBoostUsed,false);
  assert.ok(f.state.player.stamina>0&&f.state.player.stamina<f.state.player.maxStamina);
 });
+
+for(const [supportId,expectedHeight,gripLength] of [
+ ["jungle-vertical-vine-heart",862,760],
+ ["jungle-vertical-vine-east",1054,900],
+]){
+ test(`real unlocked Oseris long vine ${supportId} starts, resumes and releases above 720 px`,()=>{
+  const save=runtime.defaultSave("2026-10-28T00:00:00Z");
+  save.exploration.abilityIds.push("aerial-boost");
+  const mission=runtime.MISSION_BY_ID["jungle-vey"];
+  const state=runtime.makeGameState(mission,save.loadout,save.inventory,"hunter",save.appearance,false,false,"long-oseris-vine",save.exploration);
+  const support=state.world.climbables.find(zone=>zone.id===supportId);
+  assert.ok(support,"the unlocked production world provides the actual vine");
+  assert.equal(support.height,expectedHeight);
+  state.enemies=[];
+  // Place only the initial grasp on the real support. The heart grasp stays
+  // above its gallery floor; neither its support nor collision geometry is edited.
+  Object.assign(state.player,{x:support.x+support.width/2-state.player.width/2,
+    y:support.y+gripLength-state.player.height*.28,
+    previousY:support.y+gripLength-state.player.height*.28,
+    velocityX:0,velocityY:0,grounded:false,climbing:true,climbZoneId:support.id,
+    canopySwing:null,aerialBoostUsed:false});
+  const input={keyboardHeld:new Set(["right"]),touchHeld:new Set(),gamepadHeld:new Set(),pressed:new Set(),previousGamepadButtons:[],activeGamepadIndex:null,gamepadNeedsNeutral:true,gamepadDialogActions:[],pointerScreen:null};
+  const frame=game=>runtime.updatePlayer(game,mission,save.loadout,save.inventory,save.appearance,"hunter",input,1/120,()=>{});
+  assert.doesNotThrow(()=>frame(state),"a valid long attachment must not throw from the simulation");
+  assert.ok(state.player.canopySwing);
+  assert.ok(state.player.canopySwing.length>720);
+  for(let tick=0;tick<18;tick++)frame(state);
+  assert.equal(state.player.climbZoneId,supportId);
+  assert.ok(state.player.canopySwing?.length>720);
+  const checkpoint=runtime.captureCheckpoint(state);
+  const decoded=runtime.deserializeActiveHuntCheckpoint(runtime.serializeActiveHuntCheckpoint(checkpoint,0));
+  assert.ok(decoded,"the real checksum/schema accepts the same long swing produced by attach");
+  const resumed=runtime.restoreCheckpoint(state,decoded.checkpoint,"resume");
+  assert.equal(resumed.player.climbing,true);
+  assert.equal(resumed.player.climbZoneId,supportId);
+  assert.ok(resumed.player.canopySwing?.length>720);
+  assert.equal(resumed.player.canopySwing.length,checkpoint.player.canopySwing.length);
+  resumed.paused=false;
+  input.keyboardHeld.clear();frame(resumed); // acknowledge the real resume neutral requirement
+  input.keyboardHeld.add("right");input.keyboardHeld.add("jump");input.pressed.add("jump");
+  assert.doesNotThrow(()=>frame(resumed));
+  assert.equal(resumed.player.canopySwing,null);
+  assert.equal(resumed.player.climbing,false);
+  assert.equal(resumed.player.aerialBoostUsed,false,"climb release takes priority over the owned boost");
+  assert.ok(Number.isFinite(resumed.player.velocityX)&&Number.isFinite(resumed.player.velocityY));
+  const forged=JSON.parse(JSON.stringify(checkpoint));
+  forged.player.canopySwing.length=2048.001;
+  assert.equal(runtime.deserializeActiveHuntCheckpoint(runtime.serializeActiveHuntCheckpoint(forged,0)),null,
+    "a checksum cannot expand the shared physical domain");
+ });
+}

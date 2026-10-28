@@ -137,3 +137,53 @@ test("authoring is idempotent and excludes solid exploration rooms after replace
  assert.ok(rests.every(rest=>rest.x>explorationWall.x+explorationWall.width));
  assert.deepEqual(Array.from(worldModule.exports.validateWorldBlueprint(altered)),[]);
 });
+
+test("actual Oseris vine lengths above 720 share the attach, simulation and snapshot domain",async()=>{
+ const oserisBundle=await build({
+  entryPoints:[fileURLToPath(new URL("../app/game/systems/oserisLevelDesign.ts",import.meta.url))],
+  bundle:true,write:false,platform:"node",format:"cjs",logLevel:"silent",
+ });
+ const mod={exports:{}};
+ runInNewContext(oserisBundle.outputFiles[0].text,{module:mod,exports:mod.exports,require:createRequire(import.meta.url)});
+ const vines=mod.exports.oserisVerticalClimbables({abilityIds:["aerial-boost"],openedGateIds:[],secretIds:[],discoveredRoomIds:[]});
+ for(const [id,expectedHeight] of [["jungle-vertical-vine-heart",862],["jungle-vertical-vine-east",1054]]){
+  const vine=vines.find(vine=>vine.id===id);
+  assert.equal(vine.height,expectedHeight);
+  const actor={...body,x:vine.x+vine.width/2-body.width/2,
+    y:vine.y+vine.height-body.height*.28,velocityX:150,velocityY:0};
+  let swing=runtime.attachCanopySwingV112(actor,vine),current=actor;
+  assert.ok(swing);close(swing.length,expectedHeight);
+  assert.ok(runtime.isCanopySwingSnapshotV112(swing));
+  const beyondSupport={...swing,length:vine.height+.0001};
+  assert.equal(runtime.canopySupportReachableV112(actor,vine,[],beyondSupport),false,
+    "physical support length is the same strict bound for restoration and stepping");
+  for(let tick=0;tick<24;tick++){
+   const next=runtime.stepCanopySwingV112(swing,current,vine,{moveAxis:1,climbAxis:0},1/120,[],2000);
+   assert.equal(next.detached,false);assert.ok(runtime.isCanopySwingSnapshotV112(next.swing));
+   swing=next.swing;current=next.body;
+  }
+  const released=runtime.releaseCanopySwingV112(swing);
+  assert.ok(Number.isFinite(released.velocityX)&&Number.isFinite(released.velocityY));
+  assert.ok(Math.hypot(released.velocityX,released.velocityY)<=850.001);
+ }
+});
+
+test("the shared maximum refuses an overlong grasp gracefully and caps reeling without invalid state",()=>{
+ const maximum=runtime.CANOPY_PHYSICS_V112.maximumLength;
+ assert.equal(maximum,2048);
+ const tall={...support,id:"future-long-rope",y:0,height:maximum+600};
+ const atLength=length=>({...body,x:tall.x+tall.width/2-body.width/2,y:length-body.height*.28,velocityX:0,velocityY:0});
+ const limitSwing=runtime.attachCanopySwingV112(atLength(maximum),tall);
+ assert.ok(limitSwing);assert.ok(runtime.isCanopySwingSnapshotV112(limitSwing));
+ for(const length of [maximum+.001,maximum+1,tall.height]){
+  assert.equal(runtime.attachCanopySwingV112(atLength(length),tall),null);
+  assert.equal(runtime.isCanopySwingSnapshotV112({...limitSwing,length}),false);
+ }
+ let swing=runtime.attachCanopySwingV112(atLength(maximum-1),tall),actor=atLength(maximum-1);
+ for(let tick=0;tick<8;tick++){
+  const next=runtime.stepCanopySwingV112(swing,actor,tall,{moveAxis:0,climbAxis:1},1/60,[],4000);
+  assert.equal(next.detached,false);assert.ok(runtime.isCanopySwingSnapshotV112(next.swing));
+  swing=next.swing;actor=next.body;
+ }
+ close(swing.length,maximum);
+});

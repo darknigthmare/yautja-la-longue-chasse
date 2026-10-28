@@ -9,11 +9,16 @@ export interface CanopySwingV112 {
   angularVelocity: number;
 }
 export const CANOPY_PHYSICS_V112 = {
-  gravity: 1850, minimumLength: 70, maximumAngle: 1.25,
+  gravity: 1850, minimumLength: 70,
+  // Oseris has real 862/1054 px vines. One bound governs attachment,
+  // reeling and saved state; supports beyond it remain usable only within it.
+  maximumLength: 2048, maximumAngle: 1.25,
   maximumSpeed: 850, pumpAcceleration: 2.4, damping: 0.16,
   lengthSpeed: 80, substepSeconds: 1 / 120,
 } as const;
 const limit = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
+const maximumLengthForSupportV112 = (support: WorldClimbable) => Number.isFinite(support.height)
+  ? Math.min(support.height, CANOPY_PHYSICS_V112.maximumLength) : 0;
 const hand = (body: WorldRect) => ({ x: body.x + body.width / 2, y: body.y + body.height * 0.28 });
 export function isFlexibleCanopySupportV112(support: WorldClimbable): boolean {
   return support.kind === "vine" || support.kind === "rope" || support.kind === "chain";
@@ -43,7 +48,7 @@ export function isCanopySwingSnapshotV112(value: unknown): value is CanopySwingV
   if (!value || typeof value !== "object") return false;
   const swing = value as CanopySwingV112;
   return typeof swing.supportId === "string" && swing.supportId.length > 0 &&
-    Number.isFinite(swing.length) && swing.length >= CANOPY_PHYSICS_V112.minimumLength && swing.length <= 720 &&
+    Number.isFinite(swing.length) && swing.length >= CANOPY_PHYSICS_V112.minimumLength && swing.length <= CANOPY_PHYSICS_V112.maximumLength &&
     Number.isFinite(swing.angle) && Math.abs(swing.angle) <= CANOPY_PHYSICS_V112.maximumAngle &&
     Number.isFinite(swing.angularVelocity) &&
     Math.abs(swing.angularVelocity * swing.length) <= CANOPY_PHYSICS_V112.maximumSpeed + 0.001;
@@ -54,7 +59,7 @@ export function canopySupportReachableV112(
   const grip = hand(body);
   if (swing) {
     if (!isCanopySwingSnapshotV112(swing) || swing.supportId !== support.id || !isFlexibleCanopySupportV112(support) ||
-      swing.length > support.height + 0.001) return false;
+      swing.length > maximumLengthForSupportV112(support)) return false;
     const point = canopySwingPointV112(swing, support);
     return Math.hypot(point.x - grip.x, point.y - grip.y) < 5 &&
       canopySegmentClearV112({x:support.x + support.width/2,y:support.y}, grip, platforms);
@@ -75,7 +80,7 @@ export function attachCanopySwingV112(body: PlatformMotionBody, support: WorldCl
     body.width <= 0 || body.height <= 0) return null;
   const grip = hand(body), dx = grip.x - support.x - support.width/2, dy = grip.y - support.y;
   const length = Math.hypot(dx,dy), angle = Math.atan2(dx,dy);
-  if (length < CANOPY_PHYSICS_V112.minimumLength || length > support.height || Math.abs(angle) > CANOPY_PHYSICS_V112.maximumAngle) return null;
+  if (length < CANOPY_PHYSICS_V112.minimumLength || length > maximumLengthForSupportV112(support) || Math.abs(angle) > CANOPY_PHYSICS_V112.maximumAngle) return null;
   return {supportId:support.id,length,angle,
     angularVelocity:limit((body.velocityX*Math.cos(angle)-body.velocityY*Math.sin(angle))/length,
       -CANOPY_PHYSICS_V112.maximumSpeed/length,CANOPY_PHYSICS_V112.maximumSpeed/length)};
@@ -93,7 +98,7 @@ export function stepCanopySwingV112(
   if (!Number.isFinite(deltaSeconds) || deltaSeconds < 0 || deltaSeconds > 0.25)
     throw new RangeError("Canopy delta must be between zero and 0.25 seconds");
   if (!isCanopySwingSnapshotV112(initial) || initial.supportId !== support.id ||
-    !isFlexibleCanopySupportV112(support) || initial.length > support.height ||
+    !isFlexibleCanopySupportV112(support) || initial.length > maximumLengthForSupportV112(support) ||
     !Number.isFinite(input.moveAxis) || !Number.isFinite(input.climbAxis) || !Number.isFinite(staminaMultiplier))
     throw new RangeError("Canopy step requires a real flexible support and finite controls");
   if (!canopySupportReachableV112(body,support,platforms,initial)) {
@@ -107,7 +112,7 @@ export function stepCanopySwingV112(
   for (let index=0; index<steps; index++) {
     const previousLength = swing.length;
     swing.length = limit(swing.length + limit(input.climbAxis,-1,1)*CANOPY_PHYSICS_V112.lengthSpeed*dt,
-      CANOPY_PHYSICS_V112.minimumLength,support.height);
+      CANOPY_PHYSICS_V112.minimumLength,maximumLengthForSupportV112(support));
     swing.angularVelocity *= (previousLength/swing.length)**2;
     const acceleration = -CANOPY_PHYSICS_V112.gravity/swing.length*Math.sin(swing.angle) +
       limit(input.moveAxis,-1,1)*CANOPY_PHYSICS_V112.pumpAcceleration -
