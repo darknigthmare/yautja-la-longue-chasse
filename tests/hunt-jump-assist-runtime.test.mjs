@@ -15,7 +15,7 @@ const ast = ts.createSourceFile("HuntCanvas.tsx", source, ts.ScriptTarget.Latest
 const bundled = await build({
   stdin: {
     contents: `${source.replace("export default function HuntCanvas", "function HuntCanvas")}
-export { makeGameState, applyPlayerJump, updatePlayerJump, updatePlayer, stepGame, pollGamepad, isHeldKeyboardAction, HUNT_CONTROL_ACTIONS, captureCheckpoint, restoreCheckpoint, snapshot, discoverWorldScreen, freshJumpAssistState, matchingControlActions, firstHuntObservation, createFirstHuntLearning, firstHuntHint, serializeActiveHuntCheckpoint, deserializeActiveHuntCheckpoint }; export { defaultSave } from "./save"; export { MISSION_BY_ID } from "./data"; export { DEFAULT_CONTROL_BINDINGS } from "./systems/controlBindings";`,
+export { makeGameState, applyPlayerJump, updatePlayerJump, updatePlayer, stepGame, pollGamepad, isHeldKeyboardAction, HUNT_CONTROL_ACTIONS, captureCheckpoint, restoreCheckpoint, snapshot, discoverWorldScreen, freshJumpAssistState, matchingControlActions, firstHuntObservation, createFirstHuntLearning, firstHuntHint, serializeActiveHuntCheckpoint, deserializeActiveHuntCheckpoint }; export { defaultSave } from "./save"; export { MISSION_BY_ID } from "./data"; export { DEFAULT_CONTROL_BINDINGS } from "./systems/controlBindings"; export {stepHoldTogglesV112,freshRitualAssistV112} from "./systems/huntAccessibilityV112";`,
     resolveDir: fileURLToPath(new URL("../app/game/", import.meta.url)),
     sourcefile: fileURLToPath(canvasUrl), loader: "tsx",
   },

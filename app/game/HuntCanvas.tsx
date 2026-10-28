@@ -7681,6 +7681,13 @@ function updatePlayer(
     state,
     player.x + player.width / 2,
   );
+  // Floor materials affect contact with that surface. A branch above mud
+  // and an airborne hunter must not inherit drag from the distant ground.
+  const feetY = player.y + player.height;
+  const surfaceMovementMultiplier = player.grounded &&
+    feetY >= movementSurface.y - 8 &&
+    feetY <= movementSurface.y + movementSurface.height + 8
+    ? movementSurface.movementMultiplier : 1;
   const hazardMovementMultiplier = state.world.hazards.reduce(
     (multiplier, hazard) =>
       isHazardActive(hazard, state.elapsed) && overlaps(player, hazard)
@@ -7875,13 +7882,13 @@ function updatePlayer(
     dodgeVelocity !== 0
       ? dodgeVelocity *
         armor.moveSpeedMultiplier *
-        movementSurface.movementMultiplier *
+        surfaceMovementMultiplier *
         hazardMovementMultiplier * fieldLoad.movementMultiplier
       : (actionLocked ? 0 : moveAxis) *
         300 *
         huntMeleeMovementMultiplier(player.melee) *
         armor.moveSpeedMultiplier *
-        movementSurface.movementMultiplier *
+        surfaceMovementMultiplier *
         hazardMovementMultiplier * fieldLoad.movementMultiplier;
   player.climbReattachSeconds = Math.max(0,
     (Number.isFinite(player.climbReattachSeconds)

@@ -22,7 +22,8 @@ function runtimeFunction(name, dependencies = {}) {
 }
 
 const harvestBuild = await build({
-  entryPoints: [fileURLToPath(new URL("../app/game/systems/trophyHarvestV111.ts", import.meta.url))],
+  stdin: { contents: 'export * from "./systems/trophyHarvestV111"; export * from "./systems/anatomyHarvestV112";',
+    resolveDir: fileURLToPath(new URL("../app/game/", import.meta.url)), loader: "ts" },
   bundle: true, write: false, format: "esm", platform: "node", logLevel: "silent",
 });
 const harvest = await import("data:text/javascript;base64," + Buffer.from(harvestBuild.outputFiles[0].text).toString("base64"));
@@ -34,7 +35,7 @@ function trophyRuntime(effects) {
   });
   const interruptTrophyHarvestV111 = runtimeFunction("interruptTrophyHarvestV111", effects);
   return runtimeFunction("finishTrophyExtraction", {
-    ...effects, canContinueTrophyHarvestV111, interruptTrophyHarvestV111,
+    ...harvest, ...effects, canContinueTrophyHarvestV111, interruptTrophyHarvestV111,
   });
 }
 
