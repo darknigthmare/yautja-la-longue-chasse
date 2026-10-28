@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "release": "V111",
+  "reviewer": "v111_art_gap_audit",
+  "status": "ADMITTED_BOUNDED_NATIVE_CONVERSATION",
+  "selectedImagesOpened": 4,
+  "allGeneratedOutputsOpened": 5,
+  "selectedImages": [
+    {
+      "id": "listen",
+      "sha256": "b0d2d1710be551d4b1b1be10f1860a73406c18a55f47c4eb16a2371c4e480d03",
+      "observation": "Pose d’écoute neutre, mains détendues attachées aux poignets ; dessin complet et pieds conservés.",
+      "path": "public/game/homeworld/v111/archivist-conversation/listen.png",
+      "privateRaw": "art-source/v111/archivist-conversation/raw/listen.png"
+    },
+    {
+      "id": "explain",
+      "sha256": "5a655cebec21b8efdf07ec4c56614892fa21b17bbfdb331a0e6399a8ccddec34",
+      "observation": "Paume explicative relevée et autre main près de la ceinture ; silhouette des bras distincte de l’écoute.",
+      "path": "public/game/homeworld/v111/archivist-conversation/explain.png",
+      "privateRaw": "art-source/v111/archivist-conversation/raw/explain.png"
+    },
+    {
+      "id": "indicate",
+      "sha256": "cf359e4b01e573876afc711dc85481d14c59558ac3678cd524dc21d72d698793",
+      "observation": "Seconde génération : bras orienté vers le bas avec coude rapproché ; doigts entièrement contenus et marge droite suffisante.",
+      "path": "public/game/homeworld/v111/archivist-conversation/indicate.png",
+      "privateRaw": "art-source/v111/archivist-conversation/raw/indicate.png"
+    },
+    {
+      "id": "return",
+      "sha256": "f6ea87e15053a67987f43117dd9654b2baff6eb5adbae58e70b06593353fe7a8",
+      "observation": "Geste de conclusion retenu, mains à des hauteurs distinctes ; posture indépendante puis retour à l’écoute.",
+      "path": "public/game/homeworld/v111/archivist-conversation/return.png",
+      "privateRaw": "art-source/v111/archivist-conversation/raw/return.png"
+    }
+  ],
+  "review": "Les cinq sorties natives ont été vues en entier dans le retour ImageGen. Les quatre retenues conservent le même rôle K-17 original, peau gris-bleu tachetée, dreads noirs attachés, filet sombre, ceinture et pagne brun, protections d’avant-bras. Elles montrent quatre silhouettes de gestes différentes, des membres raccordés et le corps entier. Une seule orientation native droite est admise. Les PNG sont conservés sans retouche ; seuls dimensions, alpha, ancrages au sol et empreintes sont lus.",
+  "registration": {
+    "policy": "Une seule échelle positive uniforme sur les quatre images complètes ; pivots natifs de pieds distincts. Aucun crop, miroir, recolor, étirement ou découpage de membres.",
+    "nativeHeight": 1245,
+    "minimumHorizontalAlphaGutter": 16,
+    "minimumVerticalAlphaGutter": 32,
+    "visibleBorderPixels": 0
+  },
+  "rejected": [
+    {
+      "path": "art-source/v111/archivist-conversation/rejected/indicate-gutter-r1.png",
+      "generatedPath": "/workspace/generated_images/exec-1722d39d-7cdb-4c3e-978c-89d2f52d55c8.png",
+      "reason": "Seulement 14 pixels entièrement libres à droite de l’alpha visible (>16), sous la barre de16. Aucun pixel coupé, mais marge insuffisante. Référence conservée ; redessin natif complet demandé, aucune chirurgie alpha/padding/crop."
+    }
+  ],
+  "browserVerification": false,
+  "sourceCompletion": false,
+  "closedCatalogue354Ids": [],
+  "limits": [
+    "Quatre dessins-clés de discussion pour un seul rôle local, pas une bibliothèque d’animations professionnelles complète.",
+    "Aucune prise/manipulation d’objet à distance : le PNJ désigne les surfaces séparées sans les toucher.",
+    "Aucune marche, nouvelle identité, récompense, lignée ou attribution canonique n’est certifiée.",
+    "La présence des PNG et cette revue visuelle ne remplacent pas leur inspection dans le parcours navigateur final."
+  ]
+}

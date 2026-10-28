@@ -14,6 +14,8 @@ const api = Object.assign({}, ...[
   'homeworldCartographyLedgerV105', 'homeworldCartographyV105', 'homeworldArchiveLedgerV106', 'homeworldArchiveV106',
   'homeworldArchiveComparisonLedgerV107', 'homeworldArchiveComparisonV107', 'homeworldCargoLedgerV108',
   'homeworldCargoV108', 'homeworldArchivePlaqueLedgerV109', 'homeworldArchivePlaqueV109',
+  'homeworldArchiveContinuationLedgerV111', 'homeworldArchiveContinuationV111',
+  'homeworldArrivalRecoveryLedgerV111', 'homeworldArrivalRecoveryV111',
 ].map(load));
 const saves = f.qa.load('app/game/save.ts');
 const source = await fs.readFile('app/game/HomeworldHub.tsx', 'utf8');
@@ -57,6 +59,9 @@ function fixture() {
     comparisonDraftRefV107: {current: api.defaultHomeworldArchiveComparisonV107(f.owner)},
     cargoDraftRefV108: {current: structuredClone(route.ledger)},
     plaqueDraftRefV109: {current: api.defaultHomeworldArchivePlaqueV109(f.owner)},
+    continuationDraftRefV111: {current: api.defaultHomeworldArchiveContinuationV111(f.owner)},
+    residentAdmissionRefV110: {current: {owner: f.owner, active: true}},
+    document: {hidden: false, hasFocus: () => true},
     youthMotionRefV74: {current: {direction: 's'}}, viewportRef: {current: {focus() {}}},
     clearInputs() {}, setActor() {}, setInteriorId() {}, setYouthMotionV74() {},
     setAnnouncement(message) { env.announcement = message; }, onNotify() {},
@@ -73,8 +78,9 @@ function fixture() {
   env.cartographyWritePausedRefV105 = {current: false};
   for (const name of ['setPlaqueViewV109', 'setPlaqueWritePausedV109', 'setCargoViewV108', 'setCargoWritePausedV108',
     'setComparisonViewV107', 'setComparisonWritePausedV107', 'setArchiveViewV106', 'setArchiveWritePausedV106',
-    'setCartographyWritePausedV104', 'setCartographyWritePausedV105']) env[name] = () => {};
-  for (const name of ['onProgress', 'recordLocationV77', 'enterInterior', 'exitInterior']) env[name] = callback(name, env);
+    'setCartographyWritePausedV104', 'setCartographyWritePausedV105', 'setContinuationViewV111',
+    'setRecoveryPlanV111', 'setRecoveryMessageV111', 'setRecoveryWriteRefusedV111', 'setDialog']) env[name] = () => {};
+  for (const name of ['onProgress', 'recordLocationV77', 'recoveryContextV111', 'enterInterior', 'exitInterior']) env[name] = callback(name, env);
   return {env, route, values, key, storage, get writes() { return writes; }};
 }
 
@@ -128,6 +134,7 @@ test('V110: a legacy interior checkpoint with an occupied authored anchor is ret
   const checkpoint = api.createHomeworldCheckpointV77(f.owner, '0', {...route.actor, ...room.spawn}, room.buildingId, oldAnchor);
   const legacy = {...env.saveRef.current, homeworld: {...env.progressRef.current, locationV77: checkpoint}};
   assert(saves.parseSaveImport(JSON.stringify(legacy)).save, 'declared legacy geometry fixture remains importable');
+  env.saveRef.current = legacy; env.progressRef.current = legacy.homeworld;
   const restored = api.resolveHomeworldLocationV77(checkpoint, f.owner);
   assert.equal(restored.interiorId, room.buildingId);
   env.actorRef.current = restored.actor; env.exteriorAnchorRef.current = restored.exterior; env.interiorRef.current = room;

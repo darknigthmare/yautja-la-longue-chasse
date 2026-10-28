@@ -1,0 +1,1107 @@
+TAP version 13
+# Subtest: V111 real Save import, write and load preserve B byte-exact across offer, active carry and completed continuation
+ok 1 - V111 real Save import, write and load preserve B byte-exact across offer, active carry and completed continuation
+  ---
+  duration_ms: 808.566628
+  type: 'test'
+  ...
+# Subtest: V111 real Save rejects future, foreign, no-B, mutated-base and unsupported actor/object pairs before writing
+ok 2 - V111 real Save rejects future, foreign, no-B, mutated-base and unsupported actor/object pairs before writing
+  ---
+  duration_ms: 8.356065
+  type: 'test'
+  ...
+# Subtest: V111 actual Hub sampler and onProgress persist the carried candidate with its new checkpoint without changing archived B
+ok 3 - V111 actual Hub sampler and onProgress persist the carried candidate with its new checkpoint without changing archived B
+  ---
+  duration_ms: 83.60876
+  type: 'test'
+  ...
+# Subtest: V111 actual Hub quota refusal freezes new actions without rewriting either durable receipt, then Retry can persist the same episode
+ok 4 - V111 actual Hub quota refusal freezes new actions without rewriting either durable receipt, then Retry can persist the same episode
+  ---
+  duration_ms: 74.423348
+  type: 'test'
+  ...
+# Subtest: V111 actual Hub callbacks refuse replaced owners, stale outer revisions and an old legacy adapter
+ok 5 - V111 actual Hub callbacks refuse replaced owners, stale outer revisions and an old legacy adapter
+  ---
+  duration_ms: 73.652115
+  type: 'test'
+  ...
+# Subtest: V111 continuation UI uses newly played source lines and binds its inner controls to the outer render revision
+ok 6 - V111 continuation UI uses newly played source lines and binds its inner controls to the outer render revision
+  ---
+  duration_ms: 133.127534
+  type: 'test'
+  ...
+# Subtest: V111 actual motor and render gates stop an interrupted carried candidate, despite its archived B being completed
+ok 7 - V111 actual motor and render gates stop an interrupted carried candidate, despite its archived B being completed
+  ---
+  duration_ms: 9.456876
+  type: 'test'
+  ...
+# Subtest: V111 pure Save11 to12 migration preserves the genuine V110 campaign and its complete B document exactly
+not ok 8 - V111 pure Save11 to12 migration preserves the genuine V110 campaign and its complete B document exactly
+  ---
+  duration_ms: 4245.243914
+  type: 'test'
+  location: '/workspace/yautja-homeworld-v110/tests/homeworld-continuation-integration-v111.test.mjs:166:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    every pre-existing campaign field survives the schema-only migration
+    + actual - expected
+    ... Skipped lines
+    
+      {
+        appearance: {
+          armorStyleId: 'classic',
+          armorTintId: 'bronze',
+          biomaskId: 'jungle',
+    ...
+          },
+    +     fieldToolIds: [],
+          gearUpgrades: {
+            'audio-decoy': 0,
+            'motion-sensor': 0,
+            netgun: 0,
+            snare: 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    version: 12
+    createdAt: '2026-10-26T10:00:00.000Z'
+    updatedAt: '2026-10-26T10:00:00.000Z'
+    profile:
+      hunterName: 'Migration · constat B conservé'
+      rankId: 'young-blood'
+      honor: 0
+      clanMarks: 0
+      playTimeSeconds: 0
+    inventory:
+      unlockedWeaponIds:
+        0: 'wristblades'
+        1: 'combistick'
+        2: 'plasma-caster'
+      unlockedGearIds:
+        0: 'motion-sensor'
+        1: 'audio-decoy'
+      unlockedArmorIds:
+        0: 'hunter'
+      weaponUpgrades:
+        wristblades: 0
+        combistick: 0
+        plasma-caster: 0
+        smart-disc: 0
+        yautja-bow: 0
+      gearUpgrades:
+        netgun: 0
+        motion-sensor: 0
+        audio-decoy: 0
+        snare: 0
+      armorUpgrades:
+        scout: 0
+        hunter: 0
+        berserker: 0
+    loadout:
+      armorId: 'hunter'
+      weaponIds:
+        0: 'combistick'
+        1: 'plasma-caster'
+      gearIds:
+        0: 'motion-sensor'
+        1: 'audio-decoy'
+    appearance:
+      presetId: 'jungle-hunter'
+      bodyMorphId: 'classic'
+      headStyleId: 'reference'
+      skinId: 'ochre-mottle'
+      biomaskId: 'jungle'
+      dreadStyleId: 'classic'
+      dreadTintId: 'obsidian'
+      armorStyleId: 'classic'
+      armorTintId: 'bronze'
+      trophyAdornmentId: 'skull-spine'
+      laserColorId: 'crimson'
+    missionProgress:
+      jungle-vey:
+        status: 'available'
+        attempts: 0
+        completions: 0
+        bestScore: 0
+        bestTimeSeconds: ~
+        bestDifficultyId: ~
+        completedObjectiveIds:
+        lastPlayedAt: ~
+      ice-cryostalker:
+        status: 'locked'
+        attempts: 0
+        completions: 0
+        bestScore: 0
+        bestTimeSeconds: ~
+        bestDifficultyId: ~
+        completedObjectiveIds:
+        lastPlayedAt: ~
+      volcano-bad-blood:
+        status: 'locked'
+        attempts: 0
+        completions: 0
+        bestScore: 0
+        bestTimeSeconds: ~
+        bestDifficultyId: ~
+        completedObjectiveIds:
+        lastPlayedAt: ~
+      swamp-hydra:
+        status: 'locked'
+        attempts: 0
+        completions: 0
+        bestScore: 0
+        bestTimeSeconds: ~
+        bestDifficultyId: ~
+        completedObjectiveIds:
+        lastPlayedAt: ~
+      desert-sandmaw:
+        status: 'locked'
+        attempts: 0
+        completions: 0
+        bestScore: 0
+        bestTimeSeconds: ~
+        bestDifficultyId: ~
+        completedObjectiveIds:
+        lastPlayedAt: ~
+      ocean-leviathan:
+        status: 'locked'
+        attempts: 0
+        completions: 0
+        bestScore: 0
+        bestTimeSeconds: ~
+        bestDifficultyId: ~
+        completedObjectiveIds:
+        lastPlayedAt: ~
+      fungal-hivemind:
+        status: 'locked'
+        attempts: 0
+        completions: 0
+        bestScore: 0
+        bestTimeSeconds: ~
+        bestDifficultyId: ~
+        completedObjectiveIds:
+        lastPlayedAt: ~
+      ruins-ancient-guardian:
+        status: 'locked'
+        attempts: 0
+        completions: 0
+        bestScore: 0
+        bestTimeSeconds: ~
+        bestDifficultyId: ~
+        completedObjectiveIds:
+        lastPlayedAt: ~
+    trophies:
+    codex:
+      unlockedEntryIds:
+        0: 'yautja-honor'
+        1: 'biomask'
+        2: 'cloaking-device'
+      scanCounts:
+      discoveredEnemyIds:
+    exploration:
+      abilityIds:
+      openedGateIds:
+      secretIds:
+      discoveredRoomIds:
+    statistics:
+      missionsStarted: 0
+      missionsCompleted: 0
+      missionsFailed: 0
+      totalKills: 0
+      totalScans: 0
+      secondWindsUsed: 0
+      bestHuntStreak: 0
+      currentHuntStreak: 0
+    settings:
+      difficultyId: 'hunter'
+      masterVolume: 0.37
+      musicVolume: 0.65
+      effectsVolume: 0.85
+      screenShake: true
+      reducedGore: false
+      highContrastVision: false
+      controlBindings:
+        hunt.moveLeft:
+          0: 'KeyQ'
+          1: 'ArrowLeft'
+        hunt.moveRight:
+          0: 'KeyD'
+          1: 'ArrowRight'
+        hunt.moveUp:
+          0: 'KeyZ'
+          1: 'ArrowUp'
+        hunt.moveDown:
+          0: 'KeyS'
+          1: 'ArrowDown'
+        hunt.jump:
+          0: 'Space'
+        hunt.melee:
+          0: 'KeyJ'
+        hunt.weaponPrimary:
+          0: 'KeyK'
+        hunt.selectWeaponOne:
+          0: 'Digit1'
+          1: 'Numpad1'
+        hunt.selectWeaponTwo:
+          0: 'Digit2'
+          1: 'Numpad2'
+        hunt.nextWeapon:
+          0: 'KeyR'
+        hunt.aim:
+          0: 'ShiftLeft'
+          1: 'ShiftRight'
+        hunt.toggleMask:
+          0: 'KeyM'
+        hunt.scan:
+          0: 'KeyV'
+        hunt.toggleCloak:
+          0: 'KeyC'
+        hunt.heal:
+          0: 'KeyH'
+        hunt.useGearOne:
+          0: 'Digit3'
+          1: 'Numpad3'
+        hunt.useGearTwo:
+          0: 'Digit4'
+          1: 'Numpad4'
+        hunt.interact:
+          0: 'KeyE'
+        hunt.pause:
+          0: 'Escape'
+        pit.p1MoveLeft:
+          0: 'KeyQ'
+          1: 'ArrowLeft'
+        pit.p1MoveRight:
+          0: 'KeyD'
+          1: 'ArrowRight'
+        pit.p1MoveDown:
+          0: 'KeyS'
+          1: 'ArrowDown'
+        pit.p1Jump:
+          0: 'Space'
+        pit.p1AttackLight:
+          0: 'KeyJ'
+        pit.p1AttackMedium:
+          0: 'KeyK'
+        pit.p1AttackHeavy:
+          0: 'KeyL'
+        pit.p1AttackTechnique:
+          0: 'KeyU'
+        pit.p1GuardHigh:
+          0: 'KeyI'
+        pit.p1GuardLow:
+          0: 'KeyO'
+        pit.p1Throw:
+          0: 'KeyP'
+        pit.p1Resource:
+          0: 'KeyH'
+        pit.p2MoveLeft:
+          0: 'Numpad4'
+        pit.p2MoveRight:
+          0: 'Numpad6'
+        pit.p2MoveDown:
+          0: 'Numpad2'
+        pit.p2Jump:
+          0: 'Numpad8'
+        pit.p2AttackLight:
+          0: 'Numpad1'
+        pit.p2AttackMedium:
+          0: 'Numpad3'
+        pit.p2AttackHeavy:
+          0: 'Numpad5'
+        pit.p2AttackTechnique:
+          0: 'Numpad7'
+        pit.p2GuardHigh:
+          0: 'Numpad9'
+        pit.p2GuardLow:
+          0: 'Numpad0'
+        pit.p2Throw:
+          0: 'NumpadEnter'
+        pit.p2Resource:
+          0: 'NumpadSubtract'
+        pit.pause:
+          0: 'Escape'
+        galaxy.flyLeft:
+          0: 'KeyQ'
+          1: 'ArrowLeft'
+        galaxy.flyRight:
+          0: 'KeyD'
+          1: 'ArrowRight'
+        galaxy.flyUp:
+          0: 'KeyZ'
+          1: 'ArrowUp'
+        galaxy.flyDown:
+          0: 'KeyS'
+          1: 'ArrowDown'
+        galaxy.previousTarget:
+          0: 'PageUp'
+          1: 'KeyR'
+        galaxy.nextTarget:
+          0: 'PageDown'
+          1: 'KeyE'
+        galaxy.activate:
+          0: 'Enter'
+          1: 'Space'
+        galaxy.back:
+          0: 'Escape'
+          1: 'Backspace'
+        galaxy.returnToGalaxy:
+          0: 'KeyG'
+        shipHub.previousRoom:
+          0: 'KeyQ'
+          1: 'ArrowLeft'
+        shipHub.nextRoom:
+          0: 'KeyD'
+          1: 'ArrowRight'
+        shipHub.previousAction:
+          0: 'ArrowUp'
+        shipHub.nextAction:
+          0: 'ArrowDown'
+        shipHub.activate:
+          0: 'Enter'
+          1: 'Space'
+        shipHub.returnToBridge:
+          0: 'Escape'
+        shipHub.firstRoom:
+          0: 'Home'
+        shipHub.lastRoom:
+          0: 'End'
+        training.left:
+          0: 'KeyQ'
+          1: 'ArrowLeft'
+        training.right:
+          0: 'KeyD'
+          1: 'ArrowRight'
+        training.primary:
+          0: 'Space'
+          1: 'KeyJ'
+          2: 'Enter'
+        training.secondary:
+          0: 'KeyE'
+          1: 'KeyK'
+          2: 'ShiftLeft'
+          3: 'ShiftRight'
+        training.cancel:
+          0: 'Escape'
+        workshop.left:
+          0: 'KeyQ'
+          1: 'ArrowLeft'
+        workshop.up:
+          0: 'KeyZ'
+          1: 'ArrowUp'
+        workshop.down:
+          0: 'KeyS'
+          1: 'ArrowDown'
+        workshop.right:
+          0: 'KeyD'
+          1: 'ArrowRight'
+        workshop.confirm:
+          0: 'Enter'
+          1: 'Space'
+          2: 'KeyE'
+        workshop.restart:
+          0: 'KeyR'
+        workshop.cancel:
+          0: 'Escape'
+    storyCompleted: false
+    homeworld:
+      version: 1
+      cntlipV77:
+        version: 1
+        revision: 0
+        state:
+          version: 1
+          knownLore: false
+          totalServings: 0
+          activeDoses: 0
+          worldElapsedMs: 0
+          memories:
+          pending: ~
+        invitedSiteIds:
+        stock:
+          clan-common: 0
+          market-halt: 0
+          pit-rest: 0
+          council-gathering: 0
+      contractsV68:
+        version: 1
+        serial: 0
+        entries:
+      sideStoryV66:
+        version: 1
+        accepted: false
+        clues:
+        archiveRead: false
+        chronologyVerified: false
+        deductionVerified: false
+        testimonyHeard: false
+        resolution: ~
+        branchVerified: false
+        completed: false
+      npcMissionsV66:
+        version: 1
+        ash:
+          accepted: false
+          report: ~
+          delivered: false
+        glass:
+          accepted: false
+          report: ~
+          delivered: false
+      mausoleum:
+        version: 1
+        examinedIds:
+        consultedIds:
+      inquiry:
+        version: 1
+        convoyReviewed: false
+        archiveReviewed: false
+        approach: ~
+        followupVerified: false
+        audienceFiled: false
+      expeditions:
+        ash-marches: ~
+        glass-desert: ~
+      visitedDistrictIds:
+        0: 'port'
+      evidenceIds:
+      greetedNpcIds:
+      witnessChoice: ~
+      audienceOutcome: ~
+      relations:
+        first-blood-houses: 0
+        forge-circle: 0
+        reserve-keepers: 0
+        star-navigators: 0
+        throne-court: 0
+        exile-network: 0
+      locationV77:
+        version: 1
+        layoutRevision: 1
+        ownerCreatedAt: '2026-10-26T10:00:00.000Z'
+        levelId: '0'
+        exterior:
+          x: 7760
+          y: 5470
+        interiorId: ~
+        local: ~
+      archivePlaqueV109:
+        version: 1
+        ownerCreatedAt: '2026-10-26T10:00:00.000Z'
+        revision: 15
+        receipt:
+          sceneId: 'D6-W-PNJ-ROLE-03'
+          operationId: 'port-k17-separated-plaque-study-v109'
+          sourceSha256: '87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183'
+          sourceCorpusSha256: 'e36efdc3d5ac8fddb74dd683458b72873203446204e768b02aa13e4db17eed30'
+          artSha256: 'a47fb32cfc7b5f2c4e5721c660c9a2d68ac4dee1ee869d5175f41dd2278c49fe'
+          phase: 'completed'
+          resumePhase: ~
+          option: 'B'
+          last:
+            x: 7520
+            y: 5350
+          walked: 1121.1721317584952
+          objects:
+            0:
+              id: 'plaque'
+              x: 7760
+              y: 5410
+              place: 'support'
+            1:
+              id: 'trace'
+              x: 7880
+              y: 5410
+              place: 'support'
+            2:
+              id: 'fragment'
+              x: 7520
+              y: 5470
+              place: 'source'
+          carrier: ~
+          pickupWalked: ~
+          observations:
+            0: 'plaque'
+            1: 'trace'
+          provenances:
+            0: 'plaque'
+            1: 'trace'
+          ownerConsent: true
+          edgeObserved: false
+          mismatchObserved: false
+          failureSpoken: false
+          resumeSpoken: false
+          fragmentCompared: false
+          interruptedCount: 0
+          lineIds:
+            0: 'D6-W-PNJ-ROLE-03-OUV---01'
+            1: 'D6-W-PNJ-ROLE-03-CHOIX-B-01'
+            2: 'D6-W-PNJ-ROLE-03-REPONSE-B-01'
+            3: 'D6-W-PNJ-ROLE-03-SUCCES---01'
+    justice:
+      version: 1
+      originChoice: ~
+      declaration: 'recognized'
+      incidents:
+      evidence:
+      identifications:
+      warrants:
+      pressure:
+        homeworld: 0
+        clan-core: 0
+        frontier: 0
+        neutral-station: 0
+        renegade-port: 0
+      clandestineNotoriety: 0
+      detention: ~
+      intervention:
+        stage: 'none'
+        jurisdictionId: ~
+        remainingBudget: 2
+        cooldownTicks: 0
+    prologue: ~
+    youthTraining: ~
+    soloV66: ~
+    soloV67: ~
+    soloV68: ~
+    soloV69: ~
+    soloV70: ~
+    homeworldRegionV68: ~
+    homeworldPassageV67: ~
+    gameReserveV66: ~
+  actual:
+    version: 12
+    createdAt: '2026-10-26T10:00:00.000Z'
+    updatedAt: '2026-10-26T10:00:00.000Z'
+    profile:
+      hunterName: 'Migration · constat B conservé'
+      rankId: 'young-blood'
+      honor: 0
+      clanMarks: 0
+      playTimeSeconds: 0
+    inventory:
+      fieldToolIds:
+      unlockedWeaponIds:
+        0: 'wristblades'
+        1: 'combistick'
+        2: 'plasma-caster'
+      unlockedGearIds:
+        0: 'motion-sensor'
+        1: 'audio-decoy'
+      unlockedArmorIds:
+        0: 'hunter'
+      weaponUpgrades:
+        wristblades: 0
+        combistick: 0
+        plasma-caster: 0
+        smart-disc: 0
+        yautja-bow: 0
+      gearUpgrades:
+        netgun: 0
+        motion-sensor: 0
+        audio-decoy: 0
+        snare: 0
+      armorUpgrades:
+        scout: 0
+        hunter: 0
+        berserker: 0
+    loadout:
+      armorId: 'hunter'
+      weaponIds:
+        0: 'combistick'
+        1: 'plasma-caster'
+      gearIds:
+        0: 'motion-sensor'
+        1: 'audio-decoy'
+    appearance:
+      presetId: 'jungle-hunter'
+      bodyMorphId: 'classic'
+      headStyleId: 'reference'
+      skinId: 'ochre-mottle'
+      biomaskId: 'jungle'
+      dreadStyleId: 'classic'
+      dreadTintId: 'obsidian'
+      armorStyleId: 'classic'
+      armorTintId: 'bronze'
+      trophyAdornmentId: 'skull-spine'
+      laserColorId: 'crimson'
+    missionProgress:
+      jungle-vey:
+        status: 'available'
+        attempts: 0
+        completions: 0
+        bestScore: 0
+        bestTimeSeconds: ~
+        bestDifficultyId: ~
+        completedObjectiveIds:
+        lastPlayedAt: ~
+      ice-cryostalker:
+        status: 'locked'
+        attempts: 0
+        completions: 0
+        bestScore: 0
+        bestTimeSeconds: ~
+        bestDifficultyId: ~
+        completedObjectiveIds:
+        lastPlayedAt: ~
+      volcano-bad-blood:
+        status: 'locked'
+        attempts: 0
+        completions: 0
+        bestScore: 0
+        bestTimeSeconds: ~
+        bestDifficultyId: ~
+        completedObjectiveIds:
+        lastPlayedAt: ~
+      swamp-hydra:
+        status: 'locked'
+        attempts: 0
+        completions: 0
+        bestScore: 0
+        bestTimeSeconds: ~
+        bestDifficultyId: ~
+        completedObjectiveIds:
+        lastPlayedAt: ~
+      desert-sandmaw:
+        status: 'locked'
+        attempts: 0
+        completions: 0
+        bestScore: 0
+        bestTimeSeconds: ~
+        bestDifficultyId: ~
+        completedObjectiveIds:
+        lastPlayedAt: ~
+      ocean-leviathan:
+        status: 'locked'
+        attempts: 0
+        completions: 0
+        bestScore: 0
+        bestTimeSeconds: ~
+        bestDifficultyId: ~
+        completedObjectiveIds:
+        lastPlayedAt: ~
+      fungal-hivemind:
+        status: 'locked'
+        attempts: 0
+        completions: 0
+        bestScore: 0
+        bestTimeSeconds: ~
+        bestDifficultyId: ~
+        completedObjectiveIds:
+        lastPlayedAt: ~
+      ruins-ancient-guardian:
+        status: 'locked'
+        attempts: 0
+        completions: 0
+        bestScore: 0
+        bestTimeSeconds: ~
+        bestDifficultyId: ~
+        completedObjectiveIds:
+        lastPlayedAt: ~
+    trophies:
+    codex:
+      unlockedEntryIds:
+        0: 'yautja-honor'
+        1: 'biomask'
+        2: 'cloaking-device'
+      scanCounts:
+      discoveredEnemyIds:
+    exploration:
+      abilityIds:
+      openedGateIds:
+      secretIds:
+      discoveredRoomIds:
+    statistics:
+      missionsStarted: 0
+      missionsCompleted: 0
+      missionsFailed: 0
+      totalKills: 0
+      totalScans: 0
+      secondWindsUsed: 0
+      bestHuntStreak: 0
+      currentHuntStreak: 0
+    settings:
+      difficultyId: 'hunter'
+      masterVolume: 0.37
+      musicVolume: 0.65
+      effectsVolume: 0.85
+      screenShake: true
+      reducedGore: false
+      highContrastVision: false
+      controlBindings:
+        hunt.moveLeft:
+          0: 'KeyQ'
+          1: 'ArrowLeft'
+        hunt.moveRight:
+          0: 'KeyD'
+          1: 'ArrowRight'
+        hunt.moveUp:
+          0: 'KeyZ'
+          1: 'ArrowUp'
+        hunt.moveDown:
+          0: 'KeyS'
+          1: 'ArrowDown'
+        hunt.jump:
+          0: 'Space'
+        hunt.melee:
+          0: 'KeyJ'
+        hunt.weaponPrimary:
+          0: 'KeyK'
+        hunt.selectWeaponOne:
+          0: 'Digit1'
+          1: 'Numpad1'
+        hunt.selectWeaponTwo:
+          0: 'Digit2'
+          1: 'Numpad2'
+        hunt.nextWeapon:
+          0: 'KeyR'
+        hunt.aim:
+          0: 'ShiftLeft'
+          1: 'ShiftRight'
+        hunt.toggleMask:
+          0: 'KeyM'
+        hunt.scan:
+          0: 'KeyV'
+        hunt.toggleCloak:
+          0: 'KeyC'
+        hunt.heal:
+          0: 'KeyH'
+        hunt.useGearOne:
+          0: 'Digit3'
+          1: 'Numpad3'
+        hunt.useGearTwo:
+          0: 'Digit4'
+          1: 'Numpad4'
+        hunt.interact:
+          0: 'KeyE'
+        hunt.pause:
+          0: 'Escape'
+        pit.p1MoveLeft:
+          0: 'KeyQ'
+          1: 'ArrowLeft'
+        pit.p1MoveRight:
+          0: 'KeyD'
+          1: 'ArrowRight'
+        pit.p1MoveDown:
+          0: 'KeyS'
+          1: 'ArrowDown'
+        pit.p1Jump:
+          0: 'Space'
+        pit.p1AttackLight:
+          0: 'KeyJ'
+        pit.p1AttackMedium:
+          0: 'KeyK'
+        pit.p1AttackHeavy:
+          0: 'KeyL'
+        pit.p1AttackTechnique:
+          0: 'KeyU'
+        pit.p1GuardHigh:
+          0: 'KeyI'
+        pit.p1GuardLow:
+          0: 'KeyO'
+        pit.p1Throw:
+          0: 'KeyP'
+        pit.p1Resource:
+          0: 'KeyH'
+        pit.p2MoveLeft:
+          0: 'Numpad4'
+        pit.p2MoveRight:
+          0: 'Numpad6'
+        pit.p2MoveDown:
+          0: 'Numpad2'
+        pit.p2Jump:
+          0: 'Numpad8'
+        pit.p2AttackLight:
+          0: 'Numpad1'
+        pit.p2AttackMedium:
+          0: 'Numpad3'
+        pit.p2AttackHeavy:
+          0: 'Numpad5'
+        pit.p2AttackTechnique:
+          0: 'Numpad7'
+        pit.p2GuardHigh:
+          0: 'Numpad9'
+        pit.p2GuardLow:
+          0: 'Numpad0'
+        pit.p2Throw:
+          0: 'NumpadEnter'
+        pit.p2Resource:
+          0: 'NumpadSubtract'
+        pit.pause:
+          0: 'Escape'
+        galaxy.flyLeft:
+          0: 'KeyQ'
+          1: 'ArrowLeft'
+        galaxy.flyRight:
+          0: 'KeyD'
+          1: 'ArrowRight'
+        galaxy.flyUp:
+          0: 'KeyZ'
+          1: 'ArrowUp'
+        galaxy.flyDown:
+          0: 'KeyS'
+          1: 'ArrowDown'
+        galaxy.previousTarget:
+          0: 'PageUp'
+          1: 'KeyR'
+        galaxy.nextTarget:
+          0: 'PageDown'
+          1: 'KeyE'
+        galaxy.activate:
+          0: 'Enter'
+          1: 'Space'
+        galaxy.back:
+          0: 'Escape'
+          1: 'Backspace'
+        galaxy.returnToGalaxy:
+          0: 'KeyG'
+        shipHub.previousRoom:
+          0: 'KeyQ'
+          1: 'ArrowLeft'
+        shipHub.nextRoom:
+          0: 'KeyD'
+          1: 'ArrowRight'
+        shipHub.previousAction:
+          0: 'ArrowUp'
+        shipHub.nextAction:
+          0: 'ArrowDown'
+        shipHub.activate:
+          0: 'Enter'
+          1: 'Space'
+        shipHub.returnToBridge:
+          0: 'Escape'
+        shipHub.firstRoom:
+          0: 'Home'
+        shipHub.lastRoom:
+          0: 'End'
+        training.left:
+          0: 'KeyQ'
+          1: 'ArrowLeft'
+        training.right:
+          0: 'KeyD'
+          1: 'ArrowRight'
+        training.primary:
+          0: 'Space'
+          1: 'KeyJ'
+          2: 'Enter'
+        training.secondary:
+          0: 'KeyE'
+          1: 'KeyK'
+          2: 'ShiftLeft'
+          3: 'ShiftRight'
+        training.cancel:
+          0: 'Escape'
+        workshop.left:
+          0: 'KeyQ'
+          1: 'ArrowLeft'
+        workshop.up:
+          0: 'KeyZ'
+          1: 'ArrowUp'
+        workshop.down:
+          0: 'KeyS'
+          1: 'ArrowDown'
+        workshop.right:
+          0: 'KeyD'
+          1: 'ArrowRight'
+        workshop.confirm:
+          0: 'Enter'
+          1: 'Space'
+          2: 'KeyE'
+        workshop.restart:
+          0: 'KeyR'
+        workshop.cancel:
+          0: 'Escape'
+    storyCompleted: false
+    homeworld:
+      version: 1
+      cntlipV77:
+        version: 1
+        revision: 0
+        state:
+          version: 1
+          knownLore: false
+          totalServings: 0
+          activeDoses: 0
+          worldElapsedMs: 0
+          memories:
+          pending: ~
+        invitedSiteIds:
+        stock:
+          clan-common: 0
+          market-halt: 0
+          pit-rest: 0
+          council-gathering: 0
+      contractsV68:
+        version: 1
+        serial: 0
+        entries:
+      sideStoryV66:
+        version: 1
+        accepted: false
+        clues:
+        archiveRead: false
+        chronologyVerified: false
+        deductionVerified: false
+        testimonyHeard: false
+        resolution: ~
+        branchVerified: false
+        completed: false
+      npcMissionsV66:
+        version: 1
+        ash:
+          accepted: false
+          report: ~
+          delivered: false
+        glass:
+          accepted: false
+          report: ~
+          delivered: false
+      mausoleum:
+        version: 1
+        examinedIds:
+        consultedIds:
+      inquiry:
+        version: 1
+        convoyReviewed: false
+        archiveReviewed: false
+        approach: ~
+        followupVerified: false
+        audienceFiled: false
+      expeditions:
+        ash-marches: ~
+        glass-desert: ~
+      visitedDistrictIds:
+        0: 'port'
+      evidenceIds:
+      greetedNpcIds:
+      witnessChoice: ~
+      audienceOutcome: ~
+      relations:
+        first-blood-houses: 0
+        forge-circle: 0
+        reserve-keepers: 0
+        star-navigators: 0
+        throne-court: 0
+        exile-network: 0
+      locationV77:
+        version: 1
+        layoutRevision: 1
+        ownerCreatedAt: '2026-10-26T10:00:00.000Z'
+        levelId: '0'
+        exterior:
+          x: 7760
+          y: 5470
+        interiorId: ~
+        local: ~
+      archivePlaqueV109:
+        version: 1
+        ownerCreatedAt: '2026-10-26T10:00:00.000Z'
+        revision: 15
+        receipt:
+          sceneId: 'D6-W-PNJ-ROLE-03'
+          operationId: 'port-k17-separated-plaque-study-v109'
+          sourceSha256: '87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183'
+          sourceCorpusSha256: 'e36efdc3d5ac8fddb74dd683458b72873203446204e768b02aa13e4db17eed30'
+          artSha256: 'a47fb32cfc7b5f2c4e5721c660c9a2d68ac4dee1ee869d5175f41dd2278c49fe'
+          phase: 'completed'
+          resumePhase: ~
+          option: 'B'
+          last:
+            x: 7520
+            y: 5350
+          walked: 1121.1721317584952
+          objects:
+            0:
+              id: 'plaque'
+              x: 7760
+              y: 5410
+              place: 'support'
+            1:
+              id: 'trace'
+              x: 7880
+              y: 5410
+              place: 'support'
+            2:
+              id: 'fragment'
+              x: 7520
+              y: 5470
+              place: 'source'
+          carrier: ~
+          pickupWalked: ~
+          observations:
+            0: 'plaque'
+            1: 'trace'
+          provenances:
+            0: 'plaque'
+            1: 'trace'
+          ownerConsent: true
+          edgeObserved: false
+          mismatchObserved: false
+          failureSpoken: false
+          resumeSpoken: false
+          fragmentCompared: false
+          interruptedCount: 0
+          lineIds:
+            0: 'D6-W-PNJ-ROLE-03-OUV---01'
+            1: 'D6-W-PNJ-ROLE-03-CHOIX-B-01'
+            2: 'D6-W-PNJ-ROLE-03-REPONSE-B-01'
+            3: 'D6-W-PNJ-ROLE-03-SUCCES---01'
+    justice:
+      version: 1
+      originChoice: ~
+      declaration: 'recognized'
+      incidents:
+      evidence:
+      identifications:
+      warrants:
+      pressure:
+        homeworld: 0
+        clan-core: 0
+        frontier: 0
+        neutral-station: 0
+        renegade-port: 0
+      clandestineNotoriety: 0
+      detention: ~
+      intervention:
+        stage: 'none'
+        jurisdictionId: ~
+        remainingBudget: 2
+        cooldownTicks: 0
+    prologue: ~
+    youthTraining: ~
+    soloV66: ~
+    soloV67: ~
+    soloV68: ~
+    soloV69: ~
+    soloV70: ~
+    homeworldRegionV68: ~
+    homeworldPassageV67: ~
+    gameReserveV66: ~
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/yautja-homeworld-v110/tests/homeworld-continuation-integration-v111.test.mjs:176:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: V111 actual V110 client treats a12 campaign as future and cannot drop its new continuation or overwrite its bytes
+ok 9 - V111 actual V110 client treats a12 campaign as future and cannot drop its new continuation or overwrite its bytes
+  ---
+  duration_ms: 1038.5526
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 8
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 6498.076035

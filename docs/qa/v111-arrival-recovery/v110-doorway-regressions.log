@@ -1,0 +1,48 @@
+TAP version 13
+# Subtest: V110: real 603-step doorway entry saves, reloads and exits through its actual free standing point
+ok 1 - V110: real 603-step doorway entry saves, reloads and exits through its actual free standing point
+  ---
+  duration_ms: 1463.188898
+  type: 'test'
+  ...
+# Subtest: V110: a legacy interior checkpoint with an occupied authored anchor is retained without inventing an exit
+not ok 2 - V110: a legacy interior checkpoint with an occupied authored anchor is retained without inventing an exit
+  ---
+  duration_ms: 39.053524
+  type: 'test'
+  location: '/workspace/yautja-homeworld-v110/tests/homeworld-doorway-entry-v110.test.mjs:131:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The input did not match the regular expression /occupé/. Input:
+    
+    'Aucun ancien point intérieur de cette partie ne peut être restauré ici.'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual: 'Aucun ancien point intérieur de cette partie ne peut être restauré ici.'
+  operator: 'match'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/yautja-homeworld-v110/tests/homeworld-doorway-entry-v110.test.mjs:143:86)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: V110: a replaced cargo owner cannot enter a room or replace the exterior anchor
+ok 3 - V110: a replaced cargo owner cannot enter a room or replace the exterior anchor
+  ---
+  duration_ms: 33.927931
+  type: 'test'
+  ...
+1..3
+# tests 3
+# suites 0
+# pass 2
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1547.02213

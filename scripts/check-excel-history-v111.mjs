@@ -16,6 +16,22 @@ export const SOURCE_COMMIT_V111 = 'dff1f6734284891b5a24238f890070616a8325cc';
 export const FROZEN_V110_BLOB_V111 = '1b3c83e56e43601b63dc07aa1af1d2ff2abc286c';
 export const V110_PREIMAGES_V111 = Object.freeze([
   {
+    "path": "app/game/HomeworldHub.tsx",
+    "gitBlobSha": "3591354cdf98340d00e9904f00c3339b531caf2a"
+  },
+  {
+    "path": "app/game/HomeworldWorldMapV77.tsx",
+    "gitBlobSha": "8cf85f0f79517e7d54d2284c2cf26e57fea5d7b6"
+  },
+  {
+    "path": "app/game/HomeworldWorldSceneV77.tsx",
+    "gitBlobSha": "46f705ecabb75a03ef2249c5613a1b179fc28a7e"
+  },
+  {
+    "path": "app/game/systems/homeworld.ts",
+    "gitBlobSha": "a3985bb00170b451e58d19b45b67b07086a185f0"
+  },
+  {
     "path": "app/game/HuntCanvas.tsx",
     "gitBlobSha": "8d002485c8e29a9d86db3c7e8ad4aa64f4a2b784"
   },
@@ -171,10 +187,10 @@ export async function prepareHistoricalV110V111(repository = REPOSITORY) {
     await pruneNewAppFiles(root, new Set(freeze.entries.filter(row => row.path.startsWith('app/')).map(row => row.path)));
     for (const row of V110_PREIMAGES_V111) await restorePinnedSourceV111(root, row,
       file => Promise.resolve(git(repository, ['show', SOURCE_COMMIT_V111 + ':' + file])));
-    for (const row of V110_ORIGINAL_TESTS_V111) {
-      assert.equal(gitBlobHashV111(await fs.readFile(path.join(root, row.path))), row.gitBlobSha,
-        'Original V110 assertion changed: ' + row.path);
-    }
+    // Current test fixtures may adapt to the current runtime. Execute only
+    // their exact original Git bytes in this private historical directory.
+    for (const row of V110_ORIGINAL_TESTS_V111) await restorePinnedSourceV111(root, row,
+      file => Promise.resolve(git(repository, ['show', SOURCE_COMMIT_V111 + ':' + file])));
     await verifyFrozenInputsV111(root, freeze);
     return {root, freeze, sourceCommit: SOURCE_COMMIT_V111, dispose: () => fs.rm(root, {recursive: true, force: true})};
   } catch (error) {

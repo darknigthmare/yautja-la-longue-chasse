@@ -1,0 +1,99 @@
+{
+  "domain": "Homeworld",
+  "status": "PASS_CIBLE",
+  "buildId": "tj39nnduLIdi202JSGX7p",
+  "runtimeCommit": "4202c8a003c342d86f4749933a2a3c65cff2e613",
+  "driver": "scripts/qa-homeworld-continuation-v111.mjs",
+  "command": "node scripts/qa-homeworld-continuation-v111.mjs",
+  "sourceFreeze": {
+    "path": "docs/v111-runtime-freeze.json",
+    "sha256": "8eee8a5f5a043f2a67477bc6bcff97fffb1ee1666864bd7aed60c7a6c21ca138",
+    "bytes": 264999
+  },
+  "report": {
+    "path": "docs/v111-homeworld-validation.json",
+    "sha256": "808c4d76e512207c9a0b757cb517624e836ac696c08614638e81e122bcd478b0",
+    "bytes": 549822
+  },
+  "browserChecksPassed": 87,
+  "capturesInspected": 14,
+  "portableFiles": [
+    {
+      "path": "docs/qa/v111-homeworld/browser-result.json.gz",
+      "sha256": "de78ff4cf179bf58220e63973b564b09b704343fc37be411f1cf8d8f1d1739a7",
+      "bytes": 169798,
+      "decodedSha256": "666ff5cf17708a20d3a7b088ddf0597c7bc427a5e5c058a13ffb2938bbe530d0",
+      "decodedBytes": 701298
+    },
+    {
+      "path": "docs/qa/v111-homeworld/continuation-00-native-explanation-pose.png",
+      "sha256": "68f5c304ffa955a12a6e72eddb6f9f04a65b10943cc8914fef923b5f710d9dc1",
+      "bytes": 23917
+    },
+    {
+      "path": "docs/qa/v111-homeworld/continuation-00-native-indication-pose.png",
+      "sha256": "d8b20c1ddb40f3737f3ec03fd77fffa703ed3527d56b6a822f8cd9141d9fec5c",
+      "bytes": 23981
+    },
+    {
+      "path": "docs/qa/v111-homeworld/continuation-01-conserved-b-keyboard-record.png",
+      "sha256": "f8574654304bc03b6e2647074d65f12a7b2e301e7b3a62afd08aef98f6d4c629",
+      "bytes": 207741
+    },
+    {
+      "path": "docs/qa/v111-homeworld/continuation-01-completed-deferred-b.png",
+      "sha256": "dc52225ada39683dcd43792672e54e2f8e9ffdd8a6a8f0f41f2595427816aebd",
+      "bytes": 168936
+    },
+    {
+      "path": "docs/qa/v111-homeworld/continuation-02-new-consented-continuation.png",
+      "sha256": "6c171a534d81b56caf539b5d338a177f53611d4972dfa6fdaf408ccdabdcdae9",
+      "bytes": 973754
+    },
+    {
+      "path": "docs/qa/v111-homeworld/continuation-03-completed-independent-a.png",
+      "sha256": "3f8bab7abe6a109167c0275ff483e00245b384d693d9c02250b9385ba806acf6",
+      "bytes": 205048
+    },
+    {
+      "path": "docs/qa/v111-homeworld/recovery-01-explicit-recovery-preview.png",
+      "sha256": "5fd988bec92ea082911cec04e48e7dbe02a463b193d392174046266d2b152cd8",
+      "bytes": 88775
+    },
+    {
+      "path": "docs/qa/v111-homeworld/recovery-02-confirmed-exterior-restoration.png",
+      "sha256": "1943d318430c874f5f3c71cd0a3a8b119b954ea872dc45067f2ed3d96b326737",
+      "bytes": 1676477
+    },
+    {
+      "path": "docs/qa/v111-homeworld/mobileguide-00-open-conserved-notebook.png",
+      "sha256": "5337cbb2adc0ae2ab9c1253bbdc0ca4d69198fe1af763c03e54012a0aa211ab4",
+      "bytes": 222575
+    },
+    {
+      "path": "docs/qa/v111-homeworld/mobileguide-00-keyboard-conserved-notebook.png",
+      "sha256": "d62c47446b4d2bb339a5bfa1239c4e54f137004e6f2dea2b2b9a51300ca824d3",
+      "bytes": 217903
+    },
+    {
+      "path": "docs/qa/v111-homeworld/mobileguide-01-compact-arrived-guide.png",
+      "sha256": "4cb5bcc2ab32b3cd346f5184f2ba6dfd8f881543b6f5aaf1cd56f2764574b683",
+      "bytes": 201642
+    },
+    {
+      "path": "docs/qa/v111-homeworld/mobileguide-02-requested-route-options.png",
+      "sha256": "a32b22ccd4221c5e5f8cd6518af3f4573681b8cdaabf328cfd51e9ebb59ec412",
+      "bytes": 114512
+    },
+    {
+      "path": "docs/qa/v111-homeworld/mobileguide-03-keyboard-route-options.png",
+      "sha256": "6e0ce831d2fdcc29aeba197b0285048f63683216828729397bfb9249e6c697ec",
+      "bytes": 114736
+    },
+    {
+      "path": "docs/qa/v111-homeworld/legacya-01-direct-a-completed.png",
+      "sha256": "53a41d929a30efdf775153355977da747ca4a9f2eeefabb31d2268364d7c4569",
+      "bytes": 204879
+    }
+  ]
+}

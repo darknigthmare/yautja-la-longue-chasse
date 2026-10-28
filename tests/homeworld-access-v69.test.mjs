@@ -24,7 +24,7 @@ test('profile rank or loose chronicle evidence cannot open a youth village witho
   assert.equal(api.canVisitHomeworldVillagesV69(p.defaultSave()),true,'independent old campaign remains available');
 });
 test('new save schema protects future content and preserves original bytes',()=>{
-  assert.equal(p.SAVE_VERSION,11);
+  assert.equal(p.SAVE_VERSION,12);
   for(const edit of [s=>s.version=p.SAVE_VERSION+1,s=>s.soloV69={version:2},s=>s.homeworld.contractsV68={version:3}]) {
     const save=structuredClone(passed);edit(save);const raw=JSON.stringify(save),values=new Map([[p.SAVE_STORAGE_KEY,raw]]);
     const storage={getItem:k=>values.get(k)??null,setItem:(k,v)=>values.set(k,v),removeItem:k=>values.delete(k)};

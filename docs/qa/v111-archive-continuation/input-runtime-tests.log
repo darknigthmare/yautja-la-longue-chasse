@@ -1,0 +1,202 @@
+TAP version 13
+# Subtest: the live V104 cartography hook samples resolved movement while dormant, and a refused write freezes the city clock
+ok 1 - the live V104 cartography hook samples resolved movement while dormant, and a refused write freezes the city clock
+  ---
+  duration_ms: 521.098083
+  type: 'test'
+  ...
+# Subtest: the live V105 cartography hook stays dormant and its refused write freezes the physical city
+ok 2 - the live V105 cartography hook stays dormant and its refused write freezes the physical city
+  ---
+  duration_ms: 464.95749
+  type: 'test'
+  ...
+# Subtest: held stick and A on first focus cannot move or open a dialogue until a neutral frame
+ok 3 - held stick and A on first focus cannot move or open a dialogue until a neutral frame
+  ---
+  duration_ms: 352.157005
+  type: 'test'
+  ...
+# Subtest: V54 spatial atlas owns controller input exclusively and closing requires a neutral world frame
+ok 4 - V54 spatial atlas owns controller input exclusively and closing requires a neutral world frame
+  ---
+  duration_ms: 307.986227
+  type: 'test'
+  ...
+# Subtest: V75 destination finder consumes no city controller action and requires release after closing
+ok 5 - V75 destination finder consumes no city controller action and requires release after closing
+  ---
+  duration_ms: 241.818522
+  type: 'test'
+  ...
+# Subtest: Homeworld focus return requires release, without losing position
+ok 6 - Homeworld focus return requires release, without losing position
+  ---
+  duration_ms: 189.165777
+  type: 'test'
+  ...
+# Subtest: Homeworld window return requires release, without losing position
+ok 7 - Homeworld window return requires release, without losing position
+  ---
+  duration_ms: 224.604097
+  type: 'test'
+  ...
+# Subtest: Homeworld hidden return requires release, without losing position
+ok 8 - Homeworld hidden return requires release, without losing position
+  ---
+  duration_ms: 183.065443
+  type: 'test'
+  ...
+# Subtest: Homeworld service return requires release, without losing position
+ok 9 - Homeworld service return requires release, without losing position
+  ---
+  duration_ms: 160.972973
+  type: 'test'
+  ...
+# Subtest: Start pauses and resumes intentionally but held Start/stick never repeats across the transition
+ok 10 - Start pauses and resumes intentionally but held Start/stick never repeats across the transition
+  ---
+  duration_ms: 197.074961
+  type: 'test'
+  ...
+# Subtest: dialog up starts at the last enabled choice, wraps and never repeats on render
+ok 11 - dialog up starts at the last enabled choice, wraps and never repeats on render
+  ---
+  duration_ms: 230.310374
+  type: 'test'
+  ...
+# Subtest: navigation dialog remains controller-accessible above an already paused city
+ok 12 - navigation dialog remains controller-accessible above an already paused city
+  ---
+  duration_ms: 157.794528
+  type: 'test'
+  ...
+# Subtest: the live city clock freezes strand position and velocity in pause, then settles after release
+ok 13 - the live city clock freezes strand position and velocity in pause, then settles after release
+  ---
+  duration_ms: 319.422741
+  type: 'test'
+  ...
+# Subtest: closing a dialogue by B cannot start walking on its still-held stick
+ok 14 - closing a dialogue by B cannot start walking on its still-held stick
+  ---
+  duration_ms: 208.615704
+  type: 'test'
+  ...
+# Subtest: controller replacement and reconnect require neutral; harmless dead-zone drift remains neutral
+ok 15 - controller replacement and reconnect require neutral; harmless dead-zone drift remains neutral
+  ---
+  duration_ms: 323.081679
+  type: 'test'
+  ...
+# Subtest: Start resumes after window inactivity in one intentional press, without toggling into another pause
+ok 16 - Start resumes after window inactivity in one intentional press, without toggling into another pause
+  ---
+  duration_ms: 173.232555
+  type: 'test'
+  ...
+# Subtest: real Council transit selects native walking from resolved XY without changing motor velocity; pause freezes its gait
+ok 17 - real Council transit selects native walking from resolved XY without changing motor velocity; pause freezes its gait
+  ---
+  duration_ms: 212.231023
+  type: 'test'
+  ...
+# Subtest: stationary lift and moving skiff retain native idle; vehicle translation cannot activate walking
+ok 18 - stationary lift and moving skiff retain native idle; vehicle translation cannot activate walking
+  ---
+  duration_ms: 475.563284
+  type: 'test'
+  ...
+# Subtest: the mounted RAF makes L3 1.8 times faster and advances native gait by resolved travel
+ok 19 - the mounted RAF makes L3 1.8 times faster and advances native gait by resolved travel
+  ---
+  duration_ms: 459.623364
+  type: 'test'
+  ...
+# Subtest: keyboard sprint uses the configured hold action, and touch sprint shares the same motor
+ok 20 - keyboard sprint uses the configured hold action, and touch sprint shares the same motor
+  ---
+  duration_ms: 351.407211
+  type: 'test'
+  ...
+# Subtest: held L3 alone cannot arm sprint across pause, dialog or focus ownership changes
+ok 21 - held L3 alone cannot arm sprint across pause, dialog or focus ownership changes
+  ---
+  duration_ms: 513.159838
+  type: 'test'
+  ...
+# Subtest: the actual viewport key handler accepts remapped sprint and rejects the old key, blocked input and browser shortcuts
+ok 22 - the actual viewport key handler accepts remapped sprint and rejects the old key, blocked input and browser shortcuts
+  ---
+  duration_ms: 171.929866
+  type: 'test'
+  ...
+# Subtest: the actual tactile Course button toggles the input without movement, announces state, and respects modal blocking
+ok 23 - the actual tactile Course button toggles the input without movement, announces state, and respects modal blocking
+  ---
+  duration_ms: 169.657411
+  type: 'test'
+  ...
+# Subtest: V94 gamepad policy method-throws cannot stop the live city clock or keyboard movement
+ok 24 - V94 gamepad policy method-throws cannot stop the live city clock or keyboard movement
+  ---
+  duration_ms: 191.212054
+  type: 'test'
+  ...
+# Subtest: V94 gamepad policy getter-throws cannot stop the live city clock or keyboard movement
+ok 25 - V94 gamepad policy getter-throws cannot stop the live city clock or keyboard movement
+  ---
+  duration_ms: 164.968892
+  type: 'test'
+  ...
+# Subtest: V94 gamepad recovery requires neutral after a denied poll instead of replaying a held interaction
+ok 26 - V94 gamepad recovery requires neutral after a denied poll instead of replaying a held interaction
+  ---
+  duration_ms: 166.932909
+  type: 'test'
+  ...
+# Subtest: the live V106 archive hook remains dormant during ordinary movement and a refused archive write freezes and resumes the physical clock
+ok 27 - the live V106 archive hook remains dormant during ordinary movement and a refused archive write freezes and resumes the physical clock
+  ---
+  duration_ms: 168.97848
+  type: 'test'
+  ...
+# Subtest: the live V106 archive callback rolls an invalid proposed step back before interruption and preserves an importable carried pair
+ok 28 - the live V106 archive callback rolls an invalid proposed step back before interruption and preserves an importable carried pair
+  ---
+  duration_ms: 3770.91164
+  type: 'test'
+  ...
+# Subtest: the live V107 comparison remains dormant and a refused write freezes and resumes the physical clock
+ok 29 - the live V107 comparison remains dormant and a refused write freezes and resumes the physical clock
+  ---
+  duration_ms: 275.571003
+  type: 'test'
+  ...
+# Subtest: the live V107 comparison callback rolls an invalid step back before interruption and saves the exact carried pair
+ok 30 - the live V107 comparison callback rolls an invalid step back before interruption and saves the exact carried pair
+  ---
+  duration_ms: 5143.947322
+  type: 'test'
+  ...
+# Subtest: the live V109 plaque stays dormant and freezes native movement on a refused write
+ok 31 - the live V109 plaque stays dormant and freezes native movement on a refused write
+  ---
+  duration_ms: 206.683239
+  type: 'test'
+  ...
+# Subtest: the live V109 plaque callback rolls back an unsupported step before preserving the carried pair
+ok 32 - the live V109 plaque callback rolls back an unsupported step before preserving the carried pair
+  ---
+  duration_ms: 2652.663211
+  type: 'test'
+  ...
+1..32
+# tests 32
+# suites 0
+# pass 32
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 19378.421002

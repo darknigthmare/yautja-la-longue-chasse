@@ -1,0 +1,67 @@
+.journal {
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  min-width: 0;
+  min-height: 0;
+  max-height: min(38vh, 340px);
+  margin: .8rem 0;
+  padding: 13px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border: 1px solid #98b183;
+  border-radius: 7px;
+  background: #142a24ed;
+  color: #ecedd8;
+  font: 13px/1.45 system-ui;
+}
+
+.journal > * {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.journal > * + * { margin-top: 8px; }
+.journal > strong, .journal > span { display: block; }
+.journal strong { color: #f1d28e; }
+
+/* The continuation owns the full height budget, including the first record.
+   Its historical current-study journal remains content within that scrollport. */
+.journal [data-homeworld-plaque-journal-v109] {
+  max-height: none;
+  margin: 8px 0 0;
+  padding: 0;
+  overflow: visible;
+  overscroll-behavior: auto;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.journal button {
+  min-height: 44px;
+  padding: 9px 14px;
+  border: 1px solid #93ad8c;
+  border-radius: 5px;
+  background: #2a4637;
+  color: #f2ecd9;
+  font: inherit;
+  cursor: pointer;
+}
+
+.journal button:disabled { opacity: .55; cursor: default; }
+
+.firstRecord > summary {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  cursor: pointer;
+}
+
+.firstRecord > summary::after { content: '▾'; margin-left: auto; padding-left: .6rem; }
+.firstRecord[open] > summary::after { content: '▴'; }
+.firstRecord > summary:focus-visible { outline: 3px solid #f1d28e; outline-offset: -3px; }
+
+@media (max-width: 600px) {
+  .journal { padding: .75rem; }
+  .journal button { width: 100%; }
+}

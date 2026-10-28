@@ -9,7 +9,17 @@ import { animationFrameFixture } from "./helpers/animation-frame-fixture.mjs";
 
 const source = await readFile(new URL("../app/game/HomeworldHub.tsx", import.meta.url), "utf8");
 const tree = ts.createSourceFile("HomeworldHub.tsx", source, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
-const bundle = await build({ stdin: { contents: "export * from './app/game/systems/homeworld.ts'; export * from './app/game/systems/homeworldWorldV77.ts'; export * from './app/game/systems/homeworldLocationV77.ts'; export * from './app/game/systems/homeworldInteriorsV64.ts'; export * from './app/game/hunterDreadsV63.ts'; export * from './app/game/systems/homeworldYouthMotionV74.ts'; export * from './app/game/systems/homeworldLiftStationV83.ts';", resolveDir: process.cwd() }, bundle: true, write: false, format: "esm", platform: "node" });
+const bundle = await build({ stdin: { contents: [
+  'systems/homeworld', 'systems/homeworldWorldV77', 'systems/homeworldLocationV77',
+  'systems/homeworldInteriorsV64', 'hunterDreadsV63', 'systems/homeworldYouthMotionV74', 'systems/homeworldLiftStationV83',
+  'systems/homeworldTransitionsV110', 'systems/homeworldCartographyLedgerV104', 'systems/homeworldCartographyV104',
+  'systems/homeworldCartographyLedgerV105', 'systems/homeworldCartographyV105',
+  'systems/homeworldArchiveLedgerV106', 'systems/homeworldArchiveV106',
+  'systems/homeworldArchiveComparisonLedgerV107', 'systems/homeworldArchiveComparisonV107',
+  'systems/homeworldCargoLedgerV108', 'systems/homeworldCargoV108',
+  'systems/homeworldArchivePlaqueLedgerV109', 'systems/homeworldArchivePlaqueDefinitionV109', 'systems/homeworldArchivePlaqueV109',
+  'systems/homeworldArchiveContinuationLedgerV111', 'systems/homeworldArchiveContinuationV111',
+].map(name => `export * from './app/game/${name}.ts';`).join('\n'), resolveDir: process.cwd() }, bundle: true, write: false, format: "esm", platform: "node" });
 const world = await import("data:text/javascript;base64," + Buffer.from(bundle.outputFiles[0].text).toString("base64"));
 
 function walkableDistrictPosition(id) {
@@ -85,10 +95,38 @@ function fixture() {
     persist: () => false,
     persistProgress(progress) { attempts.push(structuredClone(progress)); return env.persist(progress); },
   };
+  // Supply the actual dormant operation registries read by the live polling,
+  // save and owner-sync callbacks. These cases still exercise only visit retry.
+  env.motionAssetsV74 = { ready: true };
+  env.residentAdmissionRefV110 = { current: { owner, active: true } };
+  env.cargoMigrationWriteReadyRefV108 = { current: true };
+  for (const [name, version, create] of [
+    ['cartography', 'V104', world.defaultHomeworldCartographyV104],
+    ['cartography', 'V105', world.defaultHomeworldCartographyV105],
+    ['archive', 'V106', world.defaultHomeworldArchiveV106],
+    ['comparison', 'V107', world.defaultHomeworldArchiveComparisonV107],
+    ['cargo', 'V108', world.defaultHomeworldCargoV108],
+    ['plaque', 'V109', world.defaultHomeworldArchivePlaqueV109],
+    ['continuation', 'V111', world.defaultHomeworldArchiveContinuationV111],
+  ]) {
+    env[name + 'DraftRef' + version] = { current: create(owner) };
+    if (name === 'continuation') { env.setContinuationViewV111 = () => {}; continue; }
+    env[name + 'WritePausedRef' + version] = { current: false };
+    const setter = name[0].toUpperCase() + name.slice(1);
+    for (const field of ['View', 'WritePaused', 'Message']) env['set' + setter + field + version] = () => {};
+  }
   env.save = { ...env.saveRef.current, homeworld: initial };
   env.viewportRef = { current: { focus() { env.document.activeElement = env.viewportRef.current; } } };
   env.dialogRef = { current: { focus() { env.document.activeElement = env.dialogRef.current; }, querySelectorAll: () => [] } };
   for (const name of ["pointInCurrentSpace", "onProgress", "recordLocationV77", "persistAction", "persistVisit", "retryPendingVisits", "enterYouthTraining", "soloEntry", "updateLiftStationV83"]) env[name] = liveCallback(name, env);
+  for (const name of [
+    'cartographyContextV104', 'sampleCartographyV104', 'interruptCartographyV104',
+    'sampleCartographyV105', 'interruptCartographyV105', 'cartographyContextV105', 'recordCartographyTransitV105',
+    'archiveContextV106', 'sampleArchiveV106', 'interruptArchiveV106',
+    'comparisonContextV107', 'sampleComparisonV107', 'interruptComparisonV107',
+    'cargoContextV108', 'sampleCargoV108', 'interruptCargoV108',
+    'plaqueContextV109', 'continuationContextV111', 'samplePlaqueV109', 'interruptPlaqueV109', 'submitEffectivePlaqueV111',
+  ]) env[name] = liveCallback(name, env);
   const effect = liveCallback("poll", env);
   const render = () => { cleanup?.(); cleanup = effect(); };
   const hydrate = () => { liftCleanup?.(); liftCleanup = liveCallback("liftHydration", env)(); };
