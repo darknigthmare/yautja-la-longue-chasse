@@ -58,6 +58,9 @@ test("pumping and length adjustment remain finite, bounded and charge stamina on
     assert.ok(Math.abs(swing.angularVelocity*swing.length)<=850.001);
   }
   assert.ok(cost>400&&cost<1000);
+  const remote={...actor,x:actor.x+1000};
+  const refused=runtime.stepCanopySwingV112(swing,remote,support,{moveAxis:1,climbAxis:0},.1,[],624);
+  assert.equal(refused.detached,true); close(refused.body.x,remote.x); close(refused.staminaCost,0);
   const idle=runtime.stepCanopySwingV112(swing,actor,support,{moveAxis:0,climbAxis:0},0,[],624);
   close(idle.staminaCost,0);
   assert.throws(()=>runtime.stepCanopySwingV112(swing,actor,support,{moveAxis:0,climbAxis:0},.251,[],624),/delta/);
