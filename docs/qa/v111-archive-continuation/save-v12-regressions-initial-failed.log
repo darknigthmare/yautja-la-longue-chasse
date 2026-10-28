@@ -1,0 +1,124 @@
+TAP version 13
+# Subtest: tests/bible-cultural-save-v86.test.mjs
+ok 1 - tests/bible-cultural-save-v86.test.mjs
+  ---
+  duration_ms: 4487.77895
+  type: 'test'
+  ...
+# Subtest: tests/campaign-import-slot-v89.test.mjs
+ok 2 - tests/campaign-import-slot-v89.test.mjs
+  ---
+  duration_ms: 4522.326771
+  type: 'test'
+  ...
+# Subtest: tests/campaign-text-import-ui-v90.test.mjs
+ok 3 - tests/campaign-text-import-ui-v90.test.mjs
+  ---
+  duration_ms: 3285.367664
+  type: 'test'
+  ...
+# Subtest: tests/exploration-progress.test.mjs
+ok 4 - tests/exploration-progress.test.mjs
+  ---
+  duration_ms: 673.03313
+  type: 'test'
+  ...
+# Subtest: tests/homeworld-access-v69.test.mjs
+ok 5 - tests/homeworld-access-v69.test.mjs
+  ---
+  duration_ms: 8674.82406
+  type: 'test'
+  ...
+# Subtest: tests/homeworld-visit-recovery.test.mjs
+not ok 6 - tests/homeworld-visit-recovery.test.mjs
+  ---
+  duration_ms: 4468.701863
+  type: 'test'
+  location: '/workspace/yautja-homeworld-v110/tests/homeworld-visit-recovery.test.mjs:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: tests/save-homeworld-v7.test.mjs
+ok 7 - tests/save-homeworld-v7.test.mjs
+  ---
+  duration_ms: 1842.439842
+  type: 'test'
+  ...
+# Subtest: tests/save-recovery-import.test.mjs
+ok 8 - tests/save-recovery-import.test.mjs
+  ---
+  duration_ms: 682.865525
+  type: 'test'
+  ...
+# Subtest: tests/save-social-reconciliation.test.mjs
+ok 9 - tests/save-social-reconciliation.test.mjs
+  ---
+  duration_ms: 1226.341825
+  type: 'test'
+  ...
+# Subtest: tests/save-storage-status.test.mjs
+ok 10 - tests/save-storage-status.test.mjs
+  ---
+  duration_ms: 738.446345
+  type: 'test'
+  ...
+# Subtest: tests/save-v2.test.mjs
+ok 11 - tests/save-v2.test.mjs
+  ---
+  duration_ms: 821.689101
+  type: 'test'
+  ...
+# Subtest: tests/ship-acquisition-save-v89.test.mjs
+ok 12 - tests/ship-acquisition-save-v89.test.mjs
+  ---
+  duration_ms: 4607.147623
+  type: 'test'
+  ...
+# Subtest: tests/ship-preparation-save-v88.test.mjs
+ok 13 - tests/ship-preparation-save-v88.test.mjs
+  ---
+  duration_ms: 4789.625924
+  type: 'test'
+  ...
+# Subtest: tests/solo-save-v66.test.mjs
+ok 14 - tests/solo-save-v66.test.mjs
+  ---
+  duration_ms: 6674.979659
+  type: 'test'
+  ...
+# Subtest: tests/solo-save-v67.test.mjs
+ok 15 - tests/solo-save-v67.test.mjs
+  ---
+  duration_ms: 7662.188685
+  type: 'test'
+  ...
+# Subtest: tests/solo-save-v69.test.mjs
+ok 16 - tests/solo-save-v69.test.mjs
+  ---
+  duration_ms: 16234.63044
+  type: 'test'
+  ...
+# Subtest: tests/solo-save-v70.test.mjs
+ok 17 - tests/solo-save-v70.test.mjs
+  ---
+  duration_ms: 12599.712996
+  type: 'test'
+  ...
+# Subtest: tests/solo-save-v90.test.mjs
+ok 18 - tests/solo-save-v90.test.mjs
+  ---
+  duration_ms: 11243.891356
+  type: 'test'
+  ...
+1..18
+# tests 18
+# suites 0
+# pass 17
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 95258.120199

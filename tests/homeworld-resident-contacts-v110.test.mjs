@@ -165,7 +165,7 @@ test('V110: the actual Hub event closure rejects replaced dialogue refs and admi
     assert(start > 0 && end > start, startText);
     return source.slice(start, end);
   };
-  const contextCode = ts.transpileModule(extract('  const residentContextV110 = useCallback(', '\n\n  const enterInterior')
+  const contextCode = ts.transpileModule(extract('  const residentContextV110 = useCallback(', '\n\n  const recoveryContextV111=')
     + '\nreturn residentContextV110;', { compilerOptions: { target: ts.ScriptTarget.ES2022 } }).outputText;
   const actionCode = ts.transpileModule(extract('  const expectedResidentDialogueV110=', '\n  const requestStreetLandmarkV100=')
     + '\nreturn requestResidentLandmarkV110;', { compilerOptions: { target: ts.ScriptTarget.ES2022 } }).outputText;

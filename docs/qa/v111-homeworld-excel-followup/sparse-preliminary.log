@@ -1,0 +1,77 @@
+✔ current354 art families retain their original source IDs and candidate statuses without pretending to be all absent or complete (17.260555ms)
+✔ a family candidate, copied native asset or mismatched count cannot be promoted to visual/source completion (88.706408ms)
+✔ current source bytes and four new PNGs are mandatory; old image repository identity is checked without claiming visual quality (552.507789ms)
+✖ V111 preserves its exact 105 sheet baseline, 56 open requirements and 354 art targets as separate inventories (50.777502ms)
+✔ unrelated closures, invented art, duplicate workstreams and unsupported browser promotions are refused (6.741221ms)
+✖ 113 worksheets retain all 105 historical parts, styles, formulas and cells exactly (59.564246ms)
+✔ a V110 browser recipe cannot be relabelled as V111 validation (7.879383ms)
+✖ V111 workbook and metadata regenerate exactly without executing browser or native Excel (49.928688ms)
+✔ historical art fallback binds the audited bytes to the current regular Git blob, while sparse identity is not visual admission (1.304868ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 6
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1739.118677
+
+✖ failing tests:
+
+test at tests/homeworld-excel-followup-v111.test.mjs:13:1
+✖ V111 preserves its exact 105 sheet baseline, 56 open requirements and 354 art targets as separate inventories (50.777502ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  4293 !== 4039
+  
+      at verifyProof (file:///tmp/v111-ci-sparse-402b238f/scripts/build-homeworld-followup-v111.mjs:32:109)
+      at async collectFollowupV111 (file:///tmp/v111-ci-sparse-402b238f/scripts/build-homeworld-followup-v111.mjs:159:28)
+      at async TestContext.<anonymous> (file:///tmp/v111-ci-sparse-402b238f/tests/homeworld-excel-followup-v111.test.mjs:14:20)
+      at async Test.run (node:internal/test_runner/test:1054:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 4293,
+    expected: 4039,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/homeworld-excel-followup-v111.test.mjs:40:1
+✖ 113 worksheets retain all 105 historical parts, styles, formulas and cells exactly (59.564246ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  4293 !== 4039
+  
+      at verifyProof (file:///tmp/v111-ci-sparse-402b238f/scripts/build-homeworld-followup-v111.mjs:32:109)
+      at async collectFollowupV111 (file:///tmp/v111-ci-sparse-402b238f/scripts/build-homeworld-followup-v111.mjs:159:28)
+      at async TestContext.<anonymous> (file:///tmp/v111-ci-sparse-402b238f/tests/homeworld-excel-followup-v111.test.mjs:41:20)
+      at async Test.run (node:internal/test_runner/test:1054:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:744:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 4293,
+    expected: 4039,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/homeworld-excel-followup-v111.test.mjs:71:1
+✖ V111 workbook and metadata regenerate exactly without executing browser or native Excel (49.928688ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  4293 !== 4039
+  
+      at verifyProof (file:///tmp/v111-ci-sparse-402b238f/scripts/build-homeworld-followup-v111.mjs:32:109)
+      at async collectFollowupV111 (file:///tmp/v111-ci-sparse-402b238f/scripts/build-homeworld-followup-v111.mjs:159:28)
+      at async generateFollowupV111 (file:///tmp/v111-ci-sparse-402b238f/scripts/build-homeworld-followup-v111.mjs:241:20)
+      at async TestContext.<anonymous> (file:///tmp/v111-ci-sparse-402b238f/tests/homeworld-excel-followup-v111.test.mjs:73:17)
+      at async Test.run (node:internal/test_runner/test:1054:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:744:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 4293,
+    expected: 4039,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

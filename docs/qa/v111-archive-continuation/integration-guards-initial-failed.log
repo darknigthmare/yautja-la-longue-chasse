@@ -1,0 +1,92 @@
+TAP version 13
+# Subtest: V111 real Save import, write and load preserve B byte-exact across offer, active carry and completed continuation
+ok 1 - V111 real Save import, write and load preserve B byte-exact across offer, active carry and completed continuation
+  ---
+  duration_ms: 609.374126
+  type: 'test'
+  ...
+# Subtest: V111 real Save rejects future, foreign, no-B, mutated-base and unsupported actor/object pairs before writing
+ok 2 - V111 real Save rejects future, foreign, no-B, mutated-base and unsupported actor/object pairs before writing
+  ---
+  duration_ms: 5.570063
+  type: 'test'
+  ...
+# Subtest: V111 actual Hub sampler and onProgress persist the carried candidate with its new checkpoint without changing archived B
+ok 3 - V111 actual Hub sampler and onProgress persist the carried candidate with its new checkpoint without changing archived B
+  ---
+  duration_ms: 52.339562
+  type: 'test'
+  ...
+# Subtest: V111 actual Hub quota refusal freezes new actions without rewriting either durable receipt, then Retry can persist the same episode
+not ok 4 - V111 actual Hub quota refusal freezes new actions without rewriting either durable receipt, then Retry can persist the same episode
+  ---
+  duration_ms: 46.221537
+  type: 'test'
+  location: '/workspace/yautja-homeworld-v110/tests/homeworld-continuation-integration-v111.test.mjs:102:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    a retained control cannot clear the refused write without explicit Retry
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/yautja-homeworld-v110/tests/homeworld-continuation-integration-v111.test.mjs:107:29)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: V111 actual Hub callbacks refuse replaced owners, stale outer revisions and an old legacy adapter
+ok 5 - V111 actual Hub callbacks refuse replaced owners, stale outer revisions and an old legacy adapter
+  ---
+  duration_ms: 42.591533
+  type: 'test'
+  ...
+# Subtest: V111 continuation UI uses newly played source lines and binds its inner controls to the outer render revision
+ok 6 - V111 continuation UI uses newly played source lines and binds its inner controls to the outer render revision
+  ---
+  duration_ms: 95.745428
+  type: 'test'
+  ...
+# Subtest: V111 actual motor and render gates stop an interrupted carried candidate, despite its archived B being completed
+not ok 7 - V111 actual motor and render gates stop an interrupted carried candidate, despite its archived B being completed
+  ---
+  duration_ms: 6.577558
+  type: 'test'
+  location: '/workspace/yautja-homeworld-v110/tests/homeworld-continuation-integration-v111.test.mjs:137:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    the shipped motor gate cannot move past the retained fragment
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/yautja-homeworld-v110/tests/homeworld-continuation-integration-v111.test.mjs:158:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 5
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 867.188106

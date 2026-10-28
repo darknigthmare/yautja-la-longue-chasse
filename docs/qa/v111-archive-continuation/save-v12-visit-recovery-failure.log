@@ -1,0 +1,341 @@
+TAP version 13
+# Subtest: queued lift hydration never restores a previous owner and replacement hydration shares the polling frame
+not ok 1 - queued lift hydration never restores a previous owner and replacement hydration shares the polling frame
+  ---
+  duration_ms: 325.344214
+  type: 'test'
+  location: '/workspace/yautja-homeworld-v110/tests/homeworld-visit-recovery.test.mjs:101:1'
+  failureType: 'testCodeFailure'
+  error: 'normalizeHomeworldCartographyV104 is not defined'
+  code: 'ERR_TEST_FAILURE'
+  name: 'ReferenceError'
+  stack: |-
+    handler (evalmachine.<anonymous>:15:22)
+    TestContext.<anonymous> (file:///workspace/yautja-homeworld-v110/tests/homeworld-visit-recovery.test.mjs:106:30)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.start (node:internal/test_runner/test:944:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+  ...
+# Subtest: a refused actual Port entry stays pending without a frame-write loop, then retries in place
+not ok 2 - a refused actual Port entry stays pending without a frame-write loop, then retries in place
+  ---
+  duration_ms: 194.420151
+  type: 'test'
+  location: '/workspace/yautja-homeworld-v110/tests/homeworld-visit-recovery.test.mjs:120:1'
+  failureType: 'testCodeFailure'
+  error: 'continuationDraftRefV111 is not defined'
+  code: 'ERR_TEST_FAILURE'
+  name: 'ReferenceError'
+  stack: |-
+    frame (evalmachine.<anonymous>:66:32)
+    Object.tick (file:///workspace/yautja-homeworld-v110/tests/helpers/animation-frame-fixture.mjs:23:11)
+    TestContext.<anonymous> (file:///workspace/yautja-homeworld-v110/tests/homeworld-visit-recovery.test.mjs:123:5)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: repeated refusal keeps the same visit available and writes at most once per explicit retry
+not ok 3 - repeated refusal keeps the same visit available and writes at most once per explicit retry
+  ---
+  duration_ms: 180.211046
+  type: 'test'
+  location: '/workspace/yautja-homeworld-v110/tests/homeworld-visit-recovery.test.mjs:136:1'
+  failureType: 'testCodeFailure'
+  error: 'continuationDraftRefV111 is not defined'
+  code: 'ERR_TEST_FAILURE'
+  name: 'ReferenceError'
+  stack: |-
+    frame (evalmachine.<anonymous>:66:32)
+    Object.tick (file:///workspace/yautja-homeworld-v110/tests/helpers/animation-frame-fixture.mjs:23:11)
+    TestContext.<anonymous> (file:///workspace/yautja-homeworld-v110/tests/homeworld-visit-recovery.test.mjs:137:26)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: several refused visited districts recover progressively; a second refusal does not erase the first ack
+not ok 4 - several refused visited districts recover progressively; a second refusal does not erase the first ack
+  ---
+  duration_ms: 115.40442
+  type: 'test'
+  location: '/workspace/yautja-homeworld-v110/tests/homeworld-visit-recovery.test.mjs:145:1'
+  failureType: 'testCodeFailure'
+  error: 'continuationDraftRefV111 is not defined'
+  code: 'ERR_TEST_FAILURE'
+  name: 'ReferenceError'
+  stack: |-
+    frame (evalmachine.<anonymous>:66:32)
+    Object.tick (file:///workspace/yautja-homeworld-v110/tests/helpers/animation-frame-fixture.mjs:23:11)
+    TestContext.<anonymous> (file:///workspace/yautja-homeworld-v110/tests/homeworld-visit-recovery.test.mjs:146:26)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: retry uses latest acknowledged evidence and relations, never a stale failed snapshot
+not ok 5 - retry uses latest acknowledged evidence and relations, never a stale failed snapshot
+  ---
+  duration_ms: 134.641732
+  type: 'test'
+  location: '/workspace/yautja-homeworld-v110/tests/homeworld-visit-recovery.test.mjs:161:1'
+  failureType: 'testCodeFailure'
+  error: 'continuationDraftRefV111 is not defined'
+  code: 'ERR_TEST_FAILURE'
+  name: 'ReferenceError'
+  stack: |-
+    frame (evalmachine.<anonymous>:66:32)
+    Object.tick (file:///workspace/yautja-homeworld-v110/tests/helpers/animation-frame-fixture.mjs:23:11)
+    TestContext.<anonymous> (file:///workspace/yautja-homeworld-v110/tests/homeworld-visit-recovery.test.mjs:162:26)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: a visit already durably acknowledged elsewhere clears pending state without another write
+not ok 6 - a visit already durably acknowledged elsewhere clears pending state without another write
+  ---
+  duration_ms: 140.461003
+  type: 'test'
+  location: '/workspace/yautja-homeworld-v110/tests/homeworld-visit-recovery.test.mjs:177:1'
+  failureType: 'testCodeFailure'
+  error: 'continuationDraftRefV111 is not defined'
+  code: 'ERR_TEST_FAILURE'
+  name: 'ReferenceError'
+  stack: |-
+    frame (evalmachine.<anonymous>:66:32)
+    Object.tick (file:///workspace/yautja-homeworld-v110/tests/helpers/animation-frame-fixture.mjs:23:11)
+    TestContext.<anonymous> (file:///workspace/yautja-homeworld-v110/tests/homeworld-visit-recovery.test.mjs:178:26)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: the retry is inert behind a suspended city and resumes only on a new explicit action
+not ok 7 - the retry is inert behind a suspended city and resumes only on a new explicit action
+  ---
+  duration_ms: 97.727825
+  type: 'test'
+  location: '/workspace/yautja-homeworld-v110/tests/homeworld-visit-recovery.test.mjs:184:1'
+  failureType: 'testCodeFailure'
+  error: 'continuationDraftRefV111 is not defined'
+  code: 'ERR_TEST_FAILURE'
+  name: 'ReferenceError'
+  stack: |-
+    frame (evalmachine.<anonymous>:66:32)
+    Object.tick (file:///workspace/yautja-homeworld-v110/tests/helpers/animation-frame-fixture.mjs:23:11)
+    TestContext.<anonymous> (file:///workspace/yautja-homeworld-v110/tests/homeworld-visit-recovery.test.mjs:185:26)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: owner replacement cannot replay pending visits before or after the live save-sync effect
+not ok 8 - owner replacement cannot replay pending visits before or after the live save-sync effect
+  ---
+  duration_ms: 101.041847
+  type: 'test'
+  location: '/workspace/yautja-homeworld-v110/tests/homeworld-visit-recovery.test.mjs:192:1'
+  failureType: 'testCodeFailure'
+  error: 'continuationDraftRefV111 is not defined'
+  code: 'ERR_TEST_FAILURE'
+  name: 'ReferenceError'
+  stack: |-
+    frame (evalmachine.<anonymous>:66:32)
+    Object.tick (file:///workspace/yautja-homeworld-v110/tests/helpers/animation-frame-fixture.mjs:23:11)
+    TestContext.<anonymous> (file:///workspace/yautja-homeworld-v110/tests/homeworld-visit-recovery.test.mjs:193:26)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: successful inline retry restores world focus and dialog retry stays navigable without held-A spill
+not ok 9 - successful inline retry restores world focus and dialog retry stays navigable without held-A spill
+  ---
+  duration_ms: 116.883652
+  type: 'test'
+  location: '/workspace/yautja-homeworld-v110/tests/homeworld-visit-recovery.test.mjs:205:1'
+  failureType: 'testCodeFailure'
+  error: 'continuationDraftRefV111 is not defined'
+  code: 'ERR_TEST_FAILURE'
+  name: 'ReferenceError'
+  stack: |-
+    frame (evalmachine.<anonymous>:66:32)
+    Object.tick (file:///workspace/yautja-homeworld-v110/tests/helpers/animation-frame-fixture.mjs:23:11)
+    TestContext.<anonymous> (file:///workspace/yautja-homeworld-v110/tests/homeworld-visit-recovery.test.mjs:206:36)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: entering youth training keeps refused visits alive until an explicit successful retry
+not ok 10 - entering youth training keeps refused visits alive until an explicit successful retry
+  ---
+  duration_ms: 153.745837
+  type: 'test'
+  location: '/workspace/yautja-homeworld-v110/tests/homeworld-visit-recovery.test.mjs:222:1'
+  failureType: 'testCodeFailure'
+  error: 'continuationDraftRefV111 is not defined'
+  code: 'ERR_TEST_FAILURE'
+  name: 'ReferenceError'
+  stack: |-
+    frame (evalmachine.<anonymous>:66:32)
+    Object.tick (file:///workspace/yautja-homeworld-v110/tests/helpers/animation-frame-fixture.mjs:23:11)
+    TestContext.<anonymous> (file:///workspace/yautja-homeworld-v110/tests/homeworld-visit-recovery.test.mjs:223:26)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: a partially recovered visit queue still blocks departure for youth training
+not ok 11 - a partially recovered visit queue still blocks departure for youth training
+  ---
+  duration_ms: 176.754041
+  type: 'test'
+  location: '/workspace/yautja-homeworld-v110/tests/homeworld-visit-recovery.test.mjs:242:1'
+  failureType: 'testCodeFailure'
+  error: 'continuationDraftRefV111 is not defined'
+  code: 'ERR_TEST_FAILURE'
+  name: 'ReferenceError'
+  stack: |-
+    frame (evalmachine.<anonymous>:66:32)
+    Object.tick (file:///workspace/yautja-homeworld-v110/tests/helpers/animation-frame-fixture.mjs:23:11)
+    TestContext.<anonymous> (file:///workspace/yautja-homeworld-v110/tests/homeworld-visit-recovery.test.mjs:243:26)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: youth entry ignores a suspended or stale-owner city even with no pending visits
+not ok 12 - youth entry ignores a suspended or stale-owner city even with no pending visits
+  ---
+  duration_ms: 197.395743
+  type: 'test'
+  location: '/workspace/yautja-homeworld-v110/tests/homeworld-visit-recovery.test.mjs:258:1'
+  failureType: 'testCodeFailure'
+  error: 'normalizeHomeworldCartographyV104 is not defined'
+  code: 'ERR_TEST_FAILURE'
+  name: 'ReferenceError'
+  stack: |-
+    handler (evalmachine.<anonymous>:15:22)
+    TestContext.<anonymous> (file:///workspace/yautja-homeworld-v110/tests/homeworld-visit-recovery.test.mjs:266:30)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: with no pending visits youth entry preserves the existing save-refusal feedback
+ok 13 - with no pending visits youth entry preserves the existing save-refusal feedback
+  ---
+  duration_ms: 204.950084
+  type: 'test'
+  ...
+# Subtest: Solo physical departure retains refused visits, then retries and handles a refused chapter save
+not ok 14 - Solo physical departure retains refused visits, then retries and handles a refused chapter save
+  ---
+  duration_ms: 122.926401
+  type: 'test'
+  location: '/workspace/yautja-homeworld-v110/tests/homeworld-visit-recovery.test.mjs:292:1'
+  failureType: 'testCodeFailure'
+  error: 'continuationDraftRefV111 is not defined'
+  code: 'ERR_TEST_FAILURE'
+  name: 'ReferenceError'
+  stack: |-
+    frame (evalmachine.<anonymous>:66:32)
+    Object.tick (file:///workspace/yautja-homeworld-v110/tests/helpers/animation-frame-fixture.mjs:23:11)
+    TestContext.<anonymous> (file:///workspace/yautja-homeworld-v110/tests/homeworld-visit-recovery.test.mjs:293:26)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: Solo entry stays blocked while one of several refused visits remains pending
+not ok 15 - Solo entry stays blocked while one of several refused visits remains pending
+  ---
+  duration_ms: 91.214269
+  type: 'test'
+  location: '/workspace/yautja-homeworld-v110/tests/homeworld-visit-recovery.test.mjs:313:1'
+  failureType: 'testCodeFailure'
+  error: 'continuationDraftRefV111 is not defined'
+  code: 'ERR_TEST_FAILURE'
+  name: 'ReferenceError'
+  stack: |-
+    frame (evalmachine.<anonymous>:66:32)
+    Object.tick (file:///workspace/yautja-homeworld-v110/tests/helpers/animation-frame-fixture.mjs:23:11)
+    TestContext.<anonymous> (file:///workspace/yautja-homeworld-v110/tests/homeworld-visit-recovery.test.mjs:314:26)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: Solo departure keeps its physical, suspension and owner guards even after visit recovery
+not ok 16 - Solo departure keeps its physical, suspension and owner guards even after visit recovery
+  ---
+  duration_ms: 130.717863
+  type: 'test'
+  location: '/workspace/yautja-homeworld-v110/tests/homeworld-visit-recovery.test.mjs:324:1'
+  failureType: 'testCodeFailure'
+  error: 'normalizeHomeworldCartographyV104 is not defined'
+  code: 'ERR_TEST_FAILURE'
+  name: 'ReferenceError'
+  stack: |-
+    handler (evalmachine.<anonymous>:15:22)
+    TestContext.<anonymous> (file:///workspace/yautja-homeworld-v110/tests/homeworld-visit-recovery.test.mjs:332:30)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+1..16
+# tests 16
+# suites 0
+# pass 1
+# fail 15
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2505.337924
