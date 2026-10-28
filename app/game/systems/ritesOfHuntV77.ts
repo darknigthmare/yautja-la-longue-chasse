@@ -1,4 +1,4 @@
-import {normalizeFieldStashesV112,type FieldStashEntryV112} from "./fieldStashV112";
+import {normalizeFieldStashesV112,type FieldStashEntryV112} from "./fieldStashV112.ts";
 import { anatomyPartV112, makeAnatomySpecimenV112 } from "./anatomyHarvestV112.ts";
 import type { FieldSpecimenV112 } from "./harvestInventoryV112";
 import { CARCASS_HANG_DROP_V112 } from "./carcassSupportsV112.ts";

@@ -1,11 +1,11 @@
-import {carriedFieldSpecimensV112} from "./fieldStashV112";
+import {carriedFieldSpecimensV112} from "./fieldStashV112.ts";
 import type { WorldBlueprint } from "./worldBlueprints";
-import { anatomyPartsV112, anatomyIntegrityV112, anatomyBodyMassV112, specimenQualityV112, makeAnatomySpecimenV112 } from "./anatomyHarvestV112";
-import { CARCASS_HANG_DROP_V112, carcassFitsSocketV112 } from "./carcassSupportsV112";
+import { anatomyPartsV112, anatomyIntegrityV112, anatomyBodyMassV112, specimenQualityV112, makeAnatomySpecimenV112 } from "./anatomyHarvestV112.ts";
+import { CARCASS_HANG_DROP_V112, carcassFitsSocketV112 } from "./carcassSupportsV112.ts";
 import type { FieldSpecimenV112 } from "./harvestInventoryV112";
 import type { RiteSupportV77 } from "./ritesOfHuntV77";
 import {createRitesOfHuntV77,normalizeRitesOfHuntV77,nearestRiteCorpseV77,RITE_DURATIONS_V77,
-  type RitesOfHuntV77,type RitePreyProofV77,type RiteLiveContextV77,type HuntRiteActionV77} from './ritesOfHuntV77';
+  type RitesOfHuntV77,type RitePreyProofV77,type RiteLiveContextV77,type HuntRiteActionV77} from './ritesOfHuntV77.ts';
 
 /** Physical runtime adapters only. No quest, honor, trophy, inventory or rank
  * is granted. Legacy dead actors without the new death proof are not backfilled. */

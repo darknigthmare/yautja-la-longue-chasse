@@ -1,5 +1,5 @@
-import {huntStructuralBarrierV94,type HuntBarrierPlatformV94} from "./huntStructuralBarrierV94";
-import {tryCarrySpecimenV112,type FieldSpecimenV112} from "./harvestInventoryV112";
+import {huntStructuralBarrierV94,type HuntBarrierPlatformV94} from "./huntStructuralBarrierV94.ts";
+import {tryCarrySpecimenV112,type FieldSpecimenV112} from "./harvestInventoryV112.ts";
 import type {ArmorId} from "../types";
 
 export interface FieldStashEntryV112 {specimenId:string;x:number;y:number;fallSpeed:number}
