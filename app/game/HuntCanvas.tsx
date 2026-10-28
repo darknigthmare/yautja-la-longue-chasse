@@ -25,7 +25,7 @@ import {
 import { trophyHuntVisualForDefinitionId } from "./trophyVisualRegistry";
 import { ownsFieldToolV111 } from "./systems/fieldToolsV111";
 import { applyAnatomyDamageV112, anatomyIntegrityV112 } from "./systems/anatomyHarvestV112";
-import { carcassSupportsForWorldV112, carcassSupportAccessibleV112, CARCASS_HANG_DROP_V112 } from "./systems/carcassSupportsV112";
+import { carcassSupportsForWorldV112, carcassSupportAccessibleV112, carcassFitsSocketV112, carcassGeometryV112, CARCASS_HANG_DROP_V112 } from "./systems/carcassSupportsV112";
 import { fieldLoadV112, harvestInventoryForV112, tryCarrySpecimenV112, HARVEST_DEPOT_LIMIT_V112, flayingToolWorkMultiplierV112, toolConditionAfterUsesV112 } from "./systems/harvestInventoryV112";
 import { trophyHarvestPoint, trophyHarvestSourceForDrop, trophyHarvestInReach,
   SECONDARY_TROPHY_REACH, APEX_TROPHY_REACH } from "./systems/trophyHarvestV111";
@@ -2049,7 +2049,7 @@ function deserializeActiveHuntCheckpoint(
   if (checkpoint.huntRites !== undefined) {
     const raw = checkpoint.huntRites;
     if (!isJsonObject(raw) || typeof raw.runId !== 'string' || typeof raw.missionId !== 'string' ||
-      !restoreRitesRuntimeV77(raw, raw.runId, raw.missionId, checkpoint.enemies as unknown as EnemyState[], checkpoint.elapsed as number, riteSourceLabelV77, {flayingToolOwned:true,supports:carcassSupportsForWorldV112(worldBlueprintFor(raw.missionId as MissionDefinition['id']))})) return null;
+      !restoreRitesRuntimeV77(raw, raw.runId, raw.missionId, checkpoint.enemies as unknown as EnemyState[], checkpoint.elapsed as number, riteSourceLabelV77, {flayingToolOwned:true,...carcassGeometryV112(applyExplorationWorld(worldBlueprintFor(raw.missionId as MissionDefinition['id']),normalizeExplorationProgress(checkpoint.exploration)))})) return null;
     if(raw.operation!==null&&(!isFiniteJsonNumber(checkpoint.riteOperationDamageStart)||
       (checkpoint.riteOperationDamageStart as number)<0||(checkpoint.riteOperationDamageStart as number)>(checkpoint.damageTaken as number)))return null;
     if(raw.operation===null&&checkpoint.riteOperationDamageStart!==undefined&&checkpoint.riteOperationDamageStart!==null)return null;
@@ -2108,9 +2108,9 @@ function restoreCheckpoint(
   mode: "retry" | "resume" = "retry",
 ): GameState {
   const restoredRites = checkpoint.huntRites===undefined
-    ? state.huntRites ? {...state.huntRites,elapsed:checkpoint.elapsed,corpses:[],operation:null,honorDelta:0,awareness:0,fear:0,completedEventIds:[]} : undefined
+    ? state.huntRites ? {...state.huntRites,elapsed:checkpoint.elapsed,corpses:[],operation:null,honorDelta:0,awareness:0,fear:0,completedEventIds:[],carryingCorpseId:null,specimensV112:[]} : undefined
     : restoreRitesRuntimeV77(checkpoint.huntRites, state.huntRites.runId,
-    state.world.missionId, checkpoint.enemies, checkpoint.elapsed, riteSourceLabelV77, {flayingToolOwned:state.flayingToolOwned,supports:carcassSupportsForWorldV112(state.world)});
+    state.world.missionId, checkpoint.enemies, checkpoint.elapsed, riteSourceLabelV77, {flayingToolOwned:state.flayingToolOwned,maximumSpecimens:state.harvestDepotFreeV112,...carcassGeometryV112(applyExplorationWorld(worldBlueprintFor(state.world.missionId),mergeExplorationProgress(state.exploration,explorationForMission(state.world.missionId,checkpoint.exploration))))});
   if (checkpoint.huntRites!==undefined&&!restoredRites) return {...state, paused:true, message:'Les traces de chasse ne correspondent pas à cette rencontre ; reprise refusée.', messageTimer:5};
   const restoredEcosystem=restoreCorpseDiscoveryV112(checkpoint.ecosystem,state.huntRites?.runId??"legacy",
     restoredRites?.corpses??[],discoveryActorsV112(checkpoint.enemies),checkpoint.elapsed);
@@ -2706,7 +2706,7 @@ function currentObjective(
           ? `Observe le premier glyphe · départ dans ${trophyRitualReadyRemaining(state.trophyRitual).toFixed(1)} s.`
           : state.trophyExtracting && cue
           ? `Rite ${state.trophyRitual!.cueIndex + 1}/${state.trophyRitual!.sequence.length} : ${trophyCueLabel(cue)} dans la fenêtre lumineuse.`
-          : "Approche la dépouille et utilise [E] pour commencer le rite rythmé.",
+          : `Intégrité ${anatomyIntegrityV112(state.boss.riteIntegrityLossV112)}/100 · approche la dépouille puis [E] pour le rite. Le prélèvement est définitif.`,
     };
   }
   if (state.trophyVictory && !state.trophyVictory.complete) {
@@ -6111,9 +6111,10 @@ function huntFieldLoadV112(state: GameState): ReturnType<typeof fieldLoadV112> {
 function riteRuntimeOptionsV112(state:GameState) {
   const actor={x:state.player.x+state.player.width/2,y:state.player.y+state.player.height};
   const uses=state.huntRites.completedEventIds.filter(id=>id.startsWith('flay:')||id.startsWith('harvest-')).length;
-  return {flayingToolOwned:state.flayingToolOwned,
+  const carried=state.enemies.find(e=>e.id===state.huntRites.carryingCorpseId);
+  return {flayingToolOwned:state.flayingToolOwned,maximumSpecimens:state.harvestDepotFreeV112,world:state.world,
     toolWorkMultiplier:flayingToolWorkMultiplierV112(toolConditionAfterUsesV112(state.riteToolInitialConditionV112??100,uses)),
-    supports:carcassSupportsForWorldV112(state.world).filter(s=>carcassSupportAccessibleV112(actor,s,state.world)),
+    supports:carcassSupportsForWorldV112(state.world).filter(s=>carcassSupportAccessibleV112(actor,s,state.world)&&(!carried||carcassFitsSocketV112(carried,s,state.world))),
     acceptSpecimen:(item:import("./systems/harvestInventoryV112").FieldSpecimenV112)=>{
       const items=state.huntRites.specimensV112??[];
       return items.length<(state.harvestDepotFreeV112??HARVEST_DEPOT_LIMIT_V112)&&items.length<64&&
@@ -6131,12 +6132,12 @@ function syncCarcassTransportV112(state:GameState):void {
     if(!enemy)continue;
     if(corpse.supportId){
       const support=supports.find(s=>s.id===corpse.supportId&&s.suitable&&s.maximumMass>=(corpse.massKg??70));
-      if(!support){corpse.supportId=null;corpse.hangingAt=null;enemy.riteFallVelocity=0;continue;}
+      if(!support||!carcassFitsSocketV112(enemy,support,state.world)){corpse.supportId=null;corpse.hangingAt=null;enemy.riteFallVelocity=0;continue;}
       enemy.x=support.x-enemy.width/2;enemy.y=support.y+CARCASS_HANG_DROP_V112-enemy.height;enemy.riteFallVelocity=0;
       corpse.x=support.x;corpse.y=support.y+CARCASS_HANG_DROP_V112;
     }else if(state.huntRites.carryingCorpseId===corpse.id){
       const target={...enemy,x:state.player.x+state.player.width/2+state.player.facing*38-enemy.width/2,y:state.player.y+state.player.height-enemy.height};
-      if(overlapsSolidPlatform(target,state.world.platforms)){
+      if(overlapsSolidPlatform(target,state.world.platforms)||huntStructuralBarrierV94({x:enemy.x+enemy.width/2,y:enemy.y+enemy.height/2},{x:target.x+target.width/2,y:target.y+target.height/2},state.world.platforms)){
         state.huntRites={...state.huntRites,carryingCorpseId:null};
         announce(state,'Carcasse déposée : espace de portage obstrué.',2);
       }else {enemy.x=target.x;enemy.y=target.y;enemy.riteFallVelocity=0;corpse.x=enemy.x+enemy.width/2;corpse.y=enemy.y+enemy.height;}
@@ -6148,7 +6149,7 @@ function riteContextV77(state:GameState) {
     state.paused||state.phase==='dead'||state.phase==='finished', riteRuntimeOptionsV112(state));
 }
 function ritePersistenceKeyV77(state:RitesOfHuntV77):string {
-  return state.corpses.length+':'+state.completedEventIds.length+':'+state.corpses.reduce((count,c)=>count+c.witnesses.length,0);
+  return state.corpses.length+':'+state.completedEventIds.length+':'+state.corpses.reduce((count,c)=>count+c.witnesses.length,0)+':'+(state.carryingCorpseId??'')+':'+state.corpses.map(c=>c.supportId??'').join(',');
 }
 function updateHuntRitesV77(state:GameState,delta:number):void {
   syncCarcassTransportV112(state);
@@ -10116,9 +10117,9 @@ export default function HuntCanvas({
       (resumeSnapshot != null && !restoredHunt) ||
       (resumeRetryCheckpoint != null && !restoredRetry) ||
       (restoredHunt && !restoreRitesRuntimeV77(restoredHunt.checkpoint.huntRites,game.huntRites.runId,mission.id,
-        restoredHunt.checkpoint.enemies,restoredHunt.checkpoint.elapsed,riteSourceLabelV77,{flayingToolOwned:game.flayingToolOwned,supports:carcassSupportsForWorldV112(game.world)})) ||
+        restoredHunt.checkpoint.enemies,restoredHunt.checkpoint.elapsed,riteSourceLabelV77,{flayingToolOwned:game.flayingToolOwned,maximumSpecimens:game.harvestDepotFreeV112,...carcassGeometryV112(game.world)})) ||
       (restoredRetry && !restoreRitesRuntimeV77(restoredRetry.checkpoint.huntRites,game.huntRites.runId,mission.id,
-        restoredRetry.checkpoint.enemies,restoredRetry.checkpoint.elapsed,riteSourceLabelV77,{flayingToolOwned:game.flayingToolOwned,supports:carcassSupportsForWorldV112(game.world)}));
+        restoredRetry.checkpoint.enemies,restoredRetry.checkpoint.elapsed,riteSourceLabelV77,{flayingToolOwned:game.flayingToolOwned,maximumSpecimens:game.harvestDepotFreeV112,...carcassGeometryV112(game.world)}));
     if (restoredHunt && !invalidResume) {
       game = restoreCheckpoint(game, restoredHunt.checkpoint, "resume");
       game.nextCheckpointIndex = Math.min(

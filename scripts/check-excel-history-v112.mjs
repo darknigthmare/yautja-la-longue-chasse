@@ -202,7 +202,9 @@ export async function prepareHistoricalV110V112(repository = REPOSITORY) {
     await pruneNewAppFiles(root, new Set(freeze.entries.filter(row => row.path.startsWith('app/')).map(row => row.path)));
     for (const row of V110_PREIMAGES_V112) await restorePinnedSourceV112(root, row,
       file => Promise.resolve(git(repository, ['show', SOURCE_COMMIT_V112 + ':' + file])));
-    const restoredAdditionalSources = await restoreChangedFrozenSourceV112(root, freeze,\n      file => Promise.resolve(git(repository, ['show', SOURCE_COMMIT_V112 + ':' + file])));\n    for (const row of V110_ORIGINAL_TESTS_V112) {
+    const restoredAdditionalSources = await restoreChangedFrozenSourceV112(root, freeze,
+      file => Promise.resolve(git(repository, ['show', SOURCE_COMMIT_V112 + ':' + file])));
+    for (const row of V110_ORIGINAL_TESTS_V112) {
       assert.equal(gitBlobHashV112(await fs.readFile(path.join(root, row.path))), row.gitBlobSha,
         'Original V110 assertion changed: ' + row.path);
     }

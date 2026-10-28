@@ -17,14 +17,14 @@ export {carcassSupportsForWorldV112} from "./systems/carcassSupportsV112";`,reso
 const mod={exports:{}};
 runInNewContext(compiled.outputFiles[0].text,{module:mod,exports:mod.exports,require:createRequire(import.meta.url),document:{hidden:false,hasFocus:()=>true},navigator:{getGamepads:()=>[]}});
 const r=mod.exports,plain=x=>JSON.parse(JSON.stringify(x));
-function fixture(){
+function fixture({width=40,height=60}={}){
   const save=r.defaultSave("2026-10-28T00:00:00.000Z");save.inventory.fieldToolIds=["flaying-tool"];
   const mission=r.MISSION_BY_ID["jungle-vey"];
   const state=r.makeGameState(mission,save.loadout,save.inventory,"hunter",save.appearance,false,false,7,save.exploration);
   state.world={...state.world,platforms:[],hazards:[],covers:[],climbables:[{id:"j-tree-west",x:1000,y:248,width:132,height:376,kind:"tree",routeId:"canopy",climbSpeedMultiplier:1,staminaPerSecond:3,dismounts:[]}]};
   Object.assign(state.player,{x:1100,y:624-state.player.height,previousY:624-state.player.height,grounded:true,climbing:false,velocityX:0,velocityY:0});
   const enemy=r.makeEnemy("body","hell-hound-stalker",mission.id,1120,state.world.width,80,10,0,1,1);
-  Object.assign(enemy,{x:1120,y:564,width:40,height:60,health:80,maxHealth:80,scanned:true});
+  Object.assign(enemy,{x:1120,y:624-height,width,height,health:80,maxHealth:80,scanned:true});
   state.enemies=[enemy];state.elapsed=1;r.damageEnemy(state,mission,enemy,80,"melee");
   assert.equal(state.huntRites.corpses.length,1);return {state,save,mission,enemy};
 }
@@ -86,4 +86,20 @@ test("carrying into blocked space drops the same corpse without moving it throug
   r.syncCarcassTransportV112(f.state);
   assert.equal(f.state.huntRites.carryingCorpseId,null);assert.equal(f.enemy.x,previous);
   assert.equal(f.state.enemies.length,1);
+});
+
+test("a clear final transport point cannot teleport its source across an intervening solid wall",()=>{
+  const f=fixture();act(f,"flay");act(f,"carry");const previous=f.enemy.x;
+  f.state.world.platforms=[{id:"wall-between",x:1240,y:0,width:12,height:624,collision:"solid",routeId:"ground",material:"stone",noiseMultiplier:1,trackPersistence:1}];
+  f.state.player.x=1450;r.syncCarcassTransportV112(f.state);
+  assert.equal(f.state.huntRites.carryingCorpseId,null);assert.equal(f.enemy.x,previous);
+});
+
+test("an authored hook cannot attach an actual wide body through a wall outside its preview icon",()=>{
+  const f=fixture({width:90,height:70});act(f,"flay");act(f,"carry");
+  const hook=r.carcassSupportsForWorldV112(f.state.world)[0];assert.ok(hook);
+  f.state.world.platforms=[{id:"body-side-wall",x:hook.x+31,y:hook.y+28,width:10,height:24,collision:"solid",routeId:"ground",material:"stone",noiseMultiplier:1,trackPersistence:1}];
+  assert.equal(r.carcassSupportsForWorldV112(f.state.world).length,1,"compact socket icon remains clear");
+  const start=r.startHuntRiteV77(f.state.huntRites,"body","hang",r.riteContextV77(f.state),{supportId:hook.id});
+  assert.equal(start.accepted,false,"actual source width must be checked before source consumption");
 });

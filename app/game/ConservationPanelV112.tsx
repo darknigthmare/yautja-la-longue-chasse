@@ -1,6 +1,8 @@
 "use client";
 import {useState} from "react";
 import type {PlayerInventory} from "./types";
+import {enemyV7ForId} from "./enemyRosterV7";
+import {ecologyV8EnemyForId} from "./ecologyV8";
 import {CONSERVATION_STEPS_V112,HARVEST_DEPOT_LIMIT_V112,SPECIMEN_STAGE_LABELS_V112,
   harvestInventoryForV112,flayingToolWorkMultiplierV112,type FieldSpecimenV112} from "./systems/harvestInventoryV112";
 import styles from "./ConservationPanelV112.module.css";
@@ -12,6 +14,12 @@ export interface ConservationPanelV112Props {
   disabled?: boolean;
   onAction(action:ConservationPanelActionV112,id:string):{ok:boolean;message:string};
 }
+const LEGACY_PREY_LABELS_V112:Readonly<Record<string,string>>=Object.freeze({
+  "rifle-soldier":"Garde armé","scout":"Éclaireur","heavy":"Garde lourd",
+  "cryostalker-runner":"Cryostalker coureur","cryostalker-brute":"Cryostalker brute",
+  "razor-hound":"Limier rasoir","bad-blood-initiate":"Initié Bad Blood",
+});
+const speciesLabelV112=(id:string)=>ecologyV8EnemyForId(id)?.name??enemyV7ForId(id)?.name??LEGACY_PREY_LABELS_V112[id]??"Proie de terrain";
 function SpecimenGlyphV112({item}:{item:FieldSpecimenV112}) {
   const shape=item.partId.includes("hide")?"M18 8 28 15 38 8 44 25 38 48 18 48 12 25Z":
     item.partId.includes("tissue")?"M28 9C4 13 12 48 28 48C45 46 52 14 28 9Z":"M19 9C6 3 4 19 15 23L24 35C14 46 29 55 34 43L37 30C51 24 43 11 33 18Z";
@@ -46,7 +54,7 @@ export default function ConservationPanelV112({inventory,clanMarks,disabled=fals
         const next=CONSERVATION_STEPS_V112.find(s=>s.from===item.stage);
         return <article className={styles.card} key={item.id} aria-label={item.label}>
           <SpecimenGlyphV112 item={item}/>
-          <div><h3>{item.label}</h3><p>{item.speciesId} · intégrité {item.quality}/100</p>
+          <div><h3>{item.label}</h3><p>{speciesLabelV112(item.speciesId)} · intégrité {item.quality}/100</p>
             <p>{item.massKg.toFixed(1)} kg · {item.volumeUnits.toFixed(1)} volumes · <strong>{SPECIMEN_STAGE_LABELS_V112[item.stage]}</strong></p>
             </div>
           {job?<div className={styles.work}>
@@ -59,6 +67,6 @@ export default function ConservationPanelV112({inventory,clanMarks,disabled=fals
             <p className={styles.mounted}>Prise montée et exposée dans cet atelier. La collection de trophées et les rangs restent distincts.<br/><button type="button" className="button" disabled={disabled} onClick={()=>act("archive",item.id)}>Ranger en réserve · {item.label}</button><small>Libère un emplacement. La prise reste possédée dans la réserve comptée ci-dessous.</small></p>}
         </article>;
       })}</div>}
-    {ledger.archive.length>0&&<div className={styles.reserve}><h3>Réserve permanente</h3><ul>{ledger.archive.map(a=><li key={a.speciesId+":"+a.partId}>{a.count} × {a.label} · {a.speciesId} · intégrité moyenne {Math.round(a.qualityTotal/a.count)}/100</li>)}</ul></div>}
+    {ledger.archive.length>0&&<div className={styles.reserve}><h3>Réserve permanente</h3><ul>{ledger.archive.map(a=><li key={a.speciesId+":"+a.partId}>{a.count} × {a.label} · {speciesLabelV112(a.speciesId)} · intégrité moyenne {Math.round(a.qualityTotal/a.count)}/100</li>)}</ul></div>}
   </section>;
 }

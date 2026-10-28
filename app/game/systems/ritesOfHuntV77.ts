@@ -18,7 +18,9 @@ export interface RitePreyProofV77 extends RitePointV77 {
 export interface RiteSupportV77 extends RitePointV77 {
   readonly id:string; readonly suitable:boolean; readonly maximumMass:number;
 }
-export interface RiteCorpseV77 extends RitePointV77 {
+/** Mutable physical anchor follows its one real dead actor. Proofs remain readonly. */
+export interface RiteCorpseV77 {
+  x:number; y:number;
   id:string; sourceEnemyId:string; label:string; kind:RitePreyProofV77['kind'];
   worthy:boolean; protectedPrey:boolean; defeatedAt:number;
   analyzed:boolean; marked:boolean; flayed:boolean; erased:boolean;
