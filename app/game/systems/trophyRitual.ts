@@ -215,6 +215,13 @@ export function stepTrophyRitual(
   return { state, accepted: true, mistakeAdded: false };
 }
 
+/** Shared by both corpse glyph rings and the DOM cue meter. Unlimited has no moving deadline. */
+export function trophyRitualMeterV112(state:TrophyRitualState,mode:"normal"|"generous"|"unlimited"="normal"):number {
+  if(state.phase==="ready")return 0;
+  if(mode==="unlimited")return 1;
+  return clamp(state.cueElapsedSeconds/trophyRitualTimingV112(mode).cueTimeoutSeconds);
+}
+
 export function trophyRitualProgress(state: TrophyRitualState): number {
   return clamp(state.cueIndex / Math.max(1, state.sequence.length));
 }

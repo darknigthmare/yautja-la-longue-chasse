@@ -2818,15 +2818,16 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   const updateSettings = useCallback(
     (patch: Partial<GameSettings>) => {
+      const current=saveRef.current;
       persist({
-        ...save,
+        ...current,
         settings: {
-          ...save.settings,
+          ...current.settings,
           ...patch,
         },
       });
     },
-    [persist, save],
+    [persist],
   );
 
   const selectArmor = useCallback(

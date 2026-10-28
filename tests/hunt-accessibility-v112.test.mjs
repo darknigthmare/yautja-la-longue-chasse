@@ -5,9 +5,13 @@ import {readFile} from "node:fs/promises";
 import {fileURLToPath} from "node:url";
 import {createRequire} from "node:module";
 import {runInNewContext} from "node:vm";
+import ts from "typescript";
+import {createElement} from "react";
+import {renderToStaticMarkup} from "react-dom/server";
 const source=await readFile(new URL("../app/game/HuntCanvas.tsx",import.meta.url),"utf8");
 const built=await build({stdin:{contents:source.replace("export default function HuntCanvas","function HuntCanvas")+`
-export {pollGamepad,stepGame,updatePlayer,isHeld,makeGameState};
+export {pollGamepad,stepGame,updatePlayer,isHeld,makeGameState,snapshot};
+export {default as HuntRitualMeterV112} from "./HuntRitualMeterV112";
 export * from "./systems/huntAccessibilityV112";
 export * from "./systems/trophyRitual";
 export {defaultSave,normalizeSave,parseSaveImport} from "./save";
@@ -138,4 +142,43 @@ test("pause and focus loss disarm production hold toggles and pending confirmati
     f.step();assert.equal(f.game.paused,true);assert.equal(f.input.holdTogglesV112.upLatched,false);assert.equal(f.input.holdTogglesV112.aimLatched,false);assert.equal(f.input.ritualAssistEventV112,null);
     browser.focused=true;
   }
+});
+
+test("production snapshot uses the selected timing scale and unlimited meter stays static",()=>{
+  const f=fixture(profile({ritualTiming:"generous"}));
+  f.game.trophyExtracting=true;
+  f.game.trophyRitual=advance(advance(api.createTrophyRitual("meter",3),1.8).state,.54,"generous").state;
+  assert.ok(Math.abs(api.snapshot(f.game,f.mission).trophyCueTiming-.25)<1e-9);
+  f.game.huntAccessibility=profile({ritualTiming:"normal"});
+  assert.ok(Math.abs(api.snapshot(f.game,f.mission).trophyCueTiming-.5)<1e-9);
+  f.game.huntAccessibility=profile({ritualTiming:"unlimited"});
+  const first=api.snapshot(f.game,f.mission).trophyCueTiming;
+  f.game.trophyRitual.cueElapsedSeconds=999;
+  assert.equal(first,1);assert.equal(api.snapshot(f.game,f.mission).trophyCueTiming,first);
+});
+test("real cue meter distinguishes finite progress from an explicitly unlimited static band",()=>{
+  const timed=renderToStaticMarkup(createElement(api.HuntRitualMeterV112,{progress:.5,mode:"generous"}));
+  assert.match(timed,/role="progressbar"/);assert.match(timed,/aria-valuenow="50"/);assert.match(timed,/fenêtre large/);
+  const unlimited=renderToStaticMarkup(createElement(api.HuntRitualMeterV112,{progress:.01,mode:"unlimited"}));
+  assert.match(unlimited,/Sans limite par glyphe/);assert.match(unlimited,/width:100%/);
+  assert.doesNotMatch(unlimited,/aria-valuenow/);assert.doesNotMatch(unlimited,/role="progressbar"/);
+});
+test("real settings callback preserves freshly confirmed inventory and successive preference patches before React rerenders",async()=>{
+  const client=await readFile(new URL("../app/game/GameClient.tsx",import.meta.url),"utf8");
+  const ast=ts.createSourceFile("GameClient.tsx",client,ts.ScriptTarget.Latest,true,ts.ScriptKind.TSX);
+  let declaration;
+  const visit=node=>{if(ts.isVariableDeclaration(node)&&node.name.getText(ast)==="updateSettings")declaration=node;else ts.forEachChild(node,visit);};
+  visit(ast);assert.ok(declaration&&ts.isCallExpression(declaration.initializer));
+  const callbackSource=declaration.initializer.arguments[0].getText(ast);
+  const js=ts.transpileModule("const callback="+callbackSource+";",{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.None}}).outputText;
+  const stale=api.defaultSave("2026-10-28T00:00:00.000Z"),confirmed=structuredClone(stale);
+  confirmed.profile.clanMarks=17;confirmed.inventory.fieldToolIds=["flaying-tool"];
+  confirmed.inventory.harvestV112={...confirmed.inventory.harvestV112,toolCondition:40};
+  const saveRef={current:confirmed},calls=[];
+  const callback=runInNewContext("(()=>{"+js+";return callback;})()",{save:stale,saveRef,persist(next){calls.push(next);saveRef.current=next;}});
+  callback({huntAccessibility:profile({ritualTiming:"unlimited"})});
+  callback({effectsVolume:.2});
+  assert.equal(calls.length,2);assert.equal(saveRef.current.profile.clanMarks,17);
+  assert.deepEqual(plain(saveRef.current.inventory),plain(confirmed.inventory));
+  assert.equal(saveRef.current.settings.huntAccessibility.ritualTiming,"unlimited");assert.equal(saveRef.current.settings.effectsVolume,.2);
 });
