@@ -6087,7 +6087,7 @@ function updateHuntRitesV77(state:GameState,delta:number):void {
     const corpseId=before.corpseId;
     const corpse=state.huntRites.corpses.find(entry=>entry.id===corpseId);
     if(!corpse||!state.player.grounded||state.player.climbing||
-      huntStructuralBarrierV94(context.actor,corpse,state.world.platforms)){
+      huntStructuralBarrierV94({x:context.actor.x,y:context.actor.y-Math.min(48,state.player.height*.4)},{x:corpse.x,y:corpse.y-12},state.world.platforms)){
       state.huntRites={...state.huntRites,operation:null};
       state.riteOperationDamageStart=null;
       before=null;
@@ -10491,7 +10491,7 @@ export default function HuntCanvas({
         if(action==='flay'&&!menu.canFlay) {announce(game,menu.flayLockedReason??'Dépeçage indisponible.',3);return;}
         const corpse=game.huntRites.corpses.find(entry=>entry.id===menu.corpseId);
         if((action==='flay'||action==='hang'||action==='carry'||action.startsWith('harvest-'))&&(!corpse||!game.player.grounded||game.player.climbing||
-          huntStructuralBarrierV94(context.actor,corpse,game.world.platforms))){
+          huntStructuralBarrierV94({x:context.actor.x,y:context.actor.y-Math.min(48,game.player.height*.4)},{x:corpse.x,y:corpse.y-12},game.world.platforms))){
           announce(game,'Rejoins la proie sur un appui dégagé pour la dépecer.',3);return;
         }
         const started=startHuntRiteV77(game.huntRites,menu.corpseId,action,context,{supportId:menu.hangSupportId??undefined});

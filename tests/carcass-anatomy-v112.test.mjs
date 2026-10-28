@@ -9,7 +9,10 @@ function scene(species="hell-hound-stalker"){
   const options={flayingToolOwned:true,acceptSpecimen:()=>true,supports:[{id:"real-hook",x:145,y:450,suitable:true,maximumMass:170}]};
   let state=a.createRitesOfHuntV77("jungle-vey:7","jungle-vey");
   const context=()=>a.riteRuntimeContextV77(state,player,actors,label,false,options);
-  state=a.registerRitePreyV77(state,context().prey[0],context()).state;
+  const registrationContext=context();
+  const registered=a.registerRitePreyV77(state,registrationContext.prey[0],registrationContext);
+  assert.equal(registered.accepted,true,registered.message);
+  state=registered.state;
   return {get state(){return state},set state(value){state=value},actors,player,label,options,context};
 }
 function act(f,action,options={}){
