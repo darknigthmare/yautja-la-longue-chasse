@@ -34,7 +34,7 @@ function fixture(harvest=true){
   const f={state,save,mission,enemy,persisted:0,ui:null};
   const perform=action=>{
     const started=r.startHuntRiteV77(state.huntRites,enemy.id,action,r.riteContextV77(state));
-    assert.equal(started.accepted,true,started.message);state.huntRites=started.state;
+    assert.equal(started.accepted,true,started.message);state.huntRites=started.state;state.riteOperationDamageStart=state.damageTaken;
     for(let i=0;i<300&&state.huntRites.operation;i++){state.elapsed+=.05;r.updateHuntRitesV77(state,.05);}
     assert.equal(state.huntRites.operation,null);
   };
