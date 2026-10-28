@@ -130,6 +130,8 @@ test("persistence restores detached data and rejects foreign identities, invente
   assert.equal(r.restoreCorpseDiscoveryV112(saved,"foreign",corpses,actors,1),null);
   for(const mutate of [
     s=>{s.receipts[0].actorId="invented";},
+    s=>{s.receipts.push(null);},
+    s=>{s.zones.push(null);},
     s=>{s.receipts[1].sourceActorId="invented";},
     s=>{s.receipts[1].at=.1;},
     s=>{s.reactions[0].until=1000;},

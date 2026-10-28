@@ -70,7 +70,9 @@ export function canopySwingPointV112(swing: CanopySwingV112, support: WorldClimb
     y:support.y + Math.cos(swing.angle)*swing.length };
 }
 export function attachCanopySwingV112(body: PlatformMotionBody, support: WorldClimbable): CanopySwingV112 | null {
-  if (!isFlexibleCanopySupportV112(support)) return null;
+  if (!isFlexibleCanopySupportV112(support) ||
+    ![body.x,body.y,body.width,body.height,body.velocityX,body.velocityY].every(Number.isFinite) ||
+    body.width <= 0 || body.height <= 0) return null;
   const grip = hand(body), dx = grip.x - support.x - support.width/2, dy = grip.y - support.y;
   const length = Math.hypot(dx,dy), angle = Math.atan2(dx,dy);
   if (length < CANOPY_PHYSICS_V112.minimumLength || length > support.height || Math.abs(angle) > CANOPY_PHYSICS_V112.maximumAngle) return null;
@@ -94,6 +96,9 @@ export function stepCanopySwingV112(
     !isFlexibleCanopySupportV112(support) || initial.length > support.height ||
     !Number.isFinite(input.moveAxis) || !Number.isFinite(input.climbAxis) || !Number.isFinite(staminaMultiplier))
     throw new RangeError("Canopy step requires a real flexible support and finite controls");
+  if (!canopySupportReachableV112(body,support,platforms,initial)) {
+    return {swing:{...initial},body:{...body},detached:true,grounded:false,staminaCost:0,tensionPerKg:0};
+  }
   let swing = {...initial}, actor = {...body}, detached = false, grounded = false;
   let staminaCost = 0;
   const steps = Math.max(1,Math.ceil(deltaSeconds/CANOPY_PHYSICS_V112.substepSeconds));
@@ -159,12 +164,12 @@ export function authorCanopyRoutesV112(world: WorldBlueprint): WorldBlueprint {
     const sequence = waypointIds.length/12;
     for (let index=0;index<6;index++) {
       const x=start+index*180;
-      const top=index%2===0?360:335;
+      const top=index%2===0?270:245;
       const id=`v112-canopy-${world.missionId}-${sequence}-${index}`;
       platforms.push({id:`${id}-rest`,x:x-65,y:top,width:130,height:18,material,
         routeId:"canopy-transfer",collision:"one-way",noiseMultiplier:0.7,trackPersistence:0.3});
       const end=index===0||index===5;
-      climbables.push({id:`${id}-grip`,x:x-24,y:110,width:48,height:end?world.floorY-110:250,
+      climbables.push({id:`${id}-grip`,x:x-24,y:40,width:48,height:end?world.floorY-40:250,
         kind:end?supportKind:(world.biome==="jungle"||world.biome==="swamp"||world.biome==="fungal"?"vine":"rope"),
         routeId:"canopy-transfer",climbSpeedMultiplier:1,staminaPerSecond:end?3:4,
         dismounts:[{x,y:top},{x:x+80,y:world.floorY}]});

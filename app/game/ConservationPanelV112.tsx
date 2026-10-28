@@ -48,7 +48,7 @@ export default function ConservationPanelV112({inventory,clanMarks,disabled=fals
           <SpecimenGlyphV112 item={item}/>
           <div><h3>{item.label}</h3><p>{item.speciesId} · intégrité {item.quality}/100</p>
             <p>{item.massKg.toFixed(1)} kg · {item.volumeUnits.toFixed(1)} volumes · <strong>{SPECIMEN_STAGE_LABELS_V112[item.stage]}</strong></p>
-            <small>Source : {item.sourceId}</small></div>
+            </div>
           {job?<div className={styles.work}>
             <label htmlFor={"conservation-progress-"+item.id}>{SPECIMEN_STAGE_LABELS_V112[job.toStage]} : {job.unitsDone}/{job.unitsRequired} gestes · {job.costPaid} marques déjà payées</label>
             <progress id={"conservation-progress-"+item.id} max={job.unitsRequired} value={job.unitsDone}/>

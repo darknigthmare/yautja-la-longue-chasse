@@ -168,6 +168,9 @@ export function restoreCorpseDiscoveryV112(raw:unknown,runId:string,corpses:read
     !Array.isArray(s.reactions)||s.reactions.length>CORPSE_DISCOVERY_V112.maximumReactions||
     !Array.isArray(s.zones)||s.zones.length>CORPSE_DISCOVERY_V112.maximumZones||
     !Array.isArray(s.pendingRadios)||s.pendingRadios.length>CORPSE_DISCOVERY_V112.maximumPendingRadios)return null;
+  if(s.receipts.some(r=>!r||typeof r!=="object")||s.reactions.some(r=>!r||typeof r!=="object")||
+    s.zones.some(z=>!z||typeof z!=="object")||s.pendingRadios.some(p=>!p||typeof p!=="object")||
+    s.events.some(id=>typeof id!=="string"))return null;
   const ids=new Set<string>();
   for(const r of s.receipts){
     if(!r||!["visual","scent","radio"].includes(r.channel)||r.id!==receiptId(r.corpseId,r.actorId,r.channel)||ids.has(r.id)||

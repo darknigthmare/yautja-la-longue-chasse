@@ -17,7 +17,7 @@ export {MISSION_BY_ID} from "./data";
   external:["react","react/jsx-runtime","react-dom"],logLevel:"silent"});
 const browser={focused:true,hidden:false,pads:[]},module={exports:{}};
 runInNewContext(built.outputFiles[0].text,{module,exports:module.exports,require:createRequire(import.meta.url),
-  document:{get hidden(){return browser.hidden},hasFocus:()=>browser.focused},navigator:{getGamepads:()=>browser.pads}});
+  document:{get hidden(){return browser.hidden},hasFocus:()=>browser.focused},navigator:{getGamepads:()=>browser.pads},TextEncoder,TextDecoder});
 const api=module.exports;
 const plain=value=>JSON.parse(JSON.stringify(value));
 const profile=patch=>({...api.normalizeHuntAccessibilityV112(undefined),...patch});

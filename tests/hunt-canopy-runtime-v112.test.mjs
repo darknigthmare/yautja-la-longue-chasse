@@ -72,3 +72,91 @@ test("stamina exhaustion releases the swing and requires a real landing before r
  for(let tick=0;tick<5;tick++)f.frame();
  assert.equal(f.state.player.climbing,false);
 });
+
+for(const missionId of ["jungle-vey","ice-cryostalker","volcano-bad-blood","swamp-hydra","desert-sandmaw","ocean-leviathan","fungal-hivemind","ruins-ancient-guardian"]){
+ for(const armorId of ["scout","hunter","berserker"]){
+  for(const device of ["keyboardHeld","touchHeld","gamepadHeld"]){
+   test(`complete authored canopy rests: ${missionId}, ${armorId}, ${device}`,()=>{
+    const save=runtime.defaultSave("2026-10-28T00:00:00Z");
+    save.loadout.armorId=armorId;
+    const mission=runtime.MISSION_BY_ID[missionId];
+    const state=runtime.makeGameState(mission,save.loadout,save.inventory,"hunter",save.appearance,false,false,"canopy-qualification",save.exploration);
+    state.enemies=[];
+    const input={keyboardHeld:new Set(),touchHeld:new Set(),gamepadHeld:new Set(),pressed:new Set(),previousGamepadButtons:[],activeGamepadIndex:null,gamepadNeedsNeutral:true,gamepadDialogActions:[],pointerScreen:null};
+    const held=input[device];
+    const frame=()=>runtime.updatePlayer(state,mission,save.loadout,save.inventory,save.appearance,"hunter",input,1/120,()=>{});
+    const rests=state.world.platforms.filter(p=>p.id.startsWith(`v112-canopy-${missionId}-0-`));
+    assert.equal(rests.length,6);
+    const firstGrip=state.world.climbables.find(s=>s.id===rests[0].id.replace("-rest","-grip"));
+    const lastGrip=state.world.climbables.find(s=>s.id===rests[5].id.replace("-rest","-grip"));
+    assert.ok(firstGrip&&lastGrip);
+    // Only initial insertion is positioned by the fixture. Entry, every
+    // transfer and the return to ground use production controls and collision.
+    Object.assign(state.player,{x:firstGrip.x+firstGrip.width/2-state.player.width/2,
+      y:state.world.floorY-state.player.height,previousY:state.world.floorY-state.player.height,
+      velocityX:0,velocityY:0,grounded:true,climbing:false,climbZoneId:null,canopySwing:null});
+    frame();
+    assert.equal(state.player.grounded,true);
+    assert.equal(state.player.y+state.player.height,state.world.floorY);
+    held.add("up");
+    for(let tick=0;tick<420&&state.player.y+state.player.height>rests[0].y-16;tick++)frame();
+    assert.equal(state.player.climbing,true);
+    assert.equal(state.player.climbZoneId,firstGrip.id);
+    assert.ok(state.player.y+state.player.height<=rests[0].y-16);
+    // A directional release from a rigid trunk/face lets gravity deliver
+    // the hunter onto the first branch; no jump or boost is fabricated.
+    held.clear();held.add("right");frame();held.clear();
+    for(let tick=0;tick<240&&!state.player.grounded;tick++)frame();
+    assert.equal(state.player.grounded,true);
+    assert.ok(Math.abs(state.player.y+state.player.height-rests[0].y)<1e-6);
+    assert.ok(state.player.x+state.player.width>rests[0].x&&state.player.x<rests[0].x+rests[0].width);
+    let contacts=1;
+    for(const target of rests.slice(1)){
+      const center=target.x+target.width/2;
+      held.add("right");held.add("jump");input.pressed.add("jump");
+      let airborne=false,landed=false;
+      for(let tick=0;tick<240;tick++){
+        if(state.player.x+state.player.width/2>=center-20)held.delete("right");
+        else held.add("right");
+        frame();
+        if(!state.player.grounded)airborne=true;
+        if(airborne&&state.player.grounded){landed=true;break;}
+      }
+      assert.equal(landed,true,`${target.id}: must finish a real airborne transfer`);
+      assert.ok(Math.abs(state.player.y+state.player.height-target.y)<1e-6,
+        `${target.id}: landing must be on the expected resting height, got ${state.player.y+state.player.height}`);
+      assert.ok(state.player.x+state.player.width>target.x&&state.player.x<target.x+target.width,
+        `${target.id}: real body must overlap the intended branch`);
+      assert.equal(state.player.aerialBoostUsed,false);
+      contacts++;
+      held.delete("jump");
+      // Walk to the resting center using the same device, then release. This
+      // also supplies the fresh release edge required by the next jump.
+      for(let tick=0;tick<180;tick++){
+        const difference=center-(state.player.x+state.player.width/2);
+        held.delete("left");held.delete("right");
+        if(difference>12)held.add("right");
+        else if(difference< -12)held.add("left");
+        frame();
+        if(Math.abs(difference)<=12&&Math.abs(state.player.velocityX)<8)break;
+      }
+      held.clear();
+      for(let tick=0;tick<12;tick++)frame();
+      assert.equal(state.player.grounded,true);
+      assert.ok(Math.abs(state.player.y+state.player.height-target.y)<1e-6);
+    }
+    assert.equal(contacts,6);
+    held.clear();held.add("down");
+    for(let tick=0;tick<420;tick++){
+      frame();
+      if(state.player.grounded&&Math.abs(state.player.y+state.player.height-state.world.floorY)<1e-6)break;
+    }
+    held.clear();
+    assert.equal(state.player.grounded,true);
+    assert.ok(Math.abs(state.player.y+state.player.height-state.world.floorY)<1e-6,"end support returns to the real ground");
+    assert.ok(Math.abs(state.player.x+state.player.width/2-(lastGrip.x+lastGrip.width/2))<80);
+    assert.equal(state.player.aerialBoostUsed,false);
+   });
+  }
+ }
+}
