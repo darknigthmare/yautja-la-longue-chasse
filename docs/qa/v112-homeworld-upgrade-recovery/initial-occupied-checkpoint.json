@@ -1,0 +1,105 @@
+{
+  "selected": {
+    "id": "public-place-v112:traveler-marker",
+    "point": {
+      "x": 4799.825914935707,
+      "y": 4964.21758152965
+    },
+    "oldFree": true,
+    "newFree": false,
+    "hit": {
+      "kind": "prop",
+      "id": "public-place-v112:traveler-marker"
+    }
+  },
+  "oldNativeWalkSteps": 543,
+  "oldNativeWalkDistance": 2901.132358873175,
+  "actor": {
+    "x": 4799.825914935707,
+    "y": 4964.21758152965,
+    "vx": -116.49661379668032,
+    "vy": -191.4284250970195,
+    "facing": -1,
+    "grounded": true
+  },
+  "oldCheckpointRestores": true,
+  "newCheckpointRestores": false,
+  "newActor": {
+    "x": 7780,
+    "y": 4480,
+    "vx": 0,
+    "vy": 0,
+    "grounded": true,
+    "facing": 1
+  },
+  "newRecoveryMessage": "",
+  "newMigrationBackup": null,
+  "ledgerStillStrictlyValid": true,
+  "phase": "interrupted",
+  "savedLast": {
+    "x": 4799.825914935707,
+    "y": 4964.21758152965
+  },
+  "lastStillWalkable": false,
+  "resumeAtNewActor": {
+    "ok": false,
+    "changed": false,
+    "ledger": {
+      "version": 1,
+      "ownerCreatedAt": "2026-10-28T10:00:00.000Z",
+      "revision": 6,
+      "receipt": {
+        "sceneId": "D6-W-PNJ-ROLE-03",
+        "operationId": "port-k17-separated-plaque-study-v109",
+        "sourceSha256": "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183",
+        "sourceCorpusSha256": "e36efdc3d5ac8fddb74dd683458b72873203446204e768b02aa13e4db17eed30",
+        "artSha256": "a47fb32cfc7b5f2c4e5721c660c9a2d68ac4dee1ee869d5175f41dd2278c49fe",
+        "phase": "interrupted",
+        "resumePhase": "working",
+        "option": "A",
+        "last": {
+          "x": 4799.825914935707,
+          "y": 4964.21758152965
+        },
+        "walked": 2901.132358873175,
+        "objects": [
+          {
+            "id": "plaque",
+            "x": 7760,
+            "y": 5260,
+            "place": "source"
+          },
+          {
+            "id": "trace",
+            "x": 7880,
+            "y": 5260,
+            "place": "source"
+          },
+          {
+            "id": "fragment",
+            "x": 7520,
+            "y": 5470,
+            "place": "source"
+          }
+        ],
+        "carrier": null,
+        "pickupWalked": null,
+        "observations": [],
+        "provenances": [],
+        "ownerConsent": true,
+        "edgeObserved": false,
+        "mismatchObserved": false,
+        "failureSpoken": false,
+        "resumeSpoken": false,
+        "fragmentCompared": false,
+        "interruptedCount": 1,
+        "lineIds": [
+          "D6-W-PNJ-ROLE-03-OUV---01",
+          "D6-W-PNJ-ROLE-03-CHOIX-A-01",
+          "D6-W-PNJ-ROLE-03-REPONSE-A-01"
+        ]
+      }
+    },
+    "message": "Reprends au dernier point confirmé, avec les mêmes pièces."
+  }
+}

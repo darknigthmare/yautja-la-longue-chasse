@@ -372,7 +372,9 @@ test('V16 replays retain real input edges and reject relabelled V15 archives', (
   assert.ok(events.some(event => event.type === 'throw-caught'));
   assert.ok(events.some(event => event.type === 'hit' && event.attack === 'throw' && event.damage === 110));
   const replay = p.recordPitReplay(frames, options);
-  assert.equal(replay.engineVersion, 16); assert.equal(p.PIT_REPLAY_MAX_ENGINE_VERSION, 16);
+  assert.equal(replay.engineVersion, 16);
+  // V17 is newly supported; this recorded V16 archive still owns its exact engine.
+  assert.equal(p.PIT_REPLAY_MAX_ENGINE_VERSION, 17);
   const restored = p.deserializePitReplay(p.serializePitReplay(replay));
   assert.deepEqual(p.playPitReplay(restored), p.playPitReplay(replay));
   assert.deepEqual(p.playPitReplay(restored), actual);

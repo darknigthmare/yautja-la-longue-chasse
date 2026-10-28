@@ -44,7 +44,7 @@ export function clipPitWorkbookMineV107(context: CanvasRenderingContext2D, mask:
 
 export function drawPitWorkbookDeviceBodyV107(context: CanvasRenderingContext2D, bank: PitCombatBitmapArtBank | null,
   fighter: PitFighterState, groundY: number, options: PitSpriteSheetAnimationOptions & {highContrast?: boolean; accent?: string}): boolean {
-  if ((fighter.normalMovesRecipe !== 'workbook-v107' && fighter.normalMovesRecipe !== 'workbook-v109') || fighter.definitionId !== 'feral-hunter' || fighter.variantId || fighter.action?.workbookMove !== 'S4') return false;
+  if ((fighter.normalMovesRecipe !== 'workbook-v107' && fighter.normalMovesRecipe !== 'workbook-v109' && fighter.normalMovesRecipe !== 'workbook-v112') || fighter.definitionId !== 'feral-hunter' || fighter.variantId || fighter.action?.workbookMove !== 'S4') return false;
   const animation = resolvePitSpriteSheetAnimation(bank?.spriteSheets, fighter, options);
   if (!animation) return false;
   const {frame, page} = animation.resolved.frame;

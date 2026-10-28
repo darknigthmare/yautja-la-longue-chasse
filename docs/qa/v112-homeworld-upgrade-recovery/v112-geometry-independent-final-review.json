@@ -1,0 +1,64 @@
+{
+  "scope": "Independent final read-only recovery review. No owned implementation files changed.",
+  "findingsFixed": [
+    "V104 interruption double count",
+    "V104 valid 512-point schema capacity",
+    "grounded wide cargo overlapping conserved actor/checkpoint/remote last",
+    "late storage readback acknowledgment via real Justice interval left Hub paused"
+  ],
+  "openQualifiedDefects": [],
+  "checks": [
+    {
+      "name": "permanent-model-hub-matrix",
+      "tests": 27,
+      "pass": 27,
+      "fail": 0,
+      "command": "node --experimental-test-isolation=none --test tests/homeworld-geometry-recovery-v112.test.mjs tests/homeworld-geometry-recovery-integration-v112.test.mjs tests/homeworld-geometry-recovery-matrix-v112.test.mjs"
+    },
+    {
+      "name": "independent-hub-IO",
+      "scenarios": 9,
+      "result": "/tmp/v112-geometry-hub-independent-review-result.json"
+    },
+    {
+      "name": "real-Justice-late-ack",
+      "scenarios": 1,
+      "result": "/tmp/v112-geometry-ack-justice-review-result.json"
+    },
+    {
+      "name": "real-Justice-negative-guards-retry",
+      "scenarios": 7,
+      "result": "/tmp/v112-geometry-ack-justice-negatives-final-result.json"
+    },
+    {
+      "name": "preview-without-submission",
+      "scenarios": 1,
+      "result": "/tmp/v112-geometry-preview-incoming-review-result.json"
+    },
+    {
+      "name": "schema-capacity512",
+      "scenarios": 1,
+      "constructedBoundary": true,
+      "result": "/tmp/v112-geometry-capacity-review-result.json"
+    },
+    {
+      "name": "played-cargo-placement-motor-sweep",
+      "plans": 18,
+      "result": "/tmp/v112-cargo-public-places-sweep-review-result.json",
+      "note": "Geometry-fix source snapshot 75a5017; subsequent patch only adds exact late-ack helpers."
+    },
+    {
+      "name": "independent-pure-late-ack-counterreview",
+      "assertions": 996,
+      "playedProposals": 8,
+      "ledgersCovered": 7,
+      "result": "/tmp/v112-geometry-late-ack-pure-review-result.json",
+      "pass": true
+    }
+  ],
+  "sourceSha256": {
+    "app/game/HomeworldHub.tsx": "07c2d6cbaf4829ef67172f17140c72b3f992042d72ba53297327db7b364df9a4",
+    "app/game/GameClient.tsx": "d5ba07b8dc20220f528739a2fc45fcd362c12e852daee7d5867953e0c430790c",
+    "app/game/systems/homeworldGeometryRecoveryV112.ts": "da3ed465f312e7278384ab614b4c57323ba2e2dd90740205e1cf4ec9c677cbf3"
+  }
+}

@@ -1,0 +1,81 @@
+.panel {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  min-height: 0;
+  max-height: min(68dvh, 600px);
+  margin: 8px;
+  border: 1px solid #ad8e52;
+  border-radius: 8px;
+  background: #1e2524;
+  color: #eee3cc;
+  font-size: 14px;
+  line-height: 1.5;
+  overflow: hidden;
+}
+
+.heading {
+  display: grid;
+  gap: 3px;
+  padding: 13px 16px 10px;
+  border-bottom: 1px solid #ad8e5240;
+}
+
+.heading small { color: #c1ac81; font-size: 11px; letter-spacing: .07em; text-transform: uppercase; }
+.heading strong { font-size: 18px; }
+.body { min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: 12px 16px; }
+.body p { margin: 0 0 10px; }
+.body p:last-child { margin-bottom: 0; }
+.details { margin: 0 0 12px; border: 1px solid #ad8e5250; border-radius: 5px; }
+.details summary { min-height: 44px; padding: 11px; cursor: pointer; color: #eed3a4; }
+.details summary:focus-visible { outline: 3px solid #eed3a4; outline-offset: -3px; }
+.details ul { display: grid; gap: 10px; margin: 0; padding: 4px 12px 12px; list-style: none; }
+.details li { display: grid; gap: 2px; }
+.details li span, .note { color: #c4bdad; }
+.details p { padding: 0 12px 12px; }
+.status { border-left: 2px solid #c7a265; padding-left: 10px; }
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px 16px;
+  border-top: 1px solid #ad8e5240;
+  background: #1a211f;
+}
+
+.actions button {
+  flex: 1 1 220px;
+  min-height: 44px;
+  max-width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #c7a265;
+  border-radius: 6px;
+  background: #423421;
+  color: #fff0ce;
+  font: inherit;
+  line-height: 1.4;
+  text-align: center;
+  cursor: pointer;
+}
+
+.actions .secondary { border-color: #6f796e; background: #25312d; color: #d8dfd6; }
+
+@media (max-width: 480px) {
+  .panel { margin: 6px; max-height: 68dvh; }
+  .heading, .body { padding-left: 12px; padding-right: 12px; }
+  .actions { padding: 10px 12px; }
+}
+
+.actions button:hover:not(:disabled) {
+  background: #58432a;
+}
+
+.actions button:focus-visible {
+  outline: 3px solid #fff0ce;
+  outline-offset: 3px;
+}
+
+.actions button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}

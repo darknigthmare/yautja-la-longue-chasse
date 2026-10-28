@@ -16,7 +16,9 @@ import { PIT_WORKBOOK_COMBAT_RECIPE_V105 } from './systems/pitWorkbookCombatV105
 import {PIT_WORKBOOK_COMBAT_RECIPE_V107} from './systems/pitWorkbookCombatV107';
 import {PIT_WORKBOOK_COMBAT_RECIPE_V109, PIT_WORKBOOK_FORWARD_THROW_V109, getPitWorkbookThrowPhaseV109} from './systems/pitWorkbookCombatV109';
 import {getPitWorkbookForwardThrowSupportV109, getPitForwardThrowArtReadinessV109} from './pitWorkbookRegistryV109';
-import {pitForwardThrowInputV109, pitForwardThrowCpuInputV109} from './systems/pitForwardThrowControlsV109';
+import {pitThrowInputV112, pitThrowCpuInputV112} from './systems/pitThrowControlsV112';
+import {PIT_WORKBOOK_COMBAT_RECIPE_V112, PIT_WORKBOOK_BACKWARD_THROW_V112, getPitWorkbookBackwardThrowPhaseV112} from './systems/pitWorkbookCombatV112';
+import {getPitWorkbookBackwardThrowSupportV112, getPitBackwardThrowArtReadinessV112} from './pitWorkbookRegistryV112';
 import {drawPitWorkbookDeviceBodyV107, drawPitWorkbookDeviceV107, loadPitWorkbookDeviceArtV107, type PitWorkbookDeviceArtV107} from './pitWorkbookDeviceRenderingV107';
 import {getPitWorkbookVariantCapabilitiesV107, guardPitWorkbookVariantCapabilityV107} from './pitWorkbookVariantCapabilitiesV107';
 import {preparePitWorkbookCampaignCombatV108,type PitWorkbookCarryV108} from './systems/pitWorkbookCampaignV108';
@@ -433,7 +435,7 @@ function cpuInput(state: PitCombatState): PitInput {
   const cpu = state.fighters[1];
   const opponent = state.fighters[0];
   if (state.phase !== "round") return EMPTY_INPUT;
-  const forwardThrowResponse = pitForwardThrowCpuInputV109(state);
+  const forwardThrowResponse = pitThrowCpuInputV112(state);
   if (forwardThrowResponse) return forwardThrowResponse;
   if (
     cpu.phase === "hitstun" &&
@@ -469,7 +471,7 @@ function cpuInput(state: PitCombatState): PitInput {
     return { resource: true };
   }
 
-  if ((cpu.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V106 || (cpu.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V107 || cpu.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V109)) && distance > 150 && distance < 600 &&
+  if ((cpu.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V106 || (cpu.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V107 || (cpu.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V109 || cpu.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V112))) && distance > 150 && distance < 600 &&
     state.frame % 97 === 0 && cpu.traque >= (cpu.definitionId === 'feral-hunter' ? 300 : 250)) return {workbookAction: 'projectile'};
 
   if (distance > 116) {
@@ -485,7 +487,7 @@ function cpuInput(state: PitCombatState): PitInput {
   }
   if (state.frame % 83 === 0) return { throw: true };
   if (state.frame % 61 === 0) {
-    if ((cpu.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V106 || (cpu.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V107 || cpu.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V109))) {
+    if ((cpu.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V106 || (cpu.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V107 || (cpu.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V109 || cpu.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V112)))) {
       if (opponent.phase === 'startup' && cpu.definitionId === 'feral-hunter' && cpu.traque >= 150) return {workbookAction: 'shield'};
       if (opponent.phase === 'startup' && cpu.definitionId === 'scar' && cpu.traque >= 100) return {workbookAction: 'counter'};
       return {workbookAction: 'contact'};
@@ -519,7 +521,7 @@ function eventLabel(event: PitCombatEvent, state: PitCombatState, engineVersion:
     ).toUpperCase();
   }
   if (event.type === "throw-start") return "SAISIE RITUELLE";
-  if (event.type === "throw-caught") return state.sourceThrowV109?.techEligible === false
+  if (event.type === "throw-caught") return (state.sourceThrowV112 ?? state.sourceThrowV109)?.techEligible === false
     ? "RÉCUPÉRATION PUNIE · SAISIE" : "SAISI · PROJECTION POUR DÉCHOPPER";
   if (event.type === "throw-tech") return "DÉCHOPPE RÉUSSIE";
   if (event.type === "hit") return `${event.combo > 1 ? `${event.combo} COUPS · ` : ""}${event.damage} DÉGÂTS`;
@@ -760,6 +762,8 @@ function drawArena(
   canvas.dataset.pitStageTransferFrame = String(state.stageJourney?.transferFrame ?? "");
   canvas.dataset.pitFighterPositions = JSON.stringify(state.fighters.map(fighter => ({ x: Number(fighter.x.toFixed(2)), y: Number(fighter.y.toFixed(2)) })));
   canvas.dataset.pitForwardThrowV109 = JSON.stringify(state.sourceThrowV109 ?? null);
+  canvas.dataset.pitBackwardThrowV112 = JSON.stringify(state.sourceThrowV112 ?? null);
+  canvas.dataset.pitFighterFacingsV112 = JSON.stringify(state.fighters.map(fighter => fighter.facing));
   canvas.dataset.pitSimulationFrameV109 = String(state.frame);
   canvas.dataset.pitFighterHealthV109 = JSON.stringify(state.fighters.map(fighter => fighter.health));
   canvas.dataset.pitFighterMeterV109 = JSON.stringify(state.fighters.map(fighter => fighter.traque));
@@ -1162,7 +1166,7 @@ function combatFighterArtStatuses(bank: PitCombatBitmapArtBank | null, combat: P
 }
 
 function nativeWorkbookPresentationClockV105(view: PitRoundPresentationView, combat: PitCombatState | null, art: PitCombatBitmapArtBank | null): PitRoundPresentationView {
-  if (!combat || (combat.rules.normalMoves !== PIT_WORKBOOK_COMBAT_RECIPE_V105 && combat.rules.normalMoves !== PIT_WORKBOOK_COMBAT_RECIPE_V106 && (combat.rules.normalMoves !== PIT_WORKBOOK_COMBAT_RECIPE_V107 && combat.rules.normalMoves !== PIT_WORKBOOK_COMBAT_RECIPE_V109))) return view;
+  if (!combat || (combat.rules.normalMoves !== PIT_WORKBOOK_COMBAT_RECIPE_V105 && combat.rules.normalMoves !== PIT_WORKBOOK_COMBAT_RECIPE_V106 && (combat.rules.normalMoves !== PIT_WORKBOOK_COMBAT_RECIPE_V107 && (combat.rules.normalMoves !== PIT_WORKBOOK_COMBAT_RECIPE_V109 && combat.rules.normalMoves !== PIT_WORKBOOK_COMBAT_RECIPE_V112)))) return view;
   let duration: number | null = null;
   if (view.phase === 'intro-left' || view.phase === 'intro-right') {
     duration = pitNativePresentationDurationV105(art?.spriteSheets, combat.fighters[view.fighterSlot ?? 0], 'intro');
@@ -1255,6 +1259,8 @@ export default function PitCanvas({
   const [workbookCombatEnabledV106, setWorkbookCombatEnabledV106] = useState(false);
   const [workbookCombatEnabledV107, setWorkbookCombatEnabledV107] = useState(false);
   const [workbookCombatEnabledV109, setWorkbookCombatEnabledV109] = useState(false);
+  const [workbookCombatEnabledV112, setWorkbookCombatEnabledV112] = useState(false);
+  const workbookBackwardThrowsRefV112 = useRef<[boolean, boolean]>([false, false]);
   const workbookThrowsRefV109 = useRef<[boolean, boolean]>([false, false]);
   const [workbookDeviceArtV107, setWorkbookDeviceArtV107] = useState<PitWorkbookDeviceArtV107 | null>(null);
   const [workbookDeviceRetryV107, setWorkbookDeviceRetryV107] = useState(0);
@@ -1270,6 +1276,7 @@ export default function PitCanvas({
   const [tauntVariantsV105, setTauntVariantsV105] = useState<[1 | 2, 1 | 2]>([1, 1]);
   const nextTauntVariantsRefV105 = useRef<[1 | 2, 1 | 2]>([1, 1]);
   const workbookNormalsAvailable = ownsPitWorkbookNormalsV104(leftId, leftVariantId) || ownsPitWorkbookNormalsV104(rightId, rightVariantId);
+  const workbookThrowsAvailableV112 = getPitWorkbookBackwardThrowSupportV112(leftId, rightId, [leftVariantId, rightVariantId]).supported;
   const workbookThrowsAvailableV109 = getPitWorkbookForwardThrowSupportV109(leftId, rightId, [leftVariantId, rightVariantId]).supported;
   const [houndVariantId, setHoundVariantId] = useState<PitHoundVariantId>('tracker-hound');
   const [companionArt, setCompanionArt] = useState<PitCompanionArtBank | null>(null);
@@ -1302,9 +1309,9 @@ export default function PitCanvas({
   const renderedRightId = combat?.fighters[1].definitionId ?? rightId;
   const renderedLeftVariant = combat ? combat.fighters[0].variantId ?? null : leftVariantId;
   const renderedRightVariant = combat ? combat.fighters[1].variantId ?? null : rightVariantId;
-  const renderedNormalMoves = combat ? combat.rules.normalMoves : narrativeEncounter?.normalMoves ?? (workbookCombatEnabledV109 && workbookThrowsAvailableV109 && (mode === 'cpu' || mode === 'local' || mode === 'training') ? PIT_WORKBOOK_COMBAT_RECIPE_V109 : (workbookNormalsEnabled || workbookCombatEnabledV105 || workbookCombatEnabledV106 || workbookCombatEnabledV107) && workbookNormalsAvailable &&
+  const renderedNormalMoves = combat ? combat.rules.normalMoves : narrativeEncounter?.normalMoves ?? (workbookCombatEnabledV112 && workbookThrowsAvailableV112 && (mode === 'cpu' || mode === 'local' || mode === 'training') ? PIT_WORKBOOK_COMBAT_RECIPE_V112 : workbookCombatEnabledV109 && workbookThrowsAvailableV109 && (mode === 'cpu' || mode === 'local' || mode === 'training') ? PIT_WORKBOOK_COMBAT_RECIPE_V109 : (workbookNormalsEnabled || workbookCombatEnabledV105 || workbookCombatEnabledV106 || workbookCombatEnabledV107) && workbookNormalsAvailable &&
     (mode === 'cpu' || mode === 'local' || mode === 'training') ? workbookCombatEnabledV107 ? PIT_WORKBOOK_COMBAT_RECIPE_V107 : workbookCombatEnabledV106 ? PIT_WORKBOOK_COMBAT_RECIPE_V106 : workbookCombatEnabledV105 ? PIT_WORKBOOK_COMBAT_RECIPE_V105 : PIT_WORKBOOK_NORMALS_RECIPE_V104 : undefined);
-  const workbookThrowArtReadinessV109 = renderedNormalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V109
+  const workbookThrowArtReadinessV109 = renderedNormalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V112 ? getPitBackwardThrowArtReadinessV112(fighterArt?.spriteSheets) : renderedNormalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V109
     ? getPitForwardThrowArtReadinessV109(fighterArt?.spriteSheets) : 'not-required';
   useEffect(() => {
     const controller = new AbortController();
@@ -1321,15 +1328,17 @@ export default function PitCanvas({
   }, [workbookConclusionsEnabledV107, renderedLeftId, renderedRightId, renderedLeftVariant, renderedRightVariant, workbookConclusionRetryV107]);
 
   useEffect(() => {
-    if ((renderedNormalMoves !== PIT_WORKBOOK_COMBAT_RECIPE_V107 && renderedNormalMoves !== PIT_WORKBOOK_COMBAT_RECIPE_V109)) return;
+    if ((renderedNormalMoves !== PIT_WORKBOOK_COMBAT_RECIPE_V107 && (renderedNormalMoves !== PIT_WORKBOOK_COMBAT_RECIPE_V109 && renderedNormalMoves !== PIT_WORKBOOK_COMBAT_RECIPE_V112))) return;
     const controller = new AbortController();
     void loadPitWorkbookDeviceArtV107(controller.signal).then(art => {if (!controller.signal.aborted) setWorkbookDeviceArtV107(art);});
     return () => controller.abort();
   }, [renderedNormalMoves, workbookDeviceRetryV107]);
 
   const [combatNotice, setCombatNotice] = useState({ label: "CHOISIS LE RITUEL", frame: 0 });
-  const announcement = combat?.sourceThrowV109 && combat.sourceThrowV109.age >= PIT_WORKBOOK_FORWARD_THROW_V109.techTicks &&
-    combat.sourceThrowV109.age < PIT_WORKBOOK_FORWARD_THROW_V109.techTicks + PIT_WORKBOOK_FORWARD_THROW_V109.flightTicks - 1
+  const activeSourceThrowV112 = combat?.sourceThrowV112 ?? combat?.sourceThrowV109;
+  const activeSourceThrowTimingV112 = combat?.sourceThrowV112 ? PIT_WORKBOOK_BACKWARD_THROW_V112 : PIT_WORKBOOK_FORWARD_THROW_V109;
+  const announcement = activeSourceThrowV112 && activeSourceThrowV112.age >= activeSourceThrowTimingV112.techTicks &&
+    activeSourceThrowV112.age < activeSourceThrowTimingV112.techTicks + activeSourceThrowTimingV112.flightTicks - 1
     ? 'PROJECTION EN COURS' : combatNotice.label;
   const [ariaAnnouncement, setAriaAnnouncement] = useState("Choisissez le rituel de combat.");
   const [replayNotice, setReplayNotice] = useState("");
@@ -1456,7 +1465,7 @@ export default function PitCanvas({
   const lifecyclePresentationV93 = useMemo(
     () => {
       const view = pitLifecyclePresentationViewV93(roundPresentation, combat, finisherV80, lifecycleV93);
-      return (combat?.rules.normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V105 || combat?.rules.normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V106 || (combat?.rules.normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V107 || combat?.rules.normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V109)) ? {...view, fighterTauntVariants: tauntVariantsV105} : view;
+      return (combat?.rules.normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V105 || combat?.rules.normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V106 || (combat?.rules.normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V107 || (combat?.rules.normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V109 || combat?.rules.normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V112))) ? {...view, fighterTauntVariants: tauntVariantsV105} : view;
     },
     [roundPresentation, combat, finisherV80, lifecycleV93, tauntVariantsV105],
   );
@@ -1503,6 +1512,7 @@ export default function PitCanvas({
     objectiveSessionRefV107.current = null; setObjectiveSessionV107(null);
     workbookCommandsRefV105.current = [undefined, undefined];
     workbookThrowsRefV109.current = [false, false];
+    workbookBackwardThrowsRefV112.current = [false, false];
     setTauntVariantsV105([1, 1]);
     nextTauntVariantsRefV105.current = [1, 1];
     const lifecycle = createPitLifecyclePresentationV93();
@@ -1540,6 +1550,7 @@ export default function PitCanvas({
     pressedKeysRef.current.clear();
     workbookCommandsRefV105.current = [undefined, undefined];
     workbookThrowsRefV109.current = [false, false];
+    workbookBackwardThrowsRefV112.current = [false, false];
     combatGamepadReadyRef.current = [false, false];
     touchInputsRef.current.forEach((entries) => entries.clear());
   }, []);
@@ -1846,7 +1857,7 @@ export default function PitCanvas({
   ) => {
     const playerVariant = playerId === leftId ? leftVariantId : null;
     const opponentVariant = opponentId === rightId ? rightVariantId : null;
-    const normalMoves = narrativeEncounter?.normalMoves ?? (workbookCombatEnabledV109 && getPitWorkbookForwardThrowSupportV109(playerId, opponentId, [playerVariant, opponentVariant]).supported && (nextMode === 'cpu' || nextMode === 'local' || nextMode === 'training') ? PIT_WORKBOOK_COMBAT_RECIPE_V109 :
+    const normalMoves = narrativeEncounter?.normalMoves ?? (workbookCombatEnabledV112 && getPitWorkbookBackwardThrowSupportV112(playerId, opponentId, [playerVariant, opponentVariant]).supported && (nextMode === 'cpu' || nextMode === 'local' || nextMode === 'training') ? PIT_WORKBOOK_COMBAT_RECIPE_V112 : workbookCombatEnabledV109 && getPitWorkbookForwardThrowSupportV109(playerId, opponentId, [playerVariant, opponentVariant]).supported && (nextMode === 'cpu' || nextMode === 'local' || nextMode === 'training') ? PIT_WORKBOOK_COMBAT_RECIPE_V109 :
       (workbookNormalsEnabled || workbookCombatEnabledV105 || workbookCombatEnabledV106 || workbookCombatEnabledV107) &&
       (nextMode === 'cpu' || nextMode === 'local' || nextMode === 'training') &&
       (ownsPitWorkbookNormalsV104(playerId, playerVariant) || ownsPitWorkbookNormalsV104(opponentId, opponentVariant))
@@ -1857,10 +1868,10 @@ export default function PitCanvas({
       setAriaAnnouncement('Les images de la conclusion sont encore en chargement.');
       return;
     }
-    if (normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V109 && getPitForwardThrowArtReadinessV109(fighterArt?.spriteSheets) !== 'ready') {
+    if ((normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V109 && getPitForwardThrowArtReadinessV109(fighterArt?.spriteSheets) !== 'ready') || (normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V112 && getPitBackwardThrowArtReadinessV112(fighterArt?.spriteSheets) !== 'ready')) {
       setAriaAnnouncement('Les dessins de saisie et de chute sont encore en chargement.'); return;
     }
-    if ((normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V107 || normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V109)) {
+    if ((normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V107 || (normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V109 || normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V112))) {
       const selections = [{id:playerId, variant:playerVariant}, {id:opponentId, variant:opponentVariant}];
       const refused = selections.some(selection => (selection.id === 'scar' || selection.id === 'feral-hunter') &&
         (!getPitWorkbookVariantCapabilitiesV107(selection.id, selection.variant).sourceRecipeOwnershipAllowed ||
@@ -1946,7 +1957,7 @@ export default function PitCanvas({
     );
     changeCombat(next);
     launchWorkbookObjectiveV107(next);
-  }, [setAnnouncement, beginRecording, changeCombat, clearTrainingActivity, resetLiveInputs, stageJourneyEnabled, leftId, rightId, leftVariantId, rightVariantId, houndVariantId, workbookNormalsEnabled, workbookCombatEnabledV105, workbookCombatEnabledV106, workbookCombatEnabledV107, workbookCombatEnabledV109, workbookDeviceArtV107, fighterArt, launchWorkbookObjectiveV107, narrativeEncounter, workbookConclusionsEnabledV107, workbookConclusionArtReadyV107]);
+  }, [setAnnouncement, beginRecording, changeCombat, clearTrainingActivity, resetLiveInputs, stageJourneyEnabled, leftId, rightId, leftVariantId, rightVariantId, houndVariantId, workbookNormalsEnabled, workbookCombatEnabledV105, workbookCombatEnabledV106, workbookCombatEnabledV107, workbookCombatEnabledV109, workbookCombatEnabledV112, workbookDeviceArtV107, fighterArt, launchWorkbookObjectiveV107, narrativeEncounter, workbookConclusionsEnabledV107, workbookConclusionArtReadyV107]);
 
   const submitRunTransition = useCallback((settlement: PendingPitRunTransition) => {
     pendingRunTransitionRef.current = settlement;
@@ -2830,8 +2841,8 @@ export default function PitCanvas({
     ? 'loading' : feralNativeArtStatuses.includes('ready') ? 'ready' : 'not-required';
   const matchAssetsPending = combat !== null && (
     houndArtPending || falconerArtPending || feralNativeArtPending ||
-    (combat.rules.normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V109 && workbookThrowArtReadinessV109 !== 'ready') ||
-    ((combat.rules.normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V107 || combat.rules.normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V109) && !workbookDeviceArtV107?.ready) ||
+    ((combat.rules.normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V109 || combat.rules.normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V112) && workbookThrowArtReadinessV109 !== 'ready') ||
+    ((combat.rules.normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V107 || (combat.rules.normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V109 || combat.rules.normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V112)) && !workbookDeviceArtV107?.ready) ||
     suppliedFighterArtFailed || (objectiveSessionV107 !== null && (!workbookConclusionArtReadyV107 || !workbookConclusionActorsReadyV107)) ||
     (combat.rules.stageJourney && !journeyAssetsReady) ||
     !arenaArt || arenaArt.cancelled || arenaArt.arenaId !== sceneArenaId || arenaArt.unavailable || arenaArt.failedPaths.size > 0 ||
@@ -3048,13 +3059,17 @@ export default function PitCanvas({
           );
           const sourceFighters = current.fighters;
           const sourceCommand = (slot: 0 | 1, input: PitInput): PitInput => {
-            if (sourceFighters[slot].normalMovesRecipe !== PIT_WORKBOOK_COMBAT_RECIPE_V105 && sourceFighters[slot].normalMovesRecipe !== PIT_WORKBOOK_COMBAT_RECIPE_V106 && (sourceFighters[slot].normalMovesRecipe !== PIT_WORKBOOK_COMBAT_RECIPE_V107 && sourceFighters[slot].normalMovesRecipe !== PIT_WORKBOOK_COMBAT_RECIPE_V109)) return input;
+            if (sourceFighters[slot].normalMovesRecipe !== PIT_WORKBOOK_COMBAT_RECIPE_V105 && sourceFighters[slot].normalMovesRecipe !== PIT_WORKBOOK_COMBAT_RECIPE_V106 && (sourceFighters[slot].normalMovesRecipe !== PIT_WORKBOOK_COMBAT_RECIPE_V107 && (sourceFighters[slot].normalMovesRecipe !== PIT_WORKBOOK_COMBAT_RECIPE_V109 && sourceFighters[slot].normalMovesRecipe !== PIT_WORKBOOK_COMBAT_RECIPE_V112))) return input;
             const player = slot === 0 ? 1 : 2;
             const raw = new Set([...pressedKeysRef.current, ...touchInputsRef.current[slot]]);
             const held = (suffix: 'AttackLight'|'AttackHeavy'|'AttackMedium'|'AttackTechnique') => controlBindings[`pit.p${player}${suffix}`].some(code => raw.has(code));
             const pad = combatGamepadReadyRef.current[slot] ? gamepads[slot] : null;
-            const forwardThrowInput = pitForwardThrowInputV109(input, {recipe: sourceFighters[slot].normalMovesRecipe,
-              player, codes: raw, bindings: controlBindings, pad, requested: workbookThrowsRefV109.current[slot]});
+            const backwardRequested = workbookBackwardThrowsRefV112.current[slot] && sourceFighters[slot].normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V112;
+            const sourceInput = backwardRequested ? {...input, left: sourceFighters[slot].facing === 1, right: sourceFighters[slot].facing === -1}
+              : workbookThrowsRefV109.current[slot] && sourceFighters[slot].normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V112 ? {...input, left: false, right: false} : input;
+            const forwardThrowInput = pitThrowInputV112(sourceInput, {recipe: sourceFighters[slot].normalMovesRecipe,
+              player, codes: raw, bindings: controlBindings, pad, requested: workbookThrowsRefV109.current[slot] || backwardRequested});
+            workbookBackwardThrowsRefV112.current[slot] = false;
             workbookThrowsRefV109.current[slot] = false;
             const technique = held('AttackTechnique') || Boolean(pad?.buttons[5]?.pressed);
             const equipment = technique && (held('AttackHeavy') || Boolean(pad?.buttons[1]?.pressed));
@@ -3599,7 +3614,7 @@ export default function PitCanvas({
           onImposedNavigate={mode === "descent" && !previewDescentRun?.selectedNodeId ? direction => setDescentOptionIndex(index => Math.max(0, Math.min((previewDescentFloor?.options.length ?? 1) - 1, index + direction))) : undefined}
           onLaunch={(mode === "circuit" || mode === "descent") && runTransitionPersistence.status === "failed" ? retryRunTransition : startMatch}
           onExit={onExit} launchLabel={selectionLaunchLabel}
-          launchDisabled={(renderedNormalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V109 && workbookThrowArtReadinessV109 !== 'ready') || ((renderedNormalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V107 || renderedNormalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V109) && !workbookDeviceArtV107?.ready) || Boolean(selectedJourney && !journeyAssetsReady) || runTransitionPersistence.status === "pending" || ((mode === "cpu" || mode === "local" || mode === "training") && leftId === rightId) || (workbookConclusionsEnabledV107 && workbookObjectiveAvailableV107 && !workbookConclusionArtReadyV107)}
+          launchDisabled={((renderedNormalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V109 || renderedNormalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V112) && workbookThrowArtReadinessV109 !== 'ready') || ((renderedNormalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V107 || (renderedNormalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V109 || renderedNormalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V112)) && !workbookDeviceArtV107?.ready) || Boolean(selectedJourney && !journeyAssetsReady) || runTransitionPersistence.status === "pending" || ((mode === "cpu" || mode === "local" || mode === "training") && leftId === rightId) || (workbookConclusionsEnabledV107 && workbookObjectiveAvailableV107 && !workbookConclusionArtReadyV107)}
           reducedMotion={reducedCameraMotion} highContrast={highContrast}
         />
 
@@ -3635,7 +3650,7 @@ export default function PitCanvas({
               <label><input type="checkbox" data-pit-workbook-objective-v107 checked={workbookConclusionsEnabledV107}
                 disabled={!workbookObjectiveAvailableV107 || Boolean(selectedJourney)} onChange={event => {
                   setWorkbookConclusionsEnabledV107(event.target.checked);
-                  if (event.target.checked) {setWorkbookCombatEnabledV106(true); setWorkbookCombatEnabledV107(false); setWorkbookCombatEnabledV109(false); setWorkbookCombatEnabledV105(false); setWorkbookNormalsEnabled(false);}
+                  if (event.target.checked) {setWorkbookCombatEnabledV106(true); setWorkbookCombatEnabledV107(false); setWorkbookCombatEnabledV109(false); setWorkbookCombatEnabledV112(false); setWorkbookCombatEnabledV105(false); setWorkbookNormalsEnabled(false);}
                 }} /> Duel alternatif de Scar · récupérer la balise</label>
               <p>Scar et Feral, apparences d’origine : une balise rouge est placée au sol avant les entrées. Scar peut conclure avec sa lance ou retirer le dispositif d’épreuve puis récupérer la balise. L’objet et son propriétaire restent visibles au bilan ; aucun gain de campagne.</p>
               {!workbookObjectiveAvailableV107 && <small>Choisissez Scar et Feral dans leurs apparences d’origine pour cet objectif.</small>}
@@ -3649,24 +3664,30 @@ export default function PitCanvas({
               </>}
             </aside>}
             {(mode === 'cpu' || mode === 'local' || mode === 'training') && workbookNormalsAvailable && <aside className={styles.journeyChoice} aria-label="Gestes Feral et Scar du classeur">
-              <label><input type="checkbox" data-pit-workbook-normals-v104 checked={workbookNormalsEnabled} onChange={event => {setWorkbookNormalsEnabled(event.target.checked); if(event.target.checked) {setWorkbookCombatEnabledV105(false); setWorkbookCombatEnabledV106(false); setWorkbookCombatEnabledV107(false); setWorkbookCombatEnabledV109(false);}}} /> Gestes du classeur · Feral et Scar</label>
+              <label><input type="checkbox" data-pit-workbook-normals-v104 checked={workbookNormalsEnabled} onChange={event => {setWorkbookNormalsEnabled(event.target.checked); if(event.target.checked) {setWorkbookCombatEnabledV105(false); setWorkbookCombatEnabledV106(false); setWorkbookCombatEnabledV107(false); setWorkbookCombatEnabledV109(false); setWorkbookCombatEnabledV112(false);}}} /> Gestes du classeur · Feral et Scar</label>
               <p>Neuf attaques par combattant dans leur apparence BODY d’origine : L / M / H debout, accroupi ou en saut. Préparation, contact, récupération, dégâts de base et hauteur de garde suivent le classeur. Les portées, les réactions et les limites de combo conservent les règles du duel. Cette recette est enregistrée dans les relectures.</p>
-              <label><input type="checkbox" data-pit-workbook-combat-v105 checked={workbookCombatEnabledV105} onChange={event => {setWorkbookCombatEnabledV105(event.target.checked); if(event.target.checked) {setWorkbookNormalsEnabled(false); setWorkbookCombatEnabledV106(false); setWorkbookCombatEnabledV107(false); setWorkbookCombatEnabledV109(false);}}} /> Gestes étendus du classeur · Feral et Scar</label>
+              <label><input type="checkbox" data-pit-workbook-combat-v105 checked={workbookCombatEnabledV105} onChange={event => {setWorkbookCombatEnabledV105(event.target.checked); if(event.target.checked) {setWorkbookNormalsEnabled(false); setWorkbookCombatEnabledV106(false); setWorkbookCombatEnabledV107(false); setWorkbookCombatEnabledV109(false); setWorkbookCombatEnabledV112(false);}}} /> Gestes étendus du classeur · Feral et Scar</label>
               {workbookCombatEnabledV105 && <p>S désigne la technique, M la frappe moyenne et H la frappe lourde. Normales, pas de rupture (avant + M), préparation d’arme (S + H), spécial de contact (raccourci S + M), entrées, issues et deux provocations. Les techniques historiques restent sur S. Préparation : 20/0/20, sans dégâts. Coût du contact : Scar 0 %, Feral 10 % de Traque. Scar : parade frontale dédiée (22+S), 10 %, contre les frappes de contact seulement. Les boutons dédiés exécutent directement la commande source.</p>}
               {workbookCombatEnabledV105 && [{id:leftId,variant:leftVariantId},{id:rightId,variant:rightVariantId}].filter(selection => ownsPitWorkbookNormalsV104(selection.id,selection.variant)).map(selection => <p key={selection.id}>{PIT_FIGHTERS[selection.id].name} : {PIT_WORKBOOK_MOVES_V105.filter(move => move.fighterId === selection.id && (move.key === '6M' || move.key === 'EQUIP' || move.key === (selection.id === 'scar' ? 'S1' : 'S3') || (selection.id === 'scar' && move.key === 'S4'))).map(move => `${move.key} · ${move.command} · ${move.startup}/${move.active}/${move.recovery} · base ${move.damage} · ${move.costPercent} %`).join(' ; ')}</p>)}
-              <label><input type="checkbox" data-pit-workbook-combat-v106 checked={workbookCombatEnabledV106} onChange={event => {setWorkbookCombatEnabledV106(event.target.checked); setWorkbookCombatEnabledV107(false); setWorkbookCombatEnabledV109(false); if(event.target.checked) {setWorkbookNormalsEnabled(false); setWorkbookCombatEnabledV105(false);}}} /> Projectiles et gestes du classeur · Feral et Scar</label>
+              <label><input type="checkbox" data-pit-workbook-combat-v106 checked={workbookCombatEnabledV106} onChange={event => {setWorkbookCombatEnabledV106(event.target.checked); setWorkbookCombatEnabledV107(false); setWorkbookCombatEnabledV109(false); setWorkbookCombatEnabledV112(false); if(event.target.checked) {setWorkbookNormalsEnabled(false); setWorkbookCombatEnabledV105(false);}}} /> Projectiles et gestes du classeur · Feral et Scar</label>
               {workbookCombatEnabledV106 && <p>Les techniques partent avec une commande directionnelle suivie de S, ou avec leur bouton dédié. Avant et arrière suivent votre orientation : 236 = bas, diagonale avant, avant ; 623 = avant, bas, diagonale avant ; 214 = bas, diagonale arrière, arrière ; 22 = bas deux fois. Feral : trois carreaux vers le point acquis au départ (236+S, 30 % de Traque), bouclier frontal puis coup de bord (214+S, 15 %), lance scindée (623+S, 10 %). Scar : allonge (236+S), plasma haut rectiligne (623+S, 25 %) et parade de contact frontale (22+S, 10 %). Les deux signatures coûtent 100 % : 236236+S. Leur ouverture doit toucher sans être gardée pour déclencher la suite et son cadrage bref ; les blessures sont conservées. Avant+M déclenche le pas de rupture ; S+H prépare l’arme.</p>}
               {workbookNormalsEnabled && [{id: leftId, variant: leftVariantId}, {id: rightId, variant: rightVariantId}].filter(selection => ownsPitWorkbookNormalsV104(selection.id, selection.variant)).map((selection, slot) => <div key={selection.id + slot}><strong>{PIT_FIGHTERS[selection.id].name} · apparence BODY</strong><ul>{PIT_WORKBOOK_NORMALS_V104.filter(move => move.fighterId === selection.id).map(move => <li key={move.key}>{move.key} · {move.startup}/{move.active}/{move.recovery} images · base {move.damage} · {move.hitLevel === 'high' ? 'haut' : move.hitLevel === 'low' ? 'bas' : 'milieu'}{move.antiAir ? ' / anti-air' : ''}</li>)}</ul></div>)}
-              <label><input type="checkbox" data-pit-workbook-combat-v107 checked={workbookCombatEnabledV107} onChange={event => {setWorkbookCombatEnabledV107(event.target.checked); setWorkbookCombatEnabledV109(false); if (event.target.checked) {setWorkbookNormalsEnabled(false); setWorkbookCombatEnabledV105(false); setWorkbookCombatEnabledV106(false);}}} /> Dispositifs indépendants · Feral et Scar</label>
+              <label><input type="checkbox" data-pit-workbook-combat-v107 checked={workbookCombatEnabledV107} onChange={event => {setWorkbookCombatEnabledV107(event.target.checked); setWorkbookCombatEnabledV109(false); setWorkbookCombatEnabledV112(false); if (event.target.checked) {setWorkbookNormalsEnabled(false); setWorkbookCombatEnabledV105(false); setWorkbookCombatEnabledV106(false);}}} /> Dispositifs indépendants · Feral et Scar</label>
               {workbookCombatEnabledV107 && <p>Les gestes précédents restent disponibles. Feral : une mine par round (22+S, 35 %), pose au tick 20, armement au tick 94 puis expiration au tick 154 ; un vrai coup peut la détruire. Scar : une étoile à cinq branches par round (214+S, 25 %), lâchée au tick 27. Préparer l’arme ne recharge aucun dispositif. L’étoile indépendante est une adaptation originale du dessin source ; les volumes et déplacements suivent les règles du duel.</p>}
               {workbookCombatEnabledV107 && !workbookDeviceArtV107?.ready && <p role={workbookDeviceArtV107?.failed ? 'alert' : 'status'}>{workbookDeviceArtV107?.failed ? 'Une image de dispositif manque.' : 'Chargement des dispositifs…'}{workbookDeviceArtV107?.failed && <button type="button" onClick={() => {setWorkbookDeviceArtV107(null); setWorkbookDeviceRetryV107(value => value + 1);}}>Réessayer les dispositifs</button>}</p>}
               {workbookThrowsAvailableV109 && <>
-                <label><input type="checkbox" data-pit-workbook-combat-v109 checked={workbookCombatEnabledV109} onChange={event => {setWorkbookCombatEnabledV109(event.target.checked); if (event.target.checked) {setWorkbookNormalsEnabled(false); setWorkbookCombatEnabledV105(false); setWorkbookCombatEnabledV106(false); setWorkbookCombatEnabledV107(false);}}} /> Projections avant · Feral ↔ Scar</label>
+                <label><input type="checkbox" data-pit-workbook-combat-v109 checked={workbookCombatEnabledV109} onChange={event => {setWorkbookCombatEnabledV109(event.target.checked); setWorkbookCombatEnabledV112(false); if (event.target.checked) {setWorkbookNormalsEnabled(false); setWorkbookCombatEnabledV105(false); setWorkbookCombatEnabledV106(false); setWorkbookCombatEnabledV107(false);}}} /> Projections avant · Feral ↔ Scar</label>
                 {workbookCombatEnabledV109 && <p>Dans leurs apparences d’origine, les deux chasseurs peuvent saisir un adversaire au sol devant eux avec L + M, Projection ou le bouton dédié. Préparation 8, contact 3, récupération 30 ; dégâts de base 110, sans coût de Traque. Après la saisie, relâchez puis réappuyez sur Projection pendant 8 ticks pour déchopper. Une saisie qui punit une attaque encore en récupération reste indéchoppable. Les gestes et les stocks limités des dispositifs restent disponibles. Les autres partenaires et apparences restent à réaliser.</p>}
                 {workbookCombatEnabledV109 && !workbookDeviceArtV107?.ready && <p role="status">Chargement des dispositifs…</p>}
                 {workbookCombatEnabledV109 && workbookThrowArtReadinessV109 !== 'ready' && <p role="status">Chargement des dessins de saisie et de chute… {workbookThrowArtReadinessV109 === 'missing' && <button type="button" data-pit-forward-throw-art-retry-v109 onClick={() => {setFighterArt(null); setFighterArtRetry(value => value + 1);}}>Réessayer les dessins du duo</button>}</p>}
               </>}
-              <small>{workbookCombatEnabledV109 ? 'Seule la projection avant du duo est raccordée. Les projections arrière et le suivi durable des armes restent à intégrer.' : workbookCombatEnabledV106 ? 'Les autres apparences et les projections gardent leurs règles de duel. La préparation ne restaure pas une arme perdue : le suivi durable des armes reste à intégrer.' : 'Projections, techniques sur S et autres apparences conservent leurs règles de duel. La préparation change la prise pendant son geste ; le suivi des armes perdues reste à intégrer.'}</small>
+              {workbookThrowsAvailableV112 && <>
+                <label><input type="checkbox" data-pit-workbook-combat-v112 checked={workbookCombatEnabledV112} onChange={event => {setWorkbookCombatEnabledV112(event.target.checked); if (event.target.checked) {setWorkbookNormalsEnabled(false); setWorkbookCombatEnabledV105(false); setWorkbookCombatEnabledV106(false); setWorkbookCombatEnabledV107(false); setWorkbookCombatEnabledV109(false);}}} /> Projections avant et arrière · Feral ↔ Scar</label>
+                {workbookCombatEnabledV112 && <p>Au sol, maintenez la direction opposée à l’adversaire avec L + M, ou utilisez Projection arrière. Préparation 10, contact 3, récupération 32 ; dégâts de base 110, sans coût de Traque. La cible réelle passe derrière le lanceur puis retombe sur un point libre. Une paroi trop proche empêche cette saisie. Relâchez puis réappuyez sur Projection pendant les 8 ticks de déchoppe. Les gestes précédents et leurs stocks limités sont conservés.</p>}
+                {workbookCombatEnabledV112 && workbookThrowArtReadinessV109 !== 'ready' && <p role="status">Chargement des dessins indépendants du duo… {workbookThrowArtReadinessV109 === 'missing' && <button type="button" data-pit-backward-throw-art-retry-v112 onClick={() => {setFighterArt(null); setFighterArtRetry(value => value + 1);}}>Réessayer les dessins du duo</button>}</p>}
+                {workbookCombatEnabledV112 && !workbookDeviceArtV107?.ready && <p role="status">Chargement des dispositifs…</p>}
+              </>}
+              <small>{workbookCombatEnabledV112 ? 'Ces deux projections concernent uniquement Feral et Scar dans leur apparence d’origine. Les autres partenaires, variantes et le suivi durable des armes restent à réaliser.' : workbookCombatEnabledV109 ? 'Seule la projection avant du duo est raccordée. Les projections arrière et le suivi durable des armes restent à intégrer.' : workbookCombatEnabledV106 ? 'Les autres apparences et les projections gardent leurs règles de duel. La préparation ne restaure pas une arme perdue : le suivi durable des armes reste à intégrer.' : 'Projections, techniques sur S et autres apparences conservent leurs règles de duel. La préparation change la prise pendant son geste ; le suivi des armes perdues reste à intégrer.'}</small>
             </aside>}
             {[{id:leftId,variant:leftVariantId},{id:rightId,variant:rightVariantId}].map((selection,slot) => {
               const capabilities = getPitWorkbookVariantCapabilitiesV107(selection.id,selection.variant);
@@ -3989,8 +4010,9 @@ export default function PitCanvas({
   const arenaDefinition = PIT_ARENAS[combat.arenaId];
   const activeJourneyDefinition = getPitStageJourneyDefinition(combat.stageJourney?.id);
   const seconds = Math.ceil(combat.roundFramesRemaining / PIT_TICK_RATE);
-  const forwardThrowTechRemainingV109 = combat.sourceThrowV109?.techEligible
-    ? Math.max(0, PIT_WORKBOOK_FORWARD_THROW_V109.techTicks - combat.sourceThrowV109.age) : 0;
+  const currentSourceCaptureV112 = combat.sourceThrowV112 ?? combat.sourceThrowV109;
+  const forwardThrowTechRemainingV109 = currentSourceCaptureV112?.techEligible
+    ? Math.max(0, PIT_WORKBOOK_FORWARD_THROW_V109.techTicks - currentSourceCaptureV112.age) : 0;
   const recentImpact = roundPresentation.phase === "fight" && combat.phase === "round" && impact && combat.frame - impact.frame < 8;
   const shake = presentationMotion.screenShake && recentImpact ? (combat.frame % 2 === 0 ? 5 : -5) : 0;
   const descentResourceFeedbackActive = Boolean(
@@ -4108,7 +4130,7 @@ export default function PitCanvas({
         {falconerArtFailed && <button type="button" data-pit-falconer-retry onClick={() => { setFalconerArt(null); setFalconerArtRetry(value => value + 1); }}>Réessayer le capteur</button>}
         {feralNativeArtFailed && <button type="button" data-pit-feral-art-retry onClick={() => { setFighterArt(null); setFighterArtRetry(value => value + 1); }}>Réessayer les animations de Feral</button>}
         {workbookThrowArtReadinessV109 === 'missing' && <button type="button" data-pit-forward-throw-art-retry-v109 onClick={() => {setFighterArt(null); setFighterArtRetry(value => value + 1);}}>Réessayer les dessins du duo</button>}
-        {(combat.rules.normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V107 || combat.rules.normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V109) && workbookDeviceArtV107?.failed && <button type="button" data-pit-device-art-retry-v107 onClick={() => {setWorkbookDeviceArtV107(null); setWorkbookDeviceRetryV107(value => value + 1);}}>Réessayer les dispositifs</button>}
+        {(combat.rules.normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V107 || (combat.rules.normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V109 || combat.rules.normalMoves === PIT_WORKBOOK_COMBAT_RECIPE_V112)) && workbookDeviceArtV107?.failed && <button type="button" data-pit-device-art-retry-v107 onClick={() => {setWorkbookDeviceArtV107(null); setWorkbookDeviceRetryV107(value => value + 1);}}>Réessayer les dispositifs</button>}
         {objectiveSessionV107 && workbookConclusionArtFailedV107 && <button type="button" onClick={() => {setWorkbookConclusionArtV107(null); setWorkbookConclusionRetryV107(value => value + 1);}}>Réessayer les conclusions</button>}
         {objectiveSessionV107 && !workbookConclusionActorsReadyV107 && <button type="button" onClick={() => {setFighterArt(null); setFighterArtRetry(value => value + 1);}}>Réessayer les deux acteurs</button>}
         {suppliedFighterArtFailed && <button type="button" onClick={() => setFighterArtRetry(value => value + 1)}>Réessayer les chasseurs</button>}
@@ -4132,13 +4154,14 @@ export default function PitCanvas({
             disabled={!tauntAvailableV93[slot]} onClick={() => requestPitTauntV93(slot as 0 | 1)}
             aria-label={`Provocation du joueur ${slot + 1}${tauntKeyCodesV93[slot] ? `, touche ${compactControlKeyLabel(tauntKeyCodesV93[slot])}` : ''}`}>
             J{slot + 1} · PROVOCATION{tauntKeyCodesV93[slot] ? ` · ${compactControlKeyLabel(tauntKeyCodesV93[slot])}` : ''}</button> : null)}
-        {!playbackReplay && combat.phase === 'round' && combat.fighters.map((fighter, slot) => (fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V105 || (fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V106 || (fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V107 || fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V109))) && (slot === 0 || mode === 'local')
+        {!playbackReplay && combat.phase === 'round' && combat.fighters.map((fighter, slot) => (fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V105 || (fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V106 || (fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V107 || (fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V109 || fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V112)))) && (slot === 0 || mode === 'local')
           ? <span key={`workbook-${slot}`} className={styles.workbookControlsV105} data-pit-workbook-controls={slot}>
-            {fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V109 && <button type="button" className={styles.utilityButton} data-pit-forward-throw-button-v109={slot} disabled={!simulationRunning || trainingPaused || (Boolean(combat.sourceThrowV109) && (!combat.sourceThrowV109!.techEligible || combat.sourceThrowV109!.attackerSlot === slot || combat.sourceThrowV109!.age >= PIT_WORKBOOK_FORWARD_THROW_V109.techTicks))} onClick={() => {workbookThrowsRefV109.current[slot as 0|1] = true; rootRef.current?.focus({preventScroll:true});}}>J{slot+1} · {combat.sourceThrowV109?.techEligible && combat.sourceThrowV109.attackerSlot !== slot && combat.sourceThrowV109.age < PIT_WORKBOOK_FORWARD_THROW_V109.techTicks ? 'DÉCHOPPER' : 'PROJECTION AVANT · L+M'}</button>}
-            {(fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V106 || (fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V107 || fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V109)) && <button type="button" className={styles.utilityButton} data-pit-workbook-action="projectile" disabled={!simulationRunning || trainingPaused || fighter.traque < (fighter.definitionId === 'feral-hunter' ? 300 : 250)} onClick={() => {workbookCommandsRefV105.current[slot as 0|1] = 'projectile'; rootRef.current?.focus({preventScroll:true});}}>J{slot+1} · {fighter.definitionId === 'feral-hunter' ? 'CARREAUX · 236+S' : 'PLASMA · 623+S'}</button>}
-            {(fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V106 || (fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V107 || fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V109)) && fighter.definitionId === 'feral-hunter' && <button type="button" className={styles.utilityButton} data-pit-workbook-action="shield" disabled={!simulationRunning || trainingPaused || fighter.traque < 150} onClick={() => {workbookCommandsRefV105.current[slot as 0|1] = 'shield'; rootRef.current?.focus({preventScroll:true});}}>J{slot+1} · BOUCLIER · 214+S</button>}
-            {(fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V106 || (fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V107 || fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V109)) && <button type="button" className={styles.utilityButton} data-pit-workbook-action="super" disabled={!simulationRunning || trainingPaused || fighter.traque < PIT_MAX_TRAQUE} onClick={() => {workbookCommandsRefV105.current[slot as 0|1] = 'super'; rootRef.current?.focus({preventScroll:true});}}>J{slot+1} · SIGNATURE · 236236+S</button>}
-            {(fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V107 || fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V109) && fighter.workbookDeviceV107 && <>
+            {(fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V109 || fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V112) && <button type="button" className={styles.utilityButton} data-pit-forward-throw-button-v109={slot} disabled={!simulationRunning || trainingPaused || (Boolean(currentSourceCaptureV112) && (!currentSourceCaptureV112!.techEligible || currentSourceCaptureV112!.attackerSlot === slot || currentSourceCaptureV112!.age >= PIT_WORKBOOK_FORWARD_THROW_V109.techTicks))} onClick={() => {workbookThrowsRefV109.current[slot as 0|1] = true; rootRef.current?.focus({preventScroll:true});}}>J{slot+1} · {currentSourceCaptureV112?.techEligible && currentSourceCaptureV112.attackerSlot !== slot && currentSourceCaptureV112.age < PIT_WORKBOOK_FORWARD_THROW_V109.techTicks ? 'DÉCHOPPER' : 'PROJECTION AVANT · L+M'}</button>}
+            {fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V112 && <button type="button" className={styles.utilityButton} data-pit-backward-throw-button-v112={slot} disabled={!simulationRunning || trainingPaused || Boolean(currentSourceCaptureV112)} onClick={() => {workbookBackwardThrowsRefV112.current[slot as 0|1] = true; rootRef.current?.focus({preventScroll:true});}}>J{slot+1} · PROJECTION ARRIÈRE · 4+L+M</button>}
+            {(fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V106 || (fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V107 || (fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V109 || fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V112))) && <button type="button" className={styles.utilityButton} data-pit-workbook-action="projectile" disabled={!simulationRunning || trainingPaused || fighter.traque < (fighter.definitionId === 'feral-hunter' ? 300 : 250)} onClick={() => {workbookCommandsRefV105.current[slot as 0|1] = 'projectile'; rootRef.current?.focus({preventScroll:true});}}>J{slot+1} · {fighter.definitionId === 'feral-hunter' ? 'CARREAUX · 236+S' : 'PLASMA · 623+S'}</button>}
+            {(fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V106 || (fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V107 || (fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V109 || fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V112))) && fighter.definitionId === 'feral-hunter' && <button type="button" className={styles.utilityButton} data-pit-workbook-action="shield" disabled={!simulationRunning || trainingPaused || fighter.traque < 150} onClick={() => {workbookCommandsRefV105.current[slot as 0|1] = 'shield'; rootRef.current?.focus({preventScroll:true});}}>J{slot+1} · BOUCLIER · 214+S</button>}
+            {(fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V106 || (fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V107 || (fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V109 || fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V112))) && <button type="button" className={styles.utilityButton} data-pit-workbook-action="super" disabled={!simulationRunning || trainingPaused || fighter.traque < PIT_MAX_TRAQUE} onClick={() => {workbookCommandsRefV105.current[slot as 0|1] = 'super'; rootRef.current?.focus({preventScroll:true});}}>J{slot+1} · SIGNATURE · 236236+S</button>}
+            {(fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V107 || (fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V109 || fighter.normalMovesRecipe === PIT_WORKBOOK_COMBAT_RECIPE_V112)) && fighter.workbookDeviceV107 && <>
               <span data-pit-device-inventory-v107={slot}>J{slot+1} · {fighter.workbookDeviceV107.item === 'mine' ? 'MINE' : 'ÉTOILE'} · {{ready:'DISPONIBLE',held:'EN MAIN',deployed:'DÉPLOYÉE',spent:'UTILISÉE'}[fighter.workbookDeviceV107.status]}</span>
               <button type="button" className={styles.utilityButton} data-pit-workbook-action={fighter.definitionId === 'feral-hunter' ? 'mine' : 'shuriken'} disabled={!simulationRunning || trainingPaused || fighter.workbookDeviceV107.status !== 'ready' || fighter.traque < (fighter.definitionId === 'feral-hunter' ? 350 : 250)} onClick={() => {workbookCommandsRefV105.current[slot as 0|1] = fighter.definitionId === 'feral-hunter' ? 'mine' : 'shuriken'; rootRef.current?.focus({preventScroll:true});}}>J{slot+1} · {fighter.definitionId === 'feral-hunter' ? 'MINE · 22+S' : 'ÉTOILE · 214+S'}</button>
             </>}
@@ -4192,15 +4215,16 @@ export default function PitCanvas({
         {playbackReplay?.engineVersion === 4
           ? "RELECTURE V4 · règles historiques, sans fenêtre de déchoppe."
           : forwardThrowTechRemainingV109 > 0
-            ? <><strong>SAISIE · {forwardThrowTechRemainingV109}/{PIT_WORKBOOK_FORWARD_THROW_V109.techTicks} ticks</strong> {combat.sourceThrowV109?.attackerSlot === 1 ? shortcuts.p1.throw : shortcuts.p2.throw} / L+M / RT / bouton Déchopper : relâchez puis réappuyez.</>
+            ? <><strong>SAISIE · {forwardThrowTechRemainingV109}/{PIT_WORKBOOK_FORWARD_THROW_V109.techTicks} ticks</strong> {currentSourceCaptureV112?.attackerSlot === 1 ? shortcuts.p1.throw : shortcuts.p2.throw} / L+M / RT / bouton Déchopper : relâchez puis réappuyez.</>
           : combat.pendingThrow
             ? <><strong>SAISIE · {combat.pendingThrow.framesRemaining}/{PIT_THROW_TECH_WINDOW_FRAMES} ticks</strong> {combat.pendingThrow.attackerSlot === 1 ? shortcuts.p1.throw : shortcuts.p2.throw} / RT / PROJ. : nouvel appui pour déchopper.</>
             : <>Déchoppe : Projection après la saisie · {PIT_THROW_TECH_WINDOW_FRAMES} ticks / 133 ms · relâchez puis réappuyez.</>}
       </div>
       <div className={styles.arenaShell} inert={menuOpen} style={{ transform: `translateX(${shake}px)` }}
         data-pit-frame={combat.frame} data-pit-throw-remaining={combat.pendingThrow?.framesRemaining ?? forwardThrowTechRemainingV109}
-        data-pit-throw-attacker={combat.pendingThrow?.attackerSlot ?? combat.sourceThrowV109?.attackerSlot ?? ""}
-        data-pit-forward-throw-phase-v109={combat.sourceThrowV109 ? getPitWorkbookThrowPhaseV109(combat.sourceThrowV109.age) : ''}>
+        data-pit-throw-attacker={combat.pendingThrow?.attackerSlot ?? currentSourceCaptureV112?.attackerSlot ?? ""}
+        data-pit-forward-throw-phase-v109={combat.sourceThrowV109 ? getPitWorkbookThrowPhaseV109(combat.sourceThrowV109.age) : ''}
+        data-pit-backward-throw-phase-v112={combat.sourceThrowV112 ? getPitWorkbookBackwardThrowPhaseV112(combat.sourceThrowV112.age) : ''}>
         <canvas ref={canvasRef} className={styles.canvas} width={arenaDefinition.width} height={arenaDefinition.height} aria-hidden="true" />
         {mode === "descent" && descentCombatPresentation?.blackMistLongRange ? (
           <div

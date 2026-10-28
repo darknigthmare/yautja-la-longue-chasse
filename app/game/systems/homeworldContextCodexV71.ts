@@ -14,8 +14,10 @@ import {HOMEWORLD_PORT_SHOULDER_CODEX_V80} from './homeworldPortShouldersV80';
 import {HOMEWORLD_STREET_DECOR_CODEX_V83} from './homeworldStreetDecorCodexV83';
 import {HOMEWORLD_STREET_DECOR_CODEX_V84} from './homeworldStreetDecorCodexV84';
 import {HOMEWORLD_STREET_COMPOSITION_CODEX_V92} from './homeworldStreetCompositionCodexV92';
+import {HOMEWORLD_SPATIAL_CODEX_V112} from './homeworldSpatialCodexV112';
 import {homeworldNaturalRecordPlacementV80} from './homeworldNaturalPlacementsV80';
-import {homeworldEcotoneRecordV90} from './homeworldEcotonesV90';
+import {homeworldNaturalRecordPlacementV112} from './homeworldNaturalPlacementsV112';
+import {homeworldEcotoneRecordV112} from './homeworldEcotonesV112';
 import { HOMEWORLD_GEOMETRY_V64, homeworldBuildingDoorwayV64, homeworldBuildingFootprintV64 } from './homeworldGeometryV64';
 import { HOMEWORLD_IDENTITY_CODEX_V72 } from './homeworldIdentityCodexV72';
 import { HOMEWORLD_CONNECTION_CODEX_V72 } from './homeworldConnectionCodexV72';
@@ -164,7 +166,7 @@ export const HOMEWORLD_CONTEXT_CODEX_V71:readonly HomeworldContextRecordV71[]=[
       'Sol projeté une fois à 35°. Roches, murs et végétaux au-dessus gardent leur échelle uniforme.',
       'Le prolongement visuel ne permet pas de sortir des limites de déplacement ; les dix chemins V72 mènent à leurs seuils physiques et gardent les permissions de progression.']}];
 export const HOMEWORLD_ALL_ELEMENT_CODEX_V71:readonly (HomeworldElementRecordV64&{associatedElementIds?:readonly string[]})[]=[
-  ...[...HOMEWORLD_ELEMENT_CODEX_V64,...HOMEWORLD_CONTEXT_CODEX_V71].map(homeworldRecordPlacementV77).filter((record):record is NonNullable<typeof record>=>record!==null).map(homeworldNaturalRecordPlacementV80).map(homeworldEcotoneRecordV90),
+  ...[...HOMEWORLD_ELEMENT_CODEX_V64,...HOMEWORLD_CONTEXT_CODEX_V71].map(homeworldRecordPlacementV77).filter((record):record is NonNullable<typeof record>=>record!==null).map(homeworldNaturalRecordPlacementV80).map(homeworldEcotoneRecordV112),
   ...HOMEWORLD_WORLD_CODEX_V77,...HOMEWORLD_LAVA_CODEX_V77,...HOMEWORLD_FAUNA_CODEX_V77,...HOMEWORLD_CONCEPT_CODEX_V77,
   // V78 records already own world coordinates and elevation. Never apply the
   // legacy port relocation to them a second time.
@@ -181,7 +183,8 @@ export const HOMEWORLD_ALL_ELEMENT_CODEX_V71:readonly (HomeworldElementRecordV64
   // for collision/render/codex. Rejected candidates remain authoring panels.
   ...HOMEWORLD_STREET_DECOR_CODEX_V84,
   ...HOMEWORLD_STREET_COMPOSITION_CODEX_V92,
+  ...HOMEWORLD_SPATIAL_CODEX_V112,
   // Routine paths are taken directly from transformed V77 residents.
   // They describe the live pose provider without creating a duplicate NPC.
   ...HOMEWORLD_CIVILIAN_ROUTINE_ELEMENT_CODEX_V84,
-];
+].map(homeworldNaturalRecordPlacementV112);

@@ -1,0 +1,188 @@
+[
+  {
+    "type": "archive106-carried",
+    "file": "/tmp/v112-reviewed-archive106-carried-fixture.json",
+    "oldNativeSteps": 514,
+    "oldNativeWalkDistance": 2739.4944967955985,
+    "operationWalked": 2739.4944967955985,
+    "sourceCommit": "def899ad07fea582053c5c204e4e578d8e0d7f9b",
+    "privateSourceManifestSha256": "d4bf56b2e785959bc2c0217bfd308d321707a9ecb5bc52b22dd70a1b6154572a",
+    "oldSaveValid": true,
+    "migratedSaveValid": true,
+    "movesActor": true,
+    "migrations": [
+      {
+        "kind": "checkpoint",
+        "from": {
+          "x": 4799.825914935707,
+          "y": 4964.21758152965
+        },
+        "obstacleId": "public-place-v112:traveler-marker",
+        "to": {
+          "x": 4827.379122065994,
+          "y": 5030.736907870462
+        }
+      },
+      {
+        "kind": "operation-last",
+        "ledgerKey": "archiveV106",
+        "study": false,
+        "from": {
+          "x": 4799.825914935707,
+          "y": 4964.21758152965
+        },
+        "obstacleId": "public-place-v112:traveler-marker",
+        "to": {
+          "x": 4827.379122065994,
+          "y": 5030.736907870462
+        }
+      }
+    ],
+    "beforePhase": "working",
+    "phase": "interrupted",
+    "piecePlace": "carried",
+    "baseArchiveImmutable": null
+  },
+  {
+    "type": "archive106-ground",
+    "file": "/tmp/v112-reviewed-archive106-ground-fixture.json",
+    "oldNativeSteps": 1025,
+    "oldNativeWalkDistance": 5467.967382118501,
+    "operationWalked": 2739.4944967955985,
+    "sourceCommit": "def899ad07fea582053c5c204e4e578d8e0d7f9b",
+    "privateSourceManifestSha256": "d4bf56b2e785959bc2c0217bfd308d321707a9ecb5bc52b22dd70a1b6154572a",
+    "oldSaveValid": true,
+    "migratedSaveValid": true,
+    "movesActor": false,
+    "migrations": [
+      {
+        "kind": "operation-last",
+        "ledgerKey": "archiveV106",
+        "study": false,
+        "from": {
+          "x": 4799.825914935707,
+          "y": 4964.21758152965
+        },
+        "obstacleId": "public-place-v112:traveler-marker",
+        "to": {
+          "x": 4827.379122065994,
+          "y": 5030.736907870462
+        }
+      },
+      {
+        "kind": "ground-object",
+        "ledgerKey": "archiveV106",
+        "study": false,
+        "objectField": "cases",
+        "objectIndex": 0,
+        "objectId": "A",
+        "from": {
+          "x": 4799.825914935707,
+          "y": 4964.21758152965
+        },
+        "obstacleId": "public-place-v112:traveler-marker",
+        "to": {
+          "x": 4827.379122065994,
+          "y": 5030.736907870462
+        }
+      }
+    ],
+    "beforePhase": "interrupted",
+    "phase": "interrupted",
+    "piecePlace": "ground",
+    "baseArchiveImmutable": null
+  },
+  {
+    "type": "comparison107-carried",
+    "file": "/tmp/v112-reviewed-comparison107-carried-fixture.json",
+    "oldNativeSteps": 740,
+    "oldNativeWalkDistance": 3870.966552916153,
+    "operationWalked": 2859.542585480364,
+    "sourceCommit": "def899ad07fea582053c5c204e4e578d8e0d7f9b",
+    "privateSourceManifestSha256": "d4bf56b2e785959bc2c0217bfd308d321707a9ecb5bc52b22dd70a1b6154572a",
+    "oldSaveValid": true,
+    "migratedSaveValid": true,
+    "movesActor": true,
+    "migrations": [
+      {
+        "kind": "checkpoint",
+        "from": {
+          "x": 4799.825914935707,
+          "y": 4964.21758152965
+        },
+        "obstacleId": "public-place-v112:traveler-marker",
+        "to": {
+          "x": 4827.379122065994,
+          "y": 5030.736907870462
+        }
+      },
+      {
+        "kind": "operation-last",
+        "ledgerKey": "archiveComparisonV107",
+        "study": false,
+        "from": {
+          "x": 4799.825914935707,
+          "y": 4964.21758152965
+        },
+        "obstacleId": "public-place-v112:traveler-marker",
+        "to": {
+          "x": 4827.379122065994,
+          "y": 5030.736907870462
+        }
+      }
+    ],
+    "beforePhase": "carrying",
+    "phase": "interrupted",
+    "piecePlace": "carried",
+    "baseArchiveImmutable": true
+  },
+  {
+    "type": "comparison107-ground",
+    "file": "/tmp/v112-reviewed-comparison107-ground-fixture.json",
+    "oldNativeSteps": 1251,
+    "oldNativeWalkDistance": 6599.439438239045,
+    "operationWalked": 2859.542585480364,
+    "sourceCommit": "def899ad07fea582053c5c204e4e578d8e0d7f9b",
+    "privateSourceManifestSha256": "d4bf56b2e785959bc2c0217bfd308d321707a9ecb5bc52b22dd70a1b6154572a",
+    "oldSaveValid": true,
+    "migratedSaveValid": true,
+    "movesActor": false,
+    "migrations": [
+      {
+        "kind": "operation-last",
+        "ledgerKey": "archiveComparisonV107",
+        "study": false,
+        "from": {
+          "x": 4799.825914935707,
+          "y": 4964.21758152965
+        },
+        "obstacleId": "public-place-v112:traveler-marker",
+        "to": {
+          "x": 4827.379122065994,
+          "y": 5030.736907870462
+        }
+      },
+      {
+        "kind": "ground-object",
+        "ledgerKey": "archiveComparisonV107",
+        "study": false,
+        "objectField": "evidence",
+        "objectIndex": 0,
+        "objectId": "evidence",
+        "from": {
+          "x": 4799.825914935707,
+          "y": 4964.21758152965
+        },
+        "obstacleId": "public-place-v112:traveler-marker",
+        "to": {
+          "x": 4827.379122065994,
+          "y": 5030.736907870462
+        }
+      }
+    ],
+    "beforePhase": "interrupted",
+    "phase": "interrupted",
+    "piecePlace": "ground",
+    "baseArchiveImmutable": true
+  }
+]

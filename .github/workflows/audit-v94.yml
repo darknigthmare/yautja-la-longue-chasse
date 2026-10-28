@@ -62,6 +62,13 @@ on:
       - 'docs/YAUTJA_V111*.xlsx'
       - 'docs/*v111*'
       - 'docs/qa/v111*/**'
+      - 'docs/YAUTJA_V112_SUIVI.xlsx'
+      - 'docs/*v112*'
+      - 'docs/qa/v112*/**'
+      - 'docs/suivi-production/v112*/**'
+      - 'public/game/sprites/v112/**'
+      - 'art-source/v112/**'
+      - 'art-source/v112-pit-backward/**'
       - 'public/game/homeworld/v111/archivist-conversation/**'
       - 'public/game/assets/v15/trophies/trophy-ruins-ancient-guardian.webp'
       - 'art-source/v111/archivist-conversation/**'
@@ -205,7 +212,7 @@ jobs:
     name: Application compile, types, runtime lint and browser integration
     runs-on: ubuntu-24.04
     # V106 used about 25 minutes; keep room for the additional V107 checks.
-    timeout-minutes: 45
+    timeout-minutes: 60
     env:
       NEXT_TELEMETRY_DISABLED: '1'
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
@@ -292,6 +299,32 @@ jobs:
             /docs/YAUTJA_V111*.xlsx
             /docs/*v111*
             /docs/qa/v111*/
+            /docs/YAUTJA_V112_SUIVI.xlsx
+            /docs/*v112*
+            /docs/qa/v112*/
+            /docs/suivi-production/v112*/
+            /public/game/sprites/v112/
+            /art-source/v112/
+            /art-source/v112-pit-backward/
+            /public/audio/provenance-v54.json
+            /public/game/dialogues/v85/bible-dialogues-index.json
+            /public/game/planets/v101/exports.json
+            /public/game/user-pack/v56/companions-manifest.json
+            /public/game/homeworld/v64/house-a-basalt.png
+            /public/game/homeworld/v64/house-b-basalt.png
+            /public/game/homeworld/v71/cinder-ground.png
+            /public/game/homeworld/v71/outskirts-kit.png
+            /public/game/homeworld/v75/landscape-ground-materials-native.png
+            /public/game/homeworld/v76/architecture/trophy-mausoleum.png
+            /public/game/homeworld/v81/basalt-city-foundation.png
+            /public/game/homeworld/v81/clan-residence-left.png
+            /public/game/homeworld/v81/industrial-residence-right.png
+            /public/game/homeworld/v81/paving-civic.png
+            /public/game/homeworld/v81/paving-council.png
+            /public/game/homeworld/v81/paving-undercity.png
+            /public/game/homeworld/v83/basalt-planter-left.png
+            /public/game/homeworld/v83/clan-waymarker-right.png
+            /public/game/homeworld/v84/maintenance-console-right.png
             /public/game/homeworld/v111/archivist-conversation/
             /public/game/assets/v15/trophies/manifest.json
             /public/game/assets/v15/trophies/trophy-ruins-ancient-guardian.webp
@@ -630,6 +663,7 @@ jobs:
           app/game/*V109.ts app/game/*V109.tsx app/game/systems/*V109.ts
           app/game/*V110.ts app/game/*V110.tsx app/game/systems/*V110.ts
           app/game/*V111.ts app/game/*V111.tsx app/game/systems/*V111.ts
+          app/game/*V112.ts app/game/*V112.tsx app/game/systems/*V112.ts
           app/game/HuntRitesMenuV77.tsx app/game/systems/ritesOfHuntV77.ts
           app/game/systems/huntRitesRuntimeV77.ts
           app/game/PitExperienceV79.tsx app/game/ClanWarBibleV6Panel.tsx
@@ -779,10 +813,23 @@ jobs:
         run: node scripts/check-excel-history-homeworld-v111.mjs --check --tests
       - name: Exercise current V111 regressions across the parallel workstreams
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
-        run: node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v111.test.mjs
-      - name: Verify reproducible V111 Homeworld follow-up and all 105 historical worksheets
+        run: >-
+          node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1
+          $(rg --files tests -g '*-v111.test.mjs' -g '!homeworld-excel-followup-v111.test.mjs' -g '!homeworld-art-inventory-v111.test.mjs' | sort)
+      - name: Execute unchanged V111 assertions and regenerate all 113 historical worksheets
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
-        run: node scripts/build-homeworld-followup-v111.mjs --check
+        run: node scripts/check-excel-history-homeworld-v112.mjs --check --tests
+      - name: Exercise V112 geometry, public-life, mobility, backward throws and evidence guards
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v112.test.mjs
+      - name: Verify V112 open-workstream audit and reproducible append-only workbook
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: |
+          python3 scripts/audit-open-workstreams-v112.py --check
+          node scripts/build-pit-backward-art-v112.mjs --check
+          node scripts/build-runtime-public-inputs-v112.mjs --check
+          node scripts/snapshot-runtime-v112.mjs --check docs/v112-runtime-freeze.json
+          node scripts/build-homeworld-followup-v112.mjs --check
       - name: Re-run unchanged V110 assertions and preserve its published workbook from pinned Git preimages
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: node scripts/check-excel-history-v111.mjs --check --tests

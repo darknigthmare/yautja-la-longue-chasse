@@ -1,0 +1,174 @@
+{
+  "version": "V112",
+  "provenance": "LORE_COMPATIBLE_ORIGINAL",
+  "method": "Individually authored anchors on retained supported courts; exact native source scale and facing; refused candidates remain unmounted.",
+  "compositions": [
+    {
+      "id": "quay-loading",
+      "label": "Quai des chargements",
+      "detail": "Le repère reste une proposition non montée tant que le circuit des manutentionnaires occupe son ancrage."
+    },
+    {
+      "id": "quay-maintenance",
+      "label": "Revers technique du viaduc",
+      "detail": "Une console distincte marque le poste de réglage déjà pavé. Sa face opérateur reste séparée du chemin public."
+    },
+    {
+      "id": "traveler-lookout",
+      "label": "Belvédère des voyageurs",
+      "detail": "Un repère vertical accompagne le banc et le bac minéral existants, sans remplir l’espace du panorama."
+    },
+    {
+      "id": "delegation-court",
+      "label": "Cour des délégations",
+      "detail": "Un bac cultivé occupe le revers méridional du parvis. Le foyer conserve sa marge chaude et le centre reste libre."
+    },
+    {
+      "id": "quay-registers",
+      "label": "Galerie des traversées",
+      "detail": "Un repère de consultation rend lisible la poche documentaire, à l’écart du pupitre et de l’allée."
+    },
+    {
+      "id": "arrival-court",
+      "label": "Halte des arrivées",
+      "detail": "Le repère et le bac sont sur deux rives distinctes de la halte, loin de la réserve de soins et du banc."
+    },
+    {
+      "id": "hunt-return",
+      "label": "Quai de retour des chasses",
+      "detail": "Le nouveau bac reste une proposition non montée tant que la face du rayonnage occupe cette rive."
+    }
+  ],
+  "placements": [
+    {
+      "id": "public-place-v112:loading-marker",
+      "compositionId": "quay-loading",
+      "artId": "clan-waymarker-right",
+      "levelId": "0",
+      "districtId": "port",
+      "buildingId": null,
+      "x": 3430,
+      "y": 4890,
+      "scale": 1,
+      "label": "Repère du quai de chargement",
+      "purpose": "Repère de la poche de fret, distinct du passage central du viaduc."
+    },
+    {
+      "id": "public-place-v112:maintenance-planter",
+      "compositionId": "quay-maintenance",
+      "artId": "basalt-planter-left",
+      "levelId": "0",
+      "districtId": "port",
+      "buildingId": null,
+      "x": 4100,
+      "y": 5560,
+      "scale": 1,
+      "label": "Bac du retour de maintenance",
+      "purpose": "Végétation cultivée du revers de la travée, hors du trajet du technicien."
+    },
+    {
+      "id": "public-place-v112:traveler-marker",
+      "compositionId": "traveler-lookout",
+      "artId": "clan-waymarker-right",
+      "levelId": "0",
+      "districtId": "port",
+      "buildingId": null,
+      "x": 4800,
+      "y": 4980,
+      "scale": 1,
+      "label": "Repère du belvédère des voyageurs",
+      "purpose": "Lecture de la halte depuis le viaduc, sans nouveau terminal ni destination."
+    },
+    {
+      "id": "public-place-v112:delegation-planter",
+      "compositionId": "delegation-court",
+      "artId": "basalt-planter-left",
+      "levelId": "0",
+      "districtId": "port",
+      "buildingId": null,
+      "x": 5380,
+      "y": 5790,
+      "scale": 1,
+      "label": "Bac du revers des délégations",
+      "purpose": "Poche minérale cultivée au bord du parvis ; aire chaude du foyer et rassemblement maintenus libres."
+    },
+    {
+      "id": "public-place-v112:register-marker",
+      "compositionId": "quay-registers",
+      "artId": "clan-waymarker-right",
+      "levelId": "0",
+      "districtId": "port",
+      "buildingId": null,
+      "x": 6140,
+      "y": 5020,
+      "scale": 1,
+      "label": "Repère de la galerie des registres",
+      "purpose": "Repère du revers documentaire, sans nouveau service de consultation."
+    },
+    {
+      "id": "public-place-v112:arrival-marker",
+      "compositionId": "arrival-court",
+      "artId": "clan-waymarker-right",
+      "levelId": "0",
+      "districtId": "port",
+      "buildingId": null,
+      "x": 6910,
+      "y": 5090,
+      "scale": 1,
+      "label": "Repère de la cour des arrivées",
+      "purpose": "Balise visuelle de la halte d’arrivée ; mobilier, soins et passage public séparés."
+    },
+    {
+      "id": "public-place-v112:arrival-planter",
+      "compositionId": "arrival-court",
+      "artId": "basalt-planter-left",
+      "levelId": "0",
+      "districtId": "port",
+      "buildingId": null,
+      "x": 6550,
+      "y": 5120,
+      "scale": 1,
+      "label": "Bac de la rive des arrivées",
+      "purpose": "Bac cultivé de la rive opposée au banc, hors de l’espace d’approche de la réserve de soins."
+    },
+    {
+      "id": "public-place-v112:return-planter",
+      "compositionId": "hunt-return",
+      "artId": "basalt-planter-left",
+      "levelId": "0",
+      "districtId": "port",
+      "buildingId": null,
+      "x": 7470,
+      "y": 5050,
+      "scale": 1,
+      "label": "Bac du quai de retour",
+      "purpose": "Revers végétal de la poche logistique ; accès au sas et flux des équipages conservés."
+    },
+    {
+      "id": "public-place-v112:maintenance-console",
+      "compositionId": "quay-maintenance",
+      "artId": "maintenance-console-right",
+      "levelId": "0",
+      "districtId": "port",
+      "buildingId": null,
+      "x": 4170,
+      "y": 4970,
+      "scale": 1,
+      "label": "Poste de réglage du revers du viaduc",
+      "purpose": "Travée technique dans le revers déjà pavé, hors de la route et du chargement ; aucune interaction de maintenance nouvelle."
+    },
+    {
+      "id": "public-place-v112:traveler-planter",
+      "compositionId": "traveler-lookout",
+      "artId": "basalt-planter-left",
+      "levelId": "0",
+      "districtId": "port",
+      "buildingId": null,
+      "x": 4930,
+      "y": 5190,
+      "scale": 1,
+      "label": "Bac de la promenade des voyageurs",
+      "purpose": "Poche cultivée au bord de la halte, éloignée de l’assise et de son approche."
+    }
+  ]
+}

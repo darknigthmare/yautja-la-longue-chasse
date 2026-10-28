@@ -1,0 +1,692 @@
+{
+  "schemaVersion": 1,
+  "release": "V112",
+  "asOf": "2026-10-28",
+  "baseline": {
+    "path": "docs/YAUTJA_V111_SUIVI.xlsx",
+    "sha256": "fa5ebf78a08c36b4a567246dfae41de535a8e36c7294ba33190e3e1e2ec9ad05"
+  },
+  "baselineSheets": 113,
+  "closedSourceIds": [],
+  "sourceCompletion": false,
+  "sourceProgress": [
+    {
+      "id": "M_F006_TH_B",
+      "status": "LIVRE_PARTIEL",
+      "progress": "Projection arrière raccordée au moteur V17 pour le duo Feral/Scar d’origine ; trajectoire physique, murs, déchoppe, reprise et replay testés. Les contrôles publics sont vérifiés par cinq tests de vraie closure. Les 48 dessins runtime sélectionnés couvrent deux rôles et deux orientations initiales par chasseur, sur 22 PNG natifs.",
+      "remaining": "Autres partenaires, costumes et variantes restent ouverts. Les admissions natives et le contrôle du duo ne clôturent pas l’exigence source globale ; le parcours compilé est une preuve distincte à publier.",
+      "proof": [
+        {
+          "path": "docs/qa/v112-pit-backward/model-tests.log",
+          "sha256": "cc241683db77f9f2aea2ef120e69d183d33004832f8498c208c3fa6143372575",
+          "bytes": 4327
+        },
+        {
+          "path": "docs/qa/v112-pit-backward/forward-v16-regressions.log",
+          "sha256": "adc307a5e977df31675c8849a33fbe172bd837f9811e1ec3793342cef4e8a2d2",
+          "bytes": 5681
+        },
+        {
+          "path": "docs/qa/v112-pit-backward/integrated-model-regressions.log",
+          "sha256": "2de9b57205153219f1a193c90531130127a688ddadeddaefd7c1f63a76854609",
+          "bytes": 18868
+        },
+        {
+          "path": "docs/qa/v112-pit-backward/model-validation.json",
+          "sha256": "37d5cbfaead413f6ce8f2622ba086d7a73db417fd83f963b8cc661dac2f52ac1",
+          "bytes": 1988
+        },
+        {
+          "path": "docs/qa/v112-pit-backward/public-control-closure-tests.log",
+          "sha256": "4991dcd8af0c84570e77f5125938043f4f6d8a6a752f337b785cc902b02c2722",
+          "bytes": 1426
+        },
+        {
+          "path": "docs/qa/v112-pit-backward/device-v15-regressions.log",
+          "sha256": "254504fb54ffe0763186f34eb9be25bae1b8812c499991c42d987cf7f6d813bd",
+          "bytes": 3509
+        },
+        {
+          "path": "docs/suivi-production/v112-pit-backward/native-frame-delivery.json",
+          "sha256": "39f4d6b5d5562c042114198125057077b53dc1caed82878852a929693e637e5b",
+          "bytes": 48791
+        },
+        {
+          "path": "docs/suivi-production/v112-pit-backward/native-uv-border-review.json",
+          "sha256": "da31088f964b690b3c93977bd7f6e214f781361b6f74245b90c7bf82e2e796ca",
+          "bytes": 32098
+        },
+        {
+          "path": "docs/suivi-production/v112-pit-backward/visual-review.json",
+          "sha256": "d54f5b7eee907d2182e720148b46310679c7a22b08ac08f7a1c62185b505d9cf",
+          "bytes": 6147
+        }
+      ]
+    },
+    {
+      "id": "M_F003_TH_B",
+      "status": "LIVRE_PARTIEL",
+      "progress": "Projection arrière raccordée au moteur V17 pour le duo Feral/Scar d’origine ; trajectoire physique, murs, déchoppe, reprise et replay testés. Les contrôles publics sont vérifiés par cinq tests de vraie closure. Les 48 dessins runtime sélectionnés couvrent deux rôles et deux orientations initiales par chasseur, sur 22 PNG natifs.",
+      "remaining": "Autres partenaires, costumes et variantes restent ouverts. Les admissions natives et le contrôle du duo ne clôturent pas l’exigence source globale ; le parcours compilé est une preuve distincte à publier.",
+      "proof": [
+        {
+          "path": "docs/qa/v112-pit-backward/model-tests.log",
+          "sha256": "cc241683db77f9f2aea2ef120e69d183d33004832f8498c208c3fa6143372575",
+          "bytes": 4327
+        },
+        {
+          "path": "docs/qa/v112-pit-backward/forward-v16-regressions.log",
+          "sha256": "adc307a5e977df31675c8849a33fbe172bd837f9811e1ec3793342cef4e8a2d2",
+          "bytes": 5681
+        },
+        {
+          "path": "docs/qa/v112-pit-backward/integrated-model-regressions.log",
+          "sha256": "2de9b57205153219f1a193c90531130127a688ddadeddaefd7c1f63a76854609",
+          "bytes": 18868
+        },
+        {
+          "path": "docs/qa/v112-pit-backward/model-validation.json",
+          "sha256": "37d5cbfaead413f6ce8f2622ba086d7a73db417fd83f963b8cc661dac2f52ac1",
+          "bytes": 1988
+        },
+        {
+          "path": "docs/qa/v112-pit-backward/public-control-closure-tests.log",
+          "sha256": "4991dcd8af0c84570e77f5125938043f4f6d8a6a752f337b785cc902b02c2722",
+          "bytes": 1426
+        },
+        {
+          "path": "docs/qa/v112-pit-backward/device-v15-regressions.log",
+          "sha256": "254504fb54ffe0763186f34eb9be25bae1b8812c499991c42d987cf7f6d813bd",
+          "bytes": 3509
+        },
+        {
+          "path": "docs/suivi-production/v112-pit-backward/native-frame-delivery.json",
+          "sha256": "39f4d6b5d5562c042114198125057077b53dc1caed82878852a929693e637e5b",
+          "bytes": 48791
+        },
+        {
+          "path": "docs/suivi-production/v112-pit-backward/native-uv-border-review.json",
+          "sha256": "da31088f964b690b3c93977bd7f6e214f781361b6f74245b90c7bf82e2e796ca",
+          "bytes": 32098
+        },
+        {
+          "path": "docs/suivi-production/v112-pit-backward/visual-review.json",
+          "sha256": "d54f5b7eee907d2182e720148b46310679c7a22b08ac08f7a1c62185b505d9cf",
+          "bytes": 6147
+        }
+      ]
+    }
+  ],
+  "workstreams": [
+    {
+      "id": "HW112-SPATIAL-COHERENCE",
+      "title": "Cohérence des placements et des passages du Homeworld",
+      "source": "Brief Homeworld V81 §§12, 18, 23",
+      "behavior": "Six socles corrigent 95 points sans support sur 51 façades et 20 098 échantillons ; six instances de mobilier admises sur dix propositions remplissent cinq cours. Sur 392 origines naturelles, 315 instances sont admises et 77 refusées sans relocalisation, laissant zéro intersection résiduelle avec le pavement ; 39 formations et les onze écotones actuels utilisent ce même registre. Les faces rocheuses s’arrêtent au premier pavement.",
+      "status": "LIVRE_PARTIEL",
+      "implementation": [
+        "app/game/systems/homeworldFoundationSupportsV112.ts",
+        "app/game/systems/homeworldNaturalRockFacesV112.ts",
+        "app/game/systems/homeworldPublicPlacesV112.ts",
+        "app/game/systems/homeworldPublicPlacesMountV112.ts",
+        "app/game/systems/homeworldSpatialCodexV112.ts",
+        "app/game/HomeworldPublicPlacesV112.tsx",
+        "app/game/data/homeworldPublicPlacesV112.json",
+        "app/game/systems/homeworldCivicWorldV80.ts",
+        "app/game/systems/homeworldWorldV77.ts",
+        "tests/homeworld-spatial-v112.test.mjs",
+        "tests/homeworld-public-places-v112.test.mjs",
+        "tests/homeworld-natural-rock-faces-v112.test.mjs",
+        "docs/v112-homeworld-spatial-coherence.md",
+        "app/game/systems/homeworldNaturalPlacementsV112.ts",
+        "app/game/systems/homeworldEcotonesV112.ts",
+        "app/game/HomeworldEcotonesV112.tsx",
+        "tests/homeworld-natural-placements-v112.test.mjs",
+        "tests/homeworld-ecotones-v112.test.mjs"
+      ],
+      "proof": [
+        {
+          "path": "docs/qa/v112-spatial/audit.json",
+          "sha256": "2355523724f462fcf5396a7701b962e8deacf5d54ea4cdf32d90946dff51d192",
+          "bytes": 25301
+        },
+        {
+          "path": "docs/qa/v112-spatial/current-21-assertions.log",
+          "sha256": "5f1fb365d4ebd25ae4dc6884c9e7c59bbc04e4fa50f78febcf6ce16bbd9c8131",
+          "bytes": 6604
+        }
+      ],
+      "remaining": "Vingt et un tests couvrent les quatorze scénarios naturels/faces/socles/places et les sept critères d’écotones sur le provider V112. Les sept assertions V90 d’origine restent privées et distinctes. Rendu et accès du jeu compilé à certifier ; réemplois natifs, zéro nouveau dessin, service ou clôture des 354 cibles."
+    },
+    {
+      "id": "HW112-MOBILITY-ACCESS",
+      "title": "Accès, destinations et mobilité cohérents",
+      "source": "Brief Homeworld V81 §§18, 20, 23",
+      "behavior": "Les arrivées vers quinze services se terminent dans leur rayon réel ; l’ancien faux arrivé à 68/64 ou 75/74 unités est refusé. Le guidage intérieur vérifie les segments à une unité et garde les arêtes réellement praticables avant de marquer un nœud visité.",
+      "status": "LIVRE_PARTIEL",
+      "implementation": [
+        "app/game/systems/homeworldWayfindingV112.ts",
+        "app/game/systems/homeworldInteriorNavigationV112.ts",
+        "app/game/homeworldRouteWorkerV112.ts",
+        "app/game/HomeworldWorldMapV77.tsx",
+        "tests/homeworld-mobility-v112.test.mjs",
+        "docs/v112-homeworld-mobility.md"
+      ],
+      "proof": [
+        {
+          "path": "docs/qa/v112-homeworld-mobility/model-tests.log",
+          "sha256": "a9a7fdb71e2426d5711deb20768a2f5573e80f814fab659e3d19f5ffd6e49d84",
+          "bytes": 2542
+        },
+        {
+          "path": "docs/qa/v112-homeworld-mobility/model-validation.json",
+          "sha256": "5769f4b67f598128cd7bf128bafef60a45c66a21bc4daec68aca98420f3d9fe2",
+          "bytes": 993
+        }
+      ],
+      "remaining": "Neuf scénarios couvrent 90 positions, quinze services et plus de 500 pas du vrai moteur sans reset. Le transport Worker et les interactions du navigateur compilé restent une validation distincte ; les obstacles, volumes et règles de propriétaire sont conservés."
+    },
+    {
+      "id": "HW112-CITY-LIFE",
+      "title": "Tissu urbain et espaces visuellement vides",
+      "source": "Brief Homeworld V81 §§12, 15, 16, 21",
+      "behavior": "Sept circuits passifs de 180 à 200 unités habitent les longs passages : deux courriers, une artisane, une veilleuse du quai et trois gardes. Les 674 échantillons utilisent la géométrie fixe et des distances de protection ; trois atlas V74 et leurs deux sens natifs sont réemployés.",
+      "status": "LIVRE_PARTIEL",
+      "implementation": [
+        "app/game/HomeworldPublicLifeV112.tsx",
+        "app/game/systems/homeworldPublicLifeV112.ts",
+        "app/game/data/homeworldPublicLifeV112.json",
+        "app/game/HomeworldWorldSceneV77.tsx",
+        "tests/homeworld-public-life-v112.test.mjs",
+        "docs/v112-homeworld-public-life.md"
+      ],
+      "proof": [
+        {
+          "path": "docs/qa/v112-public-life/model-motor-native-ssr-tests.log",
+          "sha256": "4a4deedda75433fab7af916cda762d1826d887b4e5ce3abb28a2bcf2f15155bb",
+          "bytes": 1995
+        }
+      ],
+      "remaining": "Six tests de modèle, moteur, source native et rendu React passent. Figurants passifs, pas de nouveau PNG, idle, service, quête, gain ou sauvegarde ; pas d’évitement autonome des charges déplacées après admission. Le rendu compilé reste à certifier."
+    },
+    {
+      "id": "HW112-UPGRADE-RECOVERY",
+      "title": "Reprendre un ancien checkpoint ou point de phase occupé par un nouveau meuble",
+      "source": "Brief Homeworld V81 §§23 et 26, QA 7 sauvegarde ; reprise V111 interrompue au poste K-17",
+      "behavior": "Après consultation puis confirmation, les checkpoints, derniers points incomplets et pièces au sol occupés par un nouveau meuble sont restaurés localement à au plus 96 unités. Une copie exacte externe du point et des sept documents précède l’écriture. Seuls les points concernés changent ; le personnage distant, les accords, provenances et distances sont conservés. La reprise K-17 s’ancre au point physique réellement atteint, y compris dans la tolérance de quatre unités.",
+      "status": "LIVRE_PARTIEL",
+      "implementation": [
+        "app/game/HomeworldHub.tsx",
+        "app/game/HomeworldUpgradeRecoveryV112.tsx",
+        "app/game/HomeworldUpgradeRecoveryV112.module.css",
+        "app/game/systems/homeworldGeometryRecoveryV112.ts",
+        "app/game/systems/homeworldArchiveResumeV112.ts",
+        "tests/homeworld-geometry-recovery-v112.test.mjs",
+        "tests/homeworld-geometry-recovery-matrix-v112.test.mjs",
+        "tests/homeworld-geometry-recovery-integration-v112.test.mjs",
+        "tests/helpers/homeworld-geometry-upgrade-v112-route.mjs",
+        "docs/v112-homeworld-upgrade-recovery.md",
+        "tests/fixtures/homeworld-upgrade-v112/manifest.json",
+        "tests/fixtures/homeworld-upgrade-v112/v112-reviewed-archive106-carried-fixture.json",
+        "tests/fixtures/homeworld-upgrade-v112/v112-reviewed-archive106-ground-fixture.json",
+        "tests/fixtures/homeworld-upgrade-v112/v112-reviewed-cargo-wide-carried-fixture.json",
+        "tests/fixtures/homeworld-upgrade-v112/v112-reviewed-cargo-wide-ground-fixture.json",
+        "tests/fixtures/homeworld-upgrade-v112/v112-reviewed-carried-plaque-fixture.json",
+        "tests/fixtures/homeworld-upgrade-v112/v112-reviewed-comparison107-carried-fixture.json",
+        "tests/fixtures/homeworld-upgrade-v112/v112-reviewed-comparison107-ground-fixture.json",
+        "tests/fixtures/homeworld-upgrade-v112/v112-reviewed-continuation-carried-fragment-fixture.json",
+        "tests/fixtures/homeworld-upgrade-v112/v112-reviewed-v105-walking-fixture.json",
+        "tests/fixtures/homeworld-upgrade-v112/v112-v104-played-blocked-fixture.json"
+      ],
+      "proof": [
+        {
+          "path": "docs/qa/v112-homeworld-upgrade-recovery/model-and-hub-tests.log",
+          "sha256": "0716b0d254350be4458b4a48c6702ae16511cf1e1494cb07c6fc2f518012d72d",
+          "bytes": 8690
+        },
+        {
+          "path": "docs/qa/v112-homeworld-upgrade-recovery/validation.json",
+          "sha256": "3718024444b8ad15c32a3e864a4858a1c95304963caa3eaf636f4e5b24c76039",
+          "bytes": 2122
+        }
+      ],
+      "remaining": "27 scénarios de modèle, vrai moteur et callbacks Hub passent. Cette migration locale explicite ne compte pas comme une marche et ne crée ni accord, récompense ou objet. Aucun nouveau champ Save12 ; les acquittements différés sont finalisés seulement sur les octets confirmés. La recette compilée complète UpgradeRecovery reste à certifier."
+    },
+    {
+      "id": "PIT112-BACKWARD-THROWS",
+      "title": "Projections arrière Feral et Scar avec deux sens natifs",
+      "source": "M_F006_TH_B · 05_MOVES_PROPOSES!N10 ; M_F003_TH_B · 05_MOVES_PROPOSES!N7",
+      "behavior": "Le moteur V17 de workbook-v112 raccorde 4 + L + M aux projections arrière Feral/Scar : fenêtres 10/3/32, 110 dégâts, zéro coût, cible réelle, arc continu, point arrière valide, huit ticks de déchoppe, reprise et replay exacts. Les archives V16 restent inchangées. Le runtime sélectionne 48 dessins natifs dans 22 PNG : 34 cases de huit feuilles et quatorze poses isolées remplaçant quatorze cases non retenues.",
+      "status": "LIVRE_PARTIEL",
+      "implementation": [
+        "app/game/PitCanvas.tsx",
+        "app/game/systems/pitCombat.ts",
+        "app/game/systems/pitReplay.ts",
+        "app/game/systems/pitTraining.ts",
+        "app/game/systems/pitThrowControlsV112.ts",
+        "app/game/systems/pitWorkbookCombatV112.ts",
+        "app/game/pitWorkbookRegistryV112.ts",
+        "app/game/data/pitWorkbookThrowsV112.json",
+        "app/game/hunterSpriteMotion.ts",
+        "tests/pit-backward-throws-v112.test.mjs",
+        "docs/v112-pit-backward-throws.md",
+        "scripts/build-pit-backward-art-v112.mjs",
+        "tests/pit-backward-throw-art-v112.test.mjs",
+        "tests/pit-backward-controls-v112.test.mjs",
+        "tests/pit-backward-art-provenance-v112.test.mjs",
+        "docs/suivi-production/v112-pit-backward/README.md"
+      ],
+      "proof": [
+        {
+          "path": "docs/qa/v112-pit-backward/model-tests.log",
+          "sha256": "cc241683db77f9f2aea2ef120e69d183d33004832f8498c208c3fa6143372575",
+          "bytes": 4327
+        },
+        {
+          "path": "docs/qa/v112-pit-backward/forward-v16-regressions.log",
+          "sha256": "adc307a5e977df31675c8849a33fbe172bd837f9811e1ec3793342cef4e8a2d2",
+          "bytes": 5681
+        },
+        {
+          "path": "docs/qa/v112-pit-backward/integrated-model-regressions.log",
+          "sha256": "2de9b57205153219f1a193c90531130127a688ddadeddaefd7c1f63a76854609",
+          "bytes": 18868
+        },
+        {
+          "path": "docs/qa/v112-pit-backward/model-validation.json",
+          "sha256": "37d5cbfaead413f6ce8f2622ba086d7a73db417fd83f963b8cc661dac2f52ac1",
+          "bytes": 1988
+        },
+        {
+          "path": "docs/qa/v112-pit-backward/public-control-closure-tests.log",
+          "sha256": "4991dcd8af0c84570e77f5125938043f4f6d8a6a752f337b785cc902b02c2722",
+          "bytes": 1426
+        },
+        {
+          "path": "docs/qa/v112-pit-backward/device-v15-regressions.log",
+          "sha256": "254504fb54ffe0763186f34eb9be25bae1b8812c499991c42d987cf7f6d813bd",
+          "bytes": 3509
+        },
+        {
+          "path": "docs/suivi-production/v112-pit-backward/native-frame-delivery.json",
+          "sha256": "39f4d6b5d5562c042114198125057077b53dc1caed82878852a929693e637e5b",
+          "bytes": 48791
+        },
+        {
+          "path": "docs/suivi-production/v112-pit-backward/native-uv-border-review.json",
+          "sha256": "da31088f964b690b3c93977bd7f6e214f781361b6f74245b90c7bf82e2e796ca",
+          "bytes": 32098
+        },
+        {
+          "path": "docs/suivi-production/v112-pit-backward/visual-review.json",
+          "sha256": "d54f5b7eee907d2182e720148b46310679c7a22b08ac08f7a1c62185b505d9cf",
+          "bytes": 6147
+        },
+        {
+          "path": "docs/qa/v112-pit-backward-art/art-render-tests.log",
+          "sha256": "9059bf9886a8535b6f43ddaa3360be4518f4bcd1b7402db5ad784b54bfdad7f4",
+          "bytes": 1548
+        },
+        {
+          "path": "docs/qa/v112-pit-backward-art/provenance-tests.log",
+          "sha256": "342c44fd8a1a85061a08583ce8a28afa9c18ea3377c5ace84d8ed7d77eea788b",
+          "bytes": 931
+        },
+        {
+          "path": "docs/qa/v112-pit-backward-art/forward-art-regression.log",
+          "sha256": "fdd8bcbf403a261a6eb31ac217ae041f4c91b3174169d1a7817c34dc8986a718",
+          "bytes": 1266
+        },
+        {
+          "path": "docs/qa/v112-pit-backward-art/registration-check.log",
+          "sha256": "1c79b29b58b18d4f6c40a98fcf68b4a4458a82fc13e2ec09f00084d1740c283b",
+          "bytes": 118
+        },
+        {
+          "path": "docs/qa/v112-pit-backward/final-integrated-regressions.log",
+          "sha256": "4d29cd20c434f448e470f3206c25a90e6e997a915ab253378d193bc141bd0200",
+          "bytes": 27565
+        },
+        {
+          "path": "docs/qa/v112-pit-backward/final-targeted-lint.log",
+          "sha256": "2da429ab1b0aab34cecc814576464eb853d8c4da5195e47048b85d0abe0840ab",
+          "bytes": 872
+        },
+        {
+          "path": "docs/qa/v112-pit-backward/worker-observation-tests.log",
+          "sha256": "44fe60c3eb1a73566470c17bd0588434d4eec857ca4190186b0874cb5f9a0134",
+          "bytes": 953
+        },
+        {
+          "path": "docs/qa/v112-pit-backward/worker-observation-validation.json",
+          "sha256": "166dbe70e14909360911acc1747fbf4dbc5fa3756150d051116de32330c6cdb6",
+          "bytes": 874
+        }
+      ],
+      "remaining": "Portée du duo d’origine seulement ; autres partenaires, costumes et variantes ouverts. Les 23 productions comprennent un rejet conservé hors public, sans doubler les cases remplacées dans le compte des 48 dessins admis. Aucun finisher, campagne ou kit complet n’est déduit. La recette publique compilée reste à certifier séparément."
+    },
+    {
+      "id": "HW112-EXCEL-FOLLOWUP",
+      "title": "Ouverts interdomaines et suivi Excel immuable",
+      "source": "Classeurs V111 et brief de continuation utilisateur du 28 octobre 2026",
+      "behavior": "Indexer les 56 exigences sans compter deux fois les neuf actions, séparer les 354 cibles artistiques et prolonger les 113 feuilles historiques sans les reconstruire.",
+      "status": "LIVRE_PARTIEL",
+      "implementation": [
+        "scripts/audit-open-workstreams-v112.py",
+        "scripts/build-homeworld-followup-v112.mjs",
+        "scripts/build-homeworld-followup-v112.py",
+        "scripts/build-excel-history-homeworld-v112.py",
+        "scripts/historical-excel-context-homeworld-v112.mjs",
+        "scripts/check-excel-history-homeworld-v112.mjs",
+        "tests/homeworld-excel-followup-v112.test.mjs",
+        "tests/homeworld-excel-history-v112.test.mjs",
+        "docs/v112-open-workstreams-audit.json",
+        "docs/v112-open-workstreams-audit.md",
+        "docs/excel-followup-homeworld-v112.md",
+        "tests/homeworld-ecotones-v90.test.mjs"
+      ],
+      "proof": [
+        {
+          "path": "docs/qa/v112-excel-followup/initial-followup-and-history-tests.log",
+          "sha256": "33745b2c20ae67deed3a28119cf766a428806051b7a28e0f20a588974c091560",
+          "bytes": 2752
+        },
+        {
+          "path": "docs/qa/v112-excel-history/original-v111-assertions-and-workbook.log",
+          "sha256": "e45839e3a497ecd7971437cfc904aeb81fc03ebebc8d77604a78fa0fbd74db17",
+          "bytes": 34366
+        },
+        {
+          "path": "docs/qa/v112-excel-history/capsule-reproduction.log",
+          "sha256": "6be6b11f88d0a52b3c09843196df613f9a51b96ad8aeb1f4634496eb2be1ea7c",
+          "bytes": 240
+        },
+        {
+          "path": "docs/qa/v112-excel-history/original-v111-and-v90-132-assertions.log",
+          "sha256": "55a5ed9e3b6f69620e3faadd0bff4144972624cadf060bf04bcc2da097c2f0c5",
+          "bytes": 37479
+        },
+        {
+          "path": "docs/qa/v112-excel-history/extended-capsule-reproduction.log",
+          "sha256": "54f8eb75d215061b9418f0c690a1d2efc03474d9abdfdba2a95975dcaadab8a4",
+          "bytes": 240
+        }
+      ],
+      "remaining": "Les contrôles ZIP/XML et de préservation ne sont pas une exécution d’Excel natif ; les clôtures source demandent leurs propres preuves gameplay complètes."
+    }
+  ],
+  "remaining": [
+    {
+      "id": "HW112-REMAINING-ART",
+      "title": "Admissions artistiques et animations restant à produire",
+      "source": "Brief V81 §§55–76 ; catalogue de 354 cibles",
+      "status": "OUVERT",
+      "detail": "Le recensement V111 reste historique. Un candidat réutilisé ne clôture ni une variante native ni une animation attendue."
+    },
+    {
+      "id": "HW112-REMAINING-SOURCE",
+      "title": "Exigences source hors des périmètres réellement livrés",
+      "source": "56 exigences V111, dont neuf actions source Feral / Scar",
+      "status": "OUVERT",
+      "detail": "Kits, partenaires, campagnes, variantes, ouvrages, Preserve et provenance restent individuellement suivis ; aucune clôture par proximité thématique."
+    },
+    {
+      "id": "HW112-REMAINING-HOMEWORLD",
+      "title": "Rôles, intérieurs et parcours Homeworld encore incomplets",
+      "source": "Brief Homeworld V81 et scènes source V6",
+      "status": "OUVERT",
+      "detail": "Les corrections de placement, d'accès et de densité ne certifient pas toute la cité, ses rôles, animations, dialogues et variantes."
+    },
+    {
+      "id": "HW112-REMAINING-ACTIVITIES",
+      "title": "Activités et interactions Homeworld encore à compléter",
+      "source": "Brief Homeworld V81 §§14, 15, 25",
+      "status": "OUVERT",
+      "detail": "Aucun nouveau rôle ou boucle de demande habitant n’est déclaré livré par la présente passe ; les progrès Pit restent un chantier distinct."
+    }
+  ],
+  "validations": [
+    {
+      "id": "V112-EXCEL-STRUCTURE-AND-HISTORY-GUARDS",
+      "status": "PASS_STRUCTURE",
+      "scope": "Neuf tests du suivi V112 : 113 feuilles préservées, 122 feuilles finales, altération du seul texte historique détectée, compteurs 56/9/354, refus des preuves V111 ou avec erreur réseau, identité Git privée et onze assertions V111 de porte inchangées.",
+      "command": "node --experimental-strip-types --test --test-concurrency=1 tests/homeworld-excel-followup-v112.test.mjs tests/homeworld-excel-history-v112.test.mjs",
+      "evidence": [
+        {
+          "path": "docs/qa/v112-excel-followup/initial-followup-and-history-tests.log",
+          "sha256": "33745b2c20ae67deed3a28119cf766a428806051b7a28e0f20a588974c091560",
+          "bytes": 2752
+        }
+      ],
+      "limit": "Suite structurelle et garde historique ; ne certifie ni le rendu V112 ni Excel natif. Les 125 assertions V111 complètes sont une validation historique séparée."
+    },
+    {
+      "id": "V112-SPATIAL-MODEL",
+      "status": "PASS_MODELE",
+      "scope": "Vingt et un scénarios : quatorze sur nature, faces, socles et places, plus sept critères courants d’écotones. 51 façades, 20 098 points ; six socles ; six meubles admis ; 315/392 instances naturelles admises, 77 refusées, zéro intersection résiduelle ; 39 formations et onze écotones.",
+      "command": "node --experimental-strip-types --test --test-concurrency=1 tests/homeworld-natural-placements-v112.test.mjs tests/homeworld-natural-rock-faces-v112.test.mjs tests/homeworld-spatial-v112.test.mjs tests/homeworld-public-places-v112.test.mjs tests/homeworld-ecotones-v112.test.mjs",
+      "evidence": [
+        {
+          "path": "docs/qa/v112-spatial/audit.json",
+          "sha256": "2355523724f462fcf5396a7701b962e8deacf5d54ea4cdf32d90946dff51d192",
+          "bytes": 25301
+        },
+        {
+          "path": "docs/qa/v112-spatial/current-21-assertions.log",
+          "sha256": "5f1fb365d4ebd25ae4dc6884c9e7c59bbc04e4fa50f78febcf6ce16bbd9c8131",
+          "bytes": 6604
+        }
+      ],
+      "limit": "Ni capture navigateur ni admission artistique globale."
+    },
+    {
+      "id": "V112-MOBILITY-MODEL",
+      "status": "PASS_MODELE",
+      "scope": "Neuf scénarios, quinze services, 90 positions d’arrivée et plus de 500 pas du vrai moteur sans reset.",
+      "command": "node --experimental-strip-types --test tests/homeworld-mobility-v112.test.mjs",
+      "evidence": [
+        {
+          "path": "docs/qa/v112-homeworld-mobility/model-tests.log",
+          "sha256": "a9a7fdb71e2426d5711deb20768a2f5573e80f814fab659e3d19f5ffd6e49d84",
+          "bytes": 2542
+        },
+        {
+          "path": "docs/qa/v112-homeworld-mobility/model-validation.json",
+          "sha256": "5769f4b67f598128cd7bf128bafef60a45c66a21bc4daec68aca98420f3d9fe2",
+          "bytes": 993
+        }
+      ],
+      "limit": "Le handler Worker est testé en JavaScript ; son transport réel et les pixels du jeu compilé restent distincts."
+    },
+    {
+      "id": "V112-PUBLIC-LIFE-MODEL",
+      "status": "PASS_MODELE",
+      "scope": "Six tests de modèle, moteur, sources natives et rendu React des sept circuits passifs.",
+      "command": "node --experimental-strip-types --test tests/homeworld-public-life-v112.test.mjs",
+      "evidence": [
+        {
+          "path": "docs/qa/v112-public-life/model-motor-native-ssr-tests.log",
+          "sha256": "4a4deedda75433fab7af916cda762d1826d887b4e5ce3abb28a2bcf2f15155bb",
+          "bytes": 1995
+        }
+      ],
+      "limit": "Géométrie fixe ; pas d’évitement autonome des charges mobiles, service ou nouvelle animation déduite."
+    },
+    {
+      "id": "V112-PIT-BACKWARD-MODEL",
+      "status": "PASS_MODELE",
+      "scope": "76 scénarios combat, entrées, sauvegarde/replay et clocks, dont seize arrière et 21 avant ; cinq tests AST supplémentaires de la vraie closure publique et treize régressions de dispositifs V15/futur codec V18.",
+      "command": "node --test --test-concurrency=1 tests/pit-backward-throws-v112.test.mjs tests/pit-forward-throws-v109.test.mjs tests/pit-replay.test.mjs tests/pit-training.test.mjs tests/hunterSpriteMotion.test.ts",
+      "evidence": [
+        {
+          "path": "docs/qa/v112-pit-backward/model-tests.log",
+          "sha256": "cc241683db77f9f2aea2ef120e69d183d33004832f8498c208c3fa6143372575",
+          "bytes": 4327
+        },
+        {
+          "path": "docs/qa/v112-pit-backward/forward-v16-regressions.log",
+          "sha256": "adc307a5e977df31675c8849a33fbe172bd837f9811e1ec3793342cef4e8a2d2",
+          "bytes": 5681
+        },
+        {
+          "path": "docs/qa/v112-pit-backward/integrated-model-regressions.log",
+          "sha256": "2de9b57205153219f1a193c90531130127a688ddadeddaefd7c1f63a76854609",
+          "bytes": 18868
+        },
+        {
+          "path": "docs/qa/v112-pit-backward/model-validation.json",
+          "sha256": "37d5cbfaead413f6ce8f2622ba086d7a73db417fd83f963b8cc661dac2f52ac1",
+          "bytes": 1988
+        },
+        {
+          "path": "docs/qa/v112-pit-backward/public-control-closure-tests.log",
+          "sha256": "4991dcd8af0c84570e77f5125938043f4f6d8a6a752f337b785cc902b02c2722",
+          "bytes": 1426
+        },
+        {
+          "path": "docs/qa/v112-pit-backward/device-v15-regressions.log",
+          "sha256": "254504fb54ffe0763186f34eb9be25bae1b8812c499991c42d987cf7f6d813bd",
+          "bytes": 3509
+        }
+      ],
+      "limit": "Tests de modèle seulement ; dessins et parcours public compilé séparés, autres partenaires et variantes ouverts."
+    },
+    {
+      "id": "V112-ORIGINAL-V111-HISTORICAL-REGENERATION",
+      "status": "PASS_HISTORIQUE",
+      "scope": "Seize fichiers originaux V111 et 125 assertions inchangées ; régénération exacte du classeur de 113 feuilles, 1 509 empreintes et arbre Git privé de 1 608 objets.",
+      "command": "node scripts/check-excel-history-homeworld-v112.mjs --check --tests ; python3 scripts/build-excel-history-homeworld-v112.py --check",
+      "evidence": [
+        {
+          "path": "docs/qa/v112-excel-history/original-v111-assertions-and-workbook.log",
+          "sha256": "e45839e3a497ecd7971437cfc904aeb81fc03ebebc8d77604a78fa0fbd74db17",
+          "bytes": 34366
+        },
+        {
+          "path": "docs/qa/v112-excel-history/capsule-reproduction.log",
+          "sha256": "6be6b11f88d0a52b3c09843196df613f9a51b96ad8aeb1f4634496eb2be1ea7c",
+          "bytes": 240
+        }
+      ],
+      "limit": "Le runtime couvert est def899ad, pas le jeu V112. Le premier essai n’atteignait pas les 34 assertions de chasse à cause d’un manifeste omis de la capsule ; cet échec est conservé et le partage des 23 JSON publics originaux l’a corrigé sans modifier les assertions."
+    },
+    {
+      "id": "V112-PIT-NATIVE-ART-ADMISSION",
+      "status": "PASS_ADMISSION_NATIVE",
+      "scope": "48 régions natives admises sur 22 PNG publics : 34 cases sur huit feuilles et quatorze poses isolées de remplacement. Deux chasseurs, deux rôles, deux orientations initiales ; zéro remplacement natif restant. Cinq tests réels decode/rendu/clock, trois tests de provenance/UV et quatre régressions V109 passent.",
+      "command": "node --test tests/pit-backward-throw-art-v112.test.mjs tests/pit-backward-art-provenance-v112.test.mjs tests/pit-forward-throw-art-v109.test.mjs ; node scripts/build-pit-backward-art-v112.mjs --check",
+      "evidence": [
+        {
+          "path": "docs/suivi-production/v112-pit-backward/native-frame-delivery.json",
+          "sha256": "39f4d6b5d5562c042114198125057077b53dc1caed82878852a929693e637e5b",
+          "bytes": 48791
+        },
+        {
+          "path": "docs/suivi-production/v112-pit-backward/native-uv-border-review.json",
+          "sha256": "da31088f964b690b3c93977bd7f6e214f781361b6f74245b90c7bf82e2e796ca",
+          "bytes": 32098
+        },
+        {
+          "path": "docs/suivi-production/v112-pit-backward/visual-review.json",
+          "sha256": "d54f5b7eee907d2182e720148b46310679c7a22b08ac08f7a1c62185b505d9cf",
+          "bytes": 6147
+        },
+        {
+          "path": "docs/qa/v112-pit-backward-art/art-render-tests.log",
+          "sha256": "9059bf9886a8535b6f43ddaa3360be4518f4bcd1b7402db5ad784b54bfdad7f4",
+          "bytes": 1548
+        },
+        {
+          "path": "docs/qa/v112-pit-backward-art/provenance-tests.log",
+          "sha256": "342c44fd8a1a85061a08583ce8a28afa9c18ea3377c5ace84d8ed7d77eea788b",
+          "bytes": 931
+        },
+        {
+          "path": "docs/qa/v112-pit-backward-art/forward-art-regression.log",
+          "sha256": "fdd8bcbf403a261a6eb31ac217ae041f4c91b3174169d1a7817c34dc8986a718",
+          "bytes": 1266
+        },
+        {
+          "path": "docs/qa/v112-pit-backward-art/registration-check.log",
+          "sha256": "1c79b29b58b18d4f6c40a98fcf68b4a4458a82fc13e2ec09f00084d1740c283b",
+          "bytes": 118
+        }
+      ],
+      "limit": "23 productions au total, dont un rejet double bouclier hors public. Les quatorze cases remplacées ne sont pas quatorze dessins admis additionnels. Admission native distincte du rendu compilé, des autres partenaires, variantes et des 354 cibles Homeworld."
+    },
+    {
+      "id": "V112-ORIGINAL-V111-AND-V90-HISTORY",
+      "status": "PASS_HISTORIQUE",
+      "scope": "132 assertions inchangées en 17 fichiers : 125 V111 dans seize fichiers et sept V90 dans un fichier. Classeur V111 113 feuilles reproduit à l’identique ; 3 201 sources privées, 1 219 fichiers partagés, 1 608 objets Git privés.",
+      "command": "node scripts/check-excel-history-homeworld-v112.mjs --check --tests ; python3 scripts/build-excel-history-homeworld-v112.py --check",
+      "evidence": [
+        {
+          "path": "docs/qa/v112-excel-history/original-v111-and-v90-132-assertions.log",
+          "sha256": "55a5ed9e3b6f69620e3faadd0bff4144972624cadf060bf04bcc2da097c2f0c5",
+          "bytes": 37479
+        },
+        {
+          "path": "docs/qa/v112-excel-history/extended-capsule-reproduction.log",
+          "sha256": "54f8eb75d215061b9418f0c690a1d2efc03474d9abdfdba2a95975dcaadab8a4",
+          "bytes": 240
+        }
+      ],
+      "limit": "Application historique def899ad uniquement. Les sept critères d’écotones actuels sont testés séparément sur V112 ; le premier certificat de 125 assertions V111 reste conservé à l’identique."
+    },
+    {
+      "id": "V112-UPGRADE-RECOVERY-MODEL-AND-HUB",
+      "status": "PASS_MODELE",
+      "scope": "27 scénarios : sept documents anciens, checkpoint ou last distant, pièce au sol, géométrie avant/après, moteur et vrais callbacks du Hub, copie exacte, quota/exception/proposition périmée, propriétaire, reprise K-17 à portée réelle, acquittement différé, Save12 et frontière de 512 échantillons explicitement synthétique.",
+      "command": "node --test tests/homeworld-geometry-recovery-v112.test.mjs tests/homeworld-geometry-recovery-matrix-v112.test.mjs tests/homeworld-geometry-recovery-integration-v112.test.mjs",
+      "evidence": [
+        {
+          "path": "docs/qa/v112-homeworld-upgrade-recovery/model-and-hub-tests.log",
+          "sha256": "0716b0d254350be4458b4a48c6702ae16511cf1e1494cb07c6fc2f518012d72d",
+          "bytes": 8690
+        },
+        {
+          "path": "docs/qa/v112-homeworld-upgrade-recovery/validation.json",
+          "sha256": "3718024444b8ad15c32a3e864a4858a1c95304963caa3eaf636f4e5b24c76039",
+          "bytes": 2122
+        }
+      ],
+      "limit": "Modèle/moteur/Hub, pas navigateur. Les dix fixtures versionnées sont réellement jouées dans V111 ; le test de capacité 512 ajoute explicitement des échantillons de distance nulle et ne prétend pas provenir de l’ancien UI."
+    },
+    {
+      "id": "V112-PIT-FINAL-INTEGRATION-AND-OBSERVATION",
+      "status": "PASS_MODELE",
+      "scope": "106 tests intégrés regroupent combat/replay/entrées, cinq closures publiques, treize dispositifs et douze admissions/rendus natifs sans additionner leurs anciens journaux. Trois tests supplémentaires contrôlent l’observation native des Worker, dont un constructeur jetant une exception rattrapée par l’application. Lint ciblé de dix-huit fichiers réussi.",
+      "command": "Commandes exactes et exitCode0 en première ligne des journaux final-integrated-regressions.log et final-targeted-lint.log ; tests d’observation Worker séparés.",
+      "evidence": [
+        {
+          "path": "docs/qa/v112-pit-backward/final-integrated-regressions.log",
+          "sha256": "4d29cd20c434f448e470f3206c25a90e6e997a915ab253378d193bc141bd0200",
+          "bytes": 27565
+        },
+        {
+          "path": "docs/qa/v112-pit-backward/final-targeted-lint.log",
+          "sha256": "2da429ab1b0aab34cecc814576464eb853d8c4da5195e47048b85d0abe0840ab",
+          "bytes": 872
+        },
+        {
+          "path": "docs/qa/v112-pit-backward/worker-observation-tests.log",
+          "sha256": "44fe60c3eb1a73566470c17bd0588434d4eec857ca4190186b0874cb5f9a0134",
+          "bytes": 953
+        },
+        {
+          "path": "docs/qa/v112-pit-backward/worker-observation-validation.json",
+          "sha256": "166dbe70e14909360911acc1747fbf4dbc5fa3756150d051116de32330c6cdb6",
+          "bytes": 874
+        }
+      ],
+      "limit": "Pas une recette navigateur compilée. Le typecheck global encore en cours lors de la production de ces journaux n’est pas utilisé comme preuve positive ; le rapport compilé final reste distinct."
+    }
+  ],
+  "limits": [
+    "Les 113 feuilles V111 et leurs preuves publiées sont préservées ; le générateur V111 n'est jamais relancé contre le runtime V112.",
+    "Les neuf actions source sont incluses dans les 56 exigences héritées, pas additionnées à ce total.",
+    "Les 354 cibles artistiques sont un catalogue distinct, pas une liste de 354 absences.",
+    "Les tests de modèle, les captures du jeu compilé et la structure Excel certifient des périmètres différents.",
+    "L'application Excel native et son moteur de calcul ne sont pas exécutés par ce suivi."
+  ]
+}

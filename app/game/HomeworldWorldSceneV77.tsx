@@ -14,8 +14,10 @@ import HomeworldPointVisualV64 from './HomeworldPointVisualV64';
 import HomeworldLavaSceneV77 from './HomeworldLavaSceneV77';
 import HomeworldBackdropV81 from './HomeworldBackdropV81';
 import HomeworldRetainingSupportV82 from './HomeworldRetainingSupportV82';
-import HomeworldEcotonesV90 from './HomeworldEcotonesV90';
+import HomeworldEcotonesV112 from './HomeworldEcotonesV112';
 import HomeworldCartographerV104 from './HomeworldCartographerV104';
+import HomeworldPublicLifeV112 from './HomeworldPublicLifeV112';
+import HomeworldPublicPlacesV112 from './HomeworldPublicPlacesV112';
 import {HOMEWORLD_CARTOGRAPHY_V105} from './systems/homeworldCartographyDefinitionV105';
 import {HOMEWORLD_RETAINING_SUPPORTS_V82} from './systems/homeworldRetainingAssembliesV82';
 import {HOMEWORLD_NATIVE_CATALOGUE_V81} from './systems/homeworldNativeArchitectureV81';
@@ -42,18 +44,24 @@ import {homeworldPaintedLevelsV78,homeworldSceneDepthV78,homeworldGroundDepthV78
 import {HOMEWORLD_URBAN_FACADES_V78} from './systems/homeworldUrbanFacadesV78';
 import {HOMEWORLD_CIVIC_ART_V80,HOMEWORLD_CIVIC_PROPS_V80} from './systems/homeworldCivicDecorV80';
 import {HOMEWORLD_COURT_ART_V80} from './systems/homeworldCourtArtV80';
-import {HOMEWORLD_NATURAL_MODULES_V80} from './systems/homeworldNaturalPlacementsV80';
-import {HOMEWORLD_NATURAL_SUPPORT_TERRACES_V85,HOMEWORLD_NATURAL_PUBLIC_GROUND_V85} from './systems/homeworldNaturalSupportsV85';
+import {HOMEWORLD_NATURAL_MODULES_V112,HOMEWORLD_NATURAL_SUPPORT_TERRACES_V112,HOMEWORLD_NATURAL_PUBLIC_GROUND_V112} from './systems/homeworldNaturalPlacementsV112';
+import {HOMEWORLD_NATURAL_SUPPORT_TERRACES_V85} from './systems/homeworldNaturalSupportsV85';
 import type {HomeworldTransitV77} from './systems/homeworldWorldV77';
 import {HOMEWORLD_STREET_DECOR_ART_V83,HOMEWORLD_STREET_DECOR_PROPS_V83} from './systems/homeworldStreetDecorV83';
 import {HOMEWORLD_STREET_DECOR_ART_V84} from './systems/homeworldStreetDecorV84';
 import {HOMEWORLD_STREET_DECOR_PROPS_V84} from './systems/homeworldStreetDecorMountV84';
 import {HOMEWORLD_STREET_COMPOSITION_ART_V92,homeworldStreetCompositionOpacityV92,homeworldCityFurnitureOpacityV92} from './systems/homeworldStreetCompositionV92';
 import {HOMEWORLD_STREET_COMPOSITION_PROPS_V92} from './systems/homeworldStreetCompositionMountV92';
+import {homeworldNaturalRockFacesV112} from './systems/homeworldNaturalRockFacesV112';
+import {homeworldFoundationPaintV90} from './systems/homeworldFoundationPaintV90';
 type Camera={x:number;y:number;viewWidth:number;viewHeight:number};
 const paintedBuildings=[...HOMEWORLD_BUILDINGS_V77,...HOMEWORLD_URBAN_FACADES_V78];
-const publicNaturalGround=HOMEWORLD_NATURAL_PUBLIC_GROUND_V85;
+const publicNaturalGround=HOMEWORLD_NATURAL_PUBLIC_GROUND_V112;
+const naturalRockFacesV112=new Map(HOMEWORLD_NATURAL_SUPPORT_TERRACES_V112.map(formation=>[
+ formation.id,homeworldNaturalRockFacesV112(formation,publicNaturalGround,HOMEWORLD_GEOMETRY_V64.depthScale),
+]));
 export {HOMEWORLD_NATURAL_SUPPORT_TERRACES_V85};
+export {HOMEWORLD_NATURAL_SUPPORT_TERRACES_V112};
 const visible=(box:{left:number;top:number;width:number;height:number},camera:Camera)=>box.left+box.width>=camera.x-160&&box.left<=camera.x+camera.viewWidth+160&&box.top+box.height>=camera.y-160&&box.top<=camera.y+camera.viewHeight+160;
 /** Replacement for the exterior draw pass only. Character/input/dialogue/rooms
  * remain in HomeworldHub. Every bitmap is an existing source without raster or
@@ -74,6 +82,7 @@ export default memo(function HomeworldWorldSceneV77({actor,levelId,camera,second
   return <HomeworldNativePropV64 key={key} id={key} artId={artId} art={art} x={p.x} y={p.y} depth={depth(level,point.y,extraElevation)} heightWorld={heightWorld} style={{opacity}}/>;
  };
  return <>
+  <HomeworldPublicLifeV112 levelId={levelId} camera={camera} seconds={seconds} reducedMotion={reducedMotion} transit={transit}/>
   {archivePlaqueV109&&<HomeworldArchivePlaqueWorldV111 levelId={levelId} ledger={archivePlaqueV109} seconds={seconds} archivistActiveV111={archivistActiveV111} archivistPausedV111={archivistPausedV111} archivistSequenceV111={archivistSequenceV111} reducedMotionV111={reducedMotion}/>}
   {cargoV108&&<HomeworldCargoWorldV108 levelId={levelId} ledger={cargoV108} seconds={seconds}/>}
   {comparisonV107&&<HomeworldArchiveComparisonWorldV107 levelId={levelId} ledger={comparisonV107}/>}
@@ -82,10 +91,18 @@ export default memo(function HomeworldWorldSceneV77({actor,levelId,camera,second
   {cartographyHighPointV105&&levelId==='+1'&&(()=>{const p=homeworldProjectGroundV64(HOMEWORLD_CARTOGRAPHY_V105.highPoint,homeworldLevelV77('+1').elevation);return <span data-homeworld-high-point-v105 style={{position:'absolute',left:p.x-64,top:p.y-30,width:128,height:60,border:'2px dashed #dcc68d',borderRadius:'50%',background:'#dcc68d18',pointerEvents:'none',zIndex:depth('+1',HOMEWORLD_CARTOGRAPHY_V105.highPoint.y)}}><span style={{position:'absolute',left:-48,top:-48,width:220,textAlign:'center',color:'#f4e1b3',background:'#12211fe8',padding:8,borderRadius:5,fontSize:13}}>Point d’observation du viaduc</span></span>;})()}
   <HomeworldBackdropV81 camera={camera} levelId={levelId} paintedLevels={paintedLevels} seconds={seconds} reducedMotion={reducedMotion}/>
   <HomeworldLavaSceneV77 actor={actor} skiffActive={skiffActive} skiffPoint={actor} floor={levelId} camera={camera} seconds={seconds} reducedMotion={reducedMotion}/>
-  {painted('0')&&<svg aria-hidden="true" data-homeworld-natural-ground-v77="true" data-natural-support-solid-v85="false" width={camera.viewWidth} height={camera.viewHeight} viewBox={`${camera.x} ${camera.y} ${camera.viewWidth} ${camera.viewHeight}`} style={{position:'absolute',left:camera.x,top:camera.y,zIndex:-11001,pointerEvents:'none'}}>
+  {painted('0')&&<svg aria-hidden="true" data-homeworld-natural-ground-v77="true" data-natural-support-solid-v85="false" data-homeworld-natural-admission-v112={HOMEWORLD_NATURAL_MODULES_V112.length} width={camera.viewWidth} height={camera.viewHeight} viewBox={`${camera.x} ${camera.y} ${camera.viewWidth} ${camera.viewHeight}`} style={{position:'absolute',left:camera.x,top:camera.y,zIndex:-11001,pointerEvents:'none'}}>
    <defs>
     <pattern id={`${id}-natural`} width="300" height={300*d} patternUnits="userSpaceOnUse"><image href={HOMEWORLD_OUTSKIRTS_GROUND_V71.src} width="300" height={300*d} preserveAspectRatio="none"/></pattern>
-    <pattern id={`${id}-natural-rock`} width="1050" height={HOMEWORLD_NATIVE_CATALOGUE_V81.assets['basalt-city-foundation'].art.sourceHeight*1050/HOMEWORLD_NATIVE_CATALOGUE_V81.assets['basalt-city-foundation'].art.sourceWidth} patternUnits="userSpaceOnUse"><image href={HOMEWORLD_NATIVE_CATALOGUE_V81.assets['basalt-city-foundation'].art.src} width="1050" height={HOMEWORLD_NATIVE_CATALOGUE_V81.assets['basalt-city-foundation'].art.sourceHeight*1050/HOMEWORLD_NATIVE_CATALOGUE_V81.assets['basalt-city-foundation'].art.sourceWidth} preserveAspectRatio="xMidYMin meet"/></pattern>
+    {[...naturalRockFacesV112.values()].flat().map(face=>{
+     const art=HOMEWORLD_NATIVE_CATALOGUE_V81.assets['basalt-city-foundation'].art;
+     const paint=homeworldFoundationPaintV90(face.paintTop[0],face.paintTop[1],face.paintDrop,art);
+     return <pattern key={face.id} id={`${id}-natural-rock-${face.id}`} data-natural-face-paint-v112={face.id}
+      x="0" y="0" width={paint.width} height={paint.rowHeight} patternUnits="userSpaceOnUse" patternContentUnits="userSpaceOnUse"
+      patternTransform={paint.transform} overflow="hidden" data-native-vertical-rows-v112="1">
+      <image href={art.src} x="0" y="0" width={paint.width} height={paint.imageHeight} preserveAspectRatio="xMidYMin meet"/>
+     </pattern>;
+    })}
     <mask id={`${id}-natural-outside`} maskUnits="userSpaceOnUse" x={camera.x} y={camera.y} width={camera.viewWidth} height={camera.viewHeight}>
      <rect x={camera.x} y={camera.y} width={camera.viewWidth} height={camera.viewHeight} fill="white"/>
      {publicNaturalGround.map(ground=><polygon key={ground.id} points={ground.polygon.map(p=>`${p.x},${p.y*d}`).join(' ')} fill="black"/>)}
@@ -94,13 +111,17 @@ export default memo(function HomeworldWorldSceneV77({actor,levelId,camera,second
    {/* Source formations share anchored rock promontories. Existing public
        pavement remains opaque above them; no physical support is widened. */}
    <g mask={`url(#${id}-natural-outside)`}>
-    {HOMEWORLD_NATURAL_SUPPORT_TERRACES_V85.map(terrace=><g key={terrace.id} data-homeworld-natural-formation-v85={terrace.id} data-natural-ground-anchor-v85={terrace.groundId}>
-     {terrace.polygon.map((a,index)=>{const b=terrace.polygon[(index+1)%terrace.polygon.length];if(b.x>=a.x)return null;return <polygon key={index} data-natural-rock-face-v85="true" points={`${a.x},${a.y*d} ${b.x},${b.y*d} ${b.x},${b.y*d+300} ${a.x},${a.y*d+300}`} fill={`url(#${id}-natural-rock)`}/>;})}
+    {HOMEWORLD_NATURAL_SUPPORT_TERRACES_V112.map(terrace=><g key={terrace.id} data-homeworld-natural-formation-v85={terrace.id} data-homeworld-natural-formation-v112={terrace.id} data-natural-ground-anchor-v85={terrace.groundId}>
+     {naturalRockFacesV112.get(terrace.id)!.map(face=><g key={face.id}>
+      <polygon data-natural-rock-underlay-v112={face.id} points={face.polygon.map(point=>`${point.x},${point.y}`).join(' ')} fill="#1c1510"/>
+      <polygon data-natural-rock-face-v85="true" data-natural-rock-face-v112={face.id} data-natural-face-connected-v112="true"
+       points={face.polygon.map(point=>`${point.x},${point.y}`).join(' ')} fill={`url(#${id}-natural-rock-${face.id})`}/>
+     </g>)}
      <polygon data-natural-support-top-v85="true" points={terrace.polygon.map(p=>`${p.x},${p.y*d}`).join(' ')} fill={`url(#${id}-natural)`}/>
     </g>)}
    </g>
   </svg>}
-  {painted('0')&&<HomeworldEcotonesV90 camera={camera}/>}
+  {painted('0')&&<HomeworldEcotonesV112 camera={camera}/>}
   {HOMEWORLD_LEVELS_V77.filter(level=>painted(level.id)).map(level=><svg key={level.id} aria-hidden="true" data-homeworld-level-ground-v77={level.id}
    width={camera.viewWidth} height={camera.viewHeight} viewBox={`${camera.x} ${camera.y} ${camera.viewWidth} ${camera.viewHeight}`}
    style={{position:'absolute',left:camera.x,top:camera.y,zIndex:homeworldGroundDepthV78(level.id,levelId,transit),pointerEvents:'none'}}>
@@ -130,7 +151,7 @@ export default memo(function HomeworldWorldSceneV77({actor,levelId,camera,second
   {painted('0')&&<div className={styles.landingPadV64} data-homeworld-spaceport="pad" style={{left:HOMEWORLD_SPACEPORT_V77.pad.x-HOMEWORLD_TRANSPORT_ART_V64['landing-pad'].pivot.x*HOMEWORLD_TRANSPORT_ART_V64['landing-pad'].scaleWorldPerPixel,
    top:(HOMEWORLD_SPACEPORT_V77.pad.y-HOMEWORLD_SPACEPORT_V77.pad.depth/2-HOMEWORLD_TRANSPORT_ART_V64['landing-pad'].pivot.y*HOMEWORLD_TRANSPORT_ART_V64['landing-pad'].scaleWorldPerPixel)*d,
    width:HOMEWORLD_TRANSPORT_ART_V64['landing-pad'].renderWidthWorld,height:HOMEWORLD_TRANSPORT_ART_V64['landing-pad'].renderDepthWorld*d,backgroundImage:`url('${HOMEWORLD_TRANSPORT_ART_V64['landing-pad'].src}')`,zIndex:-10999}}/>}
-  {painted('0')&&HOMEWORLD_NATURAL_MODULES_V80.map(item=>{const art=HOMEWORLD_OUTSKIRTS_ART_V71[item.artId];return prop(item.id,'landscape:'+item.artId,art,item,'0',art.heightWorld*item.scale,1);})}
+  {painted('0')&&HOMEWORLD_NATURAL_MODULES_V112.map(item=>{const art=HOMEWORLD_OUTSKIRTS_ART_V71[item.artId];return prop(item.id,'landscape:'+item.artId,art,item,'0',art.heightWorld*item.scale,1);})}
   {HOMEWORLD_PROPS_V77.filter(item=>painted(item.levelId)).map(item=>item.artId?prop(item.id,item.artId,HOMEWORLD_PROP_ART_V64[item.artId],item,item.levelId,item.height,item.levelId===levelId&&shouldFadeHomeworldForeground(item,actor)?.2:1):null)}
   {[...HOMEWORLD_FRONTAGE_V77,...HOMEWORLD_CONNECTION_FURNITURE_V77].filter(item=>painted(item.levelId)).map(item=>{const art=HOMEWORLD_FURNITURE_ART_V72[item.artId];return prop(item.id,item.artId,art,item,item.levelId,art.heightWorld*(item.scale??1));})}
   {[...HOMEWORLD_EXTERIOR_V77,...HOMEWORLD_URBAN_PROPS_V78].filter(item=>painted(item.levelId)).map(item=>{const art=HOMEWORLD_COURT_ART_V80[item.artId];return prop(item.id,item.artId,art,item,item.levelId,art.heightWorld*item.scale,1,item.elevation??0);})}
@@ -140,6 +161,7 @@ export default memo(function HomeworldWorldSceneV77({actor,levelId,camera,second
   {HOMEWORLD_STREET_DECOR_PROPS_V83.filter(item=>painted(item.levelId)).map(item=>{const art=HOMEWORLD_STREET_DECOR_ART_V83[item.artId];return prop(item.id,'street-native-v83:'+item.artId,art,item,item.levelId,art.heightWorld*item.scale);})}
   {HOMEWORLD_STREET_DECOR_PROPS_V84.filter(item=>painted(item.levelId)).map(item=>{const art=HOMEWORLD_STREET_DECOR_ART_V84[item.artId];return prop(item.id,'street-native-v84:'+item.artId,art,item,item.levelId,art.heightWorld*item.scale);})}
   {HOMEWORLD_STREET_COMPOSITION_PROPS_V92.filter(item=>painted(item.levelId)).map(item=>{const art=HOMEWORLD_STREET_COMPOSITION_ART_V92[item.artId];return prop(item.id,'street-composition-v92:'+item.artId,art,item,item.levelId,art.heightWorld*item.scale,homeworldStreetCompositionOpacityV92(item,actor,levelId));})}
+  <HomeworldPublicPlacesV112 actor={actor} levelId={levelId} paintedLevels={paintedLevels} camera={camera}/>
   {HOMEWORLD_CONNECTIONS_V77.filter(connection=>painted(connection.levelId)).map(connection=>{const art=HOMEWORLD_GATEWAY_ART_V72[connection.artId];return prop('gateway-v72:'+connection.regionId,connection.artId,art,connection.threshold,connection.levelId,art.heightWorld*homeworldGatewayScaleV72(connection));})}
   {painted('0')&&prop('clan-local-shuttle','clan-shuttle',HOMEWORLD_TRANSPORT_ART_V64['clan-shuttle'],HOMEWORLD_SPACEPORT_V77.shuttle,'0',HOMEWORLD_TRANSPORT_ART_V64['clan-shuttle'].heightWorld)}
   {HOMEWORLD_POINTS_V77.filter(p=>painted(p.levelId)&&!HOMEWORLD_INTERIOR_POINT_IDS_V64.has(p.id)).map(point=>{

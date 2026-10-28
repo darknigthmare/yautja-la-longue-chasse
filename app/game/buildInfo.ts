@@ -1,3 +1,3 @@
 /** Visible content lot, shared by portable archive metadata and the UI. */
-export const GAME_CONTENT_VERSION = "V111";
-export const GAME_CONTENT_LABEL = "Dépeçage · récolte physique des trophées · bonds de canopée";
+export const GAME_CONTENT_VERSION = "V112";
+export const GAME_CONTENT_LABEL = "Cité vivante · reprises d’étude · duels Feral et Scar";
