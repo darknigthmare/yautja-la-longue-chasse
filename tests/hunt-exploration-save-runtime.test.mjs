@@ -158,6 +158,16 @@ test("checksum-valid but malformed combat snapshots are rejected before restorat
 
 test("pilot acquisitions survive retry and resume without stacking the permanent energy bonus", () => {
   const state = fixture();
+  // This progression case represents the current live runtime. makeGameState
+  // always creates both traces with the same run; an ecosystem without its
+  // source register is deliberately refused by checkpoint admission.
+  const runId = missionId + ":0";
+  Object.assign(state, {
+    huntRites: nativeHelpers.createRitesOfHuntV77(runId, missionId),
+    ecosystem: nativeHelpers.createCorpseDiscoveryV112(runId),
+    flayingToolOwned: false, harvestArmorIdV112: "hunter",
+    harvestDepotFreeV112: 256, riteToolInitialConditionV112: 100,
+  });
   state.exploration = world.defaultExplorationProgress();
   state.world = world.applyPilotWorld(world.worldBlueprintFor(missionId), state.exploration);
   const checkpoint = api.captureCheckpoint(state, "resume");
@@ -172,6 +182,9 @@ test("pilot acquisitions survive retry and resume without stacking the permanent
   const again = api.restoreCheckpoint(retried, checkpoint, "resume");
   assert.equal(again.player.maxEnergy, 115);
   const restoredEnvelope = api.deserializeActiveHuntCheckpoint(api.serializeActiveHuntCheckpoint(api.captureCheckpoint(again, "resume"), 1));
+  assert.ok(restoredEnvelope, "current acquisition progress retains coherent source and discovery registers");
+  assert.equal(restoredEnvelope.checkpoint.huntRites.runId, runId);
+  assert.equal(restoredEnvelope.checkpoint.ecosystem.runId, runId);
   assert.deepEqual(plain(restoredEnvelope.checkpoint.exploration), plain(state.exploration));
 });
 
