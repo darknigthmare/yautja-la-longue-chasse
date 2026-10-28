@@ -21,6 +21,9 @@ if(mode==='compiled-app')assert(buildId&&/^[a-f0-9]{40}$/.test(runtimeCommit??''
 const journeys=process.env.YAUTJA_QA_JOURNEYS?.split(',')??requiredJourneys;
 assert(journeys.length&&new Set(journeys).size===journeys.length&&journeys.every(name=>requiredJourneys.includes(name)));
 if(mode==='compiled-app')assert.deepEqual(journeys,requiredJourneys,'Only the complete Homeworld recipe can certify a compiled app');
+const upgradeCaseDefinitions=[{name:'checkpoint'},{name:'remote-last',remote:true},{name:'ground-piece',groundObject:true},{name:'checkpoint-mobile',width:390,height:844},{name:'cargo-ground-piece',cargo:true,groundObject:true}];
+const upgradeCaseFilter=process.env.YAUTJA_QA_UPGRADE_CASES?.split(',')??null;
+if(upgradeCaseFilter){assert.equal(mode,'development','Compiled publication forbids exploratory subcase filters');assert(upgradeCaseFilter.length&&new Set(upgradeCaseFilter).size===upgradeCaseFilter.length&&upgradeCaseFilter.every(name=>upgradeCaseDefinitions.some(row=>row.name===name)));}
 const output=path.resolve(process.env.YAUTJA_HOMEWORLD_V112_OUTPUT??'outputs/qa-v112/homeworld-public-spaces');
 await fs.mkdir(output,{recursive:true});assert.equal((await fs.readdir(output)).length,0,'Use a fresh output directory; preserve previous attempts');
 const sha=bytes=>createHash('sha256').update(bytes).digest('hex');
@@ -32,7 +35,7 @@ const api=homeworldQaModelV64(process.cwd(),[
 ]);
 const centroid=polygon=>({x:polygon.reduce((sum,p)=>sum+p.x,0)/polygon.length,y:polygon.reduce((sum,p)=>sum+p.y,0)/polygon.length});
 const bootstrap=await build({stdin:{contents:"import * as saves from './app/game/save';import * as slots from './app/game/systems/campaignSlots';import * as location from './app/game/systems/homeworldLocationV77';import * as recovery from './app/game/systems/homeworldGeometryRecoveryV112';window.__publicSpacesQaV112={...saves,...slots,...location,...recovery};",resolveDir:process.cwd(),loader:'ts'},bundle:true,write:false,platform:'browser',format:'iife',target:'es2022',logLevel:'silent'});
-const checks=[],captures=[],fixtures=[],observations=[],servedBuilds=[],errors=[],consoleErrors=[],workerErrors=[],requestsFailed=[],completedJourneys=[];
+const checks=[],captures=[],fixtures=[],observations=[],servedBuilds=[],errors=[],consoleErrors=[],workerErrors=[],requestsFailed=[],completedJourneys=[],completedCases={UpgradeRecovery:[]};
 const check=(name,ok,detail)=>{checks.push({name,status:ok?'PASS':'FAIL',...(detail===undefined?{}:{detail})});console.log(`${ok?'PASS':'FAIL'} ${name}`);assert(ok,name);};
 let failure=null;
 const browser=await chromium.launch({headless:true,executablePath:process.env.CHROMIUM_EXECUTABLE_PATH??process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH??'/usr/bin/chromium',args:['--no-sandbox','--disable-dev-shm-usage','--mute-audio']});
@@ -226,7 +229,8 @@ async function mobility(mobileOnly=false){
 
 async function upgradeRecovery(){
  const owner=firstTracksCompleted().createdAt,prefix=api.HOMEWORLD_GEOMETRY_RECOVERY_PREFIX_V112;
- for(const options of[{name:'checkpoint'},{name:'remote-last',remote:true},{name:'ground-piece',groundObject:true},{name:'checkpoint-mobile',width:390,height:844},{name:'cargo-ground-piece',cargo:true,groundObject:true}]){
+ const cases=upgradeCaseFilter?upgradeCaseFilter.map(name=>upgradeCaseDefinitions.find(row=>row.name===name)):upgradeCaseDefinitions;
+ for(const options of cases){
   const played=await createGeometryUpgradeFixtureV112(owner,options),ledgerKey=played.ledgerKey??'archivePlaqueV109',operation=played.operation??'plaque';
   await scenario('upgrade-'+options.name,{point:played.checkpoint.exterior,legacyUpgrade:played,reducedMotion:'reduce',...(options.width?{width:options.width,height:options.height}:{})},async f=>{
    const panel=f.page.locator('[data-homeworld-upgrade-recovery-v112]');await panel.waitFor();
@@ -281,21 +285,21 @@ async function upgradeRecovery(){
    await f.selectGuide(objective.destinationId);const followed=await f.followGuide(objective.destinationId);check(options.name+' real Worker guide reaches the genuinely migrated operation reprise',followed.steps>=0&&Math.hypot(followed.actor.x-migrated.homeworld[ledgerKey].receipt.last.x,followed.actor.y-migrated.homeworld[ledgerKey].receipt.last.y)<=4.5,followed);
    const resume=f.page.locator(operation==='cargo'?'[data-cargo-journal-v108]':'[data-homeworld-plaque-journal-v109]').getByRole('button',{name:operation==='cargo'?'Reprendre la manutention ici':'Reprendre l’étude ici',exact:true});await resume.click();await f.tick();const resumed=await f.disk();check(options.name+' player voluntarily resumes the real operation without invented walk or reward',resumed.homeworld[ledgerKey].receipt.phase==='working'&&resumed.homeworld[ledgerKey].receipt.walked===played.oldOperationWalked);
    await f.capture(operation==='cargo'?'voluntary-cargo-reprise':'voluntary-study-reprise');
-  });
+  });completedCases.UpgradeRecovery.push(options.name);
  }
 }
 
 try{
- for(const name of journeys){await({PublicLife:publicLife,PublicPlaces:publicPlaces,Foundations:foundations,InteriorArrival:()=>mobility(),Mobile:()=>mobility(true),UpgradeRecovery:upgradeRecovery})[name]();completedJourneys.push(name);}
+ for(const name of journeys){await({PublicLife:publicLife,PublicPlaces:publicPlaces,Foundations:foundations,InteriorArrival:()=>mobility(),Mobile:()=>mobility(true),UpgradeRecovery:upgradeRecovery})[name]();if(name!=='UpgradeRecovery'||completedCases.UpgradeRecovery.length===upgradeCaseDefinitions.length)completedJourneys.push(name);}
  check('No uncaught browser exception',errors.length===0,errors);check('No console.error record',consoleErrors.length===0,consoleErrors);check('No native Worker construction or event error',workerErrors.length===0,workerErrors);check('No failed network request',requestsFailed.length===0,requestsFailed);
 }catch(error){failure={message:error.message,stack:error.stack};console.error(error);}
 finally{
  await browser.close();let sourceAfter=[],sourceSnapshotFailure=null;
  try{sourceAfter=(await snapshotRuntimeV112()).entries;}catch(error){sourceSnapshotFailure={message:error.message,stack:error.stack};failure??={message:'Final executed-source inventory check failed',cause:sourceSnapshotFailure};}
  if(JSON.stringify(sourceAfter)!==JSON.stringify(sourceBefore)){failure??={message:'Executed sources changed during the complete recipe'};checks.push({name:'Every frozen source remains byte-identical during the executed recipe',status:'FAIL'});}else checks.push({name:'Every frozen source remains byte-identical during the executed recipe',status:'PASS'});
- const completeRecipe=JSON.stringify(completedJourneys)===JSON.stringify(requiredJourneys),status=failure?'FAIL':mode==='compiled-app'?'PASS':'PASS_EXPLORATORY';
- const environment={YAUTJA_QA_MODE:mode,YAUTJA_QA_BASE_URL:baseUrl,YAUTJA_QA_BUILD_ID:buildId,YAUTJA_QA_RUNTIME_COMMIT:runtimeCommit,YAUTJA_QA_JOURNEYS:journeys.join(','),YAUTJA_HOMEWORLD_V112_OUTPUT:output};
- const raw={schemaVersion:1,release:'V112',domain:'Homeworld',status,completeRecipe,completedJourneys,production:{mode,runtimeCommit,buildId,checksPassed:checks.filter(c=>c.status==='PASS').length,checksFailed:checks.filter(c=>c.status==='FAIL').length,browserErrors:errors.length,servedBuilds},
+ const completeRecipe=!upgradeCaseFilter&&JSON.stringify(completedJourneys)===JSON.stringify(requiredJourneys),status=failure?'FAIL':mode==='compiled-app'?'PASS':'PASS_EXPLORATORY';
+ const environment={YAUTJA_QA_MODE:mode,YAUTJA_QA_BASE_URL:baseUrl,YAUTJA_QA_BUILD_ID:buildId,YAUTJA_QA_RUNTIME_COMMIT:runtimeCommit,YAUTJA_QA_JOURNEYS:journeys.join(','),YAUTJA_HOMEWORLD_V112_OUTPUT:output,...(upgradeCaseFilter?{YAUTJA_QA_UPGRADE_CASES:upgradeCaseFilter.join(',')}:{})};
+ const raw={schemaVersion:1,release:'V112',domain:'Homeworld',status,completeRecipe,completedJourneys,completedCases,production:{mode,runtimeCommit,buildId,checksPassed:checks.filter(c=>c.status==='PASS').length,checksFailed:checks.filter(c=>c.status==='FAIL').length,browserErrors:errors.length,servedBuilds},
   scope:{resumedFrom:null,description:'Complete bounded Homeworld V112 public-space recipe: seven short native citizen circuits and real lane walking, pause/reduced motion; six original native furniture contacts and operator approaches with real collision; six retained-facade supports plus connected opaque natural rock face rendering; actual native Worker guidance and E interactions for officer, mausoleum and archive, including390px mobile; explicitly confirmed local upgrade recovery for an occupied old checkpoint, a remote interrupted last point, a genuinely parked plaque and a genuinely parked cargo lot. Exact backups, write refusals, final joint actor/cargo clearance, real departure and voluntary operation reprises are verified, with mobile keyboard/scroll/accessibility checks for the restoration preview. Each scenario starts from an explicitly declared campaign checkpoint; no travel between seeded scenarios or completion of all inherited Homeworld requirements is claimed. Geometry, native render records and unmodified captures are checked; every capture must be opened independently before compiled publication.',initialFixtures:'Previously completed First Tracks model campaign, known districts and a pre-owned flaying tool are seeded. Upgrade fixtures are genuinely played in the pinned V111 private app; their previously supported points intentionally conflict with the new V112 furniture. No React state, actor, Worker result, input handler, collision function or operation result is patched. Declared storage-capacity fixtures affect only backup or campaign writes.'},
   invocation:{command:'node '+driver,environment},checks,captures,fixtures,observations,errors,consoleErrors,workerErrors,requestsFailed,sourceBefore,sourceAfter,sourceSnapshotFailure,failure,completedAt:new Date().toISOString()};
  await fs.writeFile(path.join(output,'result.json'),JSON.stringify(raw,null,2)+'\n');console.log(JSON.stringify({status,completeRecipe,completedJourneys,checks:checks.length,captures:captures.length,output}));
