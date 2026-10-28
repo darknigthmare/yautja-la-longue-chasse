@@ -26,7 +26,7 @@ function fixture(harvest=true,authoredWorld=false){
   const state=r.makeGameState(mission,save.loadout,save.inventory,"hunter",save.appearance,false,false,0,save.exploration);
   let standingY=400,standingX=1300;
   if(authoredWorld){
-    const actual=r.worldBlueprintFor(mission.id);
+    const actual=state.world;
     const platform=actual.platforms.find(p=>p.width>=180&&p.y>=160&&p.y<actual.floorY-40&&
       !actual.platforms.some(w=>w.collision==="solid"&&p.x+p.width*.3+state.player.width/2>w.x&&p.x+p.width*.3-state.player.width/2<w.x+w.width&&
         p.y>w.y+1e-6&&p.y-state.player.height<w.y+w.height-1e-6));
