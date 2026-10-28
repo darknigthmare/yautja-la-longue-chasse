@@ -108,3 +108,12 @@ test("socket authoring uses real structural geometry and excludes decoration, na
   assert.equal(a.carcassSupportsForWorldV112(world).length,0);
   world.platforms=[];world.climbables=[];assert.equal(a.carcassSupportsForWorldV112(world).length,0);
 });
+
+test("legacy corpse anatomy is derived from its real actor rather than a universal fallback mass",()=>{
+  const f=scene();const legacy=structuredClone(f.state);
+  delete legacy.corpses[0].massKg;delete legacy.corpses[0].integrity;
+  f.actors[0].riteIntegrityLossV112=20;
+  const restored=a.restoreRitesRuntimeV77(legacy,"jungle-vey:7","jungle-vey",f.actors,legacy.elapsed,f.label,f.options);
+  assert.ok(restored);assert.equal(restored.corpses[0].massKg,40);assert.equal(restored.corpses[0].integrity,80);
+  assert.equal(legacy.corpses[0].massKg,undefined,"the incoming save is not mutated");
+});

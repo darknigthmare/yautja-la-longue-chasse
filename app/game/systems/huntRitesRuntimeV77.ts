@@ -54,6 +54,12 @@ export function restoreRitesRuntimeV77(raw:unknown,runId:string,missionId:string
     if(!proof||corpse.sourceEnemyId!==proof.sourceEnemyId||corpse.kind!==proof.kind||corpse.label!==proof.label
       ||Math.abs(corpse.x-proof.x)>1e-6||Math.abs(corpse.y-proof.y)>1e-6||corpse.defeatedAt!==proof.defeatedAt
       ||corpse.worthy!==proof.worthy||corpse.protectedPrey!==proof.protectedPrey||corpse.flayed&&options.flayingToolOwned!==true||corpse.integrity!==undefined&&corpse.integrity!==proof.integrity||corpse.massKg!==undefined&&corpse.massKg!==proof.massKg)return null;
+    if(corpse.integrity===undefined||corpse.massKg===undefined){
+      if((state.specimensV112??[]).some(item=>item.sourceId===state.runId+':'+corpse.id))return null;
+      // V111 traces did not record anatomy. Derive physical facts from the
+      // actual saved actor rather than assuming every old body weighs 70 kg.
+      corpse.integrity=proof.integrity;corpse.massKg=proof.massKg;
+    }
     if(corpse.supportId){
       const support=options.supports?.find(s=>s.id===corpse.supportId);
       if(!support?.suitable||support.maximumMass<(corpse.massKg??70)||!corpse.hangingAt||options.world&&!carcassFitsSocketV112(actors.find(a=>a.id===corpse.id)!,support,options.world)||
