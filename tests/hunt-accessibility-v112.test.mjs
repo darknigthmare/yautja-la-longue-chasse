@@ -12,6 +12,10 @@ const source=await readFile(new URL("../app/game/HuntCanvas.tsx",import.meta.url
 const built=await build({stdin:{contents:source.replace("export default function HuntCanvas","function HuntCanvas")+`
 export {pollGamepad,stepGame,updatePlayer,isHeld,makeGameState,snapshot};
 export {default as HuntRitualMeterV112} from "./HuntRitualMeterV112";
+export {default as HuntRitesMenuV77} from "./HuntRitesMenuV77";
+export {huntRiteMenuSnapshotV77} from "./systems/huntRitesRuntimeV77";
+export {createRitesOfHuntV77,registerRitePreyV77,startHuntRiteV77,stepHuntRiteV77,RITE_DURATIONS_V77} from "./systems/ritesOfHuntV77";
+export {flayingToolWorkMultiplierV112} from "./systems/harvestInventoryV112";
 export * from "./systems/huntAccessibilityV112";
 export * from "./systems/trophyRitual";
 export {defaultSave,normalizeSave,parseSaveImport} from "./save";
@@ -181,4 +185,35 @@ test("real settings callback preserves freshly confirmed inventory and successiv
   assert.equal(calls.length,2);assert.equal(saveRef.current.profile.clanMarks,17);
   assert.deepEqual(plain(saveRef.current.inventory),plain(confirmed.inventory));
   assert.equal(saveRef.current.settings.huntAccessibility.ritualTiming,"unlimited");assert.equal(saveRef.current.settings.effectsVolume,.2);
+});
+
+test("flaying duration preview and real menu match the timed operation for sharp, worn and blunt tools",()=>{
+  for(const condition of [100,40,0]){
+    const multiplier=api.flayingToolWorkMultiplierV112(condition);
+    const proof={id:"duration-prey",sourceEnemyId:"hell-hound-stalker",label:"Proie de contrôle",kind:"beast",
+      x:400,y:600,health:0,defeated:true,active:true,worthy:true,protectedPrey:false,defeatedAt:0,integrity:100,massKg:70};
+    let state=api.createRitesOfHuntV77("jungle-vey:duration-test","jungle-vey");
+    const context={runId:state.runId,missionId:state.missionId,actor:{x:400,y:600},health:160,suspended:false,
+      grounded:true,climbing:false,flayingToolOwned:true,toolWorkMultiplier:multiplier,prey:[proof],supports:[],acceptSpecimen:()=>true};
+    const registered=api.registerRitePreyV77(state,proof,context);assert.equal(registered.accepted,true);state=registered.state;
+    const preview=api.huntRiteMenuSnapshotV77(state,context.actor,proof.id,true,
+      {flayingToolOwned:true,toolWorkMultiplier:multiplier,acceptSpecimen:()=>true});
+    assert.ok(preview);assert.equal(preview.open,true);assert.equal(preview.canFlay,true);
+    const expected=api.RITE_DURATIONS_V77.flay*Math.max(1,Math.min(1.65,multiplier));
+    assert.ok(Math.abs(preview.flaySeconds-expected)<1e-9,"preview must expose the actual worn-tool duration");
+    const markup=renderToStaticMarkup(createElement(api.HuntRitesMenuV77,{menu:preview,onOpen(){},onClose(){},onAction(){}}));
+    const label=/Dépecer · (\d+(?:[,.]\d+)?) s/.exec(markup);
+    assert.ok(label,"the real corpse menu must display the flaying duration");
+    assert.equal(Number(label[1].replace(",",".")),Number(expected.toFixed(1)));
+    const started=api.startHuntRiteV77(state,proof.id,"flay",context);assert.equal(started.accepted,true,started.message);state=started.state;
+    const step=.01;let elapsed=0;
+    while(state.operation&&elapsed<7){
+      if(elapsed+step<expected-1e-8)assert.equal(state.corpses[0].flayed,false);
+      state=api.stepHuntRiteV77(state,step,context).state;elapsed+=step;
+    }
+    assert.equal(state.operation,null);assert.equal(state.corpses[0].flayed,true);
+    assert.ok(elapsed+1e-8>=preview.flaySeconds&&elapsed<=preview.flaySeconds+step+1e-8,
+      "completion must occur at the previewed duration within one fixed tick");
+    assert.equal(state.completedEventIds.filter(id=>id==="flay:"+proof.id).length,1);
+  }
 });

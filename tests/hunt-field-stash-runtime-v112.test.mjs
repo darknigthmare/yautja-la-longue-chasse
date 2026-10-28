@@ -10,7 +10,7 @@ const url=new URL("../app/game/HuntCanvas.tsx",import.meta.url),source=await rea
 const ast=ts.createSourceFile("HuntCanvas.tsx",source,ts.ScriptTarget.Latest,true,ts.ScriptKind.TSX);
 const built=await build({
   stdin:{contents:`${source.replace("export default function HuntCanvas","function HuntCanvas")}
-export {makeGameState,makeEnemy,damageEnemy,updateHuntRitesV77,riteContextV77,startHuntRiteV77,snapshot,resultFor,captureCheckpoint,serializeActiveHuntCheckpoint,deserializeActiveHuntCheckpoint,restoreCheckpoint,announce};
+export {makeGameState,makeEnemy,damageEnemy,updateHuntRitesV77,riteContextV77,startHuntRiteV77,snapshot,resultFor,captureCheckpoint,serializeActiveHuntCheckpoint,deserializeActiveHuntCheckpoint,restoreCheckpoint,announce,worldBlueprintFor};
 export * from "./systems/fieldStashV112"; export {defaultSave} from "./save"; export {MISSION_BY_ID} from "./data";`,
     resolveDir:fileURLToPath(new URL("../app/game/",import.meta.url)),sourcefile:fileURLToPath(url),loader:"tsx"},
   bundle:true,write:false,format:"cjs",platform:"node",jsx:"automatic",loader:{".module.css":"empty"},
@@ -20,18 +20,26 @@ const exports={exports:{}};runInNewContext(built.outputFiles[0].text,{module:exp
   document:{hidden:false,hasFocus:()=>true},navigator:{getGamepads:()=>[]}});
 const r=exports.exports,plain=x=>JSON.parse(JSON.stringify(x));
 const ledge={id:"stash-ledge",x:1200,y:400,width:600,height:24,collision:"solid",routeId:"ground",material:"stone",noiseMultiplier:1,trackPersistence:1};
-function fixture(harvest=true){
+function fixture(harvest=true,authoredWorld=false){
   const save=r.defaultSave("2026-10-28T00:00:00.000Z");save.inventory.fieldToolIds=["flaying-tool"];
   const mission=r.MISSION_BY_ID["jungle-vey"];
   const state=r.makeGameState(mission,save.loadout,save.inventory,"hunter",save.appearance,false,false,0,save.exploration);
-  state.world={...state.world,floorY:624,platforms:[{...ledge}],climbables:[],hazards:[],covers:[]};
+  let standingY=400,standingX=1300;
+  if(authoredWorld){
+    const actual=r.worldBlueprintFor(mission.id);
+    const platform=actual.platforms.find(p=>p.width>=180&&p.y>=160&&p.y<actual.floorY-40&&
+      !actual.platforms.some(w=>w.collision==="solid"&&p.x+p.width*.3+state.player.width/2>w.x&&p.x+p.width*.3-state.player.width/2<w.x+w.width&&
+        p.y>w.y+1e-6&&p.y-state.player.height<w.y+w.height-1e-6));
+    assert.ok(platform,"an actual authored resting platform with clear standing space must exist");
+    state.world=actual;standingY=platform.y;standingX=platform.x+platform.width*.3-state.player.width/2;
+  }else state.world={...state.world,floorY:624,platforms:[{...ledge}],climbables:[],hazards:[],covers:[]};
   state.enemies=[];state.recoveryNodes=[];
-  Object.assign(state.player,{x:1300,y:400-state.player.height,previousY:400-state.player.height,
+  Object.assign(state.player,{x:standingX,y:standingY-state.player.height,previousY:standingY-state.player.height,
     velocityX:0,velocityY:0,grounded:true,climbing:false,climbZoneId:null});
   const enemy=r.makeEnemy("stash-prey","razorback-grazer",mission.id,1340,state.world.width,100,10,0,1,1);
-  Object.assign(enemy,{x:state.player.x+state.player.width/2+40-enemy.width/2,y:400-enemy.height,knockbackRestY:400-enemy.height,scanned:true});
+  Object.assign(enemy,{x:state.player.x+state.player.width/2+40-enemy.width/2,y:standingY-enemy.height,knockbackRestY:standingY-enemy.height,scanned:true});
   state.enemies=[enemy];r.damageEnemy(state,mission,enemy,enemy.maxHealth+1,"melee");
-  const f={state,save,mission,enemy,persisted:0,ui:null};
+  const f={state,save,mission,enemy,standingY,persisted:0,ui:null};
   const perform=action=>{
     const started=r.startHuntRiteV77(state.huntRites,enemy.id,action,r.riteContextV77(state));
     assert.equal(started.accepted,true,started.message);state.huntRites=started.state;state.riteOperationDamageStart=state.damageTaken;
@@ -73,13 +81,13 @@ test("the actual result only delivers specimens carried to extraction and never 
   for(const outcome of ["failed","abandoned"])assert.equal(r.resultFor(f.state,f.mission,"hunter",outcome).specimensV112.length,0);
 });
 test("paused capture/deserialize/restore keeps canonical proof and the exact ledge deposit",()=>{
-  const f=fixture(),id=f.state.huntRites.specimensV112[0].id;
+  const f=fixture(true,true),id=f.state.huntRites.specimensV112[0].id;
   f.state.paused=true;actionHandler(f)("drop",id);
   const archive=r.serializeActiveHuntCheckpoint(r.captureCheckpoint(f.state),0);assert.ok(archive);
   const decoded=r.deserializeActiveHuntCheckpoint(archive);assert.ok(decoded);
-  const fresh=fixture(false),restored=r.restoreCheckpoint(fresh.state,decoded.checkpoint,"resume");
+  const fresh=fixture(false,true),restored=r.restoreCheckpoint(fresh.state,decoded.checkpoint,"resume");
   assert.equal(restored.huntRites.specimensV112.length,1);assert.equal(restored.huntRites.stashedSpecimensV112.length,1);
-  assert.equal(restored.huntRites.stashedSpecimensV112[0].y,400);
+  assert.equal(restored.huntRites.stashedSpecimensV112[0].y,f.standingY);
   assert.equal(r.carriedFieldSpecimensV112(restored.huntRites).length,0);
   assert.equal(restored.huntRites.specimensV112[0].id,id);
 });

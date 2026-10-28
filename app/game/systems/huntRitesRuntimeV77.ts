@@ -111,6 +111,8 @@ export function reactToRiteWitnessV77<T extends {mode:string;suspicion:number;mo
 export interface HuntRiteMenuSnapshotV77 {
   corpseId:string;label:string;analyzed:boolean;marked:boolean;flayed:boolean;canFlay:boolean;flayLockedReason:string|null;open:boolean;
   operation:{action:HuntRiteActionV77;progress:number}|null;witnessCount:number;
+  /** Effective real-world duration, including the current field-tool wear. */
+  flaySeconds?:number;
   integrity:number;massKg:number;carrying:boolean;canCarry:boolean;canHang:boolean;hangSupportId:string|null;hangReason:string;
   parts:{action:HuntRiteActionV77;label:string;quality:number;seconds:number;available:boolean;reason:string}[];
 }
@@ -119,6 +121,7 @@ export function huntRiteMenuSnapshotV77(state:RitesOfHuntV77,actor:{x:number;y:n
   if(!available)return null;const corpse=nearestRiteCorpseV77(state,actor);if(!corpse)return null;
   const flayLockedReason=corpse.flayed?'Dépeçage déjà terminé.':options.flayingToolOwned!==true?'Acheter le Flaying Tool à l’armurerie.':
     corpse.protectedPrey||!corpse.worthy?'Le Code protège cette proie.':null;
+  const workMultiplier=Math.max(1,Math.min(1.65,options.toolWorkMultiplier??1));
   const carrying=state.carryingCorpseId===corpse.id;
   const support=(options.supports??[]).filter(s=>s.suitable&&s.maximumMass>=(corpse.massKg??70)&&
     Math.hypot(s.x-actor.x,s.y-actor.y)<=180&&corpse.y-s.y>=90&&!state.corpses.some(c=>c.id!==corpse.id&&c.supportId===s.id))
@@ -129,9 +132,9 @@ export function huntRiteMenuSnapshotV77(state:RitesOfHuntV77,actor:{x:number;y:n
     const reason=state.completedEventIds.includes(part.action+':'+corpse.id)?'Déjà prélevé.':!options.flayingToolOwned?'Flaying Tool requis.':
       part.requiresFlay&&!corpse.flayed?'Dépecer d’abord.':state.carryingCorpseId?'Déposer la carcasse.':options.acceptSpecimen?.(item)!==true?'Emport ou dépôt plein.':'';
     return {action:part.action,label:part.label,quality:specimenQualityV112(corpse.integrity??100,part,corpse.analyzed),
-      seconds:part.seconds*(options.toolWorkMultiplier??1),available:reason==='',reason};
+      seconds:part.seconds*workMultiplier,available:reason==='',reason};
   });
-  return {integrity:corpse.integrity??100,massKg:corpse.massKg??70,carrying,canCarry:!state.carryingCorpseId&&corpse.flayed&&!corpse.supportId&&(corpse.massKg??70)<=170,
+  return {flaySeconds:RITE_DURATIONS_V77.flay*workMultiplier,integrity:corpse.integrity??100,massKg:corpse.massKg??70,carrying,canCarry:!state.carryingCorpseId&&corpse.flayed&&!corpse.supportId&&(corpse.massKg??70)<=170,
     canHang,hangSupportId:canHang?support!.id:null,hangReason:corpse.supportId?'Corps déjà suspendu.':!carrying?'Dépecer puis porter la carcasse jusqu’au crochet.':!support?'Pas de crochet libre et assez solide à portée.':'',
     parts,corpseId:corpse.id,label:corpse.label,analyzed:corpse.analyzed,marked:corpse.marked,flayed:corpse.flayed,canFlay:flayLockedReason===null,flayLockedReason,open:selectedId===corpse.id,
     operation:state.operation?.corpseId===corpse.id?{action:state.operation.action,progress:Math.min(1,state.operation.elapsed/RITE_DURATIONS_V77[state.operation.action])}:null,
