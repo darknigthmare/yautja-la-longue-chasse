@@ -1,3 +1,4 @@
+import { normalizeHuntAccessibilityV112, DEFAULT_HUNT_ACCESSIBILITY_V112 } from "./systems/huntAccessibilityV112";
 import { normalizeFieldToolIdsV111 } from "./systems/fieldToolsV111";
 import {normalizeHomeworldArchiveV106} from './systems/homeworldArchiveLedgerV106';
 import {normalizeHomeworldArchiveComparisonV107} from './systems/homeworldArchiveComparisonLedgerV107';
@@ -367,6 +368,7 @@ export function defaultSave(now = new Date().toISOString()): SaveGame {
       currentHuntStreak: 0,
     },
     settings: {
+      huntAccessibility: normalizeHuntAccessibilityV112(DEFAULT_HUNT_ACCESSIBILITY_V112),
       difficultyId: "hunter",
       masterVolume: 0.8,
       musicVolume: 0.65,
@@ -1243,6 +1245,7 @@ export function normalizeSave(value: unknown): SaveGame {
       ),
     },
     settings: {
+      huntAccessibility: normalizeHuntAccessibilityV112(rawSettings.huntAccessibility),
       difficultyId,
       masterVolume: boundedNumber(
         rawSettings.masterVolume,

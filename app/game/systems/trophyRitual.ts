@@ -55,6 +55,12 @@ export const TROPHY_RITUAL_TIMING = Object.freeze({
   maximumMistakes: 3,
 });
 
+/** Preferences change only cue timing; the harvest source and rewards are validated by the caller. */
+export function trophyRitualTimingV112(mode: "normal" | "generous" | "unlimited" = "normal") {
+  if(mode === "unlimited") return {...TROPHY_RITUAL_TIMING,earliestHitSeconds:0,perfectHitSeconds:.4,latestHitSeconds:Infinity,cueTimeoutSeconds:Infinity};
+  if(mode === "generous") return {...TROPHY_RITUAL_TIMING,earliestHitSeconds:.36,perfectHitSeconds:1,latestHitSeconds:1.68,cueTimeoutSeconds:2.16};
+  return TROPHY_RITUAL_TIMING;
+}
 function clamp(value: number, minimum = 0, maximum = 1): number {
   return Math.max(minimum, Math.min(maximum, value));
 }
@@ -135,7 +141,9 @@ export function stepTrophyRitual(
   previous: TrophyRitualState,
   deltaSeconds: number,
   action: TrophyRitualAction | null,
+  timingMode: "normal" | "generous" | "unlimited" = "normal",
 ): TrophyRitualStep {
+  const timing = trophyRitualTimingV112(timingMode);
   if (previous.status !== "active") {
     return { state: previous, accepted: false, mistakeAdded: false };
   }
@@ -145,18 +153,18 @@ export function stepTrophyRitual(
     previous.phase === "ready"
       ? Math.max(
           0,
-          TROPHY_RITUAL_TIMING.readyDurationSeconds -
+          timing.readyDurationSeconds -
             previous.readyElapsedSeconds,
         )
       : 0;
   const readyDelta = Math.min(delta, readyRemaining);
   const cueDelta = Math.max(0, delta - readyDelta);
   const readyElapsedSeconds = Math.min(
-    TROPHY_RITUAL_TIMING.readyDurationSeconds,
+    timing.readyDurationSeconds,
     previous.readyElapsedSeconds + readyDelta,
   );
   const phase: TrophyRitualPhase =
-    readyElapsedSeconds >= TROPHY_RITUAL_TIMING.readyDurationSeconds
+    readyElapsedSeconds >= timing.readyDurationSeconds
       ? "cue"
       : "ready";
   let state: TrophyRitualState = {
@@ -171,7 +179,7 @@ export function stepTrophyRitual(
     return { state, accepted: false, mistakeAdded: false };
   }
 
-  if (state.cueElapsedSeconds > TROPHY_RITUAL_TIMING.cueTimeoutSeconds) {
+  if (state.cueElapsedSeconds > timing.cueTimeoutSeconds) {
     state = addMistake(state, "missed");
     return { state, accepted: false, mistakeAdded: true };
   }
@@ -182,19 +190,19 @@ export function stepTrophyRitual(
     state = addMistake(state, "wrong");
     return { state, accepted: false, mistakeAdded: true };
   }
-  if (state.cueElapsedSeconds < TROPHY_RITUAL_TIMING.earliestHitSeconds) {
+  if (state.cueElapsedSeconds < timing.earliestHitSeconds) {
     state = addMistake(state, "early");
     return { state, accepted: false, mistakeAdded: true };
   }
-  if (state.cueElapsedSeconds > TROPHY_RITUAL_TIMING.latestHitSeconds) {
+  if (state.cueElapsedSeconds > timing.latestHitSeconds) {
     state = addMistake(state, "missed");
     return { state, accepted: false, mistakeAdded: true };
   }
 
   const distanceFromPerfect = Math.abs(
-    state.cueElapsedSeconds - TROPHY_RITUAL_TIMING.perfectHitSeconds,
+    state.cueElapsedSeconds - timing.perfectHitSeconds,
   );
-  const accuracy = clamp(1 - distanceFromPerfect / 0.34);
+  const accuracy = timingMode === "unlimited" ? 1 : clamp(1 - distanceFromPerfect / (timingMode === "generous" ? .68 : .34));
   const cueIndex = state.cueIndex + 1;
   state = {
     ...state,

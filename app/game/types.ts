@@ -1,3 +1,4 @@
+import type { HuntAccessibilityV112 } from "./systems/huntAccessibilityV112";
 /**
  * Shared game contracts.
  *
@@ -626,6 +627,8 @@ export interface GameStatistics {
 }
 
 export interface GameSettings {
+  /** Optional on legacy saves; normalizer supplies a complete, versioned profile. */
+  huntAccessibility?: HuntAccessibilityV112;
   difficultyId: DifficultyId;
   masterVolume: number;
   musicVolume: number;

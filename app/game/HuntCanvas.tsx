@@ -25,6 +25,10 @@ import { trophyHarvestPoint, trophyHarvestSourceForDrop, trophyHarvestInReach,
 import { drawEnvironmentProp } from "./environmentPropDrawing";
 import { ExplorationMap } from "./ExplorationMap";
 import FirstHuntGuide from "./FirstHuntGuide";
+import HuntFieldGuideV112 from "./HuntFieldGuideV112";
+import accessStyles from "./HuntAccessibilityV112.module.css";
+import {normalizeHuntAccessibilityV112,DEFAULT_HUNT_GAMEPAD_V112,stepHoldTogglesV112,stepRitualAssistV112,freshRitualAssistV112,
+  type HuntAccessibilityV112,type HoldToggleStateV112,type RitualAssistStateV112,type RitualAssistEventV112} from "./systems/huntAccessibilityV112";
 import { missionOpeningV78, missionActionTextV78 } from "./missionOpeningV78";
 import presentationStyles from "./HuntCanvas.module.css";
 import { createHuntAnnouncementQueueV78, enqueueHuntAnnouncementV78, advanceHuntAnnouncementQueueV78,
@@ -165,6 +169,7 @@ import {
   stepTrophyRitual,
   stepTrophyVictory,
   trophyRitualProgress,
+  trophyRitualTimingV112,
   trophyRitualReadyRemaining,
   trophyVictoryPose,
   TROPHY_RITUAL_TIMING,
@@ -269,6 +274,7 @@ interface HuntCanvasProps {
   inventory: PlayerInventory;
   difficulty: DifficultyId;
   controlBindings?: ControlBindings;
+  huntAccessibility?: HuntAccessibilityV112;
   appearance: HunterAppearance;
   reducedGore: boolean;
   screenShake: boolean;
@@ -669,6 +675,10 @@ interface AssetBank {
 type HuntDialogGamepadAction = "previous" | "next" | "activate";
 
 interface InputHub {
+  accessibility?: HuntAccessibilityV112;
+  holdTogglesV112?: HoldToggleStateV112;
+  gripReleaseV112?: boolean;
+  ritualAssistEventV112?: RitualAssistEventV112;
   keyboardHeld: Set<Action>;
   touchHeld: Set<Action>;
   gamepadHeld: Set<Action>;
@@ -681,6 +691,8 @@ interface InputHub {
 }
 
 interface GameState {
+  huntAccessibility?: HuntAccessibilityV112;
+  ritualAssistV112?: RitualAssistStateV112;
   /** Campaign inventory owns the tool; never trust a hunt checkpoint to grant it. */
   flayingToolOwned: boolean;
   huntRites: RitesOfHuntV77;
@@ -764,6 +776,8 @@ interface GameState {
 }
 
 interface UiSnapshot {
+  gripExhaustedV112?: boolean;
+  trophyAssistArmedV112?: boolean;
   huntRiteMenu: HuntRiteMenuSnapshotV77 | null;
   musicContext: "exploration" | "combat" | "boss";
   playerX: number;
@@ -858,6 +872,8 @@ function isHeldKeyboardAction(action: Action): boolean {
     action === "aim"
   );
 }
+
+const DEFAULT_HUNT_ACCESSIBILITY_CANVAS_V112 = normalizeHuntAccessibilityV112(undefined);
 
 const EMPTY_UI: UiSnapshot = {
   huntRiteMenu: null,
@@ -1016,6 +1032,7 @@ function overlaps(
 }
 
 function isHeld(input: InputHub, action: Action): boolean {
+  if(action === "aim" && input.accessibility?.aimInput === "toggle") return input.holdTogglesV112?.aimLatched ?? false;
   return (
     input.keyboardHeld.has(action) ||
     input.touchHeld.has(action) ||
@@ -2760,6 +2777,8 @@ function snapshot(state: GameState, mission: MissionDefinition): UiSnapshot {
         )
       : 0,
     trophyMistakes: state.trophyRitual?.mistakes ?? 0,
+    trophyAssistArmedV112: state.ritualAssistV112?.armed ?? false,
+    gripExhaustedV112: state.player.climbGripExhausted ?? false,
     dropShipPhase: state.dropShip?.phase ?? null,
     objective: objective.title,
     objectiveDetail: objective.detail,
@@ -6950,6 +6969,7 @@ function interruptTrophyHarvestV111(state: GameState): void {
   state.trophyExtracting = false;
   state.trophyExtraction = 0;
   state.trophyRitual = null;
+  state.ritualAssistV112 = undefined;
   state.regularTrophyDropId = null;
   announce(state, "Prélèvement interrompu : reste en appui près de la proie, sans obstacle.", 2.8);
 }
@@ -7147,6 +7167,7 @@ function interact(
       state.regularTrophyDropId = nearbyDrop.id;
       state.trophyExtracting = true;
       state.trophyExtraction = 0;
+      state.ritualAssistV112 = undefined;
       // Secondary claims use a shorter three-gesture field rite and never
       // trigger the Apex victory pose, shuttle or mission phase transition.
       state.trophyRitual = createTrophyRitual(
@@ -7185,6 +7206,7 @@ function interact(
       state.regularTrophyDropId = null;
       state.trophyExtracting = true;
       state.trophyExtraction = 0;
+      state.ritualAssistV112 = undefined;
       state.trophyRitual = createTrophyRitual(
         `${mission.id}:${mission.trophy.id}`,
       );
@@ -7549,14 +7571,25 @@ function updatePlayer(
       "melee",
       "interact",
     ];
-    const ritualAction =
+    let ritualAction =
       ritualActions.find((action) => input.pressed.has(action)) ?? null;
+    if(state.huntAccessibility) {
+      const ritual=state.trophyRitual;
+      const assisted=stepRitualAssistV112(state.ritualAssistV112??freshRitualAssistV112(),{
+        cueKey:ritual.seed+":"+ritual.cueIndex,phase:ritual.phase,cueElapsedSeconds:ritual.cueElapsedSeconds,
+        deltaSeconds:delta,mode:state.huntAccessibility.ritualConfirm,timing:state.huntAccessibility.ritualTiming,
+        event:input.ritualAssistEventV112??null,
+      });
+      input.ritualAssistEventV112=null;state.ritualAssistV112=assisted.state;
+      if(assisted.confirm)ritualAction=ritual.sequence[ritual.cueIndex]??null;
+    }
     // Consume every ritual key so a valid lunge cannot also move or attack.
     for (const action of ritualActions) input.pressed.delete(action);
     const ritualStep = stepTrophyRitual(
       state.trophyRitual,
       delta,
       ritualAction,
+      state.huntAccessibility?.ritualTiming ?? "normal",
     );
     state.trophyRitual = ritualStep.state;
     state.trophyExtraction = trophyRitualProgress(ritualStep.state);
@@ -7703,7 +7736,8 @@ function updatePlayer(
     .sort((left, right) =>
       Math.abs(playerCenter.x - left.x - left.width / 2) -
       Math.abs(playerCenter.x - right.x - right.width / 2))[0];
-  if (player.climbing && (!activeClimbZone || player.stamina <= 0)) {
+  if (player.climbing && (input.gripReleaseV112 || !activeClimbZone || player.stamina <= 0)) {
+    if(input.gripReleaseV112)player.climbReattachSeconds=CLIMB_TRAVERSAL.releaseSeconds;
     if (player.stamina <= 0) {
       player.climbGripExhausted = true;
       announce(state, "Prise épuisée : rejoins le sol pour reprendre appui.", 2);
@@ -7715,7 +7749,8 @@ function updatePlayer(
     !actionLocked &&
     !meleeInputQueued &&
     !dodgeRequested &&
-    climbAxis !== 0 &&
+    (climbAxis !== 0 || input.accessibility?.gripInput==="toggle"&&input.holdTogglesV112?.upLatched) &&
+    !input.gripReleaseV112 &&
     currentClimbZone &&
     !player.climbGripExhausted &&
     (player.climbReattachSeconds ?? 0) <= 0 &&
@@ -7731,6 +7766,7 @@ function updatePlayer(
     player.climbing &&
     Math.abs(moveAxis) > 0.5 &&
     climbAxis === 0 &&
+    !(input.accessibility?.gripInput==="toggle"&&input.holdTogglesV112?.upLatched) &&
     !climbJumpRequested
   ) {
     player.climbing = false;
@@ -9443,7 +9479,8 @@ function pollGamepad(input: InputHub): "focus-lost" | "gamepad-disconnected" | n
   const right = gamepad.axes[0] > 0.25 || Boolean(gamepad.buttons[15]?.pressed);
   const up = gamepad.axes[1] < -0.3 || Boolean(gamepad.buttons[12]?.pressed);
   const down = gamepad.axes[1] > 0.3 || Boolean(gamepad.buttons[13]?.pressed);
-  const aiming = (gamepad.buttons[6]?.value ?? 0) > 0.25;
+  const buttons = input.accessibility?.gamepadButtons ?? DEFAULT_HUNT_GAMEPAD_V112;
+  const aiming = (gamepad.buttons[buttons.aim]?.value ?? 0) > 0.25;
   const current = gamepad.buttons.map(button => button.pressed);
   // A held button on reconnect/focus/retry must not become a fresh attack.
   if (input.gamepadNeedsNeutral) {
@@ -9465,7 +9502,7 @@ function pollGamepad(input: InputHub): "focus-lost" | "gamepad-disconnected" | n
   setDirection("up", up);
   setDirection("down", down);
   if (aiming) input.gamepadHeld.add("aim");
-  if (current[0]) input.gamepadHeld.add("jump");
+  if (current[buttons.jump]) input.gamepadHeld.add("jump");
 
   if (input.gamepadDialogActions.length < 4) {
     if (up && !previousDirections.has("up")) input.gamepadDialogActions.push("previous");
@@ -9473,9 +9510,9 @@ function pollGamepad(input: InputHub): "focus-lost" | "gamepad-disconnected" | n
     if (current[0] && !input.previousGamepadButtons[0]) input.gamepadDialogActions.push("activate");
   }
   const actionButtons: ReadonlyArray<readonly [number, Action]> = [
-    [0, "jump"], [2, "melee"], [7, "weapon"], [4, "scan"],
-    [3, "cloak"], [5, "heal"], [1, "interact"], [8, "weaponNext"],
-    [10, "gearOne"], [11, "gearTwo"], [9, "pause"],
+    [buttons.jump, "jump"], [buttons.melee, "melee"], [buttons.weapon, "weapon"], [buttons.scan, "scan"],
+    [buttons.cloak, "cloak"], [buttons.heal, "heal"], [buttons.interact, "interact"], [buttons.weaponNext, "weaponNext"],
+    [buttons.gearOne, "gearOne"], [buttons.gearTwo, "gearTwo"], [buttons.pause, "pause"],
   ];
   for (const [index, action] of actionButtons) {
     if (current[index] && !input.previousGamepadButtons[index]) input.pressed.add(action);
@@ -9515,6 +9552,16 @@ function stepGame(
 ): void {
   const wasPaused = state.paused;
   const interruption = pollGamepad(input);
+  if(input.accessibility) {
+    const physical={up:input.keyboardHeld.has("up")||input.touchHeld.has("up")||input.gamepadHeld.has("up"),
+      aim:input.keyboardHeld.has("aim")||input.touchHeld.has("aim")||input.gamepadHeld.has("aim")};
+    const previousGrip=input.holdTogglesV112?.upLatched;
+    input.holdTogglesV112=stepHoldTogglesV112(input.holdTogglesV112,physical,!!interruption||state.paused||input.pressed.has("pause"));
+    input.gripReleaseV112=input.accessibility.gripInput==="toggle"&&previousGrip===true&&!input.holdTogglesV112.upLatched;
+    if(interruption||state.paused||input.pressed.has("pause")) {
+      input.ritualAssistEventV112=null;state.ritualAssistV112=freshRitualAssistV112();
+    }
+  }
   if (state.phase === "dead" || state.phase === "finished") {
     input.pressed.clear();
     return;
@@ -9625,6 +9672,7 @@ export default function HuntCanvas({
   inventory,
   difficulty,
   controlBindings,
+  huntAccessibility,
   appearance,
   reducedGore,
   screenShake,
@@ -9643,6 +9691,7 @@ export default function HuntCanvas({
   onResumeFailure,
 }: HuntCanvasProps) {
   const activeBindings = controlBindings ?? DEFAULT_CONTROL_BINDINGS;
+  const activeAccessibility = huntAccessibility ?? DEFAULT_HUNT_ACCESSIBILITY_CANVAS_V112;
   const huntRootRef = useRef<HTMLElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const huntDialogRef = useRef<HTMLDivElement | null>(null);
@@ -9660,6 +9709,7 @@ export default function HuntCanvas({
   const reportFailureRef = useRef<() => void>(() => undefined);
   const requestAbortRef = useRef<() => void>(() => undefined);
   const requestSuspendRef = useRef<() => void>(() => undefined);
+  const ritualAssistRefV112 = useRef<(event:RitualAssistEventV112|"abort")=>void>(()=>undefined);
   const riteMenuActionRef = useRef<(action:HuntRiteActionV77|'open'|'close')=>void>(()=>undefined);
   const dismissMissionOpeningRef = useRef<() => void>(() => undefined);
   const missionOpeningActiveRef = useRef(false);
@@ -9818,6 +9868,7 @@ export default function HuntCanvas({
       ecologyRunSeed,
       explorationProgress,
     );
+    game.huntAccessibility=normalizeHuntAccessibilityV112(activeAccessibility);
     const restoredHunt = deserializeActiveHuntCheckpoint(resumeSnapshot);
     const restoredRetry = deserializeActiveHuntCheckpoint(
       resumeRetryCheckpoint,
@@ -9962,6 +10013,9 @@ export default function HuntCanvas({
       environmentProps: {},
     };
     const input = inputRef.current;
+    input.accessibility=normalizeHuntAccessibilityV112(activeAccessibility);
+    input.holdTogglesV112=stepHoldTogglesV112(undefined,{up:false,aim:false},true);
+    input.ritualAssistEventV112=null;
     input.keyboardHeld.clear();
     input.touchHeld.clear();
     input.gamepadHeld.clear();
@@ -10331,6 +10385,11 @@ export default function HuntCanvas({
             ecologyRunSeed,
             explorationBeforeRetry,
           );
+      if(input.accessibility){
+        game.huntAccessibility=input.accessibility;
+        game.ritualAssistV112=freshRitualAssistV112();
+        input.holdTogglesV112=stepHoldTogglesV112(input.holdTogglesV112,{up:false,aim:false},true);
+      }
       guideLearning = createFirstHuntLearning(firstHuntObservation(game), retryFromCheckpoint);
       setOpeningHint(guideEnabled ? firstHuntHint(guideLearning) : null);
       game.jumpAssist = freshJumpAssistState({ requireRelease: true });
@@ -10404,6 +10463,11 @@ export default function HuntCanvas({
       emitPersistence(suspendHuntRef.current);
     };
 
+    ritualAssistRefV112.current=(event)=>{
+      if(game.paused||game.phase==="dead"||game.phase==="finished"||!game.trophyExtracting||!game.trophyRitual)return;
+      if(event==="abort"){interruptTrophyHarvestV111(game);input.ritualAssistEventV112=null;game.ritualAssistV112=freshRitualAssistV112();setUi(snapshot(game,mission));return;}
+      input.ritualAssistEventV112=event;
+    };
     riteMenuActionRef.current = (action) => {
       if(game.paused||game.phase!=='tracking'&&game.phase!=='target'||game.trophyExtracting||game.player.health<=0)return;
       const context=riteContextV77(game),menu=huntRiteMenuSnapshotV77(game.huntRites,context.actor,game.riteMenuCorpseId,true,{flayingToolOwned:game.flayingToolOwned});
@@ -10501,6 +10565,10 @@ export default function HuntCanvas({
       input.gamepadHeld.clear();
       input.touchHeld.clear();
       input.pressed.clear();
+      if(input.accessibility){
+        input.holdTogglesV112=stepHoldTogglesV112(input.holdTogglesV112,{up:false,aim:false},true);
+        input.ritualAssistEventV112=null;game.ritualAssistV112=freshRitualAssistV112();
+      }
       if (
         game.phase !== "dead" &&
         game.phase !== "finished" &&
@@ -10628,6 +10696,7 @@ export default function HuntCanvas({
       dismissMissionOpeningRef.current = () => undefined;
       missionOpeningActiveRef.current = false;
       riteMenuActionRef.current=()=>undefined;
+      ritualAssistRefV112.current=()=>undefined;
       cancelAnimationFrame(frameId);
       resizeObserver.disconnect();
       window.removeEventListener("keydown", onGameplayKeyDown);
@@ -10651,6 +10720,7 @@ export default function HuntCanvas({
   }, [
     firstHuntGuideEnabled,
     activeBindings,
+    activeAccessibility,
     appearance,
     difficulty,
     encounterRun,
@@ -10814,6 +10884,9 @@ export default function HuntCanvas({
         </button>
       </header>
 
+      {activeAccessibility.fieldGuide && <HuntFieldGuideV112 bindings={activeBindings} gamepadButtons={activeAccessibility.gamepadButtons}
+        phase={ui.phase} climbing={ui.climbing} grounded={ui.grounded} stamina={ui.stamina} corpseNearby={!!ui.huntRiteMenu}
+        gripExhausted={ui.gripExhaustedV112}/>}
       {/* Bloc : objectif courant annoncé aux lecteurs d’écran. */}
       <div style={styles.objectiveBar}>
         <div aria-live="polite" aria-atomic="true">
@@ -10927,16 +11000,28 @@ export default function HuntCanvas({
           onOpen={()=>riteMenuActionRef.current('open')} onClose={()=>riteMenuActionRef.current('close')}
           onAction={action=>riteMenuActionRef.current(action)}/>
 
-        {ui.trophySeconds !== null ? (
-          <div style={styles.trophyTimer}>
+        {ui.trophySeconds !== null || ui.trophyCue !== null ? (
+          <div style={{...styles.trophyTimer,pointerEvents:ui.trophyCue?"auto":"none",maxWidth:"min(92%, 380px)",maxHeight:"calc(100% - 32px)",overflowY:"auto",boxSizing:"border-box"}}>
             {ui.trophyCue ? (
               <>
                 <span>
                   RITE {ui.trophyCueIndex + 1}/{ui.trophyCueCount} · ERREURS {ui.trophyMistakes}/{TROPHY_RITUAL_TIMING.maximumMistakes}
                 </span>
-                <strong style={styles.trophyCueLabel}>
-                  {trophyCueLabel(ui.trophyCue)}
+                <strong className={activeAccessibility.largeGlyphs?accessStyles.glyph:undefined} style={{...styles.trophyCueLabel,fontSize:activeAccessibility.largeGlyphs?"clamp(22px, 4vw, 32px)":18}} aria-live="polite" aria-atomic="true">
+                  {ui.trophyCue==="left"?"← ":ui.trophyCue==="right"?"→ ":ui.trophyCue==="melee"?"✦ ":"◆ "}{trophyCueLabel(ui.trophyCue)}
                 </strong>
+                <span className={accessStyles.ritualHelp}>{activeAccessibility.ritualTiming==="unlimited"?"Sans limite par glyphe":activeAccessibility.ritualTiming==="generous"?"Fenêtre large · 0,36–1,68 s":"Fenêtre · 0,18–0,84 s"}. {activeAccessibility.ritualConfirm==="hold"?"Maintenir 0,35 s pour ce geste.":activeAccessibility.ritualConfirm==="toggle"?"Un appui arme ce geste ; le suivant le désarme.":"Appuyer dans la fenêtre ou utiliser la touche du glyphe."}</span>
+                <button type="button" className={accessStyles.confirm} disabled={ui.paused} aria-pressed={activeAccessibility.ritualConfirm==="toggle"?ui.trophyAssistArmedV112:undefined}
+                  onPointerDown={event=>{if(activeAccessibility.ritualConfirm==="hold"){event.preventDefault();event.currentTarget.setPointerCapture(event.pointerId);ritualAssistRefV112.current("down");}}}
+                  onPointerUp={()=>{if(activeAccessibility.ritualConfirm==="hold")ritualAssistRefV112.current("up");}}
+                  onPointerCancel={()=>ritualAssistRefV112.current("cancel")} onLostPointerCapture={()=>{if(activeAccessibility.ritualConfirm==="hold")ritualAssistRefV112.current("up");}}
+                  onKeyDown={event=>{if(activeAccessibility.ritualConfirm==="hold"&&(event.key===" "||event.key==="Enter")){event.preventDefault();if(!event.repeat)ritualAssistRefV112.current("down");}}}
+                  onKeyUp={event=>{if(activeAccessibility.ritualConfirm==="hold"&&(event.key===" "||event.key==="Enter")){event.preventDefault();ritualAssistRefV112.current("up");}}}
+                  onBlur={()=>ritualAssistRefV112.current("cancel")}
+                  onClick={()=>{if(activeAccessibility.ritualConfirm!=="hold")ritualAssistRefV112.current("press");}}>
+                  {ui.trophyAssistArmedV112?"Geste armé · appuyer pour désarmer":"Confirmer ce glyphe"}
+                </button>
+                <button type="button" className={accessStyles.cancel} onClick={()=>ritualAssistRefV112.current("abort")}>Annuler le prélèvement</button>
                 <span style={styles.trophyRhythmTrack} aria-hidden="true">
                   <span
                     style={{
