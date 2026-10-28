@@ -1,0 +1,3363 @@
+{
+  "schemaVersion": 1,
+  "release": "V112",
+  "asOf": "2026-10-28",
+  "title": "Yautja : La Longue Chasse — chasse, anatomie et canopée",
+  "repository": "darknigthmare/yautja-la-longue-chasse",
+  "baseCommit": "96ba117a35b54142640ad2915fe3e9847fe060ad",
+  "reviewRef": "codex/v112-complete-hunt",
+  "scope": "Continuation des douze extensions FUT-01 à FUT-12. Implémentation et preuve d'exécution séparées ; aucune session Excel native ou qualification d'appareil physique revendiquée.",
+  "legend": {
+    "BASE_V111": "Règle livrée par PR21 ; régressions courantes exécutées séparément.",
+    "IMPLEMENTE_A_VALIDER": "Code V112 présent ; résultat d'exécution à consulter séparément.",
+    "VALIDE_AUTOMATISE": "Exécution réelle consignée avec commande, commit et résultat.",
+    "A_EXECUTER": "Scénario prévu sans résultat consigné.",
+    "NON_QUALIFIE": "Matériel ou usage non essayé."
+  },
+  "sheets": [
+    {
+      "name": "Sources",
+      "title": "Périmètre et traçabilité",
+      "columns": [
+        {
+          "key": "id",
+          "label": "ID",
+          "width": 18
+        },
+        {
+          "key": "status",
+          "label": "Statut",
+          "width": 24
+        },
+        {
+          "key": "topic",
+          "label": "Étape / sujet",
+          "width": 32
+        },
+        {
+          "key": "rule",
+          "label": "Règle et retour joueur",
+          "width": 76
+        },
+        {
+          "key": "source",
+          "label": "Source vérifiable",
+          "width": 68
+        },
+        {
+          "key": "acceptance",
+          "label": "Validation / limite",
+          "width": 78
+        }
+      ],
+      "rows": [
+        {
+          "id": "SRC112-01",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Demande",
+          "rule": "Terminer FUT-01 à FUT-12 du classeur chasse V111 avec code, ressources et tests.",
+          "source": "docs/hunt-mechanics-v112.md",
+          "acceptance": "Les autres backlogs Homeworld restent distincts."
+        },
+        {
+          "id": "SRC112-02",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Base chasse",
+          "rule": "La PR21 a livré outil permanent, rites corporels et trophées ancrés au corps.",
+          "source": "docs/hunt-mechanics-v112.md",
+          "acceptance": "Commit96 ba117 a35 b54142640 ad2915 fe3 e9847 fe060 ad."
+        },
+        {
+          "id": "SRC112-03",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Main parallèle",
+          "rule": "La PR22 Homeworld V111 est préservée lors de l'intégration.",
+          "source": "docs/hunt-mechanics-v112.md",
+          "acceptance": "Pas de clôture des exigences Homeworld héritées."
+        },
+        {
+          "id": "SRC112-04",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Ancienne discussion",
+          "rule": "La discussion ChatGPT historique n'a pas été lue ; les sources sont le dépôt et la demande.",
+          "source": "docs/hunt-mechanics-v112.md",
+          "acceptance": "Aucune décision ancienne inventée."
+        },
+        {
+          "id": "SRC112-05",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Preuve",
+          "rule": "Une validation exige commande réellement exécutée et commit identifiable.",
+          "source": "docs/hunt-mechanics-v112.md",
+          "acceptance": "Ajouter un test ne signifie pas qu'il a passé."
+        },
+        {
+          "id": "SRC112-06",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Ressources",
+          "rule": "Les ressources générées sont liées à un besoin du jeu et à leur source reproductible.",
+          "source": "docs/hunt-mechanics-v112.md",
+          "acceptance": "Pas de comptage d'une icône comme personnage ou animation corporelle."
+        },
+        {
+          "id": "SRC112-07",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Valeurs",
+          "rule": "Masses, durées, coûts et qualités sont les choix du fan game.",
+          "source": "docs/hunt-mechanics-v112.md",
+          "acceptance": "Aucune prétention de règle canonique de franchise."
+        },
+        {
+          "id": "SRC112-08",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Excel",
+          "rule": "JSON éditable, ZIP/OOXML déterministe et vérification indépendante Python.",
+          "source": "docs/hunt-mechanics-v112.md",
+          "acceptance": "Aucune session Excel native."
+        },
+        {
+          "id": "SRC112-09",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Historique",
+          "rule": "Les sources historiques sont restaurées en privé depuis Git épinglé, puis les freezes sont vérifiés.",
+          "source": "docs/hunt-mechanics-v112.md",
+          "acceptance": "Les tests historiques ne valident pas le runtime V112."
+        },
+        {
+          "id": "SRC112-10",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Appareils",
+          "rule": "Le navigateur et la manette émulée valident des chemins logiciels.",
+          "source": "docs/hunt-mechanics-v112.md",
+          "acceptance": "Pas de contrôleur physique ni de téléphone qualifié."
+        }
+      ]
+    },
+    {
+      "name": "Depecage",
+      "title": "Dépeçage : acquisition, gestes et persistance",
+      "columns": [
+        {
+          "key": "id",
+          "label": "ID",
+          "width": 15
+        },
+        {
+          "key": "status",
+          "label": "Statut",
+          "width": 24
+        },
+        {
+          "key": "topic",
+          "label": "Étape / sujet",
+          "width": 28
+        },
+        {
+          "key": "rule",
+          "label": "Règle et retour joueur",
+          "width": 62
+        },
+        {
+          "key": "source",
+          "label": "Source vérifiable",
+          "width": 55
+        },
+        {
+          "key": "acceptance",
+          "label": "Critère d'acceptation / limite",
+          "width": 64
+        }
+      ],
+      "rows": [
+        {
+          "id": "B112-DEP-01",
+          "status": "BASE_V111",
+          "topic": "Acquisition permanente",
+          "rule": "Acheter une fois le Flaying Tool à l'armurerie pour 120 marques du clan.",
+          "source": "app/game/systems/fieldToolsV111.ts",
+          "acceptance": "Solde insuffisant ou outil déjà possédé : aucun débit ni ajout répété."
+        },
+        {
+          "id": "B112-DEP-02",
+          "status": "BASE_V111",
+          "topic": "Inventaire réel",
+          "rule": "La capacité de dépecer dépend des fieldToolIds de la campagne courante, pas d'un catalogue visuel ou d'un preset.",
+          "source": "app/game/types.ts",
+          "acceptance": "Ancienne sauvegarde sans champ : aucun outil accordé par migration."
+        },
+        {
+          "id": "B112-DEP-03",
+          "status": "BASE_V111",
+          "topic": "Emport",
+          "rule": "Le Flaying Tool n'occupe pas les deux emplacements de gadgets ; pas de charge active à déclencher.",
+          "source": "app/game/GameClient.tsx",
+          "acceptance": "Les gadgets équipés et leurs charges restent cohérents après achat."
+        },
+        {
+          "id": "B112-DEP-04",
+          "status": "BASE_V111",
+          "topic": "Preuve de décès",
+          "rule": "Le registre n'accepte qu'un acteur réellement vaincu, actif, non Apex et à santé nulle dans la rencontre courante.",
+          "source": "app/game/systems/huntRitesRuntimeV77.ts",
+          "acceptance": "Une proie vivante, étrangère ou un décès historique sans preuve n'est pas recréé."
+        },
+        {
+          "id": "B112-DEP-05",
+          "status": "BASE_V111",
+          "topic": "Portée de travail",
+          "rule": "Approcher la proie à 88 pixels au maximum pour démarrer et poursuivre un geste.",
+          "source": "app/game/systems/ritesOfHuntV77.ts",
+          "acceptance": "La distance est vérifiée depuis le point d'acteur fourni au moteur de rites."
+        },
+        {
+          "id": "B112-DEP-06",
+          "status": "BASE_V111",
+          "topic": "Analyse",
+          "rule": "Analyser prend 1,4 seconde et inscrit la proie dans le registre de cette chasse.",
+          "source": "app/game/systems/ritesOfHuntV77.ts",
+          "acceptance": "Une nouvelle analyse de la même proie est refusée sans nouvel effet."
+        },
+        {
+          "id": "B112-DEP-07",
+          "status": "BASE_V111",
+          "topic": "Marquage",
+          "rule": "Marquer prend 1 seconde et permet aux témoins admissibles de découvrir la mise en scène.",
+          "source": "app/game/systems/ritesOfHuntV77.ts",
+          "acceptance": "Aucun trophée ou rang n'est accordé par le marquage."
+        },
+        {
+          "id": "B112-DEP-08",
+          "status": "BASE_V111",
+          "topic": "Dépeçage disponible",
+          "rule": "Le menu rend Dépecer accessible quand le véritable outil est possédé et la proie n'est pas déjà dépecée.",
+          "source": "app/game/HuntRitesMenuV77.tsx",
+          "acceptance": "Le bouton et le moteur concordent ; une invocation directe sans outil échoue."
+        },
+        {
+          "id": "B112-DEP-09",
+          "status": "BASE_V111",
+          "topic": "Durée et exposition",
+          "rule": "Le dépeçage prend 3,2 secondes ; les ennemis et dangers continuent d'agir autour du chasseur.",
+          "source": "app/game/systems/ritesOfHuntV77.ts",
+          "acceptance": "L'ouverture du menu ne met pas la chasse en pause."
+        },
+        {
+          "id": "B112-DEP-10",
+          "status": "BASE_V111",
+          "topic": "Interruption",
+          "rule": "Dégâts, éloignement, perte de propriétaire ou perte de l'outil interrompent le geste sans confirmer son achèvement.",
+          "source": "app/game/systems/ritesOfHuntV77.ts",
+          "acceptance": "Après interruption, aucun événement flay et aucun corps flayed ne sont créés."
+        },
+        {
+          "id": "B112-DEP-11",
+          "status": "BASE_V111",
+          "topic": "Annulation et pause",
+          "rule": "Fermer le menu interrompt le geste ; suspendre la chasse conserve un état cohérent sans progression hors simulation.",
+          "source": "app/game/HuntCanvas.tsx",
+          "acceptance": "Le temps réel passé dans un autre écran ne termine pas le geste."
+        },
+        {
+          "id": "B112-DEP-12",
+          "status": "BASE_V111",
+          "topic": "Reprise vérifiée",
+          "rule": "La restauration d'un corps dépecé vérifie le vrai acteur vaincu, la chasse et la possession effective du Flaying Tool.",
+          "source": "app/game/systems/huntRitesRuntimeV77.ts",
+          "acceptance": "Un payload inventant l'outil ou une autre proie est refusé."
+        },
+        {
+          "id": "B112-DEP-13",
+          "status": "BASE_V111",
+          "topic": "Un seul achèvement",
+          "rule": "L'événement flay:<id de proie> est unique ; répétitions et callbacks ne fournissent aucun nouvel effet.",
+          "source": "app/game/systems/ritesOfHuntV77.ts",
+          "acceptance": "Sauvegarder, reprendre et réessayer ne multiplie ni corps ni récompense."
+        },
+        {
+          "id": "B112-DEP-14",
+          "status": "BASE_V111",
+          "topic": "Témoins et vigilance",
+          "rule": "Un corps dépecé découvert produit 20 points de peur (contre 8 pour une marque) et la vigilance existante ; chaque témoin ne réagit qu'une fois.",
+          "source": "app/game/systems/huntRitesRuntimeV77.ts",
+          "acceptance": "Marquer puis dépecer le même corps ne redéclenche pas le témoin déjà enregistré ; valeurs plafonnées et reprise cohérentes."
+        },
+        {
+          "id": "B112-DEP-15",
+          "status": "BASE_V111",
+          "topic": "Trace et effacement",
+          "rule": "Effacer une trace prend 1,8 seconde ; laisser sur place est immédiat.",
+          "source": "app/game/systems/ritesOfHuntV77.ts",
+          "acceptance": "La suppression de la trace ne ressuscite pas la proie et ne restitue aucun butin."
+        },
+        {
+          "id": "B112-DEP-16",
+          "status": "BASE_V111",
+          "topic": "Périmètre du butin",
+          "rule": "Le geste de dépeçage historique prépare un corps ; les prises anatomiques V112 sont des actions et objets distincts.",
+          "source": "app/game/HuntCanvas.tsx",
+          "acceptance": "Les récompenses de trophée suivent leur collecte et leur extraction existantes."
+        }
+      ]
+    },
+    {
+      "name": "Trophees",
+      "title": "Récolte : source physique, rite et extraction",
+      "columns": [
+        {
+          "key": "id",
+          "label": "ID",
+          "width": 15
+        },
+        {
+          "key": "status",
+          "label": "Statut",
+          "width": 24
+        },
+        {
+          "key": "topic",
+          "label": "Étape / sujet",
+          "width": 28
+        },
+        {
+          "key": "rule",
+          "label": "Règle et retour joueur",
+          "width": 62
+        },
+        {
+          "key": "source",
+          "label": "Source vérifiable",
+          "width": 55
+        },
+        {
+          "key": "acceptance",
+          "label": "Critère d'acceptation / limite",
+          "width": 64
+        }
+      ],
+      "rows": [
+        {
+          "id": "B112-TRO-01",
+          "status": "BASE_V111",
+          "topic": "Admissibilité",
+          "rule": "Les trophées secondaires proviennent des définitions de gameplay de l'ennemi réellement vaincu.",
+          "source": "app/game/enemyTrophyGameplayV18.ts",
+          "acceptance": "Un identifiant absent du catalogue ne donne pas un trophée de substitution inventé."
+        },
+        {
+          "id": "B112-TRO-02",
+          "status": "BASE_V111",
+          "topic": "Position du prélèvement",
+          "rule": "Le point de récolte suit l'ancrage du corps réel, y compris sur une plateforme ou dans la canopée.",
+          "source": "app/game/HuntCanvas.tsx",
+          "acceptance": "Une proie abattue en hauteur ne fait pas apparaître son prélèvement au sol global."
+        },
+        {
+          "id": "B112-TRO-03",
+          "status": "BASE_V111",
+          "topic": "Corps en déplacement",
+          "rule": "La récolte reste attachée à la même proie lorsque son corps tombe et se pose sur la collision existante.",
+          "source": "app/game/HuntCanvas.tsx",
+          "acceptance": "Aucune copie au point de mort et au point d'arrivée."
+        },
+        {
+          "id": "B112-TRO-04",
+          "status": "BASE_V111",
+          "topic": "Vraie proximité",
+          "rule": "Le chasseur doit avoir un appui réel, ne pas être en escalade et se trouver dans la portée 2 D du point de prélèvement.",
+          "source": "app/game/HuntCanvas.tsx",
+          "acceptance": "Le prélèvement n'est pas amorcé en vol, suspendu ou depuis un autre étage hors portée."
+        },
+        {
+          "id": "B112-TRO-05",
+          "status": "BASE_V111",
+          "topic": "Obstacle solide",
+          "rule": "La proximité ne permet pas de prélever à travers une paroi solide.",
+          "source": "app/game/HuntCanvas.tsx",
+          "acceptance": "Un plancher ou une plateforme à sens unique n'est pas traité automatiquement comme un mur opaque."
+        },
+        {
+          "id": "B112-TRO-06",
+          "status": "BASE_V111",
+          "topic": "Source toujours valide",
+          "rule": "Le rite secondaire vérifie que sa proie source existe encore, est vaincue et correspond au prélèvement sélectionné.",
+          "source": "app/game/HuntCanvas.tsx",
+          "acceptance": "Une source absente ou réactivée interrompt le rite sans collecte."
+        },
+        {
+          "id": "B112-TRO-07",
+          "status": "BASE_V111",
+          "topic": "Revalidation continue",
+          "rule": "Appui du chasseur, absence d'escalade, distance, visibilité et état de source sont revérifiés pendant le rite et avant confirmation.",
+          "source": "app/game/HuntCanvas.tsx",
+          "acceptance": "L'élan, une chute ou un déplacement du corps ne produisent pas une récolte à distance."
+        },
+        {
+          "id": "B112-TRO-17",
+          "status": "BASE_V111",
+          "topic": "Apex : portée propre",
+          "rule": "Le prélèvement principal conserve une portée distincte de 125 pixels ; le secondaire utilise 110 pixels.",
+          "source": "app/game/HuntCanvas.tsx",
+          "acceptance": "Les deux parcours exigent une présence physique admissible, sans réutiliser la mauvaise portée."
+        },
+        {
+          "id": "B112-TRO-08",
+          "status": "BASE_V111",
+          "topic": "Lecture avant action",
+          "rule": "Le rite prépare le joueur pendant 1,8 seconde avant de lancer la séquence de glyphes.",
+          "source": "app/game/systems/trophyRitual.ts",
+          "acceptance": "Une entrée prématurée ne saute pas la préparation."
+        },
+        {
+          "id": "B112-TRO-09",
+          "status": "BASE_V111",
+          "topic": "Séquence rituelle",
+          "rule": "Le rite comporte 6 glyphes et une fenêtre d'action bornée par glyphe.",
+          "source": "app/game/systems/trophyRitual.ts",
+          "acceptance": "Les commandes attendues sont affichées par la séquence courante."
+        },
+        {
+          "id": "B112-TRO-10",
+          "status": "BASE_V111",
+          "topic": "Erreurs bornées",
+          "rule": "Le moteur termine en échec après le maximum d'erreurs défini ; un échec ne marque pas le drop collecté.",
+          "source": "app/game/systems/trophyRitual.ts",
+          "acceptance": "Réessayer ne double ni l'objet ni la première découverte."
+        },
+        {
+          "id": "B112-TRO-11",
+          "status": "BASE_V111",
+          "topic": "Interruption par dégâts",
+          "rule": "Un impact interrompt le prélèvement et restitue le contrôle suivant les règles de chasse existantes.",
+          "source": "app/game/HuntCanvas.tsx",
+          "acceptance": "Aucun résultat de collecte n'est annoncé au seul démarrage du rite."
+        },
+        {
+          "id": "B112-TRO-12",
+          "status": "BASE_V111",
+          "topic": "Qualité",
+          "rule": "La qualité du trophée reste calculée par les règles de rite et de mission existantes.",
+          "source": "app/game/systems/trophyRitual.ts",
+          "acceptance": "Le trophée principal garde sa qualité de rite ; les spécimens anatomiques V112 ont leur intégrité distincte et déterministe."
+        },
+        {
+          "id": "B112-TRO-13",
+          "status": "BASE_V111",
+          "topic": "Collecte unique",
+          "rule": "Le drapeau collected interdit de réclamer plusieurs fois le même prélèvement secondaire.",
+          "source": "app/game/HuntCanvas.tsx",
+          "acceptance": "Double interaction et reprise du checkpoint ne fournissent pas plusieurs revendications."
+        },
+        {
+          "id": "B112-TRO-14",
+          "status": "BASE_V111",
+          "topic": "Extraction requise",
+          "rule": "Les revendications de cette chasse sont remises au résultat de mission réussi ; la possession pendant la chasse reste distincte.",
+          "source": "app/game/HuntCanvas.tsx",
+          "acceptance": "Un échec ou abandon ne transforme pas le drop en récompense de campagne réussie."
+        },
+        {
+          "id": "B112-TRO-15",
+          "status": "BASE_V111",
+          "topic": "Apex distinct",
+          "rule": "La proie dominante et son trophée principal suivent leurs propres phases de combat, prélèvement et extraction.",
+          "source": "app/game/HuntCanvas.tsx",
+          "acceptance": "Le rite sur corps secondaire ne contourne pas la victoire contre l'Apex."
+        },
+        {
+          "id": "B112-TRO-16",
+          "status": "BASE_V111",
+          "topic": "Compatibilité de reprise",
+          "rule": "La reprise conserve les identités et drapeaux de collecte existants et revalide la géométrie physique au retour.",
+          "source": "app/game/HuntCanvas.tsx",
+          "acceptance": "Une ancienne chasse ne reçoit pas de corps ni de trophées historiques inventés."
+        }
+      ]
+    },
+    {
+      "name": "Locomotion",
+      "title": "Arbres, lianes et supports : commandes et limites",
+      "columns": [
+        {
+          "key": "id",
+          "label": "ID",
+          "width": 15
+        },
+        {
+          "key": "status",
+          "label": "Statut",
+          "width": 24
+        },
+        {
+          "key": "topic",
+          "label": "Étape / sujet",
+          "width": 28
+        },
+        {
+          "key": "rule",
+          "label": "Règle et retour joueur",
+          "width": 62
+        },
+        {
+          "key": "source",
+          "label": "Source vérifiable",
+          "width": 55
+        },
+        {
+          "key": "acceptance",
+          "label": "Critère d'acceptation / limite",
+          "width": 64
+        }
+      ],
+      "rows": [
+        {
+          "id": "B112-LOC-01",
+          "status": "BASE_V111",
+          "topic": "Supports physiques",
+          "rule": "Les arbres, lianes, cordes, chaînes et autres prises proviennent des blueprints du monde courant.",
+          "source": "app/game/systems/worldBlueprints.ts",
+          "acceptance": "Pas de cible d'accroche hors niveau ni de téléportation vers une branche décorative."
+        },
+        {
+          "id": "B112-LOC-02",
+          "status": "BASE_V111",
+          "topic": "Prise verticale",
+          "rule": "Haut ou Bas engage l'escalade quand le chasseur recouvre une prise admissible et dispose d'au moins 8 points d'endurance.",
+          "source": "app/game/HuntCanvas.tsx",
+          "acceptance": "La prise n'est pas créée simplement parce que le joueur regarde un arbre."
+        },
+        {
+          "id": "B112-LOC-03",
+          "status": "BASE_V111",
+          "topic": "Direction et saut",
+          "rule": "Depuis une prise, le saut est traité avant que la direction horizontale puisse annuler l'état d'escalade.",
+          "source": "app/game/HuntCanvas.tsx",
+          "acceptance": "Haut + direction + saut produit bien un bond depuis le support."
+        },
+        {
+          "id": "B112-LOC-04",
+          "status": "BASE_V111",
+          "topic": "Direction du bond",
+          "rule": "La direction horizontale oriente le départ ; à défaut, orientation du chasseur. Impulsion 360 px/s sur prise rigide et 420 px/s sur liane, corde ou chaîne.",
+          "source": "app/game/HuntCanvas.tsx",
+          "acceptance": "Le joueur peut partir à gauche comme à droite sans repositionnement artificiel."
+        },
+        {
+          "id": "B112-LOC-05",
+          "status": "BASE_V111",
+          "topic": "Conservation de l'élan",
+          "rule": "Un bref délai de transfert conserve l'impulsion du saut d'accroche avant le retour au mouvement aérien habituel.",
+          "source": "app/game/HuntCanvas.tsx",
+          "acceptance": "Le lissage horizontal ne supprime pas instantanément le bond au départ."
+        },
+        {
+          "id": "B112-LOC-06",
+          "status": "BASE_V111",
+          "topic": "Pas de reprise immédiate",
+          "rule": "Le délai de transfert bloque la réaccroche immédiate sur le support de départ.",
+          "source": "app/game/HuntCanvas.tsx",
+          "acceptance": "Maintenir Haut ne neutralise pas le saut en réaccrochant au premier pas de simulation."
+        },
+        {
+          "id": "B112-LOC-07",
+          "status": "BASE_V111",
+          "topic": "Rattraper la prise suivante",
+          "rule": "Après le délai, Haut permet de saisir un support réellement recouvert même si la direction horizontale reste maintenue.",
+          "source": "app/game/HuntCanvas.tsx",
+          "acceptance": "Le joueur n'a pas à relâcher puis réappuyer artificiellement toutes les commandes."
+        },
+        {
+          "id": "B112-LOC-08",
+          "status": "BASE_V111",
+          "topic": "Endurance des supports",
+          "rule": "La prise consomme l'endurance au taux propre au support ; arbre et liane ont des valeurs de blueprint distinctes.",
+          "source": "app/game/systems/worldBlueprints.ts",
+          "acceptance": "Le coût continue tant que l'escalade est active, même sans gain de hauteur."
+        },
+        {
+          "id": "B112-LOC-09",
+          "status": "BASE_V111",
+          "topic": "Épuisement",
+          "rule": "Une prise épuisée provoque un lâcher et bloque les nouvelles accroches jusqu'à une réception au sol ou sur plateforme.",
+          "source": "app/game/HuntCanvas.tsx",
+          "acceptance": "La régénération en l'air ne permet plus de se suspendre indéfiniment par petites reprises."
+        },
+        {
+          "id": "B112-LOC-10",
+          "status": "BASE_V111",
+          "topic": "Réception et reprise",
+          "rule": "Une vraie collision de réception réarme la prise et conserve les règles de saut et de boost existantes.",
+          "source": "app/game/HuntCanvas.tsx",
+          "acceptance": "Un simple changement d'animation ou de support ne réarme pas la fatigue."
+        },
+        {
+          "id": "B112-LOC-11",
+          "status": "BASE_V111",
+          "topic": "Collision conservée",
+          "rule": "Le mouvement passe par la résolution de collision balayée existante ; les parois solides restent bloquantes.",
+          "source": "app/game/systems/platformCollision.ts",
+          "acceptance": "Un bond vers un support ne traverse pas les murs ou les plafonds."
+        },
+        {
+          "id": "B112-LOC-12",
+          "status": "BASE_V111",
+          "topic": "Saut assisté",
+          "rule": "Temps de coyote, mémoire courte d'entrée et hauteur variable restent gérés par le contrôleur commun.",
+          "source": "app/game/systems/jumpAssist.ts",
+          "acceptance": "Le bond de support ne consomme pas un boost aérien à sa place."
+        },
+        {
+          "id": "B112-LOC-13",
+          "status": "BASE_V111",
+          "topic": "Pause et reprise",
+          "rule": "Le délai de transfert transitoire est réinitialisé en reprise ; la fatigue durable du chasseur reste cohérente.",
+          "source": "app/game/HuntCanvas.tsx",
+          "acceptance": "Une sauvegarde ne recrée pas une impulsion ni une prise fraîche après épuisement."
+        }
+      ]
+    },
+    {
+      "name": "Pendule",
+      "title": "Balancement physique et prises",
+      "columns": [
+        {
+          "key": "id",
+          "label": "ID",
+          "width": 18
+        },
+        {
+          "key": "status",
+          "label": "Statut",
+          "width": 24
+        },
+        {
+          "key": "topic",
+          "label": "Étape / sujet",
+          "width": 32
+        },
+        {
+          "key": "rule",
+          "label": "Règle et retour joueur",
+          "width": 76
+        },
+        {
+          "key": "source",
+          "label": "Source vérifiable",
+          "width": 68
+        },
+        {
+          "key": "acceptance",
+          "label": "Validation / limite",
+          "width": 78
+        }
+      ],
+      "rows": [
+        {
+          "id": "CAN112-01",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Ancrage réel",
+          "rule": "Une liane, corde ou chaîne authorée porte le pendule. Les prises des routes ont leur ancrage à40 px pour dégager les branches.",
+          "source": "app/game/systems/canopyTraversalV112.ts",
+          "acceptance": "Un décor ou ID inventé n'accorde pas d'attache."
+        },
+        {
+          "id": "CAN112-02",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "État physique",
+          "rule": "Angle, vitesse angulaire, longueur et point d'ancrage déterminent le déplacement.",
+          "source": "app/game/systems/canopyTraversalV112.ts",
+          "acceptance": "Valeurs finies, longueur et angle bornés."
+        },
+        {
+          "id": "CAN112-03",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Déclenchement",
+          "rule": "Direction seule depuis support flexible enclenche le balancement ; direction+saut immédiat conserve le bond V111.",
+          "source": "app/game/systems/canopyTraversalV112.ts",
+          "acceptance": "Arbres rigides gardent leur fonctionnement existant."
+        },
+        {
+          "id": "CAN112-04",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Pompage",
+          "rule": "Direction ajoute une accélération angulaire bornée et la friction dissipe l'énergie.",
+          "source": "app/game/systems/canopyTraversalV112.ts",
+          "acceptance": "Sans entrée aucun gain d'énergie ; vitesse tangentielle plafonnée."
+        },
+        {
+          "id": "CAN112-05",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Longueur",
+          "rule": "Haut/Bas ajustent la longueur à80 px/s entre70 px et hauteur du support.",
+          "source": "app/game/systems/canopyTraversalV112.ts",
+          "acceptance": "Pas de corde négative ni extension hors support."
+        },
+        {
+          "id": "CAN112-06",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Lâcher",
+          "rule": "Saut libère avec vitesse tangentielle réelle et délai anti-réaccroche.",
+          "source": "app/game/systems/canopyTraversalV112.ts",
+          "acceptance": "Aucune impulsion rejouée à la reprise."
+        },
+        {
+          "id": "CAN112-07",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Collision",
+          "rule": "Sous-pas1/120 s et géométrie solide bornent le déplacement attaché.",
+          "source": "app/game/systems/canopyTraversalV112.ts",
+          "acceptance": "Pas de traversée de mur sur grand delta."
+        },
+        {
+          "id": "CAN112-08",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Endurance",
+          "rule": "Coût du support plus3*|direction|+4*|grimpe|, ajusté à la charge.",
+          "source": "app/game/systems/canopyTraversalV112.ts",
+          "acceptance": "À zéro chute et verrou jusqu'à réception."
+        },
+        {
+          "id": "CAN112-09",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Support perdu",
+          "rule": "Une prise absente, éloignée ou masquée par mur est refusée.",
+          "source": "app/game/systems/canopyTraversalV112.ts",
+          "acceptance": "Le dernier support connu ne permet pas de téléportation."
+        },
+        {
+          "id": "CAN112-10",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Reprise",
+          "rule": "Le checkpoint revalide support, longueur, position et vitesses.",
+          "source": "app/game/systems/canopyTraversalV112.ts",
+          "acceptance": "Un payload corrompu ne crée pas d'énergie gratuite."
+        },
+        {
+          "id": "CAN112-11",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Pause",
+          "rule": "Seul le temps de simulation fait avancer le pendule.",
+          "source": "app/game/systems/canopyTraversalV112.ts",
+          "acceptance": "Pas de progression pendant suspension navigateur."
+        },
+        {
+          "id": "CAN112-12",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Entrées",
+          "rule": "Axes direction/grimpe et Saut partagés par clavier, tactile et manette.",
+          "source": "app/game/systems/canopyTraversalV112.ts",
+          "acceptance": "Aucune nouvelle action uniquement clavier."
+        }
+      ]
+    },
+    {
+      "name": "Routes",
+      "title": "Routes de canopée et repos",
+      "columns": [
+        {
+          "key": "id",
+          "label": "ID",
+          "width": 18
+        },
+        {
+          "key": "status",
+          "label": "Statut",
+          "width": 24
+        },
+        {
+          "key": "topic",
+          "label": "Étape / sujet",
+          "width": 32
+        },
+        {
+          "key": "rule",
+          "label": "Règle et retour joueur",
+          "width": 76
+        },
+        {
+          "key": "source",
+          "label": "Source vérifiable",
+          "width": 68
+        },
+        {
+          "key": "acceptance",
+          "label": "Validation / limite",
+          "width": 78
+        }
+      ],
+      "rows": [
+        {
+          "id": "ROU112-01",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Séquences",
+          "rule": "Jusqu'à trois séquences authorées par mission.",
+          "source": "app/game/systems/canopyTraversalV112.ts",
+          "acceptance": "Géométrie présente dans le blueprint réel."
+        },
+        {
+          "id": "ROU112-02",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Branches",
+          "rule": "Chaque séquence possède au moins six points de repos solides.",
+          "source": "app/game/systems/canopyTraversalV112.ts",
+          "acceptance": "Repos sur surfaces de collision, pas image décorative."
+        },
+        {
+          "id": "ROU112-03",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Espacement",
+          "rule": "Centres espacés de180 px et trous d'environ50 px, repos aux hauteurs245/270 px après vérification des dangers.",
+          "source": "app/game/systems/canopyTraversalV112.ts",
+          "acceptance": "Trajectoires testées avec armures admissibles."
+        },
+        {
+          "id": "ROU112-04",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Prises",
+          "rule": "Troncs et prises relient les branches au terrain.",
+          "source": "app/game/systems/canopyTraversalV112.ts",
+          "acceptance": "Départ et sortie possibles sans boost obligatoire."
+        },
+        {
+          "id": "ROU112-05",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Repli",
+          "rule": "Les parcours de canopée sont optionnels et conservent le chemin terrestre.",
+          "source": "app/game/systems/canopyTraversalV112.ts",
+          "acceptance": "Aucune mission bloquée par une charge ou armure."
+        },
+        {
+          "id": "ROU112-06",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Signalétique",
+          "rule": "Le guide distingue route, appui et prise flexible.",
+          "source": "app/game/systems/canopyTraversalV112.ts",
+          "acceptance": "Le joueur peut choisir un repos avant épuisement."
+        },
+        {
+          "id": "ROU112-07",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Qualification",
+          "rule": "Simuler les sauts successifs avec le vrai updatePlayer.",
+          "source": "app/game/systems/canopyTraversalV112.ts",
+          "acceptance": "Une vérification de distance seule n'est pas une partie jouée."
+        }
+      ]
+    },
+    {
+      "name": "Suspension",
+      "title": "Portage et suspension de carcasse",
+      "columns": [
+        {
+          "key": "id",
+          "label": "ID",
+          "width": 18
+        },
+        {
+          "key": "status",
+          "label": "Statut",
+          "width": 24
+        },
+        {
+          "key": "topic",
+          "label": "Étape / sujet",
+          "width": 32
+        },
+        {
+          "key": "rule",
+          "label": "Règle et retour joueur",
+          "width": 76
+        },
+        {
+          "key": "source",
+          "label": "Source vérifiable",
+          "width": 68
+        },
+        {
+          "key": "acceptance",
+          "label": "Validation / limite",
+          "width": 78
+        }
+      ],
+      "rows": [
+        {
+          "id": "SUS112-01",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Source réelle",
+          "rule": "Seul un corps réellement vaincu dans cette chasse est éligible.",
+          "source": "app/game/systems/carcassSupportsV112.ts",
+          "acceptance": "Vivants, historiques et identités étrangères refusés."
+        },
+        {
+          "id": "SUS112-02",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Deux gestes",
+          "rule": "Porter puis attacher sont deux actions distinctes.",
+          "source": "app/game/systems/carcassSupportsV112.ts",
+          "acceptance": "Pas de déplacement instantané depuis un simple menu."
+        },
+        {
+          "id": "SUS112-03",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Masse",
+          "rule": "Corps transportable jusqu'à170 kg selon règle explicite.",
+          "source": "app/game/systems/carcassSupportsV112.ts",
+          "acceptance": "Refus annoncé avant mutation."
+        },
+        {
+          "id": "SUS112-04",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Arbre",
+          "rule": "Socket réel sur arbre largeur≥90 px et hauteur≥220 px ; capacité170 kg.",
+          "source": "app/game/systems/carcassSupportsV112.ts",
+          "acceptance": "Décor sans socket ou masse excessive refusés."
+        },
+        {
+          "id": "SUS112-05",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Chaîne",
+          "rule": "Socket réel sur chaîne largeur≥32 px et hauteur≥180 px ; capacité240 kg.",
+          "source": "app/game/systems/carcassSupportsV112.ts",
+          "acceptance": "Pas de substitution arbitraire par une liane."
+        },
+        {
+          "id": "SUS112-06",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Portée",
+          "rule": "Portée d'attache180 px et décalage82 px depuis ancrage.",
+          "source": "app/game/systems/carcassSupportsV112.ts",
+          "acceptance": "Mur et espace occupé empêchent l'attache."
+        },
+        {
+          "id": "SUS112-07",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Durée",
+          "rule": "Attache exposée2,5 secondes de simulation.",
+          "source": "app/game/systems/carcassSupportsV112.ts",
+          "acceptance": "Dégâts, éloignement ou perte de source interrompent."
+        },
+        {
+          "id": "SUS112-08",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Unicité",
+          "rule": "Un seul corps conserve son identité portée/suspendue/posée.",
+          "source": "app/game/systems/carcassSupportsV112.ts",
+          "acceptance": "Pas de copie au sol et dans la canopée."
+        },
+        {
+          "id": "SUS112-09",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Ancrage",
+          "rule": "Rendu, témoin et trophée suivent la nouvelle position.",
+          "source": "app/game/systems/carcassSupportsV112.ts",
+          "acceptance": "Aucune ancienne position utilisée pour récolter à distance."
+        },
+        {
+          "id": "SUS112-10",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Reprise",
+          "rule": "Support, capacité et corps réel sont revérifiés.",
+          "source": "app/game/systems/carcassSupportsV112.ts",
+          "acceptance": "Support disparu ne laisse pas une suspension inventée."
+        },
+        {
+          "id": "SUS112-11",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Interruption",
+          "rule": "Abandonner un transport ou geste conserve le corps dans la scène.",
+          "source": "app/game/systems/carcassSupportsV112.ts",
+          "acceptance": "Aucune disparition silencieuse de la proie."
+        }
+      ]
+    },
+    {
+      "name": "Anatomie",
+      "title": "Prélèvements et intégrité",
+      "columns": [
+        {
+          "key": "id",
+          "label": "ID",
+          "width": 18
+        },
+        {
+          "key": "status",
+          "label": "Statut",
+          "width": 24
+        },
+        {
+          "key": "topic",
+          "label": "Étape / sujet",
+          "width": 32
+        },
+        {
+          "key": "rule",
+          "label": "Règle et retour joueur",
+          "width": 76
+        },
+        {
+          "key": "source",
+          "label": "Source vérifiable",
+          "width": 68
+        },
+        {
+          "key": "acceptance",
+          "label": "Validation / limite",
+          "width": 78
+        }
+      ],
+      "rows": [
+        {
+          "id": "ANA112-01",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Catalogue",
+          "rule": "Catalogue explicite par espèce, parties et masse distinctes.",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Aucune peau universelle sur toute proie."
+        },
+        {
+          "id": "ANA112-02",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Peau",
+          "rule": "Peau admissible seulement après dépeçage si prévu ; durée3,8 s.",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Préparation absente refuse le prélèvement."
+        },
+        {
+          "id": "ANA112-03",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Tissu",
+          "rule": "Prélèvement de tissu prévu au catalogue, durée2,6 s.",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Stock fini séparé du trophée principal."
+        },
+        {
+          "id": "ANA112-04",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Os",
+          "rule": "Os ou prise secondaire prévue, durée3,4 s.",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Pas de duplication du crâne Apex."
+        },
+        {
+          "id": "ANA112-05",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Identité",
+          "rule": "Chaque pièce porte chasse, proie, partie et qualité.",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Rejouer la même combinaison échoue."
+        },
+        {
+          "id": "ANA112-06",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Mêlée",
+          "rule": "Les dommages de mêlée diminuent l'intégrité selon formule déterministe.",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Pas de tirage au rechargement."
+        },
+        {
+          "id": "ANA112-07",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Tir",
+          "rule": "Les tirs et l'excès létal appliquent leurs dommages d'intégrité.",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Le risque est visible avant prélèvement."
+        },
+        {
+          "id": "ANA112-08",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Analyse",
+          "rule": "L'absence d'analyse applique la pénalité de précision déclarée.",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Prévisualisation qualité avant geste irréversible."
+        },
+        {
+          "id": "ANA112-09",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Aperçu",
+          "rule": "Menu : partie, durée, masse, qualité et prérequis.",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Le joueur voit le résultat potentiel."
+        },
+        {
+          "id": "ANA112-10",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Conditions",
+          "rule": "Vraie source, appui, portée et absence d'obstacle requis pendant le geste.",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Dégâts, chute ou éloignement annulent sans prise."
+        },
+        {
+          "id": "ANA112-11",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Capacité finale",
+          "rule": "Stock et espace libre sont revérifiés à l'achèvement.",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Sac plein ne consomme pas la partie du corps."
+        },
+        {
+          "id": "ANA112-12",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Extraction",
+          "rule": "Réussite réelle de mission verse les spécimens une seule fois.",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Échec/abandon ne produit pas de récompense de succès."
+        },
+        {
+          "id": "ANA112-13",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Reprise",
+          "rule": "Stocks consommés et objets conservés restent liés.",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Pas de réintroduction d'une partie déjà prélevée."
+        },
+        {
+          "id": "ANA112-14",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Conservation",
+          "rule": "Qualité et identité accompagnent l'objet à l'atelier.",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Nettoyer ne recrée pas un nouvel objet."
+        }
+      ]
+    },
+    {
+      "name": "Charge",
+      "title": "Charge, volume et emport",
+      "columns": [
+        {
+          "key": "id",
+          "label": "ID",
+          "width": 18
+        },
+        {
+          "key": "status",
+          "label": "Statut",
+          "width": 24
+        },
+        {
+          "key": "topic",
+          "label": "Étape / sujet",
+          "width": 32
+        },
+        {
+          "key": "rule",
+          "label": "Règle et retour joueur",
+          "width": 76
+        },
+        {
+          "key": "source",
+          "label": "Source vérifiable",
+          "width": 68
+        },
+        {
+          "key": "acceptance",
+          "label": "Validation / limite",
+          "width": 78
+        }
+      ],
+      "rows": [
+        {
+          "id": "CHA112-01",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Inventaire",
+          "rule": "Masse et volume calculés depuis les spécimens réellement présents.",
+          "source": "app/game/systems/harvestInventoryV112.ts",
+          "acceptance": "Un total sauvegardé seul n'accorde pas de capacité."
+        },
+        {
+          "id": "CHA112-02",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Armures",
+          "rule": "Budgets propres à chaque armure.",
+          "source": "app/game/systems/harvestInventoryV112.ts",
+          "acceptance": "Route principale terminable sans récolte optionnelle."
+        },
+        {
+          "id": "CHA112-03",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Double budget",
+          "rule": "Accepter exige place en masse et en volume.",
+          "source": "app/game/systems/harvestInventoryV112.ts",
+          "acceptance": "Un seul dépassement refuse sans enlever la pièce du corps."
+        },
+        {
+          "id": "CHA112-04",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Visibilité",
+          "rule": "Usage, limite et marge sont affichés avant prélèvement.",
+          "source": "app/game/systems/harvestInventoryV112.ts",
+          "acceptance": "Unités explicites."
+        },
+        {
+          "id": "CHA112-05",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Saut",
+          "rule": "Charge ajuste l'impulsion par coefficient borné.",
+          "source": "app/game/systems/harvestInventoryV112.ts",
+          "acceptance": "Jamais de coefficient négatif ou d'obligation inaccessible."
+        },
+        {
+          "id": "CHA112-06",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Escalade",
+          "rule": "Charge ajuste effort et/ou vitesse de grimpe.",
+          "source": "app/game/systems/harvestInventoryV112.ts",
+          "acceptance": "Épuisement conserve le verrou V111."
+        },
+        {
+          "id": "CHA112-07",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Bruit",
+          "rule": "L'encombrement influence le bruit par une valeur locale bornée.",
+          "source": "app/game/systems/harvestInventoryV112.ts",
+          "acceptance": "L'IA n'alerte pas toute la carte."
+        },
+        {
+          "id": "CHA112-08",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Dépôt",
+          "rule": "Dépôt temporaire et reprise gardent chaque identité.",
+          "source": "app/game/systems/harvestInventoryV112.ts",
+          "acceptance": "Refus de reprise plein sans perte silencieuse."
+        },
+        {
+          "id": "CHA112-09",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Campagne",
+          "rule": "Extraction, mise en inventaire et retrait de l'emport sont idempotents.",
+          "source": "app/game/systems/harvestInventoryV112.ts",
+          "acceptance": "Callback répétitif ne donne pas deux objets."
+        }
+      ]
+    },
+    {
+      "name": "Entretien",
+      "title": "Usure et entretien de l'outil",
+      "columns": [
+        {
+          "key": "id",
+          "label": "ID",
+          "width": 18
+        },
+        {
+          "key": "status",
+          "label": "Statut",
+          "width": 24
+        },
+        {
+          "key": "topic",
+          "label": "Étape / sujet",
+          "width": 32
+        },
+        {
+          "key": "rule",
+          "label": "Règle et retour joueur",
+          "width": 76
+        },
+        {
+          "key": "source",
+          "label": "Source vérifiable",
+          "width": 68
+        },
+        {
+          "key": "acceptance",
+          "label": "Validation / limite",
+          "width": 78
+        }
+      ],
+      "rows": [
+        {
+          "id": "OUT112-01",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Condition",
+          "rule": "État de l'outil visible, borné et persisté.",
+          "source": "app/game/systems/harvestInventoryV112.ts",
+          "acceptance": "Ancienne sauvegarde sans outil n'en reçoit pas gratuitement."
+        },
+        {
+          "id": "OUT112-02",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Usure",
+          "rule": "Coût appliqué au succès confirmé seulement.",
+          "source": "app/game/systems/harvestInventoryV112.ts",
+          "acceptance": "Démarrer ou interrompre ne paie pas le succès."
+        },
+        {
+          "id": "OUT112-03",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Rejeu",
+          "rule": "Identité du geste empêche une seconde usure.",
+          "source": "app/game/systems/harvestInventoryV112.ts",
+          "acceptance": "Checkpoint/callback ne débitent pas deux fois."
+        },
+        {
+          "id": "OUT112-04",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Prévision",
+          "rule": "Effet d'un outil émoussé annoncé avant le geste.",
+          "source": "app/game/systems/harvestInventoryV112.ts",
+          "acceptance": "Pas de perte cachée à la dernière frame."
+        },
+        {
+          "id": "OUT112-05",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Réparation",
+          "rule": "L'armurerie propose un affûtage gratuit au poste, confirmé avant message de réussite.",
+          "source": "app/game/systems/harvestInventoryV112.ts",
+          "acceptance": "Débit et état confirmés ensemble avant succès."
+        },
+        {
+          "id": "OUT112-06",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Non bloquant",
+          "rule": "Une méthode de remise en état reste accessible.",
+          "source": "app/game/systems/harvestInventoryV112.ts",
+          "acceptance": "Pas de campagne définitivement bloquée par l'usure."
+        },
+        {
+          "id": "OUT112-07",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Refus",
+          "rule": "Solde insuffisant ou opération répétée ne mute pas la sauvegarde.",
+          "source": "app/game/systems/harvestInventoryV112.ts",
+          "acceptance": "Double clic utilise le dernier état confirmé."
+        },
+        {
+          "id": "OUT112-08",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Migration",
+          "rule": "Données absentes, non finies et hors bornes normalisées.",
+          "source": "app/game/systems/harvestInventoryV112.ts",
+          "acceptance": "Pas de création de ressources supplémentaires."
+        }
+      ]
+    },
+    {
+      "name": "Conservation",
+      "title": "Atelier de conservation",
+      "columns": [
+        {
+          "key": "id",
+          "label": "ID",
+          "width": 18
+        },
+        {
+          "key": "status",
+          "label": "Statut",
+          "width": 24
+        },
+        {
+          "key": "topic",
+          "label": "Étape / sujet",
+          "width": 32
+        },
+        {
+          "key": "rule",
+          "label": "Règle et retour joueur",
+          "width": 76
+        },
+        {
+          "key": "source",
+          "label": "Source vérifiable",
+          "width": 68
+        },
+        {
+          "key": "acceptance",
+          "label": "Validation / limite",
+          "width": 78
+        }
+      ],
+      "rows": [
+        {
+          "id": "ATL112-01",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Objet réel",
+          "rule": "Seule une pièce réellement possédée peut être travaillée.",
+          "source": "app/game/systems/harvestInventoryV112.ts",
+          "acceptance": "Un ID catalogue ne crée pas un objet."
+        },
+        {
+          "id": "ATL112-02",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Phases",
+          "rule": "Brut, nettoyage, traitement, séchage et montage sont distincts.",
+          "source": "app/game/systems/harvestInventoryV112.ts",
+          "acceptance": "Transitions ordonnées avec prérequis."
+        },
+        {
+          "id": "ATL112-03",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Tâche",
+          "rule": "Une tâche active cible une identité précise.",
+          "source": "app/game/systems/harvestInventoryV112.ts",
+          "acceptance": "Pas de travaux incompatibles simultanés."
+        },
+        {
+          "id": "ATL112-04",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Nettoyage",
+          "rule": "Nettoie sans changer identité ni créer d'exposition.",
+          "source": "app/game/systems/harvestInventoryV112.ts",
+          "acceptance": "L'objet possédé reste le même."
+        },
+        {
+          "id": "ATL112-05",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Traitement",
+          "rule": "Coût et progression persistés ensemble.",
+          "source": "app/game/systems/harvestInventoryV112.ts",
+          "acceptance": "Transition déjà franchie ne repaie pas."
+        },
+        {
+          "id": "ATL112-06",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Séchage",
+          "rule": "Le séchage demande5 gestes manuels confirmés, sans progression du temps réel.",
+          "source": "app/game/systems/harvestInventoryV112.ts",
+          "acceptance": "Pas de temps réel hors jeu crédité implicitement."
+        },
+        {
+          "id": "ATL112-07",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Montage",
+          "rule": "Exige pièce prête et crée son état de présentation.",
+          "source": "app/game/systems/harvestInventoryV112.ts",
+          "acceptance": "Possession, collection et exposition restent distinctes."
+        },
+        {
+          "id": "ATL112-08",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Confirmation",
+          "rule": "Écriture durable avant message de succès.",
+          "source": "app/game/systems/harvestInventoryV112.ts",
+          "acceptance": "Échec de sauvegarde reste non confirmé."
+        },
+        {
+          "id": "ATL112-09",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Reprise",
+          "rule": "Tâche partielle reprend depuis progression confirmée.",
+          "source": "app/game/systems/harvestInventoryV112.ts",
+          "acceptance": "Fermeture puis callback tardif ne dupliquent pas."
+        },
+        {
+          "id": "ATL112-10",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Annulation",
+          "rule": "Coût conservé/remboursé et objet sont annoncés.",
+          "source": "app/game/systems/harvestInventoryV112.ts",
+          "acceptance": "Aucune perte silencieuse."
+        },
+        {
+          "id": "ATL112-11",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Entrées",
+          "rule": "Boutons natifs et commandes remappées restent utilisables.",
+          "source": "app/game/systems/harvestInventoryV112.ts",
+          "acceptance": "Petit écran et clavier ont accès à sortie."
+        }
+      ]
+    },
+    {
+      "name": "Accessibilite",
+      "title": "Rites et commandes accessibles",
+      "columns": [
+        {
+          "key": "id",
+          "label": "ID",
+          "width": 18
+        },
+        {
+          "key": "status",
+          "label": "Statut",
+          "width": 24
+        },
+        {
+          "key": "topic",
+          "label": "Étape / sujet",
+          "width": 32
+        },
+        {
+          "key": "rule",
+          "label": "Règle et retour joueur",
+          "width": 76
+        },
+        {
+          "key": "source",
+          "label": "Source vérifiable",
+          "width": 68
+        },
+        {
+          "key": "acceptance",
+          "label": "Validation / limite",
+          "width": 78
+        }
+      ],
+      "rows": [
+        {
+          "id": "ACC112-01",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Normal",
+          "rule": "Fenêtre normale conserve le rythme existant.",
+          "source": "app/game/systems/huntAccessibilityV112.ts",
+          "acceptance": "Pas de modification silencieuse du score."
+        },
+        {
+          "id": "ACC112-02",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Généreuse",
+          "rule": "Fenêtre élargie déterministe.",
+          "source": "app/game/systems/huntAccessibilityV112.ts",
+          "acceptance": "Effet annoncé avant le rite."
+        },
+        {
+          "id": "ACC112-03",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Sans délai",
+          "rule": "Exigence temporelle retirée selon réglage.",
+          "source": "app/game/systems/huntAccessibilityV112.ts",
+          "acceptance": "Source, portée et action réelle toujours requises."
+        },
+        {
+          "id": "ACC112-04",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Pression",
+          "rule": "Une pression produit un bord de commande.",
+          "source": "app/game/systems/huntAccessibilityV112.ts",
+          "acceptance": "Maintenir ne rejoue pas le glyph."
+        },
+        {
+          "id": "ACC112-05",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Maintien",
+          "rule": "Durée explicite de confirmation.",
+          "source": "app/game/systems/huntAccessibilityV112.ts",
+          "acceptance": "Relâcher/annuler interrompt."
+        },
+        {
+          "id": "ACC112-06",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Bascule",
+          "rule": "Confirmation possible sans maintien continu.",
+          "source": "app/game/systems/huntAccessibilityV112.ts",
+          "acceptance": "Annulation propre sans fuite vers combat."
+        },
+        {
+          "id": "ACC112-07",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Prise et visée",
+          "rule": "Modes bascule contrôlés séparément.",
+          "source": "app/game/systems/huntAccessibilityV112.ts",
+          "acceptance": "Perte de focus ou écran libère les états transitoires."
+        },
+        {
+          "id": "ACC112-08",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Texte",
+          "rule": "Glyphes accompagnés de noms d'action.",
+          "source": "app/game/systems/huntAccessibilityV112.ts",
+          "acceptance": "Couleur seule insuffisante."
+        },
+        {
+          "id": "ACC112-09",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Remappage",
+          "rule": "Affectation manette avec permutation anti-conflit.",
+          "source": "app/game/systems/huntAccessibilityV112.ts",
+          "acceptance": "Ancien bouton ne continue pas d'agir silencieusement."
+        },
+        {
+          "id": "ACC112-10",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Persistance",
+          "rule": "Préférences contrôlées par campagne, migration légitime.",
+          "source": "app/game/systems/huntAccessibilityV112.ts",
+          "acceptance": "Checkpoint ne force pas un réglage étranger."
+        },
+        {
+          "id": "ACC112-11",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Petit écran",
+          "rule": "Réglages et sortie atteignables à390 px.",
+          "source": "app/game/systems/huntAccessibilityV112.ts",
+          "acceptance": "Pas de contrôle indispensable hors écran."
+        },
+        {
+          "id": "ACC112-12",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Score",
+          "rule": "Les effets des options sur score sont explicités.",
+          "source": "app/game/systems/huntAccessibilityV112.ts",
+          "acceptance": "Aucun malus caché lié à l'accessibilité."
+        }
+      ]
+    },
+    {
+      "name": "Ecosysteme",
+      "title": "Découverte et propagation locale",
+      "columns": [
+        {
+          "key": "id",
+          "label": "ID",
+          "width": 18
+        },
+        {
+          "key": "status",
+          "label": "Statut",
+          "width": 24
+        },
+        {
+          "key": "topic",
+          "label": "Étape / sujet",
+          "width": 32
+        },
+        {
+          "key": "rule",
+          "label": "Règle et retour joueur",
+          "width": 76
+        },
+        {
+          "key": "source",
+          "label": "Source vérifiable",
+          "width": 68
+        },
+        {
+          "key": "acceptance",
+          "label": "Validation / limite",
+          "width": 78
+        }
+      ],
+      "rows": [
+        {
+          "id": "ECO112-01",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Vision",
+          "rule": "Découverte exige distance et ligne de vue.",
+          "source": "app/game/systems/corpseDiscoveryV112.ts",
+          "acceptance": "Trace invisible derrière mur n'alerte pas la carte."
+        },
+        {
+          "id": "ECO112-02",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Identité",
+          "rule": "Couple témoin/corps enregistré une fois.",
+          "source": "app/game/systems/corpseDiscoveryV112.ts",
+          "acceptance": "Revoir le même corps ne répète pas la peur."
+        },
+        {
+          "id": "ECO112-03",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Radio",
+          "rule": "Relais réservé aux acteurs compatibles.",
+          "source": "app/game/systems/corpseDiscoveryV112.ts",
+          "acceptance": "Une bête n'utilise pas de radio humaine."
+        },
+        {
+          "id": "ECO112-04",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Propagation",
+          "rule": "Rayon, destinataires et sauts plafonnés.",
+          "source": "app/game/systems/corpseDiscoveryV112.ts",
+          "acceptance": "Aucune boucle récursive ou alerte mondiale."
+        },
+        {
+          "id": "ECO112-05",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Investigation",
+          "rule": "Allié enquête au point réellement transmis.",
+          "source": "app/game/systems/corpseDiscoveryV112.ts",
+          "acceptance": "Corps suspendu utilise son nouvel ancrage."
+        },
+        {
+          "id": "ECO112-06",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Peur locale",
+          "rule": "Zone de peur plafonnée et évolution bornée.",
+          "source": "app/game/systems/corpseDiscoveryV112.ts",
+          "acceptance": "Pas de croissance infinie."
+        },
+        {
+          "id": "ECO112-07",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Animaux",
+          "rule": "Réactions spécifiques de fuite, prudence ou curiosité.",
+          "source": "app/game/systems/corpseDiscoveryV112.ts",
+          "acceptance": "Pas de comportement d'escouade universel."
+        },
+        {
+          "id": "ECO112-08",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Effacement",
+          "rule": "Effacer une trace ne supprime pas le souvenir confirmé.",
+          "source": "app/game/systems/corpseDiscoveryV112.ts",
+          "acceptance": "Pas de seconde première découverte."
+        },
+        {
+          "id": "ECO112-09",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Budget",
+          "rule": "Travail par tick et file d'événements limités.",
+          "source": "app/game/systems/corpseDiscoveryV112.ts",
+          "acceptance": "La densité ne produit pas du calcul quadratique non borné."
+        },
+        {
+          "id": "ECO112-10",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Reprise",
+          "rule": "Identités et points persistés puis revalidés.",
+          "source": "app/game/systems/corpseDiscoveryV112.ts",
+          "acceptance": "Pas de source étrangère inventée."
+        },
+        {
+          "id": "ECO112-11",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Retour joueur",
+          "rule": "Messages distinguent vision, radio et investigation.",
+          "source": "app/game/systems/corpseDiscoveryV112.ts",
+          "acceptance": "Cause locale compréhensible."
+        }
+      ]
+    },
+    {
+      "name": "Apprentissage",
+      "title": "Guide contextuel et sorties",
+      "columns": [
+        {
+          "key": "id",
+          "label": "ID",
+          "width": 18
+        },
+        {
+          "key": "status",
+          "label": "Statut",
+          "width": 24
+        },
+        {
+          "key": "topic",
+          "label": "Étape / sujet",
+          "width": 32
+        },
+        {
+          "key": "rule",
+          "label": "Règle et retour joueur",
+          "width": 76
+        },
+        {
+          "key": "source",
+          "label": "Source vérifiable",
+          "width": 68
+        },
+        {
+          "key": "acceptance",
+          "label": "Validation / limite",
+          "width": 78
+        }
+      ],
+      "rows": [
+        {
+          "id": "GUI112-01",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Prise",
+          "rule": "Afficher commande affectée près du support.",
+          "source": "app/game/HuntFieldGuideV112.tsx",
+          "acceptance": "Pas de touche par défaut après remappage."
+        },
+        {
+          "id": "GUI112-02",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Bond",
+          "rule": "Expliquer direction+saut et reprise sur prochain support.",
+          "source": "app/game/HuntFieldGuideV112.tsx",
+          "acceptance": "Pas de promesse de portée non testée."
+        },
+        {
+          "id": "GUI112-03",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Pendule",
+          "rule": "Expliquer pompage, longueur et lâcher sur support flexible.",
+          "source": "app/game/HuntFieldGuideV112.tsx",
+          "acceptance": "Un tronc reste rigide."
+        },
+        {
+          "id": "GUI112-04",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Récupération",
+          "rule": "À épuisement, annoncer vraie réception nécessaire.",
+          "source": "app/game/HuntFieldGuideV112.tsx",
+          "acceptance": "Régénération aérienne ne promet pas nouvelle prise."
+        },
+        {
+          "id": "GUI112-05",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Route",
+          "rule": "Distinguer repos et repli terrestre.",
+          "source": "app/game/HuntFieldGuideV112.tsx",
+          "acceptance": "Canopée optionnelle lisible."
+        },
+        {
+          "id": "GUI112-06",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Corps",
+          "rule": "Différencier préparer, porter et suspendre.",
+          "source": "app/game/HuntFieldGuideV112.tsx",
+          "acceptance": "Le corps n'est pas déjà encaissé dans la campagne."
+        },
+        {
+          "id": "GUI112-07",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Trophée",
+          "rule": "Distinguer prélèvement et extraction réussie.",
+          "source": "app/game/HuntFieldGuideV112.tsx",
+          "acceptance": "Glyph de prise différent de sortie."
+        },
+        {
+          "id": "GUI112-08",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Outil",
+          "rule": "Absence, condition et capacité expliquées avant geste.",
+          "source": "app/game/HuntFieldGuideV112.tsx",
+          "acceptance": "Pas de détail technique d'implémentation dans le parcours produit."
+        },
+        {
+          "id": "GUI112-09",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Masquage",
+          "rule": "Guide optionnel et préférence persistée.",
+          "source": "app/game/HuntFieldGuideV112.tsx",
+          "acceptance": "Mécaniques toujours jouables sans guide."
+        }
+      ]
+    },
+    {
+      "name": "Parametres",
+      "title": "Valeurs du moteur et choix V111 à tester",
+      "columns": [
+        {
+          "key": "id",
+          "label": "ID",
+          "width": 15
+        },
+        {
+          "key": "status",
+          "label": "Statut",
+          "width": 24
+        },
+        {
+          "key": "topic",
+          "label": "Paramètre",
+          "width": 34
+        },
+        {
+          "key": "value",
+          "label": "Valeur",
+          "width": 18
+        },
+        {
+          "key": "unit",
+          "label": "Unité / portée",
+          "width": 33
+        },
+        {
+          "key": "source",
+          "label": "Source vérifiable",
+          "width": 55
+        },
+        {
+          "key": "limit",
+          "label": "Justification et limite",
+          "width": 65
+        }
+      ],
+      "rows": [
+        {
+          "id": "B112-PAR-01",
+          "status": "BASE_V111",
+          "topic": "Prix Flaying Tool",
+          "value": 120,
+          "unit": "marques du clan ; achat unique",
+          "source": "app/game/systems/fieldToolsV111.ts",
+          "limit": "Choix de conception V111 ; pas d'équilibrage de campagne certifié."
+        },
+        {
+          "id": "B112-PAR-02",
+          "status": "BASE_V111",
+          "topic": "Analyser",
+          "value": 1.4,
+          "unit": "secondes de simulation",
+          "source": "app/game/systems/ritesOfHuntV77.ts",
+          "limit": "Durée existante, conservée."
+        },
+        {
+          "id": "B112-PAR-03",
+          "status": "BASE_V111",
+          "topic": "Marquer",
+          "value": 1,
+          "unit": "seconde de simulation",
+          "source": "app/game/systems/ritesOfHuntV77.ts",
+          "limit": "Durée existante, conservée."
+        },
+        {
+          "id": "B112-PAR-04",
+          "status": "BASE_V111",
+          "topic": "Dépecer",
+          "value": 3.2,
+          "unit": "secondes de simulation",
+          "source": "app/game/systems/ritesOfHuntV77.ts",
+          "limit": "Durée existante ; l'accès par l'outil devient jouable."
+        },
+        {
+          "id": "B112-PAR-05",
+          "status": "BASE_V111",
+          "topic": "Effacer",
+          "value": 1.8,
+          "unit": "secondes de simulation",
+          "source": "app/game/systems/ritesOfHuntV77.ts",
+          "limit": "Laisser est immédiat, sans nouvelle récompense."
+        },
+        {
+          "id": "B112-PAR-06",
+          "status": "BASE_V111",
+          "topic": "Portée de rite sur corps",
+          "value": 88,
+          "unit": "pixels du monde",
+          "source": "app/game/systems/ritesOfHuntV77.ts",
+          "limit": "Même borne au démarrage et pendant le geste."
+        },
+        {
+          "id": "B112-PAR-07",
+          "status": "BASE_V111",
+          "topic": "Portée de récolte secondaire",
+          "value": 110,
+          "unit": "pixels du monde ; distance2 D",
+          "source": "app/game/HuntCanvas.tsx",
+          "limit": "Portée existante ; revalidation physique ajoutée."
+        },
+        {
+          "id": "B112-PAR-08",
+          "status": "BASE_V111",
+          "topic": "Préparation trophée",
+          "value": 1.8,
+          "unit": "secondes de simulation",
+          "source": "app/game/systems/trophyRitual.ts",
+          "limit": "Précède les glyphes ; aucune réussite automatique."
+        },
+        {
+          "id": "B112-PAR-09",
+          "status": "BASE_V111",
+          "topic": "Nombre de glyphes",
+          "value": 6,
+          "unit": "actions par rite",
+          "source": "app/game/systems/trophyRitual.ts",
+          "limit": "Séquence du moteur existant."
+        },
+        {
+          "id": "B112-PAR-10",
+          "status": "BASE_V111",
+          "topic": "Fenêtre de validation",
+          "value": "0,18 à 0,84",
+          "unit": "secondes depuis le glyphe",
+          "source": "app/game/systems/trophyRitual.ts",
+          "limit": "Temps idéal existant : 0,50 s ; timeout : 1,08 s."
+        },
+        {
+          "id": "B112-PAR-11",
+          "status": "BASE_V111",
+          "topic": "Maximum d'erreurs",
+          "value": 3,
+          "unit": "erreurs par tentative",
+          "source": "app/game/systems/trophyRitual.ts",
+          "limit": "Borne du moteur ; l'ergonomie des modes accessibles reste à valider."
+        },
+        {
+          "id": "B112-PAR-12",
+          "status": "BASE_V111",
+          "topic": "Délai de transfert d'accroche",
+          "value": 0.24,
+          "unit": "seconde ; bond depuis prise",
+          "source": "app/game/HuntCanvas.tsx",
+          "limit": "Choix V111 : maintien bref d'élan et anti-réaccroche ; à tester avec les distances des niveaux."
+        },
+        {
+          "id": "B112-PAR-13",
+          "status": "BASE_V111",
+          "topic": "Vitesse verticale du bond de prise",
+          "value": -560,
+          "unit": "pixels par seconde ; haut négatif",
+          "source": "app/game/systems/jumpAssist.ts",
+          "limit": "Valeur existante ; gravité et collision restent communes."
+        },
+        {
+          "id": "B112-PAR-14",
+          "status": "BASE_V111",
+          "topic": "Coyote / mémoire d'entrée",
+          "value": "0,10 / 0,12",
+          "unit": "secondes",
+          "source": "app/game/systems/jumpAssist.ts",
+          "limit": "Assistances existantes, distinctes du délai de transfert."
+        },
+        {
+          "id": "B112-PAR-15",
+          "status": "BASE_V111",
+          "topic": "Coût arbre jungle de référence",
+          "value": 3,
+          "unit": "endurance par seconde",
+          "source": "app/game/systems/worldBlueprints.ts",
+          "limit": "Exemple j-tree-west ; les supports peuvent avoir leurs propres valeurs."
+        },
+        {
+          "id": "B112-PAR-16",
+          "status": "BASE_V111",
+          "topic": "Coût liane jungle de référence",
+          "value": 4,
+          "unit": "endurance par seconde",
+          "source": "app/game/systems/worldBlueprints.ts",
+          "limit": "Exemple j-vine-west ; aucune uniformisation de tous les biomes."
+        },
+        {
+          "id": "B112-PAR-17",
+          "status": "BASE_V111",
+          "topic": "Portée maximale de témoin",
+          "value": 480,
+          "unit": "pixels du monde",
+          "source": "app/game/systems/ritesOfHuntV77.ts",
+          "limit": "Nécessite aussi le témoin admissible, sa vue et un événement non déjà découvert."
+        },
+        {
+          "id": "B112-PAR-18",
+          "status": "BASE_V111",
+          "topic": "Capacité du registre de corps",
+          "value": 128,
+          "unit": "corps par chasse",
+          "source": "app/game/systems/ritesOfHuntV77.ts",
+          "limit": "À saturation, aucune ancienne prise n'est effacée pour en ajouter une nouvelle."
+        },
+        {
+          "id": "B112-PAR-19",
+          "status": "BASE_V111",
+          "topic": "Endurance minimale de prise",
+          "value": 8,
+          "unit": "points d'endurance",
+          "source": "app/game/HuntCanvas.tsx",
+          "limit": "Seuil d'engagement V111 ; le verrou après épuisement attend en plus une vraie réception."
+        },
+        {
+          "id": "B112-PAR-20",
+          "status": "BASE_V111",
+          "topic": "Impulsion horizontale rigide",
+          "value": 360,
+          "unit": "pixels par seconde",
+          "source": "app/game/HuntCanvas.tsx",
+          "limit": "Départ d'un arbre ou autre support rigide ; choix V111 à tester dans les niveaux."
+        },
+        {
+          "id": "B112-PAR-21",
+          "status": "BASE_V111",
+          "topic": "Impulsion horizontale flexible",
+          "value": 420,
+          "unit": "pixels par seconde",
+          "source": "app/game/HuntCanvas.tsx",
+          "limit": "Départ de liane, corde ou chaîne ; pas une simulation de pendule."
+        },
+        {
+          "id": "B112-PAR-22",
+          "status": "BASE_V111",
+          "topic": "Gravité de chasse",
+          "value": 1850,
+          "unit": "pixels par seconde carrée",
+          "source": "app/game/HuntCanvas.tsx",
+          "limit": "Valeur du moteur existant ; tous les bonds passent par la collision commune."
+        },
+        {
+          "id": "B112-PAR-23",
+          "status": "BASE_V111",
+          "topic": "Portée du trophée Apex",
+          "value": 125,
+          "unit": "pixels du monde ; distance2 D",
+          "source": "app/game/HuntCanvas.tsx",
+          "limit": "Portée distincte du secondaire 110 ; appui réel requis pour prélever."
+        },
+        {
+          "id": "B112-PAR-24",
+          "status": "BASE_V111",
+          "topic": "Ancrages de prélèvement",
+          "value": "−24 / −52",
+          "unit": "pixels depuis les pieds source ; secondaire/Apex",
+          "source": "app/game/HuntCanvas.tsx",
+          "limit": "Mesure de portée depuis le centre du chasseur vers le point de prélèvement réel."
+        },
+        {
+          "id": "PAR112-01",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Gravité pendule",
+          "value": 1850,
+          "unit": "px/s²",
+          "source": "app/game/systems/canopyTraversalV112.ts",
+          "limit": "Accélération du pendule, égale au monde."
+        },
+        {
+          "id": "PAR112-02",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Longueur minimale",
+          "value": 70,
+          "unit": "px",
+          "source": "app/game/systems/canopyTraversalV112.ts",
+          "limit": "Maximale bornée par la hauteur du vrai support."
+        },
+        {
+          "id": "PAR112-03",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Angle maximal",
+          "value": 1.25,
+          "unit": "rad",
+          "source": "app/game/systems/canopyTraversalV112.ts",
+          "limit": "Butée physique et restitution bornée."
+        },
+        {
+          "id": "PAR112-04",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Vitesse tangentielle maximale",
+          "value": 850,
+          "unit": "px/s",
+          "source": "app/game/systems/canopyTraversalV112.ts",
+          "limit": "Pompage et rétraction ne dépassent pas ce plafond."
+        },
+        {
+          "id": "PAR112-05",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Pompage",
+          "value": 2.4,
+          "unit": "rad/s²",
+          "source": "app/game/systems/canopyTraversalV112.ts",
+          "limit": "Accélération contrôlée par l'axe."
+        },
+        {
+          "id": "PAR112-06",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Amortissement",
+          "value": 0.16,
+          "unit": "par s",
+          "source": "app/game/systems/canopyTraversalV112.ts",
+          "limit": "Dissipation de vitesse angulaire."
+        },
+        {
+          "id": "PAR112-07",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Rétraction",
+          "value": 80,
+          "unit": "px/s",
+          "source": "app/game/systems/canopyTraversalV112.ts",
+          "limit": "Haut/Bas ajustent la longueur."
+        },
+        {
+          "id": "PAR112-08",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Sous-pas",
+          "value": 0.008333333333333333,
+          "unit": "s",
+          "source": "app/game/systems/canopyTraversalV112.ts",
+          "limit": "Collision balayée et stabilité."
+        },
+        {
+          "id": "PAR112-09",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Capacité scout",
+          "value": 24,
+          "unit": "kg /18 vol",
+          "source": "app/game/systems/harvestInventoryV112.ts",
+          "limit": "Limites combinées masse et volume."
+        },
+        {
+          "id": "PAR112-10",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Capacité hunter",
+          "value": 36,
+          "unit": "kg /24 vol",
+          "source": "app/game/systems/harvestInventoryV112.ts",
+          "limit": "Limites combinées masse et volume."
+        },
+        {
+          "id": "PAR112-11",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Capacité berserker",
+          "value": 52,
+          "unit": "kg /30 vol",
+          "source": "app/game/systems/harvestInventoryV112.ts",
+          "limit": "Limites combinées masse et volume."
+        },
+        {
+          "id": "PAR112-12",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Vitesse à pleine charge",
+          "value": 0.68,
+          "unit": "coefficient",
+          "source": "app/game/systems/harvestInventoryV112.ts",
+          "limit": "Décroît linéairement de1 à.68."
+        },
+        {
+          "id": "PAR112-13",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Saut à pleine charge",
+          "value": 0.84,
+          "unit": "coefficient",
+          "source": "app/game/systems/harvestInventoryV112.ts",
+          "limit": "Décroît linéairement de1 à.84."
+        },
+        {
+          "id": "PAR112-14",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Coût grimpe à pleine charge",
+          "value": 1.6,
+          "unit": "coefficient",
+          "source": "app/game/systems/harvestInventoryV112.ts",
+          "limit": "Croît linéairement de1 à1.6."
+        },
+        {
+          "id": "PAR112-15",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Bruit à pleine charge",
+          "value": 1.8,
+          "unit": "coefficient",
+          "source": "app/game/systems/harvestInventoryV112.ts",
+          "limit": "Croît linéairement de1 à1.8."
+        },
+        {
+          "id": "PAR112-16",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Usure par opération",
+          "value": 5,
+          "unit": "condition /100",
+          "source": "app/game/systems/harvestInventoryV112.ts",
+          "limit": "Seulement après achèvement accepté."
+        },
+        {
+          "id": "PAR112-17",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Durée outilémoussé",
+          "value": 1.65,
+          "unit": "coefficient maximal",
+          "source": "app/game/systems/harvestInventoryV112.ts",
+          "limit": "Reste utilisable à condition0."
+        },
+        {
+          "id": "PAR112-18",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Affûtage",
+          "value": 0,
+          "unit": "marques",
+          "source": "app/game/systems/harvestInventoryV112.ts",
+          "limit": "Gratuit au poste pour éviter blocage campagne."
+        },
+        {
+          "id": "PAR112-19",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Dépôt",
+          "value": 256,
+          "unit": "prises détaillées",
+          "source": "app/game/systems/harvestInventoryV112.ts",
+          "limit": "Archive explicite libère un emplacement."
+        },
+        {
+          "id": "PAR112-20",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Travaux simultanés",
+          "value": 16,
+          "unit": "tâches",
+          "source": "app/game/systems/harvestInventoryV112.ts",
+          "limit": "Le surplus refuse avant coût."
+        },
+        {
+          "id": "PAR112-21",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Nettoyage",
+          "value": 3,
+          "unit": "gestes /2 marques",
+          "source": "app/game/systems/harvestInventoryV112.ts",
+          "limit": "Progrès manuel confirmé."
+        },
+        {
+          "id": "PAR112-22",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Traitement",
+          "value": 4,
+          "unit": "gestes /4 marques",
+          "source": "app/game/systems/harvestInventoryV112.ts",
+          "limit": "Progrès manuel confirmé."
+        },
+        {
+          "id": "PAR112-23",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Séchage",
+          "value": 5,
+          "unit": "gestes /3 marques",
+          "source": "app/game/systems/harvestInventoryV112.ts",
+          "limit": "Pas de temps réel hors jeu."
+        },
+        {
+          "id": "PAR112-24",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Montage",
+          "value": 3,
+          "unit": "gestes /5 marques",
+          "source": "app/game/systems/harvestInventoryV112.ts",
+          "limit": "Collection/possession/rang distincts."
+        },
+        {
+          "id": "PAR112-25",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Confirmation maintien",
+          "value": 0.35,
+          "unit": "s",
+          "source": "app/game/systems/huntAccessibilityV112.ts",
+          "limit": "Un seul glyph par maintien valide."
+        },
+        {
+          "id": "PAR112-26",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Arbre suspension",
+          "value": 170,
+          "unit": "kg /90 ×220 px min",
+          "source": "app/game/systems/carcassSupportsV112.ts",
+          "limit": "Capacité et dimensionsmin."
+        },
+        {
+          "id": "PAR112-27",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Chaîne suspension",
+          "value": 240,
+          "unit": "kg /32 ×180 px min",
+          "source": "app/game/systems/carcassSupportsV112.ts",
+          "limit": "Capacité et dimensionsmin."
+        },
+        {
+          "id": "PAR112-28",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Attache",
+          "value": 2.5,
+          "unit": "s",
+          "source": "app/game/systems/carcassSupportsV112.ts",
+          "limit": "Geste exposé et interruptible."
+        },
+        {
+          "id": "PAR112-29",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Portée attache",
+          "value": 180,
+          "unit": "px",
+          "source": "app/game/systems/carcassSupportsV112.ts",
+          "limit": "Géométrie et appui requis."
+        },
+        {
+          "id": "PAR112-30",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Décalage suspension",
+          "value": 82,
+          "unit": "px",
+          "source": "app/game/systems/carcassSupportsV112.ts",
+          "limit": "Depuis socket vers pied de corps."
+        },
+        {
+          "id": "PAR112-31",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Peau",
+          "value": 3.8,
+          "unit": "s",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "limit": "Préparation requise selon espèce."
+        },
+        {
+          "id": "PAR112-32",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Tissu",
+          "value": 2.6,
+          "unit": "s",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "limit": "Selon catalogue explicite."
+        },
+        {
+          "id": "PAR112-33",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Os secondaire",
+          "value": 3.4,
+          "unit": "s",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "limit": "Distinct du trophée principal."
+        }
+      ]
+    },
+    {
+      "name": "Transitions",
+      "title": "États, déclencheurs et retours contrôlés",
+      "columns": [
+        {
+          "key": "id",
+          "label": "ID",
+          "width": 15
+        },
+        {
+          "key": "status",
+          "label": "Statut",
+          "width": 24
+        },
+        {
+          "key": "domain",
+          "label": "Domaine",
+          "width": 22
+        },
+        {
+          "key": "from",
+          "label": "État de départ",
+          "width": 30
+        },
+        {
+          "key": "trigger",
+          "label": "Déclencheur / garde",
+          "width": 58
+        },
+        {
+          "key": "to",
+          "label": "État d'arrivée",
+          "width": 35
+        },
+        {
+          "key": "limit",
+          "label": "Annulation / invariant",
+          "width": 64
+        }
+      ],
+      "rows": [
+        {
+          "id": "B112-ETA-01",
+          "domain": "Outil",
+          "from": "Non possédé",
+          "trigger": "Achat armurerie, campagne courante, solde ≥ 120",
+          "to": "Possédé ; 120 marques débitées",
+          "limit": "Deuxième achat : état et solde inchangés.",
+          "status": "BASE_V111"
+        },
+        {
+          "id": "B112-ETA-02",
+          "domain": "Rite",
+          "from": "Acteur vivant",
+          "trigger": "Décès confirmé de l'acteur non Apex",
+          "to": "Trace de corps enregistrée",
+          "limit": "La même preuve ne crée pas une seconde entrée.",
+          "status": "BASE_V111"
+        },
+        {
+          "id": "B112-ETA-03",
+          "domain": "Rite",
+          "from": "Corps proche",
+          "trigger": "Analyser ou marquer, aucune autre opération",
+          "to": "Opération en cours",
+          "limit": "Dégâts, distance et propriétaire sont revérifiés.",
+          "status": "BASE_V111"
+        },
+        {
+          "id": "B112-ETA-04",
+          "domain": "Dépeçage",
+          "from": "Corps non dépecé",
+          "trigger": "Flaying Tool réel + proie admissible + 3,2 s valides",
+          "to": "Corps flayed ; événement unique",
+          "limit": "Aucun objet peau, monnaie ou trophée ajouté par ce seul geste.",
+          "status": "BASE_V111"
+        },
+        {
+          "id": "B112-ETA-05",
+          "domain": "Dépeçage",
+          "from": "Opération en cours",
+          "trigger": "Dégâts, fermeture du menu ou éloignement",
+          "to": "Opération annulée",
+          "limit": "Ne pas confirmer l'événement de fin.",
+          "status": "BASE_V111"
+        },
+        {
+          "id": "B112-ETA-06",
+          "domain": "Témoin",
+          "from": "Mise en scène non découverte",
+          "trigger": "Témoin admissible visible et non déjà enregistré",
+          "to": "Témoin consigné ; peur et vigilance",
+          "limit": "Répétition par le même témoin sans nouvel effet.",
+          "status": "BASE_V111"
+        },
+        {
+          "id": "B112-ETA-07",
+          "domain": "Trophée",
+          "from": "Proie vaincue admissible",
+          "trigger": "Création du prélèvement à l'ancrage réel du corps",
+          "to": "Drop non collecté",
+          "limit": "Le point suit le corps, pas le sol global du niveau.",
+          "status": "BASE_V111"
+        },
+        {
+          "id": "B112-ETA-08",
+          "domain": "Trophée",
+          "from": "Drop non collecté",
+          "trigger": "Appui réel, aucune escalade, interaction dans la portée et sans obstacle solide",
+          "to": "Préparation puis glyphes",
+          "limit": "Aucun gain de campagne à l'ouverture.",
+          "status": "BASE_V111"
+        },
+        {
+          "id": "B112-ETA-09",
+          "domain": "Trophée",
+          "from": "Rite secondaire en cours",
+          "trigger": "Source perdue, portée rompue, paroi ou dégâts",
+          "to": "Tentative interrompue",
+          "limit": "Le drop reste non collecté ; aucune récompense finale.",
+          "status": "BASE_V111"
+        },
+        {
+          "id": "B112-ETA-10",
+          "domain": "Trophée",
+          "from": "Rite secondaire valide",
+          "trigger": "Séquence achevée et dernière revalidation",
+          "to": "Drop collecté une fois",
+          "limit": "La remise de campagne attend la réussite et l'extraction existantes.",
+          "status": "BASE_V111"
+        },
+        {
+          "id": "B112-ETA-11",
+          "domain": "Escalade",
+          "from": "Libre près d'une prise",
+          "trigger": "Axe vertical, recouvrement réel, endurance≥8 et prise autorisée",
+          "to": "Accroché / escalade",
+          "limit": "Refus si fatigue verrouillée ou délai de transfert actif.",
+          "status": "BASE_V111"
+        },
+        {
+          "id": "B112-ETA-12",
+          "domain": "Transfert",
+          "from": "Accroché",
+          "trigger": "Entrée saut fraîche ou mémorisée, direction éventuelle",
+          "to": "Bond depuis support",
+          "limit": "Le saut a priorité sur le détachement horizontal.",
+          "status": "BASE_V111"
+        },
+        {
+          "id": "B112-ETA-13",
+          "domain": "Transfert",
+          "from": "Bond depuis support",
+          "trigger": "Délai 0,24 s écoulé, Haut et nouveau support recouvert",
+          "to": "Nouvelle prise",
+          "limit": "Aucune téléportation ; collision et géométrie déterminent la portée réelle.",
+          "status": "BASE_V111"
+        },
+        {
+          "id": "B112-ETA-14",
+          "domain": "Fatigue",
+          "from": "Escalade sans endurance",
+          "trigger": "Épuisement",
+          "to": "Lâcher ; prise verrouillée",
+          "limit": "La régénération en l'air ne déverrouille pas la prise.",
+          "status": "BASE_V111"
+        },
+        {
+          "id": "B112-ETA-15",
+          "domain": "Fatigue",
+          "from": "Prise verrouillée",
+          "trigger": "Réception physique au sol ou sur plateforme",
+          "to": "Nouvelle prise admissible",
+          "limit": "Les murs et les animations ne constituent pas une réception.",
+          "status": "BASE_V111"
+        },
+        {
+          "id": "B112-ETA-16",
+          "domain": "Reprise",
+          "from": "Chasse suspendue",
+          "trigger": "Reprise validée de la même rencontre",
+          "to": "État durable restauré ; temporisations transitoires réinitialisées",
+          "limit": "Ni impulsion rejouée, ni outil, corps ou drop historique inventé.",
+          "status": "BASE_V111"
+        },
+        {
+          "id": "ETA112-01",
+          "domain": "Pendule",
+          "from": "Attaché sur flexible",
+          "trigger": "Direction sans saut",
+          "to": "Balancement",
+          "limit": "Corps lié à vrai support, endurance débitée.",
+          "status": "IMPLEMENTE_A_VALIDER"
+        },
+        {
+          "id": "ETA112-02",
+          "domain": "Pendule",
+          "from": "Balancement",
+          "trigger": "Saut",
+          "to": "Libre vitesse tangentielle",
+          "limit": "Délai anti-réaccroche appliqué une fois.",
+          "status": "IMPLEMENTE_A_VALIDER"
+        },
+        {
+          "id": "ETA112-03",
+          "domain": "Pendule",
+          "from": "Balancement",
+          "trigger": "Support perdu/collision/épuisement",
+          "to": "Détaché",
+          "limit": "Pas de téléportation ni nouvelle prise avant réception si épuisé.",
+          "status": "IMPLEMENTE_A_VALIDER"
+        },
+        {
+          "id": "ETA112-04",
+          "domain": "Corps",
+          "from": "Posé et préparé",
+          "trigger": "Porter valide",
+          "to": "Porté",
+          "limit": "Un corps et un acteur natif.",
+          "status": "IMPLEMENTE_A_VALIDER"
+        },
+        {
+          "id": "ETA112-05",
+          "domain": "Corps",
+          "from": "Porté",
+          "trigger": "Attache2,5 s socket valide",
+          "to": "Suspendu",
+          "limit": "Support, espace, masse et portée revérifiés.",
+          "status": "IMPLEMENTE_A_VALIDER"
+        },
+        {
+          "id": "ETA112-06",
+          "domain": "Corps",
+          "from": "Suspendu",
+          "trigger": "Support supprimé",
+          "to": "Chute réelle",
+          "limit": "Même identité et collision.",
+          "status": "IMPLEMENTE_A_VALIDER"
+        },
+        {
+          "id": "ETA112-07",
+          "domain": "Anatomie",
+          "from": "Partie disponible",
+          "trigger": "Prélèvement validé en fin de geste",
+          "to": "Prise brute en emport",
+          "limit": "Stock consommé seulement si capacité admissible.",
+          "status": "IMPLEMENTE_A_VALIDER"
+        },
+        {
+          "id": "ETA112-08",
+          "domain": "Anatomie",
+          "from": "Prélèvement en cours",
+          "trigger": "Dégâts/source perdue/sac plein",
+          "to": "Partie conservée",
+          "limit": "Aucune prise inventée ni usure de succès.",
+          "status": "IMPLEMENTE_A_VALIDER"
+        },
+        {
+          "id": "ETA112-09",
+          "domain": "Campagne",
+          "from": "Emport mission",
+          "trigger": "Extraction réussie confirmée",
+          "to": "Prises dépôt",
+          "limit": "Watermark par mission rend le rejeu idempotent.",
+          "status": "IMPLEMENTE_A_VALIDER"
+        },
+        {
+          "id": "ETA112-10",
+          "domain": "Outil",
+          "from": "Condition100..0",
+          "trigger": "Opération achevée unique",
+          "to": "Condition-5",
+          "limit": "Interruption ne paie pas l'achèvement.",
+          "status": "IMPLEMENTE_A_VALIDER"
+        },
+        {
+          "id": "ETA112-11",
+          "domain": "Outil",
+          "from": "Condition<100",
+          "trigger": "Affûtage au poste confirmé",
+          "to": "Condition100",
+          "limit": "Gratuit et non bloquant.",
+          "status": "IMPLEMENTE_A_VALIDER"
+        },
+        {
+          "id": "ETA112-12",
+          "domain": "Atelier",
+          "from": "Brut",
+          "trigger": "2 marques+3 gestes confirmés",
+          "to": "Nettoyé",
+          "limit": "Identité et qualité conservées.",
+          "status": "IMPLEMENTE_A_VALIDER"
+        },
+        {
+          "id": "ETA112-13",
+          "domain": "Atelier",
+          "from": "Nettoyé",
+          "trigger": "4 marques+4 gestes confirmés",
+          "to": "Traité",
+          "limit": "Pas de passage direct au montage.",
+          "status": "IMPLEMENTE_A_VALIDER"
+        },
+        {
+          "id": "ETA112-14",
+          "domain": "Atelier",
+          "from": "Traité",
+          "trigger": "3 marques+5 gestes confirmés",
+          "to": "Séché",
+          "limit": "Aucun temps horsjeu.",
+          "status": "IMPLEMENTE_A_VALIDER"
+        },
+        {
+          "id": "ETA112-15",
+          "domain": "Atelier",
+          "from": "Séché",
+          "trigger": "5 marques+3 gestes confirmés",
+          "to": "Monté",
+          "limit": "Possession distincte des rangs.",
+          "status": "IMPLEMENTE_A_VALIDER"
+        },
+        {
+          "id": "ETA112-16",
+          "domain": "Atelier",
+          "from": "Monté",
+          "trigger": "Ranger en réserve confirmé",
+          "to": "Archive comptée",
+          "limit": "Libère dépôt, conserve compte et qualitétotale.",
+          "status": "IMPLEMENTE_A_VALIDER"
+        },
+        {
+          "id": "ETA112-17",
+          "domain": "Accessibilité",
+          "from": "Glyph prêt",
+          "trigger": "Confirmmaintien≥.35 s ou basculearmée",
+          "to": "Un glyph fourni",
+          "limit": "Nouveau glyph requiert nouveau geste.",
+          "status": "IMPLEMENTE_A_VALIDER"
+        },
+        {
+          "id": "ETA112-18",
+          "domain": "Écosystème",
+          "from": "Corps visible",
+          "trigger": "Témoinadmissible",
+          "to": "Découverte unique",
+          "limit": "Mur et portée empêchent sourceinvisible.",
+          "status": "IMPLEMENTE_A_VALIDER"
+        },
+        {
+          "id": "ETA112-19",
+          "domain": "Écosystème",
+          "from": "Découverte",
+          "trigger": "Relaisradioautorisé",
+          "to": "Investigation locale",
+          "limit": "Destinataires/sauts/file bornés.",
+          "status": "IMPLEMENTE_A_VALIDER"
+        }
+      ]
+    },
+    {
+      "name": "Qualification",
+      "title": "Recettes et résultats d'exécution distincts",
+      "columns": [
+        {
+          "key": "id",
+          "label": "ID",
+          "width": 18
+        },
+        {
+          "key": "status",
+          "label": "Statut",
+          "width": 24
+        },
+        {
+          "key": "topic",
+          "label": "Étape / sujet",
+          "width": 32
+        },
+        {
+          "key": "rule",
+          "label": "Règle et retour joueur",
+          "width": 76
+        },
+        {
+          "key": "source",
+          "label": "Source vérifiable",
+          "width": 68
+        },
+        {
+          "key": "acceptance",
+          "label": "Validation / limite",
+          "width": 78
+        }
+      ],
+      "rows": [
+        {
+          "id": "QA112-01",
+          "status": "A_EXECUTER",
+          "topic": "Outil",
+          "rule": "Ancien save sans fieldToolIds",
+          "source": "tests/field-tools-rites-v111.test.mjs",
+          "acceptance": "Aucun outil gratuit et aucun prélèvement autorisé sans achat."
+        },
+        {
+          "id": "QA112-02",
+          "status": "A_EXECUTER",
+          "topic": "Outil",
+          "rule": "Achat à119 puis120 marques et double appel",
+          "source": "tests/field-tool-purchase-ui-v111.test.mjs",
+          "acceptance": "Débit unique à120, propriété permanente et persistence confirmée."
+        },
+        {
+          "id": "QA112-03",
+          "status": "A_EXECUTER",
+          "topic": "Dépeçage",
+          "rule": "Préparer corps natif puis interruption",
+          "source": "tests/hunt-harvest-runtime-v111.test.mjs",
+          "acceptance": "Geste3,2 s ajusté usure, annulation sans succès ni coût d'opération achevée."
+        },
+        {
+          "id": "QA112-04",
+          "status": "A_EXECUTER",
+          "topic": "Trophées",
+          "rule": "Proie haute, morte puis tombante",
+          "source": "tests/hunt-harvest-runtime-v111.test.mjs",
+          "acceptance": "Prélèvement suit source réelle et ne traverse pas de mur."
+        },
+        {
+          "id": "QA112-05",
+          "status": "A_EXECUTER",
+          "topic": "Pendule",
+          "rule": "Clavier normalisé : accroche, pompage, lâcher",
+          "source": "tests/hunt-canopy-runtime-v112.test.mjs",
+          "acceptance": "Vitesse tangentielle réelle, delai anti-réaccroche sans boost."
+        },
+        {
+          "id": "QA112-06",
+          "status": "A_EXECUTER",
+          "topic": "Pendule",
+          "rule": "Tactile normalisé : accroche, pompage, lâcher",
+          "source": "tests/hunt-canopy-runtime-v112.test.mjs",
+          "acceptance": "Même simulation et coût que clavier."
+        },
+        {
+          "id": "QA112-07",
+          "status": "A_EXECUTER",
+          "topic": "Pendule",
+          "rule": "Manette normalisée : accroche, pompage, lâcher",
+          "source": "tests/hunt-canopy-runtime-v112.test.mjs",
+          "acceptance": "Même simulation et coût que clavier."
+        },
+        {
+          "id": "QA112-08",
+          "status": "A_EXECUTER",
+          "topic": "Pendule",
+          "rule": "Pompage borné et friction sans entrée",
+          "source": "tests/canopy-traversal-v112.test.mjs",
+          "acceptance": "Vitesse plafonnée ; sans entrée pas de gain d'énergie."
+        },
+        {
+          "id": "QA112-09",
+          "status": "A_EXECUTER",
+          "topic": "Pendule",
+          "rule": "Paroi, support absent et delta long",
+          "source": "tests/canopy-traversal-v112.test.mjs",
+          "acceptance": "Pas de traversée, attache distante ni état non fini."
+        },
+        {
+          "id": "QA112-10",
+          "status": "A_EXECUTER",
+          "topic": "Pendule",
+          "rule": "Checkpoint pendant balancement",
+          "source": "tests/hunt-canopy-runtime-v112.test.mjs",
+          "acceptance": "Reprise sans impulse gratuite ; longueur/angle/ancrage invalides refusés."
+        },
+        {
+          "id": "QA112-11",
+          "status": "A_EXECUTER",
+          "topic": "Pendule",
+          "rule": "Épuisement et Haut maintenu",
+          "source": "tests/hunt-canopy-runtime-v112.test.mjs",
+          "acceptance": "Chute puis vraie réception requise ; pas de réaccroche aérienne."
+        },
+        {
+          "id": "QA112-12",
+          "status": "A_EXECUTER",
+          "topic": "Route",
+          "rule": "8 missions ×3 armures ×3 sources d'entrée",
+          "source": "tests/hunt-canopy-runtime-v112.test.mjs",
+          "acceptance": "Sol->prise entrée->six contacts de repos->descente, sans reposition intermédiaire."
+        },
+        {
+          "id": "QA112-13",
+          "status": "A_EXECUTER",
+          "topic": "Route",
+          "rule": "Routes dans world final après exploration",
+          "source": "tests/canopy-traversal-v112.test.mjs",
+          "acceptance": "Au moins une séquence réelle de six repos par mission ; repli terrain conservé."
+        },
+        {
+          "id": "QA112-14",
+          "status": "A_EXECUTER",
+          "topic": "Carcasse",
+          "rule": "Mort réelle->analyse->flay->carry->hang",
+          "source": "tests/hunt-carcass-runtime-v112.test.mjs",
+          "acceptance": "Un acteur et un corps, ancrage socket puis chute si support supprimé."
+        },
+        {
+          "id": "QA112-15",
+          "status": "A_EXECUTER",
+          "topic": "Carcasse",
+          "rule": "Masse/surface/socket invalide",
+          "source": "tests/carcass-anatomy-v112.test.mjs",
+          "acceptance": "Refus sans déplacer ni dupliquer la carcasse."
+        },
+        {
+          "id": "QA112-16",
+          "status": "A_EXECUTER",
+          "topic": "Carcasse",
+          "rule": "Transport vers espace bloqué",
+          "source": "tests/hunt-carcass-runtime-v112.test.mjs",
+          "acceptance": "Relâche le même corps sans traverser le mur."
+        },
+        {
+          "id": "QA112-17",
+          "status": "A_EXECUTER",
+          "topic": "Carcasse",
+          "rule": "Suspension checkpoint source absente",
+          "source": "tests/carcass-anatomy-v112.test.mjs",
+          "acceptance": "Restore revalide support, capacité, acteur et position."
+        },
+        {
+          "id": "QA112-18",
+          "status": "A_EXECUTER",
+          "topic": "Anatomie",
+          "rule": "Catalogue espèces et parties compatibles",
+          "source": "tests/carcass-anatomy-v112.test.mjs",
+          "acceptance": "Stock explicite ; synthétique sans chair et xéno sans peau universelle."
+        },
+        {
+          "id": "QA112-19",
+          "status": "A_EXECUTER",
+          "topic": "Anatomie",
+          "rule": "Dommages mêlée/tir/surkill et analyse",
+          "source": "tests/carcass-anatomy-v112.test.mjs",
+          "acceptance": "Qualité reproductible annoncée, pas de nouveau tirage sur reload."
+        },
+        {
+          "id": "QA112-20",
+          "status": "A_EXECUTER",
+          "topic": "Anatomie",
+          "rule": "Interruption/dépôt plein avant dernier tick",
+          "source": "tests/hunt-carcass-runtime-v112.test.mjs",
+          "acceptance": "Aucune partie consommée ni prise inventée."
+        },
+        {
+          "id": "QA112-21",
+          "status": "A_EXECUTER",
+          "topic": "Anatomie",
+          "rule": "Prélèvement puis succès/échec",
+          "source": "tests/hunt-carcass-runtime-v112.test.mjs",
+          "acceptance": "Succès verse identité/qualité exacte ; échec n'accorde pas le stock."
+        },
+        {
+          "id": "QA112-22",
+          "status": "A_EXECUTER",
+          "topic": "Charge",
+          "rule": "Budgets scout24/18, hunter36/24, berserker52/30",
+          "source": "tests/harvest-inventory-v112.test.mjs",
+          "acceptance": "Masses/volumes calculés depuis les pièces ; refus atomique si dépassement."
+        },
+        {
+          "id": "QA112-23",
+          "status": "A_EXECUTER",
+          "topic": "Charge",
+          "rule": "Plein déplacement/saut/grimpe/bruit",
+          "source": "tests/harvest-inventory-v112.test.mjs",
+          "acceptance": "Coefficients bornés .68/.84/1.6/1.8 aux limites."
+        },
+        {
+          "id": "QA112-24",
+          "status": "A_EXECUTER",
+          "topic": "Charge",
+          "rule": "Dépôt/reprise et campagne répétée",
+          "source": "tests/harvest-inventory-v112.test.mjs",
+          "acceptance": "Aucune perte silencieuse ni duplication des IDs."
+        },
+        {
+          "id": "QA112-25",
+          "status": "A_EXECUTER",
+          "topic": "Entretien",
+          "rule": "Succès vs interruption/rejeu",
+          "source": "tests/harvest-inventory-v112.test.mjs",
+          "acceptance": "5 points par opération achevée, reçu unique, condition0..100."
+        },
+        {
+          "id": "QA112-26",
+          "status": "A_EXECUTER",
+          "topic": "Entretien",
+          "rule": "Réparation outil0 et aucune marque",
+          "source": "tests/harvest-inventory-v112.test.mjs",
+          "acceptance": "Affûtage gratuit et campagne débloquable."
+        },
+        {
+          "id": "QA112-27",
+          "status": "A_EXECUTER",
+          "topic": "Atelier",
+          "rule": "4 phasescoûts2/4/3/5 gestes3/4/5/3",
+          "source": "tests/harvest-inventory-v112.test.mjs",
+          "acceptance": "Transitions ordonnées, aucun progrès en absence, qualité conservée."
+        },
+        {
+          "id": "QA112-28",
+          "status": "A_EXECUTER",
+          "topic": "Atelier",
+          "rule": "Double clic et erreur durabilité",
+          "source": "tests/conservation-persistence-ui-v112.test.mjs",
+          "acceptance": "Coût/statut confirmés ensemble ; aucune réussite prématurée."
+        },
+        {
+          "id": "QA112-29",
+          "status": "A_EXECUTER",
+          "topic": "Atelier",
+          "rule": "Archive explicite pièce montée",
+          "source": "tests/harvest-inventory-v112.test.mjs",
+          "acceptance": "Réserve compte possession/qualité et libère le dépôt."
+        },
+        {
+          "id": "QA112-30",
+          "status": "A_EXECUTER",
+          "topic": "Accessibilité",
+          "rule": "Fenêtres normal/generous/unlimited",
+          "source": "tests/hunt-accessibility-v112.test.mjs",
+          "acceptance": "Règle réelle exécutée ; aucune prise automatique ni malus caché."
+        },
+        {
+          "id": "QA112-31",
+          "status": "A_EXECUTER",
+          "topic": "Accessibilité",
+          "rule": "Confirmpress/hold/toggle et annulation",
+          "source": "tests/hunt-accessibility-v112.test.mjs",
+          "acceptance": "Un acte par glyph, maintien min.35 s, bascule réarmée par nouveau glyph."
+        },
+        {
+          "id": "QA112-32",
+          "status": "A_EXECUTER",
+          "topic": "Accessibilité",
+          "rule": "Remapmanette +focus perdu",
+          "source": "tests/hunt-accessibility-v112.test.mjs",
+          "acceptance": "Permutation sans commande perdue ; bascule désarmée au blur."
+        },
+        {
+          "id": "QA112-33",
+          "status": "A_EXECUTER",
+          "topic": "Accessibilité",
+          "rule": "Migration et sérialisation réglages",
+          "source": "tests/hunt-accessibility-v112.test.mjs",
+          "acceptance": "Valeurs futures/malformed normalisées, latches transitoires non persistés."
+        },
+        {
+          "id": "QA112-34",
+          "status": "A_EXECUTER",
+          "topic": "Écosystème",
+          "rule": "Témoin visible vs derrière mur",
+          "source": "tests/corpse-discovery-v112.test.mjs",
+          "acceptance": "Vision réelle déclenche un événement local unique."
+        },
+        {
+          "id": "QA112-35",
+          "status": "A_EXECUTER",
+          "topic": "Écosystème",
+          "rule": "Radio bornée, investigation et animaux",
+          "source": "tests/corpse-discovery-v112.test.mjs",
+          "acceptance": "Profils distincts, pas de boucle oualerte globale."
+        },
+        {
+          "id": "QA112-36",
+          "status": "A_EXECUTER",
+          "topic": "Écosystème",
+          "rule": "Budget et checkpoint",
+          "source": "tests/corpse-discovery-v112.test.mjs",
+          "acceptance": "File/traitement bornés et identités restaurées sans rejouer."
+        },
+        {
+          "id": "QA112-37",
+          "status": "A_EXECUTER",
+          "topic": "Navigateur",
+          "rule": "Paramètres natifs et téléphone390 px",
+          "source": "scripts/qa-hunt-mechanics-browser-v112.mjs",
+          "acceptance": "Vrais composants utilisables ; stockage natif de fixture ; captures inspectables."
+        },
+        {
+          "id": "QA112-38",
+          "status": "A_EXECUTER",
+          "topic": "Navigateur",
+          "rule": "Atelier manuel jusqu'au montage puisréserve",
+          "source": "scripts/qa-hunt-mechanics-browser-v112.mjs",
+          "acceptance": "Vrai panneau et règles, aucune écriture avant acknowledgement."
+        },
+        {
+          "id": "QA112-39",
+          "status": "A_EXECUTER",
+          "topic": "Navigateur",
+          "rule": "Rites natifs flayinterrompu et terminé",
+          "source": "scripts/qa-hunt-mechanics-browser-v112.mjs",
+          "acceptance": "Vraie mort, vrai handler AST et simulation ; un corps."
+        },
+        {
+          "id": "QA112-40",
+          "status": "A_EXECUTER",
+          "topic": "Navigateur",
+          "rule": "Pendule clavier, tactile, manette émulée",
+          "source": "scripts/qa-hunt-mechanics-browser-v112.mjs",
+          "acceptance": "Vrai polling/matchinginput/mouvement/rendu de repli ; vitesse réelle."
+        },
+        {
+          "id": "QA112-41",
+          "status": "A_EXECUTER",
+          "topic": "Excel",
+          "rule": "Génération deux fois et comparaison",
+          "source": "scripts/build-hunt-mechanics-workbook-v112.mjs",
+          "acceptance": "Octets identiques au JSON ; ZIP/XML indépendant valide."
+        },
+        {
+          "id": "QA112-42",
+          "status": "A_EXECUTER",
+          "topic": "Historique",
+          "rule": "V110 exact avec sources restaurées",
+          "source": "scripts/check-excel-history-v112.mjs",
+          "acceptance": "Freeze1386 vérifié, testsoriginaux et workbookinchangé ; aucune redirection prod."
+        },
+        {
+          "id": "QA112-43",
+          "status": "A_EXECUTER",
+          "topic": "Historique",
+          "rule": "V111 Homeworld exact avec sources restaurées",
+          "source": "scripts/check-homeworld-history-v112.mjs",
+          "acceptance": "Freeze1433 vérifié, testsoriginaux et workbookinchangé."
+        },
+        {
+          "id": "QA112-44",
+          "status": "A_EXECUTER",
+          "topic": "Régression",
+          "rule": "TypeScript, lint, compilation et HTTP",
+          "source": "docs/hunt-mechanics-v112.md",
+          "acceptance": "Tous workflows finalHEAD verts, captures/limites consignées."
+        }
+      ]
+    },
+    {
+      "name": "FermetureFUT",
+      "title": "Douze extensions : implémentation et qualification",
+      "columns": [
+        {
+          "key": "id",
+          "label": "ID",
+          "width": 18
+        },
+        {
+          "key": "status",
+          "label": "Statut",
+          "width": 24
+        },
+        {
+          "key": "topic",
+          "label": "Étape / sujet",
+          "width": 32
+        },
+        {
+          "key": "rule",
+          "label": "Règle et retour joueur",
+          "width": 76
+        },
+        {
+          "key": "source",
+          "label": "Source vérifiable",
+          "width": 68
+        },
+        {
+          "key": "acceptance",
+          "label": "Validation / limite",
+          "width": 78
+        }
+      ],
+      "rows": [
+        {
+          "id": "FUT-01",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Balancement de liane",
+          "rule": "Pendule avec longueur de corde, angle, vitesse tangentielle, tension et collision ; commande de pompage, lâcher libre et trajectoire lisible. Réserve d'endurance annoncée avant l'engagement.",
+          "source": "docs/hunt-mechanics-v112.md",
+          "acceptance": "Prototype jouable sur plusieurs longueurs ; pas d'énergie infinie, de traversée de murs ou de saut téléporté. Scénarios de relâchement, support perdu, pause et reprise."
+        },
+        {
+          "id": "FUT-02",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Routes de canopée",
+          "rule": "Composer des séquences de branches, troncs, lianes, corniches et points de repos. Définir les distances depuis les trajectoires réellement atteignables, avec route de repli et dangers lisibles.",
+          "source": "docs/hunt-mechanics-v112.md",
+          "acceptance": "Parcours complets sur clavier, manette et tactile ; aucun passage obligatoire inaccessible à une armure autorisée."
+        },
+        {
+          "id": "FUT-03",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Suspension de carcasse",
+          "rule": "Supports authorés avec hauteur, solidité, capacité de masse et espace libre. Transport et attache séparés ; interruption sûre et corps unique. Rendu et témoins placés au nouvel ancrage.",
+          "source": "docs/hunt-mechanics-v112.md",
+          "acceptance": "Tests de masse, support disparu, occlusion et sauvegarde ; aucune suspension acceptée depuis une décoration ou un support inventé."
+        },
+        {
+          "id": "FUT-04",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Prélèvements anatomiques",
+          "rule": "Définir par espèce les parties disponibles et leurs dépendances : peau, crâne, mandibule, colonne ou autre organe. Stock fini par corps ; compatibilité entre gestes et qualité.",
+          "source": "docs/hunt-mechanics-v112.md",
+          "acceptance": "Catalogue sourcé, rendu disponible, inventaire limité et absence de duplication après interruption/reprise. Aucune partie universelle sur toutes les espèces."
+        },
+        {
+          "id": "FUT-05",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Intégrité de trophée",
+          "rule": "Séparer état initial de la proie, dommages causés aux parties et précision du prélèvement. Montrer le risque et la valeur potentielle avant de confirmer un geste irréversible.",
+          "source": "docs/hunt-mechanics-v112.md",
+          "acceptance": "Critères compréhensibles et reproductibles ; aucun malus invisible ou simple hasard impossible à lire."
+        },
+        {
+          "id": "FUT-06",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Charge et encombrement",
+          "rule": "Masse et volume par prise, méthode de portage, limites d'armure et influence explicite sur saut, escalade et bruit. Dépôt temporaire ou rappel d'extraction avec coût annoncé.",
+          "source": "docs/hunt-mechanics-v112.md",
+          "acceptance": "Règles communes inventaire/locomotion ; refus clair du surpoids et politique sans perte silencieuse lorsque l'emport est plein."
+        },
+        {
+          "id": "FUT-07",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Outil et entretien",
+          "rule": "Introduire précision, usure et entretien seulement si le joueur dispose d'un moyen clair de prévoir puis réparer. Séparer coût au démarrage, interruption et coût au succès.",
+          "source": "docs/hunt-mechanics-v112.md",
+          "acceptance": "Aucun double coût après reprise ; aucun blocage définitif de campagne si l'outil est abîmé. Économie testée avant fixation de chiffres."
+        },
+        {
+          "id": "FUT-08",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Atelier de conservation",
+          "rule": "Nettoyage, traitement, séchage et montage avec files de travaux et états persistants. Le trophée possédé reste distinct de son entrée de collection ou de son exposition.",
+          "source": "docs/hunt-mechanics-v112.md",
+          "acceptance": "Opérations idempotentes et coût lisible ; sauvegarde confirmée avant succès affiché ; aucun achèvement du temps réel sans règle explicite."
+        },
+        {
+          "id": "FUT-09",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Accessibilité des rites",
+          "rule": "Options de maintien/bascule, fenêtres ajustables, glyphes lisibles, alternatives au seul code couleur et commandes remappables. Indiquer les effets éventuels sur score avant le choix.",
+          "source": "docs/hunt-mechanics-v112.md",
+          "acceptance": "Essais sur petits écrans et différentes entrées ; toutes les actions restent réalisables sans précision temporelle non expliquée."
+        },
+        {
+          "id": "FUT-10",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Écosystème et découverte",
+          "rule": "Différencier témoin qui voit un corps, alerte radio, investigation d'allié et peur d'une zone ; conserver l'identité des événements. Les bêtes ont des comportements propres au lieu d'une peur humaine.",
+          "source": "docs/hunt-mechanics-v112.md",
+          "acceptance": "Budget IA mesuré, propagation bornée et sauvegarde cohérente ; pas d'alerte mondiale déclenchée par une trace invisible."
+        },
+        {
+          "id": "FUT-11",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Apprentissage et signalétique",
+          "rule": "Tutoriel court sur prise, bond, récupération et choix de route ; afficher l'action disponible et l'état d'outil près du corps sans encombrer le combat.",
+          "source": "docs/hunt-mechanics-v112.md",
+          "acceptance": "Un nouveau joueur distingue corps, trophée et objectif d'extraction ; sorties et annulations compréhensibles."
+        },
+        {
+          "id": "FUT-12",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Qualification de campagne",
+          "rule": "Relier les mécaniques à des chasses complètes, à toutes les armures admissibles et aux contraintes de performance. Conserver les limites entre test unitaire, navigateur et partie jouée.",
+          "source": "docs/hunt-mechanics-v112.md",
+          "acceptance": "Parcours répétés sur appareils cibles, captures inspectées, absence d'erreurs et résultats documentés avec commit et périmètre exacts."
+        }
+      ]
+    },
+    {
+      "name": "Preuves",
+      "title": "Commandes, commits et limites",
+      "columns": [
+        {
+          "key": "id",
+          "label": "ID",
+          "width": 18
+        },
+        {
+          "key": "status",
+          "label": "Statut",
+          "width": 24
+        },
+        {
+          "key": "topic",
+          "label": "Étape / sujet",
+          "width": 32
+        },
+        {
+          "key": "rule",
+          "label": "Règle et retour joueur",
+          "width": 76
+        },
+        {
+          "key": "source",
+          "label": "Source vérifiable",
+          "width": 68
+        },
+        {
+          "key": "acceptance",
+          "label": "Validation / limite",
+          "width": 78
+        }
+      ],
+      "rows": [
+        {
+          "id": "PRF112-01",
+          "status": "A_EXECUTER",
+          "topic": "Tests natifs",
+          "rule": "node --experimental-strip-types --test --test-concurrency=1 tests/*-v112.test.mjs",
+          "source": "tests/hunt-canopy-runtime-v112.test.mjs",
+          "acceptance": "Résultat à consigner depuis GitHub Actions sur le commit intégré."
+        },
+        {
+          "id": "PRF112-02",
+          "status": "A_EXECUTER",
+          "topic": "Navigateur",
+          "rule": "node scripts/qa-hunt-mechanics-browser-v112.mjs",
+          "source": "scripts/qa-hunt-mechanics-browser-v112.mjs",
+          "acceptance": "Rapport et captures dans outputs/qa-hunt-v112 ; pas de qualification matériel physique."
+        },
+        {
+          "id": "PRF112-03",
+          "status": "A_EXECUTER",
+          "topic": "Excel déterministe",
+          "rule": "node scripts/build-hunt-mechanics-workbook-v112.mjs --check",
+          "source": "scripts/build-hunt-mechanics-workbook-v112.mjs",
+          "acceptance": "Comparaison binaire ; ne lance pas Excel."
+        },
+        {
+          "id": "PRF112-04",
+          "status": "A_EXECUTER",
+          "topic": "Excel indépendant",
+          "rule": "python3 scripts/verify-hunt-mechanics-workbook-v112.py",
+          "source": "scripts/verify-hunt-mechanics-workbook-v112.py",
+          "acceptance": "ZIP, CRC, XML, cellules, liens, noms et filtres."
+        },
+        {
+          "id": "PRF112-05",
+          "status": "A_EXECUTER",
+          "topic": "V110 historique",
+          "rule": "node scripts/check-excel-history-v112.mjs --check --tests",
+          "source": "scripts/check-excel-history-v112.mjs",
+          "acceptance": "Régressions actuelles restent distinctes."
+        },
+        {
+          "id": "PRF112-06",
+          "status": "A_EXECUTER",
+          "topic": "V111 Homeworld historique",
+          "rule": "node scripts/check-homeworld-history-v112.mjs --check --tests",
+          "source": "scripts/check-homeworld-history-v112.mjs",
+          "acceptance": "Code à son commit a5 a951 e3 f6 dbb3 fa399 bd38 f774 a1 f0 b6 ec58 f5 e."
+        },
+        {
+          "id": "PRF112-07",
+          "status": "NON_QUALIFIE",
+          "topic": "Matériel physique",
+          "rule": "Téléphone réel, contrôleur réel et campagne complète interactive.",
+          "source": "docs/hunt-mechanics-v112.md",
+          "acceptance": "Non exécuté dans cet environnement ; ne pas les déclarer validés."
+        }
+      ]
+    }
+  ]
+}

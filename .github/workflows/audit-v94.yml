@@ -456,6 +456,7 @@ jobs:
             /public/game/sprites/hunter.webp
             /public/game/ships/v14/game-preserve-ship.webp
             /public/game/ui/v112/
+            /public/game/assets/v112/discovery/
             /public/game/sprites/v7/enemies/humanoid-badblood/frontier-raider-sheet.png
             /public/game/sprites/v7/enemies/humanoid-badblood/colonial-marine-sheet.png
             /public/game/sprites/v7/enemies/humanoid-badblood/colonial-sniper-sheet.png
@@ -540,6 +541,12 @@ jobs:
       - name: Exercise current V112 hunting mechanics and invariants
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v112.test.mjs
+      - name: Verify deterministic V112 workbook and discovery resources
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: |
+          node scripts/build-hunt-mechanics-workbook-v112.mjs --check
+          python3 scripts/verify-hunt-mechanics-workbook-v112.py
+          node scripts/build-discovery-signals-v112.mjs --check
       - name: Exercise actual V112 controls, workshop, corpse rites and canopy in Chromium
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: node scripts/qa-hunt-mechanics-browser-v112.mjs
