@@ -63,7 +63,7 @@ export function makeAnatomySpecimenV112(runId:string,corpseId:string,speciesId:s
     quality:specimenQualityV112(integrity,part,analyzed),massKg:part.massKg,volumeUnits:part.volumeUnits,stage:"raw"};
 }
 export function anatomyBodyMassV112(_speciesId:string,width:number,height:number):number {
-  return Math.round(Math.max(12,Math.min(300,width*height/40)));
+  return Math.round(Math.max(12,Math.min(300,width*height/60)));
 }
 export const ANATOMY_ACTION_LABELS_V112 = Object.freeze({
   "harvest-hide":"Prélever la peau","harvest-tissue":"Prélever le tissu","harvest-bone":"Prélever l'os secondaire",

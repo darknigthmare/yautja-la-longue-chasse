@@ -1,5 +1,6 @@
+import type { WorldBlueprint } from "./worldBlueprints";
 import { anatomyPartsV112, anatomyIntegrityV112, anatomyBodyMassV112, specimenQualityV112, makeAnatomySpecimenV112 } from "./anatomyHarvestV112";
-import { CARCASS_HANG_DROP_V112 } from "./carcassSupportsV112";
+import { CARCASS_HANG_DROP_V112, carcassFitsSocketV112 } from "./carcassSupportsV112";
 import type { FieldSpecimenV112 } from "./harvestInventoryV112";
 import type { RiteSupportV77 } from "./ritesOfHuntV77";
 import {createRitesOfHuntV77,normalizeRitesOfHuntV77,nearestRiteCorpseV77,RITE_DURATIONS_V77,
@@ -14,8 +15,8 @@ export interface RiteRuntimeActorV77 {
   riteInvestigate?:{x:number;y:number;until:number};
 }
 export interface RiteRuntimeOptionsV111 {
-  readonly flayingToolOwned:boolean; readonly supports?:readonly RiteSupportV77[];
-  readonly toolWorkMultiplier?:number; readonly acceptSpecimen?:(item:FieldSpecimenV112)=>boolean;
+  readonly flayingToolOwned:boolean; readonly world?:WorldBlueprint; readonly supports?:readonly RiteSupportV77[];
+  readonly maximumSpecimens?:number; readonly toolWorkMultiplier?:number; readonly acceptSpecimen?:(item:FieldSpecimenV112)=>boolean;
 }
 const DEFAULT_RITE_RUNTIME_OPTIONS_V111:RiteRuntimeOptionsV111={flayingToolOwned:false};
 export const huntRitesRunIdV77=(missionId:string,encounterRun:string|number)=>`${missionId}:${encounterRun}`;
@@ -55,7 +56,7 @@ export function restoreRitesRuntimeV77(raw:unknown,runId:string,missionId:string
       ||corpse.worthy!==proof.worthy||corpse.protectedPrey!==proof.protectedPrey||corpse.flayed&&options.flayingToolOwned!==true||corpse.integrity!==undefined&&corpse.integrity!==proof.integrity||corpse.massKg!==undefined&&corpse.massKg!==proof.massKg)return null;
     if(corpse.supportId){
       const support=options.supports?.find(s=>s.id===corpse.supportId);
-      if(!support?.suitable||support.maximumMass<(corpse.massKg??70)||!corpse.hangingAt||
+      if(!support?.suitable||support.maximumMass<(corpse.massKg??70)||!corpse.hangingAt||options.world&&!carcassFitsSocketV112(actors.find(a=>a.id===corpse.id)!,support,options.world)||
         corpse.hangingAt.x!==support.x||corpse.hangingAt.y!==support.y||
         corpse.x!==support.x||corpse.y!==support.y+CARCASS_HANG_DROP_V112||
         state.corpses.some(c=>c.id!==corpse.id&&c.supportId===support.id))return null;
@@ -68,6 +69,7 @@ export function restoreRitesRuntimeV77(raw:unknown,runId:string,missionId:string
   if(state.operation&&((state.operation.action==='flay'||state.operation.action.startsWith('harvest-'))&&options.flayingToolOwned!==true||
     state.operation.action==='hang'&&(!options.supports?.some(s=>s.id===state.operation?.supportId&&s.suitable)||state.carryingCorpseId!==state.operation.corpseId)))return null;
   if((state.specimensV112??[]).length&&options.flayingToolOwned!==true)return null;
+  if((state.specimensV112??[]).length>Math.min(64,options.maximumSpecimens??64))return null;
   return state;
 }
 /** Landing moves the real dead actor first. The ledger follows this same anchor,

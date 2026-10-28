@@ -27,3 +27,16 @@ export function carcassSupportAccessibleV112(actor:{x:number;y:number},support:R
   return support.suitable&&Math.hypot(actor.x-support.x,actor.y-support.y)<=180&&
     !huntStructuralBarrierV94(actor,{x:support.x,y:support.y+CARCASS_HANG_DROP_V112},world.platforms);
 }
+
+/** Validate the real actor rectangle, rather than the compact socket preview.
+ * Any collidable ledge or wall occupying the attached body's full extent
+ * invalidates attachment; removing a socket never creates a second body. */
+export function carcassFitsSocketV112(body:{width:number;height:number},support:RiteSupportV77,world:WorldBlueprint):boolean {
+  if(!Number.isFinite(body.width)||!Number.isFinite(body.height)||body.width<=0||body.height<=0)return false;
+  const box={x:support.x-body.width/2,y:support.y+CARCASS_HANG_DROP_V112-body.height,width:body.width,height:body.height};
+  if(box.x<0||box.x+box.width>world.width||box.y<(world.minY??0)||box.y+box.height>world.floorY)return false;
+  return !world.platforms.some(p=>box.x<p.x+p.width&&box.x+box.width>p.x&&box.y<p.y+p.height&&box.y+box.height>p.y);
+}
+export function carcassGeometryV112(world:WorldBlueprint):{world:WorldBlueprint;supports:RiteSupportV77[]} {
+  return {world,supports:carcassSupportsForWorldV112(world)};
+}

@@ -83,9 +83,13 @@ test("drop preserves the single original source and an unfinished hang preserves
 test("restoration cross-checks attachment and anatomy against the real source, tool and geometry",()=>{
   const f=scene();act(f,"flay");act(f,"harvest-hide");act(f,"carry");act(f,"hang",{supportId:"real-hook"});
   const c=f.state.corpses[0];f.actors[0].x=c.x-20;f.actors[0].y=c.y-60;
-  const elapsed=f.state.elapsed;
+  const elapsed=f.state.elapsed;f.options.world={width:3000,floorY:624,platforms:[]};
   assert.ok(a.restoreRitesRuntimeV77(f.state,"jungle-vey:7","jungle-vey",f.actors,elapsed,f.label,f.options));
   assert.equal(a.restoreRitesRuntimeV77(f.state,"jungle-vey:7","jungle-vey",f.actors,elapsed,f.label,{...f.options,supports:[]}),null);
+  assert.equal(a.restoreRitesRuntimeV77(f.state,"jungle-vey:7","jungle-vey",f.actors,elapsed,f.label,{...f.options,maximumSpecimens:0}),null);
+  f.options.world.platforms=[{x:c.x-10,y:c.y-40,width:20,height:20,collision:"solid"}];
+  assert.equal(a.restoreRitesRuntimeV77(f.state,"jungle-vey:7","jungle-vey",f.actors,elapsed,f.label,f.options),null);
+  f.options.world.platforms=[];
   const tampered=structuredClone(f.state);tampered.specimensV112[0].quality=1;
   assert.equal(a.restoreRitesRuntimeV77(tampered,"jungle-vey:7","jungle-vey",f.actors,elapsed,f.label,f.options),null);
   tampered.specimensV112=[null];assert.equal(a.normalizeRitesOfHuntV77(tampered,"jungle-vey:7","jungle-vey"),null);
