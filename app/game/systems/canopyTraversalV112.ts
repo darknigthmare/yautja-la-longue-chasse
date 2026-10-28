@@ -139,7 +139,14 @@ export function stepCanopySwingV112(
  * ground-reaching end trees. No armor modifier or unlocked boost is required.
  * Positions are authored from the final room geometry, never decorative props.
  */
-export function authorCanopyRoutesV112(world: WorldBlueprint): WorldBlueprint {
+export function authorCanopyRoutesV112(source: WorldBlueprint): WorldBlueprint {
+  // Exploration replaces geometry after base blueprints are built. Rebuild
+  // only our own optional routes against that final geometry, idempotently.
+  const world: WorldBlueprint = {...source,
+    platforms:source.platforms.filter(item=>!item.id.startsWith("v112-canopy-")),
+    climbables:source.climbables.filter(item=>!item.id.startsWith("v112-canopy-")),
+    routes:source.routes.filter(route=>route.id!=="canopy-transfer"),
+  };
   const platforms = [...world.platforms], climbables = [...world.climbables];
   const waypointIds: string[] = [];
   const material = world.biome === "jungle" || world.biome === "swamp" ? "root" :
@@ -152,12 +159,12 @@ export function authorCanopyRoutesV112(world: WorldBlueprint): WorldBlueprint {
     const safe = (x:number) => world.hazards.every(h => h.damagePerSecond === 0 ||
       x+70<h.x || x-70>h.x+h.width);
     let found=false;
-    for (let shift=0;shift<=1600;shift+=80) {
+    for (let shift=0;shift<=world.width;shift+=80) {
       const x=start+shift;
       if (x<=lastEnd+240 || x+900>=world.bossArena.x-180) continue;
       if (!safe(x) || !safe(x+900)) continue;
       const blocked=world.platforms.some(p=>p.collision==="solid"&&
-        p.x<x+1000&&p.x+p.width>x-80&&p.y<430&&p.y+p.height>90);
+        p.x<x+1000&&p.x+p.width>x-80);
       if (!blocked) {start=x;found=true;break;}
     }
     if (!found) continue;
