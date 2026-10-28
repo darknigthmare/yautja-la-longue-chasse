@@ -26,6 +26,7 @@ import { drawEnvironmentProp } from "./environmentPropDrawing";
 import { ExplorationMap } from "./ExplorationMap";
 import FirstHuntGuide from "./FirstHuntGuide";
 import HuntFieldGuideV112 from "./HuntFieldGuideV112";
+import HuntRitualMeterV112 from "./HuntRitualMeterV112";
 import accessStyles from "./HuntAccessibilityV112.module.css";
 import {normalizeHuntAccessibilityV112,DEFAULT_HUNT_GAMEPAD_V112,stepHoldTogglesV112,stepRitualAssistV112,freshRitualAssistV112,
   type HuntAccessibilityV112,type HoldToggleStateV112,type RitualAssistStateV112,type RitualAssistEventV112} from "./systems/huntAccessibilityV112";
@@ -169,7 +170,7 @@ import {
   stepTrophyRitual,
   stepTrophyVictory,
   trophyRitualProgress,
-  trophyRitualTimingV112,
+  trophyRitualMeterV112,
   trophyRitualReadyRemaining,
   trophyVictoryPose,
   TROPHY_RITUAL_TIMING,
@@ -2767,14 +2768,7 @@ function snapshot(state: GameState, mission: MissionDefinition): UiSnapshot {
     trophyCueIndex: state.trophyRitual?.cueIndex ?? 0,
     trophyCueCount: state.trophyRitual?.sequence.length ?? 0,
     trophyCueTiming: state.trophyRitual
-      ? state.trophyRitual.phase === "ready"
-        ? 0
-        : clamp(
-          state.trophyRitual.cueElapsedSeconds /
-            TROPHY_RITUAL_TIMING.cueTimeoutSeconds,
-          0,
-          1,
-        )
+      ? trophyRitualMeterV112(state.trophyRitual,state.huntAccessibility?.ritualTiming)
       : 0,
     trophyMistakes: state.trophyRitual?.mistakes ?? 0,
     trophyAssistArmedV112: state.ritualAssistV112?.armed ?? false,
@@ -4946,14 +4940,7 @@ function renderGame(
     );
     if (state.trophyExtracting && state.trophyRitual) {
       const ritualReady = state.trophyRitual.phase === "ready";
-      const timing = ritualReady
-        ? 0
-        : clamp(
-            state.trophyRitual.cueElapsedSeconds /
-              TROPHY_RITUAL_TIMING.cueTimeoutSeconds,
-            0,
-            1,
-          );
+      const timing = trophyRitualMeterV112(state.trophyRitual,state.huntAccessibility?.ritualTiming);
       context.globalAlpha = 0.9;
       context.lineWidth = 6;
       context.strokeStyle = `${palette.sky}77`;
@@ -4981,7 +4968,7 @@ function renderGame(
       context.fillText(
         ritualReady
           ? `OBSERVE · ${trophyRitualReadyRemaining(state.trophyRitual).toFixed(1)} S`
-          : `ERREURS ${state.trophyRitual.mistakes}/${TROPHY_RITUAL_TIMING.maximumMistakes}`,
+          : `${state.huntAccessibility?.ritualTiming==="unlimited"?"SANS LIMITE · ":""}ERREURS ${state.trophyRitual.mistakes}/${TROPHY_RITUAL_TIMING.maximumMistakes}`,
         state.boss.x + state.boss.width / 2,
         state.boss.y + state.boss.height - 122,
       );
@@ -5183,15 +5170,7 @@ function renderGame(
         240,
       );
       if (isActive && state.trophyRitual) {
-        const timing =
-          state.trophyRitual.phase === "ready"
-            ? 0
-            : clamp(
-                state.trophyRitual.cueElapsedSeconds /
-                  TROPHY_RITUAL_TIMING.cueTimeoutSeconds,
-                0,
-                1,
-              );
+        const timing = trophyRitualMeterV112(state.trophyRitual,state.huntAccessibility?.ritualTiming);
         context.lineWidth = 5;
         context.strokeStyle =
           state.trophyRitual.mistakes > 1
@@ -5210,7 +5189,7 @@ function renderGame(
         context.fillText(
           state.trophyRitual.phase === "ready"
             ? `OBSERVE · ${trophyRitualReadyRemaining(state.trophyRitual).toFixed(1)} S`
-            : `ERREURS ${state.trophyRitual.mistakes}/${TROPHY_RITUAL_TIMING.maximumMistakes}`,
+            : `${state.huntAccessibility?.ritualTiming==="unlimited"?"SANS LIMITE · ":""}ERREURS ${state.trophyRitual.mistakes}/${TROPHY_RITUAL_TIMING.maximumMistakes}`,
           startX,
           startY - 61,
         );
@@ -11022,17 +11001,10 @@ export default function HuntCanvas({
                   {ui.trophyAssistArmedV112?"Geste armé · appuyer pour désarmer":"Confirmer ce glyphe"}
                 </button>
                 <button type="button" className={accessStyles.cancel} onClick={()=>ritualAssistRefV112.current("abort")}>Annuler le prélèvement</button>
-                <span style={styles.trophyRhythmTrack} aria-hidden="true">
-                  <span
-                    style={{
-                      ...styles.trophyRhythmFill,
-                      width: `${Math.round(ui.trophyCueTiming * 100)}%`,
-                    }}
-                  />
-                </span>
+                <HuntRitualMeterV112 progress={ui.trophyCueTiming} mode={activeAccessibility.ritualTiming}/>
               </>
             ) : (
-              `FENÊTRE DE TROPHÉE · ${Math.ceil(ui.trophySeconds)} s`
+              `FENÊTRE DE TROPHÉE · ${Math.ceil(ui.trophySeconds ?? 0)} s`
             )}
           </div>
         ) : null}
