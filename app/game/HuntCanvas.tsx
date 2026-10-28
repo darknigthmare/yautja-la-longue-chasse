@@ -689,6 +689,7 @@ interface AssetBank {
 }
 
 type HuntDialogGamepadAction = "previous" | "next" | "activate";
+type CorpseRiteGamepadActionV112 = HuntDialogGamepadAction | "close";
 
 interface InputHub {
   accessibility?: HuntAccessibilityV112;
@@ -703,6 +704,12 @@ interface InputHub {
   activeGamepadIndex: number | null;
   gamepadNeedsNeutral: boolean;
   gamepadDialogActions: HuntDialogGamepadAction[];
+  gamepadPressedV112?: Set<Action>;
+  gamepadAddedPressedV112?: Set<Action>;
+  gamepadRiteActionsV112?: CorpseRiteGamepadActionV112[];
+  gamepadRiteMenuIdV112?: string | null;
+  gamepadRiteNeedsRenderV112?: boolean;
+  gamepadRiteFocusPendingV112?: boolean;
   pointerScreen: Vec2 | null;
 }
 
@@ -9695,6 +9702,13 @@ function updateGoreParticles(state: GameState, delta: number): void {
 
 function pollGamepad(input: InputHub): "focus-lost" | "gamepad-disconnected" | null {
   const previousDirections = new Set(input.gamepadHeld);
+  input.gamepadPressedV112 = new Set();
+  input.gamepadAddedPressedV112 = new Set();
+  input.gamepadRiteActionsV112 ??= [];
+  const pressFromGamepad = (action: Action) => {
+    if(!input.pressed.has(action))input.gamepadAddedPressedV112!.add(action);
+    input.gamepadPressedV112!.add(action);input.pressed.add(action);
+  };
   input.gamepadHeld.clear();
   if (typeof document !== "undefined" && (document.hidden || !document.hasFocus())) {
     input.previousGamepadButtons = [];
@@ -9744,7 +9758,7 @@ function pollGamepad(input: InputHub): "focus-lost" | "gamepad-disconnected" | n
     if (!held) return;
     input.gamepadHeld.add(action);
     if ((action === "left" || action === "right") && !previousDirections.has(action)) {
-      input.pressed.add(action);
+      pressFromGamepad(action);
     }
   };
   setDirection("left", left);
@@ -9765,7 +9779,13 @@ function pollGamepad(input: InputHub): "focus-lost" | "gamepad-disconnected" | n
     [buttons.gearOne, "gearOne"], [buttons.gearTwo, "gearTwo"], [buttons.pause, "pause"],
   ];
   for (const [index, action] of actionButtons) {
-    if (current[index] && !input.previousGamepadButtons[index]) input.pressed.add(action);
+    if (current[index] && !input.previousGamepadButtons[index]) pressFromGamepad(action);
+  }
+  if(input.gamepadRiteActionsV112.length < 4) {
+    if(up&&!previousDirections.has("up"))input.gamepadRiteActionsV112.push("previous");
+    if(down&&!previousDirections.has("down"))input.gamepadRiteActionsV112.push("next");
+    if(current[buttons.jump]&&!input.previousGamepadButtons[buttons.jump])input.gamepadRiteActionsV112.push("activate");
+    if(current[buttons.interact]&&!input.previousGamepadButtons[buttons.interact])input.gamepadRiteActionsV112.push("close");
   }
   input.previousGamepadButtons = current;
   return disconnected ? "gamepad-disconnected" : null;
@@ -9789,6 +9809,63 @@ function navigateHuntDialogWithGamepad(
   }
 }
 
+/** Keep raw pad state for edge detection; the simulation receives a view with
+ * only pad controls removed. Keyboard/touch edges already present survive. */
+function routeCorpseRiteGamepadV112(state:GameState,input:InputHub):InputHub {
+  const queue=input.gamepadRiteActionsV112??(input.gamepadRiteActionsV112=[]);
+  const previousId=input.gamepadRiteMenuIdV112??null;
+  const available=!state.paused&&(state.phase==="tracking"||state.phase==="target")&&!state.trophyExtracting&&state.player.health>0;
+  const context=available?riteContextV77(state):null;
+  const menu=context?huntRiteMenuSnapshotV77(state.huntRites,context.actor,state.riteMenuCorpseId,true,riteRuntimeOptionsV112(state)):null;
+  const masked=()=>{
+    for(const action of input.gamepadAddedPressedV112??[])if(action!=="pause")input.pressed.delete(action);
+    return {...input,gamepadHeld:new Set<Action>(),holdTogglesV112:input.holdTogglesV112?
+      {...input.holdTogglesV112,upLatched:false,aimLatched:false}:undefined};
+  };
+  const close=()=>{
+    state.riteMenuCorpseId=null;state.huntRites={...state.huntRites,operation:null};state.riteOperationDamageStart=null;
+    input.gamepadRiteMenuIdV112=null;input.gamepadRiteNeedsRenderV112=true;input.gamepadRiteFocusPendingV112=true;
+    input.gamepadNeedsNeutral=true;queue.length=0;input.gamepadDialogActions.length=0;
+  };
+  if(menu?.open) {
+    if(previousId!==menu.corpseId){input.gamepadRiteNeedsRenderV112=true;input.gamepadRiteFocusPendingV112=true;}
+    input.gamepadRiteMenuIdV112=menu.corpseId;
+    if(queue.includes("close"))close();
+    return masked();
+  }
+  if(previousId!==null){close();return masked();}
+  queue.length=0;
+  if(menu&&input.gamepadHeld.has("down")&&input.gamepadPressedV112?.has("interact")){
+    state.riteMenuCorpseId=menu.corpseId;input.gamepadRiteMenuIdV112=menu.corpseId;
+    input.gamepadRiteNeedsRenderV112=true;input.gamepadRiteFocusPendingV112=true;
+    input.gamepadDialogActions.length=0;
+    return masked();
+  }
+  return input;
+}
+/** The frame routes pad navigation to the actual mounted corpse menu. Rendering
+ * is requested first; queued edges wait for React to mount the matching body. */
+function flushCorpseRiteGamepadV112(state:GameState,input:InputHub,root:HTMLElement|null,
+  onUiChange:()=>void,onReturnToCanvas:()=>void):void {
+  const queue=input.gamepadRiteActionsV112??[];
+  if(state.paused||state.phase==="dead"||state.phase==="finished"){queue.length=0;return;}
+  if(input.gamepadRiteNeedsRenderV112){input.gamepadRiteNeedsRenderV112=false;onUiChange();}
+  if(!state.riteMenuCorpseId){
+    queue.length=0;if(input.gamepadRiteFocusPendingV112){input.gamepadRiteFocusPendingV112=false;onReturnToCanvas();}return;
+  }
+  const menu=root?.querySelector<HTMLElement>('[data-hunt-rites-v77][data-rite-open-v112="true"]');
+  if(!menu||menu.dataset.corpseId!==state.riteMenuCorpseId)return;
+  if(input.gamepadRiteFocusPendingV112||(queue.length>0&&!menu.contains(menu.ownerDocument.activeElement))){
+    const first=menu.querySelector<HTMLButtonElement>('[data-rite-action-v112]:not(:disabled)')??
+      menu.querySelector<HTMLButtonElement>('button:not(:disabled)');
+    first?.focus();input.gamepadRiteFocusPendingV112=false;
+  }
+  navigateHuntDialogWithGamepad(menu,queue.splice(0).filter((action):action is HuntDialogGamepadAction=>action!=="close"));
+  for(const button of menu.querySelectorAll("[data-gamepad-focus-v112]"))button.removeAttribute("data-gamepad-focus-v112");
+  const focused=menu.ownerDocument.activeElement;
+  if(focused?.nodeName==="BUTTON"&&menu.contains(focused))focused.setAttribute("data-gamepad-focus-v112","true");
+}
+
 function stepGame(
   state: GameState,
   mission: MissionDefinition,
@@ -9803,8 +9880,8 @@ function stepGame(
   const wasPaused = state.paused;
   const interruption = pollGamepad(input);
   if(input.accessibility) {
-    const physical={up:input.keyboardHeld.has("up")||input.touchHeld.has("up")||input.gamepadHeld.has("up"),
-      aim:input.keyboardHeld.has("aim")||input.touchHeld.has("aim")||input.gamepadHeld.has("aim")};
+    const physical={up:input.keyboardHeld.has("up")||input.touchHeld.has("up")||(!state.riteMenuCorpseId&&input.gamepadHeld.has("up")),
+      aim:input.keyboardHeld.has("aim")||input.touchHeld.has("aim")||(!state.riteMenuCorpseId&&input.gamepadHeld.has("aim"))};
     const previousGrip=input.holdTogglesV112?.upLatched;
     input.holdTogglesV112=stepHoldTogglesV112(input.holdTogglesV112,physical,!!interruption||state.paused||input.pressed.has("pause"));
     input.gripReleaseV112=input.accessibility.gripInput==="toggle"&&previousGrip===true&&!input.holdTogglesV112.upLatched;
@@ -9832,6 +9909,7 @@ function stepGame(
   if (state.paused) {
     state.jumpAssist = freshJumpAssistState({ requireRelease: true });
     input.pressed.clear();
+    if(input.gamepadRiteActionsV112)input.gamepadRiteActionsV112.length=0;
     return;
   }
   if (wasPaused) {
@@ -9839,6 +9917,7 @@ function stepGame(
     input.pressed.clear();
   }
 
+  const playerInput=routeCorpseRiteGamepadV112(state,input);
   state.elapsed += delta;
   state.messageTimer = Math.max(0, state.messageTimer - delta);
   state.scanPulse = Math.max(0, state.scanPulse - delta);
@@ -9853,7 +9932,7 @@ function stepGame(
     inventory,
     appearance,
     difficulty,
-    input,
+    playerInput,
     delta,
     finish,
   );
@@ -10910,6 +10989,7 @@ export default function HuntCanvas({
         accumulator -= fixedStep;
       }
       emitExploration();
+      flushCorpseRiteGamepadV112(game,input,huntRootRef.current,()=>setUi(snapshot(game,mission)),()=>canvas.focus({preventScroll:true}));
       const dialogActions = input.gamepadDialogActions.splice(0);
       if (game.paused || game.phase === "dead") {
         navigateHuntDialogWithGamepad(huntDialogRef.current, dialogActions);
@@ -11266,7 +11346,7 @@ export default function HuntCanvas({
           </div>
         ) : null}
 
-        <HuntRitesMenuV77 menu={assetsReady?ui.huntRiteMenu:null}
+        <HuntRitesMenuV77 menu={assetsReady?ui.huntRiteMenu:null} gamepadButtons={activeAccessibility.gamepadButtons}
           onOpen={()=>riteMenuActionRef.current('open')} onClose={()=>riteMenuActionRef.current('close')}
           onAction={action=>riteMenuActionRef.current(action)}/>
 

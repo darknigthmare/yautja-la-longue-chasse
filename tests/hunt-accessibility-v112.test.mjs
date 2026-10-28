@@ -10,7 +10,7 @@ import {createElement} from "react";
 import {renderToStaticMarkup} from "react-dom/server";
 const source=await readFile(new URL("../app/game/HuntCanvas.tsx",import.meta.url),"utf8");
 const built=await build({stdin:{contents:source.replace("export default function HuntCanvas","function HuntCanvas")+`
-export {pollGamepad,stepGame,updatePlayer,isHeld,makeGameState,snapshot,resultFor};
+export {pollGamepad,stepGame,updatePlayer,isHeld,makeGameState,snapshot,resultFor,makeEnemy,damageEnemy,riteContextV77,routeCorpseRiteGamepadV112,flushCorpseRiteGamepadV112};
 export {default as HuntRitualMeterV112} from "./HuntRitualMeterV112";
 export {default as HuntRitesMenuV77} from "./HuntRitesMenuV77";
 export {huntRiteMenuSnapshotV77} from "./systems/huntRitesRuntimeV77";
@@ -32,9 +32,10 @@ const profile=patch=>({...api.normalizeHuntAccessibilityV112(undefined),...patch
 function input(settings=profile()){
   return {accessibility:settings,keyboardHeld:new Set(),touchHeld:new Set(),gamepadHeld:new Set(),pressed:new Set(),previousGamepadButtons:[],activeGamepadIndex:null,gamepadNeedsNeutral:false,gamepadDialogActions:[],pointerScreen:null};
 }
-function fixture(settings=profile()){
+function fixture(settings=profile(),{fieldToolOwned=false}={}){
   browser.focused=true;browser.hidden=false;browser.pads=[];
   const save=api.defaultSave("2026-10-28T00:00:00.000Z"),mission=api.MISSION_BY_ID["jungle-vey"];
+  if(fieldToolOwned)save.inventory.fieldToolIds=["flaying-tool"];
   const game=api.makeGameState(mission,save.loadout,save.inventory,"hunter",save.appearance,false,false,"a11y-v112",save.exploration);
   game.world={...game.world,platforms:[],climbables:[],hazards:[]};game.enemies=[];game.boss.active=false;
   Object.assign(game.player,{x:100,y:508,previousY:508,velocityX:0,velocityY:0,grounded:true,climbing:false});
@@ -241,4 +242,82 @@ test("the native score formula has no direct accessibility modifier and still co
     assert.ok(slower.elapsedSeconds>actual.elapsedSeconds);
     assert.ok(slower.score<actual.score,"spending more real hunt time still affects the announced time score");
   }
+});
+
+function corpsePadFixture(settings=profile()){
+  const f=fixture(settings,{fieldToolOwned:true});
+  f.game.world={...f.game.world,covers:[]};
+  const enemy=api.makeEnemy("pad-real-prey","hell-hound-stalker",f.mission.id,110,f.game.world.width,80,10,0,1,1);
+  Object.assign(enemy,{x:110,y:564,width:40,height:60,health:80,maxHealth:80,knockbackRestY:564,scanned:true,active:true});
+  f.game.enemies=[enemy];api.damageEnemy(f.game,f.mission,enemy,80,"melee");
+  const pad={index:3,connected:true,axes:[0,0],buttons:Array.from({length:16},()=>({pressed:false,value:0}))};
+  browser.pads=[pad];f.step();
+  const action=(name,on)=>{const index=settings.gamepadButtons[name];pad.buttons[index]={pressed:on,value:on?1:0};};
+  const release=()=>{pad.axes.fill(0);pad.buttons.forEach(button=>{button.pressed=false;button.value=0;});f.step();};
+  const open=()=>{pad.axes[1]=1;action("interact",true);f.step();};
+  return {...f,pad,action,release,open,corpseId:enemy.id};
+}
+test("native down+remapped interact opens a real corpse without dropping a carried body or starting its trophy",()=>{
+  const remapped=api.rebindHuntGamepadV112(api.rebindHuntGamepadV112(profile(),"interact",7),"jump",2);
+  for(const settings of [profile(),remapped]){
+    const f=corpsePadFixture(settings);
+    const started=api.startHuntRiteV77(f.game.huntRites,f.corpseId,"flay",api.riteContextV77(f.game));
+    assert.equal(started.accepted,true,started.message);f.game.huntRites=started.state;f.game.riteOperationDamageStart=f.game.damageTaken;
+    for(let frame=0;frame<210;frame++)f.step();
+    assert.equal(f.game.huntRites.corpses[0].flayed,true);
+    const carried=api.startHuntRiteV77(f.game.huntRites,f.corpseId,"carry",api.riteContextV77(f.game));
+    assert.equal(carried.accepted,true,carried.message);f.game.huntRites=carried.state;
+    const before=f.game.elapsed;f.open();
+    assert.equal(f.game.riteMenuCorpseId,f.corpseId);assert.equal(f.game.huntRites.carryingCorpseId,f.corpseId);
+    assert.equal(f.game.player.climbing,false);assert.equal(f.game.player.grounded,true);
+    assert.equal(f.game.trophyExtracting,false);assert.equal(f.game.paused,false);assert.ok(f.game.elapsed>before);
+    for(let frame=0;frame<3;frame++)f.step();
+    assert.equal(f.game.huntRites.carryingCorpseId,f.corpseId);assert.equal(f.game.trophyExtracting,false);
+    assert.deepEqual(plain(f.input.gamepadRiteActionsV112),[]);
+  }
+});
+test("corpse pad navigation is edge-triggered while the real rite, clock and enemy keep advancing",()=>{
+  const f=corpsePadFixture();f.open();f.release();
+  const observer=api.makeEnemy("pad-live-observer","rifle-soldier",f.mission.id,1000,f.game.world.width,100,10,0,1,1);
+  observer.active=true;observer.attackCooldown=1;f.game.enemies.push(observer);
+  const started=api.startHuntRiteV77(f.game.huntRites,f.corpseId,"flay",api.riteContextV77(f.game));
+  assert.equal(started.accepted,true,started.message);f.game.huntRites=started.state;f.game.riteOperationDamageStart=f.game.damageTaken;
+  const before=f.game.elapsed,x=f.game.player.x,stamina=f.game.player.stamina;
+  f.pad.axes[0]=1;f.action("melee",true);f.step();
+  assert.equal(f.game.player.x,x);assert.equal(f.game.player.melee.phase,"idle");assert.ok(f.game.player.stamina>=stamina);
+  assert.equal(f.game.paused,false);assert.ok(f.game.elapsed>before);assert.ok(observer.attackCooldown<1);
+  assert.equal(f.game.huntRites.operation.action,"flay");assert.ok(f.game.huntRites.operation.elapsed>0);
+  f.release();f.pad.axes[1]=1;f.step();f.step();
+  assert.deepEqual(plain(f.input.gamepadRiteActionsV112),["next"],"holding the pad direction must not repeat menu navigation");
+  f.input.gamepadRiteActionsV112.length=0;f.release();f.action("jump",true);f.step();
+  assert.deepEqual(plain(f.input.gamepadRiteActionsV112),["activate"]);
+  assert.equal(f.game.player.grounded,true);assert.equal(f.game.huntRites.operation.action,"flay");
+});
+test("corpse menu close cancels safely, requires controller release and preserves ordinary trophy interaction",()=>{
+  const f=corpsePadFixture();assert.ok(f.game.regularTrophyDrops.length>0,"the real defeated source has a physical secondary trophy");
+  f.open();f.release();
+  const started=api.startHuntRiteV77(f.game.huntRites,f.corpseId,"flay",api.riteContextV77(f.game));
+  f.game.huntRites=started.state;f.game.riteOperationDamageStart=f.game.damageTaken;
+  f.action("interact",true);f.step();
+  assert.equal(f.game.riteMenuCorpseId,null);assert.equal(f.game.huntRites.operation,null);assert.equal(f.game.trophyExtracting,false);
+  assert.equal(f.input.gamepadNeedsNeutral,true);
+  f.step();assert.equal(f.game.trophyExtracting,false,"holding close must not harvest behind the menu");
+  f.release();assert.equal(f.input.gamepadNeedsNeutral,false);
+  f.action("interact",true);f.step();
+  assert.equal(f.game.riteMenuCorpseId,null);assert.equal(f.game.trophyExtracting,true,"interact alone retains the existing physical trophy priority");
+});
+test("corpse pad suppression keeps simultaneous keyboard and touch actions, including overlapping fresh edges",()=>{
+  const f=corpsePadFixture();f.open();f.release();
+  f.pad.axes[0]=-1;f.input.keyboardHeld.add("right");f.step();assert.ok(f.game.player.velocityX>0);
+  f.input.keyboardHeld.clear();f.pad.axes[0]=1;f.input.touchHeld.add("left");f.game.player.velocityX=0;f.step();assert.ok(f.game.player.velocityX<0);
+  f.input.touchHeld.clear();f.pad.axes[0]=0;f.input.pressed.add("melee");f.action("melee",true);f.step();
+  assert.notEqual(f.game.player.melee.phase,"idle","a keyboard/touch edge already present is not owned or deleted by the pad");
+});
+test("opening requires a real nearby corpse and focus loss still pauses before any corpse UI action",()=>{
+  const f=fixture(),pad={index:3,connected:true,axes:[0,0],buttons:Array.from({length:16},()=>({pressed:false,value:0}))};
+  browser.pads=[pad];f.step();pad.axes[1]=1;pad.buttons[f.input.accessibility.gamepadButtons.interact]={pressed:true,value:1};f.step();
+  assert.equal(f.game.riteMenuCorpseId,null);assert.deepEqual(plain(f.game.huntRites.corpses),[]);
+  const real=corpsePadFixture();real.open();const elapsed=real.game.elapsed;
+  browser.focused=false;real.step();assert.equal(real.game.paused,true);assert.equal(real.game.elapsed,elapsed);
+  browser.focused=true;
 });
