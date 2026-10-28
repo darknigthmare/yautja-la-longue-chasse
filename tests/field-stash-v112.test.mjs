@@ -26,7 +26,7 @@ test("pick up returns the same item once without changing source or completion r
   assert.equal(r.moveFieldSpecimenV112(picked.state,"take",item().id,actor,world,"hunter",options).accepted,false);
 });
 for(const [label,change]of [
-  ["airborne",{grounded:false}],["climbing",{climbing:true}],["dead",{health:0}],
+  ["airborne",{grounded:false}],["climbing",{climbing:true}],["dead",{health:0}],["invalidhealth",{health:NaN}],
   ["nonfinite",{x:Infinity}],["invalidbody",{width:0}],
 ])test("drop and take refuse "+label+" without altering the unique item",()=>{
   const state=fixture(),dropped=put(state);

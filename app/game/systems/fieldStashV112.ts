@@ -43,7 +43,7 @@ export function fieldStashCanTakeV112(state:FieldStashStateV112,specimenId:strin
   world:FieldStashWorldV112,armorId:ArmorId,depotFreeSlots=256):boolean {
   const entry=state.stashedSpecimensV112?.find(e=>e.specimenId===specimenId);
   const item=state.specimensV112?.find(i=>i.id===specimenId),carried=carriedFieldSpecimensV112(state);
-  if(!entry||!item||actor.health<=0||actor.grounded!==true||actor.climbing!==false||
+  if(!entry||!item||!Number.isFinite(actor.health)||actor.health<=0||actor.grounded!==true||actor.climbing!==false||
     ![actor.x,actor.y,actor.width,actor.height,entry.x,entry.y].every(Number.isFinite)||
     actor.width<=0||actor.height<=0||Math.abs(entry.fallSpeed)>.01||carried.length>=depotFreeSlots)return false;
   const at={x:actor.x+actor.width/2,y:actor.y+actor.height/2},target={x:entry.x,y:entry.y-6};
@@ -54,7 +54,7 @@ export function moveFieldSpecimenV112<T extends FieldStashStateV112>(state:T,act
   actor:FieldStashActorV112,world:FieldStashWorldV112,armorId:ArmorId,
   options:{suspended:boolean;operationActive:boolean;depotFreeSlots?:number}):{accepted:boolean;state:T;message:string} {
   const refuse=(message:string)=>({accepted:false,state,message});
-  if(options.suspended||options.operationActive||actor.health<=0||actor.grounded!==true||actor.climbing!==false||
+  if(options.suspended||options.operationActive||!Number.isFinite(actor.health)||actor.health<=0||actor.grounded!==true||actor.climbing!==false||
     ![actor.x,actor.y,actor.width,actor.height].every(Number.isFinite)||actor.width<=0||actor.height<=0)
     return refuse("Un appui stable et les mains libres sont nécessaires pour manipuler une prise.");
   const item=state.specimensV112?.find(i=>i.id===specimenId);

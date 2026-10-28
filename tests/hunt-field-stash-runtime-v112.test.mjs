@@ -92,7 +92,8 @@ test("forged duplicate or foreign stash identity is refused before restoring a s
     cp=>cp.huntRites.stashedSpecimensV112[0].specimenId="foreign",
     cp=>cp.huntRites.stashedSpecimensV112[0].y=10000,
   ]){
-    const raw=plain(archive);mutate(raw.checkpoint);
+    const checkpoint=r.captureCheckpoint(f.state);mutate(checkpoint);
+    const raw=r.serializeActiveHuntCheckpoint(checkpoint,0);assert.ok(raw);
     const changed=r.deserializeActiveHuntCheckpoint(raw);
     if(changed){const restored=r.restoreCheckpoint(fixture(false).state,changed.checkpoint,"resume");
       assert.match(restored.message,/reprise refusée/);assert.equal(restored.huntRites.specimensV112.length,0);}
