@@ -830,9 +830,12 @@ jobs:
           node scripts/build-runtime-public-inputs-v112.mjs --check
           node scripts/snapshot-runtime-v112.mjs --check docs/v112-runtime-freeze.json
           node scripts/build-homeworld-followup-v112.mjs --check
+      - name: Verify live Homeworld guidance in the real React atlas and native Worker
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node scripts/qa-homeworld-live-guidance-v112.mjs
       - name: Re-run unchanged V110 assertions and preserve its published workbook from pinned Git preimages
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
-        run: node scripts/check-excel-history-v111.mjs --check --tests
+        run: node scripts/check-excel-history-compat-v112.mjs --check --tests
       - name: Exercise actual clan-war panel and native locked storage
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         env:

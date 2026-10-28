@@ -52,7 +52,7 @@ export async function collectV112RecipeInputs(root = V112_ROOT) {
       assert.ok(next, 'Missing actual recipe dependency: ' + candidate); await visit(next);
     }
   }
-  for (const recipe of Object.values(V112_RECIPES)) await visit(recipe);
+  for (const recipe of [...Object.values(V112_RECIPES), 'scripts/qa-homeworld-live-guidance-v112.mjs']) await visit(recipe);
   return [...seen].sort();
 }
 
@@ -103,6 +103,7 @@ export async function snapshotRuntimeV112({root = V112_ROOT} = {}) {
     'tests/pit-replay-export-v112.test.mjs',
     'tests/pit-browser-whiff-observation-v112.test.mjs',
     'tests/homeworld-ground-joints-v112.test.mjs',
+    'tests/homeworld-live-guidance-v112.test.mjs',
     'docs/v112-production-proof-protocol.md',
     'tests/fixtures/excel-history-v111-homeworld-v112.json',
     'tests/fixtures/excel-history-v111-homeworld-v112.json.gz',

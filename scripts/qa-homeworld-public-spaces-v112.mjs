@@ -68,18 +68,21 @@ async function scenario(name,{point,levelId='0',interiorId=null,width=1440,heigh
   }throw Error('Bounded keyboard walk timed out: '+name);
  }finally{for(const key of held)await page.keyboard.up(key);await tick(45);}}
  async function selectGuide(id){await page.locator('[data-world-atlas-button-v77]').click();await tick();const atlas=page.getByRole('dialog',{name:'Carte des étages de la cité',exact:true});await atlas.getByRole('searchbox').fill('');await tick();await atlas.locator(`[data-map-landmark-v83="${id}"]`).click();await tick();await atlas.getByRole('button',{name:'Suivre ce repère à pied',exact:true}).click();await waitUntil(async()=>await atlas.count()===0,'actual Worker response for '+id);await focus();}
- async function followGuide(id){const guide=page.locator(`[data-homeworld-route-guide-v109][data-homeworld-route-target-v98="${id}"]`);let held=[],prior=null,stalled=0,walked=0,steps=0;try{
+ async function followGuide(id){const guide=page.locator(`[data-homeworld-route-guide-v109][data-homeworld-route-target-v98="${id}"]`),trace=[];let held=[],prior=null,stalled=0,walked=0,steps=0;try{
   for(;steps<2500;steps++){
    const p=await actor();if(prior)walked+=Math.hypot(p.x-prior.x,p.y-prior.y);assert.equal(await guide.count(),1);
    const state=await guide.evaluate(element=>({state:element.dataset.homeworldRouteGuideV109,current:element.dataset.homeworldRouteCurrentV109,x:Number(element.dataset.homeworldRouteNextXV109),y:Number(element.dataset.homeworldRouteNextYV109)}));
-   if(state.state==='arrived')return{actor:p,walked,steps,state};assert(state.current==='true'&&state.state!=='off-route','Actual guide must remain current: '+JSON.stringify({id,p,state}));
+   trace.push({step:steps,actor:p,guide:state,heldBefore:[...held]});if(trace.length>96)trace.shift();
+   assert(state.current==='true'&&state.state!=='off-route','Actual guide must remain current: '+JSON.stringify({id,p,state}));if(state.state==='arrived')return{actor:p,walked,steps,state};
    if(!Number.isFinite(state.x)||!Number.isFinite(state.y)){await tick(60);continue;}
    stalled=prior&&Math.hypot(p.x-prior.x,p.y-prior.y)<.05?stalled+1:0;prior=p;if(stalled>100)throw Error('Actual Worker-guided walk stalled: '+JSON.stringify({id,p,state}));
    const dx=state.x-p.x,dy=state.y-p.y,wanted=[...(Math.abs(dx)>1?[dx>0?'ArrowRight':'ArrowLeft']:[]),...(Math.abs(dy)>1?[dy>0?'ArrowDown':'ArrowUp']:[])];
    for(const key of held)if(!wanted.includes(key))await page.keyboard.up(key);for(const key of wanted)if(!held.includes(key))await page.keyboard.down(key);held=wanted;
-   if(Math.hypot(dx,dy)<30){await tick(17);for(const key of held)await page.keyboard.up(key);held=[];await tick(45);}else await tick(10);
+   // Publish the real stop before reading another heading. Inputs never
+   // continue through repeated reads of the same rendered actor.
+   trace.at(-1).requestedKeys=[...held];await tick(17);for(const key of held)await page.keyboard.up(key);held=[];await tick(45);
   }throw Error('Bounded actual guide walk timed out: '+id);
- }finally{for(const key of held)await page.keyboard.up(key);await tick(45);}}
+ }finally{observations.push({scenario:name,kind:'bounded-actual-keyboard-guidance-trace',targetId:id,steps,walked,tail:trace});for(const key of held)await page.keyboard.up(key);await tick(45);}}
  try{
   await title();await page.addScriptTag({content:bootstrap.outputFiles[0].text});
   const room=interiorId&&api.homeworldInteriorForBuildingV64(interiorId),building=interiorId&&api.HOMEWORLD_BUILDINGS_V77.find(b=>b.id===interiorId),exterior=building?api.homeworldBuildingDoorwayV64(building).approach:point;

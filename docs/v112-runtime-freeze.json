@@ -5,8 +5,8 @@
     "bytes": 264999,
     "sha256": "8eee8a5f5a043f2a67477bc6bcff97fffb1ee1666864bd7aed60c7a6c21ca138"
   },
-  "files": 1561,
-  "bytes": 935345146,
+  "files": 1563,
+  "bytes": 935360423,
   "entries": [
     {
       "path": ".openai/hosting.json",
@@ -865,8 +865,8 @@
     },
     {
       "path": "app/game/HomeworldWorldMapV77.tsx",
-      "bytes": 25940,
-      "sha256": "b8047bf35fd955825e445dcf2e18927b2639e4aeea0e38616e42b3d594420692"
+      "bytes": 25650,
+      "sha256": "941e3ea8da26c5185fe9bd9344f7db220cb7ec818cc5234adab524adbf2b8ea4"
     },
     {
       "path": "app/game/HomeworldWorldSceneV77.tsx",
@@ -5210,8 +5210,8 @@
     },
     {
       "path": "docs/v112-production-proof-protocol.md",
-      "bytes": 3853,
-      "sha256": "269ed42a4eac9a0434cccc399709dbe33c9a844a18e29214977d35ac6802a52c"
+      "bytes": 4407,
+      "sha256": "4e3a4e7ca8b9aa73390cf925c73242c6e05c383ecaff24a590b9079d20ebe01b"
     },
     {
       "path": "docs/v112-runtime-public-inputs.json",
@@ -7549,14 +7549,19 @@
       "sha256": "c7e3056e7c1b77d36ded05f87e4eee54a46740cac2ca6a8559607144d38925e2"
     },
     {
+      "path": "scripts/qa-homeworld-live-guidance-v112.mjs",
+      "bytes": 9546,
+      "sha256": "d11e75a7e7fa64586a828837e4dd99f6b3c8499c7274c96713e1ad6cf0801656"
+    },
+    {
       "path": "scripts/qa-homeworld-plaque-v109.mjs",
       "bytes": 23637,
       "sha256": "75bbec9606d09392f8680c1c265665e337fa38e0b4d42892ee17df9eb1b590f6"
     },
     {
       "path": "scripts/qa-homeworld-public-spaces-v112.mjs",
-      "bytes": 51084,
-      "sha256": "3f3ad1f137eddd36e79da14eaad400f17f639b9d089e1102bbc55edc7aaeb438"
+      "bytes": 51443,
+      "sha256": "4f154ff1bc435ec0ae1db5b22ceabd7c80640aa07e0a31d2ec37f29fbc169227"
     },
     {
       "path": "scripts/qa-pit-backward-throws-v112.mjs",
@@ -7605,8 +7610,8 @@
     },
     {
       "path": "scripts/snapshot-runtime-v112.mjs",
-      "bytes": 7899,
-      "sha256": "ecc8e91d63a13f9fc965aa1bc581ac577cd4bfdf78e8d059cdd4f49b92bbbd2d"
+      "bytes": 8002,
+      "sha256": "5550820c87544847aad02358679f8622cc259371994153152b3bb16f09b81007"
     },
     {
       "path": "scripts/vercel-native-origin-v89.mjs",
@@ -7772,6 +7777,11 @@
       "path": "tests/homeworld-ground-joints-v112.test.mjs",
       "bytes": 10934,
       "sha256": "b8884a1646645bc75734b0d5ef6e8c057cf244d36f4687cc6398d3e997823a15"
+    },
+    {
+      "path": "tests/homeworld-live-guidance-v112.test.mjs",
+      "bytes": 5005,
+      "sha256": "c8e3fc2a42c2bdbe89884e2c6f4b8715018b7a1a5994a223a5594b497286c73f"
     },
     {
       "path": "tests/pit-backward-art-provenance-v112.test.mjs",

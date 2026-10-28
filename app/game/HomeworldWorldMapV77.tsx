@@ -25,7 +25,9 @@ export default function HomeworldWorldMapV77({actor,levelId,interiorId=null,open
  const [plan,setPlan]=useState<HomeworldRoutePlanV109|null>(null),[routeNotice,setRouteNotice]=useState('');
  const [planning,setPlanning]=useState(false),workerRef=useRef<Worker|null>(null),workerBusy=useRef(false),planningRevision=useRef(0);
  const workerOwner=useRef<string|null>(null),pendingTarget=useRef<string|null>(null),pendingRequest=useRef<HomeworldRouteRequestV109|null>(null);
- const [routeOrigin,setRouteOrigin]=useState({actor,levelId,interiorId});
+ // The guide describes the same published body as the scene. Retaining a
+ // second origin on a timer can keep a safe old heading after a real turn.
+ const routeOrigin=useMemo(()=>({actor:{x:actor.x,y:actor.y},levelId,interiorId}),[actor.x,actor.y,levelId,interiorId]);
  const live=useRef({actor,levelId,interiorId,save,onOpenChange,open});
  useLayoutEffect(()=>{live.current={actor,levelId,interiorId,save,onOpenChange,open};},[actor,levelId,interiorId,save,onOpenChange,open]);
  const landmarks=useMemo(()=>homeworldAtlasLandmarksV111(save),[save]),requested=homeworldAtlasTargetV83(landmarks,targetId);
@@ -70,7 +72,7 @@ export default function HomeworldWorldMapV77({actor,levelId,interiorId=null,open
     if(!latest.save||!homeworldRouteResponseCurrentV112(request,next,latest.save,{actor:latest.actor,levelId:latest.levelId,interiorId:latest.interiorId})){setRouteNotice('Les lots, le repère ou ton lieu ont changé pendant le calcul. Recalcule depuis ta position actuelle.');return;}
     const stillAllowed=homeworldAtlasTargetV83(homeworldAtlasLandmarksV111(latest.save),next.destinationId);
     if(!stillAllowed||stillAllowed.access==='locked'){setRouteNotice('Ce repère a changé de disponibilité. Consulte les conditions de ta partie.');return;}
-    setPlan(next);setRouteOrigin({actor:latest.actor,levelId:latest.levelId,interiorId:latest.interiorId});
+    setPlan(next);
     setRouteNotice(next.status==='reachable'?'Itinéraire prêt. Suis le repère à pied et interagis aux portes et aux paliers.':next.reason);
     if(next.status==='reachable'&&close&&latest.open)latest.onOpenChange(false);
    },{once:true});
@@ -103,12 +105,6 @@ export default function HomeworldWorldMapV77({actor,levelId,interiorId=null,open
   const frame=requestAnimationFrame(()=>{plannedSpace.current=originSpace;prepare(plan.destinationId,false);});
   return()=>cancelAnimationFrame(frame);
  },[plan,save?.createdAt,activeTarget,originSpace,routeSuspended,prepare]);
- useEffect(()=>{
-  if(!activePlan||open||routeSuspended)return;
-  const update=()=>{const current=live.current;setRouteOrigin({actor:current.actor,levelId:current.levelId,interiorId:current.interiorId});};
-  const frame=requestAnimationFrame(update),timer=window.setInterval(update,350);
-  return()=>{cancelAnimationFrame(frame);window.clearInterval(timer);};
- },[activePlan,open,routeSuspended]);
  useEffect(()=>{if(open)ref.current?.focus({preventScroll:true});},[open]);
  const processedRequest=useRef<string|number|undefined>(undefined),requestKey=targetNonce??targetId;
  useEffect(()=>{if(!open||!requestedId||!requestedLevel||processedRequest.current===requestKey)return;const frame=requestAnimationFrame(()=>{processedRequest.current=requestKey;cancelPlanning();setQuery('');setChosenId(requestedId);setSelected(requestedLevel);setInspected(requestedBuilding??null);});return()=>cancelAnimationFrame(frame);},[open,requestedId,requestedLevel,requestedBuilding,requestKey,cancelPlanning]);
