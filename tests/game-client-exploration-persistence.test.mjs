@@ -22,7 +22,7 @@ function productionFunction(name, environment) {
 }
 const bundled = await build({
   stdin: {
-    contents: 'export * from "./app/game/save"; export * from "./app/game/systems/activeHuntSave"; export * from "./app/game/systems/explorationProgress";',
+    contents: 'export * from "./app/game/save"; export * from "./app/game/systems/activeHuntSave"; export * from "./app/game/systems/explorationProgress"; export * from "./app/game/systems/harvestInventoryV112";',
     resolveDir: process.cwd(), loader: "ts",
   },
   bundle: true, write: false, format: "esm", platform: "node", logLevel: "silent",
@@ -82,6 +82,7 @@ function fixture({ missionId = "jungle-vey", inheritedProgress } = {}) {
     writeActiveHuntSave: (save) => real.writeActiveHuntSave(plain(save), { storage }),
     clearActiveHuntSave: (options) => real.clearActiveHuntSave({ ...options, storage }),
     applyMissionResult: real.applyMissionResult,
+    deliverHarvestV112: real.deliverHarvestV112,
     ACTIVE_HUNT_SAVE_VERSION: real.ACTIVE_HUNT_SAVE_VERSION,
     ACTIVE_HUNT_RUNTIME_REVISION: real.ACTIVE_HUNT_RUNTIME_REVISION,
     // Deliberately keep environment.save stale: React has not rendered again.

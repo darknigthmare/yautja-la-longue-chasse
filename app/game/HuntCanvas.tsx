@@ -905,6 +905,7 @@ function isHeldKeyboardAction(action: Action): boolean {
 const DEFAULT_HUNT_ACCESSIBILITY_CANVAS_V112 = normalizeHuntAccessibilityV112(undefined);
 
 const EMPTY_UI: UiSnapshot = {
+  fieldPackV112:{carried:[],nearby:[],canDrop:false},
   fieldLoadV112: fieldLoadV112([], "hunter"),
   toolConditionV112: 100,
   huntRiteMenu: null,
@@ -2116,11 +2117,13 @@ function restoreCheckpoint(
   checkpoint: MissionCheckpointPayload,
   mode: "retry" | "resume" = "retry",
 ): GameState {
+  const restoredWorldV112=applyExplorationWorld(worldBlueprintFor(state.world.missionId),
+    mergeExplorationProgress(state.exploration,explorationForMission(state.world.missionId,checkpoint.exploration)));
   const restoredRites = checkpoint.huntRites===undefined
     ? state.huntRites ? {...state.huntRites,elapsed:checkpoint.elapsed,corpses:[],operation:null,honorDelta:0,awareness:0,fear:0,completedEventIds:[],carryingCorpseId:null,specimensV112:[],stashedSpecimensV112:[]} : undefined
     : restoreRitesRuntimeV77(checkpoint.huntRites, state.huntRites.runId,
-    state.world.missionId, checkpoint.enemies, checkpoint.elapsed, riteSourceLabelV77, {flayingToolOwned:state.flayingToolOwned,maximumSpecimens:state.harvestDepotFreeV112,...carcassGeometryV112(applyExplorationWorld(worldBlueprintFor(state.world.missionId),mergeExplorationProgress(state.exploration,explorationForMission(state.world.missionId,checkpoint.exploration))))});
-  if (checkpoint.huntRites!==undefined&&(!restoredRites||!fieldStashGeometryValidV112(restoredRites,state.world))) return {...state, paused:true, message:'Les traces de chasse ne correspondent pas à cette rencontre ; reprise refusée.', messageTimer:5};
+    state.world.missionId, checkpoint.enemies, checkpoint.elapsed, riteSourceLabelV77, {flayingToolOwned:state.flayingToolOwned,maximumSpecimens:state.harvestDepotFreeV112,...carcassGeometryV112(restoredWorldV112)});
+  if (checkpoint.huntRites!==undefined&&(!restoredRites||!fieldStashGeometryValidV112(restoredRites,restoredWorldV112))) return {...state, paused:true, message:'Les traces de chasse ne correspondent pas à cette rencontre ; reprise refusée.', messageTimer:5};
   const restoredEcosystem=restoreCorpseDiscoveryV112(checkpoint.ecosystem,state.huntRites?.runId??"legacy",
     restoredRites?.corpses??[],discoveryActorsV112(checkpoint.enemies),checkpoint.elapsed);
   if(!restoredEcosystem)return {...state,paused:true,message:"Les événements de découverte ne correspondent pas aux proies et témoins ; reprise refusée.",messageTimer:5};

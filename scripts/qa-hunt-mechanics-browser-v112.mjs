@@ -58,8 +58,13 @@ try{
  const reset=async()=>{await page.evaluate(()=>window.__huntMechanicsQaV112.reset());await paint();};
  const show=async(name)=>{await page.evaluate(value=>window.__huntMechanicsQaV112.show(value),name);await paint();};
  const capture=async(name)=>{
-  const png=await sharp(await page.screenshot({animations:'disabled'})).resize({width:Math.min(720,page.viewportSize().width),withoutEnlargement:true}).png({palette:true,colours:48}).toBuffer();
-  assert.ok(png.length<=90000,'Bounded inline capture');
+  const original=await page.screenshot({animations:'disabled'});
+  let png;
+  for(const width of [640,520,420,320]){
+   png=await sharp(original).resize({width:Math.min(width,page.viewportSize().width),withoutEnlargement:true}).png({palette:true,colours:32,dither:0,compressionLevel:9}).toBuffer();
+   if(png.length<=90000)break;
+  }
+  assert.ok(png&&png.length<=90000,'Bounded inline capture');
   await fs.writeFile(path.join(out,name+'.png'),png);captures.push({file:name+'.png',bytes:png.length,nativeExcelExecuted:false});
   console.log('V112_CAPTURE_BEGIN:'+name+':'+png.toString('base64')+':V112_CAPTURE_END');
  };

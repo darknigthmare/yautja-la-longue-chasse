@@ -99,7 +99,8 @@ export function stepCanopySwingV112(
   if (!canopySupportReachableV112(body,support,platforms,initial)) {
     return {swing:{...initial},body:{...body},detached:true,grounded:false,staminaCost:0,tensionPerKg:0};
   }
-  let swing = {...initial}, actor = {...body}, detached = false, grounded = false;
+  const swing = {...initial};
+  let actor = {...body}, detached = false, grounded = false;
   let staminaCost = 0;
   const steps = Math.max(1,Math.ceil(deltaSeconds/CANOPY_PHYSICS_V112.substepSeconds));
   const dt = deltaSeconds/steps;

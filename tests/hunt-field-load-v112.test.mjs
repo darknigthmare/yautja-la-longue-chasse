@@ -36,7 +36,7 @@ test("field stock slows native movement for every armor and the HUD exposes the 
     full.state.fieldLoadV112={noiseMultiplier:0,massKg:0};
     const view=r.snapshot(full.state,full.mission);
     assert.ok(view.fieldLoadV112.massKg>0,"HUD derives stock rather than trusting transient cached values");
-    assert.equal(view.fieldLoadV112.movementMultiplier,.68);
+    assert.ok(Math.abs(view.fieldLoadV112.movementMultiplier-.68)<1e-12);
   }
 });
 test("native jumps preserve assistance and pay the explicit load penalty without consuming a boost",()=>{

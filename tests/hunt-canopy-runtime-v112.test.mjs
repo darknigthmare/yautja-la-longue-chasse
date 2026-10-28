@@ -182,6 +182,14 @@ test("canopy and airborne controls do not inherit mud from a distant ground surf
 
 test("a pumped native pendulum releases and catches the next authored vine without a boost",()=>{
  const f=fixture();
+ // Climb above the resting branches before pumping. A low pendulum is meant
+ // to land on a real branch; that collision is not a failed rope constraint.
+ f.held.add("up");
+ let climbTicks=0;
+ while(f.state.player.y+f.state.player.height*.28-f.support.y>120&&climbTicks++<100)f.frame();
+ assert.ok(climbTicks<100,"the actual up input gives the swing clearance above the rests");
+ assert.equal(f.state.player.climbing,true);
+ f.held.clear();
  const nextId=f.support.id.replace(/-1-grip$/,"-2-grip");
  assert.ok(f.state.world.climbables.some(s=>s.id===nextId&&s.kind==="vine"));
  f.held.add("right");f.frame();
