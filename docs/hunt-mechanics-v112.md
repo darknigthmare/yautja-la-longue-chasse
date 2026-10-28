@@ -2,7 +2,7 @@
 
 Cette livraison reprend les douze extensions FUT-01 à FUT-12 du classeur de chasse V111. Elle complète les gestes de terrain, l'emport et la conservation, les traversées de canopée, les options d'accessibilité et les réactions locales à une carcasse. Le suivi Homeworld de la PR22 conserve son périmètre et ses classeurs.
 
-Le [classeur V112](./YAUTJA_V112_MECANIQUES_CHASSE.xlsx) contient **19 onglets et 315 lignes**. Sa source éditable est [hunt-mechanics-v112.json](./hunt-mechanics-v112.json). Chaque exigence FUT conserve son identifiant ; règles, paramètres, transitions, recettes de qualification et preuves sont séparés. `IMPLEMENTE_A_VALIDER` signifie présence de code ; `VALIDE_AUTOMATISE` n'est attribué qu'après une exécution consignée. La présence d'une recette n'est pas une preuve de réussite.
+Le [classeur V112](./YAUTJA_V112_MECANIQUES_CHASSE.xlsx) contient **19 onglets et 362 lignes**. Sa source éditable est [hunt-mechanics-v112.json](./hunt-mechanics-v112.json). Chaque exigence FUT conserve son identifiant ; règles, paramètres, transitions, recettes de qualification et preuves sont séparés. `IMPLEMENTE_A_VALIDER` signifie présence de code ; `VALIDE_AUTOMATISE` n'est attribué qu'après une exécution consignée. La présence d'une recette n'est pas une preuve de réussite.
 
 ## Mécaniques et commandes
 
@@ -12,7 +12,7 @@ Les routes de canopée sont optionnelles et géométriques : jusqu'à trois séq
 
 Le corps réel peut être préparé, porté puis suspendu sur un socket authoré compatible. Masse, capacité, portée et volume libre sont contrôlés pendant le geste. Rendu, point de prélèvement et témoins suivent le même acteur ; la disparition du support libère ce même corps dans la collision.
 
-Les prises anatomiques dépendent de l'espèce et d'un stock fini. Préparation et prélèvement sont des gestes distincts. L'interface présente masse, durée, prérequis et intégrité avant confirmation. Cette intégrité découle des dommages de la chasse et de l'analyse, sans nouveau tirage aléatoire à la reprise. Une interruption ou un emport plein laisse la partie sur la proie.
+Le catalogue de 39 espèces détaille chaque partie, sa masse, son volume, sa durée et sa fragilité dans le classeur. Les prises anatomiques dépendent de l'espèce et d'un stock fini. Préparation et prélèvement sont des gestes distincts. L'interface présente masse, durée, prérequis et intégrité avant confirmation. Cette intégrité découle des dommages de la chasse et de l'analyse, sans nouveau tirage aléatoire à la reprise. Une interruption ou un emport plein laisse la partie sur la proie.
 
 L'armure scout autorise 24 kg et 18 volumes, hunter 36/24, berserker 52/30. À pleine charge, vitesse ×0,68, saut ×0,84, coût de grimpe ×1,6 et bruit ×1,8. Les stocks et leur capacité sont recomptés depuis les objets réels. Les remises de campagne suivent une extraction réussie et les identités monotones de rencontre empêchent les répétitions.
 

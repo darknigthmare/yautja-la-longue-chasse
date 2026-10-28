@@ -1116,6 +1116,350 @@
           "rule": "Qualité et identité accompagnent l'objet à l'atelier.",
           "source": "app/game/systems/anatomyHarvestV112.ts",
           "acceptance": "Nettoyer ne recrée pas un nouvel objet."
+        },
+        {
+          "id": "CAT112-01",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "hell-hound-stalker",
+          "rule": "Cuir de chien de chasse : 2.4 kg ; 3 volume(s) ; 3.8 s ; fragilité 1 ; dépeçage requis\nTendon de poursuite : 0.4 kg ; 1 volume(s) ; 2.6 s ; fragilité 1.3 ; dépeçage non requis",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Stock d'une pièce par partie et par corps réel ; la reprise et l'extraction conservent la même identité."
+        },
+        {
+          "id": "CAT112-02",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "cinder-12--hell-hound-stalker",
+          "rule": "Cuir de chien de chasse : 2.4 kg ; 3 volume(s) ; 3.8 s ; fragilité 1 ; dépeçage requis\nTendon de poursuite : 0.4 kg ; 1 volume(s) ; 2.6 s ; fragilité 1.3 ; dépeçage non requis",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Stock d'une pièce par partie et par corps réel ; la reprise et l'extraction conservent la même identité."
+        },
+        {
+          "id": "CAT112-03",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "razorback-grazer",
+          "rule": "Peau de brouteur : 3.8 kg ; 3 volume(s) ; 3.8 s ; fragilité 1 ; dépeçage requis\nCôte dorsale : 1.2 kg ; 2 volume(s) ; 3.4 s ; fragilité 0.55 ; dépeçage non requis",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Stock d'une pièce par partie et par corps réel ; la reprise et l'extraction conservent la même identité."
+        },
+        {
+          "id": "CAT112-04",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "nivalis-k--razorback-grazer",
+          "rule": "Peau de brouteur : 3.8 kg ; 3 volume(s) ; 3.8 s ; fragilité 1 ; dépeçage requis\nCôte dorsale : 1.2 kg ; 2 volume(s) ; 3.4 s ; fragilité 0.55 ; dépeçage non requis",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Stock d'une pièce par partie et par corps réel ; la reprise et l'extraction conservent la même identité."
+        },
+        {
+          "id": "CAT112-05",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "oseris-iv--vineback-grazer",
+          "rule": "Peau à fibres végétales : 3.2 kg ; 3 volume(s) ; 3.8 s ; fragilité 1 ; dépeçage requis\nLigament dorsal : 0.4 kg ; 1 volume(s) ; 2.6 s ; fragilité 1.3 ; dépeçage non requis",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Stock d'une pièce par partie et par corps réel ; la reprise et l'extraction conservent la même identité."
+        },
+        {
+          "id": "CAT112-06",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "oseris-iv--mist-pouncer",
+          "rule": "Pelage de bondisseur : 2.4 kg ; 3 volume(s) ; 3.8 s ; fragilité 1 ; dépeçage requis\nTendon de bond : 0.4 kg ; 1 volume(s) ; 2.6 s ; fragilité 1.3 ; dépeçage non requis",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Stock d'une pièce par partie et par corps réel ; la reprise et l'extraction conservent la même identité."
+        },
+        {
+          "id": "CAT112-07",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "oseris-iv--mirror-chameleon",
+          "rule": "Peau chromatophore : 1.6 kg ; 3 volume(s) ; 3.8 s ; fragilité 1 ; dépeçage requis\nÉchantillon pigmentaire : 0.4 kg ; 1 volume(s) ; 2.6 s ; fragilité 1.3 ; dépeçage non requis",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Stock d'une pièce par partie et par corps réel ; la reprise et l'extraction conservent la même identité."
+        },
+        {
+          "id": "CAT112-08",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "naraka-delta--reed-cat",
+          "rule": "Pelage palustre : 1.8 kg ; 3 volume(s) ; 3.8 s ; fragilité 1 ; dépeçage requis\nTendon félin : 0.4 kg ; 1 volume(s) ; 2.6 s ; fragilité 1.3 ; dépeçage non requis",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Stock d'une pièce par partie et par corps réel ; la reprise et l'extraction conservent la même identité."
+        },
+        {
+          "id": "CAT112-09",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "serekh-9--dust-jackal",
+          "rule": "Pelage filtrant : 1.8 kg ; 3 volume(s) ; 3.8 s ; fragilité 1 ; dépeçage requis\nOs nasal secondaire : 1.2 kg ; 2 volume(s) ; 3.4 s ; fragilité 0.55 ; dépeçage non requis",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Stock d'une pièce par partie et par corps réel ; la reprise et l'extraction conservent la même identité."
+        },
+        {
+          "id": "CAT112-10",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "nivalis-k--snow-prowler",
+          "rule": "Fourrure isolante : 2.8 kg ; 3 volume(s) ; 3.8 s ; fragilité 1 ; dépeçage requis\nTissu thermorégulateur : 0.4 kg ; 1 volume(s) ; 2.6 s ; fragilité 1.3 ; dépeçage non requis",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Stock d'une pièce par partie et par corps réel ; la reprise et l'extraction conservent la même identité."
+        },
+        {
+          "id": "CAT112-11",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "nivalis-k--glacier-ram",
+          "rule": "Cuir de bélier : 4 kg ; 3 volume(s) ; 3.8 s ; fragilité 1 ; dépeçage requis\nCôte renforcée : 1.2 kg ; 2 volume(s) ; 3.4 s ; fragilité 0.55 ; dépeçage non requis",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Stock d'une pièce par partie et par corps réel ; la reprise et l'extraction conservent la même identité."
+        },
+        {
+          "id": "CAT112-12",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "cinder-12--basalt-ram",
+          "rule": "Cuir de bélier : 4 kg ; 3 volume(s) ; 3.8 s ; fragilité 1 ; dépeçage requis\nCôte renforcée : 1.2 kg ; 2 volume(s) ; 3.4 s ; fragilité 0.55 ; dépeçage non requis",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Stock d'une pièce par partie et par corps réel ; la reprise et l'extraction conservent la même identité."
+        },
+        {
+          "id": "CAT112-13",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "serekh-9--salt-ram",
+          "rule": "Cuir de bélier : 4 kg ; 3 volume(s) ; 3.8 s ; fragilité 1 ; dépeçage requis\nCôte renforcée : 1.2 kg ; 2 volume(s) ; 3.4 s ; fragilité 0.55 ; dépeçage non requis",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Stock d'une pièce par partie et par corps réel ; la reprise et l'extraction conservent la même identité."
+        },
+        {
+          "id": "CAT112-14",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "xeno-drone",
+          "rule": "Segment caudal de xénomorphe : 1.2 kg ; 2 volume(s) ; 3.4 s ; fragilité 0.55 ; dépeçage non requis",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Stock d'une pièce par partie et par corps réel ; la reprise et l'extraction conservent la même identité."
+        },
+        {
+          "id": "CAT112-15",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "common--wandering-xeno-drone",
+          "rule": "Segment caudal de xénomorphe : 1.2 kg ; 2 volume(s) ; 3.4 s ; fragilité 0.55 ; dépeçage non requis",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Stock d'une pièce par partie et par corps réel ; la reprise et l'extraction conservent la même identité."
+        },
+        {
+          "id": "CAT112-16",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "oseris-iv--jungle-xeno-scout",
+          "rule": "Segment caudal de xénomorphe : 1.2 kg ; 2 volume(s) ; 3.4 s ; fragilité 0.55 ; dépeçage non requis",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Stock d'une pièce par partie et par corps réel ; la reprise et l'extraction conservent la même identité."
+        },
+        {
+          "id": "CAT112-17",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "nivalis-k--frost-xeno",
+          "rule": "Segment caudal de xénomorphe : 1.2 kg ; 2 volume(s) ; 3.4 s ; fragilité 0.55 ; dépeçage non requis",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Stock d'une pièce par partie et par corps réel ; la reprise et l'extraction conservent la même identité."
+        },
+        {
+          "id": "CAT112-18",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "cinder-12--scorch-xeno",
+          "rule": "Segment caudal de xénomorphe : 1.2 kg ; 2 volume(s) ; 3.4 s ; fragilité 0.55 ; dépeçage non requis",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Stock d'une pièce par partie et par corps réel ; la reprise et l'extraction conservent la même identité."
+        },
+        {
+          "id": "CAT112-19",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "acheron-sigma--temple-xeno",
+          "rule": "Segment caudal de xénomorphe : 1.2 kg ; 2 volume(s) ; 3.4 s ; fragilité 0.55 ; dépeçage non requis",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Stock d'une pièce par partie et par corps réel ; la reprise et l'extraction conservent la même identité."
+        },
+        {
+          "id": "CAT112-20",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "pelagos-m--swimmer-xeno",
+          "rule": "Segment caudal de xénomorphe : 1.2 kg ; 2 volume(s) ; 3.4 s ; fragilité 0.55 ; dépeçage non requis",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Stock d'une pièce par partie et par corps réel ; la reprise et l'extraction conservent la même identité."
+        },
+        {
+          "id": "CAT112-21",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "xeno-praetorian",
+          "rule": "Éperon thoracique : 1.2 kg ; 2 volume(s) ; 3.4 s ; fragilité 0.55 ; dépeçage non requis",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Stock d'une pièce par partie et par corps réel ; la reprise et l'extraction conservent la même identité."
+        },
+        {
+          "id": "CAT112-22",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "oseris-iv--needle-frog",
+          "rule": "Tissu glandulaire d'aiguillon : 0.4 kg ; 1 volume(s) ; 2.6 s ; fragilité 1.3 ; dépeçage non requis",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Stock d'une pièce par partie et par corps réel ; la reprise et l'extraction conservent la même identité."
+        },
+        {
+          "id": "CAT112-23",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "naraka-delta--lantern-toad",
+          "rule": "Tissu photophore : 0.4 kg ; 1 volume(s) ; 2.6 s ; fragilité 1.3 ; dépeçage non requis",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Stock d'une pièce par partie et par corps réel ; la reprise et l'extraction conservent la même identité."
+        },
+        {
+          "id": "CAT112-24",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "pelagos-m--storm-eel",
+          "rule": "Tissu électrocyte : 0.4 kg ; 1 volume(s) ; 2.6 s ; fragilité 1.3 ; dépeçage non requis",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Stock d'une pièce par partie et par corps réel ; la reprise et l'extraction conservent la même identité."
+        },
+        {
+          "id": "CAT112-25",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "naraka-delta--sludge-eel",
+          "rule": "Tissu électrocyte : 0.4 kg ; 1 volume(s) ; 2.6 s ; fragilité 1.3 ; dépeçage non requis",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Stock d'une pièce par partie et par corps réel ; la reprise et l'extraction conservent la même identité."
+        },
+        {
+          "id": "CAT112-26",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "bonecrest-ravager",
+          "rule": "Cuir du ravageur : 4.2 kg ; 3 volume(s) ; 3.8 s ; fragilité 1 ; dépeçage requis\nPhalange de soutien : 1.2 kg ; 2 volume(s) ; 3.4 s ; fragilité 0.55 ; dépeçage non requis",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Stock d'une pièce par partie et par corps réel ; la reprise et l'extraction conservent la même identité."
+        },
+        {
+          "id": "CAT112-27",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "amber-mire-lurker",
+          "rule": "Peau du guetteur palustre : 3.6 kg ; 3 volume(s) ; 3.8 s ; fragilité 1 ; dépeçage requis",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Stock d'une pièce par partie et par corps réel ; la reprise et l'extraction conservent la même identité."
+        },
+        {
+          "id": "CAT112-28",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "naraka-delta--bog-stalker",
+          "rule": "Peau du guetteur palustre : 3.6 kg ; 3 volume(s) ; 3.8 s ; fragilité 1 ; dépeçage requis",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Stock d'une pièce par partie et par corps réel ; la reprise et l'extraction conservent la même identité."
+        },
+        {
+          "id": "CAT112-29",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "naraka-delta--iron-croc",
+          "rule": "Cuir à plaques ferriques : 4.4 kg ; 3 volume(s) ; 3.8 s ; fragilité 1 ; dépeçage requis\nVertèbre terminale : 1.2 kg ; 2 volume(s) ; 3.4 s ; fragilité 0.55 ; dépeçage non requis",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Stock d'une pièce par partie et par corps réel ; la reprise et l'extraction conservent la même identité."
+        },
+        {
+          "id": "CAT112-30",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "naraka-delta--fen-leaper",
+          "rule": "Peau du sauteur : 1.5 kg ; 3 volume(s) ; 3.8 s ; fragilité 1 ; dépeçage requis",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Stock d'une pièce par partie et par corps réel ; la reprise et l'extraction conservent la même identité."
+        },
+        {
+          "id": "CAT112-31",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "serekh-9--quill-lizard",
+          "rule": "Peau du lézard : 1.4 kg ; 3 volume(s) ; 3.8 s ; fragilité 1 ; dépeçage requis",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Stock d'une pièce par partie et par corps réel ; la reprise et l'extraction conservent la même identité."
+        },
+        {
+          "id": "CAT112-32",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "serekh-9--dune-strider",
+          "rule": "Tendon d'échassier : 0.4 kg ; 1 volume(s) ; 2.6 s ; fragilité 1.3 ; dépeçage non requis",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Stock d'une pièce par partie et par corps réel ; la reprise et l'extraction conservent la même identité."
+        },
+        {
+          "id": "CAT112-33",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "cinder-12--smoke-wyvern",
+          "rule": "Membrane de vol : 3.8 kg ; 3 volume(s) ; 3.8 s ; fragilité 1 ; dépeçage requis",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Stock d'une pièce par partie et par corps réel ; la reprise et l'extraction conservent la même identité."
+        },
+        {
+          "id": "CAT112-34",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "pelagos-m--razor-shark",
+          "rule": "Peau denticulée : 3 kg ; 3 volume(s) ; 3.8 s ; fragilité 1 ; dépeçage requis\nTissu sensoriel : 0.4 kg ; 1 volume(s) ; 2.6 s ; fragilité 1.3 ; dépeçage non requis",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Stock d'une pièce par partie et par corps réel ; la reprise et l'extraction conservent la même identité."
+        },
+        {
+          "id": "CAT112-35",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "oseris-iv--thunder-macaque",
+          "rule": "Pelage du dominant : 2.6 kg ; 3 volume(s) ; 3.8 s ; fragilité 1 ; dépeçage requis\nPhalange du dominant : 1.2 kg ; 2 volume(s) ; 3.4 s ; fragilité 0.55 ; dépeçage non requis",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Stock d'une pièce par partie et par corps réel ; la reprise et l'extraction conservent la même identité."
+        },
+        {
+          "id": "CAT112-36",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "mycora-v--spore-hound",
+          "rule": "Culture mycélienne canine : 0.4 kg ; 1 volume(s) ; 2.6 s ; fragilité 1.3 ; dépeçage non requis",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Stock d'une pièce par partie et par corps réel ; la reprise et l'extraction conservent la même identité."
+        },
+        {
+          "id": "CAT112-37",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "mycora-v--glow-moth",
+          "rule": "Poudre phosphorescente : 0.4 kg ; 1 volume(s) ; 2.6 s ; fragilité 1.3 ; dépeçage non requis",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Stock d'une pièce par partie et par corps réel ; la reprise et l'extraction conservent la même identité."
+        },
+        {
+          "id": "CAT112-38",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "pelagos-m--hunter-manta",
+          "rule": "Membrane alaire : 1.2 kg ; 3 volume(s) ; 3.8 s ; fragilité 1 ; dépeçage requis",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Stock d'une pièce par partie et par corps réel ; la reprise et l'extraction conservent la même identité."
+        },
+        {
+          "id": "CAT112-39",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "nivalis-k--frost-manta",
+          "rule": "Membrane alaire : 1.2 kg ; 3 volume(s) ; 3.8 s ; fragilité 1 ; dépeçage requis",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Stock d'une pièce par partie et par corps réel ; la reprise et l'extraction conservent la même identité."
+        },
+        {
+          "id": "ANA112-15",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Perte d'intégrité : formule",
+          "rule": "Perte cumulée = clamp(perte + dégâts/santéMax × (9 mêlée ou 28 arme) + surkill/santéMax ×45, 0, 100). Intégrité = arrondi(100-perte).",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Les nombres sont des réglages du fan game ; tous les coups réels contribuent, pas seulement le dernier."
+        },
+        {
+          "id": "ANA112-16",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Qualité de pièce : formule",
+          "rule": "Qualité = arrondi(clamp(100-(100-intégrité)×fragilité-(analyse absente ?12:0),0,100)).",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Même dégâts, partie et analyse produisent la même qualité ; aucun aléa à la reprise."
+        },
+        {
+          "id": "ANA112-17",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Masse corporelle : formule",
+          "rule": "Masse = arrondi(clamp(largeur×hauteur/60,12,300)) kg. Humain66×94≈103 kg ; Yautja74×112≈138 kg ; chien104×84≈146 kg.",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "Adaptation de gameplay dimensionnelle ; pas une estimation canonique de masse réelle. Portage maximal170 kg."
+        },
+        {
+          "id": "CAT112-00",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Espèce absente du catalogue",
+          "rule": "Aucune partie anatomique supplémentaire pour une espèce non listée, notamment humain, synthétique ou végétal absent de la table.",
+          "source": "app/game/systems/anatomyHarvestV112.ts",
+          "acceptance": "La définition d'un trophée historique reste indépendante ; aucun tissu ou peau universels."
         }
       ]
     },
@@ -1714,6 +2058,38 @@
           "rule": "Messages distinguent vision, radio et investigation.",
           "source": "app/game/systems/corpseDiscoveryV112.ts",
           "acceptance": "Cause locale compréhensible."
+        },
+        {
+          "id": "ART112-01",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Symbole visual",
+          "rule": "SVG original généré par scripts/build-discovery-signals-v112.mjs ; dessin vectoriel natif et libellé texte dans le Canvas.",
+          "source": "public/game/assets/v112/discovery/visual.svg",
+          "acceptance": "Ressource d'export/reproductibilité ; le rendu en jeu ne dépend pas de la réussite d'un chargement d'image."
+        },
+        {
+          "id": "ART112-02",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Symbole radio",
+          "rule": "SVG original généré par scripts/build-discovery-signals-v112.mjs ; dessin vectoriel natif et libellé texte dans le Canvas.",
+          "source": "public/game/assets/v112/discovery/radio.svg",
+          "acceptance": "Ressource d'export/reproductibilité ; le rendu en jeu ne dépend pas de la réussite d'un chargement d'image."
+        },
+        {
+          "id": "ART112-03",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Symbole scent",
+          "rule": "SVG original généré par scripts/build-discovery-signals-v112.mjs ; dessin vectoriel natif et libellé texte dans le Canvas.",
+          "source": "public/game/assets/v112/discovery/scent.svg",
+          "acceptance": "Ressource d'export/reproductibilité ; le rendu en jeu ne dépend pas de la réussite d'un chargement d'image."
+        },
+        {
+          "id": "ART112-04",
+          "status": "IMPLEMENTE_A_VALIDER",
+          "topic": "Symbole animal",
+          "rule": "SVG original généré par scripts/build-discovery-signals-v112.mjs ; dessin vectoriel natif et libellé texte dans le Canvas.",
+          "source": "public/game/assets/v112/discovery/animal.svg",
+          "acceptance": "Ressource d'export/reproductibilité ; le rendu en jeu ne dépend pas de la réussite d'un chargement d'image."
         }
       ]
     },
