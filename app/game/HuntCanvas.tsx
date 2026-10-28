@@ -46,7 +46,8 @@ import { isExpansionExplorationMission } from "./systems/expansionExplorationReg
 import { applyExplorationWorld, discoverExplorationRooms, interactWithExplorationRegion, explorationRegionHint } from "./systems/explorationRegions";
 import { defaultExplorationProgress, normalizeExplorationProgress, mergeExplorationProgress, explorationBonuses, isExplorationMission, explorationForMission } from "./systems/explorationProgress";
 import { OSERIS_VERTICAL_BOUNDS, PILOT_MISSION_ID, targetOserisCameraY } from "./systems/metroidvaniaPilot";
-import { resolvePlatformMotion, overlapsSolidPlatform } from "./systems/platformCollision";
+import { resolvePlatformMotion, overlapsSolidPlatform, type PlatformMotionResult } from "./systems/platformCollision";
+import { attachCanopySwingV112, canopySupportReachableV112, isCanopySwingSnapshotV112, releaseCanopySwingV112, stepCanopySwingV112, type CanopySwingV112 } from "./systems/canopyTraversalV112";
 import { freshJumpAssistState, stepJumpAssist, predictLandingWithinBuffer, type JumpAssistState, type JumpAssistResult } from "./systems/jumpAssist";
 import { discoverWorldScreen, normalizeVisitedScreenIds } from "./systems/explorationMap";
 import {
@@ -372,6 +373,8 @@ interface PlayerState extends Vec2 {
   climbReattachSeconds?: number;
   /** Exhaustion persists through resume and clears on grounded recovery. */
   climbGripExhausted?: boolean;
+  /** Real pendulum state, restored only against its authored support and rope path. */
+  canopySwing?: CanopySwingV112 | null;
   gauntletOpen: number;
   bladeExtension: number;
   dreadAngles: number[];
@@ -1549,6 +1552,7 @@ function clonePlayerState(player: PlayerState): PlayerState {
   return {
     ...player,
     aimPoint: { ...player.aimPoint },
+    canopySwing: player.canopySwing ? { ...player.canopySwing } : null,
     weaponAmmo: [...player.weaponAmmo] as [number, number],
     dreadAngles: [...player.dreadAngles],
     dreadVelocities: [...player.dreadVelocities],
@@ -1922,6 +1926,8 @@ function deserializeActiveHuntCheckpoint(
         checkpoint.player.climbReattachSeconds > CLIMB_TRAVERSAL.releaseSeconds)) ||
     (checkpoint.player.climbGripExhausted !== undefined &&
       typeof checkpoint.player.climbGripExhausted !== "boolean") ||
+    (checkpoint.player.canopySwing !== undefined && checkpoint.player.canopySwing !== null &&
+      !isCanopySwingSnapshotV112(checkpoint.player.canopySwing)) ||
     (checkpoint.player.facing !== -1 && checkpoint.player.facing !== 1) ||
     (checkpoint.player.activeWeaponSlot !== 0 &&
       checkpoint.player.activeWeaponSlot !== 1) ||
@@ -2090,11 +2096,16 @@ function restoreCheckpoint(
     player.previousY = player.y;
     player.velocityY = Math.max(0, player.velocityY);
   }
-  if (player.climbing && !world.climbables.some(zone => zone.id === player.climbZoneId)) {
+  const restoredSupport = world.climbables.find(zone => zone.id === player.climbZoneId);
+  if (player.climbing && (!restoredSupport ||
+    !canopySupportReachableV112(player, restoredSupport, world.platforms, player.canopySwing))) {
     player.climbing = false;
     player.climbZoneId = null;
+    player.canopySwing = null;
   }
+  if (!player.climbing || player.climbGripExhausted) player.canopySwing = null;
   const cloakWasActive = player.cloaked || state.player.cloaked;
+  if (mode === "retry") player.canopySwing = null;
   if (mode === "retry") {
     player.health = Math.max(player.health, player.maxHealth * 0.45);
     player.stamina = Math.max(player.stamina, player.maxStamina * 0.6);
@@ -4280,7 +4291,20 @@ function drawWorldClimbable(
   mission: MissionDefinition,
   palette: MissionDefinition["palette"],
   encounterRun: number,
+  swing: CanopySwingV112 | null = null,
 ): void {
+  if (swing?.supportId === zone.id) {
+    const x = zone.x + zone.width / 2;
+    const gripX = x + Math.sin(swing.angle) * swing.length;
+    const gripY = zone.y + Math.cos(swing.angle) * swing.length;
+    context.save();
+    context.strokeStyle = zone.kind === "vine" ? "#7eae65" : "#cab68c";
+    context.lineWidth = zone.kind === "chain" ? 6 : 4;
+    context.beginPath(); context.moveTo(x, zone.y); context.lineTo(gripX, gripY); context.stroke();
+    context.fillStyle = "#d9eeac"; context.beginPath(); context.arc(x, zone.y, 7, 0, Math.PI * 2); context.fill();
+    context.restore();
+    return;
+  }
   const assignment = environmentGameplayPropForGeometryId(
     mission.id,
     zone.id,
@@ -4540,6 +4564,7 @@ function renderGame(
       mission,
       palette,
       encounterRun,
+      state.player.canopySwing ?? null,
     );
   }
 
@@ -7432,9 +7457,16 @@ function applyPlayerJump(state: GameState, result: JumpAssistResult, direction: 
     player.climbing = false;
     player.climbZoneId = null;
     player.climbReattachSeconds = CLIMB_TRAVERSAL.releaseSeconds;
-    player.velocityX = direction * (flexible
-      ? CLIMB_TRAVERSAL.flexibleLaunchSpeed
-      : CLIMB_TRAVERSAL.rigidLaunchSpeed);
+    if (player.canopySwing) {
+      const release = releaseCanopySwingV112(player.canopySwing);
+      player.velocityX = release.velocityX;
+      player.velocityY = release.velocityY;
+      player.canopySwing = null;
+    } else {
+      player.velocityX = direction * (flexible
+        ? CLIMB_TRAVERSAL.flexibleLaunchSpeed
+        : CLIMB_TRAVERSAL.rigidLaunchSpeed);
+    }
     emitNoise(state, "landing", 0.24, 210, origin);
   } else if (result.jump === "boost") {
     player.aerialBoostUsed = true;
@@ -7646,6 +7678,7 @@ function updatePlayer(
     return;
   }
   const actionLocked = state.trophyExtracting || victoryLocked;
+  if (!player.climbing || actionLocked) player.canopySwing = null;
   updatePlayerMeleeCombat(state, mission, delta, actionLocked);
 
   const dodgeVelocity = huntMeleeDodgeVelocity(player.melee);
@@ -7667,7 +7700,7 @@ function updatePlayer(
       : 0) - delta);
   if (player.grounded) player.climbGripExhausted = false;
   const preserveClimbMomentum =
-    !actionLocked && !player.grounded && player.climbReattachSeconds > 0 &&
+    !actionLocked && !player.grounded && (Boolean(player.canopySwing) || player.climbReattachSeconds > 0) &&
     (moveAxis === 0 || Math.sign(moveAxis) === Math.sign(player.velocityX));
   if (!preserveClimbMomentum) {
     player.velocityX +=
@@ -7692,18 +7725,16 @@ function updatePlayer(
   };
   // Keep the active support before considering overlapping neighbours.
   const activeClimbZone = player.climbing
-    ? state.world.climbables.find(zone => zone.id === player.climbZoneId)
+    ? state.world.climbables.find(zone => zone.id === player.climbZoneId &&
+      canopySupportReachableV112(player, zone, state.world.platforms, player.canopySwing))
     : undefined;
   const currentClimbZone = activeClimbZone ?? state.world.climbables
-    .filter(zone =>
-      playerCenter.x >= zone.x - 24 &&
-      playerCenter.x <= zone.x + zone.width + 24 &&
-      playerCenter.y >= zone.y - 28 &&
-      playerCenter.y <= zone.y + zone.height + 28)
+    .filter(zone => canopySupportReachableV112(player, zone, state.world.platforms))
     .sort((left, right) =>
       Math.abs(playerCenter.x - left.x - left.width / 2) -
       Math.abs(playerCenter.x - right.x - right.width / 2))[0];
   if (player.climbing && (!activeClimbZone || player.stamina <= 0)) {
+    player.canopySwing = null;
     if (player.stamina <= 0) {
       player.climbGripExhausted = true;
       announce(state, "Prise épuisée : rejoins le sol pour reprendre appui.", 2);
@@ -7727,10 +7758,16 @@ function updatePlayer(
   }
   const climbJumpRequested = input.pressed.has("jump") ||
     (state.jumpAssist?.bufferSeconds ?? 0) > 0;
+  if (player.climbing && currentClimbZone && !player.canopySwing &&
+    !climbJumpRequested && Math.abs(moveAxis) > 0.5) {
+    player.canopySwing = attachCanopySwingV112(player, currentClimbZone);
+    if (player.canopySwing) announce(state, "Balancement : direction pour pomper, Haut/Bas pour la longueur, Saut pour lâcher.", 3);
+  }
   if (
     player.climbing &&
     Math.abs(moveAxis) > 0.5 &&
     climbAxis === 0 &&
+    !player.canopySwing &&
     !climbJumpRequested
   ) {
     player.climbing = false;
@@ -7864,7 +7901,26 @@ function updatePlayer(
 
   const motionStart = { x: player.x, y: player.y };
   player.previousY = player.y;
-  if (player.climbing && currentClimbZone) {
+  let swingMotion: PlatformMotionResult | null = null;
+  if (player.climbing && currentClimbZone && player.canopySwing) {
+    const swing = stepCanopySwingV112(player.canopySwing, player, currentClimbZone,
+      {moveAxis, climbAxis}, delta, state.world.platforms, state.world.floorY);
+    player.canopySwing = swing.swing;
+    player.x = swing.body.x; player.y = swing.body.y;
+    player.velocityX = swing.body.velocityX; player.velocityY = swing.body.velocityY;
+    player.stamina = Math.max(0, player.stamina - swing.staminaCost);
+    swingMotion = {x:player.x,y:player.y,velocityX:player.velocityX,velocityY:player.velocityY,
+      grounded:swing.grounded,hitWall:swing.detached,hitCeiling:false};
+    player.grounded = swing.grounded;
+    if (swing.detached || player.stamina <= 0) {
+      if (player.stamina <= 0) {
+        player.climbGripExhausted = true;
+        announce(state, "Prise épuisée : rejoins un appui pour reprendre.", 2);
+      }
+      player.climbing = false; player.climbZoneId = null; player.canopySwing = null;
+      player.climbReattachSeconds = CLIMB_TRAVERSAL.releaseSeconds;
+    }
+  } else if (player.climbing && currentClimbZone) {
     const flexibleClimb =
       currentClimbZone.kind === "vine" ||
       currentClimbZone.kind === "rope" ||
@@ -7903,7 +7959,7 @@ function updatePlayer(
   }
 
   const impactVelocity = player.velocityY;
-  const motion = resolvePlatformMotion(
+  const motion = swingMotion ?? resolvePlatformMotion(
     { ...player, ...motionStart },
     { x: player.x, y: player.y },
     player.climbing ? state.world.platforms.filter(platform => platform.collision === "solid") : state.world.platforms,
@@ -7948,7 +8004,12 @@ function updatePlayer(
   if (!state.boss.active && state.phase !== "extraction") {
     maximumX = state.world.bossArena.x - 90;
   }
-  player.x = clamp(player.x, 0, maximumX);
+  const boundedX = clamp(player.x, 0, maximumX);
+  if (boundedX !== player.x || player.y <= minimumPlayerY || player.grounded) {
+    player.canopySwing = null;
+    if (boundedX !== player.x) { player.climbing = false; player.climbZoneId = null; }
+  }
+  player.x = boundedX;
   updateHunterRig(player, delta, state.trophyExtracting);
 
   player.invulnerability = Math.max(0, player.invulnerability - delta);
