@@ -1,3 +1,4 @@
+import { authorCanopyRoutesV112 } from "./canopyTraversalV112";
 import type { ExplorationProgress } from "../types";
 import type { WorldBlueprint, WorldRect } from "./worldBlueprints";
 import { normalizeExplorationProgress } from "./explorationProgress";
@@ -49,10 +50,10 @@ export function applyExplorationWorld(
     : base.missionId === ICE_MISSION_ID
       ? applyIceExplorationWorld(base, progress)
       : applyExpansionExplorationWorld(base, progress);
-  if (world === base) return base;
+  if (world === base) return authorCanopyRoutesV112(base);
   const features = [...world.platforms, ...world.climbables, ...world.hazards, ...world.covers];
   const ids = new Set(features.map((feature) => feature.id));
-  return {
+  return authorCanopyRoutesV112({
     ...world,
     routes: world.routes.map((route) => ({
       ...route,
@@ -63,7 +64,7 @@ export function applyExplorationWorld(
           .map((feature) => feature.id),
       ])],
     })),
-  };
+  });
 }
 
 export function discoverExplorationRooms(

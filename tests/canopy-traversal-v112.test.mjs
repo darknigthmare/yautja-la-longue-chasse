@@ -125,3 +125,15 @@ test("each authored hunt has reachable resting sequences, real end supports and 
     assert.deepEqual(Array.from(worldModule.exports.validateWorldBlueprint(world)),[]);
   }
 });
+
+test("authoring is idempotent and excludes solid exploration rooms after replacements",()=>{
+ const base=worldModule.exports.WORLD_BLUEPRINTS_BY_MISSION["jungle-vey"];
+ const once=runtime.authorCanopyRoutesV112(base),twice=runtime.authorCanopyRoutesV112(once);
+ assert.equal(JSON.stringify(once),JSON.stringify(twice));
+ const explorationWall=platform(700,0,2300,624);
+ const altered=runtime.authorCanopyRoutesV112({...base,platforms:[...base.platforms,explorationWall]});
+ const rests=altered.platforms.filter(p=>p.id.startsWith("v112-canopy-"));
+ assert.ok(rests.length>=6);
+ assert.ok(rests.every(rest=>rest.x>explorationWall.x+explorationWall.width));
+ assert.deepEqual(Array.from(worldModule.exports.validateWorldBlueprint(altered)),[]);
+});
