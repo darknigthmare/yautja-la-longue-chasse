@@ -4502,7 +4502,7 @@ export default function PitCanvas({
                 <button ref={resultPrimaryRef} type="button" className={styles.startButton} onClick={startRematch}>{narrativeEncounter ? 'Lire l’issue de l’épreuve' : 'Revanche'}</button>
               )}
               {!narrativeEncounter && !playbackReplay && mode !== "arcade" && mode !== "circuit" && mode !== "descent" && availableReplay ? (
-                <><button type="button" className={styles.replayButton} onClick={() => startReplay(availableReplay)}>Revoir le duel</button>{(availableReplay.engineVersion === 16 || availableReplay.fighters.some(id => isPitExpansionFighterId(id) || isPitOriginalFighterIdV56(id))) ? <button type="button" className={styles.replayButton} onClick={downloadAvailableReplay}>Exporter le replay JSON</button> : null}</>
+                <><button type="button" className={styles.replayButton} onClick={() => startReplay(availableReplay)}>Revoir le duel</button>{(availableReplay.engineVersion === 16 || availableReplay.engineVersion === 17 || availableReplay.fighters.some(id => isPitExpansionFighterId(id) || isPitOriginalFighterIdV56(id))) ? <button type="button" className={styles.replayButton} onClick={downloadAvailableReplay}>Exporter le replay JSON</button> : null}</>
               ) : null}
               <button type="button" className={styles.exitButton} onClick={onExit}>{exitLabel}</button>
             </div>

@@ -30,7 +30,7 @@ const sha=bytes=>createHash('sha256').update(bytes).digest('hex');
 const sourceBefore=(await snapshotRuntimeV112()).entries;
 const api=homeworldQaModelV64(process.cwd(),[
  'homeworldPublicLifeV112.ts','homeworldPublicPlacesV112.ts','homeworldPublicPlacesMountV112.ts',
- 'homeworldFoundationSupportsV112.ts','homeworldNaturalRockFacesV112.ts','homeworldNaturalPlacementsV112.ts','homeworldGeometryRecoveryV112.ts',
+ 'homeworldFoundationSupportsV112.ts','homeworldGroundJointsV112.ts','homeworldNaturalRockFacesV112.ts','homeworldNaturalPlacementsV112.ts','homeworldGeometryRecoveryV112.ts',
  'homeworldCivicWorldV80.ts','homeworldWorldV77.ts','homeworldGeometryV64.ts','homeworldInteriorsV64.ts','homeworldObjectivesV111.ts','homeworldWayfindingV75.ts','homeworldCargoV108.ts',
 ]);
 const centroid=polygon=>({x:polygon.reduce((sum,p)=>sum+p.x,0)/polygon.length,y:polygon.reduce((sum,p)=>sum+p.y,0)/polygon.length});
@@ -173,6 +173,19 @@ async function foundations(){
    const floor=f.page.locator(`[data-world-ground-id-v77="${plinth.id}"]`);await floor.waitFor({state:'attached'});const rendered=await floor.getAttribute('points'),expected=plinth.polygon.map(p=>`${p.x},${p.y*api.HOMEWORLD_GEOMETRY_V64.depthScale-api.homeworldLevelV77(plinth.levelId).elevation}`).join(' ');
    check(plinth.id+' paints the exact physical support polygon below its unchanged native facade',rendered===expected&&await f.page.locator(`[data-building-id="${building.id}"]`).count()===1,{rendered,expected});
    const facade=f.page.locator(`[data-building-id="${building.id}"]`),source=await facade.getAttribute('data-building-native-source');check(plinth.id+' preserves the original facade art',source===building.art.src,{source});
+   if(building.id==='trophy-mausoleum'){
+    const neighbor=f.page.locator('[data-world-ground-id-v77="coast-west:1"]'),paving=await neighbor.getAttribute('fill');
+    for(const joint of api.HOMEWORLD_GROUND_JOINTS_V112){
+     const node=f.page.locator(`[data-world-ground-id-v77="${joint.id}"]`),expected=joint.polygon.map(p=>`${p.x},${p.y*api.HOMEWORLD_GEOMETRY_V64.depthScale}`).join(' ');
+     const actual=await node.evaluate((element,witness)=>({points:element.getAttribute('points'),fill:element.getAttribute('fill'),level:element.closest('[data-homeworld-level-ground-v77]')?.dataset.homeworldLevelGroundV77,
+      witnessSupported:element.isPointInFill(new DOMPoint(witness.x,witness.y))}),{x:joint.witness.x,y:joint.witness.y*api.HOMEWORLD_GEOMETRY_V64.depthScale});
+     check(joint.id+' paints the exact level0 joint with the adjacent native paving and covers its original void witness',actual.points===expected&&actual.fill===paving&&actual.level==='0'&&actual.witnessSupported,actual);
+     const bodies=[{halfWidth:24,halfDepth:14},{halfWidth:36,halfDepth:26}];
+     check(joint.id+' supports the native body and route clearance while keeping existing solids',bodies.every(body=>api.homeworldTerrainV77('0',joint.witness,body)),{witness:joint.witness,bodies,retainedCollision:api.homeworldCivicCollisionV80('0',joint.witness)});
+    }
+    const internal=['forecourt-v76:trophy-mausoleum:2:12','coast-west:0:2:2'];
+    check('The two inherited mausoleum joint flanks are internal after the shared floor union and leave no visible wall fragment',(await Promise.all(internal.map(id=>f.page.locator(`[data-homeworld-exposed-ground-edge-v81="${id}"]`).count()))).every(count=>count===0),{removedInternalEdges:internal});
+   }
    await f.capture('supported-facade');
   });
  }

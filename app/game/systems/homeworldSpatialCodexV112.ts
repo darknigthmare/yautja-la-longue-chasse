@@ -4,6 +4,7 @@ import {HOMEWORLD_PUBLIC_PLACES_V112,HOMEWORLD_PUBLIC_PLACE_REFUSALS_V112} from 
 import {HOMEWORLD_PUBLIC_PLACE_ART_V112,HOMEWORLD_PUBLIC_PLACE_COMPOSITIONS_V112,
   homeworldPublicPlacePolygonV112,homeworldPublicPlaceUsageV112} from './homeworldPublicPlacesV112';
 import {HOMEWORLD_FOUNDATION_JOINT_LIP_V112,HOMEWORLD_FOUNDATION_LIP_V112} from './homeworldFoundationSupportsV112';
+import {HOMEWORLD_GROUND_JOINTS_V112} from './homeworldGroundJointsV112';
 
 type RecordV112=HomeworldElementRecordV64&{associatedElementIds:readonly string[]};
 const base={spaceId:'world',districtId:'authoring',position:{x:0,y:0,z:0},dimensions:{width:0,depth:0,height:0},
@@ -16,7 +17,7 @@ const bounds=(polygon:readonly {x:number;y:number}[])=>({
 /** Actual support and admitted furniture, including explicit unmounted author
  * proposals. A record never creates a floor, service or campaign destination. */
 export const HOMEWORLD_SPATIAL_CODEX_V112:readonly RecordV112[]=[
-  ...HOMEWORLD_GROUND_V77.filter(ground=>ground.id.startsWith('foundation-v112:')).map(ground=>{
+  ...HOMEWORLD_GROUND_V77.filter(ground=>ground.id.startsWith('foundation-v112:')&&!ground.id.startsWith('foundation-v112:joint-')).map(ground=>{
     const building=HOMEWORLD_BUILDINGS_V77.find(item=>'foundation-v112:'+item.id===ground.id)!;
     const box=bounds(ground.polygon);
     return {...base,id:ground.id,label:'Socle continu · '+building.label,category:'street' as const,districtId:building.districtId,
@@ -26,6 +27,16 @@ export const HOMEWORLD_SPATIAL_CODEX_V112:readonly RecordV112[]=[
       constraints:[`Socle sous l’empreinte native entière et sa lèvre de ${HOMEWORLD_FOUNDATION_JOINT_LIP_V112[building.id]??HOMEWORLD_FOUNDATION_LIP_V112} unités ; même polygone pour le sol, le pavement et les faces exposées.`,
         'La façade, son volume solide, son seuil et les positions sauvegardées ne sont pas déplacés.',
         'Adaptation maçonnée originale, sans nouveau dessin natif, pièce ou accès régional.']};
+  }),
+  ...HOMEWORLD_GROUND_JOINTS_V112.map(ground=>{
+    const box=bounds(ground.polygon);
+    return {...base,id:ground.id,label:ground.label,category:'street' as const,districtId:'memory',
+      position:{x:ground.witness.x,y:ground.witness.y,z:0},
+      dimensions:{width:box.right-box.left,depth:box.bottom-box.top,height:0},footprint:box,
+      associatedElementIds:ground.sourceIds,
+      constraints:['Raccord V112 des seules poches enclavées mesurées entre les anciens pavements ; même polygone dans le sol, le dessin et les faces exposées.',
+        'Pavage civique natif partagé avec les voisins. Les grands dénivelés, seuils, volumes solides et positions sauvegardées sont conservés.',
+        'Ce joint n’était pas un sol historique ; il reste exclu de la géométrie antérieure utilisée par la restauration V112. Aucun nouveau service ou destination.']};
   }),
   ...HOMEWORLD_PUBLIC_PLACE_COMPOSITIONS_V112.flatMap(composition=>{
     const members=HOMEWORLD_PUBLIC_PLACES_V112.filter(item=>item.compositionId===composition.id);

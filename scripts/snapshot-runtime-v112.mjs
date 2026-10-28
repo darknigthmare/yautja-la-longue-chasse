@@ -100,6 +100,8 @@ export async function snapshotRuntimeV112({root = V112_ROOT} = {}) {
     'tests/pit-backward-art-provenance-v112.test.mjs',
     'tests/pit-backward-throw-art-v112.test.mjs',
     'tests/pit-browser-worker-observation-v112.test.mjs',
+    'tests/pit-replay-export-v112.test.mjs',
+    'tests/homeworld-ground-joints-v112.test.mjs',
     'docs/v112-production-proof-protocol.md',
     'tests/fixtures/excel-history-v111-homeworld-v112.json',
     'tests/fixtures/excel-history-v111-homeworld-v112.json.gz',

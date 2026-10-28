@@ -25,6 +25,7 @@ import {homeworldStreetCompositionCollisionV92} from './homeworldStreetCompositi
 import {HOMEWORLD_URBAN_LOTS_V78,HOMEWORLD_URBAN_GROUND_V78,HOMEWORLD_URBAN_STREETS_V78,homeworldUrbanCorridorV78,homeworldUrbanRectV78} from './homeworldUrbanLayoutV78';
 import {HOMEWORLD_AUTHORED_COURTS_V81} from './homeworldAuthoredLotsV81';
 import {homeworldFoundationSupportsV112} from './homeworldFoundationSupportsV112';
+import {HOMEWORLD_GROUND_JOINTS_V112} from './homeworldGroundJointsV112';
 import {homeworldPublicPlaceCollisionV112} from './homeworldPublicPlacesV112';
 
 /** Overlay of the existing real City model. No new save rewards or parallel game.
@@ -98,6 +99,7 @@ const road=(id:string,levelId:HomeworldLevelV77,nodes:HomeworldVec2[],width=260)
 export const HOMEWORLD_COUNCIL_STAIR_LANDINGS_V77={from:{levelId:'0' as const,point:{x:4500,y:2900},elevation:0},to:{levelId:'+1' as const,point:{x:4500,y:2720},elevation:520}};
 export const HOMEWORLD_GROUND_V77=[...HOMEWORLD_DISTRICTS_V77,...oldRoads,
  ...homeworldFoundationSupportsV112(HOMEWORLD_BUILDINGS_V77),
+ ...HOMEWORLD_GROUND_JOINTS_V112,
  // Actual native hulls receive their authored masonry plinths, not borrowed
  // invisible terrain. The V81 renderer extrudes/paves these same polygons.
  {id:'plinth-v81:port-house-east',label:'Socle des équipages · rive est',levelId:'0' as const,polygon:[{x:7285,y:3050},{x:7795,y:3030},{x:7860,y:3095},{x:7850,y:3440},{x:7710,y:3500},{x:7310,y:3460}]},

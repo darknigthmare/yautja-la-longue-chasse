@@ -1,0 +1,26 @@
+{
+  "scope": "Actual JSX export predicate and actual browser recipe finishAndReplay function extracted by AST; no compiled browser pass inferred",
+  "productCorrection": "Add engine17 to the existing engine16/expansion/originalV56 export guard, leaving all prior branches intact.",
+  "driverCorrection": "Wait for the actual export button to become visible; await download event and click together with Promise.all, preserving the main catch/finally failure artifact.",
+  "tests": {
+    "command": "node tests/pit-replay-export-v112.test.mjs",
+    "exitCode": 0,
+    "status": "PASS",
+    "tests": 4,
+    "log": "docs/qa/v112-pit-backward/replay-export-tests.log"
+  },
+  "lint": {
+    "command": "eslint app/game/PitCanvas.tsx scripts/qa-pit-backward-throws-v112.mjs tests/pit-replay-export-v112.test.mjs",
+    "exitCode": 0,
+    "status": "PASS",
+    "mergedOutputBytes": 0
+  },
+  "cases": [
+    "Both actual unvaried duo orders exposeV17 and retainV16; unchanged defaultV15/futureV18 rejection.",
+    "All4 actual expansion IDs and all3 originalV56 IDs keep their previous export branch.",
+    "Absent actual button visibility rejects before download is armed.",
+    "A download failure is awaited concurrently with a delayed click; it remains catchable, with main catch/finally retained."
+  ],
+  "initialCompiledAttempt": "ProductionR1 at d7828d384379c2b46cb19291ff3e97f2313a9580 failed at the hidden export button. Its process log and20 original PNGs remain historical failed evidence; no result.json was produced by that abruptly aborted process.",
+  "browserValidation": "A fresh frozen runtime and build are required; no existing browser result is relabelled."
+}

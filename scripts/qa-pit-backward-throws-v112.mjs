@@ -276,8 +276,10 @@ async function finishAndReplay(label) {
   }
   const terminal = await read(); check(label + ': actual attacks finish the complete two-round duel', terminal.combatPhase === 'match-over' && terminal.terminal === 'true');
   await capture(label + '-actual-victory.png');
-  const download = page.waitForEvent('download'); await page.getByRole('button', {name: 'Exporter le replay JSON', exact: true}).click();
-  const exported = await download, file = path.join(output, label + '-actual-replay.json'); await exported.saveAs(file);
+  const exportButton = page.getByRole('button', {name: 'Exporter le replay JSON', exact: true});
+  await exportButton.waitFor({state: 'visible'});
+  const [exported] = await Promise.all([page.waitForEvent('download'), exportButton.click()]);
+  const file = path.join(output, label + '-actual-replay.json'); await exported.saveAs(file);
   const replay = api.deserializePitReplay(await fs.readFile(file, 'utf8')); assert(replay); const played = api.playPitReplay(replay);
   check(label + ': exported real V17 inputs reproduce the actual terminal health, stock and frame', replay.engineVersion === 17 && played.frame === terminal.frame && JSON.stringify(played.fighters.map(f => f.health)) === JSON.stringify(terminal.life) && JSON.stringify(played.fighters.map(f => f.workbookDeviceV107)) === JSON.stringify(terminal.inventory));
   await page.getByRole('button', {name: 'Revoir le duel', exact: true}).click();

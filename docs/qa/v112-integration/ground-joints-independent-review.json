@@ -1,0 +1,81 @@
+{
+  "scope": "Independent read-only geometric, historical-floor and actual SSR review; no pixel or full browser certification",
+  "jointCount": 2,
+  "rows": [
+    {
+      "id": "foundation-v112:joint-mausoleum-western-promenade",
+      "levelId": "0",
+      "bounds": {
+        "left": 410,
+        "right": 440,
+        "top": 2100.650957121848,
+        "bottom": 2137.8241826965245
+      },
+      "area": 894.1182613010169,
+      "sourceIdsResolve": true,
+      "witnessInJoint": true,
+      "witnessWasGround": false,
+      "newTerrainSupportsNativeBody": true,
+      "historicalRecoveryAdmitsWitness": false,
+      "codexRecords": 1,
+      "ssrPaintsExactId": true
+    },
+    {
+      "id": "foundation-v112:joint-mausoleum-coast-west",
+      "levelId": "0",
+      "bounds": {
+        "left": 410,
+        "right": 432.5123533000317,
+        "top": 1930,
+        "bottom": 1984.488145778108
+      },
+      "area": 613.3281942101894,
+      "sourceIdsResolve": true,
+      "witnessInJoint": true,
+      "witnessWasGround": false,
+      "newTerrainSupportsNativeBody": true,
+      "historicalRecoveryAdmitsWitness": false,
+      "codexRecords": 1,
+      "ssrPaintsExactId": true
+    }
+  ],
+  "enclosedGapComponentsAtOneUnitSampling": [
+    {
+      "cells": 617,
+      "filledCells": 617,
+      "reachesBoundary": false
+    },
+    {
+      "cells": 896,
+      "filledCells": 896,
+      "reachesBoundary": false
+    }
+  ],
+  "hashes": [
+    {
+      "path": "app/game/systems/homeworldGroundJointsV112.ts",
+      "bytes": 1559,
+      "sha256": "99aedb32f5ceebd1d39e32eb787747f031620fdeb4c37f312691547a8fbb5040"
+    },
+    {
+      "path": "app/game/systems/homeworldWorldV77.ts",
+      "bytes": 35885,
+      "sha256": "f455bf1c80940cc2736667b524d4e892ed6e8089ff4e95eef44e5cc137660206"
+    },
+    {
+      "path": "app/game/systems/homeworldSpatialCodexV112.ts",
+      "bytes": 5534,
+      "sha256": "63c6f0e6c1e5413532387fb9d03aa6050485ea59a74f198fe5ef9c7c8e6ebf7d"
+    },
+    {
+      "path": "app/game/systems/homeworldGeometryRecoveryV112.ts",
+      "bytes": 23468,
+      "sha256": "da3ed465f312e7278384ab614b4c57323ba2e2dd90740205e1cf4ec9c677cbf3"
+    },
+    {
+      "path": "app/game/HomeworldWorldSceneV77.tsx",
+      "bytes": 25424,
+      "sha256": "f005423055fa37eb3fcadae2ae22a8d7cdbbed577a2bcf5ec4d3020e4d773acc"
+    }
+  ]
+}

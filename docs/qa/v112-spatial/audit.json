@@ -269,6 +269,108 @@
     }
   ],
   "addedPlinthOverlapsWithOtherBuildings": [],
+  "groundJoints": {
+    "method": "Unit grid of all immediate mausoleum/promenade floor contacts. Before removes only the two V112 joints; exterior edge-connected relief is preserved.",
+    "bounds": {
+      "left": 100,
+      "right": 1200,
+      "top": 1800,
+      "bottom": 2500,
+      "step": 1
+    },
+    "before": {
+      "enclosed": [
+        {
+          "samples": 612,
+          "area": 612,
+          "left": 410,
+          "right": 432,
+          "top": 1930,
+          "bottom": 1983
+        },
+        {
+          "samples": 895,
+          "area": 895,
+          "left": 410,
+          "right": 440,
+          "top": 2101,
+          "bottom": 2138
+        }
+      ],
+      "exteriorSamples": 34485
+    },
+    "after": {
+      "enclosed": [],
+      "exteriorSamples": 34485
+    },
+    "added": [
+      {
+        "id": "foundation-v112:joint-mausoleum-western-promenade",
+        "levelId": "0",
+        "sourceIds": [
+          "coast-west:1",
+          "forecourt-v76:trophy-mausoleum",
+          "forecourt-link-v76:trophy-mausoleum",
+          "western-promenade:1"
+        ],
+        "witness": {
+          "x": 414.36966032182846,
+          "y": 2122.68635159387
+        },
+        "polygon": [
+          {
+            "x": 410,
+            "y": 2100.650957121848
+          },
+          {
+            "x": 440,
+            "y": 2113.0457741844666
+          },
+          {
+            "x": 440,
+            "y": 2135.4804326965245
+          },
+          {
+            "x": 410,
+            "y": 2137.8241826965245
+          }
+        ],
+        "area": 894.1182613010169,
+        "witnessBefore": false,
+        "witnessAfter": true
+      },
+      {
+        "id": "foundation-v112:joint-mausoleum-coast-west",
+        "levelId": "0",
+        "sourceIds": [
+          "coast-west:0",
+          "coast-west:1",
+          "forecourt-v76:trophy-mausoleum"
+        ],
+        "witness": {
+          "x": 418,
+          "y": 1950
+        },
+        "polygon": [
+          {
+            "x": 410,
+            "y": 1930
+          },
+          {
+            "x": 432.5123533000317,
+            "y": 1930
+          },
+          {
+            "x": 410,
+            "y": 1984.488145778108
+          }
+        ],
+        "area": 613.3281942101894,
+        "witnessBefore": false,
+        "witnessAfter": true
+      }
+    ]
+  },
   "furniture": {
     "candidates": 10,
     "admitted": [

@@ -5,8 +5,8 @@
     "bytes": 264999,
     "sha256": "8eee8a5f5a043f2a67477bc6bcff97fffb1ee1666864bd7aed60c7a6c21ca138"
   },
-  "files": 1557,
-  "bytes": 935316312,
+  "files": 1560,
+  "bytes": 935336199,
   "entries": [
     {
       "path": ".openai/hosting.json",
@@ -975,8 +975,8 @@
     },
     {
       "path": "app/game/PitCanvas.tsx",
-      "bytes": 297016,
-      "sha256": "bcae6eeb0b0584b6a5cda79283c02956566bd1b237ae59dff76eda9bdc1ea2df"
+      "bytes": 297056,
+      "sha256": "6fc6bc84b617b6f371c01e0ff25992fc61adb60144d7c8f84409be6b1f94adec"
     },
     {
       "path": "app/game/PitExperienceV79.module.css",
@@ -3379,6 +3379,11 @@
       "sha256": "2ba2b827f2b541e3cc276825de339bcd9a51e9c723bd6116c7a5b0ab419ccbf3"
     },
     {
+      "path": "app/game/systems/homeworldGroundJointsV112.ts",
+      "bytes": 1559,
+      "sha256": "99aedb32f5ceebd1d39e32eb787747f031620fdeb4c37f312691547a8fbb5040"
+    },
+    {
       "path": "app/game/systems/homeworldIdentityCodexV72.ts",
       "bytes": 3761,
       "sha256": "f0207718ba972642f764dce54a88b8edefc295cd22e3b629e75f91327dbb3a33"
@@ -3665,8 +3670,8 @@
     },
     {
       "path": "app/game/systems/homeworldSpatialCodexV112.ts",
-      "bytes": 4528,
-      "sha256": "d0d8fee9d258a402274c982f9d4effc0e39d83ea0f22501e2e97fa9dc3aeff8a"
+      "bytes": 5534,
+      "sha256": "63c6f0e6c1e5413532387fb9d03aa6050485ea59a74f198fe5ef9c7c8e6ebf7d"
     },
     {
       "path": "app/game/systems/homeworldStreetCompositionCodexV92.ts",
@@ -3835,8 +3840,8 @@
     },
     {
       "path": "app/game/systems/homeworldWorldV77.ts",
-      "bytes": 35777,
-      "sha256": "b3fc814e04f3dc750b0ed94c2c5cae6a98e90e703179ff411e98f3768171e4db"
+      "bytes": 35885,
+      "sha256": "f455bf1c80940cc2736667b524d4e892ed6e8089ff4e95eef44e5cc137660206"
     },
     {
       "path": "app/game/systems/homeworldYouthMotionV74.ts",
@@ -7550,13 +7555,13 @@
     },
     {
       "path": "scripts/qa-homeworld-public-spaces-v112.mjs",
-      "bytes": 49317,
-      "sha256": "b8cc916e4eb8146525d51e78e38d646d25d407ad2f3fd5887878af8091421bcd"
+      "bytes": 51084,
+      "sha256": "3f3ad1f137eddd36e79da14eaad400f17f639b9d089e1102bbc55edc7aaeb438"
     },
     {
       "path": "scripts/qa-pit-backward-throws-v112.mjs",
-      "bytes": 31863,
-      "sha256": "768420d02b7089576682f2f9a81b7bdbf219b8934d52d2818a705a7aff6f1183"
+      "bytes": 31940,
+      "sha256": "2d51c2ef0373a1ac97b965e55a4a4bf8f4cd1970f1d1afa8f6e7df567f5a7db4"
     },
     {
       "path": "scripts/qa-pit-forward-throws-v109.mjs",
@@ -7600,8 +7605,8 @@
     },
     {
       "path": "scripts/snapshot-runtime-v112.mjs",
-      "bytes": 7746,
-      "sha256": "9f3698e7e3b7e789d062028d176fdd8db21f69be7a5cab1c5dc50a892f0ac35b"
+      "bytes": 7842,
+      "sha256": "344731f6aaf47a6d635521b87f761147edf3bd02a08c65d27b2f23bf543a161b"
     },
     {
       "path": "scripts/vercel-native-origin-v89.mjs",
@@ -7764,6 +7769,11 @@
       "sha256": "bb4868844be11b317ac6b2ec5d85d4621271cd4aef2b363bc5db97b919b9cfe4"
     },
     {
+      "path": "tests/homeworld-ground-joints-v112.test.mjs",
+      "bytes": 10934,
+      "sha256": "b8884a1646645bc75734b0d5ef6e8c057cf244d36f4687cc6398d3e997823a15"
+    },
+    {
       "path": "tests/pit-backward-art-provenance-v112.test.mjs",
       "bytes": 3924,
       "sha256": "1d661a1929e3f1d68eba9b1adbfa99d603c196feb80a8727b450d3e571b8424d"
@@ -7777,6 +7787,11 @@
       "path": "tests/pit-browser-worker-observation-v112.test.mjs",
       "bytes": 3438,
       "sha256": "a24e0cfffa1fae9bced23222accb0cbc04811388e880becad8ff5eb910e23bc0"
+    },
+    {
+      "path": "tests/pit-replay-export-v112.test.mjs",
+      "bytes": 4300,
+      "sha256": "8d7293d56a43d374e8504eee75a6f4b8d26801fe78fa3be5195f37e5c24c3761"
     },
     {
       "path": "tests/production-evidence-v112.test.mjs",
