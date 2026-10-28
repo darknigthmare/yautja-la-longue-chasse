@@ -112,7 +112,7 @@ try{
   await page.evaluate(()=>window.__huntMechanicsQaV112.tick(900));await paint();
   const completed=await page.evaluate(()=>window.__huntMechanicsQaV112.state());assert.equal(completed.operation,null);assert.equal(completed.corpses[0].flayed,true);
  });
- for(const device of ['keyboard','touch','gamepad'])await scenario(device+': native input path pumps and releases the real canopy pendulum',async()=>{
+ for(const device of ['keyboard','touch','gamepad'])await scenario(device+': fixture keyboard/pointer or actual gamepad polling feeds the real canopy pendulum',async()=>{
   await page.evaluate(()=>window.__huntMechanicsQaV112.resetCanopy());await paint();
   await page.getByLabel('Simulation native de chasse',{exact:true}).focus();
   await page.evaluate(()=>window.__huntMechanicsQaV112.tick(1));
@@ -134,7 +134,7 @@ try{
   if(device==='keyboard')await capture('canopy-native-release');
  });
  assert.deepEqual(errors,[]);
- const report={schemaVersion:1,release:'V112',runtimeCommit:process.env.GITHUB_SHA??'unrecorded-local',scope:'Actual components and source functions in a fixture; localStorage acknowledgement, emulated controller and fallback renderer; no full campaign or physical device qualification',results,errors,captures};
+ const report={schemaVersion:1,release:'V112',runtimeCommit:process.env.GITHUB_SHA??'unrecorded-local',scope:'Actual React components and hunt source functions; fixture keyboard/pointer adapters, actual gamepad polling with an emulated pad, localStorage acknowledgement and fallback renderer; no whole-component input lifecycle, full campaign or physical-device qualification',results,errors,captures};
  await fs.writeFile(path.join(out,'report.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report,null,2));
  assert.ok(results.length>=8);assert.equal(results.filter(row=>row.status!=='PASS').length,0);
 }finally{await browser?.close();server.closeAllConnections();await new Promise(resolve=>server.close(resolve));}

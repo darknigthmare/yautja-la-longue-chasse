@@ -72,10 +72,13 @@ test("native interrupted anatomy and a full depot never consume or invent specim
   assert.equal(started.accepted,false);assert.equal(f.state.huntRites.specimensV112.length,0);
 });
 test("live source teleport across a solid obstruction cannot complete a harvest",()=>{
-  const f=fixture();act(f,"flay");
-  f.state.huntRites=r.startHuntRiteV77(f.state.huntRites,"body","harvest-hide",r.riteContextV77(f.state)).state;
+  const f=fixture();act(f,"flay");f.state.player.x=1050;
+  const started=r.startHuntRiteV77(f.state.huntRites,"body","harvest-hide",r.riteContextV77(f.state));
+  assert.equal(started.accepted,true,started.message);f.state.huntRites=started.state;
   f.state.riteOperationDamageStart=f.state.damageTaken;
-  f.state.world.platforms=[{id:"wall",x:1130,y:0,width:6,height:624,collision:"solid",routeId:"ground",material:"stone",noiseMultiplier:1,trackPersistence:1}];
+  f.enemy.x=1140;
+  f.state.world.platforms=[{id:"wall",x:1128,y:0,width:6,height:624,collision:"solid",routeId:"ground",material:"stone",noiseMultiplier:1,trackPersistence:1}];
+  assert.ok(f.state.player.x+f.state.player.width<1128&&f.enemy.x>1134,"real wall separates both full actors");
   r.updateHuntRitesV77(f.state,.05);
   assert.equal(f.state.huntRites.operation,null);assert.equal(f.state.huntRites.specimensV112.length,0);
 });

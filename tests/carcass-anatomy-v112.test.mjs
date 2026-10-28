@@ -9,7 +9,10 @@ function scene(species="hell-hound-stalker"){
   const options={flayingToolOwned:true,acceptSpecimen:()=>true,supports:[{id:"real-hook",x:145,y:450,suitable:true,maximumMass:170}]};
   let state=a.createRitesOfHuntV77("jungle-vey:7","jungle-vey");
   const context=()=>a.riteRuntimeContextV77(state,player,actors,label,false,options);
-  state=a.registerRitePreyV77(state,context().prey[0],context()).state;
+  const registrationContext=context();
+  const registered=a.registerRitePreyV77(state,registrationContext.prey[0],registrationContext);
+  assert.equal(registered.accepted,true,registered.message);
+  state=registered.state;
   return {get state(){return state},set state(value){state=value},actors,player,label,options,context};
 }
 function act(f,action,options={}){
@@ -104,4 +107,13 @@ test("socket authoring uses real structural geometry and excludes decoration, na
   world.platforms=[{x:sockets[0].x-20,y:sockets[0].y+10,width:40,height:80,collision:"solid"}];
   assert.equal(a.carcassSupportsForWorldV112(world).length,0);
   world.platforms=[];world.climbables=[];assert.equal(a.carcassSupportsForWorldV112(world).length,0);
+});
+
+test("legacy corpse anatomy is derived from its real actor rather than a universal fallback mass",()=>{
+  const f=scene();const legacy=structuredClone(f.state);
+  delete legacy.corpses[0].massKg;delete legacy.corpses[0].integrity;
+  f.actors[0].riteIntegrityLossV112=20;
+  const restored=a.restoreRitesRuntimeV77(legacy,"jungle-vey:7","jungle-vey",f.actors,legacy.elapsed,f.label,f.options);
+  assert.ok(restored);assert.equal(restored.corpses[0].massKg,40);assert.equal(restored.corpses[0].integrity,80);
+  assert.equal(legacy.corpses[0].massKg,undefined,"the incoming save is not mutated");
 });

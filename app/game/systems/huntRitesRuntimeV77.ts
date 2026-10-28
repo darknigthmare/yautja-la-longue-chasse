@@ -1,3 +1,4 @@
+import {carriedFieldSpecimensV112} from "./fieldStashV112";
 import type { WorldBlueprint } from "./worldBlueprints";
 import { anatomyPartsV112, anatomyIntegrityV112, anatomyBodyMassV112, specimenQualityV112, makeAnatomySpecimenV112 } from "./anatomyHarvestV112";
 import { CARCASS_HANG_DROP_V112, carcassFitsSocketV112 } from "./carcassSupportsV112";
@@ -54,6 +55,12 @@ export function restoreRitesRuntimeV77(raw:unknown,runId:string,missionId:string
     if(!proof||corpse.sourceEnemyId!==proof.sourceEnemyId||corpse.kind!==proof.kind||corpse.label!==proof.label
       ||Math.abs(corpse.x-proof.x)>1e-6||Math.abs(corpse.y-proof.y)>1e-6||corpse.defeatedAt!==proof.defeatedAt
       ||corpse.worthy!==proof.worthy||corpse.protectedPrey!==proof.protectedPrey||corpse.flayed&&options.flayingToolOwned!==true||corpse.integrity!==undefined&&corpse.integrity!==proof.integrity||corpse.massKg!==undefined&&corpse.massKg!==proof.massKg)return null;
+    if(corpse.integrity===undefined||corpse.massKg===undefined){
+      if((state.specimensV112??[]).some(item=>item.sourceId===state.runId+':'+corpse.id))return null;
+      // V111 traces did not record anatomy. Derive physical facts from the
+      // actual saved actor rather than assuming every old body weighs 70 kg.
+      corpse.integrity=proof.integrity;corpse.massKg=proof.massKg;
+    }
     if(corpse.supportId){
       const support=options.supports?.find(s=>s.id===corpse.supportId);
       if(!support?.suitable||support.maximumMass<(corpse.massKg??70)||!corpse.hangingAt||options.world&&!carcassFitsSocketV112(actors.find(a=>a.id===corpse.id)!,support,options.world)||
@@ -69,7 +76,7 @@ export function restoreRitesRuntimeV77(raw:unknown,runId:string,missionId:string
   if(state.operation&&((state.operation.action==='flay'||state.operation.action.startsWith('harvest-'))&&options.flayingToolOwned!==true||
     state.operation.action==='hang'&&(!options.supports?.some(s=>s.id===state.operation?.supportId&&s.suitable)||state.carryingCorpseId!==state.operation.corpseId)))return null;
   if((state.specimensV112??[]).length&&options.flayingToolOwned!==true)return null;
-  if((state.specimensV112??[]).length>Math.min(64,options.maximumSpecimens??64))return null;
+  if((state.specimensV112??[]).length>64||carriedFieldSpecimensV112(state).length>Math.min(64,options.maximumSpecimens??64))return null;
   return state;
 }
 /** Landing moves the real dead actor first. The ledger follows this same anchor,

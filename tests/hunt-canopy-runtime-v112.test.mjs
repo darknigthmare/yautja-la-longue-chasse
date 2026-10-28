@@ -160,3 +160,48 @@ for(const missionId of ["jungle-vey","ice-cryostalker","volcano-bad-blood","swam
   }
  }
 }
+
+test("canopy and airborne controls do not inherit mud from a distant ground surface",()=>{
+ function velocityAt(height){
+  const f=fixture();
+  const branch=f.state.world.platforms.find(p=>p.id===f.support.id.replace("-grip","-rest"));
+  f.state.world={...f.state.world,surfaces:[{id:"ground-mud",x:0,y:582,width:f.state.world.width,height:42,
+    material:"mud",footprintPersistenceSeconds:20,scentRetention:1,movementMultiplier:.4,baseNoise:.3,mudDepth:1}],
+    hazards:[]};
+  Object.assign(f.state.player,{y:height==="ground"?624-f.state.player.height:branch.y-f.state.player.height-(height==="air"?20:0),
+    previousY:height==="ground"?624-f.state.player.height:branch.y-f.state.player.height-(height==="air"?20:0),
+    grounded:height!=="air",climbing:false,climbZoneId:null,canopySwing:null,velocityX:0,velocityY:height==="air"?-250:0});
+  f.held.add("right");
+  for(let tick=0;tick<20;tick++)f.frame();
+  return f.state.player.velocityX;
+ }
+ const ground=velocityAt("ground"),canopy=velocityAt("canopy"),air=velocityAt("air");
+ assert.ok(canopy>ground*2,"the branch remains dry above the ground mud");
+ assert.ok(air>ground*2,"air steering remains independent of the floor material");
+});
+
+test("a pumped native pendulum releases and catches the next authored vine without a boost",()=>{
+ const f=fixture();
+ const nextId=f.support.id.replace(/-1-grip$/,"-2-grip");
+ assert.ok(f.state.world.climbables.some(s=>s.id===nextId&&s.kind==="vine"));
+ f.held.add("right");f.frame();
+ let ready=false;
+ for(let tick=0;tick<600;tick++){
+  const swing=f.state.player.canopySwing;
+  assert.ok(swing,"the real rope remains held while pumping");
+  if(swing.angle>.5&&swing.angularVelocity>1.2){ready=true;break;}
+  f.held.delete("left");f.held.delete("right");
+  f.held.add(swing.angularVelocity>=0?"right":"left");
+  f.frame();
+ }
+ assert.equal(ready,true,"alternating physical direction builds a bounded useful swing");
+ f.held.clear();f.held.add("right");f.held.add("up");f.held.add("jump");f.input.pressed.add("jump");
+ f.frame();
+ assert.equal(f.state.player.climbing,false);
+ assert.equal(f.state.player.canopySwing,null);
+ for(let tick=0;tick<60&&!f.state.player.climbing;tick++)f.frame();
+ assert.equal(f.state.player.climbing,true);
+ assert.equal(f.state.player.climbZoneId,nextId);
+ assert.equal(f.state.player.aerialBoostUsed,false);
+ assert.ok(f.state.player.stamina>0&&f.state.player.stamina<f.state.player.maxStamina);
+});

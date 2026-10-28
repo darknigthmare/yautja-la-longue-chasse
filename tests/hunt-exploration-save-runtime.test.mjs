@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 import { runInNewContext } from "node:vm";
+import { createRequire } from "node:module";
 import ts from "typescript";
 import { build } from "esbuild";
 import { fileURLToPath } from "node:url";
@@ -20,6 +21,23 @@ runInNewContext(bundle.outputFiles[0].text, { module: compiled, exports: compile
 const world = compiled.exports;
 const source = await readFile(new URL("../app/game/HuntCanvas.tsx", import.meta.url), "utf8");
 const ast = ts.createSourceFile("HuntCanvas.tsx", source, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
+/** The isolated legacy functions receive the current production helpers.
+ * Their source and validation are bundled unchanged; no eligibility stub is used. */
+const nativeBundle = await build({ stdin: {
+  contents: `${source.replace("export default function HuntCanvas", "function HuntCanvas")}
+export {huntFieldLoadV112,discoveryActorsV112,riteSourceLabelV77,riteRuntimeOptionsV112};
+export * from "./systems/canopyTraversalV112";
+export * from "./systems/corpseDiscoveryV112";
+export * from "./systems/huntRitesRuntimeV77";
+export * from "./systems/carcassSupportsV112";
+`,
+  resolveDir:fileURLToPath(new URL("../app/game/",import.meta.url)),loader:"tsx",
+},bundle:true,write:false,format:"cjs",platform:"node",jsx:"automatic",
+loader:{".module.css":"empty"},external:["react","react/jsx-runtime","react-dom"],logLevel:"silent"});
+const nativeCompiled={exports:{}};
+runInNewContext(nativeBundle.outputFiles[0].text,{module:nativeCompiled,exports:nativeCompiled.exports,require:createRequire(import.meta.url)});
+const nativeHelpers=nativeCompiled.exports;
+
 const names = ["clonePlayerState", "cloneEnemyState", "cloneProjectileState", "cloneTrophyRitual", "cloneAiBrains", "cloneBossMechanics", "cloneArsenalRuntime", "captureCheckpoint", "isJsonObject", "isFiniteJsonNumber", "isStringArray", "hasFiniteFields", "isValidSerializedHuntActor", "isValidSerializedHuntProjectile", "activeHuntSnapshotChecksum", "isValidSerializedAiBrains", "isValidSerializedArsenal", "serializeActiveHuntCheckpoint", "deserializeActiveHuntCheckpoint", "restoreCheckpoint"];
 function codeFor(names) {
   return names.map(name => { const declaration = ast.statements.find(node => ts.isFunctionDeclaration(node) && node.name?.text === name); assert.ok(declaration, name); return declaration.getText(ast); }).join("\n");
@@ -31,7 +49,7 @@ function runtime(names, dependencies) {
       ts.isIdentifier(declaration.name) && declaration.name.text === "CLIMB_TRAVERSAL"));
   assert.ok(climbTraversal, "production CLIMB_TRAVERSAL declaration exists");
   const code = ts.transpileModule(`${climbTraversal.getText(ast)}\n${codeFor(names)}`, { compilerOptions: { target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.None } }).outputText;
-  return runInNewContext(`${code}\n({${names.join(",")}})`, dependencies);
+  return runInNewContext(`${code}\n({${names.join(",")}})`, {...nativeHelpers,...dependencies});
 }
 // The VM and host have different Object prototypes; bridge only JSON data to
 // the real bounded-value validator, as the app does within its single realm.
