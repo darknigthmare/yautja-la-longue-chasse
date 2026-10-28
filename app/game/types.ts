@@ -1,3 +1,5 @@
+import type {FieldSpecimenV112,HarvestInventoryV112} from "./systems/harvestInventoryV112";
+import type { HuntAccessibilityV112 } from "./systems/huntAccessibilityV112";
 /**
  * Shared game contracts.
  *
@@ -550,6 +552,12 @@ export interface MissionResult {
   trophyQuality: TrophyQuality | null;
   /** Empty when no removable trophy part was claimed. */
   trophyClaims: TrophyClaim[];
+  /** Finite anatomical specimens are delivered only after successful extraction. */
+  specimensV112?: FieldSpecimenV112[];
+  /** IDs of actual completed operations; wear is applied once, including failed hunts. */
+  toolUseIdsV112?: string[];
+  /** Monotone actual encounter index, matching missionProgress.attempts at launch. */
+  harvestEncounterRunV112?: number;
   kills: number;
   scans: number;
   /** Stable V7/V8 roster identities encountered during this hunt. */
@@ -597,6 +605,8 @@ export interface PlayerProfile {
 }
 
 export interface PlayerInventory {
+  /** Additive V112 ledger; missing old data migrates to an empty depot and sharp tool. */
+  harvestV112?: HarvestInventoryV112;
   /** Purchased once at the armory; absence in an older save grants nothing. */
   fieldToolIds: FieldToolId[];
   unlockedWeaponIds: WeaponId[];
@@ -626,6 +636,8 @@ export interface GameStatistics {
 }
 
 export interface GameSettings {
+  /** Optional on legacy saves; normalizer supplies a complete, versioned profile. */
+  huntAccessibility?: HuntAccessibilityV112;
   difficultyId: DifficultyId;
   masterVolume: number;
   musicVolume: number;

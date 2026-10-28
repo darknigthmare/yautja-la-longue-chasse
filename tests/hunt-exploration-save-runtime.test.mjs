@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 import { runInNewContext } from "node:vm";
+import { createRequire } from "node:module";
 import ts from "typescript";
 import { build } from "esbuild";
 import { fileURLToPath } from "node:url";
@@ -20,6 +21,26 @@ runInNewContext(bundle.outputFiles[0].text, { module: compiled, exports: compile
 const world = compiled.exports;
 const source = await readFile(new URL("../app/game/HuntCanvas.tsx", import.meta.url), "utf8");
 const ast = ts.createSourceFile("HuntCanvas.tsx", source, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
+/** The isolated legacy functions receive the current production helpers.
+ * Their source and validation are bundled unchanged; no eligibility stub is used. */
+const nativeBundle = await build({ stdin: {
+  contents: `${source.replace("export default function HuntCanvas", "function HuntCanvas")}
+export {huntFieldLoadV112,discoveryActorsV112,riteSourceLabelV77,riteRuntimeOptionsV112,routeCorpseRiteGamepadV112,makeGameState};
+export {defaultSave} from "./save";
+export {MISSION_BY_ID} from "./data";
+export * from "./systems/canopyTraversalV112";
+export * from "./systems/fieldStashV112";
+export * from "./systems/corpseDiscoveryV112";
+export * from "./systems/huntRitesRuntimeV77";
+export * from "./systems/carcassSupportsV112";
+`,
+  resolveDir:fileURLToPath(new URL("../app/game/",import.meta.url)),loader:"tsx",
+},bundle:true,write:false,format:"cjs",platform:"node",jsx:"automatic",
+loader:{".module.css":"empty"},external:["react","react/jsx-runtime","react-dom"],logLevel:"silent"});
+const nativeCompiled={exports:{}};
+runInNewContext(nativeBundle.outputFiles[0].text,{module:nativeCompiled,exports:nativeCompiled.exports,require:createRequire(import.meta.url)});
+const nativeHelpers=nativeCompiled.exports;
+
 const names = ["clonePlayerState", "cloneEnemyState", "cloneProjectileState", "cloneTrophyRitual", "cloneAiBrains", "cloneBossMechanics", "cloneArsenalRuntime", "captureCheckpoint", "isJsonObject", "isFiniteJsonNumber", "isStringArray", "hasFiniteFields", "isValidSerializedHuntActor", "isValidSerializedHuntProjectile", "activeHuntSnapshotChecksum", "isValidSerializedAiBrains", "isValidSerializedArsenal", "serializeActiveHuntCheckpoint", "deserializeActiveHuntCheckpoint", "restoreCheckpoint"];
 function codeFor(names) {
   return names.map(name => { const declaration = ast.statements.find(node => ts.isFunctionDeclaration(node) && node.name?.text === name); assert.ok(declaration, name); return declaration.getText(ast); }).join("\n");
@@ -31,7 +52,7 @@ function runtime(names, dependencies) {
       ts.isIdentifier(declaration.name) && declaration.name.text === "CLIMB_TRAVERSAL"));
   assert.ok(climbTraversal, "production CLIMB_TRAVERSAL declaration exists");
   const code = ts.transpileModule(`${climbTraversal.getText(ast)}\n${codeFor(names)}`, { compilerOptions: { target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.None } }).outputText;
-  return runInNewContext(`${code}\n({${names.join(",")}})`, dependencies);
+  return runInNewContext(`${code}\n({${names.join(",")}})`, {...nativeHelpers,...dependencies});
 }
 // The VM and host have different Object prototypes; bridge only JSON data to
 // the real bounded-value validator, as the app does within its single realm.
@@ -105,15 +126,20 @@ test("retry preserves knowledge found after the checkpoint without revealing ski
 });
 
 test("a newly entered sector is discovered before the checkpoint on the same simulation frame", () => {
-  const state = fixture(); state.elapsed = 1; state.player.x = 100; state.visitedScreenIds = [rooms[0].id]; state.worldScreenId = rooms[0].id;
+  // The new controller route uses the real rites/world contracts; seed this
+  // ordering probe from the actual actor factory rather than a legacy payload.
+  const save=nativeHelpers.defaultSave("2026-10-28T00:00:00.000Z"),mission=nativeHelpers.MISSION_BY_ID[missionId];
+  const state=nativeHelpers.makeGameState(mission,save.loadout,save.inventory,"hunter",save.appearance,false,false,"sector-order",save.exploration);
+  state.enemies=[];state.elapsed = 1; state.player.x = 100; state.visitedScreenIds = [rooms[0].id]; state.worldScreenId = rooms[0].id;
   Object.assign(state, { paused: false, messageTimer: 0, scanPulse: 0, screenShake: 0, cameraX: 0, cameraY: 0 });
   const captures = [];
   const noOp = () => {};
   const { stepGame } = runtime(["stepGame"], { ...environment, pollGamepad: () => null, consume: () => false, tickArsenalRuntime: value => value,
-    updateRevealEffects: noOp, updatePlayer: game => { game.player.x = rooms[1].startX + 20; }, updateHuntTraps: noOp, updateHuntSignals: noOp, updateRegularEnemy: noOp, updateBoss: noOp, updateProjectiles: noOp, updateGoreParticles: noOp, updateObjectiveFlow: noOp, announce: noOp,
+    updateRevealEffects: noOp, updatePlayer: game => { game.player.x = rooms[1].startX + 20; }, updateHuntTraps: noOp, updateHuntSignals: noOp, updateRegularEnemy: noOp, updateBoss: noOp, updateProjectiles: noOp, updateGoreParticles: noOp, updateHuntRitesV77: noOp, updateObjectiveFlow: noOp, announce: noOp,
     updateMissionCheckpoint: game => captures.push(api.captureCheckpoint(game)),
   });
-  stepGame(state, { id: missionId }, {}, {}, {}, "hunter", { pressed: new Set() }, 1 / 60, noOp);
+  const input={keyboardHeld:new Set(),touchHeld:new Set(),gamepadHeld:new Set(),pressed:new Set(),gamepadDialogActions:[]};
+  stepGame(state, { id: missionId }, {}, {}, {}, "hunter", input, 1 / 60, noOp);
   assert.deepEqual(plain(captures[0].visitedScreenIds), [rooms[0].id, rooms[1].id]);
 });
 
@@ -140,6 +166,16 @@ test("checksum-valid but malformed combat snapshots are rejected before restorat
 
 test("pilot acquisitions survive retry and resume without stacking the permanent energy bonus", () => {
   const state = fixture();
+  // This progression case represents the current live runtime. makeGameState
+  // always creates both traces with the same run; an ecosystem without its
+  // source register is deliberately refused by checkpoint admission.
+  const runId = missionId + ":0";
+  Object.assign(state, {
+    huntRites: nativeHelpers.createRitesOfHuntV77(runId, missionId),
+    ecosystem: nativeHelpers.createCorpseDiscoveryV112(runId),
+    flayingToolOwned: false, harvestArmorIdV112: "hunter",
+    harvestDepotFreeV112: 256, riteToolInitialConditionV112: 100,
+  });
   state.exploration = world.defaultExplorationProgress();
   state.world = world.applyPilotWorld(world.worldBlueprintFor(missionId), state.exploration);
   const checkpoint = api.captureCheckpoint(state, "resume");
@@ -154,6 +190,9 @@ test("pilot acquisitions survive retry and resume without stacking the permanent
   const again = api.restoreCheckpoint(retried, checkpoint, "resume");
   assert.equal(again.player.maxEnergy, 115);
   const restoredEnvelope = api.deserializeActiveHuntCheckpoint(api.serializeActiveHuntCheckpoint(api.captureCheckpoint(again, "resume"), 1));
+  assert.ok(restoredEnvelope, "current acquisition progress retains coherent source and discovery registers");
+  assert.equal(restoredEnvelope.checkpoint.huntRites.runId, runId);
+  assert.equal(restoredEnvelope.checkpoint.ecosystem.runId, runId);
   assert.deepEqual(plain(restoredEnvelope.checkpoint.exploration), plain(state.exploration));
 });
 

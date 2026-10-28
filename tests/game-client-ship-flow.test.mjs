@@ -4,6 +4,7 @@ import { test } from "node:test";
 import { runInNewContext } from "node:vm";
 import ts from "typescript";
 import { mergeExplorationProgress, isExplorationMission } from "../app/game/systems/explorationProgress.ts";
+import { deliverHarvestV112, emptyHarvestInventoryV112 } from "../app/game/systems/harvestInventoryV112.ts";
 
 const source = await readFile(new URL("../app/game/GameClient.tsx", import.meta.url), "utf8");
 const ast = ts.createSourceFile("GameClient.tsx", source, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
@@ -31,10 +32,10 @@ function fixture() {
     nurseryWriteAttemptRef: { current: null },
     pendingSocialWriteRef: { current: null },
     setNurseryPersistenceError() {},
-    save: { createdAt: "2026-08-31T10:00:00Z", profile: { honor: 0, clanMarks: 0 }, settings: { difficultyId: "hunter" }, missionProgress: { first: { status: "available", attempts: 0 } } },
+    save: { inventory: { fieldToolIds: [], harvestV112: emptyHarvestInventoryV112() }, createdAt: "2026-08-31T10:00:00Z", profile: { honor: 0, clanMarks: 0 }, settings: { difficultyId: "hunter" }, missionProgress: { first: { status: "available", attempts: 0 } } },
     selectedMission: { id: "first" }, missionSettlementRef: { current: false },
     activeHuntSessionRef: { current: null }, activeHuntWriteFailureRef: { current: null }, pendingTerminalRunRef: { current: null },
-    mergeExplorationProgress, isExplorationMission,
+    mergeExplorationProgress, isExplorationMission, deliverHarvestV112,
     normalizeSave: (save) => structuredClone(save),
     writeSaveWithStatus(save) { observations.writes++; observations.events.push("write"); return { save, persisted: true, failure: null }; },
     clearActiveHuntSave(options) { observations.clears++; observations.events.push(["clear", options?.expectedRunId]); observations.currentHunt = null; return { cleared: true, failure: null }; },

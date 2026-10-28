@@ -1,5 +1,7 @@
 import {normalizeHomeworldArrivalRecoveryV111} from './systems/homeworldArrivalRecoveryLedgerV111';
 import {normalizeHomeworldArchiveContinuationV111,archiveContinuationActiveV111} from './systems/homeworldArchiveContinuationLedgerV111';
+import {emptyHarvestInventoryV112,normalizeHarvestInventoryV112,deliverHarvestV112} from "./systems/harvestInventoryV112";
+import { normalizeHuntAccessibilityV112, DEFAULT_HUNT_ACCESSIBILITY_V112 } from "./systems/huntAccessibilityV112";
 import { normalizeFieldToolIdsV111 } from "./systems/fieldToolsV111";
 import {normalizeHomeworldArchiveV106} from './systems/homeworldArchiveLedgerV106';
 import {normalizeHomeworldArchiveComparisonV107} from './systems/homeworldArchiveComparisonLedgerV107';
@@ -329,6 +331,7 @@ export function defaultSave(now = new Date().toISOString()): SaveGame {
     },
     inventory: {
       fieldToolIds: [],
+      harvestV112: emptyHarvestInventoryV112(),
       unlockedWeaponIds: [
         "wristblades",
         "combistick",
@@ -369,6 +372,7 @@ export function defaultSave(now = new Date().toISOString()): SaveGame {
       currentHuntStreak: 0,
     },
     settings: {
+      huntAccessibility: normalizeHuntAccessibilityV112(DEFAULT_HUNT_ACCESSIBILITY_V112),
       difficultyId: "hunter",
       masterVolume: 0.8,
       musicVolume: 0.65,
@@ -1194,6 +1198,7 @@ export function normalizeSave(value: unknown): SaveGame {
     },
     inventory: {
       fieldToolIds: normalizeFieldToolIdsV111(rawInventory.fieldToolIds),
+      harvestV112: normalizeHarvestInventoryV112(rawInventory.harvestV112) ?? emptyHarvestInventoryV112(),
       unlockedWeaponIds,
       unlockedGearIds,
       unlockedArmorIds,
@@ -1248,6 +1253,7 @@ export function normalizeSave(value: unknown): SaveGame {
       ),
     },
     settings: {
+      huntAccessibility: normalizeHuntAccessibilityV112(rawSettings.huntAccessibility),
       difficultyId,
       masterVolume: boundedNumber(
         rawSettings.masterVolume,
@@ -1654,6 +1660,11 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
       value.homeworld.npcMissionsV66 !== undefined && !isNpcMissionsV66(value.homeworld.npcMissionsV66) ||
       value.homeworld.contractsV68 !== undefined && !isHomeworldContractsV68(value.homeworld.contractsV68))) {
     return { save: null, failure: "invalid-save" };
+  }
+  if (isRecord(value.inventory) && value.inventory.harvestV112 !== undefined) {
+    const raw=value.inventory.harvestV112;
+    if(isRecord(raw)&&Number(raw.version)>1)return {save:null,failure:"future-version"};
+    if(!normalizeHarvestInventoryV112(raw))return {save:null,failure:"invalid-save"};
   }
   // Partial fields inside a campaign are repairable. An arbitrary JSON object
   // is not a campaign and must never replace the player's existing progress.
@@ -2118,6 +2129,9 @@ export function applyMissionResult(
     }
   }
 
+  const harvestDeliveryV112=deliverHarvestV112(save,rawResult.specimensV112,rawResult.toolUseIdsV112,result.outcome==="success",mission.id,rawResult.harvestEncounterRunV112);
+  if(!harvestDeliveryV112.ok)return save;
+  save.inventory=harvestDeliveryV112.inventory;
   const exploration = mergeExplorationProgress(
     save.exploration,
     // A terminal snapshot cannot discover another biome or introduce an
