@@ -1,6 +1,10 @@
 "use client";
 
 import { huntStructuralBarrierV94 } from "./systems/huntStructuralBarrierV94";
+import { createCorpseDiscoveryV112, stepCorpseDiscoveryV112, restoreCorpseDiscoveryV112,
+  corpseDiscoveryReactionV112, corpseZoneFearV112, animalCorpseResponseV112,
+  type CorpseDiscoveryStateV112, type DiscoveryActorV112 } from "./systems/corpseDiscoveryV112";
+import { drawDiscoverySignalV112 } from "./discoverySignalsV112";
 
 import {
   useCallback,
@@ -33,7 +37,7 @@ import HuntRitesMenuV77 from './HuntRitesMenuV77';
 import {createRitesOfHuntV77,registerRitePreyV77,startHuntRiteV77,stepHuntRiteV77,discoverHuntRiteV77,
   type RitesOfHuntV77,type HuntRiteActionV77} from './systems/ritesOfHuntV77';
 import {huntRitesRunIdV77,riteRuntimeContextV77,restoreRitesRuntimeV77,followRiteCorpseAnchorsV77,
-  riteWitnessCanSeeV77,reactToRiteWitnessV77,huntRiteMenuSnapshotV77,type HuntRiteMenuSnapshotV77} from './systems/huntRitesRuntimeV77';
+  riteWitnessCanSeeV77,riteLineOfSightV77,reactToRiteWitnessV77,huntRiteMenuSnapshotV77,type HuntRiteMenuSnapshotV77} from './systems/huntRitesRuntimeV77';
 import { createFirstHuntLearning, observeFirstHunt, firstHuntHint, type FirstHuntObservation, type FirstHuntHint } from "./systems/firstHuntGuide";
 import { drawPilotBackdrop, drawPilotPlatform, drawPilotDevices } from "./pilotRendering";
 import { PilotExplorationMap } from "./PilotExplorationMap";
@@ -500,6 +504,7 @@ interface GearSlotSnapshot {
 }
 
 interface MissionCheckpointPayload {
+  ecosystem?: CorpseDiscoveryStateV112;
   huntRites?: RitesOfHuntV77;
   riteOperationDamageStart?: number | null;
   exploration?: ExplorationProgress;
@@ -681,6 +686,7 @@ interface InputHub {
 }
 
 interface GameState {
+  ecosystem: CorpseDiscoveryStateV112;
   /** Campaign inventory owns the tool; never trust a hunt checkpoint to grant it. */
   flayingToolOwned: boolean;
   huntRites: RitesOfHuntV77;
@@ -1337,6 +1343,7 @@ function makeGameState(
     world.bossArena.x + world.bossArena.width - bossWidth - 30;
 
   const state: GameState = {
+    ecosystem: createCorpseDiscoveryV112(huntRitesRunIdV77(mission.id, ecologyRunSeed)),
     flayingToolOwned: ownsFieldToolV111(inventory, "flaying-tool"),
     huntRites: createRitesOfHuntV77(huntRitesRunIdV77(mission.id, ecologyRunSeed), mission.id),
     riteMenuCorpseId: null,
@@ -1661,6 +1668,7 @@ function captureCheckpoint(
     );
   }
   return {
+    ecosystem: state.ecosystem ? JSON.parse(JSON.stringify(state.ecosystem)) : undefined,
     huntRites: state.huntRites ? JSON.parse(JSON.stringify(state.huntRites)) : undefined,
     riteOperationDamageStart: state.riteOperationDamageStart ?? null,
     exploration: normalizeExplorationProgress(state.exploration),
@@ -2007,6 +2015,12 @@ function deserializeActiveHuntCheckpoint(
       (checkpoint.riteOperationDamageStart as number)<0||(checkpoint.riteOperationDamageStart as number)>(checkpoint.damageTaken as number)))return null;
     if(raw.operation===null&&checkpoint.riteOperationDamageStart!==undefined&&checkpoint.riteOperationDamageStart!==null)return null;
   }
+  if(checkpoint.ecosystem!==undefined){
+    if(!isJsonObject(checkpoint.huntRites)||!Array.isArray(checkpoint.huntRites.corpses)||
+      !restoreCorpseDiscoveryV112(checkpoint.ecosystem,checkpoint.huntRites.runId as string,
+        checkpoint.huntRites.corpses as unknown as RitesOfHuntV77["corpses"],
+        discoveryActorsV112(checkpoint.enemies as unknown as EnemyState[]),checkpoint.elapsed as number))return null;
+  }
   const {
     spawnedWaves,
     completedObjectives,
@@ -2059,6 +2073,9 @@ function restoreCheckpoint(
     : restoreRitesRuntimeV77(checkpoint.huntRites, state.huntRites.runId,
     state.world.missionId, checkpoint.enemies, checkpoint.elapsed, riteSourceLabelV77, {flayingToolOwned:state.flayingToolOwned});
   if (checkpoint.huntRites!==undefined&&!restoredRites) return {...state, paused:true, message:'Les traces de chasse ne correspondent pas à cette rencontre ; reprise refusée.', messageTimer:5};
+  const restoredEcosystem=restoreCorpseDiscoveryV112(checkpoint.ecosystem,state.huntRites?.runId??"legacy",
+    restoredRites?.corpses??[],discoveryActorsV112(checkpoint.enemies),checkpoint.elapsed);
+  if(!restoredEcosystem)return {...state,paused:true,message:"Les événements de découverte ne correspondent pas aux proies et témoins ; reprise refusée.",messageTimer:5};
   const player = clonePlayerState(checkpoint.player);
   // Permanent discoveries survive a retry and are merged with the current
   // campaign on resume. Recompute the bonus from its identity, never stack it.
@@ -2117,6 +2134,7 @@ function restoreCheckpoint(
 
   return {
     ...state,
+    ecosystem: restoredEcosystem,
     huntRites: restoredRites ?? state.huntRites,
     riteMenuCorpseId: null,
     riteOperationDamageStart: checkpoint.riteOperationDamageStart ?? null,
@@ -5057,6 +5075,9 @@ function renderGame(
         enemy.facing,
       );
     }
+    const discoverySignal=corpseDiscoveryReactionV112(state.ecosystem,enemy.id,state.elapsed);
+    if(enemy.alive&&discoverySignal)drawDiscoverySignalV112(context,discoverySignal,
+      enemy.x+enemy.width/2,enemy.y-23);
     if (enemy.alive && (enemy.hitFlash > 0 || enemy.scanned)) {
       context.strokeStyle =
         enemy.hitFlash > 0 ? "#ffffff" : `${palette.accent}cc`;
@@ -6047,22 +6068,60 @@ function updateHuntRitesV77(state:GameState,delta:number):void {
   if(!state.huntRites.operation)state.riteOperationDamageStart=null;
   if(stepped.accepted||before&&!state.huntRites.operation)announce(state,stepped.message,2.8);
   if(state.riteMenuCorpseId&&!huntRiteMenuSnapshotV77(state.huntRites,context.actor,state.riteMenuCorpseId,true,{flayingToolOwned:state.flayingToolOwned})?.open)state.riteMenuCorpseId=null;
-  for(const corpse of state.huntRites.corpses){
-    if(corpse.erased||!corpse.marked&&!corpse.flayed)continue;
-    for(const witness of state.enemies){
-      if(corpse.witnesses.includes(witness.id))continue;
-      const at={x:witness.x+witness.width/2,y:witness.y+witness.height/2};
-      const occlusion=calculateLineOfSightOcclusion(at,corpse,state.world.covers.filter(c=>!state.brokenPillarIds.has(c.id)));
-      const visible=riteWitnessCanSeeV77(witness,corpse,state.world.platforms,occlusion);
-      const discovery=discoverHuntRiteV77(state.huntRites,corpse.id,{id:witness.id,kind:witness.kind,position:at,alive:witness.alive&&witness.active,lineOfSight:visible},context);
-      if(!discovery.accepted)continue;
-      state.huntRites=discovery.state;
+  updateCorpseDiscoveryV112(state);
+}
+function discoveryActorsV112(enemies:readonly EnemyState[]):DiscoveryActorV112[] {
+  return enemies.map(enemy=>{
+    const definition=ecologyV8EnemyForId(enemy.archetype);
+    const group=enemyCoordinationGroup(enemy.archetype,enemy.kind);
+    return {id:enemy.id,kind:enemy.kind,factionId:enemy.factionId,
+      x:enemy.x+enemy.width/2,y:enemy.y+enemy.height/2,
+      alive:enemy.alive,active:enemy.active,boss:enemy.boss,
+      radio:enemy.kind!=="beast"&&(group==="human"||group==="bad-blood"||group==="automaton"),
+      animalResponse:animalCorpseResponseV112(definition?definition.role+" "+definition.name:enemy.archetype)};
+  });
+}
+/** Discovery consumes the real corpse anchor and occlusion. It only shares the
+ * body's position; no report fabricates sight of the hunter or combat contact. */
+function updateCorpseDiscoveryV112(state:GameState):void {
+  const actors=discoveryActorsV112(state.enemies);
+  const covers=state.world.covers.filter(c=>!state.brokenPillarIds.has(c.id));
+  const update=stepCorpseDiscoveryV112(state.ecosystem??createCorpseDiscoveryV112(state.huntRites.runId),{
+    now:state.elapsed,corpses:state.huntRites.corpses,actors,
+    canSee:(actor,corpse)=>{
+      const enemy=state.enemies.find(e=>e.id===actor.id);
+      if(!enemy)return false;
+      const occlusion=calculateLineOfSightOcclusion(actor,corpse,covers);
+      if(actor.kind!=="beast")return riteWitnessCanSeeV77(enemy,corpse,state.world.platforms,occlusion);
+      const distance=Math.hypot(actor.x-corpse.x,actor.y-corpse.y);
+      return distance<=480&&(distance<=90||(corpse.x>=actor.x?1:-1)===enemy.facing)&&
+        occlusion<=.15&&riteLineOfSightV77(actor,corpse,state.world.platforms);
+    },
+    canSmell:(actor,corpse)=>riteLineOfSightV77(actor,corpse,state.world.platforms)&&
+      calculateLineOfSightOcclusion(actor,corpse,covers)<=.5,
+  });
+  state.ecosystem=update.state;
+  let audibleAlert=false;
+  const context=riteContextV77(state);
+  for(const observation of update.observations){
+    const witness=state.enemies.find(e=>e.id===observation.actorId),corpse=state.huntRites.corpses.find(c=>c.id===observation.corpseId);
+    if(!witness||!corpse)continue;
+    if(witness.kind!=="beast"){
+      if(observation.channel==="visual"){
+        const discovery=discoverHuntRiteV77(state.huntRites,corpse.id,{id:witness.id,kind:witness.kind,
+          position:{x:witness.x+witness.width/2,y:witness.y+witness.height/2},alive:witness.alive&&witness.active,lineOfSight:true},context);
+        if(discovery.accepted)state.huntRites=discovery.state;
+      }
       const brain=state.aiBrains[witness.id]??createAiBrain(witness.id,witness.kind);
-      state.aiBrains[witness.id]=reactToRiteWitnessV77(brain);
+      state.aiBrains[witness.id]=observation.channel==="radio"
+        ? {...brain,suspicion:Math.max(brain.suspicion,.12),mode:brain.mode==="patrol"?"suspicion":brain.mode,
+            timeInMode:brain.mode==="patrol"?0:brain.timeInMode}
+        : reactToRiteWitnessV77(brain);
       witness.riteInvestigate={x:corpse.x,y:corpse.y,until:state.elapsed+6};
-      queueSound(state,'enemy-alert');
+      audibleAlert=true;
     }
   }
+  if(audibleAlert)queueSound(state,"enemy-alert");
 }
 /** Native death cell measured once. Legacy art without a real death pose gets
  * a sober inert silhouette, never a rotated alive character or explicit gore. */
@@ -8279,19 +8338,33 @@ function updateRegularEnemy(
     }
   }
 
-  const riteInvestigation=enemy.riteInvestigate;
+  const ecosystemReaction=corpseDiscoveryReactionV112(state.ecosystem,enemy.id,state.elapsed);
+  const discoveryCorpse=ecosystemReaction?state.huntRites?.corpses.find(c=>c.id===ecosystemReaction.corpseId&&!c.erased):null;
+  const riteInvestigation=discoveryCorpse&&ecosystemReaction
+    ? {x:discoveryCorpse.x,y:discoveryCorpse.y,until:ecosystemReaction.until}
+    : enemy.riteInvestigate;
   const inspectingRite=!!riteInvestigation&&(riteInvestigation.until>state.elapsed||
     aiStep.brain.lastKnownTarget===null&&(aiStep.brain.mode==='suspicion'||aiStep.brain.mode==='search'))&&visualContact<.34&&thermalContact<.34
     &&!heardNoise&&track.strength<.18&&scent.strength<.18;
+  const localCorpseFear=corpseZoneFearV112(state.ecosystem,{
+    id:enemy.id,kind:enemy.kind,factionId:enemy.factionId,x:selfPosition.x,y:selfPosition.y,
+    alive:enemy.alive,active:enemy.active,boss:enemy.boss,radio:false,animalResponse:"avoid",
+  },state.huntRites?.corpses??[],state.elapsed);
+  const discoveryDirection=riteInvestigation?riteInvestigation.x>selfPosition.x?1:-1:0;
+  const discoveryDistance=riteInvestigation?Math.abs(riteInvestigation.x-selfPosition.x):0;
+  const discoveryMove=ecosystemReaction?.response==="avoid" ? discoveryDistance<220?-discoveryDirection:0
+    : ecosystemReaction?.response==="guard" ? discoveryDistance<90?-discoveryDirection:discoveryDistance>160?discoveryDirection:0
+    : discoveryDistance<38?0:discoveryDirection;
   if(riteInvestigation&&riteInvestigation.until<=state.elapsed&&aiStep.brain.mode==='patrol')enemy.riteInvestigate=undefined;
   const moveIntent = ecologyProfile?.mobility === "stationary" ? 0 : inspectingRite
-    ? (Math.abs(riteInvestigation!.x-selfPosition.x)<38?0:riteInvestigation!.x>selfPosition.x?1:-1)
+    ? discoveryMove
     : aiStep.intent.moveX;
   if (moveIntent !== 0) {
     enemy.facing = moveIntent;
   }
   enemy.velocityX =
-    moveIntent * enemy.moveSpeed * (inspectingRite ? .3 : aiStep.intent.speedMultiplier);
+    moveIntent * enemy.moveSpeed * (inspectingRite ? ecosystemReaction?.response==="avoid" ? .7 : .3 : aiStep.intent.speedMultiplier) *
+    (1-localCorpseFear*.4);
   const rangedAttack =
     enemy.kind === "human" || ecologyProfile?.attackStyle === "ranged";
   const meleeRange = enemy.width * 0.8 + player.width * 0.55 + 52;
