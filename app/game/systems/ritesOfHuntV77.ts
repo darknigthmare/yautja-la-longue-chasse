@@ -1,3 +1,4 @@
+import {normalizeFieldStashesV112,type FieldStashEntryV112} from "./fieldStashV112";
 import { anatomyPartV112, makeAnatomySpecimenV112 } from "./anatomyHarvestV112.ts";
 import type { FieldSpecimenV112 } from "./harvestInventoryV112";
 import { CARCASS_HANG_DROP_V112 } from "./carcassSupportsV112.ts";
@@ -38,6 +39,7 @@ export interface RitesOfHuntV77 {
   honorDelta:number; awareness:number; fear:number;
   completedEventIds:string[];
   carryingCorpseId?:string|null; specimensV112?:FieldSpecimenV112[];
+  stashedSpecimensV112?:FieldStashEntryV112[];
 }
 export interface RiteLiveContextV77 {
   readonly runId:string; readonly missionId:string; readonly actor:RitePointV77;
@@ -55,7 +57,7 @@ const distance=(a:RitePointV77,b:RitePointV77)=>Math.hypot(a.x-b.x,a.y-b.y);
 const result=(state:RitesOfHuntV77,accepted:boolean,message:string):RiteResultV77=>({state,accepted,message});
 export function createRitesOfHuntV77(runId:string,missionId:string):RitesOfHuntV77 {
   if(!idValid(runId)||!idValid(missionId))throw new Error('Identité de chasse rituellement invalide.');
-  return {version:1,runId,missionId,elapsed:0,corpses:[],operation:null,honorDelta:0,awareness:0,fear:0,completedEventIds:[],carryingCorpseId:null,specimensV112:[]};
+  return {version:1,runId,missionId,elapsed:0,corpses:[],operation:null,honorDelta:0,awareness:0,fear:0,completedEventIds:[],carryingCorpseId:null,specimensV112:[],stashedSpecimensV112:[]};
 }
 function owned(state:RitesOfHuntV77,context:RiteLiveContextV77){
   return state.runId===context.runId&&state.missionId===context.missionId&&point(context.actor)&&finite(context.health)&&context.health>0&&!context.suspended;
@@ -175,6 +177,7 @@ export function normalizeRitesOfHuntV77(raw:unknown,runId:string,missionId:strin
     ||c.supportId!==null&&!idValid(c.supportId)||c.hangingAt!==null&&!point(c.hangingAt)||!!c.supportId!==!!c.hangingAt||c.supportId&&!c.flayed)return null;}
   if(new Set(s.corpses.map(c=>c.id)).size!==s.corpses.length)return null;
   if(s.specimensV112!==undefined&&(!Array.isArray(s.specimensV112)||s.specimensV112.length>384||s.specimensV112.some(i=>!i||typeof i!=='object'||!idValid(i.id))||new Set(s.specimensV112.map(i=>i.id)).size!==s.specimensV112.length))return null;
+  if(!normalizeFieldStashesV112(s.stashedSpecimensV112,s.specimensV112??[]))return null;
   const expectedEvents=s.corpses.flatMap(c=>[
     ...(c.analyzed?['analyze:'+c.id]:[]),...(c.marked?['mark:'+c.id]:[]),
     ...(c.flayed?['flay:'+c.id]:[]),...(c.hung||c.supportId?['hang:'+c.id]:[]),...(c.erased?['erase:'+c.id]:[]),

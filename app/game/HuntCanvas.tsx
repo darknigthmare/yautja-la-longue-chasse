@@ -23,6 +23,9 @@ import {
   WEAPON_BY_ID,
 } from "./data";
 import { trophyHuntVisualForDefinitionId } from "./trophyVisualRegistry";
+import FieldPackV112 from "./FieldPackV112";
+import {drawFieldStashesV112} from "./fieldStashRenderingV112";
+import {carriedFieldSpecimensV112,moveFieldSpecimenV112,fieldStashCanTakeV112,stepFieldStashesV112,fieldStashGeometryValidV112} from "./systems/fieldStashV112";
 import { ownsFieldToolV111 } from "./systems/fieldToolsV111";
 import { applyAnatomyDamageV112, anatomyIntegrityV112 } from "./systems/anatomyHarvestV112";
 import { carcassSupportsForWorldV112, carcassSupportAccessibleV112, CARCASS_HANG_DROP_V112 } from "./systems/carcassSupportsV112";
@@ -792,6 +795,11 @@ interface GameState {
 }
 
 interface UiSnapshot {
+  fieldPackV112: {
+    carried:import("./systems/harvestInventoryV112").FieldSpecimenV112[];
+    nearby:Array<{item:import("./systems/harvestInventoryV112").FieldSpecimenV112;distance:number;canTake:boolean}>;
+    canDrop:boolean;
+  };
   gripExhaustedV112?: boolean;
   trophyAssistArmedV112?: boolean;
   huntRiteMenu: HuntRiteMenuSnapshotV77 | null;
@@ -2105,7 +2113,7 @@ function restoreCheckpoint(
     ? state.huntRites ? {...state.huntRites,elapsed:checkpoint.elapsed,corpses:[],operation:null,honorDelta:0,awareness:0,fear:0,completedEventIds:[]} : undefined
     : restoreRitesRuntimeV77(checkpoint.huntRites, state.huntRites.runId,
     state.world.missionId, checkpoint.enemies, checkpoint.elapsed, riteSourceLabelV77, {flayingToolOwned:state.flayingToolOwned,supports:carcassSupportsForWorldV112(state.world)});
-  if (checkpoint.huntRites!==undefined&&!restoredRites) return {...state, paused:true, message:'Les traces de chasse ne correspondent pas à cette rencontre ; reprise refusée.', messageTimer:5};
+  if (checkpoint.huntRites!==undefined&&(!restoredRites||!fieldStashGeometryValidV112(restoredRites,state.world))) return {...state, paused:true, message:'Les traces de chasse ne correspondent pas à cette rencontre ; reprise refusée.', messageTimer:5};
   const restoredEcosystem=restoreCorpseDiscoveryV112(checkpoint.ecosystem,state.huntRites?.runId??"legacy",
     restoredRites?.corpses??[],discoveryActorsV112(checkpoint.enemies),checkpoint.elapsed);
   if(!restoredEcosystem)return {...state,paused:true,message:"Les événements de découverte ne correspondent pas aux proies et témoins ; reprise refusée.",messageTimer:5};
@@ -2758,7 +2766,18 @@ function snapshot(state: GameState, mission: MissionDefinition): UiSnapshot {
             (state.elapsed - state.bossDefeatedAt),
         )
       : null;
+  const fieldItems=carriedFieldSpecimensV112(state.huntRites);
+  const actorAt={x:state.player.x+state.player.width/2,y:state.player.y+state.player.height/2};
   return {
+    fieldPackV112:{
+      carried:fieldItems,
+      nearby:(state.huntRites.stashedSpecimensV112??[]).flatMap(entry=>{
+        const item=state.huntRites.specimensV112?.find(i=>i.id===entry.specimenId),distance=Math.hypot(actorAt.x-entry.x,actorAt.y-entry.y);
+        return item&&distance<=240?[{item,distance,canTake:!state.huntRites.operation&&!state.huntRites.carryingCorpseId&&!state.trophyExtracting&&
+          fieldStashCanTakeV112(state.huntRites,item.id,state.player,state.world,state.harvestArmorIdV112??"hunter",state.harvestDepotFreeV112??256)}]:[];
+      }),
+      canDrop:state.player.health>0&&state.player.grounded&&!state.player.climbing&&!state.huntRites.operation&&!state.huntRites.carryingCorpseId&&!state.trophyExtracting,
+    },
     huntRiteMenu: huntRiteMenuSnapshotV77(state.huntRites,
       {x:state.player.x+state.player.width/2,y:state.player.y+state.player.height},state.riteMenuCorpseId,
       !state.paused && (state.phase==='tracking'||state.phase==='target') && !state.trophyExtracting && state.player.health>0, riteRuntimeOptionsV112(state)),
@@ -2943,7 +2962,7 @@ function resultFor(
               .map((drop) => ({ ...drop.claim })),
           ]
         : [],
-    specimensV112: outcome === "success" ? [...(state.huntRites.specimensV112 ?? [])] : [],
+    specimensV112: outcome === "success" ? carriedFieldSpecimensV112(state.huntRites).map(item=>({...item})) : [],
     toolUseIdsV112: state.huntRites.completedEventIds.filter(id=>id.startsWith("flay:")||id.startsWith("harvest-"))
       .map(id=>state.huntRites.runId+":"+id),
     harvestEncounterRunV112: Number.isInteger(Number(state.huntRites.runId.slice(mission.id.length+1))) ? Number(state.huntRites.runId.slice(mission.id.length+1)) : undefined,
@@ -5077,6 +5096,7 @@ function renderGame(
   drawGuardianAdaptiveField(context, state, palette);
 
   drawHuntRiteCorpsesV77(context,state,assets);
+  drawFieldStashesV112(context,state.huntRites);
 
   // Enemies, boss and projectiles.
   const visibleEnemies = [
@@ -6098,8 +6118,8 @@ function riteRuntimeOptionsV112(state:GameState) {
     toolWorkMultiplier:flayingToolWorkMultiplierV112(toolConditionAfterUsesV112(state.riteToolInitialConditionV112??100,uses)),
     supports:carcassSupportsForWorldV112(state.world).filter(s=>carcassSupportAccessibleV112(actor,s,state.world)),
     acceptSpecimen:(item:import("./systems/harvestInventoryV112").FieldSpecimenV112)=>{
-      const items=state.huntRites.specimensV112??[];
-      return items.length<(state.harvestDepotFreeV112??HARVEST_DEPOT_LIMIT_V112)&&items.length<64&&
+      const items=carriedFieldSpecimensV112(state.huntRites);
+      return items.length<(state.harvestDepotFreeV112??HARVEST_DEPOT_LIMIT_V112)&&(state.huntRites.specimensV112??[]).length<64&&
         tryCarrySpecimenV112(items,item,state.harvestArmorIdV112??'hunter').ok;
     }};
 }
@@ -6135,6 +6155,7 @@ function ritePersistenceKeyV77(state:RitesOfHuntV77):string {
 }
 function updateHuntRitesV77(state:GameState,delta:number):void {
   syncCarcassTransportV112(state);
+  state.huntRites=stepFieldStashesV112(state.huntRites,state.world,delta);
   state.huntRites=followRiteCorpseAnchorsV77(state.huntRites,state.enemies);
   if (state.phase!=='tracking'&&state.phase!=='target'||state.trophyExtracting) {
     state.riteMenuCorpseId=null;
@@ -9928,6 +9949,7 @@ export default function HuntCanvas({
   const requestAbortRef = useRef<() => void>(() => undefined);
   const requestSuspendRef = useRef<() => void>(() => undefined);
   const ritualAssistRefV112 = useRef<(event:RitualAssistEventV112|"abort")=>void>(()=>undefined);
+  const fieldPackActionRefV112=useRef<(action:"drop"|"take",id:string)=>void>(()=>undefined);
   const riteMenuActionRef = useRef<(action:HuntRiteActionV77|'open'|'close')=>void>(()=>undefined);
   const dismissMissionOpeningRef = useRef<() => void>(() => undefined);
   const missionOpeningActiveRef = useRef(false);
@@ -10686,6 +10708,13 @@ export default function HuntCanvas({
       if(event==="abort"){interruptTrophyHarvestV111(game);input.ritualAssistEventV112=null;game.ritualAssistV112=freshRitualAssistV112();setUi(snapshot(game,mission));return;}
       input.ritualAssistEventV112=event;
     };
+    fieldPackActionRefV112.current=(action,id)=>{
+      if(!game.paused||game.phase==="dead"||game.phase==="finished"||game.player.health<=0)return;
+      const moved=moveFieldSpecimenV112(game.huntRites,action,id,game.player,game.world,game.harvestArmorIdV112??"hunter",
+        {suspended:false,operationActive:!!game.huntRites.operation||!!game.huntRites.carryingCorpseId||game.trophyExtracting,depotFreeSlots:game.harvestDepotFreeV112??256});
+      if(moved.accepted)game.huntRites=moved.state;
+      announce(game,moved.message,4);setUi(snapshot(game,mission));emitPersistence(persistHuntRef.current);
+    };
     riteMenuActionRef.current = (action) => {
       if(game.paused||game.phase!=='tracking'&&game.phase!=='target'||game.trophyExtracting||game.player.health<=0)return;
       const context=riteContextV77(game),menu=huntRiteMenuSnapshotV77(game.huntRites,context.actor,game.riteMenuCorpseId,true,riteRuntimeOptionsV112(game));
@@ -10914,6 +10943,7 @@ export default function HuntCanvas({
       alive = false;
       dismissMissionOpeningRef.current = () => undefined;
       missionOpeningActiveRef.current = false;
+      fieldPackActionRefV112.current=()=>undefined;
       riteMenuActionRef.current=()=>undefined;
       ritualAssistRefV112.current=()=>undefined;
       cancelAnimationFrame(frameId);
@@ -11097,7 +11127,7 @@ export default function HuntCanvas({
           className="hunt-pause-button"
           onClick={() => togglePauseRef.current()}
           style={styles.iconButton}
-          aria-label={ui.paused ? "Reprendre la chasse" : "Mettre en pause et consulter la carte"}
+          aria-label={ui.paused ? "Reprendre la chasse" : "Mettre en pause, consulter la carte et le sac"}
         >
           {ui.paused ? "▶" : "Ⅱ"}
         </button>
@@ -11268,11 +11298,12 @@ export default function HuntCanvas({
               style={{ ...styles.modal, width: "min(100%, 760px)", maxHeight: "calc(100svh - 32px)", overflowY: "auto", boxSizing: "border-box" }}
             >
               <span style={styles.modalKicker}>BIOMASK EN VEILLE</span>
-              <h2 id="hunt-pause-title" style={styles.modalTitle}>Chasse en pause</h2>
+              <h2 id="hunt-pause-title" style={styles.modalTitle}>Chasse en pause · Carte et sac</h2>
               <p style={styles.modalCopy}>
                 Les systèmes sont figés. Reprends quand tu es prêt à honorer le
                 rite.
               </p>
+              <FieldPackV112 {...ui.fieldPackV112} onAction={(action,id)=>fieldPackActionRefV112.current(action,id)}/>
               <div style={styles.modalActions}>
                 <button
                   type="button"
