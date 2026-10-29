@@ -1,0 +1,8 @@
+PASS Rejected Générer l’aperçu supersedes the older file read
+PASS Rejected Base terrestre supersedes the older file read
+PASS Rejected Base extraterrestre supersedes the older file read
+PASS Rejected shuffle with a locked invalid seed supersedes the older file read
+PASS Rejected code import prepared before the file supersedes its pending read
+PASS Editing the code field after native reading preserves the newer unfinished input
+PASS A new valid native file import still succeeds after all cancelled reads
+{"status":"PASS","checks":7,"report":"/workspace/scratch/56a0bf56582d/yautja-apply-guides/outputs/qa-planet-import-race-v103/run-98Zh5O/report.json"}

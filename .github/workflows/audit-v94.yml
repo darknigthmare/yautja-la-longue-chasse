@@ -34,6 +34,7 @@ on:
       - 'public/game/homeworld/v83/cargo-rack-right.png'
       - 'public/game/sprites/v62/heads/classic-head.png'
       - 'public/game/planets/v103/**'
+      - 'public/game/backgrounds/ship.webp'
       - 'public/game/dialogues/v85/*.json'
       - 'art-source/v6/catalogue/*.xlsx'
       - 'docs/THE_PIT*.xlsx'
@@ -261,6 +262,7 @@ jobs:
             /public/game/planets/v101/runtime/
             /public/game/planets/v101/materials/
             /public/game/planets/v103/
+            /public/game/backgrounds/ship.webp
             /art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx
             /docs/THE_PIT_STAGES_V60_SUIVI.xlsx
             /docs/THE_PIT_STAGES_V61_SUIVI.xlsx
@@ -660,6 +662,13 @@ jobs:
           app/game/HuntRitesMenuV77.tsx app/game/systems/ritesOfHuntV77.ts
           app/game/systems/huntRitesRuntimeV77.ts
           app/game/PitExperienceV79.tsx app/game/ClanWarBibleV6Panel.tsx
+      - name: Verify archive validation, native asset contracts and planet import ordering
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: >-
+          node --test --test-reporter=spec --test-concurrency=1
+          tests/planet-archive-validation-v103.test.mjs
+          tests/homeworld-motion-source-contracts-v113.test.mjs
+          tests/planet-generator-import-race-v103.test.mjs
       - name: Exercise input resilience, fixed-step edges and original V74 metadata
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: >-
@@ -744,6 +753,7 @@ jobs:
             sleep 1
           done
           curl --fail --silent http://127.0.0.1:3101/planet-generator-v102 > /dev/null
+          YAUTJA_QA_SERVER_MODE=development node scripts/qa-planet-import-race-v103.mjs
           node scripts/qa-planet-regional-materials-v102.mjs
           node scripts/qa-planet-generator-v102.mjs
           node scripts/qa-planet-generator-v103.mjs

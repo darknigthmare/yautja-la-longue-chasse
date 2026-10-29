@@ -1,0 +1,185 @@
+{
+  "startedAt": "2026-10-29T13:17:21.722Z",
+  "route": "http://127.0.0.1:3101/planet-generator-v103",
+  "browser": "Chromium /tmp/chromium; isolated fresh Playwright context",
+  "application": "local Next 16.3.5 development server, real React and game modules",
+  "stateSetup": "No injected simulation, graph, save, catalogue, or localStorage values. All state changes use visible UI controls.",
+  "checks": [
+    {
+      "name": "The dedicated generator route responds successfully",
+      "passed": true
+    },
+    {
+      "name": "The context starts with no existing generated front",
+      "passed": true
+    },
+    {
+      "name": "The visible editor keeps the requested numeric recipe seed",
+      "passed": true
+    },
+    {
+      "name": "The generated preview has three regional dossiers",
+      "passed": true
+    },
+    {
+      "name": "The generated code uses the V103 recipe",
+      "passed": true
+    },
+    {
+      "name": "Remembering the world stores its exact code in the real catalogue",
+      "passed": true
+    },
+    {
+      "name": "The opened strategic front owns the generated world code",
+      "passed": true
+    },
+    {
+      "name": "Turn 2 is displayed and its local archive is confirmed",
+      "passed": true
+    },
+    {
+      "name": "The saved turn-2 front contains exactly 18 territory states",
+      "passed": true
+    },
+    {
+      "name": "The reconnaissance order was reserved through the real command panel",
+      "passed": true
+    },
+    {
+      "name": "Turn 3 is displayed and its local archive is confirmed",
+      "passed": true
+    },
+    {
+      "name": "Reconnaissance produced an observation on the ordered neighbor",
+      "passed": true
+    },
+    {
+      "name": "The resolved order is no longer pending",
+      "passed": true
+    },
+    {
+      "name": "Reload itself preserves the archived bytes",
+      "passed": true
+    },
+    {
+      "name": "The shared code reconstructs the same recipe seed after reload",
+      "passed": true
+    },
+    {
+      "name": "Reopening retains the complete save byte for byte",
+      "passed": true,
+      "detail": {
+        "sha256": "ae11e865ec22c80b067a7f398f082a1144bd91334dde1ea69b2ed829d8a12fe5",
+        "bytes": 11179
+      }
+    },
+    {
+      "name": "The visible restored front and its live atlas own the exact world and turn 3",
+      "passed": true
+    },
+    {
+      "name": "The restored world retains its simulation seed and actual reconnaissance observations",
+      "passed": true
+    },
+    {
+      "name": "No JavaScript page error occurred during this real UI journey",
+      "passed": true,
+      "detail": []
+    }
+  ],
+  "stages": [
+    {
+      "at": "2026-10-29T13:17:21.820Z",
+      "message": "Open the real generator in a fresh browser context"
+    },
+    {
+      "at": "2026-10-29T13:17:25.322Z",
+      "message": "Create a fixed-seed world through the 3-region, 18-territory editor controls"
+    },
+    {
+      "at": "2026-10-29T13:17:26.518Z",
+      "message": "Resolve the real front to turn 2, then reserve a mobile combatant's reconnaissance order"
+    },
+    {
+      "at": "2026-10-29T13:17:27.749Z",
+      "message": "Resolve reconnaissance to turn 3 and record the exact archived bytes"
+    },
+    {
+      "at": "2026-10-29T13:17:28.364Z",
+      "message": "Reload, import the same code through UI, and reopen its existing front"
+    },
+    {
+      "at": "2026-10-29T13:17:32.223Z",
+      "message": "PASS: real reconnaissance front reopened at turn 3 with identical archive bytes"
+    }
+  ],
+  "runtimeErrors": [],
+  "consoleErrors": [],
+  "failedResources": [],
+  "limits": [
+    "Limited procedural-front persistence journey; not full campaign completion.",
+    "No production build validation in this run.",
+    "Original runtime textures present; full PNG asset collection is absent. No artistic or full-asset claim.",
+    "Storage inspection is read-only evidence; generated worlds and orders are created through real UI actions."
+  ],
+  "browserVersion": "153.0.8010.0",
+  "initialStorageKeys": [],
+  "world": {
+    "code": "proc-v103-c29id-001013100011300111100-ivil2",
+    "recipeSeed": 20261029,
+    "recipeVersion": 103,
+    "territories": 18,
+    "regions": 3
+  },
+  "mobileActor": {
+    "id": "P04",
+    "territoryId": "CON-T02",
+    "factionId": "CON-F01",
+    "status": "fit",
+    "garrison": false,
+    "trainingUntilTurn": null
+  },
+  "reservedRecon": {
+    "kind": "recon",
+    "fromId": "CON-T02",
+    "targetId": "CON-T01",
+    "combatantIds": [
+      "P04"
+    ],
+    "cargo": {
+      "s": 0,
+      "m": 0,
+      "i": 0
+    },
+    "id": "free-20261029-t2-r2",
+    "factionId": "CON-F01",
+    "mode": "auto"
+  },
+  "beforeReload": {
+    "code": "proc-v103-c29id-001013100011300111100-ivil2",
+    "archiveSeed": 20261029,
+    "turn": 3,
+    "territories": 18,
+    "observations": 1,
+    "bytes": 11179,
+    "sha256": "ae11e865ec22c80b067a7f398f082a1144bd91334dde1ea69b2ed829d8a12fe5",
+    "archivePath": "/tmp/yautja-front-browser-before-reload.json",
+    "selectorText": "THÉÂTRES PLANÉTAIRES / EXPLORATION Irair-C29ID 18 territoires · 3 régions · Océans et eaux intérieures Irair-C29ID réunit 4 masses terrestres, des régions équilibrées et 6 bassins ou chenaux intérieurs. Brumes, aérosols et nébulosité modérée. Océans Forêts tempérées Monde généré 2 continents · 2 îles 3 régions administratives · 18 territoires 24 % de terres Tour 03 Archive locale confirmée Planète active Korthas · Forêts tempérées · Océans Thalassa · Jungles · Océans Vitriol · Marécages · Mers acides Nivalis · Neiges · Glaces Serak · Déserts · Déserts Pyroclaste · Terres volcaniques · Lave Halycon · Plateaux salins · Saumures Uranth · Terres irradiées · Radiations Améthys · Reliefs cristallins · Cristaux Mycélia · Forêts fongiques · Spores Nébulis · Montagnes · Brumes Abyssia · Terres littorales · Océans Chloris · Marécages · Océans Cryovant · Toundras · Glaces Ochria · Déserts · Déserts Obsidra · Terres volcaniques · Lave Salarka · Plateaux salins · Saumures Radixa · Terres irradiées · Radiations Prismara · Reliefs cristallins · Cristaux Sporion · Forêts fongiques · Spores Aérune · Forêts tempérées · Brumes Azurielle · Terres littorales · Océans Vénéfra · Marécages · Mers acides Boralis · Neiges · Glaces Dunara · Déserts · Déserts Ignara · Terres volcaniques · Lave Rosalith · Plateaux salins · Saumures Viridia · Terres irradiées · Radiations Iolexia · Reliefs cristallins · Cristaux Nyctéra · Forêts fongiques · Spores Irair-C29ID · 18 territoires / 3 régions · Océans ← → Explorer les 30 planètes Générer un monde Chaque planète conserve sa partie locale. Les surfaces entre les terres ne sont pas des territoires : empruntez les liaisons affichées pour franchir leurs détroits. Théâtres originaux du projet dans l’univers Yautja : géographie et routes propres à ce mode."
+  },
+  "afterReload": {
+    "code": "proc-v103-c29id-001013100011300111100-ivil2",
+    "archiveSeed": 20261029,
+    "turn": 3,
+    "territories": 18,
+    "observations": 1,
+    "bytes": 11179,
+    "sha256": "ae11e865ec22c80b067a7f398f082a1144bd91334dde1ea69b2ed829d8a12fe5",
+    "archivePath": "/tmp/yautja-front-browser-after-reload.json",
+    "selectorText": "THÉÂTRES PLANÉTAIRES / EXPLORATION Irair-C29ID 18 territoires · 3 régions · Océans et eaux intérieures Irair-C29ID réunit 4 masses terrestres, des régions équilibrées et 6 bassins ou chenaux intérieurs. Brumes, aérosols et nébulosité modérée. Océans Forêts tempérées Monde généré 2 continents · 2 îles 3 régions administratives · 18 territoires 24 % de terres Tour 03 Archive locale confirmée Planète active Korthas · Forêts tempérées · Océans Thalassa · Jungles · Océans Vitriol · Marécages · Mers acides Nivalis · Neiges · Glaces Serak · Déserts · Déserts Pyroclaste · Terres volcaniques · Lave Halycon · Plateaux salins · Saumures Uranth · Terres irradiées · Radiations Améthys · Reliefs cristallins · Cristaux Mycélia · Forêts fongiques · Spores Nébulis · Montagnes · Brumes Abyssia · Terres littorales · Océans Chloris · Marécages · Océans Cryovant · Toundras · Glaces Ochria · Déserts · Déserts Obsidra · Terres volcaniques · Lave Salarka · Plateaux salins · Saumures Radixa · Terres irradiées · Radiations Prismara · Reliefs cristallins · Cristaux Sporion · Forêts fongiques · Spores Aérune · Forêts tempérées · Brumes Azurielle · Terres littorales · Océans Vénéfra · Marécages · Mers acides Boralis · Neiges · Glaces Dunara · Déserts · Déserts Ignara · Terres volcaniques · Lave Rosalith · Plateaux salins · Saumures Viridia · Terres irradiées · Radiations Iolexia · Reliefs cristallins · Cristaux Nyctéra · Forêts fongiques · Spores Irair-C29ID · 18 territoires / 3 régions · Océans ← → Explorer les 30 planètes Générer un monde Chaque planète conserve sa partie locale. Les surfaces entre les terres ne sont pas des territoires : empruntez les liaisons affichées pour franchir leurs détroits. Théâtres originaux du projet dans l’univers Yautja : géographie et routes propres à ce mode.",
+    "liveAtlasCode": "proc-v103-c29id-001013100011300111100-ivil2"
+  },
+  "passed": true,
+  "completedAt": "2026-10-29T13:17:32.223Z",
+  "consoleErrorCount": 0,
+  "failedResourceCount": 0
+}

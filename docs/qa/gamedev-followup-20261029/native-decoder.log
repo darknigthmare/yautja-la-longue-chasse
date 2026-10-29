@@ -1,0 +1,56 @@
+PASS real PNG decodes once for duplicate source URLs
+PASS registry dimension validation rejects the decoded PNG
+PASS corrupt PNG yields a retryable error, never ready
+PASS stalled native decoder reaches its resource deadline
+PASS cancellation settles a stalled decoder without late readiness
+PASS refresh body is covered by the same timeout
+PASS HTTP failure during explicit retry cannot be marked loaded
+PASS fourteen real image requests remain bounded to six concurrent loads
+PASS a fresh batch recovers and empty batches settle immediately
+PASS no uncaught browser exception
+{
+  "scope": "Native decoder, tiny generated PNGs and loopback network only; not full scene/art QA",
+  "browser": "153.0.8010.0",
+  "results": [
+    {
+      "name": "real PNG decodes once for duplicate source URLs",
+      "status": "PASS"
+    },
+    {
+      "name": "registry dimension validation rejects the decoded PNG",
+      "status": "PASS"
+    },
+    {
+      "name": "corrupt PNG yields a retryable error, never ready",
+      "status": "PASS"
+    },
+    {
+      "name": "stalled native decoder reaches its resource deadline",
+      "status": "PASS"
+    },
+    {
+      "name": "cancellation settles a stalled decoder without late readiness",
+      "status": "PASS"
+    },
+    {
+      "name": "refresh body is covered by the same timeout",
+      "status": "PASS"
+    },
+    {
+      "name": "HTTP failure during explicit retry cannot be marked loaded",
+      "status": "PASS"
+    },
+    {
+      "name": "fourteen real image requests remain bounded to six concurrent loads",
+      "status": "PASS"
+    },
+    {
+      "name": "a fresh batch recovers and empty batches settle immediately",
+      "status": "PASS"
+    },
+    {
+      "name": "no uncaught browser exception",
+      "status": "PASS"
+    }
+  ]
+}
