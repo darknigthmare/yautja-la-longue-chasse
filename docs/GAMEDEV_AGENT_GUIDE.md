@@ -19,6 +19,9 @@ Les liens complets sont enregistrés dans [gamedev-skill-sources.json](gamedev-s
 Ces références décrivent une base datée : relire la branche de travail avant chaque modification.
 Une PR encore ouverte ne doit pas être décrite comme intégrée à `main`.
 
+Première application aux sauvegardes et au chargement des sprites :
+[corrections et vérification du 29 octobre 2026](gamedev-application-20261029.md).
+
 ## Démarrer une tâche
 
 1. Relever la branche et le commit de départ, lire les consignes applicables et trouver
