@@ -23,6 +23,7 @@ Première application aux sauvegardes et au chargement des sprites :
 [corrections et vérification du 29 octobre 2026](gamedev-application-20261029.md).
 Suite : [imports concurrents, CI et parcours navigateur](gamedev-followup-20261029.md).
 Application suivante : [guidage Homeworld et générateur historique V102](gamedev-homeworld-legacy-20261029.md).
+Suite performance : [profilage et préparation des trajets Homeworld](gamedev-navigation-performance-20261029.md).
 
 ## Démarrer une tâche
 

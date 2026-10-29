@@ -671,6 +671,18 @@ jobs:
           tests/planet-generator-import-race-v102.test.mjs
           tests/planet-generator-import-race-v103.test.mjs
           tests/homeworld-connector-detour-v113.test.mjs
+          tests/homeworld-navigation-cost-v113.test.mjs
+      - name: Exercise current Homeworld route Worker and stale snapshots in Chromium
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node scripts/qa-homeworld-route-worker-v113.mjs
+      - name: Preserve current Homeworld route Worker report
+        if: ${{ always() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: homeworld-route-worker-v113-${{ github.run_id }}
+          path: outputs/qa-homeworld-route-worker-v113/run-*/report.json
+          retention-days: 7
+          if-no-files-found: ignore
       - name: Exercise input resilience, fixed-step edges and original V74 metadata
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: >-
