@@ -1,0 +1,42 @@
+TAP version 13
+# Subtest: V113 native court collision reuses its private shape without repeating support projection
+ok 1 - V113 native court collision reuses its private shape without repeating support projection
+  ---
+  duration_ms: 12.680006
+  type: 'test'
+  ...
+# {"repeatedCourtQueries":100,"supportMapsAfterPreparation":0}
+# Subtest: V113 civic collision reuses bounds of its existing polygon without repeating four array maps
+ok 2 - V113 civic collision reuses bounds of its existing polygon without repeating four array maps
+  ---
+  duration_ms: 1.800294
+  type: 'test'
+  ...
+# {"repeatedCivicQueries":100,"polygonMapsAfterPreparation":0}
+# Subtest: V113 cached collision agrees with the native predicates for every mounted court and civic hull
+ok 3 - V113 cached collision agrees with the native predicates for every mounted court and civic hull
+  ---
+  duration_ms: 349.171818
+  type: 'test'
+  ...
+# Subtest: V113 court collision refreshes placement, art and in-place native geometry without changing public polygons
+ok 4 - V113 court collision refreshes placement, art and in-place native geometry without changing public polygons
+  ---
+  duration_ms: 122.126624
+  type: 'test'
+  ...
+# Subtest: V113 bounds follow edits to exposed legacy and civic polygons while retaining their existing cache semantics
+ok 5 - V113 bounds follow edits to exposed legacy and civic polygons while retaining their existing cache semantics
+  ---
+  duration_ms: 43.344794
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 620.414975

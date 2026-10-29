@@ -631,6 +631,7 @@ jobs:
           app/game/HomeworldRouteGuideV98.tsx app/game/systems/homeworldWayfindingV98.ts
           app/game/systems/homeworldNavigationV77.ts app/game/systems/homeworldNavigationV99.ts
           app/game/systems/homeworldCivicWorldV80.ts
+          app/game/systems/homeworldCourtArtV80.ts app/game/systems/homeworldCivicDecorV80.ts
           app/game/systems/homeworldAtlasLandmarksV83.ts
           app/game/homeworldRouteWorkerV98.ts
           app/game/HuntCanvas.tsx app/game/GameClient.tsx app/game/systems/huntStructuralBarrierV94.ts
@@ -672,6 +673,8 @@ jobs:
           tests/planet-generator-import-race-v103.test.mjs
           tests/homeworld-connector-detour-v113.test.mjs
           tests/homeworld-navigation-cost-v113.test.mjs
+          tests/homeworld-collision-cost-v113.test.mjs
+          tests/homeworld-route-cancellation-v113.test.mjs
       - name: Exercise current Homeworld route Worker and stale snapshots in Chromium
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: node scripts/qa-homeworld-route-worker-v113.mjs
@@ -681,6 +684,17 @@ jobs:
         with:
           name: homeworld-route-worker-v113-${{ github.run_id }}
           path: outputs/qa-homeworld-route-worker-v113/run-*/report.json
+          retention-days: 7
+          if-no-files-found: ignore
+      - name: Exercise current Homeworld Atlas Worker cancellation in Chromium
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node scripts/qa-homeworld-atlas-browser-v109.mjs
+      - name: Preserve current Homeworld Atlas Worker report
+        if: ${{ always() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: homeworld-atlas-integration-${{ github.run_id }}
+          path: outputs/qa-v109-atlas-integration/run-*/result.json
           retention-days: 7
           if-no-files-found: ignore
       - name: Exercise input resilience, fixed-step edges and original V74 metadata

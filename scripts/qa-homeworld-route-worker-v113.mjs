@@ -21,7 +21,7 @@ const fixtureFile = path.join(root, 'tests/fixtures/homeworld-return-route-v113.
 const baselineDir = process.env.YAUTJA_ROUTE_WORKER_BASELINE_DIR;
 const sampleCount = Number(process.env.YAUTJA_ROUTE_WORKER_SAMPLES ?? 1);
 assert(Number.isInteger(sampleCount) && sampleCount >= 1 && sampleCount <= 5);
-const sourceNames = ['homeworldNavigationV77.ts', 'homeworldNavigationV99.ts', 'homeworldNavigationV109.ts', 'homeworldWayfindingV111.ts'];
+const sourceNames = ['homeworldNavigationV77.ts', 'homeworldNavigationV99.ts', 'homeworldNavigationV109.ts', 'homeworldWayfindingV111.ts', 'homeworldCourtArtV80.ts', 'homeworldCivicDecorV80.ts'];
 const sha = value => createHash('sha256').update(value).digest('hex');
 const checks = [], errors = [], consoleErrors = [], httpErrors = [], samples = [];
 const report = {startedAt:new Date().toISOString(), variant:baselineDir?'baseline':'working-tree', checks, samples,
@@ -49,7 +49,7 @@ try {
     if(baselineDir) originals.set(file,bytes.toString('utf8'));
   }
   const plugins = baselineDir?[{name:'explicit-baseline-sources',setup(builder){
-    builder.onLoad({filter:/homeworld(?:NavigationV(?:77|99|109)|WayfindingV111)\.ts$/},args=>{
+    builder.onLoad({filter:/homeworld(?:NavigationV(?:77|99|109)|WayfindingV111|CourtArtV80|CivicDecorV80)\.ts$/},args=>{
       const contents=originals.get(args.path);
       if(contents===undefined) throw new Error('Unrecognized baseline source '+args.path);
       return {contents,loader:'ts'};

@@ -24,6 +24,7 @@ Première application aux sauvegardes et au chargement des sprites :
 Suite : [imports concurrents, CI et parcours navigateur](gamedev-followup-20261029.md).
 Application suivante : [guidage Homeworld et générateur historique V102](gamedev-homeworld-legacy-20261029.md).
 Suite performance : [profilage et préparation des trajets Homeworld](gamedev-navigation-performance-20261029.md).
+Suite runtime : [collisions réutilisées, annulation des trajets et preuves comparées](gamedev-homeworld-runtime-20261029.md).
 
 ## Démarrer une tâche
 
