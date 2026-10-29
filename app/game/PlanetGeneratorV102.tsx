@@ -92,6 +92,7 @@ export default function PlanetGeneratorV102({ activePlanet, pending = false, onO
   }
 
   function generate(freshSeed = false) {
+    importIntent.current++;
     try {
       const seed = freshSeed
         ? typeof crypto !== "undefined" && typeof crypto.getRandomValues === "function" ? crypto.getRandomValues(new Uint32Array(1))[0] : Date.now() >>> 0
@@ -103,9 +104,16 @@ export default function PlanetGeneratorV102({ activePlanet, pending = false, onO
   }
 
   function importWorld() {
+    importIntent.current++;
     const next = generatedWarPlanetV102(importCode.trim());
     if (!next) { setMessage("Ce code de monde n’est pas reconnu. Vérifiez qu’il est complet."); return; }
     showWorld(next); setMessage(`${next.name} retrouvé à partir de son code.`);
+  }
+
+  function editRecipe<Key extends keyof WarPlanetRecipeV102>(field: Key, value: WarPlanetRecipeV102[Key]) {
+    // A newer draft supersedes a pending file even before an explicit generation.
+    importIntent.current++;
+    setDraft(current => ({ ...current, [field]: value }));
   }
 
   async function importFile(event: ChangeEvent<HTMLInputElement>) {
@@ -158,14 +166,14 @@ export default function PlanetGeneratorV102({ activePlanet, pending = false, onO
     <div className={styles.workspace}>
       <form className={styles.recipe} onSubmit={event => { event.preventDefault(); generate(); }}>
         <h4>Composer un monde</h4>
-        <label className={styles.full}>Graine du monde<input value={seedText} maxLength={64} autoComplete="off" spellCheck={false} onChange={event => setSeedText(event.target.value)} placeholder="Un nom ou un nombre"/></label>
-        <label>Répartition des terres<select value={draft.landform} onChange={event => setDraft(value => ({ ...value, landform: event.target.value as WarPlanetRecipeV102["landform"] }))}>{Object.entries(landformNames).map(([id, name]) => <option key={id} value={id}>{name}</option>)}</select></label>
-        <label>Étendue des terres<select value={draft.landCoverage} onChange={event => setDraft(value => ({ ...value, landCoverage: event.target.value as WarPlanetRecipeV102["landCoverage"] }))}>{Object.entries(coverageNames).map(([id, name]) => <option key={id} value={id}>{name}</option>)}</select></label>
-        <label>Dessin des côtes<select value={draft.coast} onChange={event => setDraft(value => ({ ...value, coast: event.target.value as WarPlanetRecipeV102["coast"] }))}>{Object.entries(coastNames).map(([id, name]) => <option key={id} value={id}>{name}</option>)}</select></label>
-        <label>Biomes des régions<select value={draft.biomeDiversity} onChange={event => setDraft(value => ({ ...value, biomeDiversity: event.target.value as WarPlanetRecipeV102["biomeDiversity"] }))}><option value="uniform">Même famille de terres</option><option value="varied">Régions variées</option></select></label>
-        <label>Terres dominantes<select value={draft.landBiome} onChange={event => setDraft(value => ({ ...value, landBiome: event.target.value as WarPlanetRecipeV102["landBiome"] }))}>{Object.entries(WAR_BIOME_LABELS_V96).map(([id, name]) => <option key={id} value={id}>{name}</option>)}</select></label>
-        <label>Mers et milieux intermédiaires<select value={draft.surface} onChange={event => setDraft(value => ({ ...value, surface: event.target.value as WarPlanetRecipeV102["surface"] }))}>{Object.entries(WAR_SURFACE_LABELS_V96).map(([id, name]) => <option key={id} value={id}>{name}</option>)}</select></label>
-        <label className={styles.full}>Atmosphère<select value={draft.atmosphere} onChange={event => setDraft(value => ({ ...value, atmosphere: event.target.value as WarPlanetRecipeV102["atmosphere"] }))}>{Object.entries(atmosphereNames).map(([id, name]) => <option key={id} value={id}>{name}</option>)}</select></label>
+        <label className={styles.full}>Graine du monde<input value={seedText} maxLength={64} autoComplete="off" spellCheck={false} onChange={event => { importIntent.current++; setSeedText(event.target.value); }} placeholder="Un nom ou un nombre"/></label>
+        <label>Répartition des terres<select value={draft.landform} onChange={event => editRecipe("landform", event.target.value as WarPlanetRecipeV102["landform"])}>{Object.entries(landformNames).map(([id, name]) => <option key={id} value={id}>{name}</option>)}</select></label>
+        <label>Étendue des terres<select value={draft.landCoverage} onChange={event => editRecipe("landCoverage", event.target.value as WarPlanetRecipeV102["landCoverage"])}>{Object.entries(coverageNames).map(([id, name]) => <option key={id} value={id}>{name}</option>)}</select></label>
+        <label>Dessin des côtes<select value={draft.coast} onChange={event => editRecipe("coast", event.target.value as WarPlanetRecipeV102["coast"])}>{Object.entries(coastNames).map(([id, name]) => <option key={id} value={id}>{name}</option>)}</select></label>
+        <label>Biomes des régions<select value={draft.biomeDiversity} onChange={event => editRecipe("biomeDiversity", event.target.value as WarPlanetRecipeV102["biomeDiversity"])}><option value="uniform">Même famille de terres</option><option value="varied">Régions variées</option></select></label>
+        <label>Terres dominantes<select value={draft.landBiome} onChange={event => editRecipe("landBiome", event.target.value as WarPlanetRecipeV102["landBiome"])}>{Object.entries(WAR_BIOME_LABELS_V96).map(([id, name]) => <option key={id} value={id}>{name}</option>)}</select></label>
+        <label>Mers et milieux intermédiaires<select value={draft.surface} onChange={event => editRecipe("surface", event.target.value as WarPlanetRecipeV102["surface"])}>{Object.entries(WAR_SURFACE_LABELS_V96).map(([id, name]) => <option key={id} value={id}>{name}</option>)}</select></label>
+        <label className={styles.full}>Atmosphère<select value={draft.atmosphere} onChange={event => editRecipe("atmosphere", event.target.value as WarPlanetRecipeV102["atmosphere"])}>{Object.entries(atmosphereNames).map(([id, name]) => <option key={id} value={id}>{name}</option>)}</select></label>
         <div className={styles.actions}><button type="submit" className={styles.primary}>Générer l’aperçu</button><button type="button" onClick={() => generate(true)}>Créer un autre monde</button></div>
         <p className={styles.hint}>{changed ? "Réglages modifiés : générez l’aperçu pour les appliquer." : "L’aperçu correspond à ces réglages."} La partie active ne change qu’à l’ouverture du front.</p>
       </form>
@@ -194,7 +202,7 @@ export default function PlanetGeneratorV102({ activePlanet, pending = false, onO
     </div>
     <div className={styles.sharing}>
       <section><h4>Retrouver ce monde</h4><p>Le code inclut la graine et les réglages. Il partage la planète, sans transférer la progression d’une guerre.</p><label>Code du monde<textarea ref={codeRef} readOnly rows={3} value={planet.id} spellCheck={false}/></label><div className={styles.actions}><button type="button" onClick={() => { void copyCode(); }}>Copier le code</button><button type="button" onClick={() => { try { downloadJson(planet); setMessage("Fiche du monde exportée avec ses régions et particularités."); } catch { setMessage("La fiche n’a pas pu être téléchargée. Le code du monde reste disponible."); } }}>Télécharger la fiche</button></div></section>
-      <section><h4>Explorer un monde partagé</h4><label>Importer un code de monde<input value={importCode} maxLength={256} autoComplete="off" spellCheck={false} onChange={event => setImportCode(event.target.value)} placeholder="Collez un code de monde"/></label><button type="button" disabled={!importCode.trim()} onClick={importWorld}>Retrouver le monde</button><label className={styles.file}>Ou importer une fiche<input type="file" accept="application/json,.json" onChange={event => { void importFile(event); }}/></label></section>
+      <section><h4>Explorer un monde partagé</h4><label>Importer un code de monde<input value={importCode} maxLength={256} autoComplete="off" spellCheck={false} onChange={event => { importIntent.current++; setImportCode(event.target.value); }} placeholder="Collez un code de monde"/></label><button type="button" disabled={!importCode.trim()} onClick={importWorld}>Retrouver le monde</button><label className={styles.file}>Ou importer une fiche<input type="file" accept="application/json,.json" onChange={event => { void importFile(event); }}/></label></section>
     </div>
     <section className={styles.discoveries} aria-label="Mondes retrouvés"><h4>Mondes retrouvés sur cet appareil <span>{worlds.length} / 24</span></h4>{catalogue.issue && <p className={styles.hint}>{catalogue.issue}</p>}{worlds.length ? <div>{worlds.map(world => <button type="button" key={world.id} aria-pressed={world.id === planet.id} onClick={() => { showWorld(world); setMessage(`${world.name} retrouvé. Ouvrez son front pour reprendre la guerre.`); }}><strong>{world.name}</strong><small>{world.subtitle}</small></button>)}</div> : <p>Mémorisez les mondes qui vous intéressent pour les retrouver ici.</p>}<p className={styles.hint}>Les 24 derniers raccourcis sont conservés. Une ancienne guerre reste accessible avec son code, même lorsque son raccourci sort de cette liste.</p></section>
     <footer className={styles.provenance}>{details.provenance}</footer>

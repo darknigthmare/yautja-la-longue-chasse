@@ -662,13 +662,15 @@ jobs:
           app/game/HuntRitesMenuV77.tsx app/game/systems/ritesOfHuntV77.ts
           app/game/systems/huntRitesRuntimeV77.ts
           app/game/PitExperienceV79.tsx app/game/ClanWarBibleV6Panel.tsx
-      - name: Verify archive validation, native asset contracts and planet import ordering
+      - name: Verify gamedev archive, asset, import and route regressions
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: >-
           node --test --test-reporter=spec --test-concurrency=1
           tests/planet-archive-validation-v103.test.mjs
           tests/homeworld-motion-source-contracts-v113.test.mjs
+          tests/planet-generator-import-race-v102.test.mjs
           tests/planet-generator-import-race-v103.test.mjs
+          tests/homeworld-connector-detour-v113.test.mjs
       - name: Exercise input resilience, fixed-step edges and original V74 metadata
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: >-
@@ -757,6 +759,14 @@ jobs:
           node scripts/qa-planet-regional-materials-v102.mjs
           node scripts/qa-planet-generator-v102.mjs
           node scripts/qa-planet-generator-v103.mjs
+      - name: Preserve planet import ordering browser report
+        if: ${{ always() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: planet-import-order-v103-${{ github.run_id }}
+          path: outputs/qa-planet-import-race-v103/run-*/report.json
+          retention-days: 7
+          if-no-files-found: ignore
       - name: Compare historical WebGL pixels and verify modular V103 materials
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: node scripts/qa-planet-materials-v103.mjs
