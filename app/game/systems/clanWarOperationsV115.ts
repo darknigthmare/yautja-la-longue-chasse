@@ -2,6 +2,8 @@ import {
   applyWarResultV6, createWarTeamV6, planWarRouteV6,
   type WarRulesV6, type WarTeamStateV6,
 } from "./clanWarBibleV6";
+import { warMissionTerrainV116, warTerrainCellBlockedV116, warTerrainLineOfSightV116,
+  warTerrainPathLengthV116, type WarMissionTerrainV116 } from "./clanWarMissionTerrainV116";
 
 /**
  * V115: self-contained V6 training theatre. This is NOT a CON-T/RTS-U campaign
@@ -54,7 +56,7 @@ export interface WarOperationsStateV115 {
 }
 export interface WarOperationsUpdateV115 { state: WarOperationsStateV115; accepted: boolean; message: string }
 const MAX_REPORTS = 120;
-const STEALTH_WALLS = new Set(["3,2", "3,3", "5,3", "6,4"]);
+
 const reject = (state: WarOperationsStateV115, message: string): WarOperationsUpdateV115 => ({ state, accepted: false, message });
 const accept = (state: WarOperationsStateV115, message: string): WarOperationsUpdateV115 => ({ state, accepted: true, message });
 const clamp = (number: number, min: number, max: number) => Math.max(min, Math.min(max, number));
@@ -279,43 +281,44 @@ export function commandStealthV115(state:WarOperationsStateV115,command:StealthC
   const mission=state.active, stealth=mission?.stealth;
   if(mission?.mode!=="stealth" || !stealth) return reject(state,"Aucune infiltration active.");
   if(!["up","down","left","right","cloak","interact"].includes(command)) return reject(state,"Action inconnue.");
+  const terrain=warMissionTerrainV116(mission.targetId,rules);
   let {x,y,cloaked,energy,alarm,sabotaged,guardX,guardDirection}=stealth;
   if(command==="cloak" && energy<=0 && !cloaked) return reject(state,"Le camouflage est épuisé.");
   if(command==="cloak") cloaked=!cloaked;
   else if(command==="interact") {
-    if(distance({x,y},{x:7,y:1})>1 || sabotaged) return reject(state,"Atteignez le relais non désactivé avant de le saboter.");
+    if(distance({x,y},terrain.relay)>1 || sabotaged) return reject(state,"Atteignez le relais non désactivé avant de le saboter.");
     sabotaged=true;cloaked=false;
   } else {
     const dx=command==="right"?1:command==="left"?-1:0, dy=command==="down"?1:command==="up"?-1:0;
     const nx=x+dx,ny=y+dy;
-    if(nx<0||nx>8||ny<0||ny>5||STEALTH_WALLS.has(coord(nx,ny))) return reject(state,"Paroi ou limite du passage : déplacement impossible.");
+    if(warTerrainCellBlockedV116(terrain,nx,ny)) return reject(state,"Paroi ou limite du passage : déplacement impossible.");
     x=nx;y=ny;
   }
   if(cloaked){energy=Math.max(0,energy-1);if(!energy) cloaked=false;}
   guardX+=guardDirection;
   if(guardX<=4 || guardX>=7) guardDirection=guardDirection===1?-1:1;
   const seen= !cloaked && ((y===2 && Math.abs(x-guardX)<=2) || (x===guardX && Math.abs(y-2)<=1))
-    && !STEALTH_WALLS.has(coord(x,y));
+    && warTerrainLineOfSightV116(terrain,{x:guardX,y:2},{x,y});
   if(seen || command==="interact") alarm++;
   const nextStealth={x,y,guardX,guardDirection,alarm,cloaked,energy,sabotaged};
   const advanced={...state,clock:state.clock+1,active:{...mission,tick:mission.tick+1,stealth:nextStealth}};
   if(alarm>=3) return accept(recordOutcome(advanced,mission.id,"stealth",null,mission.targetId,mission.teamIds,"defeat",mission.teamIds.slice(0,1),rules,
     "Patrouille alertée : extraction abandonnée."),"Infiltration compromise.");
-  if(sabotaged && x===1 && y===4) return accept(recordOutcome(advanced,mission.id,"stealth",null,mission.targetId,mission.teamIds,"victory",[],rules,
+  if(sabotaged && x===terrain.extraction.x && y===terrain.extraction.y) return accept(recordOutcome(advanced,mission.id,"stealth",null,mission.targetId,mission.teamIds,"victory",[],rules,
     "Relais désactivé et pisteur extrait ; renseignement et sabotage consignés."),"Extraction confirmée.");
   if(mission.tick>=65) return accept(recordOutcome(advanced,mission.id,"stealth",null,mission.targetId,mission.teamIds,"defeat",[],rules,
     "Fenêtre d'infiltration expirée."),"Mission interrompue par la durée de l'exercice.");
   return accept(advanced,sabotaged?"Relais neutralisé : retournez au point d'extraction (1,4).":"Restez hors du champ de la patrouille et atteignez le relais (7,1).");
 }
-function rtsEnemyTurn(actors:WarRtsActorV115[],rules:WarRulesV6) {
+function rtsEnemyTurn(actors:WarRtsActorV115[],rules:WarRulesV6,terrain:WarMissionTerrainV116) {
   for(const rival of actors.filter(actor=>actor.side==="rival" && actor.hp>0)){
     const target=actors.filter(actor=>actor.side==="ally" && actor.hp>0).sort((a,b)=>distance(a,rival)-distance(b,rival))[0];
     if(!target) break;
-    if(distance(target,rival)<=2) target.hp-=damageFor(rival.unitId,rules);
+    if(distance(target,rival)<=2&&warTerrainLineOfSightV116(terrain,rival,target)) target.hp-=damageFor(rival.unitId,rules);
     else {
       const dx=Math.sign(target.x-rival.x),dy=Math.sign(target.y-rival.y);
       const nx=rival.x+dx,ny=rival.y+(dx===0?dy:0);
-      if(!actors.some(actor=>actor!==rival&&actor.hp>0&&actor.x===nx&&actor.y===ny)&&nx>=0&&nx<=8&&ny>=0&&ny<=5) {rival.x=nx;rival.y=ny;}
+      if(!warTerrainCellBlockedV116(terrain,nx,ny)&&!actors.some(actor=>actor!==rival&&actor.hp>0&&actor.x===nx&&actor.y===ny)) {rival.x=nx;rival.y=ny;}
     }
   }
 }
@@ -323,6 +326,8 @@ export function commandRtsV115(state:WarOperationsStateV115,teamId:string,x:numb
   const mission=state.active, field=mission?.rts;
   if(mission?.mode!=="rts" || !field || !Number.isInteger(x)||!Number.isInteger(y)||x<0||x>8||y<0||y>5) return reject(state,"Ordre RTS ou case invalide.");
   if(field.realtime) return reject(state,"La simulation RTS évolue en temps réel : donnez un ordre de destination au lieu de jouer un tour.");
+  const terrain=warMissionTerrainV116(mission.targetId,rules);
+  if(warTerrainCellBlockedV116(terrain,x,y)) return reject(state,"Position bloquée par le terrain réel de ce théâtre.");
   const actors=field.actors.map(actor=>({...actor}));
   const actor=actors.find(item=>item.teamId===teamId && item.hp>0);
   if(!actor) return reject(state,"Sélectionnez une équipe combattante encore active.");
@@ -330,13 +335,16 @@ export function commandRtsV115(state:WarOperationsStateV115,teamId:string,x:numb
   const dist=distance(actor,{x,y});
   const unit=unitFor(rules,actor.unitId);
   if(occupant?.side==="rival") {
-    if(dist>clamp(Math.round((unit?.range??1)/2),1,3)) return reject(state,"Ennemi hors de portée.");
+    if(dist>clamp(Math.round((unit?.range??1)/2),1,3)||!warTerrainLineOfSightV116(terrain,actor,occupant)) return reject(state,"Cible hors de portée ou masquée par une paroi.");
     occupant.hp-=damageFor(actor.unitId,rules)*2;
   } else {
-    if(occupant || dist===0 || dist>clamp(Math.ceil((unit?.mobility??1)/2),1,3)) return reject(state,"Case occupée ou hors de portée du déplacement.");
+    const occupied=actors.filter(item=>item!==actor&&item.hp>0).map(item=>coord(item.x,item.y));
+    const length=warTerrainPathLengthV116(terrain,actor,{x,y},occupied);
+    if(occupant || length===null || length===0 || length>clamp(Math.ceil((unit?.mobility??1)/2),1,3))
+      return reject(state,"Case occupée ou itinéraire obstrué : le détachement ne traverse pas les murs.");
     actor.x=x;actor.y=y;
   }
-  rtsEnemyTurn(actors,rules);
+  rtsEnemyTurn(actors,rules,terrain);
   const fallen=unique([...field.fallen,...actors.filter(item=>item.side==="ally" && item.hp<=0 && item.teamId).map(item=>item.teamId!)]);
   const alive=actors.filter(item=>item.hp>0);
   const holding=alive.some(item=>item.side==="ally"&&item.x===7&&item.y===3) && !alive.some(item=>item.side==="rival"&&distance(item,{x:7,y:3})<=1);
@@ -352,7 +360,7 @@ export function commandRtsV115(state:WarOperationsStateV115,teamId:string,x:numb
 /** Cover on this small exercise grid is a prototype abstraction, not a map
  * from any film. Only units actually standing on cover gain mitigation. */
 export const WAR_RTS_COVER_V115 = Object.freeze(["3,1","4,3","5,4","6,2"] as const);
-const coverAt = (actor:WarRtsActorV115) => WAR_RTS_COVER_V115.some(tile=>tile===coord(actor.x,actor.y));
+const coverAt = (actor:WarRtsActorV115,terrain:WarMissionTerrainV116) => terrain.cover.includes(coord(actor.x,actor.y));
 export function toggleWarRtsRealtimeV115(state:WarOperationsStateV115,on:boolean):WarOperationsUpdateV115 {
   const mission=state.active,field=mission?.rts;
   if(mission?.mode!=="rts"||!field||typeof on!=="boolean") return reject(state,"Bataille RTS ou commande absente.");
@@ -366,6 +374,8 @@ export function issueWarRtsRealtimeOrderV115(
   const mission=state.active,field=mission?.rts;
   if(mission?.mode!=="rts"||!field?.realtime||!Number.isInteger(x)||!Number.isInteger(y)||x<0||x>8||y<0||y>5||
     !["advance","hold","attack"].includes(kind)) return reject(state,"Ordre en temps réel invalide.");
+  const terrain=warMissionTerrainV116(mission.targetId,rules);
+  if(warTerrainCellBlockedV116(terrain,x,y)) return reject(state,"Le point d’ordre est occupé par un obstacle du territoire.");
   const actor=field.actors.find(item=>item.teamId===teamId&&item.side==="ally"&&item.hp>0);
   if(!actor) return reject(state,"Équipe absente ou hors de combat.");
   const enemy=field.actors.find(item=>item.side==="rival"&&item.hp>0&&item.x===x&&item.y===y);
@@ -379,6 +389,7 @@ export function issueWarRtsRealtimeOrderV115(
 export function stepWarRtsRealtimeV115(state:WarOperationsStateV115,rules:WarRulesV6):WarOperationsUpdateV115 {
   const mission=state.active,field=mission?.rts;
   if(mission?.mode!=="rts"||!field?.realtime) return reject(state,"La bataille RTS temps réel n'est pas active.");
+  const terrain=warMissionTerrainV116(mission.targetId,rules);
   const actors=field.actors.map(a=>({...a}));
   const commands=field.orders??{};
   const allies=actors.filter(actor=>actor.side==="ally"&&actor.hp>0);
@@ -389,7 +400,8 @@ export function stepWarRtsRealtimeV115(state:WarOperationsStateV115,rules:WarRul
     const assigned=order?.kind==="attack"?targets.find(t=>t.x===order.x&&t.y===order.y):undefined;
     const nearest=targets.sort((a,b)=>distance(ally,a)-distance(ally,b)||a.id.localeCompare(b.id))[0];
     const target=assigned??nearest;
-    if(target&&distance(ally,target)<=range) target.hp-=damageFor(ally.unitId,rules)*(order?.kind==="hold"?1:2);
+    if(target&&distance(ally,target)<=range&&warTerrainLineOfSightV116(terrain,ally,target))
+      target.hp-=damageFor(ally.unitId,rules)*(order?.kind==="hold"?1:2);
     else if(order && order.kind!=="hold") {
       const destination=assigned??order;
       const candidates=[
@@ -397,23 +409,26 @@ export function stepWarRtsRealtimeV115(state:WarOperationsStateV115,rules:WarRul
         {x:ally.x,y:ally.y+Math.sign(destination.y-ally.y)},
         {x:ally.x,y:ally.y-1},{x:ally.x,y:ally.y+1},
         {x:ally.x-1,y:ally.y},{x:ally.x+1,y:ally.y},
-      ].filter(pos=>pos.x>=0&&pos.x<=8&&pos.y>=0&&pos.y<=5&&!actors.some(other=>other!==ally&&other.hp>0&&other.x===pos.x&&other.y===pos.y));
-      candidates.sort((a,b)=>distance(a,destination)-distance(b,destination)||distance(a,ally)-distance(b,ally));
-      if(candidates[0]&&distance(candidates[0],destination)<distance(ally,destination)){ally.x=candidates[0].x;ally.y=candidates[0].y;}
+      ].filter(pos=>!warTerrainCellBlockedV116(terrain,pos.x,pos.y)&&
+        !actors.some(other=>other!==ally&&other.hp>0&&other.x===pos.x&&other.y===pos.y));
+      const occupied=actors.filter(other=>other!==ally&&other.hp>0).map(other=>coord(other.x,other.y));
+      const length=(a:{x:number;y:number})=>warTerrainPathLengthV116(terrain,a,destination,occupied)??1000;
+      candidates.sort((a,b)=>length(a)-length(b)||distance(a,destination)-distance(b,destination));
+      if(candidates[0]&&length(candidates[0])<length(ally)){ally.x=candidates[0].x;ally.y=candidates[0].y;}
     }
   }
   for(const rival of actors.filter(a=>a.side==="rival"&&a.hp>0)){
     const target=actors.filter(a=>a.side==="ally"&&a.hp>0).sort((a,b)=>distance(a,rival)-distance(b,rival)||a.id.localeCompare(b.id))[0];
     if(!target) break;
     const range=clamp(Math.round((unitFor(rules,rival.unitId)?.range??2)/2),1,3);
-    if(distance(rival,target)<=range){
+    if(distance(rival,target)<=range&&warTerrainLineOfSightV116(terrain,rival,target)){
       const attack=damageFor(rival.unitId,rules);
-      const protectedByCover=coverAt(target)||Boolean(target.teamId&&commands[target.teamId]?.kind==="hold");
+      const protectedByCover=coverAt(target,terrain)||Boolean(target.teamId&&commands[target.teamId]?.kind==="hold");
       target.hp-=protectedByCover?Math.max(1,Math.ceil(attack*.65)):attack;
     } else {
       const nx=rival.x+Math.sign(target.x-rival.x),ny=rival.y+Math.sign(target.y-rival.y);
       for(const next of [{x:nx,y:rival.y},{x:rival.x,y:ny}]){
-        if(next.x>=0&&next.x<=8&&next.y>=0&&next.y<=5&&!actors.some(a=>a!==rival&&a.hp>0&&a.x===next.x&&a.y===next.y)){
+        if(!warTerrainCellBlockedV116(terrain,next.x,next.y)&&!actors.some(a=>a!==rival&&a.hp>0&&a.x===next.x&&a.y===next.y)){
           rival.x=next.x;rival.y=next.y;break;
         }
       }
