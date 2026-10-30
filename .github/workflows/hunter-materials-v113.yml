@@ -1,0 +1,85 @@
+name: V113 native PHG-inspired materials and renderer wiring
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'app/game/hunterMaterialsV113.ts'
+      - 'app/game/HunterRigPreview.tsx'
+      - 'app/game/HomeworldModularHunter.tsx'
+      - 'app/game/HuntCanvas.tsx'
+      - 'app/game/save.ts'
+      - 'app/game/GameClient.tsx'
+      - 'app/game/systems/homeworld.ts'
+      - 'tests/hunter-material-*'
+      - 'scripts/validate-phg-materials-v113.py'
+      - '.github/workflows/hunter-materials-v113.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  material-palette:
+    name: V113 PNG integrity, registration and cosmetic surfaces
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Checkout only V113 code and 44 registered PNGs
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /app/game/
+            /tests/hunter-material-*.test.mjs
+            /scripts/validate-phg-materials-v113.py
+            /public/game/imports/v85/drive-latest/anneau_ligature_fil_rouge_observe_2022.png
+            /public/game/imports/v85/drive-latest/armor_classe_alpha_ceinture_ivoire_cannelee.png
+            /public/game/imports/v85/drive-latest/armor_classe_alpha_fibres_brun_noir.png
+            /public/game/imports/v85/drive-latest/armor_classe_anubis_etoffe_claire.png
+            /public/game/imports/v85/drive-latest/armor_classe_avp_cuir_noir.png
+            /public/game/imports/v85/drive-latest/armor_classe_bionic_etoffe_gris.png
+            /public/game/imports/v85/drive-latest/armor_classe_cleopatra_etoffe_ivoire_ocre.png
+            /public/game/imports/v85/drive-latest/armor_classe_emissary_toile_brune.png
+            /public/game/imports/v85/drive-latest/armor_classe_exiled_fibres_brun_sombre.png
+            /public/game/imports/v85/drive-latest/armor_classe_father_etoffe_bleu_ardoise.png
+            /public/game/imports/v85/drive-latest/armor_classe_father_masque_beige_strie.png
+            /public/game/imports/v85/drive-latest/armor_classe_father_tissu_gris_prune.png
+            /public/game/imports/v85/drive-latest/armor_classe_gladiator_cuir_grave.png
+            /public/game/imports/v85/drive-latest/armor_classe_gladiator_etoffe_bordeaux.png
+            /public/game/imports/v85/drive-latest/armor_classe_jotun_sangle_brun_grave.png
+            /public/game/imports/v85/drive-latest/armor_classe_oni_tissu_anthracite.png
+            /public/game/imports/v85/drive-latest/armor_classe_pirate_cuir_brun_sombre.png
+            /public/game/imports/v85/drive-latest/armor_classe_pirate_etoffe_vert_sauge.png
+            /public/game/imports/v85/drive-latest/armor_classe_samurai_laque_rouge_volutes.png
+            /public/game/imports/v85/drive-latest/armor_classe_samurai_tressage_brun.png
+            /public/game/imports/v85/drive-latest/armor_classe_valkyrie_entrelacs_cuivres.png
+            /public/game/imports/v85/drive-latest/armor_classe_viking_fourrure_gris_taupe.png
+            /public/game/imports/v85/drive-latest/armor_classe_witch_etoffe_taupe_usee.png
+            /public/game/imports/v85/drive-latest/armor_classe_wolf_cuir_brun_sangles.png
+            /public/game/imports/v85/drive-latest/armor_classe_wolf_tablier_gris_brun.png
+            /public/game/imports/v85/drive-latest/armor_epic_promo_2020.png
+            /public/game/imports/v85/drive-latest/armor_filet_epais_brun_losanges.png
+            /public/game/imports/v85/drive-latest/armor_filet_fin_noir_losanges.png
+            /public/game/imports/v85/drive-latest/armor_playstation_promo_2019.png
+            /public/game/imports/v85/drive-latest/dread_anubis_gris_motif_ecaille.png
+            /public/game/imports/v85/drive-latest/dread_exalted_noir_annele_fin.png
+            /public/game/imports/v85/drive-latest/skin_classe_captured_base_observee.png
+            /public/game/imports/v85/drive-latest/skin_classe_cityhunter97_sector_provisoire.png
+            /public/game/imports/v85/drive-latest/skin_classe_cityhunter97_tract_provisoire.png
+            /public/game/imports/v85/drive-latest/skin_classe_cityhunter97_ward_provisoire.png
+            /public/game/imports/v85/drive-latest/skin_classe_cleopatra_base_observee.png
+            /public/game/imports/v85/drive-latest/skin_classe_exiled_base_observee.png
+            /public/game/imports/v85/drive-latest/skin_classe_samurai_base_observee.png
+            /public/game/imports/v85/drive-latest/skin_classe_valkyrie_base_observee.png
+            /public/game/imports/v85/drive-latest/skin_classe_viking_base_observee.png
+            /public/game/imports/v85/drive-latest/skin_default_epic_exclusive.png
+            /public/game/imports/v85/drive-latest/skin_default_ps_exclusive.png
+            /public/game/imports/v85/drive-latest/skin_shatter_demon_provisoire.png
+            /public/game/imports/v85/drive-latest/skin_shatter_demon_revision_mrblack.png
+      - name: Check genuine original file bytes, PNG signatures and material categories
+        run: python3 scripts/validate-phg-materials-v113.py
+      - name: Check save compatibility, 3 renderers, and both physical services
+        run: node --test --test-reporter=spec tests/hunter-material-*.test.mjs

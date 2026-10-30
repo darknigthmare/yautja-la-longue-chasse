@@ -1,0 +1,70 @@
+{
+  "format_version": 1,
+  "project": "Yautja — The Long Hunt / La Longue Chasse",
+  "reviewed_on": "2026-10-29",
+  "project_baseline_commit": "3943522296dff8cdb2d183dd7f9b7132b2a912c6",
+  "integration_mode": "project-guidance-with-pinned-references",
+  "native_skills_installed": false,
+  "upstream": {
+    "repository": "https://github.com/gamedev-skills/awesome-gamedev-agent-skills",
+    "commit": "19d93f97c9c1ea0f8b306e77aa81e0d3e352d3e9",
+    "license": "Apache-2.0",
+    "license_url": "https://github.com/gamedev-skills/awesome-gamedev-agent-skills/blob/19d93f97c9c1ea0f8b306e77aa81e0d3e352d3e9/LICENSE",
+    "notice_url": "https://github.com/gamedev-skills/awesome-gamedev-agent-skills/blob/19d93f97c9c1ea0f8b306e77aa81e0d3e352d3e9/NOTICE"
+  },
+  "routing_references": [
+    {
+      "name": "router",
+      "path": "router/SKILL.md",
+      "url": "https://github.com/gamedev-skills/awesome-gamedev-agent-skills/blob/19d93f97c9c1ea0f8b306e77aa81e0d3e352d3e9/router/SKILL.md"
+    },
+    {
+      "name": "custom-engines",
+      "path": "router/references/custom-engines.md",
+      "url": "https://github.com/gamedev-skills/awesome-gamedev-agent-skills/blob/19d93f97c9c1ea0f8b306e77aa81e0d3e352d3e9/router/references/custom-engines.md"
+    }
+  ],
+  "reviewed_skills": [
+    {
+      "name": "create-game-assets",
+      "path": "skills/disciplines/create-game-assets/SKILL.md",
+      "url": "https://github.com/gamedev-skills/awesome-gamedev-agent-skills/blob/19d93f97c9c1ea0f8b306e77aa81e0d3e352d3e9/skills/disciplines/create-game-assets/SKILL.md"
+    },
+    {
+      "name": "level-design",
+      "path": "skills/disciplines/level-design/SKILL.md",
+      "url": "https://github.com/gamedev-skills/awesome-gamedev-agent-skills/blob/19d93f97c9c1ea0f8b306e77aa81e0d3e352d3e9/skills/disciplines/level-design/SKILL.md"
+    },
+    {
+      "name": "procedural-gen",
+      "path": "skills/disciplines/procedural-gen/SKILL.md",
+      "url": "https://github.com/gamedev-skills/awesome-gamedev-agent-skills/blob/19d93f97c9c1ea0f8b306e77aa81e0d3e352d3e9/skills/disciplines/procedural-gen/SKILL.md"
+    },
+    {
+      "name": "game-ai",
+      "path": "skills/disciplines/game-ai/SKILL.md",
+      "url": "https://github.com/gamedev-skills/awesome-gamedev-agent-skills/blob/19d93f97c9c1ea0f8b306e77aa81e0d3e352d3e9/skills/disciplines/game-ai/SKILL.md"
+    },
+    {
+      "name": "ai-behavior-trees-utility-ai",
+      "path": "skills/disciplines/ai-behavior-trees-utility-ai/SKILL.md",
+      "url": "https://github.com/gamedev-skills/awesome-gamedev-agent-skills/blob/19d93f97c9c1ea0f8b306e77aa81e0d3e352d3e9/skills/disciplines/ai-behavior-trees-utility-ai/SKILL.md"
+    },
+    {
+      "name": "save-systems",
+      "path": "skills/disciplines/save-systems/SKILL.md",
+      "url": "https://github.com/gamedev-skills/awesome-gamedev-agent-skills/blob/19d93f97c9c1ea0f8b306e77aa81e0d3e352d3e9/skills/disciplines/save-systems/SKILL.md"
+    },
+    {
+      "name": "game-feel",
+      "path": "skills/disciplines/game-feel/SKILL.md",
+      "url": "https://github.com/gamedev-skills/awesome-gamedev-agent-skills/blob/19d93f97c9c1ea0f8b306e77aa81e0d3e352d3e9/skills/disciplines/game-feel/SKILL.md"
+    },
+    {
+      "name": "performance-optimization",
+      "path": "skills/disciplines/performance-optimization/SKILL.md",
+      "url": "https://github.com/gamedev-skills/awesome-gamedev-agent-skills/blob/19d93f97c9c1ea0f8b306e77aa81e0d3e352d3e9/skills/disciplines/performance-optimization/SKILL.md"
+    }
+  ],
+  "maintenance": "Re-read the active project branch and dependency lock before implementation. Update upstream references deliberately in a reviewed change; do not treat upstream baselines as a request to migrate this project."
+}

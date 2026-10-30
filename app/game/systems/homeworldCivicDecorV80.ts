@@ -34,6 +34,8 @@ export const HOMEWORLD_CIVIC_ART_V80:Readonly<Record<string,HomeworldCivicArtV80
  ...Object.fromEntries(Object.entries(manifest.assets).map(([id,a])=>[id,a as HomeworldCivicArtV80])),
 };
 const polygonCache=new WeakMap<HomeworldCivicPropV80,readonly HomeworldUrbanPointV78[]>();
+type CivicCollisionBounds={left:number;right:number;top:number;bottom:number;coordinates:readonly HomeworldUrbanPointV78[]};
+const collisionBoundsCache=new WeakMap<readonly HomeworldUrbanPointV78[],CivicCollisionBounds>();
 /** Native landmarks may describe several feet, not a perimeter traversal.
  * SAT requires a convex boundary. The monotone hull retains every measured
  * contact inside/on the complete volume instead of a self-crossing shortcut. */
@@ -124,9 +126,20 @@ const accepted:HomeworldCivicPropV80[]=[],refusals:{id:string;reason:string}[]=[
 for(const candidate of HOMEWORLD_CIVIC_CANDIDATES_V80){const reason=homeworldCivicRefusalV80(candidate,accepted);if(reason)refusals.push({id:candidate.id,reason});else accepted.push(candidate);}
 export const HOMEWORLD_CIVIC_PROPS_V80:readonly HomeworldCivicPropV80[]=accepted;
 export const HOMEWORLD_CIVIC_REFUSALS_V80:readonly {id:string;reason:string}[]=refusals;
+/** Reuse bounds of the existing public polygon, without changing its identity
+ * or relying on callers to leave its coordinates untouched at runtime. */
+function civicCollisionBounds(polygon:readonly HomeworldUrbanPointV78[]):CivicCollisionBounds{
+ const cached=collisionBoundsCache.get(polygon);
+ if(cached&&cached.coordinates.length===polygon.length){
+  let same=true;for(let i=0;i<polygon.length;i++)if(polygon[i].x!==cached.coordinates[i].x||polygon[i].y!==cached.coordinates[i].y){same=false;break;}
+  if(same)return cached;
+ }
+ const result={left:Math.min(...polygon.map(v=>v.x)),right:Math.max(...polygon.map(v=>v.x)),top:Math.min(...polygon.map(v=>v.y)),bottom:Math.max(...polygon.map(v=>v.y)),coordinates:polygon.map(p=>({x:p.x,y:p.y}))};
+ collisionBoundsCache.set(polygon,result);return result;
+}
 export function homeworldCivicTouchesV80(item:HomeworldCivicPropV80,p:HomeworldUrbanPointV78,body:HomeworldFootprint=HOMEWORLD_ACTOR){
  const polygon=homeworldCivicPolygonV80(item);
- const left=Math.min(...polygon.map(v=>v.x)),right=Math.max(...polygon.map(v=>v.x)),top=Math.min(...polygon.map(v=>v.y)),bottom=Math.max(...polygon.map(v=>v.y));
+ const {left,right,top,bottom}=civicCollisionBounds(polygon);
  if(p.x+body.halfWidth<left||p.x-body.halfWidth>right||p.y+body.halfDepth<top||p.y-body.halfDepth>bottom)return false;
  return body.halfWidth===0&&body.halfDepth===0?pointInHomeworldPolygon(p,polygon):homeworldUrbanOverlapV78(polygon,homeworldUrbanRectV78(p.x-body.halfWidth,p.y-body.halfDepth,p.x+body.halfWidth,p.y+body.halfDepth));
 }

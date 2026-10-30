@@ -5929,7 +5929,7 @@ function AppearanceOption({
         {art ?? (visualId ? (
           <V6AtlasSprite id={visualId} decorative />
         ) : image ? (
-          <img src={image} alt="" />
+          <img src={image} alt="" loading="lazy" decoding="async" />
         ) : null)}
         {swatch ? (
           <i

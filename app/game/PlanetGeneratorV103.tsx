@@ -116,6 +116,7 @@ export default function PlanetGeneratorV103({ activePlanet, pending = false, onO
   const [message, setMessage] = useState("");
   const [memoryOpening, setMemoryOpening] = useState<string | null>(null);
   const codeRef = useRef<HTMLTextAreaElement>(null);
+  // A later world choice cancels older file reads even when its input is rejected.
   const importIntent = useRef(0);
   const unique = `planet-generator-${useId().replace(/[^a-zA-Z0-9_-]/g, "")}`;
   const catalogue = useGeneratedWarCatalogV103();
@@ -137,6 +138,7 @@ export default function PlanetGeneratorV103({ activePlanet, pending = false, onO
   }
 
   function generate() {
+    importIntent.current++;
     try {
       const next = worldForRecipe({ ...draft, seed: numericSeed(seedText) });
       showWorld(next); setMessage(`${next.name} est prêt à explorer : ${next.territories.length} territoires et ${next.regions.length} régions.`);
@@ -153,22 +155,24 @@ export default function PlanetGeneratorV103({ activePlanet, pending = false, onO
   }
 
   function randomize(field?: WarPlanetRecipeFieldV103) {
+    importIntent.current++;
     try {
       const locks = field ? WAR_PLANET_RECIPE_FIELDS_V103.filter(item => item !== field || locked.includes(item)) : locked;
       const base = { ...draft, seed: locks.includes("seed") ? numericSeed(seedText) : draft.seed };
       const random = entropy();
       let next = randomizeWarPlanetRecipeV103(base, random, locks);
       for (let attempt = 1; field && next[field] === base[field] && attempt < 8; attempt++) next = randomizeWarPlanetRecipeV103(base, (random + attempt) >>> 0, locks);
-      importIntent.current++; setDraft(next);
+      setDraft(next);
       if (!locks.includes("seed")) setSeedText(String(next.seed));
       setMessage(`${field ? "Module tiré au hasard" : "Réglages mélangés"}. ${locked.length ? "Vos réglages conservés restent identiques. " : ""}Générez l’aperçu pour explorer ce brouillon.`);
     } catch (error) { setMessage(error instanceof Error ? error.message : "Le tirage n’a pas pu être préparé."); }
   }
 
   function preset(value: WarPlanetPresetV103) {
+    importIntent.current++;
     try {
       const next = applyWarPlanetPresetV103({ ...draft, seed: numericSeed(seedText) }, value, locked);
-      importIntent.current++; setDraft(next);
+      setDraft(next);
       setMessage(`Base ${value === "earthlike" ? "terrestre" : "extraterrestre"} préparée. La graine et les réglages conservés restent identiques ; le format respecte trois territoires minimum par région. Générez l’aperçu pour l’appliquer.`);
     } catch (error) { setMessage(error instanceof Error ? error.message : "Cette base n’a pas pu être préparée."); }
   }
@@ -180,6 +184,7 @@ export default function PlanetGeneratorV103({ activePlanet, pending = false, onO
   }
 
   function importWorld() {
+    importIntent.current++;
     const next = resolveProceduralWarPlanetV103(importCode.trim());
     if (!next) { setMessage("Ce code de monde n’est pas reconnu. Vérifiez qu’il est complet."); return; }
     showWorld(next); setMessage(`${next.name} retrouvé à partir de sa recette d’origine.`);
@@ -281,7 +286,7 @@ export default function PlanetGeneratorV103({ activePlanet, pending = false, onO
     </div>
     <div className={styles.sharing}>
       <section><h4>Retrouver ce monde</h4><p>Le code inclut la graine et les réglages. Il partage le monde affiché dans l’aperçu, sans transférer la progression d’une guerre.</p><label>Code du monde<textarea ref={codeRef} readOnly rows={3} value={planet.id} spellCheck={false}/></label><div className={styles.actions}><button type="button" onClick={() => { void copyCode(); }}>Copier le code</button><button type="button" onClick={() => { try { downloadJson(planet); setMessage("Fiche du monde exportée avec sa recette d’origine et ses descriptions."); } catch { setMessage("La fiche n’a pas pu être téléchargée. Le code du monde reste disponible."); } }}>Télécharger la fiche</button></div></section>
-      <section><h4>Explorer un monde partagé</h4><label>Importer un code de monde<input value={importCode} maxLength={256} autoComplete="off" spellCheck={false} onChange={event => setImportCode(event.target.value)} placeholder="Collez un code de monde"/></label><button type="button" disabled={!importCode.trim()} onClick={importWorld}>Retrouver le monde</button><label className={styles.file}>Ou importer une fiche<input type="file" accept="application/json,.json" onChange={event => { void importFile(event); }}/></label><p className={styles.hint}>Les mondes créés avec la recette précédente sont retrouvés à l’identique.</p></section>
+      <section><h4>Explorer un monde partagé</h4><label>Importer un code de monde<input value={importCode} maxLength={256} autoComplete="off" spellCheck={false} onChange={event => { importIntent.current++; setImportCode(event.target.value); }} placeholder="Collez un code de monde"/></label><button type="button" disabled={!importCode.trim()} onClick={importWorld}>Retrouver le monde</button><label className={styles.file}>Ou importer une fiche<input type="file" accept="application/json,.json" onChange={event => { void importFile(event); }}/></label><p className={styles.hint}>Les mondes créés avec la recette précédente sont retrouvés à l’identique.</p></section>
     </div>
     <section className={styles.discoveries} aria-label="Mondes retrouvés"><h4>Mondes retrouvés sur cet appareil <span>{worlds.length} / 24</span></h4>{catalogue.issue && <p className={styles.hint}>{catalogue.issue}</p>}{worlds.length ? <div>{worlds.map(world => <button type="button" key={world.id} aria-pressed={world.id === planet.id} onClick={() => rediscover(world.id)}><strong>{world.name}</strong><small>{world.territoryCount} territoires · {world.regionCount} régions · {world.subtitle}</small></button>)}</div> : <p>Mémorisez les mondes qui vous intéressent pour les retrouver ici.</p>}<p className={styles.hint}>Les 24 derniers raccourcis sont conservés. Une ancienne guerre reste accessible avec son code, même lorsque son raccourci sort de cette liste.</p></section>
     <footer className={styles.provenance}>{details.provenance}</footer>

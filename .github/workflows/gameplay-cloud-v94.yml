@@ -50,9 +50,24 @@ jobs:
         run: |
           node node_modules/next/dist/bin/next typegen
           npm run typecheck
-      - name: Exercise V112 canopy, carcass, logistics, accessibility and ecosystem production rules
+      # Homeworld / PIT V112 tests require their own large binary fixtures; this sparse job checks hunt only.
+      - name: Exercise explicit V112 hunt canopy, carcass, logistics, accessibility and ecosystem tests
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
-        run: node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v112.test.mjs
+        run: >-
+          node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1
+          tests/canopy-traversal-v112.test.mjs
+          tests/carcass-anatomy-v112.test.mjs
+          tests/conservation-persistence-ui-v112.test.mjs
+          tests/corpse-discovery-v112.test.mjs
+          tests/excel-history-preservation-v112.test.mjs
+          tests/field-stash-v112.test.mjs
+          tests/harvest-inventory-v112.test.mjs
+          tests/hunt-accessibility-v112.test.mjs
+          tests/hunt-canopy-runtime-v112.test.mjs
+          tests/hunt-carcass-runtime-v112.test.mjs
+          tests/hunt-field-load-v112.test.mjs
+          tests/hunt-field-stash-runtime-v112.test.mjs
+          tests/hunt-mechanics-workbook-v112.test.mjs
       - name: Verify deterministic V112 workbook and discovery resources
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: |

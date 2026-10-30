@@ -1,0 +1,19 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> yautja-la-longue-chasse@1.0.0 build:production
+> node scripts/build-production-v94.mjs
+
+[production] audio
+[audio] 37 slots, 0 supplied, 0 ignored
+[production] next
+▲ Next.js 16.3.5 (webpack)
+✓ Running next.config.ts took 83ms
+
+  Creating an optimized production build ...
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOSPC: no space left on device, write
+uncaughtException [Error: ENOSPC: no space left on device, write] {
+  errno: -28,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+[production] Échec de next; les étapes suivantes ne seront pas exécutées.
