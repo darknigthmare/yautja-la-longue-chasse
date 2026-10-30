@@ -24,3 +24,9 @@ Le paquet source `PHG_V125_12_Etudes_Reconstitutions.zip` contient les douze PNG
 
 ## Sécurité, sauvegardes et QA
 Les identifiants des études restent une liste fermée ; un ID de sauvegarde arbitraire ne peut ni ouvrir une URL extérieure ni sélectionner un nouveau fichier. Le cache Canvas distingue le *tile* et pas seulement son chemin d'atlas. Le rendu de la peau n'applique pas les textures à la coiffure, aux anneaux, au masque ou aux plaques. La CI V114 vérifie le chargement du WebP et les régressions CSS/Canvas.
+
+## V125.2 — Contrôle des noms historiques
+
+La publication officielle du DLC utilise **City Hunter ('97)**, tout en attribuant le personnage au film *Predator 2* (1990). La liste du patch 2.0 emploie l'abréviation **CH90**. Ces dénominations ne sont donc pas interchangeables avec un nom de texture vérifié : Sector/Ward/Tract restent des **étiquettes de suivi non retrouvées dans les notes du patch 2.0**.
+
+La traçabilité des douze études V125 a été ajoutée aux 34 dossiers du registre `phgVisualReferenceResearchV123.json` sans en fermer un seul. Les huit teintes JH87/Elder ont un nom reconnu par le patch 2.0, le correctif de Feral est attesté par le patch 3.6.0 ; aucune image de pixels ou carte UV authentique n'a été obtenue.

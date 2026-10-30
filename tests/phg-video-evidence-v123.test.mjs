@@ -77,3 +77,29 @@ test("V123.2: Elder exclusive skin patterns do not imply four named predlock sha
    assert.ok(check.relatedIds.includes(id));
  assert.match(check.finding,/predlock variations were NOT available at that time/);
 });
+
+test("V125 12 atlas studies remain separate from unverified 1:1 claims",()=>{
+ const present=source.targets.filter(x=>x.v125AtlasTile);
+ assert.equal(present.length,12);
+ assert.equal(source.visualStudyCountV125,12);
+ const tiles=new Set();
+ for(const item of present){
+  assert.equal(item.v125AtlasTile.visualStatus,"playable-study-only");
+  assert.equal(item.v125AtlasTile.pixel1to1Certified,false);
+  assert.equal(item.v125AtlasTile.videoFrameInspected,false);
+  assert.ok(item.v125AtlasTile.sourcePath.endsWith("phg-studies/atlas.webp"));
+  const t=item.v125AtlasTile;
+  assert.ok(t.column>=0&&t.column<3&&t.row>=0&&t.row<4);
+  tiles.add(t.column+":"+t.row);
+  assert.equal(item.UV1to1,false);
+ }
+ assert.equal(tiles.size,12);
+ assert.equal(source.recentVerifiedUpdatesV125.length,6);
+ assert.equal(source.recentVerifiedUpdatesV125.at(-1).name,"Father");
+ for(const id of ["skin_classe_cityhunter97_sector","skin_classe_cityhunter97_ward","skin_classe_cityhunter97_tract"]){
+  assert.equal(source.targets.find(x=>x.id===id).v125AtlasTile.nameVerifiedByOfficialPatch,false);
+ }
+ assert.equal(source.cityHunterHistoricalNamingV125.officialDlcName,"City Hunter ('97)");
+ assert.equal(source.cityHunterHistoricalNamingV125.filmYear,1990);
+ assert.equal(source.pixel1to1Certified,0);
+});

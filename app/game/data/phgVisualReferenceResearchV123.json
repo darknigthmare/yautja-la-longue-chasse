@@ -114,7 +114,9 @@
     "Image controls are from community screenshot thumbnails and are not original UV textures.",
     "Original screenshot image bytes and YouTube video files are NOT copied to this public repository.",
     "Color swatch extraction and normal/PBR recovery cannot be guaranteed from compressed and lit screenshots.",
-    "Do not promote V122 studies or unresolved images into in-game PHG official-1to1 catalogue."
+    "Do not promote V122 studies or unresolved images into in-game PHG official-1to1 catalogue.",
+    "V125: Twelve original atlas studies are playable and provenance-linked; this does not resolve any of the 34 official UV/image verification gates.",
+    "City Hunter ('97) is official DLC branding while the Predator 2 film is from 1990; do not normalize this name into an invented shader claim."
   ],
   "targets": [
     {
@@ -407,7 +409,20 @@
       "frameSeenByAssistant": false,
       "UV1to1": false,
       "preliminaryNotes": [],
-      "releaseGate": "needs-named-menu-selected-front-side-back"
+      "releaseGate": "needs-named-menu-selected-front-side-back",
+      "v125AtlasTile": {
+        "sourcePath": "/game/assets/v125/phg-studies/atlas.webp",
+        "column": 0,
+        "row": 0,
+        "columns": 3,
+        "rows": 4,
+        "materialId": "phg-study-v125-jungle87_wasteland",
+        "nameVerifiedByOfficialPatch": true,
+        "patchId": "PATCH_2_0",
+        "visualStatus": "playable-study-only",
+        "pixel1to1Certified": false,
+        "videoFrameInspected": false
+      }
     },
     {
       "id": "skin_classe_junglehunter87_undergrowth",
@@ -435,7 +450,20 @@
       "frameSeenByAssistant": false,
       "UV1to1": false,
       "preliminaryNotes": [],
-      "releaseGate": "needs-named-menu-selected-front-side-back"
+      "releaseGate": "needs-named-menu-selected-front-side-back",
+      "v125AtlasTile": {
+        "sourcePath": "/game/assets/v125/phg-studies/atlas.webp",
+        "column": 2,
+        "row": 0,
+        "columns": 3,
+        "rows": 4,
+        "materialId": "phg-study-v125-jungle87_undergrowth",
+        "nameVerifiedByOfficialPatch": true,
+        "patchId": "PATCH_2_0",
+        "visualStatus": "playable-study-only",
+        "pixel1to1Certified": false,
+        "videoFrameInspected": false
+      }
     },
     {
       "id": "skin_classe_junglehunter87_badland",
@@ -462,7 +490,20 @@
       "frameSeenByAssistant": false,
       "UV1to1": false,
       "preliminaryNotes": [],
-      "releaseGate": "needs-named-menu-selected-front-side-back"
+      "releaseGate": "needs-named-menu-selected-front-side-back",
+      "v125AtlasTile": {
+        "sourcePath": "/game/assets/v125/phg-studies/atlas.webp",
+        "column": 0,
+        "row": 1,
+        "columns": 3,
+        "rows": 4,
+        "materialId": "phg-study-v125-jungle87_badland",
+        "nameVerifiedByOfficialPatch": true,
+        "patchId": "PATCH_2_0",
+        "visualStatus": "playable-study-only",
+        "pixel1to1Certified": false,
+        "videoFrameInspected": false
+      }
     },
     {
       "id": "skin_classe_junglehunter87_quagmire",
@@ -491,7 +532,20 @@
       "frameSeenByAssistant": false,
       "UV1to1": false,
       "preliminaryNotes": [],
-      "releaseGate": "needs-named-menu-selected-front-side-back"
+      "releaseGate": "needs-named-menu-selected-front-side-back",
+      "v125AtlasTile": {
+        "sourcePath": "/game/assets/v125/phg-studies/atlas.webp",
+        "column": 1,
+        "row": 1,
+        "columns": 3,
+        "rows": 4,
+        "materialId": "phg-study-v125-jungle87_quagmire",
+        "nameVerifiedByOfficialPatch": true,
+        "patchId": "PATCH_2_0",
+        "visualStatus": "playable-study-only",
+        "pixel1to1Certified": false,
+        "videoFrameInspected": false
+      }
     },
     {
       "id": "skin_classe_elder_ancient",
@@ -537,7 +591,20 @@
       "frameSeenByAssistant": false,
       "UV1to1": false,
       "preliminaryNotes": [],
-      "releaseGate": "needs-named-menu-selected-front-side-back"
+      "releaseGate": "needs-named-menu-selected-front-side-back",
+      "v125AtlasTile": {
+        "sourcePath": "/game/assets/v125/phg-studies/atlas.webp",
+        "column": 1,
+        "row": 0,
+        "columns": 3,
+        "rows": 4,
+        "materialId": "phg-study-v125-elder_ancient",
+        "nameVerifiedByOfficialPatch": true,
+        "patchId": "PATCH_2_0",
+        "visualStatus": "playable-study-only",
+        "pixel1to1Certified": false,
+        "videoFrameInspected": false
+      }
     },
     {
       "id": "skin_classe_elder_relic",
@@ -582,7 +649,20 @@
       "frameSeenByAssistant": false,
       "UV1to1": false,
       "preliminaryNotes": [],
-      "releaseGate": "needs-named-menu-selected-front-side-back"
+      "releaseGate": "needs-named-menu-selected-front-side-back",
+      "v125AtlasTile": {
+        "sourcePath": "/game/assets/v125/phg-studies/atlas.webp",
+        "column": 2,
+        "row": 1,
+        "columns": 3,
+        "rows": 4,
+        "materialId": "phg-study-v125-elder_relic",
+        "nameVerifiedByOfficialPatch": true,
+        "patchId": "PATCH_2_0",
+        "visualStatus": "playable-study-only",
+        "pixel1to1Certified": false,
+        "videoFrameInspected": false
+      }
     },
     {
       "id": "skin_classe_elder_primeval",
@@ -627,7 +707,20 @@
       "frameSeenByAssistant": false,
       "UV1to1": false,
       "preliminaryNotes": [],
-      "releaseGate": "needs-named-menu-selected-front-side-back"
+      "releaseGate": "needs-named-menu-selected-front-side-back",
+      "v125AtlasTile": {
+        "sourcePath": "/game/assets/v125/phg-studies/atlas.webp",
+        "column": 0,
+        "row": 2,
+        "columns": 3,
+        "rows": 4,
+        "materialId": "phg-study-v125-elder_primeval",
+        "nameVerifiedByOfficialPatch": true,
+        "patchId": "PATCH_2_0",
+        "visualStatus": "playable-study-only",
+        "pixel1to1Certified": false,
+        "videoFrameInspected": false
+      }
     },
     {
       "id": "skin_classe_elder_stoic",
@@ -675,7 +768,20 @@
       "frameSeenByAssistant": false,
       "UV1to1": false,
       "preliminaryNotes": [],
-      "releaseGate": "needs-named-menu-selected-front-side-back"
+      "releaseGate": "needs-named-menu-selected-front-side-back",
+      "v125AtlasTile": {
+        "sourcePath": "/game/assets/v125/phg-studies/atlas.webp",
+        "column": 1,
+        "row": 2,
+        "columns": 3,
+        "rows": 4,
+        "materialId": "phg-study-v125-elder_stoic",
+        "nameVerifiedByOfficialPatch": true,
+        "patchId": "PATCH_2_0",
+        "visualStatus": "playable-study-only",
+        "pixel1to1Certified": false,
+        "videoFrameInspected": false
+      }
     },
     {
       "id": "skin_classe_cityhunter97_sector",
@@ -724,7 +830,20 @@
       "preliminaryNotes": [
         "Film costume fan associations are not verified texture mappings."
       ],
-      "releaseGate": "needs-named-menu-selected-front-side-back"
+      "releaseGate": "needs-named-menu-selected-front-side-back",
+      "v125AtlasTile": {
+        "sourcePath": "/game/assets/v125/phg-studies/atlas.webp",
+        "column": 2,
+        "row": 2,
+        "columns": 3,
+        "rows": 4,
+        "materialId": "phg-study-v125-city97_sector",
+        "nameVerifiedByOfficialPatch": false,
+        "patchId": null,
+        "visualStatus": "playable-study-only",
+        "pixel1to1Certified": false,
+        "videoFrameInspected": false
+      }
     },
     {
       "id": "skin_classe_cityhunter97_ward",
@@ -775,7 +894,20 @@
       "preliminaryNotes": [
         "Film costume fan associations are not verified texture mappings."
       ],
-      "releaseGate": "needs-named-menu-selected-front-side-back"
+      "releaseGate": "needs-named-menu-selected-front-side-back",
+      "v125AtlasTile": {
+        "sourcePath": "/game/assets/v125/phg-studies/atlas.webp",
+        "column": 0,
+        "row": 3,
+        "columns": 3,
+        "rows": 4,
+        "materialId": "phg-study-v125-city97_ward",
+        "nameVerifiedByOfficialPatch": false,
+        "patchId": null,
+        "visualStatus": "playable-study-only",
+        "pixel1to1Certified": false,
+        "videoFrameInspected": false
+      }
     },
     {
       "id": "skin_classe_cityhunter97_tract",
@@ -824,7 +956,20 @@
       "preliminaryNotes": [
         "Film costume fan associations are not verified texture mappings."
       ],
-      "releaseGate": "needs-named-menu-selected-front-side-back"
+      "releaseGate": "needs-named-menu-selected-front-side-back",
+      "v125AtlasTile": {
+        "sourcePath": "/game/assets/v125/phg-studies/atlas.webp",
+        "column": 1,
+        "row": 3,
+        "columns": 3,
+        "rows": 4,
+        "materialId": "phg-study-v125-city97_tract",
+        "nameVerifiedByOfficialPatch": false,
+        "patchId": null,
+        "visualStatus": "playable-study-only",
+        "pixel1to1Certified": false,
+        "videoFrameInspected": false
+      }
     },
     {
       "id": "skin_classe_feral_default_apres_3_6_0",
@@ -864,7 +1009,20 @@
       "preliminaryNotes": [
         "2026 patch adjusts Feral default; cloak color or a class video is not proof of skin RGB."
       ],
-      "releaseGate": "needs-named-menu-selected-front-side-back"
+      "releaseGate": "needs-named-menu-selected-front-side-back",
+      "v125AtlasTile": {
+        "sourcePath": "/game/assets/v125/phg-studies/atlas.webp",
+        "column": 2,
+        "row": 3,
+        "columns": 3,
+        "rows": 4,
+        "materialId": "phg-study-v125-feral_post_3_6_default",
+        "nameVerifiedByOfficialPatch": true,
+        "patchId": "PATCH_3_6",
+        "visualStatus": "playable-study-only",
+        "pixel1to1Certified": false,
+        "videoFrameInspected": false
+      }
     },
     {
       "id": "skin_default_terror",
@@ -1404,5 +1562,52 @@
       "forbiddenInference": "Do not infer Elder predlock material variants from similarly named Elder skin shader entries.",
       "blocksOfficialPixelClaim": true
     }
-  ]
+  ],
+  "recentVerifiedUpdatesV125": [
+    {
+      "date": "2025-02-13",
+      "name": "Anubis",
+      "url": "https://forum.predator.illfonic.com/t/patch-notes-3-2-0/36078",
+      "sourceType": "official-patch-name-not-UV"
+    },
+    {
+      "date": "2025-03-25",
+      "name": "Exalted",
+      "url": "https://forum.predator.illfonic.com/t/exalted-predator-is-here/36265",
+      "sourceType": "official-patch-name-not-UV"
+    },
+    {
+      "date": "2025-04-24",
+      "name": "Witch",
+      "url": "https://forum.predator.illfonic.com/t/the-witch-predator-has-arrived/36352",
+      "sourceType": "official-patch-name-not-UV"
+    },
+    {
+      "date": "2025-08-19",
+      "name": "Oni",
+      "url": "https://forum.predator.illfonic.com/t/oni-predator-is-here/36985",
+      "sourceType": "official-patch-name-not-UV"
+    },
+    {
+      "date": "2026-01-22",
+      "name": "Jotun",
+      "url": "https://forum.predator.illfonic.com/t/the-jotun-predator-has-arrived/37412",
+      "sourceType": "official-patch-name-not-UV"
+    },
+    {
+      "date": "2026-04-28",
+      "name": "Father",
+      "url": "https://forum.predator.illfonic.com/t/the-father-predator-joins-the-hunt/37649",
+      "sourceType": "official-patch-name-not-UV"
+    }
+  ],
+  "cityHunterHistoricalNamingV125": {
+    "officialDlcName": "City Hunter ('97)",
+    "sourceUrl": "https://predator.illfonic.com/",
+    "filmYear": 1990,
+    "patchAbbreviation": "CH90",
+    "sectorWardTractNamesVerifiedInPatch2_0": false,
+    "note": "Official DLC branding includes '97' while the movie is from 1990. Patch 2.0 lists CH90, but the three open Sector/Ward/Tract visual labels were not found in that release note."
+  },
+  "visualStudyCountV125": 12
 }
