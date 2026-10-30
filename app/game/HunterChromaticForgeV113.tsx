@@ -60,7 +60,7 @@ export default function HunterChromaticForgeV113({
         </li>)}
       </ul>
       <p>Feral · peau Default : modification dans le patch {PHG_FERAL_CORRECTION_V125.patch}
-        {" ("}{PHG_FERAL_CORRECTION_V125.date}{")"}. L'étude V125 et le matériau antérieur
+        {" ("}{PHG_FERAL_CORRECTION_V125.date}{")"}. L’étude V125 et le matériau antérieur
         sont conservés séparément ; les pixels officiels restent à vérifier.</p>
     </details>
     <div className={styles.grid}>
