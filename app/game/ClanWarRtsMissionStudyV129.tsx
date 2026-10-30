@@ -148,6 +148,7 @@ export default function ClanWarRtsMissionStudyV129({rules}:{rules:WarRulesV6}){
     </div>}
     <details>
      <summary>Conception et provenance de la mission</summary>
+     <p><strong>Déploiement source :</strong> {mission.sourceDeployment}</p>
      <p><strong>Plan adverse source :</strong> {mission.sourceEnemyPlan}</p>
      <p><strong>Actions source :</strong> {mission.sourceConditions}</p>
      <p><strong>Choix source :</strong> {mission.sourceAlternatives}</p>
