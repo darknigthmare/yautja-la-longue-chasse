@@ -35,7 +35,7 @@ export default function PlanetMaterialCanvasV101({
   const [visible, setVisible] = useState(false);
   const [revision, setRevision] = useState(0);
   const [status, setStatus] = useState("waiting");
-  const { atmosphere, clouds, weather, lighting } = settings;
+  const { atmosphere, clouds, weather, lighting, aurora = true } = settings;
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -67,7 +67,7 @@ export default function PlanetMaterialCanvasV101({
       setStatus("loading");
       void drawPlanetMaterialV101(canvas, {
         planet, projection, width, height, longitude, latitude, radius, centerX, centerY, mapTop, mapHeight, layer,
-        settings: { atmosphere, clouds, weather, lighting }, signal: controller.signal,
+        settings: { atmosphere, clouds, weather, lighting, aurora }, signal: controller.signal,
       }).then(ready => {
         if (controller.signal.aborted) return;
         if (!ready) canvas.getContext("2d")?.clearRect(0, 0, canvas.width, canvas.height);
@@ -75,7 +75,7 @@ export default function PlanetMaterialCanvasV101({
       });
     });
     return () => { controller.abort(); cancelAnimationFrame(frame); };
-  }, [planet, projection, width, height, longitude, latitude, radius, centerX, centerY, mapTop, mapHeight, resolution, layer, atmosphere, clouds, weather, lighting, onReady, visible, revision]);
+  }, [planet, projection, width, height, longitude, latitude, radius, centerX, centerY, mapTop, mapHeight, resolution, layer, atmosphere, clouds, weather, lighting, aurora, onReady, visible, revision]);
 
   return <canvas ref={canvasRef} width={resolution} height={Math.round(resolution * height / width)}
     aria-hidden="true" data-testid="planet-material-v101" data-planet-id={planet.id} data-projection={projection}
