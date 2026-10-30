@@ -3,11 +3,11 @@ import type { WarRtsActorV115 } from "./clanWarOperationsV115";
 import { warMissionTerrainV116, warTerrainCellBlockedV116, warTerrainLineOfSightV116, type WarMissionTerrainV116 } from "./clanWarMissionTerrainV116";
 
 /**
- * W3-RTS01/02/03: three SMALL objective exercises from authored W3-MAP01/02 briefs.
+ * W3-RTS01/02/03/04: four SMALL objective exercises from authored W3-MAP01/02 briefs.
  * The existing battlefield is 9 x 6, not the 32 x 24 full authored scene.
- * The other 21 RTS sources are still dossiers, not pretend playable missions.
+ * The other 20 RTS sources are still dossiers, not pretend playable missions.
  */
-export type WarSourceRtsScenarioIdV119 = "W3-RTS01" | "W3-RTS02" | "W3-RTS03";
+export type WarSourceRtsScenarioIdV119 = "W3-RTS01" | "W3-RTS02" | "W3-RTS03" | "W3-RTS04";
 export interface WarSourceRtsScenarioDefinitionV119 {
   id: WarSourceRtsScenarioIdV119;
   title: string;
@@ -18,7 +18,7 @@ export interface WarSourceRtsScenarioDefinitionV119 {
   enemyPlan: string;
   completion: string;
   supportedRegionId: "W3-KR01" | "W3-KR02";
-  objectiveKind: "cargo-escort" | "guard-relief" | "filter-repair";
+  objectiveKind: "cargo-escort" | "guard-relief" | "filter-repair" | "circuit-defense";
   playability: "objective-exercise";
 }
 export type WarRtsScriptedObjectiveV119 =
@@ -29,7 +29,10 @@ export type WarRtsScriptedObjectiveV119 =
      reliefProgress:number; requiredTurns:3; guardPoint:{x:7;y:3} }
  | { scenarioId:"W3-RTS03"; kind:"filter-repair"; sourceMapId:"W3-MAP02";
      cargo:{id:string; carrierTeamId:string|null; x:number; y:number};
-     filterSite:{x:7;y:3}; delivered:boolean; workProgress:number; requiredTurns:2 };
+     filterSite:{x:7;y:3}; delivered:boolean; workProgress:number; requiredTurns:2 }
+ | { scenarioId:"W3-RTS04"; kind:"circuit-defense"; sourceMapId:"W3-MAP02";
+     leverPoint:{x:7;y:3}; heldTurns:number; requiredTurns:4;
+     integrity:number; maxIntegrity:3; pressurePhase:number };
 
 export interface WarRtsScriptedResultV119 {
   objective: WarRtsScriptedObjectiveV119;
@@ -42,11 +45,11 @@ const GUARD_UNIT="W3-U07";
 const DIST=(a:{x:number;y:number},c:{x:number;y:number})=>Math.abs(a.x-c.x)+Math.abs(a.y-c.y);
 
 export function warSourceRtsScenarioV119(id:string,rules:WarRulesV6): WarSourceRtsScenarioDefinitionV119|null {
-  if(id!=="W3-RTS01"&&id!=="W3-RTS02"&&id!=="W3-RTS03")return null;
+  if(id!=="W3-RTS01"&&id!=="W3-RTS02"&&id!=="W3-RTS03"&&id!=="W3-RTS04")return null;
   const entry=rules.entries.find(item=>item.sheet==="Scénarios RTS"&&item.id===id);
   if(!entry)return null;
   const v=(column:string)=>String(entry.fields.find(field=>field.column===column)?.value??"").trim();
-  const mapId=id==="W3-RTS03"?"W3-MAP02":"W3-MAP01";
+  const mapId=id==="W3-RTS03"||id==="W3-RTS04"?"W3-MAP02":"W3-MAP01";
   if(v("C")!==mapId || !rules.entries.some(item=>item.sheet==="Cartes des escarmouches"&&item.id===mapId))
     return null;
   return {
@@ -54,8 +57,9 @@ export function warSourceRtsScenarioV119(id:string,rules:WarRulesV6): WarSourceR
     sourceCells:["C","D","E","F","G","H","I","J","K","L","M","N","O"]
       .map(column=>entry.fields.find(field=>field.column===column)?.cell).filter((cell):cell is string=>!!cell),
     situation:v("E"),tactics:v("I"),enemyPlan:v("J"),completion:v("L"),
-    supportedRegionId:id==="W3-RTS03"?"W3-KR02":"W3-KR01",
-    objectiveKind:id==="W3-RTS01"?"cargo-escort":id==="W3-RTS02"?"guard-relief":"filter-repair",
+    supportedRegionId:id==="W3-RTS03"||id==="W3-RTS04"?"W3-KR02":"W3-KR01",
+    objectiveKind:id==="W3-RTS01"?"cargo-escort":id==="W3-RTS02"?"guard-relief":
+      id==="W3-RTS03"?"filter-repair":"circuit-defense",
     playability:"objective-exercise",
   };
 }
@@ -74,6 +78,8 @@ export function warRtsScriptedEligibilityV119(
     return "La relève W3-RTS02 exige une équipe W3-U07 réellement présente pour garder le sommet.";
   if(brief.id==="W3-RTS03"&&(!unitIds.includes("W3-U19")||!unitIds.includes("W3-U20")))
     return "W3-RTS03 exige un récupérateur de charges W3-U19 et de vrais artisans W3-U20, recrutés et présents.";
+  if(brief.id==="W3-RTS04"&&!unitIds.includes("W3-U07"))
+    return "W3-RTS04 exige des lanciers de seuil W3-U07 pour défendre réellement le levier.";
   return null;
 }
 export function createWarRtsScriptedObjectiveV119(
@@ -82,6 +88,11 @@ export function createWarRtsScriptedObjectiveV119(
   if(id==="W3-RTS02")return {
     scenarioId:id,kind:"guard-relief",sourceMapId:"W3-MAP01",
     reliefProgress:0,requiredTurns:3,guardPoint:{x:7,y:3},
+  };
+  if(id==="W3-RTS04")return {
+    scenarioId:id,kind:"circuit-defense",sourceMapId:"W3-MAP02",
+    leverPoint:{x:7,y:3},heldTurns:0,requiredTurns:4,
+    integrity:3,maxIntegrity:3,pressurePhase:0,
   };
   if(id==="W3-RTS03"){
     const porter=actors.find(actor=>actor.side==="ally"&&actor.teamId&&actor.unitId==="W3-U19");
@@ -112,6 +123,26 @@ export function resolveWarRtsScriptedTickV119(
       (!own.some(actor=>actor.unitId===GUARD_UNIT)?"defeat":null),
       message:progress>=objective.requiredTurns?"La relève a réellement tenu le sommet pendant trois tours.":
       "Relève de guet : "+progress+"/"+objective.requiredTurns+" tours tenus par les W3-U07."};
+  }
+  if(objective.kind==="circuit-defense"){
+    const guard=own.some(actor=>actor.unitId===GUARD_UNIT&&DIST(actor,objective.leverPoint)<=1);
+    const attackers=hostile.filter(actor=>DIST(actor,objective.leverPoint)<=1);
+    const phase=(objective.pressurePhase+1)%3;
+    // Vapor cycling is announced, but hazards do not fabricate new casualties.
+    // An unguarded lever under physical assault loses one local integrity point.
+    const integrity=Math.max(0,objective.integrity-(!guard&&attackers.length?1:0));
+    const held=guard&&!attackers.length?
+      Math.min(objective.requiredTurns,objective.heldTurns+1):0;
+    const next={...objective,heldTurns:held,integrity,pressurePhase:phase};
+    const complete=held>=objective.requiredTurns&&integrity>0;
+    const lost=integrity<=0||!own.some(actor=>actor.unitId===GUARD_UNIT);
+    const hazard=phase===1?"montée de vapeur annoncée":phase===2?"cycle de vapeur visible":"pression relâchée";
+    return {objective:next,outcome:complete?"victory":lost?"defeat":null,
+      message:complete?"Circuit encore ouvert : les lanciers ont tenu le levier jusqu'à la relève.":
+        "Levier W3-MAP02 : "+held+"/"+objective.requiredTurns+
+        " tours tenus, intégrité "+integrity+"/"+objective.maxIntegrity+
+        ", "+hazard+" ; garde "+(guard?"présente":"absente")+
+        ", ennemis au levier "+attackers.length+"."};
   }
   if(objective.kind==="filter-repair"){
     let cargo={...objective.cargo};
@@ -205,7 +236,9 @@ export function warRtsRivalTargetV120(
       objective?.kind==="filter-repair"?
         (actor:WarRtsActorV115)=>objective.delivered?
           actor.unitId==="W3-U20":actor.teamId===objective.cargo.carrierTeamId&&actor.unitId==="W3-U19":
-        (_actor:WarRtsActorV115)=>false;
+        objective?.kind==="circuit-defense"?
+          (actor:WarRtsActorV115)=>actor.unitId===GUARD_UNIT&&DIST(actor,objective.leverPoint)<=2:
+          (_actor:WarRtsActorV115)=>false;
   const selected=visible.find(priority);
   return selected??(visible[0]??[...living].sort(byDistance)[0]);
 }
@@ -217,13 +250,23 @@ export function validWarRtsScriptedObjectiveV119(
   if(!value||typeof value!=="object"||Array.isArray(value))return false;
   const v=value as Partial<WarRtsScriptedObjectiveV119>;
   if(!v.scenarioId||warRtsScriptedEligibilityV119(v.scenarioId,rules,targetId,unitIds)!==null||
-    v.sourceMapId!==(v.scenarioId==="W3-RTS03"?"W3-MAP02":"W3-MAP01"))return false;
+    v.sourceMapId!==(v.scenarioId==="W3-RTS03"||v.scenarioId==="W3-RTS04"?"W3-MAP02":"W3-MAP01"))return false;
   const terrain=warMissionTerrainV116(targetId,rules);
   if(v.scenarioId==="W3-RTS02"){
     const stage=v as Partial<Extract<WarRtsScriptedObjectiveV119,{kind:"guard-relief"}>>;
     return stage.kind==="guard-relief"&&stage.requiredTurns===3&&
       !!stage.guardPoint&&stage.guardPoint.x===7&&stage.guardPoint.y===3&&
       Number.isInteger(stage.reliefProgress)&&(stage.reliefProgress as number)>=0&&(stage.reliefProgress as number)<=3;
+  }
+  if(v.scenarioId==="W3-RTS04"){
+    const stage=v as Partial<Extract<WarRtsScriptedObjectiveV119,{kind:"circuit-defense"}>>;
+    return stage.kind==="circuit-defense"&&!!stage.leverPoint&&
+      stage.leverPoint.x===7&&stage.leverPoint.y===3&&stage.requiredTurns===4&&
+      stage.maxIntegrity===3&&Number.isInteger(stage.heldTurns)&&
+      (stage.heldTurns as number)>=0&&(stage.heldTurns as number)<=4&&
+      Number.isInteger(stage.integrity)&&(stage.integrity as number)>=1&&(stage.integrity as number)<=3&&
+      Number.isInteger(stage.pressurePhase)&&(stage.pressurePhase as number)>=0&&
+      (stage.pressurePhase as number)<=2;
   }
   if(v.scenarioId==="W3-RTS03"){
     const stage=v as Partial<Extract<WarRtsScriptedObjectiveV119,{kind:"filter-repair"}>>;
