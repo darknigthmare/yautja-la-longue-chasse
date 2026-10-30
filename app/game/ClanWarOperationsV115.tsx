@@ -6,6 +6,7 @@ import { warMissionTerrainV116 } from "./systems/clanWarMissionTerrainV116";
 import {
   WAR_OPERATIONS_STORAGE_V115, beginWarOperationV115, commandRtsV115, commandStealthV115,
   createWarOperationsV115, deployAssaultUnitV115, issueWarRtsRealtimeOrderV115,
+  upgradeWarAssaultApV117, issueWarAssaultSpecialV117,
   queueWarRecruitmentV115, settleWarRecruitmentsV115,
   queueWarTreatmentV116, settleWarTreatmentsV116, cancelWarTreatmentV116,
   leaveWarOperationV115, readWarOperationsV115, stepWarRtsRealtimeV115, toggleWarRtsRealtimeV115,
@@ -306,7 +307,14 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false}:
         <button type="button" disabled={blocked} onClick={()=>commit(leaveWarOperationV115(worldRef.current,rules))}>Ordonner le repli</button></div>
 
       {assault && <div>
-        <p>Points d&apos;assaut <strong>{assault.ap} AP</strong> · Rempart allié <strong>{assault.ownBase}/80</strong> · Rempart adverse <strong>{assault.rivalBase}/80</strong>. Les équipes avancent et engagent automatiquement ; vous décidez du moment du déploiement.</p>
+        <p>Points d&apos;assaut <strong>{assault.ap} AP</strong> · Cadence <strong>niveau {assault.apLevel??1}/3</strong> · Réserve maximale <strong>{100+((assault.apLevel??1)-1)*35} AP</strong> · Rempart allié <strong>{assault.ownBase}/80</strong> · Rempart adverse <strong>{assault.rivalBase}/80</strong>. Les équipes avancent et engagent automatiquement ; vous décidez du moment du déploiement.</p>
+        <div className={styles.cards}>
+          <button type="button" disabled={blocked||(assault.apLevel??1)>=3||assault.ap<((assault.apLevel??1)===1?35:55)}
+            onClick={()=>commit(upgradeWarAssaultApV117(worldRef.current))}>
+            {(assault.apLevel??1)>=3?"Cadence maximale atteinte":"Accélérer la coordination AP · "+((assault.apLevel??1)===1?35:55)+" AP"}
+          </button>
+          <p className={styles.explain}>Cette montée de cadence ne recrute personne ; elle augmente uniquement le rythme des ordres sur cette simulation.</p>
+        </div>
         <svg className={styles.sideScene} viewBox="0 0 1000 220" role="img" aria-label="Vue de côté du champ de bataille, bastions et unités">
           <rect width="1000" height="220" fill="#172825"/>
           <path d="M0 175 H1000" stroke="#8d856d" strokeWidth="4"/>
@@ -328,6 +336,14 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false}:
             onClick={()=>commit(deployAssaultUnitV115(worldRef.current,id,rules))}>
             {unit.name} · {cost} AP {assault.launched.includes(id)?"· déployée":""}</button>;
         })}</div>
+        <div className={styles.cards}>
+          {current.teamIds.filter(id=>assault.launched.includes(id)).map(id=><button type="button" key={"special-"+id}
+            disabled={blocked||assault.ap<20||(assault.usedSpecials??[]).includes(id)||!assault.actors.some(actor=>actor.teamId===id&&actor.hp>0)}
+            onClick={()=>commit(issueWarAssaultSpecialV117(worldRef.current,id,rules))}>
+            {teamsById(id)} · feu concentré (20 AP){(assault.usedSpecials??[]).includes(id)?" · utilisé":""}
+          </button>)}
+        </div>
+        <p className={styles.explain}>Action coordonnée limitée à une fois par détachement survivant, uniquement si une cible adverse se trouve dans sa portée V6. Aucun nouveau projectile ou équipement n&apos;est créé.</p>
         <p className={styles.explain}>Art temporaire schématique : aucun sprite de film ou de Predator: Hunting Grounds n&apos;est faussement déclaré intégré.</p>
       </div>}
 
