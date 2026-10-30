@@ -209,7 +209,7 @@ export interface WarRtsTaskV129 extends WarRtsTaskSpecV129 {
 }
 export interface WarRtsMissionV129 {
  id:WarRtsMissionIdV129;name:string;mapId:string;planetId:string;
- rank:string;sourceObjective:string;sourceConditions:string;
+ rank:string;sourceObjective:string;sourceDeployment:string;sourceConditions:string;
  sourceEnemyPlan:string;sourceAlternatives:string;sourceVictory:string;
  sourceReentry:string;sourceCampaignLink:string;sourceProvenance:string;
  sourceRewardXpDesign:number;sourceCells:string[];
@@ -270,7 +270,7 @@ export function buildWarRtsMissionV129(id:string,rules:WarRulesV6):WarRtsMission
  if(map.id!==mapId)throw new Error("La mission demande une carte W3 différente de celle chargée.");
  return {
   id,name:String(entry.title),mapId,planetId:map.planetId,
-  rank:field(entry,"D"),sourceObjective:field(entry,"E"),
+  rank:field(entry,"D"),sourceObjective:field(entry,"E"),sourceDeployment:field(entry,"F"),
   sourceConditions:field(entry,"I"),sourceEnemyPlan:field(entry,"J"),
   sourceAlternatives:field(entry,"K"),sourceVictory:field(entry,"L"),
   sourceReentry:field(entry,"M"),
@@ -510,7 +510,8 @@ export function auditWarRtsSourceMissionsV129(rules:WarRulesV6){
     issues.push(id+": missing source budget");
    if(!Number.isFinite(plan.sourceRewardXpDesign))
     issues.push(id+": missing authored XP value");
-   if(!plan.sourceVictory||!plan.sourceObjective)issues.push(id+": missing script source");
+   if(!plan.sourceVictory||!plan.sourceObjective||!plan.sourceDeployment)
+    issues.push(id+": missing objective, deployment or victory text");
    if(plan.tasks.some(t=>!warMapFindPathV128(base.map,base.map.start,t.location)))
     issues.push(id+": inaccessible physical task");
    if(plan.suggestedV6Units.some(u=>!rules.units.some(v=>v.id===u)))
