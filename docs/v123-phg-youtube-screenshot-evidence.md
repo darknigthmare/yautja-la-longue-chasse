@@ -30,3 +30,15 @@
 La preuve 1:1 exige davantage qu'une simple vidéo YouTube compressée : captures du même shader sous éclairage neutre de face/dos/profil, tête et corps cohérents, masques originaux séparés, géométrie et UV de destination validés, tests multi-morphologies et absence d'erreurs de raccords. Une étude V122 peut être rapprochée de ces visuels, sans être déclarée texture officielle du jeu.
 
 **Ne pas embarquer les vidéos ou les screenshots tiers dans ce dépôt public.** Conserver leurs URL, auteurs, versions, éventuels timecodes authentiquement inspectés et SHA-256 seulement si le fichier de capture est disponible légalement pour examen local.
+
+
+## V123.1 — Anti-confusions vérifiées sur captures et catégories
+
+Les discussions et images de menus changent parfois la classification d'une texture. Leur consultation **ne certifie pas** les pixels des variantes manquantes.
+
+- [Rouge/vert attribué à tort à Epic Exclusive](https://forum.predator.illfonic.com/t/red-green-skin-pattern/5857) : plusieurs joueurs supposent une exclusivité Epic, mais Noktrum identifie le screenshot comme une teinte **Shatter / Fracture**, et l'auteur indique avoir retrouvé cette correspondance. La lumière de la partie n'est pas celle du menu. Cette image ne justifie pas une nouvelle matière Epic 1:1.
+- [Patch officiel 2.19](https://forum.predator.illfonic.com/t/patch-notes-2-19/20975) : **Ogre** figure dans « Predator Mask Tint / Alpha Predator », pas dans « Predator Armor Tints ». L'élément `armure_v2_ogre_pending` reste donc non attribué ; ne pas transférer la matière d'un masque sur les plaques du corps.
+- [Capture du menu JH87](https://forum.predator.illfonic.com/t/jh87s-armor-for-everyone/15917?page=9) : l'option sélectionnée est **Hunter Armor** parmi les styles d'armure ; l'image n'identifie aucun shader de peau Wasteland / Badland / Quagmire / Undergrowth.
+- [Notes officielles V3.00](https://predator.illfonic.com/news/patch-notes-3-00/) : corrections de coloration de plusieurs teintes de peau et d'armure. La date du screenshot doit donc être enregistrée. Des joueurs expérimentant les textures signalent des UV non interchangeables sur certains morphs (témoignage communautaire, pas un export officiel) : [Compatible skins](https://www.reddit.com/r/HuntingGrounds/comments/1kr4hgk/compatable_skins/).
+
+Ces quatre contre-exemples sont conservés dans `attributionPitfallsV123` et testés par la CI. Ils **n'autorisent aucune promotion** d'asset en statut fidèle 1:1.

@@ -1327,5 +1327,66 @@
       "preliminaryNotes": [],
       "releaseGate": "needs-named-menu-selected-front-side-back"
     }
+  ],
+  "attributionPitfallsV123": [
+    {
+      "id": "PHG_REDGREEN_NOT_PROOF_EPIC",
+      "relatedIds": [
+        "skin_default_epic_exclusive",
+        "skin_shatter_bleak"
+      ],
+      "source": "https://forum.predator.illfonic.com/t/red-green-skin-pattern/5857",
+      "evidenceType": "conflicting-player-identifications-from-lit-screenshot",
+      "selectedNameVisible": false,
+      "frameActuallyInspected": true,
+      "screenshotPageObserved": true,
+      "finding": "A red/green in-game screenshot was called Epic Exclusive by some commenters, but Noktrum identified the posted picture as Shatter Fracture; poster acknowledged that identification. It does not authenticate Epic Exclusive or Bleak pixels.",
+      "forbiddenInference": "Do not synthesize an Epic Exclusive or Shatter Bleak texture solely by copying the green/red screen colors.",
+      "blocksOfficialPixelClaim": true
+    },
+    {
+      "id": "PHG_OGRE_IS_ALPHA_MASK_TINT",
+      "relatedIds": [
+        "armure_v2_ogre_pending"
+      ],
+      "source": "https://forum.predator.illfonic.com/t/patch-notes-2-19/20975",
+      "evidenceType": "official-patch-category-classification",
+      "selectedNameVisible": false,
+      "frameActuallyInspected": false,
+      "finding": "Patch 2.19 lists Ogre under Predator Mask Tint for Alpha Predator, not as a Predator Armor Tint. A similarly named armor shader still needs separate evidence.",
+      "forbiddenInference": "Do not borrow the mask Ogre color or material as armor 1:1 proof.",
+      "blocksOfficialPixelClaim": true
+    },
+    {
+      "id": "PHG_JH87_ARMOR_NOT_SKIN_MENU",
+      "relatedIds": [
+        "skin_classe_junglehunter87_wasteland",
+        "skin_classe_junglehunter87_undergrowth",
+        "skin_classe_junglehunter87_badland",
+        "skin_classe_junglehunter87_quagmire"
+      ],
+      "source": "https://forum.predator.illfonic.com/t/jh87s-armor-for-everyone/15917?page=9",
+      "evidenceType": "real-menu-armour-style-not-skin-pattern",
+      "selectedNameVisible": false,
+      "frameActuallyInspected": true,
+      "finding": "An actual JH87 customization screenshot shows SAMURAI ARMOR / HUNTER ARMOR selected, not skin-pattern Wasteland, Badland, Quagmire or Undergrowth.",
+      "forbiddenInference": "A JH87 armory screenshot is not proof of any of four exclusive skin shaders.",
+      "blocksOfficialPixelClaim": true
+    },
+    {
+      "id": "PHG_VARIANT_UV_AND_LATEST_PATCH_CORRECTIONS",
+      "relatedIds": [
+        "skin_classe_feral_default_apres_3_6_0",
+        "skin_classe_captured_base_observee"
+      ],
+      "source": "https://predator.illfonic.com/news/patch-notes-3-00/",
+      "evidenceType": "official-coloration-fix",
+      "supplementaryCommunitySource": "https://www.reddit.com/r/HuntingGrounds/comments/1kr4hgk/compatable_skins/",
+      "selectedNameVisible": false,
+      "frameActuallyInspected": false,
+      "finding": "Official version 3.0 patch fixed coloration across certain skin/armor tints; a community texture experiment reports UV incompatibility for Feral on female meshes. The latter is a community report, not original developer UV data.",
+      "forbiddenInference": "Do not declare one generated planar material seamless or 1:1 across six morphologies by default.",
+      "blocksOfficialPixelClaim": true
+    }
   ]
 }

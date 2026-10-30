@@ -49,3 +49,21 @@ test("V123 research includes official dated notes and both historical and 2026 f
  assert.ok(feral.videoCandidates.some(x=>x.sourceId==="YT_CLASSES_2025"));
  assert.ok(feral.videoCandidates.some(x=>x.sourceId==="YT_CLASSES_2026"));
 });
+
+test("V123.1: contradictory screenshots and mask/armor names never count as approved PHG UV", () => {
+ assert.equal(source.attributionPitfallsV123.length,4);
+ for (const p of source.attributionPitfallsV123) {
+   assert.equal(p.blocksOfficialPixelClaim,true);
+   assert.equal(p.selectedNameVisible,false);
+   assert.ok(p.source.startsWith("https://"));
+   assert.ok(p.forbiddenInference.length>30);
+   for(const id of p.relatedIds)assert.ok(source.targets.some(x=>x.id===id),id);
+ }
+ const disputed=source.attributionPitfallsV123.find(x=>x.id==="PHG_REDGREEN_NOT_PROOF_EPIC");
+ assert.match(disputed.finding,/Shatter Fracture/);
+ const ogre=source.attributionPitfallsV123.find(x=>x.id==="PHG_OGRE_IS_ALPHA_MASK_TINT");
+ assert.match(ogre.finding,/Mask Tint/);
+ const jh=source.attributionPitfallsV123.find(x=>x.id==="PHG_JH87_ARMOR_NOT_SKIN_MENU");
+ assert.match(jh.finding,/HUNTER ARMOR/);
+ assert.equal(source.pixel1to1Certified,0);
+});
