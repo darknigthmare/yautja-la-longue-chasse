@@ -138,7 +138,7 @@ export default function PlanetLayerExportV102({ planet }: { planet: WarPlanetV96
       anchor.href = url; anchor.download = `${planet.id}-planet-layers-v114.zip`;
       document.body.appendChild(anchor);
       try { anchor.click(); }
-      finally { anchor.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000); }
+      finally { anchor.remove(); setTimeout(() => URL.revokeObjectURL(url), 30000); }
       setMessage(`Pack complet : ${layers.length} PNG indépendants et manifeste (${(zip.byteLength / 1048576).toFixed(1)} Mio).`);
     } catch (error) {
       if (!controller.signal.aborted) setMessage(error instanceof Error ? error.message : "L’export du pack a échoué.");
