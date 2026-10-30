@@ -448,6 +448,22 @@ export function searchClanWarVariantsV120(
      entry.environment.biome,entry.operation.primaryObjective,entry.environment.environmentalHazard]
      .join(" ").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().includes(q)));
 }
+/** Pure, repeat-free pick from the 1,200 design dossiers.
+ * This selects a blueprint only; it never spawns a unit or edits campaign saves.
+ */
+export function drawUnseenClanWarVariantV120(
+ seed:number,seenIds:readonly string[]=[],
+ mode:ClanWarVariantModeV120|"all"="all",
+ family:ClanWarVariantFamilyV120|"all"="all",
+ term="",
+):ClanWarVariantV120|null{
+ const skipped=new Set(seenIds);
+ const eligible=searchClanWarVariantsV120(term,mode,family).filter(x=>!skipped.has(x.id));
+ if(!eligible.length)return null;
+ let h=(Number.isFinite(seed)?Math.trunc(seed):0)>>>0;
+ h^=h<<13;h^=h>>>17;h^=h<<5;
+ return eligible[(h>>>0)%eligible.length];
+}
 export function clanWarVariantCountsV120():Record<string,number> {
  const result:Record<string,number>={total:CLAN_WAR_VARIANT_ATLAS_V120.length};
  for(const mode of WAR_V120_MODES)for(const family of WAR_V120_FAMILIES)
