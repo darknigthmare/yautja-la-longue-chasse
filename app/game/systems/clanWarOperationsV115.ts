@@ -33,6 +33,7 @@ export interface WarMissionReportV115 {
   id: string; mode: WarMissionModeV115; focus: OuterFocusV115 | null;
   targetId: string; outcome: WarMissionOutcomeV115; clock: number;
   teamIds: string[]; woundedIds: string[]; sourceIds: string[]; summary: string;
+  engagementLog?: string[];
 }
 export interface WarOperationsStateV115 {
   version: 1; context: "free"; sourceSha: string; baseId: string;
@@ -130,7 +131,7 @@ export function beginWarOperationV115(
 function recordOutcome(
   state:WarOperationsStateV115, id:string, mode:WarMissionModeV115, focus:OuterFocusV115|null,
   targetId:string, teamIds:string[], outcome:WarMissionOutcomeV115, fallenIds:string[],
-  rules:WarRulesV6, summary:string,
+  rules:WarRulesV6, summary:string, engagementLog:string[] = [],
 ): WarOperationsStateV115 {
   if (state.reports.some(item => item.id===id)) return state;
   const appliedIds = mode === "assault" ? state.active?.assault?.launched ?? [] : mode === "stealth" ? teamIds.slice(0,1) : teamIds;
@@ -166,7 +167,7 @@ function recordOutcome(
   const report:WarMissionReportV115 = {
     id,mode,focus,targetId,outcome,clock:state.clock,
     teamIds:[...teamIds],woundedIds:casualties,
-    sourceIds:["W3-V6", "V115-EXERCISE"], summary,
+    sourceIds:["W3-V6", "V115-EXERCISE"], summary, engagementLog,
   };
   return {...state,teams,assignments,intelIds,weakenedIds,escortedIds,pressure,
     active:state.active?.id===id?null:state.active,
@@ -297,21 +298,73 @@ export function commandRtsV115(state:WarOperationsStateV115,teamId:string,x:numb
   return accept(advanced,"Ordre exécuté. L'adversaire a effectué sa réponse tactique.");
 }
 function hashSeed(id:string):number {let h=2166136261;for(let i=0;i<id.length;i++) h=Math.imul(h^id.charCodeAt(i),16777619);return h>>>0;}
+/**
+ * Phase-by-phase, reproducible Outer Ops exercise, based on known V6 units,
+ * elapsed route and surveyed terrain. This never reads a hidden V85 garrison.
+ * Its pseudo-random variation uses only an operation id, not Math.random().
+ */
+export interface WarOuterResolutionV115 {
+  outcome: "victory" | "defeat"; woundedTeamIds: string[];
+  threat: number; strength: number; engagementLog: string[];
+}
+export function simulateWarOuterMissionV115(
+  state: WarOperationsStateV115, order: WarOuterMissionV115, rules: WarRulesV6,
+): WarOuterResolutionV115 {
+  const territory=rules.territories.find(item=>item.id===order.targetId);
+  if(!territory || !["recon","escort","intercept"].includes(order.focus)) throw new Error("Mandat délégué non valable.");
+  const deployed=order.teamIds.map(id=>{
+    const team=ownTeam(state,id),unit=team&&unitFor(rules,team.unitId);
+    if(!team || !unit) throw new Error("Équipe engagée inconnue.");
+    const fit=team.members.filter(member=>member.status==="fit").length;
+    const readiness=fit/Math.max(1,unit.fullMembers) * Math.max(.5,1-team.fatigue/200);
+    return {team,unit,fit,readiness};
+  });
+  const scout=deployed.reduce((sum,a)=>sum+(a.unit.mobility*2+a.unit.range)*a.readiness,0);
+  const assault=deployed.reduce((sum,a)=>sum+(a.unit.attack+a.unit.defense*.3)*a.readiness,0);
+  const shield=deployed.reduce((sum,a)=>sum+(a.unit.defense+a.unit.mobility*.5)*a.readiness,0);
+  const support=state.intelIds.includes(order.targetId)?4:0;
+  const sabotage=state.weakenedIds.includes(order.targetId)?5:0;
+  const escorted=state.escortedIds.includes(order.targetId)?3:0;
+  const pressure=Math.min(8,(state.pressure[order.targetId]??0)*2);
+  const strength=Math.round((order.focus==="recon"?scout*1.4:order.focus==="escort"?shield*.9:assault*.9)+support+sabotage+escorted+pressure);
+  const roll=(round:number)=>hashSeed(order.id+"-"+order.targetId+"-"+order.focus+"-"+round)%11-5;
+  const baseThreat=Math.max(8,territory.terrainDefense+order.routeIds.length*2);
+  const threshold=order.focus==="recon"?Math.round(baseThreat*.7):order.focus==="escort"?Math.round(baseThreat*.9):baseThreat;
+  const engagementLog=[
+    "Mandat "+order.id+" : "+order.teamIds.length+" équipe(s), "+order.routeIds.length+" passage(s) validés.",
+    "Préparation : observation "+(support?"confirmée":"non confirmée")+
+      ", relais "+(sabotage?"affaibli":"intact")+", escorte "+(escorted?"connue":"non reconnue")+".",
+  ];
+  let points=0;
+  for(let round=1;round<=3;round++){
+    const variation=roll(round);
+    const effective=strength+variation+(round===1&&order.focus==="recon"?3:0);
+    const resistance=threshold+(round===3?2:0);
+    const margin=effective-resistance;
+    if(margin>=0) points++;
+    engagementLog.push("Échange "+round+"/3 : capacité relative "+effective+
+      ", résistance d'exercice "+resistance+" ; "+(margin>=0?"position tenue":"ligne perdue")+".");
+  }
+  const won=points>=2;
+  const woundedTeamIds=won?[]:deployed.length?[deployed.reduce((worst,item)=>item.readiness<worst.readiness?item:worst).team.id]:[];
+  engagementLog.push(won?
+    "Résultat : mandat accompli ; les détachements reçoivent un compte rendu signé.":
+    "Résultat : mission interrompue ; blessure légère d'exercice et équipe rapatriée.");
+  return {outcome:won?"victory":"defeat",woundedTeamIds,threat:threshold,strength,engagementLog};
+}
 export function settleWarOuterOpsV115(state:WarOperationsStateV115, now:number,rules:WarRulesV6):WarOperationsUpdateV115 {
   if(!Number.isSafeInteger(now)||now<0 || state.sourceSha!==rules.metadata.sha256) return reject(state,"Date ou règles incompatibles.");
   const due=state.outer.filter(order=>now>=order.dueAt).sort((a,b)=>a.dueAt-b.dueAt||a.id.localeCompare(b.id));
   if(!due.length) return reject(state,"Aucun rapport délégué arrivé à échéance.");
   let next=state;
   for(const order of due) {
-    const territory=rules.territories.find(item=>item.id===order.targetId);
-    const attack=order.teamIds.reduce((total,id)=>total+(unitFor(rules,ownTeam(next,id)?.unitId??"")?.attack??0),0);
-    const difficulty=Math.max(1,(territory?.terrainDefense??0))+(hashSeed(order.id+order.targetId)%9);
-    const won=attack>=difficulty;
-    next=recordOutcome({...next,clock:next.clock+1},order.id,"outer",order.focus,order.targetId,order.teamIds,won?"victory":"defeat",
-      won?[]:order.teamIds.slice(0,1),rules,
-      (won?"Mandat abouti. ":"Mandat repoussé. ")+
+    const battle=simulateWarOuterMissionV115(next,order,rules);
+    next=recordOutcome({...next,clock:next.clock+1},order.id,"outer",order.focus,order.targetId,order.teamIds,battle.outcome,
+      battle.woundedTeamIds,rules,
+      (battle.outcome==="victory"?"Mandat abouti. ":"Mandat repoussé. ")+
       (order.focus==="recon"?"Rapport de piste.":order.focus==="escort"?"Itinéraire d'escorte.":"Interception des relais.")+
-      " Terrain, fatigue, participants et blessures sont tracés ; aucun butin ou vaisseau inventé.");
+      " Capacité "+battle.strength+", résistance "+battle.threat+" ; aucun butin ou vaisseau inventé.",
+      battle.engagementLog);
   }
   return accept(next,due.length+" opération(s) déléguée(s) résolue(s), chacune avec un reçu unique.");
 }
