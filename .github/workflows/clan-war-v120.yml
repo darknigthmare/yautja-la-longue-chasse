@@ -10,7 +10,9 @@ on:
       - 'app/game/ClanWarVariantCatalogV120.*'
       - 'app/game/ClanWarBibleV6Panel.tsx'
       - 'scripts/export-clan-war-v120.mjs'
+      - 'scripts/export-clan-war-v120-fast.mjs'
       - 'tests/clan-war-variants-v120.test.mjs'
+      - 'tests/clan-war-v120-fast.test.mjs'
       - '.github/workflows/clan-war-v120.yml'
   push:
     branches:
@@ -21,6 +23,35 @@ permissions:
   contents: read
 
 jobs:
+  catalogue-fast:
+    name: Audit 1200 blueprints and publish CSV/JSON without npm
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Checkout the canonical V120 source and small scripts
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /app/game/systems/clanWarVariantsV120.ts
+            /tests/clan-war-v120-fast.test.mjs
+            /scripts/export-clan-war-v120-fast.mjs
+      - name: Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Validate exact 4 × 3 × 100 data contract
+        run: node --experimental-strip-types --test tests/clan-war-v120-fast.test.mjs
+      - name: Export reviewed catalogue
+        run: node --experimental-strip-types scripts/export-clan-war-v120-fast.mjs outputs/clan-war-v120
+      - name: Publish all 1200 downloadable CSV and JSON records
+        uses: actions/upload-artifact@v4
+        with:
+          name: yautja-clan-war-v120-fast-catalogue
+          path: outputs/clan-war-v120/
+          if-no-files-found: error
+          retention-days: 30
   source-catalog:
     name: Validate and export 4 x 3 x 100 scenario designs
     runs-on: ubuntu-latest
