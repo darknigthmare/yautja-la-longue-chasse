@@ -6,6 +6,8 @@ import {
   type ClanWarVariantFamilyV120, type ClanWarVariantModeV120,
 } from "./systems/clanWarVariantAtlasV120";
 import styles from "./ClanWarVariantAtlasV120.module.css";
+import {CLAN_WAR_COHERENT_VARIANTS_V126} from "./systems/clanWarWorldClimateV126";
+const V126_BY_ID=new Map(CLAN_WAR_COHERENT_VARIANTS_V126.map(item=>[item.sourceId,item]));
 
 const MODE_LABELS:Record<ClanWarVariantModeV120,string> = {
   assault:"Assaut latéral",outer:"Outer Ops",stealth:"Infiltration / sabotage",rts:"RTS de guerre totale",
@@ -53,6 +55,7 @@ export default function ClanWarVariantAtlasV120({onOpenPrototype}:{onOpenPrototy
   const currentPage=Math.min(page,maxPage);
   const visible=entries.slice(currentPage*pageSize,(currentPage+1)*pageSize);
   const chosen=entries.find(row=>row.id===picked)??visible[0]??null;
+  const earthCoherence=chosen?V126_BY_ID.get(chosen.id):undefined;
   function drawNewVariant(){
     const result=drawUnseenClanWarVariantV120(Date.now(),drawnIds,mode,family,query);
     if(!result)return;
@@ -144,10 +147,18 @@ export default function ClanWarVariantAtlasV120({onOpenPrototype}:{onOpenPrototy
         {chosen?<><p className={styles.eyebrow}>{chosen.id} · PROPOSITION DE GAMEPLAY</p>
           <h4>{chosen.title}</h4>
           <p>{chosen.inspirationNote}</p>
+          {earthCoherence&&<div className={styles.geoNotice}>
+            <strong>Géographie V126 (prioritaire)</strong>
+            <p><strong>Monde :</strong> {earthCoherence.geography.worldId} · {earthCoherence.geography.worldKind} · {earthCoherence.geography.regionName}</p>
+            <p><strong>Climat :</strong> {earthCoherence.environment.climate} · {earthCoherence.environment.siteKind} · {earthCoherence.environment.weather}</p>
+            <p><strong>Danger compatible :</strong> {earthCoherence.environment.effectiveHazard}</p>
+            {earthCoherence.auditWarnings.length>0&&<p>À vérifier : {earthCoherence.auditWarnings.join(" ; ")}</p>}
+            <p>Les corrections V126 prévalent sur les météos et aléas initiaux du catalogue V120.</p>
+          </div>}
           <div className={styles.detailGrid}>
             <div><strong>Lieu</strong><p>{chosen.settingName}</p></div>
-            <div><strong>Atmosphère</strong><p>{chosen.environment.biome} · {chosen.environment.weather} · {chosen.environment.timeOfDay}</p></div>
-            <div><strong>Sol et liquide</strong><p>{chosen.environment.terrain} · {chosen.environment.liquid}</p></div>
+            <div><strong>Atmosphère</strong><p>{earthCoherence?.environment.biome??chosen.environment.biome} · {earthCoherence?.environment.weather??chosen.environment.weather} · {chosen.environment.timeOfDay}</p></div>
+            <div><strong>Sol et liquide</strong><p>{earthCoherence?.environment.terrain??chosen.environment.terrain} · {earthCoherence?.environment.liquid??chosen.environment.liquid}</p></div>
             <div><strong>Architecture</strong><p>{chosen.environment.layout}</p></div>
             <div><strong>Ciel et relief</strong><p>{chosen.environment.sky} · {chosen.environment.altitude}</p></div>
             <div><strong>Couvert</strong><p>{chosen.environment.cover}</p></div>
@@ -158,7 +169,7 @@ export default function ClanWarVariantAtlasV120({onOpenPrototype}:{onOpenPrototy
             <div><dt>Objectif principal</dt><dd>{chosen.operation.primaryObjective}</dd></div>
             <div><dt>Objectif secondaire</dt><dd>{chosen.operation.secondaryObjective}</dd></div>
             <div><dt>Mécanique spécifique</dt><dd>{chosen.operation.gameplayHook}</dd></div>
-            <div><dt>Événement dynamique</dt><dd>{chosen.operation.twist}</dd></div>
+            <div><dt>Événement dynamique</dt><dd>{earthCoherence?.environment.effectiveTwist??chosen.operation.twist}</dd></div>
             <div><dt>Réaction du terrain</dt><dd>{chosen.environment.hazardsReaction}</dd></div>
             <div><dt>Si le courant est coupé</dt><dd>{chosen.environment.powerFailure}</dd></div>
             <div><dt>Échec</dt><dd>{chosen.operation.failure}</dd></div>
