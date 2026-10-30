@@ -20,6 +20,7 @@ export interface WarRtsActorV115 extends WarMissionActorV115 { y: number }
 export interface WarAssaultV115 {
   ap: number; ownBase: number; rivalBase: number;
   actors: WarMissionActorV115[]; launched: string[]; fallen: string[];
+  apLevel?: 1 | 2 | 3; usedSpecials?: string[];
 }
 export interface WarStealthV115 { x: number; y: number; guardX: number; guardDirection: -1 | 1; alarm: number; cloaked: boolean; energy: number; sabotaged: boolean }
 export interface WarRtsOrderV115 { x: number; y: number; kind: "advance" | "hold" | "attack" }
@@ -253,7 +254,7 @@ export function beginWarOperationV115(
   const active:WarPlayableMissionV115 = { id,mode,targetId,teamIds:[...teamIds],tick:0 };
   if (mode === "assault") active.assault = { ap:state.intelIds.includes(targetId)?36:24,ownBase:80,
     rivalBase:Math.max(45,80-(state.weakenedIds.includes(targetId)?12:0)-Math.min(20,(state.pressure[targetId]??0)*3)),
-    actors:[],launched:[],fallen:[] };
+    actors:[],launched:[],fallen:[],apLevel:1,usedSpecials:[] };
   if (mode === "stealth") active.stealth = { x:1,y:4,guardX:6,guardDirection:-1,alarm:0,cloaked:false,energy:5,sabotaged:false };
   if (mode === "rts") {
     const allied = teamIds.map((teamId,index) => ({id:"ally-"+index,teamId,unitId:ownTeam(state,teamId)!.unitId,side:"ally" as const,x:1,y:1+index,hp:lifeFor(ownTeam(state,teamId)!.unitId,rules)}));
@@ -325,6 +326,46 @@ export function deployAssaultUnitV115(state:WarOperationsStateV115,teamId:string
   const active={...mission,assault:{...arena,ap:arena.ap-cost,launched:[...arena.launched,teamId],actors:[...arena.actors,actor]}};
   return accept({...state,active},"Renfort déployé : coût "+cost+" AP (valeur d'exercice, pas PC/RAV).");
 }
+/** Inspired by the AP management loop in Metal Slug Attack, not by a Yautja
+ * research tech. Source-defined command points and RAV remain unchanged. */
+export function upgradeWarAssaultApV117(state:WarOperationsStateV115):WarOperationsUpdateV115 {
+  const mission=state.active,arena=mission?.assault;
+  if(mission?.mode!=="assault"||!arena) return reject(state,"Aucune bataille latérale à renforcer.");
+  const level=arena.apLevel??1;
+  if(level>=3) return reject(state,"Cadence AP déjà à son plafond de cet exercice.");
+  const cost=level===1?35:55;
+  if(arena.ap<cost) return reject(state,"Points AP insuffisants pour coordonner plus de déploiements.");
+  const next={...arena,apLevel:(level+1) as 2|3,ap:arena.ap-cost};
+  return accept({...state,active:{...mission,assault:next}},
+    "Coordination de déploiement niveau "+(level+1)+" : cadence et réserve AP augmentées, sans recrutement ni ressources fictives.");
+}
+/** A V6 team may execute ONE concentrated fire maneuver if the named actor
+ * remains alive, is deployed, and actually has a target within its V6 range.
+ * This does not create a weapon, ammo, soldier or shot from outside the map. */
+export function issueWarAssaultSpecialV117(
+  state:WarOperationsStateV115,teamId:string,rules:WarRulesV6,
+):WarOperationsUpdateV115 {
+  const mission=state.active,arena=mission?.assault;
+  if(mission?.mode!=="assault"||!arena||!mission.teamIds.includes(teamId)||
+    !(arena.launched.includes(teamId))||(arena.usedSpecials??[]).includes(teamId)) 
+    return reject(state,"Une seule manœuvre par équipe déjà déployée et encore présente.");
+  if(arena.ap<20) return reject(state,"Cette coordination exige 20 AP.");
+  const actor=arena.actors.find(item=>item.side==="ally"&&item.teamId===teamId&&item.hp>0);
+  if(!actor) return reject(state,"Cette équipe n'est plus en position pour concentrer son attaque.");
+  const unit=unitFor(rules,actor.unitId);
+  if(!unit) return reject(state,"La fiche de cette équipe est manquante.");
+  const range=clamp(unit.range*2+3,5,22);
+  const hostile=arena.actors
+    .filter(other=>other.side==="rival"&&other.hp>0&&Math.abs(other.x-actor.x)<=range)
+    .sort((a,b)=>Math.abs(a.x-actor.x)-Math.abs(b.x-actor.x)||a.id.localeCompare(b.id))[0];
+  if(!hostile) return reject(state,"Aucune cible visible dans la portée réellement définie pour cette équipe.");
+  const actors=arena.actors.map(item=>item.id===hostile.id?
+    {...item,hp:Math.max(0,item.hp-damageFor(actor.unitId,rules)*2)}:{...item});
+  return accept({...state,active:{...mission,assault:{...arena,ap:arena.ap-20,
+    usedSpecials:[...(arena.usedSpecials??[]),teamId],actors}}},
+    "Concentration de tir V6 : "+actor.unitId+" engage une cible en portée. Manœuvre déjà consommée pour ce mandat.");
+}
+
 export function stepAssaultV115(state:WarOperationsStateV115,rules:WarRulesV6):WarOperationsUpdateV115 {
   const mission=state.active, arena=mission?.assault;
   if(mission?.mode!=="assault" || !arena) return reject(state,"Aucune bataille latérale en cours.");
@@ -349,7 +390,8 @@ export function stepAssaultV115(state:WarOperationsStateV115,rules:WarRulesV6):W
     if(actor.side==="rival" && actor.x<=6){ownBase-=damageFor(actor.unitId,rules)*3;actor.x=6;}
   }
   for(const actor of actors) if(actor.hp<=0 && actor.teamId) wounds.push(actor.teamId);
-  const nextArena={...arena,ap:clamp(arena.ap+9,0,100),ownBase:Math.max(0,ownBase),rivalBase:Math.max(0,rivalBase),
+  const level=arena.apLevel??1;
+  const nextArena={...arena,ap:clamp(arena.ap+9+(level-1)*4,0,100+(level-1)*35),ownBase:Math.max(0,ownBase),rivalBase:Math.max(0,rivalBase),
     actors:actors.filter(actor=>actor.hp>0),fallen:unique(wounds)};
   const advanced={...state,clock:state.clock+1,active:{...mission,tick,assault:nextArena}};
   if(rivalBase<=0 || ownBase<=0 || tick>=95) {
@@ -679,7 +721,12 @@ export function readWarOperationsV115(raw:string,rules:WarRulesV6):WarOperations
       (active.mode==="rts" && (!active.rts||!Array.isArray(active.rts.actors))))) return null;
     if(active?.mode==="assault"){
       const a=active.assault!;
-      if(!Number.isFinite(a.ap)||a.ap<0||a.ap>100||
+      const apLevel=a.apLevel??1;
+      if(!Number.isInteger(apLevel)||apLevel<1||apLevel>3||
+        !Array.isArray(a.usedSpecials??[])||
+        (a.usedSpecials??[]).some(id=>!a.launched.includes(id))||
+        unique(a.usedSpecials??[]).length!==(a.usedSpecials??[]).length||
+        !Number.isFinite(a.ap)||a.ap<0||a.ap>100+(apLevel-1)*35||
         !Number.isFinite(a.ownBase)||a.ownBase<0||a.ownBase>80||
         !Number.isFinite(a.rivalBase)||a.rivalBase<0||a.rivalBase>80||
         !Array.isArray(a.launched)||!Array.isArray(a.fallen)||a.launched.length>4||
