@@ -476,6 +476,8 @@ export function readWarOperationsV115(raw:string,rules:WarRulesV6):WarOperations
       ["fit","wounded","dead"].includes(member.status)&&Number.isFinite(member.xp)&&member.xp>=0&&member.xp<=rules.parameters.xp_max) &&
       Array.isArray(team.resultReceipts) && team.resultReceipts.length<=100000 && Array.isArray(team.resolvedResultIds))) return null;
     if(unique(v.teams.map(team=>team.id)).length!==v.teams.length) return null;
+    const allMemberIds=v.teams.flatMap(team=>team.members.map(member=>member.id));
+    if(unique(allMemberIds).length!==allMemberIds.length) return null;
     if(!v.assignments||typeof v.assignments!=="object"||Array.isArray(v.assignments)||Object.keys(v.assignments).length>16) return null;
     if(!Array.isArray(v.outer)||v.outer.length>3 || !Array.isArray(v.reports)||v.reports.length>MAX_REPORTS ||
       !Array.isArray(v.intelIds)||!Array.isArray(v.weakenedIds)||!Array.isArray(v.escortedIds) ||
@@ -483,10 +485,20 @@ export function readWarOperationsV115(raw:string,rules:WarRulesV6):WarOperations
     const sites=new Set(rules.territories.map(site=>site.id));
     if([...v.intelIds,...v.weakenedIds,...v.escortedIds,...Object.keys(v.pressure)].some(id=>!sites.has(id))) return null;
     if(Object.entries(v.pressure).some(([,p])=>!Number.isInteger(p)||p<0||p>20)) return null;
+    const passages=new Set(rules.passages.map(item=>item.id));
     if(v.outer.some(order=>!isTextId(order.id)||!sites.has(order.targetId)||!Array.isArray(order.teamIds)||
       !order.teamIds.length||order.teamIds.some(id=>!ownTeam(v,id))||!Number.isSafeInteger(order.dueAt)||
-      !Number.isSafeInteger(order.startedAt)||order.dueAt<=order.startedAt||
+      !Number.isSafeInteger(order.startedAt)||order.startedAt<0||order.dueAt<=order.startedAt||order.dueAt-order.startedAt>86400000||
+      !Array.isArray(order.routeIds)||order.routeIds.length>100||order.routeIds.some(id=>!passages.has(id))||
       !["recon","intercept","escort"].includes(order.focus))) return null;
+    if(unique(v.outer.map(order=>order.id)).length!==v.outer.length) return null;
+    const validActor=(actor:WarMissionActorV115|WarRtsActorV115,mode:"assault"|"rts")=>
+      isTextId(actor.id)&&!!unitFor(rules,actor.unitId)&&
+      (actor.side==="ally" ? typeof actor.teamId==="string"&&!!ownTeam(v,actor.teamId) : actor.side==="rival"&&actor.teamId===null)&&
+      Number.isFinite(actor.x)&&actor.x>=0&&actor.x<=(mode==="assault"?100:8)&&
+      Number.isFinite(actor.hp)&&actor.hp>=0&&actor.hp<=100&&
+      (mode==="assault"||Number.isInteger((actor as WarRtsActorV115).y)&&
+       (actor as WarRtsActorV115).y>=0&&(actor as WarRtsActorV115).y<=5);
     const active=v.active;
     if(active && (!isTextId(active.id)||!sites.has(active.targetId)||!["assault","stealth","rts"].includes(active.mode)||
       !Number.isInteger(active.tick)||active.tick<0||active.tick>100||!Array.isArray(active.teamIds)||
@@ -494,12 +506,57 @@ export function readWarOperationsV115(raw:string,rules:WarRulesV6):WarOperations
       (active.mode==="assault" && (!active.assault||!Array.isArray(active.assault.actors)))||
       (active.mode==="stealth" && (!active.stealth||!Number.isInteger(active.stealth.x)))||
       (active.mode==="rts" && (!active.rts||!Array.isArray(active.rts.actors))))) return null;
+    if(active?.mode==="assault"){
+      const a=active.assault!;
+      if(!Number.isFinite(a.ap)||a.ap<0||a.ap>100||
+        !Number.isFinite(a.ownBase)||a.ownBase<0||a.ownBase>80||
+        !Number.isFinite(a.rivalBase)||a.rivalBase<0||a.rivalBase>80||
+        !Array.isArray(a.launched)||!Array.isArray(a.fallen)||a.launched.length>4||
+        unique(a.launched).length!==a.launched.length||a.launched.some(id=>!active.teamIds.includes(id))||
+        a.fallen.some(id=>!active.teamIds.includes(id))||a.actors.length>20||
+        a.actors.some(actor=>!validActor(actor,"assault"))) return null;
+    }
+    if(active?.mode==="stealth"){
+      const v1=active.stealth!;
+      if(!Number.isInteger(v1.x)||v1.x<0||v1.x>8||
+        !Number.isInteger(v1.y)||v1.y<0||v1.y>5||
+        !Number.isInteger(v1.guardX)||v1.guardX<0||v1.guardX>8||
+        ![-1,1].includes(v1.guardDirection)||
+        !Number.isInteger(v1.alarm)||v1.alarm<0||v1.alarm>3||
+        !Number.isInteger(v1.energy)||v1.energy<0||v1.energy>5||
+        typeof v1.cloaked!=="boolean"||typeof v1.sabotaged!=="boolean") return null;
+    }
+    if(active?.mode==="rts"){
+      const field=active.rts!;
+      if(!Number.isInteger(field.hold)||field.hold<0||field.hold>3||
+        field.actors.length>16||field.actors.some(actor=>!validActor(actor,"rts"))||
+        !Array.isArray(field.fallen)||field.fallen.some(id=>!active.teamIds.includes(id))||
+        field.realtime!==undefined&&typeof field.realtime!=="boolean") return null;
+      const orders=field.orders??{};
+      if(!orders||typeof orders!=="object"||Array.isArray(orders)||Object.keys(orders).length>4) return null;
+      for(const [id,order] of Object.entries(orders))
+        if(!active.teamIds.includes(id)||!order||
+          !Number.isInteger(order.x)||order.x<0||order.x>8||
+          !Number.isInteger(order.y)||order.y<0||order.y>5||
+          !["advance","hold","attack"].includes(order.kind)) return null;
+    }
     const live=[...(active?[active]:[]),...v.outer];
     const expected:Record<string,string>={};
     for(const op of live) for(const id of op.teamIds) {if(expected[id]) return null;expected[id]=op.id;}
     if(JSON.stringify(Object.keys(expected).sort().map(id=>[id,expected[id]])) !==
       JSON.stringify(Object.keys(v.assignments).sort().map(id=>[id,v.assignments[id]]))) return null;
-    if(v.reports.some(item=>!isTextId(item.id)||!sites.has(item.targetId)||!["victory","defeat","retreat"].includes(item.outcome))) return null;
+    if(v.reports.some(item=>!isTextId(item.id)||!sites.has(item.targetId)||
+      !["victory","defeat","retreat"].includes(item.outcome)||
+      !["assault","outer","stealth","rts"].includes(item.mode)||
+      typeof item.summary!=="string"||item.summary.length>2500||
+      !Number.isInteger(item.clock)||item.clock<0||item.clock>v.clock||
+      !Array.isArray(item.teamIds)||item.teamIds.length<1||item.teamIds.length>4||
+      item.teamIds.some(id=>!ownTeam(v,id))||
+      !Array.isArray(item.woundedIds)||item.woundedIds.length>8||
+      !Array.isArray(item.sourceIds)||item.sourceIds.length>16||
+      item.sourceIds.some(id=>!isTextId(id))||
+      item.engagementLog!==undefined&&(!Array.isArray(item.engagementLog)||
+       item.engagementLog.length>12||item.engagementLog.some(line=>typeof line!=="string"||line.length>650)))) return null;
     if(unique(v.reports.map(item=>item.id)).length!==v.reports.length ||
       v.reports.some(item=>live.some(op=>op.id===item.id))) return null;
     return v;
