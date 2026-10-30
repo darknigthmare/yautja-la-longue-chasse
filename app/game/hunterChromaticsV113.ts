@@ -1,6 +1,6 @@
 import { PHG_MATERIALS_V113, phgMaterialLabelV113 } from "./hunterMaterialsV113.ts";
-import PHG_DRIVE_CATALOG_V120 from "./data/phgDriveV120Catalog.json";
-import PHG_DRIVE_INSTALLED_V120 from "./data/phgDriveV120Installed.json";
+import PHG_DRIVE_CATALOG_V120 from "./data/phgDriveV120Catalog.json" with { type: "json" };
+import PHG_DRIVE_INSTALLED_V120 from "./data/phgDriveV120Installed.json" with { type: "json" };
 /**
  * Chromatic materials are planar reconstructions, NOT ripped PHG textures.
  * Identity is save-safe: only registered local paths may be loaded.
@@ -118,7 +118,7 @@ export const PHG_DRIVE_CANDIDATES_V120: readonly ChromaticMaterialV113[] = Objec
     const channel = sourceChannelV120(item.candidateChannel);
     if (!channel) return [];
     const isInstalled = installedDriveIdsV120.has(item.id)
-      && PHG_DRIVE_INSTALLED_V120.bundleSha256 === PHG_DRIVE_CATALOG_V120.bundleSha256;
+      && String(PHG_DRIVE_INSTALLED_V120.bundleSha256 ?? "") === PHG_DRIVE_CATALOG_V120.bundleSha256;
     return [{
       id: "phg-drive-" + item.id,
       channel,
