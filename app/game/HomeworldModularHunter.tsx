@@ -36,7 +36,7 @@ const armorFilter: Record<HunterAppearance["armorTintId"], string> = {
  * substituted for the pre-existing six body morphologies.
  */
 export function homeworldArmorSlotsV114(
-  appearance: Pick<HunterAppearance, "armorStyleId"> | undefined,
+  appearance: Partial<Pick<HunterAppearance, "armorStyleId">> | undefined,
   armorId: ArmorId,
   hasWristblades: boolean,
 ): Array<{ id: string; z: number; shoulder?: boolean }> {
