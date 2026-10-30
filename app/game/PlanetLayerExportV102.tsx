@@ -77,7 +77,10 @@ export default function PlanetLayerExportV102({ planet }: { planet: WarPlanetV96
   const [message, setMessage] = useState("");
   const [supplementalMaterialId, setSupplementalMaterialId] = useState(WAR_PLANET_TEXTURES_V125[0].id);
   const [supplementalChannel, setSupplementalChannel] = useState<PlanetTextureChannelV125>("albedo");
+  const [supplementalRegionId, setSupplementalRegionId] = useState(() => planet.regions[0]?.id ?? "");
   const selectedSupplementalMaterial = findPlanetTextureV125(supplementalMaterialId)!;
+  const regionIndex = Math.max(0, planet.regions.findIndex(item => item.id === supplementalRegionId));
+  const supplementalSeed = (planet.seed ^ Math.imul(regionIndex + 1, 0x9e3779b1)) >>> 0;
   const pending = useRef<AbortController | null>(null);
   const texturePreviewRef = useRef<HTMLCanvasElement | null>(null);
 
@@ -88,13 +91,13 @@ export default function PlanetLayerExportV102({ planet }: { planet: WarPlanetV96
     const context = canvas.getContext("2d");
     if (!context) return;
     try {
-      const sample = createPlanetTextureCanvasV125(supplementalMaterialId, supplementalChannel, 160, planet.seed);
+      const sample = createPlanetTextureCanvasV125(supplementalMaterialId, supplementalChannel, 160, supplementalSeed);
       context.clearRect(0, 0, canvas.width, canvas.height);
       context.drawImage(sample, 0, 0, canvas.width, canvas.height);
     } catch {
       context.clearRect(0, 0, canvas.width, canvas.height);
     }
-  }, [supplementalMaterialId, supplementalChannel, planet.seed]);
+  }, [supplementalMaterialId, supplementalChannel, supplementalSeed]);
   const inland = planetInlandFeaturesV124(planet);
   const availableLayers = (Object.keys(layerNames) as ExportLayer[])
     .filter(value => value !== "aurora" || recipe.auroraOpacity > 0)
@@ -184,13 +187,13 @@ export default function PlanetLayerExportV102({ planet }: { planet: WarPlanetV96
     const controller = new AbortController();
     pending.current = controller; setBusy(true); setMessage("Préparation de la matière indépendante…");
     try {
-      const canvas = createPlanetTextureCanvasV125(supplementalMaterialId, supplementalChannel, 512, planet.seed);
+      const canvas = createPlanetTextureCanvasV125(supplementalMaterialId, supplementalChannel, 512, supplementalSeed);
       const blob = await encodePng(canvas);
       if (controller.signal.aborted) return;
       const url = URL.createObjectURL(blob);
       const anchor = document.createElement("a");
       anchor.href = url;
-      anchor.download = `${supplementalMaterialId}-${supplementalChannel}-seed${planet.seed}.png`;
+      anchor.download = `${supplementalMaterialId}-${supplementalChannel}-${supplementalRegionId}-seed${supplementalSeed}.png`;
       document.body.appendChild(anchor);
       try { anchor.click(); }
       finally { anchor.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000); }
@@ -234,6 +237,11 @@ export default function PlanetLayerExportV102({ planet }: { planet: WarPlanetV96
         <label htmlFor={`${unique}-supplemental-material`}>Texture complémentaire
           <select id={`${unique}-supplemental-material`} value={supplementalMaterialId} onChange={event => setSupplementalMaterialId(event.target.value)}>
             {WAR_PLANET_TEXTURES_V125.map(item => <option key={item.id} value={item.id}>{item.domain === "land" ? "Sol" : "Milieu"} · {item.origin === "earthlike" ? "Terrestre" : "Alien"} · {item.name}</option>)}
+          </select>
+        </label>
+        <label htmlFor={`${unique}-supplemental-region`}>Variation par région
+          <select id={`${unique}-supplemental-region`} value={supplementalRegionId} onChange={event => setSupplementalRegionId(event.target.value)}>
+            {planet.regions.map(item => <option key={item.id} value={item.id}>{item.name}</option>)}
           </select>
         </label>
         <label htmlFor={`${unique}-supplemental-channel`}>Canal indépendant
