@@ -3,7 +3,7 @@
 import { useEffect, useId, useRef, useState } from "react";
 import { createPlanetLandMaskV101, drawPlanetMaterialV101 } from "./planetMaterialRendererV101";
 import type { WarPlanetV96 } from "./systems/clanWarPlanetsV96";
-import { planetMaterialRecipeV101, type PlanetMaterialLayerV101 } from "./systems/planetMaterialV101";
+import { DEFAULT_PLANET_MATERIAL_SETTINGS_V101, planetMaterialRecipeV101, type PlanetMaterialLayerV101, type PlanetMaterialSettingsV101 } from "./systems/planetMaterialV101";
 import styles from "./PlanetLayerExportV102.module.css";
 
 type ExportLayer = PlanetMaterialLayerV101 | "mask";
@@ -28,6 +28,10 @@ export default function PlanetLayerExportV102({ planet }: { planet: WarPlanetV96
   const recipe = planetMaterialRecipeV101(planet);
   const [layer, setLayer] = useState<ExportLayer>("composite");
   const [projection, setProjection] = useState<"map" | "globe">("map");
+  // Pure preview/export controls: never saved to, or encoded into, a world recipe.
+  const [composition, setComposition] = useState<PlanetMaterialSettingsV101>({
+    ...DEFAULT_PLANET_MATERIAL_SETTINGS_V101, aurora: true,
+  });
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState("");
   const pending = useRef<AbortController | null>(null);
@@ -53,6 +57,7 @@ export default function PlanetLayerExportV102({ planet }: { planet: WarPlanetV96
           longitude: -25, latitude: 15, radius: width * .43,
           centerX: width / 2, centerY: height / 2, mapTop: 0, mapHeight: height,
           layer, textureSize: 1024, signal: controller.signal,
+          settings: layer === "composite" ? composition : DEFAULT_PLANET_MATERIAL_SETTINGS_V101,
         });
         if (controller.signal.aborted) return;
         if (!ready) throw new Error("Le rendu du calque est indisponible. Réessayez lorsque les textures sont chargées.");
@@ -87,6 +92,17 @@ export default function PlanetLayerExportV102({ planet }: { planet: WarPlanetV96
       </select></label>
       <button type="button" onClick={() => void exportLayer()} disabled={busy}>{busy ? "Préparation…" : "Télécharger le PNG"}</button>
     </div>
+    {layer === "composite" && <fieldset className={styles.composition} disabled={busy} data-testid="planet-composition-switches-v114">
+      <legend>Assembler les effets séparément</legend>
+      {([
+        ["atmosphere", "Diffusion atmosphérique"], ["clouds", "Nuages"],
+        ["weather", "Brume et météo"], ["aurora", "Aurores"], ["lighting", "Éclairage jour/nuit"],
+      ] as const).map(([key, label]) => <label key={key}>
+        <input type="checkbox" checked={composition[key] !== false} onChange={event => setComposition(current => ({ ...current, [key]: event.target.checked }))}/>
+        <span>{label}</span>
+      </label>)}
+      <p>Ces interrupteurs modifient uniquement le PNG assemblé. Chaque calque individuel conserve sa source et reste téléchargeable.</p>
+    </fieldset>}
     <p className={styles.status} role="status" aria-live="polite">{message || "Le masque est une carte en noir et blanc : blanc pour les terres, noir pour la surface environnante."}</p>
   </details>;
 }
