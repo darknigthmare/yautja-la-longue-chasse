@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState, type ChangeEvent } from "react";
 import { createPlanetLandMaskV101, createPlanetRegionalMaterialAtlasV124, drawPlanetMaterialV101 } from "./planetMaterialRendererV101";
 import type { WarPlanetV96 } from "./systems/clanWarPlanetsV96";
 import { DEFAULT_PLANET_MATERIAL_SETTINGS_V101, planetMaterialRecipeV101, type PlanetMaterialLayerV101, type PlanetMaterialSettingsV101 } from "./systems/planetMaterialV101";
@@ -11,7 +11,7 @@ import { createPlanetRegionIndexMaskV124, createPlanetInlandMaskV124, describePl
 import { createPlanetSingleRegionMaskV128 } from "./planetRegionKitRasterV128";
 import {
   createPlanetRegionalMaterialKitV128, compatibleLandMaterialsV128, compatibleSurfaceMaterialsV128,
-  describePlanetRegionAssetsV128, editPlanetRegionalMaterialKitV128,
+  describePlanetRegionAssetsV128, editPlanetRegionalMaterialKitV128, validPlanetRegionalMaterialKitV128,
 } from "./systems/clanWarRegionalMaterialKitV128";
 import styles from "./PlanetLayerExportV102.module.css";
 
@@ -92,9 +92,11 @@ export default function PlanetLayerExportV102({ planet }: { planet: WarPlanetV96
   const regionIndex = Math.max(0, planet.regions.findIndex(item => item.id === supplementalRegionId));
   const supplementalSeed = (planet.seed ^ Math.imul(regionIndex + 1, 0x9e3779b1)) >>> 0;
   const pending = useRef<AbortController | null>(null);
+  const kitPreviewRef = useRef<HTMLCanvasElement | null>(null);
+  const kitImportIntent = useRef(0);
   const texturePreviewRef = useRef<HTMLCanvasElement | null>(null);
 
-  useEffect(() => () => pending.current?.abort(), []);
+  useEffect(() => () => { pending.current?.abort(); kitImportIntent.current++; }, []);
   useEffect(() => {
     const canvas = texturePreviewRef.current;
     if (!canvas) return;
@@ -108,6 +110,20 @@ export default function PlanetLayerExportV102({ planet }: { planet: WarPlanetV96
       context.clearRect(0, 0, canvas.width, canvas.height);
     }
   }, [supplementalMaterialId, supplementalChannel, supplementalSeed]);
+  useEffect(() => {
+    const canvas = kitPreviewRef.current;
+    if (!canvas || !activeKitRegion) return;
+    const context = canvas.getContext("2d");
+    if (!context) return;
+    try {
+      const source = createPlanetTextureCanvasV125(activeKitRegion.landMaterialId, "albedo", 160, activeKitRegion.seed);
+      context.clearRect(0, 0, canvas.width, canvas.height);
+      context.drawImage(source, 0, 0, canvas.width, canvas.height);
+    } catch {
+      context.clearRect(0, 0, canvas.width, canvas.height);
+    }
+  }, [activeKitRegion?.landMaterialId, activeKitRegion?.seed]);
+
   const inland = planetInlandFeaturesV124(planet);
   const availableLayers = (Object.keys(layerNames) as ExportLayer[])
     .filter(value => value !== "aurora" || recipe.auroraOpacity > 0)
@@ -216,6 +232,38 @@ export default function PlanetLayerExportV102({ planet }: { planet: WarPlanetV96
     }
   };
 
+
+  const downloadRegionalAssignments = () => {
+    try {
+      if (!validPlanetRegionalMaterialKitV128(planet, regionalKit)) throw new Error("Kit régional invalide.");
+      const bytes = JSON.stringify(regionalKit, null, 2) + "\n";
+      const url = URL.createObjectURL(new Blob([bytes], { type: "application/json" }));
+      const link = document.createElement("a");
+      link.href = url; link.download = planet.id + "-regional-materials-v128.json";
+      document.body.appendChild(link);
+      try { link.click(); }
+      finally { link.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000); }
+      setMessage("Fiche des matières régionales exportée. Elle ne contient aucune sauvegarde de guerre.");
+    } catch (error) { setMessage(error instanceof Error ? error.message : "Export des matières impossible."); }
+  };
+
+  const importRegionalAssignments = async (event: ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0]; event.target.value = "";
+    if (!file) return;
+    const intent = ++kitImportIntent.current;
+    try {
+      if (file.size > 65536) throw new Error("Fiche de matières trop volumineuse.");
+      const candidate: unknown = JSON.parse(await file.text());
+      if (kitImportIntent.current !== intent) return;
+      if (!validPlanetRegionalMaterialKitV128(planet, candidate))
+        throw new Error("Cette fiche ne correspond pas aux régions, à la graine ou au code de cette planète.");
+      setRegionalKit(candidate);
+      setMessage("Fiche régionale importée : les choix visuels sont restaurés sans modifier le monde.");
+    } catch (error) {
+      if (kitImportIntent.current === intent)
+        setMessage(error instanceof Error ? error.message : "Impossible d’importer cette fiche régionale.");
+    }
+  };
 
   /** Region-specific asset receipt. No gameplay archive or world code is altered. */
   const exportRegionalKit = async () => {
@@ -329,18 +377,28 @@ export default function PlanetLayerExportV102({ planet }: { planet: WarPlanetV96
         </label>
         <label htmlFor={`${unique}-kit-land`}>Sol compatible avec le biome
           <select id={`${unique}-kit-land`} value={activeKitRegion.landMaterialId} onChange={event =>
-            setRegionalKit(current => editPlanetRegionalMaterialKitV128(planet, current, activeKitRegion.regionId, "land", event.target.value))}>
+            { kitImportIntent.current++; setRegionalKit(current => editPlanetRegionalMaterialKitV128(planet, current, activeKitRegion.regionId, "land", event.target.value)); }}>
             {compatibleLand.map(id => <option key={id} value={id}>{findPlanetTextureV125(id)?.name ?? id}</option>)}
           </select>
         </label>
         <label htmlFor={`${unique}-kit-surface`}>Milieu complémentaire compatible
           <select id={`${unique}-kit-surface`} value={activeKitRegion.surfaceMaterialId ?? ""} disabled={compatibleSurface.length === 0} onChange={event =>
-            setRegionalKit(current => editPlanetRegionalMaterialKitV128(planet, current, activeKitRegion.regionId, "surface", event.target.value || null))}>
+            { kitImportIntent.current++; setRegionalKit(current => editPlanetRegionalMaterialKitV128(planet, current, activeKitRegion.regionId, "surface", event.target.value || null)); }}>
             <option value="">Conserver la surface native</option>
             {compatibleSurface.map(id => <option key={id} value={id}>{findPlanetTextureV125(id)?.name ?? id}</option>)}
           </select>
         </label>
         <button type="button" onClick={() => { void exportRegionalKit(); }} data-testid="planet-region-kit-export-v128">Télécharger le kit régional (ZIP)</button>
+        <button type="button" onClick={downloadRegionalAssignments} data-testid="planet-region-kit-json-v128">Exporter les choix (JSON)</button>
+        <label htmlFor={`${unique}-region-kit-import`}>Réimporter les choix de cette planète
+          <input id={`${unique}-region-kit-import`} type="file" accept="application/json,.json" data-testid="planet-region-kit-import-v128" onChange={event => { void importRegionalAssignments(event); }}/>
+        </label>
+      </div>}
+      {activeKitRegion && <div className={styles.texturePreviewPanel}>
+        <canvas ref={kitPreviewRef} width={160} height={160} role="img"
+          data-testid="planet-regional-material-preview-v128"
+          aria-label={`Aperçu du sol ${activeKitRegion.regionName}`}/>
+        <p>Source régionale : {findPlanetTextureV125(activeKitRegion.landMaterialId)?.description}. Le rendu du globe reste lié à sa recette d’origine.</p>
       </div>}
       {activeKitRegion && <p data-testid="planet-region-kit-summary-v128">Biome : {activeKitRegion.biome} · Graine régionale : {activeKitRegion.seed} · {compatibleLand.length} sols compatibles · {compatibleSurface.length ? `${compatibleSurface.length} milieux complémentaires` : "aucun liquide à inventer pour cette surface"}.</p>}
       <p>Le ZIP contient 5 canaux pour chaque matériau sélectionné, un masque géographique transparent et un manifeste de provenance. Ce réglage visuel ne change pas le code du monde.</p>
