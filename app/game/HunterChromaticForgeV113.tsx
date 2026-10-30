@@ -1,0 +1,77 @@
+"use client";
+import { useEffect, useState } from "react";
+import type { HunterAppearance } from "./types";
+import {
+  CHROMATIC_CHANNELS_V113, PHG_CHROMATIC_MATERIALS_V113,
+  DEFAULT_CHROMATICS_V113, normalizeHunterChromaticsV113,
+  type HunterChromaticsV113,
+} from "./hunterChromaticsV113";
+import styles from "./HunterChromaticForgeV113.module.css";
+
+export default function HunterChromaticForgeV113({
+  appearance, homeworld = false, disabled = false, onCommit,
+}: {
+  appearance: HunterAppearance;
+  homeworld?: boolean;
+  disabled?: boolean;
+  onCommit: (value: HunterChromaticsV113) => boolean;
+}) {
+  const [draft, setDraft] = useState(() => normalizeHunterChromaticsV113(appearance.chromaticsV113));
+  const [message, setMessage] = useState("");
+  useEffect(() => {
+    setDraft(normalizeHunterChromaticsV113(appearance.chromaticsV113));
+    setMessage("");
+  }, [appearance.chromaticsV113]);
+
+  const change = (field: keyof HunterChromaticsV113, value: string | null) => {
+    setDraft(current => normalizeHunterChromaticsV113({ ...current, [field]: value }));
+    setMessage("");
+  };
+  const dirty = JSON.stringify(draft) !== JSON.stringify(normalizeHunterChromaticsV113(appearance.chromaticsV113));
+
+  return <section className={styles.forge} aria-label="Ateliers chromatiques du Yautja" data-hunter-chromatics-v113>
+    <header className={styles.heading}>
+      <span>V113 · Ateliers du clan</span>
+      <h2>{homeworld ? "Maisons des pigments et des patines" : "Établis chromatiques du chasseur"}</h2>
+      <p>Trois métiers et un outil de diagnostic : les mèches sont ligaturées, les étoffes teintes, les plaques patinées et les motifs de peau étudiés par un analyseur de chromatophores. Ces installations sont des adaptations originales du lore, pas des machines canoniques attribuées à un film.</p>
+      <p>Les fichiers PHG disponibles ici sont des <strong>matières 2D reconstituées</strong>. Les dégradés restent masqués par la vraie silhouette Yautja ; aucune texture extraite ni correspondance UV 1:1 officielle n’est revendiquée.</p>
+    </header>
+    <div className={styles.grid}>
+      {CHROMATIC_CHANNELS_V113.map(channel => {
+        const activeColor = draft[channel.colorKey];
+        const choices = PHG_CHROMATIC_MATERIALS_V113.filter(item => item.channel === channel.id && item.status === "integrated");
+        const pending = PHG_CHROMATIC_MATERIALS_V113.filter(item => item.channel === channel.id && item.status === "drive-only").length;
+        return <fieldset className={styles.station} key={channel.id} disabled={disabled}>
+          <legend>{channel.label}</legend>
+          <p>{channel.subtitle}</p>
+          <div className={styles.colorRow}>
+            <label htmlFor={"chromatic-color-" + channel.id}>Pigment libre</label>
+            <input id={"chromatic-color-" + channel.id} type="color"
+              value={activeColor ?? channel.naturalHex}
+              onChange={event => change(channel.colorKey, event.target.value)}
+              aria-label={"Choisir la teinte " + channel.label} />
+            <button type="button" onClick={() => change(channel.colorKey, null)}
+              aria-label={"Retrouver la teinte de base " + channel.label}>Naturel</button>
+          </div>
+          <label className={styles.materialLabel} htmlFor={"chromatic-material-" + channel.id}>Matière PNG</label>
+          <select id={"chromatic-material-" + channel.id} value={draft[channel.materialKey] ?? ""}
+            onChange={event => change(channel.materialKey, event.target.value || null)}>
+            <option value="">Matière du rig d’origine</option>
+            {choices.map(item => <option key={item.id} value={item.id}>{item.label}{item.evidence === "provisional" ? " · provisoire" : ""}</option>)}
+          </select>
+          {pending > 0 && <small>{pending} matière(s) identifiée(s) sur Drive, non encore présente(s) en jeu.</small>}
+        </fieldset>;
+      })}
+    </div>
+    <div className={styles.actions}>
+      <button type="button" disabled={disabled || !dirty} onClick={() => {
+        if (onCommit(draft)) setMessage("Nouvelle parure enregistrée pour ce chasseur.");
+        else setMessage("Sauvegarde non confirmée ; conserve ton ancienne palette et réessaie.");
+      }}>Valider les couleurs et matières</button>
+      <button type="button" disabled={disabled} onClick={() => {
+        setDraft({ ...DEFAULT_CHROMATICS_V113 }); setMessage("Palette naturelle préparée ; valide pour l’enregistrer.");
+      }}>Retrouver les matières d’origine</button>
+      {message && <p role="status">{message}</p>}
+    </div>
+  </section>;
+}
