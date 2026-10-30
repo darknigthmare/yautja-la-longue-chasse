@@ -28,7 +28,11 @@ test("unregistered IDs, wrong channels and drive-only materials never resolve", 
 test("every activated material resolves to committed real PNG", () => {
   for (const material of PHG_CHROMATIC_MATERIALS_V113) {
     if (material.status !== "integrated") {assert.equal(material.src,null);continue;}
-    assert.ok(material.src?.startsWith("/game/assets/v113/phg/"));
+    assert.ok(
+      material.src?.startsWith("/game/assets/v113/phg/") ||
+      material.src?.startsWith("/game/imports/v85/drive-latest/"),
+      "registered only in project-owned native material roots"
+    );
     const filename = path.join(process.cwd(),"public", material.src.slice(1));
     assert.equal(existsSync(filename),true,filename);
   }

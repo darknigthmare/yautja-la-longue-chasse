@@ -20,3 +20,6 @@ Les PR #24 et #25 sont deux branches distinctes. Ne pas déduire de leur mergeab
 V114 restitue le grade de base des plaques cutanées et métalliques dans la chasse Canvas **avant** la mise en couleur. Le filtre d'origine est dans la clé du cache ; modifier la teinte ne détruit pas les détails morphologiques sous-jacents. La prévisualisation du poste est désormais locale et immédiate ; seule l'action « Valider » passe par la sauvegarde propriétaire avec lecture de contrôle. Les matières du registre sont présentées avec leur vignette et un avertissement explicite sur la fidélité.
 
 Ce correctif ne certifie ni le rendu alpha/motif aux raccords des membres ni un équivalent officiel des shaders de PHG ; une inspection visuelle et des tests de jeu réels restent nécessaires.
+
+## QA de la première compilation sur CI
+Le premier job V114 (commit `ce6b5e25`) confirme l'intégrité exacte des 44 PNG. Deux contrôles JavaScript ont d'abord échoué : import de module sans extension `.ts` sous Node 22 et assertion historique restreinte au seul chemin V113. Le test est désormais adapté aux deux racines enregistrées tout en refusant les URL arbitraires. La compilation et la nouvelle exécution doivent être contrôlées sur la tête suivante ; ne pas réattribuer une CI verte à `ce6b5e25`.

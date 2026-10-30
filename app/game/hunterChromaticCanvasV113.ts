@@ -4,7 +4,7 @@
  * its pixels only. Source artwork, rig bones and body pivots are never changed.
  */
 import { getChromaticMaterialV113, normalizeHunterChromaticsV113,
-  type HunterChromaticsV113, type ChromaticChannelV113 } from "./hunterChromaticsV113";
+  type HunterChromaticsV113, type ChromaticChannelV113 } from "./hunterChromaticsV113.ts";
 
 type Placement = { x: number; y: number; width: number; height: number };
 const CANVAS_W = 256;
