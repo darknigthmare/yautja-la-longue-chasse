@@ -1,0 +1,50 @@
+name: V131 Gauntlet hologram dual-view checks
+on:
+  push:
+    branches: [feat/v131-gauntlet-hologram-dual-view-20261030]
+  pull_request:
+    branches: [main, feat/v129-w3-rts24-source-objectives]
+    paths:
+      - 'app/game/ClanWarPanelV85.tsx'
+      - 'app/game/ClanWarGauntletV131.*'
+      - 'app/game/systems/clanWarViewV131.ts'
+      - 'tests/clan-war-gauntlet-v131.test.mjs'
+      - 'tsconfig.clan-war-v131.json'
+      - '.github/workflows/clan-war-v131.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  dual-view:
+    name: Single live atlas, preference fallback and projector typecheck
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout only the changed view and its test contracts
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /package.json
+            /package-lock.json
+            /eslint.config.mjs
+            /tsconfig.json
+            /tsconfig.clan-war-v131.json
+            /types/clan-war-v120-css.d.ts
+            /app/game/systems/clanWarViewV131.ts
+            /app/game/ClanWarGauntletV131.tsx
+            /app/game/ClanWarGauntletV131.module.css
+            /app/game/ClanWarPanelV85.tsx
+            /tests/clan-war-gauntlet-v131.test.mjs
+      - name: Use Node.js 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with: {node-version: '22'}
+      - name: Reproducible dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Verify dual-view invariants
+        run: node --experimental-strip-types --test --test-reporter=spec tests/clan-war-gauntlet-v131.test.mjs
+      - name: Typecheck the projector and mode parser
+        run: npx --no-install tsc --noEmit --project tsconfig.clan-war-v131.json
+      - name: Lint changed game-facing code and tests
+        run: npx --no-install eslint app/game/ClanWarPanelV85.tsx app/game/ClanWarGauntletV131.tsx app/game/systems/clanWarViewV131.ts tests/clan-war-gauntlet-v131.test.mjs
