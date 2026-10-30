@@ -110,17 +110,19 @@ export function beginWarOperationV115(
   if (mode === "outer") {
     const pc = teamIds.reduce((count,teamId) => count + unitFor(rules,ownTeam(state,teamId)!.unitId)!.commandPoints,0);
     const route = planWarRouteV6(state.baseId,targetId,pc,[],rules)!;
-    const duration = 30000 + route.passageIds.length * 10000; // transparent prototype timer; not a workbook value
+    const duration = Math.max(20000,30000 + route.passageIds.length * 10000 - (state.escortedIds.includes(targetId)?10000:0)); // exercise timing, not a workbook value
     const order:WarOuterMissionV115 = { id,targetId,teamIds:[...teamIds],focus,startedAt:now,dueAt:now+duration,routeIds:route.passageIds };
     return accept({...reserved,outer:[...state.outer,order]},"Mandat confié : retour des équipes et rapport après l'échéance. L'opération continue sans écran ouvert.");
   }
   const active:WarPlayableMissionV115 = { id,mode,targetId,teamIds:[...teamIds],tick:0 };
-  if (mode === "assault") active.assault = { ap:24,ownBase:80,rivalBase:80,actors:[],launched:[],fallen:[] };
+  if (mode === "assault") active.assault = { ap:state.intelIds.includes(targetId)?36:24,ownBase:80,
+    rivalBase:Math.max(45,80-(state.weakenedIds.includes(targetId)?12:0)-Math.min(20,(state.pressure[targetId]??0)*3)),
+    actors:[],launched:[],fallen:[] };
   if (mode === "stealth") active.stealth = { x:1,y:4,guardX:6,guardDirection:-1,alarm:0,cloaked:false,energy:5,sabotaged:false };
   if (mode === "rts") {
     const allied = teamIds.map((teamId,index) => ({id:"ally-"+index,teamId,unitId:ownTeam(state,teamId)!.unitId,side:"ally" as const,x:1,y:1+index,hp:lifeFor(ownTeam(state,teamId)!.unitId,rules)}));
     const enemyUnits = rules.units.filter(unit => unit.fullMembers>0).slice(0,3);
-    const rival = enemyUnits.map((unit,index) => ({id:"rival-"+index,teamId:null,unitId:unit.id,side:"rival" as const,x:7,y:1+index,hp:lifeFor(unit.id,rules)}));
+    const rival = enemyUnits.map((unit,index) => ({id:"rival-"+index,teamId:null,unitId:unit.id,side:"rival" as const,x:7,y:1+index,hp:Math.max(2,lifeFor(unit.id,rules)-(state.weakenedIds.includes(targetId)?3:0))}));
     active.rts={actors:[...allied,...rival],hold:0,fallen:[]};
   }
   return accept({...reserved,active},"Mission jouable ouverte. Les équipes et leur entretien sont réservés une seule fois.");
