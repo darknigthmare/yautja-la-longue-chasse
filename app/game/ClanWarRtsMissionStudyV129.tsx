@@ -76,6 +76,8 @@ export default function ClanWarRtsMissionStudyV129({rules}:{rules:WarRulesV6}){
      {map.tiles.map(t=><rect key={t.x+"-"+t.y} x={t.x*cell} y={t.y*cell}
        width={cell} height={cell} data-kind={t.kind} className={styles.tile}
        stroke="#203027" strokeWidth=".5"/>)}
+     <text x={map.observation.x*cell+cell/2} y={map.observation.y*cell+14}
+       fill="#e4e9c3" textAnchor="middle" fontSize="14">△</text>
      {mission.tasks.map((task,i)=>{
       const done=state.completedTaskIds.includes(task.id);
       return <g key={task.id}>
@@ -105,7 +107,7 @@ export default function ClanWarRtsMissionStudyV129({rules}:{rules:WarRulesV6}){
      <text x={player.x*cell+cell/2} y={player.y*cell+14}
        textAnchor="middle" fill="#f4f6e3" fontSize="12">Y</text>
     </svg>
-    <p className={styles.legend}>1–3 : lieux à visiter dans l'ordre · Y : chasseur · R : rival visible · C : charge ou compagnon · N : témoin neutre · ↥ : extraction. Les secteurs non visibles ne révèlent pas leurs ennemis.</p>
+    <p className={styles.legend}>1–3 : lieux à visiter dans l'ordre · △ : point de reconnaissance · Y : chasseur · R : rival visible · C : charge ou compagnon · N : témoin neutre · ↥ : extraction. Les secteurs non visibles ne révèlent pas leurs ennemis.</p>
     {visibleFollower&&<p className={styles.legend}>
       {visibleFollower.kind} · {visibleFollower.secured?"sécurisé":"à récupérer"}
       {visibleFollower.heldByPlayer?" · porté physiquement":" · marche derrière vous"} · santé {visibleFollower.hp}/8.
@@ -121,7 +123,10 @@ export default function ClanWarRtsMissionStudyV129({rules}:{rules:WarRulesV6}){
         data-active={state.completedTaskIds.length===i}>
         <strong>{task.title}</strong>
         <span>{task.kind} · case {task.location.x},{task.location.y}
-          {task.holdTurns?" · maintien "+task.holdTurns+" tours":""}</span>
+          {task.holdTurns?" · maintien "+task.holdTurns+" tours":""}
+          {task.requiresWindow?" · fenêtre météo "+task.requiresWindow:""}
+          {task.requiresPressure?" · sas stabilisé obligatoire":""}
+          {task.requiresPower?" · alimentation obligatoire":""}</span>
      </li>)}
     </ol>
     <p className={styles.tip}><strong>Étape actuelle :</strong> {chosenTask?
