@@ -37,20 +37,25 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false}:
   const defaultSource=rules.metadata.sha256;
 
   useEffect(()=>{
-    let current=createWarOperationsV115(rules),lock=false,issue="";
-    if(persist) {
-      try {
-        const raw=window.localStorage.getItem(WAR_OPERATIONS_STORAGE_V115);
-        if(raw) {
-          const parsed=readWarOperationsV115(raw,rules);
-          if(parsed) current=parsed;
-          else {lock=true;issue="Archive V115 illisible ou incompatible : octets conservés, aucune réécriture autorisée.";}
-        }
-      } catch {lock=true;issue="Stockage indisponible : archive existante préservée. Les opérations sont verrouillées.";}
-    }
-    worldRef.current=current;setWorld(current);setBlocked(lock);setStorageIssue(issue);
-    setSelectedIds(current.teams.slice(0,2).map(team=>team.id));setTargetId(rules.territories[1]?.id??"");
-    setHydrated(true);setNow(Date.now());
+    // Loading an external browser archive is an asynchronous subscription
+    // event, never a cascading synchronous render during effect setup.
+    const ticket=window.setTimeout(()=>{
+      let current=createWarOperationsV115(rules),lock=false,issue="";
+      if(persist) {
+        try {
+          const raw=window.localStorage.getItem(WAR_OPERATIONS_STORAGE_V115);
+          if(raw) {
+            const parsed=readWarOperationsV115(raw,rules);
+            if(parsed) current=parsed;
+            else {lock=true;issue="Archive V115 illisible ou incompatible : octets conservés, aucune réécriture autorisée.";}
+          }
+        } catch {lock=true;issue="Stockage indisponible : archive existante préservée. Les opérations sont verrouillées.";}
+      }
+      worldRef.current=current;setWorld(current);setBlocked(lock);setStorageIssue(issue);
+      setSelectedIds(current.teams.slice(0,2).map(team=>team.id));setTargetId(rules.territories[1]?.id??"");
+      setHydrated(true);setNow(Date.now());
+    },0);
+    return ()=>window.clearTimeout(ticket);
   },[rules,persist,defaultSource]);
 
   function commit(update:WarOperationsUpdateV115) {
@@ -134,13 +139,13 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false}:
   return <section className={styles.root} data-testid="clan-operations-v115" data-war-campaign-write="none" aria-label="Opérations de clan, exercice V115">
     <div className={styles.intro}>
       <div><span className={styles.overline}>CONSEIL DES MANDATS · EXERCICE V115</span><h3>Quatre façons de mener la guerre</h3>
-      <p>Une même équipe identifiable peut être envoyée en assaut latéral, en opération déléguée, en infiltration ou en bataille tactique. Les blessures, l'expérience, les renseignements et les rapports suivent la même archive d'exercice.</p></div>
+      <p>Une même équipe identifiable peut être envoyée en assaut latéral, en opération déléguée, en infiltration ou en bataille tactique. Les blessures, l&apos;expérience, les renseignements et les rapports suivent la même archive d&apos;exercice.</p></div>
       <button type="button" className={styles.reset} onClick={reset}>Réinitialiser V115 uniquement</button>
     </div>
-    <p className={styles.disclaimer}>Les unités, passages, coûts RAV et gains d'expérience proviennent de la Bible V6. Les chronomètres, jauges AP, déplacements et IA de ces minijeux sont des paramètres de prototype, sans identité canonique ajoutée. Les victoires n'annexent aucun site V85, ne délivrent aucun trophée et ne modifient pas la chasse principale.</p>
+    <p className={styles.disclaimer}>Les unités, passages, coûts RAV et gains d&apos;expérience proviennent de la Bible V6. Les chronomètres, jauges AP, déplacements et IA de ces minijeux sont des paramètres de prototype, sans identité canonique ajoutée. Les victoires n&apos;annexent aucun site V85, ne délivrent aucun trophée et ne modifient pas la chasse principale.</p>
     {storageIssue && <p role="alert" className={styles.warning}>{storageIssue}</p>}
     <div className={styles.metrics}>
-      <div>RAV de l'exercice<strong>{world.rav}</strong></div>
+      <div>RAV de l&apos;exercice<strong>{world.rav}</strong></div>
       <div>Vacations simulées<strong>{world.clock}</strong></div>
       <div>Équipes libres<strong>{available.length}/{world.teams.length}</strong></div>
       <div>Rapports enregistrés<strong>{world.reports.length}</strong></div>
@@ -159,7 +164,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false}:
             {rules.territories.filter(site=>site.id!==world.baseId).map(site=><option key={site.id} value={site.id}>{site.id} · {site.name}</option>)}
           </select>
         </label>
-        {target && <><p className={styles.explain}><strong>{target.name}</strong> · {target.region} · défense de terrain {target.terrainDefense} · renseignement {world.intelIds.includes(target.id)?"obtenu":"non confirmé"} · pression d'exercice {world.pressure[target.id]??0}.</p>
+        {target && <><p className={styles.explain}><strong>{target.name}</strong> · {target.region} · défense de terrain {target.terrainDefense} · renseignement {world.intelIds.includes(target.id)?"obtenu":"non confirmé"} · pression d&apos;exercice {world.pressure[target.id]??0}.</p>
           <details className={styles.brief}><summary>Ordre territorial · Bible V6</summary>
             <p><strong>Mission :</strong> {target.objective}</p><p><strong>Reconnaissance :</strong> {target.reconnaissance}</p>
             <p><strong>Contrôle :</strong> {target.control}</p><p><strong>Vie locale :</strong> {target.life}</p><p><strong>Repli :</strong> {target.retreat}</p>
@@ -171,7 +176,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false}:
         </label>}
       </fieldset>
       <fieldset disabled={blocked}>
-        <legend>3. Affecter jusqu'à {mode==="stealth"?"deux":"quatre"} équipes existantes</legend>
+        <legend>3. Affecter jusqu&apos;à {mode==="stealth"?"deux":"quatre"} équipes existantes</legend>
         <div className={styles.roster}>
           {world.teams.map(team=>{
             const unit=rules.units.find(item=>item.id===team.unitId);
@@ -199,7 +204,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false}:
         <button type="button" disabled={blocked} onClick={()=>commit(leaveWarOperationV115(worldRef.current,rules))}>Ordonner le repli</button></div>
 
       {assault && <div>
-        <p>Points d'assaut <strong>{assault.ap} AP</strong> · Rempart allié <strong>{assault.ownBase}/80</strong> · Rempart adverse <strong>{assault.rivalBase}/80</strong>. Les équipes avancent et engagent automatiquement ; vous décidez du moment du déploiement.</p>
+        <p>Points d&apos;assaut <strong>{assault.ap} AP</strong> · Rempart allié <strong>{assault.ownBase}/80</strong> · Rempart adverse <strong>{assault.rivalBase}/80</strong>. Les équipes avancent et engagent automatiquement ; vous décidez du moment du déploiement.</p>
         <svg className={styles.sideScene} viewBox="0 0 1000 220" role="img" aria-label="Vue de côté du champ de bataille, bastions et unités">
           <rect width="1000" height="220" fill="#172825"/>
           <path d="M0 175 H1000" stroke="#8d856d" strokeWidth="4"/>
@@ -221,11 +226,11 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false}:
             onClick={()=>commit(deployAssaultUnitV115(worldRef.current,id,rules))}>
             {unit.name} · {cost} AP {assault.launched.includes(id)?"· déployée":""}</button>;
         })}</div>
-        <p className={styles.explain}>Art temporaire schématique : aucun sprite de film ou de Predator: Hunting Grounds n'est faussement déclaré intégré.</p>
+        <p className={styles.explain}>Art temporaire schématique : aucun sprite de film ou de Predator: Hunting Grounds n&apos;est faussement déclaré intégré.</p>
       </div>}
 
       {stealth && <div>
-        <p>Rejoindre le relais (7,1), le désactiver, puis rejoindre l'extraction (1,4). Alerte <strong>{stealth.alarm}/3</strong> · énergie de camouflage <strong>{stealth.energy}/5</strong> · relais <strong>{stealth.sabotaged?"neutralisé":"actif"}</strong>.</p>
+        <p>Rejoindre le relais (7,1), le désactiver, puis rejoindre l&apos;extraction (1,4). Alerte <strong>{stealth.alarm}/3</strong> · énergie de camouflage <strong>{stealth.energy}/5</strong> · relais <strong>{stealth.sabotaged?"neutralisé":"actif"}</strong>.</p>
         <div className={styles.grid} style={{gridTemplateColumns:"repeat(9,minmax(0,1fr))"}} role="img" aria-label="Plan d'infiltration : X pisteur, G garde, R relais, E extraction, obstacles">
           {Array.from({length:54},(_,index)=>{
             const x=index%9,y=Math.floor(index/9),wall=walls.has(x+","+y);
@@ -236,7 +241,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false}:
         <div className={styles.stealthControls}>{(["up","left","down","right","cloak","interact"] as const).map(action=>
           <button type="button" key={action} disabled={blocked} onClick={()=>commit(commandStealthV115(worldRef.current,action,rules))}>
             {({up:"↑ Nord",left:"← Ouest",down:"↓ Sud",right:"→ Est",cloak:stealth.cloaked?"Désactiver camouflage":"Camouflage optique",interact:"Saboter le relais"} as Record<string,string>)[action]}</button>)}</div>
-        <p className={styles.explain}>La patrouille réagit à la position et au sabotage. Le camouflage protège à distance mais possède une réserve finie ; aucune exécution déshonorante n'est requise.</p>
+        <p className={styles.explain}>La patrouille réagit à la position et au sabotage. Le camouflage protège à distance mais possède une réserve finie ; aucune exécution déshonorante n&apos;est requise.</p>
       </div>}
 
       {rts && <div>
@@ -267,13 +272,13 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false}:
                 commandRtsV115(worldRef.current,rtsSelectedId,x,y,rules))}>{mark}</button>;
           })}
         </div>
-        <p className={styles.explain}>Y = unité alliée, R = opposition d'exercice, ◎ = balise, ▤ = couvert. Une position couverte ou un ordre de tenue réduit les dégâts reçus en temps réel. Les pions représentent des équipes identifiées, pas des recrues gratuites.</p>
+        <p className={styles.explain}>Y = unité alliée, R = opposition d&apos;exercice, ◎ = balise, ▤ = couvert. Une position couverte ou un ordre de tenue réduit les dégâts reçus en temps réel. Les pions représentent des équipes identifiées, pas des recrues gratuites.</p>
       </div>}
     </section>}
 
     <section className={styles.delegated}>
       <h4>Outer Ops · opérations en attente ({world.outer.length}/3)</h4>
-      <p>Le délai utilise l'heure de l'appareil, même après fermeture du panneau. La résolution est calculée au retour dans le jeu et un identifiant empêche le double rapport.</p>
+      <p>Le délai utilise l&apos;heure de l&apos;appareil, même après fermeture du panneau. La résolution est calculée au retour dans le jeu et un identifiant empêche le double rapport.</p>
       {world.outer.length?world.outer.map(order=><div className={styles.delegatedOrder} key={order.id}>
         <strong>{order.id} · {focusLabels[order.focus]}</strong>
         <span>{order.targetId} · {order.teamIds.map(teamsById).join(", ")}</span>
@@ -284,7 +289,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false}:
     </section>
     <section className={styles.reports}>
       <h4>Chronique de guerre et conséquences enregistrées</h4>
-      <p>Renseignements : {world.intelIds.length} · relais sabotés : {world.weakenedIds.length} · itinéraires escortés : {world.escortedIds.length}. La pression n'est pas une annexion : il faut encore les ordres de conquête et une garnison dans le moteur stratégique.</p>
+      <p>Renseignements : {world.intelIds.length} · relais sabotés : {world.weakenedIds.length} · itinéraires escortés : {world.escortedIds.length}. La pression n&apos;est pas une annexion : il faut encore les ordres de conquête et une garnison dans le moteur stratégique.</p>
       <ol>{world.reports.slice(-16).reverse().map(report=><li key={report.id}>
         <strong>{report.id} · {report.outcome==="victory"?"Succès":report.outcome==="retreat"?"Repli":"Échec"}</strong>
         <span>{report.mode==="outer"?focusLabels[report.focus??"recon"]:modeLabels[report.mode]} · {report.targetId} · vacation {report.clock}</span>
