@@ -7,7 +7,7 @@ import type {WarRulesV6} from "./clanWarBibleV6";
  * Nothing in this file edits the persistent V6/V85 campaigns.
  */
 export type WarTileKindV128 = "ground"|"wall"|"cover"|"water"|"lava"|"ice"|"bridge"|"ladder"|"door"|"hazard";
-export type WarMissionMapActionV128 = "up"|"down"|"left"|"right"|"wait"|"cloak"|"observe"|"interact"|"attack"|"power"|"retreat";
+export type WarMissionMapActionV128 = "up"|"down"|"left"|"right"|"wait"|"cloak"|"observe"|"interact"|"attack"|"power"|"stabilize"|"retreat";
 export type WarMissionMapOutcomeV128 = "victory"|"defeat"|"retreat";
 export interface WarMapPointV128 {x:number;y:number;}
 export interface WarMapTileV128 {
@@ -42,7 +42,7 @@ export interface WarMapReportV128 {
 export interface WarMapPracticeV128 {
  version:128;map:WarSourceMapV128;player:WarMapPlayerV128;
  enemies:WarMapActorV128[];turn:number;alarm:number;
- power:boolean;objectiveDone:boolean;lastMessage:string;
+ power:boolean;airlockStable:boolean;objectiveDone:boolean;lastMessage:string;
  report:WarMapReportV128|null;log:string[];scenarioId:string;
 }
 export interface WarMapUpdateV128 {accepted:boolean;state:WarMapPracticeV128;message:string;}
@@ -251,7 +251,7 @@ export function createWarMapPracticeV128(id:string,rules:WarRulesV6):WarMapPract
  return {
   version:128,map,scenarioId:"W128-EXERCISE-"+id,
   player:{...map.start,hp:24,cloaked:false,energy:7,observed:false},
-  enemies,turn:0,alarm:0,power:true,objectiveDone:false,
+  enemies,turn:0,alarm:0,power:true,airlockStable:id!=="W3-MAP12",objectiveDone:false,
   report:null,log:["Reconnaissance d'exercice : "+map.name],lastMessage:"Atteignez le dispositif puis revenez physiquement à l'extraction.",
  };
 }
@@ -275,7 +275,8 @@ function handleOpposition(state:WarMapPracticeV128):WarMapPracticeV128{
  const occupied=()=>rivals.filter(e=>e.hp>0).map(e=>point(e.x,e.y));
  for(const enemy of rivals){
   if(enemy.hp<=0)continue;
-  const see=dist(enemy,player)<=7&&warMapLineOfSightV128(state.map,enemy,player)&&!player.cloaked;
+  const sight=state.map.eventClass==="vent-de-cendres"&&hazardActive(state)?3:7;
+  const see=dist(enemy,player)<=sight&&warMapLineOfSightV128(state.map,enemy,player)&&!player.cloaked;
   if(see){alarm=Math.min(5,alarm+1);enemy.acknowledged=true;enemy.lastSeenTurn=state.turn;}
   if(see&&dist(enemy,player)<=2){
    const cover=warMapTileV128(state.map,player.x,player.y)?.cover;
@@ -297,10 +298,11 @@ export function commandWarMapPracticeV128(
  state:WarMapPracticeV128,action:WarMissionMapActionV128,
 ):WarMapUpdateV128{
  if(state.report)return fail(state,"La mission a déjà un résultat unique.");
- if(!["up","down","left","right","wait","cloak","observe","interact","attack","power","retreat"].includes(action))
+ if(!["up","down","left","right","wait","cloak","observe","interact","attack","power","stabilize","retreat"].includes(action))
   return fail(state,"Commande non reconnue.");
  const player={...state.player};
- let enemies=state.enemies.map(e=>({...e})),objectiveDone=state.objectiveDone,power=state.power;
+ let enemies=state.enemies.map(e=>({...e})),objectiveDone=state.objectiveDone,power=state.power,
+  airlockStable=state.airlockStable;
  let message="";
  const delta=action==="up"?point(0,-1):action==="down"?point(0,1):
   action==="left"?point(-1,0):action==="right"?point(1,0):null;
@@ -325,10 +327,13 @@ export function commandWarMapPracticeV128(
  }else if(action==="interact"){
   if(dist(player,state.map.goal)>1)return fail(state,"Dispositif trop éloigné. Rejoignez la zone d'objectif.");
   if(!player.observed)return fail(state,"Reconnaissance préalable obligatoire pour identifier le bon dispositif.");
+  if(state.map.id==="W3-MAP12"&&!airlockStable)
+   return fail(state,"Sas sous pression non stabilisée : impossible de franchir ou valider l'interface.");
   objectiveDone=true;
   message="Dispositif W3 confirmé : preuve conservée jusqu'à une vraie extraction.";
  }else if(action==="attack"){
-  const visible=enemies.filter(e=>e.hp>0&&dist(e,player)<=3&&warMapLineOfSightV128(state.map,player,e))
+  const ranged=state.map.eventClass==="rafales-sur-le-phare"&&hazardActive(state)?1:3;
+  const visible=enemies.filter(e=>e.hp>0&&dist(e,player)<=ranged&&warMapLineOfSightV128(state.map,player,e))
    .sort((a,b)=>dist(a,player)-dist(b,player)||a.id.localeCompare(b.id));
   if(!visible.length)return fail(state,"Aucune cible ennemie visible dans la portée de l'arme d'exercice.");
   const target=visible[0],cover=warMapTileV128(state.map,target.x,target.y)?.cover;
@@ -336,6 +341,12 @@ export function commandWarMapPracticeV128(
   if(!target.hp)target.status="down";
   message="Tir source W3 sur "+target.unitId+" ; "+(cover?"dégâts limités par couvert.":"position engagée.");
   player.cloaked=false;
+ }else if(action==="stabilize"){
+  if(state.map.id!=="W3-MAP12")return fail(state,"Cette carte ne possède pas de sas sous pression.");
+  if(!power)return fail(state,"Alimentation du sas indisponible : stabilisation impossible.");
+  if(dist(player,state.map.goal)>3)return fail(state,"Valve de pression hors de portée.");
+  airlockStable=true;
+  message="Sas W3-MAP12 stabilisé. La pression est désormais compatible avec l'interaction.";
  }else if(action==="power"){
   if(dist(player,state.map.goal)>3)return fail(state,"Les commandes d'alimentation sont à proximité du dispositif, pas téléportées.");
   power=!power;
@@ -350,7 +361,10 @@ export function commandWarMapPracticeV128(
  if(player.cloaked&&player.energy===0)player.cloaked=false;
  const announced=turn%8===2&&state.map.hazards.length>0?
    " Attention : "+state.map.sourceEvent:"";
- const stepped={...state,player,enemies,objectiveDone,power,turn,
+ if(state.map.eventClass==="proie-au-bruit"&&turn%5===0&&!player.cloaked){
+  message+=" Bruit excessif sous la canopée : vigilance des patrouilles.";
+ }
+ const stepped={...state,player,enemies,objectiveDone,power,airlockStable,turn,
   lastMessage:message+announced,log:[...state.log,message+announced].slice(-50)};
  if(stepped.map.hazards.some(h=>key(h)===key(player))&&hazardActive(stepped))
   stepped.player.hp=Math.max(0,stepped.player.hp-2);
