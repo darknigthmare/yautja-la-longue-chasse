@@ -14,6 +14,7 @@ import { PHG_RECENT_CANDIDATES_V126, PHG_RECENT_UPDATES_V126 } from "./phgRecent
 import { PHG_HISTORICAL_UNLOCKS_V127, PHG_MENU_SCREENSHOTS_V127 } from "./phgHistoricalMaterialsV127";
 import { PHG_OGRE_MASK_CORRECTION_V128 } from "./phgPlatformStudiesV128";
 import { PHG_V129_OGRE_MASK,PHG_V129_CLASSES } from "./phgPatchStudiesV129";
+import { phgMaterialReferenceV130 } from "./phgReferenceCatalogV130";
 import styles from "./HunterChromaticForgeV113.module.css";
 
 export default function HunterChromaticForgeV113({
@@ -98,6 +99,7 @@ export default function HunterChromaticForgeV113({
         const pending = PHG_DRIVE_CANDIDATES_V120.filter(item => item.channel === channel.id && item.status === "drive-only").length
           + PHG_RECENT_CANDIDATES_V126.filter(item => item.channel === channel.id && item.status === "drive-only").length;
         const selectedMaterial = choices.find(item => item.id === draft[channel.materialKey]);
+        const sourceReference = phgMaterialReferenceV130(selectedMaterial?.id);
         return <fieldset className={styles.station} key={channel.id} disabled={disabled}>
           <legend>{channel.label}</legend>
           <p>{channel.subtitle}</p>
@@ -141,7 +143,13 @@ export default function HunterChromaticForgeV113({
                   ...chromaticAtlasBackgroundV125(selectedMaterial.atlas, false),
                 }} />
               : <img src={selectedMaterial.src} alt="" loading="lazy" decoding="async" />}
-            <span><strong>{selectedMaterial.label}</strong><small>{selectedMaterial.evidence === "provisional" ? "Étude provisoire — fidélité artistique non validée" : "Matière plane reconstituée — UV non certifiées 1:1"}</small></span>
+            <span><strong>{selectedMaterial.label}</strong>
+              <small>{selectedMaterial.evidence === "provisional" ? "Étude provisoire — fidélité artistique non validée" : "Matière plane reconstituée — UV non certifiées 1:1"}</small>
+              {sourceReference && <small>
+                <a href={sourceReference.url} target="_blank" rel="noopener noreferrer">Voir la référence {sourceReference.kind}</a>
+                {" · "}{sourceReference.caveat}
+              </small>}
+            </span>
           </div>}
           {!selectedMaterial && <small>Calque d’origine conservé sans texture de remplacement.</small>}
           {pending > 0 && <small>{pending} matière(s) PHG vérifiée(s) sur Drive, non installée(s) dans ce jeu. L’import local V120/V126 vérifie les octets avant activation ; la fidélité UV 1:1 reste non certifiée.</small>}

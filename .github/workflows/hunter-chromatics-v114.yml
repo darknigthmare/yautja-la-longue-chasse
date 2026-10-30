@@ -9,6 +9,8 @@ on:
       - "app/game/phgHistoricalMaterialsV127.ts"
       - "app/game/phgPlatformStudiesV128.ts"
       - "app/game/phgPatchStudiesV129.ts"
+      - "app/game/phgReferenceCatalogV130.ts"
+      - "tests/phg-reference-catalog-v130.test.mjs"
       - "app/game/data/phgPatchV129References.json"
       - "public/game/assets/v129/phg-patches/atlas.webp"
       - "tests/phg-patches-v129.test.mjs"
@@ -67,6 +69,8 @@ jobs:
             /app/game/phgHistoricalMaterialsV127.ts
             /app/game/phgPlatformStudiesV128.ts
             /app/game/phgPatchStudiesV129.ts
+            /app/game/phgReferenceCatalogV130.ts
+            /tests/phg-reference-catalog-v130.test.mjs
             /app/game/data/phgPatchV129References.json
             /public/game/assets/v129/phg-patches/atlas.webp
             /tests/phg-patches-v129.test.mjs
@@ -118,7 +122,7 @@ jobs:
       - name: Validate V120 installed-file safety and source catalog
         run: python3 -m unittest discover -s tests -p test_phg_v120_installer.py -v && python3 scripts/install-phg-runtime-v120.py --verify-installed && python3 -m unittest discover -s tests -p test_phg_recent_v126_installer.py -v && python3 scripts/install-phg-recent-v126.py --verify-installed
       - name: Validate saved palette IDs, category isolation and Canvas descriptors
-        run: node --experimental-strip-types --test tests/hunter-chromatics-v113.test.mjs tests/hunter-chromatic-canvas-v113.test.mjs tests/hunter-chromatics-native-v114.test.mjs tests/hunter-chromatic-grade-v114.test.mjs tests/homeworld-hunter-armor-v114.test.mjs tests/hunter-chromatic-facilities-v115.test.mjs tests/hunter-chromatic-migration-v115.test.mjs tests/hunter-chromatic-persistence-v116.test.mjs tests/hunter-chromatic-layering-v116.test.mjs tests/hunter-chromatic-blend-v117.test.mjs tests/hunter-chromatic-drive-v120.test.mjs tests/phg-visual-studies-v122.test.mjs tests/phg-atlas-runtime-v125.test.mjs tests/phg-platform-v128.test.mjs tests/phg-patches-v129.test.mjs
+        run: node --experimental-strip-types --test tests/hunter-chromatics-v113.test.mjs tests/hunter-chromatic-canvas-v113.test.mjs tests/hunter-chromatics-native-v114.test.mjs tests/hunter-chromatic-grade-v114.test.mjs tests/homeworld-hunter-armor-v114.test.mjs tests/hunter-chromatic-facilities-v115.test.mjs tests/hunter-chromatic-migration-v115.test.mjs tests/hunter-chromatic-persistence-v116.test.mjs tests/hunter-chromatic-layering-v116.test.mjs tests/hunter-chromatic-blend-v117.test.mjs tests/hunter-chromatic-drive-v120.test.mjs tests/phg-visual-studies-v122.test.mjs tests/phg-atlas-runtime-v125.test.mjs tests/phg-platform-v128.test.mjs tests/phg-patches-v129.test.mjs tests/phg-reference-catalog-v130.test.mjs
   typecheck:
     name: TypeScript and lint on the complete game source
     runs-on: ubuntu-24.04
