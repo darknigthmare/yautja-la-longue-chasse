@@ -152,7 +152,7 @@ export function analyzeWarPlanetStrategyV114(planet: WarPlanetV96): WarPlanetStr
     ...(planetSizeV115 !== null ? {
       headquartersDistanceKm: Math.round(path.slice(1).reduce((distance, target, index) => {
         const source = path[index];
-        const route = procedural.routes.find(item => (item.fromId === source && item.toId === target) || (item.fromId === target && item.toId === source));
+        const route = procedural?.routes.find(item => (item.fromId === source && item.toId === target) || (item.fromId === target && item.toId === source));
         return distance + (route ? planetArcKilometersV115(route.distanceDegrees, planetSizeV115) : 0);
       }, 0)),
     } : {}),
