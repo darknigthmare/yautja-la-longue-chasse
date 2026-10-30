@@ -65,3 +65,12 @@ button.cell{min-height:0;border-radius:0}button.cell:hover{background:#658f7d}bu
 .treatmentOrder button{font-size:.75rem}
 @media(max-width:900px){.medicalControls{grid-template-columns:1fr 1fr}.medicalControls button{grid-column:1/-1;white-space:normal}}
 @media(max-width:600px){.medicalControls{grid-template-columns:1fr}.treatmentOrder{align-items:stretch;flex-direction:column}}
+
+/* Source-linked W3-RTS01/02 pilot objectives, intentionally not a full W3-MAP01 level. */
+.sourceScenario{margin:12px 0;padding:10px;border:1px solid #667957;background:#1b2d22}
+.sourceScenario>label{display:block;font-size:.79rem}.sourceScenario select{width:100%;margin-top:6px}
+.sourceScenario .brief{margin:10px 0 0;padding:10px;background:#24392b;border:1px solid #607159}
+.sourceScenario .brief p{margin:6px 0;font-size:.76rem;color:#d4ddca}
+.sourceScenario .brief small{display:block;font-size:.71rem;color:#e4ce90}
+.scenarioStatus{padding:11px 14px;background:#273824;border-inline-start:3px solid #d0b97b;display:flex;gap:6px;flex-wrap:wrap;font-size:.77rem}
+.scenarioStatus strong{color:#f0dc9f}
