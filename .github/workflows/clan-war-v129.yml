@@ -1,0 +1,65 @@
+name: V129 24 W3 RTS source objective contracts
+on:
+  push:
+    branches: [feat/v129-w3-rts24-source-objectives]
+  pull_request:
+    branches: [main, feat/v128-clan-source-map-runtime]
+    paths:
+      - 'app/game/systems/clanWarRtsSourceMissionsV129.ts'
+      - 'app/game/ClanWarRtsMissionStudyV129.*'
+      - 'app/game/ClanWarBibleV6Panel.tsx'
+      - 'tests/clan-war-rts24-source-v129.test.mjs'
+      - 'scripts/export-w3-rts24-v129.mjs'
+      - 'tsconfig.clan-war-v129.json'
+      - '.github/workflows/clan-war-v129.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-rts24:
+    name: 24 true W3 source RTS objectives, 72 staged tasks, no teleport/reward
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Sparse checkout exact workbook and source RTS interpreter
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /package.json
+            /package-lock.json
+            /eslint.config.mjs
+            /tsconfig.json
+            /tsconfig.clan-war-v129.json
+            /types/clan-war-v120-css.d.ts
+            /app/game/clanWarBibleV6Source.json
+            /app/game/clanWarV85Source.json
+            /app/game/systems/clanWarBibleV6.ts
+            /app/game/systems/clanWarV85Data.ts
+            /app/game/systems/clanWarSourceMapsV128.ts
+            /app/game/systems/clanWarRtsSourceMissionsV129.ts
+            /app/game/ClanWarRtsMissionStudyV129.tsx
+            /app/game/ClanWarRtsMissionStudyV129.module.css
+            /tests/clan-war-rts24-source-v129.test.mjs
+            /scripts/export-w3-rts24-v129.mjs
+      - name: Use Node.js 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with: {node-version: '22'}
+      - name: Reproducible dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Validate all 24 RTS source narratives through full mission+extraction
+        run: node --test --test-reporter=spec tests/clan-war-rts24-source-v129.test.mjs
+      - name: Typecheck
+        run: npx --no-install tsc --noEmit --project tsconfig.clan-war-v129.json
+      - name: Lint authored runtime tests and exporter
+        run: npx --no-install eslint app/game/systems/clanWarRtsSourceMissionsV129.ts tests/clan-war-rts24-source-v129.test.mjs
+      - name: Export scenario registries
+        run: node scripts/export-w3-rts24-v129.mjs outputs/w3-rts24-v129
+      - name: Preserve source object plans and QA as an artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: yautja-w3-rts24-v129
+          path: outputs/w3-rts24-v129/
+          if-no-files-found: error
+          retention-days: 30
