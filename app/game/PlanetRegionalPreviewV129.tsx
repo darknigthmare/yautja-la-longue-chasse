@@ -24,7 +24,7 @@ export default function PlanetRegionalPreviewV129({
     const canvas = canvasRef.current;
     if (!canvas) return;
     const controller = new AbortController();
-    let frame = requestAnimationFrame(() => {
+    const frame = requestAnimationFrame(() => {
       const map = projection === "map";
       const width = map ? 768 : 384, height = map ? 384 : 384;
       setStatus("loading");
@@ -57,7 +57,7 @@ export default function PlanetRegionalPreviewV129({
   };
 
   return <div data-testid="planet-regional-preview-v129" data-render-status={status}>
-    <p><strong>Étude de rendu V129</strong> — matières albédo de chaque région appliquées sur la véritable carte et le globe. Taille physique : motif adapté au rayon de la planète. Les cinq canaux PBR restent exportés séparément ; ce rendu n'est pas encore un shader PBR complet.</p>
+    <p><strong>Étude de rendu V129</strong> — matières albédo de chaque région appliquées sur la véritable carte et le globe. Taille physique : motif adapté au rayon de la planète. Les cinq canaux PBR restent exportés séparément ; ce rendu n’est pas encore un shader PBR complet.</p>
     <label>Projection de comparaison
       <select value={projection} onChange={event => setProjection(event.target.value as "map" | "globe")} data-testid="planet-regional-projection-v129">
         <option value="map">Planisphère</option>
