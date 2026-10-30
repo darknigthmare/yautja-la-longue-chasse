@@ -159,6 +159,46 @@ export function resolveWarRtsScriptedTickV119(
         ", "+hazard+" ; garde "+(guard?"présente":"absente")+
         ", ennemis au levier "+attackers.length+"."};
   }
+  if(objective.kind==="beacon-intercept"){
+    let beacon={...objective.beacon};
+    if(beacon.enemyCarrierId){
+      const bearer=actors.find(actor=>actor.side==="rival"&&actor.id===beacon.enemyCarrierId);
+      if(bearer&&bearer.hp>0)beacon={...beacon,x:bearer.x,y:bearer.y};
+      else beacon={...beacon,enemyCarrierId:null,x:bearer?.x??beacon.x,y:bearer?.y??beacon.y};
+    }
+    if(beacon.allyCarrierTeamId){
+      const bearer=actors.find(actor=>actor.side==="ally"&&actor.teamId===beacon.allyCarrierTeamId);
+      if(bearer&&bearer.hp>0)beacon={...beacon,x:bearer.x,y:bearer.y};
+      else beacon={...beacon,allyCarrierTeamId:null,x:bearer?.x??beacon.x,y:bearer?.y??beacon.y};
+    }
+    const scoutPresent=own.some(actor=>actor.unitId==="W3-U01");
+    const observed=objective.observed||own.some(actor=>actor.unitId==="W3-U01"&&
+      DIST(actor,beacon)<=4&&warTerrainLineOfSightV116(terrain,actor,beacon));
+    const decoyRecognized=objective.decoy.recognized||own.some(actor=>actor.unitId==="W3-U01"&&
+      DIST(actor,objective.decoy)<=1&&
+      warTerrainLineOfSightV116(terrain,actor,objective.decoy));
+    // Real beacon stays on its original carrier or on the ground until the
+    // rightful scout has actually identified it. A decoy never becomes loot.
+    if(observed&&!beacon.enemyCarrierId&&!beacon.allyCarrierTeamId){
+      const recovery=own.filter(actor=>actor.teamId&&["W3-U04","W3-U21"].includes(actor.unitId)&&
+        actor.x===beacon.x&&actor.y===beacon.y)
+        .sort((a,b)=>a.id.localeCompare(b.id))[0];
+      if(recovery)beacon={...beacon,allyCarrierTeamId:recovery.teamId};
+    }
+    const allyBearer=beacon.allyCarrierTeamId?own.find(actor=>actor.teamId===beacon.allyCarrierTeamId):null;
+    const delivered=Boolean(observed&&allyBearer&&beacon.x===objective.extraction.x&&
+      beacon.y===objective.extraction.y);
+    const canRecover=own.some(actor=>["W3-U04","W3-U21"].includes(actor.unitId));
+    const canObserve=observed||scoutPresent;
+    const next={...objective,observed,beacon,decoy:{...objective.decoy,recognized:decoyRecognized}};
+    const outcome=delivered?"victory":canRecover&&canObserve?null:"defeat";
+    return {objective:next,outcome,message:delivered?
+      "La véritable balise a été reconnue, interceptée et ramenée physiquement à la coque.":
+      "Balise "+(observed?"identifiée":"non confirmée")+
+      " · objet "+(beacon.allyCarrierTeamId?"récupéré":"encore en poursuite")+
+      " · leurre "+(decoyRecognized?"identifié":"non vérifié")+
+      " · retour en "+objective.extraction.x+","+objective.extraction.y+"."};
+  }
   if(objective.kind==="filter-repair"){
     let cargo={...objective.cargo};
     if(!objective.delivered){
