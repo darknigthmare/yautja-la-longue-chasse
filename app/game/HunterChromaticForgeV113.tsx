@@ -78,9 +78,9 @@ export default function HunterChromaticForgeV113({
         {item.level === null ? "" : " · niveau PHG " + item.level}{" "}
         <a href={item.sourceUrl} target="_blank" rel="noopener noreferrer">Note officielle</a>
       </li>)}</ul>
-      <p>Correction archivistique : Ogre ({PHG_OGRE_MASK_CORRECTION_V128.patch}) est une teinte de <strong>biomask Alpha Predator</strong>, pas une peinture d'armure.
+      <p>Correction archivistique : Ogre ({PHG_OGRE_MASK_CORRECTION_V128.patch}) est une teinte de <strong>biomask Alpha Predator</strong>, pas une peinture d’armure.
         Le calque biomask dédié devra être prêt avant sa sélection.</p>
-      <p>Exiled Marbled/Bronze, Steam, Epic et PlayStation : quatre études V128 ajoutées ; seule la première dispose d'une capture de menu nommée.
+      <p>Exiled Marbled/Bronze, Steam, Epic et PlayStation : quatre études V128 ajoutées ; seule la première dispose d’une capture de menu nommée.
         Les palettes ne sont pas des textures PHG extraites ni certifiées 1:1.</p>
       <p>Captures d’écran où le nom de la variante est visible :</p>
       <ul>{PHG_MENU_SCREENSHOTS_V127.map(item => <li key={item.name}>
