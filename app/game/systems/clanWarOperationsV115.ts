@@ -632,6 +632,21 @@ export function readWarOperationsV115(raw:string,rules:WarRulesV6):WarOperations
       unique(waiting.map(item=>item.teamId)).length!==waiting.length||
       (v.recruitedTeamIds!==undefined&&(!Array.isArray(v.recruitedTeamIds)||v.recruitedTeamIds.length>16||
         v.recruitedTeamIds.some(id=>!v.teams.some(team=>team.id===id))))) return null;
+    const care=v.pendingTreatments??[];
+    if(!Array.isArray(care)||care.length>2||
+      care.some(item=>!isTextId(item.id)||!isTextId(item.teamId)||!isTextId(item.medicTeamId)||
+        !isTextId(item.memberId)||item.teamId===item.medicTeamId||
+        !Number.isSafeInteger(item.startedAt)||item.startedAt<0||
+        !Number.isSafeInteger(item.dueAt)||item.dueAt-item.startedAt!==45000||
+        !Number.isSafeInteger(item.paidRav)||item.paidRav!==unitFor(rules,"W3-U18")?.upkeepRav||
+        ownTeam(v,item.teamId)?.members.find(person=>person.id===item.memberId)?.status!=="wounded"||
+        ownTeam(v,item.medicTeamId)?.unitId!=="W3-U18"||
+        !ownTeam(v,item.medicTeamId)?.members.some(person=>person.status==="fit"))) return null;
+    const careReceipts=v.treatmentReceipts??[];
+    if(!Array.isArray(careReceipts)||careReceipts.length>120||
+      careReceipts.some(item=>!isTextId(item))||unique(careReceipts).length!==careReceipts.length||
+      care.some(item=>careReceipts.includes(item.id))||
+      unique(care.map(item=>item.id)).length!==care.length) return null;
     const allMemberIds=v.teams.flatMap(team=>team.members.map(member=>member.id));
     if(unique(allMemberIds).length!==allMemberIds.length) return null;
     if(!v.assignments||typeof v.assignments!=="object"||Array.isArray(v.assignments)||Object.keys(v.assignments).length>16) return null;
@@ -696,7 +711,7 @@ export function readWarOperationsV115(raw:string,rules:WarRulesV6):WarOperations
           !Number.isInteger(order.y)||order.y<0||order.y>5||
           !["advance","hold","attack"].includes(order.kind)) return null;
     }
-    const live=[...(active?[active]:[]),...v.outer];
+    const live=[...(active?[active]:[]),...v.outer,...care.map(item=>({id:item.id,teamIds:[item.teamId,item.medicTeamId]}))];
     const expected:Record<string,string>={};
     for(const op of live) for(const id of op.teamIds) {if(expected[id]) return null;expected[id]=op.id;}
     if(JSON.stringify(Object.keys(expected).sort().map(id=>[id,expected[id]])) !==
