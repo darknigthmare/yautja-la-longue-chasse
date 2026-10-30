@@ -1,5 +1,5 @@
 import {
-  applyWarResultV6, createWarTeamV6, planWarRouteV6,
+  applyWarResultV6, createWarTeamV6, planWarRouteV6, DEFAULT_WAR_RULES_V6,
   type WarRulesV6, type WarTeamStateV6,
 } from "./clanWarBibleV6";
 import { warMissionTerrainV116, warTerrainCellBlockedV116, warTerrainLineOfSightV116,
@@ -370,6 +370,7 @@ export function toggleWarRtsRealtimeV115(state:WarOperationsStateV115,on:boolean
 }
 export function issueWarRtsRealtimeOrderV115(
   state:WarOperationsStateV115,teamId:string,x:number,y:number,kind:"advance"|"hold"|"attack"="advance",
+  rules:WarRulesV6=DEFAULT_WAR_RULES_V6,
 ):WarOperationsUpdateV115 {
   const mission=state.active,field=mission?.rts;
   if(mission?.mode!=="rts"||!field?.realtime||!Number.isInteger(x)||!Number.isInteger(y)||x<0||x>8||y<0||y>5||
