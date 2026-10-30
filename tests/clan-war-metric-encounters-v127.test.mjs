@@ -111,6 +111,8 @@ test("no ice hazard in a hot desert, snow only in cold/seasonal zones, ground su
  for(const scenario of v.warEncounterSubVariantsV127(desert)){
   assert.ok(scenario.sections.every(s=>s.weatherAllowed&&!s.naturalSnow));
   assert.ok(scenario.sections.every(s=>!s.weather.includes("blizzard")));
+  assert.ok(scenario.missingAssets.some(x=>x.includes("WGS84")));
+  assert.ok(scenario.missingAssets.every(x=>!x.includes("décor-marais de silice")));
   assert.ok(scenario.sections.every(s=>s.fluid.includes("eau permanente")||s.fluid.includes("oasis")));
  }
  const polar=scenes.find(s=>s.original.referenceName==="Glacier d'Ilulissat");
