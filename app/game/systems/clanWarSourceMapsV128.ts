@@ -23,6 +23,8 @@ export interface WarSourceMapV128 {
  interpretation:"source-guided-tile-study-not-final-authored-or-film-map";
  start:WarMapPointV128;goal:WarMapPointV128;extraction:WarMapPointV128;
  mandatoryPaths:WarMapPointV128[][];hazards:WarMapPointV128[];
+ observation:WarMapPointV128;poweredDoors:WarMapPointV128[];
+ eventClass:string;
  generatorSeed:number;tiles:WarMapTileV128[];unitRoles:string[];
 }
 export interface WarMapActorV128 extends WarMapPointV128 {
@@ -102,6 +104,15 @@ function chain(steps:WarMapPointV128[],reverseFirst=false):WarMapPointV128[]{
  }
  return all;
 }
+const EVENT_TYPES:Record<MapIdV128,string>={
+ "W3-MAP01":"chute-de-pierres","W3-MAP02":"jet-de-vapeur",
+ "W3-MAP03":"vent-de-cendres","W3-MAP04":"effondrement-annonce",
+ "W3-MAP05":"proie-au-bruit","W3-MAP06":"courant-du-gue",
+ "W3-MAP07":"maree-haute","W3-MAP08":"rafales-sur-le-phare",
+ "W3-MAP09":"fissure-de-glace","W3-MAP10":"jets-thermiques",
+ "W3-MAP11":"elevateur-de-charge","W3-MAP12":"pression-du-sas",
+};
+const POWERED_MAPS:ReadonlySet<MapIdV128>=new Set(["W3-MAP02","W3-MAP10","W3-MAP11","W3-MAP12"]);
 const noTrap=(routes:WarMapPointV128[][],pos:WarMapPointV128)=>
  routes.every(route=>!route.some(p=>key(p)===key(pos)));
 export function createWarSourceMapV128(id:string,rules:WarRulesV6):WarSourceMapV128 {
@@ -117,6 +128,12 @@ export function createWarSourceMapV128(id:string,rules:WarRulesV6):WarSourceMapV
  const two=chain([start,point(Math.floor(width*.24),height-5),point(Math.floor(width*.72),height-5),goal],true);
  const three=chain([start,point(Math.floor(width*.35),center),point(Math.floor(width*.65),center),goal]);
  const mandatoryPaths=[one,two,three];
+ const observation=one[Math.floor(one.length*.78)];
+ // Doors are objects on an optional route: power loss cannot strand the team.
+ const poweredDoor=POWERED_MAPS.has(id)?
+  one.find(p=>p.x>=Math.floor(width*.46)&&p.x<=Math.floor(width*.56)&&p.y===4&&
+    noTrap([two,three],p)):undefined;
+ const poweredDoors=poweredDoor?[poweredDoor]:[];
  const open=new Set(mandatoryPaths.flatMap(route=>route.map(key)));
  const protectedCells=new Set([...open,...moves.flatMap(step=>[
   key(point(start.x+step.x,start.y+step.y)),
@@ -144,6 +161,7 @@ export function createWarSourceMapV128(id:string,rules:WarRulesV6):WarSourceMapV
      !noTrap(mandatoryPaths,pos)&&noise%7===0&&hazards.length<3){
    kind="hazard";hazards.push(pos);
   }
+  if(poweredDoor&&cell===key(poweredDoor))kind="door";
   if(cell===key(start)||cell===key(goal))kind="ground";
   const solid=kind==="wall"||kind==="lava"||kind==="water";
   tiles.push({
@@ -163,7 +181,7 @@ export function createWarSourceMapV128(id:string,rules:WarRulesV6):WarSourceMapV
   sourceExtraction:sourceValue(entry,"L"),
   tileScale:"one-tactical-cell-not-geographic-metre",
   interpretation:"source-guided-tile-study-not-final-authored-or-film-map",
-  start,goal,extraction:start,mandatoryPaths,hazards,
+  start,goal,extraction:start,mandatoryPaths,hazards,observation,poweredDoors,eventClass:EVENT_TYPES[id],
   generatorSeed:seed,tiles,unitRoles:["W3-U01",environment.unit,"W3-U07"],
  };
 }
@@ -289,6 +307,8 @@ export function commandWarMapPracticeV128(
  if(delta){
   const destination=point(player.x+delta.x,player.y+delta.y);
   if(!warMapWalkableV128(state.map,destination))return fail(state,"Mur, eau profonde ou lave : passage physiquement impossible.");
+  if(!state.power&&state.map.poweredDoors.some(door=>key(door)===key(destination)))
+   return fail(state,"Porte motorisée fermée : aucune traversée pendant la panne. Empruntez une route non motorisée.");
   if(enemies.some(e=>e.hp>0&&key(e)===key(destination)))return fail(state,"Position occupée par un adversaire actif.");
   player.x=destination.x;player.y=destination.y;
   message="Progression d'une case vers "+key(destination)+".";
@@ -297,6 +317,9 @@ export function commandWarMapPracticeV128(
   player.cloaked=!player.cloaked;
   message=player.cloaked?"Camouflage engagé.":"Camouflage coupé.";
  }else if(action==="observe"){
+  if(dist(player,state.map.observation)>2&&
+    !(dist(player,state.map.goal)<=6&&warMapLineOfSightV128(state.map,player,state.map.goal)))
+   return fail(state,"Point de reconnaissance trop éloigné : impossible d'observer toute la carte depuis le départ.");
   player.observed=true;
   message="Plan des accès relevé, sans découverte des ennemis au-delà de la vision.";
  }else if(action==="interact"){
@@ -325,8 +348,10 @@ export function commandWarMapPracticeV128(
  const turn=state.turn+1;
  if(player.cloaked)player.energy=Math.max(0,player.energy-1);
  if(player.cloaked&&player.energy===0)player.cloaked=false;
- const stepped={...state,player,enemies,objectiveDone,power,turn,lastMessage:message,
-  log:[...state.log,message].slice(-50)};
+ const announced=turn%8===2&&state.map.hazards.length>0?
+   " Attention : "+state.map.sourceEvent:"";
+ const stepped={...state,player,enemies,objectiveDone,power,turn,
+  lastMessage:message+announced,log:[...state.log,message+announced].slice(-50)};
  if(stepped.map.hazards.some(h=>key(h)===key(player))&&hazardActive(stepped))
   stepped.player.hp=Math.max(0,stepped.player.hp-2);
  let next=stepped.player.hp>0?handleOpposition(stepped):
