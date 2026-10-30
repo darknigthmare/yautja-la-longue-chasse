@@ -31,7 +31,7 @@ const formatTime = (seconds:number) => String(Math.floor(seconds / 60)).padStart
 type Props={rules:WarRulesV6;active?:boolean;persist?:boolean;initialScenarioId?:WarSourceRtsScenarioIdV119|null};
 
 export default function ClanWarOperationsV115({rules,active=true,persist=false,initialScenarioId=null}:Props) {
-  const sourcePilotSiteId=initialScenarioId==="W3-RTS03"?"W3-K07":"W3-K02";
+  const sourcePilotSiteId=(initialScenarioId==="W3-RTS03"||initialScenarioId==="W3-RTS04")?"W3-K07":"W3-K02";
   const [world,setWorld]=useState<WarOperationsStateV115>(()=>createWarOperationsV115(rules));
   const worldRef=useRef(world);
   const knownArchiveBytesRef=useRef<string|null>(null);
@@ -81,6 +81,10 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
         const porter=activeTeams.find(team=>team.unitId==="W3-U19");
         const artisans=activeTeams.find(team=>team.unitId==="W3-U20");
         setSelectedIds([...(porter?[porter.id]:[]),...(artisans?[artisans.id]:[])]);
+      }else if(initialScenarioId==="W3-RTS04"){
+        const guard=activeTeams.find(team=>team.unitId==="W3-U07");
+        const scout=activeTeams.find(team=>team.id!==guard?.id);
+        setSelectedIds([...(guard?[guard.id]:[]),...(scout?[scout.id]:[])]);
       }else setSelectedIds(activeTeams.slice(0,2).map(team=>team.id));
       setTargetId(initialScenarioId?
         rules.territories.find(item=>item.id===sourcePilotSiteId)?.id??rules.territories[1]?.id??"":
@@ -255,7 +259,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
           <label>Objectif RTS
             <select value={rtsScenarioId} onChange={event=>setRtsScenarioId(event.target.value as "free"|WarSourceRtsScenarioIdV119)}>
               <option value="free">Escarmouche libre · balise</option>
-              {(["W3-RTS01","W3-RTS02","W3-RTS03"] as const).map(id=>{
+              {(["W3-RTS01","W3-RTS02","W3-RTS03","W3-RTS04"] as const).map(id=>{
                 const source=warSourceRtsScenarioV119(id,rules);
                 return source?<option value={id} key={id}>{id} · {source.title}</option>:null;
               })}
@@ -415,7 +419,9 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
             "Mission W3-RTS01 : repérer le guet et escorter une charge portée jusqu'à la sortie (7,4).":
             rts.scripted.kind==="guard-relief"?
               "Mission W3-RTS02 : tenir le guet avec une équipe W3-U07 pendant trois tours complets de relève.":
-              "Mission W3-RTS03 : livrer le régulateur avec W3-U19, puis faire travailler les artisans W3-U20 sur le filtre."):
+              rts.scripted.kind==="filter-repair"?
+                "Mission W3-RTS03 : livrer le régulateur avec W3-U19, puis faire travailler les artisans W3-U20 sur le filtre.":
+                "Mission W3-RTS04 : conserver un circuit ouvert en protégeant le levier avec W3-U07 pendant quatre tours malgré les cycles de pression."):
           "Escarmouche libre : sélectionnez un détachement et attaquez ou défendez la balise (7,3)."}
           {" "}En temps réel, les équipes progressent selon vos ordres ; en alterné, elles agissent à tour de rôle.</p>
         {rts.scripted?.kind==="cargo-escort"&&<p className={styles.scenarioStatus}>
@@ -429,7 +435,13 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
           Relève : <strong>{rts.scripted.reliefProgress}/{rts.scripted.requiredTurns} tours</strong> ·
           Poste : <strong>7,3</strong> · Une victoire par élimination seule ne suffit pas.
         </p>}
-        {rts.scripted?.kind==="filter-repair"&&<p className={styles.scenarioStatus}>
+        {rts.scripted?.kind==="circuit-defense"&&<p className={styles.scenarioStatus}>
+          Levier W3-MAP02 : <strong>{rts.scripted.heldTurns}/{rts.scripted.requiredTurns} tours</strong> ·
+          Intégrité du circuit : <strong>{rts.scripted.integrity}/{rts.scripted.maxIntegrity}</strong> ·
+          Vapeur : <strong>{["pression relâchée","montée de vapeur","vapeur visible"][rts.scripted.pressurePhase]}</strong>.
+          Une victoire par élimination seule ne suffit pas.
+        </p>}
+                {rts.scripted?.kind==="filter-repair"&&<p className={styles.scenarioStatus}>
           Régulateur : <strong>{rts.scripted.delivered?"livré au filtre":"à transporter"}</strong> ·
           Porteur : <strong>{rts.scripted.cargo.carrierTeamId?
             teamsById(rts.scripted.cargo.carrierTeamId):"charge déposée"}</strong> ·
@@ -463,19 +475,20 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
               cargoOnGround=Boolean(cargo&&!cargo.carrierTeamId&&cargo.x===x&&cargo.y===y),
               isExit=rts.scripted?.kind==="cargo-escort"&&x===7&&y===4,
               isFilter=rts.scripted?.kind==="filter-repair"&&x===7&&y===3,
+              isLever=rts.scripted?.kind==="circuit-defense"&&x===7&&y===3,
               mark=actor?(actor.side==="ally"?(carrying?"Y◆":"Y"):"R"):
-                cargoOnGround?"◆":isExit?"⇥":isFilter?"✚":objective?"◎":wall?"▥":cover?"▤":"·";
+                cargoOnGround?"◆":isExit?"⇥":isFilter?"✚":isLever?"⚙":objective?"◎":wall?"▥":cover?"▤":"·";
             return <button key={index} type="button" disabled={blocked||!rtsSelectedId||wall}
               className={styles.cell} data-wall={wall} data-actor={actor?.side??""} data-objective={objective} data-cover={cover}
               title={"Position "+x+","+y+(actor?" · "+actor.unitId+" · PV "+actor.hp:"")}
               aria-label={"Case "+x+","+y+" · "+(actor?.side==="ally"?(carrying?"porteur allié":"allié"):
-                actor?.side==="rival"?"adversaire":cargoOnGround?"charge au sol":isExit?"sortie":isFilter?"filtre à réparer":objective?"objectif":"libre")}
+                actor?.side==="rival"?"adversaire":cargoOnGround?"charge au sol":isExit?"sortie":isFilter?"filtre à réparer":isLever?"levier du circuit":objective?"objectif":"libre")}
               onClick={()=>commit(rts.realtime?
                 issueWarRtsRealtimeOrderV115(worldRef.current,rtsSelectedId,x,y,actor?.side==="rival"?"attack":"advance",rules):
                 commandRtsV115(worldRef.current,rtsSelectedId,x,y,rules))}>{mark}</button>;
           })}
         </div>
-        <p className={styles.explain}>Y = allié, R = opposition d&apos;exercice, ◎ = balise, ▤ = couvert, ▥ = obstacle, ◆ = charge, ⇥ = sortie, ✚ = filtre.
+        <p className={styles.explain}>Y = allié, R = opposition d&apos;exercice, ◎ = balise, ▤ = couvert, ▥ = obstacle, ◆ = charge, ⇥ = sortie, ✚ = filtre, ⚙ = levier.
           Ces objectifs W3 utilisent une adaptation tactique 9 × 6 : les décors narratifs et les cartes sources complètes W3-MAP01/02 restent à développer.</p>
       </div>}
     </section>}
