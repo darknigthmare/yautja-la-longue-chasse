@@ -81,6 +81,7 @@ for(const style of modes){
    if(result.state.player.hp>0)survived++;
    assert.equal(result.state.report?.campaignMutation??false,false);
   }
+  console.log("W3 QA "+style+" : "+completed+"/12 victories, "+survived+"/12 survivors; failures: "+failed.join(" | "));
   assert.ok(survived>=6,"more than half the 12 maps must be survivable in "+style+"; "+failed.join(" | "));
   assert.ok(completed>=4,"at least four complete missions should be winnable using "+style+"; "+failed.join(" | "));
  });
