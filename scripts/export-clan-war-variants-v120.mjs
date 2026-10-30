@@ -51,4 +51,14 @@ const lines=[fields.map(([,label])=>cell(label)).join(";"),
 const target=process.argv[2]??"outputs/clan-war-v120/Yautja_Guerres_de_clans_1200_variantes_V120.csv";
 mkdirSync(dirname(target),{recursive:true});
 writeFileSync(target,"\uFEFF"+lines.join("\r\n")+"\r\n","utf8");
-console.log(JSON.stringify({rows:variants.length,columns:fields.length,path:target}));
+const jsonTarget=target.replace(/\.csv$/i,".json");
+if(jsonTarget===target)throw Error("Le chemin de sortie CSV est obligatoire.");
+const audit=api.clanWarVariantCountsV120();
+if(audit.total!==1200)throw Error("Bilan source incomplet.");
+writeFileSync(jsonTarget,JSON.stringify({
+  schema:120,status:"design-only",total:variants.length,
+  source:"app/game/systems/clanWarVariantAtlasV120.ts",
+  counts:audit,
+  variants,
+},null,2)+"\n","utf8");
+console.log(JSON.stringify({rows:variants.length,columns:fields.length,csv:target,json:jsonTarget}));
