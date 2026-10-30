@@ -390,7 +390,23 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false}:
       </div>}
 
       {rts && <div>
-        <p>Choisissez un détachement, puis désignez une position ou une cible. En temps réel, les équipes avancent et échangent des tirs automatiquement ; en tactique alternée, chaque clic exécute un ordre et une riposte. La balise est en (7,3).</p>
+        <p>{rts.scripted?
+          (rts.scripted.kind==="cargo-escort"?
+            "Mission W3-RTS01 : repérer le guet et escorter une charge portée jusqu'à la sortie (7,4).":
+            "Mission W3-RTS02 : tenir le guet avec une équipe W3-U07 pendant trois tours complets de relève."):
+          "Escarmouche libre : sélectionnez un détachement et attaquez ou défendez la balise (7,3)."}
+          {" "}En temps réel, les équipes progressent selon vos ordres ; en alterné, elles agissent à tour de rôle.</p>
+        {rts.scripted?.kind==="cargo-escort"&&<p className={styles.scenarioStatus}>
+          Guet : <strong>{rts.scripted.scouted?"observé":"inconnu"}</strong> ·
+          Charge : <strong>{rts.scripted.cargo.carrierTeamId?
+            teamsById(rts.scripted.cargo.carrierTeamId):"déposée au sol"}</strong> ·
+          Position : <strong>{rts.scripted.cargo.x},{rts.scripted.cargo.y}</strong> ·
+          Sortie : <strong>{rts.scripted.exit.x},{rts.scripted.exit.y}</strong>
+        </p>}
+        {rts.scripted?.kind==="guard-relief"&&<p className={styles.scenarioStatus}>
+          Relève : <strong>{rts.scripted.reliefProgress}/{rts.scripted.requiredTurns} tours</strong> ·
+          Poste : <strong>7,3</strong> · Une victoire par élimination seule ne suffit pas.
+        </p>
         <p className={styles.explain}>Théâtre : {missionTerrain?.title} · {missionTerrain?.ground} · couverts : {missionTerrain?.coverLabel}. Les murs interrompent les trajets et les lignes de tir.</p>
         <div className={styles.cards}><button type="button" disabled={blocked}
           aria-pressed={Boolean(rts.realtime)} onClick={()=>commit(toggleWarRtsRealtimeV115(worldRef.current,!rts.realtime))}>
@@ -410,17 +426,24 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false}:
             const x=index%9,y=Math.floor(index/9),actor=rts.actors.find(item=>item.x===x&&item.y===y);
             const objective=x===7&&y===3,wall=Boolean(missionTerrain?.walls.includes(x+","+y)),
               cover=Boolean(missionTerrain?.cover.includes(x+","+y)),
-              mark=actor?(actor.side==="ally"?"Y":"R"):objective?"◎":wall?"▥":cover?"▤":"·";
+              cargo=rts.scripted?.kind==="cargo-escort"?rts.scripted.cargo:null,
+              carrying=Boolean(actor&&cargo&&cargo.carrierTeamId===actor.teamId),
+              cargoOnGround=Boolean(cargo&&!cargo.carrierTeamId&&cargo.x===x&&cargo.y===y),
+              isExit=rts.scripted?.kind==="cargo-escort"&&x===7&&y===4,
+              mark=actor?(actor.side==="ally"?(carrying?"Y◆":"Y"):"R"):
+                cargoOnGround?"◆":isExit?"⇥":objective?"◎":wall?"▥":cover?"▤":"·";
             return <button key={index} type="button" disabled={blocked||!rtsSelectedId||wall}
               className={styles.cell} data-wall={wall} data-actor={actor?.side??""} data-objective={objective} data-cover={cover}
               title={"Position "+x+","+y+(actor?" · "+actor.unitId+" · PV "+actor.hp:"")}
-              aria-label={"Case "+x+","+y+" · "+(actor?.side==="ally"?"allié":actor?.side==="rival"?"adversaire":objective?"objectif":"libre")}
+              aria-label={"Case "+x+","+y+" · "+(actor?.side==="ally"?(carrying?"porteur allié":"allié"):
+                actor?.side==="rival"?"adversaire":cargoOnGround?"charge au sol":isExit?"sortie":objective?"objectif":"libre")}
               onClick={()=>commit(rts.realtime?
                 issueWarRtsRealtimeOrderV115(worldRef.current,rtsSelectedId,x,y,actor?.side==="rival"?"attack":"advance",rules):
                 commandRtsV115(worldRef.current,rtsSelectedId,x,y,rules))}>{mark}</button>;
           })}
         </div>
-        <p className={styles.explain}>Y = unité alliée, R = opposition d&apos;exercice, ◎ = balise, ▤ = couvert, ▥ = obstacle. Une position couverte ou un ordre de tenue réduit les dégâts reçus en temps réel. Les pions représentent des équipes identifiées, pas des recrues gratuites.</p>
+        <p className={styles.explain}>Y = allié, R = opposition d&apos;exercice, ◎ = balise, ▤ = couvert, ▥ = obstacle, ◆ = charge, ⇥ = sortie.
+          Ces objectifs W3 utilisent une adaptation tactique 9 × 6 : les décors narratifs et la carte source complète 32 × 24 restent à développer.</p>
       </div>}
     </section>}
 
