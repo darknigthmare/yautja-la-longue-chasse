@@ -1,5 +1,7 @@
 import type { WarPlanetV96 } from "./clanWarPlanetsV96";
 import type { WarPlanetProceduralV103 } from "./clanWarPlanetGeneratorV103";
+import type { WarPlanetProceduralV115 } from "./clanWarPlanetGeneratorV115";
+import { planetArcKilometersV115 } from "./clanWarShapeAtlasV115";
 
 export interface WarPlanetRegionStrategyV114 {
   regionId: string;
@@ -20,17 +22,18 @@ export interface WarPlanetStrategicDossierV114 {
   scale: "compact" | "standard" | "extended" | "grand";
   headquarters: { "CON-F01": string; "CON-F02": string };
   headquartersDistance: number;
+  headquartersDistanceKm?: number;
   headquartersPath: string[];
   crossingCount: number;
   chokepointTerritoryIds: string[];
   regions: WarPlanetRegionStrategyV114[];
 }
 
-function proceduralV103(planet: WarPlanetV96): WarPlanetProceduralV103 | null {
+function proceduralV103(planet: WarPlanetV96): WarPlanetProceduralV103 | WarPlanetProceduralV115 | null {
   const procedural = planet.procedural as unknown;
   if (!procedural || typeof procedural !== "object" || !("recipe" in procedural)) return null;
   const recipe = (procedural as { recipe?: { version?: unknown } }).recipe;
-  return recipe?.version === 103 ? procedural as WarPlanetProceduralV103 : null;
+  return recipe?.version === 103 || recipe?.version === 115 ? procedural as WarPlanetProceduralV103 | WarPlanetProceduralV115 : null;
 }
 
 function graphFor(planet: WarPlanetV96): Map<string, Set<string>> {
@@ -142,7 +145,15 @@ export function analyzeWarPlanetStrategyV114(planet: WarPlanetV96): WarPlanetStr
   return {
     territoryCount: planet.territories.length, regionCount: planet.regions.length,
     topology: topologyFor(planet, procedural), scale: scaleFor(planet.territories.length), headquarters,
-    headquartersDistance: Math.max(0, path.length - 1), headquartersPath: path,
+    headquartersDistance: Math.max(0, path.length - 1),
+    ...(procedural?.recipe.version === 115 ? {
+      headquartersDistanceKm: Math.round(path.slice(1).reduce((distance, target, index) => {
+        const source = path[index];
+        const route = procedural.routes.find(item => (item.fromId === source && item.toId === target) || (item.fromId === target && item.toId === source));
+        return distance + (route ? planetArcKilometersV115(route.distanceDegrees, procedural.recipe.planetSize) : 0);
+      }, 0)),
+    } : {}),
+    headquartersPath: path,
     crossingCount: crossingRoutes.length, chokepointTerritoryIds: chokepoints, regions,
   };
 }
