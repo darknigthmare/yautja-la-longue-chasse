@@ -192,14 +192,13 @@ export function stepAssaultV115(state:WarOperationsStateV115,rules:WarRulesV6):W
   if(mission?.mode!=="assault" || !arena) return reject(state,"Aucune bataille latérale en cours.");
   const tick=mission.tick+1;
   const actors=arena.actors.map(actor=>({...actor}));
-  if(tick%5===0 && actors.filter(actor=>actor.side==="rival").length<7) {
+  if(tick%8===0 && actors.filter(actor=>actor.side==="rival").length<7) {
     const units=rules.units.filter(unit=>unit.fullMembers>0);
-    const unit=units[Math.floor(tick/5)%units.length];
+    const unit=units[Math.floor(tick/8)%units.length];
     if(unit) actors.push({id:"rival-"+tick,teamId:null,unitId:unit.id,side:"rival",x:95,hp:lifeFor(unit.id,rules)});
   }
   let ownBase=arena.ownBase,rivalBase=arena.rivalBase;
   const wounds:string[]=[...arena.fallen];
-  const disengaged=new Set<string>();
   for(const actor of actors) {
     if(actor.hp<=0) continue;
     const hostile=actors.filter(other=>other.side!==actor.side && other.hp>0)
@@ -208,10 +207,10 @@ export function stepAssaultV115(state:WarOperationsStateV115,rules:WarRulesV6):W
     const range=clamp((unit?.range??1)*2+3,5,22);
     if(hostile && Math.abs(hostile.x-actor.x)<=range) hostile.hp-=damageFor(actor.unitId,rules);
     else actor.x+= (actor.side==="ally"?1:-1)*clamp(2+(unit?.mobility??1)*0.25,2,5);
-    if(actor.side==="ally" && actor.x>=96){rivalBase-=damageFor(actor.unitId,rules)*4;actor.hp=0;disengaged.add(actor.id);}
-    if(actor.side==="rival" && actor.x<=4){ownBase-=damageFor(actor.unitId,rules)*4;actor.hp=0;}
+    if(actor.side==="ally" && actor.x>=94){rivalBase-=damageFor(actor.unitId,rules)*3;actor.x=94;}
+    if(actor.side==="rival" && actor.x<=6){ownBase-=damageFor(actor.unitId,rules)*3;actor.x=6;}
   }
-  for(const actor of actors) if(actor.hp<=0 && actor.teamId && !disengaged.has(actor.id)) wounds.push(actor.teamId);
+  for(const actor of actors) if(actor.hp<=0 && actor.teamId) wounds.push(actor.teamId);
   const nextArena={...arena,ap:clamp(arena.ap+9,0,100),ownBase:Math.max(0,ownBase),rivalBase:Math.max(0,rivalBase),
     actors:actors.filter(actor=>actor.hp>0),fallen:unique(wounds)};
   const advanced={...state,clock:state.clock+1,active:{...mission,tick,assault:nextArena}};
