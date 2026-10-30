@@ -242,7 +242,7 @@ const succeeded=(state:WarRtsMissionStateV129,message:string):WarRtsMissionUpdat
 const field=(entry:WarRulesV6["entries"][number],column:string)=>
  String(entry.fields.find(f=>f.column===column)?.value??"").trim();
 const sourceRow=(rules:WarRulesV6,id:string)=>
- rules.entries.find(e=>e.id===id&&/^W3-RTS\d{2}$/.test(e.id));
+ rules.entries.find(e=>e.sheet==="Scénarios RTS"&&e.id===id&&/^W3-RTS\d{2}$/.test(e.id));
 
 export function buildWarRtsMissionV129(id:string,rules:WarRulesV6):WarRtsMissionV129{
  if(!isId(id))throw new RangeError("Mission W3-RTS source inconnue.");
