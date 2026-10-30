@@ -4,6 +4,7 @@
  * its pixels only. Source artwork, rig bones and body pivots are never changed.
  */
 import { getChromaticMaterialV113, normalizeHunterChromaticsV113,
+  CHROMATIC_PIGMENT_OVER_TEXTURE_V117,
   type HunterChromaticsV113, type ChromaticChannelV113 } from "./hunterChromaticsV113.ts";
 
 type Placement = { x: number; y: number; width: number; height: number };
@@ -92,8 +93,17 @@ export function chromaticCanvasSourceV113(
   ctx.filter="none";
   ctx.globalCompositeOperation="source-atop";
   ctx.globalAlpha=material.opacity;
-  if(material.color){ctx.fillStyle=material.color;ctx.fillRect(0,0,CANVAS_W,CANVAS_H);}
+  // Material first, then the user pigment. The old order painted an opaque
+  // material over the tint, making custom swatches ineffective in live hunts.
+  // source-atop is essential: neither pass may escape the original sprite alpha.
   if(texture)paintCover(ctx,texture);
+  if(material.color){
+    ctx.globalAlpha=texture
+      ? material.opacity * CHROMATIC_PIGMENT_OVER_TEXTURE_V117
+      : material.opacity;
+    ctx.fillStyle=material.color;
+    ctx.fillRect(0,0,CANVAS_W,CANVAS_H);
+  }
   ctx.globalCompositeOperation="source-over";
   ctx.globalAlpha=1;
   if(!cache){cache=new Map();composed.set(original,cache);}

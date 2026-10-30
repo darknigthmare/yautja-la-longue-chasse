@@ -5,6 +5,7 @@ on:
     paths:
       - "app/game/hunterChromaticsV113.ts"
       - "app/game/hunterChromaticCanvasV113.ts"
+      - "app/game/ChromaticSurfaceV113.tsx"
       - "app/game/hunterMaterialsV113.ts"
       - "app/game/HunterChromaticForgeV113.tsx"
       - "app/game/systems/hunterChromaticPersistenceV116.ts"
@@ -39,6 +40,7 @@ jobs:
             /tests/hunter-chromatic-canvas-v113.test.mjs
             /tests/hunter-chromatic-persistence-v116.test.mjs
             /tests/hunter-chromatic-layering-v116.test.mjs
+            /tests/hunter-chromatic-blend-v117.test.mjs
             /tests/hunter-chromatics-native-v114.test.mjs
             /tests/hunter-chromatic-grade-v114.test.mjs
             /tests/homeworld-hunter-armor-v114.test.mjs
@@ -58,7 +60,7 @@ jobs:
       - name: Audit all 44 original local files by SHA and PNG header
         run: python3 scripts/validate-phg-materials-v113.py
       - name: Validate saved palette IDs, category isolation and Canvas descriptors
-        run: node --experimental-strip-types --test tests/hunter-chromatics-v113.test.mjs tests/hunter-chromatic-canvas-v113.test.mjs tests/hunter-chromatics-native-v114.test.mjs tests/hunter-chromatic-grade-v114.test.mjs tests/homeworld-hunter-armor-v114.test.mjs tests/hunter-chromatic-facilities-v115.test.mjs tests/hunter-chromatic-migration-v115.test.mjs tests/hunter-chromatic-persistence-v116.test.mjs tests/hunter-chromatic-layering-v116.test.mjs
+        run: node --experimental-strip-types --test tests/hunter-chromatics-v113.test.mjs tests/hunter-chromatic-canvas-v113.test.mjs tests/hunter-chromatics-native-v114.test.mjs tests/hunter-chromatic-grade-v114.test.mjs tests/homeworld-hunter-armor-v114.test.mjs tests/hunter-chromatic-facilities-v115.test.mjs tests/hunter-chromatic-migration-v115.test.mjs tests/hunter-chromatic-persistence-v116.test.mjs tests/hunter-chromatic-layering-v116.test.mjs tests/hunter-chromatic-blend-v117.test.mjs
   typecheck:
     name: TypeScript and lint on the complete game source
     runs-on: ubuntu-24.04

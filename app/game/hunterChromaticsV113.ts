@@ -277,6 +277,11 @@ export function hasCustomChromaticsV113(value: unknown): boolean {
   return Object.values(safe).some(item => item !== null);
 }
 
+/** PNG is applied first; a translucent user pigment remains visible above it.
+ * Keep the same fraction in the rig CSS and mission Canvas pipelines.
+ */
+export const CHROMATIC_PIGMENT_OVER_TEXTURE_V117 = 0.4;
+
 /**
  * Alpha mask always comes from the rig's existing body/strand/plate.
  * "Cover" is a 2D approximation, not an official game's UV map.
@@ -291,6 +296,13 @@ export function chromaticOverlayStyleV113(
   const texture = getChromaticMaterialV113(channel, chromatics[materialField[channel]]);
   if (!color && !texture?.src) return null;
   const mask = 'url("' + maskPath + '")';
+  // Without a second upper layer, an opaque RGB PNG hides the chosen pigment.
+  // CSS #RRGGBBAA is stable, needs no extra DOM element, and respects the rig mask.
+  const tintAlpha = Math.round(CHROMATIC_PIGMENT_OVER_TEXTURE_V117 * 255)
+    .toString(16).padStart(2, "0");
+  const pigmentOverTexture = color && texture?.src
+    ? `linear-gradient(${color}${tintAlpha}, ${color}${tintAlpha}), `
+    : "";
   return {
     position: "absolute",
     inset: "0",
@@ -298,8 +310,10 @@ export function chromaticOverlayStyleV113(
     height: "100%",
     pointerEvents: "none",
     userSelect: "none",
-    backgroundColor: color ?? "transparent",
-    backgroundImage: texture?.src ? 'url("' + texture.src + '")' : "none",
+    backgroundColor: color && !texture?.src ? color : "transparent",
+    backgroundImage: texture?.src
+      ? pigmentOverTexture + 'url("' + texture.src + '")'
+      : "none",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
