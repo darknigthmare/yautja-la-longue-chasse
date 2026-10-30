@@ -1,0 +1,110 @@
+{
+  "kind": "ACTUAL_IMAGE_OPENING_REVIEW",
+  "reviewer": "homeworld_open_gameplay_v112",
+  "method": "Individually opened the19original PNGs indices0–18 after the full byte-identical R4retry passed, in four batches of4 and one batch of3 using view_image.",
+  "captures": [
+    {
+      "file": "feral-hunter-vs-scar-forward-button-forward-button-held-retreat.png",
+      "bytes": 1283774,
+      "sha256": "516fd9d9c76ac023a9f23168e134c7a42129ae164fe8552d81158bb13732caa1"
+    },
+    {
+      "file": "feral-hunter-vs-scar-J1-initial-capture.png",
+      "bytes": 1316015,
+      "sha256": "aa574f4d1482aa469cbee3d66ab729d3c6d5ee42e8f42f3d63c72133f941d0da"
+    },
+    {
+      "file": "feral-hunter-vs-scar-J1-initial-flight.png",
+      "bytes": 1285529,
+      "sha256": "75c6541d2e73eae9353d9cbbb069d4dc5b17ba531598faa013f926d0b8a7f590"
+    },
+    {
+      "file": "feral-hunter-vs-scar-J1-initial-landing.png",
+      "bytes": 1297195,
+      "sha256": "828bf4aa06c9539b0e71bc7302740d490cbf0e092ce6505376c956c29e0898ad"
+    },
+    {
+      "file": "feral-hunter-vs-scar-J1-initial-recovered.png",
+      "bytes": 1287253,
+      "sha256": "4f2e308d5919c553005b7c7702bf0daa4183c9c7f3f3d9685f01b01e990a529f"
+    },
+    {
+      "file": "feral-hunter-vs-scar-J1-return-capture.png",
+      "bytes": 1277435,
+      "sha256": "7370d401f98e8d44aab21793288782b79d2d6975b929204333ee8403101331b5"
+    },
+    {
+      "file": "feral-hunter-vs-scar-J1-return-flight.png",
+      "bytes": 1301763,
+      "sha256": "5ce806a580683068d0551ef0ad75b6645b813a74090b952c6d537c811e03237d"
+    },
+    {
+      "file": "feral-hunter-vs-scar-J1-return-landing.png",
+      "bytes": 1255058,
+      "sha256": "45f68870ea1de3c3c56babb88c7b7a4963aaa5d26439d77aa09252db137bb01b"
+    },
+    {
+      "file": "feral-hunter-vs-scar-J1-return-recovered.png",
+      "bytes": 1284529,
+      "sha256": "6b3336311bb4573a88ba66c3b1e1c6f9b9b4d05a8cba50d0505efdd2600e5c77"
+    },
+    {
+      "file": "feral-hunter-vs-scar-J2-initial-capture.png",
+      "bytes": 1286357,
+      "sha256": "82d2c4b1b9914cc27cd96b67106c356f15e694915b7f9f1acbf5f16ae97979c2"
+    },
+    {
+      "file": "feral-hunter-vs-scar-J2-initial-flight.png",
+      "bytes": 1323670,
+      "sha256": "821ad8a47d3ee313497af11492112457888d7d9e2f3d711894075f2f52db1174"
+    },
+    {
+      "file": "feral-hunter-vs-scar-J2-initial-landing.png",
+      "bytes": 1275836,
+      "sha256": "ab64c4ca0de868cf7a916fcd1f9f5c4494ad5d0c13278bcb6845a018b8413c92"
+    },
+    {
+      "file": "feral-hunter-vs-scar-J2-initial-recovered.png",
+      "bytes": 1271592,
+      "sha256": "68e11e792f5ee06876d6e1e1b7891967ffaf700bcab3acf8e1ce0025937188db"
+    },
+    {
+      "file": "feral-hunter-vs-scar-J2-return-capture.png",
+      "bytes": 1289128,
+      "sha256": "5e642cf63bbcc0127401fb044278b849f1212a204787824c9dc0e5a374edaedd"
+    },
+    {
+      "file": "feral-hunter-vs-scar-J2-return-flight.png",
+      "bytes": 1343144,
+      "sha256": "b0cbb1f107e506a84250f6fed71951c0e19ef6d9237048e9bae4048c090c3eee"
+    },
+    {
+      "file": "feral-hunter-vs-scar-J2-return-landing.png",
+      "bytes": 1308824,
+      "sha256": "622e8eab3afdd1688d8927f2a8c4eff273bf4e04dab5cd2729eea0f054a809b3"
+    },
+    {
+      "file": "feral-hunter-vs-scar-J2-return-recovered.png",
+      "bytes": 1272834,
+      "sha256": "3474f8808c97806a206025e859a54105bfd4fef4535aef97126424f996e9b96b"
+    },
+    {
+      "file": "feral-hunter-vs-scar-tech.png",
+      "bytes": 1318930,
+      "sha256": "cccc5a82f2f9e6ab21373f8a522589a3b5c59ee0dbce981b815956cc63bc2011"
+    },
+    {
+      "file": "feral-hunter-vs-scar-wall-refusal.png",
+      "bytes": 1288320,
+      "sha256": "47a71241f1af2e797e407c4bee70018826b3d529598ebdce2c1076673f4e19cf"
+    }
+  ],
+  "blockingFindings": [],
+  "observations": [
+    "Distinct attacker and victim poses visible in each capture, flight and grounded landing.",
+    "Both orientations have coherent native anatomy and ground support; recovered poses match their actual role positions.",
+    "Fresh tech and refused capture at the arena boundary preserve both actors.",
+    "As in R3, small extremities at some landings can be behind the fixed provocation HUD overlay; this is distinct from atlas clipping."
+  ],
+  "remaining": "Await Art independent review of indices19–38 before writing full opened.json."
+}

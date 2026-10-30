@@ -1,0 +1,28 @@
+TAP version 13
+# Subtest: the actual browser initializer records and rethrows a native Worker constructor failure even when the app catches it
+ok 1 - the actual browser initializer records and rethrows a native Worker constructor failure even when the app catches it
+  ---
+  duration_ms: 1.675064
+  type: 'test'
+  ...
+# Subtest: actual native error listeners stay attached and retain the unfiltered asynchronous Worker failure
+ok 2 - actual native error listeners stay attached and retain the unfiltered asynchronous Worker failure
+  ---
+  duration_ms: 0.595356
+  type: 'test'
+  ...
+# Subtest: the actual final collector captures early-abort records once and refuses an unobservable open page
+ok 3 - the actual final collector captures early-abort records once and refuses an unobservable open page
+  ---
+  duration_ms: 1.336076
+  type: 'test'
+  ...
+1..3
+# tests 3
+# suites 0
+# pass 3
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 13.261811

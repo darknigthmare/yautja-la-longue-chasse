@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "release": "V112",
+  "status": "PASS_COMPATIBILITY_REGRESSION",
+  "domain": "LegacyHomeworldUI",
+  "runtimeCommit": "aa891dfff9bc022d1b7363d4b7085aca19b4d1e3",
+  "buildId": "WZwxZDYUZhpepqlaPWKpe",
+  "journeys": [
+    "Continuation",
+    "Recovery",
+    "MobileGuide",
+    "LegacyA"
+  ],
+  "checksPassed": 87,
+  "captures": 14,
+  "servedBuildResponses": 14,
+  "observedSources": 1458,
+  "sourceBeforeAfterIdentical": true,
+  "allObservedSourcesMatchV112Freeze": true,
+  "v112FreezeSources": 1563,
+  "runtimeFreeze": {
+    "path": "docs/qa/v112-legacy-ui-regressions-r4/runtime-freeze-r4.json",
+    "originalPath": "docs/v112-runtime-freeze.json",
+    "sha256": "988097f754c3cc8fa825190b6644e21926c0515557cbad72912bb003f7e44df6",
+    "bytes": 291082,
+    "entries": 1563
+  },
+  "finalSaveVersions": [
+    12,
+    12,
+    12,
+    12
+  ],
+  "preOwnedFieldToolPreserved": true,
+  "historicalV111CertificatesUnchanged": {
+    "docs/v111-runtime-freeze.json": "8eee8a5f5a043f2a67477bc6bcff97fffb1ee1666864bd7aed60c7a6c21ca138",
+    "docs/v111-homeworld-validation.json": "808c4d76e512207c9a0b757cb517624e836ac696c08614638e81e122bcd478b0",
+    "docs/YAUTJA_V111_SUIVI.xlsx": "fa5ebf78a08c36b4a567246dfae41de535a8e36c7294ba33190e3e1e2ec9ad05"
+  },
+  "priorR2ArchiveUnchanged": {
+    "docs/qa/v112-legacy-ui-regressions/continuation-02-new-consented-continuation.png": "7dd8c5088b3b00fa34f0e81f22f207e4df2b19916e2a57d98876193660094728",
+    "docs/qa/v112-legacy-ui-regressions/continuation-03-completed-independent-a.png": "3f8bab7abe6a109167c0275ff483e00245b384d693d9c02250b9385ba806acf6",
+    "docs/qa/v112-legacy-ui-regressions/recovery-01-explicit-recovery-preview.png": "5fd988bec92ea082911cec04e48e7dbe02a463b193d392174046266d2b152cd8",
+    "docs/qa/v112-legacy-ui-regressions/mobileguide-00-open-conserved-notebook.png": "92d6f562582d854d4a38cc631e8b186250714d602900d9086b6afa8e59f78d81",
+    "docs/qa/v112-legacy-ui-regressions/legacya-01-direct-a-completed.png": "53a41d929a30efdf775153355977da747ca4a9f2eeefabb31d2268364d7c4569",
+    "docs/qa/v112-legacy-ui-regressions/mobileguide-03-keyboard-route-options.png": "f9fc3c06c0abc2c2c3aef8e1b1e0c28ac8752039e53ec51408106ddc7e878253",
+    "docs/qa/v112-legacy-ui-regressions/continuation-00-native-explanation-pose.png": "68f5c304ffa955a12a6e72eddb6f9f04a65b10943cc8914fef923b5f710d9dc1",
+    "docs/qa/v112-legacy-ui-regressions/entry.json": "832877443650375063f7b2e1aa410cd733b8396ebdda16e91e4fab14119b303d",
+    "docs/qa/v112-legacy-ui-regressions/continuation-00-native-indication-pose.png": "d8b20c1ddb40f3737f3ec03fd77fffa703ed3527d56b6a822f8cd9141d9fec5c",
+    "docs/qa/v112-legacy-ui-regressions/browser.log": "cefdb91c39930b986a15b6a1f7b5beb43b3fcb6a3cfcc402202b6d24c181d17c",
+    "docs/qa/v112-legacy-ui-regressions/recovery-02-confirmed-exterior-restoration.png": "a34e031332ffa9bd3afb92a89120af8321b7aa0c177cb0dd923288c23a70d3a3",
+    "docs/qa/v112-legacy-ui-regressions/mobileguide-01-compact-arrived-guide.png": "95c76694ad24763865b341964fc105dcb99d22e6dd7e672718f7e5b742dadeb4",
+    "docs/qa/v112-legacy-ui-regressions/opened.json": "20708a8c21b3a60e783473041fffca580efbe54c3e86d2faa69864c750494000",
+    "docs/qa/v112-legacy-ui-regressions/continuation-01-conserved-b-keyboard-record.png": "f8574654304bc03b6e2647074d65f12a7b2e301e7b3a62afd08aef98f6d4c629",
+    "docs/qa/v112-legacy-ui-regressions/browser-result.json.gz": "f7915601d2c1950fbbb7aa86df2e62a1884ccb541182e028240d222019520a10",
+    "docs/qa/v112-legacy-ui-regressions/continuation-01-completed-deferred-b.png": "4d62afe1813bec82e5de65f75f67367dfcf9238a53f53f3b363e476b561e0154",
+    "docs/qa/v112-legacy-ui-regressions/verification.json": "af8df5fc2768153a30286bf863c40ed980060477a84f811afde8fc5db228ca94",
+    "docs/qa/v112-legacy-ui-regressions/README.md": "74b248f8b350e96eff4d37d9b0125221ee033832167c13cf9cb079a271f84f7f",
+    "docs/qa/v112-legacy-ui-regressions/runtime-freeze-r2.json": "b9f6c61d12dc0bd65c6888b551a26ed028e89967dc232860c5b4afbab448186a",
+    "docs/qa/v112-legacy-ui-regressions/mobileguide-00-keyboard-conserved-notebook.png": "2f53a95e2cd24af6f268ef815645316823cc7c049460235f682658baea3c8064",
+    "docs/qa/v112-legacy-ui-regressions/mobileguide-02-requested-route-options.png": "ef2b79f1008c19346a151019aba0e8f6481aee263abe4686d9c076c852ac09a4"
+  },
+  "rawSha256": "ad63b563027df131f1540fcc32683a7c65b0048e6f32d751e4ffe4a44d38f750",
+  "rawBytes": 710223,
+  "archiveDestination": "docs/qa/v112-legacy-ui-regressions-r4",
+  "archiveWritten": true,
+  "isV112ProductionCertificate": false,
+  "certifiesHistoricalV111": false,
+  "scope": "Four complete historical V111 UI journeys independently executed on the exact V112 R4 compiled build after the live WorldMap actor update. The observed source inventory is an explicit subset of the full R4 freeze; no earlier result is relabeled.",
+  "limits": [
+    "The historical recipe observes 1458 source inputs, a verified subset of its 1563-input V112 freeze; it does not replace either complete V112 domain recipe.",
+    "Synthetic starting checkpoints and model-prepared cargo/B fixtures, pre-owned field tool and quota failure injection remain declared in the original raw scope.",
+    "The recipe checks its real Atlas/Worker route and mobile controls but does not independently quantify every350ms-latency scenario or certify all Homeworld routes.",
+    "No global campaign, artwork/source-action completion, fragment repair or lineage claim is inferred."
+  ]
+}

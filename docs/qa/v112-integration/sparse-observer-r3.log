@@ -1,0 +1,18 @@
+✔ the actual whiff observer proves real startup and45 effective frames even when clock calls sometimes produce no simulation tick (49.309073ms)
+✔ an input never consumed by the real simulation cannot masquerade as a successful whiff (5.644676ms)
+✔ a capture during the observed interval is refused immediately and remains in the failure trace (7.091458ms)
+✔ a health change during the observed interval is refused rather than hidden by a later recovery (9.102961ms)
+✔ a stopped or blocked simulation cannot pass and cannot make the actual observer wait forever (28.201938ms)
+✔ premature idle, oversized action clocks and frame-window overruns are rejected by the actual routine (6.633442ms)
+✔ V112 refuses incomplete, relabeled, erroneous or changed browser results (28.6379ms)
+✔ V112 validates immutable executed bytes against the runtime freeze (66.807002ms)
+✔ V112 native inventory rejects replaced artwork, missing provenance, undeclared pages and edited source bytes (36.449673ms)
+✔ V112 runtime identity must name the actual committed source, including newly added files (186.858845ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1864.342313

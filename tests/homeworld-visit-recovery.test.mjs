@@ -100,6 +100,8 @@ function fixture() {
   env.motionAssetsV74 = { ready: true };
   env.residentAdmissionRefV110 = { current: { owner, active: true } };
   env.cargoMigrationWriteReadyRefV108 = { current: true };
+  env.upgradeRecoveryPendingRefV112 = { current: false };
+  env.upgradeRecoverySubmittedRefV112 = { current: null };
   for (const [name, version, create] of [
     ['cartography', 'V104', world.defaultHomeworldCartographyV104],
     ['cartography', 'V105', world.defaultHomeworldCartographyV105],

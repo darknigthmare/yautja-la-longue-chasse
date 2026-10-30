@@ -1,0 +1,136 @@
+[
+  {
+    "name": "v105-walking",
+    "oldNativeWalkSteps": 263,
+    "oldNativeWalkDistance": 1344.0967177690945,
+    "beforePhase": "walking",
+    "afterPhase": "interrupted",
+    "movesActor": true,
+    "checkpointUnchanged": false,
+    "saveValid": true,
+    "migrations": [
+      {
+        "kind": "checkpoint",
+        "from": {
+          "x": 4799.825914935707,
+          "y": 4964.21758152965
+        },
+        "obstacleId": "public-place-v112:traveler-marker",
+        "to": {
+          "x": 4827.379122065994,
+          "y": 5030.736907870462
+        }
+      },
+      {
+        "kind": "operation-last",
+        "ledgerKey": "cartographyV105",
+        "study": false,
+        "from": {
+          "x": 4799.825914935707,
+          "y": 4964.21758152965
+        },
+        "obstacleId": "public-place-v112:traveler-marker",
+        "to": {
+          "x": 4827.379122065994,
+          "y": 5030.736907870462
+        }
+      }
+    ]
+  },
+  {
+    "name": "cargo-wide-carried",
+    "oldNativeWalkSteps": 485,
+    "oldNativeWalkDistance": 2535.7542202339678,
+    "beforePhase": "working",
+    "afterPhase": "interrupted",
+    "movesActor": true,
+    "checkpointUnchanged": false,
+    "saveValid": true,
+    "migrations": [
+      {
+        "kind": "checkpoint",
+        "from": {
+          "x": 4799.825914935707,
+          "y": 4964.21758152965
+        },
+        "obstacleId": "public-place-v112:traveler-marker",
+        "to": {
+          "x": 4827.379122065994,
+          "y": 5030.736907870462
+        }
+      },
+      {
+        "kind": "operation-last",
+        "ledgerKey": "cargoV108",
+        "study": false,
+        "from": {
+          "x": 4799.825914935707,
+          "y": 4964.21758152965
+        },
+        "obstacleId": "public-place-v112:traveler-marker",
+        "to": {
+          "x": 4827.379122065994,
+          "y": 5030.736907870462
+        }
+      }
+    ]
+  },
+  {
+    "name": "cargo-wide-ground",
+    "oldNativeWalkSteps": 473,
+    "oldNativeWalkDistance": 2486.023503594549,
+    "beforePhase": "interrupted",
+    "afterPhase": "interrupted",
+    "movesActor": false,
+    "checkpointUnchanged": true,
+    "saveValid": true,
+    "migrations": [
+      {
+        "kind": "ground-object",
+        "ledgerKey": "cargoV108",
+        "study": false,
+        "objectField": "lots",
+        "objectIndex": 0,
+        "objectId": "wide",
+        "from": {
+          "x": 4799.825914935707,
+          "y": 4964.21758152965
+        },
+        "obstacleId": "public-place-v112:traveler-marker",
+        "to": {
+          "x": 4869.107947238463,
+          "y": 5004.21758152965
+        }
+      }
+    ]
+  },
+  {
+    "name": "cargo-wide-ground-remote",
+    "oldNativeWalkSteps": 950,
+    "oldNativeWalkDistance": 4989.140397883702,
+    "beforePhase": "interrupted",
+    "afterPhase": "interrupted",
+    "movesActor": false,
+    "checkpointUnchanged": true,
+    "saveValid": true,
+    "migrations": [
+      {
+        "kind": "ground-object",
+        "ledgerKey": "cargoV108",
+        "study": false,
+        "objectField": "lots",
+        "objectIndex": 0,
+        "objectId": "wide",
+        "from": {
+          "x": 4799.825914935707,
+          "y": 4964.21758152965
+        },
+        "obstacleId": "public-place-v112:traveler-marker",
+        "to": {
+          "x": 4869.107947238463,
+          "y": 5004.21758152965
+        }
+      }
+    ]
+  }
+]

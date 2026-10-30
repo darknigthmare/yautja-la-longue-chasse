@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-28",
+  "tool": "image_gen.imagegen",
+  "attemptId": "scar-backward-victim-right-v112-isolated-5-v112",
+  "submittedPrompt": "Redraw EXACTLY ONE isolated FULL BODY sprite, matching the character and pose from the BOTTOM RIGHT cell (reading-order frame5, zero-based) of this reference sheet. The other five reference drawings must be completely ABSENT. Do not simply crop the sheet: paint a NEW original complete native source that preserves the intended pose, correct anatomy and owned equipment without contamination from neighboring frames. Character Scar with silver red-marked biomask, gold-beaded black dreadlocks, ochre netted skin, silver armor, brown-red waistcloth, attached shoulder plasma cannon, spear in the original own hand, wrist blades on original arm. Role VICTIM of an original backward throw; original initial facing screen RIGHT. Required exact phase: rising onto one knee after landing, one own hand may support the ground, head turns toward the ORIGINAL facing, all equipment remains owned. Keep the natural anatomical equipment sides through rotation; NEVER mirror. Exactly TWO arms and TWO legs, no extra hands/heads/feet, no second character, no mannequin, no attacker/victim or external gripping hand. Preserve the incarnation and painted game style of the reference. One landscape1536x1024 RGBA image with ONE centered entire pose only. Render the full body at moderate scale, silhouette maximum1100px wide and760px high, with at least120px entirely transparent clear gutter on all four outer canvas edges. NO part may touch or leave canvas. Background must be strictly genuine alpha0 with NO brown glow/vignette/shadow/floor/grid/checkerboard/text/labels or colored background. Owned spear/blades/shield remain fully inside canvas and don't disappear. Anatomical body scale is constant: lying/bent bodies must retain natural proportions. This is one clean standalone production animation drawing, no collage and no secondary poses.",
+  "submittedReferences": [
+    {
+      "submittedPath": "/workspace/yautja-la-longue-chasse/public/game/sprites/v112/pit/scar/scar-backward-victim-right-v112.png",
+      "path": "public/game/sprites/v112/pit/scar/scar-backward-victim-right-v112.png",
+      "bytes": 2236000,
+      "sha256": "3dafeb18cff5d22552f94bc38bc2003e77d907eaa4935e60b2de8e334ac8ba8e",
+      "preservedPath": "public/game/sprites/v112/pit/scar/scar-backward-victim-right-v112.png"
+    }
+  ],
+  "transparentBackgroundRequested": true,
+  "originalNativeOutput": "/workspace/generated_images/exec-af6db73a-f2ed-4bc8-a31b-f0ed0c913c94.png",
+  "output": {
+    "path": "public/game/sprites/v112/pit/scar/scar-backward-victim-right-v112-isolated-5-v112.png",
+    "sha256": "b7770c5e223dffe7449d9b31a542a2127f42924ab50377146cbd8db9908ee2e8",
+    "bytes": 1605677,
+    "width": 1536,
+    "height": 1024
+  },
+  "filesEditedAfterGeneration": false,
+  "status": "SELECTED_SOURCE_REGIONS",
+  "replacesSource": "scar-backward-victim-right-v112",
+  "frameIndex": 5,
+  "scope": "Local tool call record, not an externally signed certificate. Only selected source UV regions may be admitted. Source action completion remains open.",
+  "selectedFrameIndices": [
+    5
+  ]
+}

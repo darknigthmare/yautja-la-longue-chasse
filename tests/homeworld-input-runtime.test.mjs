@@ -68,6 +68,8 @@ function fixture() {
     touch: { current: { left: false, right: false, up: false, down: false, jump: false, sprint: false } },
     gamepadStateRef: { current: createHomeworldGamepadState() },
     suspendedRef: { current: false }, pausedRef: { current: false }, dialogStateRef: { current: null },
+    upgradeRecoveryPendingRefV112: { current: false },
+    upgradeRecoverySubmittedRefV112: { current: null },
     spatialCodexOpenRef: { current: false },
     wayfindingOpenRefV75: { current: false },
     motionAssetsV74:{ready:true},

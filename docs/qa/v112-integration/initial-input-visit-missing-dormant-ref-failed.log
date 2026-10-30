@@ -1,0 +1,644 @@
+✖ the live V104 cartography hook samples resolved movement while dormant, and a refused write freezes the city clock (237.814561ms)
+✖ the live V105 cartography hook stays dormant and its refused write freezes the physical city (153.637004ms)
+✖ held stick and A on first focus cannot move or open a dialogue until a neutral frame (160.410822ms)
+✖ V54 spatial atlas owns controller input exclusively and closing requires a neutral world frame (106.561103ms)
+✖ V75 destination finder consumes no city controller action and requires release after closing (123.466843ms)
+✖ Homeworld focus return requires release, without losing position (118.284934ms)
+✖ Homeworld window return requires release, without losing position (124.607413ms)
+✖ Homeworld hidden return requires release, without losing position (91.930152ms)
+✖ Homeworld service return requires release, without losing position (115.914325ms)
+✖ Start pauses and resumes intentionally but held Start/stick never repeats across the transition (136.292738ms)
+✖ dialog up starts at the last enabled choice, wraps and never repeats on render (118.807013ms)
+✖ navigation dialog remains controller-accessible above an already paused city (194.975841ms)
+✖ the live city clock freezes strand position and velocity in pause, then settles after release (142.477359ms)
+✖ closing a dialogue by B cannot start walking on its still-held stick (115.404095ms)
+✖ controller replacement and reconnect require neutral; harmless dead-zone drift remains neutral (240.576459ms)
+✖ Start resumes after window inactivity in one intentional press, without toggling into another pause (291.674503ms)
+✖ real Council transit selects native walking from resolved XY without changing motor velocity; pause freezes its gait (218.19745ms)
+✖ stationary lift and moving skiff retain native idle; vehicle translation cannot activate walking (113.788667ms)
+✖ the mounted RAF makes L3 1.8 times faster and advances native gait by resolved travel (288.810639ms)
+✖ keyboard sprint uses the configured hold action, and touch sprint shares the same motor (107.691358ms)
+✖ held L3 alone cannot arm sprint across pause, dialog or focus ownership changes (97.622289ms)
+✖ the actual viewport key handler accepts remapped sprint and rejects the old key, blocked input and browser shortcuts (134.222162ms)
+✖ the actual tactile Course button toggles the input without movement, announces state, and respects modal blocking (126.160811ms)
+✖ V94 gamepad policy method-throws cannot stop the live city clock or keyboard movement (175.623484ms)
+✖ V94 gamepad policy getter-throws cannot stop the live city clock or keyboard movement (115.013851ms)
+✖ V94 gamepad recovery requires neutral after a denied poll instead of replaying a held interaction (104.557451ms)
+✖ the live V106 archive hook remains dormant during ordinary movement and a refused archive write freezes and resumes the physical clock (85.758989ms)
+✔ the live V106 archive callback rolls an invalid proposed step back before interruption and preserves an importable carried pair (3738.264454ms)
+✖ the live V107 comparison remains dormant and a refused write freezes and resumes the physical clock (119.946755ms)
+✔ the live V107 comparison callback rolls an invalid step back before interruption and saves the exact carried pair (2704.207444ms)
+✖ the live V109 plaque stays dormant and freezes native movement on a refused write (166.573011ms)
+✔ the live V109 plaque callback rolls back an unsupported step before preserving the carried pair (2908.986817ms)
+✖ queued lift hydration never restores a previous owner and replacement hydration shares the polling frame (328.974526ms)
+✖ a refused actual Port entry stays pending without a frame-write loop, then retries in place (171.4779ms)
+✖ repeated refusal keeps the same visit available and writes at most once per explicit retry (239.537221ms)
+✖ several refused visited districts recover progressively; a second refusal does not erase the first ack (190.356019ms)
+✖ retry uses latest acknowledged evidence and relations, never a stale failed snapshot (164.261483ms)
+✖ a visit already durably acknowledged elsewhere clears pending state without another write (162.379111ms)
+✖ the retry is inert behind a suspended city and resumes only on a new explicit action (217.229606ms)
+✖ owner replacement cannot replay pending visits before or after the live save-sync effect (133.674923ms)
+✖ successful inline retry restores world focus and dialog retry stays navigable without held-A spill (192.332859ms)
+✖ entering youth training keeps refused visits alive until an explicit successful retry (176.86605ms)
+✖ a partially recovered visit queue still blocks departure for youth training (169.739865ms)
+✔ youth entry ignores a suspended or stale-owner city even with no pending visits (203.878253ms)
+✔ with no pending visits youth entry preserves the existing save-refusal feedback (211.577005ms)
+✖ Solo physical departure retains refused visits, then retries and handles a refused chapter save (122.349031ms)
+✖ Solo entry stays blocked while one of several refused visits remains pending (120.439449ms)
+✔ Solo departure keeps its physical, suspension and owner guards even after visit recovery (235.222147ms)
+ℹ tests 48
+ℹ suites 0
+ℹ pass 6
+ℹ fail 42
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 19620.977948
+
+✖ failing tests:
+
+test at tests/homeworld-input-runtime.test.mjs:148:1
+✖ the live V104 cartography hook samples resolved movement while dormant, and a refused write freezes the city clock (237.814561ms)
+  ReferenceError: upgradeRecoveryPendingRefV112 is not defined
+      at frame (evalmachine.<anonymous>:11:9)
+      at Object.tick (file:///workspace/yautja-la-longue-chasse/tests/helpers/animation-frame-fixture.mjs:23:11)
+      at tick (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:142:98)
+      at Object.release (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:143:104)
+      at TestContext.<anonymous> (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:150:5)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.start (node:internal/test_runner/test:944:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+      at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+
+test at tests/homeworld-input-runtime.test.mjs:163:1
+✖ the live V105 cartography hook stays dormant and its refused write freezes the physical city (153.637004ms)
+  ReferenceError: upgradeRecoveryPendingRefV112 is not defined
+      at frame (evalmachine.<anonymous>:11:9)
+      at Object.tick (file:///workspace/yautja-la-longue-chasse/tests/helpers/animation-frame-fixture.mjs:23:11)
+      at tick (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:142:98)
+      at Object.release (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:143:104)
+      at TestContext.<anonymous> (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:165:5)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+
+test at tests/homeworld-input-runtime.test.mjs:178:1
+✖ held stick and A on first focus cannot move or open a dialogue until a neutral frame (160.410822ms)
+  ReferenceError: upgradeRecoveryPendingRefV112 is not defined
+      at frame (evalmachine.<anonymous>:11:9)
+      at Object.tick (file:///workspace/yautja-la-longue-chasse/tests/helpers/animation-frame-fixture.mjs:23:11)
+      at Object.tick (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:142:98)
+      at TestContext.<anonymous> (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:180:57)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+
+test at tests/homeworld-input-runtime.test.mjs:189:1
+✖ V54 spatial atlas owns controller input exclusively and closing requires a neutral world frame (106.561103ms)
+  ReferenceError: upgradeRecoveryPendingRefV112 is not defined
+      at frame (evalmachine.<anonymous>:11:9)
+      at Object.tick (file:///workspace/yautja-la-longue-chasse/tests/helpers/animation-frame-fixture.mjs:23:11)
+      at tick (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:142:98)
+      at Object.release (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:143:104)
+      at TestContext.<anonymous> (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:190:26)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+
+test at tests/homeworld-input-runtime.test.mjs:205:1
+✖ V75 destination finder consumes no city controller action and requires release after closing (123.466843ms)
+  ReferenceError: upgradeRecoveryPendingRefV112 is not defined
+      at frame (evalmachine.<anonymous>:11:9)
+      at Object.tick (file:///workspace/yautja-la-longue-chasse/tests/helpers/animation-frame-fixture.mjs:23:11)
+      at tick (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:142:98)
+      at Object.release (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:143:104)
+      at TestContext.<anonymous> (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:206:26)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+
+test at tests/homeworld-input-runtime.test.mjs:222:68
+✖ Homeworld focus return requires release, without losing position (118.284934ms)
+  ReferenceError: upgradeRecoveryPendingRefV112 is not defined
+      at frame (evalmachine.<anonymous>:11:9)
+      at Object.tick (file:///workspace/yautja-la-longue-chasse/tests/helpers/animation-frame-fixture.mjs:23:11)
+      at Object.tick (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:142:98)
+      at TestContext.<anonymous> (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:223:26)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+
+test at tests/homeworld-input-runtime.test.mjs:222:68
+✖ Homeworld window return requires release, without losing position (124.607413ms)
+  ReferenceError: upgradeRecoveryPendingRefV112 is not defined
+      at frame (evalmachine.<anonymous>:11:9)
+      at Object.tick (file:///workspace/yautja-la-longue-chasse/tests/helpers/animation-frame-fixture.mjs:23:11)
+      at Object.tick (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:142:98)
+      at TestContext.<anonymous> (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:223:26)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+
+test at tests/homeworld-input-runtime.test.mjs:222:68
+✖ Homeworld hidden return requires release, without losing position (91.930152ms)
+  ReferenceError: upgradeRecoveryPendingRefV112 is not defined
+      at frame (evalmachine.<anonymous>:11:9)
+      at Object.tick (file:///workspace/yautja-la-longue-chasse/tests/helpers/animation-frame-fixture.mjs:23:11)
+      at Object.tick (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:142:98)
+      at TestContext.<anonymous> (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:223:26)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+
+test at tests/homeworld-input-runtime.test.mjs:222:68
+✖ Homeworld service return requires release, without losing position (115.914325ms)
+  ReferenceError: upgradeRecoveryPendingRefV112 is not defined
+      at frame (evalmachine.<anonymous>:11:9)
+      at Object.tick (file:///workspace/yautja-la-longue-chasse/tests/helpers/animation-frame-fixture.mjs:23:11)
+      at Object.tick (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:142:98)
+      at TestContext.<anonymous> (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:223:26)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+
+test at tests/homeworld-input-runtime.test.mjs:239:1
+✖ Start pauses and resumes intentionally but held Start/stick never repeats across the transition (136.292738ms)
+  ReferenceError: upgradeRecoveryPendingRefV112 is not defined
+      at frame (evalmachine.<anonymous>:11:9)
+      at Object.tick (file:///workspace/yautja-la-longue-chasse/tests/helpers/animation-frame-fixture.mjs:23:11)
+      at Object.tick (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:142:98)
+      at TestContext.<anonymous> (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:240:26)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+
+test at tests/homeworld-input-runtime.test.mjs:253:1
+✖ dialog up starts at the last enabled choice, wraps and never repeats on render (118.807013ms)
+  ReferenceError: upgradeRecoveryPendingRefV112 is not defined
+      at frame (evalmachine.<anonymous>:11:9)
+      at Object.tick (file:///workspace/yautja-la-longue-chasse/tests/helpers/animation-frame-fixture.mjs:23:11)
+      at Object.tick (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:142:98)
+      at TestContext.<anonymous> (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:254:120)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+
+test at tests/homeworld-input-runtime.test.mjs:265:1
+✖ navigation dialog remains controller-accessible above an already paused city (194.975841ms)
+  ReferenceError: upgradeRecoveryPendingRefV112 is not defined
+      at frame (evalmachine.<anonymous>:11:9)
+      at Object.tick (file:///workspace/yautja-la-longue-chasse/tests/helpers/animation-frame-fixture.mjs:23:11)
+      at Object.tick (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:142:98)
+      at TestContext.<anonymous> (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:268:51)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+
+test at tests/homeworld-input-runtime.test.mjs:276:1
+✖ the live city clock freezes strand position and velocity in pause, then settles after release (142.477359ms)
+  ReferenceError: upgradeRecoveryPendingRefV112 is not defined
+      at frame (evalmachine.<anonymous>:11:9)
+      at Object.tick (file:///workspace/yautja-la-longue-chasse/tests/helpers/animation-frame-fixture.mjs:23:11)
+      at tick (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:142:98)
+      at Object.release (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:143:104)
+      at TestContext.<anonymous> (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:277:26)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+
+test at tests/homeworld-input-runtime.test.mjs:294:1
+✖ closing a dialogue by B cannot start walking on its still-held stick (115.404095ms)
+  ReferenceError: upgradeRecoveryPendingRefV112 is not defined
+      at frame (evalmachine.<anonymous>:11:9)
+      at Object.tick (file:///workspace/yautja-la-longue-chasse/tests/helpers/animation-frame-fixture.mjs:23:11)
+      at Object.tick (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:142:98)
+      at TestContext.<anonymous> (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:295:120)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+
+test at tests/homeworld-input-runtime.test.mjs:302:1
+✖ controller replacement and reconnect require neutral; harmless dead-zone drift remains neutral (240.576459ms)
+  ReferenceError: upgradeRecoveryPendingRefV112 is not defined
+      at frame (evalmachine.<anonymous>:11:9)
+      at Object.tick (file:///workspace/yautja-la-longue-chasse/tests/helpers/animation-frame-fixture.mjs:23:11)
+      at Object.tick (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:142:98)
+      at TestContext.<anonymous> (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:303:50)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+
+test at tests/homeworld-input-runtime.test.mjs:313:1
+✖ Start resumes after window inactivity in one intentional press, without toggling into another pause (291.674503ms)
+  ReferenceError: upgradeRecoveryPendingRefV112 is not defined
+      at frame (evalmachine.<anonymous>:11:9)
+      at Object.tick (file:///workspace/yautja-la-longue-chasse/tests/helpers/animation-frame-fixture.mjs:23:11)
+      at Object.tick (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:142:98)
+      at TestContext.<anonymous> (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:314:26)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+
+test at tests/homeworld-input-runtime.test.mjs:321:1
+✖ real Council transit selects native walking from resolved XY without changing motor velocity; pause freezes its gait (218.19745ms)
+  ReferenceError: upgradeRecoveryPendingRefV112 is not defined
+      at frame (evalmachine.<anonymous>:11:9)
+      at Object.tick (file:///workspace/yautja-la-longue-chasse/tests/helpers/animation-frame-fixture.mjs:23:11)
+      at tick (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:142:98)
+      at Object.release (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:143:104)
+      at TestContext.<anonymous> (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:322:26)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+
+test at tests/homeworld-input-runtime.test.mjs:344:1
+✖ stationary lift and moving skiff retain native idle; vehicle translation cannot activate walking (113.788667ms)
+  ReferenceError: upgradeRecoveryPendingRefV112 is not defined
+      at frame (evalmachine.<anonymous>:11:9)
+      at Object.tick (file:///workspace/yautja-la-longue-chasse/tests/helpers/animation-frame-fixture.mjs:23:11)
+      at tick (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:142:98)
+      at Object.release (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:143:104)
+      at TestContext.<anonymous> (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:346:28)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+
+test at tests/homeworld-input-runtime.test.mjs:363:1
+✖ the mounted RAF makes L3 1.8 times faster and advances native gait by resolved travel (288.810639ms)
+  ReferenceError: upgradeRecoveryPendingRefV112 is not defined
+      at frame (evalmachine.<anonymous>:11:9)
+      at Object.tick (file:///workspace/yautja-la-longue-chasse/tests/helpers/animation-frame-fixture.mjs:23:11)
+      at tick (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:142:98)
+      at Object.release (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:143:104)
+      at TestContext.<anonymous> (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:364:49)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+
+test at tests/homeworld-input-runtime.test.mjs:377:1
+✖ keyboard sprint uses the configured hold action, and touch sprint shares the same motor (107.691358ms)
+  ReferenceError: upgradeRecoveryPendingRefV112 is not defined
+      at frame (evalmachine.<anonymous>:11:9)
+      at Object.tick (file:///workspace/yautja-la-longue-chasse/tests/helpers/animation-frame-fixture.mjs:23:11)
+      at tick (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:142:98)
+      at Object.release (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:143:104)
+      at TestContext.<anonymous> (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:379:28)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+
+test at tests/homeworld-input-runtime.test.mjs:393:1
+✖ held L3 alone cannot arm sprint across pause, dialog or focus ownership changes (97.622289ms)
+  ReferenceError: upgradeRecoveryPendingRefV112 is not defined
+      at frame (evalmachine.<anonymous>:11:9)
+      at Object.tick (file:///workspace/yautja-la-longue-chasse/tests/helpers/animation-frame-fixture.mjs:23:11)
+      at tick (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:142:98)
+      at Object.release (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:143:104)
+      at TestContext.<anonymous> (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:395:28)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+
+test at tests/homeworld-input-runtime.test.mjs:411:1
+✖ the actual viewport key handler accepts remapped sprint and rejects the old key, blocked input and browser shortcuts (134.222162ms)
+  ReferenceError: upgradeRecoveryPendingRefV112 is not defined
+      at frame (evalmachine.<anonymous>:11:9)
+      at Object.tick (file:///workspace/yautja-la-longue-chasse/tests/helpers/animation-frame-fixture.mjs:23:11)
+      at tick (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:142:98)
+      at Object.release (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:143:104)
+      at TestContext.<anonymous> (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:412:26)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+
+test at tests/homeworld-input-runtime.test.mjs:429:1
+✖ the actual tactile Course button toggles the input without movement, announces state, and respects modal blocking (126.160811ms)
+  ReferenceError: upgradeRecoveryPendingRefV112 is not defined
+      at frame (evalmachine.<anonymous>:11:9)
+      at Object.tick (file:///workspace/yautja-la-longue-chasse/tests/helpers/animation-frame-fixture.mjs:23:11)
+      at tick (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:142:98)
+      at Object.release (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:143:104)
+      at TestContext.<anonymous> (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:430:26)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+
+test at tests/homeworld-input-runtime.test.mjs:443:56
+✖ V94 gamepad policy method-throws cannot stop the live city clock or keyboard movement (175.623484ms)
+  ReferenceError: upgradeRecoveryPendingRefV112 is not defined
+      at frame (evalmachine.<anonymous>:11:9)
+      at Object.tick (file:///workspace/yautja-la-longue-chasse/tests/helpers/animation-frame-fixture.mjs:23:11)
+      at tick (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:142:98)
+      at Object.release (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:143:104)
+      at TestContext.<anonymous> (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:444:26)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+
+test at tests/homeworld-input-runtime.test.mjs:443:56
+✖ V94 gamepad policy getter-throws cannot stop the live city clock or keyboard movement (115.013851ms)
+  ReferenceError: upgradeRecoveryPendingRefV112 is not defined
+      at frame (evalmachine.<anonymous>:11:9)
+      at Object.tick (file:///workspace/yautja-la-longue-chasse/tests/helpers/animation-frame-fixture.mjs:23:11)
+      at tick (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:142:98)
+      at Object.release (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:143:104)
+      at TestContext.<anonymous> (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:444:26)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+
+test at tests/homeworld-input-runtime.test.mjs:458:1
+✖ V94 gamepad recovery requires neutral after a denied poll instead of replaying a held interaction (104.557451ms)
+  ReferenceError: upgradeRecoveryPendingRefV112 is not defined
+      at frame (evalmachine.<anonymous>:11:9)
+      at Object.tick (file:///workspace/yautja-la-longue-chasse/tests/helpers/animation-frame-fixture.mjs:23:11)
+      at tick (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:142:98)
+      at Object.release (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:143:104)
+      at TestContext.<anonymous> (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:459:26)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+
+test at tests/homeworld-input-runtime.test.mjs:468:1
+✖ the live V106 archive hook remains dormant during ordinary movement and a refused archive write freezes and resumes the physical clock (85.758989ms)
+  ReferenceError: upgradeRecoveryPendingRefV112 is not defined
+      at frame (evalmachine.<anonymous>:11:9)
+      at Object.tick (file:///workspace/yautja-la-longue-chasse/tests/helpers/animation-frame-fixture.mjs:23:11)
+      at tick (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:142:98)
+      at Object.release (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:143:104)
+      at TestContext.<anonymous> (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:469:63)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+
+test at tests/homeworld-input-runtime.test.mjs:494:1
+✖ the live V107 comparison remains dormant and a refused write freezes and resumes the physical clock (119.946755ms)
+  ReferenceError: upgradeRecoveryPendingRefV112 is not defined
+      at frame (evalmachine.<anonymous>:11:9)
+      at Object.tick (file:///workspace/yautja-la-longue-chasse/tests/helpers/animation-frame-fixture.mjs:23:11)
+      at tick (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:142:98)
+      at Object.release (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:143:104)
+      at TestContext.<anonymous> (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:495:66)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+
+test at tests/homeworld-input-runtime.test.mjs:508:1
+✖ the live V109 plaque stays dormant and freezes native movement on a refused write (166.573011ms)
+  ReferenceError: upgradeRecoveryPendingRefV112 is not defined
+      at frame (evalmachine.<anonymous>:11:9)
+      at Object.tick (file:///workspace/yautja-la-longue-chasse/tests/helpers/animation-frame-fixture.mjs:23:11)
+      at tick (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:142:98)
+      at Object.release (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:143:104)
+      at TestContext.<anonymous> (file:///workspace/yautja-la-longue-chasse/tests/homeworld-input-runtime.test.mjs:509:62)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+
+test at tests/homeworld-visit-recovery.test.mjs:139:1
+✖ queued lift hydration never restores a previous owner and replacement hydration shares the polling frame (328.974526ms)
+  ReferenceError: upgradeRecoveryPendingRefV112 is not defined
+      at frame (evalmachine.<anonymous>:11:9)
+      at Object.tick (file:///workspace/yautja-la-longue-chasse/tests/helpers/animation-frame-fixture.mjs:23:11)
+      at TestContext.<anonymous> (file:///workspace/yautja-la-longue-chasse/tests/homeworld-visit-recovery.test.mjs:145:5)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.start (node:internal/test_runner/test:944:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+      at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+
+test at tests/homeworld-visit-recovery.test.mjs:158:1
+✖ a refused actual Port entry stays pending without a frame-write loop, then retries in place (171.4779ms)
+  ReferenceError: upgradeRecoveryPendingRefV112 is not defined
+      at frame (evalmachine.<anonymous>:11:9)
+      at Object.tick (file:///workspace/yautja-la-longue-chasse/tests/helpers/animation-frame-fixture.mjs:23:11)
+      at TestContext.<anonymous> (file:///workspace/yautja-la-longue-chasse/tests/homeworld-visit-recovery.test.mjs:161:5)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+
+test at tests/homeworld-visit-recovery.test.mjs:174:1
+✖ repeated refusal keeps the same visit available and writes at most once per explicit retry (239.537221ms)
+  ReferenceError: upgradeRecoveryPendingRefV112 is not defined
+      at frame (evalmachine.<anonymous>:11:9)
+      at Object.tick (file:///workspace/yautja-la-longue-chasse/tests/helpers/animation-frame-fixture.mjs:23:11)
+      at TestContext.<anonymous> (file:///workspace/yautja-la-longue-chasse/tests/homeworld-visit-recovery.test.mjs:175:26)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+
+test at tests/homeworld-visit-recovery.test.mjs:183:1
+✖ several refused visited districts recover progressively; a second refusal does not erase the first ack (190.356019ms)
+  ReferenceError: upgradeRecoveryPendingRefV112 is not defined
+      at frame (evalmachine.<anonymous>:11:9)
+      at Object.tick (file:///workspace/yautja-la-longue-chasse/tests/helpers/animation-frame-fixture.mjs:23:11)
+      at TestContext.<anonymous> (file:///workspace/yautja-la-longue-chasse/tests/homeworld-visit-recovery.test.mjs:184:26)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+
+test at tests/homeworld-visit-recovery.test.mjs:199:1
+✖ retry uses latest acknowledged evidence and relations, never a stale failed snapshot (164.261483ms)
+  ReferenceError: upgradeRecoveryPendingRefV112 is not defined
+      at frame (evalmachine.<anonymous>:11:9)
+      at Object.tick (file:///workspace/yautja-la-longue-chasse/tests/helpers/animation-frame-fixture.mjs:23:11)
+      at TestContext.<anonymous> (file:///workspace/yautja-la-longue-chasse/tests/homeworld-visit-recovery.test.mjs:200:26)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+
+test at tests/homeworld-visit-recovery.test.mjs:215:1
+✖ a visit already durably acknowledged elsewhere clears pending state without another write (162.379111ms)
+  ReferenceError: upgradeRecoveryPendingRefV112 is not defined
+      at frame (evalmachine.<anonymous>:11:9)
+      at Object.tick (file:///workspace/yautja-la-longue-chasse/tests/helpers/animation-frame-fixture.mjs:23:11)
+      at TestContext.<anonymous> (file:///workspace/yautja-la-longue-chasse/tests/homeworld-visit-recovery.test.mjs:216:26)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+
+test at tests/homeworld-visit-recovery.test.mjs:222:1
+✖ the retry is inert behind a suspended city and resumes only on a new explicit action (217.229606ms)
+  ReferenceError: upgradeRecoveryPendingRefV112 is not defined
+      at frame (evalmachine.<anonymous>:11:9)
+      at Object.tick (file:///workspace/yautja-la-longue-chasse/tests/helpers/animation-frame-fixture.mjs:23:11)
+      at TestContext.<anonymous> (file:///workspace/yautja-la-longue-chasse/tests/homeworld-visit-recovery.test.mjs:223:26)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+
+test at tests/homeworld-visit-recovery.test.mjs:230:1
+✖ owner replacement cannot replay pending visits before or after the live save-sync effect (133.674923ms)
+  ReferenceError: upgradeRecoveryPendingRefV112 is not defined
+      at frame (evalmachine.<anonymous>:11:9)
+      at Object.tick (file:///workspace/yautja-la-longue-chasse/tests/helpers/animation-frame-fixture.mjs:23:11)
+      at TestContext.<anonymous> (file:///workspace/yautja-la-longue-chasse/tests/homeworld-visit-recovery.test.mjs:231:26)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+
+test at tests/homeworld-visit-recovery.test.mjs:243:1
+✖ successful inline retry restores world focus and dialog retry stays navigable without held-A spill (192.332859ms)
+  ReferenceError: upgradeRecoveryPendingRefV112 is not defined
+      at frame (evalmachine.<anonymous>:11:9)
+      at Object.tick (file:///workspace/yautja-la-longue-chasse/tests/helpers/animation-frame-fixture.mjs:23:11)
+      at TestContext.<anonymous> (file:///workspace/yautja-la-longue-chasse/tests/homeworld-visit-recovery.test.mjs:244:36)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+
+test at tests/homeworld-visit-recovery.test.mjs:260:1
+✖ entering youth training keeps refused visits alive until an explicit successful retry (176.86605ms)
+  ReferenceError: upgradeRecoveryPendingRefV112 is not defined
+      at frame (evalmachine.<anonymous>:11:9)
+      at Object.tick (file:///workspace/yautja-la-longue-chasse/tests/helpers/animation-frame-fixture.mjs:23:11)
+      at TestContext.<anonymous> (file:///workspace/yautja-la-longue-chasse/tests/homeworld-visit-recovery.test.mjs:261:26)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+
+test at tests/homeworld-visit-recovery.test.mjs:280:1
+✖ a partially recovered visit queue still blocks departure for youth training (169.739865ms)
+  ReferenceError: upgradeRecoveryPendingRefV112 is not defined
+      at frame (evalmachine.<anonymous>:11:9)
+      at Object.tick (file:///workspace/yautja-la-longue-chasse/tests/helpers/animation-frame-fixture.mjs:23:11)
+      at TestContext.<anonymous> (file:///workspace/yautja-la-longue-chasse/tests/homeworld-visit-recovery.test.mjs:281:26)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+
+test at tests/homeworld-visit-recovery.test.mjs:330:1
+✖ Solo physical departure retains refused visits, then retries and handles a refused chapter save (122.349031ms)
+  ReferenceError: upgradeRecoveryPendingRefV112 is not defined
+      at frame (evalmachine.<anonymous>:11:9)
+      at Object.tick (file:///workspace/yautja-la-longue-chasse/tests/helpers/animation-frame-fixture.mjs:23:11)
+      at TestContext.<anonymous> (file:///workspace/yautja-la-longue-chasse/tests/homeworld-visit-recovery.test.mjs:331:26)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+
+test at tests/homeworld-visit-recovery.test.mjs:351:1
+✖ Solo entry stays blocked while one of several refused visits remains pending (120.439449ms)
+  ReferenceError: upgradeRecoveryPendingRefV112 is not defined
+      at frame (evalmachine.<anonymous>:11:9)
+      at Object.tick (file:///workspace/yautja-la-longue-chasse/tests/helpers/animation-frame-fixture.mjs:23:11)
+      at TestContext.<anonymous> (file:///workspace/yautja-la-longue-chasse/tests/homeworld-visit-recovery.test.mjs:352:26)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:744:7)

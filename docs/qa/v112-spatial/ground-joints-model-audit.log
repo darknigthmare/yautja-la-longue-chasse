@@ -1,0 +1,1232 @@
+{
+  "schemaVersion": 1,
+  "release": "V112",
+  "method": "Actual retained facade contacts sampled every four world units; before excludes only foundation-v112 polygons. Geometry/model evidence, not pixel or browser QA.",
+  "buildings": 51,
+  "interactiveBuildings": 43,
+  "closedFacades": 8,
+  "edgeSamples": 20098,
+  "unsupportedBefore": [
+    {
+      "id": "trophy-mausoleum",
+      "levelId": "0",
+      "unsupportedSamples": 52,
+      "first": {
+        "x": 728.2613592529705,
+        "y": 1626.229783642424
+      }
+    },
+    {
+      "id": "residence-forges-1",
+      "levelId": "0",
+      "unsupportedSamples": 13,
+      "first": {
+        "x": 2962.077089620332,
+        "y": 2261.6775617648077
+      }
+    },
+    {
+      "id": "residence-esplanade-2",
+      "levelId": "0",
+      "unsupportedSamples": 1,
+      "first": {
+        "x": 1352.113587306272,
+        "y": 1631.062578265356
+      }
+    },
+    {
+      "id": "residence-clans-1",
+      "levelId": "0",
+      "unsupportedSamples": 2,
+      "first": {
+        "x": 3769.4641775251066,
+        "y": 2492.9000137168655
+      }
+    },
+    {
+      "id": "residence-arenas-1",
+      "levelId": "0",
+      "unsupportedSamples": 5,
+      "first": {
+        "x": 2935,
+        "y": 1361.5458533717938
+      }
+    },
+    {
+      "id": "residence-terraces-3",
+      "levelId": "0",
+      "unsupportedSamples": 22,
+      "first": {
+        "x": 1650,
+        "y": 2212.191499762004
+      }
+    }
+  ],
+  "unsupportedAfter": [],
+  "foundationOverlaps": [],
+  "addedPlinths": [
+    {
+      "id": "foundation-v112:trophy-mausoleum",
+      "buildingId": "trophy-mausoleum",
+      "levelId": "0",
+      "polygon": [
+        {
+          "x": 409.2850384376118,
+          "y": 1852.928403921562
+        },
+        {
+          "x": 539.1149219347453,
+          "y": 1538.6925031223045
+        },
+        {
+          "x": 571.1149219347453,
+          "y": 1538.6925031223045
+        },
+        {
+          "x": 1097.922167392324,
+          "y": 1756.348484279264
+        },
+        {
+          "x": 1097.922167392324,
+          "y": 1788.348484279264
+        },
+        {
+          "x": 968.0922838951903,
+          "y": 2102.5843850785213
+        },
+        {
+          "x": 936.0922838951903,
+          "y": 2102.5843850785213
+        },
+        {
+          "x": 409.2850384376118,
+          "y": 1884.928403921562
+        }
+      ]
+    },
+    {
+      "id": "foundation-v112:residence-forges-1",
+      "buildingId": "residence-forges-1",
+      "levelId": "0",
+      "polygon": [
+        {
+          "x": 2503.897952687056,
+          "y": 2315.9293733744084
+        },
+        {
+          "x": 2801.0119474399503,
+          "y": 2178.347924756336
+        },
+        {
+          "x": 2833.0119474399503,
+          "y": 2178.347924756336
+        },
+        {
+          "x": 3184.7949172273766,
+          "y": 2341.62229450188
+        },
+        {
+          "x": 3184.7949172273766,
+          "y": 2373.62229450188
+        },
+        {
+          "x": 2985.134312753432,
+          "y": 2517.005370471317
+        },
+        {
+          "x": 2953.134312753432,
+          "y": 2517.005370471317
+        },
+        {
+          "x": 2503.897952687056,
+          "y": 2347.9293733744084
+        }
+      ]
+    },
+    {
+      "id": "foundation-v112:residence-esplanade-2",
+      "buildingId": "residence-esplanade-2",
+      "levelId": "0",
+      "polygon": [
+        {
+          "x": 1292.1071159742091,
+          "y": 1558.12353997104
+        },
+        {
+          "x": 1714.9608194260902,
+          "y": 1518.7880649911938
+        },
+        {
+          "x": 1746.9608194260902,
+          "y": 1518.7880649911938
+        },
+        {
+          "x": 1867.0483599933198,
+          "y": 1629.1811721926974
+        },
+        {
+          "x": 1867.0483599933198,
+          "y": 1661.1811721926974
+        },
+        {
+          "x": 1497.6881973395682,
+          "y": 1814.7164132430644
+        },
+        {
+          "x": 1465.6881973395682,
+          "y": 1814.7164132430644
+        },
+        {
+          "x": 1292.1071159742091,
+          "y": 1590.12353997104
+        }
+      ]
+    },
+    {
+      "id": "foundation-v112:residence-clans-1",
+      "buildingId": "residence-clans-1",
+      "levelId": "0",
+      "polygon": [
+        {
+          "x": 3592.107115974209,
+          "y": 2268.12353997104
+        },
+        {
+          "x": 4014.96081942609,
+          "y": 2228.788064991194
+        },
+        {
+          "x": 4046.96081942609,
+          "y": 2228.788064991194
+        },
+        {
+          "x": 4167.0483599933195,
+          "y": 2339.1811721926974
+        },
+        {
+          "x": 4167.0483599933195,
+          "y": 2371.1811721926974
+        },
+        {
+          "x": 3797.6881973395684,
+          "y": 2524.7164132430644
+        },
+        {
+          "x": 3765.6881973395684,
+          "y": 2524.7164132430644
+        },
+        {
+          "x": 3592.107115974209,
+          "y": 2300.12353997104
+        }
+      ]
+    },
+    {
+      "id": "foundation-v112:residence-arenas-1",
+      "buildingId": "residence-arenas-1",
+      "levelId": "0",
+      "polygon": [
+        {
+          "x": 2559,
+          "y": 1104
+        },
+        {
+          "x": 2951,
+          "y": 1104
+        },
+        {
+          "x": 2951,
+          "y": 1381.505621459856
+        },
+        {
+          "x": 2559,
+          "y": 1381.505621459856
+        }
+      ]
+    },
+    {
+      "id": "foundation-v112:residence-terraces-3",
+      "buildingId": "residence-terraces-3",
+      "levelId": "0",
+      "polygon": [
+        {
+          "x": 1446,
+          "y": 1916
+        },
+        {
+          "x": 1894,
+          "y": 1916
+        },
+        {
+          "x": 1894,
+          "y": 2216.191499762004
+        },
+        {
+          "x": 1446,
+          "y": 2216.191499762004
+        }
+      ]
+    }
+  ],
+  "addedPlinthOverlapsWithOtherBuildings": [],
+  "groundJoints": {
+    "method": "Unit grid of all immediate mausoleum/promenade floor contacts. Before removes only the two V112 joints; exterior edge-connected relief is preserved.",
+    "bounds": {
+      "left": 100,
+      "right": 1200,
+      "top": 1800,
+      "bottom": 2500,
+      "step": 1
+    },
+    "before": {
+      "enclosed": [
+        {
+          "samples": 612,
+          "area": 612,
+          "left": 410,
+          "right": 432,
+          "top": 1930,
+          "bottom": 1983
+        },
+        {
+          "samples": 895,
+          "area": 895,
+          "left": 410,
+          "right": 440,
+          "top": 2101,
+          "bottom": 2138
+        }
+      ],
+      "exteriorSamples": 34485
+    },
+    "after": {
+      "enclosed": [],
+      "exteriorSamples": 34485
+    },
+    "added": [
+      {
+        "id": "foundation-v112:joint-mausoleum-western-promenade",
+        "levelId": "0",
+        "sourceIds": [
+          "coast-west:1",
+          "forecourt-v76:trophy-mausoleum",
+          "forecourt-link-v76:trophy-mausoleum",
+          "western-promenade:1"
+        ],
+        "witness": {
+          "x": 414.36966032182846,
+          "y": 2122.68635159387
+        },
+        "polygon": [
+          {
+            "x": 410,
+            "y": 2100.650957121848
+          },
+          {
+            "x": 440,
+            "y": 2113.0457741844666
+          },
+          {
+            "x": 440,
+            "y": 2135.4804326965245
+          },
+          {
+            "x": 410,
+            "y": 2137.8241826965245
+          }
+        ],
+        "area": 894.1182613010169,
+        "witnessBefore": false,
+        "witnessAfter": true
+      },
+      {
+        "id": "foundation-v112:joint-mausoleum-coast-west",
+        "levelId": "0",
+        "sourceIds": [
+          "coast-west:0",
+          "coast-west:1",
+          "forecourt-v76:trophy-mausoleum"
+        ],
+        "witness": {
+          "x": 418,
+          "y": 1950
+        },
+        "polygon": [
+          {
+            "x": 410,
+            "y": 1930
+          },
+          {
+            "x": 432.5123533000317,
+            "y": 1930
+          },
+          {
+            "x": 410,
+            "y": 1984.488145778108
+          }
+        ],
+        "area": 613.3281942101894,
+        "witnessBefore": false,
+        "witnessAfter": true
+      }
+    ]
+  },
+  "furniture": {
+    "candidates": 10,
+    "admitted": [
+      {
+        "id": "public-place-v112:traveler-marker",
+        "artId": "clan-waymarker-right",
+        "levelId": "0",
+        "x": 4800,
+        "y": 4980
+      },
+      {
+        "id": "public-place-v112:delegation-planter",
+        "artId": "basalt-planter-left",
+        "levelId": "0",
+        "x": 5380,
+        "y": 5790
+      },
+      {
+        "id": "public-place-v112:register-marker",
+        "artId": "clan-waymarker-right",
+        "levelId": "0",
+        "x": 6140,
+        "y": 5020
+      },
+      {
+        "id": "public-place-v112:arrival-marker",
+        "artId": "clan-waymarker-right",
+        "levelId": "0",
+        "x": 6910,
+        "y": 5090
+      },
+      {
+        "id": "public-place-v112:arrival-planter",
+        "artId": "basalt-planter-left",
+        "levelId": "0",
+        "x": 6550,
+        "y": 5120
+      },
+      {
+        "id": "public-place-v112:maintenance-console",
+        "artId": "maintenance-console-right",
+        "levelId": "0",
+        "x": 4170,
+        "y": 4970
+      }
+    ],
+    "refused": [
+      {
+        "id": "public-place-v112:loading-marker",
+        "reason": "reserved:preserved-extra:urban-v84:stable-supplies:0"
+      },
+      {
+        "id": "public-place-v112:maintenance-planter",
+        "reason": "existing-solid:gateway-v72:glass-desert:right"
+      },
+      {
+        "id": "public-place-v112:return-planter",
+        "reason": "reserved:preserved-v92:street-v92:port-return:cargo-rack-right:1"
+      },
+      {
+        "id": "public-place-v112:traveler-planter",
+        "reason": "reserved:court-pedestrian:port-2"
+      }
+    ],
+    "newNativeImages": 0,
+    "services": 0
+  },
+  "naturalPlacementFollowup": {
+    "status": "VALIDE_CIBLE_MODELE",
+    "method": "Conservative authored V71 source ground-support rectangle intersects current public paving. Refused instances remain unchanged in the historical registry, not automatically relocated or shrunk. Native civic planters belong to separate solid providers.",
+    "historicalInstances": 392,
+    "intersectionsBefore": 77,
+    "admittedInstances": 315,
+    "refusedInstances": 77,
+    "formations": 39,
+    "intersectionsAfter": 0,
+    "itemsBefore": [
+      {
+        "id": "outskirts-v71-066",
+        "artId": "thicket",
+        "x": 163,
+        "y": 1810,
+        "groundIds": [
+          "coast-west:0",
+          "coast-west:1"
+        ]
+      },
+      {
+        "id": "outskirts-v71-067",
+        "artId": "marker",
+        "x": 6467,
+        "y": 1818,
+        "groundIds": [
+          "rampart-low-causeway:2",
+          "rampart-low-causeway:3"
+        ]
+      },
+      {
+        "id": "outskirts-v71-070",
+        "artId": "basalt",
+        "x": 31,
+        "y": 1994,
+        "groundIds": [
+          "coast-west:0",
+          "coast-west:1"
+        ]
+      },
+      {
+        "id": "outskirts-v71-071",
+        "artId": "thicket",
+        "x": 273,
+        "y": 2025,
+        "groundIds": [
+          "coast-west:1"
+        ]
+      },
+      {
+        "id": "outskirts-v71-074",
+        "artId": "basalt",
+        "x": 7012,
+        "y": 2439,
+        "groundIds": [
+          "connection-v72:ash-marches:1",
+          "connection-v72:ash-marches:aperture",
+          "port-marches-road:2"
+        ]
+      },
+      {
+        "id": "outskirts-v71-077",
+        "artId": "marker",
+        "x": 6428,
+        "y": 2635,
+        "groundIds": [
+          "rampart-low-causeway:2",
+          "port-marches-road:1",
+          "port-marches-road:2"
+        ]
+      },
+      {
+        "id": "outskirts-v71-078",
+        "artId": "thicket",
+        "x": 6670,
+        "y": 2623,
+        "groundIds": [
+          "connection-v72:ash-marches:0",
+          "connection-v72:ash-marches:1",
+          "port-marches-road:1"
+        ]
+      },
+      {
+        "id": "outskirts-v71-079",
+        "artId": "basalt",
+        "x": 6912,
+        "y": 2611,
+        "groundIds": [
+          "port",
+          "resident-terrace:resident-port-1:0:0",
+          "connection-v72:ash-marches:0",
+          "connection-v72:ash-marches:1"
+        ]
+      },
+      {
+        "id": "outskirts-v71-081",
+        "artId": "retaining",
+        "x": 6355,
+        "y": 2819,
+        "groundIds": [
+          "rampart-low-causeway:2",
+          "port-marches-road:1"
+        ]
+      },
+      {
+        "id": "outskirts-v71-082",
+        "artId": "marker",
+        "x": 6538,
+        "y": 2850,
+        "groundIds": [
+          "port-marches-road:1"
+        ]
+      },
+      {
+        "id": "outskirts-v71-083",
+        "artId": "thicket",
+        "x": 6780,
+        "y": 2838,
+        "groundIds": [
+          "port",
+          "quay-court",
+          "forecourt-v76:dock-control",
+          "connection-v72:ash-marches:0"
+        ]
+      },
+      {
+        "id": "outskirts-v71-084",
+        "artId": "marker",
+        "x": 6438,
+        "y": 3022,
+        "groundIds": [
+          "rampart-low-causeway:2",
+          "port-marches-road:1"
+        ]
+      },
+      {
+        "id": "outskirts-v71-085",
+        "artId": "thicket",
+        "x": 6680,
+        "y": 3053,
+        "groundIds": [
+          "port",
+          "forecourt-v76:dock-control",
+          "resident-terrace:resident-v69-port-1:0:0",
+          "port-marches-road:1"
+        ]
+      },
+      {
+        "id": "outskirts-v71-086",
+        "artId": "basalt",
+        "x": 6922,
+        "y": 3041,
+        "groundIds": [
+          "port",
+          "quay-court",
+          "forecourt-v76:dock-control",
+          "resident-terrace:resident-v69-port-1:0:0"
+        ]
+      },
+      {
+        "id": "outskirts-v71-088",
+        "artId": "thicket",
+        "x": 6790,
+        "y": 3225,
+        "groundIds": [
+          "port",
+          "quay-court",
+          "port-marches-road:0"
+        ]
+      },
+      {
+        "id": "outskirts-v71-089",
+        "artId": "basalt",
+        "x": -98,
+        "y": 3456,
+        "groundIds": [
+          "ground:lava-statue-left-v77"
+        ]
+      },
+      {
+        "id": "outskirts-v71-090",
+        "artId": "basalt",
+        "x": 7115,
+        "y": 3459,
+        "groundIds": [
+          "port",
+          "quay-court",
+          "resident-terrace:resident-port-3:0:0",
+          "resident-terrace:resident-port-4:0:0",
+          "resident-terrace:resident-v69-port-2:0:0",
+          "resident-terrace:resident-v69-port-3:0:0",
+          "port-marches-road:0"
+        ]
+      },
+      {
+        "id": "outskirts-v71-097",
+        "artId": "resinwood",
+        "x": 4398,
+        "y": 3861,
+        "groundIds": [
+          "rampart-low-causeway:0"
+        ]
+      },
+      {
+        "id": "outskirts-v71-098",
+        "artId": "thicket",
+        "x": 4640,
+        "y": 3849,
+        "groundIds": [
+          "rampart-low-causeway:0"
+        ]
+      },
+      {
+        "id": "outskirts-v71-099",
+        "artId": "basalt",
+        "x": 4882,
+        "y": 3880,
+        "groundIds": [
+          "rampart-low-causeway:0"
+        ]
+      },
+      {
+        "id": "outskirts-v71-101",
+        "artId": "retaining",
+        "x": 6216,
+        "y": 3851,
+        "groundIds": [
+          "rampart-low-causeway:2"
+        ]
+      },
+      {
+        "id": "outskirts-v71-102",
+        "artId": "marker",
+        "x": 6458,
+        "y": 3839,
+        "groundIds": [
+          "rampart-low-causeway:2"
+        ]
+      },
+      {
+        "id": "outskirts-v71-107",
+        "artId": "thicket",
+        "x": 4750,
+        "y": 4064,
+        "groundIds": [
+          "rampart-low-causeway:0"
+        ]
+      },
+      {
+        "id": "outskirts-v71-108",
+        "artId": "basalt",
+        "x": 4992,
+        "y": 4052,
+        "groundIds": [
+          "rampart-low-causeway:0",
+          "rampart-low-causeway:1"
+        ]
+      },
+      {
+        "id": "outskirts-v71-109",
+        "artId": "retaining",
+        "x": 5234,
+        "y": 4083,
+        "groundIds": [
+          "rampart-low-causeway:0",
+          "rampart-low-causeway:1"
+        ]
+      },
+      {
+        "id": "outskirts-v71-110",
+        "artId": "basalt",
+        "x": 5901,
+        "y": 4047,
+        "groundIds": [
+          "rampart-low-causeway:1"
+        ]
+      },
+      {
+        "id": "outskirts-v71-114",
+        "artId": "retaining",
+        "x": 5075,
+        "y": 4255,
+        "groundIds": [
+          "rampart-low-causeway:0",
+          "rampart-low-causeway:1"
+        ]
+      },
+      {
+        "id": "outskirts-v71-115",
+        "artId": "marker",
+        "x": 5317,
+        "y": 4286,
+        "groundIds": [
+          "rampart-low-causeway:0",
+          "rampart-low-causeway:1"
+        ]
+      },
+      {
+        "id": "outskirts-v71-116",
+        "artId": "thicket",
+        "x": 5559,
+        "y": 4274,
+        "groundIds": [
+          "rampart-low-causeway:1"
+        ]
+      },
+      {
+        "id": "outskirts-v71-117",
+        "artId": "basalt",
+        "x": 5801,
+        "y": 4262,
+        "groundIds": [
+          "rampart-low-causeway:1"
+        ]
+      },
+      {
+        "id": "outskirts-v71-140",
+        "artId": "thicket",
+        "x": 4770,
+        "y": 4881,
+        "groundIds": [
+          "urban-v78:port-court:2"
+        ]
+      },
+      {
+        "id": "outskirts-v71-143",
+        "artId": "vent",
+        "x": 3094,
+        "y": 5094,
+        "groundIds": [
+          "port-east-causeway:0"
+        ]
+      },
+      {
+        "id": "outskirts-v71-144",
+        "artId": "retaining",
+        "x": 4186,
+        "y": 5077,
+        "groundIds": [
+          "urban-v78:port-court:1"
+        ]
+      },
+      {
+        "id": "outskirts-v71-145",
+        "artId": "resinwood",
+        "x": 4428,
+        "y": 5108,
+        "groundIds": [
+          "urban-v78:port-court:1"
+        ]
+      },
+      {
+        "id": "outskirts-v71-153",
+        "artId": "basalt",
+        "x": 2962,
+        "y": 5278,
+        "groundIds": [
+          "port-east-causeway:0",
+          "port-east-causeway:1"
+        ]
+      },
+      {
+        "id": "outskirts-v71-154",
+        "artId": "vent",
+        "x": 3204,
+        "y": 5309,
+        "groundIds": [
+          "port-east-causeway:0",
+          "port-east-causeway:1",
+          "urban-v78:port-court:0"
+        ]
+      },
+      {
+        "id": "outskirts-v71-155",
+        "artId": "thicket",
+        "x": 3629,
+        "y": 5285,
+        "groundIds": [
+          "port-east-causeway:1",
+          "urban-v78:port-court:0"
+        ]
+      },
+      {
+        "id": "outskirts-v71-156",
+        "artId": "retaining",
+        "x": 4296,
+        "y": 5292,
+        "groundIds": [
+          "port-east-causeway:1",
+          "urban-v78:port-court:1"
+        ]
+      },
+      {
+        "id": "outskirts-v71-158",
+        "artId": "marker",
+        "x": 3287,
+        "y": 5512,
+        "groundIds": [
+          "port-east-causeway:0",
+          "port-east-causeway:1"
+        ]
+      },
+      {
+        "id": "landscape-v75-011",
+        "artId": "thicket",
+        "x": 4337,
+        "y": 5488,
+        "groundIds": [
+          "port-east-causeway:1",
+          "urban-v78:port-court:1"
+        ]
+      },
+      {
+        "id": "landscape-v75-012",
+        "artId": "thicket",
+        "x": 4403,
+        "y": 5825,
+        "groundIds": [
+          "urban-v78:port-court:1"
+        ]
+      },
+      {
+        "id": "landscape-v75-014",
+        "artId": "thicket",
+        "x": 3115,
+        "y": 5443,
+        "groundIds": [
+          "port-east-causeway:0",
+          "port-east-causeway:1"
+        ]
+      },
+      {
+        "id": "landscape-v75-015",
+        "artId": "thicket",
+        "x": 4534,
+        "y": 5366,
+        "groundIds": [
+          "port-east-causeway:1",
+          "urban-v78:port-court:2"
+        ]
+      },
+      {
+        "id": "landscape-v75-016",
+        "artId": "basalt",
+        "x": 4618,
+        "y": 5531,
+        "groundIds": [
+          "port-east-causeway:1"
+        ]
+      },
+      {
+        "id": "landscape-v75-017",
+        "artId": "basalt",
+        "x": 4538,
+        "y": 5696,
+        "groundIds": [
+          "port-east-causeway:1",
+          "urban-v78:port-court:1"
+        ]
+      },
+      {
+        "id": "landscape-v75-021",
+        "artId": "thicket",
+        "x": 2883,
+        "y": 5558,
+        "groundIds": [
+          "port-east-causeway:0",
+          "port-east-causeway:1"
+        ]
+      },
+      {
+        "id": "landscape-v75-023",
+        "artId": "thicket",
+        "x": 4681,
+        "y": 5188,
+        "groundIds": [
+          "urban-v78:port-court:2"
+        ]
+      },
+      {
+        "id": "landscape-v75-034",
+        "artId": "basalt",
+        "x": 5070,
+        "y": 4929,
+        "groundIds": [
+          "urban-v78:port-court:2"
+        ]
+      },
+      {
+        "id": "landscape-v75-035",
+        "artId": "basalt",
+        "x": 5197,
+        "y": 5246,
+        "groundIds": [
+          "port-east-causeway:1",
+          "urban-v78:port-court:2",
+          "urban-v78:port-court:3"
+        ]
+      },
+      {
+        "id": "landscape-v75-036",
+        "artId": "thicket",
+        "x": 5297,
+        "y": 5569,
+        "groundIds": [
+          "port-east-causeway:1",
+          "urban-v78:port-court:3"
+        ]
+      },
+      {
+        "id": "landscape-v75-037",
+        "artId": "basalt",
+        "x": 5173,
+        "y": 5888,
+        "groundIds": [
+          "urban-v78:port-court:3"
+        ]
+      },
+      {
+        "id": "landscape-v75-063",
+        "artId": "resinwood",
+        "x": 7154,
+        "y": 2288,
+        "groundIds": [
+          "connection-v72:ash-marches:aperture",
+          "port-marches-road:2"
+        ]
+      },
+      {
+        "id": "landscape-v75-078",
+        "artId": "basalt",
+        "x": 7531,
+        "y": 2646,
+        "groundIds": [
+          "port",
+          "resident-terrace:resident-port-2:0:0"
+        ]
+      },
+      {
+        "id": "landscape-v75-079",
+        "artId": "resinwood",
+        "x": 7245,
+        "y": 2818,
+        "groundIds": [
+          "port",
+          "quay-court"
+        ]
+      },
+      {
+        "id": "landscape-v75-085",
+        "artId": "resinwood",
+        "x": 7575,
+        "y": 2821,
+        "groundIds": [
+          "port",
+          "quay-court",
+          "resident-terrace:resident-port-2:0:0"
+        ]
+      },
+      {
+        "id": "landscape-v75-086",
+        "artId": "thicket",
+        "x": 7276,
+        "y": 3062,
+        "groundIds": [
+          "port",
+          "quay-court",
+          "forecourt-v76:dock-control",
+          "plinth-v81:port-house-east",
+          "resident-terrace:resident-v69-port-2:0:0"
+        ]
+      },
+      {
+        "id": "landscape-v75-109",
+        "artId": "vent",
+        "x": 5040,
+        "y": 4350,
+        "groundIds": [
+          "rampart-low-causeway:0",
+          "rampart-low-causeway:1"
+        ]
+      },
+      {
+        "id": "landscape-v75-113",
+        "artId": "vent",
+        "x": 4737,
+        "y": 5048,
+        "groundIds": [
+          "urban-v78:port-court:2"
+        ]
+      },
+      {
+        "id": "landscape-v75-117",
+        "artId": "basalt",
+        "x": 5591,
+        "y": 4916,
+        "groundIds": [
+          "urban-v78:port-court:3"
+        ]
+      },
+      {
+        "id": "landscape-v75-118",
+        "artId": "vent",
+        "x": 6031,
+        "y": 4175,
+        "groundIds": [
+          "rampart-low-causeway:1"
+        ]
+      },
+      {
+        "id": "landscape-v75-120",
+        "artId": "vent",
+        "x": 5635,
+        "y": 5091,
+        "groundIds": [
+          "urban-v78:port-court:3"
+        ]
+      },
+      {
+        "id": "landscape-v75-159",
+        "artId": "thicket",
+        "x": 7334,
+        "y": 3258,
+        "groundIds": [
+          "port",
+          "quay-court",
+          "forecourt-v76:dock-control",
+          "plinth-v81:port-house-east",
+          "resident-terrace:resident-v69-port-2:0:0",
+          "port-marches-road:0"
+        ]
+      },
+      {
+        "id": "landscape-v75-163",
+        "artId": "thicket",
+        "x": 6440,
+        "y": 4109,
+        "groundIds": [
+          "rampart-low-causeway:1",
+          "rampart-low-causeway:2"
+        ]
+      },
+      {
+        "id": "landscape-v75-164",
+        "artId": "resinwood",
+        "x": 6187,
+        "y": 4010,
+        "groundIds": [
+          "rampart-low-causeway:2"
+        ]
+      },
+      {
+        "id": "landscape-v75-165",
+        "artId": "thicket",
+        "x": 7503,
+        "y": 3085,
+        "groundIds": [
+          "port",
+          "quay-court",
+          "plinth-v81:port-house-east"
+        ]
+      },
+      {
+        "id": "landscape-v75-166",
+        "artId": "thicket",
+        "x": 7554,
+        "y": 3541,
+        "groundIds": [
+          "port",
+          "quay-court",
+          "quay-connection",
+          "plinth-v81:port-house-east",
+          "resident-terrace:resident-port-4:0:0"
+        ]
+      },
+      {
+        "id": "landscape-v75-169",
+        "artId": "thicket",
+        "x": 7802,
+        "y": 3402,
+        "groundIds": [
+          "port",
+          "plinth-v81:port-house-east",
+          "port-marches-road:0"
+        ]
+      },
+      {
+        "id": "landscape-v75-170",
+        "artId": "resinwood",
+        "x": 7691,
+        "y": 3669,
+        "groundIds": [
+          "dock-pedestrian-lane",
+          "quay-connection"
+        ]
+      },
+      {
+        "id": "landscape-v75-172",
+        "artId": "resinwood",
+        "x": 6486,
+        "y": 4428,
+        "groundIds": [
+          "rampart-low-causeway:1",
+          "rampart-low-causeway:2"
+        ]
+      },
+      {
+        "id": "landscape-v75-173",
+        "artId": "thicket",
+        "x": 6071,
+        "y": 4398,
+        "groundIds": [
+          "rampart-low-causeway:1",
+          "rampart-low-causeway:2"
+        ]
+      },
+      {
+        "id": "landscape-v75-176",
+        "artId": "resinwood",
+        "x": 7966,
+        "y": 3527,
+        "groundIds": [
+          "dock-pedestrian-lane",
+          "quay-connection"
+        ]
+      },
+      {
+        "id": "landscape-v75-177",
+        "artId": "thicket",
+        "x": 7893,
+        "y": 3856,
+        "groundIds": [
+          "dock-pedestrian-lane"
+        ]
+      },
+      {
+        "id": "landscape-v75-187",
+        "artId": "thicket",
+        "x": 7380,
+        "y": 3509,
+        "groundIds": [
+          "port",
+          "quay-court",
+          "quay-connection",
+          "plinth-v81:port-house-east",
+          "resident-terrace:resident-port-4:0:0",
+          "resident-terrace:resident-v69-port-2:0:0",
+          "port-marches-road:0"
+        ]
+      },
+      {
+        "id": "landscape-v75-197",
+        "artId": "thicket",
+        "x": 4951,
+        "y": 5049,
+        "groundIds": [
+          "urban-v78:port-court:2"
+        ]
+      },
+      {
+        "id": "landscape-v75-198",
+        "artId": "thicket",
+        "x": 5876,
+        "y": 5077,
+        "groundIds": [
+          "urban-v78:port-court:4"
+        ]
+      },
+      {
+        "id": "landscape-v75-199",
+        "artId": "basalt",
+        "x": 6277,
+        "y": 5011,
+        "groundIds": [
+          "urban-v78:port-court:4",
+          "urban-v78:port-court:5"
+        ]
+      },
+      {
+        "id": "landscape-v75-203",
+        "artId": "thicket",
+        "x": 5412,
+        "y": 5385,
+        "groundIds": [
+          "port-east-causeway:1",
+          "urban-v78:port-court:3"
+        ]
+      }
+    ],
+    "itemsAfter": []
+  }
+}

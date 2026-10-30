@@ -1,0 +1,106 @@
+TAP version 13
+# Subtest: V17 is opt-in and source10/3/32 110/0 belongs only to the unvaried native duo
+ok 1 - V17 is opt-in and source10/3/32 110/0 belongs only to the unvaried native duo
+  ---
+  duration_ms: 2.119756
+  type: 'test'
+  ...
+# Subtest: assigned keyboard and actual pad L+M preserve4; fresh real fighter facing decides backward or forward
+ok 2 - assigned keyboard and actual pad L+M preserve4; fresh real fighter facing decides backward or forward
+  ---
+  duration_ms: 4.908214
+  type: 'test'
+  ...
+# Subtest: both fighters, slots and native orientations move one real target continuously over the thrower and damage only at a clear landing
+ok 3 - both fighters, slots and native orientations move one real target continuously over the thrower and damage only at a clear landing
+  ---
+  duration_ms: 57.121225
+  type: 'test'
+  ...
+# Subtest: first and last fresh tech edges cancel the backward capture with no hit, meter or teleport
+ok 4 - first and last fresh tech edges cancel the backward capture with no hit, meter or teleport
+  ---
+  duration_ms: 3.610827
+  type: 'test'
+  ...
+# Subtest: held Projection and an input after tick8 cannot undo the real flight or landing
+ok 5 - held Projection and an input after tick8 cannot undo the real flight or landing
+  ---
+  duration_ms: 11.247651
+  type: 'test'
+  ...
+# Subtest: continuous pair reconstruction owns native clocks, including a mid-flight snapshot without prior observation
+ok 6 - continuous pair reconstruction owns native clocks, including a mid-flight snapshot without prior observation
+  ---
+  duration_ms: 31.665451
+  type: 'test'
+  ...
+# Subtest: laboratory shows45source ticks and backward target phases, and reset preservesV17 while clearing both captures
+ok 7 - laboratory shows45source ticks and backward target phases, and reset preservesV17 while clearing both captures
+  ---
+  duration_ms: 1.59849
+  type: 'test'
+  ...
+# Subtest: real startup/active/recovery whiff is10/3/32 with no held-button cancel
+ok 8 - real startup/active/recovery whiff is10/3/32 with no held-button cancel
+  ---
+  duration_ms: 22.088751
+  type: 'test'
+  ...
+# Subtest: a wall truncates a safe rear landing and an insufficient rear clearance refuses capture
+ok 9 - a wall truncates a safe rear landing and an insufficient rear clearance refuses capture
+  ---
+  duration_ms: 36.039067
+  type: 'test'
+  ...
+# Subtest: capture eligibility refuses airborne, wake, knockdown and existing hitstun instead of resetting a combo
+ok 10 - capture eligibility refuses airborne, wake, knockdown and existing hitstun instead of resetting a combo
+  ---
+  duration_ms: 3.50356
+  type: 'test'
+  ...
+# Subtest: source capture consumes resource, attack and jump edges and preserves a deployed finite device
+ok 11 - source capture consumes resource, attack and jump edges and preserves a deployed finite device
+  ---
+  duration_ms: 5.236027
+  type: 'test'
+  ...
+# Subtest: the CPU reacts after five visible ticks and a training knockout holds native landing for sixty ticks
+ok 12 - the CPU reacts after five visible ticks and a training knockout holds native landing for sixty ticks
+  ---
+  duration_ms: 29.469711
+  type: 'test'
+  ...
+# Subtest: tampering cannot create a capture, alter a landing, importTH_B intoV16 or combine both throws
+ok 13 - tampering cannot create a capture, alter a landing, importTH_B intoV16 or combine both throws
+  ---
+  duration_ms: 2.129321
+  type: 'test'
+  ...
+# Subtest: timeout clears the real pair and round transition retains17 without carrying an old capture
+ok 14 - timeout clears the real pair and round transition retains17 without carrying an old capture
+  ---
+  duration_ms: 22.446657
+  type: 'test'
+  ...
+# Subtest: real walking4+Projection is recorded and replayed onV17; relabelling16orrecipe cannot forge it
+ok 15 - real walking4+Projection is recorded and replayed onV17; relabelling16orrecipe cannot forge it
+  ---
+  duration_ms: 55.795059
+  type: 'test'
+  ...
+# Subtest: a complete two-roundV17 match uses actual walking and back throws, then replays its genuine victory
+ok 16 - a complete two-roundV17 match uses actual walking and back throws, then replays its genuine victory
+  ---
+  duration_ms: 372.734322
+  type: 'test'
+  ...
+1..16
+# tests 16
+# suites 0
+# pass 16
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 675.874192

@@ -3,6 +3,8 @@
 /* eslint-disable @next/next/no-img-element */
 
 import type { CSSProperties } from "react";
+import { phgMaterialForV113 } from "./hunterMaterialsV113";
+import { HUNTER_SKIN_FILTERS_V114, HUNTER_DREAD_FILTERS_V114, HUNTER_ARMOR_FILTERS_V114 } from "./hunterPaletteFiltersV114";
 
 import type {
   ArmorId,
@@ -33,7 +35,6 @@ import {
 } from "./hunterVisuals";
 import { hunterBodyPartColorV62, hunterBodyPartClipCssV62, type HunterLayerPlacement } from "./hunterHeadArtV62";
 import { HUNTER_DREAD_STRANDS_V63, solveHunterDreadsV63 } from "./hunterDreadsV63";
-import { HUNTER_SKIN_FILTERS_V114, HUNTER_DREAD_FILTERS_V114, HUNTER_ARMOR_FILTERS_V114 } from "./hunterPaletteFiltersV114";
 import {
   HUNTER_RIG_CANVAS,
   multiplyAffine,
@@ -69,6 +70,8 @@ export interface HunterRigPreviewProps {
   recoil?: number;
   debugBones?: boolean;
 }
+
+
 
 const LASER_COLORS: Readonly<Record<LaserColorId, { solid: string; fade: string; shadow: string }>> = {
   crimson: { solid: "rgb(255 48 42)", fade: "rgb(255 48 42 / .06)", shadow: "rgb(255 48 42 / .82)" },
@@ -315,6 +318,22 @@ function registeredLayer(
   );
 }
 
+/** Pattern tiled within an existing transparent sprite; never paint its rectangular bounds. */
+function registeredMaterialLayerV113(maskPath: string, materialPath: string, matrix: AffineMatrix, zIndex: number, slot: string, placement?: HunterLayerPlacement, clipPath?: string): React.ReactNode {
+  const mask = `url("${maskPath}")`;
+  const layer: CSSProperties = {
+    position: "absolute", left: placement ? `${placement.x / 256 * 100}%` : 0,
+    top: placement ? `${placement.y / 384 * 100}%` : 0,
+    width: placement ? `${placement.width / 256 * 100}%` : "100%",
+    height: placement ? `${placement.height / 384 * 100}%` : "100%",
+    pointerEvents: "none", userSelect: "none",
+    backgroundImage: `url("${materialPath}")`, backgroundRepeat: "repeat", backgroundSize: "68px 68px",
+    maskImage: mask, WebkitMaskImage: mask, maskSize: "100% 100%", WebkitMaskSize: "100% 100%",
+    maskRepeat: "no-repeat", WebkitMaskRepeat: "no-repeat", clipPath, mixBlendMode: "color", opacity: .86,
+  };
+  return <span key={slot} data-rig-material={slot} aria-hidden="true" style={{ ...fullCanvasImage, zIndex, transform: cssMatrix(matrix) }}><span style={layer} /></span>;
+}
+
 export function HunterRigPreview({
   appearance,
   armorId,
@@ -411,6 +430,9 @@ export function HunterRigPreview({
     );
   };
   const armorFamily = HUNTER_ARMOR_MODULES[appearance.armorStyleId];
+  const skinMaterial = phgMaterialForV113("skin", appearance.skinMaterialId);
+  const dreadMaterial = phgMaterialForV113("dread", appearance.dreadMaterialId);
+  const outfitMaterial = phgMaterialForV113("outfit", appearance.outfitMaterialId);
   const armorFilter = `${HUNTER_ARMOR_FILTERS_V114[appearance.armorTintId]} drop-shadow(0 3px 3px rgb(0 0 0 / .82))`;
   const netOpacity =
     appearance.armorStyleId === "feral"
@@ -542,6 +564,7 @@ export function HunterRigPreview({
                 } as CSSProperties
               }
             />
+            {dreadMaterial && registeredMaterialLayerV113(hunterDreadPath(appearance.dreadStyleId), dreadMaterial.src, { a: 1, b: 0, c: 0, d: 1, e: 0, f: 0 }, 0, `dread-material-${index}`)}
           </span>
         );
       })}
@@ -580,6 +603,7 @@ export function HunterRigPreview({
           registeredLayer(hunterBodyPartPath(appearance.bodyMorphId, partId, appearance.headStyleId), matrix, z,
             `body-${partId}`, hunterBodyPartColorV62(appearance.bodyMorphId, partId, HUNTER_SKIN_FILTERS_V114[appearance.skinId]), undefined,
             hunterBodyPartPlacement(appearance.bodyMorphId, partId, appearance.headStyleId), hunterBodyPartClipCssV62(appearance.bodyMorphId, partId)),
+          ...(skinMaterial ? [registeredMaterialLayerV113(hunterBodyPartPath(appearance.bodyMorphId, partId, appearance.headStyleId), skinMaterial.src, matrix, z, `skin-material-${partId}`, hunterBodyPartPlacement(appearance.bodyMorphId, partId, appearance.headStyleId), hunterBodyPartClipCssV62(appearance.bodyMorphId, partId))] : []),
           ...(hunterBodyPartHasNet(appearance.bodyMorphId, partId)
             ? [
                 <img
@@ -603,27 +627,15 @@ export function HunterRigPreview({
         ];
       })}
 
-      {armorSlots.map((slot) => (
-        <span key={`${slot.id}-${slot.bone}`}>
-          {registeredLayer(
-            hunterArmorPath(slot.id),
-            slot.id === armorFamily.shoulder
-              ? multiplyAffine(
-                  boneMatrix(slot.bone),
-                  scaleAround(
-                    153,
-                    110,
-                    HUNTER_ARMOR_FIT_BY_MORPH[appearance.bodyMorphId]
-                      .shoulderScale,
-                  ),
-                )
-              : boneMatrix(slot.bone),
-            slot.z,
-            `armor-${slot.id}`,
-            armorFilter,
-          )}
-        </span>
-      ))}
+      {armorSlots.map((slot) => {
+        const matrix = slot.id === armorFamily.shoulder
+          ? multiplyAffine(boneMatrix(slot.bone), scaleAround(153, 110, HUNTER_ARMOR_FIT_BY_MORPH[appearance.bodyMorphId].shoulderScale))
+          : boneMatrix(slot.bone);
+        return <span key={`${slot.id}-${slot.bone}`}>
+          {registeredLayer(hunterArmorPath(slot.id), matrix, slot.z, `armor-${slot.id}`, armorFilter)}
+          {outfitMaterial && registeredMaterialLayerV113(hunterArmorPath(slot.id), outfitMaterial.src, matrix, slot.z, `outfit-material-${slot.id}`)}
+        </span>;
+      })}
 
       {gearIds.slice(0, 2).map((gearId, gearIndex) => (
         <span key={gearId}>

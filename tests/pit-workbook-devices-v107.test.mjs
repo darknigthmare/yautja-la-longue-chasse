@@ -158,7 +158,8 @@ test('V15 replay/training inputs admit only the two new codes and preserve old r
   assert.throws(()=>p.encodePitReplayInput(input,14));assert.throws(()=>p.decodePitReplayInput(p.encodePitReplayInput(input,15),14));assert.throws(()=>p.encodePitTrainingInput(input,3));
  }
  assert.throws(()=>p.decodePitReplayInput(13<<7,15));assert.throws(()=>p.decodePitTrainingInput(13<<7,4));
- assert.throws(()=>p.encodePitReplayInput({},16));assert.throws(()=>p.decodePitReplayInput(0,16));assert.throws(()=>p.encodePitTrainingInput({},5));assert.throws(()=>p.decodePitTrainingInput(0,5));
+ // The current replay codec now supports V17; the next unknown engine must still fail closed.
+ assert.throws(()=>p.encodePitReplayInput({},p.PIT_REPLAY_MAX_ENGINE_VERSION+1));assert.throws(()=>p.decodePitReplayInput(0,p.PIT_REPLAY_MAX_ENGINE_VERSION+1));assert.throws(()=>p.encodePitTrainingInput({},5));assert.throws(()=>p.decodePitTrainingInput(0,5));
  const sequence=p.recordPitTrainingSequence([{resource:true},{workbookAction:'projectile'},{workbookAction:'mine'},{workbookAction:'super'},{workbookAction:'shuriken'}]);
  assert.equal(sequence.version,4);assert.equal(sequence.encoding,'dummy-input-rle-v4');assert.ok(p.normalizePitTrainingSequence(sequence));
  assert.deepEqual(sequence.segments.map(segment=>p.decodePitTrainingInput(segment[1],4)),[{resource:true},{workbookAction:'projectile'},{workbookAction:'mine'},{workbookAction:'super'},{workbookAction:'shuriken'}]);

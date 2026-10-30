@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "scope": "Explicit local V112 furniture upgrade recovery; no inherited Excel source is declared complete.",
+  "validation": {
+    "command": "node --test tests/homeworld-geometry-recovery-v112.test.mjs tests/homeworld-geometry-recovery-matrix-v112.test.mjs tests/homeworld-geometry-recovery-integration-v112.test.mjs",
+    "tests": 27,
+    "pass": 27,
+    "fail": 0,
+    "typecheckExitCode": 0,
+    "scopedLintExitCode": 0
+  },
+  "sourceFiles": [
+    {
+      "path": "app/game/HomeworldHub.tsx",
+      "sha256": "82ffe540bcb87ec29a3534ed55ef7b82d0195322bb30304226a9cbc3f9678ceb"
+    },
+    {
+      "path": "app/game/systems/homeworldGeometryRecoveryV112.ts",
+      "sha256": "da3ed465f312e7278384ab614b4c57323ba2e2dd90740205e1cf4ec9c677cbf3"
+    },
+    {
+      "path": "app/game/systems/homeworldArchiveResumeV112.ts",
+      "sha256": "b999c461ebcb4a1c43b2c22a0b3d6f5a5ba297e16950ee8e49b281597c915b32"
+    },
+    {
+      "path": "tests/helpers/homeworld-geometry-upgrade-v112-route.mjs",
+      "sha256": "3fa8ffbf14ad02aeebe8b6b15852ce80c822d701c798f84d1e8d132f68dcbc6b"
+    },
+    {
+      "path": "tests/homeworld-geometry-recovery-v112.test.mjs",
+      "sha256": "ebca0af94392acec7c673c2f4b9fbb3d6996ca56a53c1d63f1c720cb1ee91d8a"
+    },
+    {
+      "path": "tests/homeworld-geometry-recovery-integration-v112.test.mjs",
+      "sha256": "b63cd25fbe7014bfbc7fa7e5d5300aafa2750b80008e0b5442c57a9288ac7396"
+    },
+    {
+      "path": "tests/homeworld-geometry-recovery-matrix-v112.test.mjs",
+      "sha256": "3fbd7383efdfe9da5816aa5e7d863b77b6fd56945cf9e54d9eef1545080d01d6"
+    },
+    {
+      "path": "tests/fixtures/homeworld-upgrade-v112/manifest.json",
+      "sha256": "3c14e8e482e1766441f489d6ffa8b490a63635bab26de9fc43a5c193f89341ec"
+    }
+  ],
+  "limits": [
+    "The trace512 test constructs a valid schema boundary with zero-distance duplicate samples; it is not asserted to be emitted by the old UI.",
+    "Browser proof is produced separately by the V112 public-spaces recipe on a frozen production build.",
+    "Historical native fixtures retain their original owner and receipt bytes."
+  ],
+  "independentReview": {
+    "status": "PASS; no qualified open defect on recorded Hub and recovery hashes.",
+    "storageScenarios": 9,
+    "lateAcknowledgementNegativeScenarios": 7,
+    "previewOnlyIncomingSave": true,
+    "nativeCargoSweepPlans": 18,
+    "capacity512": "PASS (constructed schema-boundary fixture)",
+    "artifacts": [
+      "v112-geometry-ack-justice-negatives-final-result.json",
+      "v112-geometry-preview-incoming-review-result.json",
+      "v112-geometry-ack-justice-review-result.json",
+      "v112-geometry-hub-independent-review-result.json",
+      "v112-geometry-capacity-review-result.json",
+      "v112-geometry-ack-justice-review-backup-throw-result.json",
+      "v112-geometry-ack-justice-review-backup-missing-result.json",
+      "v112-geometry-ack-justice-review-backup-tampered-result.json",
+      "v112-geometry-ack-justice-review-foreign-owner-result.json",
+      "v112-geometry-ack-justice-review-changed-checkpoint-result.json",
+      "v112-geometry-ack-justice-review-changed-document-result.json",
+      "v112-geometry-ack-justice-review-not-submitted-result.json"
+    ],
+    "pureGuardChecks": 996
+  },
+  "presentationFollowup": {
+    "change": "Hide the seven operation journals and their commands only while upgradeRecoveryPendingV112; retain their data and show them again after acknowledgement.",
+    "functionalTestsAfterChange": {
+      "tests": 27,
+      "pass": 27,
+      "fail": 0
+    },
+    "hubLintExitCode": 0,
+    "independentRuntimeReviewBeforePresentationOnlyChange": "07c2d6cbaf4829ef67172f17140c72b3f992042d72ba53297327db7b364df9a4"
+  }
+}

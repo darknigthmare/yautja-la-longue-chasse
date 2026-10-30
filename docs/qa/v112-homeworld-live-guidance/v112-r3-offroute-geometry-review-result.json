@@ -1,0 +1,1295 @@
+{
+  "scope": "Read-only geometry of real compiled-app R3 upgrade-remote-last failure; no route planner, browser or heavy tests rerun.",
+  "source": {
+    "input": "/tmp/v112-homeworld-production-r3/result.json",
+    "owner": "2026-09-20T10:00:00.000Z",
+    "checkpoint": {
+      "version": 1,
+      "layoutRevision": 1,
+      "ownerCreatedAt": "2026-09-20T10:00:00.000Z",
+      "levelId": "0",
+      "exterior": {
+        "x": 7520,
+        "y": 5350
+      },
+      "interiorId": null,
+      "local": null
+    },
+    "ledgers": [
+      "archivePlaqueV109"
+    ],
+    "moduleHashes": {
+      "homeworldWayfindingV112": "43e3739b03546faae38469d3111d1ceb5992c1f4151d539f074e1a6a963c1049",
+      "homeworldWayfindingV111": "3774cc61b564a407be7bfb242cbd0f647452ab2074f8b923d183410af414e873",
+      "homeworldNavigationV109": "8203bed6ba14ae3b15d6eb6b1834eb884ff4804438b079bc6eb7d90bb86863f9",
+      "homeworldNavigationV77": "372896bc10acc6389af30234e0ae2934fa8efedf6a624df17a4514961a2ff078",
+      "homeworldWorldV77": "f455bf1c80940cc2736667b524d4e892ed6e8089ff4e95eef44e5cc137660206"
+    }
+  },
+  "actorProfiles": [
+    {
+      "point": {
+        "x": 5133,
+        "y": 5259
+      },
+      "body": {
+        "halfWidth": 24,
+        "halfDepth": 14
+      },
+      "centerGroundIds": [
+        "port-east-causeway:1"
+      ],
+      "contacts": [
+        {
+          "dx": 0,
+          "dy": 0,
+          "point": {
+            "x": 5133,
+            "y": 5259
+          },
+          "groundIds": [
+            "port-east-causeway:1"
+          ]
+        },
+        {
+          "dx": -1,
+          "dy": 0,
+          "point": {
+            "x": 5109,
+            "y": 5259
+          },
+          "groundIds": [
+            "port-east-causeway:1"
+          ]
+        },
+        {
+          "dx": 1,
+          "dy": 0,
+          "point": {
+            "x": 5157,
+            "y": 5259
+          },
+          "groundIds": [
+            "port-east-causeway:1"
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": -1,
+          "point": {
+            "x": 5133,
+            "y": 5245
+          },
+          "groundIds": [
+            "port-east-causeway:1"
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 1,
+          "point": {
+            "x": 5133,
+            "y": 5273
+          },
+          "groundIds": [
+            "port-east-causeway:1"
+          ]
+        },
+        {
+          "dx": -1,
+          "dy": -1,
+          "point": {
+            "x": 5109,
+            "y": 5245
+          },
+          "groundIds": [
+            "port-east-causeway:1"
+          ]
+        },
+        {
+          "dx": -1,
+          "dy": 1,
+          "point": {
+            "x": 5109,
+            "y": 5273
+          },
+          "groundIds": [
+            "port-east-causeway:1"
+          ]
+        },
+        {
+          "dx": 1,
+          "dy": -1,
+          "point": {
+            "x": 5157,
+            "y": 5245
+          },
+          "groundIds": [
+            "port-east-causeway:1"
+          ]
+        },
+        {
+          "dx": 1,
+          "dy": 1,
+          "point": {
+            "x": 5157,
+            "y": 5273
+          },
+          "groundIds": [
+            "port-east-causeway:1"
+          ]
+        }
+      ],
+      "worldTerrain": true,
+      "urbanTerrain": true,
+      "civicWalkable": true,
+      "worldCollision": null,
+      "civicCollision": null,
+      "cargoCollision": null
+    },
+    {
+      "point": {
+        "x": 5133,
+        "y": 5259
+      },
+      "body": {
+        "halfWidth": 36,
+        "halfDepth": 26
+      },
+      "centerGroundIds": [
+        "port-east-causeway:1"
+      ],
+      "contacts": [
+        {
+          "dx": 0,
+          "dy": 0,
+          "point": {
+            "x": 5133,
+            "y": 5259
+          },
+          "groundIds": [
+            "port-east-causeway:1"
+          ]
+        },
+        {
+          "dx": -1,
+          "dy": 0,
+          "point": {
+            "x": 5097,
+            "y": 5259
+          },
+          "groundIds": [
+            "port-east-causeway:1"
+          ]
+        },
+        {
+          "dx": 1,
+          "dy": 0,
+          "point": {
+            "x": 5169,
+            "y": 5259
+          },
+          "groundIds": [
+            "port-east-causeway:1"
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": -1,
+          "point": {
+            "x": 5133,
+            "y": 5233
+          },
+          "groundIds": []
+        },
+        {
+          "dx": 0,
+          "dy": 1,
+          "point": {
+            "x": 5133,
+            "y": 5285
+          },
+          "groundIds": [
+            "port-east-causeway:1"
+          ]
+        },
+        {
+          "dx": -1,
+          "dy": -1,
+          "point": {
+            "x": 5097,
+            "y": 5233
+          },
+          "groundIds": []
+        },
+        {
+          "dx": -1,
+          "dy": 1,
+          "point": {
+            "x": 5097,
+            "y": 5285
+          },
+          "groundIds": [
+            "port-east-causeway:1"
+          ]
+        },
+        {
+          "dx": 1,
+          "dy": -1,
+          "point": {
+            "x": 5169,
+            "y": 5233
+          },
+          "groundIds": []
+        },
+        {
+          "dx": 1,
+          "dy": 1,
+          "point": {
+            "x": 5169,
+            "y": 5285
+          },
+          "groundIds": [
+            "port-east-causeway:1"
+          ]
+        }
+      ],
+      "worldTerrain": false,
+      "urbanTerrain": false,
+      "civicWalkable": false,
+      "worldCollision": null,
+      "civicCollision": null,
+      "cargoCollision": null
+    }
+  ],
+  "supportPolygons": [
+    {
+      "id": "port-east-causeway:1",
+      "levelId": "0",
+      "polygon": [
+        {
+          "x": 2940,
+          "y": 5560
+        },
+        {
+          "x": 7960,
+          "y": 5560
+        },
+        {
+          "x": 7960,
+          "y": 5240
+        },
+        {
+          "x": 2940,
+          "y": 5240
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "to": {
+        "x": 4992,
+        "y": 5280
+      },
+      "total": 142.55525244620065,
+      "sampleInterval": 3.959868123505574,
+      "samples": 37,
+      "actualSegmentV77": false,
+      "actualSegmentV109": false,
+      "firstRejectedSamples": [
+        {
+          "index": 2,
+          "count": 36,
+          "margin": 7.919736247010894,
+          "point": {
+            "x": 5125.166666666667,
+            "y": 5260.166666666667
+          },
+          "body": {
+            "halfWidth": 31.919736247010896,
+            "halfDepth": 21.919736247010896
+          },
+          "centerGroundIds": [
+            "port-east-causeway:1"
+          ],
+          "contacts": [
+            {
+              "dx": 0,
+              "dy": 0,
+              "point": {
+                "x": 5125.166666666667,
+                "y": 5260.166666666667
+              },
+              "groundIds": [
+                "port-east-causeway:1"
+              ]
+            },
+            {
+              "dx": -1,
+              "dy": 0,
+              "point": {
+                "x": 5093.246930419656,
+                "y": 5260.166666666667
+              },
+              "groundIds": [
+                "port-east-causeway:1"
+              ]
+            },
+            {
+              "dx": 1,
+              "dy": 0,
+              "point": {
+                "x": 5157.086402913678,
+                "y": 5260.166666666667
+              },
+              "groundIds": [
+                "port-east-causeway:1"
+              ]
+            },
+            {
+              "dx": 0,
+              "dy": -1,
+              "point": {
+                "x": 5125.166666666667,
+                "y": 5238.246930419656
+              },
+              "groundIds": []
+            },
+            {
+              "dx": 0,
+              "dy": 1,
+              "point": {
+                "x": 5125.166666666667,
+                "y": 5282.086402913678
+              },
+              "groundIds": [
+                "port-east-causeway:1"
+              ]
+            },
+            {
+              "dx": -1,
+              "dy": -1,
+              "point": {
+                "x": 5093.246930419656,
+                "y": 5238.246930419656
+              },
+              "groundIds": []
+            },
+            {
+              "dx": -1,
+              "dy": 1,
+              "point": {
+                "x": 5093.246930419656,
+                "y": 5282.086402913678
+              },
+              "groundIds": [
+                "port-east-causeway:1"
+              ]
+            },
+            {
+              "dx": 1,
+              "dy": -1,
+              "point": {
+                "x": 5157.086402913678,
+                "y": 5238.246930419656
+              },
+              "groundIds": []
+            },
+            {
+              "dx": 1,
+              "dy": 1,
+              "point": {
+                "x": 5157.086402913678,
+                "y": 5282.086402913678
+              },
+              "groundIds": [
+                "port-east-causeway:1"
+              ]
+            }
+          ],
+          "worldTerrain": false,
+          "urbanTerrain": false,
+          "civicWalkable": false,
+          "worldCollision": null,
+          "civicCollision": null,
+          "cargoCollision": null
+        },
+        {
+          "index": 3,
+          "count": 36,
+          "margin": 11.879604370516722,
+          "point": {
+            "x": 5121.25,
+            "y": 5260.75
+          },
+          "body": {
+            "halfWidth": 35.879604370516724,
+            "halfDepth": 25.879604370516724
+          },
+          "centerGroundIds": [
+            "port-east-causeway:1"
+          ],
+          "contacts": [
+            {
+              "dx": 0,
+              "dy": 0,
+              "point": {
+                "x": 5121.25,
+                "y": 5260.75
+              },
+              "groundIds": [
+                "port-east-causeway:1"
+              ]
+            },
+            {
+              "dx": -1,
+              "dy": 0,
+              "point": {
+                "x": 5085.370395629483,
+                "y": 5260.75
+              },
+              "groundIds": [
+                "port-east-causeway:1"
+              ]
+            },
+            {
+              "dx": 1,
+              "dy": 0,
+              "point": {
+                "x": 5157.129604370517,
+                "y": 5260.75
+              },
+              "groundIds": [
+                "port-east-causeway:1"
+              ]
+            },
+            {
+              "dx": 0,
+              "dy": -1,
+              "point": {
+                "x": 5121.25,
+                "y": 5234.870395629483
+              },
+              "groundIds": []
+            },
+            {
+              "dx": 0,
+              "dy": 1,
+              "point": {
+                "x": 5121.25,
+                "y": 5286.629604370517
+              },
+              "groundIds": [
+                "port-east-causeway:1"
+              ]
+            },
+            {
+              "dx": -1,
+              "dy": -1,
+              "point": {
+                "x": 5085.370395629483,
+                "y": 5234.870395629483
+              },
+              "groundIds": []
+            },
+            {
+              "dx": -1,
+              "dy": 1,
+              "point": {
+                "x": 5085.370395629483,
+                "y": 5286.629604370517
+              },
+              "groundIds": [
+                "port-east-causeway:1"
+              ]
+            },
+            {
+              "dx": 1,
+              "dy": -1,
+              "point": {
+                "x": 5157.129604370517,
+                "y": 5234.870395629483
+              },
+              "groundIds": []
+            },
+            {
+              "dx": 1,
+              "dy": 1,
+              "point": {
+                "x": 5157.129604370517,
+                "y": 5286.629604370517
+              },
+              "groundIds": [
+                "port-east-causeway:1"
+              ]
+            }
+          ],
+          "worldTerrain": false,
+          "urbanTerrain": false,
+          "civicWalkable": false,
+          "worldCollision": null,
+          "civicCollision": null,
+          "cargoCollision": null
+        },
+        {
+          "index": 4,
+          "count": 36,
+          "margin": 12,
+          "point": {
+            "x": 5117.333333333333,
+            "y": 5261.333333333333
+          },
+          "body": {
+            "halfWidth": 36,
+            "halfDepth": 26
+          },
+          "centerGroundIds": [
+            "port-east-causeway:1"
+          ],
+          "contacts": [
+            {
+              "dx": 0,
+              "dy": 0,
+              "point": {
+                "x": 5117.333333333333,
+                "y": 5261.333333333333
+              },
+              "groundIds": [
+                "port-east-causeway:1"
+              ]
+            },
+            {
+              "dx": -1,
+              "dy": 0,
+              "point": {
+                "x": 5081.333333333333,
+                "y": 5261.333333333333
+              },
+              "groundIds": [
+                "port-east-causeway:1"
+              ]
+            },
+            {
+              "dx": 1,
+              "dy": 0,
+              "point": {
+                "x": 5153.333333333333,
+                "y": 5261.333333333333
+              },
+              "groundIds": [
+                "port-east-causeway:1"
+              ]
+            },
+            {
+              "dx": 0,
+              "dy": -1,
+              "point": {
+                "x": 5117.333333333333,
+                "y": 5235.333333333333
+              },
+              "groundIds": []
+            },
+            {
+              "dx": 0,
+              "dy": 1,
+              "point": {
+                "x": 5117.333333333333,
+                "y": 5287.333333333333
+              },
+              "groundIds": [
+                "port-east-causeway:1"
+              ]
+            },
+            {
+              "dx": -1,
+              "dy": -1,
+              "point": {
+                "x": 5081.333333333333,
+                "y": 5235.333333333333
+              },
+              "groundIds": []
+            },
+            {
+              "dx": -1,
+              "dy": 1,
+              "point": {
+                "x": 5081.333333333333,
+                "y": 5287.333333333333
+              },
+              "groundIds": [
+                "port-east-causeway:1"
+              ]
+            },
+            {
+              "dx": 1,
+              "dy": -1,
+              "point": {
+                "x": 5153.333333333333,
+                "y": 5235.333333333333
+              },
+              "groundIds": []
+            },
+            {
+              "dx": 1,
+              "dy": 1,
+              "point": {
+                "x": 5153.333333333333,
+                "y": 5287.333333333333
+              },
+              "groundIds": [
+                "port-east-causeway:1"
+              ]
+            }
+          ],
+          "worldTerrain": false,
+          "urbanTerrain": false,
+          "civicWalkable": false,
+          "worldCollision": null,
+          "civicCollision": null,
+          "cargoCollision": null
+        }
+      ],
+      "fixed24RefusedSamples": 0,
+      "fixed24First": null,
+      "fixed36RefusedSamples": 12,
+      "fixed36First": {
+        "index": 0,
+        "point": {
+          "x": 5133,
+          "y": 5259
+        }
+      },
+      "endProfile": {
+        "point": {
+          "x": 4992,
+          "y": 5280
+        },
+        "body": {
+          "halfWidth": 24,
+          "halfDepth": 14
+        },
+        "centerGroundIds": [
+          "port-east-causeway:1",
+          "urban-v78:port-court:2"
+        ],
+        "contacts": [
+          {
+            "dx": 0,
+            "dy": 0,
+            "point": {
+              "x": 4992,
+              "y": 5280
+            },
+            "groundIds": [
+              "port-east-causeway:1",
+              "urban-v78:port-court:2"
+            ]
+          },
+          {
+            "dx": -1,
+            "dy": 0,
+            "point": {
+              "x": 4968,
+              "y": 5280
+            },
+            "groundIds": [
+              "port-east-causeway:1",
+              "urban-v78:port-court:2"
+            ]
+          },
+          {
+            "dx": 1,
+            "dy": 0,
+            "point": {
+              "x": 5016,
+              "y": 5280
+            },
+            "groundIds": [
+              "port-east-causeway:1",
+              "urban-v78:port-court:2"
+            ]
+          },
+          {
+            "dx": 0,
+            "dy": -1,
+            "point": {
+              "x": 4992,
+              "y": 5266
+            },
+            "groundIds": [
+              "port-east-causeway:1",
+              "urban-v78:port-court:2"
+            ]
+          },
+          {
+            "dx": 0,
+            "dy": 1,
+            "point": {
+              "x": 4992,
+              "y": 5294
+            },
+            "groundIds": [
+              "port-east-causeway:1",
+              "urban-v78:port-court:2"
+            ]
+          },
+          {
+            "dx": -1,
+            "dy": -1,
+            "point": {
+              "x": 4968,
+              "y": 5266
+            },
+            "groundIds": [
+              "port-east-causeway:1",
+              "urban-v78:port-court:2"
+            ]
+          },
+          {
+            "dx": -1,
+            "dy": 1,
+            "point": {
+              "x": 4968,
+              "y": 5294
+            },
+            "groundIds": [
+              "port-east-causeway:1",
+              "urban-v78:port-court:2"
+            ]
+          },
+          {
+            "dx": 1,
+            "dy": -1,
+            "point": {
+              "x": 5016,
+              "y": 5266
+            },
+            "groundIds": [
+              "port-east-causeway:1",
+              "urban-v78:port-court:2"
+            ]
+          },
+          {
+            "dx": 1,
+            "dy": 1,
+            "point": {
+              "x": 5016,
+              "y": 5294
+            },
+            "groundIds": [
+              "port-east-causeway:1",
+              "urban-v78:port-court:2"
+            ]
+          }
+        ],
+        "worldTerrain": true,
+        "urbanTerrain": true,
+        "civicWalkable": true,
+        "worldCollision": null,
+        "civicCollision": null,
+        "cargoCollision": null
+      }
+    },
+    {
+      "to": {
+        "x": 4937.441867,
+        "y": 5197.390012
+      },
+      "total": 205.03359237892224,
+      "sampleInterval": 3.9429536995946584,
+      "samples": 53,
+      "actualSegmentV77": false,
+      "actualSegmentV109": false,
+      "firstRejectedSamples": [
+        {
+          "index": 1,
+          "count": 52,
+          "margin": 3.9429536995948737,
+          "point": {
+            "x": 5129.239266673077,
+            "y": 5257.815192538462
+          },
+          "body": {
+            "halfWidth": 27.942953699594874,
+            "halfDepth": 17.942953699594874
+          },
+          "centerGroundIds": [
+            "port-east-causeway:1"
+          ],
+          "contacts": [
+            {
+              "dx": 0,
+              "dy": 0,
+              "point": {
+                "x": 5129.239266673077,
+                "y": 5257.815192538462
+              },
+              "groundIds": [
+                "port-east-causeway:1"
+              ]
+            },
+            {
+              "dx": -1,
+              "dy": 0,
+              "point": {
+                "x": 5101.296312973482,
+                "y": 5257.815192538462
+              },
+              "groundIds": [
+                "port-east-causeway:1"
+              ]
+            },
+            {
+              "dx": 1,
+              "dy": 0,
+              "point": {
+                "x": 5157.1822203726715,
+                "y": 5257.815192538462
+              },
+              "groundIds": [
+                "port-east-causeway:1"
+              ]
+            },
+            {
+              "dx": 0,
+              "dy": -1,
+              "point": {
+                "x": 5129.239266673077,
+                "y": 5239.872238838867
+              },
+              "groundIds": []
+            },
+            {
+              "dx": 0,
+              "dy": 1,
+              "point": {
+                "x": 5129.239266673077,
+                "y": 5275.758146238057
+              },
+              "groundIds": [
+                "port-east-causeway:1"
+              ]
+            },
+            {
+              "dx": -1,
+              "dy": -1,
+              "point": {
+                "x": 5101.296312973482,
+                "y": 5239.872238838867
+              },
+              "groundIds": []
+            },
+            {
+              "dx": -1,
+              "dy": 1,
+              "point": {
+                "x": 5101.296312973482,
+                "y": 5275.758146238057
+              },
+              "groundIds": [
+                "port-east-causeway:1"
+              ]
+            },
+            {
+              "dx": 1,
+              "dy": -1,
+              "point": {
+                "x": 5157.1822203726715,
+                "y": 5239.872238838867
+              },
+              "groundIds": []
+            },
+            {
+              "dx": 1,
+              "dy": 1,
+              "point": {
+                "x": 5157.1822203726715,
+                "y": 5275.758146238057
+              },
+              "groundIds": [
+                "port-east-causeway:1"
+              ]
+            }
+          ],
+          "worldTerrain": false,
+          "urbanTerrain": false,
+          "civicWalkable": false,
+          "worldCollision": null,
+          "civicCollision": null,
+          "cargoCollision": null
+        },
+        {
+          "index": 2,
+          "count": 52,
+          "margin": 7.885907399189155,
+          "point": {
+            "x": 5125.478533346154,
+            "y": 5256.630385076923
+          },
+          "body": {
+            "halfWidth": 31.885907399189154,
+            "halfDepth": 21.885907399189154
+          },
+          "centerGroundIds": [
+            "port-east-causeway:1"
+          ],
+          "contacts": [
+            {
+              "dx": 0,
+              "dy": 0,
+              "point": {
+                "x": 5125.478533346154,
+                "y": 5256.630385076923
+              },
+              "groundIds": [
+                "port-east-causeway:1"
+              ]
+            },
+            {
+              "dx": -1,
+              "dy": 0,
+              "point": {
+                "x": 5093.592625946965,
+                "y": 5256.630385076923
+              },
+              "groundIds": [
+                "port-east-causeway:1"
+              ]
+            },
+            {
+              "dx": 1,
+              "dy": 0,
+              "point": {
+                "x": 5157.364440745343,
+                "y": 5256.630385076923
+              },
+              "groundIds": [
+                "port-east-causeway:1"
+              ]
+            },
+            {
+              "dx": 0,
+              "dy": -1,
+              "point": {
+                "x": 5125.478533346154,
+                "y": 5234.744477677734
+              },
+              "groundIds": []
+            },
+            {
+              "dx": 0,
+              "dy": 1,
+              "point": {
+                "x": 5125.478533346154,
+                "y": 5278.516292476112
+              },
+              "groundIds": [
+                "port-east-causeway:1"
+              ]
+            },
+            {
+              "dx": -1,
+              "dy": -1,
+              "point": {
+                "x": 5093.592625946965,
+                "y": 5234.744477677734
+              },
+              "groundIds": []
+            },
+            {
+              "dx": -1,
+              "dy": 1,
+              "point": {
+                "x": 5093.592625946965,
+                "y": 5278.516292476112
+              },
+              "groundIds": [
+                "port-east-causeway:1"
+              ]
+            },
+            {
+              "dx": 1,
+              "dy": -1,
+              "point": {
+                "x": 5157.364440745343,
+                "y": 5234.744477677734
+              },
+              "groundIds": []
+            },
+            {
+              "dx": 1,
+              "dy": 1,
+              "point": {
+                "x": 5157.364440745343,
+                "y": 5278.516292476112
+              },
+              "groundIds": [
+                "port-east-causeway:1"
+              ]
+            }
+          ],
+          "worldTerrain": false,
+          "urbanTerrain": false,
+          "civicWalkable": false,
+          "worldCollision": null,
+          "civicCollision": null,
+          "cargoCollision": null
+        },
+        {
+          "index": 3,
+          "count": 52,
+          "margin": 11.828861098784028,
+          "point": {
+            "x": 5121.717800019231,
+            "y": 5255.4455776153845
+          },
+          "body": {
+            "halfWidth": 35.82886109878403,
+            "halfDepth": 25.828861098784028
+          },
+          "centerGroundIds": [
+            "port-east-causeway:1"
+          ],
+          "contacts": [
+            {
+              "dx": 0,
+              "dy": 0,
+              "point": {
+                "x": 5121.717800019231,
+                "y": 5255.4455776153845
+              },
+              "groundIds": [
+                "port-east-causeway:1"
+              ]
+            },
+            {
+              "dx": -1,
+              "dy": 0,
+              "point": {
+                "x": 5085.888938920447,
+                "y": 5255.4455776153845
+              },
+              "groundIds": [
+                "port-east-causeway:1"
+              ]
+            },
+            {
+              "dx": 1,
+              "dy": 0,
+              "point": {
+                "x": 5157.5466611180145,
+                "y": 5255.4455776153845
+              },
+              "groundIds": [
+                "port-east-causeway:1"
+              ]
+            },
+            {
+              "dx": 0,
+              "dy": -1,
+              "point": {
+                "x": 5121.717800019231,
+                "y": 5229.616716516601
+              },
+              "groundIds": []
+            },
+            {
+              "dx": 0,
+              "dy": 1,
+              "point": {
+                "x": 5121.717800019231,
+                "y": 5281.274438714168
+              },
+              "groundIds": [
+                "port-east-causeway:1"
+              ]
+            },
+            {
+              "dx": -1,
+              "dy": -1,
+              "point": {
+                "x": 5085.888938920447,
+                "y": 5229.616716516601
+              },
+              "groundIds": []
+            },
+            {
+              "dx": -1,
+              "dy": 1,
+              "point": {
+                "x": 5085.888938920447,
+                "y": 5281.274438714168
+              },
+              "groundIds": [
+                "port-east-causeway:1"
+              ]
+            },
+            {
+              "dx": 1,
+              "dy": -1,
+              "point": {
+                "x": 5157.5466611180145,
+                "y": 5229.616716516601
+              },
+              "groundIds": []
+            },
+            {
+              "dx": 1,
+              "dy": 1,
+              "point": {
+                "x": 5157.5466611180145,
+                "y": 5281.274438714168
+              },
+              "groundIds": [
+                "port-east-causeway:1"
+              ]
+            }
+          ],
+          "worldTerrain": false,
+          "urbanTerrain": false,
+          "civicWalkable": false,
+          "worldCollision": null,
+          "civicCollision": null,
+          "cargoCollision": null
+        }
+      ],
+      "fixed24RefusedSamples": 17,
+      "fixed24First": {
+        "index": 5,
+        "point": {
+          "x": 5114.196333365385,
+          "y": 5253.075962692307
+        }
+      },
+      "fixed36RefusedSamples": 24,
+      "fixed36First": {
+        "index": 0,
+        "point": {
+          "x": 5133,
+          "y": 5259
+        }
+      },
+      "endProfile": {
+        "point": {
+          "x": 4937.441867,
+          "y": 5197.390012
+        },
+        "body": {
+          "halfWidth": 24,
+          "halfDepth": 14
+        },
+        "centerGroundIds": [
+          "urban-v78:port-court:2"
+        ],
+        "contacts": [
+          {
+            "dx": 0,
+            "dy": 0,
+            "point": {
+              "x": 4937.441867,
+              "y": 5197.390012
+            },
+            "groundIds": [
+              "urban-v78:port-court:2"
+            ]
+          },
+          {
+            "dx": -1,
+            "dy": 0,
+            "point": {
+              "x": 4913.441867,
+              "y": 5197.390012
+            },
+            "groundIds": [
+              "urban-v78:port-court:2"
+            ]
+          },
+          {
+            "dx": 1,
+            "dy": 0,
+            "point": {
+              "x": 4961.441867,
+              "y": 5197.390012
+            },
+            "groundIds": [
+              "urban-v78:port-court:2"
+            ]
+          },
+          {
+            "dx": 0,
+            "dy": -1,
+            "point": {
+              "x": 4937.441867,
+              "y": 5183.390012
+            },
+            "groundIds": [
+              "urban-v78:port-court:2"
+            ]
+          },
+          {
+            "dx": 0,
+            "dy": 1,
+            "point": {
+              "x": 4937.441867,
+              "y": 5211.390012
+            },
+            "groundIds": [
+              "urban-v78:port-court:2"
+            ]
+          },
+          {
+            "dx": -1,
+            "dy": -1,
+            "point": {
+              "x": 4913.441867,
+              "y": 5183.390012
+            },
+            "groundIds": [
+              "urban-v78:port-court:2"
+            ]
+          },
+          {
+            "dx": -1,
+            "dy": 1,
+            "point": {
+              "x": 4913.441867,
+              "y": 5211.390012
+            },
+            "groundIds": [
+              "urban-v78:port-court:2"
+            ]
+          },
+          {
+            "dx": 1,
+            "dy": -1,
+            "point": {
+              "x": 4961.441867,
+              "y": 5183.390012
+            },
+            "groundIds": [
+              "urban-v78:port-court:2"
+            ]
+          },
+          {
+            "dx": 1,
+            "dy": 1,
+            "point": {
+              "x": 4961.441867,
+              "y": 5211.390012
+            },
+            "groundIds": [
+              "urban-v78:port-court:2"
+            ]
+          }
+        ],
+        "worldTerrain": false,
+        "urbanTerrain": true,
+        "civicWalkable": true,
+        "worldCollision": null,
+        "civicCollision": null,
+        "cargoCollision": null
+      }
+    }
+  ]
+}

@@ -41,3 +41,17 @@ test("the three previously published family values retain their original visual 
   assert.equal(HUNTER_DREAD_FILTERS_V114.obsidian, "saturate(.72) brightness(.68) contrast(1.22)");
   assert.equal(HUNTER_ARMOR_FILTERS_V114.bronze, "sepia(.48) saturate(1.22) hue-rotate(346deg) brightness(1.02)");
 });
+
+test("V117-compatible stack keeps PHG material layers and V114 palettes together", () => {
+  assert.match(source.homeworld, /phgMaterialForV113/);
+  assert.match(source.homeworld, /data-homeworld-material="dread"/);
+  assert.match(source.homeworld, /data-homeworld-material="outfit"/);
+  assert.match(source.preview, /phgMaterialForV113/);
+  assert.match(source.preview, /registeredMaterialLayerV113/);
+  assert.match(source.preview, /skinMaterial/);
+  assert.match(source.preview, /outfitMaterial/);
+  assert.doesNotMatch(source.homeworld, /\bconst skinFilter:/);
+  assert.doesNotMatch(source.preview, /\bconst SKIN_FILTER:/);
+  assert.match(source.homeworld, /HUNTER_SKIN_FILTERS_V114\[appearance\?\.skinId/);
+  assert.match(source.preview, /HUNTER_DREAD_FILTERS_V114\[appearance\.dreadTintId/);
+});
