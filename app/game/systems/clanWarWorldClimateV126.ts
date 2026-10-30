@@ -130,7 +130,7 @@ const marineWords=["littoral","atoll","lagon","lagune","récif","recif","baie","
  "mer ","ile ","île ","fjord","shore","archipel","bouvet"];
 const undergroundWords=["catacombe","cavern","grotte","souterrain","tunnel","moria","conduit"];
 const volcanicWords=["volcan","lave","basalt","geys","geyser","fagradalsfjall","bromo","kilauea"];
-function determineClimate(variant:ClanWarVariantV120,world:WarWorldLocationV126):ClimateV126{
+function determineClimate(variant:ClanWarVariantV120,world:WarWorldLocationV126):WarClimateV126{
  const earthLabel=N(world.earthReferenceName??world.siteName);
  const b=N(variant.environment.biome);
  const film=world.earthSiteId?EARTH_FILM_SITES_V126.find(item=>item.id===world.earthSiteId):undefined;
