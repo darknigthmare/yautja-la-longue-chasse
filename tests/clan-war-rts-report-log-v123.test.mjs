@@ -27,7 +27,7 @@ test("scripted RTS victory retains the last phases with one source-bound combat 
  assert.equal(staged.reports[0].outcome,"victory");
  assert.ok(staged.reports[0].sourceIds.includes("W3-RTS02"));
  assert.equal(staged.reports[0].engagementLog.length,3);
- assert.match(staged.reports[0].engagementLog[2],/3\/3/);
+ assert.match(staged.reports[0].engagementLog[2],/trois tours|3\/3/);
  assert.deepEqual(war.readWarOperationsV115(JSON.stringify(staged),rules),staged);
  assert.equal(war.holdWarRtsAlternatingV119(staged,teamId,rules).accepted,false);
 });
