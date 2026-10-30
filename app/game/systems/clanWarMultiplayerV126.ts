@@ -114,8 +114,10 @@ export function startWarMultiplayerLobbyV126(room:WarLobbyV126,requesterId:strin
  * Ownership, revision, tick, replays and map bounds checked before acceptance.
  */
 export function acceptWarMultiplayerCommandV126(
- room:WarLobbyV126,command:WarClientCommandV126,
+ room:WarLobbyV126,command:WarClientCommandV126,authenticatedActorId:string,
 ):WarLobbyChangeV126 {
+ if(!ID.test(authenticatedActorId)||authenticatedActorId!==command.actorId)
+  return reject(room,"Identité de commande non authentifiée par l'hôte autoritaire.");
  if(room.stage!=="started")return reject(room,"Partie non démarrée.");
  if(!ID.test(command.clientCommandId)||!ID.test(command.actorId)||!ID.test(command.unitInstanceId)||
   !Number.isSafeInteger(command.sequence)||command.sequence<1||
