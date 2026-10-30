@@ -12,6 +12,7 @@ import ClanWarWorksV6 from "./ClanWarWorksV6";
 import ClanWarSpecializedV107 from "./ClanWarSpecializedV107";
 import ClanSupplyRouteV109 from "./ClanSupplyRouteV109";
 import ClanWarOperationsV115 from "./ClanWarOperationsV115";
+import ClanWarMissionDossiersV117 from "./ClanWarMissionDossiersV117";
 
 const fold = (value: string) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 /** Latest workbook figures and route planning, without invented campaign acquisitions. */
@@ -22,7 +23,7 @@ export default function ClanWarBibleV6Panel({ active = true }: { active?: boolea
   const [rulesGeneration, setRulesGeneration] = useState(0);
   const rules = privateRules ?? DEFAULT_WAR_RULES_V6;
   const { metadata: WAR_BIBLE_V6, entries: WAR_BIBLE_ENTRIES_V6, sections: WAR_BIBLE_SECTIONS_V6, parameters: WAR_PARAMETERS_V6, units: WAR_UNITS_V6, specializations: WAR_SPECIALIZATIONS_V6, territories: WAR_TERRITORIES_V6, passages: WAR_PASSAGES_V6 } = rules;
-  const [section, setSection] = useState<"teams" | "routes" | "exercise" | "works" | "specialized" | "logistics" | "missions" | "library">("teams");
+  const [section, setSection] = useState<"teams" | "routes" | "exercise" | "works" | "specialized" | "logistics" | "missions" | "dossiers" | "library">("teams");
   const [hypothesis, setHypothesis] = useState<WarTeamHypothesisV6>({ unitId: "W3-U01", xp: 40, fatigue: 20, deployableMembers: 2, availableRav: 6, frontNeedRav: 6, terrainBonus: 10, nextObjectiveXp: 8 });
   const [fromId, setFromId] = useState("W3-K01"), [toId, setToId] = useState("W3-K36");
   const [commandPoints, setCommandPoints] = useState(12), [closed, setClosed] = useState<string[]>([]);
@@ -79,8 +80,9 @@ export default function ClanWarBibleV6Panel({ active = true }: { active?: boolea
     <div className={styles.sectionHeader}><div><h3>Bible V6 · équipes, passages et mandats</h3><p>Source du 7 octobre 2026 · {WAR_BIBLE_ENTRIES_V6.length} fiches de guerre dans {WAR_BIBLE_SECTIONS_V6.length} feuilles.</p></div></div>
     {privateImport}
     <p className={styles.notice}>La version actuelle emploie RAV pour le ravitaillement et PC pour le commandement. L’expérience d’une équipe reste entre {WAR_PARAMETERS_V6.xp_min} et {WAR_PARAMETERS_V6.xp_max}, avec les paliers {WAR_PARAMETERS_V6.xp_tier_2} et {WAR_PARAMETERS_V6.xp_tier_3}. Les fiches V3 du 6 octobre décrivent une version antérieure, accessible dans ses exercices propres.</p>
-    <nav className={styles.tabs} aria-label="Outils de guerre de la Bible V6">{([["teams", "Simuler une équipe"], ["routes", "Passages de Korthas"], ["exercise", "Jouer la reconnaissance"], ["works", "Logistique et ouvrages"], ["specialized", "Six ateliers physiques"], ["logistics", "Convoi des six ouvrages"], ["missions", "Opérations jouables · 4 modes"], ["library", "Toutes les fiches V6"]] as const).map(([id, label]) => <button type="button" key={id} aria-pressed={section === id} onClick={() => setSection(id)}>{label}</button>)}</nav>
+    <nav className={styles.tabs} aria-label="Outils de guerre de la Bible V6">{([["teams", "Simuler une équipe"], ["routes", "Passages de Korthas"], ["exercise", "Jouer la reconnaissance"], ["works", "Logistique et ouvrages"], ["specialized", "Six ateliers physiques"], ["logistics", "Convoi des six ouvrages"], ["missions", "Opérations jouables · 4 modes"], ["dossiers", "108 missions sources · W3/W5"], ["library", "Toutes les fiches V6"]] as const).map(([id, label]) => <button type="button" key={id} aria-pressed={section === id} onClick={() => setSection(id)}>{label}</button>)}</nav>
     <div hidden={section !== "missions"}><ClanWarOperationsV115 key={rulesGeneration} rules={rules} active={active && section === "missions"} persist={rules === DEFAULT_WAR_RULES_V6}/></div>
+    {section === "dossiers" && <ClanWarMissionDossiersV117 rules={rules} onOpenSandbox={()=>setSection("missions")}/>}
     <div hidden={section !== "exercise"}><ClanWarExerciseV6 key={rulesGeneration} rules={rules}/></div>
     <div hidden={section !== "works"}><ClanWarWorksV6 key={rulesGeneration} rules={rules}/></div>
     <div hidden={section !== "specialized"}><ClanWarSpecializedV107 key={rulesGeneration} rules={rules} active={active && section === "specialized"}/></div>
