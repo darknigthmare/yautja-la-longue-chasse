@@ -2,6 +2,7 @@ import type { WarPlanetLandBiomeV96, WarPlanetV96 } from "./systems/clanWarPlane
 import { PLANET_MATERIAL_ROOT_V101, planetMaterialSourceV101, unwrapPlanetPolygonV101 } from "./systems/planetMaterialV101";
 import { planetLandProfileV103, planetMaterialSourceV103, planetRegionalLayoutV103 } from "./systems/planetMaterialProfilesV103";
 import { planetTextureUriV115 } from "./systems/clanWarTextureLibraryV115";
+import { planetTextureUriV126 } from "./systems/clanWarPlanetGeneratorV126";
 import { loadPlanetDetailedMaterialV103 } from "./planetDetailMaterialsV103";
 
 // A single atlas keeps the renderer within WebGL1's texture-unit budget.
@@ -30,7 +31,9 @@ export function planetRegionalAtlasKeyV102(planet: WarPlanetV96, tileSize: numbe
     ? `v103:${planetRegionalBiomesV102(planet).join(",")}:${recipe.landVariant}:${sourceSize}:${tileSize}`
     : recipe?.version === 115
       ? `v115:${planetRegionalBiomesV102(planet).join(",")}:${recipe.landMaterial}:${sourceSize}:${tileSize}`
-      : `${planet.id}:${sourceSize}:${tileSize}`;
+      : recipe?.version === 126
+        ? `v126:${planet.seed}:${planetRegionalBiomesV102(planet).join(",")}:${recipe.regionalLandMaterials.join(",")}:${sourceSize}:${tileSize}`
+        : `${planet.id}:${sourceSize}:${tileSize}`;
 }
 
 export async function loadPlanetRegionalAtlasV102(
@@ -46,17 +49,25 @@ export async function loadPlanetRegionalAtlasV102(
   if (loading) return loading;
   const task = (async () => {
     const recipe = planet.procedural?.recipe;
-    const profile = recipe?.version === 103 || recipe?.version === 115 ? planetLandProfileV103(recipe) : null;
+    const profile = recipe?.version === 103 || recipe?.version === 115 || recipe?.version === 126 ? planetLandProfileV103(recipe) : null;
     const layout = profile ? planetRegionalLayoutV103(planet.regions.length, tileSize, Number.MAX_SAFE_INTEGER) : null;
     if (layout && layout.tileSize !== tileSize) throw new RangeError("Regional material atlas exceeds its pixel budget");
     if (!profile && planet.regions.length !== 6) throw new Error("Regional materials require the six-region planet schema");
     const columns = layout?.columns ?? 4, rows = layout?.rows ?? 2;
     const detail = recipe?.version === 115 ? planetTextureUriV115("land", recipe.landMaterial)
       : profile?.detail ? sourceSize > 512 ? planetMaterialSourceV103(profile.detail) : profile.detail : null;
-    const sources = await Promise.all(planetRegionalBiomesV102(planet).map(biome => {
+    const sources = await Promise.all(planetRegionalBiomesV102(planet).map((biome, index) => {
       const runtime = `${PLANET_MATERIAL_ROOT_V101}land-${biome}.webp`;
       const url = sourceSize > 512 ? planetMaterialSourceV101(runtime) : runtime;
-      return detail ? loadPlanetDetailedMaterialV103(url, detail, sourceSize, load) : load(url, sourceSize);
+      // Per-region selection is encoded only for V126. Source identity also
+      // includes a bounded deterministic seed for V125 supplemental textures.
+      const regionalDetail = recipe?.version === 126
+        ? planetTextureUriV126("land", recipe.regionalLandMaterials[index],
+            (planet.seed ^ Math.imul(index + 1, 0x9e3779b1)) >>> 0)
+        : detail;
+      return regionalDetail
+        ? loadPlanetDetailedMaterialV103(url, regionalDetail, sourceSize, load)
+        : load(url, sourceSize);
     }));
     const canvas = document.createElement("canvas");
     canvas.width = tileSize * columns; canvas.height = tileSize * rows;
