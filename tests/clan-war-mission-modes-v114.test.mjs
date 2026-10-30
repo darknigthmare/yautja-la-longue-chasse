@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { build } from "esbuild";
+import { homeworldSceneSsrV78 } from "./helpers/homeworld-scene-ssr-v78.mjs";
 
 const bundled = await build({
   stdin: { contents: "export * from './app/game/systems/clanWarMissionModesV114'; export * from './app/game/systems/clanWarV85';", resolveDir: process.cwd() },
@@ -128,4 +129,21 @@ test("reports are deduplicated; war campaign/territories remain untouched", () =
   assert.equal(api.finishWarMissionV114(recorded, receipt), recorded);
   assert.equal(api.finishWarMissionV114(original, { ...receipt, planetId: "wrong" }), original);
   assert.equal(JSON.stringify(simulation), warBytes);
+});
+
+test("real mission panel SSR lists four modes and available neighboring territories without running a mission", () => {
+  const ssr = homeworldSceneSsrV78();
+  const simulation = api.createWarSimulationV85();
+  const before = JSON.stringify(simulation);
+  const html = ssr.render("app/game/ClanWarMissionsV114.tsx", {
+    simulation, planetName: "Korthas", active: false, onPrepareSite() {},
+  });
+  assert.match(html, /data-testid="war-mission-modes-v114"/);
+  assert.match(html, /Front 2D/);
+  assert.match(html, /Opérations détachées/);
+  assert.match(html, /Infiltration et sabotage/);
+  assert.match(html, /Guerre totale/);
+  assert.match(html, /La brèche des veilleurs/);
+  assert.match(html, /Aucun territoire|aucun territoire|front libre|Les quatre modes/i);
+  assert.equal(JSON.stringify(simulation), before);
 });
