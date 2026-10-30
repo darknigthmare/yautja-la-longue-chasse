@@ -61,6 +61,17 @@ export default function ClanWarVariantAtlasV120({onOpenPrototype}:{onOpenPrototy
     document.body.appendChild(link);link.click();link.remove();
     window.setTimeout(()=>URL.revokeObjectURL(url),1000);
   }
+  function downloadJSON() {
+    const file=new Blob([JSON.stringify({
+      schema:120,status:"design-only",total:entries.length,
+      filteredBy:{mode,family,query},variants:entries,
+    },null,2)+"\n"],{type:"application/json;charset=utf-8"});
+    const url=URL.createObjectURL(file);
+    const link=document.createElement("a");
+    link.href=url;link.download="Yautja_Guerre_Clans_V120_"+mode+"_"+family+"_"+entries.length+".json";
+    document.body.appendChild(link);link.click();link.remove();
+    window.setTimeout(()=>URL.revokeObjectURL(url),1000);
+  }
   return <section className={styles.root} data-testid="clan-war-variants-v120" data-content-only="true" aria-label="Atlas des 1 200 variantes de guerre de clans">
     <header className={styles.header}>
       <div>
@@ -69,6 +80,7 @@ export default function ClanWarVariantAtlasV120({onOpenPrototype}:{onOpenPrototy
         <p>Quatre façons de jouer, trois familles narratives, cent contextes par combinaison : chaque fiche a un lieu, un décor, une mission, un danger et une solution de repli distincts.</p>
       </div>
       <button type="button" onClick={downloadCSV} disabled={!entries.length}>Exporter le tableau CSV ({entries.length})</button>
+      <button type="button" onClick={downloadJSON} disabled={!entries.length}>Exporter JSON complet ({entries.length})</button>
     </header>
     <p className={styles.warning} role="note"><strong>Catalogue de conception uniquement.</strong> Ces 1 200 variantes ne sont pas 1 200 missions exécutables : elles définissent le contenu à mettre en scène, les sprites à produire et les contrôles à ajouter. Les clins d&apos;œil aux monuments sont des reconstructions extraterrestres imaginées ; les références de films, comics et jeux n&apos;attestent pas les conflits décrits. Aucun personnage, territoire ou trophée n&apos;est débloqué par ce catalogue.</p>
     <div className={styles.summary}>
