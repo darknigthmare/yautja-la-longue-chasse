@@ -60,7 +60,7 @@ test("W3-RTS01 has exactly one physically held cargo, persistent identities, and
   assert.deepEqual(game.readWarOperationsV115(JSON.stringify(started),rules),started);
 });
 test("scout sight plus living porter at the real extraction wins without killing every rival",()=>{
-  const {started,scoutId,bearerId,targetId}=setUpEscort();
+  const {started,scoutId,bearerId}=setUpEscort();
   const original=JSON.stringify(started),field=started.active.rts;
   const actors=field.actors.map(actor=>actor.teamId===scoutId?{...actor,x:4,y:1}:
     actor.teamId===bearerId?{...actor,x:7,y:4}:actor);
