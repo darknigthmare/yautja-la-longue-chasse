@@ -204,6 +204,15 @@ export function createWarSourceMapV128(id:string,rules:WarRulesV6):WarSourceMapV
    source:"game-authored-layout-study",
   });
  }
+ if(!hazards.length){
+  // Every authored W3 event must have at least one physically visible marker,
+  // but never remove the emergency exit or the other two route options.
+  const middle=three[Math.floor(three.length/2)];
+  const cell=tiles[middle.y*width+middle.x];
+  if(cell&&!cell.solid&&key(middle)!==key(start)&&key(middle)!==key(goal)){
+   cell.kind="hazard";cell.cover=false;hazards.push(middle);
+  }
+ }
  return {
   id,name:String(entry.title),planetId,planetName:String(planet.title),
   worldCode:sourceValue(planet,"C"),
