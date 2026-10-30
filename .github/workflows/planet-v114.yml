@@ -1,0 +1,62 @@
+name: Planet V114 focused regressions
+on:
+  pull_request:
+    paths:
+      - 'app/game/**/clanWarPlanet*'
+      - 'app/game/**/planet*'
+      - 'app/game/PlanetLayerExportV102.tsx'
+      - 'app/game/PlanetMaterialCanvasV101.tsx'
+      - 'app/game/PlanetGeneratorV103.tsx'
+      - 'tests/planet*'
+      - 'tests/planet-*'
+      - '.github/workflows/planet-v114.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: planet-v114-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+jobs:
+  domain:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      NEXT_TELEMETRY_DISABLED: '1'
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+    steps:
+      - name: Checkout only game source and focused tests
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /app/game/
+            /tests/
+            /package.json
+            /package-lock.json
+            /eslint.config.mjs
+      - name: Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install exact dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Run planet V114 and historical generator domain tests
+        run: >-
+          node --test --test-reporter=spec --test-concurrency=1
+          tests/planet-export-zip-v114.test.mjs
+          tests/planet-strategy-v114.test.mjs
+          tests/planet-generator-draft-v103.test.mjs
+          tests/planet-generator-v103.test.mjs
+          tests/planet-generator-v115.test.mjs
+          tests/planet-material-v101.test.mjs
+      - name: Lint new planet modules
+        run: >-
+          npx eslint
+          app/game/systems/clanWarPlanetStrategyV114.ts
+          app/game/systems/planetExportZipV114.ts
+          app/game/systems/clanWarPlanetDraftV103.ts
+          app/game/systems/clanWarPlanetGeneratorV115.ts
+          app/game/systems/clanWarShapeAtlasV115.ts
+          app/game/systems/clanWarTextureLibraryV115.ts

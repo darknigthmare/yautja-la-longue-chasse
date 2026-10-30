@@ -640,6 +640,8 @@ jobs:
           app/pit-lab/PitWorkbookAnimationLabV100.tsx app/pit-lab/PitProductionAnimationLab.tsx
           app/game/ClanWarPanelV85.tsx app/game/systems/clanWarSessionV85.ts app/game/systems/clanWarCanyonV85.ts
           app/game/ClanWarAtlasV95.tsx app/game/systems/clanWarAtlasV95.ts
+          app/game/hunterPaletteFiltersV114.ts app/game/HomeworldModularHunter.tsx app/game/HunterRigPreview.tsx
+          app/game/systems/clanWarPlanetStrategyV114.ts
           app/game/ClanWarPlanetsV96.tsx app/game/systems/clanWarPlanetsV96.ts app/game/systems/clanWarV85.ts
           app/game/systems/clanWarCoastlinesV97.ts
           app/game/PlanetGeneratorV102.tsx app/game/PlanetLayerExportV102.tsx
@@ -654,6 +656,9 @@ jobs:
           app/game/systems/clanWarPlanetGeneratorV103.ts app/game/systems/clanWarPlanetGeographyV103.ts
           app/game/systems/clanWarDeploymentV103.ts app/game/systems/clanWarGeneratedCatalogV103.ts
           app/game/systems/planetMaterialProfilesV103.ts
+          app/game/systems/clanWarPlanetGeneratorV115.ts
+          app/game/systems/clanWarShapeAtlasV115.ts
+          app/game/systems/clanWarTextureLibraryV115.ts
           app/planet-generator-v103/page.tsx app/planet-generator-v103/review.tsx
           app/game/ClanWarCommandV98.tsx app/game/systems/clanWarCommandV98.ts
           app/game/ClanWarGarrisonV99.tsx
@@ -788,6 +793,9 @@ jobs:
       - name: Exercise actual Mausoleum React component (placeholder art, emulated pad)
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: node scripts/qa-mausoleum-browser-v94.mjs
+      - name: Validate complete Yautja palette maps after extended customization
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node --experimental-strip-types --test --test-reporter=spec tests/hunter-palette-filters-v114.test.mjs
       - name: Exercise free clan-war durability, lifecycle and planetary atlas regressions
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: >-
@@ -803,6 +811,7 @@ jobs:
           tests/planet-regional-material-v102.test.mjs
           tests/planet-generator-v103.test.mjs tests/planet-generator-integration-v103.test.mjs
           tests/planet-generator-draft-v103.test.mjs tests/planet-material-profiles-v103.test.mjs
+          tests/planet-strategy-v114.test.mjs tests/planet-export-zip-v114.test.mjs tests/planet-generator-v115.test.mjs
       - name: Exercise generated planets, independent bitmap layers and real saved fronts
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: |

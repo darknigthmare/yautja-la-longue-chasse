@@ -7,7 +7,7 @@ import {
   PLANET_MATERIAL_CONTRASTS_V103, PLANET_LAND_PALETTES_V103, PLANET_SURFACE_PALETTES_V103,
   type PlanetMaterialOptionsV103,
 } from "./planetMaterialProfilesV103";
-import { generatedPlanetGeographyV103, sphericalPolygonAreaV103 } from "./clanWarPlanetGeographyV103";
+import { generatedPlanetGeographyV103, sphericalPolygonAreaV103, type WarPlanetShapeSelectionV115 } from "./clanWarPlanetGeographyV103";
 
 export const WAR_PLANET_TERRITORY_COUNTS_V103 = [18, 24, 36, 48, 72, 96] as const;
 export const WAR_PLANET_REGION_COUNTS_V103 = [3, 4, 6, 8, 12] as const;
@@ -179,12 +179,12 @@ function strategicPlan(territories: { id: string; regionId: string }[], regions:
   };
   return { headquarters: { "CON-F01": start, "CON-F02": far }, startingTerritoryIds: { "CON-F01": pocket(start), "CON-F02": pocket(far) }, objectiveCorridor: paths.get(far)! };
 }
-export function generateWarPlanetV103(input: WarPlanetRecipeV103): GeneratedWarPlanetV103 {
+export function generateWarPlanetV103(input: WarPlanetRecipeV103, extension?: { worldId: string; shapes: WarPlanetShapeSelectionV115 }): GeneratedWarPlanetV103 {
   const recipe = validateWarPlanetRecipeV103(input);
   if (!recipe) throw new RangeError("Recette planétaire V103 invalide.");
-  const id = encodeWarPlanetV103(recipe), seed = recipe.seed, name = worldName(seed), surface = surfaceFor(recipe);
+  const id = extension?.worldId ?? encodeWarPlanetV103(recipe), seed = recipe.seed, name = worldName(seed), surface = surfaceFor(recipe);
   const regionNames = Array.from({ length: recipe.regionCount }, (_, index) => `${regionKinds[index]} ${epithets[(index + Math.floor(planetRandomV103(seed, 82) * epithets.length)) % epithets.length]}`);
-  const geography = generatedPlanetGeographyV103(recipe, id, regionNames);
+  const geography = generatedPlanetGeographyV103(recipe, id, regionNames, extension?.shapes);
   const strategy = strategicPlan(geography.territories, geography.regions, geography.neighbors, recipe);
   const regionBiomes = geography.regions.map((_, index) => {
     const variants = WAR_PLANET_BIOME_DESCRIPTIONS_V102[recipe.landBiome].variants;

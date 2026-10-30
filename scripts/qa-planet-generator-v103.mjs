@@ -206,7 +206,15 @@ try {
   await generator(page).getByText("Le code et les paramètres de cette fiche ne correspondent pas.", { exact: true }).waitFor();
   check("a mismatched version is rejected without replacing the preview", await code(page) === worldLarge);
   await fileInput.setInputFiles(smallJsonPath); await generator(page).getByText("Fiche importée. Le monde conserve sa version et sa géographie d’origine.", { exact: true }).waitFor();
-  check("a V103 JSON round trip restores the exact small-world code and geometry", await code(page) === worldSmall && digest(await geometry(preview(page))) === smallGeometry);
+  // Reassert the same map projection before comparing SVG paths. On a world
+  // switch the atlas may remount with its documented globe default; a globe
+  // path is not comparable to an equirectangular path for the same coastline.
+  await map(preview(page));
+  const restoredCode = await code(page), restoredGeometry = digest(await geometry(preview(page)));
+  if (restoredCode !== worldSmall || restoredGeometry !== smallGeometry) {
+    console.error("V103 round trip mismatch", JSON.stringify({ expectedCode: worldSmall, restoredCode, expectedGeometry: smallGeometry, restoredGeometry, projection: await preview(page).locator('[data-projection]').first().getAttribute("data-projection") }));
+  }
+  check("a V103 JSON round trip restores the exact small-world code and geometry", restoredCode === worldSmall && restoredGeometry === smallGeometry);
   await fileInput.setInputFiles(largeJsonPath); await page.waitForFunction(value => document.querySelector('[data-testid="planet-generator-v103"]')?.getAttribute("data-preview-planet-code") === value, worldLarge);
   check("the largest tested exported recipe imports unchanged", await code(page) === worldLarge);
   await generator(page).getByRole("button", { name: "Copier le code", exact: true }).click();
