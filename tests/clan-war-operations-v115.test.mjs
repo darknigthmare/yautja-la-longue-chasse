@@ -86,6 +86,25 @@ test("stealth is grid-based: no remote sabotage, no walking through solid walls,
   assert.equal(api.commandStealthV115(start,"teleport",rules).accepted,false);
 });
 
+test("an actual stealth path reaches the relay, sabotages it and extracts with one unique V6 receipt",()=>{
+  const chosen=legal(),started=api.beginWarOperationV115(initial(),"stealth",chosen.targetId,chosen.teamIds,rules,2000).state;
+  const route=["up","up","up","right","right","right","right","right","interact","left","left","left","left","left","down","down","down"];
+  let state=started;
+  for(const action of route) {
+    const result=api.commandStealthV115(state,action,rules);
+    assert.equal(result.accepted,true,action+": "+result.message);
+    state=result.state;
+  }
+  assert.equal(state.active,null);
+  assert.equal(state.reports.length,1);
+  assert.equal(state.reports[0].outcome,"victory");
+  assert.ok(state.weakenedIds.includes(chosen.targetId));
+  assert.ok(state.intelIds.includes(chosen.targetId));
+  const usedTeam=state.teams.find(team=>team.id===chosen.teamIds[0]);
+  assert.ok(usedTeam.resultReceipts.includes(state.reports[0].id));
+  assert.equal(api.readWarOperationsV115(JSON.stringify(state),rules).reports.length,1);
+});
+
 test("RTS movement and enemy response are simultaneous per order, with controlled occupancy",()=>{
   const chosen=legal(initial(),2);
   const state=api.beginWarOperationV115(initial(),"rts",chosen.targetId,chosen.teamIds,rules,3000).state;
