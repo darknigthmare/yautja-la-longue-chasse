@@ -152,3 +152,79 @@ test("a lone W3-U07 can deliberately hold its real position for three alternatin
   assert.equal(game.holdWarRtsAlternatingV119(simulated,guard.id,rules).accepted,false);
   assert.deepEqual(game.readWarOperationsV115(JSON.stringify(simulated),rules),simulated);
 });
+
+
+function setUpRepair(){
+  let state=game.createWarOperationsV115(rules);
+  for(const unitId of ["W3-U19","W3-U20"]){
+    const prepared=game.queueWarRecruitmentV115(state,unitId,1000,rules);
+    assert.equal(prepared.accepted,true,prepared.message);
+    state=prepared.state;
+  }
+  const due=Math.max(...state.pendingRecruits.map(order=>order.dueAt));
+  const arrived=game.settleWarRecruitmentsV115(state,due,rules);
+  assert.equal(arrived.accepted,true,arrived.message);
+  const teamIds=["W3-U19","W3-U20"].map(unitId=>arrived.state.teams.find(team=>team.unitId===unitId).id);
+  const target="W3-K07";
+  assert.equal(game.warRtsScriptedEligibilityV119("W3-RTS03",rules,target,["W3-U19","W3-U20"]),null);
+  const start=game.beginWarOperationV115(arrived.state,"rts",target,teamIds,rules,65000,"recon","W3-RTS03");
+  assert.equal(start.accepted,true,start.message);
+  return {state:start.state,porterId:teamIds[0],artisansId:teamIds[1],target};
+}
+
+test("W3-RTS03 keeps its original W3-MAP02 source and needs real logistics and artisan teams",()=>{
+  const source=game.warSourceRtsScenarioV119("W3-RTS03",rules);
+  assert.equal(source.title,"La conduite sous les lances");
+  assert.equal(source.sourceMapId,"W3-MAP02");
+  assert.equal(source.supportedRegionId,"W3-KR02");
+  assert.equal(source.objectiveKind,"filter-repair");
+  assert.ok(source.sourceCells.length>8);
+  assert.match(game.warRtsScriptedEligibilityV119("W3-RTS03",rules,"W3-K07",["W3-U19"]),/W3-U20/);
+  assert.match(game.warRtsScriptedEligibilityV119("W3-RTS03",rules,"W3-K02",["W3-U19","W3-U20"]),/W3-KR02/);
+  const {state,porterId}=setUpRepair();
+  assert.equal(state.active.rts.scripted.kind,"filter-repair");
+  assert.equal(state.active.rts.scripted.cargo.carrierTeamId,porterId);
+  assert.deepEqual(game.readWarOperationsV115(JSON.stringify(state),rules),state);
+});
+
+test("W3-RTS03 delivery does not finish or work on the same tick; artisans must operate in a safe area",()=>{
+  const {state,porterId,artisansId,target}=setUpRepair();
+  const objective=state.active.rts.scripted;
+  const field=game.warMissionTerrainV116(target,rules);
+  const ready=state.active.rts.actors.map(actor=>actor.teamId===porterId?{...actor,x:7,y:3}:
+    actor.teamId===artisansId?{...actor,x:6,y:3}:actor.side==="rival"?{...actor,x:0,y:5}:actor);
+  let phase=game.resolveWarRtsScriptedTickV119(objective,ready,field);
+  assert.equal(phase.outcome,null);
+  assert.equal(phase.objective.delivered,true);
+  assert.equal(phase.objective.workProgress,0);
+  assert.equal(phase.objective.cargo.carrierTeamId,null);
+  assert.equal(phase.objective.cargo.x,7);
+  assert.equal(phase.objective.cargo.y,3);
+  const interrupted=game.resolveWarRtsScriptedTickV119(phase.objective,
+    ready.map(actor=>actor.teamId===artisansId?{...actor,x:1,y:1}:actor),field);
+  assert.equal(interrupted.objective.workProgress,0,"no remote construction");
+  phase=game.resolveWarRtsScriptedTickV119(phase.objective,ready,field);
+  assert.equal(phase.objective.workProgress,1);
+  assert.equal(phase.outcome,null);
+  const complete=game.resolveWarRtsScriptedTickV119(phase.objective,ready,field);
+  assert.equal(complete.objective.workProgress,2);
+  assert.equal(complete.outcome,"victory");
+  assert.equal(state.active.rts.scripted.delivered,false);
+});
+test("W3-RTS03 cannot finish by wiping enemies or by forging instant repair in local archives",()=>{
+  const {state,porterId,target}=setUpRepair();
+  const noEnemies={...state,active:{...state.active,rts:{...state.active.rts,
+    actors:state.active.rts.actors.filter(actor=>actor.side==="ally")}}};
+  const held=game.holdWarRtsAlternatingV119(noEnemies,porterId,rules);
+  assert.equal(held.accepted,true);
+  assert.ok(held.state.active,"empty enemy roster is not a repair receipt");
+  assert.equal(held.state.reports.length,0);
+  assert.equal(held.state.active.rts.scripted.delivered,false);
+  const forged=structuredClone(state);
+  forged.active.rts.scripted.workProgress=99;
+  assert.equal(game.readWarOperationsV115(JSON.stringify(forged),rules),null);
+  const fakeDelivery=structuredClone(state);
+  fakeDelivery.active.rts.scripted.delivered=true;
+  assert.equal(game.readWarOperationsV115(JSON.stringify(fakeDelivery),rules),null);
+  assert.equal(game.warMissionTerrainV116(target,rules).regionId,"W3-KR02");
+});
