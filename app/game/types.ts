@@ -1,5 +1,6 @@
 import type {FieldSpecimenV112,HarvestInventoryV112} from "./systems/harvestInventoryV112";
 import type { HuntAccessibilityV112 } from "./systems/huntAccessibilityV112";
+import type { HunterChromaticsV113 } from "./hunterChromaticsV113";
 /**
  * Shared game contracts.
  *
@@ -273,6 +274,8 @@ export interface HunterAppearance {
   trophyAdornmentId: TrophyAdornmentId;
   /** Optional on legacy/preset objects; persistence always supplies a value. */
   laserColorId?: LaserColorId;
+  /** Optional for legacy V1-V112 saves; normalized by save.ts. */
+  chromaticsV113?: HunterChromaticsV113;
 }
 
 export interface ContentUnlock {

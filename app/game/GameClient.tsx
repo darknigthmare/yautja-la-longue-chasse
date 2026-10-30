@@ -18,6 +18,8 @@ import React, {
   useSyncExternalStore,
 } from "react";
 import HunterRigPreview from "./HunterRigPreview";
+import HunterChromaticForgeV113 from "./HunterChromaticForgeV113";
+import { normalizeHunterChromaticsV113, type HunterChromaticsV113 } from "./hunterChromaticsV113";
 import CloudAccountV71, { openCloudAccountV71 } from "./CloudAccountV71";
 import HomeworldModularHunter from "./HomeworldModularHunter";
 import { startYouthCampaign, withYouthCheckpoint, withYouthProgress, youthCampaignNeedsScene, youthCampaignObjective } from "./systems/youthCampaign";
@@ -2962,6 +2964,11 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         [key]: value,
       };
       if (key !== "presetId") appearance.presetId = "custom";
+      // A standard swatch deliberately clears only the custom override of its channel.
+      const baseChromatics = normalizeHunterChromaticsV113(appearance.chromaticsV113);
+      if (key === "skinId") appearance.chromaticsV113 = { ...baseChromatics, skinHex: null, skinMaterialId: null };
+      if (key === "dreadTintId") appearance.chromaticsV113 = { ...baseChromatics, dreadHex: null, dreadMaterialId: null };
+      if (key === "armorTintId") appearance.chromaticsV113 = { ...baseChromatics, armorHex: null, armorMaterialId: null };
       setSelectedCatalogueEntryId(null);
       persist({
         ...save,
@@ -2971,6 +2978,40 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     },
     [persist, playSound, save],
   );
+
+
+  const commitChromaticsV113 = useCallback((draft: HunterChromaticsV113): boolean => {
+    if (!sessionAliveRef.current || screen !== "customization" || settingsOpen ||
+      campaignSaveBusy || archiveTransferBusy || !!archiveRecoveryIssue ||
+      !!pendingTrophyCommitRef.current || !!pendingSocialWriteRef.current || !!pendingTerminalRunRef.current) return false;
+    const current = saveRef.current;
+    if (current.createdAt !== entry.ownerCreatedAt) return false;
+    const chromaticsV113 = normalizeHunterChromaticsV113(draft);
+    const next: SaveGame = {
+      ...current,
+      appearance: { ...current.appearance, presetId: "custom", chromaticsV113 },
+    };
+    persist(next);
+    // The cosmetic change is never presented as committed until an actual
+    // owner-matched persisted readback proves it; storage may be disabled.
+    try {
+      const raw = window.localStorage.getItem(SAVE_STORAGE_KEY);
+      const stored = raw === null ? null : parseSaveImport(raw).save;
+      if (!stored || stored.createdAt !== current.createdAt ||
+        JSON.stringify(stored.appearance.chromaticsV113) !== JSON.stringify(chromaticsV113)) {
+        setToast("Parure non confirmée par le stockage. La dernière sauvegarde reste la référence.");
+        return false;
+      }
+    } catch {
+      setToast("Impossible de relire la sauvegarde chromatique. Aucune confirmation.");
+      return false;
+    }
+    setSelectedCatalogueEntryId(null);
+    setToast("Teintes et matières enregistrées dans la campagne.");
+    void playSound("select");
+    return true;
+  }, [persist, screen, settingsOpen, campaignSaveBusy, archiveTransferBusy, archiveRecoveryIssue,
+      entry.ownerCreatedAt, playSound]);
 
   const applyShipLoadout = useCallback(
     (loadout: Loadout, appearance: HunterAppearance) => {
@@ -4381,7 +4422,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             <PanelHeader
               eyebrow={newGamePhase ? "Nouvelle partie // Identité du chasseur" : "Vaisseau // Quartier du chasseur"}
               title="Personnalisation du Yautja"
-              subtitle="Le biomask permet d’étudier séparément l’anatomie, le filet, les dreadlocks, les plaques, l’armement, les gantelets et les trophées."
+              subtitle="Ateliers de pigmentation et de patines : contrôle des couleurs, textures des dreads, étoffes, armures et anatomie du chasseur. Les pigments ne remplacent pas les silhouettes de référence."
               id="customization-title"
               onBack={() => newGamePhase ? void returnToMainMenu() : go(stationReturnScreen)}
             />
@@ -4391,6 +4432,12 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
               <button type="button" className="alien-button" onClick={() => { setSelectedMission(MISSIONS.find(mission => mission.id === "jungle-vey")!); setBriefingAtAirlock(true); setNewGamePhase("briefing"); setScreen("briefing"); }}>Confirmer le chasseur et ouvrir le premier briefing</button>
               <button type="button" className="ghost-button" onClick={() => setSettingsOpen(true)}>Réglages et sauvegardes</button>
             </section>}
+            <HunterChromaticForgeV113
+              appearance={save.appearance}
+              homeworld={stationReturnScreen === "homeworld"}
+              disabled={settingsOpen || campaignSaveBusy || archiveTransferBusy || !!archiveRecoveryIssue}
+              onCommit={commitChromaticsV113}
+            />
             <div className="customization-layout">
               <aside className="customization-preview">
                 <div className="customization-rig-stage">

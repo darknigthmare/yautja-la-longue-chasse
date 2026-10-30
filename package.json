@@ -11,6 +11,7 @@
     "build": "vinext build",
     "start": "node scripts/start-production.mjs",
     "test": "npm run build && node --experimental-strip-types --test --test-concurrency=1 tests/*.test.mjs tests/*.test.ts",
+    "test:chromatics:v113": "node --experimental-strip-types --test tests/hunter-chromatics-v113.test.mjs",
     "qa": "npm run lint && npm run typecheck && npm run film-plates:build && npm run franchise-trophies:build-specs && npm run enemy-trophies:build-specs && npm run enemy-trophies:gameplay-build && npm run cutouts:build && npm run biome-decor:v19:manifests && npm run build && npm run film-plates:audit && npm run ships:audit && npm run ship-interior:audit && npm run ship-interior:v22:audit && npm run hunter-kit:audit && npm run trophies:audit && npm run franchise-trophies:audit && npm run enemy-trophies:audit && npm run enemy-trophies:gameplay-audit && npm run biome-decor:v19:audit && node --experimental-strip-types --test --test-concurrency=1 tests/*.test.mjs tests/*.test.ts",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
     "typecheck": "tsc --noEmit",
