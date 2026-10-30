@@ -3,9 +3,9 @@
 import { useEffect, useState } from "react";
 import type { HunterAppearance } from "./types";
 import {
-  CHROMATIC_CHANNELS_V113, CHROMATIC_PALETTE_PRESETS_V115, PHG_CHROMATIC_MATERIALS_V113,
+  CHROMATIC_PALETTE_PRESETS_V115, PHG_CHROMATIC_MATERIALS_V113,
   PHG_DRIVE_CANDIDATES_V120,
-  DEFAULT_CHROMATICS_V113, normalizeHunterChromaticsV113,
+  normalizeHunterChromaticsV113,
   chromaticFacilityChannelsV115, resetChromaticFacilityV115,
   type ChromaticFacilityV115, type HunterChromaticsV113,
 } from "./hunterChromaticsV113";
@@ -87,7 +87,7 @@ export default function HunterChromaticForgeV113({
             <span><strong>{selectedMaterial.label}</strong><small>{selectedMaterial.evidence === "provisional" ? "Étude provisoire — fidélité artistique non validée" : "Matière plane reconstituée — UV non certifiées 1:1"}</small></span>
           </div>}
           {!selectedMaterial && <small>Calque d’origine conservé sans texture de remplacement.</small>}
-          {pending > 0 && <small>{pending} matière(s) PHG vérifiée(s) sur Drive, non installée(s) dans ce jeu. L'import local V120 vérifie les octets avant activation ; la fidélité UV 1:1 reste non certifiée.</small>}
+          {pending > 0 && <small>{pending} matière(s) PHG vérifiée(s) sur Drive, non installée(s) dans ce jeu. L’import local V120 vérifie les octets avant activation ; la fidélité UV 1:1 reste non certifiée.</small>}
         </fieldset>;
       })}
     </div>
