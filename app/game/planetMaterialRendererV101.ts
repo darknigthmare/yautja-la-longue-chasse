@@ -5,6 +5,7 @@ import {
 } from "./planetRegionalMaterialsV102";
 import { loadPlanetDetailedMaterialV103, planetDetailedMaterialKeyV103, planetDetailedMaterialStatusV103 } from "./planetDetailMaterialsV103";
 import { planetMaterialSourceV103, planetRegionalLayoutV103 } from "./systems/planetMaterialProfilesV103";
+import { createPlanetTextureCanvasV115 } from "./systems/clanWarTextureLibraryV115";
 import {
   DEFAULT_PLANET_MATERIAL_SETTINGS_V101, PLANET_MATERIAL_LAYERS_V101, planetMaterialRecipeV101,
   unwrapPlanetPolygonV101, wrapPlanetLongitudeV101, planetMaterialSourceV101, type PlanetMaterialLayerV101, type PlanetMaterialSettingsV101, type PlanetMaterialViewV101,
@@ -43,6 +44,13 @@ function loadMaterial(url: string, size: number): Promise<HTMLCanvasElement> {
   if (existing) return Promise.resolve(touch(sourceCache, key, existing));
   const pending = pendingSources.get(key);
   if (pending) return pending;
+  if (url.startsWith("yautja-v115:")) {
+    try {
+      const canvas = createPlanetTextureCanvasV115(url, size);
+      sourceCache.set(key, canvas); trim(sourceCache, SOURCE_LIMIT);
+      return Promise.resolve(canvas);
+    } catch (error) { return Promise.reject(error); }
+  }
   const promise = new Promise<HTMLCanvasElement>((resolve, reject) => {
     loadQueue.push(() => {
       activeLoads++;
