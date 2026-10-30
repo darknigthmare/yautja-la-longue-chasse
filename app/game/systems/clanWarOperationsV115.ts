@@ -45,6 +45,13 @@ export interface WarRecruitmentV115 {
   id: string; teamId: string; unitId: string;
   startedAt: number; dueAt: number; paidRav: number;
 }
+/** The current exercise only produces light "wounded" cases, never major trauma.
+ * A V6 field medic must be recruited, free and supplied before a person can
+ * return fit. No medical bay, healing rate or hardware is claimed canonical. */
+export interface WarTreatmentV116 {
+  id:string; teamId:string; memberId:string; medicTeamId:string;
+  startedAt:number; dueAt:number; paidRav:number;
+}
 export interface WarOperationsStateV115 {
   version: 1; context: "free"; sourceSha: string; baseId: string;
   serial: number; clock: number; rav: number;
@@ -53,6 +60,7 @@ export interface WarOperationsStateV115 {
   intelIds: string[]; weakenedIds: string[]; escortedIds: string[];
   pressure: Record<string, number>; reports: WarMissionReportV115[];
   pendingRecruits?: WarRecruitmentV115[]; recruitedTeamIds?: string[];
+  pendingTreatments?: WarTreatmentV116[]; treatmentReceipts?: string[];
 }
 export interface WarOperationsUpdateV115 { state: WarOperationsStateV115; accepted: boolean; message: string }
 const MAX_REPORTS = 120;
@@ -85,7 +93,7 @@ export function createWarOperationsV115(rules: WarRulesV6): WarOperationsStateV1
     version: 1, context: "free", sourceSha: rules.metadata.sha256, baseId: rules.territories[0]?.id ?? "",
     serial: 0, clock: 0, rav: rules.parameters.rav_cap, teams, assignments: {},
     active: null, outer: [], intelIds: [], weakenedIds: [], escortedIds: [], pressure: {}, reports: [],
-    pendingRecruits: [], recruitedTeamIds: [],
+    pendingRecruits: [], recruitedTeamIds: [], pendingTreatments: [], treatmentReceipts: [],
   };
 }
 
@@ -128,6 +136,81 @@ export function settleWarRecruitmentsV115(state:WarOperationsStateV115,now:numbe
     recruitedTeamIds:unique([...(state.recruitedTeamIds??[]),...due.map(item=>item.teamId)])},
     due.length+" renfort(s) V6 arrivés au départ, avec nouvelles identités et XP à zéro.");
 }
+/** Enlist a paid V6 W3-U18 field medic and isolate the light casualty at the
+ * exercise's common assembly point. Two complete teams are unavailable until
+ * recovery or an explicit evacuation/cancel. One source upkeep RAV is charged
+ * for the medic and a 45-second prototype window is clearly displayed. */
+export function queueWarTreatmentV116(
+  state:WarOperationsStateV115,teamId:string,memberId:string,medicTeamId:string,now:number,rules:WarRulesV6,
+):WarOperationsUpdateV115 {
+  if(state.sourceSha!==rules.metadata.sha256||!Number.isSafeInteger(now)||now<0)
+    return reject(state,"Date ou Bible V6 incompatible avec le traitement.");
+  const patient=ownTeam(state,teamId),medic=ownTeam(state,medicTeamId);
+  if(!patient||!medic||teamId===medicTeamId)
+    return reject(state,"Choisissez un blessé et une équipe de soigneur distincte, déjà présente.");
+  if(medic.unitId!=="W3-U18"||!unitFor(rules,medic.unitId))
+    return reject(state,"La prise en charge exige l'unité source W3-U18, soigneur de terrain.");
+  if(patient.members.find(person=>person.id===memberId)?.status!=="wounded")
+    return reject(state,"Le membre choisi n'est pas un blessé léger connu de l'exercice.");
+  if(!medic.members.some(person=>person.status==="fit"))
+    return reject(state,"L'équipe de soins n'a plus de membre apte.");
+  if(state.assignments[teamId]||state.assignments[medicTeamId])
+    return reject(state,"L'équipe blessée ou le soigneur possède déjà une affectation.");
+  if((state.pendingTreatments??[]).length>=2||state.serial>=100000)
+    return reject(state,"Deux soins simultanés au maximum ou archive à capacité maximale.");
+  const fee=unitFor(rules,"W3-U18")!.upkeepRav;
+  if(!Number.isSafeInteger(fee)||fee<0||state.rav<fee) return reject(state,"RAV insuffisants pour l'entretien du soigneur.");
+  const id="W115-CARE-"+(state.serial+1);
+  const order:WarTreatmentV116={id,teamId,memberId,medicTeamId,startedAt:now,dueAt:now+45000,paidRav:fee};
+  return accept({...state,serial:state.serial+1,rav:state.rav-fee,
+    assignments:{...state.assignments,[teamId]:id,[medicTeamId]:id},
+    pendingTreatments:[...(state.pendingTreatments??[]),order]},
+    "Soins légers engagés pour "+memberId+". Soigneur W3-U18 et équipe blessée indisponibles durant 45 secondes.");
+}
+/** A treatment is settled once, only after the paid, attended recovery period.
+ * Wounded members keep their identities and XP; there is no resurrection,
+ * free member replacement, or honorary reward. */
+export function settleWarTreatmentsV116(
+  state:WarOperationsStateV115,now:number,rules:WarRulesV6,
+):WarOperationsUpdateV115 {
+  if(state.sourceSha!==rules.metadata.sha256||!Number.isSafeInteger(now)||now<0)
+    return reject(state,"Échéance de traitement invalide.");
+  const due=(state.pendingTreatments??[]).filter(order=>now>=order.dueAt)
+    .sort((a,b)=>a.dueAt-b.dueAt||a.id.localeCompare(b.id));
+  if(!due.length)return reject(state,"Aucun traitement arrivé à échéance.");
+  let next=state;
+  for(const order of due){
+    const patient=ownTeam(next,order.teamId),medic=ownTeam(next,order.medicTeamId);
+    if(!patient||!medic||medic.unitId!=="W3-U18"||
+       !medic.members.some(person=>person.status==="fit")||
+       patient.members.find(person=>person.id===order.memberId)?.status!=="wounded")
+      return reject(state,"Une équipe médicale n'est plus disponible : aucune guérison automatique.");
+    const assignments={...next.assignments};
+    if(assignments[order.teamId]!==order.id||assignments[order.medicTeamId]!==order.id)
+      return reject(state,"Un autre mandat détient les équipes : traitement suspendu.");
+    delete assignments[order.teamId];delete assignments[order.medicTeamId];
+    next={...next,clock:next.clock+1,assignments,
+      teams:next.teams.map(team=>team.id!==order.teamId?team:
+        {...team,members:team.members.map(person=>person.id!==order.memberId?person:{...person,status:"fit" as const})}),
+      pendingTreatments:(next.pendingTreatments??[]).filter(item=>item.id!==order.id),
+      treatmentReceipts:[...(next.treatmentReceipts??[]),order.id].slice(-120),
+    };
+  }
+  return accept(next,due.length+" prise(s) en charge V6 terminée(s) ; les membres légers reprennent leur service.");
+}
+/** Abort a treatment without inventing a refund of supplies already issued. */
+export function cancelWarTreatmentV116(state:WarOperationsStateV115,id:string):WarOperationsUpdateV115 {
+  const order=(state.pendingTreatments??[]).find(item=>item.id===id);
+  if(!order)return reject(state,"Prise en charge inconnue ou déjà clôturée.");
+  const assignments={...state.assignments};
+  if(assignments[order.teamId]!==id||assignments[order.medicTeamId]!==id)
+    return reject(state,"Impossible de libérer un détachement affecté à un autre ordre.");
+  delete assignments[order.teamId];delete assignments[order.medicTeamId];
+  return accept({...state,assignments,
+    pendingTreatments:(state.pendingTreatments??[]).filter(item=>item.id!==id)},
+    "Traitement interrompu ; le membre reste blessé et les RAV déjà engagés ne sont pas remboursés.");
+}
+
 export function warMissionEligibleV115(state: WarOperationsStateV115, rules: WarRulesV6, targetId: string, teamIds: string[]): string | null {
   if (state.sourceSha !== rules.metadata.sha256) return "La source des règles a changé : ce front ne peut pas être réinterprété.";
   if (!rules.territories.some(item => item.id === targetId) || targetId === state.baseId) return "Choisissez un territoire extérieur au départ.";
