@@ -130,6 +130,18 @@ export function buildWarEncounterSubVariantV127(
  const failureConditions=mode==="outer"?
   ["rapport manquant","détachement invalide ou déjà affecté","route réellement impraticable"]:
   ["aucun combattant admissible","objectif non tenu","issue bloquée ou phase expirée"];
+ const siteNeeds=scenario.geography.worldKind==="earth"?[
+   "vecteurs terrain terrestre et relief à vérifier, WGS84",
+   "couvrants de "+scenario.environment.biome+" réellement présents",
+   "matière de sol "+scenario.environment.terrain,
+   "eau/hydrologie "+scenario.environment.liquid,
+   "modèles de bâtiments d'époque uniquement si autorisés par la source",
+   "sprites W3-U identifiés dans la continuité du jeu",
+  ]:[
+   ...scenario.original.production.neededSprites,
+   ...scenario.original.production.neededTiles,
+   "révision des effets de météo pour "+scenario.environment.climate,
+  ];
  const warnings=[...ai.warnings,...scenario.auditWarnings];
  if(scenario.geography.worldKind==="unresolved-fiction")
   warnings.push("Épisode non localisable : interdit de le traiter comme territoire de campagne");
@@ -160,8 +172,7 @@ export function buildWarEncounterSubVariantV127(
    fogOfWar:ai.visibility,
   },victoryConditions,failureConditions,
   missingAssets:[
-   ...scenario.original.production.neededSprites,
-   ...scenario.original.production.neededTiles,
+   ...siteNeeds,
    "placements et chemins d'accès réels de la carte",
    "règles de collision/abri du terrain",
   ],
