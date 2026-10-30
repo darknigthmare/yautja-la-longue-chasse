@@ -61,7 +61,7 @@ const ORIGINAL_WORLDS = [
 
 const LORE_CONTEXTS = [
  "conseil des Anciens|jugement d’un mandat contesté|salle des marques de clan|interprétation interne",
- "rite de passage de jeune chasseur|épreuve de discipline et extraction|corridor d’initiation|motif AVP multiconitnuité",
+ "rite de passage de jeune chasseur|épreuve de discipline et extraction|corridor d’initiation|motif AVP multcontinuité",
  "vaisseau de chasse|défense d’un hangar de navette|pont d’embarquement|motif des films",
  "collection de trophées|inventaire vérifié, sans trophée gratuit|salle de conservation|motif des films",
  "traque d’un renégat|établir des preuves avant l’interception|poste de poursuite|motif comics à attribuer",
@@ -311,7 +311,7 @@ const STEALTH_GOALS=[
  "identifier|un faux trophée|scanner les scellés sans le toucher",
  "désactiver|une barrière automatique|contourner les plaques de pression",
  "extraire|un témoin sans armement|garder sa position hors des projecteurs",
- "sabot er|un treuil de casemate|empêcher une ouverture sans faire tomber le pont",
+ "saboter|un treuil de casemate|empêcher une ouverture sans faire tomber le pont",
  "écouter|un conseil rival|ne pas conclure à une trahison sans preuve",
  "piéger|un registre de fausses pistes|laisser un message vérifiable",
  "couper|une liaison de drones|éviter les capteurs de secours",
@@ -373,7 +373,6 @@ const ROLES={
  rts:["1 équipe W3-U de garde","1 soutien logistique selon le but","capacité PC admise"]
 } as const;
 const MODE_LABELS={assault:"Assaut latéral",outer:"Mandat délégué",stealth:"Infiltration",rts:"Guerre RTS"} as const;
-const CATEGORY_LABELS={original:"Original",lore:"Lore-compatible",homage:"Clin d’œil"} as const;
 const REFS={
  predator:"https://www.20thcenturystudios.com/movies/predator/",
  predator2:"https://www.20thcenturystudios.com/movies/predator-2",
@@ -384,11 +383,6 @@ const REFS={
 } as const;
 function nmod(x:number,n:number){return ((x % n)+n)%n;}
 function split(s:string){return s.split("|");}
-function mix(text:string):number{
-  let value=2166136261;
-  for(let i=0;i<text.length;i++)value=Math.imul(value^text.charCodeAt(i),16777619);
-  return value>>>0;
-}
 function sourceForInspiration(index:number):string{
   return [REFS.predator,REFS.predator2,REFS.prey,REFS.avp,"",REFS.predators,REFS.badlands][index] ?? "";
 }
@@ -422,7 +416,6 @@ export function buildClanWarVariantsV120():ClanWarVariantV120[]{
         const primaryMechanic=PRIMARY_MECHANICS[mode][Math.floor(index/25)];
         const exit=EXIT_RULES[mode][Math.floor(index/25)];
         const config=String(index+1).padStart(3,"0");
-        const hazardIndex=nmod(index*7+fi*11+mi*3,HAZARDS.length);
         const difficulty=1+nmod(index+fi*2+mi,5);
         const atlasType=mode==="assault"?"coupe latérale multi-lignes":
           mode==="outer"?"graphe de transit multisectoriel":
@@ -458,7 +451,6 @@ export function buildClanWarVariantsV120():ClanWarVariantV120[]{
           "renseignement/sabotage daté sans butin":mode==="rts"?
           "pression tactique avec contrôle à confirmer":"bastion neutralisé sans garnison inventée")+
           " ; l’état de campagne n’est pas modifié.";
-        const hasLiquid=liquid!=="aucun";
         const assetNeeds=[land,liquid,geometry,"décors "+district,"silhouettes de "+adversary,
           mode==="assault"?"sprites latéraux, remparts, impacts":""
         ].filter(Boolean);
