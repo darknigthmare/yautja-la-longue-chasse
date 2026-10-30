@@ -10,6 +10,11 @@ export type WarTileKindV128 = "ground"|"wall"|"cover"|"water"|"lava"|"ice"|"brid
 export type WarMissionMapActionV128 = "up"|"down"|"left"|"right"|"wait"|"cloak"|"observe"|"interact"|"attack"|"power"|"stabilize"|"retreat";
 export type WarMissionMapOutcomeV128 = "victory"|"defeat"|"retreat";
 export interface WarMapPointV128 {x:number;y:number;}
+export interface WarMapLandmarkV128 {
+ id:string;name:string;role:"passage"|"cover"|"device";
+ at:WarMapPointV128;sourceColumn:"G"|"H"|"J";
+ isOnWalkableTile:true;
+}
 export interface WarMapTileV128 {
  x:number;y:number;kind:WarTileKindV128;elevation:number;
  opaque:boolean;solid:boolean;cover:boolean;
@@ -25,6 +30,7 @@ export interface WarSourceMapV128 {
  interpretation:"source-guided-tile-study-not-final-authored-or-film-map";
  start:WarMapPointV128;goal:WarMapPointV128;extraction:WarMapPointV128;
  mandatoryPaths:WarMapPointV128[][];hazards:WarMapPointV128[];
+ landmarks:WarMapLandmarkV128[];
  observation:WarMapPointV128;poweredDoors:WarMapPointV128[];
  eventClass:string;
  generatorSeed:number;tiles:WarMapTileV128[];unitRoles:string[];
@@ -73,6 +79,20 @@ const settings={
  "W3-MAP12":{biome:"coque de vaisseau",fluid:"none",unit:"W3-U26"},
 } as const;
 type MapIdV128=keyof typeof settings;
+const LANDMARKS:Record<MapIdV128,readonly [string,string,string]>={
+ "W3-MAP01":["Passerelle centrale","Tunnel inférieur","Seuil du nid adverse"],
+ "W3-MAP02":["Conduites couvertes","Digue sèche","Filtre principal"],
+ "W3-MAP03":["Arête rapide","Tranchée de détour","Falaise de la proie"],
+ "W3-MAP04":["Conduits d'entretien","Cour ouverte","Relais hostile"],
+ "W3-MAP05":["Passerelle moyenne","Refuge sous racines","Clairière de sortie"],
+ "W3-MAP06":["Pont de racines","Gué de détour","Berge rocheuse"],
+ "W3-MAP07":["Escalier haut","Cavité littorale","Levier de quai"],
+ "W3-MAP08":["Passerelle des pitons","Couronne de plage","Faux signal de phare"],
+ "W3-MAP09":["Corniche supérieure","Moraine lente","Convoi isolé"],
+ "W3-MAP10":["Galerie haute","Coursive médiane","Salle de contrôle"],
+ "W3-MAP11":["Ascenseur de charge","Galerie interne","Port ancien"],
+ "W3-MAP12":["Coursive principale","Gaines d'abordage","Sas de propulsion"],
+};
 function isMapIdV128(id:string):id is MapIdV128 {
  return Object.prototype.hasOwnProperty.call(settings,id);
 }
@@ -133,6 +153,14 @@ export function createWarSourceMapV128(id:string,rules:WarRulesV6):WarSourceMapV
  const two=chain([start,point(Math.floor(width*.24),height-5),point(Math.floor(width*.72),height-5),goal],true);
  const three=chain([start,point(Math.floor(width*.35),center),point(Math.floor(width*.65),center),goal]);
  const mandatoryPaths=[one,two,three];
+ const landmarkPositions=[one[Math.floor(one.length*.48)],
+   two[Math.floor(two.length*.52)],goal];
+ const landmarks:WarMapLandmarkV128[]=LANDMARKS[id].map((name,index)=>({
+   id:id+"-LM-"+(index+1),name,role:index===2?"device":index===1?"cover":"passage",
+   at:landmarkPositions[index],
+   sourceColumn:index===2?"J":index===1?"H":"G",
+   isOnWalkableTile:true,
+ }));
  const observation=one[Math.floor(one.length*.78)];
  // Doors are objects on an optional route: power loss cannot strand the team.
  const poweredDoor=POWERED_MAPS.has(id)?
@@ -190,7 +218,7 @@ export function createWarSourceMapV128(id:string,rules:WarRulesV6):WarSourceMapV
   sourceExtraction:sourceValue(entry,"L"),
   tileScale:"one-tactical-cell-not-geographic-metre",
   interpretation:"source-guided-tile-study-not-final-authored-or-film-map",
-  start,goal,extraction:start,mandatoryPaths,hazards,observation,poweredDoors,eventClass:EVENT_TYPES[id],
+  start,goal,extraction:start,mandatoryPaths,hazards,landmarks,observation,poweredDoors,eventClass:EVENT_TYPES[id],
   generatorSeed:seed,tiles,unitRoles:["W3-U01",environment.unit,"W3-U07"],
  };
 }
@@ -390,6 +418,8 @@ export function auditWarSourceMapsV128(rules:WarRulesV6){
   try{map=createWarSourceMapV128(id,rules);}catch(e){problems.push(id+" "+String(e));continue;}
   if(map.tiles.length!==map.width*map.height)problems.push(id+" bad grid area");
   if(map.mandatoryPaths.length!==3)problems.push(id+" missing alternatives");
+  if(map.landmarks.length!==3||new Set(map.landmarks.map(l=>key(l.at))).size!==3||
+     map.landmarks.some(l=>!warMapWalkableV128(map,l.at)))problems.push(id+" misplaced authored landmark");
   if(map.mandatoryPaths.some(path=>path.some(p=>!warMapWalkableV128(map,p))))
    problems.push(id+" claimed route across obstacle");
   if(!warMapFindPathV128(map,map.start,map.goal))problems.push(id+" no objective route");
