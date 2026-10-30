@@ -123,8 +123,9 @@ export const WAR_LINE_ROSTER_V114 = WAR_UNITS_V85.slice(0, 6).map((unit, index) 
   hp: bounded(16 + unit.command * 3, 18, 50), damage: bounded(3 + Math.ceil(unit.command / 2), 4, 11),
   range: index % 3 === 2 ? 13 : 6, speed: index % 3 === 1 ? 3 : 2,
 }));
-export function createWarLineV114(seed = 1, readiness = 50, threat = 1): WarLineV114 {
-  return { tick: 0, ap: bounded(75 + Math.floor(readiness / 5), 0, 160), ownBase: 100, enemyBase: 85 + threat * 15, lastSpecial: -25, seed: seed + threat, seq: 0, actors: [], phase: "active" };
+export function createWarLineV114(seed = 1, readiness = 50, threat = 1, sabotage = 0): WarLineV114 {
+  // Sabotaging an identified military relay reduces the exercise objective\u0027s fortifications; no campaign asset changes.
+  return { tick: 0, ap: bounded(75 + Math.floor(readiness / 5), 0, 160), ownBase: 100, enemyBase: bounded(85 + threat * 15 - Math.floor(sabotage / 5), 35, 200), lastSpecial: -25, seed: seed + threat, seq: 0, actors: [], phase: "active" };
 }
 export function deployWarLineV114(state: WarLineV114, role: number): WarLineV114 {
   const def = WAR_LINE_ROSTER_V114[role];
@@ -167,8 +168,8 @@ export interface WarStealthGuardV114 { id: string; x: number; y: number; axis: "
 export interface WarStealthV114 { x: number; y: number; tick: number; energy: number; cloak: boolean; crouch: boolean; alarm: number; planted: boolean; guards: WarStealthGuardV114[]; phase: WarMissionPhaseV114 }
 export const WAR_STEALTH_WIDTH_V114 = 12, WAR_STEALTH_HEIGHT_V114 = 8;
 export const WAR_STEALTH_WALLS_V114 = new Set(["4,1", "4,2", "4,3", "4,4", "6,5", "7,5", "8,5", "6,1", "6,2"]);
-export function createWarStealthV114(): WarStealthV114 {
-  return { x: 1, y: 6, tick: 0, energy: 10, cloak: false, crouch: false, alarm: 0, planted: false,
+export function createWarStealthV114(intel = 0): WarStealthV114 {
+  return { x: 1, y: 6, tick: 0, energy: bounded(6 + Math.floor(intel / 15), 0, 10), cloak: false, crouch: false, alarm: 0, planted: false,
     guards: [{ id: "g1", x: 8, y: 3, axis: "x", direction: 1 }, { id: "g2", x: 3, y: 5, axis: "y", direction: -1 }], phase: "active" };
 }
 function sightBlocked(x: number, y: number, gx: number, gy: number) {
@@ -205,13 +206,13 @@ export function actWarStealthV114(state: WarStealthV114, action: "up" | "down" |
 export interface WarRtsUnitV114 { id: string; side: "own" | "enemy"; x: number; y: number; targetX: number; targetY: number; hp: number; cooldown: number }
 export interface WarRtsV114 { tick: number; points: number; leftCapture: number; rightCapture: number; hold: number; seq: number; units: WarRtsUnitV114[]; phase: WarMissionPhaseV114 }
 export const WAR_RTS_WIDTH_V114 = 11, WAR_RTS_HEIGHT_V114 = 7;
-export function createWarRtsV114(rav = 50): WarRtsV114 {
-  return { tick: 0, points: bounded(65 + rav, 50, 130), leftCapture: 0, rightCapture: 0, hold: 0, seq: 4, phase: "active",
+export function createWarRtsV114(rav = 50, intel = 0, sabotage = 0): WarRtsV114 {
+  return { tick: 0, points: bounded(65 + rav + Math.floor(intel / 4), 50, 130), leftCapture: 0, rightCapture: 0, hold: 0, seq: 4, phase: "active",
     units: [
       { id: "own-1", side: "own", x: 1, y: 2, targetX: 3, targetY: 3, hp: 34, cooldown: 0 },
       { id: "own-2", side: "own", x: 1, y: 4, targetX: 3, targetY: 3, hp: 34, cooldown: 0 },
-      { id: "enemy-3", side: "enemy", x: 9, y: 2, targetX: 7, targetY: 3, hp: 34, cooldown: 0 },
-      { id: "enemy-4", side: "enemy", x: 9, y: 4, targetX: 7, targetY: 3, hp: 34, cooldown: 0 },
+      { id: "enemy-3", side: "enemy", x: 9, y: 2, targetX: 7, targetY: 3, hp: bounded(34 - Math.floor(sabotage / 8), 18, 34), cooldown: 0 },
+      { id: "enemy-4", side: "enemy", x: 9, y: 4, targetX: 7, targetY: 3, hp: bounded(34 - Math.floor(sabotage / 8), 18, 34), cooldown: 0 },
     ] };
 }
 export function orderWarRtsV114(state: WarRtsV114, id: string, x: number, y: number): WarRtsV114 {
