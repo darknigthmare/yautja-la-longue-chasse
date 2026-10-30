@@ -13,6 +13,7 @@ const ACTIONS:{id:WarMissionMapActionV128;label:string}[]=[
  {id:"observe",label:"Observer"},{id:"interact",label:"Interagir"},
  {id:"attack",label:"Attaquer"},{id:"cloak",label:"Camouflage"},
  {id:"wait",label:"Attendre"},{id:"power",label:"Couper / remettre le courant"},
+ {id:"stabilize",label:"Stabiliser le sas"},
  {id:"retreat",label:"Se replier"},
 ];
 export default function ClanWarSourceMapStudyV128({rules}:{rules:WarRulesV6}){
@@ -59,6 +60,8 @@ export default function ClanWarSourceMapStudyV128({rules}:{rules:WarRulesV6}){
        fill="none" stroke="#ffe2a7" strokeWidth="2"/>
      <rect x={map.extraction.x*n} y={map.extraction.y*n} width={n} height={n}
        fill="none" stroke="#d7d58b" strokeWidth="2"/>
+     <text x={map.observation.x*n+n/2} y={map.observation.y*n+15}
+       fill="#e3f1c6" textAnchor="middle" fontSize="14">△</text>
      <text x={map.goal.x*n+n/2} y={map.goal.y*n+15} fill="#ffe2ab"
        textAnchor="middle" fontSize="15">◎</text>
      <text x={map.extraction.x*n+n/2} y={map.extraction.y*n+15} fill="#fff2b6"
@@ -72,13 +75,14 @@ export default function ClanWarSourceMapStudyV128({rules}:{rules:WarRulesV6}){
      <text x={state.player.x*n+n/2} y={state.player.y*n+15}
        fill="#fff6d8" textAnchor="middle" fontSize="13">Y</text>
     </svg>
-    <p className={styles.legend}>Y : chasseur · R : adversaire observé · ◎ : objectif · ↥ : sortie · vert : sol · brun : obstacle · jaune : couvert · bleu : eau · rouge : lave.</p>
+    <p className={styles.legend}>Y : chasseur · R : adversaire observé · △ : observation · ◎ : objectif · ↥ : sortie · vert : sol · sombre : obstacle · jaune : couvert · bleu : eau · rouge : lave.</p>
    </div>
    <div className={styles.sidebar}>
     <h4>{map.name}</h4><p>{map.biome} · monde de la Bible <strong>{map.planetId}</strong></p>
     <p><strong>Accès :</strong> {map.sourceSituation}</p>
     <p><strong>Chemins :</strong> {map.sourceGeometry}</p>
-    <p><strong>Événement :</strong> {map.sourceEvent}</p>
+    <p><strong>Événement :</strong> {map.sourceEvent} · type {map.eventClass}</p>
+    <p><strong>Point de reconnaissance :</strong> {map.observation.x},{map.observation.y} · portes motorisées {map.poweredDoors.length}</p>
     <p><strong>Objectif :</strong> {map.sourceObjective}</p>
     <p><strong>Évacuation :</strong> {map.sourceExtraction}</p>
     <div className={styles.actions}>{ACTIONS.map(({id,label})=>
@@ -87,7 +91,7 @@ export default function ClanWarSourceMapStudyV128({rules}:{rules:WarRulesV6}){
      <button type="button" onClick={()=>choose(map.id)}>Recommencer</button>
     </div>
     <p className={styles.status} role="status">{warning||state.lastMessage}</p>
-    <p>{state.player.observed?"Accès reconnus":"Accès à observer"} · {state.objectiveDone?"Dispositif confirmé":"Dispositif non activé"} · courant {state.power?"présent":"coupé"}.</p>
+    <p>{state.player.observed?"Accès reconnus":"Accès à observer"} · {state.objectiveDone?"Dispositif confirmé":"Dispositif non activé"} · courant {state.power?"présent":"coupé"}{map.id==="W3-MAP12"?" · pression "+(state.airlockStable?"stabilisée":"à stabiliser"):""}.</p>
     {state.report&&<div className={styles.result}>
       <h5>Résultat : {state.report.outcome}</h5>
       <p>{state.report.notes}</p>
