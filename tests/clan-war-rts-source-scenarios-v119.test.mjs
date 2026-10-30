@@ -124,3 +124,31 @@ test("malformed scenario, forged cargo, impossible marker, and wrong local regio
   assert.ok(valid.active.rts.actors.some(a=>a.teamId===bearerId));
   assert.deepEqual(game.readWarOperationsV115(JSON.stringify(valid),rules),valid);
 });
+
+
+test("a lone W3-U07 can deliberately hold its real position for three alternating turns",()=>{
+  const initial=game.createWarOperationsV115(rules);
+  const guard=initial.teams.find(team=>team.unitId==="W3-U07");
+  const start=game.beginWarOperationV115(initial,"rts","W3-K02",[guard.id],rules,1000,"recon","W3-RTS02");
+  assert.equal(start.accepted,true);
+  const source=start.state;
+  const protectedActor={...source.active.rts.actors.find(actor=>actor.teamId===guard.id),x:7,y:3};
+  let simulated={...source,active:{...source.active,rts:{...source.active.rts,actors:[protectedActor]}}};
+  assert.equal(game.commandRtsV115(simulated,guard.id,7,3,rules).accepted,false,"existing move API must not silently become a hold action");
+  for(let i=1;i<=3;i++){
+    const action=game.holdWarRtsAlternatingV119(simulated,guard.id,rules);
+    assert.equal(action.accepted,true,action.message);
+    simulated=action.state;
+    if(i<3){
+      assert.ok(simulated.active);
+      assert.equal(simulated.active.rts.scripted.reliefProgress,i);
+      assert.equal(simulated.reports.length,0);
+    }
+  }
+  assert.equal(simulated.active,null);
+  assert.equal(simulated.reports.length,1);
+  assert.equal(simulated.reports[0].outcome,"victory");
+  assert.ok(simulated.reports[0].sourceIds.includes("W3-RTS02"));
+  assert.equal(game.holdWarRtsAlternatingV119(simulated,guard.id,rules).accepted,false);
+  assert.deepEqual(game.readWarOperationsV115(JSON.stringify(simulated),rules),simulated);
+});
