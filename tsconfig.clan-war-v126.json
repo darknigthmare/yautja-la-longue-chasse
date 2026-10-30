@@ -1,0 +1,23 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "incremental": false,
+    "tsBuildInfoFile": null
+  },
+  "include": [
+    "types/clan-war-v120-css.d.ts",
+    "app/game/systems/clanWarVariantAtlasV120.ts",
+    "app/game/systems/clanWarEarthV126.ts",
+    "app/game/systems/clanWarWorldClimateV126.ts",
+    "app/game/systems/clanWarEnemyProfilesV126.ts",
+    "app/game/systems/clanWarMultiplayerV126.ts",
+    "app/game/EarthPlanetMapV126.tsx",
+    "app/game/ClanWarGeoAiV126.tsx"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    ".next",
+    "outputs"
+  ]
+}

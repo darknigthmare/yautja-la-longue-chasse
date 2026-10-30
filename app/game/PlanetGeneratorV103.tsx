@@ -2,6 +2,7 @@
 
 import { useId, useMemo, useRef, useState, type ChangeEvent } from "react";
 import ClanWarAtlasV95 from "./ClanWarAtlasV95";
+import EarthPlanetMapV126 from "./EarthPlanetMapV126";
 import PlanetMaterialCanvasV101 from "./PlanetMaterialCanvasV101";
 import PlanetLayerExportV102 from "./PlanetLayerExportV102";
 import {
@@ -109,6 +110,7 @@ export default function PlanetGeneratorV103({ activePlanet, pending = false, onO
   const [seedText, setSeedText] = useState(() => String(initialRecipe.seed));
   const [planet, setPlanet] = useState(() => worldForRecipe(initialRecipe));
   const [editorEnabled, setEditorEnabled] = useState(initialRecipe.version === 103);
+  const [showEarthAtlas,setShowEarthAtlas] = useState(false);
   const [locked, setLocked] = useState<WarPlanetRecipeFieldV103[]>([]);
   const [selectedId, setSelectedId] = useState("CON-T02");
   const [targetId, setTargetId] = useState("");
@@ -243,8 +245,14 @@ export default function PlanetGeneratorV103({ activePlanet, pending = false, onO
     setMemoryOpening(null);
   }
 
+  if(showEarthAtlas)return <section className={styles.generator} data-earth-fixed-v126="true">
+    <EarthPlanetMapV126 onClose={()=>setShowEarthAtlas(false)}/>
+  </section>;
   return <section className={styles.generator} aria-labelledby={`${unique}-title`} data-testid="planet-generator-v103" data-preview-planet-code={planet.id} data-draft-modified={changed} data-recipe-version={details.recipe.version}>
     <header className={styles.header}><div><p className={styles.eyebrow}>EXPLORATION / MONDES À COMPOSER</p><h3 id={`${unique}-title`}>Générateur de mondes</h3><p>Choisissez l’échelle de la guerre, dessinez ses terres et composez chaque matière. Une graine et ses réglages retrouvent exactement le même monde.</p></div><span className={styles.badge}>Aperçu : {planet.regions.length} régions · {planet.territories.length} territoires</span></header>
+    <p className={styles.hint}><button type="button" onClick={()=>setShowEarthAtlas(true)}>
+      Ouvrir la Terre réelle (WGS84 et lieux de films)
+    </button> La Terre est un globe de référence fixe, distinct de la base « terrestre » aléatoire. Sa vue géographique ne crée pas encore de guerre V85 ni de carte de rues 1:1.</p>
     <div className={styles.workspace}>
       <div className={styles.composer}>
         {!editorEnabled ? <div className={styles.legacy} data-testid="planet-legacy-recipe-v103"><p className={styles.eyebrow}>RECETTE D’ORIGINE · V102</p><h4>Ce monde conserve son histoire</h4><p>Son code retrouve sa géographie exacte, ses textures et son front existant. Vous pouvez l’explorer, exporter sa fiche ou reprendre la guerre.</p><p>Préparer une variante ouvre les nouveaux réglages. Sa génération créera une nouvelle planète avec un nouveau code et un front distinct.</p><button type="button" className={styles.primary} onClick={prepareVariant}>Préparer une variante</button></div> : <form className={styles.recipe} onSubmit={event => { event.preventDefault(); generate(); }}>
