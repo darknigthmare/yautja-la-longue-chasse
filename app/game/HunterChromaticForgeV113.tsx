@@ -9,6 +9,7 @@ import {
   chromaticFacilityChannelsV115, resetChromaticFacilityV115,
   type ChromaticFacilityV115, type HunterChromaticsV113,
 } from "./hunterChromaticsV113";
+import { PHG_RECENT_RELEASES_V125, PHG_FERAL_CORRECTION_V125 } from "./phgRecentReleasesV125";
 import styles from "./HunterChromaticForgeV113.module.css";
 
 export default function HunterChromaticForgeV113({
@@ -47,6 +48,21 @@ export default function HunterChromaticForgeV113({
           : "Le quartier du chasseur conserve un nuancier d’entretien de ses équipements et de son apparence. Les soins complets et l’artisanat traditionnel restent disponibles à Homeworld."}</p>
       <p>Les fichiers PHG disponibles ici sont des <strong>matières 2D reconstituées</strong>. Les dégradés restent masqués par la vraie silhouette Yautja ; aucune texture extraite ni correspondance UV 1:1 officielle n’est revendiquée.</p>
     </header>
+    <details className={styles.releaseNotes}>
+      <summary>Archives PHG · mises à jour officielles 2025–2026</summary>
+      <p>Ces dates, classes et équipements sont confirmés dans les notes officielles.
+        Les matières du jeu sont des reconstructions, pas des cartes UV certifiées 1:1.</p>
+      <ul>
+        {PHG_RECENT_RELEASES_V125.map(release => <li key={release.id}>
+          <strong>{release.predator}</strong> · {release.releasedOn} · patch {release.patch}
+          {" · "}{release.featuredEquipment}{" "}
+          <a href={release.sourceUrl} target="_blank" rel="noopener noreferrer">Note officielle</a>
+        </li>)}
+      </ul>
+      <p>Feral · peau Default : modification dans le patch {PHG_FERAL_CORRECTION_V125.patch}
+        {" ("}{PHG_FERAL_CORRECTION_V125.date}{")"}. L'étude V125 et le matériau antérieur
+        sont conservés séparément ; les pixels officiels restent à vérifier.</p>
+    </details>
     <div className={styles.grid}>
       {chromaticFacilityChannelsV115(station).map(channel => {
         const activeColor = draft[channel.colorKey];
@@ -80,7 +96,14 @@ export default function HunterChromaticForgeV113({
           <select id={"chromatic-material-" + channel.id} value={draft[channel.materialKey] ?? ""}
             onChange={event => change(channel.materialKey, event.target.value || null)}>
             <option value="">Matière du rig d’origine</option>
-            {choices.map(item => <option key={item.id} value={item.id}>{item.label}{item.evidence === "provisional" ? " · provisoire" : ""}</option>)}
+            {choices.filter(item => !item.atlas).map(item =>
+              <option key={item.id} value={item.id}>{item.label}{item.evidence === "provisional" ? " · provisoire" : ""}</option>
+            )}
+            {choices.some(item => item.atlas) && <optgroup label="Études V125 — reconstructions non certifiées 1:1">
+              {choices.filter(item => item.atlas).map(item =>
+                <option key={item.id} value={item.id}>{item.label}</option>
+              )}
+            </optgroup>}
           </select>
           {selectedMaterial?.src && <div className={styles.materialPreview} data-selected-material-id={selectedMaterial.id}>
             {selectedMaterial.atlas

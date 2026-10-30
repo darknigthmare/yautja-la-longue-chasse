@@ -91,3 +91,11 @@ test("2025–2026 patch evidence is about confirmed releases, never certified UV
  assert.equal(PHG_FERAL_CORRECTION_V125.oldDriveMaterialId,"skin_classe_feral_reference_2024_avant_3_6_0");
  assert.ok(getChromaticMaterialV113("skin",PHG_FERAL_CORRECTION_V125.candidateStudyId));
 });
+
+test("V125 workshop distinguishes official release notes from provisional skin studies",()=>{
+ const ui=readFileSync(new URL("../app/game/HunterChromaticForgeV113.tsx",import.meta.url),"utf8");
+ assert.match(ui,/PHG_RECENT_RELEASES_V125\.map/);
+ assert.match(ui,/PHG_FERAL_CORRECTION_V125/);
+ assert.match(ui,/optgroup label="Études V125/);
+ assert.match(ui,/sourceUrl/);
+});

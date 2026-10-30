@@ -36,3 +36,10 @@
 
 /* V125: the preview samples a single atlas tile, never the 3×4 sheet. */
 .materialPreview .atlasSwatch { display: block; width: 70px; height: 70px; min-width: 70px; border-radius: 5px; background-repeat: no-repeat; background-color: #343936; }
+
+.releaseNotes { margin: 12px 0 18px; padding: 10px 14px; border: 1px solid #746454; border-radius: 7px; color: #e7d7c6; background: #1b201d; }
+.releaseNotes summary { cursor: pointer; font-weight: 600; }
+.releaseNotes summary:focus-visible { outline: 2px solid #f1c999; outline-offset: 4px; }
+.releaseNotes p { font-size: .82rem; line-height: 1.55; }
+.releaseNotes ul { padding-inline-start: 21px; font-size: .8rem; line-height: 1.7; }
+.releaseNotes a { color: #efc58d; text-underline-offset: 3px; }
