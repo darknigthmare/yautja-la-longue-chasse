@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { WarRulesV6 } from "./systems/clanWarBibleV6";
 import {
   WAR_OPERATIONS_STORAGE_V115, beginWarOperationV115, commandRtsV115, commandStealthV115,
@@ -88,7 +88,6 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false}:
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[active,hydrated,blocked,rules,persist]);
 
-  const chosenTeams=useMemo(()=>world.teams.filter(team=>selectedIds.includes(team.id)),[world.teams,selectedIds]);
   const requestIssue=hydrated ? warMissionEligibleV115(world,rules,targetId,selectedIds) : "Chargement de l'archive";
   const target=rules.territories.find(site=>site.id===targetId);
   const current=world.active;
