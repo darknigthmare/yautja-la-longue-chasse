@@ -1,6 +1,7 @@
 import { PHG_MATERIALS_V113, phgMaterialLabelV113 } from "./hunterMaterialsV113.ts";
 import { PHG_RECENT_CANDIDATES_V126 } from "./phgRecentMaterialsV126.ts";
 import { PHG_HISTORICAL_STUDIES_V127 } from "./phgHistoricalMaterialsV127.ts";
+import { PHG_PLATFORM_STUDIES_V128 } from "./phgPlatformStudiesV128.ts";
 import PHG_DRIVE_CATALOG_V120 from "./data/phgDriveV120Catalog.json" with { type: "json" };
 import PHG_DRIVE_INSTALLED_V120 from "./data/phgDriveV120Installed.json" with { type: "json" };
 /**
@@ -271,6 +272,7 @@ export const PHG_CHROMATIC_MATERIALS_V113: readonly ChromaticMaterialV113[] = Ob
   ...PHG_VISUAL_STUDIES_V125,
   ...PHG_RECENT_CANDIDATES_V126.filter(x => x.status === "integrated"),
   ...PHG_HISTORICAL_STUDIES_V127.filter(x => x.status === "integrated"),
+  ...PHG_PLATFORM_STUDIES_V128.filter(x => x.status === "integrated"),
 ]);
 
 export const DEFAULT_CHROMATICS_V113: Readonly<HunterChromaticsV113> = Object.freeze({
