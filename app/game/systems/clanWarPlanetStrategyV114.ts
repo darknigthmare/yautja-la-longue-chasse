@@ -1,6 +1,7 @@
 import type { WarPlanetV96 } from "./clanWarPlanetsV96";
 import type { WarPlanetProceduralV103 } from "./clanWarPlanetGeneratorV103";
 import type { WarPlanetProceduralV115 } from "./clanWarPlanetGeneratorV115";
+import type { WarPlanetProceduralV126 } from "./clanWarPlanetGeneratorV126";
 import { planetArcKilometersV115 } from "./clanWarShapeAtlasV115";
 
 export interface WarPlanetRegionStrategyV114 {
@@ -29,11 +30,11 @@ export interface WarPlanetStrategicDossierV114 {
   regions: WarPlanetRegionStrategyV114[];
 }
 
-function proceduralV103(planet: WarPlanetV96): WarPlanetProceduralV103 | WarPlanetProceduralV115 | null {
+function proceduralV103(planet: WarPlanetV96): WarPlanetProceduralV103 | WarPlanetProceduralV115 | WarPlanetProceduralV126 | null {
   const procedural = planet.procedural as unknown;
   if (!procedural || typeof procedural !== "object" || !("recipe" in procedural)) return null;
   const recipe = (procedural as { recipe?: { version?: unknown } }).recipe;
-  return recipe?.version === 103 || recipe?.version === 115 ? procedural as WarPlanetProceduralV103 | WarPlanetProceduralV115 : null;
+  return recipe?.version === 103 || recipe?.version === 115 || recipe?.version === 126 ? procedural as WarPlanetProceduralV103 | WarPlanetProceduralV115 | WarPlanetProceduralV126 : null;
 }
 
 function graphFor(planet: WarPlanetV96): Map<string, Set<string>> {
@@ -111,7 +112,7 @@ export function analyzeWarPlanetStrategyV114(planet: WarPlanetV96): WarPlanetStr
   const chokepoints = articulationPoints(graph);
   // Capture the V115 discriminant outside asynchronous/iterator callbacks.
   // A V102/V103 world keeps the historical unitless distance.
-  const planetSizeV115 = procedural?.recipe.version === 115 ? procedural.recipe.planetSize : null;
+  const planetSizeV115 = (procedural?.recipe.version === 115 || procedural?.recipe.version === 126) ? procedural.recipe.planetSize : null;
   const territoryRegion = new Map<string, string>();
   for (const region of planet.regions) for (const id of region.territoryIds) territoryRegion.set(id, region.id);
 
