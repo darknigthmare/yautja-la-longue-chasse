@@ -10,6 +10,7 @@ on:
       - 'app/game/systems/clanWarMissionTerrainV116.ts'
       - 'tests/clan-war-*v115.test.mjs'
       - 'tests/clan-war-terrain-v116.test.mjs'
+      - 'tests/clan-war-medical-v116.test.mjs'
       - '.github/workflows/clan-war-v115.yml'
   workflow_dispatch:
 
@@ -45,6 +46,7 @@ jobs:
             /tests/clan-war-tactical-runtime-v115.test.mjs
             /tests/clan-war-recruitment-v115.test.mjs
             /tests/clan-war-terrain-v116.test.mjs
+            /tests/clan-war-medical-v116.test.mjs
       - name: Node 22
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
@@ -52,6 +54,6 @@ jobs:
       - name: Install locked dependencies without lifecycle scripts
         run: npm ci --ignore-scripts --no-audit --no-fund
       - name: Execute four-mode model and cross-mode tests
-        run: node --test --test-reporter=spec tests/clan-war-*v115.test.mjs tests/clan-war-terrain-v116.test.mjs
+        run: node --test --test-reporter=spec tests/clan-war-*v115.test.mjs tests/clan-war-terrain-v116.test.mjs tests/clan-war-medical-v116.test.mjs
       - name: Lint engine and mission UI
-        run: npx --no-install eslint app/game/systems/clanWarOperationsV115.ts app/game/systems/clanWarMissionTerrainV116.ts app/game/ClanWarOperationsV115.tsx tests/clan-war-*v115.test.mjs tests/clan-war-terrain-v116.test.mjs
+        run: npx --no-install eslint app/game/systems/clanWarOperationsV115.ts app/game/systems/clanWarMissionTerrainV116.ts app/game/ClanWarOperationsV115.tsx tests/clan-war-*v115.test.mjs tests/clan-war-terrain-v116.test.mjs tests/clan-war-medical-v116.test.mjs
