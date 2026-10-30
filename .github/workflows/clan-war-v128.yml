@@ -1,0 +1,75 @@
+name: V128 W3 source maps exact grid and interactive practice
+on:
+  pull_request:
+    branches: [main, feat/v127-earth-meter-scale-encounter-director]
+    paths:
+      - 'app/game/systems/clanWarSourceMapsV128.ts'
+      - 'app/game/ClanWarSourceMapStudyV128.*'
+      - 'app/game/ClanWarBibleV6Panel.tsx'
+      - 'tests/clan-war-source-maps-v128.test.mjs'
+      - 'scripts/export-clan-war-source-maps-v128.mjs'
+      - 'tsconfig.clan-war-v128.json'
+      - '.github/workflows/clan-war-v128.yml'
+  push:
+    branches: [feat/v128-clan-source-map-runtime]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  w3-maps:
+    name: 12 W3-MAP source-size tile plans, real traversal and QA
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Sparse checkout W3 source and panel only
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /package.json
+            /package-lock.json
+            /eslint.config.mjs
+            /tsconfig.json
+            /tsconfig.clan-war-v128.json
+            /types/clan-war-v120-css.d.ts
+            /app/game/clanWarBibleV6Source.json
+            /app/game/clanWarV85Source.json
+            /app/game/systems/clanWarBibleV6.ts
+            /app/game/systems/clanWarV85Data.ts
+            /app/game/systems/clanWarSourceMapsV128.ts
+            /app/game/ClanWarSourceMapStudyV128.tsx
+            /app/game/ClanWarSourceMapStudyV128.module.css
+            /tests/clan-war-source-maps-v128.test.mjs
+            /scripts/export-clan-war-source-maps-v128.mjs
+      - name: Node.js 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with: {node-version: '22'}
+      - name: Locked dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Verify all twelve source maps and full gameplay path
+        run: node --test --test-reporter=spec tests/clan-war-source-maps-v128.test.mjs
+      - name: TypeScript check
+        run: npx --no-install tsc --noEmit --project tsconfig.clan-war-v128.json
+      - name: Strict lint
+        run: npx --no-install eslint app/game/systems/clanWarSourceMapsV128.ts app/game/ClanWarSourceMapStudyV128.tsx tests/clan-war-source-maps-v128.test.mjs scripts/export-clan-war-source-maps-v128.mjs
+      - name: Smoke build V128 React panel
+        run: |
+          node --input-type=module <<'EOF'
+          import {build} from "esbuild";
+          const result=await build({
+            stdin:{contents:"export {default} from './app/game/ClanWarSourceMapStudyV128';",resolveDir:process.cwd()},
+            platform:"browser",target:"es2022",format:"esm",bundle:true,write:false,
+            outdir:"dist/w3-map-v128",logLevel:"silent",
+          });
+          if(!result.outputFiles.some(f=>f.path.endsWith(".js")))throw Error("W3 panel did not bundle");
+          EOF
+      - name: Export all source-size map assets and audit
+        run: node scripts/export-clan-war-source-maps-v128.mjs outputs/w3-maps-v128
+      - name: Publish map scene exports
+        uses: actions/upload-artifact@v4
+        with:
+          name: yautja-w3-maps-12-v128
+          path: outputs/w3-maps-v128/
+          if-no-files-found: error
+          retention-days: 30
