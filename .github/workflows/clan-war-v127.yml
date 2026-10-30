@@ -6,6 +6,9 @@ on:
       - feat/v126-earth-geography-climate-ai-multiplayer
     paths:
       - 'app/game/systems/clanWarEarthMetricV127.ts'
+      - 'app/game/systems/clanWarEarthHydrologyV127.ts'
+      - 'app/game/data/earthRiversNaturalEarth110mV127.json'
+      - 'app/game/data/earthLakesNaturalEarth110mV127.json'
       - 'app/game/systems/clanWarEncounterDirectorV127.ts'
       - 'tests/clan-war-metric-encounters-v127.test.mjs'
       - 'tests/clan-war-multiplayer-practice-v127.test.mjs'
@@ -47,6 +50,8 @@ jobs:
             /app/game/data/clanWarHomageStealthV120.json
             /app/game/data/clanWarHomageRtsV120.json
             /app/game/data/earthLandNaturalEarth110mV126.json
+            /app/game/data/earthRiversNaturalEarth110mV127.json
+            /app/game/data/earthLakesNaturalEarth110mV127.json
             /app/game/systems/clanWarVariantAtlasV120.ts
             /app/game/systems/clanWarEarthV126.ts
             /app/game/systems/clanWarWorldClimateV126.ts
@@ -62,6 +67,7 @@ jobs:
             /app/game/EarthPlanetMapV126.tsx
             /app/game/EarthPlanetMapV126.module.css
             /app/game/systems/clanWarEarthMetricV127.ts
+            /app/game/systems/clanWarEarthHydrologyV127.ts
             /app/game/systems/clanWarEncounterDirectorV127.ts
             /tests/clan-war-metric-encounters-v127.test.mjs
             /tests/clan-war-multiplayer-practice-v127.test.mjs
@@ -76,7 +82,7 @@ jobs:
       - name: Strict TypeScript compile of new engine
         run: npx --no-install tsc --noEmit --project tsconfig.clan-war-v127.json
       - name: Lint new engine, tests and export script
-        run: npx --no-install eslint app/game/systems/clanWarEarthMetricV127.ts app/game/systems/clanWarEncounterDirectorV127.ts app/game/systems/clanWarMultiplayerPracticeV127.ts app/game/ClanWarMultiplayerPracticeV127.tsx app/game/ClanWarVariantAtlasV120.tsx tests/clan-war-metric-encounters-v127.test.mjs tests/clan-war-multiplayer-practice-v127.test.mjs scripts/export-clan-war-v127.mjs
+        run: npx --no-install eslint app/game/systems/clanWarEarthHydrologyV127.ts app/game/EarthPlanetMapV126.tsx app/game/systems/clanWarEarthMetricV127.ts app/game/systems/clanWarEncounterDirectorV127.ts app/game/systems/clanWarMultiplayerPracticeV127.ts app/game/ClanWarMultiplayerPracticeV127.tsx app/game/ClanWarVariantAtlasV120.tsx tests/clan-war-metric-encounters-v127.test.mjs tests/clan-war-multiplayer-practice-v127.test.mjs scripts/export-clan-war-v127.mjs
       - name: Generate the full review data packs
         run: node scripts/export-clan-war-v127.mjs outputs/clan-war-v127
       - name: Upload WGS84 anchors and AI phase dossiers
