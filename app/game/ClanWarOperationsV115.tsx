@@ -31,6 +31,7 @@ const formatTime = (seconds:number) => String(Math.floor(seconds / 60)).padStart
 type Props={rules:WarRulesV6;active?:boolean;persist?:boolean;initialScenarioId?:WarSourceRtsScenarioIdV119|null};
 
 export default function ClanWarOperationsV115({rules,active=true,persist=false,initialScenarioId=null}:Props) {
+  const sourcePilotSiteId=initialScenarioId==="W3-RTS03"?"W3-K07":"W3-K02";
   const [world,setWorld]=useState<WarOperationsStateV115>(()=>createWarOperationsV115(rules));
   const worldRef=useRef(world);
   const knownArchiveBytesRef=useRef<string|null>(null);
@@ -38,7 +39,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
   const [storageIssue,setStorageIssue]=useState(""),[message,setMessage]=useState("Choisissez votre théâtre, vos équipes, puis le type d'opération.");
   const [mode,setMode]=useState<WarMissionModeV115>(initialScenarioId?"rts":"assault"),[focus,setFocus]=useState<OuterFocusV115>("recon");
   const [targetId,setTargetId]=useState(initialScenarioId?
-    rules.territories.find(item=>item.id==="W3-K02")?.id??rules.territories[1]?.id??"":
+    rules.territories.find(item=>item.id===sourcePilotSiteId)?.id??rules.territories[1]?.id??"":
     rules.territories[1]?.id??"");
   const [selectedIds,setSelectedIds]=useState<string[]>([]);
   const [rtsSelectedId,setRtsSelectedId]=useState("");
@@ -76,9 +77,13 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
         const guard=activeTeams.find(team=>team.unitId==="W3-U07");
         const support=activeTeams.find(team=>team.id!==guard?.id);
         setSelectedIds([...(guard?[guard.id]:[]),...(support?[support.id]:[])]);
+      }else if(initialScenarioId==="W3-RTS03"){
+        const porter=activeTeams.find(team=>team.unitId==="W3-U19");
+        const artisans=activeTeams.find(team=>team.unitId==="W3-U20");
+        setSelectedIds([...(porter?[porter.id]:[]),...(artisans?[artisans.id]:[])]);
       }else setSelectedIds(activeTeams.slice(0,2).map(team=>team.id));
       setTargetId(initialScenarioId?
-        rules.territories.find(item=>item.id==="W3-K02")?.id??rules.territories[1]?.id??"":
+        rules.territories.find(item=>item.id===sourcePilotSiteId)?.id??rules.territories[1]?.id??"":
         rules.territories[1]?.id??"");
       setHydrated(true);setNow(Date.now());
     },0);
