@@ -179,8 +179,9 @@ export interface WarRtsMissionV129 {
  id:WarRtsMissionIdV129;name:string;mapId:string;planetId:string;
  rank:string;sourceObjective:string;sourceConditions:string;
  sourceEnemyPlan:string;sourceAlternatives:string;sourceVictory:string;
- sourceReentry:string;sourceCells:string[];
- sourceRow:number;plannedCost:number;plannedDuration:number;
+ sourceReentry:string;sourceCampaignLink:string;sourceProvenance:string;
+ sourceRewardXpDesign:number;sourceCells:string[];
+ sourceRow:number;pcMaximum:number;initialRav:number;
  tasks:WarRtsTaskV129[];
  escortKind:WarRtsEscortKindV129|null;
  suggestedV6Units:string[];
@@ -215,6 +216,12 @@ export function buildWarRtsMissionV129(id:string,rules:WarRulesV6):WarRtsMission
  const entry=sourceRow(rules,id);
  if(!entry)throw new Error("Mission absente de la Bible V6.");
  const mapId=field(entry,"C");
+ // The original V6 workbook pairs consecutive mission IDs per map.
+ // A modified row cannot silently redirect a film/planet mission to another planet.
+ const sourceNumber=Number(id.slice(-2));
+ const expectedMap="W3-MAP"+String(Math.ceil(sourceNumber/2)).padStart(2,"0");
+ if(mapId!==expectedMap)
+  throw new Error("Carte W3 erronée : "+id+" doit référencer "+expectedMap+", pas "+mapId+".");
  const map=createWarMapPracticeV128(mapId,rules).map;
  const spec=RECIPES[id];
  const locations=[map.landmarks[0].at,map.landmarks[1].at,map.goal];
@@ -229,8 +236,10 @@ export function buildWarRtsMissionV129(id:string,rules:WarRulesV6):WarRtsMission
   sourceConditions:field(entry,"I"),sourceEnemyPlan:field(entry,"J"),
   sourceAlternatives:field(entry,"K"),sourceVictory:field(entry,"L"),
   sourceReentry:field(entry,"M"),
-  plannedCost:Number(field(entry,"G")),plannedDuration:Number(field(entry,"H")),
-  sourceCells:entry.fields.filter(f=>["C","D","E","F","G","H","I","J","K","L","M"].includes(f.column))
+  sourceCampaignLink:field(entry,"N"),sourceProvenance:field(entry,"P"),
+  sourceRewardXpDesign:Number(field(entry,"O")),
+  pcMaximum:Number(field(entry,"G")),initialRav:Number(field(entry,"H")),
+  sourceCells:entry.fields.filter(f=>["C","D","E","F","G","H","I","J","K","L","M","N","O","P"].includes(f.column))
    .map(f=>f.cell),
   sourceRow:entry.row,tasks,escortKind:spec.escortKind??null,
   suggestedV6Units:[...spec.suggestedV6Units],
@@ -409,7 +418,12 @@ export function auditWarRtsSourceMissionsV129(rules:WarRulesV6){
    const base=createWarMapPracticeV128(plan.mapId,rules);
    if(base.map.planetId!==plan.planetId)issues.push(id+": planet mismatch");
    if(plan.tasks.length!==3)issues.push(id+": incomplete source task chain");
-   if(plan.sourceCells.length<10)issues.push(id+": missing workbook provenance");
+   if(plan.sourceCells.length!==14)issues.push(id+": incomplete 14-column workbook provenance");
+   if(!plan.sourceCampaignLink||!plan.sourceProvenance)issues.push(id+": missing campaign/provenance");
+   if(!Number.isFinite(plan.pcMaximum)||!Number.isFinite(plan.initialRav))
+    issues.push(id+": missing source budget");
+   if(!Number.isFinite(plan.sourceRewardXpDesign))
+    issues.push(id+": missing authored XP value");
    if(!plan.sourceVictory||!plan.sourceObjective)issues.push(id+": missing script source");
    if(plan.tasks.some(t=>!warMapFindPathV128(base.map,base.map.start,t.location)))
     issues.push(id+": inaccessible physical task");
