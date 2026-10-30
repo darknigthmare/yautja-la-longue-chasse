@@ -24,6 +24,8 @@ const missions=api.CLAN_WAR_COHERENT_VARIANTS_V126.map(v=>({
  climate:v.environment.climate,biome:v.environment.biome,
  terrain:v.environment.terrain,liquid:v.environment.liquid,
  weather:v.environment.weather,originalWeather:v.environment.originalWeather,
+ siteKind:v.environment.siteKind,effectiveHazard:v.environment.effectiveHazard,
+ originalHazard:v.environment.originalHazard,effectiveTwist:v.environment.effectiveTwist,
  weatherAdjusted:v.environment.weatherAdjusted,allowsNaturalSnow:v.environment.allowsNaturalSnow,
  light:v.environment.light,hazards:v.environment.hazards,
  objective:v.original.operation.primaryObjective,
@@ -40,7 +42,7 @@ const presets=api.CLAN_WAR_COHERENT_VARIANTS_V126.flatMap(v=>api.allWarAiPresets
 const columns=[
  "id","mode","family","status","originalTitle","worldId","worldKind","siteName","regionName",
  "lat","lon","accuracy","mapAvailability","earthSiteId","climate","biome","terrain","liquid",
- "weather","originalWeather","weatherAdjusted","allowsNaturalSnow","light","hazards","objective",
+ "weather","originalWeather","siteKind","effectiveHazard","originalHazard","effectiveTwist","weatherAdjusted","allowsNaturalSnow","light","hazards","objective",
  "secondary","outcomeReceipt","recommendedUnits","sourceContinuity","sourceReference",
  "loreStatus","originalGeo","environmentWarnings",
 ];

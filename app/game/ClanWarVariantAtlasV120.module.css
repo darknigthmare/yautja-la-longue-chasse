@@ -34,3 +34,6 @@
 .draw small{width:100%;font-size:.73rem;color:#c0d1c0}
 .draw button{font-size:.77rem;min-height:40px}
 @media(max-width:650px){.draw button{flex:1}.draw span{width:100%}}
+
+.geoNotice{background:#233a2a;border:1px solid #a8b68b;border-inline-start:4px solid #e2d092;padding:11px 14px;margin:12px 0 17px;color:#e6ebdc}
+.geoNotice strong{color:#f6e0a4}.geoNotice p{font-size:.77rem;margin:6px 0}
