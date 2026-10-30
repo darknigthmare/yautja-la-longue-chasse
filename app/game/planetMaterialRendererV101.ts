@@ -6,6 +6,7 @@ import {
 import { loadPlanetDetailedMaterialV103, planetDetailedMaterialKeyV103, planetDetailedMaterialStatusV103 } from "./planetDetailMaterialsV103";
 import { planetMaterialSourceV103, planetRegionalLayoutV103 } from "./systems/planetMaterialProfilesV103";
 import { createPlanetTextureCanvasV115 } from "./systems/clanWarTextureLibraryV115";
+import { createPlanetTextureCanvasV125 } from "./systems/clanWarTextureLibraryV125";
 import {
   DEFAULT_PLANET_MATERIAL_SETTINGS_V101, PLANET_MATERIAL_LAYERS_V101, planetMaterialRecipeV101,
   unwrapPlanetPolygonV101, wrapPlanetLongitudeV101, planetMaterialSourceV101, type PlanetMaterialLayerV101, type PlanetMaterialSettingsV101, type PlanetMaterialViewV101,
@@ -47,6 +48,17 @@ function loadMaterial(url: string, size: number): Promise<HTMLCanvasElement> {
   if (url.startsWith("yautja-v115:")) {
     try {
       const canvas = createPlanetTextureCanvasV115(url, size);
+      sourceCache.set(key, canvas); trim(sourceCache, SOURCE_LIMIT);
+      return Promise.resolve(canvas);
+    } catch (error) { return Promise.reject(error); }
+  }
+  if (url.startsWith("yautja-v125:")) {
+    try {
+      const match = /^yautja-v125:((?:land|liquid)-[a-z0-9-]+):([0-9a-z]{1,7})$/.exec(url);
+      if (!match) throw new RangeError("URI V125 invalide.");
+      const seed = parseInt(match[2], 36);
+      if (!Number.isSafeInteger(seed) || seed > 0xffffffff) throw new RangeError("Graine V125 invalide.");
+      const canvas = createPlanetTextureCanvasV125(match[1], "albedo", size, seed);
       sourceCache.set(key, canvas); trim(sourceCache, SOURCE_LIMIT);
       return Promise.resolve(canvas);
     } catch (error) { return Promise.reject(error); }
@@ -109,7 +121,7 @@ export function createPlanetLandMaskV101(planet: WarPlanetV96, width = 1024): HT
     }
   }
   const procedural = planet.procedural;
-  if (procedural?.recipe.version === 103 && "hydrology" in procedural) {
+  if ((procedural?.recipe.version === 103 || procedural?.recipe.version === 126) && "hydrology" in procedural) {
     context.fillStyle = "#000";
     for (const feature of procedural.hydrology.features) {
       const points = unwrapPlanetPolygonV101(feature.points);
