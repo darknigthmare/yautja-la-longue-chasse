@@ -13,7 +13,6 @@ const rules=war.DEFAULT_WAR_RULES_V6;
 const mapIds=Array.from({length:12},(_,i)=>"W3-MAP"+String(i+1).padStart(2,"0"));
 const officialDimensions=[[32,24],[30,26],[36,28],[28,28],[34,30],[32,24],
  [36,24],[30,30],[32,28],[28,26],[34,32],[38,22]];
-const tile=(m,p)=>war.warMapTileV128(m,p.x,p.y);
 const walk=(m,p)=>war.warMapWalkableV128(m,p);
 const command=(state,dir)=>war.commandWarMapPracticeV128(state,dir);
 const direction=(a,b)=>{
