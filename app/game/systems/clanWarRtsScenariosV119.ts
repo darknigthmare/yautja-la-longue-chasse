@@ -218,6 +218,30 @@ export function resolveWarRtsScriptedTickV119(
  * this is not a full stealth/fog-of-war memory simulation.
  * No hidden V85 roster, faction diplomacy, or canonical film identity read.
  */
+
+/** The W3-MAP02 steam burst is announced by the previous tick's phase.
+ * It temporarily hides a central conduit lane but is not a solid wall.
+ * Neither side gets an omniscient shot through the plume. */
+export function warRtsSourceSightV120(
+  objective:WarRtsScriptedObjectiveV119|undefined,
+  from:{x:number;y:number},to:{x:number;y:number},
+  terrain:WarMissionTerrainV116,
+):boolean {
+  if(!warTerrainLineOfSightV116(terrain,from,to))return false;
+  if(objective?.kind!=="circuit-defense"||objective.pressurePhase!==2)return true;
+  let x=from.x,y=from.y;
+  const dx=Math.abs(to.x-from.x),dy=Math.abs(to.y-from.y);
+  const stepX=from.x<to.x?1:-1,stepY=from.y<to.y?1:-1;
+  let err=dx-dy;
+  while(x!==to.x||y!==to.y){
+    const double=2*err;
+    if(double>-dy){err-=dy;x+=stepX;}
+    if(double<dx){err+=dx;y+=stepY;}
+    if((x!==from.x||y!==from.y)&&(x!==to.x||y!==to.y)&&x>=4&&x<=6&&y>=1&&y<=3)return false;
+  }
+  return true;
+}
+
 export function warRtsRivalTargetV120(
   objective:WarRtsScriptedObjectiveV119|undefined,
   rival:WarRtsActorV115,
@@ -228,7 +252,7 @@ export function warRtsRivalTargetV120(
   if(!living.length)return null;
   const byDistance=(a:WarRtsActorV115,b:WarRtsActorV115)=>
     DIST(rival,a)-DIST(rival,b)||a.id.localeCompare(b.id);
-  const visible=living.filter(actor=>warTerrainLineOfSightV116(terrain,rival,actor)).sort(byDistance);
+  const visible=living.filter(actor=>warRtsSourceSightV120(objective,rival,actor,terrain)).sort(byDistance);
   const priority=objective?.kind==="cargo-escort"?
     (actor:WarRtsActorV115)=>actor.teamId===objective.cargo.carrierTeamId&&PORTER_UNITS.has(actor.unitId):
     objective?.kind==="guard-relief"?
