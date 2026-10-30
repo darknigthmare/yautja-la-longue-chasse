@@ -11,6 +11,7 @@ import {
 } from "./hunterChromaticsV113";
 import { PHG_RECENT_RELEASES_V125, PHG_FERAL_CORRECTION_V125 } from "./phgRecentReleasesV125";
 import { PHG_RECENT_CANDIDATES_V126, PHG_RECENT_UPDATES_V126 } from "./phgRecentMaterialsV126";
+import { PHG_HISTORICAL_UNLOCKS_V127, PHG_MENU_SCREENSHOTS_V127 } from "./phgHistoricalMaterialsV127";
 import styles from "./HunterChromaticForgeV113.module.css";
 
 export default function HunterChromaticForgeV113({
@@ -67,6 +68,21 @@ export default function HunterChromaticForgeV113({
         {" ("}{PHG_FERAL_CORRECTION_V125.date}{")"}. L’étude V125 et le matériau antérieur
         sont conservés séparément ; les pixels officiels restent à vérifier.</p>
     </details>
+    <details className={styles.releaseNotes}>
+      <summary>Archives PHG 2020–2022 · Aurora, Terror, Slice, Virus</summary>
+      <p>Les niveaux ci-dessous sont ceux de PHG d’origine et ne changent pas le rang de notre chasseur.
+        Les études restent des matières 2D non certifiées 1:1.</p>
+      <ul>{PHG_HISTORICAL_UNLOCKS_V127.map(item => <li key={item.id}>
+        <strong>{item.label}</strong> · patch {item.patch}
+        {item.level === null ? "" : " · niveau PHG " + item.level}{" "}
+        <a href={item.sourceUrl} target="_blank" rel="noopener noreferrer">Note officielle</a>
+      </li>)}</ul>
+      <p>Captures d’écran où le nom de la variante est visible :</p>
+      <ul>{PHG_MENU_SCREENSHOTS_V127.map(item => <li key={item.name}>
+        <a href={item.url} target="_blank" rel="noopener noreferrer">{item.name}</a>
+        {" · UV et pixels non certifiés"}
+      </li>)}</ul>
+    </details>
     <div className={styles.grid}>
       {chromaticFacilityChannelsV115(station).map(channel => {
         const activeColor = draft[channel.colorKey];
@@ -104,7 +120,7 @@ export default function HunterChromaticForgeV113({
             {choices.filter(item => !item.atlas).map(item =>
               <option key={item.id} value={item.id}>{item.label}{item.evidence === "provisional" ? " · provisoire" : ""}</option>
             )}
-            {choices.some(item => item.atlas) && <optgroup label="Études V125–V126 — reconstructions non certifiées 1:1">
+            {choices.some(item => item.atlas) && <optgroup label="Études V125–V127 — reconstructions non certifiées 1:1">
               {choices.filter(item => item.atlas).map(item =>
                 <option key={item.id} value={item.id}>{item.label}</option>
               )}

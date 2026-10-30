@@ -33,7 +33,8 @@ test("every activated material resolves to committed PNG or V125/V126 atlas WebP
       material.src?.startsWith("/game/assets/v113/phg/") ||
       material.src?.startsWith("/game/imports/v85/drive-latest/") ||
       material.src === "/game/assets/v125/phg-studies/atlas.webp" ||
-      material.src === "/game/assets/v126/phg-recent/atlas.webp",
+      material.src === "/game/assets/v126/phg-recent/atlas.webp" ||
+      material.src === "/game/assets/v127/phg-historical/atlas.webp",
       "registered only in project-owned native material roots"
     );
     const filename = path.join(process.cwd(),"public", material.src.slice(1));

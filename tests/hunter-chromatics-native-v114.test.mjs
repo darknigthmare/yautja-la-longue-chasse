@@ -20,16 +20,19 @@ test("V114 reuses 44 tracked PNGs without copying the old V85 artwork", () => {
 
 test("39 historical materials, three V113 IDs and V125/V126 studies coexist", () => {
   const legacy = PHG_CHROMATIC_MATERIALS_V113.filter(item =>
-    !item.id.startsWith("phg-study-v125-") && !item.id.startsWith("phg-study-v126-"));
+    !item.id.startsWith("phg-study-v125-") && !item.id.startsWith("phg-study-v126-") &&
+    !item.id.startsWith("phg-study-v127-"));
   const studies = PHG_CHROMATIC_MATERIALS_V113.filter(item => item.id.startsWith("phg-study-v125-"));
   const recent = PHG_CHROMATIC_MATERIALS_V113.filter(item => item.id.startsWith("phg-study-v126-"));
+  const historical = PHG_CHROMATIC_MATERIALS_V113.filter(item => item.id.startsWith("phg-study-v127-"));
   assert.equal(legacy.length, 42);
   assert.equal(studies.length, 12);
   assert.equal(recent.length, 4);
-  assert.equal(PHG_CHROMATIC_MATERIALS_V113.length, 58);
+  assert.equal(historical.length, 4);
+  assert.equal(PHG_CHROMATIC_MATERIALS_V113.length, 62);
   const ids = PHG_CHROMATIC_MATERIALS_V113.map(item => item.id);
   assert.equal(new Set(ids).size, ids.length);
-  assert.equal(PHG_CHROMATIC_MATERIALS_V113.filter(item => item.status === "integrated").length, 58);
+  assert.equal(PHG_CHROMATIC_MATERIALS_V113.filter(item => item.status === "integrated").length, 62);
   assert.equal(getChromaticMaterialV113("skin", "phg-shatter-demon-study")?.src,
     "/game/assets/v113/phg/skin_shatter_demon_provisoire.png");
   assert.ok(getChromaticMaterialV113("outfit", "phg-fine-net"));
