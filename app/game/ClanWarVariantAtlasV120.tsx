@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import {
-  clanWarVariantCountsV120, searchClanWarVariantsV120,
+  clanWarVariantCountsV120, searchClanWarVariantsV120, drawUnseenClanWarVariantV120,
   type ClanWarVariantFamilyV120, type ClanWarVariantModeV120,
 } from "./systems/clanWarVariantAtlasV120";
 import styles from "./ClanWarVariantAtlasV120.module.css";
@@ -45,12 +45,21 @@ export default function ClanWarVariantAtlasV120({onOpenPrototype}:{onOpenPrototy
   const [query,setQuery]=useState("");
   const [page,setPage]=useState(0);
   const [picked,setPicked]=useState("");
+  const [drawnIds,setDrawnIds]=useState<string[]>([]);
   const counts=useMemo(()=>clanWarVariantCountsV120(),[]);
   const entries=useMemo(()=>searchClanWarVariantsV120(query,mode,family),[query,mode,family]);
+  const unseenCount=entries.filter(item=>!drawnIds.includes(item.id)).length;
   const maxPage=Math.max(0,Math.ceil(entries.length/pageSize)-1);
   const currentPage=Math.min(page,maxPage);
   const visible=entries.slice(currentPage*pageSize,(currentPage+1)*pageSize);
   const chosen=entries.find(row=>row.id===picked)??visible[0]??null;
+  function drawNewVariant(){
+    const result=drawUnseenClanWarVariantV120(Date.now(),drawnIds,mode,family,query);
+    if(!result)return;
+    setDrawnIds(previous=>[...previous,result.id]);
+    setPicked(result.id);
+    setPage(Math.floor(entries.findIndex(item=>item.id===result.id)/pageSize));
+  }
   function downloadCSV() {
     const header=CSV_COLUMNS.map(([,label])=>csvCell(label)).join(";");
     const lines=entries.map(row=>CSV_COLUMNS.map(([key])=>csvCell(fieldValue(row,key))).join(";"));
@@ -107,6 +116,12 @@ export default function ClanWarVariantAtlasV120({onOpenPrototype}:{onOpenPrototy
     </div>
     <div className={styles.meta}><span><strong>{entries.length}</strong> mission(s) correspondant aux filtres.</span>
       <span>Page {currentPage+1} / {maxPage+1}</span>
+    </div>
+    <div className={styles.draw}>
+      <span>{unseenCount} variantes non encore tirées parmi les filtres actuels.</span>
+      <button type="button" disabled={unseenCount===0} onClick={drawNewVariant}>Tirer une mission sans répétition</button>
+      <button type="button" disabled={!drawnIds.length} onClick={()=>setDrawnIds([])}>Réinitialiser les tirages</button>
+      <small>Le tirage ne répète pas une fiche pendant cette ouverture du catalogue ; il ne lance aucun combat et ne modifie pas la campagne.</small>
     </div>
     <div className={styles.columns}>
       <div className={styles.results} role="group" aria-label="Liste des variantes">
