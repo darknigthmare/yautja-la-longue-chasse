@@ -64,6 +64,8 @@ export default function ClanWarRtsMissionStudyV129({rules}:{rules:WarRulesV6}){
     <span><strong>{mission.pcMaximum}</strong> PC max source</span>
     <span><strong>{mission.initialRav}</strong> RAV de départ source</span>
     <span><strong>{mission.mapId}</strong> carte W3</span>
+    <span><strong>{mission.opponentTeams}</strong> détachements IA</span>
+    <span><strong>{mission.opponentCombatants}</strong> combattants potentiels</span>
     <span><strong>{state.base.turn}</strong> tours</span>
     <span><strong>{player.hp}</strong> PV d'essai</span>
   </div>
@@ -113,6 +115,7 @@ export default function ClanWarRtsMissionStudyV129({rules}:{rules:WarRulesV6}){
     <p className={styles.eyebrow}>{mission.id} · {map.planetName} · {map.worldStratum}</p>
     <h4>{mission.name}</h4>
     <p><strong>Objectif exact de la Bible :</strong> {mission.sourceObjective}</p>
+    <p><strong>Plan de force d'essai :</strong> {mission.opponentTeams} équipes rivales initialement placées sur la carte (budget {mission.opponentBudgetPc} PC d'étude). Les groupes qui n'ont pas été vus ne sont pas identifiés dans le champ de bataille.</p>
     <ol className={styles.tasks}>
      {mission.tasks.map((task,i)=><li key={task.id} data-completed={state.completedTaskIds.includes(task.id)}
         data-active={state.completedTaskIds.length===i}>
@@ -147,6 +150,7 @@ export default function ClanWarRtsMissionStudyV129({rules}:{rules:WarRulesV6}){
      <p><strong>Échec et reprise :</strong> {mission.sourceReentry}</p>
      <p><strong>Accès en campagne :</strong> {mission.sourceCampaignLink}</p>
      <p><strong>Rôles conseillés pour futur RTS :</strong> {mission.suggestedV6Units.join(", ")}</p>
+     <p><strong>Composition rivale proposée pour cette simulation :</strong> {mission.opponentUnitIds.join(", ")}, basée sur les types W3-U et le plan source, non sur une garnison canonique.</p>
      <p><strong>XP prévue dans le classeur :</strong> {mission.sourceRewardXpDesign}; aucune XP n'est accordée par cette étude.</p>
      <p><strong>Cellules :</strong> {mission.sourceCells.join(", ")}</p>
      <p><strong>Origine de la fiche :</strong> {mission.sourceProvenance}</p>
