@@ -145,10 +145,10 @@ test("multiplayer lobby keeps the same world, prevents duplicate unit ownership 
  assert.deepEqual(observer.players.find(x=>x.id==="OTHER").unitInstanceIds,[]);
  const cmd={clientCommandId:"CMD-1",actorId:"CAPTAIN",sequence:1,expectedRevision:started.room.revision,
   tick:0,kind:"move",unitInstanceId:"UNIT-01",targetX:4,targetY:3};
- const resolved=m.acceptWarMultiplayerCommandV126(started.room,cmd);
+ const resolved=m.acceptWarMultiplayerCommandV126(started.room,cmd,"CAPTAIN");
  assert.equal(resolved.accepted,true);
- assert.equal(m.acceptWarMultiplayerCommandV126(resolved.room,cmd).accepted,false);
- assert.equal(m.acceptWarMultiplayerCommandV126(started.room,{...cmd,actorId:"OTHER"}).accepted,false);
+ assert.equal(m.acceptWarMultiplayerCommandV126(resolved.room,cmd,"CAPTAIN").accepted,false);
+ assert.equal(m.acceptWarMultiplayerCommandV126(started.room,{...cmd,actorId:"OTHER"},"CAPTAIN").accepted,false);
  assert.ok(resolved.room.receipts.includes("CMD-1"));
  assert.equal(resolved.room.campaignWrite,"forbidden");
 });
