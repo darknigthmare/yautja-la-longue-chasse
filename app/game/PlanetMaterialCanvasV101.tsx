@@ -35,7 +35,7 @@ export default function PlanetMaterialCanvasV101({
   const [visible, setVisible] = useState(false);
   const [revision, setRevision] = useState(0);
   const [status, setStatus] = useState("waiting");
-  const { atmosphere, clouds, weather, lighting, aurora = true } = settings;
+  const { atmosphere, clouds, weather, lighting, aurora } = settings;
 
   useEffect(() => {
     const canvas = canvasRef.current;
