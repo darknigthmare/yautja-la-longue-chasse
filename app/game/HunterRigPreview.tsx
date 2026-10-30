@@ -4,6 +4,7 @@
 
 import type { CSSProperties } from "react";
 import ChromaticSurfaceV113 from "./ChromaticSurfaceV113";
+import { maskChromaticsForAppearanceV131 } from "./hunterChromaticsV113";
 import { HUNTER_SKIN_FILTERS_V114, HUNTER_DREAD_FILTERS_V114, HUNTER_ARMOR_FILTERS_V114 } from "./hunterPaletteFiltersV114";
 
 import type {
@@ -643,9 +644,8 @@ export function HunterRigPreview({
         </span>
       ))}
 
-      {maskWorn &&
-        appearance.biomaskId &&
-        registeredLayer(
+      {maskWorn && appearance.biomaskId && <>
+        {registeredLayer(
           hunterMaskRigPath(appearance.biomaskId),
           boneMatrix("head"),
           70,
@@ -654,6 +654,14 @@ export function HunterRigPreview({
           undefined,
           hunterMaskRigPlacement(appearance.biomaskId),
         )}
+        <span data-rig-biomask-pigment-v131 aria-hidden="true"
+          style={{ ...fullCanvasImage, zIndex: 71, transform: cssMatrix(boneMatrix("head")) }}>
+          <ChromaticSurfaceV113
+            appearance={{ chromaticsV113: maskChromaticsForAppearanceV131(appearance) }}
+            channel="biomask" maskPath={hunterMaskRigPath(appearance.biomaskId)}
+            placement={hunterMaskRigPlacement(appearance.biomaskId)} style={fullCanvasImage} />
+        </span>
+      </>}
 
       {showsCaster && (
         <>

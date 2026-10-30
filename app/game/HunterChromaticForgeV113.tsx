@@ -15,6 +15,8 @@ import { PHG_HISTORICAL_UNLOCKS_V127, PHG_MENU_SCREENSHOTS_V127 } from "./phgHis
 import { PHG_OGRE_MASK_CORRECTION_V128 } from "./phgPlatformStudiesV128";
 import { PHG_V129_OGRE_MASK,PHG_V129_CLASSES } from "./phgPatchStudiesV129";
 import { phgMaterialReferenceV130 } from "./phgReferenceCatalogV130";
+import { PHG_BIOMASK_REFERENCES_V131, PHG_OGRE_BIOMASK_ID_V131,
+  PHG_OGRE_BIOMASK_SOURCE_V131, alphaMaskEligibleV131 } from "./phgBiomaskTintsV131";
 import styles from "./HunterChromaticForgeV113.module.css";
 
 export default function HunterChromaticForgeV113({
@@ -38,6 +40,19 @@ export default function HunterChromaticForgeV113({
     setDraft(current => normalizeHunterChromaticsV113({ ...current, [field]: value }));
     setMessage("");
   };
+  const changeMask = (field: "maskHex" | "maskMaterialId", value: string | null) => {
+    setDraft(current => normalizeHunterChromaticsV113({
+      ...current, [field]: value,
+      // A saved Alpha palette will be named "custom". Keep its class lineage.
+      maskOriginId: appearance.biomaskId === "feral"
+        && (appearance.presetId === "alpha" || current.maskOriginId === "alpha")
+          ? "alpha" : null,
+    }));
+    setMessage("");
+  };
+  const alphaMask = alphaMaskEligibleV131({ ...appearance, chromaticsV113: draft });
+  const ogreStudy = PHG_CHROMATIC_MATERIALS_V113.find(item =>
+    item.id === PHG_OGRE_BIOMASK_ID_V131 && item.channel === "biomask");
   const dirty = JSON.stringify(draft) !== JSON.stringify(normalizeHunterChromaticsV113(appearance.chromaticsV113));
 
   return <section className={styles.forge} aria-label="Ateliers chromatiques du Yautja" data-hunter-chromatics-v113>
@@ -155,6 +170,48 @@ export default function HunterChromaticForgeV113({
           {pending > 0 && <small>{pending} matière(s) PHG vérifiée(s) sur Drive, non installée(s) dans ce jeu. L’import local V120/V126 vérifie les octets avant activation ; la fidélité UV 1:1 reste non certifiée.</small>}
         </fieldset>;
       })}
+      {station !== "lab" && appearance.biomaskId && <fieldset
+        className={styles.station} disabled={disabled} data-phg-biomask-workshop-v131>
+        <legend>Atelier des biomasks · patines de coque</legend>
+        <p>La coque portée est indépendante de la peau, des dreads et de l'armure.
+          Le motif Ogre de PHG (patch 2.19) appartient à l'Alpha Predator ;
+          sa matière V129 est une étude non certifiée 1:1.</p>
+        <div className={styles.colorRow}>
+          <label htmlFor="chromatic-mask-color-v131">Pigment libre du masque</label>
+          <input id="chromatic-mask-color-v131" type="color"
+            value={draft.maskHex ?? "#92908c"}
+            onChange={event => changeMask("maskHex", event.target.value)}
+            aria-label="Teinte du biomask portée uniquement sur la coque" />
+          <button type="button" onClick={() => changeMask("maskHex", null)}>
+            Teinte naturelle
+          </button>
+        </div>
+        <label className={styles.materialLabel} htmlFor="chromatic-mask-material-v131">
+          Finition de coque PHG
+        </label>
+        <select id="chromatic-mask-material-v131" value={alphaMask ? draft.maskMaterialId ?? "" : ""}
+          onChange={event => changeMask("maskMaterialId", event.target.value || null)}>
+          <option value="">Coque native du masque</option>
+          {alphaMask && ogreStudy && <option value={ogreStudy.id}>{ogreStudy.label} · provisoire</option>}
+        </select>
+        {alphaMask && ogreStudy && draft.maskMaterialId === ogreStudy.id && <div
+          className={styles.materialPreview} data-selected-material-id={ogreStudy.id}>
+          <span aria-hidden="true" className={styles.atlasSwatch} style={{
+            backgroundImage: 'url("' + ogreStudy.src + '")',
+            ...chromaticAtlasBackgroundV125(ogreStudy.atlas!, false),
+          }} />
+          <span><strong>{ogreStudy.label}</strong><small>Calque de coque seulement, pas une peinture d'armure.</small>
+            <a href={PHG_OGRE_BIOMASK_SOURCE_V131} target="_blank" rel="noopener noreferrer">
+              Note officielle 2.19
+            </a>
+          </span>
+        </div>}
+        {!alphaMask && <small>Ogre réservé au biomask Alpha PHG. Les autres masques
+          peuvent recevoir un pigment libre du clan, sans usurper le nom Ogre.</small>}
+        <small>{PHG_BIOMASK_REFERENCES_V131.filter(item => !item.available).length}
+          autres finitions nommées dans le patch 2.19 : pas encore de référence
+          graphique exacte pour les proposer en tant que matières.</small>
+      </fieldset>}
     </div>
     <div className={styles.actions}>
       {dirty && <p className={styles.draftHint}>Prévisualisation en direct sur le rig. Les modifications ne sont pas enregistrées avant validation.</p>}

@@ -97,7 +97,7 @@ import {
 import { hunterBodyPartColorV62, hunterBodyPartClipV62, type HunterLayerPlacement } from "./hunterHeadArtV62";
 import { HUNTER_DREAD_SOURCE_ROOT as HUNTER_DREAD_ROOT, solveHunterDreadsV63, stepHunterDreadsV63 } from "./hunterDreadsV63";
 import { chromaticCanvasSourceV113 } from "./hunterChromaticCanvasV113";
-import type { ChromaticChannelV113 } from "./hunterChromaticsV113";
+import { maskChromaticsForAppearanceV131, type ChromaticChannelV113 } from "./hunterChromaticsV113";
 import {
   ageTracks,
   GUARDIAN_ADAPTATION,
@@ -3886,7 +3886,14 @@ function drawHunterLayered(
       assets.hunterMask,
       frame,
       "head",
-      { placement: hunterMaskRigPlacement(appearance.biomaskId) },
+      {
+        placement: hunterMaskRigPlacement(appearance.biomaskId),
+        chromatics: {
+          appearance: { ...appearance,
+            chromaticsV113: maskChromaticsForAppearanceV131(appearance) },
+          channel: "biomask",
+        },
+      },
     );
   }
 
