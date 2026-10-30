@@ -155,7 +155,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false}:
             const engaged=world.assignments[team.id],chosen=selectedIds.includes(team.id);
             const fit=team.members.filter(member=>member.status==="fit").length;
             return <label key={team.id} className={styles.team} data-engaged={Boolean(engaged)}>
-              <span><input type="checkbox" checked={chosen} disabled={Boolean(engaged)||fit===0} onChange={event=>setSelectedIds(list=>event.target.checked?[...list,team.id]:list.filter(id=>id!==team.id))}/>
+              <span><input type="checkbox" checked={chosen} disabled={(!chosen&&Boolean(engaged))||(!chosen&&fit===0)} onChange={event=>setSelectedIds(list=>event.target.checked?[...list,team.id]:list.filter(id=>id!==team.id))}/>
                 <strong>{unit?.name??team.unitId}</strong><small>{team.id} · {unit?.commandPoints} PC · {unit?.upkeepRav} RAV</small></span>
               <small>{fit}/{team.members.length} aptes · fatigue {team.fatigue} · {engaged?"engagé "+engaged:"disponible"}</small>
             </label>;
@@ -186,7 +186,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false}:
             <path d="M-8 13 L-12 29 M8 13 L12 29 M-15 -5 L-26 2 M15 -5 L26 2" stroke="#eee1bd" strokeWidth="4"/>
             <title>{actor.side==="ally"?teamsById(actor.teamId??""):"Opposition d'exercice"} · vie {Math.max(0,actor.hp)}</title>
           </g>)}
-          <text x="14" y="24" fill="#e9e2b8" fontSize="19">HALTE</text><text x="887" y="24" fill="#e9c9b4" fontSize="19">REL AIS</text>
+          <text x="14" y="24" fill="#e9e2b8" fontSize="19">HALTE</text><text x="887" y="24" fill="#e9c9b4" fontSize="19">RELAIS</text>
         </svg>
         <div className={styles.cards}>{current.teamIds.map(id=>{
           const team=world.teams.find(item=>item.id===id)!;
