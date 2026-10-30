@@ -23,25 +23,28 @@ function pilot(id,style){
  let state=war.createWarMapPracticeV128(id,rules),actions=0;
  const map=state.map;
  const visited=new Set(),checks=[];
+ let detourCleared=style==="shortest";
  for(let i=0;i<220&&!state.report;i++){
   const goal=state.objectiveDone?map.extraction:map.goal;
-  const target=style==="shortest"?goal:
-   !state.objectiveDone?
-    map.mandatoryPaths[style==="upper-route"?0:1][Math.floor(
-      map.mandatoryPaths[style==="upper-route"?0:1].length*.83)]:goal;
+  const route=map.mandatoryPaths[style==="lower-route"?1:0];
+  const target=route[Math.floor(route.length*.83)];
+  if(!detourCleared&&distance(state.player,target)<=2)detourCleared=true;
   const canSee=state.enemies.filter(e=>e.hp>0&&distance(e,state.player)<=3&&
     war.warMapLineOfSightV128(map,state.player,e));
   let choice;
   if(!state.player.observed&&(distance(state.player,map.observation)<=2||
     (distance(state.player,map.goal)<=6&&war.warMapLineOfSightV128(map,state.player,map.goal)))){
    choice="observe";
-  }else if(canSee.length)choice="attack";
+  }else if(canSee.length){
+   const gust=map.id==="W3-MAP08"&&[3,4].includes(state.turn%8);
+   const inActualRange=canSee.some(enemy=>distance(enemy,state.player)<=(gust?1:3));
+   choice=inActualRange?"attack":"wait";
+  }
   else if(!state.objectiveDone&&distance(state.player,map.goal)<=1&&state.player.observed){
    choice=id==="W3-MAP12"&&!state.airlockStable?"stabilize":"interact";
   }else{
    const occupied=state.enemies.filter(e=>e.hp>0).map(e=>({x:e.x,y:e.y}));
-   const aim=style==="shortest"||state.objectiveDone?goal:
-      distance(state.player,target)<=2?goal:target;
+   const aim=detourCleared||state.objectiveDone?goal:target;
    let path=war.warMapFindPathV128(map,state.player,aim,occupied);
    if(!path||path.length<2)path=war.warMapFindPathV128(map,state.player,goal,occupied);
    if(path&&path.length>=2)choice=direction(path[0],path[1]);
