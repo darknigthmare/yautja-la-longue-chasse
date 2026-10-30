@@ -187,13 +187,29 @@ export function validWarRtsScriptedObjectiveV119(
   if(!value||typeof value!=="object"||Array.isArray(value))return false;
   const v=value as Partial<WarRtsScriptedObjectiveV119>;
   if(!v.scenarioId||warRtsScriptedEligibilityV119(v.scenarioId,rules,targetId,unitIds)!==null||
-    v.sourceMapId!=="W3-MAP01")return false;
+    v.sourceMapId!==(v.scenarioId==="W3-RTS03"?"W3-MAP02":"W3-MAP01"))return false;
   const terrain=warMissionTerrainV116(targetId,rules);
   if(v.scenarioId==="W3-RTS02"){
     const stage=v as Partial<Extract<WarRtsScriptedObjectiveV119,{kind:"guard-relief"}>>;
     return stage.kind==="guard-relief"&&stage.requiredTurns===3&&
       !!stage.guardPoint&&stage.guardPoint.x===7&&stage.guardPoint.y===3&&
       Number.isInteger(stage.reliefProgress)&&(stage.reliefProgress as number)>=0&&(stage.reliefProgress as number)<=3;
+  }
+  if(v.scenarioId==="W3-RTS03"){
+    const stage=v as Partial<Extract<WarRtsScriptedObjectiveV119,{kind:"filter-repair"}>>;
+    if(stage.kind!=="filter-repair"||!stage.filterSite||
+      stage.filterSite.x!==7||stage.filterSite.y!==3||
+      stage.requiredTurns!==2||!Number.isInteger(stage.workProgress)||
+      (stage.workProgress as number)<0||(stage.workProgress as number)>2||
+      typeof stage.delivered!=="boolean"||!stage.cargo)return false;
+    const cargo=stage.cargo;
+    if(cargo.id!==operationId+"-cargo"||!Number.isInteger(cargo.x)||!Number.isInteger(cargo.y)||
+      warTerrainCellBlockedV116(terrain,cargo.x,cargo.y))return false;
+    if(stage.delivered)return cargo.carrierTeamId===null&&cargo.x===7&&cargo.y===3;
+    return cargo.carrierTeamId===null||
+      (typeof cargo.carrierTeamId==="string"&&actorTeamIds.includes(cargo.carrierTeamId)&&
+        actors.some(actor=>actor.side==="ally"&&actor.teamId===cargo.carrierTeamId&&actor.unitId==="W3-U19"&&
+          actor.hp>0&&actor.x===cargo.x&&actor.y===cargo.y));
   }
   const stage=v as Partial<Extract<WarRtsScriptedObjectiveV119,{kind:"cargo-escort"}>>;
   if(stage.kind!=="cargo-escort"||typeof stage.scouted!=="boolean"||
