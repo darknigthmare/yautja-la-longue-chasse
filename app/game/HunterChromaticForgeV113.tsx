@@ -173,8 +173,8 @@ export default function HunterChromaticForgeV113({
       {station !== "lab" && appearance.biomaskId && <fieldset
         className={styles.station} disabled={disabled} data-phg-biomask-workshop-v131>
         <legend>Atelier des biomasks · patines de coque</legend>
-        <p>La coque portée est indépendante de la peau, des dreads et de l'armure.
-          Le motif Ogre de PHG (patch 2.19) appartient à l'Alpha Predator ;
+        <p>La coque portée est indépendante de la peau, des dreads et de l’armure.
+          Le motif Ogre de PHG (patch 2.19) appartient à l’Alpha Predator ;
           sa matière V129 est une étude non certifiée 1:1.</p>
         <div className={styles.colorRow}>
           <label htmlFor="chromatic-mask-color-v131">Pigment libre du masque</label>
@@ -200,7 +200,7 @@ export default function HunterChromaticForgeV113({
             backgroundImage: 'url("' + ogreStudy.src + '")',
             ...chromaticAtlasBackgroundV125(ogreStudy.atlas!, false),
           }} />
-          <span><strong>{ogreStudy.label}</strong><small>Calque de coque seulement, pas une peinture d'armure.</small>
+          <span><strong>{ogreStudy.label}</strong><small>Calque de coque seulement, pas une peinture d’armure.</small>
             <a href={PHG_OGRE_BIOMASK_SOURCE_V131} target="_blank" rel="noopener noreferrer">
               Note officielle 2.19
             </a>
