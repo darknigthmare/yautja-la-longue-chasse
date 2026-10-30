@@ -3,22 +3,22 @@ import type { WarRtsActorV115 } from "./clanWarOperationsV115";
 import { warMissionTerrainV116, warTerrainCellBlockedV116, warTerrainLineOfSightV116, type WarMissionTerrainV116 } from "./clanWarMissionTerrainV116";
 
 /**
- * W3-RTS01/02: two SMALL functional exercises from authored W3-MAP01 briefs.
+ * W3-RTS01/02/03: three SMALL objective exercises from authored W3-MAP01/02 briefs.
  * The existing battlefield is 9 x 6, not the 32 x 24 full authored scene.
- * The other 22 RTS sources are still dossiers, not pretend playable missions.
+ * The other 21 RTS sources are still dossiers, not pretend playable missions.
  */
-export type WarSourceRtsScenarioIdV119 = "W3-RTS01" | "W3-RTS02";
+export type WarSourceRtsScenarioIdV119 = "W3-RTS01" | "W3-RTS02" | "W3-RTS03";
 export interface WarSourceRtsScenarioDefinitionV119 {
   id: WarSourceRtsScenarioIdV119;
   title: string;
-  sourceMapId: "W3-MAP01";
+  sourceMapId: "W3-MAP01" | "W3-MAP02";
   sourceCells: string[];
   situation: string;
   tactics: string;
   enemyPlan: string;
   completion: string;
-  supportedRegionId: "W3-KR01";
-  objectiveKind: "cargo-escort" | "guard-relief";
+  supportedRegionId: "W3-KR01" | "W3-KR02";
+  objectiveKind: "cargo-escort" | "guard-relief" | "filter-repair";
   playability: "objective-exercise";
 }
 export type WarRtsScriptedObjectiveV119 =
@@ -26,7 +26,10 @@ export type WarRtsScriptedObjectiveV119 =
      scouted:boolean; cargo:{id:string; carrierTeamId:string|null; x:number; y:number};
      exit:{x:7;y:4} }
  | { scenarioId:"W3-RTS02"; kind:"guard-relief"; sourceMapId:"W3-MAP01";
-     reliefProgress:number; requiredTurns:3; guardPoint:{x:7;y:3} };
+     reliefProgress:number; requiredTurns:3; guardPoint:{x:7;y:3} }
+ | { scenarioId:"W3-RTS03"; kind:"filter-repair"; sourceMapId:"W3-MAP02";
+     cargo:{id:string; carrierTeamId:string|null; x:number; y:number};
+     filterSite:{x:7;y:3}; delivered:boolean; workProgress:number; requiredTurns:2 };
 
 export interface WarRtsScriptedResultV119 {
   objective: WarRtsScriptedObjectiveV119;
@@ -39,19 +42,20 @@ const GUARD_UNIT="W3-U07";
 const DIST=(a:{x:number;y:number},c:{x:number;y:number})=>Math.abs(a.x-c.x)+Math.abs(a.y-c.y);
 
 export function warSourceRtsScenarioV119(id:string,rules:WarRulesV6): WarSourceRtsScenarioDefinitionV119|null {
-  if(id!=="W3-RTS01"&&id!=="W3-RTS02")return null;
+  if(id!=="W3-RTS01"&&id!=="W3-RTS02"&&id!=="W3-RTS03")return null;
   const entry=rules.entries.find(item=>item.sheet==="Scénarios RTS"&&item.id===id);
   if(!entry)return null;
   const v=(column:string)=>String(entry.fields.find(field=>field.column===column)?.value??"").trim();
-  if(v("C")!=="W3-MAP01" || !rules.entries.some(item=>item.sheet==="Cartes des escarmouches"&&item.id==="W3-MAP01"))
+  const mapId=id==="W3-RTS03"?"W3-MAP02":"W3-MAP01";
+  if(v("C")!==mapId || !rules.entries.some(item=>item.sheet==="Cartes des escarmouches"&&item.id===mapId))
     return null;
   return {
-    id,title:String(entry.title),sourceMapId:"W3-MAP01",
+    id,title:String(entry.title),sourceMapId:mapId,
     sourceCells:["C","D","E","F","G","H","I","J","K","L","M","N","O"]
       .map(column=>entry.fields.find(field=>field.column===column)?.cell).filter((cell):cell is string=>!!cell),
     situation:v("E"),tactics:v("I"),enemyPlan:v("J"),completion:v("L"),
-    supportedRegionId:"W3-KR01",
-    objectiveKind:id==="W3-RTS01"?"cargo-escort":"guard-relief",
+    supportedRegionId:id==="W3-RTS03"?"W3-KR02":"W3-KR01",
+    objectiveKind:id==="W3-RTS01"?"cargo-escort":id==="W3-RTS02"?"guard-relief":"filter-repair",
     playability:"objective-exercise",
   };
 }
@@ -63,11 +67,13 @@ export function warRtsScriptedEligibilityV119(
   if(!brief)return "Scénario W3 inconnu ou cellule de carte source incompatible.";
   const territory=rules.territories.find(item=>item.id===targetId);
   if(!territory||territory.region!==brief.supportedRegionId)
-    return "Cette reconstitution W3-MAP01 nécessite un site de la région W3-KR01.";
+    return "Cette reconstitution "+brief.sourceMapId+" nécessite un site de la région "+brief.supportedRegionId+".";
   if(brief.id==="W3-RTS01"&&(!unitIds.some(unit=>PORTER_UNITS.has(unit))||!unitIds.some(unit=>SCOUT_UNITS.has(unit))))
     return "L'escorte W3-RTS01 exige un véritable porteur W3-U17/U19 et un éclaireur W3-U01/U02/U05/U06.";
   if(brief.id==="W3-RTS02"&&!unitIds.includes(GUARD_UNIT))
     return "La relève W3-RTS02 exige une équipe W3-U07 réellement présente pour garder le sommet.";
+  if(brief.id==="W3-RTS03"&&(!unitIds.includes("W3-U19")||!unitIds.includes("W3-U20")))
+    return "W3-RTS03 exige un récupérateur de charges W3-U19 et de vrais artisans W3-U20, recrutés et présents.";
   return null;
 }
 export function createWarRtsScriptedObjectiveV119(
@@ -77,6 +83,13 @@ export function createWarRtsScriptedObjectiveV119(
     scenarioId:id,kind:"guard-relief",sourceMapId:"W3-MAP01",
     reliefProgress:0,requiredTurns:3,guardPoint:{x:7,y:3},
   };
+  if(id==="W3-RTS03"){
+    const porter=actors.find(actor=>actor.side==="ally"&&actor.teamId&&actor.unitId==="W3-U19");
+    if(!porter)return null;
+    return {scenarioId:id,kind:"filter-repair",sourceMapId:"W3-MAP02",
+      cargo:{id:operationId+"-cargo",carrierTeamId:porter.teamId,x:porter.x,y:porter.y},
+      filterSite:{x:7,y:3},delivered:false,workProgress:0,requiredTurns:2};
+  }
   const porter=actors.find(actor=>actor.side==="ally"&&actor.teamId&&PORTER_UNITS.has(actor.unitId));
   if(!porter)return null;
   return {
