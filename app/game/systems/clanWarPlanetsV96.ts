@@ -3,6 +3,7 @@ import { WAR_TERRITORIES_V85, type WarTerritoryDefinitionV85 } from "./clanWarV8
 import { coastGeographyV97, type WarLandmassV97 } from "./clanWarCoastlinesV97";
 import type { WarPlanetProceduralV102 } from "./clanWarPlanetGeneratorV102";
 import type { WarPlanetProceduralV103 } from "./clanWarPlanetGeneratorV103";
+import type { WarPlanetProceduralV115 } from "./clanWarPlanetGeneratorV115";
 import { resolveProceduralWarPlanetV103 } from "./clanWarProceduralV103";
 
 export type WarPlanetSurfaceKindV96 = "water" | "acid" | "ice" | "sand" | "lava" | "brine" | "radioactive" | "crystal" | "spores" | "mist";
@@ -30,7 +31,7 @@ export interface WarPlanetV96 {
   territories: WarAtlasTerritoryV95[];
   landmasses: WarLandmassV97[];
   definitions: WarTerritoryDefinitionV85[];
-  procedural?: WarPlanetProceduralV102 | WarPlanetProceduralV103;
+  procedural?: WarPlanetProceduralV102 | WarPlanetProceduralV103 | WarPlanetProceduralV115;
 }
 
 type Layout = "meridians" | "basins" | "plates" | "belts";

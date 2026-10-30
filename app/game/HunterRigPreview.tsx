@@ -4,6 +4,7 @@
 
 import type { CSSProperties } from "react";
 import { phgMaterialForV113 } from "./hunterMaterialsV113";
+import { HUNTER_SKIN_FILTERS_V114, HUNTER_DREAD_FILTERS_V114, HUNTER_ARMOR_FILTERS_V114 } from "./hunterPaletteFiltersV114";
 
 import type {
   ArmorId,
@@ -70,37 +71,7 @@ export interface HunterRigPreviewProps {
   debugBones?: boolean;
 }
 
-const SKIN_FILTER: Record<HunterAppearance["skinId"], string> = {
-  "ochre-mottle": "none",
-  "ashen-mottle":
-    "grayscale(.42) sepia(.12) hue-rotate(155deg) brightness(.96)",
-  "dark-mottle": "saturate(.78) brightness(.72) contrast(1.12)",
-  "moss-mottle": "sepia(.42) hue-rotate(50deg) saturate(.76) brightness(.92)",
-  "copper-mottle": "sepia(.65) hue-rotate(328deg) saturate(1.18)",
-  "sand-mottle": "sepia(.26) saturate(.72) brightness(1.12)",
-  "storm-mottle": "grayscale(.46) hue-rotate(152deg) saturate(.85)",
-  "ivory-mottle": "grayscale(.5) brightness(1.21) contrast(.89)",
-};
 
-const DREAD_FILTER: Record<HunterAppearance["dreadTintId"], string> = {
-  obsidian: "saturate(.72) brightness(.68) contrast(1.22)",
-  umber: "sepia(.54) saturate(.9) brightness(.76)",
-  ashen: "grayscale(.82) brightness(1.05) contrast(.94)",
-  copper: "sepia(.7) hue-rotate(330deg) saturate(1.25)",
-  bone: "grayscale(.45) sepia(.16) brightness(1.32)",
-  moss: "sepia(.55) hue-rotate(52deg) saturate(.8) brightness(.86)",
-  "blue-black": "sepia(.25) hue-rotate(173deg) saturate(.75) brightness(.64)",
-};
-
-const ARMOR_FILTER: Record<HunterAppearance["armorTintId"], string> = {
-  gunmetal: "brightness(1)",
-  bronze: "sepia(.48) saturate(1.22) hue-rotate(346deg) brightness(1.02)",
-  obsidian: "saturate(.68) brightness(.58) contrast(1.2)",
-  bone: "sepia(.36) saturate(.6) brightness(1.18)",
-  jade: "sepia(.45) hue-rotate(75deg) saturate(.85)",
-  rust: "sepia(.85) hue-rotate(320deg) saturate(1.18)",
-  crimson: "sepia(.75) hue-rotate(297deg) saturate(1.3) brightness(.83)",
-};
 
 const LASER_COLORS: Readonly<Record<LaserColorId, { solid: string; fade: string; shadow: string }>> = {
   crimson: { solid: "rgb(255 48 42)", fade: "rgb(255 48 42 / .06)", shadow: "rgb(255 48 42 / .82)" },
@@ -462,7 +433,7 @@ export function HunterRigPreview({
   const skinMaterial = phgMaterialForV113("skin", appearance.skinMaterialId);
   const dreadMaterial = phgMaterialForV113("dread", appearance.dreadMaterialId);
   const outfitMaterial = phgMaterialForV113("outfit", appearance.outfitMaterialId);
-  const armorFilter = `${ARMOR_FILTER[appearance.armorTintId]} drop-shadow(0 3px 3px rgb(0 0 0 / .82))`;
+  const armorFilter = `${HUNTER_ARMOR_FILTERS_V114[appearance.armorTintId]} drop-shadow(0 3px 3px rgb(0 0 0 / .82))`;
   const netOpacity =
     appearance.armorStyleId === "feral"
       ? 0.28
@@ -589,7 +560,7 @@ export function HunterRigPreview({
               style={
                 {
                   ...fullCanvasImage,
-                  filter: DREAD_FILTER[appearance.dreadTintId],
+                  filter: HUNTER_DREAD_FILTERS_V114[appearance.dreadTintId],
                 } as CSSProperties
               }
             />
@@ -630,7 +601,7 @@ export function HunterRigPreview({
         const z = 20 + index * 2;
         return [
           registeredLayer(hunterBodyPartPath(appearance.bodyMorphId, partId, appearance.headStyleId), matrix, z,
-            `body-${partId}`, hunterBodyPartColorV62(appearance.bodyMorphId, partId, SKIN_FILTER[appearance.skinId]), undefined,
+            `body-${partId}`, hunterBodyPartColorV62(appearance.bodyMorphId, partId, HUNTER_SKIN_FILTERS_V114[appearance.skinId]), undefined,
             hunterBodyPartPlacement(appearance.bodyMorphId, partId, appearance.headStyleId), hunterBodyPartClipCssV62(appearance.bodyMorphId, partId)),
           ...(skinMaterial ? [registeredMaterialLayerV113(hunterBodyPartPath(appearance.bodyMorphId, partId, appearance.headStyleId), skinMaterial.src, matrix, z, `skin-material-${partId}`, hunterBodyPartPlacement(appearance.bodyMorphId, partId, appearance.headStyleId), hunterBodyPartClipCssV62(appearance.bodyMorphId, partId))] : []),
           ...(hunterBodyPartHasNet(appearance.bodyMorphId, partId)
@@ -646,7 +617,7 @@ export function HunterRigPreview({
                     ...fullCanvasImage,
                     zIndex: z + 1,
                     opacity: netOpacity,
-                    filter: hunterBodyPartColorV62(appearance.bodyMorphId, partId, SKIN_FILTER[appearance.skinId]),
+                    filter: hunterBodyPartColorV62(appearance.bodyMorphId, partId, HUNTER_SKIN_FILTERS_V114[appearance.skinId]),
                     clipPath: hunterBodyPartClipCssV62(appearance.bodyMorphId, partId),
                     transform: cssMatrix(matrix),
                   }}

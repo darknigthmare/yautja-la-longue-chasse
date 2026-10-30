@@ -132,7 +132,7 @@ export default function ClanWarAtlasV95({ simulation, selectedTerritoryId, targe
   const [showIntelligence, setShowIntelligence] = useState(false);
   const [materialReady, setMaterialReady] = useState(false);
   const [mapColors, setMapColors] = useState<"terrain" | "control">("terrain");
-  const [materialSettings, setMaterialSettings] = useState({ ...DEFAULT_PLANET_MATERIAL_SETTINGS_V101 });
+  const [materialSettings, setMaterialSettings] = useState({ ...DEFAULT_PLANET_MATERIAL_SETTINGS_V101, aurora: true });
   const [regionFilter, setRegionFilter] = useState("");
   const [announcement, setAnnouncement] = useState("");
   const [hoveredId, setHoveredId] = useState<string | null>(null);
@@ -373,7 +373,8 @@ export default function ClanWarAtlasV95({ simulation, selectedTerritoryId, targe
         <fieldset className={styles.appearanceControls} disabled={!materialReady}><legend>Affichage planétaire</legend>
           <label><input type="checkbox" checked={materialSettings.atmosphere} onChange={event => setMaterialSettings(value => ({ ...value, atmosphere: event.target.checked }))}/>Atmosphère</label>
           <label><input type="checkbox" checked={materialSettings.clouds} onChange={event => setMaterialSettings(value => ({ ...value, clouds: event.target.checked }))}/>Nuages</label>
-          <label><input type="checkbox" checked={materialSettings.weather} onChange={event => setMaterialSettings(value => ({ ...value, weather: event.target.checked }))}/>Brumes et aurores</label>
+          <label><input type="checkbox" checked={materialSettings.weather} onChange={event => setMaterialSettings(value => ({ ...value, weather: event.target.checked }))}/>Brumes et météo</label>
+          <label><input type="checkbox" checked={materialSettings.aurora} onChange={event => setMaterialSettings(value => ({ ...value, aurora: event.target.checked }))}/>Aurores</label>
           <label><input type="checkbox" checked={materialSettings.lighting} onChange={event => setMaterialSettings(value => ({ ...value, lighting: event.target.checked }))}/>Éclairage</label>
         </fieldset>
         <p className={styles.mapNote}>Les couleurs, motifs et symboles indiquent le contrôle. Routes claires : voisins du départ ; tirets clairs : traversées balisées. Pointillés ambre : ordres réservés. Le fond texturé est non jouable.{hydrology.length > 0 && ` ${hydrology.length} bassins et chenaux utilisent la même matière que la surface entre les terres.`}{territories.length > 48 && " Sur ce grand front, les repères montrent la sélection et ses voisins. Filtrez une région ou survolez une zone pour afficher les autres repères."}</p>
