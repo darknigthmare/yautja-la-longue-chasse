@@ -228,3 +228,41 @@ test("W3-RTS03 cannot finish by wiping enemies or by forging instant repair in l
   assert.equal(game.readWarOperationsV115(JSON.stringify(fakeDelivery),rules),null);
   assert.equal(game.warMissionTerrainV116(target,rules).regionId,"W3-KR02");
 });
+
+
+test("W3 defenders prioritize visible objectives without selecting a hidden preferred target",()=>{
+  const terrain=game.warMissionTerrainV116("W3-K02",rules);
+  const rival={id:"rival-1",teamId:null,unitId:"W3-U01",side:"rival",x:7,y:1,hp:20};
+  const scout={id:"ally-1",teamId:"scout",unitId:"W3-U01",side:"ally",x:7,y:2,hp:20};
+  const porter={id:"ally-2",teamId:"porter",unitId:"W3-U19",side:"ally",x:5,y:1,hp:20};
+  const guard={id:"ally-3",teamId:"guard",unitId:"W3-U07",side:"ally",x:7,y:3,hp:20};
+  const escort={scenarioId:"W3-RTS01",kind:"cargo-escort",sourceMapId:"W3-MAP01",
+    scouted:false,cargo:{id:"W115-OPS-0001-cargo",carrierTeamId:"porter",x:5,y:1},exit:{x:7,y:4}};
+  const relief={scenarioId:"W3-RTS02",kind:"guard-relief",sourceMapId:"W3-MAP01",
+    reliefProgress:0,requiredTurns:3,guardPoint:{x:7,y:3}};
+  assert.equal(game.warRtsRivalTargetV120(escort,rival,[scout,porter],terrain)?.id,porter.id);
+  assert.equal(game.warRtsRivalTargetV120(relief,rival,[scout,guard],terrain)?.id,guard.id);
+  assert.equal(game.warRtsRivalTargetV120(undefined,rival,[scout,porter],terrain)?.id,scout.id,
+    "free RTS preserves nearest visible target rather than inventing a clan bias");
+  const side={...rival,x:1,y:2};
+  const hiddenPorter={...porter,x:5,y:2};
+  const localScout={...scout,x:1,y:3};
+  assert.equal(game.warTerrainLineOfSightV116(terrain,side,hiddenPorter),false);
+  assert.equal(game.warRtsRivalTargetV120(escort,side,[hiddenPorter,localScout],terrain)?.id,localScout.id);
+  assert.equal(game.warRtsRivalTargetV120(escort,side,[],terrain),null);
+});
+
+test("W3-RTS03 switches defender priority from the regulator porter to repair artisans only after delivery",()=>{
+  const {state,porterId,artisansId,target}=setUpRepair();
+  const terrain=game.warMissionTerrainV116(target,rules);
+  const rival={id:"rival-1",teamId:null,unitId:"W3-U01",side:"rival",x:7,y:1,hp:20};
+  const porter={id:"porter",teamId:porterId,unitId:"W3-U19",side:"ally",x:7,y:3,hp:20};
+  const artisans={id:"artisans",teamId:artisansId,unitId:"W3-U20",side:"ally",x:7,y:2,hp:20};
+  const script=state.active.rts.scripted;
+  assert.equal(script.kind,"filter-repair");
+  assert.equal(game.warRtsRivalTargetV120(script,rival,[porter,artisans],terrain)?.id,porter.id,
+    "the visible regulator is guarded before delivery");
+  assert.equal(game.warRtsRivalTargetV120({...script,delivered:true},rival,[porter,artisans],terrain)?.id,artisans.id,
+    "workers on the circuit become the local threat only after delivery");
+  assert.equal(game.warRtsRivalTargetV120(script,rival,[{...porter,hp:0},artisans],terrain)?.id,artisans.id);
+});
