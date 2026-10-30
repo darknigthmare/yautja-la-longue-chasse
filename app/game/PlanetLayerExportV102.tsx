@@ -79,8 +79,22 @@ export default function PlanetLayerExportV102({ planet }: { planet: WarPlanetV96
   const [supplementalChannel, setSupplementalChannel] = useState<PlanetTextureChannelV125>("albedo");
   const selectedSupplementalMaterial = findPlanetTextureV125(supplementalMaterialId)!;
   const pending = useRef<AbortController | null>(null);
+  const texturePreviewRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => () => pending.current?.abort(), []);
+  useEffect(() => {
+    const canvas = texturePreviewRef.current;
+    if (!canvas) return;
+    const context = canvas.getContext("2d");
+    if (!context) return;
+    try {
+      const sample = createPlanetTextureCanvasV125(supplementalMaterialId, supplementalChannel, 160, planet.seed);
+      context.clearRect(0, 0, canvas.width, canvas.height);
+      context.drawImage(sample, 0, 0, canvas.width, canvas.height);
+    } catch {
+      context.clearRect(0, 0, canvas.width, canvas.height);
+    }
+  }, [supplementalMaterialId, supplementalChannel, planet.seed]);
   const inland = planetInlandFeaturesV124(planet);
   const availableLayers = (Object.keys(layerNames) as ExportLayer[])
     .filter(value => value !== "aurora" || recipe.auroraOpacity > 0)
@@ -229,7 +243,12 @@ export default function PlanetLayerExportV102({ planet }: { planet: WarPlanetV96
         </label>
         <button type="button" onClick={() => void exportSupplementalMaterial()} disabled={busy}>Télécharger cette matière PNG</button>
       </div>
-      <p>{selectedSupplementalMaterial.description} · motif : {selectedSupplementalMaterial.pattern} · rugosité {selectedSupplementalMaterial.roughness.toLocaleString("fr-FR")} · émission {selectedSupplementalMaterial.emission.toLocaleString("fr-FR")}.</p>
+      <div className={styles.texturePreviewPanel}>
+        <canvas ref={texturePreviewRef} width={160} height={160}
+          data-testid="planet-texture-preview-v125" role="img"
+          aria-label={`Aperçu de ${selectedSupplementalMaterial.name}, canal ${supplementalChannel}`}/>
+        <p>{selectedSupplementalMaterial.description} · motif : {selectedSupplementalMaterial.pattern} · rugosité {selectedSupplementalMaterial.roughness.toLocaleString("fr-FR")} · émission {selectedSupplementalMaterial.emission.toLocaleString("fr-FR")}.</p>
+      </div>
     </fieldset>
     <p className={styles.status} role="status" aria-live="polite">{message || "Les masques régionaux utilisent R=indice+1 et A=255 sur terre seulement. L'atlas régional exporte de véritables tuiles de matière ; les bassins et chenaux restent séparés."}</p>
   </details>;
