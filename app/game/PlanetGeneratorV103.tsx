@@ -21,6 +21,7 @@ import { WAR_BIOME_LABELS_V96 } from "./systems/clanWarPlanetLabelsV102";
 import type { WarPlanetV96 } from "./systems/clanWarPlanetsV96";
 import { createWarSimulationV85 } from "./systems/clanWarV85";
 import { analyzeWarPlanetStrategyV114 } from "./systems/clanWarPlanetStrategyV114";
+import { describeWarPlanetMaterialsV114 } from "./systems/clanWarPlanetMaterialCodexV114";
 import { rememberGeneratedWorldV103, useGeneratedWarCatalogV103 } from "./useGeneratedWarCatalogV103";
 import { PLANET_GENERATOR_CONTROLS_V103, PLANET_GENERATOR_SECTIONS_V103, type PlanetGeneratorSelectFieldV103 } from "./planetGeneratorControlsV103";
 import styles from "./PlanetGeneratorV103.module.css";
@@ -54,6 +55,7 @@ function downloadJson(planet: GeneratedWarPlanetAnyV103) {
     name: planet.name, description: planet.description, environment: details.environment,
     landmasses: details.landmasses, regions: details.regions, traits: details.traits,
     strategicDossier: analyzeWarPlanetStrategyV114(planet),
+    materialDossier: describeWarPlanetMaterialsV114(planet),
     ...("hydrology" in details ? { hydrology: {
       coveredFraction: details.hydrology.coveredFraction,
       features: details.hydrology.features.map(({ id, kind, name, description, regionIds }) => ({ id, kind, name, description, regionIds })),
@@ -135,6 +137,7 @@ export default function PlanetGeneratorV103({ activePlanet, pending = false, onO
   const regionId = planet.territories.find(item => item.id === selected.id)?.regionId;
   const details = planet.procedural;
   const strategic = useMemo(() => analyzeWarPlanetStrategyV114(planet), [planet]);
+  const materialDossier = useMemo(() => describeWarPlanetMaterialsV114(planet), [planet]);
   let changed = editorEnabled;
   try { changed = editorEnabled && encodeWarPlanetRecipeCodeV103({ ...draft, seed: numericSeed(seedText) }) !== planet.id; } catch { /* Invalid edits leave the last valid preview visible. */ }
 
@@ -312,6 +315,20 @@ export default function PlanetGeneratorV103({ activePlanet, pending = false, onO
       <section aria-label="Continents et îles"><h4>Continents et îles</h4><div className={styles.landmasses}>{details.landmasses.map(landmass => <article key={landmass.landmassId}><span>{landmass.kind === "island" ? "Île" : "Continent"}</span><h5>{landmass.name}</h5><p>{landmass.description}</p></article>)}</div></section>
       {"hydrology" in details && details.hydrology.features.length > 0 && <section aria-label="Bassins et cours intérieurs"><h4>Bassins et cours intérieurs</h4><div className={styles.landmasses}>{details.hydrology.features.map(feature => <article key={feature.id}><span>{feature.kind === "lake" ? "Bassin" : "Cours"}</span><h5>{feature.name}</h5><p>{feature.description}</p></article>)}</div></section>}
       <section aria-label="Lecture stratégique du monde" data-testid="planet-strategic-dossier-v114"><h4>Lecture stratégique</h4><p className={styles.hint}>Analyse dérivée uniquement de la carte publique : routes, régions, sites et revenus. Aucun stock ou effectif ennemi caché n’est consulté.</p><div className={styles.traits}><article><h5>Échelle du front</h5><p>{strategic.scale} · {strategic.topology} · {strategic.territoryCount} territoires / {strategic.regionCount} régions.</p></article><article><h5>Axes principaux</h5><p>Bases séparées par {strategic.headquartersDistance} liaisons. Corridor public : {strategic.headquartersPath.join(" → ") || "aucun chemin"}.</p></article><article><h5>Passages critiques</h5><p>{strategic.chokepointTerritoryIds.length ? strategic.chokepointTerritoryIds.join(" · ") : "Aucun point d’articulation unique"} · {strategic.crossingCount} traversée{strategic.crossingCount > 1 ? "s" : ""} balisée{strategic.crossingCount > 1 ? "s" : ""} de milieux entre terres.</p></article></div><div className={styles.regions}>{strategic.regions.map(region => { const first = planet.regions.find(item => item.id === region.regionId)?.territoryIds[0]; return <article key={region.regionId}><p className={styles.regionKind}>{region.territoryCount} territoires · {region.borderLinks} accès interrégion · {region.crossingLinks} traversée{region.crossingLinks > 1 ? "s" : ""}</p><h5>{region.name}</h5><p>Voisines : {region.neighboringRegionIds.join(" · ") || "aucune"}. Revenus de base : S {region.income.s} · M {region.income.m} · I {region.income.i}.</p><dl><div><dt>Points d’étranglement</dt><dd>{region.chokepointTerritoryIds.join(" · ") || "aucun"}</dd></div><div><dt>Base présente</dt><dd>{region.headquarters.length ? region.headquarters.join(" · ") : "non"}</dd></div></dl>{first && <button type="button" onClick={() => { setSelectedId(first); setTargetId(""); setAtlasFocusRevision(value => value + 1); document.getElementById(`${unique}-atlas`)?.scrollIntoView({ block: "start" }); }}>Voir cette région sur l’atlas</button>}</article>; })}</div></section>
+      <section aria-label="Matériaux et milieux planétaires" data-testid="planet-material-codex-v114">
+        <h4>Géologie, sols et « mers »</h4>
+        <p className={styles.hint}>{materialDossier.rule}</p>
+        <div className={styles.traits}><article><h5>{materialDossier.surface.title}</h5>
+          <p>État : {materialDossier.surface.state} · matière : {materialDossier.surface.substrate}</p>
+          <p>Motifs : {materialDossier.surface.structure}. {materialDossier.surface.peculiarity}</p>
+          <p className={styles.regionKind}>Texture : {materialDossier.surface.sourceTextureId}</p></article></div>
+        <div className={styles.regions}>{materialDossier.regions.map(region => <article key={region.regionId}>
+          <p className={styles.regionKind}>{region.regionName} · {region.sourceTextureId}</p>
+          <h5>{region.title}</h5>
+          <p>Substrat : {region.substrate}. Motifs : {region.structure}.</p>
+          <p>{region.peculiarity}</p>
+        </article>)}</div>
+      </section>
       <section aria-label="Régions et milieux"><h4>Régions et milieux</h4><p className={styles.hint}>Sélectionnez un territoire sur l’atlas pour retrouver sa région.</p><div className={styles.regions}>{details.regions.map(region => <article key={region.regionId} data-region-id={region.regionId} data-active-region={regionId === region.regionId}><p className={styles.regionKind}>{WAR_BIOME_LABELS_V96[region.biome]} · {planet.regions.find(item => item.id === region.regionId)?.territoryIds.length ?? 0} territoires</p><h5>{planet.regions.find(item => item.id === region.regionId)?.name ?? region.regionId}</h5><p>{region.description}</p><dl><div><dt>Climat</dt><dd>{region.climate}</dd></div><div><dt>Relief et particularités</dt><dd>{region.features.join(" · ")}</dd></div><div><dt>Ressources observées</dt><dd>{region.resources.join(" · ")}</dd></div></dl></article>)}</div></section>
     </div>
     <div className={styles.sharing}>
