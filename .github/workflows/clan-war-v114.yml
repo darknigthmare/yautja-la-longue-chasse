@@ -1,0 +1,46 @@
+name: Clan-war V114 mission modes (targeted tests)
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - app/game/ClanWarMissionsV114.tsx
+      - app/game/ClanWarMissionsV114.module.css
+      - app/game/ClanWarPanelV85.tsx
+      - app/game/systems/clanWarMissionModesV114.ts
+      - tests/clan-war-mission-modes-v114.test.mjs
+      - .github/workflows/clan-war-v114.yml
+  push:
+    branches: [feat/clan-war-mission-modes-v114]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  mission-model:
+    name: Four modes and save-boundary tests
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Checkout the isolated game code
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /app/game/
+            /tests/clan-war-mission-modes-v114.test.mjs
+            /package.json
+            /package-lock.json
+      - name: Use Node.js 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install locked tooling
+        run: npm ci --ignore-scripts --no-audit --no-fund
+        env:
+          ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      - name: Run four-mode acceptance and persistence checks
+        run: node --experimental-strip-types --test tests/clan-war-mission-modes-v114.test.mjs
