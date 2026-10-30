@@ -3,6 +3,8 @@ import { createPlanetRegionMaskV102 } from "./planetRegionalMaterialsV102";
 import { createPlanetLandMaskV101 } from "./planetMaterialRendererV101";
 import { unwrapPlanetPolygonV101 } from "./systems/planetMaterialV101";
 import { WAR_PLANET_LAND_TEXTURES_V115 } from "./systems/clanWarTextureLibraryV115";
+import { analyzeWarPlanetPhysicalIndexV125, describeWarPlanetShapeCatalogV125 } from "./systems/clanWarPlanetPhysicalIndexV125";
+import { WAR_PLANET_TEXTURES_V125 } from "./systems/clanWarTextureLibraryV125";
 
 export type PlanetInlandMaskKindV124 = "lake" | "river";
 
@@ -126,6 +128,18 @@ export function describePlanetModularMasksV124(planet: WarPlanetV96) {
       kind: feature.kind,
       name: feature.name,
       regionIds: [...feature.regionIds],
+    })),
+    physicalIndex: analyzeWarPlanetPhysicalIndexV125(planet),
+    selectedShapeIds: recipe?.version === 115 ? {
+      island: `isl-${String(recipe.islandShape + 1).padStart(2, "0")}`,
+      continent: `con-${String(recipe.continentShape + 1).padStart(2, "0")}`,
+      region: `reg-${String(recipe.regionShape + 1).padStart(2, "0")}`,
+    } : null,
+    shapeCatalog: describeWarPlanetShapeCatalogV125(),
+    supplementalMaterialCatalog: WAR_PLANET_TEXTURES_V125.map(item => ({
+      id: item.id, name: item.name, description: item.description,
+      domain: item.domain, origin: item.origin, pattern: item.pattern,
+      channels: ["albedo", "height", "normal", "roughness", "emissive"] as const,
     })),
   };
 }
