@@ -39,6 +39,10 @@ export interface WarMissionReportV115 {
   teamIds: string[]; woundedIds: string[]; sourceIds: string[]; summary: string;
   engagementLog?: string[];
 }
+export interface WarRecruitmentV115 {
+  id: string; teamId: string; unitId: string;
+  startedAt: number; dueAt: number; paidRav: number;
+}
 export interface WarOperationsStateV115 {
   version: 1; context: "free"; sourceSha: string; baseId: string;
   serial: number; clock: number; rav: number;
@@ -46,6 +50,7 @@ export interface WarOperationsStateV115 {
   active: WarPlayableMissionV115 | null; outer: WarOuterMissionV115[];
   intelIds: string[]; weakenedIds: string[]; escortedIds: string[];
   pressure: Record<string, number>; reports: WarMissionReportV115[];
+  pendingRecruits?: WarRecruitmentV115[]; recruitedTeamIds?: string[];
 }
 export interface WarOperationsUpdateV115 { state: WarOperationsStateV115; accepted: boolean; message: string }
 const MAX_REPORTS = 120;
@@ -78,7 +83,47 @@ export function createWarOperationsV115(rules: WarRulesV6): WarOperationsStateV1
     version: 1, context: "free", sourceSha: rules.metadata.sha256, baseId: rules.territories[0]?.id ?? "",
     serial: 0, clock: 0, rav: rules.parameters.rav_cap, teams, assignments: {},
     active: null, outer: [], intelIds: [], weakenedIds: [], escortedIds: [], pressure: {}, reports: [],
+    pendingRecruits: [], recruitedTeamIds: [],
   };
+}
+
+/** Recruit all thirty V6 formation types. Recruitment spends the exact W3-U
+ * cost at reservation; members only appear after their source delay.
+ * Fifteen seconds per V6 turn is an advertised exercise-only time mapping. */
+export function queueWarRecruitmentV115(
+  state:WarOperationsStateV115,unitId:string,now:number,rules:WarRulesV6,
+):WarOperationsUpdateV115 {
+  if(state.sourceSha!==rules.metadata.sha256) return reject(state,"Source V6 de ce recrutement incompatible.");
+  const unit=unitFor(rules,unitId);
+  if(!unit||unit.fullMembers<1||!Number.isSafeInteger(now)||now<0) return reject(state,"Équipe V6 ou horodatage invalide.");
+  const pending=state.pendingRecruits??[];
+  if(state.teams.length+pending.length>=16||pending.length>=4) return reject(state,"Plafond de 16 équipes et quatre recrutements simultanés.");
+  if(!Number.isFinite(unit.recruitmentRav)||unit.recruitmentRav<0||state.rav<unit.recruitmentRav)
+    return reject(state,"Réserve RAV insuffisante pour recruter cette équipe.");
+  if(!Number.isInteger(unit.delayTurns)||unit.delayTurns<0||unit.delayTurns>100)
+    return reject(state,"Délai de recrutement non admissible dans la source.");
+  if(state.serial>=100000) return reject(state,"Archive d'exercice à capacité maximale.");
+  const nextSerial=state.serial+1,teamId="W115-TEAM-REC-"+nextSerial;
+  const arrival:WarRecruitmentV115={
+    id:"W115-REC-"+nextSerial,teamId,unitId,startedAt:now,
+    dueAt:now+Math.max(1,unit.delayTurns)*15000,paidRav:unit.recruitmentRav,
+  };
+  return accept({...state,serial:nextSerial,rav:state.rav-unit.recruitmentRav,
+    pendingRecruits:[...pending,arrival]},
+    "Recrutement préparé : "+unit.name+" ("+unit.recruitmentRav+" RAV). Les membres rejoignent le départ à échéance.");
+}
+export function settleWarRecruitmentsV115(state:WarOperationsStateV115,now:number,rules:WarRulesV6):WarOperationsUpdateV115 {
+  if(!Number.isSafeInteger(now)||now<0||state.sourceSha!==rules.metadata.sha256) return reject(state,"Date de recrutement invalide.");
+  const due=(state.pendingRecruits??[]).filter(item=>now>=item.dueAt).sort((a,b)=>a.dueAt-b.dueAt||a.id.localeCompare(b.id));
+  if(!due.length) return reject(state,"Aucun recrutement achevé.");
+  const arrivals=due.map(item=>createWarTeamV6(item.unitId,item.teamId,rules));
+  if(arrivals.some(team=>!team)||state.teams.length+arrivals.length>16) return reject(state,"Rostre incompatible ; arrivées suspendues.");
+  const processed=new Set(due.map(item=>item.id));
+  return accept({...state,clock:state.clock+due.length,
+    teams:[...state.teams,...arrivals as WarTeamStateV6[]],
+    pendingRecruits:(state.pendingRecruits??[]).filter(item=>!processed.has(item.id)),
+    recruitedTeamIds:unique([...(state.recruitedTeamIds??[]),...due.map(item=>item.teamId)])},
+    due.length+" renfort(s) V6 arrivés au départ, avec nouvelles identités et XP à zéro.");
 }
 export function warMissionEligibleV115(state: WarOperationsStateV115, rules: WarRulesV6, targetId: string, teamIds: string[]): string | null {
   if (state.sourceSha !== rules.metadata.sha256) return "La source des règles a changé : ce front ne peut pas être réinterprété.";
@@ -476,6 +521,17 @@ export function readWarOperationsV115(raw:string,rules:WarRulesV6):WarOperations
       ["fit","wounded","dead"].includes(member.status)&&Number.isFinite(member.xp)&&member.xp>=0&&member.xp<=rules.parameters.xp_max) &&
       Array.isArray(team.resultReceipts) && team.resultReceipts.length<=100000 && Array.isArray(team.resolvedResultIds))) return null;
     if(unique(v.teams.map(team=>team.id)).length!==v.teams.length) return null;
+    const waiting=v.pendingRecruits??[];
+    if(!Array.isArray(waiting)||waiting.length>4||v.teams.length+waiting.length>16||
+      waiting.some(item=>!isTextId(item.id)||!isTextId(item.teamId)||!unitFor(rules,item.unitId)||
+        !Number.isSafeInteger(item.startedAt)||item.startedAt<0||
+        !Number.isSafeInteger(item.dueAt)||item.dueAt<=item.startedAt||item.dueAt-item.startedAt>1500000||
+        !Number.isSafeInteger(item.paidRav)||item.paidRav<0||item.paidRav>rules.parameters.rav_cap||
+        v.teams.some(team=>team.id===item.teamId))) return null;
+    if(unique(waiting.map(item=>item.id)).length!==waiting.length||
+      unique(waiting.map(item=>item.teamId)).length!==waiting.length||
+      (v.recruitedTeamIds!==undefined&&(!Array.isArray(v.recruitedTeamIds)||v.recruitedTeamIds.length>16||
+        v.recruitedTeamIds.some(id=>!v.teams.some(team=>team.id===id))))) return null;
     const allMemberIds=v.teams.flatMap(team=>team.members.map(member=>member.id));
     if(unique(allMemberIds).length!==allMemberIds.length) return null;
     if(!v.assignments||typeof v.assignments!=="object"||Array.isArray(v.assignments)||Object.keys(v.assignments).length>16) return null;
