@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig.clan-war-v126.json",
+  "compilerOptions": {"incremental": false, "tsBuildInfoFile": null},
+  "include": [
+    "app/game/systems/clanWarEarthMetricV127.ts",
+    "app/game/systems/clanWarEncounterDirectorV127.ts"
+  ],
+  "exclude": ["node_modules","dist",".next","outputs"]
+}
