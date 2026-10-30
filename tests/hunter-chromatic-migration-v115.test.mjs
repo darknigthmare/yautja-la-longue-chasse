@@ -39,6 +39,7 @@ test("unregistered or malicious legacy input never turns into an asset URL",()=>
     skinMaterialId:"https://external.test/evil.png",
     dreadMaterialId:"anneau_ligature_fil_rouge_observe_2022",
     outfitMaterialId:"armor_classe_father_masque_beige_strie",
+    skinId:"__proto__", dreadTintId:"constructor", armorTintId:"toString",
   });
   assert.deepEqual(old,normalizeHunterChromaticsV113(undefined));
 });

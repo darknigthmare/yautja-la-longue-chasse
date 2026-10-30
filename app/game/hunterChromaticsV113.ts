@@ -232,12 +232,15 @@ export function migrateLegacyPhgAppearanceV115(raw: unknown): HunterChromaticsV1
     bone: "#afa68d", jade: "#466f5b", rust: "#8b503d",
     crimson: "#873938",
   };
-  if (acceptsLegacy("skinHex") && typeof appearance.skinId === "string")
-    result.skinHex = priorSkin[appearance.skinId] ?? result.skinHex;
-  if (acceptsLegacy("dreadHex") && typeof appearance.dreadTintId === "string")
-    result.dreadHex = priorDreads[appearance.dreadTintId] ?? result.dreadHex;
-  if (acceptsLegacy("armorHex") && typeof appearance.armorTintId === "string")
-    result.armorHex = priorArmor[appearance.armorTintId] ?? result.armorHex;
+  const knownColor = (values: Record<string, string>, key: unknown): string | null =>
+    typeof key === "string" && Object.prototype.hasOwnProperty.call(values, key)
+      ? values[key] : null;
+  if (acceptsLegacy("skinHex"))
+    result.skinHex = knownColor(priorSkin, appearance.skinId) ?? result.skinHex;
+  if (acceptsLegacy("dreadHex"))
+    result.dreadHex = knownColor(priorDreads, appearance.dreadTintId) ?? result.dreadHex;
+  if (acceptsLegacy("armorHex"))
+    result.armorHex = knownColor(priorArmor, appearance.armorTintId) ?? result.armorHex;
 
   const convert = (channel: ChromaticChannelV113, candidate: unknown): string | null => {
     if (typeof candidate !== "string" || !/^[a-z0-9_-]{1,110}$/.test(candidate)) return null;
@@ -246,7 +249,9 @@ export function migrateLegacyPhgAppearanceV115(raw: unknown): HunterChromaticsV1
       "skin_shatter_demon_provisoire": "phg-shatter-demon-study",
       "armor_classe_samurai_laque_rouge_volutes": "phg-samurai-red-lacquer",
     };
-    return getChromaticMaterialV113(channel, aliases[candidate] ?? "phg-" + candidate)?.id ?? null;
+    const id = Object.prototype.hasOwnProperty.call(aliases, candidate)
+      ? aliases[candidate] : "phg-" + candidate;
+    return getChromaticMaterialV113(channel, id)?.id ?? null;
   };
   if (acceptsLegacy("skinMaterialId"))
     result.skinMaterialId = convert("skin", appearance.skinMaterialId) ?? result.skinMaterialId;
