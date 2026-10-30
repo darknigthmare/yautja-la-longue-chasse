@@ -108,6 +108,7 @@ test("all 24 source RTS narratives map to exactly 12 proper W3 planets and 72 ex
   assert.equal(mission.mapId,"W3-MAP"+String(Math.ceil((i+1)/2)).padStart(2,"0"));
   assert.equal(mission.rank,original("D"));
   assert.equal(mission.sourceObjective,original("E"));
+  assert.equal(mission.sourceDeployment,original("F"));
   assert.equal(mission.sourceConditions,original("I"));
   assert.equal(mission.sourceVictory,original("L"));
   assert.equal(mission.sourceReentry,original("M"));
