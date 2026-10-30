@@ -227,3 +227,43 @@ test("source-specific ash and gust effects do not create enemies or a separate c
  assert.equal(noise.accepted,true);
  assert.match(noise.state.lastMessage,/Bruit excessif/);
 });
+
+
+test("parent planets and strata are source-correct: ice-world galleries remain interior and ship hull stays orbital",()=>{
+ const frost=war.createWarSourceMapV128("W3-MAP09",rules);
+ const heat=war.createWarSourceMapV128("W3-MAP10",rules);
+ const orbital=war.createWarSourceMapV128("W3-MAP12",rules);
+ assert.equal(frost.planetId,"W3-P05");
+ assert.equal(heat.planetId,"W3-P05");
+ assert.equal(frost.planetName,"Sahr-Keth");
+ assert.equal(heat.planetName,"Sahr-Keth");
+ assert.equal(frost.worldStratum,"planet-surface");
+ assert.equal(heat.worldStratum,"subsurface");
+ assert.equal(heat.biome,"galeries thermiques");
+ assert.equal(orbital.planetName,"Ilyss");
+ assert.equal(orbital.worldCode,"PLAN23");
+ assert.equal(orbital.worldStratum,"orbital-vessel");
+ assert.match(orbital.accessGate,/vaisseau/);
+ const home=war.createWarSourceMapV128("W3-MAP01",rules);
+ assert.equal(home.planetId,"W3-P01");
+ assert.equal(home.worldCode,"PLAN19");
+ assert.notEqual(home.worldCode,orbital.worldCode);
+});
+test("three named structures per map originate in the source and occupy walkable physical tiles",()=>{
+ const ids=Array.from({length:12},(_,i)=>"W3-MAP"+String(i+1).padStart(2,"0"));
+ const positions=new Set();
+ for(const id of ids){
+  const map=war.createWarSourceMapV128(id,rules);
+  assert.equal(map.landmarks.length,3);
+  assert.equal(new Set(map.landmarks.map(x=>x.id)).size,3);
+  assert.equal(new Set(map.landmarks.map(x=>x.at.x+","+x.at.y)).size,3);
+  for(const landmark of map.landmarks){
+   assert.ok(landmark.name);
+   assert.equal(landmark.isOnWalkableTile,true);
+   assert.equal(war.warMapWalkableV128(map,landmark.at),true);
+   assert.ok(["G","H","J"].includes(landmark.sourceColumn));
+   positions.add(landmark.id);
+  }
+ }
+ assert.equal(positions.size,36);
+});
