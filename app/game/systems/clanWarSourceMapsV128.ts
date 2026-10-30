@@ -16,7 +16,9 @@ export interface WarMapTileV128 {
  environment:string;source:"game-authored-layout-study";
 }
 export interface WarSourceMapV128 {
- id:string;name:string;planetId:string;width:number;height:number;biome:string;
+ id:string;name:string;planetId:string;planetName:string;worldCode:string;
+ worldStratum:"planet-surface"|"subsurface"|"orbital-vessel";
+ accessGate:string;width:number;height:number;biome:string;
  sourceRow:number;sourceCells:string[];sourceSituation:string;sourceGeometry:string;
  sourceCover:string;sourceEvent:string;sourceObjective:string;sourceAccess:string;
  sourceExtraction:string;tileScale:"one-tactical-cell-not-geographic-metre";
@@ -119,6 +121,9 @@ export function createWarSourceMapV128(id:string,rules:WarRulesV6):WarSourceMapV
  if(!isMapIdV128(id))throw new RangeError("Carte W3-MAP01..12 inconnue.");
  const entry=sourceEntry(rules,id);
  if(!entry)throw new Error("Cette carte n'existe pas dans la Bible V6 sélectionnée.");
+ const planetId=sourceValue(entry,"C");
+ const planet=rules.entries.find(e=>e.sheet==="Mondes en guerre"&&e.id===planetId);
+ if(!planet)throw new Error("Planète parent absente : ne pas inventer une position pour une carte W3.");
  const width=Number(sourceValue(entry,"D")),height=Number(sourceValue(entry,"E"));
  if(!Number.isInteger(width)||!Number.isInteger(height)||width<20||width>48||height<20||height>40)
   throw new Error("Dimensions source hors limites : ne pas fabriquer un décor.");
@@ -172,7 +177,11 @@ export function createWarSourceMapV128(id:string,rules:WarRulesV6):WarSourceMapV
   });
  }
  return {
-  id,name:String(entry.title),planetId:sourceValue(entry,"C"),
+  id,name:String(entry.title),planetId,planetName:String(planet.title),
+  worldCode:sourceValue(planet,"C"),
+  worldStratum:id==="W3-MAP12"?"orbital-vessel":
+    id==="W3-MAP10"?"subsurface":"planet-surface",
+  accessGate:sourceValue(planet,"K"),
   width,height,biome:environment.biome,
   sourceRow:entry.row,sourceCells:sourceCells(entry),
   sourceSituation:sourceValue(entry,"F"),sourceGeometry:sourceValue(entry,"G"),
@@ -386,6 +395,9 @@ export function auditWarSourceMapsV128(rules:WarRulesV6){
   if(!warMapFindPathV128(map,map.start,map.goal))problems.push(id+" no objective route");
   if(!warMapFindPathV128(map,map.goal,map.extraction))problems.push(id+" no return");
   if(!map.sourceCells.length)problems.push(id+" lost source provenance");
+  if(!map.planetName||!map.worldCode||!map.accessGate)problems.push(id+" world provenance missing");
+  if(id==="W3-MAP12"&&map.worldStratum!=="orbital-vessel")problems.push("Ship hull erroneously on ground");
+  if(id==="W3-MAP10"&&map.worldStratum!=="subsurface")problems.push("Heated ice-world gallery erroneously in exposed atmosphere");
   if(map.tiles.filter(x=>x.kind==="wall").length<map.width)problems.push(id+" lacks terrain architecture");
  }
  return {maps:ids.length,sourceCells:ids.length*11,problems};
