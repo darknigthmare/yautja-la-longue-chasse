@@ -436,7 +436,7 @@ export async function drawPlanetMaterialV101(target: HTMLCanvasElement, request:
   const useSurface = ["composite", "albedo", "surface", "emissive"].includes(layer);
   const useClouds = layer === "clouds" || layer === "composite" && settings.clouds;
   const useWeather = layer === "weather" || layer === "composite" && settings.weather;
-  const useAurora = recipe.auroraOpacity > 0 && (layer === "aurora" || layer === "composite" && settings.aurora !== false);
+  const useAurora = recipe.auroraOpacity > 0 && (layer === "aurora" || layer === "composite" && (settings.aurora ?? settings.weather));
   const urls = [useLand && !regionalLand ? recipe.land : null, useSurface ? recipe.surface : null, useClouds ? recipe.clouds : null, useWeather ? recipe.weather : null, useAurora ? recipe.aurora : null].map(url => url && size > 512 ? planetMaterialSourceV101(url) : url);
   const details = [recipe.materials?.land.detail, recipe.materials?.surface.detail].map(url => url && size > 512 ? planetMaterialSourceV103(url) : url);
   // Composition canvases stay <=1024 even for a 4096px output. The native
@@ -481,7 +481,7 @@ export async function drawPlanetMaterialV101(target: HTMLCanvasElement, request:
       gl.uniform4f(uniform(state, "uLandPalette"), ...rgb(recipe.materials.land.palette ?? "#000000"), recipe.materials.land.palette ? .72 : 0);
     }
     gl.uniform4f(uniform(state, "uSettings"), Number(settings.atmosphere) * recipe.atmosphereDensity, Number(settings.clouds), Number(settings.weather), Number(settings.lighting));
-    gl.uniform1f(uniform(state, "uAuroraSwitch"), Number(settings.aurora !== false));
+    gl.uniform1f(uniform(state, "uAuroraSwitch"), Number(settings.aurora ?? settings.weather));
     gl.uniform4f(uniform(state, "uEffects"), recipe.cloudOpacity, recipe.weatherOpacity, recipe.auroraOpacity, recipe.emission);
     const surfaceColors = recipe.materials?.surface.palette ?? request.planet.surface;
     for (const [name, color] of Object.entries({ uBase: surfaceColors.base, uDeep: surfaceColors.deep, uAccent: surfaceColors.accent, uDetail: surfaceColors.detail, uLandColor: recipe.landColor, uSky: recipe.atmosphereColor, uWeatherColor: recipe.weatherColor })) gl.uniform3f(uniform(state, name), ...rgb(color));
