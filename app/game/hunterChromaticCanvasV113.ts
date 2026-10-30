@@ -16,6 +16,7 @@ const CHANNEL_FIELDS = {
   dreads: {color:"dreadHex",material:"dreadMaterialId"},
   outfit: {color:"outfitHex",material:"outfitMaterialId"},
   armor: {color:"armorHex",material:"armorMaterialId"},
+  biomask: {color:"maskHex",material:"maskMaterialId"},
 } as const satisfies Record<ChromaticChannelV113, {color:keyof HunterChromaticsV113;material:keyof HunterChromaticsV113}>;
 
 type TextureLoad = { image: HTMLImageElement; status:"loading" | "ready" | "failed" };
@@ -29,7 +30,7 @@ export function chromaticCanvasDescriptorV113(
   const value = normalizeHunterChromaticsV113(raw);
   const fields = CHANNEL_FIELDS[channel];
   const texturePath = getChromaticMaterialV113(channel, value[fields.material])?.src ?? null;
-  return {color:value[fields.color],texturePath,opacity:channel==="skin"?.58:channel==="dreads"?.7:.78};
+  return {color:value[fields.color],texturePath,opacity:channel==="skin"?.58:channel==="dreads"?.7:channel==="biomask"?.73:.78};
 }
 function textureForV113(src: string): HTMLImageElement | null {
   const existing = textures.get(src);

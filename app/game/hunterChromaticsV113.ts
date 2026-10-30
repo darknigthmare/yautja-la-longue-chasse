@@ -3,6 +3,7 @@ import { PHG_RECENT_CANDIDATES_V126 } from "./phgRecentMaterialsV126.ts";
 import { PHG_HISTORICAL_STUDIES_V127 } from "./phgHistoricalMaterialsV127.ts";
 import { PHG_PLATFORM_STUDIES_V128 } from "./phgPlatformStudiesV128.ts";
 import { PHG_V129_PATCH_MATERIALS } from "./phgPatchStudiesV129.ts";
+import { PHG_OGRE_BIOMASK_MATERIAL_V131, alphaMaskEligibleV131 } from "./phgBiomaskTintsV131.ts";
 import PHG_DRIVE_CATALOG_V120 from "./data/phgDriveV120Catalog.json" with { type: "json" };
 import PHG_DRIVE_INSTALLED_V120 from "./data/phgDriveV120Installed.json" with { type: "json" };
 /**
@@ -10,7 +11,7 @@ import PHG_DRIVE_INSTALLED_V120 from "./data/phgDriveV120Installed.json" with { 
  * Identity is save-safe: only registered local paths may be loaded.
  * The existing Yautja morph, mask, head, skeleton and equipment remain authoritative.
  */
-export type ChromaticChannelV113 = "skin" | "dreads" | "outfit" | "armor";
+export type ChromaticChannelV113 = "skin" | "dreads" | "outfit" | "armor" | "biomask";
 export type ChromaticMaterialStatusV113 = "integrated" | "drive-only";
 export type ChromaticEvidenceV113 = "observed-reconstruction" | "provisional";
 
@@ -19,10 +20,14 @@ export interface HunterChromaticsV113 {
   dreadHex: string | null;
   outfitHex: string | null;
   armorHex: string | null;
+  maskHex: string | null;
+  /** Alpha identity survives the transition to a customized preset. */
+  maskOriginId: "alpha" | null;
   skinMaterialId: string | null;
   dreadMaterialId: string | null;
   outfitMaterialId: string | null;
   armorMaterialId: string | null;
+  maskMaterialId: string | null;
 }
 
 /** One cropped tile within the original, non-certified V125 study atlas. */
@@ -275,11 +280,12 @@ export const PHG_CHROMATIC_MATERIALS_V113: readonly ChromaticMaterialV113[] = Ob
   ...PHG_HISTORICAL_STUDIES_V127.filter(x => x.status === "integrated"),
   ...PHG_PLATFORM_STUDIES_V128.filter(x => x.status === "integrated"),
   ...PHG_V129_PATCH_MATERIALS.filter(x => x.status === "integrated"),
+  PHG_OGRE_BIOMASK_MATERIAL_V131,
 ]);
 
 export const DEFAULT_CHROMATICS_V113: Readonly<HunterChromaticsV113> = Object.freeze({
-  skinHex: null, dreadHex: null, outfitHex: null, armorHex: null,
-  skinMaterialId: null, dreadMaterialId: null, outfitMaterialId: null, armorMaterialId: null,
+  skinHex: null, dreadHex: null, outfitHex: null, armorHex: null, maskHex: null, maskOriginId: null,
+  skinMaterialId: null, dreadMaterialId: null, outfitMaterialId: null, armorMaterialId: null, maskMaterialId: null,
 });
 
 export const CHROMATIC_CHANNELS_V113 = [
@@ -339,11 +345,16 @@ export function resetChromaticFacilityV115(source: unknown, facility: ChromaticF
     result[channel.colorKey] = null;
     result[channel.materialKey] = null;
   }
+  if (facility !== "lab") {
+    result.maskHex = null;
+    result.maskMaterialId = null;
+    // Keep the Alpha origin so returning from the forge can reopen Ogre.
+  }
   return result;
 }
 
-const colorField = { skin: "skinHex", dreads: "dreadHex", outfit: "outfitHex", armor: "armorHex" } as const;
-const materialField = { skin: "skinMaterialId", dreads: "dreadMaterialId", outfit: "outfitMaterialId", armor: "armorMaterialId" } as const;
+const colorField = { skin: "skinHex", dreads: "dreadHex", outfit: "outfitHex", armor: "armorHex", biomask: "maskHex" } as const;
+const materialField = { skin: "skinMaterialId", dreads: "dreadMaterialId", outfit: "outfitMaterialId", armor: "armorMaterialId", biomask: "maskMaterialId" } as const;
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return !!value && typeof value === "object" && !Array.isArray(value);
@@ -366,6 +377,11 @@ export function normalizeHunterChromaticsV113(source: unknown): HunterChromatics
     result[channel.colorKey] = normalizeChromaticHexV113(source[channel.colorKey]);
     result[channel.materialKey] = getChromaticMaterialV113(channel.id, source[channel.materialKey])?.id ?? null;
   }
+  // V131 is intentionally a separate workshop: older V113 games retain all
+  // four existing color channels, and untrusted mask URLs are never restored.
+  result.maskHex = normalizeChromaticHexV113(source.maskHex);
+  result.maskOriginId = source.maskOriginId === "alpha" ? "alpha" : null;
+  result.maskMaterialId = getChromaticMaterialV113("biomask", source.maskMaterialId)?.id ?? null;
   return result;
 }
 
@@ -438,6 +454,20 @@ export function hasCustomChromaticsV113(value: unknown): boolean {
   return Object.values(safe).some(item => item !== null);
 }
 
+/** The dedicated biomask surface never paints skin or armor.
+ * An Alpha owner keeps that class identity across "custom" saves.
+ */
+export function maskChromaticsForAppearanceV131(appearance: {
+  presetId?: string;
+  biomaskId?: string | null;
+  chromaticsV113?: unknown;
+}): HunterChromaticsV113 {
+  const selected = normalizeHunterChromaticsV113(appearance.chromaticsV113);
+  return alphaMaskEligibleV131(appearance)
+    ? selected
+    : { ...selected, maskMaterialId: null };
+}
+
 /** PNG is applied first; a translucent user pigment remains visible above it.
  * Keep the same fraction in the rig CSS and mission Canvas pipelines.
  */
@@ -487,6 +517,6 @@ export function chromaticOverlayStyleV113(
     maskSize: "100% 100%",
     WebkitMaskSize: "100% 100%",
     mixBlendMode: texture?.src ? "multiply" : "color",
-    opacity: channel === "skin" ? 0.58 : channel === "dreads" ? 0.7 : 0.78,
+    opacity: channel === "skin" ? 0.58 : channel === "dreads" ? 0.7 : channel === "biomask" ? 0.73 : 0.78,
   };
 }
