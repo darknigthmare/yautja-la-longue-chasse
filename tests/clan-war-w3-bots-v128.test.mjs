@@ -28,7 +28,8 @@ function pilot(id,style){
   const goal=state.objectiveDone?map.extraction:map.goal;
   const route=map.mandatoryPaths[style==="lower-route"?1:0];
   const target=route[Math.floor(route.length*.83)];
-  if(!detourCleared&&distance(state.player,target)<=2)detourCleared=true;
+  if(!detourCleared&&(distance(state.player,target)<=2||
+    i>=map.width+map.height))detourCleared=true; // tactical fallback when a diversion is no longer useful
   const canSee=state.enemies.filter(e=>e.hp>0&&distance(e,state.player)<=3&&
     war.warMapLineOfSightV128(map,state.player,e));
   let choice;
@@ -83,6 +84,7 @@ for(const style of modes){
   }
   console.log("W3 QA "+style+" : "+completed+"/12 victories, "+survived+"/12 survivors; failures: "+failed.join(" | "));
   assert.ok(survived>=6,"more than half the 12 maps must be survivable in "+style+"; "+failed.join(" | "));
-  assert.ok(completed>=4,"at least four complete missions should be winnable using "+style+"; "+failed.join(" | "));
+  assert.ok(completed>=(style==="shortest"?12:10),
+    "all direct missions and at least ten flanking missions must be winnable using "+style+"; "+failed.join(" | "));
  });
 }
