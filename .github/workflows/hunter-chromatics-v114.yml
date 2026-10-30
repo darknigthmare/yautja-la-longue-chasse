@@ -38,12 +38,14 @@ jobs:
             /tests/hunter-chromatics-v113.test.mjs
             /tests/hunter-chromatic-canvas-v113.test.mjs
             /tests/hunter-chromatic-persistence-v116.test.mjs
+            /tests/hunter-chromatic-layering-v116.test.mjs
             /tests/hunter-chromatics-native-v114.test.mjs
             /tests/hunter-chromatic-grade-v114.test.mjs
             /tests/homeworld-hunter-armor-v114.test.mjs
             /tests/hunter-chromatic-facilities-v115.test.mjs
             /tests/hunter-chromatic-migration-v115.test.mjs
             /app/game/HomeworldModularHunter.tsx
+            /app/game/HunterRigPreview.tsx
             /app/game/HomeworldHub.tsx
             /app/game/hunterVisuals.ts
             /public/game/assets/v3/actors/yautja/hunter/armor/registered/
@@ -56,7 +58,7 @@ jobs:
       - name: Audit all 44 original local files by SHA and PNG header
         run: python3 scripts/validate-phg-materials-v113.py
       - name: Validate saved palette IDs, category isolation and Canvas descriptors
-        run: node --experimental-strip-types --test tests/hunter-chromatics-v113.test.mjs tests/hunter-chromatic-canvas-v113.test.mjs tests/hunter-chromatics-native-v114.test.mjs tests/hunter-chromatic-grade-v114.test.mjs tests/homeworld-hunter-armor-v114.test.mjs tests/hunter-chromatic-facilities-v115.test.mjs tests/hunter-chromatic-migration-v115.test.mjs tests/hunter-chromatic-persistence-v116.test.mjs
+        run: node --experimental-strip-types --test tests/hunter-chromatics-v113.test.mjs tests/hunter-chromatic-canvas-v113.test.mjs tests/hunter-chromatics-native-v114.test.mjs tests/hunter-chromatic-grade-v114.test.mjs tests/homeworld-hunter-armor-v114.test.mjs tests/hunter-chromatic-facilities-v115.test.mjs tests/hunter-chromatic-migration-v115.test.mjs tests/hunter-chromatic-persistence-v116.test.mjs tests/hunter-chromatic-layering-v116.test.mjs
   typecheck:
     name: TypeScript and lint on the complete game source
     runs-on: ubuntu-24.04

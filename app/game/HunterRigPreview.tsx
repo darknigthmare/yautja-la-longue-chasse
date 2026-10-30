@@ -604,7 +604,7 @@ export function HunterRigPreview({
           <ChromaticSurfaceV113 key={`chromatic-skin-${partId}`} appearance={appearance} channel="skin"
             maskPath={hunterBodyPartPath(appearance.bodyMorphId, partId, appearance.headStyleId)}
             placement={hunterBodyPartPlacement(appearance.bodyMorphId, partId, appearance.headStyleId)}
-            style={{ ...fullCanvasImage, zIndex: z + 0.1, transform: cssMatrix(matrix), clipPath: hunterBodyPartClipCssV62(appearance.bodyMorphId, partId) }} />,
+            style={{ ...fullCanvasImage, zIndex: z, transform: cssMatrix(matrix), clipPath: hunterBodyPartClipCssV62(appearance.bodyMorphId, partId) }} />,
           ...(hunterBodyPartHasNet(appearance.bodyMorphId, partId)
             ? [
                 <img
@@ -625,7 +625,7 @@ export function HunterRigPreview({
                 />,
                 <ChromaticSurfaceV113 key={`chromatic-outfit-${partId}`} appearance={appearance} channel="outfit"
                   maskPath={hunterNetPartPath(appearance.bodyMorphId, partId)}
-                  style={{ ...fullCanvasImage, zIndex: z + 1.1, transform: cssMatrix(matrix), clipPath: hunterBodyPartClipCssV62(appearance.bodyMorphId, partId) }} />,
+                  style={{ ...fullCanvasImage, zIndex: z + 1, transform: cssMatrix(matrix), clipPath: hunterBodyPartClipCssV62(appearance.bodyMorphId, partId) }} />,
               ]
             : []),
         ];
@@ -639,7 +639,7 @@ export function HunterRigPreview({
         return <span key={`${slot.id}-${slot.bone}`}>
           {registeredLayer(hunterArmorPath(slot.id), matrix, slot.z, `armor-${slot.id}`, armorFilter)}
           <ChromaticSurfaceV113 appearance={appearance} channel="armor" maskPath={hunterArmorPath(slot.id)}
-            style={{ ...fullCanvasImage, zIndex: slot.z + 0.1, transform: cssMatrix(matrix) }} />
+            style={{ ...fullCanvasImage, zIndex: slot.z, transform: cssMatrix(matrix) }} />
         </span>;
       })}
 

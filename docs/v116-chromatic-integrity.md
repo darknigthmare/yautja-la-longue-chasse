@@ -17,3 +17,6 @@ Inspections visuelles du rig, du Homeworld, de la chasse Canvas et des six morph
 
 ## Branches
 PR #27 cible PR #24 ; PR #25 est indépendante sur main et touche des modules de sauvegarde et de rendu en commun. La fusion contrôlée ne doit pas écraser un schéma chromatique récent par les champs historiques PR #25. Aucune PR n'est fusionnée par ce lot.
+
+## Correction additionnelle — superposition CSS
+`HunterRigPreview.tsx` utilise désormais des `z-index` entiers pour les overlays de peau, vêtement et armure. Chaque overlay partage la profondeur de sa plaque de référence ; l'ordre DOM le place juste après cette plaque, sans valeur CSS décimale invalide. La chasse Canvas conserve son ordre indépendant. Contrat vérifié par `tests/hunter-chromatic-layering-v116.test.mjs`.
