@@ -3,6 +3,7 @@
 /* eslint-disable @next/next/no-img-element */
 
 import type { CSSProperties } from "react";
+import ChromaticSurfaceV113 from "./ChromaticSurfaceV113";
 
 import type {
   ArmorId,
@@ -560,6 +561,8 @@ export function HunterRigPreview({
                 } as CSSProperties
               }
             />
+            <ChromaticSurfaceV113 appearance={appearance} channel="dreads"
+              maskPath={hunterDreadPath(appearance.dreadStyleId)} style={fullCanvasImage} />
           </span>
         );
       })}
@@ -598,6 +601,10 @@ export function HunterRigPreview({
           registeredLayer(hunterBodyPartPath(appearance.bodyMorphId, partId, appearance.headStyleId), matrix, z,
             `body-${partId}`, hunterBodyPartColorV62(appearance.bodyMorphId, partId, SKIN_FILTER[appearance.skinId]), undefined,
             hunterBodyPartPlacement(appearance.bodyMorphId, partId, appearance.headStyleId), hunterBodyPartClipCssV62(appearance.bodyMorphId, partId)),
+          <ChromaticSurfaceV113 key={`chromatic-skin-${partId}`} appearance={appearance} channel="skin"
+            maskPath={hunterBodyPartPath(appearance.bodyMorphId, partId, appearance.headStyleId)}
+            placement={hunterBodyPartPlacement(appearance.bodyMorphId, partId, appearance.headStyleId)}
+            style={{ ...fullCanvasImage, zIndex: z + 0.1, transform: cssMatrix(matrix), clipPath: hunterBodyPartClipCssV62(appearance.bodyMorphId, partId) }} />,
           ...(hunterBodyPartHasNet(appearance.bodyMorphId, partId)
             ? [
                 <img
@@ -616,32 +623,25 @@ export function HunterRigPreview({
                     transform: cssMatrix(matrix),
                   }}
                 />,
+                <ChromaticSurfaceV113 key={`chromatic-outfit-${partId}`} appearance={appearance} channel="outfit"
+                  maskPath={hunterNetPartPath(appearance.bodyMorphId, partId)}
+                  style={{ ...fullCanvasImage, zIndex: z + 1.1, transform: cssMatrix(matrix), clipPath: hunterBodyPartClipCssV62(appearance.bodyMorphId, partId) }} />,
               ]
             : []),
         ];
       })}
 
-      {armorSlots.map((slot) => (
-        <span key={`${slot.id}-${slot.bone}`}>
-          {registeredLayer(
-            hunterArmorPath(slot.id),
-            slot.id === armorFamily.shoulder
-              ? multiplyAffine(
-                  boneMatrix(slot.bone),
-                  scaleAround(
-                    153,
-                    110,
-                    HUNTER_ARMOR_FIT_BY_MORPH[appearance.bodyMorphId]
-                      .shoulderScale,
-                  ),
-                )
-              : boneMatrix(slot.bone),
-            slot.z,
-            `armor-${slot.id}`,
-            armorFilter,
-          )}
-        </span>
-      ))}
+      {armorSlots.map((slot) => {
+        const matrix = slot.id === armorFamily.shoulder
+          ? multiplyAffine(boneMatrix(slot.bone),
+              scaleAround(153, 110, HUNTER_ARMOR_FIT_BY_MORPH[appearance.bodyMorphId].shoulderScale))
+          : boneMatrix(slot.bone);
+        return <span key={`${slot.id}-${slot.bone}`}>
+          {registeredLayer(hunterArmorPath(slot.id), matrix, slot.z, `armor-${slot.id}`, armorFilter)}
+          <ChromaticSurfaceV113 appearance={appearance} channel="armor" maskPath={hunterArmorPath(slot.id)}
+            style={{ ...fullCanvasImage, zIndex: slot.z + 0.1, transform: cssMatrix(matrix) }} />
+        </span>;
+      })}
 
       {gearIds.slice(0, 2).map((gearId, gearIndex) => (
         <span key={gearId}>
