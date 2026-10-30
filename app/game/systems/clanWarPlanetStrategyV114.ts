@@ -33,9 +33,11 @@ function proceduralV103(planet: WarPlanetV96): WarPlanetProceduralV103 | null {
   return recipe?.version === 103 ? procedural as WarPlanetProceduralV103 : null;
 }
 
-function graphFor(planet: WarPlanetV96) {
+function graphFor(planet: WarPlanetV96): Map<string, Set<string>> {
   const ids = new Set(planet.definitions.map(item => item.id));
-  return new Map(planet.definitions.map(item => [item.id, new Set(item.neighbors.filter(id => ids.has(id)))]));
+  return new Map<string, Set<string>>(planet.definitions.map(item =>
+    [item.id, new Set(item.neighbors.filter(id => ids.has(id)))] as const
+  ));
 }
 
 function shortestPath(graph: Map<string, Set<string>>, start: string, target: string): string[] {
@@ -114,8 +116,8 @@ export function analyzeWarPlanetStrategyV114(planet: WarPlanetV96): WarPlanetStr
     crossingByTerritory.set(route.toId, (crossingByTerritory.get(route.toId) ?? 0) + 1);
   }
 
-  const definitionById = new Map(planet.definitions.map(item => [item.id, item]));
-  const regionName = new Map(planet.regions.map(item => [item.id, item.name]));
+  const definitionById = new Map(planet.definitions.map(item => [item.id, item] as const));
+  const regionName = new Map(planet.regions.map(item => [item.id, item.name] as const));
   const regions = planet.regions.map(region => {
     const neighboring = new Set<string>();
     let borderLinks = 0, crossingLinks = 0, s = 0, m = 0, i = 0;
