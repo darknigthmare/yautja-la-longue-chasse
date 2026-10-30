@@ -1,0 +1,3 @@
+Le guidage V112 utilise les coordonnées publiées du personnage, sans intervalle de 350 ms. Le test React/Worker et ses 11 contrôles utilisent des coordonnées de composant explicitement préparées ; ils ne prouvent pas un déplacement. Les recettes publiques complètes restent requises.
+
+Les mesures Chromium isolent le calcul pur et excluent le rendu React, la mise en page et la peinture. Le profil à 390 px est une émulation sur le même CPU, sans mesure sur téléphone physique. Les deux diagnostics de contrôleur sont exploratoires, sans certificat. Les résultats R3 échoués sont conservés séparément.

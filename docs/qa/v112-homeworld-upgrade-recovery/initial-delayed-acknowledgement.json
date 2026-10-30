@@ -1,0 +1,30 @@
+{
+  "scope": "Actual Hub callbacks, actual GameClient persistence and justice interval, actual incoming-save effect; one storage readback failure after successful write.",
+  "afterFailed": {
+    "pending": true,
+    "actor": {
+      "x": 7780,
+      "y": 4480
+    },
+    "durableCheckpoint": {
+      "x": 4827.379122065994,
+      "y": 5030.736907870462
+    }
+  },
+  "afterJusticeReconciliation": {
+    "pendingSocialWrite": null,
+    "hubPending": true,
+    "proposal": null,
+    "required": false,
+    "actor": {
+      "x": 7780,
+      "y": 4480
+    },
+    "checkpoint": {
+      "x": 4827.379122065994,
+      "y": 5030.736907870462
+    }
+  },
+  "hubSourceSha256": "2fbc6cd9390e1110683f5fa1235c5f6ba3b8adcadc1e40498edada23ce56d60d",
+  "clientSourceSha256": "d5ba07b8dc20220f528739a2fc45fcd362c12e852daee7d5867953e0c430790c"
+}

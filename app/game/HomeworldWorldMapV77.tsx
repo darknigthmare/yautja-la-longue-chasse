@@ -7,7 +7,7 @@ import {HOMEWORLD_URBAN_FACADES_V78,homeworldUrbanFacadePlacementV78} from './sy
 import {homeworldBuildingGroundFrameV76,homeworldBuildingFootprintV64,homeworldBuildingDoorwayV64} from './systems/homeworldGeometryV64';
 import {homeworldInteriorForPointV64} from './systems/homeworldInteriorsV64';
 import {homeworldAtlasTargetV83,homeworldAtlasSearchV83,homeworldAtlasFloorLinksV83} from './systems/homeworldAtlasLandmarksV83';
-import {homeworldRouteGuidanceV111,homeworldDestinationKeyV109,homeworldRouteResponseCurrentV111,type HomeworldRoutePlanV109,type HomeworldRouteRequestV109} from './systems/homeworldWayfindingV111';
+import {homeworldRouteGuidanceV112,homeworldDestinationKeyV109,homeworldRouteResponseCurrentV112,type HomeworldRoutePlanV109,type HomeworldRouteRequestV109} from './systems/homeworldWayfindingV112';
 import {homeworldAtlasLandmarksV111,homeworldCurrentObjectiveV111} from './systems/homeworldObjectivesV111';
 import {homeworldCargoGeometryKeyV109,homeworldCargoMapLotsV109} from './systems/homeworldNavigationV109';
 import {HOMEWORLD_CARGO_SOLIDS_V108} from './systems/homeworldCargoSolidsV108';
@@ -25,7 +25,9 @@ export default function HomeworldWorldMapV77({actor,levelId,interiorId=null,open
  const [plan,setPlan]=useState<HomeworldRoutePlanV109|null>(null),[routeNotice,setRouteNotice]=useState('');
  const [planning,setPlanning]=useState(false),workerRef=useRef<Worker|null>(null),workerBusy=useRef(false),planningRevision=useRef(0),planningUiFrame=useRef<number|null>(null);
  const workerOwner=useRef<string|null>(null),pendingTarget=useRef<string|null>(null),pendingRequest=useRef<HomeworldRouteRequestV109|null>(null);
- const [routeOrigin,setRouteOrigin]=useState({actor,levelId,interiorId});
+ // The guide describes the same published body as the scene. Retaining a
+ // second origin on a timer can keep a safe old heading after a real turn.
+ const routeOrigin=useMemo(()=>({actor:{x:actor.x,y:actor.y},levelId,interiorId}),[actor.x,actor.y,levelId,interiorId]);
  const live=useRef({actor,levelId,interiorId,save,onOpenChange,open,routeSuspended});
  useLayoutEffect(()=>{live.current={actor,levelId,interiorId,save,onOpenChange,open,routeSuspended};},[actor,levelId,interiorId,save,onOpenChange,open,routeSuspended]);
  const landmarks=useMemo(()=>homeworldAtlasLandmarksV111(save),[save]),requested=homeworldAtlasTargetV83(landmarks,targetId);
@@ -42,7 +44,7 @@ export default function HomeworldWorldMapV77({actor,levelId,interiorId=null,open
  const geometryKey=homeworldCargoGeometryKeyV109(save?.homeworld.cargoV108);
  const cargoLots=useMemo(()=>save?.homeworld.visitedDistrictIds.includes('port')?homeworldCargoMapLotsV109(save.homeworld.cargoV108):[],[save]);
  const planCurrent=!!activePlan&&activePlan.geometryKey===geometryKey&&activePlan.destinationKey===homeworldDestinationKeyV109(activeTarget);
- const guidance=useMemo(()=>activePlan&&save?homeworldRouteGuidanceV111(activePlan,routeOrigin,save):null,[activePlan,routeOrigin,save]);
+ const guidance=useMemo(()=>activePlan&&save?homeworldRouteGuidanceV112(activePlan,routeOrigin,save):null,[activePlan,routeOrigin,save]);
  const actualBuilding=interiorId?HOMEWORLD_BUILDINGS_V77.find(building=>building.id===interiorId):null;
  const mapActor=actualBuilding?homeworldBuildingDoorwayV64(actualBuilding).approach:actor;
  const focusPoints=activePlan&&planCurrent?activePlan.stages.filter(stage=>stage.levelId===selected&&!stage.interiorId).flatMap(stage=>stage.points):[];
@@ -66,7 +68,7 @@ export default function HomeworldWorldMapV77({actor,levelId,interiorId=null,open
   workerOwner.current=owner;pendingTarget.current=id;
   const failed=()=>{if(revision!==planningRevision.current)return;workerRef.current?.terminate();workerRef.current=null;workerBusy.current=false;setPlanning(false);setRouteNotice('Calcul indisponible. Réessaie depuis une rue ou un palier.');};
   try{
-   const worker=workerRef.current??new Worker(new URL('./homeworldRouteWorkerV111.ts',import.meta.url),{type:'module'});workerRef.current=worker;
+   const worker=workerRef.current??new Worker(new URL('./homeworldRouteWorkerV112.ts',import.meta.url),{type:'module'});workerRef.current=worker;
    worker.addEventListener('error',failed,{once:true});
    worker.addEventListener('message',(event:MessageEvent<{plan?:HomeworldRoutePlanV109;error?:string}>)=>{
     if(revision!==planningRevision.current)return;
@@ -74,10 +76,10 @@ export default function HomeworldWorldMapV77({actor,levelId,interiorId=null,open
     workerBusy.current=false;pendingTarget.current=null;pendingRequest.current=null;setPlanning(false);
     const next=event.data.plan,latest=live.current;
     if(!next||event.data.error){setRouteNotice(event.data.error??'Calcul du passage indisponible.');return;}
-    if(!latest.save||!homeworldRouteResponseCurrentV111(request,next,latest.save,{actor:latest.actor,levelId:latest.levelId,interiorId:latest.interiorId})){setRouteNotice('Les lots, le repère ou ton lieu ont changé pendant le calcul. Recalcule depuis ta position actuelle.');return;}
+    if(!latest.save||!homeworldRouteResponseCurrentV112(request,next,latest.save,{actor:latest.actor,levelId:latest.levelId,interiorId:latest.interiorId})){setRouteNotice('Les lots, le repère ou ton lieu ont changé pendant le calcul. Recalcule depuis ta position actuelle.');return;}
     const stillAllowed=homeworldAtlasTargetV83(homeworldAtlasLandmarksV111(latest.save),next.destinationId);
     if(!stillAllowed||stillAllowed.access==='locked'){setRouteNotice('Ce repère a changé de disponibilité. Consulte les conditions de ta partie.');return;}
-    setPlan(next);setRouteOrigin({actor:latest.actor,levelId:latest.levelId,interiorId:latest.interiorId});
+    setPlan(next);
     setRouteNotice(next.status==='reachable'?'Itinéraire prêt. Suis le repère à pied et interagis aux portes et aux paliers.':next.reason);
     if(next.status==='reachable'&&close&&latest.open)latest.onOpenChange(false);
    },{once:true});
@@ -113,12 +115,6 @@ export default function HomeworldWorldMapV77({actor,levelId,interiorId=null,open
   const frame=requestAnimationFrame(()=>{plannedSpace.current=originSpace;prepare(plan.destinationId,false);});
   return()=>cancelAnimationFrame(frame);
  },[plan,save?.createdAt,activeTarget,originSpace,routeSuspended,prepare]);
- useEffect(()=>{
-  if(!activePlan||open||routeSuspended)return;
-  const update=()=>{const current=live.current;setRouteOrigin({actor:current.actor,levelId:current.levelId,interiorId:current.interiorId});};
-  const frame=requestAnimationFrame(update),timer=window.setInterval(update,350);
-  return()=>{cancelAnimationFrame(frame);window.clearInterval(timer);};
- },[activePlan,open,routeSuspended]);
  useEffect(()=>{if(open)ref.current?.focus({preventScroll:true});},[open]);
  const processedRequest=useRef<string|number|undefined>(undefined),requestKey=targetNonce??targetId;
  useEffect(()=>{if(!open||!requestedId||!requestedLevel||processedRequest.current===requestKey)return;const frame=requestAnimationFrame(()=>{processedRequest.current=requestKey;cancelPlanning();setQuery('');setChosenId(requestedId);setSelected(requestedLevel);setInspected(requestedBuilding??null);});return()=>cancelAnimationFrame(frame);},[open,requestedId,requestedLevel,requestedBuilding,requestKey,cancelPlanning]);

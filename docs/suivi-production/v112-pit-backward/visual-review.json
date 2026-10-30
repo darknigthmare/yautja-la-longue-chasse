@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 1,
+  "release": "V112",
+  "reviewedAt": "2026-10-28",
+  "status": "SOURCE_REGIONS_REVIEWED",
+  "scope": "48 original backward-throw BODY drawings, separate attacker/victim and independently drawn starting orientations for the unvaried Feral/Scar duo. Facing labels describe the pre-throw stance; rotating airborne drawings are not certified opposite lateral profiles. Source action completion remains open.",
+  "openedNativeAtlases": 8,
+  "openedNativeIsolatedAttempts": 15,
+  "selectedNativePages": 22,
+  "selectedNativeDrawings": 48,
+  "selectedRegions": [
+    {
+      "fighterId": "feral-hunter",
+      "role": "attacker",
+      "facing": "left",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "observations": "Six distinct complete native silhouettes inspected: identity/equipment, two arms/two legs, initial stance, backward rotation/release or caught/roll/landing/recovery, independent source orientations. Runtime partner contact and apparent scale require the actual public renderer QA separately."
+    },
+    {
+      "fighterId": "feral-hunter",
+      "role": "attacker",
+      "facing": "right",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "observations": "Six distinct complete native silhouettes inspected: identity/equipment, two arms/two legs, initial stance, backward rotation/release or caught/roll/landing/recovery, independent source orientations. Runtime partner contact and apparent scale require the actual public renderer QA separately."
+    },
+    {
+      "fighterId": "feral-hunter",
+      "role": "victim",
+      "facing": "left",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "observations": "Six distinct complete native silhouettes inspected: identity/equipment, two arms/two legs, initial stance, backward rotation/release or caught/roll/landing/recovery, independent source orientations. Runtime partner contact and apparent scale require the actual public renderer QA separately."
+    },
+    {
+      "fighterId": "feral-hunter",
+      "role": "victim",
+      "facing": "right",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "observations": "Six distinct complete native silhouettes inspected: identity/equipment, two arms/two legs, initial stance, backward rotation/release or caught/roll/landing/recovery, independent source orientations. Runtime partner contact and apparent scale require the actual public renderer QA separately."
+    },
+    {
+      "fighterId": "scar",
+      "role": "attacker",
+      "facing": "left",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "observations": "Six distinct complete native silhouettes inspected: identity/equipment, two arms/two legs, initial stance, backward rotation/release or caught/roll/landing/recovery, independent source orientations. Runtime partner contact and apparent scale require the actual public renderer QA separately."
+    },
+    {
+      "fighterId": "scar",
+      "role": "attacker",
+      "facing": "right",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "observations": "Six distinct complete native silhouettes inspected: identity/equipment, two arms/two legs, initial stance, backward rotation/release or caught/roll/landing/recovery, independent source orientations. Runtime partner contact and apparent scale require the actual public renderer QA separately."
+    },
+    {
+      "fighterId": "scar",
+      "role": "victim",
+      "facing": "left",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "observations": "Six distinct complete native silhouettes inspected: identity/equipment, two arms/two legs, initial stance, backward rotation/release or caught/roll/landing/recovery, independent source orientations. Runtime partner contact and apparent scale require the actual public renderer QA separately."
+    },
+    {
+      "fighterId": "scar",
+      "role": "victim",
+      "facing": "right",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "observations": "Six distinct complete native silhouettes inspected: identity/equipment, two arms/two legs, initial stance, backward rotation/release or caught/roll/landing/recovery, independent source orientations. Runtime partner contact and apparent scale require the actual public renderer QA separately."
+    }
+  ],
+  "rejectedAttempts": [
+    {
+      "path": "art-source/v112-pit-backward/rejected/feral-backward-victim-right-v112-isolated-3-v112.png",
+      "reason": "Two round shields, including one on the blade forearm. Rejected independently by art owner and gameplay owner. Replaced by original native r2."
+    }
+  ],
+  "independentVisualReviews": [
+    {
+      "path": "public/game/sprites/v112/pit/feral-hunter/feral-backward-victim-left-v112-isolated-3-v112.png",
+      "result": "PASS_BOUNDED_ANATOMY",
+      "reviewer": "homeworld_open_gameplay_v112"
+    },
+    {
+      "path": "public/game/sprites/v112/pit/feral-hunter/feral-backward-victim-left-v112-isolated-4-v112.png",
+      "result": "PASS_BOUNDED_ANATOMY",
+      "reviewer": "homeworld_open_gameplay_v112"
+    },
+    {
+      "path": "public/game/sprites/v112/pit/feral-hunter/feral-backward-victim-right-v112-isolated-3-v112-r2.png",
+      "result": "PASS_BOUNDED_ANATOMY",
+      "reviewer": "homeworld_open_gameplay_v112"
+    }
+  ],
+  "limits": [
+    "Source illustration review is not a claim of movie-exact canon, complete Excel action delivery, complete kits, or all partners/costumes.",
+    "Facing labels name the initial stance, not a constant mask direction during a shoulder turn or backward roll.",
+    "The source RGB preview contains invisible color in alpha0; runtime keeps the original RGBA and never keys, crops or filters those pixels.",
+    "The quantitative border review and native image decoding are separate from visual anatomy review and compiled-app input journeys."
+  ]
+}

@@ -1,0 +1,169 @@
+{
+  "kind": "PIT_R4_FAILURE_DIAGNOSTIC_NOT_EXECUTED_RESULT",
+  "publishable": false,
+  "rawEvidence": {
+    "path": "/tmp/v112-pit-production-r4/result.json",
+    "sha256": "f3458cf0430bda8be573675221eeb10f1320de521d1c04b4635d2ea60e79879e",
+    "status": "FAIL",
+    "checks": 92,
+    "captures": 29,
+    "completedJourneys": [
+      "FeralScar"
+    ]
+  },
+  "failure": "Error: Public V112 journey timed out: scar-vs-feral-hunter-J2-initial real capture {\"frame\":3288,\"phase\":\"fight\",\"combatPhase\":\"round\",\"terminal\":\"false\",\"blocked\":\"false\",\"recipe\":\"workbook-v112\",\"throw\":null,\"forwardThrow\":null,\"facings\":[1,-1],\"positions\":[{\"x\":642.85,\"y\":0},{\"x\":696.85,\"y\":0}],\"actions\":[{\"phase\":\"idle\",\"normalMove\":null,\"workbookMove\":null,\"actionFrame\":null,\"connected\":null,\"superConfirmed\":null},{\"phase\":\"idle\",\"normalMove\":null,\"workbookMove\":null,\"actionFrame\":null,\"connected\":null,\"superConfirmed\":null}],\"life\":[1010,630],\"meter\":[348,183],\"inventory\":[{\"item\":\"shuriken\",\"status\":\"ready\",\"effectId\":null},{\"item\":\"mine\",\"status\":\"ready\",\"effectId\":null}]}",
+  "observedFacts": [
+    "The FeralScar journey, actual two-round victory, exported V17 input archive and public replay completed.",
+    "Second journey completed both J1 backward throws, including all67painted target coordinates, before the J2initial capture timeout.",
+    "The last completed throw ended at frame390 with both actors idle, health[1010,630], facing[1,-1], positions[643.2,783.2].",
+    "Timeout ends at combatframe3288 with both actors idle, health[1010,630], facing[1,-1], x[642.85,696.85], no current backward or forward capture.",
+    "Failure.png was individually opened; two intact standing bodies remain near each other.",
+    "No JS, console.error, Worker error or failed request; sourceBefore and sourceAfter match."
+  ],
+  "lastCompletedThrow": {
+    "label": "scar-vs-feral-hunter-J1-return",
+    "slot": 0,
+    "input": "button",
+    "before": {
+      "frame": 312,
+      "phase": "fight",
+      "combatPhase": "round",
+      "terminal": "false",
+      "blocked": "false",
+      "recipe": "workbook-v112",
+      "throw": null,
+      "forwardThrow": null,
+      "facings": [
+        -1,
+        1
+      ],
+      "positions": [
+        {
+          "x": 643.2,
+          "y": 0
+        },
+        {
+          "x": 586.9,
+          "y": 0
+        }
+      ],
+      "actions": [
+        {
+          "phase": "idle",
+          "normalMove": null,
+          "workbookMove": null,
+          "actionFrame": null,
+          "connected": null,
+          "superConfirmed": null
+        },
+        {
+          "phase": "idle",
+          "normalMove": null,
+          "workbookMove": null,
+          "actionFrame": null,
+          "connected": null,
+          "superConfirmed": null
+        }
+      ],
+      "life": [
+        1010,
+        740
+      ],
+      "meter": [
+        235,
+        125
+      ],
+      "inventory": [
+        {
+          "item": "shuriken",
+          "status": "ready",
+          "effectId": null
+        },
+        {
+          "item": "mine",
+          "status": "ready",
+          "effectId": null
+        }
+      ]
+    },
+    "after": {
+      "frame": 390,
+      "phase": "fight",
+      "combatPhase": "round",
+      "terminal": "false",
+      "blocked": "false",
+      "recipe": "workbook-v112",
+      "throw": null,
+      "forwardThrow": null,
+      "facings": [
+        1,
+        -1
+      ],
+      "positions": [
+        {
+          "x": 643.2,
+          "y": 0
+        },
+        {
+          "x": 783.2,
+          "y": 0
+        }
+      ],
+      "actions": [
+        {
+          "phase": "idle",
+          "normalMove": null,
+          "workbookMove": null,
+          "actionFrame": null,
+          "connected": null,
+          "superConfirmed": null
+        },
+        {
+          "phase": "idle",
+          "normalMove": null,
+          "workbookMove": null,
+          "actionFrame": null,
+          "connected": null,
+          "superConfirmed": null
+        }
+      ],
+      "life": [
+        1010,
+        630
+      ],
+      "meter": [
+        348,
+        183
+      ],
+      "inventory": [
+        {
+          "item": "shuriken",
+          "status": "ready",
+          "effectId": null
+        },
+        {
+          "item": "mine",
+          "status": "ready",
+          "effectId": null
+        }
+      ]
+    }
+  },
+  "hypothesis": {
+    "status": "UNCONFIRMED",
+    "description": "The keyboard launch holds the three real keys while advancing clock.runFor(17), then releases them without an observed action-start acknowledgement. A single17msclock call can be sensitive to actual simulation/render flush scheduling; input not consumed is a possible explanation.",
+    "limitations": [
+      "The failing launch does not retain its exact local before/after snapshots or keyboard event samples in the immutable raw.",
+      "Terminal idle with unchanged health does not prove whether the command was unconsumed, rejected, or produced an unobserved whiff/action.",
+      "No product defect or timing cause is established retrospectively.",
+      "R3 completed the same Pit code; this does not prove that every R4 failure is timing only."
+    ]
+  },
+  "driver": {
+    "path": "scripts/qa-pit-backward-throws-v112.mjs",
+    "bytes": 35704,
+    "sha256": "9c4992f4536259fb7f9423f8fcda5ba5c078be05042f6aff19160e0cc896a70a",
+    "modified": false
+  },
+  "authorizedNextStep": "One complete, byte-identical canonical retry on the same R4 build in a fresh output directory; no partial journey, assertion change or source mutation."
+}

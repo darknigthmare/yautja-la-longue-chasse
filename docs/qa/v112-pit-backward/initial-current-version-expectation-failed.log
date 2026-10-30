@@ -1,0 +1,157 @@
+TAP version 13
+# Subtest: V16 is opt-in, source 8/3/30 and 110/0, with an explicit unvaried native partner boundary
+ok 1 - V16 is opt-in, source 8/3/30 and 110/0, with an explicit unvaried native partner boundary
+  ---
+  duration_ms: 2.567279
+  type: 'test'
+  ...
+# Subtest: L+M resolves the current assigned keys, touch codes and actual pad buttons only in the opt-in recipe
+ok 2 - L+M resolves the current assigned keys, touch codes and actual pad buttons only in the opt-in recipe
+  ---
+  duration_ms: 0.991056
+  type: 'test'
+  ...
+# Subtest: both independent BODY roles reconstruct their actual source clocks on every tick and on an unobserved mid-flight seek
+ok 3 - both independent BODY roles reconstruct their actual source clocks on every tick and on an unobserved mid-flight seek
+  ---
+  duration_ms: 63.395534
+  type: 'test'
+  ...
+# Subtest: a genuine training knockout holds the native landing drawing through its actual sixty-tick counter
+ok 4 - a genuine training knockout holds the native landing drawing through its actual sixty-tick counter
+  ---
+  duration_ms: 6.513105
+  type: 'test'
+  ...
+# Subtest: the real laboratory exposes the source windows, independent target clock and original V16 reset rules
+ok 5 - the real laboratory exposes the source windows, independent target clock and original V16 reset rules
+  ---
+  duration_ms: 0.938207
+  type: 'test'
+  ...
+# Subtest: each hero, slot and native facing carries one independent body continuously and damages it only at landing
+ok 6 - each hero, slot and native facing carries one independent body continuously and damages it only at landing
+  ---
+  duration_ms: 17.901258
+  type: 'test'
+  ...
+# Subtest: fresh Projection escapes on the first and final reaction ticks, symmetrically, without damage or meter
+ok 7 - fresh Projection escapes on the first and final reaction ticks, symmetrically, without damage or meter
+  ---
+  duration_ms: 2.946858
+  type: 'test'
+  ...
+# Subtest: the CPU can react to the visible V16 capture after five ticks, including when its old resource condition would be true
+ok 8 - the CPU can react to the visible V16 capture after five ticks, including when its old resource condition would be true
+  ---
+  duration_ms: 1.903538
+  type: 'test'
+  ...
+# Subtest: held Projection cannot escape, and a new press after the deadline cannot undo a real landing
+ok 9 - held Projection cannot escape, and a new press after the deadline cannot undo a real landing
+  ---
+  duration_ms: 2.730123
+  type: 'test'
+  ...
+# Subtest: punishing a genuinely played5H recovery does not grant a fresh tech after its original action has been interrupted
+ok 10 - punishing a genuinely played5H recovery does not grant a fresh tech after its original action has been interrupted
+  ---
+  duration_ms: 2.110865
+  type: 'test'
+  ...
+# Subtest: capture consumes input edges and grants no free resource action, jump or queued attack
+ok 11 - capture consumes input edges and grants no free resource action, jump or queued attack
+  ---
+  duration_ms: 1.367771
+  type: 'test'
+  ...
+# Subtest: both actual consumed mission devices stay consumed throughout the new source throw
+ok 12 - both actual consumed mission devices stay consumed throughout the new source throw
+  ---
+  duration_ms: 32.439133
+  type: 'test'
+  ...
+# Subtest: an actual already-placed enemy mine retains its finite identity, age and stock across the bounded pair pause
+ok 13 - an actual already-placed enemy mine retains its finite identity, age and stock across the bounded pair pause
+  ---
+  duration_ms: 2.449963
+  type: 'test'
+  ...
+# Subtest: whiff keeps all source windows and recovery, without damage or a cancel into a held button
+ok 14 - whiff keeps all source windows and recovery, without damage or a cancel into a held button
+  ---
+  duration_ms: 2.592317
+  type: 'test'
+  ...
+# Subtest: simultaneous throws and an actual strike do not give slot one a capture advantage
+ok 15 - simultaneous throws and an actual strike do not give slot one a capture advantage
+  ---
+  duration_ms: 0.68044
+  type: 'test'
+  ...
+# Subtest: air, wake invulnerability, knockdown and existing hitstun are not source capture openings
+ok 16 - air, wake invulnerability, knockdown and existing hitstun are not source capture openings
+  ---
+  duration_ms: 1.396213
+  type: 'test'
+  ...
+# Subtest: either wall truncates the trajectory safely and leaves actual pushboxes separate
+ok 17 - either wall truncates the trajectory safely and leaves actual pushboxes separate
+  ---
+  duration_ms: 18.962398
+  type: 'test'
+  ...
+# Subtest: every source capture/flight/landing snapshot is exact and forged lifecycles are rejected
+ok 18 - every source capture/flight/landing snapshot is exact and forged lifecycles are rejected
+  ---
+  duration_ms: 12.128603
+  type: 'test'
+  ...
+# Subtest: timeout clears a captured or airborne pair without inventing damage or freezing the next round
+ok 19 - timeout clears a captured or airborne pair without inventing damage or freezing the next round
+  ---
+  duration_ms: 1.958295
+  type: 'test'
+  ...
+# Subtest: V16 replays retain real input edges and reject relabelled V15 archives
+not ok 20 - V16 replays retain real input edges and reject relabelled V15 archives
+  ---
+  duration_ms: 13.518227
+  type: 'test'
+  location: '/workspace/yautja-la-longue-chasse/tests/pit-forward-throws-v109.test.mjs:359:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    17 !== 16
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 16
+  actual: 17
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/yautja-la-longue-chasse/tests/pit-forward-throws-v109.test.mjs:375:50)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: a complete two-round V16 match reached only by actual walking and source throws round-trips its real winning archive
+ok 21 - a complete two-round V16 match reached only by actual walking and source throws round-trips its real winning archive
+  ---
+  duration_ms: 219.615635
+  type: 'test'
+  ...
+1..21
+# tests 21
+# suites 0
+# pass 20
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 422.842021

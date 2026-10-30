@@ -24,6 +24,9 @@ import {homeworldStreetDecorCollisionV84,type HomeworldStreetDecorReserveV84,typ
 import {homeworldStreetCompositionCollisionV92} from './homeworldStreetCompositionV92';
 import {HOMEWORLD_URBAN_LOTS_V78,HOMEWORLD_URBAN_GROUND_V78,HOMEWORLD_URBAN_STREETS_V78,homeworldUrbanCorridorV78,homeworldUrbanRectV78} from './homeworldUrbanLayoutV78';
 import {HOMEWORLD_AUTHORED_COURTS_V81} from './homeworldAuthoredLotsV81';
+import {homeworldFoundationSupportsV112} from './homeworldFoundationSupportsV112';
+import {HOMEWORLD_GROUND_JOINTS_V112} from './homeworldGroundJointsV112';
+import {homeworldPublicPlaceCollisionV112} from './homeworldPublicPlacesV112';
 
 /** Overlay of the existing real City model. No new save rewards or parallel game.
  * Vertical coordinates are physical world units, not a CSS transform of actors. */
@@ -95,6 +98,8 @@ const road=(id:string,levelId:HomeworldLevelV77,nodes:HomeworldVec2[],width=260)
  * uniform native scale stay unchanged; real lower/upper terraces support it. */
 export const HOMEWORLD_COUNCIL_STAIR_LANDINGS_V77={from:{levelId:'0' as const,point:{x:4500,y:2900},elevation:0},to:{levelId:'+1' as const,point:{x:4500,y:2720},elevation:520}};
 export const HOMEWORLD_GROUND_V77=[...HOMEWORLD_DISTRICTS_V77,...oldRoads,
+ ...homeworldFoundationSupportsV112(HOMEWORLD_BUILDINGS_V77),
+ ...HOMEWORLD_GROUND_JOINTS_V112,
  // Actual native hulls receive their authored masonry plinths, not borrowed
  // invisible terrain. The V81 renderer extrudes/paves these same polygons.
  {id:'plinth-v81:port-house-east',label:'Socle des équipages · rive est',levelId:'0' as const,polygon:[{x:7285,y:3050},{x:7795,y:3030},{x:7860,y:3095},{x:7850,y:3440},{x:7710,y:3500},{x:7310,y:3460}]},
@@ -172,6 +177,13 @@ export function homeworldTerrainV77(levelId:HomeworldLevelV77,point:HomeworldVec
  return[[0,0],[-1,0],[1,0],[0,-1],[0,1],[-1,-1],[-1,1],[1,-1],[1,1]].every(([x,y])=>{const p={x:point.x+x*Math.max(0,body.halfWidth),y:point.y+y*Math.max(0,body.halfDepth)};return regions.some(g=>p.x>=g.left&&p.x<=g.right&&p.y>=g.top&&p.y<=g.bottom&&pointInHomeworldPolygon(p,g.polygon));});
 }
 export function homeworldCollisionV77(levelId:HomeworldLevelV77,point:HomeworldVec2,body:HomeworldFootprint=HOMEWORLD_ACTOR){
+ const publicPlaceV112=homeworldPublicPlaceCollisionV112(levelId,point,body);if(publicPlaceV112)return{kind:'prop',id:publicPlaceV112};
+ return homeworldCollisionBeforePublicPlacesV112(levelId,point,body);
+}
+/** Explicit previous static collision view for a retained checkpoint recovery.
+ * Only V112 public furniture is excluded; all V92/V84/V83/native solids keep
+ * their complete body geometry and normal collision still includes V112. */
+export function homeworldCollisionBeforePublicPlacesV112(levelId:HomeworldLevelV77,point:HomeworldVec2,body:HomeworldFootprint=HOMEWORLD_ACTOR){
  const compositionV92=homeworldStreetCompositionCollisionV92(levelId,point,body);if(compositionV92)return{kind:'prop',id:compositionV92};
  const streetDecorV84=homeworldStreetDecorCollisionV84(levelId,point,body);if(streetDecorV84)return{kind:'prop',id:streetDecorV84};
  return homeworldPreservedCollisionV77(levelId,point,body);

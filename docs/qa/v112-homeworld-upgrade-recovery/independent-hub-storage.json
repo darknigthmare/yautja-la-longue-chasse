@@ -1,0 +1,77 @@
+{
+  "hubSha256": "07c2d6cbaf4829ef67172f17140c72b3f992042d72ba53297327db7b364df9a4",
+  "moduleSha256": "da3ed465f312e7278384ab614b4c57323ba2e2dd90740205e1cf4ec9c677cbf3",
+  "results": [
+    {
+      "mode": "backup-quota",
+      "refIdentityPreserved": true,
+      "durableBytesPreserved": true,
+      "gameplaySetters": 0,
+      "persistAttempts": 0
+    },
+    {
+      "mode": "persist-throw",
+      "refIdentityPreserved": true,
+      "durableBytesPreserved": true,
+      "gameplaySetters": 0,
+      "persistAttempts": 1
+    },
+    {
+      "mode": "persist-false",
+      "refIdentityPreserved": true,
+      "durableBytesPreserved": true,
+      "gameplaySetters": 0,
+      "persistAttempts": 1
+    },
+    {
+      "mode": "main-quota",
+      "refIdentityPreserved": true,
+      "durableBytesPreserved": true,
+      "gameplaySetters": 0,
+      "persistAttempts": 1
+    },
+    {
+      "mode": "stale-nonce",
+      "refIdentityPreserved": true,
+      "durableBytesPreserved": true,
+      "gameplaySetters": 0,
+      "persistAttempts": 1
+    },
+    {
+      "name": "carried-plaque",
+      "persistAttempts": 1,
+      "replayRefused": true,
+      "fieldToolRetained": true,
+      "movesActor": true,
+      "gameplaySetters": 9,
+      "saveVersion": 12
+    },
+    {
+      "name": "remote-last",
+      "persistAttempts": 1,
+      "replayRefused": true,
+      "fieldToolRetained": true,
+      "movesActor": false,
+      "gameplaySetters": 5,
+      "saveVersion": 12
+    },
+    {
+      "name": "ground-plaque",
+      "persistAttempts": 1,
+      "replayRefused": true,
+      "fieldToolRetained": true,
+      "movesActor": false,
+      "gameplaySetters": 5,
+      "saveVersion": 12
+    },
+    {
+      "name": "continuation-carried-fragment",
+      "persistAttempts": 1,
+      "replayRefused": true,
+      "fieldToolRetained": true,
+      "movesActor": true,
+      "gameplaySetters": 9,
+      "saveVersion": 12
+    }
+  ]
+}

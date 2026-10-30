@@ -1,0 +1,195 @@
+TAP version 13
+# TAP version 13
+# \# Subtest: all14 source patches are retained, seven regional/4plateau patches mounted and three unsupported upper levels explicitly refused
+# ok 1 - all14 source patches are retained, seven regional/4plateau patches mounted and three unsupported upper levels explicitly refused
+#   ---
+#   duration_ms: 1.500529
+#   type: 'test'
+#   ...
+# \# Subtest: regional anchors follow the real translated port and redesigned coast/lava docks, with genuinely supported arrivals
+# ok 2 - regional anchors follow the real translated port and redesigned coast/lava docks, with genuinely supported arrivals
+#   ---
+#   duration_ms: 0.63819
+#   type: 'test'
+#   ...
+# \# Subtest: every mounted patch exposes a substantial retained natural surface in real desktop and mobile arrival cameras
+# ok 3 - every mounted patch exposes a substantial retained natural surface in real desktop and mobile arrival cameras
+#   ---
+#   duration_ms: 2128.44724
+#   type: 'test'
+#   ...
+# \# Subtest: the scene restores all six immutable material windows with uniform pixel scale then exactly one35degree ground projection
+# ok 4 - the scene restores all six immutable material windows with uniform pixel scale then exactly one35degree ground projection
+#   ---
+#   duration_ms: 201.35337
+#   type: 'test'
+#   ...
+# \# Subtest: actual JSX clips ellipses to all existing formations and excludes every active public polygon plus native pad/shuttle paint
+# ok 5 - actual JSX clips ellipses to all existing formations and excludes every active public polygon plus native pad/shuttle paint
+#   ---
+#   duration_ms: 841.43155
+#   type: 'test'
+#   ...
+# \# Subtest: culling and per-floor rendering never paint a refused upper-floor ecotone or a distant natural layer
+# ok 6 - culling and per-floor rendering never paint a refused upper-floor ecotone or a distant natural layer
+#   ---
+#   duration_ms: 240.603466
+#   type: 'test'
+#   ...
+# \# Subtest: the real aggregate codex resolves every relocated anchor and marks refused candidates as documentary, without changing source records
+# ok 7 - the real aggregate codex resolves every relocated anchor and marks refused candidates as documentary, without changing source records
+#   ---
+#   duration_ms: 529.315577
+#   type: 'test'
+#   ...
+# 1..7
+# \# tests 7
+# \# suites 0
+# \# pass 7
+# \# fail 0
+# \# cancelled 0
+# \# skipped 0
+# \# todo 0
+# \# duration_ms 7397.054285
+# Subtest: the seven original V90 ecotone assertions pass against their exact historical renderer
+ok 1 - the seven original V90 ecotone assertions pass against their exact historical renderer
+  ---
+  duration_ms: 15822.642312
+  type: 'test'
+  ...
+# Subtest: V112 retains every inherited requirement and keeps nine actions inside the 56 source rows
+not ok 2 - V112 retains every inherited requirement and keeps nine actions inside the 56 source rows
+  ---
+  duration_ms: 71.320163
+  type: 'test'
+  location: '/workspace/yautja-la-longue-chasse/tests/homeworld-excel-followup-v112.test.mjs:15:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Changed evidence size: docs/qa/v112-pit-backward/model-validation.json
+    
+    1988 !== 792
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 792
+  actual: 1988
+  operator: 'strictEqual'
+  stack: |-
+    verifyProof (file:///workspace/yautja-la-longue-chasse/scripts/build-homeworld-followup-v112.mjs:30:42)
+    async collectFollowupV112 (file:///workspace/yautja-la-longue-chasse/scripts/build-homeworld-followup-v112.mjs:180:29)
+    async TestContext.<anonymous> (file:///workspace/yautja-la-longue-chasse/tests/homeworld-excel-followup-v112.test.mjs:16:20)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: unrelated closures, partial closures, duplicate workstreams and unsupported browser promotions are refused
+ok 3 - unrelated closures, partial closures, duplicate workstreams and unsupported browser promotions are refused
+  ---
+  duration_ms: 35.560612
+  type: 'test'
+  ...
+# Subtest: 122 worksheets retain all 113 historical parts and detect a cell-text-only mutation precisely
+not ok 4 - 122 worksheets retain all 113 historical parts and detect a cell-text-only mutation precisely
+  ---
+  duration_ms: 73.124874
+  type: 'test'
+  location: '/workspace/yautja-la-longue-chasse/tests/homeworld-excel-followup-v112.test.mjs:40:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Changed evidence size: docs/qa/v112-pit-backward/model-validation.json
+    
+    1988 !== 792
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 792
+  actual: 1988
+  operator: 'strictEqual'
+  stack: |-
+    verifyProof (file:///workspace/yautja-la-longue-chasse/scripts/build-homeworld-followup-v112.mjs:30:42)
+    async collectFollowupV112 (file:///workspace/yautja-la-longue-chasse/scripts/build-homeworld-followup-v112.mjs:180:29)
+    async TestContext.<anonymous> (file:///workspace/yautja-la-longue-chasse/tests/homeworld-excel-followup-v112.test.mjs:41:20)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: a historical V111 production report cannot certify V112
+ok 5 - a historical V111 production report cannot certify V112
+  ---
+  duration_ms: 30.537348
+  type: 'test'
+  ...
+# Subtest: failed or omitted network requests cannot receive a current production pass
+ok 6 - failed or omitted network requests cannot receive a current production pass
+  ---
+  duration_ms: 6.256871
+  type: 'test'
+  ...
+# Subtest: real raw file identities match frozen path identities without rewriting the executed evidence
+ok 7 - real raw file identities match frozen path identities without rewriting the executed evidence
+  ---
+  duration_ms: 0.51583
+  type: 'test'
+  ...
+# Subtest: conflicting path aliases, duplicate observations and changed frozen bytes cannot be hidden by normalization
+ok 8 - conflicting path aliases, duplicate observations and changed frozen bytes cannot be hidden by normalization
+  ---
+  duration_ms: 1.278642
+  type: 'test'
+  ...
+# Subtest: V112 workbook and metadata reproduce exactly without executing historical gameplay or native Excel
+not ok 9 - V112 workbook and metadata reproduce exactly without executing historical gameplay or native Excel
+  ---
+  duration_ms: 65.043933
+  type: 'test'
+  location: '/workspace/yautja-la-longue-chasse/tests/homeworld-excel-followup-v112.test.mjs:107:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Changed evidence size: docs/qa/v112-pit-backward/model-validation.json
+    
+    1988 !== 792
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 792
+  actual: 1988
+  operator: 'strictEqual'
+  stack: |-
+    verifyProof (file:///workspace/yautja-la-longue-chasse/scripts/build-homeworld-followup-v112.mjs:30:42)
+    async collectFollowupV112 (file:///workspace/yautja-la-longue-chasse/scripts/build-homeworld-followup-v112.mjs:180:29)
+    async generateFollowupV112 (file:///workspace/yautja-la-longue-chasse/scripts/build-homeworld-followup-v112.mjs:247:20)
+    async TestContext.<anonymous> (file:///workspace/yautja-la-longue-chasse/tests/homeworld-excel-followup-v112.test.mjs:109:17)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: history retains sixteen original V111 files plus original V90 assertions and a private real Git identity
+ok 10 - history retains sixteen original V111 files plus original V90 assertions and a private real Git identity
+  ---
+  duration_ms: 8394.642655
+  type: 'test'
+  ...
+# Subtest: tampering with private V111 source or its private Git HEAD is rejected without changing current files
+ok 11 - tampering with private V111 source or its private Git HEAD is rejected without changing current files
+  ---
+  duration_ms: 3197.450363
+  type: 'test'
+  ...
+# Subtest: V112 history executes the unchanged V111 doorway assertions and refuses tests outside the reviewed inventory
+ok 12 - V112 history executes the unchanged V111 doorway assertions and refuses tests outside the reviewed inventory
+  ---
+  duration_ms: 21625.336356
+  type: 'test'
+  ...
+# Subtest: the superseded V90 renderer keeps its seven exact assertions in the private original application
+ok 13 - the superseded V90 renderer keeps its seven exact assertions in the private original application
+  ---
+  duration_ms: 10712.90433
+  type: 'test'
+  ...
+1..13
+# tests 13
+# suites 0
+# pass 10
+# fail 3
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 61192.675686

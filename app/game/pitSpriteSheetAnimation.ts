@@ -233,11 +233,12 @@ export async function loadPitSpriteSheetAnimations(
           variantId: atlas.variantId, clipId: merged.id, facing: merged.facing, minimumDistinctFrames: 3 }], prepared);
         if (accepted.coveredCount === 1) clips.forEach(clip => readyClips.add(clipKey(clip.id, clip.facing)));
       }
-      // V109 miss/tech/KO states hold an explicitly selected drawing from a
+      // V109/V112 miss/tech/KO states hold an explicitly selected drawing from a
       // complete, independently decoded six-drawing role. A one-frame crop
       // cannot certify this cycle or borrow a drawing from another role.
-      for (const facing of ['right', 'left'] as const) {
-        const family = 'pit.stand.workbook-v109.TH_F.';
+      for (const facing of ['right', 'left'] as const) for (const family of [
+        'pit.stand.workbook-v109.TH_F.', 'pit.stand.workbook-v112.TH_B.',
+      ]) {
         const actorIds = ['startup', 'active', 'recovery.connected'].map(phase => family + phase);
         const actor = actorIds.map(id => atlas.clips.find(clip => clip.id === id && clip.facing === facing));
         const victim = atlas.clips.find(clip => clip.id === family + 'victim' && clip.facing === facing);
@@ -364,7 +365,7 @@ export function resolvePitSpriteSheetPresentation(
       (fighter.facing !== 1 && fighter.facing !== -1)) return null;
   const facing = fighter.facing === 1 ? "right" : "left";
   const choices: { id: string; mode: "play" | "first" | "last"; status: PitSpriteSheetPresentationFrame["status"] }[] = [];
-  const workbookV105 = (fighter.normalMovesRecipe === 'workbook-v105' || fighter.normalMovesRecipe === 'workbook-v106' || fighter.normalMovesRecipe === 'workbook-v107' || fighter.normalMovesRecipe === 'workbook-v109') && !fighter.variantId;
+  const workbookV105 = (fighter.normalMovesRecipe === 'workbook-v105' || fighter.normalMovesRecipe === 'workbook-v106' || fighter.normalMovesRecipe === 'workbook-v107' || fighter.normalMovesRecipe === 'workbook-v109' || fighter.normalMovesRecipe === 'workbook-v112') && !fighter.variantId;
   if (workbookV105) {
     const family = 'pit.presentation.workbook-v105.';
     if (cue.kind === 'intro' || cue.kind === 'victory' || cue.kind === 'defeat') {
@@ -419,7 +420,7 @@ export function resolvePitSpriteSheetPresentation(
 /** Capability query from the real decoded bank: fallback poses do not authorize
  * a voluntary gesture. This temporary view never enters the engine or replay. */
 export function pitNativeTauntDurationV93(bank: PitSpriteSheetAnimationBank | null | undefined, fighter: PitFighterState): number | null {
-  if (fighter.normalMovesRecipe === 'workbook-v105' || fighter.normalMovesRecipe === 'workbook-v106' || fighter.normalMovesRecipe === 'workbook-v107' || fighter.normalMovesRecipe === 'workbook-v109') return pitNativePresentationDurationV105(bank, fighter, 'taunt');
+  if (fighter.normalMovesRecipe === 'workbook-v105' || fighter.normalMovesRecipe === 'workbook-v106' || fighter.normalMovesRecipe === 'workbook-v107' || fighter.normalMovesRecipe === 'workbook-v109' || fighter.normalMovesRecipe === 'workbook-v112') return pitNativePresentationDurationV105(bank, fighter, 'taunt');
   const native = resolvePitSpriteSheetPresentation(bank, fighter, { presentation: { phase: "fight", elapsedMs: 0,
     durationMs: 1000, round: 1, blocksSimulation: false, resultVisible: false, fighterTaunts: [true, true] } });
   if (!native || native.status !== "dedicated-animation" || native.frame.clip.id !== "pit.presentation.taunt" || native.frame.clip.loop) return null;
@@ -437,7 +438,7 @@ export function pitNativePresentationDurationV105(
   tauntVariant: 1 | 2 = 1,
 ): number | null {
   const proof = bank && evidence.get(bank);
-  if ((fighter.normalMovesRecipe !== 'workbook-v105' && fighter.normalMovesRecipe !== 'workbook-v106' && fighter.normalMovesRecipe !== 'workbook-v107' && fighter.normalMovesRecipe !== 'workbook-v109') || fighter.variantId || !proof || bank.cancelled || proof.signal?.aborted ||
+  if ((fighter.normalMovesRecipe !== 'workbook-v105' && fighter.normalMovesRecipe !== 'workbook-v106' && fighter.normalMovesRecipe !== 'workbook-v107' && fighter.normalMovesRecipe !== 'workbook-v109' && fighter.normalMovesRecipe !== 'workbook-v112') || fighter.variantId || !proof || bank.cancelled || proof.signal?.aborted ||
       (fighter.facing !== 1 && fighter.facing !== -1) || (tauntVariant !== 1 && tauntVariant !== 2) ||
       !proof.selections.has(selectionKey(fighter.definitionId, fighter.variantId))) return null;
   const id = 'pit.presentation.workbook-v105.' + (kind === 'taunt' ? 'taunt.' + tauntVariant : kind);

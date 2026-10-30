@@ -1,0 +1,203 @@
+{
+  "scenario": "changed-document",
+  "mainWrites": 1,
+  "scope": "Actual Hub callbacks, actual GameClient persistence and justice interval, actual incoming-save effect; one storage readback failure after successful write.",
+  "afterFailed": {
+    "pending": true,
+    "actor": {
+      "x": 7780,
+      "y": 4480
+    },
+    "durableCheckpoint": {
+      "x": 4827.379122065994,
+      "y": 5030.736907870462
+    }
+  },
+  "afterJusticeReconciliation": {
+    "pendingSocialWrite": null,
+    "hubPending": true,
+    "proposal": {
+      "key": "[\"2026-10-28T10:00:00.000Z\",\"{\\\"version\\\":1,\\\"layoutRevision\\\":1,\\\"ownerCreatedAt\\\":\\\"2026-10-28T10:00:00.000Z\\\",\\\"levelId\\\":\\\"0\\\",\\\"exterior\\\":{\\\"x\\\":4799.825914935707,\\\"y\\\":4964.21758152965},\\\"interiorId\\\":null,\\\"local\\\":null}\",\"{\\\"archivePlaqueV109\\\":{\\\"version\\\":1,\\\"ownerCreatedAt\\\":\\\"2026-10-28T10:00:00.000Z\\\",\\\"revision\\\":9,\\\"receipt\\\":{\\\"sceneId\\\":\\\"D6-W-PNJ-ROLE-03\\\",\\\"operationId\\\":\\\"port-k17-separated-plaque-study-v109\\\",\\\"sourceSha256\\\":\\\"87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183\\\",\\\"sourceCorpusSha256\\\":\\\"e36efdc3d5ac8fddb74dd683458b72873203446204e768b02aa13e4db17eed30\\\",\\\"artSha256\\\":\\\"a47fb32cfc7b5f2c4e5721c660c9a2d68ac4dee1ee869d5175f41dd2278c49fe\\\",\\\"phase\\\":\\\"interrupted\\\",\\\"resumePhase\\\":\\\"working\\\",\\\"option\\\":\\\"A\\\",\\\"last\\\":{\\\"x\\\":4799.825914935707,\\\"y\\\":4964.21758152965},\\\"walked\\\":3378.6135562708223,\\\"objects\\\":[{\\\"id\\\":\\\"plaque\\\",\\\"x\\\":4799.825914935707,\\\"y\\\":4964.21758152965,\\\"place\\\":\\\"carried\\\"},{\\\"id\\\":\\\"trace\\\",\\\"x\\\":7880,\\\"y\\\":5260,\\\"place\\\":\\\"source\\\"},{\\\"id\\\":\\\"fragment\\\",\\\"x\\\":7520,\\\"y\\\":5470,\\\"place\\\":\\\"source\\\"}],\\\"carrier\\\":\\\"plaque\\\",\\\"pickupWalked\\\":240.87065412307132,\\\"observations\\\":[\\\"plaque\\\"],\\\"provenances\\\":[\\\"plaque\\\"],\\\"ownerConsent\\\":true,\\\"edgeObserved\\\":false,\\\"mismatchObserved\\\":false,\\\"failureSpoken\\\":false,\\\"resumeSpoken\\\":false,\\\"fragmentCompared\\\":false,\\\"interruptedCount\\\":1,\\\"lineIds\\\":[\\\"D6-W-PNJ-ROLE-03-OUV---01\\\",\\\"D6-W-PNJ-ROLE-03-CHOIX-A-01\\\",\\\"D6-W-PNJ-ROLE-03-REPONSE-A-01\\\"]}}}\",7780,4480,\"0\",null,\"{\\\"version\\\":1,\\\"operationId\\\":\\\"homeworld-public-furniture-migration-v112\\\",\\\"ownerCreatedAt\\\":\\\"2026-10-28T10:00:00.000Z\\\",\\\"originalCheckpointPresent\\\":true,\\\"originalCheckpointJson\\\":\\\"{\\\\\\\"version\\\\\\\":1,\\\\\\\"layoutRevision\\\\\\\":1,\\\\\\\"ownerCreatedAt\\\\\\\":\\\\\\\"2026-10-28T10:00:00.000Z\\\\\\\",\\\\\\\"levelId\\\\\\\":\\\\\\\"0\\\\\\\",\\\\\\\"exterior\\\\\\\":{\\\\\\\"x\\\\\\\":4799.825914935707,\\\\\\\"y\\\\\\\":4964.21758152965},\\\\\\\"interiorId\\\\\\\":null,\\\\\\\"local\\\\\\\":null}\\\",\\\"originalLedgersJson\\\":\\\"{\\\\\\\"archivePlaqueV109\\\\\\\":{\\\\\\\"version\\\\\\\":1,\\\\\\\"ownerCreatedAt\\\\\\\":\\\\\\\"2026-10-28T10:00:00.000Z\\\\\\\",\\\\\\\"revision\\\\\\\":9,\\\\\\\"receipt\\\\\\\":{\\\\\\\"sceneId\\\\\\\":\\\\\\\"D6-W-PNJ-ROLE-03\\\\\\\",\\\\\\\"operationId\\\\\\\":\\\\\\\"port-k17-separated-plaque-study-v109\\\\\\\",\\\\\\\"sourceSha256\\\\\\\":\\\\\\\"87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183\\\\\\\",\\\\\\\"sourceCorpusSha256\\\\\\\":\\\\\\\"e36efdc3d5ac8fddb74dd683458b72873203446204e768b02aa13e4db17eed30\\\\\\\",\\\\\\\"artSha256\\\\\\\":\\\\\\\"a47fb32cfc7b5f2c4e5721c660c9a2d68ac4dee1ee869d5175f41dd2278c49fe\\\\\\\",\\\\\\\"phase\\\\\\\":\\\\\\\"interrupted\\\\\\\",\\\\\\\"resumePhase\\\\\\\":\\\\\\\"working\\\\\\\",\\\\\\\"option\\\\\\\":\\\\\\\"A\\\\\\\",\\\\\\\"last\\\\\\\":{\\\\\\\"x\\\\\\\":4799.825914935707,\\\\\\\"y\\\\\\\":4964.21758152965},\\\\\\\"walked\\\\\\\":3378.6135562708223,\\\\\\\"objects\\\\\\\":[{\\\\\\\"id\\\\\\\":\\\\\\\"plaque\\\\\\\",\\\\\\\"x\\\\\\\":4799.825914935707,\\\\\\\"y\\\\\\\":4964.21758152965,\\\\\\\"place\\\\\\\":\\\\\\\"carried\\\\\\\"},{\\\\\\\"id\\\\\\\":\\\\\\\"trace\\\\\\\",\\\\\\\"x\\\\\\\":7880,\\\\\\\"y\\\\\\\":5260,\\\\\\\"place\\\\\\\":\\\\\\\"source\\\\\\\"},{\\\\\\\"id\\\\\\\":\\\\\\\"fragment\\\\\\\",\\\\\\\"x\\\\\\\":7520,\\\\\\\"y\\\\\\\":5470,\\\\\\\"place\\\\\\\":\\\\\\\"source\\\\\\\"}],\\\\\\\"carrier\\\\\\\":\\\\\\\"plaque\\\\\\\",\\\\\\\"pickupWalked\\\\\\\":240.87065412307132,\\\\\\\"observations\\\\\\\":[\\\\\\\"plaque\\\\\\\"],\\\\\\\"provenances\\\\\\\":[\\\\\\\"plaque\\\\\\\"],\\\\\\\"ownerConsent\\\\\\\":true,\\\\\\\"edgeObserved\\\\\\\":false,\\\\\\\"mismatchObserved\\\\\\\":false,\\\\\\\"failureSpoken\\\\\\\":false,\\\\\\\"resumeSpoken\\\\\\\":false,\\\\\\\"fragmentCompared\\\\\\\":false,\\\\\\\"interruptedCount\\\\\\\":1,\\\\\\\"lineIds\\\\\\\":[\\\\\\\"D6-W-PNJ-ROLE-03-OUV---01\\\\\\\",\\\\\\\"D6-W-PNJ-ROLE-03-CHOIX-A-01\\\\\\\",\\\\\\\"D6-W-PNJ-ROLE-03-REPONSE-A-01\\\\\\\"]}}}\\\",\\\"restoredCheckpoint\\\":{\\\"version\\\":1,\\\"layoutRevision\\\":1,\\\"ownerCreatedAt\\\":\\\"2026-10-28T10:00:00.000Z\\\",\\\"levelId\\\":\\\"0\\\",\\\"exterior\\\":{\\\"x\\\":4827.379122065994,\\\"y\\\":5030.736907870462},\\\"interiorId\\\":null,\\\"local\\\":null},\\\"migratedLedgersJson\\\":\\\"{\\\\\\\"archivePlaqueV109\\\\\\\":{\\\\\\\"version\\\\\\\":1,\\\\\\\"ownerCreatedAt\\\\\\\":\\\\\\\"2026-10-28T10:00:00.000Z\\\\\\\",\\\\\\\"revision\\\\\\\":10,\\\\\\\"receipt\\\\\\\":{\\\\\\\"sceneId\\\\\\\":\\\\\\\"D6-W-PNJ-ROLE-03\\\\\\\",\\\\\\\"operationId\\\\\\\":\\\\\\\"port-k17-separated-plaque-study-v109\\\\\\\",\\\\\\\"sourceSha256\\\\\\\":\\\\\\\"87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183\\\\\\\",\\\\\\\"sourceCorpusSha256\\\\\\\":\\\\\\\"e36efdc3d5ac8fddb74dd683458b72873203446204e768b02aa13e4db17eed30\\\\\\\",\\\\\\\"artSha256\\\\\\\":\\\\\\\"a47fb32cfc7b5f2c4e5721c660c9a2d68ac4dee1ee869d5175f41dd2278c49fe\\\\\\\",\\\\\\\"phase\\\\\\\":\\\\\\\"interrupted\\\\\\\",\\\\\\\"resumePhase\\\\\\\":\\\\\\\"working\\\\\\\",\\\\\\\"option\\\\\\\":\\\\\\\"A\\\\\\\",\\\\\\\"last\\\\\\\":{\\\\\\\"x\\\\\\\":4827.379122065994,\\\\\\\"y\\\\\\\":5030.736907870462},\\\\\\\"walked\\\\\\\":3378.6135562708223,\\\\\\\"objects\\\\\\\":[{\\\\\\\"id\\\\\\\":\\\\\\\"plaque\\\\\\\",\\\\\\\"x\\\\\\\":4827.379122065994,\\\\\\\"y\\\\\\\":5030.736907870462,\\\\\\\"place\\\\\\\":\\\\\\\"carried\\\\\\\"},{\\\\\\\"id\\\\\\\":\\\\\\\"trace\\\\\\\",\\\\\\\"x\\\\\\\":7880,\\\\\\\"y\\\\\\\":5260,\\\\\\\"place\\\\\\\":\\\\\\\"source\\\\\\\"},{\\\\\\\"id\\\\\\\":\\\\\\\"fragment\\\\\\\",\\\\\\\"x\\\\\\\":7520,\\\\\\\"y\\\\\\\":5470,\\\\\\\"place\\\\\\\":\\\\\\\"source\\\\\\\"}],\\\\\\\"carrier\\\\\\\":\\\\\\\"plaque\\\\\\\",\\\\\\\"pickupWalked\\\\\\\":240.87065412307132,\\\\\\\"observations\\\\\\\":[\\\\\\\"plaque\\\\\\\"],\\\\\\\"provenances\\\\\\\":[\\\\\\\"plaque\\\\\\\"],\\\\\\\"ownerConsent\\\\\\\":true,\\\\\\\"edgeObserved\\\\\\\":false,\\\\\\\"mismatchObserved\\\\\\\":false,\\\\\\\"failureSpoken\\\\\\\":false,\\\\\\\"resumeSpoken\\\\\\\":false,\\\\\\\"fragmentCompared\\\\\\\":false,\\\\\\\"interruptedCount\\\\\\\":1,\\\\\\\"lineIds\\\\\\\":[\\\\\\\"D6-W-PNJ-ROLE-03-OUV---01\\\\\\\",\\\\\\\"D6-W-PNJ-ROLE-03-CHOIX-A-01\\\\\\\",\\\\\\\"D6-W-PNJ-ROLE-03-REPONSE-A-01\\\\\\\"]}}}\\\",\\\"changedLedgerKeys\\\":[\\\"archivePlaqueV109\\\"],\\\"migrations\\\":[{\\\"kind\\\":\\\"checkpoint\\\",\\\"from\\\":{\\\"x\\\":4799.825914935707,\\\"y\\\":4964.21758152965},\\\"obstacleId\\\":\\\"public-place-v112:traveler-marker\\\",\\\"to\\\":{\\\"x\\\":4827.379122065994,\\\"y\\\":5030.736907870462}},{\\\"kind\\\":\\\"operation-last\\\",\\\"ledgerKey\\\":\\\"archivePlaqueV109\\\",\\\"study\\\":false,\\\"from\\\":{\\\"x\\\":4799.825914935707,\\\"y\\\":4964.21758152965},\\\"obstacleId\\\":\\\"public-place-v112:traveler-marker\\\",\\\"to\\\":{\\\"x\\\":4827.379122065994,\\\"y\\\":5030.736907870462}}],\\\"source\\\":\\\"new-local-geometry-position\\\"}\"]",
+      "ownerCreatedAt": "2026-10-28T10:00:00.000Z",
+      "from": {
+        "x": 4799.825914935707,
+        "y": 4964.21758152965
+      },
+      "to": {
+        "x": 4827.379122065994,
+        "y": 5030.736907870462
+      },
+      "movesActor": true,
+      "checkpoint": {
+        "version": 1,
+        "layoutRevision": 1,
+        "ownerCreatedAt": "2026-10-28T10:00:00.000Z",
+        "levelId": "0",
+        "exterior": {
+          "x": 4827.379122065994,
+          "y": 5030.736907870462
+        },
+        "interiorId": null,
+        "local": null
+      },
+      "ledgers": {
+        "archivePlaqueV109": {
+          "version": 1,
+          "ownerCreatedAt": "2026-10-28T10:00:00.000Z",
+          "revision": 10,
+          "receipt": {
+            "sceneId": "D6-W-PNJ-ROLE-03",
+            "operationId": "port-k17-separated-plaque-study-v109",
+            "sourceSha256": "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183",
+            "sourceCorpusSha256": "e36efdc3d5ac8fddb74dd683458b72873203446204e768b02aa13e4db17eed30",
+            "artSha256": "a47fb32cfc7b5f2c4e5721c660c9a2d68ac4dee1ee869d5175f41dd2278c49fe",
+            "phase": "interrupted",
+            "resumePhase": "working",
+            "option": "A",
+            "last": {
+              "x": 4827.379122065994,
+              "y": 5030.736907870462
+            },
+            "walked": 3378.6135562708223,
+            "objects": [
+              {
+                "id": "plaque",
+                "x": 4827.379122065994,
+                "y": 5030.736907870462,
+                "place": "carried"
+              },
+              {
+                "id": "trace",
+                "x": 7880,
+                "y": 5260,
+                "place": "source"
+              },
+              {
+                "id": "fragment",
+                "x": 7520,
+                "y": 5470,
+                "place": "source"
+              }
+            ],
+            "carrier": "plaque",
+            "pickupWalked": 240.87065412307132,
+            "observations": [
+              "plaque"
+            ],
+            "provenances": [
+              "plaque"
+            ],
+            "ownerConsent": true,
+            "edgeObserved": false,
+            "mismatchObserved": false,
+            "failureSpoken": false,
+            "resumeSpoken": false,
+            "fragmentCompared": false,
+            "interruptedCount": 1,
+            "lineIds": [
+              "D6-W-PNJ-ROLE-03-OUV---01",
+              "D6-W-PNJ-ROLE-03-CHOIX-A-01",
+              "D6-W-PNJ-ROLE-03-REPONSE-A-01"
+            ]
+          }
+        }
+      },
+      "migrations": [
+        {
+          "kind": "checkpoint",
+          "from": {
+            "x": 4799.825914935707,
+            "y": 4964.21758152965
+          },
+          "obstacleId": "public-place-v112:traveler-marker",
+          "to": {
+            "x": 4827.379122065994,
+            "y": 5030.736907870462
+          }
+        },
+        {
+          "kind": "operation-last",
+          "ledgerKey": "archivePlaqueV109",
+          "study": false,
+          "from": {
+            "x": 4799.825914935707,
+            "y": 4964.21758152965
+          },
+          "obstacleId": "public-place-v112:traveler-marker",
+          "to": {
+            "x": 4827.379122065994,
+            "y": 5030.736907870462
+          }
+        }
+      ],
+      "changedLedgerKeys": [
+        "archivePlaqueV109"
+      ],
+      "backup": {
+        "version": 1,
+        "operationId": "homeworld-public-furniture-migration-v112",
+        "ownerCreatedAt": "2026-10-28T10:00:00.000Z",
+        "originalCheckpointPresent": true,
+        "originalCheckpointJson": "{\"version\":1,\"layoutRevision\":1,\"ownerCreatedAt\":\"2026-10-28T10:00:00.000Z\",\"levelId\":\"0\",\"exterior\":{\"x\":4799.825914935707,\"y\":4964.21758152965},\"interiorId\":null,\"local\":null}",
+        "originalLedgersJson": "{\"archivePlaqueV109\":{\"version\":1,\"ownerCreatedAt\":\"2026-10-28T10:00:00.000Z\",\"revision\":9,\"receipt\":{\"sceneId\":\"D6-W-PNJ-ROLE-03\",\"operationId\":\"port-k17-separated-plaque-study-v109\",\"sourceSha256\":\"87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183\",\"sourceCorpusSha256\":\"e36efdc3d5ac8fddb74dd683458b72873203446204e768b02aa13e4db17eed30\",\"artSha256\":\"a47fb32cfc7b5f2c4e5721c660c9a2d68ac4dee1ee869d5175f41dd2278c49fe\",\"phase\":\"interrupted\",\"resumePhase\":\"working\",\"option\":\"A\",\"last\":{\"x\":4799.825914935707,\"y\":4964.21758152965},\"walked\":3378.6135562708223,\"objects\":[{\"id\":\"plaque\",\"x\":4799.825914935707,\"y\":4964.21758152965,\"place\":\"carried\"},{\"id\":\"trace\",\"x\":7880,\"y\":5260,\"place\":\"source\"},{\"id\":\"fragment\",\"x\":7520,\"y\":5470,\"place\":\"source\"}],\"carrier\":\"plaque\",\"pickupWalked\":240.87065412307132,\"observations\":[\"plaque\"],\"provenances\":[\"plaque\"],\"ownerConsent\":true,\"edgeObserved\":false,\"mismatchObserved\":false,\"failureSpoken\":false,\"resumeSpoken\":false,\"fragmentCompared\":false,\"interruptedCount\":1,\"lineIds\":[\"D6-W-PNJ-ROLE-03-OUV---01\",\"D6-W-PNJ-ROLE-03-CHOIX-A-01\",\"D6-W-PNJ-ROLE-03-REPONSE-A-01\"]}}}",
+        "restoredCheckpoint": {
+          "version": 1,
+          "layoutRevision": 1,
+          "ownerCreatedAt": "2026-10-28T10:00:00.000Z",
+          "levelId": "0",
+          "exterior": {
+            "x": 4827.379122065994,
+            "y": 5030.736907870462
+          },
+          "interiorId": null,
+          "local": null
+        },
+        "migratedLedgersJson": "{\"archivePlaqueV109\":{\"version\":1,\"ownerCreatedAt\":\"2026-10-28T10:00:00.000Z\",\"revision\":10,\"receipt\":{\"sceneId\":\"D6-W-PNJ-ROLE-03\",\"operationId\":\"port-k17-separated-plaque-study-v109\",\"sourceSha256\":\"87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183\",\"sourceCorpusSha256\":\"e36efdc3d5ac8fddb74dd683458b72873203446204e768b02aa13e4db17eed30\",\"artSha256\":\"a47fb32cfc7b5f2c4e5721c660c9a2d68ac4dee1ee869d5175f41dd2278c49fe\",\"phase\":\"interrupted\",\"resumePhase\":\"working\",\"option\":\"A\",\"last\":{\"x\":4827.379122065994,\"y\":5030.736907870462},\"walked\":3378.6135562708223,\"objects\":[{\"id\":\"plaque\",\"x\":4827.379122065994,\"y\":5030.736907870462,\"place\":\"carried\"},{\"id\":\"trace\",\"x\":7880,\"y\":5260,\"place\":\"source\"},{\"id\":\"fragment\",\"x\":7520,\"y\":5470,\"place\":\"source\"}],\"carrier\":\"plaque\",\"pickupWalked\":240.87065412307132,\"observations\":[\"plaque\"],\"provenances\":[\"plaque\"],\"ownerConsent\":true,\"edgeObserved\":false,\"mismatchObserved\":false,\"failureSpoken\":false,\"resumeSpoken\":false,\"fragmentCompared\":false,\"interruptedCount\":1,\"lineIds\":[\"D6-W-PNJ-ROLE-03-OUV---01\",\"D6-W-PNJ-ROLE-03-CHOIX-A-01\",\"D6-W-PNJ-ROLE-03-REPONSE-A-01\"]}}}",
+        "changedLedgerKeys": [
+          "archivePlaqueV109"
+        ],
+        "migrations": [
+          {
+            "kind": "checkpoint",
+            "from": {
+              "x": 4799.825914935707,
+              "y": 4964.21758152965
+            },
+            "obstacleId": "public-place-v112:traveler-marker",
+            "to": {
+              "x": 4827.379122065994,
+              "y": 5030.736907870462
+            }
+          },
+          {
+            "kind": "operation-last",
+            "ledgerKey": "archivePlaqueV109",
+            "study": false,
+            "from": {
+              "x": 4799.825914935707,
+              "y": 4964.21758152965
+            },
+            "obstacleId": "public-place-v112:traveler-marker",
+            "to": {
+              "x": 4827.379122065994,
+              "y": 5030.736907870462
+            }
+          }
+        ],
+        "source": "new-local-geometry-position"
+      },
+      "backupKey": "yautja.homeworld-geometry-recovery.v112.2026-10-28T10:00:00.000Z.9f854c17"
+    },
+    "required": false,
+    "actor": {
+      "x": 7780,
+      "y": 4480
+    },
+    "checkpoint": {
+      "x": 4827.379122065994,
+      "y": 5030.736907870462
+    }
+  },
+  "hubSourceSha256": "07c2d6cbaf4829ef67172f17140c72b3f992042d72ba53297327db7b364df9a4",
+  "clientSourceSha256": "d5ba07b8dc20220f528739a2fc45fcd362c12e852daee7d5867953e0c430790c"
+}

@@ -1,0 +1,46 @@
+TAP version 13
+# Subtest: the two exact joints occupy measured unsupported pockets between retained same-floor pavements
+ok 1 - the two exact joints occupy measured unsupported pockets between retained same-floor pavements
+  ---
+  duration_ms: 43.996428
+  type: 'test'
+  ...
+# Subtest: the full bounded unit-grid sweep removes both enclosed cracks while preserving open relief
+ok 2 - the full bounded unit-grid sweep removes both enclosed cracks while preserving open relief
+  ---
+  duration_ms: 251.809079
+  type: 'test'
+  ...
+# Subtest: native and enlarged bodies gain continuous support across the joints without bypassing a solid
+ok 3 - native and enlarged bodies gain continuous support across the joints without bypassing a solid
+  ---
+  duration_ms: 1009.568923
+  type: 'test'
+  ...
+# Subtest: retained solids, thresholds, floor ownership and recovery history stay unchanged
+ok 4 - retained solids, thresholds, floor ownership and recovery history stay unchanged
+  ---
+  duration_ms: 172.842965
+  type: 'test'
+  ...
+# Subtest: physical floor, actual paving, rock mask, atlas and codex share exactly the same joint polygons
+ok 5 - physical floor, actual paving, rock mask, atlas and codex share exactly the same joint polygons
+  ---
+  duration_ms: 1190.289723
+  type: 'test'
+  ...
+# Subtest: only the two false interior cliff faces disappear and every true exposed face keeps its exact geometry
+ok 6 - only the two false interior cliff faces disappear and every true exposed face keeps its exact geometry
+  ---
+  duration_ms: 129.99897
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2807.401681

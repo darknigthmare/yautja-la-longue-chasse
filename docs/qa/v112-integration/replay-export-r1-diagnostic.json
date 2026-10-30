@@ -1,0 +1,33 @@
+{
+  "scope": "Read-only diagnostic of the actual JSX export predicate plus real roster classifiers; no browser state or source modified",
+  "predicate": "(availableReplay.engineVersion === 16 || availableReplay.fighters.some(id => isPitExpansionFighterId(id) || isPitOriginalFighterIdV56(id)))",
+  "sourceLine": 4505,
+  "roster": [
+    {
+      "id": "feral-hunter",
+      "expansion": false,
+      "originalV56": false
+    },
+    {
+      "id": "scar",
+      "expansion": false,
+      "originalV56": false
+    }
+  ],
+  "results": [
+    {
+      "engineVersion": 15,
+      "exportButtonRendered": false
+    },
+    {
+      "engineVersion": 16,
+      "exportButtonRendered": true
+    },
+    {
+      "engineVersion": 17,
+      "exportButtonRendered": false
+    }
+  ],
+  "actualCompiledCapture": "/tmp/v112-pit-production-r1/feral-hunter-vs-scar-actual-victory.png",
+  "actualNodeFailure": "Download-event wait rejected at40s before the pending click found a visible export element; the victory screenshot has Revanche, Revoir le duel, Retour au menu principal only."
+}
