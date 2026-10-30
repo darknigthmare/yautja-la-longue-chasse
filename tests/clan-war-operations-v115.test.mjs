@@ -135,8 +135,7 @@ test("Outer Ops completes only at dueAt, reconciles missing UI time, and never a
 
 test("up to three independent Outer Ops can run; the fourth is rejected",()=>{
   let state=initial();
-  const ids=state.teams.map(team=>team.id);
-  for(const id of ids.slice(0,3)) {
+  for(let index=0;index<3;index++) {
     const chosen=legal(state);
     const dispatched=api.beginWarOperationV115(state,"outer",chosen.targetId,chosen.teamIds,rules,1000,"escort");
     assert.equal(dispatched.accepted,true,dispatched.message);
