@@ -4,7 +4,8 @@ import { existsSync } from "node:fs";
 import path from "node:path";
 import {
   DEFAULT_CHROMATICS_V113, PHG_CHROMATIC_MATERIALS_V113,
-  normalizeHunterChromaticsV113, getChromaticMaterialV113,
+  normalizeHunterChromaticsV113, normalizeChromaticHexV113, getChromaticMaterialV113,
+  CHROMATIC_PALETTE_PRESETS_V115, CHROMATIC_CHANNELS_V113,
   chromaticOverlayStyleV113, hasCustomChromaticsV113,
 } from "../app/game/hunterChromaticsV113.ts";
 
@@ -51,4 +52,31 @@ test("selected texture is whitelisted, never interpolated from save data", () =>
   assert.equal(style?.backgroundImage,'url("' + expected.src + '")');
   const malicious = chromaticOverlayStyleV113({outfitMaterialId:"https://example.test/anything.png"}, "outfit", "/rig/net.webp");
   assert.equal(malicious,null);
+});
+
+test("V115 has five unique, accessible preset colors for each lore-friendly workshop", () => {
+  const ids = new Set();
+  const counts = new Map();
+  for (const entry of CHROMATIC_PALETTE_PRESETS_V115) {
+    assert.ok(CHROMATIC_CHANNELS_V113.some(channel => channel.id === entry.channel));
+    assert.equal(normalizeChromaticHexV113(entry.hex), entry.hex);
+    assert.ok(entry.label.length >= 5);
+    const identity = entry.channel + "/" + entry.hex;
+    assert.ok(!ids.has(identity), "duplicate preset " + identity);
+    ids.add(identity);
+    counts.set(entry.channel, (counts.get(entry.channel) ?? 0) + 1);
+  }
+  assert.equal(CHROMATIC_PALETTE_PRESETS_V115.length, 20);
+  for (const channel of CHROMATIC_CHANNELS_V113) assert.equal(counts.get(channel.id), 5);
+});
+
+test("V115 choosing a preset only changes its cosmetic channel; no PHG material is invented", () => {
+  const firstSkin = CHROMATIC_PALETTE_PRESETS_V115.find(item => item.channel === "skin");
+  assert.ok(firstSkin);
+  const original = normalizeHunterChromaticsV113({dreadHex:"#212121", armorMaterialId:"phg-samurai-red-lacquer"});
+  const updated = normalizeHunterChromaticsV113({ ...original, skinHex:firstSkin.hex });
+  assert.equal(updated.skinHex, firstSkin.hex);
+  assert.equal(updated.dreadHex, "#212121");
+  assert.equal(updated.armorMaterialId, "phg-samurai-red-lacquer");
+  assert.equal(updated.skinMaterialId, null);
 });

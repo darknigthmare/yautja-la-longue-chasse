@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import type { HunterAppearance } from "./types";
 import {
-  CHROMATIC_CHANNELS_V113, PHG_CHROMATIC_MATERIALS_V113,
+  CHROMATIC_CHANNELS_V113, CHROMATIC_PALETTE_PRESETS_V115, PHG_CHROMATIC_MATERIALS_V113,
   DEFAULT_CHROMATICS_V113, normalizeHunterChromaticsV113,
   type HunterChromaticsV113,
 } from "./hunterChromaticsV113";
@@ -58,6 +58,17 @@ export default function HunterChromaticForgeV113({
               aria-label={"Choisir la teinte " + channel.label} />
             <button type="button" onClick={() => change(channel.colorKey, null)}
               aria-label={"Retrouver la teinte de base " + channel.label}>Naturel</button>
+          </div>
+          <p className={styles.paletteCaption}>Nuancier du clan · interprétations originales</p>
+          <div className={styles.paletteSamples} role="group" aria-label={"Nuancier rapide — " + channel.label}>
+            {CHROMATIC_PALETTE_PRESETS_V115.filter(sample => sample.channel === channel.id).map(sample => (
+              <button type="button" className={styles.paletteButton} key={sample.hex}
+                aria-pressed={activeColor === sample.hex}
+                onClick={() => change(channel.colorKey, sample.hex)}>
+                <span className={styles.paletteSwatch} style={{ backgroundColor: sample.hex }} aria-hidden="true" />
+                <span>{sample.label}</span>
+              </button>
+            ))}
           </div>
           <label className={styles.materialLabel} htmlFor={"chromatic-material-" + channel.id}>Matière PNG</label>
           <select id={"chromatic-material-" + channel.id} value={draft[channel.materialKey] ?? ""}

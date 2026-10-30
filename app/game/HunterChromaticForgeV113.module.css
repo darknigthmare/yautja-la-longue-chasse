@@ -24,3 +24,12 @@
 .materialPreview strong { font-size: .84rem; }
 .materialPreview small { font-size: .76rem; }
 .draftHint { color: #f0d2a2; }
+
+.paletteCaption { margin-top: 2px !important; font-size: .76rem !important; color: #dcc8af !important; }
+.paletteSamples { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+.paletteButton { display: flex; min-width: 0; align-items: center; gap: 7px; padding: 7px; border: 1px solid #635a50; border-radius: 6px; background: #292a27; color: #f0e7dd; cursor: pointer; text-align: left; font-size: .74rem; line-height: 1.3; }
+.paletteButton:hover { border-color: #c69d71; }
+.paletteButton[aria-pressed="true"] { border-color: #f1c999; box-shadow: inset 0 0 0 1px #f1c999; }
+.paletteButton:focus-visible { outline: 2px solid #f1c999; outline-offset: 2px; }
+.paletteButton span:last-child { min-width: 0; overflow-wrap: anywhere; }
+.paletteSwatch { flex: 0 0 21px; width: 21px; height: 21px; border: 1px solid #bfb5a6; border-radius: 4px; box-shadow: inset 0 0 2px #111; }

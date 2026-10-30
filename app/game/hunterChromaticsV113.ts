@@ -131,6 +131,37 @@ export const CHROMATIC_CHANNELS_V113 = [
   materialKey: keyof HunterChromaticsV113; label: string; subtitle: string; naturalHex: string;
 }[];
 
+/** Original clan pigment shortcuts, not certified PHG dye names or UV samples.
+ * Store only their normalised #RRGGBB values in the existing save schema.
+ * Keyboard/gamepad users can pick these without an operating-system color picker.
+ */
+export const CHROMATIC_PALETTE_PRESETS_V115: readonly {
+  readonly channel: ChromaticChannelV113;
+  readonly label: string;
+  readonly hex: string;
+}[] = Object.freeze([
+  { channel: "skin", label: "Ocre des chasseurs", hex: "#9b7247" },
+  { channel: "skin", label: "Cendre volcanique", hex: "#767b72" },
+  { channel: "skin", label: "Sable des dunes", hex: "#b18d61" },
+  { channel: "skin", label: "Ombre de la canopée", hex: "#444f42" },
+  { channel: "skin", label: "Terre sombre", hex: "#665144" },
+  { channel: "dreads", label: "Obsidienne", hex: "#17181b" },
+  { channel: "dreads", label: "Terre d'ombre", hex: "#4b3428" },
+  { channel: "dreads", label: "Cendre des anciens", hex: "#8a8881" },
+  { channel: "dreads", label: "Cuivre assombri", hex: "#705342" },
+  { channel: "dreads", label: "Ivoire patiné", hex: "#b2a38e" },
+  { channel: "outfit", label: "Cuir brun", hex: "#665347" },
+  { channel: "outfit", label: "Filet de suie", hex: "#252729" },
+  { channel: "outfit", label: "Fibres d'argile", hex: "#796953" },
+  { channel: "outfit", label: "Étoffe cendrée", hex: "#6e716d" },
+  { channel: "outfit", label: "Rouge cérémoniel", hex: "#754339" },
+  { channel: "armor", label: "Bronze du clan", hex: "#98704b" },
+  { channel: "armor", label: "Acier canon", hex: "#75818a" },
+  { channel: "armor", label: "Obsidienne polie", hex: "#272b31" },
+  { channel: "armor", label: "Cuivre forgé", hex: "#a46f52" },
+  { channel: "armor", label: "Fer ancien", hex: "#626767" },
+]);
+
 const colorField = { skin: "skinHex", dreads: "dreadHex", outfit: "outfitHex", armor: "armorHex" } as const;
 const materialField = { skin: "skinMaterialId", dreads: "dreadMaterialId", outfit: "outfitMaterialId", armor: "armorMaterialId" } as const;
 

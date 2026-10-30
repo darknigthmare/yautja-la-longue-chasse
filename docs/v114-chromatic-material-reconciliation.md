@@ -26,3 +26,9 @@ Le premier job V114 (commit `ce6b5e25`) confirme l'intégrité exacte des 44 PNG
 
 ## Même armure sur Homeworld
 La version modulaire du chasseur sur Homeworld utilise désormais les 14 plaques V3 déjà enregistrées, en sélectionnant la famille d'armure et le niveau d'équipement de la sauvegarde, y compris l'absence de bracer quand les wristblades sont portées. Les textures et filtres de patine emploient le même canal que le rig d'aperçu. Les sprites de prévisualisation de morphologie restent volontairement sans armure. La scène de ville est un composé **au repos** ; ses animations corporelles ne sont pas prétendues équivalentes au système articulé de chasse.
+
+## V115 — Nuanciers accessibles sans modifier les références
+
+Chaque atelier chromatique propose désormais cinq nuances originales, avec un bouton nommé et un échantillon de couleur sélectionnable au clavier, tactile ou à la manette via la navigation d'interface existante. Le sélecteur libre, les matières PNG enregistrées et le retour à la couleur naturelle restent disponibles. Les vingt teintes prédéfinies suivent le schéma de sauvegarde V113 existant : aucune migration ou attribution d'objet n'est nécessaire. Elles ne sont **pas** des noms de peinture officiels de *Predator: Hunting Grounds*. Les tests vérifient leur validité, leur unicité par canal et l'absence de changement implicite des matières enregistrées.
+
+Le workflow de référence V114 [41046162523](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41046162523) est vert sur le parent `3040fcaa`. Ce résultat ne certifie pas encore ce nouveau commit ni l'apparence artistique de chaque couleur dans les six morphologies.
