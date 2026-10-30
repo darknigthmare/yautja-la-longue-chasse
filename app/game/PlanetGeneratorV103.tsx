@@ -23,6 +23,7 @@ import type { WarPlanetV96 } from "./systems/clanWarPlanetsV96";
 import {
   DEFAULT_WAR_PLANET_RECIPE_V115, type WarPlanetRecipeV115,
 } from "./systems/clanWarPlanetGeneratorV115";
+import { DEFAULT_WAR_PLANET_RECIPE_V126, planetMaterialDefinitionV126, type WarPlanetRecipeV126 } from "./systems/clanWarPlanetGeneratorV126";
 import { PLANET_SIZE_LABELS_V115, WAR_SHAPE_TEMPLATES_V115, type PlanetSizeV115 } from "./systems/clanWarShapeAtlasV115";
 import { WAR_PLANET_LAND_TEXTURES_V115, WAR_PLANET_LIQUID_TEXTURES_V115 } from "./systems/clanWarTextureLibraryV115";
 import { createWarSimulationV85 } from "./systems/clanWarV85";
@@ -58,6 +59,11 @@ function worldForRecipe(recipe: WarPlanetRecipeAnyV103): GeneratedWarPlanetAnyV1
 function convertToV103Recipe(recipe: WarPlanetRecipeAnyV103): WarPlanetRecipeV103 {
   if (recipe.version === 102) return prepareWarPlanetVariantV103(recipe);
   if (recipe.version === 103) return { ...recipe };
+  if (recipe.version === 126) {
+    const { version, planetSize, islandShape, continentShape, regionShape, landMaterial,
+      liquidMaterial, regionalLandMaterials, liquidMaterialV126, ...base } = recipe;
+    return { ...base, version: 103 };
+  }
   const { version, planetSize, islandShape, continentShape, regionShape, landMaterial, liquidMaterial, ...base } = recipe;
   return { ...base, version: 103 };
 }
@@ -128,13 +134,20 @@ function PlanetQuicklook({ planet }: { planet: WarPlanetV96 }) {
 export default function PlanetGeneratorV103({ activePlanet, pending = false, onOpen }: PlanetGeneratorV103Props) {
   const initialRecipe = activePlanet?.procedural?.recipe ?? DEFAULT_WAR_PLANET_RECIPE_V103;
   const [draft, setDraft] = useState<WarPlanetRecipeV103>(() => convertToV103Recipe(initialRecipe));
-  const [advancedV115, setAdvancedV115] = useState(initialRecipe.version === 115);
-  const [planetSizeV115, setPlanetSizeV115] = useState<PlanetSizeV115>(initialRecipe.version === 115 ? initialRecipe.planetSize : DEFAULT_WAR_PLANET_RECIPE_V115.planetSize);
-  const [islandShapeV115, setIslandShapeV115] = useState(initialRecipe.version === 115 ? initialRecipe.islandShape : DEFAULT_WAR_PLANET_RECIPE_V115.islandShape);
-  const [continentShapeV115, setContinentShapeV115] = useState(initialRecipe.version === 115 ? initialRecipe.continentShape : DEFAULT_WAR_PLANET_RECIPE_V115.continentShape);
-  const [regionShapeV115, setRegionShapeV115] = useState(initialRecipe.version === 115 ? initialRecipe.regionShape : DEFAULT_WAR_PLANET_RECIPE_V115.regionShape);
-  const [landMaterialV115, setLandMaterialV115] = useState(initialRecipe.version === 115 ? initialRecipe.landMaterial : DEFAULT_WAR_PLANET_RECIPE_V115.landMaterial);
-  const [liquidMaterialV115, setLiquidMaterialV115] = useState(initialRecipe.version === 115 ? initialRecipe.liquidMaterial : DEFAULT_WAR_PLANET_RECIPE_V115.liquidMaterial);
+  const [advancedV115, setAdvancedV115] = useState(initialRecipe.version === 115 || initialRecipe.version === 126);
+  const [advancedV126, setAdvancedV126] = useState(initialRecipe.version === 126);
+  const [regionMaterialsV126, setRegionMaterialsV126] = useState<number[]>(() =>
+    initialRecipe.version === 126
+      ? [...initialRecipe.regionalLandMaterials]
+      : Array.from({ length: 12 }, () => initialRecipe.version === 115 ? initialRecipe.landMaterial : DEFAULT_WAR_PLANET_RECIPE_V126.landMaterial));
+  const [liquidMaterialV126, setLiquidMaterialV126] = useState(initialRecipe.version === 126
+    ? initialRecipe.liquidMaterialV126 : initialRecipe.version === 115 ? initialRecipe.liquidMaterial : DEFAULT_WAR_PLANET_RECIPE_V126.liquidMaterialV126);
+  const [planetSizeV115, setPlanetSizeV115] = useState<PlanetSizeV115>((initialRecipe.version === 115 || initialRecipe.version === 126) ? initialRecipe.planetSize : DEFAULT_WAR_PLANET_RECIPE_V115.planetSize);
+  const [islandShapeV115, setIslandShapeV115] = useState((initialRecipe.version === 115 || initialRecipe.version === 126) ? initialRecipe.islandShape : DEFAULT_WAR_PLANET_RECIPE_V115.islandShape);
+  const [continentShapeV115, setContinentShapeV115] = useState((initialRecipe.version === 115 || initialRecipe.version === 126) ? initialRecipe.continentShape : DEFAULT_WAR_PLANET_RECIPE_V115.continentShape);
+  const [regionShapeV115, setRegionShapeV115] = useState((initialRecipe.version === 115 || initialRecipe.version === 126) ? initialRecipe.regionShape : DEFAULT_WAR_PLANET_RECIPE_V115.regionShape);
+  const [landMaterialV115, setLandMaterialV115] = useState((initialRecipe.version === 115 || initialRecipe.version === 126) ? initialRecipe.landMaterial : DEFAULT_WAR_PLANET_RECIPE_V115.landMaterial);
+  const [liquidMaterialV115, setLiquidMaterialV115] = useState((initialRecipe.version === 115 || initialRecipe.version === 126) ? initialRecipe.liquidMaterial : DEFAULT_WAR_PLANET_RECIPE_V115.liquidMaterial);
   const [seedText, setSeedText] = useState(() => String(initialRecipe.seed));
   const [planet, setPlanet] = useState(() => worldForRecipe(initialRecipe));
   const [editorEnabled, setEditorEnabled] = useState(initialRecipe.version !== 102);
@@ -163,9 +176,12 @@ export default function PlanetGeneratorV103({ activePlanet, pending = false, onO
   function currentRecipe(): WarPlanetRecipeAnyV103 {
     const base = { ...draft, seed: numericSeed(seedText) };
     if (!advancedV115) return base;
-    return { ...base, version: 115, planetSize: planetSizeV115, islandShape: islandShapeV115,
+    const parent: WarPlanetRecipeV115 = { ...base, version: 115, planetSize: planetSizeV115, islandShape: islandShapeV115,
       continentShape: continentShapeV115, regionShape: regionShapeV115,
       landMaterial: landMaterialV115, liquidMaterial: liquidMaterialV115 };
+    if (!advancedV126) return parent;
+    const regionalLandMaterials = Array.from({ length: base.regionCount }, (_, index) => regionMaterialsV126[index] ?? landMaterialV115);
+    return { ...parent, version: 126, regionalLandMaterials, liquidMaterialV126 } as WarPlanetRecipeV126;
   }
   let changed = editorEnabled;
   try { changed = editorEnabled && encodeWarPlanetRecipeCodeV103(currentRecipe()) !== planet.id; }
@@ -176,11 +192,16 @@ export default function PlanetGeneratorV103({ activePlanet, pending = false, onO
     const recipe = next.procedural.recipe;
     setPlanet(next); setDraft(convertToV103Recipe(recipe));
     setEditorEnabled(recipe.version !== 102); setSeedText(String(recipe.seed));
-    setAdvancedV115(recipe.version === 115);
-    if (recipe.version === 115) {
+    setAdvancedV115(recipe.version === 115 || recipe.version === 126);
+    setAdvancedV126(recipe.version === 126);
+    if (recipe.version === 115 || recipe.version === 126) {
       setPlanetSizeV115(recipe.planetSize); setIslandShapeV115(recipe.islandShape);
       setContinentShapeV115(recipe.continentShape); setRegionShapeV115(recipe.regionShape);
       setLandMaterialV115(recipe.landMaterial); setLiquidMaterialV115(recipe.liquidMaterial);
+      if (recipe.version === 126) {
+        setRegionMaterialsV126([...recipe.regionalLandMaterials]);
+        setLiquidMaterialV126(recipe.liquidMaterialV126);
+      }
     }
     setSelectedId(next.definitions[1]?.id ?? next.definitions[0].id); setTargetId(""); setMemoryOpening(null);
   }
@@ -316,7 +337,7 @@ export default function PlanetGeneratorV103({ activePlanet, pending = false, onO
           {details.recipe.version === 102 && <p className={styles.variantNotice}>Variante en préparation : l’aperçu affiche encore le monde d’origine. La génération créera un nouveau code.</p>}
           <div className={styles.control} data-generator-field="seed"><label htmlFor={`${unique}-seed`}>Graine du monde</label><input id={`${unique}-seed`} value={seedText} maxLength={64} autoComplete="off" spellCheck={false} onChange={event => { importIntent.current++; setSeedText(event.target.value); }} placeholder="Un nom ou un nombre"/><div className={styles.controlTools}><label className={styles.lock}><input type="checkbox" checked={locked.includes("seed")} aria-label="Conserver : Graine du monde" onChange={() => toggleLock("seed")}/><span>Conserver</span></label><button type="button" disabled={locked.includes("seed")} aria-label="Tirer au hasard : Graine du monde" onClick={() => randomize("seed")}>Au hasard</button></div></div>
           <div className={styles.presetBar}><span>Point de départ</span><button type="button" disabled={locked.length === WAR_PLANET_RECIPE_FIELDS_V103.length} onClick={() => preset("earthlike")}>Base terrestre</button><button type="button" disabled={locked.length === WAR_PLANET_RECIPE_FIELDS_V103.length} onClick={() => preset("alien")}>Base extraterrestre</button></div>
-          <div className={styles.presetBar}><span>Génération avancée versionnée</span><button type="button" onClick={() => { importIntent.current++; setAdvancedV115(value => !value); }}>{advancedV115 ? "Revenir aux réglages V103" : "Activer le générateur V115"}</button></div>
+          <div className={styles.presetBar}><span>Génération avancée versionnée</span><button type="button" onClick={() => { importIntent.current++; setAdvancedV115(value => !value); setAdvancedV126(false); }}>{advancedV115 ? "Revenir aux réglages V103" : "Activer le générateur V115"}</button></div>
           <div className={styles.presetBar} data-testid="planet-strategy-presets-v114"><span>Format stratégique</span>{Object.entries(WAR_PLANET_STRATEGIC_PRESETS_V114).map(([id, label]) => <button key={id} type="button" disabled={locked.length === WAR_PLANET_RECIPE_FIELDS_V103.length} onClick={() => strategicPreset(id as WarPlanetStrategicPresetV114)}>{label}</button>)}</div>
           <div className={styles.presetBar} data-testid="planet-ambience-presets-v114"><span>Ambiance de planète</span>{Object.entries(WAR_PLANET_AMBIENCE_PRESETS_V114).map(([id, label]) => <button key={id} type="button" disabled={locked.length === WAR_PLANET_RECIPE_FIELDS_V103.length} onClick={() => ambiencePreset(id as WarPlanetAmbiencePresetV114)}>{label}</button>)}</div>
           <details className={styles.module} open={advancedV115} data-testid="planet-generator-v115-modules">
@@ -353,6 +374,35 @@ export default function PlanetGeneratorV103({ activePlanet, pending = false, onO
                 </div>)}
               </div>}
               {advancedV115 && <PlanetShapePreviewV125 island={islandShapeV115} continent={continentShapeV115} region={regionShapeV115}/>}
+              {advancedV115 && <div className={styles.presetBar} data-testid="planet-generator-v126-toggle">
+                <span>V126 · 32 matières possibles par domaine, affectées par région</span>
+                <label className={styles.lock}><input type="checkbox" checked={advancedV126} onChange={event => {
+                  importIntent.current++; setAdvancedV126(event.target.checked);
+                }}/><span>Enregistrer les matières régionales dans un nouveau code V126</span></label>
+              </div>}
+              {advancedV115 && advancedV126 && <div className={styles.controlGrid} data-testid="planet-generator-v126-regions">
+                {Array.from({ length: draft.regionCount }, (_, index) => <div className={styles.control} key={index}>
+                  <label htmlFor={`${unique}-regional-material-${index}`}>Région {index + 1} · texture terrestre</label>
+                  <select id={`${unique}-regional-material-${index}`} value={regionMaterialsV126[index] ?? landMaterialV115}
+                    onChange={event => { importIntent.current++; const value = Number(event.target.value);
+                      setRegionMaterialsV126(previous => Array.from({ length: Math.max(previous.length, draft.regionCount) }, (_, i) =>
+                        i === index ? value : previous[i] ?? landMaterialV115)); }}>
+                    {Array.from({ length: 32 }, (_, value) => { const material = planetMaterialDefinitionV126("land", value);
+                      return <option key={value} value={value}>{material.name} · {material.origin === "alien" ? "extraterrestre" : "terrestre"}</option>;
+                    })}
+                  </select>
+                </div>)}
+                <div className={styles.control}>
+                  <label htmlFor={`${unique}-v126-global-liquid`}>Milieu liquide · texture globale</label>
+                  <select id={`${unique}-v126-global-liquid`} value={liquidMaterialV126}
+                    onChange={event => { importIntent.current++; setLiquidMaterialV126(Number(event.target.value)); }}>
+                    {Array.from({ length: 32 }, (_, value) => { const material = planetMaterialDefinitionV126("liquid", value);
+                      return <option key={value} value={value}>{material.name}</option>;
+                    })}
+                  </select>
+                </div>
+                <p className={styles.hint}>Chaque matière terrestre utilise la région réelle du globe. Les lacs et chenaux restent liés à la géographie ; le liquide choisi reste commun aux étendues non terrestres. Une nouvelle recette crée un nouveau front, jamais une réécriture V115.</p>
+              </div>}
               <p className={styles.hint}>La taille modifie les kilomètres et km² réels du monde, sans modifier artificiellement les coûts de guerre. Les formes changent véritablement les contours et les frontières des régions ; les 32 matières enrichissent le rendu WebGL. Une nouvelle recette reçoit un code V115 distinct.</p>
             </div>
           </details>
@@ -373,9 +423,10 @@ export default function PlanetGeneratorV103({ activePlanet, pending = false, onO
           <div><dt>Atmosphère</dt><dd>{details.environment.atmosphere}</dd></div>
           <div><dt>Gravité / cycle diurne</dt><dd>{details.environment.gravity.toLocaleString("fr")} g · {details.environment.dayLengthHours.toLocaleString("fr")} h</dd></div>
           <div><dt>Recette du monde</dt><dd>V{details.recipe.version} · graine {details.recipe.seed}</dd></div>
-          {"physical" in details && "shapes" in details && "materialDiversity" in details && details.recipe.version === 115 && <><div><dt>Taille physique</dt><dd>Rayon {details.physical.radiusKm.toLocaleString("fr-FR")} km · surface {details.physical.surfaceKm2.toLocaleString("fr-FR")} km²</dd></div>
+          {"physical" in details && "shapes" in details && "materialDiversity" in details && (details.recipe.version === 115 || details.recipe.version === 126) && <><div><dt>Taille physique</dt><dd>Rayon {details.physical.radiusKm.toLocaleString("fr-FR")} km · surface {details.physical.surfaceKm2.toLocaleString("fr-FR")} km²</dd></div>
           <div><dt>Formes de terrain</dt><dd>{details.shapes.continent} · {details.shapes.island} · {details.shapes.region}</dd></div>
           <div><dt>Textures complémentaires</dt><dd>{details.materialDiversity.land} · {details.materialDiversity.liquid}</dd></div></>}
+          {details.recipe.version === 126 && <div><dt>Détails des régions</dt><dd>{details.regionalMaterialAssignments.length} matières terrestres affectées et enregistrées · liquide global {details.globalLiquidAssignment.name}</dd></div>}
           {physicalIndex && <><div><dt>Terres émergées</dt><dd>{physicalIndex.landAreaKm2.toLocaleString("fr-FR")} km²</dd></div>
           <div><dt>Étendues entre les terres</dt><dd>{physicalIndex.surroundingsKm2.toLocaleString("fr-FR")} km²</dd></div></>}
           <div><dt>Distance entre bases</dt><dd>{strategic.headquartersDistance} liaison{strategic.headquartersDistance > 1 ? "s" : ""}{strategic.headquartersDistanceKm !== undefined ? ` · ${strategic.headquartersDistanceKm.toLocaleString("fr-FR")} km` : ""}</dd></div>
