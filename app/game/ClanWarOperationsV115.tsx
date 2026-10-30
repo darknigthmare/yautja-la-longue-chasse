@@ -4,7 +4,9 @@ import { useEffect, useRef, useState } from "react";
 import { planWarRouteV6, type WarRulesV6 } from "./systems/clanWarBibleV6";
 import {
   WAR_OPERATIONS_STORAGE_V115, beginWarOperationV115, commandRtsV115, commandStealthV115,
-  createWarOperationsV115, deployAssaultUnitV115, leaveWarOperationV115, readWarOperationsV115,
+  createWarOperationsV115, deployAssaultUnitV115, issueWarRtsRealtimeOrderV115,
+  leaveWarOperationV115, readWarOperationsV115, stepWarRtsRealtimeV115, toggleWarRtsRealtimeV115,
+  WAR_RTS_COVER_V115,
   settleWarOuterOpsV115, stepAssaultV115, warMissionEligibleV115, warOuterSecondsRemainingV115,
   type WarMissionModeV115, type OuterFocusV115, type WarOperationsStateV115,
   type WarOperationsUpdateV115,
@@ -88,6 +90,17 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false}:
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[active,hydrated,blocked,rules,persist]);
 
+  useEffect(()=>{
+    if(!active||!hydrated||blocked||world.active?.mode!=="rts"||!world.active.rts?.realtime) return;
+    const timer=window.setInterval(()=>{
+      const state=worldRef.current;
+      if(state.active?.mode==="rts"&&state.active.rts?.realtime) commit(stepWarRtsRealtimeV115(state,rules));
+    },1000);
+    return ()=>window.clearInterval(timer);
+    // The operation id owns this interval, not every actor's live position.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[active,hydrated,blocked,world.active?.id,world.active?.rts?.realtime,rules,persist]);
+
   const requestIssue=hydrated ? warMissionEligibleV115(world,rules,targetId,selectedIds) : "Chargement de l'archive";
   const target=rules.territories.find(site=>site.id===targetId);
   const missionPc=selectedIds.reduce((pc,id)=>pc+(rules.units.find(unit=>unit.id===world.teams.find(team=>team.id===id)?.unitId)?.commandPoints??0),0);
@@ -100,7 +113,11 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false}:
   const teamsById=(teamId:string)=>rules.units.find(unit=>unit.id===world.teams.find(team=>team.id===teamId)?.unitId)?.name ?? teamId;
 
   function start() {
-    commit(beginWarOperationV115(worldRef.current,mode,targetId,selectedIds,rules,Date.now(),focus));
+    const result=beginWarOperationV115(worldRef.current,mode,targetId,selectedIds,rules,Date.now(),focus);
+    if(result.accepted && mode==="rts") {
+      const enabled=toggleWarRtsRealtimeV115(result.state,true);
+      commit(enabled.accepted?{...enabled,message:"Déploiement RTS confirmé. Le temps réel est actif : donnez vos ordres."}:result);
+    } else commit(result);
   }
   function reset() {
     if(!window.confirm("Remplacer uniquement les mandats d'exercice V115 ? Les archives V3, V6 et la campagne ne seront pas modifiées.")) return;
@@ -223,24 +240,34 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false}:
       </div>}
 
       {rts && <div>
-        <p>Choisissez un détachement, puis une case pour avancer ou attaquer. L'adversaire riposte après chaque ordre. Tenez la balise (7,3) pendant deux ordres, ou neutralisez ses défenseurs. Tenue <strong>{rts.hold}/2</strong>.</p>
+        <p>Choisissez un détachement, puis désignez une position ou une cible. En temps réel, les équipes avancent et échangent des tirs automatiquement ; en tactique alternée, chaque clic exécute un ordre et une riposte. La balise est en (7,3).</p>
+        <div className={styles.cards}><button type="button" disabled={blocked}
+          aria-pressed={Boolean(rts.realtime)} onClick={()=>commit(toggleWarRtsRealtimeV115(worldRef.current,!rts.realtime))}>
+          {rts.realtime?"Passer en ordres alternés":"Activer la bataille en temps réel"}
+        </button>
+        <span className={styles.explain}>Tenue <strong>{rts.hold}/{rts.realtime?3:2}</strong> · {rts.realtime?"Simulation active toutes les secondes":"Une réponse par commande"}</span></div>
         <div className={styles.cards}>
           {rts.actors.filter(unit=>unit.side==="ally").map(unit=><button type="button" key={unit.id}
             aria-pressed={rtsSelectedId===unit.teamId} disabled={blocked}
             onClick={()=>setRtsSelectedId(unit.teamId??"")}>{teamsById(unit.teamId??"")} · PV {unit.hp}</button>)}
+          {rts.realtime && <button type="button" disabled={blocked||!rts.actors.some(unit=>unit.teamId===rtsSelectedId)}
+            onClick={()=>{const actor=rts.actors.find(unit=>unit.teamId===rtsSelectedId);if(actor)commit(issueWarRtsRealtimeOrderV115(worldRef.current,rtsSelectedId,actor.x,actor.y,"hold"));}}>
+            Tenir la position et utiliser le couvert</button>}
         </div>
         <div className={styles.grid} style={{gridTemplateColumns:"repeat(9,minmax(0,1fr))"}} role="group" aria-label="Champ de bataille tactique 9 colonnes par 6 lignes">
           {Array.from({length:54},(_,index)=>{
             const x=index%9,y=Math.floor(index/9),actor=rts.actors.find(item=>item.x===x&&item.y===y);
-            const objective=x===7&&y===3,mark=actor?(actor.side==="ally"?"Y":"R"):objective?"◎":"·";
+            const objective=x===7&&y===3,cover=WAR_RTS_COVER_V115.some(tile=>tile===x+","+y),mark=actor?(actor.side==="ally"?"Y":"R"):objective?"◎":cover?"▤":"·";
             return <button key={index} type="button" disabled={blocked||!rtsSelectedId}
-              className={styles.cell} data-actor={actor?.side??""} data-objective={objective}
+              className={styles.cell} data-actor={actor?.side??""} data-objective={objective} data-cover={cover}
               title={"Position "+x+","+y+(actor?" · "+actor.unitId+" · PV "+actor.hp:"")}
               aria-label={"Case "+x+","+y+" · "+(actor?.side==="ally"?"allié":actor?.side==="rival"?"adversaire":objective?"objectif":"libre")}
-              onClick={()=>commit(commandRtsV115(worldRef.current,rtsSelectedId,x,y,rules))}>{mark}</button>;
+              onClick={()=>commit(rts.realtime?
+                issueWarRtsRealtimeOrderV115(worldRef.current,rtsSelectedId,x,y,actor?.side==="rival"?"attack":"advance"):
+                commandRtsV115(worldRef.current,rtsSelectedId,x,y,rules))}>{mark}</button>;
           })}
         </div>
-        <p className={styles.explain}>Y = unité alliée, R = unité adverse, ◎ = objectif. Chaque pion représente l'équipe réelle engagée, pas une nouvelle recrue instantanée.</p>
+        <p className={styles.explain}>Y = unité alliée, R = opposition d'exercice, ◎ = balise, ▤ = couvert. Une position couverte ou un ordre de tenue réduit les dégâts reçus en temps réel. Les pions représentent des équipes identifiées, pas des recrues gratuites.</p>
       </div>}
     </section>}
 
@@ -261,7 +288,10 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false}:
       <ol>{world.reports.slice(-16).reverse().map(report=><li key={report.id}>
         <strong>{report.id} · {report.outcome==="victory"?"Succès":report.outcome==="retreat"?"Repli":"Échec"}</strong>
         <span>{report.mode==="outer"?focusLabels[report.focus??"recon"]:modeLabels[report.mode]} · {report.targetId} · vacation {report.clock}</span>
-        <p>{report.summary}</p><small>Équipes : {report.teamIds.join(", ")} · Blessés : {report.woundedIds.length?report.woundedIds.join(", "):"aucun déclaré"} · Source : {report.sourceIds.join(", ")}</small>
+        <p>{report.summary}</p>
+        {report.engagementLog?.length ? <details className={styles.debriefDetails}><summary>Journal opérationnel · {report.engagementLog.length} phases</summary>
+          <ol>{report.engagementLog.map((item,index)=><li key={report.id+"-"+index}>{item}</li>)}</ol></details>:null}
+        <small>Équipes : {report.teamIds.join(", ")} · Blessés : {report.woundedIds.length?report.woundedIds.join(", "):"aucun déclaré"} · Source : {report.sourceIds.join(", ")}</small>
       </li>)}</ol>
       {!world.reports.length && <p>Aucun résultat pour cet exercice.</p>}
     </section>
