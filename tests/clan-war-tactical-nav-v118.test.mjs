@@ -3,7 +3,7 @@ import test from "node:test";
 import { build } from "esbuild";
 
 const bundle=await build({
-  stdin:{contents:"export * from './app/game/systems/clanWarOperationsV115'; export * from './app/game/systems/clanWarBibleV6'; export * from './app/game/systems/clanWarTacticalNavigationV118';",resolveDir:process.cwd()},
+  stdin:{contents:"export * from './app/game/systems/clanWarOperationsV115'; export * from './app/game/systems/clanWarBibleV6'; export * from './app/game/systems/clanWarTacticalNavigationV118'; export * from './app/game/systems/clanWarMissionTerrainV116';",resolveDir:process.cwd()},
   bundle:true,write:false,format:"esm",platform:"node",target:"es2022",logLevel:"silent",
 });
 const api=await import("data:text/javascript;base64,"+Buffer.from(bundle.outputFiles[0].text).toString("base64"));
