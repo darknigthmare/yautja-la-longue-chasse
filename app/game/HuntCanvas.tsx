@@ -257,6 +257,7 @@ import {
   honorRuleEventId,
 } from "./honorRules";
 import type { GameSfxId, GameMusicContext } from "./sound";
+import { phgMaterialForV113 } from "./hunterMaterialsV113";
 import type {
   DifficultyId,
   ExplorationProgress,
@@ -653,6 +654,7 @@ interface AssetBank {
   hunterBodyParts: Record<HunterBodyPartId, HTMLImageElement | null>;
   hunterNetParts: Record<HunterBodyPartId, HTMLImageElement | null>;
   hunterDreads: HTMLImageElement | null;
+  hunterMaterialsV113: Record<"skin" | "dread" | "outfit", HTMLImageElement | null>;
   hunterMask: HTMLImageElement | null;
   hunterArmor: Record<HunterArmorAssetId, HTMLImageElement | null>;
   hunterPlasma: Record<HunterPlasmaAssetId, HTMLImageElement | null>;
@@ -1174,10 +1176,22 @@ function equippedWeapon(loadout: Loadout, slotIndex: 0 | 1) {
 function dreadFilter(tint: HunterAppearance["dreadTintId"]): string {
   if (tint === "umber") return "sepia(0.72) saturate(0.9) brightness(0.85)";
   if (tint === "ashen") return "grayscale(0.78) brightness(1.12)";
+  if (tint === "copper") return "sepia(.7) hue-rotate(330deg) saturate(1.25)";
+  if (tint === "bone") return "grayscale(.45) sepia(.16) brightness(1.32)";
+  if (tint === "moss") return "sepia(.55) hue-rotate(52deg) saturate(.8) brightness(.86)";
+  if (tint === "blue-black") return "sepia(.25) hue-rotate(173deg) saturate(.75) brightness(.64)";
   return "saturate(0.72) brightness(0.72)";
 }
 
 function bodyFilter(appearance: HunterAppearance): string {
+  const variant: Partial<Record<HunterAppearance["skinId"], string>> = {
+    "moss-mottle": "sepia(.42) hue-rotate(50deg) saturate(.76) brightness(.92)",
+    "copper-mottle": "sepia(.65) hue-rotate(328deg) saturate(1.18)",
+    "sand-mottle": "sepia(.26) saturate(.72) brightness(1.12)",
+    "storm-mottle": "grayscale(.46) hue-rotate(152deg) saturate(.85)",
+    "ivory-mottle": "grayscale(.5) brightness(1.21) contrast(.89)",
+  };
+  const active = variant[appearance.skinId]; if (active) return active;
   return appearance.skinId === "ashen-mottle"
     ? "grayscale(0.44) brightness(1.08)"
     : appearance.skinId === "dark-mottle"
@@ -1186,6 +1200,13 @@ function bodyFilter(appearance: HunterAppearance): string {
 }
 
 function armorFilter(appearance: HunterAppearance): string {
+  const variant: Partial<Record<HunterAppearance["armorTintId"], string>> = {
+    bone: "sepia(.36) saturate(.6) brightness(1.18)",
+    jade: "sepia(.45) hue-rotate(75deg) saturate(.85)",
+    rust: "sepia(.85) hue-rotate(320deg) saturate(1.18)",
+    crimson: "sepia(.75) hue-rotate(297deg) saturate(1.3) brightness(.83)",
+  };
+  const active = variant[appearance.armorTintId]; if (active) return active;
   return appearance.armorTintId === "bronze"
     ? "sepia(0.48) saturate(1.22) hue-rotate(346deg) brightness(1.02)"
     : appearance.armorTintId === "obsidian"
@@ -3306,9 +3327,30 @@ function applyAffine(
   );
 }
 
+/** The chosen opaque PHG-derived tile inherits the original alpha and articulated bones. */
+const HUNTER_MATERIAL_CACHE_V113 = new WeakMap<HTMLImageElement, WeakMap<HTMLImageElement, HTMLCanvasElement>>();
+function hunterMaterialBitmapV113(base: HTMLImageElement | null, material: HTMLImageElement | null): HTMLImageElement | HTMLCanvasElement | null {
+  if (!base || !material || typeof document === "undefined") return base;
+  let cache = HUNTER_MATERIAL_CACHE_V113.get(base);
+  if (!cache) { cache = new WeakMap(); HUNTER_MATERIAL_CACHE_V113.set(base, cache); }
+  const previous = cache.get(material); if (previous) return previous;
+  const width = base.naturalWidth || 256, height = base.naturalHeight || 384;
+  const output = document.createElement("canvas"); output.width = width; output.height = height;
+  const ctx = output.getContext("2d"); if (!ctx) return base;
+  ctx.drawImage(base, 0, 0, width, height);
+  const tile = document.createElement("canvas"); tile.width = 68; tile.height = 68;
+  const tileContext = tile.getContext("2d"); if (!tileContext) return base;
+  tileContext.drawImage(material, 0, 0, 68, 68);
+  const pattern = ctx.createPattern(tile, "repeat"); if (!pattern) return base;
+  ctx.globalCompositeOperation = "source-atop"; ctx.globalAlpha = .86;
+  ctx.fillStyle = pattern; ctx.fillRect(0, 0, width, height);
+  cache.set(material, output);
+  return output;
+}
+
 function drawRegisteredLayer(
   context: CanvasRenderingContext2D,
-  image: HTMLImageElement | null,
+  image: HTMLImageElement | HTMLCanvasElement | null,
   frame: HunterRigFrame,
   boneId: HunterRigBoneId,
   options: RegisteredLayerOptions = {},
@@ -3357,7 +3399,7 @@ function drawAtomicBodyPart(
   const boneId = HUNTER_BODY_PART_BONES[partId];
   drawRegisteredLayer(
     context,
-    assets.hunterBodyParts[partId],
+    hunterMaterialBitmapV113(assets.hunterBodyParts[partId], assets.hunterMaterialsV113.skin),
     frame,
     boneId,
     { filter: hunterBodyPartColorV62(appearance.bodyMorphId, partId, bodyFilter(appearance)), placement: hunterBodyPartPlacement(appearance.bodyMorphId, partId, appearance.headStyleId), clip: hunterBodyPartClipV62(appearance.bodyMorphId, partId) },
@@ -3621,6 +3663,7 @@ function drawHunterLayered(
     (partId) => assets.hunterBodyParts[partId],
   );
   const armorTint = armorFilter(appearance);
+  const outfitImage = (id: HunterArmorAssetId) => hunterMaterialBitmapV113(assets.hunterArmor[id], assets.hunterMaterialsV113.outfit);
 
   context.save();
   context.globalAlpha = alpha;
@@ -3630,7 +3673,7 @@ function drawHunterLayered(
     solveHunterDreadsV63(frame, appearance.bodyMorphId, appearance.dreadStyleId, appearance.headStyleId, player.dreadAngles).forEach((strand) => {
       drawRegisteredLayer(
         context,
-        assets.hunterDreads,
+        hunterMaterialBitmapV113(assets.hunterDreads, assets.hunterMaterialsV113.dread),
         frame,
         "head",
         {
@@ -3685,7 +3728,7 @@ function drawHunterLayered(
   } else if (
     !drawRegisteredLayer(
       context,
-      assets.hunterBodyFull,
+      hunterMaterialBitmapV113(assets.hunterBodyFull, assets.hunterMaterialsV113.skin),
       frame,
       "root",
       { filter: bodyFilter(appearance) },
@@ -3705,14 +3748,14 @@ function drawHunterLayered(
   // Armure centrale attachée au bassin et au torse.
   drawRegisteredLayer(
     context,
-    assets.hunterArmor.belt,
+    outfitImage("belt"),
     frame,
     "pelvis",
     { filter: armorTint },
   );
   drawRegisteredLayer(
     context,
-    assets.hunterArmor.chest,
+    outfitImage("chest"),
     frame,
     "torso",
     { filter: armorTint },
@@ -3736,7 +3779,7 @@ function drawHunterLayered(
   // Modules d'armure qui suivent réellement leur membre.
   drawRegisteredLayer(
     context,
-    assets.hunterArmor.shoulder,
+    outfitImage("shoulder"),
     frame,
     "armFrontUpper",
     {
@@ -3750,7 +3793,7 @@ function drawHunterLayered(
     if (!hasWristblades) {
       drawRegisteredLayer(
         context,
-        assets.hunterArmor.bracer,
+        outfitImage("bracer"),
         frame,
         "armFrontLower",
         { filter: armorTint },
@@ -3758,28 +3801,28 @@ function drawHunterLayered(
     }
     drawRegisteredLayer(
       context,
-      assets.hunterArmor.thigh,
+      outfitImage("thigh"),
       frame,
       "legFrontUpper",
       { filter: armorTint },
     );
     drawRegisteredLayer(
       context,
-      assets.hunterArmor.thighLower,
+      outfitImage("thighLower"),
       frame,
       "legFrontLower",
       { filter: armorTint },
     );
     drawRegisteredLayer(
       context,
-      assets.hunterArmor.knee,
+      outfitImage("knee"),
       frame,
       "legFrontLower",
       { filter: armorTint },
     );
     drawRegisteredLayer(
       context,
-      assets.hunterArmor.shin,
+      outfitImage("shin"),
       frame,
       "legFrontLower",
       { filter: armorTint },
@@ -10283,6 +10326,7 @@ export default function HuntCanvas({
         HUNTER_BODY_PART_IDS.map((partId) => [partId, null]),
       ) as Record<HunterBodyPartId, HTMLImageElement | null>,
       hunterDreads: null,
+      hunterMaterialsV113: { skin: null, dread: null, outfit: null },
       hunterMask: null,
       hunterArmor: {
         chest: null,
@@ -10465,6 +10509,11 @@ export default function HuntCanvas({
     queueImage(hunterDreadPath(appearance.dreadStyleId), (image) => {
       assets.hunterDreads = image;
     });
+    for (const category of ["skin", "dread", "outfit"] as const) {
+      const id = category === "skin" ? appearance.skinMaterialId : category === "dread" ? appearance.dreadMaterialId : appearance.outfitMaterialId;
+      const material = phgMaterialForV113(category, id);
+      if (material) queueImage(material.src, (image) => { assets.hunterMaterialsV113[category] = image; });
+    }
     if (appearance.biomaskId) {
       queueImage(hunterMaskRigPath(appearance.biomaskId), (image) => {
         assets.hunterMask = image;
