@@ -1,0 +1,17 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "incremental": false,
+    "tsBuildInfoFile": null
+  },
+  "include": [
+    "app/game/systems/clanWarVariantAtlasV120.ts",
+    "app/game/ClanWarVariantAtlasV120.tsx"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    ".next",
+    "outputs"
+  ]
+}
