@@ -69,6 +69,9 @@ test("strategic dossier agrees with every preset graph and public region incomes
       }), { s: 0, m: 0, i: 0 });
       assert.deepEqual(region.income, expected);
       for (const neighbor of region.neighboringRegionIds) assert(dossier.regions.some(item => item.regionId === neighbor));
+      const expectedCrossings = planet.procedural.routes.filter(route => route.kind === "crossing"
+        && (source.territoryIds.includes(route.fromId) || source.territoryIds.includes(route.toId))).length;
+      assert.equal(region.crossingLinks, expectedCrossings, "each crossing is counted once for every region it touches");
     }
   }
 });
