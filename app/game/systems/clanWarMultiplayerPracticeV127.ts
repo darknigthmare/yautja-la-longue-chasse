@@ -1,6 +1,6 @@
 import {
  acceptWarMultiplayerCommandV126,advanceWarMultiplayerServerTickV126,
- type WarLobbyV126,type WarClientCommandV126,type WarLobbySideV126,
+ type WarLobbyV126,type WarClientCommandV126,
 } from "./clanWarMultiplayerV126";
 
 /**
