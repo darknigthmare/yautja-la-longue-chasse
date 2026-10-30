@@ -548,3 +548,32 @@ export function auditClanWarVariantsV120(){
     problems
   };
 }
+
+/** Stable semicolon-delimited UTF-8 export (Excel FR compatible). Avoid formula
+ * injection from future source overrides: every cell is emitted as text. */
+export const CLAN_WAR_V120_EXPORT_FIELDS:readonly (keyof ClanWarVariantV120)[] = [
+ "id","schema","number","mode","family","status","title","world","region","site","mapKey",
+ "biome","terrain","liquid","atmosphere","weather","light","palette","geometry",
+ "objective","secondary","interaction","enemyBehavior","complication","failure","withdrawal",
+ "strategicConsequence","primaryMechanic","routeOrLayout","threatLevel","suggestedMinutes",
+ "mandatoryRoles","assetsNeeded","inspiration","inspirationClass","continuity","canonStatus",
+ "referenceUrl","narrativeHook","gameplayTags"
+];
+function csvFieldV120(value:unknown):string {
+  const raw=Array.isArray(value)?value.join(" | "):String(value??"");
+  const normalized=/^[\t\r\n =+@-]/.test(raw)?("'"+raw):raw;
+  return '"'+normalized.replace(/"/g,'""')+'"';
+}
+export function exportClanWarVariantsCsvV120(
+  items:readonly ClanWarVariantV120[]=CLAN_WAR_VARIANTS_V120,
+):string{
+  const rows=[CLAN_WAR_V120_EXPORT_FIELDS.join(";")];
+  for(const item of items)
+    rows.push(CLAN_WAR_V120_EXPORT_FIELDS.map(key=>csvFieldV120(item[key])).join(";"));
+  return "\ufeff"+rows.join("\r\n")+"\r\n";
+}
+export function exportClanWarVariantsJsonV120(
+  items:readonly ClanWarVariantV120[]=CLAN_WAR_VARIANTS_V120,
+):string{
+  return JSON.stringify({version:120,total:items.length,audit:auditClanWarVariantsV120(),missions:items},null,2)+"\n";
+}
