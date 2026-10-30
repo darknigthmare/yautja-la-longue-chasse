@@ -180,6 +180,36 @@ export function resolveWarRtsScriptedTickV119(
       " · charge en "+cargo.x+","+cargo.y+".",
   };
 }
+/**
+ * V120 : a small role-aware rival director derived from W3-RTS01/02/03.
+ * Priority applies ONLY to opponents actually visible through local terrain.
+ * Unobserved teams retain the existing nearest-target fallback from V115;
+ * this is not a full stealth/fog-of-war memory simulation.
+ * No hidden V85 roster, faction diplomacy, or canonical film identity read.
+ */
+export function warRtsRivalTargetV120(
+  objective:WarRtsScriptedObjectiveV119|undefined,
+  rival:WarRtsActorV115,
+  candidates:readonly WarRtsActorV115[],
+  terrain:WarMissionTerrainV116,
+):WarRtsActorV115|null {
+  const living=candidates.filter(actor=>actor.side==="ally"&&actor.hp>0);
+  if(!living.length)return null;
+  const byDistance=(a:WarRtsActorV115,b:WarRtsActorV115)=>
+    DIST(rival,a)-DIST(rival,b)||a.id.localeCompare(b.id);
+  const visible=living.filter(actor=>warTerrainLineOfSightV116(terrain,rival,actor)).sort(byDistance);
+  const priority=objective?.kind==="cargo-escort"?
+    (actor:WarRtsActorV115)=>actor.teamId===objective.cargo.carrierTeamId&&PORTER_UNITS.has(actor.unitId):
+    objective?.kind==="guard-relief"?
+      (actor:WarRtsActorV115)=>actor.unitId===GUARD_UNIT:
+      objective?.kind==="filter-repair"?
+        (actor:WarRtsActorV115)=>objective.delivered?
+          actor.unitId==="W3-U20":actor.teamId===objective.cargo.carrierTeamId&&actor.unitId==="W3-U19":
+        (_actor:WarRtsActorV115)=>false;
+  const selected=visible.find(priority);
+  return selected??(visible[0]??[...living].sort(byDistance)[0]);
+}
+
 export function validWarRtsScriptedObjectiveV119(
   value:unknown,operationId:string,actorTeamIds:readonly string[],actors:readonly WarRtsActorV115[],
   targetId:string,rules:WarRulesV6,unitIds:readonly string[],
