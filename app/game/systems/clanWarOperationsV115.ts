@@ -2,6 +2,9 @@ import {
   applyWarResultV6, createWarTeamV6, planWarRouteV6, DEFAULT_WAR_RULES_V6,
   type WarRulesV6, type WarTeamStateV6,
 } from "./clanWarBibleV6";
+import { warRtsScriptedEligibilityV119, createWarRtsScriptedObjectiveV119, resolveWarRtsScriptedTickV119,
+  validWarRtsScriptedObjectiveV119, type WarSourceRtsScenarioIdV119, type WarRtsScriptedObjectiveV119,
+} from "./clanWarRtsScenariosV119";
 import { warMissionTerrainV116, warTerrainCellBlockedV116, warTerrainLineOfSightV116,
   warTerrainPathLengthV116, type WarMissionTerrainV116 } from "./clanWarMissionTerrainV116";
 import { warRtsNextPathStepV118 } from "./clanWarTacticalNavigationV118";
@@ -28,6 +31,7 @@ export interface WarRtsOrderV115 { x: number; y: number; kind: "advance" | "hold
 export interface WarRtsV115 {
   actors: WarRtsActorV115[]; hold: number; fallen: string[];
   realtime?: boolean; orders?: Record<string, WarRtsOrderV115>;
+  scripted?: WarRtsScriptedObjectiveV119;
 }
 export interface WarPlayableMissionV115 {
   id: string; mode: "assault" | "stealth" | "rts"; targetId: string; teamIds: string[];
@@ -240,6 +244,7 @@ function reserve(state: WarOperationsStateV115, targetId:string, teamIds:string[
 export function beginWarOperationV115(
   state: WarOperationsStateV115, mode: WarMissionModeV115, targetId:string,
   teamIds:string[], rules:WarRulesV6, now:number, focus:OuterFocusV115 = "recon",
+  rtsScenarioId: WarSourceRtsScenarioIdV119 | null = null,
 ): WarOperationsUpdateV115 {
   if (!["assault","outer","stealth","rts"].includes(mode) || !Number.isSafeInteger(now) || now < 0) return reject(state,"Ordre ou horodatage invalide.");
   const issue = warMissionEligibleV115(state,rules,targetId,teamIds);
@@ -247,6 +252,12 @@ export function beginWarOperationV115(
   if (mode !== "outer" && state.active) return reject(state,"Une mission jouable est déjà en cours.");
   if (mode === "outer" && (state.outer.length >= 3 || !["recon","intercept","escort"].includes(focus))) return reject(state,"Trois opérations déléguées au maximum, avec un mandat valide.");
   if (mode === "stealth" && teamIds.length > 2) return reject(state,"Une infiltration mobilise au plus deux équipes.");
+  if(rtsScenarioId!==null){
+    if(mode!=="rts")return reject(state,"Les scénarios W3-RTS demandent le mode de guerre RTS.");
+    const issue=warRtsScriptedEligibilityV119(rtsScenarioId,rules,targetId,
+      teamIds.map(teamId=>unitFor(rules,ownTeam(state,teamId)!.unitId)!.id));
+    if(issue)return reject(state,issue);
+  }
   const { id, state: reserved } = reserve(state,targetId,teamIds,rules);
   if (mode === "outer") {
     const pc = teamIds.reduce((count,teamId) => count + unitFor(rules,ownTeam(state,teamId)!.unitId)!.commandPoints,0);
@@ -264,7 +275,11 @@ export function beginWarOperationV115(
     const allied = teamIds.map((teamId,index) => ({id:"ally-"+index,teamId,unitId:ownTeam(state,teamId)!.unitId,side:"ally" as const,x:1,y:1+index,hp:lifeFor(ownTeam(state,teamId)!.unitId,rules)}));
     const enemyUnits = rules.units.filter(unit => unit.fullMembers>0).slice(0,3);
     const rival = enemyUnits.map((unit,index) => ({id:"rival-"+index,teamId:null,unitId:unit.id,side:"rival" as const,x:7,y:1+index,hp:Math.max(2,lifeFor(unit.id,rules)-(state.weakenedIds.includes(targetId)?3:0))}));
-    active.rts={actors:[...allied,...rival],hold:0,fallen:[],realtime:false,orders:{}};
+    const scripted=rtsScenarioId?
+      createWarRtsScriptedObjectiveV119(rtsScenarioId,id,allied):null;
+    if(rtsScenarioId&&!scripted)return reject(state,"Le scénario réclame un porteur réel, non créé.");
+    active.rts={actors:[...allied,...rival],hold:0,fallen:[],realtime:false,orders:{},
+      ...(scripted?{scripted}:{})};
   }
   return accept({...reserved,active},"Mission jouable ouverte. Les équipes et leur entretien sont réservés une seule fois.");
 }
@@ -312,7 +327,8 @@ function recordOutcome(
   const report:WarMissionReportV115 = {
     id,mode,focus,targetId,outcome,clock:state.clock,
     teamIds:[...teamIds],woundedIds:casualties,
-    sourceIds:["W3-V6", "V115-EXERCISE"], summary, engagementLog,
+    sourceIds:["W3-V6", "V115-EXERCISE",
+      ...(mode==="rts"&&state.active?.rts?.scripted?[state.active.rts.scripted.scenarioId]:[])], summary, engagementLog,
   };
   return {...state,teams,assignments,intelIds,weakenedIds,escortedIds,pressure,
     active:state.active?.id===id?null:state.active,
@@ -474,7 +490,8 @@ export function commandRtsV115(state:WarOperationsStateV115,teamId:string,x:numb
   } else {
     const occupied=actors.filter(item=>item!==actor&&item.hp>0).map(item=>coord(item.x,item.y));
     const length=warTerrainPathLengthV116(terrain,actor,{x,y},occupied);
-    if(occupant || length===null || length===0 || length>clamp(Math.ceil((unit?.mobility??1)/2),1,3))
+    const carrying=field.scripted?.kind==="cargo-escort"&&field.scripted.cargo.carrierTeamId===teamId;
+    if(occupant || length===null || length===0 || length>(carrying?1:clamp(Math.ceil((unit?.mobility??1)/2),1,3)))
       return reject(state,"Case occupée ou itinéraire obstrué : le détachement ne traverse pas les murs.");
     actor.x=x;actor.y=y;
   }
@@ -483,12 +500,18 @@ export function commandRtsV115(state:WarOperationsStateV115,teamId:string,x:numb
   const alive=actors.filter(item=>item.hp>0);
   const holding=alive.some(item=>item.side==="ally"&&item.x===7&&item.y===3) && !alive.some(item=>item.side==="rival"&&distance(item,{x:7,y:3})<=1);
   const hold=holding?field.hold+1:0;
-  const advanced={...state,clock:state.clock+1,active:{...mission,tick:mission.tick+1,rts:{...field,actors:alive,hold,fallen}}};
-  if(alive.some(item=>item.side==="ally") && (hold>=2 || !alive.some(item=>item.side==="rival"))) return accept(recordOutcome(advanced,mission.id,"rts",null,mission.targetId,mission.teamIds,"victory",fallen,rules,
+  const staged=field.scripted?resolveWarRtsScriptedTickV119(field.scripted,actors,terrain):null;
+  const advanced={...state,clock:state.clock+1,active:{...mission,tick:mission.tick+1,
+    rts:{...field,actors:alive,hold,fallen,...(staged?{scripted:staged.objective}:{})}}};
+  if(staged?.outcome==="victory")return accept(recordOutcome(advanced,mission.id,"rts",null,mission.targetId,mission.teamIds,"victory",fallen,rules,
+    mission.rts?.scripted?.scenarioId+" : "+staged.message),"Objectif W3 confirmé par les acteurs présents.");
+  if(staged?.outcome==="defeat")return accept(recordOutcome(advanced,mission.id,"rts",null,mission.targetId,mission.teamIds,"defeat",fallen,rules,
+    mission.rts?.scripted?.scenarioId+" : "+staged.message),"Mission W3 compromise : rapport sauvegardé.");
+  if(!staged && alive.some(item=>item.side==="ally") && (hold>=2 || !alive.some(item=>item.side==="rival"))) return accept(recordOutcome(advanced,mission.id,"rts",null,mission.targetId,mission.teamIds,"victory",fallen,rules,
     "Objectif tenu deux ordres ou défense neutralisée. Le siège ne vaut pas annexion automatique."),"Objectif RTS sécurisé.");
   if(!alive.some(item=>item.side==="ally") || mission.tick>=49) return accept(recordOutcome(advanced,mission.id,"rts",null,mission.targetId,mission.teamIds,"defeat",fallen,rules,
     "Détachement replié après échec de l'objectif."),"RTS terminé : échec consigné.");
-  return accept(advanced,"Ordre exécuté. L'adversaire a effectué sa réponse tactique.");
+  return accept(advanced,staged?staged.message:"Ordre exécuté. L'adversaire a effectué sa réponse tactique.");
 }
 
 /** Cover on this small exercise grid is a prototype abstraction, not a map
@@ -570,15 +593,20 @@ export function stepWarRtsRealtimeV115(state:WarOperationsStateV115,rules:WarRul
   const live=actors.filter(a=>a.hp>0);
   const isHolding=live.some(a=>a.side==="ally"&&a.x===7&&a.y===3)&&!live.some(a=>a.side==="rival"&&distance(a,{x:7,y:3})<=1);
   const hold=isHolding?field.hold+1:0;
+  const staged=field.scripted?resolveWarRtsScriptedTickV119(field.scripted,actors,terrain):null;
   const next={...state,clock:state.clock+1,active:{...mission,tick:mission.tick+1,
-    rts:{...field,actors:live,fallen,hold}}};
-  if(live.some(a=>a.side==="ally")&&(hold>=3||!live.some(a=>a.side==="rival")))
+    rts:{...field,actors:live,fallen,hold,...(staged?{scripted:staged.objective}:{})}}};
+  if(staged?.outcome==="victory")return accept(recordOutcome(next,mission.id,"rts",null,mission.targetId,mission.teamIds,"victory",fallen,rules,
+    mission.rts?.scripted?.scenarioId+" : "+staged.message),"Objectif W3 atteint en temps réel.");
+  if(staged?.outcome==="defeat")return accept(recordOutcome(next,mission.id,"rts",null,mission.targetId,mission.teamIds,"defeat",fallen,rules,
+    mission.rts?.scripted?.scenarioId+" : "+staged.message),"Mission W3 échouée : évacuation du reste de l'équipe.");
+  if(!staged&&live.some(a=>a.side==="ally")&&(hold>=3||!live.some(a=>a.side==="rival")))
     return accept(recordOutcome(next,mission.id,"rts",null,mission.targetId,mission.teamIds,"victory",fallen,rules,
       "Bataille temps réel : zone sécurisée par les équipes réellement déployées. Aucune souveraineté automatique."),"Victoire de l'exercice RTS en temps réel.");
   if(!live.some(a=>a.side==="ally")||mission.tick>=89)
     return accept(recordOutcome(next,mission.id,"rts",null,mission.targetId,mission.teamIds,"defeat",fallen,rules,
       "Bataille temps réel : l'opération a été stoppée ou le temps imparti est expiré."),"Défaite RTS : retour et pertes consignés.");
-  return accept(next,"Bataille RTS : déplacements et échanges résolus pour cette seconde.");
+  return accept(next,staged?staged.message:"Bataille RTS : déplacements et échanges résolus pour cette seconde.");
 }
 function hashSeed(id:string):number {let h=2166136261;for(let i=0;i<id.length;i++) h=Math.imul(h^id.charCodeAt(i),16777619);return h>>>0;}
 /**
@@ -803,6 +831,10 @@ export function readWarOperationsV115(raw:string,rules:WarRulesV6):WarOperations
           !Number.isInteger(order.x)||order.x<0||order.x>8||
           !Number.isInteger(order.y)||order.y<0||order.y>5||
           !["advance","hold","attack"].includes(order.kind)) return null;
+      if(field.scripted!==undefined&&!validWarRtsScriptedObjectiveV119(
+        field.scripted,active.id,active.teamIds,field.actors,active.targetId,rules,
+        active.teamIds.map(id=>ownTeam(v,id)?.unitId??""),
+      ))return null;
     }
     const live=[...(active?[active]:[]),...v.outer,...care.map(item=>({id:item.id,teamIds:[item.teamId,item.medicTeamId]}))];
     const expected:Record<string,string>={};
