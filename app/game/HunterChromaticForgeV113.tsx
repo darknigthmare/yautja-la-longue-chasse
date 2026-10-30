@@ -13,6 +13,7 @@ import { PHG_RECENT_RELEASES_V125, PHG_FERAL_CORRECTION_V125 } from "./phgRecent
 import { PHG_RECENT_CANDIDATES_V126, PHG_RECENT_UPDATES_V126 } from "./phgRecentMaterialsV126";
 import { PHG_HISTORICAL_UNLOCKS_V127, PHG_MENU_SCREENSHOTS_V127 } from "./phgHistoricalMaterialsV127";
 import { PHG_OGRE_MASK_CORRECTION_V128 } from "./phgPlatformStudiesV128";
+import { PHG_V129_OGRE_MASK,PHG_V129_CLASSES } from "./phgPatchStudiesV129";
 import styles from "./HunterChromaticForgeV113.module.css";
 
 export default function HunterChromaticForgeV113({
@@ -82,6 +83,8 @@ export default function HunterChromaticForgeV113({
         Le calque biomask dédié devra être prêt avant sa sélection.</p>
       <p>Exiled Marbled/Bronze, Steam, Epic et PlayStation : quatre études V128 ajoutées ; seule la première dispose d’une capture de menu nommée.
         Les palettes ne sont pas des textures PHG extraites ni certifiées 1:1.</p>
+      <p>V129 : Mottle Dread est une teinte de <strong>peau</strong> pour {PHG_V129_CLASSES.mottleDread.length} classes de PHG, Waves/Gator concerne {PHG_V129_CLASSES.gatorWaves.length} classes. La matière Tank reste une étude sans géométrie de predlocks propre.</p>
+      <p>Ogre V129 : biomask Alpha Predator uniquement ({PHG_V129_OGRE_MASK.patch}). Cette étude ne peut pas devenir une peinture de plaques ni de peau.</p>
       <p>Captures d’écran où le nom de la variante est visible :</p>
       <ul>{PHG_MENU_SCREENSHOTS_V127.map(item => <li key={item.name}>
         <a href={item.url} target="_blank" rel="noopener noreferrer">{item.name}</a>
@@ -125,7 +128,7 @@ export default function HunterChromaticForgeV113({
             {choices.filter(item => !item.atlas).map(item =>
               <option key={item.id} value={item.id}>{item.label}{item.evidence === "provisional" ? " · provisoire" : ""}</option>
             )}
-            {choices.some(item => item.atlas) && <optgroup label="Études V125–V128 — reconstructions non certifiées 1:1">
+            {choices.some(item => item.atlas) && <optgroup label="Études V125–V129 — reconstructions non certifiées 1:1">
               {choices.filter(item => item.atlas).map(item =>
                 <option key={item.id} value={item.id}>{item.label}</option>
               )}

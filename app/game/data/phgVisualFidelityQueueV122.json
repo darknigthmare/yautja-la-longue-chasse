@@ -529,7 +529,15 @@
       "existingV120Material": false,
       "study": null,
       "visualStatus": "unresolved-pixel-match",
-      "canEnterOfficial1to1Catalog": false
+      "canEnterOfficial1to1Catalog": false,
+      "v129StudyId": "phg-study-v129-mottle_dread_skin",
+      "v129CorrectChannel": "skin",
+      "v129ConfirmedClasses": [
+        "Scout",
+        "Hunter",
+        "Berserker"
+      ],
+      "v129PixelsCertified1to1": false
     },
     {
       "id": "skin_raptor_putrid",
@@ -740,5 +748,33 @@
     "id": "phg-study-v128-steam-light-metal",
     "historicalReference": "https://forum.predator.illfonic.com/t/what-happened-to-the-steam-exclusive-shader-and-why-not-for-the-masks/26467",
     "pixelsVerified": false
+  },
+  "supplementalV129": {
+    "source": "patch-2.08-2.19-2.40",
+    "atlasSha256": "4eac66e3dc679a207791f8d10d1ca75970a61db0c5c20b3547d52b91833d6b8f",
+    "extraCases": [
+      {
+        "id": "skin_gator_waves",
+        "channel": "skin",
+        "availableClasses": 7,
+        "studyId": "phg-study-v129-gator_waves_skin",
+        "artisticStatus": "unverified"
+      },
+      {
+        "id": "tank_predlocks",
+        "channel": "dreads",
+        "unlockAtLevel": 150,
+        "studyId": "phg-study-v129-tank_predlock_surface",
+        "addsNewDreadGeometry": false
+      },
+      {
+        "id": "biomask_alpha_ogre",
+        "channel": "biomask",
+        "selectable": false,
+        "armorAllowed": false,
+        "officialClass": "Alpha Predator"
+      }
+    ],
+    "officialUvAvailable": false
   }
 }
