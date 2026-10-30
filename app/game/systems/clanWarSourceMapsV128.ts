@@ -269,7 +269,7 @@ function hazardActive(state:WarMapPracticeV128):boolean {
  return (state.turn%8)>=3&&(state.turn%8)<=4;
 }
 function handleOpposition(state:WarMapPracticeV128):WarMapPracticeV128{
- let player={...state.player},alarm=state.alarm;
+ const player={...state.player};let alarm=state.alarm;
  const rivals=state.enemies.map(e=>({...e}));
  let message=state.lastMessage;
  const occupied=()=>rivals.filter(e=>e.hp>0).map(e=>point(e.x,e.y));
@@ -301,7 +301,7 @@ export function commandWarMapPracticeV128(
  if(!["up","down","left","right","wait","cloak","observe","interact","attack","power","stabilize","retreat"].includes(action))
   return fail(state,"Commande non reconnue.");
  const player={...state.player};
- let enemies=state.enemies.map(e=>({...e})),objectiveDone=state.objectiveDone,power=state.power,
+ const enemies=state.enemies.map(e=>({...e}));let objectiveDone=state.objectiveDone,power=state.power,
   airlockStable=state.airlockStable;
  let message="";
  const delta=action==="up"?point(0,-1):action==="down"?point(0,1):
