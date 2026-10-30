@@ -66,3 +66,28 @@ La compilation et les tests ciblés ne prouvent ni la fidélité de sprites 1:1 
 La carte tactique partagée et le triage avec soigneur réellement recruté sont documentés dans
 [la continuation V116](clan-war-v116-tactical-terrain-and-care.md).
 Ces ajouts restent des exercices autonomes : vérifier le SHA et la CI exacte avant toute déclaration de livraison générale.
+
+
+## Continuation V116–V117 — source des scènes et commandement tactique
+
+La Bible source contient 48 missions narratives W3-N, 24 scénarios W3-RTS, 36 missions W5-LM des trois modes, 12 campagnes W5-C, 12 cartes W3-MAP, 15 doctrines W3-CL et 18 accords W3-DIP.
+
+- Le catalogue en jeu relit les objectifs, approches, choix, replis, résultats et cellules d'origine. Sa recherche ne modifie pas le classeur. Toute fiche est encore marquée « dossier de conception, pas mission jouable », y compris si un type d'exercice correspondant existe.
+- Les opérations déléguées ont un rapport à trois échanges déterministes, des participants réels, un identifiant de résultat unique, un horodatage et des traces d'incidents. Elles ne lisent pas les effectifs secrets de V85.
+- Le RTS de dessus propose avancée, cible, tenue et couvert. Les obstacles du théâtre V116 servent aux collisions, à la vue et au déplacement ; cela ne recrée pas encore les géométries intégrales W3-MAP.
+- L'assaut latéral permet d'augmenter la cadence/réserve d'AP (niveau 1 à 3) et d'ordonner une attaque concentrée une fois par équipe déployée sur une cible à portée. Les AP, niveaux et dégâts d'exercice ne constituent pas une nouvelle technologie Yautja canonique et ne remplacent ni PC ni RAV.
+- Le roster couvre les 30 types W3-U avec recrutement payé et temporisé, individus sans XP clonée. Au plus 16 équipes et quatre recrutements en préparation.
+- Un blessé peut suivre un traitement de terrain V116 si un véritable W3-U18 a été recruté, libéré des missions et affecté, avec consommation RAV et délai. Cette scène d'exercice ne prouve pas que W3-S11 est physiquement construit ; les blessures majeures, le convoyage et les décès ne sont pas inventés.
+- Les archives vérifient les identités, positions, réservations, reçus, coûts et références. L'interface refuse les écritures lorsqu'un autre onglet a changé la copie lue ; une transaction distribuée simultanée n'est pas encore implémentée.
+
+### Fidélité et limites
+
+Les clans, noms de missions et règles W3/W5 proviennent d'une bible créative reconstituée pour ce jeu. Ils ne sont pas déclarés canoniques au seul motif qu'ils portent une terminologie Yautja. Une scène inspirée de Predator, Prey, Bad Blood, Aliens vs Predator: War, Three World War ou AVP Extinction exige une référence à cette continuité précise.
+
+Pour déclarer une mission W3-N/W5-LM effectivement jouable, il reste à raccorder la carte W3-MAP correspondante, les objets et PNJ présents, les dialogues et conséquences, l'extraction traversée et le même registre atomique de résultat entre vue héros, RTS et carte. Les 108 textes indexés ne signifient pas 108 missions réalisées.
+
+Il manque toujours le mapping explicite non inventé W3-U/W3-K vers CON/RTS-U, les 12 scènes géométriques W3-MAP, les 24 objectifs RTS spécifiques, les 48 scripts narratifs W3-N, les 36 chapitres W5-LM, une liaison campagne/honneur/trophées validée, les sprites et animations inspectés 1:1, puis la QA navigateur et artistique. La CI Node/lint ne prouve ni tout le gameplay ni la fidélité des assets.
+
+Références de mécanique, distinctes des licences artistiques :
+- SNK, AP et déploiements : https://game.snk-corp.co.jp/official/metalslug_attack/how_to_play/01.php
+- Konami, expéditions Outer Ops et rapports : https://www.konami.com/mg/archive/ssg/advice_pw/advice_mgspw_03.html
