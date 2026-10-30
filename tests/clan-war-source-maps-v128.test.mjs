@@ -162,3 +162,68 @@ test("12 map IDs are strictly linked to W3 source, not to invented Earth or movi
  }
  assert.throws(()=>war.createWarSourceMapV128("earth-gunnison",rules),/inconnue/);
 });
+
+
+test("observation requires a physical vantage or direct sight of the actual W3 objective",()=>{
+ const started=war.createWarMapPracticeV128("W3-MAP01",rules);
+ assert.equal(command(started,"observe").accepted,false,"a player cannot scout the whole map from the entry");
+ const near={...started,player:{...started.player,
+  x:started.map.observation.x,y:started.map.observation.y},enemies:[]};
+ const observed=command(near,"observe");
+ assert.equal(observed.accepted,true,observed.message);
+ assert.equal(observed.state.player.observed,true);
+ assert.equal(started.player.observed,false);
+});
+test("powered doors exist on four applicable source maps, and a physical bypass survives a power failure",()=>{
+ for(const id of ["W3-MAP02","W3-MAP10","W3-MAP11","W3-MAP12"]){
+  const map=war.createWarSourceMapV128(id,rules);
+  assert.equal(map.poweredDoors.length,1,id);
+  const door=map.poweredDoors[0];
+  assert.equal(war.warMapTileV128(map,door.x,door.y).kind,"door");
+  const bypass=war.warMapFindPathV128(map,map.start,map.goal,[door]);
+  assert.ok(bypass&&bypass.length>3,id+" power off has no alternate");
+  const route=map.mandatoryPaths[0],index=route.findIndex(p=>p.x===door.x&&p.y===door.y);
+  assert.ok(index>0,id+" door lies on actual route");
+  const before=route[index-1];
+  const state=war.createWarMapPracticeV128(id,rules);
+  const prepared={...state,player:{...state.player,x:before.x,y:before.y},enemies:[],power:false};
+  assert.equal(command(prepared,direction(before,door)).accepted,false,"motorized door must be closed without power");
+  assert.equal(command({...prepared,power:true},direction(before,door)).accepted,true);
+ }
+});
+test("W3-MAP12 must stabilize its pressure before confirming the objective",()=>{
+ const origin=war.createWarMapPracticeV128("W3-MAP12",rules);
+ assert.equal(origin.airlockStable,false);
+ let state={...origin,enemies:[],player:{...origin.player,x:origin.map.goal.x,y:origin.map.goal.y,observed:true}};
+ assert.equal(command(state,"interact").accepted,false,"closed airlock must not be passable by a fake interaction");
+ const unstable=command({...state,power:false},"stabilize");
+ assert.equal(unstable.accepted,false,"without electricity pressure regulators cannot stabilize");
+ const confirmed=command(state,"stabilize");
+ assert.equal(confirmed.accepted,true);
+ assert.equal(confirmed.state.airlockStable,true);
+ const done=command(confirmed.state,"interact");
+ assert.equal(done.accepted,true);
+ assert.equal(done.state.objectiveDone,true);
+ assert.equal(origin.airlockStable,false,"start state remains unchanged");
+});
+test("source-specific ash and gust effects do not create enemies or a separate climate",()=>{
+ const ash=war.createWarMapPracticeV128("W3-MAP03",rules);
+ const coast=war.createWarMapPracticeV128("W3-MAP08",rules);
+ assert.equal(ash.map.eventClass,"vent-de-cendres");
+ assert.equal(coast.map.eventClass,"rafales-sur-le-phare");
+ const route=coast.map.mandatoryPaths[0];
+ const player=route[4],enemy=route[6];
+ assert.equal(Math.abs(player.x-enemy.x)+Math.abs(player.y-enemy.y),2);
+ const before={...coast,turn:0,player:{...coast.player,...player},enemies:[{
+  ...coast.enemies[0],...enemy,hp:9
+ }]};
+ if(war.warMapLineOfSightV128(coast.map,player,enemy)){
+  assert.equal(command(before,"attack").accepted,true,"calm air allows a shot up to three tiles");
+  assert.equal(command({...before,turn:3},"attack").accepted,false,"gusts shorten long shots");
+ }
+ const jungle=war.createWarMapPracticeV128("W3-MAP05",rules);
+ const stage={...jungle,turn:4,enemies:[]};
+ const noise=command(stage,"wait");
+ assert.equal(noise.accepted,true);
+ assert.match(noise.state.lastMessage,/Bruit excessif/);
+});
