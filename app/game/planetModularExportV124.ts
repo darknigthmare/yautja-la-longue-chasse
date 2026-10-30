@@ -120,6 +120,10 @@ export function describePlanetModularMasksV124(planet: WarPlanetV96) {
       name: region.name,
       territoryIds: [...region.territoryIds],
       biome: procedural?.regions.find(item => item.regionId === region.id)?.biome ?? planet.landBiome,
+      ...(recipe?.version === 126 ? {
+        detailMaterialIndex: recipe.regionalLandMaterials[index],
+        detailMaterialId: procedural.regionalMaterialAssignments[index]?.landMaterialId ?? null,
+      } : {}),
       atlasColumn: index % (planet.regions.length <= 4 ? 2 : 4),
       atlasRow: Math.floor(index / (planet.regions.length <= 4 ? 2 : 4)),
     })),
@@ -130,10 +134,14 @@ export function describePlanetModularMasksV124(planet: WarPlanetV96) {
       regionIds: [...feature.regionIds],
     })),
     physicalIndex: analyzeWarPlanetPhysicalIndexV125(planet),
-    selectedShapeIds: recipe?.version === 115 ? {
+    selectedShapeIds: (recipe?.version === 115 || recipe?.version === 126) ? {
       island: `isl-${String(recipe.islandShape + 1).padStart(2, "0")}`,
       continent: `con-${String(recipe.continentShape + 1).padStart(2, "0")}`,
       region: `reg-${String(recipe.regionShape + 1).padStart(2, "0")}`,
+    } : null,
+    globalLiquidMaterial: recipe?.version === 126 ? {
+      index: recipe.liquidMaterialV126,
+      materialId: procedural.globalLiquidAssignment.id,
     } : null,
     shapeCatalog: describeWarPlanetShapeCatalogV125(),
     supplementalMaterialCatalog: WAR_PLANET_TEXTURES_V125.map(item => ({
