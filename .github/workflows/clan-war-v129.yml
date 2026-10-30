@@ -53,7 +53,7 @@ jobs:
       - name: Typecheck
         run: npx --no-install tsc --noEmit --project tsconfig.clan-war-v129.json
       - name: Lint authored runtime tests and exporter
-        run: npx --no-install eslint app/game/systems/clanWarRtsSourceMissionsV129.ts tests/clan-war-rts24-source-v129.test.mjs
+        run: npx --no-install eslint app/game/systems/clanWarRtsSourceMissionsV129.ts app/game/ClanWarRtsMissionStudyV129.tsx tests/clan-war-rts24-source-v129.test.mjs scripts/export-w3-rts24-v129.mjs
       - name: Export scenario registries
         run: node scripts/export-w3-rts24-v129.mjs outputs/w3-rts24-v129
       - name: Preserve source object plans and QA as an artifact
