@@ -7,6 +7,7 @@ import {
   WAR_OPERATIONS_STORAGE_V115, beginWarOperationV115, commandRtsV115, commandStealthV115,
   createWarOperationsV115, deployAssaultUnitV115, issueWarRtsRealtimeOrderV115,
   queueWarRecruitmentV115, settleWarRecruitmentsV115,
+  queueWarTreatmentV116, settleWarTreatmentsV116, cancelWarTreatmentV116,
   leaveWarOperationV115, readWarOperationsV115, stepWarRtsRealtimeV115, toggleWarRtsRealtimeV115,
   settleWarOuterOpsV115, stepAssaultV115, warMissionEligibleV115, warOuterSecondsRemainingV115,
   type WarMissionModeV115, type OuterFocusV115, type WarOperationsStateV115,
@@ -35,6 +36,8 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false}:
   const [selectedIds,setSelectedIds]=useState<string[]>([]);
   const [rtsSelectedId,setRtsSelectedId]=useState("");
   const [recruitUnitId,setRecruitUnitId]=useState(rules.units[8]?.id??rules.units[0]?.id??"");
+  const [careMemberId,setCareMemberId]=useState("");
+  const [careMedicTeamId,setCareMedicTeamId]=useState("");
   const [now,setNow]=useState(0);
   const defaultSource=rules.metadata.sha256;
 
@@ -116,6 +119,8 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false}:
       if(state.outer.some(order=>stamp>=order.dueAt)) commit(settleWarOuterOpsV115(state,stamp,rules));
       const current=worldRef.current;
       if(current.pendingRecruits?.some(order=>stamp>=order.dueAt)) commit(settleWarRecruitmentsV115(current,stamp,rules));
+      const latest=worldRef.current;
+      if(latest.pendingTreatments?.some(order=>stamp>=order.dueAt)) commit(settleWarTreatmentsV116(latest,stamp,rules));
     }
     check();const timer=window.setInterval(check,1000);
     return ()=>window.clearInterval(timer);
@@ -137,6 +142,13 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false}:
   const requestIssue=hydrated ? warMissionEligibleV115(world,rules,targetId,selectedIds) : "Chargement de l'archive";
   const target=rules.territories.find(site=>site.id===targetId);
   const recruitUnit=rules.units.find(unit=>unit.id===recruitUnitId);
+  const woundedMembers=world.teams.flatMap(team=>team.members.filter(member=>member.status==="wounded")
+    .map(member=>({member,team}))).filter(item=>!world.assignments[item.team.id]);
+  const freeMedics=world.teams.filter(team=>team.unitId==="W3-U18"&&!world.assignments[team.id]&&
+    team.members.some(member=>member.status==="fit"));
+  const carePatient=woundedMembers.find(item=>item.member.id===careMemberId);
+  const careMedic=freeMedics.find(team=>team.id===careMedicTeamId);
+  const careFee=rules.units.find(unit=>unit.id==="W3-U18")?.upkeepRav??0;
   const missionPc=selectedIds.reduce((pc,id)=>pc+(rules.units.find(unit=>unit.id===world.teams.find(team=>team.id===id)?.unitId)?.commandPoints??0),0);
   const routePreview=missionPc>0&&missionPc<=rules.parameters.pc_cap_1?planWarRouteV6(world.baseId,targetId,missionPc,[],rules):null;
   const current=world.active;
@@ -255,6 +267,37 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false}:
         {formatTime(Math.max(0,Math.ceil((order.dueAt-now)/1000)))}
       </p>)}
       <p className={styles.explain}>Équipes formées en renfort : {(world.recruitedTeamIds??[]).length}. Coût et délai de base issus de la Bible V6 ; conversion des tours en secondes propre à ce prototype.</p>
+    </section>
+
+    <section className={styles.medicalPanel} aria-label="Relève et récupération des blessés V6">
+      <h4>Triage du clan · récupération des blessures légères</h4>
+      <p>Les participants blessés restent identifiés, avec leur expérience antérieure. Leur retour exige une équipe de soigneur de terrain W3-U18 réellement recrutée, disponible, des RAV et 45 secondes de traitement. Ce délai est propre à l&apos;exercice ; aucune blessure majeure ne guérit automatiquement.</p>
+      <div className={styles.medicalControls}>
+        <label>Personne blessée à relever
+          <select value={careMemberId} disabled={blocked} onChange={event=>setCareMemberId(event.target.value)}>
+            <option value="">Choisir un blessé disponible</option>
+            {woundedMembers.map(({member,team})=><option key={member.id} value={member.id}>{team.id} · {member.id} · XP {member.xp}</option>)}
+          </select>
+        </label>
+        <label>Soigneur de terrain recruté
+          <select value={careMedicTeamId} disabled={blocked} onChange={event=>setCareMedicTeamId(event.target.value)}>
+            <option value="">Choisir un soigneur W3-U18 libre</option>
+            {freeMedics.map(team=><option key={team.id} value={team.id}>{team.id} · {team.members.filter(member=>member.status==="fit").length} apte(s)</option>)}
+          </select>
+        </label>
+        <button type="button" disabled={blocked||!carePatient||!careMedic||
+          carePatient.team.id===careMedic.id||world.rav<careFee||(world.pendingTreatments?.length??0)>=2}
+          onClick={()=>commit(queueWarTreatmentV116(worldRef.current,carePatient?.team.id??"",
+            careMemberId,careMedicTeamId,Date.now(),rules))}>Engager les soins · {careFee} RAV</button>
+      </div>
+      <p className={styles.explain}>Un traitement immobilise les deux équipes, bloque les doubles missions et conserve les identités. La guérison exige une échéance réelle et un membre soigneur encore apte.</p>
+      {(world.pendingTreatments??[]).map(order=><div className={styles.treatmentOrder} key={order.id}>
+        <span><strong>{order.id}</strong> · {order.memberId} pris en charge par {order.medicTeamId} ·
+          {formatTime(Math.max(0,Math.ceil((order.dueAt-now)/1000)))} restant</span>
+        <button type="button" disabled={blocked} onClick={()=>commit(cancelWarTreatmentV116(worldRef.current,order.id))}>Interrompre sans remboursement</button>
+      </div>)}
+      {!world.teams.some(team=>team.members.some(member=>member.status==="wounded"))&&<p className={styles.explain}>Aucune blessure légère actuellement enregistrée.</p>}
+      {(world.treatmentReceipts??[]).length>0&&<p className={styles.explain}>{world.treatmentReceipts?.length} traitement(s) validé(s), chacun clôturé une seule fois.</p>}
     </section>
 
     {current && <section className={styles.battle} aria-label="Mission jouable active" data-mode={current.mode}>
