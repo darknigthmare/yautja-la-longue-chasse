@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import type { WarRulesV6 } from "./systems/clanWarBibleV6";
+import { planWarRouteV6, type WarRulesV6 } from "./systems/clanWarBibleV6";
 import {
   WAR_OPERATIONS_STORAGE_V115, beginWarOperationV115, commandRtsV115, commandStealthV115,
   createWarOperationsV115, deployAssaultUnitV115, leaveWarOperationV115, readWarOperationsV115,
@@ -90,6 +90,8 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false}:
 
   const requestIssue=hydrated ? warMissionEligibleV115(world,rules,targetId,selectedIds) : "Chargement de l'archive";
   const target=rules.territories.find(site=>site.id===targetId);
+  const missionPc=selectedIds.reduce((pc,id)=>pc+(rules.units.find(unit=>unit.id===world.teams.find(team=>team.id===id)?.unitId)?.commandPoints??0),0);
+  const routePreview=missionPc>0&&missionPc<=rules.parameters.pc_cap_1?planWarRouteV6(world.baseId,targetId,missionPc,[],rules):null;
   const current=world.active;
   const assault=current?.mode==="assault"?current.assault:undefined;
   const stealth=current?.mode==="stealth"?current.stealth:undefined;
@@ -140,7 +142,11 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false}:
             {rules.territories.filter(site=>site.id!==world.baseId).map(site=><option key={site.id} value={site.id}>{site.id} · {site.name}</option>)}
           </select>
         </label>
-        {target && <p className={styles.explain}><strong>{target.name}</strong> · {target.region} · défense de terrain {target.terrainDefense} · renseignement {world.intelIds.includes(target.id)?"obtenu":"non confirmé"} · pression d'exercice {world.pressure[target.id]??0}.</p>}
+        {target && <><p className={styles.explain}><strong>{target.name}</strong> · {target.region} · défense de terrain {target.terrainDefense} · renseignement {world.intelIds.includes(target.id)?"obtenu":"non confirmé"} · pression d'exercice {world.pressure[target.id]??0}.</p>
+          <details className={styles.brief}><summary>Ordre territorial · Bible V6</summary>
+            <p><strong>Mission :</strong> {target.objective}</p><p><strong>Reconnaissance :</strong> {target.reconnaissance}</p>
+            <p><strong>Contrôle :</strong> {target.control}</p><p><strong>Vie locale :</strong> {target.life}</p><p><strong>Repli :</strong> {target.retreat}</p>
+          </details></>}
         {mode==="outer" && <label>Consigne du détachement
           <select value={focus} onChange={event=>setFocus(event.target.value as OuterFocusV115)}>
             {(Object.keys(focusLabels) as OuterFocusV115[]).map(key=><option value={key} key={key}>{focusLabels[key]}</option>)}
@@ -157,6 +163,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false}:
             return <label key={team.id} className={styles.team} data-engaged={Boolean(engaged)}>
               <span><input type="checkbox" checked={chosen} disabled={(!chosen&&Boolean(engaged))||(!chosen&&fit===0)} onChange={event=>setSelectedIds(list=>event.target.checked?[...list,team.id]:list.filter(id=>id!==team.id))}/>
                 <strong>{unit?.name??team.unitId}</strong><small>{team.id} · {unit?.commandPoints} PC · {unit?.upkeepRav} RAV</small></span>
+              <small>{unit?.role} · ATQ {unit?.attack} · DEF {unit?.defense} · MOB {unit?.mobility}</small>
               <small>{fit}/{team.members.length} aptes · fatigue {team.fatigue} · {engaged?"engagé "+engaged:"disponible"}</small>
             </label>;
           })}
@@ -164,7 +171,8 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false}:
       </fieldset>
     </div>
     <div className={styles.launch}>
-      <p>{requestIssue ?? "Ordre admissible : RAV débités une seule fois, détachements immobilisés jusqu'au rapport."}</p>
+      <p>{requestIssue ?? "Ordre admissible : RAV débités une seule fois, détachements immobilisés jusqu'au rapport."}
+        {routePreview && <small className={styles.path}>Passages V6 : {routePreview.passageIds.join(" → ")||"sur place"} · coût de mouvement {routePreview.cost} · {missionPc} PC</small>}</p>
       <button type="button" disabled={blocked||Boolean(requestIssue)||((mode!=="outer")&&Boolean(current))||(mode==="outer"&&world.outer.length>=3)||(mode==="stealth"&&selectedIds.length>2)} onClick={start}>Lancer : {modeLabels[mode]}</button>
     </div>
 
