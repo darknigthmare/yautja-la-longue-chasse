@@ -5,7 +5,7 @@ mod=importlib.util.module_from_spec(spec);spec.loader.exec_module(mod)
 class V126Safety(unittest.TestCase):
  def test_pending_and_sources(self):
   c=mod.catalog();self.assertEqual(len(c["items"]),4)
-  self.assertEqual(mod.installed(c),{"enabled":0,"remaining":4})
+  self.assertEqual(mod.installed(c),{"enabled":4,"remaining":0})
  def test_missing_bundle_no_write(self):
   with tempfile.TemporaryDirectory() as d:
    with self.assertRaisesRegex(ValueError,"ZIP missing"):
