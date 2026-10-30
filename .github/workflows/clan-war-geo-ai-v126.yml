@@ -1,0 +1,92 @@
+name: V126 Earth world, climate, enemy configurations, multiplayer contracts
+on:
+  pull_request:
+    branches: [main, feat/v120-clan-war-1200-mission-variants-20261030]
+    paths:
+      - 'app/game/systems/clanWarEarthV126.ts'
+      - 'app/game/systems/clanWarWorldClimateV126.ts'
+      - 'app/game/systems/clanWarEnemyProfilesV126.ts'
+      - 'app/game/systems/clanWarMultiplayerV126.ts'
+      - 'app/game/EarthPlanetMapV126*'
+      - 'app/game/ClanWarGeoAiV126*'
+      - 'app/game/PlanetGeneratorV103.tsx'
+      - 'app/game/data/earthLandNaturalEarth110mV126.json'
+      - 'tests/clan-war-geo-ai-multiplayer-v126.test.mjs'
+      - 'scripts/export-clan-war-geo-v126.mjs'
+      - 'tsconfig.clan-war-v126.json'
+      - '.github/workflows/clan-war-geo-ai-v126.yml'
+  push:
+    branches: [feat/v126-earth-geography-climate-ai-multiplayer]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  earth-clan-contracts:
+    name: Check real Earth geography, climate, 6000 AI plans and MP protocol
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Sparse checkout of exact V120/V126 sources
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /package.json
+            /package-lock.json
+            /eslint.config.mjs
+            /tsconfig.json
+            /tsconfig.clan-war-v126.json
+            /types/clan-war-v120-css.d.ts
+            /app/game/data/clanWarOriginalPlacesV120.json
+            /app/game/data/clanWarLoreFramesV120.json
+            /app/game/data/clanWarHomageAssaultV120.json
+            /app/game/data/clanWarHomageOuterV120.json
+            /app/game/data/clanWarHomageStealthV120.json
+            /app/game/data/clanWarHomageRtsV120.json
+            /app/game/data/earthLandNaturalEarth110mV126.json
+            /app/game/systems/clanWarVariantAtlasV120.ts
+            /app/game/systems/clanWarEarthV126.ts
+            /app/game/systems/clanWarWorldClimateV126.ts
+            /app/game/systems/clanWarEnemyProfilesV126.ts
+            /app/game/systems/clanWarMultiplayerV126.ts
+            /app/game/EarthPlanetMapV126.tsx
+            /app/game/EarthPlanetMapV126.module.css
+            /app/game/ClanWarGeoAiV126.tsx
+            /app/game/ClanWarGeoAiV126.module.css
+            /tests/clan-war-geo-ai-multiplayer-v126.test.mjs
+            /scripts/export-clan-war-geo-v126.mjs
+      - name: Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Reproducible dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Validate georeferencing and every mission’s AI plans
+        run: node --test --test-reporter=spec tests/clan-war-geo-ai-multiplayer-v126.test.mjs
+      - name: TypeScript 126
+        run: npx --no-install tsc --noEmit --project tsconfig.clan-war-v126.json
+      - name: Lint source and UI
+        run: npx --no-install eslint app/game/systems/clanWarEarthV126.ts app/game/systems/clanWarWorldClimateV126.ts app/game/systems/clanWarEnemyProfilesV126.ts app/game/systems/clanWarMultiplayerV126.ts app/game/EarthPlanetMapV126.tsx app/game/ClanWarGeoAiV126.tsx tests/clan-war-geo-ai-multiplayer-v126.test.mjs scripts/export-clan-war-geo-v126.mjs
+      - name: Smoke-bundle client views and geographic geometry
+        run: |
+          node --input-type=module <<'EOF'
+          import {build} from "esbuild";
+          const result=await build({
+            stdin:{contents:"export {default as Earth} from './app/game/EarthPlanetMapV126';export {default as War} from './app/game/ClanWarGeoAiV126';",resolveDir:process.cwd()},
+            bundle:true,write:false,platform:"browser",target:"es2022",format:"esm",
+            outdir:"dist/clan-war-v126-smoke",loader:{".css":"css"},logLevel:"silent",
+          });
+          if(!result.outputFiles.some(x=>x.path.endsWith(".js")))throw Error("No Earth UI bundle");
+          EOF
+      - name: Build complete corrected CSV and JSON
+        run: node scripts/export-clan-war-geo-v126.mjs outputs/clan-war-v126
+      - name: Upload verified world, climate and AI registers
+        uses: actions/upload-artifact@v4
+        with:
+          name: yautja-clan-war-v126-earth-ai-1200-6000
+          path: outputs/clan-war-v126/
+          if-no-files-found: error
+          retention-days: 30
