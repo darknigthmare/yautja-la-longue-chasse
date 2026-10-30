@@ -1,6 +1,6 @@
 import type { WarRulesV6 } from "./clanWarBibleV6";
 import type { WarRtsActorV115 } from "./clanWarOperationsV115";
-import { warMissionTerrainV116, warTerrainCellBlockedV116, warTerrainLineOfSightV116, type WarMissionTerrainV116 } from "./clanWarMissionTerrainV116";
+import { warMissionTerrainV116, warTerrainCellBlockedV116, warTerrainLineOfSightV116, warTerrainPathLengthV116, type WarMissionTerrainV116 } from "./clanWarMissionTerrainV116";
 import { warRtsNextPathStepV118 } from "./clanWarTacticalNavigationV118";
 
 /**
