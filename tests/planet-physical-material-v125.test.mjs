@@ -14,6 +14,7 @@ const bundle = await build({
       export * from "./app/game/systems/clanWarTextureLibraryV125";
       export * from "./app/game/systems/clanWarPlanetPhysicalIndexV125";
       export { describePlanetModularMasksV124 } from "./app/game/planetModularExportV124";
+      export { shapedRadiusV115, warShapeTemplateV115 } from "./app/game/systems/clanWarShapeAtlasV115";
       export { normalizeWarPlanetRecipeV102, encodeWarPlanetV102 } from "./app/game/systems/clanWarPlanetGeneratorV102";
       export { normalizeWarPlanetRecipeV103, encodeWarPlanetV103, generateWarPlanetV103 } from "./app/game/systems/clanWarPlanetGeneratorV103";
       export { normalizeWarPlanetRecipeV115, encodeWarPlanetV115, generateWarPlanetV115 } from "./app/game/systems/clanWarPlanetGeneratorV115";
@@ -35,6 +36,20 @@ test("120 unique named shapes split into three independent families and four siz
     assert.equal(new Set(group.map(shape => shape.name)).size, 40);
     assert.equal(new Set(group.map(shape => shape.footprintScale)).size, 4);
     assert(group.every(shape => shape.description.length >= 20));
+  }
+});
+
+test("all 120 shape recipes produce bounded and distinct radial contour signatures", () => {
+  for(const category of ["island","continent","region"]){
+    const signatures=new Set();
+    for(let index=0; index<40; index++){
+      const template=api.warShapeTemplateV115(category,index);
+      const samples=Array.from({length:128},(_,step)=>
+        api.shapedRadiusV115(.83,step*Math.PI*2/128,template,0));
+      assert(samples.every(value=>Number.isFinite(value)&&value>=.23&&value<=.985));
+      signatures.add(samples.map(value=>value.toFixed(4)).join(","));
+    }
+    assert.equal(signatures.size,40,`${category} has 40 visually differentiated geometry silhouettes`);
   }
 });
 
