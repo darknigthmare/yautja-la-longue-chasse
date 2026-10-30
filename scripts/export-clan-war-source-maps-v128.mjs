@@ -16,7 +16,10 @@ await mkdir(folder,{recursive:true});
 const sources=Array.from({length:12},(_,i)=>api.createWarSourceMapV128(
   "W3-MAP"+String(i+1).padStart(2,"0"),rules));
 const manifest=sources.map(m=>({
- id:m.id,name:m.name,planetId:m.planetId,sourceCells:m.sourceCells,
+ id:m.id,name:m.name,planetId:m.planetId,planetName:m.planetName,
+ worldCode:m.worldCode,worldStratum:m.worldStratum,accessGate:m.accessGate,
+ sourceCells:m.sourceCells,landmarks:m.landmarks,eventClass:m.eventClass,
+ observation:m.observation,poweredDoors:m.poweredDoors,hazards:m.hazards,
  width:m.width,height:m.height,kind:m.interpretation,
  sourceSituation:m.sourceSituation,sourceGeometry:m.sourceGeometry,
  sourceCover:m.sourceCover,sourceEvent:m.sourceEvent,
