@@ -1069,6 +1069,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const pendingTerminalRunRef = useRef<string | null>(null);
   const [pendingHuntResult, setPendingHuntResult] = useState<{ result: MissionResult; returnToDeck: boolean } | null>(null);
   const [previewMaskWorn, setPreviewMaskWorn] = useState(true);
+  const [draftChromaticsV114, setDraftChromaticsV114] = useState<HunterChromaticsV113 | null>(null);
   const [previewGauntletOpen, setPreviewGauntletOpen] = useState(false);
   const [previewBladesExtended, setPreviewBladesExtended] = useState(false);
   const [previewAiming, setPreviewAiming] = useState(false);
@@ -4434,6 +4435,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             </section>}
             <HunterChromaticForgeV113
               appearance={save.appearance}
+              onPreview={setDraftChromaticsV114}
               homeworld={stationReturnScreen === "homeworld"}
               disabled={settingsOpen || campaignSaveBusy || archiveTransferBusy || !!archiveRecoveryIssue}
               onCommit={commitChromaticsV113}
@@ -4443,7 +4445,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 <div className="customization-rig-stage">
                   <HunterRigPreview
                     className="customization-rig"
-                    appearance={save.appearance}
+                    appearance={draftChromaticsV114 ? { ...save.appearance, chromaticsV113: draftChromaticsV114 } : save.appearance}
                     armorId={save.loadout.armorId}
                     weaponIds={save.loadout.weaponIds}
                     gearIds={save.loadout.gearIds}

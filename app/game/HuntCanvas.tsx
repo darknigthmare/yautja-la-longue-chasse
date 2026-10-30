@@ -3319,7 +3319,7 @@ function drawRegisteredLayer(
   if (!image) return false;
   const matrix = relativeBoneMatrix(frame, HUNTER_BIND_FRAME, boneId);
   const recolored = options.chromatics ? chromaticCanvasSourceV113(
-    image, options.chromatics.appearance.chromaticsV113, options.chromatics.channel, options.placement
+    image, options.chromatics.appearance.chromaticsV113, options.chromatics.channel, options.placement, options.filter
   ) : null;
   context.save();
   context.globalAlpha *= options.alpha ?? 1;

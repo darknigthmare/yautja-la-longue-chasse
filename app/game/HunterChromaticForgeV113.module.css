@@ -17,3 +17,10 @@
 .actions button:disabled, .station button:disabled { opacity: .45; cursor: not-allowed; }
 .actions p { width: 100%; margin: 0; color: #f5ddae; }
 @media (prefers-reduced-motion: reduce) { .forge * { scroll-behavior: auto; transition: none; } }
+
+.materialPreview { display: grid; grid-template-columns: 70px minmax(0,1fr); gap: 10px; align-items: center; padding: 7px; border-radius: 6px; border: 1px solid #594a3d; background: #222723; }
+.materialPreview img { display: block; width: 70px; height: 70px; object-fit: cover; border-radius: 5px; background: #393b36; }
+.materialPreview span { display: grid; gap: 4px; min-width: 0; overflow-wrap: anywhere; }
+.materialPreview strong { font-size: .84rem; }
+.materialPreview small { font-size: .76rem; }
+.draftHint { color: #f0d2a2; }

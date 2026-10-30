@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable @next/next/no-img-element -- verified registered local PNGs are shown as texture samples */
 import { useEffect, useState } from "react";
 import type { HunterAppearance } from "./types";
 import {
@@ -9,12 +10,14 @@ import {
 import styles from "./HunterChromaticForgeV113.module.css";
 
 export default function HunterChromaticForgeV113({
-  appearance, homeworld = false, disabled = false, onCommit,
+  appearance, homeworld = false, disabled = false, onCommit, onPreview,
 }: {
   appearance: HunterAppearance;
   homeworld?: boolean;
   disabled?: boolean;
   onCommit: (value: HunterChromaticsV113) => boolean;
+  /** Draft-only display; this callback never writes a campaign archive. */
+  onPreview?: (value: HunterChromaticsV113 | null) => void;
 }) {
   const [draft, setDraft] = useState(() => normalizeHunterChromaticsV113(appearance.chromaticsV113));
   const [message, setMessage] = useState("");
@@ -22,6 +25,8 @@ export default function HunterChromaticForgeV113({
     setDraft(normalizeHunterChromaticsV113(appearance.chromaticsV113));
     setMessage("");
   }, [appearance.chromaticsV113]);
+  useEffect(() => { onPreview?.(draft); }, [draft, onPreview]);
+  useEffect(() => () => onPreview?.(null), [onPreview]);
 
   const change = (field: keyof HunterChromaticsV113, value: string | null) => {
     setDraft(current => normalizeHunterChromaticsV113({ ...current, [field]: value }));
@@ -41,6 +46,7 @@ export default function HunterChromaticForgeV113({
         const activeColor = draft[channel.colorKey];
         const choices = PHG_CHROMATIC_MATERIALS_V113.filter(item => item.channel === channel.id && item.status === "integrated");
         const pending = PHG_CHROMATIC_MATERIALS_V113.filter(item => item.channel === channel.id && item.status === "drive-only").length;
+        const selectedMaterial = choices.find(item => item.id === draft[channel.materialKey]);
         return <fieldset className={styles.station} key={channel.id} disabled={disabled}>
           <legend>{channel.label}</legend>
           <p>{channel.subtitle}</p>
@@ -59,11 +65,17 @@ export default function HunterChromaticForgeV113({
             <option value="">Matière du rig d’origine</option>
             {choices.map(item => <option key={item.id} value={item.id}>{item.label}{item.evidence === "provisional" ? " · provisoire" : ""}</option>)}
           </select>
+          {selectedMaterial?.src && <div className={styles.materialPreview} data-selected-material-id={selectedMaterial.id}>
+            <img src={selectedMaterial.src} alt="" loading="lazy" decoding="async" />
+            <span><strong>{selectedMaterial.label}</strong><small>{selectedMaterial.evidence === "provisional" ? "Étude provisoire — fidélité artistique non validée" : "Matière plane reconstituée — UV non certifiées 1:1"}</small></span>
+          </div>}
+          {!selectedMaterial && <small>Calque d'origine conservé sans texture de remplacement.</small>}
           {pending > 0 && <small>{pending} matière(s) identifiée(s) sur Drive, non encore présente(s) en jeu.</small>}
         </fieldset>;
       })}
     </div>
     <div className={styles.actions}>
+      {dirty && <p className={styles.draftHint}>Prévisualisation en direct sur le rig. Les modifications ne sont pas enregistrées avant validation.</p>}
       <button type="button" disabled={disabled || !dirty} onClick={() => {
         if (onCommit(draft)) setMessage("Nouvelle parure enregistrée pour ce chasseur.");
         else setMessage("Sauvegarde non confirmée ; conserve ton ancienne palette et réessaie.");

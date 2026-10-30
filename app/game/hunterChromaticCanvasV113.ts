@@ -18,6 +18,7 @@ const CHANNEL_FIELDS = {
 
 type TextureLoad = { image: HTMLImageElement; status:"loading" | "ready" | "failed" };
 const textures = new Map<string, TextureLoad>();
+const MAX_RESIDENT_CHROMATIC_TEXTURES_V114 = 8;
 const composed = new WeakMap<HTMLImageElement, Map<string, HTMLCanvasElement>>();
 
 export function chromaticCanvasDescriptorV113(
@@ -30,7 +31,16 @@ export function chromaticCanvasDescriptorV113(
 }
 function textureForV113(src: string): HTMLImageElement | null {
   const existing = textures.get(src);
-  if (existing) return existing.status==="ready" ? existing.image : null;
+  if (existing) {
+    // A small LRU avoids pinning every 1254px source in long customization sessions.
+    textures.delete(src);
+    textures.set(src, existing);
+    return existing.status==="ready" ? existing.image : null;
+  }
+  if (textures.size >= MAX_RESIDENT_CHROMATIC_TEXTURES_V114) {
+    const oldest = textures.keys().next().value;
+    if (oldest !== undefined) textures.delete(oldest);
+  }
   const image = new Image();
   const value:TextureLoad = {image,status:"loading"};
   textures.set(src,value);
@@ -56,13 +66,14 @@ export function chromaticCanvasSourceV113(
   chromatics:unknown,
   channel:ChromaticChannelV113,
   placement?:Placement,
+  baseFilter = "none",
 ): HTMLCanvasElement | null {
   const material=chromaticCanvasDescriptorV113(chromatics,channel);
   const texture=material.texturePath ? textureForV113(material.texturePath) : null;
   if (!material.color && !texture) return null;
 
   const key=[
-    channel, material.color ?? "",
+    channel, material.color ?? "", baseFilter,
     material.texturePath ?? "", texture?"ready":"pending",
     placement ? [placement.x,placement.y,placement.width,placement.height].join(":") : "full",
   ].join("|");
@@ -73,7 +84,12 @@ export function chromaticCanvasSourceV113(
   canvas.width=CANVAS_W;canvas.height=CANVAS_H;
   const ctx=canvas.getContext("2d");
   if(!ctx)return null;
+  // Grade the original morphology before laying down custom paint. Previously
+  // selecting any tint silently disabled the Super/Feral skin correction and
+  // the existing armor filter in the active hunting Canvas.
+  ctx.filter=baseFilter || "none";
   ctx.drawImage(original,placement?.x??0,placement?.y??0,placement?.width??CANVAS_W,placement?.height??CANVAS_H);
+  ctx.filter="none";
   ctx.globalCompositeOperation="source-atop";
   ctx.globalAlpha=material.opacity;
   if(material.color){ctx.fillStyle=material.color;ctx.fillRect(0,0,CANVAS_W,CANVAS_H);}

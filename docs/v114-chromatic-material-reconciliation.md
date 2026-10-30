@@ -14,3 +14,9 @@ Les lieux physiques Homeworld et le rendu du chasseur V113 sont conservés. À v
 Commandes : `python3 scripts/validate-phg-materials-v113.py` ; `node --experimental-strip-types --test tests/hunter-chromatics-v113.test.mjs tests/hunter-chromatic-canvas-v113.test.mjs tests/hunter-chromatics-native-v114.test.mjs`.
 
 Les PR #24 et #25 sont deux branches distinctes. Ne pas déduire de leur mergeabilité séparée l'absence de conflits lors de leur **intégration mutuelle**.
+
+## Correctif du rendu et usage du teinturier
+
+V114 restitue le grade de base des plaques cutanées et métalliques dans la chasse Canvas **avant** la mise en couleur. Le filtre d'origine est dans la clé du cache ; modifier la teinte ne détruit pas les détails morphologiques sous-jacents. La prévisualisation du poste est désormais locale et immédiate ; seule l'action « Valider » passe par la sauvegarde propriétaire avec lecture de contrôle. Les matières du registre sont présentées avec leur vignette et un avertissement explicite sur la fidélité.
+
+Ce correctif ne certifie ni le rendu alpha/motif aux raccords des membres ni un équivalent officiel des shaders de PHG ; une inspection visuelle et des tests de jeu réels restent nécessaires.
