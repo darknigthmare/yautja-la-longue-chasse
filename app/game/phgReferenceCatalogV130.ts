@@ -1,5 +1,5 @@
 /** V130: named-source reference index for studio selection, NEVER original PHG UVs. */
-import { PHG_V129_PATCH_MATERIALS, PHG_V129_PATCH_EVIDENCE } from "./phgPatchStudiesV129.ts";
+import { PHG_V129_PATCH_MATERIALS, PHG_V129_SOURCE_RECORDS } from "./phgPatchStudiesV129.ts";
 import { PHG_V128_REFERENCES } from "./phgPlatformStudiesV128.ts";
 import { PHG_HISTORICAL_STUDIES_V127 } from "./phgHistoricalMaterialsV127.ts";
 import { PHG_RECENT_CANDIDATES_V126 } from "./phgRecentMaterialsV126.ts";
@@ -17,7 +17,7 @@ export interface PhgReferenceV130 {
  readonly caveat: string;
 }
 const patch129 = PHG_V129_PATCH_MATERIALS.map((item):PhgReferenceV130 => {
- const record=PHG_V129_PATCH_EVIDENCE.find(x=>item.id==="phg-study-v129-"+x.id);
+ const record=PHG_V129_SOURCE_RECORDS.find(x=>item.id==="phg-study-v129-"+x.id);
  return {
   materialId:item.id,name:item.label,url:record?.sourceUrl??"https://forum.predator.illfonic.com/t/patch-notes-2-08/15883",
   kind:"named-patch",exactTextureVerified:false,directUvAvailable:false,
