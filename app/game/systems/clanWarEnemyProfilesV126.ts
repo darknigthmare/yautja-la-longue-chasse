@@ -88,7 +88,7 @@ export function createWarAiEncounterV126(
  const base=variant.mode==="outer"?Math.max(0,level-2):variant.mode==="stealth"?
    1+level:variant.mode==="assault"?3+level*2:3+level*2;
  const requested=clamp(Math.round((base+(subVariant-3))*coopFactor),rule.min,rule.max);
- const enemyBudget=clamp(requested*3,rule.pc===0?1:2,rule.pc);
+ const enemyBudget=clamp(requested*3+4,Math.min(rule.pc,rule.min*4),rule.pc);
  const available=UNIT_TYPES.filter(t=>t.terrain(variant.environment.climate));
  const groups:WarAiDetachmentV126[]=[];
  let spent=0,added=0;const usedRoles:Record<string,number>={};
@@ -96,8 +96,15 @@ export function createWarAiEncounterV126(
   const roleOrder=ROLE_PRIORITY[profile];
   const role=roleOrder[(i+Math.floor(seed/11))%roleOrder.length];
   const possible=available.filter(t=>t.role===role&&t.pc+spent<=enemyBudget);
-  const fallbacks=available.filter(t=>t.role==="guard"&&t.pc+spent<=enemyBudget);
-  const candidates=possible.length?possible:fallbacks;
+  // Preserve W3 PC accounting: if heavy guards are too costly, only real
+   // lower-PC scouting teams can fill the remaining lawful deployment slots.
+   const fallbacks=available.filter(t=>t.pc+spent<=enemyBudget)
+     .sort((a,b)=>a.pc-b.pc||a.unitId.localeCompare(b.unitId));
+  const remainingMin=Math.max(0,rule.min-groups.length-1)*2;
+   const affordable=possible.filter(t=>enemyBudget-spent-t.pc>=remainingMin);
+   const candidates=groups.length<rule.min?
+     (affordable.length?affordable:fallbacks):
+     (possible.length?possible:fallbacks);
   if(!candidates.length)break;
   const chosen=candidates[(seed+i*7)%candidates.length];
   spent+=chosen.pc;added++;
