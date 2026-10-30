@@ -23,13 +23,13 @@ const footprint=(building:typeof HOMEWORLD_BUILDINGS_V77[number])=>{
 export default function HomeworldWorldMapV77({actor,levelId,interiorId=null,open,disabled=false,routeSuspended=false,interactionShortcut='E / A',targetId,targetNonce,save,onOpenChange}:{actor:{x:number;y:number};levelId:HomeworldLevelV77;interiorId?:string|null;open:boolean;disabled?:boolean;routeSuspended?:boolean;interactionShortcut?:string;targetId?:string;targetNonce?:number;save?:SaveGame;onOpenChange(open:boolean):void}){
  const [selected,setSelected]=useState(levelId),[inspected,setInspected]=useState<string|null>(null),[query,setQuery]=useState(''),[chosenId,setChosenId]=useState<string|null>(null),[zoomRoute,setZoomRoute]=useState(false),ref=useRef<HTMLDivElement>(null);
  const [plan,setPlan]=useState<HomeworldRoutePlanV109|null>(null),[routeNotice,setRouteNotice]=useState('');
- const [planning,setPlanning]=useState(false),workerRef=useRef<Worker|null>(null),workerBusy=useRef(false),planningRevision=useRef(0);
+ const [planning,setPlanning]=useState(false),workerRef=useRef<Worker|null>(null),workerBusy=useRef(false),planningRevision=useRef(0),planningUiFrame=useRef<number|null>(null);
  const workerOwner=useRef<string|null>(null),pendingTarget=useRef<string|null>(null),pendingRequest=useRef<HomeworldRouteRequestV109|null>(null);
  // The guide describes the same published body as the scene. Retaining a
  // second origin on a timer can keep a safe old heading after a real turn.
  const routeOrigin=useMemo(()=>({actor:{x:actor.x,y:actor.y},levelId,interiorId}),[actor.x,actor.y,levelId,interiorId]);
- const live=useRef({actor,levelId,interiorId,save,onOpenChange,open});
- useLayoutEffect(()=>{live.current={actor,levelId,interiorId,save,onOpenChange,open};},[actor,levelId,interiorId,save,onOpenChange,open]);
+ const live=useRef({actor,levelId,interiorId,save,onOpenChange,open,routeSuspended});
+ useLayoutEffect(()=>{live.current={actor,levelId,interiorId,save,onOpenChange,open,routeSuspended};},[actor,levelId,interiorId,save,onOpenChange,open,routeSuspended]);
  const landmarks=useMemo(()=>homeworldAtlasLandmarksV111(save),[save]),requested=homeworldAtlasTargetV83(landmarks,targetId);
  const requestedId=requested?.id,requestedLevel=requested?.levelId,requestedBuilding=requested?.buildingId;
  const filtered=useMemo(()=>homeworldAtlasSearchV83(landmarks,query),[landmarks,query]);
@@ -50,10 +50,17 @@ export default function HomeworldWorldMapV77({actor,levelId,interiorId=null,open
  const focusPoints=activePlan&&planCurrent?activePlan.stages.filter(stage=>stage.levelId===selected&&!stage.interiorId).flatMap(stage=>stage.points):[];
  const focusBounds=focusPoints.length>1?(()=>{const left=Math.max(0,Math.min(...focusPoints.map(point=>point.x))-160),top=Math.max(0,Math.min(...focusPoints.map(point=>point.y))-160),right=Math.min(HOMEWORLD_WORLD_V77.width,Math.max(...focusPoints.map(point=>point.x))+160),bottom=Math.min(HOMEWORLD_WORLD_V77.height,Math.max(...focusPoints.map(point=>point.y))+160);return`${left} ${top} ${Math.max(400,right-left)} ${Math.max(300,bottom-top)}`;})():null;
  const markerScale=zoomRoute&&focusBounds?0.22:1;
- const cancelPlanning=useCallback(()=>{planningRevision.current++;workerRef.current?.terminate();workerRef.current=null;workerBusy.current=false;pendingTarget.current=null;pendingRequest.current=null;setPlanning(false);},[]);
- useEffect(()=>()=>{planningRevision.current++;workerRef.current?.terminate();},[]);
+ const invalidatePlanning=useCallback(()=>{
+  const revision=++planningRevision.current;
+  if(planningUiFrame.current!==null)cancelAnimationFrame(planningUiFrame.current);planningUiFrame.current=null;
+  workerRef.current?.terminate();workerRef.current=null;workerBusy.current=false;pendingTarget.current=null;pendingRequest.current=null;
+  return revision;
+ },[]);
+ const cancelPlanning=useCallback(()=>{invalidatePlanning();setPlanning(false);},[invalidatePlanning]);
+ const closeAtlas=useCallback(()=>{if(workerBusy.current){cancelPlanning();setRouteNotice('Calcul annulé.');}live.current.onOpenChange(false);},[cancelPlanning]);
+ useEffect(()=>()=>{invalidatePlanning();},[invalidatePlanning]);
  const prepare=useCallback((id:string,close:boolean)=>{
-  const current=live.current;if(!current.save)return;
+  const current=live.current;if(!current.save||current.routeSuspended)return;
   const revision=++planningRevision.current;if(workerBusy.current){workerRef.current?.terminate();workerRef.current=null;}workerBusy.current=true;setPlanning(true);setRouteNotice('Calcul des passages sûrs en cours…');
   const origin={actor:{...current.actor},levelId:current.levelId,interiorId:current.interiorId},owner=current.save.createdAt;
   const request:HomeworldRouteRequestV109={ownerCreatedAt:owner,destinationId:id,origin,geometryKey:homeworldCargoGeometryKeyV109(current.save.homeworld.cargoV108),destinationKey:homeworldDestinationKeyV109(homeworldAtlasTargetV83(homeworldAtlasLandmarksV111(current.save),id))};
@@ -79,20 +86,23 @@ export default function HomeworldWorldMapV77({actor,levelId,interiorId=null,open
    worker.postMessage({save:current.save,origin,destinationId:id,geometryKey:request.geometryKey});
   }catch{failed();}
  },[]);
- useEffect(()=>{
+ const previousOpen=useRef(open);
+ useLayoutEffect(()=>{
+  const closed=previousOpen.current&&!open;previousOpen.current=open;
+  const closedWhilePlanning=closed&&workerBusy.current;
   const pending=pendingTarget.current?homeworldAtlasTargetV83(landmarks,pendingTarget.current):null;
   const ownerChanged=!!workerOwner.current&&workerOwner.current!==save?.createdAt;
   const snapshotChanged=workerBusy.current&&pendingRequest.current&&(pendingRequest.current.geometryKey!==geometryKey||pendingRequest.current.destinationKey!==homeworldDestinationKeyV109(pending)||pendingRequest.current.origin.levelId!==levelId||pendingRequest.current.origin.interiorId!==interiorId);
-  if(!workerRef.current||!ownerChanged&&!routeSuspended&&!snapshotChanged&&(!workerBusy.current||pending&&pending.access!=='locked'))return;
-  const frame=requestAnimationFrame(()=>{cancelPlanning();if(ownerChanged){setPlan(null);setRouteNotice('');}else setRouteNotice(snapshotChanged?'Un lot ou le repère a changé. Recalcule le passage.':'Calcul suspendu. Recalcule lorsque tu reprends la marche.');});
-  return()=>cancelAnimationFrame(frame);
- },[save?.createdAt,landmarks,geometryKey,levelId,interiorId,routeSuspended,cancelPlanning]);
- const previousOpen=useRef(open);
- useEffect(()=>{
-  const closed=previousOpen.current&&!open;previousOpen.current=open;
-  if(!closed||!workerBusy.current)return;
-  const frame=requestAnimationFrame(()=>{cancelPlanning();setRouteNotice('Calcul annulé.');});return()=>cancelAnimationFrame(frame);
- },[open,cancelPlanning]);
+  if(!workerRef.current||!ownerChanged&&!routeSuspended&&!snapshotChanged&&!closedWhilePlanning&&(!workerBusy.current||pending&&pending.access!=='locked'))return;
+  // Revoke the worker before another task can deliver its response. Only the
+  // UI waits for a frame; reopening must not discard that pending UI cleanup.
+  const revision=invalidatePlanning();
+  planningUiFrame.current=requestAnimationFrame(()=>{
+   if(revision!==planningRevision.current)return;planningUiFrame.current=null;setPlanning(false);
+   if(ownerChanged){setPlan(null);setRouteNotice('');}
+   else setRouteNotice(closedWhilePlanning?'Calcul annulé.':snapshotChanged?'Un lot ou le repère a changé. Recalcule le passage.':'Calcul suspendu. Recalcule lorsque tu reprends la marche.');
+  });
+ },[open,save?.createdAt,landmarks,geometryKey,levelId,interiorId,routeSuspended,invalidatePlanning]);
  const originSpace=levelId+':'+(interiorId??'street'),plannedSpace=useRef(originSpace);
  useEffect(()=>{
   if(!plan)return;
@@ -114,15 +124,15 @@ export default function HomeworldWorldMapV77({actor,levelId,interiorId=null,open
    try{pad=[...(navigator.getGamepads?.()??[])].find(p=>p?.connected)??null;}catch{/* The atlas still accepts keyboard/pointer controls. */}
    const result=stepHomeworldGamepad(state,pad,'dialog');state=result.state;
    const buttons=[...(ref.current?.querySelectorAll<HTMLElement>('button:not(:disabled),input:not(:disabled)')??[])],index=buttons.indexOf(document.activeElement as HTMLElement);
-   if(result.actions.cancel){onOpenChange(false);return;}if(result.actions.menuDirection&&buttons.length)buttons[nextHomeworldDialogChoice(index,buttons.length,result.actions.menuDirection)]?.focus();
+   if(result.actions.cancel){closeAtlas();return;}if(result.actions.menuDirection&&buttons.length)buttons[nextHomeworldDialogChoice(index,buttons.length,result.actions.menuDirection)]?.focus();
    if(result.actions.confirm)(buttons.find(b=>b===document.activeElement)??buttons[0])?.click();
   }request=requestAnimationFrame(frame);
- };request=requestAnimationFrame(frame);return()=>cancelAnimationFrame(request);},[open,onOpenChange]);
+ };request=requestAnimationFrame(frame);return()=>cancelAnimationFrame(request);},[open,closeAtlas]);
  return <><button type="button" data-world-atlas-button-v77="true" disabled={disabled} style={{position:'absolute',right:18,top:128,zIndex:7,minHeight:44,padding:'8px 12px',background:'#10171ceb',border:'1px solid #9d8757',borderRadius:5,color:'#e7d39b',font:'11px system-ui'}} onClick={()=>{setSelected(levelId);onOpenChange(true);}}>Atlas de la cité · {levelId}</button>
  {!open&&activeTarget&&guidance&&<HomeworldRouteGuideV111 key={`${activeTarget.id}:${guidance.state}`} label={activeTarget.label} targetId={activeTarget.id} guidance={guidance} current={planCurrent} interactionShortcut={interactionShortcut} suspended={routeSuspended} calculating={planning} onRecalculate={()=>prepare(activeTarget.id,false)} onChange={()=>{setChosenId(activeTarget.id);setSelected(levelId);onOpenChange(true);}} onClear={()=>{cancelPlanning();setPlan(null);setRouteNotice('');}}/>}
  {open&&<div data-homeworld-spatial-codex="v77" style={{position:'absolute',inset:0,zIndex:18000,background:'#100e0cEE',padding:20,color:'#e0c79a',boxSizing:'border-box',overflowY:'auto'}}>
-  <div ref={ref} role="dialog" aria-modal="true" aria-label="Carte des étages de la cité" tabIndex={-1} onKeyDown={event=>{event.stopPropagation();if(event.key==='Escape')onOpenChange(false);if(event.key==='Tab'){const buttons=[...(ref.current?.querySelectorAll<HTMLElement>('button:not(:disabled),input:not(:disabled)')??[])],i=buttons.indexOf(document.activeElement as HTMLElement);if(buttons.length){event.preventDefault();buttons[(i+(event.shiftKey?-1:1)+buttons.length)%buttons.length]?.focus();}}}}>
-   <button type="button" onClick={()=>onOpenChange(false)}>Fermer la carte</button><p>Position réelle : {levelId}. Les onglets consultent la carte ; ils ne changent pas d’étage.</p>{targetId&&<p>Repère demandé : {requested?.label??'Ce repère ne fait pas partie du registre visible de ta partie.'}</p>}
+  <div ref={ref} role="dialog" aria-modal="true" aria-label="Carte des étages de la cité" tabIndex={-1} onKeyDown={event=>{event.stopPropagation();if(event.key==='Escape')closeAtlas();if(event.key==='Tab'){const buttons=[...(ref.current?.querySelectorAll<HTMLElement>('button:not(:disabled),input:not(:disabled)')??[])],i=buttons.indexOf(document.activeElement as HTMLElement);if(buttons.length){event.preventDefault();buttons[(i+(event.shiftKey?-1:1)+buttons.length)%buttons.length]?.focus();}}}}>
+   <button type="button" onClick={closeAtlas}>Fermer la carte</button><p>Position réelle : {levelId}. Les onglets consultent la carte ; ils ne changent pas d’étage.</p>{targetId&&<p>Repère demandé : {requested?.label??'Ce repère ne fait pas partie du registre visible de ta partie.'}</p>}
    <label style={{display:'flex',gap:10,alignItems:'center',flexWrap:'wrap'}}>Registre de la cité<input aria-label="Rechercher un lieu, service ou interlocuteur" type="search" value={query} onChange={event=>{cancelPlanning();setQuery(event.target.value);}} placeholder="Forge, maître, soins, clans…" style={{minHeight:44,padding:'6px 10px',background:'#201b14',color:'#f1dfb9',border:'1px solid #ad8b55',fontSize:16,maxWidth:'100%'}}/>{save&&<button type="button" style={{minHeight:44}} onClick={()=>{const objective=homeworldAtlasTargetV83(landmarks,homeworldCurrentObjectiveV111(save)?.destinationId);if(objective){cancelPlanning();setQuery('');setChosenId(objective.id);setSelected(objective.levelId);setInspected(objective.buildingId);}}}>Objectif actuel</button>}</label>
    {currentObjective&&<p data-homeworld-current-objective-v110={currentObjective.operation} data-homeworld-current-objective-v111={currentObjective.operation}><strong>{currentObjective.interrupted?'Étude interrompue · reprise volontaire':'Étape actuelle'}</strong> · {currentObjective.instruction}</p>}
    <nav aria-label="Repères de tous les étages" data-homeworld-landmark-register-v83="true" style={{display:'flex',flexWrap:'wrap',gap:6,maxHeight:'18vh',overflowY:'auto',margin:'10px 0'}}>

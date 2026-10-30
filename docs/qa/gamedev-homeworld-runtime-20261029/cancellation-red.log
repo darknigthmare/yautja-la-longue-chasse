@@ -1,0 +1,352 @@
+✖ atlas button cancels the request before the parent closes or a frame runs (3975.973366ms)
+✖ atlas Escape cancels the request before the parent closes or a frame runs (2349.107338ms)
+✖ atlas gamepad cancels the request before the parent closes or a frame runs (1545.462659ms)
+✖ an external atlas close rejects a response before the cancellation UI frame (1465.084432ms)
+✖ reopening before the cancellation frame cannot revive the old request or leave planning stuck (2030.693119ms)
+✖ cancelling a replacement keeps the previously confirmed route (2490.53662ms)
+✖ suspension invalidates a pending replacement before RAF and preserves the confirmed route after resuming (2657.011525ms)
+✖ an old cancellation frame cannot stop or clear a newer request after reopening (1851.398003ms)
+✔ voluntary recalculation while the atlas is closed still installs its current result (2932.785616ms)
+✔ late worker errors after cancellation cannot replace a new request notice or prevent retry (1785.686758ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 2
+ℹ fail 8
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 23826.454393
+
+✖ failing tests:
+
+test at tests/homeworld-route-cancellation-v113.test.mjs:118:51
+✖ atlas button cancels the request before the parent closes or a frame runs (3975.973366ms)
+  AssertionError [ERR_ASSERTION]: the late result must not install a guide
+  + actual - expected
+  
+  + {
+  +   props: {
+  +     calculating: false,
+  +     current: true,
+  +     guidance: {
+  +       direction: 'À portée',
+  +       instruction: 'current response',
+  +       remaining: 0,
+  +       stage: {
+  +         distance: 0,
+  +         instruction: 'current response',
+  +         interiorId: 'dock-control',
+  +         kind: 'building',
+  +         levelId: '0',
+  +         points: [
+  +           {
+  +             x: 269,
+  +             y: 236
+  +           }
+  +         ],
+  +         radius: 24
+  +       },
+  +       state: 'arrived'
+  +     },
+  +     interactionShortcut: 'E / A',
+  +     label: 'Contrôle des quais',
+  +     onChange: [Function: onChange],
+  +     onClear: [Function: onClear],
+  +     onRecalculate: [Function: onRecalculate],
+  +     suspended: false,
+  +     targetId: 'building:dock-control'
+  +   },
+  +   type: [Function: HomeworldRouteGuideV111]
+  + }
+  - undefined
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/56a0bf56582d/yautja-apply-guides/tests/homeworld-route-cancellation-v113.test.mjs:124:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [Object],
+    expected: undefined,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/homeworld-route-cancellation-v113.test.mjs:118:51
+✖ atlas Escape cancels the request before the parent closes or a frame runs (2349.107338ms)
+  AssertionError [ERR_ASSERTION]: the late result must not install a guide
+  + actual - expected
+  
+  + {
+  +   props: {
+  +     calculating: false,
+  +     current: true,
+  +     guidance: {
+  +       direction: 'À portée',
+  +       instruction: 'current response',
+  +       remaining: 0,
+  +       stage: {
+  +         distance: 0,
+  +         instruction: 'current response',
+  +         interiorId: 'dock-control',
+  +         kind: 'building',
+  +         levelId: '0',
+  +         points: [
+  +           {
+  +             x: 269,
+  +             y: 236
+  +           }
+  +         ],
+  +         radius: 24
+  +       },
+  +       state: 'arrived'
+  +     },
+  +     interactionShortcut: 'E / A',
+  +     label: 'Contrôle des quais',
+  +     onChange: [Function: onChange],
+  +     onClear: [Function: onClear],
+  +     onRecalculate: [Function: onRecalculate],
+  +     suspended: false,
+  +     targetId: 'building:dock-control'
+  +   },
+  +   type: [Function: HomeworldRouteGuideV111]
+  + }
+  - undefined
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/56a0bf56582d/yautja-apply-guides/tests/homeworld-route-cancellation-v113.test.mjs:124:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [Object],
+    expected: undefined,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/homeworld-route-cancellation-v113.test.mjs:118:51
+✖ atlas gamepad cancels the request before the parent closes or a frame runs (1545.462659ms)
+  AssertionError [ERR_ASSERTION]: the late result must not install a guide
+  + actual - expected
+  
+  + {
+  +   props: {
+  +     calculating: false,
+  +     current: true,
+  +     guidance: {
+  +       direction: 'À portée',
+  +       instruction: 'current response',
+  +       remaining: 0,
+  +       stage: {
+  +         distance: 0,
+  +         instruction: 'current response',
+  +         interiorId: 'dock-control',
+  +         kind: 'building',
+  +         levelId: '0',
+  +         points: [
+  +           {
+  +             x: 269,
+  +             y: 236
+  +           }
+  +         ],
+  +         radius: 24
+  +       },
+  +       state: 'arrived'
+  +     },
+  +     interactionShortcut: 'E / A',
+  +     label: 'Contrôle des quais',
+  +     onChange: [Function: onChange],
+  +     onClear: [Function: onClear],
+  +     onRecalculate: [Function: onRecalculate],
+  +     suspended: false,
+  +     targetId: 'building:dock-control'
+  +   },
+  +   type: [Function: HomeworldRouteGuideV111]
+  + }
+  - undefined
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/56a0bf56582d/yautja-apply-guides/tests/homeworld-route-cancellation-v113.test.mjs:124:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [Object],
+    expected: undefined,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/homeworld-route-cancellation-v113.test.mjs:129:1
+✖ an external atlas close rejects a response before the cancellation UI frame (1465.084432ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + {
+  +   props: {
+  +     calculating: false,
+  +     current: true,
+  +     guidance: {
+  +       direction: 'À portée',
+  +       instruction: 'current response',
+  +       remaining: 0,
+  +       stage: {
+  +         distance: 0,
+  +         instruction: 'current response',
+  +         interiorId: 'dock-control',
+  +         kind: 'building',
+  +         levelId: '0',
+  +         points: [
+  +           {
+  +             x: 269,
+  +             y: 236
+  +           }
+  +         ],
+  +         radius: 24
+  +       },
+  +       state: 'arrived'
+  +     },
+  +     interactionShortcut: 'E / A',
+  +     label: 'Contrôle des quais',
+  +     onChange: [Function: onChange],
+  +     onClear: [Function: onClear],
+  +     onRecalculate: [Function: onRecalculate],
+  +     suspended: false,
+  +     targetId: 'building:dock-control'
+  +   },
+  +   type: [Function: HomeworldRouteGuideV111]
+  + }
+  - undefined
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/56a0bf56582d/yautja-apply-guides/tests/homeworld-route-cancellation-v113.test.mjs:132:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [Object],
+    expected: undefined,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/homeworld-route-cancellation-v113.test.mjs:136:1
+✖ reopening before the cancellation frame cannot revive the old request or leave planning stuck (2030.693119ms)
+  AssertionError [ERR_ASSERTION]: the obsolete response must not close the reopened atlas
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/56a0bf56582d/yautja-apply-guides/tests/homeworld-route-cancellation-v113.test.mjs:139:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/homeworld-route-cancellation-v113.test.mjs:144:1
+✖ cancelling a replacement keeps the previously confirmed route (2490.53662ms)
+  AssertionError [ERR_ASSERTION]: Expected "actual" to be reference-equal to "expected":
+  + actual - expected
+  
+    {
+      distance: 0,
+  +   instruction: 'obsolete replacement',
+  -   instruction: 'confirmed route',
+      interiorId: 'dock-control',
+      kind: 'building',
+      levelId: '0',
+      points: [
+        {
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/56a0bf56582d/yautja-apply-guides/tests/homeworld-route-cancellation-v113.test.mjs:148:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [Object],
+    expected: [Object],
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/homeworld-route-cancellation-v113.test.mjs:152:1
+✖ suspension invalidates a pending replacement before RAF and preserves the confirmed route after resuming (2657.011525ms)
+  AssertionError [ERR_ASSERTION]: Expected "actual" to be reference-equal to "expected":
+  + actual - expected
+  
+    {
+      distance: 0,
+  +   instruction: 'suspended replacement',
+  -   instruction: 'confirmed route',
+      interiorId: 'dock-control',
+      kind: 'building',
+      levelId: '0',
+      points: [
+        {
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/56a0bf56582d/yautja-apply-guides/tests/homeworld-route-cancellation-v113.test.mjs:155:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [Object],
+    expected: [Object],
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/homeworld-route-cancellation-v113.test.mjs:160:1
+✖ an old cancellation frame cannot stop or clear a newer request after reopening (1851.398003ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/56a0bf56582d/yautja-apply-guides/tests/homeworld-route-cancellation-v113.test.mjs:167:23)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

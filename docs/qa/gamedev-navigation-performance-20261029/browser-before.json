@@ -1,0 +1,639 @@
+{
+  "startedAt": "2026-10-29T14:26:38.869Z",
+  "variant": "baseline",
+  "checks": [
+    {
+      "name": "Worker 1 returns the cargo-aware route from the audience to the port",
+      "status": "PASS"
+    },
+    {
+      "name": "Worker 1 reuses its cache without changing the full plan",
+      "status": "PASS"
+    },
+    {
+      "name": "Worker 1 rejects an outdated ground snapshot and recovers on the next valid request",
+      "status": "PASS"
+    },
+    {
+      "name": "Worker 2 returns the cargo-aware route from the audience to the port",
+      "status": "PASS"
+    },
+    {
+      "name": "Worker 2 reuses its cache without changing the full plan",
+      "status": "PASS"
+    },
+    {
+      "name": "Worker 2 rejects an outdated ground snapshot and recovers on the next valid request",
+      "status": "PASS"
+    },
+    {
+      "name": "Worker 3 returns the cargo-aware route from the audience to the port",
+      "status": "PASS"
+    },
+    {
+      "name": "Worker 3 reuses its cache without changing the full plan",
+      "status": "PASS"
+    },
+    {
+      "name": "Worker 3 rejects an outdated ground snapshot and recovers on the next valid request",
+      "status": "PASS"
+    },
+    {
+      "name": "No browser, console or HTTP errors",
+      "status": "PASS"
+    }
+  ],
+  "samples": [
+    {
+      "coldMs": 9468.699999999255,
+      "warmMs": 25.300000000745058,
+      "recoveredMs": 24.300000000745058,
+      "invalidSnapshotMs": 0.6000000014901161,
+      "planSha256": "aa0cc9290e690cd393bc2a0e31b5c2c74e3a103c134b05745cc5207d327f3e45",
+      "plan": {
+        "ownerCreatedAt": "2026-10-29T12:00:00.000Z",
+        "destinationId": "cargo-steward-v108",
+        "geometryKey": "[[\"wide\",\"ground\",4500,2900],[\"narrow\",\"source\",6740,5420]]",
+        "destinationKey": "[\"cargo-steward-v108\",\"0\",null,null,null,7070,5335]",
+        "status": "reachable",
+        "reason": "Rejoins l’intendante à pied pour choisir une solution de rangement.",
+        "distance": 9763.732440208994,
+        "stages": [
+          {
+            "levelId": "+2",
+            "interiorId": "throne-audience",
+            "points": [
+              {
+                "x": 534,
+                "y": 305.66666666666686,
+                "vx": 0,
+                "vy": -259.99999999999886,
+                "facing": 1,
+                "grounded": true
+              },
+              {
+                "x": 534,
+                "y": 641.6666666666669
+              }
+            ],
+            "distance": 336,
+            "kind": "exit",
+            "radius": 10,
+            "instruction": "Au seuil, interagis pour sortir vers la cité."
+          },
+          {
+            "levelId": "+2",
+            "interiorId": null,
+            "points": [
+              {
+                "x": 4528.758731814701,
+                "y": 1059.6217455981562
+              },
+              {
+                "x": 4800,
+                "y": 1248
+              },
+              {
+                "x": 4704,
+                "y": 1440
+              },
+              {
+                "x": 4880,
+                "y": 1610
+              }
+            ],
+            "distance": 789.5978535869111,
+            "kind": "connector",
+            "radius": 28,
+            "connectorId": "acropolis-stair",
+            "nextLevelId": "+1",
+            "instruction": "Interagis pour emprunter le passage : Degré monumental de l’acropole → +1."
+          },
+          {
+            "levelId": "+1",
+            "interiorId": null,
+            "points": [
+              {
+                "x": 4880,
+                "y": 2110
+              },
+              {
+                "x": 4704,
+                "y": 2016
+              },
+              {
+                "x": 3936,
+                "y": 2016
+              },
+              {
+                "x": 3552,
+                "y": 2016
+              },
+              {
+                "x": 3250,
+                "y": 2350
+              }
+            ],
+            "distance": 1801.8182426669923,
+            "kind": "connector",
+            "radius": 28,
+            "connectorId": "clan-lift",
+            "nextLevelId": "0",
+            "instruction": "Interagis pour appeler la cabine ou embarquer : Ascenseur des délégations → 0."
+          },
+          {
+            "levelId": "0",
+            "interiorId": null,
+            "points": [
+              {
+                "x": 3250,
+                "y": 2350
+              },
+              {
+                "x": 3232,
+                "y": 2368
+              },
+              {
+                "x": 3232,
+                "y": 2496
+              },
+              {
+                "x": 3424,
+                "y": 2528
+              },
+              {
+                "x": 3392,
+                "y": 3200
+              },
+              {
+                "x": 3200,
+                "y": 3392
+              },
+              {
+                "x": 3200,
+                "y": 4160
+              },
+              {
+                "x": 3200,
+                "y": 4736
+              },
+              {
+                "x": 3424,
+                "y": 5120
+              },
+              {
+                "x": 3744,
+                "y": 5248
+              },
+              {
+                "x": 4480,
+                "y": 5280
+              },
+              {
+                "x": 5248,
+                "y": 5280
+              },
+              {
+                "x": 6016,
+                "y": 5280
+              },
+              {
+                "x": 6784,
+                "y": 5280
+              },
+              {
+                "x": 7040,
+                "y": 5280
+              },
+              {
+                "x": 7070,
+                "y": 5390
+              }
+            ],
+            "distance": 6836.316343955092,
+            "kind": "interact",
+            "radius": 24,
+            "instruction": "Interagis sur place pour consulter ce poste."
+          }
+        ]
+      }
+    },
+    {
+      "coldMs": 9519.79999999702,
+      "warmMs": 27,
+      "recoveredMs": 25.899999998509884,
+      "invalidSnapshotMs": 1,
+      "planSha256": "aa0cc9290e690cd393bc2a0e31b5c2c74e3a103c134b05745cc5207d327f3e45",
+      "plan": {
+        "ownerCreatedAt": "2026-10-29T12:00:00.000Z",
+        "destinationId": "cargo-steward-v108",
+        "geometryKey": "[[\"wide\",\"ground\",4500,2900],[\"narrow\",\"source\",6740,5420]]",
+        "destinationKey": "[\"cargo-steward-v108\",\"0\",null,null,null,7070,5335]",
+        "status": "reachable",
+        "reason": "Rejoins l’intendante à pied pour choisir une solution de rangement.",
+        "distance": 9763.732440208994,
+        "stages": [
+          {
+            "levelId": "+2",
+            "interiorId": "throne-audience",
+            "points": [
+              {
+                "x": 534,
+                "y": 305.66666666666686,
+                "vx": 0,
+                "vy": -259.99999999999886,
+                "facing": 1,
+                "grounded": true
+              },
+              {
+                "x": 534,
+                "y": 641.6666666666669
+              }
+            ],
+            "distance": 336,
+            "kind": "exit",
+            "radius": 10,
+            "instruction": "Au seuil, interagis pour sortir vers la cité."
+          },
+          {
+            "levelId": "+2",
+            "interiorId": null,
+            "points": [
+              {
+                "x": 4528.758731814701,
+                "y": 1059.6217455981562
+              },
+              {
+                "x": 4800,
+                "y": 1248
+              },
+              {
+                "x": 4704,
+                "y": 1440
+              },
+              {
+                "x": 4880,
+                "y": 1610
+              }
+            ],
+            "distance": 789.5978535869111,
+            "kind": "connector",
+            "radius": 28,
+            "connectorId": "acropolis-stair",
+            "nextLevelId": "+1",
+            "instruction": "Interagis pour emprunter le passage : Degré monumental de l’acropole → +1."
+          },
+          {
+            "levelId": "+1",
+            "interiorId": null,
+            "points": [
+              {
+                "x": 4880,
+                "y": 2110
+              },
+              {
+                "x": 4704,
+                "y": 2016
+              },
+              {
+                "x": 3936,
+                "y": 2016
+              },
+              {
+                "x": 3552,
+                "y": 2016
+              },
+              {
+                "x": 3250,
+                "y": 2350
+              }
+            ],
+            "distance": 1801.8182426669923,
+            "kind": "connector",
+            "radius": 28,
+            "connectorId": "clan-lift",
+            "nextLevelId": "0",
+            "instruction": "Interagis pour appeler la cabine ou embarquer : Ascenseur des délégations → 0."
+          },
+          {
+            "levelId": "0",
+            "interiorId": null,
+            "points": [
+              {
+                "x": 3250,
+                "y": 2350
+              },
+              {
+                "x": 3232,
+                "y": 2368
+              },
+              {
+                "x": 3232,
+                "y": 2496
+              },
+              {
+                "x": 3424,
+                "y": 2528
+              },
+              {
+                "x": 3392,
+                "y": 3200
+              },
+              {
+                "x": 3200,
+                "y": 3392
+              },
+              {
+                "x": 3200,
+                "y": 4160
+              },
+              {
+                "x": 3200,
+                "y": 4736
+              },
+              {
+                "x": 3424,
+                "y": 5120
+              },
+              {
+                "x": 3744,
+                "y": 5248
+              },
+              {
+                "x": 4480,
+                "y": 5280
+              },
+              {
+                "x": 5248,
+                "y": 5280
+              },
+              {
+                "x": 6016,
+                "y": 5280
+              },
+              {
+                "x": 6784,
+                "y": 5280
+              },
+              {
+                "x": 7040,
+                "y": 5280
+              },
+              {
+                "x": 7070,
+                "y": 5390
+              }
+            ],
+            "distance": 6836.316343955092,
+            "kind": "interact",
+            "radius": 24,
+            "instruction": "Interagis sur place pour consulter ce poste."
+          }
+        ]
+      }
+    },
+    {
+      "coldMs": 8894.10000000149,
+      "warmMs": 25.699999999254942,
+      "recoveredMs": 20.900000002235174,
+      "invalidSnapshotMs": 0.5999999977648258,
+      "planSha256": "aa0cc9290e690cd393bc2a0e31b5c2c74e3a103c134b05745cc5207d327f3e45",
+      "plan": {
+        "ownerCreatedAt": "2026-10-29T12:00:00.000Z",
+        "destinationId": "cargo-steward-v108",
+        "geometryKey": "[[\"wide\",\"ground\",4500,2900],[\"narrow\",\"source\",6740,5420]]",
+        "destinationKey": "[\"cargo-steward-v108\",\"0\",null,null,null,7070,5335]",
+        "status": "reachable",
+        "reason": "Rejoins l’intendante à pied pour choisir une solution de rangement.",
+        "distance": 9763.732440208994,
+        "stages": [
+          {
+            "levelId": "+2",
+            "interiorId": "throne-audience",
+            "points": [
+              {
+                "x": 534,
+                "y": 305.66666666666686,
+                "vx": 0,
+                "vy": -259.99999999999886,
+                "facing": 1,
+                "grounded": true
+              },
+              {
+                "x": 534,
+                "y": 641.6666666666669
+              }
+            ],
+            "distance": 336,
+            "kind": "exit",
+            "radius": 10,
+            "instruction": "Au seuil, interagis pour sortir vers la cité."
+          },
+          {
+            "levelId": "+2",
+            "interiorId": null,
+            "points": [
+              {
+                "x": 4528.758731814701,
+                "y": 1059.6217455981562
+              },
+              {
+                "x": 4800,
+                "y": 1248
+              },
+              {
+                "x": 4704,
+                "y": 1440
+              },
+              {
+                "x": 4880,
+                "y": 1610
+              }
+            ],
+            "distance": 789.5978535869111,
+            "kind": "connector",
+            "radius": 28,
+            "connectorId": "acropolis-stair",
+            "nextLevelId": "+1",
+            "instruction": "Interagis pour emprunter le passage : Degré monumental de l’acropole → +1."
+          },
+          {
+            "levelId": "+1",
+            "interiorId": null,
+            "points": [
+              {
+                "x": 4880,
+                "y": 2110
+              },
+              {
+                "x": 4704,
+                "y": 2016
+              },
+              {
+                "x": 3936,
+                "y": 2016
+              },
+              {
+                "x": 3552,
+                "y": 2016
+              },
+              {
+                "x": 3250,
+                "y": 2350
+              }
+            ],
+            "distance": 1801.8182426669923,
+            "kind": "connector",
+            "radius": 28,
+            "connectorId": "clan-lift",
+            "nextLevelId": "0",
+            "instruction": "Interagis pour appeler la cabine ou embarquer : Ascenseur des délégations → 0."
+          },
+          {
+            "levelId": "0",
+            "interiorId": null,
+            "points": [
+              {
+                "x": 3250,
+                "y": 2350
+              },
+              {
+                "x": 3232,
+                "y": 2368
+              },
+              {
+                "x": 3232,
+                "y": 2496
+              },
+              {
+                "x": 3424,
+                "y": 2528
+              },
+              {
+                "x": 3392,
+                "y": 3200
+              },
+              {
+                "x": 3200,
+                "y": 3392
+              },
+              {
+                "x": 3200,
+                "y": 4160
+              },
+              {
+                "x": 3200,
+                "y": 4736
+              },
+              {
+                "x": 3424,
+                "y": 5120
+              },
+              {
+                "x": 3744,
+                "y": 5248
+              },
+              {
+                "x": 4480,
+                "y": 5280
+              },
+              {
+                "x": 5248,
+                "y": 5280
+              },
+              {
+                "x": 6016,
+                "y": 5280
+              },
+              {
+                "x": 6784,
+                "y": 5280
+              },
+              {
+                "x": 7040,
+                "y": 5280
+              },
+              {
+                "x": 7070,
+                "y": 5390
+              }
+            ],
+            "distance": 6836.316343955092,
+            "kind": "interact",
+            "radius": 24,
+            "instruction": "Interagis sur place pour consulter ce poste."
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "httpErrors": [],
+  "scope": "Native current V111 module Worker with a checkpoint produced by actual V113 carrying and guided movement. Fresh workers and reused workers are measured separately; no Next build, art or FPS claim.",
+  "fixture": {
+    "path": "tests/fixtures/homeworld-return-route-v113.json",
+    "sha256": "ee550c4877e6081b07f5fa608bd17be903e4da400ffb5f1bda5c66a676926438",
+    "provenance": {
+      "commit": "a185398b24ffe458c6a6f7e622e5d7283de3d701",
+      "carryTicks": 1421,
+      "carryWalked": 7140.3749410165365,
+      "outward": {
+        "ticks": 854,
+        "walked": 4315.92830795082,
+        "rideTicks": 172,
+        "arrivals": [
+          {
+            "connectorId": "clan-lift",
+            "levelId": "+1",
+            "point": {
+              "x": 3250,
+              "y": 2350
+            }
+          },
+          {
+            "connectorId": "acropolis-stair",
+            "levelId": "+2",
+            "point": {
+              "x": 4880,
+              "y": 1610
+            }
+          }
+        ]
+      }
+    }
+  },
+  "sources": [
+    {
+      "path": "app/game/systems/homeworldNavigationV77.ts",
+      "sha256": "372896bc10acc6389af30234e0ae2934fa8efedf6a624df17a4514961a2ff078"
+    },
+    {
+      "path": "app/game/systems/homeworldNavigationV99.ts",
+      "sha256": "f8a639b341e80bad9d8f3f2a17b0b9e60f7068f44baa45bc1b168c9883225741"
+    },
+    {
+      "path": "app/game/systems/homeworldNavigationV109.ts",
+      "sha256": "8203bed6ba14ae3b15d6eb6b1834eb884ff4804438b079bc6eb7d90bb86863f9"
+    },
+    {
+      "path": "app/game/systems/homeworldWayfindingV111.ts",
+      "sha256": "a9894db25bb18208ef2a6b34e0118af5a2eec2570988b8b60da25a23f41e453b"
+    }
+  ],
+  "bundles": {
+    "workerSha256": "de4b38a2ea93f69059f9b42d396ebe2c39dc2149137e488373512a84d7770b37",
+    "hostSha256": "820cc2b84c1842df7e55eafcfd2147f27dd4ed797dacfbffaa2ede8c68feb4d7",
+    "minified": true,
+    "target": "es2022"
+  },
+  "runtime": {
+    "node": "v24.22.1",
+    "chromium": "153.0.8010.0",
+    "playwright": "1.62.1",
+    "esbuild": "0.25.12"
+  },
+  "coldMedianMs": 9468.699999999255,
+  "status": "PASS",
+  "completedAt": "2026-10-29T14:27:07.768Z"
+}

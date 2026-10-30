@@ -1,0 +1,18 @@
+✔ atlas button cancels the request before the parent closes or a frame runs (3861.866001ms)
+✔ atlas Escape cancels the request before the parent closes or a frame runs (93441.541202ms)
+✔ atlas gamepad cancels the request before the parent closes or a frame runs (32945.650795ms)
+✔ an external atlas close rejects a response before the cancellation UI frame (2476.425033ms)
+✔ reopening before the cancellation frame cannot revive the old request or leave planning stuck (2109.699629ms)
+✔ cancelling a replacement keeps the previously confirmed route (2357.768268ms)
+✔ suspension invalidates a pending replacement before RAF and preserves the confirmed route after resuming (2317.521815ms)
+✔ an old cancellation frame cannot stop or clear a newer request after reopening (2136.550638ms)
+✔ voluntary recalculation while the atlas is closed still installs its current result (2092.16361ms)
+✔ late worker errors after cancellation cannot replace a new request notice or prevent retry (1896.358993ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 146344.183449

@@ -1,0 +1,39 @@
+PASS Actual module Worker returns a cargo-aware route and the atlas draws confirmed independent lot polygons
+PASS An actual deferred Worker result is discarded after confirmed ground placements change
+PASS An old owner response cannot display a route after another campaign slot is selected
+PASS A floor change invalidates the pending native Worker and its late response
+PASS User cancellation terminates a pending actual worker and cannot be undone by its delayed response
+PASS Parent suspension and unmount stop work instead of publishing a hidden route
+FAIL Existing guide becomes off-route and removes the old polyline after a real parent placement update: The input did not match the regular expression /lot a changé/. Input:
+
+'Trajet à recalculer\n' +
+  'Intendante du quai\n' +
+  '\n' +
+  'Recalcule ce trajet avant de le suivre.\n' +
+  '\n' +
+  '⋯\n' +
+  '×'
+
+FAIL A native response released before the cancellation frame cannot revive the route after close button: Expected values to be strictly equal:
+
+1 !== 0
+
+FAIL A native response released before the cancellation frame cannot revive the route after Escape: Expected values to be strictly equal:
+
+1 !== 0
+
+FAIL A native response released before the cancellation frame cannot revive the route after external parent closure: Expected values to be strictly equal:
+
+1 !== 0
+
+FAIL Closing and reopening before an animation frame does not revive the old native request: Expected values to be strictly equal:
+
+1 !== 0
+
+FAIL Committed parent suspension rejects native delivery before the deferred UI frame: Expected values to be strictly equal:
+
+1 !== 0
+
+PASS An intentional recalculation from the closed guide still accepts the next native response
+PASS A390px atlas keeps its register and cancellation controls inside the viewport
+Report: /tmp/yautja-homeworld-runtime-20261029/atlas-before/run-ZjELNb/result.json

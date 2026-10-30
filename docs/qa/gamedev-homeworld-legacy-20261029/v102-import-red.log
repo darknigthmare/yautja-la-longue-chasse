@@ -1,0 +1,473 @@
+✖ the V102 seed draft survives a file that started before the edit (36.394949ms)
+✖ the V102 landform draft survives a file that started before the edit (21.195423ms)
+✖ the V102 coverage draft survives a file that started before the edit (5.1146ms)
+✖ the V102 coast draft survives a file that started before the edit (17.49571ms)
+✖ the V102 diversity draft survives a file that started before the edit (1.88397ms)
+✖ the V102 land biome draft survives a file that started before the edit (2.086876ms)
+✖ the V102 surface draft survives a file that started before the edit (14.466228ms)
+✖ the V102 atmosphere draft survives a file that started before the edit (7.330671ms)
+✖ a rejected V102 generation cancels an older file even with invalid input prepared before reading (5.938241ms)
+✖ a refused V102 shared code keeps its error when a previously started file succeeds or rejects (10.792986ms)
+✖ editing a V102 shared code cancels a previous file without automatically opening the typed world (12.993747ms)
+✔ a newly selected V102 file still restores its exact historical recipe after an edit cancelled another read (76.596293ms)
+✔ a successful V102 generation and manual import remain newer than a pending file (3.843434ms)
+✔ the latest V102 file wins in either completion order and keeps the front unopened (4.624582ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 3
+ℹ fail 11
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2360.113538
+
+✖ failing tests:
+
+test at tests/planet-generator-import-race-v102.test.mjs:127:40
+✖ the V102 seed draft survives a file that started before the edit (36.394949ms)
+  AssertionError [ERR_ASSERTION]: the older file must not erase the edited draft or replace its preview
+  + actual - expected
+  ... Skipped lines
+  
+    {
+  +   changed: false,
+  +   code: 'proc-v102-5m-0110011-org9p',
+  -   changed: true,
+  -   code: 'proc-v102-5l-0110011-hzt0m',
+      fields: [
+        [
+          'Répartition des terres',
+          'supercontinent'
+        ],
+  ...
+      importCode: '',
+  +   message: 'Fiche importée. Sa géographie est reconstruite à partir du code de monde.',
+  -   message: '',
+      opened: [],
+  +   seed: '202'
+  -   seed: '205'
+    }
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/56a0bf56582d/yautja-apply-guides/tests/planet-generator-import-race-v102.test.mjs:133:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [Object],
+    expected: [Object],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/planet-generator-import-race-v102.test.mjs:127:40
+✖ the V102 landform draft survives a file that started before the edit (21.195423ms)
+  AssertionError [ERR_ASSERTION]: the older file must not erase the edited draft or replace its preview
+  + actual - expected
+  ... Skipped lines
+  
+    {
+  +   changed: false,
+  +   code: 'proc-v102-5m-0110011-org9p',
+  -   changed: true,
+  -   code: 'proc-v102-5l-0110011-hzt0m',
+      fields: [
+        [
+          'Répartition des terres',
+  +       'supercontinent'
+  -       'archipelago'
+        ],
+        [
+          'Étendue des terres',
+          'balanced'
+        ],
+  ...
+      importCode: '',
+  +   message: 'Fiche importée. Sa géographie est reconstruite à partir du code de monde.',
+  -   message: '',
+      opened: [],
+  +   seed: '202'
+  -   seed: '201'
+    }
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/56a0bf56582d/yautja-apply-guides/tests/planet-generator-import-race-v102.test.mjs:133:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [Object],
+    expected: [Object],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/planet-generator-import-race-v102.test.mjs:127:40
+✖ the V102 coverage draft survives a file that started before the edit (5.1146ms)
+  AssertionError [ERR_ASSERTION]: the older file must not erase the edited draft or replace its preview
+  + actual - expected
+  ... Skipped lines
+  
+    {
+  +   changed: false,
+  +   code: 'proc-v102-5m-0110011-org9p',
+  -   changed: true,
+  -   code: 'proc-v102-5l-0110011-hzt0m',
+      fields: [
+        [
+          'Répartition des terres',
+          'supercontinent'
+        ],
+        [
+          'Étendue des terres',
+  +       'balanced'
+  -       'low'
+        ],
+        [
+          'Dessin des côtes',
+          'rugged'
+        ],
+  ...
+      importCode: '',
+  +   message: 'Fiche importée. Sa géographie est reconstruite à partir du code de monde.',
+  -   message: '',
+      opened: [],
+  +   seed: '202'
+  -   seed: '201'
+    }
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/56a0bf56582d/yautja-apply-guides/tests/planet-generator-import-race-v102.test.mjs:133:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [Object],
+    expected: [Object],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/planet-generator-import-race-v102.test.mjs:127:40
+✖ the V102 coast draft survives a file that started before the edit (17.49571ms)
+  AssertionError [ERR_ASSERTION]: the older file must not erase the edited draft or replace its preview
+  + actual - expected
+  ... Skipped lines
+  
+    {
+  +   changed: false,
+  +   code: 'proc-v102-5m-0110011-org9p',
+  -   changed: true,
+  -   code: 'proc-v102-5l-0110011-hzt0m',
+      fields: [
+        [
+          'Répartition des terres',
+          'supercontinent'
+        ],
+  ...
+          'Dessin des côtes',
+  +       'rugged'
+  -       'fjords'
+        ],
+        [
+          'Biomes des régions',
+          'varied'
+        ],
+  ...
+      importCode: '',
+  +   message: 'Fiche importée. Sa géographie est reconstruite à partir du code de monde.',
+  -   message: '',
+      opened: [],
+  +   seed: '202'
+  -   seed: '201'
+    }
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/56a0bf56582d/yautja-apply-guides/tests/planet-generator-import-race-v102.test.mjs:133:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [Object],
+    expected: [Object],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/planet-generator-import-race-v102.test.mjs:127:40
+✖ the V102 diversity draft survives a file that started before the edit (1.88397ms)
+  AssertionError [ERR_ASSERTION]: the older file must not erase the edited draft or replace its preview
+  + actual - expected
+  ... Skipped lines
+  
+    {
+  +   changed: false,
+  +   code: 'proc-v102-5m-0110011-org9p',
+  -   changed: true,
+  -   code: 'proc-v102-5l-0110011-hzt0m',
+      fields: [
+        [
+          'Répartition des terres',
+          'supercontinent'
+        ],
+  ...
+          'Biomes des régions',
+  +       'varied'
+  -       'uniform'
+        ],
+        [
+          'Terres dominantes',
+          'temperate'
+        ],
+  ...
+      importCode: '',
+  +   message: 'Fiche importée. Sa géographie est reconstruite à partir du code de monde.',
+  -   message: '',
+      opened: [],
+  +   seed: '202'
+  -   seed: '201'
+    }
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/56a0bf56582d/yautja-apply-guides/tests/planet-generator-import-race-v102.test.mjs:133:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [Object],
+    expected: [Object],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/planet-generator-import-race-v102.test.mjs:127:40
+✖ the V102 land biome draft survives a file that started before the edit (2.086876ms)
+  AssertionError [ERR_ASSERTION]: the older file must not erase the edited draft or replace its preview
+  + actual - expected
+  ... Skipped lines
+  
+    {
+  +   changed: false,
+  +   code: 'proc-v102-5m-0110011-org9p',
+  -   changed: true,
+  -   code: 'proc-v102-5l-0110011-hzt0m',
+      fields: [
+        [
+          'Répartition des terres',
+          'supercontinent'
+        ],
+  ...
+          'Terres dominantes',
+  +       'temperate'
+  -       'snow'
+        ],
+        [
+          'Mers et milieux intermédiaires',
+          'water'
+        ],
+  ...
+      importCode: '',
+  +   message: 'Fiche importée. Sa géographie est reconstruite à partir du code de monde.',
+  -   message: '',
+      opened: [],
+  +   seed: '202'
+  -   seed: '201'
+    }
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/56a0bf56582d/yautja-apply-guides/tests/planet-generator-import-race-v102.test.mjs:133:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [Object],
+    expected: [Object],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/planet-generator-import-race-v102.test.mjs:127:40
+✖ the V102 surface draft survives a file that started before the edit (14.466228ms)
+  AssertionError [ERR_ASSERTION]: the older file must not erase the edited draft or replace its preview
+  + actual - expected
+  ... Skipped lines
+  
+    {
+  +   changed: false,
+  +   code: 'proc-v102-5m-0110011-org9p',
+  -   changed: true,
+  -   code: 'proc-v102-5l-0110011-hzt0m',
+      fields: [
+        [
+          'Répartition des terres',
+          'supercontinent'
+        ],
+  ...
+          'Mers et milieux intermédiaires',
+  +       'water'
+  -       'acid'
+        ],
+        [
+          'Atmosphère',
+          'haze'
+        ]
+      ],
+      importCode: '',
+  +   message: 'Fiche importée. Sa géographie est reconstruite à partir du code de monde.',
+  -   message: '',
+      opened: [],
+  +   seed: '202'
+  -   seed: '201'
+    }
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/56a0bf56582d/yautja-apply-guides/tests/planet-generator-import-race-v102.test.mjs:133:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [Object],
+    expected: [Object],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/planet-generator-import-race-v102.test.mjs:127:40
+✖ the V102 atmosphere draft survives a file that started before the edit (7.330671ms)
+  AssertionError [ERR_ASSERTION]: the older file must not erase the edited draft or replace its preview
+  + actual - expected
+  ... Skipped lines
+  
+    {
+  +   changed: false,
+  +   code: 'proc-v102-5m-0110011-org9p',
+  -   changed: true,
+  -   code: 'proc-v102-5l-0110011-hzt0m',
+      fields: [
+        [
+          'Répartition des terres',
+          'supercontinent'
+        ],
+  ...
+          'Atmosphère',
+  +       'haze'
+  -       'aurora'
+        ]
+      ],
+      importCode: '',
+  +   message: 'Fiche importée. Sa géographie est reconstruite à partir du code de monde.',
+  -   message: '',
+      opened: [],
+  +   seed: '202'
+  -   seed: '201'
+    }
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/56a0bf56582d/yautja-apply-guides/tests/planet-generator-import-race-v102.test.mjs:133:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [Object],
+    expected: [Object],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/planet-generator-import-race-v102.test.mjs:137:1
+✖ a rejected V102 generation cancels an older file even with invalid input prepared before reading (5.938241ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  ... Skipped lines
+  
+    {
+  +   changed: false,
+  +   code: 'proc-v102-5m-0110011-org9p',
+  -   changed: true,
+  -   code: 'proc-v102-5l-0110011-hzt0m',
+      fields: [
+        [
+          'Répartition des terres',
+          'supercontinent'
+        ],
+  ...
+      importCode: '',
+  +   message: 'Fiche importée. Sa géographie est reconstruite à partir du code de monde.',
+  -   message: 'Une graine numérique doit être comprise entre 0 et 4 294 967 295.',
+      opened: [],
+  +   seed: '202'
+  -   seed: '4294967296'
+    }
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/56a0bf56582d/yautja-apply-guides/tests/planet-generator-import-race-v102.test.mjs:141:51)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [Object],
+    expected: [Object],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/planet-generator-import-race-v102.test.mjs:144:1
+✖ a refused V102 shared code keeps its error when a previously started file succeeds or rejects (10.792986ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  ... Skipped lines
+  
+    {
+      changed: false,
+  +   code: 'proc-v102-5m-0110011-org9p',
+  -   code: 'proc-v102-5l-0110011-hzt0m',
+      fields: [
+        [
+          'Répartition des terres',
+          'supercontinent'
+        ],
+  ...
+      importCode: 'incomplete-code',
+  +   message: 'Fiche importée. Sa géographie est reconstruite à partir du code de monde.',
+  -   message: 'Ce code de monde n’est pas reconnu. Vérifiez qu’il est complet.',
+      opened: [],
+  +   seed: '202'
+  -   seed: '201'
+    }
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/56a0bf56582d/yautja-apply-guides/tests/planet-generator-import-race-v102.test.mjs:150:12)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [Object],
+    expected: [Object],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/planet-generator-import-race-v102.test.mjs:154:1
+✖ editing a V102 shared code cancels a previous file without automatically opening the typed world (12.993747ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  ... Skipped lines
+  
+    {
+      changed: false,
+  +   code: 'proc-v102-5m-0110011-org9p',
+  -   code: 'proc-v102-5l-0110011-hzt0m',
+      fields: [
+        [
+          'Répartition des terres',
+          'supercontinent'
+        ],
+  ...
+      importCode: 'proc-v102-5n-0110011-p01gc',
+  +   message: 'Fiche importée. Sa géographie est reconstruite à partir du code de monde.',
+  -   message: '',
+      opened: [],
+  +   seed: '202'
+  -   seed: '201'
+    }
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/56a0bf56582d/yautja-apply-guides/tests/planet-generator-import-race-v102.test.mjs:156:81)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [Object],
+    expected: [Object],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

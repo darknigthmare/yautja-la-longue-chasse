@@ -1,0 +1,114 @@
+{
+  "status": "PASS",
+  "variant": "working-tree",
+  "sources": [
+    {
+      "path": "app/game/HomeworldWorldMapV77.tsx",
+      "sha256": "69a0043234b023aa8eb319e217e9761f56858505afcb2cc58d6e5924c4a06aec"
+    },
+    {
+      "path": "app/game/homeworldRouteWorkerV111.ts",
+      "sha256": "11a35dab36df18ddd97cd8613243b8844994781c2f06089e46447bd9b64f9b94"
+    },
+    {
+      "path": "app/game/systems/homeworldCourtArtV80.ts",
+      "sha256": "47bdc7fc91f660c68928ebd9e7555c360a0ba9a534a070dcbdebeaa2b059c57a"
+    },
+    {
+      "path": "app/game/systems/homeworldCivicDecorV80.ts",
+      "sha256": "0df98ed2bb30e7e1149a8379c1e7146e1821a174016cf7c3702002e7791b048e"
+    },
+    {
+      "path": "tests/browser/homeworld-atlas-v109.fixture.tsx",
+      "sha256": "ae58c4ab5522be5e028cf30f8f24afdf96310f40aeacfd0d49a1f9dcd49a5ac4"
+    },
+    {
+      "path": "scripts/qa-homeworld-atlas-browser-v109.mjs",
+      "sha256": "18355cc757501f6a2b5560b8334c38786ab597eb6800589adc8621ca3a39da86"
+    }
+  ],
+  "scope": "Isolated actual React Atlas and current V111 module Worker. Prepared model-played cargo placements, direct fixture parent updates, and explicitly deferred native Worker delivery and animation frames test browser lifecycle boundaries; no campaign victory, production build or art admission is claimed.",
+  "checks": [
+    {
+      "name": "Actual module Worker returns a cargo-aware route and the atlas draws confirmed independent lot polygons",
+      "status": "PASS"
+    },
+    {
+      "name": "An actual deferred Worker result is discarded after confirmed ground placements change",
+      "status": "PASS"
+    },
+    {
+      "name": "An old owner response cannot display a route after another campaign slot is selected",
+      "status": "PASS"
+    },
+    {
+      "name": "A floor change invalidates the pending native Worker and its late response",
+      "status": "PASS"
+    },
+    {
+      "name": "User cancellation terminates a pending actual worker and cannot be undone by its delayed response",
+      "status": "PASS"
+    },
+    {
+      "name": "Parent suspension and unmount stop work instead of publishing a hidden route",
+      "status": "PASS"
+    },
+    {
+      "name": "Existing guide becomes off-route and removes the old polyline after a real parent placement update",
+      "status": "PASS"
+    },
+    {
+      "name": "A native response released before the cancellation frame cannot revive the route after close button",
+      "status": "PASS"
+    },
+    {
+      "name": "A native response released before the cancellation frame cannot revive the route after Escape",
+      "status": "PASS"
+    },
+    {
+      "name": "A native response released before the cancellation frame cannot revive the route after external parent closure",
+      "status": "PASS"
+    },
+    {
+      "name": "Closing and reopening before an animation frame does not revive the old native request",
+      "status": "PASS"
+    },
+    {
+      "name": "Committed parent suspension rejects native delivery before the deferred UI frame",
+      "status": "PASS"
+    },
+    {
+      "name": "An intentional recalculation from the closed guide still accepts the next native response",
+      "status": "PASS"
+    },
+    {
+      "name": "A390px atlas keeps its register and cancellation controls inside the viewport",
+      "status": "PASS"
+    },
+    {
+      "name": "No uncaught browser exceptions, console errors or HTTP failures",
+      "status": "PASS"
+    }
+  ],
+  "captures": [
+    {
+      "file": "actual-worker-cargo-detour.png",
+      "sha256": "d2a0c799645cf47817a129d91646acc1c2702488f17cd6fa756d5499a42ec371",
+      "bytes": 28051
+    },
+    {
+      "file": "mobile-cargo-register.png",
+      "sha256": "e024f292a05dc904b401fa4db0554d26ddf734b0300a545af49af706e14850a5",
+      "bytes": 46885
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "httpErrors": [],
+  "fixtureIO": [
+    "Model-played initial carried/parked cargo checkpoint",
+    "Fixture parent changes for owner, floor, suspension and confirmed lot placements",
+    "Actual Worker message delivery delayed after computation; no route result or model outcome is fabricated",
+    "Animation frames may be held after a native response is ready to exercise cancellation before its UI update"
+  ]
+}

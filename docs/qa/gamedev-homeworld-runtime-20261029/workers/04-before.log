@@ -1,0 +1,6 @@
+START native Worker sample 1
+PASS Worker 1 returns the cargo-aware route from the audience to the port
+PASS Worker 1 repeats in the same Worker without changing the full plan
+PASS Worker 1 rejects an outdated ground snapshot and recovers on the next valid request
+PASS No browser, console or HTTP errors
+Report: /tmp/yautja-homeworld-runtime-20261029/paired/04-before/run-xMtfc0/report.json

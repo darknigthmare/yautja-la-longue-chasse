@@ -1,0 +1,79 @@
+TAP version 13
+# Subtest: V113 connector obstruction comes from an actual 1,421-step carry and park, with no invented placement
+ok 1 - V113 connector obstruction comes from an actual 1,421-step carry and park, with no invented placement
+  ---
+  duration_ms: 7743.676847
+  type: 'test'
+  ...
+# Subtest: V113 a carried load preserves the direct Council/acropolis chain and never becomes a ground obstruction
+ok 2 - V113 a carried load preserves the direct Council/acropolis chain and never becomes a ground obstruction
+  ---
+  duration_ms: 265.750331
+  type: 'test'
+  ...
+# Subtest: V113 a blocked departure takes the lift, reaches the real audience, and returns through an unoccupied landing
+not ok 3 - V113 a blocked departure takes the lift, reaches the real audience, and returns through an unoccupied landing
+  ---
+  duration_ms: 1713.517937
+  type: 'test'
+  location: '/workspace/scratch/56a0bf56582d/yautja-apply-guides/tests/homeworld-connector-detour-v113.test.mjs:167:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Aucun passage sûr calculé. Rejoins une rue ou un palier et recalcule.
+    + actual - expected
+    
+    + 'unavailable'
+    - 'reachable'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'reachable'
+  actual: 'unavailable'
+  operator: 'strictEqual'
+  stack: |-
+    follow (file:///workspace/scratch/56a0bf56582d/yautja-apply-guides/tests/homeworld-connector-detour-v113.test.mjs:77:10)
+    TestContext.<anonymous> (file:///workspace/scratch/56a0bf56582d/yautja-apply-guides/tests/homeworld-connector-detour-v113.test.mjs:169:19)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: V113 a free departure cannot select the Council stair when its ground arrival is occupied
+not ok 4 - V113 a free departure cannot select the Council stair when its ground arrival is occupied
+  ---
+  duration_ms: 17299.608915
+  type: 'test'
+  location: '/workspace/scratch/56a0bf56582d/yautja-apply-guides/tests/homeworld-connector-detour-v113.test.mjs:182:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Aucun passage sûr calculé. Rejoins une rue ou un palier et recalcule.
+    + actual - expected
+    
+    + 'unavailable'
+    - 'reachable'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'reachable'
+  actual: 'unavailable'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/56a0bf56582d/yautja-apply-guides/tests/homeworld-connector-detour-v113.test.mjs:185:10)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 2
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 27099.387213

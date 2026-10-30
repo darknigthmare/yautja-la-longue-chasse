@@ -1,0 +1,14 @@
+START native Worker sample 1
+PASS Worker 1 returns the cargo-aware route from the audience to the port
+PASS Worker 1 reuses its cache without changing the full plan
+PASS Worker 1 rejects an outdated ground snapshot and recovers on the next valid request
+START native Worker sample 2
+PASS Worker 2 returns the cargo-aware route from the audience to the port
+PASS Worker 2 reuses its cache without changing the full plan
+PASS Worker 2 rejects an outdated ground snapshot and recovers on the next valid request
+START native Worker sample 3
+PASS Worker 3 returns the cargo-aware route from the audience to the port
+PASS Worker 3 reuses its cache without changing the full plan
+PASS Worker 3 rejects an outdated ground snapshot and recovers on the next valid request
+PASS No browser, console or HTTP errors
+Report: /tmp/yautja-route-worker-probe-v113/browser-before/run-rQrFq4/report.json
