@@ -46,6 +46,7 @@ jobs:
         run: >-
           node --test --test-reporter=spec --test-concurrency=1
           tests/planet-export-zip-v114.test.mjs
+          tests/planet-modular-export-v124.test.mjs
           tests/planet-strategy-v114.test.mjs
           tests/planet-generator-draft-v103.test.mjs
           tests/planet-generator-v103.test.mjs
@@ -55,8 +56,64 @@ jobs:
         run: >-
           npx eslint
           app/game/systems/clanWarPlanetStrategyV114.ts
+          app/game/planetModularExportV124.ts
+          app/game/PlanetLayerExportV102.tsx
+          app/game/planetMaterialRendererV101.ts
           app/game/systems/planetExportZipV114.ts
           app/game/systems/clanWarPlanetDraftV103.ts
           app/game/systems/clanWarPlanetGeneratorV115.ts
           app/game/systems/clanWarShapeAtlasV115.ts
           app/game/systems/clanWarTextureLibraryV115.ts
+
+  browser-modules:
+    name: V124 live PNG and ZIP verification
+    needs: domain
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      NEXT_TELEMETRY_DISABLED: '1'
+      AUDIT_CHROME_CHANNEL: chrome
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NODE_OPTIONS: --max-old-space-size=6144
+    steps:
+      - name: Checkout actual game route and planetary textures
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /app/
+            /public/game/planets/
+            /public/game/assets/v15/trophies/manifest.json
+            /scripts/qa-planet-modular-export-v124.mjs
+            /package.json
+            /package-lock.json
+            /next.config.ts
+            /tsconfig.json
+            /postcss.config.mjs
+      - name: Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install exact dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Verify live modular PNG pixels and ZIP in Chromium
+        run: |
+          node node_modules/next/dist/bin/next dev --hostname 127.0.0.1 --port 3101 > /tmp/yautja-planet-v124-next.log 2>&1 &
+          QA_SERVER_PID=$!
+          trap 'kill "$QA_SERVER_PID" 2>/dev/null || true' EXIT
+          for attempt in $(seq 1 90); do
+            if curl --fail --silent http://127.0.0.1:3101/planet-generator-v103 > /dev/null; then break; fi
+            sleep 2
+          done
+          curl --fail --silent http://127.0.0.1:3101/planet-generator-v103 > /dev/null || { cat /tmp/yautja-planet-v124-next.log; exit 1; }
+          node scripts/qa-planet-modular-export-v124.mjs
+      - name: Upload V124 browser PNG, ZIP, screenshots and report
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: planet-v124-browser-${{ github.run_id }}
+          path: outputs/qa-planet-modular-v124/
+          retention-days: 7
+          if-no-files-found: ignore

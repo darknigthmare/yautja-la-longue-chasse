@@ -503,6 +503,17 @@ export async function drawPlanetMaterialV101(target: HTMLCanvasElement, request:
   } catch (error) { rendererError = String(error); return false; }
 }
 
+/** Export the exact regional biome/detail atlas already used by the WebGL
+ * renderer. No parallel interpretation of a region or its terrain is created.
+ * Consumers may cancel after decoding, before publishing the PNG or ZIP. */
+export async function createPlanetRegionalMaterialAtlasV124(
+  planet: WarPlanetV96, signal?: AbortSignal,
+): Promise<HTMLCanvasElement | null> {
+  if (signal?.aborted) return null;
+  const atlas = await loadPlanetRegionalAtlasV102(planet, 256, 512, loadMaterial);
+  return signal?.aborted ? null : atlas;
+}
+
 export function planetMaterialRendererStatusV101() {
   return { available: Boolean(shared), error: rendererError, decodedSources: sourceCache.size, pendingSources: pendingSources.size, activeLoads, masks: maskCache.size, gpuTextures: shared?.textures.size ?? 0, contexts: shared ? 1 : 0, programs: shared?.programs.size ?? 0, ...planetRegionalMaterialStatusV102(), ...planetDetailedMaterialStatusV103() };
 }
