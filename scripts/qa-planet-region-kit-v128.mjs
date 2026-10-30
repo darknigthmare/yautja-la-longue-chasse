@@ -66,6 +66,29 @@ try {
   await regionSelect.selectOption(regions[0]);
   check("Each region retains its independently selected land material", (await landSelect.inputValue()) === otherLand);
   check("Editor never changes the world code", (await generator.getAttribute("data-preview-planet-code")) === code);
+  const jsonDownload = page.waitForEvent("download", { timeout: 45000 });
+  await kit.getByTestId("planet-region-kit-json-v128").click();
+  const jsonFile = await jsonDownload;
+  const jsonPath = path.join(output, jsonFile.suggestedFilename());
+  await jsonFile.saveAs(jsonPath);
+  const jsonKit = JSON.parse((await readFile(jsonPath)).toString("utf8"));
+  check("JSON sidecar belongs to the current world only", jsonKit.worldCode === code && jsonKit.entries.length === regions.length);
+  check("Regional albedo preview paints a real canvas", await kit.getByTestId("planet-regional-material-preview-v128")
+    .evaluate(canvas => { const rgba = canvas.getContext("2d")?.getImageData(0, 0, canvas.width, canvas.height).data;
+      return rgba && rgba.some((byte, index) => index % 4 === 3 && byte > 0); }));
+  await landSelect.selectOption(initialLand);
+  check("Regional material edit changes only the draft choice", (await landSelect.inputValue()) === initialLand);
+  await kit.getByTestId("planet-region-kit-import-v128").setInputFiles(jsonPath);
+  await page.waitForFunction(([expected]) => [...document.querySelectorAll('[data-testid="planet-regional-kit-v128"] select')]
+    .some(select => select.value === expected), [otherLand], { timeout: 10000 });
+  check("Valid regional JSON restores independently edited material", (await landSelect.inputValue()) === otherLand);
+  await kit.getByTestId("planet-region-kit-import-v128").setInputFiles({
+    name: "foreign-planet.json", mimeType: "application/json",
+    buffer: Buffer.from(JSON.stringify({ ...jsonKit, worldCode: "proc-v115-foreign-planet" })),
+  });
+  await page.waitForFunction(() => document.querySelector('[data-testid="planet-layer-export-v102"] [role="status"]')
+    ?.textContent?.includes("ne correspond pas"), null, { timeout: 10000 });
+  check("Foreign regional sidecar is refused without changing current choices", (await landSelect.inputValue()) === otherLand);
   const hasSupplementalSurface = (await surfaceSelect.locator("option").count()) > 1;
   check("Surface selection reports whether this biome can support fluid details", hasSupplementalSurface || await surfaceSelect.isDisabled());
 
