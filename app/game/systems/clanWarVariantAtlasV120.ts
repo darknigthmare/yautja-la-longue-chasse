@@ -259,6 +259,53 @@ const HOMAGES:Record<ClanWarVariantModeV120,readonly string[]> = {
  assault:homageAssault.places,outer:homageOuter.places,
  stealth:homageStealth.places,rts:homageRts.places,
 };
+/** The 400 architectural allusions are interpreted by their physical type:
+ * a railway isn't treated as a castle and a fjord isn't a museum corridor. */
+function homagePlaceFeature(mode:ClanWarVariantModeV120,place:string):string {
+ const p=place.toLowerCase();
+ if(mode==="assault"){
+  if(/grande muraille|remparts|intramuros/.test(p))return "enceinte continue à secteurs et portes de flanc";
+  if(/citadelle|fort|forteresse|krak|massada/.test(p))return "bastions échelonnés, glacis et chemins de ronde";
+  if(/château|castel|alcázar|alhambra|palais/.test(p))return "cours internes, remparts à hauteur variable et tours de garde";
+  if(/acropole|sacsayhuamán|ollantaytambo/.test(p))return "escaliers rocheux, terrasses et lignes de défense naturelle";
+  return "cité perchée, portes resserrées et parapets de protection";
+ }
+ if(mode==="outer"){
+  if(/port de |port du |port d'/.test(p))return "bassin portuaire, caissons de fret et quais contrôlés";
+  if(/canal|détroit|passage de|passage du/.test(p))return "chenal navigable, verrou de traversée et courant de retour";
+  if(/pont|viaduc|ponte|bridge/.test(p))return "tablier exposé, travées étroites et appuis de rive";
+  if(/tunnel/.test(p))return "galeries ventilées, sorties de secours et charge limitée";
+  if(/col |pass$|highway|route/.test(p))return "lacets en relief, aire de repos et détour de crête";
+  return "voie ferrée, relais de fret et signalisation de ligne";
+ }
+ if(mode==="stealth"){
+  if(/musée|museum|galerie|gallery|guggenheim|louvre|moma/.test(p))
+   return "galeries d'exposition fictives, mezzanines et vitrines occultantes";
+  if(/bibliothèque|library|archives/.test(p))
+   return "rayonnages labyrinthiques et lieux d'archives séparés";
+  if(/palais|palace|château|abbaye|mosquée|temple|cathédrale/.test(p))
+   return "enfilades de salles, voûtes et cours intérieures";
+  if(/observ|c e r n|cern|skytree|tower|tours|burj|taipei/.test(p))
+   return "étages techniques, gaines et terrasses d'observation";
+  if(/gare|terminal|changi|station/.test(p))
+   return "coursives de service, halle et tunnels de maintenance";
+  return "atrium, couloirs de surveillance et circulations annexes";
+ }
+ if(/glacier|glace|banquise|vatnajökull|ilulissat|neige/.test(p))
+   return "rives de glace, crevasses et franchissements porteurs";
+ if(/désert|erg |dunes|wadi |sahara|kalahari|sossusvlei|sonora|gobi/.test(p))
+   return "dunes à plusieurs hauteurs, oueds secs et pistes vulnérables";
+ if(/gorges|canyon|falaises|cliffs|mont |everest|kilimandjaro|tre cime/.test(p))
+   return "escarpements, replis de montagne et corridors verticaux";
+ if(/lac|delta|marais|pantanal|okavango|rivi|chutes|mer /i.test(p))
+   return "chenaux d'eau, points hauts, gués temporaires et couverts riverains";
+ if(/volcan|etna|vésuve|fagradalsfjall|cotopaxi|teide/.test(p))
+   return "sommets volcaniques, pentes de scories et ravines";
+ if(/forêt|jungle|woods|serengeti|mara|baobabs|socotra/.test(p))
+   return "couvert végétal et pâturages traversés de ravins";
+ return "terrasses naturelles asymétriques, points de commandement et relief mobile";
+}
+
 export const WAR_V120_FAMILIES:readonly ClanWarVariantFamilyV120[]=["original","lore","homage"];
 export const WAR_V120_MODES:readonly ClanWarVariantModeV120[]=["assault","outer","stealth","rts"];
 const FALLBACK_POWER:Record<ClanWarVariantModeV120,string>={
@@ -282,6 +329,7 @@ function makeVariant(mode:ClanWarVariantModeV120,family:ClanWarVariantFamilyV120
  const lore=loreFrames.anchors[Math.floor(index/4)];
  const origin=originalPlaces.sites[index];
  const known=HOMAGES[mode][index];
+ const homageFeature=family==="homage"?homagePlaceFeature(mode,known):null;
  const part=LORE_SECTORS[(index%4+modeIndex*2)%LORE_SECTORS.length];
  const settingName=family==="original"?
    origin+" — "+section:
@@ -344,7 +392,8 @@ function makeVariant(mode:ClanWarVariantModeV120,family:ClanWarVariantFamilyV120
   environment:{
    biome:biomeName,terrain:biome[1],liquid:biome[2],sky:biome[3],
    altitude:["fonds inondables","rez-de-dalle","niveau des arches","terrasses hautes","orbite basse fictive"][mix%5],
-   layout,scene:family==="homage"?"Écho architectural ou géographique de "+known+" associé à "+biomeName:
+   layout:homageFeature?layout+" ; "+homageFeature:layout,
+   scene:family==="homage"?"Écho de "+known+" : "+homageFeature+" dans "+biomeName:
      (family==="lore"?lore.narrative+" — "+biomeName:"Topographie inédite de "+biomeName),
    weather,timeOfDay:["aube","matin","midi","crépuscule","nuit","éclipse brève"][mix%6],
    cover,entrances:[SECTIONS[mode][(index+1)%SECTIONS[mode].length],
