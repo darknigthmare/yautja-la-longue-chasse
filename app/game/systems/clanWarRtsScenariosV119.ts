@@ -134,18 +134,18 @@ export function resolveWarRtsScriptedTickV119(
 }
 export function validWarRtsScriptedObjectiveV119(
   value:unknown,operationId:string,actorTeamIds:readonly string[],actors:readonly WarRtsActorV115[],
-  targetId:string,rules:WarRulesV6,
+  targetId:string,rules:WarRulesV6,unitIds:readonly string[],
 ):value is WarRtsScriptedObjectiveV119 {
   if(!value||typeof value!=="object"||Array.isArray(value))return false;
   const v=value as Partial<WarRtsScriptedObjectiveV119>;
-  if(!v.scenarioId||warRtsScriptedEligibilityV119(v.scenarioId,rules,targetId,
-    actors.filter(a=>a.side==="ally"&&a.teamId).map(a=>a.unitId))!==null||v.sourceMapId!=="W3-MAP01")return false;
+  if(!v.scenarioId||warRtsScriptedEligibilityV119(v.scenarioId,rules,targetId,unitIds)!==null||
+    v.sourceMapId!=="W3-MAP01")return false;
   const terrain=warMissionTerrainV116(targetId,rules);
   if(v.scenarioId==="W3-RTS02"){
     const stage=v as Partial<Extract<WarRtsScriptedObjectiveV119,{kind:"guard-relief"}>>;
     return stage.kind==="guard-relief"&&stage.requiredTurns===3&&
       !!stage.guardPoint&&stage.guardPoint.x===7&&stage.guardPoint.y===3&&
-      Number.isInteger(stage.reliefProgress)&&stage.reliefProgress!>=0&&stage.reliefProgress!<=3;
+      Number.isInteger(stage.reliefProgress)&&(stage.reliefProgress as number)>=0&&(stage.reliefProgress as number)<=3;
   }
   const stage=v as Partial<Extract<WarRtsScriptedObjectiveV119,{kind:"cargo-escort"}>>;
   if(stage.kind!=="cargo-escort"||typeof stage.scouted!=="boolean"||
