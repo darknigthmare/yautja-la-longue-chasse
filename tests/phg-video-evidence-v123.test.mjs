@@ -51,7 +51,7 @@ test("V123 research includes official dated notes and both historical and 2026 f
 });
 
 test("V123.1: contradictory screenshots and mask/armor names never count as approved PHG UV", () => {
- assert.equal(source.attributionPitfallsV123.length,4);
+ assert.equal(source.attributionPitfallsV123.length,5);
  for (const p of source.attributionPitfallsV123) {
    assert.equal(p.blocksOfficialPixelClaim,true);
    assert.equal(p.selectedNameVisible,false);
@@ -66,4 +66,14 @@ test("V123.1: contradictory screenshots and mask/armor names never count as appr
  const jh=source.attributionPitfallsV123.find(x=>x.id==="PHG_JH87_ARMOR_NOT_SKIN_MENU");
  assert.match(jh.finding,/HUNTER ARMOR/);
  assert.equal(source.pixel1to1Certified,0);
+});
+
+test("V123.2: Elder exclusive skin patterns do not imply four named predlock shader materials", () => {
+ const check=source.attributionPitfallsV123.find(x=>x.id==="ELDER_SKIN_SHADERS_NOT_PREDLOCK_SHADERS");
+ assert.ok(check);
+ assert.equal(check.blocksOfficialPixelClaim,true);
+ assert.equal(check.relatedIds.length,4);
+ for(const id of ["skin_classe_elder_ancient","skin_classe_elder_relic","skin_classe_elder_primeval","skin_classe_elder_stoic"])
+   assert.ok(check.relatedIds.includes(id));
+ assert.match(check.finding,/predlock variations were NOT available at that time/);
 });

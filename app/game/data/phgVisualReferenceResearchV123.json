@@ -1387,6 +1387,22 @@
       "finding": "Official version 3.0 patch fixed coloration across certain skin/armor tints; a community texture experiment reports UV incompatibility for Feral on female meshes. The latter is a community report, not original developer UV data.",
       "forbiddenInference": "Do not declare one generated planar material seamless or 1:1 across six morphologies by default.",
       "blocksOfficialPixelClaim": true
+    },
+    {
+      "id": "ELDER_SKIN_SHADERS_NOT_PREDLOCK_SHADERS",
+      "relatedIds": [
+        "skin_classe_elder_ancient",
+        "skin_classe_elder_relic",
+        "skin_classe_elder_primeval",
+        "skin_classe_elder_stoic"
+      ],
+      "source": "https://forum.predator.illfonic.com/t/predator-customization-bugs-and-missing-stuff-as-of-patch-2-20/22242",
+      "evidenceType": "dated-community-report-missing-elder-predlock-variants",
+      "selectedNameVisible": false,
+      "frameActuallyInspected": false,
+      "finding": "A July 2021 PHG customization bug report notes Elder Ancient, Relic, Primeval and Stoic skin tints, and separately says equivalent Elder predlock variations were NOT available at that time. Do not create authentic-labeled Elder predlocks just because the skin shader names exist.",
+      "forbiddenInference": "Do not infer Elder predlock material variants from similarly named Elder skin shader entries.",
+      "blocksOfficialPixelClaim": true
     }
   ]
 }
