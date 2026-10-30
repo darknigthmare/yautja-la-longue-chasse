@@ -23,6 +23,8 @@ jobs:
           filter: blob:none
           sparse-checkout-cone-mode: false
           sparse-checkout: |
+            /package.json
+            /package-lock.json
             /app/game/
             /tests/planet-v122-compat.test.mjs
             /tests/planet-generator-v115.test.mjs
@@ -30,4 +32,7 @@ jobs:
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: '22'
-      - run: node --experimental-strip-types --test tests/planet-v122-compat.test.mjs tests/planet-generator-v115.test.mjs tests/planet-strategy-v114.test.mjs
+      - name: Install locked dependencies without lifecycle scripts
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Run source-bundled planet compatibility regressions
+        run: node --test --test-reporter=spec tests/planet-v122-compat.test.mjs tests/planet-generator-v115.test.mjs tests/planet-strategy-v114.test.mjs
