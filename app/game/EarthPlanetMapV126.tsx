@@ -4,6 +4,7 @@ import {
  EARTH_FILM_SITES_V126,EARTH_WGS84_V126,earthLandSvgPathsV126,
  projectEarthCoordV126,type EarthFilmSiteV126,
 } from "./systems/clanWarEarthV126";
+import {earthRiverPathsV127,earthLakePathsV127,EARTH_HYDRO_SOURCE_V127} from "./systems/clanWarEarthHydrologyV127";
 import styles from "./EarthPlanetMapV126.module.css";
 const available=EARTH_FILM_SITES_V126.filter(place=>place.lat!==null&&place.lon!==null);
 const coordLabel=(site:EarthFilmSiteV126)=>
@@ -14,6 +15,8 @@ export default function EarthPlanetMapV126({onClose}:{onClose?:()=>void}){
  const [filter,setFilter]=useState<"all"|"earth"|"off-earth">("all");
  const selected=EARTH_FILM_SITES_V126.find(x=>x.id===selectedId)??EARTH_FILM_SITES_V126[0];
  const paths=useMemo(()=>earthLandSvgPathsV126(),[]);
+ const riverPaths=useMemo(()=>earthRiverPathsV127(),[]);
+ const lakePaths=useMemo(()=>earthLakePathsV127(),[]);
  const listed=EARTH_FILM_SITES_V126.filter(x=>filter==="all"||x.world===filter);
  return <section className={styles.root} aria-label="Planète Terre WGS84 et vrais emplacements des récits Predator" data-testid="earth-v126-map">
   <header className={styles.heading}>
@@ -36,6 +39,8 @@ export default function EarthPlanetMapV126({onClose}:{onClose?:()=>void}){
     {Array.from({length:11},(_,i)=><path key={"lon-"+i} d={"M"+(i*100)+" 0 V500"} stroke="#577585" strokeOpacity=".38" strokeWidth=".8"/>)}
     {Array.from({length:7},(_,i)=><path key={"lat-"+i} d={"M0 "+(i*500/6)+" H1000"} stroke="#577585" strokeOpacity=".38" strokeWidth=".8"/>)}
     {paths.map((path,index)=><path d={path} key={index} fill="#567b60" stroke="#a5b995" strokeWidth=".5" fillRule="evenodd"/>)}
+    {lakePaths.map((path,index)=><path d={path} key={"lake-"+index} fill="#18445b" stroke="#97bcb8" strokeWidth=".45" fillRule="evenodd"/>)}
+    {riverPaths.map((path,index)=><path d={path} key={"river-"+index} fill="none" stroke="#9bc9d0" strokeWidth=".85" strokeLinecap="round"/>)}
     <path d="M0 250 H1000" stroke="#8eb5b7" strokeWidth="1" strokeDasharray="8 6" opacity=".6"/>
     {available.map(place=>{
       const pos=projectEarthCoordV126({lat:place.lat!,lon:place.lon!});
@@ -48,7 +53,7 @@ export default function EarthPlanetMapV126({onClose}:{onClose?:()=>void}){
           fontSize="12">{place.name}</text>
       </g>;
     })}
-    <text x="20" y="480" fontSize="12" fill="#d4e5eb">Natural Earth · 1:110m · coordonnées WGS84</text>
+    <text x="20" y="480" fontSize="12" fill="#d4e5eb">Natural Earth · côtes, lacs et grands fleuves · 1:110m · WGS84</text>
   </svg>
   <p className={styles.hint}>Choisissez un dossier ci-dessous. Les épisodes marqués « région seulement » ne sont pas placés arbitrairement au centre d&apos;un pays.</p>
   <div className={styles.filters} aria-label="Filtrer les mondes narratifs">
@@ -75,6 +80,6 @@ export default function EarthPlanetMapV126({onClose}:{onClose?:()=>void}){
       <p className={styles.hint}>La météo dépendra du biome, de la saison et de l&apos;altitude, et non d&apos;un tirage indépendant des coordonnées.</p>
     </article>
   </div>
-  <footer className={styles.footer}>Géométrie naturelle : <a href={EARTH_WGS84_V126.coastlineUrl} target="_blank" rel="noopener noreferrer">Natural Earth, domaine public</a>. Le niveau de détail cartographique ne valide ni bâtiments, ni routes locales, ni intérieurs des films. Aucun front de campagne V85 n&apos;est modifié par cet atlas.</footer>
+  <footer className={styles.footer}>Fleuves et lacs : {EARTH_HYDRO_SOURCE_V127.precision}. Géométrie naturelle : <a href={EARTH_WGS84_V126.coastlineUrl} target="_blank" rel="noopener noreferrer">Natural Earth, domaine public</a>. Le niveau de détail cartographique ne valide ni bâtiments, ni routes locales, ni intérieurs des films. Aucun front de campagne V85 n&apos;est modifié par cet atlas.</footer>
  </section>;
 }
