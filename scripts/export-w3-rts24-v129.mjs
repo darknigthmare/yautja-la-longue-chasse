@@ -18,7 +18,7 @@ const folder=process.argv[2]??"outputs/w3-rts24-v129";
 await mkdir(folder,{recursive:true});
 const missions=api.WAR_SOURCE_RTS_IDS_V129.map(id=>api.buildWarRtsMissionV129(id,rules));
 const columns=["id","name","mapId","planetId","rank","pcMaximum","initialRav",
- "sourceObjective","sourceEnemyPlan","sourceConditions","sourceAlternatives",
+ "sourceObjective","sourceDeployment","sourceEnemyPlan","sourceConditions","sourceAlternatives",
  "sourceVictory","sourceReentry","sourceCampaignLink","sourceRewardXpDesign",
  "sourceProvenance","sourceCells","suggestedV6Units","escortKind",
  "opponentTeams","opponentCombatants","opponentBudgetPc","opponentUnitIds",
