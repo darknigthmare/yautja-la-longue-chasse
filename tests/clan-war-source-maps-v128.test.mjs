@@ -69,6 +69,8 @@ test("the sources have 12 distinct regions and do not place frozen terrain on la
  for(const m of maps){
   assert.ok(m.tiles.some(x=>x.kind==="cover"));
   assert.ok(m.tiles.some(x=>x.kind==="wall"));
+  assert.ok(m.hazards.length>=1,"source event must be physically marked: "+m.id);
+  assert.ok(m.hazards.every(h=>war.warMapWalkableV128(m,h)),"event should not teleport or trap any soldier");
   if(m.id==="W3-MAP09")assert.ok(m.tiles.some(x=>x.kind==="ice"));
   if(m.id==="W3-MAP03")assert.ok(m.tiles.some(x=>x.kind==="lava"));
   if(m.id==="W3-MAP12"){
