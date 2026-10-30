@@ -244,7 +244,8 @@ export function createWarRtsMissionStateV129(id:string,rules:WarRulesV6):WarRtsM
  const tracked=mission.escortKind?{
   id:mission.id+"-TRACKED-01",kind:mission.escortKind,
   ...mission.tasks[1].location,hp:8,extracted:false,secured:false,
-  heldByPlayer:false,isNeutral:mission.escortKind==="witness",
+  heldByPlayer:["heavy-cargo","equipment","beacon"].includes(mission.escortKind),
+  isNeutral:mission.escortKind==="witness",
  }:null;
  return {
   version:129,mission,
