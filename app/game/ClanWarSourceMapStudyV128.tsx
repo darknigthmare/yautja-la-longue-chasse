@@ -78,7 +78,10 @@ export default function ClanWarSourceMapStudyV128({rules}:{rules:WarRulesV6}){
     <p className={styles.legend}>Y : chasseur · R : adversaire observé · △ : observation · ◎ : objectif · ↥ : sortie · vert : sol · sombre : obstacle · jaune : couvert · bleu : eau · rouge : lave.</p>
    </div>
    <div className={styles.sidebar}>
-    <h4>{map.name}</h4><p>{map.biome} · monde de la Bible <strong>{map.planetId}</strong></p>
+    <h4>{map.name}</h4><p>{map.biome} · monde de la Bible <strong>{map.planetName} ({map.planetId} / {map.worldCode})</strong></p>
+    <p><strong>Couche physique :</strong> {map.worldStratum==="orbital-vessel"?"Coque / liaison orbitale, non traversable directement depuis la surface":
+      map.worldStratum==="subsurface"?"Galerie intérieure sous le climat de surface":"Surface de planète"}.</p>
+    <p><strong>Accès en véritable campagne :</strong> {map.accessGate}</p>
     <p><strong>Accès :</strong> {map.sourceSituation}</p>
     <p><strong>Chemins :</strong> {map.sourceGeometry}</p>
     <p><strong>Événement :</strong> {map.sourceEvent} · type {map.eventClass}</p>
