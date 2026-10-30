@@ -139,6 +139,7 @@ import {
   resolveV6TrophyVisualId,
   type V6VisualId,
 } from "./v6Visuals";
+import { PHG_MATERIALS_V113, phgMaterialLabelV113 } from "./hunterMaterialsV113";
 import {
   HUNTER_EXPANDED_PRESETS,
   HUNTER_FILM_GROUPS,
@@ -538,6 +539,11 @@ const SKIN_OPTIONS: ReadonlyArray<{
     detail: "Motifs sombres de traque nocturne",
     swatch: "#403a31",
   },
+  { id: "moss-mottle", label: "Mousse des canopées", detail: "Verts organiques des chasseurs forestiers", swatch: "#677b4b" },
+  { id: "copper-mottle", label: "Cuivre sauvage", detail: "Oxydes rouge-brun des terres volcaniques", swatch: "#a35a3e" },
+  { id: "sand-mottle", label: "Sable fossile", detail: "Pigmentation beige des déserts rocheux", swatch: "#b2a17a" },
+  { id: "storm-mottle", label: "Ardoise orageuse", detail: "Pigments froids des climats humides", swatch: "#647b85" },
+  { id: "ivory-mottle", label: "Ivoire des cendres", detail: "Tonalité ivoire peu saturée, non albinos imposé", swatch: "#bcb4a2" },
 ];
 
 const MASK_OPTIONS: ReadonlyArray<{ id: BiomaskId | null; label: string; detail: string; image?: string; preferImage?: boolean }> = [
@@ -707,6 +713,10 @@ const DREAD_TINT_OPTIONS: ReadonlyArray<{
   { id: "obsidian", label: "Obsidienne", swatch: "#17181b" },
   { id: "umber", label: "Terre d’ombre", swatch: "#4b3428" },
   { id: "ashen", label: "Cendre", swatch: "#8a8881" },
+  { id: "copper", label: "Cuivre", swatch: "#85513f" },
+  { id: "bone", label: "Ivoire de parure", swatch: "#bbb29c" },
+  { id: "moss", label: "Vert terne", swatch: "#586a4b" },
+  { id: "blue-black", label: "Noir bleuté", swatch: "#343e53" },
 ];
 
 const ARMOR_TINT_OPTIONS: ReadonlyArray<{
@@ -717,6 +727,10 @@ const ARMOR_TINT_OPTIONS: ReadonlyArray<{
   { id: "gunmetal", label: "Métal canon", swatch: "#75818a" },
   { id: "bronze", label: "Bronze du clan", swatch: "#98704b" },
   { id: "obsidian", label: "Obsidienne", swatch: "#272b31" },
+  { id: "bone", label: "Os traité", swatch: "#afa68d" },
+  { id: "jade", label: "Patine verte", swatch: "#466f5b" },
+  { id: "rust", label: "Fer ancien", swatch: "#8b503d" },
+  { id: "crimson", label: "Laque de sang", swatch: "#873938" },
 ];
 
 const LASER_COLOR_OPTIONS: ReadonlyArray<{
@@ -2962,6 +2976,13 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         [key]: value,
       };
       if (key !== "presetId") appearance.presetId = "custom";
+      // A flat tint replaces a woven/material swatch in its layer; other layers stay independent.
+      if (key === "skinId") appearance.skinMaterialId = null;
+      if (key === "dreadTintId") appearance.dreadMaterialId = null;
+      if (key === "armorTintId") appearance.outfitMaterialId = null;
+      if (key === "skinMaterialId") appearance.skinId = "ochre-mottle";
+      if (key === "dreadMaterialId") appearance.dreadTintId = "obsidian";
+      if (key === "outfitMaterialId") appearance.armorTintId = "gunmetal";
       setSelectedCatalogueEntryId(null);
       persist({
         ...save,
@@ -4639,6 +4660,17 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 </CustomizationSection>
 
                 <CustomizationSection
+                  title="Matrice pigmentaire · textures PHG"
+                  detail="Textures de peau reconstruites et conservées séparément des dreadlocks et des pièces portées."
+                >
+                  <AppearanceOption label="Pigment uni / aucun motif importé" detail="Conserver la palette de base sans texture PHG" selected={!save.appearance.skinMaterialId} onSelect={() => updateAppearance("skinMaterialId", null)} />
+                  {PHG_MATERIALS_V113.filter(material => material.category === "skin" && !material.archived).map(material => (
+                    <AppearanceOption key={material.id} label={material.label} detail={phgMaterialLabelV113(material)} image={material.src}
+                      selected={save.appearance.skinMaterialId === material.id} onSelect={() => updateAppearance("skinMaterialId", material.id)} />
+                  ))}
+                </CustomizationSection>
+
+                <CustomizationSection
                   title="Biomask"
                   detail="Le masque peut être porté ou retiré à tout moment"
                 >
@@ -4725,6 +4757,17 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 </CustomizationSection>
 
                 <CustomizationSection
+                  title="Atelier des ligatures · textures PHG"
+                  detail="Parures et motifs des mèches, sans modification de la morphologie faciale."
+                >
+                  <AppearanceOption label="Pigment uni / aucun motif importé" detail="Conserver la palette de base sans texture PHG" selected={!save.appearance.dreadMaterialId} onSelect={() => updateAppearance("dreadMaterialId", null)} />
+                  {PHG_MATERIALS_V113.filter(material => material.category === "dread" && !material.archived).map(material => (
+                    <AppearanceOption key={material.id} label={material.label} detail={phgMaterialLabelV113(material)} image={material.src}
+                      selected={save.appearance.dreadMaterialId === material.id} onSelect={() => updateAppearance("dreadMaterialId", material.id)} />
+                  ))}
+                </CustomizationSection>
+
+                <CustomizationSection
                   title="Famille d’armure"
                   detail="Les plaques restent attachées au membre qu’elles protègent"
                 >
@@ -4756,6 +4799,17 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                         updateAppearance("armorTintId", option.id)
                       }
                     />
+                  ))}
+                </CustomizationSection>
+
+                <CustomizationSection
+                  title="Teinturerie des forges · matières PHG"
+                  detail="Cuir, laque, étoffes et motifs d’armure, sans changer la classe de protection."
+                >
+                  <AppearanceOption label="Pigment uni / aucun motif importé" detail="Conserver la palette de base sans texture PHG" selected={!save.appearance.outfitMaterialId} onSelect={() => updateAppearance("outfitMaterialId", null)} />
+                  {PHG_MATERIALS_V113.filter(material => material.category === "outfit" && !material.archived).map(material => (
+                    <AppearanceOption key={material.id} label={material.label} detail={phgMaterialLabelV113(material)} image={material.src}
+                      selected={save.appearance.outfitMaterialId === material.id} onSelect={() => updateAppearance("outfitMaterialId", material.id)} />
                   ))}
                 </CustomizationSection>
 
@@ -5862,7 +5916,7 @@ function AppearanceOption({
         {art ?? (visualId ? (
           <V6AtlasSprite id={visualId} decorative />
         ) : image ? (
-          <img src={image} alt="" />
+          <img src={image} alt="" loading="lazy" decoding="async" />
         ) : null)}
         {swatch ? (
           <i

@@ -120,7 +120,12 @@ export interface ExplorationProgress {
 export type HunterSkinId =
   | "ochre-mottle"
   | "ashen-mottle"
-  | "dark-mottle";
+  | "dark-mottle"
+  | "moss-mottle"
+  | "copper-mottle"
+  | "sand-mottle"
+  | "storm-mottle"
+  | "ivory-mottle";
 
 export type HunterBodyMorphId =
   | "classic"
@@ -231,12 +236,12 @@ export type DreadStyleId =
   | "feral"
   | "huntress";
 
-export type DreadTintId = "obsidian" | "umber" | "ashen";
+export type DreadTintId = "obsidian" | "umber" | "ashen" | "copper" | "bone" | "moss" | "blue-black";
 
 /** The preserved V3 head is an original clan design, not a named film likeness. */
 export type HunterHeadStyleId = "reference" | "legacy-clan";
 
-export type ArmorTintId = "gunmetal" | "bronze" | "obsidian";
+export type ArmorTintId = "gunmetal" | "bronze" | "obsidian" | "bone" | "jade" | "rust" | "crimson";
 
 export type LaserColorId = "crimson" | "electric" | "amber" | "violet" | "cyan";
 
@@ -270,6 +275,10 @@ export interface HunterAppearance {
   dreadTintId: DreadTintId;
   armorStyleId: HunterArmorStyleId;
   armorTintId: ArmorTintId;
+  /** Optional imported visual-reconstruction materials, independent of classical tints. */
+  skinMaterialId?: string | null;
+  dreadMaterialId?: string | null;
+  outfitMaterialId?: string | null;
   trophyAdornmentId: TrophyAdornmentId;
   /** Optional on legacy/preset objects; persistence always supplies a value. */
   laserColorId?: LaserColorId;

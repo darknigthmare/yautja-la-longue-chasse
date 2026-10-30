@@ -80,7 +80,7 @@ export const HOMEWORLD_ORGANIZATIONS = [
 export const HOMEWORLD_NPCS = [
   { id: "dock-officer", name: "Officier des quais", role: "Amarrage", organizationId: "star-navigators", greeting: "Ton sas reste libre. Un convoi a rapporté une prise dont la marque devrait être scellée à la Maison de la Mémoire." },
   { id: "market-artisan", name: "Artisane du marché", role: "Équipement", organizationId: "forge-circle", greeting: "Les marques de clan règlent une commande ; l'honneur ne se dépense pas. Prépare tes armes ici ou à bord." },
-  { id: "forge-artisan", name: "Maîtresse des parures", role: "Forge", organizationId: "forge-circle", greeting: "Une parure montre tes choix. Les grandes commandes de matériaux ne sont pas encore ouvertes." },
+  { id: "forge-artisan", name: "Maîtresse des parures", role: "Teinturerie et parures", organizationId: "forge-circle", greeting: "Les pigments, ligatures et laques de chasse changent tes marques visibles, pas ton rang. Les vraies prises et l’honneur restent acquis par l’épreuve." },
   { id: "undercity-witness", name: "Témoin des galeries", role: "Témoin", organizationId: "exile-network", greeting: "Les bannis ne racontent pas tous la même histoire. Compare le registre avant d'accuser quelqu'un." },
   { id: "trophy-herald", name: "Héraut des prises", role: "Reconnaissance", organizationId: "first-blood-houses", greeting: "Montre ce que tu as réellement rapporté. Une prise étrangère ne deviendra pas ton exploit." },
   { id: "terrace-instructor", name: "Instructeur des terrasses", role: "Entraînement", organizationId: "reserve-keepers", greeting: "La maîtrise précède le rang. Les exercices de ton vaisseau restent accessibles ici." },
@@ -137,7 +137,7 @@ const HOMEWORLD_POINT_BLUEPRINTS: readonly HomeworldPoint[] = [
   { id: "dock-officer-point", label: "Officier des quais", kind: "npc", districtId: "port", x: 440, y: 1_500, npcId: "dock-officer", description: "Écouter les nouvelles du convoi." },
   { id: "suspect-trophy-point", label: "Trophée du convoi", kind: "evidence", districtId: "port", x: 960, y: 1_500, evidenceId: "suspect-trophy", description: "Inspecter la marque sans prendre possession du trophée." },
   servicePoint("market-service", "Échoppe d'équipement", "market", 1_700, 1_500, "armory", "market-artisan"),
-  servicePoint("forge-service", "Atelier des parures", "forges", 3_000, 1_500, "customization", "forge-artisan"),
+  servicePoint("forge-service", "Teinturerie des Forges · parures et dreads", "forges", 3_000, 1_500, "customization", "forge-artisan"),
   { id: "witness-point", label: "Témoin des galeries", kind: "evidence", districtId: "undercity", x: 4_400, y: 1_500, evidenceId: "undercity-testimony", npcId: "undercity-witness", description: "Comparer le registre et recueillir le témoignage avant de choisir la suite." },
   { id: "mausoleum-service", label: "Mausolée des Grandes Chasses", kind: "service", service: "mausoleum", districtId: "esplanade", x: 1130, y: 1360, description: "Consulter les archives et les reproductions d’étude. Les DLC non produits restent scellés ; aucun duel ne remplace leur campagne." },
   servicePoint("trophy-service", "Présentation des prises", "esplanade", 450, 1_000, "trophies", "trophy-herald"),
