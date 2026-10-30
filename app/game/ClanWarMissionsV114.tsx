@@ -72,6 +72,8 @@ export default function ClanWarMissionsV114({ simulation, planetName, active, on
   const template = templates.find(item => item.id === templateId) ?? templates[0];
   const lastSuccess = board.reports.findLast(item => item.id === run?.id)?.success;
 
+  // One-time synchronization from an externally versioned browser archive; no render-time read (SSR remains stable).
+  /* eslint-disable react-hooks/set-state-in-effect -- Deliberate single hydration of a local versioned save. */
   useEffect(() => {
     const key = warMissionStorageKeyV114(planetId);
     try {
@@ -88,6 +90,7 @@ export default function ClanWarMissionsV114({ simulation, planetName, active, on
     }
     setHydrated(true);
   }, [planetId]);
+  /* eslint-enable react-hooks/set-state-in-effect */
 
   function commit(next: WarMissionBoardV114) {
     if (!hydrated || blocked || next === boardRef.current) return false;
@@ -161,7 +164,7 @@ export default function ClanWarMissionsV114({ simulation, planetName, active, on
     if (!active || blocked || !hydrated || !origin || !target || mode === "dispatch") return;
     if (!hostileTarget) { setNotice("Code d\u0027honneur : ce mandat offensif cible uniquement une position militaire hostile connue. Choisissez un front adverse."); return; }
     sequence.current++;
-    const id = "mission-" + planetId + "-" + Date.now() + "-" + sequence.current;
+    const id = "mission-" + planetId + "-" + board.revision + "-" + sequence.current;
     setRun({ id, mode, templateId: template.id, fromId, targetId, recorded: false });
     setLine(createWarLineV114(sequence.current, board.readiness, template.threat, board.sabotage));
     setStealth(createWarStealthV114(board.intel));
@@ -170,8 +173,8 @@ export default function ClanWarMissionsV114({ simulation, planetName, active, on
     setNotice("Mandat lancé : " + template.title + ". Les pièces visibles sont des marqueurs provisoires, pas les sprites finaux.");
   }
   function dispatch() {
-    if (!active || !hydrated || blocked || !origin || !target || mode !== "dispatch") return;
-    const result = issueWarDispatchV114(boardRef.current, simulation, template.id, fromId, targetId, selectedMembers, Date.now());
+    if (!active || !hydrated || blocked || now <= 0 || !origin || !target || mode !== "dispatch") return;
+    const result = issueWarDispatchV114(boardRef.current, simulation, template.id, fromId, targetId, selectedMembers, now);
     if (result.error) { setNotice(result.error); return; }
     if (commit(result.board)) { setSelectedMembers([]); setNotice("Détachement envoyé. Son rapport arrivera au terme du délai, même si vous quittez cet onglet."); }
   }
@@ -187,15 +190,15 @@ export default function ClanWarMissionsV114({ simulation, planetName, active, on
   }), [stealth]);
 
   return <section className={styles.root} data-testid="war-mission-modes-v114">
-    <div className={styles.heading}><div><p className={styles.kicker}>MANDATS MULTI-MODES · V114</p><h3>Opérations de clans · {planetName}</h3><p>Les quatre modes utilisent les lieux et personnes de l'exercice V3. Leurs rapports et ressources d'entraînement se répondent, mais ne donnent aucun trophée, rang, territoire ou combattant à la campagne.</p></div></div>
+    <div className={styles.heading}><div><p className={styles.kicker}>MANDATS MULTI-MODES · V114</p><h3>Opérations de clans · {planetName}</h3><p>Les quatre modes utilisent les lieux et personnes de l’exercice V3. Leurs rapports et ressources d’entraînement se répondent, mais ne donnent aucun trophée, rang, territoire ou combattant à la campagne.</p></div></div>
     <div className={styles.metrics} aria-label="Registre local">
-      <span>RAV d'exercice <strong>{board.rav}</strong></span>
+      <span>RAV d’exercice <strong>{board.rav}</strong></span>
       <span>Renseignement <strong>{board.intel}</strong></span>
       <span>Préparation <strong>{board.readiness}</strong></span>
       <span>Relais neutralisés <strong>{board.sabotage}</strong></span>
       <span>Rapports <strong>{board.reports.length}</strong></span>
     </div>
-    <p role="status" className={blocked ? styles.warning : styles.subtle}>{!hydrated ? "Vérification de l'archive locale…" : storageStatus || "Archive de mission autonome."}</p>
+    <p role="status" className={blocked ? styles.warning : styles.subtle}>{!hydrated ? "Vérification de l’archive locale…" : storageStatus || "Archive de mission autonome."}</p>
     <nav className={styles.tabs} aria-label="Types de missions">{(Object.keys(MODE_LABELS) as WarMissionModeV114[]).map(value =>
       <button key={value} type="button" aria-pressed={mode === value} onClick={() => selectMode(value)}>{MODE_LABELS[value]}</button>)}</nav>
     <div className={styles.setup}>
@@ -226,12 +229,12 @@ export default function ClanWarMissionsV114({ simulation, planetName, active, on
       <p>Choisissez des personnes aptes réellement présentes au départ. Les personnes engagées dans un ordre stratégique ou une autre opération ne sont pas disponibles ici. Le risque et le résultat sont simulés sans consulter les forces adverses cachées.</p>
       <div className={styles.roster}>{eligible.slice(0, 24).map(person =>
         <label key={person.id}><input type="checkbox" checked={selectedMembers.includes(person.id)} onChange={event => setSelectedMembers(current => event.target.checked ? current.length >= 8 ? current : [...current, person.id] : current.filter(id => id !== person.id))}/><span>{person.id} <small>XP {person.xp} · {person.unitTypeId}</small></span></label>)}</div>
-      <button type="button" disabled={!active || !hydrated || blocked || selectedMembers.length === 0 || !targetId || board.rav < 5} onClick={dispatch}>Envoyer {selectedMembers.length} personne(s) · 5 RAV · {formatTime(template.durationMs ?? 0)}</button>
+      <button type="button" disabled={!active || !hydrated || blocked || now <= 0 || selectedMembers.length === 0 || !targetId || board.rav < 5} onClick={dispatch}>Envoyer {selectedMembers.length} personne(s) · 5 RAV · {formatTime(template.durationMs ?? 0)}</button>
       <h4>Opérations actives et rapports</h4>
       <div className={styles.dispatchList}>{board.dispatches.slice().reverse().slice(0, 15).map(item => <article key={item.id}>
         <strong>{WAR_MISSION_TEMPLATES_V114.find(t => t.id === item.templateId)?.title ?? item.templateId}</strong>
         <p>{item.members.map(m => m.id).join(", ")} · {item.fromId} → {item.targetId}</p>
-        <p>{item.status === "running" ? "En mission · " + formatTime(item.dueAt - now) : item.result === "success" ? "Mission réussie · pertes d'exercice : " + item.losses : "Mission échouée · pertes d'exercice : " + item.losses}</p>
+        <p>{item.status === "running" ? "En mission · " + formatTime(item.dueAt - now) : item.result === "success" ? "Mission réussie · pertes d’exercice : " + item.losses : "Mission échouée · pertes d’exercice : " + item.losses}</p>
       </article>)}</div>
     </section> : <section className={styles.content}>
       <div className={styles.actions}><button type="button" onClick={startMission} disabled={!active || !hydrated || blocked || !targetId || !hostileTarget}>{run ? "Recommencer ce mandat" : "Lancer la mission"}</button>
@@ -248,7 +251,7 @@ export default function ClanWarMissionsV114({ simulation, planetName, active, on
       </div>}
       {run?.mode === "stealth" && <div data-testid="war-stealth-v114">
         <div className={styles.progress}><span>Alarme {stealth.alarm}/4</span><span>Énergie de camouflage {stealth.energy}/10</span><span>Relais {stealth.planted ? "neutralisé" : "actif"}</span></div>
-        <div className={styles.stealthMap} aria-label="Plan d'infiltration : H héros, S sentinelle, R relais, E extraction, blocs obstacles">
+        <div className={styles.stealthMap} aria-label="Plan d’infiltration : H héros, S sentinelle, R relais, E extraction, blocs obstacles">
           {cells.map(cell => <span key={cell.x + "," + cell.y} className={cell.wall ? styles.wall : cell.player ? styles.hero : cell.guard ? styles.guard : cell.objective ? styles.objective : cell.exit ? styles.exit : styles.floor} title={cell.x + "," + cell.y}>{cell.wall ? "■" : cell.player ? "H" : cell.guard ? "S" : cell.objective ? "R" : cell.exit ? "E" : "·"}</span>)}
         </div>
         <div className={styles.arrows}>
@@ -281,12 +284,12 @@ export default function ClanWarMissionsV114({ simulation, planetName, active, on
         </div>
         <div className={styles.actions}><button type="button" disabled={!active || paused || rts.phase !== "active" || rts.points < 35} onClick={() => setRts(deployWarRtsV114)}>Renfort · 35 PC</button><p>Groupe sélectionné : {selectedSquad} · temps {rts.tick} · {rts.phase === "active" ? "Bataille" : rts.phase === "victory" ? "Victoire" : "Défaite"}</p></div>
       </div>}
-      {run && run.recorded && <div className={styles.result}><strong>{lastSuccess ? "Rapport tactique favorable" : "Rapport tactique défavorable"}</strong><p>Résultat ajouté au registre autonome. Vous pouvez maintenant préparer un ordre réel au poste de commandement ; son coût, ses personnes et son résultat restent ceux du moteur de conquête existant.</p><button type="button" onClick={() => onPrepareSite(run.fromId, run.targetId, run.mode === "stealth" ? "recon" : "attack")}>Préparer {run.mode === "stealth" ? "la reconnaissance" : "l'assaut"} dans le front stratégique</button></div>}
+      {run && run.recorded && <div className={styles.result}><strong>{lastSuccess ? "Rapport tactique favorable" : "Rapport tactique défavorable"}</strong><p>Résultat ajouté au registre autonome. Vous pouvez maintenant préparer un ordre réel au poste de commandement ; son coût, ses personnes et son résultat restent ceux du moteur de conquête existant.</p><button type="button" onClick={() => onPrepareSite(run.fromId, run.targetId, run.mode === "stealth" ? "recon" : "attack")}>Préparer {run.mode === "stealth" ? "la reconnaissance" : "l’assaut"} dans le front stratégique</button></div>}
     </section>}
     <p role="status" className={styles.notice}>{notice}</p>
-    <details className={styles.history}><summary>Journal commun des rapports d'opération ({board.reports.length})</summary>
+    <details className={styles.history}><summary>Journal commun des rapports d’opération ({board.reports.length})</summary>
       {board.reports.slice(-25).reverse().map(report => <p key={report.id}><strong>{report.success ? "Réussite" : "Échec"}</strong> · {report.templateId} · {report.fromId} → {report.targetId} · {report.text}</p>)}
     </details>
-    <p className={styles.footer}>Source V3 : unités RTS-U, territoires CON-T, combattants Pxx/Fxx du front libre. Les chiffres AP, PV, minutages, grilles et IA sont des règles originales d'exercice — pas des faits canoniques de Predator ni des paramètres V6. Aucune conversion fictive W3-U/RTS-U n'est pratiquée.</p>
+    <p className={styles.footer}>Source V3 : unités RTS-U, territoires CON-T, combattants Pxx/Fxx du front libre. Les chiffres AP, PV, minutages, grilles et IA sont des règles originales d’exercice — pas des faits canoniques de Predator ni des paramètres V6. Aucune conversion fictive W3-U/RTS-U n’est pratiquée.</p>
   </section>;
 }
