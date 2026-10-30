@@ -47,9 +47,9 @@ Les sources sont des inspirations de géographie, de technologie, de rites ou de
 ## Exploitation du contenu
 
 - **Dans le jeu :** Bible V6 → « 1 200 variantes · 4 gameplays », recherche, filtres par mode et catégorie, pagination et fiche complète.
-- **CSV compatible Excel :** bouton « Exporter le tableau CSV », sur le périmètre filtré ou les 1 200 lignes ; encodage UTF-8 BOM, séparateur point-virgule, échappement des formules.
-- **Export local reproductible :** lancer le script Node scripts/export-clan-war-variants-v120.mjs en précisant un chemin CSV.
-- **CI :** workflow « V120 clan war 1200-variant atlas quality gate » avec tests d'égalité des 12 groupes de 100, identifiants, 400 lieux d'hommage uniques, diversité, fidélité de statut, TypeScript, ESLint et export en pièce jointe du run.
+- **CSV compatible Excel :** bouton « Exporter le tableau CSV », sur le périmètre filtré ou les 1 200 lignes ; encodage UTF-8 BOM, séparateur point-virgule, échappement des formules. Le bouton **« Exporter JSON complet »** conserve les données hiérarchiques et leur traçabilité.
+- **Export local reproductible :** lancer `node scripts/export-clan-war-variants-v120.mjs outputs/clan-war-v120/Yautja_Guerres_de_clans_1200_variantes_V120.csv` ; le script produit **CSV + JSON complet** à partir de la même source. Le JSON préserve toutes les propriétés, y compris les quatre phases et les besoins de ressources.
+- **CI :** workflow « V120 clan war 1200-variant atlas quality gate » avec tests d'égalité des 12 groupes de 100, identifiants, 400 lieux d'hommage uniques, diversité, fidélité de statut, TypeScript, ESLint, vérification finale de 1 201 lignes CSV (en-tête inclus) et 1 200 objets JSON, puis publication des deux fichiers en pièces jointes du run.
 - **Banques modifiables :** app/game/data/clanWarOriginalPlacesV120.json, clanWarLoreFramesV120.json et clanWarHomageAssault/Outer/Stealth/RtsV120.json.
 - **Générateur déterministe :** app/game/systems/clanWarVariantAtlasV120.ts.
 - **Tests :** tests/clan-war-variants-v120.test.mjs.
@@ -73,3 +73,7 @@ Les sources sont des inspirations de géographie, de technologie, de rites ou de
 - [Dark Horse — Essential Comics Volume 1](https://digital.darkhorse.com/books/9bb496a44e944fcda26662b44db247be/aliens-vs-predator-the-essential-comics-volume-1)
 
 Les références ne sont pas des permissions pour réutiliser des assets non fournis.
+
+## Consolidation des PR et statut de livraison
+
+La **PR #34** est l'atlas principal V120 : elle consolide les 400 lieux de référence distincts et les exports CSV/JSON. La PR #35, qui proposait une autre nomenclature de 1 200 concepts avec 100 lieux réutilisés entre les quatre gameplays, a été close sans fusion pour empêcher la coexistence de deux registres divergents. La PR #34 dépend de la PR #29 (moteur de guerre V115). Le fait qu'un catalogue ait passé ses tests ne signifie pas que ses 1 200 niveaux ont été produits en sprites ni testés comme scènes jouables.
