@@ -74,6 +74,12 @@ jobs:
             /drizzle.config.ts
             /eslint.config.mjs
             /next-env.d.ts
+            /public/game/assets/v18/enemy-trophy-gameplay/manifest.json
+            /public/game/assets/v17/enemy-trophies/manifest.json
+            /public/game/assets/v16/franchise-trophies/manifest.json
+            /public/game/assets/v14/hunter-kit/manifest.json
+            /public/game/assets/v15/trophies/manifest.json
+            /public/game/assets/v28/sprite-review/manifest.json
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: "22"

@@ -68,7 +68,8 @@ export default function HomeworldModularHunter({ morphId, dreadStyleId, classNam
   showArmor?: boolean;
   armorId?: ArmorId;
   hasWristblades?: boolean;
-  appearance?: Pick<HunterAppearance, "skinId" | "dreadTintId" | "headStyleId" | "armorStyleId" | "armorTintId" | "chromaticsV113">;
+  appearance?: Pick<HunterAppearance, "skinId" | "dreadTintId" | "headStyleId"> &
+    Partial<Pick<HunterAppearance, "armorStyleId" | "armorTintId" | "chromaticsV113">>;
 }) {
   return <span className={className} style={style} data-modular-homeworld-character data-body-morph={morphId} data-modular-status="static-bitmap-composition" aria-hidden="true">
     <span style={{ position: "absolute", height: "100%", aspectRatio: "2 / 3", left: "50%", bottom: 0, transform: "translateX(-50%)", isolation: "isolate" }}>
