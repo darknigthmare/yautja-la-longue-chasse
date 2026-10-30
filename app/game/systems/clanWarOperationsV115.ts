@@ -215,7 +215,7 @@ export function stepAssaultV115(state:WarOperationsStateV115,rules:WarRulesV6):W
     actors:actors.filter(actor=>actor.hp>0),fallen:unique(wounds)};
   const advanced={...state,clock:state.clock+1,active:{...mission,tick,assault:nextArena}};
   if(rivalBase<=0 || ownBase<=0 || tick>=95) {
-    const outcome = rivalBase<=0 ? "victory" : "defeat";
+    const outcome = rivalBase<=0 && ownBase>0 ? "victory" : "defeat";
     return accept(recordOutcome(advanced,mission.id,"assault",null,mission.targetId,mission.teamIds,outcome,nextArena.fallen,rules,
       outcome==="victory"?"Bastion adverse neutralisé dans la simulation latérale.":"Sortie repoussée dans l'exercice."),"Bataille terminée : rapport consigné.");
   }
@@ -288,7 +288,7 @@ export function commandRtsV115(state:WarOperationsStateV115,teamId:string,x:numb
   const holding=alive.some(item=>item.side==="ally"&&item.x===7&&item.y===3) && !alive.some(item=>item.side==="rival"&&distance(item,{x:7,y:3})<=1);
   const hold=holding?field.hold+1:0;
   const advanced={...state,clock:state.clock+1,active:{...mission,tick:mission.tick+1,rts:{actors:alive,hold,fallen}}};
-  if(hold>=2 || alive.every(item=>item.side==="ally")) return accept(recordOutcome(advanced,mission.id,"rts",null,mission.targetId,mission.teamIds,"victory",fallen,rules,
+  if(alive.some(item=>item.side==="ally") && (hold>=2 || !alive.some(item=>item.side==="rival"))) return accept(recordOutcome(advanced,mission.id,"rts",null,mission.targetId,mission.teamIds,"victory",fallen,rules,
     "Objectif tenu deux ordres ou défense neutralisée. Le siège ne vaut pas annexion automatique."),"Objectif RTS sécurisé.");
   if(!alive.some(item=>item.side==="ally") || mission.tick>=49) return accept(recordOutcome(advanced,mission.id,"rts",null,mission.targetId,mission.teamIds,"defeat",fallen,rules,
     "Détachement replié après échec de l'objectif."),"RTS terminé : échec consigné.");
