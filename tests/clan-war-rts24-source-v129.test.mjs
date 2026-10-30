@@ -281,3 +281,43 @@ test("tidal passage, wind calibration, cracked ice and hot jets gate interaction
   assert.ok(clear.state.completedTaskIds.includes(task.id));
  }
 });
+
+
+test("24 live Yautja rival formations cannot teleport, respawn or grant victory without an objective",()=>{
+ for(const id of ids){
+  let state=api.createWarRtsMissionStateV129(id,rules);
+  const initialIds=state.base.enemies.map(e=>e.id);
+  assert.equal(new Set(initialIds).size,state.base.enemies.length);
+  for(let turn=0;turn<12&&state.status==="active";turn++){
+   const before=state.base.enemies.map(e=>({...e}));
+   const update=command(state,"wait");
+   assert.equal(update.accepted,true,id+": no valid wait");
+   state=update.state;
+   assert.deepEqual(state.base.enemies.map(e=>e.id),initialIds,id+": new rival spawned");
+   for(const enemy of state.base.enemies){
+    const prior=before.find(x=>x.id===enemy.id);
+    assert.ok(prior,id+": unregistered actor");
+    assert.ok(dist(prior,enemy)<=1,id+": rival teleported across the map");
+    assert.ok(api.warMapWalkableV128(state.base.map,enemy),id+": enemy went through solid terrain");
+   }
+   assert.equal(state.completedTaskIds.length,0,id+": did not touch any objective");
+   assert.notEqual(state.status,"victory",id+": stationary player gained a mission");
+  }
+ }
+});
+test("a lost real rescued team blocks mission completion and produces one immutable loss receipt",()=>{
+ let state=api.createWarRtsMissionStateV129("W3-RTS17",rules);
+ assert.ok(state.tracked);
+ const p=state.base.map.start;
+ state={...state,
+  base:{...state.base,enemies:[],player:{...state.base.player,...p,observed:true}},
+  tracked:{...state.tracked,secured:true,hp:0},
+  completedTaskIds:state.mission.tasks.map(t=>t.id),
+ };
+ const lost=command(state,"wait");
+ assert.equal(lost.accepted,true);
+ assert.equal(lost.state.status,"defeat");
+ assert.equal(lost.state.base.report.outcome,"defeat");
+ assert.equal(lost.state.base.report.campaignMutation,false);
+ assert.equal(command(lost.state,"wait").accepted,false);
+});
