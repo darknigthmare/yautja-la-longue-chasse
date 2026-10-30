@@ -91,6 +91,21 @@ try {
     check(`${layer} contains rasterized inland features rather than an empty placeholder`, occupied > 0);
   }
 
+  const textureLab = exporter.getByTestId("planet-extra-materials-v125");
+  await textureLab.getByRole("combobox", { name: "Texture complémentaire" }).selectOption("land-bioceramic");
+  await textureLab.getByRole("combobox", { name: "Canal indépendant" }).selectOption("normal");
+  const extraWaiting = page.waitForEvent("download", { timeout: 90000 });
+  await textureLab.getByRole("button", { name: "Télécharger cette matière PNG" }).click();
+  const extraDownload = await extraWaiting;
+  const extraPath = path.join(output, extraDownload.suggestedFilename());
+  await extraDownload.saveAs(extraPath);
+  const extraRaw = await sharp(extraPath).raw().toBuffer({ resolveWithObject: true });
+  check("V125 supplemental terrain normal map is a real 512-pixel bitmap",
+    extraRaw.info.width === 512 && extraRaw.info.height === 512);
+  check("V125 normal map contains differentiated texels",
+    new Set(extraRaw.data.subarray(0, 512 * 512).filter((_, idx) => idx % 4 === 0)).size > 5);
+  await textureLab.screenshot({ path: path.join(output, "after-v125-material-catalog.png") });
+
   const waiting = page.waitForEvent("download", { timeout: 240000 });
   await exporter.getByTestId("planet-export-pack-v114").click();
   const pack = await waiting;
@@ -104,6 +119,11 @@ try {
   check("V124 ZIP keeps the canonical world code", manifest?.version === 124 && manifest.code === planetCode);
   check("V124 manifest maps actual region indices to texture tiles", manifest.modularMasks?.regions?.length >= 3
     && manifest.modularMasks.regions.every((region, index) => region.redValue === index + 1));
+  check("V125 manifest records physical planet radius and 120 independent forms",
+    manifest.modularMasks?.physicalIndex?.radiusKm > 0
+    && manifest.modularMasks?.shapeCatalog?.length === 120);
+  check("V125 manifest includes 32 independent earthlike / alien material entries",
+    manifest.modularMasks?.supplementalMaterialCatalog?.length === 32);
   check("V124 manifest matches every exported file and real canvas dimensions",
     manifest.layers.every(layer => {
       const file = files.get(layer.name);
