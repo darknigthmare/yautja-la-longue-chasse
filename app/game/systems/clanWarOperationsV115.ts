@@ -4,6 +4,7 @@ import {
 } from "./clanWarBibleV6";
 import { warMissionTerrainV116, warTerrainCellBlockedV116, warTerrainLineOfSightV116,
   warTerrainPathLengthV116, type WarMissionTerrainV116 } from "./clanWarMissionTerrainV116";
+import { warRtsNextPathStepV118 } from "./clanWarTacticalNavigationV118";
 
 /**
  * V115: self-contained V6 training theatre. This is NOT a CON-T/RTS-U campaign
@@ -449,9 +450,9 @@ function rtsEnemyTurn(actors:WarRtsActorV115[],rules:WarRulesV6,terrain:WarMissi
     if(!target) break;
     if(distance(target,rival)<=2&&warTerrainLineOfSightV116(terrain,rival,target)) target.hp-=damageFor(rival.unitId,rules);
     else {
-      const dx=Math.sign(target.x-rival.x),dy=Math.sign(target.y-rival.y);
-      const nx=rival.x+dx,ny=rival.y+(dx===0?dy:0);
-      if(!warTerrainCellBlockedV116(terrain,nx,ny)&&!actors.some(actor=>actor!==rival&&actor.hp>0&&actor.x===nx&&actor.y===ny)) {rival.x=nx;rival.y=ny;}
+      const occupied=actors.filter(actor=>actor!==rival&&actor.hp>0).map(actor=>coord(actor.x,actor.y));
+      const next=warRtsNextPathStepV118(terrain,rival,target,occupied);
+      if(next){rival.x=next.x;rival.y=next.y;}
     }
   }
 }
@@ -560,12 +561,9 @@ export function stepWarRtsRealtimeV115(state:WarOperationsStateV115,rules:WarRul
       const protectedByCover=coverAt(target,terrain)||Boolean(target.teamId&&commands[target.teamId]?.kind==="hold");
       target.hp-=protectedByCover?Math.max(1,Math.ceil(attack*.65)):attack;
     } else {
-      const nx=rival.x+Math.sign(target.x-rival.x),ny=rival.y+Math.sign(target.y-rival.y);
-      for(const next of [{x:nx,y:rival.y},{x:rival.x,y:ny}]){
-        if(!warTerrainCellBlockedV116(terrain,next.x,next.y)&&!actors.some(a=>a!==rival&&a.hp>0&&a.x===next.x&&a.y===next.y)){
-          rival.x=next.x;rival.y=next.y;break;
-        }
-      }
+      const occupied=actors.filter(actor=>actor!==rival&&actor.hp>0).map(actor=>coord(actor.x,actor.y));
+      const next=warRtsNextPathStepV118(terrain,rival,target,occupied);
+      if(next){rival.x=next.x;rival.y=next.y;}
     }
   }
   const fallen=unique([...field.fallen,...actors.filter(a=>a.side==="ally"&&a.hp<=0&&a.teamId).map(a=>a.teamId!)]);
