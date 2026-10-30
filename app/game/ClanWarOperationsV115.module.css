@@ -52,3 +52,16 @@ button.cell{min-height:0;border-radius:0}button.cell:hover{background:#658f7d}bu
 .debriefDetails li{background:transparent;border:0;margin:0;padding:5px 0;font-size:.78rem;color:#c3d4c7}
 .cell[data-cover=true]{box-shadow:inset 0 0 0 2px #9d9c77}
 @media(max-width:640px){.reinforcements{padding:12px}.recruitControls{flex-direction:column;align-items:stretch}}
+
+.medicalPanel{margin:20px 0;padding:17px;background:#14251f;border:1px solid #66867c}
+.medicalPanel h4{color:#e6dcaa}
+.medicalPanel>p{font-size:.83rem}
+.medicalControls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr)) auto;gap:10px;align-items:end;margin:15px 0}
+.medicalControls label{min-width:0;display:flex;flex-direction:column;gap:7px;font-size:.8rem;color:#c8d9ce}
+.medicalControls select{width:100%;min-width:0;background:#0e211b}
+.medicalControls button{white-space:nowrap}
+.treatmentOrder{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px;border-top:1px solid #45665b;color:#d7e3d6;font-size:.8rem}
+.treatmentOrder strong{color:#f1dba2}
+.treatmentOrder button{font-size:.75rem}
+@media(max-width:900px){.medicalControls{grid-template-columns:1fr 1fr}.medicalControls button{grid-column:1/-1;white-space:normal}}
+@media(max-width:600px){.medicalControls{grid-template-columns:1fr}.treatmentOrder{align-items:stretch;flex-direction:column}}
