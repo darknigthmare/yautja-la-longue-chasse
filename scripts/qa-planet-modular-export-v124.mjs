@@ -48,6 +48,11 @@ try {
     .some(element => !element.closest("[hidden]") && element.getAttribute("data-recipe-version") === "115"), null, { timeout: 90000 });
   planetCode = await generator.getAttribute("data-preview-planet-code");
   check("browser preview is a genuine V115 recipe", planetCode.startsWith("proc-v115-"));
+  const shapePreview = generator.getByTestId("planet-shapes-preview-v125");
+  await shapePreview.waitFor({ state: "visible" });
+  check("V125 editor displays the three actual shape contours",
+    await shapePreview.locator("svg path").count() === 3);
+  await shapePreview.screenshot({ path: path.join(output, "after-v125-shape-preview.png") });
 
   const exporter = generator.getByTestId("planet-layer-export-v102");
   await exporter.locator("summary").click();
@@ -104,6 +109,11 @@ try {
     extraRaw.info.width === 512 && extraRaw.info.height === 512);
   check("V125 normal map contains differentiated texels",
     new Set(extraRaw.data.subarray(0, 512 * 512).filter((_, idx) => idx % 4 === 0)).size > 5);
+  check("V125 source preview is painted on the actual canvas",
+    await textureLab.getByTestId("planet-texture-preview-v125").evaluate(canvas => {
+      const pixels = canvas.getContext("2d")?.getImageData(0, 0, canvas.width, canvas.height).data;
+      return pixels && pixels.some((pixel, index) => index % 4 === 3 && pixel > 0);
+    }));
   await textureLab.screenshot({ path: path.join(output, "after-v125-material-catalog.png") });
 
   const waiting = page.waitForEvent("download", { timeout: 240000 });
