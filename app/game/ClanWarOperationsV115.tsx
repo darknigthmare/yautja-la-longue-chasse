@@ -233,7 +233,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false}:
 
     <section className={styles.reinforcements} aria-label="Registre de recrutement V6">
       <div><h4>Renforts de clan · catalogue V6 complet</h4>
-        <p>Trente formations sont disponibles depuis les fiches W3-U. Les volontaires arrivent seulement après leur délai de recrutement et avec de nouvelles identités, jamais avec l'expérience d'un vétéran.</p></div>
+        <p>Trente formations sont disponibles depuis les fiches W3-U. Les volontaires arrivent seulement après leur délai de recrutement et avec de nouvelles identités, jamais avec l&apos;expérience d&apos;un vétéran.</p></div>
       <div className={styles.recruitControls}>
         <label>Former un nouveau détachement
           <select value={recruitUnitId} disabled={blocked} onChange={event=>setRecruitUnitId(event.target.value)}>
@@ -247,8 +247,8 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false}:
         </button>
       </div>
       {recruitUnit&&<p className={styles.explain}>{recruitUnit.name} · {recruitUnit.fullMembers} membre(s) · {recruitUnit.commandPoints} PC ·
-        {recruitUnit.upkeepRav} RAV d'entretien par opération · arrivée après {recruitUnit.delayTurns} tour(s) source
-        ({Math.max(1,recruitUnit.delayTurns)*15} secondes d'exercice).</p>}
+        {recruitUnit.upkeepRav} RAV d&apos;entretien par opération · arrivée après {recruitUnit.delayTurns} tour(s) source
+        ({Math.max(1,recruitUnit.delayTurns)*15} secondes d&apos;exercice).</p>}
       {(world.pendingRecruits??[]).map(order=><p className={styles.recruitOrder} key={order.id}>
         {order.id} · {rules.units.find(unit=>unit.id===order.unitId)?.name??order.unitId} · arrivée dans
         {formatTime(Math.max(0,Math.ceil((order.dueAt-now)/1000)))}
