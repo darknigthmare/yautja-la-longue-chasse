@@ -317,7 +317,9 @@ export function warRtsRivalTargetV120(
           actor.unitId==="W3-U20":actor.teamId===objective.cargo.carrierTeamId&&actor.unitId==="W3-U19":
         objective?.kind==="circuit-defense"?
           (actor:WarRtsActorV115)=>actor.unitId===GUARD_UNIT&&DIST(actor,objective.leverPoint)<=2:
-          (_actor:WarRtsActorV115)=>false;
+          objective?.kind==="beacon-intercept"?
+            (actor:WarRtsActorV115)=>actor.unitId==="W3-U01":
+            (_actor:WarRtsActorV115)=>false;
   const selected=visible.find(priority);
   return selected??(visible[0]??[...living].sort(byDistance)[0]);
 }
