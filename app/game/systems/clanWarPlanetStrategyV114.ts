@@ -110,23 +110,21 @@ export function analyzeWarPlanetStrategyV114(planet: WarPlanetV96): WarPlanetStr
   for (const region of planet.regions) for (const id of region.territoryIds) territoryRegion.set(id, region.id);
 
   const crossingRoutes = procedural?.routes.filter(route => route.kind === "crossing") ?? [];
-  const crossingByTerritory = new Map<string, number>();
-  for (const route of crossingRoutes) {
-    crossingByTerritory.set(route.fromId, (crossingByTerritory.get(route.fromId) ?? 0) + 1);
-    crossingByTerritory.set(route.toId, (crossingByTerritory.get(route.toId) ?? 0) + 1);
-  }
 
   const definitionById = new Map(planet.definitions.map(item => [item.id, item] as const));
   const regionName = new Map(planet.regions.map(item => [item.id, item.name] as const));
   const regions = planet.regions.map(region => {
     const neighboring = new Set<string>();
-    let borderLinks = 0, crossingLinks = 0, s = 0, m = 0, i = 0;
+    let borderLinks = 0, s = 0, m = 0, i = 0;
+    const members = new Set(region.territoryIds);
+    // A crossing belongs to each region it touches, but only once per region.
+    // Half-counting endpoints would discard cross-region links entirely.
+    const crossingLinks = crossingRoutes.filter(route => members.has(route.fromId) || members.has(route.toId)).length;
     for (const territoryId of region.territoryIds) {
       const definition = definitionById.get(territoryId);
       if (definition) {
         s += definition.income.s; m += definition.income.m; i += definition.income.i;
       }
-      crossingLinks += crossingByTerritory.get(territoryId) ?? 0;
       for (const next of graph.get(territoryId) ?? []) {
         const other = territoryRegion.get(next);
         if (other && other !== region.id) { neighboring.add(other); borderLinks++; }
@@ -135,7 +133,7 @@ export function analyzeWarPlanetStrategyV114(planet: WarPlanetV96): WarPlanetStr
     const headquartersInRegion = (["CON-F01", "CON-F02"] as const).filter(faction => territoryRegion.get(headquarters[faction]) === region.id);
     return {
       regionId: region.id, name: regionName.get(region.id) ?? region.id, territoryCount: region.territoryIds.length,
-      neighboringRegionIds: [...neighboring].sort(), borderLinks, crossingLinks: Math.floor(crossingLinks / 2),
+      neighboringRegionIds: [...neighboring].sort(), borderLinks, crossingLinks,
       income: { s, m, i }, chokepointTerritoryIds: chokepoints.filter(id => territoryRegion.get(id) === region.id),
       headquarters: headquartersInRegion,
     };
