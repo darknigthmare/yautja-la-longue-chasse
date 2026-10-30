@@ -23,7 +23,7 @@ for (const [type, filters] of [
   assert.deepEqual(Object.keys(filters).sort(), declared(type));
   for (const [id, value] of Object.entries(filters)) {
     assert.ok(typeof value === "string" && value.length > 0, id);
-    assert.doesNotMatch(value, /url\\(|expression\\(|none.*none/i);
+    assert.doesNotMatch(value, /url\(|expression\(|none.*none/i);
   }
 });
 
