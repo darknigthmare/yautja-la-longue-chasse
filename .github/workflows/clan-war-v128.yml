@@ -7,6 +7,7 @@ on:
       - 'app/game/ClanWarSourceMapStudyV128.*'
       - 'app/game/ClanWarBibleV6Panel.tsx'
       - 'tests/clan-war-source-maps-v128.test.mjs'
+      - 'tests/clan-war-w3-bots-v128.test.mjs'
       - 'scripts/export-clan-war-source-maps-v128.mjs'
       - 'tsconfig.clan-war-v128.json'
       - '.github/workflows/clan-war-v128.yml'
@@ -41,6 +42,7 @@ jobs:
             /app/game/ClanWarSourceMapStudyV128.tsx
             /app/game/ClanWarSourceMapStudyV128.module.css
             /tests/clan-war-source-maps-v128.test.mjs
+            /tests/clan-war-w3-bots-v128.test.mjs
             /scripts/export-clan-war-source-maps-v128.mjs
       - name: Node.js 22
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
@@ -48,11 +50,11 @@ jobs:
       - name: Locked dependencies
         run: npm ci --ignore-scripts --no-audit --no-fund
       - name: Verify all twelve source maps and full gameplay path
-        run: node --test --test-reporter=spec tests/clan-war-source-maps-v128.test.mjs
+        run: node --test --test-reporter=spec tests/clan-war-source-maps-v128.test.mjs tests/clan-war-w3-bots-v128.test.mjs
       - name: TypeScript check
         run: npx --no-install tsc --noEmit --project tsconfig.clan-war-v128.json
       - name: Strict lint
-        run: npx --no-install eslint app/game/systems/clanWarSourceMapsV128.ts app/game/ClanWarSourceMapStudyV128.tsx tests/clan-war-source-maps-v128.test.mjs scripts/export-clan-war-source-maps-v128.mjs
+        run: npx --no-install eslint app/game/systems/clanWarSourceMapsV128.ts app/game/ClanWarSourceMapStudyV128.tsx tests/clan-war-source-maps-v128.test.mjs tests/clan-war-w3-bots-v128.test.mjs scripts/export-clan-war-source-maps-v128.mjs
       - name: Smoke build V128 React panel
         run: |
           node --input-type=module <<'EOF'
