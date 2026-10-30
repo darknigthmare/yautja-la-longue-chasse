@@ -114,6 +114,18 @@ try {
       const pixels = canvas.getContext("2d")?.getImageData(0, 0, canvas.width, canvas.height).data;
       return pixels && pixels.some((pixel, index) => index % 4 === 3 && pixel > 0);
     }));
+  const regionSelect = textureLab.getByRole("combobox", { name: "Variation par région" });
+  const regionValues = await regionSelect.locator("option").evaluateAll(items => items.map(item => item.value));
+  check("V125 material source supports every real planet region", regionValues.length >= 3);
+  await regionSelect.selectOption(regionValues[1]);
+  const regionalWaiting = page.waitForEvent("download", { timeout: 90000 });
+  await textureLab.getByRole("button", { name: "Télécharger cette matière PNG" }).click();
+  const regionalDownload = await regionalWaiting;
+  const regionalPath = path.join(output, regionalDownload.suggestedFilename());
+  await regionalDownload.saveAs(regionalPath);
+  check("V125 same source and channel produce distinct deterministic regional variation",
+    !(await readFile(regionalPath)).equals(await readFile(extraPath)));
+
   await textureLab.screenshot({ path: path.join(output, "after-v125-material-catalog.png") });
 
   const waiting = page.waitForEvent("download", { timeout: 240000 });
