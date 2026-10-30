@@ -1,0 +1,27 @@
+name: V119 PHG Drive ZIP admission gate
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'scripts/audit-phg-drive-v119.py'
+      - 'tests/test_phg_drive_audit_v119.py'
+      - '.github/workflows/phg-drive-audit-v119.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-contract:
+    name: Validate source metadata and refuse unverified ZIPs
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /scripts/audit-phg-drive-v119.py
+            /tests/test_phg_drive_audit_v119.py
+      - name: Run V119 offline contract tests
+        run: python3 -m unittest discover -s tests -p test_phg_drive_audit_v119.py -v
