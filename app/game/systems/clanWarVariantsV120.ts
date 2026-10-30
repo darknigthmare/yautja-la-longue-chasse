@@ -518,6 +518,29 @@ export function searchClanWarVariantsV120(
   }
   return matches;
 }
+/**
+ * Optional no-repeat selection for procedural mission boards.
+ * Only chooses a blueprint: it never starts a V115 session or spends RAV.
+ * Call with the previously offered IDs to avoid repeats until exhausted.
+ */
+export function pickClanWarVariantV120(
+  seed:number,
+  options:{
+    mode?:ClanWarVariantModeV120|"all";
+    family?:ClanWarVariantFamilyV120|"all";
+    search?:string;excludedIds?:readonly string[];
+  }={},
+):ClanWarVariantV120|null {
+  const skipped=new Set(options.excludedIds??[]);
+  const candidates=searchClanWarVariantsV120(options.search??"",options.mode??"all",options.family??"all")
+    .filter(item=>!skipped.has(item.id));
+  if(!candidates.length)return null;
+  let value=(Number.isFinite(seed)?Math.trunc(seed):0)>>>0;
+  value^=value<<13;
+  value^=value>>>17;
+  value^=value<<5;
+  return candidates[(value>>>0)%candidates.length];
+}
 export function auditClanWarVariantsV120(){
   const items=CLAN_WAR_VARIANTS_V120;
   const unique=(get:(v:ClanWarVariantV120)=>string)=>new Set(items.map(get)).size;
