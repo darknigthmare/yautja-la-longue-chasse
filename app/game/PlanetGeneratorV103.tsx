@@ -20,7 +20,7 @@ import {
 import { WAR_BIOME_LABELS_V96 } from "./systems/clanWarPlanetLabelsV102";
 import type { WarPlanetV96 } from "./systems/clanWarPlanetsV96";
 import {
-  DEFAULT_WAR_PLANET_RECIPE_V115, type WarPlanetRecipeV115,
+  DEFAULT_WAR_PLANET_RECIPE_V115, type WarPlanetRecipeV115, type WarPlanetProceduralV115,
 } from "./systems/clanWarPlanetGeneratorV115";
 import { PLANET_SIZE_LABELS_V115, WAR_SHAPE_TEMPLATES_V115, type PlanetSizeV115 } from "./systems/clanWarShapeAtlasV115";
 import { WAR_PLANET_LAND_TEXTURES_V115, WAR_PLANET_LIQUID_TEXTURES_V115 } from "./systems/clanWarTextureLibraryV115";
@@ -105,6 +105,14 @@ function ModuleControl({ field, recipe, locked, prefix, onEdit, onLock, onRandom
       <button type="button" disabled={locked} aria-label={`Tirer au hasard : ${control.label}`} onClick={() => onRandom(field)}>Au hasard</button>
     </div>
   </div>;
+}
+
+/** Narrow a generated planet from its complete versioned procedural payload.
+ * V102/V103 previews do not own physical-radius or authored shape fields. */
+function isWarPlanetProceduralV115(
+  value: WarPlanetV96["procedural"],
+): value is WarPlanetProceduralV115 {
+  return value?.recipe.version === 115 && "physical" in value && "shapes" in value && "materialDiversity" in value;
 }
 
 interface PlanetGeneratorV103Props {
@@ -369,7 +377,7 @@ export default function PlanetGeneratorV103({ activePlanet, pending = false, onO
           <div><dt>Atmosphère</dt><dd>{details.environment.atmosphere}</dd></div>
           <div><dt>Gravité / cycle diurne</dt><dd>{details.environment.gravity.toLocaleString("fr")} g · {details.environment.dayLengthHours.toLocaleString("fr")} h</dd></div>
           <div><dt>Recette du monde</dt><dd>V{details.recipe.version} · graine {details.recipe.seed}</dd></div>
-          {details.recipe.version === 115 && <><div><dt>Taille physique</dt><dd>Rayon {details.physical.radiusKm.toLocaleString("fr-FR")} km · surface {details.physical.surfaceKm2.toLocaleString("fr-FR")} km²</dd></div>
+          {isWarPlanetProceduralV115(details) && <><div><dt>Taille physique</dt><dd>Rayon {details.physical.radiusKm.toLocaleString("fr-FR")} km · surface {details.physical.surfaceKm2.toLocaleString("fr-FR")} km²</dd></div>
           <div><dt>Formes de terrain</dt><dd>{details.shapes.continent} · {details.shapes.island} · {details.shapes.region}</dd></div>
           <div><dt>Textures complémentaires</dt><dd>{details.materialDiversity.land} · {details.materialDiversity.liquid}</dd></div></>}
           <div><dt>Distance entre bases</dt><dd>{strategic.headquartersDistance} liaison{strategic.headquartersDistance > 1 ? "s" : ""}{strategic.headquartersDistanceKm !== undefined ? ` · ${strategic.headquartersDistanceKm.toLocaleString("fr-FR")} km` : ""}</dd></div>
