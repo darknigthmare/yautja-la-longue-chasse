@@ -1,0 +1,73 @@
+name: V120 - 1200 clan-war variant catalogue QA
+
+on:
+  pull_request:
+    branches:
+      - feat/v115-clan-mission-formats-20261030
+      - main
+    paths:
+      - 'app/game/systems/clanWarVariantsV120.ts'
+      - 'app/game/ClanWarVariantCatalogV120.*'
+      - 'app/game/ClanWarBibleV6Panel.tsx'
+      - 'scripts/export-clan-war-v120.mjs'
+      - 'tests/clan-war-variants-v120.test.mjs'
+      - '.github/workflows/clan-war-v120.yml'
+  push:
+    branches:
+      - feat/v120-clan-war-1200-mission-variants
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-catalog:
+    name: Validate and export 4 x 3 x 100 scenario designs
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Sparse checkout; no historic asset archives
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /package.json
+            /package-lock.json
+            /eslint.config.mjs
+            /tsconfig.json
+            /app/game/systems/clanWarVariantsV120.ts
+            /app/game/ClanWarVariantCatalogV120.tsx
+            /app/game/ClanWarVariantCatalogV120.module.css
+            /scripts/export-clan-war-v120.mjs
+            /tests/clan-war-variants-v120.test.mjs
+      - name: Install Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Install locked dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Validate all 1,200 variants and uniqueness
+        run: node --test --test-reporter=spec tests/clan-war-variants-v120.test.mjs
+      - name: Strict lint for source, UI, export and tests
+        run: npx --no-install eslint app/game/systems/clanWarVariantsV120.ts app/game/ClanWarVariantCatalogV120.tsx scripts/export-clan-war-v120.mjs tests/clan-war-variants-v120.test.mjs
+      - name: Browser bundle smoke test for catalogue
+        run: |
+          node --input-type=module <<'EOF'
+          import {build} from "esbuild";
+          const result=await build({
+            stdin:{contents:"import View from './app/game/ClanWarVariantCatalogV120'; export default View;",resolveDir:process.cwd()},
+            platform:"browser",target:"es2022",format:"esm",bundle:true,write:false,logLevel:"silent",
+          });
+          if(!result.outputFiles.some(file=>file.path.endsWith(".js")))throw Error("No browser JS was bundled");
+          console.log("Catalogue client component bundled successfully");
+          EOF
+      - name: Export all mission rows as machine-readable files
+        run: node scripts/export-clan-war-v120.mjs outputs/clan-war-v120
+      - name: Attach validated JSON, CSV and audit for review
+        uses: actions/upload-artifact@v4
+        with:
+          name: yautja-clan-war-1200-v120
+          path: outputs/clan-war-v120/
+          if-no-files-found: error
+          retention-days: 30
