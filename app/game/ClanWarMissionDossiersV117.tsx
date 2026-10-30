@@ -84,7 +84,9 @@ export default function ClanWarMissionDossiersV117({
             </div>
             {tacticalPilot&&onOpenSourceRts&&<div className={styles.sourceArea}>
               <p><strong>Épreuve tactique partielle disponible :</strong> {tacticalPilot.id} — {tacticalPilot.objectiveKind==="cargo-escort"?
-                "guet observé et transport de charge":"tenue du guet et arrivée de relève"}.
+                "guet observé et transport de charge":
+                tacticalPilot.objectiveKind==="guard-relief"?
+                  "tenue du guet et arrivée de relève":"régulateur livré puis filtre réparé par les artisans"}.
                 Le plan 9 × 6 ne remplace pas la carte W3-MAP01 complète.</p>
               <button type="button" className={styles.sandbox} onClick={()=>onOpenSourceRts(tacticalPilot.id)}>
                 Préparer cet objectif jouable (épreuve W3)
