@@ -57,3 +57,7 @@ Aucun stock, roster ou renseignement ennemi caché n’est consulté.
 tests/planet-strategy-v114.test.mjs couvre les 6 profils, les 8 ambiances, la validité des recettes, la conservation des verrous de matière, les revenus par région, les points d’étranglement et un monde V102 historique.
 
 Le test est ajouté au groupe planétaire du workflow audit-v94.yml.
+
+## Validation distante
+
+Cette branche est validée avec le workflow PR complet avant retour sur sa base empilée #25.
