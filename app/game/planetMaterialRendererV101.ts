@@ -6,6 +6,9 @@ import {
 import { loadPlanetDetailedMaterialV103, planetDetailedMaterialKeyV103, planetDetailedMaterialStatusV103 } from "./planetDetailMaterialsV103";
 import { planetMaterialSourceV103, planetRegionalLayoutV103 } from "./systems/planetMaterialProfilesV103";
 import { createPlanetTextureCanvasV115 } from "./systems/clanWarTextureLibraryV115";
+import type { PlanetRegionalMaterialKitV128 } from "./systems/clanWarRegionalMaterialKitV128";
+import { validPlanetRegionalMaterialKitV128 } from "./systems/clanWarRegionalMaterialKitV128";
+import { createPlanetRegionalShaderAtlasV129, planetRegionalShaderAtlasKeyV129, planetRegionalTextureScaleV129 } from "./planetRegionalShaderAtlasV129";
 import {
   DEFAULT_PLANET_MATERIAL_SETTINGS_V101, PLANET_MATERIAL_LAYERS_V101, planetMaterialRecipeV101,
   unwrapPlanetPolygonV101, wrapPlanetLongitudeV101, planetMaterialSourceV101, type PlanetMaterialLayerV101, type PlanetMaterialSettingsV101, type PlanetMaterialViewV101,
@@ -17,6 +20,8 @@ export interface PlanetMaterialRenderRequestV101 extends PlanetMaterialViewV101 
   settings?: Readonly<PlanetMaterialSettingsV101>;
   textureSize?: 512 | 1024 | 2048;
   signal?: AbortSignal;
+  /** Opt-in comparison overlay. World save recipes remain unchanged. */
+  regionalKit?: PlanetRegionalMaterialKitV128;
 }
 
 /** One shared GPU context serves the atlas and every visible portrait. Sources,
@@ -434,13 +439,19 @@ export async function drawPlanetMaterialV101(target: HTMLCanvasElement, request:
   if (!state) return false;
   const layer = request.layer ?? "composite", settings = request.settings ?? DEFAULT_PLANET_MATERIAL_SETTINGS_V101;
   const recipe = planetMaterialRecipeV101(request.planet), size = request.textureSize ?? 512;
+  if (request.regionalKit && !validPlanetRegionalMaterialKitV128(request.planet, request.regionalKit)) {
+    rendererError = "Kit régional incompatible avec cette planète."; return false;
+  }
   const useLand = ["composite", "albedo", "land"].includes(layer);
-  const regionalLand = useLand && recipe.mapping === "world-space-triplanar-regional";
+  const useV129 = Boolean(request.regionalKit && useLand);
+  const regionalLand = useLand && (recipe.mapping === "world-space-triplanar-regional" || useV129);
   const regionalSourceSize = Math.min(size, 1024);
   const maxTextureSize = Number(state.gl.getParameter(state.gl.MAX_TEXTURE_SIZE));
-  const regionalLayout = recipe.materials ? planetRegionalLayoutV103(request.planet.regions.length, regionalSourceSize, maxTextureSize) : null;
+  const regionalLayout = recipe.materials || useV129 ? planetRegionalLayoutV103(request.planet.regions.length, regionalSourceSize, maxTextureSize) : null;
   const regionalTileSize = regionalLayout?.tileSize ?? 2 ** Math.floor(Math.log2(Math.max(16, Math.min(regionalSourceSize, maxTextureSize / 4))));
-  const regionalKey = `regional-land:${planetRegionalAtlasKeyV102(request.planet, regionalTileSize, regionalSourceSize)}`;
+  const regionalKey = "regional-land:" + (useV129
+    ? planetRegionalShaderAtlasKeyV129(request.planet, request.regionalKit!, regionalTileSize, regionalLayout!.columns, regionalLayout!.rows)
+    : planetRegionalAtlasKeyV102(request.planet, regionalTileSize, regionalSourceSize));
   const useSurface = ["composite", "albedo", "surface", "emissive"].includes(layer);
   const useClouds = layer === "clouds" || layer === "composite" && settings.clouds;
   const useWeather = layer === "weather" || layer === "composite" && settings.weather;
@@ -454,10 +465,11 @@ export async function drawPlanetMaterialV101(target: HTMLCanvasElement, request:
     ? details[index] ? planetDetailedMaterialKeyV103(url, details[index]!, imageSizes[index]) : `${size}:${url}` : "empty");
   try {
     const images = await Promise.all(urls.map((url, index) => index === 0 && regionalLand
-      ? loadPlanetRegionalAtlasV102(request.planet, regionalTileSize, regionalSourceSize, loadMaterial)
+      ? useV129 ? createPlanetRegionalShaderAtlasV129(request.planet, request.regionalKit!, regionalTileSize, regionalLayout!.columns, regionalLayout!.rows, request.signal)
+        : loadPlanetRegionalAtlasV102(request.planet, regionalTileSize, regionalSourceSize, loadMaterial)
       : url ? details[index] ? loadPlanetDetailedMaterialV103(url, details[index]!, imageSizes[index], loadMaterial) : loadMaterial(url, size) : null));
     if (request.signal?.aborted || state !== shared || state.gl.isContextLost()) return false;
-    selectProgram(state, recipe.materials ? 103 : 102);
+    selectProgram(state, recipe.materials || useV129 ? 103 : 102);
     const { gl, canvas } = state;
     const max = Math.min(4096, Number(gl.getParameter(gl.MAX_RENDERBUFFER_SIZE)));
     const width = Math.max(1, Math.min(max, Math.round(target.width))), height = Math.max(1, Math.min(max, Math.round(target.height)));
@@ -483,10 +495,12 @@ export async function drawPlanetMaterialV101(target: HTMLCanvasElement, request:
     gl.uniform1f(uniform(state, "uSeed"), (recipe.seed % 1000) / 113);
     gl.uniform1f(uniform(state, "uRegionalLand"), Number(regionalLand));
     gl.uniform1f(uniform(state, "uRegionalInset"), .5 / regionalTileSize);
-    if (recipe.materials) {
+    if (recipe.materials || useV129) {
+      const scale = useV129 ? planetRegionalTextureScaleV129(request.planet) : 1;
       gl.uniform3f(uniform(state, "uRegionalGrid"), regionalLayout!.columns, regionalLayout!.rows, request.planet.regions.length - 1);
-      gl.uniform4f(uniform(state, "uMaterialScaleContrast"), recipe.materials.land.scale, recipe.materials.surface.scale, recipe.materials.land.contrast, recipe.materials.surface.contrast);
-      gl.uniform4f(uniform(state, "uLandPalette"), ...rgb(recipe.materials.land.palette ?? "#000000"), recipe.materials.land.palette ? .72 : 0);
+      gl.uniform4f(uniform(state, "uMaterialScaleContrast"), (recipe.materials?.land.scale ?? 1) * scale,
+        (recipe.materials?.surface.scale ?? 1) * scale, recipe.materials?.land.contrast ?? 1, recipe.materials?.surface.contrast ?? 1);
+      gl.uniform4f(uniform(state, "uLandPalette"), ...rgb(recipe.materials?.land.palette ?? "#000000"), recipe.materials?.land.palette ? .72 : 0);
     }
     gl.uniform4f(uniform(state, "uSettings"), Number(settings.atmosphere) * recipe.atmosphereDensity, Number(settings.clouds), Number(settings.weather), Number(settings.lighting));
     gl.uniform1f(uniform(state, "uAuroraSwitch"), Number(settings.aurora ?? settings.weather));

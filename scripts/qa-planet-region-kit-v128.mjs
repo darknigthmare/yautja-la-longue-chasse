@@ -89,6 +89,45 @@ try {
   await page.waitForFunction(() => document.querySelector('[data-testid="planet-layer-export-v102"] [role="status"]')
     ?.textContent?.includes("ne correspond pas"), null, { timeout: 10000 });
   check("Foreign regional sidecar is refused without changing current choices", (await landSelect.inputValue()) === otherLand);
+  await kit.getByTestId("planet-regional-preview-toggle-v129").click();
+  const preview = kit.getByTestId("planet-regional-preview-v129");
+  await preview.waitFor({ state: "visible" });
+  await page.waitForFunction(() => document.querySelector('[data-testid="planet-regional-preview-v129"]')
+    ?.getAttribute("data-render-status") === "ready", null, { timeout: 45000 });
+  const visual = preview.getByTestId("planet-regional-visual-v129");
+  const signature = await visual.evaluate(canvas => {
+    const pixels = canvas.getContext("2d").getImageData(0, 0, canvas.width, canvas.height).data;
+    let digest = 2166136261;
+    for (let index = 0; index < pixels.length; index += 32) digest = Math.imul(digest ^ pixels[index], 16777619) >>> 0;
+    return digest;
+  });
+  await landSelect.selectOption(initialLand);
+  await page.waitForFunction(previous => {
+    const parent = document.querySelector('[data-testid="planet-regional-preview-v129"]');
+    if (parent?.getAttribute("data-render-status") !== "ready") return false;
+    const canvas = parent.querySelector('canvas[data-testid="planet-regional-visual-v129"]');
+    if (!canvas) return false;
+    const pixels = canvas.getContext("2d").getImageData(0, 0, canvas.width, canvas.height).data;
+    let digest = 2166136261;
+    for (let index = 0; index < pixels.length; index += 32) digest = Math.imul(digest ^ pixels[index], 16777619) >>> 0;
+    return digest !== previous;
+  }, signature, { timeout: 45000 });
+  check("Regional change visibly affects the map without changing the world code",
+    (await generator.getAttribute("data-preview-planet-code")) === code);
+  await preview.getByTestId("planet-regional-projection-v129").selectOption("globe");
+  await page.waitForFunction(() => {
+    const node = document.querySelector('[data-testid="planet-regional-preview-v129"]');
+    return node?.getAttribute("data-render-status") === "ready" &&
+      node.querySelector('canvas[data-testid="planet-regional-visual-v129"]')?.width === 384;
+  }, null, { timeout: 45000 });
+  check("The regional shader also renders a real 3D globe", await visual.evaluate(canvas => {
+    const pixels = canvas.getContext("2d").getImageData(0, 0, canvas.width, canvas.height).data;
+    return pixels.some((value, index) => index % 4 === 3 && value > 0);
+  }));
+  await preview.getByTestId("planet-regional-projection-v129").selectOption("map");
+  await page.waitForFunction(() => document.querySelector('[data-testid="planet-regional-preview-v129"]')
+    ?.getAttribute("data-render-status") === "ready", null, { timeout: 45000 });
+  check("V129 does not rewrite canonical planet identity", (await generator.getAttribute("data-preview-planet-code")) === code);
   const hasSupplementalSurface = (await surfaceSelect.locator("option").count()) > 1;
   check("Surface selection reports whether this biome can support fluid details", hasSupplementalSurface || await surfaceSelect.isDisabled());
 

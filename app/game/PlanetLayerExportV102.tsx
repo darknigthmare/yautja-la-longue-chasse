@@ -9,6 +9,7 @@ import { analyzeWarPlanetStrategyV114 } from "./systems/clanWarPlanetStrategyV11
 import { createPlanetTextureCanvasV125, findPlanetTextureV125, WAR_PLANET_TEXTURES_V125, WAR_PLANET_TEXTURE_CHANNELS_V125, type PlanetTextureChannelV125 } from "./systems/clanWarTextureLibraryV125";
 import { createPlanetRegionIndexMaskV124, createPlanetInlandMaskV124, describePlanetModularMasksV124, planetInlandFeaturesV124 } from "./planetModularExportV124";
 import { createPlanetSingleRegionMaskV128 } from "./planetRegionKitRasterV128";
+import PlanetRegionalPreviewV129 from "./PlanetRegionalPreviewV129";
 import {
   createPlanetRegionalMaterialKitV128, compatibleLandMaterialsV128, compatibleSurfaceMaterialsV128,
   describePlanetRegionAssetsV128, editPlanetRegionalMaterialKitV128, validPlanetRegionalMaterialKitV128,
@@ -85,6 +86,7 @@ export default function PlanetLayerExportV102({ planet }: { planet: WarPlanetV96
   const [supplementalRegionId, setSupplementalRegionId] = useState(() => planet.regions[0]?.id ?? "");
   const [kitRegionId, setKitRegionId] = useState(() => planet.regions[0]?.id ?? "");
   const [regionalKit, setRegionalKit] = useState(() => createPlanetRegionalMaterialKitV128(planet));
+  const [showRegionalPreviewV129, setShowRegionalPreviewV129] = useState(false);
   const activeKitRegion = regionalKit.entries.find(item => item.regionId === kitRegionId) ?? regionalKit.entries[0];
   const compatibleLand = activeKitRegion ? compatibleLandMaterialsV128(activeKitRegion.biome) : [];
   const compatibleSurface = activeKitRegion ? compatibleSurfaceMaterialsV128(planet.surface.kind, activeKitRegion.biome) : [];
@@ -400,6 +402,10 @@ export default function PlanetLayerExportV102({ planet }: { planet: WarPlanetV96
           aria-label={`Aperçu du sol ${activeKitRegion.regionName}`}/>
         <p>Source régionale : {findPlanetTextureV125(activeKitRegion.landMaterialId)?.description}. Le rendu du globe reste lié à sa recette d’origine.</p>
       </div>}
+      {activeKitRegion && <div><button type="button" data-testid="planet-regional-preview-toggle-v129"
+        onClick={() => setShowRegionalPreviewV129(value => !value)}>
+        {showRegionalPreviewV129 ? "Fermer la comparaison régionale V129" : "Prévisualiser ces matières sur la planète V129"}
+      </button>{showRegionalPreviewV129 && <PlanetRegionalPreviewV129 planet={planet} kit={regionalKit}/>}</div>}
       {activeKitRegion && <p data-testid="planet-region-kit-summary-v128">Biome : {activeKitRegion.biome} · Graine régionale : {activeKitRegion.seed} · {compatibleLand.length} sols compatibles · {compatibleSurface.length ? `${compatibleSurface.length} milieux complémentaires` : "aucun liquide à inventer pour cette surface"}.</p>}
       <p>Le ZIP contient 5 canaux pour chaque matériau sélectionné, un masque géographique transparent et un manifeste de provenance. Ce réglage visuel ne change pas le code du monde.</p>
     </fieldset>
