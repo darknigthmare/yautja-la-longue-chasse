@@ -10,7 +10,7 @@ import {
   queueWarRecruitmentV115, settleWarRecruitmentsV115,
   queueWarTreatmentV116, settleWarTreatmentsV116, cancelWarTreatmentV116,
   leaveWarOperationV115, readWarOperationsV115, stepWarRtsRealtimeV115, toggleWarRtsRealtimeV115,
-  settleWarOuterOpsV115, stepAssaultV115, warMissionEligibleV115, warOuterSecondsRemainingV115,
+  settleWarOuterOpsV115, recallWarOuterMissionV116, stepAssaultV115, warMissionEligibleV115, warOuterSecondsRemainingV115,
   type WarMissionModeV115, type OuterFocusV115, type WarOperationsStateV115,
   type WarOperationsUpdateV115,
 } from "./systems/clanWarOperationsV115";
@@ -400,11 +400,12 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false}:
 
     <section className={styles.delegated}>
       <h4>Outer Ops · opérations en attente ({world.outer.length}/3)</h4>
-      <p>Le délai utilise l&apos;heure de l&apos;appareil, même après fermeture du panneau. La résolution est calculée au retour dans le jeu et un identifiant empêche le double rapport.</p>
+      <p>Le délai utilise l&apos;heure de l&apos;appareil. Un rappel ne téléporte pas l&apos;équipe : son trajet de retour est décompté jusqu&apos;au rapport final.</p>
       {world.outer.length?world.outer.map(order=><div className={styles.delegatedOrder} key={order.id}>
         <strong>{order.id} · {focusLabels[order.focus]}</strong>
         <span>{order.targetId} · {order.teamIds.map(teamsById).join(", ")}</span>
-        <span>Rapport attendu dans {formatTime(warOuterSecondsRemainingV115(order,now))} · {order.routeIds.length} passage(s)</span>
+        <span>{order.recall?"Retour au clan":"Rapport de mission"} dans {formatTime(warOuterSecondsRemainingV115(order,now))} · {order.routeIds.length} passage(s)</span>
+        {order.recall ? <small className={styles.explain}>Rappel transmis : équipe toujours engagée jusqu&apos;à l&apos;arrivée.</small> : <button type="button" disabled={blocked||now<order.startedAt||now>=order.dueAt} onClick={()=>commit(recallWarOuterMissionV116(worldRef.current,order.id,Date.now(),rules))}>Rappeler l&apos;équipe</button>}
       </div>):<p>Aucune équipe actuellement déléguée.</p>}
       <button type="button" disabled={blocked||!world.outer.some(order=>now>=order.dueAt)}
         onClick={()=>commit(settleWarOuterOpsV115(worldRef.current,Date.now(),rules))}>Recevoir les rapports arrivés</button>
