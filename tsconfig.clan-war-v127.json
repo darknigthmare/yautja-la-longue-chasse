@@ -1,9 +1,21 @@
 {
   "extends": "./tsconfig.clan-war-v126.json",
-  "compilerOptions": {"incremental": false, "tsBuildInfoFile": null},
+  "compilerOptions": {
+    "incremental": false,
+    "tsBuildInfoFile": null
+  },
   "include": [
+    "types/clan-war-v120-css.d.ts",
     "app/game/systems/clanWarEarthMetricV127.ts",
-    "app/game/systems/clanWarEncounterDirectorV127.ts"
+    "app/game/systems/clanWarEncounterDirectorV127.ts",
+    "app/game/systems/clanWarMultiplayerPracticeV127.ts",
+    "app/game/ClanWarMultiplayerPracticeV127.tsx",
+    "app/game/ClanWarGeoAiV126.tsx"
   ],
-  "exclude": ["node_modules","dist",".next","outputs"]
+  "exclude": [
+    "node_modules",
+    "dist",
+    ".next",
+    "outputs"
+  ]
 }
