@@ -21,7 +21,7 @@ function setUpEscort(){
   assert.equal(launched.accepted,true,launched.message);
   return {started:launched.state,targetId,scoutId,bearerId};
 }
-test("five W3 RTS objective pilots preserve their distinct authored maps; other 19 remain dossiers",()=>{
+test("six W3 RTS objective pilots preserve their authored maps; other 18 remain dossiers",()=>{
   const first=game.warSourceRtsScenarioV119("W3-RTS01",rules);
   const second=game.warSourceRtsScenarioV119("W3-RTS02",rules);
   assert.equal(first.title,"L’angle avant le pont");
@@ -35,7 +35,7 @@ test("five W3 RTS objective pilots preserve their distinct authored maps; other 
   const fourth=game.warSourceRtsScenarioV119("W3-RTS04",rules);
   assert.equal(fourth.sourceMapId,"W3-MAP02");
   assert.equal(fourth.objectiveKind,"circuit-defense");
-  assert.equal(game.warSourceRtsScenarioV119("W3-RTS06",rules),null);
+  assert.equal(game.warSourceRtsScenarioV119("W3-RTS07",rules),null);
 });
 test("a source scenario requires real source-defined unit types and territory region",()=>{
   const state=game.createWarOperationsV115(rules);
