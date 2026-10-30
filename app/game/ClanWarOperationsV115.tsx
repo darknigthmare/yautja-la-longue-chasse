@@ -27,6 +27,7 @@ type Props={rules:WarRulesV6;active?:boolean;persist?:boolean};
 export default function ClanWarOperationsV115({rules,active=true,persist=false}:Props) {
   const [world,setWorld]=useState<WarOperationsStateV115>(()=>createWarOperationsV115(rules));
   const worldRef=useRef(world);
+  const knownArchiveBytesRef=useRef<string|null>(null);
   const [hydrated,setHydrated]=useState(false),[blocked,setBlocked]=useState(false);
   const [storageIssue,setStorageIssue]=useState(""),[message,setMessage]=useState("Choisissez votre théâtre, vos équipes, puis le type d'opération.");
   const [mode,setMode]=useState<WarMissionModeV115>("assault"),[focus,setFocus]=useState<OuterFocusV115>("recon");
@@ -44,8 +45,10 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false}:
       if(persist) {
         try {
           const raw=window.localStorage.getItem(WAR_OPERATIONS_STORAGE_V115);
+          knownArchiveBytesRef.current=raw;
           if(raw) {
             const parsed=readWarOperationsV115(raw,rules);
+          knownArchiveBytesRef.current=raw;
             if(parsed) current=parsed;
             else {lock=true;issue="Archive V115 illisible ou incompatible : octets conservés, aucune réécriture autorisée.";}
           }
@@ -58,12 +61,34 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false}:
     return ()=>window.clearTimeout(ticket);
   },[rules,persist,defaultSource]);
 
+  useEffect(()=>{
+    if(!persist) return;
+    const externalChange=(event:StorageEvent)=>{
+      if((event.key===WAR_OPERATIONS_STORAGE_V115||event.key===null) &&
+        event.newValue!==knownArchiveBytesRef.current){
+        setBlocked(true);
+        setStorageIssue("Front mis à jour depuis un autre onglet : opérations suspendues pour éviter tout écrasement.");
+      }
+    };
+    window.addEventListener("storage",externalChange);
+    return ()=>window.removeEventListener("storage",externalChange);
+  },[persist]);
+
   function commit(update:WarOperationsUpdateV115) {
     setMessage(update.message);
     if(!update.accepted || blocked || !hydrated) return;
     if(persist) {
-      try {window.localStorage.setItem(WAR_OPERATIONS_STORAGE_V115,JSON.stringify(update.state));}
-      catch {
+      try {
+        const currentBytes=window.localStorage.getItem(WAR_OPERATIONS_STORAGE_V115);
+        if(currentBytes!==knownArchiveBytesRef.current){
+          setBlocked(true);
+          setStorageIssue("Conflit de sauvegarde : un autre onglet a modifié le front. Rechargez pour consulter les dernières données ; aucun écrasement effectué.");
+          return;
+        }
+        const updatedBytes=JSON.stringify(update.state);
+        window.localStorage.setItem(WAR_OPERATIONS_STORAGE_V115,updatedBytes);
+        knownArchiveBytesRef.current=updatedBytes;
+      } catch {
         setBlocked(true);
         setStorageIssue("Échec de sauvegarde : l'ancienne archive n'a pas été remplacée. Réessayez avec un espace de stockage disponible.");
         return;
@@ -128,8 +153,11 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false}:
     if(!window.confirm("Remplacer uniquement les mandats d'exercice V115 ? Les archives V3, V6 et la campagne ne seront pas modifiées.")) return;
     const next=createWarOperationsV115(rules);
     if(persist) {
-      try {window.localStorage.setItem(WAR_OPERATIONS_STORAGE_V115,JSON.stringify(next));}
-      catch {setStorageIssue("Impossible de remplacer l'archive ; aucune donnée effacée.");return;}
+      try {
+        const encoded=JSON.stringify(next);
+        window.localStorage.setItem(WAR_OPERATIONS_STORAGE_V115,encoded);
+        knownArchiveBytesRef.current=encoded;
+      } catch {setStorageIssue("Impossible de remplacer l'archive ; aucune donnée effacée.");return;}
     }
     worldRef.current=next;setWorld(next);setBlocked(false);setStorageIssue("");setHydrated(true);
     setMessage("Exercice V115 réinitialisé explicitement.");
