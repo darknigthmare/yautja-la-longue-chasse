@@ -51,6 +51,16 @@ function fullMission(id){
    assert.equal(powered.accepted,true,id+" power "+powered.message);
    state=powered.state;
   }
+  // Source weather windows (tide, gust, brittle ice, hot jets) must really
+  // block actions instead of silently authorizing impossible biome events.
+  for(let wait=0;task.requiresWindow&&
+       [3,4].includes(state.base.turn%8)&&wait<8;wait++){
+   const blocked=command(state,"interact");
+   assert.equal(blocked.accepted,false,id+" should reject illegal weather window");
+   const elapsed=command(state,"wait");
+   assert.equal(elapsed.accepted,true,id+" failed to await the right window");
+   state=elapsed.state;
+  }
   result=command(state,"interact");
   assert.equal(result.accepted,true,id+" physical task "+task.id+": "+result.message);
   state=result.state;
@@ -242,4 +252,32 @@ test("24 source missions all allow physical full-round-trip victory in a civilia
  const receipts=results.map(v=>v.base.report.id);
  assert.equal(new Set(receipts).size,24);
  assert.ok(receipts.every(r=>r.startsWith("RECEIPT-W129-W3-RTS")));
+});
+
+
+test("tidal passage, wind calibration, cracked ice and hot jets gate interaction on physical ticks",()=>{
+ const idsAndTypes=[
+  ["W3-RTS13","low-tide"],["W3-RTS14","low-tide"],
+  ["W3-RTS16","clear-wind"],["W3-RTS17","stable-ice"],
+  ["W3-RTS19","cool-jets"],["W3-RTS20","cool-jets"],
+ ];
+ for(const [id,expectedWindow] of idsAndTypes){
+  let state=api.createWarRtsMissionStateV129(id,rules);
+  const stepIndex=state.mission.tasks.findIndex(task=>task.requiresWindow===expectedWindow);
+  assert.ok(stepIndex>=0,id+" lost environmental contract");
+  const task=state.mission.tasks[stepIndex];
+  state={...state,completedTaskIds:state.mission.tasks.slice(0,stepIndex).map(t=>t.id),
+   base:{...state.base,turn:3,enemies:[],
+    player:{...state.base.player,...task.location,observed:true}}};
+  const first=command(state,"interact");
+  assert.equal(first.accepted,false,id+" illegally interacted during dangerous window");
+  assert.equal(first.state.base.turn,3,"rejected action must not consume a hidden turn");
+  let next=command(state,"wait");
+  assert.equal(next.accepted,true);
+  next=command(next.state,"wait");
+  assert.equal(next.accepted,true);
+  const clear=command(next.state,"interact");
+  assert.equal(clear.accepted,true,id+" safe environmental window blocked: "+clear.message);
+  assert.ok(clear.state.completedTaskIds.includes(task.id));
+ }
 });
