@@ -65,7 +65,11 @@ test("realtime RTS rejects wall targeting and treats all regional walls as occup
   const denied=api.issueWarRtsRealtimeOrderV115(state,team,wall[0],wall[1],"advance",rules);
   assert.equal(denied.accepted,false);
   assert.equal(denied.state,state);
-  const dest=api.issueWarRtsRealtimeOrderV115(state,team,terrain.objective.x,terrain.objective.y,"advance",rules);
+  const spot=Array.from({length:54},(_,n)=>({x:n%9,y:Math.floor(n/9)})).find(cell=>
+    cell.x>=5&&!terrain.walls.includes(key(cell.x,cell.y))&&
+    !state.active.rts.actors.some(actor=>actor.x===cell.x&&actor.y===cell.y));
+  assert.ok(spot,"the territorial map must have a usable deployment objective");
+  const dest=api.issueWarRtsRealtimeOrderV115(state,team,spot.x,spot.y,"advance",rules);
   assert.equal(dest.accepted,true);
   state=dest.state;
   for(let i=0;i<40&&state.active;i++){
