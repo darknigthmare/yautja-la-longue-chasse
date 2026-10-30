@@ -96,6 +96,8 @@ import {
 } from "./hunterVisuals";
 import { hunterBodyPartColorV62, hunterBodyPartClipV62, type HunterLayerPlacement } from "./hunterHeadArtV62";
 import { HUNTER_DREAD_SOURCE_ROOT as HUNTER_DREAD_ROOT, solveHunterDreadsV63, stepHunterDreadsV63 } from "./hunterDreadsV63";
+import { chromaticCanvasSourceV113 } from "./hunterChromaticCanvasV113";
+import type { ChromaticChannelV113 } from "./hunterChromaticsV113";
 import {
   ageTracks,
   GUARDIAN_ADAPTATION,
@@ -3132,6 +3134,7 @@ function drawFallbackCharacter(
 
 interface RegisteredLayerOptions {
   placement?: HunterLayerPlacement;
+  chromatics?: { appearance: HunterAppearance; channel: ChromaticChannelV113 };
   clip?: readonly (readonly [number, number, number, number])[];
   alpha?: number;
   filter?: string;
@@ -3315,9 +3318,12 @@ function drawRegisteredLayer(
 ): boolean {
   if (!image) return false;
   const matrix = relativeBoneMatrix(frame, HUNTER_BIND_FRAME, boneId);
+  const recolored = options.chromatics ? chromaticCanvasSourceV113(
+    image, options.chromatics.appearance.chromaticsV113, options.chromatics.channel, options.placement
+  ) : null;
   context.save();
   context.globalAlpha *= options.alpha ?? 1;
-  if (options.filter) context.filter = options.filter;
+  if (options.filter && !recolored) context.filter = options.filter;
   applyAffine(context, matrix);
   context.translate(options.translateX ?? 0, options.translateY ?? 0);
   const scaleX = options.scaleX ?? options.scale ?? 1;
@@ -3337,11 +3343,11 @@ function drawRegisteredLayer(
     context.clip();
   }
   context.drawImage(
-    image,
-    options.placement?.x ?? 0,
-    options.placement?.y ?? 0,
-    options.placement?.width ?? HUNTER_RIG_CANVAS.width,
-    options.placement?.height ?? HUNTER_RIG_CANVAS.height,
+    recolored ?? image,
+    recolored ? 0 : options.placement?.x ?? 0,
+    recolored ? 0 : options.placement?.y ?? 0,
+    recolored ? HUNTER_RIG_CANVAS.width : options.placement?.width ?? HUNTER_RIG_CANVAS.width,
+    recolored ? HUNTER_RIG_CANVAS.height : options.placement?.height ?? HUNTER_RIG_CANVAS.height,
   );
   context.restore();
   return true;
@@ -3360,7 +3366,7 @@ function drawAtomicBodyPart(
     assets.hunterBodyParts[partId],
     frame,
     boneId,
-    { filter: hunterBodyPartColorV62(appearance.bodyMorphId, partId, bodyFilter(appearance)), placement: hunterBodyPartPlacement(appearance.bodyMorphId, partId, appearance.headStyleId), clip: hunterBodyPartClipV62(appearance.bodyMorphId, partId) },
+    { filter: hunterBodyPartColorV62(appearance.bodyMorphId, partId, bodyFilter(appearance)), placement: hunterBodyPartPlacement(appearance.bodyMorphId, partId, appearance.headStyleId), clip: hunterBodyPartClipV62(appearance.bodyMorphId, partId), chromatics: { appearance, channel: "skin" } },
   );
   if (!hunterBodyPartHasNet(appearance.bodyMorphId, partId)) return;
   drawRegisteredLayer(
@@ -3371,6 +3377,7 @@ function drawAtomicBodyPart(
     {
       filter: hunterBodyPartColorV62(appearance.bodyMorphId, partId, bodyFilter(appearance)),
       clip: hunterBodyPartClipV62(appearance.bodyMorphId, partId),
+      chromatics: { appearance, channel: "outfit" },
       alpha:
         appearance.armorStyleId === "feral"
           ? 0.28
@@ -3635,6 +3642,7 @@ function drawHunterLayered(
         "head",
         {
           filter: dreadFilter(appearance.dreadTintId),
+          chromatics: { appearance, channel: "dreads" },
           pivot: HUNTER_DREAD_ROOT,
           rotation: strand.angle,
           scaleX: strand.scale,
@@ -3688,7 +3696,7 @@ function drawHunterLayered(
       assets.hunterBodyFull,
       frame,
       "root",
-      { filter: bodyFilter(appearance) },
+      { filter: bodyFilter(appearance), chromatics: { appearance, channel: "skin" } },
     )
   ) {
     drawFallbackCharacter(
@@ -3708,14 +3716,14 @@ function drawHunterLayered(
     assets.hunterArmor.belt,
     frame,
     "pelvis",
-    { filter: armorTint },
+    { filter: armorTint, chromatics: { appearance, channel: "armor" } },
   );
   drawRegisteredLayer(
     context,
     assets.hunterArmor.chest,
     frame,
     "torso",
-    { filter: armorTint },
+    { filter: armorTint, chromatics: { appearance, channel: "armor" } },
   );
   drawHunterBeltLoadout(context, assets, frame, loadout);
 
@@ -3740,7 +3748,7 @@ function drawHunterLayered(
     frame,
     "armFrontUpper",
     {
-      filter: armorTint,
+      filter: armorTint, chromatics: { appearance, channel: "armor" },
       pivot: { x: 153, y: 110 },
       scale:
         HUNTER_ARMOR_FIT_BY_MORPH[appearance.bodyMorphId].shoulderScale,
@@ -3753,7 +3761,7 @@ function drawHunterLayered(
         assets.hunterArmor.bracer,
         frame,
         "armFrontLower",
-        { filter: armorTint },
+        { filter: armorTint, chromatics: { appearance, channel: "armor" } },
       );
     }
     drawRegisteredLayer(
@@ -3761,28 +3769,28 @@ function drawHunterLayered(
       assets.hunterArmor.thigh,
       frame,
       "legFrontUpper",
-      { filter: armorTint },
+      { filter: armorTint, chromatics: { appearance, channel: "armor" } },
     );
     drawRegisteredLayer(
       context,
       assets.hunterArmor.thighLower,
       frame,
       "legFrontLower",
-      { filter: armorTint },
+      { filter: armorTint, chromatics: { appearance, channel: "armor" } },
     );
     drawRegisteredLayer(
       context,
       assets.hunterArmor.knee,
       frame,
       "legFrontLower",
-      { filter: armorTint },
+      { filter: armorTint, chromatics: { appearance, channel: "armor" } },
     );
     drawRegisteredLayer(
       context,
       assets.hunterArmor.shin,
       frame,
       "legFrontLower",
-      { filter: armorTint },
+      { filter: armorTint, chromatics: { appearance, channel: "armor" } },
     );
   }
 
