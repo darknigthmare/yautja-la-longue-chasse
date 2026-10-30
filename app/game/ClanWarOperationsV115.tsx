@@ -9,6 +9,7 @@ import { warSourceRtsScenarioV119, warRtsScriptedEligibilityV119,
 import {
   WAR_OPERATIONS_STORAGE_V115, beginWarOperationV115, commandRtsV115, commandStealthV115,
   createWarOperationsV115, deployAssaultUnitV115, issueWarRtsRealtimeOrderV115,
+  holdWarRtsAlternatingV119,
   upgradeWarAssaultApV117, issueWarAssaultSpecialV117,
   queueWarRecruitmentV115, settleWarRecruitmentsV115,
   queueWarTreatmentV116, settleWarTreatmentsV116, cancelWarTreatmentV116,
@@ -417,9 +418,12 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false}:
           {rts.actors.filter(unit=>unit.side==="ally").map(unit=><button type="button" key={unit.id}
             aria-pressed={rtsSelectedId===unit.teamId} disabled={blocked}
             onClick={()=>setRtsSelectedId(unit.teamId??"")}>{teamsById(unit.teamId??"")} · PV {unit.hp}</button>)}
-          {rts.realtime && <button type="button" disabled={blocked||!rts.actors.some(unit=>unit.teamId===rtsSelectedId)}
+          {rts.realtime ? <button type="button" disabled={blocked||!rts.actors.some(unit=>unit.teamId===rtsSelectedId)}
             onClick={()=>{const actor=rts.actors.find(unit=>unit.teamId===rtsSelectedId);if(actor)commit(issueWarRtsRealtimeOrderV115(worldRef.current,rtsSelectedId,actor.x,actor.y,"hold",rules));}}>
-            Tenir la position et utiliser le couvert</button>}
+            Tenir la position et utiliser le couvert</button> :
+            <button type="button" disabled={blocked||!rts.actors.some(unit=>unit.teamId===rtsSelectedId)}
+              onClick={()=>commit(holdWarRtsAlternatingV119(worldRef.current,rtsSelectedId,rules))}>
+              Défendre / laisser passer un tour tactique</button>}
         </div>
         <div className={styles.grid} style={{gridTemplateColumns:"repeat(9,minmax(0,1fr))"}} role="group" aria-label="Champ de bataille tactique 9 colonnes par 6 lignes">
           {Array.from({length:54},(_,index)=>{
