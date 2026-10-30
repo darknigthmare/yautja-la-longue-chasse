@@ -31,7 +31,7 @@ const formatTime = (seconds:number) => String(Math.floor(seconds / 60)).padStart
 type Props={rules:WarRulesV6;active?:boolean;persist?:boolean;initialScenarioId?:WarSourceRtsScenarioIdV119|null};
 
 export default function ClanWarOperationsV115({rules,active=true,persist=false,initialScenarioId=null}:Props) {
-  const sourcePilotSiteId=initialScenarioId==="W3-RTS05"?"W3-K13":
+  const sourcePilotSiteId=(initialScenarioId==="W3-RTS05"||initialScenarioId==="W3-RTS06")?"W3-K13":
     (initialScenarioId==="W3-RTS03"||initialScenarioId==="W3-RTS04")?"W3-K07":"W3-K02";
   const [world,setWorld]=useState<WarOperationsStateV115>(()=>createWarOperationsV115(rules));
   const worldRef=useRef(world);
@@ -90,6 +90,10 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
         const scout=activeTeams.find(team=>team.unitId==="W3-U01");
         const tracker=activeTeams.find(team=>team.unitId==="W3-U04");
         setSelectedIds([...(scout?[scout.id]:[]),...(tracker?[tracker.id]:[])]);
+      }else if(initialScenarioId==="W3-RTS06"){
+        const guide=activeTeams.find(team=>team.unitId==="W3-U02");
+        const extraction=activeTeams.find(team=>team.unitId==="W3-U17");
+        setSelectedIds([...(guide?[guide.id]:[]),...(extraction?[extraction.id]:[])]);
       }else setSelectedIds(activeTeams.slice(0,2).map(team=>team.id));
       setTargetId(initialScenarioId?
         rules.territories.find(item=>item.id===sourcePilotSiteId)?.id??rules.territories[1]?.id??"":
@@ -264,7 +268,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
           <label>Objectif RTS
             <select value={rtsScenarioId} onChange={event=>setRtsScenarioId(event.target.value as "free"|WarSourceRtsScenarioIdV119)}>
               <option value="free">Escarmouche libre · balise</option>
-              {(["W3-RTS01","W3-RTS02","W3-RTS03","W3-RTS04","W3-RTS05"] as const).map(id=>{
+              {(["W3-RTS01","W3-RTS02","W3-RTS03","W3-RTS04","W3-RTS05","W3-RTS06"] as const).map(id=>{
                 const source=warSourceRtsScenarioV119(id,rules);
                 return source?<option value={id} key={id}>{id} · {source.title}</option>:null;
               })}
@@ -428,7 +432,9 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
                 "Mission W3-RTS03 : livrer le régulateur avec W3-U19, puis faire travailler les artisans W3-U20 sur le filtre.":
                 rts.scripted.kind==="circuit-defense"?
                   "Mission W3-RTS04 : conserver un circuit ouvert en protégeant le levier avec W3-U07 pendant quatre tours malgré les cycles de pression.":
-                  "Mission W3-RTS05 : identifier la véritable balise, distinguer le leurre, intercepter le porteur adverse et ramener l'objet jusqu'à la coque."):
+                  rts.scripted.kind==="beacon-intercept"?
+                    "Mission W3-RTS05 : identifier la véritable balise, distinguer le leurre, intercepter le porteur adverse et ramener l'objet jusqu'à la coque.":
+                    "Mission W3-RTS06 : faire reconnaître l'arête du retour par W3-U02 puis évacuer réellement les groupes survivants à bord avec W3-U17."):
           "Escarmouche libre : sélectionnez un détachement et attaquez ou défendez la balise (7,3)."}
           {" "}En temps réel, les équipes progressent selon vos ordres ; en alterné, elles agissent à tour de rôle.</p>
         {rts.scripted?.kind==="cargo-escort"&&<p className={styles.scenarioStatus}>
@@ -462,6 +468,14 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
             "récupéré par "+teamsById(rts.scripted.beacon.allyCarrierTeamId):
             rts.scripted.beacon.enemyCarrierId?"encore aux mains adverses":"sur le terrain"}</strong> ·
           Retour à la coque : <strong>{rts.scripted.extraction.x},{rts.scripted.extraction.y}</strong>
+        </p>}
+                {rts.scripted?.kind==="wind-extraction"&&<p className={styles.scenarioStatus}>
+          Arête de retour : <strong>{rts.scripted.ridgeConfirmed?"reconnue":"à reconnaître"}</strong> ·
+          Équipes évacuées : <strong>{rts.scripted.extractedTeamIds.length}/{rts.scripted.nominatedTeamIds.length}</strong> ·
+          Équipes perdues : <strong>{rts.scripted.lostTeamIds.length}</strong> ·
+          Vent : <strong>{["clair","rafales annoncées","rafales et visibilité réduite"][rts.scripted.windPhase]}</strong> ·
+          Coque : <strong>{rts.scripted.ship.x},{rts.scripted.ship.y}</strong>.
+          Les survivants doivent atteindre le retour ; éliminer les ennemis ne suffit pas.
         </p>}
                 <p className={styles.explain}>Théâtre : {missionTerrain?.title} · {missionTerrain?.ground} · couverts : {missionTerrain?.coverLabel}. Les murs interrompent les trajets et les lignes de tir.</p>
         <div className={styles.cards}><button type="button" disabled={blocked}
@@ -497,21 +511,22 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
               beaconOnAlly=Boolean(beaconKnown&&actor?.side==="ally"&&beacon?.allyCarrierTeamId===actor?.teamId),
               beaconOnEnemy=Boolean(beaconKnown&&actor?.side==="rival"&&beacon?.enemyCarrierId===actor?.id),
               decoy=rts.scripted?.kind==="beacon-intercept"&&rts.scripted.decoy.x===x&&rts.scripted.decoy.y===y,
-              isShip=rts.scripted?.kind==="beacon-intercept"&&x===1&&y===4,
+              isShip=(rts.scripted?.kind==="beacon-intercept"||rts.scripted?.kind==="wind-extraction")&&x===1&&y===4,
+              isRidge=rts.scripted?.kind==="wind-extraction"&&x===7&&y===1,
               mark=actor?(actor.side==="ally"?(carrying||beaconOnAlly?"Y◆":"Y"):(beaconOnEnemy?"R◆":"R")):
                 cargoOnGround||beaconGround?"◆":decoy?(rts.scripted?.kind==="beacon-intercept"&&rts.scripted.decoy.recognized?"×":"?"):
-                isShip?"⌂":isExit?"⇥":isFilter?"✚":isLever?"⚙":objective?"◎":wall?"▥":cover?"▤":"·";
+                isShip?"⌂":isRidge?"▲":isExit?"⇥":isFilter?"✚":isLever?"⚙":objective?"◎":wall?"▥":cover?"▤":"·";
             return <button key={index} type="button" disabled={blocked||!rtsSelectedId||wall}
               className={styles.cell} data-wall={wall} data-actor={actor?.side??""} data-objective={objective} data-cover={cover}
               title={"Position "+x+","+y+(actor?" · "+actor.unitId+" · PV "+actor.hp:"")}
               aria-label={"Case "+x+","+y+" · "+(actor?.side==="ally"?(carrying?"porteur allié":"allié"):
-                actor?.side==="rival"?"adversaire":cargoOnGround||beaconGround?"objet réel au sol":decoy?"leurre":isShip?"coque de retour":isExit?"sortie":isFilter?"filtre à réparer":isLever?"levier du circuit":objective?"objectif":"libre")}
+                actor?.side==="rival"?"adversaire":cargoOnGround||beaconGround?"objet réel au sol":decoy?"leurre":isShip?"coque de retour":isRidge?"arête à reconnaître":isExit?"sortie":isFilter?"filtre à réparer":isLever?"levier du circuit":objective?"objectif":"libre")}
               onClick={()=>commit(rts.realtime?
                 issueWarRtsRealtimeOrderV115(worldRef.current,rtsSelectedId,x,y,actor?.side==="rival"?"attack":"advance",rules):
                 commandRtsV115(worldRef.current,rtsSelectedId,x,y,rules))}>{mark}</button>;
           })}
         </div>
-        <p className={styles.explain}>Y = allié, R = opposition d&apos;exercice, ◎ = balise, ▤ = couvert, ▥ = obstacle, ◆ = charge, ⇥ = sortie, ✚ = filtre, ⚙ = levier, ⌂ = coque, ? = signal suspect.
+        <p className={styles.explain}>Y = allié, R = opposition d&apos;exercice, ◎ = balise, ▤ = couvert, ▥ = obstacle, ◆ = charge, ⇥ = sortie, ✚ = filtre, ⚙ = levier, ⌂ = coque, ▲ = arête à reconnaître, ? = signal suspect.
           Ces objectifs W3 utilisent une adaptation tactique 9 × 6 : les décors narratifs et les cartes sources complètes W3-MAP01/02 restent à développer.</p>
       </div>}
     </section>}
