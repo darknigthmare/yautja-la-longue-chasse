@@ -369,7 +369,7 @@ export default function PlanetGeneratorV103({ activePlanet, pending = false, onO
           <div><dt>Atmosphère</dt><dd>{details.environment.atmosphere}</dd></div>
           <div><dt>Gravité / cycle diurne</dt><dd>{details.environment.gravity.toLocaleString("fr")} g · {details.environment.dayLengthHours.toLocaleString("fr")} h</dd></div>
           <div><dt>Recette du monde</dt><dd>V{details.recipe.version} · graine {details.recipe.seed}</dd></div>
-          {details.recipe.version === 115 && <><div><dt>Taille physique</dt><dd>Rayon {details.physical.radiusKm.toLocaleString("fr-FR")} km · surface {details.physical.surfaceKm2.toLocaleString("fr-FR")} km²</dd></div>
+          {"physical" in details && "shapes" in details && "materialDiversity" in details && details.recipe.version === 115 && <><div><dt>Taille physique</dt><dd>Rayon {details.physical.radiusKm.toLocaleString("fr-FR")} km · surface {details.physical.surfaceKm2.toLocaleString("fr-FR")} km²</dd></div>
           <div><dt>Formes de terrain</dt><dd>{details.shapes.continent} · {details.shapes.island} · {details.shapes.region}</dd></div>
           <div><dt>Textures complémentaires</dt><dd>{details.materialDiversity.land} · {details.materialDiversity.liquid}</dd></div></>}
           <div><dt>Distance entre bases</dt><dd>{strategic.headquartersDistance} liaison{strategic.headquartersDistance > 1 ? "s" : ""}{strategic.headquartersDistanceKm !== undefined ? ` · ${strategic.headquartersDistanceKm.toLocaleString("fr-FR")} km` : ""}</dd></div>
