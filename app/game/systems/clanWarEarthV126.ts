@@ -90,7 +90,7 @@ export const EARTH_FILM_SITES_V126:readonly EarthFilmSiteV126[] = [
 ];
 export interface EarthGeoFeatureV126 {type:"Feature";geometry:{type:"Polygon"|"MultiPolygon";coordinates:number[][][]|number[][][][]};}
 export interface EarthGeoCollectionV126 {type:"FeatureCollection";name:string;features:EarthGeoFeatureV126[];}
-export const EARTH_LAND_GEOMETRY_V126=earthLand as EarthGeoCollectionV126;
+export const EARTH_LAND_GEOMETRY_V126=earthLand as unknown as EarthGeoCollectionV126;
 export interface EarthCoordV126 {lat:number;lon:number;}
 export function validEarthCoordV126(c:EarthCoordV126):boolean{
  return Number.isFinite(c.lat)&&Number.isFinite(c.lon)&&c.lat>=-90&&c.lat<=90&&c.lon>=-180&&c.lon<=180;
