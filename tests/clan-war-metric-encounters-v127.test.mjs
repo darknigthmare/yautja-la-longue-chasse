@@ -5,6 +5,7 @@ import {build} from "esbuild";
 const built=await build({
  stdin:{contents:[
   "export * from './app/game/systems/clanWarEarthMetricV127';",
+  "export * from './app/game/systems/clanWarEarthHydrologyV127';",
   "export * from './app/game/systems/clanWarEncounterDirectorV127';",
   "export * from './app/game/systems/clanWarEarthV126';",
   "export * from './app/game/systems/clanWarWorldClimateV126';",
@@ -131,4 +132,18 @@ test("no human/civilian targets automatically become enemy units in Earth homage
  assert.ok(!e.enemyWaves.some(x=>x.role==="human"||x.role==="xenomorph"));
  assert.equal(e.worldId,"earth");
  assert.ok(e.warnings.some(w=>w.includes("Conflit de clan sur Terre")));
+});
+
+
+test("public-domain Natural Earth lakes and rivers render real layers without fake film-set water",()=>{
+ const audit=v.auditEarthHydrologyV127();
+ assert.deepEqual(audit.errors,[]);
+ assert.ok(audit.riverFeatures>=10);
+ assert.ok(audit.lakeFeatures>=20);
+ assert.ok(audit.projectedRivers>=10);
+ assert.ok(audit.projectedLakes>=20);
+ assert.ok(v.earthRiverPathsV127().every(p=>p.startsWith("M")));
+ assert.ok(v.earthLakePathsV127().every(p=>p.includes("Z")));
+ assert.equal(v.EARTH_HYDRO_SOURCE_V127.scale,110000000);
+ assert.match(v.EARTH_HYDRO_SOURCE_V127.precision,/global overview/);
 });
