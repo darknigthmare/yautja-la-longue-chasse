@@ -23,8 +23,8 @@ FOLDERS = {"Peau": "peau", "Dreads": "dreadlocks", "Anneaux": "anneaux", "Armure
 ZIP_DISTRIBUTION = [12, 29, 30, 30, 18, 18, 19]
 ID = re.compile(r"^[a-z0-9_]+$")
 SHA256 = re.compile(r"^[0-9a-f]{64}$")
-ZIP_NAME = re.compile(r"^YAUTJA_PHG_[A-Z0-9_]+\\.zip$")
-PNG_MAGIC = b"\\x89PNG\\r\\n\\x1a\\n"
+ZIP_NAME = re.compile(r"^YAUTJA_PHG_[A-Z0-9_]+\.zip$")
+PNG_MAGIC = b"\x89PNG\r\n\x1a\n"
 
 
 def digest(data: bytes) -> str:
@@ -70,7 +70,7 @@ def metadata_check(inventory: dict, delivery: dict) -> tuple[list[str], dict[str
             errors.append(f"Unknown category: {name}, {category!r}")
             continue
         if not isinstance(path, str) or not re.fullmatch(
-            r"textures/" + FOLDERS[category] + r"/[a-z0-9_]+\\.png", path
+            r"textures/" + FOLDERS[category] + r"/[a-z0-9_]+\.png", path
         ):
             errors.append(f"Unsafe or wrongly classified path: {name} = {path!r}")
             continue
