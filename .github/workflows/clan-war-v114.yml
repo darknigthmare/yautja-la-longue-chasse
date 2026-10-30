@@ -31,8 +31,11 @@ jobs:
           sparse-checkout: |
             /app/game/
             /tests/clan-war-mission-modes-v114.test.mjs
+            /tests/helpers/homeworld-scene-ssr-v78.mjs
             /package.json
             /package-lock.json
+            /eslint.config.mjs
+            /tsconfig.json
       - name: Use Node.js 22
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
@@ -44,3 +47,5 @@ jobs:
           ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       - name: Run four-mode acceptance and persistence checks
         run: node --experimental-strip-types --test tests/clan-war-mission-modes-v114.test.mjs
+      - name: Lint the new mission runtime and integration
+        run: npx eslint app/game/ClanWarMissionsV114.tsx app/game/systems/clanWarMissionModesV114.ts app/game/ClanWarPanelV85.tsx --max-warnings 0
