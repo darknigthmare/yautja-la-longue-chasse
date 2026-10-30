@@ -3,10 +3,11 @@ import { test } from "node:test";
 import { readFileSync } from "node:fs";
 import { runInNewContext } from "node:vm";
 import { build } from "esbuild";
+import ts from "typescript";
 
 const bundle = await build({
   stdin: {
-    contents: 'export * from "./app/game/systems/metroidvaniaPilot"; export * from "./app/game/systems/explorationProgress"; export * from "./app/game/systems/platformCollision"; export {worldBlueprintFor} from "./app/game/systems/worldBlueprints"; export {JUMP_VELOCITY} from "./app/game/systems/jumpAssist";',
+    contents: 'export * from "./app/game/systems/metroidvaniaPilot"; export * from "./app/game/systems/explorationProgress"; export * from "./app/game/systems/platformCollision"; export {worldBlueprintFor} from "./app/game/systems/worldBlueprints"; export {JUMP_VELOCITY,stepJumpAssist,freshJumpAssistState} from "./app/game/systems/jumpAssist"; export {fieldLoadV112,capacityForArmorV112} from "./app/game/systems/harvestInventoryV112";',
     resolveDir: process.cwd(), loader: "ts",
   },
   bundle: true, write: false, platform: "node", format: "cjs",
@@ -15,7 +16,8 @@ const compiled = { exports: {} };
 runInNewContext(bundle.outputFiles[0].text, { module: compiled, exports: compiled.exports });
 const { applyPilotWorld, pilotPlatforms, pilotClimbables, pilotInteract, defaultExplorationProgress,
   resolvePlatformMotion, overlapsSolidPlatform, worldBlueprintFor, PILOT_UPPER_FLOOR_Y,
-  PILOT_GROUND_Y, PILOT_SEAL_ID, PILOT_HATCH_ID, PILOT_SECRET_ID, JUMP_VELOCITY } = compiled.exports;
+  PILOT_GROUND_Y, PILOT_SEAL_ID, PILOT_HATCH_ID, PILOT_SECRET_ID, JUMP_VELOCITY,
+  stepJumpAssist, freshJumpAssistState, fieldLoadV112, capacityForArmorV112 } = compiled.exports;
 const GRAVITY = 1850;
 const JUMP = -720;
 const SPEED = 300;
@@ -76,7 +78,34 @@ test("physics trials stay tied to the live gravity and jump impulse", () => {
   assert.equal(/const GRAVITY = 1_850;/.test(runtime), true, "simulation gravity must match runtime");
   assert.equal(JUMP, JUMP_VELOCITY, "simulation impulse must match the shared jump controller");
   assert.equal(/stepJumpAssist\(/.test(runtime), true, "runtime must use the shared jump controller");
-  assert.equal(/player\.velocityY = result\.velocityY;/.test(runtime), true, "actor applies the shared impulse");
+  // Execute the actual actor adapter with a result from the shared controller.
+  // The pilot trials above model an empty pack; real field stock scales only a
+  // new impulse, while the controller's jump-cut/falling velocity stays exact.
+  const ast=ts.createSourceFile("HuntCanvas.tsx",runtime,ts.ScriptTarget.Latest,true,ts.ScriptKind.TSX);
+  const adapter=ast.statements.find(node=>ts.isFunctionDeclaration(node)&&node.name?.text==="applyPlayerJump");
+  assert.ok(adapter,"the production actor jump adapter must exist");
+  const js=ts.transpileModule(adapter.getText(ast),{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.None}}).outputText;
+  const applyJump=runInNewContext(js+";applyPlayerJump;",{emitNoise(){},queueSound(){}});
+  const jump=stepJumpAssist(freshJumpAssistState(),{deltaSeconds:DT,pressed:true,held:true,grounded:true,climbing:false,
+    canBoost:false,velocityY:0,landingSoon:false,actionLocked:false});
+  assert.ok(jump.jump);assert.equal(jump.velocityY,JUMP_VELOCITY);
+  const capacity=capacityForArmorV112("hunter");
+  const fullPack=fieldLoadV112([{id:"pilot-load",sourceId:"pilot-test-source",speciesId:"pilot-test",partId:"hide",
+    label:"Charge de contrôle",quality:100,stage:"raw",massKg:capacity.massKg,volumeUnits:capacity.volumeUnits}],"hunter");
+  assert.ok(fullPack.jumpMultiplier<1&&fullPack.jumpMultiplier>0);
+  for(const load of [undefined,fieldLoadV112([],"hunter"),fullPack]){
+    const actor=hunter({facing:1});
+    const state={player:actor,world:{climbables:[]},fieldLoadV112:load};
+    applyJump(state,jump);
+    close(actor.velocityY,JUMP_VELOCITY*(load?.jumpMultiplier??1));
+    assert.equal(state.jumpAssist,jump.state,"actor retains the exact shared controller state");
+    assert.equal(actor.grounded,false);
+    const cut=stepJumpAssist(jump.state,{deltaSeconds:DT,pressed:false,held:false,grounded:false,climbing:false,
+      canBoost:false,velocityY:actor.velocityY,landingSoon:false,actionLocked:false});
+    assert.equal(cut.jump,null);
+    applyJump(state,cut);
+    close(actor.velocityY,cut.velocityY);
+  }
   assert.equal(JUMP * JUMP / (2 * GRAVITY) < PILOT_GROUND_Y - PILOT_UPPER_FLOOR_Y, true);
 });
 

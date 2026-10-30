@@ -15,7 +15,7 @@ test('a rite is timed while threats remain live; pause freezes identity and dama
 test('flaying requires the acquired tool; suspension requires completed work and a real higher mass-bearing support',()=>{const {state,context}=scene();assert(!startHuntRiteV77(state,'guard-a','flay',{...context,flayingToolOwned:false}).accepted);
  assert(!startHuntRiteV77(state,'guard-a','hang',context,{supportId:'beam-a'}).accepted);const done=complete(state,'flay',context);
  for(const supports of[[],[{...context.supports[0],suitable:false}],[{...context.supports[0],maximumMass:0}],[{...context.supports[0],y:590}]])assert(!startHuntRiteV77(done,'guard-a','hang',{...context,supports},{supportId:'beam-a'}).accepted);
- const hanging=complete(done,'hang',context,{supportId:'beam-a'});assert.deepEqual(hanging.corpses[0].hangingAt,{x:435,y:460});assert(!startHuntRiteV77(hanging,'guard-a','flay',context).accepted);
+ const carried=startHuntRiteV77(done,'guard-a','carry',context);assert(carried.accepted);const hanging=complete(carried.state,'hang',context,{supportId:'beam-a'});assert.deepEqual(hanging.corpses[0].hangingAt,{x:435,y:460});assert(!startHuntRiteV77(hanging,'guard-a','flay',context).accepted);
  assert.equal(hanging.honorDelta,0);assert(!('inventory' in hanging));assert(!('rank' in hanging));});
 test('dishonor needs an explicit choice and negative consequence, never a rank or trophy grant',()=>{const {state,context}=scene({worthy:false,protectedPrey:true});assert(!startHuntRiteV77(state,'guard-a','flay',context).accepted);
  const violated=complete(state,'flay',context,{confirmDishonor:true});assert.equal(violated.honorDelta,-15);assert(!startHuntRiteV77(violated,'guard-a','flay',context,{confirmDishonor:true}).accepted);

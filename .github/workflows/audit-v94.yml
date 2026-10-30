@@ -57,6 +57,8 @@ on:
       - 'docs/YAUTJA_V110_SUIVI.xlsx'
       - 'docs/YAUTJA_V111_MECANIQUES_CHASSE.xlsx'
       - 'docs/hunt-mechanics-v111.*'
+      - 'docs/hunt-mechanics-v112.*'
+      - 'docs/YAUTJA_V112_MECANIQUES_CHASSE.xlsx'
       - 'docs/*v110*'
       - 'docs/qa/v110*/**'
       - 'docs/YAUTJA_V111*.xlsx'
@@ -212,7 +214,7 @@ jobs:
     name: Application compile, types, runtime lint and browser integration
     runs-on: ubuntu-24.04
     # V106 used about 25 minutes; keep room for the additional V107 checks.
-    timeout-minutes: 60
+    timeout-minutes: 75
     env:
       NEXT_TELEMETRY_DISABLED: '1'
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
@@ -294,6 +296,10 @@ jobs:
             /docs/YAUTJA_V110_SUIVI.xlsx
             /docs/YAUTJA_V111_MECANIQUES_CHASSE.xlsx
             /docs/hunt-mechanics-v111.*
+            /docs/hunt-mechanics-v112.*
+            /docs/YAUTJA_V112_MECANIQUES_CHASSE.xlsx
+            /public/game/ui/v112/
+            /public/game/assets/v112/discovery/
             /docs/*v110*
             /docs/qa/v110*/
             /docs/YAUTJA_V111*.xlsx
@@ -565,6 +571,26 @@ jobs:
         run: node node_modules/next/dist/bin/next typegen
       - name: Check application TypeScript
         run: npm run typecheck
+      - name: Exercise current V112 hunting mechanics and invariants
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v112.test.mjs
+      - name: Verify deterministic V112 workbook and discovery resources
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: |
+          node scripts/build-hunt-mechanics-workbook-v112.mjs --check
+          python3 scripts/verify-hunt-mechanics-workbook-v112.py
+          node scripts/build-discovery-signals-v112.mjs --check
+      - name: Exercise actual V112 controls, workshop, corpse rites and canopy in Chromium
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node scripts/qa-hunt-mechanics-browser-v112.mjs
+      - name: Upload bounded V112 browser report and inspected-capture candidates
+        if: ${{ always() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: hunt-v112-browser-${{ github.run_id }}
+          path: outputs/qa-hunt-v112/
+          retention-days: 7
+          if-no-files-found: ignore
       - name: Verify V111 hunt compatibility guards and reproducible hunting workbook
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: |
@@ -819,6 +845,14 @@ jobs:
       - name: Execute unchanged V111 assertions and regenerate all 113 historical worksheets
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: node scripts/check-excel-history-homeworld-v112.mjs --check --tests
+      - name: Exercise parallel V111 hunt compatibility suite
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node scripts/test-current-v111-v112.mjs
+      - name: Preserve parallel V112 Homeworld and hunt historical workbooks
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: |
+          node scripts/check-homeworld-history-v112.mjs --check --tests
+          node scripts/check-excel-history-v112.mjs --check --tests
       - name: Exercise V112 geometry, public-life, mobility, backward throws and evidence guards
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v112.test.mjs
