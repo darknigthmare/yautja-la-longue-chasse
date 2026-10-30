@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "incremental": false,
+    "plugins": []
+  },
+  "include": [
+    "types/clan-war-v120-css.d.ts",
+    "app/game/systems/clanWarViewV131.ts",
+    "app/game/ClanWarGauntletV131.tsx"
+  ],
+  "exclude": ["node_modules"]
+}
