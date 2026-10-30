@@ -117,3 +117,23 @@ test("normalized accent-friendly search and family filtering do not mutate the s
   assert.deepEqual(copy,all);
   assert.notEqual(copy,all);
 });
+
+
+test("seeded V120 mission draw exhausts 100 proposals without repetition, independent of mode and context",()=>{
+  const used=[];
+  const first=api.drawUnseenClanWarVariantV120(4500,[],"outer","homage","");
+  const again=api.drawUnseenClanWarVariantV120(4500,[],"outer","homage","");
+  assert.equal(first?.id,again?.id);
+  for(let n=0;n<100;n++){
+    const item=api.drawUnseenClanWarVariantV120(500+n*71,used,"outer","homage","");
+    assert.ok(item,"a distinct source must remain at step "+n);
+    assert.equal(item.mode,"outer");
+    assert.equal(item.family,"homage");
+    assert.equal(used.includes(item.id),false);
+    used.push(item.id);
+  }
+  assert.equal(new Set(used).size,100);
+  assert.equal(api.drawUnseenClanWarVariantV120(123,used,"outer","homage",""),null);
+  assert.ok(api.drawUnseenClanWarVariantV120(1,used,"rts","homage",""));
+  assert.equal(api.drawUnseenClanWarVariantV120(2,[],"all","all","no-match-ever"),null);
+});
