@@ -2,12 +2,12 @@
 
 import { useEffect, useRef, useState } from "react";
 import { planWarRouteV6, type WarRulesV6 } from "./systems/clanWarBibleV6";
+import { warMissionTerrainV116 } from "./systems/clanWarMissionTerrainV116";
 import {
   WAR_OPERATIONS_STORAGE_V115, beginWarOperationV115, commandRtsV115, commandStealthV115,
   createWarOperationsV115, deployAssaultUnitV115, issueWarRtsRealtimeOrderV115,
   queueWarRecruitmentV115, settleWarRecruitmentsV115,
   leaveWarOperationV115, readWarOperationsV115, stepWarRtsRealtimeV115, toggleWarRtsRealtimeV115,
-  WAR_RTS_COVER_V115,
   settleWarOuterOpsV115, stepAssaultV115, warMissionEligibleV115, warOuterSecondsRemainingV115,
   type WarMissionModeV115, type OuterFocusV115, type WarOperationsStateV115,
   type WarOperationsUpdateV115,
@@ -21,7 +21,6 @@ const modeLabels: Record<WarMissionModeV115, string> = {
 const focusLabels: Record<OuterFocusV115, string> = {
   recon: "Reconnaissance", intercept: "Interception", escort: "Protection de passage",
 };
-const walls = new Set(["3,2","3,3","5,3","6,4"]);
 const formatTime = (seconds:number) => String(Math.floor(seconds / 60)).padStart(2,"0")+":"+String(seconds%60).padStart(2,"0");
 type Props={rules:WarRulesV6;active?:boolean;persist?:boolean};
 
@@ -144,12 +143,14 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false}:
   const assault=current?.mode==="assault"?current.assault:undefined;
   const stealth=current?.mode==="stealth"?current.stealth:undefined;
   const rts=current?.mode==="rts"?current.rts:undefined;
+  const missionTerrain=current?warMissionTerrainV116(current.targetId,rules):null;
   const available=world.teams.filter(team=>!world.assignments[team.id] && team.members.some(member=>member.status==="fit"));
   const teamsById=(teamId:string)=>rules.units.find(unit=>unit.id===world.teams.find(team=>team.id===teamId)?.unitId)?.name ?? teamId;
 
   function start() {
     const result=beginWarOperationV115(worldRef.current,mode,targetId,selectedIds,rules,Date.now(),focus);
     if(result.accepted && mode==="rts") {
+      setRtsSelectedId(result.state.active?.teamIds[0]??"");
       const enabled=toggleWarRtsRealtimeV115(result.state,true);
       commit(enabled.accepted?{...enabled,message:"Déploiement RTS confirmé. Le temps réel est actif : donnez vos ordres."}:result);
     } else commit(result);
@@ -289,9 +290,10 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false}:
 
       {stealth && <div>
         <p>Rejoindre le relais (7,1), le désactiver, puis rejoindre l&apos;extraction (1,4). Alerte <strong>{stealth.alarm}/3</strong> · énergie de camouflage <strong>{stealth.energy}/5</strong> · relais <strong>{stealth.sabotaged?"neutralisé":"actif"}</strong>.</p>
+        <p className={styles.explain}>Terrain régional : {missionTerrain?.title} · {missionTerrain?.ground} · obstacle : {missionTerrain?.wallLabel}.</p>
         <div className={styles.grid} style={{gridTemplateColumns:"repeat(9,minmax(0,1fr))"}} role="img" aria-label="Plan d'infiltration : X pisteur, G garde, R relais, E extraction, obstacles">
           {Array.from({length:54},(_,index)=>{
-            const x=index%9,y=Math.floor(index/9),wall=walls.has(x+","+y);
+            const x=index%9,y=Math.floor(index/9),wall=Boolean(missionTerrain?.walls.includes(x+","+y));
             const mark=stealth.x===x&&stealth.y===y?"X":stealth.guardX===x&&y===2?"G":x===7&&y===1?"R":x===1&&y===4?"E":wall?"▥":"·";
             return <span className={styles.cell} data-wall={wall} data-actor={mark==="X"?"ally":mark==="G"?"rival":""} key={index} title={"Case "+x+","+y}>{mark}</span>;
           })}
@@ -304,6 +306,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false}:
 
       {rts && <div>
         <p>Choisissez un détachement, puis désignez une position ou une cible. En temps réel, les équipes avancent et échangent des tirs automatiquement ; en tactique alternée, chaque clic exécute un ordre et une riposte. La balise est en (7,3).</p>
+        <p className={styles.explain}>Théâtre : {missionTerrain?.title} · {missionTerrain?.ground} · couverts : {missionTerrain?.coverLabel}. Les murs interrompent les trajets et les lignes de tir.</p>
         <div className={styles.cards}><button type="button" disabled={blocked}
           aria-pressed={Boolean(rts.realtime)} onClick={()=>commit(toggleWarRtsRealtimeV115(worldRef.current,!rts.realtime))}>
           {rts.realtime?"Passer en ordres alternés":"Activer la bataille en temps réel"}
@@ -314,23 +317,25 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false}:
             aria-pressed={rtsSelectedId===unit.teamId} disabled={blocked}
             onClick={()=>setRtsSelectedId(unit.teamId??"")}>{teamsById(unit.teamId??"")} · PV {unit.hp}</button>)}
           {rts.realtime && <button type="button" disabled={blocked||!rts.actors.some(unit=>unit.teamId===rtsSelectedId)}
-            onClick={()=>{const actor=rts.actors.find(unit=>unit.teamId===rtsSelectedId);if(actor)commit(issueWarRtsRealtimeOrderV115(worldRef.current,rtsSelectedId,actor.x,actor.y,"hold"));}}>
+            onClick={()=>{const actor=rts.actors.find(unit=>unit.teamId===rtsSelectedId);if(actor)commit(issueWarRtsRealtimeOrderV115(worldRef.current,rtsSelectedId,actor.x,actor.y,"hold",rules));}}>
             Tenir la position et utiliser le couvert</button>}
         </div>
         <div className={styles.grid} style={{gridTemplateColumns:"repeat(9,minmax(0,1fr))"}} role="group" aria-label="Champ de bataille tactique 9 colonnes par 6 lignes">
           {Array.from({length:54},(_,index)=>{
             const x=index%9,y=Math.floor(index/9),actor=rts.actors.find(item=>item.x===x&&item.y===y);
-            const objective=x===7&&y===3,cover=WAR_RTS_COVER_V115.some(tile=>tile===x+","+y),mark=actor?(actor.side==="ally"?"Y":"R"):objective?"◎":cover?"▤":"·";
-            return <button key={index} type="button" disabled={blocked||!rtsSelectedId}
-              className={styles.cell} data-actor={actor?.side??""} data-objective={objective} data-cover={cover}
+            const objective=x===7&&y===3,wall=Boolean(missionTerrain?.walls.includes(x+","+y)),
+              cover=Boolean(missionTerrain?.cover.includes(x+","+y)),
+              mark=actor?(actor.side==="ally"?"Y":"R"):objective?"◎":wall?"▥":cover?"▤":"·";
+            return <button key={index} type="button" disabled={blocked||!rtsSelectedId||wall}
+              className={styles.cell} data-wall={wall} data-actor={actor?.side??""} data-objective={objective} data-cover={cover}
               title={"Position "+x+","+y+(actor?" · "+actor.unitId+" · PV "+actor.hp:"")}
               aria-label={"Case "+x+","+y+" · "+(actor?.side==="ally"?"allié":actor?.side==="rival"?"adversaire":objective?"objectif":"libre")}
               onClick={()=>commit(rts.realtime?
-                issueWarRtsRealtimeOrderV115(worldRef.current,rtsSelectedId,x,y,actor?.side==="rival"?"attack":"advance"):
+                issueWarRtsRealtimeOrderV115(worldRef.current,rtsSelectedId,x,y,actor?.side==="rival"?"attack":"advance",rules):
                 commandRtsV115(worldRef.current,rtsSelectedId,x,y,rules))}>{mark}</button>;
           })}
         </div>
-        <p className={styles.explain}>Y = unité alliée, R = opposition d&apos;exercice, ◎ = balise, ▤ = couvert. Une position couverte ou un ordre de tenue réduit les dégâts reçus en temps réel. Les pions représentent des équipes identifiées, pas des recrues gratuites.</p>
+        <p className={styles.explain}>Y = unité alliée, R = opposition d&apos;exercice, ◎ = balise, ▤ = couvert, ▥ = obstacle. Une position couverte ou un ordre de tenue réduit les dégâts reçus en temps réel. Les pions représentent des équipes identifiées, pas des recrues gratuites.</p>
       </div>}
     </section>}
 
