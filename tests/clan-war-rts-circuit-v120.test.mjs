@@ -97,3 +97,22 @@ test("archive refuses fabricated integrity, altered turn counters and unexpected
   assert.equal(game.readWarOperationsV115(JSON.stringify(payload),rules),null);
  }
 });
+
+
+test("announced vapor occludes the conduit for both sides without becoming a physical wall",()=>{
+ const {state,targetId}=openDefense(),terrain=game.warMissionTerrainV116(targetId,rules);
+ const a={x:5,y:1},b={x:7,y:1};
+ assert.equal(game.warTerrainCellBlockedV116(terrain,5,1),false);
+ assert.equal(game.warTerrainCellBlockedV116(terrain,6,1),false);
+ assert.equal(game.warTerrainLineOfSightV116(terrain,a,b),true);
+ const clear=state.active.rts.scripted;
+ assert.equal(game.warRtsSourceSightV120(clear,a,b,terrain),true);
+ const steaming={...clear,pressurePhase:2};
+ assert.equal(game.warRtsSourceSightV120(steaming,a,b,terrain),false);
+ assert.equal(game.warRtsSourceSightV120(steaming,b,a,terrain),false);
+ assert.equal(game.warRtsSourceSightV120({...clear,pressurePhase:1},a,b,terrain),true);
+ const covered={...state.active.rts.actors.find(actor=>actor.side==="ally"),x:7,y:1};
+ const rival={id:"steam-rival",side:"rival",teamId:null,unitId:"W3-U01",x:5,y:1,hp:12};
+ assert.equal(game.warRtsRivalTargetV120(steaming,rival,[covered],terrain)?.id,covered.id,
+   "the rival may still pursue an unseen enemy on an existing path, without being allowed to shoot through vapor");
+});
