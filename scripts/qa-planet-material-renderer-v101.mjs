@@ -52,6 +52,28 @@ try {
   let maximumDifference = 0;
   for (let index = 0; index < plain.data.length; index++) maximumDifference = Math.max(maximumDifference, Math.abs(plain.data[index] - disabled.data[index]));
   assert.ok(maximumDifference <= 1, "disabling all four modules restores albedo within one 8-bit rounding step");
+
+  // V114: weather, auroras and scattering must remain individually switchable.
+  // Nivalis exposes an actual aurora, unlike Korthas, while the source recipe is untouched.
+  const withoutAurora = await decode(await exportLayer("composite", "nivalis", "globe", {
+    atmosphere: false, clouds: false, weather: false, lighting: false, aurora: false,
+  }));
+  const withAurora = await decode(await exportLayer("composite", "nivalis", "globe", {
+    atmosphere: false, clouds: false, weather: false, lighting: false, aurora: true,
+  }));
+  let auroraChanged = 0;
+  for (let i = 0; i < withAurora.data.length; i += 4) {
+    if (Math.abs(withAurora.data[i] - withoutAurora.data[i])
+      + Math.abs(withAurora.data[i + 1] - withoutAurora.data[i + 1])
+      + Math.abs(withAurora.data[i + 2] - withoutAurora.data[i + 2]) > 8) auroraChanged++;
+  }
+  assert.ok(auroraChanged > 100, "aurora must render even when weather is switched off");
+  const auroraLayer = await decode(await exportLayer("aurora", "nivalis", "globe", {
+    atmosphere: false, clouds: false, weather: false, lighting: false, aurora: false,
+  }));
+  assert.ok(auroraLayer.data.some((value, index) => index % 4 === 3 && value > 0),
+    "isolated aurora PNG must remain available regardless of composite switches");
+  report.checks.push({ name: "aurora independent of weather and atmosphere", auroraChanged });
   for (const layer of ["clouds", "weather", "atmosphere", "night"]) {
     const image = await decode(await exportLayer(layer));
     let visible = 0, transparent = 0;
