@@ -1,0 +1,69 @@
+name: V120 clan war 1200-variant atlas quality gate
+
+on:
+  pull_request:
+    branches:
+      - main
+      - feat/v115-clan-mission-formats-20261030
+    paths:
+      - 'app/game/data/clanWar*V120.json'
+      - 'app/game/systems/clanWarVariantAtlasV120.ts'
+      - 'app/game/ClanWarVariantAtlasV120*'
+      - 'app/game/ClanWarBibleV6Panel.tsx'
+      - 'tests/clan-war-variants-v120.test.mjs'
+      - 'scripts/export-clan-war-variants-v120.mjs'
+      - 'tsconfig.clan-war-variants-v120.json'
+      - '.github/workflows/clan-war-variants-v120.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  variants:
+    name: Count, diversity, source scope, strict types, CSV
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout only the atlas and its dependency manifests
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /package.json
+            /package-lock.json
+            /eslint.config.mjs
+            /tsconfig.json
+            /tsconfig.clan-war-variants-v120.json
+            /app/game/systems/clanWarVariantAtlasV120.ts
+            /app/game/data/clanWarOriginalPlacesV120.json
+            /app/game/data/clanWarLoreFramesV120.json
+            /app/game/data/clanWarHomageAssaultV120.json
+            /app/game/data/clanWarHomageOuterV120.json
+            /app/game/data/clanWarHomageStealthV120.json
+            /app/game/data/clanWarHomageRtsV120.json
+            /app/game/ClanWarVariantAtlasV120.tsx
+            /app/game/ClanWarVariantAtlasV120.module.css
+            /tests/clan-war-variants-v120.test.mjs
+            /scripts/export-clan-war-variants-v120.mjs
+      - name: Node.js 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Install reproducible project dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Validate 1200 unique V120 mission briefs
+        run: node --test --test-reporter=spec tests/clan-war-variants-v120.test.mjs
+      - name: TypeScript narrow check for atlas and UI
+        run: npx --no-install tsc --noEmit --project tsconfig.clan-war-variants-v120.json
+      - name: Lint authored atlas, UI and export script
+        run: npx --no-install eslint app/game/systems/clanWarVariantAtlasV120.ts app/game/ClanWarVariantAtlasV120.tsx tests/clan-war-variants-v120.test.mjs scripts/export-clan-war-variants-v120.mjs
+      - name: Export checked Excel-compatible mission register
+        run: node scripts/export-clan-war-variants-v120.mjs outputs/clan-war-v120/Yautja_Guerres_de_clans_1200_variantes_V120.csv
+      - name: Preserve the 1200-row table as a run artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: yautja-clan-war-v120-1200-variants-csv
+          path: outputs/clan-war-v120/Yautja_Guerres_de_clans_1200_variantes_V120.csv
+          if-no-files-found: error
