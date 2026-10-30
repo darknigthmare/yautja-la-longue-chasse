@@ -481,10 +481,11 @@ function settleWarRtsAlternatingTurnV119(
   actors:WarRtsActorV115[],terrain:WarMissionTerrainV116,rules:WarRulesV6,
 ):WarOperationsUpdateV115 {
   const fallen=unique([...field.fallen,...actors.filter(item=>item.side==="ally" && item.hp<=0 && item.teamId).map(item=>item.teamId!)]);
-  const alive=actors.filter(item=>item.hp>0);
+  const staged=field.scripted?resolveWarRtsScriptedTickV119(field.scripted,actors,terrain):null;
+  const removed=new Set(staged?.extractedThisTick??[]);
+  const alive=actors.filter(item=>item.hp>0&&(!item.teamId||!removed.has(item.teamId)));
   const holding=alive.some(item=>item.side==="ally"&&item.x===7&&item.y===3) && !alive.some(item=>item.side==="rival"&&distance(item,{x:7,y:3})<=1);
   const hold=holding?field.hold+1:0;
-  const staged=field.scripted?resolveWarRtsScriptedTickV119(field.scripted,actors,terrain):null;
   const advanced={...state,clock:state.clock+1,active:{...mission,tick:mission.tick+1,
     rts:{...field,actors:alive,hold,fallen,...(staged?{scripted:staged.objective}:{})}}};
   if(staged?.outcome==="victory")return accept(recordOutcome(advanced,mission.id,"rts",null,mission.targetId,mission.teamIds,"victory",fallen,rules,
@@ -618,10 +619,11 @@ export function stepWarRtsRealtimeV115(state:WarOperationsStateV115,rules:WarRul
     }
   }
   const fallen=unique([...field.fallen,...actors.filter(a=>a.side==="ally"&&a.hp<=0&&a.teamId).map(a=>a.teamId!)]);
-  const live=actors.filter(a=>a.hp>0);
+  const staged=field.scripted?resolveWarRtsScriptedTickV119(field.scripted,actors,terrain):null;
+  const removed=new Set(staged?.extractedThisTick??[]);
+  const live=actors.filter(a=>a.hp>0&&(!a.teamId||!removed.has(a.teamId)));
   const isHolding=live.some(a=>a.side==="ally"&&a.x===7&&a.y===3)&&!live.some(a=>a.side==="rival"&&distance(a,{x:7,y:3})<=1);
   const hold=isHolding?field.hold+1:0;
-  const staged=field.scripted?resolveWarRtsScriptedTickV119(field.scripted,actors,terrain):null;
   const next={...state,clock:state.clock+1,active:{...mission,tick:mission.tick+1,
     rts:{...field,actors:live,fallen,hold,...(staged?{scripted:staged.objective}:{})}}};
   if(staged?.outcome==="victory")return accept(recordOutcome(next,mission.id,"rts",null,mission.targetId,mission.teamIds,"victory",fallen,rules,
