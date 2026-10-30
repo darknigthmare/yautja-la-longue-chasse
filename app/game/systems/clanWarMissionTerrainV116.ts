@@ -121,3 +121,22 @@ export function warTerrainPathLengthV116(
   }
   return null;
 }
+
+/** Grid ray test: a solid wall between two actors prevents a ranged hit or
+ * surveillance reading. The actual start/end cells are excluded. */
+export function warTerrainLineOfSightV116(
+  terrain:WarMissionTerrainV116,from:{x:number;y:number},to:{x:number;y:number},
+):boolean {
+  if(warTerrainCellBlockedV116(terrain,from.x,from.y)||warTerrainCellBlockedV116(terrain,to.x,to.y))return false;
+  let x=from.x,y=from.y;
+  const dx=Math.abs(to.x-from.x),dy=Math.abs(to.y-from.y);
+  const sx=from.x<to.x?1:-1,sy=from.y<to.y?1:-1;
+  let error=dx-dy;
+  while(x!==to.x||y!==to.y){
+    const twice=2*error;
+    if(twice>-dy){error-=dy;x+=sx;}
+    if(twice<dx){error+=dx;y+=sy;}
+    if((x!==to.x||y!==to.y)&&warTerrainCellBlockedV116(terrain,x,y))return false;
+  }
+  return true;
+}
