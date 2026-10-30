@@ -34,6 +34,8 @@ Dans « Exporter les textures par calque » → « Kit indépendant par région 
 - le masque régional transparent **512×256 PNG** ;
 - un `manifest.json` contenant `worldCode`, `regionId`, biome, graine, matériaux, chemins et attribution de toutes les régions.
 
+L'éditeur propose aussi **Exporter les choix (JSON)** et **Réimporter les choix de cette planète**. Le validateur refuse un fichier destiné à un autre code de monde, avec des graines, biomes, régions ou matériaux incohérents. Un aperçu canvas du sol régional accompagne ces choix.
+
 Le ZIP contient 7 ou 12 fichiers, dans la limite du codec ZIP32 V114 (16 entrées, 64 Mio). Les changements de région dans l'éditeur n'affectent ni le rendu historique, ni les sauvegardes de guerre. Il s'agit d'un **kit d'assets exportable**, pas encore d'un shader PBR régional utilisé automatiquement en jeu.
 
 ## QA
