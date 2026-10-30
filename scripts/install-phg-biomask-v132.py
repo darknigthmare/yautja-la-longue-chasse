@@ -39,7 +39,7 @@ def verify_bundle(path,cat):
    actual=by_id.get(item["id"])
    if not actual or [actual["atlas"]["column"],actual["atlas"]["row"]]!=[item["column"],item["row"]]:
     raise ValueError("Atlas tile mismatch")
-   if set(actual["allowedPHGClasses"])!=set(item["classes"]):raise ValueError("Class mismatch")
+   if {str(name).lower() for name in actual["allowedPHGClasses"]}!=set(item["classes"]):raise ValueError("Class mismatch")
    for ext,field in ((".png","pngSha256"),(".webp","webpSha256")):
     member=z.getinfo("materials/"+item["id"]+ext)
     if not 64<=member.file_size<=2097152:raise ValueError("Source material size invalid")
