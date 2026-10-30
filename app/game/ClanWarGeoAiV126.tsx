@@ -27,8 +27,13 @@ function ContractDetail({variant,preset,coop}:{variant:WarCoherentVariantV126;pr
    <div><dt>Climat</dt><dd>{e.climate} · {e.temperatureRule}</dd></div>
    <div><dt>Sol</dt><dd>{e.terrain}</dd></div>
    <div><dt>Eaux et liquides</dt><dd>{e.liquid}</dd></div>
+   <div><dt>Type de site</dt><dd>{e.siteKind==="interior"?"Intérieur couvert":
+    e.siteKind==="multi-region"?"Corridor multirégional":e.siteKind==="mixed"?"Intérieur / extérieur":"Extérieur"}</dd></div>
    <div><dt>Météo validée</dt><dd>{e.weather}</dd></div>
    <div><dt>Météo V120 d&apos;origine</dt><dd>{e.originalWeather}{e.weatherAdjusted?" (remplacée)":""}</dd></div>
+   <div><dt>Danger de mission réellement retenu</dt><dd>{e.effectiveHazard}</dd></div>
+   <div><dt>Événement adapté au milieu</dt><dd>{e.effectiveTwist}</dd></div>
+   <div><dt>Danger V120 initial</dt><dd>{e.originalHazard}</dd></div>
    <div><dt>Risques valables</dt><dd>{e.hazards.join(" · ")}</dd></div>
    <div><dt>Neige naturelle</dt><dd>{e.allowsNaturalSnow?"Possible sous conditions":"Non autorisée dans ce climat"}</dd></div>
   </dl>
