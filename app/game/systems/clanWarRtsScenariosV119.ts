@@ -113,6 +113,41 @@ export function resolveWarRtsScriptedTickV119(
       message:progress>=objective.requiredTurns?"La relève a réellement tenu le sommet pendant trois tours.":
       "Relève de guet : "+progress+"/"+objective.requiredTurns+" tours tenus par les W3-U07."};
   }
+  if(objective.kind==="filter-repair"){
+    let cargo={...objective.cargo};
+    if(!objective.delivered){
+      if(cargo.carrierTeamId){
+        const carrier=actors.find(actor=>actor.teamId===cargo.carrierTeamId);
+        if(carrier&&carrier.hp>0){cargo={...cargo,x:carrier.x,y:carrier.y};}
+        else cargo={...cargo,carrierTeamId:null,x:carrier?.x??cargo.x,y:carrier?.y??cargo.y};
+      }
+      if(!cargo.carrierTeamId){
+        const replacement=own.filter(actor=>actor.unitId==="W3-U19"&&actor.teamId&&
+          actor.x===cargo.x&&actor.y===cargo.y)
+          .sort((a,b)=>a.id.localeCompare(b.id))[0];
+        if(replacement)cargo={...cargo,carrierTeamId:replacement.teamId};
+      }
+    }
+    const newlyDelivered=!objective.delivered&&Boolean(cargo.carrierTeamId&&
+      cargo.x===objective.filterSite.x&&cargo.y===objective.filterSite.y);
+    const delivered=objective.delivered||newlyDelivered;
+    if(newlyDelivered)cargo={...cargo,carrierTeamId:null,x:7,y:3};
+    const engineer=own.some(actor=>actor.unitId==="W3-U20"&&DIST(actor,objective.filterSite)<=1);
+    const frontClear=!hostile.some(actor=>DIST(actor,objective.filterSite)<=1);
+    // A full turn of work occurs only AFTER a previously completed delivery.
+    // A mere arrival at the same tick cannot instantly finish the repair.
+    const progress=objective.delivered&&engineer&&frontClear?
+      Math.min(objective.requiredTurns,objective.workProgress+1):objective.workProgress;
+    const stillPossible=own.some(actor=>actor.unitId==="W3-U20")&&
+      (delivered||own.some(actor=>actor.unitId==="W3-U19"));
+    const next={...objective,cargo,delivered,workProgress:progress};
+    return {objective:next,outcome:progress>=objective.requiredTurns?"victory":stillPossible?null:"defeat",
+      message:progress>=objective.requiredTurns?"Régulateur livré, filtre rétabli par les artisans présents pendant deux tours.":
+        "Filtre W3-MAP02 : régulateur "+(delivered?"livré":"en transit")+
+        ", travail "+progress+"/"+objective.requiredTurns+
+        " · artisans "+(engineer?"au poste":"absents du poste")+
+        " · accès "+(frontClear?"libre":"contesté")+"."};
+  }
   const sawWatch=own.some(actor=>SCOUT_UNITS.has(actor.unitId)&&actor.x>=4&&actor.y<=2 &&
     warTerrainLineOfSightV116(terrain,actor,{x:7,y:1}));
   const scouted=objective.scouted||sawWatch;
