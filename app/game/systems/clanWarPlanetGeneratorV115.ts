@@ -1,12 +1,11 @@
 import type { WarPlanetV96 } from "./clanWarPlanetsV96";
 import {
   DEFAULT_WAR_PLANET_RECIPE_V103, describeWarPlanetV103, encodeWarPlanetV103, generateWarPlanetV103,
-  parseWarPlanetV103, sphericalPolygonAreaV103, validateWarPlanetRecipeV103,
+  parseWarPlanetV103, validateWarPlanetRecipeV103,
   type WarPlanetProceduralV103, type WarPlanetRecipeV103,
 } from "./clanWarPlanetGeneratorV103";
 import { PLANET_RADII_KM_V115, planetArcKilometersV115, type PlanetSizeV115, warShapeTemplateV115 } from "./clanWarShapeAtlasV115";
 import { WAR_PLANET_LAND_TEXTURES_V115, WAR_PLANET_LIQUID_TEXTURES_V115 } from "./clanWarTextureLibraryV115";
-import { generatedPlanetGeographyV103 } from "./clanWarPlanetGeographyV103";
 
 /** V115 adds physical radii, three shape recipes and two real detail materials.
  * V102/V103 codes never deserialize into this version automatically. */
