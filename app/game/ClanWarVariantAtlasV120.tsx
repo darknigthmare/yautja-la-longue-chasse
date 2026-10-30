@@ -5,6 +5,7 @@ import {
   clanWarVariantCountsV120, searchClanWarVariantsV120, drawUnseenClanWarVariantV120,
   type ClanWarVariantFamilyV120, type ClanWarVariantModeV120,
 } from "./systems/clanWarVariantAtlasV120";
+import {buildWarEncounterSubVariantV127} from "./systems/clanWarEncounterDirectorV127";
 import styles from "./ClanWarVariantAtlasV120.module.css";
 import {CLAN_WAR_COHERENT_VARIANTS_V126} from "./systems/clanWarWorldClimateV126";
 const V126_BY_ID=new Map(CLAN_WAR_COHERENT_VARIANTS_V126.map(item=>[item.sourceId,item]));
@@ -56,6 +57,7 @@ export default function ClanWarVariantAtlasV120({onOpenPrototype}:{onOpenPrototy
   const visible=entries.slice(currentPage*pageSize,(currentPage+1)*pageSize);
   const chosen=entries.find(row=>row.id===picked)??visible[0]??null;
   const earthCoherence=chosen?V126_BY_ID.get(chosen.id):undefined;
+  const tactical=earthCoherence?buildWarEncounterSubVariantV127(earthCoherence,2):null;
   function drawNewVariant(){
     const result=drawUnseenClanWarVariantV120(Date.now(),drawnIds,mode,family,query);
     if(!result)return;
@@ -94,7 +96,7 @@ export default function ClanWarVariantAtlasV120({onOpenPrototype}:{onOpenPrototy
       <button type="button" onClick={downloadCSV} disabled={!entries.length}>Exporter le tableau CSV ({entries.length})</button>
       <button type="button" onClick={downloadJSON} disabled={!entries.length}>Exporter JSON complet ({entries.length})</button>
     </header>
-    <p className={styles.warning} role="note"><strong>Catalogue de conception uniquement.</strong> Ces 1 200 variantes ne sont pas 1 200 missions exécutables : elles définissent le contenu à mettre en scène, les sprites à produire et les contrôles à ajouter. Les clins d&apos;œil aux monuments sont des reconstructions extraterrestres imaginées ; les références de films, comics et jeux n&apos;attestent pas les conflits décrits. Aucun personnage, territoire ou trophée n&apos;est débloqué par ce catalogue.</p>
+    <p className={styles.warning} role="note"><strong>Catalogue de conception uniquement.</strong> Ces 1 200 variantes ne sont pas 1 200 missions exécutables : elles définissent le contenu à mettre en scène, les sprites à produire et les contrôles à ajouter. Les lieux réels sont rattachés à la Terre ; ces guerres de clans y restent fictives. Les références de films, comics et jeux n&apos;attestent pas les conflits décrits. Aucun personnage, territoire ou trophée n&apos;est débloqué par ce catalogue.</p>
     <div className={styles.summary}>
       <div><strong>{counts.total}</strong><span>Fiches distinctes</span></div>
       {(["assault","outer","stealth","rts"] as const).map(key=><div key={key}><strong>{counts[key+":original"]+counts[key+":lore"]+counts[key+":homage"]}</strong><span>{MODE_LABELS[key]}</span></div>)}
@@ -132,8 +134,8 @@ export default function ClanWarVariantAtlasV120({onOpenPrototype}:{onOpenPrototy
           onClick={()=>setPicked(row.id)}>
           <small>{row.id} · {MODE_LABELS[row.mode]} · {FAMILY_LABELS[row.family]}</small>
           <strong>{row.operation.missionType}</strong>
-          <span>{row.settingName}</span>
-          <small>{row.environment.biome} · {row.operation.lengthClass} · menace {row.operation.threat}/5</small>
+          <span>{V126_BY_ID.get(row.id)?.geography.siteName??row.settingName}</span>
+          <small>{V126_BY_ID.get(row.id)?.environment.biome??row.environment.biome} · {row.operation.lengthClass} · menace {row.operation.threat}/5</small>
         </button>)}
         {!entries.length&&<p>Aucune variante ne correspond à cette recherche.</p>}
         <div className={styles.pageControls}>
@@ -156,7 +158,7 @@ export default function ClanWarVariantAtlasV120({onOpenPrototype}:{onOpenPrototy
             <p>Les corrections V126 prévalent sur les météos et aléas initiaux du catalogue V120.</p>
           </div>}
           <div className={styles.detailGrid}>
-            <div><strong>Lieu</strong><p>{chosen.settingName}</p></div>
+            <div><strong>Lieu documenté V126</strong><p>{earthCoherence?.geography.siteName??chosen.settingName}</p></div>
             <div><strong>Atmosphère</strong><p>{earthCoherence?.environment.biome??chosen.environment.biome} · {earthCoherence?.environment.weather??chosen.environment.weather} · {chosen.environment.timeOfDay}</p></div>
             <div><strong>Sol et liquide</strong><p>{earthCoherence?.environment.terrain??chosen.environment.terrain} · {earthCoherence?.environment.liquid??chosen.environment.liquid}</p></div>
             <div><strong>Architecture</strong><p>{chosen.environment.layout}</p></div>
@@ -170,17 +172,23 @@ export default function ClanWarVariantAtlasV120({onOpenPrototype}:{onOpenPrototy
             <div><dt>Objectif secondaire</dt><dd>{chosen.operation.secondaryObjective}</dd></div>
             <div><dt>Mécanique spécifique</dt><dd>{chosen.operation.gameplayHook}</dd></div>
             <div><dt>Événement dynamique</dt><dd>{earthCoherence?.environment.effectiveTwist??chosen.operation.twist}</dd></div>
-            <div><dt>Réaction du terrain</dt><dd>{chosen.environment.hazardsReaction}</dd></div>
+            <div><dt>Réaction du terrain</dt><dd>{earthCoherence?.environment.temperatureRule??"À préciser"} : les unités doivent recalculer leur déplacement réel.</dd></div>
             <div><dt>Si le courant est coupé</dt><dd>{chosen.environment.powerFailure}</dd></div>
             <div><dt>Échec</dt><dd>{chosen.operation.failure}</dd></div>
             <div><dt>Preuve de victoire</dt><dd>{chosen.operation.victoryProof}</dd></div>
             <div><dt>Plan de repli</dt><dd>{chosen.operation.fallback}</dd></div>
             <div><dt>Extraction</dt><dd>{chosen.operation.extraction}</dd></div>
           </dl>
-          <h5>Quatre temps de l&apos;opération</h5>
-          <ol className={styles.phases}>{chosen.operation.dynamicPhases.map((phase,index)=><li key={index}>{phase}</li>)}</ol>
+          <h5>Quatre phases de mission V127 · environnement corrigé</h5>
+          <ol className={styles.phases}>{tactical?.sections.map((phase,index)=><li key={phase.id}>
+            {index+1}. {phase.part} · {phase.weather} · {phase.hazard} · {phase.coverType}
+          </li>)}</ol>
+          <details><summary>Consulter le brouillon V120 original (historique, non validé géographiquement)</summary>
+            <p>{chosen.operation.twist}</p>
+            <ol>{chosen.operation.dynamicPhases.map((phase,index)=><li key={index}>{phase}</li>)}</ol>
+          </details>
           <details className={styles.assets}><summary>Éléments à créer avant intégration</summary>
-            <p><strong>Sprites :</strong> {chosen.production.neededSprites.join(" · ")}</p>
+            <p><strong>Assets nécessaires corrigés :</strong> {tactical?.missingAssets.join(" · ")??"À établir"}</p>
             <p><strong>Tiles :</strong> {chosen.production.neededTiles.join(" · ")}</p>
             <p><strong>Systèmes à développer :</strong> {chosen.production.missingSystems.join(" · ")}</p>
             <p><strong>Gabarit planète :</strong> {chosen.environment.worldSize} · {chosen.environment.mapScaleHint} · {chosen.environment.territoryShapeRequest} · {chosen.environment.islandShapeRequest}. Ces formes sont des demandes, pas des fichiers déjà intégrés.</p>

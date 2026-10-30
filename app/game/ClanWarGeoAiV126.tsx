@@ -8,6 +8,7 @@ import {
  WAR_MULTIPLAYER_DEPLOYMENT_GATES_V126,type WarMultiplayerModeV126,type WarLobbyV126,
 } from "./systems/clanWarMultiplayerV126";
 import EarthPlanetMapV126 from "./EarthPlanetMapV126";
+import ClanWarMultiplayerPracticeV127 from "./ClanWarMultiplayerPracticeV127";
 import styles from "./ClanWarGeoAiV126.module.css";
 const modes=["assault","outer","stealth","rts"] as const;
 const variants=CLAN_WAR_COHERENT_VARIANTS_V126;
@@ -156,6 +157,7 @@ export default function ClanWarGeoAiV126(){
      </div>
      <p><strong>Attention :</strong> les identifiants EXERCISE n&apos;appartiennent à aucune sauvegarde réelle. Cette interface teste uniquement les règles du salon ; elle ne crée pas de serveur ni de véritable rencontre réseau.</p>
     </div>}
+    <ClanWarMultiplayerPracticeV127/>
     <details><summary>Conditions obligatoires avant mise en ligne</summary>
       <ul>{WAR_MULTIPLAYER_DEPLOYMENT_GATES_V126.map(item=><li key={item}>{item}</li>)}</ul>
     </details>
