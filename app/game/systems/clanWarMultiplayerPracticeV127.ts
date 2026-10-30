@@ -63,6 +63,7 @@ export function createWarMultiplayerPracticeV127(room:WarLobbyV126):WarMultiplay
  const members=room.members.filter(m=>m.side!=="observer");
  const counts={hunter:0,rival:0},fighters:WarMatchFighterV127[]=[];
  for(const member of members){
+  if(member.side==="observer")continue;
   for(const unitId of member.unitInstanceIds){
    if(fighters.some(f=>f.id===unitId))throw Error("Un combattant appartient à deux joueurs.");
    const i=counts[member.side]++;
@@ -76,7 +77,7 @@ export function createWarMultiplayerPracticeV127(room:WarLobbyV126):WarMultiplay
   }
  }
  if(!fighters.length)throw Error("Aucun combattant déclaré.");
- return {version:127,room,stage:undefined as never, fighters,
+ return {version:127,room,fighters,
   map:{width:9,height:6,capture:{x:4,y:2},blocked,cover},
   hold:{hunter:0,rival:0},winner:null,
   eventLog:[],campaignWrite:"forbidden",saveScope:"practice-memory-only"};
