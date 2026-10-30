@@ -472,6 +472,27 @@ function rtsEnemyTurn(actors:WarRtsActorV115[],rules:WarRulesV6,terrain:WarMissi
     }
   }
 }
+function settleWarRtsAlternatingTurnV119(
+  state:WarOperationsStateV115,mission:WarPlayableMissionV115,field:WarRtsV115,
+  actors:WarRtsActorV115[],terrain:WarMissionTerrainV116,rules:WarRulesV6,
+):WarOperationsUpdateV115 {
+  const fallen=unique([...field.fallen,...actors.filter(item=>item.side==="ally" && item.hp<=0 && item.teamId).map(item=>item.teamId!)]);
+  const alive=actors.filter(item=>item.hp>0);
+  const holding=alive.some(item=>item.side==="ally"&&item.x===7&&item.y===3) && !alive.some(item=>item.side==="rival"&&distance(item,{x:7,y:3})<=1);
+  const hold=holding?field.hold+1:0;
+  const staged=field.scripted?resolveWarRtsScriptedTickV119(field.scripted,actors,terrain):null;
+  const advanced={...state,clock:state.clock+1,active:{...mission,tick:mission.tick+1,
+    rts:{...field,actors:alive,hold,fallen,...(staged?{scripted:staged.objective}:{})}}};
+  if(staged?.outcome==="victory")return accept(recordOutcome(advanced,mission.id,"rts",null,mission.targetId,mission.teamIds,"victory",fallen,rules,
+    mission.rts?.scripted?.scenarioId+" : "+staged.message),"Objectif W3 confirmé par les acteurs présents.");
+  if(staged?.outcome==="defeat")return accept(recordOutcome(advanced,mission.id,"rts",null,mission.targetId,mission.teamIds,"defeat",fallen,rules,
+    mission.rts?.scripted?.scenarioId+" : "+staged.message),"Mission W3 compromise : rapport sauvegardé.");
+  if(!staged && alive.some(item=>item.side==="ally") && (hold>=2 || !alive.some(item=>item.side==="rival"))) return accept(recordOutcome(advanced,mission.id,"rts",null,mission.targetId,mission.teamIds,"victory",fallen,rules,
+    "Objectif tenu deux ordres ou défense neutralisée. Le siège ne vaut pas annexion automatique."),"Objectif RTS sécurisé.");
+  if(!alive.some(item=>item.side==="ally") || mission.tick>=49) return accept(recordOutcome(advanced,mission.id,"rts",null,mission.targetId,mission.teamIds,"defeat",fallen,rules,
+    "Détachement replié après échec de l'objectif."),"RTS terminé : échec consigné.");
+  return accept(advanced,staged?staged.message:"Ordre exécuté. L'adversaire a effectué sa réponse tactique.");
+}
 export function commandRtsV115(state:WarOperationsStateV115,teamId:string,x:number,y:number,rules:WarRulesV6):WarOperationsUpdateV115 {
   const mission=state.active, field=mission?.rts;
   if(mission?.mode!=="rts" || !field || !Number.isInteger(x)||!Number.isInteger(y)||x<0||x>8||y<0||y>5) return reject(state,"Ordre RTS ou case invalide.");
@@ -496,22 +517,22 @@ export function commandRtsV115(state:WarOperationsStateV115,teamId:string,x:numb
     actor.x=x;actor.y=y;
   }
   rtsEnemyTurn(actors,rules,terrain);
-  const fallen=unique([...field.fallen,...actors.filter(item=>item.side==="ally" && item.hp<=0 && item.teamId).map(item=>item.teamId!)]);
-  const alive=actors.filter(item=>item.hp>0);
-  const holding=alive.some(item=>item.side==="ally"&&item.x===7&&item.y===3) && !alive.some(item=>item.side==="rival"&&distance(item,{x:7,y:3})<=1);
-  const hold=holding?field.hold+1:0;
-  const staged=field.scripted?resolveWarRtsScriptedTickV119(field.scripted,actors,terrain):null;
-  const advanced={...state,clock:state.clock+1,active:{...mission,tick:mission.tick+1,
-    rts:{...field,actors:alive,hold,fallen,...(staged?{scripted:staged.objective}:{})}}};
-  if(staged?.outcome==="victory")return accept(recordOutcome(advanced,mission.id,"rts",null,mission.targetId,mission.teamIds,"victory",fallen,rules,
-    mission.rts?.scripted?.scenarioId+" : "+staged.message),"Objectif W3 confirmé par les acteurs présents.");
-  if(staged?.outcome==="defeat")return accept(recordOutcome(advanced,mission.id,"rts",null,mission.targetId,mission.teamIds,"defeat",fallen,rules,
-    mission.rts?.scripted?.scenarioId+" : "+staged.message),"Mission W3 compromise : rapport sauvegardé.");
-  if(!staged && alive.some(item=>item.side==="ally") && (hold>=2 || !alive.some(item=>item.side==="rival"))) return accept(recordOutcome(advanced,mission.id,"rts",null,mission.targetId,mission.teamIds,"victory",fallen,rules,
-    "Objectif tenu deux ordres ou défense neutralisée. Le siège ne vaut pas annexion automatique."),"Objectif RTS sécurisé.");
-  if(!alive.some(item=>item.side==="ally") || mission.tick>=49) return accept(recordOutcome(advanced,mission.id,"rts",null,mission.targetId,mission.teamIds,"defeat",fallen,rules,
-    "Détachement replié après échec de l'objectif."),"RTS terminé : échec consigné.");
-  return accept(advanced,staged?staged.message:"Ordre exécuté. L'adversaire a effectué sa réponse tactique.");
+  return settleWarRtsAlternatingTurnV119(state,mission,field,actors,terrain,rules);
+}
+
+/** Holding an existing position is a true tactical turn. It is required by
+ * W3-RTS02: a lone W3-U07 cannot defend a post for three turns by leaving it. */
+export function holdWarRtsAlternatingV119(
+  state:WarOperationsStateV115,teamId:string,rules:WarRulesV6,
+):WarOperationsUpdateV115 {
+  const mission=state.active,field=mission?.rts;
+  if(mission?.mode!=="rts"||!field||field.realtime)return reject(state,"Aucun ordre alterné de défense disponible.");
+  if(!field.actors.some(actor=>actor.side==="ally"&&actor.teamId===teamId&&actor.hp>0))
+    return reject(state,"Le poste exige un détachement réel encore apte.");
+  const terrain=warMissionTerrainV116(mission.targetId,rules);
+  const actors=field.actors.map(actor=>({...actor}));
+  rtsEnemyTurn(actors,rules,terrain);
+  return settleWarRtsAlternatingTurnV119(state,mission,field,actors,terrain,rules);
 }
 
 /** Cover on this small exercise grid is a prototype abstraction, not a map
