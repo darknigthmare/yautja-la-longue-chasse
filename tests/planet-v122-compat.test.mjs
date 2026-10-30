@@ -1,15 +1,26 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import {readFileSync} from "node:fs";
-import {
+import { readFileSync } from "node:fs";
+import { build } from "esbuild";
+
+const bundle=await build({
+  stdin:{
+    contents:[
+      "export * from './app/game/systems/clanWarPlanetGeneratorV103';",
+      "export * from './app/game/systems/clanWarPlanetGeneratorV115';",
+      "export * from './app/game/systems/clanWarPlanetStrategyV114';",
+      "export * from './app/game/systems/clanWarDeploymentV103';",
+      "export * from './app/game/systems/clanWarV85';",
+    ].join("\n"),
+    resolveDir:process.cwd(),
+  },bundle:true,write:false,format:"esm",platform:"node",target:"es2022",logLevel:"silent",
+});
+const api=await import("data:text/javascript;base64,"+Buffer.from(bundle.outputFiles[0].text).toString("base64"));
+const {
   DEFAULT_WAR_PLANET_RECIPE_V103, generateWarPlanetV103,
-} from "../app/game/systems/clanWarPlanetGeneratorV103.ts";
-import {
   DEFAULT_WAR_PLANET_RECIPE_V115, generateWarPlanetV115,
-} from "../app/game/systems/clanWarPlanetGeneratorV115.ts";
-import {analyzeWarPlanetStrategyV114} from "../app/game/systems/clanWarPlanetStrategyV114.ts";
-import {warDeploymentV103, } from "../app/game/systems/clanWarDeploymentV103.ts";
-import {createWarSimulationV85} from "../app/game/systems/clanWarV85.ts";
+  analyzeWarPlanetStrategyV114, warDeploymentV103, createWarSimulationV85,
+}=api;
 
 test("V122: legacy V103 worlds keep their original topology and unitless distances",()=>{
   const older=generateWarPlanetV103({...DEFAULT_WAR_PLANET_RECIPE_V103});
