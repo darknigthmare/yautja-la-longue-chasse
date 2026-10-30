@@ -48,6 +48,7 @@ jobs:
           tests/planet-export-zip-v114.test.mjs
           tests/planet-modular-export-v124.test.mjs
           tests/planet-physical-material-v125.test.mjs
+          tests/planet-region-material-kit-v128.test.mjs
           tests/planet-strategy-v114.test.mjs
           tests/planet-generator-draft-v103.test.mjs
           tests/planet-generator-v103.test.mjs
@@ -58,6 +59,8 @@ jobs:
           npx eslint
           app/game/systems/clanWarPlanetStrategyV114.ts
           app/game/planetModularExportV124.ts
+          app/game/planetRegionKitRasterV128.ts
+          app/game/systems/clanWarRegionalMaterialKitV128.ts
           app/game/PlanetLayerExportV102.tsx
           app/game/planetMaterialRendererV101.ts
           app/game/systems/planetExportZipV114.ts
@@ -91,6 +94,7 @@ jobs:
             /public/game/planets/
             /public/game/assets/v15/trophies/manifest.json
             /scripts/qa-planet-modular-export-v124.mjs
+            /scripts/qa-planet-region-kit-v128.mjs
             /package.json
             /package-lock.json
             /next.config.ts
@@ -114,11 +118,14 @@ jobs:
           done
           curl --fail --silent http://127.0.0.1:3101/planet-generator-v103 > /dev/null || { cat /tmp/yautja-planet-v124-next.log; exit 1; }
           node scripts/qa-planet-modular-export-v124.mjs
+          node scripts/qa-planet-region-kit-v128.mjs
       - name: Upload V124 browser PNG, ZIP, screenshots and report
         if: ${{ always() }}
         uses: actions/upload-artifact@v4
         with:
           name: planet-v124-browser-${{ github.run_id }}
-          path: outputs/qa-planet-modular-v124/
+          path: |
+            outputs/qa-planet-modular-v124/
+            outputs/qa-planet-regional-kit-v128/
           retention-days: 7
           if-no-files-found: ignore
