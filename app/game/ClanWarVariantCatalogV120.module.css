@@ -1,0 +1,33 @@
+.root{color:#e5e9df;background:linear-gradient(160deg,#121e18,#0d1714);padding:18px;margin:16px 0 26px;border:1px solid #50634f;font-size:.87rem;line-height:1.5}
+.root *{box-sizing:border-box}.root h3{font-size:1.48rem;margin:6px 0 10px}.root h4{font-size:1.14rem;margin:5px 0 14px}.root p{margin:8px 0 13px}
+.root button,.root select,.root input{font:inherit;border:1px solid #667e69;background:#21382a;color:#f0f1e4;min-height:42px;padding:9px 11px;border-radius:5px}
+.root select,.root input{width:100%;display:block;margin-top:7px}.root button{cursor:pointer}
+.root button:hover{background:#37513c}.root button:disabled{opacity:.5;cursor:default}
+.root button:focus-visible,.root input:focus-visible,.root select:focus-visible{outline:3px solid #e6ce8b;outline-offset:3px}
+.overline{letter-spacing:.12em;font-weight:700;font-size:.7rem;color:#e5c67f}
+.header p{max-width:940px;color:#c1cfbd}.truth{border-inline-start:4px solid #c5a267;background:#29271a;padding:13px 17px;color:#e3d5b5}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin:16px 0 22px}
+.stats>div{padding:11px;background:#182b20;border:1px solid #47664c}.stats small{display:block;color:#c1d1bc;font-size:.73rem}.stats strong{font-size:1.5rem;color:#e8cf8c}
+.matrix{border:1px solid #4a604e;margin:12px 0}.matrix>div{display:grid;grid-template-columns:minmax(175px,2fr) repeat(3,minmax(70px,1fr));gap:5px;padding:8px 12px;border-top:1px solid #3b5241;align-items:center}
+.matrix .matrixHead{background:#344e39;font-size:.75rem;font-weight:700;color:#f2e0af;border-top:0}
+.matrix strong{font-size:.78rem}.matrix span:not(:first-child){text-align:center;font-variant-numeric:tabular-nums}
+.tools{display:grid;grid-template-columns:1fr 1fr 1.3fr;gap:10px;margin:20px 0}
+.tools label{font-weight:650;color:#e7d69e;font-size:.76rem;min-width:0}
+.actions{display:flex;align-items:center;flex-wrap:wrap;gap:9px;margin:12px 0 17px}
+.actions p{margin-right:auto;font-size:.82rem;margin-block:0}
+.actions button{font-size:.78rem}.layout{display:grid;grid-template-columns:minmax(260px,.8fr) minmax(0,1.5fr);gap:14px;align-items:start}
+.browse{max-height:690px;overflow:auto;padding:3px;display:flex;flex-direction:column;gap:7px;overscroll-behavior:contain}
+.browse button{text-align:left;min-height:76px;background:#192c20;display:flex;flex-direction:column;align-items:flex-start;gap:4px;padding:10px 12px}
+.browse button[aria-pressed=true]{background:#647354;border-color:#e3ca86;color:#fff6d7}
+.browse small{color:#e0cb95;font-size:.65rem}.browse button[aria-pressed=true] small{color:#f9efcf}
+.browse strong{font-size:.82rem;line-height:1.4}.browse span{font-size:.73rem;color:#c8d9c7}.browse button[aria-pressed=true] span{color:#fff3d8}
+.details{background:#1c2b21;border:1px solid #5c725b;padding:16px;min-width:0}
+.story{background:#263828;border-inline-start:3px solid #b9a56d;padding:10px 13px;color:#e6dcc2}
+.fields{margin:16px 0}.fields>div{border-top:1px solid #415645;padding:9px 0;display:grid;grid-template-columns:minmax(110px,.65fr) minmax(0,1.55fr);gap:14px}
+.fields dt{font-size:.75rem;font-weight:700;color:#e1ca87}.fields dd{margin:0;color:#d2dccd;font-size:.79rem;white-space:pre-wrap;overflow-wrap:anywhere}
+.provenance{background:#282c20;border:1px dashed #82795e;padding:12px;font-size:.79rem;margin:16px 0}
+.provenance strong{color:#f0dc9d}.provenance a{color:#e8d493;text-decoration:underline}
+.assets{margin:9px 0;padding-left:25px}.assets li{margin:5px 0}.pager{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px;margin-top:22px}
+.pager button{min-width:90px}.pager span{padding:8px;font-variant-numeric:tabular-nums}.footer{font-size:.75rem;color:#b7c9b8;border-top:1px solid #536a50;padding-top:15px;margin-top:20px}
+@media(max-width:1100px){.layout{grid-template-columns:1fr}.browse{max-height:280px}.tools{grid-template-columns:1fr 1fr}.tools label:last-child{grid-column:1/-1}}
+@media(max-width:650px){.root{padding:11px}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.tools{grid-template-columns:1fr}.tools label:last-child{grid-column:auto}.matrix>div{grid-template-columns:minmax(115px,1.5fr) repeat(3,minmax(43px,1fr));padding:7px 3px}.matrix strong,.matrix span{font-size:.67rem}.details{padding:11px}.fields>div{grid-template-columns:1fr;gap:3px}.actions button{flex:1}.pager button{flex:1;min-width:90px}}
