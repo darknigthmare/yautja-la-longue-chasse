@@ -35,6 +35,9 @@ export interface WarPlayableMissionV115 {
 export interface WarOuterMissionV115 {
   id: string; targetId: string; teamIds: string[]; focus: OuterFocusV115;
   startedAt: number; dueAt: number; routeIds: string[];
+  /** When recalled, the original deadline remains visible for audit. The
+   * squad stays assigned until its physically delayed return is reconciled. */
+  recall?: { orderedAt: number; originalDueAt: number };
 }
 export interface WarMissionReportV115 {
   id: string; mode: WarMissionModeV115; focus: OuterFocusV115 | null;
@@ -271,12 +274,15 @@ function recordOutcome(
 ): WarOperationsStateV115 {
   if (state.reports.some(item => item.id===id)) return state;
   const appliedIds = mode === "assault" ? state.active?.assault?.launched ?? [] : mode === "stealth" ? teamIds.slice(0,1) : teamIds;
+  // No free XP by queuing and immediately recalling an Outer Ops mission or
+  // withdrawing from a playable operation before its first simulated action.
+  const experiencedIds = outcome==="retreat" && (mode==="outer" || (state.active?.tick??0)===0) ? [] : appliedIds;
   const casualties:string[]=[];
   const teams = state.teams.map(team => {
     if (!teamIds.includes(team.id)) return team;
     let changed = team;
     const participants = team.members.filter(member => member.status==="fit").map(member => member.id);
-    if (participants.length && appliedIds.includes(team.id)) {
+    if (participants.length && experiencedIds.includes(team.id)) {
       const receipt = {
         operationId:id, resultId:id+"-final", mode: mode==="outer" ? "strategic" as const : mode==="stealth" ? "hero" as const : "rts" as const,
         objective: outcome==="victory" ? (mode==="stealth" || focus==="recon" ? "recon" as const : "battle" as const) : "retreat" as const,
@@ -284,7 +290,9 @@ function recordOutcome(
       };
       changed = applyWarResultV6(changed,receipt,rules).state;
     }
-    if (fallenIds.includes(team.id) || (outcome!=="victory" && appliedIds.includes(team.id))) {
+    // A lost objective is not a wound on every surviving soldier.
+    // Only identified fallen teams receive a light casualty in this exercise.
+    if (fallenIds.includes(team.id)) {
       const first = changed.members.find(member => member.status==="fit");
       if (first) {
         casualties.push(first.id);
@@ -629,12 +637,46 @@ export function simulateWarOuterMissionV115(
     "Résultat : mission interrompue ; blessure légère d'exercice et équipe rapatriée.");
   return {outcome:won?"victory":"defeat",woundedTeamIds,threat:threshold,strength,engagementLog};
 }
+/** Recall an Outer Ops squad without instant teleportation or another cost.
+ * The original upkeep stays spent; route time and previous departure remain.
+ * Every authorized recall returns a unique final "retreat" report only upon
+ * actual arrival. Retired orders cannot be recalled or settled twice.
+ */
+export function recallWarOuterMissionV116(
+  state:WarOperationsStateV115, id:string, now:number, rules:WarRulesV6,
+):WarOperationsUpdateV115 {
+  if(state.sourceSha!==rules.metadata.sha256||!Number.isSafeInteger(now)||now<0)
+    return reject(state,"Date ou source de l'ordre de rappel invalide.");
+  const order=state.outer.find(item=>item.id===id);
+  if(!order)return reject(state,"Ce mandat n'est plus en cours ou n'existe pas.");
+  if(order.recall)return reject(state,"Le rappel de cette équipe est déjà en cours.");
+  if(now<order.startedAt||now>=order.dueAt)return reject(state,"Le départ n'a pas commencé ou le mandat arrive déjà à échéance.");
+  // Exercise timing: 10s minimum, plus time to retrace the route. This is
+  // NOT a speed, ship or teleporter supplied by the official canon.
+  const returnMs=Math.max(10000,Math.ceil((now-order.startedAt)/2),order.routeIds.length*3000);
+  if(!Number.isSafeInteger(now+returnMs))return reject(state,"Horloge trop élevée pour conserver ce trajet.");
+  const returning:WarOuterMissionV115={
+    ...order,dueAt:now+returnMs,
+    recall:{orderedAt:now,originalDueAt:order.dueAt},
+  };
+  return accept({...state,outer:state.outer.map(item=>item.id===id?returning:item)},
+    "Rappel transmis : le détachement reste indisponible pendant son trajet de retour. Aucun remboursement ni résultat anticipé.");
+}
 export function settleWarOuterOpsV115(state:WarOperationsStateV115, now:number,rules:WarRulesV6):WarOperationsUpdateV115 {
   if(!Number.isSafeInteger(now)||now<0 || state.sourceSha!==rules.metadata.sha256) return reject(state,"Date ou règles incompatibles.");
   const due=state.outer.filter(order=>now>=order.dueAt).sort((a,b)=>a.dueAt-b.dueAt||a.id.localeCompare(b.id));
   if(!due.length) return reject(state,"Aucun rapport délégué arrivé à échéance.");
   let next=state;
   for(const order of due) {
+    if(order.recall){
+      next=recordOutcome({...next,clock:next.clock+1},order.id,"outer",order.focus,
+        order.targetId,order.teamIds,"retreat",[],rules,
+        "Rappel terminé : équipe revenue par son itinéraire connu. Aucun nouveau renseignement, aucun gain d'XP, aucune blessure ou annexion automatique.",
+        ["Ordre de retour reçu à "+order.recall.orderedAt+".",
+          "Mandat initial attendu à "+order.recall.originalDueAt+" ; délai de retour "+(order.dueAt-order.recall.orderedAt)+" ms.",
+          "Débarquement confirmé : effectif original libéré et entretien de départ non remboursé."]);
+      continue;
+    }
     const battle=simulateWarOuterMissionV115(next,order,rules);
     next=recordOutcome({...next,clock:next.clock+1},order.id,"outer",order.focus,order.targetId,order.teamIds,battle.outcome,
       battle.woundedTeamIds,rules,
@@ -702,6 +744,12 @@ export function readWarOperationsV115(raw:string,rules:WarRulesV6):WarOperations
     if(v.outer.some(order=>!isTextId(order.id)||!sites.has(order.targetId)||!Array.isArray(order.teamIds)||
       !order.teamIds.length||order.teamIds.some(id=>!ownTeam(v,id))||!Number.isSafeInteger(order.dueAt)||
       !Number.isSafeInteger(order.startedAt)||order.startedAt<0||order.dueAt<=order.startedAt||order.dueAt-order.startedAt>86400000||
+      (order.recall!==undefined&&(!order.recall||typeof order.recall!=="object"||
+        !Number.isSafeInteger(order.recall.orderedAt)||!Number.isSafeInteger(order.recall.originalDueAt)||
+        order.recall.orderedAt<order.startedAt||order.recall.orderedAt>=order.recall.originalDueAt||
+        order.recall.originalDueAt<=order.startedAt||order.recall.originalDueAt-order.startedAt>86400000||
+        order.dueAt<=order.recall.orderedAt||
+        order.dueAt-order.recall.orderedAt!==Math.max(10000,Math.ceil((order.recall.orderedAt-order.startedAt)/2),order.routeIds.length*3000)))||
       !Array.isArray(order.routeIds)||order.routeIds.length>100||order.routeIds.some(id=>!passages.has(id))||
       !["recon","intercept","escort"].includes(order.focus))) return null;
     if(unique(v.outer.map(order=>order.id)).length!==v.outer.length) return null;
