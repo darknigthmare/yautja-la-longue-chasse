@@ -1,0 +1,57 @@
+{
+  "checkpointBefore": {
+    "x": 4799.825914935707,
+    "y": 5024.21758152965
+  },
+  "checkpointAfter": {
+    "x": 4799.825914935707,
+    "y": 5024.21758152965
+  },
+  "oldLot": {
+    "id": "wide",
+    "ownerId": "local-quay-return-team",
+    "x": 4799.825914935707,
+    "y": 4964.21758152965,
+    "place": "ground"
+  },
+  "newLot": {
+    "id": "wide",
+    "ownerId": "local-quay-return-team",
+    "x": 4827.379122065994,
+    "y": 5030.736907870462,
+    "place": "ground"
+  },
+  "movesActor": false,
+  "civicClear": true,
+  "cargoCollision": "cargo-lot-wide-v108",
+  "cargoWalkable": false,
+  "requiredAfter": false,
+  "after120Steps": {
+    "x": 4799.825914935707,
+    "y": 5024.21758152965,
+    "vx": 0,
+    "vy": 0,
+    "facing": -1,
+    "grounded": true
+  },
+  "movedDistance": 0,
+  "plan": [
+    {
+      "kind": "ground-object",
+      "ledgerKey": "cargoV108",
+      "study": false,
+      "objectField": "lots",
+      "objectIndex": 0,
+      "objectId": "wide",
+      "from": {
+        "x": 4799.825914935707,
+        "y": 4964.21758152965
+      },
+      "obstacleId": "public-place-v112:traveler-marker",
+      "to": {
+        "x": 4827.379122065994,
+        "y": 5030.736907870462
+      }
+    }
+  ]
+}

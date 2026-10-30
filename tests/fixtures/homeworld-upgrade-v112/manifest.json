@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "purpose": "Genuine old native motor/action receipts used by the independent V112 upgrade recovery review. Receipt bytes are retained exactly; owners and positions are never rewritten.",
+  "sourceCommit": "def899ad07fea582053c5c204e4e578d8e0d7f9b",
+  "equivalentMergedBaseline": "a5a951e3f6dbb3fa399bd38f774a1f0b6ec58f5e",
+  "privateSourceManifestSha256": "d4bf56b2e785959bc2c0217bfd308d321707a9ecb5bc52b22dd70a1b6154572a",
+  "provenance": "V105/Cargo108/Archive106/Comparison107 were played in the verified private V111 capsule. V104/Plaque109/Continuation111 were played from the identical merged baseline tree during independent review. See scripts and logs in the V112 upgrade recovery proof folder.",
+  "fixtures": [
+    {
+      "path": "v112-v104-played-blocked-fixture.json",
+      "sha256": "7222cbd947414bce1ead6d8b14c5f64c93b42b7491eabe4dc6a62ff8967789d3",
+      "oldNativeSteps": 56
+    },
+    {
+      "path": "v112-reviewed-v105-walking-fixture.json",
+      "sha256": "635edccb78ba02789dfd3917cb5f21f0c84c6377854aa289cf4c437c621c223b",
+      "oldNativeSteps": 263
+    },
+    {
+      "path": "v112-reviewed-cargo-wide-carried-fixture.json",
+      "sha256": "26eb6081193f3cb28634d780de5790b3beb814d4967f97a8c97c987544b3a599",
+      "oldNativeSteps": 485
+    },
+    {
+      "path": "v112-reviewed-cargo-wide-ground-fixture.json",
+      "sha256": "d03265c80163db94222f65adab1aae05b6bab3c1fba363011f9e453f60f8f474",
+      "oldNativeSteps": 473
+    },
+    {
+      "path": "v112-reviewed-archive106-carried-fixture.json",
+      "sha256": "980d29c42983b1b9fbebafb41cb9dca1e3592ccf7b0c040881103f10b70646fd",
+      "oldNativeSteps": 514
+    },
+    {
+      "path": "v112-reviewed-archive106-ground-fixture.json",
+      "sha256": "ef81b3ca180018db9b23fc67b1b2b1c25320eb567cf27ddcd41d197f90bd4503",
+      "oldNativeSteps": 1025
+    },
+    {
+      "path": "v112-reviewed-comparison107-carried-fixture.json",
+      "sha256": "cdc6cdbb3ec10361ec612848b45ea36bd1e9feeceabd7fa24696da8586c1c741",
+      "oldNativeSteps": 740
+    },
+    {
+      "path": "v112-reviewed-comparison107-ground-fixture.json",
+      "sha256": "f98369a4647e5dbbb792ad2f089a372a7d2956f3e3f1fc19be75c6b8c9bfe0a8",
+      "oldNativeSteps": 1251
+    },
+    {
+      "path": "v112-reviewed-continuation-carried-fragment-fixture.json",
+      "sha256": "5754a6b1db25a009bc1caadcc50c3e8ad28244e7a9d0f143e502ba0422ca42ab",
+      "oldNativeSteps": 947
+    },
+    {
+      "path": "v112-reviewed-carried-plaque-fixture.json",
+      "sha256": "d94073f7f90fe06f3f233199549a48c95fe205d3dbd04693aa340991f906bdf4",
+      "oldNativeSteps": 630
+    }
+  ]
+}

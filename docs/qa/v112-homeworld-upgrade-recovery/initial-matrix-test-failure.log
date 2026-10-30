@@ -1,0 +1,103 @@
+TAP version 13
+# Subtest: V112 genuine played receipt v112-v104-played-blocked-fixture.json preserves coupled documents and exact original bytes
+ok 1 - V112 genuine played receipt v112-v104-played-blocked-fixture.json preserves coupled documents and exact original bytes
+  ---
+  duration_ms: 641.401777
+  type: 'test'
+  ...
+# Subtest: V112 genuine played receipt v112-reviewed-v105-walking-fixture.json preserves coupled documents and exact original bytes
+ok 2 - V112 genuine played receipt v112-reviewed-v105-walking-fixture.json preserves coupled documents and exact original bytes
+  ---
+  duration_ms: 35.684106
+  type: 'test'
+  ...
+# Subtest: V112 genuine played receipt v112-reviewed-cargo-wide-carried-fixture.json preserves coupled documents and exact original bytes
+ok 3 - V112 genuine played receipt v112-reviewed-cargo-wide-carried-fixture.json preserves coupled documents and exact original bytes
+  ---
+  duration_ms: 45.154015
+  type: 'test'
+  ...
+# Subtest: V112 genuine played receipt v112-reviewed-cargo-wide-ground-fixture.json preserves coupled documents and exact original bytes
+ok 4 - V112 genuine played receipt v112-reviewed-cargo-wide-ground-fixture.json preserves coupled documents and exact original bytes
+  ---
+  duration_ms: 59.234898
+  type: 'test'
+  ...
+# Subtest: V112 genuine played receipt v112-reviewed-archive106-carried-fixture.json preserves coupled documents and exact original bytes
+ok 5 - V112 genuine played receipt v112-reviewed-archive106-carried-fixture.json preserves coupled documents and exact original bytes
+  ---
+  duration_ms: 33.410256
+  type: 'test'
+  ...
+# Subtest: V112 genuine played receipt v112-reviewed-archive106-ground-fixture.json preserves coupled documents and exact original bytes
+ok 6 - V112 genuine played receipt v112-reviewed-archive106-ground-fixture.json preserves coupled documents and exact original bytes
+  ---
+  duration_ms: 26.995186
+  type: 'test'
+  ...
+# Subtest: V112 genuine played receipt v112-reviewed-comparison107-carried-fixture.json preserves coupled documents and exact original bytes
+ok 7 - V112 genuine played receipt v112-reviewed-comparison107-carried-fixture.json preserves coupled documents and exact original bytes
+  ---
+  duration_ms: 35.816351
+  type: 'test'
+  ...
+# Subtest: V112 genuine played receipt v112-reviewed-comparison107-ground-fixture.json preserves coupled documents and exact original bytes
+ok 8 - V112 genuine played receipt v112-reviewed-comparison107-ground-fixture.json preserves coupled documents and exact original bytes
+  ---
+  duration_ms: 38.876748
+  type: 'test'
+  ...
+# Subtest: V112 genuine played receipt v112-reviewed-continuation-carried-fragment-fixture.json preserves coupled documents and exact original bytes
+ok 9 - V112 genuine played receipt v112-reviewed-continuation-carried-fragment-fixture.json preserves coupled documents and exact original bytes
+  ---
+  duration_ms: 30.150134
+  type: 'test'
+  ...
+# Subtest: V112 genuine played receipt v112-reviewed-carried-plaque-fixture.json preserves coupled documents and exact original bytes
+ok 10 - V112 genuine played receipt v112-reviewed-carried-plaque-fixture.json preserves coupled documents and exact original bytes
+  ---
+  duration_ms: 26.523551
+  type: 'test'
+  ...
+# Subtest: V112 parked wide cargo cannot be restored onto its conserved owner; the actual native motor can leave afterwards
+not ok 11 - V112 parked wide cargo cannot be restored onto its conserved owner; the actual native motor can leave afterwards
+  ---
+  duration_ms: 6167.298537
+  type: 'test'
+  location: '/workspace/yautja-la-longue-chasse/tests/homeworld-geometry-recovery-matrix-v112.test.mjs:53:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The expression evaluated to a falsy value:
+    
+      assert(cargo.cargoWalkableV108('0',context.actor,plan.ledgers.cargoV108))
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/yautja-la-longue-chasse/tests/homeworld-geometry-recovery-matrix-v112.test.mjs:61:3)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: V112 a schema-boundary512-point trace compacts safely before its declared geometry break without doubling interruptions
+ok 12 - V112 a schema-boundary512-point trace compacts safely before its declared geometry break without doubling interruptions
+  ---
+  duration_ms: 53.166239
+  type: 'test'
+  ...
+# Subtest: V112 continuation resume attaches a nearby real checkpoint and its carried fragment while immutable B stays exact
+ok 13 - V112 continuation resume attaches a nearby real checkpoint and its carried fragment while immutable B stays exact
+  ---
+  duration_ms: 59.697721
+  type: 'test'
+  ...
+1..13
+# tests 13
+# suites 0
+# pass 12
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 9792.446858

@@ -3,6 +3,7 @@ import { PIT_WORKBOOK_AND_LEGACY_REGISTRY_V105 } from './pitWorkbookRegistryV105
 import { PIT_WORKBOOK_AND_LEGACY_REGISTRY_V106 } from './pitWorkbookRegistryV106';
 import {PIT_WORKBOOK_AND_LEGACY_REGISTRY_V107} from './pitWorkbookRegistryV107';
 import {PIT_WORKBOOK_AND_LEGACY_REGISTRY_V109} from './pitWorkbookRegistryV109';
+import {PIT_WORKBOOK_AND_LEGACY_REGISTRY_V112} from './pitWorkbookRegistryV112';
 import { getPitUserVariant, normalizePitUserVariant } from './systems/pitUserRoster';
 import originalArtV56 from './data/pitOriginalFighterArtV56.json';
 import { isPitOriginalFighterIdV56 } from './systems/pitOriginalFightersV56';
@@ -94,7 +95,8 @@ export function getPitCombatBitmapVisualBounds(
   if (![fighter.x, fighter.y, groundY].every(Number.isFinite) ||
     (fighter.facing !== 1 && fighter.facing !== -1)) return null;
   if (registry === PIT_SPRITE_SHEET_REGISTRY) {
-    if (fighter.normalMovesRecipe === 'workbook-v109') registry = PIT_WORKBOOK_AND_LEGACY_REGISTRY_V109;
+    if (fighter.normalMovesRecipe === 'workbook-v112') registry = PIT_WORKBOOK_AND_LEGACY_REGISTRY_V112;
+    else if (fighter.normalMovesRecipe === 'workbook-v109') registry = PIT_WORKBOOK_AND_LEGACY_REGISTRY_V109;
     else if (fighter.normalMovesRecipe === 'workbook-v107') registry = PIT_WORKBOOK_AND_LEGACY_REGISTRY_V107;
     else if (fighter.normalMovesRecipe === 'workbook-v106') registry = PIT_WORKBOOK_AND_LEGACY_REGISTRY_V106;
     else if (fighter.normalMovesRecipe === 'workbook-v105') registry = PIT_WORKBOOK_AND_LEGACY_REGISTRY_V105;
@@ -220,7 +222,7 @@ function hasExpectedAlpha(image: HTMLImageElement, definition: PitCombatBitmapAr
 /** Load only the selected IDs; an abandoned selection cannot publish late images. */
 export async function loadPitCombatBitmapArt(
   ids: readonly PitFighterId[],
-  options: { signal?: AbortSignal; timeoutMs?: number; spriteSheetRegistry?: readonly PitSpriteSheetAnimationDefinition[]; normalMoves?: 'workbook-v104' | 'workbook-v105' | 'workbook-v106' | 'workbook-v107' | 'workbook-v109'; variants?: readonly (string | null)[] } = {},
+  options: { signal?: AbortSignal; timeoutMs?: number; spriteSheetRegistry?: readonly PitSpriteSheetAnimationDefinition[]; normalMoves?: 'workbook-v104' | 'workbook-v105' | 'workbook-v106' | 'workbook-v107' | 'workbook-v109' | 'workbook-v112'; variants?: readonly (string | null)[] } = {},
 ): Promise<PitCombatBitmapArtBank> {
   const requestedIds = new Set(ids);
   const selectedVariants = ids.map((id, index) => normalizePitUserVariant(id, options.variants?.[index]) ?? null);
@@ -243,7 +245,7 @@ export async function loadPitCombatBitmapArt(
     requestedIds.forEach(id => failedIds.add(id));
     return bank();
   }
-  const animationLoad = loadPitSpriteSheetAnimations(ids, options.spriteSheetRegistry ?? (options.normalMoves === 'workbook-v109' ? PIT_WORKBOOK_AND_LEGACY_REGISTRY_V109 : options.normalMoves === 'workbook-v107' ? PIT_WORKBOOK_AND_LEGACY_REGISTRY_V107 : options.normalMoves === 'workbook-v106' ? PIT_WORKBOOK_AND_LEGACY_REGISTRY_V106 : options.normalMoves === 'workbook-v105'
+  const animationLoad = loadPitSpriteSheetAnimations(ids, options.spriteSheetRegistry ?? (options.normalMoves === 'workbook-v112' ? PIT_WORKBOOK_AND_LEGACY_REGISTRY_V112 : options.normalMoves === 'workbook-v109' ? PIT_WORKBOOK_AND_LEGACY_REGISTRY_V109 : options.normalMoves === 'workbook-v107' ? PIT_WORKBOOK_AND_LEGACY_REGISTRY_V107 : options.normalMoves === 'workbook-v106' ? PIT_WORKBOOK_AND_LEGACY_REGISTRY_V106 : options.normalMoves === 'workbook-v105'
     ? PIT_WORKBOOK_AND_LEGACY_REGISTRY_V105 : options.normalMoves === 'workbook-v104' ? PIT_WORKBOOK_NORMAL_AND_LEGACY_REGISTRY_V104 : PIT_SPRITE_SHEET_REGISTRY),
     { signal, timeoutMs, variants: selectedVariants });
   await Promise.all([...selections.entries()].map(async ([selection, { id, variantId }]) => {

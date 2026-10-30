@@ -1,0 +1,37 @@
+{
+  "kind": "PIT_R4_ATTEMPT_SEQUENCE",
+  "publishableCertificate": false,
+  "attempts": [
+    {
+      "attempt": "v112-pit-production-r4",
+      "path": "/tmp/v112-pit-production-r4/result.json",
+      "sha256": "f3458cf0430bda8be573675221eeb10f1320de521d1c04b4635d2ea60e79879e",
+      "status": "FAIL",
+      "checks": 92,
+      "captures": 29,
+      "completedJourneys": [
+        "FeralScar"
+      ],
+      "failure": "Error: Public V112 journey timed out: scar-vs-feral-hunter-J2-initial real capture {\"frame\":3288,\"phase\":\"fight\",\"combatPhase\":\"round\",\"terminal\":\"false\",\"blocked\":\"false\",\"recipe\":\"workbook-v112\",\"throw\":null,\"forwardThrow\":null,\"facings\":[1,-1],\"positions\":[{\"x\":642.85,\"y\":0},{\"x\":696.85,\"y\":0}],\"actions\":[{\"phase\":\"idle\",\"normalMove\":null,\"workbookMove\":null,\"actionFrame\":null,\"connected\":null,\"superConfirmed\":null},{\"phase\":\"idle\",\"normalMove\":null,\"workbookMove\":null,\"actionFrame\":null,\"connected\":null,\"superConfirmed\":null}],\"life\":[1010,630],\"meter\":[348,183],\"inventory\":[{\"item\":\"shuriken\",\"status\":\"ready\",\"effectId\":null},{\"item\":\"mine\",\"status\":\"ready\",\"effectId\":null}]}",
+      "sourceUnchanged": true
+    },
+    {
+      "attempt": "v112-pit-production-r4-retry1",
+      "path": "/tmp/v112-pit-production-r4-retry1/result.json",
+      "sha256": "5a42961fd27f47daa1953f49663d431f5c264c3c98fbf696bbfbb9626ed29413",
+      "status": "PASS",
+      "checks": 127,
+      "captures": 39,
+      "completedJourneys": [
+        "FeralScar",
+        "ScarFeral"
+      ],
+      "failure": null,
+      "sourceUnchanged": true
+    }
+  ],
+  "sameCanonicalDriverAndFrozenSources": true,
+  "facts": "The first canonical attempt failed waiting for second-journey J2keyboard capture. The single authorized byte-identical full retry passed all127checks. Both raw results are retained unchanged.",
+  "remainingUncertainty": "A short17mskeyboard hold without observed startup acknowledgement is a plausible timing-sensitive weakness of the driver, but the initial raw does not establish its cause; successful retry is not a retrospective diagnosis.",
+  "initialDiagnostic": "/tmp/v112-pit-production-r4/failure-diagnostic.json"
+}

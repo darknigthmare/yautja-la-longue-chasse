@@ -1,0 +1,81 @@
+{
+  "release": "V112",
+  "status": "PASS_FOLLOWUP_FINALIZATION",
+  "runtimeCommit": "aa891dfff9bc022d1b7363d4b7085aca19b4d1e3",
+  "buildId": "WZwxZDYUZhpepqlaPWKpe",
+  "checks": {
+    "topLevelTests": 14,
+    "failed": 0,
+    "skipped": 0,
+    "targetedLintFiles": 3,
+    "sourceAuditReproduced": true,
+    "workbookAndMetadataReproduced": true,
+    "frozenEntriesUnchanged": 1563,
+    "worksheets": 122,
+    "historicalWorksheetsByteIdentical": 113,
+    "formulas": 5,
+    "inputFingerprints": 1791,
+    "newlyClosedSourceRequirements": 0
+  },
+  "products": [
+    {
+      "path": "docs/YAUTJA_V112_SUIVI.xlsx",
+      "bytes": 9383908,
+      "sha256": "b29aa412000717cdfd81be1a60e2c2f9d8489c0b8b2ed5d29404668d04dd1d02"
+    },
+    {
+      "path": "docs/v112-homeworld-followup.json",
+      "bytes": 1041378,
+      "sha256": "4441c86ce7baedc74b9523e746e0b7be1bc511f2dedb7c522498d03e46130b0b"
+    },
+    {
+      "path": "docs/v112-homeworld-followup-qa.json",
+      "bytes": 4237,
+      "sha256": "6d35098e6c99b31f7c3e9c23c79cb117ab89ecf3abe966468bdeb01d31e8f2a0"
+    },
+    {
+      "path": "docs/v112-homeworld-source.json",
+      "bytes": 74763,
+      "sha256": "dcbb756254bb6e2781c2970b34a7b0154c7f5ed5d44254d93a973254020826b9"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "docs/qa/v112-excel-followup/final-followup-and-history-14-tests.log",
+      "bytes": 6818,
+      "sha256": "3dbe7e2adc429452352d211eecbeff78504a1023bed57d37361338e705b02b56"
+    },
+    {
+      "path": "docs/qa/v112-excel-followup/finalized-metadata-14-tests.log",
+      "bytes": 6801,
+      "sha256": "a7ec7bf5980ba8afa323c9e9fd7c7f87888fe3753b5c7625e9cdeb3efc68a5f7"
+    },
+    {
+      "path": "docs/qa/v112-excel-followup/final-metadata-tools-lint.json",
+      "bytes": 272,
+      "sha256": "2ad40aa66eb572280e4d7652a98836e674d9b1659f77777b4aa015bf594a5d5f"
+    },
+    {
+      "path": "docs/qa/v112-excel-followup/final-generation.log",
+      "bytes": 579,
+      "sha256": "aee5f0e0fee98dd0fb73897c119be9182f66987468d890946ea8b12ddeeef56d"
+    },
+    {
+      "path": "docs/qa/v112-excel-followup/final-reproduction.log",
+      "bytes": 579,
+      "sha256": "aee5f0e0fee98dd0fb73897c119be9182f66987468d890946ea8b12ddeeef56d"
+    },
+    {
+      "path": "docs/qa/v112-excel-followup/final-audit-reproduction.log",
+      "bytes": 450,
+      "sha256": "31e58777f34c0e12c2858a84f9439c94b9a70b527bba0135e434a415faca2d0d"
+    }
+  ],
+  "limits": [
+    "14 top-level checks include historical assertions already covered by the separate 132-assertion suite; do not sum as distinct game behaviors.",
+    "This finalization checks spreadsheet structure/provenance, not native Excel or a new browser session.",
+    "The published Homeworld/Pit R4 reports retain their own complete compiled-app evidence.",
+    "Pit first R4 attempt failed92/29 with unattributed cause; sole identical complete retry passed127/39.",
+    "All56 source requirements, including the9 actions, and354 artistic targets remain globally open."
+  ]
+}

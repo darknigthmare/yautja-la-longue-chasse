@@ -1,0 +1,136 @@
+{
+  "status": "PASS",
+  "scope": "Actual React atlas and actual module Worker with explicit parent coordinate/owner/pause fixtures. No gameplay movement, compiled app certification or art admission is claimed.",
+  "checks": [
+    {
+      "name": "1440px actual React heading immediately uses its newly published actor",
+      "status": "PASS",
+      "detail": {
+        "before": {
+          "x": 7360.785118028363,
+          "y": 5334.168974803956
+        },
+        "after": {
+          "state": "walking",
+          "current": "true",
+          "x": 7320.78288033766,
+          "y": 5330.191479579029
+        },
+        "expected": {
+          "x": 7320.78288033766,
+          "y": 5330.191479579029
+        }
+      }
+    },
+    {
+      "name": "1440px coordinate update requires no350ms timer or new Worker",
+      "status": "PASS",
+      "detail": {
+        "workers": 1
+      }
+    },
+    {
+      "name": "1440px actual guide stays visible inside its fixture viewport",
+      "status": "PASS",
+      "detail": {
+        "x": 26,
+        "y": 897.765625,
+        "width": 360,
+        "height": 73.234375
+      }
+    },
+    {
+      "name": "1440px pause keeps the visible guide suspended",
+      "status": "PASS"
+    },
+    {
+      "name": "1440px foreign owner cannot retain the old route",
+      "status": "PASS"
+    },
+    {
+      "name": "390px actual React heading immediately uses its newly published actor",
+      "status": "PASS",
+      "detail": {
+        "before": {
+          "x": 7360.785118028363,
+          "y": 5334.168974803956
+        },
+        "after": {
+          "state": "walking",
+          "current": "true",
+          "x": 7320.78288033766,
+          "y": 5330.191479579029
+        },
+        "expected": {
+          "x": 7320.78288033766,
+          "y": 5330.191479579029
+        }
+      }
+    },
+    {
+      "name": "390px coordinate update requires no350ms timer or new Worker",
+      "status": "PASS",
+      "detail": {
+        "workers": 1
+      }
+    },
+    {
+      "name": "390px actual guide stays visible inside its fixture viewport",
+      "status": "PASS",
+      "detail": {
+        "x": 16,
+        "y": 754.828125,
+        "width": 358,
+        "height": 62.171875
+      }
+    },
+    {
+      "name": "390px pause keeps the visible guide suspended",
+      "status": "PASS"
+    },
+    {
+      "name": "390px foreign owner cannot retain the old route",
+      "status": "PASS"
+    },
+    {
+      "name": "No uncaught actual React/Worker browser exception",
+      "status": "PASS",
+      "detail": []
+    }
+  ],
+  "captures": [
+    {
+      "file": "1440px-live-guidance.png",
+      "bytes": 24664,
+      "sha256": "d3b39ffa02879f1272a2c28a75c1e1314af2489c6dbe56d5a1dbd631f4ec9b25"
+    },
+    {
+      "file": "390px-live-guidance.png",
+      "bytes": 19300,
+      "sha256": "80025a626865acead7a3f374588c63d298e3c1b7c0025cc9ccb015ab88472870"
+    }
+  ],
+  "errors": [],
+  "failure": null,
+  "fixture": {
+    "origin": {
+      "actor": {
+        "x": 7520,
+        "y": 5350
+      },
+      "levelId": "0",
+      "interiorId": null
+    },
+    "nextOrigin": {
+      "actor": {
+        "x": 7480,
+        "y": 5346
+      },
+      "levelId": "0",
+      "interiorId": null
+    },
+    "targetId": "objective-plaque-resume-v110",
+    "historicalOwner": "2026-09-20T10:00:00.000Z",
+    "sourceCommit": "def899ad07fea582053c5c204e4e578d8e0d7f9b"
+  }
+}

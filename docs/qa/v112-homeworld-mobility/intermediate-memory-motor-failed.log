@@ -1,0 +1,50 @@
+TAP version 13
+# Subtest: V112 reproduces the premature officer arrival and continues toward the actual interaction range
+ok 1 - V112 reproduces the premature officer arrival and continues toward the actual interaction range
+  ---
+  duration_ms: 31.286494
+  type: 'test'
+  ...
+# Subtest: V112 interior arrivals match the real requested target for every service and audience, including the former 24-unit halo
+ok 2 - V112 interior arrivals match the real requested target for every service and audience, including the former 24-unit halo
+  ---
+  duration_ms: 594.148092
+  type: 'test'
+  ...
+# Subtest: V112 the unchanged native interior motor follows every guide until the requested interlocutor is actually in reach
+not ok 3 - V112 the unchanged native interior motor follows every guide until the requested interlocutor is actually in reach
+  ---
+  duration_ms: 627.989961
+  type: 'test'
+  location: '/workspace/yautja-la-longue-chasse/tests/homeworld-mobility-v112.test.mjs:54:1'
+  failureType: 'testCodeFailure'
+  error: 'point:memory-register-point remains on its verified corridor {"actor":{"x":365.5761834584641,"y":284.28429403068037,"vx":-327.9837502801388,"vy":-28.697175405991402,"facing":-1,"grounded":true},"points":[{"x":269,"y":376},{"x":377,"y":376},{"x":377,"y":280},{"x":161,"y":268},{"x":161,"y":184}]}'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'off-route'
+  actual: 'off-route'
+  operator: 'notStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/yautja-la-longue-chasse/tests/homeworld-mobility-v112.test.mjs:64:14)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: V112 preserves the V111 street plan and owner, geometry and stale-target refusals
+ok 4 - V112 preserves the V111 street plan and owner, geometry and stale-target refusals
+  ---
+  duration_ms: 115.679057
+  type: 'test'
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 3
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1529.774758

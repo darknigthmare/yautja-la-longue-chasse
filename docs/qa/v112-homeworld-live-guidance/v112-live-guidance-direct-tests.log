@@ -1,0 +1,28 @@
+TAP version 13
+# Subtest: the actual React origin memo depends on both published coordinates and the physical space, without a delayed second state
+ok 1 - the actual React origin memo depends on both published coordinates and the physical space, without a delayed second state
+  ---
+  duration_ms: 3.285493
+  type: 'test'
+  ...
+# Subtest: the unchanged current guide changes its heading for a newly published body and preserves owner and ground refusals
+ok 2 - the unchanged current guide changes its heading for a newly published body and preserves owner and ground refusals
+  ---
+  duration_ms: 358.586035
+  type: 'test'
+  ...
+# Subtest: the actual browser follower refuses a stale arrived guide before accepting the last step
+ok 3 - the actual browser follower refuses a stale arrived guide before accepting the last step
+  ---
+  duration_ms: 21.246939
+  type: 'test'
+  ...
+1..3
+# tests 3
+# suites 0
+# pass 3
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 411.144279
