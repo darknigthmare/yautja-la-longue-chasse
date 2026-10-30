@@ -40,6 +40,7 @@ jobs:
             /tests/clan-war-operations-v115.test.mjs
             /tests/clan-war-operation-cross-mode-v115.test.mjs
             /tests/clan-war-tactical-runtime-v115.test.mjs
+            /tests/clan-war-recruitment-v115.test.mjs
       - name: Node 22
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
