@@ -407,7 +407,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false}:
         {rts.scripted?.kind==="guard-relief"&&<p className={styles.scenarioStatus}>
           Relève : <strong>{rts.scripted.reliefProgress}/{rts.scripted.requiredTurns} tours</strong> ·
           Poste : <strong>7,3</strong> · Une victoire par élimination seule ne suffit pas.
-        </p>
+        </p>}
         <p className={styles.explain}>Théâtre : {missionTerrain?.title} · {missionTerrain?.ground} · couverts : {missionTerrain?.coverLabel}. Les murs interrompent les trajets et les lignes de tir.</p>
         <div className={styles.cards}><button type="button" disabled={blocked}
           aria-pressed={Boolean(rts.realtime)} onClick={()=>commit(toggleWarRtsRealtimeV115(worldRef.current,!rts.realtime))}>
