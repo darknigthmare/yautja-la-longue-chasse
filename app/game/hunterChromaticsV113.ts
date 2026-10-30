@@ -4,6 +4,7 @@ import { PHG_HISTORICAL_STUDIES_V127 } from "./phgHistoricalMaterialsV127.ts";
 import { PHG_PLATFORM_STUDIES_V128 } from "./phgPlatformStudiesV128.ts";
 import { PHG_V129_PATCH_MATERIALS } from "./phgPatchStudiesV129.ts";
 import { PHG_OGRE_BIOMASK_MATERIAL_V131, alphaMaskEligibleV131 } from "./phgBiomaskTintsV131.ts";
+import { PHG_BIOMASK_V132_CANDIDATES, maskMaterialAllowedV132 } from "./phgBiomaskStudiesV132.ts";
 import PHG_DRIVE_CATALOG_V120 from "./data/phgDriveV120Catalog.json" with { type: "json" };
 import PHG_DRIVE_INSTALLED_V120 from "./data/phgDriveV120Installed.json" with { type: "json" };
 /**
@@ -22,7 +23,7 @@ export interface HunterChromaticsV113 {
   armorHex: string | null;
   maskHex: string | null;
   /** Alpha identity survives the transition to a customized preset. */
-  maskOriginId: "alpha" | null;
+  maskOriginId: "alpha" | "samurai" | null;
   skinMaterialId: string | null;
   dreadMaterialId: string | null;
   outfitMaterialId: string | null;
@@ -281,6 +282,7 @@ export const PHG_CHROMATIC_MATERIALS_V113: readonly ChromaticMaterialV113[] = Ob
   ...PHG_PLATFORM_STUDIES_V128.filter(x => x.status === "integrated"),
   ...PHG_V129_PATCH_MATERIALS.filter(x => x.status === "integrated"),
   PHG_OGRE_BIOMASK_MATERIAL_V131,
+  ...PHG_BIOMASK_V132_CANDIDATES.filter(item => item.status === "integrated"),
 ]);
 
 export const DEFAULT_CHROMATICS_V113: Readonly<HunterChromaticsV113> = Object.freeze({
@@ -380,7 +382,8 @@ export function normalizeHunterChromaticsV113(source: unknown): HunterChromatics
   // V131 is intentionally a separate workshop: older V113 games retain all
   // four existing color channels, and untrusted mask URLs are never restored.
   result.maskHex = normalizeChromaticHexV113(source.maskHex);
-  result.maskOriginId = source.maskOriginId === "alpha" ? "alpha" : null;
+  result.maskOriginId = source.maskOriginId === "alpha" || source.maskOriginId === "samurai"
+    ? source.maskOriginId : null;
   result.maskMaterialId = getChromaticMaterialV113("biomask", source.maskMaterialId)?.id ?? null;
   return result;
 }
@@ -463,9 +466,11 @@ export function maskChromaticsForAppearanceV131(appearance: {
   chromaticsV113?: unknown;
 }): HunterChromaticsV113 {
   const selected = normalizeHunterChromaticsV113(appearance.chromaticsV113);
-  return alphaMaskEligibleV131(appearance)
-    ? selected
-    : { ...selected, maskMaterialId: null };
+  const maskId = selected.maskMaterialId;
+  const allowed = maskId === PHG_OGRE_BIOMASK_MATERIAL_V131.id
+    ? alphaMaskEligibleV131(appearance)
+    : maskMaterialAllowedV132(appearance, maskId);
+  return !maskId || allowed ? selected : { ...selected, maskMaterialId: null };
 }
 
 /** PNG is applied first; a translucent user pigment remains visible above it.
