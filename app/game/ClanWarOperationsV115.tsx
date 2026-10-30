@@ -3,6 +3,9 @@
 import { useEffect, useRef, useState } from "react";
 import { planWarRouteV6, type WarRulesV6 } from "./systems/clanWarBibleV6";
 import { warMissionTerrainV116 } from "./systems/clanWarMissionTerrainV116";
+import { warSourceRtsScenarioV119, warRtsScriptedEligibilityV119,
+  type WarSourceRtsScenarioIdV119,
+} from "./systems/clanWarRtsScenariosV119";
 import {
   WAR_OPERATIONS_STORAGE_V115, beginWarOperationV115, commandRtsV115, commandStealthV115,
   createWarOperationsV115, deployAssaultUnitV115, issueWarRtsRealtimeOrderV115,
@@ -36,6 +39,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false}:
   const [targetId,setTargetId]=useState(rules.territories[1]?.id??"");
   const [selectedIds,setSelectedIds]=useState<string[]>([]);
   const [rtsSelectedId,setRtsSelectedId]=useState("");
+  const [rtsScenarioId,setRtsScenarioId]=useState<"free"|WarSourceRtsScenarioIdV119>("free");
   const [recruitUnitId,setRecruitUnitId]=useState(rules.units[8]?.id??rules.units[0]?.id??"");
   const [careMemberId,setCareMemberId]=useState("");
   const [careMedicTeamId,setCareMedicTeamId]=useState("");
@@ -140,7 +144,12 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false}:
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[active,hydrated,blocked,world.active?.id,world.active?.rts?.realtime,rules,persist]);
 
-  const requestIssue=hydrated ? warMissionEligibleV115(world,rules,targetId,selectedIds) : "Chargement de l'archive";
+  const scenarioIssue=mode==="rts"&&rtsScenarioId!=="free"?
+    warRtsScriptedEligibilityV119(rtsScenarioId,rules,targetId,
+      selectedIds.map(id=>world.teams.find(team=>team.id===id)?.unitId??"")):null;
+  const scenarioBrief=mode==="rts"&&rtsScenarioId!=="free"?warSourceRtsScenarioV119(rtsScenarioId,rules):null;
+  const requestIssue=hydrated?
+    warMissionEligibleV115(world,rules,targetId,selectedIds)??scenarioIssue:"Chargement de l'archive";
   const target=rules.territories.find(site=>site.id===targetId);
   const recruitUnit=rules.units.find(unit=>unit.id===recruitUnitId);
   const woundedMembers=world.teams.flatMap(team=>team.members.filter(member=>member.status==="wounded")
@@ -161,7 +170,8 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false}:
   const teamsById=(teamId:string)=>rules.units.find(unit=>unit.id===world.teams.find(team=>team.id===teamId)?.unitId)?.name ?? teamId;
 
   function start() {
-    const result=beginWarOperationV115(worldRef.current,mode,targetId,selectedIds,rules,Date.now(),focus);
+    const result=beginWarOperationV115(worldRef.current,mode,targetId,selectedIds,rules,Date.now(),focus,
+      mode==="rts"&&rtsScenarioId!=="free"?rtsScenarioId:null);
     if(result.accepted && mode==="rts") {
       setRtsSelectedId(result.state.active?.teamIds[0]??"");
       const enabled=toggleWarRtsRealtimeV115(result.state,true);
@@ -221,6 +231,22 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false}:
             {(Object.keys(focusLabels) as OuterFocusV115[]).map(key=><option value={key} key={key}>{focusLabels[key]}</option>)}
           </select>
         </label>}
+        {mode==="rts"&&<div className={styles.sourceScenario}>
+          <label>Objectif RTS
+            <select value={rtsScenarioId} onChange={event=>setRtsScenarioId(event.target.value as "free"|WarSourceRtsScenarioIdV119)}>
+              <option value="free">Escarmouche libre · balise</option>
+              {(["W3-RTS01","W3-RTS02"] as const).map(id=>{
+                const source=warSourceRtsScenarioV119(id,rules);
+                return source?<option value={id} key={id}>{id} · {source.title}</option>:null;
+              })}
+            </select>
+          </label>
+          {scenarioBrief&&<div className={styles.brief}><strong>{scenarioBrief.id} · {scenarioBrief.title}</strong>
+            <p>{scenarioBrief.situation}</p><p><strong>Objectif :</strong> {scenarioBrief.completion}</p>
+            <p><strong>Riposte attendue :</strong> {scenarioBrief.enemyPlan}</p>
+            <small>Épreuve fonctionnelle 9 × 6 uniquement ; la carte W3-MAP01 complète et son scénario cinématique restent à réaliser.</small>
+          </div>}
+        </div>}
       </fieldset>
       <fieldset disabled={blocked}>
         <legend>3. Affecter jusqu&apos;à {mode==="stealth"?"deux":"quatre"} équipes existantes</legend>
