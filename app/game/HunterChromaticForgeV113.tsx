@@ -12,6 +12,7 @@ import {
 import { PHG_RECENT_RELEASES_V125, PHG_FERAL_CORRECTION_V125 } from "./phgRecentReleasesV125";
 import { PHG_RECENT_CANDIDATES_V126, PHG_RECENT_UPDATES_V126 } from "./phgRecentMaterialsV126";
 import { PHG_HISTORICAL_UNLOCKS_V127, PHG_MENU_SCREENSHOTS_V127 } from "./phgHistoricalMaterialsV127";
+import { PHG_OGRE_MASK_CORRECTION_V128 } from "./phgPlatformStudiesV128";
 import styles from "./HunterChromaticForgeV113.module.css";
 
 export default function HunterChromaticForgeV113({
@@ -77,6 +78,10 @@ export default function HunterChromaticForgeV113({
         {item.level === null ? "" : " · niveau PHG " + item.level}{" "}
         <a href={item.sourceUrl} target="_blank" rel="noopener noreferrer">Note officielle</a>
       </li>)}</ul>
+      <p>Correction archivistique : Ogre ({PHG_OGRE_MASK_CORRECTION_V128.patch}) est une teinte de <strong>biomask Alpha Predator</strong>, pas une peinture d'armure.
+        Le calque biomask dédié devra être prêt avant sa sélection.</p>
+      <p>Exiled Marbled/Bronze, Steam, Epic et PlayStation : quatre études V128 ajoutées ; seule la première dispose d'une capture de menu nommée.
+        Les palettes ne sont pas des textures PHG extraites ni certifiées 1:1.</p>
       <p>Captures d’écran où le nom de la variante est visible :</p>
       <ul>{PHG_MENU_SCREENSHOTS_V127.map(item => <li key={item.name}>
         <a href={item.url} target="_blank" rel="noopener noreferrer">{item.name}</a>
@@ -120,7 +125,7 @@ export default function HunterChromaticForgeV113({
             {choices.filter(item => !item.atlas).map(item =>
               <option key={item.id} value={item.id}>{item.label}{item.evidence === "provisional" ? " · provisoire" : ""}</option>
             )}
-            {choices.some(item => item.atlas) && <optgroup label="Études V125–V127 — reconstructions non certifiées 1:1">
+            {choices.some(item => item.atlas) && <optgroup label="Études V125–V128 — reconstructions non certifiées 1:1">
               {choices.filter(item => item.atlas).map(item =>
                 <option key={item.id} value={item.id}>{item.label}</option>
               )}

@@ -656,12 +656,15 @@
       "existingV120Material": false,
       "study": null,
       "visualStatus": "unresolved-pixel-match",
-      "canEnterOfficial1to1Catalog": false
+      "canEnterOfficial1to1Catalog": false,
+      "v128Study": "phg-study-v128-exiled-marbled-bronze",
+      "v128Evidence": "Exiled highlighted Marbled/Bronze, Elder equipped check remains; NOT proof this is the new patch 2.39 dye",
+      "v128MenuCapture": "https://forum.predator.illfonic.com/t/predlocks-elder/27425"
     },
     {
       "id": "armure_v2_ogre_pending",
       "label": "Ogre — référence visuelle nommée à compléter",
-      "category": "Armure",
+      "category": "Biomask",
       "family": "Ogre",
       "sourceStatus": "missing_visual_reference",
       "referenceStatus": "nom_atteste_mais_apparence_precise_non_verifiee",
@@ -678,7 +681,12 @@
       "existingV120Material": false,
       "study": null,
       "visualStatus": "unresolved-pixel-match",
-      "canEnterOfficial1to1Catalog": false
+      "canEnterOfficial1to1Catalog": false,
+      "v128CanonicalType": "biomask-tint",
+      "v128CanonicalClass": "Alpha Predator",
+      "v128CanonicalId": "biomask_alpha_ogre",
+      "v128DisallowArmor": true,
+      "v128Source": "https://forum.predator.illfonic.com/t/patch-notes-2-19/20975"
     },
     {
       "id": "armure_v2_epic_exclusive_pending",
@@ -698,7 +706,9 @@
       "existingV120Material": false,
       "study": null,
       "visualStatus": "unresolved-pixel-match",
-      "canEnterOfficial1to1Catalog": false
+      "canEnterOfficial1to1Catalog": false,
+      "v128Study": "phg-study-v128-epic-copper",
+      "v128PixelEvidence": "absent-colors-provisional"
     },
     {
       "id": "armure_v2_playstation_themed_pending",
@@ -721,7 +731,14 @@
       "existingV120Material": false,
       "study": null,
       "visualStatus": "unresolved-pixel-match",
-      "canEnterOfficial1to1Catalog": false
+      "canEnterOfficial1to1Catalog": false,
+      "v128Study": "phg-study-v128-playstation-graphite",
+      "v128PixelEvidence": "absent-colors-provisional"
     }
-  ]
+  ],
+  "v128SteamStudy": {
+    "id": "phg-study-v128-steam-light-metal",
+    "historicalReference": "https://forum.predator.illfonic.com/t/what-happened-to-the-steam-exclusive-shader-and-why-not-for-the-masks/26467",
+    "pixelsVerified": false
+  }
 }
