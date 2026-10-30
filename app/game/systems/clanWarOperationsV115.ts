@@ -20,7 +20,11 @@ export interface WarAssaultV115 {
   actors: WarMissionActorV115[]; launched: string[]; fallen: string[];
 }
 export interface WarStealthV115 { x: number; y: number; guardX: number; guardDirection: -1 | 1; alarm: number; cloaked: boolean; energy: number; sabotaged: boolean }
-export interface WarRtsV115 { actors: WarRtsActorV115[]; hold: number; fallen: string[] }
+export interface WarRtsOrderV115 { x: number; y: number; kind: "advance" | "hold" | "attack" }
+export interface WarRtsV115 {
+  actors: WarRtsActorV115[]; hold: number; fallen: string[];
+  realtime?: boolean; orders?: Record<string, WarRtsOrderV115>;
+}
 export interface WarPlayableMissionV115 {
   id: string; mode: "assault" | "stealth" | "rts"; targetId: string; teamIds: string[];
   tick: number; assault?: WarAssaultV115; stealth?: WarStealthV115; rts?: WarRtsV115;
@@ -124,7 +128,7 @@ export function beginWarOperationV115(
     const allied = teamIds.map((teamId,index) => ({id:"ally-"+index,teamId,unitId:ownTeam(state,teamId)!.unitId,side:"ally" as const,x:1,y:1+index,hp:lifeFor(ownTeam(state,teamId)!.unitId,rules)}));
     const enemyUnits = rules.units.filter(unit => unit.fullMembers>0).slice(0,3);
     const rival = enemyUnits.map((unit,index) => ({id:"rival-"+index,teamId:null,unitId:unit.id,side:"rival" as const,x:7,y:1+index,hp:Math.max(2,lifeFor(unit.id,rules)-(state.weakenedIds.includes(targetId)?3:0))}));
-    active.rts={actors:[...allied,...rival],hold:0,fallen:[]};
+    active.rts={actors:[...allied,...rival],hold:0,fallen:[],realtime:false,orders:{}};
   }
   return accept({...reserved,active},"Mission jouable ouverte. Les équipes et leur entretien sont réservés une seule fois.");
 }
@@ -272,6 +276,7 @@ function rtsEnemyTurn(actors:WarRtsActorV115[],rules:WarRulesV6) {
 export function commandRtsV115(state:WarOperationsStateV115,teamId:string,x:number,y:number,rules:WarRulesV6):WarOperationsUpdateV115 {
   const mission=state.active, field=mission?.rts;
   if(mission?.mode!=="rts" || !field || !Number.isInteger(x)||!Number.isInteger(y)||x<0||x>8||y<0||y>5) return reject(state,"Ordre RTS ou case invalide.");
+  if(field.realtime) return reject(state,"La simulation RTS évolue en temps réel : donnez un ordre de destination au lieu de jouer un tour.");
   const actors=field.actors.map(actor=>({...actor}));
   const actor=actors.find(item=>item.teamId===teamId && item.hp>0);
   if(!actor) return reject(state,"Sélectionnez une équipe combattante encore active.");
@@ -290,12 +295,97 @@ export function commandRtsV115(state:WarOperationsStateV115,teamId:string,x:numb
   const alive=actors.filter(item=>item.hp>0);
   const holding=alive.some(item=>item.side==="ally"&&item.x===7&&item.y===3) && !alive.some(item=>item.side==="rival"&&distance(item,{x:7,y:3})<=1);
   const hold=holding?field.hold+1:0;
-  const advanced={...state,clock:state.clock+1,active:{...mission,tick:mission.tick+1,rts:{actors:alive,hold,fallen}}};
+  const advanced={...state,clock:state.clock+1,active:{...mission,tick:mission.tick+1,rts:{...field,actors:alive,hold,fallen}}};
   if(alive.some(item=>item.side==="ally") && (hold>=2 || !alive.some(item=>item.side==="rival"))) return accept(recordOutcome(advanced,mission.id,"rts",null,mission.targetId,mission.teamIds,"victory",fallen,rules,
     "Objectif tenu deux ordres ou défense neutralisée. Le siège ne vaut pas annexion automatique."),"Objectif RTS sécurisé.");
   if(!alive.some(item=>item.side==="ally") || mission.tick>=49) return accept(recordOutcome(advanced,mission.id,"rts",null,mission.targetId,mission.teamIds,"defeat",fallen,rules,
     "Détachement replié après échec de l'objectif."),"RTS terminé : échec consigné.");
   return accept(advanced,"Ordre exécuté. L'adversaire a effectué sa réponse tactique.");
+}
+
+/** Cover on this small exercise grid is a prototype abstraction, not a map
+ * from any film. Only units actually standing on cover gain mitigation. */
+export const WAR_RTS_COVER_V115 = Object.freeze(["3,1","4,3","5,4","6,2"] as const);
+const coverAt = (actor:WarRtsActorV115) => WAR_RTS_COVER_V115.some(tile=>tile===coord(actor.x,actor.y));
+export function toggleWarRtsRealtimeV115(state:WarOperationsStateV115,on:boolean):WarOperationsUpdateV115 {
+  const mission=state.active,field=mission?.rts;
+  if(mission?.mode!=="rts"||!field||typeof on!=="boolean") return reject(state,"Bataille RTS ou commande absente.");
+  if(Boolean(field.realtime)===on) return reject(state,"La vitesse de simulation est déjà dans cet état.");
+  const nextField={...field,realtime:on,orders:on?field.orders??{}:{}};
+  return accept({...state,active:{...mission,rts:nextField}},on?"Temps réel activé. Donnez vos ordres, le front avance chaque seconde.":"Commandement tactique par ordre rétabli.");
+}
+export function issueWarRtsRealtimeOrderV115(
+  state:WarOperationsStateV115,teamId:string,x:number,y:number,kind:"advance"|"hold"|"attack"="advance",
+):WarOperationsUpdateV115 {
+  const mission=state.active,field=mission?.rts;
+  if(mission?.mode!=="rts"||!field?.realtime||!Number.isInteger(x)||!Number.isInteger(y)||x<0||x>8||y<0||y>5||
+    !["advance","hold","attack"].includes(kind)) return reject(state,"Ordre en temps réel invalide.");
+  const actor=field.actors.find(item=>item.teamId===teamId&&item.side==="ally"&&item.hp>0);
+  if(!actor) return reject(state,"Équipe absente ou hors de combat.");
+  const enemy=field.actors.find(item=>item.side==="rival"&&item.hp>0&&item.x===x&&item.y===y);
+  if(kind==="attack" && !enemy) return reject(state,"Cette case ne contient pas une cible ennemie.");
+  if(kind==="advance" && field.actors.some(item=>item.hp>0&&item.x===x&&item.y===y&&item!==actor))
+    return reject(state,"La case de destination est actuellement occupée.");
+  const order={x,y,kind};
+  return accept({...state,active:{...mission,rts:{...field,orders:{...(field.orders??{}),[teamId]:order}}}},
+    kind==="hold"?"Défense locale ordonnée.":kind==="attack"?"Cible désignée.":"Progression vers le point de rassemblement.");
+}
+export function stepWarRtsRealtimeV115(state:WarOperationsStateV115,rules:WarRulesV6):WarOperationsUpdateV115 {
+  const mission=state.active,field=mission?.rts;
+  if(mission?.mode!=="rts"||!field?.realtime) return reject(state,"La bataille RTS temps réel n'est pas active.");
+  const actors=field.actors.map(a=>({...a}));
+  const commands=field.orders??{};
+  const allies=actors.filter(actor=>actor.side==="ally"&&actor.hp>0);
+  for(const ally of allies){
+    const order=ally.teamId?commands[ally.teamId]:undefined;
+    const unit=unitFor(rules,ally.unitId),range=clamp(Math.round((unit?.range??2)/2),1,4);
+    const targets=actors.filter(actor=>actor.side==="rival"&&actor.hp>0);
+    const assigned=order?.kind==="attack"?targets.find(t=>t.x===order.x&&t.y===order.y):undefined;
+    const nearest=targets.sort((a,b)=>distance(ally,a)-distance(ally,b)||a.id.localeCompare(b.id))[0];
+    const target=assigned??nearest;
+    if(target&&distance(ally,target)<=range) target.hp-=damageFor(ally.unitId,rules)*(order?.kind==="hold"?1:2);
+    else if(order && order.kind!=="hold") {
+      const destination=assigned??order;
+      const candidates=[
+        {x:ally.x+Math.sign(destination.x-ally.x),y:ally.y},
+        {x:ally.x,y:ally.y+Math.sign(destination.y-ally.y)},
+        {x:ally.x,y:ally.y-1},{x:ally.x,y:ally.y+1},
+        {x:ally.x-1,y:ally.y},{x:ally.x+1,y:ally.y},
+      ].filter(pos=>pos.x>=0&&pos.x<=8&&pos.y>=0&&pos.y<=5&&!actors.some(other=>other!==ally&&other.hp>0&&other.x===pos.x&&other.y===pos.y));
+      candidates.sort((a,b)=>distance(a,destination)-distance(b,destination)||distance(a,ally)-distance(b,ally));
+      if(candidates[0]&&distance(candidates[0],destination)<distance(ally,destination)){ally.x=candidates[0].x;ally.y=candidates[0].y;}
+    }
+  }
+  for(const rival of actors.filter(a=>a.side==="rival"&&a.hp>0)){
+    const target=actors.filter(a=>a.side==="ally"&&a.hp>0).sort((a,b)=>distance(a,rival)-distance(b,rival)||a.id.localeCompare(b.id))[0];
+    if(!target) break;
+    const range=clamp(Math.round((unitFor(rules,rival.unitId)?.range??2)/2),1,3);
+    if(distance(rival,target)<=range){
+      const attack=damageFor(rival.unitId,rules);
+      const protectedByCover=coverAt(target)||Boolean(target.teamId&&commands[target.teamId]?.kind==="hold");
+      target.hp-=protectedByCover?Math.max(1,Math.ceil(attack*.65)):attack;
+    } else {
+      const nx=rival.x+Math.sign(target.x-rival.x),ny=rival.y+Math.sign(target.y-rival.y);
+      for(const next of [{x:nx,y:rival.y},{x:rival.x,y:ny}]){
+        if(next.x>=0&&next.x<=8&&next.y>=0&&next.y<=5&&!actors.some(a=>a!==rival&&a.hp>0&&a.x===next.x&&a.y===next.y)){
+          rival.x=next.x;rival.y=next.y;break;
+        }
+      }
+    }
+  }
+  const fallen=unique([...field.fallen,...actors.filter(a=>a.side==="ally"&&a.hp<=0&&a.teamId).map(a=>a.teamId!)]);
+  const live=actors.filter(a=>a.hp>0);
+  const isHolding=live.some(a=>a.side==="ally"&&a.x===7&&a.y===3)&&!live.some(a=>a.side==="rival"&&distance(a,{x:7,y:3})<=1);
+  const hold=isHolding?field.hold+1:0;
+  const next={...state,clock:state.clock+1,active:{...mission,tick:mission.tick+1,
+    rts:{...field,actors:live,fallen,hold}}};
+  if(live.some(a=>a.side==="ally")&&(hold>=3||!live.some(a=>a.side==="rival")))
+    return accept(recordOutcome(next,mission.id,"rts",null,mission.targetId,mission.teamIds,"victory",fallen,rules,
+      "Bataille temps réel : zone sécurisée par les équipes réellement déployées. Aucune souveraineté automatique."),"Victoire de l'exercice RTS en temps réel.");
+  if(!live.some(a=>a.side==="ally")||mission.tick>=89)
+    return accept(recordOutcome(next,mission.id,"rts",null,mission.targetId,mission.teamIds,"defeat",fallen,rules,
+      "Bataille temps réel : l'opération a été stoppée ou le temps imparti est expiré."),"Défaite RTS : retour et pertes consignés.");
+  return accept(next,"Bataille RTS : déplacements et échanges résolus pour cette seconde.");
 }
 function hashSeed(id:string):number {let h=2166136261;for(let i=0;i<id.length;i++) h=Math.imul(h^id.charCodeAt(i),16777619);return h>>>0;}
 /**
