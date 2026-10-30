@@ -33,3 +33,6 @@
 .paletteButton:focus-visible { outline: 2px solid #f1c999; outline-offset: 2px; }
 .paletteButton span:last-child { min-width: 0; overflow-wrap: anywhere; }
 .paletteSwatch { flex: 0 0 21px; width: 21px; height: 21px; border: 1px solid #bfb5a6; border-radius: 4px; box-shadow: inset 0 0 2px #111; }
+
+/* V125: the preview samples a single atlas tile, never the 3×4 sheet. */
+.materialPreview .atlasSwatch { display: block; width: 70px; height: 70px; min-width: 70px; border-radius: 5px; background-repeat: no-repeat; background-color: #343936; }

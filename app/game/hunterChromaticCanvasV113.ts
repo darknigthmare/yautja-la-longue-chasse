@@ -5,7 +5,8 @@
  */
 import { getChromaticMaterialV113, normalizeHunterChromaticsV113,
   CHROMATIC_PIGMENT_OVER_TEXTURE_V117,
-  type HunterChromaticsV113, type ChromaticChannelV113 } from "./hunterChromaticsV113.ts";
+  type HunterChromaticsV113, type ChromaticChannelV113,
+  type ChromaticAtlasV125 } from "./hunterChromaticsV113.ts";
 
 type Placement = { x: number; y: number; width: number; height: number };
 const CANVAS_W = 256;
@@ -52,6 +53,15 @@ function textureForV113(src: string): HTMLImageElement | null {
   return null;
 }
 
+function paintAtlasTileV125(
+  ctx:CanvasRenderingContext2D, image:HTMLImageElement, atlas:ChromaticAtlasV125,
+) {
+  const sw=image.naturalWidth/atlas.columns, sh=image.naturalHeight/atlas.rows;
+  const sx=sw*atlas.column, sy=sh*atlas.row;
+  const scale=Math.max(CANVAS_W/sw,CANVAS_H/sh);
+  const w=sw*scale,h=sh*scale;
+  ctx.drawImage(image,sx,sy,sw,sh,(CANVAS_W-w)/2,(CANVAS_H-h)/2,w,h);
+}
 function paintCover(ctx:CanvasRenderingContext2D,image:HTMLImageElement) {
   const scale=Math.max(CANVAS_W/image.naturalWidth,CANVAS_H/image.naturalHeight);
   const w=image.naturalWidth*scale,h=image.naturalHeight*scale;
@@ -70,12 +80,18 @@ export function chromaticCanvasSourceV113(
   baseFilter = "none",
 ): HTMLCanvasElement | null {
   const material=chromaticCanvasDescriptorV113(chromatics,channel);
+  const safe=normalizeHunterChromaticsV113(chromatics);
+  const selected=getChromaticMaterialV113(channel,safe[CHANNEL_FIELDS[channel].material]);
+  const atlas=selected?.atlas;
   const texture=material.texturePath ? textureForV113(material.texturePath) : null;
   if (!material.color && !texture) return null;
 
   const key=[
     channel, material.color ?? "", baseFilter,
     material.texturePath ?? "", texture?"ready":"pending",
+    // All 12 studies share one image path; the tile must remain part of the
+    // composition cache key or switching skins reuses the previous appearance.
+    atlas ? [atlas.column,atlas.row,atlas.columns,atlas.rows].join(":") : "source",
     placement ? [placement.x,placement.y,placement.width,placement.height].join(":") : "full",
   ].join("|");
   let cache=composed.get(original);
@@ -96,7 +112,10 @@ export function chromaticCanvasSourceV113(
   // Material first, then the user pigment. The old order painted an opaque
   // material over the tint, making custom swatches ineffective in live hunts.
   // source-atop is essential: neither pass may escape the original sprite alpha.
-  if(texture)paintCover(ctx,texture);
+  if(texture) {
+    if(atlas) paintAtlasTileV125(ctx,texture,atlas);
+    else paintCover(ctx,texture);
+  }
   if(material.color){
     ctx.globalAlpha=texture
       ? material.opacity * CHROMATIC_PIGMENT_OVER_TEXTURE_V117

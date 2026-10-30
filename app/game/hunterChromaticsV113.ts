@@ -21,6 +21,13 @@ export interface HunterChromaticsV113 {
   armorMaterialId: string | null;
 }
 
+/** One cropped tile within the original, non-certified V125 study atlas. */
+export interface ChromaticAtlasV125 {
+  readonly columns: number;
+  readonly rows: number;
+  readonly column: number;
+  readonly row: number;
+}
 export interface ChromaticMaterialV113 {
   readonly id: string;
   readonly channel: ChromaticChannelV113;
@@ -30,6 +37,7 @@ export interface ChromaticMaterialV113 {
   readonly src: string | null;
   readonly sourceFile: string;
   readonly note: string;
+  readonly atlas?: ChromaticAtlasV125;
 }
 
 const ASSET_ROOT = "/game/assets/v113/phg";
@@ -133,6 +141,112 @@ export const PHG_DRIVE_CANDIDATES_V120: readonly ChromaticMaterialV113[] = Objec
   })
 );
 
+
+/** V125: 12 selectable ORIGINAL visual studies from a single local WebP atlas.
+ * The names and release windows are sourced; the pigment maps themselves are
+ * generated reconstructions, not PHG screenshots, ripped game files or UV maps.
+ * Selecting a tile affects only the existing masked skin channel.
+ */
+export const PHG_VISUAL_STUDIES_V125: readonly ChromaticMaterialV113[] = Object.freeze([
+  {
+    id: "phg-study-v125-jungle87_wasteland", channel: "skin", status: "integrated", evidence: "provisional",
+    label: "Étude V125 · Jungle Hunter ’87 · Wasteland",
+    src: "/game/assets/v125/phg-studies/atlas.webp", sourceFile: "PHG_V125_12_Etudes_Atlas.webp",
+    atlas: { columns: 3, rows: 4, column: 0, row: 0 },
+    note: "Source nominale : 2020 patch 2.0 Part II. Matière originale provisoire, UV et fidélité 1:1 non certifiées.",
+  },
+  {
+    id: "phg-study-v125-elder_ancient", channel: "skin", status: "integrated", evidence: "provisional",
+    label: "Étude V125 · Elder · Ancient",
+    src: "/game/assets/v125/phg-studies/atlas.webp", sourceFile: "PHG_V125_12_Etudes_Atlas.webp",
+    atlas: { columns: 3, rows: 4, column: 1, row: 0 },
+    note: "Source nominale : 2020 patch 2.0 Part II. Matière originale provisoire, UV et fidélité 1:1 non certifiées.",
+  },
+  {
+    id: "phg-study-v125-jungle87_undergrowth", channel: "skin", status: "integrated", evidence: "provisional",
+    label: "Étude V125 · Jungle Hunter ’87 · Undergrowth",
+    src: "/game/assets/v125/phg-studies/atlas.webp", sourceFile: "PHG_V125_12_Etudes_Atlas.webp",
+    atlas: { columns: 3, rows: 4, column: 2, row: 0 },
+    note: "Source nominale : 2020 patch 2.0 Part II. Matière originale provisoire, UV et fidélité 1:1 non certifiées.",
+  },
+  {
+    id: "phg-study-v125-jungle87_badland", channel: "skin", status: "integrated", evidence: "provisional",
+    label: "Étude V125 · Jungle Hunter ’87 · Badland",
+    src: "/game/assets/v125/phg-studies/atlas.webp", sourceFile: "PHG_V125_12_Etudes_Atlas.webp",
+    atlas: { columns: 3, rows: 4, column: 0, row: 1 },
+    note: "Source nominale : 2020 patch 2.0 Part II. Matière originale provisoire, UV et fidélité 1:1 non certifiées.",
+  },
+  {
+    id: "phg-study-v125-jungle87_quagmire", channel: "skin", status: "integrated", evidence: "provisional",
+    label: "Étude V125 · Jungle Hunter ’87 · Quagmire",
+    src: "/game/assets/v125/phg-studies/atlas.webp", sourceFile: "PHG_V125_12_Etudes_Atlas.webp",
+    atlas: { columns: 3, rows: 4, column: 1, row: 1 },
+    note: "Source nominale : 2020 patch 2.0 Part II. Matière originale provisoire, UV et fidélité 1:1 non certifiées.",
+  },
+  {
+    id: "phg-study-v125-elder_relic", channel: "skin", status: "integrated", evidence: "provisional",
+    label: "Étude V125 · Elder · Relic",
+    src: "/game/assets/v125/phg-studies/atlas.webp", sourceFile: "PHG_V125_12_Etudes_Atlas.webp",
+    atlas: { columns: 3, rows: 4, column: 2, row: 1 },
+    note: "Source nominale : 2020 patch 2.0 Part II. Matière originale provisoire, UV et fidélité 1:1 non certifiées.",
+  },
+  {
+    id: "phg-study-v125-elder_primeval", channel: "skin", status: "integrated", evidence: "provisional",
+    label: "Étude V125 · Elder · Primeval",
+    src: "/game/assets/v125/phg-studies/atlas.webp", sourceFile: "PHG_V125_12_Etudes_Atlas.webp",
+    atlas: { columns: 3, rows: 4, column: 0, row: 2 },
+    note: "Source nominale : 2020 patch 2.0 Part II. Matière originale provisoire, UV et fidélité 1:1 non certifiées.",
+  },
+  {
+    id: "phg-study-v125-elder_stoic", channel: "skin", status: "integrated", evidence: "provisional",
+    label: "Étude V125 · Elder · Stoic",
+    src: "/game/assets/v125/phg-studies/atlas.webp", sourceFile: "PHG_V125_12_Etudes_Atlas.webp",
+    atlas: { columns: 3, rows: 4, column: 1, row: 2 },
+    note: "Source nominale : 2020 patch 2.0 Part II. Matière originale provisoire, UV et fidélité 1:1 non certifiées.",
+  },
+  {
+    id: "phg-study-v125-city97_sector", channel: "skin", status: "integrated", evidence: "provisional",
+    label: "Étude V125 · City Hunter ’97 · Sector",
+    src: "/game/assets/v125/phg-studies/atlas.webp", sourceFile: "PHG_V125_12_Etudes_Atlas.webp",
+    atlas: { columns: 3, rows: 4, column: 2, row: 2 },
+    note: "Source nominale : 2020 patch 2.0 Part II. Matière originale provisoire, UV et fidélité 1:1 non certifiées.",
+  },
+  {
+    id: "phg-study-v125-city97_ward", channel: "skin", status: "integrated", evidence: "provisional",
+    label: "Étude V125 · City Hunter ’97 · Ward",
+    src: "/game/assets/v125/phg-studies/atlas.webp", sourceFile: "PHG_V125_12_Etudes_Atlas.webp",
+    atlas: { columns: 3, rows: 4, column: 0, row: 3 },
+    note: "Source nominale : 2020 patch 2.0 Part II. Matière originale provisoire, UV et fidélité 1:1 non certifiées.",
+  },
+  {
+    id: "phg-study-v125-city97_tract", channel: "skin", status: "integrated", evidence: "provisional",
+    label: "Étude V125 · City Hunter ’97 · Tract",
+    src: "/game/assets/v125/phg-studies/atlas.webp", sourceFile: "PHG_V125_12_Etudes_Atlas.webp",
+    atlas: { columns: 3, rows: 4, column: 1, row: 3 },
+    note: "Source nominale : 2020 patch 2.0 Part II. Matière originale provisoire, UV et fidélité 1:1 non certifiées.",
+  },
+  {
+    id: "phg-study-v125-feral_post_3_6_default", channel: "skin", status: "integrated", evidence: "provisional",
+    label: "Étude V125 · Feral · Default (après 3.6.0)",
+    src: "/game/assets/v125/phg-studies/atlas.webp", sourceFile: "PHG_V125_12_Etudes_Atlas.webp",
+    atlas: { columns: 3, rows: 4, column: 2, row: 3 },
+    note: "Source nominale : 2026 patch 3.6.0. Matière originale provisoire, UV et fidélité 1:1 non certifiées.",
+  },
+]);
+
+export function chromaticAtlasBackgroundV125(atlas: ChromaticAtlasV125, pigment: boolean) {
+  // In percent background-position, 0% selects the first tile and 100% the
+  // last. This offset is correct even when the element has non-square pixels.
+  const x = atlas.columns <= 1 ? 0 : 100 * atlas.column / (atlas.columns - 1);
+  const y = atlas.rows <= 1 ? 0 : 100 * atlas.row / (atlas.rows - 1);
+  const position = x + "% " + y + "%";
+  const size = (100 * atlas.columns) + "% " + (100 * atlas.rows) + "%";
+  return {
+    backgroundPosition: pigment ? "center, " + position : position,
+    backgroundSize: pigment ? "100% 100%, " + size : size,
+  };
+}
+
 export const PHG_CHROMATIC_MATERIALS_V113: readonly ChromaticMaterialV113[] = Object.freeze([
   // Preserve all previously selectable V113 save IDs and their original art.
   ...LEGACY_CHROMATIC_MATERIALS_V113.filter(item => item.status === "integrated"),
@@ -152,6 +266,7 @@ export const PHG_CHROMATIC_MATERIALS_V113: readonly ChromaticMaterialV113[] = Ob
     })),
   // Never include uninstalled Drive-only candidates in the live renderer.
   ...PHG_DRIVE_CANDIDATES_V120.filter(item => item.status === "integrated"),
+  ...PHG_VISUAL_STUDIES_V125,
 ]);
 
 export const DEFAULT_CHROMATICS_V113: Readonly<HunterChromaticsV113> = Object.freeze({
@@ -341,6 +456,8 @@ export function chromaticOverlayStyleV113(
   const pigmentOverTexture = color && texture?.src
     ? `linear-gradient(${color}${tintAlpha}, ${color}${tintAlpha}), `
     : "";
+  const atlas = texture?.atlas
+    ? chromaticAtlasBackgroundV125(texture.atlas, Boolean(color)) : null;
   return {
     position: "absolute",
     inset: "0",
@@ -352,9 +469,9 @@ export function chromaticOverlayStyleV113(
     backgroundImage: texture?.src
       ? pigmentOverTexture + 'url("' + texture.src + '")'
       : "none",
-    backgroundPosition: "center",
+    backgroundPosition: atlas?.backgroundPosition ?? "center",
     backgroundRepeat: "no-repeat",
-    backgroundSize: "cover",
+    backgroundSize: atlas?.backgroundSize ?? "cover",
     maskImage: mask,
     WebkitMaskImage: mask,
     maskRepeat: "no-repeat",

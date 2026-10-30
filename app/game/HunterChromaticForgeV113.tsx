@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import type { HunterAppearance } from "./types";
 import {
   CHROMATIC_PALETTE_PRESETS_V115, PHG_CHROMATIC_MATERIALS_V113,
-  PHG_DRIVE_CANDIDATES_V120,
+  PHG_DRIVE_CANDIDATES_V120, chromaticAtlasBackgroundV125,
   normalizeHunterChromaticsV113,
   chromaticFacilityChannelsV115, resetChromaticFacilityV115,
   type ChromaticFacilityV115, type HunterChromaticsV113,
@@ -83,7 +83,12 @@ export default function HunterChromaticForgeV113({
             {choices.map(item => <option key={item.id} value={item.id}>{item.label}{item.evidence === "provisional" ? " · provisoire" : ""}</option>)}
           </select>
           {selectedMaterial?.src && <div className={styles.materialPreview} data-selected-material-id={selectedMaterial.id}>
-            <img src={selectedMaterial.src} alt="" loading="lazy" decoding="async" />
+            {selectedMaterial.atlas
+              ? <span aria-hidden="true" className={styles.atlasSwatch} style={{
+                  backgroundImage: 'url("' + selectedMaterial.src + '")',
+                  ...chromaticAtlasBackgroundV125(selectedMaterial.atlas, false),
+                }} />
+              : <img src={selectedMaterial.src} alt="" loading="lazy" decoding="async" />}
             <span><strong>{selectedMaterial.label}</strong><small>{selectedMaterial.evidence === "provisional" ? "Étude provisoire — fidélité artistique non validée" : "Matière plane reconstituée — UV non certifiées 1:1"}</small></span>
           </div>}
           {!selectedMaterial && <small>Calque d’origine conservé sans texture de remplacement.</small>}
