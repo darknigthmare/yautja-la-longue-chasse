@@ -8,6 +8,10 @@ on:
       - 'app/game/systems/clanWarEarthMetricV127.ts'
       - 'app/game/systems/clanWarEncounterDirectorV127.ts'
       - 'tests/clan-war-metric-encounters-v127.test.mjs'
+      - 'tests/clan-war-multiplayer-practice-v127.test.mjs'
+      - 'app/game/ClanWarMultiplayerPracticeV127*'
+      - 'app/game/ClanWarGeoAiV126.tsx'
+      - 'app/game/systems/clanWarMultiplayerPracticeV127.ts'
       - 'scripts/export-clan-war-v127.mjs'
       - 'tsconfig.clan-war-v127.json'
       - '.github/workflows/clan-war-v127.yml'
@@ -46,9 +50,18 @@ jobs:
             /app/game/systems/clanWarEarthV126.ts
             /app/game/systems/clanWarWorldClimateV126.ts
             /app/game/systems/clanWarEnemyProfilesV126.ts
+            /app/game/systems/clanWarMultiplayerV126.ts
+            /app/game/systems/clanWarMultiplayerPracticeV127.ts
+            /app/game/ClanWarGeoAiV126.tsx
+            /app/game/ClanWarGeoAiV126.module.css
+            /app/game/ClanWarMultiplayerPracticeV127.tsx
+            /app/game/ClanWarMultiplayerPracticeV127.module.css
+            /app/game/EarthPlanetMapV126.tsx
+            /app/game/EarthPlanetMapV126.module.css
             /app/game/systems/clanWarEarthMetricV127.ts
             /app/game/systems/clanWarEncounterDirectorV127.ts
             /tests/clan-war-metric-encounters-v127.test.mjs
+            /tests/clan-war-multiplayer-practice-v127.test.mjs
             /scripts/export-clan-war-v127.mjs
       - name: Install Node 22
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
@@ -56,11 +69,11 @@ jobs:
       - name: Install locked dependencies
         run: npm ci --ignore-scripts --no-audit --no-fund
       - name: Verify metre-scale WGS84 and 24,000 mission phases
-        run: node --test --test-reporter=spec tests/clan-war-metric-encounters-v127.test.mjs
+        run: node --test --test-reporter=spec tests/clan-war-metric-encounters-v127.test.mjs tests/clan-war-multiplayer-practice-v127.test.mjs
       - name: Strict TypeScript compile of new engine
         run: npx --no-install tsc --noEmit --project tsconfig.clan-war-v127.json
       - name: Lint new engine, tests and export script
-        run: npx --no-install eslint app/game/systems/clanWarEarthMetricV127.ts app/game/systems/clanWarEncounterDirectorV127.ts tests/clan-war-metric-encounters-v127.test.mjs scripts/export-clan-war-v127.mjs
+        run: npx --no-install eslint app/game/systems/clanWarEarthMetricV127.ts app/game/systems/clanWarEncounterDirectorV127.ts app/game/systems/clanWarMultiplayerPracticeV127.ts app/game/ClanWarMultiplayerPracticeV127.tsx tests/clan-war-metric-encounters-v127.test.mjs tests/clan-war-multiplayer-practice-v127.test.mjs scripts/export-clan-war-v127.mjs
       - name: Generate the full review data packs
         run: node scripts/export-clan-war-v127.mjs outputs/clan-war-v127
       - name: Upload WGS84 anchors and AI phase dossiers
