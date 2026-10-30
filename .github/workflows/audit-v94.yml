@@ -607,6 +607,8 @@ jobs:
           app/pit-lab/PitWorkbookAnimationLabV100.tsx app/pit-lab/PitProductionAnimationLab.tsx
           app/game/ClanWarPanelV85.tsx app/game/systems/clanWarSessionV85.ts app/game/systems/clanWarCanyonV85.ts
           app/game/ClanWarAtlasV95.tsx app/game/systems/clanWarAtlasV95.ts
+          app/game/hunterPaletteFiltersV114.ts app/game/HomeworldModularHunter.tsx app/game/HunterRigPreview.tsx
+          app/game/systems/clanWarPlanetStrategyV114.ts
           app/game/ClanWarPlanetsV96.tsx app/game/systems/clanWarPlanetsV96.ts app/game/systems/clanWarV85.ts
           app/game/systems/clanWarCoastlinesV97.ts
           app/game/PlanetGeneratorV102.tsx app/game/PlanetLayerExportV102.tsx
@@ -755,6 +757,9 @@ jobs:
       - name: Exercise actual Mausoleum React component (placeholder art, emulated pad)
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: node scripts/qa-mausoleum-browser-v94.mjs
+      - name: Validate complete Yautja palette maps after extended customization
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node --experimental-strip-types --test --test-reporter=spec tests/hunter-palette-filters-v114.test.mjs
       - name: Exercise free clan-war durability, lifecycle and planetary atlas regressions
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: >-
