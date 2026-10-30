@@ -33,3 +33,7 @@ button.cell{min-height:0;border-radius:0}button.cell:hover{background:#658f7d}bu
 @media(max-width:1050px){.selector{grid-template-columns:1fr 1fr}.selector fieldset:last-child{grid-column:1/-1;min-height:0}.roster{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:640px){.root{padding:11px}.intro,.battleHeader,.launch{flex-direction:column;align-items:stretch}.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.selector{grid-template-columns:1fr}.selector fieldset{min-height:0}.selector fieldset:last-child{grid-column:auto}.roster{grid-template-columns:1fr}.launch button{width:100%}}
 @media(prefers-reduced-motion:reduce){.root *{scroll-behavior:auto}}
+
+.brief{margin:12px 0;padding:9px 10px;border:1px solid #516a55;background:#12251c;font-size:.74rem}
+.brief summary{cursor:pointer;color:#d8c58b;font-weight:700}.brief p{margin:7px 0;color:#bdcfbb}
+.path{display:block;margin-top:7px;color:#d5d0a9;font-size:.75rem}
