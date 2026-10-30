@@ -10,6 +10,7 @@ const dir = await mkdtemp(join(tmpdir(), "planet-strategy-v114-"));
 const bundle = await build({
   stdin: { contents: `
     export * from "./app/game/systems/clanWarPlanetDraftV103";
+    export * from "./app/game/systems/clanWarPlanetGeneratorV102";
     export * from "./app/game/systems/clanWarPlanetGeneratorV103";
     export * from "./app/game/systems/clanWarPlanetStrategyV114";
     export * from "./app/game/systems/clanWarProceduralV103";
