@@ -770,6 +770,7 @@ jobs:
           tests/planet-regional-material-v102.test.mjs
           tests/planet-generator-v103.test.mjs tests/planet-generator-integration-v103.test.mjs
           tests/planet-generator-draft-v103.test.mjs tests/planet-material-profiles-v103.test.mjs
+          tests/planet-strategy-v114.test.mjs
       - name: Exercise generated planets, independent bitmap layers and real saved fronts
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: |
