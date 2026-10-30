@@ -1,3 +1,4 @@
+import { PHG_MATERIALS_V113, phgMaterialLabelV113 } from "./hunterMaterialsV113.ts";
 /**
  * Chromatic materials are planar reconstructions, NOT ripped PHG textures.
  * Identity is save-safe: only registered local paths may be loaded.
@@ -30,7 +31,7 @@ export interface ChromaticMaterialV113 {
 }
 
 const ASSET_ROOT = "/game/assets/v113/phg";
-export const PHG_CHROMATIC_MATERIALS_V113: readonly ChromaticMaterialV113[] = Object.freeze([
+const LEGACY_CHROMATIC_MATERIALS_V113: readonly ChromaticMaterialV113[] = Object.freeze([
   {
     id: "phg-shatter-demon-study", channel: "skin",
     label: "Shatter · Demon (étude)", status: "integrated", evidence: "provisional",
@@ -82,6 +83,37 @@ export const PHG_CHROMATIC_MATERIALS_V113: readonly ChromaticMaterialV113[] = Ob
     sourceFile: "armor_classe_samurai_laque_rouge_volutes.png",
     note: "Reconstruction de matière observée ; la forme des plaques demeure celle du rig.",
   },
+]);
+
+/**
+ * V114: reuse the 44 historical V85 PNGs which ALREADY exist in the repository.
+ * A raw material is not a UV map: each layer is still clipped by the rig's
+ * real alpha. No binary is copied, and the two special-purpose accessories
+ * below remain in inventory rather than being misapplied as body cloth.
+ */
+const EXCLUDED_NATIVE_IDS_V114 = new Set([
+  "armor_classe_father_masque_beige_strie", // mask, not textile
+  "anneau_ligature_fil_rouge_observe_2022", // ring accessory, not hair surface
+  "armor_filet_fin_noir_losanges", // retained V113 save ID and native plate
+  "armor_classe_samurai_laque_rouge_volutes", // retained V113 save ID and native plate
+]);
+export const PHG_CHROMATIC_MATERIALS_V113: readonly ChromaticMaterialV113[] = Object.freeze([
+  // Preserve all previously selectable V113 save IDs and their original art.
+  ...LEGACY_CHROMATIC_MATERIALS_V113.filter(item => item.status === "integrated"),
+  ...PHG_MATERIALS_V113
+    .filter(item => !item.archived && !EXCLUDED_NATIVE_IDS_V114.has(item.id))
+    .map((item): ChromaticMaterialV113 => ({
+      id: "phg-" + item.id,
+      channel: item.category === "dread" ? "dreads" :
+        item.category === "skin" ? "skin" :
+        item.id.includes("_laque_") ? "armor" : "outfit",
+      label: item.label,
+      status: "integrated",
+      evidence: item.provisional ? "provisional" : "observed-reconstruction",
+      src: item.src,
+      sourceFile: item.src.split("/").at(-1) ?? item.id + ".png",
+      note: phgMaterialLabelV113(item) + ". Texture plane appliquée uniquement à la silhouette du calque correspondant.",
+    })),
 ]);
 
 export const DEFAULT_CHROMATICS_V113: Readonly<HunterChromaticsV113> = Object.freeze({
