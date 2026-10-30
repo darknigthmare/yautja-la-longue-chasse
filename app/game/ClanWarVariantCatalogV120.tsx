@@ -2,7 +2,7 @@
 import { useMemo, useState } from "react";
 import {
   CLAN_WAR_VARIANTS_V120, countClanWarVariantsV120, exportClanWarVariantsCsvV120,
-  exportClanWarVariantsJsonV120, searchClanWarVariantsV120,
+  exportClanWarVariantsJsonV120, searchClanWarVariantsV120, pickClanWarVariantV120,
   type ClanWarVariantModeV120, type ClanWarVariantFamilyV120,
 } from "./systems/clanWarVariantsV120";
 import styles from "./ClanWarVariantCatalogV120.module.css";
@@ -30,7 +30,9 @@ export default function ClanWarVariantCatalogV120(){
   const [page,setPage]=useState(0);
   const [picked,setPicked]=useState("");
   const [showAssets,setShowAssets]=useState(false);
+  const [drawnIds,setDrawnIds]=useState<string[]>([]);
   const filtered=useMemo(()=>searchClanWarVariantsV120(query,mode,family),[query,mode,family]);
+  const remaining=filtered.filter(item=>!drawnIds.includes(item.id)).length;
   const pages=Math.max(1,Math.ceil(filtered.length/PAGE_SIZE));
   const currentPage=Math.min(page,pages-1);
   const visible=filtered.slice(currentPage*PAGE_SIZE,(currentPage+1)*PAGE_SIZE);
@@ -77,7 +79,16 @@ export default function ClanWarVariantCatalogV120(){
       </label>
     </div>
     <div className={styles.actions}>
-      <p><strong>{format(filtered.length)}</strong> variante(s) correspondante(s) · page {currentPage+1}/{pages}</p>
+      <p><strong>{format(filtered.length)}</strong> variante(s) correspondante(s) · page {currentPage+1}/{pages} ·
+        tirages sans répétition restants : <strong>{remaining}</strong></p>
+      <button type="button" disabled={remaining===0} onClick={()=>{
+        const result=pickClanWarVariantV120(Date.now(),{mode,family,search:query,excludedIds:drawnIds});
+        if(!result)return;
+        setDrawnIds(list=>[...list,result.id]);
+        setPage(Math.floor(filtered.findIndex(item=>item.id===result.id)/PAGE_SIZE));
+        setPicked(result.id);
+      }}>Tirer une variante inédite</button>
+      <button type="button" disabled={!drawnIds.length} onClick={()=>setDrawnIds([])}>Réinitialiser les tirages</button>
       <button type="button" onClick={()=>saveCatalogFile("Yautja_ClanWar_V120_1200.csv","text/csv;charset=utf-8",
         exportClanWarVariantsCsvV120(CLAN_WAR_VARIANTS_V120))}>Exporter les 1 200 en CSV</button>
       <button type="button" onClick={()=>saveCatalogFile("Yautja_ClanWar_V120_1200.json","application/json;charset=utf-8",
@@ -133,6 +144,6 @@ export default function ClanWarVariantCatalogV120(){
       <button type="button" disabled={currentPage>=pages-1} onClick={()=>{setPage(x=>Math.min(pages-1,x+1));setPicked("");}}>Suivante</button>
       <button type="button" disabled={currentPage>=pages-1} onClick={()=>{setPage(pages-1);setPicked("");}}>Dernière</button>
     </nav>
-    <footer className={styles.footer}>Ce générateur est déterministe : même catalogue V120 à chaque chargement. Les références de films, comics et jeux servent d&apos;inspiration explicitement marquée ; les 1 200 missions restent des propositions originales à intégrer, équilibrer et tester avant d&apos;être rendues jouables.</footer>
+    <footer className={styles.footer}>Le tirage aléatoire n&apos;offre pas deux fois la même fiche pendant cette ouverture du catalogue. Il ne crée aucune mission de campagne et son historique n&apos;est pas sauvegardé. Ce générateur est déterministe : même catalogue V120 à chaque chargement. Les références de films, comics et jeux servent d&apos;inspiration explicitement marquée ; les 1 200 missions restent des propositions originales à intégrer, équilibrer et tester avant d&apos;être rendues jouables.</footer>
   </section>;
 }
