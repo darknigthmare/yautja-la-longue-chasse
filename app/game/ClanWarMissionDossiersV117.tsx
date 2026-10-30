@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import type { WarRulesV6 } from "./systems/clanWarBibleV6";
+import { warSourceRtsScenarioV119, type WarSourceRtsScenarioIdV119 } from "./systems/clanWarRtsScenariosV119";
 import {
   searchWarMissionDossiersV117, warMissionDossiersV117, warSourceModeLabelV117,
   type WarMissionSourceKindV117, type WarSourceMissionFilterV117,
@@ -9,8 +10,8 @@ import {
 import styles from "./ClanWarMissionDossiersV117.module.css";
 
 export default function ClanWarMissionDossiersV117({
-  rules, onOpenSandbox,
-}: {rules:WarRulesV6;onOpenSandbox?:()=>void}) {
+  rules, onOpenSandbox, onOpenSourceRts,
+}: {rules:WarRulesV6;onOpenSandbox?:()=>void;onOpenSourceRts?:(id:WarSourceRtsScenarioIdV119)=>void}) {
   const catalog=useMemo(()=>warMissionDossiersV117(rules),[rules]);
   const [filter,setFilter]=useState<WarSourceMissionFilterV117>("all");
   const [query,setQuery]=useState("");
@@ -19,6 +20,7 @@ export default function ClanWarMissionDossiersV117({
   const filtered=useMemo(()=>searchWarMissionDossiersV117(catalog,query,filter),[catalog,query,filter]);
   const selected=catalog.missions.find(item=>item.id===picked&&filtered.some(a=>a.id===item.id))??filtered[0];
   const route=selected?.mapId?catalog.maps.find(item=>item.id===selected.mapId):null;
+  const tacticalPilot=selected?.kind==="rts"?warSourceRtsScenarioV119(selected.id,rules):null;
   const campaign=selected?.parentId?catalog.campaigns.find(item=>item.id===selected.parentId):null;
   const visibleCampaigns=catalog.campaigns.filter(item=>!query||[item.id,item.title,item.premise,item.mapId].join(" ").toLowerCase().includes(query.toLowerCase()));
   return <section className={styles.root} data-testid="clan-mission-dossiers-v117" aria-label="Dossiers de missions de guerre tirés des sources V6">
@@ -80,6 +82,14 @@ export default function ClanWarMissionDossiersV117({
               <span>Cellules : {selected.sourceCells.join(" · ")}</span>
               <span>SHA de classeur déclaré : {catalog.sourceSha}</span>
             </div>
+            {tacticalPilot&&onOpenSourceRts&&<div className={styles.sourceArea}>
+              <p><strong>Épreuve tactique partielle disponible :</strong> {tacticalPilot.id} — {tacticalPilot.objectiveKind==="cargo-escort"?
+                "guet observé et transport de charge":"tenue du guet et arrivée de relève"}.
+                Le plan 9 × 6 ne remplace pas la carte W3-MAP01 complète.</p>
+              <button type="button" className={styles.sandbox} onClick={()=>onOpenSourceRts(tacticalPilot.id)}>
+                Préparer cet objectif jouable (épreuve W3)
+              </button>
+            </div>}
             {onOpenSandbox && <button type="button" className={styles.sandbox} onClick={onOpenSandbox}>Ouvrir les exercices des quatre modes (scénarios distincts)</button>}
           </> : <p>Aucune fiche à afficher.</p>}
         </div>
