@@ -20,6 +20,7 @@ import React, {
 import HunterRigPreview from "./HunterRigPreview";
 import HunterChromaticForgeV113 from "./HunterChromaticForgeV113";
 import { normalizeHunterChromaticsV113, type HunterChromaticsV113, type ChromaticFacilityV115 } from "./hunterChromaticsV113";
+import { commitHunterChromaticsV116 } from "./systems/hunterChromaticPersistenceV116";
 import CloudAccountV71, { openCloudAccountV71 } from "./CloudAccountV71";
 import HomeworldModularHunter from "./HomeworldModularHunter";
 import { startYouthCampaign, withYouthCheckpoint, withYouthProgress, youthCampaignNeedsScene, youthCampaignObjective } from "./systems/youthCampaign";
@@ -2987,35 +2988,35 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const commitChromaticsV113 = useCallback((draft: HunterChromaticsV113): boolean => {
     if (!sessionAliveRef.current || screen !== "customization" || settingsOpen ||
       campaignSaveBusy || archiveTransferBusy || !!archiveRecoveryIssue ||
-      !!pendingTrophyCommitRef.current || !!pendingSocialWriteRef.current || !!pendingTerminalRunRef.current) return false;
-    const current = saveRef.current;
-    if (current.createdAt !== entry.ownerCreatedAt) return false;
-    const chromaticsV113 = normalizeHunterChromaticsV113(draft);
-    const next: SaveGame = {
-      ...current,
-      appearance: { ...current.appearance, presetId: "custom", chromaticsV113 },
-    };
-    persist(next);
-    // The cosmetic change is never presented as committed until an actual
-    // owner-matched persisted readback proves it; storage may be disabled.
-    try {
-      const raw = window.localStorage.getItem(SAVE_STORAGE_KEY);
-      const stored = raw === null ? null : parseSaveImport(raw).save;
-      if (!stored || stored.createdAt !== current.createdAt ||
-        JSON.stringify(stored.appearance.chromaticsV113) !== JSON.stringify(chromaticsV113)) {
-        setToast("Parure non confirmée par le stockage. La dernière sauvegarde reste la référence.");
-        return false;
-      }
-    } catch {
-      setToast("Impossible de relire la sauvegarde chromatique. Aucune confirmation.");
+      !!pendingTrophyCommitRef.current || !!pendingSocialWriteRef.current ||
+      !!pendingTerminalRunRef.current) return false;
+    // persist() publishes its candidate in memory even on a failed write.
+    // This cosmetic path must preserve the last durable appearance instead.
+    const result = commitHunterChromaticsV116({
+      current: saveRef.current,
+      expectedOwnerCreatedAt: entry.ownerCreatedAt,
+      draft,
+      write: next => writeSaveWithStatus(next),
+      reconcile: (attempt, owner) => reconcileSaveWrite(attempt, owner),
+    });
+    if (!result.ok) {
+      setSaveFailure(result.failure);
+      setToast("Palette non confirmée (" + result.failure +
+        "). Aucun changement permanent annoncé. Vérifie ta sauvegarde avant de réessayer.");
       return false;
     }
+    saveRef.current = result.save;
+    setSave(result.save);
+    setSaveFailure(null);
     setSelectedCatalogueEntryId(null);
-    setToast("Teintes et matières enregistrées dans la campagne.");
+    setToast(result.recovered
+      ? "Palette récupérée à partir des octets exacts de cette campagne."
+      : "Teintes et matières enregistrées dans la campagne.");
     void playSound("select");
     return true;
-  }, [persist, screen, settingsOpen, campaignSaveBusy, archiveTransferBusy, archiveRecoveryIssue,
+  }, [screen, settingsOpen, campaignSaveBusy, archiveTransferBusy, archiveRecoveryIssue,
       entry.ownerCreatedAt, playSound]);
+
 
   const applyShipLoadout = useCallback(
     (loadout: Loadout, appearance: HunterAppearance) => {
@@ -4449,7 +4450,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
               <button type="button" className="ghost-button" onClick={() => setSettingsOpen(true)}>Réglages et sauvegardes</button>
             </section>}
             <HunterChromaticForgeV113
-              key={JSON.stringify(save.appearance.chromaticsV113 ?? null)}
+              key={save.createdAt + ":" + chromaticFacilityV115 + ":" + JSON.stringify(save.appearance.chromaticsV113 ?? null)}
               appearance={save.appearance}
               onPreview={setDraftChromaticsV114}
               facility={chromaticFacilityV115}

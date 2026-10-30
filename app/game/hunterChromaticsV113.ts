@@ -214,10 +214,13 @@ export function normalizeHunterChromaticsV113(source: unknown): HunterChromatics
  */
 export function migrateLegacyPhgAppearanceV115(raw: unknown): HunterChromaticsV113 {
   const appearance = isRecord(raw) ? raw : {};
+  // null is an explicit reset, whereas undefined/missing is a legacy PR25 save.
+  const explicitlySelected = Object.prototype.hasOwnProperty.call(appearance, "chromaticsV113")
+    && appearance.chromaticsV113 !== undefined;
   const modern = isRecord(appearance.chromaticsV113) ? appearance.chromaticsV113 : null;
   const result = normalizeHunterChromaticsV113(modern);
   const acceptsLegacy = (field: keyof HunterChromaticsV113) =>
-    modern === null || !Object.prototype.hasOwnProperty.call(modern, field);
+    !explicitlySelected || (modern !== null && !Object.prototype.hasOwnProperty.call(modern, field));
 
   const priorSkin: Record<string, string> = {
     "moss-mottle": "#677b4b", "copper-mottle": "#a35a3e",
