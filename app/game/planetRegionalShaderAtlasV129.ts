@@ -2,7 +2,7 @@ import type { WarPlanetV96 } from "./systems/clanWarPlanetsV96";
 import type { PlanetRegionalMaterialKitV128 } from "./systems/clanWarRegionalMaterialKitV128";
 import { validPlanetRegionalMaterialKitV128 } from "./systems/clanWarRegionalMaterialKitV128";
 import { PLANET_RADII_KM_V115 } from "./systems/clanWarShapeAtlasV115";
-import { createPlanetTextureCanvasV125 } from "./systems/clanWarTextureLibraryV125";
+import { createPlanetTextureCanvasV130 } from "./systems/clanWarTextureLibraryV130";
 
 /** V129 is an opt-in albedo study, never an implicit V115 save migration. */
 const atlasCache = new Map<string, HTMLCanvasElement>();
@@ -49,7 +49,7 @@ export function createPlanetRegionalShaderAtlasV129(
   for (let index = 0; index < kit.entries.length; index++) {
     if (signal?.aborted) return null;
     const entry = kit.entries[index];
-    const tile = createPlanetTextureCanvasV125(entry.landMaterialId, "albedo", tileSize, entry.seed);
+    const tile = createPlanetTextureCanvasV130(entry.landMaterialId, "albedo", tileSize, entry.seed);
     context.drawImage(tile, (index % columns) * tileSize, Math.floor(index / columns) * tileSize);
   }
   if (signal?.aborted) return null;

@@ -1,5 +1,6 @@
 import type { WarPlanetLandBiomeV96, WarPlanetSurfaceKindV96, WarPlanetV96 } from "./clanWarPlanetsV96";
-import { findPlanetTextureV125, WAR_PLANET_TEXTURES_V125 } from "./clanWarTextureLibraryV125";
+import { findPlanetTextureV125 } from "./clanWarTextureLibraryV125";
+import { findPlanetTextureV130, WAR_PLANET_TEXTURES_V130 } from "./clanWarTextureLibraryV130";
 
 /**
  * Versioned *asset sidecar* for region-specific texture sources. This does not
@@ -21,30 +22,30 @@ export interface PlanetRegionalMaterialKitV128 {
 }
 
 export const PLANET_LAND_AFFINITIES_V128: Readonly<Record<WarPlanetLandBiomeV96, readonly string[]>> = Object.freeze({
-  temperate: ["land-loess", "land-redclay", "land-riverdelta", "land-karst", "land-gravel"],
-  jungle: ["land-peat", "land-riverdelta", "land-bioceramic", "land-spore-bed"],
-  tundra: ["land-permafrost", "land-gravel", "land-karst", "land-hex-prism"],
-  snow: ["land-permafrost", "land-gravel", "land-hex-prism"],
-  desert: ["land-white-sand", "land-loess", "land-redclay", "land-glass-erg"],
-  volcanic: ["land-vascular-basalt", "land-glass-erg", "land-metal-root", "land-phosphor"],
-  salt: ["land-white-sand", "land-loess", "land-karst", "land-glass-erg"],
-  mountain: ["land-karst", "land-gravel", "land-hex-prism", "land-metal-root"],
-  ocean: ["land-riverdelta", "land-peat", "land-gravel", "land-karst"],
-  swamp: ["land-peat", "land-riverdelta", "land-spore-bed", "land-redclay"],
-  crystal: ["land-hex-prism", "land-silicon-honeycomb", "land-glass-erg", "land-phosphor"],
-  fungal: ["land-spore-bed", "land-bioceramic", "land-silicon-honeycomb", "land-peat"],
-  irradiated: ["land-vascular-basalt", "land-metal-root", "land-phosphor", "land-redclay"],
+  temperate: ["land-loess", "land-redclay", "land-riverdelta", "land-karst", "land-gravel", "land-granite-talus"],
+  jungle: ["land-peat", "land-riverdelta", "land-bioceramic", "land-spore-bed", "land-mangrove-silt", "land-ceramic-coral"],
+  tundra: ["land-permafrost", "land-gravel", "land-karst", "land-hex-prism", "land-dark-moraine", "land-cryo-glass"],
+  snow: ["land-permafrost", "land-gravel", "land-hex-prism", "land-dark-moraine", "land-cryo-glass"],
+  desert: ["land-white-sand", "land-loess", "land-redclay", "land-glass-erg", "land-salt-pan", "land-amber-fossils"],
+  volcanic: ["land-vascular-basalt", "land-glass-erg", "land-metal-root", "land-phosphor", "land-ferrospore"],
+  salt: ["land-white-sand", "land-loess", "land-karst", "land-glass-erg", "land-salt-pan"],
+  mountain: ["land-karst", "land-gravel", "land-hex-prism", "land-metal-root", "land-granite-talus", "land-amber-fossils"],
+  ocean: ["land-riverdelta", "land-peat", "land-gravel", "land-karst", "land-ceramic-coral", "land-mangrove-silt"],
+  swamp: ["land-peat", "land-riverdelta", "land-spore-bed", "land-redclay", "land-mangrove-silt", "land-ceramic-coral"],
+  crystal: ["land-hex-prism", "land-silicon-honeycomb", "land-glass-erg", "land-phosphor", "land-cryo-glass"],
+  fungal: ["land-spore-bed", "land-bioceramic", "land-silicon-honeycomb", "land-peat", "land-ferrospore"],
+  irradiated: ["land-vascular-basalt", "land-metal-root", "land-phosphor", "land-redclay", "land-ferrospore"],
 });
 
 /** Not every surrounding medium is a liquid. No invented liquid map is assigned
  * to particulate sand/spores, crystal fields, radioactive mists or dry fog. */
 export const PLANET_SURFACE_AFFINITIES_V128: Readonly<Record<WarPlanetSurfaceKindV96, readonly string[]>> = Object.freeze({
-  water: ["liquid-estuary", "liquid-tidal-foam", "liquid-bogwater", "liquid-whitewater", "liquid-silt", "liquid-iceflow"],
-  acid: ["liquid-violet-acid", "liquid-sulfurlake"],
-  ice: ["liquid-iceflow", "liquid-cryo-solvent"],
+  water: ["liquid-estuary", "liquid-tidal-foam", "liquid-bogwater", "liquid-whitewater", "liquid-silt", "liquid-iceflow", "liquid-tropical-lagoon", "liquid-glacial-melt", "liquid-mangrove-tide"],
+  acid: ["liquid-violet-acid", "liquid-sulfurlake", "liquid-violet-foam"],
+  ice: ["liquid-iceflow", "liquid-cryo-solvent", "liquid-methane-mirror"],
   sand: [],
-  lava: ["liquid-magma-crust"],
-  brine: ["liquid-saltlake", "liquid-biolume-brine"],
+  lava: ["liquid-magma-crust", "liquid-glass-magma"],
+  brine: ["liquid-saltlake", "liquid-biolume-brine", "liquid-brackish-estuary", "liquid-mercury-tide"],
   radioactive: [],
   crystal: [],
   spores: [],
@@ -54,7 +55,7 @@ export const PLANET_SURFACE_AFFINITIES_V128: Readonly<Record<WarPlanetSurfaceKin
 const COLD_BIOMES = new Set<WarPlanetLandBiomeV96>(["snow", "tundra"]);
 const WET_BIOMES = new Set<WarPlanetLandBiomeV96>(["swamp", "jungle"]);
 const COASTAL_BIOMES = new Set<WarPlanetLandBiomeV96>(["ocean", "temperate"]);
-const textureIds = new Set(WAR_PLANET_TEXTURES_V125.map(item => item.id));
+const textureIds = new Set(WAR_PLANET_TEXTURES_V130.map(item => item.id));
 
 export function regionBiomeV128(planet: WarPlanetV96, regionId: string): WarPlanetLandBiomeV96 {
   const region = planet.regions.find(item => item.id === regionId);
@@ -70,12 +71,17 @@ export function compatibleSurfaceMaterialsV128(
   surface: WarPlanetSurfaceKindV96, biome: WarPlanetLandBiomeV96,
 ): readonly string[] {
   const choices = PLANET_SURFACE_AFFINITIES_V128[surface] ?? [];
+  if (surface === "brine")
+    return COASTAL_BIOMES.has(biome) || WET_BIOMES.has(biome) ? choices : choices.filter(id => id !== "liquid-brackish-estuary");
   if (surface !== "water") return choices;
-  // Banquise on water requires cold coasts. Likewise, peat bogs require wetlands.
-  if (COLD_BIOMES.has(biome)) return choices.filter(id => id === "liquid-iceflow" || id === "liquid-silt" || id === "liquid-whitewater");
-  if (WET_BIOMES.has(biome)) return choices.filter(id => id !== "liquid-iceflow");
-  if (COASTAL_BIOMES.has(biome)) return choices.filter(id => id !== "liquid-iceflow" && id !== "liquid-bogwater");
-  return choices.filter(id => id !== "liquid-iceflow" && id !== "liquid-bogwater");
+  if (COLD_BIOMES.has(biome)) return choices.filter(id =>
+    ["liquid-iceflow", "liquid-silt", "liquid-whitewater", "liquid-glacial-melt"].includes(id));
+  if (WET_BIOMES.has(biome)) return choices.filter(id =>
+    id !== "liquid-iceflow" && id !== "liquid-glacial-melt");
+  if (COASTAL_BIOMES.has(biome)) return choices.filter(id =>
+    !["liquid-iceflow", "liquid-glacial-melt", "liquid-mangrove-tide", "liquid-bogwater"].includes(id));
+  return choices.filter(id =>
+    !["liquid-iceflow", "liquid-glacial-melt", "liquid-mangrove-tide", "liquid-bogwater"].includes(id));
 }
 
 export function regionalMaterialSeedV128(seed: number, regionIndex: number): number {
@@ -88,8 +94,11 @@ function recommendedId(
   ids: readonly string[], origin: "earthlike" | "alien", seed: number,
 ): string {
   if (!ids.length) throw new RangeError("Aucun matériau compatible.");
-  const preferred = ids.filter(id => findPlanetTextureV125(id)?.origin === origin);
-  const choices = preferred.length ? preferred : ids;
+  // V130 is opt-in: V128 default recommendations remain byte-stable.
+  const legacy = ids.filter(id => Boolean(findPlanetTextureV125(id)));
+  const pool = legacy.length ? legacy : ids;
+  const preferred = pool.filter(id => findPlanetTextureV130(id)?.origin === origin);
+  const choices = preferred.length ? preferred : pool;
   return choices[seed % choices.length];
 }
 
@@ -156,8 +165,8 @@ export function describePlanetRegionAssetsV128(planet: WarPlanetV96, kit: Planet
   if (!validPlanetRegionalMaterialKitV128(planet, kit)) throw new RangeError("Attributions de région invalides.");
   const entry = kit.entries.find(item => item.regionId === regionId);
   if (!entry) throw new RangeError("Région inconnue.");
-  const land = findPlanetTextureV125(entry.landMaterialId)!;
-  const surface = entry.surfaceMaterialId ? findPlanetTextureV125(entry.surfaceMaterialId) : null;
+  const land = findPlanetTextureV130(entry.landMaterialId)!;
+  const surface = entry.surfaceMaterialId ? findPlanetTextureV130(entry.surfaceMaterialId) : null;
   return {
     format: "yautja-planet-region-asset-pack",
     version: 128, worldCode: planet.id, regionId, regionName: entry.regionName, biome: entry.biome,

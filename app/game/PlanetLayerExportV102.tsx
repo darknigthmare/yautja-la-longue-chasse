@@ -6,7 +6,8 @@ import type { WarPlanetV96 } from "./systems/clanWarPlanetsV96";
 import { DEFAULT_PLANET_MATERIAL_SETTINGS_V101, planetMaterialRecipeV101, type PlanetMaterialLayerV101, type PlanetMaterialSettingsV101 } from "./systems/planetMaterialV101";
 import { makePlanetStoredZipV114, type PlanetZipEntryV114 } from "./systems/planetExportZipV114";
 import { analyzeWarPlanetStrategyV114 } from "./systems/clanWarPlanetStrategyV114";
-import { createPlanetTextureCanvasV125, findPlanetTextureV125, WAR_PLANET_TEXTURES_V125, WAR_PLANET_TEXTURE_CHANNELS_V125, type PlanetTextureChannelV125 } from "./systems/clanWarTextureLibraryV125";
+import { WAR_PLANET_TEXTURE_CHANNELS_V125, type PlanetTextureChannelV125 } from "./systems/clanWarTextureLibraryV125";
+import { createPlanetTextureCanvasV130, findPlanetTextureV130, WAR_PLANET_TEXTURES_V130 } from "./systems/clanWarTextureLibraryV130";
 import { createPlanetRegionIndexMaskV124, createPlanetInlandMaskV124, describePlanetModularMasksV124, planetInlandFeaturesV124 } from "./planetModularExportV124";
 import { createPlanetSingleRegionMaskV128 } from "./planetRegionKitRasterV128";
 import PlanetRegionalPreviewV129 from "./PlanetRegionalPreviewV129";
@@ -81,7 +82,7 @@ export default function PlanetLayerExportV102({ planet }: { planet: WarPlanetV96
   });
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState("");
-  const [supplementalMaterialId, setSupplementalMaterialId] = useState(WAR_PLANET_TEXTURES_V125[0].id);
+  const [supplementalMaterialId, setSupplementalMaterialId] = useState(WAR_PLANET_TEXTURES_V130[0].id);
   const [supplementalChannel, setSupplementalChannel] = useState<PlanetTextureChannelV125>("albedo");
   const [supplementalRegionId, setSupplementalRegionId] = useState(() => planet.regions[0]?.id ?? "");
   const [kitRegionId, setKitRegionId] = useState(() => planet.regions[0]?.id ?? "");
@@ -90,7 +91,7 @@ export default function PlanetLayerExportV102({ planet }: { planet: WarPlanetV96
   const activeKitRegion = regionalKit.entries.find(item => item.regionId === kitRegionId) ?? regionalKit.entries[0];
   const compatibleLand = activeKitRegion ? compatibleLandMaterialsV128(activeKitRegion.biome) : [];
   const compatibleSurface = activeKitRegion ? compatibleSurfaceMaterialsV128(planet.surface.kind, activeKitRegion.biome) : [];
-  const selectedSupplementalMaterial = findPlanetTextureV125(supplementalMaterialId)!;
+  const selectedSupplementalMaterial = findPlanetTextureV130(supplementalMaterialId)!;
   const regionIndex = Math.max(0, planet.regions.findIndex(item => item.id === supplementalRegionId));
   const supplementalSeed = (planet.seed ^ Math.imul(regionIndex + 1, 0x9e3779b1)) >>> 0;
   const pending = useRef<AbortController | null>(null);
@@ -105,7 +106,7 @@ export default function PlanetLayerExportV102({ planet }: { planet: WarPlanetV96
     const context = canvas.getContext("2d");
     if (!context) return;
     try {
-      const sample = createPlanetTextureCanvasV125(supplementalMaterialId, supplementalChannel, 160, supplementalSeed);
+      const sample = createPlanetTextureCanvasV130(supplementalMaterialId, supplementalChannel, 160, supplementalSeed);
       context.clearRect(0, 0, canvas.width, canvas.height);
       context.drawImage(sample, 0, 0, canvas.width, canvas.height);
     } catch {
@@ -118,7 +119,7 @@ export default function PlanetLayerExportV102({ planet }: { planet: WarPlanetV96
     const context = canvas.getContext("2d");
     if (!context) return;
     try {
-      const source = createPlanetTextureCanvasV125(activeKitRegion.landMaterialId, "albedo", 160, activeKitRegion.seed);
+      const source = createPlanetTextureCanvasV130(activeKitRegion.landMaterialId, "albedo", 160, activeKitRegion.seed);
       context.clearRect(0, 0, canvas.width, canvas.height);
       context.drawImage(source, 0, 0, canvas.width, canvas.height);
     } catch {
@@ -215,7 +216,7 @@ export default function PlanetLayerExportV102({ planet }: { planet: WarPlanetV96
     const controller = new AbortController();
     pending.current = controller; setBusy(true); setMessage("Préparation de la matière indépendante…");
     try {
-      const canvas = createPlanetTextureCanvasV125(supplementalMaterialId, supplementalChannel, 512, supplementalSeed);
+      const canvas = createPlanetTextureCanvasV130(supplementalMaterialId, supplementalChannel, 512, supplementalSeed);
       const blob = await encodePng(canvas);
       if (controller.signal.aborted) return;
       const url = URL.createObjectURL(blob);
@@ -283,7 +284,7 @@ export default function PlanetLayerExportV102({ planet }: { planet: WarPlanetV96
       const channelFiles: Array<{ file: string; sourceId: string; slot: string; channel: PlanetTextureChannelV125; size: number }> = [];
       for (const source of sources) for (const channel of WAR_PLANET_TEXTURE_CHANNELS_V125) {
         if (controller.signal.aborted) return;
-        const canvas = createPlanetTextureCanvasV125(source.id, channel, 256, activeKitRegion.seed);
+        const canvas = createPlanetTextureCanvasV130(source.id, channel, 256, activeKitRegion.seed);
         const png = await encodePng(canvas);
         if (controller.signal.aborted) return;
         const file = source.slot + "-" + channel + ".png";
@@ -341,12 +342,12 @@ export default function PlanetLayerExportV102({ planet }: { planet: WarPlanetV96
       <p>Ces interrupteurs modifient uniquement le PNG assemblé. Chaque calque individuel conserve sa source et reste téléchargeable.</p>
     </fieldset>}
     <fieldset className={styles.composition} disabled={busy} data-testid="planet-extra-materials-v125">
-      <legend>Bibliothèque supplémentaire — 32 matières de sol et de mer</legend>
+      <legend>Bibliothèque supplémentaire — 48 matières de sol et de mer</legend>
       <p>Matières originales terrestres et extraterrestres, exportables indépendamment. Elles ne remplacent pas les matières déjà enregistrées dans le code de ce monde.</p>
       <div className={styles.controls}>
         <label htmlFor={`${unique}-supplemental-material`}>Texture complémentaire
           <select id={`${unique}-supplemental-material`} value={supplementalMaterialId} onChange={event => setSupplementalMaterialId(event.target.value)}>
-            {WAR_PLANET_TEXTURES_V125.map(item => <option key={item.id} value={item.id}>{item.domain === "land" ? "Sol" : "Milieu"} · {item.origin === "earthlike" ? "Terrestre" : "Alien"} · {item.name}</option>)}
+            {WAR_PLANET_TEXTURES_V130.map(item => <option key={item.id} value={item.id}>{item.domain === "land" ? "Sol" : "Milieu"} · {item.origin === "earthlike" ? "Terrestre" : "Alien"} · {item.name}</option>)}
           </select>
         </label>
         <label htmlFor={`${unique}-supplemental-region`}>Variation par région
@@ -380,14 +381,14 @@ export default function PlanetLayerExportV102({ planet }: { planet: WarPlanetV96
         <label htmlFor={`${unique}-kit-land`}>Sol compatible avec le biome
           <select id={`${unique}-kit-land`} value={activeKitRegion.landMaterialId} onChange={event =>
             { kitImportIntent.current++; setRegionalKit(current => editPlanetRegionalMaterialKitV128(planet, current, activeKitRegion.regionId, "land", event.target.value)); }}>
-            {compatibleLand.map(id => <option key={id} value={id}>{findPlanetTextureV125(id)?.name ?? id}</option>)}
+            {compatibleLand.map(id => <option key={id} value={id}>{findPlanetTextureV130(id)?.name ?? id}</option>)}
           </select>
         </label>
         <label htmlFor={`${unique}-kit-surface`}>Milieu complémentaire compatible
           <select id={`${unique}-kit-surface`} value={activeKitRegion.surfaceMaterialId ?? ""} disabled={compatibleSurface.length === 0} onChange={event =>
             { kitImportIntent.current++; setRegionalKit(current => editPlanetRegionalMaterialKitV128(planet, current, activeKitRegion.regionId, "surface", event.target.value || null)); }}>
             <option value="">Conserver la surface native</option>
-            {compatibleSurface.map(id => <option key={id} value={id}>{findPlanetTextureV125(id)?.name ?? id}</option>)}
+            {compatibleSurface.map(id => <option key={id} value={id}>{findPlanetTextureV130(id)?.name ?? id}</option>)}
           </select>
         </label>
         <button type="button" onClick={() => { void exportRegionalKit(); }} data-testid="planet-region-kit-export-v128">Télécharger le kit régional (ZIP)</button>
@@ -400,7 +401,7 @@ export default function PlanetLayerExportV102({ planet }: { planet: WarPlanetV96
         <canvas ref={kitPreviewRef} width={160} height={160} role="img"
           data-testid="planet-regional-material-preview-v128"
           aria-label={`Aperçu du sol ${activeKitRegion.regionName}`}/>
-        <p>Source régionale : {findPlanetTextureV125(activeKitRegion.landMaterialId)?.description}. Le rendu du globe reste lié à sa recette d’origine.</p>
+        <p>Source régionale : {findPlanetTextureV130(activeKitRegion.landMaterialId)?.description}. Le rendu du globe reste lié à sa recette d’origine.</p>
       </div>}
       {activeKitRegion && <div><button type="button" data-testid="planet-regional-preview-toggle-v129"
         onClick={() => setShowRegionalPreviewV129(value => !value)}>

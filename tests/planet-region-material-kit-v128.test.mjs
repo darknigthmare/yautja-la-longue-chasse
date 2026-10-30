@@ -11,6 +11,7 @@ after(() => rm(directory, { recursive: true, force: true }));
 const code = `
   export * from "./app/game/systems/clanWarRegionalMaterialKitV128";
   export * from "./app/game/systems/clanWarTextureLibraryV125";
+  export * from "./app/game/systems/clanWarTextureLibraryV130";
   export { normalizeWarPlanetRecipeV102, encodeWarPlanetV102 } from "./app/game/systems/clanWarPlanetGeneratorV102";
   export { normalizeWarPlanetRecipeV103, generateWarPlanetV103, WAR_PLANET_BIOMES_V103, WAR_PLANET_SURFACES_V103 } from "./app/game/systems/clanWarPlanetGeneratorV103";
   export { normalizeWarPlanetRecipeV115, generateWarPlanetV115 } from "./app/game/systems/clanWarPlanetGeneratorV115";
@@ -28,7 +29,7 @@ test("every published land biome has compatible, real material sources", () => {
     const ids = api.compatibleLandMaterialsV128(biome);
     assert(ids.length > 0, biome);
     assert.equal(new Set(ids).size, ids.length);
-    for (const id of ids) assert.equal(api.findPlanetTextureV125(id).domain, "land");
+    for (const id of ids) assert.equal(api.findPlanetTextureV130(id).domain, "land");
   }
   assert(!api.compatibleLandMaterialsV128("desert").includes("land-permafrost"));
   assert(api.compatibleLandMaterialsV128("snow").includes("land-permafrost"));
@@ -39,7 +40,7 @@ test("ten surface kinds preserve physical meaning and reject invented liquids", 
   for (const surface of api.WAR_PLANET_SURFACES_V103) {
     for (const biome of api.WAR_PLANET_BIOMES_V103) {
       const ids = api.compatibleSurfaceMaterialsV128(surface, biome);
-      for (const id of ids) assert.equal(api.findPlanetTextureV125(id).domain, "liquid");
+      for (const id of ids) assert.equal(api.findPlanetTextureV130(id).domain, "liquid");
     }
   }
   for (const medium of ["sand", "spores", "mist", "crystal", "radioactive"])

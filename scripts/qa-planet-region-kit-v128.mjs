@@ -50,6 +50,8 @@ try {
 
   const exporter = generator.getByTestId("planet-layer-export-v102");
   await exporter.locator("summary").click();
+  check("V130 adds land and liquid studies to the texture selector",
+    (await exporter.getByTestId("planet-extra-materials-v125").locator("select").first().locator("option").count()) === 48);
   const kit = exporter.getByTestId("planet-regional-kit-v128");
   await kit.waitFor({ state: "visible" });
   const regionSelect = kit.getByRole("combobox", { name: "Région de la planète" });

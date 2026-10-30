@@ -50,6 +50,7 @@ jobs:
           tests/planet-physical-material-v125.test.mjs
           tests/planet-region-material-kit-v128.test.mjs
           tests/planet-regional-shader-v129.test.mjs
+          tests/planet-extra-materials-v130.test.mjs
           tests/planet-strategy-v114.test.mjs
           tests/planet-generator-draft-v103.test.mjs
           tests/planet-generator-v103.test.mjs
@@ -73,6 +74,7 @@ jobs:
           app/game/systems/clanWarTextureLibraryV115.ts
           app/game/systems/clanWarPlanetPhysicalIndexV125.ts
           app/game/systems/clanWarTextureLibraryV125.ts
+          app/game/systems/clanWarTextureLibraryV130.ts
           app/game/PlanetGeneratorV103.tsx
           app/game/PlanetShapePreviewV125.tsx
 
