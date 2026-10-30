@@ -5,6 +5,7 @@ import { planWarRouteV6, type WarRulesV6 } from "./systems/clanWarBibleV6";
 import {
   WAR_OPERATIONS_STORAGE_V115, beginWarOperationV115, commandRtsV115, commandStealthV115,
   createWarOperationsV115, deployAssaultUnitV115, issueWarRtsRealtimeOrderV115,
+  queueWarRecruitmentV115, settleWarRecruitmentsV115,
   leaveWarOperationV115, readWarOperationsV115, stepWarRtsRealtimeV115, toggleWarRtsRealtimeV115,
   WAR_RTS_COVER_V115,
   settleWarOuterOpsV115, stepAssaultV115, warMissionEligibleV115, warOuterSecondsRemainingV115,
@@ -34,6 +35,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false}:
   const [targetId,setTargetId]=useState(rules.territories[1]?.id??"");
   const [selectedIds,setSelectedIds]=useState<string[]>([]);
   const [rtsSelectedId,setRtsSelectedId]=useState("");
+  const [recruitUnitId,setRecruitUnitId]=useState(rules.units[8]?.id??rules.units[0]?.id??"");
   const [now,setNow]=useState(0);
   const defaultSource=rules.metadata.sha256;
 
@@ -113,6 +115,8 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false}:
       const stamp=Date.now();setNow(stamp);
       const state=worldRef.current;
       if(state.outer.some(order=>stamp>=order.dueAt)) commit(settleWarOuterOpsV115(state,stamp,rules));
+      const current=worldRef.current;
+      if(current.pendingRecruits?.some(order=>stamp>=order.dueAt)) commit(settleWarRecruitmentsV115(current,stamp,rules));
     }
     check();const timer=window.setInterval(check,1000);
     return ()=>window.clearInterval(timer);
@@ -133,6 +137,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false}:
 
   const requestIssue=hydrated ? warMissionEligibleV115(world,rules,targetId,selectedIds) : "Chargement de l'archive";
   const target=rules.territories.find(site=>site.id===targetId);
+  const recruitUnit=rules.units.find(unit=>unit.id===recruitUnitId);
   const missionPc=selectedIds.reduce((pc,id)=>pc+(rules.units.find(unit=>unit.id===world.teams.find(team=>team.id===id)?.unitId)?.commandPoints??0),0);
   const routePreview=missionPc>0&&missionPc<=rules.parameters.pc_cap_1?planWarRouteV6(world.baseId,targetId,missionPc,[],rules):null;
   const current=world.active;
@@ -225,6 +230,31 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false}:
         {routePreview && <small className={styles.path}>Passages V6 : {routePreview.passageIds.join(" → ")||"sur place"} · coût de mouvement {routePreview.cost} · {missionPc} PC</small>}</p>
       <button type="button" disabled={blocked||Boolean(requestIssue)||((mode!=="outer")&&Boolean(current))||(mode==="outer"&&world.outer.length>=3)||(mode==="stealth"&&selectedIds.length>2)} onClick={start}>Lancer : {modeLabels[mode]}</button>
     </div>
+
+    <section className={styles.reinforcements} aria-label="Registre de recrutement V6">
+      <div><h4>Renforts de clan · catalogue V6 complet</h4>
+        <p>Trente formations sont disponibles depuis les fiches W3-U. Les volontaires arrivent seulement après leur délai de recrutement et avec de nouvelles identités, jamais avec l'expérience d'un vétéran.</p></div>
+      <div className={styles.recruitControls}>
+        <label>Former un nouveau détachement
+          <select value={recruitUnitId} disabled={blocked} onChange={event=>setRecruitUnitId(event.target.value)}>
+            {rules.units.map(unit=><option key={unit.id} value={unit.id}>{unit.id} · {unit.name} · {unit.recruitmentRav} RAV</option>)}
+          </select>
+        </label>
+        <button type="button" disabled={blocked||!recruitUnit||world.rav<recruitUnit.recruitmentRav||
+          world.teams.length+(world.pendingRecruits?.length??0)>=16||(world.pendingRecruits?.length??0)>=4}
+          onClick={()=>commit(queueWarRecruitmentV115(worldRef.current,recruitUnitId,Date.now(),rules))}>
+          Recruter · {recruitUnit?.recruitmentRav??"?"} RAV
+        </button>
+      </div>
+      {recruitUnit&&<p className={styles.explain}>{recruitUnit.name} · {recruitUnit.fullMembers} membre(s) · {recruitUnit.commandPoints} PC ·
+        {recruitUnit.upkeepRav} RAV d'entretien par opération · arrivée après {recruitUnit.delayTurns} tour(s) source
+        ({Math.max(1,recruitUnit.delayTurns)*15} secondes d'exercice).</p>}
+      {(world.pendingRecruits??[]).map(order=><p className={styles.recruitOrder} key={order.id}>
+        {order.id} · {rules.units.find(unit=>unit.id===order.unitId)?.name??order.unitId} · arrivée dans
+        {formatTime(Math.max(0,Math.ceil((order.dueAt-now)/1000)))}
+      </p>)}
+      <p className={styles.explain}>Équipes formées en renfort : {(world.recruitedTeamIds??[]).length}. Coût et délai de base issus de la Bible V6 ; conversion des tours en secondes propre à ce prototype.</p>
+    </section>
 
     {current && <section className={styles.battle} aria-label="Mission jouable active" data-mode={current.mode}>
       <div className={styles.battleHeader}><div><span className={styles.overline}>{current.id} · {current.targetId} · action {current.tick}</span>
