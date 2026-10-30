@@ -511,7 +511,8 @@ export function commandRtsV115(state:WarOperationsStateV115,teamId:string,x:numb
   } else {
     const occupied=actors.filter(item=>item!==actor&&item.hp>0).map(item=>coord(item.x,item.y));
     const length=warTerrainPathLengthV116(terrain,actor,{x,y},occupied);
-    const carrying=field.scripted?.kind==="cargo-escort"&&field.scripted.cargo.carrierTeamId===teamId;
+    const carrying=(field.scripted?.kind==="cargo-escort"||field.scripted?.kind==="filter-repair")&&
+      field.scripted.cargo.carrierTeamId===teamId;
     if(occupant || length===null || length===0 || length>(carrying?1:clamp(Math.ceil((unit?.mobility??1)/2),1,3)))
       return reject(state,"Case occupée ou itinéraire obstrué : le détachement ne traverse pas les murs.");
     actor.x=x;actor.y=y;
