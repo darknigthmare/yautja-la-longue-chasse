@@ -117,10 +117,11 @@ export function settleWarRecruitmentsV115(state:WarOperationsStateV115,now:numbe
   const due=(state.pendingRecruits??[]).filter(item=>now>=item.dueAt).sort((a,b)=>a.dueAt-b.dueAt||a.id.localeCompare(b.id));
   if(!due.length) return reject(state,"Aucun recrutement achevé.");
   const arrivals=due.map(item=>createWarTeamV6(item.unitId,item.teamId,rules));
-  if(arrivals.some(team=>!team)||state.teams.length+arrivals.length>16) return reject(state,"Rostre incompatible ; arrivées suspendues.");
+  const confirmed=arrivals.filter((team):team is WarTeamStateV6=>team!==null);
+  if(confirmed.length!==due.length||state.teams.length+confirmed.length>16) return reject(state,"Rostre incompatible ; arrivées suspendues.");
   const processed=new Set(due.map(item=>item.id));
   return accept({...state,clock:state.clock+due.length,
-    teams:[...state.teams,...arrivals as WarTeamStateV6[]],
+    teams:[...state.teams,...confirmed],
     pendingRecruits:(state.pendingRecruits??[]).filter(item=>!processed.has(item.id)),
     recruitedTeamIds:unique([...(state.recruitedTeamIds??[]),...due.map(item=>item.teamId)])},
     due.length+" renfort(s) V6 arrivés au départ, avec nouvelles identités et XP à zéro.");
