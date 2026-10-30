@@ -3,7 +3,7 @@ import test from "node:test";
 import {
   CLAN_WAR_VARIANTS_V120 as rows, auditClanWarVariantsV120,
   exportClanWarVariantsCsvV120, exportClanWarVariantsJsonV120,
-  searchClanWarVariantsV120, countClanWarVariantsV120,
+  searchClanWarVariantsV120, countClanWarVariantsV120, pickClanWarVariantV120,
 } from "../app/game/systems/clanWarVariantsV120.ts";
 
 test("no-dependency V120 contract: exactly 12 groups of 100",()=>{
@@ -25,4 +25,22 @@ test("fast export smoke proves JSON and CSV both contain same 1200 source record
   assert.equal(json.missions[1199].id,rows[1199].id);
   assert.equal(searchClanWarVariantsV120("","all","homage").length,400);
   assert.equal(new Set(rows.map(x=>x.site)).size,1200);
+});
+
+test("non-repeating procedural picker can exhaust a full 100-scenario family safely",()=>{
+  const excluded=[];
+  const initial=pickClanWarVariantV120(424242,{mode:"rts",family:"homage"});
+  assert.equal(initial?.id,pickClanWarVariantV120(424242,{mode:"rts",family:"homage"})?.id);
+  for(let step=0;step<100;step++){
+    const chosen=pickClanWarVariantV120(step*101+42,{
+      mode:"rts",family:"homage",excludedIds:excluded,
+    });
+    assert.ok(chosen,"must have a fresh contract at step "+step);
+    assert.equal(chosen.mode,"rts");
+    assert.equal(chosen.family,"homage");
+    assert.equal(excluded.includes(chosen.id),false);
+    excluded.push(chosen.id);
+  }
+  assert.equal(new Set(excluded).size,100);
+  assert.equal(pickClanWarVariantV120(5,{mode:"rts",family:"homage",excludedIds:excluded}),null);
 });
