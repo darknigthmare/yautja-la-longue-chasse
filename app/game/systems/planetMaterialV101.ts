@@ -2,6 +2,7 @@ import type { WarAtlasPointV95 } from "./clanWarAtlasV95";
 import type { WarPlanetLandBiomeV96, WarPlanetV96 } from "./clanWarPlanetsV96";
 import { planetLandProfileV103, planetSurfaceProfileV103 } from "./planetMaterialProfilesV103";
 import { planetTextureUriV115 } from "./clanWarTextureLibraryV115";
+import { planetTextureUriV126 } from "./clanWarPlanetGeneratorV126";
 
 export const PLANET_MATERIAL_ROOT_V101 = "/game/planets/v101/runtime/";
 export const PLANET_MATERIAL_SOURCE_ROOT_V101 = "/game/planets/v101/materials/";
@@ -39,8 +40,9 @@ export function planetMaterialRecipeV101(planet: WarPlanetV96) {
   const volcanic = biome === "volcanic";
   const irradiated = biome === "irradiated";
   const profile = planet.procedural?.recipe.atmosphere;
-  const options = planet.procedural?.recipe.version === 103 || planet.procedural?.recipe.version === 115 ? planet.procedural.recipe : null;
+  const options = planet.procedural?.recipe.version === 103 || planet.procedural?.recipe.version === 115 || planet.procedural?.recipe.version === 126 ? planet.procedural.recipe : null;
   const variationV115 = planet.procedural?.recipe.version === 115 ? planet.procedural.recipe : null;
+  const variationV126 = planet.procedural?.recipe.version === 126 ? planet.procedural.recipe : null;
   const cloud = profile === "storm" ? "clouds-storm" : profile === "haze" ? "clouds-low" : profile ? "clouds-cirrus"
     : wet ? "clouds-storm" : cold || kind === "mist" ? "clouds-low" : "clouds-cirrus";
   const weather = profile === "storm" ? "clouds-storm" : profile === "aurora" ? "clouds-low" : profile ? "haze-dust"
@@ -65,12 +67,13 @@ export function planetMaterialRecipeV101(planet: WarPlanetV96) {
     atmosphereDensity: profile === "clear" ? .38 : profile === "haze" ? 1.45 : profile === "storm" ? 1.2 : profile === "aurora" ? .9 : 1,
     emission: kind === "lava" ? .5 : kind === "radioactive" ? .28 : kind === "spores" ? .13 : kind === "crystal" ? .06 : 0,
     seed: planet.seed,
-    mapping: planet.procedural?.recipe.biomeDiversity === "varied" ? "world-space-triplanar-regional" as const : "world-space-triplanar-mirrored" as const,
+    mapping: variationV126 || planet.procedural?.recipe.biomeDiversity === "varied" ? "world-space-triplanar-regional" as const : "world-space-triplanar-mirrored" as const,
     materials: options ? {
       land: { ...planetLandProfileV103(options),
         ...(variationV115 ? { detail: planetTextureUriV115("land", variationV115.landMaterial) } : {}) },
       surface: { ...planetSurfaceProfileV103(options),
-        ...(variationV115 ? { detail: planetTextureUriV115("liquid", variationV115.liquidMaterial) } : {}) },
+        ...(variationV115 ? { detail: planetTextureUriV115("liquid", variationV115.liquidMaterial) } :
+          variationV126 ? { detail: planetTextureUriV126("liquid", variationV126.liquidMaterialV126, planet.seed) } : {}) },
     } : null,
   };
 }
