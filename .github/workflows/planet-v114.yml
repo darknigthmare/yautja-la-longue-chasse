@@ -49,6 +49,7 @@ jobs:
           tests/planet-strategy-v114.test.mjs
           tests/planet-generator-draft-v103.test.mjs
           tests/planet-generator-v103.test.mjs
+          tests/planet-generator-v115.test.mjs
           tests/planet-material-v101.test.mjs
       - name: Lint new planet modules
         run: >-
@@ -56,3 +57,6 @@ jobs:
           app/game/systems/clanWarPlanetStrategyV114.ts
           app/game/systems/planetExportZipV114.ts
           app/game/systems/clanWarPlanetDraftV103.ts
+          app/game/systems/clanWarPlanetGeneratorV115.ts
+          app/game/systems/clanWarShapeAtlasV115.ts
+          app/game/systems/clanWarTextureLibraryV115.ts
