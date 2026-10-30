@@ -176,6 +176,31 @@ export function resolveWarRtsScriptedTickV119(
         ", "+hazard+" ; garde "+(guard?"présente":"absente")+
         ", ennemis au levier "+attackers.length+"."};
   }
+  if(objective.kind==="wind-extraction"){
+    const dead=actors.filter(actor=>actor.side==="ally"&&actor.teamId&&actor.hp<=0)
+      .map(actor=>actor.teamId!);
+    const lostTeamIds=[...new Set([...objective.lostTeamIds,...dead])];
+    const guideSight=own.some(actor=>actor.unitId==="W3-U02"&&actor.x>=4&&actor.y<=2&&
+      warTerrainLineOfSightV116(terrain,actor,objective.observationRidge));
+    const ridgeConfirmed=objective.ridgeConfirmed||guideSight;
+    // Survivors only leave through the true ship tile after ridge reconnaissance.
+    const arriving=ridgeConfirmed?own.filter(actor=>actor.teamId&&
+      actor.x===objective.ship.x&&actor.y===objective.ship.y&&
+      objective.nominatedTeamIds.includes(actor.teamId)&&
+      !objective.extractedTeamIds.includes(actor.teamId)).map(actor=>actor.teamId!):[];
+    const extractedTeamIds=[...new Set([...objective.extractedTeamIds,...arriving])];
+    const ended=objective.nominatedTeamIds.every(id=>extractedTeamIds.includes(id)||lostTeamIds.includes(id));
+    const next={...objective,ridgeConfirmed,extractedTeamIds,lostTeamIds,windPhase:(objective.windPhase+1)%3};
+    const guideAvailable=ridgeConfirmed||own.some(actor=>actor.unitId==="W3-U02");
+    const outcome=ended?(extractedTeamIds.length>0&&ridgeConfirmed?"victory":"defeat"):
+      !guideAvailable||(!own.length&&!extractedTeamIds.length)?"defeat":null;
+    return {objective:next,outcome,extractedThisTick:arriving,
+      message:outcome==="victory"?"Survivants désignés arrivés à la coque par les passages réellement franchis.":
+        "Retour sous le vent : arête "+(ridgeConfirmed?"reconnue":"inconnue")+
+        " · évacués "+extractedTeamIds.length+"/"+objective.nominatedTeamIds.length+
+        " · blessés ou perdus "+lostTeamIds.length+
+        " · phase de rafale "+next.windPhase+"/2."};
+  }
   if(objective.kind==="beacon-intercept"){
     let beacon={...objective.beacon};
     if(beacon.enemyCarrierId){
@@ -302,6 +327,7 @@ export function warRtsSourceSightV120(
   terrain:WarMissionTerrainV116,
 ):boolean {
   if(!warTerrainLineOfSightV116(terrain,from,to))return false;
+  if(objective?.kind==="wind-extraction")return objective.windPhase!==2||DIST(from,to)<=2;
   if(objective?.kind!=="circuit-defense"||objective.pressurePhase!==2)return true;
   let x=from.x,y=from.y;
   const dx=Math.abs(to.x-from.x),dy=Math.abs(to.y-from.y);
@@ -367,7 +393,9 @@ export function warRtsRivalTargetV120(
           (actor:WarRtsActorV115)=>actor.unitId===GUARD_UNIT&&DIST(actor,objective.leverPoint)<=2:
           objective?.kind==="beacon-intercept"?
             (actor:WarRtsActorV115)=>actor.unitId==="W3-U01":
-            (_actor:WarRtsActorV115)=>false;
+            objective?.kind==="wind-extraction"?
+              (actor:WarRtsActorV115)=>living.every(other=>other.id===actor.id||DIST(other,actor)>2):
+              (_actor:WarRtsActorV115)=>false;
   const selected=visible.find(priority);
   return selected??(visible[0]??[...living].sort(byDistance)[0]);
 }
@@ -379,13 +407,35 @@ export function validWarRtsScriptedObjectiveV119(
   if(!value||typeof value!=="object"||Array.isArray(value))return false;
   const v=value as Partial<WarRtsScriptedObjectiveV119>;
   if(!v.scenarioId||warRtsScriptedEligibilityV119(v.scenarioId,rules,targetId,unitIds)!==null||
-    v.sourceMapId!==(v.scenarioId==="W3-RTS05"?"W3-MAP03":v.scenarioId==="W3-RTS03"||v.scenarioId==="W3-RTS04"?"W3-MAP02":"W3-MAP01"))return false;
+    v.sourceMapId!==((v.scenarioId==="W3-RTS05"||v.scenarioId==="W3-RTS06")?"W3-MAP03":v.scenarioId==="W3-RTS03"||v.scenarioId==="W3-RTS04"?"W3-MAP02":"W3-MAP01"))return false;
   const terrain=warMissionTerrainV116(targetId,rules);
   if(v.scenarioId==="W3-RTS02"){
     const stage=v as Partial<Extract<WarRtsScriptedObjectiveV119,{kind:"guard-relief"}>>;
     return stage.kind==="guard-relief"&&stage.requiredTurns===3&&
       !!stage.guardPoint&&stage.guardPoint.x===7&&stage.guardPoint.y===3&&
       Number.isInteger(stage.reliefProgress)&&(stage.reliefProgress as number)>=0&&(stage.reliefProgress as number)<=3;
+  }
+  if(v.scenarioId==="W3-RTS06"){
+    const stage=v as Partial<Extract<WarRtsScriptedObjectiveV119,{kind:"wind-extraction"}>>;
+    if(stage.kind!=="wind-extraction"||!stage.ship||stage.ship.x!==1||stage.ship.y!==4||
+      !stage.observationRidge||stage.observationRidge.x!==7||stage.observationRidge.y!==1||
+      typeof stage.ridgeConfirmed!=="boolean"||
+      !Number.isInteger(stage.windPhase)||(stage.windPhase as number)<0||(stage.windPhase as number)>2||
+      !Array.isArray(stage.nominatedTeamIds)||!Array.isArray(stage.extractedTeamIds)||!Array.isArray(stage.lostTeamIds))
+      return false;
+    const all=[...stage.nominatedTeamIds].sort();
+    if(all.length!==actorTeamIds.length||
+      JSON.stringify(all)!==JSON.stringify([...actorTeamIds].sort())||
+      new Set(all).size!==all.length)return false;
+    const extracted=stage.extractedTeamIds,lost=stage.lostTeamIds;
+    if(extracted.length>all.length||lost.length>all.length||
+      new Set(extracted).size!==extracted.length||new Set(lost).size!==lost.length||
+      [...extracted,...lost].some(id=>!all.includes(id))||
+      extracted.some(id=>lost.includes(id)))return false;
+    const present=new Set(actors.filter(actor=>actor.side==="ally"&&actor.hp>0)
+      .map(actor=>actor.teamId));
+    if([...extracted,...lost].some(id=>present.has(id)))return false;
+    return true;
   }
   if(v.scenarioId==="W3-RTS05"){
     const stage=v as Partial<Extract<WarRtsScriptedObjectiveV119,{kind:"beacon-intercept"}>>;
