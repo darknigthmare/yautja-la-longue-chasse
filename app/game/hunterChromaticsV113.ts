@@ -1,4 +1,6 @@
 import { PHG_MATERIALS_V113, phgMaterialLabelV113 } from "./hunterMaterialsV113.ts";
+import PHG_DRIVE_CATALOG_V120 from "./data/phgDriveV120Catalog.json";
+import PHG_DRIVE_INSTALLED_V120 from "./data/phgDriveV120Installed.json";
 /**
  * Chromatic materials are planar reconstructions, NOT ripped PHG textures.
  * Identity is save-safe: only registered local paths may be loaded.
@@ -97,6 +99,40 @@ const EXCLUDED_NATIVE_IDS_V114 = new Set([
   "armor_filet_fin_noir_losanges", // retained V113 save ID and native plate
   "armor_classe_samurai_laque_rouge_volutes", // retained V113 save ID and native plate
 ]);
+/** V120: original 156 RGB reconstructions are NOT automatically trusted as rig textures.
+ * Only local files installed after SHA verification can enter the save-safe
+ * material registry. Jewelry/biomask assets remain separate from paint channels.
+ */
+const installedDriveIdsV120 = new Set<string>(
+  (PHG_DRIVE_INSTALLED_V120.installed ?? []) as readonly string[]
+);
+function sourceChannelV120(value: string | null): ChromaticChannelV113 | null {
+  return value === "skin" || value === "dreads" || value === "outfit" || value === "armor"
+    ? value : null;
+}
+export const PHG_DRIVE_ACCESSORIES_V120 = Object.freeze(
+  PHG_DRIVE_CATALOG_V120.assets.filter(item => sourceChannelV120(item.candidateChannel) === null)
+);
+export const PHG_DRIVE_CANDIDATES_V120: readonly ChromaticMaterialV113[] = Object.freeze(
+  PHG_DRIVE_CATALOG_V120.assets.flatMap((item): ChromaticMaterialV113[] => {
+    const channel = sourceChannelV120(item.candidateChannel);
+    if (!channel) return [];
+    const isInstalled = installedDriveIdsV120.has(item.id)
+      && PHG_DRIVE_INSTALLED_V120.bundleSha256 === PHG_DRIVE_CATALOG_V120.bundleSha256;
+    return [{
+      id: "phg-drive-" + item.id,
+      channel,
+      label: "PHG reconstitué · " + item.label,
+      status: isInstalled ? "integrated" : "drive-only",
+      evidence: "provisional",
+      src: isInstalled ? item.runtimePath : null,
+      sourceFile: item.sourcePath.split("/").at(-1) ?? item.id + ".png",
+      note: "Matière 2D issue du ZIP " + item.sourceArchive
+        + ". Source vérifiée SHA-256 ; fidélité colorimétrique et UV 1:1 non certifiées.",
+    }];
+  })
+);
+
 export const PHG_CHROMATIC_MATERIALS_V113: readonly ChromaticMaterialV113[] = Object.freeze([
   // Preserve all previously selectable V113 save IDs and their original art.
   ...LEGACY_CHROMATIC_MATERIALS_V113.filter(item => item.status === "integrated"),
@@ -114,6 +150,8 @@ export const PHG_CHROMATIC_MATERIALS_V113: readonly ChromaticMaterialV113[] = Ob
       sourceFile: item.src.split("/").at(-1) ?? item.id + ".png",
       note: phgMaterialLabelV113(item) + ". Texture plane appliquée uniquement à la silhouette du calque correspondant.",
     })),
+  // Never include uninstalled Drive-only candidates in the live renderer.
+  ...PHG_DRIVE_CANDIDATES_V120.filter(item => item.status === "integrated"),
 ]);
 
 export const DEFAULT_CHROMATICS_V113: Readonly<HunterChromaticsV113> = Object.freeze({

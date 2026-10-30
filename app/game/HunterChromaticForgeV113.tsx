@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import type { HunterAppearance } from "./types";
 import {
   CHROMATIC_CHANNELS_V113, CHROMATIC_PALETTE_PRESETS_V115, PHG_CHROMATIC_MATERIALS_V113,
+  PHG_DRIVE_CANDIDATES_V120,
   DEFAULT_CHROMATICS_V113, normalizeHunterChromaticsV113,
   chromaticFacilityChannelsV115, resetChromaticFacilityV115,
   type ChromaticFacilityV115, type HunterChromaticsV113,
@@ -50,7 +51,7 @@ export default function HunterChromaticForgeV113({
       {chromaticFacilityChannelsV115(station).map(channel => {
         const activeColor = draft[channel.colorKey];
         const choices = PHG_CHROMATIC_MATERIALS_V113.filter(item => item.channel === channel.id && item.status === "integrated");
-        const pending = PHG_CHROMATIC_MATERIALS_V113.filter(item => item.channel === channel.id && item.status === "drive-only").length;
+        const pending = PHG_DRIVE_CANDIDATES_V120.filter(item => item.channel === channel.id && item.status === "drive-only").length;
         const selectedMaterial = choices.find(item => item.id === draft[channel.materialKey]);
         return <fieldset className={styles.station} key={channel.id} disabled={disabled}>
           <legend>{channel.label}</legend>
@@ -86,7 +87,7 @@ export default function HunterChromaticForgeV113({
             <span><strong>{selectedMaterial.label}</strong><small>{selectedMaterial.evidence === "provisional" ? "Étude provisoire — fidélité artistique non validée" : "Matière plane reconstituée — UV non certifiées 1:1"}</small></span>
           </div>}
           {!selectedMaterial && <small>Calque d’origine conservé sans texture de remplacement.</small>}
-          {pending > 0 && <small>{pending} matière(s) identifiée(s) sur Drive, non encore présente(s) en jeu.</small>}
+          {pending > 0 && <small>{pending} matière(s) PHG vérifiée(s) sur Drive, non installée(s) dans ce jeu. L'import local V120 vérifie les octets avant activation ; la fidélité UV 1:1 reste non certifiée.</small>}
         </fieldset>;
       })}
     </div>
