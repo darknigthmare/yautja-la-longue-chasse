@@ -1,6 +1,7 @@
 import type { WarRulesV6 } from "./clanWarBibleV6";
 import type { WarRtsActorV115 } from "./clanWarOperationsV115";
 import { warMissionTerrainV116, warTerrainCellBlockedV116, warTerrainLineOfSightV116, type WarMissionTerrainV116 } from "./clanWarMissionTerrainV116";
+import { warRtsNextPathStepV118 } from "./clanWarTacticalNavigationV118";
 
 /**
  * W3-RTS01–05: five SMALL objective exercises from authored W3-MAP01/02/03 briefs.
@@ -188,11 +189,13 @@ export function resolveWarRtsScriptedTickV119(
     const allyBearer=beacon.allyCarrierTeamId?own.find(actor=>actor.teamId===beacon.allyCarrierTeamId):null;
     const delivered=Boolean(observed&&allyBearer&&beacon.x===objective.extraction.x&&
       beacon.y===objective.extraction.y);
-    const canRecover=own.some(actor=>["W3-U04","W3-U21"].includes(actor.unitId));
+    const escaped=Boolean(beacon.enemyCarrierId&&
+      ((beacon.x===8&&beacon.y===5)||(beacon.x===0&&beacon.y===5)));
+        const canRecover=own.some(actor=>["W3-U04","W3-U21"].includes(actor.unitId));
     const canObserve=observed||scoutPresent;
     const next={...objective,observed,beacon,decoy:{...objective.decoy,recognized:decoyRecognized}};
-    const outcome=delivered?"victory":canRecover&&canObserve?null:"defeat";
-    return {objective:next,outcome,message:delivered?
+    const outcome=delivered?"victory":escaped?"defeat":canRecover&&canObserve?null:"defeat";
+    return {objective:next,outcome,message:escaped?"Le porteur adverse a atteint la sortie du cratère avec la vraie balise.":delivered?
       "La véritable balise a été reconnue, interceptée et ramenée physiquement à la coque.":
       "Balise "+(observed?"identifiée":"non confirmée")+
       " · objet "+(beacon.allyCarrierTeamId?"récupéré":"encore en poursuite")+
@@ -295,6 +298,35 @@ export function warRtsSourceSightV120(
     if((x!==from.x||y!==from.y)&&(x!==to.x||y!==to.y)&&x>=4&&x<=6&&y>=1&&y<=3)return false;
   }
   return true;
+}
+
+/** Once an actual scout has identified the W3-RTS05 carrier, that known
+ * rival retreats via an available crater exit. Exit choice uses only *seen*
+ * opponents, physical pathing, and finite escorts. No hidden fog-of-war view.
+ * Other enemies retain their current existing tactical response. */
+export function warRtsBeaconEscapeStepV121(
+  objective:WarRtsScriptedObjectiveV119|undefined,rival:WarRtsActorV115,
+  actors:readonly WarRtsActorV115[],terrain:WarMissionTerrainV116,
+):{x:number;y:number}|null {
+  if(objective?.kind!=="beacon-intercept"||!objective.observed||
+    objective.beacon.enemyCarrierId!==rival.id||rival.side!=="rival"||rival.hp<=0)return null;
+  const observers=actors.filter(actor=>actor.side==="ally"&&actor.hp>0&&
+    warTerrainLineOfSightV116(terrain,rival,actor));
+  const occupied=actors.filter(actor=>actor.id!==rival.id&&actor.hp>0)
+    .map(actor=>actor.x+","+actor.y);
+  const exits=[{x:8,y:5},{x:0,y:5}]
+    .filter(exit=>!warTerrainCellBlockedV116(terrain,exit.x,exit.y))
+    .map(exit=>({
+      exit,
+      routeLength:warTerrainPathLengthV116(terrain,rival,exit,occupied),
+      guardExposure:observers.filter(actor=>DIST(actor,exit)<=3).length,
+      nearestGuard:observers.length?Math.min(...observers.map(actor=>DIST(actor,exit))):99,
+    })).filter(item=>item.routeLength!==null);
+  exits.sort((a,b)=>a.guardExposure-b.guardExposure||
+    b.nearestGuard-a.nearestGuard||(a.routeLength??99)-(b.routeLength??99)||
+    a.exit.x-b.exit.x);
+  if(!exits.length)return null;
+  return warRtsNextPathStepV118(terrain,rival,exits[0].exit,occupied);
 }
 
 export function warRtsRivalTargetV120(
