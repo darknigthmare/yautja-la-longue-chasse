@@ -18,6 +18,7 @@ export default function ClanWarMissionDossiersV117({
   const [picked,setPicked]=useState("");
   const [sourceView,setSourceView]=useState<"missions"|"campaigns"|"clans">("missions");
   const filtered=useMemo(()=>searchWarMissionDossiersV117(catalog,query,filter),[catalog,query,filter]);
+  const playableRtsCount=catalog.missions.filter(mission=>mission.kind==="rts"&&warSourceRtsScenarioV119(mission.id,rules)).length;
   const selected=catalog.missions.find(item=>item.id===picked&&filtered.some(a=>a.id===item.id))??filtered[0];
   const route=selected?.mapId?catalog.maps.find(item=>item.id===selected.mapId):null;
   const tacticalPilot=selected?.kind==="rts"?warSourceRtsScenarioV119(selected.id,rules):null;
@@ -31,7 +32,9 @@ export default function ClanWarMissionDossiersV117({
     <p className={styles.notice} role="note"><strong>État : dossiers de conception, pas missions terminées.</strong> Le mode d&apos;exercice V115 est jouable séparément, mais ne prétend pas exécuter les scènes, dialogues, scripts et conséquences décrits ici. Les clans W3 sont des créations de la Bible du jeu, pas des factions toutes attestées dans les films.</p>
     <div className={styles.metrics}>
       <span><strong>{catalog.missions.filter(item=>item.kind==="narrative").length}</strong> missions narratives</span>
-      <span><strong>{catalog.missions.filter(item=>item.kind==="rts").length}</strong> scénarios RTS</span>
+      <span><strong>{catalog.missions.filter(item=>item.kind==="rts").length}</strong> scénarios RTS documentés</span>
+      <span><strong>{playableRtsCount}</strong> épreuves RTS tactiques disponibles</span>
+      <span><strong>{24-playableRtsCount}</strong> missions RTS restant à mettre en scène</span>
       <span><strong>{catalog.missions.filter(item=>item.kind==="three-mode").length}</strong> missions trois vues</span>
       <span><strong>{catalog.campaigns.length}</strong> campagnes</span>
       <span><strong>{catalog.maps.length}</strong> cartes</span>
