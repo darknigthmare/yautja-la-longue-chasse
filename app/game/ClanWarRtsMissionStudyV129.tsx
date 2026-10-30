@@ -46,7 +46,7 @@ export default function ClanWarRtsMissionStudyV129({rules}:{rules:WarRulesV6}){
   <header>
    <p className={styles.eyebrow}>GUERRE DES CLANS · BIBLE V6 · SOURCE W3-RTS01 À 24</p>
    <h3>24 missions documentées — objectifs et extraction physiques</h3>
-   <p>Les 24 scénarios disposent de leurs objectifs, adversaires décrits, conditions de sortie et exigences W3. Cette interface est une <strong>étude d'exécution avec un chasseur</strong>, pas le RTS multi-escouades complet de la campagne.</p>
+   <p>Les 24 scénarios disposent de leurs objectifs, adversaires décrits, conditions de sortie et exigences W3. Cette interface est une <strong>étude d&apos;exécution avec un chasseur</strong>, pas le RTS multi-escouades complet de la campagne.</p>
   </header>
   <div className={styles.selection}>
     <label>Mission source
@@ -67,7 +67,7 @@ export default function ClanWarRtsMissionStudyV129({rules}:{rules:WarRulesV6}){
     <span><strong>{mission.opponentTeams}</strong> détachements IA</span>
     <span><strong>{mission.opponentCombatants}</strong> combattants potentiels</span>
     <span><strong>{state.base.turn}</strong> tours</span>
-    <span><strong>{player.hp}</strong> PV d'essai</span>
+    <span><strong>{player.hp}</strong> PV d&apos;essai</span>
   </div>
   <div className={styles.layout}>
    <div className={styles.mapPane}>
@@ -107,7 +107,7 @@ export default function ClanWarRtsMissionStudyV129({rules}:{rules:WarRulesV6}){
      <text x={player.x*cell+cell/2} y={player.y*cell+14}
        textAnchor="middle" fill="#f4f6e3" fontSize="12">Y</text>
     </svg>
-    <p className={styles.legend}>1–3 : lieux à visiter dans l'ordre · △ : point de reconnaissance · Y : chasseur · R : rival visible · C : charge ou compagnon · N : témoin neutre · ↥ : extraction. Les secteurs non visibles ne révèlent pas leurs ennemis.</p>
+    <p className={styles.legend}>1–3 : lieux à visiter dans l&apos;ordre · △ : point de reconnaissance · Y : chasseur · R : rival visible · C : charge ou compagnon · N : témoin neutre · ↥ : extraction. Les secteurs non visibles ne révèlent pas leurs ennemis.</p>
     {visibleFollower&&<p className={styles.legend}>
       {visibleFollower.kind} · {visibleFollower.secured?"sécurisé":"à récupérer"}
       {visibleFollower.heldByPlayer?" · porté physiquement":" · marche derrière vous"} · santé {visibleFollower.hp}/8.
@@ -117,7 +117,7 @@ export default function ClanWarRtsMissionStudyV129({rules}:{rules:WarRulesV6}){
     <p className={styles.eyebrow}>{mission.id} · {map.planetName} · {map.worldStratum}</p>
     <h4>{mission.name}</h4>
     <p><strong>Objectif exact de la Bible :</strong> {mission.sourceObjective}</p>
-    <p><strong>Plan de force d'essai :</strong> {mission.opponentTeams} équipes rivales initialement placées sur la carte (budget {mission.opponentBudgetPc} PC d'étude). Les groupes qui n'ont pas été vus ne sont pas identifiés dans le champ de bataille.</p>
+    <p><strong>Plan de force d&apos;essai :</strong> {mission.opponentTeams} équipes rivales initialement placées sur la carte (budget {mission.opponentBudgetPc} PC d&apos;étude). Les groupes qui n&apos;ont pas été vus ne sont pas identifiés dans le champ de bataille.</p>
     <ol className={styles.tasks}>
      {mission.tasks.map((task,i)=><li key={task.id} data-completed={state.completedTaskIds.includes(task.id)}
         data-active={state.completedTaskIds.length===i}>
@@ -156,12 +156,12 @@ export default function ClanWarRtsMissionStudyV129({rules}:{rules:WarRulesV6}){
      <p><strong>Accès en campagne :</strong> {mission.sourceCampaignLink}</p>
      <p><strong>Rôles conseillés pour futur RTS :</strong> {mission.suggestedV6Units.join(", ")}</p>
      <p><strong>Composition rivale proposée pour cette simulation :</strong> {mission.opponentUnitIds.join(", ")}, basée sur les types W3-U et le plan source, non sur une garnison canonique.</p>
-     <p><strong>XP prévue dans le classeur :</strong> {mission.sourceRewardXpDesign}; aucune XP n'est accordée par cette étude.</p>
+     <p><strong>XP prévue dans le classeur :</strong> {mission.sourceRewardXpDesign}; aucune XP n&apos;est accordée par cette étude.</p>
      <p><strong>Cellules :</strong> {mission.sourceCells.join(", ")}</p>
      <p><strong>Origine de la fiche :</strong> {mission.sourceProvenance}</p>
     </details>
    </aside>
   </div>
-  <footer className={styles.footer}>Les acteurs Yautja et objets ici sont des figurants d'exercice. Les objectifs des 24 fiches sont jouables avec collisions et extraction, mais leur RTS intégral avec plusieurs escouades réelles, dialogues, cargaisons multiples, véhicules et conséquences V85/V6 n'est pas terminé.</footer>
+  <footer className={styles.footer}>Les acteurs Yautja et objets ici sont des figurants d&apos;exercice. Les objectifs des 24 fiches sont jouables avec collisions et extraction, mais leur RTS intégral avec plusieurs escouades réelles, dialogues, cargaisons multiples, véhicules et conséquences V85/V6 n&apos;est pas terminé.</footer>
  </section>;
 }
