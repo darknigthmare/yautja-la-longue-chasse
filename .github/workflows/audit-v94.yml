@@ -656,6 +656,9 @@ jobs:
           app/game/systems/clanWarPlanetGeneratorV103.ts app/game/systems/clanWarPlanetGeographyV103.ts
           app/game/systems/clanWarDeploymentV103.ts app/game/systems/clanWarGeneratedCatalogV103.ts
           app/game/systems/planetMaterialProfilesV103.ts
+          app/game/systems/clanWarPlanetGeneratorV115.ts
+          app/game/systems/clanWarShapeAtlasV115.ts
+          app/game/systems/clanWarTextureLibraryV115.ts
           app/planet-generator-v103/page.tsx app/planet-generator-v103/review.tsx
           app/game/ClanWarCommandV98.tsx app/game/systems/clanWarCommandV98.ts
           app/game/ClanWarGarrisonV99.tsx
@@ -808,7 +811,7 @@ jobs:
           tests/planet-regional-material-v102.test.mjs
           tests/planet-generator-v103.test.mjs tests/planet-generator-integration-v103.test.mjs
           tests/planet-generator-draft-v103.test.mjs tests/planet-material-profiles-v103.test.mjs
-          tests/planet-strategy-v114.test.mjs tests/planet-export-zip-v114.test.mjs
+          tests/planet-strategy-v114.test.mjs tests/planet-export-zip-v114.test.mjs tests/planet-generator-v115.test.mjs
       - name: Exercise generated planets, independent bitmap layers and real saved fronts
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: |
