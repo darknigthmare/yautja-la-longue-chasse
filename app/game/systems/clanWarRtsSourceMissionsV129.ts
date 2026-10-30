@@ -1,7 +1,7 @@
 import type {WarRulesV6} from "./clanWarBibleV6";
 import {
  createWarMapPracticeV128, commandWarMapPracticeV128, warMapFindPathV128,
- warMapLineOfSightV128, type WarMapPointV128, type WarMapPracticeV128,
+ warMapLineOfSightV128, warMapWalkableV128, type WarMapActorV128, type WarMapPointV128, type WarMapPracticeV128,
  type WarMissionMapActionV128, type WarMapReportV128,
 } from "./clanWarSourceMapsV128";
 
@@ -162,6 +162,37 @@ const RECIPES:Record<WarRtsMissionIdV129,MissionRecipeV129>={
   {title:"Inventorier les caisses physiquement transportables",kind:"recover",requiresPressure:true},
  ],escortKind:"witness",suggestedV6Units:["W3-U29","W3-U19","W3-U26"]},
 };
+/**
+ * Source-informed ORIGINAL rival formations for the 24 W3 RTS exercises:
+ * two scouts/guards on early missions, additional specialist squads later.
+ * These are not canonical identified characters or a hidden V85 garrison.
+ */
+const OPPONENT_UNITS:Record<WarRtsMissionIdV129,readonly string[]>={
+ "W3-RTS01":["W3-U13","W3-U07","W3-U05"],
+ "W3-RTS02":["W3-U12","W3-U07","W3-U02"],
+ "W3-RTS03":["W3-U07","W3-U13","W3-U16"],
+ "W3-RTS04":["W3-U15","W3-U07","W3-U09"],
+ "W3-RTS05":["W3-U04","W3-U01","W3-U13"],
+ "W3-RTS06":["W3-U13","W3-U02","W3-U07"],
+ "W3-RTS07":["W3-U05","W3-U07","W3-U13"],
+ "W3-RTS08":["W3-U07","W3-U13","W3-U16"],
+ "W3-RTS09":["W3-U12","W3-U05","W3-U13"],
+ "W3-RTS10":["W3-U08","W3-U11","W3-U05"],
+ "W3-RTS11":["W3-U01","W3-U09","W3-U07"],
+ "W3-RTS12":["W3-U25","W3-U13","W3-U07"],
+ "W3-RTS13":["W3-U25","W3-U07","W3-U09"],
+ "W3-RTS14":["W3-U26","W3-U13","W3-U07"],
+ "W3-RTS15":["W3-U13","W3-U05","W3-U09"],
+ "W3-RTS16":["W3-U07","W3-U12","W3-U05"],
+ "W3-RTS17":["W3-U24","W3-U07","W3-U13"],
+ "W3-RTS18":["W3-U24","W3-U16","W3-U07"],
+ "W3-RTS19":["W3-U20","W3-U09","W3-U07"],
+ "W3-RTS20":["W3-U27","W3-U07","W3-U13"],
+ "W3-RTS21":["W3-U12","W3-U14","W3-U07","W3-U20"],
+ "W3-RTS22":["W3-U07","W3-U30","W3-U12","W3-U09"],
+ "W3-RTS23":["W3-U26","W3-U27","W3-U13","W3-U07"],
+ "W3-RTS24":["W3-U29","W3-U26","W3-U07","W3-U05"],
+};
 export const WAR_SOURCE_RTS_IDS_V129=Object.freeze(
  Array.from({length:24},(_,i)=>"W3-RTS"+String(i+1).padStart(2,"0")) as WarRtsMissionIdV129[]
 );
@@ -184,7 +215,8 @@ export interface WarRtsMissionV129 {
  sourceRow:number;pcMaximum:number;initialRav:number;
  tasks:WarRtsTaskV129[];
  escortKind:WarRtsEscortKindV129|null;
- suggestedV6Units:string[];
+ suggestedV6Units:string[];opponentUnitIds:string[];
+ opponentTeams:number;opponentCombatants:number;opponentBudgetPc:number;
  status:"source-faithful-objective-study";
  playableEngine:"single-hunter-physical-simulation-not-full-rts";
 }
@@ -224,6 +256,11 @@ export function buildWarRtsMissionV129(id:string,rules:WarRulesV6):WarRtsMission
   throw new Error("Carte W3 erronée : "+id+" doit référencer "+expectedMap+", pas "+mapId+".");
  const map=createWarMapPracticeV128(mapId,rules).map;
  const spec=RECIPES[id];
+ const opponents=OPPONENT_UNITS[id];
+ if(opponents.some(unit=>!rules.units.some(u=>u.id===unit)))
+  throw new Error("Un profil d'opposition référence une unité absente de la Bible V6.");
+ const opponentBudgetPc=opponents.reduce((pc,unit)=>pc+rules.units.find(u=>u.id===unit)!.commandPoints,0);
+ const opponentCombatants=opponents.reduce((n,unit)=>n+rules.units.find(u=>u.id===unit)!.fullMembers,0);
  const locations=[map.landmarks[0].at,map.landmarks[1].at,map.goal];
  const tasks:WarRtsTaskV129[]=spec.steps.map((step,i)=>({
   ...step,id:id+"-OBJ-"+String(i+1),
@@ -243,13 +280,44 @@ export function buildWarRtsMissionV129(id:string,rules:WarRulesV6):WarRtsMission
    .map(f=>f.cell),
   sourceRow:entry.row,tasks,escortKind:spec.escortKind??null,
   suggestedV6Units:[...spec.suggestedV6Units],
+  opponentUnitIds:[...opponents],opponentTeams:opponents.length,
+  opponentCombatants,opponentBudgetPc,
   status:"source-faithful-objective-study",
   playableEngine:"single-hunter-physical-simulation-not-full-rts",
  };
 }
+function authoredEnemyPositions(
+ mission:WarRtsMissionV129,base:WarMapPracticeV128,
+ rules:WarRulesV6,
+):WarMapActorV128[]{
+ const taken=new Set<string>([
+  key(base.map.start),key(base.map.goal),
+  ...mission.tasks.map(task=>key(task.location)),
+  key(base.map.observation),
+ ]);
+ return mission.opponentUnitIds.map((unitId,i)=>{
+  const route=base.map.mandatoryPaths[i%3];
+  let at:WarMapPointV128|null=null;
+  for(let j=0;j<route.length-2;j++){
+   const next=route[Math.max(1,route.length-7-i*3-j)];
+   if(!taken.has(key(next))&&warMapWalkableV128(base.map,next)){
+    at=next;break;
+   }
+  }
+  if(!at)throw new Error("Impossible d'implanter le groupe rival "+unitId+" sans casser la carte.");
+  taken.add(key(at));
+  const unit=rules.units.find(u=>u.id===unitId)!;
+  return {
+   id:mission.id+"-RIVAL-"+String(i+1),
+   unitId,...at,hp:Math.max(5,Math.min(10,Math.round(unit.defense/2)+5)),
+   status:"active" as const,acknowledged:false,lastSeenTurn:-1,
+  };
+ });
+}
 export function createWarRtsMissionStateV129(id:string,rules:WarRulesV6):WarRtsMissionStateV129{
  const mission=buildWarRtsMissionV129(id,rules);
  const base=createWarMapPracticeV128(mission.mapId,rules);
+ const enemies=authoredEnemyPositions(mission,base,rules);
  const tracked=mission.escortKind?{
   id:mission.id+"-TRACKED-01",kind:mission.escortKind,
   ...mission.tasks[1].location,hp:8,extracted:false,secured:false,
@@ -258,7 +326,7 @@ export function createWarRtsMissionStateV129(id:string,rules:WarRulesV6):WarRtsM
  }:null;
  return {
   version:129,mission,
-  base:{...base,scenarioId:"W129-EXERCISE-"+mission.id},
+  base:{...base,enemies,scenarioId:"W129-EXERCISE-"+mission.id},
   completedTaskIds:[],holdProgress:0,tracked,
   lastMessage:"Contrat de source : "+mission.sourceObjective,
   status:"active",
@@ -429,6 +497,14 @@ export function auditWarRtsSourceMissionsV129(rules:WarRulesV6){
     issues.push(id+": inaccessible physical task");
    if(plan.suggestedV6Units.some(u=>!rules.units.some(v=>v.id===u)))
     issues.push(id+": invalid W3 troop suggestion");
+   const sample=createWarRtsMissionStateV129(id,rules);
+   if(sample.base.enemies.length!==plan.opponentTeams||
+      sample.base.enemies.some(e=>!warMapWalkableV128(sample.base.map,e)))
+    issues.push(id+": invalid physical rival placement");
+   if(new Set(sample.base.enemies.map(e=>key(e))).size!==plan.opponentTeams)
+    issues.push(id+": overlapping rival groups");
+   if(plan.opponentBudgetPc>plan.pcMaximum)
+    issues.push(id+": opponent study budget exceeds source PC envelope");
   }catch(e){issues.push(id+": "+String(e));}
  }
  if(plans.length!==24||new Set(plans.map(v=>v.mapId)).size!==12)
