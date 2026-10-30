@@ -329,13 +329,36 @@ export function validWarRtsScriptedObjectiveV119(
   if(!value||typeof value!=="object"||Array.isArray(value))return false;
   const v=value as Partial<WarRtsScriptedObjectiveV119>;
   if(!v.scenarioId||warRtsScriptedEligibilityV119(v.scenarioId,rules,targetId,unitIds)!==null||
-    v.sourceMapId!==(v.scenarioId==="W3-RTS03"||v.scenarioId==="W3-RTS04"?"W3-MAP02":"W3-MAP01"))return false;
+    v.sourceMapId!==(v.scenarioId==="W3-RTS05"?"W3-MAP03":v.scenarioId==="W3-RTS03"||v.scenarioId==="W3-RTS04"?"W3-MAP02":"W3-MAP01"))return false;
   const terrain=warMissionTerrainV116(targetId,rules);
   if(v.scenarioId==="W3-RTS02"){
     const stage=v as Partial<Extract<WarRtsScriptedObjectiveV119,{kind:"guard-relief"}>>;
     return stage.kind==="guard-relief"&&stage.requiredTurns===3&&
       !!stage.guardPoint&&stage.guardPoint.x===7&&stage.guardPoint.y===3&&
       Number.isInteger(stage.reliefProgress)&&(stage.reliefProgress as number)>=0&&(stage.reliefProgress as number)<=3;
+  }
+  if(v.scenarioId==="W3-RTS05"){
+    const stage=v as Partial<Extract<WarRtsScriptedObjectiveV119,{kind:"beacon-intercept"}>>;
+    if(stage.kind!=="beacon-intercept"||typeof stage.observed!=="boolean"||!stage.beacon||
+      !stage.decoy||stage.decoy.x!==5||stage.decoy.y!==5||
+      typeof stage.decoy.recognized!=="boolean"||!stage.extraction||
+      stage.extraction.x!==1||stage.extraction.y!==4)return false;
+    const beacon=stage.beacon;
+    if(beacon.id!==operationId+"-beacon"||!Number.isInteger(beacon.x)||!Number.isInteger(beacon.y)||
+      warTerrainCellBlockedV116(terrain,beacon.x,beacon.y)||
+      (beacon.enemyCarrierId!==null&&beacon.allyCarrierTeamId!==null))return false;
+    if(beacon.enemyCarrierId!==null){
+      if(beacon.enemyCarrierId!=="rival-0"||
+        !actors.some(actor=>actor.id===beacon.enemyCarrierId&&actor.side==="rival"&&actor.hp>0&&
+          actor.x===beacon.x&&actor.y===beacon.y))return false;
+    }
+    if(beacon.allyCarrierTeamId!==null){
+      if(!stage.observed||typeof beacon.allyCarrierTeamId!=="string"||
+        !actorTeamIds.includes(beacon.allyCarrierTeamId)||
+        !actors.some(actor=>actor.teamId===beacon.allyCarrierTeamId&&actor.side==="ally"&&
+          ["W3-U04","W3-U21"].includes(actor.unitId)&&actor.hp>0&&actor.x===beacon.x&&actor.y===beacon.y))return false;
+    }
+    return true;
   }
   if(v.scenarioId==="W3-RTS04"){
     const stage=v as Partial<Extract<WarRtsScriptedObjectiveV119,{kind:"circuit-defense"}>>;
