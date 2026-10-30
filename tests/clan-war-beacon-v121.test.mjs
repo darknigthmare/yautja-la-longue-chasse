@@ -105,3 +105,29 @@ test("save import rejects a fabricated beacon, double carriers, forged scouts or
   assert.equal(game.readWarOperationsV115(JSON.stringify(forged),rules),null);
  }
 });
+
+
+test("the seen enemy carrier flees along physical passable steps toward the less guarded crater exit",()=>{
+ const {state,targetId,scoutId,trackerId}=openBeacon(),terrain=game.warMissionTerrainV116(targetId,rules);
+ const source=state.active.rts.scripted;
+ const unobserved=state.active.rts.actors.find(actor=>actor.id==="rival-0");
+ assert.equal(game.warRtsBeaconEscapeStepV121(source,unobserved,state.active.rts.actors,terrain),null);
+ const known={...source,observed:true};
+ const scout={...state.active.rts.actors.find(actor=>actor.teamId===scoutId),x:3,y:1};
+ const tracker={...state.active.rts.actors.find(actor=>actor.teamId===trackerId),x:2,y:4};
+ let bearer={...unobserved};
+ let reached=false;
+ for(let i=0;i<25;i++){
+  const prev={x:bearer.x,y:bearer.y};
+  const choice=game.warRtsBeaconEscapeStepV121(known,bearer,[scout,tracker,bearer],terrain);
+  if(!choice)break;
+  assert.equal(game.warTerrainCellBlockedV116(terrain,choice.x,choice.y),false);
+  assert.equal(Math.abs(choice.x-prev.x)+Math.abs(choice.y-prev.y),1,"a rival cannot jump over crater walls");
+  bearer={...bearer,x:choice.x,y:choice.y};
+  if((bearer.x===8&&bearer.y===5)||(bearer.x===0&&bearer.y===5)){reached=true;break;}
+ }
+ assert.equal(reached,true,"a usable source-grounded exit should be reachable");
+ const final=game.resolveWarRtsScriptedTickV119(known,[scout,tracker,bearer],terrain);
+ assert.equal(final.outcome,"defeat","an enemy bearing the real beacon must be able to escape");
+ assert.equal(final.objective.beacon.enemyCarrierId,bearer.id);
+});
