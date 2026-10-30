@@ -37,3 +37,18 @@ button.cell{min-height:0;border-radius:0}button.cell:hover{background:#658f7d}bu
 .brief{margin:12px 0;padding:9px 10px;border:1px solid #516a55;background:#12251c;font-size:.74rem}
 .brief summary{cursor:pointer;color:#d8c58b;font-weight:700}.brief p{margin:7px 0;color:#bdcfbb}
 .path{display:block;margin-top:7px;color:#d5d0a9;font-size:.75rem}
+
+.reinforcements{margin:20px 0;border:1px solid #63775d;background:#15261d;padding:17px}
+.reinforcements h4{margin:0 0 8px;color:#e6d9a7}
+.reinforcements p{font-size:.81rem;color:#c7d3c2}
+.recruitControls{display:flex;flex-wrap:wrap;gap:12px;align-items:end}
+.recruitControls label{flex:1;min-width:min(100%,270px)}
+.recruitControls select{display:block;width:100%;margin-top:8px}
+.recruitControls button{flex:none}
+.recruitOrder{padding:8px 11px;background:#293929;border-inline-start:3px solid #bdab72}
+.debriefDetails{border-top:1px solid #49604f;padding-top:6px;margin:10px 0}
+.debriefDetails summary{cursor:pointer;color:#eddb9f}
+.debriefDetails ol{list-style:decimal;padding-left:20px;margin:8px 0}
+.debriefDetails li{background:transparent;border:0;margin:0;padding:5px 0;font-size:.78rem;color:#c3d4c7}
+.cell[data-cover=true]{box-shadow:inset 0 0 0 2px #9d9c77}
+@media(max-width:640px){.reinforcements{padding:12px}.recruitControls{flex-direction:column;align-items:stretch}}
