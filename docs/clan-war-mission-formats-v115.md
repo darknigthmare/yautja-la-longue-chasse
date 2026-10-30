@@ -59,3 +59,10 @@ Références de mécaniques consultables :
 - Tester ensuite le menu V6 réel dans un navigateur : accès, sélection de quatre modes, départ, déploiement AP, déplacement et extraction, réponse RTS, reprise d'Outer Ops après fermeture, petit écran, clavier, mise en veille et archive corrompue.
 
 La compilation et les tests ciblés ne prouvent ni la fidélité de sprites 1:1 ni l'équilibrage, l'IA de guerre totale ou le raccord à la campagne. La livraison V115 est un **socle jouable** ; le RTS complet (bâtiments, brouillard de guerre, fog, logistique spatiale, armées multiples, véritable multijoueur), l'infiltration intégrée dans les scènes du héros et la diplomatie/honneur restent des chantiers ouverts à livrer avec preuves distinctes.
+
+
+## Continuation V116 — terrain et blessés
+
+La carte tactique partagée et le triage avec soigneur réellement recruté sont documentés dans
+[la continuation V116](clan-war-v116-tactical-terrain-and-care.md).
+Ces ajouts restent des exercices autonomes : vérifier le SHA et la CI exacte avant toute déclaration de livraison générale.
