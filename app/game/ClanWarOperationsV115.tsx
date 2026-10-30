@@ -28,19 +28,21 @@ const focusLabels: Record<OuterFocusV115, string> = {
   recon: "Reconnaissance", intercept: "Interception", escort: "Protection de passage",
 };
 const formatTime = (seconds:number) => String(Math.floor(seconds / 60)).padStart(2,"0")+":"+String(seconds%60).padStart(2,"0");
-type Props={rules:WarRulesV6;active?:boolean;persist?:boolean};
+type Props={rules:WarRulesV6;active?:boolean;persist?:boolean;initialScenarioId?:WarSourceRtsScenarioIdV119|null};
 
-export default function ClanWarOperationsV115({rules,active=true,persist=false}:Props) {
+export default function ClanWarOperationsV115({rules,active=true,persist=false,initialScenarioId=null}:Props) {
   const [world,setWorld]=useState<WarOperationsStateV115>(()=>createWarOperationsV115(rules));
   const worldRef=useRef(world);
   const knownArchiveBytesRef=useRef<string|null>(null);
   const [hydrated,setHydrated]=useState(false),[blocked,setBlocked]=useState(false);
   const [storageIssue,setStorageIssue]=useState(""),[message,setMessage]=useState("Choisissez votre théâtre, vos équipes, puis le type d'opération.");
-  const [mode,setMode]=useState<WarMissionModeV115>("assault"),[focus,setFocus]=useState<OuterFocusV115>("recon");
-  const [targetId,setTargetId]=useState(rules.territories[1]?.id??"");
+  const [mode,setMode]=useState<WarMissionModeV115>(initialScenarioId?"rts":"assault"),[focus,setFocus]=useState<OuterFocusV115>("recon");
+  const [targetId,setTargetId]=useState(initialScenarioId?
+    rules.territories.find(item=>item.id==="W3-K02")?.id??rules.territories[1]?.id??"":
+    rules.territories[1]?.id??"");
   const [selectedIds,setSelectedIds]=useState<string[]>([]);
   const [rtsSelectedId,setRtsSelectedId]=useState("");
-  const [rtsScenarioId,setRtsScenarioId]=useState<"free"|WarSourceRtsScenarioIdV119>("free");
+  const [rtsScenarioId,setRtsScenarioId]=useState<"free"|WarSourceRtsScenarioIdV119>(initialScenarioId??"free");
   const [recruitUnitId,setRecruitUnitId]=useState(rules.units[8]?.id??rules.units[0]?.id??"");
   const [careMemberId,setCareMemberId]=useState("");
   const [careMedicTeamId,setCareMedicTeamId]=useState("");
@@ -65,11 +67,23 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false}:
         } catch {lock=true;issue="Stockage indisponible : archive existante préservée. Les opérations sont verrouillées.";}
       }
       worldRef.current=current;setWorld(current);setBlocked(lock);setStorageIssue(issue);
-      setSelectedIds(current.teams.slice(0,2).map(team=>team.id));setTargetId(rules.territories[1]?.id??"");
+      const activeTeams=current.teams.filter(team=>!current.assignments[team.id]&&team.members.some(member=>member.status==="fit"));
+      if(initialScenarioId==="W3-RTS01"){
+        const scout=activeTeams.find(team=>["W3-U01","W3-U02","W3-U05","W3-U06"].includes(team.unitId));
+        const porter=activeTeams.find(team=>["W3-U17","W3-U19"].includes(team.unitId));
+        setSelectedIds([...(scout?[scout.id]:[]),...(porter?[porter.id]:[])]);
+      }else if(initialScenarioId==="W3-RTS02"){
+        const guard=activeTeams.find(team=>team.unitId==="W3-U07");
+        const support=activeTeams.find(team=>team.id!==guard?.id);
+        setSelectedIds([...(guard?[guard.id]:[]),...(support?[support.id]:[])]);
+      }else setSelectedIds(activeTeams.slice(0,2).map(team=>team.id));
+      setTargetId(initialScenarioId?
+        rules.territories.find(item=>item.id==="W3-K02")?.id??rules.territories[1]?.id??"":
+        rules.territories[1]?.id??"");
       setHydrated(true);setNow(Date.now());
     },0);
     return ()=>window.clearTimeout(ticket);
-  },[rules,persist,defaultSource]);
+  },[rules,persist,defaultSource,initialScenarioId]);
 
   useEffect(()=>{
     if(!persist) return;
