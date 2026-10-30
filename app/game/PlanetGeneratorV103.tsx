@@ -4,6 +4,7 @@ import { useId, useMemo, useRef, useState, type ChangeEvent } from "react";
 import ClanWarAtlasV95 from "./ClanWarAtlasV95";
 import PlanetMaterialCanvasV101 from "./PlanetMaterialCanvasV101";
 import PlanetLayerExportV102 from "./PlanetLayerExportV102";
+import PlanetShapePreviewV125 from "./PlanetShapePreviewV125";
 import {
   DEFAULT_WAR_PLANET_RECIPE_V103, WAR_PLANET_RECIPE_FIELDS_V103,
   randomizeWarPlanetRecipeV103, seedFromTextV103, type WarPlanetRecipeFieldV103, type WarPlanetRecipeV103,
@@ -351,6 +352,7 @@ export default function PlanetGeneratorV103({ activePlanet, pending = false, onO
                   </select>
                 </div>)}
               </div>}
+              {advancedV115 && <PlanetShapePreviewV125 island={islandShapeV115} continent={continentShapeV115} region={regionShapeV115}/>}
               <p className={styles.hint}>La taille modifie les kilomètres et km² réels du monde, sans modifier artificiellement les coûts de guerre. Les formes changent véritablement les contours et les frontières des régions ; les 32 matières enrichissent le rendu WebGL. Une nouvelle recette reçoit un code V115 distinct.</p>
             </div>
           </details>
