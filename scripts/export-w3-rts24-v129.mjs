@@ -20,7 +20,9 @@ const missions=api.WAR_SOURCE_RTS_IDS_V129.map(id=>api.buildWarRtsMissionV129(id
 const columns=["id","name","mapId","planetId","rank","pcMaximum","initialRav",
  "sourceObjective","sourceEnemyPlan","sourceConditions","sourceAlternatives",
  "sourceVictory","sourceReentry","sourceCampaignLink","sourceRewardXpDesign",
- "sourceProvenance","sourceCells","suggestedV6Units","escortKind","tasks","status","playableEngine"];
+ "sourceProvenance","sourceCells","suggestedV6Units","escortKind",
+ "opponentTeams","opponentCombatants","opponentBudgetPc","opponentUnitIds",
+ "tasks","status","playableEngine"];
 const encode=(value)=>{
  const text=Array.isArray(value)?value.map(item=>typeof item==="object"?JSON.stringify(item):item).join(" | "):
   value===null?"":typeof value==="object"?JSON.stringify(value):String(value??"");
