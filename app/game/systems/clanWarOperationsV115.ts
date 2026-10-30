@@ -277,7 +277,7 @@ export function beginWarOperationV115(
     const enemyUnits = rules.units.filter(unit => unit.fullMembers>0).slice(0,3);
     const rival = enemyUnits.map((unit,index) => ({id:"rival-"+index,teamId:null,unitId:unit.id,side:"rival" as const,x:7,y:1+index,hp:Math.max(2,lifeFor(unit.id,rules)-(state.weakenedIds.includes(targetId)?3:0))}));
     const scripted=rtsScenarioId?
-      createWarRtsScriptedObjectiveV119(rtsScenarioId,id,allied):null;
+      createWarRtsScriptedObjectiveV119(rtsScenarioId,id,[...allied,...rival]):null;
     if(rtsScenarioId&&!scripted)return reject(state,"Le scénario réclame un porteur réel, non créé.");
     active.rts={actors:[...allied,...rival],hold:0,fallen:[],realtime:false,orders:{},
       ...(scripted?{scripted}:{})};
