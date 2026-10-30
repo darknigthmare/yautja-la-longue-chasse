@@ -3,7 +3,7 @@ import {
   type WarRulesV6, type WarTeamStateV6,
 } from "./clanWarBibleV6";
 import { warRtsScriptedEligibilityV119, createWarRtsScriptedObjectiveV119, resolveWarRtsScriptedTickV119,
-  validWarRtsScriptedObjectiveV119, warRtsRivalTargetV120,
+  validWarRtsScriptedObjectiveV119, warRtsRivalTargetV120, warRtsSourceSightV120,
   type WarSourceRtsScenarioIdV119, type WarRtsScriptedObjectiveV119,
 } from "./clanWarRtsScenariosV119";
 import { warMissionTerrainV116, warTerrainCellBlockedV116, warTerrainLineOfSightV116,
@@ -466,7 +466,7 @@ function rtsEnemyTurn(actors:WarRtsActorV115[],rules:WarRulesV6,terrain:WarMissi
   for(const rival of actors.filter(actor=>actor.side==="rival" && actor.hp>0)){
     const target=warRtsRivalTargetV120(scripted,rival,actors,terrain);
     if(!target) break;
-    if(distance(target,rival)<=2&&warTerrainLineOfSightV116(terrain,rival,target)) target.hp-=damageFor(rival.unitId,rules);
+    if(distance(target,rival)<=2&&warRtsSourceSightV120(scripted,rival,target,terrain)) target.hp-=damageFor(rival.unitId,rules);
     else {
       const occupied=actors.filter(actor=>actor!==rival&&actor.hp>0).map(actor=>coord(actor.x,actor.y));
       const next=warRtsNextPathStepV118(terrain,rival,target,occupied);
@@ -508,7 +508,7 @@ export function commandRtsV115(state:WarOperationsStateV115,teamId:string,x:numb
   const dist=distance(actor,{x,y});
   const unit=unitFor(rules,actor.unitId);
   if(occupant?.side==="rival") {
-    if(dist>clamp(Math.round((unit?.range??1)/2),1,3)||!warTerrainLineOfSightV116(terrain,actor,occupant)) return reject(state,"Cible hors de portée ou masquée par une paroi.");
+    if(dist>clamp(Math.round((unit?.range??1)/2),1,3)||!warRtsSourceSightV120(field.scripted,actor,occupant,terrain)) return reject(state,"Cible hors de portée ou masquée par une paroi.");
     occupant.hp-=damageFor(actor.unitId,rules)*2;
   } else {
     const occupied=actors.filter(item=>item!==actor&&item.hp>0).map(item=>coord(item.x,item.y));
@@ -582,7 +582,7 @@ export function stepWarRtsRealtimeV115(state:WarOperationsStateV115,rules:WarRul
     const assigned=order?.kind==="attack"?targets.find(t=>t.x===order.x&&t.y===order.y):undefined;
     const nearest=targets.sort((a,b)=>distance(ally,a)-distance(ally,b)||a.id.localeCompare(b.id))[0];
     const target=assigned??nearest;
-    if(target&&distance(ally,target)<=range&&warTerrainLineOfSightV116(terrain,ally,target))
+    if(target&&distance(ally,target)<=range&&warRtsSourceSightV120(field.scripted,ally,target,terrain))
       target.hp-=damageFor(ally.unitId,rules)*(order?.kind==="hold"?1:2);
     else if(order && order.kind!=="hold") {
       const destination=assigned??order;
@@ -603,7 +603,7 @@ export function stepWarRtsRealtimeV115(state:WarOperationsStateV115,rules:WarRul
     const target=warRtsRivalTargetV120(field.scripted,rival,actors,terrain);
     if(!target) break;
     const range=clamp(Math.round((unitFor(rules,rival.unitId)?.range??2)/2),1,3);
-    if(distance(rival,target)<=range&&warTerrainLineOfSightV116(terrain,rival,target)){
+    if(distance(rival,target)<=range&&warRtsSourceSightV120(field.scripted,rival,target,terrain)){
       const attack=damageFor(rival.unitId,rules);
       const protectedByCover=coverAt(target,terrain)||Boolean(target.teamId&&commands[target.teamId]?.kind==="hold");
       target.hp-=protectedByCover?Math.max(1,Math.ceil(attack*.65)):attack;
