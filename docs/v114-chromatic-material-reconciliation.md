@@ -35,3 +35,6 @@ Le workflow de référence V114 [41046162523](https://github.com/darknigthmare/y
 
 ## Correction lint React et cycle de vie du brouillon
 Le composant de personnalisation est remonté avec une clé dérivée de l'état chromatique réellement sauvegardé ; il ne modifie plus son état interne depuis un effet synchrone. Les aperçus de travail restent éphémères, et la réouverture d'une campagne relit la source durable. Ceci supprime l'erreur `react-hooks/set-state-in-effect` sans désactiver la règle.
+
+## V115 — Trois lieux spécialisés
+L'Atelier des parures déjà localisé dans les Forges propose maintenant les matières de dreadlocks, vêtement et armure. La Maison des soins conserve son point physique `medbay-service`, mais possède un accès distinct à l'étude pigmentaire (peau uniquement). Le quartier du chasseur dans le vaisseau affiche les quatre canaux pour la préparation personnelle. Le bouton « matières de ce poste » remet à zéro **uniquement** les canaux autorisés sur le lieu actif. Tous réutilisent la même sauvegarde `chromaticsV113`, avec la validation propriétaire de la PR #27. Les positions des services et l'accessibilité des rangs ne sont pas modifiées.

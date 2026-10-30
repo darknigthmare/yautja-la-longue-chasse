@@ -6162,3 +6162,24 @@ select:focus-visible,
   min-height: 100%;
   padding-top: 12px;
 }
+
+.pigment-lab-access {
+  position: absolute;
+  z-index: 14;
+  top: 90px;
+  right: clamp(12px, 3.2vw, 52px);
+  max-width: min(410px, 46vw);
+  padding: 10px 12px;
+  border: 1px solid #726450;
+  border-radius: 10px;
+  color: #f4e5d5;
+  background: #1c211f;
+  box-shadow: 0 8px 22px rgb(0 0 0 / .4);
+}
+.pigment-lab-access strong { display: block; font-size: .92rem; }
+.pigment-lab-access p { font-size: .81rem; line-height: 1.25; margin: 5px 0 8px; }
+.pigment-lab-access .alien-button { font-size: .85rem; min-height: 38px; }
+@media (max-width: 680px) {
+  .pigment-lab-access { position: relative; top: auto; right: auto; max-width: none; margin: 144px 12px 0; }
+  .physical-medbay-entry:has(> .pigment-lab-access) > .hub-screen .hub-stage { padding-top: 16px; }
+}

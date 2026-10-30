@@ -19,7 +19,7 @@ import React, {
 } from "react";
 import HunterRigPreview from "./HunterRigPreview";
 import HunterChromaticForgeV113 from "./HunterChromaticForgeV113";
-import { normalizeHunterChromaticsV113, type HunterChromaticsV113 } from "./hunterChromaticsV113";
+import { normalizeHunterChromaticsV113, type HunterChromaticsV113, type ChromaticFacilityV115 } from "./hunterChromaticsV113";
 import CloudAccountV71, { openCloudAccountV71 } from "./CloudAccountV71";
 import HomeworldModularHunter from "./HomeworldModularHunter";
 import { startYouthCampaign, withYouthCheckpoint, withYouthProgress, youthCampaignNeedsScene, youthCampaignObjective } from "./systems/youthCampaign";
@@ -1042,6 +1042,8 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     useState<MapReturnScreen>("deck");
   const [stationReturnScreen, setStationReturnScreen] =
     useState<StationReturnScreen>("deck");
+  const [chromaticFacilityV115, setChromaticFacilityV115] =
+    useState<ChromaticFacilityV115>("ship");
   const [lastResult, setLastResult] = useState<MissionResult | null>(null);
   const [lastRewardSummary, setLastRewardSummary] =
     useState<RewardSummary | null>(null);
@@ -2416,10 +2418,11 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   );
 
   const openStationScreen = useCallback(
-    (next: StationScreen, returnScreen: StationReturnScreen) => {
+    (next: StationScreen, returnScreen: StationReturnScreen, facility?: ChromaticFacilityV115) => {
       if (pendingTrophyCommitRef.current) { setToast("Confirmez le rite en attente avant de changer d’installation."); return; }
       setHubLocation(returnScreen === "homeworld" ? "homeworld" : "deck");
       setStationReturnScreen(returnScreen);
+      if (next === "customization") setChromaticFacilityV115(facility ?? (returnScreen === "homeworld" ? "forge" : "ship"));
       if (next === "justice") setJusticeReturnScreen(returnScreen === "homeworld" ? "homeworld" : "deck");
       go(next);
     },
@@ -3906,6 +3909,15 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             >
               {hubLocation === "homeworld" ? "← Retour à la cité" : "← Retour au pont physique"}
             </button>
+            {screen === "medbay" && <aside className="pigment-lab-access" aria-label="Atelier des chromatophores">
+              <strong>Maison des soins · Étude pigmentaire</strong>
+              <p>Motifs de peau et pigments de surface. Aucune modification génétique instantanée n’est revendiquée.</p>
+              <button type="button" className="alien-button"
+                disabled={settingsOpen || campaignSaveBusy || archiveTransferBusy || !!archiveRecoveryIssue}
+                onClick={() => openStationScreen("customization", hubLocation, "lab")}>
+                Examiner ma pigmentation
+              </button>
+            </aside>}
             <ShipHub
               embedded
               suspended={settingsOpen || trophyWorkshop !== null}
@@ -3920,7 +3932,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
               onOpenTrophies={() => openStationScreen("trophies", hubLocation)}
               onOpenArchives={() => openStationScreen("codex", hubLocation)}
               onOpenCustomization={() =>
-                openStationScreen("customization", hubLocation)
+                openStationScreen("customization", hubLocation, screen === "medbay" ? "lab" : undefined)
               }
               onOpenPit={openPit}
               onApplyLoadout={applyShipLoadout}
@@ -4421,7 +4433,10 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         >
           <div className="screen-safe">
             <PanelHeader
-              eyebrow={newGamePhase ? "Nouvelle partie // Identité du chasseur" : "Vaisseau // Quartier du chasseur"}
+              eyebrow={newGamePhase ? "Nouvelle partie // Identité du chasseur"
+                : chromaticFacilityV115 === "lab" ? "Maison des soins // Chromatophores"
+                : chromaticFacilityV115 === "forge" ? "Homeworld // Teinturerie des Forges"
+                : "Vaisseau // Quartier du chasseur"}
               title="Personnalisation du Yautja"
               subtitle="Ateliers de pigmentation et de patines : contrôle des couleurs, textures des dreads, étoffes, armures et anatomie du chasseur. Les pigments ne remplacent pas les silhouettes de référence."
               id="customization-title"
@@ -4437,6 +4452,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
               key={JSON.stringify(save.appearance.chromaticsV113 ?? null)}
               appearance={save.appearance}
               onPreview={setDraftChromaticsV114}
+              facility={chromaticFacilityV115}
               homeworld={stationReturnScreen === "homeworld"}
               disabled={settingsOpen || campaignSaveBusy || archiveTransferBusy || !!archiveRecoveryIssue}
               onCommit={commitChromaticsV113}

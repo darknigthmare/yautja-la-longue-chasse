@@ -162,6 +162,25 @@ export const CHROMATIC_PALETTE_PRESETS_V115: readonly {
   { channel: "armor", label: "Fer ancien", hex: "#626767" },
 ]);
 
+/** Distinct physical services; the ship includes a compact all-purpose preparation desk. */
+export type ChromaticFacilityV115 = "ship" | "forge" | "lab";
+export function chromaticFacilityChannelsV115(facility: ChromaticFacilityV115) {
+  return CHROMATIC_CHANNELS_V113.filter(channel =>
+    facility === "ship" ||
+    (facility === "lab" ? channel.id === "skin" : channel.id !== "skin")
+  );
+}
+
+/** Never erase another workshop's changes when resetting the current station. */
+export function resetChromaticFacilityV115(source: unknown, facility: ChromaticFacilityV115): HunterChromaticsV113 {
+  const result = normalizeHunterChromaticsV113(source);
+  for (const channel of chromaticFacilityChannelsV115(facility)) {
+    result[channel.colorKey] = null;
+    result[channel.materialKey] = null;
+  }
+  return result;
+}
+
 const colorField = { skin: "skinHex", dreads: "dreadHex", outfit: "outfitHex", armor: "armorHex" } as const;
 const materialField = { skin: "skinMaterialId", dreads: "dreadMaterialId", outfit: "outfitMaterialId", armor: "armorMaterialId" } as const;
 

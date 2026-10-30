@@ -5,20 +5,23 @@ import type { HunterAppearance } from "./types";
 import {
   CHROMATIC_CHANNELS_V113, CHROMATIC_PALETTE_PRESETS_V115, PHG_CHROMATIC_MATERIALS_V113,
   DEFAULT_CHROMATICS_V113, normalizeHunterChromaticsV113,
-  type HunterChromaticsV113,
+  chromaticFacilityChannelsV115, resetChromaticFacilityV115,
+  type ChromaticFacilityV115, type HunterChromaticsV113,
 } from "./hunterChromaticsV113";
 import styles from "./HunterChromaticForgeV113.module.css";
 
 export default function HunterChromaticForgeV113({
-  appearance, homeworld = false, disabled = false, onCommit, onPreview,
+  appearance, homeworld = false, facility, disabled = false, onCommit, onPreview,
 }: {
   appearance: HunterAppearance;
   homeworld?: boolean;
+  facility?: ChromaticFacilityV115;
   disabled?: boolean;
   onCommit: (value: HunterChromaticsV113) => boolean;
   /** Draft-only display; this callback never writes a campaign archive. */
   onPreview?: (value: HunterChromaticsV113 | null) => void;
 }) {
+  const station = facility ?? (homeworld ? "forge" : "ship");
   const [draft, setDraft] = useState(() => normalizeHunterChromaticsV113(appearance.chromaticsV113));
   const [message, setMessage] = useState("");
   useEffect(() => { onPreview?.(draft); }, [draft, onPreview]);
@@ -33,12 +36,18 @@ export default function HunterChromaticForgeV113({
   return <section className={styles.forge} aria-label="Ateliers chromatiques du Yautja" data-hunter-chromatics-v113>
     <header className={styles.heading}>
       <span>V113 · Ateliers du clan</span>
-      <h2>{homeworld ? "Maisons des pigments et des patines" : "Établis chromatiques du chasseur"}</h2>
-      <p>Trois métiers et un outil de diagnostic : les mèches sont ligaturées, les étoffes teintes, les plaques patinées et les motifs de peau étudiés par un analyseur de chromatophores. Ces installations sont des adaptations originales du lore, pas des machines canoniques attribuées à un film.</p>
+      <h2>{station === "lab" ? "Analyseur de chromatophores · Maison des soins"
+        : station === "forge" ? "Teinturerie et forge des parures"
+        : "Établis chromatiques du chasseur"}</h2>
+      <p>{station === "lab"
+        ? "Les soigneurs analysent les motifs de peau et appliquent des pigments superficiels. Aucune réécriture instantanée de l’ADN n’est attribuée aux Yautja."
+        : station === "forge"
+          ? "Les artisans travaillent les ligatures des dreadlocks, les étoffes du clan et les patines des plaques. La pigmentation biologique appartient à la Maison des soins."
+          : "Le quartier du chasseur conserve un nuancier d’entretien de ses équipements et de son apparence. Les soins complets et l’artisanat traditionnel restent disponibles à Homeworld."}</p>
       <p>Les fichiers PHG disponibles ici sont des <strong>matières 2D reconstituées</strong>. Les dégradés restent masqués par la vraie silhouette Yautja ; aucune texture extraite ni correspondance UV 1:1 officielle n’est revendiquée.</p>
     </header>
     <div className={styles.grid}>
-      {CHROMATIC_CHANNELS_V113.map(channel => {
+      {chromaticFacilityChannelsV115(station).map(channel => {
         const activeColor = draft[channel.colorKey];
         const choices = PHG_CHROMATIC_MATERIALS_V113.filter(item => item.channel === channel.id && item.status === "integrated");
         const pending = PHG_CHROMATIC_MATERIALS_V113.filter(item => item.channel === channel.id && item.status === "drive-only").length;
@@ -88,8 +97,9 @@ export default function HunterChromaticForgeV113({
         else setMessage("Sauvegarde non confirmée ; conserve ton ancienne palette et réessaie.");
       }}>Valider les couleurs et matières</button>
       <button type="button" disabled={disabled} onClick={() => {
-        setDraft({ ...DEFAULT_CHROMATICS_V113 }); setMessage("Palette naturelle préparée ; valide pour l’enregistrer.");
-      }}>Retrouver les matières d’origine</button>
+        setDraft(current => resetChromaticFacilityV115(current, station));
+        setMessage("Matières naturelles de ce poste préparées ; valide pour les enregistrer.");
+      }}>Retrouver les matières de ce poste</button>
       {message && <p role="status">{message}</p>}
     </div>
   </section>;
