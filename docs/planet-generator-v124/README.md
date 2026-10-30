@@ -43,3 +43,19 @@ La modification ne touche pas au rendu visible par défaut, ni aux profils des p
 ## Limites connues
 
 Il s'agit de calques géographiques et d'albédo 2D, non d'un vrai terrain 3D PBR ou d'une simulation hydrologique. Le dessin des rivières suit les polygones V103/V115, sans courant physique, érosion en temps réel ou surcoût de franchissement. Les régions V115 partagent actuellement le même identifiant global de texture de détail, sur des biomes régionaux distincts. La prochaine étape de modularité profonde doit versionner une recette définissant des textures de détail différentes par région ; elle ne doit pas modifier rétroactivement les rendus des codes V115 existants.
+
+## V125 — Taille du monde, 120 formes et bibliothèque de matières élargie
+
+- **Échelle physique** : les six rayons V115 (1 900 à 21 000 km) restent des paramètres enregistrés dans le code V115. Le dossier calcule désormais l'emprise cartographique (km²) de chaque cellule-territoire, de chaque région et de chaque île/continent, ainsi que les routes physiques. Aucune nouvelle distance de mouvement ou durée de tour n'est imposée.
+- **Formes** : les 120 modèles V115 existants restent utilisés (40 îles, 40 continents, 40 régions). Le catalogue intégral identifie chaque forme et ses paramètres de taille, lobes, nervures et excentricité dans le manifeste de reconstruction.
+- **Bibliothèque supplémentaire** : 32 matières originales V125 (8 sols terrestres, 8 sols extraterrestres, 8 milieux terrestres, 8 milieux extraterrestres) sont exportables à la demande en PNG 512 × 512 ; chaque matière possède cinq canaux indépendants : albédo, hauteur, normales, rugosité et émission. Cela porte l'inventaire à **64 matières de base** (32 V115 dans le jeu + 32 sources additionnelles V125).
+- **Compatibilité** : les 32 matières V125 ne remplacent pas silencieusement celles encodées dans les mondes V115. Leur branchement comme choix persistant par région requerra une nouvelle recette versionnée ; le bouton actuel exporte des sources indépendantes destinées aux futures régions.
+- **Description** : chaque source fournit un nom, une famille terrestre/extraterrestre, un motif, un substrat descriptif, une rugosité et une émission. Les liquides extraterrestres sont fictifs et ne modifient pas automatiquement la physique, les dégâts ou le ravitaillement.
+
+### Périmètre des surfaces
+
+Les mesures V125 utilisent les polygones sphériques existants. Le total régional est la somme brute des cellules ; les bassins/chenaux internes sont conservés dans un calque séparé et non retranchés localement du chiffre de région. Les frontières et les revenus restent ceux du moteur stratégique. Sur V102/V103, aucun rayon ni km² fictif n'est assigné.
+
+### QA
+
+Le nouveau test `tests/planet-physical-material-v125.test.mjs` couvre les six tailles, les identités historiques, les 120 formes uniques et les 32 nouvelles textures avec génération de plusieurs canaux. Le navigateur teste le PNG de normales V125 et la présence des index V125 dans le ZIP. Les captures et résultats « après » sont produits par le workflow Chromium ; ils ne sont pas présumés réussis avant l'exécution.
