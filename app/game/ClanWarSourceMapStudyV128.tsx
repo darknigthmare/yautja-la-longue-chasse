@@ -56,6 +56,11 @@ export default function ClanWarSourceMapStudyV128({rules}:{rules:WarRulesV6}){
       aria-label={"Carte tactique "+map.name+" avec cases de terrain, extraction, objectif et patrouilles visibles"}>
      {map.tiles.map(t=><rect key={t.x+"-"+t.y} x={t.x*n} y={t.y*n} width={n} height={n}
        className={styles.tile} data-kind={t.kind} stroke="#13261e" strokeWidth=".6"/>)}
+     {map.landmarks.map((landmark,index)=><g key={landmark.id}>
+       <title>{landmark.name} · cellule W3 de référence {landmark.sourceColumn}</title>
+       <text x={landmark.at.x*n+n/2} y={landmark.at.y*n+8}
+         textAnchor="middle" fill="#f4d89a" fontSize="9">{index+1}</text>
+     </g>)}
      <rect x={map.goal.x*n} y={map.goal.y*n} width={n} height={n}
        fill="none" stroke="#ffe2a7" strokeWidth="2"/>
      <rect x={map.extraction.x*n} y={map.extraction.y*n} width={n} height={n}
@@ -75,7 +80,7 @@ export default function ClanWarSourceMapStudyV128({rules}:{rules:WarRulesV6}){
      <text x={state.player.x*n+n/2} y={state.player.y*n+15}
        fill="#fff6d8" textAnchor="middle" fontSize="13">Y</text>
     </svg>
-    <p className={styles.legend}>Y : chasseur · R : adversaire observé · △ : observation · ◎ : objectif · ↥ : sortie · vert : sol · sombre : obstacle · jaune : couvert · bleu : eau · rouge : lave.</p>
+    <p className={styles.legend}>Y : chasseur · R : adversaire observé · △ : observation · 1-3 : structures · ◎ : objectif · ↥ : sortie · vert : sol · sombre : obstacle · jaune : couvert · bleu : eau · rouge : lave.</p>
    </div>
    <div className={styles.sidebar}>
     <h4>{map.name}</h4><p>{map.biome} · monde de la Bible <strong>{map.planetName} ({map.planetId} / {map.worldCode})</strong></p>
@@ -84,6 +89,7 @@ export default function ClanWarSourceMapStudyV128({rules}:{rules:WarRulesV6}){
     <p><strong>Accès en véritable campagne :</strong> {map.accessGate}</p>
     <p><strong>Accès :</strong> {map.sourceSituation}</p>
     <p><strong>Chemins :</strong> {map.sourceGeometry}</p>
+    <p><strong>Structures implantées :</strong> {map.landmarks.map((lm,i)=>(i+1)+". "+lm.name+" ("+lm.at.x+","+lm.at.y+")").join(" · ")}</p>
     <p><strong>Événement :</strong> {map.sourceEvent} · type {map.eventClass}</p>
     <p><strong>Point de reconnaissance :</strong> {map.observation.x},{map.observation.y} · portes motorisées {map.poweredDoors.length}</p>
     <p><strong>Objectif :</strong> {map.sourceObjective}</p>
