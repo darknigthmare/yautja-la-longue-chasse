@@ -47,7 +47,7 @@ export function createWarMissionBoardV114(planetId: string): WarMissionBoardV114
 export function readWarMissionBoardV114(raw: unknown, planetId: string): WarMissionBoardV114 | null {
   if (!raw || typeof raw !== "object" || Array.isArray(raw)) return null;
   const x = raw as Partial<WarMissionBoardV114>;
-  if (x.version !== 1 || x.context !== "free" || x.planetId !== planetId || !Number.isSafeInteger(x.revision) || (x.revision ?? -1) < 0 || (x.revision ?? 0) > 100000) return null;
+  if (x.version !== 1 || x.context !== "free" || x.planetId !== planetId || (typeof x.revision !== "number" || !Number.isSafeInteger(x.revision)) || (x.revision ?? -1) < 0 || (x.revision ?? 0) > 100000) return null;
   if (![x.rav, x.intel, x.readiness, x.sabotage].every(n => finite(n) && n >= 0 && n <= 10000)) return null;
   if (!Array.isArray(x.reports) || x.reports.length > 256 || !x.reports.every(r => r && typeof r.id === "string" && r.id.length <= 120 && typeof r.text === "string" && r.text.length <= 1000 && finite(r.at) && typeof r.success === "boolean" && finite(r.losses) && WAR_MISSION_TEMPLATES_V114.some(t => t.id === r.templateId && t.mode === r.mode))) return null;
   if (!Array.isArray(x.dispatches) || x.dispatches.length > 50 || !x.dispatches.every(d => d && typeof d.id === "string" && d.id.length <= 120 && WAR_MISSION_TEMPLATES_V114.some(t => t.id === d.templateId && t.mode === "dispatch") && finite(d.startedAt) && finite(d.dueAt) && d.dueAt > d.startedAt && ["running", "resolved"].includes(d.status) && [null, "success", "failure"].includes(d.result) && finite(d.losses) && d.losses >= 0 && Array.isArray(d.members) && d.members.length > 0 && d.members.length <= 8 && d.members.every(m => m && typeof m.id === "string" && finite(m.xp)))) return null;
@@ -107,7 +107,7 @@ export function resolveWarDispatchesV114(board: WarMissionBoardV114, now: number
     const strength = bounded(35 + operation.members.length * 9 + Math.floor(operation.members.reduce((n, m) => n + m.xp, 0) / 35) - threat * 13, 8, 95);
     const success = roll < strength;
     const losses = success ? (roll % 7 === 0 ? 1 : 0) : Math.min(operation.members.length, 1 + (roll % 2));
-    next = { ...next, dispatches: next.dispatches.map(d => d.id === operation.id ? { ...d, status: "resolved", result: success ? "success" : "failure", losses } : d) };
+    next = { ...next, dispatches: next.dispatches.map(d => d.id === operation.id ? { ...d, status: "resolved" as const, result: success ? ("success" as const) : ("failure" as const), losses } : d) };
     next = recordMissionV114(next, {
       id: operation.id, templateId: operation.templateId, mode: "dispatch", planetId: board.planetId,
       fromId: operation.fromId, targetId: operation.targetId, success, losses, at: operation.dueAt,
