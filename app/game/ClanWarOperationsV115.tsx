@@ -255,7 +255,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
           <label>Objectif RTS
             <select value={rtsScenarioId} onChange={event=>setRtsScenarioId(event.target.value as "free"|WarSourceRtsScenarioIdV119)}>
               <option value="free">Escarmouche libre · balise</option>
-              {(["W3-RTS01","W3-RTS02"] as const).map(id=>{
+              {(["W3-RTS01","W3-RTS02","W3-RTS03"] as const).map(id=>{
                 const source=warSourceRtsScenarioV119(id,rules);
                 return source?<option value={id} key={id}>{id} · {source.title}</option>:null;
               })}
@@ -264,7 +264,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
           {scenarioBrief&&<div className={styles.brief}><strong>{scenarioBrief.id} · {scenarioBrief.title}</strong>
             <p>{scenarioBrief.situation}</p><p><strong>Objectif :</strong> {scenarioBrief.completion}</p>
             <p><strong>Riposte attendue :</strong> {scenarioBrief.enemyPlan}</p>
-            <small>Épreuve fonctionnelle 9 × 6 uniquement ; la carte W3-MAP01 complète et son scénario cinématique restent à réaliser.</small>
+            <small>Épreuve fonctionnelle 9 × 6 uniquement ; la carte {scenarioBrief.sourceMapId} complète et son scénario cinématique restent à réaliser.</small>
           </div>}
         </div>}
       </fieldset>
@@ -413,7 +413,9 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
         <p>{rts.scripted?
           (rts.scripted.kind==="cargo-escort"?
             "Mission W3-RTS01 : repérer le guet et escorter une charge portée jusqu'à la sortie (7,4).":
-            "Mission W3-RTS02 : tenir le guet avec une équipe W3-U07 pendant trois tours complets de relève."):
+            rts.scripted.kind==="guard-relief"?
+              "Mission W3-RTS02 : tenir le guet avec une équipe W3-U07 pendant trois tours complets de relève.":
+              "Mission W3-RTS03 : livrer le régulateur avec W3-U19, puis faire travailler les artisans W3-U20 sur le filtre."):
           "Escarmouche libre : sélectionnez un détachement et attaquez ou défendez la balise (7,3)."}
           {" "}En temps réel, les équipes progressent selon vos ordres ; en alterné, elles agissent à tour de rôle.</p>
         {rts.scripted?.kind==="cargo-escort"&&<p className={styles.scenarioStatus}>
@@ -426,6 +428,13 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
         {rts.scripted?.kind==="guard-relief"&&<p className={styles.scenarioStatus}>
           Relève : <strong>{rts.scripted.reliefProgress}/{rts.scripted.requiredTurns} tours</strong> ·
           Poste : <strong>7,3</strong> · Une victoire par élimination seule ne suffit pas.
+        </p>}
+        {rts.scripted?.kind==="filter-repair"&&<p className={styles.scenarioStatus}>
+          Régulateur : <strong>{rts.scripted.delivered?"livré au filtre":"à transporter"}</strong> ·
+          Porteur : <strong>{rts.scripted.cargo.carrierTeamId?
+            teamsById(rts.scripted.cargo.carrierTeamId):"charge déposée"}</strong> ·
+          Travail du filtre : <strong>{rts.scripted.workProgress}/{rts.scripted.requiredTurns}</strong> ·
+          Emplacement : <strong>{rts.scripted.filterSite.x},{rts.scripted.filterSite.y}</strong>
         </p>}
         <p className={styles.explain}>Théâtre : {missionTerrain?.title} · {missionTerrain?.ground} · couverts : {missionTerrain?.coverLabel}. Les murs interrompent les trajets et les lignes de tir.</p>
         <div className={styles.cards}><button type="button" disabled={blocked}
@@ -449,24 +458,25 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
             const x=index%9,y=Math.floor(index/9),actor=rts.actors.find(item=>item.x===x&&item.y===y);
             const objective=x===7&&y===3,wall=Boolean(missionTerrain?.walls.includes(x+","+y)),
               cover=Boolean(missionTerrain?.cover.includes(x+","+y)),
-              cargo=rts.scripted?.kind==="cargo-escort"?rts.scripted.cargo:null,
+              cargo=rts.scripted?.kind==="cargo-escort"||rts.scripted?.kind==="filter-repair"?rts.scripted.cargo:null,
               carrying=Boolean(actor&&cargo&&cargo.carrierTeamId===actor.teamId),
               cargoOnGround=Boolean(cargo&&!cargo.carrierTeamId&&cargo.x===x&&cargo.y===y),
               isExit=rts.scripted?.kind==="cargo-escort"&&x===7&&y===4,
+              isFilter=rts.scripted?.kind==="filter-repair"&&x===7&&y===3,
               mark=actor?(actor.side==="ally"?(carrying?"Y◆":"Y"):"R"):
-                cargoOnGround?"◆":isExit?"⇥":objective?"◎":wall?"▥":cover?"▤":"·";
+                cargoOnGround?"◆":isExit?"⇥":isFilter?"✚":objective?"◎":wall?"▥":cover?"▤":"·";
             return <button key={index} type="button" disabled={blocked||!rtsSelectedId||wall}
               className={styles.cell} data-wall={wall} data-actor={actor?.side??""} data-objective={objective} data-cover={cover}
               title={"Position "+x+","+y+(actor?" · "+actor.unitId+" · PV "+actor.hp:"")}
               aria-label={"Case "+x+","+y+" · "+(actor?.side==="ally"?(carrying?"porteur allié":"allié"):
-                actor?.side==="rival"?"adversaire":cargoOnGround?"charge au sol":isExit?"sortie":objective?"objectif":"libre")}
+                actor?.side==="rival"?"adversaire":cargoOnGround?"charge au sol":isExit?"sortie":isFilter?"filtre à réparer":objective?"objectif":"libre")}
               onClick={()=>commit(rts.realtime?
                 issueWarRtsRealtimeOrderV115(worldRef.current,rtsSelectedId,x,y,actor?.side==="rival"?"attack":"advance",rules):
                 commandRtsV115(worldRef.current,rtsSelectedId,x,y,rules))}>{mark}</button>;
           })}
         </div>
-        <p className={styles.explain}>Y = allié, R = opposition d&apos;exercice, ◎ = balise, ▤ = couvert, ▥ = obstacle, ◆ = charge, ⇥ = sortie.
-          Ces objectifs W3 utilisent une adaptation tactique 9 × 6 : les décors narratifs et la carte source complète 32 × 24 restent à développer.</p>
+        <p className={styles.explain}>Y = allié, R = opposition d&apos;exercice, ◎ = balise, ▤ = couvert, ▥ = obstacle, ◆ = charge, ⇥ = sortie, ✚ = filtre.
+          Ces objectifs W3 utilisent une adaptation tactique 9 × 6 : les décors narratifs et les cartes sources complètes W3-MAP01/02 restent à développer.</p>
       </div>}
     </section>}
 
