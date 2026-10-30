@@ -13,6 +13,7 @@ const bundle = await build({
     export * from "./app/game/systems/clanWarPlanetGeneratorV102";
     export * from "./app/game/systems/clanWarPlanetGeneratorV103";
     export * from "./app/game/systems/clanWarPlanetStrategyV114";
+    export * from "./app/game/systems/clanWarPlanetMaterialCodexV114";
     export * from "./app/game/systems/clanWarProceduralV103";
   `, resolveDir: process.cwd(), loader: "ts" },
   bundle: true, write: false, format: "esm", platform: "node", target: "es2022", logLevel: "silent",
@@ -85,4 +86,47 @@ test("legacy V102 worlds also receive a public graph dossier without changing id
   assert.equal(dossier.territoryCount, 36);
   assert.equal(dossier.regionCount, 6);
   assert(dossier.headquartersPath.length >= 2);
+});
+
+test("all published land and sea materials have descriptions, without introducing a new recipe field", () => {
+  assert.deepEqual(Object.keys(api.WAR_PLANET_LAND_MATERIAL_CODEX_V114).sort(), [...api.WAR_PLANET_BIOMES_V103].sort());
+  assert.deepEqual(Object.keys(api.WAR_PLANET_SURFACE_MATERIAL_CODEX_V114).sort(), [...api.WAR_PLANET_SURFACES_V103].sort());
+  for (const material of Object.values(api.WAR_PLANET_LAND_MATERIAL_CODEX_V114)) {
+    assert(material.substrate.length > 5);
+    assert(material.structure.length > 5);
+    assert(material.peculiarity.length > 5);
+  }
+  for (const material of Object.values(api.WAR_PLANET_SURFACE_MATERIAL_CODEX_V114)) {
+    assert(["liquid", "solid", "particulate", "aerosol"].includes(material.state));
+    assert(material.peculiarity.length > 5);
+  }
+});
+
+test("regional material descriptions match exact V102/V103 region IDs without changing generation", () => {
+  const recipes = [
+    api.normalizeWarPlanetRecipeV103({ seed: 11442, territoryCount: 96, regionCount: 12, biomeDiversity: "varied", surface: "lava" }),
+    api.normalizeWarPlanetRecipeV103({ seed: 11443, territoryCount: 18, regionCount: 3, biomeDiversity: "uniform", surface: "mist" }),
+  ];
+  const worlds = recipes.map(api.generateWarPlanetV103);
+  const oldRecipe = api.normalizeWarPlanetRecipeV102({ seed: 102114, landform: "archipelago" });
+  const oldWorld = api.resolveProceduralWarPlanetV103(api.encodeWarPlanetV102(oldRecipe));
+  assert(oldWorld);
+  worlds.push(oldWorld);
+  for (const planet of worlds) {
+    const identityBefore = planet.id;
+    const recipeBefore = JSON.stringify(planet.procedural.recipe);
+    const dossier = api.describeWarPlanetMaterialsV114(planet);
+    assert.equal(dossier.code, identityBefore);
+    assert.equal(dossier.regions.length, planet.regions.length);
+    assert.equal(dossier.surface.kind, planet.surface.kind);
+    for (const region of dossier.regions) {
+      assert(planet.regions.some(item => item.id === region.regionId && item.name === region.regionName));
+      const expected = planet.procedural.regions.find(item => item.regionId === region.regionId)?.biome ?? planet.landBiome;
+      assert.equal(region.biome, expected);
+      assert.equal(region.sourceTextureId, `land-${expected}`);
+    }
+    assert.equal(planet.id, identityBefore);
+    assert.equal(JSON.stringify(planet.procedural.recipe), recipeBefore);
+    assert.deepEqual(dossier, api.describeWarPlanetMaterialsV114(planet));
+  }
 });
