@@ -3,7 +3,7 @@ import {
   type WarRulesV6, type WarTeamStateV6,
 } from "./clanWarBibleV6";
 import { warRtsScriptedEligibilityV119, createWarRtsScriptedObjectiveV119, resolveWarRtsScriptedTickV119,
-  validWarRtsScriptedObjectiveV119, warRtsRivalTargetV120, warRtsSourceSightV120,
+  validWarRtsScriptedObjectiveV119, warRtsRivalTargetV120, warRtsSourceSightV120, warRtsBeaconEscapeStepV121,
   type WarSourceRtsScenarioIdV119, type WarRtsScriptedObjectiveV119,
 } from "./clanWarRtsScenariosV119";
 import { warMissionTerrainV116, warTerrainCellBlockedV116, warTerrainLineOfSightV116,
@@ -464,6 +464,8 @@ export function commandStealthV115(state:WarOperationsStateV115,command:StealthC
 function rtsEnemyTurn(actors:WarRtsActorV115[],rules:WarRulesV6,terrain:WarMissionTerrainV116,
   scripted?:WarRtsScriptedObjectiveV119) {
   for(const rival of actors.filter(actor=>actor.side==="rival" && actor.hp>0)){
+    const escape=warRtsBeaconEscapeStepV121(scripted,rival,actors,terrain);
+    if(escape){rival.x=escape.x;rival.y=escape.y;continue;}
     const target=warRtsRivalTargetV120(scripted,rival,actors,terrain);
     if(!target) break;
     if(distance(target,rival)<=2&&warRtsSourceSightV120(scripted,rival,target,terrain)) target.hp-=damageFor(rival.unitId,rules);
@@ -600,6 +602,8 @@ export function stepWarRtsRealtimeV115(state:WarOperationsStateV115,rules:WarRul
     }
   }
   for(const rival of actors.filter(a=>a.side==="rival"&&a.hp>0)){
+    const escape=warRtsBeaconEscapeStepV121(field.scripted,rival,actors,terrain);
+    if(escape){rival.x=escape.x;rival.y=escape.y;continue;}
     const target=warRtsRivalTargetV120(field.scripted,rival,actors,terrain);
     if(!target) break;
     const range=clamp(Math.round((unitFor(rules,rival.unitId)?.range??2)/2),1,3);
