@@ -18,7 +18,7 @@ test("V128 validates SHA256 of committed local atlas and four save-safe material
  assert.equal(PHG_V128_ATLAS.authenticPHGUV,false);
  assert.equal(PHG_PLATFORM_STUDIES_V128.length,4);
  assert.deepEqual(PHG_PLATFORM_STUDIES_V128.map(x=>x.channel),["dreads","armor","armor","armor"]);
- assert.equal(new Set(PHG_CHROMATIC_MATERIALS_V113.map(x=>x.id)).size,69);
+ assert.equal(new Set(PHG_CHROMATIC_MATERIALS_V113.map(x=>x.id)).size,70);
  for(const entry of PHG_PLATFORM_STUDIES_V128){
   assert.equal(entry.status,"integrated");assert.equal(entry.evidence,"provisional");
   assert.equal(entry.src,PHG_V128_ATLAS.path);
