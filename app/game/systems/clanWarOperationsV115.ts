@@ -3,7 +3,8 @@ import {
   type WarRulesV6, type WarTeamStateV6,
 } from "./clanWarBibleV6";
 import { warRtsScriptedEligibilityV119, createWarRtsScriptedObjectiveV119, resolveWarRtsScriptedTickV119,
-  validWarRtsScriptedObjectiveV119, type WarSourceRtsScenarioIdV119, type WarRtsScriptedObjectiveV119,
+  validWarRtsScriptedObjectiveV119, warRtsRivalTargetV120,
+  type WarSourceRtsScenarioIdV119, type WarRtsScriptedObjectiveV119,
 } from "./clanWarRtsScenariosV119";
 import { warMissionTerrainV116, warTerrainCellBlockedV116, warTerrainLineOfSightV116,
   warTerrainPathLengthV116, type WarMissionTerrainV116 } from "./clanWarMissionTerrainV116";
@@ -460,9 +461,10 @@ export function commandStealthV115(state:WarOperationsStateV115,command:StealthC
     "Fenêtre d'infiltration expirée."),"Mission interrompue par la durée de l'exercice.");
   return accept(advanced,sabotaged?"Relais neutralisé : retournez au point d'extraction (1,4).":"Restez hors du champ de la patrouille et atteignez le relais (7,1).");
 }
-function rtsEnemyTurn(actors:WarRtsActorV115[],rules:WarRulesV6,terrain:WarMissionTerrainV116) {
+function rtsEnemyTurn(actors:WarRtsActorV115[],rules:WarRulesV6,terrain:WarMissionTerrainV116,
+  scripted?:WarRtsScriptedObjectiveV119) {
   for(const rival of actors.filter(actor=>actor.side==="rival" && actor.hp>0)){
-    const target=actors.filter(actor=>actor.side==="ally" && actor.hp>0).sort((a,b)=>distance(a,rival)-distance(b,rival))[0];
+    const target=warRtsRivalTargetV120(scripted,rival,actors,terrain);
     if(!target) break;
     if(distance(target,rival)<=2&&warTerrainLineOfSightV116(terrain,rival,target)) target.hp-=damageFor(rival.unitId,rules);
     else {
@@ -517,7 +519,7 @@ export function commandRtsV115(state:WarOperationsStateV115,teamId:string,x:numb
       return reject(state,"Case occupée ou itinéraire obstrué : le détachement ne traverse pas les murs.");
     actor.x=x;actor.y=y;
   }
-  rtsEnemyTurn(actors,rules,terrain);
+  rtsEnemyTurn(actors,rules,terrain,field.scripted);
   return settleWarRtsAlternatingTurnV119(state,mission,field,actors,terrain,rules);
 }
 
@@ -532,7 +534,7 @@ export function holdWarRtsAlternatingV119(
     return reject(state,"Le poste exige un détachement réel encore apte.");
   const terrain=warMissionTerrainV116(mission.targetId,rules);
   const actors=field.actors.map(actor=>({...actor}));
-  rtsEnemyTurn(actors,rules,terrain);
+  rtsEnemyTurn(actors,rules,terrain,field.scripted);
   return settleWarRtsAlternatingTurnV119(state,mission,field,actors,terrain,rules);
 }
 
@@ -598,7 +600,7 @@ export function stepWarRtsRealtimeV115(state:WarOperationsStateV115,rules:WarRul
     }
   }
   for(const rival of actors.filter(a=>a.side==="rival"&&a.hp>0)){
-    const target=actors.filter(a=>a.side==="ally"&&a.hp>0).sort((a,b)=>distance(a,rival)-distance(b,rival)||a.id.localeCompare(b.id))[0];
+    const target=warRtsRivalTargetV120(field.scripted,rival,actors,terrain);
     if(!target) break;
     const range=clamp(Math.round((unitFor(rules,rival.unitId)?.range??2)/2),1,3);
     if(distance(rival,target)<=range&&warTerrainLineOfSightV116(terrain,rival,target)){
