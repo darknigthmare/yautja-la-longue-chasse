@@ -27,6 +27,7 @@ export type WarRtsEscortKindV129 = "wounded-ally"|"survivor-team"|"witness"|"hea
 export interface WarRtsTaskSpecV129 {
  title:string;kind:WarRtsStepKindV129;
  holdTurns?:number;requiresPower?:boolean;requiresPressure?:boolean;
+ requiresWindow?:"low-tide"|"clear-wind"|"stable-ice"|"cool-jets";
 }
 interface MissionRecipeV129{
  steps:readonly [WarRtsTaskSpecV129,WarRtsTaskSpecV129,WarRtsTaskSpecV129];
@@ -103,12 +104,12 @@ const RECIPES:Record<WarRtsMissionIdV129,MissionRecipeV129>={
  ],escortKind:"survivor-team",suggestedV6Units:["W3-U06","W3-U19","W3-U25"]},
  "W3-RTS13":{steps:[
   {title:"Reconnaître le quai avant le flot",kind:"scout"},
-  {title:"Prendre le mécanisme ouvrant la fenêtre d'accès",kind:"secure"},
+  {title:"Prendre le mécanisme ouvrant la fenêtre d'accès",kind:"secure",requiresWindow:"low-tide"},
   {title:"Tenir le levier pendant le débarquement",kind:"hold",holdTurns:2},
  ],suggestedV6Units:["W3-U25","W3-U07","W3-U26"]},
  "W3-RTS14":{steps:[
   {title:"Repérer le treuil et les appuis de quai",kind:"scout"},
-  {title:"Charger la caisse lourde sans duplication",kind:"transfer"},
+  {title:"Charger la caisse lourde sans duplication",kind:"transfer",requiresWindow:"low-tide"},
   {title:"Assurer la voie de remontée du lot transporté",kind:"secure"},
  ],escortKind:"heavy-cargo",suggestedV6Units:["W3-U19","W3-U20","W3-U07"]},
  "W3-RTS15":{steps:[
@@ -118,12 +119,12 @@ const RECIPES:Record<WarRtsMissionIdV129,MissionRecipeV129>={
  ],suggestedV6Units:["W3-U02","W3-U05","W3-U13"]},
  "W3-RTS16":{steps:[
   {title:"Examiner les deux pitons et les transports en route",kind:"scout"},
-  {title:"Allumer le premier feu de retour",kind:"signal"},
+  {title:"Allumer le premier feu de retour",kind:"signal",requiresWindow:"clear-wind"},
   {title:"Garder le second repère jusqu'à l'arrivée",kind:"hold",holdTurns:3},
  ],suggestedV6Units:["W3-U06","W3-U20","W3-U07"]},
  "W3-RTS17":{steps:[
   {title:"Tester la tenue des plaques de glace",kind:"scout"},
-  {title:"Dégager les porteurs du convoi immobilisé",kind:"rescue"},
+  {title:"Dégager les porteurs du convoi immobilisé",kind:"rescue",requiresWindow:"stable-ice"},
   {title:"Stabiliser la retraite sur les appuis sûrs",kind:"route"},
  ],escortKind:"wounded-ally",suggestedV6Units:["W3-U24","W3-U17","W3-U19"]},
  "W3-RTS18":{steps:[
@@ -133,13 +134,13 @@ const RECIPES:Record<WarRtsMissionIdV129,MissionRecipeV129>={
  ],escortKind:"wounded-ally",suggestedV6Units:["W3-U07","W3-U17","W3-U28"]},
  "W3-RTS19":{steps:[
   {title:"Lire la pression des conduites chaudes",kind:"scout"},
-  {title:"Fermer la vanne et dégager la pièce de passage",kind:"seal"},
+  {title:"Fermer la vanne et dégager la pièce de passage",kind:"seal",requiresWindow:"cool-jets"},
   {title:"Ouvrir le circuit de chaleur jusqu'à la sortie",kind:"repair",requiresPower:true},
  ],suggestedV6Units:["W3-U20","W3-U19","W3-U07"]},
  "W3-RTS20":{steps:[
   {title:"Identifier le cordon de confinement à conserver",kind:"scout"},
   {title:"Évacuer l'équipe retenue dans le secteur chaud",kind:"rescue"},
-  {title:"Sceller la dernière porte de confinement",kind:"seal",requiresPower:true},
+  {title:"Sceller la dernière porte de confinement",kind:"seal",requiresPower:true,requiresWindow:"cool-jets"},
  ],escortKind:"survivor-team",suggestedV6Units:["W3-U27","W3-U17","W3-U20"]},
  "W3-RTS21":{steps:[
   {title:"Contrôler la capacité du palier et de l'ascenseur",kind:"scout"},
@@ -380,6 +381,16 @@ function stageNeedsPressure(state:WarRtsMissionStateV129,task:WarRtsTaskV129):st
   return "L'installation dépend de l'alimentation : rétablissez le courant au mécanisme réel.";
  if(task.requiresPressure&&!state.base.airlockStable)
   return "La pression du sas est instable : stabilisez-la avant d'entrer.";
+ const phase=state.base.turn%8;
+ if(task.requiresWindow&&phase>=3&&phase<=4){
+  const reasons={
+   "low-tide":"Marée haute : le quai ou la cavité n'est pas utilisable pendant cette fenêtre.",
+   "clear-wind":"Rafales en cours : le repère doit être réglé pendant l'accalmie.",
+   "stable-ice":"Plaques fissurées : les porteurs attendent une séquence stable.",
+   "cool-jets":"Jets thermiques actifs : fermeture possible après refroidissement.",
+  } as const;
+  return reasons[task.requiresWindow];
+ }
  return null;
 }
 function setStatus(state:WarRtsMissionStateV129,base:WarMapPracticeV128):WarRtsMissionStateV129["status"]{
@@ -486,6 +497,13 @@ export function auditWarRtsSourceMissionsV129(rules:WarRulesV6){
    const base=createWarMapPracticeV128(plan.mapId,rules);
    if(base.map.planetId!==plan.planetId)issues.push(id+": planet mismatch");
    if(plan.tasks.length!==3)issues.push(id+": incomplete source task chain");
+   const windowEnvironments={
+    "low-tide":"maree-haute","clear-wind":"rafales-sur-le-phare",
+    "stable-ice":"fissure-de-glace","cool-jets":"jets-thermiques",
+   } as const;
+   if(plan.tasks.some(task=>task.requiresWindow&&
+      base.map.eventClass!==windowEnvironments[task.requiresWindow]))
+    issues.push(id+": unsafe climate/event task gating");
    if(plan.sourceCells.length!==14)issues.push(id+": incomplete 14-column workbook provenance");
    if(!plan.sourceCampaignLink||!plan.sourceProvenance)issues.push(id+": missing campaign/provenance");
    if(!Number.isFinite(plan.pcMaximum)||!Number.isFinite(plan.initialRav))
