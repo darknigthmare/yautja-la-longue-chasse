@@ -11,16 +11,14 @@ const rules=api.DEFAULT_WAR_RULES_V6;
 const create=()=>api.createWarOperationsV115(rules);
 
 function woundedState(){
-  const start=create(),team=start.teams[0],target=rules.territories.find(item=>item.id!==start.baseId&&
-    !api.warMissionEligibleV115(start,rules,item.id,[team.id]));
-  assert.ok(target,"requires a real connected V6 passage");
-  const mission=api.beginWarOperationV115(start,"stealth",target.id,[team.id],rules,1000);
-  assert.equal(mission.accepted,true,mission.message);
-  const retreat=api.leaveWarOperationV115(mission.state,rules);
-  assert.equal(retreat.accepted,true);
-  const person=retreat.state.teams[0].members.find(item=>item.status==="wounded");
-  assert.ok(person);
-  return {state:retreat.state,teamId:team.id,personId:person.id};
+  // A controlled casualty fixture is injected to isolate the medical contract.
+  // Simply aborting an unengaged mission must NOT fabricate a wound.
+  const start=create(),team=start.teams[0],person=team.members[0];
+  const wounded={...start,teams:start.teams.map(item=>item.id===team.id?
+    {...item,members:item.members.map(member=>member.id===person.id?
+      {...member,status:"wounded"}:member)}:item)};
+  assert.deepEqual(api.readWarOperationsV115(JSON.stringify(wounded),rules),wounded);
+  return {state:wounded,teamId:team.id,personId:person.id};
 }
 function medicState(){
   const {state,teamId,personId}=woundedState();
