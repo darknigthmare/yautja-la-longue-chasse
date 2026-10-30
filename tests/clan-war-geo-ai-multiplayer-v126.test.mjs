@@ -76,7 +76,7 @@ test("Gunnison must be in Colorado, Bouvet is subantarctic, and no city is put o
  assert.equal(alien.geography.worldKind,"known-alien");
  assert.equal(alien.geography.latitude,null);
  const filmEarthSites=scenes.filter(x=>x.geography.earthSiteId==="earth-predator2-la");
- assert.equal(filmEarthSites.length,4);
+ assert.equal(filmEarthSites.length,16); // four frame slots repeated across four war gameplays
 });
 
 test("Earth desert never gets polar blizzard; Antarctic polar desert is an exception, not an arid hot zone",()=>{
@@ -131,8 +131,9 @@ test("multiplayer lobby keeps the same world, prevents duplicate unit ownership 
  assert.equal(m.startWarMultiplayerLobbyV126(first,"CAPTAIN").accepted,false);
  const joined=m.joinWarMultiplayerLobbyV126(first,"OTHER","Rival","rival");
  assert.equal(joined.accepted,true);
- assert.equal(m.setWarMultiplayerLoadoutV126(joined.room,"OTHER",["UNIT-HOST"]).accepted,true);
- const hostUnits=m.setWarMultiplayerLoadoutV126(joined.room,"CAPTAIN",["UNIT-HOST"]);
+ const rivalLoadout=m.setWarMultiplayerLoadoutV126(joined.room,"OTHER",["UNIT-HOST"]);
+ assert.equal(rivalLoadout.accepted,true);
+ const hostUnits=m.setWarMultiplayerLoadoutV126(rivalLoadout.room,"CAPTAIN",["UNIT-HOST"]);
  assert.equal(hostUnits.accepted,false,"same individual cannot belong to both players");
  let room=m.setWarMultiplayerLoadoutV126(joined.room,"CAPTAIN",["UNIT-01"]).room;
  room=m.setWarMultiplayerLoadoutV126(room,"OTHER",["UNIT-02"]).room;
