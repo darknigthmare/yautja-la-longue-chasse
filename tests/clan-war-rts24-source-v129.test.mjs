@@ -113,6 +113,35 @@ test("all 24 source RTS narratives map to exactly 12 proper W3 planets and 72 ex
  }
  assert.ok(audit.escortedScripts>=8);
 });
+test("every W3 RTS brief has its own V6 rival detachments and physically distinct initial positions",()=>{
+ const profiles=[];
+ for(const id of ids){
+  const source=api.buildWarRtsMissionV129(id,rules);
+  const study=api.createWarRtsMissionStateV129(id,rules);
+  assert.ok(source.opponentTeams>=3&&source.opponentTeams<=4,id);
+  assert.equal(source.opponentTeams,study.base.enemies.length,id);
+  assert.equal(source.opponentUnitIds.length,source.opponentTeams);
+  const matching=source.opponentUnitIds.map(u=>rules.units.find(x=>x.id===u));
+  assert.ok(matching.every(Boolean),id+" references nonexistent W3 caste");
+  assert.equal(source.opponentBudgetPc,matching.reduce((sum,u)=>sum+u.commandPoints,0));
+  assert.equal(source.opponentCombatants,matching.reduce((sum,u)=>sum+u.fullMembers,0));
+  assert.ok(source.opponentBudgetPc<=source.pcMaximum);
+  assert.deepEqual(study.base.enemies.map(e=>e.unitId),source.opponentUnitIds);
+  assert.equal(new Set(study.base.enemies.map(e=>coord(e))).size,source.opponentTeams);
+  assert.ok(study.base.enemies.every(e=>api.warMapWalkableV128(study.base.map,e)),id+" rival embedded in a wall");
+  assert.ok(study.base.enemies.every(e=>!source.tasks.some(task=>coord(task.location)===coord(e))));
+  assert.ok(study.base.enemies.every(e=>e.id.startsWith(id+"-RIVAL-")));
+  profiles.push(source.opponentUnitIds.join("|"));
+ }
+ assert.ok(new Set(profiles).size>=20,"rival mixes should meaningfully vary by scenario");
+});
+test("missions involving human tracks never manufacture a hostile human faction",()=>{
+ for(const id of ["W3-RTS11","W3-RTS12","W3-RTS24"]){
+  const game=api.createWarRtsMissionStateV129(id,rules);
+  assert.ok(game.base.enemies.every(e=>/^W3-U\d\d$/.test(e.unitId)));
+  assert.equal(game.tracked?.isNeutral??false,id==="W3-RTS24");
+ }
+});
 test("24 different titles, three distinct source-positioned tasks per mission, no fake city/planet",()=>{
  const plans=ids.map(id=>api.buildWarRtsMissionV129(id,rules));
  assert.equal(new Set(plans.map(v=>v.name)).size,24);
