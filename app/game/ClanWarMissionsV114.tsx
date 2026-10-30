@@ -63,6 +63,8 @@ export default function ClanWarMissionsV114({ simulation, planetName, active, on
     ?? neighbors.find(item => simulation.territories[item.id]?.controller === "CON-F02")
     ?? neighbors[0];
   const targetId = target?.id ?? "";
+  // Clan honor: the generic hostile-assault and sabotage simulations may not attack allied/neutral sites.
+  const hostileTarget = simulation.territories[targetId]?.controller === "CON-F02";
   const roster = simulation.combatants.filter(person => person.factionId === "CON-F01" && person.territoryId === fromId && person.status === "fit" && person.trainingUntilTurn === null);
   const busy = new Set([...simulation.orders.flatMap(order => order.combatantIds), ...board.dispatches.filter(item => item.status === "running").flatMap(item => item.members.map(person => person.id))]);
   const eligible = roster.filter(person => !busy.has(person.id));
@@ -93,7 +95,7 @@ export default function ClanWarMissionsV114({ simulation, planetName, active, on
       const key = warMissionStorageKeyV114(planetId), raw = window.localStorage.getItem(key);
       if (raw !== null) {
         const live = readWarMissionBoardV114(JSON.parse(raw) as unknown, planetId);
-        if (!live || live.revision !== boardRef.current.revision) {
+        if (!live || live.revision !== boardRef.current.revision || JSON.stringify(live) !== JSON.stringify(boardRef.current)) {
           setBlocked(true); setStorageStatus("Une autre session ou une archive incompatible a modifié ce monde. Écriture bloquée pour ne pas écraser les données.");
           return false;
         }
@@ -157,12 +159,13 @@ export default function ClanWarMissionsV114({ simulation, planetName, active, on
 
   function startMission() {
     if (!active || blocked || !hydrated || !origin || !target || mode === "dispatch") return;
+    if (!hostileTarget) { setNotice("Code d\u0027honneur : ce mandat offensif cible uniquement une position militaire hostile connue. Choisissez un front adverse."); return; }
     sequence.current++;
     const id = "mission-" + planetId + "-" + Date.now() + "-" + sequence.current;
     setRun({ id, mode, templateId: template.id, fromId, targetId, recorded: false });
-    setLine(createWarLineV114(sequence.current, board.readiness, template.threat));
-    setStealth(createWarStealthV114());
-    setRts(createWarRtsV114(board.rav));
+    setLine(createWarLineV114(sequence.current, board.readiness, template.threat, board.sabotage));
+    setStealth(createWarStealthV114(board.intel));
+    setRts(createWarRtsV114(board.rav, board.intel, board.sabotage));
     setSelectedSquad("own-1"); setPaused(false);
     setNotice("Mandat lancé : " + template.title + ". Les pièces visibles sont des marqueurs provisoires, pas les sprites finaux.");
   }
@@ -215,6 +218,8 @@ export default function ClanWarMissionsV114({ simulation, planetName, active, on
     <article className={styles.brief}>
       <p className={styles.kicker}>{template.id} · menace {template.threat}/3 · exercice V3</p>
       <h4>{template.title}</h4><p>{template.briefing}</p><p><strong>Objectif :</strong> {template.objective}</p>
+      {mode !== "dispatch" && !hostileTarget && <p className={styles.warning}>Mandat offensif interdit ici : site neutre ou allié. Le front autorise la reconnaissance et les accords, pas une attaque injustifiée.</p>}
+      <p>Effets d’exercice : préparation → AP du front ; renseignement → camouflage et renforts RTS ; sabotage du relais → défenses adverses réduites dans les batailles suivantes.</p>
     </article>
     {mode === "dispatch" ? <section className={styles.content}>
       <h4>Table des départs · opérations temporisées</h4>
@@ -229,7 +234,7 @@ export default function ClanWarMissionsV114({ simulation, planetName, active, on
         <p>{item.status === "running" ? "En mission · " + formatTime(item.dueAt - now) : item.result === "success" ? "Mission réussie · pertes d'exercice : " + item.losses : "Mission échouée · pertes d'exercice : " + item.losses}</p>
       </article>)}</div>
     </section> : <section className={styles.content}>
-      <div className={styles.actions}><button type="button" onClick={startMission} disabled={!active || !hydrated || blocked || !targetId}>{run ? "Recommencer ce mandat" : "Lancer la mission"}</button>
+      <div className={styles.actions}><button type="button" onClick={startMission} disabled={!active || !hydrated || blocked || !targetId || !hostileTarget}>{run ? "Recommencer ce mandat" : "Lancer la mission"}</button>
         {(mode === "line" || mode === "rts") && run?.mode === mode && <button type="button" aria-pressed={paused} onClick={() => setPaused(value => !value)}>{paused ? "Reprendre" : "Pause"}</button>}</div>
       {run?.mode === "line" && <div data-testid="war-line-v114">
         <div className={styles.progress}><span>Poste allié {line.ownBase} PV</span><span>AP {line.ap}/160</span><span>Poste adverse {line.enemyBase} PV</span></div>
