@@ -4434,6 +4434,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
               <button type="button" className="ghost-button" onClick={() => setSettingsOpen(true)}>Réglages et sauvegardes</button>
             </section>}
             <HunterChromaticForgeV113
+              key={JSON.stringify(save.appearance.chromaticsV113 ?? null)}
               appearance={save.appearance}
               onPreview={setDraftChromaticsV114}
               homeworld={stationReturnScreen === "homeworld"}

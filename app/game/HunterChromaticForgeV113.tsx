@@ -21,10 +21,6 @@ export default function HunterChromaticForgeV113({
 }) {
   const [draft, setDraft] = useState(() => normalizeHunterChromaticsV113(appearance.chromaticsV113));
   const [message, setMessage] = useState("");
-  useEffect(() => {
-    setDraft(normalizeHunterChromaticsV113(appearance.chromaticsV113));
-    setMessage("");
-  }, [appearance.chromaticsV113]);
   useEffect(() => { onPreview?.(draft); }, [draft, onPreview]);
   useEffect(() => () => onPreview?.(null), [onPreview]);
 
@@ -80,7 +76,7 @@ export default function HunterChromaticForgeV113({
             <img src={selectedMaterial.src} alt="" loading="lazy" decoding="async" />
             <span><strong>{selectedMaterial.label}</strong><small>{selectedMaterial.evidence === "provisional" ? "Étude provisoire — fidélité artistique non validée" : "Matière plane reconstituée — UV non certifiées 1:1"}</small></span>
           </div>}
-          {!selectedMaterial && <small>Calque d'origine conservé sans texture de remplacement.</small>}
+          {!selectedMaterial && <small>Calque d’origine conservé sans texture de remplacement.</small>}
           {pending > 0 && <small>{pending} matière(s) identifiée(s) sur Drive, non encore présente(s) en jeu.</small>}
         </fieldset>;
       })}

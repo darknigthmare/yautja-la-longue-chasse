@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element -- the alpha silhouette comes from registered game artwork */
 import type { CSSProperties } from "react";
 import type { HunterAppearance } from "./types";
 import type { ChromaticChannelV113 } from "./hunterChromaticsV113";
