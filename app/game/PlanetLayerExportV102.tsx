@@ -6,6 +6,7 @@ import type { WarPlanetV96 } from "./systems/clanWarPlanetsV96";
 import { DEFAULT_PLANET_MATERIAL_SETTINGS_V101, planetMaterialRecipeV101, type PlanetMaterialLayerV101, type PlanetMaterialSettingsV101 } from "./systems/planetMaterialV101";
 import { makePlanetStoredZipV114, type PlanetZipEntryV114 } from "./systems/planetExportZipV114";
 import { analyzeWarPlanetStrategyV114 } from "./systems/clanWarPlanetStrategyV114";
+import { createPlanetTextureCanvasV125, findPlanetTextureV125, WAR_PLANET_TEXTURES_V125, WAR_PLANET_TEXTURE_CHANNELS_V125, type PlanetTextureChannelV125 } from "./systems/clanWarTextureLibraryV125";
 import { createPlanetRegionIndexMaskV124, createPlanetInlandMaskV124, describePlanetModularMasksV124, planetInlandFeaturesV124 } from "./planetModularExportV124";
 import styles from "./PlanetLayerExportV102.module.css";
 
@@ -74,6 +75,9 @@ export default function PlanetLayerExportV102({ planet }: { planet: WarPlanetV96
   });
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState("");
+  const [supplementalMaterialId, setSupplementalMaterialId] = useState(WAR_PLANET_TEXTURES_V125[0].id);
+  const [supplementalChannel, setSupplementalChannel] = useState<PlanetTextureChannelV125>("albedo");
+  const selectedSupplementalMaterial = findPlanetTextureV125(supplementalMaterialId)!;
   const pending = useRef<AbortController | null>(null);
 
   useEffect(() => () => pending.current?.abort(), []);
@@ -160,6 +164,31 @@ export default function PlanetLayerExportV102({ planet }: { planet: WarPlanetV96
     }
   };
 
+  /** A material-source export. Does not change or re-encode the current planet. */
+  const exportSupplementalMaterial = async () => {
+    if (pending.current) return;
+    const controller = new AbortController();
+    pending.current = controller; setBusy(true); setMessage("Préparation de la matière indépendante…");
+    try {
+      const canvas = createPlanetTextureCanvasV125(supplementalMaterialId, supplementalChannel, 512, planet.seed);
+      const blob = await encodePng(canvas);
+      if (controller.signal.aborted) return;
+      const url = URL.createObjectURL(blob);
+      const anchor = document.createElement("a");
+      anchor.href = url;
+      anchor.download = `${supplementalMaterialId}-${supplementalChannel}-seed${planet.seed}.png`;
+      document.body.appendChild(anchor);
+      try { anchor.click(); }
+      finally { anchor.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000); }
+      setMessage(`Source ${selectedSupplementalMaterial.name} / ${supplementalChannel} exportée en 512 × 512 pixels.`);
+    } catch (error) {
+      if (!controller.signal.aborted) setMessage(error instanceof Error ? error.message : "Impossible d'exporter cette texture.");
+    } finally {
+      if (pending.current === controller) pending.current = null;
+      if (!controller.signal.aborted) setBusy(false);
+    }
+  };
+
   return <details className={styles.export} data-testid="planet-layer-export-v102" data-planet-id={planet.id}>
     <summary>Exporter les textures par calque</summary>
     <p>Chaque PNG utilise la planète de l’aperçu. Les effets et les terres conservent leur transparence pour être assemblés séparément.</p>
@@ -184,6 +213,24 @@ export default function PlanetLayerExportV102({ planet }: { planet: WarPlanetV96
       </label>)}
       <p>Ces interrupteurs modifient uniquement le PNG assemblé. Chaque calque individuel conserve sa source et reste téléchargeable.</p>
     </fieldset>}
+    <fieldset className={styles.composition} disabled={busy} data-testid="planet-extra-materials-v125">
+      <legend>Bibliothèque supplémentaire — 32 matières de sol et de mer</legend>
+      <p>Matières originales terrestres et extraterrestres, exportables indépendamment. Elles ne remplacent pas les matières déjà enregistrées dans le code de ce monde.</p>
+      <div className={styles.controls}>
+        <label htmlFor={`${unique}-supplemental-material`}>Texture complémentaire
+          <select id={`${unique}-supplemental-material`} value={supplementalMaterialId} onChange={event => setSupplementalMaterialId(event.target.value)}>
+            {WAR_PLANET_TEXTURES_V125.map(item => <option key={item.id} value={item.id}>{item.domain === "land" ? "Sol" : "Milieu"} · {item.origin === "earthlike" ? "Terrestre" : "Alien"} · {item.name}</option>)}
+          </select>
+        </label>
+        <label htmlFor={`${unique}-supplemental-channel`}>Canal indépendant
+          <select id={`${unique}-supplemental-channel`} value={supplementalChannel} onChange={event => setSupplementalChannel(event.target.value as PlanetTextureChannelV125)}>
+            {WAR_PLANET_TEXTURE_CHANNELS_V125.map(channel => <option key={channel} value={channel}>{channel}</option>)}
+          </select>
+        </label>
+        <button type="button" onClick={() => void exportSupplementalMaterial()} disabled={busy}>Télécharger cette matière PNG</button>
+      </div>
+      <p>{selectedSupplementalMaterial.description} · motif : {selectedSupplementalMaterial.pattern} · rugosité {selectedSupplementalMaterial.roughness.toLocaleString("fr-FR")} · émission {selectedSupplementalMaterial.emission.toLocaleString("fr-FR")}.</p>
+    </fieldset>
     <p className={styles.status} role="status" aria-live="polite">{message || "Les masques régionaux utilisent R=indice+1 et A=255 sur terre seulement. L'atlas régional exporte de véritables tuiles de matière ; les bassins et chenaux restent séparés."}</p>
   </details>;
 }
