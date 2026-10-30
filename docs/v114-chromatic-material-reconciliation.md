@@ -23,3 +23,6 @@ Ce correctif ne certifie ni le rendu alpha/motif aux raccords des membres ni un 
 
 ## QA de la première compilation sur CI
 Le premier job V114 (commit `ce6b5e25`) confirme l'intégrité exacte des 44 PNG. Deux contrôles JavaScript ont d'abord échoué : import de module sans extension `.ts` sous Node 22 et assertion historique restreinte au seul chemin V113. Le test est désormais adapté aux deux racines enregistrées tout en refusant les URL arbitraires. La compilation et la nouvelle exécution doivent être contrôlées sur la tête suivante ; ne pas réattribuer une CI verte à `ce6b5e25`.
+
+## Même armure sur Homeworld
+La version modulaire du chasseur sur Homeworld utilise désormais les 14 plaques V3 déjà enregistrées, en sélectionnant la famille d'armure et le niveau d'équipement de la sauvegarde, y compris l'absence de bracer quand les wristblades sont portées. Les textures et filtres de patine emploient le même canal que le rig d'aperçu. Les sprites de prévisualisation de morphologie restent volontairement sans armure. La scène de ville est un composé **au repos** ; ses animations corporelles ne sont pas prétendues équivalentes au système articulé de chasse.

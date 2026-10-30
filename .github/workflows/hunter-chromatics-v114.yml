@@ -8,6 +8,9 @@ on:
       - "app/game/hunterMaterialsV113.ts"
       - "app/game/HunterChromaticForgeV113.tsx"
       - "app/game/GameClient.tsx"
+      - "app/game/HomeworldModularHunter.tsx"
+      - "app/game/HomeworldHub.tsx"
+      - "tests/homeworld-hunter-armor-v114.test.mjs"
       - "tests/hunter-chromatic*"
       - "scripts/validate-phg-materials-v113.py"
       - ".github/workflows/hunter-chromatics-v114.yml"
@@ -32,6 +35,10 @@ jobs:
             /tests/hunter-chromatic-canvas-v113.test.mjs
             /tests/hunter-chromatics-native-v114.test.mjs
             /tests/hunter-chromatic-grade-v114.test.mjs
+            /tests/homeworld-hunter-armor-v114.test.mjs
+            /app/game/HomeworldModularHunter.tsx
+            /app/game/hunterVisuals.ts
+            /public/game/assets/v3/actors/yautja/hunter/armor/registered/
             /scripts/validate-phg-materials-v113.py
             /public/game/imports/v85/drive-latest/
             /public/game/assets/v113/phg/
@@ -41,4 +48,4 @@ jobs:
       - name: Audit all 44 original local files by SHA and PNG header
         run: python3 scripts/validate-phg-materials-v113.py
       - name: Validate saved palette IDs, category isolation and Canvas descriptors
-        run: node --experimental-strip-types --test tests/hunter-chromatics-v113.test.mjs tests/hunter-chromatic-canvas-v113.test.mjs tests/hunter-chromatics-native-v114.test.mjs tests/hunter-chromatic-grade-v114.test.mjs
+        run: node --experimental-strip-types --test tests/hunter-chromatics-v113.test.mjs tests/hunter-chromatic-canvas-v113.test.mjs tests/hunter-chromatics-native-v114.test.mjs tests/hunter-chromatic-grade-v114.test.mjs tests/homeworld-hunter-armor-v114.test.mjs
