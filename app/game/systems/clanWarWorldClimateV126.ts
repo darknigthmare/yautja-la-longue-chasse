@@ -23,6 +23,8 @@ export interface WarClimateV126 {
  biome:string;terrain:string;liquid:string;weather:string;light:string;
  hazards:string[];isFrozen:boolean;allowsNaturalSnow:boolean;seasonRule:string;
  weatherAdjusted:boolean;originalWeather:string;
+ siteKind:"interior"|"outdoor"|"mixed"|"multi-region";
+ effectiveHazard:string;originalHazard:string;effectiveTwist:string;
  climateConfidence:"grounded-region"|"biome-derived"|"requires-geographic-verification";
 }
 export interface WarCoherentVariantV126 {
@@ -197,6 +199,37 @@ function determineClimate(variant:ClanWarVariantV120,world:WarWorldLocationV126)
  };
  const warnings:string[]=[];
  const original=N(variant.environment.weather);
+ const earthPlace=N(world.earthReferenceName??world.siteName);
+ const indoorWords=["musee","bibliothe","galerie","palais","theatre","opera","hotel",
+    "museum","airport","gare","observatoire","basilique","mosquee","abbaye",
+    "interieur","hall","salle","chapelle"];
+ const routes=["route ","canal ","transsiberien","orient-express","express",
+   "detroit ","col de ","passage ","tunnel ","pont ","voie maritime"];
+ const multiRegion=world.worldKind==="earth"&&variant.family==="homage"&&variant.mode==="outer"&&includesAny(earthPlace,routes);
+ const indoor=world.worldKind==="earth"&&variant.family==="homage"&&variant.mode==="stealth"&&includesAny(earthPlace,indoorWords);
+ const siteKind:WarClimateV126["siteKind"]=multiRegion?"multi-region":indoor?"interior":
+   variant.mode==="stealth"||variant.mode==="assault"?"mixed":"outdoor";
+ const hazardOptions:Record<ClimateV126,readonly string[]>={
+   "hot-desert":["rafale de sable","surchauffe des plaques","ensablement des accès"],
+   "cold-desert":["givre sec","brise polaire","fissure de gel"],
+   polar:["gel de conduit","brouillard de glace","rafale polaire"],
+   alpine:["chute de pierres","vent de crête","éboulement d'altitude"],
+   "tropical-wet":["crue de rivière","mousson locale","glissement humide"],
+   temperate:["pluie variable","vent de travers","sol boueux"],
+   wetland:["montée de marée","vase instable","brume humide"],
+   marine:["embruns salés","houle locale","pont de quai glissant"],
+   volcanic:["gaz volcanique","cendre volante","variation de chaleur"],
+   underground:["panne de ventilation","effondrement de galerie","condensation"],
+   urban:["coupure de courant","encombrement de ruelle","fumée de ventilation"],
+   "alien-variable":["brouillage atmosphérique local","variation de pression","visibilité variable"],
+ };
+ const chosenHazard=hazardOptions[climate][seed%hazardOptions[climate].length];
+ const effectiveHazard=indoor?"coupure de lumière intérieure et ronde de surveillance":
+   multiRegion?"incident de tronçon en itinéraire multirégional":chosenHazard;
+ const effectiveTwist=variant.operation.twist.replace(variant.environment.environmentalHazard,effectiveHazard);
+ if(multiRegion)warnings.push("Corridor multirégional : la météo change selon le tronçon");
+ if(indoor)warnings.push("Intérieur couvert : la pluie et la neige extérieures ne sont pas appliquées aux salles");
+
  if(blocked[climate].some(token=>original.includes(token)))warnings.push("Météo V120 incompatible remplacée");
  return {
   climate,temperatureRule:climate==="hot-desert"?"zone chaude et sèche ; pas de neige naturelle":
@@ -211,7 +244,11 @@ function determineClimate(variant:ClanWarVariantV120,world:WarWorldLocationV126)
    climate==="temperate"?"zone tempérée terrestre":climate==="cold-desert"?"désert froid terrestre":
    climate==="volcanic"?"milieu volcanique terrestre":climate==="underground"?"cavité terrestre":
    "milieu terrestre non vérifié":variant.environment.biome,
-  terrain,liquid,weather,light:variant.environment.timeOfDay,
+  terrain:indoor?"sol bâti intérieur, matière locale à vérifier":terrain,
+  liquid:indoor?"eau uniquement si réseau intérieur attesté":liquid,
+  weather:indoor?"pas de météo extérieure à l'intérieur":
+    multiRegion?"météo variable selon secteurs parcourus":weather,
+  light:indoor?"éclairage artificiel dépendant du courant":variant.environment.timeOfDay,
   hazards:climate==="hot-desert"?["déshydratation","vent abrasif","visibilité réduite par sable"]:
     climate==="polar"||climate==="cold-desert"?["gel des mécanismes","fissures de glace","vent froid"]:
     climate==="alpine"?["chutes de pierres","vents de crête","hypothermie selon saison"]:
@@ -221,8 +258,10 @@ function determineClimate(variant:ClanWarVariantV120,world:WarWorldLocationV126)
   allowsNaturalSnow:climate==="polar"||climate==="cold-desert"||climate==="alpine",
   seasonRule:climate==="alpine"?"neige seulement si saison/altitude le permettent":
     climate==="hot-desert"?"pas d'événement glacial naturel":"météo déterministe cohérente avec le climat",
-  weatherAdjusted:N(weather)!==original,
+  weatherAdjusted:indoor||multiRegion||N(weather)!==original,
   originalWeather:variant.environment.weather,
+  siteKind,effectiveHazard,originalHazard:variant.environment.environmentalHazard,
+  effectiveTwist,
   climateConfidence:film||world.worldKind==="known-alien"?"grounded-region":
     world.worldKind==="earth"?"requires-geographic-verification":"biome-derived",
  };
