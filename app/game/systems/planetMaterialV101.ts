@@ -16,6 +16,8 @@ export interface PlanetMaterialSettingsV101 {
   clouds: boolean;
   weather: boolean;
   lighting: boolean;
+  /** Optional for compatibility with V101–V103 callers. Defaults to enabled. */
+  aurora?: boolean;
 }
 export const DEFAULT_PLANET_MATERIAL_SETTINGS_V101: Readonly<PlanetMaterialSettingsV101> = Object.freeze({ atmosphere: true, clouds: true, weather: true, lighting: true });
 
