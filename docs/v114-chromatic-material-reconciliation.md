@@ -41,3 +41,6 @@ L'Atelier des parures déjà localisé dans les Forges propose maintenant les ma
 
 ## V115 — Migration des trois anciens champs PR #25
 Les valeurs `skinMaterialId`, `dreadMaterialId` et `outfitMaterialId` précédemment stockées à la racine de `appearance` sont lues et converties une seule fois vers `chromaticsV113` à la normalisation, sans générer d'URL externes. Les 5 palettes de peau, 4 de dreadlocks et 4 de patine de #25 sont converties en hex RGBA standards, en conservant les options actuelles. Une valeur explicitement présente dans la structure moderne est prioritaire, même si elle vaut `null`. Un filet existant et les références Samurai/Shatter utilisent leurs identifiants V113 compatibles ; accessoires et valeurs inconnues restent neutres. Les anciens noms de champs ne sont jamais resauvegardés ; un preset film modifié est marqué `custom`.
+
+## Régression réelle de sauvegarde V115
+L'extension de `tests/save-storage-status.test.mjs` effectue une migration d'une sauvegarde PR #25 avec palettes et matériaux, la repasse par `normalizeSave`, écrit réellement via `writeSaveWithStatus` dans un stockage isolé, puis recharge via `loadSave`. Les trois anciennes clés doivent avoir disparu du document écrit ; `chromaticsV113` et le propriétaire doivent être conservés. Ce parcours utilise le bundle réel `save.ts`, et non la seule fonction auxiliaire.
