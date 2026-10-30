@@ -10,6 +10,7 @@ import {
   type ChromaticFacilityV115, type HunterChromaticsV113,
 } from "./hunterChromaticsV113";
 import { PHG_RECENT_RELEASES_V125, PHG_FERAL_CORRECTION_V125 } from "./phgRecentReleasesV125";
+import { PHG_RECENT_CANDIDATES_V126, PHG_RECENT_UPDATES_V126 } from "./phgRecentMaterialsV126";
 import styles from "./HunterChromaticForgeV113.module.css";
 
 export default function HunterChromaticForgeV113({
@@ -59,6 +60,9 @@ export default function HunterChromaticForgeV113({
           <a href={release.sourceUrl} target="_blank" rel="noopener noreferrer">Note officielle</a>
         </li>)}
       </ul>
+      <p>Dernières actualités : {PHG_RECENT_UPDATES_V126.map(update =>
+        <span key={update.date}>{update.date} · {update.title} · <a href={update.url} target="_blank" rel="noopener noreferrer">Source</a>. </span>
+      )}</p>
       <p>Feral · peau Default : modification dans le patch {PHG_FERAL_CORRECTION_V125.patch}
         {" ("}{PHG_FERAL_CORRECTION_V125.date}{")"}. L’étude V125 et le matériau antérieur
         sont conservés séparément ; les pixels officiels restent à vérifier.</p>
@@ -67,7 +71,8 @@ export default function HunterChromaticForgeV113({
       {chromaticFacilityChannelsV115(station).map(channel => {
         const activeColor = draft[channel.colorKey];
         const choices = PHG_CHROMATIC_MATERIALS_V113.filter(item => item.channel === channel.id && item.status === "integrated");
-        const pending = PHG_DRIVE_CANDIDATES_V120.filter(item => item.channel === channel.id && item.status === "drive-only").length;
+        const pending = PHG_DRIVE_CANDIDATES_V120.filter(item => item.channel === channel.id && item.status === "drive-only").length
+          + PHG_RECENT_CANDIDATES_V126.filter(item => item.channel === channel.id && item.status === "drive-only").length;
         const selectedMaterial = choices.find(item => item.id === draft[channel.materialKey]);
         return <fieldset className={styles.station} key={channel.id} disabled={disabled}>
           <legend>{channel.label}</legend>
@@ -99,7 +104,7 @@ export default function HunterChromaticForgeV113({
             {choices.filter(item => !item.atlas).map(item =>
               <option key={item.id} value={item.id}>{item.label}{item.evidence === "provisional" ? " · provisoire" : ""}</option>
             )}
-            {choices.some(item => item.atlas) && <optgroup label="Études V125 — reconstructions non certifiées 1:1">
+            {choices.some(item => item.atlas) && <optgroup label="Études V125–V126 — reconstructions non certifiées 1:1">
               {choices.filter(item => item.atlas).map(item =>
                 <option key={item.id} value={item.id}>{item.label}</option>
               )}
@@ -115,7 +120,7 @@ export default function HunterChromaticForgeV113({
             <span><strong>{selectedMaterial.label}</strong><small>{selectedMaterial.evidence === "provisional" ? "Étude provisoire — fidélité artistique non validée" : "Matière plane reconstituée — UV non certifiées 1:1"}</small></span>
           </div>}
           {!selectedMaterial && <small>Calque d’origine conservé sans texture de remplacement.</small>}
-          {pending > 0 && <small>{pending} matière(s) PHG vérifiée(s) sur Drive, non installée(s) dans ce jeu. L’import local V120 vérifie les octets avant activation ; la fidélité UV 1:1 reste non certifiée.</small>}
+          {pending > 0 && <small>{pending} matière(s) PHG vérifiée(s) sur Drive, non installée(s) dans ce jeu. L’import local V120/V126 vérifie les octets avant activation ; la fidélité UV 1:1 reste non certifiée.</small>}
         </fieldset>;
       })}
     </div>
