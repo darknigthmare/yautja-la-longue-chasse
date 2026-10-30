@@ -38,14 +38,22 @@ export function describeWarPlanetMaterialsV114(planet: WarPlanetV96) {
   const regionBiomes = new Map(planet.procedural?.regions.map(item => [item.regionId, item.biome] as const) ?? []);
   const regions = planet.regions.map(region => {
     const biome = regionBiomes.get(region.id) ?? planet.landBiome;
+    const material = planet.procedural?.recipe.version === 126
+      ? planet.procedural.regionalMaterialAssignments.find(item => item.regionId === region.id)
+      : null;
     return { regionId: region.id, regionName: region.name, biome,
-      title: WAR_BIOME_LABELS_V96[biome], sourceTextureId: `land-${biome}`,
-      ...WAR_PLANET_LAND_MATERIAL_CODEX_V114[biome] };
+      title: material ? `${WAR_BIOME_LABELS_V96[biome]} · ${material.landMaterialName}` : WAR_BIOME_LABELS_V96[biome],
+      sourceTextureId: material?.landMaterialId ?? `land-${biome}`,
+      ...WAR_PLANET_LAND_MATERIAL_CODEX_V114[biome],
+      ...(material ? { peculiarity: `${material.description}. ${WAR_PLANET_LAND_MATERIAL_CODEX_V114[biome].peculiarity}` } : {}),
+    };
   });
   const kind = planet.surface.kind;
   return {
     code: planet.id,
-    surface: { kind, title: WAR_SURFACE_LABELS_V96[kind], sourceTextureId: `surface-${kind}`,
+    surface: { kind, title: WAR_SURFACE_LABELS_V96[kind],
+      sourceTextureId: planet.procedural?.recipe.version === 126
+        ? planet.procedural.globalLiquidAssignment.id : `surface-${kind}`,
       ...WAR_PLANET_SURFACE_MATERIAL_CODEX_V114[kind] },
     regions,
     rule: "Descriptions et textures uniquement : aucun changement implicite aux déplacements, dégâts, revenus ou routes.",
