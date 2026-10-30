@@ -5,6 +5,8 @@ import {
   clanWarVariantCountsV120, searchClanWarVariantsV120, drawUnseenClanWarVariantV120,
   type ClanWarVariantFamilyV120, type ClanWarVariantModeV120,
 } from "./systems/clanWarVariantAtlasV120";
+import {coherentClanWarVariantV126} from "./systems/clanWarWorldClimateV126";
+import {buildWarEncounterSubVariantV127} from "./systems/clanWarEncounterDirectorV127";
 import styles from "./ClanWarVariantAtlasV120.module.css";
 
 const MODE_LABELS:Record<ClanWarVariantModeV120,string> = {
@@ -53,6 +55,8 @@ export default function ClanWarVariantAtlasV120({onOpenPrototype}:{onOpenPrototy
   const currentPage=Math.min(page,maxPage);
   const visible=entries.slice(currentPage*pageSize,(currentPage+1)*pageSize);
   const chosen=entries.find(row=>row.id===picked)??visible[0]??null;
+  const geo=chosen?coherentClanWarVariantV126(chosen):null;
+  const tactical=geo?buildWarEncounterSubVariantV127(geo,2):null;
   function drawNewVariant(){
     const result=drawUnseenClanWarVariantV120(Date.now(),drawnIds,mode,family,query);
     if(!result)return;
@@ -129,8 +133,8 @@ export default function ClanWarVariantAtlasV120({onOpenPrototype}:{onOpenPrototy
           onClick={()=>setPicked(row.id)}>
           <small>{row.id} · {MODE_LABELS[row.mode]} · {FAMILY_LABELS[row.family]}</small>
           <strong>{row.operation.missionType}</strong>
-          <span>{row.settingName}</span>
-          <small>{row.environment.biome} · {row.operation.lengthClass} · menace {row.operation.threat}/5</small>
+          <span>{coherentClanWarVariantV126(row).geography.siteName}</span>
+          <small>{coherentClanWarVariantV126(row).environment.biome} · {row.operation.lengthClass} · menace {row.operation.threat}/5</small>
         </button>)}
         {!entries.length&&<p>Aucune variante ne correspond à cette recherche.</p>}
         <div className={styles.pageControls}>
@@ -144,10 +148,15 @@ export default function ClanWarVariantAtlasV120({onOpenPrototype}:{onOpenPrototy
         {chosen?<><p className={styles.eyebrow}>{chosen.id} · PROPOSITION DE GAMEPLAY</p>
           <h4>{chosen.title}</h4>
           <p>{chosen.inspirationNote}</p>
+          {geo&&<div className={styles.warning} role="note">
+            <strong>Placement et climat V126/V127 prépondérants :</strong> {geo.geography.worldKind==="earth"?"Terre réelle":geo.geography.worldKind==="known-alien"?"Planète extraterrestre du récit":geo.geography.worldKind==="original-alien"?"Planète inventée":"Lieu de continuité non localisé"} ·
+            {" "}{geo.geography.siteName} · {geo.environment.climate}. Les variations de décor d&apos;origine qui contredisent ce climat ne sont pas activables automatiquement.
+            {geo.auditWarnings.length>0&&<p>{geo.auditWarnings.join(" · ")}</p>}
+          </div>}
           <div className={styles.detailGrid}>
-            <div><strong>Lieu</strong><p>{chosen.settingName}</p></div>
-            <div><strong>Atmosphère</strong><p>{chosen.environment.biome} · {chosen.environment.weather} · {chosen.environment.timeOfDay}</p></div>
-            <div><strong>Sol et liquide</strong><p>{chosen.environment.terrain} · {chosen.environment.liquid}</p></div>
+            <div><strong>Lieu V126</strong><p>{geo?.geography.siteName??chosen.settingName}</p></div>
+            <div><strong>Climat corrigé</strong><p>{geo?.environment.biome??chosen.environment.biome} · {geo?.environment.weather??chosen.environment.weather} · {chosen.environment.timeOfDay}</p></div>
+            <div><strong>Sol et liquide validés</strong><p>{geo?.environment.terrain??chosen.environment.terrain} · {geo?.environment.liquid??chosen.environment.liquid}</p></div>
             <div><strong>Architecture</strong><p>{chosen.environment.layout}</p></div>
             <div><strong>Ciel et relief</strong><p>{chosen.environment.sky} · {chosen.environment.altitude}</p></div>
             <div><strong>Couvert</strong><p>{chosen.environment.cover}</p></div>
@@ -158,16 +167,22 @@ export default function ClanWarVariantAtlasV120({onOpenPrototype}:{onOpenPrototy
             <div><dt>Objectif principal</dt><dd>{chosen.operation.primaryObjective}</dd></div>
             <div><dt>Objectif secondaire</dt><dd>{chosen.operation.secondaryObjective}</dd></div>
             <div><dt>Mécanique spécifique</dt><dd>{chosen.operation.gameplayHook}</dd></div>
-            <div><dt>Événement dynamique</dt><dd>{chosen.operation.twist}</dd></div>
-            <div><dt>Réaction du terrain</dt><dd>{chosen.environment.hazardsReaction}</dd></div>
+            <div><dt>Aléa environnemental autorisé V127</dt><dd>{geo?.environment.hazards.join(" · ")??"À vérifier"}</dd></div>
+            <div><dt>Réaction du terrain</dt><dd>{geo?.environment.temperatureRule??"À vérifier"} · les unités doivent réévaluer physiquement leur voie de repli.</dd></div>
             <div><dt>Si le courant est coupé</dt><dd>{chosen.environment.powerFailure}</dd></div>
             <div><dt>Échec</dt><dd>{chosen.operation.failure}</dd></div>
             <div><dt>Preuve de victoire</dt><dd>{chosen.operation.victoryProof}</dd></div>
             <div><dt>Plan de repli</dt><dd>{chosen.operation.fallback}</dd></div>
             <div><dt>Extraction</dt><dd>{chosen.operation.extraction}</dd></div>
           </dl>
-          <h5>Quatre temps de l&apos;opération</h5>
-          <ol className={styles.phases}>{chosen.operation.dynamicPhases.map((phase,index)=><li key={index}>{phase}</li>)}</ol>
+          <h5>Quatre temps de l&apos;opération · V127 corrigée</h5>
+          <ol className={styles.phases}>{tactical?.sections.map((phase,index)=><li key={phase.id}>
+            {index+1}. {phase.part} · {phase.weather} · {phase.hazard} · {phase.coverType}
+          </li>)}</ol>
+          <details><summary>Consulter le brouillon V120 original (non validé géographiquement)</summary>
+            <p>{chosen.operation.twist}</p>
+            <ol>{chosen.operation.dynamicPhases.map((phase,index)=><li key={index}>{phase}</li>)}</ol>
+          </details>
           <details className={styles.assets}><summary>Éléments à créer avant intégration</summary>
             <p><strong>Sprites :</strong> {chosen.production.neededSprites.join(" · ")}</p>
             <p><strong>Tiles :</strong> {chosen.production.neededTiles.join(" · ")}</p>
