@@ -3,22 +3,22 @@ import type { WarRtsActorV115 } from "./clanWarOperationsV115";
 import { warMissionTerrainV116, warTerrainCellBlockedV116, warTerrainLineOfSightV116, type WarMissionTerrainV116 } from "./clanWarMissionTerrainV116";
 
 /**
- * W3-RTS01/02/03/04: four SMALL objective exercises from authored W3-MAP01/02 briefs.
+ * W3-RTS01–05: five SMALL objective exercises from authored W3-MAP01/02/03 briefs.
  * The existing battlefield is 9 x 6, not the 32 x 24 full authored scene.
- * The other 20 RTS sources are still dossiers, not pretend playable missions.
+ * The other 19 RTS sources are still dossiers, not pretend playable missions.
  */
-export type WarSourceRtsScenarioIdV119 = "W3-RTS01" | "W3-RTS02" | "W3-RTS03" | "W3-RTS04";
+export type WarSourceRtsScenarioIdV119 = "W3-RTS01" | "W3-RTS02" | "W3-RTS03" | "W3-RTS04" | "W3-RTS05";
 export interface WarSourceRtsScenarioDefinitionV119 {
   id: WarSourceRtsScenarioIdV119;
   title: string;
-  sourceMapId: "W3-MAP01" | "W3-MAP02";
+  sourceMapId: "W3-MAP01" | "W3-MAP02" | "W3-MAP03";
   sourceCells: string[];
   situation: string;
   tactics: string;
   enemyPlan: string;
   completion: string;
-  supportedRegionId: "W3-KR01" | "W3-KR02";
-  objectiveKind: "cargo-escort" | "guard-relief" | "filter-repair" | "circuit-defense";
+  supportedRegionId: "W3-KR01" | "W3-KR02" | "W3-KR03";
+  objectiveKind: "cargo-escort" | "guard-relief" | "filter-repair" | "circuit-defense" | "beacon-intercept";
   playability: "objective-exercise";
 }
 export type WarRtsScriptedObjectiveV119 =
@@ -32,7 +32,11 @@ export type WarRtsScriptedObjectiveV119 =
      filterSite:{x:7;y:3}; delivered:boolean; workProgress:number; requiredTurns:2 }
  | { scenarioId:"W3-RTS04"; kind:"circuit-defense"; sourceMapId:"W3-MAP02";
      leverPoint:{x:7;y:3}; heldTurns:number; requiredTurns:4;
-     integrity:number; maxIntegrity:3; pressurePhase:number };
+     integrity:number; maxIntegrity:3; pressurePhase:number }
+ | { scenarioId:"W3-RTS05"; kind:"beacon-intercept"; sourceMapId:"W3-MAP03";
+     beacon:{id:string; enemyCarrierId:string|null; allyCarrierTeamId:string|null; x:number; y:number};
+     observed:boolean; decoy:{x:5;y:5;recognized:boolean};
+     extraction:{x:1;y:4} };
 
 export interface WarRtsScriptedResultV119 {
   objective: WarRtsScriptedObjectiveV119;
@@ -45,11 +49,11 @@ const GUARD_UNIT="W3-U07";
 const DIST=(a:{x:number;y:number},c:{x:number;y:number})=>Math.abs(a.x-c.x)+Math.abs(a.y-c.y);
 
 export function warSourceRtsScenarioV119(id:string,rules:WarRulesV6): WarSourceRtsScenarioDefinitionV119|null {
-  if(id!=="W3-RTS01"&&id!=="W3-RTS02"&&id!=="W3-RTS03"&&id!=="W3-RTS04")return null;
+  if(!["W3-RTS01","W3-RTS02","W3-RTS03","W3-RTS04","W3-RTS05"].includes(id))return null;
   const entry=rules.entries.find(item=>item.sheet==="Scénarios RTS"&&item.id===id);
   if(!entry)return null;
   const v=(column:string)=>String(entry.fields.find(field=>field.column===column)?.value??"").trim();
-  const mapId=id==="W3-RTS03"||id==="W3-RTS04"?"W3-MAP02":"W3-MAP01";
+  const mapId=id==="W3-RTS05"?"W3-MAP03":id==="W3-RTS03"||id==="W3-RTS04"?"W3-MAP02":"W3-MAP01";
   if(v("C")!==mapId || !rules.entries.some(item=>item.sheet==="Cartes des escarmouches"&&item.id===mapId))
     return null;
   return {
@@ -57,9 +61,9 @@ export function warSourceRtsScenarioV119(id:string,rules:WarRulesV6): WarSourceR
     sourceCells:["C","D","E","F","G","H","I","J","K","L","M","N","O"]
       .map(column=>entry.fields.find(field=>field.column===column)?.cell).filter((cell):cell is string=>!!cell),
     situation:v("E"),tactics:v("I"),enemyPlan:v("J"),completion:v("L"),
-    supportedRegionId:id==="W3-RTS03"||id==="W3-RTS04"?"W3-KR02":"W3-KR01",
+    supportedRegionId:id==="W3-RTS05"?"W3-KR03":id==="W3-RTS03"||id==="W3-RTS04"?"W3-KR02":"W3-KR01",
     objectiveKind:id==="W3-RTS01"?"cargo-escort":id==="W3-RTS02"?"guard-relief":
-      id==="W3-RTS03"?"filter-repair":"circuit-defense",
+      id==="W3-RTS03"?"filter-repair":id==="W3-RTS04"?"circuit-defense":"beacon-intercept",
     playability:"objective-exercise",
   };
 }
@@ -80,6 +84,8 @@ export function warRtsScriptedEligibilityV119(
     return "W3-RTS03 exige un récupérateur de charges W3-U19 et de vrais artisans W3-U20, recrutés et présents.";
   if(brief.id==="W3-RTS04"&&!unitIds.includes("W3-U07"))
     return "W3-RTS04 exige des lanciers de seuil W3-U07 pour défendre réellement le levier.";
+  if(brief.id==="W3-RTS05"&&(!unitIds.includes("W3-U01")||!unitIds.some(u=>["W3-U04","W3-U21"].includes(u))))
+    return "W3-RTS05 exige W3-U01 pour reconnaître la balise et W3-U04/U21 pour la récupérer et rejoindre la coque.";
   return null;
 }
 export function createWarRtsScriptedObjectiveV119(
@@ -94,7 +100,16 @@ export function createWarRtsScriptedObjectiveV119(
     leverPoint:{x:7,y:3},heldTurns:0,requiredTurns:4,
     integrity:3,maxIntegrity:3,pressurePhase:0,
   };
-  if(id==="W3-RTS03"){
+  if(id==="W3-RTS05"){
+    const scout=actors.find(actor=>actor.side==="ally"&&actor.unitId==="W3-U01");
+    const tracker=actors.find(actor=>actor.side==="ally"&&["W3-U04","W3-U21"].includes(actor.unitId));
+    const enemy=actors.find(actor=>actor.side==="rival"&&actor.id==="rival-0");
+    if(!scout||!tracker||!enemy)return null;
+    return {scenarioId:id,kind:"beacon-intercept",sourceMapId:"W3-MAP03",observed:false,
+      beacon:{id:operationId+"-beacon",enemyCarrierId:enemy.id,allyCarrierTeamId:null,x:enemy.x,y:enemy.y},
+      decoy:{x:5,y:5,recognized:false},extraction:{x:1,y:4}};
+  }
+    if(id==="W3-RTS03"){
     const porter=actors.find(actor=>actor.side==="ally"&&actor.teamId&&actor.unitId==="W3-U19");
     if(!porter)return null;
     return {scenarioId:id,kind:"filter-repair",sourceMapId:"W3-MAP02",
