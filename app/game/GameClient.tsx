@@ -1054,6 +1054,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     useState<MapReturnScreen>("deck");
   const [stationReturnScreen, setStationReturnScreen] =
     useState<StationReturnScreen>("deck");
+  const [paletteFacility, setPaletteFacility] = useState<"ship" | "forge" | "lab">("ship");
   const [lastResult, setLastResult] = useState<MissionResult | null>(null);
   const [lastRewardSummary, setLastRewardSummary] =
     useState<RewardSummary | null>(null);
@@ -2449,6 +2450,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
           ? "Ta formation est en cours. Rejoins le mentor pour reprendre les exercices à l’étape sauvegardée ; cet accès ne remplace pas les exercices du dojo."
           : "Rencontre d’abord le chef du clan puis l’instructeur des terrasses. Son dialogue ouvre le dojo ; la lame et le biomask se reçoivent uniquement aux étapes réussies de la formation."); return;
     }
+    if (service === "customization") setPaletteFacility("forge");
     if (service === "justice") setJusticeJurisdiction("homeworld");
     if (service === "pit") openPit();
     else openStationScreen(service, "homeworld");
@@ -3885,6 +3887,14 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             >
               {hubLocation === "homeworld" ? "← Retour à la cité" : "← Retour au pont physique"}
             </button>
+            {screen === "medbay" && <aside className="pigment-lab-access" aria-label="Station pigmentaire de la maison des soins">
+              <strong>Mélangeur des matrices pigmentaires</strong>
+              <p>Les soigneurs travaillent sur la pigmentation superficielle. Aucune réécriture ADN ou mutation instantanée n’est attribuée au lore.</p>
+              <button type="button" className="alien-button" onClick={() => {
+                setPaletteFacility("lab");
+                openStationScreen("customization", hubLocation);
+              }}>Ouvrir la station des pigments</button>
+            </aside>}
             <ShipHub
               embedded
               suspended={settingsOpen || trophyWorkshop !== null}
@@ -3898,9 +3908,10 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
               onOpenArmory={() => openStationScreen("armory", hubLocation)}
               onOpenTrophies={() => openStationScreen("trophies", hubLocation)}
               onOpenArchives={() => openStationScreen("codex", hubLocation)}
-              onOpenCustomization={() =>
-                openStationScreen("customization", hubLocation)
-              }
+              onOpenCustomization={() => {
+                setPaletteFacility("lab");
+                openStationScreen("customization", hubLocation);
+              }}
               onOpenPit={openPit}
               onApplyLoadout={applyShipLoadout}
               onSelectedShipChange={setSelectedShipId}
@@ -4400,12 +4411,17 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         >
           <div className="screen-safe">
             <PanelHeader
-              eyebrow={newGamePhase ? "Nouvelle partie // Identité du chasseur" : "Vaisseau // Quartier du chasseur"}
+              eyebrow={newGamePhase ? "Nouvelle partie // Identité du chasseur" : paletteFacility === "forge" && stationReturnScreen === "homeworld" ? "Homeworld // Teinturerie des Forges" : paletteFacility === "lab" ? "Maison des soins // Matrice pigmentaire" : "Vaisseau // Quartier du chasseur"}
               title="Personnalisation du Yautja"
               subtitle="Le biomask permet d’étudier séparément l’anatomie, le filet, les dreadlocks, les plaques, l’armement, les gantelets et les trophées."
               id="customization-title"
               onBack={() => newGamePhase ? void returnToMainMenu() : go(stationReturnScreen)}
             />
+            {!newGamePhase && <section className="hunter-material-facility" aria-label="Atelier de personnalisation lore-compatible">
+              <strong>{paletteFacility === "lab" ? "Mélangeur de pigments biologiques" : paletteFacility === "forge" && stationReturnScreen === "homeworld" ? "Teinturerie du Cercle des Forges" : "Poste de préparation du chasseur"}</strong>
+              <p>Peau, ligatures des dreadlocks et équipements utilisent des matériaux distincts. Les PNG inspirés de Hunting Grounds sont des reconstitutions et ne modifient ni les compétences, ni les trophées, ni le rang.</p>
+              <small>Dans la cité : teinturerie au quartier des Forges ; laboratoire pigmentaire dans la Maison des soins. Aucun « DNA mixer » universel n’est présenté comme une technologie canonique.</small>
+            </section>}
             {newGamePhase === "identity" && <section className="save-transfer" aria-label="Début de campagne jouable" data-new-game-identity>
               <h2>{save.profile.hunterName} · Première chasse</h2>
               <p>Ce checkpoint conserve l’ancien départ de campagne : personnalisation, briefing de Vey puis chasse en jungle. Aucun rite de jeunesse n’est attribué par ce raccourci historique. Pour commencer par la nurserie et poursuivre la formation Unblooded, crée une nouvelle partie dans un emplacement libre depuis le menu principal ; cette sauvegarde restera disponible.</p>
