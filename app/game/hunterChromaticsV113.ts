@@ -208,6 +208,62 @@ export function normalizeHunterChromaticsV113(source: unknown): HunterChromatics
   return result;
 }
 
+/** Preserve material selections from the independently developed PR #25 save
+ * shape without perpetuating its three parallel fields in the active schema.
+ * An explicit chromaticsV113 field (including null) always wins over old data.
+ */
+export function migrateLegacyPhgAppearanceV115(raw: unknown): HunterChromaticsV113 {
+  const appearance = isRecord(raw) ? raw : {};
+  const modern = isRecord(appearance.chromaticsV113) ? appearance.chromaticsV113 : null;
+  const result = normalizeHunterChromaticsV113(modern);
+  const acceptsLegacy = (field: keyof HunterChromaticsV113) =>
+    modern === null || !Object.prototype.hasOwnProperty.call(modern, field);
+
+  const priorSkin: Record<string, string> = {
+    "moss-mottle": "#677b4b", "copper-mottle": "#a35a3e",
+    "sand-mottle": "#b2a17a", "storm-mottle": "#647b85",
+    "ivory-mottle": "#bcb4a2",
+  };
+  const priorDreads: Record<string, string> = {
+    copper: "#85513f", bone: "#bbb29c", moss: "#586a4b",
+    "blue-black": "#343e53",
+  };
+  const priorArmor: Record<string, string> = {
+    bone: "#afa68d", jade: "#466f5b", rust: "#8b503d",
+    crimson: "#873938",
+  };
+  if (acceptsLegacy("skinHex") && typeof appearance.skinId === "string")
+    result.skinHex = priorSkin[appearance.skinId] ?? result.skinHex;
+  if (acceptsLegacy("dreadHex") && typeof appearance.dreadTintId === "string")
+    result.dreadHex = priorDreads[appearance.dreadTintId] ?? result.dreadHex;
+  if (acceptsLegacy("armorHex") && typeof appearance.armorTintId === "string")
+    result.armorHex = priorArmor[appearance.armorTintId] ?? result.armorHex;
+
+  const convert = (channel: ChromaticChannelV113, candidate: unknown): string | null => {
+    if (typeof candidate !== "string" || !/^[a-z0-9_-]{1,110}$/.test(candidate)) return null;
+    const aliases: Record<string, string> = {
+      "armor_filet_fin_noir_losanges": "phg-fine-net",
+      "skin_shatter_demon_provisoire": "phg-shatter-demon-study",
+      "armor_classe_samurai_laque_rouge_volutes": "phg-samurai-red-lacquer",
+    };
+    return getChromaticMaterialV113(channel, aliases[candidate] ?? "phg-" + candidate)?.id ?? null;
+  };
+  if (acceptsLegacy("skinMaterialId"))
+    result.skinMaterialId = convert("skin", appearance.skinMaterialId) ?? result.skinMaterialId;
+  if (acceptsLegacy("dreadMaterialId"))
+    result.dreadMaterialId = convert("dreads", appearance.dreadMaterialId) ?? result.dreadMaterialId;
+  if (acceptsLegacy("outfitMaterialId")) {
+    const oldOutfit = appearance.outfitMaterialId;
+    if (oldOutfit === "armor_classe_samurai_laque_rouge_volutes") {
+      if (acceptsLegacy("armorMaterialId"))
+        result.armorMaterialId = convert("armor", oldOutfit) ?? result.armorMaterialId;
+    } else {
+      result.outfitMaterialId = convert("outfit", oldOutfit) ?? result.outfitMaterialId;
+    }
+  }
+  return result;
+}
+
 export function hasCustomChromaticsV113(value: unknown): boolean {
   const safe = normalizeHunterChromaticsV113(value);
   return Object.values(safe).some(item => item !== null);

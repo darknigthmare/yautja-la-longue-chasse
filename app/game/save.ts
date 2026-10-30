@@ -3,7 +3,7 @@ import {normalizeHomeworldArchiveContinuationV111,archiveContinuationActiveV111}
 import {emptyHarvestInventoryV112,normalizeHarvestInventoryV112,deliverHarvestV112} from "./systems/harvestInventoryV112";
 import { normalizeHuntAccessibilityV112, DEFAULT_HUNT_ACCESSIBILITY_V112 } from "./systems/huntAccessibilityV112";
 import { normalizeFieldToolIdsV111 } from "./systems/fieldToolsV111";
-import { DEFAULT_CHROMATICS_V113, hasCustomChromaticsV113, normalizeHunterChromaticsV113 } from "./hunterChromaticsV113";
+import { DEFAULT_CHROMATICS_V113, hasCustomChromaticsV113, migrateLegacyPhgAppearanceV115 } from "./hunterChromaticsV113";
 import {normalizeHomeworldArchiveV106} from './systems/homeworldArchiveLedgerV106';
 import {normalizeHomeworldArchiveComparisonV107} from './systems/homeworldArchiveComparisonLedgerV107';
 import {normalizeHomeworldCargoV108} from './systems/homeworldCargoLedgerV108';
@@ -670,7 +670,7 @@ function normalizeAppearance(source: unknown): HunterAppearance {
     laserColorId: isOneOf(source.laserColorId, LASER_COLOR_IDS)
       ? source.laserColorId
       : DEFAULT_HUNTER_APPEARANCE.laserColorId,
-    chromaticsV113: normalizeHunterChromaticsV113(source.chromaticsV113),
+    chromaticsV113: migrateLegacyPhgAppearanceV115(source),
   };
 
   if (appearance.presetId !== "custom") {
@@ -700,7 +700,7 @@ function normalizeAppearance(source: unknown): HunterAppearance {
 
     // A legendary id describes the complete authored plate, never a label
     // that can remain attached to a manually altered combination of modules.
-    if (!matchesAuthoredModules || hasCustomChromaticsV113(source.chromaticsV113)) appearance.presetId = "custom";
+    if (!matchesAuthoredModules || hasCustomChromaticsV113(appearance.chromaticsV113)) appearance.presetId = "custom";
   }
 
   return appearance;
