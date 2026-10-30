@@ -8,6 +8,11 @@ import { makePlanetStoredZipV114, type PlanetZipEntryV114 } from "./systems/plan
 import { analyzeWarPlanetStrategyV114 } from "./systems/clanWarPlanetStrategyV114";
 import { createPlanetTextureCanvasV125, findPlanetTextureV125, WAR_PLANET_TEXTURES_V125, WAR_PLANET_TEXTURE_CHANNELS_V125, type PlanetTextureChannelV125 } from "./systems/clanWarTextureLibraryV125";
 import { createPlanetRegionIndexMaskV124, createPlanetInlandMaskV124, describePlanetModularMasksV124, planetInlandFeaturesV124 } from "./planetModularExportV124";
+import { createPlanetSingleRegionMaskV128 } from "./planetRegionKitRasterV128";
+import {
+  createPlanetRegionalMaterialKitV128, compatibleLandMaterialsV128, compatibleSurfaceMaterialsV128,
+  describePlanetRegionAssetsV128, editPlanetRegionalMaterialKitV128,
+} from "./systems/clanWarRegionalMaterialKitV128";
 import styles from "./PlanetLayerExportV102.module.css";
 
 type ExportLayer = PlanetMaterialLayerV101 | "mask" | "region-index" | "regional-atlas" | "lake-mask" | "river-mask";
@@ -78,6 +83,11 @@ export default function PlanetLayerExportV102({ planet }: { planet: WarPlanetV96
   const [supplementalMaterialId, setSupplementalMaterialId] = useState(WAR_PLANET_TEXTURES_V125[0].id);
   const [supplementalChannel, setSupplementalChannel] = useState<PlanetTextureChannelV125>("albedo");
   const [supplementalRegionId, setSupplementalRegionId] = useState(() => planet.regions[0]?.id ?? "");
+  const [kitRegionId, setKitRegionId] = useState(() => planet.regions[0]?.id ?? "");
+  const [regionalKit, setRegionalKit] = useState(() => createPlanetRegionalMaterialKitV128(planet));
+  const activeKitRegion = regionalKit.entries.find(item => item.regionId === kitRegionId) ?? regionalKit.entries[0];
+  const compatibleLand = activeKitRegion ? compatibleLandMaterialsV128(activeKitRegion.biome) : [];
+  const compatibleSurface = activeKitRegion ? compatibleSurfaceMaterialsV128(planet.surface.kind, activeKitRegion.biome) : [];
   const selectedSupplementalMaterial = findPlanetTextureV125(supplementalMaterialId)!;
   const regionIndex = Math.max(0, planet.regions.findIndex(item => item.id === supplementalRegionId));
   const supplementalSeed = (planet.seed ^ Math.imul(regionIndex + 1, 0x9e3779b1)) >>> 0;
@@ -206,6 +216,56 @@ export default function PlanetLayerExportV102({ planet }: { planet: WarPlanetV96
     }
   };
 
+
+  /** Region-specific asset receipt. No gameplay archive or world code is altered. */
+  const exportRegionalKit = async () => {
+    if (pending.current || !activeKitRegion) return;
+    const controller = new AbortController();
+    pending.current = controller; setBusy(true);
+    setMessage("Préparation du kit de matière régional…");
+    try {
+      const receipt = describePlanetRegionAssetsV128(planet, regionalKit, activeKitRegion.regionId);
+      const sources = [
+        { slot: "land", id: activeKitRegion.landMaterialId },
+        ...(activeKitRegion.surfaceMaterialId ? [{ slot: "surface", id: activeKitRegion.surfaceMaterialId }] : []),
+      ];
+      const entries: PlanetZipEntryV114[] = [];
+      const channelFiles: Array<{ file: string; sourceId: string; slot: string; channel: PlanetTextureChannelV125; size: number }> = [];
+      for (const source of sources) for (const channel of WAR_PLANET_TEXTURE_CHANNELS_V125) {
+        if (controller.signal.aborted) return;
+        const canvas = createPlanetTextureCanvasV125(source.id, channel, 256, activeKitRegion.seed);
+        const png = await encodePng(canvas);
+        if (controller.signal.aborted) return;
+        const file = source.slot + "-" + channel + ".png";
+        entries.push({ name: file, bytes: new Uint8Array(await png.arrayBuffer()) });
+        channelFiles.push({ file, sourceId: source.id, slot: source.slot, channel, size: 256 });
+        setMessage("Kit régional : " + channelFiles.length + " canaux préparés…");
+      }
+      const mask = await encodePng(createPlanetSingleRegionMaskV128(planet, activeKitRegion.regionId, 512));
+      if (controller.signal.aborted) return;
+      entries.push({ name: "region-mask-map.png", bytes: new Uint8Array(await mask.arrayBuffer()) });
+      entries.push({ name: "manifest.json", bytes: new TextEncoder().encode(JSON.stringify({
+        ...receipt, files: channelFiles,
+        regionMask: { file: "region-mask-map.png", projection: "equirectangular", width: 512, height: 256 },
+      }, null, 2) + "\n") });
+      const zip = makePlanetStoredZipV114(entries);
+      if (controller.signal.aborted) return;
+      const bytes = new ArrayBuffer(zip.byteLength); new Uint8Array(bytes).set(zip);
+      const url = URL.createObjectURL(new Blob([bytes], { type: "application/zip" }));
+      const anchor = document.createElement("a");
+      anchor.href = url; anchor.download = planet.id + "-" + activeKitRegion.regionId + "-material-kit-v128.zip";
+      document.body.appendChild(anchor);
+      try { anchor.click(); }
+      finally { anchor.remove(); setTimeout(() => URL.revokeObjectURL(url), 30000); }
+      setMessage("Kit de " + activeKitRegion.regionName + " exporté : " + channelFiles.length + " textures, masque et fiche.");
+    } catch (error) {
+      if (!controller.signal.aborted) setMessage(error instanceof Error ? error.message : "Le kit régional n’a pas pu être exporté.");
+    } finally {
+      if (pending.current === controller) pending.current = null;
+      if (!controller.signal.aborted) setBusy(false);
+    }
+  };
+
   return <details className={styles.export} data-testid="planet-layer-export-v102" data-planet-id={planet.id}>
     <summary>Exporter les textures par calque</summary>
     <p>Chaque PNG utilise la planète de l’aperçu. Les effets et les terres conservent leur transparence pour être assemblés séparément.</p>
@@ -257,6 +317,33 @@ export default function PlanetLayerExportV102({ planet }: { planet: WarPlanetV96
           aria-label={`Aperçu de ${selectedSupplementalMaterial.name}, canal ${supplementalChannel}`}/>
         <p>{selectedSupplementalMaterial.description} · motif : {selectedSupplementalMaterial.pattern} · rugosité {selectedSupplementalMaterial.roughness.toLocaleString("fr-FR")} · émission {selectedSupplementalMaterial.emission.toLocaleString("fr-FR")}.</p>
       </div>
+    </fieldset>
+    <fieldset className={styles.composition} disabled={busy} data-testid="planet-regional-kit-v128">
+      <legend>Kit indépendant par région — V128</legend>
+      <p>Le choix suit le biome de chaque région. Une banquise ne sera pas proposée par défaut dans une région désertique. Les textures restent des assets modulaires, sans remplacement silencieux de la carte ni des sauvegardes.</p>
+      {activeKitRegion && <div className={styles.controls}>
+        <label htmlFor={`${unique}-kit-region`}>Région de la planète
+          <select id={`${unique}-kit-region`} value={activeKitRegion.regionId} onChange={event => setKitRegionId(event.target.value)}>
+            {planet.regions.map(region => <option key={region.id} value={region.id}>{region.name}</option>)}
+          </select>
+        </label>
+        <label htmlFor={`${unique}-kit-land`}>Sol compatible avec le biome
+          <select id={`${unique}-kit-land`} value={activeKitRegion.landMaterialId} onChange={event =>
+            setRegionalKit(current => editPlanetRegionalMaterialKitV128(planet, current, activeKitRegion.regionId, "land", event.target.value))}>
+            {compatibleLand.map(id => <option key={id} value={id}>{findPlanetTextureV125(id)?.name ?? id}</option>)}
+          </select>
+        </label>
+        <label htmlFor={`${unique}-kit-surface`}>Milieu complémentaire compatible
+          <select id={`${unique}-kit-surface`} value={activeKitRegion.surfaceMaterialId ?? ""} disabled={compatibleSurface.length === 0} onChange={event =>
+            setRegionalKit(current => editPlanetRegionalMaterialKitV128(planet, current, activeKitRegion.regionId, "surface", event.target.value || null))}>
+            <option value="">Conserver la surface native</option>
+            {compatibleSurface.map(id => <option key={id} value={id}>{findPlanetTextureV125(id)?.name ?? id}</option>)}
+          </select>
+        </label>
+        <button type="button" onClick={() => { void exportRegionalKit(); }} data-testid="planet-region-kit-export-v128">Télécharger le kit régional (ZIP)</button>
+      </div>}
+      {activeKitRegion && <p data-testid="planet-region-kit-summary-v128">Biome : {activeKitRegion.biome} · Graine régionale : {activeKitRegion.seed} · {compatibleLand.length} sols compatibles · {compatibleSurface.length ? `${compatibleSurface.length} milieux complémentaires` : "aucun liquide à inventer pour cette surface"}.</p>}
+      <p>Le ZIP contient 5 canaux pour chaque matériau sélectionné, un masque géographique transparent et un manifeste de provenance. Ce réglage visuel ne change pas le code du monde.</p>
     </fieldset>
     <p className={styles.status} role="status" aria-live="polite">{message || "Les masques régionaux utilisent R=indice+1 et A=255 sur terre seulement. L'atlas régional exporte de véritables tuiles de matière ; les bassins et chenaux restent séparés."}</p>
   </details>;
