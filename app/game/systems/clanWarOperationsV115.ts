@@ -33,6 +33,7 @@ export interface WarRtsV115 {
   actors: WarRtsActorV115[]; hold: number; fallen: string[];
   realtime?: boolean; orders?: Record<string, WarRtsOrderV115>;
   scripted?: WarRtsScriptedObjectiveV119;
+  history?: string[];
 }
 export interface WarPlayableMissionV115 {
   id: string; mode: "assault" | "stealth" | "rts"; targetId: string; teamIds: string[];
@@ -279,7 +280,7 @@ export function beginWarOperationV115(
     const scripted=rtsScenarioId?
       createWarRtsScriptedObjectiveV119(rtsScenarioId,id,[...allied,...rival]):null;
     if(rtsScenarioId&&!scripted)return reject(state,"Le scénario réclame un porteur réel, non créé.");
-    active.rts={actors:[...allied,...rival],hold:0,fallen:[],realtime:false,orders:{},
+    active.rts={actors:[...allied,...rival],hold:0,fallen:[],realtime:false,orders:{},history:[],
       ...(scripted?{scripted}:{})};
   }
   return accept({...reserved,active},"Mission jouable ouverte. Les équipes et leur entretien sont réservés une seule fois.");
@@ -339,7 +340,7 @@ function recordOutcome(
 export function leaveWarOperationV115(state:WarOperationsStateV115, rules:WarRulesV6):WarOperationsUpdateV115 {
   const mission=state.active;
   if(!mission) return reject(state,"Aucune mission jouable à interrompre.");
-  const next=recordOutcome(state,mission.id,mission.mode,null,mission.targetId,mission.teamIds,"retreat",[],rules,"Repli ordonné : aucun territoire annexé.");
+  const next=recordOutcome(state,mission.id,mission.mode,null,mission.targetId,mission.teamIds,"retreat",[],rules,"Repli ordonné : aucun territoire annexé.",mission.rts?.history??[]);
   return accept(next,"Repli enregistré une seule fois.");
 }
 export function deployAssaultUnitV115(state:WarOperationsStateV115,teamId:string,rules:WarRulesV6):WarOperationsUpdateV115 {
@@ -486,16 +487,18 @@ function settleWarRtsAlternatingTurnV119(
   const alive=actors.filter(item=>item.hp>0&&(!item.teamId||!removed.has(item.teamId)));
   const holding=alive.some(item=>item.side==="ally"&&item.x===7&&item.y===3) && !alive.some(item=>item.side==="rival"&&distance(item,{x:7,y:3})<=1);
   const hold=holding?field.hold+1:0;
+  const history=[...(field.history??[]),
+    "Ordre "+(mission.tick+1)+" : "+(staged?.message??"Manœuvre tactique résolue.")].slice(-10);
   const advanced={...state,clock:state.clock+1,active:{...mission,tick:mission.tick+1,
-    rts:{...field,actors:alive,hold,fallen,...(staged?{scripted:staged.objective}:{})}}};
+    rts:{...field,actors:alive,hold,fallen,history,...(staged?{scripted:staged.objective}:{})}}};
   if(staged?.outcome==="victory")return accept(recordOutcome(advanced,mission.id,"rts",null,mission.targetId,mission.teamIds,"victory",fallen,rules,
-    mission.rts?.scripted?.scenarioId+" : "+staged.message),"Objectif W3 confirmé par les acteurs présents.");
+    mission.rts?.scripted?.scenarioId+" : "+staged.message,history),"Objectif W3 confirmé par les acteurs présents.");
   if(staged?.outcome==="defeat")return accept(recordOutcome(advanced,mission.id,"rts",null,mission.targetId,mission.teamIds,"defeat",fallen,rules,
-    mission.rts?.scripted?.scenarioId+" : "+staged.message),"Mission W3 compromise : rapport sauvegardé.");
+    mission.rts?.scripted?.scenarioId+" : "+staged.message,history),"Mission W3 compromise : rapport sauvegardé.");
   if(!staged && alive.some(item=>item.side==="ally") && (hold>=2 || !alive.some(item=>item.side==="rival"))) return accept(recordOutcome(advanced,mission.id,"rts",null,mission.targetId,mission.teamIds,"victory",fallen,rules,
-    "Objectif tenu deux ordres ou défense neutralisée. Le siège ne vaut pas annexion automatique."),"Objectif RTS sécurisé.");
+    "Objectif tenu deux ordres ou défense neutralisée. Le siège ne vaut pas annexion automatique.",history),"Objectif RTS sécurisé.");
   if(!alive.some(item=>item.side==="ally") || mission.tick>=49) return accept(recordOutcome(advanced,mission.id,"rts",null,mission.targetId,mission.teamIds,"defeat",fallen,rules,
-    "Détachement replié après échec de l'objectif."),"RTS terminé : échec consigné.");
+    "Détachement replié après échec de l'objectif.",history),"RTS terminé : échec consigné.");
   return accept(advanced,staged?staged.message:"Ordre exécuté. L'adversaire a effectué sa réponse tactique.");
 }
 export function commandRtsV115(state:WarOperationsStateV115,teamId:string,x:number,y:number,rules:WarRulesV6):WarOperationsUpdateV115 {
@@ -624,18 +627,20 @@ export function stepWarRtsRealtimeV115(state:WarOperationsStateV115,rules:WarRul
   const live=actors.filter(a=>a.hp>0&&(!a.teamId||!removed.has(a.teamId)));
   const isHolding=live.some(a=>a.side==="ally"&&a.x===7&&a.y===3)&&!live.some(a=>a.side==="rival"&&distance(a,{x:7,y:3})<=1);
   const hold=isHolding?field.hold+1:0;
+  const history=[...(field.history??[]),
+    "Temps réel "+(mission.tick+1)+" : "+(staged?.message??"Tirs et mouvement résolus.")].slice(-10);
   const next={...state,clock:state.clock+1,active:{...mission,tick:mission.tick+1,
-    rts:{...field,actors:live,fallen,hold,...(staged?{scripted:staged.objective}:{})}}};
+    rts:{...field,actors:live,fallen,hold,history,...(staged?{scripted:staged.objective}:{})}}};
   if(staged?.outcome==="victory")return accept(recordOutcome(next,mission.id,"rts",null,mission.targetId,mission.teamIds,"victory",fallen,rules,
-    mission.rts?.scripted?.scenarioId+" : "+staged.message),"Objectif W3 atteint en temps réel.");
+    mission.rts?.scripted?.scenarioId+" : "+staged.message,history),"Objectif W3 atteint en temps réel.");
   if(staged?.outcome==="defeat")return accept(recordOutcome(next,mission.id,"rts",null,mission.targetId,mission.teamIds,"defeat",fallen,rules,
-    mission.rts?.scripted?.scenarioId+" : "+staged.message),"Mission W3 échouée : évacuation du reste de l'équipe.");
+    mission.rts?.scripted?.scenarioId+" : "+staged.message,history),"Mission W3 échouée : évacuation du reste de l'équipe.");
   if(!staged&&live.some(a=>a.side==="ally")&&(hold>=3||!live.some(a=>a.side==="rival")))
     return accept(recordOutcome(next,mission.id,"rts",null,mission.targetId,mission.teamIds,"victory",fallen,rules,
-      "Bataille temps réel : zone sécurisée par les équipes réellement déployées. Aucune souveraineté automatique."),"Victoire de l'exercice RTS en temps réel.");
+      "Bataille temps réel : zone sécurisée par les équipes réellement déployées. Aucune souveraineté automatique.",history),"Victoire de l'exercice RTS en temps réel.");
   if(!live.some(a=>a.side==="ally")||mission.tick>=89)
     return accept(recordOutcome(next,mission.id,"rts",null,mission.targetId,mission.teamIds,"defeat",fallen,rules,
-      "Bataille temps réel : l'opération a été stoppée ou le temps imparti est expiré."),"Défaite RTS : retour et pertes consignés.");
+      "Bataille temps réel : l'opération a été stoppée ou le temps imparti est expiré.",history),"Défaite RTS : retour et pertes consignés.");
   return accept(next,staged?staged.message:"Bataille RTS : déplacements et échanges résolus pour cette seconde.");
 }
 function hashSeed(id:string):number {let h=2166136261;for(let i=0;i<id.length;i++) h=Math.imul(h^id.charCodeAt(i),16777619);return h>>>0;}
@@ -854,6 +859,8 @@ export function readWarOperationsV115(raw:string,rules:WarRulesV6):WarOperations
         field.actors.length>16||field.actors.some(actor=>!validActor(actor,"rts"))||
         !Array.isArray(field.fallen)||field.fallen.some(id=>!active.teamIds.includes(id))||
         field.realtime!==undefined&&typeof field.realtime!=="boolean") return null;
+      if(field.history!==undefined&&(!Array.isArray(field.history)||field.history.length>10||
+        field.history.some(line=>typeof line!=="string"||line.length>650)))return null;
       const orders=field.orders??{};
       if(!orders||typeof orders!=="object"||Array.isArray(orders)||Object.keys(orders).length>4) return null;
       for(const [id,order] of Object.entries(orders))
