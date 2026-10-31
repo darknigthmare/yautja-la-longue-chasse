@@ -59,6 +59,14 @@ try{
  await page.goto(serverOrigin+"/",{waitUntil:"networkidle"});
  await page.getByRole("heading",{name:"54 gauntlets à comparer"}).waitFor({timeout:15000});
  assert.equal(await page.locator("main[data-testid='gauntlet-visual-qa-v136']").count(),1);
+ const jungle=page.locator("svg[data-testid='jungle-hunter-layered-v134']");
+ assert.equal(await jungle.locator("image").count(),7);
+ await page.getByRole("checkbox",{name:"Afficher Charnière"}).uncheck();
+ assert.equal(await jungle.locator("image").count(),6,"Jungle Hunter hinge should be isolatable");
+ await page.getByRole("button",{name:"Afficher tous les calques"}).click();
+ assert.equal(await jungle.locator("image").count(),7);
+ await mkdir(path.join(root,"outputs"),{recursive:true});
+ await page.screenshot({path:path.join(root,"outputs/gauntlet-browser-v136-jungle-hunter.png"),fullPage:true});
  const choices=page.locator("section[aria-label='Catalogue des 54 modèles'] button[aria-pressed]");
  assert.equal(await choices.count(),12,"Catalog is paginated at 12");
  await page.getByRole("searchbox",{name:"Recherche"}).fill("lost-boar");
@@ -90,7 +98,7 @@ try{
  await page.screenshot({path:path.join(root,"outputs/gauntlet-browser-v136-single.png"),fullPage:true});
  assert.equal(failedAssets.length,0,"The actual model layer sources must load as images");
  assert.deepEqual(events,[],"The actual UI must not throw JavaScript exceptions");
- console.log(JSON.stringify({mode:"actual Chromium React QA fixture",checks:12,artworkSources:219,previewedModels:["jungle-hunter","lost-boar","wolf"],pageErrors:events,failedAssets,status:"PASS"},null,2));
+ console.log(JSON.stringify({mode:"actual Chromium React QA fixture",checks:18,artworkSources:219,previewedModels:["jungle-hunter","lost-boar","wolf"],pageErrors:events,failedAssets,status:"PASS"},null,2));
 }finally{
  await browser?.close();
  await new Promise(resolve=>server.close(resolve));
