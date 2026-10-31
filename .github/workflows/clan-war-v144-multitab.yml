@@ -65,33 +65,20 @@ jobs:
           count=$(unzip -Z1 docs/Yautja_ClanWar_V144_Conflits_Onglets.xlsx | grep -Ec 'xl/worksheets/sheet[0-9]+[.]xml')
           test "$count" -eq 6
           echo "V144 annex: six worksheets and a valid archive"
-      - name: Verify V145 workbook has five valid and sourced worksheets
+      - name: Verify V145 workbook has five valid worksheets
         run: |
           unzip -t docs/Yautja_ClanWar_V145_Multiplanetes.xlsx | tail -1
-          count=$(unzip -Z1 docs/Yautja_ClanWar_V145_Multiplanetes.xlsx | grep -Ec '^xl/worksheets/sheet[0-9]+[.]xml
-        run: node --experimental-strip-types --test --test-reporter=spec tests/clan-war-multitab-v144.test.mjs tests/clan-war-turn-gate-v143.test.mjs
-      - name: Test two actual tabs with real strategic panel in Chrome
-        run: node scripts/qa-clan-war-multitab-v144.mjs
-      - name: Retain cross-tab conflict screenshots and IndexedDB proof
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: clan-war-v144-two-real-tabs-idb-evidence
-          path: outputs/clan-war-multitab-v144/
-          retention-days: 30
-          if-no-files-found: warn
-)
-          test "$count" -eq 5
-          echo "V145: five auditable sheets, ZIP archive intact"
+          python3 -c "import zipfile; z=zipfile.ZipFile('docs/Yautja_ClanWar_V145_Multiplanetes.xlsx'); assert sum(x.startswith('xl/worksheets/sheet') and x.endswith('.xml') for x in z.namelist()) == 5"
+          echo 'V145: five worksheets, ZIP archive intact'
       - name: Test non-destructive external-tab detection and offline-only mode
         run: node --experimental-strip-types --test --test-reporter=spec tests/clan-war-multitab-v144.test.mjs tests/clan-war-turn-gate-v143.test.mjs
-      - name: Test two actual tabs with real strategic panel in Chrome
+      - name: Test three actual tabs across Korthas and Thalassa in Chrome
         run: node scripts/qa-clan-war-multitab-v144.mjs
-      - name: Retain cross-tab conflict screenshots and IndexedDB proof
+      - name: Retain three-tab conflict screenshots and two-planet IndexedDB proof
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: clan-war-v144-two-real-tabs-idb-evidence
+          name: clan-war-v145-three-tabs-two-planets-idb-evidence
           path: outputs/clan-war-multitab-v144/
           retention-days: 30
           if-no-files-found: warn
