@@ -596,7 +596,12 @@ export function commandStealthV115(state:WarOperationsStateV115,command:StealthC
  if(cloaked){energy=Math.max(0,energy-1);if(!energy)cloaked=false;}
  // Last known contact is historical perception, never the currently hidden
  // player's location. A real decoy takes priority during its three ticks.
- const heard=investigation&&investigation.turns>0?
+ // Pursue a memory when the current hunter has actually disappeared from
+ // the guard's previous view. A visibly moving hunter should not cause
+ // additional supernatural homing toward an obsolete coordinate.
+ const lostSight=cloaked||distance({x,y},{x:guardX,y:guardY})>3||
+   !warTerrainLineOfSightV116(terrain,{x:guardX,y:guardY},{x,y});
+ const heard=investigation&&investigation.turns>0&&lostSight?
    {x:investigation.x,y:investigation.y}:null;
  const target=decoyTurns>0&&decoyX!==undefined?
    {x:decoyX,y:decoyY??2}:heard;
