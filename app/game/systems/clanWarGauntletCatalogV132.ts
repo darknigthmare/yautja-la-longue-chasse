@@ -91,18 +91,20 @@ export function normalizeGauntletV132(id: unknown, rank: HunterRankV132, earned:
 export function gauntletStorageKeyV132(hunterSaveCreatedAt: string): string {
   return GAUNTLET_STORAGE_PREFIX_V132 + encodeURIComponent(hunterSaveCreatedAt).slice(0,256);
 }
-export function parseGauntletPreferenceV132(raw: string | null, hunterSaveCreatedAt: string, rank: HunterRankV132): string {
+export function parseGauntletPreferenceV132(raw: string | null, hunterSaveCreatedAt: string, rank: HunterRankV132, earnedChallenges: readonly string[] = []): string {
   if (raw === null || raw.length > 2048) return DEFAULT_GAUNTLET_ID_V132;
   try {
     const payload: unknown = JSON.parse(raw);
     if (!payload || typeof payload !== "object" || Array.isArray(payload)) return DEFAULT_GAUNTLET_ID_V132;
     const record = payload as Record<string, unknown>;
     if (record.schema !== 1 || record.hunter !== hunterSaveCreatedAt) return DEFAULT_GAUNTLET_ID_V132;
-    return normalizeGauntletV132(record.equipped,rank);
+    return normalizeGauntletV132(record.equipped,rank,earnedChallenges);
   } catch { return DEFAULT_GAUNTLET_ID_V132; }
 }
-export function serializeGauntletPreferenceV132(hunter: string,id: string,rank: HunterRankV132): string {
-  return JSON.stringify({schema:1,hunter,equipped:normalizeGauntletV132(id,rank)});
+export function serializeGauntletPreferenceV132(hunter: string,id: string,rank: HunterRankV132, earnedChallenges: readonly string[] = []): string {
+  // Persist only a cosmetic preference, never the right to earn a challenge.
+  // Claims remain authoritative inside the owner-bound V13 campaign save.
+  return JSON.stringify({schema:1,hunter,equipped:normalizeGauntletV132(id,rank,earnedChallenges)});
 }
 export function gauntletCatalogIntegrityV132(): string[] {
   const issues: string[] = [], ids = new Set<string>();
