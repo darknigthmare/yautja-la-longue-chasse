@@ -7,6 +7,7 @@ const compiled=await build({stdin:{contents:[
  "export * from './app/game/systems/clanWarParallelModesV137';",
  "export * from './app/game/systems/clanWarOperationsV115';",
  "export * from './app/game/systems/clanWarRtsSquadsV133';",
+ "export * from './app/game/systems/clanWarRtsSourceMissionsV129';",
  "export * from './app/game/systems/clanWarMissionTerrainV116';",
  "export * from './app/game/systems/clanWarBibleV6';",
  "export * from './app/game/systems/clanWarSourceMapsV128';",

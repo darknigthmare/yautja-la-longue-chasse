@@ -1014,8 +1014,8 @@ export function readWarOperationsV115(raw:string,rules:WarRulesV6):WarOperations
            v1.acousticUsed<0||v1.acousticUsed>2))||
         (v1.heardBearing!==undefined&&(!["est","ouest","proche"].includes(v1.heardBearing)||
            v1.acousticUsed===0||
-           !Number.isInteger(v1.heardAtTick)||v1.heardAtTick<1||
-           v1.heardAtTick>active.tick))||
+           !Number.isInteger(v1.heardAtTick)||(v1.heardAtTick??-1)<1||
+           (v1.heardAtTick??-1)>active.tick))||
         (v1.heardAtTick!==undefined&&(!Number.isInteger(v1.heardAtTick)||
            v1.heardAtTick<1||v1.heardAtTick>active.tick||
            v1.heardBearing===undefined))||

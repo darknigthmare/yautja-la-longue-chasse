@@ -117,6 +117,7 @@ export function warStealthSoundBearingV138(
 ):"est"|"ouest"|"proche"|null {
  if(!Number.isInteger(missionTick)||missionTick<0||
    stealth.heardBearing===undefined||
+   stealth.heardAtTick===undefined||
    !Number.isInteger(stealth.heardAtTick)||
    missionTick<stealth.heardAtTick||
    missionTick>stealth.heardAtTick+2)return null;
