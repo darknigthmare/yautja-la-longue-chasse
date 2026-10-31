@@ -97,6 +97,8 @@ import {
 import { hunterBodyPartColorV62, hunterBodyPartClipV62, type HunterLayerPlacement } from "./hunterHeadArtV62";
 import { HUNTER_DREAD_SOURCE_ROOT as HUNTER_DREAD_ROOT, solveHunterDreadsV63, stepHunterDreadsV63 } from "./hunterDreadsV63";
 import { chromaticCanvasSourceV113 } from "./hunterChromaticCanvasV113";
+import { decalCanvasSourceV133 } from "./decalCanvasV133.ts";
+import type { YautjaDecalZoneV133 } from "./yautjaDecalsV133.ts";
 import { maskChromaticsForAppearanceV131, type ChromaticChannelV113 } from "./hunterChromaticsV113";
 import {
   ageTracks,
@@ -3135,6 +3137,7 @@ function drawFallbackCharacter(
 interface RegisteredLayerOptions {
   placement?: HunterLayerPlacement;
   chromatics?: { appearance: HunterAppearance; channel: ChromaticChannelV113 };
+  decalZone?: YautjaDecalZoneV133;
   clip?: readonly (readonly [number, number, number, number])[];
   alpha?: number;
   filter?: string;
@@ -3321,9 +3324,17 @@ function drawRegisteredLayer(
   const recolored = options.chromatics ? chromaticCanvasSourceV113(
     image, options.chromatics.appearance.chromaticsV113, options.chromatics.channel, options.placement, options.filter
   ) : null;
+  // Recolor then paint the decal from a fixed atlas; both passes are source-atop
+  // and keep the existing 256x384 authored sprite / bone transform unchanged.
+  const decorated = options.decalZone && options.chromatics
+    ? decalCanvasSourceV133(recolored ?? image,
+        options.chromatics.appearance.chromaticsV113,options.decalZone,
+        recolored ? undefined : options.placement,
+        recolored ? "none" : options.filter ?? "none")
+    : null;
   context.save();
   context.globalAlpha *= options.alpha ?? 1;
-  if (options.filter && !recolored) context.filter = options.filter;
+  if (options.filter && !recolored && !decorated) context.filter = options.filter;
   applyAffine(context, matrix);
   context.translate(options.translateX ?? 0, options.translateY ?? 0);
   const scaleX = options.scaleX ?? options.scale ?? 1;
@@ -3343,11 +3354,11 @@ function drawRegisteredLayer(
     context.clip();
   }
   context.drawImage(
-    recolored ?? image,
-    recolored ? 0 : options.placement?.x ?? 0,
-    recolored ? 0 : options.placement?.y ?? 0,
-    recolored ? HUNTER_RIG_CANVAS.width : options.placement?.width ?? HUNTER_RIG_CANVAS.width,
-    recolored ? HUNTER_RIG_CANVAS.height : options.placement?.height ?? HUNTER_RIG_CANVAS.height,
+    decorated ?? recolored ?? image,
+    decorated || recolored ? 0 : options.placement?.x ?? 0,
+    decorated || recolored ? 0 : options.placement?.y ?? 0,
+    decorated || recolored ? HUNTER_RIG_CANVAS.width : options.placement?.width ?? HUNTER_RIG_CANVAS.width,
+    decorated || recolored ? HUNTER_RIG_CANVAS.height : options.placement?.height ?? HUNTER_RIG_CANVAS.height,
   );
   context.restore();
   return true;
@@ -3366,7 +3377,8 @@ function drawAtomicBodyPart(
     assets.hunterBodyParts[partId],
     frame,
     boneId,
-    { filter: hunterBodyPartColorV62(appearance.bodyMorphId, partId, bodyFilter(appearance)), placement: hunterBodyPartPlacement(appearance.bodyMorphId, partId, appearance.headStyleId), clip: hunterBodyPartClipV62(appearance.bodyMorphId, partId), chromatics: { appearance, channel: "skin" } },
+    { filter: hunterBodyPartColorV62(appearance.bodyMorphId, partId, bodyFilter(appearance)), placement: hunterBodyPartPlacement(appearance.bodyMorphId, partId, appearance.headStyleId), clip: hunterBodyPartClipV62(appearance.bodyMorphId, partId), chromatics: { appearance, channel: "skin" },
+      decalZone:partId==="head"?"face":partId==="torso"?"body":undefined },
   );
   if (!hunterBodyPartHasNet(appearance.bodyMorphId, partId)) return;
   drawRegisteredLayer(
@@ -3696,7 +3708,7 @@ function drawHunterLayered(
       assets.hunterBodyFull,
       frame,
       "root",
-      { filter: bodyFilter(appearance), chromatics: { appearance, channel: "skin" } },
+      { filter: bodyFilter(appearance), chromatics: { appearance, channel: "skin" }, decalZone:"body" },
     )
   ) {
     drawFallbackCharacter(
@@ -3723,7 +3735,7 @@ function drawHunterLayered(
     assets.hunterArmor.chest,
     frame,
     "torso",
-    { filter: armorTint, chromatics: { appearance, channel: "armor" } },
+    { filter: armorTint, chromatics: { appearance, channel: "armor" }, decalZone:"armor" },
   );
   drawHunterBeltLoadout(context, assets, frame, loadout);
 
@@ -3893,6 +3905,7 @@ function drawHunterLayered(
             chromaticsV113: maskChromaticsForAppearanceV131(appearance) },
           channel: "biomask",
         },
+        decalZone:"biomask",
       },
     );
   }

@@ -4,6 +4,7 @@
 
 import type { CSSProperties } from "react";
 import ChromaticSurfaceV113 from "./ChromaticSurfaceV113";
+import DecalSurfaceV133 from "./DecalSurfaceV133";
 import { maskChromaticsForAppearanceV131 } from "./hunterChromaticsV113";
 import { HUNTER_SKIN_FILTERS_V114, HUNTER_DREAD_FILTERS_V114, HUNTER_ARMOR_FILTERS_V114 } from "./hunterPaletteFiltersV114";
 
@@ -588,6 +589,14 @@ export function HunterRigPreview({
             maskPath={hunterBodyPartPath(appearance.bodyMorphId, partId, appearance.headStyleId)}
             placement={hunterBodyPartPlacement(appearance.bodyMorphId, partId, appearance.headStyleId)}
             style={{ ...fullCanvasImage, zIndex: z, transform: cssMatrix(matrix), clipPath: hunterBodyPartClipCssV62(appearance.bodyMorphId, partId) }} />,
+          ...(partId === "head" || partId === "torso" ? [
+            <DecalSurfaceV133 key={`decal-${partId}`} appearance={appearance}
+              zone={partId === "head" ? "face" : "body"}
+              maskPath={hunterBodyPartPath(appearance.bodyMorphId, partId, appearance.headStyleId)}
+              placement={hunterBodyPartPlacement(appearance.bodyMorphId, partId, appearance.headStyleId)}
+              style={{ ...fullCanvasImage, zIndex: z + 0.1, transform: cssMatrix(matrix),
+                clipPath: hunterBodyPartClipCssV62(appearance.bodyMorphId, partId) }} />,
+          ] : []),
           ...(hunterBodyPartHasNet(appearance.bodyMorphId, partId)
             ? [
                 <img
@@ -623,6 +632,9 @@ export function HunterRigPreview({
           {registeredLayer(hunterArmorPath(slot.id), matrix, slot.z, `armor-${slot.id}`, armorFilter)}
           <ChromaticSurfaceV113 appearance={appearance} channel="armor" maskPath={hunterArmorPath(slot.id)}
             style={{ ...fullCanvasImage, zIndex: slot.z, transform: cssMatrix(matrix) }} />
+          {slot.id === armorFamily.chest && <DecalSurfaceV133 appearance={appearance} zone="armor"
+            maskPath={hunterArmorPath(slot.id)}
+            style={{ ...fullCanvasImage, zIndex: slot.z + 0.1, transform: cssMatrix(matrix) }} />}
         </span>;
       })}
 
@@ -659,6 +671,9 @@ export function HunterRigPreview({
           <ChromaticSurfaceV113
             appearance={{ chromaticsV113: maskChromaticsForAppearanceV131(appearance) }}
             channel="biomask" maskPath={hunterMaskRigPath(appearance.biomaskId)}
+            placement={hunterMaskRigPlacement(appearance.biomaskId)} style={fullCanvasImage} />
+          <DecalSurfaceV133 appearance={appearance} zone="biomask"
+            maskPath={hunterMaskRigPath(appearance.biomaskId)}
             placement={hunterMaskRigPlacement(appearance.biomaskId)} style={fullCanvasImage} />
         </span>
       </>}

@@ -15,6 +15,8 @@ import { PHG_HISTORICAL_UNLOCKS_V127, PHG_MENU_SCREENSHOTS_V127 } from "./phgHis
 import { PHG_OGRE_MASK_CORRECTION_V128 } from "./phgPlatformStudiesV128";
 import { PHG_V129_OGRE_MASK,PHG_V129_CLASSES } from "./phgPatchStudiesV129";
 import { phgMaterialReferenceV130 } from "./phgReferenceCatalogV130";
+import { DECAL_FIELDS_V133,DECAL_ZONES_V133,DECAL_ATLAS_PATH_V133,
+  Y_A_U_T_J_A_DECALS_V133,PHG_WARPAINT_EVIDENCE_V133 } from "./yautjaDecalsV133.ts";
 import { PHG_BIOMASK_V132_CANDIDATES, maskClassForAppearanceV132, maskMaterialAllowedV132 } from "./phgBiomaskStudiesV132";
 import { PHG_BIOMASK_REFERENCES_V131, PHG_OGRE_BIOMASK_ID_V131,
   PHG_OGRE_BIOMASK_SOURCE_V131, alphaMaskEligibleV131 } from "./phgBiomaskTintsV131";
@@ -228,6 +230,38 @@ export default function HunterChromaticForgeV113({
           Les sept finitions nommées de V132 sont des reconstructions originales :
           aucune couleur officielle ni carte UV n’est certifiée.</small>
       </fieldset>}
+    </div>
+    <div className={styles.grid} data-yautja-decal-atelier-v133>
+      {DECAL_ZONES_V133.filter(zone =>
+        station==="ship" || (station==="lab" ? zone==="face" || zone==="body"
+          : zone==="biomask" || zone==="armor"))
+        .filter(zone=>zone!=="biomask" || appearance.biomaskId!==null).map(zone=>{
+        const key=DECAL_FIELDS_V133[zone];
+        const selected=Y_A_U_T_J_A_DECALS_V133.find(item=>item.id===draft[key]&&item.zone===zone);
+        const zoneItems=Y_A_U_T_J_A_DECALS_V133.filter(item=>item.zone===zone);
+        return <fieldset key={zone} className={styles.station} disabled={disabled} data-decal-zone={zone}>
+          <legend>Décalcomanies · {zone}</legend>
+          <p>Marques du clan, études originales compatibles avec la silhouette V3.
+            Ce ne sont pas les pixels UV de PHG.</p>
+          <label htmlFor={"decal-v133-"+zone}>Motif du calque</label>
+          <select id={"decal-v133-"+zone} value={draft[key]??""}
+            onChange={event=>change(key,event.target.value||null)}>
+            <option value="">Aucun decal</option>
+            {zoneItems.map(item=><option value={item.id} key={item.id}>{item.label}</option>)}
+          </select>
+          {selected && <div className={styles.materialPreview} data-selected-decal-id={selected.id}>
+            <span className={styles.atlasSwatch} aria-hidden="true" style={{
+              backgroundImage:'url("'+DECAL_ATLAS_PATH_V133+'")',
+              ...chromaticAtlasBackgroundV125(selected.atlas,false),
+            }} />
+            <span><strong>{selected.label}</strong><small>Calque {zone} uniquement ; source originale V133.</small></span>
+          </div>}
+        </fieldset>;
+      })}
+      <p>PHG comporte aussi les noms de Warpaint {PHG_WARPAINT_EVIDENCE_V133.officialNames.join(", ")}.
+        <a href={PHG_WARPAINT_EVIDENCE_V133.url} target="_blank" rel="noopener noreferrer">
+          Note 2.19
+        </a>. Nos motifs originaux ne sont pas présentés comme des copies 1:1.</p>
     </div>
     <div className={styles.actions}>
       {dirty && <p className={styles.draftHint}>Prévisualisation en direct sur le rig. Les modifications ne sont pas enregistrées avant validation.</p>}

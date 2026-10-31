@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element -- registered transparent layers share the canonical V3 canvas */
 import type { CSSProperties } from "react";
 import ChromaticSurfaceV113 from "./ChromaticSurfaceV113";
+import DecalSurfaceV133 from "./DecalSurfaceV133";
 import { maskChromaticsForAppearanceV131 } from "./hunterChromaticsV113";
 import { HUNTER_SKIN_FILTERS_V114, HUNTER_DREAD_FILTERS_V114, HUNTER_ARMOR_FILTERS_V114 } from "./hunterPaletteFiltersV114";
 import type { HunterBodyMorphId, DreadStyleId, HunterAppearance, ArmorId } from "./types";
@@ -88,6 +89,10 @@ export default function HomeworldModularHunter({ morphId, dreadStyleId, classNam
             } : { ...imageStyle, filter: hunterBodyPartColorV62(morphId, partId, "none"), clipPath: hunterBodyPartClipCssV62(morphId, partId) }} />
             <ChromaticSurfaceV113 appearance={appearance} channel="skin" maskPath={source} placement={placement}
               style={{ ...imageStyle, zIndex: 2, clipPath: hunterBodyPartClipCssV62(morphId, partId) }} />
+            {(partId === "head" || partId === "torso") && <DecalSurfaceV133
+              appearance={appearance} zone={partId === "head" ? "face" : "body"}
+              maskPath={source} placement={placement} style={{ ...imageStyle, zIndex: 3,
+                clipPath: hunterBodyPartClipCssV62(morphId, partId) }} />}
           </span>;
         })}
       </span>
@@ -96,8 +101,7 @@ export default function HomeworldModularHunter({ morphId, dreadStyleId, classNam
       <img alt="" draggable={false} data-homeworld-layer="loincloth" src={`${HUNTER_ASSET_ROOT_V3}/body/${morphId}/net/full.webp`} style={{ ...imageStyle, zIndex: 12, clipPath: clothClip(morphId) }} />
       <ChromaticSurfaceV113 appearance={appearance} channel="outfit" maskPath={`${HUNTER_ASSET_ROOT_V3}/body/${morphId}/net/full.webp`}
         style={{ ...imageStyle, zIndex: 13, clipPath: clothClip(morphId) }} />
-      {appearance?.biomaskId && appearance.chromaticsV113
-        && (appearance.chromaticsV113.maskHex || appearance.chromaticsV113.maskMaterialId)
+      {appearance?.biomaskId
         && <span data-homeworld-biomask-pigment-v131 style={{ ...imageStyle, zIndex: 71 }}>
           <img alt="" draggable={false} src={hunterMaskRigPath(appearance.biomaskId)} style={{
             position: "absolute",
@@ -110,6 +114,9 @@ export default function HomeworldModularHunter({ morphId, dreadStyleId, classNam
             appearance={{ chromaticsV113: maskChromaticsForAppearanceV131(appearance) }}
             maskPath={hunterMaskRigPath(appearance.biomaskId)}
             placement={hunterMaskRigPlacement(appearance.biomaskId)} style={imageStyle} />
+          <DecalSurfaceV133 appearance={appearance} zone="biomask"
+            maskPath={hunterMaskRigPath(appearance.biomaskId)}
+            placement={hunterMaskRigPlacement(appearance.biomaskId)} style={imageStyle} />
         </span>}
       {showArmor && homeworldArmorSlotsV114(appearance, armorId, hasWristblades).map(plate => {
         const path = hunterArmorPath(plate.id);
@@ -119,6 +126,8 @@ export default function HomeworldModularHunter({ morphId, dreadStyleId, classNam
             transformOrigin: plate.shoulder ? "59.765625% 28.645833%" : undefined }}>
           <img alt="" draggable={false} src={path} style={{ ...imageStyle, filter: HUNTER_ARMOR_FILTERS_V114[appearance?.armorTintId ?? "bronze"] }} />
           <ChromaticSurfaceV113 appearance={appearance} channel="armor" maskPath={path} style={imageStyle} />
+          {plate.id === HUNTER_ARMOR_MODULES[appearance?.armorStyleId ?? "classic"].chest &&
+            <DecalSurfaceV133 appearance={appearance} zone="armor" maskPath={path} style={imageStyle} />}
         </span>;
       })}
     </span>
