@@ -53,6 +53,9 @@ on:
       - 'tests/gauntlet-mission-resume-v142.test.mjs'
       - 'app/game/systems/huntGauntletIdentityV142.ts'
       - 'docs/Yautja_Gauntlets_V142_Arsenal_Clans.xlsx'
+      - 'docs/Yautja_Gauntlets_V144_Controle_Campagne.xlsx'
+      - 'docs/Yautja_Gauntlets_V144_Catalogue_QA.csv'
+      - 'docs/Yautja_Gauntlets_V144_Etudes_QA.csv'
       - 'app/game/HuntCanvas.tsx'
       - 'app/game/systems/gauntletMissionVisualV141.ts'
       - 'app/game/systems/gauntletRigSpritesV139.ts'
@@ -145,6 +148,9 @@ jobs:
             /tests/gauntlet-mission-resume-v142.test.mjs
             /app/game/systems/huntGauntletIdentityV142.ts
             /docs/Yautja_Gauntlets_V142_Arsenal_Clans.xlsx
+            /docs/Yautja_Gauntlets_V144_Controle_Campagne.xlsx
+            /docs/Yautja_Gauntlets_V144_Catalogue_QA.csv
+            /docs/Yautja_Gauntlets_V144_Etudes_QA.csv
             /app/game/systems/gauntletMissionVisualV141.ts
             /app/game/systems/gauntletRigSpritesV139.ts
             /app/game/GauntletRigInspectionV139.tsx
@@ -309,3 +315,10 @@ jobs:
           unzip -t docs/Yautja_Gauntlets_V141_Arsenal_Clans.xlsx | tail -1
           unzip -Z1 docs/Yautja_Gauntlets_V141_Arsenal_Clans.xlsx | grep -Ec 'xl/worksheets/sheet[0-9]+[.]xml' | grep -qx 45
           echo "V141: 45 sheets and live HuntCanvas equipment checklist"
+      - name: Verify V144 supplemental Excel and 44-study catalogue CSVs
+        run: |
+          unzip -t docs/Yautja_Gauntlets_V144_Controle_Campagne.xlsx | tail -1
+          unzip -Z1 docs/Yautja_Gauntlets_V144_Controle_Campagne.xlsx | grep -Ec 'xl/worksheets/sheet[0-9]+[.]xml' | grep -qx 4
+          test "$(wc -l < docs/Yautja_Gauntlets_V144_Catalogue_QA.csv)" -eq 55
+          test "$(wc -l < docs/Yautja_Gauntlets_V144_Etudes_QA.csv)" -eq 45
+          echo "V144: 4 Excel tabs, 54 model records, 44 claim requirements"
