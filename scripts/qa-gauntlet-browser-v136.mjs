@@ -22,7 +22,7 @@ const js=[...outputs.entries()].find(([name])=>name.endsWith(".js"));
 const css=[...outputs.entries()].find(([name])=>name.endsWith(".css"));
 assert.ok(js,"The visual QA React bundle must compile");
 assert.ok(css,"The CSS Modules must be compiled for real visual QA");
-const html=`<!doctype html><html lang="fr"><head><meta charset="UTF-8"/><title>Gauntlet QA V136</title><link rel="stylesheet" href="/visual.css"></head><body><div id="root"></div><script src="/visual.js"></script></body></html>`;
+const html=`<!doctype html><html lang="fr"><head><meta charset="UTF-8"/><title>Gauntlet QA V136</title><link rel="stylesheet" href="/visual.css"><style>html,body{margin:0;min-height:100%;background:#09151d}</style></head><body><div id="root"></div><script src="/visual.js"></script></body></html>`;
 const contentType=new Map([[".svg","image/svg+xml"],[".js","text/javascript"],[".css","text/css"]]);
 const allowedRoot=path.join(root,"public","game","assets");
 const server=createServer(async (req,res)=>{
