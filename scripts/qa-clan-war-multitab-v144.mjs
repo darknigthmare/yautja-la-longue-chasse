@@ -67,12 +67,13 @@ const server=createServer(async(req,res)=>{
 
 const checks=[],browserErrors=[];
 let browser,started=false;
-const pass=(name,detail)=>checks.push({name,status:"PASS",detail});
+const pass=(name,detail)=>{checks.push({name,status:"PASS",detail});console.log("[V144 PASS] "+name);};
 const getTurn=async(page)=>page.evaluate(key=>{
   try{return JSON.parse(localStorage.getItem(key)||"null")?.turn??null;}catch{return null;}
 },WAR_KEY);
 async function getFence(page){
-  return page.evaluate(key=>new Promise((resolveFence,reject)=>{
+  let timeout;
+  try{return await Promise.race([page.evaluate(key=>new Promise((resolveFence,reject)=>{
     const request=indexedDB.open("yautja.clan-war.v94.fences",1);
     request.onerror=()=>reject(new Error("IDB open failed"));
     request.onsuccess=()=>{
@@ -82,7 +83,8 @@ async function getFence(page){
       read.onerror=()=>{db.close();reject(new Error("IDB record read failed"));};
       read.onsuccess=()=>{db.close();resolve(read.result??null);};
     };
-  }),WAR_KEY);
+  }),WAR_KEY),new Promise((_,reject)=>{timeout=setTimeout(()=>reject(new Error("IndexedDB fence read timed out in browser QA")),15000);})]);}
+  finally{clearTimeout(timeout);}
 }
 async function commitTurn(page){
   const review=page.locator('[data-testid="war-end-turn-review-v143"]');
@@ -194,5 +196,5 @@ try{
   await context.close();
 }finally{
   await browser?.close();
-  if(started)await new Promise(resolveClose=>server.close(resolveClose));
+  if(started){server.closeAllConnections();await new Promise(resolveClose=>server.close(resolveClose));}
 }
