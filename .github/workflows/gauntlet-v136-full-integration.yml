@@ -109,7 +109,7 @@ jobs:
       - name: Check V141 equipped gauntlet during live missions and V3 fallback
         run: node --experimental-strip-types --test --test-reporter=spec tests/gauntlet-mission-v141.test.mjs
       - name: Confirm V142 active hunt sidecar preserves the captured cosmetic on resume
-        run: node --experimental-strip-types --test --test-reporter=spec tests/gauntlet-mission-resume-v142.test.mjs
+        run: node --import tsx --test --test-reporter=spec tests/gauntlet-mission-resume-v142.test.mjs
       - name: Real HuntCanvas mission, V1 suspension, two-tab preference and V3 fallback
         run: node scripts/qa-gauntlet-real-hunt-v142.mjs
       - name: Preserve exact mission visual and suspend/resume browser evidence
