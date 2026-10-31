@@ -22,6 +22,7 @@ test("39 historical materials, three V113 IDs and V125/V126 studies coexist", ()
   const legacy = PHG_CHROMATIC_MATERIALS_V113.filter(item =>
     !item.id.startsWith("phg-study-v125-") && !item.id.startsWith("phg-study-v126-") &&
     !item.id.startsWith("phg-study-v131-") &&
+    !item.id.startsWith("phg-study-v132-") &&
     !item.id.startsWith("phg-study-v127-") && !item.id.startsWith("phg-study-v128-") &&
     !item.id.startsWith("phg-study-v129-"));
   const studies = PHG_CHROMATIC_MATERIALS_V113.filter(item => item.id.startsWith("phg-study-v125-"));
@@ -29,16 +30,18 @@ test("39 historical materials, three V113 IDs and V125/V126 studies coexist", ()
   const historical = PHG_CHROMATIC_MATERIALS_V113.filter(item => item.id.startsWith("phg-study-v127-"));
   const platform = PHG_CHROMATIC_MATERIALS_V113.filter(item => item.id.startsWith("phg-study-v128-"));
   const patches = PHG_CHROMATIC_MATERIALS_V113.filter(item => item.id.startsWith("phg-study-v129-"));
+  const maskStudies = PHG_CHROMATIC_MATERIALS_V113.filter(item => item.id.startsWith("phg-study-v132-"));
   assert.equal(legacy.length, 42);
   assert.equal(studies.length, 12);
   assert.equal(recent.length, 4);
   assert.equal(historical.length, 4);
   assert.equal(platform.length, 4);
   assert.equal(patches.length, 3);
-  assert.equal(PHG_CHROMATIC_MATERIALS_V113.length, 70);
+  assert.equal(maskStudies.length, 7);
+  assert.equal(PHG_CHROMATIC_MATERIALS_V113.length, 77);
   const ids = PHG_CHROMATIC_MATERIALS_V113.map(item => item.id);
   assert.equal(new Set(ids).size, ids.length);
-  assert.equal(PHG_CHROMATIC_MATERIALS_V113.filter(item => item.status === "integrated").length, 70);
+  assert.equal(PHG_CHROMATIC_MATERIALS_V113.filter(item => item.status === "integrated").length, 77);
   assert.equal(getChromaticMaterialV113("skin", "phg-shatter-demon-study")?.src,
     "/game/assets/v113/phg/skin_shatter_demon_provisoire.png");
   assert.ok(getChromaticMaterialV113("outfit", "phg-fine-net"));

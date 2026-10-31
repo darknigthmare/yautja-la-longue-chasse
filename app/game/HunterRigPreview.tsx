@@ -594,7 +594,7 @@ export function HunterRigPreview({
               zone={partId === "head" ? "face" : "body"}
               maskPath={hunterBodyPartPath(appearance.bodyMorphId, partId, appearance.headStyleId)}
               placement={hunterBodyPartPlacement(appearance.bodyMorphId, partId, appearance.headStyleId)}
-              style={{ ...fullCanvasImage, zIndex: z + 0.1, transform: cssMatrix(matrix),
+              style={{ ...fullCanvasImage, zIndex: z + 1, transform: cssMatrix(matrix),
                 clipPath: hunterBodyPartClipCssV62(appearance.bodyMorphId, partId) }} />,
           ] : []),
           ...(hunterBodyPartHasNet(appearance.bodyMorphId, partId)
@@ -634,7 +634,7 @@ export function HunterRigPreview({
             style={{ ...fullCanvasImage, zIndex: slot.z, transform: cssMatrix(matrix) }} />
           {slot.id === armorFamily.chest && <DecalSurfaceV133 appearance={appearance} zone="armor"
             maskPath={hunterArmorPath(slot.id)}
-            style={{ ...fullCanvasImage, zIndex: slot.z + 0.1, transform: cssMatrix(matrix) }} />}
+            style={{ ...fullCanvasImage, zIndex: slot.z + 1, transform: cssMatrix(matrix) }} />}
         </span>;
       })}
 

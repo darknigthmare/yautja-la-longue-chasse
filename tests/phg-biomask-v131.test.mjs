@@ -27,7 +27,7 @@ test("V131: eight PHG mask-tint names, Ogre on Alpha biomask and never armor",()
   assert.equal(getChromaticMaterialV113("biomask",PHG_OGRE_BIOMASK_ID_V131)?.id,PHG_OGRE_BIOMASK_ID_V131);
   for(const channel of ["skin","dreads","outfit","armor"])
     assert.equal(getChromaticMaterialV113(channel,PHG_OGRE_BIOMASK_ID_V131),null);
-  assert.equal(new Set(PHG_CHROMATIC_MATERIALS_V113.map(x=>x.id)).size,70);
+  assert.equal(new Set(PHG_CHROMATIC_MATERIALS_V113.map(x=>x.id)).size,77);
 });
 
 test("V131: save migration, explicit resets, canonical mask ids and forge-only reset",()=>{

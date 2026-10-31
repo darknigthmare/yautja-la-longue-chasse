@@ -13,7 +13,7 @@ test("V129 verifies 409912-byte WebP atlas, 3 save-safe IDs and no fake game UVs
  assert.equal(PHG_V129_ATLAS.authenticPHG,false);
  assert.equal(PHG_V129_PATCH_MATERIALS.length,3);
  assert.deepEqual(PHG_V129_PATCH_MATERIALS.map(x=>x.channel),["skin","skin","dreads"]);
- assert.equal(new Set(PHG_CHROMATIC_MATERIALS_V113.map(x=>x.id)).size,70);
+ assert.equal(new Set(PHG_CHROMATIC_MATERIALS_V113.map(x=>x.id)).size,77);
  for(const m of PHG_V129_PATCH_MATERIALS){
   assert.equal(m.evidence,"provisional");assert.equal(m.status,"integrated");
   assert.equal(getChromaticMaterialV113(m.channel,m.id)?.src,PHG_V129_ATLAS.path);
