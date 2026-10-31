@@ -60,12 +60,12 @@ try {
     (await advancedPanel.getByTestId("planet-random-advanced-v144").locator("button").count()) === 4);
 
   const geography = generator.locator('[data-generator-section="geography"]');
-  if (!(await geography.getAttribute("open"))) await geography.locator("summary").click();
+  if ((await geography.getAttribute("open")) === null) await geography.locator("summary").click();
   const lockTerritories = geography.getByRole("checkbox", { name: "Conserver : Nombre de territoires" });
   await lockTerritories.check();
   const fixedTerritories = (await snapshot()).original.territoryCount;
   const landSection = generator.locator('[data-generator-section="land"]');
-  if (!(await landSection.getAttribute("open"))) await landSection.locator("summary").click();
+  if ((await landSection.getAttribute("open")) === null) await landSection.locator("summary").click();
   await landSection.getByRole("checkbox", { name: "Conserver : Terres dominantes" }).check();
   const fixedBiome = (await snapshot()).original.landBiome;
   const sizePanel = generator.locator('[data-generator-advanced-field="planetSize"]');
@@ -77,7 +77,7 @@ try {
 
   for (const sectionId of ["geography","land","surface","atmosphere"]) {
     const section = generator.locator('[data-generator-section="' + sectionId + '"]');
-    if (!(await section.getAttribute("open"))) await section.locator("summary").click();
+    if ((await section.getAttribute("open")) === null) await section.locator("summary").click();
     const before = await snapshot();
     await section.getByTestId("planet-random-section-v144").click();
     const after = await snapshot();
