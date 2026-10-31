@@ -24,9 +24,9 @@ export function isKnownHunterGauntletV135(id:string):id is KnownHunterGauntletV1
 }
 
 
-export default function GauntletKnownHuntersV135({variant,coverOpen=true}:{
+export default function GauntletKnownHuntersV135({variant,coverOpen=true,hiddenParts=[]}:{
   variant:KnownHunterGauntletV135;
-  coverOpen?:boolean;
+  coverOpen?:boolean;hiddenParts?:readonly string[];
 }){
   const id=useId().replace(/[^a-zA-Z0-9_-]/g,"");
   const model=FAMILIES[variant];
@@ -39,11 +39,11 @@ export default function GauntletKnownHuntersV135({variant,coverOpen=true}:{
     <title id={id+"-title"}>{model.label} · étude modulaire de gauntlet</title>
     <desc id={id+"-desc"}>Quatre calques SVG indépendants. Référence : {model.source}. Proportions, matériaux et animations non certifiés 1:1.</desc>
     <g aria-hidden="true">
-      <image href={root+LAYERS[0]} width="540" height="290"/>
-      <image href={root+LAYERS[1]} width="540" height="290"/>
-      <image href={root+LAYERS[2]} width="540" height="290"/>
-      <image href={root+LAYERS[3]} width="540" height="290"
-        className={styles.cover} data-cover-position={coverOpen?"open":"closed"}/>
+      {!hiddenParts.includes("arm")&&<image href={root+LAYERS[0]} width="540" height="290"/>}
+      {!hiddenParts.includes("shell")&&<image href={root+LAYERS[1]} width="540" height="290"/>}
+      {!hiddenParts.includes("panel")&&<image href={root+LAYERS[2]} width="540" height="290"/>}
+      {!hiddenParts.includes("lid")&&<image href={root+LAYERS[3]} width="540" height="290"
+        className={styles.cover} data-cover-position={coverOpen?"open":"closed"}/>}
     </g>
   </svg>;
 }
