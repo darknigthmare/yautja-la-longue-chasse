@@ -17,6 +17,11 @@ on:
       - 'app/game/systems/gauntletRigSpritesV139.ts'
       - 'public/game/assets/v139/rig-gauntlets/**'
       - 'scripts/build-gauntlet-rig-v139.mjs'
+      - 'app/game/GauntletPoseInspectionV140.*'
+      - 'app/gauntlet-qa-v136/client.tsx'
+      - 'tests/gauntlet-poses-v140.test.mjs'
+      - 'tests/browser/gauntlet-pose-v140.fixture.tsx'
+      - 'scripts/qa-gauntlet-pose-v140.mjs'
       - 'tests/gauntlet-qa-proxy-runtime-v138.test.mjs'
       - 'tests/clan-war-gauntlet*.test.mjs'
       - 'scripts/export-gauntlet*.mjs'
@@ -73,6 +78,7 @@ jobs:
             /public/game/assets/v135/gauntlets/
             /public/game/assets/v136/gauntlets/
             /public/game/assets/v139/rig-gauntlets/
+            /public/game/assets/v3/actors/yautja/hunter/
       - name: Node 22
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
@@ -93,6 +99,18 @@ jobs:
         run: |
           node --experimental-strip-types --test --test-reporter=spec tests/gauntlet-actor-rig-v139.test.mjs
           node scripts/build-gauntlet-rig-v139.mjs --check
+      - name: V140 geometry across 360 real rig configurations and 720 hinge states
+        run: node --experimental-strip-types --test --test-reporter=spec tests/gauntlet-poses-v140.test.mjs
+      - name: Browser QA of production actor rig across models, morphologies, poses and facing
+        run: node scripts/qa-gauntlet-pose-v140.mjs
+      - name: Preserve real actor pose captures and checks
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: yautja-actor-rig-pose-qa-v140
+          path: outputs/gauntlet-pose-v140/
+          retention-days: 30
+          if-no-files-found: warn
       - name: Browser interactions on all 54 models (real Chrome, not screenshots-only)
         run: node scripts/qa-gauntlet-browser-v137.mjs
       - name: Preserve evidence for browser UI and mobile layouts
