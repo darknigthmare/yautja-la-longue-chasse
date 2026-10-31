@@ -32,7 +32,7 @@ export interface PlanetReliefRasterV150 {
   highestElevationMeters: number;
   regions: readonly PlanetReliefRegionV150[];
 }
-const TWOPI=Math.PI*2, ROOT2=Math.SQRT2;
+const TWOPI=Math.PI*2;
 const biomeWeights:Readonly<Record<WarPlanetLandBiomeV96,number>>={
   temperate:0.85,jungle:0.8,tundra:0.9,snow:1.05,desert:0.73,
   volcanic:1.2,salt:0.5,mountain:1.28,ocean:0.55,swamp:0.35,

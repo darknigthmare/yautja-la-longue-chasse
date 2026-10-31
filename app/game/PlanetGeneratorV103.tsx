@@ -10,6 +10,7 @@ import PlanetShapeLibraryV137 from "./PlanetShapeLibraryV137";
 import PlanetEnvironmentalDossierV146 from "./PlanetEnvironmentalDossierV146";
 import PlanetEarthReferenceV147 from "./PlanetEarthReferenceV147";
 import PlanetPreflightV149 from "./PlanetPreflightV149";
+import PlanetReliefV150 from "./PlanetReliefV150";
 import { recommendPlanetTopologyV139 } from "./systems/clanWarPlanetTopologyAdvisorV139";
 import {
   randomizePlanetDraftV144, selectablePlanetRandomFieldsV144,
@@ -548,6 +549,7 @@ export default function PlanetGeneratorV103({ activePlanet, pending = false, onO
     <PlanetLayerExportV102 key={planet.id} planet={planet} onApplyVisualProfile={setMainVisualProfileV134}/>
     <div className={styles.dossier}>
       <PlanetPreflightV149 key={planet.id} planet={planet} regionalKit={mainVisualProfileV134?.kit}/>
+      <PlanetReliefV150 key={planet.id} planet={planet}/>
       <PlanetEnvironmentalDossierV146 key={planet.id} planet={planet}/>
       <PlanetEarthReferenceV147/>
       <section aria-label="Particularités du monde"><h4>Particularités de {planet.name}</h4><div className={styles.traits}>{details.traits.map(trait => <article key={trait.id}><h5>{trait.name}</h5><p>{trait.description}</p></article>)}</div></section>
