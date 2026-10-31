@@ -86,8 +86,8 @@ export default function HunterGauntletArtV132({ entry, coverOpen = true }: { ent
         </g>)}
         {/* Metal hinge line and ribbed cover: same physical panel stays visible when opened. */}
         <path d="M281 95L285 205" stroke="#9ca3a1" strokeWidth="5"/>
-        <g data-cover-position={coverOpen?"open":"closed"} transform={coverOpen?"translate(0 0)":"translate(-100 0)"}
-          style={{transition:"transform 0.36s ease-out"}}>
+        <g data-cover-position={coverOpen?"open":"closed"}
+          style={{transform:coverOpen?"translateX(0px)":"translateX(-100px)",transition:"transform 0.36s ease-out"}}>
           <path d="M290 96 372 91 387 114 376 201 290 207Z" fill="#263039" stroke={p.bevel} strokeWidth="4"/>
           <path d="M299 110 364 105 373 124 364 187 298 193Z" fill="#1b262b" stroke="#647276" strokeWidth="2"/>
           {[0,1,2,3].map(i=><path key={i} d={`M${304+i*17} 112l-7 74`} fill="none" stroke="#6d7777" strokeWidth="3"/>)}
