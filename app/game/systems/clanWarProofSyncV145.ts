@@ -120,7 +120,8 @@ export function importWarProofV145(
  if(!readWarSimulationV85(next))
   return reject("La sauvegarde V85 refuserait ce registre : aucune écriture effectuée.");
  return {state:next,accepted:true,message:
-  "Preuve "+receiptKey+" archivée UNE fois dans le journal V85. "+
+  "Preuve "+receiptKey+" préparée dans le journal V85 en mémoire ; "+
+  "la persistance sous verrou reste à confirmer par la session. "+
   "Aucun territoire, soldat, PV, stock, XP ni résultat de conquête modifié."+
   (offer.matchedV85TerritoryId?"":" Aucun site V85 ne lui a été attribué.")};
 }

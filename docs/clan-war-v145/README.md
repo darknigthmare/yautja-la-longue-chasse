@@ -35,3 +35,11 @@ Les reçus importés obtiennent un identifiant stable `clan-proof-v145:V115:<mis
 **Toujours ouvert pour l'avenir :** liaison de personnages explicite, décision d'autorisation territoriale, transaction de conquête supervisée et idempotente, serveur multijoueur de référence, XP/livraison de ressources et morts vérifiables, QA mobile/manette/navigateur et **1 200 missions complètes avec assets 1:1**. La V145 ne prétend pas achever ces points ; cette limite est indiquée dans le suivi Excel.
 
 L'Excel V144 compagnon de neuf onglets et le registre V143 de 73 onglets sont **conservés** sur les PR parentes. Le suivi V145 complète leurs données de progression, sans renommer ou effacer l'historique.
+
+## Bilan des tests et du classeur V145
+
+- **Preuve du code** : [GitHub Actions 41253489187](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41253489187) valide **171/171 tests Node**, TypeScript et ESLint. Le correctif a explicitement préservé la séparation territoriale **W3-K** contre **CON-T**.
+- **Fichier XLSX V145** dans cette PR : `docs/clan-war-v145/Yautja_Guerres_Clans_Preuves_Transfert_V145_2026-11-01.xlsx` (**19 onglets**, les 9 onglets de V144 préservés, 32 nouvelles exigences V145, 24 QA, 14 sécurités, 12 exemples non appariés W3-K/CON-T, 20 chantiers restants et 12 contrats inter-modes).
+- **Statuts de production calculés** : 21 exigences validées en CI ciblée, 3 prototypes partiels, 8 à développer. **20 contrôles QA de source** vérifiés en CI et 4 passages navigateur/manette manuels encore à réaliser.
+- Le CI final ajoute `tests/clan-war-production-v145.test.mjs`, qui ouvre **les octets du vrai fichier XLSX commité**, vérifie les feuilles/identifiants, les formules et la non-correspondance territoriale. Cette nouvelle exécution, comprenant le fichier binaire, doit être verte avant fusion.
+- Les registres V143 (73 feuilles) et V144 (9 feuilles) restent disponibles dans leurs PR parentes, sans conflit ni remplacement.
