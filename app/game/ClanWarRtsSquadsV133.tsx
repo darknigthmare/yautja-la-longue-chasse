@@ -214,7 +214,7 @@ export default function ClanWarRtsSquadsV133({rules}:{rules:WarRulesV6}){
        onClick={()=>apply(evacuateWarRtsSquadV139(state,selected.id))}>
        Évacuer cette escouade à la sortie W3
       </button>
-      <p className={styles.hint}>V139 : repli individuel à pied ; au moins une autre équipe doit rester au front. Transférez d'abord toute charge ou escorte portée.</p>
+      <p className={styles.hint}>V139 : repli individuel à pied ; au moins une autre équipe doit rester au front. Transférez d&apos;abord toute charge ou escorte portée.</p>
       <h5>Adversaires à portée du détachement</h5>
      {enemies.length===0?<p className={styles.hint}>Aucun adversaire actuellement observé.</p>:
       <div className={styles.enemyList}>{enemies.map(e=>{

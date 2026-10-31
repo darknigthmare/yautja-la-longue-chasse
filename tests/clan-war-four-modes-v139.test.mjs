@@ -3,6 +3,8 @@ import test from "node:test";
 import {build} from "esbuild";
 const compiled=await build({stdin:{contents:[
  "export * from './app/game/systems/clanWarParallelModesV139';",
+ "export * from './app/game/systems/clanWarParallelModesV137';",
+ "export * from './app/game/systems/clanWarRtsSourceMissionsV129';",
  "export * from './app/game/systems/clanWarOperationsV115';",
  "export * from './app/game/systems/clanWarRtsSquadsV133';",
  "export * from './app/game/systems/clanWarBibleV6';",
@@ -12,7 +14,6 @@ const compiled=await build({stdin:{contents:[
  platform:"node",format:"esm",target:"es2022",logLevel:"silent"});
 const api=await import("data:text/javascript;base64,"+Buffer.from(compiled.outputFiles[0].text).toString("base64"));
 const rules=api.DEFAULT_WAR_RULES_V6;
-const d=(a,b)=>Math.abs(a.x-b.x)+Math.abs(a.y-b.y);
 const make=(mode)=>{
  const state=api.createWarOperationsV115(rules);
  const team=state.teams[0].id;
@@ -219,8 +220,9 @@ test("RTS: completed objectives grant a unique receipt including evacuated allie
 
 test("RTS: no remote evacuation, last team, holding or abandoning tracked physical cargo",()=>{
  const s=rts(),id=s.squads[0].id;
- const denied=api.evacuateWarRtsSquadV139(s,id);
- assert.equal(denied.accepted,false);assert.equal(denied.state,s);
+ const remote={...s,squads:s.squads.map(u=>u.id===id?{...u,x:s.map.goal.x,y:s.map.goal.y}:u)};
+ const denied=api.evacuateWarRtsSquadV139(remote,id);
+ assert.equal(denied.accepted,false);assert.equal(denied.state,remote);
  const near={...s,enemies:[],map:{...s.map,hazards:[]},
   squads:s.squads.map(u=>u.id===id?{...u,x:s.map.extraction.x,y:s.map.extraction.y}:u)};
  const hold={...near,hold:{taskId:near.mission.tasks[0].id,squadId:id,progress:0,required:2}};
