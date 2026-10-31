@@ -5,7 +5,7 @@ import {
   drawEarthReferenceV147, earthReferenceStatsV147, validEarthLandGeoJsonV147,
   EARTH_REFERENCE_SOURCE_V147, type EarthLandGeoJsonV147,
   type EarthReferenceViewV147,
-} from "./planetEarthReferenceV147";
+} from "./earthGeoReferenceV147";
 import styles from "./PlanetEarthReferenceV147.module.css";
 
 const earthViews = {

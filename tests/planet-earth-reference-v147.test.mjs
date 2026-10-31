@@ -8,7 +8,7 @@ import {build} from "esbuild";
 const dir=await mkdtemp(join(tmpdir(),"planet-earth-v147-"));
 after(()=>rm(dir,{recursive:true,force:true}));
 const b=await build({stdin:{contents:[
-  'export {validEarthLandGeoJsonV147,earthLandContainsV147,earthReferenceStatsV147,EARTH_REFERENCE_SOURCE_V147} from "./app/game/planetEarthReferenceV147";',
+  'export {validEarthLandGeoJsonV147,earthLandContainsV147,earthReferenceStatsV147,EARTH_REFERENCE_SOURCE_V147} from "./app/game/earthGeoReferenceV147";',
 ].join("\n"),resolveDir:process.cwd(),loader:"ts"},bundle:true,write:false,platform:"node",format:"esm",target:"es2022",logLevel:"silent"});
 const f=join(dir,"earth.mjs");await writeFile(f,b.outputFiles[0].text);
 const api=await import(pathToFileURL(f));
