@@ -260,7 +260,8 @@ try {
     const centerX = Math.max(2, Math.min(canvas.width - 3, Math.round(position.x)));
     const centerY = Math.max(2, Math.min(canvas.height - 3, Math.round(position.y)));
     const data = context.getImageData(centerX - 2, centerY - 2, 5, 5).data;
-    const rgb = [0,0,0], alpha = 0;
+    const rgb = [0,0,0];
+    let alpha = 0;
     for(let p=0;p<data.length;p+=4){
       rgb[0] += data[p]; rgb[1] += data[p+1]; rgb[2] += data[p+2]; alpha += data[p+3];
     }
