@@ -105,9 +105,9 @@ try{
   assert.equal(basePath,"/game/assets/v139/rig-gauntlets/lost-shaman/base.svg");
   assert.equal(lidPath,"/game/assets/v139/rig-gauntlets/lost-shaman/lid.svg");
   const rigFiles=await Promise.all([basePath,lidPath].map(async path=>{
-    const result=await page.request.get(url.replace(/\\/$/,"")+path);
+    const result=await page.request.get(url+path.slice(1));
     assert.equal(result.status(),200);
-    assert.match(result.headers()["content-type"],/image\\/svg\\+xml/);
+    assert.ok((result.headers()["content-type"]??"").startsWith("image/svg+xml"));
     return result;
   }));
   assert.equal(rigFiles.length,2);
