@@ -5,17 +5,21 @@ import type { WarPlanetV96 } from "./systems/clanWarPlanetsV96";
 import type { PlanetRegionalMaterialKitV128 } from "./systems/clanWarRegionalMaterialKitV128";
 import { drawPlanetMaterialV101, planetMaterialRendererStatusV101, PLANET_RENDERER_EVENT_V101 } from "./planetMaterialRendererV101";
 import { createPlanetCoastalRegionMaskV131 } from "./planetCoastalRegionsV131";
+import type { PlanetVisualQualityV134, PlanetVisualCoastV134 } from "./systems/clanWarPlanetVisualProfileV134";
 
 /** An explicitly activated visual comparison; does not mutate planet or war saves. */
 export default function PlanetRegionalPreviewV129({
-  planet, kit,
-}: { planet: WarPlanetV96; kit: PlanetRegionalMaterialKitV128 }) {
+  planet, kit, quality, coastKm, onQualityChange, onCoastKmChange,
+}: {
+  planet: WarPlanetV96; kit: PlanetRegionalMaterialKitV128;
+  quality: PlanetVisualQualityV134; coastKm: PlanetVisualCoastV134;
+  onQualityChange: (value: PlanetVisualQualityV134) => void;
+  onCoastKmChange: (value: PlanetVisualCoastV134) => void;
+}) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [projection, setProjection] = useState<"map" | "globe">("map");
   const [status, setStatus] = useState<"loading" | "ready" | "unavailable">("loading");
   const [revision, setRevision] = useState(0);
-  const [quality, setQuality] = useState<"pbr" | "albedo">("pbr");
-  const [coastKm, setCoastKm] = useState(900);
   const [activeMode, setActiveMode] = useState("waiting");
 
   useEffect(() => {
@@ -85,14 +89,14 @@ export default function PlanetRegionalPreviewV129({
       </select>
     </label>
     <label>Qualité du matériau
-      <select value={quality} onChange={event => setQuality(event.target.value as "pbr" | "albedo")}
+      <select value={quality} onChange={event => onQualityChange(event.target.value as PlanetVisualQualityV134)}
         data-testid="planet-regional-quality-v131">
         <option value="pbr">PBR régional (WebGL)</option>
         <option value="albedo">Albédo V129 (comparaison)</option>
       </select>
     </label>
     <label>Influence côtière réelle
-      <select value={coastKm} onChange={event => setCoastKm(Number(event.target.value))}
+      <select value={coastKm} onChange={event => onCoastKmChange(Number(event.target.value) as PlanetVisualCoastV134)}
         data-testid="planet-regional-coastal-v131">
         <option value={300}>300 km</option>
         <option value={900}>900 km</option>

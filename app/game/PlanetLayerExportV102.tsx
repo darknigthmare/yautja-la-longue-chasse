@@ -16,6 +16,11 @@ import {
   describePlanetRegionAssetsV128, editPlanetRegionalMaterialKitV128, validPlanetRegionalMaterialKitV128,
   type PlanetRegionalMaterialKitV128,
 } from "./systems/clanWarRegionalMaterialKitV128";
+import {
+  clearPlanetVisualProfileV134, createPlanetVisualProfileV134, readPlanetVisualProfileV134,
+  validPlanetVisualProfileV134, writePlanetVisualProfileV134,
+  type PlanetVisualProfileV134, type PlanetVisualQualityV134, type PlanetVisualCoastV134,
+} from "./systems/clanWarPlanetVisualProfileV134";
 import styles from "./PlanetLayerExportV102.module.css";
 
 type ExportLayer = PlanetMaterialLayerV101 | "mask" | "region-index" | "regional-atlas" | "lake-mask" | "river-mask";
@@ -72,9 +77,9 @@ async function renderExportCanvasV124(
 
 /** Exports the applied preview only. A changed preview unmounts this component
  * and cancels its pending download; source loading remains shared and bounded. */
-export default function PlanetLayerExportV102({ planet, onApplyRegionalKit }: {
+export default function PlanetLayerExportV102({ planet, onApplyVisualProfile }: {
   planet: WarPlanetV96;
-  onApplyRegionalKit?: (kit: PlanetRegionalMaterialKitV128 | null) => void;
+  onApplyVisualProfile?: (profile: PlanetVisualProfileV134 | null) => void;
 }) {
   const unique = useId();
   const recipe = planetMaterialRecipeV101(planet);
@@ -91,6 +96,10 @@ export default function PlanetLayerExportV102({ planet, onApplyRegionalKit }: {
   const [supplementalRegionId, setSupplementalRegionId] = useState(() => planet.regions[0]?.id ?? "");
   const [kitRegionId, setKitRegionId] = useState(() => planet.regions[0]?.id ?? "");
   const [regionalKit, setRegionalKit] = useState(() => createPlanetRegionalMaterialKitV128(planet));
+  const [qualityV134, setQualityV134] = useState<PlanetVisualQualityV134>("pbr");
+  const [coastKmV134, setCoastKmV134] = useState<PlanetVisualCoastV134>(900);
+  const [localProfileStatusV134, setLocalProfileStatusV134] = useState("checking");
+  const [isAppliedV134, setIsAppliedV134] = useState(false);
   const [showRegionalPreviewV129, setShowRegionalPreviewV129] = useState(false);
   const activeKitRegion = regionalKit.entries.find(item => item.regionId === kitRegionId) ?? regionalKit.entries[0];
   const compatibleLand = activeKitRegion ? compatibleLandMaterialsV128(activeKitRegion.biome) : [];
@@ -104,6 +113,33 @@ export default function PlanetLayerExportV102({ planet, onApplyRegionalKit }: {
   const texturePreviewRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => () => { pending.current?.abort(); kitImportIntent.current++; }, []);
+  // Sidecar restoration never applies visuals to the main globe or mutates a war save.
+  useEffect(() => {
+    if (kitImportIntent.current !== 0) return;
+    try {
+      const result = readPlanetVisualProfileV134(planet, window.localStorage);
+      setLocalProfileStatusV134(result.status);
+      if (result.status === "loaded") {
+        setRegionalKit(result.profile.kit);
+        setQualityV134(result.profile.quality);
+        setCoastKmV134(result.profile.coastalInfluenceKm);
+      }
+    } catch { setLocalProfileStatusV134("unavailable"); }
+  }, [planet]);
+
+  // Once explicitly applied, a later region, quality or coast edit updates
+  // the same main globe instead of leaving a stale appearance in another view.
+  useEffect(() => {
+    if (!isAppliedV134 || !onApplyVisualProfile) return;
+    try {
+      onApplyVisualProfile(createPlanetVisualProfileV134(planet, regionalKit, qualityV134, coastKmV134));
+    } catch {
+      setIsAppliedV134(false);
+      onApplyVisualProfile(null);
+      setMessage("Le profil actif n’est plus compatible avec cette planète.");
+    }
+  }, [planet, regionalKit, qualityV134, coastKmV134, isAppliedV134, onApplyVisualProfile]);
+
   useEffect(() => {
     const canvas = texturePreviewRef.current;
     if (!canvas) return;
@@ -254,6 +290,56 @@ export default function PlanetLayerExportV102({ planet, onApplyRegionalKit }: {
     } catch (error) { setMessage(error instanceof Error ? error.message : "Export des matières impossible."); }
   };
 
+  const saveVisualProfileV134 = () => {
+    try {
+      const profile = createPlanetVisualProfileV134(planet, regionalKit, qualityV134, coastKmV134);
+      const success = writePlanetVisualProfileV134(planet, window.localStorage, profile);
+      setLocalProfileStatusV134(success ? "saved" : "unavailable");
+      setMessage(success ? "Profil V134 enregistré sur cet appareil ; la partie reste inchangée."
+        : "Impossible de sauvegarder les préférences locales (stockage refusé ou plein).");
+    } catch { setLocalProfileStatusV134("unavailable"); setMessage("Enregistrement local indisponible."); }
+  };
+
+  const restoreVisualProfileV134 = () => {
+    try {
+      const result = readPlanetVisualProfileV134(planet, window.localStorage);
+      setLocalProfileStatusV134(result.status);
+      if (result.status !== "loaded") {
+        setMessage(result.status === "invalid" ? "Profil local incohérent avec cette planète : import refusé."
+          : "Aucun profil local valide à restaurer pour ce monde.");
+        return;
+      }
+      kitImportIntent.current++;
+      setRegionalKit(result.profile.kit);
+      setQualityV134(result.profile.quality);
+      setCoastKmV134(result.profile.coastalInfluenceKm);
+      setMessage("Profil visuel V134 restauré dans l’éditeur ; la campagne reste intacte.");
+    } catch { setLocalProfileStatusV134("unavailable"); setMessage("Stockage navigateur inaccessible."); }
+  };
+
+  const deleteVisualProfileV134 = () => {
+    try {
+      const removed = clearPlanetVisualProfileV134(planet, window.localStorage);
+      setLocalProfileStatusV134(removed ? "empty" : "unavailable");
+      setMessage(removed ? "Profil local de cette planète effacé. Les choix en cours restent visibles."
+        : "Impossible d’effacer ce profil sur cet appareil.");
+    } catch { setLocalProfileStatusV134("unavailable"); setMessage("Stockage navigateur inaccessible."); }
+  };
+
+  const downloadVisualProfileV134 = () => {
+    try {
+      const profile = createPlanetVisualProfileV134(planet, regionalKit, qualityV134, coastKmV134);
+      const url = URL.createObjectURL(new Blob([JSON.stringify(profile, null, 2) + "\n"],
+        { type: "application/json" }));
+      const anchor = document.createElement("a");
+      anchor.href = url; anchor.download = planet.id + "-visual-v134.json";
+      document.body.appendChild(anchor);
+      try { anchor.click(); }
+      finally { anchor.remove(); setTimeout(() => URL.revokeObjectURL(url), 30000); }
+      setMessage("Profil V134 exporté, sans ressources ni sauvegarde de guerre.");
+    } catch { setMessage("Impossible d’exporter ce profil visuel."); }
+  };
+
   const importRegionalAssignments = async (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0]; event.target.value = "";
     if (!file) return;
@@ -262,10 +348,17 @@ export default function PlanetLayerExportV102({ planet, onApplyRegionalKit }: {
       if (file.size > 65536) throw new Error("Fiche de matières trop volumineuse.");
       const candidate: unknown = JSON.parse(await file.text());
       if (kitImportIntent.current !== intent) return;
-      if (!validPlanetRegionalMaterialKitV128(planet, candidate))
-        throw new Error("Cette fiche ne correspond pas aux régions, à la graine ou au code de cette planète.");
-      setRegionalKit(candidate);
-      setMessage("Fiche régionale importée : les choix visuels sont restaurés sans modifier le monde.");
+      if (validPlanetVisualProfileV134(planet, candidate)) {
+        setRegionalKit(candidate.kit);
+        setQualityV134(candidate.quality);
+        setCoastKmV134(candidate.coastalInfluenceKm);
+        setLocalProfileStatusV134("modified");
+        setMessage("Profil V134 importé : matériaux, qualité et échelle côtière restaurés sans modifier la partie.");
+      } else if (validPlanetRegionalMaterialKitV128(planet, candidate)) {
+        setRegionalKit(candidate);
+        setLocalProfileStatusV134("modified");
+        setMessage("Fiche V128 importée : matériaux restaurés, qualité et échelle conservées.");
+      } else throw new Error("Cette fiche ne correspond pas aux régions, à la graine ou au code de cette planète.");
     } catch (error) {
       if (kitImportIntent.current === intent)
         setMessage(error instanceof Error ? error.message : "Impossible d’importer cette fiche régionale.");
@@ -384,20 +477,22 @@ export default function PlanetLayerExportV102({ planet, onApplyRegionalKit }: {
         </label>
         <label htmlFor={`${unique}-kit-land`}>Sol compatible avec le biome
           <select id={`${unique}-kit-land`} value={activeKitRegion.landMaterialId} onChange={event =>
-            { kitImportIntent.current++; setRegionalKit(current => editPlanetRegionalMaterialKitV128(planet, current, activeKitRegion.regionId, "land", event.target.value)); }}>
+            { kitImportIntent.current++; setLocalProfileStatusV134("modified");
+              setRegionalKit(current => editPlanetRegionalMaterialKitV128(planet, current, activeKitRegion.regionId, "land", event.target.value)); }}>
             {compatibleLand.map(id => <option key={id} value={id}>{findPlanetTextureV130(id)?.name ?? id}</option>)}
           </select>
         </label>
         <label htmlFor={`${unique}-kit-surface`}>Milieu complémentaire compatible
           <select id={`${unique}-kit-surface`} value={activeKitRegion.surfaceMaterialId ?? ""} disabled={compatibleSurface.length === 0} onChange={event =>
-            { kitImportIntent.current++; setRegionalKit(current => editPlanetRegionalMaterialKitV128(planet, current, activeKitRegion.regionId, "surface", event.target.value || null)); }}>
+            { kitImportIntent.current++; setLocalProfileStatusV134("modified");
+              setRegionalKit(current => editPlanetRegionalMaterialKitV128(planet, current, activeKitRegion.regionId, "surface", event.target.value || null)); }}>
             <option value="">Conserver la surface native</option>
             {compatibleSurface.map(id => <option key={id} value={id}>{findPlanetTextureV130(id)?.name ?? id}</option>)}
           </select>
         </label>
         <button type="button" onClick={() => { void exportRegionalKit(); }} data-testid="planet-region-kit-export-v128">Télécharger le kit régional (ZIP)</button>
         <button type="button" onClick={downloadRegionalAssignments} data-testid="planet-region-kit-json-v128">Exporter les choix (JSON)</button>
-        <label htmlFor={`${unique}-region-kit-import`}>Réimporter les choix de cette planète
+        <label htmlFor={`${unique}-region-kit-import`}>Réimporter les choix de cette planète (V128 ou V134)
           <input id={`${unique}-region-kit-import`} type="file" accept="application/json,.json" data-testid="planet-region-kit-import-v128" onChange={event => { void importRegionalAssignments(event); }}/>
         </label>
       </div>}
@@ -407,23 +502,42 @@ export default function PlanetLayerExportV102({ planet, onApplyRegionalKit }: {
           aria-label={`Aperçu du sol ${activeKitRegion.regionName}`}/>
         <p>Source régionale : {findPlanetTextureV130(activeKitRegion.landMaterialId)?.description}. Le rendu du globe reste lié à sa recette d’origine.</p>
       </div>}
-      {activeKitRegion && onApplyRegionalKit && <div className={styles.controls}>
+      {activeKitRegion && <fieldset className={styles.composition} data-testid="planet-visual-profile-v134">
+        <legend>Profil visuel V134 · monde courant uniquement</legend>
+        <p>Conserver les couleurs régionales, le mode PBR/albédo et la portée côtière de cette planète. Le stockage local est facultatif et ne change pas les sauvegardes du jeu.</p>
+        <div className={styles.controls}>
+          <button type="button" disabled={busy} onClick={saveVisualProfileV134} data-testid="planet-visual-save-v134">Enregistrer sur cet appareil</button>
+          <button type="button" disabled={busy} onClick={restoreVisualProfileV134} data-testid="planet-visual-restore-v134">Restaurer mes choix locaux</button>
+          <button type="button" disabled={busy} onClick={deleteVisualProfileV134} data-testid="planet-visual-delete-v134">Effacer le profil local</button>
+          <button type="button" disabled={busy} onClick={downloadVisualProfileV134} data-testid="planet-visual-export-v134">Exporter le profil V134 (JSON)</button>
+        </div>
+        <p data-testid="planet-visual-storage-status-v134">Stockage local : {localProfileStatusV134 === "loaded" || localProfileStatusV134 === "saved"
+          ? "profil conservé pour cette planète" : localProfileStatusV134 === "modified"
+            ? "modifications non enregistrées" : localProfileStatusV134 === "invalid"
+              ? "données locales rejetées" : localProfileStatusV134 === "unavailable"
+                ? "indisponible sur cet appareil" : "aucun profil actif"}.</p>
+      </fieldset>}
+      {activeKitRegion && onApplyVisualProfile && <div className={styles.controls}>
         <button type="button" disabled={busy} data-testid="planet-main-apply-v133" onClick={() => {
           if (!validPlanetRegionalMaterialKitV128(planet, regionalKit)) {
             setMessage("Kit incompatible avec cette planète."); return;
           }
-          onApplyRegionalKit(regionalKit);
-          setMessage("Étude V131 appliquée au globe principal, sans sauvegarde de guerre.");
+          setIsAppliedV134(true);
+          setMessage("Profil visuel appliqué au globe principal et lié aux réglages actifs, sans sauvegarde de guerre.");
         }}>Appliquer les matières au globe principal</button>
         <button type="button" disabled={busy} data-testid="planet-main-reset-v133" onClick={() => {
-          onApplyRegionalKit(null);
+          setIsAppliedV134(false);
+          onApplyVisualProfile(null);
           setMessage("Globe principal revenu à ses matériaux d’origine.");
         }}>Rétablir le globe natif</button>
       </div>}
       {activeKitRegion && <div><button type="button" data-testid="planet-regional-preview-toggle-v129"
         onClick={() => setShowRegionalPreviewV129(value => !value)}>
         {showRegionalPreviewV129 ? "Fermer la comparaison régionale V129" : "Prévisualiser ces matières sur la planète V129"}
-      </button>{showRegionalPreviewV129 && <PlanetRegionalPreviewV129 planet={planet} kit={regionalKit}/>}</div>}
+      </button>{showRegionalPreviewV129 && <PlanetRegionalPreviewV129
+        planet={planet} kit={regionalKit} quality={qualityV134} coastKm={coastKmV134}
+        onQualityChange={value => { kitImportIntent.current++; setQualityV134(value); setLocalProfileStatusV134("modified"); }}
+        onCoastKmChange={value => { kitImportIntent.current++; setCoastKmV134(value); setLocalProfileStatusV134("modified"); }}/>}</div>}
       {activeKitRegion && <p data-testid="planet-region-kit-summary-v128">Biome : {activeKitRegion.biome} · Graine régionale : {activeKitRegion.seed} · {compatibleLand.length} sols compatibles · {compatibleSurface.length ? `${compatibleSurface.length} milieux complémentaires` : "aucun liquide à inventer pour cette surface"}.</p>}
       <p>Le ZIP contient 5 canaux pour chaque matériau sélectionné, un masque géographique transparent et un manifeste de provenance. Ce réglage visuel ne change pas le code du monde.</p>
     </fieldset>
