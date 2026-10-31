@@ -11,6 +11,7 @@ on:
       - 'app/game/systems/clanWarMissionTerrainV116.ts'
       - 'app/game/systems/clanWarOpenBacklogV140.ts'
       - 'tests/clan-war-open-backlog-v140.test.mjs'
+      - 'tests/clan-war-production-v140.test.mjs'
       - 'tsconfig.clan-war-v140.json'
       - '.github/workflows/clan-war-v140.yml'
       - 'docs/clan-war-v140/**'
@@ -97,6 +98,7 @@ jobs:
             /tests/clan-war-four-modes-v138.test.mjs
             /tests/clan-war-four-modes-v139.test.mjs
             /tests/clan-war-open-backlog-v140.test.mjs
+            /tests/clan-war-production-v140.test.mjs
             /tests/clan-war-production-v139.test.mjs
             /tests/clan-war-production-v138.test.mjs
             /tests/clan-war-production-v137.test.mjs
@@ -121,10 +123,10 @@ jobs:
       - name: npm ci — locked packages
         run: npm ci --ignore-scripts --no-audit --no-fund
       - name: Four V140 open backlog systems plus V115–V139 regression
-        run: node --test --test-reporter=spec tests/clan-war-open-backlog-v140.test.mjs tests/clan-war-four-modes-v139.test.mjs tests/clan-war-open-backlog-v140.test.mjs tests/clan-war-production-v139.test.mjs tests/clan-war-four-modes-v138.test.mjs tests/clan-war-production-v138.test.mjs tests/clan-war-four-modes-v137.test.mjs tests/clan-war-production-v137.test.mjs tests/clan-war-four-modes-v136.test.mjs tests/clan-war-production-v136.test.mjs tests/clan-war-four-modes-v135.test.mjs tests/clan-war-production-v135.test.mjs tests/clan-war-operations-v115.test.mjs tests/clan-war-operation-cross-mode-v115.test.mjs tests/clan-war-outer-recall-v116.test.mjs tests/clan-war-tactical-runtime-v115.test.mjs tests/clan-war-assault-special-v117.test.mjs tests/clan-war-rts-squads-v133.test.mjs tests/clan-war-rts-rally-v134.test.mjs
+        run: node --test --test-reporter=spec tests/clan-war-open-backlog-v140.test.mjs tests/clan-war-production-v140.test.mjs tests/clan-war-four-modes-v139.test.mjs tests/clan-war-open-backlog-v140.test.mjs tests/clan-war-production-v139.test.mjs tests/clan-war-four-modes-v138.test.mjs tests/clan-war-production-v138.test.mjs tests/clan-war-four-modes-v137.test.mjs tests/clan-war-production-v137.test.mjs tests/clan-war-four-modes-v136.test.mjs tests/clan-war-production-v136.test.mjs tests/clan-war-four-modes-v135.test.mjs tests/clan-war-production-v135.test.mjs tests/clan-war-operations-v115.test.mjs tests/clan-war-operation-cross-mode-v115.test.mjs tests/clan-war-outer-recall-v116.test.mjs tests/clan-war-tactical-runtime-v115.test.mjs tests/clan-war-assault-special-v117.test.mjs tests/clan-war-rts-squads-v133.test.mjs tests/clan-war-rts-rally-v134.test.mjs
       - name: TypeScript cross-mode
         if: always()
         run: npx --no-install tsc --noEmit --project tsconfig.clan-war-v140.json
       - name: ESLint — four modes and UI
         if: always()
-        run: npx --no-install eslint app/game/systems/clanWarOperationsV115.ts app/game/systems/clanWarParallelModesV135.ts app/game/systems/clanWarParallelModesV136.ts app/game/systems/clanWarParallelModesV137.ts app/game/systems/clanWarParallelModesV138.ts app/game/systems/clanWarParallelModesV139.ts app/game/systems/clanWarOpenBacklogV140.ts app/game/systems/clanWarMissionTerrainV116.ts app/game/systems/clanWarRtsSquadsV133.ts app/game/ClanWarOperationsV115.tsx app/game/ClanWarRtsSquadsV133.tsx tests/clan-war-four-modes-v135.test.mjs tests/clan-war-four-modes-v136.test.mjs tests/clan-war-production-v136.test.mjs tests/clan-war-production-v135.test.mjs tests/clan-war-four-modes-v137.test.mjs tests/clan-war-four-modes-v138.test.mjs tests/clan-war-four-modes-v139.test.mjs tests/clan-war-open-backlog-v140.test.mjs tests/clan-war-production-v139.test.mjs tests/clan-war-production-v137.test.mjs tests/clan-war-production-v138.test.mjs
+        run: npx --no-install eslint app/game/systems/clanWarOperationsV115.ts app/game/systems/clanWarParallelModesV135.ts app/game/systems/clanWarParallelModesV136.ts app/game/systems/clanWarParallelModesV137.ts app/game/systems/clanWarParallelModesV138.ts app/game/systems/clanWarParallelModesV139.ts app/game/systems/clanWarOpenBacklogV140.ts app/game/systems/clanWarMissionTerrainV116.ts app/game/systems/clanWarRtsSquadsV133.ts app/game/ClanWarOperationsV115.tsx app/game/ClanWarRtsSquadsV133.tsx tests/clan-war-four-modes-v135.test.mjs tests/clan-war-four-modes-v136.test.mjs tests/clan-war-production-v136.test.mjs tests/clan-war-production-v135.test.mjs tests/clan-war-four-modes-v137.test.mjs tests/clan-war-four-modes-v138.test.mjs tests/clan-war-four-modes-v139.test.mjs tests/clan-war-open-backlog-v140.test.mjs tests/clan-war-production-v140.test.mjs tests/clan-war-production-v139.test.mjs tests/clan-war-production-v137.test.mjs tests/clan-war-production-v138.test.mjs
