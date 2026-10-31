@@ -23,7 +23,7 @@ test("QA route supports keyboard/accessibility and doesn't claim 1:1 finished",(
  const css=read("app/gauntlet-qa-v135/GauntletVisualQaV135.module.css");
  assert.match(page,/aria-pressed=\{selected===x.id\}/);
  assert.match(page,/aria-pressed=\{open\}/);
- assert.match(page,/role="img"/, "An inline source renderer must retain role img");
+ assert.match(read("app/game/GauntletKnownHuntersV135.tsx"),/role="img"/, "An inline source renderer must retain role img");
  assert.match(page,/NON/);
  assert.match(css,/focus-visible/);
  assert.match(css,/prefers-reduced-motion/);
