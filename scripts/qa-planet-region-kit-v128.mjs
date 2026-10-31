@@ -253,8 +253,9 @@ try {
     lon: Number(node.getAttribute("data-focus-longitude")),
     lat: Number(node.getAttribute("data-focus-latitude")),
   }));
-  const sample = (x, y) => visual.evaluate((position) => {
-    const canvas = document.querySelector('[data-testid="planet-regional-visual-v129"]');
+  // Locator.evaluate passes the canvas as its FIRST argument; the coordinates
+  // are the SECOND argument. Reading them from the element produced NaN.
+  const sample = (x, y) => visual.evaluate((canvas, position) => {
     const context = canvas.getContext("2d");
     const centerX = Math.max(2, Math.min(canvas.width - 3, Math.round(position.x)));
     const centerY = Math.max(2, Math.min(canvas.height - 3, Math.round(position.y)));
