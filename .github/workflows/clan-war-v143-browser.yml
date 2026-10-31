@@ -10,6 +10,7 @@ on:
       - 'tests/browser/clan-war-v143.fixture.tsx'
       - 'scripts/qa-real-clan-war-v143.mjs'
       - '.github/workflows/clan-war-v143-browser.yml'
+      - 'docs/Yautja_Gauntlets_V143_Controle_Tours.xlsx'
   workflow_dispatch:
 permissions:
   contents: read
@@ -35,6 +36,7 @@ jobs:
             /scripts/qa-real-clan-war-v143.mjs
             /tests/browser/clan-war-v143.fixture.tsx
             /tests/clan-war-turn-gate-v143.test.mjs
+            /docs/Yautja_Gauntlets_V143_Controle_Tours.xlsx
             /public/game/assets/v14/hunter-kit/manifest.json
             /public/game/assets/v15/trophies/manifest.json
             /public/game/assets/v16/franchise-trophies/manifest.json
@@ -51,6 +53,24 @@ jobs:
           node-version: '22'
       - name: Install pinned dependencies without postinstall scripts
         run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Verify V143 Excel annex is a valid six-sheet workbook
+        run: |
+          unzip -t docs/Yautja_Gauntlets_V143_Controle_Tours.xlsx | tail -1
+          count=$(unzip -Z1 docs/Yautja_Gauntlets_V143_Controle_Tours.xlsx | grep -Ec '^xl/worksheets/sheet[0-9]+[.]xml
+        run: node --experimental-strip-types --test --test-reporter=spec tests/clan-war-turn-gate-v143.test.mjs
+      - name: Real production war panel Chrome test
+        run: node scripts/qa-real-clan-war-v143.mjs
+      - name: Preserve screenshots and real local archive evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: clan-war-v143-actual-panel-and-archive
+          path: outputs/clan-war-real-panel-v143/
+          retention-days: 30
+          if-no-files-found: warn
+)
+          test "$count" -eq 6
+          echo "V143: validated $count Excel sheets"
       - name: Pure turn and source contract tests
         run: node --experimental-strip-types --test --test-reporter=spec tests/clan-war-turn-gate-v143.test.mjs
       - name: Real production war panel Chrome test
