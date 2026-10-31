@@ -10,8 +10,11 @@ on:
     paths:
       - 'app/game/**'
       - 'app/gauntlet-qa-v135/**'
+      - 'app/gauntlet-qa-v136/**'
       - 'tests/clan-war-gauntlet*.test.mjs'
       - 'scripts/export-gauntlet*.mjs'
+      - 'scripts/qa-gauntlet-browser-v137.mjs'
+      - 'tests/browser/gauntlet-v136.fixture.tsx'
       - '.github/workflows/gauntlet-v136-full-integration.yml'
   workflow_dispatch:
 permissions:
@@ -20,7 +23,9 @@ jobs:
   build-and-full-typecheck:
     name: Full repository typecheck and production frontend build
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 35
+    env:
+      AUDIT_CHROME_CHANNEL: chrome
     steps:
       - name: Checkout complete TypeScript graph without 13GB art archives
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
@@ -55,6 +60,9 @@ jobs:
             /public/game/assets/v14/hunter-kit/manifest.json
             /public/game/assets/v15/trophies/manifest.json
             /public/game/assets/v28/sprite-review/manifest.json
+            /public/game/assets/v134/gauntlets/jungle-hunter/
+            /public/game/assets/v135/gauntlets/
+            /public/game/assets/v136/gauntlets/
       - name: Node 22
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
@@ -67,6 +75,16 @@ jobs:
         run: echo "Asset audit remains under V131, where the exact SVG paths are checked and rendered."
       - name: Real V13 campaign export-import and multitab conflict tests
         run: node --import tsx --test --test-reporter=spec tests/gauntlet-save-roundtrip-v136.test.mjs
+      - name: Browser interactions on all 54 models (real Chrome, not screenshots-only)
+        run: node scripts/qa-gauntlet-browser-v137.mjs
+      - name: Preserve evidence for browser UI and mobile layouts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gauntlet-browser-qa-v137
+          path: outputs/gauntlet-v137-browser/
+          retention-days: 30
+          if-no-files-found: warn
       - name: Frontend production build (code-only checkout, diagnostic)
         run: npm run build
       - name: Sanity check real campaign persistence test bundle
