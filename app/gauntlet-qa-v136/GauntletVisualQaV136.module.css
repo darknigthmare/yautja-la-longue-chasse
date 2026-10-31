@@ -56,3 +56,9 @@
 .partControls button{margin-left:auto;min-height:40px;padding:7px 12px;border:1px solid #678e83;color:#dff2e5;background:#234943}
 .partControls button:disabled{opacity:.55}
 @media(max-width:600px){.partControls button{margin-left:0;width:100%}}
+
+/* V139 diagnostic wrist rig; local-only route with the exact actor attachment files. */
+.rigDetails{margin-top:14px;border:1px solid #386b68;background:#102b30}
+.rigDetails>summary{cursor:pointer;padding:12px 14px;font-size:.86rem;font-weight:700;color:#bef5e6}
+.rigDetails>summary:focus-visible{outline:3px solid #f1d278;outline-offset:2px}
+.rigDetails[open]>summary{border-bottom:1px solid #386b68}
