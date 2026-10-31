@@ -8,8 +8,8 @@ const catalogue=JSON.parse(await readFile("app/game/data/clanWarGauntletCatalogV
 const known=["city-hunter","wolf","feral","dek"];
 const accepted=new Set(["hero-closeup","design-studio","equipment-known","character-only","licensed-class"]);
 const records=catalogue.map(entry=>{
-  const pipeline=entry.id==="jungle-hunter"?"seven-independent-vector-layers":
-    known.includes(entry.id)?"four-independent-vector-layers":"unverified-shared-placeholder";
+  const pipeline=entry.id==="jungle-hunter"?"seven-independent-source-informed-vector-layers":
+    known.includes(entry.id)?"four-independent-source-informed-vector-layers":"four-independent-original-noncanon-study-layers";
   return {
     id:entry.id,name:entry.name,source:entry.source,sourceUrl:entry.sourceUrl,evidence:entry.evidence,
     gauntletDesignStatus:pipeline,
@@ -19,7 +19,7 @@ const records=catalogue.map(entry=>{
     movementReviewed:false,
     releaseEligible:false,
     missing:[
-      ...((pipeline==="seven-independent-vector-layers"||pipeline==="four-independent-vector-layers")?[]:["individual-per-character-silhouette"]),
+      ...(pipeline==="four-independent-original-noncanon-study-layers"?["canonical-per-character-film-silhouette-replacement"]:[]),
       "canonical-film-frame-comparison","independent-textures","cinematic-material-patina",
       "full-pose-animation","human-art-review","license-review",
     ],
@@ -48,14 +48,31 @@ for(const model of ["jungle-hunter",...known]){
     } catch {failures.push("Missing individual authored SVG "+file);}
   }
 }
+// All remaining pieces must exist as individually authored, source-tracked
+// concepts. Passing this file-presence check NEVER certifies artistic fidelity.
+const v136Parts=["01-arm.svg","02-shell.svg","03-interface.svg","04-lid.svg"];
+for(const entry of catalogue){
+  if(entry.id==="jungle-hunter"||known.includes(entry.id))continue;
+  for(const piece of v136Parts){
+    const filename=path.join("public/game/assets/v136/gauntlets",entry.id,piece);
+    try{
+      const svg=await readFile(filename,"utf8");
+      if(!svg.includes('<svg xmlns="http://www.w3.org/2000/svg"') ||
+         !svg.includes('viewBox="0 0 540 290"') ||
+         !svg.includes("ORIGINAL concept blockout") ||
+         !svg.includes("NOT a verified 1:1 film prop"))
+        failures.push("Untraceable / invalid original study "+filename);
+    }catch{failures.push("Missing original study piece "+filename);}
+  }
+}
 const output={
-  schema:135,scope:"Yautja The Long Hunt — gauntlet production",
+  schema:136,scope:"Yautja The Long Hunt — gauntlet production",
   artValidation:"unapproved",modelCount:records.length,
-  summary:{independentVectorModels:5,blockoutOnly:5,placeholderOnly:49,oneToOneValidated:0},
+  summary:{independentVectorModels:54,sourceInformedBlockoutModels:5,originalNoncanonConceptModels:49,sharedPlaceholderOnly:0,oneToOneValidated:0},
   disclaimers:[
     "The Jungle Hunter seven-layer vector is a source-informed blockout, not a film-verified 1:1 recreation.",
     "City Hunter, Wolf, Feral and Dek have separately authored V135 vector blockouts, but remain unvalidated against film frames.",
-    "The other 49 character variants still require individual artwork and dedicated wrist models.",
+    "The remaining 49 character variants now have four independent ORIGINAL procedural concept layers each, but their canonical film designs are NOT reconstructed.",
     "SVG/PNG exports and passing CI never imply artistic 1:1 or permission to distribute franchise IP commercially.",
   ],
   records,issues:failures,
@@ -65,4 +82,4 @@ await mkdir(target,{recursive:true});
 await writeFile(path.join(target,"complete-manifest.json"),JSON.stringify(output,null,2)+"\n");
 const hash=createHash("sha256").update(JSON.stringify(records)).digest("hex");
 if(failures.length){console.error(failures.join("\n"));process.exitCode=1;}
-else console.log("54 gauntlet statuses checked; SHA256 "+hash+"; 1:1 verified: 0 (art review pending)");
+else console.log("54 physically independent concept models audited (5 source-informed, 49 original art studies); SHA256 "+hash+"; film 1:1 verified: 0");
