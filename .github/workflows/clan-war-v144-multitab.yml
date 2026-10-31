@@ -13,6 +13,8 @@ on:
       - 'tests/browser/clan-war-v143.fixture.tsx'
       - '.github/workflows/clan-war-v144-multitab.yml'
       - 'docs/Yautja_ClanWar_V144_Conflits_Onglets.xlsx'
+      - 'docs/Yautja_ClanWar_V145_Multiplanetes.xlsx'
+      - 'docs/clan-war-multiplanet-v145.md'
   workflow_dispatch:
 permissions:
   contents: read
@@ -40,6 +42,7 @@ jobs:
             /tests/clan-war-multitab-v144.test.mjs
             /tests/clan-war-turn-gate-v143.test.mjs
             /docs/Yautja_ClanWar_V144_Conflits_Onglets.xlsx
+            /docs/Yautja_ClanWar_V145_Multiplanetes.xlsx
             /public/game/assets/v14/hunter-kit/manifest.json
             /public/game/assets/v15/trophies/manifest.json
             /public/game/assets/v16/franchise-trophies/manifest.json
@@ -62,6 +65,24 @@ jobs:
           count=$(unzip -Z1 docs/Yautja_ClanWar_V144_Conflits_Onglets.xlsx | grep -Ec 'xl/worksheets/sheet[0-9]+[.]xml')
           test "$count" -eq 6
           echo "V144 annex: six worksheets and a valid archive"
+      - name: Verify V145 workbook has five valid and sourced worksheets
+        run: |
+          unzip -t docs/Yautja_ClanWar_V145_Multiplanetes.xlsx | tail -1
+          count=$(unzip -Z1 docs/Yautja_ClanWar_V145_Multiplanetes.xlsx | grep -Ec '^xl/worksheets/sheet[0-9]+[.]xml
+        run: node --experimental-strip-types --test --test-reporter=spec tests/clan-war-multitab-v144.test.mjs tests/clan-war-turn-gate-v143.test.mjs
+      - name: Test two actual tabs with real strategic panel in Chrome
+        run: node scripts/qa-clan-war-multitab-v144.mjs
+      - name: Retain cross-tab conflict screenshots and IndexedDB proof
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: clan-war-v144-two-real-tabs-idb-evidence
+          path: outputs/clan-war-multitab-v144/
+          retention-days: 30
+          if-no-files-found: warn
+)
+          test "$count" -eq 5
+          echo "V145: five auditable sheets, ZIP archive intact"
       - name: Test non-destructive external-tab detection and offline-only mode
         run: node --experimental-strip-types --test --test-reporter=spec tests/clan-war-multitab-v144.test.mjs tests/clan-war-turn-gate-v143.test.mjs
       - name: Test two actual tabs with real strategic panel in Chrome
