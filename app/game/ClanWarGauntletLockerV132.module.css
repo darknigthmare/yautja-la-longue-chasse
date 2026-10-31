@@ -22,3 +22,13 @@
 .previewCopy{flex:1;min-width:0}
 @media(max-width:720px){.preview{flex-direction:column}.artPreview{width:100%;max-width:none;flex:auto;min-width:0}}
 @media(prefers-reduced-motion:reduce){.artPreview svg *{transition:none!important}}
+
+/* V134: readable, proof-gated archive research, independent of combat rules. */
+.research{margin:13px 0;padding:13px;border:1px solid #638e81;border-left:3px solid #c0a474;background:#102a28}
+.research h4{margin:0 0 7px;font-size:.91rem;color:#e7eed8}
+.research p{font-size:.77rem;line-height:1.5;margin:6px 0}
+.research small{display:block;color:#c4d1bb;margin-top:8px;line-height:1.5;font-size:.72rem}
+.research button{min-height:44px;padding:8px 12px;margin:9px 0 3px;width:100%;border:1px solid #a4cbbf;background:#1d5046;color:#f2f6e5}
+.research button:disabled{opacity:.65;cursor:not-allowed}
+.studyReady{color:#b6efce}
+.studyMissing{color:#f7c8a8}
