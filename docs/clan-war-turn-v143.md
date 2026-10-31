@@ -27,6 +27,8 @@ Le nouveau banc `tests/browser/clan-war-v143.fixture.tsx` monte le **vrai `ClanW
 4. Une autre planète ouvre son propre front (tour 1), puis le retour à Korthas restaure le tour 2.
 5. La préférence de vue reste indépendante de la campagne, sans toucher une clé d'archive témoin.
 
+**Résultat V143 réellement observé :** le workflow Chrome [41248641345](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41248641345) a exécuté **6 scénarios avec succès** sur le véritable panneau V85 : un seul atlas V95 maintenu au changement de vue, double clic sans double tour, **tour 2/révision 1**, recharge locale, retour depuis une autre planète et choix de vue conservé. Le rapport montre `duplicateAdvancePrevented: true`, `browserErrors: []` et 21 ressources graphiques servies. [Captures d'écran et manifeste](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41248641345/artifacts/13059808525). Cette validation n'est ni un test multijoueur ni un contrôle 1:1 des accessoires.
+
 **Périmètre :** ce navigateur monte le vrai panneau et la vraie simulation stratégique ; il remplace seulement l'élément `next/image` décoratif dans cette fixture isolée. Il ne remplace pas une traversée de l'intégralité du menu, ni un essai multijoueur réel, ni la validation 1:1 des bracelets de films.
 
 ## Limites ouvertes
