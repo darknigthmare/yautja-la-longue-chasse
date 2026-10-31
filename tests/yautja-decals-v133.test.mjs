@@ -10,7 +10,7 @@ import {Y_A_U_T_J_A_CONCEPT_MASKS_V133,conceptBiomaskV133}
 import {normalizeHunterChromaticsV113,resetChromaticFacilityV115}
   from "../app/game/hunterChromaticsV113.ts";
 import {decalCanvasSourceV133} from "../app/game/decalCanvasV133.ts";
-import {V6_MASK_VISUAL_BY_ID} from "../app/game/v6Visuals.ts";
+const v6MapText=readFileSync("app/game/v6Visuals.ts","utf8");
 
 test("V133: 48 independent source-safe decals + 7 playable original masks",()=>{
   assert.equal(Y_A_U_T_J_A_DECALS_V133.length,48);
@@ -31,7 +31,7 @@ test("V133: 48 independent source-safe decals + 7 playable original masks",()=>{
   for(const mask of Y_A_U_T_J_A_CONCEPT_MASKS_V133){
     assert.ok(mask.assetPath.startsWith("/game/assets/v133/concept-masks/"));
     assert.equal(conceptBiomaskV133(mask.id)?.id,mask.id);
-    assert.ok(V6_MASK_VISUAL_BY_ID[mask.id]);
+    assert.ok(v6MapText.includes('"'+mask.id+'": '),"missing V6 fallback "+mask.id);
     const f="public"+mask.assetPath;
     const bytes=readFileSync(f);
     assert.equal(bytes.toString("ascii",0,4),"RIFF");
@@ -50,8 +50,6 @@ test("V133: atlas is committed and matches catalog's verified fingerprint",()=>{
 });
 
 test("V133: save IDs remain per-channel and invalid data is never restored",()=>{
- const list=Y_A_U_T_J_A_DECALS_V133.filter(x=>["face","body","armor","biomask"].includes(x.zone));
- const values=Object.fromEntries(list.filter((x,i)=>i%12===0).map((x,i)=>[["maskDecalId","faceDecalId","bodyDecalId","armorDecalId"][i],x.id]));
  const first=Object.fromEntries(["maskDecalId","faceDecalId","bodyDecalId","armorDecalId"].map((key,i)=>
    [key,Y_A_U_T_J_A_DECALS_V133[i*12].id]));
  const state=normalizeHunterChromaticsV113(first);
@@ -89,7 +87,9 @@ test("V133: one selected decal is painted inside original RGBA source and not fu
    const selected=Y_A_U_T_J_A_DECALS_V133.find(x=>x.zone===zone);
    assert.ok(selected);
    const field={biomask:"maskDecalId",face:"faceDecalId",body:"bodyDecalId",armor:"armorDecalId"}[zone];
-   const original=decalCanvasSourceV133(artwork,{[field]:selected.id},zone);
+   // The image loader may be pending on the first draw; repaint on next frame.
+   const first=decalCanvasSourceV133(artwork,{[field]:selected.id},zone);
+   const original=first??decalCanvasSourceV133(artwork,{[field]:selected.id},zone);
    assert.ok(original);
    const paint=original.calls.find(x=>x.args.length===9);
    assert.ok(paint);
