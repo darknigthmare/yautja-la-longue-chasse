@@ -70,6 +70,13 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
         } catch {lock=true;issue="Stockage indisponible : archive existante préservée. Les opérations sont verrouillées.";}
       }
       worldRef.current=current;setWorld(current);setBlocked(lock);setStorageIssue(issue);
+      // Restore the V115 UI from the *actual persisted mission*, not the
+      // default Assault tab. This keeps the tactical readout, team controls
+      // and territory synchronized with saved stealth/RTS/outer operations.
+      const resumedMode:WarMissionModeV115=current.active?.mode ??
+        (current.outer.length>0?"outer":initialScenarioId?"rts":"assault");
+      setMode(resumedMode);
+      setRtsSelectedId(current.active?.mode==="rts" ? current.active.teamIds[0]??"" : "");
       const activeTeams=current.teams.filter(team=>!current.assignments[team.id]&&team.members.some(member=>member.status==="fit"));
       if(initialScenarioId==="W3-RTS01"){
         const scout=activeTeams.find(team=>["W3-U01","W3-U02","W3-U05","W3-U06"].includes(team.unitId));
@@ -96,8 +103,8 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
         const extraction=activeTeams.find(team=>team.unitId==="W3-U17");
         setSelectedIds([...(guide?[guide.id]:[]),...(extraction?[extraction.id]:[])]);
       }else setSelectedIds(activeTeams.slice(0,2).map(team=>team.id));
-      setTargetId(initialScenarioId?
-        rules.territories.find(item=>item.id===sourcePilotSiteId)?.id??rules.territories[1]?.id??"":
+      setTargetId(current.active?.targetId ?? current.outer[0]?.targetId ??
+        (initialScenarioId?rules.territories.find(item=>item.id===sourcePilotSiteId)?.id:undefined) ??
         rules.territories[1]?.id??"");
       setHydrated(true);setNow(Date.now());
     },0);
