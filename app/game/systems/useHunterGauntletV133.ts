@@ -20,6 +20,7 @@ export function readHunterGauntletV133(
   fallback: ReadonlyMap<string,string> = localFallback,
 ): string {
   const key = gauntletStorageKeyV132(hunter);
+  if (fallback.has(key)) return normalizeGauntletV132(fallback.get(key),rank);
   if (storage) {
     try {
       return parseGauntletPreferenceV132(storage.getItem(key),hunter,rank);
