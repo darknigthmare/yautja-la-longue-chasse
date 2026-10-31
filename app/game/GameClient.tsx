@@ -5266,6 +5266,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             explorationProgress={activeMissionSave.exploration}
             onExplorationProgress={persistExplorationProgress}
             appearance={activeMissionSave.appearance}
+            gauntletVariantId={hunterGauntlet.equippedId}
             difficulty={activeMissionSave.settings.difficultyId}
             controlBindings={activeMissionSave.settings.controlBindings}
             huntAccessibility={activeMissionSave.settings.huntAccessibility}
