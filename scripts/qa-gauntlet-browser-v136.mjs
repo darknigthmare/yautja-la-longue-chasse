@@ -66,6 +66,10 @@ try{
  await page.locator("section[aria-label='Catalogue des 54 modèles'] button[aria-pressed]").first().click();
  await page.locator("svg[data-testid='gauntlet-archive-study-v136'][data-model='lost-boar']").waitFor();
  assert.equal(await page.locator("svg[data-model='lost-boar'] image").count(),4);
+ await page.getByRole("checkbox",{name:"Afficher Coque"}).uncheck();
+ assert.equal(await page.locator("svg[data-model='lost-boar'] image").count(),3,"Hiding shell must remove the source layer");
+ await page.getByRole("button",{name:"Afficher tous les calques"}).click();
+ assert.equal(await page.locator("svg[data-model='lost-boar'] image").count(),4);
  await page.getByRole("button",{name:"Refermer les capots"}).click();
  assert.equal(await page.locator("svg[data-model='lost-boar'][data-cover-open='false']").count(),1);
  await page.getByRole("button",{name:"Comparer deux gauntlets"}).click();
