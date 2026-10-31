@@ -10,6 +10,11 @@ import { WAR_PLANET_TEXTURE_CHANNELS_V125, type PlanetTextureChannelV125 } from 
 import { createPlanetTextureCanvasV130, findPlanetTextureV130, WAR_PLANET_TEXTURES_V130 } from "./systems/clanWarTextureLibraryV130";
 import { createPlanetRegionIndexMaskV124, createPlanetInlandMaskV124, describePlanetModularMasksV124, planetInlandFeaturesV124 } from "./planetModularExportV124";
 import { createPlanetSingleRegionMaskV128 } from "./planetRegionKitRasterV128";
+import {
+  randomizeRegionalMaterialKitV145, selectableRegionalMaterialSlotsV145,
+  type RegionalMaterialLockV145, type RegionalMaterialRandomScopeV145,
+  type RegionMaterialDomainV145,
+} from "./systems/clanWarRegionalMaterialRandomV145";
 import PlanetRegionalPreviewV129 from "./PlanetRegionalPreviewV129";
 import {
   createPlanetRegionalMaterialKitV128, compatibleLandMaterialsV128, compatibleSurfaceMaterialsV128,
@@ -95,6 +100,7 @@ export default function PlanetLayerExportV102({ planet, onApplyVisualProfile }: 
   const [supplementalRegionId, setSupplementalRegionId] = useState(() => planet.regions[0]?.id ?? "");
   const [kitRegionId, setKitRegionId] = useState(() => planet.regions[0]?.id ?? "");
   const [regionalKit, setRegionalKit] = useState(() => createPlanetRegionalMaterialKitV128(planet));
+  const [regionalRandomLocksV145, setRegionalRandomLocksV145] = useState<RegionalMaterialLockV145[]>([]);
   const [qualityV134, setQualityV134] = useState<PlanetVisualQualityV134>("pbr");
   const [coastKmV134, setCoastKmV134] = useState<PlanetVisualCoastV134>(900);
   const [localProfileStatusV134, setLocalProfileStatusV134] = useState("checking");
@@ -105,6 +111,10 @@ export default function PlanetLayerExportV102({ planet, onApplyVisualProfile }: 
   const activeKitSeed = activeKitRegion?.seed;
   const compatibleLand = activeKitRegion ? compatibleLandMaterialsV128(activeKitRegion.biome) : [];
   const compatibleSurface = activeKitRegion ? compatibleSurfaceMaterialsV128(planet.surface.kind, activeKitRegion.biome) : [];
+  const regionalSlotLockedV145 = (domain: RegionMaterialDomainV145) => Boolean(activeKitRegion &&
+    regionalRandomLocksV145.some(entry => entry.regionId === activeKitRegion.regionId && entry.domain === domain));
+  const slotsToRandomizeV145 = (scope: RegionalMaterialRandomScopeV145) =>
+    selectableRegionalMaterialSlotsV145(planet,regionalKit,scope,activeKitRegion?.regionId ?? "",regionalRandomLocksV145);
   const selectedSupplementalMaterial = findPlanetTextureV130(supplementalMaterialId)!;
   const regionIndex = Math.max(0, planet.regions.findIndex(item => item.id === supplementalRegionId));
   const supplementalSeed = (planet.seed ^ Math.imul(regionIndex + 1, 0x9e3779b1)) >>> 0;
@@ -282,6 +292,35 @@ export default function PlanetLayerExportV102({ planet, onApplyVisualProfile }: 
     }
   };
 
+
+  const toggleRegionalRandomLockV145 = (domain: RegionMaterialDomainV145) => {
+    if (!activeKitRegion) return;
+    const regionId = activeKitRegion.regionId;
+    setRegionalRandomLocksV145(current => current.some(lock =>
+      lock.regionId === regionId && lock.domain === domain)
+      ? current.filter(lock => lock.regionId !== regionId || lock.domain !== domain)
+      : [...current, { regionId, domain }]);
+  };
+  const rollRegionalMaterialsV145 = (scope: RegionalMaterialRandomScopeV145) => {
+    if (!activeKitRegion) return;
+    kitImportIntent.current++;
+    try {
+      const seed = typeof crypto !== "undefined" && typeof crypto.getRandomValues === "function"
+        ? crypto.getRandomValues(new Uint32Array(1))[0] : Date.now() >>> 0;
+      const output = randomizeRegionalMaterialKitV145(
+        planet,regionalKit,scope,activeKitRegion.regionId,seed,regionalRandomLocksV145);
+      if (!output.changedSlots.length) {
+        setMessage("Aucun matériau compatible à varier dans ce périmètre, ou tous les choix sont conservés.");
+        return;
+      }
+      setRegionalKit(output.kit);
+      setLocalProfileStatusV134("modified");
+      setMessage("Matières régionales : " + output.changedSlots.length +
+        " texture(s) modifiée(s), biomes et verrous conservés. Les territoires et la sauvegarde ne changent pas.");
+    } catch (error) {
+      setMessage(error instanceof Error ? error.message : "Ce tirage régional n’a pas pu être appliqué.");
+    }
+  };
 
   const downloadRegionalAssignments = () => {
     try {
@@ -497,6 +536,42 @@ export default function PlanetLayerExportV102({ planet, onApplyVisualProfile }: 
             {compatibleSurface.map(id => <option key={id} value={id}>{findPlanetTextureV130(id)?.name ?? id}</option>)}
           </select>
         </label>
+        <div className={styles.regionalRandomV145} data-testid="planet-regional-random-v145">
+          <p>Aléatoire du kit régional : tous les sols/milieux compatibles, uniquement la région sélectionnée ou chaque famille séparément. Les cases « Conserver » protègent les choix du hasard.</p>
+          <div className={styles.regionalRandomGridV145}>
+            <button type="button" data-testid="planet-region-random-global-v145"
+              disabled={!slotsToRandomizeV145("all").length}
+              onClick={() => rollRegionalMaterialsV145("all")}>Tout aléatoire · toutes les régions</button>
+            <button type="button" data-testid="planet-region-random-selected-v145"
+              disabled={!slotsToRandomizeV145("region").length}
+              onClick={() => rollRegionalMaterialsV145("region")}>Aléatoire · région sélectionnée</button>
+            <button type="button" data-testid="planet-region-random-all-land-v145"
+              disabled={!slotsToRandomizeV145("land").length}
+              onClick={() => rollRegionalMaterialsV145("land")}>Tous les sols au hasard</button>
+            <button type="button" data-testid="planet-region-random-all-surface-v145"
+              disabled={!slotsToRandomizeV145("surface").length}
+              onClick={() => rollRegionalMaterialsV145("surface")}>Tous les milieux au hasard</button>
+            <button type="button" data-testid="planet-region-random-land-v145"
+              disabled={!slotsToRandomizeV145("region-land").length}
+              onClick={() => rollRegionalMaterialsV145("region-land")}>Sol de cette région au hasard</button>
+            <button type="button" data-testid="planet-region-random-surface-v145"
+              disabled={!slotsToRandomizeV145("region-surface").length}
+              onClick={() => rollRegionalMaterialsV145("region-surface")}>Milieu de cette région au hasard</button>
+          </div>
+          <div className={styles.regionalRandomLocksV145}>
+            <label><input type="checkbox" checked={regionalSlotLockedV145("land")}
+              data-testid="planet-region-lock-land-v145"
+              onChange={() => toggleRegionalRandomLockV145("land")}/>
+              Conserver le sol de cette région
+            </label>
+            <label><input type="checkbox" checked={regionalSlotLockedV145("surface")}
+              data-testid="planet-region-lock-surface-v145"
+              disabled={!compatibleSurface.length}
+              onChange={() => toggleRegionalRandomLockV145("surface")}/>
+              Conserver le milieu de cette région
+            </label>
+          </div>
+        </div>
         <button type="button" onClick={() => { void exportRegionalKit(); }} data-testid="planet-region-kit-export-v128">Télécharger le kit régional (ZIP)</button>
         <button type="button" onClick={downloadRegionalAssignments} data-testid="planet-region-kit-json-v128">Exporter les choix (JSON)</button>
         <label htmlFor={`${unique}-region-kit-import`}>Réimporter les choix de cette planète (V128 ou V134)
