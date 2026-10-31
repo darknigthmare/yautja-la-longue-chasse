@@ -55,7 +55,8 @@ test("V144 archive ownership and rank remain authoritative over forged localStor
 });
 test("V144 hook passes legitimate claim list into V132 local preference codec",()=>{
   const hook=read("app/game/systems/useHunterGauntletV133.ts");
-  assert.match(hook,/parseGauntletPreferenceV132\(storage\.getItem\(key\),hunter,rank,archive\?\.claimedStudies \?\? \[\]\)/);
+  assert.match(hook,/parseGauntletPreferenceV132\(storage\.getItem\(key\),hunter,rank\)/);
+  assert.match(hook,/if \(archive\.ownerCreatedAt !== hunter\) return DEFAULT_GAUNTLET_ID_V132;/);
   assert.match(hook,/serializeGauntletPreferenceV132\(hunter,id,rank,archive\?\.claimedStudies \?\? \[\]\)/);
   const panel=read("app/game/ClanWarPanelV85.tsx");
   assert.match(panel,/onClaimStudy=\{onClaimGauntletStudy\}/);
