@@ -20,7 +20,7 @@ export interface WarRtsSquadV133 extends WarMapPointV128 {
  id:string;unitId:string;unitName:string;memberCount:number;
  hp:number;maxHp:number;attack:number;defense:number;range:number;mobility:number;
  commandPoints:number;upkeepRav:number;
- status:"ready"|"active"|"down";
+ status:"ready"|"active"|"down"|"evacuated";
 }
 export interface WarRtsEscortV133 extends WarMapPointV128 {
  id:string;kind:WarRtsEscortKindV129;hp:number;secured:boolean;extracted:boolean;
@@ -37,7 +37,7 @@ export interface WarRtsSquadsReceiptV133 {
  id:string;missionId:string;mapId:string;planetId:string;
  sourceCells:string[];outcome:"victory"|"defeat"|"retreat";
  completedTaskIds:string[];squadIds:string[];downSquadIds:string[];
- leftBehindSquadIds:string[];escortExtracted:boolean;
+ leftBehindSquadIds:string[];evacuatedSquadIds?:string[];escortExtracted:boolean;
  turn:number;remainingRav:number;campaignMutation:false;source:"V6-W3-original-field-study";
 }
 export interface WarRtsSquadsStateV133 {
@@ -91,6 +91,7 @@ function receipt(s:WarRtsSquadsStateV133,outcome:"victory"|"defeat"|"retreat"):W
   completedTaskIds:[...s.completedTaskIds],squadIds:s.squads.map(u=>u.id),
   downSquadIds:s.squads.filter(u=>u.status==="down").map(u=>u.id),
   leftBehindSquadIds:outcome==="retreat"?living.filter(u=>distance(u,s.map.extraction)>2).map(u=>u.id):[],
+  evacuatedSquadIds:s.squads.filter(u=>u.status==="evacuated").map(u=>u.id),
   escortExtracted:Boolean(s.tracked?.extracted),turn:s.turn,remainingRav:s.ravRemaining,
   campaignMutation:false,source:"V6-W3-original-field-study"};
 }
@@ -403,6 +404,36 @@ export function commandWarRtsSquadsV133(s:WarRtsSquadsStateV133,order:WarRtsSqua
   return accept(result,result.lastMessage);
  }
  return fail(s,"Ordre tactique invalide.");
+}
+
+/**
+ * V139: physically evacuate ONE already deployed detachment at the authored
+ * extraction tile before the remaining teams finish the mission. No free
+ * teleport or replacement; the same squad ID stays on the battle receipt.
+ * One active group must remain on the map and escort carriers cannot abandon
+ * rescued people or cargo on the threshold.
+ */
+export function evacuateWarRtsSquadV139(
+ s:WarRtsSquadsStateV133,squadId:string,
+):WarRtsSquadsUpdateV133 {
+ if(s.phase!=="active"||s.report)return fail(s,"Aucune opération RTS ouverte.");
+ const unit=activeSquads(s).find(u=>u.id===squadId);
+ if(!unit)return fail(s,"Formation inexistante, hors combat ou déjà évacuée.");
+ if(activeSquads(s).length<2)return fail(s,"Un dernier détachement doit garder le front et achever les objectifs.");
+ if(distance(unit,s.map.extraction)>1)
+  return fail(s,"L'évacuation exige l'accès physique au point de sortie W3.");
+ if(s.hold?.squadId===squadId)
+  return fail(s,"Relève du poste en cours : transmettre la mission avant de quitter.");
+ if(s.tracked?.secured&&!s.tracked.extracted&&s.tracked.carrierSquadId===squadId)
+  return fail(s,"Le porteur d'une charge ou d'un témoin doit d'abord transférer son escorte.");
+ const squads=s.squads.map(u=>u.id===squadId?
+   {...u,status:"evacuated" as const}:u);
+ const next=advance({...s,squads,
+  overwatch:(s.overwatch??[]).filter(w=>w.squadId!==squadId),
+  brace:(s.brace??[]).filter(w=>w.squadId!==squadId)},
+  "Détachement "+unit.unitId+" évacué à pied par la sortie réelle ; "+unit.memberCount+
+  " membres identifiés conservés hors du combat.");
+ return accept(next,next.lastMessage);
 }
 
 /**

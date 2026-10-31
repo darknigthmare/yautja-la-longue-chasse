@@ -19,7 +19,7 @@ test("Outer Ops has repeatable three-stage, source-visible exchanges; settling t
   const first=war.simulateWarOuterMissionV115(launch.state,order,bible);
   const repeated=war.simulateWarOuterMissionV115(launch.state,order,bible);
   assert.deepEqual(first,repeated);
-  assert.equal(first.engagementLog.length,6);
+  assert.equal(first.engagementLog.length,order.departureContext?7:6);
   assert.ok(first.engagementLog.some(line=>line.includes("Échange 3/3")));
   const before=war.settleWarOuterOpsV115(launch.state,order.dueAt-1,bible);
   assert.equal(before.accepted,false);
