@@ -65,7 +65,7 @@ test("actual 12k-line HuntCanvas preloads per-hunter assets once and preserves b
   assert.match(preview,/gauntletRigSpriteV139\(rigGauntletId, "base"\)/);
   const i=game.indexOf('<HuntCanvas');
   assert.ok(i>0);
-  assert.match(game.slice(i,i+1100),/gauntletVariantId=\{hunterGauntlet\.equippedId\}/);
+  assert.match(game.slice(i,i+1200),/gauntletVariantId=\{huntResumePayload\?\.gauntletVariantId \?\? hunterGauntlet\.equippedId\}/);
   assert.equal((runtime.match(/loadGauntletRigPartV141\(/g)||[]).length,1);
   assert.ok(!read("app/game/systems/gauntletMissionVisualV141.ts").includes("damage"));
   assert.ok(!read("app/game/systems/gauntletMissionVisualV141.ts").includes("advanceWarTurnV85"));
