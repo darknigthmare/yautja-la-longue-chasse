@@ -29,12 +29,12 @@ test("gauntlet UI integrates with the REAL ship armory, character and clan war",
   const operation=read("app/game/ClanWarOperationsV115.tsx");
   const bible=read("app/game/ClanWarBibleV6Panel.tsx");
   assert.match(game,/data-testid="hunter-gauntlet-slot-v133"/);
-  assert.match(game,/useHunterGauntletV133\(save.createdAt,save.profile.rankId\)/);
+  assert.match(game,/useHunterGauntletV133\(save.createdAt,save.profile.rankId,save.gauntletV134\)/);
   assert.match(game,/gauntletVariantId=\{hunterGauntlet.equippedId\}/);
   assert.equal((game.match(/gauntletVariantId=\{hunterGauntlet.equippedId\}/g)||[]).length,3);
   assert.match(rig,/data-gauntlet-equipped=\{selectedGauntlet\?\.id \?\? "jungle-hunter"\}/);
   assert.match(rig,/data-gauntlet-visual-validation="shared-rig-material-proxy"/);
-  assert.match(panel,/useHunterGauntletV133\(save.createdAt, save.profile.rankId\)/);
+  assert.match(panel,/useHunterGauntletV133\(save.createdAt, save.profile.rankId,save.gauntletV134\)/);
   assert.equal((panel.match(/<ClanWarAtlasV95\b/g)||[]).length,1);
   assert.match(bible,/holographic=\{holographic\}/);
   assert.match(operation,/data-testid="clan-operations-gauntlet-v133"/);
@@ -59,6 +59,9 @@ test("Jungle Hunter blockout has corrected five horizontal glyph rows and safe u
 test("all modified TS and TSX files at least parse, including the full GameClient",()=>{
   const paths=[
     "app/game/systems/useHunterGauntletV133.ts",
+    "app/game/systems/gauntletCampaignV134.ts",
+    "app/game/save.ts",
+    "app/game/types.ts",
     "app/game/ClanWarGauntletV131.tsx",
     "app/game/ClanWarGauntletLockerV132.tsx",
     "app/game/HunterGauntletArtV132.tsx",
