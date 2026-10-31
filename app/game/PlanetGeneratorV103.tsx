@@ -8,6 +8,7 @@ import type { PlanetVisualProfileV134 } from "./systems/clanWarPlanetVisualProfi
 import PlanetShapePreviewV125 from "./PlanetShapePreviewV125";
 import PlanetShapeLibraryV137 from "./PlanetShapeLibraryV137";
 import PlanetEnvironmentalDossierV146 from "./PlanetEnvironmentalDossierV146";
+import PlanetEarthReferenceV147 from "./PlanetEarthReferenceV147";
 import { recommendPlanetTopologyV139 } from "./systems/clanWarPlanetTopologyAdvisorV139";
 import {
   randomizePlanetDraftV144, selectablePlanetRandomFieldsV144,
@@ -546,6 +547,7 @@ export default function PlanetGeneratorV103({ activePlanet, pending = false, onO
     <PlanetLayerExportV102 key={planet.id} planet={planet} onApplyVisualProfile={setMainVisualProfileV134}/>
     <div className={styles.dossier}>
       <PlanetEnvironmentalDossierV146 key={planet.id} planet={planet}/>
+      <PlanetEarthReferenceV147/>
       <section aria-label="Particularités du monde"><h4>Particularités de {planet.name}</h4><div className={styles.traits}>{details.traits.map(trait => <article key={trait.id}><h5>{trait.name}</h5><p>{trait.description}</p></article>)}</div></section>
       <section aria-label="Continents et îles"><h4>Continents et îles</h4><div className={styles.landmasses}>{details.landmasses.map(landmass => <article key={landmass.landmassId}><span>{landmass.kind === "island" ? "Île" : "Continent"}</span><h5>{landmass.name}</h5><p>{landmass.description}</p></article>)}</div></section>
       {"hydrology" in details && details.hydrology.features.length > 0 && <section aria-label="Bassins et cours intérieurs"><h4>Bassins et cours intérieurs</h4><div className={styles.landmasses}>{details.hydrology.features.map(feature => <article key={feature.id}><span>{feature.kind === "lake" ? "Bassin" : "Cours"}</span><h5>{feature.name}</h5><p>{feature.description}</p></article>)}</div></section>}
