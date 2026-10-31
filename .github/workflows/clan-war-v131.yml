@@ -59,6 +59,7 @@ on:
       - 'docs/Yautja_Gauntlets_V138_Arsenal_Clans.xlsx'
       - 'docs/Yautja_Gauntlets_V139_Arsenal_Clans.xlsx'
       - 'docs/Yautja_Gauntlets_V140_Arsenal_Clans.xlsx'
+      - 'docs/Yautja_Gauntlets_V141_Arsenal_Clans.xlsx'
       - 'app/game/systems/gauntletCampaignV134.ts'
       - 'app/game/types.ts'
       - 'app/game/save.ts'
@@ -147,6 +148,7 @@ jobs:
             /docs/Yautja_Gauntlets_V138_Arsenal_Clans.xlsx
             /docs/Yautja_Gauntlets_V139_Arsenal_Clans.xlsx
             /docs/Yautja_Gauntlets_V140_Arsenal_Clans.xlsx
+            /docs/Yautja_Gauntlets_V141_Arsenal_Clans.xlsx
             /app/game/systems/gauntletCampaignV134.ts
             /app/game/types.ts
             /app/game/save.ts
@@ -275,3 +277,8 @@ jobs:
           unzip -t docs/Yautja_Gauntlets_V140_Arsenal_Clans.xlsx | tail -1
           unzip -Z1 docs/Yautja_Gauntlets_V140_Arsenal_Clans.xlsx | grep -Ec 'xl/worksheets/sheet[0-9]+[.]xml' | grep -qx 42
           echo "V140: 42 worksheets, including 3888 pose configurations"
+      - name: Verify V141 45-tab workbook and full prior version preservation
+        run: |
+          unzip -t docs/Yautja_Gauntlets_V141_Arsenal_Clans.xlsx | tail -1
+          unzip -Z1 docs/Yautja_Gauntlets_V141_Arsenal_Clans.xlsx | grep -Ec 'xl/worksheets/sheet[0-9]+[.]xml' | grep -qx 45
+          echo "V141: 45 sheets and live HuntCanvas equipment checklist"
