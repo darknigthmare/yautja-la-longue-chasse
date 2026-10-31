@@ -16,7 +16,7 @@ export interface PlanetTerrainRegionV152 {
 }
 export interface PlanetTerrainSlopeV152 {
   width:number;height:number;radiusKm:number;
-  gradeTenthsPercent:Uint16Array;
+  gradeHundredthsPercent:Uint16Array;
   /** RGB gradient; alpha=255 over true dry land, alpha=0 for all media. */
   preview:Uint8ClampedArray;
   counts:readonly [number,number,number,number];
@@ -82,7 +82,7 @@ export function analyzePlanetTerrainSlopesV152(
     land[k]=region;
     elevation[k]=sampleHeightMeters(rg16,k,maxElevationMeters);
   }
-  const gradeTenthsPercent=new Uint16Array(width*height);
+  const gradeHundredthsPercent=new Uint16Array(width*height);
   const preview=new Uint8ClampedArray(width*height*4);
   const counts:[number,number,number,number]=[0,0,0,0];
   const regionStats=raster.regions.map((region,index)=>({
@@ -112,8 +112,8 @@ export function analyzePlanetTerrainSlopesV152(
         hasB?(elevation[bottom]-center)/verticalMeters:
         hasT?(center-elevation[top])/verticalMeters:0;
       const percent=100*Math.hypot(dx,dy);
-      const grade=clamp(Math.round(percent*10),0,65535);
-      gradeTenthsPercent[k]=grade;
+      const grade=clamp(Math.round(percent*100),0,65535);
+      gradeHundredthsPercent[k]=grade;
       const category=categoryForGrade(percent),color=palette[category],o=k*4;
       preview[o]=color[0];preview[o+1]=color[1];preview[o+2]=color[2];preview[o+3]=255;
       counts[category]++;
@@ -125,7 +125,7 @@ export function analyzePlanetTerrainSlopesV152(
   }
   if(landPixels!==raster.landPixels)throw new RangeError("Statistiques terrestres V150 incohérentes.");
   return {
-    width,height,radiusKm,gradeTenthsPercent,preview,counts,
+    width,height,radiusKm,gradeHundredthsPercent,preview,counts,
     landPixels,highestGradePercent:Number(max.toFixed(2)),
     steepAndExtremePercent:landPixels?Number((100*(counts[2]+counts[3])/landPixels).toFixed(1)):0,
     regions:regionStats.map(region=>({
@@ -153,7 +153,7 @@ export function samplePlanetTerrainRoutesV152(
     const x=clamp(Math.floor((((lon+180)%360+360)%360)/360*width),0,width-1);
     const y=clamp(Math.floor((90-clamp(lat,-90,90))/180*height),0,height-1);
     const k=y*width+x;
-    return raster.rg16[k*4+3]>=128?{index:k,meters:heightAt(k),grade:slopes.gradeTenthsPercent[k]/10}:null;
+    return raster.rg16[k*4+3]>=128?{index:k,meters:heightAt(k),grade:slopes.gradeHundredthsPercent[k]/100}:null;
   };
   const routes:PlanetRouteTerrainV152[]=[];
   for(const route of planet.procedural.routes){

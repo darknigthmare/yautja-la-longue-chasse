@@ -41,7 +41,7 @@ test("V152 uses strictly the V150 land mask: no fabricated slopes in oceans, riv
   assert.equal(result.regions.reduce((sum,r)=>sum+r.pixelCount,0),result.landPixels);
   for(const [x,y] of [[50,30],[7,0],[60,61]]){
     const k=y*128+x;
-    assert.equal(result.gradeTenthsPercent[k],0);
+    assert.equal(result.gradeHundredthsPercent[k],0);
     assert.deepEqual([...result.preview.slice(k*4,k*4+4)],[0,0,0,0]);
   }
   assert(result.highestGradePercent>0);
@@ -58,8 +58,8 @@ test("V152 obeys radius in metres: identical terrain elevation on larger planet 
 test("V152 longitude seam is periodic; poles never sample the opposite hemisphere",()=>{
   const synthetic=grid();
   const map=api.analyzePlanetTerrainSlopesV152(synthetic.raster,synthetic.mask);
-  const left=map.gradeTenthsPercent[32*128+0];
-  const right=map.gradeTenthsPercent[32*128+127];
+  const left=map.gradeHundredthsPercent[32*128+0];
+  const right=map.gradeHundredthsPercent[32*128+127];
   assert(left>0&&right>0);
   assert.equal(map.preview[0*4+3],0);
   assert.equal(map.preview[(63*128+127)*4+3],0);
