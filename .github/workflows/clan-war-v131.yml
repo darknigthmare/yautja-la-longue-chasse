@@ -14,6 +14,14 @@ on:
       - 'app/game/ClanWarGauntletLockerV132.*'
       - 'app/game/systems/clanWarGauntletCatalogV132.ts'
       - 'app/game/data/clanWarGauntletCatalogV132.json'
+      - 'app/game/systems/useHunterGauntletV133.ts'
+      - 'app/game/GameClient.tsx'
+      - 'app/game/HunterRigPreview.tsx'
+      - 'app/game/ClanWarBibleV6Panel.tsx'
+      - 'app/game/ClanWarOperationsV115.*'
+      - 'app/game/sound.ts'
+      - 'tests/clan-war-gauntlets-v133.test.mjs'
+      - 'docs/Yautja_Gauntlets_V132_Arsenal_Clans.xlsx'
       - 'tsconfig.clan-war-v131.json'
       - '.github/workflows/clan-war-v131.yml'
   workflow_dispatch:
@@ -48,14 +56,25 @@ jobs:
             /app/game/ClanWarPanelV85.tsx
             /tests/clan-war-gauntlet-v131.test.mjs
             /tests/clan-war-gauntlets-v132.test.mjs
+            /tests/clan-war-gauntlets-v133.test.mjs
+            /app/game/systems/useHunterGauntletV133.ts
+            /app/game/GameClient.tsx
+            /app/game/HunterRigPreview.tsx
+            /app/game/ClanWarBibleV6Panel.tsx
+            /app/game/ClanWarOperationsV115.tsx
+            /app/game/ClanWarOperationsV115.module.css
+            /app/game/sound.ts
+            /docs/Yautja_Gauntlets_V132_Arsenal_Clans.xlsx
       - name: Use Node.js 22
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with: {node-version: '22'}
       - name: Reproducible dependencies
         run: npm ci --ignore-scripts --no-audit --no-fund
       - name: Verify dual-view invariants
-        run: node --experimental-strip-types --test --test-reporter=spec tests/clan-war-gauntlet-v131.test.mjs tests/clan-war-gauntlets-v132.test.mjs
+        run: node --experimental-strip-types --test --test-reporter=spec tests/clan-war-gauntlet-v131.test.mjs tests/clan-war-gauntlets-v132.test.mjs tests/clan-war-gauntlets-v133.test.mjs
       - name: Typecheck the projector and mode parser
         run: npx --no-install tsc --noEmit --project tsconfig.clan-war-v131.json
       - name: Lint changed game-facing code and tests
-        run: npx --no-install eslint app/game/ClanWarPanelV85.tsx app/game/ClanWarGauntletV131.tsx app/game/HunterGauntletArtV132.tsx app/game/ClanWarGauntletLockerV132.tsx app/game/systems/clanWarViewV131.ts app/game/systems/clanWarGauntletCatalogV132.ts tests/clan-war-gauntlet-v131.test.mjs tests/clan-war-gauntlets-v132.test.mjs
+        run: npx --no-install eslint app/game/ClanWarPanelV85.tsx app/game/ClanWarGauntletV131.tsx app/game/HunterGauntletArtV132.tsx app/game/ClanWarGauntletLockerV132.tsx app/game/systems/clanWarViewV131.ts app/game/systems/clanWarGauntletCatalogV132.ts app/game/systems/useHunterGauntletV133.ts app/game/GameClient.tsx app/game/HunterRigPreview.tsx app/game/ClanWarBibleV6Panel.tsx app/game/ClanWarOperationsV115.tsx app/game/sound.ts tests/clan-war-gauntlet-v131.test.mjs tests/clan-war-gauntlets-v132.test.mjs tests/clan-war-gauntlets-v133.test.mjs
+      - name: Verify production Excel archive integrity
+        run: unzip -t docs/Yautja_Gauntlets_V132_Arsenal_Clans.xlsx | tail -1
