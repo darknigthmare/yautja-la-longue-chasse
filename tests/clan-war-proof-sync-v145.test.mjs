@@ -55,6 +55,8 @@ test("V145: four real V115 modes produce distinct valid debrief candidates only 
  for(const mode of ["assault","outer","stealth","rts"]){
   const src=first(mode);
   assert.equal(src.offer.territoryId,src.target);
+  assert.equal(src.offer.matchedV85TerritoryId,null,
+   "W3-K territories cannot be fabricated as CON-T sites");
   assert.equal(src.offer.outcome,"retreat");
   assert.equal(src.offer.teamIds.length,1);
   assert.equal(src.offer.woundedCount,0);
@@ -79,6 +81,7 @@ test("V145: explicit proof import adds exactly one documentary receipt without c
  assert.equal(after.reports.at(-1).id,src.offer.marker);
  assert.equal(after.reports.at(-1).turn,src.front.turn);
  assert.ok(after.reports.at(-1).text.includes("Aucune conquête ni XP attribuée"));
+ assert.match(after.reports.at(-1).text,/territoire V85 NON APPARIÉ/);
  for(const field of ["turn","seed","planetId","version","context",
                      "combatants","territories","stocks","orders","observations",
                      "totalStability","regionStability","corridorStability",

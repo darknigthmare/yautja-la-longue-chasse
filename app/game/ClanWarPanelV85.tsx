@@ -420,7 +420,9 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false, init
              {warProofPreview.eligible.length} preuve(s) territoriales proposées,
              {warProofPreview.rejectedIds.length} non appariée(s) ou refusée(s).</p>
             {warProofPreview.eligible.slice(-30).map(item=><div key={item.receiptKey}>
-              <span>{item.mode} · {item.outcome} · {item.territoryName} · {item.teamIds.length} équipe(s)
+              <span>{item.mode} · {item.outcome} · {item.territoryName}
+               · {item.matchedV85TerritoryId??"sans correspondance territoriale V85"}
+               · {item.teamIds.length} équipe(s)
                · {item.woundedCount} blessé(s) source</span>
               <button type="button" disabled={item.alreadyImported||suspended||!pageActive||
                 !strategic.writableWar||pendingWrites>0}

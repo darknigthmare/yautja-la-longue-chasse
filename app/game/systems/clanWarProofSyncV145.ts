@@ -14,6 +14,8 @@ export interface WarProofOfferV145 {
  mode:"assault"|"outer"|"stealth"|"rts";
  outcome:"victory"|"defeat"|"retreat";
  territoryId:string;territoryName:string;
+ /** Explicit null where W3-K territory has NO CON-T counterpart. */
+ matchedV85TerritoryId:string|null;
  teamIds:string[];woundedCount:number;proofCount:number;
  alreadyImported:boolean;
 }
@@ -44,13 +46,15 @@ export function reviewWarProofSyncV145(
  const audit=auditWarOperationsDebriefsV144(operations,rules);
  const eligible:WarProofOfferV145[]=[],rejectedIds=[...audit.rejectedIds];
  for(const proof of audit.debriefs){
-  if(proof.source!=="V115-EXERCISE"||!proof.campaignCandidateTerritoryId||
+  // V6 has W3-Kxx IDs while V85 has CON-Txx IDs: they are different
+  // authored maps, not a zip/join on an index or visual resemblance.
+  // Archiving the raw-source report is safe only WITHOUT assigning a V85
+  // territory or affecting sovereignty/characters on the other map.
+  if(proof.source!=="V115-EXERCISE"||
     typeof proof.territoryId!=="string"||
-    proof.campaignCandidateTerritoryId!==proof.territoryId||
+    !rules.territories.some(t=>t.id===proof.territoryId)||
     proof.planetId!==null||proof.mapId!==null||
-    proof.sourceSha!==rules.metadata.sha256||
-    !warTerritoryForSimulationV96(war,proof.territoryId)||
-    !war.territories[proof.territoryId]){
+    proof.sourceSha!==rules.metadata.sha256){
    rejectedIds.push(proof.receiptKey);continue;
   }
   const marker=WAR_PROOF_MARKER_PREFIX_V145+proof.receiptKey;
@@ -59,6 +63,8 @@ export function reviewWarProofSyncV145(
    receiptKey:proof.receiptKey,marker,mode:proof.mode,
    outcome:proof.outcome,
    territoryId:proof.territoryId,territoryName:proof.territoryName??proof.territoryId,
+   matchedV85TerritoryId:proof.campaignCandidateTerritoryId===proof.territoryId&&
+     warTerritoryForSimulationV96(war,proof.territoryId)?proof.territoryId:null,
    teamIds:[...proof.teamIds],woundedCount:proof.casualtyIds.length,
    proofCount:proof.proofCount,
    alreadyImported:war.appliedResultIds.includes(marker)||
@@ -96,7 +102,10 @@ export function importWarProofV145(
   .debriefs.find(p=>p.receiptKey===receiptKey);
  if(!source)return reject("Preuve de mission perdue avant confirmation.");
  const summary="Dossier libre V115 "+source.mode+" / "+source.outcome+
-  " · "+source.territoryId+" · "+safeText(source.narrative)+
+  " · secteur origine "+source.territoryId+
+  (offer.matchedV85TerritoryId?" · lien V85 explicite "+offer.matchedV85TerritoryId:
+    " · territoire V85 NON APPARIÉ")+
+  " · "+safeText(source.narrative)+
   " · "+source.teamIds.length+" formation(s), "+source.casualtyIds.length+
   " blessé(s) dans l'exercice d'origine. Aucune conquête ni XP attribuée.";
  const next:WarSimulationV85={
@@ -112,5 +121,6 @@ export function importWarProofV145(
   return reject("La sauvegarde V85 refuserait ce registre : aucune écriture effectuée.");
  return {state:next,accepted:true,message:
   "Preuve "+receiptKey+" archivée UNE fois dans le journal V85. "+
-  "Aucun territoire, soldat, PV, stock, XP ni résultat de conquête modifié."};
+  "Aucun territoire, soldat, PV, stock, XP ni résultat de conquête modifié."+
+  (offer.matchedV85TerritoryId?"":" Aucun site V85 ne lui a été attribué.")};
 }
