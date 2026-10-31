@@ -5,6 +5,7 @@ import { GAUNTLET_EVIDENCE_LABELS_V132, GAUNTLET_PALETTES_V132, gauntletByIdV132
 import HunterGauntletArtV132 from "./HunterGauntletArtV132";
 import JungleHunterLayeredV134 from "./JungleHunterLayeredV134";
 import GauntletKnownHuntersV135, {isKnownHunterGauntletV135} from "./GauntletKnownHuntersV135";
+import GauntletArchiveStudiesV136, {isGauntletArchiveStudyV136} from "./GauntletArchiveStudiesV136";
 import type { ClanWarPresentationV131 } from "./systems/clanWarViewV131";
 import styles from "./ClanWarGauntletV131.module.css";
 
@@ -38,7 +39,7 @@ export default function ClanWarGauntletV131({
     aria-label="Projection stratégique et atlas des guerres de clans">
     <div className={styles.projector} aria-hidden={view === "classic"}>
       <div className={styles.gauntletArt}>
-        {equipped.id==="jungle-hunter"?<JungleHunterLayeredV134/>:isKnownHunterGauntletV135(equipped.id)?<GauntletKnownHuntersV135 variant={equipped.id}/>:<HunterGauntletArtV132 entry={equipped}/>}
+        {equipped.id==="jungle-hunter"?<JungleHunterLayeredV134/>:isKnownHunterGauntletV135(equipped.id)?<GauntletKnownHuntersV135 variant={equipped.id}/>:isGauntletArchiveStudyV136(equipped.id)?<GauntletArchiveStudiesV136 entry={equipped}/>:<HunterGauntletArtV132 entry={equipped}/>} 
       </div>
       <div className={styles.projectionInfo}>
         <p className={styles.eyebrow}>COMMANDANT YAUTJA · {equipped.name}</p>
