@@ -44,6 +44,7 @@ on:
       - 'docs/Yautja_Gauntlets_V134_Arsenal_Clans.xlsx'
       - 'docs/Yautja_Gauntlets_V135_Arsenal_Clans.xlsx'
       - 'docs/Yautja_Gauntlets_V136_Arsenal_Clans.xlsx'
+      - 'docs/Yautja_Gauntlets_V137_Arsenal_Clans.xlsx'
       - 'app/game/systems/gauntletCampaignV134.ts'
       - 'app/game/types.ts'
       - 'app/game/save.ts'
@@ -112,6 +113,7 @@ jobs:
             /docs/Yautja_Gauntlets_V134_Arsenal_Clans.xlsx
             /docs/Yautja_Gauntlets_V135_Arsenal_Clans.xlsx
             /docs/Yautja_Gauntlets_V136_Arsenal_Clans.xlsx
+            /docs/Yautja_Gauntlets_V137_Arsenal_Clans.xlsx
             /app/game/systems/gauntletCampaignV134.ts
             /app/game/types.ts
             /app/game/save.ts
@@ -208,3 +210,10 @@ jobs:
           if-no-files-found: error
       - name: Verify complete V136 production Excel (26 tabs, formula metrics)
         run: unzip -t docs/Yautja_Gauntlets_V136_Arsenal_Clans.xlsx | tail -1
+      - name: Validate current 33-sheet V137 open-work tracker
+        run: |
+          unzip -t docs/Yautja_Gauntlets_V137_Arsenal_Clans.xlsx | tail -1
+          count=$(unzip -Z1 docs/Yautja_Gauntlets_V137_Arsenal_Clans.xlsx | grep -Ec '^xl/worksheets/sheet[0-9]+\.xml
+)
+          test "$count" -eq 33
+          echo "V137: $count worksheets, archive valid"
