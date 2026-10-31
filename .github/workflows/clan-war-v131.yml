@@ -54,6 +54,7 @@ on:
       - 'docs/Yautja_Gauntlets_V136_Arsenal_Clans.xlsx'
       - 'docs/Yautja_Gauntlets_V137_Arsenal_Clans.xlsx'
       - 'docs/Yautja_Gauntlets_V138_Arsenal_Clans.xlsx'
+      - 'docs/Yautja_Gauntlets_V139_Arsenal_Clans.xlsx'
       - 'app/game/systems/gauntletCampaignV134.ts'
       - 'app/game/types.ts'
       - 'app/game/save.ts'
@@ -137,6 +138,7 @@ jobs:
             /docs/Yautja_Gauntlets_V136_Arsenal_Clans.xlsx
             /docs/Yautja_Gauntlets_V137_Arsenal_Clans.xlsx
             /docs/Yautja_Gauntlets_V138_Arsenal_Clans.xlsx
+            /docs/Yautja_Gauntlets_V139_Arsenal_Clans.xlsx
             /app/game/systems/gauntletCampaignV134.ts
             /app/game/types.ts
             /app/game/save.ts
@@ -254,3 +256,9 @@ jobs:
           path: outputs/gauntlet-v139-rig/
           retention-days: 30
           if-no-files-found: error
+
+      - name: Validate V139 rig-art tracker (39 worksheets, no damaged XLSX)
+        run: |
+          unzip -t docs/Yautja_Gauntlets_V139_Arsenal_Clans.xlsx | tail -1
+          unzip -Z1 docs/Yautja_Gauntlets_V139_Arsenal_Clans.xlsx | grep -Ec 'xl/worksheets/sheet[0-9]+[.]xml' | grep -qx 39
+          echo "V139: 39 worksheets, 54 individualized rig pairs"
