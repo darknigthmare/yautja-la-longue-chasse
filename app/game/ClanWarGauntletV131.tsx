@@ -3,6 +3,7 @@
 import type { CSSProperties, ReactNode } from "react";
 import { GAUNTLET_EVIDENCE_LABELS_V132, GAUNTLET_PALETTES_V132, gauntletByIdV132, type GauntletDefinitionV132 } from "./systems/clanWarGauntletCatalogV132";
 import HunterGauntletArtV132 from "./HunterGauntletArtV132";
+import JungleHunterLayeredV134 from "./JungleHunterLayeredV134";
 import type { ClanWarPresentationV131 } from "./systems/clanWarViewV131";
 import styles from "./ClanWarGauntletV131.module.css";
 
@@ -36,7 +37,7 @@ export default function ClanWarGauntletV131({
     aria-label="Projection stratégique et atlas des guerres de clans">
     <div className={styles.projector} aria-hidden={view === "classic"}>
       <div className={styles.gauntletArt}>
-        <HunterGauntletArtV132 entry={equipped}/>
+        {equipped.id==="jungle-hunter"?<JungleHunterLayeredV134/>:<HunterGauntletArtV132 entry={equipped}/>}
       </div>
       <div className={styles.projectionInfo}>
         <p className={styles.eyebrow}>COMMANDANT YAUTJA · {equipped.name}</p>
