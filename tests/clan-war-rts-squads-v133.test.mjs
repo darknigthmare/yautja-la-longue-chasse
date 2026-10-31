@@ -57,6 +57,16 @@ function fullSourceMission(id){
  state=result.state;
  for(const task of state.mission.tasks){
   state=moveNear(state,squadId,task.location,1);
+  if(task.requiresPressure&&!state.airlockStable){
+   const pressurized=issue(state,{kind:"stabilize",squadId});
+   assert.equal(pressurized.accepted,true,id+" cannot stabilize orbital pressure: "+pressurized.message);
+   state=pressurized.state;
+  }
+  if(task.requiresPower&&!state.power){
+   const powered=issue(state,{kind:"power",squadId});
+   assert.equal(powered.accepted,true,id+" cannot restore required power: "+powered.message);
+   state=powered.state;
+  }
   let cycles=0;
   while(!state.completedTaskIds.includes(task.id)&&cycles++<48){
    const kind=state.hold?"wait":"interact";
@@ -80,7 +90,7 @@ function fullSourceMission(id){
   state=waited.state;
  }
  const completed=issue(state,{kind:"extract",squadId});
- assert.equal(completed.accepted,true,id+" extraction rejected: "+completed.message);
+ assert.equal(completed.accepted,true,id+" extraction rejected: "+completed.message+"; escort="+JSON.stringify(state.tracked)+"; allies="+JSON.stringify(state.squads.map(u=>({id:u.id,x:u.x,y:u.y,hp:u.hp}))));
  const end=completed.state;
  assert.equal(end.phase,"victory");
  assert.equal(end.report?.campaignMutation,false);
