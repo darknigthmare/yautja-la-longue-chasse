@@ -448,7 +448,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
               a.teamId!,b.teamId!,rules))}>
            Replier ensemble {a.unitId} + {b.unitId} (16 AP, 1 vrai tour)
           </button>))}</div>
-        <p className={styles.explain}>V144 : deux formations réelles proches se replient sans franchir les ennemis ; un seul tour normal de riposte adverse suit l'ordre.</p>
+        <p className={styles.explain}>V144 : deux formations réelles proches se replient sans franchir les ennemis ; un seul tour normal de riposte adverse suit l&apos;ordre.</p>
         <p>Points d&apos;assaut <strong>{assault.ap} AP</strong> · Cadence <strong>niveau {assault.apLevel??1}/3</strong> · Réserve maximale <strong>{100+((assault.apLevel??1)-1)*35} AP</strong> · Rempart allié <strong>{assault.ownBase}/80</strong> · Rempart adverse <strong>{assault.rivalBase}/80</strong>. Les équipes avancent et engagent automatiquement ; vous décidez du moment du déploiement.</p>
         <div className={styles.cards}>
           <button type="button" disabled={blocked||(assault.apLevel??1)>=3||assault.ap<((assault.apLevel??1)===1?35:55)}

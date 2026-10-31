@@ -17,7 +17,6 @@ const built=await build({stdin:{contents:[
  format:"esm",platform:"node",target:"es2022",logLevel:"silent"});
 const api=await import("data:text/javascript;base64,"+Buffer.from(built.outputFiles[0].text).toString("base64"));
 const rules=api.DEFAULT_WAR_RULES_V6;
-const at=p=>p.x+","+p.y;
 const distance=(a,b)=>Math.abs(a.x-b.x)+Math.abs(a.y-b.y);
 function open(mode,teams=1) {
  const initial=api.createWarOperationsV115(rules);
