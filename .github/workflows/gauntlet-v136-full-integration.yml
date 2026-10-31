@@ -20,6 +20,7 @@ on:
       - 'app/game/GauntletPoseInspectionV140.*'
       - 'app/gauntlet-qa-v136/client.tsx'
       - 'tests/gauntlet-poses-v140.test.mjs'
+      - 'tests/gauntlet-mission-v141.test.mjs'
       - 'tests/browser/gauntlet-pose-v140.fixture.tsx'
       - 'scripts/qa-gauntlet-pose-v140.mjs'
       - 'tests/gauntlet-qa-proxy-runtime-v138.test.mjs'
@@ -101,6 +102,8 @@ jobs:
           node scripts/build-gauntlet-rig-v139.mjs --check
       - name: V140 geometry across 360 real rig configurations and 720 hinge states
         run: node --experimental-strip-types --test --test-reporter=spec tests/gauntlet-poses-v140.test.mjs
+      - name: Check V141 equipped gauntlet during live missions and V3 fallback
+        run: node --experimental-strip-types --test --test-reporter=spec tests/gauntlet-mission-v141.test.mjs
       - name: Browser QA of production actor rig across models, morphologies, poses and facing
         run: node scripts/qa-gauntlet-pose-v140.mjs
       - name: Preserve real actor pose captures and checks
