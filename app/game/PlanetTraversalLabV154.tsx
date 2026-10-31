@@ -5,6 +5,7 @@ import type { WarPlanetV96 } from "./systems/clanWarPlanetsV96";
 import type { PlanetReliefRasterV150 } from "./systems/clanWarPlanetReliefV150";
 import type { PlanetTerrainSlopeV152 } from "./systems/clanWarPlanetTerrainV152";
 import { warUnitV85 } from "./systems/clanWarV85Data";
+import { analyzePlanetTraverseSectionV155 } from "./systems/clanWarPlanetTraverseSectionV155";
 import {
   PLANET_MOBILITY_PROFILES_V154, buildPlanetTraversalGridV154,
   preferredTraversalStartV154, isTraversalCellPassableV154,
@@ -33,6 +34,21 @@ function WalkOnPlanetV154({grid,territoryName}:{
   const [status,setStatus]=useState("Choisissez une case terrestre à atteindre.");
   const sourceUnit=warUnitV85(unitId);
   const currentProfile=PLANET_MOBILITY_PROFILES_V154.find(profile=>profile.unitTypeId===unitId)!;
+  const crossSection=analyzePlanetTraverseSectionV155(grid,session);
+  const svgWidth=640,svgHeight=154,svgPadding=24;
+  const altitudeRange=Math.max(1,crossSection.maxElevationMeters-crossSection.minElevationMeters);
+  const chartCoords=crossSection.nodes.map((node,index)=>({
+    x:crossSection.totalDistanceKm>0?
+      svgPadding+(node.distanceFromStartKm/crossSection.totalDistanceKm)*(svgWidth-2*svgPadding):
+      svgWidth/2,
+    y:svgHeight-svgPadding-
+      ((node.elevationMeters-crossSection.minElevationMeters)/altitudeRange)*(svgHeight-2*svgPadding),
+    index,
+  }));
+  const line=chartCoords.map(p=>p.x+","+p.y).join(" ");
+  const area=chartCoords.length?
+    `M ${chartCoords[0].x} ${svgHeight-svgPadding} L ${chartCoords.map(p=>p.x+" "+p.y).join(" L ")} L ${chartCoords.at(-1)!.x} ${svgHeight-svgPadding} Z`:"";
+  const marker=chartCoords[crossSection.currentNodeIndex]??null;
   const queued=new Set(session.queued.map(p=>p.x+","+p.y));
   const visited=new Set(session.walked.map(p=>p.x+","+p.y));
   const blocked=grid.cells.filter(cell=>!isTraversalCellPassableV154(cell,unitId)).length;
@@ -80,6 +96,7 @@ function WalkOnPlanetV154({grid,territoryName}:{
           radiusKm:grid.radiusKm,center:grid.center},
         unitName:sourceUnit?.name??unitId,maximumAllowedGradePercent:currentProfile.maxGradePercent,
         blockedCells:blocked,
+        terrainElevationProfileV155:crossSection,
         limitations:[...grid.limitations,
           "Local path and travelled cells are an editor exercise, never a campaign/war transaction."],
       },grid.worldCode+"-traversal-v154.json");
@@ -126,6 +143,28 @@ function WalkOnPlanetV154({grid,territoryName}:{
           </button>;
         })}
       </div>
+    </div>
+    <div className={styles.elevationSection} data-testid="planet-traversal-section-v155"
+      data-points={crossSection.nodes.length} data-current-index={crossSection.currentNodeIndex}
+      data-distance-km={crossSection.totalDistanceKm}>
+      <strong>Profil d’altitude de l’itinéraire en cours</strong>
+      <svg viewBox={`0 0 ${svgWidth} ${svgHeight}`} role="img"
+        aria-label="Coupe du relief réel V150 sous le parcours choisi">
+        <line x1={svgPadding} x2={svgWidth-svgPadding} y1={svgHeight-svgPadding}
+          y2={svgHeight-svgPadding} stroke="#6d9884" strokeWidth="1"/>
+        {area&&<path d={area} fill="#376451" fillOpacity=".6"/>}
+        {line&&<polyline points={line} stroke="#d8d39d" fill="none"
+          strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>}
+        {marker&&<circle cx={marker.x} cy={marker.y} r={7}
+          fill="#f6d793" stroke="#132923" strokeWidth="3"/>}
+      </svg>
+      <div className={styles.sectionFacts}>
+        <span>{crossSection.nodes.length} point(s) du trajet</span>
+        <span>Montée : {crossSection.ascentMeters.toLocaleString("fr-FR")} m</span>
+        <span>Descente : {crossSection.descentMeters.toLocaleString("fr-FR")} m</span>
+        <span>Altitude min./max. : {crossSection.minElevationMeters.toLocaleString("fr-FR")} / {crossSection.maxElevationMeters.toLocaleString("fr-FR")} m</span>
+      </div>
+      <p>Coupe verticale volontairement amplifiée pour être lisible. L’altitude provient du même raster V150 que les cases, sans relief fictif ajouté.</p>
     </div>
     <div className={styles.stats} data-testid="planet-traversal-stats-v154">
       <span>{grid.cells.length-blocked} case(s) praticables</span>

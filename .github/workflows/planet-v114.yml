@@ -85,6 +85,7 @@ jobs:
           tests/planet-export-studies-v151.test.mjs
           tests/planet-terrain-slope-v152.test.mjs
           tests/planet-traversal-exercise-v154.test.mjs
+          tests/planet-traversal-section-v155.test.mjs
           tests/planet-surface-budget-v136.test.mjs
           tests/planet-shape-library-v137.test.mjs
           tests/planet-projection-parity-v138.test.mjs
@@ -139,6 +140,7 @@ jobs:
           app/game/planetAssetStudiesV151.ts
           app/game/systems/clanWarPlanetTerrainV152.ts
           app/game/systems/clanWarPlanetTraverseV154.ts
+          app/game/systems/clanWarPlanetTraverseSectionV155.ts
           app/game/PlanetTraversalLabV154.tsx
           app/game/systems/planetProjectionParityV138.ts
           app/game/systems/clanWarPlanetTopologyAdvisorV139.ts

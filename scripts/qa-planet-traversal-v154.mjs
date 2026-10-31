@@ -67,11 +67,18 @@ try{
     Boolean(neighbor)&&Boolean(await play.getAttribute("data-position")));
   const firstPosition=await play.getAttribute("data-position");
   await play.locator('[data-testid="planet-traversal-tile-v154"][data-x="'+neighbor.x+'"][data-y="'+neighbor.y+'"]').click();
+  const section=play.getByTestId("planet-traversal-section-v155");
+  check("V155 displays the sampled real altitude profile of the intended path",
+    (await section.getAttribute("data-points"))==="2" &&
+    (await section.getAttribute("data-current-index"))==="0");
   check("V154 click prepares only a contiguous path instead of teleporting the unit",
     (await play.locator('[data-testid="planet-traversal-tile-v154"][data-planned="true"]').count())>0 &&
     (await play.getAttribute("data-position"))===firstPosition &&
     await play.getByTestId("planet-traversal-step-v154").isEnabled());
   await play.getByTestId("planet-traversal-step-v154").click();
+  check("V155 vertical marker advances when the same unit moves one cell",
+    (await section.getAttribute("data-current-index"))==="1" &&
+    (await section.getAttribute("data-points"))==="2");
   check("V154 move command performs exactly one real adjacent step on dry ground",
     (await play.getAttribute("data-steps"))==="1" &&
     (await play.getAttribute("data-position"))===neighbor.x+","+neighbor.y &&
@@ -92,6 +99,8 @@ try{
     record.version===154 && record.worldCode===world && record.unitTypeId==="RTS-U02" &&
     record.steps===1 && record.walked.length===2 &&
     record.maximumAllowedGradePercent===27 &&
+    record.terrainElevationProfileV155?.version===155 &&
+    record.terrainElevationProfileV155.nodes.length===2 &&
     !JSON.stringify(record).includes("combatants"));
 
   const unit=play.getByTestId("planet-traversal-unit-v154");
