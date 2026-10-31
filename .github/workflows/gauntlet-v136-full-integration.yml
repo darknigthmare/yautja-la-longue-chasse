@@ -11,6 +11,8 @@ on:
       - 'app/game/**'
       - 'app/gauntlet-qa-v135/**'
       - 'app/gauntlet-qa-v136/**'
+      - 'proxy.ts'
+      - 'tests/gauntlet-qa-privacy-v138.test.mjs'
       - 'tests/clan-war-gauntlet*.test.mjs'
       - 'scripts/export-gauntlet*.mjs'
       - 'scripts/qa-gauntlet-browser-v137.mjs'
@@ -77,6 +79,8 @@ jobs:
         run: echo "Asset audit remains under V131, where the exact SVG paths are checked and rendered."
       - name: Real V13 campaign export-import and multitab conflict tests
         run: node --import tsx --test --test-reporter=spec tests/gauntlet-save-roundtrip-v136.test.mjs
+      - name: Ensure QA galleries are private in non-local environments
+        run: node --experimental-strip-types --test --test-reporter=spec tests/gauntlet-qa-privacy-v138.test.mjs
       - name: Browser interactions on all 54 models (real Chrome, not screenshots-only)
         run: node scripts/qa-gauntlet-browser-v137.mjs
       - name: Preserve evidence for browser UI and mobile layouts
