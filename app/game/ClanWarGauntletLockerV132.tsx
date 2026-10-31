@@ -34,7 +34,7 @@ export default function ClanWarGauntletLockerV132({ hunterRank, equippedId, onEq
   return <details className={styles.locker} data-testid="gauntlet-locker-v132" data-equiv="cosmetic-hud-only">
     <summary>Armurerie de clan · gauntlets <span>{unlocked}/{GAUNTLET_CATALOG_V132.length} accessibles</span></summary>
     <div className={styles.head}>
-      <p>Choisissez le brassard représenté dans la projection. Les variantes apportent une palette, un rythme d'ouverture, une signature sonore de conception et une <strong>lecture tactique des seules informations déjà connues</strong>, jamais des dégâts ou des unités supplémentaires.</p>
+      <p>Choisissez le brassard représenté dans la projection. Les variantes apportent une palette, un rythme d&apos;ouverture, une signature sonore de conception et une <strong>lecture tactique des seules informations déjà connues</strong>, jamais des dégâts ou des unités supplémentaires.</p>
       <p><strong>Équipé :</strong> {gauntletByIdV132(equippedId)?.name ?? "Jungle Hunter"} · <strong>Profil :</strong> {hunterRank}.</p>
     </div>
     <div className={styles.filters}>
@@ -83,6 +83,6 @@ export default function ClanWarGauntletLockerV132({ hunterRank, equippedId, onEq
       <span>{currentPage+1}/{maxPages}</span>
       <button type="button" disabled={currentPage+1>=maxPages} onClick={()=>setPage(p=>p+1)}>Suivant</button>
     </div>
-    <p className={styles.footnote}>Les 44 modèles à quête non encore câblée restent volontairement verrouillés. L'armurerie conserve l'équipement dans les préférences locales du chasseur, indépendamment de la sauvegarde de conquête ; aucun trophée ni rang n'est inventé.</p>
+    <p className={styles.footnote}>Les 44 modèles à quête non encore câblée restent volontairement verrouillés. L&apos;armurerie conserve l&apos;équipement dans les préférences locales du chasseur, indépendamment de la sauvegarde de conquête ; aucun trophée ni rang n&apos;est inventé.</p>
   </details>;
 }
