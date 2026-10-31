@@ -16,6 +16,7 @@ on:
       - 'app/game/**/clanWarShape*'
       - 'tests/planet*'
       - 'tests/planet-*'
+      - 'scripts/qa-planet-random-v144.mjs'
       - '.github/workflows/planet-v114.yml'
   workflow_dispatch:
 permissions:
@@ -165,6 +166,6 @@ jobs:
           path: |
             outputs/qa-planet-modular-v124/
             outputs/qa-planet-regional-kit-v128/
-          outputs/qa-planet-random-v144/
+            outputs/qa-planet-random-v144/
           retention-days: 7
           if-no-files-found: ignore
