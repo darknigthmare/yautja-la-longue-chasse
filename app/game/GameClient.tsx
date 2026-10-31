@@ -20,7 +20,7 @@ import React, {
 } from "react";
 import HunterRigPreview from "./HunterRigPreview";
 import HunterChromaticForgeV113 from "./HunterChromaticForgeV113";
-import { normalizeHunterChromaticsV113, type HunterChromaticsV113, type ChromaticFacilityV115 } from "./hunterChromaticsV113";
+import { normalizeHunterChromaticsV113, maskOriginForCustomizationV135, type HunterChromaticsV113, type ChromaticFacilityV115 } from "./hunterChromaticsV113";
 import { commitHunterChromaticsV116 } from "./systems/hunterChromaticPersistenceV116";
 import CloudAccountV71, { openCloudAccountV71 } from "./CloudAccountV71";
 import HomeworldModularHunter from "./HomeworldModularHunter";
@@ -2974,9 +2974,16 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         ...save.appearance,
         [key]: value,
       };
+      // Persist this class identity BEFORE the preset becomes "custom";
+      // changing even a dread color must not lock an Alpha/Samurai out.
+      const maskOwnerOrigin = maskOriginForCustomizationV135(save.appearance);
       if (key !== "presetId") appearance.presetId = "custom";
       // A standard swatch deliberately clears only the custom override of its channel.
       const baseChromatics = normalizeHunterChromaticsV113(appearance.chromaticsV113);
+      if (key !== "presetId") {
+        baseChromatics.maskOriginId = maskOwnerOrigin;
+        appearance.chromaticsV113 = baseChromatics;
+      }
       if (key === "skinId") appearance.chromaticsV113 = { ...baseChromatics, skinHex: null, skinMaterialId: null };
       if (key === "dreadTintId") appearance.chromaticsV113 = { ...baseChromatics, dreadHex: null, dreadMaterialId: null };
       if (key === "armorTintId") appearance.chromaticsV113 = { ...baseChromatics, armorHex: null, armorMaterialId: null };

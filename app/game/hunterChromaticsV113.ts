@@ -474,6 +474,21 @@ export function hasCustomChromaticsV113(value: unknown): boolean {
   return Object.values(safe).some(item => item !== null);
 }
 
+/** V135: preserve the mask owner's class through the first customization.
+ * This is derived from the saved owner, not an untrusted draft.
+ */
+export function maskOriginForCustomizationV135(appearance: {
+  presetId?: string;
+  biomaskId?: string | null;
+  chromaticsV113?: unknown;
+}): "alpha" | "samurai" | null {
+  const prior=normalizeHunterChromaticsV113(appearance.chromaticsV113).maskOriginId;
+  if(prior)return prior;
+  if(appearance.presetId==="alpha" && appearance.biomaskId==="feral")return "alpha";
+  if(appearance.presetId==="samurai" && appearance.biomaskId==="celtic")return "samurai";
+  return null;
+}
+
 /** The dedicated biomask surface never paints skin or armor.
  * An Alpha owner keeps that class identity across "custom" saves.
  */

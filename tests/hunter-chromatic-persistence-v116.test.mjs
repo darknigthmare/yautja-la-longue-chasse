@@ -1,7 +1,9 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { commitHunterChromaticsV116 } from "../app/game/systems/hunterChromaticPersistenceV116.ts";
-import { DEFAULT_CHROMATICS_V113, migrateLegacyPhgAppearanceV115 } from "../app/game/hunterChromaticsV113.ts";
+import { DEFAULT_CHROMATICS_V113, migrateLegacyPhgAppearanceV115,
+  maskOriginForCustomizationV135 } from "../app/game/hunterChromaticsV113.ts";
+import {maskClassForAppearanceV132} from "../app/game/phgBiomaskStudiesV132.ts";
 
 const owner = "2026-10-30T11:00:00.000Z";
 const currentSave = () => ({
@@ -109,4 +111,39 @@ test("null modern palette is an explicit reset, not a legacy PR25 import",()=>{
   assert.equal(partiallyExplicit.skinHex,null);
   assert.equal(partiallyExplicit.skinMaterialId,null);
   assert.equal(partiallyExplicit.dreadHex,"#343e53");
+});
+
+test("V135: Alpha's first skin change preserves biomask lineage in durable save",()=>{
+  const current={...currentSave(),appearance:{presetId:"alpha",biomaskId:"feral",
+    chromaticsV113:{...DEFAULT_CHROMATICS_V113}}};
+  const result=commitHunterChromaticsV116({current,expectedOwnerCreatedAt:owner,
+    draft:{...DEFAULT_CHROMATICS_V113,skinHex:"#abc123"},
+    write(next){return {save:next,persisted:true,failure:null};},
+    reconcile:unexpected});
+  assert.equal(result.ok,true);
+  assert.equal(result.save.appearance.presetId,"custom");
+  assert.equal(result.save.appearance.chromaticsV113.maskOriginId,"alpha");
+  assert.equal(maskClassForAppearanceV132(result.save.appearance),"alpha");
+  assert.equal(current.appearance.chromaticsV113.maskOriginId,null);
+  assert.equal(maskOriginForCustomizationV135(result.save.appearance),"alpha");
+});
+test("V135: Samurai remains identifiable but an unrelated Yautja cannot forge mask rights",()=>{
+  const samurai={...currentSave(),appearance:{presetId:"samurai",biomaskId:"celtic",
+    chromaticsV113:{...DEFAULT_CHROMATICS_V113}}};
+  const accepted=commitHunterChromaticsV116({current:samurai,expectedOwnerCreatedAt:owner,
+    draft:{...DEFAULT_CHROMATICS_V113,armorHex:"#cadace"},
+    write(next){return {save:next,persisted:true,failure:null};},
+    reconcile:unexpected});
+  assert.equal(accepted.ok,true);
+  assert.equal(accepted.save.appearance.chromaticsV113.maskOriginId,"samurai");
+  assert.equal(maskClassForAppearanceV132(accepted.save.appearance),"samurai");
+  const nonowner={...currentSave(),appearance:{presetId:"jungle-hunter",biomaskId:"jungle",
+    chromaticsV113:{...DEFAULT_CHROMATICS_V113}}};
+  const forged=commitHunterChromaticsV116({current:nonowner,expectedOwnerCreatedAt:owner,
+    draft:{...DEFAULT_CHROMATICS_V113,maskOriginId:"alpha"},
+    write(next){return {save:next,persisted:true,failure:null};},
+    reconcile:unexpected});
+  assert.equal(forged.ok,true);
+  assert.equal(forged.save.appearance.chromaticsV113.maskOriginId,null);
+  assert.equal(maskClassForAppearanceV132(forged.save.appearance),null);
 });

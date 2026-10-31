@@ -2,7 +2,8 @@
  * V116: owner-bound, durable chromatic change. Rendering reads only an approved
  * save; the caller must update React state AFTER this operation confirms.
  */
-import { normalizeHunterChromaticsV113, type HunterChromaticsV113 } from "../hunterChromaticsV113.ts";
+import { normalizeHunterChromaticsV113, maskOriginForCustomizationV135,
+  type HunterChromaticsV113 } from "../hunterChromaticsV113.ts";
 import type { SaveGame } from "../types";
 import type { SaveWriteFailure, SaveWriteResult, SaveWriteReconciliation } from "../save";
 
@@ -20,10 +21,14 @@ export function commitHunterChromaticsV116(input: {
   const { current, expectedOwnerCreatedAt, draft, write, reconcile } = input;
   const refuse = (failure: SaveWriteFailure): HunterChromaticCommitV116 => ({ ok: false, failure });
   if (current.createdAt !== expectedOwnerCreatedAt) return refuse("save-conflict");
+  const approved = normalizeHunterChromaticsV113(draft);
+  // The caller may change colors, but cannot grant an Alpha/Samurai-only
+  // biomask by forging draft.maskOriginId. Use the last durable owner record.
+  approved.maskOriginId = maskOriginForCustomizationV135(current.appearance);
   const next: SaveGame = {
     ...current,
     appearance: { ...current.appearance, presetId: "custom",
-      chromaticsV113: normalizeHunterChromaticsV113(draft) },
+      chromaticsV113: approved },
   };
   let attempt: SaveWriteResult;
   try { attempt = write(next); }
