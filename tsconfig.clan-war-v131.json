@@ -7,7 +7,11 @@
   "include": [
     "types/clan-war-v120-css.d.ts",
     "app/game/systems/clanWarViewV131.ts",
-    "app/game/ClanWarGauntletV131.tsx"
+    "app/game/ClanWarGauntletV131.tsx",
+    "app/game/HunterGauntletArtV132.tsx",
+    "app/game/ClanWarGauntletLockerV132.tsx",
+    "app/game/systems/clanWarGauntletCatalogV132.ts",
+    "app/game/data/clanWarGauntletCatalogV132.json"
   ],
   "exclude": ["node_modules"]
 }
