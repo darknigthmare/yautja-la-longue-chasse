@@ -45,14 +45,17 @@ test("Assault V140 — all 36 source territories have deterministic, PC-budgeted
   for(const wave of a){
    const unit=rules.units.find(u=>u.id===wave.unitId);
    assert.ok(unit&&unit.fullMembers>0,territory.id+" invented unit");
-   assert.equal(wave.commandPoints,unit.commandPoints);
+   assert.ok(wave.commandPoints>=1&&wave.commandPoints<=unit.commandPoints);
+   assert.equal(wave.fullUnitCommandPoints,unit.commandPoints);
+   assert.equal(wave.sourceFullMembers,unit.fullMembers);
+   assert.ok(wave.effectiveMembers>=1&&wave.effectiveMembers<=unit.fullMembers);
    assert.equal(wave.sourceTerritoryId,territory.id);
    assert.equal(wave.sourceRegionId,territory.region);
    assert.equal(wave.unitRole,unit.role);
    assert.ok(wave.turn%8===0&&wave.turn>=8&&wave.turn<=88);
   }
  }
- assert.equal(nonempty,36,"V6 territories must have a source garrison quota");
+ assert.equal(nonempty,36,"All 36 V6 territories should allocate at least a partial source W3 detachment; PC range: "+rules.territories.map(t=>t.garrisonPc).join(","));
  assert.throws(()=>api.planWarAssaultWavesV140("UNKNOWN-PLANET",rules),RangeError);
 });
 

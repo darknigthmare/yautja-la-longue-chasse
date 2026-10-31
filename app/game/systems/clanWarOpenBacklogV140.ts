@@ -8,6 +8,7 @@ import type {WarOuterMissionV115} from "./clanWarOperationsV115";
  */
 export interface WarAssaultWaveV140 {
  turn:number;id:string;unitId:string;unitRole:string;commandPoints:number;
+ fullUnitCommandPoints:number;effectiveMembers:number;sourceFullMembers:number;
  sourceTerritoryId:string;sourceRegionId:string;
 }
 export function planWarAssaultWavesV140(
@@ -20,23 +21,29 @@ export function planWarAssaultWavesV140(
  const pool=rules.units.filter(u=>u.fullMembers>0&&u.commandPoints>0&&
   u.upkeepRav>=0).sort((a,b)=>a.id.localeCompare(b.id));
  if(!pool.length)return [];
- const region=Number(territory.region.replace(/^\D+/,"").replace(/^KR/,""))||
+ const region=Number(territory.region.match(/KR(\d+)/)?.[1]??"0")||
   Array.from(territory.region).reduce((n,c)=>n+c.charCodeAt(0),0);
  const territorySeed=territory.column*7+territory.row*11+region*13;
  const planned:WarAssaultWaveV140[]=[];
  let committed=0;
  for(let turn=8;turn<=88;turn+=8){
   const remaining=budget-committed;
-  const available=pool.filter(u=>u.commandPoints<=remaining);
-  if(!available.length)break;
-  // Rotation changes the locally deployed SOURCE UNIT roles instead of
-  // inserting an arbitrary global roster at every eighth tick.
-  const index=(territorySeed+planned.length*3+Math.floor(turn/8))%available.length;
-  const unit=available[index];
+  if(remaining<1)break;
+  // Some V6 garrisons have fewer PC than the cheapest FULL W3 formation.
+  // Use source-unit partial detachments whose member count and hit points
+  // are scaled down by the paid PC slice; never mint a full squad for free.
+  const index=(territorySeed+planned.length*3+Math.floor(turn/8))%pool.length;
+  const unit=pool[index];
+  const allowance=Math.max(1,Math.ceil(budget/4));
+  const commandPoints=Math.min(remaining,allowance,unit.commandPoints);
+  const effectiveMembers=Math.max(1,Math.min(unit.fullMembers,
+   Math.floor(unit.fullMembers*commandPoints/unit.commandPoints)));
   planned.push({turn,id:"V140-"+targetId+"-W"+turn,unitId:unit.id,
-   unitRole:unit.role,commandPoints:unit.commandPoints,
+   unitRole:unit.role,commandPoints,
+   fullUnitCommandPoints:unit.commandPoints,
+   effectiveMembers,sourceFullMembers:unit.fullMembers,
    sourceTerritoryId:territory.id,sourceRegionId:territory.region});
-  committed+=unit.commandPoints;
+  committed+=commandPoints;
  }
  return planned;
 }

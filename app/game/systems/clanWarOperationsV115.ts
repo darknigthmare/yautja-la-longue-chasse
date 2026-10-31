@@ -434,8 +434,10 @@ export function stepAssaultV115(state:WarOperationsStateV115,rules:WarRulesV6):W
   const spawnedWaves=[...(arena.spawnedWaves??[])];
   if(wave&&actors.filter(actor=>actor.side==="rival"&&actor.hp>0).length<7&&
      !spawnedWaves.some(w=>w.id===wave.id)){
+    const hp=Math.max(1,Math.ceil(lifeFor(wave.unitId,rules)*
+      wave.effectiveMembers/wave.sourceFullMembers));
     actors.push({id:"rival-"+tick,teamId:null,unitId:wave.unitId,side:"rival",
-      x:95,hp:lifeFor(wave.unitId,rules)});
+      x:95,hp});
     spawnedWaves.push(wave);
   }
   let ownBase=arena.ownBase,rivalBase=arena.rivalBase;
@@ -1041,6 +1043,9 @@ export function readWarOperationsV115(raw:string,rules:WarRulesV6):WarOperations
             !planWarAssaultWavesV140(active.targetId,rules).some(plan=>
               plan.id===w.id&&plan.turn===w.turn&&
               plan.unitId===w.unitId&&plan.commandPoints===w.commandPoints&&
+              plan.fullUnitCommandPoints===w.fullUnitCommandPoints&&
+              plan.effectiveMembers===w.effectiveMembers&&
+              plan.sourceFullMembers===w.sourceFullMembers&&
               plan.sourceRegionId===w.sourceRegionId&&
               plan.sourceTerritoryId===w.sourceTerritoryId))))||
         (a.fallbackCounts!==undefined&&(!a.fallbackCounts||
