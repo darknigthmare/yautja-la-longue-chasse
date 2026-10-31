@@ -7,7 +7,7 @@ const root=fileURLToPath(new URL("../",import.meta.url));
 const read=p=>readFileSync(root+p,"utf8");
 
 test("visual QA route uses real source layers for all five models, not decorative mockups",()=>{
- const page=read("app/gauntlet-qa-v135/page.tsx");
+ const page=read("app/gauntlet-qa-v135/client.tsx");
  assert.match(page,/JungleHunterLayeredV134/);
  assert.match(page,/GauntletKnownHuntersV135/);
  assert.match(page,/isKnownHunterGauntletV135/);
@@ -19,7 +19,7 @@ test("visual QA route uses real source layers for all five models, not decorativ
  assert.ok(!page.includes("localStorage.setItem("));
 });
 test("QA route supports keyboard/accessibility and doesn't claim 1:1 finished",()=>{
- const page=read("app/gauntlet-qa-v135/page.tsx");
+ const page=read("app/gauntlet-qa-v135/client.tsx");
  const css=read("app/gauntlet-qa-v135/GauntletVisualQaV135.module.css");
  assert.match(page,/aria-pressed=\{selected===x.id\}/);
  assert.match(page,/aria-pressed=\{open\}/);
