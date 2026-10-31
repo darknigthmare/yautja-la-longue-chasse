@@ -13,10 +13,16 @@ import {
  * Do not confuse this fixture with an actual played campaign or a granted
  * film prop. No campaign rewards are written to an ordinary user account. */
 const OWNER="2026-10-31T22:44:00.000Z";
-const study=GAUNTLET_STUDIES_V134.find(x=>x.rank==="blooded"&&!x.workshop&&x.completions===1);
-if(!study)throw Error("V144 QA requires one existing blooded study without workshop");
-const other=GAUNTLET_STUDIES_V134.find(x=>x.id!==study.id && x.missionId!==study.missionId);
-if(!other)throw Error("V144 requires a locked control item");
+const study=(()=>{
+  const chosen=GAUNTLET_STUDIES_V134.find(x=>x.rank==="blooded"&&!x.workshop&&x.completions===1);
+  if(!chosen)throw Error("V144 QA requires one existing blooded study without workshop");
+  return chosen;
+})();
+const other=(()=>{
+  const chosen=GAUNTLET_STUDIES_V134.find(x=>x.id!==study.id && x.missionId!==study.missionId);
+  if(!chosen)throw Error("V144 requires a locked control item");
+  return chosen;
+})();
 export const V144_STUDY_ID=study.id;
 export const V144_UNEARNED_ID=other.id;
 
