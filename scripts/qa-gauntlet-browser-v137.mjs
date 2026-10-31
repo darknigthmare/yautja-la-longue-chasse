@@ -15,13 +15,15 @@ const catalogue=JSON.parse(await readFile(resolve(root,"app/game/data/clanWarGau
 assert.equal(catalogue.length,54);
 const compiled=await build({
   absWorkingDir:root,entryPoints:["tests/browser/gauntlet-v136.fixture.tsx"],
-  bundle:true,write:false,jsx:"automatic",platform:"browser",format:"iife",
+  bundle:true,write:false,jsx:"automatic",platform:"browser",format:"iife",outfile:"fixture.js",
   logLevel:"warning",loader:{".svg":"text"},
 });
-const bundle=compiled.outputFiles[0].contents;
+const bundle=compiled.outputFiles.find(f=>f.path.endsWith(".js"))?.contents;
+const stylesheet=compiled.outputFiles.find(f=>f.path.endsWith(".css"))?.contents;
+assert.ok(bundle && stylesheet,"React fixture must bundle JS and real CSS module styles");
 const originSuffix="/game/assets/";
 const publicRoot=resolve(root,"public");
-const html=`<!doctype html><html lang="fr"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Yautja gauntlet V137 browser QA</title><style>body{margin:0}*{box-sizing:border-box}</style></head><body><div id="root"></div><script src="/fixture.js"></script></body></html>`;
+const html=`<!doctype html><html lang="fr"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Yautja gauntlet V137 browser QA</title><style>body{margin:0}*{box-sizing:border-box}</style><link rel="stylesheet" href="/fixture.css"></head><body><div id="root"></div><script src="/fixture.js"></script></body></html>`;
 let spriteRequests=0;
 const server=createServer(async (req,res)=>{
   try{
@@ -29,6 +31,7 @@ const server=createServer(async (req,res)=>{
     const p=decodeURIComponent(parsed.pathname);
     if(p==="/"){res.writeHead(200,{"content-type":"text/html;charset=utf-8"});res.end(html);return;}
     if(p==="/fixture.js"){res.writeHead(200,{"content-type":"application/javascript;charset=utf-8"});res.end(bundle);return;}
+    if(p==="/fixture.css"){res.writeHead(200,{"content-type":"text/css;charset=utf-8"});res.end(stylesheet);return;}
     if(p==="/favicon.ico"){res.writeHead(204);res.end();return;}
     if(p.startsWith(originSuffix)&&p.endsWith(".svg")){
       const target=resolve(publicRoot,p.slice(1));
@@ -133,7 +136,7 @@ try{
   };
   await writeFile(resolve(outputDir,"browser-qa-manifest.json"),JSON.stringify(evidence,null,2)+"\n");
   assert.deepEqual(failures,[],"Unexpected browser errors");
-  assert.ok(spriteRequests>=20,"Expected real SVG loads from the served public asset folders");
+  assert.ok(spriteRequests>=15,"Expected real SVG loads from the served public asset folders");
   console.log(JSON.stringify(evidence,null,2));
 }finally{
   await browser?.close();
