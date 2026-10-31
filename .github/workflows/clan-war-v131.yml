@@ -47,6 +47,7 @@ on:
       - 'docs/Yautja_Gauntlets_V135_Arsenal_Clans.xlsx'
       - 'docs/Yautja_Gauntlets_V136_Arsenal_Clans.xlsx'
       - 'docs/Yautja_Gauntlets_V137_Arsenal_Clans.xlsx'
+      - 'docs/Yautja_Gauntlets_V138_Arsenal_Clans.xlsx'
       - 'app/game/systems/gauntletCampaignV134.ts'
       - 'app/game/types.ts'
       - 'app/game/save.ts'
@@ -121,6 +122,7 @@ jobs:
             /docs/Yautja_Gauntlets_V135_Arsenal_Clans.xlsx
             /docs/Yautja_Gauntlets_V136_Arsenal_Clans.xlsx
             /docs/Yautja_Gauntlets_V137_Arsenal_Clans.xlsx
+            /docs/Yautja_Gauntlets_V138_Arsenal_Clans.xlsx
             /app/game/systems/gauntletCampaignV134.ts
             /app/game/types.ts
             /app/game/save.ts
@@ -222,3 +224,8 @@ jobs:
           unzip -t docs/Yautja_Gauntlets_V137_Arsenal_Clans.xlsx | tail -1
           unzip -Z1 docs/Yautja_Gauntlets_V137_Arsenal_Clans.xlsx | grep -Ec 'xl/worksheets/sheet[0-9]+[.]xml' | grep -qx 33
           echo "V137: 33 worksheets, archive valid"
+      - name: Verify complete V138 production tracker (36 sheets)
+        run: |
+          unzip -t docs/Yautja_Gauntlets_V138_Arsenal_Clans.xlsx | tail -1
+          unzip -Z1 docs/Yautja_Gauntlets_V138_Arsenal_Clans.xlsx | grep -Ec 'xl/worksheets/sheet[0-9]+[.]xml' | grep -qx 36
+          echo "V138: 36 worksheets and no broken archive"
