@@ -20,10 +20,10 @@ Tous ces ordres sont **des règles originales du jeu** et non des capacités aut
 - `app/game/systems/clanWarRtsSquadsV133.ts` : extraction individuelle physique et reçus de missions.
 - `app/game/ClanWarOperationsV115.tsx` et `app/game/ClanWarRtsSquadsV133.tsx` : commandes visibles au joueur dans les quatre modes.
 - `tests/clan-war-four-modes-v139.test.mjs` : dix contrôles d'acceptation scénarisés, erreurs et garde-fous. CI conserve les régressions V115 à V138, tsc et ESLint.
-- `docs/clan-war-v139/Yautja_Guerres_Clans_Suivi_Production_V139_2026-10-31.xlsx` : 45 feuilles prévues; 38 feuilles historiques et 7 nouveaux onglets (4 modes × 15 exigences, QA 56, croisements 28, pilotage). Les 1 200 variantes V120 sont toujours **design-only**, les 24 scénarios W3 et 36 dossiers W5 ne sont pas des campagnes complètes.
+- `docs/clan-war-v139/Yautja_Guerres_Clans_Suivi_Production_V139_2026-10-31.xlsx` : 45 feuilles versionnées; 38 feuilles historiques et 7 nouveaux onglets (4 modes × 15 exigences, QA 56, croisements 28, pilotage). Les 1 200 variantes V120 sont toujours **design-only**, les 24 scénarios W3 et 36 dossiers W5 ne sont pas des campagnes complètes.
 
 ## Acceptation et limites
 
 La V139 n'est pas une guerre totale RTS finalisée. Elle ne crée pas le serveur multijoueur, les grandes armées persistantes, la conquête V85, les scènes de film 1:1, les animations/armes/trophées certifiés ou les 1 200 niveaux physiques. La CI ne couvre pas les performances sur navigateur réel et téléphone/manette. Les mêmes localisations extraterrestres sont maintenues, sans transporter les villes terrestres sur d'autres planètes.
 
-**Statut initial :** code à valider en CI; PR brouillon jusqu'au dernier test et QA manuelle. L'Excel intégrera les statuts effectivement vérifiés, pas des promesses.
+**Validation du code :** le commit `d60025c` a passé **92/92 tests Node**, TypeScript et ESLint ([GitHub Actions 41199508502](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41199508502)). L'Excel V139 définitif contient 45 vraies feuilles, 60 exigences, 56 contrôles QA et 28 interactions : **34 validées en CI ciblée, 8 prototypes partiels et 18 à développer** (exigences). **40 contrôles QA ciblés validés sur 56** ; les autres validations manette, navigateur, continuité des scènes et serveurs restent ouvertes. Dernier commit incluant l'Excel à tester avant fusion.
