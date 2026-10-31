@@ -565,7 +565,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
           Sécurité renforcée V144 · activer un second garde pour cette infiltration
         </button>
         {stealth.supportGuard&&<p className={styles.explain}>Deux gardes physiques patrouillent maintenant le secteur ;
-          la dissimulation, l'écoute et le sabotage discret tiennent compte des deux gardes. Les patrouilles ne peuvent plus occuper la même case.</p>}
+          la dissimulation, l&apos;écoute et le sabotage discret tiennent compte des deux gardes. Les patrouilles ne peuvent plus occuper la même case.</p>}
         <div className={styles.stealthControls}>{(["up","left","down","right"] as const).map(dir=>{
           const dx=dir==="right"?1:dir==="left"?-1:0;
           const dy=dir==="down"?1:dir==="up"?-1:0;

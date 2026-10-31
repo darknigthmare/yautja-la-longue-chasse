@@ -551,7 +551,8 @@ export function commandStealthV115(state:WarOperationsStateV115,command:StealthC
  const quietMovement=command.startsWith("cover-");
  if(command==="listen"){
   if(!terrain.cover.includes(coord(x,y))||cloaked||energy<1||acousticUsed>=2||
-    distance({x,y},{x:guardX,y:guardY})>5)
+    Math.min(distance({x,y},{x:guardX,y:guardY}),
+      supportGuard?distance({x,y},supportGuard):Infinity)>5)
    return reject(state,"Écoute refusée : couvert réel, patrouille à portée acoustique, batterie et limite de deux usages.");
   acousticUsed++;energy--;
  }
@@ -568,7 +569,8 @@ export function commandStealthV115(state:WarOperationsStateV115,command:StealthC
  if(command==="quiet-sabotage"){
   if(sabotaged||stealth.silentSabotageUsed||cloaked||energy<2||
     distance({x,y},terrain.relay)>1||
-    distance({x,y},{x:guardX,y:guardY})<=2)
+    (distance({x,y},{x:guardX,y:guardY})<=2||
+      (supportGuard&&distance({x,y},supportGuard)<=2)))
    return reject(state,"Sabotage discret refusé : relais adjacent, 2 énergie et patrouille réellement distante requis.");
   energy-=2;sabotaged=true;
  }
@@ -607,7 +609,25 @@ export function commandStealthV115(state:WarOperationsStateV115,command:StealthC
   const second=warStealthDecoyPatrolV141(terrain,
     {guardX:supportGuard.x,guardY:supportGuard.y,guardDirection:supportGuard.direction},
     decoyTurns>0&&decoyX!==undefined?{x:decoyX,y:decoyY??2}:null);
-  supportGuard={x:second.guardX,y:second.guardY,direction:second.guardDirection};
+  // A patrol marker may not stack on the other living guard.
+  // The secondary patrol may pause or step to a still-passable neighbor,
+  // but never travels more than one orthogonal tile per action.
+  const candidates=[
+   {x:second.guardX,y:second.guardY},
+   {x:supportGuard.x,y:supportGuard.y},
+   {x:supportGuard.x+1,y:supportGuard.y},
+   {x:supportGuard.x-1,y:supportGuard.y},
+   {x:supportGuard.x,y:supportGuard.y+1},
+   {x:supportGuard.x,y:supportGuard.y-1},
+  ].filter(p=>p.x>=4&&p.x<=7&&p.y>=1&&p.y<=3&&
+    !(p.x===guardX&&p.y===guardY)&&
+    !warTerrainCellBlockedV116(terrain,p.x,p.y)&&
+    distance(p,supportGuard!)<=1);
+  const occupiedFree=candidates[0];
+  if(occupiedFree)
+   supportGuard={x:occupiedFree.x,y:occupiedFree.y,
+    direction:occupiedFree.x>supportGuard.x?1:
+      occupiedFree.x<supportGuard.x?-1:second.guardDirection};
  }
  if(decoyTurns>0)decoyTurns--;
  // An authored cover breaks distant LOS only during a hide action.
