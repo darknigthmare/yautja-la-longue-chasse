@@ -44,6 +44,8 @@ export interface WarRtsSquadsStateV133 {
  completedTaskIds:string[];hold:WarRtsHoldV133|null;
  tracked:WarRtsEscortV133|null;power:boolean;airlockStable:boolean;
  report:WarRtsSquadsReceiptV133|null;log:string[];lastMessage:string;
+ /** Single-tick tactical suppression, never permanent intelligence or casualty. */
+ suppressedEnemyIds?:string[];
 }
 export type WarRtsSquadOrderV133 =
  |{kind:"move";squadId:string;direction:"up"|"down"|"left"|"right"}
@@ -198,7 +200,7 @@ function updateEnemyAI(s:WarRtsSquadsStateV133):WarRtsSquadsStateV133{
  const enemies=s.enemies.map(e=>({...e})),squads=s.squads.map(u=>({...u}));
  const allTargets=()=>squads.filter(u=>u.status==="active"&&u.hp>0);
  for(const enemy of enemies){
-  if(enemy.hp<=0)continue;
+  if(enemy.hp<=0||(s.suppressedEnemyIds??[]).includes(enemy.id))continue;
   const visible=allTargets().filter(u=>distance(enemy,u)<=7&&warMapLineOfSightV128(s.map,enemy,u))
    .sort((a,b)=>distance(enemy,a)-distance(enemy,b)||a.id.localeCompare(b.id));
   const target=visible[0];if(!target)continue;
@@ -230,6 +232,7 @@ function advance(s:WarRtsSquadsStateV133,narration:string):WarRtsSquadsStateV133
   })};
  }
  next=updateEnemyAI(next);
+ next={...next,suppressedEnemyIds:[]};
  next=updateEscort(next);
  if(next.tracked?.secured&&next.tracked.hp<=0)
   return close(next,"defeat","L'acteur/chargement escorté a été perdu avant l'extraction.");
@@ -348,6 +351,31 @@ export function commandWarRtsSquadsV133(s:WarRtsSquadsStateV133,order:WarRtsSqua
   return accept(result,result.lastMessage);
  }
  return fail(s,"Ordre tactique invalide.");
+}
+
+/**
+ * V135 squad fire suppression: spend 2 exercise-RAV from a known, live,
+ * adjacent-range line of sight. The targeted rival misses exactly ONE
+ * response turn; no free hit, invisible targeting, stun lore or campaign XP.
+ */
+export function commandWarRtsSuppressV135(
+ state:WarRtsSquadsStateV133,squadId:string,enemyId:string,
+):WarRtsSquadsUpdateV133{
+ if(state.phase!=="active"||state.report)return fail(state,"Aucune bataille RTS active.");
+ const unit=activeSquads(state).find(u=>u.id===squadId);
+ if(!unit)return fail(state,"Cette escouade ne peut pas effectuer le tir de couverture.");
+ if(state.ravRemaining<2)return fail(state,"Le tir de suppression nécessite 2 RAV d'exercice.");
+ const target=visibleWarRtsEnemiesV133(state).find(e=>e.id===enemyId);
+ if(!target||distance(unit,target)>unit.range||
+    !warMapLineOfSightV128(state.map,unit,target))
+  return fail(state,"Un adversaire confirmé doit être visible et à portée réelle.");
+ // Real damage belongs to a normal shot; suppression is a trade-off with
+ // the same physical ammo budget, not a scripted instant neutralization.
+ const next=advance({...state,ravRemaining:state.ravRemaining-2,
+  suppressedEnemyIds:[target.id]},
+  "Tir de couverture de "+unit.unitId+" sur "+target.unitId+
+  " (2 RAV) : réponse adverse interrompue pour un seul tour.");
+ return accept(next,next.lastMessage);
 }
 
 /**

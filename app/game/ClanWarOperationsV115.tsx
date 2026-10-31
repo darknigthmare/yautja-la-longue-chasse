@@ -18,6 +18,7 @@ import {
   type WarMissionModeV115, type OuterFocusV115, type WarOperationsStateV115,
   type WarOperationsUpdateV115,
 } from "./systems/clanWarOperationsV115";
+import {reinforceWarAssaultLineV135,redirectWarOuterOpsV135} from "./systems/clanWarParallelModesV135";
 import styles from "./ClanWarOperationsV115.module.css";
 
 const modeLabels: Record<WarMissionModeV115, string> = {
@@ -402,12 +403,22 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
             {teamsById(id)} · feu concentré (20 AP){(assault.usedSpecials??[]).includes(id)?" · utilisé":""}
           </button>)}
         </div>
+        <div className={styles.cards}>{current.teamIds.filter(id=>assault.launched.includes(id)).map(id=>{
+          const inPosition=assault.actors.some(actor=>actor.teamId===id&&actor.hp>0&&actor.x<=18);
+          const already=(assault.fortifiedIds??[]).includes(id);
+          return <button key={"fortify-"+id} type="button"
+           disabled={blocked||already||!inPosition||assault.ap<18||assault.ownBase>=80}
+           onClick={()=>commit(reinforceWarAssaultLineV135(worldRef.current,id,rules))}>
+           {teamsById(id)} · protéger le bastion (18 AP){already?" · utilisé":""}
+          </button>;
+        })}</div>
+        <p className={styles.explain}>Une équipe présente près du bastion peut sécuriser sa ligne une fois par assaut en convertissant 18 AP en protection. Aucune troupe ou ressource de campagne n&apos;est créée.</p>
         <p className={styles.explain}>Action coordonnée limitée à une fois par détachement survivant, uniquement si une cible adverse se trouve dans sa portée V6. Aucun nouveau projectile ou équipement n&apos;est créé.</p>
         <p className={styles.explain}>Art temporaire schématique : aucun sprite de film ou de Predator: Hunting Grounds n&apos;est faussement déclaré intégré.</p>
       </div>}
 
       {stealth && <div>
-        <p>Rejoindre le relais (7,1), le désactiver, puis rejoindre l&apos;extraction (1,4). Alerte <strong>{stealth.alarm}/3</strong> · énergie de camouflage <strong>{stealth.energy}/5</strong> · relais <strong>{stealth.sabotaged?"neutralisé":"actif"}</strong>.</p>
+        <p>Rejoindre le relais (7,1), le désactiver, puis rejoindre l&apos;extraction (1,4). Alerte <strong>{stealth.alarm}/3</strong> · énergie de camouflage <strong>{stealth.energy}/5</strong> · relais <strong>{stealth.sabotaged?"neutralisé":"actif"}</strong> · diversion <strong>{stealth.decoyUsed?"épuisée": "disponible"}</strong> · écho sonore <strong>{stealth.decoyTurns??0} tour(s)</strong>.</p>
         <p className={styles.explain}>Terrain régional : {missionTerrain?.title} · {missionTerrain?.ground} · obstacle : {missionTerrain?.wallLabel}.</p>
         <div className={styles.grid} style={{gridTemplateColumns:"repeat(9,minmax(0,1fr))"}} role="img" aria-label="Plan d'infiltration : X pisteur, G garde, R relais, E extraction, obstacles">
           {Array.from({length:54},(_,index)=>{
@@ -416,9 +427,9 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
             return <span className={styles.cell} data-wall={wall} data-actor={mark==="X"?"ally":mark==="G"?"rival":""} key={index} title={"Case "+x+","+y}>{mark}</span>;
           })}
         </div>
-        <div className={styles.stealthControls}>{(["up","left","down","right","cloak","interact"] as const).map(action=>
-          <button type="button" key={action} disabled={blocked} onClick={()=>commit(commandStealthV115(worldRef.current,action,rules))}>
-            {({up:"↑ Nord",left:"← Ouest",down:"↓ Sud",right:"→ Est",cloak:stealth.cloaked?"Désactiver camouflage":"Camouflage optique",interact:"Saboter le relais"} as Record<string,string>)[action]}</button>)}</div>
+        <div className={styles.stealthControls}>{(["up","left","down","right","cloak","interact","wait","decoy"] as const).map(action=>
+          <button type="button" key={action} disabled={blocked||(action==="decoy"&&(Boolean(stealth.decoyUsed)||stealth.cloaked||stealth.energy<2))} onClick={()=>commit(commandStealthV115(worldRef.current,action,rules))}>
+            {({up:"↑ Nord",left:"← Ouest",down:"↓ Sud",right:"→ Est",cloak:stealth.cloaked?"Désactiver camouflage":"Camouflage optique",interact:"Saboter le relais",wait:"Attendre / récupérer énergie",decoy:"Diversion sonore (2 énergie)"} as Record<string,string>)[action]}</button>)}</div>
         <p className={styles.explain}>La patrouille réagit à la position et au sabotage. Le camouflage protège à distance mais possède une réserve finie ; aucune exécution déshonorante n&apos;est requise.</p>
       </div>}
 
@@ -539,6 +550,15 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
         <span>{order.targetId} · {order.teamIds.map(teamsById).join(", ")}</span>
         <span>{order.recall?"Retour au clan":"Rapport de mission"} dans {formatTime(warOuterSecondsRemainingV115(order,now))} · {order.routeIds.length} passage(s)</span>
         {order.recall ? <small className={styles.explain}>Rappel transmis : équipe toujours engagée jusqu&apos;à l&apos;arrivée.</small> : <button type="button" disabled={blocked||now<order.startedAt||now>=order.dueAt} onClick={()=>commit(recallWarOuterMissionV116(worldRef.current,order.id,Date.now(),rules))}>Rappeler l&apos;équipe</button>}
+        {!order.recall&&!order.retask&&now>=order.startedAt&&2*(now-order.startedAt)<(order.dueAt-order.startedAt)&&
+          <div className={styles.cards}>
+           {(Object.keys(focusLabels) as OuterFocusV115[]).filter(f=>f!==order.focus).map(f=>
+            <button type="button" key={f} disabled={blocked}
+             onClick={()=>commit(redirectWarOuterOpsV135(worldRef.current,order.id,f,Date.now(),rules))}>
+             Réorienter vers {focusLabels[f]}
+            </button>)}
+          </div>}
+        {order.retask&&<small className={styles.explain}>Consigne réorientée depuis {focusLabels[order.retask.oldFocus]}, sans nouvel entretien ni rapport anticipé.</small>}
       </div>):<p>Aucune équipe actuellement déléguée.</p>}
       <button type="button" disabled={blocked||!world.outer.some(order=>now>=order.dueAt)}
         onClick={()=>commit(settleWarOuterOpsV115(worldRef.current,Date.now(),rules))}>Recevoir les rapports arrivés</button>
