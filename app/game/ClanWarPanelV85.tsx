@@ -41,6 +41,12 @@ import ClanWarAssaultV106 from "./ClanWarAssaultV106";
 import { queuePreparedWarAssaultV106, type WarAssaultPlanV106 } from "./systems/clanWarAssaultV106";
 import ClanWarGauntletV131 from "./ClanWarGauntletV131";
 import gauntletStyles from "./ClanWarGauntletV131.module.css";
+import ClanWarGauntletLockerV132 from "./ClanWarGauntletLockerV132";
+import {
+  DEFAULT_GAUNTLET_ID_V132, GAUNTLET_READOUT_LABELS_V132,
+  gauntletByIdV132, gauntletStorageKeyV132, gauntletUnlockedV132,
+  parseGauntletPreferenceV132, serializeGauntletPreferenceV132,
+} from "./systems/clanWarGauntletCatalogV132";
 import {
   DEFAULT_WAR_PRESENTATION_V131, WAR_PRESENTATION_KEY_V131, parseClanWarPresentationV131,
   type ClanWarPresentationV131,
@@ -79,6 +85,9 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false, init
   // Presentation is independent from the war archive. Server and first client render match.
   const [presentation, setPresentation] = useState<ClanWarPresentationV131>(DEFAULT_WAR_PRESENTATION_V131);
   const presentationTouched = useRef(false);
+  const [equippedGauntletId,setEquippedGauntletId] = useState(DEFAULT_GAUNTLET_ID_V132);
+  const gauntletStorageKey = gauntletStorageKeyV132(save.createdAt);
+  const gauntletChoiceTouched = useRef(false);
   const [sessionStore] = useState(() => createWarSessionV85(() => typeof window === "undefined" ? null : window.localStorage));
   const [activePlanetId, setActivePlanetId] = useState(() => preferredWarPlanetV96(initialPlanetId));
   const [planetSessions, setPlanetSessions] = useState<Record<string, ReturnType<typeof createWarSessionV85>>>(() => ({
@@ -134,6 +143,31 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false, init
     };
   }, []);
 
+  useEffect(() => {
+    const frame = window.requestAnimationFrame(() => {
+      if (gauntletChoiceTouched.current) return;
+      let raw: string | null = null;
+      try { raw = window.localStorage.getItem(gauntletStorageKey); }
+      catch { /* A denied preference store does not alter the clan simulation. */ }
+      setEquippedGauntletId(parseGauntletPreferenceV132(raw,save.createdAt,save.profile.rankId));
+    });
+    function externalGauntletChoice(event: StorageEvent) {
+      if (event.key === gauntletStorageKey || event.key === null) {
+        setEquippedGauntletId(parseGauntletPreferenceV132(event.newValue,save.createdAt,save.profile.rankId));
+      }
+    }
+    window.addEventListener("storage",externalGauntletChoice);
+    return () => { window.cancelAnimationFrame(frame); window.removeEventListener("storage",externalGauntletChoice); };
+  },[gauntletStorageKey,save.createdAt,save.profile.rankId]);
+
+  function equipGauntlet(id: string) {
+    if (!gauntletUnlockedV132(id,save.profile.rankId)) return;
+    gauntletChoiceTouched.current=true;
+    setEquippedGauntletId(id);
+    try {
+      window.localStorage.setItem(gauntletStorageKey,serializeGauntletPreferenceV132(save.createdAt,id,save.profile.rankId));
+    } catch { /* Keep the equip state for this session, never touch the campaign save. */ }
+  }
   function choosePresentation(next: ClanWarPresentationV131) {
     presentationTouched.current = true;
     setPresentation(next);
@@ -160,6 +194,15 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false, init
 
   const composition = useMemo(() => warCompositionV85(selection), [selection]);
   const supplied = useMemo(() => warSuppliedV85(simulation), [simulation]);
+  const effectiveGauntlet=gauntletUnlockedV132(equippedGauntletId,save.profile.rankId)
+    ? gauntletByIdV132(equippedGauntletId) : gauntletByIdV132(DEFAULT_GAUNTLET_ID_V132);
+  const gauntletReadout=effectiveGauntlet?.readout??"intel";
+  const gauntletReadoutValue =
+    gauntletReadout==="routes" ? `${warTerritoriesForSimulationV96(simulation).length} sites · ${simulation.orders.filter(o=>o.kind==="move").length} déplacements réservés` :
+    gauntletReadout==="medical" ? `${simulation.combatants.filter(c=>c.factionId==="CON-F01"&&c.status==="wounded").length} blessés · ${simulation.combatants.filter(c=>c.factionId==="CON-F01"&&c.status==="fit").length} aptes` :
+    gauntletReadout==="command" ? `${simulation.orders.length} ordres réservés · tour ${simulation.turn}` :
+    gauntletReadout==="supply" ? `${supplied.size} sites ravitaillés` :
+    `${simulation.observations.length} observations · ${simulation.reports.length} rapports historiques`;
   const budget = useMemo(() => warBudgetV85(simulation), [simulation]);
   // Derive defaults from the hydrated front. A newly opened world may already
   // have lost its original departure, and its routes need not include T02–T08.
@@ -382,6 +425,7 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false, init
     </div>}
 
     {tab === "korthas" && <div>
+      <ClanWarGauntletLockerV132 hunterRank={save.profile.rankId} equippedId={effectiveGauntlet?.id??DEFAULT_GAUNTLET_ID_V132} onEquip={equipGauntlet}/>
       <ClanWarPlanetsV96 planet={planet} turn={simulation.turn} persisted={persistedWar} pending={pendingWrites > 0} retainedPlanetIds={retainedPlanetIds} onSelect={selectPlanet}/>
       <div className={styles.sectionHeader}><div><h3>{planet.name} · tour {simulation.turn}</h3><p>Routes du théâtre, détachements présents et informations adverses estimées.</p></div><button type="button" onClick={restartWar}>Nouvel exercice</button></div>
       <div className={styles.metrics}><p>Stock consolidé <Budget {...budget}/></p><p>Contrôle <strong>{controlled.length}/{definitions.length}</strong></p><p>Aptes <strong>{warFitCombatantsV85(simulation).length}</strong></p><p>Entretien prévu <strong>S{warUpkeepV85(simulation)}</strong></p></div>
@@ -392,7 +436,10 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false, init
       <ClanWarGauntletV131 view={presentation} planetName={planet.name} turn={simulation.turn}
         departure={territory.name} destination={warTerritoryForSimulationV96(simulation, targetId)?.name ?? targetId}
         controlled={controlled.length} territories={definitions.length} queuedOrders={simulation.orders.length}
-        persisted={persistedWar} pending={pendingWrites > 0}>
+        persisted={persistedWar} pending={pendingWrites > 0}
+        gauntletId={effectiveGauntlet?.id??DEFAULT_GAUNTLET_ID_V132}
+        readoutLabel={GAUNTLET_READOUT_LABELS_V132[gauntletReadout]}
+        readoutValue={gauntletReadoutValue}>
         <ClanWarAtlasV95 key={`atlas:${planet.id}`} simulation={simulation} selectedTerritoryId={territoryId} targetTerritoryId={targetId} onSelectTerritory={selectTerritory} onSelectTarget={selectTarget}/>
       </ClanWarGauntletV131>
       <ClanWarConvoyRouteV105 key={`convoy:${planet.id}`} simulation={simulation} fromId={territoryId} disabled={suspended || !pageActive || !loaded || !strategic.writableWar || pendingWrites > 0} onUpdate={updateConvoy} onInspect={selectTerritory}/>
