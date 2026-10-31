@@ -56,6 +56,7 @@ jobs:
           tests/planet-visual-fidelity-v132.test.mjs
           tests/planet-visual-profile-v134.test.mjs
           tests/planet-surface-fallback-v135.test.mjs
+          tests/planet-surface-budget-v136.test.mjs
           tests/planet-strategy-v114.test.mjs
           tests/planet-generator-draft-v103.test.mjs
           tests/planet-generator-v103.test.mjs
@@ -81,6 +82,7 @@ jobs:
           app/game/systems/clanWarShapeAtlasV115.ts
           app/game/systems/clanWarTextureLibraryV115.ts
           app/game/systems/clanWarPlanetPhysicalIndexV125.ts
+          app/game/systems/clanWarPlanetSurfaceBudgetV136.ts
           app/game/systems/clanWarTextureLibraryV125.ts
           app/game/systems/clanWarTextureLibraryV130.ts
           app/game/PlanetGeneratorV103.tsx

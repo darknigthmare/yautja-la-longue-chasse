@@ -5,6 +5,7 @@ import { unwrapPlanetPolygonV101 } from "./systems/planetMaterialV101";
 import { WAR_PLANET_LAND_TEXTURES_V115 } from "./systems/clanWarTextureLibraryV115";
 import { analyzeWarPlanetPhysicalIndexV125, describeWarPlanetShapeCatalogV125 } from "./systems/clanWarPlanetPhysicalIndexV125";
 import { WAR_PLANET_TEXTURES_V125 } from "./systems/clanWarTextureLibraryV125";
+import { analyzePlanetPhysicalSurfaceV136 } from "./systems/clanWarPlanetSurfaceBudgetV136";
 
 export type PlanetInlandMaskKindV124 = "lake" | "river";
 
@@ -130,6 +131,7 @@ export function describePlanetModularMasksV124(planet: WarPlanetV96) {
       regionIds: [...feature.regionIds],
     })),
     physicalIndex: analyzeWarPlanetPhysicalIndexV125(planet),
+    physicalSurfaceBudgetV136: analyzePlanetPhysicalSurfaceV136(planet),
     selectedShapeIds: recipe?.version === 115 ? {
       island: `isl-${String(recipe.islandShape + 1).padStart(2, "0")}`,
       continent: `con-${String(recipe.continentShape + 1).padStart(2, "0")}`,
