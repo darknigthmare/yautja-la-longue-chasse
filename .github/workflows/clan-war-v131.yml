@@ -21,6 +21,10 @@ on:
       - 'app/game/ClanWarOperationsV115.*'
       - 'app/game/sound.ts'
       - 'tests/clan-war-gauntlets-v133.test.mjs'
+      - 'tests/clan-war-gauntlet-research-v134.test.mjs'
+      - 'app/game/systems/gauntletCampaignV134.ts'
+      - 'app/game/types.ts'
+      - 'app/game/save.ts'
       - 'docs/Yautja_Gauntlets_V132_Arsenal_Clans.xlsx'
       - 'docs/Yautja_Gauntlets_V133_Arsenal_Clans.xlsx'
       - 'tsconfig.clan-war-v131.json'
@@ -58,6 +62,10 @@ jobs:
             /tests/clan-war-gauntlet-v131.test.mjs
             /tests/clan-war-gauntlets-v132.test.mjs
             /tests/clan-war-gauntlets-v133.test.mjs
+            /tests/clan-war-gauntlet-research-v134.test.mjs
+            /app/game/systems/gauntletCampaignV134.ts
+            /app/game/types.ts
+            /app/game/save.ts
             /app/game/systems/useHunterGauntletV133.ts
             /app/game/GameClient.tsx
             /app/game/HunterRigPreview.tsx
@@ -73,11 +81,11 @@ jobs:
       - name: Reproducible dependencies
         run: npm ci --ignore-scripts --no-audit --no-fund
       - name: Verify dual-view invariants
-        run: node --experimental-strip-types --test --test-reporter=spec tests/clan-war-gauntlet-v131.test.mjs tests/clan-war-gauntlets-v132.test.mjs tests/clan-war-gauntlets-v133.test.mjs
+        run: node --experimental-strip-types --test --test-reporter=spec tests/clan-war-gauntlet-v131.test.mjs tests/clan-war-gauntlets-v132.test.mjs tests/clan-war-gauntlets-v133.test.mjs tests/clan-war-gauntlet-research-v134.test.mjs
       - name: Typecheck the projector and mode parser
         run: npx --no-install tsc --noEmit --project tsconfig.clan-war-v131.json
       - name: Lint changed game-facing code and tests
-        run: npx --no-install eslint app/game/ClanWarPanelV85.tsx app/game/ClanWarGauntletV131.tsx app/game/HunterGauntletArtV132.tsx app/game/ClanWarGauntletLockerV132.tsx app/game/systems/clanWarViewV131.ts app/game/systems/clanWarGauntletCatalogV132.ts app/game/systems/useHunterGauntletV133.ts app/game/GameClient.tsx app/game/HunterRigPreview.tsx app/game/ClanWarBibleV6Panel.tsx app/game/ClanWarOperationsV115.tsx app/game/sound.ts tests/clan-war-gauntlet-v131.test.mjs tests/clan-war-gauntlets-v132.test.mjs tests/clan-war-gauntlets-v133.test.mjs
+        run: npx --no-install eslint app/game/ClanWarPanelV85.tsx app/game/ClanWarGauntletV131.tsx app/game/HunterGauntletArtV132.tsx app/game/ClanWarGauntletLockerV132.tsx app/game/systems/clanWarViewV131.ts app/game/systems/clanWarGauntletCatalogV132.ts app/game/systems/useHunterGauntletV133.ts app/game/GameClient.tsx app/game/HunterRigPreview.tsx app/game/ClanWarBibleV6Panel.tsx app/game/ClanWarOperationsV115.tsx app/game/sound.ts tests/clan-war-gauntlet-v131.test.mjs tests/clan-war-gauntlets-v132.test.mjs tests/clan-war-gauntlets-v133.test.mjs app/game/systems/gauntletCampaignV134.ts app/game/save.ts app/game/types.ts tests/clan-war-gauntlet-research-v134.test.mjs
       - name: Verify production Excel archive integrity
         run: unzip -t docs/Yautja_Gauntlets_V132_Arsenal_Clans.xlsx | tail -1
       - name: Verify V133 extended production Excel archive integrity
