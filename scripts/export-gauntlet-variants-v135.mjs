@@ -28,7 +28,7 @@ async function main(){
     const glyph=parts[2].source;
     if(model==="city-hunter" && (glyph.match(/<rect x="/g)||[]).length-1!==4)
       throw new Error("City Hunter must use four source-guided vertical screen cells");
-    if(model==="wolf" && (glyph.match(/<rect x="/g)||[]).length!==5)
+    if(model==="wolf" && (glyph.match(/<rect x="/g)||[]).length-1!==5)
       throw new Error("Wolf must use five distinct vertical glyph cells");
     if(model==="feral" && (!glyph.includes("etched")&&!glyph.includes('stroke="#664b31"')))
       throw new Error("Feral's bone/etched control lacks definition");
