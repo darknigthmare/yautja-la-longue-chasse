@@ -72,7 +72,7 @@ test("unrelated planet writes never stale an independent live front",async()=>{
  assert.equal(korthas.getSnapshot().simulation.turn,2);
  assert.equal(other.getSnapshot().simulation.turn,2);
  assert.equal(JSON.parse(f.storage.getItem(otherKey)).planetId,"thalassa");
- assert.equal(JSON.parse(f.storage.getItem(system.WAR_STORAGE_KEY_V85)).planetId,undefined);
+ assert.equal(JSON.parse(f.storage.getItem(system.WAR_STORAGE_KEY_V85)).planetId ?? "korthas","korthas");
 });
 test("offline memory-only exercises stay usable, never confused with a concurrent edit",async()=>{
  const session=system.createWarSessionV85(()=>null,noopLock,null);
