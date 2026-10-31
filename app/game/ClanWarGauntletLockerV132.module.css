@@ -13,3 +13,12 @@
 .footnote{font-size:.76rem;line-height:1.5;color:#c8ccbb}
 .locker button:focus-visible,.locker summary:focus-visible,.locker a:focus-visible{outline:3px solid #f5d179;outline-offset:3px}
 @media(max-width:600px){.locker{padding:10px}.preview{gap:10px}.locker>summary span{float:none;margin-left:7px}}
+
+/* V133: functional model viewer; never masks the lock state or hides source status. */
+.preview{align-items:start;gap:18px}
+.artPreview{flex:0 1 48%;min-width:180px;max-width:480px;border:1px solid #496863;background:radial-gradient(ellipse at 70% 50%,#244641,#10181b 70%);padding:6px}
+.artPreview svg{display:block;width:100%;height:auto;aspect-ratio:540 / 290;object-fit:contain;max-height:265px}
+.artPreview button{display:block;width:100%;min-height:42px;background:#263c3b;border:1px solid #689388;color:#e7efe6}
+.previewCopy{flex:1;min-width:0}
+@media(max-width:720px){.preview{flex-direction:column}.artPreview{width:100%;max-width:none;flex:auto;min-width:0}}
+@media(prefers-reduced-motion:reduce){.artPreview svg *{transition:none!important}}
