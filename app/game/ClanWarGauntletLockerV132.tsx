@@ -9,6 +9,7 @@ import {
 } from "./systems/clanWarGauntletCatalogV132";
 import styles from "./ClanWarGauntletLockerV132.module.css";
 import HunterGauntletArtV132 from "./HunterGauntletArtV132";
+import JungleHunterLayeredV134 from "./JungleHunterLayeredV134";
 import { evaluateGauntletStudyV134, type GauntletCampaignEvidenceV134 } from "./systems/gauntletCampaignV134";
 
 const PAGE_SIZE = 12;
@@ -56,7 +57,7 @@ export default function ClanWarGauntletLockerV132({ hunterRank, equippedId, onEq
     </div>
     <div className={styles.preview} aria-live="polite" data-preview-model={preview.id}>
       <div className={styles.artPreview}>
-        <HunterGauntletArtV132 entry={preview} coverOpen={coverOpen}/>
+        {preview.id==="jungle-hunter"?<JungleHunterLayeredV134 coverOpen={coverOpen}/>:<HunterGauntletArtV132 entry={preview} coverOpen={coverOpen}/>}
         <button type="button" aria-pressed={coverOpen} onClick={()=>setCoverOpen(open=>!open)} disabled={disabled}>
           {coverOpen?"Refermer le capot":"Ouvrir le capot"}
         </button>
