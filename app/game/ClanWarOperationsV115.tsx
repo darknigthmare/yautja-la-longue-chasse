@@ -554,7 +554,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
           </button>;
         })}</div>
         <p className={styles.explain}>Le sprint V143 traverse deux cases réelles avec une réaction de la patrouille après chaque case. Usage unique par infiltration, aucune téléportation ni camouflage gratuit.</p>
-        <p className={styles.explain}>Renfort de garde : {stealth.secondGuard?"patrouille supplémentaire alertée":"aucun renfort détecté"}. La position d&apos;un garde invisible reste cachée.</p>
+        <p className={styles.explain}>Renfort après alerte sonore : {stealth.secondGuard?"patrouille supplémentaire alertée":"aucun renfort détecté"}. La position d&apos;un garde invisible reste cachée.</p>
         <p className={styles.explain}>Patrouille : {guardVisible?"visible à portée réelle":
           soundBearing?("bruit perçu vers "+soundBearing+" · position exacte inconnue"):
           "hors du champ de perception ; aucune position exacte affichée"}.</p>

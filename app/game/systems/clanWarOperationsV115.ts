@@ -517,7 +517,7 @@ export function stepAssaultV115(state:WarOperationsStateV115,rules:WarRulesV6):W
   const nextArena={...arena,ap:clamp(arena.ap+9+(level-1)*4,0,100+(level-1)*35),ownBase:Math.max(0,ownBase),rivalBase:Math.max(0,rivalBase),
     actors:exchange.actors.filter(actor=>actor.hp>0),fallen:wounds,
     rivalRosterIds:[...roster],wavesIssued,
-    baseScreen:screen&&absorbed===0?screen:undefined,
+    ...(arena.baseScreen?{baseScreen:screen&&absorbed===0&&screen.expiresAtTick>tick?screen:undefined}:{}),
     bracedUntil:Object.fromEntries(Object.entries(arena.bracedUntil??{})
       .filter(([,until])=>until>tick)),
     focusOrders:Object.fromEntries(Object.entries(arena.focusOrders??{})
@@ -620,7 +620,7 @@ export function commandStealthV115(state:WarOperationsStateV115,command:StealthC
     (x===secondGuard.guardX&&Math.abs(y-secondGuard.guardY)<=1))&&
    warTerrainLineOfSightV116(terrain,{x:secondGuard.guardX,y:secondGuard.guardY},{x,y}));
  if(seen||secondSeen||command==="interact")alarm++;
- if(!secondGuard&&alarm>=1)secondGuard=warStealthReinforcementV144(terrain,
+ if(!secondGuard&&alarm>=1&&decoyUsed)secondGuard=warStealthReinforcementV144(terrain,
    {guardX,guardY,guardDirection},{x,y})??undefined;
  if(command==="listen"){
   // Direction is coarse relative bearing only. No guard x-coordinate,

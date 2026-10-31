@@ -145,13 +145,13 @@ test("Stealth V144: second patrol is spawned on real terrain after alert and mov
  const terrain=api.warMissionTerrainV116(targetId,rules);
  const original={...state,active:{...state.active,stealth:{
   ...state.active.stealth,x:6,y:2,guardX:6,guardY:2,guardDirection:-1,
-  alarm:0,energy:5}}};
+  alarm:0,energy:5,decoyUsed:true,decoyTurns:0}}};
  const alert=api.commandStealthV115(original,"wait",rules);
  assert.equal(alert.accepted,true,alert.message);
  const enemy=alert.state.active?.stealth;
  assert.ok(enemy);
  assert.ok(enemy.alarm>=1);
- assert.ok(enemy.secondGuard,"first visual alert should summon physical patrol");
+ assert.ok(enemy.secondGuard,"alert following a previously used sonic decoy should summon a local patrol");
  assert.equal(api.warTerrainCellBlockedV116(terrain,enemy.secondGuard.guardX,
   enemy.secondGuard.guardY),false);
  assert.notEqual(xy({x:enemy.secondGuard.guardX,y:enemy.secondGuard.guardY}),
