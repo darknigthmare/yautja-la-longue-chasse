@@ -37,6 +37,7 @@ on:
       - 'app/gauntlet-qa-v136/**'
       - 'public/game/assets/v136/gauntlets/**'
       - 'scripts/build-gauntlet-studies-v136.mjs'
+      - 'scripts/audit-gauntlet-evidence-v137.mjs'
       - 'scripts/qa-gauntlet-browser-v136.mjs'
       - 'tests/browser/gauntlet-v136.fixture.tsx'
       - 'app/gauntlet-qa-v135/**'
@@ -103,6 +104,7 @@ jobs:
             /app/gauntlet-qa-v136/GauntletVisualQaV136.module.css
             /public/game/assets/v136/gauntlets/
             /scripts/build-gauntlet-studies-v136.mjs
+            /scripts/audit-gauntlet-evidence-v137.mjs
             /scripts/qa-gauntlet-browser-v136.mjs
             /tests/browser/gauntlet-v136.fixture.tsx
             /app/gauntlet-qa-v135/page.tsx
@@ -183,6 +185,15 @@ jobs:
         with:
           name: yautja-49-original-gauntlet-studies-v136
           path: outputs/gauntlet-v136/
+          retention-days: 30
+          if-no-files-found: error
+      - name: Verify all 219 gauntlet SVGs are real visible transparent layers
+        run: node scripts/audit-gauntlet-evidence-v137.mjs outputs/gauntlet-v137-evidence
+      - name: Publish source SHA and alpha-coverage evidence for the Excel tracker
+        uses: actions/upload-artifact@v4
+        with:
+          name: gauntlet-219-layers-v137-source-evidence
+          path: outputs/gauntlet-v137-evidence/
           retention-days: 30
           if-no-files-found: error
       - name: Bundle all 54 gauntlet art studies into one downloadable pack
