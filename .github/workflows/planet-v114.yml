@@ -64,6 +64,7 @@ jobs:
           tests/planet-visual-profile-v134.test.mjs
           tests/planet-surface-fallback-v135.test.mjs
           tests/planet-war-atlas-visual-v142.test.mjs
+          tests/planet-render-identity-v143.test.mjs
           tests/planet-surface-budget-v136.test.mjs
           tests/planet-shape-library-v137.test.mjs
           tests/planet-projection-parity-v138.test.mjs
@@ -102,6 +103,7 @@ jobs:
           app/game/PlanetShapeLibraryV137.tsx
           app/game/systems/clanWarShapeLibraryV137.ts
           app/game/systems/clanWarAtlasVisualV142.ts
+          app/game/systems/planetRenderSignatureV143.ts
           app/game/systems/planetProjectionParityV138.ts
           app/game/systems/clanWarPlanetTopologyAdvisorV139.ts
 

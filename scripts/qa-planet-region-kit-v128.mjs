@@ -154,6 +154,7 @@ try {
     ?.getAttribute("data-render-status") === "ready", null, { timeout: 60000 });
   const nativePixels = await liveCanvas.evaluate(canvas =>
     Array.from(canvas.getContext("2d").getImageData(0, 0, canvas.width, canvas.height).data));
+  const nativeRenderSignature = await liveCanvas.getAttribute("data-render-signature");
   await kit.getByTestId("planet-main-apply-v133").click();
   await liveCanvas.scrollIntoViewIfNeeded();
   await page.waitForFunction(() => document.querySelector('[data-testid="planet-main-kit-status-v133"]')
@@ -169,6 +170,10 @@ try {
     return pixels.some((value,index) => value !== previous[index]);
   }, nativePixels, { timeout: 60000 });
   check("Explicit V133 application changes the actual main preview", true);
+  const appliedRenderSignature = await liveCanvas.getAttribute("data-render-signature");
+  check("V143 invalidates the planet canvas when materials change within the same world",
+    appliedRenderSignature !== nativeRenderSignature &&
+    (await liveCanvas.getAttribute("data-render-current")) === "true");
 
   // V141: the playable atlas globe AND map must share the selected sidecar
   // rather than silently showing the native sea and regional materials.
@@ -204,6 +209,9 @@ try {
     ?.getAttribute("data-regional-kit-applied") === "false", null, { timeout: 60000 });
   check("Main renderer can restore the native recipe without changing the world code",
     (await generator.getAttribute("data-preview-planet-code")) === code);
+  check("V143 restoration repaints the actual native canvas instead of reusing an outdated frame",
+    (await liveCanvas.getAttribute("data-render-signature")) !== appliedRenderSignature &&
+    (await liveCanvas.getAttribute("data-render-current")) === "true");
   check("V141 reset restores the native interactive war atlas too",
     (await strategicAtlas.getAttribute("data-regional-profile-active")) === "false" &&
     (await atlasCanvas.getAttribute("data-regional-kit-applied")) === "false");
