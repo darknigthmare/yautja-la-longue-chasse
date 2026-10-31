@@ -19,7 +19,7 @@ La version V103 possédait déjà un bouton « Mélanger les réglages » et un 
 
 ## Tests
 
-`tests/planet-random-generator-v144.test.mjs` couvre les quatre sections, chacun des 27 champs (21 V103 + six V115), les six tailles, 120 profils de forme et 32 variantes de matière V115, les verrous partiels et totaux, les sections avancées, l'identité de monde et les codes V115, la validation des combinaisons et la stabilité déterministe.
+`tests/planet-random-generator-v144.test.mjs` couvre les quatre sections, chacun des 28 champs (22 V103, dont la graine, + six V115), les six tailles, 120 profils de forme et 32 variantes de matière V115, les verrous partiels et totaux, les sections avancées, l'identité de monde et les codes V115, la validation des combinaisons et la stabilité déterministe.
 
 `scripts/qa-planet-random-v144.mjs` teste le véritable éditeur Chromium : global V103 puis V115, tirages ciblés, invariants de verrou, isolation entre sections, géographie valide, aperçu inchangé avant génération, création finale d'un nouveau monde et disposition mobile. Rapports/captures dans les artefacts GitHub Actions.
 
