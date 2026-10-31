@@ -13,6 +13,10 @@ on:
       - 'app/gauntlet-qa-v136/**'
       - 'proxy.ts'
       - 'tests/gauntlet-qa-privacy-v138.test.mjs'
+      - 'tests/gauntlet-actor-rig-v139.test.mjs'
+      - 'app/game/systems/gauntletRigSpritesV139.ts'
+      - 'public/game/assets/v139/rig-gauntlets/**'
+      - 'scripts/build-gauntlet-rig-v139.mjs'
       - 'tests/gauntlet-qa-proxy-runtime-v138.test.mjs'
       - 'tests/clan-war-gauntlet*.test.mjs'
       - 'scripts/export-gauntlet*.mjs'
@@ -68,6 +72,7 @@ jobs:
             /public/game/assets/v134/gauntlets/jungle-hunter/
             /public/game/assets/v135/gauntlets/
             /public/game/assets/v136/gauntlets/
+            /public/game/assets/v139/rig-gauntlets/
       - name: Node 22
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
@@ -84,6 +89,10 @@ jobs:
         run: node --experimental-strip-types --test --test-reporter=spec tests/gauntlet-qa-privacy-v138.test.mjs
       - name: Exercise actual Next QA proxy deny logic in Node
         run: node --import tsx --test --test-reporter=spec tests/gauntlet-qa-proxy-runtime-v138.test.mjs
+      - name: Verify 54 actor-rig gauntlet identities and exact source regeneration
+        run: |
+          node --experimental-strip-types --test --test-reporter=spec tests/gauntlet-actor-rig-v139.test.mjs
+          node scripts/build-gauntlet-rig-v139.mjs --check
       - name: Browser interactions on all 54 models (real Chrome, not screenshots-only)
         run: node scripts/qa-gauntlet-browser-v137.mjs
       - name: Preserve evidence for browser UI and mobile layouts
