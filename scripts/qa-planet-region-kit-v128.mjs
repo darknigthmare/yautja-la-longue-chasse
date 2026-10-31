@@ -97,6 +97,7 @@ try {
   await page.waitForFunction(() => document.querySelector('[data-testid="planet-regional-preview-v129"]')
     ?.getAttribute("data-render-status") === "ready", null, { timeout: 45000 });
   const visual = preview.getByTestId("planet-regional-visual-v129");
+  check("V131 uses the PBR shader on Chromium's GPU", (await preview.getAttribute("data-render-mode")) === "pbr-v131");
   const signature = await visual.evaluate(canvas => {
     const pixels = canvas.getContext("2d").getImageData(0, 0, canvas.width, canvas.height).data;
     let digest = 2166136261;
@@ -129,7 +130,45 @@ try {
   await preview.getByTestId("planet-regional-projection-v129").selectOption("map");
   await page.waitForFunction(() => document.querySelector('[data-testid="planet-regional-preview-v129"]')
     ?.getAttribute("data-render-status") === "ready", null, { timeout: 45000 });
-  check("V129 does not rewrite canonical planet identity", (await generator.getAttribute("data-preview-planet-code")) === code);
+  check("V131 preserves canonical planet identity", (await generator.getAttribute("data-preview-planet-code")) === code);
+  const surfaceOptions = await surfaceSelect.locator("option").evaluateAll(items => items.map(item => item.value));
+  if (surfaceOptions.filter(Boolean).length >= 2) {
+    const initialSurface = await surfaceSelect.inputValue();
+    const replacement = surfaceOptions.filter(Boolean).find(value => value !== initialSurface);
+    check("V131 can select two biome-compatible liquid materials", Boolean(replacement));
+    const baseline = await visual.evaluate(canvas => Array.from(canvas.getContext("2d")
+      .getImageData(0, 0, canvas.width, canvas.height).data));
+    await surfaceSelect.selectOption(replacement);
+    await page.waitForFunction(previous => {
+      const panel = document.querySelector('[data-testid="planet-regional-preview-v129"]');
+      if (panel?.getAttribute("data-render-status") !== "ready") return false;
+      const canvas = panel.querySelector('canvas[data-testid="planet-regional-visual-v129"]');
+      if (!canvas) return false;
+      const rgba = canvas.getContext("2d").getImageData(0, 0, canvas.width, canvas.height).data;
+      for (let i = 0; i < rgba.length; i += 4) {
+        if (rgba[i] !== previous[i] || rgba[i + 1] !== previous[i + 1] || rgba[i + 2] !== previous[i + 2]) return true;
+      }
+      return false;
+    }, baseline, { timeout: 60000 });
+    check("Regional liquid selection changes actual map pixels", (await generator.getAttribute("data-preview-planet-code")) === code);
+    await preview.screenshot({ path: path.join(output, "after-v131-pbr-coastal-map.png") });
+    await surfaceSelect.selectOption(initialSurface);
+  }
+  await preview.getByTestId("planet-regional-quality-v131").selectOption("albedo");
+  await page.waitForFunction(() => document.querySelector('[data-testid="planet-regional-preview-v129"]')
+    ?.getAttribute("data-render-mode") === "albedo-v129", null, { timeout: 60000 });
+  check("Fallback/compare path still renders original albedo shader", (await generator.getAttribute("data-preview-planet-code")) === code);
+  await preview.getByTestId("planet-regional-quality-v131").selectOption("pbr");
+  await page.waitForFunction(() => document.querySelector('[data-testid="planet-regional-preview-v129"]')
+    ?.getAttribute("data-render-mode") === "pbr-v131", null, { timeout: 60000 });
+  await preview.getByTestId("planet-regional-projection-v129").selectOption("globe");
+  await page.waitForFunction(() => document.querySelector('[data-testid="planet-regional-preview-v129"]')
+    ?.getAttribute("data-render-status") === "ready", null, { timeout: 60000 });
+  await preview.screenshot({ path: path.join(output, "after-v131-pbr-globe.png") });
+  await preview.getByTestId("planet-regional-projection-v129").selectOption("map");
+  await page.waitForFunction(() => document.querySelector('[data-testid="planet-regional-preview-v129"]')
+    ?.getAttribute("data-render-status") === "ready", null, { timeout: 60000 });
+
   const hasSupplementalSurface = (await surfaceSelect.locator("option").count()) > 1;
   check("Surface selection reports whether this biome can support fluid details", hasSupplementalSurface || await surfaceSelect.isDisabled());
 

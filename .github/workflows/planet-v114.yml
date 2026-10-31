@@ -51,6 +51,8 @@ jobs:
           tests/planet-region-material-kit-v128.test.mjs
           tests/planet-regional-shader-v129.test.mjs
           tests/planet-extra-materials-v130.test.mjs
+          tests/planet-coastal-regions-v131.test.mjs
+          tests/planet-regional-pbr-v131.test.mjs
           tests/planet-strategy-v114.test.mjs
           tests/planet-generator-draft-v103.test.mjs
           tests/planet-generator-v103.test.mjs
@@ -63,6 +65,8 @@ jobs:
           app/game/planetModularExportV124.ts
           app/game/planetRegionKitRasterV128.ts
           app/game/planetRegionalShaderAtlasV129.ts
+          app/game/planetCoastalRegionsV131.ts
+          app/game/planetRegionalPbrAtlasesV131.ts
           app/game/PlanetRegionalPreviewV129.tsx
           app/game/systems/clanWarRegionalMaterialKitV128.ts
           app/game/PlanetLayerExportV102.tsx
