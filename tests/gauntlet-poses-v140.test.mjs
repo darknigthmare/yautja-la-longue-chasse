@@ -79,7 +79,8 @@ test("V140 production rig inspector renders the actual hunter rig, never writes 
   assert.match(component,/weaponIds=\{\["wristblades","plasma-caster"\]\}/);
   assert.match(component,/gauntletVariantId=\{modelId\}/);
   assert.match(component,/gauntletOpen=\{isOpen\}/);
-  assert.match(client,/GauntletPoseInspectionV140 modelId=\{model.id\} coverOpen=\{open\}/);
+  assert.match(client,/RealRigDisclosureV140 modelId=\{model.id\} coverOpen=\{open\}/);
+  assert.match(client,/expanded&&<GauntletPoseInspectionV140 modelId=\{modelId\} coverOpen=\{coverOpen\}/);
   assert.ok(!component.includes("writeSaveWithStatus"));
   assert.ok(!component.includes("queueWarOrderV85"));
   assert.ok(!component.includes("window.localStorage"));
