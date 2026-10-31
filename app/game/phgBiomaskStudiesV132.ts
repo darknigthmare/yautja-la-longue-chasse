@@ -37,6 +37,12 @@ export function maskClassForAppearanceV132(appearance: {
   const p=appearance.chromaticsV113;
   const prior=p && typeof p === "object" && !Array.isArray(p) && "maskOriginId" in p
     ? p.maskOriginId : null;
+  // Original V133 mask shapes are not PHG masks; they inherit only the
+  // authenticated class lineage of the Yautja owning the selection.
+  const concept=typeof appearance.biomaskId==="string"
+    && appearance.biomaskId.startsWith("concept-v133-");
+  if(concept && (appearance.presetId==="alpha" || prior==="alpha"))return "alpha";
+  if(concept && (appearance.presetId==="samurai" || prior==="samurai"))return "samurai";
   if(appearance.biomaskId==="feral" && (appearance.presetId==="alpha" || prior==="alpha"))
     return "alpha";
   if(appearance.biomaskId==="celtic" && (appearance.presetId==="samurai" || prior==="samurai"))

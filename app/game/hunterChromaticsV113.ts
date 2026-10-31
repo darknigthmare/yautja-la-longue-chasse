@@ -5,6 +5,7 @@ import { PHG_PLATFORM_STUDIES_V128 } from "./phgPlatformStudiesV128.ts";
 import { PHG_V129_PATCH_MATERIALS } from "./phgPatchStudiesV129.ts";
 import { PHG_OGRE_BIOMASK_MATERIAL_V131, alphaMaskEligibleV131 } from "./phgBiomaskTintsV131.ts";
 import { PHG_BIOMASK_V132_CANDIDATES, maskMaterialAllowedV132 } from "./phgBiomaskStudiesV132.ts";
+import { DECAL_FIELDS_V133,DECAL_ZONES_V133,normalizeDecalIdV133 } from "./yautjaDecalsV133.ts";
 import PHG_DRIVE_CATALOG_V120 from "./data/phgDriveV120Catalog.json" with { type: "json" };
 import PHG_DRIVE_INSTALLED_V120 from "./data/phgDriveV120Installed.json" with { type: "json" };
 /**
@@ -24,6 +25,10 @@ export interface HunterChromaticsV113 {
   maskHex: string | null;
   /** Alpha identity survives the transition to a customized preset. */
   maskOriginId: "alpha" | "samurai" | null;
+  maskDecalId: string | null;
+  faceDecalId: string | null;
+  bodyDecalId: string | null;
+  armorDecalId: string | null;
   skinMaterialId: string | null;
   dreadMaterialId: string | null;
   outfitMaterialId: string | null;
@@ -287,6 +292,7 @@ export const PHG_CHROMATIC_MATERIALS_V113: readonly ChromaticMaterialV113[] = Ob
 
 export const DEFAULT_CHROMATICS_V113: Readonly<HunterChromaticsV113> = Object.freeze({
   skinHex: null, dreadHex: null, outfitHex: null, armorHex: null, maskHex: null, maskOriginId: null,
+  maskDecalId: null, faceDecalId: null, bodyDecalId: null, armorDecalId: null,
   skinMaterialId: null, dreadMaterialId: null, outfitMaterialId: null, armorMaterialId: null, maskMaterialId: null,
 });
 
@@ -347,6 +353,14 @@ export function resetChromaticFacilityV115(source: unknown, facility: ChromaticF
     result[channel.colorKey] = null;
     result[channel.materialKey] = null;
   }
+  if(facility==="lab" || facility==="ship"){
+    result.faceDecalId=null;
+    result.bodyDecalId=null;
+  }
+  if(facility==="forge" || facility==="ship"){
+    result.maskDecalId=null;
+    result.armorDecalId=null;
+  }
   if (facility !== "lab") {
     result.maskHex = null;
     result.maskMaterialId = null;
@@ -385,6 +399,9 @@ export function normalizeHunterChromaticsV113(source: unknown): HunterChromatics
   result.maskOriginId = source.maskOriginId === "alpha" || source.maskOriginId === "samurai"
     ? source.maskOriginId : null;
   result.maskMaterialId = getChromaticMaterialV113("biomask", source.maskMaterialId)?.id ?? null;
+  for(const zone of DECAL_ZONES_V133){
+    result[DECAL_FIELDS_V133[zone]] = normalizeDecalIdV133(zone, source[DECAL_FIELDS_V133[zone]]);
+  }
   return result;
 }
 
