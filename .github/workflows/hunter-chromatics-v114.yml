@@ -1,0 +1,210 @@
+name: V114 Yautja PHG material integrity and channel contract
+on:
+  pull_request:
+    branches: [main, codex/v112-homeworld-spatial-open-workstreams]
+    paths:
+      - "app/game/hunterChromaticsV113.ts"
+      - "app/game/phgRecentReleasesV125.ts"
+      - "app/game/phgRecentMaterialsV126.ts"
+      - "app/game/phgHistoricalMaterialsV127.ts"
+      - "app/game/phgPlatformStudiesV128.ts"
+      - "app/game/phgPatchStudiesV129.ts"
+      - "app/game/phgBiomaskTintsV131.ts"
+      - "app/game/phgBiomaskStudiesV132.ts"
+      - "app/game/yautjaDecalsV133.ts"
+      - "app/game/decalCanvasV133.ts"
+      - "app/game/DecalSurfaceV133.tsx"
+      - "app/game/conceptBiomasksV133.ts"
+      - "app/game/data/decalCatalogV133.json"
+      - "app/game/data/conceptBiomasksV133.json"
+      - "public/game/assets/v132/phg-biomask/atlas.webp"
+      - "public/game/assets/v133/decals/decal-atlas.webp"
+      - "public/game/assets/v133/concept-masks/"
+      - "tests/yautja-decals-v133.test.mjs"
+      - "tests/hunter-open-gaps-v137.test.mjs"
+      - "app/game/conceptMaskFitV137.ts"
+      - "app/game/data/phgBiomaskV132Catalog.json"
+      - "app/game/data/phgBiomaskV132Installed.json"
+      - "scripts/install-phg-biomask-v132.py"
+      - "tests/phg-biomask-v132.test.mjs"
+      - "tests/test_phg_biomask_v132.py"
+      - "tests/phg-biomask-v131.test.mjs"
+      - "app/game/phgReferenceCatalogV130.ts"
+      - "tests/phg-reference-catalog-v130.test.mjs"
+      - "app/game/data/phgPatchV129References.json"
+      - "public/game/assets/v129/phg-patches/atlas.webp"
+      - "tests/phg-patches-v129.test.mjs"
+      - "public/game/assets/v128/phg-platform/atlas.webp"
+      - "tests/phg-platform-v128.test.mjs"
+      - "public/game/assets/v127/phg-historical/atlas.webp"
+      - "tests/phg-historical-v127.test.mjs"
+      - "app/game/data/phgVisualFidelityQueueV122.json"
+      - "app/game/data/phgRecentV126Catalog.json"
+      - "app/game/data/phgRecentV126Installed.json"
+      - "public/game/assets/v126/phg-recent/atlas.webp"
+      - "scripts/install-phg-recent-v126.py"
+      - "tests/phg-recent-materials-v126.test.mjs"
+      - "tests/test_phg_recent_v126_installer.py"
+      - "public/game/assets/v125/phg-studies/atlas.webp"
+      - "tests/phg-atlas-runtime-v125.test.mjs"
+      - "app/game/data/phgDriveV120Catalog.json"
+      - "app/game/data/phgDriveV120Installed.json"
+      - "scripts/install-phg-runtime-v120.py"
+      - "tests/hunter-chromatic-drive-v120.test.mjs"
+      - "tests/phg-visual-studies-v122.test.mjs"
+      - "app/game/data/phgVisualFidelityQueueV122.json"
+      - "tests/test_phg_v120_installer.py"
+      - "app/game/hunterChromaticCanvasV113.ts"
+      - "app/game/ChromaticSurfaceV113.tsx"
+      - "app/game/hunterMaterialsV113.ts"
+      - "app/game/HunterChromaticForgeV113.tsx"
+      - "app/game/systems/hunterChromaticPersistenceV116.ts"
+      - "app/game/GameClient.tsx"
+      - "app/game/HomeworldModularHunter.tsx"
+      - "app/game/HomeworldHub.tsx"
+      - "tests/homeworld-hunter-armor-v114.test.mjs"
+      - "tests/hunter-chromatic-facilities-v115.test.mjs"
+      - "tests/hunter-chromatic-migration-v115.test.mjs"
+      - "tests/hunter-chromatic*"
+      - "scripts/validate-phg-materials-v113.py"
+      - ".github/workflows/hunter-chromatics-v114.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  integrity:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /app/game/hunterChromaticsV113.ts
+            /app/game/v6Visuals.ts
+            /app/game/HunterChromaticForgeV113.tsx
+            /app/game/phgRecentReleasesV125.ts
+            /app/game/phgRecentMaterialsV126.ts
+            /app/game/phgHistoricalMaterialsV127.ts
+            /app/game/phgPlatformStudiesV128.ts
+            /app/game/phgPatchStudiesV129.ts
+            /app/game/phgBiomaskTintsV131.ts
+            /app/game/phgBiomaskStudiesV132.ts
+            /app/game/yautjaDecalsV133.ts
+            /app/game/decalCanvasV133.ts
+            /app/game/DecalSurfaceV133.tsx
+            /app/game/conceptBiomasksV133.ts
+            /app/game/data/decalCatalogV133.json
+            /app/game/data/conceptBiomasksV133.json
+            /public/game/assets/v132/phg-biomask/atlas.webp
+            /public/game/assets/v133/decals/decal-atlas.webp
+            /public/game/assets/v133/concept-masks/
+            /tests/yautja-decals-v133.test.mjs
+            /tests/hunter-open-gaps-v137.test.mjs
+            /app/game/conceptMaskFitV137.ts
+            /app/game/data/phgBiomaskV132Catalog.json
+            /app/game/data/phgBiomaskV132Installed.json
+            /scripts/install-phg-biomask-v132.py
+            /tests/phg-biomask-v132.test.mjs
+            /tests/test_phg_biomask_v132.py
+            /tests/phg-biomask-v131.test.mjs
+            /app/game/phgReferenceCatalogV130.ts
+            /tests/phg-reference-catalog-v130.test.mjs
+            /app/game/data/phgPatchV129References.json
+            /public/game/assets/v129/phg-patches/atlas.webp
+            /tests/phg-patches-v129.test.mjs
+            /public/game/assets/v128/phg-platform/atlas.webp
+            /tests/phg-platform-v128.test.mjs
+            /public/game/assets/v127/phg-historical/atlas.webp
+            /tests/phg-historical-v127.test.mjs
+            /app/game/data/phgRecentV126Catalog.json
+            /app/game/data/phgRecentV126Installed.json
+            /public/game/assets/v126/phg-recent/atlas.webp
+            /scripts/install-phg-recent-v126.py
+            /tests/phg-recent-materials-v126.test.mjs
+            /tests/test_phg_recent_v126_installer.py
+            /public/game/assets/v125/phg-studies/atlas.webp
+            /tests/phg-atlas-runtime-v125.test.mjs
+            /tests/phg-recent-materials-v126.test.mjs
+            /tests/phg-historical-v127.test.mjs
+            /app/game/data/phgDriveV120Catalog.json
+            /app/game/data/phgDriveV120Installed.json
+            /scripts/install-phg-runtime-v120.py
+            /tests/hunter-chromatic-drive-v120.test.mjs
+            /tests/phg-visual-studies-v122.test.mjs
+            /app/game/data/phgVisualFidelityQueueV122.json
+            /tests/test_phg_v120_installer.py
+            /app/game/hunterMaterialsV113.ts
+            /app/game/hunterChromaticCanvasV113.ts
+            /app/game/systems/hunterChromaticPersistenceV116.ts
+            /tests/hunter-chromatics-v113.test.mjs
+            /tests/hunter-chromatic-canvas-v113.test.mjs
+            /tests/hunter-chromatic-persistence-v116.test.mjs
+            /tests/hunter-chromatic-layering-v116.test.mjs
+            /tests/hunter-chromatic-blend-v117.test.mjs
+            /tests/hunter-chromatics-native-v114.test.mjs
+            /tests/hunter-chromatic-grade-v114.test.mjs
+            /tests/homeworld-hunter-armor-v114.test.mjs
+            /tests/hunter-chromatic-facilities-v115.test.mjs
+            /tests/hunter-chromatic-migration-v115.test.mjs
+            /app/game/HomeworldModularHunter.tsx
+            /app/game/HunterRigPreview.tsx
+            /app/game/HuntCanvas.tsx
+            /app/game/HomeworldHub.tsx
+            /app/game/hunterVisuals.ts
+            /app/game/biomaskCatalogueV62.ts
+            /app/game/hunterHeadArtV62.ts
+            /public/game/assets/v3/actors/yautja/hunter/armor/registered/
+            /scripts/validate-phg-materials-v113.py
+            /public/game/imports/v85/drive-latest/
+            /public/game/assets/v113/phg/
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: "22"
+      - name: Audit all 44 original local files by SHA and PNG header
+        run: python3 scripts/validate-phg-materials-v113.py
+      - name: Validate V120 installed-file safety and source catalog
+        run: python3 -m unittest discover -s tests -p test_phg_v120_installer.py -v && python3 scripts/install-phg-runtime-v120.py --verify-installed && python3 -m unittest discover -s tests -p test_phg_recent_v126_installer.py -v && python3 scripts/install-phg-recent-v126.py --verify-installed && python3 -m unittest discover -s tests -p test_phg_biomask_v132.py -v && python3 scripts/install-phg-biomask-v132.py --verify-installed
+      - name: Validate saved palette IDs, category isolation and Canvas descriptors
+        run: node --experimental-strip-types --test tests/hunter-chromatics-v113.test.mjs tests/hunter-chromatic-canvas-v113.test.mjs tests/hunter-chromatics-native-v114.test.mjs tests/hunter-chromatic-grade-v114.test.mjs tests/homeworld-hunter-armor-v114.test.mjs tests/hunter-chromatic-facilities-v115.test.mjs tests/hunter-chromatic-migration-v115.test.mjs tests/hunter-chromatic-persistence-v116.test.mjs tests/hunter-chromatic-layering-v116.test.mjs tests/hunter-chromatic-blend-v117.test.mjs tests/hunter-chromatic-drive-v120.test.mjs tests/phg-visual-studies-v122.test.mjs tests/phg-atlas-runtime-v125.test.mjs tests/phg-platform-v128.test.mjs tests/phg-patches-v129.test.mjs tests/phg-reference-catalog-v130.test.mjs tests/phg-biomask-v131.test.mjs tests/phg-biomask-v132.test.mjs tests/yautja-decals-v133.test.mjs tests/hunter-open-gaps-v137.test.mjs
+  typecheck:
+    name: TypeScript and lint on the complete game source
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /app/
+            /worker/
+            /desktop/
+            /scripts/
+            /supabase/
+            /package.json
+            /package-lock.json
+            /tsconfig.json
+            /next.config.ts
+            /proxy.ts
+            /drizzle.config.ts
+            /eslint.config.mjs
+            /next-env.d.ts
+            /tests/save-storage-status.test.mjs
+            /public/game/assets/v18/enemy-trophy-gameplay/manifest.json
+            /public/game/assets/v17/enemy-trophies/manifest.json
+            /public/game/assets/v16/franchise-trophies/manifest.json
+            /public/game/assets/v14/hunter-kit/manifest.json
+            /public/game/assets/v15/trophies/manifest.json
+            /public/game/assets/v28/sprite-review/manifest.json
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: npm run typecheck
+      - run: node --test tests/save-storage-status.test.mjs
+      - run: npx eslint app/game/hunterChromaticsV113.ts app/game/hunterChromaticCanvasV113.ts app/game/systems/hunterChromaticPersistenceV116.ts app/game/HunterChromaticForgeV113.tsx app/game/ChromaticSurfaceV113.tsx app/game/HomeworldModularHunter.tsx app/game/GameClient.tsx app/game/HuntCanvas.tsx app/game/HomeworldHub.tsx

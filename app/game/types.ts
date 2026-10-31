@@ -1,5 +1,6 @@
 import type {FieldSpecimenV112,HarvestInventoryV112} from "./systems/harvestInventoryV112";
 import type { HuntAccessibilityV112 } from "./systems/huntAccessibilityV112";
+import type { HunterChromaticsV113 } from "./hunterChromaticsV113";
 /**
  * Shared game contracts.
  *
@@ -120,12 +121,7 @@ export interface ExplorationProgress {
 export type HunterSkinId =
   | "ochre-mottle"
   | "ashen-mottle"
-  | "dark-mottle"
-  | "moss-mottle"
-  | "copper-mottle"
-  | "sand-mottle"
-  | "storm-mottle"
-  | "ivory-mottle";
+  | "dark-mottle";
 
 export type HunterBodyMorphId =
   | "classic"
@@ -224,7 +220,14 @@ export type BiomaskId =
   | "clan-carapace-sombre"
   | "clan-filigrane-cuivre"
   | "clan-patine-dunes"
-  | "clan-gardien-ivoire";
+  | "clan-gardien-ivoire"
+  | "concept-v133-requiem"
+  | "concept-v133-nova"
+  | "concept-v133-instinct"
+  | "concept-v133-glypic"
+  | "concept-v133-tyrant"
+  | "concept-v133-warlord"
+  | "concept-v133-paroxysm";
 
 export type DreadStyleId =
   | "classic"
@@ -236,12 +239,12 @@ export type DreadStyleId =
   | "feral"
   | "huntress";
 
-export type DreadTintId = "obsidian" | "umber" | "ashen" | "copper" | "bone" | "moss" | "blue-black";
+export type DreadTintId = "obsidian" | "umber" | "ashen";
 
 /** The preserved V3 head is an original clan design, not a named film likeness. */
 export type HunterHeadStyleId = "reference" | "legacy-clan";
 
-export type ArmorTintId = "gunmetal" | "bronze" | "obsidian" | "bone" | "jade" | "rust" | "crimson";
+export type ArmorTintId = "gunmetal" | "bronze" | "obsidian";
 
 export type LaserColorId = "crimson" | "electric" | "amber" | "violet" | "cyan";
 
@@ -275,13 +278,11 @@ export interface HunterAppearance {
   dreadTintId: DreadTintId;
   armorStyleId: HunterArmorStyleId;
   armorTintId: ArmorTintId;
-  /** Optional imported visual-reconstruction materials, independent of classical tints. */
-  skinMaterialId?: string | null;
-  dreadMaterialId?: string | null;
-  outfitMaterialId?: string | null;
   trophyAdornmentId: TrophyAdornmentId;
   /** Optional on legacy/preset objects; persistence always supplies a value. */
   laserColorId?: LaserColorId;
+  /** Optional for legacy V1-V112 saves; normalized by save.ts. */
+  chromaticsV113?: HunterChromaticsV113;
 }
 
 export interface ContentUnlock {

@@ -1,0 +1,780 @@
+{
+  "schema": "yautja-phg-visual-fidelity-v122",
+  "sourceInventory": "YAUTJA_PHG_RECONSTRUIT_156_INVENTAIRE.json",
+  "sourceDate": "2026-10-07",
+  "sourceCounts": {
+    "mapping_candidate": 6,
+    "missing_visual_reference": 28
+  },
+  "unresolved": 34,
+  "studiesCreated": 4,
+  "allowsOfficial1to1Claim": false,
+  "records": [
+    {
+      "id": "skin_classe_samurai_base_observee",
+      "label": "Samurai — apparence portée, réemploi à vérifier",
+      "category": "Peau",
+      "family": "Samurai",
+      "sourceStatus": "mapping_candidate",
+      "referenceStatus": "Rendus officiels inspectés ; peau fortement masquée. Motif exact et teinte non affichés.",
+      "currentNote": "Des propriétaires évoquent Classic/Swamp comme une option initialement propre au Samurai. Cela prouve la disponibilité de cette option, pas son emploi par défaut sur la référence de base.",
+      "evidenceUrls": [
+        "https://predator.illfonic.com/",
+        "https://img2.storyblok.com/fit-in/995x1101/f/115795/995x1101/c4787ee290/samurai-predator.png",
+        "https://blog.playstation.com/2020/06/30/the-samurai-predator-arrives-in-predator-hunting-grounds/",
+        "https://live.staticflickr.com/65535/50059892976_88be6f6812_h.jpg",
+        "https://forum.predator.illfonic.com/t/my-feedback-on-all-predator-classes/21582",
+        "https://forum.predator.illfonic.com/t/samurai-cosmetics-and-skin-pattern/11516/3",
+        "https://forum.predator.illfonic.com/t/whats-up-with-gator-waves/18010/14"
+      ],
+      "existingV85Material": true,
+      "existingV120Material": false,
+      "study": null,
+      "visualStatus": "unresolved-pixel-match",
+      "canEnterOfficial1to1Catalog": false
+    },
+    {
+      "id": "skin_classe_viking_base_observee",
+      "label": "Viking — apparence portée, réemploi à vérifier",
+      "category": "Peau",
+      "family": "Viking",
+      "sourceStatus": "mapping_candidate",
+      "referenceStatus": "Carte officielle inspectée ; petites zones de peau sous filet et éclairage bleu fort.",
+      "currentNote": "Rapport de bug : Default/Default utilise le corps de Classic/Default ; un autre indique que la tête Classic/Default ressemble à Default/Default. Ce conflit historique interdit de conclure à un partage volontaire de texture à partir du seul aperçu.",
+      "evidenceUrls": [
+        "https://predator.illfonic.com/",
+        "https://img2.storyblok.com/fit-in/995x1101/f/115795/995x1101/79094b2402/viking-predator.png",
+        "https://blog.playstation.com/2020/10/27/october-free-update-and-new-paid-dlc-arrive-in-predator-hunting-grounds/",
+        "https://forum.predator.illfonic.com/t/version-2-08-bug-mega-thread/15954",
+        "https://forum.predator.illfonic.com/t/predator-customization-bugs-and-missing-stuff-as-of-patch-2-20/22242",
+        "https://forum.predator.illfonic.com/t/whats-up-with-gator-waves/18010/14"
+      ],
+      "existingV85Material": true,
+      "existingV120Material": false,
+      "study": null,
+      "visualStatus": "unresolved-pixel-match",
+      "canEnterOfficial1to1Catalog": false
+    },
+    {
+      "id": "skin_classe_valkyrie_base_observee",
+      "label": "Valkyrie — apparence portée, réemploi à vérifier",
+      "category": "Peau",
+      "family": "Valkyrie",
+      "sourceStatus": "mapping_candidate",
+      "referenceStatus": "Carte officielle inspectée ; couleur observée sous lumière bleue/chaude et sans shader affiché.",
+      "currentNote": "Aucune capture de menu retrouvée attribuant précisément la base observée à une famille/teinte.",
+      "evidenceUrls": [
+        "https://predator.illfonic.com/",
+        "https://img2.storyblok.com/fit-in/995x1101/f/115795/995x1101/1f72b30901/valkyrie-predator.png",
+        "https://blog.playstation.com/2021/02/16/new-year-new-mode-new-content-for-predator-hunting-grounds/",
+        "https://forum.predator.illfonic.com/t/my-feedback-on-all-predator-classes/21582"
+      ],
+      "existingV85Material": true,
+      "existingV120Material": false,
+      "study": null,
+      "visualStatus": "unresolved-pixel-match",
+      "canEnterOfficial1to1Catalog": false
+    },
+    {
+      "id": "skin_classe_cleopatra_base_observee",
+      "label": "Cleopatra — apparence portée, réemploi à vérifier",
+      "category": "Peau",
+      "family": "Cleopatra",
+      "sourceStatus": "mapping_candidate",
+      "referenceStatus": "Carte officielle inspectée ; nombreuses occultations. Réemploi à contrôler et distinction peau/ornements de cuisse incomplète.",
+      "currentNote": "Aucune capture de menu retrouvée attribuant précisément la base observée à une famille/teinte. Les recettes de personnages et jugements de ressemblance ne suffisent pas.",
+      "evidenceUrls": [
+        "https://predator.illfonic.com/",
+        "https://img2.storyblok.com/fit-in/995x1101/f/115795/995x1101/163e3cfd75/cleopatra-predator.png",
+        "https://blog.playstation.com/?p=352735"
+      ],
+      "existingV85Material": true,
+      "existingV120Material": false,
+      "study": null,
+      "visualStatus": "unresolved-pixel-match",
+      "canEnterOfficial1to1Catalog": false
+    },
+    {
+      "id": "skin_classe_exiled_base_observee",
+      "label": "Exiled — apparence portée, réemploi à vérifier",
+      "category": "Peau",
+      "family": "Exiled",
+      "sourceStatus": "mapping_candidate",
+      "referenceStatus": "Carte et rendu officiels inspectés ; teintures non nommées, peau partiellement couverte.",
+      "currentNote": "Une recette Exiled avec Classic/Blood est attestée textuellement mais elle est une personnalisation ; elle ne prouve pas la base Exiled.",
+      "evidenceUrls": [
+        "https://predator.illfonic.com/",
+        "https://img2.storyblok.com/fit-in/995x1101/f/115795/995x1101/7ed246b069/exiled-predator.png",
+        "https://blog.playstation.com/2021/10/28/happy-haunting-and-hunting-in-predator-hunting-grounds/",
+        "https://live.staticflickr.com/65535/51632611790_7c3d35a12d_h.jpg",
+        "https://forum.predator.illfonic.com/t/official-prey-trailer-released-not-copyrighted-and-was-officially-released-publicly/27962/10"
+      ],
+      "existingV85Material": true,
+      "existingV120Material": false,
+      "study": null,
+      "visualStatus": "unresolved-pixel-match",
+      "canEnterOfficial1to1Catalog": false
+    },
+    {
+      "id": "skin_classe_captured_base_observee",
+      "label": "Captured — réemploi JH à contrôler en priorité",
+      "category": "Peau",
+      "family": "Captured",
+      "sourceStatus": "mapping_candidate",
+      "referenceStatus": "Rendu officiel Captured inspecté et comparé au type de peau JH ; shader et fichiers source inconnus.",
+      "currentNote": "Plusieurs participants signalent la proximité de Captured et Jungle Hunter avec différences d’armure/filet/collier. Aucun menu ou fichier original comparé n’établit une identité de peau pixel à pixel ; mapping inchangé.",
+      "evidenceUrls": [
+        "https://blog.playstation.com/?p=358472",
+        "https://live.staticflickr.com/65535/51736253154_04460b2d51_h.jpg",
+        "https://forum.predator.illfonic.com/t/new-hardcore-pred-lets-do-it/20291",
+        "https://forum.predator.illfonic.com/t/predator-classes-design-tier-list/36049",
+        "https://forum.predator.illfonic.com/t/captured-predator-revamp/27412/2",
+        "https://forum.predator.illfonic.com/t/must-illfonic-add-jungle-hunter-87-for-all-people-that-bought-game-past-pre-odrer-phase-vote-now/26035/12"
+      ],
+      "existingV85Material": true,
+      "existingV120Material": false,
+      "study": null,
+      "visualStatus": "unresolved-pixel-match",
+      "canEnterOfficial1to1Catalog": false
+    },
+    {
+      "id": "skin_classe_junglehunter87_wasteland",
+      "label": "Jungle Hunter ’87 — Wasteland (référence visuelle manquante)",
+      "category": "Peau",
+      "family": "Jungle Hunter ’87",
+      "sourceStatus": "missing_visual_reference",
+      "referenceStatus": "Nom attesté dans les notes officielles 2.0 ; aucune capture liant ce nom à une palette n’a été vérifiée.",
+      "currentNote": "Une vidéo de personnalisation a été identifiée, mais seules ses métadonnées ont été lues : les images et la vidéo ne sont pas accessibles ici. La palette reste à vérifier.",
+      "evidenceUrls": [
+        "https://forum.predator.illfonic.com/t/patch-2-0-part-ii/13552",
+        "https://www.youtube.com/watch?v=IIX88zhZxr4"
+      ],
+      "existingV85Material": false,
+      "existingV120Material": false,
+      "study": null,
+      "visualStatus": "unresolved-pixel-match",
+      "canEnterOfficial1to1Catalog": false
+    },
+    {
+      "id": "skin_classe_junglehunter87_undergrowth",
+      "label": "Jungle Hunter ’87 — Undergrowth (référence visuelle manquante)",
+      "category": "Peau",
+      "family": "Jungle Hunter ’87",
+      "sourceStatus": "missing_visual_reference",
+      "referenceStatus": "Nom attesté dans les notes officielles 2.0 ; aucune capture liant ce nom à une palette n’a été vérifiée.",
+      "currentNote": "Xenomorph_2099 recommande explicitement la peau Undergrowth avec armure verte/olive et dreads Mire Alpha. Aucune capture liée dans ce post ; cette recommandation ne prouve pas la couleur de la peau. Une vidéo de personnalisation a été identifiée, mais seules ses métadonnées ont été lues : les images et la vidéo ne sont pas accessibles ici. La palette reste à vérifier.",
+      "evidenceUrls": [
+        "https://forum.predator.illfonic.com/t/patch-2-0-part-ii/13552",
+        "https://forum.predator.illfonic.com/t/the-shader-kings-predlocks-shader-review/20695/2",
+        "https://www.youtube.com/watch?v=IIX88zhZxr4"
+      ],
+      "existingV85Material": false,
+      "existingV120Material": false,
+      "study": null,
+      "visualStatus": "unresolved-pixel-match",
+      "canEnterOfficial1to1Catalog": false
+    },
+    {
+      "id": "skin_classe_junglehunter87_badland",
+      "label": "Jungle Hunter ’87 — Badland (référence visuelle manquante)",
+      "category": "Peau",
+      "family": "Jungle Hunter ’87",
+      "sourceStatus": "missing_visual_reference",
+      "referenceStatus": "Nom attesté dans les notes officielles 2.0 ; aucune capture liant ce nom à une palette n’a été vérifiée.",
+      "currentNote": "Une vidéo de personnalisation a été identifiée, mais seules ses métadonnées ont été lues : les images et la vidéo ne sont pas accessibles ici. La palette reste à vérifier.",
+      "evidenceUrls": [
+        "https://forum.predator.illfonic.com/t/patch-2-0-part-ii/13552",
+        "https://www.youtube.com/watch?v=IIX88zhZxr4"
+      ],
+      "existingV85Material": false,
+      "existingV120Material": false,
+      "study": null,
+      "visualStatus": "unresolved-pixel-match",
+      "canEnterOfficial1to1Catalog": false
+    },
+    {
+      "id": "skin_classe_junglehunter87_quagmire",
+      "label": "Jungle Hunter ’87 — Quagmire (référence visuelle manquante)",
+      "category": "Peau",
+      "family": "Jungle Hunter ’87",
+      "sourceStatus": "missing_visual_reference",
+      "referenceStatus": "Nom attesté dans les notes officielles 2.0 ; aucune capture liant ce nom à une palette n’a été vérifiée.",
+      "currentNote": "Description propriétaire explicitement Quagmire Jungle Hunter skin et PlayStation themed armor. Le texte associe clairement le build à Quagmire, mais aucune image de la vidéo n'a pu être récupérée/inspectée ; ni palette ni motif ne sont validés. Une vidéo de personnalisation a été identifiée, mais seules ses métadonnées ont été lues : les images et la vidéo ne sont pas accessibles ici. La palette reste à vérifier.",
+      "evidenceUrls": [
+        "https://forum.predator.illfonic.com/t/patch-2-0-part-ii/13552",
+        "https://www.youtube.com/watch?v=_Z192_hSd9I",
+        "https://rumble.com/v2pookv-trapper-tactician-disk-master-jungle-hunter-build-by-lantz-ferguson-predato.html",
+        "https://www.youtube.com/watch?v=IIX88zhZxr4"
+      ],
+      "existingV85Material": false,
+      "existingV120Material": false,
+      "study": null,
+      "visualStatus": "unresolved-pixel-match",
+      "canEnterOfficial1to1Catalog": false
+    },
+    {
+      "id": "skin_classe_elder_ancient",
+      "label": "Elder — Ancient (référence visuelle manquante)",
+      "category": "Peau",
+      "family": "Elder",
+      "sourceStatus": "missing_visual_reference",
+      "referenceStatus": "Nom attesté dans les notes officielles 2.0 ; aucune capture liant ce nom à une palette n’a été vérifiée.",
+      "currentNote": "Anonymous.Voorhees13 compare Elder Ancient à une vue arrière promotionnelle du Feral du film en 2022, mais ne fournit pas de capture de son Elder. Ce rapprochement verbal ne fournit pas une texture de jeu. Une vidéo de personnalisation a été identifiée, mais seules ses métadonnées ont été lues : les images et la vidéo ne sont pas accessibles ici. La palette reste à vérifier.",
+      "evidenceUrls": [
+        "https://forum.predator.illfonic.com/t/patch-2-0-part-ii/13552",
+        "https://forum.predator.illfonic.com/t/feral-predator-in-phg/28617/7",
+        "https://www.youtube.com/watch?v=EUSUSxKuKfs"
+      ],
+      "existingV85Material": false,
+      "existingV120Material": false,
+      "study": null,
+      "visualStatus": "unresolved-pixel-match",
+      "canEnterOfficial1to1Catalog": false
+    },
+    {
+      "id": "skin_classe_elder_relic",
+      "label": "Elder — Relic (référence visuelle manquante)",
+      "category": "Peau",
+      "family": "Elder",
+      "sourceStatus": "missing_visual_reference",
+      "referenceStatus": "Nom attesté dans les notes officielles 2.0 ; aucune capture liant ce nom à une palette n’a été vérifiée.",
+      "currentNote": "Une vidéo de personnalisation a été identifiée, mais seules ses métadonnées ont été lues : les images et la vidéo ne sont pas accessibles ici. La palette reste à vérifier.",
+      "evidenceUrls": [
+        "https://forum.predator.illfonic.com/t/patch-2-0-part-ii/13552",
+        "https://www.youtube.com/watch?v=EUSUSxKuKfs"
+      ],
+      "existingV85Material": false,
+      "existingV120Material": false,
+      "study": null,
+      "visualStatus": "unresolved-pixel-match",
+      "canEnterOfficial1to1Catalog": false
+    },
+    {
+      "id": "skin_classe_elder_primeval",
+      "label": "Elder — Primeval (référence visuelle manquante)",
+      "category": "Peau",
+      "family": "Elder",
+      "sourceStatus": "missing_visual_reference",
+      "referenceStatus": "Nom attesté dans les notes officielles 2.0 ; aucune capture liant ce nom à une palette n’a été vérifiée.",
+      "currentNote": "Une vidéo de personnalisation a été identifiée, mais seules ses métadonnées ont été lues : les images et la vidéo ne sont pas accessibles ici. La palette reste à vérifier.",
+      "evidenceUrls": [
+        "https://forum.predator.illfonic.com/t/patch-2-0-part-ii/13552",
+        "https://www.youtube.com/watch?v=EUSUSxKuKfs"
+      ],
+      "existingV85Material": false,
+      "existingV120Material": false,
+      "study": null,
+      "visualStatus": "unresolved-pixel-match",
+      "canEnterOfficial1to1Catalog": false
+    },
+    {
+      "id": "skin_classe_elder_stoic",
+      "label": "Elder — Stoic (référence visuelle manquante)",
+      "category": "Peau",
+      "family": "Elder",
+      "sourceStatus": "missing_visual_reference",
+      "referenceStatus": "Nom attesté dans les notes officielles 2.0 ; aucune capture liant ce nom à une palette n’a été vérifiée.",
+      "currentNote": "TheSenate indique Elder Helmet, Elder Dreads, Stoic Skin et armure Gold. Le post n'a pas d'image. La capture de GreyBack au post12 est d'un autre auteur et ne peut pas recevoir l'étiquette Stoic. TheSenate décrit explicitement une réinitialisation de Stoic vers le corps Default. Autres joueurs décrivent une incohérence entre tête et corps. Les captures non étiquetées de cette époque restent insuffisantes. Une vidéo de personnalisation a été identifiée, mais seules ses métadonnées ont été lues : les images et la vidéo ne sont pas accessibles ici. La palette reste à vérifier.",
+      "evidenceUrls": [
+        "https://forum.predator.illfonic.com/t/patch-2-0-part-ii/13552",
+        "https://forum.predator.illfonic.com/t/anyone-using-elder/17194/7",
+        "https://forum.predator.illfonic.com/t/ultimate-bug-report-log-for-devs-2-06-version/15480/1",
+        "https://forum.predator.illfonic.com/t/elder-skin-bug/15381",
+        "https://www.youtube.com/watch?v=EUSUSxKuKfs"
+      ],
+      "existingV85Material": false,
+      "existingV120Material": false,
+      "study": null,
+      "visualStatus": "unresolved-pixel-match",
+      "canEnterOfficial1to1Catalog": false
+    },
+    {
+      "id": "skin_classe_cityhunter97_sector",
+      "label": "City Hunter ’97 — Sector (référence visuelle manquante)",
+      "category": "Peau",
+      "family": "City Hunter ’97",
+      "sourceStatus": "missing_visual_reference",
+      "referenceStatus": "Noms de peaux exclusives décrits par un joueur, en distinguant explicitement Default, Sector, Ward, Dominion et Tract ; existence documentaire communautaire, palette non vérifiée.",
+      "currentNote": "Xenomorph_2099 associe Sector à Armored Lost Predator ; aucune capture Sector explicite jointe. Aucune apparence dérivée de l'apparence d'une figurine. Une vidéo de personnalisation a été identifiée, mais seules ses métadonnées ont été lues : les images et la vidéo ne sont pas accessibles ici. La palette reste à vérifier.",
+      "evidenceUrls": [
+        "https://forum.predator.illfonic.com/t/a-really-cool-idea-scar-dlc-idea/15655/3",
+        "https://forum.predator.illfonic.com/t/predator-build-challenge/21562/9",
+        "https://forum.predator.illfonic.com/t/the-twins-build-inspired-by-james-jones-art/27790/3",
+        "https://www.youtube.com/watch?v=oE1hd5dJZSk"
+      ],
+      "existingV85Material": false,
+      "existingV120Material": false,
+      "study": null,
+      "visualStatus": "unresolved-pixel-match",
+      "canEnterOfficial1to1Catalog": false
+    },
+    {
+      "id": "skin_classe_cityhunter97_ward",
+      "label": "City Hunter ’97 — Ward (référence visuelle manquante)",
+      "category": "Peau",
+      "family": "City Hunter ’97",
+      "sourceStatus": "missing_visual_reference",
+      "referenceStatus": "Noms de peaux exclusives décrits par un joueur, en distinguant explicitement Default, Sector, Ward, Dominion et Tract ; existence documentaire communautaire, palette non vérifiée.",
+      "currentNote": "CHUCK_YT pense que le premier build vidéo est City Hunter Ward. Cette attribution est hypothétique, pas une identification propriétaire.  Le commentaire concerne la première vidéo embarquée ; il ne concerne pas automatiquement la photo Laser Shot affichée plus près dans le rendu texte. Anonymous.Voorhees13 propose Ward pour un frère du Jungle Hunter. C'est une idée de build, pas une identification certifiée des images de la vidéo. Une vidéo de personnalisation a été identifiée, mais seules ses métadonnées ont été lues : les images et la vidéo ne sont pas accessibles ici. La palette reste à vérifier.",
+      "evidenceUrls": [
+        "https://forum.predator.illfonic.com/t/a-really-cool-idea-scar-dlc-idea/15655/3",
+        "https://forum.predator.illfonic.com/t/predator-build-challenge/21562/9",
+        "https://forum.predator.illfonic.com/t/the-twins-build-inspired-by-james-jones-art/27790/3",
+        "https://www.youtube.com/watch?v=LAmp-4U9uWk",
+        "https://www.youtube.com/watch?v=gsG6h531OsQ",
+        "https://www.youtube.com/watch?v=oE1hd5dJZSk"
+      ],
+      "existingV85Material": false,
+      "existingV120Material": false,
+      "study": null,
+      "visualStatus": "unresolved-pixel-match",
+      "canEnterOfficial1to1Catalog": false
+    },
+    {
+      "id": "skin_classe_cityhunter97_tract",
+      "label": "City Hunter ’97 — Tract (référence visuelle manquante)",
+      "category": "Peau",
+      "family": "City Hunter ’97",
+      "sourceStatus": "missing_visual_reference",
+      "referenceStatus": "Noms de peaux exclusives décrits par un joueur, en distinguant explicitement Default, Sector, Ward, Dominion et Tract ; existence documentaire communautaire, palette non vérifiée.",
+      "currentNote": "Xenomorph_2099 associe Tract à Warrior avec réserve de mémoire ; aucune capture Tract explicite jointe. Une vidéo de personnalisation a été identifiée, mais seules ses métadonnées ont été lues : les images et la vidéo ne sont pas accessibles ici. La palette reste à vérifier.",
+      "evidenceUrls": [
+        "https://forum.predator.illfonic.com/t/a-really-cool-idea-scar-dlc-idea/15655/3",
+        "https://forum.predator.illfonic.com/t/predator-build-challenge/21562/9",
+        "https://forum.predator.illfonic.com/t/the-twins-build-inspired-by-james-jones-art/27790/3",
+        "https://www.youtube.com/watch?v=oE1hd5dJZSk"
+      ],
+      "existingV85Material": false,
+      "existingV120Material": false,
+      "study": null,
+      "visualStatus": "unresolved-pixel-match",
+      "canEnterOfficial1to1Catalog": false
+    },
+    {
+      "id": "skin_classe_feral_default_apres_3_6_0",
+      "label": "Feral — Default après le patch 3.6.0",
+      "category": "Peau",
+      "family": "Peau spécifique de classe",
+      "sourceStatus": "missing_visual_reference",
+      "referenceStatus": "Ajustement de Default confirmé par note 3.6.0 ; aucun visuel comparatif post-correctif datable validé. Ne pas déduire la couleur de peau à partir des commentaires sur la couleur du cloak.",
+      "currentNote": "L’ajustement du motif Default de Feral est confirmé par la note 3.6.0 de janvier 2026. Aucune capture du motif après cette mise à jour n’a pu être vérifiée ; la couleur orange du camouflage ne prouve pas celle de la peau.",
+      "evidenceUrls": [
+        "https://forum.predator.illfonic.com/t/the-jotun-predator-has-arrived/37412"
+      ],
+      "existingV85Material": false,
+      "existingV120Material": false,
+      "study": null,
+      "visualStatus": "unresolved-pixel-match",
+      "canEnterOfficial1to1Catalog": false
+    },
+    {
+      "id": "skin_default_terror",
+      "label": "Terror",
+      "category": "Peau",
+      "family": "Default",
+      "sourceStatus": "missing_visual_reference",
+      "referenceStatus": "missing_visual_reference",
+      "currentNote": "Patch 2.08 confirme Terror. Un propriétaire décrit sa teinte rose mais signale que la récompense Terror affichait Default par erreur. La vignette rose anonyme 10 est une piste, aucune capture nommée fiable retrouvée.",
+      "evidenceUrls": [
+        "https://forum.predator.illfonic.com/t/patch-notes-2-08/15883",
+        "https://forum.predator.illfonic.com/t/field-lockers-not-unlocking-actual-unlock/22640"
+      ],
+      "existingV85Material": false,
+      "existingV120Material": false,
+      "study": null,
+      "visualStatus": "unresolved-pixel-match",
+      "canEnterOfficial1to1Catalog": false,
+      "studyV127": {
+        "id": "phg-study-v127-terror",
+        "atlasSha256": "8be3538f63b9ff4b990361f603d57f91040f3039c4c9c45486409224c17b4e2c",
+        "sourceMethod": "original generative material study",
+        "visuallyCertified1to1": false,
+        "uvMatchVerified": false
+      }
+    },
+    {
+      "id": "skin_classic_slice",
+      "label": "Slice",
+      "category": "Peau",
+      "family": "Classic",
+      "sourceStatus": "missing_visual_reference",
+      "referenceStatus": "missing_visual_reference",
+      "currentNote": "Nom officiel confirmé par 2.08, aucune capture montrant le nom et la teinte trouvée lors de cette recherche. Ne pas déduire une palette du mot Slice.",
+      "evidenceUrls": [
+        "https://forum.predator.illfonic.com/t/patch-notes-2-08/15883",
+        "https://forum.predator.illfonic.com/t/female-predator-nuke-skin-and-waves-skin/19720"
+      ],
+      "existingV85Material": false,
+      "existingV120Material": false,
+      "study": null,
+      "visualStatus": "unresolved-pixel-match",
+      "canEnterOfficial1to1Catalog": false,
+      "studyV127": {
+        "id": "phg-study-v127-slice",
+        "atlasSha256": "8be3538f63b9ff4b990361f603d57f91040f3039c4c9c45486409224c17b4e2c",
+        "sourceMethod": "original generative material study",
+        "visuallyCertified1to1": false,
+        "uvMatchVerified": false
+      }
+    },
+    {
+      "id": "skin_gator_virus",
+      "label": "Virus",
+      "category": "Peau",
+      "family": "Gator",
+      "sourceStatus": "missing_visual_reference",
+      "referenceStatus": "missing_visual_reference",
+      "currentNote": "Patch 2.08 confirme Virus. Un propriétaire décrit son Viking avec Virus rouge et blanc, sans joindre une capture. Compatible avec la vignette Gator 08 ivoire/bordeaux, mais ce rapprochement reste non vérifié.",
+      "evidenceUrls": [
+        "https://forum.predator.illfonic.com/t/patch-notes-2-08/15883",
+        "https://forum.predator.illfonic.com/t/female-predator-nuke-skin-and-waves-skin/19720",
+        "https://forum.predator.illfonic.com/t/do-your-predators-match/17571/14"
+      ],
+      "existingV85Material": false,
+      "existingV120Material": false,
+      "study": null,
+      "visualStatus": "unresolved-pixel-match",
+      "canEnterOfficial1to1Catalog": false,
+      "studyV127": {
+        "id": "phg-study-v127-virus",
+        "atlasSha256": "8be3538f63b9ff4b990361f603d57f91040f3039c4c9c45486409224c17b4e2c",
+        "sourceMethod": "original generative material study",
+        "visuallyCertified1to1": false,
+        "uvMatchVerified": false
+      }
+    },
+    {
+      "id": "skin_unassigned_aurora",
+      "label": "Aurora",
+      "category": "Peau",
+      "family": "Attribution à confirmer",
+      "sourceStatus": "missing_visual_reference",
+      "referenceStatus": "missing_visual_reference",
+      "currentNote": "Patch 2.39 annonce Aurora au niveau 500. Une recette publiée pour Chopper indique Aurora, sans capture associée. Des mentions Aurora sur les armes Fireteam ne prouvent rien pour la peau Predator.",
+      "evidenceUrls": [
+        "https://forum.predator.illfonic.com/t/patch-notes-2-39/27316",
+        "https://forum.predator.illfonic.com/t/post-your-videos/34683/75"
+      ],
+      "existingV85Material": false,
+      "existingV120Material": false,
+      "study": null,
+      "visualStatus": "unresolved-pixel-match",
+      "canEnterOfficial1to1Catalog": false,
+      "studyV127": {
+        "id": "phg-study-v127-aurora",
+        "atlasSha256": "8be3538f63b9ff4b990361f603d57f91040f3039c4c9c45486409224c17b4e2c",
+        "sourceMethod": "original generative material study",
+        "visuallyCertified1to1": false,
+        "uvMatchVerified": false
+      }
+    },
+    {
+      "id": "skin_mottle_ash",
+      "label": "Ash",
+      "category": "Peau",
+      "family": "Mottle",
+      "sourceStatus": "missing_visual_reference",
+      "referenceStatus": "missing_visual_reference",
+      "currentNote": "Nom officiel confirmé par 2.05. Aucune capture nommée exploitable retrouvée lors de cette recherche.",
+      "evidenceUrls": [
+        "https://forum.predator.illfonic.com/t/patch-notes-2-05/14947"
+      ],
+      "existingV85Material": false,
+      "existingV120Material": false,
+      "study": {
+        "studyId": "study_mottle_ash_v122",
+        "targetId": "skin_mottle_ash",
+        "pngSha256": "f657d3c63246c9813c21f36eff26460e1f7b271751c7722c5deeec1b5c79622f",
+        "webpSha256": "4dad08815833682311d5c0c0aaeb87149cecf2f88c082a5b572fbd1c74e51889"
+      },
+      "visualStatus": "unresolved-pixel-match",
+      "canEnterOfficial1to1Catalog": false
+    },
+    {
+      "id": "skin_mottle_grape",
+      "label": "Grape",
+      "category": "Peau",
+      "family": "Mottle",
+      "sourceStatus": "missing_visual_reference",
+      "referenceStatus": "missing_visual_reference",
+      "currentNote": "Nom officiel confirmé par 2.08. Les mentions de Dread verrouillé à -1 Veritanium ne donnent pas une palette exploitable. Aucune capture nommée fiable retrouvée.",
+      "evidenceUrls": [
+        "https://forum.predator.illfonic.com/t/patch-notes-2-08/15883",
+        "https://forum.predator.illfonic.com/t/predator-skin-patterns/30610"
+      ],
+      "existingV85Material": false,
+      "existingV120Material": false,
+      "study": {
+        "studyId": "study_mottle_grape_v122",
+        "targetId": "skin_mottle_grape",
+        "pngSha256": "e7266bbcc8205892ca0cad2b1c2e55c1637ca4082a0a0a08119dd0a148326cfa",
+        "webpSha256": "6c7831cc2566b9daf1c282b972765daef9da276a959f4ac87140c21416dc9105"
+      },
+      "visualStatus": "unresolved-pixel-match",
+      "canEnterOfficial1to1Catalog": false
+    },
+    {
+      "id": "skin_mottle_dread",
+      "label": "Dread",
+      "category": "Peau",
+      "family": "Mottle",
+      "sourceStatus": "missing_visual_reference",
+      "referenceStatus": "missing_visual_reference",
+      "currentNote": "Nom officiel confirmé par 2.08. Les mentions de Dread verrouillé à -1 Veritanium ne donnent pas une palette exploitable. Aucune capture nommée fiable retrouvée.",
+      "evidenceUrls": [
+        "https://forum.predator.illfonic.com/t/patch-notes-2-08/15883",
+        "https://forum.predator.illfonic.com/t/predator-skin-patterns/30610"
+      ],
+      "existingV85Material": false,
+      "existingV120Material": false,
+      "study": null,
+      "visualStatus": "unresolved-pixel-match",
+      "canEnterOfficial1to1Catalog": false,
+      "v129StudyId": "phg-study-v129-mottle_dread_skin",
+      "v129CorrectChannel": "skin",
+      "v129ConfirmedClasses": [
+        "Scout",
+        "Hunter",
+        "Berserker"
+      ],
+      "v129PixelsCertified1to1": false
+    },
+    {
+      "id": "skin_raptor_putrid",
+      "label": "Putrid",
+      "category": "Peau",
+      "family": "Raptor",
+      "sourceStatus": "missing_visual_reference",
+      "referenceStatus": "missing_visual_reference",
+      "currentNote": "Nom officiel confirmé par 2.05. Aucune capture nommée exploitable retrouvée lors de cette recherche.",
+      "evidenceUrls": [
+        "https://forum.predator.illfonic.com/t/patch-notes-2-05/14947"
+      ],
+      "existingV85Material": false,
+      "existingV120Material": false,
+      "study": {
+        "studyId": "study_raptor_putrid_v122",
+        "targetId": "skin_raptor_putrid",
+        "pngSha256": "09cdcb44c6ba93695c29d0e4ca7642d1c4661c036fa5f264f5043b77786fc372",
+        "webpSha256": "717fccdc5120eb7bb9f29fd8626b0aad71219c9a0251da126d91c2146f1883f1"
+      },
+      "visualStatus": "unresolved-pixel-match",
+      "canEnterOfficial1to1Catalog": false
+    },
+    {
+      "id": "skin_shatter_bleak",
+      "label": "Bleak",
+      "category": "Peau",
+      "family": "Shatter",
+      "sourceStatus": "missing_visual_reference",
+      "referenceStatus": "missing_visual_reference",
+      "currentNote": "Nom officiel confirmé par 2.05. Aucune capture nommée exploitable retrouvée lors de cette recherche.",
+      "evidenceUrls": [
+        "https://forum.predator.illfonic.com/t/patch-notes-2-05/14947"
+      ],
+      "existingV85Material": false,
+      "existingV120Material": false,
+      "study": {
+        "studyId": "study_shatter_bleak_v122",
+        "targetId": "skin_shatter_bleak",
+        "pngSha256": "36ae868c9c8354e019b5c11e7513bb53ae7423f4c7fa320b0d93291278d19be8",
+        "webpSha256": "1a98f4cc0ca9b7130f69afbf3e03ebb0de411a2a543b67478c313e3432e76551"
+      },
+      "visualStatus": "unresolved-pixel-match",
+      "canEnterOfficial1to1Catalog": false
+    },
+    {
+      "id": "skin_shatter_demon",
+      "label": "Demon",
+      "category": "Peau",
+      "family": "Shatter",
+      "sourceStatus": "missing_visual_reference",
+      "referenceStatus": "missing_visual_reference",
+      "currentNote": "Un propriétaire nomme Shatter Demon sur ses Predator noir/rouge. Les images inspectées comprennent un rendu fortement désaturé, un plan de jeu sous vision thermique bleue et des logos Jason sans rapport : ils ne permettent pas une palette fiable. La vidéo Crimson Scar nomme explicitement Shatter Demon mais son média n’a pas été accessible. Candidat Shatter08 gris/rouge sombre, sans résolution.",
+      "evidenceUrls": [
+        "https://forum.predator.illfonic.com/t/field-lockers-not-unlocking-actual-unlock/22640/2",
+        "https://forum.predator.illfonic.com/t/patch-notes-2-08/15883/146",
+        "https://forum.predator.illfonic.com/t/show-off-your-predators/8964/311",
+        "https://forum.predator.illfonic.com/t/show-off-your-predators/8964/313",
+        "https://forum.predator.illfonic.com/t/commissioned-yautja-oc-cards-for-phg-s/29692/11",
+        "https://forum.predator.illfonic.com/t/the-crimson-scar-build-subscriber-request-by-the-collector/30125",
+        "https://www.youtube.com/watch?v=ACib3V8YyfE"
+      ],
+      "existingV85Material": false,
+      "existingV120Material": false,
+      "study": null,
+      "visualStatus": "unresolved-pixel-match",
+      "canEnterOfficial1to1Catalog": false
+    },
+    {
+      "id": "skin_default_ps_exclusive",
+      "label": "PS Exclusive",
+      "category": "Peau",
+      "family": "Default",
+      "sourceStatus": "missing_visual_reference",
+      "referenceStatus": "missing_visual_reference",
+      "currentNote": "Noktrum identifie explicitement PlayStation Exclusive dans la section Default puis joint un portrait Mr Black. Peau gris blanc/noir, petite image 338×378 ; le post signale une mandible incorrectement texturée. Aucune rangée de vignettes ni menu nommé. Corrobore un aspect, ne prouve pas le mapping vers la vignette 06 ou la texture originale.",
+      "evidenceUrls": [
+        "https://forum.predator.illfonic.com/t/patch-2-0-part-ii/13552",
+        "https://forum.predator.illfonic.com/t/superpredators-visual-aspect/25669"
+      ],
+      "existingV85Material": true,
+      "existingV120Material": false,
+      "study": null,
+      "visualStatus": "unresolved-pixel-match",
+      "canEnterOfficial1to1Catalog": false
+    },
+    {
+      "id": "skin_default_epic_exclusive",
+      "label": "Epic Exclusive",
+      "category": "Peau",
+      "family": "Default",
+      "sourceStatus": "missing_visual_reference",
+      "referenceStatus": "missing_visual_reference",
+      "currentNote": "Propriétaire Gaia’phage décrit Epic Exclusive comme vert/orange, sans image jointe. Un autre fil décrit un aperçu rouge en haut/vert en bas mais les auteurs hésitent sur le shader et signalent un changement d’aperçu. Candidat Default07 ivoire/orange/vert, pas une identification visuelle ferme.",
+      "evidenceUrls": [
+        "https://forum.predator.illfonic.com/t/patch-2-0-part-ii/13552",
+        "https://forum.predator.illfonic.com/t/your-own-personal-predators-story/27763/106",
+        "https://forum.predator.illfonic.com/t/post-your-videos-here/18146/4691",
+        "https://forum.predator.illfonic.com/t/new-skin/16543"
+      ],
+      "existingV85Material": true,
+      "existingV120Material": false,
+      "study": null,
+      "visualStatus": "unresolved-pixel-match",
+      "canEnterOfficial1to1Catalog": false
+    },
+    {
+      "id": "dread_exiled_tint_patch239_unidentified",
+      "label": "Exiled Predator — teinte de predlocks annoncée en 2.39, visuel à identifier",
+      "category": "Dreads",
+      "family": "Exiled Predator / ajout 2.39",
+      "sourceStatus": "missing_visual_reference",
+      "referenceStatus": "Ajout officiellement attesté en 2.39, mais aucun nom de palette ni vignette sélectionnée exploitable retrouvé. Les renders historiques de la coupe Exiled/Tank ne démontrent pas à eux seuls la nouvelle teinte.",
+      "currentNote": "Deux captures du 24 avril 2022 montrent les libellés Exiled Marbled/Bronze et Brown/Silver, réutilisables avec les matières existantes. La coche reste sur Elder : il s’agit d’une prévisualisation. Ces deux exemples ne prouvent pas une teinte unique nouvelle du patch 2.39 ; cette identification reste ouverte.",
+      "evidenceUrls": [
+        "https://forum.predator.illfonic.com/t/patch-notes-2-39/27316",
+        "https://forum.predator.illfonic.com/t/patch-notes-2-40/28174",
+        "https://forum.predator.illfonic.com/t/exiled-predator-doesn-t-have-the-right-predlocks/24652",
+        "https://forum.predator.illfonic.com/t/exiled-predlocks/27349",
+        "https://forum.predator.illfonic.com/t/patch-notes-2-39/27316/91",
+        "https://forum.predator.illfonic.com/t/predlocks-elder/27425"
+      ],
+      "existingV85Material": false,
+      "existingV120Material": false,
+      "study": null,
+      "visualStatus": "unresolved-pixel-match",
+      "canEnterOfficial1to1Catalog": false,
+      "v128Study": "phg-study-v128-exiled-marbled-bronze",
+      "v128Evidence": "Exiled highlighted Marbled/Bronze, Elder equipped check remains; NOT proof this is the new patch 2.39 dye",
+      "v128MenuCapture": "https://forum.predator.illfonic.com/t/predlocks-elder/27425"
+    },
+    {
+      "id": "armure_v2_ogre_pending",
+      "label": "Ogre — référence visuelle nommée à compléter",
+      "category": "Biomask",
+      "family": "Ogre",
+      "sourceStatus": "missing_visual_reference",
+      "referenceStatus": "nom_atteste_mais_apparence_precise_non_verifiee",
+      "currentNote": "Ogre est cité par des propriétaires, mais aucune capture nouvelle ne montre sans ambiguïté l’armure portant ce shader. Un loadout simplement nommé Ogre et les références de masque ne suffisent pas.",
+      "evidenceUrls": [
+        "https://forum.predator.illfonic.com/t/the-glitchy-game-made-me-buy-the-wrong-color/5487",
+        "https://forum.predator.illfonic.com/t/im-starting-to-think-trophys-are-scams/10313/43",
+        "https://forum.predator.illfonic.com/t/show-off-your-predators/8964/250",
+        "https://forum.predator.illfonic.com/t/when-city-hunter-eventually-comes-out/10659/14",
+        "https://forum.predator.illfonic.com/t/shaders-we-d-actually-like-discussion/19247/13",
+        "https://forum.predator.illfonic.com/t/invisible-collision-unusable-objects-custom-keybinding-scars-second-wind-filter-at-night/26408"
+      ],
+      "existingV85Material": false,
+      "existingV120Material": false,
+      "study": null,
+      "visualStatus": "unresolved-pixel-match",
+      "canEnterOfficial1to1Catalog": false,
+      "v128CanonicalType": "biomask-tint",
+      "v128CanonicalClass": "Alpha Predator",
+      "v128CanonicalId": "biomask_alpha_ogre",
+      "v128DisallowArmor": true,
+      "v128Source": "https://forum.predator.illfonic.com/t/patch-notes-2-19/20975"
+    },
+    {
+      "id": "armure_v2_epic_exclusive_pending",
+      "label": "Epic Games — armure exclusive, référence détaillée à compléter",
+      "category": "Armure",
+      "family": "Epic Games themed armor",
+      "sourceStatus": "missing_visual_reference",
+      "referenceStatus": "nom_atteste_mais_apparence_precise_non_verifiee",
+      "currentNote": "Une nouvelle capture est disponible, mais le sang vert recouvre l’armure et les réponses ne sont pas unanimes sur l’identification. La planche officielle est trop petite pour fixer le motif. La texture d’armure reste à documenter.",
+      "evidenceUrls": [
+        "https://store.epicgames.com/p/predator-hunting-grounds-digital-deluxe-edition-83f461",
+        "https://forum.predator.illfonic.com/t/pc-deluxe-skin/1698",
+        "https://cdn2.unrealengine.com/Diesel/productv2/predator-hunting-grounds/digital-deluxe-edition/CRE1089_Predator_EpicStore_DDE_1920x1080_002_TH-1920x1080-4d92f031878d6ba27398dfa86181d59f1c47ef5d.png",
+        "https://forum.predator.illfonic.com/t/anybody-knows-where-to-find-that/10940"
+      ],
+      "existingV85Material": false,
+      "existingV120Material": false,
+      "study": null,
+      "visualStatus": "unresolved-pixel-match",
+      "canEnterOfficial1to1Catalog": false,
+      "v128Study": "phg-study-v128-epic-copper",
+      "v128PixelEvidence": "absent-colors-provisional"
+    },
+    {
+      "id": "armure_v2_playstation_themed_pending",
+      "label": "PlayStation themed armor — référence détaillée à compléter",
+      "category": "Armure",
+      "family": "PlayStation themed armor",
+      "sourceStatus": "missing_visual_reference",
+      "referenceStatus": "nom_atteste_mais_apparence_precise_non_verifiee",
+      "currentNote": "La planche officielle de 2019 montre un métal bleu acier/cyan sombre, mais le personnage est petit et le visuel est annoncé comme provisoire. Une vidéo de build nomme l’armure PlayStation ; ses images sont inaccessibles ici. La référence précise en jeu manque encore.",
+      "evidenceUrls": [
+        "https://forum.predator.illfonic.com/t/so-jungle-hunters-silver-and-gold-armor-finally-added-to-the-game-but/23665/8",
+        "https://forum.predator.illfonic.com/uploads/default/original/3X/c/c/cc6627b7590854f70f22228bc65df84b74633fae.png",
+        "https://blog.playstation.com/2019/12/10/predator-hunting-grounds-launching-april-24th-2020/",
+        "https://blog.br.playstation.com/2019/12/10/predator-hunting-grounds-chega-em-24-de-abril-de-2020/",
+        "https://forum.predator.illfonic.com/t/red-color-blindness/15779/2",
+        "https://forum.predator.illfonic.com/t/year-two-wishlist/20209/12",
+        "https://rumble.com/v2pookv-trapper-tactician-disk-master-jungle-hunter-build-by-lantz-ferguson-predato.html"
+      ],
+      "existingV85Material": false,
+      "existingV120Material": false,
+      "study": null,
+      "visualStatus": "unresolved-pixel-match",
+      "canEnterOfficial1to1Catalog": false,
+      "v128Study": "phg-study-v128-playstation-graphite",
+      "v128PixelEvidence": "absent-colors-provisional"
+    }
+  ],
+  "v128SteamStudy": {
+    "id": "phg-study-v128-steam-light-metal",
+    "historicalReference": "https://forum.predator.illfonic.com/t/what-happened-to-the-steam-exclusive-shader-and-why-not-for-the-masks/26467",
+    "pixelsVerified": false
+  },
+  "supplementalV129": {
+    "source": "patch-2.08-2.19-2.40",
+    "atlasSha256": "4eac66e3dc679a207791f8d10d1ca75970a61db0c5c20b3547d52b91833d6b8f",
+    "extraCases": [
+      {
+        "id": "skin_gator_waves",
+        "channel": "skin",
+        "availableClasses": 7,
+        "studyId": "phg-study-v129-gator_waves_skin",
+        "artisticStatus": "unverified"
+      },
+      {
+        "id": "tank_predlocks",
+        "channel": "dreads",
+        "unlockAtLevel": 150,
+        "studyId": "phg-study-v129-tank_predlock_surface",
+        "addsNewDreadGeometry": false
+      },
+      {
+        "id": "biomask_alpha_ogre",
+        "channel": "biomask",
+        "selectable": false,
+        "armorAllowed": false,
+        "officialClass": "Alpha Predator"
+      }
+    ],
+    "officialUvAvailable": false
+  }
+}

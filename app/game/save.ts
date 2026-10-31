@@ -1,9 +1,9 @@
-import { phgMaterialForV113 } from "./hunterMaterialsV113";
 import {normalizeHomeworldArrivalRecoveryV111} from './systems/homeworldArrivalRecoveryLedgerV111';
 import {normalizeHomeworldArchiveContinuationV111,archiveContinuationActiveV111} from './systems/homeworldArchiveContinuationLedgerV111';
 import {emptyHarvestInventoryV112,normalizeHarvestInventoryV112,deliverHarvestV112} from "./systems/harvestInventoryV112";
 import { normalizeHuntAccessibilityV112, DEFAULT_HUNT_ACCESSIBILITY_V112 } from "./systems/huntAccessibilityV112";
 import { normalizeFieldToolIdsV111 } from "./systems/fieldToolsV111";
+import { DEFAULT_CHROMATICS_V113, hasCustomChromaticsV113, migrateLegacyPhgAppearanceV115 } from "./hunterChromaticsV113";
 import {normalizeHomeworldArchiveV106} from './systems/homeworldArchiveLedgerV106';
 import {normalizeHomeworldArchiveComparisonV107} from './systems/homeworldArchiveComparisonLedgerV107';
 import {normalizeHomeworldCargoV108} from './systems/homeworldCargoLedgerV108';
@@ -118,11 +118,9 @@ export const DEFAULT_HUNTER_APPEARANCE: Readonly<HunterAppearance> = {
   dreadTintId: "obsidian",
   armorStyleId: "classic",
   armorTintId: "bronze",
-  skinMaterialId: null,
-  dreadMaterialId: null,
-  outfitMaterialId: null,
   trophyAdornmentId: "skull-spine",
   laserColorId: "crimson",
+  chromaticsV113: { ...DEFAULT_CHROMATICS_V113 },
 };
 
 const WEAPON_IDS = WEAPONS.map((weapon) => weapon.id);
@@ -134,11 +132,6 @@ const HUNTER_SKIN_IDS = [
   "ochre-mottle",
   "ashen-mottle",
   "dark-mottle",
-  "moss-mottle",
-  "copper-mottle",
-  "sand-mottle",
-  "storm-mottle",
-  "ivory-mottle",
 ] as const;
 const LASER_COLOR_IDS = [
   "crimson",
@@ -193,6 +186,13 @@ const BIOMASK_IDS = [
   "clan-filigrane-cuivre",
   "clan-patine-dunes",
   "clan-gardien-ivoire",
+  "concept-v133-requiem",
+  "concept-v133-nova",
+  "concept-v133-instinct",
+  "concept-v133-glypic",
+  "concept-v133-tyrant",
+  "concept-v133-warlord",
+  "concept-v133-paroxysm",
 ] as const;
 const DREAD_STYLE_IDS = [
   "classic",
@@ -204,8 +204,8 @@ const DREAD_STYLE_IDS = [
   "feral",
   "huntress",
 ] as const;
-const DREAD_TINT_IDS = ["obsidian", "umber", "ashen", "copper", "bone", "moss", "blue-black"] as const;
-const ARMOR_TINT_IDS = ["gunmetal", "bronze", "obsidian", "bone", "jade", "rust", "crimson"] as const;
+const DREAD_TINT_IDS = ["obsidian", "umber", "ashen"] as const;
+const ARMOR_TINT_IDS = ["gunmetal", "bronze", "obsidian"] as const;
 const TROPHY_ADORNMENT_IDS = ["none", "skull-spine"] as const;
 const TROPHY_PART_IDS = [
   "skull",
@@ -668,9 +668,6 @@ function normalizeAppearance(source: unknown): HunterAppearance {
     armorTintId: isOneOf(source.armorTintId, ARMOR_TINT_IDS)
       ? source.armorTintId
       : DEFAULT_HUNTER_APPEARANCE.armorTintId,
-    skinMaterialId: phgMaterialForV113("skin", source.skinMaterialId)?.id ?? null,
-    dreadMaterialId: phgMaterialForV113("dread", source.dreadMaterialId)?.id ?? null,
-    outfitMaterialId: phgMaterialForV113("outfit", source.outfitMaterialId)?.id ?? null,
     trophyAdornmentId: isOneOf(
       source.trophyAdornmentId,
       TROPHY_ADORNMENT_IDS,
@@ -680,6 +677,7 @@ function normalizeAppearance(source: unknown): HunterAppearance {
     laserColorId: isOneOf(source.laserColorId, LASER_COLOR_IDS)
       ? source.laserColorId
       : DEFAULT_HUNTER_APPEARANCE.laserColorId,
+    chromaticsV113: migrateLegacyPhgAppearanceV115(source),
   };
 
   if (appearance.presetId !== "custom") {
@@ -700,7 +698,6 @@ function normalizeAppearance(source: unknown): HunterAppearance {
       source.dreadTintId === expected.dreadTintId &&
       source.armorStyleId === expected.armorStyleId &&
       source.armorTintId === expected.armorTintId &&
-      !appearance.skinMaterialId && !appearance.dreadMaterialId && !appearance.outfitMaterialId &&
       source.trophyAdornmentId === expected.trophyAdornmentId &&
       // laserColorId was optional in already-written v3 saves. Its only
       // legacy meaning is the authored crimson default.
@@ -710,7 +707,7 @@ function normalizeAppearance(source: unknown): HunterAppearance {
 
     // A legendary id describes the complete authored plate, never a label
     // that can remain attached to a manually altered combination of modules.
-    if (!matchesAuthoredModules) appearance.presetId = "custom";
+    if (!matchesAuthoredModules || hasCustomChromaticsV113(appearance.chromaticsV113)) appearance.presetId = "custom";
   }
 
   return appearance;

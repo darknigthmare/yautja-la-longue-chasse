@@ -5,6 +5,7 @@ import { normalizeHuntAccessibilityV112 } from "./systems/huntAccessibilityV112"
 import { FIELD_TOOLS_V111, quoteFieldToolV111, purchaseFieldToolV111 } from "./systems/fieldToolsV111";
 import {recoverAnyArchiveV71} from "./systems/archiveRecoveryV71";
 import { REFERENCE_BIOMASKS_V62, PRESERVED_BIOMASKS_V62 } from "./biomaskCatalogueV62";
+import { Y_A_U_T_J_A_CONCEPT_MASKS_V133 } from "./conceptBiomasksV133.ts";
 
 /* eslint-disable @next/next/no-img-element */
 
@@ -18,6 +19,9 @@ import React, {
   useSyncExternalStore,
 } from "react";
 import HunterRigPreview from "./HunterRigPreview";
+import HunterChromaticForgeV113 from "./HunterChromaticForgeV113";
+import { normalizeHunterChromaticsV113, maskOriginForCustomizationV135, type HunterChromaticsV113, type ChromaticFacilityV115 } from "./hunterChromaticsV113";
+import { commitHunterChromaticsV116 } from "./systems/hunterChromaticPersistenceV116";
 import CloudAccountV71, { openCloudAccountV71 } from "./CloudAccountV71";
 import HomeworldModularHunter from "./HomeworldModularHunter";
 import { startYouthCampaign, withYouthCheckpoint, withYouthProgress, youthCampaignNeedsScene, youthCampaignObjective } from "./systems/youthCampaign";
@@ -139,7 +143,6 @@ import {
   resolveV6TrophyVisualId,
   type V6VisualId,
 } from "./v6Visuals";
-import { PHG_MATERIALS_V113, phgMaterialLabelV113 } from "./hunterMaterialsV113";
 import {
   HUNTER_EXPANDED_PRESETS,
   HUNTER_FILM_GROUPS,
@@ -539,11 +542,6 @@ const SKIN_OPTIONS: ReadonlyArray<{
     detail: "Motifs sombres de traque nocturne",
     swatch: "#403a31",
   },
-  { id: "moss-mottle", label: "Mousse des canopées", detail: "Verts organiques des chasseurs forestiers", swatch: "#677b4b" },
-  { id: "copper-mottle", label: "Cuivre sauvage", detail: "Oxydes rouge-brun des terres volcaniques", swatch: "#a35a3e" },
-  { id: "sand-mottle", label: "Sable fossile", detail: "Pigmentation beige des déserts rocheux", swatch: "#b2a17a" },
-  { id: "storm-mottle", label: "Ardoise orageuse", detail: "Pigments froids des climats humides", swatch: "#647b85" },
-  { id: "ivory-mottle", label: "Ivoire des cendres", detail: "Tonalité ivoire peu saturée, non albinos imposé", swatch: "#bcb4a2" },
 ];
 
 const MASK_OPTIONS: ReadonlyArray<{ id: BiomaskId | null; label: string; detail: string; image?: string; preferImage?: boolean }> = [
@@ -551,6 +549,11 @@ const MASK_OPTIONS: ReadonlyArray<{ id: BiomaskId | null; label: string; detail:
   ...REFERENCE_BIOMASKS_V62.map((mask) => ({ id: mask.id, label: mask.label, detail: mask.work + " · recréation guidée par références", image: hunterMaskThumbnailPath(mask.id), preferImage: true })),
   { id: "elder", label: "Couronne des Ancêtres", detail: "Création originale du clan · aucun Ancien canonique attribué", image: hunterMaskThumbnailPath("elder"), preferImage: true },
   ...PRESERVED_BIOMASKS_V62.map((mask) => ({ id: mask.id, label: mask.label, detail: mask.detail, image: hunterMaskThumbnailPath(mask.id), preferImage: true })),
+  ...Y_A_U_T_J_A_CONCEPT_MASKS_V133.map(mask=>({
+    id:mask.id as BiomaskId,label:mask.name,
+    detail:"Étude conceptuelle originale V133 · forme non certifiée PHG 1:1",
+    image:mask.assetPath,preferImage:true,
+  })),
 ];
 
 const V14_ORIGINAL_MASK_ASSETS = listHunterKitAssets({
@@ -713,10 +716,6 @@ const DREAD_TINT_OPTIONS: ReadonlyArray<{
   { id: "obsidian", label: "Obsidienne", swatch: "#17181b" },
   { id: "umber", label: "Terre d’ombre", swatch: "#4b3428" },
   { id: "ashen", label: "Cendre", swatch: "#8a8881" },
-  { id: "copper", label: "Cuivre", swatch: "#85513f" },
-  { id: "bone", label: "Ivoire de parure", swatch: "#bbb29c" },
-  { id: "moss", label: "Vert terne", swatch: "#586a4b" },
-  { id: "blue-black", label: "Noir bleuté", swatch: "#343e53" },
 ];
 
 const ARMOR_TINT_OPTIONS: ReadonlyArray<{
@@ -727,10 +726,6 @@ const ARMOR_TINT_OPTIONS: ReadonlyArray<{
   { id: "gunmetal", label: "Métal canon", swatch: "#75818a" },
   { id: "bronze", label: "Bronze du clan", swatch: "#98704b" },
   { id: "obsidian", label: "Obsidienne", swatch: "#272b31" },
-  { id: "bone", label: "Os traité", swatch: "#afa68d" },
-  { id: "jade", label: "Patine verte", swatch: "#466f5b" },
-  { id: "rust", label: "Fer ancien", swatch: "#8b503d" },
-  { id: "crimson", label: "Laque de sang", swatch: "#873938" },
 ];
 
 const LASER_COLOR_OPTIONS: ReadonlyArray<{
@@ -1054,7 +1049,8 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     useState<MapReturnScreen>("deck");
   const [stationReturnScreen, setStationReturnScreen] =
     useState<StationReturnScreen>("deck");
-  const [paletteFacility, setPaletteFacility] = useState<"ship" | "forge" | "lab">("ship");
+  const [chromaticFacilityV115, setChromaticFacilityV115] =
+    useState<ChromaticFacilityV115>("ship");
   const [lastResult, setLastResult] = useState<MissionResult | null>(null);
   const [lastRewardSummary, setLastRewardSummary] =
     useState<RewardSummary | null>(null);
@@ -1082,6 +1078,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const pendingTerminalRunRef = useRef<string | null>(null);
   const [pendingHuntResult, setPendingHuntResult] = useState<{ result: MissionResult; returnToDeck: boolean } | null>(null);
   const [previewMaskWorn, setPreviewMaskWorn] = useState(true);
+  const [draftChromaticsV114, setDraftChromaticsV114] = useState<HunterChromaticsV113 | null>(null);
   const [previewGauntletOpen, setPreviewGauntletOpen] = useState(false);
   const [previewBladesExtended, setPreviewBladesExtended] = useState(false);
   const [previewAiming, setPreviewAiming] = useState(false);
@@ -2428,10 +2425,11 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   );
 
   const openStationScreen = useCallback(
-    (next: StationScreen, returnScreen: StationReturnScreen) => {
+    (next: StationScreen, returnScreen: StationReturnScreen, facility?: ChromaticFacilityV115) => {
       if (pendingTrophyCommitRef.current) { setToast("Confirmez le rite en attente avant de changer d’installation."); return; }
       setHubLocation(returnScreen === "homeworld" ? "homeworld" : "deck");
       setStationReturnScreen(returnScreen);
+      if (next === "customization") setChromaticFacilityV115(facility ?? (returnScreen === "homeworld" ? "forge" : "ship"));
       if (next === "justice") setJusticeReturnScreen(returnScreen === "homeworld" ? "homeworld" : "deck");
       go(next);
     },
@@ -2450,7 +2448,6 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
           ? "Ta formation est en cours. Rejoins le mentor pour reprendre les exercices à l’étape sauvegardée ; cet accès ne remplace pas les exercices du dojo."
           : "Rencontre d’abord le chef du clan puis l’instructeur des terrasses. Son dialogue ouvre le dojo ; la lame et le biomask se reçoivent uniquement aux étapes réussies de la formation."); return;
     }
-    if (service === "customization") setPaletteFacility("forge");
     if (service === "justice") setJusticeJurisdiction("homeworld");
     if (service === "pit") openPit();
     else openStationScreen(service, "homeworld");
@@ -2977,14 +2974,19 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         ...save.appearance,
         [key]: value,
       };
+      // Persist this class identity BEFORE the preset becomes "custom";
+      // changing even a dread color must not lock an Alpha/Samurai out.
+      const maskOwnerOrigin = maskOriginForCustomizationV135(save.appearance);
       if (key !== "presetId") appearance.presetId = "custom";
-      // A flat tint replaces a woven/material swatch in its layer; other layers stay independent.
-      if (key === "skinId") appearance.skinMaterialId = null;
-      if (key === "dreadTintId") appearance.dreadMaterialId = null;
-      if (key === "armorTintId") appearance.outfitMaterialId = null;
-      if (key === "skinMaterialId") appearance.skinId = "ochre-mottle";
-      if (key === "dreadMaterialId") appearance.dreadTintId = "obsidian";
-      if (key === "outfitMaterialId") appearance.armorTintId = "gunmetal";
+      // A standard swatch deliberately clears only the custom override of its channel.
+      const baseChromatics = normalizeHunterChromaticsV113(appearance.chromaticsV113);
+      if (key !== "presetId") {
+        baseChromatics.maskOriginId = maskOwnerOrigin;
+        appearance.chromaticsV113 = baseChromatics;
+      }
+      if (key === "skinId") appearance.chromaticsV113 = { ...baseChromatics, skinHex: null, skinMaterialId: null };
+      if (key === "dreadTintId") appearance.chromaticsV113 = { ...baseChromatics, dreadHex: null, dreadMaterialId: null };
+      if (key === "armorTintId") appearance.chromaticsV113 = { ...baseChromatics, armorHex: null, armorMaterialId: null };
       setSelectedCatalogueEntryId(null);
       persist({
         ...save,
@@ -2994,6 +2996,40 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     },
     [persist, playSound, save],
   );
+
+
+  const commitChromaticsV113 = useCallback((draft: HunterChromaticsV113): boolean => {
+    if (!sessionAliveRef.current || screen !== "customization" || settingsOpen ||
+      campaignSaveBusy || archiveTransferBusy || !!archiveRecoveryIssue ||
+      !!pendingTrophyCommitRef.current || !!pendingSocialWriteRef.current ||
+      !!pendingTerminalRunRef.current) return false;
+    // persist() publishes its candidate in memory even on a failed write.
+    // This cosmetic path must preserve the last durable appearance instead.
+    const result = commitHunterChromaticsV116({
+      current: saveRef.current,
+      expectedOwnerCreatedAt: entry.ownerCreatedAt,
+      draft,
+      write: next => writeSaveWithStatus(next),
+      reconcile: (attempt, owner) => reconcileSaveWrite(attempt, owner),
+    });
+    if (!result.ok) {
+      setSaveFailure(result.failure);
+      setToast("Palette non confirmée (" + result.failure +
+        "). Aucun changement permanent annoncé. Vérifie ta sauvegarde avant de réessayer.");
+      return false;
+    }
+    saveRef.current = result.save;
+    setSave(result.save);
+    setSaveFailure(null);
+    setSelectedCatalogueEntryId(null);
+    setToast(result.recovered
+      ? "Palette récupérée à partir des octets exacts de cette campagne."
+      : "Teintes et matières enregistrées dans la campagne.");
+    void playSound("select");
+    return true;
+  }, [screen, settingsOpen, campaignSaveBusy, archiveTransferBusy, archiveRecoveryIssue,
+      entry.ownerCreatedAt, playSound]);
+
 
   const applyShipLoadout = useCallback(
     (loadout: Loadout, appearance: HunterAppearance) => {
@@ -3887,13 +3923,14 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             >
               {hubLocation === "homeworld" ? "← Retour à la cité" : "← Retour au pont physique"}
             </button>
-            {screen === "medbay" && <aside className="pigment-lab-access" aria-label="Station pigmentaire de la maison des soins">
-              <strong>Mélangeur des matrices pigmentaires</strong>
-              <p>Les soigneurs travaillent sur la pigmentation superficielle. Aucune réécriture ADN ou mutation instantanée n’est attribuée au lore.</p>
-              <button type="button" className="alien-button" onClick={() => {
-                setPaletteFacility("lab");
-                openStationScreen("customization", hubLocation);
-              }}>Ouvrir la station des pigments</button>
+            {screen === "medbay" && <aside className="pigment-lab-access" aria-label="Atelier des chromatophores">
+              <strong>Maison des soins · Étude pigmentaire</strong>
+              <p>Motifs de peau et pigments de surface. Aucune modification génétique instantanée n’est revendiquée.</p>
+              <button type="button" className="alien-button"
+                disabled={settingsOpen || campaignSaveBusy || archiveTransferBusy || !!archiveRecoveryIssue}
+                onClick={() => openStationScreen("customization", hubLocation, "lab")}>
+                Examiner ma pigmentation
+              </button>
             </aside>}
             <ShipHub
               embedded
@@ -3908,10 +3945,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
               onOpenArmory={() => openStationScreen("armory", hubLocation)}
               onOpenTrophies={() => openStationScreen("trophies", hubLocation)}
               onOpenArchives={() => openStationScreen("codex", hubLocation)}
-              onOpenCustomization={() => {
-                setPaletteFacility("lab");
-                openStationScreen("customization", hubLocation);
-              }}
+              onOpenCustomization={() =>
+                openStationScreen("customization", hubLocation, screen === "medbay" ? "lab" : undefined)
+              }
               onOpenPit={openPit}
               onApplyLoadout={applyShipLoadout}
               onSelectedShipChange={setSelectedShipId}
@@ -4411,29 +4447,36 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         >
           <div className="screen-safe">
             <PanelHeader
-              eyebrow={newGamePhase ? "Nouvelle partie // Identité du chasseur" : paletteFacility === "forge" && stationReturnScreen === "homeworld" ? "Homeworld // Teinturerie des Forges" : paletteFacility === "lab" ? "Maison des soins // Matrice pigmentaire" : "Vaisseau // Quartier du chasseur"}
+              eyebrow={newGamePhase ? "Nouvelle partie // Identité du chasseur"
+                : chromaticFacilityV115 === "lab" ? "Maison des soins // Chromatophores"
+                : chromaticFacilityV115 === "forge" ? "Homeworld // Teinturerie des Forges"
+                : "Vaisseau // Quartier du chasseur"}
               title="Personnalisation du Yautja"
-              subtitle="Le biomask permet d’étudier séparément l’anatomie, le filet, les dreadlocks, les plaques, l’armement, les gantelets et les trophées."
+              subtitle="Ateliers de pigmentation et de patines : contrôle des couleurs, textures des dreads, étoffes, armures et anatomie du chasseur. Les pigments ne remplacent pas les silhouettes de référence."
               id="customization-title"
               onBack={() => newGamePhase ? void returnToMainMenu() : go(stationReturnScreen)}
             />
-            {!newGamePhase && <section className="hunter-material-facility" aria-label="Atelier de personnalisation lore-compatible">
-              <strong>{paletteFacility === "lab" ? "Mélangeur de pigments biologiques" : paletteFacility === "forge" && stationReturnScreen === "homeworld" ? "Teinturerie du Cercle des Forges" : "Poste de préparation du chasseur"}</strong>
-              <p>Peau, ligatures des dreadlocks et équipements utilisent des matériaux distincts. Les PNG inspirés de Hunting Grounds sont des reconstitutions et ne modifient ni les compétences, ni les trophées, ni le rang.</p>
-              <small>Dans la cité : teinturerie au quartier des Forges ; laboratoire pigmentaire dans la Maison des soins. Aucun « DNA mixer » universel n’est présenté comme une technologie canonique.</small>
-            </section>}
             {newGamePhase === "identity" && <section className="save-transfer" aria-label="Début de campagne jouable" data-new-game-identity>
               <h2>{save.profile.hunterName} · Première chasse</h2>
               <p>Ce checkpoint conserve l’ancien départ de campagne : personnalisation, briefing de Vey puis chasse en jungle. Aucun rite de jeunesse n’est attribué par ce raccourci historique. Pour commencer par la nurserie et poursuivre la formation Unblooded, crée une nouvelle partie dans un emplacement libre depuis le menu principal ; cette sauvegarde restera disponible.</p>
               <button type="button" className="alien-button" onClick={() => { setSelectedMission(MISSIONS.find(mission => mission.id === "jungle-vey")!); setBriefingAtAirlock(true); setNewGamePhase("briefing"); setScreen("briefing"); }}>Confirmer le chasseur et ouvrir le premier briefing</button>
               <button type="button" className="ghost-button" onClick={() => setSettingsOpen(true)}>Réglages et sauvegardes</button>
             </section>}
+            <HunterChromaticForgeV113
+              key={save.createdAt + ":" + chromaticFacilityV115 + ":" + JSON.stringify(save.appearance.chromaticsV113 ?? null)}
+              appearance={save.appearance}
+              onPreview={setDraftChromaticsV114}
+              facility={chromaticFacilityV115}
+              homeworld={stationReturnScreen === "homeworld"}
+              disabled={settingsOpen || campaignSaveBusy || archiveTransferBusy || !!archiveRecoveryIssue}
+              onCommit={commitChromaticsV113}
+            />
             <div className="customization-layout">
               <aside className="customization-preview">
                 <div className="customization-rig-stage">
                   <HunterRigPreview
                     className="customization-rig"
-                    appearance={save.appearance}
+                    appearance={draftChromaticsV114 ? { ...save.appearance, chromaticsV113: draftChromaticsV114 } : save.appearance}
                     armorId={save.loadout.armorId}
                     weaponIds={save.loadout.weaponIds}
                     gearIds={save.loadout.gearIds}
@@ -4676,17 +4719,6 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 </CustomizationSection>
 
                 <CustomizationSection
-                  title="Matrice pigmentaire · textures PHG"
-                  detail="Textures de peau reconstruites et conservées séparément des dreadlocks et des pièces portées."
-                >
-                  <AppearanceOption label="Pigment uni / aucun motif importé" detail="Conserver la palette de base sans texture PHG" selected={!save.appearance.skinMaterialId} onSelect={() => updateAppearance("skinMaterialId", null)} />
-                  {PHG_MATERIALS_V113.filter(material => material.category === "skin" && !material.archived).map(material => (
-                    <AppearanceOption key={material.id} label={material.label} detail={phgMaterialLabelV113(material)} image={material.src}
-                      selected={save.appearance.skinMaterialId === material.id} onSelect={() => updateAppearance("skinMaterialId", material.id)} />
-                  ))}
-                </CustomizationSection>
-
-                <CustomizationSection
                   title="Biomask"
                   detail="Le masque peut être porté ou retiré à tout moment"
                 >
@@ -4773,17 +4805,6 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 </CustomizationSection>
 
                 <CustomizationSection
-                  title="Atelier des ligatures · textures PHG"
-                  detail="Parures et motifs des mèches, sans modification de la morphologie faciale."
-                >
-                  <AppearanceOption label="Pigment uni / aucun motif importé" detail="Conserver la palette de base sans texture PHG" selected={!save.appearance.dreadMaterialId} onSelect={() => updateAppearance("dreadMaterialId", null)} />
-                  {PHG_MATERIALS_V113.filter(material => material.category === "dread" && !material.archived).map(material => (
-                    <AppearanceOption key={material.id} label={material.label} detail={phgMaterialLabelV113(material)} image={material.src}
-                      selected={save.appearance.dreadMaterialId === material.id} onSelect={() => updateAppearance("dreadMaterialId", material.id)} />
-                  ))}
-                </CustomizationSection>
-
-                <CustomizationSection
                   title="Famille d’armure"
                   detail="Les plaques restent attachées au membre qu’elles protègent"
                 >
@@ -4815,17 +4836,6 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                         updateAppearance("armorTintId", option.id)
                       }
                     />
-                  ))}
-                </CustomizationSection>
-
-                <CustomizationSection
-                  title="Teinturerie des forges · matières PHG"
-                  detail="Cuir, laque, étoffes et motifs d’armure, sans changer la classe de protection."
-                >
-                  <AppearanceOption label="Pigment uni / aucun motif importé" detail="Conserver la palette de base sans texture PHG" selected={!save.appearance.outfitMaterialId} onSelect={() => updateAppearance("outfitMaterialId", null)} />
-                  {PHG_MATERIALS_V113.filter(material => material.category === "outfit" && !material.archived).map(material => (
-                    <AppearanceOption key={material.id} label={material.label} detail={phgMaterialLabelV113(material)} image={material.src}
-                      selected={save.appearance.outfitMaterialId === material.id} onSelect={() => updateAppearance("outfitMaterialId", material.id)} />
                   ))}
                 </CustomizationSection>
 

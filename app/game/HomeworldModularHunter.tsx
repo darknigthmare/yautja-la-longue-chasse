@@ -1,9 +1,11 @@
 /* eslint-disable @next/next/no-img-element -- registered transparent layers share the canonical V3 canvas */
-import { Fragment, type CSSProperties } from "react";
-import { phgMaterialForV113 } from "./hunterMaterialsV113";
-import { HUNTER_SKIN_FILTERS_V114, HUNTER_DREAD_FILTERS_V114 } from "./hunterPaletteFiltersV114";
-import type { HunterBodyMorphId, DreadStyleId, HunterAppearance } from "./types";
-import { hunterBodyFullPath, hunterBodyPartPath, hunterBodyPartPlacement, hunterDreadPath, HUNTER_ASSET_ROOT_V3, HUNTER_BODY_PART_IDS } from "./hunterVisuals";
+import type { CSSProperties } from "react";
+import ChromaticSurfaceV113 from "./ChromaticSurfaceV113";
+import DecalSurfaceV133 from "./DecalSurfaceV133";
+import { maskChromaticsForAppearanceV131 } from "./hunterChromaticsV113";
+import { HUNTER_SKIN_FILTERS_V114, HUNTER_DREAD_FILTERS_V114, HUNTER_ARMOR_FILTERS_V114 } from "./hunterPaletteFiltersV114";
+import type { HunterBodyMorphId, DreadStyleId, HunterAppearance, ArmorId } from "./types";
+import { hunterBodyFullPath, hunterBodyPartPath, hunterBodyPartPlacement, hunterDreadPath, hunterArmorPath, hunterMaskRigPath, hunterMaskRigPlacement, HUNTER_ASSET_ROOT_V3, HUNTER_BODY_PART_IDS, HUNTER_ARMOR_MODULES, HUNTER_ARMOR_FIT_BY_MORPH } from "./hunterVisuals";
 import { hunterBodyPartColorV62, hunterBodyPartClipCssV62 } from "./hunterHeadArtV62";
 import { HUNTER_DREAD_STRANDS_V63, solveHunterDreadsV63 } from "./hunterDreadsV63";
 import { solveHunterRig } from "./hunterRig";
@@ -24,59 +26,110 @@ const clothClip = (morphId: HunterBodyMorphId) => {
   return `inset(${top / 384 * 100}% ${(256 - right) / 256 * 100}% ${(384 - bottom) / 384 * 100}% ${left / 256 * 100}%)`;
 };
 const imageStyle: CSSProperties = { position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "fill", pointerEvents: "none", userSelect: "none" };
+/**
+ * These are the exact registered 256x384 V3 plates used by HunterRigPreview.
+ * Homeworld remains a static/resting composite; no pose is invented or
+ * substituted for the pre-existing six body morphologies.
+ */
+export function homeworldArmorSlotsV114(
+  appearance: Partial<Pick<HunterAppearance, "armorStyleId">> | undefined,
+  armorId: ArmorId,
+  hasWristblades: boolean,
+): Array<{ id: string; z: number; shoulder?: boolean }> {
+  const family = HUNTER_ARMOR_MODULES[appearance?.armorStyleId ?? "classic"];
+  const parts: Array<{ id: string; z: number; shoulder?: boolean }> = [
+    { id: family.chest, z: 18 },
+    { id: "belt", z: 19 },
+    { id: family.shoulder, z: 22, shoulder: true },
+  ];
+  if (armorId !== "scout") {
+    if (!hasWristblades) parts.push({ id: "bracer", z: 23 });
+    parts.push(
+      { id: "thigh", z: 17 },
+      { id: "thigh-lower", z: 17 },
+      { id: "knee", z: 19 },
+      { id: "shin", z: 18 },
+    );
+  }
+  return parts;
+}
 
 /** Modular body bitmaps with constrained strand motion; not a full body sheet. */
-export default function HomeworldModularHunter({ morphId, dreadStyleId, className, appearance, style, motionPhase = 0, speed = 0, dreadAngles }: {
+export default function HomeworldModularHunter({ morphId, dreadStyleId, className, appearance, style, motionPhase = 0, speed = 0, dreadAngles, showArmor = false, armorId = "hunter", hasWristblades = false }: {
   morphId: HunterBodyMorphId; dreadStyleId: DreadStyleId; className?: string;
   style?: CSSProperties;
   motionPhase?: number; speed?: number;
   dreadAngles?: readonly number[];
-  appearance?: Pick<HunterAppearance, "skinId" | "dreadTintId" | "headStyleId" | "skinMaterialId" | "dreadMaterialId" | "outfitMaterialId">;
+  /** Only the playable Homeworld character enables this: anatomical chooser remains unobscured. */
+  showArmor?: boolean;
+  armorId?: ArmorId;
+  hasWristblades?: boolean;
+  appearance?: Pick<HunterAppearance, "skinId" | "dreadTintId" | "headStyleId"> &
+    Partial<Pick<HunterAppearance, "armorStyleId" | "armorTintId" | "chromaticsV113" | "presetId" | "biomaskId">>;
 }) {
-  const skinMaterial = phgMaterialForV113("skin", appearance?.skinMaterialId);
-  const dreadMaterial = phgMaterialForV113("dread", appearance?.dreadMaterialId);
-  const outfitMaterial = phgMaterialForV113("outfit", appearance?.outfitMaterialId);
   return <span className={className} style={style} data-modular-homeworld-character data-body-morph={morphId} data-modular-status="static-bitmap-composition" aria-hidden="true">
     <span style={{ position: "absolute", height: "100%", aspectRatio: "2 / 3", left: "50%", bottom: 0, transform: "translateX(-50%)", isolation: "isolate" }}>
       {solveHunterDreadsV63(REST_FRAME, morphId, dreadStyleId, appearance?.headStyleId,
         dreadAngles ?? HUNTER_DREAD_STRANDS_V63.map((_, i) => Math.min(.24, Math.abs(speed) / 1000) + (speed > 5 ? Math.sin(motionPhase * 8 + i) * .02 : 0))
-      ).map((strand, index) => {
-        const motion: CSSProperties = { ...imageStyle, zIndex: index,
-          transformOrigin: `${HOMEWORLD_DREAD_ROOT.x / 256 * 100}% ${HOMEWORLD_DREAD_ROOT.y / 384 * 100}%`,
-          transform: `translate(${strand.x / 256 * 100}%, ${strand.y / 384 * 100}%) rotate(${strand.angle}rad) scale(${strand.scale})`,
-        };
-        const mask = `url("${hunterDreadPath(dreadStyleId)}")`;
-        return <Fragment key={index}>
-          <img alt="" draggable={false} data-homeworld-layer="dread" data-dread-collisions={strand.collisions} src={hunterDreadPath(dreadStyleId)} style={{ ...motion, filter: HUNTER_DREAD_FILTERS_V114[appearance?.dreadTintId ?? "obsidian"] }} />
-          {dreadMaterial && <span data-homeworld-material="dread" style={{ ...motion, maskImage: mask, WebkitMaskImage: mask, maskSize: "100% 100%", WebkitMaskSize: "100% 100%", maskRepeat: "no-repeat", WebkitMaskRepeat: "no-repeat", backgroundImage: `url("${dreadMaterial.src}")`, backgroundSize: "68px 68px", mixBlendMode: "color", opacity: .86 }} />}
-        </Fragment>;
-      })}
+      ).map((strand, index) => <span key={index} data-homeworld-layer="dread" data-dread-collisions={strand.collisions} style={{ ...imageStyle,
+        zIndex: index, transformOrigin: `${HOMEWORLD_DREAD_ROOT.x / 256 * 100}% ${HOMEWORLD_DREAD_ROOT.y / 384 * 100}%`,
+        transform: `translate(${strand.x / 256 * 100}%, ${strand.y / 384 * 100}%) rotate(${strand.angle}rad) scale(${strand.scale})`,
+      }}>
+        <img alt="" draggable={false} src={hunterDreadPath(dreadStyleId)} style={{ ...imageStyle, filter: HUNTER_DREAD_FILTERS_V114[appearance?.dreadTintId ?? "obsidian"] }} />
+        <ChromaticSurfaceV113 appearance={appearance} channel="dreads" maskPath={hunterDreadPath(dreadStyleId)} style={imageStyle} />
+      </span>)}
       <span data-homeworld-layer="body" style={{ ...imageStyle, zIndex: 10, filter: HUNTER_SKIN_FILTERS_V114[appearance?.skinId ?? "ochre-mottle"] }}>
         {HUNTER_BODY_PART_IDS.map(partId => {
           const placement = hunterBodyPartPlacement(morphId, partId, appearance?.headStyleId);
-          return <img key={partId} alt="" draggable={false} data-homeworld-body-part={partId} src={hunterBodyPartPath(morphId, partId, appearance?.headStyleId)} style={placement ? {
-            position: "absolute", left: `${placement.x / 256 * 100}%`, top: `${placement.y / 384 * 100}%`,
-            width: `${placement.width / 256 * 100}%`, height: `${placement.height / 384 * 100}%`, objectFit: "fill", zIndex: 1,
-          } : { ...imageStyle, filter: hunterBodyPartColorV62(morphId, partId, "none"), clipPath: hunterBodyPartClipCssV62(morphId, partId) }} />;
-        })}
-        {skinMaterial && HUNTER_BODY_PART_IDS.map(partId => {
-          const path = hunterBodyPartPath(morphId, partId, appearance?.headStyleId);
-          const placement = hunterBodyPartPlacement(morphId, partId, appearance?.headStyleId);
-          const mask = `url("${path}")`;
-          return <span key={`phg-skin-${partId}`} data-homeworld-material="skin" style={{
-            ...imageStyle, zIndex: 2,
-            ...(placement ? { left: `${placement.x / 256 * 100}%`, top: `${placement.y / 384 * 100}%`, width: `${placement.width / 256 * 100}%`, height: `${placement.height / 384 * 100}%` } : {}),
-            backgroundImage: `url("${skinMaterial.src}")`, backgroundRepeat: "repeat", backgroundSize: "68px 68px",
-            maskImage: mask, WebkitMaskImage: mask, maskSize: "100% 100%", WebkitMaskSize: "100% 100%",
-            maskRepeat: "no-repeat", WebkitMaskRepeat: "no-repeat",
-            clipPath: placement ? undefined : hunterBodyPartClipCssV62(morphId, partId), mixBlendMode: "color", opacity: .86,
-          }} />;
+          const source = hunterBodyPartPath(morphId, partId, appearance?.headStyleId);
+          return <span key={partId} style={{ ...imageStyle }} data-homeworld-body-part={partId}>
+            <img alt="" draggable={false} src={source} style={placement ? {
+              position: "absolute", left: `${placement.x / 256 * 100}%`, top: `${placement.y / 384 * 100}%`,
+              width: `${placement.width / 256 * 100}%`, height: `${placement.height / 384 * 100}%`, objectFit: "fill", zIndex: 1,
+            } : { ...imageStyle, filter: hunterBodyPartColorV62(morphId, partId, "none"), clipPath: hunterBodyPartClipCssV62(morphId, partId) }} />
+            <ChromaticSurfaceV113 appearance={appearance} channel="skin" maskPath={source} placement={placement}
+              style={{ ...imageStyle, zIndex: 2, clipPath: hunterBodyPartClipCssV62(morphId, partId) }} />
+            {(partId === "head" || partId === "torso") && <DecalSurfaceV133
+              appearance={appearance} zone={partId === "head" ? "face" : "body"}
+              maskPath={source} placement={placement} style={{ ...imageStyle, zIndex: 3,
+                clipPath: hunterBodyPartClipCssV62(morphId, partId) }} />}
+          </span>;
         })}
       </span>
       {/* The legacy net plate contains old facial pixels: keep only clothing below the neck. */}
       <img alt="" draggable={false} data-homeworld-layer="clothing" src={`${HUNTER_ASSET_ROOT_V3}/body/${morphId}/net/full.webp`} style={{ ...imageStyle, zIndex: 11, opacity: .9, filter: hunterBodyPartColorV62(morphId, "torso", HUNTER_SKIN_FILTERS_V114[appearance?.skinId ?? "ochre-mottle"]), clipPath: "inset(27.34375% 0 0 0)", maskImage: `url("${hunterBodyFullPath(morphId)}")`, maskSize: "100% 100%", maskRepeat: "no-repeat" }} />
       <img alt="" draggable={false} data-homeworld-layer="loincloth" src={`${HUNTER_ASSET_ROOT_V3}/body/${morphId}/net/full.webp`} style={{ ...imageStyle, zIndex: 12, clipPath: clothClip(morphId) }} />
-      {outfitMaterial && <span data-homeworld-material="outfit" style={{ ...imageStyle, zIndex: 13, backgroundImage: `url("${outfitMaterial.src}")`, backgroundSize: "68px 68px", maskImage: `url("${HUNTER_ASSET_ROOT_V3}/body/${morphId}/net/full.webp")`, maskSize: "100% 100%", maskRepeat: "no-repeat", clipPath: clothClip(morphId), opacity: .86, mixBlendMode: "color" }} />}
+      <ChromaticSurfaceV113 appearance={appearance} channel="outfit" maskPath={`${HUNTER_ASSET_ROOT_V3}/body/${morphId}/net/full.webp`}
+        style={{ ...imageStyle, zIndex: 13, clipPath: clothClip(morphId) }} />
+      {appearance?.biomaskId
+        && <span data-homeworld-biomask-pigment-v131 style={{ ...imageStyle, zIndex: 71 }}>
+          <img alt="" draggable={false} src={hunterMaskRigPath(appearance.biomaskId)} style={{
+            position: "absolute",
+            left: String(hunterMaskRigPlacement(appearance.biomaskId).x / 256 * 100) + "%",
+            top: String(hunterMaskRigPlacement(appearance.biomaskId).y / 384 * 100) + "%",
+            width: String(hunterMaskRigPlacement(appearance.biomaskId).width / 256 * 100) + "%",
+            height: String(hunterMaskRigPlacement(appearance.biomaskId).height / 384 * 100) + "%",
+          }} />
+          <ChromaticSurfaceV113 channel="biomask"
+            appearance={{ chromaticsV113: maskChromaticsForAppearanceV131(appearance) }}
+            maskPath={hunterMaskRigPath(appearance.biomaskId)}
+            placement={hunterMaskRigPlacement(appearance.biomaskId)} style={imageStyle} />
+          <DecalSurfaceV133 appearance={appearance} zone="biomask"
+            maskPath={hunterMaskRigPath(appearance.biomaskId)}
+            placement={hunterMaskRigPlacement(appearance.biomaskId)} style={imageStyle} />
+        </span>}
+      {showArmor && homeworldArmorSlotsV114(appearance, armorId, hasWristblades).map(plate => {
+        const path = hunterArmorPath(plate.id);
+        const shoulderScale = HUNTER_ARMOR_FIT_BY_MORPH[morphId].shoulderScale;
+        return <span key={plate.id} data-homeworld-layer="armor" data-armor-module={plate.id}
+          style={{ ...imageStyle, zIndex: plate.z, transform: plate.shoulder ? `scale(${shoulderScale})` : undefined,
+            transformOrigin: plate.shoulder ? "59.765625% 28.645833%" : undefined }}>
+          <img alt="" draggable={false} src={path} style={{ ...imageStyle, filter: HUNTER_ARMOR_FILTERS_V114[appearance?.armorTintId ?? "bronze"] }} />
+          <ChromaticSurfaceV113 appearance={appearance} channel="armor" maskPath={path} style={imageStyle} />
+          {plate.id === HUNTER_ARMOR_MODULES[appearance?.armorStyleId ?? "classic"].chest &&
+            <DecalSurfaceV133 appearance={appearance} zone="armor" maskPath={path} style={imageStyle} />}
+        </span>;
+      })}
     </span>
   </span>;
 }

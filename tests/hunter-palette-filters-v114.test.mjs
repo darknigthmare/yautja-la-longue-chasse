@@ -42,16 +42,17 @@ test("the three previously published family values retain their original visual 
   assert.equal(HUNTER_ARMOR_FILTERS_V114.bronze, "sepia(.48) saturate(1.22) hue-rotate(346deg) brightness(1.02)");
 });
 
-test("V117-compatible stack keeps PHG material layers and V114 palettes together", () => {
-  assert.match(source.homeworld, /phgMaterialForV113/);
-  assert.match(source.homeworld, /data-homeworld-material="dread"/);
-  assert.match(source.homeworld, /data-homeworld-material="outfit"/);
-  assert.match(source.preview, /phgMaterialForV113/);
-  assert.match(source.preview, /registeredMaterialLayerV113/);
-  assert.match(source.preview, /skinMaterial/);
-  assert.match(source.preview, /outfitMaterial/);
-  assert.doesNotMatch(source.homeworld, /\bconst skinFilter:/);
-  assert.doesNotMatch(source.preview, /\bconst SKIN_FILTER:/);
+test("V121: V114 filters and V117 canonical PHG chromatic masks coexist without duplicate renders", () => {
+  for (const value of Object.values(source)) {
+    assert.match(value, /hunterPaletteFiltersV114/);
+    assert.match(value, /ChromaticSurfaceV113/);
+    for (const channel of ["skin","dreads","outfit","armor"])
+      assert.ok(value.includes('channel="' + channel + '"'),"missing " + channel);
+    assert.doesNotMatch(value, /phgMaterialForV113|registeredMaterialLayerV113/);
+  }
+  assert.doesNotMatch(source.homeworld, /const skinFilter\s*=/);
+  assert.doesNotMatch(source.preview, /const SKIN_FILTER\s*=/);
   assert.match(source.homeworld, /HUNTER_SKIN_FILTERS_V114\[appearance\?\.skinId/);
   assert.match(source.preview, /HUNTER_DREAD_FILTERS_V114\[appearance\.dreadTintId/);
+  assert.match(source.preview, /HUNTER_ARMOR_FILTERS_V114\[appearance\.armorTintId/);
 });

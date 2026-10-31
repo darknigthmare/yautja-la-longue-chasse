@@ -155,6 +155,10 @@ export default function PlanetGeneratorV103({ activePlanet, pending = false, onO
   const target = selected.neighbors.includes(targetId) ? targetId : selected.neighbors[0];
   const regionId = planet.territories.find(item => item.id === selected.id)?.regionId;
   const details = planet.procedural;
+  // A nested recipe.version discriminator does not narrow the containing
+  // procedural union (V102/V103/V115) for TypeScript or legacy import data.
+  const detailsV115 = details.recipe.version === 115 && "physical" in details
+    && "shapes" in details && "materialDiversity" in details ? details : null;
   const strategic = useMemo(() => analyzeWarPlanetStrategyV114(planet), [planet]);
   const materialDossier = useMemo(() => describeWarPlanetMaterialsV114(planet), [planet]);
   function currentRecipe(): WarPlanetRecipeAnyV103 {
@@ -369,9 +373,9 @@ export default function PlanetGeneratorV103({ activePlanet, pending = false, onO
           <div><dt>Atmosphère</dt><dd>{details.environment.atmosphere}</dd></div>
           <div><dt>Gravité / cycle diurne</dt><dd>{details.environment.gravity.toLocaleString("fr")} g · {details.environment.dayLengthHours.toLocaleString("fr")} h</dd></div>
           <div><dt>Recette du monde</dt><dd>V{details.recipe.version} · graine {details.recipe.seed}</dd></div>
-          {details.recipe.version === 115 && <><div><dt>Taille physique</dt><dd>Rayon {details.physical.radiusKm.toLocaleString("fr-FR")} km · surface {details.physical.surfaceKm2.toLocaleString("fr-FR")} km²</dd></div>
-          <div><dt>Formes de terrain</dt><dd>{details.shapes.continent} · {details.shapes.island} · {details.shapes.region}</dd></div>
-          <div><dt>Textures complémentaires</dt><dd>{details.materialDiversity.land} · {details.materialDiversity.liquid}</dd></div></>}
+          {detailsV115 && <><div><dt>Taille physique</dt><dd>Rayon {detailsV115.physical.radiusKm.toLocaleString("fr-FR")} km · surface {detailsV115.physical.surfaceKm2.toLocaleString("fr-FR")} km²</dd></div>
+          <div><dt>Formes de terrain</dt><dd>{detailsV115.shapes.continent} · {detailsV115.shapes.island} · {detailsV115.shapes.region}</dd></div>
+          <div><dt>Textures complémentaires</dt><dd>{detailsV115.materialDiversity.land} · {detailsV115.materialDiversity.liquid}</dd></div></>}
           <div><dt>Distance entre bases</dt><dd>{strategic.headquartersDistance} liaison{strategic.headquartersDistance > 1 ? "s" : ""}{strategic.headquartersDistanceKm !== undefined ? ` · ${strategic.headquartersDistanceKm.toLocaleString("fr-FR")} km` : ""}</dd></div>
           <div><dt>Points d’étranglement</dt><dd>{strategic.chokepointTerritoryIds.length} · {strategic.crossingCount} traversée{strategic.crossingCount > 1 ? "s" : ""}</dd></div>
         </dl>

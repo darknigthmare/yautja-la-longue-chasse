@@ -1,11 +1,16 @@
 import { CLAN_WAR_PARAMETERS_V85 as P, type WarFactionIdV85 } from "./clanWarV85Data";
 import type { WarBudgetV85, WarCombatantV85 } from "./clanWarV85";
-import type { GeneratedWarPlanetV103 } from "./clanWarPlanetGeneratorV103";
+import type { WarPlanetStrategyV103 } from "./clanWarPlanetGeneratorV103";
+import type { WarPlanetV96 } from "./clanWarPlanetsV96";
 
 /** A declared exercise balance, separate from the historical Korthas workbook.
  * Both forces can guard the largest region or the whole corridor and retain a
  * mobile reserve. Individuals are created only when a new front is opened. */
-export function warDeploymentV103(planet: GeneratedWarPlanetV103) {
+export function warDeploymentV103(
+  planet: Pick<WarPlanetV96, "definitions" | "territories" | "regions"> & {
+    procedural: { strategy: WarPlanetStrategyV103 };
+  },
+) {
   const { strategy } = planet.procedural;
   const neutrals = planet.definitions.filter(site => site.initialController === "CON-F03");
   const forceCount = Math.min(Math.floor((300 - neutrals.length) / 2), Math.max(18,

@@ -82,14 +82,14 @@ function articulationPoints(graph: Map<string, Set<string>>): string[] {
   return [...points].sort();
 }
 
-function headquartersFor(planet: WarPlanetV96, procedural: WarPlanetProceduralV103 | null) {
+function headquartersFor(planet: WarPlanetV96, procedural: WarPlanetProceduralV103 | WarPlanetProceduralV115 | null) {
   if (procedural) return procedural.strategy.headquarters;
   const choose = (faction: "CON-F01" | "CON-F02") =>
     planet.definitions.find(item => item.initialController === faction)?.id ?? planet.definitions[0]?.id ?? "";
   return { "CON-F01": choose("CON-F01"), "CON-F02": choose("CON-F02") };
 }
 
-function topologyFor(planet: WarPlanetV96, procedural: WarPlanetProceduralV103 | null): WarPlanetStrategicDossierV114["topology"] {
+function topologyFor(planet: WarPlanetV96, procedural: WarPlanetProceduralV103 | WarPlanetProceduralV115 | null): WarPlanetStrategicDossierV114["topology"] {
   if (!procedural) return planet.landmasses.length > Math.max(4, planet.regions.length) ? "fragmented" : planet.landmasses.length > 1 ? "insular" : "continental";
   if (procedural.recipe.landform === "shattered") return "fragmented";
   if (procedural.recipe.landform === "archipelago") return "insular";
@@ -113,6 +113,10 @@ export function analyzeWarPlanetStrategyV114(planet: WarPlanetV96): WarPlanetStr
   for (const region of planet.regions) for (const id of region.territoryIds) territoryRegion.set(id, region.id);
 
   const crossingRoutes = procedural?.routes.filter(route => route.kind === "crossing") ?? [];
+  // V115 extends V103, but its physical distance cannot be read on a V103
+  // recipe. Check the owning procedural shape before using the radius.
+  const physicalV115 = procedural && "physical" in procedural && procedural.recipe.version === 115
+    ? procedural : null;
 
   const definitionById = new Map(planet.definitions.map(item => [item.id, item] as const));
   const regionName = new Map(planet.regions.map(item => [item.id, item.name] as const));
@@ -146,11 +150,11 @@ export function analyzeWarPlanetStrategyV114(planet: WarPlanetV96): WarPlanetStr
     territoryCount: planet.territories.length, regionCount: planet.regions.length,
     topology: topologyFor(planet, procedural), scale: scaleFor(planet.territories.length), headquarters,
     headquartersDistance: Math.max(0, path.length - 1),
-    ...(procedural?.recipe.version === 115 ? {
+    ...(physicalV115 ? {
       headquartersDistanceKm: Math.round(path.slice(1).reduce((distance, target, index) => {
         const source = path[index];
-        const route = procedural.routes.find(item => (item.fromId === source && item.toId === target) || (item.fromId === target && item.toId === source));
-        return distance + (route ? planetArcKilometersV115(route.distanceDegrees, procedural.recipe.planetSize) : 0);
+        const route = physicalV115.routes.find(item => (item.fromId === source && item.toId === target) || (item.fromId === target && item.toId === source));
+        return distance + (route ? planetArcKilometersV115(route.distanceDegrees, physicalV115.recipe.planetSize) : 0);
       }, 0)),
     } : {}),
     headquartersPath: path,
