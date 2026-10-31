@@ -9,13 +9,19 @@ import GauntletArchiveStudiesV136,{isGauntletArchiveStudyV136} from "../game/Gau
 import styles from "./GauntletVisualQaV136.module.css";
 
 const PAGE_SIZE=12;
+const ART_PARTS_V136=[
+ {id:"arm",label:"Avant-bras"},{id:"shell",label:"Coque"},{id:"panel",label:"Commandes"},
+ {id:"lid",label:"Capot"},{id:"hinge",label:"Charnière"},{id:"emitter",label:"Émetteur"},
+ {id:"beam",label:"Faisceau"},
+] as const;
 const mediumNames:Record<string,string>={
   cinema:"Films",animation:"Animation",game:"PHG", "video-game":"Autres jeux",comic:"Comics",
 };
-function Art({model,coverOpen}:{model:GauntletDefinitionV132;coverOpen:boolean}){
-  if(model.id==="jungle-hunter")return <JungleHunterLayeredV134 coverOpen={coverOpen}/>;
-  if(isKnownHunterGauntletV135(model.id))return <GauntletKnownHuntersV135 variant={model.id} coverOpen={coverOpen}/>;
-  if(isGauntletArchiveStudyV136(model.id))return <GauntletArchiveStudiesV136 entry={model} coverOpen={coverOpen}/>;
+function Art({model,coverOpen,hiddenParts}:{model:GauntletDefinitionV132;coverOpen:boolean;hiddenParts:readonly string[]}){
+  if(model.id==="jungle-hunter")return <JungleHunterLayeredV134 coverOpen={coverOpen} hiddenParts={hiddenParts}/>;
+  if(isKnownHunterGauntletV135(model.id))return <GauntletKnownHuntersV135 variant={model.id} coverOpen={coverOpen} hiddenParts={hiddenParts}/>;
+  if(isGauntletArchiveStudyV136(model.id))return <GauntletArchiveStudiesV136 entry={model} coverOpen={coverOpen} hiddenParts={hiddenParts}/>;
+
   return null;
 }
 function SourceNote({model}:{model:GauntletDefinitionV132}){
@@ -41,6 +47,7 @@ export default function GauntletVisualQaV136(){
   const [medium,setMedium]=useState("all");
   const [page,setPage]=useState(0);
   const [zoom,setZoom]=useState(100);
+  const [hiddenParts,setHiddenParts]=useState<string[]>([]);
   const [referenceUrl,setReferenceUrl]=useState<string|null>(null);
   const [referenceName,setReferenceName]=useState("");
   const [overlay,setOverlay]=useState(true);
@@ -110,6 +117,16 @@ export default function GauntletVisualQaV136(){
         <button type="button" onClick={clearReference}>Effacer la référence</button>
       </>}
     </section>
+    <fieldset className={styles.partControls} aria-label="Calques graphiques indépendants">
+      <legend>Inspection de calques (masquer ou afficher)</legend>
+      {ART_PARTS_V136.filter(p=>["arm","shell","panel","lid"].includes(p.id)||
+        active.id==="jungle-hunter"||compare&&other.id==="jungle-hunter").map(part=><label key={part.id}>
+        <input type="checkbox" checked={!hiddenParts.includes(part.id)} aria-label={`Afficher ${part.label}`}
+          onChange={e=>setHiddenParts(old=>e.currentTarget.checked?old.filter(x=>x!==part.id):[...old,part.id])}/>
+        {part.label}
+      </label>)}
+      <button type="button" disabled={hiddenParts.length===0} onClick={()=>setHiddenParts([])}>Afficher tous les calques</button>
+    </fieldset>
     {imageIssue && <p className={styles.fileWarning} role="alert">{imageIssue}</p>}
     {referenceUrl && <p className={styles.localNote} role="status">Comparaison locale : {referenceName}. Fichier gardé uniquement dans ce navigateur ; aucun envoi au serveur.</p>}
     {compare&&<div className={styles.comparePicker}>
@@ -124,7 +141,7 @@ export default function GauntletVisualQaV136(){
         <div className={styles.modelHeadline}><h2>{model.name}</h2>
           <small>{i===0?"Principal":"Comparaison"} · {open?"capot ouvert":"capot fermé"}</small></div>
         <div className={styles.stage}>
-          <div className={styles.zoom} style={{width:`${zoom}%`}}><Art model={model} coverOpen={open}/></div>
+          <div className={styles.zoom} style={{width:`${zoom}%`}}><Art model={model} coverOpen={open} hiddenParts={hiddenParts}/></div>
           {i===0&&referenceUrl&&overlay&&<img className={styles.filmOverlay} src={referenceUrl}
             style={{opacity:overlayOpacity/100}} alt="Photogramme ou photo de référence ajoutée uniquement sur cet appareil"/>}
         </div>
