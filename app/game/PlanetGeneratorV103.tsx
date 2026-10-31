@@ -6,6 +6,7 @@ import PlanetMaterialCanvasV101 from "./PlanetMaterialCanvasV101";
 import PlanetLayerExportV102 from "./PlanetLayerExportV102";
 import type { PlanetVisualProfileV134 } from "./systems/clanWarPlanetVisualProfileV134";
 import PlanetShapePreviewV125 from "./PlanetShapePreviewV125";
+import PlanetShapeLibraryV137 from "./PlanetShapeLibraryV137";
 import {
   DEFAULT_WAR_PLANET_RECIPE_V103, WAR_PLANET_RECIPE_FIELDS_V103,
   randomizeWarPlanetRecipeV103, seedFromTextV103, type WarPlanetRecipeFieldV103, type WarPlanetRecipeV103,
@@ -359,6 +360,15 @@ export default function PlanetGeneratorV103({ activePlanet, pending = false, onO
                 </div>)}
               </div>}
               {advancedV115 && <PlanetShapePreviewV125 island={islandShapeV115} continent={continentShapeV115} region={regionShapeV115}/>}
+              {advancedV115 && <PlanetShapeLibraryV137 island={islandShapeV115}
+                continent={continentShapeV115} region={regionShapeV115} planetSize={planetSizeV115}
+                onChoose={(category,index)=>{
+                  importIntent.current++;
+                  if(category==="island")setIslandShapeV115(index);
+                  else if(category==="continent")setContinentShapeV115(index);
+                  else setRegionShapeV115(index);
+                  setMessage("Forme V137 choisie dans le brouillon. Générez la planète pour appliquer sa géographie.");
+                }}/>}
               <p className={styles.hint}>La taille modifie les kilomètres et km² réels du monde, sans modifier artificiellement les coûts de guerre. Les formes changent véritablement les contours et les frontières des régions ; les 32 matières enrichissent le rendu WebGL. Une nouvelle recette reçoit un code V115 distinct.</p>
             </div>
           </details>

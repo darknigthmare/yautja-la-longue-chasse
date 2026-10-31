@@ -53,6 +53,23 @@ try {
   check("V125 editor displays the three actual shape contours",
     await shapePreview.locator("svg path").count() === 3);
   await shapePreview.screenshot({ path: path.join(output, "after-v125-shape-preview.png") });
+  const library = generator.getByTestId("planet-shapes-library-v137");
+  await library.getByTestId("planet-shape-library-toggle-v137").click();
+  await library.getByTestId("planet-shape-category-v137").selectOption("continent");
+  await library.getByTestId("planet-shape-search-v137").fill("trident");
+  await library.getByTestId("planet-shape-scale-v137").selectOption("immense");
+  check("V137 filters all 120 genuine forms by continent, motif and footprint",
+    (await library.getByTestId("planet-shape-select-v137").count()) === 1 &&
+    (await library.getByTestId("planet-shape-count-v137").innerText()).includes("1 modèle"));
+  const continentDropdown = generator.locator('select[id$="-continent-shape-v115"]');
+  const originalContinent = await continentDropdown.inputValue();
+  await library.getByTestId("planet-shape-select-v137").click();
+  check("V137 selects the true V115 shape index without generating a world",
+    (await continentDropdown.inputValue()) === "31" &&
+    (await generator.getAttribute("data-preview-planet-code")) === planetCode);
+  await continentDropdown.selectOption(originalContinent);
+  await library.getByTestId("planet-shape-library-toggle-v137").click();
+
 
   const exporter = generator.getByTestId("planet-layer-export-v102");
   await exporter.locator("summary").click();
