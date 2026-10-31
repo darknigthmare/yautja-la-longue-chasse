@@ -23,3 +23,11 @@
 L'assemblage de vagues, les coûts AP/RAV, les durées d'itinéraire, les trajectoires de patrouille et les réactions ennemies sont **des mécaniques originales du projet**, pas des faits attestés dans Predator, AVP Extinction ou PHG. L'architecture reste un mode additionnel au gameplay principal **Dynasty Warriors-like**. Les cités terrestres ne se retrouvent pas sur une planète extraterrestre.
 
 **Reste ouvert :** 1 200 scènes de combat réalisées, IA de guerre totale multi-factions, monde/sauvegarde V85 persistants, serveur multijoueur, assets films/comics/jeux fidèles 1:1, optimisation mobile et validation en session navigateur/manette. La CI du prototype ne vaut pas certification canonique ou QA produit complète.
+
+## Excel et QA ajoutés à cette PR
+
+Le classeur binaire `docs/clan-war-v141/Yautja_Guerres_Clans_Suivi_Production_V141_2026-10-31.xlsx` possède **59 feuilles** : les 52 onglets V140 hérités, quatre nouveaux suivis par mode, `QA_V141`, `CROISEMENTS_V141`, `SUIVI_V141`. Il comprend **68 exigences** (17/mode), **72 procédures QA** (18/mode), **36 contrats inter-modes**. Les statuts de production sont **42 validés en CI ciblée**, **8 prototypes partiels** et **18 à développer**. Parmi les 72 QA : **56 disposent de preuves de CI ciblée**, **16 sont à réaliser manuellement**. Aucun des 1 200 scénarios design-only V120 n'est déclaré finalisé.
+
+Le fichier a été exporté avec `artifact_tool` depuis le classeur V140, en conservant les 1 200 IDs V120, 24 scénarios W3, 12 cartes et 36 W5. Aucun renvoi QA orphelin ni erreur de formule détecté lors du contrôle local. Git blob SHA binaire `f94612c6b782158d9f3d94a50d72648980b9eec2`.
+
+**Contrôles :** le code au commit `62c343d` a passé **118/118 tests, TypeScript et ESLint sans avertissement** ([run 41213949629](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41213949629)). Un test complémentaire `tests/clan-war-production-v141.test.mjs` est inclus dans le workflow V141 : il vérifie sur le **fichier réellement commité** les 59 feuilles, les 68/72/36 IDs et les anciens catalogues, sans utiliser de substitut CSV. Le nouveau commit code + classeur doit repasser la CI avant fusion.
