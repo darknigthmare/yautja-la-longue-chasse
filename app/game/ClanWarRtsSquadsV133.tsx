@@ -184,7 +184,7 @@ export default function ClanWarRtsSquadsV133({rules}:{rules:WarRulesV6}){
       onClick={()=>apply(commandWarRtsOverwatchV136(state,selected.id))}>
       Veille de secteur · 1 RAV seulement si tir sur une cible visible
      </button>
-     <p className={styles.hint}>Cette veille dure au maximum deux tours. Une seule réaction, à portée et visibilité réelles ; déplacer l'équipe annule l'ordre.</p>
+     <p className={styles.hint}>Cette veille dure au maximum deux tours. Une seule réaction, à portée et visibilité réelles ; déplacer l&apos;équipe annule l&apos;ordre.</p>
      <h5>Adversaires à portée du détachement</h5>
      {enemies.length===0?<p className={styles.hint}>Aucun adversaire actuellement observé.</p>:
       <div className={styles.enemyList}>{enemies.map(e=>{

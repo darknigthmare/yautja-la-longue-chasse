@@ -11,6 +11,7 @@ const built=await build({
   "export * from './app/game/systems/clanWarParallelModesV136';",
   "export * from './app/game/systems/clanWarOperationsV115';",
   "export * from './app/game/systems/clanWarRtsSquadsV133';",
+  "export * from './app/game/systems/clanWarRtsSourceMissionsV129';",
   "export * from './app/game/systems/clanWarMissionTerrainV116';",
   "export * from './app/game/systems/clanWarSourceMapsV128';",
   "export * from './app/game/systems/clanWarBibleV6';",
