@@ -590,7 +590,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
         <span>{order.targetId} · {order.teamIds.map(teamsById).join(", ")}</span>
         <span>{order.recall?"Retour au clan":"Rapport de mission"} dans {formatTime(warOuterSecondsRemainingV115(order,now))} · {order.routeIds.length} passage(s)</span>
         {order.recall ? <small className={styles.explain}>Rappel transmis : équipe toujours engagée jusqu&apos;à l&apos;arrivée.</small> : <button type="button" disabled={blocked||now<order.startedAt||now>=order.dueAt} onClick={()=>commit(recallWarOuterMissionV116(worldRef.current,order.id,Date.now(),rules))}>Rappeler l&apos;équipe</button>}
-        {!order.recall&&!order.retask&&now>=order.startedAt&&2*(now-order.startedAt)<(order.dueAt-order.startedAt)&&
+        {!order.recall&&!order.retask&&now>=order.startedAt&&2*(now-order.startedAt)<((order.reconHalt?.originalDueAt??order.dueAt)-order.startedAt)&&
           <div className={styles.cards}>
            {(Object.keys(focusLabels) as OuterFocusV115[]).filter(f=>f!==order.focus).map(f=>
             <button type="button" key={f} disabled={blocked}
@@ -602,7 +602,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
         {order.fieldSupport&&<small className={styles.explain}>Soutien de terrain V136 : {order.fieldSupport.paidRav} RAV engagés à {order.fieldSupport.allocatedAt} ; aucune victoire anticipée.</small>}
         {order.reconHalt&&<small className={styles.explain}>Halte V137 : ancienne échéance {order.reconHalt.originalDueAt}, nouveau rapport après 15 secondes supplémentaires ; effectifs et route inchangés.</small>}
         {!order.recall&&!order.reconHalt&&(order.focus==="recon"||order.focus==="escort")&&
-          now>=order.startedAt&&2*(now-order.startedAt)<(order.reconHalt?.originalDueAt??order.dueAt)-order.startedAt&&
+          now>=order.startedAt&&2*(now-order.startedAt)<order.dueAt-order.startedAt&&
           <button type="button" disabled={blocked}
            onClick={()=>commit(orderWarOuterReconHaltV137(worldRef.current,order.id,Date.now(),rules))}>
            Halte de reconnaissance · +15 secondes, meilleure préparation
