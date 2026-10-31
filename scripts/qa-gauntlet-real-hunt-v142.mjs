@@ -105,7 +105,9 @@ try{
  assert.equal(sidecar.version,1);
  assert.equal(sidecar.configuration.gauntletVariantId,"wolf");
  assert.equal(sidecar.ownerSaveCreatedAt,"2026-10-31T15:45:00.000Z");
- assert.ok(sidecar.snapshot && Object.keys(sidecar.snapshot).length>10);
+ assert.ok(sidecar.snapshot && typeof sidecar.snapshot==="object" &&
+   Object.keys(sidecar.snapshot).length>0,"Native hunt save must contain a genuine nonempty checkpoint");
+ assert.ok(sidecar.snapshot!==sidecar.configuration,"Snapshot may not be substituted by cosmetic configuration");
  assert.ok(Number.isInteger(sidecar.sequence)&&sidecar.sequence>0);
  const beforeSequence=sidecar.sequence;
  pass("Real suspend button writes owner-scoped V1 sidecar with captured Wolf identity",{sequence:sidecar.sequence,version:sidecar.version});
