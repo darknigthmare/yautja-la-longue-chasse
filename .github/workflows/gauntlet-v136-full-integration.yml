@@ -21,6 +21,10 @@ on:
       - 'app/gauntlet-qa-v136/client.tsx'
       - 'tests/gauntlet-poses-v140.test.mjs'
       - 'tests/gauntlet-mission-v141.test.mjs'
+      - 'tests/gauntlet-mission-resume-v142.test.mjs'
+      - 'tests/browser/gauntlet-real-hunt-v142.fixture.tsx'
+      - 'scripts/qa-gauntlet-real-hunt-v142.mjs'
+      - 'app/game/systems/huntGauntletIdentityV142.ts'
       - 'tests/browser/gauntlet-pose-v140.fixture.tsx'
       - 'scripts/qa-gauntlet-pose-v140.mjs'
       - 'tests/gauntlet-qa-proxy-runtime-v138.test.mjs'
@@ -104,6 +108,18 @@ jobs:
         run: node --experimental-strip-types --test --test-reporter=spec tests/gauntlet-poses-v140.test.mjs
       - name: Check V141 equipped gauntlet during live missions and V3 fallback
         run: node --experimental-strip-types --test --test-reporter=spec tests/gauntlet-mission-v141.test.mjs
+      - name: Confirm V142 active hunt sidecar preserves the captured cosmetic on resume
+        run: node --experimental-strip-types --test --test-reporter=spec tests/gauntlet-mission-resume-v142.test.mjs
+      - name: Real HuntCanvas mission, V1 suspension, two-tab preference and V3 fallback
+        run: node scripts/qa-gauntlet-real-hunt-v142.mjs
+      - name: Preserve exact mission visual and suspend/resume browser evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: yautja-v142-real-hunt-suspend-resume-chrome
+          path: outputs/gauntlet-real-hunt-v142/
+          retention-days: 30
+          if-no-files-found: warn
       - name: Browser QA of production actor rig across models, morphologies, poses and facing
         run: node scripts/qa-gauntlet-pose-v140.mjs
       - name: Preserve real actor pose captures and checks
