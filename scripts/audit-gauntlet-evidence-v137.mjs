@@ -40,7 +40,8 @@ for(const model of catalogue){
       nonEmpty=!!(alphaMax>0);
       if(!nonEmpty)issues.push("EMPTY RASTER: "+rel);
       if(alphaMin!==0)issues.push("NO TRANSPARENT BACKGROUND: "+rel);
-      if(meta.width!==540||meta.height!==290)issues.push("WRONG SOURCE SIZE: "+rel);
+      if(!((meta.width===540&&meta.height===290)||(meta.width===1080&&meta.height===580)))
+        issues.push("WRONG SOURCE SIZE OR ASPECT: "+rel);
       if(nonEmpty && alphaMin===0)partsWithVisibleAlpha++;
     }catch(e){issues.push("RASTER ERROR: "+rel+" "+String(e));}
     layers.push({modelId:model.id,part:name,version:v,source:rel,sha256:sha256(data),
