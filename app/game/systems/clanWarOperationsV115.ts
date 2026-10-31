@@ -26,10 +26,12 @@ export interface WarAssaultV115 {
   ap: number; ownBase: number; rivalBase: number;
   actors: WarMissionActorV115[]; launched: string[]; fallen: string[];
   apLevel?: 1 | 2 | 3; usedSpecials?: string[]; fortifiedIds?: string[];
+  holdIssuedIds?: string[]; heldUntil?: Record<string,number>;
 }
 export interface WarStealthV115 { x: number; y: number; guardX: number; guardDirection: -1 | 1; alarm: number; cloaked: boolean; energy: number; sabotaged: boolean;
   /** V135 sound diversion at the hunter's physical position; no canonical device assumed. */
   decoyX?: number; decoyTurns?: number; decoyUsed?: boolean;
+  usedCoverIds?: string[];
 }
 export interface WarRtsOrderV115 { x: number; y: number; kind: "advance" | "hold" | "attack" }
 export interface WarRtsV115 {
@@ -49,6 +51,7 @@ export interface WarOuterMissionV115 {
    * squad stays assigned until its physically delayed return is reconciled. */
   recall?: { orderedAt: number; originalDueAt: number };
   retask?: {oldFocus: OuterFocusV115;changedAt:number};
+  fieldSupport?: {allocatedAt:number;paidRav:2};
 }
 export interface WarMissionReportV115 {
   id: string; mode: WarMissionModeV115; focus: OuterFocusV115 | null;
@@ -416,14 +419,16 @@ export function stepAssaultV115(state:WarOperationsStateV115,rules:WarRulesV6):W
     const unit=unitFor(rules,actor.unitId);
     const range=clamp((unit?.range??1)*2+3,5,22);
     if(hostile && Math.abs(hostile.x-actor.x)<=range) hostile.hp-=damageFor(actor.unitId,rules);
-    else actor.x+= (actor.side==="ally"?1:-1)*clamp(2+(unit?.mobility??1)*0.25,2,5);
+    else if(!(actor.side==="ally"&&actor.teamId&&(arena.heldUntil?.[actor.teamId]??0)>tick))
+      actor.x+= (actor.side==="ally"?1:-1)*clamp(2+(unit?.mobility??1)*0.25,2,5);
     if(actor.side==="ally" && actor.x>=94){rivalBase-=damageFor(actor.unitId,rules)*3;actor.x=94;}
     if(actor.side==="rival" && actor.x<=6){ownBase-=damageFor(actor.unitId,rules)*3;actor.x=6;}
   }
   for(const actor of actors) if(actor.hp<=0 && actor.teamId) wounds.push(actor.teamId);
   const level=arena.apLevel??1;
   const nextArena={...arena,ap:clamp(arena.ap+9+(level-1)*4,0,100+(level-1)*35),ownBase:Math.max(0,ownBase),rivalBase:Math.max(0,rivalBase),
-    actors:actors.filter(actor=>actor.hp>0),fallen:unique(wounds)};
+    actors:actors.filter(actor=>actor.hp>0),fallen:unique(wounds),
+    heldUntil:Object.fromEntries(Object.entries(arena.heldUntil??{}).filter(([,until])=>until>tick))};
   const advanced={...state,clock:state.clock+1,active:{...mission,tick,assault:nextArena}};
   if(rivalBase<=0 || ownBase<=0 || tick>=95) {
     const outcome = rivalBase<=0 && ownBase>0 ? "victory" : "defeat";
@@ -432,16 +437,27 @@ export function stepAssaultV115(state:WarOperationsStateV115,rules:WarRulesV6):W
   }
   return accept(advanced,"La bataille latérale progresse.");
 }
-export type StealthCommandV115 = "up"|"down"|"left"|"right"|"cloak"|"interact"|"wait"|"decoy";
+export type StealthCommandV115 = "up"|"down"|"left"|"right"|"cloak"|"interact"|"wait"|"decoy"|"hide";
 export function commandStealthV115(state:WarOperationsStateV115,command:StealthCommandV115,rules:WarRulesV6):WarOperationsUpdateV115 {
  const mission=state.active, stealth=mission?.stealth;
  if(mission?.mode!=="stealth" || !stealth)return reject(state,"Aucune infiltration active.");
  if(state.sourceSha!==rules.metadata.sha256)return reject(state,"Bible de l'infiltration incompatible.");
- if(!["up","down","left","right","cloak","interact","wait","decoy"].includes(command))
+ if(!["up","down","left","right","cloak","interact","wait","decoy","hide"].includes(command))
   return reject(state,"Action inconnue.");
  const terrain=warMissionTerrainV116(mission.targetId,rules);
  let {x,y,cloaked,energy,alarm,sabotaged,guardX,guardDirection}=stealth;
  let decoyX=stealth.decoyX,decoyTurns=stealth.decoyTurns??0,decoyUsed=stealth.decoyUsed??false;
+ let usedCoverIds=[...(stealth.usedCoverIds??[])];
+ if(command==="hide"){
+  const cover=coord(x,y);
+  if(!terrain.cover.includes(cover))
+   return reject(state,"Dissimulation impossible : rejoignez physiquement un couvert W3.");
+  if(usedCoverIds.includes(cover))
+   return reject(state,"Ce couvert a déjà servi à reprendre l'initiative.");
+  if(alarm===0&&energy===5)
+   return reject(state,"Aucune vigilance à récupérer : économie du couvert préservée.");
+  usedCoverIds=[...usedCoverIds,cover];
+ }
  if(command==="cloak"&&energy<=0&&!cloaked)return reject(state,"Le camouflage est épuisé.");
  if(command==="decoy"&&(decoyUsed||cloaked||energy<2))
   return reject(state,"La diversion sonore exige 2 points d'énergie, un pisteur visible et un seul usage.");
@@ -454,7 +470,7 @@ export function commandStealthV115(state:WarOperationsStateV115,command:StealthC
   if(distance({x,y},terrain.relay)>1||sabotaged)
    return reject(state,"Atteignez le relais non désactivé avant de le saboter.");
   sabotaged=true;cloaked=false;
- }else if(command!=="wait"){
+ }else if(command!=="wait"&&command!=="hide"){
   const dx=command==="right"?1:command==="left"?-1:0,
     dy=command==="down"?1:command==="up"?-1:0;
   const nx=x+dx,ny=y+dy;
@@ -473,14 +489,22 @@ export function commandStealthV115(state:WarOperationsStateV115,command:StealthC
   guardX+=guardDirection;
   if(guardX<=4||guardX>=7)guardDirection=guardDirection===1?-1:1;
  }
- const seen=!cloaked&&((y===2&&Math.abs(x-guardX)<=2)||(x===guardX&&Math.abs(y-2)<=1))&&
+ // An authored cover breaks distant LOS only during a hide action.
+ // A guard physically adjacent still sees the hunter.
+ const hiding=command==="hide"&&terrain.cover.includes(coord(x,y))&&
+   distance({x,y},{x:guardX,y:2})>1;
+ const seen=!cloaked&&!hiding&&((y===2&&Math.abs(x-guardX)<=2)||(x===guardX&&Math.abs(y-2)<=1))&&
   warTerrainLineOfSightV116(terrain,{x:guardX,y:2},{x,y});
  if(seen||command==="interact")alarm++;
  // Quiet waiting replenishes the existing cloak battery only while actually
  // concealed: no free energy from an alarmed/visible hunter.
  if(command==="wait"&&!cloaked&&!seen)energy=Math.min(5,energy+1);
+ if(command==="hide"&&!seen){
+  alarm=Math.max(0,alarm-1);
+  energy=Math.min(5,energy+1);
+ }
  const nextStealth={x,y,guardX,guardDirection,alarm,cloaked,energy,sabotaged,
-  decoyX,decoyTurns,decoyUsed};
+  decoyX,decoyTurns,decoyUsed,usedCoverIds};
  const advanced={...state,clock:state.clock+1,active:{...mission,tick:mission.tick+1,stealth:nextStealth}};
  if(alarm>=3)return accept(recordOutcome(advanced,mission.id,"stealth",null,mission.targetId,mission.teamIds,"defeat",mission.teamIds.slice(0,1),rules,
   "Patrouille alertée : extraction abandonnée."),"Infiltration compromise.");
@@ -489,7 +513,8 @@ export function commandStealthV115(state:WarOperationsStateV115,command:StealthC
    "Relais désactivé et pisteur extrait ; renseignement et sabotage consignés."),"Extraction confirmée.");
  if(mission.tick>=65)return accept(recordOutcome(advanced,mission.id,"stealth",null,mission.targetId,mission.teamIds,"defeat",[],rules,
   "Fenêtre d'infiltration expirée."),"Mission interrompue par la durée de l'exercice.");
- return accept(advanced,command==="decoy"?"Diversion sonore déposée physiquement : la patrouille réagit pendant trois décisions.":
+ return accept(advanced,command==="hide"?"Position prise derrière un vrai couvert ; alerte et batterie ajustées hors regard adverse.":
+  command==="decoy"?"Diversion sonore déposée physiquement : la patrouille réagit pendant trois décisions.":
   command==="wait"?"Observation et attente : camouflage rechargé uniquement hors du regard adverse.":
   sabotaged?"Relais neutralisé : retournez au point d'extraction (1,4).":
   "Restez hors du champ de la patrouille et atteignez le relais (7,1).");
@@ -704,12 +729,15 @@ export function simulateWarOuterMissionV115(
   const sabotage=state.weakenedIds.includes(order.targetId)?5:0;
   const escorted=state.escortedIds.includes(order.targetId)?3:0;
   const pressure=Math.min(8,(state.pressure[order.targetId]??0)*2);
-  const strength=Math.round((order.focus==="recon"?scout*1.4:order.focus==="escort"?shield*.9:assault*.9)+support+sabotage+escorted+pressure);
+  const fieldBonus=order.fieldSupport?.paidRav===2?4:0;
+  const strength=Math.round((order.focus==="recon"?scout*1.4:order.focus==="escort"?shield*.9:assault*.9)+support+sabotage+escorted+pressure+fieldBonus);
   const roll=(round:number)=>hashSeed(order.id+"-"+order.targetId+"-"+order.focus+"-"+round)%11-5;
   const baseThreat=Math.max(8,territory.terrainDefense+order.routeIds.length*2);
   const threshold=order.focus==="recon"?Math.round(baseThreat*.7):order.focus==="escort"?Math.round(baseThreat*.9):baseThreat;
   const engagementLog=[
     ...(order.retask?["Réorientation V135 : "+order.retask.oldFocus+" → "+order.focus+" à "+order.retask.changedAt+" ; aucun coût ou résultat anticipé."]:[]),
+    ...(order.fieldSupport?["Soutien V136 : 2 RAV réels engagés à "+order.fieldSupport.allocatedAt+
+      " ; +4 capacité de terrain sur ce mandat uniquement."]:[]),
     "Mandat "+order.id+" : "+order.teamIds.length+" équipe(s), "+order.routeIds.length+" passage(s) validés.",
     "Préparation : observation "+(support?"confirmée":"non confirmée")+
       ", relais "+(sabotage?"affaibli":"intact")+", escorte "+(escorted?"connue":"non reconnue")+".",
@@ -838,6 +866,12 @@ export function readWarOperationsV115(raw:string,rules:WarRulesV6):WarOperations
     if(v.outer.some(order=>!isTextId(order.id)||!sites.has(order.targetId)||!Array.isArray(order.teamIds)||
       !order.teamIds.length||order.teamIds.some(id=>!ownTeam(v,id))||!Number.isSafeInteger(order.dueAt)||
       !Number.isSafeInteger(order.startedAt)||order.startedAt<0||order.dueAt<=order.startedAt||order.dueAt-order.startedAt>86400000||
+      (order.fieldSupport!==undefined&&(!order.fieldSupport||typeof order.fieldSupport!=="object"||
+         order.fieldSupport.paidRav!==2||
+         !Number.isSafeInteger(order.fieldSupport.allocatedAt)||
+         order.fieldSupport.allocatedAt<order.startedAt||
+         2*(order.fieldSupport.allocatedAt-order.startedAt)>=(order.recall?.originalDueAt??order.dueAt)-order.startedAt||
+         (order.recall!==undefined&&order.fieldSupport.allocatedAt>=order.recall.orderedAt)))||
       (order.retask!==undefined&&(!order.retask||typeof order.retask!=="object"||
         !["recon","escort","intercept"].includes(order.retask.oldFocus)||
         order.retask.oldFocus===order.focus||
@@ -873,6 +907,14 @@ export function readWarOperationsV115(raw:string,rules:WarRulesV6):WarOperations
       if(!Number.isInteger(apLevel)||apLevel<1||apLevel>3||
         !Array.isArray(a.usedSpecials??[])||
         !Array.isArray(a.fortifiedIds??[])||
+        !Array.isArray(a.holdIssuedIds??[])||
+        (a.holdIssuedIds??[]).some(id=>!a.launched.includes(id))||
+        unique(a.holdIssuedIds??[]).length!==(a.holdIssuedIds??[]).length||
+        (a.heldUntil!==undefined&&(!a.heldUntil||typeof a.heldUntil!=="object"||Array.isArray(a.heldUntil)||
+          Object.keys(a.heldUntil).length>4||
+          Object.entries(a.heldUntil).some(([id,until])=>
+            !a.launched.includes(id)||!(a.holdIssuedIds??[]).includes(id)||
+            !Number.isInteger(until)||until<=active.tick||until>active.tick+4)))||
         (a.fortifiedIds??[]).some(id=>!a.launched.includes(id))||
         unique(a.fortifiedIds??[]).length!==(a.fortifiedIds??[]).length||
         (a.usedSpecials??[]).some(id=>!a.launched.includes(id))||
@@ -896,7 +938,12 @@ export function readWarOperationsV115(raw:string,rules:WarRulesV6):WarOperations
         typeof v1.cloaked!=="boolean"||typeof v1.sabotaged!=="boolean"||
         (v1.decoyUsed!==undefined&&typeof v1.decoyUsed!=="boolean")||
         (v1.decoyX!==undefined&&(!Number.isInteger(v1.decoyX)||v1.decoyX<0||v1.decoyX>8))||
-        (v1.decoyTurns!==undefined&&(!Number.isInteger(v1.decoyTurns)||v1.decoyTurns<0||v1.decoyTurns>3))) return null;
+        (v1.decoyTurns!==undefined&&(!Number.isInteger(v1.decoyTurns)||v1.decoyTurns<0||v1.decoyTurns>3))||
+        (v1.usedCoverIds!==undefined&&(!Array.isArray(v1.usedCoverIds)||
+          v1.usedCoverIds.length>4||
+          unique(v1.usedCoverIds).length!==v1.usedCoverIds.length||
+          v1.usedCoverIds.some(id=>typeof id!=="string"||
+            !warMissionTerrainV116(active.targetId,rules).cover.includes(id))))) return null;
     }
     if(active?.mode==="rts"){
       const field=active.rts!;
