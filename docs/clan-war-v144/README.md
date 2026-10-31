@@ -22,3 +22,11 @@ Code des quatre moteurs dans `app/game/systems/`, ajustements des moteurs V115/V
 Les tactiques V144 sont des **mécaniques originales de jeu**, pas des faits de canon Predator. Les unités W3, le terrain des planètes, le roster et les règles de ressources viennent des sources V6 existantes. Les 1 200 variantes CW120 restent des **fiches de conception**. **Non livrés** : scènes complètes 1:1 des films/comics/jeux, guerre totale persistante V85, serveur PvP/coop, version mobile/manette certifiée, QA de longue durée et véritable déploiement.
 
 **Ne pas fusionner** tant que le dernier commit n'a pas obtenu une CI ciblée verte et que l'ordre des PR parentes n'a pas été respecté.
+
+## V144 — workbook source-bounded and final code CI
+
+**Code CI sur le commit `83c6058` : 154/154 tests Node, TypeScript et ESLint réussis**, [GitHub Actions 41248679556](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41248679556).
+
+L'avenant `Yautja_Guerres_Clans_Avenant_Production_V144_2026-10-31.xlsx` contient **8 nouvelles feuilles** (quatre modes, 32 contrôles QA, 12 interactions, index des sources et tableau de bord) et **48 exigences**. Il **référence** explicitement le vrai classeur V143 de 73 feuilles dans la PR #53 ; il ne prétend pas en inclure une copie. Les anciens classeurs, 1 200 dossiers design CW120, 24 scénarios W3, 12 cartes et 36 dossiers W5 restent dans leurs PR d'origine.
+
+Les **16 exigences ciblées en CI** sont séparées des **9 prototypes partiels et 23 à développer**. Parmi les QA V144, **8 tests ciblés** sont couverts et **24 sessions manuelles restent ouvertes**. Les tests `clan-war-production-v144.test.mjs` inspectent le véritable XLSX binaire commité (noms de feuilles, IDs, provenance, formules).
