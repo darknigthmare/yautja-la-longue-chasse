@@ -269,6 +269,11 @@ jobs:
           unzip -t docs/Yautja_Gauntlets_V138_Arsenal_Clans.xlsx | tail -1
           unzip -Z1 docs/Yautja_Gauntlets_V138_Arsenal_Clans.xlsx | grep -Ec 'xl/worksheets/sheet[0-9]+[.]xml' | grep -qx 36
           echo "V138: 36 worksheets and no broken archive"
+      - name: Verify V142 real mission and cosmetic-recovery tracker (48 sheets)
+        run: |
+          unzip -t docs/Yautja_Gauntlets_V142_Arsenal_Clans.xlsx | tail -1
+          unzip -Z1 docs/Yautja_Gauntlets_V142_Arsenal_Clans.xlsx | grep -Ec 'xl/worksheets/sheet[0-9]+[.]xml' | grep -qx 48
+          echo "V142: 48 worksheets with validated archive"
       - name: Verify all 54 individual arm-mounted gauntlet modules
         run: node scripts/build-gauntlet-rig-v139.mjs --check
       - name: Export alpha PNGs for 54 rig shells and 54 hinged lids
