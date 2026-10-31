@@ -128,7 +128,7 @@ export default function PlanetReliefV150({planet}:{planet:WarPlanetV96}){
       {expanded?"Fermer l'étude du relief":"Étudier les altitudes, côtes et montagnes"}
     </button>
     <p>Cartographie du relief par cellules terrestres : altitude RG16 exportable, plaines et montagnes, côtes et chenaux réellement présents.</p>
-    {expanded&&radiusKm===null&&<p>Étude d'altimétrie métrique indisponible : ce monde historique n'a pas de rayon physique V115 enregistré. Aucun relief en mètres n'est inventé.</p>}
+    {expanded&&radiusKm===null&&<p>Étude d’altimétrie métrique indisponible : ce monde historique n’a pas de rayon physique V115 enregistré. Aucun relief en mètres n’est inventé.</p>}
     {expanded&&radiusKm!==null&&<div className={styles.content}>
       <p>Simulation graphique de relief, fondée sur les terres réelles de cette planète et son rayon de {radiusKm.toLocaleString("fr-FR")} km. Les continents, bassins, régions, routes et coûts de guerre restent inchangés.</p>
       <div className={styles.controls}>
@@ -150,7 +150,7 @@ export default function PlanetReliefV150({planet}:{planet:WarPlanetV96}){
         <button type="button" data-testid="planet-relief-random-v150"
           onClick={()=>setSeedOffset(value=>(value+1)>>>0)}>Réorganiser les crêtes</button>
       </div>
-      <p>Carte d'altitude graphique : mers, lacs et cours intérieurs sont transparents. La texture RG16 contient les hauteurs sur deux canaux de huit bits pour éviter la faible précision d'un simple gris.</p>
+      <p>Carte d’altitude graphique : mers, lacs et cours intérieurs sont transparents. La texture RG16 contient les hauteurs sur deux canaux de huit bits pour éviter la faible précision d’un simple gris.</p>
       <canvas ref={previewRef} className={styles.map} width={size} height={size/2}
         data-testid="planet-relief-map-v150" role="img"
         aria-label={"Altitudes des terres de "+planet.name}/>
@@ -175,7 +175,7 @@ export default function PlanetReliefV150({planet}:{planet:WarPlanetV96}){
           <p>Altitude moyenne estimée : {r.averageElevationMeters.toLocaleString("fr-FR")} m ; plus haut point du raster : {r.maximumElevationMeters.toLocaleString("fr-FR")} m.</p>
         </article>)}
       </div>}
-      <p className={styles.note}>Cette altitude est une **étude procédurale** et non une topographie canonique ou un système de collision : aucun véhicule, unité ou mission n'est déplacé automatiquement.</p>
+      <p className={styles.note}>Cette altitude est une **étude procédurale** et non une topographie canonique ou un système de collision : aucun véhicule, unité ou mission n’est déplacé automatiquement.</p>
       <p role="status">{message}</p>
     </div>}
   </section>;
