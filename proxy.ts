@@ -11,4 +11,4 @@ export function proxy(){
 }
 
 // Literal, statically analysed scope: game, API and asset routes are untouched.
-export const config={matcher:['/visual-qa-v90/:path*','/solo-qa-v92/:path*','/clan-war-qa-v92/:path*']};
+export const config={matcher:['/visual-qa-v90/:path*','/solo-qa-v92/:path*','/clan-war-qa-v92/:path*','/gauntlet-qa-v135/:path*','/gauntlet-qa-v136/:path*']};

@@ -1,0 +1,14 @@
+.page{min-height:100vh;color:#e9eee6;background:linear-gradient(165deg,#0a1418,#10272b 52%,#101b1c);padding:clamp(15px,3vw,36px);font-family:system-ui,-apple-system,sans-serif;line-height:1.5}
+.page *{box-sizing:border-box}.page h1{font-size:clamp(1.5rem,3vw,2.35rem);margin:5px 0 12px;color:#f0fff6}.page h2{font-size:1.05rem;color:#d6f8e6}.page p{font-size:.88rem;max-width:900px}
+.header{border-bottom:1px solid #497c78;padding-bottom:19px}.header>p:first-child{color:#9de4d8;letter-spacing:.13em;font-size:.73rem}.page a{color:#9be8db;text-decoration:underline}
+.controls{margin:22px 0;display:grid;gap:14px}.controls fieldset{border:1px solid #5a8176;display:flex;flex-wrap:wrap;gap:9px;padding:14px}.controls legend{color:#aadaca;padding:0 6px;font-size:.82rem}
+.page button{min-height:44px;padding:9px 15px;border:1px solid #709a8c;color:#f4faf4;background:#193438;border-radius:4px;cursor:pointer;font:inherit;font-size:.85rem}.page button[aria-pressed="true"]{background:#a7e5cf;color:#0a292a}.page button:focus-visible,.page input:focus-visible,.page a:focus-visible{outline:3px solid #f5d28b;outline-offset:3px}
+.options{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.options label{display:flex;align-items:center;gap:12px;color:#d8e8dc;font-size:.83rem}.options input{width:140px;accent-color:#96ded1}
+.stage{background:radial-gradient(ellipse at 56% 50%,#294a4b,#0b171d 65%);border:1px solid #40756f;padding:16px;overflow:auto;min-height:230px;display:flex;align-items:center;justify-content:center}
+.stage svg{min-width:230px;max-height:none;filter:drop-shadow(0 6px 15px rgba(0,0,0,.5))}
+.zoomFrame{max-width:none;min-width:280px}.zoomFrame svg{max-height:none}
+.single{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(245px,.8fr);gap:20px}.info{background:#102326;border:1px solid #46635c;padding:18px}.info p{font-size:.82rem}.info strong{color:#afecdd}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,310px),1fr));gap:15px}.grid article{border:1px solid #3f746b;padding:12px;background:#102124}.grid .stage{min-height:180px;padding:7px}.grid .stage svg{min-width:0;width:100%}.grid p{font-size:.75rem;color:#cddcd1}
+.page footer{padding:18px 0;margin-top:20px;border-top:1px solid #406e64;color:#acc9b8}
+@media(max-width:780px){.single{grid-template-columns:1fr}.options{align-items:flex-start}.stage{min-height:200px}}
+@media(prefers-reduced-motion:reduce){.page *, .page *::before, .page *::after{transition:none!important;animation:none!important}}

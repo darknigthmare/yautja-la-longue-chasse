@@ -4,6 +4,7 @@
 
 import type { CSSProperties } from "react";
 import { phgMaterialForV113 } from "./hunterMaterialsV113";
+import { gauntletByIdV132, type GauntletThemeV132 } from "./systems/clanWarGauntletCatalogV132";
 
 import type {
   ArmorId,
@@ -56,6 +57,8 @@ export interface HunterRigPreviewProps {
   label?: string;
   maskWorn?: boolean;
   gauntletOpen?: boolean;
+  /** Cosmetic wrist-unit identity; the authored rig sprite remains an unverified shared proxy. */
+  gauntletVariantId?: string;
   bladesExtended?: boolean;
   aiming?: boolean;
   trophyCarried?: boolean;
@@ -70,6 +73,18 @@ export interface HunterRigPreviewProps {
   debugBones?: boolean;
 }
 
+const GAUNTLET_FILTER_V133: Readonly<Record<GauntletThemeV132,string>> = {
+  classic:"saturate(.87) brightness(.91)",
+  urban:"saturate(.8) hue-rotate(165deg) brightness(1.08)",
+  elder:"sepia(.41) saturate(.74) brightness(1.1)",
+  bronze:"sepia(.7) hue-rotate(341deg) saturate(1.16)",
+  stealth:"saturate(.6) hue-rotate(137deg) brightness(.78)",
+  scar:"sepia(.19) saturate(.64) brightness(1.04)",
+  wolf:"saturate(.66) hue-rotate(149deg) brightness(.94)",
+  brutal:"sepia(.35) hue-rotate(312deg) brightness(.75)",
+  feral:"sepia(.7) saturate(.72) hue-rotate(354deg)",
+  badlands:"sepia(.72) saturate(.94) brightness(.95)",
+};
 const SKIN_FILTER: Record<HunterAppearance["skinId"], string> = {
   "ochre-mottle": "none",
   "ashen-mottle":
@@ -374,6 +389,7 @@ export function HunterRigPreview({
   label,
   maskWorn = appearance.biomaskId !== null,
   gauntletOpen = false,
+  gauntletVariantId,
   bladesExtended = false,
   aiming = false,
   trophyCarried = false,
@@ -463,6 +479,8 @@ export function HunterRigPreview({
   const dreadMaterial = phgMaterialForV113("dread", appearance.dreadMaterialId);
   const outfitMaterial = phgMaterialForV113("outfit", appearance.outfitMaterialId);
   const armorFilter = `${ARMOR_FILTER[appearance.armorTintId]} drop-shadow(0 3px 3px rgb(0 0 0 / .82))`;
+  const selectedGauntlet = gauntletByIdV132(gauntletVariantId ?? "jungle-hunter") ?? gauntletByIdV132("jungle-hunter");
+  const gauntletMaterialFilter = GAUNTLET_FILTER_V133[selectedGauntlet?.theme ?? "classic"];
   const netOpacity =
     appearance.armorStyleId === "feral"
       ? 0.28
@@ -542,6 +560,8 @@ export function HunterRigPreview({
       data-head-style={appearance.headStyleId ?? "reference"}
       data-armor={armorId}
       data-armor-style={appearance.armorStyleId}
+      data-gauntlet-equipped={selectedGauntlet?.id ?? "jungle-hunter"}
+      data-gauntlet-visual-validation="shared-rig-material-proxy"
       data-mask={
         maskWorn && appearance.biomaskId ? appearance.biomaskId : "off"
       }
@@ -754,12 +774,14 @@ export function HunterRigPreview({
         gauntletMatrix,
         64,
         "gauntlet-base",
+        gauntletMaterialFilter,
       )}
       {registeredLayer(
         HUNTER_EQUIPMENT_V3.gauntlet.lid,
         lidMatrix,
         65,
         "gauntlet-lid",
+        gauntletMaterialFilter,
       )}
 
       {showsWristblades &&

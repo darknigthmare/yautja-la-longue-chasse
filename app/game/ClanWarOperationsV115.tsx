@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
+import { GAUNTLET_PALETTES_V132,gauntletByIdV132 } from "./systems/clanWarGauntletCatalogV132";
 import { planWarRouteV6, type WarRulesV6 } from "./systems/clanWarBibleV6";
 import { warMissionTerrainV116 } from "./systems/clanWarMissionTerrainV116";
 import { warSourceRtsScenarioV119, warRtsScriptedEligibilityV119,
@@ -28,9 +29,9 @@ const focusLabels: Record<OuterFocusV115, string> = {
   recon: "Reconnaissance", intercept: "Interception", escort: "Protection de passage",
 };
 const formatTime = (seconds:number) => String(Math.floor(seconds / 60)).padStart(2,"0")+":"+String(seconds%60).padStart(2,"0");
-type Props={rules:WarRulesV6;active?:boolean;persist?:boolean;initialScenarioId?:WarSourceRtsScenarioIdV119|null};
+type Props={rules:WarRulesV6;active?:boolean;persist?:boolean;initialScenarioId?:WarSourceRtsScenarioIdV119|null;gauntletId?:string;holographic?:boolean};
 
-export default function ClanWarOperationsV115({rules,active=true,persist=false,initialScenarioId=null}:Props) {
+export default function ClanWarOperationsV115({rules,active=true,persist=false,initialScenarioId=null,gauntletId="jungle-hunter",holographic=false}:Props) {
   const sourcePilotSiteId=(initialScenarioId==="W3-RTS05"||initialScenarioId==="W3-RTS06")?"W3-K13":
     (initialScenarioId==="W3-RTS03"||initialScenarioId==="W3-RTS04")?"W3-K07":"W3-K02";
   const [world,setWorld]=useState<WarOperationsStateV115>(()=>createWarOperationsV115(rules));
@@ -201,6 +202,14 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
   const missionTerrain=current?warMissionTerrainV116(current.targetId,rules):null;
   const available=world.teams.filter(team=>!world.assignments[team.id] && team.members.some(member=>member.status==="fit"));
   const teamsById=(teamId:string)=>rules.units.find(unit=>unit.id===world.teams.find(team=>team.id===teamId)?.unitId)?.name ?? teamId;
+  const equipped = gauntletByIdV132(gauntletId) ?? gauntletByIdV132("jungle-hunter");
+  const signal = GAUNTLET_PALETTES_V132[equipped?.theme ?? "classic"];
+  const gauntletReadout =
+    mode==="outer" ? `${world.outer.length} mandat(s) distant(s) · ${world.reports.length} rapports disponibles` :
+    mode==="stealth" ? `${world.intelIds.length} site(s) reconnus · ${selectedIds.length} équipes choisies` :
+    mode==="rts" ? `${missionPc} PC mobilisés · ${selectedIds.length} équipes sélectionnées` :
+    `${available.length} équipes libres · ${world.rav} RAV de simulation`;
+  const gauntletVars = {"--gauntlet-accent":signal.accent,"--gauntlet-display":signal.display} as CSSProperties;
 
   function start() {
     const result=beginWarOperationV115(worldRef.current,mode,targetId,selectedIds,rules,Date.now(),focus,
@@ -232,6 +241,19 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
       <p>Une même équipe identifiable peut être envoyée en assaut latéral, en opération déléguée, en infiltration ou en bataille tactique. Les blessures, l&apos;expérience, les renseignements et les rapports suivent la même archive d&apos;exercice.</p></div>
       <button type="button" className={styles.reset} onClick={reset}>Réinitialiser V115 uniquement</button>
     </div>
+    {holographic && <aside className={styles.gauntletRibbon} style={gauntletVars}
+      aria-label="Projection tactique du gauntlet équipé" data-testid="clan-operations-gauntlet-v133" data-gauntlet-model={equipped?.id ?? "jungle-hunter"} data-current-mode={mode}>
+      <div><span className={styles.overline}>SIGNAL DU GAUNTLET · LECTURE OPÉRATIONNELLE</span>
+        <h4>{equipped?.name ?? "Jungle Hunter"} · {modeLabels[mode]}</h4>
+        <p>{gauntletReadout}</p>
+      </div>
+      <div className={styles.gauntletRibbonStatus}>
+        <span>Théâtre : {target?.name ?? targetId}</span>
+        <span>{current ? `Mission ${current.id} en cours` : "Aucune mission déployée"}</span>
+        <span>{world.intelIds.includes(targetId) ? "Renseignement déjà obtenu" : "Renseignement non confirmé"}</span>
+      </div>
+      <small>Lecture locale uniquement · les règles, ordres et rapports restent identiques en vue classique.</small>
+    </aside>}
     <p className={styles.disclaimer}>Les unités, passages, coûts RAV et gains d&apos;expérience proviennent de la Bible V6. Les chronomètres, jauges AP, déplacements et IA de ces minijeux sont des paramètres de prototype, sans identité canonique ajoutée. Les victoires n&apos;annexent aucun site V85, ne délivrent aucun trophée et ne modifient pas la chasse principale.</p>
     {storageIssue && <p role="alert" className={styles.warning}>{storageIssue}</p>}
     <div className={styles.metrics}>
