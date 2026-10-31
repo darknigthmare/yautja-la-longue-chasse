@@ -9,8 +9,12 @@ import PlanetShapePreviewV125 from "./PlanetShapePreviewV125";
 import PlanetShapeLibraryV137 from "./PlanetShapeLibraryV137";
 import { recommendPlanetTopologyV139 } from "./systems/clanWarPlanetTopologyAdvisorV139";
 import {
+  randomizePlanetDraftV144, selectablePlanetRandomFieldsV144,
+  type PlanetAdvancedFieldV144, type PlanetRandomScopeV144,
+} from "./systems/clanWarPlanetDraftRandomV144";
+import {
   DEFAULT_WAR_PLANET_RECIPE_V103, WAR_PLANET_RECIPE_FIELDS_V103,
-  randomizeWarPlanetRecipeV103, seedFromTextV103, type WarPlanetRecipeFieldV103, type WarPlanetRecipeV103,
+  seedFromTextV103, type WarPlanetRecipeFieldV103, type WarPlanetRecipeV103,
 } from "./systems/clanWarPlanetGeneratorV103";
 import {
   describeProceduralWarPlanetV103, encodeWarPlanetRecipeCodeV103, resolveProceduralWarPlanetV103, validateWarPlanetRecipeAnyV103,
@@ -146,6 +150,7 @@ export default function PlanetGeneratorV103({ activePlanet, pending = false, onO
   const [mainVisualProfileV134, setMainVisualProfileV134] = useState<PlanetVisualProfileV134 | null>(null);
   const [editorEnabled, setEditorEnabled] = useState(initialRecipe.version !== 102);
   const [locked, setLocked] = useState<WarPlanetRecipeFieldV103[]>([]);
+  const [advancedLockedV144, setAdvancedLockedV144] = useState<PlanetAdvancedFieldV144[]>([]);
   const [selectedId, setSelectedId] = useState("CON-T02");
   // Explicit dossier navigation may reset only the atlas camera, not the war.
   const [atlasFocusRevision, setAtlasFocusRevision] = useState(0);
@@ -169,6 +174,8 @@ export default function PlanetGeneratorV103({ activePlanet, pending = false, onO
   const surfaceBudgetV136 = useMemo(() => analyzePlanetPhysicalSurfaceV136(planet), [planet]);
   const materialDossier = useMemo(() => describeWarPlanetMaterialsV114(planet), [planet]);
   const topologySuggestionV139 = recommendPlanetTopologyV139(planetSizeV115,draft,locked);
+  const availableRandomFieldsV144 = (scope: PlanetRandomScopeV144) =>
+    selectablePlanetRandomFieldsV144(scope, advancedV115, locked, advancedLockedV144);
   function currentRecipe(): WarPlanetRecipeAnyV103 {
     const base = { ...draft, seed: numericSeed(seedText) };
     if (!advancedV115) return base;
@@ -211,18 +218,56 @@ export default function PlanetGeneratorV103({ activePlanet, pending = false, onO
     setLocked(current => current.includes(field) ? current.filter(item => item !== field) : [...current, field]);
   }
 
-  function randomize(field?: WarPlanetRecipeFieldV103) {
+  function toggleAdvancedLockV144(field: PlanetAdvancedFieldV144) {
+    setAdvancedLockedV144(current => current.includes(field)
+      ? current.filter(item => item !== field) : [...current, field]);
+  }
+
+  function randomize(scope: PlanetRandomScopeV144) {
     importIntent.current++;
     try {
-      const locks = field ? WAR_PLANET_RECIPE_FIELDS_V103.filter(item => item !== field || locked.includes(item)) : locked;
-      const base = { ...draft, seed: locks.includes("seed") ? numericSeed(seedText) : draft.seed };
-      const random = entropy();
-      let next = randomizeWarPlanetRecipeV103(base, random, locks);
-      for (let attempt = 1; field && next[field] === base[field] && attempt < 8; attempt++) next = randomizeWarPlanetRecipeV103(base, (random + attempt) >>> 0, locks);
-      setDraft(next);
-      if (!locks.includes("seed")) setSeedText(String(next.seed));
-      setMessage(`${field ? "Module tiré au hasard" : "Réglages mélangés"}. ${locked.length ? "Vos réglages conservés restent identiques. " : ""}Générez l’aperçu pour explorer ce brouillon.`);
-    } catch (error) { setMessage(error instanceof Error ? error.message : "Le tirage n’a pas pu être préparé."); }
+      const available = availableRandomFieldsV144(scope);
+      if (!available.length) {
+        setMessage("Cette section est entièrement verrouillée. Déverrouillez au moins un réglage pour la mélanger.");
+        return;
+      }
+      const base = { ...draft, seed: available.includes("seed") ? draft.seed : numericSeed(seedText) };
+      const result = randomizePlanetDraftV144({
+        recipe: base,
+        advanced: {
+          planetSize: planetSizeV115, islandShape: islandShapeV115,
+          continentShape: continentShapeV115, regionShape: regionShapeV115,
+          landMaterial: landMaterialV115, liquidMaterial: liquidMaterialV115,
+        },
+        advancedEnabled: advancedV115, lockedV103: locked,
+        lockedV115: advancedLockedV144, scope, entropy: entropy(),
+      });
+      if (result.changedFields.length === 0) {
+        setMessage("Aucune variation disponible avec les verrous actuels.");
+        return;
+      }
+      setDraft(result.recipe);
+      if (result.changedFields.includes("seed")) setSeedText(String(result.recipe.seed));
+      if (advancedV115) {
+        setPlanetSizeV115(result.advanced.planetSize);
+        setIslandShapeV115(result.advanced.islandShape);
+        setContinentShapeV115(result.advanced.continentShape);
+        setRegionShapeV115(result.advanced.regionShape);
+        setLandMaterialV115(result.advanced.landMaterial);
+        setLiquidMaterialV115(result.advanced.liquidMaterial);
+      }
+      const label = typeof scope === "object" ? "Réglage individuel" :
+        scope === "all" ? "Tirage aléatoire global" :
+        scope === "v115" ? "Section avancée V115" :
+        scope === "v115-shapes" ? "Formes V115" :
+        scope === "v115-materials" ? "Matières V115" :
+        scope === "v115-size" ? "Taille physique V115" :
+        scope === "seed" ? "Graine" : "Section " + scope;
+      setMessage(label + " : " + result.changedFields.length +
+        " réglage(s) modifié(s), verrous préservés. Générez l’aperçu pour appliquer ce brouillon.");
+    } catch (error) {
+      setMessage(error instanceof Error ? error.message : "Le tirage n’a pas pu être préparé.");
+    }
   }
 
   function preset(value: WarPlanetPresetV103) {
@@ -321,9 +366,16 @@ export default function PlanetGeneratorV103({ activePlanet, pending = false, onO
     <div className={styles.workspace}>
       <div className={styles.composer}>
         {!editorEnabled ? <div className={styles.legacy} data-testid="planet-legacy-recipe-v103"><p className={styles.eyebrow}>RECETTE D’ORIGINE · V102</p><h4>Ce monde conserve son histoire</h4><p>Son code retrouve sa géographie exacte, ses textures et son front existant. Vous pouvez l’explorer, exporter sa fiche ou reprendre la guerre.</p><p>Préparer une variante ouvre les nouveaux réglages. Sa génération créera une nouvelle planète avec un nouveau code et un front distinct.</p><button type="button" className={styles.primary} onClick={prepareVariant}>Préparer une variante</button></div> : <form className={styles.recipe} onSubmit={event => { event.preventDefault(); generate(); }}>
-          <div className={styles.composerHeading}><h4>Composer un monde</h4><span>{locked.length} réglage{locked.length > 1 ? "s" : ""} conservé{locked.length > 1 ? "s" : ""}</span></div>
+          <div className={styles.composerHeading}><h4>Composer un monde</h4><span>{locked.length + (advancedV115 ? advancedLockedV144.length : 0)} réglage(s) conservé(s)</span></div>
+          <div className={styles.globalRandomV144} data-testid="planet-random-global-v144">
+            <button type="button" className={styles.primary} data-testid="planet-random-all-v144"
+              disabled={!availableRandomFieldsV144("all").length} onClick={() => randomize("all")}>
+              Tout aléatoire · {advancedV115 ? "V103 + V115" : "V103"}
+            </button>
+            <p>Un seul tirage pour toutes les sections actives ; « Conserver » protège les champs verrouillés. Le monde affiché ne change qu’après « Générer l’aperçu ».</p>
+          </div>
           {details.recipe.version === 102 && <p className={styles.variantNotice}>Variante en préparation : l’aperçu affiche encore le monde d’origine. La génération créera un nouveau code.</p>}
-          <div className={styles.control} data-generator-field="seed"><label htmlFor={`${unique}-seed`}>Graine du monde</label><input id={`${unique}-seed`} value={seedText} maxLength={64} autoComplete="off" spellCheck={false} onChange={event => { importIntent.current++; setSeedText(event.target.value); }} placeholder="Un nom ou un nombre"/><div className={styles.controlTools}><label className={styles.lock}><input type="checkbox" checked={locked.includes("seed")} aria-label="Conserver : Graine du monde" onChange={() => toggleLock("seed")}/><span>Conserver</span></label><button type="button" disabled={locked.includes("seed")} aria-label="Tirer au hasard : Graine du monde" onClick={() => randomize("seed")}>Au hasard</button></div></div>
+          <div className={styles.control} data-generator-field="seed"><label htmlFor={`${unique}-seed`}>Graine du monde</label><input id={`${unique}-seed`} value={seedText} maxLength={64} autoComplete="off" spellCheck={false} onChange={event => { importIntent.current++; setSeedText(event.target.value); }} placeholder="Un nom ou un nombre"/><div className={styles.controlTools}><label className={styles.lock}><input type="checkbox" checked={locked.includes("seed")} aria-label="Conserver : Graine du monde" onChange={() => toggleLock("seed")}/><span>Conserver</span></label><button type="button" disabled={locked.includes("seed")} aria-label="Tirer au hasard : Graine du monde" onClick={() => randomize({ field: "seed" })}>Au hasard</button></div></div>
           <div className={styles.presetBar}><span>Point de départ</span><button type="button" disabled={locked.length === WAR_PLANET_RECIPE_FIELDS_V103.length} onClick={() => preset("earthlike")}>Base terrestre</button><button type="button" disabled={locked.length === WAR_PLANET_RECIPE_FIELDS_V103.length} onClick={() => preset("alien")}>Base extraterrestre</button></div>
           <div className={styles.presetBar}><span>Génération avancée versionnée</span><button type="button" onClick={() => { importIntent.current++; setAdvancedV115(value => !value); }}>{advancedV115 ? "Revenir aux réglages V103" : "Activer le générateur V115"}</button></div>
           <div className={styles.presetBar} data-testid="planet-strategy-presets-v114"><span>Format stratégique</span>{Object.entries(WAR_PLANET_STRATEGIC_PRESETS_V114).map(([id, label]) => <button key={id} type="button" disabled={locked.length === WAR_PLANET_RECIPE_FIELDS_V103.length} onClick={() => strategicPreset(id as WarPlanetStrategicPresetV114)}>{label}</button>)}</div>
@@ -334,11 +386,36 @@ export default function PlanetGeneratorV103({ activePlanet, pending = false, onO
               <label className={styles.lock}><input type="checkbox" checked={advancedV115}
                 onChange={event => { importIntent.current++; setAdvancedV115(event.target.checked); }}/>
                 <span>Activer une nouvelle recette V115 (ancien monde préservé)</span></label>
+              {advancedV115 && <div className={styles.advancedRandomBarV144} data-testid="planet-random-advanced-v144">
+                <button type="button" data-testid="planet-random-v115-all-v144"
+                  disabled={!availableRandomFieldsV144("v115").length} onClick={() => randomize("v115")}>
+                  Aléatoire : toute la section V115
+                </button>
+                <button type="button" data-testid="planet-random-v115-size-v144"
+                  disabled={!availableRandomFieldsV144("v115-size").length} onClick={() => randomize("v115-size")}>
+                  Taille au hasard
+                </button>
+                <button type="button" data-testid="planet-random-v115-shapes-v144"
+                  disabled={!availableRandomFieldsV144("v115-shapes").length} onClick={() => randomize("v115-shapes")}>
+                  Formes au hasard
+                </button>
+                <button type="button" data-testid="planet-random-v115-materials-v144"
+                  disabled={!availableRandomFieldsV144("v115-materials").length} onClick={() => randomize("v115-materials")}>
+                  Textures au hasard
+                </button>
+              </div>}
               {advancedV115 && <div className={styles.controlGrid}>
-                <div className={styles.control}><label htmlFor={`${unique}-planet-size-v115`}>Rayon de la planète</label>
+                <div className={styles.control} data-generator-advanced-field="planetSize"><label htmlFor={`${unique}-planet-size-v115`}>Rayon de la planète</label>
                   <select id={`${unique}-planet-size-v115`} value={planetSizeV115} onChange={event => { importIntent.current++; setPlanetSizeV115(event.target.value as PlanetSizeV115); }}>
                     {Object.entries(PLANET_SIZE_LABELS_V115).map(([value, label]) => <option value={value} key={value}>{label}</option>)}
-                  </select></div>
+                  </select>
+                  <div className={styles.controlTools}>
+                    <label className={styles.lock}><input type="checkbox" checked={advancedLockedV144.includes("planetSize")}
+                      aria-label="Conserver : Rayon de la planète" onChange={() => toggleAdvancedLockV144("planetSize")}/><span>Conserver</span></label>
+                    <button type="button" aria-label="Tirer au hasard : Rayon de la planète"
+                      disabled={advancedLockedV144.includes("planetSize")} onClick={() => randomize({ field: "planetSize" })}>Au hasard</button>
+                  </div>
+                </div>
                 <div className={styles.control} data-testid="planet-scale-topology-v139">
                   <p className={styles.hint}>Maillage conseillé : {topologySuggestionV139.recommendedTerritories} territoires, {topologySuggestionV139.recommendedRegions} régions. Pour la géographie sélectionnée, {topologySuggestionV139.range[0]} à {topologySuggestionV139.range[1]} masses terrestres. Plafond : 96 territoires et 12 régions.</p>
                   <button type="button" data-testid="planet-scale-apply-v139"
@@ -357,23 +434,42 @@ export default function PlanetGeneratorV103({ activePlanet, pending = false, onO
                   ["island", "Forme des îles", islandShapeV115, setIslandShapeV115],
                   ["continent", "Forme des continents", continentShapeV115, setContinentShapeV115],
                   ["region", "Forme des régions", regionShapeV115, setRegionShapeV115],
-                ] as const).map(([category, label, value, setValue]) => <div className={styles.control} key={category}>
-                  <label htmlFor={`${unique}-${category}-shape-v115`}>{label} · 40 modèles</label>
-                  <select id={`${unique}-${category}-shape-v115`} value={value}
-                    onChange={event => { importIntent.current++; setValue(Number(event.target.value)); }}>
-                    {WAR_SHAPE_TEMPLATES_V115[category].map(template => <option value={template.index} key={template.id}>{template.name}</option>)}
-                  </select><button type="button" onClick={() => { importIntent.current++; setValue(entropy() % 40); }}>Forme aléatoire</button>
-                </div>)}
+                ] as const).map(([category, label, value, setValue]) => {
+                  const field: PlanetAdvancedFieldV144 = category === "island" ? "islandShape" :
+                    category === "continent" ? "continentShape" : "regionShape";
+                  return <div className={styles.control} key={category} data-generator-advanced-field={field}>
+                    <label htmlFor={`${unique}-${category}-shape-v115`}>{label} · 40 modèles</label>
+                    <select id={`${unique}-${category}-shape-v115`} value={value}
+                      onChange={event => { importIntent.current++; setValue(Number(event.target.value)); }}>
+                      {WAR_SHAPE_TEMPLATES_V115[category].map(template => <option value={template.index} key={template.id}>{template.name}</option>)}
+                    </select>
+                    <div className={styles.controlTools}>
+                      <label className={styles.lock}><input type="checkbox" checked={advancedLockedV144.includes(field)}
+                        aria-label={`Conserver : ${label}`} onChange={() => toggleAdvancedLockV144(field)}/><span>Conserver</span></label>
+                      <button type="button" disabled={advancedLockedV144.includes(field)}
+                        aria-label={`Tirer au hasard : ${label}`} onClick={() => randomize({ field })}>Au hasard</button>
+                    </div>
+                  </div>;
+                })}
                 {([
                   ["land", "Texture des terres", landMaterialV115, setLandMaterialV115, WAR_PLANET_LAND_TEXTURES_V115],
                   ["liquid", "Texture des mers et liquides", liquidMaterialV115, setLiquidMaterialV115, WAR_PLANET_LIQUID_TEXTURES_V115],
-                ] as const).map(([category, label, value, setValue, textures]) => <div className={styles.control} key={category}>
-                  <label htmlFor={`${unique}-${category}-detail-v115`}>{label} · 16 matières</label>
-                  <select id={`${unique}-${category}-detail-v115`} value={value}
-                    onChange={event => { importIntent.current++; setValue(Number(event.target.value)); }}>
-                    {textures.map((material, index) => <option value={index} key={material.id}>{material.name} · {material.origin === "alien" ? "extraterrestre" : "terrestre"}</option>)}
-                  </select>
-                </div>)}
+                ] as const).map(([category, label, value, setValue, textures]) => {
+                  const field: PlanetAdvancedFieldV144 = category === "land" ? "landMaterial" : "liquidMaterial";
+                  return <div className={styles.control} key={category} data-generator-advanced-field={field}>
+                    <label htmlFor={`${unique}-${category}-detail-v115`}>{label} · 16 matières</label>
+                    <select id={`${unique}-${category}-detail-v115`} value={value}
+                      onChange={event => { importIntent.current++; setValue(Number(event.target.value)); }}>
+                      {textures.map((material, index) => <option value={index} key={material.id}>{material.name} · {material.origin === "alien" ? "extraterrestre" : "terrestre"}</option>)}
+                    </select>
+                    <div className={styles.controlTools}>
+                      <label className={styles.lock}><input type="checkbox" checked={advancedLockedV144.includes(field)}
+                        aria-label={`Conserver : ${label}`} onChange={() => toggleAdvancedLockV144(field)}/><span>Conserver</span></label>
+                      <button type="button" disabled={advancedLockedV144.includes(field)}
+                        aria-label={`Tirer au hasard : ${label}`} onClick={() => randomize({ field })}>Au hasard</button>
+                    </div>
+                  </div>;
+                })}
               </div>}
               {advancedV115 && <PlanetShapePreviewV125 island={islandShapeV115} continent={continentShapeV115} region={regionShapeV115}/>}
               {advancedV115 && <PlanetShapeLibraryV137 island={islandShapeV115}
@@ -389,8 +485,28 @@ export default function PlanetGeneratorV103({ activePlanet, pending = false, onO
             </div>
           </details>
           <p className={styles.hint}>« Conserver » protège un réglage des bases et des tirages au hasard. Vous pouvez toujours le modifier directement. Les motifs règlent les textures, indépendamment de la taille du monde.</p>
-          <div className={styles.modules}>{PLANET_GENERATOR_SECTIONS_V103.map((section, index) => <details className={styles.module} key={section.id} open={index === 0} data-generator-section={section.id}><summary><span><strong>{section.title}</strong><small>{section.fields.length} réglage{section.fields.length > 1 ? "s" : ""}</small></span></summary><div className={styles.moduleBody}><p className={styles.moduleDescription}>{section.description}</p>{section.id === "geography" && <p className={styles.hint}>Chaque région contient au moins trois territoires. Pour un petit front, réduisez d’abord le nombre de régions ; pour davantage de régions, augmentez d’abord les territoires.</p>}<div className={styles.controlGrid}>{section.fields.map(field => <ModuleControl key={field} field={field} prefix={unique} recipe={draft} locked={locked.includes(field)} onEdit={edit} onLock={toggleLock} onRandom={randomize}/>)}</div></div></details>)}</div>
-          <div className={styles.actions}><button type="submit" className={styles.primary}>Générer l’aperçu</button><button type="button" disabled={locked.length === WAR_PLANET_RECIPE_FIELDS_V103.length} onClick={() => randomize()}>Mélanger les réglages</button></div>
+          <div className={styles.modules}>{PLANET_GENERATOR_SECTIONS_V103.map((section, index) =>
+            <details className={styles.module} key={section.id} open={index === 0} data-generator-section={section.id}>
+              <summary><span><strong>{section.title}</strong><small>{section.fields.length} réglage{section.fields.length > 1 ? "s" : ""}</small></span></summary>
+              <div className={styles.moduleBody}>
+                <div className={styles.sectionRandomBarV144} data-testid="planet-random-section-toolbar-v144" data-section={section.id}>
+                  <p className={styles.moduleDescription}>{section.description}</p>
+                  <button type="button" data-testid="planet-random-section-v144" data-section={section.id}
+                    disabled={!availableRandomFieldsV144(section.id as PlanetRandomScopeV144).length}
+                    onClick={() => randomize(section.id as PlanetRandomScopeV144)}>
+                    Aléatoire : cette section
+                  </button>
+                </div>
+                {section.id === "geography" && <p className={styles.hint}>Chaque région contient au moins trois territoires. Pour un petit front, réduisez d’abord le nombre de régions ; pour davantage de régions, augmentez d’abord les territoires.</p>}
+                <div className={styles.controlGrid}>{section.fields.map(field =>
+                  <ModuleControl key={field} field={field} prefix={unique} recipe={draft}
+                    locked={locked.includes(field)} onEdit={edit} onLock={toggleLock}
+                    onRandom={field => randomize({ field })}/>)}</div>
+              </div>
+            </details>)}</div>
+          <div className={styles.actions}><button type="submit" className={styles.primary}>Générer l’aperçu</button>
+            <button type="button" disabled={!availableRandomFieldsV144("all").length}
+              onClick={() => randomize("all")}>Tout mélanger au hasard</button></div>
           <p className={styles.draftStatus} data-testid="planet-draft-status-v103">{changed ? "Brouillon modifié : générez l’aperçu pour appliquer les réglages." : "L’aperçu correspond à ces réglages."} La partie active ne change qu’à l’ouverture du front.</p>
         </form>}
       </div>
