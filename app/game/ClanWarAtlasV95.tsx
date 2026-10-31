@@ -145,7 +145,11 @@ export default function ClanWarAtlasV95({
   const visualSelectionV142 = resolveWarAtlasVisualV142(planet, visualProfile, localAppearanceV142);
   const appearanceV142 = visualSelectionV142.profile;
   const loadLocalAppearanceV142 = () => {
-    const stored = readPlanetVisualProfileV134(planet, window.localStorage);
+    // Accessing localStorage itself can throw under restricted browser policies.
+    // Never claim a profile was loaded when storage is blocked.
+    let stored: ReturnType<typeof readPlanetVisualProfileV134>;
+    try { stored = readPlanetVisualProfileV134(planet, window.localStorage); }
+    catch { stored = { status: "unavailable" }; }
     if (stored.status === "loaded") {
       setLocalAppearanceV142(stored.profile);
       setVisualNoticeV142("Profil régional local activé pour ce monde, sans modification des archives de guerre.");

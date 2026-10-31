@@ -435,6 +435,16 @@ try {
     (await restoredKit.getByTestId("planet-regional-coastal-v131").inputValue()) === "1800");
   await restoredTab.close();
 
+  await kit.getByTestId("planet-visual-delete-v134").click();
+  check("V134 deletion only clears the local key, not the live draft or the planet",
+    await page.evaluate(key => window.localStorage.getItem(key) === null, visualStorageKey) &&
+    (await landSelect.inputValue()) === editedLand &&
+    (await generator.getAttribute("data-preview-planet-code")) === code);
+
+  await kit.screenshot({ path: path.join(output, "after-v128-regional-kit-desktop.png") });
+  await page.setViewportSize({ width: 390, height: 844 });
+  await kit.screenshot({ path: path.join(output, "after-v128-regional-kit-mobile.png") });
+  check("Mobile region kit remains operable", await kit.getByTestId("planet-region-kit-export-v128").isEnabled());
   // Real strategic screen (not the generator preview): V142 loads only on
   // user click. The exercise remains separate from the campaign save.
   await kit.getByTestId("planet-visual-save-v134").click();
@@ -455,16 +465,6 @@ try {
     (await liveAtlas.getAttribute("data-regional-profile-source")) === "native" &&
     (await liveAtlas.getAttribute("data-regional-profile-active")) === "false");
 
-  await kit.getByTestId("planet-visual-delete-v134").click();
-  check("V134 deletion only clears the local key, not the live draft or the planet",
-    await page.evaluate(key => window.localStorage.getItem(key) === null, visualStorageKey) &&
-    (await landSelect.inputValue()) === editedLand &&
-    (await generator.getAttribute("data-preview-planet-code")) === code);
-
-  await kit.screenshot({ path: path.join(output, "after-v128-regional-kit-desktop.png") });
-  await page.setViewportSize({ width: 390, height: 844 });
-  await kit.screenshot({ path: path.join(output, "after-v128-regional-kit-mobile.png") });
-  check("Mobile region kit remains operable", await kit.getByTestId("planet-region-kit-export-v128").isEnabled());
   check("No browser runtime errors", errors.length === 0);
   result = { pass: true, worldCode: code, checks, errors, regionsSampled: regions.slice(0, 2) };
 } catch (error) {
