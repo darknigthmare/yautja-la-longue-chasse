@@ -122,7 +122,7 @@ export default function GauntletVisualQaV136(){
       {ART_PARTS_V136.filter(p=>["arm","shell","panel","lid"].includes(p.id)||
         active.id==="jungle-hunter"||compare&&other.id==="jungle-hunter").map(part=><label key={part.id}>
         <input type="checkbox" checked={!hiddenParts.includes(part.id)} aria-label={`Afficher ${part.label}`}
-          onChange={e=>setHiddenParts(old=>e.currentTarget.checked?old.filter(x=>x!==part.id):[...old,part.id])}/>
+          onChange={e=>{const checked=e.currentTarget.checked;setHiddenParts(old=>checked?old.filter(x=>x!==part.id):[...old,part.id]);}}/>
         {part.label}
       </label>)}
       <button type="button" disabled={hiddenParts.length===0} onClick={()=>setHiddenParts([])}>Afficher tous les calques</button>
