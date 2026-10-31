@@ -22,3 +22,11 @@ Les anciens champs de sauvegarde V115 restent facultatifs : `braceUsedIds`/`brac
 La CI dédiée `.github/workflows/clan-war-v143.yml` inclut `tests/clan-war-four-modes-v143.test.mjs`, les régressions V115–V142, TypeScript et ESLint. L'Excel `Yautja_Guerres_Clans_Suivi_Production_V143_2026-10-31.xlsx` conserve les **66 onglets V142** et ajoutera quatre onglets de modes, les contrôles QA, interactions inter-modes et pilotage avec formules.
 
 **Toujours ouvert :** QA navigateur/manette, performances, scène cinématographique réellement fidèle 1:1, serveur multijoueur, raccord des ressources à V85 et les 1 200 niveaux complets. « Validé CI ciblée » n'est pas un statut de production finale.
+
+## Livraison et suivi CI sur GitHub — 31/10/2026
+
+- Le commit de gameplay `db0713ab` (après correctifs de sauvegarde de détour et de sprint) a passé **142 tests Node sur 142**, TypeScript et ESLint. [GitHub Actions 41225284958](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41225284958).
+- Le **classeur V143 binaire** `Yautja_Guerres_Clans_Suivi_Production_V143_2026-10-31.xlsx` est ajouté à cette PR sous `docs/clan-war-v143/`, blob SHA `b322d205784960f415d988ae327295e48cb02322`, et sera vérifié par les tests du workflow final.
+- Il conserve **66 feuilles de V142** et ajoute les 7 feuilles V143 : quatre modes (19 exigences chacun), **QA_V143** (88 contrôles), **CROISEMENTS_V143** (44 invariants), **SUIVI_V143** avec formules : **73 onglets au total**, 76 exigences, 50 validées en CI ciblée, 8 prototypes partiels, 18 à développer ; 72 QA automatisées et 16 manuelles toujours ouvertes.
+- **1200 IDs de variantes** V120 design-only, 24 études RTS W3, 12 cartes et 36 dossiers W5 préservés. Ni 1200 scènes finales ni intégration V85 ne sont revendiquées.
+- Contrôle `tests/clan-war-production-v143.test.mjs` : ouvre le **vrai XLSX de la PR**, vérifie la feuille 73, les IDs uniques et les catalogues historiques. Ne pas fusionner avant la CI finale.
