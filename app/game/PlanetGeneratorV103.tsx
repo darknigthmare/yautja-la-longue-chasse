@@ -9,6 +9,7 @@ import PlanetShapePreviewV125 from "./PlanetShapePreviewV125";
 import PlanetShapeLibraryV137 from "./PlanetShapeLibraryV137";
 import PlanetEnvironmentalDossierV146 from "./PlanetEnvironmentalDossierV146";
 import PlanetEarthReferenceV147 from "./PlanetEarthReferenceV147";
+import PlanetPreflightV149 from "./PlanetPreflightV149";
 import { recommendPlanetTopologyV139 } from "./systems/clanWarPlanetTopologyAdvisorV139";
 import {
   randomizePlanetDraftV144, selectablePlanetRandomFieldsV144,
@@ -546,6 +547,7 @@ export default function PlanetGeneratorV103({ activePlanet, pending = false, onO
     <div className={styles.preview} id={`${unique}-atlas`} data-testid="planet-generator-atlas-v103"><ClanWarAtlasV95 key={`${planet.id}-${atlasFocusRevision}`} simulation={simulation} selectedTerritoryId={selected.id} targetTerritoryId={target} onSelectTerritory={id => { setSelectedId(id); setTargetId(""); }} onSelectTarget={setTargetId} visualProfile={mainVisualProfileV134}/></div>
     <PlanetLayerExportV102 key={planet.id} planet={planet} onApplyVisualProfile={setMainVisualProfileV134}/>
     <div className={styles.dossier}>
+      <PlanetPreflightV149 key={planet.id} planet={planet} regionalKit={mainVisualProfileV134?.kit}/>
       <PlanetEnvironmentalDossierV146 key={planet.id} planet={planet}/>
       <PlanetEarthReferenceV147/>
       <section aria-label="Particularités du monde"><h4>Particularités de {planet.name}</h4><div className={styles.traits}>{details.traits.map(trait => <article key={trait.id}><h5>{trait.name}</h5><p>{trait.description}</p></article>)}</div></section>

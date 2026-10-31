@@ -96,6 +96,25 @@ try{
     await panel.getByTestId("planet-environment-export-json-v146").isEnabled() &&
     (await generator.getAttribute("data-preview-planet-code"))===worldCode);
   check("V146 browser rendered without runtime exceptions",errors.length===0);
+
+  const preflight=generator.getByTestId("planet-preflight-v149");
+  check("V149 visible world preflight is tied to this exact planet",
+    (await preflight.getAttribute("data-world-code"))===worldCode);
+  await preflight.getByTestId("planet-preflight-toggle-v149").click();
+  check("V149 real generated V115 planet is free of blocking structural errors",
+    (await preflight.getAttribute("data-error-count"))==="0" &&
+    (await preflight.getByTestId("planet-preflight-summary-v149").innerText()).length>20);
+  const waitAudit=page.waitForEvent("download",{timeout:60000});
+  await preflight.getByTestId("planet-preflight-export-v149").click();
+  const auditDownload=await waitAudit;
+  const auditPath=path.join(output,auditDownload.suggestedFilename());
+  await auditDownload.saveAs(auditPath);
+  const audit=JSON.parse(await readFile(auditPath,"utf8"));
+  check("V149 exported preflight JSON covers the real atlas geometry without war progress",
+    audit.version===149 && audit.worldCode===worldCode && audit.errors===0 &&
+    audit.checked.regions>=3 && audit.checked.territories>=18 &&
+    !JSON.stringify(audit).includes("combatants"));
+  await preflight.screenshot({path:path.join(output,"planet-preflight-mobile-v149.png")});
   report={passed:true,worldCode,checks,errors};
 }catch(error){
   report={passed:false,checks,errors,error:String(error),stack:error?.stack};

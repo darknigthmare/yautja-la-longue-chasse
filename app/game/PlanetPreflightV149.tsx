@@ -46,7 +46,7 @@ export default function PlanetPreflightV149({
         ? "anomalies structurelles détectées"
         :report.status==="review-advised"
           ?"structure vérifiée, climat ou lore à documenter":"aucune anomalie structurelle détectée"}.
-        Cette vérification n'est pas une certification géographique ou artistique 1:1.</p>
+        Cette vérification n’est pas une certification géographique ou artistique 1:1.</p>
       <div className={styles.actions}>
         <button type="button" data-testid="planet-preflight-export-v149"
           onClick={exportReport}>Exporter le contrôle JSON</button>
