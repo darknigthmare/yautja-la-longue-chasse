@@ -10,8 +10,9 @@ import type { GauntletCampaignV134 } from "./gauntletCampaignV134";
 
 /**
  * Shared between the ship's armory, the player's rig and clan-war screens.
- * This remains a per-hunter LOCAL cosmetic preference pending a versioned
- * campaign-save migration. Never use it as an award or battle stat.
+ * The V13 campaign archive remains the authoritative equipped gauntlet and
+ * challenge receipts. Browser storage is only a per-hunter fallback, never a
+ * new award source or combat statistic.
  */
 export const HUNTER_GAUNTLET_EVENT_V133 = "yautja:hunter-gauntlet-v133";
 const localFallback = new Map<string,string>();
@@ -28,7 +29,7 @@ export function readHunterGauntletV133(
   if (fallback.has(key)) return normalizeGauntletV132(fallback.get(key),rank);
   if (storage) {
     try {
-      return parseGauntletPreferenceV132(storage.getItem(key),hunter,rank);
+      return parseGauntletPreferenceV132(storage.getItem(key),hunter,rank,archive?.claimedStudies ?? []);
     } catch { /* Storage permission might have been revoked. */ }
   }
   return normalizeGauntletV132(fallback.get(key),rank);
@@ -69,7 +70,7 @@ export function useHunterGauntletV133(hunter: string, rank: HunterRankV132, arch
 
   const equip=useCallback((id:string):boolean=>{
     if (!gauntletUnlockedV132(id,rank,archive?.claimedStudies ?? []) || typeof window==="undefined") return false;
-    const payload=serializeGauntletPreferenceV132(hunter,id,rank);
+    const payload=serializeGauntletPreferenceV132(hunter,id,rank,archive?.claimedStudies ?? []);
     try {
       window.localStorage.setItem(key,payload);
       localFallback.delete(key);
