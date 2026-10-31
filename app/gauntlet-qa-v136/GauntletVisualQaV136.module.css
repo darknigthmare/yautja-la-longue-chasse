@@ -1,4 +1,4 @@
-.page{min-height:100vh;background:radial-gradient(ellipse at 10% 0%,#20403d,#09151d 56%);color:#e4f2e9;padding:clamp(16px,3vw,38px);font-family:inherit}
+.page{min-height:100vh;background:radial-gradient(ellipse at 10% 0%,#20403d,#09151d 56%);color:#e4f2e9;padding:clamp(16px,3vw,38px);font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
 .heading{max-width:1120px;margin:0 auto 23px}
 .heading>span{letter-spacing:.16em;color:#87e6d6;font-size:.72rem;font-weight:800}
 .heading h1{font-size:clamp(1.8rem,4vw,3rem);margin:8px 0}
@@ -38,3 +38,11 @@
 .filmOverlay{position:absolute;inset:0;object-fit:contain;width:100%;height:100%;pointer-events:none;z-index:3;mix-blend-mode:screen}
 .localNote,.fileWarning{max-width:1120px;margin:10px auto;font-size:.8rem;line-height:1.6}
 .localNote{color:#c7eadd}.fileWarning{color:#ffdbc1;border-left:3px solid #f8ab68;padding:8px 12px;background:#3b2822}
+
+/* V136 photographed browser QA: avoid native file inputs overlapping filters. */
+.toolbar{align-items:start;column-gap:16px;row-gap:12px}
+.toolbar label{min-width:min(100%,220px);align-self:stretch}
+.toolbar label:has(input[type="file"]){min-width:min(100%,285px);flex-basis:285px}
+.toolbar input[type="file"]{min-width:0;max-width:100%;box-sizing:border-box;font-size:.74rem;overflow:hidden}
+.toolbar input[type="search"],.toolbar input[type="range"],.toolbar select{min-width:0;box-sizing:border-box}
+@media(max-width:680px){.toolbar label,.toolbar label:has(input[type="file"]){min-width:0;flex-basis:100%}}
