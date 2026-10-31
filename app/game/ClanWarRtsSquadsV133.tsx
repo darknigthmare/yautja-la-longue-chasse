@@ -4,7 +4,7 @@ import type {WarRulesV6} from "./systems/clanWarBibleV6";
 import {
  createWarRtsSquadsV133,draftWarRtsSquadV133,removeWarRtsSquadV133,
  launchWarRtsSquadsV133,commandWarRtsSquadsV133,visibleWarRtsEnemiesV133,
- planWarRtsRallyV134,commandWarRtsRallyV134,
+ planWarRtsRallyV134,commandWarRtsRallyV134,commandWarRtsSuppressV135,
  type WarRtsSquadsStateV133,type WarRtsSquadOrderV133,
 } from "./systems/clanWarRtsSquadsV133";
 import {WAR_SOURCE_RTS_IDS_V129} from "./systems/clanWarRtsSourceMissionsV129";
@@ -182,10 +182,16 @@ export default function ClanWarRtsSquadsV133({rules}:{rules:WarRulesV6}){
      {enemies.length===0?<p className={styles.hint}>Aucun adversaire actuellement observé.</p>:
       <div className={styles.enemyList}>{enemies.map(e=>{
        const inRange=d(selected,e)<=selected.range&&warMapLineOfSightV128(map,selected,e);
-       return <button type="button" key={e.id} disabled={!inRange||state.ravRemaining<1||selected.status!=="active"}
-        onClick={()=>send({kind:"attack",squadId:selected.id,targetId:e.id})}>
-        {e.unitId} · {e.hp} PV · ({e.x},{e.y}) {inRange?"· Tir 1 RAV":"· Hors portée"}
-       </button>;
+       return <div key={e.id}>
+        <button type="button" disabled={!inRange||state.ravRemaining<1||selected.status!=="active"}
+         onClick={()=>send({kind:"attack",squadId:selected.id,targetId:e.id})}>
+         {e.unitId} · {e.hp} PV · ({e.x},{e.y}) {inRange?"· Tir 1 RAV":"· Hors portée"}
+        </button>
+        <button type="button" disabled={!inRange||state.ravRemaining<2||selected.status!=="active"}
+         onClick={()=>apply(commandWarRtsSuppressV135(state,selected.id,e.id))}>
+         Tir de couverture (2 RAV) · bloque une riposte
+        </button>
+       </div>;
       })}</div>}
     </>}
     <p role="status" aria-live="polite" className={styles.feedback}>{feedback||state.lastMessage}</p>

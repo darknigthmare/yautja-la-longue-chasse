@@ -63,7 +63,7 @@ export function warSourceRtsScenarioV119(id:string,rules:WarRulesV6): WarSourceR
   if(v("C")!==mapId || !rules.entries.some(item=>item.sheet==="Cartes des escarmouches"&&item.id===mapId))
     return null;
   return {
-    id,title:String(entry.title),sourceMapId:mapId,
+    id:id as WarSourceRtsScenarioIdV119,title:String(entry.title),sourceMapId:mapId,
     sourceCells:["C","D","E","F","G","H","I","J","K","L","M","N","O"]
       .map(column=>entry.fields.find(field=>field.column===column)?.cell).filter((cell):cell is string=>!!cell),
     situation:v("E"),tactics:v("I"),enemyPlan:v("J"),completion:v("L"),
