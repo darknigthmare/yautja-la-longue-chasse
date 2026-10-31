@@ -1,11 +1,11 @@
 import React,{useMemo,useRef,useState} from "react";
 import {createRoot} from "react-dom/client";
-import HuntCanvas from "../../app/game/HuntCanvas";
+import HuntCanvas,{type HuntPersistencePayload} from "../../app/game/HuntCanvas";
 import {MISSION_BY_ID} from "../../app/game/data";
 import {defaultSave} from "../../app/game/save";
 import {
  ACTIVE_HUNT_SAVE_VERSION,ACTIVE_HUNT_RUNTIME_REVISION,
- loadActiveHuntSave,writeActiveHuntSave,claimActiveHuntSave,
+ loadActiveHuntSave,writeActiveHuntSave,claimActiveHuntSave,type JsonObject,
 } from "../../app/game/systems/activeHuntSave";
 import {
  captureHuntGauntletV142,resumeHuntGauntletV142,
@@ -16,7 +16,12 @@ import {
 const OWNER="2026-10-31T15:45:00.000Z",PREF="v142-qa-next-hunt";
 const mission=MISSION_BY_ID["jungle-vey"];
 if(!mission)throw Error("Missing real jungle mission");
-const audit={events:[],errors:[]};
+interface V142Session {runId:string;startedAt:string;sequence:number;configuration:JsonObject|null;}
+interface V142Resume {snapshot:JsonObject;retryCheckpoint:JsonObject|null;locked:string;}
+const audit:{events:Array<Record<string,unknown>>;errors:string[]}={events:[],errors:[]};
+declare global {
+  interface Window { __huntGauntletV142Audit:typeof audit; }
+}
 window.__huntGauntletV142Audit=audit;
 function Fixture(){
   const save=useMemo(()=>{
@@ -28,41 +33,44 @@ function Fixture(){
     return loadActiveHuntSave().save?"suspended":"mission";
   });
   const [selected,setSelected]=useState(()=>localStorage.getItem(PREF)||"wolf");
-  const [resume,setResume]=useState(null);
+  const [resume,setResume]=useState<V142Resume|null>(null);
   const [runNumber,setRunNumber]=useState(0);
   const [error,setError]=useState("");
-  const session=useRef({
+  const session=useRef<V142Session>({
     runId:"qa-v142-original-"+Date.now().toString(36),
     startedAt:new Date().toISOString(),sequence:0,
     configuration:null,
   });
-  function persist(payload){
+  function persist(payload:HuntPersistencePayload){
     const state=session.current;
-    state.configuration??={
-      inventory:save.inventory,loadout:save.loadout,appearance:save.appearance,
+    const initial:JsonObject=state.configuration??{
+      inventory:save.inventory as unknown as JsonObject,
+      loadout:save.loadout as unknown as JsonObject,
+      appearance:save.appearance as unknown as JsonObject,
       gauntletVariantId:captureHuntGauntletV142(selected,save.profile.rankId,[]),
       visualOptions:{screenShake:false,reducedGore:true,highContrastVision:false},
       elapsedSeconds:0,
     };
-    state.configuration={
-      ...state.configuration,
+    const configuration:JsonObject={
+      ...initial,
       elapsedSeconds:Math.max(0,payload.elapsed),
     };
+    state.configuration=configuration;
     const sidecar={
       version:ACTIVE_HUNT_SAVE_VERSION,runtimeRevision:ACTIVE_HUNT_RUNTIME_REVISION,
       ownerSaveCreatedAt:save.createdAt,missionId:mission.id,
       difficultyId:save.settings.difficultyId,encounterRun:0,
       runId:state.runId,sequence:state.sequence+1,
       startedAt:state.startedAt,savedAt:new Date().toISOString(),
-      configuration:state.configuration,
+      configuration,
       snapshot:payload.snapshot,retryCheckpoint:payload.retryCheckpoint,
     };
     const write=writeActiveHuntSave(sidecar);
-    if(write.persisted){state.sequence++;audit.events.push({type:"persist",sequence:state.sequence,gauntletId:state.configuration.gauntletVariantId});}
-    else {setError("Persist fail: "+write.failure);audit.errors.push(write.failure);}
+    if(write.persisted){state.sequence++;audit.events.push({type:"persist",sequence:state.sequence,gauntletId:configuration.gauntletVariantId});}
+    else {setError("Persist fail: "+write.failure);audit.errors.push(write.failure??"unknown");}
     return write.save;
   }
-  const suspend=payload=>{
+  const suspend=(payload:HuntPersistencePayload)=>{
     const sidecar=persist(payload);
     if(!sidecar)return;
     audit.events.push({type:"suspend",gauntletId:sidecar.configuration.gauntletVariantId,sequence:sidecar.sequence});
@@ -125,4 +133,6 @@ function Fixture(){
     />}
   </main>;
 }
-createRoot(document.getElementById("root")).render(<Fixture/>);
+const mount=document.getElementById("root");
+if(!mount)throw Error("Missing React root");
+createRoot(mount).render(<Fixture/>);
