@@ -35,9 +35,8 @@ try{
   const settings=earth.getByTestId("planet-film-setting-v148");
   check("V148 official canon registry records terrestrial and alien movie settings separately",
     (await settings.count())===5 &&
-    (await settings.filter({has:page.locator('[data-world="earth"]')}).count())===0 ? false :
-      (await earth.locator('[data-world="earth"]').count())===3 &&
-      (await earth.locator('[data-world="unidentified-alien"]').count())===2);
+    (await earth.locator('[data-testid="planet-film-setting-v148"][data-world="earth"]').count())===3 &&
+    (await earth.locator('[data-testid="planet-film-setting-v148"][data-world="unidentified-alien"]').count())===2);
   check("V148 only city-level Predator 2 is a GPS point, not a regional or alien film",
     (await earth.getByTestId("planet-earth-film-pin-v148").count())===1 &&
     (await earth.getByTestId("planet-earth-film-pin-v148").first().getAttribute("data-film"))==="predator-2-1990");
