@@ -19,6 +19,7 @@ import {
   type WarOperationsUpdateV115,
 } from "./systems/clanWarOperationsV115";
 import {reinforceWarAssaultLineV135,redirectWarOuterOpsV135} from "./systems/clanWarParallelModesV135";
+import {orderWarAssaultHoldV136,supplyWarOuterMissionV136} from "./systems/clanWarParallelModesV136";
 import styles from "./ClanWarOperationsV115.module.css";
 
 const modeLabels: Record<WarMissionModeV115, string> = {
@@ -413,23 +414,37 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
           </button>;
         })}</div>
         <p className={styles.explain}>Une équipe présente près du bastion peut sécuriser sa ligne une fois par assaut en convertissant 18 AP en protection. Aucune troupe ou ressource de campagne n&apos;est créée.</p>
+        <div className={styles.cards}>{current.teamIds.filter(id=>assault.launched.includes(id)).map(id=>{
+          const teamOnLine=assault.actors.some(actor=>actor.teamId===id&&actor.hp>0&&actor.x<=25);
+          const already=(assault.holdIssuedIds??[]).includes(id);
+          const until=assault.heldUntil?.[id]??0;
+          return <button key={"hold-"+id} type="button"
+            disabled={blocked||already||!teamOnLine||assault.ap<15}
+            onClick={()=>commit(orderWarAssaultHoldV136(worldRef.current,id,rules))}>
+            {teamsById(id)} · tenir la ligne (15 AP){until>current.tick?" · position tenue":already?" · consommé":""}
+          </button>;
+        })}</div>
+        <p className={styles.explain}>Tenue V136 : une équipe présente près de sa base conserve sa position pendant trois tours, mais continue à riposter à portée. L&apos;ordre ne crée pas de renfort et n&apos;agit pas sur la campagne V85.</p>
         <p className={styles.explain}>Action coordonnée limitée à une fois par détachement survivant, uniquement si une cible adverse se trouve dans sa portée V6. Aucun nouveau projectile ou équipement n&apos;est créé.</p>
         <p className={styles.explain}>Art temporaire schématique : aucun sprite de film ou de Predator: Hunting Grounds n&apos;est faussement déclaré intégré.</p>
       </div>}
 
       {stealth && <div>
-        <p>Rejoindre le relais (7,1), le désactiver, puis rejoindre l&apos;extraction (1,4). Alerte <strong>{stealth.alarm}/3</strong> · énergie de camouflage <strong>{stealth.energy}/5</strong> · relais <strong>{stealth.sabotaged?"neutralisé":"actif"}</strong> · diversion <strong>{stealth.decoyUsed?"épuisée": "disponible"}</strong> · écho sonore <strong>{stealth.decoyTurns??0} tour(s)</strong>.</p>
+        <p>Rejoindre le relais (7,1), le désactiver, puis rejoindre l&apos;extraction (1,4). Alerte <strong>{stealth.alarm}/3</strong> · énergie de camouflage <strong>{stealth.energy}/5</strong> · relais <strong>{stealth.sabotaged?"neutralisé":"actif"}</strong> · diversion <strong>{stealth.decoyUsed?"épuisée": "disponible"}</strong> · écho sonore <strong>{stealth.decoyTurns??0} tour(s)</strong> · couverts utilisés <strong>{(stealth.usedCoverIds??[]).length}/{missionTerrain?.cover.length??0}</strong>.</p>
         <p className={styles.explain}>Terrain régional : {missionTerrain?.title} · {missionTerrain?.ground} · obstacle : {missionTerrain?.wallLabel}.</p>
         <div className={styles.grid} style={{gridTemplateColumns:"repeat(9,minmax(0,1fr))"}} role="img" aria-label="Plan d'infiltration : X pisteur, G garde, R relais, E extraction, obstacles">
           {Array.from({length:54},(_,index)=>{
             const x=index%9,y=Math.floor(index/9),wall=Boolean(missionTerrain?.walls.includes(x+","+y));
-            const mark=stealth.x===x&&stealth.y===y?"X":stealth.guardX===x&&y===2?"G":x===7&&y===1?"R":x===1&&y===4?"E":wall?"▥":"·";
+            const mark=stealth.x===x&&stealth.y===y?"X":stealth.guardX===x&&y===2?"G":x===7&&y===1?"R":x===1&&y===4?"E":wall?"▥":missionTerrain?.cover.includes(x+","+y)?"▤":"·";
             return <span className={styles.cell} data-wall={wall} data-actor={mark==="X"?"ally":mark==="G"?"rival":""} key={index} title={"Case "+x+","+y}>{mark}</span>;
           })}
         </div>
-        <div className={styles.stealthControls}>{(["up","left","down","right","cloak","interact","wait","decoy"] as const).map(action=>
-          <button type="button" key={action} disabled={blocked||(action==="decoy"&&(Boolean(stealth.decoyUsed)||stealth.cloaked||stealth.energy<2))} onClick={()=>commit(commandStealthV115(worldRef.current,action,rules))}>
-            {({up:"↑ Nord",left:"← Ouest",down:"↓ Sud",right:"→ Est",cloak:stealth.cloaked?"Désactiver camouflage":"Camouflage optique",interact:"Saboter le relais",wait:"Attendre / récupérer énergie",decoy:"Diversion sonore (2 énergie)"} as Record<string,string>)[action]}</button>)}</div>
+        <div className={styles.stealthControls}>{(["up","left","down","right","cloak","interact","wait","decoy","hide"] as const).map(action=>
+          <button type="button" key={action} disabled={blocked||(action==="decoy"&&(Boolean(stealth.decoyUsed)||stealth.cloaked||stealth.energy<2))||
+              (action==="hide"&&(!missionTerrain?.cover.includes(stealth.x+","+stealth.y)||
+                (stealth.usedCoverIds??[]).includes(stealth.x+","+stealth.y)||
+                (stealth.alarm===0&&stealth.energy===5)))} onClick={()=>commit(commandStealthV115(worldRef.current,action,rules))}>
+            {({up:"↑ Nord",left:"← Ouest",down:"↓ Sud",right:"→ Est",cloak:stealth.cloaked?"Désactiver camouflage":"Camouflage optique",interact:"Saboter le relais",wait:"Attendre / récupérer énergie",decoy:"Diversion sonore (2 énergie)",hide:"Se dissimuler dans le couvert"} as Record<string,string>)[action]}</button>)}</div>
         <p className={styles.explain}>La patrouille réagit à la position et au sabotage. Le camouflage protège à distance mais possède une réserve finie ; aucune exécution déshonorante n&apos;est requise.</p>
       </div>}
 
@@ -559,6 +574,13 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
             </button>)}
           </div>}
         {order.retask&&<small className={styles.explain}>Consigne réorientée depuis {focusLabels[order.retask.oldFocus]}, sans nouvel entretien ni rapport anticipé.</small>}
+        {order.fieldSupport&&<small className={styles.explain}>Soutien de terrain V136 : {order.fieldSupport.paidRav} RAV engagés à {order.fieldSupport.allocatedAt} ; aucune victoire anticipée.</small>}
+        {!order.recall&&!order.fieldSupport&&now>=order.startedAt&&
+          2*(now-order.startedAt)<order.dueAt-order.startedAt&&
+          <button type="button" disabled={blocked||world.rav<2}
+            onClick={()=>commit(supplyWarOuterMissionV136(worldRef.current,order.id,Date.now(),rules))}>
+            Envoyer des fournitures de terrain · 2 RAV
+          </button>}
       </div>):<p>Aucune équipe actuellement déléguée.</p>}
       <button type="button" disabled={blocked||!world.outer.some(order=>now>=order.dueAt)}
         onClick={()=>commit(settleWarOuterOpsV115(worldRef.current,Date.now(),rules))}>Recevoir les rapports arrivés</button>

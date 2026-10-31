@@ -28,6 +28,7 @@ export interface WarRtsEscortV133 extends WarMapPointV128 {
 }
 export interface WarRtsIntelV133 extends WarMapPointV128 {id:string;unitId:string;lastSeenTurn:number;}
 export interface WarRtsHoldV133 {taskId:string;squadId:string;progress:number;required:number;}
+export interface WarRtsOverwatchV136 {squadId:string;expiresAt:number;}
 export interface WarRtsSquadsReceiptV133 {
  id:string;missionId:string;mapId:string;planetId:string;
  sourceCells:string[];outcome:"victory"|"defeat"|"retreat";
@@ -46,6 +47,8 @@ export interface WarRtsSquadsStateV133 {
  report:WarRtsSquadsReceiptV133|null;log:string[];lastMessage:string;
  /** Single-tick tactical suppression, never permanent intelligence or casualty. */
  suppressedEnemyIds?:string[];
+ /** V136 physical overwatch: optional expiring reaction orders per real squad. */
+ overwatch?:WarRtsOverwatchV136[];
 }
 export type WarRtsSquadOrderV133 =
  |{kind:"move";squadId:string;direction:"up"|"down"|"left"|"right"}
@@ -221,6 +224,40 @@ function updateEnemyAI(s:WarRtsSquadsStateV133):WarRtsSquadsStateV133{
  }
  return {...s,enemies,squads};
 }
+/**
+ * After enemy movement, a physically positioned watcher can take one
+ * reaction shot only at a REAL target inside its own V6 tactical range/LOS.
+ * No shot means no RAV spent. Orders expire after two ticks even if no enemy
+ * appears; firing never reveals invisible or off-planet enemies.
+ */
+function resolveOverwatchV136(s:WarRtsSquadsStateV133):{state:WarRtsSquadsStateV133;summary:string}{
+ const orders=s.overwatch??[];
+ if(!orders.length)return {state:s,summary:""};
+ let rav=s.ravRemaining;
+ const rivals=s.enemies.map(e=>({...e}));
+ const pending:WarRtsOverwatchV136[]=[];
+ const shots:string[]=[];
+ for(const watcher of orders){
+  const actor=activeSquads(s).find(unit=>unit.id===watcher.squadId);
+  if(!actor||rav<=0)continue;
+  const target=rivals.filter(e=>e.hp>0&&distance(actor,e)<=actor.range&&
+   warMapLineOfSightV128(s.map,actor,e))
+   .sort((a,b)=>distance(actor,a)-distance(actor,b)||a.id.localeCompare(b.id))[0];
+  if(!target){
+   if(s.turn<watcher.expiresAt)pending.push(watcher);
+   continue;
+  }
+  const cover=warMapTileV128(s.map,target.x,target.y)?.cover;
+  const damage=clamp(Math.ceil(actor.attack/4)-(cover?1:0),1,6);
+  target.hp=Math.max(0,target.hp-damage);
+  if(!target.hp)target.status="down";
+  rav-=1;
+  shots.push(actor.unitId+" → "+target.unitId+" ("+damage+" PV, 1 RAV)");
+ }
+ return {state:{...s,enemies:rivals,overwatch:pending,ravRemaining:rav},
+  summary:shots.length?" Veille déclenchée : "+shots.join(" ; ")+".":""};
+}
+
 function advance(s:WarRtsSquadsStateV133,narration:string):WarRtsSquadsStateV133{
  const turn=s.turn+1;
  let next:WarRtsSquadsStateV133={...s,turn};
@@ -233,6 +270,9 @@ function advance(s:WarRtsSquadsStateV133,narration:string):WarRtsSquadsStateV133
  }
  next=updateEnemyAI(next);
  next={...next,suppressedEnemyIds:[]};
+ const watch=resolveOverwatchV136(next);
+ next=watch.state;
+ narration+=watch.summary;
  next=updateEscort(next);
  if(next.tracked?.secured&&next.tracked.hp<=0)
   return close(next,"defeat","L'acteur/chargement escorté a été perdu avant l'extraction.");
@@ -279,7 +319,8 @@ export function commandWarRtsSquadsV133(s:WarRtsSquadsStateV133,order:WarRtsSqua
   if(s.squads.some(u=>u.id!==actor.id&&u.status==="active"&&at(u)===at(dest))||
      s.enemies.some(u=>u.hp>0&&at(u)===at(dest)))return fail(s,"La case est occupée.");
   const squads=s.squads.map(u=>u.id===actor.id?{...u,...dest}:u);
-  return issue(s,actor.unitName+" avance vers "+at(dest)+".",{squads});
+  return issue(s,actor.unitName+" avance vers "+at(dest)+".",{
+    squads,overwatch:(s.overwatch??[]).filter(w=>w.squadId!==actor.id)});
  }
  if(order.kind==="attack"){
   const enemy=s.enemies.find(e=>e.id===order.targetId&&e.hp>0);
@@ -292,7 +333,8 @@ export function commandWarRtsSquadsV133(s:WarRtsSquadsStateV133,order:WarRtsSqua
   const enemies=s.enemies.map(e=>e.id===enemy.id?{
    ...e,hp:Math.max(0,e.hp-damage),status:e.hp<=damage?"down" as const:"active" as const}:e);
   return issue(s,"Tir de "+actor.unitId+" sur cible visible "+enemy.id+" ("+damage+" PV, 1 RAV).",
-   {enemies,ravRemaining:s.ravRemaining-1});
+   {enemies,ravRemaining:s.ravRemaining-1,
+      overwatch:(s.overwatch??[]).filter(w=>w.squadId!==actor.id)});
  }
  if(order.kind==="observe"){
   const near=distance(actor,s.map.observation)<=2||
@@ -351,6 +393,27 @@ export function commandWarRtsSquadsV133(s:WarRtsSquadsStateV133,order:WarRtsSqua
   return accept(result,result.lastMessage);
  }
  return fail(s,"Ordre tactique invalide.");
+}
+
+/**
+ * Arm a real squad to watch its local W3 lanes for two simulation ticks.
+ * The next hostile to appear in the unit's actual LOS/range takes a normal
+ * V6-derived response shot (1 RAV), at most once. No remote attack and no
+ * RAV pre-charge when no enemy appears.
+ */
+export function commandWarRtsOverwatchV136(
+ state:WarRtsSquadsStateV133,squadId:string,
+):WarRtsSquadsUpdateV133{
+ if(state.phase!=="active"||state.report)return fail(state,"Aucune bataille RTS active.");
+ const ally=activeSquads(state).find(unit=>unit.id===squadId);
+ if(!ally)return fail(state,"Escouade de veille absente ou neutralisée.");
+ if(state.ravRemaining<1)return fail(state,"Aucun RAV disponible pour un tir de veille éventuel.");
+ if((state.overwatch??[]).some(w=>w.squadId===squadId))
+  return fail(state,"Cette escouade surveille déjà physiquement son secteur.");
+ const pending=[...(state.overwatch??[]),{squadId,expiresAt:state.turn+2}];
+ return issue(state,"Veille tactique engagée par "+ally.unitId+
+  " pour deux tours maximum, sans tir invisible ni munition prélevée à vide.",
+  {overwatch:pending});
 }
 
 /**
@@ -484,7 +547,8 @@ export function commandWarRtsRallyV134(
   const location=moves.get(u.id);return location?{...u,x:location.x,y:location.y}:u;
  });
  // One advance, even with four simultaneous orders: no hidden extra AI turns.
- const next=advance({...s,squads:nextSquads},
+ const next=advance({...s,squads:nextSquads,
+  overwatch:(s.overwatch??[]).filter(w=>!moves.has(w.squadId))},
   "Rassemblement tactique W3 "+at(target)+" : "+safeSteps.length+
   " escouade(s) déplacée(s) d'une case, "+
   (plan.blockedIds.length+unexpected)+" progression(s) bloquée(s) ou incertaines.");

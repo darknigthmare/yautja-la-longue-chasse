@@ -4,7 +4,7 @@ import type {WarRulesV6} from "./systems/clanWarBibleV6";
 import {
  createWarRtsSquadsV133,draftWarRtsSquadV133,removeWarRtsSquadV133,
  launchWarRtsSquadsV133,commandWarRtsSquadsV133,visibleWarRtsEnemiesV133,
- planWarRtsRallyV134,commandWarRtsRallyV134,commandWarRtsSuppressV135,
+ planWarRtsRallyV134,commandWarRtsRallyV134,commandWarRtsSuppressV135,commandWarRtsOverwatchV136,
  type WarRtsSquadsStateV133,type WarRtsSquadOrderV133,
 } from "./systems/clanWarRtsSquadsV133";
 import {WAR_SOURCE_RTS_IDS_V129} from "./systems/clanWarRtsSourceMissionsV129";
@@ -73,6 +73,7 @@ export default function ClanWarRtsSquadsV133({rules}:{rules:WarRulesV6}){
    <span><strong>{state.ravRemaining} / {state.initialRav}</strong><small>RAV d&apos;exercice</small></span>
    <span><strong>{state.squads.filter(u=>u.status==="active").length} / {state.squads.length}</strong><small>Détachements aptes</small></span>
    <span><strong>{state.turn}</strong><small>Ordres/tours</small></span>
+   <span><strong>{state.overwatch?.length??0}</strong><small>Veilles actives</small></span>
    <span><strong>{state.completedTaskIds.length} / 3</strong><small>Preuves d&apos;objectif</small></span>
    <span><strong>{map.id}</strong><small>{map.planetName} · {map.worldStratum}</small></span>
   </div>
@@ -178,6 +179,12 @@ export default function ClanWarRtsSquadsV133({rules}:{rules:WarRulesV6}){
        onClick={()=>action(kind)}>{({observe:"Reconnaître",interact:"Interagir",wait:"Attendre / tenir",power:"Réseau électrique",
         stabilize:"Stabiliser sas",pickup:"Reprendre charge ou escorte",extract:"Extraire tous",retreat:"Se replier"})[kind]}</button>)}
      </div>
+     <button type="button" disabled={selected.status!=="active"||state.ravRemaining<1||
+      (state.overwatch??[]).some(w=>w.squadId===selected.id)}
+      onClick={()=>apply(commandWarRtsOverwatchV136(state,selected.id))}>
+      Veille de secteur · 1 RAV seulement si tir sur une cible visible
+     </button>
+     <p className={styles.hint}>Cette veille dure au maximum deux tours. Une seule réaction, à portée et visibilité réelles ; déplacer l'équipe annule l'ordre.</p>
      <h5>Adversaires à portée du détachement</h5>
      {enemies.length===0?<p className={styles.hint}>Aucun adversaire actuellement observé.</p>:
       <div className={styles.enemyList}>{enemies.map(e=>{
