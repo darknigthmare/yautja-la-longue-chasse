@@ -6,6 +6,7 @@ import {
   gauntletUnlockedV132, normalizeGauntletV132, parseGauntletPreferenceV132,
   serializeGauntletPreferenceV132, type HunterRankV132,
 } from "./clanWarGauntletCatalogV132.ts";
+import type { GauntletCampaignV134 } from "./gauntletCampaignV134";
 
 /**
  * Shared between the ship's armory, the player's rig and clan-war screens.
@@ -18,7 +19,11 @@ const localFallback = new Map<string,string>();
 export function readHunterGauntletV133(
   storage: Pick<Storage,"getItem"> | null, hunter: string, rank: HunterRankV132,
   fallback: ReadonlyMap<string,string> = localFallback,
+  archive: GauntletCampaignV134 | null | undefined = undefined,
 ): string {
+  if (archive && archive.ownerCreatedAt === hunter) {
+    return normalizeGauntletV132(archive.equippedId,rank,archive.claimedStudies);
+  }
   const key = gauntletStorageKeyV132(hunter);
   if (fallback.has(key)) return normalizeGauntletV132(fallback.get(key),rank);
   if (storage) {
@@ -29,7 +34,7 @@ export function readHunterGauntletV133(
   return normalizeGauntletV132(fallback.get(key),rank);
 }
 
-export function useHunterGauntletV133(hunter: string, rank: HunterRankV132) {
+export function useHunterGauntletV133(hunter: string, rank: HunterRankV132, archive?: GauntletCampaignV134 | null) {
   const key = gauntletStorageKeyV132(hunter);
   const [storageWarning,setStorageWarning] = useState<string | null>(null);
 
@@ -37,8 +42,8 @@ export function useHunterGauntletV133(hunter: string, rank: HunterRankV132) {
     if (typeof window === "undefined") return DEFAULT_GAUNTLET_ID_V132;
     let storage: Storage | null = null;
     try { storage=window.localStorage; } catch { /* Browser storage denied. */ }
-    return readHunterGauntletV133(storage,hunter,rank);
-  },[hunter,rank]);
+    return readHunterGauntletV133(storage,hunter,rank,localFallback,archive);
+  },[hunter,rank,archive]);
 
   const subscribe=useCallback((notify:()=>void):(()=>void)=>{
     if (typeof window === "undefined") return () => {};
@@ -63,7 +68,7 @@ export function useHunterGauntletV133(hunter: string, rank: HunterRankV132) {
   const equippedId=useSyncExternalStore(subscribe,snapshot,()=>DEFAULT_GAUNTLET_ID_V132);
 
   const equip=useCallback((id:string):boolean=>{
-    if (!gauntletUnlockedV132(id,rank) || typeof window==="undefined") return false;
+    if (!gauntletUnlockedV132(id,rank,archive?.claimedStudies ?? []) || typeof window==="undefined") return false;
     const payload=serializeGauntletPreferenceV132(hunter,id,rank);
     try {
       window.localStorage.setItem(key,payload);
@@ -75,7 +80,7 @@ export function useHunterGauntletV133(hunter: string, rank: HunterRankV132) {
     }
     window.dispatchEvent(new CustomEvent(HUNTER_GAUNTLET_EVENT_V133,{detail:{key}}));
     return true;
-  },[hunter,key,rank]);
+  },[hunter,key,rank,archive]);
 
   return {equippedId,equip,storageWarning};
 }
