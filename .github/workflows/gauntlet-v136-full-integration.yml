@@ -1,0 +1,42 @@
+name: V136 Full Gauntlet Campaign and Build Integration
+on:
+  push:
+    branches:
+      - feat/v131-gauntlet-hologram-dual-view-20261030
+  pull_request:
+    branches:
+      - feat/v129-w3-rts24-source-objectives
+      - main
+    paths:
+      - 'app/game/**'
+      - 'app/gauntlet-qa-v135/**'
+      - 'tests/clan-war-gauntlet*.test.mjs'
+      - 'scripts/export-gauntlet*.mjs'
+      - '.github/workflows/gauntlet-v136-full-integration.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build-and-full-typecheck:
+    name: Full repository typecheck and production frontend build
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout all sources (no sparse blind spots)
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Install pinned dependency tree
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Full TypeScript graph, including GameClient, save and live scenarios
+        run: npm run typecheck
+      - name: Asset layer completeness, no false 1-to-1 certifications
+        run: node scripts/audit-gauntlet-completeness-v134.mjs outputs/gauntlet-v136
+      - name: Frontend production build
+        run: npm run build
+      - name: Sanity check real campaign persistence test bundle
+        run: node --version
