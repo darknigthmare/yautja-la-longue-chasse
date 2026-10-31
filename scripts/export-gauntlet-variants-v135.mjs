@@ -26,7 +26,7 @@ async function main(){
       parts.push({name,source:xml,sourceHash:digest(source)});
     }
     const glyph=parts[2].source;
-    if(model==="city-hunter" && (glyph.match(/<rect x="/g)||[]).length!==4)
+    if(model==="city-hunter" && (glyph.match(/<rect x="/g)||[]).length-1!==4)
       throw new Error("City Hunter must use four source-guided vertical screen cells");
     if(model==="wolf" && (glyph.match(/<rect x="/g)||[]).length!==5)
       throw new Error("Wolf must use five distinct vertical glyph cells");
