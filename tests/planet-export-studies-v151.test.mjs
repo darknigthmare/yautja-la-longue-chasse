@@ -10,6 +10,7 @@ after(()=>rm(dir,{recursive:true,force:true}));
 const bundle=await build({stdin:{contents:[
  'export {planetStudyManifestV151,planetStudyReportsV151,planetHasPhysicalReliefV151} from "./app/game/planetAssetStudiesV151";',
  'export {generateWarPlanetV115,normalizeWarPlanetRecipeV115} from "./app/game/systems/clanWarPlanetGeneratorV115";',
+ 'export {planetTerrainReportsV153} from "./app/game/planetAssetStudiesV151";',
  'export {generateWarPlanetV103,normalizeWarPlanetRecipeV103} from "./app/game/systems/clanWarPlanetGeneratorV103";',
 ].join("\n"),resolveDir:process.cwd(),loader:"ts"},bundle:true,write:false,format:"esm",platform:"node",target:"es2022",logLevel:"silent"});
 const name=join(dir,"studies.mjs");await writeFile(name,bundle.outputFiles[0].text);
@@ -26,6 +27,10 @@ test("V151 packs real V115 height-map descriptors and complete world reports wit
  assert.equal(manifest.environmentFile,"environment-study-v146.json");
  assert.equal(manifest.preflightFile,"world-preflight-v149.json");
  assert.equal(manifest.relief.heightFile,"relief-height-rg16-map.png");
+ assert.equal(manifest.terrainV153.slopePng,"terrain-slope-v152-map.png");
+ assert.equal(manifest.terrainV153.routeReportJson,"terrain-routes-v152.json");
+ // Pixel generation and actual route counts are checked in the live Chromium
+ // export, since Node does not provide the game's WebGL/Canvas environment.
  assert.equal(manifest.relief.previewFile,"relief-preview-map.png");
  assert.equal(manifest.relief.width,512);
  assert.equal(manifest.relief.maxElevationMeters,8000);
@@ -42,6 +47,7 @@ test("V103 worlds export truthful audit and environment but no fabricated measur
  }));
  assert.equal(api.planetHasPhysicalReliefV151(planet),false);
  assert.equal(api.planetStudyManifestV151(planet).relief,null);
+ assert.equal(api.planetStudyManifestV151(planet).terrainV153,null);
  assert.equal(api.planetStudyReportsV151(planet).environment.physical,null);
  assert.equal(api.planetStudyReportsV151(planet).preflight.errors,0);
 });

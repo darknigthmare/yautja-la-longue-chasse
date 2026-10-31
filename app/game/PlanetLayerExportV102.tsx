@@ -5,7 +5,9 @@ import { createPlanetLandMaskV101, createPlanetRegionalMaterialAtlasV124, drawPl
 import type { WarPlanetV96 } from "./systems/clanWarPlanetsV96";
 import { DEFAULT_PLANET_MATERIAL_SETTINGS_V101, planetMaterialRecipeV101, type PlanetMaterialLayerV101, type PlanetMaterialSettingsV101 } from "./systems/planetMaterialV101";
 import { makePlanetStoredZipV114, makePlanetStoredZipV151, type PlanetZipEntryV114 } from "./systems/planetExportZipV114";
-import { createPlanetReliefExportV151, planetHasPhysicalReliefV151, planetStudyManifestV151, planetStudyReportsV151, type PlanetReliefExportLayerV151 } from "./planetAssetStudiesV151";
+import { createPlanetReliefExportV151, planetHasPhysicalReliefV151,
+  planetStudyManifestV151, planetStudyReportsV151, planetTerrainReportsV153,
+  type PlanetReliefExportLayerV151 } from "./planetAssetStudiesV151";
 import { analyzeWarPlanetStrategyV114 } from "./systems/clanWarPlanetStrategyV114";
 import { WAR_PLANET_TEXTURE_CHANNELS_V125, type PlanetTextureChannelV125 } from "./systems/clanWarTextureLibraryV125";
 import { createPlanetTextureCanvasV130, findPlanetTextureV130, WAR_PLANET_TEXTURES_V130 } from "./systems/clanWarTextureLibraryV130";
@@ -31,7 +33,7 @@ import styles from "./PlanetLayerExportV102.module.css";
 type ExportLayer = PlanetMaterialLayerV101 | "mask" | "region-index" | "regional-atlas" | "lake-mask" | "river-mask" | PlanetReliefExportLayerV151;
 type ExportProjection = "map" | "globe" | "atlas";
 const isMapOnlyLayer = (value: ExportLayer) =>
-  value === "mask" || value === "region-index" || value === "lake-mask" || value === "river-mask" || value === "regional-atlas" || value === "relief-height-rg16" || value === "relief-preview";
+  value === "mask" || value === "region-index" || value === "lake-mask" || value === "river-mask" || value === "regional-atlas" || value === "relief-height-rg16" || value === "relief-preview" || value === "terrain-slope-v152";
 const layerNames: Record<ExportLayer, string> = {
   composite: "Planète assemblée", albedo: "Couleurs sans éclairage", land: "Terres et biomes",
   surface: "Surface entre les terres", clouds: "Nuages", weather: "Brumes et particules",
@@ -43,6 +45,7 @@ const layerNames: Record<ExportLayer, string> = {
   "river-mask": "Cheneaux et cours intérieurs indépendants",
   "relief-height-rg16": "Altitude terrestre RG16 (V150, 512 × 256)",
   "relief-preview": "Altitudes colorées (V150, 512 × 256)",
+  "terrain-slope-v152": "Pentes et passages (V152, 512 × 256)",
 };
 
 function encodePng(canvas: HTMLCanvasElement): Promise<Blob> {
@@ -58,7 +61,7 @@ async function renderExportCanvasV124(
   settings: PlanetMaterialSettingsV101, signal: AbortSignal,
 ): Promise<{ canvas: HTMLCanvasElement; projection: ExportProjection }> {
   if (signal.aborted) throw new Error("Export annulé.");
-  if (layer === "relief-height-rg16" || layer === "relief-preview")
+  if (layer === "relief-height-rg16" || layer === "relief-preview" || layer === "terrain-slope-v152")
     return { canvas: createPlanetReliefExportV151(planet, layer), projection: "map" };
   if (layer === "region-index") return { canvas: createPlanetRegionIndexMaskV124(planet), projection: "map" };
   if (layer === "lake-mask" || layer === "river-mask")
@@ -195,7 +198,7 @@ export default function PlanetLayerExportV102({ planet, onApplyVisualProfile }: 
     .filter(value => value !== "emissive" || recipe.emission > 0)
     .filter(value => value !== "lake-mask" || inland.some(item => item.kind === "lake"))
     .filter(value => value !== "river-mask" || inland.some(item => item.kind === "river"))
-    .filter(value => (value !== "relief-height-rg16" && value !== "relief-preview") || planetHasPhysicalReliefV151(planet));
+    .filter(value => (value !== "relief-height-rg16" && value !== "relief-preview" && value !== "terrain-slope-v152") || planetHasPhysicalReliefV151(planet));
 
 
   const exportLayer = async () => {
@@ -251,6 +254,12 @@ export default function PlanetLayerExportV102({ planet, onApplyVisualProfile }: 
         bytes:encoder.encode(JSON.stringify(reports.environment,null,2)+"\n")});
       entries.push({name:studies.preflightFile,
         bytes:encoder.encode(JSON.stringify(reports.preflight,null,2)+"\n")});
+      if(studies.terrainV153){
+        const routeStudy=planetTerrainReportsV153(planet);
+        if(!routeStudy)throw new Error("Étude des routes sans relief physique.");
+        entries.push({name:studies.terrainV153.routeReportJson,
+          bytes:encoder.encode(JSON.stringify(routeStudy,null,2)+"\n")});
+      }
       if (controller.signal.aborted) return;
       const manifest = {
         format: "yautja-planet-layer-pack", version: 124,

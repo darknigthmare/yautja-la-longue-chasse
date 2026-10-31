@@ -197,6 +197,19 @@ try {
   const heightMeta = await sharp(files.get(studies.relief.heightFile)).metadata();
   check("V151 physically-scaled RG16 export is a true 512x256 PNG in the ZIP",
     heightMeta.width===512 && heightMeta.height===256 && heightMeta.format==="png");
+  check("V153 terrain study adds gradient PNG and actual-route JSON without removing V151 files",
+    studies?.terrainV153?.slopePng==="terrain-slope-v152-map.png" &&
+    studies?.terrainV153?.routeReportJson==="terrain-routes-v152.json" &&
+    files.has(studies.terrainV153.slopePng) &&
+    files.has(studies.terrainV153.routeReportJson));
+  const terrainRoutes=JSON.parse(files.get(studies.terrainV153.routeReportJson)?.toString("utf8") ?? "null");
+  check("V153 ZIP route study remains bound to actual planet and contains only read-only grade samples",
+    terrainRoutes?.worldCode===planetCode && terrainRoutes.version===152 &&
+    terrainRoutes.routes?.length>0 &&
+    terrainRoutes.routes.every(route=>route.samples===route.landSamples+route.nonLandSamples));
+  const terrainPng=await sharp(files.get(studies.terrainV153.slopePng)).metadata();
+  check("V153 pentes physically preserve the 512x256 dry-land atlas",
+    terrainPng.width===512 && terrainPng.height===256);
   check("V124 ZIP keeps the canonical world code", manifest?.version === 124 && manifest.code === planetCode);
   check("V124 manifest maps actual region indices to texture tiles", manifest.modularMasks?.regions?.length >= 3
     && manifest.modularMasks.regions.every((region, index) => region.redValue === index + 1));
