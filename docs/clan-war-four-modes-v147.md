@@ -27,7 +27,11 @@ Le banc `scripts/qa-clan-war-four-modes-v147.mjs` utilise les vrais composants `
 
 Deux scénarios additionnels ont réussi : un mouvement réel d'infiltration après reprise incrémente l'horloge de la même archive, et le changement cosmétique du gauntlet pour Wolf **n'altère pas un seul octet JSON de l'exercice**. Une sentinelle `SaveGame` externe reste inchangée.
 
-Le premier run V147 ci-dessus affichait un échec de workflow **uniquement parce que l'Excel V147 n'avait pas encore été commité au moment de son checkout** : le log confirme que les épreuves du moteur et Chromium ont abouti avant l'étape ZIP. Les run(s) postérieurs comportant l'Excel sont à relire séparément pour la validation intégrale du workflow. Ne pas confondre un test Chrome vert avec une CI complète verte.
+**Workflow V147 intégralement réussi sur le commit incluant l'Excel :**
+[run 41253491525](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41253491525).
+Le journal confirme **19 tests métier PASS, 0 FAIL, quatre lancements et quatre reprises d'opérations V115 en vrai Chrome, zéro erreur de page**. L'archive XLSX de cinq feuilles est également vérifiée.
+
+La première exécution avait échoué à son étape ZIP parce que le classeur n'avait pas encore été commité, malgré le succès des tests. Cet écart de distribution a été corrigé. [Captures Chrome et rapport structuré](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41253491525/artifacts/13062102997).
 
 ### Suivi Excel
 
