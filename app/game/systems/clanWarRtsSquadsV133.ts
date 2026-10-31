@@ -29,6 +29,7 @@ export interface WarRtsEscortV133 extends WarMapPointV128 {
 export interface WarRtsIntelV133 extends WarMapPointV128 {id:string;unitId:string;lastSeenTurn:number;}
 export interface WarRtsHoldV133 {taskId:string;squadId:string;progress:number;required:number;}
 export interface WarRtsOverwatchV136 {squadId:string;expiresAt:number;}
+export interface WarRtsBraceV137 {squadId:string;expiresAt:number;}
 export interface WarRtsSquadsReceiptV133 {
  id:string;missionId:string;mapId:string;planetId:string;
  sourceCells:string[];outcome:"victory"|"defeat"|"retreat";
@@ -49,6 +50,8 @@ export interface WarRtsSquadsStateV133 {
  suppressedEnemyIds?:string[];
  /** V136 physical overwatch: optional expiring reaction orders per real squad. */
  overwatch?:WarRtsOverwatchV136[];
+ /** One physical cover stance per squad per mission, never a permanent buff. */
+ brace?:WarRtsBraceV137[];braceIssuedIds?:string[];
 }
 export type WarRtsSquadOrderV133 =
  |{kind:"move";squadId:string;direction:"up"|"down"|"left"|"right"}
@@ -211,7 +214,8 @@ function updateEnemyAI(s:WarRtsSquadsStateV133):WarRtsSquadsStateV133{
   const unit=s.mission.opponentUnitIds.includes(enemy.unitId)?enemy.unitId:null;
   const range=unit?2:1;
   if(distance(enemy,target)<=range){
-   const damage=Math.max(1,2-(def?.cover?1:0));
+   const braced=(s.brace??[]).some(item=>item.squadId===target.id&&item.expiresAt>=s.turn);
+   const damage=Math.max(0,2-(def?.cover?1:0)-(braced?1:0));
    target.hp=Math.max(0,target.hp-damage);
    if(target.hp===0)target.status="down";
   }else{
@@ -269,7 +273,7 @@ function advance(s:WarRtsSquadsStateV133,narration:string):WarRtsSquadsStateV133
   })};
  }
  next=updateEnemyAI(next);
- next={...next,suppressedEnemyIds:[]};
+ next={...next,suppressedEnemyIds:[],brace:(next.brace??[]).filter(b=>b.expiresAt>turn)};
  const watch=resolveOverwatchV136(next);
  next=watch.state;
  narration+=watch.summary;
@@ -320,7 +324,8 @@ export function commandWarRtsSquadsV133(s:WarRtsSquadsStateV133,order:WarRtsSqua
      s.enemies.some(u=>u.hp>0&&at(u)===at(dest)))return fail(s,"La case est occupée.");
   const squads=s.squads.map(u=>u.id===actor.id?{...u,...dest}:u);
   return issue(s,actor.unitName+" avance vers "+at(dest)+".",{
-    squads,overwatch:(s.overwatch??[]).filter(w=>w.squadId!==actor.id)});
+    squads,overwatch:(s.overwatch??[]).filter(w=>w.squadId!==actor.id),
+     brace:(s.brace??[]).filter(b=>b.squadId!==actor.id)});
  }
  if(order.kind==="attack"){
   const enemy=s.enemies.find(e=>e.id===order.targetId&&e.hp>0);
@@ -393,6 +398,31 @@ export function commandWarRtsSquadsV133(s:WarRtsSquadsStateV133,order:WarRtsSqua
   return accept(result,result.lastMessage);
  }
  return fail(s,"Ordre tactique invalide.");
+}
+
+/**
+ * V137: prepare the selected real detachment behind an existing cover tile.
+ * Grants at most one damage reduction for two enemy-response ticks; command
+ * itself consumes a full turn. Can only be issued once per squad, is lost
+ * by moving/rallying, and does not create health, RAV or campaign XP.
+ */
+export function commandWarRtsBraceV137(
+ state:WarRtsSquadsStateV133,squadId:string,
+):WarRtsSquadsUpdateV133 {
+ if(state.phase!=="active"||state.report)return fail(state,"Aucune bataille RTS active.");
+ const unit=activeSquads(state).find(u=>u.id===squadId);
+ if(!unit)return fail(state,"Détachement indisponible pour la défense.");
+ if(!warMapTileV128(state.map,unit.x,unit.y)?.cover)
+  return fail(state,"Le groupe doit se placer sur une vraie case de couvert W3.");
+ if((state.braceIssuedIds??[]).includes(squadId))
+  return fail(state,"Chaque formation ne peut se retrancher qu'une fois durant ce mandat.");
+ if((state.overwatch??[]).some(order=>order.squadId===squadId))
+  return fail(state,"La formation doit arrêter sa veille de tir avant de se retrancher.");
+ const duration={squadId,expiresAt:state.turn+2};
+ const next=advance({...state,brace:[...(state.brace??[]),duration],
+   braceIssuedIds:[...(state.braceIssuedIds??[]),squadId]},
+   "Formation "+unit.unitId+" en couvert réel pour deux réactions adverses, sans bonus de vie ni RAV.");
+ return accept(next,next.lastMessage);
 }
 
 /**
@@ -548,7 +578,8 @@ export function commandWarRtsRallyV134(
  });
  // One advance, even with four simultaneous orders: no hidden extra AI turns.
  const next=advance({...s,squads:nextSquads,
-  overwatch:(s.overwatch??[]).filter(w=>!moves.has(w.squadId))},
+  overwatch:(s.overwatch??[]).filter(w=>!moves.has(w.squadId)),
+  brace:(s.brace??[]).filter(b=>!moves.has(b.squadId))},
   "Rassemblement tactique W3 "+at(target)+" : "+safeSteps.length+
   " escouade(s) déplacée(s) d'une case, "+
   (plan.blockedIds.length+unexpected)+" progression(s) bloquée(s) ou incertaines.");
