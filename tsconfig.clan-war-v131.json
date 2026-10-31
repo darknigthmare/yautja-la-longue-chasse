@@ -13,7 +13,19 @@
     "app/game/systems/clanWarGauntletCatalogV132.ts",
     "app/game/systems/useHunterGauntletV133.ts",
     "app/game/systems/gauntletCampaignV134.ts",
+    "app/game/systems/gauntletRigSpritesV139.ts",
     "app/game/data/clanWarGauntletCatalogV132.json"
   ],
   "exclude": ["node_modules"]
 }
+      - name: Verify all 54 individual arm-mounted gauntlet modules
+        run: node scripts/build-gauntlet-rig-v139.mjs --check
+      - name: Export alpha PNGs for 54 rig shells and 54 hinged lids
+        run: node scripts/build-gauntlet-rig-v139.mjs --png outputs/gauntlet-v139-rig
+      - name: Preserve rig registration atlas for pose/film review
+        uses: actions/upload-artifact@v4
+        with:
+          name: yautja-54-rig-wrist-modules-v139-original-blockouts
+          path: outputs/gauntlet-v139-rig/
+          retention-days: 30
+          if-no-files-found: error
