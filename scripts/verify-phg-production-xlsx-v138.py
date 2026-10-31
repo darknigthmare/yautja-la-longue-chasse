@@ -123,7 +123,13 @@ def workbook_info(data: bytes, name: str, label: str, minimum: int) -> dict:
                         tasks[value]=ref
             insist(len(tasks)==389,
                    f"Expected 389 distinct V137 backlog tickets, found {len(tasks)}")
+            old_ids={key for key in tasks if key.startswith("B136-")}
+            new_ids={key for key in tasks if key.startswith("B137-")}
+            insist(len(old_ids)==383 and new_ids=={
+                f"B137-{number:04d}" for number in range(384,390)
+            }, "V137 6 official-source gaps are absent or overwritten")
             result["backlog_count"]=len(tasks)
+            result["new_official_gaps"]=len(new_ids)
             result["backlog_ids"]=list(tasks)
         return result
 
