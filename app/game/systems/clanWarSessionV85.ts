@@ -217,7 +217,7 @@ export function createWarSessionV85(getStorage: () => WarSessionStorageV85 | nul
     }).finally(() => { snapshot = { ...snapshot, pendingWrites: snapshot.pendingWrites - 1 }; emit(); });
   }
   function update<K extends Kind>(kind: K, value: Update<WarSessionSnapshotV85[K]>) {
-    if (!kinds.includes(kind)) return;
+    if (!kinds.includes(kind) || (kind==="simulation" && snapshot.staleWar)) return;
     hydrate();
     if (!snapshot.loaded) { tail = tail.then(() => { update(kind, value); }); return; }
     const next = typeof value === "function" ? (value as (current: WarSessionSnapshotV85[K]) => WarSessionSnapshotV85[K])(snapshot[kind]) : value;
@@ -229,7 +229,7 @@ export function createWarSessionV85(getStorage: () => WarSessionStorageV85 | nul
     enqueue(kind); emit();
   }
   function unlock(kind: "simulation" | "canyon") {
-    if (!kinds.includes(kind)) return;
+    if (!kinds.includes(kind) || (kind==="simulation" && snapshot.staleWar)) return;
     hydrate();
     if (!snapshot.loaded) { tail = tail.then(() => { unlock(kind); }); return; }
     enqueue(kind, true); emit();
