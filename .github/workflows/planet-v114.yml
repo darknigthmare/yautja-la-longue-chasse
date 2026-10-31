@@ -65,6 +65,7 @@ jobs:
           tests/planet-surface-fallback-v135.test.mjs
           tests/planet-war-atlas-visual-v142.test.mjs
           tests/planet-render-identity-v143.test.mjs
+          tests/planet-random-generator-v144.test.mjs
           tests/planet-surface-budget-v136.test.mjs
           tests/planet-shape-library-v137.test.mjs
           tests/planet-projection-parity-v138.test.mjs
@@ -104,6 +105,7 @@ jobs:
           app/game/systems/clanWarShapeLibraryV137.ts
           app/game/systems/clanWarAtlasVisualV142.ts
           app/game/systems/planetRenderSignatureV143.ts
+          app/game/systems/clanWarPlanetDraftRandomV144.ts
           app/game/systems/planetProjectionParityV138.ts
           app/game/systems/clanWarPlanetTopologyAdvisorV139.ts
 
@@ -129,6 +131,7 @@ jobs:
             /public/game/assets/v15/trophies/manifest.json
             /scripts/qa-planet-modular-export-v124.mjs
             /scripts/qa-planet-region-kit-v128.mjs
+            /scripts/qa-planet-random-v144.mjs
             /package.json
             /package-lock.json
             /next.config.ts
@@ -153,6 +156,7 @@ jobs:
           curl --fail --silent http://127.0.0.1:3101/planet-generator-v103 > /dev/null || { cat /tmp/yautja-planet-v124-next.log; exit 1; }
           node scripts/qa-planet-modular-export-v124.mjs
           node scripts/qa-planet-region-kit-v128.mjs
+          node scripts/qa-planet-random-v144.mjs
       - name: Upload V124 browser PNG, ZIP, screenshots and report
         if: ${{ always() }}
         uses: actions/upload-artifact@v4
@@ -161,5 +165,6 @@ jobs:
           path: |
             outputs/qa-planet-modular-v124/
             outputs/qa-planet-regional-kit-v128/
+          outputs/qa-planet-random-v144/
           retention-days: 7
           if-no-files-found: ignore
