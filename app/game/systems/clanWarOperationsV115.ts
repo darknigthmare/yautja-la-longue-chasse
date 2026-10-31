@@ -29,6 +29,7 @@ export interface WarAssaultV115 {
   holdIssuedIds?: string[]; heldUntil?: Record<string,number>;
   /** V137 live retreat: a withdrawn participant cannot redeploy in this match. */
   extractedIds?: string[];
+  surgeIssuedIds?: string[];
 }
 export interface WarStealthV115 { x: number; y: number; guardX: number; guardDirection: -1 | 1; alarm: number; cloaked: boolean; energy: number; sabotaged: boolean;
   /** V135 sound diversion at the hunter's physical position; no canonical device assumed. */
@@ -36,6 +37,9 @@ export interface WarStealthV115 { x: number; y: number; guardX: number; guardDir
   usedCoverIds?: string[];
   /** V137: real one-cell steps into authored cover; two per mission. */
   silentStepsUsed?: number;
+  /** One-turn proximity acoustic bearing, not a visible enemy location. */
+  acousticUsed?: number;heardBearing?: "est"|"ouest"|"proche";
+  heardAtTick?: number;
 }
 export interface WarRtsOrderV115 { x: number; y: number; kind: "advance" | "hold" | "attack" }
 export interface WarRtsV115 {
@@ -58,6 +62,8 @@ export interface WarOuterMissionV115 {
   fieldSupport?: {allocatedAt:number;paidRav:2};
   /** A physical scouting halt extends the return deadline, never gives instant intel. */
   reconHalt?: {orderedAt:number;originalDueAt:number;extraMs:15000};
+  fieldSignal?: {transmittedAt:number;assessment:"voie-stable"|"terrain-expose"|"transit-complexe";
+    passages:number;fitMembers:number};
 }
 export interface WarMissionReportV115 {
   id: string; mode: WarMissionModeV115; focus: OuterFocusV115 | null;
@@ -443,19 +449,27 @@ export function stepAssaultV115(state:WarOperationsStateV115,rules:WarRulesV6):W
   }
   return accept(advanced,"La bataille latérale progresse.");
 }
-export type StealthCommandV115 = "up"|"down"|"left"|"right"|"cloak"|"interact"|"wait"|"decoy"|"hide"|"cover-up"|"cover-down"|"cover-left"|"cover-right";
+export type StealthCommandV115 = "up"|"down"|"left"|"right"|"cloak"|"interact"|"wait"|"decoy"|"hide"|"listen"|"cover-up"|"cover-down"|"cover-left"|"cover-right";
 export function commandStealthV115(state:WarOperationsStateV115,command:StealthCommandV115,rules:WarRulesV6):WarOperationsUpdateV115 {
  const mission=state.active, stealth=mission?.stealth;
  if(mission?.mode!=="stealth" || !stealth)return reject(state,"Aucune infiltration active.");
  if(state.sourceSha!==rules.metadata.sha256)return reject(state,"Bible de l'infiltration incompatible.");
- if(!["up","down","left","right","cloak","interact","wait","decoy","hide","cover-up","cover-down","cover-left","cover-right"].includes(command))
+ if(!["up","down","left","right","cloak","interact","wait","decoy","hide","listen","cover-up","cover-down","cover-left","cover-right"].includes(command))
   return reject(state,"Action inconnue.");
  const terrain=warMissionTerrainV116(mission.targetId,rules);
  let {x,y,cloaked,energy,alarm,sabotaged,guardX,guardDirection}=stealth;
  let decoyX=stealth.decoyX,decoyTurns=stealth.decoyTurns??0,decoyUsed=stealth.decoyUsed??false;
  let usedCoverIds=[...(stealth.usedCoverIds??[])];
  let silentStepsUsed=stealth.silentStepsUsed??0;
+ let acousticUsed=stealth.acousticUsed??0;
+ let heardBearing=stealth.heardBearing,heardAtTick=stealth.heardAtTick;
  const quietMovement=command.startsWith("cover-");
+ if(command==="listen"){
+  if(!terrain.cover.includes(coord(x,y))||cloaked||energy<1||acousticUsed>=2||
+    distance({x,y},{x:guardX,y:2})>5)
+   return reject(state,"Écoute refusée : couvert réel, patrouille à portée acoustique, batterie et limite de deux usages.");
+  acousticUsed++;energy--;
+ }
  if(command==="hide"){
   const cover=coord(x,y);
   if(!terrain.cover.includes(cover))
@@ -478,7 +492,7 @@ export function commandStealthV115(state:WarOperationsStateV115,command:StealthC
   if(distance({x,y},terrain.relay)>1||sabotaged)
    return reject(state,"Atteignez le relais non désactivé avant de le saboter.");
   sabotaged=true;cloaked=false;
- }else if(command!=="wait"&&command!=="hide"){
+ }else if(command!=="wait"&&command!=="hide"&&command!=="listen"){
   const direction=quietMovement?command.slice(6):command;
   const dx=direction==="right"?1:direction==="left"?-1:0,
     dy=direction==="down"?1:direction==="up"?-1:0;
@@ -510,6 +524,12 @@ export function commandStealthV115(state:WarOperationsStateV115,command:StealthC
  const seen=!cloaked&&!hiding&&((y===2&&Math.abs(x-guardX)<=2)||(x===guardX&&Math.abs(y-2)<=1))&&
   warTerrainLineOfSightV116(terrain,{x:guardX,y:2},{x,y});
  if(seen||command==="interact")alarm++;
+ if(command==="listen"){
+  // Direction is coarse relative bearing only. No guard x-coordinate,
+  // opponent ID, camera reveal or cross-planet information enters the record.
+  heardBearing=guardX>x+1?"est":guardX<x-1?"ouest":"proche";
+  heardAtTick=mission.tick+1;
+ }
  // Quiet waiting replenishes the existing cloak battery only while actually
  // concealed: no free energy from an alarmed/visible hunter.
  if(command==="wait"&&!cloaked&&!seen)energy=Math.min(5,energy+1);
@@ -518,7 +538,7 @@ export function commandStealthV115(state:WarOperationsStateV115,command:StealthC
   energy=Math.min(5,energy+1);
  }
  const nextStealth={x,y,guardX,guardDirection,alarm,cloaked,energy,sabotaged,
-  decoyX,decoyTurns,decoyUsed,usedCoverIds,silentStepsUsed};
+  decoyX,decoyTurns,decoyUsed,usedCoverIds,silentStepsUsed,acousticUsed,heardBearing,heardAtTick};
  const advanced={...state,clock:state.clock+1,active:{...mission,tick:mission.tick+1,stealth:nextStealth}};
  if(alarm>=3)return accept(recordOutcome(advanced,mission.id,"stealth",null,mission.targetId,mission.teamIds,"defeat",mission.teamIds.slice(0,1),rules,
   "Patrouille alertée : extraction abandonnée."),"Infiltration compromise.");
@@ -527,7 +547,8 @@ export function commandStealthV115(state:WarOperationsStateV115,command:StealthC
    "Relais désactivé et pisteur extrait ; renseignement et sabotage consignés."),"Extraction confirmée.");
  if(mission.tick>=65)return accept(recordOutcome(advanced,mission.id,"stealth",null,mission.targetId,mission.teamIds,"defeat",[],rules,
   "Fenêtre d'infiltration expirée."),"Mission interrompue par la durée de l'exercice.");
- return accept(advanced,quietMovement?"Déplacement protégé d’une case vers un couvert existant, contre 1 énergie.":
+ return accept(advanced,command==="listen"?"Écoute locale : présence de la patrouille "+heardBearing+" ; aucune position exacte révélée.":
+  quietMovement?"Déplacement protégé d’une case vers un couvert existant, contre 1 énergie.":
   command==="hide"?"Position prise derrière un vrai couvert ; alerte et batterie ajustées hors regard adverse.":
   command==="decoy"?"Diversion sonore déposée physiquement : la patrouille réagit pendant trois décisions.":
   command==="wait"?"Observation et attente : camouflage rechargé uniquement hors du regard adverse.":
@@ -751,6 +772,9 @@ export function simulateWarOuterMissionV115(
   const baseThreat=Math.max(8,territory.terrainDefense+order.routeIds.length*2);
   const threshold=order.focus==="recon"?Math.round(baseThreat*.7):order.focus==="escort"?Math.round(baseThreat*.9):baseThreat;
   const engagementLog=[
+    ...(order.fieldSignal?["Bulletin V138 : "+order.fieldSignal.assessment+
+      " · "+order.fieldSignal.passages+" passages connus · "+order.fieldSignal.fitMembers+
+      " aptes ; aucune prédiction de victoire."]:[]),
     ...(order.retask?["Réorientation V135 : "+order.retask.oldFocus+" → "+order.focus+" à "+order.retask.changedAt+" ; aucun coût ou résultat anticipé."]:[]),
     ...(order.fieldSupport?["Soutien V136 : 2 RAV réels engagés à "+order.fieldSupport.allocatedAt+
       " ; +4 capacité de terrain sur ce mandat uniquement."]:[]),
@@ -884,6 +908,17 @@ export function readWarOperationsV115(raw:string,rules:WarRulesV6):WarOperations
     if(v.outer.some(order=>!isTextId(order.id)||!sites.has(order.targetId)||!Array.isArray(order.teamIds)||
       !order.teamIds.length||order.teamIds.some(id=>!ownTeam(v,id))||!Number.isSafeInteger(order.dueAt)||
       !Number.isSafeInteger(order.startedAt)||order.startedAt<0||order.dueAt<=order.startedAt||order.dueAt-order.startedAt>86400000||
+      (order.fieldSignal!==undefined&&(!order.fieldSignal||
+        typeof order.fieldSignal!=="object"||
+        !Number.isSafeInteger(order.fieldSignal.transmittedAt)||
+        order.fieldSignal.transmittedAt<order.startedAt+
+          Math.ceil(((order.reconHalt?.originalDueAt??order.dueAt)-order.startedAt)/2)||
+        order.fieldSignal.transmittedAt>=order.dueAt||
+        !["voie-stable","terrain-expose","transit-complexe"].includes(order.fieldSignal.assessment)||
+        !Number.isInteger(order.fieldSignal.passages)||
+        order.fieldSignal.passages!==order.routeIds.length||
+        !Number.isInteger(order.fieldSignal.fitMembers)||
+        order.fieldSignal.fitMembers<=0||order.fieldSignal.fitMembers>128))||
       (order.reconHalt!==undefined&&(!order.reconHalt||typeof order.reconHalt!=="object"||
         order.reconHalt.extraMs!==15000||
         !Number.isSafeInteger(order.reconHalt.orderedAt)||
@@ -938,6 +973,9 @@ export function readWarOperationsV115(raw:string,rules:WarRulesV6):WarOperations
         !Array.isArray(a.fortifiedIds??[])||
         !Array.isArray(a.holdIssuedIds??[])||
         !Array.isArray(a.extractedIds??[])||
+        !Array.isArray(a.surgeIssuedIds??[])||
+        (a.surgeIssuedIds??[]).some(id=>!a.launched.includes(id))||
+        unique(a.surgeIssuedIds??[]).length!==(a.surgeIssuedIds??[]).length||
         (a.extractedIds??[]).some(id=>!a.launched.includes(id)||a.fallen.includes(id)||
           a.actors.some(actor=>actor.teamId===id&&actor.side==="ally"))||
         unique(a.extractedIds??[]).length!==(a.extractedIds??[]).length||
@@ -972,6 +1010,15 @@ export function readWarOperationsV115(raw:string,rules:WarRulesV6):WarOperations
         (v1.decoyUsed!==undefined&&typeof v1.decoyUsed!=="boolean")||
         (v1.decoyX!==undefined&&(!Number.isInteger(v1.decoyX)||v1.decoyX<0||v1.decoyX>8))||
         (v1.decoyTurns!==undefined&&(!Number.isInteger(v1.decoyTurns)||v1.decoyTurns<0||v1.decoyTurns>3))||
+        (v1.acousticUsed!==undefined&&(!Number.isInteger(v1.acousticUsed)||
+           v1.acousticUsed<0||v1.acousticUsed>2))||
+        (v1.heardBearing!==undefined&&(!["est","ouest","proche"].includes(v1.heardBearing)||
+           v1.acousticUsed===0||
+           !Number.isInteger(v1.heardAtTick)||v1.heardAtTick<1||
+           v1.heardAtTick>active.tick))||
+        (v1.heardAtTick!==undefined&&(!Number.isInteger(v1.heardAtTick)||
+           v1.heardAtTick<1||v1.heardAtTick>active.tick||
+           v1.heardBearing===undefined))||
         (v1.silentStepsUsed!==undefined&&(!Number.isInteger(v1.silentStepsUsed)||
            v1.silentStepsUsed<0||v1.silentStepsUsed>2))||
         (v1.usedCoverIds!==undefined&&(!Array.isArray(v1.usedCoverIds)||

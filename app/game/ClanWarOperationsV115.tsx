@@ -21,6 +21,10 @@ import {
 import {reinforceWarAssaultLineV135,redirectWarOuterOpsV135} from "./systems/clanWarParallelModesV135";
 import {orderWarAssaultHoldV136,supplyWarOuterMissionV136} from "./systems/clanWarParallelModesV136";
 import {withdrawWarAssaultSquadV137,orderWarOuterReconHaltV137} from "./systems/clanWarParallelModesV137";
+import {
+ commandWarAssaultSurgeV138,requestWarOuterSignalV138,
+ warStealthGuardVisibleV138,warStealthSoundBearingV138,
+} from "./systems/clanWarParallelModesV138";
 import styles from "./ClanWarOperationsV115.module.css";
 
 const modeLabels: Record<WarMissionModeV115, string> = {
@@ -202,6 +206,8 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
   const stealth=current?.mode==="stealth"?current.stealth:undefined;
   const rts=current?.mode==="rts"?current.rts:undefined;
   const missionTerrain=current?warMissionTerrainV116(current.targetId,rules):null;
+  const guardVisible=Boolean(stealth&&missionTerrain&&warStealthGuardVisibleV138(stealth,missionTerrain));
+  const soundBearing=stealth?warStealthSoundBearingV138(stealth,current?.tick??0):null;
   const available=world.teams.filter(team=>!world.assignments[team.id] && team.members.some(member=>member.status==="fit"));
   const teamsById=(teamId:string)=>rules.units.find(unit=>unit.id===world.teams.find(team=>team.id===teamId)?.unitId)?.name ?? teamId;
 
@@ -435,27 +441,43 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
            {teamsById(id)} · évacuer vivant (10 AP){withdrawn?" · extrait":""}
           </button>;
         })}</div>
+        <div className={styles.cards}>{current.teamIds.filter(id=>assault.launched.includes(id)).map(id=>{
+          const actor=assault.actors.find(a=>a.teamId===id&&a.side==="ally"&&a.hp>0);
+          const used=(assault.surgeIssuedIds??[]).includes(id);
+          const locked=(assault.heldUntil?.[id]??0)>current.tick;
+          return <button type="button" key={"surge-"+id}
+           disabled={blocked||!actor||used||locked||assault.ap<12||actor.x>=93}
+           onClick={()=>commit(commandWarAssaultSurgeV138(worldRef.current,id,rules))}>
+           {teamsById(id)} · percée sur la ligne (12 AP){used?" · utilisée":""}
+          </button>;
+        })}</div>
+        <p className={styles.explain}>V138 : accélération d&apos;une seule formation dans sa propre voie latérale. Elle ne peut ni traverser l&apos;ennemi ni sauter jusqu&apos;au bastion sans progression visible.</p>
         <p className={styles.explain}>Un soldat déjà déployé doit revenir près du bastion pour être extrait. Son identité reste réservée et il ne peut pas être redéployé gratuitement pendant cette bataille.</p>
         <p className={styles.explain}>Action coordonnée limitée à une fois par détachement survivant, uniquement si une cible adverse se trouve dans sa portée V6. Aucun nouveau projectile ou équipement n&apos;est créé.</p>
         <p className={styles.explain}>Art temporaire schématique : aucun sprite de film ou de Predator: Hunting Grounds n&apos;est faussement déclaré intégré.</p>
       </div>}
 
       {stealth && <div>
-        <p>Rejoindre le relais (7,1), le désactiver, puis rejoindre l&apos;extraction (1,4). Alerte <strong>{stealth.alarm}/3</strong> · énergie de camouflage <strong>{stealth.energy}/5</strong> · relais <strong>{stealth.sabotaged?"neutralisé":"actif"}</strong> · diversion <strong>{stealth.decoyUsed?"épuisée": "disponible"}</strong> · écho sonore <strong>{stealth.decoyTurns??0} tour(s)</strong> · couverts utilisés <strong>{(stealth.usedCoverIds??[]).length}/{missionTerrain?.cover.length??0}</strong>.</p>
+        <p>Rejoindre le relais (7,1), le désactiver, puis rejoindre l&apos;extraction (1,4). Alerte <strong>{stealth.alarm}/3</strong> · énergie de camouflage <strong>{stealth.energy}/5</strong> · relais <strong>{stealth.sabotaged?"neutralisé":"actif"}</strong> · diversion <strong>{stealth.decoyUsed?"épuisée": "disponible"}</strong> · écho sonore <strong>{stealth.decoyTurns??0} tour(s)</strong> · couverts utilisés <strong>{(stealth.usedCoverIds??[]).length}/{missionTerrain?.cover.length??0}</strong> · écoutes <strong>{stealth.acousticUsed??0}/2</strong>.</p>
         <p className={styles.explain}>Terrain régional : {missionTerrain?.title} · {missionTerrain?.ground} · obstacle : {missionTerrain?.wallLabel}.</p>
-        <div className={styles.grid} style={{gridTemplateColumns:"repeat(9,minmax(0,1fr))"}} role="img" aria-label="Plan d'infiltration : X pisteur, G garde, R relais, E extraction, obstacles">
+        <p className={styles.explain}>Patrouille : {guardVisible?"visible à portée réelle":
+          soundBearing?("bruit perçu vers "+soundBearing+" · position exacte inconnue"):
+          "hors du champ de perception ; aucune position exacte affichée"}.</p>
+        <div className={styles.grid} style={{gridTemplateColumns:"repeat(9,minmax(0,1fr))"}} role="img" aria-label="Plan d'infiltration : X pisteur, G uniquement si visible, R relais, E extraction et obstacles">
           {Array.from({length:54},(_,index)=>{
             const x=index%9,y=Math.floor(index/9),wall=Boolean(missionTerrain?.walls.includes(x+","+y));
-            const mark=stealth.x===x&&stealth.y===y?"X":stealth.guardX===x&&y===2?"G":x===7&&y===1?"R":x===1&&y===4?"E":wall?"▥":missionTerrain?.cover.includes(x+","+y)?"▤":"·";
+            const mark=stealth.x===x&&stealth.y===y?"X":guardVisible&&stealth.guardX===x&&y===2?"G":x===7&&y===1?"R":x===1&&y===4?"E":wall?"▥":missionTerrain?.cover.includes(x+","+y)?"▤":"·";
             return <span className={styles.cell} data-wall={wall} data-actor={mark==="X"?"ally":mark==="G"?"rival":""} key={index} title={"Case "+x+","+y}>{mark}</span>;
           })}
         </div>
-        <div className={styles.stealthControls}>{(["up","left","down","right","cloak","interact","wait","decoy","hide"] as const).map(action=>
+        <div className={styles.stealthControls}>{(["up","left","down","right","cloak","interact","wait","decoy","hide","listen"] as const).map(action=>
           <button type="button" key={action} disabled={blocked||(action==="decoy"&&(Boolean(stealth.decoyUsed)||stealth.cloaked||stealth.energy<2))||
+              (action==="listen"&&(!missionTerrain?.cover.includes(stealth.x+","+stealth.y)||
+                  stealth.cloaked||stealth.energy<1||(stealth.acousticUsed??0)>=2))||
               (action==="hide"&&(!missionTerrain?.cover.includes(stealth.x+","+stealth.y)||
                 (stealth.usedCoverIds??[]).includes(stealth.x+","+stealth.y)||
                 (stealth.alarm===0&&stealth.energy===5)))} onClick={()=>commit(commandStealthV115(worldRef.current,action,rules))}>
-            {({up:"↑ Nord",left:"← Ouest",down:"↓ Sud",right:"→ Est",cloak:stealth.cloaked?"Désactiver camouflage":"Camouflage optique",interact:"Saboter le relais",wait:"Attendre / récupérer énergie",decoy:"Diversion sonore (2 énergie)",hide:"Se dissimuler dans le couvert"} as Record<string,string>)[action]}</button>)}</div>
+            {({up:"↑ Nord",left:"← Ouest",down:"↓ Sud",right:"→ Est",cloak:stealth.cloaked?"Désactiver camouflage":"Camouflage optique",interact:"Saboter le relais",wait:"Attendre / récupérer énergie",decoy:"Diversion sonore (2 énergie)",hide:"Se dissimuler dans le couvert",listen:"Écouter la patrouille (1 énergie)"} as Record<string,string>)[action]}</button>)}</div>
         <div className={styles.stealthControls}>
          {(["cover-up","cover-left","cover-down","cover-right"] as const).map(action=>{
           const direction=action.slice(6);
@@ -601,6 +623,13 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
         {order.retask&&<small className={styles.explain}>Consigne réorientée depuis {focusLabels[order.retask.oldFocus]}, sans nouvel entretien ni rapport anticipé.</small>}
         {order.fieldSupport&&<small className={styles.explain}>Soutien de terrain V136 : {order.fieldSupport.paidRav} RAV engagés à {order.fieldSupport.allocatedAt} ; aucune victoire anticipée.</small>}
         {order.reconHalt&&<small className={styles.explain}>Halte V137 : ancienne échéance {order.reconHalt.originalDueAt}, nouveau rapport après 15 secondes supplémentaires ; effectifs et route inchangés.</small>}
+        {order.fieldSignal&&<p className={styles.explain}>Transmission V138 : <strong>{order.fieldSignal.assessment}</strong> · {order.fieldSignal.passages} passage(s) connus, {order.fieldSignal.fitMembers} membre(s) aptes. Ceci ne dévoile ni garnison cachée, ni résultat de combat.</p>}
+        {!order.recall&&!order.fieldSignal&&now>=order.startedAt+
+          Math.ceil(((order.reconHalt?.originalDueAt??order.dueAt)-order.startedAt)/2)&&
+          now<order.dueAt&&<button type="button" disabled={blocked}
+           onClick={()=>commit(requestWarOuterSignalV138(worldRef.current,order.id,Date.now(),rules))}>
+           Obtenir le bulletin de terrain · aucune résolution anticipée
+          </button>}
         {!order.recall&&!order.reconHalt&&(order.focus==="recon"||order.focus==="escort")&&
           now>=order.startedAt&&2*(now-order.startedAt)<order.dueAt-order.startedAt&&
           <button type="button" disabled={blocked}
