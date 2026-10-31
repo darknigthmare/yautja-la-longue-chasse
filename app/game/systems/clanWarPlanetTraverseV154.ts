@@ -77,6 +77,7 @@ export function isTraversalCellPassableV154(
 export function buildPlanetTraversalGridV154(
   raster:PlanetReliefRasterV150,
   slope:PlanetTerrainSlopeV152,
+  regionIndexRGBA:Uint8ClampedArray,
   options:{
     worldCode:string;
     longitude:number;
@@ -94,6 +95,7 @@ export function buildPlanetTraversalGridV154(
     sourceW!==slope.width||sourceH!==slope.height||radiusKm!==slope.radiusKm||
     slope.gradeHundredthsPercent.length!==sourceW*sourceH||
     raster.rg16.length!==sourceW*sourceH*4 ||
+    regionIndexRGBA.length!==raster.rg16.length ||
     !Number.isInteger(maxElevationMeters)||maxElevationMeters<500||maxElevationMeters>20000)
     throw new RangeError("Carte, rayon ou emplacement du franchissement incompatibles.");
   const normalized=(((options.longitude+180)%360)+360)%360;
@@ -122,7 +124,11 @@ export function buildPlanetTraversalGridV154(
     const outside=sy<0||sy>=sourceH;
     const index=sy*sourceW+sx;
     const land=!outside&&raster.rg16[index*4+3]>=128;
-    const regionIndex=land?raster.regions.length?1:0:0;
+    if(!outside&&(regionIndexRGBA[index*4+3]>=128)!==land)
+      throw new RangeError("Masque V124 et relief V150 désynchronisés.");
+    const regionIndex=land?regionIndexRGBA[index*4]:0;
+    if(land&&(regionIndex<1||regionIndex>raster.regions.length))
+      throw new RangeError("Source de région étrangère dans le franchissement.");
     const bit=land?raster.rg16[index*4]*256+raster.rg16[index*4+1]:0;
     cells.push({
       x,y,sourceX:sx,sourceY:sy,

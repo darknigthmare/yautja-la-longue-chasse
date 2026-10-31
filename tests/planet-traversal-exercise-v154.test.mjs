@@ -14,20 +14,21 @@ const file=join(dir,"lab.mjs");await writeFile(file,b.outputFiles[0].text);
 const a=await import(pathToFileURL(file));
 const W=128,H=64,N=W*H,MAX=8000;
 function fixtures(){
- const rgba=new Uint8ClampedArray(N*4),grades=new Uint16Array(N);
+ const rgba=new Uint8ClampedArray(N*4),mask=new Uint8ClampedArray(N*4),grades=new Uint16Array(N);
  for(let y=0;y<H;y++)for(let x=0;x<W;x++){
    const i=y*W+x,o=i*4;
    rgba[o]=100;rgba[o+1]=20;rgba[o+3]=255;
-   if(x===65&&y!==32)rgba[o+3]=0;
+   mask[o]=1;mask[o+3]=255;
+   if(x===65&&y!==32){rgba[o+3]=0;mask[o+3]=0;mask[o]=0;}
    if(x===66)grades[i]=2200; // 22 percent ridge, whole meridian
  }
  const raster={width:W,height:H,radiusKm:6371,maxElevationMeters:MAX,
    rg16:rgba,preview:new Uint8ClampedArray(N*4),regions:[{regionIndex:1,biome:"mountain",landPixels:N,averageElevationMeters:3000,maximumElevationMeters:MAX}]};
  const slope={width:W,height:H,radiusKm:6371,gradeHundredthsPercent:grades,preview:new Uint8ClampedArray(N*4)};
- return {raster,slope};
+ return {raster,slope,mask};
 }
 const input=fixtures();
-const grid=a.buildPlanetTraversalGridV154(input.raster,input.slope,{worldCode:"proc-v115-TEST",longitude:0,latitude:0,width:13,height:9});
+const grid=a.buildPlanetTraversalGridV154(input.raster,input.slope,input.mask,{worldCode:"proc-v115-TEST",longitude:0,latitude:0,width:13,height:9});
 const cell=(x,y)=>grid.cells[y*grid.width+x];
 
 test("six actual clan-war RTS unit IDs have distinct prototype mobility caps",()=>{
@@ -87,11 +88,11 @@ test("the playable exercise advances one real adjacent tile at a time; bad cross
 
 test("antimeridian wraps, pole edges are out-of-world instead of mirrored, inputs remain immutable",()=>{
  const before=JSON.stringify([...input.raster.rg16.slice(0,64)]);
- const dateline=a.buildPlanetTraversalGridV154(input.raster,input.slope,{
+ const dateline=a.buildPlanetTraversalGridV154(input.raster,input.slope,input.mask,{
   worldCode:"earthlike-alien",longitude:-179.8,latitude:0,width:7,height:7});
  assert.equal(dateline.cells[0].sourceX,125);
  assert.equal(dateline.cells[6].sourceX,3);
- const polar=a.buildPlanetTraversalGridV154(input.raster,input.slope,{
+ const polar=a.buildPlanetTraversalGridV154(input.raster,input.slope,input.mask,{
   worldCode:"polar-alien",longitude:10,latitude:89.9,width:7,height:7});
  assert(polar.cells.some(x=>x.outside));
  assert(polar.cells.every(x=>!x.outside||!x.land));
@@ -99,11 +100,11 @@ test("antimeridian wraps, pole edges are out-of-world instead of mirrored, input
 });
 
 test("invalid local resolution, foreign region gradient and unusable slope map are rejected",()=>{
- assert.throws(()=>a.buildPlanetTraversalGridV154(input.raster,input.slope,{
+ assert.throws(()=>a.buildPlanetTraversalGridV154(input.raster,input.slope,input.mask,{
   worldCode:"",longitude:0,latitude:0}),/incompatibles/);
- assert.throws(()=>a.buildPlanetTraversalGridV154(input.raster,input.slope,{
+ assert.throws(()=>a.buildPlanetTraversalGridV154(input.raster,input.slope,input.mask,{
   worldCode:"x",longitude:0,latitude:95}),/incompatibles/);
- assert.throws(()=>a.buildPlanetTraversalGridV154(input.raster,input.slope,{
+ assert.throws(()=>a.buildPlanetTraversalGridV154(input.raster,input.slope,input.mask,{
   worldCode:"x",longitude:0,latitude:0,width:8}),/incompatibles/);
  assert.throws(()=>a.buildPlanetTraversalGridV154(input.raster,{...input.slope,radiusKm:0},{
   worldCode:"x",longitude:0,latitude:0}),/incompatibles/);
