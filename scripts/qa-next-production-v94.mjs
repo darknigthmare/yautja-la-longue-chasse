@@ -48,13 +48,13 @@ try {
   assert.equal(asset.status,200,'The server must serve its compiled JS, not just HTML');
   assert.match(asset.headers.get('content-type')??'',/javascript/);
   await asset.arrayBuffer();
-  for(const route of ['/visual-qa-v90','/solo-qa-v92','/clan-war-qa-v92']){
+  for(const route of ['/visual-qa-v90','/solo-qa-v92','/clan-war-qa-v92','/gauntlet-qa-v135','/gauntlet-qa-v136']){
     const response=await fetch(origin+route,{redirect:'manual',signal:AbortSignal.timeout(5_000)});
     assert.equal(response.status,404,`${route} must remain unavailable without explicit local QA mode`);
     assert.match(response.headers.get('x-robots-tag')??'',/noindex/);
     await response.text();
   }
-  console.log(JSON.stringify({scope:'Compiled Next server, homepage, client JS and three protected QA routes; no complete-game/asset qualification',buildId,checks:5,status:'PASS'}));
+  console.log(JSON.stringify({scope:'Compiled Next server, homepage, client JS and five protected QA routes; no complete-game/asset qualification',buildId,checks:7,status:'PASS'}));
 } finally {
   if(!exited)child.kill('SIGTERM');
   await Promise.race([closed,delay(3_000)]);
