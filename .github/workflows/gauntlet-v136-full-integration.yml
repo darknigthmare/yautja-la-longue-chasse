@@ -29,6 +29,10 @@ on:
       - 'scripts/qa-gauntlet-pose-v140.mjs'
       - 'tests/gauntlet-qa-proxy-runtime-v138.test.mjs'
       - 'tests/clan-war-gauntlet*.test.mjs'
+      - 'tests/clan-war-turn-gate-v143.test.mjs'
+      - 'tests/browser/clan-war-v143.fixture.tsx'
+      - 'scripts/qa-real-clan-war-v143.mjs'
+      - 'app/game/systems/clanWarTurnGateV143.ts'
       - 'scripts/export-gauntlet*.mjs'
       - 'scripts/qa-gauntlet-browser-v137.mjs'
       - 'tests/browser/gauntlet-v136.fixture.tsx'
@@ -148,6 +152,18 @@ jobs:
         with:
           name: gauntlet-dual-view-browser-v137
           path: outputs/gauntlet-v137-war-browser/
+          retention-days: 30
+          if-no-files-found: warn
+      - name: Real V143 clan-war panel, fenced turn, two views and world sessions
+        run: |
+          node --experimental-strip-types --test --test-reporter=spec tests/clan-war-turn-gate-v143.test.mjs
+          node scripts/qa-real-clan-war-v143.mjs
+      - name: Preserve actual strategic panel UI and archive-turn screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: yautja-real-clan-war-v143-chrome
+          path: outputs/clan-war-real-panel-v143/
           retention-days: 30
           if-no-files-found: warn
       - name: Frontend production build (code-only checkout, diagnostic)
