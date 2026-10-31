@@ -5,7 +5,7 @@ import {
   DEFAULT_GAUNTLET_ID_V132, gauntletStorageKeyV132,
   gauntletUnlockedV132, normalizeGauntletV132, parseGauntletPreferenceV132,
   serializeGauntletPreferenceV132, type HunterRankV132,
-} from "./clanWarGauntletCatalogV132";
+} from "./clanWarGauntletCatalogV132.ts";
 
 /**
  * Shared between the ship's armory, the player's rig and clan-war screens.
