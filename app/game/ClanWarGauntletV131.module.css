@@ -143,3 +143,35 @@
   .stage[data-war-presentation="gauntlet"] .mapWindow::after { display: none; }
   .eyebrow, .projectionLegend { color: #e5fff7; }
 }
+
+/* V132: theme tokens apply to the same original atlas, without duplicating simulation. */
+.stage[data-war-presentation="gauntlet"] {
+  border-color:var(--holo-accent,#71e4dc);
+  box-shadow:0 0 20px color-mix(in srgb,var(--holo-accent,#71e4dc) 20%,transparent);
+}
+.stage[data-war-presentation="gauntlet"] .projector {
+  border-color:var(--holo-accent,#71e4dc);
+  background:radial-gradient(ellipse at 18% 100%,color-mix(in srgb,var(--holo-accent,#71e4dc) 29%,transparent),transparent 57%),
+    linear-gradient(115deg,#07131a,#111f26 76%,#0c1d22);
+}
+.stage[data-war-presentation="gauntlet"] .projector::before {
+  opacity:.65;
+  background-image:linear-gradient(0deg,transparent 94%,color-mix(in srgb,var(--holo-accent,#71e4dc) 13%,transparent) 96%),
+    linear-gradient(90deg,transparent 94%,color-mix(in srgb,var(--holo-accent,#71e4dc) 13%,transparent) 96%);
+}
+.stage[data-war-presentation="gauntlet"] .projector::after {background:linear-gradient(180deg,transparent 5%,color-mix(in srgb,var(--holo-accent,#71e4dc) 6%,transparent) 52%,transparent 92%)}
+.stage[data-war-presentation="gauntlet"] .projectionInfo h3 {color:var(--holo-secondary,#b3fff4)}
+.stage[data-war-presentation="gauntlet"] .eyebrow,
+.stage[data-war-presentation="gauntlet"] .projectionLegend {color:var(--holo-accent,#71e4dc)}
+.stage[data-war-presentation="gauntlet"] .mapWindow::after {
+  background:repeating-linear-gradient(0deg,color-mix(in srgb,var(--holo-accent,#71e4dc) 6%,transparent) 0,
+    color-mix(in srgb,var(--holo-accent,#71e4dc) 6%,transparent) 1px,transparent 1px,transparent 7px);
+}
+.feature {margin:12px 0 4px;font-size:.84rem;color:#e4ede9;line-height:1.5}
+.feature strong {color:var(--holo-secondary,#b3fff4)}
+.accuracy {color:#c1c9c8;font-size:.65rem;line-height:1.4}
+.stage[data-gauntlet-scan="fracture"] .projector::after {animation-duration:3s}
+.stage[data-gauntlet-scan="stagger"] .projector::after {animation-timing-function:steps(6,end)}
+.stage[data-gauntlet-scan="lattice"] .projector::before {background-size:22px 22px}
+.stage[data-gauntlet-scan="sweep"] .projector::after {animation-duration:4s}
+@media(prefers-reduced-motion:reduce){.stage[data-war-presentation="gauntlet"] .projector::after{animation:none}}
