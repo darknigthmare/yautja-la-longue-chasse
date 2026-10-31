@@ -24,7 +24,7 @@ const bundle=await build({absWorkingDir:root,
       loader:"tsx",resolveDir:root,
       contents:`import React from "react"; export default function QaImage({src,alt,width,height,loading,style}){
         return <img src={typeof src==="string"?src:src?.src} alt={alt||""} width={width} height={height}
-          loading={loading} style={style}/>;`,
+          loading={loading} style={style}/>;}`,
     }));
   }}],
 });
