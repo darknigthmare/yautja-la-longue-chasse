@@ -24,3 +24,11 @@ Les coûts AP/RAV sont des règles originales de jeu, **pas des propriétés can
 - Le classeur V143 reste la **référence historique complète de 73 onglets** dans la branche parent et la PR #53. Le **classeur V144 complémentaire** documente les exigences nouvelles, les régressions, les QA et les dépendances avec des liens GitHub, sans prétendre recopier toutes les feuilles historiques. Il sera commité ici et testé sur ses octets binaires.
 
 **Toujours ouvert :** 1 200 niveaux complets, campagnes/territoires V85 persistants, armées multi-régions, serveur coop/PvP, animations, architecture/armes/sprites 1:1 et QA navigateur/mobile/manette. La réussite CI est un statut de validation ciblée, pas de production finale.
+
+## Validation ciblée et suivi V144 (31/10/2026)
+
+Le commit de code `bc5aacd7` a réussi **154/154 tests Node**, la compilation **TypeScript** et **ESLint** sans erreur : [GitHub Actions 41248247831](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41248247831). Cette validation porte sur les quatre nouveaux systèmes, leurs interfaces et les régressions V115–V143.
+
+Le fichier **`docs/clan-war-v144/Yautja_Guerres_Clans_Suivi_Production_V144_2026-10-31.xlsx`** est le supplément Excel V144 : **9 onglets** et **48 exigences** (12 par mode), dont **4 nouveautés validées en CI ciblée**, **25 prototypes existants** et **19 exigences encore à développer**. Il comporte aussi **40 procédures QA**, **16 interactions**, un tableau de bord à formules, un dictionnaire de statuts et un inventaire de sources. Le classeur **historique V143 de 73 onglets demeure dans la PR #53** et est lié explicitement depuis le supplément, sans être remplacé.
+
+`tests/clan-war-production-v144.test.mjs` vérifie les **octets XLSX de ce fichier effectivement commité**, les neuf feuilles, les IDs, les liens historiques et les formules. La QA navigateur/manette, le réseau, les assets cinématographiques 1:1 et la campagne V85 restent des travaux **non réalisés par ces tests**.
