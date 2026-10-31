@@ -11,6 +11,7 @@ import {WAR_SOURCE_RTS_IDS_V129} from "./systems/clanWarRtsSourceMissionsV129";
 import {warMapLineOfSightV128} from "./systems/clanWarSourceMapsV128";
 import {planWarRtsWaypointV142,commandWarRtsWaypointV142,type WarRtsWaypointV142} from "./systems/clanWarRtsWaypointV142";
 import {commandWarRtsMarchV143} from "./systems/clanWarRtsMarchV143";
+import {auditWarRtsDebriefV144} from "./systems/clanWarDebriefV144";
 import styles from "./ClanWarRtsSquadsV133.module.css";
 
 const d=(a:{x:number;y:number},b:{x:number;y:number})=>Math.abs(a.x-b.x)+Math.abs(a.y-b.y);
@@ -270,7 +271,11 @@ export default function ClanWarRtsSquadsV133({rules}:{rules:WarRulesV6}){
    {state.tracked&&<p className={styles.hint}>Protection : {state.tracked.kind} · {state.tracked.hp} PV · {state.tracked.secured?"sécurisé":"à récupérer"} · {state.tracked.carrierSquadId??"aucun responsable"}{state.tracked.isNeutral?" · personne neutre":""}.</p>}
    {state.hold&&<p>Maintien de poste : <strong>{state.hold.progress}/{state.hold.required} tours</strong>, escouade {state.hold.squadId}.</p>}
    {state.report&&<div className={styles.report} role="status"><strong>Reçu unique : {state.report.outcome}</strong>
-    <p>{state.report.id}. Preuves : {state.report.completedTaskIds.length}/3, RAV restants : {state.report.remainingRav}, groupe(s) hors combat : {state.report.downSquadIds.length}, évacué(s) : {state.report.evacuatedSquadIds?.length??0}, laissé(s) sur place : {state.report.leftBehindSquadIds.length}. Aucun gain sur la sauvegarde V85/V6.</p></div>}
+    <p>{state.report.id}. Preuves : {state.report.completedTaskIds.length}/3, RAV restants : {state.report.remainingRav}, groupe(s) hors combat : {state.report.downSquadIds.length}, évacué(s) : {state.report.evacuatedSquadIds?.length??0}, laissé(s) sur place : {state.report.leftBehindSquadIds.length}. Aucun gain sur la sauvegarde V85/V6.</p>{auditWarRtsDebriefV144(state,rules).debriefs.map(d=>
+     <p key={d.receiptKey}>V144 · {d.receiptKey} · carte {d.mapId} · planète {d.planetId}
+      · objectifs vérifiables : {d.proofCount} · unités engagées {d.teamIds.length}.
+      Aucune prise de territoire ou mutation V85 : liaison de campagne encore à autoriser et tester.
+     </p>)}</div>}
   </div>
   <details className={styles.logs}><summary>Journal opérationnel (60 entrées maximum)</summary>
    <ol>{state.log.map((line,i)=><li key={`${i}-${line}`}>{line}</li>)}</ol>

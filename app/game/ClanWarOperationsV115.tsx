@@ -34,6 +34,7 @@ import {commandWarAssaultBraceV143} from "./systems/clanWarBraceV143";
 import {commandWarStealthDashV143} from "./systems/clanWarStealthDashV143";
 import {commandWarOuterIncidentV143,warOuterIncidentV143} from "./systems/clanWarOuterIncidentV143";
 import {planWarStealthStepV142,commandWarStealthStepV142} from "./systems/clanWarStealthPathV142";
+import {auditWarOperationsDebriefsV144} from "./systems/clanWarDebriefV144";
 import styles from "./ClanWarOperationsV115.module.css";
 
 const modeLabels: Record<WarMissionModeV115, string> = {
@@ -768,6 +769,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
     <section className={styles.reports}>
       <h4>Chronique de guerre et conséquences enregistrées</h4>
       <p>Renseignements : {world.intelIds.length} · relais sabotés : {world.weakenedIds.length} · itinéraires escortés : {world.escortedIds.length}. La pression n&apos;est pas une annexion : il faut encore les ordres de conquête et une garnison dans le moteur stratégique.</p>
+      <p className={styles.explain}>V144 — bilans vérifiables et candidats territoriaux V85 en lecture seule. La victoire dans cet exercice ne déclenche aucune conquête de campagne.</p>
       <ol>{world.reports.slice(-16).reverse().map(report=><li key={report.id}>
         <strong>{report.id} · {report.outcome==="victory"?"Succès":report.outcome==="retreat"?"Repli":"Échec"}</strong>
         <span>{report.mode==="outer"?focusLabels[report.focus??"recon"]:modeLabels[report.mode]} · {report.targetId} · vacation {report.clock}</span>
@@ -775,6 +777,11 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
         {report.engagementLog?.length ? <details className={styles.debriefDetails}><summary>Journal opérationnel · {report.engagementLog.length} phases</summary>
           <ol>{report.engagementLog.map((item,index)=><li key={report.id+"-"+index}>{item}</li>)}</ol></details>:null}
         <small>Équipes : {report.teamIds.join(", ")} · Blessés : {report.woundedIds.length?report.woundedIds.join(", "):"aucun déclaré"} · Source : {report.sourceIds.join(", ")}</small>
+        {auditWarOperationsDebriefsV144(world,rules).debriefs.filter(d=>d.missionId===report.id).map(d=>
+         <small key={d.receiptKey}>Contrat V144 : {d.receiptKey} · secteur source {d.territoryName??"inconnu"}
+          · cible V85 {d.campaignCandidateTerritoryId??"non appariée"}
+          · preuves {d.proofCount} · campagne NON modifiée, liaison sécurisée à développer.
+         </small>)}
       </li>)}</ol>
       {!world.reports.length && <p>Aucun résultat pour cet exercice.</p>}
     </section>
