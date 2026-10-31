@@ -264,12 +264,15 @@ import type { GlassDesertProof } from "./systems/glassDesert";
 import { advanceJusticeTime, applyJusticeAction, getJusticeStatus, getJusticeRouteControl, type JusticeProgress, type JusticeJurisdictionId } from "./systems/justice";
 
 import { normalizeHomeworldExpeditionProof, type HomeworldExpeditionProof } from "./systems/homeworldExpedition";
+import { useHunterGauntletV133 } from "./systems/useHunterGauntletV133";
+import { gauntletByIdV132, type GauntletThemeV132 } from "./systems/clanWarGauntletCatalogV132";
 
 const HomeworldExpedition = React.lazy(() => import("./HomeworldExpedition"));
 const GlassDesertExpedition = React.lazy(() => import("./GlassDesertExpedition"));
 const JusticePanel = React.lazy(() => import("./JusticePanel"));
 const ClanChroniclePanel = React.lazy(() => import("./ClanChroniclePanel"));
 const ClanWarPanelV85 = React.lazy(() => import("./ClanWarPanelV85"));
+const ClanWarGauntletLockerV132 = React.lazy(() => import("./ClanWarGauntletLockerV132"));
 const RecentSpriteLibraryV85 = React.lazy(() => import("./RecentSpriteLibraryV85"));
 const Mausoleum = React.lazy(() => import("./Mausoleum"));
 const HomeworldHub = React.lazy(() => import("./HomeworldHub"));
@@ -1042,6 +1045,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   // Runtime discoveries and terminal callbacks may occur before React commits.
   // Update this ref alongside every local save so their unions never use stale state.
   const saveRef = useRef(save);
+  const hunterGauntlet = useHunterGauntletV133(save.createdAt,save.profile.rankId);
   const expeditionOwnerRef = useRef<string | null>(null);
   const [homeworldArrivalV67, setHomeworldArrivalV67] = useState<{ pointId: string; requestId: string } | null>(null);
   const [selectedMission, setSelectedMission] =
@@ -1511,6 +1515,13 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     void audio.unlock();
     audio.playSfx(sound);
   }, []);
+
+  const playGauntletSignal = useCallback((theme: GauntletThemeV132) => {
+    const audio=audioRef.current;
+    if (!audio) return;
+    void audio.unlock();
+    audio.playGauntletSignalV133(theme);
+  },[]);
 
   const reconcileHuntWrite = useCallback(() => {
     const latest = loadActiveHuntSave();
@@ -3502,7 +3513,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       <div hidden={screen === "homeworld" || screen === "sprite-library"} inert={shipStationOpen || settingsOpen || screen === "sprite-library"}>{topBar}</div>
 
       {screen === "clan-war" && <section className="screen panel-screen" inert={settingsOpen}>
-        <Suspense fallback={<DeferredGameScreen />}><ClanWarPanelV85 save={save} onClose={() => go(archiveReturnV85)} /></Suspense>
+        <Suspense fallback={<DeferredGameScreen />}><ClanWarPanelV85 save={save} onClose={() => go(archiveReturnV85)} onGauntletSound={playGauntletSignal} /></Suspense>
       </section>}
       {screen === "sprite-library" && <Suspense fallback={<DeferredGameScreen />}>
         <RecentSpriteLibraryV85 onClose={() => go(archiveReturnV85)} />
@@ -4221,6 +4232,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                       previewMaskWorn && save.appearance.biomaskId !== null
                     }
                     gauntletOpen={previewGauntletOpen}
+                    gauntletVariantId={hunterGauntlet.equippedId}
                     bladesExtended={previewBladesExtended}
                     aiming={previewAiming}
                   />
@@ -4244,6 +4256,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                   <h3>Configuration active</h3>
                   <div className="loadout-tags">
                     <span>{selectedArmor.name}</span>
+                    <span>Gauntlet : {gauntletByIdV132(hunterGauntlet.equippedId)?.name ?? "Jungle Hunter"}</span>
                     <span>Énergie maximale {selectedArmorMaxEnergy}</span>
                     <span>{primaryWeapon.name}</span>
                     {selectedGear.map((gear) => (
@@ -4253,6 +4266,23 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 </div>
               </aside>
               <div className="armory-sections">
+                <section className="panel" data-testid="hunter-gauntlet-slot-v133" aria-label="Gauntlet équipé du chasseur">
+                  <h3>Ordinateur de poignet · emplacement indépendant</h3>
+                  <p>Gauntlet équipé : <strong>{gauntletByIdV132(hunterGauntlet.equippedId)?.name ?? "Jungle Hunter"}</strong>. Utilisé dans l&apos;aperçu du chasseur et la projection des guerres de clans. Cosmétique et lecture tactique seulement.</p>
+                  <Suspense fallback={<p>Ouverture de l&apos;armurerie des gauntlets…</p>}>
+                    <ClanWarGauntletLockerV132 hunterRank={save.profile.rankId}
+                      equippedId={hunterGauntlet.equippedId}
+                      disabled={settingsOpen||archiveTransferBusy||campaignSaveBusy||Boolean(archiveRecoveryIssue)}
+                      onEquip={id=>{
+                        if(hunterGauntlet.equip(id)) {
+                          playGauntletSignal(gauntletByIdV132(id)?.theme ?? "classic");
+                          setToast(`Gauntlet ${gauntletByIdV132(id)?.name ?? id} équipé sur ce chasseur.`);
+                        }
+                      }}/>
+                  </Suspense>
+                  {hunterGauntlet.storageWarning && <p role="status">{hunterGauntlet.storageWarning}</p>}
+                  <small>Préférence locale par personnage : pas encore incluse dans l&apos;export de sauvegarde de campagne. Un modèle verrouillé ne peut pas être équipé.</small>
+                </section>
                 <ArmorySection title="Outils de terrain permanents">
                   {FIELD_TOOLS_V111.map((tool) => {
                     const quote = quoteFieldToolV111(save, tool.id);
@@ -4442,6 +4472,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                       previewMaskWorn && save.appearance.biomaskId !== null
                     }
                     gauntletOpen={previewGauntletOpen}
+                    gauntletVariantId={hunterGauntlet.equippedId}
                     bladesExtended={previewBladesExtended}
                     aiming={previewAiming}
                   />
