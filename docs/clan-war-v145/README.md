@@ -25,3 +25,11 @@ Le RTS reste un mode additionnel ; le gameplay de la chasse principale demeure o
 ## Non achevé
 
 **Restent ouverts :** campagne V85 et garnisons persistantes, serveur multijoueur, équilibrage de grande ampleur, sessions navigateur/manette, assets photographiquement ou stylistiquement fidèles aux films/comics/PHG, géographie 1:1 certifiée, et production complète des 1 200 variantes. Les tests automatisés ne prouvent pas ces éléments.
+
+## Suivi V145 intégré et tests CI
+
+Le fichier **`docs/clan-war-v145/Yautja_Guerres_Clans_Avenants_Production_V144_V145_2026-11-01.xlsx`** est un véritable classeur binaire. Il comporte **16 feuilles** : les huit onglets V144 conservés et huit nouveaux onglets V145. Le fichier V143 (73 feuilles) demeure dans la PR #53 et est **référencé, non recopié**. Les 1 200 variantes CW120 restent des dossiers *design-only*, sans prétendre que toutes leurs scènes soient créées.
+
+Le tableau de bord est calculé par formules et suit **48 exigences** V145 (**8 validées en CI ciblée, 12 prototypes partiels, 28 à développer**), **32 scénarios QA** (**8 ciblés, 24 manuels**) et **12 interactions inter-modes**. La CI complète lance trois nouveaux tests binaires `tests/clan-war-production-v145.test.mjs` pour contrôler le nombre de vraies feuilles, les identifiants uniques, la conservation V144 et les formules.
+
+**Code vérifié** : [CI 41253288465](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41253288465), **168/168 tests**, TypeScript et ESLint verts. La validation du **dernier commit intégrant le fichier XLSX** reste distincte et est à faire avant fusion.
