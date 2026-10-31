@@ -46,3 +46,11 @@ Le classeur est un suivi **complémentaire** aux 48 onglets V142 et à l'annexe 
 - **Fidélité cinématographique et droits** : aucun des 54 gauntlets n'a reçu de validation artistique indépendante 1:1 et les droits Predator/AVP restent à revoir.
 
 Cette étape ne change pas les règles de guerre, les ordres, les objets de chasse, le nombre de personnes ou les récompenses. Elle renforce la vérification de l'isolation et de l'intégrité des archives stratégiques.
+
+## Complément V145 — 30 clés indépendantes testées en Node
+
+Le test `tests/clan-war-multitab-v144.test.mjs` déroule maintenant les **30 planètes réellement enregistrées dans `WAR_PLANETS_V96`** : il hydrate 30 sessions distinctes sur un stockage partagé, vérifie l'unicité des clés, enregistre un tour 2 pour chaque monde et transmet les notifications de changement aux **29 autres sessions**. Aucun monde étranger ne doit être déclaré périmé, et chaque archive doit conserver son identifiant de planète et son tour. Les tests ciblés ont été réussis dans le [workflow GitHub V145](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41251571595).
+
+**Deux niveaux de preuve distincts :** isolation logique **30/30 en tests Node**, et navigations avec vrai Chromium **2/30 mondes (Korthas et Thalassa)**. Les **28 autres planètes restent à ouvrir et tester en navigateur**, en particulier lorsqu'un front est suspendu, rétabli ou qu'un sous-mode V115 est actif.
+
+Le [classeur V145](Yautja_ClanWar_V145_Multiplanetes.xlsx) indique séparément ces niveaux de validation. Il conserve le bilan **0/54 gauntlets approuvés 1:1**.
