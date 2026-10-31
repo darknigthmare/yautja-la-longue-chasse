@@ -47,6 +47,14 @@ jobs:
             /vite.config.ts
             /postcss.config.mjs
             /eslint.config.mjs
+            /.openai/hosting.json
+            /build/sites-vite-plugin.ts
+            /public/game/assets/v18/enemy-trophy-gameplay/manifest.json
+            /public/game/assets/v17/enemy-trophies/manifest.json
+            /public/game/assets/v16/franchise-trophies/manifest.json
+            /public/game/assets/v14/hunter-kit/manifest.json
+            /public/game/assets/v15/trophies/manifest.json
+            /public/game/assets/v28/sprite-review/manifest.json
       - name: Node 22
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
