@@ -76,14 +76,14 @@ export function gauntletUnlockedV132(
     const required = entry.unlock.slice(5) as HunterRankV132;
     return rankOrder.indexOf(rank) >= rankOrder.indexOf(required) && rankOrder.indexOf(required) >= 0;
   }
-  // Explicit challenge rewards can be granted only by future authoritative campaign hooks.
+  // Explicit challenge rewards come ONLY from the owner-bound V13 campaign archive.
   return earnedChallenges.includes(entry.unlock.slice(10));
 }
 export function gauntletUnlockLabelV132(entry: GauntletDefinitionV132, rank: HunterRankV132, earned: readonly string[] = []): string {
   if (entry.unlock === "starter") return "Modèle initial";
   if (gauntletUnlockedV132(entry.id,rank,earned)) return "Débloqué";
   if (entry.unlock.startsWith("rank:")) return `Atelier de clan · rang ${entry.unlock.slice(5)} requis`;
-  return "Défi/quête réservé au scénario · déblocage non encore branché";
+  return "Étude d’atelier de clan requise · mission, trophée, scans et parfois rite";
 }
 export function normalizeGauntletV132(id: unknown, rank: HunterRankV132, earned: readonly string[] = []): string {
   return typeof id === "string" && gauntletUnlockedV132(id,rank,earned) ? id : DEFAULT_GAUNTLET_ID_V132;
