@@ -36,4 +36,6 @@ La suite `tests/clan-war-four-modes-v137.test.mjs` couvre les préconditions, la
 
 Aucun des 1 200 scénarios de design V120 n'est transformé automatiquement en niveau final. Restent les cartes conçues à la main, les systèmes de commandement de masse, les vrais recrutements/sauvegardes de campagne V85, l'équilibrage, le multijoueur serveur, les animations et sprites attribués à leurs continuités exactes, les tests navigateur/manette/mobile et les éléments véritablement 1:1. Chaque exigence du classeur porte son statut propre.
 
-**Statut initial : CI en attente jusqu'à contrôle du commit intégrant code + classeur. PR maintenue en brouillon.**
+**CI ciblée confirmée** : [GitHub Actions 41190458995](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41190458995), **70 tests sur 70**, TypeScript et ESLint verts sans avertissement. Le pilotage V137 compte **52 exigences** : **26 validées en CI ciblée**, 8 partielles, 18 à développer ; **40 contrôles QA**, dont **24 validés en CI** (les autres nécessitent notamment des essais manuels), ainsi que 20 contrats inter-modes.
+
+La CI ne prouve ni le déploiement Vercel, ni les tests manette/navigateur, ni une fidélité d'assets 1:1. La PR reste en **draft** et ne doit pas être fusionnée avant ses branches parentes et ses validations complémentaires.
