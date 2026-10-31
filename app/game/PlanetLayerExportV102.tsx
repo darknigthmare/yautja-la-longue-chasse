@@ -14,7 +14,6 @@ import PlanetRegionalPreviewV129 from "./PlanetRegionalPreviewV129";
 import {
   createPlanetRegionalMaterialKitV128, compatibleLandMaterialsV128, compatibleSurfaceMaterialsV128,
   describePlanetRegionAssetsV128, editPlanetRegionalMaterialKitV128, validPlanetRegionalMaterialKitV128,
-  type PlanetRegionalMaterialKitV128,
 } from "./systems/clanWarRegionalMaterialKitV128";
 import {
   clearPlanetVisualProfileV134, createPlanetVisualProfileV134, readPlanetVisualProfileV134,
@@ -102,6 +101,8 @@ export default function PlanetLayerExportV102({ planet, onApplyVisualProfile }: 
   const [isAppliedV134, setIsAppliedV134] = useState(false);
   const [showRegionalPreviewV129, setShowRegionalPreviewV129] = useState(false);
   const activeKitRegion = regionalKit.entries.find(item => item.regionId === kitRegionId) ?? regionalKit.entries[0];
+  const activeKitLandId = activeKitRegion?.landMaterialId;
+  const activeKitSeed = activeKitRegion?.seed;
   const compatibleLand = activeKitRegion ? compatibleLandMaterialsV128(activeKitRegion.biome) : [];
   const compatibleSurface = activeKitRegion ? compatibleSurfaceMaterialsV128(planet.surface.kind, activeKitRegion.biome) : [];
   const selectedSupplementalMaterial = findPlanetTextureV130(supplementalMaterialId)!;
@@ -113,18 +114,24 @@ export default function PlanetLayerExportV102({ planet, onApplyVisualProfile }: 
   const texturePreviewRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => () => { pending.current?.abort(); kitImportIntent.current++; }, []);
-  // Sidecar restoration never applies visuals to the main globe or mutates a war save.
+  // A client-only, cancelable microtask restores the visual sidecar after
+  // hydration. No synchronous setState in effects or mismatched SSR markup.
   useEffect(() => {
-    if (kitImportIntent.current !== 0) return;
-    try {
-      const result = readPlanetVisualProfileV134(planet, window.localStorage);
+    let cancelled = false;
+    const intent = kitImportIntent.current;
+    let result: ReturnType<typeof readPlanetVisualProfileV134>;
+    try { result = readPlanetVisualProfileV134(planet, window.localStorage); }
+    catch { result = { status: "unavailable" }; }
+    void Promise.resolve().then(() => {
+      if (cancelled || kitImportIntent.current !== intent) return;
       setLocalProfileStatusV134(result.status);
       if (result.status === "loaded") {
         setRegionalKit(result.profile.kit);
         setQualityV134(result.profile.quality);
         setCoastKmV134(result.profile.coastalInfluenceKm);
       }
-    } catch { setLocalProfileStatusV134("unavailable"); }
+    });
+    return () => { cancelled = true; };
   }, [planet]);
 
   // Once explicitly applied, a later region, quality or coast edit updates
@@ -134,9 +141,9 @@ export default function PlanetLayerExportV102({ planet, onApplyVisualProfile }: 
     try {
       onApplyVisualProfile(createPlanetVisualProfileV134(planet, regionalKit, qualityV134, coastKmV134));
     } catch {
-      setIsAppliedV134(false);
+      // The setter belongs to the parent external visual canvas, not this
+      // effect's React state. Editors only provide validated profiles.
       onApplyVisualProfile(null);
-      setMessage("Le profil actif n’est plus compatible avec cette planète.");
     }
   }, [planet, regionalKit, qualityV134, coastKmV134, isAppliedV134, onApplyVisualProfile]);
 
@@ -155,17 +162,17 @@ export default function PlanetLayerExportV102({ planet, onApplyVisualProfile }: 
   }, [supplementalMaterialId, supplementalChannel, supplementalSeed]);
   useEffect(() => {
     const canvas = kitPreviewRef.current;
-    if (!canvas || !activeKitRegion) return;
+    if (!canvas || !activeKitLandId || activeKitSeed === undefined) return;
     const context = canvas.getContext("2d");
     if (!context) return;
     try {
-      const source = createPlanetTextureCanvasV130(activeKitRegion.landMaterialId, "albedo", 160, activeKitRegion.seed);
+      const source = createPlanetTextureCanvasV130(activeKitLandId, "albedo", 160, activeKitSeed);
       context.clearRect(0, 0, canvas.width, canvas.height);
       context.drawImage(source, 0, 0, canvas.width, canvas.height);
     } catch {
       context.clearRect(0, 0, canvas.width, canvas.height);
     }
-  }, [activeKitRegion?.landMaterialId, activeKitRegion?.seed]);
+  }, [activeKitLandId, activeKitSeed]);
 
   const inland = planetInlandFeaturesV124(planet);
   const availableLayers = (Object.keys(layerNames) as ExportLayer[])
