@@ -15,6 +15,8 @@ on:
       - 'scripts/export-gauntlet*.mjs'
       - 'scripts/qa-gauntlet-browser-v137.mjs'
       - 'tests/browser/gauntlet-v136.fixture.tsx'
+      - 'tests/browser/gauntlet-war-v137.fixture.tsx'
+      - 'scripts/qa-gauntlet-war-v137.mjs'
       - '.github/workflows/gauntlet-v136-full-integration.yml'
   workflow_dispatch:
 permissions:
@@ -83,6 +85,16 @@ jobs:
         with:
           name: gauntlet-browser-qa-v137
           path: outputs/gauntlet-v137-browser/
+          retention-days: 30
+          if-no-files-found: warn
+      - name: Browser contract of real V131 wrapper, single mounted atlas and mobile skins
+        run: node scripts/qa-gauntlet-war-v137.mjs
+      - name: Preserve screenshots from dual-view and camera-state regression
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gauntlet-dual-view-browser-v137
+          path: outputs/gauntlet-v137-war-browser/
           retention-days: 30
           if-no-files-found: warn
       - name: Frontend production build (code-only checkout, diagnostic)
