@@ -38,7 +38,7 @@ export default function HunterGauntletArtV132({ entry, coverOpen = true }: { ent
       <path d="M35 280 132 191 213 167M69 286 157 205 246 179M95 290 174 223 278 199"/>
     </g>
     <path d="M7 267 104 204 160 176 196 193 125 265 93 289 14 289Z"
-      fill={`url(#${uid}-armour)`}` stroke={p.bevel} strokeWidth="4"/>
+      fill={`url(#${uid}-armour)`} stroke={p.bevel} strokeWidth="4"/>
     <path d="M19 261 90 225 141 203M31 275 115 238 153 220M61 286 127 261" fill="none"
       stroke="#89958a" strokeWidth="3" opacity=".8"/>
     <path d="M95 217 120 191 132 230 103 260Z" fill="#131d22" stroke={p.bevel} strokeWidth="4"/>
@@ -46,9 +46,9 @@ export default function HunterGauntletArtV132({ entry, coverOpen = true }: { ent
     {/* Raised left-arm computer as a long hinged wedge, in contrast to the wrist blade on the OTHER arm. */}
     <g transform="translate(0 -3) rotate(-8 264 151)">
       <path d="M150 107 185 69 376 67 435 105 420 224 194 221 145 185Z"
-        fill={`url(#${uid}-metal-shadow)`}` stroke={p.bevel} strokeWidth="6"/>
+        fill={`url(#${uid}-metal-shadow)`} stroke={p.bevel} strokeWidth="6"/>
       <path d="M157 116 196 83 380 83 417 115 404 212 194 207 158 181Z"
-        fill={`url(#${uid}-armour)`}` stroke="#18252b" strokeWidth="5"/>
+        fill={`url(#${uid}-armour)`} stroke="#18252b" strokeWidth="5"/>
       <path d="M177 101 194 91 195 202 173 183Z" fill="#111a1d" stroke={p.bevel} strokeWidth="2.5"/>
       <path d="M390 91 413 112 401 196 384 204Z" fill="#263038" stroke="#8b9290" strokeWidth="2"/>
       {[0,1,2,3,4].map(i=><g key={i}>
@@ -102,7 +102,7 @@ export default function HunterGauntletArtV132({ entry, coverOpen = true }: { ent
       <circle cx="389" cy="190" r="5" fill="#212f31" stroke={p.bevel} strokeWidth="3"/>
     </g>
     <path d="M401 109 427 93 447 123 437 157 421 170 410 143Z" fill="#252e30" stroke={p.bevel} strokeWidth="4"/>
-    <path d="M431 102 479 59 522 0 467 105 445 130Z" fill={`url(#${uid}-projection)`}` filter={`url(#${uid}-glow)`}` opacity=".74"/>
+    <path d="M431 102 479 59 522 0 467 105 445 130Z" fill={`url(#${uid}-projection)`} filter={`url(#${uid}-glow)`} opacity=".74"/>
     <path d="M429 115 473 62 522 1" fill="none" stroke={p.accent} strokeWidth="2" strokeDasharray="5 6"/>
     <circle cx="429" cy="113" r="11" fill={p.accent} opacity=".45" filter={`url(#${uid}-glow)`}/>
     <circle cx="429" cy="113" r="4" fill={p.secondary}/>
