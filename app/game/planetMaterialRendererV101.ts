@@ -119,7 +119,7 @@ export function createPlanetLandMaskV101(planet: WarPlanetV96, width = 1024): HT
     }
   }
   const procedural = planet.procedural;
-  if (procedural?.recipe.version === 103 && "hydrology" in procedural) {
+  if (procedural && (procedural.recipe.version === 103 || procedural.recipe.version === 115) && "hydrology" in procedural) {
     context.fillStyle = "#000";
     for (const feature of procedural.hydrology.features) {
       const points = unwrapPlanetPolygonV101(feature.points);
@@ -336,8 +336,9 @@ void main() {
   vec4 terrainTex = uRegionalLand > .5 ? regionalTriplanar(world, region) : triplanar(uLand, world, 3.1 * uMaterialScaleContrast.x, uSeed);
   vec4 seaTex = triplanar(uSurface, world, 2.4 * uMaterialScaleContrast.y, uSeed + 4.0);
 #ifdef PLANET_MATERIAL_V131
-  float coastCode = floor(texture2D(uRegions, mapUV).r * 255.0 + .5);
-  float coastal = uPbrSurfaceEnabled > .5 && coastCode < uRegionCount - .5 ? 1.0 : 0.0;
+  vec4 coastalSample = texture2D(uRegions, mapUV);
+  float coastCode = floor(coastalSample.r * 255.0 + .5);
+  float coastal = uPbrSurfaceEnabled > .5 && coastCode < uRegionCount - .5 ? coastalSample.b : 0.0;
   vec4 localSurface = surfaceTriplanar131(world, clamp(coastCode, 0.0, uRegionalGrid.z));
   seaTex = mix(seaTex, localSurface, coastal);
 #endif
@@ -368,11 +369,12 @@ void main() {
   vec3 landNormal = triplanarNormal131(world, region, 0.0, landScale, uSeed);
   vec4 landFactors = triplanarFactors131(world, region, 0.0, landScale, uSeed);
   terrain = regionalPbrLight131(terrain, world, landNormal, landFactors, sun);
-  if (coastal > .5) {
+  if (coastal > .01) {
     float seaScale = 2.4 * uMaterialScaleContrast.y;
     vec3 seaNormal = triplanarNormal131(world, region, 1.0, seaScale, uSeed + 4.0);
     vec4 seaFactors = triplanarFactors131(world, region, 1.0, seaScale, uSeed + 4.0);
-    sea = regionalPbrLight131(sea, world, seaNormal, seaFactors, sun);
+    vec3 litSea = regionalPbrLight131(sea, world, seaNormal, seaFactors, sun);
+    sea = mix(sea, litSea, coastal);
   }
   albedo = mix(sea, terrain, land);
 #endif

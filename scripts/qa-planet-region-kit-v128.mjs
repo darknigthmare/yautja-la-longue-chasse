@@ -98,6 +98,23 @@ try {
     ?.getAttribute("data-render-status") === "ready", null, { timeout: 45000 });
   const visual = preview.getByTestId("planet-regional-visual-v129");
   check("V131 uses the PBR shader on Chromium's GPU", (await preview.getAttribute("data-render-mode")) === "pbr-v131");
+  const coastDownload = page.waitForEvent("download", { timeout: 45000 });
+  await preview.getByTestId("planet-regional-coast-mask-v131").click();
+  const coastFile = await coastDownload;
+  const coastPath = path.join(output, coastFile.suggestedFilename());
+  await coastFile.saveAs(coastPath);
+  const coastRaw = await sharp(coastPath).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+  let empty = 0, saturated = 0, fading = 0;
+  for (let i = 2; i < coastRaw.data.length; i += 4) {
+    const blue = coastRaw.data[i];
+    if (!blue) empty++;
+    else if (blue === 255) saturated++;
+    else fading++;
+  }
+  check("V131 exports an independent 512x256 coastal mask PNG",
+    coastRaw.info.width === 512 && coastRaw.info.height === 256);
+  check("V131 mask has native sea, fully textured coast and smooth transition pixels",
+    empty > 0 && saturated > 0 && fading > 0);
   const signature = await visual.evaluate(canvas => {
     const pixels = canvas.getContext("2d").getImageData(0, 0, canvas.width, canvas.height).data;
     let digest = 2166136261;

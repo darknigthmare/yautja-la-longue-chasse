@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import type { WarPlanetV96 } from "./systems/clanWarPlanetsV96";
 import type { PlanetRegionalMaterialKitV128 } from "./systems/clanWarRegionalMaterialKitV128";
 import { drawPlanetMaterialV101, planetMaterialRendererStatusV101, PLANET_RENDERER_EVENT_V101 } from "./planetMaterialRendererV101";
+import { createPlanetCoastalRegionMaskV131 } from "./planetCoastalRegionsV131";
 
 /** An explicitly activated visual comparison; does not mutate planet or war saves. */
 export default function PlanetRegionalPreviewV129({
@@ -45,6 +46,19 @@ export default function PlanetRegionalPreviewV129({
     });
     return () => { controller.abort(); cancelAnimationFrame(frame); };
   }, [planet, kit, projection, quality, coastKm, revision]);
+
+  const exportCoastalMask = () => {
+    const canvas = createPlanetCoastalRegionMaskV131(planet, kit, 512, coastKm);
+    canvas.toBlob(blob => {
+      if (!blob) return;
+      const url = URL.createObjectURL(blob);
+      const anchor = document.createElement("a");
+      anchor.href = url; anchor.download = planet.id + "-coast-" + coastKm + "km-v131.png";
+      document.body.appendChild(anchor);
+      try { anchor.click(); }
+      finally { anchor.remove(); setTimeout(() => URL.revokeObjectURL(url), 30000); }
+    }, "image/png");
+  };
 
   const exportPreview = () => {
     const canvas = canvasRef.current;
@@ -90,6 +104,8 @@ export default function PlanetRegionalPreviewV129({
       aria-label={"Aperçu régional " + projection + " de " + planet.name}
       style={{ display: "block", width: "100%", maxWidth: projection === "map" ? 768 : 384, height: "auto" }}/>
     <button type="button" disabled={status !== "ready"} onClick={exportPreview} data-testid="planet-regional-download-v129">Télécharger cet aperçu PNG</button>
+    <button type="button" onClick={exportCoastalMask} data-testid="planet-regional-coast-mask-v131">Télécharger le masque côtier V131</button>
+    <p>Masque indépendant : R = région ou milieu natif, B = coefficient de fondu, A = opaque. L’export ne modifie pas les territoires ni les sauvegardes.</p>
     <p role="status">{status === "ready" ? activeMode === "pbr-v131"
       ? "Rendu PBR V131 prêt : sols et médias régionaux côtiers, sans écriture du monde."
       : quality === "pbr"

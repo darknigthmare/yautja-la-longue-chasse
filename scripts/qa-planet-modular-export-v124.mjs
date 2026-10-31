@@ -94,6 +94,14 @@ try {
     let occupied = 0;
     for (let index = 3; index < data.length; index += 4) if (data[index] !== 0) occupied++;
     check(`${layer} contains rasterized inland features rather than an empty placeholder`, occupied > 0);
+    let overlap = 0, interior = 0;
+    for (let pixel = 0; pixel < info.width * info.height; pixel++) {
+      if (data[pixel * 4 + 3] < 250) continue;
+      interior++;
+      if (indexRaw.data[pixel * 4 + 3] > 128) overlap++;
+    }
+    check(`${layer} does not overlap the V115 solid-land region mask`,
+      interior > 0 && overlap === 0);
   }
 
   const textureLab = exporter.getByTestId("planet-extra-materials-v125");

@@ -105,8 +105,14 @@ export function encodePlanetCoastalRegionsV131(
   const rgba = new Uint8ClampedArray(land.length);
   for (let pixel = 0; pixel < cells; pixel++) {
     const region = owner[pixel];
-    rgba[pixel * 4] = isLand[pixel] ? region :
-      region < count && regionalSurfaceActive[region] && best[pixel] <= influenceKm ? region : native;
+    const shoreline = !isLand[pixel] && region < count &&
+      regionalSurfaceActive[region] && best[pixel] <= influenceKm;
+    rgba[pixel * 4] = isLand[pixel] ? region : shoreline ? region : native;
+    // The blue channel carries visual weight, never a geographical claim.
+    // Smooth the final 35 percent to avoid a sudden colour-change ring.
+    const fade = shoreline && influenceKm > 0
+      ? Math.max(0, Math.min(1, (influenceKm - best[pixel]) / (influenceKm * .35))) : 0;
+    rgba[pixel * 4 + 2] = Math.round(255 * fade * fade * (3 - 2 * fade));
     rgba[pixel * 4 + 3] = 255;
   }
   return rgba;

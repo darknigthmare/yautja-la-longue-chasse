@@ -62,6 +62,16 @@ test("null surface choices never create new ocean materials", () => {
   assert.equal(indexOf(data,32,9,8),2);
   assert.equal(indexOf(data,32,19,8),1);
 });
+test("coastal transitions include a progressive distance-limited fade", () => {
+  const {land,regions} = masks();
+  put(land,regions,32,8,8,0);
+  const result = encodePlanetCoastalRegionsV131(land,regions,32,16,1900,[true],900);
+  const at = x => result[(8 * 32 + x) * 4 + 2];
+  assert.equal(at(8),0);
+  assert.equal(at(9),255);
+  assert(at(10) > 0 && at(10) < 255);
+  assert.equal(at(11),0);
+});
 test("forged masks and invalid physical parameters are refused", () => {
   const {land,regions} = masks();
   put(land,regions,32,5,8,9);
