@@ -4,7 +4,7 @@ import type {WarRulesV6} from "./systems/clanWarBibleV6";
 import {
  createWarRtsSquadsV133,draftWarRtsSquadV133,removeWarRtsSquadV133,
  launchWarRtsSquadsV133,commandWarRtsSquadsV133,visibleWarRtsEnemiesV133,
- planWarRtsRallyV134,commandWarRtsRallyV134,commandWarRtsSuppressV135,commandWarRtsOverwatchV136,commandWarRtsBraceV137,commandWarRtsMedicV138,evacuateWarRtsSquadV139,warRtsEnvironmentalWindowV140,
+ planWarRtsRallyV134,commandWarRtsRallyV134,commandWarRtsSuppressV135,commandWarRtsOverwatchV136,commandWarRtsBraceV137,commandWarRtsMedicV138,evacuateWarRtsSquadV139,warRtsEnvironmentalWindowV140,commandWarRtsSwapV144,
  type WarRtsSquadsStateV133,type WarRtsSquadOrderV133,
 } from "./systems/clanWarRtsSquadsV133";
 import {WAR_SOURCE_RTS_IDS_V129} from "./systems/clanWarRtsSourceMissionsV129";
@@ -185,6 +185,18 @@ export default function ClanWarRtsSquadsV133({rules}:{rules:WarRulesV6}){
      <div className={styles.moveGrid}>{direct.map(dir=><button type="button" key={dir.id}
       disabled={selected.status!=="active"}
       onClick={()=>send({kind:"move",squadId:selected.id,direction:dir.id})}>{dir.label}</button>)}</div>
+     <div className={styles.commandGrid}>
+      {state.squads.filter(other=>other.id!==selected.id&&other.status==="active"&&
+        other.hp>0&&d(other,selected)===1).map(other=>
+        <button type="button" key={"swap-v144-"+other.id}
+          disabled={selected.status!=="active"||Boolean(state.hold&&
+            (state.hold.squadId===other.id||state.hold.squadId===selected.id))}
+          onClick={()=>apply(commandWarRtsSwapV144(state,selected.id,other.id))}>
+          Permuter avec {other.unitId} · deux pas voisins, un seul tour
+        </button>)}
+      <p className={styles.hint}>V144 : échange physique entre deux escouades voisines.
+       Impossible pour un porteur d&apos;escorte, un poste tenu ou une case dangereuse imminente.</p>
+     </div>
      <div className={styles.commandGrid}>
       {(["observation","objective","extraction"] as WarRtsWaypointV142[]).map(goal=>{
        const step=planWarRtsWaypointV142(state,selected.id,goal);

@@ -14,7 +14,7 @@ export type WarOuterIncidentDecisionV143="secure"|"detour";
 export function warOuterIncidentV143(
  order:WarOuterMissionV115,now:number,rules:WarRulesV6,
 ):WarOuterIncidentVisibleV143|null {
- if(order.recall||order.routeIncident||!Number.isSafeInteger(now)||
+ if(order.recall||order.routeIncident||order.forcedPace||!Number.isSafeInteger(now)||
     now<=order.startedAt||now>=order.dueAt)return null;
  const progress=warOuterWeightedProgressV141(order,now,rules);
  if(progress.phase!=="outbound"||!progress.currentPassageId)return null;

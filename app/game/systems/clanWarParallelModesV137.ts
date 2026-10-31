@@ -45,7 +45,7 @@ export function orderWarOuterReconHaltV137(
  if(state.sourceSha!==rules.metadata.sha256||!Number.isSafeInteger(now)||now<0)
   return reject(state,"Horloge ou source V6 incompatible.");
  const order=state.outer.find(m=>m.id===id);
- if(!order||order.recall||order.reconHalt)
+ if(!order||order.recall||order.reconHalt||order.forcedPace)
   return reject(state,"Mandat absent, déjà arrêté ou en retour.");
  if(order.focus!=="recon"&&order.focus!=="escort")
   return reject(state,"Une halte d'étude n'est admise que pour reconnaissance ou escorte.");

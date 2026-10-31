@@ -463,6 +463,41 @@ export function evacuateWarRtsSquadV139(
  return accept(next,next.lastMessage);
 }
 
+/** V144 single-tick adjacent tactical position exchange. Both formations
+ * walk one real W3 cell simultaneously, so neither teleports through a
+ * third party. It is forbidden to abandon a held post or a carried witness.
+ * There is exactly one AI/hazard response and no exercise-RAV fee. */
+export function commandWarRtsSwapV144(
+ s:WarRtsSquadsStateV133,idA:string,idB:string,
+):WarRtsSquadsUpdateV133{
+ if(s.phase!=="active"||s.report||idA===idB)
+  return fail(s,"Échange réservé à deux détachements distincts en mission RTS active.");
+ const a=activeSquads(s).find(u=>u.id===idA);
+ const b=activeSquads(s).find(u=>u.id===idB);
+ if(!a||!b||distance(a,b)!==1)
+  return fail(s,"Les deux groupes doivent être vivants et sur des cases voisines.");
+ if(s.hold&&(s.hold.squadId===a.id||s.hold.squadId===b.id))
+  return fail(s,"Un poste d'objectif doit être relevé avant l'échange.");
+ if(s.tracked?.secured&&!s.tracked.extracted&&
+   (s.tracked.carrierSquadId===a.id||s.tracked.carrierSquadId===b.id))
+  return fail(s,"L'escorte ou la charge doit être confiée à un autre groupe.");
+ if(!s.power&&s.map.poweredDoors.some(p=>at(p)===at(a)||at(p)===at(b)))
+  return fail(s,"Une porte du trajet est verrouillée sans courant.");
+ if(hazardsNow(s.turn+1)&&s.map.hazards.some(p=>at(p)===at(a)||at(p)===at(b)))
+  return fail(s,"Une case de l'échange devient dangereuse au prochain tour.");
+ if(s.enemies.some(e=>e.hp>0&&(at(e)===at(a)||at(e)===at(b))))
+  return fail(s,"Le couloir d'échange contient un adversaire réel.");
+ const squads=s.squads.map(u=>u.id===a.id?{...u,x:b.x,y:b.y}:
+    u.id===b.id?{...u,x:a.x,y:a.y}:u);
+ const movedIds=new Set([idA,idB]);
+ const next=advance({...s,squads,
+  overwatch:(s.overwatch??[]).filter(v=>!movedIds.has(v.squadId)),
+  brace:(s.brace??[]).filter(v=>!movedIds.has(v.squadId))},
+  "Permutation de terrain W3 "+a.unitId+" ↔ "+b.unitId+
+  " : deux pas voisins, un seul tour adverse, aucun RAV ajouté.");
+ return accept(next,next.lastMessage);
+}
+
 /**
  * V138 — physical field triage using an EXISTING W3-U18 medic detachment.
  * One orthogonal step away from a fallen allied group, 3 exercise-RAV,
