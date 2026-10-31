@@ -1,0 +1,59 @@
+name: V143 Real Clan War Panel Smoke
+on:
+  push:
+    branches:
+      - feat/v131-gauntlet-hologram-dual-view-20261030
+    paths:
+      - 'app/game/ClanWarPanelV85.tsx'
+      - 'app/game/systems/clanWarTurnGateV143.ts'
+      - 'tests/clan-war-turn-gate-v143.test.mjs'
+      - 'tests/browser/clan-war-v143.fixture.tsx'
+      - 'scripts/qa-real-clan-war-v143.mjs'
+      - '.github/workflows/clan-war-v143-browser.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  real-panel:
+    name: Real V85 war session, V95 atlas, end-turn and planet persistence
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - name: Checkout required source, never the full art archive
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /package.json
+            /package-lock.json
+            /tsconfig.json
+            /app/
+            /types/
+            /lib/
+            /scripts/qa-real-clan-war-v143.mjs
+            /tests/browser/clan-war-v143.fixture.tsx
+            /tests/clan-war-turn-gate-v143.test.mjs
+            /public/game/assets/v134/gauntlets/jungle-hunter/
+            /public/game/assets/v135/gauntlets/
+            /public/game/assets/v136/gauntlets/
+            /public/game/assets/v139/rig-gauntlets/
+      - name: Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Install pinned dependencies without postinstall scripts
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Pure turn and source contract tests
+        run: node --experimental-strip-types --test --test-reporter=spec tests/clan-war-turn-gate-v143.test.mjs
+      - name: Real production war panel Chrome test
+        run: node scripts/qa-real-clan-war-v143.mjs
+      - name: Preserve screenshots and real local archive evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: clan-war-v143-actual-panel-and-archive
+          path: outputs/clan-war-real-panel-v143/
+          retention-days: 30
+          if-no-files-found: warn
