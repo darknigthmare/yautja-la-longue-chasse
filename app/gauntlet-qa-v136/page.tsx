@@ -86,7 +86,7 @@ export default function GauntletVisualQaV136(){
     </header>
     <section className={styles.toolbar} aria-label="Contrôles de comparaison et de filtrage">
       <label>Référence visuelle personnelle
-        <input type="file" accept="image/png,image/jpeg,image/webp" aria-label="Importer une image de référence locale" onChange={e=>useReference(e.currentTarget.files?.[0]??null)}/>
+        <input type="file" accept="image/png,image/jpeg,image/webp" aria-label="Importer une image de référence locale" onChange={e=>{useReference(e.currentTarget.files?.[0]??null);e.currentTarget.value="";}}/>
       </label>
       <label>Recherche
         <input type="search" maxLength={100} value={query} onChange={e=>{setQuery(e.currentTarget.value);setPage(0);}} placeholder="Scar, Lost Tribe, PHG, Dek…"/>
