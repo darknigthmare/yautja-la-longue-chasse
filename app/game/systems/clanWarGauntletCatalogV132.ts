@@ -1,4 +1,4 @@
-import source from "../data/clanWarGauntletCatalogV132.json";
+import source from "../data/clanWarGauntletCatalogV132.json" with { type: "json" };
 
 /** V132 equipment registry; provenance describes the character/armour source, not a certified
  * closeup of the *individual* wrist computer. No combat advantage is attached to a style. */
@@ -35,7 +35,7 @@ export interface GauntletPaletteV132 {
   readonly scan: "pulse" | "stagger" | "sweep" | "fracture" | "lattice";
 }
 
-export const GAUNTLET_CATALOG_V132 = Object.freeze(source.catalog as GauntletDefinitionV132[]);
+export const GAUNTLET_CATALOG_V132 = Object.freeze(source.catalog as unknown as GauntletDefinitionV132[]);
 export const DEFAULT_GAUNTLET_ID_V132 = "jungle-hunter";
 export const GAUNTLET_STORAGE_PREFIX_V132 = "yautja.clan-war.gauntlet.equip.v1.";
 export const GAUNTLET_UNLOCK_SOURCE_V132 = "profile-rank";
