@@ -265,6 +265,7 @@ import { advanceJusticeTime, applyJusticeAction, getJusticeStatus, getJusticeRou
 
 import { normalizeHomeworldExpeditionProof, type HomeworldExpeditionProof } from "./systems/homeworldExpedition";
 import { useHunterGauntletV133 } from "./systems/useHunterGauntletV133";
+import { gauntletCampaignClaimV134,gauntletCampaignEquipV134 } from "./systems/gauntletCampaignV134";
 import { gauntletByIdV132, type GauntletThemeV132 } from "./systems/clanWarGauntletCatalogV132";
 
 const HomeworldExpedition = React.lazy(() => import("./HomeworldExpedition"));
@@ -1045,7 +1046,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   // Runtime discoveries and terminal callbacks may occur before React commits.
   // Update this ref alongside every local save so their unions never use stale state.
   const saveRef = useRef(save);
-  const hunterGauntlet = useHunterGauntletV133(save.createdAt,save.profile.rankId);
+  const hunterGauntlet = useHunterGauntletV133(save.createdAt,save.profile.rankId,save.gauntletV134);
   const expeditionOwnerRef = useRef<string | null>(null);
   const [homeworldArrivalV67, setHomeworldArrivalV67] = useState<{ pointId: string; requestId: string } | null>(null);
   const [selectedMission, setSelectedMission] =
@@ -2134,6 +2135,29 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     setSave(result.save);
     return true;
   }, [reconcileHuntWrite]);
+
+  // Research is awarded only from a real trophy/rite/mission receipt and
+  // confirmed by the existing transactional campaign-save writer.
+  const claimGauntletResearchV134 = (id:string):boolean=>{
+    const claim=gauntletCampaignClaimV134(saveRef.current,id);
+    if(!claim.ok||!claim.archive){setToast(claim.reason);return false;}
+    const stored=persistSocialProgress({gauntletV134:claim.archive});
+    if(stored) setToast(`Dossier ${gauntletByIdV132(id)?.name??id} étudié ; reconstitution cosmétique disponible.`);
+    return stored;
+  };
+  const equipGauntletCampaignV134 = (id:string):boolean=>{
+    const claim=gauntletCampaignEquipV134(saveRef.current,id);
+    if(!claim.ok||!claim.archive){setToast(claim.reason);return false;}
+    const stored=persistSocialProgress({gauntletV134:claim.archive});
+    if(stored){
+      // An old local preference is still updated for the V133 fallback, but
+      // the V134 campaign archive becomes the authoritative equipment slot.
+      hunterGauntlet.equip(id);
+      playGauntletSignal(gauntletByIdV132(id)?.theme??"classic");
+      setToast(`Gauntlet ${gauntletByIdV132(id)?.name??id} équipé et sauvegardé avec la campagne.`);
+    }
+    return stored;
+  };
 
   // The observed position comes from the nearby button on the physical deck.
   // Read the owned fleet without creating or adopting a fallback registration.
@@ -3513,7 +3537,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       <div hidden={screen === "homeworld" || screen === "sprite-library"} inert={shipStationOpen || settingsOpen || screen === "sprite-library"}>{topBar}</div>
 
       {screen === "clan-war" && <section className="screen panel-screen" inert={settingsOpen}>
-        <Suspense fallback={<DeferredGameScreen />}><ClanWarPanelV85 save={save} onClose={() => go(archiveReturnV85)} onGauntletSound={playGauntletSignal} /></Suspense>
+        <Suspense fallback={<DeferredGameScreen />}><ClanWarPanelV85 save={save} onClose={() => go(archiveReturnV85)} onGauntletSound={playGauntletSignal} onEquipGauntlet={equipGauntletCampaignV134} onClaimGauntletStudy={claimGauntletResearchV134} /></Suspense>
       </section>}
       {screen === "sprite-library" && <Suspense fallback={<DeferredGameScreen />}>
         <RecentSpriteLibraryV85 onClose={() => go(archiveReturnV85)} />
@@ -4273,16 +4297,14 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                   <Suspense fallback={<p>Ouverture de l&apos;armurerie des gauntlets…</p>}>
                     <ClanWarGauntletLockerV132 hunterRank={save.profile.rankId}
                       equippedId={hunterGauntlet.equippedId}
+                      claimedStudies={save.gauntletV134?.claimedStudies??[]}
+                      campaignEvidence={save}
                       disabled={settingsOpen||archiveTransferBusy||campaignSaveBusy||Boolean(archiveRecoveryIssue)}
-                      onEquip={id=>{
-                        if(hunterGauntlet.equip(id)) {
-                          playGauntletSignal(gauntletByIdV132(id)?.theme ?? "classic");
-                          setToast(`Gauntlet ${gauntletByIdV132(id)?.name ?? id} équipé sur ce chasseur.`);
-                        }
-                      }}/>
+                      onClaimStudy={claimGauntletResearchV134}
+                      onEquip={equipGauntletCampaignV134}/>
                   </Suspense>
                   {hunterGauntlet.storageWarning && <p role="status">{hunterGauntlet.storageWarning}</p>}
-                  <small>Préférence locale par personnage : pas encore incluse dans l&apos;export de sauvegarde de campagne. Un modèle verrouillé ne peut pas être équipé.</small>
+                  <small>Préférence V134 incluse dans la sauvegarde de campagne. Les modèles à étude exigent des preuves de chasse réelles, puis une validation au comptoir. Les anciens réglages V133 restent lisibles.</small>
                 </section>
                 <ArmorySection title="Outils de terrain permanents">
                   {FIELD_TOOLS_V111.map((tool) => {
