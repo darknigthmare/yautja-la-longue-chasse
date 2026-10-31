@@ -24,7 +24,7 @@ export default function ClanWarGauntletLockerV132({ hunterRank, equippedId, onEq
   const [previewId,setPreviewId]=useState(equippedId);
   const visible=useMemo(()=>GAUNTLET_CATALOG_V132.filter(item=>
     (medium==="all"||item.medium===medium) &&
-    (!query || `${item.id} ${item.name} ${item.notes} ${item.artBrief}`.toLocaleLowerCase("fr").includes(query.toLocaleLowerCase("fr")))
+    (!query || `${item.id} ${item.name} ${item.notes} ${item.artBrief}`.toLocaleLowerCase("fr").includes(query.toLocaleLowerCase("fr"))))
   ,[medium,query]);
   const maxPages=Math.max(1,Math.ceil(visible.length/PAGE_SIZE));
   const currentPage=Math.min(page,maxPages-1);
