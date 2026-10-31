@@ -21,7 +21,7 @@ MANIFEST = Path("docs/production/Yautja_PHG_V137_MANIFEST.json")
 S = "{http://schemas.openxmlformats.org/spreadsheetml/2006/main}"
 R = "{http://schemas.openxmlformats.org/officeDocument/2006/relationships}id"
 EXPECTED_MIN_SHEETS = {"Principal":20, "Fidélité":7, "Intégration":8, "Backlog":7}
-BACKLOG_ID = re.compile(r"^B136-\d{4}$")
+BACKLOG_ID = re.compile(r"^B13[67]-\d{4}$")
 
 
 class WorkbookIntegrityError(ValueError):
