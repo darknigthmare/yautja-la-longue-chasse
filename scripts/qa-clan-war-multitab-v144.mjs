@@ -1,4 +1,4 @@
-/** V143: the REAL ClanWarPanelV85 and createWarSessionV85 in Chrome.
+/** V145: the REAL ClanWarPanelV85 and createWarSessionV85 in Chrome.
  * We keep the production war simulation, one live V95 atlas and IDB/LS
  * persistence. Only Next's decorative <Image> wrapper is replaced in this
  * standalone fixture; no game rules are mocked.
@@ -17,6 +17,7 @@ const out=resolve(root,"outputs/clan-war-multitab-v144");
 const WAR_KEY="yautja.clan-war.v85.free.v1";
 const PRESENTATION_KEY="yautja.clan-war.presentation.v1";
 const SENTINEL="unrelated-campaign-stays-untouched-v144";
+const THALASSA_KEY="yautja.clan-war.v96.planet.thalassa.free.v1";
 const bundle=await build({
   absWorkingDir:root,entryPoints:["tests/browser/clan-war-v143.fixture.tsx"],
   bundle:true,platform:"browser",format:"iife",jsx:"automatic",
@@ -68,10 +69,10 @@ const server=createServer(async(req,res)=>{
 const checks=[],browserErrors=[];
 let browser,started=false;
 const pass=(name,detail)=>{checks.push({name,status:"PASS",detail});console.log("[V144 PASS] "+name);};
-const getTurn=async(page)=>page.evaluate(key=>{
+const getTurn=async(page,key=WAR_KEY)=>page.evaluate(key=>{
   try{return JSON.parse(localStorage.getItem(key)||"null")?.turn??null;}catch{return null;}
-},WAR_KEY);
-async function getFence(page){
+},key);
+async function getFence(page,key=WAR_KEY){
   let timeout;
   try{return await Promise.race([page.evaluate(key=>new Promise((resolveFence,reject)=>{
     const request=indexedDB.open("yautja.clan-war.v94.fences",1);
@@ -83,7 +84,7 @@ async function getFence(page){
       read.onerror=()=>{db.close();reject(new Error("IDB record read failed"));};
       read.onsuccess=()=>{db.close();resolveFence(read.result??null);};
     };
-  }),WAR_KEY),new Promise((_,reject)=>{timeout=setTimeout(()=>reject(new Error("IndexedDB fence read timed out in browser QA")),15000);})]);}
+  }),key),new Promise((_,reject)=>{timeout=setTimeout(()=>reject(new Error("IndexedDB fence read timed out in browser QA")),15000);})]);}
   finally{clearTimeout(timeout);}
 }
 async function commitTurn(page){
@@ -117,6 +118,17 @@ try{
   await b.goto(url,{waitUntil:"domcontentloaded"});
   const panelB=b.locator('[data-clan-war-v85="free-profile"]');
   await panelB.waitFor({timeout:40000});
+  // A third real panel owns its own Thalassa simulation and IDB fence.
+  const c=await context.newPage();
+  c.setDefaultTimeout(30000);
+  c.on("pageerror",e=>browserErrors.push("C: "+e.message));
+  await c.goto(url+"?planet=thalassa",{waitUntil:"domcontentloaded"});
+  const panelC=c.locator('[data-clan-war-v85="free-profile"]');
+  await panelC.waitFor({timeout:40000});
+  await c.locator("h3").filter({hasText:"Thalassa · tour 1"}).first().waitFor({timeout:40000});
+  assert.equal(await panelC.getAttribute("data-war-campaign-write"),"none");
+  assert.equal(await panelC.locator('[data-testid="clan-war-shared-atlas-v131"]').count(),1);
+  pass("Two Korthas tabs and a third Thalassa tab mount independent live theatre graphs",{K:2,T:1});
   assert.equal(await panelA.getAttribute("data-war-campaign-write"),"none");
   assert.equal(await panelB.getAttribute("data-war-campaign-write"),"none");
   assert.equal(await panelA.locator('[data-testid="clan-war-shared-atlas-v131"]').count(),1);
@@ -134,6 +146,19 @@ try{
   assert.match(await stale.innerText(),/autre onglet/);
   assert.equal(await b.locator('[data-testid="war-end-turn-review-v143"]').isDisabled(),true);
   assert.equal(await getTurn(b),2);
+  await c.bringToFront();
+  assert.equal(await c.locator('[data-testid="clan-war-foreign-tab-conflict-v144"]').count(),0);
+  assert.equal(await c.locator('[data-testid="war-end-turn-review-v143"]').isDisabled(),false);
+  assert.equal(await getTurn(c,THALASSA_KEY),null);
+  await commitTurn(c);
+  await c.waitForFunction(key=>{
+    try{return JSON.parse(localStorage.getItem(key)||"null")?.turn===2;}catch{return false;}
+  },THALASSA_KEY,{timeout:35000});
+  assert.equal(await getTurn(c,THALASSA_KEY),2);
+  assert.equal(await getTurn(c,WAR_KEY),2);
+  await c.screenshot({path:resolve(out,"01b-thalassa-turn-2-korthas-remains-2.png"),fullPage:false});
+  pass("Thalassa advances its own front without unlocking or mutating stale Korthas B",{K:2,T:2});
+  await b.bringToFront();
   await b.screenshot({path:resolve(out,"01-tab-b-stale-front-locked.png"),fullPage:false});
   pass("Passive storage event or focus check locks the stale second tab before any write",{newTurn:2,alert:true});
   let unexpectedDialogs=0;
@@ -172,6 +197,18 @@ try{
   assert.ok(secondFence&&secondFence.phase==="confirmed");
   assert.equal(JSON.parse(secondFence.after).turn,3);
   assert.equal(await a.evaluate(k=>localStorage.getItem(k),SENTINEL),"campaign-safe");
+  await c.bringToFront();
+  assert.equal(await c.locator('[data-testid="clan-war-foreign-tab-conflict-v144"]').count(),0);
+  assert.equal(await c.locator('[data-testid="war-end-turn-review-v143"]').isDisabled(),false);
+  assert.equal(await getTurn(c,THALASSA_KEY),2);
+  assert.equal(await getTurn(c,WAR_KEY),3);
+  const thalassaFence=await getFence(c,THALASSA_KEY);
+  assert.ok(thalassaFence&&thalassaFence.phase==="confirmed");
+  assert.equal(JSON.parse(thalassaFence.after).planetId,"thalassa");
+  assert.equal(JSON.parse(thalassaFence.after).turn,2);
+  assert.notEqual(thalassaFence.token,secondFence.token);
+  await c.screenshot({path:resolve(out,"03b-thalassa-isolated-after-korthas-turn-3.png"),fullPage:false});
+  await a.bringToFront();
   await a.screenshot({path:resolve(out,"03-tab-a-now-stale-after-tab-b.png"),fullPage:false});
   pass("Original tab becomes read-only after other tab's safe turn; IDB fence matches final mirror",{turn:3,fence:"confirmed"});
   await a.reload({waitUntil:"domcontentloaded"});
@@ -182,10 +219,11 @@ try{
   await a.screenshot({path:resolve(out,"04-reopen-original-tab-turn-3.png"),fullPage:false});
   pass("Returning to the original tab reloads real turn 3 with one atlas, no stale banner",{turn:3});
   assert.deepEqual(browserErrors,[]);
-  assert.equal(checks.length,6);
+  assert.equal(checks.length,8);
   const report={
-    schema:144,
-    scope:"Two REAL ClanWarPanelV85 mounts in one Chrome browser context sharing localStorage+IndexedDB. No GameClient menu navigation, no commercial 1:1 art approval.",
+    schema:145,
+    scope:"Three REAL ClanWarPanelV85 mounts (two Korthas, one Thalassa) in one Chrome context sharing localStorage+IndexedDB. No cloud or GameClient menu navigation, no 1:1 art approval.",
+    independentThalassaTurn:2,threeTabMultiPlanetCoverage:true,
     checks,actualTurn:3,foreignTabOverwritePrevented:true,idbFenceFinalPhase:"confirmed",
     unrelatedCampaignValue:"campaign-safe",oneToOneApproved:0,fullCampaignTested:false,
     browserErrors,loadedOptionalStaticAssets:servedAssets,
