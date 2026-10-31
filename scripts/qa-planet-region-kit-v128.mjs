@@ -248,6 +248,93 @@ try {
   }
   check("Two distinct region masks do not overlap", overlap === 0);
 
+  // V134: explicit device-only storage, reversible profile imports and
+  // application of identical quality/physical coast range across views.
+  await regionSelect.selectOption(regions[0]);
+  const priorLand = await landSelect.inputValue();
+  const editedLand = (await landSelect.locator("option").evaluateAll(options => options.map(x => x.value)))
+    .find(value => value !== priorLand);
+  check("V134 test region has an alternate material", Boolean(editedLand));
+  await landSelect.selectOption(editedLand);
+  await preview.getByTestId("planet-regional-quality-v131").selectOption("albedo");
+  await preview.getByTestId("planet-regional-coastal-v131").selectOption("1800");
+  await kit.getByTestId("planet-visual-save-v134").click();
+  const visualStorageKey = "yautja:planet-visual-profile:v134:" + encodeURIComponent(code);
+  const storedV134 = await page.evaluate(key => {
+    const source = window.localStorage.getItem(key);
+    return source ? JSON.parse(source) : null;
+  }, visualStorageKey);
+  check("V134 stores only exact-world visuals and not war progress", storedV134?.version === 134 &&
+    storedV134.worldCode === code && storedV134.kit.entries[0].landMaterialId === editedLand &&
+    storedV134.quality === "albedo" && storedV134.coastalInfluenceKm === 1800 &&
+    !JSON.stringify(storedV134).includes("combatants"));
+  await landSelect.selectOption(priorLand);
+  await preview.getByTestId("planet-regional-quality-v131").selectOption("pbr");
+  await preview.getByTestId("planet-regional-coastal-v131").selectOption("300");
+  await kit.getByTestId("planet-visual-restore-v134").click();
+  await page.waitForFunction(expected => {
+    const editor = document.querySelector('[data-testid="planet-regional-kit-v128"]');
+    return editor?.querySelector('select[id$="-kit-land"]')?.value === expected &&
+      editor.querySelector('[data-testid="planet-regional-quality-v131"]')?.value === "albedo" &&
+      editor.querySelector('[data-testid="planet-regional-coastal-v131"]')?.value === "1800";
+  }, editedLand, { timeout: 15000 });
+  check("V134 restores all visual fields without changing the planet", (await generator.getAttribute("data-preview-planet-code")) === code);
+  const profileExportEvent = page.waitForEvent("download", { timeout: 45000 });
+  await kit.getByTestId("planet-visual-export-v134").click();
+  const profileDownload = await profileExportEvent;
+  const profileFile = path.join(output, profileDownload.suggestedFilename());
+  await profileDownload.saveAs(profileFile);
+  const exportedV134 = JSON.parse((await readFile(profileFile)).toString("utf8"));
+  check("V134 portable JSON contains the same validated sidecar", exportedV134.version === 134 &&
+    exportedV134.worldCode === code && exportedV134.kit.entries[0].landMaterialId === editedLand);
+  await landSelect.selectOption(priorLand);
+  await kit.getByTestId("planet-region-kit-import-v128").setInputFiles(profileFile);
+  await page.waitForFunction(expected => {
+    const editor = document.querySelector('[data-testid="planet-regional-kit-v128"]');
+    return editor?.querySelector('select[id$="-kit-land"]')?.value === expected;
+  }, editedLand, { timeout: 15000 });
+  check("V134 portable JSON reimports through the existing V128 file picker",
+    (await preview.getByTestId("planet-regional-coastal-v131").inputValue()) === "1800");
+
+  // A damaged local file must be rejected, not silently replace a valid draft.
+  await page.evaluate(key => window.localStorage.setItem(key, "{invalid"), visualStorageKey);
+  await kit.getByTestId("planet-visual-restore-v134").click();
+  check("V134 rejects malformed device storage without altering draft",
+    (await landSelect.inputValue()) === editedLand &&
+    (await kit.getByTestId("planet-visual-storage-status-v134").innerText()).includes("rejetées"));
+  await kit.getByTestId("planet-visual-save-v134").click();
+
+  // A second tab simulates reload with the same browser storage. The world
+  // must be regenerated canonically, not cloned by mutating the source object.
+  const restoredTab = await context.newPage();
+  await restoredTab.goto(baseUrl + "/planet-generator-v103", { waitUntil: "domcontentloaded", timeout: 90000 });
+  const restoredGenerator = restoredTab.getByTestId("planet-generator-v103").filter({ visible: true });
+  await restoredGenerator.getByRole("button", { name: "Activer le générateur V115", exact: true }).click();
+  await restoredGenerator.getByRole("button", { name: "Générer l’aperçu", exact: true }).click();
+  await restoredTab.waitForFunction(() => [...document.querySelectorAll('[data-testid="planet-generator-v103"]')]
+    .some(el => !el.closest("[hidden]") && el.getAttribute("data-recipe-version") === "115"), null, { timeout: 90000 });
+  check("V134 reload regenerates the exact same canonical world",
+    (await restoredGenerator.getAttribute("data-preview-planet-code")) === code);
+  const restoredExporter = restoredGenerator.getByTestId("planet-layer-export-v102");
+  await restoredExporter.locator("summary").click();
+  const restoredKit = restoredExporter.getByTestId("planet-regional-kit-v128");
+  await restoredTab.waitForFunction(() => document.querySelector('[data-testid="planet-visual-storage-status-v134"]')
+    ?.textContent?.includes("conservé"), null, { timeout: 15000 });
+  check("V134 auto-restores the local material after reload, without applying it to the war",
+    (await restoredKit.getByRole("combobox", { name: "Sol compatible avec le biome" }).inputValue()) === editedLand &&
+    (await restoredGenerator.getByTestId("planet-main-kit-status-v133").innerText()).includes("native"));
+  await restoredKit.getByTestId("planet-regional-preview-toggle-v129").click();
+  check("V134 restores the shared PBR quality and coastal scale after reload",
+    (await restoredKit.getByTestId("planet-regional-quality-v131").inputValue()) === "albedo" &&
+    (await restoredKit.getByTestId("planet-regional-coastal-v131").inputValue()) === "1800");
+  await restoredTab.close();
+
+  await kit.getByTestId("planet-visual-delete-v134").click();
+  check("V134 deletion only clears the local key, not the live draft or the planet",
+    await page.evaluate(key => window.localStorage.getItem(key) === null, visualStorageKey) &&
+    (await landSelect.inputValue()) === editedLand &&
+    (await generator.getAttribute("data-preview-planet-code")) === code);
+
   await kit.screenshot({ path: path.join(output, "after-v128-regional-kit-desktop.png") });
   await page.setViewportSize({ width: 390, height: 844 });
   await kit.screenshot({ path: path.join(output, "after-v128-regional-kit-mobile.png") });
