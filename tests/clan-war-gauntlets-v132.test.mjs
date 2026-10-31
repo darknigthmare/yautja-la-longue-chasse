@@ -54,14 +54,14 @@ test("single live atlas, no combat patch, no duplicate campaign session and corr
   const locker=read("app/game/ClanWarGauntletLockerV132.tsx");
   assert.equal((panel.match(/<ClanWarAtlasV95\b/g)||[]).length,1);
   assert.equal((panel.match(/<ClanWarGauntletLockerV132\b/g)||[]).length,1);
-  assert.match(panel,/gauntletStorageKeyV132\(save.createdAt\)/);
+  assert.match(panel,/useHunterGauntletV133\(save.createdAt, save.profile.rankId\)/);
   assert.match(panel,/gauntletUnlockedV132\(id,save.profile.rankId\)/);
   assert.match(stage,/data-gauntlet-model=\{equipped.id\}/);
   assert.match(stage,/gauntletId: string;/);
   assert.match(vector,/data-art-validation="blockout-awaiting-source-review"/);
   assert.match(vector,/profile==="feral"/);
   assert.match(vector,/profile==="badlands"/);
-  assert.match(locker,/disabled=\{!available\|\|equippedId===item.id\}/);
+  assert.match(locker,/disabled=\{disabled\|\|!available\|\|equippedId===item.id\}/);
   for(const p of ["app/game/HunterGauntletArtV132.tsx","app/game/ClanWarGauntletLockerV132.tsx"]) {
     assert.ok(!read(p).includes("advanceWarTurnV85("));
     assert.ok(!read(p).includes("queueWarOrderV85("));
