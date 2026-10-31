@@ -19,6 +19,10 @@ const FAMILIES: Readonly<Record<KnownHunterGauntletV135,{
 const LAYERS=["01-forearm.svg","02-shell.svg","03-panel.svg","04-cover.svg"] as const;
 export const KNOWN_HUNTER_GAUNTLETS_V135 = Object.freeze(Object.keys(FAMILIES) as KnownHunterGauntletV135[]);
 export const KNOWN_HUNTER_V135_LAYERS = LAYERS;
+export function isKnownHunterGauntletV135(id:string):id is KnownHunterGauntletV135 {
+  return Object.prototype.hasOwnProperty.call(FAMILIES,id);
+}
+
 
 export default function GauntletKnownHuntersV135({variant,coverOpen=true}:{
   variant:KnownHunterGauntletV135;
