@@ -31,7 +31,10 @@ test("gauntlet UI integrates with the REAL ship armory, character and clan war",
   assert.match(game,/data-testid="hunter-gauntlet-slot-v133"/);
   assert.match(game,/useHunterGauntletV133\(save.createdAt,save.profile.rankId,save.gauntletV134\)/);
   assert.match(game,/gauntletVariantId=\{hunterGauntlet.equippedId\}/);
-  assert.equal((game.match(/gauntletVariantId=\{hunterGauntlet.equippedId\}/g)||[]).length,3);
+  // Three preview rigs and the REAL HuntCanvas now share the equipped V141 identity.
+  assert.equal((game.match(/gauntletVariantId=\\{hunterGauntlet.equippedId\\}/g)||[]).length,4);
+  const huntElement=game.slice(game.indexOf("<HuntCanvas"),game.indexOf("<HuntCanvas")+1250);
+  assert.match(huntElement,/gauntletVariantId=\\{hunterGauntlet.equippedId\\}/);
   assert.match(rig,/data-gauntlet-equipped=\{selectedGauntlet\?\.id \?\? "jungle-hunter"\}/);
   assert.match(rig,/data-gauntlet-visual-validation="individual-v139-rig-blockout-not-film-approved"/);
   assert.match(panel,/useHunterGauntletV133\(save.createdAt, save.profile.rankId,save.gauntletV134\)/);
