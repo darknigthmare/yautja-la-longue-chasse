@@ -22,3 +22,13 @@ La CI `.github/workflows/clan-war-v142.yml` lance `tests/clan-war-four-modes-v14
 Le fichier `docs/clan-war-v142/Yautja_Guerres_Clans_Suivi_Production_V142_2026-10-31.xlsx` prolonge les **59 onglets V141**, les **1 200 variantes design-only**, les 24 missions RTS W3, 12 cartes et 36 dossiers W5. Les nouveaux états CI et vérifications manuelles sont distincts. Il doit être testé sur ses **octets réels dans GitHub** avant fusion.
 
 **Non livré :** 1 200 niveaux réels, guerre totale multi-clans, sauvegarde/garnisons V85 persistantes, serveur coop/PvP, sprites et armes cinématographiques attestés 1:1, QA manette/navigateur et déploiement Vercel. Les ordres et coûts AP/RAV supplémentaires sont des règles **originales du jeu**, pas une assertion de continuité Predator, comics ou PHG.
+
+## Suivi V142 effectivement versionné et statut GitHub Actions
+
+Le fichier `docs/clan-war-v142/Yautja_Guerres_Clans_Suivi_Production_V142_2026-10-31.xlsx` prolonge **les 59 feuilles V141 par sept nouveaux onglets**, soit **66 feuilles**. Il contient **72 exigences** (18 par mode), **80 contrôles QA** (20 par mode), **40 contrats inter-modes**, toutes les références QA résolues et un dashboard calculé par formules.
+
+Le commit `45dc5c6` a validé **129/129 tests Node**, TypeScript et ESLint, [GitHub Actions 41217778517](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41217778517). La synthèse indique **46 exigences en CI ciblée**, **8 prototypes partiels**, **18 à développer**, **64 contrôles QA en CI ciblée** et **16 procédures manuelles ouvertes**.
+
+Le nouveau test `tests/clan-war-production-v142.test.mjs` vérifie les octets du **véritable classeur GitHub** : 66 feuilles, 72 IDs de production, 80 QA, 40 croisements, préservation des 1 200 missions V120 design-only, 24 missions W3 RTS, 12 cartes et 36 missions W5, ainsi que l'absence d'erreurs de formule.
+
+**Important :** validation du code ≠ validation de la version Excel committée tant que la CI de son dernier commit n'a pas réussi.
