@@ -56,7 +56,7 @@ try{
   results.push({test:"Real holographic wrapper retains one child atlas",status:"PASS"});
   await page.getByRole("button",{name:"Vue classique"}).click();
   assert.equal(await stage.getAttribute("data-war-presentation"),"classic");
-  assert.equal(await stage.locator("> div").first().isVisible(),false);
+  assert.equal(await stage.locator(":scope > div").first().isVisible(),false);
   assert.equal(await camera.inputValue(),"CAMERA-ZOOM-88");
   assert.match(await page.getByRole("button",{name:/Ajouter ordre témoin/}).innerText(),/1/);
   await page.screenshot({path:resolve(out,"02-true-wrapper-classic.png"),fullPage:false});
