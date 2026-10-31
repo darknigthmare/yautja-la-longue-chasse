@@ -28,6 +28,9 @@ import {
  warStealthGuardVisibleV138,warStealthSoundBearingV138,
 } from "./systems/clanWarParallelModesV138";
 import {warOuterWeightedProgressV141} from "./systems/clanWarOuterWeightedProgressV141";
+import {warOuterRouteChoicesV142} from "./systems/clanWarOuterChoicesV142";
+import {issueWarAssaultFocusV142} from "./systems/clanWarFocusV142";
+import {planWarStealthStepV142,commandWarStealthStepV142} from "./systems/clanWarStealthPathV142";
 import styles from "./ClanWarOperationsV115.module.css";
 
 const modeLabels: Record<WarMissionModeV115, string> = {
@@ -53,6 +56,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
     rules.territories.find(item=>item.id===sourcePilotSiteId)?.id??rules.territories[1]?.id??"":
     rules.territories[1]?.id??"");
   const [selectedIds,setSelectedIds]=useState<string[]>([]);
+  const [outerRouteChoice,setOuterRouteChoice]=useState("");
   const [rtsSelectedId,setRtsSelectedId]=useState("");
   const [rtsScenarioId,setRtsScenarioId]=useState<"free"|WarSourceRtsScenarioIdV119>(initialScenarioId??"free");
   const [recruitUnitId,setRecruitUnitId]=useState(rules.units[8]?.id??rules.units[0]?.id??"");
@@ -203,7 +207,12 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
   const careMedic=freeMedics.find(team=>team.id===careMedicTeamId);
   const careFee=rules.units.find(unit=>unit.id==="W3-U18")?.upkeepRav??0;
   const missionPc=selectedIds.reduce((pc,id)=>pc+(rules.units.find(unit=>unit.id===world.teams.find(team=>team.id===id)?.unitId)?.commandPoints??0),0);
-  const routePreview=missionPc>0&&missionPc<=rules.parameters.pc_cap_1?planWarRouteV6(world.baseId,targetId,missionPc,[],rules):null;
+  const routePreview=missionPc>0&&missionPc<=rules.parameters.pc_cap_1?
+    planWarRouteV6(world.baseId,targetId,missionPc,[],rules):null;
+  const routeOptions=mode==="outer"&&missionPc>0&&missionPc<=rules.parameters.pc_cap_1?
+    warOuterRouteChoicesV142(world.baseId,targetId,missionPc,rules):[];
+  const selectedOuterRoute=routeOptions.find(item=>item.id===outerRouteChoice)??
+    routeOptions.find(item=>item.isPrimary);
   const current=world.active;
   const assault=current?.mode==="assault"?current.assault:undefined;
   const stealth=current?.mode==="stealth"?current.stealth:undefined;
@@ -216,7 +225,8 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
 
   function start() {
     const result=beginWarOperationV115(worldRef.current,mode,targetId,selectedIds,rules,Date.now(),focus,
-      mode==="rts"&&rtsScenarioId!=="free"?rtsScenarioId:null);
+      mode==="rts"&&rtsScenarioId!=="free"?rtsScenarioId:null,
+      mode==="outer"?selectedOuterRoute?.passageIds:undefined);
     if(result.accepted && mode==="rts") {
       setRtsSelectedId(result.state.active?.teamIds[0]??"");
       const enabled=toggleWarRtsRealtimeV115(result.state,true);
@@ -275,6 +285,16 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
           <select value={focus} onChange={event=>setFocus(event.target.value as OuterFocusV115)}>
             {(Object.keys(focusLabels) as OuterFocusV115[]).map(key=><option value={key} key={key}>{focusLabels[key]}</option>)}
           </select>
+        </label>}
+        {mode==="outer"&&routeOptions.length>0&&<label>Itinéraire de convoi V6 autorisé
+          <select value={selectedOuterRoute?.id??""} onChange={event=>setOuterRouteChoice(event.target.value)}>
+           {routeOptions.map(path=><option value={path.id} key={path.id}>
+             {path.isPrimary?"Trajet optimal":"Alternative légale"} · {path.cost} coût V6 · {path.passageIds.length} passages
+           </option>)}
+          </select>
+          <small className={styles.path}>Trajet réellement prévu : {selectedOuterRoute?.passageIds.join(" → ")}.
+           Conditions publiques : {selectedOuterRoute?.conditionLabels.join(" / ")}.
+           Les équipes doivent pouvoir traverser chaque passage selon leur PC.</small>
         </label>}
         {mode==="rts"&&<div className={styles.sourceScenario}>
           <label>Objectif RTS
@@ -380,6 +400,23 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
       {assault && <div>
         <p>Vagues régionales : <strong>{assault.wavesIssued??0} / {warAssaultWaveProfileV140(world.active?.targetId??world.baseId,rules).maximumWaves}</strong> · profils d&apos;unités de la Bible V6 : {(assault.rivalRosterIds??[]).join(", ")||"archive V115 à initialiser"}.</p>
         <p className={styles.explain}>V141 : échanges de tirs simulés simultanément au cours du même tour. Aucun combattant ne peut passer à travers un front ennemi ou se déplacer en dehors de la voie.</p>
+        <div className={styles.cards}>
+         {assault.actors.filter(u=>u.side==="ally"&&u.hp>0&&u.teamId).map(ally=>{
+          const unit=rules.units.find(u=>u.id===ally.unitId);
+          const range=Math.max(5,Math.min(22,(unit?.range??1)*2+3));
+          const foes=assault.actors.filter(enemy=>enemy.side==="rival"&&enemy.hp>0&&
+            Math.abs(enemy.x-ally.x)<=range&&
+            !assault.actors.some(other=>other.side==="rival"&&other.hp>0&&other.id!==enemy.id&&
+              Math.abs(other.x-ally.x)<Math.abs(enemy.x-ally.x)));
+          return <div key={"focus-"+ally.id}>{foes.map(enemy=><button type="button"
+           key={enemy.id} disabled={blocked||assault.ap<12||
+             (assault.focusUsedIds??[]).includes(ally.teamId!)}
+           onClick={()=>commit(issueWarAssaultFocusV142(worldRef.current,ally.teamId!,enemy.id,rules))}>
+           Priorité de tir · {ally.unitId} → {enemy.unitId} (12 AP, une salve)
+          </button>)}</div>;
+         })}
+        </div>
+        <p className={styles.explain}>V142 : une seule priorité de tir par équipe pendant ce combat. Le bonus ponctuel demande portée réelle et cible sans autre ennemi interposé ; aucun tir à distance infinie.</p>
         <p>Points d&apos;assaut <strong>{assault.ap} AP</strong> · Cadence <strong>niveau {assault.apLevel??1}/3</strong> · Réserve maximale <strong>{100+((assault.apLevel??1)-1)*35} AP</strong> · Rempart allié <strong>{assault.ownBase}/80</strong> · Rempart adverse <strong>{assault.rivalBase}/80</strong>. Les équipes avancent et engagent automatiquement ; vous décidez du moment du déploiement.</p>
         <div className={styles.cards}>
           <button type="button" disabled={blocked||(assault.apLevel??1)>=3||assault.ap<((assault.apLevel??1)===1?35:55)}
@@ -479,6 +516,13 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
         <p className={styles.explain}>Patrouille : {guardVisible?"visible à portée réelle":
           soundBearing?("bruit perçu vers "+soundBearing+" · position exacte inconnue"):
           "hors du champ de perception ; aucune position exacte affichée"}.</p>
+        <button type="button" disabled={blocked||
+          !planWarStealthStepV142(world,stealth.sabotaged?"extraction":"relay",rules)}
+          onClick={()=>commit(commandWarStealthStepV142(worldRef.current,
+            stealth.sabotaged?"extraction":"relay",rules))}>
+          Avancer d&apos;une case sur le chemin sûr vers {stealth.sabotaged?"l'extraction":"le relais"}
+        </button>
+        <p className={styles.explain}>Aide à la navigation V142 : une case à la fois par une vraie entrée du terrain ; la patrouille réagit normalement et ses positions cachées ne sont pas utilisées pour calculer le chemin.</p>
         <div className={styles.grid} style={{gridTemplateColumns:"repeat(9,minmax(0,1fr))"}} role="img" aria-label="Plan d'infiltration : X pisteur, G uniquement si visible, R relais, E extraction et obstacles">
           {Array.from({length:54},(_,index)=>{
             const x=index%9,y=Math.floor(index/9),wall=Boolean(missionTerrain?.walls.includes(x+","+y));

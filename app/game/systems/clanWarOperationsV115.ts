@@ -11,6 +11,7 @@ import { warMissionTerrainV116, warTerrainCellBlockedV116, warTerrainLineOfSight
 import { warRtsNextPathStepV118 } from "./clanWarTacticalNavigationV118";
 import {warStealthPatrolSpawnV140} from "./clanWarStealthPatrolV140";
 import {warStealthDecoyPatrolV141} from "./clanWarStealthDecoyV141";
+import {warOuterRouteChoicesV142} from "./clanWarOuterChoicesV142";
 import {warAssaultContactV141} from "./clanWarAssaultContactV141";
 
 /**
@@ -36,6 +37,9 @@ export interface WarAssaultV115 {
   fallbackCounts?: Record<string,number>;
   /** Source-pinned finite rival wave study; no newly invented V6 unit types. */
   rivalRosterIds?: string[];wavesIssued?:number;
+  /** V142: one physical priority target per deployed group. */
+  focusOrders?:Record<string,{targetId:string;expiresAtTick:number}>;
+  focusUsedIds?:string[];
 }
 export interface WarStealthV115 { x: number; y: number; guardX: number;guardY?:number; guardDirection: -1 | 1; alarm: number; cloaked: boolean; energy: number; sabotaged: boolean;
   /** V135 sound diversion at the hunter's physical position; no canonical device assumed. */
@@ -72,6 +76,8 @@ export interface WarOuterMissionV115 {
   fieldSignal?: {transmittedAt:number;assessment:"voie-stable"|"terrain-expose"|"transit-complexe";
     passages:number;fitMembers:number};
   departureContext?: {intel:boolean;weakened:boolean;escorted:boolean;pressure:number};
+  /** V142 authorized alternative passage selection; optional for old archives. */
+  routeChoiceId?:string;
 }
 export interface WarMissionReportV115 {
   id: string; mode: WarMissionModeV115; focus: OuterFocusV115 | null;
@@ -274,10 +280,13 @@ export function beginWarOperationV115(
   state: WarOperationsStateV115, mode: WarMissionModeV115, targetId:string,
   teamIds:string[], rules:WarRulesV6, now:number, focus:OuterFocusV115 = "recon",
   rtsScenarioId: WarSourceRtsScenarioIdV119 | null = null,
+  selectedOuterPassageIds?:readonly string[],
 ): WarOperationsUpdateV115 {
   if (!["assault","outer","stealth","rts"].includes(mode) || !Number.isSafeInteger(now) || now < 0) return reject(state,"Ordre ou horodatage invalide.");
   const issue = warMissionEligibleV115(state,rules,targetId,teamIds);
   if (issue) return reject(state,issue);
+  if (mode !== "outer" && selectedOuterPassageIds!==undefined)
+    return reject(state,"Un itinéraire délégué ne peut pas modifier une mission jouable.");
   if (mode !== "outer" && state.active) return reject(state,"Une mission jouable est déjà en cours.");
   if (mode === "outer" && (state.outer.length >= 3 || !["recon","intercept","escort"].includes(focus))) return reject(state,"Trois opérations déléguées au maximum, avec un mandat valide.");
   if (mode === "stealth" && teamIds.length > 2) return reject(state,"Une infiltration mobilise au plus deux équipes.");
@@ -290,10 +299,18 @@ export function beginWarOperationV115(
   const { id, state: reserved } = reserve(state,targetId,teamIds,rules);
   if (mode === "outer") {
     const pc = teamIds.reduce((count,teamId) => count + unitFor(rules,ownTeam(state,teamId)!.unitId)!.commandPoints,0);
-    const route = planWarRouteV6(state.baseId,targetId,pc,[],rules)!;
-    const duration = Math.max(20000,30000 + route.passageIds.length * 10000 - (state.escortedIds.includes(targetId)?10000:0)); // exercise timing, not a workbook value
+    const routes=warOuterRouteChoicesV142(state.baseId,targetId,pc,rules);
+    const choice=selectedOuterPassageIds===undefined?
+      routes.find(v=>v.isPrimary):routes.find(v=>
+        v.passageIds.join("|")===selectedOuterPassageIds.join("|"));
+    if(!choice)return reject(state,"Route V6 impossible, hors capacité PC, interrompue ou non proposée au détachement.");
+    const primary=routes.find(v=>v.isPrimary)!;
+    const duration = Math.max(20000,30000 + choice.passageIds.length*10000 +
+      Math.max(0,choice.cost-primary.cost)*2000-
+      (state.escortedIds.includes(targetId)?10000:0)); // bounded source-weighted exercise estimate
     const order:WarOuterMissionV115 = {id,targetId,teamIds:[...teamIds],focus,
-      startedAt:now,dueAt:now+duration,routeIds:route.passageIds,
+      startedAt:now,dueAt:now+duration,routeIds:[...choice.passageIds],
+      routeChoiceId:choice.id,
       departureContext:{intel:state.intelIds.includes(targetId),
         weakened:state.weakenedIds.includes(targetId),
         escorted:state.escortedIds.includes(targetId),
@@ -475,7 +492,8 @@ export function stepAssaultV115(state:WarOperationsStateV115,rules:WarRulesV6):W
   }
   // Damage is a simultaneous exchange: array processing order no longer
   // changes who was able to strike during this same tactical second.
-  const exchange=warAssaultContactV141(actors,rules,arena.heldUntil??{},tick);
+  const exchange=warAssaultContactV141(actors,rules,arena.heldUntil??{},tick,
+    arena.focusOrders??{});
   const ownBase=arena.ownBase-exchange.ownBaseDamage;
   const rivalBase=arena.rivalBase-exchange.rivalBaseDamage;
   const wounds=unique([...arena.fallen,...exchange.actors
@@ -484,6 +502,9 @@ export function stepAssaultV115(state:WarOperationsStateV115,rules:WarRulesV6):W
   const nextArena={...arena,ap:clamp(arena.ap+9+(level-1)*4,0,100+(level-1)*35),ownBase:Math.max(0,ownBase),rivalBase:Math.max(0,rivalBase),
     actors:exchange.actors.filter(actor=>actor.hp>0),fallen:wounds,
     rivalRosterIds:[...roster],wavesIssued,
+    focusOrders:Object.fromEntries(Object.entries(arena.focusOrders??{})
+      .filter(([teamId,order])=>!exchange.focusedTeamIds.includes(teamId)&&
+        order.expiresAtTick>tick)),
     heldUntil:Object.fromEntries(Object.entries(arena.heldUntil??{}).filter(([,until])=>until>tick))};
   const advanced={...state,clock:state.clock+1,active:{...mission,tick,assault:nextArena}};
   if(rivalBase<=0 || ownBase<=0 || tick>=95) {
@@ -963,6 +984,12 @@ export function readWarOperationsV115(raw:string,rules:WarRulesV6):WarOperations
     if(v.outer.some(order=>!isTextId(order.id)||!sites.has(order.targetId)||!Array.isArray(order.teamIds)||
       !order.teamIds.length||order.teamIds.some(id=>!ownTeam(v,id))||!Number.isSafeInteger(order.dueAt)||
       !Number.isSafeInteger(order.startedAt)||order.startedAt<0||order.dueAt<=order.startedAt||order.dueAt-order.startedAt>86400000||
+      (order.routeChoiceId!==undefined&&(
+        typeof order.routeChoiceId!=="string"||
+        !warOuterRouteChoicesV142(v.baseId,order.targetId,
+          order.teamIds.reduce((total,id)=>total+(unitFor(rules,ownTeam(v,id)?.unitId??"")?.commandPoints??0),0),rules)
+          .some(choice=>choice.id===order.routeChoiceId&&
+            choice.passageIds.join("|")===order.routeIds.join("|"))))||
       (order.departureContext!==undefined&&(!order.departureContext||
         typeof order.departureContext!=="object"||
         Array.isArray(order.departureContext)||
@@ -1037,6 +1064,21 @@ export function readWarOperationsV115(raw:string,rules:WarRulesV6):WarOperations
         !Array.isArray(a.fortifiedIds??[])||
         !Array.isArray(a.holdIssuedIds??[])||
         !Array.isArray(a.extractedIds??[])||
+        (a.focusUsedIds!==undefined&&(!Array.isArray(a.focusUsedIds)||
+          a.focusUsedIds.length>4||
+          a.focusUsedIds.some(id=>!a.launched.includes(id))||
+          unique(a.focusUsedIds).length!==a.focusUsedIds.length))||
+        (a.focusOrders!==undefined&&(!a.focusOrders||
+          typeof a.focusOrders!=="object"||Array.isArray(a.focusOrders)||
+          Object.keys(a.focusOrders).length>4||
+          Object.entries(a.focusOrders).some(([id,order])=>
+            !(a.focusUsedIds??[]).includes(id)||
+            !order||typeof order!=="object"||
+            !a.launched.includes(id)||
+            !isTextId(order.targetId)||
+            !Number.isSafeInteger(order.expiresAtTick)||
+            order.expiresAtTick<=active.tick||
+            order.expiresAtTick>active.tick+2)))||
         (a.rivalRosterIds!==undefined&&(!Array.isArray(a.rivalRosterIds)||
           a.rivalRosterIds.length<1||a.rivalRosterIds.length>4||
           unique(a.rivalRosterIds).length!==a.rivalRosterIds.length||

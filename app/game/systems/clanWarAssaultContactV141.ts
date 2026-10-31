@@ -10,6 +10,7 @@ export interface WarAssaultContactV141 {
  ownBaseDamage:number;rivalBaseDamage:number;
  shots:{attackerId:string;targetId:string;damage:number}[];
  advancements:{actorId:string;from:number;to:number}[];
+ focusedTeamIds:string[];
 }
 const clamp=(x:number,min:number,max:number)=>Math.max(min,Math.min(max,x));
 const sourceUnit=(rules:WarRulesV6,id:string)=>rules.units.find(u=>u.id===id);
@@ -17,20 +18,29 @@ const sourceUnit=(rules:WarRulesV6,id:string)=>rules.units.find(u=>u.id===id);
 export function warAssaultContactV141(
  original:readonly WarMissionActorV115[],rules:WarRulesV6,
  heldUntil:Readonly<Record<string,number>>,tick:number,
+ focusOrders:Readonly<Record<string,{targetId:string;expiresAtTick:number}>>={},
 ):WarAssaultContactV141{
  const alive=original.filter(a=>a.hp>0);
  const harm=new Map<string,number>();
  const shots:WarAssaultContactV141["shots"]=[];
+ const focusedTeamIds:string[]=[];
  const movers:{actor:WarMissionActorV115;speed:number}[]=[];
  for(const actor of alive){
   const unit=sourceUnit(rules,actor.unitId);
   const range=clamp((unit?.range??1)*2+3,5,22);
-  const hostile=alive.filter(other=>other.side!==actor.side&&other.hp>0)
-   .sort((a,b)=>Math.abs(actor.x-a.x)-Math.abs(actor.x-b.x)||a.id.localeCompare(b.id))[0];
+  const opponents=alive.filter(other=>other.side!==actor.side&&other.hp>0)
+   .sort((a,b)=>Math.abs(actor.x-a.x)-Math.abs(actor.x-b.x)||a.id.localeCompare(b.id));
+  const ordered=actor.side==="ally"&&actor.teamId?focusOrders[actor.teamId]:undefined;
+  const focus=ordered&&ordered.expiresAtTick>=tick?
+    opponents.find(other=>other.id===ordered.targetId&&
+      Math.abs(actor.x-other.x)<=range&&!opponents.some(blocker=>
+        blocker.id!==other.id&&Math.abs(blocker.x-actor.x)<Math.abs(other.x-actor.x))) : undefined;
+  const hostile=focus??opponents[0];
   if(hostile&&Math.abs(actor.x-hostile.x)<=range){
-   const damage=clamp(Math.ceil((unit?.attack??3)/3),2,15);
+   const damage=clamp(Math.ceil((unit?.attack??3)/3),2,15)+(focus?1:0);
    harm.set(hostile.id,(harm.get(hostile.id)??0)+damage);
    shots.push({attackerId:actor.id,targetId:hostile.id,damage});
+   if(focus&&actor.teamId)focusedTeamIds.push(actor.teamId);
   }else if(!(actor.side==="ally"&&actor.teamId&&
      (heldUntil[actor.teamId]??0)>tick)){
    movers.push({actor,speed:clamp(2+(unit?.mobility??1)*.25,2,5)});
@@ -71,7 +81,7 @@ export function warAssaultContactV141(
   if(actor.side==="ally"&&actor.x>=94){rivalBaseDamage+=damage;actor.x=94;}
   else if(actor.side==="rival"&&actor.x<=6){ownBaseDamage+=damage;actor.x=6;}
  }
- return {actors:next,ownBaseDamage,rivalBaseDamage,shots,advancements:
+ return {actors:next,ownBaseDamage,rivalBaseDamage,shots,focusedTeamIds,advancements:
   movers.map(({actor})=>({actorId:actor.id,from:actor.x,
    to:amendments.get(actor.id)??actor.x}))};
 }

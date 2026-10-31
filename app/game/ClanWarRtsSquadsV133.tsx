@@ -9,6 +9,7 @@ import {
 } from "./systems/clanWarRtsSquadsV133";
 import {WAR_SOURCE_RTS_IDS_V129} from "./systems/clanWarRtsSourceMissionsV129";
 import {warMapLineOfSightV128} from "./systems/clanWarSourceMapsV128";
+import {planWarRtsWaypointV142,commandWarRtsWaypointV142,type WarRtsWaypointV142} from "./systems/clanWarRtsWaypointV142";
 import styles from "./ClanWarRtsSquadsV133.module.css";
 
 const d=(a:{x:number;y:number},b:{x:number;y:number})=>Math.abs(a.x-b.x)+Math.abs(a.y-b.y);
@@ -184,6 +185,15 @@ export default function ClanWarRtsSquadsV133({rules}:{rules:WarRulesV6}){
       disabled={selected.status!=="active"}
       onClick={()=>send({kind:"move",squadId:selected.id,direction:dir.id})}>{dir.label}</button>)}</div>
      <div className={styles.commandGrid}>
+      {(["observation","objective","extraction"] as WarRtsWaypointV142[]).map(goal=>{
+       const step=planWarRtsWaypointV142(state,selected.id,goal);
+       return <button type="button" key={"waypoint-"+goal}
+        disabled={!step||selected.status!=="active"}
+        title={step?"Prochain pas : "+step.direction+" ; reste "+step.remainingCells+" cases":"Terrain ou objectif non accessible"}
+        onClick={()=>apply(commandWarRtsWaypointV142(state,selected.id,goal))}>
+        Guidage V142 · {goal==="observation"?"reconnaissance":goal==="objective"?"objectif observé":"extraction"} · 1 case
+       </button>;
+      })}
       {(["observe","interact","wait","power","stabilize","pickup","extract","retreat"] as const).map(kind=><button
        type="button" key={kind} disabled={selected.status!=="active"}
        onClick={()=>action(kind)}>{({observe:"Reconnaître",interact:"Interagir",wait:"Attendre / tenir",power:"Réseau électrique",
