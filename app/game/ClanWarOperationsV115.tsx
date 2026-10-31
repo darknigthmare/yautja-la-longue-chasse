@@ -20,6 +20,7 @@ import {
 } from "./systems/clanWarOperationsV115";
 import {reinforceWarAssaultLineV135,redirectWarOuterOpsV135} from "./systems/clanWarParallelModesV135";
 import {orderWarAssaultHoldV136,supplyWarOuterMissionV136} from "./systems/clanWarParallelModesV136";
+import {withdrawWarAssaultSquadV137,orderWarOuterReconHaltV137} from "./systems/clanWarParallelModesV137";
 import styles from "./ClanWarOperationsV115.module.css";
 
 const modeLabels: Record<WarMissionModeV115, string> = {
@@ -425,6 +426,16 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
           </button>;
         })}</div>
         <p className={styles.explain}>Tenue V136 : une équipe présente près de sa base conserve sa position pendant trois tours, mais continue à riposter à portée. L&apos;ordre ne crée pas de renfort et n&apos;agit pas sur la campagne V85.</p>
+        <div className={styles.cards}>{current.teamIds.filter(id=>assault.launched.includes(id)).map(id=>{
+          const defender=assault.actors.find(actor=>actor.teamId===id&&actor.side==="ally"&&actor.hp>0);
+          const withdrawn=(assault.extractedIds??[]).includes(id);
+          return <button type="button" key={"withdraw-"+id}
+           disabled={blocked||withdrawn||!defender||defender.x>18||assault.ap<10}
+           onClick={()=>commit(withdrawWarAssaultSquadV137(worldRef.current,id,rules))}>
+           {teamsById(id)} · évacuer vivant (10 AP){withdrawn?" · extrait":""}
+          </button>;
+        })}</div>
+        <p className={styles.explain}>Un soldat déjà déployé doit revenir près du bastion pour être extrait. Son identité reste réservée et il ne peut pas être redéployé gratuitement pendant cette bataille.</p>
         <p className={styles.explain}>Action coordonnée limitée à une fois par détachement survivant, uniquement si une cible adverse se trouve dans sa portée V6. Aucun nouveau projectile ou équipement n&apos;est créé.</p>
         <p className={styles.explain}>Art temporaire schématique : aucun sprite de film ou de Predator: Hunting Grounds n&apos;est faussement déclaré intégré.</p>
       </div>}
@@ -445,6 +456,20 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
                 (stealth.usedCoverIds??[]).includes(stealth.x+","+stealth.y)||
                 (stealth.alarm===0&&stealth.energy===5)))} onClick={()=>commit(commandStealthV115(worldRef.current,action,rules))}>
             {({up:"↑ Nord",left:"← Ouest",down:"↓ Sud",right:"→ Est",cloak:stealth.cloaked?"Désactiver camouflage":"Camouflage optique",interact:"Saboter le relais",wait:"Attendre / récupérer énergie",decoy:"Diversion sonore (2 énergie)",hide:"Se dissimuler dans le couvert"} as Record<string,string>)[action]}</button>)}</div>
+        <div className={styles.stealthControls}>
+         {(["cover-up","cover-left","cover-down","cover-right"] as const).map(action=>{
+          const direction=action.slice(6);
+          const x=stealth.x+(direction==="right"?1:direction==="left"?-1:0);
+          const y=stealth.y+(direction==="down"?1:direction==="up"?-1:0);
+          const validCover=Boolean(missionTerrain?.cover.includes(x+","+y));
+          return <button type="button" key={action}
+           disabled={blocked||!validCover||stealth.cloaked||stealth.energy<1||(stealth.silentStepsUsed??0)>=2}
+           onClick={()=>commit(commandStealthV115(worldRef.current,action,rules))}>
+           {({up:"↑",down:"↓",left:"←",right:"→"} as Record<string,string>)[direction]} Pas couvert · 1 énergie
+          </button>;
+         })}
+        </div>
+        <p className={styles.explain}>V137 : deux déplacements protégés possibles par infiltration, uniquement vers une case de couvert adjacente. Les gardes à proximité immédiate conservent leur ligne de vue. Pas de camouflage illimité.</p>
         <p className={styles.explain}>La patrouille réagit à la position et au sabotage. Le camouflage protège à distance mais possède une réserve finie ; aucune exécution déshonorante n&apos;est requise.</p>
       </div>}
 
@@ -575,8 +600,15 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
           </div>}
         {order.retask&&<small className={styles.explain}>Consigne réorientée depuis {focusLabels[order.retask.oldFocus]}, sans nouvel entretien ni rapport anticipé.</small>}
         {order.fieldSupport&&<small className={styles.explain}>Soutien de terrain V136 : {order.fieldSupport.paidRav} RAV engagés à {order.fieldSupport.allocatedAt} ; aucune victoire anticipée.</small>}
+        {order.reconHalt&&<small className={styles.explain}>Halte V137 : ancienne échéance {order.reconHalt.originalDueAt}, nouveau rapport après 15 secondes supplémentaires ; effectifs et route inchangés.</small>}
+        {!order.recall&&!order.reconHalt&&(order.focus==="recon"||order.focus==="escort")&&
+          now>=order.startedAt&&2*(now-order.startedAt)<(order.reconHalt?.originalDueAt??order.dueAt)-order.startedAt&&
+          <button type="button" disabled={blocked}
+           onClick={()=>commit(orderWarOuterReconHaltV137(worldRef.current,order.id,Date.now(),rules))}>
+           Halte de reconnaissance · +15 secondes, meilleure préparation
+          </button>}
         {!order.recall&&!order.fieldSupport&&now>=order.startedAt&&
-          2*(now-order.startedAt)<order.dueAt-order.startedAt&&
+          2*(now-order.startedAt)<(order.reconHalt?.originalDueAt??order.dueAt)-order.startedAt&&
           <button type="button" disabled={blocked||world.rav<2}
             onClick={()=>commit(supplyWarOuterMissionV136(worldRef.current,order.id,Date.now(),rules))}>
             Envoyer des fournitures de terrain · 2 RAV
