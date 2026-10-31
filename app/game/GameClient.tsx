@@ -267,6 +267,7 @@ import { normalizeHomeworldExpeditionProof, type HomeworldExpeditionProof } from
 import { useHunterGauntletV133 } from "./systems/useHunterGauntletV133";
 import { gauntletCampaignClaimV134,gauntletCampaignEquipV134 } from "./systems/gauntletCampaignV134";
 import { gauntletByIdV132, type GauntletThemeV132 } from "./systems/clanWarGauntletCatalogV132";
+import { captureHuntGauntletV142, resumeHuntGauntletV142 } from "./systems/huntGauntletIdentityV142";
 
 const HomeworldExpedition = React.lazy(() => import("./HomeworldExpedition"));
 const GlassDesertExpedition = React.lazy(() => import("./GlassDesertExpedition"));
@@ -397,6 +398,8 @@ interface ActiveHuntSession {
 interface HuntResumePayload {
   snapshot: JsonObject;
   retryCheckpoint: JsonObject | null;
+  /** Preserves the mission-start cosmetic; no extra reward or unlock. */
+  gauntletVariantId: string;
 }
 
 /** Main-save exploration never changes the hunt owner or consumes an attempt. */
@@ -429,11 +432,12 @@ function isJsonObject(value: unknown): value is JsonObject {
   return typeof value === "object" && value !== null && !Array.isArray(value);
 }
 
-function huntConfiguration(save: SaveGame, elapsed = 0): JsonObject {
+function huntConfiguration(save: SaveGame, gauntletVariantId: string, elapsed = 0): JsonObject {
   return {
     inventory: save.inventory as unknown as JsonObject,
     loadout: save.loadout as unknown as JsonObject,
     appearance: save.appearance as unknown as JsonObject,
+    gauntletVariantId: captureHuntGauntletV142(gauntletVariantId,save.profile.rankId,save.gauntletV134?.claimedStudies??[]),
     visualOptions: {
       screenShake: save.settings.screenShake,
       reducedGore: save.settings.reducedGore,
@@ -2634,7 +2638,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
           runId: createHuntRunId(),
           sequence: 0,
           startedAt: now,
-          configuration: huntConfiguration(runtimeSave),
+          configuration: huntConfiguration(runtimeSave,hunterGauntlet.equippedId),
           lastPersisted: null,
           lastAttempted: null,
         }
@@ -2704,6 +2708,12 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     setHuntResumePayload({
       snapshot: resumed.snapshot,
       retryCheckpoint: resumed.retryCheckpoint,
+      gauntletVariantId: resumeHuntGauntletV142(
+        resumed.configuration,
+        hunterGauntlet.equippedId,
+        save.profile.rankId,
+        save.gauntletV134?.claimedStudies??[],
+      ),
     });
     void playSound("select");
     setScreen("mission");
@@ -5266,7 +5276,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             explorationProgress={activeMissionSave.exploration}
             onExplorationProgress={persistExplorationProgress}
             appearance={activeMissionSave.appearance}
-            gauntletVariantId={hunterGauntlet.equippedId}
+            gauntletVariantId={huntResumePayload?.gauntletVariantId ?? hunterGauntlet.equippedId}
             difficulty={activeMissionSave.settings.difficultyId}
             controlBindings={activeMissionSave.settings.controlBindings}
             huntAccessibility={activeMissionSave.settings.huntAccessibility}
