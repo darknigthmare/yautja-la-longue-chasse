@@ -30,6 +30,9 @@ export interface WarRtsIntelV133 extends WarMapPointV128 {id:string;unitId:strin
 export interface WarRtsHoldV133 {taskId:string;squadId:string;progress:number;required:number;}
 export interface WarRtsOverwatchV136 {squadId:string;expiresAt:number;}
 export interface WarRtsBraceV137 {squadId:string;expiresAt:number;}
+export interface WarRtsTriageV138 {
+ medicSquadId:string;rescuedSquadId:string;atTurn:number;memberCount:number;
+}
 export interface WarRtsSquadsReceiptV133 {
  id:string;missionId:string;mapId:string;planetId:string;
  sourceCells:string[];outcome:"victory"|"defeat"|"retreat";
@@ -52,6 +55,8 @@ export interface WarRtsSquadsStateV133 {
  overwatch?:WarRtsOverwatchV136[];
  /** One physical cover stance per squad per mission, never a permanent buff. */
  brace?:WarRtsBraceV137[];braceIssuedIds?:string[];
+ /** Real W3-U18 field medics; cannot create new people from a casualty. */
+ triageReceipts?:WarRtsTriageV138[];
 }
 export type WarRtsSquadOrderV133 =
  |{kind:"move";squadId:string;direction:"up"|"down"|"left"|"right"}
@@ -398,6 +403,42 @@ export function commandWarRtsSquadsV133(s:WarRtsSquadsStateV133,order:WarRtsSqua
   return accept(result,result.lastMessage);
  }
  return fail(s,"Ordre tactique invalide.");
+}
+
+/**
+ * V138 — physical field triage using an EXISTING W3-U18 medic detachment.
+ * One orthogonal step away from a fallen allied group, 3 exercise-RAV,
+ * one use by each medic and one rescue per target. Members keep identities;
+ * reviving the exercise pawn grants no territory, loot or XP.
+ */
+export function commandWarRtsMedicV138(
+ s:WarRtsSquadsStateV133,medicId:string,targetId:string,rules:WarRulesV6,
+):WarRtsSquadsUpdateV133 {
+ if(s.phase!=="active"||s.report||s.sourceSha!==rules.metadata.sha256)
+  return fail(s,"La séance médicale exige un théâtre actif et les vraies règles V6.");
+ const medic=activeSquads(s).find(u=>u.id===medicId);
+ const source=rules.units.find(u=>u.id==="W3-U18"&&u.fullMembers>0);
+ if(!medic||medic.unitId!=="W3-U18"||!source)
+  return fail(s,"Aucune équipe de soigneur de terrain W3-U18 déployée et valide.");
+ if(s.ravRemaining<3)return fail(s,"Les soins d'exercice demandent 3 RAV disponibles.");
+ const target=s.squads.find(u=>u.id===targetId&&u.id!==medicId&&
+  u.status==="down"&&u.hp===0&&u.memberCount>0);
+ if(!target)return fail(s,"Choisissez un véritable allié neutralisé, sans inventer de soldat.");
+ if(distance(medic,target)!==1)
+  return fail(s,"Secours impossible à distance : rejoindre physiquement une case adjacente.");
+ const receipts=s.triageReceipts??[];
+ if(receipts.some(r=>r.medicSquadId===medicId||r.rescuedSquadId===targetId))
+  return fail(s,"Soigneur ou patient déjà mobilisé : une intervention par mission.");
+ const hp=Math.min(target.maxHp,Math.max(2,Math.min(4,Math.ceil(target.maxHp/5))));
+ const squads=s.squads.map(u=>u.id===target.id?{...u,hp,status:"active" as const}:u);
+ const triageReceipts=[...receipts,{
+  medicSquadId:medic.id,rescuedSquadId:target.id,atTurn:s.turn+1,
+  memberCount:target.memberCount,
+ }];
+ const next=advance({...s,squads,triageReceipts,ravRemaining:s.ravRemaining-3},
+  "Intervention W3-U18 auprès de "+target.unitId+" : "+hp+
+  " PV d'exercice rétablis pour 3 RAV, aucun membre inventé.");
+ return accept(next,next.lastMessage);
 }
 
 /**

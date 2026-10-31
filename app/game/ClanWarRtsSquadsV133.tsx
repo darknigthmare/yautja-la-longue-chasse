@@ -4,7 +4,7 @@ import type {WarRulesV6} from "./systems/clanWarBibleV6";
 import {
  createWarRtsSquadsV133,draftWarRtsSquadV133,removeWarRtsSquadV133,
  launchWarRtsSquadsV133,commandWarRtsSquadsV133,visibleWarRtsEnemiesV133,
- planWarRtsRallyV134,commandWarRtsRallyV134,commandWarRtsSuppressV135,commandWarRtsOverwatchV136,commandWarRtsBraceV137,
+ planWarRtsRallyV134,commandWarRtsRallyV134,commandWarRtsSuppressV135,commandWarRtsOverwatchV136,commandWarRtsBraceV137,commandWarRtsMedicV138,
  type WarRtsSquadsStateV133,type WarRtsSquadOrderV133,
 } from "./systems/clanWarRtsSquadsV133";
 import {WAR_SOURCE_RTS_IDS_V129} from "./systems/clanWarRtsSourceMissionsV129";
@@ -75,6 +75,7 @@ export default function ClanWarRtsSquadsV133({rules}:{rules:WarRulesV6}){
    <span><strong>{state.turn}</strong><small>Ordres/tours</small></span>
    <span><strong>{state.overwatch?.length??0}</strong><small>Veilles actives</small></span>
    <span><strong>{state.brace?.length??0}</strong><small>Groupes retranchés</small></span>
+   <span><strong>{state.triageReceipts?.length??0}</strong><small>Interventions médicales</small></span>
    <span><strong>{state.completedTaskIds.length} / 3</strong><small>Preuves d&apos;objectif</small></span>
    <span><strong>{map.id}</strong><small>{map.planetName} · {map.worldStratum}</small></span>
   </div>
@@ -194,6 +195,17 @@ export default function ClanWarRtsSquadsV133({rules}:{rules:WarRulesV6}){
        Retrancher ce groupe dans un vrai couvert · deux réactions adverses
      </button>
      <p className={styles.hint}>V137 : défense renforcée uniquement sur une case de couvert existante. Une fois par groupe et par mission ; déplacer la formation annule sa protection.</p>
+     {selected.unitId==="W3-U18"&&selected.status==="active"&&<>
+      <h5>Secours de terrain · escouade W3-U18</h5>
+      <p className={styles.hint}>Coût 3 RAV, présence physique à une case, une intervention par soigneur et par patient. Aucun nouveau soldat créé.</p>
+      <div className={styles.enemyList}>{state.squads.filter(u=>u.status==="down").map(u=><button
+       type="button" key={"medic-"+u.id}
+       disabled={state.ravRemaining<3||d(selected,u)!==1||
+        (state.triageReceipts??[]).some(r=>r.medicSquadId===selected.id||r.rescuedSquadId===u.id)}
+       onClick={()=>apply(commandWarRtsMedicV138(state,selected.id,u.id,rules))}>
+       Secourir {u.unitId} · {u.memberCount} membres · distance {d(selected,u)} · 3 RAV
+      </button>)}</div>
+     </>}
      <h5>Adversaires à portée du détachement</h5>
      {enemies.length===0?<p className={styles.hint}>Aucun adversaire actuellement observé.</p>:
       <div className={styles.enemyList}>{enemies.map(e=>{
