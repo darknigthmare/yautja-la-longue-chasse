@@ -4,7 +4,7 @@ import type {WarRulesV6} from "./systems/clanWarBibleV6";
 import {
  createWarRtsSquadsV133,draftWarRtsSquadV133,removeWarRtsSquadV133,
  launchWarRtsSquadsV133,commandWarRtsSquadsV133,visibleWarRtsEnemiesV133,
- planWarRtsRallyV134,commandWarRtsRallyV134,commandWarRtsSuppressV135,commandWarRtsOverwatchV136,commandWarRtsBraceV137,commandWarRtsMedicV138,evacuateWarRtsSquadV139,
+ planWarRtsRallyV134,commandWarRtsRallyV134,planWarRtsTrafficV140,commandWarRtsTrafficV140,commandWarRtsSuppressV135,commandWarRtsOverwatchV136,commandWarRtsBraceV137,commandWarRtsMedicV138,evacuateWarRtsSquadV139,
  type WarRtsSquadsStateV133,type WarRtsSquadOrderV133,
 } from "./systems/clanWarRtsSquadsV133";
 import {WAR_SOURCE_RTS_IDS_V129} from "./systems/clanWarRtsSourceMissionsV129";
@@ -31,6 +31,7 @@ export default function ClanWarRtsSquadsV133({rules}:{rules:WarRulesV6}){
  const selected=state.squads.find(u=>u.id===selectedId)??state.squads[0];
  const rallyIds=state.squads.filter(u=>u.status==="active"&&!rallyExcluded.includes(u.id)).map(u=>u.id);
  const rallyPlan=planWarRtsRallyV134(state,rallyIds,rallyTarget);
+ const trafficPlan=planWarRtsTrafficV140(state,rallyIds,rallyTarget);
  const enemies=useMemo(()=>visibleWarRtsEnemiesV133(state),[state]);
  const follower=state.tracked&&(state.tracked.secured||state.squads.some(u=>u.status==="active"&&d(u,state.tracked!)<=7&&
   warMapLineOfSightV128(map,u,state.tracked!)))?state.tracked:null;
@@ -168,7 +169,12 @@ export default function ClanWarRtsSquadsV133({rules}:{rules:WarRulesV6}){
        Déplacer {rallyPlan.steps.length} escouade(s) · 1 tour
       </button>
      </div>
-     <p className={styles.rallyStatus} role="status">{rallyPlan.reason}</p>
+     <button type="button" disabled={!trafficPlan.valid||trafficPlan.steps.length===0}
+       onClick={()=>apply(commandWarRtsTrafficV140(state,rallyIds,rallyTarget))}>
+       Circulation de groupe V140 · {trafficPlan.steps.length} pas réels · 1 réaction
+      </button>
+      <p className={styles.rallyStatus} role="status">{rallyPlan.reason}</p>
+      <p className={styles.rallyStatus}>Trafic V140 : {trafficPlan.reason} Les formations suivantes peuvent emprunter les cases réellement libérées, sans superposition ni omniscience.</p>
     </div>}
     {state.phase==="active"&&selected&&<>
      <p className={styles.selected}>Ordres de <strong>{selected.unitName}</strong> — position ({selected.x}, {selected.y})</p>

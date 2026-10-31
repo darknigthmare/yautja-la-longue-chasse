@@ -658,6 +658,108 @@ export function commandWarRtsRallyV134(
  return accept(next,next.lastMessage);
 }
 
+/**
+ * V140 — formation congestion planner. Process the leader closest to the
+ * rally destination first, then allow followers to occupy the real tiles
+ * vacated by confirmed preceding movements. No swap, jump, hidden-opponent
+ * prediction, extra enemy turn or simultaneous stacking is ever authorized.
+ */
+export function planWarRtsTrafficV140(
+ s:WarRtsSquadsStateV133,ids:readonly string[],target:WarMapPointV128,
+):WarRtsRallyPlanV134 {
+ const plan:WarRtsRallyPlanV134={
+  valid:false,reason:"",target:target?pos(target.x,target.y):pos(-1,-1),
+  squadIds:Array.isArray(ids)?[...ids]:[],
+  steps:[],holdingIds:[],blockedIds:[],
+ };
+ if(s.phase!=="active"||s.report){
+  plan.reason="Une bataille active est requise.";return plan;
+ }
+ if(!Array.isArray(ids)||ids.length<1||ids.length>4||
+  new Set(ids).size!==ids.length){
+  plan.reason="De une à quatre formations distinctes sont nécessaires.";return plan;
+ }
+ if(!target||!Number.isInteger(target.x)||!Number.isInteger(target.y)||
+   !warMapWalkableV128(s.map,target)||
+   !s.power&&s.map.poweredDoors.some(p=>at(p)===at(target))){
+  plan.reason="Destination de regroupement non traversable ou porte sans courant.";return plan;
+ }
+ const units=ids.map(id=>s.squads.find(u=>u.id===id&&u.status==="active"&&u.hp>0));
+ if(units.some(u=>!u)){plan.reason="Un groupe sélectionné est absent ou neutralisé.";return plan;}
+ const ordered=units.filter((u):u is WarRtsSquadV133=>!!u)
+  .sort((a,b)=>distance(a,target)-distance(b,target)||a.id.localeCompare(b.id));
+ const visible=visibleWarRtsEnemiesV133(s);
+ const doors=s.power?[]:s.map.poweredDoors;
+ const hazards=hazardsNow(s.turn+1)?s.map.hazards:[];
+ const destinations=new Map<string,WarMapPointV128>();
+ const candidates:WarMapPointV128[]=[];
+ for(let y=Math.max(0,target.y-2);y<=Math.min(s.map.height-1,target.y+2);y++)
+  for(let x=Math.max(0,target.x-2);x<=Math.min(s.map.width-1,target.x+2);x++){
+   const p=pos(x,y);
+   if(distance(p,target)<=2&&warMapWalkableV128(s.map,p)&&
+      !visible.some(u=>at(u)===at(p))&&
+      !doors.some(u=>at(u)===at(p))&&!hazards.some(u=>at(u)===at(p)))
+    candidates.push(p);
+  }
+ candidates.sort((a,b)=>distance(a,target)-distance(b,target)||a.y-b.y||a.x-b.x);
+ for(const unit of ordered){
+  const from=pos(unit.x,unit.y);
+  if(distance(from,target)<=2){plan.holdingIds.push(unit.id);continue;}
+  // A previously authorized leader vacated its OLD tile, but the new tile
+  // is still occupied. Everyone else is stationary until their own order.
+  const allies=activeSquads(s).filter(u=>u.id!==unit.id).map(u=>
+   destinations.get(u.id)??pos(u.x,u.y));
+  const occupied=[...allies,...visible,...doors,...hazards];
+  const forbidden=new Set(occupied.map(at));
+  let chosen:{route:WarMapPointV128[];to:WarMapPointV128}|null=null;
+  for(const goal of candidates){
+   if(forbidden.has(at(goal)))continue;
+   const path=warMapFindPathV128(s.map,from,goal,occupied);
+   if(!path||path.length<2||forbidden.has(at(path[1])))continue;
+   if(!chosen||path.length<chosen.route.length||
+       path.length===chosen.route.length&&distance(goal,target)<distance(chosen.to,target))
+    chosen={route:path,to:goal};
+  }
+  if(!chosen){plan.blockedIds.push(unit.id);continue;}
+  const next=chosen.route[1];
+  if(distance(from,next)!==1){plan.blockedIds.push(unit.id);continue;}
+  destinations.set(unit.id,next);
+  plan.steps.push({squadId:unit.id,unitId:unit.unitId,from,
+   to:pos(next.x,next.y),remainingCells:chosen.route.length-2});
+ }
+ plan.valid=true;
+ plan.reason=plan.steps.length?
+  "Circulation W3 : "+plan.steps.length+" pas physiques coordonnés, une seule réaction adverse.":
+  plan.blockedIds.length?"Passages occupés : changez le regroupement ou les unités.":
+  "Les formations sont déjà dans le périmètre de rassemblement.";
+ return plan;
+}
+export function commandWarRtsTrafficV140(
+ s:WarRtsSquadsStateV133,ids:readonly string[],target:WarMapPointV128,
+):WarRtsSquadsUpdateV133 {
+ const plan=planWarRtsTrafficV140(s,ids,target);
+ if(!plan.valid||!plan.steps.length)return fail(s,plan.reason);
+ // Hidden opponents are checked only at EXECUTION. If one leader cannot
+ // leave, dependent followers also stay put (no overlapping or intel leak).
+ const actualRivals=new Set(s.enemies.filter(e=>e.hp>0).map(at));
+ let valid=plan.steps.filter(u=>!actualRivals.has(at(u.to)));
+ let before=valid.length;
+ do{
+  before=valid.length;
+  const moving=new Set(valid.map(u=>u.squadId));
+  const staticCells=new Set(activeSquads(s).filter(u=>!moving.has(u.id)).map(at));
+  valid=valid.filter(step=>!staticCells.has(at(step.to)));
+ }while(valid.length<before);
+ const move=new Map(valid.map(item=>[item.squadId,item.to]));
+ const updated=s.squads.map(u=>move.has(u.id)?{...u,...move.get(u.id)!}:u);
+ const next=advance({...s,squads:updated,
+  overwatch:(s.overwatch??[]).filter(w=>!move.has(w.squadId)),
+  brace:(s.brace??[]).filter(w=>!move.has(w.squadId))},
+  "Convoi tactique : "+valid.length+" groupe(s) avancent physiquement d'une case."+
+  " Les obstacles imprévus restent non révélés ; un seul tour de réaction.");
+ return accept(next,next.lastMessage);
+}
+
 /** QA guard: all 24 W3 scenarios must have at least two source-budgeted teams,
  * distinct deployment tiles and no automatic campaign award. */
 export function auditWarRtsSquadsV133(rules:WarRulesV6){
