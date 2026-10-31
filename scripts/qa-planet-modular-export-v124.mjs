@@ -23,7 +23,7 @@ function zipEntries(bytes) {
     files.set(name, bytes.subarray(start, start + size));
     offset = start + size;
   }
-  assert(files.size > 0 && files.size <= 16, "ZIP contains bounded member count");
+  assert(files.size > 0 && files.size <= 24, "ZIP contains bounded member count");
   return files;
 }
 
@@ -181,6 +181,22 @@ try {
     files.has("region-index-map.png") && files.has("regional-atlas-atlas.png")
     && [...files.keys()].filter(name => name.endsWith("-mask-map.png")).length >= 1);
   const manifest = JSON.parse(files.get("manifest.json")?.toString("utf8") ?? "null");
+  const studies = manifest.supplementaryStudiesV151;
+  check("V151 ZIP retains all original V124 layers while adding independent environment and integrity studies",
+    studies?.version===151 && studies.worldCode===planetCode &&
+    files.has("environment-study-v146.json") && files.has("world-preflight-v149.json"));
+  const environment = JSON.parse(files.get("environment-study-v146.json")?.toString("utf8") ?? "null");
+  const preflight = JSON.parse(files.get("world-preflight-v149.json")?.toString("utf8") ?? "null");
+  check("V151 studies cover exactly the same world without war orders or hidden campaign stocks",
+    environment?.worldCode===planetCode && preflight?.worldCode===planetCode &&
+    preflight?.errors===0 && !JSON.stringify(preflight).includes("combatants"));
+  check("V151 default physical altitude exports are present only for V115 worlds",
+    studies?.relief?.heightFile==="relief-height-rg16-map.png" &&
+    studies?.relief?.previewFile==="relief-preview-map.png" &&
+    files.has(studies.relief.heightFile) && files.has(studies.relief.previewFile));
+  const heightMeta = await sharp(files.get(studies.relief.heightFile)).metadata();
+  check("V151 physically-scaled RG16 export is a true 512x256 PNG in the ZIP",
+    heightMeta.width===512 && heightMeta.height===256 && heightMeta.format==="png");
   check("V124 ZIP keeps the canonical world code", manifest?.version === 124 && manifest.code === planetCode);
   check("V124 manifest maps actual region indices to texture tiles", manifest.modularMasks?.regions?.length >= 3
     && manifest.modularMasks.regions.every((region, index) => region.redValue === index + 1));

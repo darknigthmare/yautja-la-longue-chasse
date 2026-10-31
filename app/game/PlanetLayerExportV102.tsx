@@ -4,7 +4,8 @@ import { useEffect, useId, useRef, useState, type ChangeEvent } from "react";
 import { createPlanetLandMaskV101, createPlanetRegionalMaterialAtlasV124, drawPlanetMaterialV101 } from "./planetMaterialRendererV101";
 import type { WarPlanetV96 } from "./systems/clanWarPlanetsV96";
 import { DEFAULT_PLANET_MATERIAL_SETTINGS_V101, planetMaterialRecipeV101, type PlanetMaterialLayerV101, type PlanetMaterialSettingsV101 } from "./systems/planetMaterialV101";
-import { makePlanetStoredZipV114, type PlanetZipEntryV114 } from "./systems/planetExportZipV114";
+import { makePlanetStoredZipV114, makePlanetStoredZipV151, type PlanetZipEntryV114 } from "./systems/planetExportZipV114";
+import { createPlanetReliefExportV151, planetHasPhysicalReliefV151, planetStudyManifestV151, planetStudyReportsV151, type PlanetReliefExportLayerV151 } from "./planetAssetStudiesV151";
 import { analyzeWarPlanetStrategyV114 } from "./systems/clanWarPlanetStrategyV114";
 import { WAR_PLANET_TEXTURE_CHANNELS_V125, type PlanetTextureChannelV125 } from "./systems/clanWarTextureLibraryV125";
 import { createPlanetTextureCanvasV130, findPlanetTextureV130, WAR_PLANET_TEXTURES_V130 } from "./systems/clanWarTextureLibraryV130";
@@ -27,10 +28,10 @@ import {
 } from "./systems/clanWarPlanetVisualProfileV134";
 import styles from "./PlanetLayerExportV102.module.css";
 
-type ExportLayer = PlanetMaterialLayerV101 | "mask" | "region-index" | "regional-atlas" | "lake-mask" | "river-mask";
+type ExportLayer = PlanetMaterialLayerV101 | "mask" | "region-index" | "regional-atlas" | "lake-mask" | "river-mask" | PlanetReliefExportLayerV151;
 type ExportProjection = "map" | "globe" | "atlas";
 const isMapOnlyLayer = (value: ExportLayer) =>
-  value === "mask" || value === "region-index" || value === "lake-mask" || value === "river-mask" || value === "regional-atlas";
+  value === "mask" || value === "region-index" || value === "lake-mask" || value === "river-mask" || value === "regional-atlas" || value === "relief-height-rg16" || value === "relief-preview";
 const layerNames: Record<ExportLayer, string> = {
   composite: "Planète assemblée", albedo: "Couleurs sans éclairage", land: "Terres et biomes",
   surface: "Surface entre les terres", clouds: "Nuages", weather: "Brumes et particules",
@@ -40,6 +41,8 @@ const layerNames: Record<ExportLayer, string> = {
   "regional-atlas": "Atlas des matières régionales",
   "lake-mask": "Bassins intérieurs indépendants",
   "river-mask": "Cheneaux et cours intérieurs indépendants",
+  "relief-height-rg16": "Altitude terrestre RG16 (V150, 512 × 256)",
+  "relief-preview": "Altitudes colorées (V150, 512 × 256)",
 };
 
 function encodePng(canvas: HTMLCanvasElement): Promise<Blob> {
@@ -55,6 +58,8 @@ async function renderExportCanvasV124(
   settings: PlanetMaterialSettingsV101, signal: AbortSignal,
 ): Promise<{ canvas: HTMLCanvasElement; projection: ExportProjection }> {
   if (signal.aborted) throw new Error("Export annulé.");
+  if (layer === "relief-height-rg16" || layer === "relief-preview")
+    return { canvas: createPlanetReliefExportV151(planet, layer), projection: "map" };
   if (layer === "region-index") return { canvas: createPlanetRegionIndexMaskV124(planet), projection: "map" };
   if (layer === "lake-mask" || layer === "river-mask")
     return { canvas: createPlanetInlandMaskV124(planet, layer === "lake-mask" ? "lake" : "river"), projection: "map" };
@@ -189,7 +194,8 @@ export default function PlanetLayerExportV102({ planet, onApplyVisualProfile }: 
     .filter(value => value !== "aurora" || recipe.auroraOpacity > 0)
     .filter(value => value !== "emissive" || recipe.emission > 0)
     .filter(value => value !== "lake-mask" || inland.some(item => item.kind === "lake"))
-    .filter(value => value !== "river-mask" || inland.some(item => item.kind === "river"));
+    .filter(value => value !== "river-mask" || inland.some(item => item.kind === "river"))
+    .filter(value => (value !== "relief-height-rg16" && value !== "relief-preview") || planetHasPhysicalReliefV151(planet));
 
 
   const exportLayer = async () => {
@@ -238,27 +244,36 @@ export default function PlanetLayerExportV102({ planet, onApplyVisualProfile }: 
         setMessage(`Pack : ${entries.length} / ${availableLayers.length} calques préparés…`);
       }
       if (controller.signal.aborted) return;
+      const studies=planetStudyManifestV151(planet);
+      const reports=planetStudyReportsV151(planet);
+      const encoder=new TextEncoder();
+      entries.push({name:studies.environmentFile,
+        bytes:encoder.encode(JSON.stringify(reports.environment,null,2)+"\n")});
+      entries.push({name:studies.preflightFile,
+        bytes:encoder.encode(JSON.stringify(reports.preflight,null,2)+"\n")});
+      if (controller.signal.aborted) return;
       const manifest = {
         format: "yautja-planet-layer-pack", version: 124,
         code: planet.id, name: planet.name, seed: planet.seed, recipe: planet.procedural?.recipe ?? null,
         layers: manifestLayers,
         modularMasks: describePlanetModularMasksV124(planet),
+        supplementaryStudiesV151: studies,
         compositionSettings: composition,
         strategicDossier: analyzeWarPlanetStrategyV114(planet),
         note: "Les couches régionales suivent les mêmes atlas, biomes et masques que le jeu. L'index des régions utilise le canal rouge (1 = première région, 0 = extérieur). Seul composite applique les interrupteurs de composition. Aucune sauvegarde de guerre dans ce ZIP.",
       };
       entries.push({ name: "manifest.json", bytes: new TextEncoder().encode(JSON.stringify(manifest, null, 2) + "\n") });
-      const zip = makePlanetStoredZipV114(entries);
+      const zip = makePlanetStoredZipV151(entries);
       if (controller.signal.aborted) return;
       const buffer = new ArrayBuffer(zip.byteLength);
       new Uint8Array(buffer).set(zip);
       const url = URL.createObjectURL(new Blob([buffer], { type: "application/zip" }));
       const anchor = document.createElement("a");
-      anchor.href = url; anchor.download = `${planet.id}-planet-layers-v124.zip`;
+      anchor.href = url; anchor.download = `${planet.id}-planet-layers-v151.zip`;
       document.body.appendChild(anchor);
       try { anchor.click(); }
       finally { anchor.remove(); setTimeout(() => URL.revokeObjectURL(url), 30000); }
-      setMessage(`Pack complet : ${availableLayers.length} PNG indépendants et manifeste (${(zip.byteLength / 1048576).toFixed(1)} Mio).`);
+      setMessage(`Pack complet V151 : ${availableLayers.length} PNG, deux dossiers de contrôle et manifeste (${(zip.byteLength / 1048576).toFixed(1)} Mio).`);
     } catch (error) {
       if (!controller.signal.aborted) setMessage(error instanceof Error ? error.message : "L’export du pack a échoué.");
     } finally {
