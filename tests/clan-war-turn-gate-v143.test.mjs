@@ -9,13 +9,14 @@ const root=fileURLToPath(new URL("../",import.meta.url));
 const read=path=>readFileSync(root+path,"utf8");
 
 test("V143 turn gate rejects an inactive, loading, writing, or stale war session",()=>{
-  const good={loaded:true,pendingWrites:0,simulation:{revision:7,turn:3}};
+  const good={loaded:true,pendingWrites:0,staleWar:false,simulation:{revision:7,turn:3}};
   assert.deepEqual(inspectWarTurnGateV143(good,7,true,false),{allowed:true,reason:"ready"});
   assert.equal(inspectWarTurnGateV143(good,7,true,true).reason,"inactive");
   assert.equal(inspectWarTurnGateV143(good,7,false,false).reason,"inactive");
   assert.equal(inspectWarTurnGateV143({...good,loaded:false},7,true,false).reason,"loading");
   assert.equal(inspectWarTurnGateV143({...good,pendingWrites:1},7,true,false).reason,"writing");
   assert.equal(inspectWarTurnGateV143({...good,pendingWrites:10},7,true,false).reason,"writing");
+  assert.equal(inspectWarTurnGateV143({...good,staleWar:true},7,true,false).reason,"conflict");
   for(const rev of [null,1,6,8,NaN,Infinity,-Infinity,7.1]){
     assert.equal(inspectWarTurnGateV143(good,rev,true,false).reason,"stale");
   }
