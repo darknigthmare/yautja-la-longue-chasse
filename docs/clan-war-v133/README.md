@@ -43,3 +43,11 @@ La liste des positions d'objectif dans le panneau est **masquée avant reconnais
 **Limites conservées :** étude au tour par tour sur cartes W3 générées, pas encore pathfinding dynamique de guerre totale, ni serveur autoritaire, ni troupe de campagne persistante, ni animations/sprites cinématographiques 1:1. Les pions et la fenêtre de regroupement de deux cases sont des mécanismes de jeu originaux, pas du lore filmique.
 
 **QA à vérifier :** `tests/clan-war-rts-rally-v134.test.mjs` vérifie 24 cartes, un seul tick adverse par mouvement collectif, indépendance et absence de collision, portes, dangers, refus sans effet de bord, reprise des escortes/survivants/témoins neutres, maintien des identités et reçus uniques. Répéter sur navigateur desktop/mobile et manette avant release.
+
+## Excel de production actualisé V134
+
+Le [classeur V134](../clan-war-v134/Yautja_Guerres_Clans_Suivi_Production_V134_2026-10-31.xlsx) conserve les **1 200 fiches V120**, les **125 exigences antérieures**, les 24 scénarios W3, les 36 dossiers W5 et les 12 cartes. Il possède maintenant **18 onglets**, dont `RTS_V134_SYNCHRO` détaillant **18 nouvelles fonctions et contrôles techniques + 24 contrats de carte**, soit 42 lignes de traçabilité. La grille QA transverse contient **7 contrôles V134 supplémentaires**.
+
+L'état `Validé CI ciblée` signifie uniquement : test Node, TypeScript, ESLint et vérification du classeur sur le commit de cette branche. **Aucun sprite 1:1, aucune guerre totale et aucun serveur PvP n'est validé par cette mention.**
+
+La CI `.github/workflows/clan-war-v133.yml` exécute le nouveau test `tests/clan-war-production-v134.test.mjs`, confirmant les 18 onglets, les 42 exigences, les sept nouveaux QA, les 1 200 IDs de design et les catalogues W3/W5 conservés.
