@@ -26,6 +26,9 @@ import styles from "./ClanWarPanelV85.module.css";
 import ClanWarBibleV6Panel from "./ClanWarBibleV6Panel";
 import { importedYautjaArtVariantsV85 } from "./systems/recentSpriteLibraryV85";
 import { createWarSessionV85 } from "./systems/clanWarSessionV85";
+import {DEFAULT_WAR_RULES_V6} from "./systems/clanWarBibleV6";
+import {WAR_OPERATIONS_STORAGE_V115} from "./systems/clanWarOperationsV115";
+import {reviewWarProofSyncV145,importWarProofV145} from "./systems/clanWarProofSyncV145";
 import ClanWarAtlasV95 from "./ClanWarAtlasV95";
 import ClanWarPlanetsV96, { WAR_PLANET_SELECTION_KEY_V96 } from "./ClanWarPlanetsV96";
 import ClanWarCommandV98, { ClanWarOrderPreviewV98 } from "./ClanWarCommandV98";
@@ -92,6 +95,12 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false, init
   const modularStrategy = planet.procedural && "strategy" in planet.procedural ? planet.procedural.strategy : null;
   const corridorIds = planet.id === "korthas" ? ["CON-T01", "CON-T08", "CON-T14", "CON-T15", "CON-T21", "CON-T22"] : warObjectiveCorridorV96(simulation);
   const [message, setMessage] = useState("Choisissez une planète, un départ et une destination voisine pour préparer votre front.");
+  // The separate V115 archive is read only on an explicit action; no
+  // hidden auto-transfer from one exercise to another.
+  const [warProofSource,setWarProofSource]=useState<string|null>(null);
+  const warProofPreview=useMemo(()=>warProofSource?
+    reviewWarProofSyncV145(warProofSource,simulation,DEFAULT_WAR_RULES_V6):null,
+    [warProofSource,simulation]);
   const [query, setQuery] = useState(""), [section, setSection] = useState("Toutes les feuilles"), [page, setPage] = useState(0);
   const [selectedEntryId, setSelectedEntryId] = useState("OPS-01");
   const [territoryChoice, setTerritoryId] = useState<string | null>(null), [targetChoice, setTargetId] = useState<string | null>(null);
@@ -265,6 +274,58 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false, init
     if (result.accepted) { setSimulation(result.state); setSelectedPeople([]); setConfirmTurn(false); }
     return result.accepted;
   }
+  function inspectWarProofV145(){
+    if(suspended||!pageActivitySnapshotV94()||!loaded||planet.id!=="korthas"){
+      setMessage("Le registre documentaire V145 n'est accessible que sur Korthas, pendant un exercice actif.");return;
+    }
+    try{
+      const raw=window.localStorage.getItem(WAR_OPERATIONS_STORAGE_V115);
+      if(!raw){setWarProofSource(null);setMessage("Aucune archive libre V115 enregistrée dans ce navigateur.");return;}
+      const review=reviewWarProofSyncV145(raw,simulation,DEFAULT_WAR_RULES_V6);
+      setWarProofSource(raw);
+      setMessage(review.reason??("Dossiers V115 vérifiés : "+review.eligible.length+
+        " proposition(s), "+review.rejectedIds.length+" invalide(s) ; import volontaire uniquement."));
+    }catch{
+      setWarProofSource(null);
+      setMessage("Accès à l'archive locale V115 impossible : aucune sauvegarde modifiée.");
+    }
+  }
+  function archiveWarProofV145(receiptKey:string){
+    const live=planetSession.getSnapshot();
+    if(!warProofSource||suspended||!pageActivitySnapshotV94()||
+       planet.id!=="korthas"||!live.loaded||!live.writableWar||
+       live.pendingWrites>0){
+      setMessage("Archive V85 en cours d'écriture, indisponible ou planète incorrecte. Aucun reçu transféré.");return;
+    }
+    const review=reviewWarProofSyncV145(warProofSource,live.simulation,DEFAULT_WAR_RULES_V6);
+    const offer=review.eligible.find(x=>x.receiptKey===receiptKey&&!x.alreadyImported);
+    if(!offer){setMessage("Preuve introuvable ou déjà enregistrée. Aucun doublon.");return;}
+    // Guard against the source archive changing after the preview was opened.
+    try{
+      if(window.localStorage.getItem(WAR_OPERATIONS_STORAGE_V115)!==warProofSource){
+        setWarProofSource(null);setMessage("Les missions V115 ont changé depuis la lecture. Réinspectez les preuves.");return;
+      }
+    }catch{setMessage("Sauvegarde source inaccessible ; enregistrement refusé.");return;}
+    if(!window.confirm("Archiver la preuve "+receiptKey+" dans le journal local V85 ? "+
+      "Ceci n'accorde AUCUN territoire, personnage, XP, soin ou ressource."))return;
+    const latest=planetSession.getSnapshot();
+    if(!latest.loaded||!latest.writableWar||latest.pendingWrites>0||
+       latest.simulation.revision!==live.simulation.revision){
+      setMessage("Le front V85 a changé pendant la confirmation. Réinspectez la preuve.");return;
+    }
+    try{
+      if(window.localStorage.getItem(WAR_OPERATIONS_STORAGE_V115)!==warProofSource){
+        setWarProofSource(null);setMessage("Source modifiée pendant la confirmation ; annulation sans écriture.");return;
+      }
+    }catch{setMessage("Source locale devenue inaccessible ; aucun transfert.");return;}
+    const result=importWarProofV145(latest.simulation,warProofSource,receiptKey,
+      latest.simulation.revision,DEFAULT_WAR_RULES_V6);
+    setMessage(result.message);
+    if(result.accepted){
+      setSimulation(result.state);
+      setWarProofSource(null);
+    }
+  }
   function restartWar() {
     if (!window.confirm(`Recommencer le front de ${planet.name} et remplacer uniquement son archive locale ? Les autres planètes seront conservées.`)) return;
     setSimulation(createWarSimulationV85(undefined, planet.id)); planetSession.unlockWarAfterExplicitReset(); setTerritoryId(null); setTargetId(null); setOrderKind(null); setConfirmTurn(false); setSelectedPeople([]); setCargoS(0); setCargoM(0); setMessage(`Nouveau front de ${planet.name} ouvert.`);
@@ -343,6 +404,33 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false, init
       <p>Domination : contrôlez les {definitions.length} sites intacts et ravitaillés, avec au moins une garnison apte dans chacune des {planet.regions.length} régions, pendant deux fins de tour avec entretien payé.</p>
       <details><summary>Conditions de la région et du corridor</summary><p>Pour tenir une région, chaque territoire de cette région doit rester intact, ravitaillé et occupé par une garnison apte pendant deux fins de tour avec entretien payé.</p><p>Sites du corridor à contrôler et garnir : {corridorIds.map(id => id.replace("CON-", "")).join(" · ")}. Maintenez leurs liaisons de ravitaillement et au moins un droit de transit actif auprès des Passes autonomes pendant deux fins de tour avec entretien payé.{planet.id === "korthas" ? " T02 doit également rester relié au ravitaillement." : ""}</p></details>
       {simulation.completedObjectives.includes("CON-O01") && <p className={styles.positive} role="status">{planet.name} maîtrisée · domination confirmée après deux fins de tour. {persistedWar ? "Victoire archivée sur cet appareil." : "Victoire en mémoire · sauvegarde à confirmer."}</p>}
+      {planet.id==="korthas"&&<section className={styles.sectionHeader} aria-label="V145 · preuves des quatre modes">
+        <div>
+          <h3>Registre V145 · preuves des quatre game modes</h3>
+          <p>Importer volontairement un reçu de l&apos;exercice V115 :
+           assaut, Outer Ops, infiltration ou RTS. Seul un journal documentaire V85
+           est ajouté. Aucune conquête, expérience ou ressource n&apos;est accordée.</p>
+          <button type="button" onClick={inspectWarProofV145}
+            disabled={suspended||!pageActive||!loaded||pendingWrites>0}>
+            Vérifier les rapports locaux V115
+          </button>
+          {warProofPreview&&<div>
+            {warProofPreview.reason&&<p role="status">{warProofPreview.reason}</p>}
+            <p>{warProofPreview.sourceReportCount} rapport(s) source ;
+             {warProofPreview.eligible.length} preuve(s) territoriales proposées,
+             {warProofPreview.rejectedIds.length} non appariée(s) ou refusée(s).</p>
+            {warProofPreview.eligible.slice(-30).map(item=><div key={item.receiptKey}>
+              <span>{item.mode} · {item.outcome} · {item.territoryName} · {item.teamIds.length} équipe(s)
+               · {item.woundedCount} blessé(s) source</span>
+              <button type="button" disabled={item.alreadyImported||suspended||!pageActive||
+                !strategic.writableWar||pendingWrites>0}
+                onClick={()=>archiveWarProofV145(item.receiptKey)}>
+                {item.alreadyImported?"Déjà archivé":"Archiver uniquement la preuve"}
+              </button>
+            </div>)}
+          </div>}
+        </div>
+      </section>}
       <ClanWarAtlasV95 key={`atlas:${planet.id}`} simulation={simulation} selectedTerritoryId={territoryId} targetTerritoryId={targetId} onSelectTerritory={selectTerritory} onSelectTarget={selectTarget}/>
       <ClanWarConvoyRouteV105 key={`convoy:${planet.id}`} simulation={simulation} fromId={territoryId} disabled={suspended || !pageActive || !loaded || !strategic.writableWar || pendingWrites > 0} onUpdate={updateConvoy} onInspect={selectTerritory}/>
       <ClanWarCommandV98 key={`command:${planet.id}`} simulation={simulation} selectedTerritoryId={territoryId} onPrepare={prepareSite} onManageGarrison={manageGarrisonSite}/>

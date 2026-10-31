@@ -1,0 +1,35 @@
+{
+  "extends": "./tsconfig.clan-war-v144.json",
+  "compilerOptions": {
+    "incremental": false,
+    "tsBuildInfoFile": null
+  },
+  "include": [
+    "types/clan-war-v120-css.d.ts",
+    "app/game/systems/clanWarOperationsV115.ts",
+    "app/game/systems/clanWarParallelModesV135.ts",
+    "app/game/systems/clanWarParallelModesV136.ts",
+    "app/game/systems/clanWarParallelModesV137.ts",
+    "app/game/systems/clanWarParallelModesV138.ts",
+    "app/game/systems/clanWarParallelModesV139.ts",
+    "app/game/systems/clanWarOuterRouteProgressV140.ts",
+    "app/game/systems/clanWarStealthPatrolV140.ts",
+    "app/game/systems/clanWarAssaultContactV141.ts",
+    "app/game/systems/clanWarOuterWeightedProgressV141.ts",
+    "app/game/systems/clanWarStealthDecoyV141.ts",
+    "app/game/systems/clanWarRtsSquadsV133.ts",
+    "app/game/ClanWarOperationsV115.tsx",
+    "app/game/ClanWarRtsSquadsV133.tsx",
+    "app/game/systems/clanWarOuterChoicesV142.ts",
+    "app/game/systems/clanWarFocusV142.ts",
+    "app/game/systems/clanWarStealthPathV142.ts",
+    "app/game/systems/clanWarRtsWaypointV142.ts",
+    "app/game/systems/clanWarBraceV143.ts",
+    "app/game/systems/clanWarOuterIncidentV143.ts",
+    "app/game/systems/clanWarStealthDashV143.ts",
+    "app/game/systems/clanWarRtsMarchV143.ts",
+    "app/game/systems/clanWarDebriefV144.ts",
+    "app/game/systems/clanWarProofSyncV145.ts",
+    "app/game/ClanWarPanelV85.tsx"
+  ]
+}
