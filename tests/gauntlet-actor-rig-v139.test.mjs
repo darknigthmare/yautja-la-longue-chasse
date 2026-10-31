@@ -67,3 +67,16 @@ test("script can reproduce rig art exactly; no film accuracy or combat stat clai
   assert.ok(!script.includes("damageModifier"));
   assert.ok(!script.includes("warBudgetV85"));
 });
+
+test("local visual QA compares authentic rig attachment paths, not a decorative replacement",()=>{
+  const client=read("app/gauntlet-qa-v136/client.tsx");
+  const inspector=read("app/game/GauntletRigInspectionV139.tsx");
+  assert.match(client,/GauntletRigInspectionV139/);
+  assert.match(client,/Inspecter le poignet du chasseur/);
+  assert.match(inspector,/data-testid="gauntlet-rig-inspection-v139"/);
+  assert.match(inspector,/gauntletRigSpriteV139\(selectedId,"base"\)/);
+  assert.match(inspector,/gauntletRigSpriteV139\(selectedId,"lid"\)/);
+  assert.match(inspector,/rotate\(-64 51 202\)/);
+  assert.match(inspector,/data-rig-art-status="individual-vector-blockout-not-film-certified"/);
+  assert.ok(!inspector.includes("queueWarOrderV85("));
+});
