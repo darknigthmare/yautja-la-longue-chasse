@@ -4,16 +4,20 @@
  * prétendument trouvé sur une autre planète. */
 import { GAUNTLET_CATALOG_V132,gauntletByIdV132,gauntletUnlockedV132,
   DEFAULT_GAUNTLET_ID_V132,type HunterRankV132 } from "./clanWarGauntletCatalogV132.ts";
-import type { MissionId, MissionProgress, TrophyRecord, GameStatistics, SaveGame } from "../types";
+/** Structural read-only shape deliberately avoids importing the whole SaveGame graph
+ * into the lightweight gauntlet UI checks and Node strip-types tests. */
+export type GauntletMissionIdV134 =
+  | "jungle-vey" | "ice-cryostalker" | "volcano-bad-blood" | "swamp-hydra"
+  | "desert-sandmaw" | "ocean-leviathan" | "fungal-hivemind" | "ruins-ancient-guardian";
 
-const MISSIONS: readonly MissionId[]=[
+const MISSIONS: readonly GauntletMissionIdV134[]=[
   "jungle-vey","ice-cryostalker","volcano-bad-blood","swamp-hydra",
   "desert-sandmaw","ocean-leviathan","fungal-hivemind","ruins-ancient-guardian",
 ];
 const QUALITY=["worthy","blooded","elite","flawless"] as const;
 type TrophyQuality=typeof QUALITY[number];
 export interface GauntletStudyV134 {
-  id:string; name:string; missionId:MissionId; completions:number;
+  id:string; name:string; missionId:GauntletMissionIdV134; completions:number;
   quality:TrophyQuality; minimumScans:number; workshop:boolean; rank:HunterRankV132;
   archiveContext:string;
 }
@@ -24,7 +28,14 @@ export interface GauntletCampaignV134 {
   /** Research completed only after verifying a real hunt + claiming at the armory. */
   claimedStudies:string[];
 }
-export type GauntletCampaignEvidenceV134=Pick<SaveGame,"createdAt"|"profile"|"missionProgress"|"trophies"|"statistics">;
+export interface GauntletCampaignEvidenceV134 {
+  readonly createdAt:string;
+  readonly profile:{readonly rankId:HunterRankV132};
+  readonly missionProgress:Partial<Record<GauntletMissionIdV134,{readonly completions:number}>>;
+  readonly trophies:readonly {readonly missionId:string;readonly quality:TrophyQuality;
+    readonly workshop?:{readonly completedActions:readonly string[]}}[];
+  readonly statistics:{readonly totalScans:number};
+}
 export type GauntletStudyResultV134={ok:boolean; missing:string[]; label:string; study:GauntletStudyV134|null};
 
 function fingerprint(id:string):number{
@@ -60,7 +71,7 @@ export function evaluateGauntletStudyV134(save:GauntletCampaignEvidenceV134,id:s
   const missing:string[]=[];
   const rank=save.profile.rankId;
   if(RANK_INDEX[rank]<RANK_INDEX[study.rank]) missing.push(`Rang ${study.rank} requis`);
-  const progress=save.missionProgress[study.missionId] as MissionProgress|undefined;
+  const progress=save.missionProgress[study.missionId];
   if(!progress||progress.completions<study.completions)
     missing.push(`${study.completions} mission(s) validée(s) : ${study.missionId}`);
   if(save.statistics.totalScans<study.minimumScans)
