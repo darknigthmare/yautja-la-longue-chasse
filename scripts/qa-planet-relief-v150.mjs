@@ -124,8 +124,8 @@ try{
     paintedSlope>0 && transparentSlope>0);
   const waitTerrain=page.waitForEvent("download",{timeout:60000});
   await panel.getByTestId("planet-terrain-json-v152").click();
-  const receipt=await waitTerrain,terrainPath=path.join(output,receipt.suggestedFilename());
-  await receipt.saveAs(terrainPath);
+  const terrainDownload=await waitTerrain,terrainPath=path.join(output,terrainDownload.suggestedFilename());
+  await terrainDownload.saveAs(terrainPath);
   const terrainData=JSON.parse(await readFile(terrainPath,"utf8"));
   check("V152 route study covers actual links, legal crossings, and no saved war orders",
     terrainData.version===152 && terrainData.worldCode===world &&
