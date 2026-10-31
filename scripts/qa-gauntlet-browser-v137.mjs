@@ -100,7 +100,7 @@ try{
   assert.equal(await page.locator('[data-art-model="lost-shaman"] svg[data-fidelity="original-concept-not-film"]').count(),1);
   pass("Original non-canon individual study can be filtered and selected","Lost Shaman, source provenance retained");
   await search.fill("");
-  const categories=page.getByLabel("Provenance");
+  const categories=page.getByRole("combobox",{name:"Provenance",exact:true});
   await categories.selectOption("comic");
   assert.equal(await page.locator('button[aria-pressed][class*="modelChoice"]').count(),1);
   await categories.selectOption("all");
