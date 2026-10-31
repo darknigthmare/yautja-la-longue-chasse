@@ -49,5 +49,5 @@ test("48 mode tasks and 24 QA IDs are unique, source V120/W3/W5 unchanged",()=>{
  assert.equal(count(/W3-MAP\d{2}/g),12);
  assert.equal(count(/W5-LM\d{2}/g),36);
  assert.ok(content.includes("À développer"));
- assert.ok(content.includes("Implémenté — CI en cours"));
+ assert.ok(content.includes("Validé CI ciblée"));
 });

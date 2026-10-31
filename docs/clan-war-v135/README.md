@@ -27,3 +27,9 @@ Le tableau `00_PILOTAGE` additionne les statuts par formules, sans déclarer 48 
 La guerre des clans V135 n'est **pas** 1 200 scénarios finis. Restent les lieux 1:1 autorés, les vrais sprites/portraits/armes par continuité, le serveur multijoueur, la persistance des garnisons et équipes V85, la logistique, les convois jouables, les grandes armées RTS, les PNJ de sabotage et l'équilibrage avec sauvegarde de campagne. Les résultats du prototype V115/V133 n'annexent aucun territoire V85 ni ne délivrent des trophées inventés.
 
 Avant fusion : CI verte sur dernier commit, tests navigateur desktop/mobile/manette et validation du contrat V6/V85, puis fusion **dans l'ordre** des PR empilées.
+
+## Résultat GitHub Actions sur V135
+
+Le commit `0063a1c` a réussi le workflow [Actions 41181412333](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41181412333) : **44/44 tests Node**, compilation TypeScript ciblée et ESLint sans erreur. Les six nouveaux tests fonctionnels couvrent les 4 modes, plus les tests existants. Le classeur Excel a donc mis ses **cinq mécaniques nouvelles** au statut « Validé CI ciblée », sans les déclarer terminées en QA manuelle.
+
+Raccord à la campagne V85, commande manette, rendu avec sprites animés, reproduction locale d'un décor filmique 1:1 et réseau PvP restent à valider séparément.
