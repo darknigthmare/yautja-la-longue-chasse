@@ -33,7 +33,7 @@ test("true ranks unlock only configured models, challenge models never auto-awar
   assert.ok(!gauntletUnlockedV132("phg-witch","elder"));
   assert.ok(gauntletUnlockedV132("phg-witch","elder",["phg-witch"]));
   assert.ok(!gauntletUnlockedV132("not-a-real-gauntlet","elder",["not-a-real-gauntlet"]));
-  assert.match(gauntletUnlockLabelV132(gauntletByIdV132("phg-witch"),"elder"),/non encore branché/);
+  assert.match(gauntletUnlockLabelV132(gauntletByIdV132("phg-witch"),"elder"),/Étude d’atelier de clan requise/);
 });
 test("preference isolated per hunter; malformed, cross-owner or locked choices safely fall back",()=>{
   const keyA=gauntletStorageKeyV132("hunter-A"),keyB=gauntletStorageKeyV132("hunter-B");
