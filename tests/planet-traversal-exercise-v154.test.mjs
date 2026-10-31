@@ -106,7 +106,7 @@ test("invalid local resolution, foreign region gradient and unusable slope map a
   worldCode:"x",longitude:0,latitude:95}),/incompatibles/);
  assert.throws(()=>a.buildPlanetTraversalGridV154(input.raster,input.slope,input.mask,{
   worldCode:"x",longitude:0,latitude:0,width:8}),/incompatibles/);
- assert.throws(()=>a.buildPlanetTraversalGridV154(input.raster,{...input.slope,radiusKm:0},{
+ assert.throws(()=>a.buildPlanetTraversalGridV154(input.raster,{...input.slope,radiusKm:0},input.mask,{
   worldCode:"x",longitude:0,latitude:0}),/incompatibles/);
  assert.throws(()=>a.planPlanetTraversalV154(grid,{x:-1,y:0},{x:1,y:1},"RTS-U02"),/hors/);
 });

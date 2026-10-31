@@ -66,7 +66,6 @@ try{
   check("V154 generated planet includes a navigable actual dry-land neighbor for a pisteur",
     Boolean(neighbor)&&Boolean(await play.getAttribute("data-position")));
   const firstPosition=await play.getAttribute("data-position");
-  await tiles.filter({hasNotText:"IMPOSSIBLE"}).locator("xpath=..").count().catch(()=>{});
   await play.locator('[data-testid="planet-traversal-tile-v154"][data-x="'+neighbor.x+'"][data-y="'+neighbor.y+'"]').click();
   check("V154 click prepares only a contiguous path instead of teleporting the unit",
     (await play.locator('[data-testid="planet-traversal-tile-v154"][data-planned="true"]').count())>0 &&
