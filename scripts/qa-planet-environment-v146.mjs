@@ -97,7 +97,10 @@ try{
     (await generator.getAttribute("data-preview-planet-code"))===worldCode);
   check("V146 browser rendered without runtime exceptions",errors.length===0);
 
-  const preflight=generator.getByTestId("planet-preflight-v149");
+  // The page may retain the original V103 dossier during transition. Always
+  // scope to the exact canonical world currently shown, not an arbitrary DOM
+  // audit of an older preview.
+  const preflight=generator.locator('[data-testid="planet-preflight-v149"][data-world-code="'+worldCode+'"]');
   check("V149 visible world preflight is tied to this exact planet",
     (await preflight.getAttribute("data-world-code"))===worldCode);
   await preflight.getByTestId("planet-preflight-toggle-v149").click();
