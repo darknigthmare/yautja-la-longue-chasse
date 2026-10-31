@@ -7,6 +7,7 @@ import JungleHunterLayeredV134 from "../game/JungleHunterLayeredV134";
 import GauntletKnownHuntersV135,{isKnownHunterGauntletV135} from "../game/GauntletKnownHuntersV135";
 import GauntletArchiveStudiesV136,{isGauntletArchiveStudyV136} from "../game/GauntletArchiveStudiesV136";
 import GauntletRigInspectionV139 from "../game/GauntletRigInspectionV139";
+import GauntletPoseInspectionV140 from "../game/GauntletPoseInspectionV140";
 import styles from "./GauntletVisualQaV136.module.css";
 
 const PAGE_SIZE=12;
@@ -150,6 +151,10 @@ export default function GauntletVisualQaV136(){
         <details className={styles.rigDetails} data-testid="rig-qa-v139-panel">
           <summary>Inspecter le poignet du chasseur · rig V139</summary>
           <GauntletRigInspectionV139 modelId={model.id} coverOpen={open}/>
+        </details>
+        <details className={styles.rigDetails} data-testid="rig-pose-qa-v140-panel">
+          <summary>Tester le vrai rig en six poses et six morphologies · V140</summary>
+          <GauntletPoseInspectionV140 modelId={model.id} coverOpen={open}/>
         </details>
       </article>)}
     </section>
