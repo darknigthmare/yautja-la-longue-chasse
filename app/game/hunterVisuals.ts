@@ -15,6 +15,7 @@ import type {
   WeaponId,
 } from "./types";
 import { preservedBiomaskV62, referenceBiomaskV62, referenceBiomaskPathV62 } from "./biomaskCatalogueV62.ts";
+import { conceptBiomaskV133 } from "./conceptBiomasksV133.ts";
 import { hunterHeadArtV62, type HunterLayerPlacement } from "./hunterHeadArtV62.ts";
 
 export const HUNTER_ASSET_ROOT =
@@ -119,6 +120,8 @@ export function hunterNetPartPath(
 }
 
 export function hunterMaskThumbnailPath(maskId: BiomaskId): string {
+  const concept=conceptBiomaskV133(maskId);
+  if(concept)return concept.assetPath;
   const referencePath = referenceBiomaskPathV62(maskId);
   if (referencePath) return referencePath;
   const preserved = preservedBiomaskV62(maskId);
@@ -127,6 +130,8 @@ export function hunterMaskThumbnailPath(maskId: BiomaskId): string {
 }
 
 export function hunterMaskRigPath(maskId: BiomaskId): string {
+  const concept=conceptBiomaskV133(maskId);
+  if(concept)return concept.assetPath;
   const referencePath = referenceBiomaskPathV62(maskId);
   if (referencePath) return referencePath;
   const preserved = preservedBiomaskV62(maskId);

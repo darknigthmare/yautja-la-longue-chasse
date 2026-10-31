@@ -5,6 +5,7 @@ import { normalizeHuntAccessibilityV112 } from "./systems/huntAccessibilityV112"
 import { FIELD_TOOLS_V111, quoteFieldToolV111, purchaseFieldToolV111 } from "./systems/fieldToolsV111";
 import {recoverAnyArchiveV71} from "./systems/archiveRecoveryV71";
 import { REFERENCE_BIOMASKS_V62, PRESERVED_BIOMASKS_V62 } from "./biomaskCatalogueV62";
+import { Y_A_U_T_J_A_CONCEPT_MASKS_V133 } from "./conceptBiomasksV133.ts";
 
 /* eslint-disable @next/next/no-img-element */
 
@@ -548,6 +549,11 @@ const MASK_OPTIONS: ReadonlyArray<{ id: BiomaskId | null; label: string; detail:
   ...REFERENCE_BIOMASKS_V62.map((mask) => ({ id: mask.id, label: mask.label, detail: mask.work + " · recréation guidée par références", image: hunterMaskThumbnailPath(mask.id), preferImage: true })),
   { id: "elder", label: "Couronne des Ancêtres", detail: "Création originale du clan · aucun Ancien canonique attribué", image: hunterMaskThumbnailPath("elder"), preferImage: true },
   ...PRESERVED_BIOMASKS_V62.map((mask) => ({ id: mask.id, label: mask.label, detail: mask.detail, image: hunterMaskThumbnailPath(mask.id), preferImage: true })),
+  ...Y_A_U_T_J_A_CONCEPT_MASKS_V133.map(mask=>({
+    id:mask.id as BiomaskId,label:mask.name,
+    detail:"Étude conceptuelle originale V133 · forme non certifiée PHG 1:1",
+    image:mask.assetPath,preferImage:true,
+  })),
 ];
 
 const V14_ORIGINAL_MASK_ASSETS = listHunterKitAssets({

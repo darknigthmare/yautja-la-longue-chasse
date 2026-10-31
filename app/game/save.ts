@@ -186,6 +186,13 @@ const BIOMASK_IDS = [
   "clan-filigrane-cuivre",
   "clan-patine-dunes",
   "clan-gardien-ivoire",
+  "concept-v133-requiem",
+  "concept-v133-nova",
+  "concept-v133-instinct",
+  "concept-v133-glypic",
+  "concept-v133-tyrant",
+  "concept-v133-warlord",
+  "concept-v133-paroxysm",
 ] as const;
 const DREAD_STYLE_IDS = [
   "classic",

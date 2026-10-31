@@ -220,7 +220,14 @@ export type BiomaskId =
   | "clan-carapace-sombre"
   | "clan-filigrane-cuivre"
   | "clan-patine-dunes"
-  | "clan-gardien-ivoire";
+  | "clan-gardien-ivoire"
+  | "concept-v133-requiem"
+  | "concept-v133-nova"
+  | "concept-v133-instinct"
+  | "concept-v133-glypic"
+  | "concept-v133-tyrant"
+  | "concept-v133-warlord"
+  | "concept-v133-paroxysm";
 
 export type DreadStyleId =
   | "classic"
