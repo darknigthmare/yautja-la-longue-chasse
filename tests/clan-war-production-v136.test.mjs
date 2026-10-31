@@ -55,7 +55,7 @@ test("V136 workbook: 48 uniquely tracked mode requirements, 32 tests, 16 cross-m
  assert.equal(count(/CW136-(?:ASS|OUT|INF|RTS)-\d{3}/g),48);
  assert.equal(count(/QA-CW136-(?:ASS|OUT|INF|RTS)-\d{2}/g),32);
  const matrix=files.get("xl/worksheets/sheet23.xml")??"";
- const rowNumbers=[...matrix.matchAll(/<row[^>]*\sr="(\d+)"/g)].map(m=>Number(m[1]));
+ const rowNumbers=[...matrix.matchAll(/<(?:[A-Za-z_][\w.-]*:)?row[^>]*\sr="(\d+)"/g)].map(m=>Number(m[1]));
  assert.equal(rowNumbers.filter(n=>n>=5&&n<=20).length,16);
  assert.ok(all.includes("Validé CI ciblée")&&all.includes("À développer"),
   "not all statuses may be marked complete");
