@@ -6,6 +6,7 @@ import {GAUNTLET_CATALOG_V132,GAUNTLET_EVIDENCE_LABELS_V132,type GauntletDefinit
 import JungleHunterLayeredV134 from "../game/JungleHunterLayeredV134";
 import GauntletKnownHuntersV135,{isKnownHunterGauntletV135} from "../game/GauntletKnownHuntersV135";
 import GauntletArchiveStudiesV136,{isGauntletArchiveStudyV136} from "../game/GauntletArchiveStudiesV136";
+import GauntletRigInspectionV139 from "../game/GauntletRigInspectionV139";
 import styles from "./GauntletVisualQaV136.module.css";
 
 const PAGE_SIZE=12;
@@ -146,6 +147,10 @@ export default function GauntletVisualQaV136(){
             style={{opacity:overlayOpacity/100}} alt="Photogramme ou photo de référence ajoutée uniquement sur cet appareil"/>}
         </div>
         <SourceNote model={model}/>
+        <details className={styles.rigDetails} data-testid="rig-qa-v139-panel">
+          <summary>Inspecter le poignet du chasseur · rig V139</summary>
+          <GauntletRigInspectionV139 modelId={model.id} coverOpen={open}/>
+        </details>
       </article>)}
     </section>
     <section className={styles.catalog} aria-label="Catalogue des 54 modèles">
