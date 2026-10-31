@@ -58,7 +58,7 @@ test("V144 hook passes legitimate claim list into V132 local preference codec",(
   assert.match(hook,/parseGauntletPreferenceV132\(storage\.getItem\(key\),hunter,rank,archive\?\.claimedStudies \?\? \[\]\)/);
   assert.match(hook,/serializeGauntletPreferenceV132\(hunter,id,rank,archive\?\.claimedStudies \?\? \[\]\)/);
   const panel=read("app/game/ClanWarPanelV85.tsx");
-  assert.match(panel,/onClaimGauntletStudy=\{onClaimGauntletStudy\}/);
+  assert.match(panel,/onClaimStudy=\{onClaimGauntletStudy\}/);
   assert.match(panel,/claimedStudies=\{save\.gauntletV134\?\.claimedStudies\?\?\[\]\}/);
   assert.equal((panel.match(/<ClanWarAtlasV95\b/g)||[]).length,1);
 });
