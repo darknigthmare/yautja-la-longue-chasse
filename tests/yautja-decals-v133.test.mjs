@@ -21,7 +21,9 @@ test("V133: 48 independent source-safe decals + 7 playable original masks",()=>{
     for(const item of items){
       assert.equal(item.visualFidelity,"fan-study-unverified");
       assert.equal(item.officialPHGUV,false);
-      assert.equal(decalOfPaletteV133(zone,item.id)?.id,item.id);
+      const field={biomask:"maskDecalId",face:"faceDecalId",body:"bodyDecalId",armor:"armorDecalId"}[zone];
+      assert.equal(decalOfPaletteV133(zone,{[field]:item.id})?.id,item.id);
+      assert.equal(decalOfPaletteV133(zone,item.id),null,"raw IDs are not a saved-palette object");
       assert.equal(normalizeDecalIdV133(zone,item.id),item.id);
       assert.equal(normalizeDecalIdV133(zone,"../../"+item.id),null);
     }
