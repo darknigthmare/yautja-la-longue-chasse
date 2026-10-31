@@ -31,7 +31,7 @@ test("gauntlet UI integrates with the REAL ship armory, character and clan war",
   assert.match(game,/data-testid="hunter-gauntlet-slot-v133"/);
   assert.match(game,/useHunterGauntletV133\(save.createdAt,save.profile.rankId\)/);
   assert.match(game,/gauntletVariantId=\{hunterGauntlet.equippedId\}/);
-  assert.equal((game.match(/gauntletVariantId=\{hunterGauntlet.equippedId\}/g)||[]).length,2);
+  assert.equal((game.match(/gauntletVariantId=\{hunterGauntlet.equippedId\}/g)||[]).length,3);
   assert.match(rig,/data-gauntlet-equipped=\{selectedGauntlet\?\.id \?\? "jungle-hunter"\}/);
   assert.match(rig,/data-gauntlet-visual-validation="shared-rig-material-proxy"/);
   assert.match(panel,/useHunterGauntletV133\(save.createdAt, save.profile.rankId\)/);
