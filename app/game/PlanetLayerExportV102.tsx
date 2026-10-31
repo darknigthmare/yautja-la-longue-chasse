@@ -14,6 +14,7 @@ import PlanetRegionalPreviewV129 from "./PlanetRegionalPreviewV129";
 import {
   createPlanetRegionalMaterialKitV128, compatibleLandMaterialsV128, compatibleSurfaceMaterialsV128,
   describePlanetRegionAssetsV128, editPlanetRegionalMaterialKitV128, validPlanetRegionalMaterialKitV128,
+  type PlanetRegionalMaterialKitV128,
 } from "./systems/clanWarRegionalMaterialKitV128";
 import styles from "./PlanetLayerExportV102.module.css";
 
@@ -71,7 +72,10 @@ async function renderExportCanvasV124(
 
 /** Exports the applied preview only. A changed preview unmounts this component
  * and cancels its pending download; source loading remains shared and bounded. */
-export default function PlanetLayerExportV102({ planet }: { planet: WarPlanetV96 }) {
+export default function PlanetLayerExportV102({ planet, onApplyRegionalKit }: {
+  planet: WarPlanetV96;
+  onApplyRegionalKit?: (kit: PlanetRegionalMaterialKitV128 | null) => void;
+}) {
   const unique = useId();
   const recipe = planetMaterialRecipeV101(planet);
   const [layer, setLayer] = useState<ExportLayer>("composite");
@@ -402,6 +406,19 @@ export default function PlanetLayerExportV102({ planet }: { planet: WarPlanetV96
           data-testid="planet-regional-material-preview-v128"
           aria-label={`Aperçu du sol ${activeKitRegion.regionName}`}/>
         <p>Source régionale : {findPlanetTextureV130(activeKitRegion.landMaterialId)?.description}. Le rendu du globe reste lié à sa recette d’origine.</p>
+      </div>}
+      {activeKitRegion && onApplyRegionalKit && <div className={styles.controls}>
+        <button type="button" disabled={busy} data-testid="planet-main-apply-v133" onClick={() => {
+          if (!validPlanetRegionalMaterialKitV128(planet, regionalKit)) {
+            setMessage("Kit incompatible avec cette planète."); return;
+          }
+          onApplyRegionalKit(regionalKit);
+          setMessage("Étude V131 appliquée au globe principal, sans sauvegarde de guerre.");
+        }}>Appliquer les matières au globe principal</button>
+        <button type="button" disabled={busy} data-testid="planet-main-reset-v133" onClick={() => {
+          onApplyRegionalKit(null);
+          setMessage("Globe principal revenu à ses matériaux d’origine.");
+        }}>Rétablir le globe natif</button>
       </div>}
       {activeKitRegion && <div><button type="button" data-testid="planet-regional-preview-toggle-v129"
         onClick={() => setShowRegionalPreviewV129(value => !value)}>

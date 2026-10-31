@@ -148,6 +148,27 @@ try {
   await page.waitForFunction(() => document.querySelector('[data-testid="planet-regional-preview-v129"]')
     ?.getAttribute("data-render-status") === "ready", null, { timeout: 45000 });
   check("V131 preserves canonical planet identity", (await generator.getAttribute("data-preview-planet-code")) === code);
+  const liveCanvas = generator.getByTestId("planet-generator-quicklook-v103").getByTestId("planet-material-v101");
+  const nativePixels = await liveCanvas.evaluate(canvas =>
+    Array.from(canvas.getContext("2d").getImageData(0, 0, canvas.width, canvas.height).data));
+  await kit.getByTestId("planet-main-apply-v133").click();
+  await page.waitForFunction(() => document.querySelector('[data-testid="planet-main-kit-status-v133"]')
+    ?.textContent?.includes("appliquées"), null, { timeout: 60000 });
+  await page.waitForFunction(() => document.querySelector('[data-testid="planet-generator-quicklook-v103"] canvas')
+    ?.getAttribute("data-render-status") === "ready" &&
+    document.querySelector('[data-testid="planet-generator-quicklook-v103"] canvas')
+    ?.getAttribute("data-regional-kit-applied") === "true", null, { timeout: 60000 });
+  const appliedPixels = await liveCanvas.evaluate(canvas =>
+    Array.from(canvas.getContext("2d").getImageData(0, 0, canvas.width, canvas.height).data));
+  check("Explicit V133 application changes the actual main preview", 
+    nativePixels.some((value,index) => value !== appliedPixels[index]));
+  await kit.getByTestId("planet-main-reset-v133").click();
+  await page.waitForFunction(() => document.querySelector('[data-testid="planet-generator-quicklook-v103"] canvas')
+    ?.getAttribute("data-render-status") === "ready" &&
+    document.querySelector('[data-testid="planet-generator-quicklook-v103"] canvas')
+    ?.getAttribute("data-regional-kit-applied") === "false", null, { timeout: 60000 });
+  check("Main renderer can restore the native recipe without changing the world code",
+    (await generator.getAttribute("data-preview-planet-code")) === code);
   const surfaceOptions = await surfaceSelect.locator("option").evaluateAll(items => items.map(item => item.value));
   if (surfaceOptions.filter(Boolean).length >= 2) {
     const initialSurface = await surfaceSelect.inputValue();

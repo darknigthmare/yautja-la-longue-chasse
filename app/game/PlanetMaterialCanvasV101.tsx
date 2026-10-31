@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import type { WarPlanetV96 } from "./systems/clanWarPlanetsV96";
+import type { PlanetRegionalMaterialKitV128 } from "./systems/clanWarRegionalMaterialKitV128";
 import { DEFAULT_PLANET_MATERIAL_SETTINGS_V101, type PlanetMaterialLayerV101, type PlanetMaterialSettingsV101 } from "./systems/planetMaterialV101";
 import { drawPlanetMaterialV101, PLANET_RENDERER_EVENT_V101 } from "./planetMaterialRendererV101";
 
@@ -21,6 +22,8 @@ interface PlanetMaterialCanvasV101Props {
   layer?: PlanetMaterialLayerV101;
   settings?: Readonly<PlanetMaterialSettingsV101>;
   onReady?: (ready: boolean) => void;
+  regionalKit?: PlanetRegionalMaterialKitV128 | null;
+  regionalPbr?: boolean;
 }
 
 /** Visible-only, event-driven raster layer. HTML canvas is decorative; the SVG
@@ -29,6 +32,7 @@ export default function PlanetMaterialCanvasV101({
   planet, projection = "globe", width = 100, height = 100, longitude = -25, latitude = 15,
   radius = 43, centerX = 50, centerY = 50, mapTop = 0, mapHeight = height,
   resolution = 192, layer = "composite", settings = DEFAULT_PLANET_MATERIAL_SETTINGS_V101, onReady,
+  regionalKit = null, regionalPbr = false,
 }: PlanetMaterialCanvasV101Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const lastPlanet = useRef("");
@@ -66,7 +70,8 @@ export default function PlanetMaterialCanvasV101({
       }
       setStatus("loading");
       void drawPlanetMaterialV101(canvas, {
-        planet, projection, width, height, longitude, latitude, radius, centerX, centerY, mapTop, mapHeight, layer,
+        planet, regionalKit: regionalKit ?? undefined, regionalPbr, projection,
+        width, height, longitude, latitude, radius, centerX, centerY, mapTop, mapHeight, layer,
         settings: { atmosphere, clouds, weather, lighting, aurora }, signal: controller.signal,
       }).then(ready => {
         if (controller.signal.aborted) return;
@@ -75,10 +80,10 @@ export default function PlanetMaterialCanvasV101({
       });
     });
     return () => { controller.abort(); cancelAnimationFrame(frame); };
-  }, [planet, projection, width, height, longitude, latitude, radius, centerX, centerY, mapTop, mapHeight, resolution, layer, atmosphere, clouds, weather, lighting, aurora, onReady, visible, revision]);
+  }, [planet, regionalKit, regionalPbr, projection, width, height, longitude, latitude, radius, centerX, centerY, mapTop, mapHeight, resolution, layer, atmosphere, clouds, weather, lighting, aurora, onReady, visible, revision]);
 
   return <canvas ref={canvasRef} width={resolution} height={Math.round(resolution * height / width)}
     aria-hidden="true" data-testid="planet-material-v101" data-planet-id={planet.id} data-projection={projection}
-    data-layer={layer} data-render-status={status} data-mapping={planet.procedural?.recipe.biomeDiversity === "varied" ? "world-space-triplanar-regional" : "world-space-triplanar-mirrored"}
+    data-layer={layer} data-render-status={status} data-regional-kit-applied={Boolean(regionalKit)} data-mapping={planet.procedural?.recipe.biomeDiversity === "varied" ? "world-space-triplanar-regional" : "world-space-triplanar-mirrored"}
     style={{ display: "block", width: "100%", height: "100%", pointerEvents: "none" }}/>;
 }

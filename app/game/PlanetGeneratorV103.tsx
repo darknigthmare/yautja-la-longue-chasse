@@ -4,6 +4,7 @@ import { useId, useMemo, useRef, useState, type ChangeEvent } from "react";
 import ClanWarAtlasV95 from "./ClanWarAtlasV95";
 import PlanetMaterialCanvasV101 from "./PlanetMaterialCanvasV101";
 import PlanetLayerExportV102 from "./PlanetLayerExportV102";
+import type { PlanetRegionalMaterialKitV128 } from "./systems/clanWarRegionalMaterialKitV128";
 import PlanetShapePreviewV125 from "./PlanetShapePreviewV125";
 import {
   DEFAULT_WAR_PLANET_RECIPE_V103, WAR_PLANET_RECIPE_FIELDS_V103,
@@ -115,11 +116,11 @@ interface PlanetGeneratorV103Props {
   onOpen: (planetId: string) => boolean | void;
 }
 
-function PlanetQuicklook({ planet }: { planet: WarPlanetV96 }) {
+function PlanetQuicklook({ planet, regionalKit }: { planet: WarPlanetV96; regionalKit?: PlanetRegionalMaterialKitV128 | null }) {
   const [ready, setReady] = useState(false);
   return <div className={styles.quicklook} aria-hidden="true" data-testid="planet-generator-quicklook-v103">
     {!ready && <span className={styles.quicklookFallback} style={{ background: `radial-gradient(circle at 28% 24%,${planet.surface.accent},${planet.surface.base} 35%,${planet.surface.deep} 75%,#020a10)` }}/>}
-    <PlanetMaterialCanvasV101 planet={planet} resolution={320} onReady={setReady}/>
+    <PlanetMaterialCanvasV101 planet={planet} regionalKit={regionalKit} regionalPbr={Boolean(regionalKit)} resolution={320} onReady={setReady}/>
   </div>;
 }
 
@@ -137,6 +138,7 @@ export default function PlanetGeneratorV103({ activePlanet, pending = false, onO
   const [liquidMaterialV115, setLiquidMaterialV115] = useState(initialRecipe.version === 115 ? initialRecipe.liquidMaterial : DEFAULT_WAR_PLANET_RECIPE_V115.liquidMaterial);
   const [seedText, setSeedText] = useState(() => String(initialRecipe.seed));
   const [planet, setPlanet] = useState(() => worldForRecipe(initialRecipe));
+  const [mainRegionalKitV133, setMainRegionalKitV133] = useState<PlanetRegionalMaterialKitV128 | null>(null);
   const [editorEnabled, setEditorEnabled] = useState(initialRecipe.version !== 102);
   const [locked, setLocked] = useState<WarPlanetRecipeFieldV103[]>([]);
   const [selectedId, setSelectedId] = useState("CON-T02");
@@ -174,7 +176,7 @@ export default function PlanetGeneratorV103({ activePlanet, pending = false, onO
   function showWorld(next: GeneratedWarPlanetAnyV103) {
     importIntent.current++;
     const recipe = next.procedural.recipe;
-    setPlanet(next); setDraft(convertToV103Recipe(recipe));
+    setPlanet(next); setDraft(convertToV103Recipe(recipe)); setMainRegionalKitV133(null);
     setEditorEnabled(recipe.version !== 102); setSeedText(String(recipe.seed));
     setAdvancedV115(recipe.version === 115);
     if (recipe.version === 115) {
@@ -363,7 +365,10 @@ export default function PlanetGeneratorV103({ activePlanet, pending = false, onO
         </form>}
       </div>
       <div className={styles.identity}>
-        <p className={styles.eyebrow}>MONDE EN EXPLORATION</p><h4>{planet.name}</h4><p className={styles.subtitle}>{planet.subtitle}</p><PlanetQuicklook key={planet.id} planet={planet}/><p>{planet.description}</p>
+        <p className={styles.eyebrow}>MONDE EN EXPLORATION</p><h4>{planet.name}</h4><p className={styles.subtitle}>{planet.subtitle}</p><PlanetQuicklook key={planet.id} planet={planet} regionalKit={mainRegionalKitV133}/><p>{planet.description}</p>
+        <p className={styles.hint} data-testid="planet-main-kit-status-v133">{mainRegionalKitV133
+          ? "Matières régionales V131 appliquées à cet aperçu uniquement (non sauvegardées dans la campagne)."
+          : "Globe principal : apparence native de la recette actuelle."}</p>
         <dl className={styles.facts}>
           <div><dt>Format de la guerre</dt><dd>{planet.territories.length} territoires · {planet.regions.length} régions</dd></div>
           <div><dt>Terres</dt><dd>{Math.round(planet.landFraction * 100)} % du globe</dd></div>
@@ -388,7 +393,7 @@ export default function PlanetGeneratorV103({ activePlanet, pending = false, onO
     </div>
     <p className={styles.status} role="status" aria-live="polite">{message}</p>
     <div className={styles.preview} id={`${unique}-atlas`} data-testid="planet-generator-atlas-v103"><ClanWarAtlasV95 key={`${planet.id}-${atlasFocusRevision}`} simulation={simulation} selectedTerritoryId={selected.id} targetTerritoryId={target} onSelectTerritory={id => { setSelectedId(id); setTargetId(""); }} onSelectTarget={setTargetId}/></div>
-    <PlanetLayerExportV102 key={planet.id} planet={planet}/>
+    <PlanetLayerExportV102 key={planet.id} planet={planet} onApplyRegionalKit={setMainRegionalKitV133}/>
     <div className={styles.dossier}>
       <section aria-label="Particularités du monde"><h4>Particularités de {planet.name}</h4><div className={styles.traits}>{details.traits.map(trait => <article key={trait.id}><h5>{trait.name}</h5><p>{trait.description}</p></article>)}</div></section>
       <section aria-label="Continents et îles"><h4>Continents et îles</h4><div className={styles.landmasses}>{details.landmasses.map(landmass => <article key={landmass.landmassId}><span>{landmass.kind === "island" ? "Île" : "Continent"}</span><h5>{landmass.name}</h5><p>{landmass.description}</p></article>)}</div></section>
