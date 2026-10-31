@@ -397,7 +397,7 @@ export default function PlanetGeneratorV103({ activePlanet, pending = false, onO
       <div className={styles.identity}>
         <p className={styles.eyebrow}>MONDE EN EXPLORATION</p><h4>{planet.name}</h4><p className={styles.subtitle}>{planet.subtitle}</p><PlanetQuicklook key={planet.id} planet={planet} visualProfile={mainVisualProfileV134}/><p>{planet.description}</p>
         <p className={styles.hint} data-testid="planet-main-kit-status-v133">{mainVisualProfileV134
-          ? `Matières régionales ${mainVisualProfileV134.quality.toUpperCase()}, côte ${mainVisualProfileV134.coastalInfluenceKm} km : appliquées à cet aperçu uniquement (non sauvegardées dans la campagne).`
+          ? `Matières régionales ${mainVisualProfileV134.quality.toUpperCase()}, côte ${mainVisualProfileV134.coastalInfluenceKm} km : appliquées au globe principal et à l’atlas stratégique (non sauvegardées dans la campagne).`
           : "Globe principal : apparence native de la recette actuelle."}</p>
         <dl className={styles.facts}>
           <div><dt>Format de la guerre</dt><dd>{planet.territories.length} territoires · {planet.regions.length} régions</dd></div>
@@ -425,7 +425,7 @@ export default function PlanetGeneratorV103({ activePlanet, pending = false, onO
       </div>
     </div>
     <p className={styles.status} role="status" aria-live="polite">{message}</p>
-    <div className={styles.preview} id={`${unique}-atlas`} data-testid="planet-generator-atlas-v103"><ClanWarAtlasV95 key={`${planet.id}-${atlasFocusRevision}`} simulation={simulation} selectedTerritoryId={selected.id} targetTerritoryId={target} onSelectTerritory={id => { setSelectedId(id); setTargetId(""); }} onSelectTarget={setTargetId}/></div>
+    <div className={styles.preview} id={`${unique}-atlas`} data-testid="planet-generator-atlas-v103"><ClanWarAtlasV95 key={`${planet.id}-${atlasFocusRevision}`} simulation={simulation} selectedTerritoryId={selected.id} targetTerritoryId={target} onSelectTerritory={id => { setSelectedId(id); setTargetId(""); }} onSelectTarget={setTargetId} visualProfile={mainVisualProfileV134}/></div>
     <PlanetLayerExportV102 key={planet.id} planet={planet} onApplyVisualProfile={setMainVisualProfileV134}/>
     <div className={styles.dossier}>
       <section aria-label="Particularités du monde"><h4>Particularités de {planet.name}</h4><div className={styles.traits}>{details.traits.map(trait => <article key={trait.id}><h5>{trait.name}</h5><p>{trait.description}</p></article>)}</div></section>

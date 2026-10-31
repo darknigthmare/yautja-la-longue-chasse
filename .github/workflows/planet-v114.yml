@@ -7,6 +7,7 @@ on:
       - 'app/game/PlanetLayerExportV102.tsx'
       - 'app/game/PlanetMaterialCanvasV101.tsx'
       - 'app/game/PlanetGeneratorV103.tsx'
+      - 'app/game/ClanWarAtlasV95.tsx'
       - 'app/game/PlanetRegionalPreviewV129.tsx'
       - 'app/game/PlanetShapePreviewV125.tsx'
       - 'app/game/PlanetShapeLibraryV137.tsx'
@@ -95,6 +96,7 @@ jobs:
           app/game/systems/clanWarTextureLibraryV125.ts
           app/game/systems/clanWarTextureLibraryV130.ts
           app/game/PlanetGeneratorV103.tsx
+          app/game/ClanWarAtlasV95.tsx
           app/game/PlanetShapePreviewV125.tsx
           app/game/PlanetShapeLibraryV137.tsx
           app/game/systems/clanWarShapeLibraryV137.ts

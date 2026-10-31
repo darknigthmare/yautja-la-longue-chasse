@@ -169,6 +169,33 @@ try {
     return pixels.some((value,index) => value !== previous[index]);
   }, nativePixels, { timeout: 60000 });
   check("Explicit V133 application changes the actual main preview", true);
+
+  // V141: the playable atlas globe AND map must share the selected sidecar
+  // rather than silently showing the native sea and regional materials.
+  const strategicAtlas = generator.getByTestId("clan-war-atlas-v95");
+  const atlasCanvas = strategicAtlas.getByTestId("planet-material-v101");
+  check("V141 binds the same region profile to the interactive war atlas",
+    (await strategicAtlas.getAttribute("data-regional-profile-active")) === "true" &&
+    (await strategicAtlas.getAttribute("data-regional-profile-code")) === code &&
+    (await atlasCanvas.getAttribute("data-regional-kit-applied")) === "true");
+  await atlasCanvas.scrollIntoViewIfNeeded();
+  await page.waitForFunction(() => {
+    const canvas = document.querySelector('[data-testid="clan-war-atlas-v95"] canvas[data-testid="planet-material-v101"]');
+    return canvas?.getAttribute("data-render-status") === "ready" &&
+      canvas?.getAttribute("data-regional-kit-applied") === "true";
+  }, null, { timeout: 60000 });
+  await atlasCanvas.screenshot({ path: path.join(output, "after-v141-interactive-atlas-globe.png") });
+  await strategicAtlas.getByRole("button", { name: "▱ Planisphère" }).click();
+  await page.waitForFunction(() => {
+    const canvas = document.querySelector('[data-testid="clan-war-atlas-v95"] canvas[data-testid="planet-material-v101"]');
+    return canvas?.getAttribute("data-projection") === "map" &&
+      canvas?.getAttribute("data-render-status") === "ready" &&
+      canvas?.getAttribute("data-regional-kit-applied") === "true";
+  }, null, { timeout: 60000 });
+  check("V141 interactive map retains regional land and coast profile",
+    (await generator.getAttribute("data-preview-planet-code")) === code);
+  await atlasCanvas.screenshot({ path: path.join(output, "after-v141-interactive-atlas-map.png") });
+  await strategicAtlas.getByRole("button", { name: "◎ Globe" }).click();
   await kit.getByTestId("planet-main-reset-v133").click();
   await liveCanvas.scrollIntoViewIfNeeded();
   await page.waitForFunction(() => document.querySelector('[data-testid="planet-generator-quicklook-v103"] canvas')
@@ -177,6 +204,9 @@ try {
     ?.getAttribute("data-regional-kit-applied") === "false", null, { timeout: 60000 });
   check("Main renderer can restore the native recipe without changing the world code",
     (await generator.getAttribute("data-preview-planet-code")) === code);
+  check("V141 reset restores the native interactive war atlas too",
+    (await strategicAtlas.getAttribute("data-regional-profile-active")) === "false" &&
+    (await atlasCanvas.getAttribute("data-regional-kit-applied")) === "false");
   const surfaceOptions = await surfaceSelect.locator("option").evaluateAll(items => items.map(item => item.value));
   if (surfaceOptions.filter(Boolean).length >= 2) {
     const initialSurface = await surfaceSelect.inputValue();

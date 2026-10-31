@@ -12,6 +12,7 @@ import {
 } from "./systems/clanWarAtlasV95";
 import styles from "./ClanWarAtlasV95.module.css";
 import PlanetMaterialCanvasV101 from "./PlanetMaterialCanvasV101";
+import type { PlanetVisualProfileV134 } from "./systems/clanWarPlanetVisualProfileV134";
 import { DEFAULT_PLANET_MATERIAL_SETTINGS_V101 } from "./systems/planetMaterialV101";
 import { warConvoyRouteIssueV105 } from "./systems/clanWarConvoyRouteV105";
 import { warIntelMarkerV106, warSupplyPathV106 } from "./systems/clanWarAssaultV106";
@@ -22,6 +23,8 @@ interface ClanWarAtlasV95Props {
   targetTerritoryId: string;
   onSelectTerritory: (id: string) => void;
   onSelectTarget: (id: string) => void;
+  /** Optional unsaved appearance for the generator preview only. */
+  visualProfile?: PlanetVisualProfileV134 | null;
 }
 
 const PLAYER: WarFactionIdV85 = "CON-F01";
@@ -113,7 +116,10 @@ function PlanetSurfaceDefinitions({ planet, unique }: { planet: WarPlanetV96; un
 }
 
 /** Geography, names and routes follow the active planet; only faction control colors are shared. */
-export default function ClanWarAtlasV95({ simulation, selectedTerritoryId, targetTerritoryId, onSelectTerritory, onSelectTarget }: ClanWarAtlasV95Props) {
+export default function ClanWarAtlasV95({
+  simulation, selectedTerritoryId, targetTerritoryId, onSelectTerritory, onSelectTarget,
+  visualProfile = null,
+}: ClanWarAtlasV95Props) {
   const unique = `war-atlas-${useId().replace(/[^a-zA-Z0-9_-]/g, "")}`;
   const planet = warPlanetV96(simulation.planetId) ?? warPlanetV96()!;
   const regions = planet.regions;
@@ -239,7 +245,9 @@ export default function ClanWarAtlasV95({ simulation, selectedTerritoryId, targe
   const connections = source.neighbors.map(id => ({ fromId: source.id, targetId: id }));
   const statusLabel = (id: string) => id === source.id ? "Départ / sélection" : id === targetTerritoryId ? "Cible" : source.neighbors.includes(id) ? "Voisin accessible" : "";
 
-  return <section className={styles.atlas} aria-labelledby={`${unique}-heading`} data-testid="clan-war-atlas-v95" data-planet-id={planet.id} data-planet-style={planet.style} data-surface-kind={planet.surface.kind} data-landmass-count={landmasses.length}>
+  return <section className={styles.atlas} aria-labelledby={`${unique}-heading`} data-testid="clan-war-atlas-v95" data-planet-id={planet.id} data-planet-style={planet.style} data-surface-kind={planet.surface.kind} data-landmass-count={landmasses.length}
+      data-regional-profile-active={Boolean(visualProfile)}
+      data-regional-profile-code={visualProfile?.worldCode ?? ""}>
     <header className={styles.header}>
       <div><p className={styles.eyebrow}>THÉÂTRE PLANÉTAIRE / {planet.subtitle}</p><h4 id={`${unique}-heading`}>{planet.name}<span>Atlas des territoires</span></h4></div>
       <div className={styles.turn}><span className={styles.signal} aria-hidden="true"/>Tour <strong>{String(simulation.turn).padStart(2, "0")}</strong><small>{territories.length} territoires · {regions.length} régions</small><small>{landmassLabel}</small></div>
@@ -304,6 +312,8 @@ export default function ClanWarAtlasV95({ simulation, selectedTerritoryId, targe
             <foreignObject x="0" y="0" width="960" height="620" pointerEvents="none" aria-hidden="true">
               <PlanetMaterialCanvasV101 planet={planet} projection={projection} width={960} height={620} longitude={longitude} latitude={latitude}
                 radius={view.radius} centerX={480} centerY={306} mapTop={70} mapHeight={480} resolution={960}
+                regionalKit={visualProfile?.kit} regionalPbr={visualProfile?.quality === "pbr"}
+                coastalInfluenceKm={visualProfile?.coastalInfluenceKm}
                 settings={materialSettings} onReady={setMaterialReady}/>
             </foreignObject>
             <g transform={projection === "map" ? "translate(0 70)" : undefined}>
