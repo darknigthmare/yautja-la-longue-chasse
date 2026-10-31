@@ -10,6 +10,7 @@ import {
 import {WAR_SOURCE_RTS_IDS_V129} from "./systems/clanWarRtsSourceMissionsV129";
 import {warMapLineOfSightV128} from "./systems/clanWarSourceMapsV128";
 import {planWarRtsWaypointV142,commandWarRtsWaypointV142,type WarRtsWaypointV142} from "./systems/clanWarRtsWaypointV142";
+import {commandWarRtsMarchV143} from "./systems/clanWarRtsMarchV143";
 import styles from "./ClanWarRtsSquadsV133.module.css";
 
 const d=(a:{x:number;y:number},b:{x:number;y:number})=>Math.abs(a.x-b.x)+Math.abs(a.y-b.y);
@@ -193,6 +194,14 @@ export default function ClanWarRtsSquadsV133({rules}:{rules:WarRulesV6}){
         onClick={()=>apply(commandWarRtsWaypointV142(state,selected.id,goal))}>
         Guidage V142 · {goal==="observation"?"reconnaissance":goal==="objective"?"objectif observé":"extraction"} · 1 case
        </button>;
+      })}
+      {(["observation","objective","extraction"] as WarRtsWaypointV142[]).map(goal=>{
+        const step=planWarRtsWaypointV142(state,selected.id,goal);
+        return <button type="button" key={"march143-"+goal} disabled={!step||selected.status!=="active"}
+         title="Exécute au maximum trois mouvements réels et trois réactions ennemies"
+         onClick={()=>apply(commandWarRtsMarchV143(state,selected.id,goal,3))}>
+         Marche prudente V143 · {goal==="observation"?"reconnaissance":goal==="objective"?"objectif connu":"sortie"} · 3 pas max
+        </button>;
       })}
       {(["observe","interact","wait","power","stabilize","pickup","extract","retreat"] as const).map(kind=><button
        type="button" key={kind} disabled={selected.status!=="active"}

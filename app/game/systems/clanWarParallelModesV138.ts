@@ -76,7 +76,7 @@ export function requestWarOuterSignalV138(
  const order=state.outer.find(m=>m.id===operationId);
  if(!order||order.recall||order.fieldSignal)
   return deny(state,"Rapport de terrain déjà émis, mandat clos ou rappel en cours.");
- const baseDueAt=order.reconHalt?.originalDueAt??order.dueAt;
+ const baseDueAt=order.reconHalt?.originalDueAt??order.routeIncident?.originalDueAt??order.dueAt;
  if(now<order.startedAt+Math.ceil((baseDueAt-order.startedAt)/2)||
     now>=order.dueAt)
   return deny(state,"Transmission terrain autorisée seulement après la mi-parcours réelle, avant le retour.");

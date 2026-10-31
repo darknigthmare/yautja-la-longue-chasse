@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { planWarRouteV6, type WarRulesV6 } from "./systems/clanWarBibleV6";
-import { warMissionTerrainV116 } from "./systems/clanWarMissionTerrainV116";
+import { warMissionTerrainV116,warTerrainCellBlockedV116 } from "./systems/clanWarMissionTerrainV116";
 import { warSourceRtsScenarioV119, warRtsScriptedEligibilityV119,
   type WarSourceRtsScenarioIdV119,
 } from "./systems/clanWarRtsScenariosV119";
@@ -30,6 +30,9 @@ import {
 import {warOuterWeightedProgressV141} from "./systems/clanWarOuterWeightedProgressV141";
 import {warOuterRouteChoicesV142} from "./systems/clanWarOuterChoicesV142";
 import {issueWarAssaultFocusV142} from "./systems/clanWarFocusV142";
+import {commandWarAssaultBraceV143} from "./systems/clanWarBraceV143";
+import {commandWarStealthDashV143} from "./systems/clanWarStealthDashV143";
+import {commandWarOuterIncidentV143,warOuterIncidentV143} from "./systems/clanWarOuterIncidentV143";
 import {planWarStealthStepV142,commandWarStealthStepV142} from "./systems/clanWarStealthPathV142";
 import styles from "./ClanWarOperationsV115.module.css";
 
@@ -417,6 +420,17 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
          })}
         </div>
         <p className={styles.explain}>V142 : une seule priorité de tir par équipe pendant ce combat. Le bonus ponctuel demande portée réelle et cible sans autre ennemi interposé ; aucun tir à distance infinie.</p>
+        <div className={styles.cards}>{current.teamIds.filter(id=>assault.launched.includes(id)).map(id=>{
+          const actor=assault.actors.find(a=>a.teamId===id&&a.side==="ally"&&a.hp>0);
+          const already=(assault.braceUsedIds??[]).includes(id);
+          const activeUntil=assault.bracedUntil?.[id]??0;
+          return <button type="button" key={"brace143-"+id}
+           disabled={blocked||already||!actor||actor.x>40||assault.ap<14}
+           onClick={()=>commit(commandWarAssaultBraceV143(worldRef.current,id,rules))}>
+           {teamsById(id)} · défendre le front (14 AP){activeUntil>current.tick?" · retranché":already?" · utilisé":""}
+          </button>;
+        })}</div>
+        <p className={styles.explain}>Posture défensive V143 : une formation existante sur sa moitié de terrain réduit chaque dommage subi de 1 durant deux échanges, sans guérison ni nouvelle armure canonique.</p>
         <p>Points d&apos;assaut <strong>{assault.ap} AP</strong> · Cadence <strong>niveau {assault.apLevel??1}/3</strong> · Réserve maximale <strong>{100+((assault.apLevel??1)-1)*35} AP</strong> · Rempart allié <strong>{assault.ownBase}/80</strong> · Rempart adverse <strong>{assault.rivalBase}/80</strong>. Les équipes avancent et engagent automatiquement ; vous décidez du moment du déploiement.</p>
         <div className={styles.cards}>
           <button type="button" disabled={blocked||(assault.apLevel??1)>=3||assault.ap<((assault.apLevel??1)===1?35:55)}
@@ -513,6 +527,18 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
       {stealth && <div>
         <p>Rejoindre le relais (7,1), le désactiver, puis rejoindre l&apos;extraction (1,4). Alerte <strong>{stealth.alarm}/3</strong> · énergie de camouflage <strong>{stealth.energy}/5</strong> · relais <strong>{stealth.sabotaged?"neutralisé":"actif"}</strong> · diversion <strong>{stealth.decoyUsed?"épuisée": "disponible"}</strong> · leurre <strong>{stealth.decoyTurns??0} tour(s) à la position émise</strong> · couverts utilisés <strong>{(stealth.usedCoverIds??[]).length}/{missionTerrain?.cover.length??0}</strong> · écoutes <strong>{stealth.acousticUsed??0}/2</strong>.</p>
         <p className={styles.explain}>Terrain régional : {missionTerrain?.title} · {missionTerrain?.ground} · obstacle : {missionTerrain?.wallLabel}.</p>
+        <div className={styles.stealthControls}>{(["up","left","down","right"] as const).map(dir=>{
+          const dx=dir==="right"?1:dir==="left"?-1:0;
+          const dy=dir==="down"?1:dir==="up"?-1:0;
+          const possible=missionTerrain&&[1,2].every(n=>
+            !warTerrainCellBlockedV116(missionTerrain,stealth.x+dx*n,stealth.y+dy*n));
+          return <button type="button" key={"dash-"+dir}
+            disabled={blocked||!possible||stealth.dashUsed||stealth.cloaked||stealth.energy<2}
+            onClick={()=>commit(commandWarStealthDashV143(worldRef.current,dir,rules))}>
+            Sprint {dir} · 2 cases / 2 tours / 2 énergie
+          </button>;
+        })}</div>
+        <p className={styles.explain}>Le sprint V143 traverse deux cases réelles avec une réaction de la patrouille après chaque case. Usage unique par infiltration, aucune téléportation ni camouflage gratuit.</p>
         <p className={styles.explain}>Patrouille : {guardVisible?"visible à portée réelle":
           soundBearing?("bruit perçu vers "+soundBearing+" · position exacte inconnue"):
           "hors du champ de perception ; aucune position exacte affichée"}.</p>
@@ -674,6 +700,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
       <p>Le délai utilise l&apos;heure de l&apos;appareil. Un rappel ne téléporte pas l&apos;équipe : son trajet de retour est décompté jusqu&apos;au rapport final.</p>
       {world.outer.length?world.outer.map(order=>{
         const transit=warOuterWeightedProgressV141(order,now,rules);
+        const incident=warOuterIncidentV143(order,now,rules);
         return <div className={styles.delegatedOrder} key={order.id}>
         <strong>{order.id} · {focusLabels[order.focus]}</strong>
         <span>{order.targetId} · {order.teamIds.map(teamsById).join(", ")}</span>
@@ -688,7 +715,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
         </span>
         {transit.sourceCondition&&<small className={styles.explain}>Condition publique du passage : {transit.sourceCondition}. Aucune position ennemie calculée.</small>}
         {order.recall ? <small className={styles.explain}>Rappel transmis : équipe toujours engagée jusqu&apos;à l&apos;arrivée.</small> : <button type="button" disabled={blocked||now<order.startedAt||now>=order.dueAt} onClick={()=>commit(recallWarOuterMissionV116(worldRef.current,order.id,Date.now(),rules))}>Rappeler l&apos;équipe</button>}
-        {!order.recall&&!order.retask&&now>=order.startedAt&&2*(now-order.startedAt)<((order.reconHalt?.originalDueAt??order.dueAt)-order.startedAt)&&
+        {!order.recall&&!order.retask&&now>=order.startedAt&&2*(now-order.startedAt)<((order.reconHalt?.originalDueAt??order.routeIncident?.originalDueAt??order.dueAt)-order.startedAt)&&
           <div className={styles.cards}>
            {(Object.keys(focusLabels) as OuterFocusV115[]).filter(f=>f!==order.focus).map(f=>
             <button type="button" key={f} disabled={blocked}
@@ -700,9 +727,24 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
         {order.fieldSupport&&<small className={styles.explain}>Soutien de terrain V136 : {order.fieldSupport.paidRav} RAV engagés à {order.fieldSupport.allocatedAt} ; aucune victoire anticipée.</small>}
         {order.reconHalt&&<small className={styles.explain}>Halte V137 : ancienne échéance {order.reconHalt.originalDueAt}, nouveau rapport après 15 secondes supplémentaires ; effectifs et route inchangés.</small>}
         {order.departureContext&&<small className={styles.explain}>Briefing figé au départ : renseignements {order.departureContext.intel?"confirmés":"non confirmés"}, relais {order.departureContext.weakened?"affaibli":"non confirmé"}, pression {order.departureContext.pressure}. Les résultats ultérieurs des autres modes ne modifient pas ce mandat.</small>}
+        {order.routeIncident&&<p className={styles.explain}>Incident V143 traité sur {order.routeIncident.passageId} :
+          <strong> {order.routeIncident.kind==="secure"?"sécurisation 2 RAV":"détour +10 secondes"}</strong>.
+          L&apos;échéance réelle et les personnes restent enregistrées.</p>}
+        {incident&&<div className={styles.cards}>
+          <p className={styles.explain}>Incident source sur {incident.passageName} ({incident.passageId}) :
+            {incident.incident}. Décision unique, sans renseignement ennemi caché.</p>
+          <button type="button" disabled={blocked||world.rav<2}
+            onClick={()=>commit(commandWarOuterIncidentV143(worldRef.current,order.id,"secure",Date.now(),rules))}>
+            Sécuriser le passage · 2 RAV
+          </button>
+          <button type="button" disabled={blocked}
+            onClick={()=>commit(commandWarOuterIncidentV143(worldRef.current,order.id,"detour",Date.now(),rules))}>
+            Contourner · +10 secondes
+          </button>
+        </div>}
         {order.fieldSignal&&<p className={styles.explain}>Transmission V138 : <strong>{order.fieldSignal.assessment}</strong> · {order.fieldSignal.passages} passage(s) connus, {order.fieldSignal.fitMembers} membre(s) aptes. Ceci ne dévoile ni garnison cachée, ni résultat de combat.</p>}
         {!order.recall&&!order.fieldSignal&&now>=order.startedAt+
-          Math.ceil(((order.reconHalt?.originalDueAt??order.dueAt)-order.startedAt)/2)&&
+          Math.ceil(((order.reconHalt?.originalDueAt??order.routeIncident?.originalDueAt??order.dueAt)-order.startedAt)/2)&&
           now<order.dueAt&&<button type="button" disabled={blocked}
            onClick={()=>commit(requestWarOuterSignalV138(worldRef.current,order.id,Date.now(),rules))}>
            Obtenir le bulletin de terrain · aucune résolution anticipée

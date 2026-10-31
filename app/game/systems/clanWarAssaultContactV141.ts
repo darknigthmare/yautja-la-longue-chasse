@@ -19,6 +19,7 @@ export function warAssaultContactV141(
  original:readonly WarMissionActorV115[],rules:WarRulesV6,
  heldUntil:Readonly<Record<string,number>>,tick:number,
  focusOrders:Readonly<Record<string,{targetId:string;expiresAtTick:number}>>={},
+ bracedUntil:Readonly<Record<string,number>>={},
 ):WarAssaultContactV141{
  const alive=original.filter(a=>a.hp>0);
  const harm=new Map<string,number>();
@@ -37,12 +38,17 @@ export function warAssaultContactV141(
         blocker.id!==other.id&&Math.abs(blocker.x-actor.x)<Math.abs(other.x-actor.x))) : undefined;
   const hostile=focus??opponents[0];
   if(hostile&&Math.abs(actor.x-hostile.x)<=range){
-   const damage=clamp(Math.ceil((unit?.attack??3)/3),2,15)+(focus?1:0);
+   const unguarded=clamp(Math.ceil((unit?.attack??3)/3),2,15)+(focus?1:0);
+   // Bracing mitigates each actual enemy hit by exactly one, but
+   // never makes any living enemy strike magically harmless.
+   const defensive=hostile.side==="ally"&&hostile.teamId&&
+     (bracedUntil[hostile.teamId]??0)>tick?1:0;
+   const damage=Math.max(1,unguarded-defensive);
    harm.set(hostile.id,(harm.get(hostile.id)??0)+damage);
    shots.push({attackerId:actor.id,targetId:hostile.id,damage});
    if(focus&&actor.teamId)focusedTeamIds.push(actor.teamId);
   }else if(!(actor.side==="ally"&&actor.teamId&&
-     (heldUntil[actor.teamId]??0)>tick)){
+     ((heldUntil[actor.teamId]??0)>tick||(bracedUntil[actor.teamId]??0)>tick))){
    movers.push({actor,speed:clamp(2+(unit?.mobility??1)*.25,2,5)});
   }
  }

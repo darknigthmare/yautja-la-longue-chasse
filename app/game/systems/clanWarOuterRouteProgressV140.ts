@@ -18,12 +18,15 @@ const fraction=(n:number)=>Math.min(1,Math.max(0,n));
 const safe=(v:number)=>Number.isFinite(v)?Math.max(0,v):0;
 
 function outboundFraction(order:WarOuterMissionV115,now:number):number {
- const original=order.reconHalt?.originalDueAt??order.recall?.originalDueAt??order.dueAt;
+ const original=order.reconHalt?.originalDueAt??order.routeIncident?.originalDueAt??order.recall?.originalDueAt??order.dueAt;
  const total=Math.max(1,original-order.startedAt);
  // A V137 halt truly consumes 15 seconds without moving along a passage.
- const paused=order.reconHalt&&now>order.reconHalt.orderedAt?
+ const reconPause=order.reconHalt&&now>order.reconHalt.orderedAt?
   Math.min(order.reconHalt.extraMs,now-order.reconHalt.orderedAt):0;
- return fraction((now-order.startedAt-paused)/total);
+ const incidentPause=order.routeIncident?.kind==="detour"&&
+   now>order.routeIncident.orderedAt?
+   Math.min(10000,now-order.routeIncident.orderedAt):0;
+ return fraction((now-order.startedAt-reconPause-incidentPause)/total);
 }
 export function warOuterRouteProgressV140(
  order:WarOuterMissionV115,now:number,rules:WarRulesV6,

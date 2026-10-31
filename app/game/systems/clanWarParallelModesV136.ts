@@ -51,7 +51,7 @@ export function supplyWarOuterMissionV136(
  const order=state.outer.find(item=>item.id===id);
  if(!order||order.recall)return reject(state,"Mandat absent, clos ou déjà en rappel.");
  if(order.fieldSupport)return reject(state,"Ce mandat a déjà reçu son ravitaillement complémentaire.");
- const baseDeadline=order.reconHalt?.originalDueAt??order.dueAt;
+ const baseDeadline=order.reconHalt?.originalDueAt??order.routeIncident?.originalDueAt??order.dueAt;
  if(now<order.startedAt||now>=baseDeadline||
     2*(now-order.startedAt)>=baseDeadline-order.startedAt)
   return reject(state,"Le ravitaillement doit précéder la mi-parcours, sans retour anticipé.");

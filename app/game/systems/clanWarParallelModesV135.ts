@@ -57,7 +57,7 @@ export function redirectWarOuterOpsV135(
  if(!order||order.recall)return reject(state,"Mandat clôturé ou rappel en cours.");
  if(order.retask)return reject(state,"Une seule réorientation autorisée pour ce mandat.");
  if(focus===order.focus)return reject(state,"La consigne choisie est déjà active.");
- const baseDeadline=order.reconHalt?.originalDueAt??order.dueAt;
+ const baseDeadline=order.reconHalt?.originalDueAt??order.routeIncident?.originalDueAt??order.dueAt;
  if(now<order.startedAt||now>=baseDeadline||
    2*(now-order.startedAt)>=(baseDeadline-order.startedAt))
   return reject(state,"Réorientation possible uniquement durant la première moitié du trajet.");

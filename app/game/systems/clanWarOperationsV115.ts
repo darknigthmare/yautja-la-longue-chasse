@@ -40,6 +40,7 @@ export interface WarAssaultV115 {
   /** V142: one physical priority target per deployed group. */
   focusOrders?:Record<string,{targetId:string;expiresAtTick:number}>;
   focusUsedIds?:string[];
+  braceUsedIds?:string[];bracedUntil?:Record<string,number>;
 }
 export interface WarStealthV115 { x: number; y: number; guardX: number;guardY?:number; guardDirection: -1 | 1; alarm: number; cloaked: boolean; energy: number; sabotaged: boolean;
   /** V135 sound diversion at the hunter's physical position; no canonical device assumed. */
@@ -51,6 +52,7 @@ export interface WarStealthV115 { x: number; y: number; guardX: number;guardY?:n
   acousticUsed?: number;heardBearing?: "est"|"ouest"|"proche";
   heardAtTick?: number;
   silentSabotageUsed?: boolean;
+  dashUsed?:boolean;
 }
 export interface WarRtsOrderV115 { x: number; y: number; kind: "advance" | "hold" | "attack" }
 export interface WarRtsV115 {
@@ -78,6 +80,10 @@ export interface WarOuterMissionV115 {
   departureContext?: {intel:boolean;weakened:boolean;escorted:boolean;pressure:number};
   /** V142 authorized alternative passage selection; optional for old archives. */
   routeChoiceId?:string;
+  routeIncident?:{
+    passageId:string;sourceIncident:string;kind:"secure"|"detour";
+    orderedAt:number;originalDueAt:number;paidRav:0|2;
+  };
 }
 export interface WarMissionReportV115 {
   id: string; mode: WarMissionModeV115; focus: OuterFocusV115 | null;
@@ -493,7 +499,7 @@ export function stepAssaultV115(state:WarOperationsStateV115,rules:WarRulesV6):W
   // Damage is a simultaneous exchange: array processing order no longer
   // changes who was able to strike during this same tactical second.
   const exchange=warAssaultContactV141(actors,rules,arena.heldUntil??{},tick,
-    arena.focusOrders??{});
+    arena.focusOrders??{},arena.bracedUntil??{});
   const ownBase=arena.ownBase-exchange.ownBaseDamage;
   const rivalBase=arena.rivalBase-exchange.rivalBaseDamage;
   const wounds=unique([...arena.fallen,...exchange.actors
@@ -502,6 +508,8 @@ export function stepAssaultV115(state:WarOperationsStateV115,rules:WarRulesV6):W
   const nextArena={...arena,ap:clamp(arena.ap+9+(level-1)*4,0,100+(level-1)*35),ownBase:Math.max(0,ownBase),rivalBase:Math.max(0,rivalBase),
     actors:exchange.actors.filter(actor=>actor.hp>0),fallen:wounds,
     rivalRosterIds:[...roster],wavesIssued,
+    bracedUntil:Object.fromEntries(Object.entries(arena.bracedUntil??{})
+      .filter(([,until])=>until>tick)),
     focusOrders:Object.fromEntries(Object.entries(arena.focusOrders??{})
       .filter(([teamId,order])=>!exchange.focusedTeamIds.includes(teamId)&&
         order.expiresAtTick>tick)),
@@ -842,7 +850,9 @@ export function simulateWarOuterMissionV115(
   const pressure=Math.min(8,(briefing?.pressure??state.pressure[order.targetId]??0)*2);
   const fieldBonus=order.fieldSupport?.paidRav===2?4:0;
   const reconHaltBonus=order.reconHalt&&["recon","escort"].includes(order.focus)?3:0;
-  const strength=Math.round((order.focus==="recon"?scout*1.4:order.focus==="escort"?shield*.9:assault*.9)+support+sabotage+escorted+pressure+fieldBonus+reconHaltBonus);
+  const incidentBonus=order.routeIncident?.kind==="secure"?3:
+    order.routeIncident?.kind==="detour"?2:0;
+  const strength=Math.round((order.focus==="recon"?scout*1.4:order.focus==="escort"?shield*.9:assault*.9)+support+sabotage+escorted+pressure+fieldBonus+reconHaltBonus+incidentBonus);
   const roll=(round:number)=>hashSeed(order.id+"-"+order.targetId+"-"+order.focus+"-"+round)%11-5;
   const baseThreat=Math.max(8,territory.terrainDefense+order.routeIds.length*2);
   const threshold=order.focus==="recon"?Math.round(baseThreat*.7):order.focus==="escort"?Math.round(baseThreat*.9):baseThreat;
@@ -854,6 +864,9 @@ export function simulateWarOuterMissionV115(
     ...(order.retask?["Réorientation V135 : "+order.retask.oldFocus+" → "+order.focus+" à "+order.retask.changedAt+" ; aucun coût ou résultat anticipé."]:[]),
     ...(order.fieldSupport?["Soutien V136 : 2 RAV réels engagés à "+order.fieldSupport.allocatedAt+
       " ; +4 capacité de terrain sur ce mandat uniquement."]:[]),
+    ...(order.routeIncident?["Incident de passage V143 "+order.routeIncident.passageId+
+      " : "+order.routeIncident.sourceIncident+" · décision "+order.routeIncident.kind+
+      " · "+order.routeIncident.paidRav+" RAV engagés, aucun résultat anticipé."]:[]),
     ...(order.reconHalt?["Halte de reconnaissance V137 : 15 secondes de route supplémentaires, "+
       "+3 capacité de reconnaissance défensive ; aucun renseignement avant le rapport."]:[]),
     "Mandat "+order.id+" : "+order.teamIds.length+" équipe(s), "+order.routeIds.length+" passage(s) validés.",
@@ -990,6 +1003,22 @@ export function readWarOperationsV115(raw:string,rules:WarRulesV6):WarOperations
           order.teamIds.reduce((total,id)=>total+(unitFor(rules,ownTeam(v,id)?.unitId??"")?.commandPoints??0),0),rules)
           .some(choice=>choice.id===order.routeChoiceId&&
             choice.passageIds.join("|")===order.routeIds.join("|"))))||
+      (order.routeIncident!==undefined&&(!order.routeIncident||
+        typeof order.routeIncident!=="object"||Array.isArray(order.routeIncident)||
+        !["secure","detour"].includes(order.routeIncident.kind)||
+        !Number.isSafeInteger(order.routeIncident.orderedAt)||
+        !Number.isSafeInteger(order.routeIncident.originalDueAt)||
+        order.routeIncident.orderedAt<=order.startedAt||
+        order.routeIncident.orderedAt>=order.routeIncident.originalDueAt||
+        order.routeIncident.originalDueAt<=order.startedAt||
+        order.routeIncident.paidRav!==(order.routeIncident.kind==="secure"?2:0)||
+        order.routeIncident.originalDueAt+
+          (order.routeIncident.kind==="detour"?10000:0)!==
+          (order.routeIncident?.originalDueAt??order.recall?.originalDueAt??order.dueAt)||
+        !order.routeIds.includes(order.routeIncident.passageId)||
+        !rules.passages.some(p=>p.id===order.routeIncident!.passageId&&
+          (p.incident?.trim()||p.condition?.trim()||"").slice(0,240)===
+            order.routeIncident!.sourceIncident)))||
       (order.departureContext!==undefined&&(!order.departureContext||
         typeof order.departureContext!=="object"||
         Array.isArray(order.departureContext)||
@@ -1003,7 +1032,7 @@ export function readWarOperationsV115(raw:string,rules:WarRulesV6):WarOperations
         typeof order.fieldSignal!=="object"||
         !Number.isSafeInteger(order.fieldSignal.transmittedAt)||
         order.fieldSignal.transmittedAt<order.startedAt+
-          Math.ceil(((order.reconHalt?.originalDueAt??order.dueAt)-order.startedAt)/2)||
+          Math.ceil(((order.reconHalt?.originalDueAt??order.routeIncident?.originalDueAt??order.dueAt)-order.startedAt)/2)||
         order.fieldSignal.transmittedAt>=order.dueAt||
         !["voie-stable","terrain-expose","transit-complexe"].includes(order.fieldSignal.assessment)||
         !Number.isInteger(order.fieldSignal.passages)||
@@ -1025,14 +1054,14 @@ export function readWarOperationsV115(raw:string,rules:WarRulesV6):WarOperations
          order.fieldSupport.paidRav!==2||
          !Number.isSafeInteger(order.fieldSupport.allocatedAt)||
          order.fieldSupport.allocatedAt<order.startedAt||
-         2*(order.fieldSupport.allocatedAt-order.startedAt)>=(order.reconHalt?.originalDueAt??order.recall?.originalDueAt??order.dueAt)-order.startedAt||
+         2*(order.fieldSupport.allocatedAt-order.startedAt)>=(order.reconHalt?.originalDueAt??order.routeIncident?.originalDueAt??order.recall?.originalDueAt??order.dueAt)-order.startedAt||
          (order.recall!==undefined&&order.fieldSupport.allocatedAt>=order.recall.orderedAt)))||
       (order.retask!==undefined&&(!order.retask||typeof order.retask!=="object"||
         !["recon","escort","intercept"].includes(order.retask.oldFocus)||
         order.retask.oldFocus===order.focus||
         !Number.isSafeInteger(order.retask.changedAt)||
         order.retask.changedAt<order.startedAt||
-        2*(order.retask.changedAt-order.startedAt)>=(order.reconHalt?.originalDueAt??order.recall?.originalDueAt??order.dueAt)-order.startedAt))||
+        2*(order.retask.changedAt-order.startedAt)>=(order.reconHalt?.originalDueAt??order.routeIncident?.originalDueAt??order.recall?.originalDueAt??order.dueAt)-order.startedAt))||
       (order.recall!==undefined&&(!order.recall||typeof order.recall!=="object"||
         !Number.isSafeInteger(order.recall.orderedAt)||!Number.isSafeInteger(order.recall.originalDueAt)||
         order.recall.orderedAt<order.startedAt||order.recall.orderedAt>=order.recall.originalDueAt||
@@ -1062,6 +1091,15 @@ export function readWarOperationsV115(raw:string,rules:WarRulesV6):WarOperations
       if(!Number.isInteger(apLevel)||apLevel<1||apLevel>3||
         !Array.isArray(a.usedSpecials??[])||
         !Array.isArray(a.fortifiedIds??[])||
+        !Array.isArray(a.braceUsedIds??[])||
+        (a.braceUsedIds??[]).some(id=>!a.launched.includes(id))||
+        unique(a.braceUsedIds??[]).length!==(a.braceUsedIds??[]).length||
+        (a.bracedUntil!==undefined&&(!a.bracedUntil||
+          typeof a.bracedUntil!=="object"||Array.isArray(a.bracedUntil)||
+          Object.keys(a.bracedUntil).length>4||
+          Object.entries(a.bracedUntil).some(([id,until])=>
+            !a.launched.includes(id)||!(a.braceUsedIds??[]).includes(id)||
+            !Number.isInteger(until)||until<=active.tick||until>active.tick+3)))||
         !Array.isArray(a.holdIssuedIds??[])||
         !Array.isArray(a.extractedIds??[])||
         (a.focusUsedIds!==undefined&&(!Array.isArray(a.focusUsedIds)||
@@ -1126,6 +1164,7 @@ export function readWarOperationsV115(raw:string,rules:WarRulesV6):WarOperations
         !Number.isInteger(v1.energy)||v1.energy<0||v1.energy>5||
         typeof v1.cloaked!=="boolean"||typeof v1.sabotaged!=="boolean"||
         (v1.decoyUsed!==undefined&&typeof v1.decoyUsed!=="boolean")||
+        (v1.dashUsed!==undefined&&typeof v1.dashUsed!=="boolean")||
         (v1.silentSabotageUsed!==undefined&&
           (typeof v1.silentSabotageUsed!=="boolean"||v1.silentSabotageUsed&&!v1.sabotaged))||
         (v1.decoyX!==undefined&&(!Number.isInteger(v1.decoyX)||v1.decoyX<0||v1.decoyX>8))||
