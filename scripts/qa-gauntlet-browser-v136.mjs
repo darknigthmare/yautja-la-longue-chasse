@@ -3,7 +3,7 @@
  * Browser actions verify 54 entries, independent art, covered lids and local image privacy. */
 import assert from "node:assert/strict";
 import {createServer} from "node:http";
-import {readFile} from "node:fs/promises";
+import {readFile,mkdir} from "node:fs/promises";
 import {existsSync} from "node:fs";
 import {fileURLToPath} from "node:url";
 import path from "node:path";
@@ -46,7 +46,7 @@ try{
  const addr=server.address();
  assert.ok(addr&&typeof addr==="object");
  const chrome=process.env.QA_CHROME_PATH||
-  (existsSync("/usr/bin/google-chrome")?"/usr/bin/google-chrome":undefined);
+  ["/usr/bin/google-chrome","/usr/bin/google-chrome-stable","/opt/google/chrome/chrome","/usr/bin/chromium"].find(existsSync);
  browser=await chromium.launch({
    ...(chrome?{executablePath:chrome}:{}),
    headless:true,args:["--no-sandbox","--disable-dev-shm-usage"],
@@ -71,6 +71,8 @@ try{
  await page.getByRole("button",{name:"Comparer deux gauntlets"}).click();
  await page.getByRole("combobox",{name:"Second modèle"}).selectOption("wolf");
  assert.equal(await page.locator("svg[data-model='wolf']").count(),1);
+ await mkdir(path.join(root,"outputs"),{recursive:true});
+ await page.screenshot({path:path.join(root,"outputs/gauntlet-browser-v136-comparison.png"),fullPage:true});
  assert.equal(await page.locator("svg[data-model='lost-boar']").count(),1);
  await page.getByRole("button",{name:"Vue simple"}).click();
  const image=await sharp({create:{width:32,height:32,channels:4,background:{r:255,g:255,b:255,alpha:1}}}).png().toBuffer();
@@ -81,6 +83,7 @@ try{
  assert.equal(await page.locator("img[alt^='Photogramme ou photo de référence']").count(),1);
  await page.getByRole("button",{name:"Effacer la référence"}).click();
  assert.equal(await page.locator("img[alt^='Photogramme ou photo de référence']").count(),0);
+ await page.screenshot({path:path.join(root,"outputs/gauntlet-browser-v136-single.png"),fullPage:true});
  assert.equal(failedAssets.length,0,"The actual model layer sources must load as images");
  assert.deepEqual(events,[],"The actual UI must not throw JavaScript exceptions");
  console.log(JSON.stringify({mode:"actual Chromium React QA fixture",checks:12,artworkSources:219,previewedModels:["jungle-hunter","lost-boar","wolf"],pageErrors:events,failedAssets,status:"PASS"},null,2));
