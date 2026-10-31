@@ -185,11 +185,13 @@ function updateEscort(s:WarRtsSquadsStateV133):WarRtsSquadsStateV133{
   }
   // Human/witness actors are never enlisted as Yautja rival combatants.
   // Active hostiles may hit escorted combatants, not intentionally target neutrals.
-  if(!tracked.isNeutral&&s.enemies.some(e=>e.hp>0&&distance(e,tracked)<=2&&warMapLineOfSightV128(s.map,e,tracked)))
-   tracked={...tracked,hp:Math.max(0,tracked.hp-1)};
+  const exposed=tracked;
+  if(!exposed.isNeutral&&s.enemies.some(e=>e.hp>0&&distance(e,exposed)<=2&&warMapLineOfSightV128(s.map,e,exposed)))
+   tracked={...exposed,hp:Math.max(0,exposed.hp-1)};
  }
- if(hazardsNow(s.turn)&&s.map.hazards.some(h=>at(h)===at(tracked)))
-  tracked={...tracked,hp:Math.max(0,tracked.hp-2)};
+ const atRisk=tracked;
+ if(hazardsNow(s.turn)&&s.map.hazards.some(h=>at(h)===at(atRisk)))
+  tracked={...atRisk,hp:Math.max(0,atRisk.hp-2)};
  return {...s,tracked};
 }
 function updateEnemyAI(s:WarRtsSquadsStateV133):WarRtsSquadsStateV133{

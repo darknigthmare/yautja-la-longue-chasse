@@ -82,7 +82,8 @@ function fullSourceMission(id){
   assert.ok(state.completedTaskIds.includes(task.id),id+" no source proof: "+task.title);
   assert.equal(state.phase,"active",id+" objective isn't itself an extraction");
  }
- state=moveNear(state,squadId,state.map.extraction,1);
+ // A follower trails a step: the leader must actually reach the exit tile.
+ state=moveNear(state,squadId,state.map.extraction,0);
  // A witness or wounded ally must FOLLOW physically; a carrier moves with its holder.
  for(let n=0;n<60&&state.tracked&&distance(state.tracked,state.map.extraction)>1;n++){
   const waited=issue(state,{kind:"wait",squadId});
@@ -144,7 +145,7 @@ test("two separately controlled detachments obey independent one-cell orders",()
  const [first,second]=state.squads;
  assert.notEqual(first.id,second.id);
  const directions=[["up",0,-1],["down",0,1],["left",-1,0],["right",1,0]];
- const choose=(s,actor)=>directions.find(([_,dx,dy])=>{
+ const choose=(s,actor)=>directions.find(([,dx,dy])=>{
   const tile={x:actor.x+dx,y:actor.y+dy};
   return api.warMapWalkableV128(s.map,tile)&&!s.squads.some(u=>u.id!==actor.id&&u.status==="active"&&key(u)===key(tile))&&
    !s.enemies.some(e=>e.hp>0&&key(e)===key(tile));
