@@ -79,3 +79,22 @@ La personnalisation ne peut jamais modifier les calculs de dégâts, de conquêt
 Voir la matrice QA, les 540 packages d'assets et les critères de validation détaillés dans le classeur.
 
 **Dépendances GitHub :** #29 → #34 → #36 → #37 → #38 → #40 → #42. Cette PR reste en brouillon en attendant validation de la nouvelle vue et vérification ciblée, sans fusion dans main.
+
+
+## V133 — Suite intégrée (31 octobre 2026)
+
+- **Correction de l'ordinateur Jungle Hunter** : passage de cinq colonnes rouges fictives à **cinq rangées horizontales** inspirées des vues disponibles. Les signes restent une conception vectorielle originale provisoire ; leur forme exacte, leur taille et leur distribution ne sont pas validées film 1:1. Le couvercle est maintenant ouvrable/fermable dans la fiche d'armurerie, avec transition CSS désactivée en mode mouvements réduits.
+- **Deux interfaces, un équipement** : `useHunterGauntletV133` remplace les lectures de préférence dupliquées. La clé de stockage reste celle de V132 ; l'équipement est actualisé dans le même onglet via un événement et dans d'autres onglets via `storage`. Un refus d'écriture conserve la sélection en mémoire (et affiche un avertissement) sans écrire la sauvegarde de guerre.
+- **Armurerie du vaisseau** : le jeu principal propose un emplacement cosmétique de gauntlet dans `GameClient.tsx` ; ce même choix équipe le projecteur stratégique et colore le module `HunterRigPreview.tsx` dans l'armurerie et dans la personnalisation. Le rig garde **une coque de base commune** et des filtres de matière : ne pas compter ces substitutions comme 54 modèles 1:1.
+- **Audio maintenant effectivement branché** : dix courtes signatures *originales et synthétisées* sont jouées par `GameAudio.playGauntletSignalV133()`, via le bus SFX normal respectant le volume et le mute. La signature se déclenche sur une action utilisateur quand le chasseur équipe son gauntlet ou ouvre la vue holographique. Cela ne constitue pas la reproduction des sons des films.
+- **Quatre modes de mission V115** : Assaut latéral, Outer Ops, infiltration/sabotage et RTS bénéficient d'une bande holographique d'informations déjà autorisées, lue depuis leur état d'exercice unique. Le moteur, les ordres et les délais ne sont pas modifiés.
+- **Tests et traçabilité** : `tests/clan-war-gauntlets-v133.test.mjs` couvre la séparation des propriétaires, les rangs, le lien entre interfaces, les cinq rangées LED, le moteur audio et le parsing TSX. Voir `docs/Yautja_Gauntlets_V133_Arsenal_Clans.xlsx` avec deux feuilles supplémentaires : `10_V133_Suivi` (30 tâches avec état de preuve) et `11_V133_QA` (15 vérifications).
+- **État du chantier** : la validation d'image frame-by-frame, le véritable mesh/atlas indépendant par gauntlet, la fidélité morphologique, les animations d'ouverture certifiées, la connexion des 44 défis à des faits de campagne et une revue navigateur sont toujours **à faire**. Le fait qu'une CI soit verte n'est pas une validation visuelle ou end-to-end.
+
+### Sécurité et cohérence des sauvegardes
+
+Le stockage local V133 est strictement une **préférence du navigateur indexée par l'identifiant de la sauvegarde du chasseur**, et ne modifie pas `SaveGame`. Il n'est pas encore intégré aux exports de campagne/partage cloud. Les joueurs qui changent d'appareil doivent actuellement rechoisir leur modèle ; cette limite sera traitée lors d'une migration de sauvegarde complète, avec preuve d'absence de données perdues. Toutes les récompenses par défi encore sans source événementielle restent verrouillées.
+
+### Vérification minimum avant fusion
+
+`npm ci --ignore-scripts`, `node --experimental-strip-types --test tests/clan-war-gauntlet-v131.test.mjs tests/clan-war-gauntlets-v132.test.mjs tests/clan-war-gauntlets-v133.test.mjs`, `npx tsc --noEmit -p tsconfig.clan-war-v131.json`, ESLint des fichiers modifiés, contrôle du classeur ZIP ; puis parcours manuel navigateur et revue des références 1987. Ces contrôles ciblés ne remplacent pas `npm run build:production` ni les tests complets du jeu.
