@@ -22,14 +22,17 @@ export function readHunterGauntletV133(
   fallback: ReadonlyMap<string,string> = localFallback,
   archive: GauntletCampaignV134 | null | undefined = undefined,
 ): string {
-  if (archive && archive.ownerCreatedAt === hunter) {
+  if (archive) {
+    // A cross-owner archive must never lend its earned study receipts to LS,
+    // even if a local preference payload claims to belong to this hunter.
+    if (archive.ownerCreatedAt !== hunter) return DEFAULT_GAUNTLET_ID_V132;
     return normalizeGauntletV132(archive.equippedId,rank,archive.claimedStudies);
   }
   const key = gauntletStorageKeyV132(hunter);
   if (fallback.has(key)) return normalizeGauntletV132(fallback.get(key),rank);
   if (storage) {
     try {
-      return parseGauntletPreferenceV132(storage.getItem(key),hunter,rank,archive?.claimedStudies ?? []);
+      return parseGauntletPreferenceV132(storage.getItem(key),hunter,rank);
     } catch { /* Storage permission might have been revoked. */ }
   }
   return normalizeGauntletV132(fallback.get(key),rank);
@@ -69,7 +72,9 @@ export function useHunterGauntletV133(hunter: string, rank: HunterRankV132, arch
   const equippedId=useSyncExternalStore(subscribe,snapshot,()=>DEFAULT_GAUNTLET_ID_V132);
 
   const equip=useCallback((id:string):boolean=>{
-    if (!gauntletUnlockedV132(id,rank,archive?.claimedStudies ?? []) || typeof window==="undefined") return false;
+    if ((archive && archive.ownerCreatedAt !== hunter) ||
+        !gauntletUnlockedV132(id,rank,archive?.claimedStudies ?? []) ||
+        typeof window==="undefined") return false;
     const payload=serializeGauntletPreferenceV132(hunter,id,rank,archive?.claimedStudies ?? []);
     try {
       window.localStorage.setItem(key,payload);
