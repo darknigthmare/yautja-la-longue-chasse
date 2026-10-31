@@ -22,6 +22,7 @@ import {reinforceWarAssaultLineV135,redirectWarOuterOpsV135} from "./systems/cla
 import {orderWarAssaultHoldV136,supplyWarOuterMissionV136} from "./systems/clanWarParallelModesV136";
 import {withdrawWarAssaultSquadV137,orderWarOuterReconHaltV137} from "./systems/clanWarParallelModesV137";
 import {fallbackWarAssaultV139} from "./systems/clanWarParallelModesV139";
+import {planWarAssaultWavesV140,planWarOuterIncidentsV140} from "./systems/clanWarOpenBacklogV140";
 import {
  commandWarAssaultSurgeV138,requestWarOuterSignalV138,
  warStealthGuardVisibleV138,warStealthSoundBearingV138,
@@ -377,6 +378,9 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
 
       {assault && <div>
         <p>Points d&apos;assaut <strong>{assault.ap} AP</strong> · Cadence <strong>niveau {assault.apLevel??1}/3</strong> · Réserve maximale <strong>{100+((assault.apLevel??1)-1)*35} AP</strong> · Rempart allié <strong>{assault.ownBase}/80</strong> · Rempart adverse <strong>{assault.rivalBase}/80</strong>. Les équipes avancent et engagent automatiquement ; vous décidez du moment du déploiement.</p>
+        <p className={styles.explain}>Renforts d&apos;opposition source V6 :
+          <strong> {assault.spawnedWaves?.length??0} / {planWarAssaultWavesV140(current.targetId,rules).length} vagues budgétées</strong>.
+          Chaque arrivée est rattachée aux unités W3-U et aux PC de garnison du territoire ; les générations illimitées sont interdites.</p>
         <div className={styles.cards}>
           <button type="button" disabled={blocked||(assault.apLevel??1)>=3||assault.ap<((assault.apLevel??1)===1?35:55)}
             onClick={()=>commit(upgradeWarAssaultApV117(worldRef.current))}>
@@ -470,7 +474,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
       </div>}
 
       {stealth && <div>
-        <p>Rejoindre le relais (7,1), le désactiver, puis rejoindre l&apos;extraction (1,4). Alerte <strong>{stealth.alarm}/3</strong> · énergie de camouflage <strong>{stealth.energy}/5</strong> · relais <strong>{stealth.sabotaged?"neutralisé":"actif"}</strong> · diversion <strong>{stealth.decoyUsed?"épuisée": "disponible"}</strong> · écho sonore <strong>{stealth.decoyTurns??0} tour(s)</strong> · couverts utilisés <strong>{(stealth.usedCoverIds??[]).length}/{missionTerrain?.cover.length??0}</strong> · écoutes <strong>{stealth.acousticUsed??0}/2</strong>.</p>
+        <p>Rejoindre le relais (7,1), le désactiver, puis rejoindre l&apos;extraction (1,4). Alerte <strong>{stealth.alarm}/3</strong> · énergie de camouflage <strong>{stealth.energy}/5</strong> · relais <strong>{stealth.sabotaged?"neutralisé":"actif"}</strong> · diversion <strong>{stealth.decoyUsed?"épuisée": "disponible"}</strong> · écho sonore <strong>{stealth.decoyTurns??0} tour(s)</strong> · couverts utilisés <strong>{(stealth.usedCoverIds??[]).length}/{missionTerrain?.cover.length??0}</strong> · écoutes <strong>{stealth.acousticUsed??0}/2</strong> · circuit <strong>{stealth.gridPowered===false?"coupé":"alimenté"}</strong> · manœuvres <strong>{stealth.gridSwitches??0}/2</strong>.</p>
         <p className={styles.explain}>Terrain régional : {missionTerrain?.title} · {missionTerrain?.ground} · obstacle : {missionTerrain?.wallLabel}.</p>
         <p className={styles.explain}>Patrouille : {guardVisible?"visible à portée réelle":
           soundBearing?("bruit perçu vers "+soundBearing+" · position exacte inconnue"):
@@ -478,10 +482,26 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
         <div className={styles.grid} style={{gridTemplateColumns:"repeat(9,minmax(0,1fr))"}} role="img" aria-label="Plan d'infiltration : X pisteur, G uniquement si visible, R relais, E extraction et obstacles">
           {Array.from({length:54},(_,index)=>{
             const x=index%9,y=Math.floor(index/9),wall=Boolean(missionTerrain?.walls.includes(x+","+y));
-            const mark=stealth.x===x&&stealth.y===y?"X":guardVisible&&stealth.guardX===x&&y===2?"G":x===7&&y===1?"R":x===1&&y===4?"E":wall?"▥":missionTerrain?.cover.includes(x+","+y)?"▤":"·";
+            const mark=stealth.x===x&&stealth.y===y?"X":guardVisible&&stealth.guardX===x&&y===2?"G":
+              x===7&&y===1?"R":x===1&&y===4?"E":
+              missionTerrain?.controlPanel.x===x&&missionTerrain.controlPanel.y===y?"⚡":
+              missionTerrain?.poweredDoor.x===x&&missionTerrain.poweredDoor.y===y?
+                (stealth.gridPowered===false?"▣":"◇"):
+              wall?"▥":missionTerrain?.cover.includes(x+","+y)?"▤":"·";
             return <span className={styles.cell} data-wall={wall} data-actor={mark==="X"?"ally":mark==="G"?"rival":""} key={index} title={"Case "+x+","+y}>{mark}</span>;
           })}
         </div>
+        <div className={styles.stealthControls}>
+         <button type="button"
+          disabled={blocked||!missionTerrain||stealth.energy<1||(stealth.gridSwitches??0)>=2||
+            Math.abs(stealth.x-missionTerrain.controlPanel.x)+
+             Math.abs(stealth.y-missionTerrain.controlPanel.y)>1}
+          onClick={()=>commit(commandStealthV115(worldRef.current,
+            stealth.gridPowered===false?"restore-grid":"cut-grid",rules))}>
+          {stealth.gridPowered===false?"Réarmer la porte (1 énergie)":"Couper circuit (1 énergie)"}
+         </button>
+        </div>
+        <p className={styles.explain}>⚡ = commande physique, ◇ = porte alimentée, ▣ = porte verrouillée pendant la panne. Une coupure ferme réellement la traversée de la case motorisée ; les gardes physiques restent actifs.</p>
         <div className={styles.stealthControls}>{(["up","left","down","right","cloak","interact","quiet-sabotage","wait","decoy","hide","listen"] as const).map(action=>
           <button type="button" key={action} disabled={blocked||(action==="decoy"&&(Boolean(stealth.decoyUsed)||stealth.cloaked||stealth.energy<2))||
               (action==="quiet-sabotage"&&(stealth.sabotaged||stealth.cloaked||stealth.energy<2||
@@ -626,6 +646,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
         <strong>{order.id} · {focusLabels[order.focus]}</strong>
         <span>{order.targetId} · {order.teamIds.map(teamsById).join(", ")}</span>
         <span>{order.recall?"Retour au clan":"Rapport de mission"} dans {formatTime(warOuterSecondsRemainingV115(order,now))} · {order.routeIds.length} passage(s)</span>
+        <small className={styles.explain}>Aléas de route V140 : {planWarOuterIncidentsV140(order,rules).incidents.length} passage(s) à risque documenté(s), pénalité d&apos;exercice bornée à {planWarOuterIncidentsV140(order,rules).extraThreat}. Aucun résultat adverse révélé avant le rapport.</small>
         {order.recall ? <small className={styles.explain}>Rappel transmis : équipe toujours engagée jusqu&apos;à l&apos;arrivée.</small> : <button type="button" disabled={blocked||now<order.startedAt||now>=order.dueAt} onClick={()=>commit(recallWarOuterMissionV116(worldRef.current,order.id,Date.now(),rules))}>Rappeler l&apos;équipe</button>}
         {!order.recall&&!order.retask&&now>=order.startedAt&&2*(now-order.startedAt)<((order.reconHalt?.originalDueAt??order.dueAt)-order.startedAt)&&
           <div className={styles.cards}>

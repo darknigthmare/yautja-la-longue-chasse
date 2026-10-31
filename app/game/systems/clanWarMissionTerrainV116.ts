@@ -17,6 +17,8 @@ export interface WarMissionTerrainV116 {
   extraction: { x: number; y: number };
   relay: { x: number; y: number };
   objective: { x: number; y: number };
+  /** Original tactical exercise: powered gate and physically reachable panel. */
+  controlPanel:{x:number;y:number};poweredDoor:{x:number;y:number};
   width: 9;
   height: 6;
 }
@@ -93,6 +95,7 @@ export function warMissionTerrainV116(targetId:string,rules:WarRulesV6): WarMiss
     wallLabel:preset.wallLabel,coverLabel:preset.coverLabel,
     walls:[...walls].sort(),cover:[...cover].sort(),
     extraction:{x:1,y:4},relay:{x:7,y:1},objective:{x:7,y:3},
+    controlPanel:{x:7,y:3},poweredDoor:{x:7,y:2},
     width:9,height:6,
   };
 }
