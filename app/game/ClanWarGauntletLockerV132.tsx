@@ -11,6 +11,7 @@ import styles from "./ClanWarGauntletLockerV132.module.css";
 import HunterGauntletArtV132 from "./HunterGauntletArtV132";
 import JungleHunterLayeredV134 from "./JungleHunterLayeredV134";
 import GauntletKnownHuntersV135, {isKnownHunterGauntletV135} from "./GauntletKnownHuntersV135";
+import GauntletArchiveStudiesV136, {isGauntletArchiveStudyV136} from "./GauntletArchiveStudiesV136";
 import { evaluateGauntletStudyV134, type GauntletCampaignEvidenceV134 } from "./systems/gauntletCampaignV134";
 
 const PAGE_SIZE = 12;
@@ -40,7 +41,8 @@ export default function ClanWarGauntletLockerV132({ hunterRank, equippedId, onEq
   const display=visible.slice(currentPage*PAGE_SIZE,(currentPage+1)*PAGE_SIZE);
   const preview=gauntletByIdV132(previewId) ?? gauntletByIdV132(equippedId) ?? GAUNTLET_CATALOG_V132[0];
   const unlocked=GAUNTLET_CATALOG_V132.filter(item=>gauntletUnlockedV132(item.id,hunterRank,claimedStudies)).length;
-  const individualModel=preview.id==="jungle-hunter" || isKnownHunterGauntletV135(preview.id);
+  const sourceGuidedModel=preview.id==="jungle-hunter" || isKnownHunterGauntletV135(preview.id);
+  const originalConceptModel=isGauntletArchiveStudyV136(preview.id);
   const study=preview.unlock.startsWith("challenge:") && campaignEvidence
     ? evaluateGauntletStudyV134(campaignEvidence,preview.id) : null;
   const studyClaimed=claimedStudies.includes(preview.id);
@@ -59,7 +61,7 @@ export default function ClanWarGauntletLockerV132({ hunterRank, equippedId, onEq
     </div>
     <div className={styles.preview} aria-live="polite" data-preview-model={preview.id}>
       <div className={styles.artPreview}>
-        {preview.id==="jungle-hunter"?<JungleHunterLayeredV134 coverOpen={coverOpen}/>:isKnownHunterGauntletV135(preview.id)?<GauntletKnownHuntersV135 variant={preview.id} coverOpen={coverOpen}/>:<HunterGauntletArtV132 entry={preview} coverOpen={coverOpen}/>}
+        {preview.id==="jungle-hunter"?<JungleHunterLayeredV134 coverOpen={coverOpen}/>:isKnownHunterGauntletV135(preview.id)?<GauntletKnownHuntersV135 variant={preview.id} coverOpen={coverOpen}/>:originalConceptModel?<GauntletArchiveStudiesV136 entry={preview} coverOpen={coverOpen}/>:<HunterGauntletArtV132 entry={preview} coverOpen={coverOpen}/>} 
         <button type="button" aria-pressed={coverOpen} onClick={()=>setCoverOpen(open=>!open)} disabled={disabled}>
           {coverOpen?"Refermer le capot":"Ouvrir le capot"}
         </button>
@@ -71,9 +73,11 @@ export default function ClanWarGauntletLockerV132({ hunterRank, equippedId, onEq
         <p>Interface : {GAUNTLET_READOUT_LABELS_V132[preview.readout]} · animation : {GAUNTLET_PALETTES_V132[preview.theme].motion} · son prévu : {GAUNTLET_PALETTES_V132[preview.theme].sound}.</p>
         <p className={styles.note}>{preview.notes}</p>
         <p className={styles.note}>
-          {individualModel
-            ? "Étude graphique indépendante du modèle sélectionné, non validée 1:1. Les formes et matériaux restent à confronter au film."
-            : "Visuel provisoire partagé avec plusieurs personnages : aucun modèle individuel conforme aux sources n'a encore été produit pour cette identité."}
+          {sourceGuidedModel
+            ? "Étude graphique individuelle appuyée sur des références, non validée 1:1. Les formes restent à confronter au film."
+            : originalConceptModel
+            ? "Étude vectorielle originale indépendante, conçue pour ce personnage mais NON canonique : silhouettes, glyphes et proportions à remplacer après documentation."
+            : "Prototype de secours non validé 1:1."}
         </p>
         {study && <section className={styles.research} aria-label="Dossier d'étude du gauntlet">
           <h4>Dossier d&apos;étude · reconstitution de l&apos;atelier de clan</h4>
