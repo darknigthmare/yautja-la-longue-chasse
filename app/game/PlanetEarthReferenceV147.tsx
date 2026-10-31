@@ -164,13 +164,13 @@ export default function PlanetEarthReferenceV147() {
       </div>
       <div className={styles.lore} data-testid="planet-earth-lore-v148">
         <h5>Cadres cinématographiques vérifiés · Terre ou planète extraterrestre</h5>
-        <p>Les lieux de l'histoire ne sont pas des lieux de tournage. Un film mentionnant seulement une jungle, une région ou une planète alien ne reçoit aucune épingle terrestre inventée.</p>
+        <p>Les lieux de l’histoire ne sont pas des lieux de tournage. Un film mentionnant seulement une jungle, une région ou une planète alien ne reçoit aucune épingle terrestre inventée.</p>
         <ul>{PLANET_CANON_STORY_SETTINGS_V148.map(entry=><li key={entry.id}
           data-testid="planet-film-setting-v148" data-film={entry.id}
           data-world={entry.world} data-precision={entry.precision}>
           <strong>{entry.film} ({entry.releaseYear})</strong>
           <span>{entry.world==="earth"?"Terre":"Planète extraterrestre"} · {entry.setting}</span>
-          {entry.earthAnchor&&<small>Épingle : centre-ville approximatif, jamais les coordonnées précises d'une scène</small>}
+          {entry.earthAnchor&&<small>Épingle : centre-ville approximatif, jamais les coordonnées précises d’une scène</small>}
           <a href={entry.sourceUrl} target="_blank" rel="noopener noreferrer">Source officielle du cadre</a>
         </li>)}</ul>
       </div>
