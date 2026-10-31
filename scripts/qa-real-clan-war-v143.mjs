@@ -26,7 +26,7 @@ const bundle=await build({
     setup(compilation){
       compilation.onResolve({filter:new RegExp("^next/image$")},()=>({path:"qa-static-image",namespace:"qa-image"}));
       compilation.onLoad({filter:/.*/,namespace:"qa-image"},()=>({
-        loader:"tsx",
+        loader:"tsx",resolveDir:root,
         contents:`import React from "react";
 export default function QAStaticImage({src,alt,width,height,loading,style}) {
   return <img src={typeof src==="string"?src:src?.src} alt={alt||""}
