@@ -3686,6 +3686,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 armorId={save.loadout.armorId}
                 weaponIds={save.loadout.weaponIds}
                 gearIds={save.loadout.gearIds}
+                gauntletVariantId={hunterGauntlet.equippedId}
                 size="clamp(320px, 44svh, 500px)"
                 aiming
                 bladesExtended
