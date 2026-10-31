@@ -173,7 +173,9 @@ jobs:
       - name: Reproducible dependencies
         run: npm ci --ignore-scripts --no-audit --no-fund
       - name: Verify dual-view invariants
-        run: node --experimental-strip-types --test --test-reporter=spec tests/clan-war-gauntlet-v131.test.mjs tests/clan-war-gauntlets-v132.test.mjs tests/clan-war-gauntlets-v133.test.mjs tests/clan-war-gauntlet-research-v134.test.mjs tests/clan-war-gauntlet-assets-v134.test.mjs tests/clan-war-gauntlet-variants-v135.test.mjs tests/gauntlet-visual-qa-v135.test.mjs tests/gauntlet-archive-studies-v136.test.mjs tests/gauntlet-qa-privacy-v138.test.mjs tests/gauntlet-actor-rig-v139.test.mjs tests/gauntlet-mission-v141.test.mjs tests/gauntlet-mission-resume-v142.test.mjs
+        run: node --experimental-strip-types --test --test-reporter=spec tests/clan-war-gauntlet-v131.test.mjs tests/clan-war-gauntlets-v132.test.mjs tests/clan-war-gauntlets-v133.test.mjs tests/clan-war-gauntlet-research-v134.test.mjs tests/clan-war-gauntlet-assets-v134.test.mjs tests/clan-war-gauntlet-variants-v135.test.mjs tests/gauntlet-visual-qa-v135.test.mjs tests/gauntlet-archive-studies-v136.test.mjs tests/gauntlet-qa-privacy-v138.test.mjs tests/gauntlet-actor-rig-v139.test.mjs tests/gauntlet-mission-v141.test.mjs
+      - name: V142 native SaveGame and V1 sidecar cosmetic roundtrip
+        run: node --import tsx --test --test-reporter=spec tests/gauntlet-mission-resume-v142.test.mjs
       - name: Typecheck the projector and mode parser
         run: npx --no-install tsc --noEmit --project tsconfig.clan-war-v131.json
       - name: Lint changed game-facing code and tests
