@@ -26,6 +26,18 @@ function Art({model,coverOpen,hiddenParts}:{model:GauntletDefinitionV132;coverOp
 
   return null;
 }
+/** Only mount the full production actor when the inspector is expanded.
+ * A closed QA drawer must not secretly load 50+ unrelated V3 body textures,
+ * waste memory on mobile or cause missing-asset errors in the SVG gallery. */
+function RealRigDisclosureV140({modelId,coverOpen}:{modelId:string;coverOpen:boolean}){
+  const [expanded,setExpanded]=useState(false);
+  return <details className={styles.rigDetails} data-testid="rig-pose-qa-v140-panel"
+    onToggle={event=>setExpanded(event.currentTarget.open)}>
+    <summary>Tester le vrai rig en six poses et six morphologies · V140</summary>
+    {expanded&&<GauntletPoseInspectionV140 modelId={modelId} coverOpen={coverOpen}/>}
+  </details>;
+}
+
 function SourceNote({model}:{model:GauntletDefinitionV132}){
   const grounded=model.id==="jungle-hunter"||isKnownHunterGauntletV135(model.id);
   return <section className={styles.proof} aria-label="Provenance et statut artistique">
@@ -152,10 +164,7 @@ export default function GauntletVisualQaV136(){
           <summary>Inspecter le poignet du chasseur · rig V139</summary>
           <GauntletRigInspectionV139 modelId={model.id} coverOpen={open}/>
         </details>
-        <details className={styles.rigDetails} data-testid="rig-pose-qa-v140-panel">
-          <summary>Tester le vrai rig en six poses et six morphologies · V140</summary>
-          <GauntletPoseInspectionV140 modelId={model.id} coverOpen={open}/>
-        </details>
+        <RealRigDisclosureV140 modelId={model.id} coverOpen={open}/>
       </article>)}
     </section>
     <section className={styles.catalog} aria-label="Catalogue des 54 modèles">
