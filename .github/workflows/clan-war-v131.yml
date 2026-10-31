@@ -40,6 +40,7 @@ on:
       - 'app/gauntlet-qa-v135/**'
       - 'docs/Yautja_Gauntlets_V134_Arsenal_Clans.xlsx'
       - 'docs/Yautja_Gauntlets_V135_Arsenal_Clans.xlsx'
+      - 'docs/Yautja_Gauntlets_V136_Arsenal_Clans.xlsx'
       - 'app/game/systems/gauntletCampaignV134.ts'
       - 'app/game/types.ts'
       - 'app/game/save.ts'
@@ -104,6 +105,7 @@ jobs:
             /app/gauntlet-qa-v135/GauntletVisualQaV135.module.css
             /docs/Yautja_Gauntlets_V134_Arsenal_Clans.xlsx
             /docs/Yautja_Gauntlets_V135_Arsenal_Clans.xlsx
+            /docs/Yautja_Gauntlets_V136_Arsenal_Clans.xlsx
             /app/game/systems/gauntletCampaignV134.ts
             /app/game/types.ts
             /app/game/save.ts
@@ -170,3 +172,5 @@ jobs:
           path: outputs/gauntlet-v136/
           retention-days: 30
           if-no-files-found: error
+      - name: Verify complete V136 production Excel (26 tabs, formula metrics)
+        run: unzip -t docs/Yautja_Gauntlets_V136_Arsenal_Clans.xlsx | tail -1
