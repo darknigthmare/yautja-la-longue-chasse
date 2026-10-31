@@ -32,6 +32,7 @@ on:
       - 'scripts/export-gauntlet-variants-v135.mjs'
       - 'tests/clan-war-gauntlet-variants-v135.test.mjs'
       - 'docs/Yautja_Gauntlets_V134_Arsenal_Clans.xlsx'
+      - 'docs/Yautja_Gauntlets_V135_Arsenal_Clans.xlsx'
       - 'app/game/systems/gauntletCampaignV134.ts'
       - 'app/game/types.ts'
       - 'app/game/save.ts'
@@ -85,6 +86,7 @@ jobs:
             /scripts/export-gauntlet-variants-v135.mjs
             /tests/clan-war-gauntlet-variants-v135.test.mjs
             /docs/Yautja_Gauntlets_V134_Arsenal_Clans.xlsx
+            /docs/Yautja_Gauntlets_V135_Arsenal_Clans.xlsx
             /app/game/systems/gauntletCampaignV134.ts
             /app/game/types.ts
             /app/game/save.ts
@@ -120,6 +122,8 @@ jobs:
         run: node scripts/audit-gauntlet-completeness-v134.mjs outputs/gauntlet-v134
       - name: Validate V134 Excel (17 tabs including 44 studies)
         run: unzip -t docs/Yautja_Gauntlets_V134_Arsenal_Clans.xlsx | tail -1
+      - name: Verify V135 production Excel structure and binary validity
+        run: unzip -t docs/Yautja_Gauntlets_V135_Arsenal_Clans.xlsx | tail -1
       - name: Verify four V135 source families and 16 individual layers
         run: node scripts/export-gauntlet-variants-v135.mjs --check
       - name: Export four V135 families to 16 alpha PNGs and four composites
