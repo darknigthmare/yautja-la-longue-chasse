@@ -185,5 +185,15 @@ jobs:
           path: outputs/gauntlet-v136/
           retention-days: 30
           if-no-files-found: error
+      - name: Bundle all 54 gauntlet art studies into one downloadable pack
+        uses: actions/upload-artifact@v4
+        with:
+          name: yautja-all-54-gauntlets-v136-png-blockouts
+          path: |
+            outputs/gauntlet-v134/
+            outputs/gauntlet-v135/
+            outputs/gauntlet-v136/
+          retention-days: 30
+          if-no-files-found: error
       - name: Verify complete V136 production Excel (26 tabs, formula metrics)
         run: unzip -t docs/Yautja_Gauntlets_V136_Arsenal_Clans.xlsx | tail -1
