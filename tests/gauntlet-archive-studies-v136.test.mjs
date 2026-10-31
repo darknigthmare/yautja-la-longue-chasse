@@ -61,3 +61,15 @@ test("the original concept renderer and visual QA parse as TSX",()=>{
     assert.deepEqual(errors.map(x=>ts.flattenDiagnosticMessageText(x.messageText,"\n")),[],path);
   }
 });
+
+
+test("V136 reference visual QA uses only local object URLs and cleans up private image data",()=>{
+  const page=read("app/gauntlet-qa-v136/page.tsx");
+  assert.match(page,/URL\.createObjectURL\(file\)/);
+  assert.match(page,/URL\.revokeObjectURL\(referenceObjectUrl\.current\)/);
+  assert.match(page,/file\.size>12\*1024\*1024/);
+  assert.match(page,/overlayOpacity\/100/);
+  assert.match(page,/type="file" accept="image\/png,image\/jpeg,image\/webp"/);
+  assert.ok(!page.includes("fetch(referenceUrl"));
+  assert.ok(!page.includes("localStorage.setItem"));
+});
