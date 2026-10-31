@@ -17,6 +17,7 @@ on:
       - 'tests/planet*'
       - 'tests/planet-*'
       - 'scripts/qa-planet-random-v144.mjs'
+      - 'scripts/qa-planet-regional-random-v145.mjs'
       - '.github/workflows/planet-v114.yml'
   workflow_dispatch:
 permissions:
@@ -135,6 +136,7 @@ jobs:
             /scripts/qa-planet-modular-export-v124.mjs
             /scripts/qa-planet-region-kit-v128.mjs
             /scripts/qa-planet-random-v144.mjs
+            /scripts/qa-planet-regional-random-v145.mjs
             /package.json
             /package-lock.json
             /next.config.ts
@@ -160,6 +162,7 @@ jobs:
           node scripts/qa-planet-modular-export-v124.mjs
           node scripts/qa-planet-region-kit-v128.mjs
           node scripts/qa-planet-random-v144.mjs
+          node scripts/qa-planet-regional-random-v145.mjs
       - name: Upload V124 browser PNG, ZIP, screenshots and report
         if: ${{ always() }}
         uses: actions/upload-artifact@v4
@@ -169,5 +172,6 @@ jobs:
             outputs/qa-planet-modular-v124/
             outputs/qa-planet-regional-kit-v128/
             outputs/qa-planet-random-v144/
+            outputs/qa-planet-regional-random-v145/
           retention-days: 7
           if-no-files-found: ignore
