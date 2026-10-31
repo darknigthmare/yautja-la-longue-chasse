@@ -31,6 +31,8 @@ import {warOuterWeightedProgressV141} from "./systems/clanWarOuterWeightedProgre
 import {warOuterRouteChoicesV142} from "./systems/clanWarOuterChoicesV142";
 import {issueWarAssaultFocusV142} from "./systems/clanWarFocusV142";
 import {commandWarAssaultBraceV143} from "./systems/clanWarBraceV143";
+import {regroupWarAssaultV144} from "./systems/clanWarAssaultRegroupV144";
+import {inspectWarOuterPassageV144} from "./systems/clanWarOuterInspectionV144";
 import {commandWarStealthDashV143} from "./systems/clanWarStealthDashV143";
 import {commandWarOuterIncidentV143,warOuterIncidentV143} from "./systems/clanWarOuterIncidentV143";
 import {planWarStealthStepV142,commandWarStealthStepV142} from "./systems/clanWarStealthPathV142";
@@ -431,6 +433,17 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
           </button>;
         })}</div>
         <p className={styles.explain}>Posture défensive V143 : une formation existante sur sa moitié de terrain réduit chaque dommage subi de 1 durant deux échanges, sans guérison ni nouvelle armure canonique.</p>
+        <div className={styles.cards}>{assault.actors.filter(a=>a.side==="ally"&&a.hp>0&&a.teamId).flatMap(support=>
+          assault.actors.filter(lead=>lead.side==="ally"&&lead.hp>0&&lead.teamId&&
+            lead.id!==support.id&&lead.x<=35&&
+            Math.abs(lead.x-support.x)>1&&Math.abs(lead.x-support.x)<=14)
+           .map(leader=><button type="button" key={"regroup144-"+support.id+"-"+leader.id}
+             disabled={blocked||assault.ap<10||(assault.regroupUsedIds??[]).includes(support.teamId!)}
+             onClick={()=>commit(regroupWarAssaultV144(worldRef.current,support.teamId!,leader.teamId!,rules))}>
+             Regrouper {support.unitId} sur {leader.unitId} (10 AP)
+           </button>)
+        )}</div>
+        <p className={styles.explain}>Regroupement V144 : seule une équipe déjà déployée rejoint physiquement une autre formation. Aucun adversaire ni allié ne peut être traversé ; ordre unique et AP réellement dépensés.</p>
         <p>Points d&apos;assaut <strong>{assault.ap} AP</strong> · Cadence <strong>niveau {assault.apLevel??1}/3</strong> · Réserve maximale <strong>{100+((assault.apLevel??1)-1)*35} AP</strong> · Rempart allié <strong>{assault.ownBase}/80</strong> · Rempart adverse <strong>{assault.rivalBase}/80</strong>. Les équipes avancent et engagent automatiquement ; vous décidez du moment du déploiement.</p>
         <div className={styles.cards}>
           <button type="button" disabled={blocked||(assault.apLevel??1)>=3||assault.ap<((assault.apLevel??1)===1?35:55)}
@@ -539,6 +552,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
           </button>;
         })}</div>
         <p className={styles.explain}>Le sprint V143 traverse deux cases réelles avec une réaction de la patrouille après chaque case. Usage unique par infiltration, aucune téléportation ni camouflage gratuit.</p>
+        {stealth.guardInvestigation&&<p className={styles.explain}>Recherche de dernier contact : {stealth.guardInvestigation.turns} tour(s) restant(s). Le garde ne suit pas la position du chasseur redevenu caché.</p>}
         <p className={styles.explain}>Patrouille : {guardVisible?"visible à portée réelle":
           soundBearing?("bruit perçu vers "+soundBearing+" · position exacte inconnue"):
           "hors du champ de perception ; aucune position exacte affichée"}.</p>
@@ -727,7 +741,18 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
         {order.fieldSupport&&<small className={styles.explain}>Soutien de terrain V136 : {order.fieldSupport.paidRav} RAV engagés à {order.fieldSupport.allocatedAt} ; aucune victoire anticipée.</small>}
         {order.reconHalt&&<small className={styles.explain}>Halte V137 : ancienne échéance {order.reconHalt.originalDueAt}, nouveau rapport après 15 secondes supplémentaires ; effectifs et route inchangés.</small>}
         {order.departureContext&&<small className={styles.explain}>Briefing figé au départ : renseignements {order.departureContext.intel?"confirmés":"non confirmés"}, relais {order.departureContext.weakened?"affaibli":"non confirmé"}, pression {order.departureContext.pressure}. Les résultats ultérieurs des autres modes ne modifient pas ce mandat.</small>}
-        {order.routeIncident&&<p className={styles.explain}>Incident V143 traité sur {order.routeIncident.passageId} :
+        {order.passageCheck&&<p className={styles.explain}>
+          Contrôle de passage V144 : {order.passageCheck.passageId} · 1 RAV consommé,
+          condition publique « {order.passageCheck.sourceCondition||"sans indication"} »,
+          +2 préparation au bilan final uniquement.
+        </p>}
+        {!order.passageCheck&&!order.recall&&transit.phase==="outbound"&&
+          transit.currentPassageId&&<button type="button"
+           disabled={blocked||world.rav<1}
+           onClick={()=>commit(inspectWarOuterPassageV144(worldRef.current,order.id,Date.now(),rules))}>
+           Inspecter ce passage V6 · 1 RAV
+          </button>}
+                {order.routeIncident&&<p className={styles.explain}>Incident V143 traité sur {order.routeIncident.passageId} :
           <strong> {order.routeIncident.kind==="secure"?"sécurisation 2 RAV":"détour +10 secondes"}</strong>.
           L&apos;échéance réelle et les personnes restent enregistrées.</p>}
         {incident&&<div className={styles.cards}>

@@ -4,7 +4,7 @@ import type {WarRulesV6} from "./systems/clanWarBibleV6";
 import {
  createWarRtsSquadsV133,draftWarRtsSquadV133,removeWarRtsSquadV133,
  launchWarRtsSquadsV133,commandWarRtsSquadsV133,visibleWarRtsEnemiesV133,
- planWarRtsRallyV134,commandWarRtsRallyV134,commandWarRtsSuppressV135,commandWarRtsOverwatchV136,commandWarRtsBraceV137,commandWarRtsMedicV138,evacuateWarRtsSquadV139,warRtsEnvironmentalWindowV140,
+ planWarRtsRallyV134,commandWarRtsRallyV134,commandWarRtsSuppressV135,commandWarRtsOverwatchV136,commandWarRtsBraceV137,commandWarRtsMedicV138,evacuateWarRtsSquadV139,commandWarRtsReliefV144,warRtsEnvironmentalWindowV140,
  type WarRtsSquadsStateV133,type WarRtsSquadOrderV133,
 } from "./systems/clanWarRtsSquadsV133";
 import {WAR_SOURCE_RTS_IDS_V129} from "./systems/clanWarRtsSourceMissionsV129";
@@ -185,7 +185,22 @@ export default function ClanWarRtsSquadsV133({rules}:{rules:WarRulesV6}){
      <div className={styles.moveGrid}>{direct.map(dir=><button type="button" key={dir.id}
       disabled={selected.status!=="active"}
       onClick={()=>send({kind:"move",squadId:selected.id,direction:dir.id})}>{dir.label}</button>)}</div>
-     <div className={styles.commandGrid}>
+     {state.hold&&state.hold.squadId!==selected.id&&(()=>{
+       const task=mission.tasks[state.completedTaskIds.length];
+       const old=state.squads.find(u=>u.id===state.hold?.squadId);
+       const canRelieve=task?.id===state.hold?.taskId&&old&&
+         selected.status==="active"&&selected.hp>0&&
+         d(selected,old)<=1&&d(selected,task.location)<=1&&
+         !(state.reliefUsedTaskIds??[]).includes(task.id);
+       return <div className={styles.commandGrid}>
+         <button type="button" disabled={!canRelieve}
+          onClick={()=>apply(commandWarRtsReliefV144(state,selected.id))}>
+          Relayer le poste : {old?.unitId??"chef absent"} → {selected.unitId}
+         </button>
+         <p className={styles.hint}>Relève physique V144 : deux formations adjacentes au même objectif, une seule fois par tâche ; progression conservée et un véritable tour adverse.</p>
+       </div>;
+     })()}
+          <div className={styles.commandGrid}>
       {(["observation","objective","extraction"] as WarRtsWaypointV142[]).map(goal=>{
        const step=planWarRtsWaypointV142(state,selected.id,goal);
        return <button type="button" key={"waypoint-"+goal}

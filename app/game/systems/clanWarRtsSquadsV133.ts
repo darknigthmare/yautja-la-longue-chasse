@@ -57,6 +57,8 @@ export interface WarRtsSquadsStateV133 {
  brace?:WarRtsBraceV137[];braceIssuedIds?:string[];
  /** Real W3-U18 field medics; cannot create new people from a casualty. */
  triageReceipts?:WarRtsTriageV138[];
+ /** Source task IDs for which a physical position handoff has occurred. */
+ reliefUsedTaskIds?:string[];
 }
 export type WarRtsSquadOrderV133 =
  |{kind:"move";squadId:string;direction:"up"|"down"|"left"|"right"}
@@ -461,6 +463,35 @@ export function evacuateWarRtsSquadV139(
   "Détachement "+unit.unitId+" évacué à pied par la sortie réelle ; "+unit.memberCount+
   " membres identifiés conservés hors du combat.");
  return accept(next,next.lastMessage);
+}
+
+/**
+ * V144: one REAL relief per objective. An adjacent active group replaces
+ * the holder without resetting progress. The enemy still takes its normal
+ * response, environment effects apply, and no task completes remotely.
+ */
+export function commandWarRtsReliefV144(
+ state:WarRtsSquadsStateV133,incomingSquadId:string,
+):WarRtsSquadsUpdateV133 {
+ if(state.phase!=="active"||state.report||!state.hold||!state.observed)
+  return fail(state,"Un poste réellement occupé et reconnu est nécessaire pour une relève.");
+ const task=currentTask(state),holding=state.hold;
+ if(!task||task.id!==holding.taskId||taskRestriction(state,task))
+  return fail(state,"La relève ne peut contourner la fenêtre, l'alimentation ou la preuve d'objectif.");
+ if((state.reliefUsedTaskIds??[]).includes(task.id))
+  return fail(state,"Une seule relève physique est autorisée par objectif.");
+ const old=activeSquads(state).find(u=>u.id===holding.squadId);
+ const incoming=activeSquads(state).find(u=>u.id===incomingSquadId&&u.id!==holding.squadId);
+ if(!old||!incoming||distance(incoming,old)>1||
+   distance(incoming,task.location)>1||distance(old,task.location)>1)
+  return fail(state,"Deux groupes vivants doivent se trouver physiquement près du même poste.");
+ // Advance applies exactly one real enemy/weather turn and increments the
+ // hold only if the relieving actor still satisfies the live restrictions.
+ return issue(state,"Relève V144 : "+incoming.unitId+" remplace "+old.unitId+
+   " sur "+task.title+" à progression conservée.",{
+  hold:{...holding,squadId:incoming.id},
+  reliefUsedTaskIds:[...(state.reliefUsedTaskIds??[]),task.id],
+ });
 }
 
 /**
