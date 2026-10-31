@@ -18,6 +18,7 @@ class V138WorkbookGate(unittest.TestCase):
         self.assertEqual(result["status"],"PASS")
         self.assertEqual(result["four_workbooks"],4)
         self.assertEqual(result["backlog_total"],389)
+        self.assertEqual(next(x for x in result["workbooks"] if x["file"].endswith("Backlog_Production_V137.xlsx"))["new_official_gaps"],6)
         self.assertEqual(len(result["technical_closed"]),3)
         self.assertGreaterEqual(sum(x["sheets"] for x in result["workbooks"]),42)
 
