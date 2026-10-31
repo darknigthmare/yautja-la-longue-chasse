@@ -6,6 +6,9 @@ import {
   EARTH_REFERENCE_SOURCE_V147, type EarthLandGeoJsonV147,
   type EarthReferenceViewV147,
 } from "./earthGeoReferenceV147";
+import {
+  PLANET_CANON_STORY_SETTINGS_V148, earthCanonFilmPinsV148, earthFilmMarkerPositionV148,
+} from "./systems/planetLoreSettingsV148";
 import styles from "./PlanetEarthReferenceV147.module.css";
 
 const earthViews = {
@@ -35,6 +38,13 @@ export default function PlanetEarthReferenceV147() {
   const [notice,setNotice]=useState("");
   const canvasRef=useRef<HTMLCanvasElement>(null);
   const camera=earthViews[cameraId];
+  const view:EarthReferenceViewV147={
+    projection,width:projection==="map"?768:512,height:projection==="map"?384:512,
+    longitude:camera.longitude,latitude:camera.latitude,
+  };
+  const filmPins=earthCanonFilmPinsV148("earth")
+    .map(entry=>({entry,point:earthFilmMarkerPositionV148(entry,view)}))
+    .filter(item=>item.point!==null);
   const renderKey=projection+"/"+cameraId+"/"+(collection?"loaded":"empty");
   const ready=expanded && status==="loaded" && lastDraw===renderKey;
 
@@ -80,10 +90,23 @@ export default function PlanetEarthReferenceV147() {
 
   const downloadPng=()=>{
     if(!ready||!canvasRef.current)return;
-    canvasRef.current.toBlob(blob=>{
+    const snapshot=document.createElement("canvas");
+    snapshot.width=view.width;snapshot.height=view.height;
+    const context=snapshot.getContext("2d");
+    if(!context){setNotice("PNG indisponible.");return;}
+    context.drawImage(canvasRef.current,0,0);
+    // The exported current view contains the same official city-level pins
+    // as the visible overlay, not extra invented settlements.
+    for(const {point} of filmPins){
+      if(!point)continue;
+      context.beginPath();context.arc(point.x,point.y,5,0,Math.PI*2);
+      context.fillStyle="#f3dc86";context.fill();
+      context.strokeStyle="#21383d";context.lineWidth=2;context.stroke();
+    }
+    snapshot.toBlob(blob=>{
       if(!blob){setNotice("PNG indisponible.");return;}
-      try{downloadEarthBlobV147(blob,"earth-natural-earth-110m-"+projection+"-v147.png");
-        setNotice("Image de référence Terre exportée.");}
+      try{downloadEarthBlobV147(blob,"earth-natural-earth-110m-"+projection+"-v148.png");
+        setNotice("Image terrestre et repères urbains vérifiés exportés.");}
       catch{setNotice("Export de la carte Terre refusé.");}
     },"image/png");
   };
@@ -124,10 +147,32 @@ export default function PlanetEarthReferenceV147() {
         </label>
       </div>
       <div className={styles.canvasWrap}>
-        <canvas ref={canvasRef} width={projection==="map"?768:512}
-          height={projection==="map"?384:512} className={styles.canvas} role="img"
-          aria-label={"Référence géographique réelle de la Terre en "+projection}
-          data-testid="planet-earth-canvas-v147"/>
+        <div className={styles.canvasLayer}>
+          <canvas ref={canvasRef} width={view.width}
+            height={view.height} className={styles.canvas} role="img"
+            aria-label={"Référence géographique réelle de la Terre en "+projection}
+            data-testid="planet-earth-canvas-v147"/>
+          <svg className={styles.pinOverlay} viewBox={`0 0 ${view.width} ${view.height}`}
+            role="img" aria-label="Repères terrestres attestés à la précision de leur source">
+            {filmPins.map(({entry,point})=>point&&<g key={entry.id}
+              data-testid="planet-earth-film-pin-v148" data-film={entry.id}>
+              <circle cx={point.x} cy={point.y} r="5" fill="#f3dc86" stroke="#21383d" strokeWidth="2"/>
+              <title>{entry.film+" · "+entry.setting+" · centre urbain approximatif, pas une scène exacte"}</title>
+            </g>)}
+          </svg>
+        </div>
+      </div>
+      <div className={styles.lore} data-testid="planet-earth-lore-v148">
+        <h5>Cadres cinématographiques vérifiés · Terre ou planète extraterrestre</h5>
+        <p>Les lieux de l'histoire ne sont pas des lieux de tournage. Un film mentionnant seulement une jungle, une région ou une planète alien ne reçoit aucune épingle terrestre inventée.</p>
+        <ul>{PLANET_CANON_STORY_SETTINGS_V148.map(entry=><li key={entry.id}
+          data-testid="planet-film-setting-v148" data-film={entry.id}
+          data-world={entry.world} data-precision={entry.precision}>
+          <strong>{entry.film} ({entry.releaseYear})</strong>
+          <span>{entry.world==="earth"?"Terre":"Planète extraterrestre"} · {entry.setting}</span>
+          {entry.earthAnchor&&<small>Épingle : centre-ville approximatif, jamais les coordonnées précises d'une scène</small>}
+          <a href={entry.sourceUrl} target="_blank" rel="noopener noreferrer">Source officielle du cadre</a>
+        </li>)}</ul>
       </div>
       {stats&&<p data-testid="planet-earth-source-stats-v147">{stats.featureCount} polygones, {stats.ringCount} anneaux et {stats.vertexCount.toLocaleString("fr-FR")} sommets issus de Natural Earth. Référence originale de géographie terrestre, sans villes ni peuplements extraterrestres attribués.</p>}
       <div className={styles.actions}>

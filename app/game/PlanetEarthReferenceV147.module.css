@@ -13,3 +13,16 @@
 .actions button{min-height:44px;border:1px solid #829d81;border-radius:6px;background:#294639;color:#e2ebd9;padding:9px 13px;cursor:pointer}
 .actions button:disabled{opacity:.55;cursor:default}
 @media(max-width:530px){.controls{grid-template-columns:1fr}.actions{flex-direction:column}.actions button{width:100%}}
+
+.canvasLayer{position:relative;display:block;width:100%;max-width:768px}
+.reference[data-projection="globe"] .canvasLayer{max-width:512px}
+.pinOverlay{position:absolute;inset:0;display:block;width:100%;height:100%;pointer-events:none}
+.lore{border:1px solid #405d5a;border-radius:8px;background:#142d32;padding:12px}
+.lore h5{font-size:14px;color:#e3dfbd;margin:0 0 6px}
+.lore ul{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:10px 0 0;padding:0}
+.lore li{padding:11px;border:1px solid #385b58;border-radius:6px;background:#193a3b;display:grid;gap:5px;font-size:12px;min-width:0}
+.lore li strong,.lore li span,.lore li small{display:block}
+.lore li span{line-height:1.5;color:#c0d2c7}
+.lore li small{font-size:10px;color:#f1deb0}
+.lore li a{font-size:11px;color:#c6e6ba;text-underline-offset:3px}
+@media(max-width:620px){.lore ul{grid-template-columns:1fr}}

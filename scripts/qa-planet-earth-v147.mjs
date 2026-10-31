@@ -32,6 +32,15 @@ try{
     (await earth.getAttribute("data-source-scale"))==="110m");
   check("V147 source describes 127 real Earth land polygons",
     (await earth.getByTestId("planet-earth-source-stats-v147").innerText()).includes("127 polygones"));
+  const settings=earth.getByTestId("planet-film-setting-v148");
+  check("V148 official canon registry records terrestrial and alien movie settings separately",
+    (await settings.count())===5 &&
+    (await settings.filter({has:page.locator('[data-world="earth"]')}).count())===0 ? false :
+      (await earth.locator('[data-world="earth"]').count())===3 &&
+      (await earth.locator('[data-world="unidentified-alien"]').count())===2);
+  check("V148 only city-level Predator 2 is a GPS point, not a regional or alien film",
+    (await earth.getByTestId("planet-earth-film-pin-v148").count())===1 &&
+    (await earth.getByTestId("planet-earth-film-pin-v148").first().getAttribute("data-film"))==="predator-2-1990");
 
   const canvas=earth.getByTestId("planet-earth-canvas-v147");
   const sample=async(lon,lat)=>canvas.evaluate((node,geo)=>{
@@ -56,12 +65,19 @@ try{
   const euro=await center();
   check("V147 geographic globe follows the same inverse geodesic projection as V101",
     euro.midpoint[1]>euro.midpoint[2] && euro.corner[3]===0);
+  await earth.getByTestId("planet-earth-camera-v147").selectOption("oceania");
+  await page.waitForFunction(()=>document.querySelector('[data-testid="planet-earth-reference-v147"]')
+    ?.getAttribute("data-render-status")==="ready",null,{timeout:60000});
+  check("V148 true orthographic projection hides Los Angeles on the opposite hemisphere",
+    (await earth.getByTestId("planet-earth-film-pin-v148").count())===0);
   await earth.getByTestId("planet-earth-camera-v147").selectOption("pacific");
   await page.waitForFunction(()=>document.querySelector('[data-testid="planet-earth-reference-v147"]')
     ?.getAttribute("data-render-status")==="ready",null,{timeout:60000});
   const ocean=await center();
   check("V147 moving to the Pacific shows ocean instead of European land on the same globe",
     ocean.midpoint[2]>ocean.midpoint[1] && ocean.midpoint[3]===255);
+  check("V148 only the actual city-centre Los Angeles marker reappears when its hemisphere is visible",
+    (await earth.getByTestId("planet-earth-film-pin-v148").count())===1);
   await earth.screenshot({path:path.join(output,"earth-globe-pacific-desktop.png")});
 
   const waiting=page.waitForEvent("download",{timeout:60000});

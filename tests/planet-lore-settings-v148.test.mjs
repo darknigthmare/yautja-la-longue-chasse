@@ -44,8 +44,8 @@ test("film city marker obeys the same orthographic/map Earth projection",()=>{
  const m=a.earthFilmMarkerPositionV148(pin,map);
  assert(m);assert(Math.abs(m.x-(61.7563/360*768))<.001);
  assert(Math.abs(m.y-(90-34.0522)/180*384)<.001);
- assert.equal(a.earthFilmMarkerPositionV148(pin,{...map,projection:"globe",width:512,height:512}),null,
-   "Los Angeles must be hidden behind the Europe-centred globe");
+ assert.equal(a.earthFilmMarkerPositionV148(pin,{...map,projection:"globe",width:512,height:512,longitude:151.21,latitude:-33.87}),null,
+   "Los Angeles must be hidden behind the Australia-centred globe");
  assert(a.earthFilmMarkerPositionV148(pin,{...map,projection:"globe",width:512,height:512,longitude:-150,latitude:0}),
    "Los Angeles must appear on the Pacific-facing globe");
 });
