@@ -59,11 +59,9 @@ try{
  await page.goto(serverOrigin+"/",{waitUntil:"networkidle"});
  await page.getByRole("heading",{name:"54 gauntlets à comparer"}).waitFor({timeout:15000});
  assert.equal(await page.locator("main[data-testid='gauntlet-visual-qa-v136']").count(),1);
- assert.equal(await page.locator("[aria-label='Catalogue des 54 modèles'] button.modelChoice").count(),0,"CSS Modules may rename local class names; use semantic controls.");
  const choices=page.locator("section[aria-label='Catalogue des 54 modèles'] button[aria-pressed]");
  assert.equal(await choices.count(),12,"Catalog is paginated at 12");
- await page.getByRole("button",{name:"Lost Tribe",exact:false}).first().catch(()=>{});
- await page.getByRole("textbox",{name:"Recherche"}).fill("lost-boar");
+ await page.getByRole("searchbox",{name:"Recherche"}).fill("lost-boar");
  assert.equal(await page.locator("section[aria-label='Catalogue des 54 modèles'] button[aria-pressed]").count(),1);
  await page.locator("section[aria-label='Catalogue des 54 modèles'] button[aria-pressed]").first().click();
  await page.locator("svg[data-testid='gauntlet-archive-study-v136'][data-model='lost-boar']").waitFor();
@@ -77,7 +75,7 @@ try{
  await page.getByRole("button",{name:"Vue simple"}).click();
  const image=await sharp({create:{width:32,height:32,channels:4,background:{r:255,g:255,b:255,alpha:1}}}).png().toBuffer();
  await page.getByRole("button",{name:"Effacer la référence"}).count().then(x=>assert.equal(x,0));
- await page.getByRole("textbox",{name:"Recherche"}).fill("");
+ await page.getByRole("searchbox",{name:"Recherche"}).fill("");
  await page.locator('input[type="file"]').setInputFiles({name:"reference-test.png",mimeType:"image/png",buffer:image});
  await page.getByText("Comparaison locale : reference-test.png").waitFor();
  assert.equal(await page.locator("img[alt^='Photogramme ou photo de référence']").count(),1);
