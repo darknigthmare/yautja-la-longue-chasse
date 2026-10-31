@@ -71,7 +71,7 @@ export function auditPlanetPreflightV149(
       "Territoire absent d'une région ou présent dans plusieurs régions.");
     if(!regionMap.has(territory.regionId))issue("error","orphan-territory",territory.id,
       "Territoire rattaché à une région inconnue.");
-    if(!landmassMap.has(territory.landmassId))issue("error","orphan-landmass",territory.id,
+    if(!territory.landmassId||!landmassMap.has(territory.landmassId))issue("error","orphan-landmass",territory.id,
       "Territoire rattaché à une masse terrestre inconnue.");
     if(!definitions.has(territory.id))issue("error","missing-territory-site",territory.id,
       "Cellule présente sur la carte mais absente des sites jouables.");
