@@ -97,6 +97,23 @@ try{
   await shaman.click();
   assert.equal(await page.locator('[data-art-model="lost-shaman"]').count(),1);
   await shot(page,"04-desktop-lost-shaman-original-concept");
+  await page.locator('[data-art-model="lost-shaman"] [data-testid="rig-qa-v139-panel"] summary').click();
+  const wrist=page.locator('[data-art-model="lost-shaman"] [data-testid="gauntlet-rig-inspection-v139"]');
+  assert.equal(await wrist.getAttribute("data-rig-model"),"lost-shaman");
+  const basePath=await wrist.locator('image[data-rig-part="base"]').getAttribute("href");
+  const lidPath=await wrist.locator('image[data-rig-part="lid"]').getAttribute("href");
+  assert.equal(basePath,"/game/assets/v139/rig-gauntlets/lost-shaman/base.svg");
+  assert.equal(lidPath,"/game/assets/v139/rig-gauntlets/lost-shaman/lid.svg");
+  const rigFiles=await Promise.all([basePath,lidPath].map(async path=>{
+    const result=await page.request.get(url.replace(/\\/$/,"")+path);
+    assert.equal(result.status(),200);
+    assert.match(result.headers()["content-type"],/image\\/svg\\+xml/);
+    return result;
+  }));
+  assert.equal(rigFiles.length,2);
+  await shot(page,"04b-lost-shaman-actor-rig-registration-v139");
+  pass("Real 54-model rig source files load with exact lower-arm anchor","Lost Shaman base/lid 256x384");
+
   assert.equal(await page.locator('[data-art-model="lost-shaman"] svg[data-fidelity="original-concept-not-film"]').count(),1);
   pass("Original non-canon individual study can be filtered and selected","Lost Shaman, source provenance retained");
   await search.fill("");
