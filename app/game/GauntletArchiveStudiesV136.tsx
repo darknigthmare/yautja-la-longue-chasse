@@ -15,8 +15,8 @@ export function isGauntletArchiveStudyV136(id:string):boolean {
 }
 export const GAUNTLET_ARCHIVE_STUDY_LAYERS_V136 = LAYERS;
 
-export default function GauntletArchiveStudiesV136({entry,coverOpen=true}:{
-  entry:GauntletDefinitionV132;coverOpen?:boolean;
+export default function GauntletArchiveStudiesV136({entry,coverOpen=true,hiddenParts=[]}:{
+  entry:GauntletDefinitionV132;coverOpen?:boolean;hiddenParts?:readonly string[];
 }){
   const titleId=useId();
   const base=`/game/assets/v136/gauntlets/${entry.id}/`;
@@ -27,11 +27,11 @@ export default function GauntletArchiveStudiesV136({entry,coverOpen=true}:{
     data-cover-open={coverOpen}>
     <title id={titleId}>{entry.name} · prototype original, non validé 1:1</title>
     <g aria-hidden="true">
-      <image href={base+LAYERS[0]} width="540" height="290"/>
-      <image href={base+LAYERS[1]} width="540" height="290"/>
-      <image href={base+LAYERS[2]} width="540" height="290"/>
-      <image href={base+LAYERS[3]} width="540" height="290"
-        className={styles.lid} data-cover-position={coverOpen?"open":"closed"}/>
+      {!hiddenParts.includes("arm")&&<image href={base+LAYERS[0]} width="540" height="290"/>}
+      {!hiddenParts.includes("shell")&&<image href={base+LAYERS[1]} width="540" height="290"/>}
+      {!hiddenParts.includes("panel")&&<image href={base+LAYERS[2]} width="540" height="290"/>}
+      {!hiddenParts.includes("lid")&&<image href={base+LAYERS[3]} width="540" height="290"
+        className={styles.lid} data-cover-position={coverOpen?"open":"closed"}/>}
     </g>
   </svg>;
 }
