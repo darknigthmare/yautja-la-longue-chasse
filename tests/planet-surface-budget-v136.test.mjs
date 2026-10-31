@@ -42,7 +42,7 @@ test("V136 accounts for all three classes of surface exactly, without subtractin
 });
 
 test("physical areas scale quadratically with radius while angular geography stays unchanged", () => {
-  const variants=["dwarf","small","terran","large","giant","colossal"].map(make);
+  const variants=["dwarf","small","terran","large","giant","colossal"].map(size => make(size));
   const surface=variants.map(api.analyzePlanetPhysicalSurfaceV136);
   for (let i=1;i<variants.length;i++) {
     assert(surface[i].surfaceKm2>surface[i-1].surfaceKm2);
