@@ -44,9 +44,9 @@ import gauntletStyles from "./ClanWarGauntletV131.module.css";
 import ClanWarGauntletLockerV132 from "./ClanWarGauntletLockerV132";
 import {
   DEFAULT_GAUNTLET_ID_V132, GAUNTLET_READOUT_LABELS_V132,
-  gauntletByIdV132, gauntletStorageKeyV132, gauntletUnlockedV132,
-  parseGauntletPreferenceV132, serializeGauntletPreferenceV132,
+  gauntletByIdV132, gauntletUnlockedV132, type GauntletThemeV132,
 } from "./systems/clanWarGauntletCatalogV132";
+import { useHunterGauntletV133 } from "./systems/useHunterGauntletV133";
 import {
   DEFAULT_WAR_PRESENTATION_V131, WAR_PRESENTATION_KEY_V131, parseClanWarPresentationV131,
   type ClanWarPresentationV131,
@@ -77,7 +77,7 @@ function Entry({ entry }: { entry: ClanWarEntryV85 }) {
 }
 
 /** Autonomous exercises and source dossier. Main campaign progress is read only. */
-export default function ClanWarPanelV85({ save, onClose, suspended = false, initialPlanetId }: { save: SaveGame; onClose: () => void; suspended?: boolean; initialPlanetId?: string }) {
+export default function ClanWarPanelV85({ save, onClose, suspended = false, initialPlanetId, onGauntletSound }: { save: SaveGame; onClose: () => void; suspended?: boolean; initialPlanetId?: string; onGauntletSound?: (theme: GauntletThemeV132) => void }) {
   const root = useRef<HTMLElement>(null);
   const focusPlanetSelection = useRef(Boolean(initialPlanetId));
   const pageActive = useSyncExternalStore(subscribePageActivityV94, pageActivitySnapshotV94, serverPageActivityV94);
@@ -85,9 +85,7 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false, init
   // Presentation is independent from the war archive. Server and first client render match.
   const [presentation, setPresentation] = useState<ClanWarPresentationV131>(DEFAULT_WAR_PRESENTATION_V131);
   const presentationTouched = useRef(false);
-  const [equippedGauntletId,setEquippedGauntletId] = useState(DEFAULT_GAUNTLET_ID_V132);
-  const gauntletStorageKey = gauntletStorageKeyV132(save.createdAt);
-  const gauntletChoiceTouched = useRef(false);
+  const { equippedId: equippedGauntletId, equip, storageWarning: gauntletStorageWarning } = useHunterGauntletV133(save.createdAt, save.profile.rankId);
   const [sessionStore] = useState(() => createWarSessionV85(() => typeof window === "undefined" ? null : window.localStorage));
   const [activePlanetId, setActivePlanetId] = useState(() => preferredWarPlanetV96(initialPlanetId));
   const [planetSessions, setPlanetSessions] = useState<Record<string, ReturnType<typeof createWarSessionV85>>>(() => ({
@@ -143,34 +141,17 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false, init
     };
   }, []);
 
-  useEffect(() => {
-    const frame = window.requestAnimationFrame(() => {
-      if (gauntletChoiceTouched.current) return;
-      let raw: string | null = null;
-      try { raw = window.localStorage.getItem(gauntletStorageKey); }
-      catch { /* A denied preference store does not alter the clan simulation. */ }
-      setEquippedGauntletId(parseGauntletPreferenceV132(raw,save.createdAt,save.profile.rankId));
-    });
-    function externalGauntletChoice(event: StorageEvent) {
-      if (event.key === gauntletStorageKey || event.key === null) {
-        setEquippedGauntletId(parseGauntletPreferenceV132(event.newValue,save.createdAt,save.profile.rankId));
-      }
-    }
-    window.addEventListener("storage",externalGauntletChoice);
-    return () => { window.cancelAnimationFrame(frame); window.removeEventListener("storage",externalGauntletChoice); };
-  },[gauntletStorageKey,save.createdAt,save.profile.rankId]);
-
   function equipGauntlet(id: string) {
-    if (!gauntletUnlockedV132(id,save.profile.rankId)) return;
-    gauntletChoiceTouched.current=true;
-    setEquippedGauntletId(id);
-    try {
-      window.localStorage.setItem(gauntletStorageKey,serializeGauntletPreferenceV132(save.createdAt,id,save.profile.rankId));
-    } catch { /* Keep the equip state for this session, never touch the campaign save. */ }
+    if (suspended || !pageActive || !gauntletUnlockedV132(id, save.profile.rankId)) return;
+    if (equip(id)) {
+      onGauntletSound?.(gauntletByIdV132(id)?.theme ?? "classic");
+      setMessage(`Gauntlet ${gauntletByIdV132(id)?.name ?? id} équipé. Le front et ses ordres restent inchangés.`);
+    }
   }
   function choosePresentation(next: ClanWarPresentationV131) {
     presentationTouched.current = true;
     setPresentation(next);
+    if (next === "gauntlet") onGauntletSound?.(gauntletByIdV132(equippedGauntletId)?.theme ?? "classic");
     try { window.localStorage.setItem(WAR_PRESENTATION_KEY_V131, next); }
     catch { /* Preference may remain temporary; no war save or order is touched. */ }
   }
@@ -376,9 +357,10 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false, init
     </div>
     <p className={styles.status} role="status" aria-live="polite">{message}</p>
     {storageMessage && <p className={styles.storage} role="status">{storageMessage}</p>}
+    {gauntletStorageWarning && <p className={styles.storage} role="status">{gauntletStorageWarning}</p>}
     {pendingWrites > 0 && <p className={styles.storage} role="status">Enregistrement des exercices en cours…</p>}
     {canRetryPersistence && <button type="button" disabled={pendingWrites > 0} onClick={() => { sessionStore.retryPersistence(); if (planetSession !== sessionStore) planetSession.retryPersistence(); }}>Réessayer la sauvegarde des exercices</button>}
-    <div hidden={tab !== "bible"}><ClanWarBibleV6Panel active={tab === "bible" && !suspended && pageActive}/></div>
+    <div hidden={tab !== "bible"}><ClanWarBibleV6Panel active={tab === "bible" && !suspended && pageActive} gauntletId={equippedGauntletId} holographic={presentation==="gauntlet"}/></div>
 
     {tab === "composition" && <div>
       <div className={styles.sectionHeader}><div><h3>Formations et limites de composition</h3><p>Le commandement compte aussi les réserves et les groupes en transit.</p></div><button type="button" onClick={() => { setSelection({ ...CANYON_PRESET_V85 }); setMessage("Effectif d’exemple du classeur : 12 commandement, 112 matériaux et 60 énergie."); }}>Effectif du classeur</button></div>
@@ -425,7 +407,7 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false, init
     </div>}
 
     {tab === "korthas" && <div>
-      <ClanWarGauntletLockerV132 hunterRank={save.profile.rankId} equippedId={effectiveGauntlet?.id??DEFAULT_GAUNTLET_ID_V132} onEquip={equipGauntlet}/>
+      <ClanWarGauntletLockerV132 hunterRank={save.profile.rankId} equippedId={effectiveGauntlet?.id??DEFAULT_GAUNTLET_ID_V132} onEquip={equipGauntlet} disabled={suspended||!pageActive}/>
       <ClanWarPlanetsV96 planet={planet} turn={simulation.turn} persisted={persistedWar} pending={pendingWrites > 0} retainedPlanetIds={retainedPlanetIds} onSelect={selectPlanet}/>
       <div className={styles.sectionHeader}><div><h3>{planet.name} · tour {simulation.turn}</h3><p>Routes du théâtre, détachements présents et informations adverses estimées.</p></div><button type="button" onClick={restartWar}>Nouvel exercice</button></div>
       <div className={styles.metrics}><p>Stock consolidé <Budget {...budget}/></p><p>Contrôle <strong>{controlled.length}/{definitions.length}</strong></p><p>Aptes <strong>{warFitCombatantsV85(simulation).length}</strong></p><p>Entretien prévu <strong>S{warUpkeepV85(simulation)}</strong></p></div>
