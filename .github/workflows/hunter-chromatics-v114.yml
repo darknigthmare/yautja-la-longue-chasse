@@ -21,6 +21,8 @@ on:
       - "public/game/assets/v133/decals/decal-atlas.webp"
       - "public/game/assets/v133/concept-masks/"
       - "tests/yautja-decals-v133.test.mjs"
+      - "tests/hunter-open-gaps-v137.test.mjs"
+      - "app/game/conceptMaskFitV137.ts"
       - "app/game/data/phgBiomaskV132Catalog.json"
       - "app/game/data/phgBiomaskV132Installed.json"
       - "scripts/install-phg-biomask-v132.py"
@@ -100,6 +102,8 @@ jobs:
             /public/game/assets/v133/decals/decal-atlas.webp
             /public/game/assets/v133/concept-masks/
             /tests/yautja-decals-v133.test.mjs
+            /tests/hunter-open-gaps-v137.test.mjs
+            /app/game/conceptMaskFitV137.ts
             /app/game/data/phgBiomaskV132Catalog.json
             /app/game/data/phgBiomaskV132Installed.json
             /scripts/install-phg-biomask-v132.py
@@ -162,7 +166,7 @@ jobs:
       - name: Validate V120 installed-file safety and source catalog
         run: python3 -m unittest discover -s tests -p test_phg_v120_installer.py -v && python3 scripts/install-phg-runtime-v120.py --verify-installed && python3 -m unittest discover -s tests -p test_phg_recent_v126_installer.py -v && python3 scripts/install-phg-recent-v126.py --verify-installed && python3 -m unittest discover -s tests -p test_phg_biomask_v132.py -v && python3 scripts/install-phg-biomask-v132.py --verify-installed
       - name: Validate saved palette IDs, category isolation and Canvas descriptors
-        run: node --experimental-strip-types --test tests/hunter-chromatics-v113.test.mjs tests/hunter-chromatic-canvas-v113.test.mjs tests/hunter-chromatics-native-v114.test.mjs tests/hunter-chromatic-grade-v114.test.mjs tests/homeworld-hunter-armor-v114.test.mjs tests/hunter-chromatic-facilities-v115.test.mjs tests/hunter-chromatic-migration-v115.test.mjs tests/hunter-chromatic-persistence-v116.test.mjs tests/hunter-chromatic-layering-v116.test.mjs tests/hunter-chromatic-blend-v117.test.mjs tests/hunter-chromatic-drive-v120.test.mjs tests/phg-visual-studies-v122.test.mjs tests/phg-atlas-runtime-v125.test.mjs tests/phg-platform-v128.test.mjs tests/phg-patches-v129.test.mjs tests/phg-reference-catalog-v130.test.mjs tests/phg-biomask-v131.test.mjs tests/phg-biomask-v132.test.mjs tests/yautja-decals-v133.test.mjs
+        run: node --experimental-strip-types --test tests/hunter-chromatics-v113.test.mjs tests/hunter-chromatic-canvas-v113.test.mjs tests/hunter-chromatics-native-v114.test.mjs tests/hunter-chromatic-grade-v114.test.mjs tests/homeworld-hunter-armor-v114.test.mjs tests/hunter-chromatic-facilities-v115.test.mjs tests/hunter-chromatic-migration-v115.test.mjs tests/hunter-chromatic-persistence-v116.test.mjs tests/hunter-chromatic-layering-v116.test.mjs tests/hunter-chromatic-blend-v117.test.mjs tests/hunter-chromatic-drive-v120.test.mjs tests/phg-visual-studies-v122.test.mjs tests/phg-atlas-runtime-v125.test.mjs tests/phg-platform-v128.test.mjs tests/phg-patches-v129.test.mjs tests/phg-reference-catalog-v130.test.mjs tests/phg-biomask-v131.test.mjs tests/phg-biomask-v132.test.mjs tests/yautja-decals-v133.test.mjs tests/hunter-open-gaps-v137.test.mjs
   typecheck:
     name: TypeScript and lint on the complete game source
     runs-on: ubuntu-24.04
