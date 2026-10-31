@@ -47,6 +47,7 @@ import {
   gauntletByIdV132, gauntletUnlockedV132, type GauntletThemeV132,
 } from "./systems/clanWarGauntletCatalogV132";
 import { useHunterGauntletV133 } from "./systems/useHunterGauntletV133";
+import {inspectWarTurnGateV143,WAR_TURN_GATE_MESSAGES_V143} from "./systems/clanWarTurnGateV143";
 import {
   DEFAULT_WAR_PRESENTATION_V131, WAR_PRESENTATION_KEY_V131, parseClanWarPresentationV131,
   type ClanWarPresentationV131,
@@ -115,6 +116,9 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false, init
   const [selectedPeople, setSelectedPeople] = useState<string[]>([]);
   const [cargoS, setCargoS] = useState(0), [cargoM, setCargoM] = useState(0);
   const [confirmTurn, setConfirmTurn] = useState(false);
+  // Revision visible when the player began reviewing this end-turn decision.
+  // A different order, tab or renderer cannot re-use a stale confirmation.
+  const confirmTurnRevision = useRef<number | null>(null);
   const [evacuationConfirmation, setEvacuationConfirmation] = useState<string | null>(null);
   const [selectedFormation, setSelectedFormation] = useState("");
   const [tacticalOrder, setTacticalOrder] = useState<CanyonOrderKindV85>("move");
@@ -325,6 +329,41 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false, init
     if (result.accepted) { setSimulation(result.state); setSelectedPeople([]); setConfirmTurn(false); }
     return result.accepted;
   }
+  function requestWarTurnReview() {
+    const live=planetSession.getSnapshot();
+    const gate=inspectWarTurnGateV143(live,live.simulation.revision,pageActivitySnapshotV94(),suspended);
+    if(!gate.allowed){setMessage(WAR_TURN_GATE_MESSAGES_V143[gate.reason]);setConfirmTurn(false);return;}
+    confirmTurnRevision.current=live.simulation.revision;
+    setConfirmTurn(true);
+  }
+  function resolveReviewedWarTurn() {
+    const live=planetSession.getSnapshot();
+    const gate=inspectWarTurnGateV143(live,confirmTurnRevision.current,pageActivitySnapshotV94(),suspended);
+    if(!gate.allowed){
+      setMessage(WAR_TURN_GATE_MESSAGES_V143[gate.reason]);
+      setConfirmTurn(false);confirmTurnRevision.current=null;return;
+    }
+    // The session store updates synchronously and starts a write fence. A
+    // second click therefore sees pendingWrites>0 or a different revision.
+    const result=advanceWarTurnV85(live.simulation);
+    setMessage(result.message);
+    if(result.accepted)setSimulation(result.state);
+    confirmTurnRevision.current=null;
+    setConfirmTurn(false);setSelectedPeople([]);
+  }
+  function removeReservedWarOrder(orderId:string) {
+    const live=planetSession.getSnapshot();
+    if(suspended||!pageActivitySnapshotV94()||!live.loaded||live.pendingWrites>0){
+      setMessage("Une archive est en cours d'enregistrement ou le front est inactif : aucun ordre retiré.");
+      return;
+    }
+    if(!live.simulation.orders.some(order=>order.id===orderId)){
+      setMessage("Cet ordre a déjà changé ; relisez les réservations avant de le retirer.");
+      return;
+    }
+    setSimulation(cancelWarOrderV85(live.simulation,orderId));
+    confirmTurnRevision.current=null;setConfirmTurn(false);
+  }
   function restartWar() {
     if (!window.confirm(`Recommencer le front de ${planet.name} et remplacer uniquement son archive locale ? Les autres planètes seront conservées.`)) return;
     setSimulation(createWarSimulationV85(undefined, planet.id)); planetSession.unlockWarAfterExplicitReset(); setTerritoryId(null); setTargetId(null); setOrderKind(null); setConfirmTurn(false); setSelectedPeople([]); setCargoS(0); setCargoM(0); setMessage(`Nouveau front de ${planet.name} ouvert.`);
@@ -444,8 +483,8 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false, init
         </aside>
         <aside className={styles.frontGuide} aria-label="Préparer le tour"><p className={styles.eyebrow}>COMMANDER LE FRONT</p><h4>Reconnaître, engager, tenir</h4><ol><li>Sélectionnez un territoire des Haltes comme départ, puis une destination reliée par une route.</li><li>Choisissez l’ordre et jusqu’à huit personnes présentes. Les réservations utilisent le stock local.</li><li>Relisez les ordres et confirmez le tour : les Forges agissent aussi, les positions et les couleurs évoluent.</li></ol><p>Les Passes autonomes se négocient. Un droit de transit donne accès à leurs routes sans en changer le drapeau.</p><p>Conservez une garnison et une liaison de ravitaillement pour que vos sites produisent. Les personnes gardent leurs blessures et leur expérience.</p><p className={persistedWar ? styles.positive : styles.storage} role="status">{persistedWar ? `Le front de ${planet.name} est archivé sur cet appareil. Changer de planète conserve cette partie.` : pendingWrites > 0 ? `Enregistrement du front de ${planet.name} en cours…` : `Le front de ${planet.name} est conservé en mémoire. La sauvegarde sur cet appareil reste à confirmer.`}</p></aside>
       </div>
-      <div className={styles.orderQueue}><h4>Ordres réservés</h4><p>Deux opérationnels, un logistique et un diplomatique par tour. Le mode de résolution de cet exercice est automatique.</p>{simulation.orders.length === 0 && <p>Aucun ordre. Passer un tour fera agir les Forges et paiera l’entretien.</p>}{simulation.orders.map(order => <div key={order.id}><span>{orderLabels[order.kind]} · {order.fromId.replace("CON-", "")} → {order.targetId.replace("CON-", "")} · {order.combatantIds.join(", ") || "mandat local"}</span><button type="button" onClick={() => { setSimulation(cancelWarOrderV85(simulation, order.id)); setConfirmTurn(false); }}>Retirer</button></div>)}</div>
-      {!confirmTurn ? <button type="button" onClick={() => setConfirmTurn(true)}>Fin de préparation · relire avant résolution</button> : <div className={styles.confirm}><p>Les ordres seront scellés, les détachements adverses agiront avec leurs effectifs présents et l’entretien sera prélevé. Les revenus du prochain tour dépendront des sites encore reliés.</p><div className={styles.actions}><button type="button" onClick={() => { const result = advanceWarTurnV85(simulation); setMessage(result.message); if (result.accepted) setSimulation(result.state); setConfirmTurn(false); setSelectedPeople([]); }}>Confirmer et résoudre le tour</button><button type="button" onClick={() => setConfirmTurn(false)}>Revenir aux ordres</button></div></div>}
+      <div className={styles.orderQueue}><h4>Ordres réservés</h4><p>Deux opérationnels, un logistique et un diplomatique par tour. Le mode de résolution de cet exercice est automatique.</p>{simulation.orders.length === 0 && <p>Aucun ordre. Passer un tour fera agir les Forges et paiera l’entretien.</p>}{simulation.orders.map(order => <div key={order.id}><span>{orderLabels[order.kind]} · {order.fromId.replace("CON-", "")} → {order.targetId.replace("CON-", "")} · {order.combatantIds.join(", ") || "mandat local"}</span><button type="button" disabled={suspended || !pageActive || strategic.pendingWrites > 0} onClick={() => removeReservedWarOrder(order.id)}>Retirer</button></div>)}</div>
+      {!confirmTurn ? <button type="button" data-testid="war-end-turn-review-v143" disabled={suspended || !pageActive || !loaded || strategic.pendingWrites > 0} onClick={requestWarTurnReview}>Fin de préparation · relire avant résolution</button> : <div className={styles.confirm} data-testid="war-turn-confirmation-v143"><p>Les ordres seront scellés, les détachements adverses agiront avec leurs effectifs présents et l’entretien sera prélevé. Les revenus du prochain tour dépendront des sites encore reliés.</p><div className={styles.actions}><button type="button" data-testid="war-end-turn-commit-v143" disabled={suspended || !pageActive || !loaded || strategic.pendingWrites > 0} onClick={resolveReviewedWarTurn}>Confirmer et résoudre le tour</button><button type="button" onClick={() => {confirmTurnRevision.current=null;setConfirmTurn(false);}}>Revenir aux ordres</button></div></div>}
       <details className={styles.roster}><summary>Registre individuel · aptes, blessés et mémorial</summary><div className={styles.scrollTable}><table><thead><tr><th>Personne</th><th>Lieu</th><th>État</th><th>Affectation</th><th>XP</th><th>Vétérance</th></tr></thead><tbody>{simulation.combatants.filter(actor => actor.factionId === "CON-F01").map(actor => <tr key={actor.id}><th>{actor.id}</th><td>{actor.territoryId.replace("CON-", "")}</td><td>{actor.status === "fit" ? "Apte" : actor.status === "wounded" ? "Blessé" : "Mort"}{actor.trainingUntilTurn !== null ? ` · soins jusqu’au tour ${actor.trainingUntilTurn}` : ""}</td><td>{actor.garrison ? "Garnison" : "Détachement"}</td><td>{actor.xp}</td><td>{warVeterancyV85(actor.xp).label}</td></tr>)}</tbody></table></div></details>
       <ol className={styles.log} aria-label="Journal stratégique">{simulation.reports.slice(-12).map(item => <li key={item.id}><strong>Tour {item.turn}</strong> · {item.text}</li>)}</ol>
       <details><summary>Règles de cet exercice stratégique</summary><p>{modularStrategy ? `Ce front V103 comporte ${definitions.length} territoires et ${planet.regions.length} régions. Ses deux forces commencent dans des poches contiguës, chacune avec une base et des sites S/M/I. Les effectifs initiaux couvrent la plus grande région ou le corridor avec une réserve mobile ; les stocks sont dimensionnés pour ce format. La domination exige une garnison apte par région et la liaison à votre base ${modularStrategy.headquarters["CON-F01"].replace("CON-", "")}. L’entretien et les plafonds d’XP suivent les règles communes.` : "Les ressources, effectifs Pxx de départ, entretien et plafonds d’XP reprennent l’exercice de Korthas. Pour rendre la domination possible avec ses 24 personnes, les fronts historiques et V102 utilisent une garnison apte par région : cette adaptation de l’exercice ne modifie pas la fiche source du classeur."} Les autres planètes sont des théâtres du projet avec leurs propres terres, noms et routes. Le modèle automatique compare les effectifs présents à une résistance de même effectif, avec une variation déterministe de 0 ou 1. Il produit des blessures, un éventuel décès et un repli sans recréer les personnes.</p><p>La répartition initiale des stocks, le prix de transit I1, sa durée de deux tours, les soins légers S1 et les cessions au-delà de T07 sont des choix de cet exercice. Une cession y est toujours acceptée après paiement et affectation d’un garde. Les contre-offensives emploient des colonnes réelles ; ce modèle n’est pas encore la diplomatie narrative complète du projet.</p></details>
