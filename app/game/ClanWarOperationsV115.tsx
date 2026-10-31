@@ -102,7 +102,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
       setHydrated(true);setNow(Date.now());
     },0);
     return ()=>window.clearTimeout(ticket);
-  },[rules,persist,defaultSource,initialScenarioId]);
+  },[rules,persist,defaultSource,initialScenarioId,sourcePilotSiteId]);
 
   useEffect(()=>{
     if(!persist) return;

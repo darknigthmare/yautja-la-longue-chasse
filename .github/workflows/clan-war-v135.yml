@@ -11,6 +11,7 @@ on:
       - 'app/game/systems/clanWarParallelModesV135.ts'
       - 'app/game/systems/clanWarRtsSquadsV133.ts'
       - 'tests/clan-war-four-modes-v135.test.mjs'
+      - 'tests/clan-war-production-v135.test.mjs'
       - 'docs/clan-war-v135/**'
       - '.github/workflows/clan-war-v135.yml'
   workflow_dispatch:
@@ -50,7 +51,8 @@ jobs:
             /app/game/systems/clanWarSourceMapsV128.ts
             /app/game/systems/clanWarRtsSourceMissionsV129.ts
             /app/game/systems/clanWarRtsSquadsV133.ts
-            /tests/clan-war-four-modes-v135.test.mjs
+            /tests/clan-war-four-modes-v135.test.mjs tests/clan-war-production-v135.test.mjs
+            /tests/clan-war-production-v135.test.mjs
             /tests/clan-war-operations-v115.test.mjs
             /tests/clan-war-operation-cross-mode-v115.test.mjs
             /tests/clan-war-outer-recall-v116.test.mjs
@@ -65,7 +67,7 @@ jobs:
       - name: npm ci — locked packages
         run: npm ci --ignore-scripts --no-audit --no-fund
       - name: Four modes plus V115, V133 and V134 regression
-        run: node --test --test-reporter=spec tests/clan-war-four-modes-v135.test.mjs tests/clan-war-operations-v115.test.mjs tests/clan-war-operation-cross-mode-v115.test.mjs tests/clan-war-outer-recall-v116.test.mjs tests/clan-war-tactical-runtime-v115.test.mjs tests/clan-war-assault-special-v117.test.mjs tests/clan-war-rts-squads-v133.test.mjs tests/clan-war-rts-rally-v134.test.mjs
+        run: node --test --test-reporter=spec tests/clan-war-four-modes-v135.test.mjs tests/clan-war-production-v135.test.mjs tests/clan-war-operations-v115.test.mjs tests/clan-war-operation-cross-mode-v115.test.mjs tests/clan-war-outer-recall-v116.test.mjs tests/clan-war-tactical-runtime-v115.test.mjs tests/clan-war-assault-special-v117.test.mjs tests/clan-war-rts-squads-v133.test.mjs tests/clan-war-rts-rally-v134.test.mjs
       - name: TypeScript cross-mode
         if: always()
         run: npx --no-install tsc --noEmit --project tsconfig.clan-war-v135.json
