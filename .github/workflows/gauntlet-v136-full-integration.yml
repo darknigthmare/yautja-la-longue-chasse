@@ -65,6 +65,8 @@ jobs:
         run: npm run typecheck
       - name: Realistic artwork audit lives in sparse dedicated workflow
         run: echo "Asset audit remains under V131, where the exact SVG paths are checked and rendered."
+      - name: Real V13 campaign export-import and multitab conflict tests
+        run: node --import tsx --test --test-reporter=spec tests/gauntlet-save-roundtrip-v136.test.mjs
       - name: Frontend production build (code-only checkout, diagnostic)
         run: npm run build
       - name: Sanity check real campaign persistence test bundle
