@@ -1,6 +1,7 @@
 "use client";
+/* eslint-disable @next/next/no-img-element -- user-owned blob URL is never fetched by Next image optimization */
 
-import {useMemo,useState} from "react";
+import {useEffect,useMemo,useRef,useState} from "react";
 import {GAUNTLET_CATALOG_V132,GAUNTLET_EVIDENCE_LABELS_V132,type GauntletDefinitionV132} from "../game/systems/clanWarGauntletCatalogV132";
 import JungleHunterLayeredV134 from "../game/JungleHunterLayeredV134";
 import GauntletKnownHuntersV135,{isKnownHunterGauntletV135} from "../game/GauntletKnownHuntersV135";
@@ -40,6 +41,33 @@ export default function GauntletVisualQaV136(){
   const [medium,setMedium]=useState("all");
   const [page,setPage]=useState(0);
   const [zoom,setZoom]=useState(100);
+  const [referenceUrl,setReferenceUrl]=useState<string|null>(null);
+  const [referenceName,setReferenceName]=useState("");
+  const [overlay,setOverlay]=useState(true);
+  const [overlayOpacity,setOverlayOpacity]=useState(48);
+  const [imageIssue,setImageIssue]=useState("");
+  const referenceObjectUrl=useRef<string|null>(null);
+  useEffect(()=>()=>{
+    if(referenceObjectUrl.current)URL.revokeObjectURL(referenceObjectUrl.current);
+    referenceObjectUrl.current=null;
+  },[]);
+  function useReference(file:File|null){
+    if(!file)return;
+    if(!["image/png","image/jpeg","image/webp"].includes(file.type) || file.size>12*1024*1024){
+      setImageIssue("Choisissez un PNG, JPEG ou WebP inférieur à 12 Mo.");return;
+    }
+    const object=URL.createObjectURL(file);
+    if(referenceObjectUrl.current)URL.revokeObjectURL(referenceObjectUrl.current);
+    referenceObjectUrl.current=object;
+    setReferenceUrl(object);
+    setReferenceName(file.name.slice(0,120));
+    setImageIssue("");
+    setOverlay(true);
+  }
+  function clearReference(){
+    if(referenceObjectUrl.current)URL.revokeObjectURL(referenceObjectUrl.current);
+    referenceObjectUrl.current=null;setReferenceUrl(null);setReferenceName("");
+  }
   const filtered=useMemo(()=>GAUNTLET_CATALOG_V132.filter(m=>
     (medium==="all"||m.medium===medium) &&
     (`${m.name} ${m.id} ${m.artBrief}`.toLocaleLowerCase("fr").includes(query.toLocaleLowerCase("fr")))
@@ -57,6 +85,9 @@ export default function GauntletVisualQaV136(){
       <div className={styles.metrics}><span>54 modèles</span><span>219 calques SVG</span><span>0 modèles certifiés 1:1</span></div>
     </header>
     <section className={styles.toolbar} aria-label="Contrôles de comparaison et de filtrage">
+      <label>Référence visuelle personnelle
+        <input type="file" accept="image/png,image/jpeg,image/webp" aria-label="Importer une image de référence locale" onChange={e=>useReference(e.currentTarget.files?.[0]??null)}/>
+      </label>
       <label>Recherche
         <input type="search" maxLength={100} value={query} onChange={e=>{setQuery(e.currentTarget.value);setPage(0);}} placeholder="Scar, Lost Tribe, PHG, Dek…"/>
       </label>
@@ -71,7 +102,16 @@ export default function GauntletVisualQaV136(){
       <label>Zoom · {zoom} %
         <input type="range" min="70" max="150" step="5" value={zoom} onChange={e=>setZoom(Number(e.currentTarget.value))}/>
       </label>
+      {referenceUrl && <>
+        <button type="button" aria-pressed={overlay} onClick={()=>setOverlay(x=>!x)}>{overlay?"Masquer référence":"Afficher référence"}</button>
+        <label>Opacité superposition · {overlayOpacity} %
+          <input type="range" min="0" max="100" step="5" value={overlayOpacity} onChange={e=>setOverlayOpacity(Number(e.currentTarget.value))}/>
+        </label>
+        <button type="button" onClick={clearReference}>Effacer la référence</button>
+      </>}
     </section>
+    {imageIssue && <p className={styles.fileWarning} role="alert">{imageIssue}</p>}
+    {referenceUrl && <p className={styles.localNote} role="status">Comparaison locale : {referenceName}. Fichier gardé uniquement dans ce navigateur ; aucun envoi au serveur.</p>}
     {compare&&<div className={styles.comparePicker}>
       <label>Second modèle
         <select value={second} onChange={e=>setSecond(e.currentTarget.value)}>
@@ -85,6 +125,8 @@ export default function GauntletVisualQaV136(){
           <small>{i===0?"Principal":"Comparaison"} · {open?"capot ouvert":"capot fermé"}</small></div>
         <div className={styles.stage}>
           <div className={styles.zoom} style={{width:`${zoom}%`}}><Art model={model} coverOpen={open}/></div>
+          {i===0&&referenceUrl&&overlay&&<img className={styles.filmOverlay} src={referenceUrl}
+            style={{opacity:overlayOpacity/100}} alt="Photogramme ou photo de référence ajoutée uniquement sur cet appareil"/>}
         </div>
         <SourceNote model={model}/>
       </article>)}
@@ -106,6 +148,6 @@ export default function GauntletVisualQaV136(){
         <button type="button" disabled={currentPage>=maxPages-1} onClick={()=>setPage(p=>p+1)}>Suivant</button>
       </div>
     </section>
-    <footer>Validation visuelle à effectuer sur des photogrammes vérifiés des films et des fichiers sources des jeux. Les images de personnages ne constituent pas automatiquement une preuve de leur gauntlet exact.</footer>
+    <footer>Validation visuelle à effectuer sur des photogrammes vérifiés des films et des fichiers sources des jeux. Vous pouvez superposer une photo personnelle sans transfert réseau. Les images de personnages ne constituent pas automatiquement une preuve de leur gauntlet exact.</footer>
   </main>;
 }
