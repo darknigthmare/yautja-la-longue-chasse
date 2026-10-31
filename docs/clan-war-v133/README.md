@@ -1,0 +1,31 @@
+# V133 — Équipes physiques W3, premier RTS tactique multi-escouades
+
+**Branche :** `feat/v133-w3-multi-squad-rts-20261031` au-dessus de #41. PR #42 (gauntlet) suit son propre chantier et n'est ni copiée ni supprimée. Cette version est empilée sur #41 → #40 → #38 → #37 → #36 → #34 → #29.
+
+## Ce qui est implémenté
+
+- Toutes les **24 missions W3-RTS01…24** s'ouvrent dans un nouvel onglet « RTS W3 · escouades » de la Bible V6, sans supprimer les missions individuelles V129.
+- **Deux à quatre détachements distincts** sont préparés depuis les définitions `W3-U`, avec membres, rôle, PV expérimentaux, attaque, portée, mobilité et plafond **PC provenant de la ligne source**. Le joueur peut ajouter/retirer des groupes avant le lancement, mais pas pendant le combat. Aucune escouade de campagne n'est gratuitement créée.
+- Apparition à des **cases traversables distinctes** ; quatre commandes cardinales par détachement, occupation physique des cases, murs/eaux/laves, portes motorisées avec coupure de courant, routes alternatives et tir uniquement sur la cible réellement à portée et en visibilité. Une commande refusée ne déclenche ni horloge ni attaque ennemie.
+- L'IA adverse n'acquiert une cible qu'en **ligne de vue**. Elle tire ou marche d'une seule case, utilise les groupes `W3-U` du scénario V129, ne révèle jamais une garnison V85 cachée et ne transforme pas les neutres en combattants.
+- Les objectifs W3 restent une chaîne de **trois preuves**, 72 interactions physiques source. Reconnaissance obligatoire, maintien du poste pendant les ticks nécessaires, dépendances énergétiques/pression, marées/rafales/glaces/jets avec fenêtres locales, sortie réellement accessible et bilan unique. Les charges sont portées par le groupe qui les récupère ; les personnes escortées suivent une case à la fois et peuvent être mises en danger. Le retrait enregistre les détachements demeurés sur place, **pas une fausse mort automatique**.
+- Un tir consomme **1 RAV de simulation** (règle originale, non attribuée au canon). Le PC est un plafond de déploiement. Le système ne touche pas au `SaveGame`, à la campagne V85, à l'XP, à la conquête de territoires ni à l'inventaire.
+- Lecture visuelle sur une grille W3 originale, couleurs de terrain, ennemis visibles seulement, position des détachements, journal de 60 tours, ordre individuel, objectifs et sources.
+
+## Ce qui n'est PAS encore fini
+
+Ce prototype est **un RTS tactique d'escarmouche au tour par tour**, pas une guerre totale finalisée. Les bâtiments destructibles, ordres d'escadron en masse, formations, pathfinding automatique en ligne, A* avec gestion de congestion, comportements IA de siège, diplomatie en temps réel, ravitaillement par convois, vaisseaux et montures utilisables, campagne persistante, vrais blessés et recrutés, serveur multijoueur, art PHG/films 1:1, sons, animations et économie équilibrée restent à produire. Le globe WGS84 et les cartes W3 ne constituent pas des reproductions de scènes filmées.
+
+Les 1 200 contrats V120 demeurent **design-only** : ils ne deviennent pas jouables du fait que le moteur multi-escouades existe. Les six mondes de la Bible W3 (Korthas, Vesh-Kar, Namarra, Oruun, Sahr-Keth, Ilyss) restent des créations du jeu, sans déplacer Gunnison ou Los Angeles sur une planète alien. MAP10 est une installation sous glace chauffée ; MAP12 reste en zone orbitale.
+
+## QA
+
+`tests/clan-war-rts-squads-v133.test.mjs` vérifie : 24 contrats, 72 objectifs en parcours de test isolés des ennemis, mouvements et PC, collisions, tirs/RAV, source géographique, repli et reçus uniques. Les parcours sans ennemis valident les **objectifs**, pas l'équilibrage d'une bataille en opposition réelle ; les tests de combat vérifient séparément la ligne de vue, les dégâts et les rejets. Le navigateur, la performance sur téléphone, la prise en charge manette, le comportement du rendu SVG, l'IA avancée et la charge mémoire exigent des essais supplémentaires.
+
+### Raccord futur V85/V6 (interdit tant que non vérifié)
+
+1. Lier les IDs réels de membres de campagne aux groupes sans duplication ni recrutement libre.
+2. Vérifier propriété des territoires, garnison, crédits RAV et états de convoi au départ et à l'extraction.
+3. Enregistrer un reçu signé/idempotent via le contrat de résultat de la campagne ; gérer les groupes blessés, absents et repliés.
+4. Séparer simulation locale, règles serveur et snapshots masqués dans les parties en ligne.
+5. Valider explicitement chaque source de lore par œuvre, époque et continuité, sans inventer de conflit canonique.
