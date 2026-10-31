@@ -75,3 +75,14 @@ Les manquants de production qui restent réellement ouverts et doivent encore ê
 5. Revoir les droits sur les designs de franchise avant toute diffusion commerciale.
 
 **Règle de livraison :** conserver la PR #42 en **draft**, ne pas faire de merge de la pile #29 → #34 → #36 → #37 → #38 → #40 → #42 et ne pas annoncer « fidèle 1:1 terminé » tant que ces vérifications ne sont pas prouvées.
+
+
+## V136.1 — Raffinement des glyphes et contrôle de chaque calque
+
+Le film original reste la référence, complétée par un [gros plan du gauntlet de 1987](https://www.avpcentral.com/images/predator-technology/predator-wrist-gauntlet.jpg) (AvP Central). La géométrie de travail du Jungle Hunter a été revue : cinq rangées d'émissions rouges avec signes différenciés plutôt que cinq checkmarks identiques, davantage de rails, vis, reliefs et rayures sur la coque et le capot. Ce travail **ne constitue pas une retranscription exacte des glyphes** et ne permet pas encore d'écrire « fidèle 1:1 ».
+
+La galerie `/gauntlet-qa-v136` dispose désormais d'un **inspecteur de calques** permettant de cacher et réafficher séparément l'avant-bras, la coque, le panneau de commandes, le capot et, sur le Jungle Hunter, la charnière, l'émetteur et le faisceau. Ces contrôles ne sont disponibles que dans l'outil de QA, sans conséquences sur le jeu ni sur la sauvegarde du personnage.
+
+Le scénario Chromium `scripts/qa-gauntlet-browser-v136.mjs` vérifie maintenant l'isolation des sept calques Jungle Hunter et la disparition/restauration d'un des quatre calques d'un concept Yautja, avec capture d'écran de la galerie. Il faut **consulter la conclusion du run exact** après chaque modification ; une capture prouve le rendu d'un navigateur sur un appareil, pas la cohérence de tous les GPU ni la fidélité cinématographique.
+
+Les principales étapes restent : vues film face/côté/dessus, proportions et textures à mesurer, animations 1:1 des capots sur rig, homologation artistique par personnage, et revue des droits d'utilisation.
