@@ -30,6 +30,7 @@ export interface WarAssaultV115 {
   /** V137 live retreat: a withdrawn participant cannot redeploy in this match. */
   extractedIds?: string[];
   surgeIssuedIds?: string[];
+  fallbackCounts?: Record<string,number>;
 }
 export interface WarStealthV115 { x: number; y: number; guardX: number; guardDirection: -1 | 1; alarm: number; cloaked: boolean; energy: number; sabotaged: boolean;
   /** V135 sound diversion at the hunter's physical position; no canonical device assumed. */
@@ -40,6 +41,7 @@ export interface WarStealthV115 { x: number; y: number; guardX: number; guardDir
   /** One-turn proximity acoustic bearing, not a visible enemy location. */
   acousticUsed?: number;heardBearing?: "est"|"ouest"|"proche";
   heardAtTick?: number;
+  silentSabotageUsed?: boolean;
 }
 export interface WarRtsOrderV115 { x: number; y: number; kind: "advance" | "hold" | "attack" }
 export interface WarRtsV115 {
@@ -64,6 +66,7 @@ export interface WarOuterMissionV115 {
   reconHalt?: {orderedAt:number;originalDueAt:number;extraMs:15000};
   fieldSignal?: {transmittedAt:number;assessment:"voie-stable"|"terrain-expose"|"transit-complexe";
     passages:number;fitMembers:number};
+  departureContext?: {intel:boolean;weakened:boolean;escorted:boolean;pressure:number};
 }
 export interface WarMissionReportV115 {
   id: string; mode: WarMissionModeV115; focus: OuterFocusV115 | null;
@@ -284,7 +287,12 @@ export function beginWarOperationV115(
     const pc = teamIds.reduce((count,teamId) => count + unitFor(rules,ownTeam(state,teamId)!.unitId)!.commandPoints,0);
     const route = planWarRouteV6(state.baseId,targetId,pc,[],rules)!;
     const duration = Math.max(20000,30000 + route.passageIds.length * 10000 - (state.escortedIds.includes(targetId)?10000:0)); // exercise timing, not a workbook value
-    const order:WarOuterMissionV115 = { id,targetId,teamIds:[...teamIds],focus,startedAt:now,dueAt:now+duration,routeIds:route.passageIds };
+    const order:WarOuterMissionV115 = {id,targetId,teamIds:[...teamIds],focus,
+      startedAt:now,dueAt:now+duration,routeIds:route.passageIds,
+      departureContext:{intel:state.intelIds.includes(targetId),
+        weakened:state.weakenedIds.includes(targetId),
+        escorted:state.escortedIds.includes(targetId),
+        pressure:state.pressure[targetId]??0}};
     return accept({...reserved,outer:[...state.outer,order]},"Mandat confié : retour des équipes et rapport après l'échéance. L'opération continue sans écran ouvert.");
   }
   const active:WarPlayableMissionV115 = { id,mode,targetId,teamIds:[...teamIds],tick:0 };
@@ -449,12 +457,12 @@ export function stepAssaultV115(state:WarOperationsStateV115,rules:WarRulesV6):W
   }
   return accept(advanced,"La bataille latérale progresse.");
 }
-export type StealthCommandV115 = "up"|"down"|"left"|"right"|"cloak"|"interact"|"wait"|"decoy"|"hide"|"listen"|"cover-up"|"cover-down"|"cover-left"|"cover-right";
+export type StealthCommandV115 = "up"|"down"|"left"|"right"|"cloak"|"interact"|"wait"|"decoy"|"hide"|"listen"|"quiet-sabotage"|"cover-up"|"cover-down"|"cover-left"|"cover-right";
 export function commandStealthV115(state:WarOperationsStateV115,command:StealthCommandV115,rules:WarRulesV6):WarOperationsUpdateV115 {
  const mission=state.active, stealth=mission?.stealth;
  if(mission?.mode!=="stealth" || !stealth)return reject(state,"Aucune infiltration active.");
  if(state.sourceSha!==rules.metadata.sha256)return reject(state,"Bible de l'infiltration incompatible.");
- if(!["up","down","left","right","cloak","interact","wait","decoy","hide","listen","cover-up","cover-down","cover-left","cover-right"].includes(command))
+ if(!["up","down","left","right","cloak","interact","wait","decoy","hide","listen","quiet-sabotage","cover-up","cover-down","cover-left","cover-right"].includes(command))
   return reject(state,"Action inconnue.");
  const terrain=warMissionTerrainV116(mission.targetId,rules);
  let {x,y,cloaked,energy,alarm,sabotaged,guardX,guardDirection}=stealth;
@@ -480,6 +488,13 @@ export function commandStealthV115(state:WarOperationsStateV115,command:StealthC
    return reject(state,"Aucune vigilance à récupérer : économie du couvert préservée.");
   usedCoverIds=[...usedCoverIds,cover];
  }
+ if(command==="quiet-sabotage"){
+  if(sabotaged||stealth.silentSabotageUsed||cloaked||energy<2||
+    distance({x,y},terrain.relay)>1||
+    distance({x,y},{x:guardX,y:2})<=2)
+   return reject(state,"Sabotage discret refusé : relais adjacent, 2 énergie et patrouille réellement distante requis.");
+  energy-=2;sabotaged=true;
+ }
  if(command==="cloak"&&energy<=0&&!cloaked)return reject(state,"Le camouflage est épuisé.");
  if(command==="decoy"&&(decoyUsed||cloaked||energy<2))
   return reject(state,"La diversion sonore exige 2 points d'énergie, un pisteur visible et un seul usage.");
@@ -492,7 +507,7 @@ export function commandStealthV115(state:WarOperationsStateV115,command:StealthC
   if(distance({x,y},terrain.relay)>1||sabotaged)
    return reject(state,"Atteignez le relais non désactivé avant de le saboter.");
   sabotaged=true;cloaked=false;
- }else if(command!=="wait"&&command!=="hide"&&command!=="listen"){
+ }else if(command!=="wait"&&command!=="hide"&&command!=="listen"&&command!=="quiet-sabotage"){
   const direction=quietMovement?command.slice(6):command;
   const dx=direction==="right"?1:direction==="left"?-1:0,
     dy=direction==="down"?1:direction==="up"?-1:0;
@@ -538,7 +553,8 @@ export function commandStealthV115(state:WarOperationsStateV115,command:StealthC
   energy=Math.min(5,energy+1);
  }
  const nextStealth={x,y,guardX,guardDirection,alarm,cloaked,energy,sabotaged,
-  decoyX,decoyTurns,decoyUsed,usedCoverIds,silentStepsUsed,acousticUsed,heardBearing,heardAtTick};
+  decoyX,decoyTurns,decoyUsed,usedCoverIds,silentStepsUsed,acousticUsed,heardBearing,heardAtTick,
+  silentSabotageUsed:stealth.silentSabotageUsed||command==="quiet-sabotage"};
  const advanced={...state,clock:state.clock+1,active:{...mission,tick:mission.tick+1,stealth:nextStealth}};
  if(alarm>=3)return accept(recordOutcome(advanced,mission.id,"stealth",null,mission.targetId,mission.teamIds,"defeat",mission.teamIds.slice(0,1),rules,
   "Patrouille alertée : extraction abandonnée."),"Infiltration compromise.");
@@ -547,7 +563,8 @@ export function commandStealthV115(state:WarOperationsStateV115,command:StealthC
    "Relais désactivé et pisteur extrait ; renseignement et sabotage consignés."),"Extraction confirmée.");
  if(mission.tick>=65)return accept(recordOutcome(advanced,mission.id,"stealth",null,mission.targetId,mission.teamIds,"defeat",[],rules,
   "Fenêtre d'infiltration expirée."),"Mission interrompue par la durée de l'exercice.");
- return accept(advanced,command==="listen"?"Écoute locale : présence de la patrouille "+heardBearing+" ; aucune position exacte révélée.":
+ return accept(advanced,command==="quiet-sabotage"?"Sabotage discret : 2 énergie engagées, sans alarme automatique.":
+  command==="listen"?"Écoute locale : présence de la patrouille "+heardBearing+" ; aucune position exacte révélée.":
   quietMovement?"Déplacement protégé d’une case vers un couvert existant, contre 1 énergie.":
   command==="hide"?"Position prise derrière un vrai couvert ; alerte et batterie ajustées hors regard adverse.":
   command==="decoy"?"Diversion sonore déposée physiquement : la patrouille réagit pendant trois décisions.":
@@ -761,10 +778,14 @@ export function simulateWarOuterMissionV115(
   const scout=deployed.reduce((sum,a)=>sum+(a.unit.mobility*2+a.unit.range)*a.readiness,0);
   const assault=deployed.reduce((sum,a)=>sum+(a.unit.attack+a.unit.defense*.3)*a.readiness,0);
   const shield=deployed.reduce((sum,a)=>sum+(a.unit.defense+a.unit.mobility*.5)*a.readiness,0);
-  const support=state.intelIds.includes(order.targetId)?4:0;
-  const sabotage=state.weakenedIds.includes(order.targetId)?5:0;
-  const escorted=state.escortedIds.includes(order.targetId)?3:0;
-  const pressure=Math.min(8,(state.pressure[order.targetId]??0)*2);
+  // V139: later developments on this front do not retroactively alter an
+  // already-dispatched Outer Ops. Legacy orders without a snapshot keep
+  // the earlier behavior so old local archives remain readable.
+  const briefing=order.departureContext;
+  const support=(briefing?briefing.intel:state.intelIds.includes(order.targetId))?4:0;
+  const sabotage=(briefing?briefing.weakened:state.weakenedIds.includes(order.targetId))?5:0;
+  const escorted=(briefing?briefing.escorted:state.escortedIds.includes(order.targetId))?3:0;
+  const pressure=Math.min(8,(briefing?.pressure??state.pressure[order.targetId]??0)*2);
   const fieldBonus=order.fieldSupport?.paidRav===2?4:0;
   const reconHaltBonus=order.reconHalt&&["recon","escort"].includes(order.focus)?3:0;
   const strength=Math.round((order.focus==="recon"?scout*1.4:order.focus==="escort"?shield*.9:assault*.9)+support+sabotage+escorted+pressure+fieldBonus+reconHaltBonus);
@@ -772,6 +793,7 @@ export function simulateWarOuterMissionV115(
   const baseThreat=Math.max(8,territory.terrainDefense+order.routeIds.length*2);
   const threshold=order.focus==="recon"?Math.round(baseThreat*.7):order.focus==="escort"?Math.round(baseThreat*.9):baseThreat;
   const engagementLog=[
+    ...(order.departureContext?["Briefing V139 figé au départ : aucun bonus stratégique rétroactif."]:[]),
     ...(order.fieldSignal?["Bulletin V138 : "+order.fieldSignal.assessment+
       " · "+order.fieldSignal.passages+" passages connus · "+order.fieldSignal.fitMembers+
       " aptes ; aucune prédiction de victoire."]:[]),
@@ -908,6 +930,15 @@ export function readWarOperationsV115(raw:string,rules:WarRulesV6):WarOperations
     if(v.outer.some(order=>!isTextId(order.id)||!sites.has(order.targetId)||!Array.isArray(order.teamIds)||
       !order.teamIds.length||order.teamIds.some(id=>!ownTeam(v,id))||!Number.isSafeInteger(order.dueAt)||
       !Number.isSafeInteger(order.startedAt)||order.startedAt<0||order.dueAt<=order.startedAt||order.dueAt-order.startedAt>86400000||
+      (order.departureContext!==undefined&&(!order.departureContext||
+        typeof order.departureContext!=="object"||
+        Array.isArray(order.departureContext)||
+        typeof order.departureContext.intel!=="boolean"||
+        typeof order.departureContext.weakened!=="boolean"||
+        typeof order.departureContext.escorted!=="boolean"||
+        !Number.isInteger(order.departureContext.pressure)||
+        order.departureContext.pressure<0||
+        order.departureContext.pressure>20))||
       (order.fieldSignal!==undefined&&(!order.fieldSignal||
         typeof order.fieldSignal!=="object"||
         !Number.isSafeInteger(order.fieldSignal.transmittedAt)||
@@ -974,6 +1005,11 @@ export function readWarOperationsV115(raw:string,rules:WarRulesV6):WarOperations
         !Array.isArray(a.holdIssuedIds??[])||
         !Array.isArray(a.extractedIds??[])||
         !Array.isArray(a.surgeIssuedIds??[])||
+        (a.fallbackCounts!==undefined&&(!a.fallbackCounts||
+          typeof a.fallbackCounts!=="object"||Array.isArray(a.fallbackCounts)||
+          Object.keys(a.fallbackCounts).length>4||
+          Object.entries(a.fallbackCounts).some(([id,count])=>
+            !a.launched.includes(id)||!Number.isInteger(count)||count<1||count>20)))||
         (a.surgeIssuedIds??[]).some(id=>!a.launched.includes(id))||
         unique(a.surgeIssuedIds??[]).length!==(a.surgeIssuedIds??[]).length||
         (a.extractedIds??[]).some(id=>!a.launched.includes(id)||a.fallen.includes(id)||
@@ -1008,6 +1044,8 @@ export function readWarOperationsV115(raw:string,rules:WarRulesV6):WarOperations
         !Number.isInteger(v1.energy)||v1.energy<0||v1.energy>5||
         typeof v1.cloaked!=="boolean"||typeof v1.sabotaged!=="boolean"||
         (v1.decoyUsed!==undefined&&typeof v1.decoyUsed!=="boolean")||
+        (v1.silentSabotageUsed!==undefined&&
+          (typeof v1.silentSabotageUsed!=="boolean"||v1.silentSabotageUsed&&!v1.sabotaged))||
         (v1.decoyX!==undefined&&(!Number.isInteger(v1.decoyX)||v1.decoyX<0||v1.decoyX>8))||
         (v1.decoyTurns!==undefined&&(!Number.isInteger(v1.decoyTurns)||v1.decoyTurns<0||v1.decoyTurns>3))||
         (v1.acousticUsed!==undefined&&(!Number.isInteger(v1.acousticUsed)||

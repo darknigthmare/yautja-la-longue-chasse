@@ -21,6 +21,7 @@ import {
 import {reinforceWarAssaultLineV135,redirectWarOuterOpsV135} from "./systems/clanWarParallelModesV135";
 import {orderWarAssaultHoldV136,supplyWarOuterMissionV136} from "./systems/clanWarParallelModesV136";
 import {withdrawWarAssaultSquadV137,orderWarOuterReconHaltV137} from "./systems/clanWarParallelModesV137";
+import {fallbackWarAssaultV139} from "./systems/clanWarParallelModesV139";
 import {
  commandWarAssaultSurgeV138,requestWarOuterSignalV138,
  warStealthGuardVisibleV138,warStealthSoundBearingV138,
@@ -452,6 +453,17 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
           </button>;
         })}</div>
         <p className={styles.explain}>V138 : accélération d&apos;une seule formation dans sa propre voie latérale. Elle ne peut ni traverser l&apos;ennemi ni sauter jusqu&apos;au bastion sans progression visible.</p>
+        <div className={styles.cards}>{current.teamIds.filter(id=>assault.launched.includes(id)).map(id=>{
+          const actor=assault.actors.find(a=>a.teamId===id&&a.side==="ally"&&a.hp>0);
+          const attempts=assault.fallbackCounts?.[id]??0;
+          const held=(assault.heldUntil?.[id]??0)>current.tick;
+          return <button type="button" key={"fallback-"+id}
+            disabled={blocked||!actor||actor.x<=5||attempts>=20||held||assault.ap<8}
+            onClick={()=>commit(fallbackWarAssaultV139(worldRef.current,id,rules))}>
+            {teamsById(id)} · repli contrôlé (8 AP) · {attempts}/20
+          </button>;
+        })}</div>
+        <p className={styles.explain}>V139 : retour progressif sur la même voie, sans traverser les adversaires. Une fois au bastion, l&apos;extraction vivante V137 reste possible pour 10 AP.</p>
         <p className={styles.explain}>Un soldat déjà déployé doit revenir près du bastion pour être extrait. Son identité reste réservée et il ne peut pas être redéployé gratuitement pendant cette bataille.</p>
         <p className={styles.explain}>Action coordonnée limitée à une fois par détachement survivant, uniquement si une cible adverse se trouve dans sa portée V6. Aucun nouveau projectile ou équipement n&apos;est créé.</p>
         <p className={styles.explain}>Art temporaire schématique : aucun sprite de film ou de Predator: Hunting Grounds n&apos;est faussement déclaré intégré.</p>
@@ -470,14 +482,17 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
             return <span className={styles.cell} data-wall={wall} data-actor={mark==="X"?"ally":mark==="G"?"rival":""} key={index} title={"Case "+x+","+y}>{mark}</span>;
           })}
         </div>
-        <div className={styles.stealthControls}>{(["up","left","down","right","cloak","interact","wait","decoy","hide","listen"] as const).map(action=>
+        <div className={styles.stealthControls}>{(["up","left","down","right","cloak","interact","quiet-sabotage","wait","decoy","hide","listen"] as const).map(action=>
           <button type="button" key={action} disabled={blocked||(action==="decoy"&&(Boolean(stealth.decoyUsed)||stealth.cloaked||stealth.energy<2))||
+              (action==="quiet-sabotage"&&(stealth.sabotaged||stealth.cloaked||stealth.energy<2||
+                !missionTerrain||(Math.abs(stealth.x-missionTerrain.relay.x)+
+                  Math.abs(stealth.y-missionTerrain.relay.y))>1))||
               (action==="listen"&&(!missionTerrain?.cover.includes(stealth.x+","+stealth.y)||
                   stealth.cloaked||stealth.energy<1||(stealth.acousticUsed??0)>=2))||
               (action==="hide"&&(!missionTerrain?.cover.includes(stealth.x+","+stealth.y)||
                 (stealth.usedCoverIds??[]).includes(stealth.x+","+stealth.y)||
                 (stealth.alarm===0&&stealth.energy===5)))} onClick={()=>commit(commandStealthV115(worldRef.current,action,rules))}>
-            {({up:"↑ Nord",left:"← Ouest",down:"↓ Sud",right:"→ Est",cloak:stealth.cloaked?"Désactiver camouflage":"Camouflage optique",interact:"Saboter le relais",wait:"Attendre / récupérer énergie",decoy:"Diversion sonore (2 énergie)",hide:"Se dissimuler dans le couvert",listen:"Écouter la patrouille (1 énergie)"} as Record<string,string>)[action]}</button>)}</div>
+            {({up:"↑ Nord",left:"← Ouest",down:"↓ Sud",right:"→ Est",cloak:stealth.cloaked?"Désactiver camouflage":"Camouflage optique",interact:"Saboter le relais",wait:"Attendre / récupérer énergie",decoy:"Diversion sonore (2 énergie)",hide:"Se dissimuler dans le couvert",listen:"Écouter la patrouille (1 énergie)","quiet-sabotage":"Sabotage discret (2 énergie)"} as Record<string,string>)[action]}</button>)}</div>
         <div className={styles.stealthControls}>
          {(["cover-up","cover-left","cover-down","cover-right"] as const).map(action=>{
           const direction=action.slice(6);
@@ -623,6 +638,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
         {order.retask&&<small className={styles.explain}>Consigne réorientée depuis {focusLabels[order.retask.oldFocus]}, sans nouvel entretien ni rapport anticipé.</small>}
         {order.fieldSupport&&<small className={styles.explain}>Soutien de terrain V136 : {order.fieldSupport.paidRav} RAV engagés à {order.fieldSupport.allocatedAt} ; aucune victoire anticipée.</small>}
         {order.reconHalt&&<small className={styles.explain}>Halte V137 : ancienne échéance {order.reconHalt.originalDueAt}, nouveau rapport après 15 secondes supplémentaires ; effectifs et route inchangés.</small>}
+        {order.departureContext&&<small className={styles.explain}>Briefing figé au départ : renseignements {order.departureContext.intel?"confirmés":"non confirmés"}, relais {order.departureContext.weakened?"affaibli":"non confirmé"}, pression {order.departureContext.pressure}. Les résultats ultérieurs des autres modes ne modifient pas ce mandat.</small>}
         {order.fieldSignal&&<p className={styles.explain}>Transmission V138 : <strong>{order.fieldSignal.assessment}</strong> · {order.fieldSignal.passages} passage(s) connus, {order.fieldSignal.fitMembers} membre(s) aptes. Ceci ne dévoile ni garnison cachée, ni résultat de combat.</p>}
         {!order.recall&&!order.fieldSignal&&now>=order.startedAt+
           Math.ceil(((order.reconHalt?.originalDueAt??order.dueAt)-order.startedAt)/2)&&

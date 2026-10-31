@@ -4,7 +4,7 @@ import type {WarRulesV6} from "./systems/clanWarBibleV6";
 import {
  createWarRtsSquadsV133,draftWarRtsSquadV133,removeWarRtsSquadV133,
  launchWarRtsSquadsV133,commandWarRtsSquadsV133,visibleWarRtsEnemiesV133,
- planWarRtsRallyV134,commandWarRtsRallyV134,commandWarRtsSuppressV135,commandWarRtsOverwatchV136,commandWarRtsBraceV137,commandWarRtsMedicV138,
+ planWarRtsRallyV134,commandWarRtsRallyV134,commandWarRtsSuppressV135,commandWarRtsOverwatchV136,commandWarRtsBraceV137,commandWarRtsMedicV138,evacuateWarRtsSquadV139,
  type WarRtsSquadsStateV133,type WarRtsSquadOrderV133,
 } from "./systems/clanWarRtsSquadsV133";
 import {WAR_SOURCE_RTS_IDS_V129} from "./systems/clanWarRtsSourceMissionsV129";
@@ -118,7 +118,7 @@ export default function ClanWarRtsSquadsV133({rules}:{rules:WarRulesV6}){
        {enemies.map(e=><g key={e.id}>
         <path d={`M ${e.x*cell+9} ${e.y*cell+2} l 7 13 h -14 Z`} fill="#ee8c81" stroke="#ffd6c7" strokeWidth="1"/>
        </g>)}
-       {state.squads.filter(u=>u.status!=="ready").map(u=><g key={u.id}>
+       {state.squads.filter(u=>u.status!=="ready"&&u.status!=="evacuated").map(u=><g key={u.id}>
         <circle cx={u.x*cell+9} cy={u.y*cell+9} r="7.3" fill={colorFor(u.status)}
          stroke={selected?.id===u.id?"#fff1ac":"#1c302a"} strokeWidth={selected?.id===u.id?2.5:1.2}/>
         <text x={u.x*cell+9} y={u.y*cell+12} fontSize="9" fill="#10251d" fontWeight="700" textAnchor="middle">
@@ -206,7 +206,16 @@ export default function ClanWarRtsSquadsV133({rules}:{rules:WarRulesV6}){
        Secourir {u.unitId} · {u.memberCount} membres · distance {d(selected,u)} · 3 RAV
       </button>)}</div>
      </>}
-     <h5>Adversaires à portée du détachement</h5>
+     <button type="button" disabled={selected.status!=="active"||
+       state.squads.filter(u=>u.status==="active").length<2||
+       d(selected,map.extraction)>1||
+       state.hold?.squadId===selected.id||
+       Boolean(state.tracked?.secured&&!state.tracked.extracted&&state.tracked.carrierSquadId===selected.id)}
+       onClick={()=>apply(evacuateWarRtsSquadV139(state,selected.id))}>
+       Évacuer cette escouade à la sortie W3
+      </button>
+      <p className={styles.hint}>V139 : repli individuel à pied ; au moins une autre équipe doit rester au front. Transférez d'abord toute charge ou escorte portée.</p>
+      <h5>Adversaires à portée du détachement</h5>
      {enemies.length===0?<p className={styles.hint}>Aucun adversaire actuellement observé.</p>:
       <div className={styles.enemyList}>{enemies.map(e=>{
        const inRange=d(selected,e)<=selected.range&&warMapLineOfSightV128(map,selected,e);
@@ -234,7 +243,7 @@ export default function ClanWarRtsSquadsV133({rules}:{rules:WarRulesV6}){
    {state.tracked&&<p className={styles.hint}>Protection : {state.tracked.kind} · {state.tracked.hp} PV · {state.tracked.secured?"sécurisé":"à récupérer"} · {state.tracked.carrierSquadId??"aucun responsable"}{state.tracked.isNeutral?" · personne neutre":""}.</p>}
    {state.hold&&<p>Maintien de poste : <strong>{state.hold.progress}/{state.hold.required} tours</strong>, escouade {state.hold.squadId}.</p>}
    {state.report&&<div className={styles.report} role="status"><strong>Reçu unique : {state.report.outcome}</strong>
-    <p>{state.report.id}. Preuves : {state.report.completedTaskIds.length}/3, RAV restants : {state.report.remainingRav}, groupe(s) hors combat : {state.report.downSquadIds.length}, laissé(s) sur place : {state.report.leftBehindSquadIds.length}. Aucun gain sur la sauvegarde V85/V6.</p></div>}
+    <p>{state.report.id}. Preuves : {state.report.completedTaskIds.length}/3, RAV restants : {state.report.remainingRav}, groupe(s) hors combat : {state.report.downSquadIds.length}, évacué(s) : {state.report.evacuatedSquadIds?.length??0}, laissé(s) sur place : {state.report.leftBehindSquadIds.length}. Aucun gain sur la sauvegarde V85/V6.</p></div>}
   </div>
   <details className={styles.logs}><summary>Journal opérationnel (60 entrées maximum)</summary>
    <ol>{state.log.map((line,i)=><li key={`${i}-${line}`}>{line}</li>)}</ol>
