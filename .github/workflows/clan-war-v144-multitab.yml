@@ -12,6 +12,7 @@ on:
       - 'scripts/qa-clan-war-multitab-v144.mjs'
       - 'tests/browser/clan-war-v143.fixture.tsx'
       - '.github/workflows/clan-war-v144-multitab.yml'
+      - 'docs/Yautja_ClanWar_V144_Conflits_Onglets.xlsx'
   workflow_dispatch:
 permissions:
   contents: read
@@ -38,6 +39,7 @@ jobs:
             /tests/browser/clan-war-v143.fixture.tsx
             /tests/clan-war-multitab-v144.test.mjs
             /tests/clan-war-turn-gate-v143.test.mjs
+            /docs/Yautja_ClanWar_V144_Conflits_Onglets.xlsx
             /public/game/assets/v14/hunter-kit/manifest.json
             /public/game/assets/v15/trophies/manifest.json
             /public/game/assets/v16/franchise-trophies/manifest.json
@@ -54,6 +56,12 @@ jobs:
           node-version: '22'
       - name: Install pinned dependencies
         run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Verify V144 source-tracked Excel annex has six valid worksheets
+        run: |
+          unzip -t docs/Yautja_ClanWar_V144_Conflits_Onglets.xlsx | tail -1
+          count=$(unzip -Z1 docs/Yautja_ClanWar_V144_Conflits_Onglets.xlsx | grep -Ec 'xl/worksheets/sheet[0-9]+[.]xml')
+          test "$count" -eq 6
+          echo "V144 annex: six worksheets and a valid archive"
       - name: Test non-destructive external-tab detection and offline-only mode
         run: node --experimental-strip-types --test --test-reporter=spec tests/clan-war-multitab-v144.test.mjs tests/clan-war-turn-gate-v143.test.mjs
       - name: Test two actual tabs with real strategic panel in Chrome

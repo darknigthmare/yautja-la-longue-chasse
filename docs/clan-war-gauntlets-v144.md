@@ -1,43 +1,35 @@
-# V144 — Preuve de campagne sur le véritable panneau Guerre des clans
+# V144 — Protection des guerres de clans contre deux onglets concurrents
 
-**PR de développement :** https://github.com/darknigthmare/yautja-la-longue-chasse/pull/42 · base #40 · **draft**, aucune fusion sur `main`.
+**En cours de développement dans la [PR #42](https://github.com/darknigthmare/yautja-la-longue-chasse/pull/42), restée en brouillon sur la branche de la PR #40.** Aucun passage dans `main`.
 
-## Correctif : codec de préférence après étude débloquée
+## Défaut réel traité
 
-Le module de sauvegarde `SaveGame V13` est depuis V134 la source autorisée des études réclamées. Le module de préférence V132 restait cependant limité aux modèles « starter » ou « par rang ». Il pouvait donc sérialiser à tort un gauntlet acquis par étude comme `jungle-hunter` lors de la mise à jour de l'ancien stockage local V133.
+Le panneau stratégique V143 avait une barrière contre le double clic et les écritures en cours ; les archives locales utilisaient déjà un **verrou transactionnel IndexedDB V94**. Cependant, lorsque deux onglets avaient chargé le même front, le second pouvait encore afficher un état périmé. Un clic dessus pouvait appliquer une résolution **temporaire en mémoire**, que le verrou de sauvegarde refusait ensuite de persister. L'utilisateur voyait des ordres obsolètes jusqu'au rechargement.
 
-V144 modifie `parseGauntletPreferenceV132` et `serializeGauntletPreferenceV132` pour recevoir **facultativement** les identifiants d'études *déjà confirmées dans la campagne*. Les anciens appels à trois arguments restent compatibles ; **le stockage local ne contient jamais un reçu de droit** : seulement `{schema,hunter,equipped}`. `useHunterGauntletV133` transmet les revendications du `gauntletV134` de la campagne aux deux côtés du codec.
+La V144 ajoute :
 
-Les tests `tests/gauntlet-preference-v144.test.mjs` couvrent les **44 études** et vérifient qu'un identifiant sans étude réclamée, une préférence forgée dans un autre profil et une archive au mauvais propriétaire ne permettent pas d'obtenir un objet.
+- `WarSessionSnapshotV85.staleWar`, uniquement pour un conflit **effectivement observé**. Le mode sans stockage garde `staleWar=false` et reste jouable en mémoire, sans promettre une sauvegarde.
+- `observeExternalStorageChange(key)` dans `clanWarSessionV85.ts` : compare en lecture seule les octets réellement présents à ceux précédemment hydratés. Le signal localStorage arrive à l'autre onglet, et un second contrôle est effectué au retour du focus ou de la visibilité.
+- Une **alerte de conflit accessible** dans `ClanWarPanelV85`, ainsi que l'interdiction des réservations, déplacements, ordres de garnison, annulations, fin de tour et remise à zéro lorsqu'un front est périmé.
+- Une **seconde protection au niveau de la session elle-même** : aucun appel direct `setSimulation` ou `unlockWarAfterExplicitReset` ne modifie ce front périmé.
+- `inspectWarTurnGateV143` comprend désormais `conflict`, indépendant de `writing`, `loading` et de la simple mémoire temporaire.
 
-## Navigateur : front V85, armurerie V132, archives de chasse V13
+L'archive **n'est pas fusionnée automatiquement**, les sources de données de campagne `SaveGame V13` et les récompenses de chasse sont inchangées, et la vue classique et la projection holographique affichent exactement le même front.
 
-Le banc `tests/browser/gauntlet-campaign-v144.fixture.tsx` monte le **véritable** `ClanWarPanelV85` (atlas V95 et stockage de guerre), et utilise `writeSaveWithStatus` de la campagne réelle, avec les callbacks `gauntletCampaignClaimV134` / `gauntletCampaignEquipV134`. Une chasse d'essai est **explicitement simulée dans cette fixture** en déposant une mission, des scans et un trophée de qualité suffisante — elle **n'est pas un résultat gagné par un utilisateur**.
+## Vérifications
 
-`scripts/qa-gauntlet-campaign-v144.mjs` utilise le navigateur Chrome pour contrôler :
+- `tests/clan-war-multitab-v144.test.mjs` : deux sessions partageant un même stockage, notification d'un changement externe, mémoire périmée verrouillée, refus de reset/écriture, réouverture sur la bonne version et mode sans stockage conservé.
+- `scripts/qa-clan-war-multitab-v144.mjs` : **deux vrais onglets Chromium** hébergeant `ClanWarPanelV85`, `createWarSessionV85`, `ClanWarAtlasV95` et le vrai registre IndexedDB, sans remplacer les règles du jeu. Vérifie 1→2 dans A, B marqué périmé, B refusant les actions, B rechargeant puis 2→3, A devenant à son tour périmé, et l'intégrité du registre IDB `confirmed` et d'une sentinelle de sauvegarde indépendante.
+- `.github/workflows/clan-war-v144-multitab.yml` : export de captures et du rapport dans l'artefact `clan-war-v144-two-real-tabs-idb-evidence`.
+- [Excel V144](Yautja_ClanWar_V144_Conflits_Onglets.xlsx) : six onglets et 22 scénarios de sécurité, dont les cas non couverts explicitement identifiés.
 
-1. Une étude **non** justifiée reste verrouillée, sans lien de déblocage actif.
-2. Le modèle d'étude correspondant à la mission et au trophée d'essai est initialement verrouillé.
-3. Le bouton du vrai atelier permet de **valider explicitement** l'étude; un seul reçu est écrit dans la sauvegarde V13.
-4. Le bouton « Équiper » sauvegarde le modèle choisi, et le véritable écran holographique montre le même identifiant sans modifier le tour de guerre.
-5. Une deuxième validation est refusée ; une autre étude non méritée reste verrouillée.
-6. Après actualisation, l'équipement V13 est restauré et l'atlas V95 reste unique.
-7. Un second onglet tente de changer l'ancienne préférence `localStorage` vers le modèle bloqué : l'archive V13 reste autoritaire et le modèle de la carte ne change pas.
+## Tests qui restent ouverts
 
-**Limites fondamentales :** ce contrôle est un test de composants et de stockage sur une campagne d'essai isolée, pas une traversée complète du `GameClient` depuis le titre, ni la preuve d'une chasse réellement jouée par un utilisateur, ni de la synchronisation cloud entre deux appareils différents. Il ne reconstitue aucun prop de film.
+1. Deux **appareils différents** et une synchronisation distante : aucun cloud n'est branché par cette correction.
+2. Le conflit entre onglets sur **toutes les planètes** et pendant chaque sous-mode V115 : test complémentaire nécessaire.
+3. Le parcours complet depuis le titre, l'armurerie, les gauntlets débloqués et la navigation de `GameClient` : ces tests se concentrent sur le vrai panneau de guerre, pas sur toute la campagne.
+4. Revue artistique **1:1 de 54 modèles** : toujours **0 certifié**. Les sprites restent des études originales ou des prototypes de référence. Les droits de franchise et les tests humains restent à accomplir.
 
-## QA, sécurité et absence de régressions
+**Critère de succès technique :** aucune écriture du front le plus ancien ne peut remplacer l'archive du dernier onglet ; un onglet périmé doit montrer clairement l'erreur et pouvoir relire la version courante sans perte du tour, sans modifier une autre sauvegarde.
 
-- Les revenus, dégâts, coûts, ordres, combats et résultats des quatre gamemodes ne sont pas modifiés.
-- Une étude reçoit le droit d'être équipée uniquement par la **sauvegarde de campagne**, pas par un événement visuel, une URL, un codec local ou le mode Guerre libre.
-- Le choix est propre à chaque `save.createdAt` et ne peut pas écraser le front libre d'une autre planète.
-- Les deux vues, classique et holographique, demeurent commutables avec un seul atlas V95.
-- La CI cible les nouveaux tests et effectue un build TypeScript et Next complet ; captures du navigateur placées dans l'artefact `yautja-real-archive-gauntlet-v144-chrome` si le workflow réussit.
-
-## Statuts de clôture
-
-**Techniquement clôturable après CI verte :** sérialisation de préférences gagnées, validation V13 unique, équipement de la carte et rechargement de l'archive avec étude, refus de préférence locale forgée.
-
-**Toujours ouvert :** UI complète de l'atelier Homeworld à travers le parcours du jeu, sauvegarde cloud multi-appareil, 54 accessoires certifiés 1:1, matériaux et animations fidèles, 3 888 combinaisons du rig, qualité mobile/manette en vraie mission et revue des droits sur la franchise.
-
-Les sources SVG/PNG individuelles sont des **prototypes de travail**, même si elles s'affichent et passent la CI. Aucun film ou jeu tiers n'est reproduit par échantillonnage sonore original.
+**Statut CI :** renseigner uniquement avec l'exécution vérifiée du **dernier commit** ; l'ajout du code et des tests n'établit pas, à lui seul, un test Chrome réussi.
