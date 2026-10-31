@@ -48,8 +48,8 @@ La liste des positions d'objectif dans le panneau est **masquée avant reconnais
 
 ## Excel de production actualisé V134
 
-Le [classeur V134](../clan-war-v134/Yautja_Guerres_Clans_Suivi_Production_V134_2026-10-31.xlsx) conserve les **1 200 fiches V120**, les **125 exigences antérieures**, les 24 scénarios W3, les 36 dossiers W5 et les 12 cartes. Il possède maintenant **18 onglets**, dont `RTS_V134_SYNCHRO` détaillant **18 nouvelles fonctions et contrôles techniques + 24 contrats de carte**, soit 42 lignes de traçabilité. La grille QA transverse contient **7 contrôles V134 supplémentaires**.
+Le [classeur V134](../clan-war-v134/Yautja_Guerres_Clans_Suivi_Production_V134_2026-10-31.xlsx) conserve les **1 200 fiches V120**, les **125 exigences antérieures**, les 24 scénarios W3, les 36 dossiers W5 et les 12 cartes. Il possède maintenant **18 onglets**, dont `RTS_V134_SYNCHRO` détaillant **19 nouvelles fonctions et contrôles techniques + 24 contrats de carte**, soit 43 lignes de traçabilité. La grille QA transverse contient **8 contrôles V134 supplémentaires**.
 
 L'état `Validé CI ciblée` signifie uniquement : test Node, TypeScript, ESLint et vérification du classeur sur le commit de cette branche. **Aucun sprite 1:1, aucune guerre totale et aucun serveur PvP n'est validé par cette mention.**
 
-La CI `.github/workflows/clan-war-v133.yml` exécute le nouveau test `tests/clan-war-production-v134.test.mjs`, confirmant les 18 onglets, les 42 exigences, les sept nouveaux QA, les 1 200 IDs de design et les catalogues W3/W5 conservés.
+La CI `.github/workflows/clan-war-v133.yml` exécute le nouveau test `tests/clan-war-production-v134.test.mjs`, confirmant les 18 onglets, les 43 exigences, les huit nouveaux QA, les 1 200 IDs de design et les catalogues W3/W5 conservés.

@@ -41,13 +41,13 @@ test("XLSX V134 contains prior 17 sheets and one appended formatted, editable pr
  for(const label of ["ASSAUT","OUTER_OPS","INFILTRATION","RTS","MISSIONS_1200","W3_24_RTS",
   "CARTES_W3_12","W5_CAMPAGNES_36","QA_ACCEPTATION","00_PILOTAGE","RTS_V134_SYNCHRO"])
   assert.ok(book.includes('name="'+label+'"'),"missing "+label);
- assert.ok(textAll.includes("29/29"),"targeted CI status missing");
+ assert.ok(textAll.includes("33/33"),"targeted CI status missing");
  assert.ok(textAll.includes("Validé CI ciblée"),"status provenance missing");
 });
-test("42 V134 tasks (18 shared +24 W3) and seven new QA checks are traceable",()=>{
- assert.equal(exact(/CW134-RALLY-\d{3}/g).length,18);
+test("43 V134 tasks (19 shared +24 W3) and eight new QA checks are traceable",()=>{
+ assert.equal(exact(/CW134-RALLY-\d{3}/g).length,19);
  assert.equal(exact(/CW134-MAP-\d{2}/g).length,24);
- assert.equal(exact(/QA-CW134-\d{3}/g).length,7);
+ assert.equal(exact(/QA-CW134-\d{3}/g).length,8);
  assert.ok(textAll.includes("W3-RTS24"));
  assert.ok(textAll.includes("https://github.com/darknigthmare/yautja-la-longue-chasse/pull/43"));
 });
