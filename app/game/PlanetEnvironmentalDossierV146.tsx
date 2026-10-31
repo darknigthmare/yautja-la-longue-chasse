@@ -94,7 +94,7 @@ export default function PlanetEnvironmentalDossierV146({planet}:{planet:WarPlane
       <div className={styles.summary}>
         <article><strong>Rotation</strong><span>{report.dayLengthPlanetaryHours===null?"Inconnue":report.dayLengthPlanetaryHours+" h planétaires"}</span></article>
         <article><strong>Gravité</strong><span>{report.gravityEarthG===null?"Inconnue":report.gravityEarthG.toLocaleString("fr-FR")+" g"}</span></article>
-        <article><strong>Vitesse d'évasion inférée</strong><span>{report.physical?.escapeVelocityKmPerSecond===null||!report.physical?"Non calculable":report.physical.escapeVelocityKmPerSecond.toLocaleString("fr-FR")+" km/s"}</span></article>
+        <article><strong>Vitesse d’évasion inférée</strong><span>{report.physical?.escapeVelocityKmPerSecond===null||!report.physical?"Non calculable":report.physical.escapeVelocityKmPerSecond.toLocaleString("fr-FR")+" km/s"}</span></article>
         <article><strong>Vitesse de rotation équatoriale</strong><span>{report.physical?.equatorialRotationKmPerHour===null||!report.physical?"Non calculable":report.physical.equatorialRotationKmPerHour.toLocaleString("fr-FR")+" km/h"}</span></article>
         <article><strong>Densité moyenne inférée</strong><span>{report.physical?.inferredMeanDensityKgPerM3===null||!report.physical?"Non calculable":report.physical.inferredMeanDensityKgPerM3.toLocaleString("fr-FR")+" kg/m³"}</span></article>
       </div>
