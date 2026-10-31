@@ -52,6 +52,28 @@ test("a foreign-tab archive edit invalidates only the affected Korthas front and
  assert.equal(reopen.getSnapshot().simulation.turn,2);
  assert.equal(reopen.getSnapshot().staleWar,false);
 });
+test("unrelated planet writes never stale an independent live front",async()=>{
+ const f=fixture(),korthas=await f.create();
+ const other=system.createWarSessionV85(()=>f.storage,noopLock,null,{planetId:"thalassa"});
+ other.subscribe(()=>{});
+ await other.whenSettled();
+ assert.equal(korthas.getSnapshot().staleWar,false);
+ assert.equal(other.getSnapshot().staleWar,false);
+ const otherKey=system.warPlanetStorageKeyV96("thalassa");
+ assert.notEqual(otherKey,system.WAR_STORAGE_KEY_V85);
+ korthas.setSimulation(state=>({...state,revision:state.revision+1,turn:2}));
+ await korthas.whenSettled();
+ other.observeExternalStorageChange(system.WAR_STORAGE_KEY_V85);
+ assert.equal(other.getSnapshot().staleWar,false);
+ other.setSimulation(state=>({...state,revision:state.revision+1,turn:2}));
+ await other.whenSettled();
+ korthas.observeExternalStorageChange(otherKey);
+ assert.equal(korthas.getSnapshot().staleWar,false);
+ assert.equal(korthas.getSnapshot().simulation.turn,2);
+ assert.equal(other.getSnapshot().simulation.turn,2);
+ assert.equal(JSON.parse(f.storage.getItem(otherKey)).planetId,"thalassa");
+ assert.equal(JSON.parse(f.storage.getItem(system.WAR_STORAGE_KEY_V85)).planetId,undefined);
+});
 test("offline memory-only exercises stay usable, never confused with a concurrent edit",async()=>{
  const session=system.createWarSessionV85(()=>null,noopLock,null);
  session.subscribe(()=>{});
