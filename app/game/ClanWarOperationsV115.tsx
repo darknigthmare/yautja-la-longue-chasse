@@ -223,8 +223,8 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
   const available=world.teams.filter(team=>!world.assignments[team.id] && team.members.some(member=>member.status==="fit"));
   const teamsById=(teamId:string)=>rules.units.find(unit=>unit.id===world.teams.find(team=>team.id===teamId)?.unitId)?.name ?? teamId;
 
-  function start() {
-    const result=beginWarOperationV115(worldRef.current,mode,targetId,selectedIds,rules,Date.now(),focus,
+  function start(atTime:number) {
+    const result=beginWarOperationV115(worldRef.current,mode,targetId,selectedIds,rules,atTime,focus,
       mode==="rts"&&rtsScenarioId!=="free"?rtsScenarioId:null,
       mode==="outer"?selectedOuterRoute?.passageIds:undefined);
     if(result.accepted && mode==="rts") {
@@ -333,7 +333,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
     <div className={styles.launch}>
       <p>{requestIssue ?? "Ordre admissible : RAV débités une seule fois, détachements immobilisés jusqu'au rapport."}
         {routePreview && <small className={styles.path}>Passages V6 : {routePreview.passageIds.join(" → ")||"sur place"} · coût de mouvement {routePreview.cost} · {missionPc} PC</small>}</p>
-      <button type="button" disabled={blocked||Boolean(requestIssue)||((mode!=="outer")&&Boolean(current))||(mode==="outer"&&world.outer.length>=3)||(mode==="stealth"&&selectedIds.length>2)} onClick={start}>Lancer : {modeLabels[mode]}</button>
+      <button type="button" disabled={blocked||Boolean(requestIssue)||((mode!=="outer")&&Boolean(current))||(mode==="outer"&&world.outer.length>=3)||(mode==="stealth"&&selectedIds.length>2)} onClick={()=>start(Date.now())}>Lancer : {modeLabels[mode]}</button>
     </div>
 
     <section className={styles.reinforcements} aria-label="Registre de recrutement V6">
