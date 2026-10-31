@@ -66,7 +66,7 @@ test("V152 longitude seam is periodic; poles never sample the opposite hemispher
 });
 
 test("V152 strict reader rejects mismatched land mask and out-of-range region indices",()=>{
-  const bad=new Uint8ClampedArray(mask);bad[32*128*4+3]=255;
+  const bad=new Uint8ClampedArray(mask);bad[(32*128+50)*4+3]=255;
   assert.throws(()=>api.analyzePlanetTerrainSlopesV152(raster,bad),/désynchronisées/);
   const unknown=new Uint8ClampedArray(mask);
   const index=20*128+20;unknown[index*4]=3;

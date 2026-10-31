@@ -82,6 +82,7 @@ jobs:
           tests/planet-preflight-v149.test.mjs
           tests/planet-relief-v150.test.mjs
           tests/planet-export-studies-v151.test.mjs
+          tests/planet-terrain-slope-v152.test.mjs
           tests/planet-surface-budget-v136.test.mjs
           tests/planet-shape-library-v137.test.mjs
           tests/planet-projection-parity-v138.test.mjs
@@ -134,6 +135,7 @@ jobs:
           app/game/systems/clanWarPlanetReliefV150.ts
           app/game/PlanetReliefV150.tsx
           app/game/planetAssetStudiesV151.ts
+          app/game/systems/clanWarPlanetTerrainV152.ts
           app/game/systems/planetProjectionParityV138.ts
           app/game/systems/clanWarPlanetTopologyAdvisorV139.ts
 

@@ -106,6 +106,37 @@ try{
   check("V150 regenerating mountain ridges changes displayed elevation instead of geographic ownership",
     beforeRandom.land===afterRandom.land && beforeRandom.water===afterRandom.water &&
     (await generator.getAttribute("data-preview-planet-code"))===world);
+  const display=panel.getByTestId("planet-terrain-display-v152");
+  await display.selectOption("slope");
+  const slopeMap=panel.getByTestId("planet-terrain-slope-map-v152");
+  check("V152 reveals a real colour-coded gradient map for actual V150 terrestrial pixels",
+    await slopeMap.isVisible() &&
+    (await panel.getByTestId("planet-terrain-summary-v152").innerText()).includes("pentes"));
+  const gradePng=await takePng("planet-terrain-png-v152");
+  const grade=await sharp(gradePng).ensureAlpha().raw().toBuffer({resolveWithObject:true});
+  let paintedSlope=0,transparentSlope=0;
+  for(let i=0;i<grade.data.length;i+=4){
+    if(grade.data[i+3]===255)paintedSlope++;
+    else if(grade.data[i+3]===0)transparentSlope++;
+  }
+  check("V152 slope image contains only real terrestrial pixels and transparent alien media",
+    grade.info.width===512 && grade.info.height===256 &&
+    paintedSlope>0 && transparentSlope>0);
+  const waitTerrain=page.waitForEvent("download",{timeout:60000});
+  await panel.getByTestId("planet-terrain-json-v152").click();
+  const receipt=await waitTerrain,terrainPath=path.join(output,receipt.suggestedFilename());
+  await receipt.saveAs(terrainPath);
+  const terrainData=JSON.parse(await readFile(terrainPath,"utf8"));
+  check("V152 route study covers actual links, legal crossings, and no saved war orders",
+    terrainData.version===152 && terrainData.worldCode===world &&
+    terrainData.routes.length>0 &&
+    terrainData.routes.some(route=>route.kind==="crossing") &&
+    terrainData.routes.every(route=>route.samples===route.landSamples+route.nonLandSamples) &&
+    !JSON.stringify(terrainData).includes("combatants"));
+  check("V152 route study has the exact number of territorial regions",
+    terrainData.regions.length===count);
+  await panel.screenshot({path:path.join(output,"planet-terrain-slope-desktop.png")});
+  await display.selectOption("relief");
   await panel.screenshot({path:path.join(output,"planet-relief-desktop.png")});
   await page.setViewportSize({width:390,height:844});
   await panel.screenshot({path:path.join(output,"planet-relief-mobile.png")});
