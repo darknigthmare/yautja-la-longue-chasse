@@ -77,7 +77,7 @@ function Entry({ entry }: { entry: ClanWarEntryV85 }) {
 }
 
 /** Autonomous exercises and source dossier. Main campaign progress is read only. */
-export default function ClanWarPanelV85({ save, onClose, suspended = false, initialPlanetId, onGauntletSound }: { save: SaveGame; onClose: () => void; suspended?: boolean; initialPlanetId?: string; onGauntletSound?: (theme: GauntletThemeV132) => void }) {
+export default function ClanWarPanelV85({ save, onClose, suspended = false, initialPlanetId, onGauntletSound,onEquipGauntlet,onClaimGauntletStudy }: { save: SaveGame; onClose: () => void; suspended?: boolean; initialPlanetId?: string; onGauntletSound?: (theme: GauntletThemeV132) => void; onEquipGauntlet?: (id:string)=>boolean; onClaimGauntletStudy?: (id:string)=>boolean }) {
   const root = useRef<HTMLElement>(null);
   const focusPlanetSelection = useRef(Boolean(initialPlanetId));
   const pageActive = useSyncExternalStore(subscribePageActivityV94, pageActivitySnapshotV94, serverPageActivityV94);
@@ -85,7 +85,7 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false, init
   // Presentation is independent from the war archive. Server and first client render match.
   const [presentation, setPresentation] = useState<ClanWarPresentationV131>(DEFAULT_WAR_PRESENTATION_V131);
   const presentationTouched = useRef(false);
-  const { equippedId: equippedGauntletId, equip, storageWarning: gauntletStorageWarning } = useHunterGauntletV133(save.createdAt, save.profile.rankId);
+  const { equippedId: equippedGauntletId, equip, storageWarning: gauntletStorageWarning } = useHunterGauntletV133(save.createdAt, save.profile.rankId,save.gauntletV134);
   const [sessionStore] = useState(() => createWarSessionV85(() => typeof window === "undefined" ? null : window.localStorage));
   const [activePlanetId, setActivePlanetId] = useState(() => preferredWarPlanetV96(initialPlanetId));
   const [planetSessions, setPlanetSessions] = useState<Record<string, ReturnType<typeof createWarSessionV85>>>(() => ({
@@ -142,9 +142,9 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false, init
   }, []);
 
   function equipGauntlet(id: string) {
-    if (suspended || !pageActive || !gauntletUnlockedV132(id, save.profile.rankId)) return;
-    if (equip(id)) {
-      onGauntletSound?.(gauntletByIdV132(id)?.theme ?? "classic");
+    if (suspended || !pageActive || !gauntletUnlockedV132(id, save.profile.rankId,save.gauntletV134?.claimedStudies??[])) return;
+    if (onEquipGauntlet?onEquipGauntlet(id):equip(id)) {
+      if(!onEquipGauntlet)onGauntletSound?.(gauntletByIdV132(id)?.theme ?? "classic");
       setMessage(`Gauntlet ${gauntletByIdV132(id)?.name ?? id} équipé. Le front et ses ordres restent inchangés.`);
     }
   }
@@ -175,7 +175,7 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false, init
 
   const composition = useMemo(() => warCompositionV85(selection), [selection]);
   const supplied = useMemo(() => warSuppliedV85(simulation), [simulation]);
-  const effectiveGauntlet=gauntletUnlockedV132(equippedGauntletId,save.profile.rankId)
+  const effectiveGauntlet=gauntletUnlockedV132(equippedGauntletId,save.profile.rankId,save.gauntletV134?.claimedStudies??[])
     ? gauntletByIdV132(equippedGauntletId) : gauntletByIdV132(DEFAULT_GAUNTLET_ID_V132);
   const gauntletReadout=effectiveGauntlet?.readout??"intel";
   const gauntletReadoutValue =
@@ -407,7 +407,9 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false, init
     </div>}
 
     {tab === "korthas" && <div>
-      <ClanWarGauntletLockerV132 hunterRank={save.profile.rankId} equippedId={effectiveGauntlet?.id??DEFAULT_GAUNTLET_ID_V132} onEquip={equipGauntlet} disabled={suspended||!pageActive}/>
+      <ClanWarGauntletLockerV132 hunterRank={save.profile.rankId} equippedId={effectiveGauntlet?.id??DEFAULT_GAUNTLET_ID_V132} onEquip={equipGauntlet}
+        claimedStudies={save.gauntletV134?.claimedStudies??[]} campaignEvidence={save}
+        onClaimStudy={onClaimGauntletStudy} disabled={suspended||!pageActive}/>
       <ClanWarPlanetsV96 planet={planet} turn={simulation.turn} persisted={persistedWar} pending={pendingWrites > 0} retainedPlanetIds={retainedPlanetIds} onSelect={selectPlanet}/>
       <div className={styles.sectionHeader}><div><h3>{planet.name} · tour {simulation.turn}</h3><p>Routes du théâtre, détachements présents et informations adverses estimées.</p></div><button type="button" onClick={restartWar}>Nouvel exercice</button></div>
       <div className={styles.metrics}><p>Stock consolidé <Budget {...budget}/></p><p>Contrôle <strong>{controlled.length}/{definitions.length}</strong></p><p>Aptes <strong>{warFitCombatantsV85(simulation).length}</strong></p><p>Entretien prévu <strong>S{warUpkeepV85(simulation)}</strong></p></div>
