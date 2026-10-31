@@ -37,6 +37,8 @@ on:
       - 'app/gauntlet-qa-v136/**'
       - 'public/game/assets/v136/gauntlets/**'
       - 'scripts/build-gauntlet-studies-v136.mjs'
+      - 'scripts/qa-gauntlet-browser-v136.mjs'
+      - 'tests/browser/gauntlet-v136.fixture.tsx'
       - 'app/gauntlet-qa-v135/**'
       - 'docs/Yautja_Gauntlets_V134_Arsenal_Clans.xlsx'
       - 'docs/Yautja_Gauntlets_V135_Arsenal_Clans.xlsx'
@@ -101,6 +103,8 @@ jobs:
             /app/gauntlet-qa-v136/GauntletVisualQaV136.module.css
             /public/game/assets/v136/gauntlets/
             /scripts/build-gauntlet-studies-v136.mjs
+            /scripts/qa-gauntlet-browser-v136.mjs
+            /tests/browser/gauntlet-v136.fixture.tsx
             /app/gauntlet-qa-v135/page.tsx
             /app/gauntlet-qa-v135/GauntletVisualQaV135.module.css
             /docs/Yautja_Gauntlets_V134_Arsenal_Clans.xlsx
@@ -129,6 +133,15 @@ jobs:
         run: npx --no-install tsc --noEmit --project tsconfig.clan-war-v131.json
       - name: Lint changed game-facing code and tests
         run: npx --no-install eslint app/game/ClanWarPanelV85.tsx app/game/ClanWarGauntletV131.tsx app/game/HunterGauntletArtV132.tsx app/game/ClanWarGauntletLockerV132.tsx app/game/systems/clanWarViewV131.ts app/game/systems/clanWarGauntletCatalogV132.ts app/game/systems/useHunterGauntletV133.ts app/game/GameClient.tsx app/game/HunterRigPreview.tsx app/game/ClanWarBibleV6Panel.tsx app/game/ClanWarOperationsV115.tsx app/game/sound.ts tests/clan-war-gauntlet-v131.test.mjs tests/clan-war-gauntlets-v132.test.mjs tests/clan-war-gauntlets-v133.test.mjs app/game/systems/gauntletCampaignV134.ts app/game/save.ts app/game/types.ts tests/clan-war-gauntlet-research-v134.test.mjs app/game/JungleHunterLayeredV134.tsx tests/clan-war-gauntlet-assets-v134.test.mjs scripts/export-gauntlet-png-v134.mjs scripts/audit-gauntlet-completeness-v134.mjs app/game/GauntletKnownHuntersV135.tsx tests/clan-war-gauntlet-variants-v135.test.mjs scripts/export-gauntlet-variants-v135.mjs app/gauntlet-qa-v135/page.tsx tests/gauntlet-visual-qa-v135.test.mjs app/game/GauntletArchiveStudiesV136.tsx app/gauntlet-qa-v136/page.tsx tests/gauntlet-archive-studies-v136.test.mjs scripts/build-gauntlet-studies-v136.mjs
+      - name: Test actual React gauntlet controls in Chromium (browser + source SVGs)
+        run: node scripts/qa-gauntlet-browser-v136.mjs
+      - name: Preserve real browser screenshots for visual review
+        uses: actions/upload-artifact@v4
+        with:
+          name: yautja-gauntlet-v136-browser-qa
+          path: outputs/gauntlet-browser-v136-*.png
+          retention-days: 30
+          if-no-files-found: error
       - name: Verify production Excel archive integrity
         run: unzip -t docs/Yautja_Gauntlets_V132_Arsenal_Clans.xlsx | tail -1
       - name: Verify V133 extended production Excel archive integrity
