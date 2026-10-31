@@ -41,6 +41,8 @@ on:
       - 'scripts/qa-gauntlet-browser-v136.mjs'
       - 'tests/browser/gauntlet-v136.fixture.tsx'
       - 'app/gauntlet-qa-v135/**'
+      - 'proxy.ts'
+      - 'tests/gauntlet-qa-privacy-v138.test.mjs'
       - 'docs/Yautja_Gauntlets_V134_Arsenal_Clans.xlsx'
       - 'docs/Yautja_Gauntlets_V135_Arsenal_Clans.xlsx'
       - 'docs/Yautja_Gauntlets_V136_Arsenal_Clans.xlsx'
@@ -109,6 +111,10 @@ jobs:
             /scripts/qa-gauntlet-browser-v136.mjs
             /tests/browser/gauntlet-v136.fixture.tsx
             /app/gauntlet-qa-v135/page.tsx
+            /app/gauntlet-qa-v135/client.tsx
+            /app/gauntlet-qa-v136/client.tsx
+            /proxy.ts
+            /tests/gauntlet-qa-privacy-v138.test.mjs
             /app/gauntlet-qa-v135/GauntletVisualQaV135.module.css
             /docs/Yautja_Gauntlets_V134_Arsenal_Clans.xlsx
             /docs/Yautja_Gauntlets_V135_Arsenal_Clans.xlsx
@@ -132,11 +138,11 @@ jobs:
       - name: Reproducible dependencies
         run: npm ci --ignore-scripts --no-audit --no-fund
       - name: Verify dual-view invariants
-        run: node --experimental-strip-types --test --test-reporter=spec tests/clan-war-gauntlet-v131.test.mjs tests/clan-war-gauntlets-v132.test.mjs tests/clan-war-gauntlets-v133.test.mjs tests/clan-war-gauntlet-research-v134.test.mjs tests/clan-war-gauntlet-assets-v134.test.mjs tests/clan-war-gauntlet-variants-v135.test.mjs tests/gauntlet-visual-qa-v135.test.mjs tests/gauntlet-archive-studies-v136.test.mjs
+        run: node --experimental-strip-types --test --test-reporter=spec tests/clan-war-gauntlet-v131.test.mjs tests/clan-war-gauntlets-v132.test.mjs tests/clan-war-gauntlets-v133.test.mjs tests/clan-war-gauntlet-research-v134.test.mjs tests/clan-war-gauntlet-assets-v134.test.mjs tests/clan-war-gauntlet-variants-v135.test.mjs tests/gauntlet-visual-qa-v135.test.mjs tests/gauntlet-archive-studies-v136.test.mjs tests/gauntlet-qa-privacy-v138.test.mjs
       - name: Typecheck the projector and mode parser
         run: npx --no-install tsc --noEmit --project tsconfig.clan-war-v131.json
       - name: Lint changed game-facing code and tests
-        run: npx --no-install eslint app/game/ClanWarPanelV85.tsx app/game/ClanWarGauntletV131.tsx app/game/HunterGauntletArtV132.tsx app/game/ClanWarGauntletLockerV132.tsx app/game/systems/clanWarViewV131.ts app/game/systems/clanWarGauntletCatalogV132.ts app/game/systems/useHunterGauntletV133.ts app/game/GameClient.tsx app/game/HunterRigPreview.tsx app/game/ClanWarBibleV6Panel.tsx app/game/ClanWarOperationsV115.tsx app/game/sound.ts tests/clan-war-gauntlet-v131.test.mjs tests/clan-war-gauntlets-v132.test.mjs tests/clan-war-gauntlets-v133.test.mjs app/game/systems/gauntletCampaignV134.ts app/game/save.ts app/game/types.ts tests/clan-war-gauntlet-research-v134.test.mjs app/game/JungleHunterLayeredV134.tsx tests/clan-war-gauntlet-assets-v134.test.mjs scripts/export-gauntlet-png-v134.mjs scripts/audit-gauntlet-completeness-v134.mjs app/game/GauntletKnownHuntersV135.tsx tests/clan-war-gauntlet-variants-v135.test.mjs scripts/export-gauntlet-variants-v135.mjs app/gauntlet-qa-v135/page.tsx tests/gauntlet-visual-qa-v135.test.mjs app/game/GauntletArchiveStudiesV136.tsx app/gauntlet-qa-v136/page.tsx tests/gauntlet-archive-studies-v136.test.mjs scripts/build-gauntlet-studies-v136.mjs
+        run: npx --no-install eslint app/game/ClanWarPanelV85.tsx app/game/ClanWarGauntletV131.tsx app/game/HunterGauntletArtV132.tsx app/game/ClanWarGauntletLockerV132.tsx app/game/systems/clanWarViewV131.ts app/game/systems/clanWarGauntletCatalogV132.ts app/game/systems/useHunterGauntletV133.ts app/game/GameClient.tsx app/game/HunterRigPreview.tsx app/game/ClanWarBibleV6Panel.tsx app/game/ClanWarOperationsV115.tsx app/game/sound.ts tests/clan-war-gauntlet-v131.test.mjs tests/clan-war-gauntlets-v132.test.mjs tests/clan-war-gauntlets-v133.test.mjs app/game/systems/gauntletCampaignV134.ts app/game/save.ts app/game/types.ts tests/clan-war-gauntlet-research-v134.test.mjs app/game/JungleHunterLayeredV134.tsx tests/clan-war-gauntlet-assets-v134.test.mjs scripts/export-gauntlet-png-v134.mjs scripts/audit-gauntlet-completeness-v134.mjs app/game/GauntletKnownHuntersV135.tsx tests/clan-war-gauntlet-variants-v135.test.mjs scripts/export-gauntlet-variants-v135.mjs app/gauntlet-qa-v135/page.tsx tests/gauntlet-visual-qa-v135.test.mjs app/game/GauntletArchiveStudiesV136.tsx app/gauntlet-qa-v136/page.tsx tests/gauntlet-archive-studies-v136.test.mjs scripts/build-gauntlet-studies-v136.mjs app/gauntlet-qa-v135/client.tsx app/gauntlet-qa-v136/client.tsx proxy.ts tests/gauntlet-qa-privacy-v138.test.mjs
       - name: Test actual React gauntlet controls in Chromium (browser + source SVGs)
         run: node scripts/qa-gauntlet-browser-v136.mjs
       - name: Preserve real browser screenshots for visual review
