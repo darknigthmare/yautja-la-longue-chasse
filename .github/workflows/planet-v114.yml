@@ -7,8 +7,21 @@ on:
       - 'app/game/PlanetLayerExportV102.tsx'
       - 'app/game/PlanetMaterialCanvasV101.tsx'
       - 'app/game/PlanetGeneratorV103.tsx'
+      - 'app/game/ClanWarAtlasV95.tsx'
+      - 'app/game/PlanetRegionalPreviewV129.tsx'
+      - 'app/game/PlanetShapePreviewV125.tsx'
+      - 'app/game/PlanetShapeLibraryV137.tsx'
+      - 'app/game/PlanetEnvironmentalDossierV146.tsx'
+      - 'app/game/PlanetEarthReferenceV147.tsx'
+      - 'app/game/PlanetPreflightV149.tsx'
+      - 'public/game/planets/earth/**'
+      - 'app/game/**/clanWarRegionalMaterialKit*'
+      - 'app/game/**/clanWarTextureLibrary*'
+      - 'app/game/**/clanWarShape*'
       - 'tests/planet*'
       - 'tests/planet-*'
+      - 'scripts/qa-planet-random-v144.mjs'
+      - 'scripts/qa-planet-regional-random-v145.mjs'
       - '.github/workflows/planet-v114.yml'
   workflow_dispatch:
 permissions:
@@ -35,6 +48,7 @@ jobs:
             /package.json
             /package-lock.json
             /eslint.config.mjs
+            /public/game/planets/earth/ne_110m_land.geojson
       - name: Node 22
         uses: actions/setup-node@v4
         with:
@@ -48,6 +62,27 @@ jobs:
           tests/planet-export-zip-v114.test.mjs
           tests/planet-modular-export-v124.test.mjs
           tests/planet-physical-material-v125.test.mjs
+          tests/planet-region-material-kit-v128.test.mjs
+          tests/planet-regional-shader-v129.test.mjs
+          tests/planet-extra-materials-v130.test.mjs
+          tests/planet-coastal-regions-v131.test.mjs
+          tests/planet-regional-pbr-v131.test.mjs
+          tests/planet-visual-fidelity-v132.test.mjs
+          tests/planet-visual-profile-v134.test.mjs
+          tests/planet-surface-fallback-v135.test.mjs
+          tests/planet-war-atlas-visual-v142.test.mjs
+          tests/planet-render-identity-v143.test.mjs
+          tests/planet-random-generator-v144.test.mjs
+          tests/planet-regional-material-random-v145.test.mjs
+          tests/planet-environment-v146.test.mjs
+          tests/planet-climate-map-v146.test.mjs
+          tests/planet-earth-reference-v147.test.mjs
+          tests/planet-lore-settings-v148.test.mjs
+          tests/planet-preflight-v149.test.mjs
+          tests/planet-surface-budget-v136.test.mjs
+          tests/planet-shape-library-v137.test.mjs
+          tests/planet-projection-parity-v138.test.mjs
+          tests/planet-topology-advisor-v139.test.mjs
           tests/planet-strategy-v114.test.mjs
           tests/planet-generator-draft-v103.test.mjs
           tests/planet-generator-v103.test.mjs
@@ -58,6 +93,13 @@ jobs:
           npx eslint
           app/game/systems/clanWarPlanetStrategyV114.ts
           app/game/planetModularExportV124.ts
+          app/game/planetRegionKitRasterV128.ts
+          app/game/planetRegionalShaderAtlasV129.ts
+          app/game/planetCoastalRegionsV131.ts
+          app/game/planetRegionalPbrAtlasesV131.ts
+          app/game/planetRegionalSurfaceAlbedoV135.ts
+          app/game/PlanetRegionalPreviewV129.tsx
+          app/game/systems/clanWarRegionalMaterialKitV128.ts
           app/game/PlanetLayerExportV102.tsx
           app/game/planetMaterialRendererV101.ts
           app/game/systems/planetExportZipV114.ts
@@ -66,9 +108,28 @@ jobs:
           app/game/systems/clanWarShapeAtlasV115.ts
           app/game/systems/clanWarTextureLibraryV115.ts
           app/game/systems/clanWarPlanetPhysicalIndexV125.ts
+          app/game/systems/clanWarPlanetSurfaceBudgetV136.ts
           app/game/systems/clanWarTextureLibraryV125.ts
+          app/game/systems/clanWarTextureLibraryV130.ts
           app/game/PlanetGeneratorV103.tsx
+          app/game/ClanWarAtlasV95.tsx
           app/game/PlanetShapePreviewV125.tsx
+          app/game/PlanetShapeLibraryV137.tsx
+          app/game/systems/clanWarShapeLibraryV137.ts
+          app/game/systems/clanWarAtlasVisualV142.ts
+          app/game/systems/planetRenderSignatureV143.ts
+          app/game/systems/clanWarPlanetDraftRandomV144.ts
+          app/game/systems/clanWarRegionalMaterialRandomV145.ts
+          app/game/systems/clanWarPlanetEnvironmentV146.ts
+          app/game/planetClimateMapV146.ts
+          app/game/PlanetEnvironmentalDossierV146.tsx
+          app/game/earthGeoReferenceV147.ts
+          app/game/PlanetEarthReferenceV147.tsx
+          app/game/systems/planetLoreSettingsV148.ts
+          app/game/systems/clanWarPlanetPreflightV149.ts
+          app/game/PlanetPreflightV149.tsx
+          app/game/systems/planetProjectionParityV138.ts
+          app/game/systems/clanWarPlanetTopologyAdvisorV139.ts
 
   browser-modules:
     name: V124 live PNG and ZIP verification
@@ -91,6 +152,11 @@ jobs:
             /public/game/planets/
             /public/game/assets/v15/trophies/manifest.json
             /scripts/qa-planet-modular-export-v124.mjs
+            /scripts/qa-planet-region-kit-v128.mjs
+            /scripts/qa-planet-random-v144.mjs
+            /scripts/qa-planet-regional-random-v145.mjs
+            /scripts/qa-planet-environment-v146.mjs
+            /scripts/qa-planet-earth-v147.mjs
             /package.json
             /package-lock.json
             /next.config.ts
@@ -114,11 +180,22 @@ jobs:
           done
           curl --fail --silent http://127.0.0.1:3101/planet-generator-v103 > /dev/null || { cat /tmp/yautja-planet-v124-next.log; exit 1; }
           node scripts/qa-planet-modular-export-v124.mjs
+          node scripts/qa-planet-region-kit-v128.mjs
+          node scripts/qa-planet-random-v144.mjs
+          node scripts/qa-planet-regional-random-v145.mjs
+          node scripts/qa-planet-environment-v146.mjs
+          node scripts/qa-planet-earth-v147.mjs
       - name: Upload V124 browser PNG, ZIP, screenshots and report
         if: ${{ always() }}
         uses: actions/upload-artifact@v4
         with:
           name: planet-v124-browser-${{ github.run_id }}
-          path: outputs/qa-planet-modular-v124/
+          path: |
+            outputs/qa-planet-modular-v124/
+            outputs/qa-planet-regional-kit-v128/
+            outputs/qa-planet-random-v144/
+            outputs/qa-planet-regional-random-v145/
+            outputs/qa-planet-environment-v146/
+            outputs/qa-planet-earth-v147/
           retention-days: 7
           if-no-files-found: ignore

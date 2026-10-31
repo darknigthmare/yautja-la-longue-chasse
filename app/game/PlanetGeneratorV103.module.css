@@ -12,3 +12,16 @@
 @media(max-width:700px){.workspace{grid-template-columns:1fr}.controlGrid{grid-template-columns:repeat(2,minmax(0,1fr))}.generator .controlTools button{font-size:11px}.generator label.lock{font-size:11px}.identity{padding-top:24px}.composerHeading{align-items:flex-start}.composerHeading>span{max-width:110px;line-height:1.5}.generator .header .badge{max-width:none}.module summary{padding:15px 12px}.moduleBody{padding:12px}}
 @media(max-width:480px){.controlGrid{grid-template-columns:1fr}.presetBar{padding:12px}.presetBar button{flex-basis:100%}.module summary small{font-size:10px}.module summary>span{gap:8px}.generator .controlTools button{padding-inline:14px}.generator .lock input{width:20px;min-width:20px;height:20px;min-height:20px}.legacy{padding:16px}}
 .quicklook{position:relative;width:min(100%,280px);aspect-ratio:1;margin:10px auto 18px;border-radius:50%;background:radial-gradient(circle,#24404720 35%,#07171c00 72%)}.quicklook canvas{position:absolute;inset:0}.quicklookFallback{position:absolute;inset:7%;border-radius:50%;border:1px solid #bed6c22b}
+
+/* V144: compact random controls, never interactive buttons inside <summary>. */
+.globalRandomV144{display:grid;gap:7px;padding:12px;border:1px solid #627f68;border-radius:8px;background:#19332f}
+.globalRandomV144 button{width:100%;font-size:13px;font-weight:650}
+.generator .globalRandomV144 p{font-size:11px;line-height:1.5;color:#c2d7be;margin:0}
+.advancedRandomBarV144{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:12px}
+.advancedRandomBarV144 button{min-height:40px;padding:8px 10px;font-size:11px}
+.advancedRandomBarV144 button:first-child{grid-column:1/-1;border-color:#aec391;background:#2b4335}
+.sectionRandomBarV144{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px}
+.generator .sectionRandomBarV144 .moduleDescription{flex:1;min-width:130px;margin:0}
+.sectionRandomBarV144 button{min-height:40px;padding:8px 12px;max-width:100%;border-color:#718c7a;font-size:11px}
+@media(max-width:550px){.sectionRandomBarV144{align-items:stretch;flex-direction:column}.sectionRandomBarV144 button{width:100%}}
+@media(max-width:400px){.advancedRandomBarV144{grid-template-columns:1fr}.advancedRandomBarV144 button:first-child{grid-column:1}}

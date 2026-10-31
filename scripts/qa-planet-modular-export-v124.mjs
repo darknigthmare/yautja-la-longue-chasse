@@ -53,6 +53,41 @@ try {
   check("V125 editor displays the three actual shape contours",
     await shapePreview.locator("svg path").count() === 3);
   await shapePreview.screenshot({ path: path.join(output, "after-v125-shape-preview.png") });
+  const library = generator.getByTestId("planet-shapes-library-v137");
+  await library.getByTestId("planet-shape-library-toggle-v137").click();
+  await library.getByTestId("planet-shape-category-v137").selectOption("continent");
+  await library.getByTestId("planet-shape-search-v137").fill("trident");
+  await library.getByTestId("planet-shape-scale-v137").selectOption("immense");
+  check("V137 filters all 120 genuine forms by continent, motif and footprint",
+    (await library.getByTestId("planet-shape-select-v137").count()) === 1 &&
+    (await library.getByTestId("planet-shape-count-v137").innerText()).includes("1 modèle"));
+  const continentDropdown = generator.locator('select[id$="-continent-shape-v115"]');
+  const originalContinent = await continentDropdown.inputValue();
+  await library.getByTestId("planet-shape-select-v137").click();
+  check("V137 selects the true V115 shape index without generating a world",
+    (await continentDropdown.inputValue()) === "31" &&
+    (await generator.getAttribute("data-preview-planet-code")) === planetCode);
+  await continentDropdown.selectOption(originalContinent);
+  await library.getByTestId("planet-shape-library-toggle-v137").click();
+
+
+  const topology = generator.getByTestId("planet-scale-topology-v139");
+  const sizeSelect = generator.locator('select[id$="-planet-size-v115"]');
+  const territorySelect = generator.locator('[data-generator-field="territoryCount"] select');
+  const regionCountSelect = generator.locator('[data-generator-field="regionCount"] select');
+  const beforeSize = await sizeSelect.inputValue();
+  const beforeTerritories = await territorySelect.inputValue();
+  const beforeRegions = await regionCountSelect.inputValue();
+  await sizeSelect.selectOption("colossal");
+  await topology.getByTestId("planet-scale-apply-v139").click();
+  check("V139 chooses the physical-size 96-territory and 12-region draft without altering the preview",
+    (await territorySelect.inputValue())==="96" && (await regionCountSelect.inputValue())==="12" &&
+    (await generator.getAttribute("data-preview-planet-code"))===planetCode);
+  await regionCountSelect.selectOption(beforeRegions);
+  await territorySelect.selectOption(beforeTerritories);
+  await sizeSelect.selectOption(beforeSize);
+  check("V139 can restore the exact previous draft topology",
+    (await generator.getAttribute("data-preview-planet-code"))===planetCode);
 
   const exporter = generator.getByTestId("planet-layer-export-v102");
   await exporter.locator("summary").click();
@@ -94,6 +129,14 @@ try {
     let occupied = 0;
     for (let index = 3; index < data.length; index += 4) if (data[index] !== 0) occupied++;
     check(`${layer} contains rasterized inland features rather than an empty placeholder`, occupied > 0);
+    let overlap = 0, interior = 0;
+    for (let pixel = 0; pixel < info.width * info.height; pixel++) {
+      if (data[pixel * 4 + 3] < 250) continue;
+      interior++;
+      if (indexRaw.data[pixel * 4 + 3] > 128) overlap++;
+    }
+    check(`${layer} does not overlap the V115 solid-land region mask`,
+      interior > 0 && overlap === 0);
   }
 
   const textureLab = exporter.getByTestId("planet-extra-materials-v125");
@@ -146,6 +189,10 @@ try {
     && manifest.modularMasks?.shapeCatalog?.length === 120);
   check("V125 manifest includes 32 independent earthlike / alien material entries",
     manifest.modularMasks?.supplementalMaterialCatalog?.length === 32);
+  const legacyIds = manifest.modularMasks?.supplementalMaterialCatalog?.map(item => item.id) ?? [];
+  const newIds = manifest.modularMasks?.supplementalMaterialAdditionsV130?.map(item => item.id) ?? [];
+  check("V140 manifest adds 16 new V130 materials without reordering the 32 historical entries",
+    newIds.length === 16 && new Set([...legacyIds,...newIds]).size === 48);
   check("V124 manifest matches every exported file and real canvas dimensions",
     manifest.layers.every(layer => {
       const file = files.get(layer.name);

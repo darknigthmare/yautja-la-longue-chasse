@@ -6,6 +6,15 @@ import {
 import { loadPlanetDetailedMaterialV103, planetDetailedMaterialKeyV103, planetDetailedMaterialStatusV103 } from "./planetDetailMaterialsV103";
 import { planetMaterialSourceV103, planetRegionalLayoutV103 } from "./systems/planetMaterialProfilesV103";
 import { createPlanetTextureCanvasV115 } from "./systems/clanWarTextureLibraryV115";
+import type { PlanetRegionalMaterialKitV128 } from "./systems/clanWarRegionalMaterialKitV128";
+import { validPlanetRegionalMaterialKitV128 } from "./systems/clanWarRegionalMaterialKitV128";
+import { createPlanetRegionalShaderAtlasV129, planetRegionalShaderAtlasKeyV129, planetRegionalTextureScaleV129 } from "./planetRegionalShaderAtlasV129";
+import { createPlanetCoastalRegionMaskV131, PLANET_COAST_INFLUENCE_KM_V131 } from "./planetCoastalRegionsV131";
+import { createPlanetRegionalPbrAtlasesV131 } from "./planetRegionalPbrAtlasesV131";
+import {
+  choosePlanetRegionalPipelineV135, createPlanetRegionalSurfaceAlbedoV135,
+  planetRegionalSurfaceAtlasKeyV135,
+} from "./planetRegionalSurfaceAlbedoV135";
 import {
   DEFAULT_PLANET_MATERIAL_SETTINGS_V101, PLANET_MATERIAL_LAYERS_V101, planetMaterialRecipeV101,
   unwrapPlanetPolygonV101, wrapPlanetLongitudeV101, planetMaterialSourceV101, type PlanetMaterialLayerV101, type PlanetMaterialSettingsV101, type PlanetMaterialViewV101,
@@ -17,6 +26,11 @@ export interface PlanetMaterialRenderRequestV101 extends PlanetMaterialViewV101 
   settings?: Readonly<PlanetMaterialSettingsV101>;
   textureSize?: 512 | 1024 | 2048;
   signal?: AbortSignal;
+  /** Opt-in comparison overlay. World save recipes remain unchanged. */
+  regionalKit?: PlanetRegionalMaterialKitV128;
+  /** Enabled only by the opt-in regional preview. Never encoded into a planet. */
+  regionalPbr?: boolean;
+  coastalInfluenceKm?: number;
 }
 
 /** One shared GPU context serves the atlas and every visible portrait. Sources,
@@ -109,7 +123,7 @@ export function createPlanetLandMaskV101(planet: WarPlanetV96, width = 1024): HT
     }
   }
   const procedural = planet.procedural;
-  if (procedural?.recipe.version === 103 && "hydrology" in procedural) {
+  if (procedural && (procedural.recipe.version === 103 || procedural.recipe.version === 115) && "hydrology" in procedural) {
     context.fillStyle = "#000";
     for (const feature of procedural.hydrology.features) {
       const points = unwrapPlanetPolygonV101(feature.points);
@@ -154,6 +168,13 @@ uniform sampler2D uMask, uLand, uSurface, uClouds, uWeather, uAurora, uRegions;
 #ifdef PLANET_MATERIAL_V103
 uniform vec3 uRegionalGrid;
 uniform vec4 uMaterialScaleContrast, uLandPalette;
+#endif
+#ifdef PLANET_MATERIAL_V131
+uniform sampler2D uSeaRegional;
+#ifndef PLANET_MATERIAL_V135
+uniform sampler2D uPbrNormal, uPbrFactors;
+#endif
+uniform float uRegionCount, uPbrSurfaceEnabled;
 #endif
 const float PI = 3.141592653589793;
 
@@ -205,6 +226,84 @@ vec4 regionalTriplanar(vec3 world, float region) {
 #endif
   return regionalSample(p.yz, region) * weight.x + regionalSample(p.xz, region) * weight.y + regionalSample(p.xy, region) * weight.z;
 }
+
+#ifdef PLANET_MATERIAL_V131
+// Both domains are packed into two double-height atlases. The same region
+// cell index is used by the land mask, ocean-coast influence mask and PNG kit.
+vec4 pbrSample(sampler2D atlas, vec2 uv, float region, float domain) {
+  float columns = uRegionalGrid.x;
+  float rows = uRegionalGrid.y;
+  vec2 cell = vec2(mod(region, columns), floor(region / columns) + domain * rows);
+  float inset = max(uRegionalInset, .004);
+  vec2 local = clamp(mirrorUV(uv), vec2(inset), vec2(1.0 - inset));
+  return texture2D(atlas, (cell + local) / vec2(columns, rows * 2.0));
+}
+vec4 materialAtlasSample(sampler2D atlas, vec2 uv, float region) {
+  float columns = uRegionalGrid.x;
+  vec2 cell = vec2(mod(region, columns), floor(region / columns));
+  float inset = max(uRegionalInset, .004);
+  vec2 local = clamp(mirrorUV(uv), vec2(inset), vec2(1.0 - inset));
+  return texture2D(atlas, (cell + local) / uRegionalGrid.xy);
+}
+vec4 surfaceTriplanar131(vec3 world, float region) {
+  vec3 weight = pow(abs(world), vec3(4.0));
+  weight /= max(.001, weight.x + weight.y + weight.z);
+  float scale = 2.4 * uMaterialScaleContrast.y;
+  vec3 p = world * scale + vec3(uSeed + 4.0, uSeed * .71 + 4.0, uSeed * .37 + 4.0);
+  return materialAtlasSample(uSeaRegional, p.yz, region) * weight.x
+    + materialAtlasSample(uSeaRegional, p.xz, region) * weight.y
+    + materialAtlasSample(uSeaRegional, p.xy, region) * weight.z;
+}
+#ifndef PLANET_MATERIAL_V135
+vec3 triplanarNormal131(vec3 world, float region, float domain, float scale, float offset) {
+  vec3 weights = pow(abs(world), vec3(4.0));
+  weights /= max(.001, weights.x + weights.y + weights.z);
+  vec3 p = world * scale + vec3(offset, offset * .71, offset * .37);
+  vec3 x = pbrSample(uPbrNormal, p.yz, region, domain).rgb * 2.0 - 1.0;
+  vec3 y = pbrSample(uPbrNormal, p.xz, region, domain).rgb * 2.0 - 1.0;
+  vec3 z = pbrSample(uPbrNormal, p.xy, region, domain).rgb * 2.0 - 1.0;
+  vec3 projected = vec3(x.z * sign(world.x), x.x, x.y) * weights.x
+    + vec3(y.x, y.z * sign(world.y), y.y) * weights.y
+    + vec3(z.x, z.y, z.z * sign(world.z)) * weights.z;
+  return normalize(mix(world, normalize(projected + world * .001), .35));
+}
+vec4 triplanarFactors131(vec3 world, float region, float domain, float scale, float offset) {
+  vec3 weights = pow(abs(world), vec3(4.0));
+  weights /= max(.001, weights.x + weights.y + weights.z);
+  vec3 p = world * scale + vec3(offset, offset * .71, offset * .37);
+  return pbrSample(uPbrFactors, p.yz, region, domain) * weights.x
+    + pbrSample(uPbrFactors, p.xz, region, domain) * weights.y
+    + pbrSample(uPbrFactors, p.xy, region, domain) * weights.z;
+}
+// Dielectric GGX with a bounded height-based microcavity term, normal map,
+// roughness and actual emissive source. No claimed geometric displacement or
+// physical atmospheric simulation. Metallic workflow requires material metadata.
+vec3 regionalPbrLight131(vec3 color, vec3 world, vec3 normal, vec4 factors, vec3 sunlight) {
+  float rough = clamp(factors.g, .08, .98);
+  float height = factors.r;
+  float emit = factors.b;
+  vec3 view = normalize(world + vec3(.001, .001, .001));
+  vec3 halfVector = normalize(sunlight + view);
+  float ndotl = max(dot(normal, sunlight), 0.0);
+  float ndotv = max(dot(normal, view), .02);
+  float ndoth = max(dot(normal, halfVector), 0.0);
+  float vdoth = max(dot(view, halfVector), 0.0);
+  float alpha = rough * rough;
+  float a2 = alpha * alpha;
+  float d = ndoth * ndoth * (a2 - 1.0) + 1.0;
+  float distribution = a2 / (PI * d * d + .00001);
+  float k = (rough + 1.0) * (rough + 1.0) / 8.0;
+  float geometry = ndotl / (ndotl * (1.0 - k) + k + .00001)
+    * ndotv / (ndotv * (1.0 - k) + k + .00001);
+  float fresnel = .04 + .96 * pow(1.0 - vdoth, 5.0);
+  float spec = min(1.0, distribution * geometry * fresnel
+    / (4.0 * max(.02, ndotl * ndotv))) * ndotl;
+  float cavity = mix(.80, 1.03, smoothstep(.15, .85, height));
+  return clamp(color * (.34 + .66 * ndotl) * cavity + vec3(spec * .52)
+    + color * emit * .72, 0.0, 1.0);
+}
+#endif // PLANET_MATERIAL_V135
+#endif // PLANET_MATERIAL_V131
 vec4 over(vec4 under, vec4 top) {
   float alpha = top.a + under.a * (1.0 - top.a);
   return vec4((top.rgb * top.a + under.rgb * under.a * (1.0 - top.a)) / max(alpha, ALPHA_EPSILON), alpha);
@@ -245,6 +344,13 @@ void main() {
   float region = clamp(floor(texture2D(uRegions, mapUV).r * 255.0 + .5), 0.0, uRegionalGrid.z);
   vec4 terrainTex = uRegionalLand > .5 ? regionalTriplanar(world, region) : triplanar(uLand, world, 3.1 * uMaterialScaleContrast.x, uSeed);
   vec4 seaTex = triplanar(uSurface, world, 2.4 * uMaterialScaleContrast.y, uSeed + 4.0);
+#ifdef PLANET_MATERIAL_V131
+  vec4 coastalSample = texture2D(uRegions, mapUV);
+  float coastCode = floor(coastalSample.r * 255.0 + .5);
+  float coastal = uPbrSurfaceEnabled > .5 && coastCode < uRegionCount - .5 ? coastalSample.b : 0.0;
+  vec4 localSurface = surfaceTriplanar131(world, clamp(coastCode, 0.0, uRegionalGrid.z));
+  seaTex = mix(seaTex, localSurface, coastal);
+#endif
   if (uMaterialScaleContrast.z != 1.0) terrainTex.rgb = clamp((terrainTex.rgb - .5) * uMaterialScaleContrast.z + .5, 0.0, 1.0);
   if (uMaterialScaleContrast.w != 1.0) seaTex.rgb = clamp((seaTex.rgb - .5) * uMaterialScaleContrast.w + .5, 0.0, 1.0);
 #else
@@ -255,6 +361,9 @@ void main() {
   float seaValue = brightness(seaTex.rgb);
   vec3 sea = mix(uDeep, uBase, clamp(seaValue * 1.6, .0, 1.0));
   sea = mix(sea, uDetail, smoothstep(.6, .98, seaValue) * .36);
+#ifdef PLANET_MATERIAL_V131
+  sea = mix(sea, seaTex.rgb, coastal * .86);
+#endif
   float landValue = brightness(terrainTex.rgb);
   vec3 tint = uLandColor * (.43 + landValue * 1.25);
   vec3 terrain = uRegionalLand > .5 ? terrainTex.rgb : mix(terrainTex.rgb, tint, .4);
@@ -264,6 +373,20 @@ void main() {
   vec3 albedo = mix(sea, terrain, land);
 
   vec3 sun = normalize(vec3(.67101, .57358, -.46985));
+#if defined(PLANET_MATERIAL_V131) && !defined(PLANET_MATERIAL_V135)
+  float landScale = 3.1 * uMaterialScaleContrast.x;
+  vec3 landNormal = triplanarNormal131(world, region, 0.0, landScale, uSeed);
+  vec4 landFactors = triplanarFactors131(world, region, 0.0, landScale, uSeed);
+  terrain = regionalPbrLight131(terrain, world, landNormal, landFactors, sun);
+  if (coastal > .01) {
+    float seaScale = 2.4 * uMaterialScaleContrast.y;
+    vec3 seaNormal = triplanarNormal131(world, region, 1.0, seaScale, uSeed + 4.0);
+    vec4 seaFactors = triplanarFactors131(world, region, 1.0, seaScale, uSeed + 4.0);
+    vec3 litSea = regionalPbrLight131(sea, world, seaNormal, seaFactors, sun);
+    sea = mix(sea, litSea, coastal);
+  }
+  albedo = mix(sea, terrain, land);
+#endif
   float sunDot = dot(world, sun);
   float light = .52 + .48 * max(0.0, sunDot);
   float shadeAlpha = (1.0 - light) * uSettings.w;
@@ -321,6 +444,7 @@ interface SharedRenderer {
 }
 let shared: SharedRenderer | null | undefined;
 let rendererError = "";
+let lastRendererMode = "native";
 
 function shader(gl: WebGLRenderingContext, type: number, source: string) {
   const result = gl.createShader(type);
@@ -333,10 +457,13 @@ function shader(gl: WebGLRenderingContext, type: number, source: string) {
   return result;
 }
 
-function createProgram(gl: WebGLRenderingContext, version: 102 | 103) {
+function createProgram(gl: WebGLRenderingContext, version: 102 | 103 | 131 | 135) {
   // Two small programs share one context and texture pool. Preprocessing keeps
   // the published V101/V102 arithmetic intact when the V103 define is absent.
-  const vertex = shader(gl, gl.VERTEX_SHADER, vertexSource), fragment = shader(gl, gl.FRAGMENT_SHADER, (version === 103 ? "#define PLANET_MATERIAL_V103\n" : "") + fragmentSource);
+  const vertex = shader(gl, gl.VERTEX_SHADER, vertexSource), fragment = shader(gl, gl.FRAGMENT_SHADER,
+    (version === 131 ? "#define PLANET_MATERIAL_V103\n#define PLANET_MATERIAL_V131\n"
+      : version === 135 ? "#define PLANET_MATERIAL_V103\n#define PLANET_MATERIAL_V131\n#define PLANET_MATERIAL_V135\n"
+      : version === 103 ? "#define PLANET_MATERIAL_V103\n" : "") + fragmentSource);
   const program = gl.createProgram();
   if (!program) throw new Error("Planet program allocation failed");
   gl.attachShader(program, vertex); gl.attachShader(program, fragment);
@@ -358,7 +485,7 @@ function initializeRenderer(canvas: HTMLCanvasElement): SharedRenderer {
   return { canvas, gl, program, uniforms, textures: new Map(), programs: new Map([[102, { program, uniforms }]]) };
 }
 
-function selectProgram(state: SharedRenderer, version: 102 | 103) {
+function selectProgram(state: SharedRenderer, version: 102 | 103 | 131 | 135) {
   let selected = state.programs.get(version);
   if (!selected) {
     selected = { program: createProgram(state.gl, version), uniforms: new Map() };
@@ -434,13 +561,33 @@ export async function drawPlanetMaterialV101(target: HTMLCanvasElement, request:
   if (!state) return false;
   const layer = request.layer ?? "composite", settings = request.settings ?? DEFAULT_PLANET_MATERIAL_SETTINGS_V101;
   const recipe = planetMaterialRecipeV101(request.planet), size = request.textureSize ?? 512;
+  if (request.regionalKit && !validPlanetRegionalMaterialKitV128(request.planet, request.regionalKit)) {
+    rendererError = "Kit régional incompatible avec cette planète."; return false;
+  }
   const useLand = ["composite", "albedo", "land"].includes(layer);
-  const regionalLand = useLand && recipe.mapping === "world-space-triplanar-regional";
+  const useV129 = Boolean(request.regionalKit && useLand);
+  const regionalLand = useLand && (recipe.mapping === "world-space-triplanar-regional" || useV129);
   const regionalSourceSize = Math.min(size, 1024);
   const maxTextureSize = Number(state.gl.getParameter(state.gl.MAX_TEXTURE_SIZE));
-  const regionalLayout = recipe.materials ? planetRegionalLayoutV103(request.planet.regions.length, regionalSourceSize, maxTextureSize) : null;
-  const regionalTileSize = regionalLayout?.tileSize ?? 2 ** Math.floor(Math.log2(Math.max(16, Math.min(regionalSourceSize, maxTextureSize / 4))));
-  const regionalKey = `regional-land:${planetRegionalAtlasKeyV102(request.planet, regionalTileSize, regionalSourceSize)}`;
+  const maxSamplers = Number(state.gl.getParameter(state.gl.MAX_TEXTURE_IMAGE_UNITS));
+  const regionalLayout = recipe.materials || useV129 ? planetRegionalLayoutV103(request.planet.regions.length, regionalSourceSize, maxTextureSize) : null;
+  const canRunPbr = Boolean(useV129 && request.regionalPbr && maxSamplers >= 10 && regionalLayout &&
+    maxTextureSize >= 32 * regionalLayout.rows * 2);
+  const regionalTileSize = canRunPbr ? 2 ** Math.floor(Math.log2(
+    Math.max(16, Math.min(128, regionalLayout!.tileSize, maxTextureSize / (regionalLayout!.rows * 2)))))
+    : regionalLayout?.tileSize ?? 2 ** Math.floor(Math.log2(Math.max(16, Math.min(regionalSourceSize, maxTextureSize / 4))));
+  const hasSelectedSurface = Boolean(request.regionalKit?.entries.some(entry => entry.surfaceMaterialId !== null));
+  const pipeline = choosePlanetRegionalPipelineV135({
+    selected: useV129, wantsPbr: Boolean(request.regionalPbr), hasSurface: hasSelectedSurface,
+    samplers: maxSamplers, maxTextureSize, regionalRows: regionalLayout?.rows ?? 1,
+    tileSize: regionalTileSize,
+  });
+  const usePbrV131 = pipeline === "pbr-v131";
+  const useAlbedoSeaV135 = pipeline === "albedo-coastal-v135";
+  const hasRegionalSurface = hasSelectedSurface && (usePbrV131 || useAlbedoSeaV135);
+  const regionalKey = "regional-land:" + (useV129
+    ? planetRegionalShaderAtlasKeyV129(request.planet, request.regionalKit!, regionalTileSize, regionalLayout!.columns, regionalLayout!.rows)
+    : planetRegionalAtlasKeyV102(request.planet, regionalTileSize, regionalSourceSize));
   const useSurface = ["composite", "albedo", "surface", "emissive"].includes(layer);
   const useClouds = layer === "clouds" || layer === "composite" && settings.clouds;
   const useWeather = layer === "weather" || layer === "composite" && settings.weather;
@@ -454,10 +601,16 @@ export async function drawPlanetMaterialV101(target: HTMLCanvasElement, request:
     ? details[index] ? planetDetailedMaterialKeyV103(url, details[index]!, imageSizes[index]) : `${size}:${url}` : "empty");
   try {
     const images = await Promise.all(urls.map((url, index) => index === 0 && regionalLand
-      ? loadPlanetRegionalAtlasV102(request.planet, regionalTileSize, regionalSourceSize, loadMaterial)
+      ? useV129 ? createPlanetRegionalShaderAtlasV129(request.planet, request.regionalKit!, regionalTileSize, regionalLayout!.columns, regionalLayout!.rows, request.signal)
+        : loadPlanetRegionalAtlasV102(request.planet, regionalTileSize, regionalSourceSize, loadMaterial)
       : url ? details[index] ? loadPlanetDetailedMaterialV103(url, details[index]!, imageSizes[index], loadMaterial) : loadMaterial(url, size) : null));
     if (request.signal?.aborted || state !== shared || state.gl.isContextLost()) return false;
-    selectProgram(state, recipe.materials ? 103 : 102);
+    const pbrAtlas = usePbrV131 ? createPlanetRegionalPbrAtlasesV131(
+      request.planet, request.regionalKit!, regionalTileSize, regionalLayout!.columns, regionalLayout!.rows, request.signal) : null;
+    const coastalAlbedo = useAlbedoSeaV135 ? createPlanetRegionalSurfaceAlbedoV135(
+      request.planet, request.regionalKit!, regionalTileSize, regionalLayout!.columns, regionalLayout!.rows, request.signal) : null;
+    if (request.signal?.aborted || state !== shared || state.gl.isContextLost()) return false;
+    selectProgram(state, usePbrV131 ? 131 : useAlbedoSeaV135 ? 135 : recipe.materials || useV129 ? 103 : 102);
     const { gl, canvas } = state;
     const max = Math.min(4096, Number(gl.getParameter(gl.MAX_RENDERBUFFER_SIZE)));
     const width = Math.max(1, Math.min(max, Math.round(target.width))), height = Math.max(1, Math.min(max, Math.round(target.height)));
@@ -468,8 +621,30 @@ export async function drawPlanetMaterialV101(target: HTMLCanvasElement, request:
     const maskWidth = size > 512 ? 2048 : 1024;
     bindTexture(state, 0, "uMask", `mask:${request.planet.id}:${maskWidth}`, createPlanetLandMaskV101(request.planet, maskWidth));
     ["uLand", "uSurface", "uClouds", "uWeather", "uAurora"].forEach((name, index) => bindTexture(state, index + 1, name, imageKeys[index], images[index]));
-    bindTexture(state, 6, "uRegions", regionalLand ? `regions:${request.planet.id}:${maskWidth}` : "empty",
-      regionalLand ? createPlanetRegionMaskV102(request.planet, maskWidth) : null, true);
+    const coastlineKey = hasRegionalSurface ? [
+      "coastal-v131", request.planet.id, maskWidth,
+      request.coastalInfluenceKm ?? PLANET_COAST_INFLUENCE_KM_V131,
+      ...request.regionalKit!.entries.map(entry => Number(entry.surfaceMaterialId !== null)),
+    ].join(":") : "";
+    bindTexture(state, 6, "uRegions", regionalLand
+      ? hasRegionalSurface ? coastlineKey : `regions:${request.planet.id}:${maskWidth}` : "empty",
+      regionalLand ? hasRegionalSurface
+        ? createPlanetCoastalRegionMaskV131(request.planet, request.regionalKit!, maskWidth,
+          request.coastalInfluenceKm ?? PLANET_COAST_INFLUENCE_KM_V131)
+        : createPlanetRegionMaskV102(request.planet, maskWidth) : null, true);
+    if (usePbrV131 && pbrAtlas) {
+      bindTexture(state, 7, "uSeaRegional", "sea-regional:" + pbrAtlas.key, pbrAtlas.surfaceAlbedo);
+      bindTexture(state, 8, "uPbrNormal", "normal-regional:" + pbrAtlas.key, pbrAtlas.normals);
+      bindTexture(state, 9, "uPbrFactors", "factors-regional:" + pbrAtlas.key, pbrAtlas.factors);
+    } else if (useAlbedoSeaV135 && coastalAlbedo) {
+      const key = planetRegionalSurfaceAtlasKeyV135(
+        request.planet, request.regionalKit!, regionalTileSize, regionalLayout!.columns, regionalLayout!.rows);
+      bindTexture(state, 7, "uSeaRegional", "sea-regional:" + key, coastalAlbedo);
+    }
+    if (usePbrV131 || useAlbedoSeaV135) {
+      gl.uniform1f(uniform(state, "uRegionCount"), request.planet.regions.length);
+      gl.uniform1f(uniform(state, "uPbrSurfaceEnabled"), Number(hasRegionalSurface));
+    }
     gl.uniform2f(uniform(state, "uResolution"), width, height);
     gl.uniform2f(uniform(state, "uLogical"), request.width, request.height);
     gl.uniform2f(uniform(state, "uCenter"), request.centerX, request.centerY);
@@ -483,10 +658,12 @@ export async function drawPlanetMaterialV101(target: HTMLCanvasElement, request:
     gl.uniform1f(uniform(state, "uSeed"), (recipe.seed % 1000) / 113);
     gl.uniform1f(uniform(state, "uRegionalLand"), Number(regionalLand));
     gl.uniform1f(uniform(state, "uRegionalInset"), .5 / regionalTileSize);
-    if (recipe.materials) {
+    if (recipe.materials || useV129) {
+      const scale = useV129 ? planetRegionalTextureScaleV129(request.planet) : 1;
       gl.uniform3f(uniform(state, "uRegionalGrid"), regionalLayout!.columns, regionalLayout!.rows, request.planet.regions.length - 1);
-      gl.uniform4f(uniform(state, "uMaterialScaleContrast"), recipe.materials.land.scale, recipe.materials.surface.scale, recipe.materials.land.contrast, recipe.materials.surface.contrast);
-      gl.uniform4f(uniform(state, "uLandPalette"), ...rgb(recipe.materials.land.palette ?? "#000000"), recipe.materials.land.palette ? .72 : 0);
+      gl.uniform4f(uniform(state, "uMaterialScaleContrast"), (recipe.materials?.land.scale ?? 1) * scale,
+        (recipe.materials?.surface.scale ?? 1) * scale, recipe.materials?.land.contrast ?? 1, recipe.materials?.surface.contrast ?? 1);
+      gl.uniform4f(uniform(state, "uLandPalette"), ...rgb(recipe.materials?.land.palette ?? "#000000"), recipe.materials?.land.palette ? .72 : 0);
     }
     gl.uniform4f(uniform(state, "uSettings"), Number(settings.atmosphere) * recipe.atmosphereDensity, Number(settings.clouds), Number(settings.weather), Number(settings.lighting));
     gl.uniform1f(uniform(state, "uAuroraSwitch"), Number(settings.aurora ?? settings.weather));
@@ -499,6 +676,7 @@ export async function drawPlanetMaterialV101(target: HTMLCanvasElement, request:
     context.clearRect(0, 0, target.width, target.height);
     context.drawImage(canvas, 0, 0, target.width, target.height);
     rendererError = "";
+    lastRendererMode = usePbrV131 ? "pbr-v131" : useAlbedoSeaV135 ? "albedo-coastal-v135" : useV129 ? "albedo-v129" : "native";
     return true;
   } catch (error) { rendererError = String(error); return false; }
 }
@@ -515,5 +693,5 @@ export async function createPlanetRegionalMaterialAtlasV124(
 }
 
 export function planetMaterialRendererStatusV101() {
-  return { available: Boolean(shared), error: rendererError, decodedSources: sourceCache.size, pendingSources: pendingSources.size, activeLoads, masks: maskCache.size, gpuTextures: shared?.textures.size ?? 0, contexts: shared ? 1 : 0, programs: shared?.programs.size ?? 0, ...planetRegionalMaterialStatusV102(), ...planetDetailedMaterialStatusV103() };
+  return { available: Boolean(shared), error: rendererError, renderMode: lastRendererMode, decodedSources: sourceCache.size, pendingSources: pendingSources.size, activeLoads, masks: maskCache.size, gpuTextures: shared?.textures.size ?? 0, contexts: shared ? 1 : 0, programs: shared?.programs.size ?? 0, ...planetRegionalMaterialStatusV102(), ...planetDetailedMaterialStatusV103() };
 }
