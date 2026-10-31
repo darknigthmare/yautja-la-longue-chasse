@@ -435,6 +435,26 @@ try {
     (await restoredKit.getByTestId("planet-regional-coastal-v131").inputValue()) === "1800");
   await restoredTab.close();
 
+  // Real strategic screen (not the generator preview): V142 loads only on
+  // user click. The exercise remains separate from the campaign save.
+  await kit.getByTestId("planet-visual-save-v134").click();
+  await generator.getByRole("button", { name: "Ouvrir ce front", exact: true }).click();
+  const warPanel = page.locator('[data-clan-war-v85="free-profile"]');
+  await warPanel.waitFor({ state: "visible", timeout: 90000 });
+  const liveAtlas = warPanel.getByTestId("clan-war-atlas-v95");
+  await liveAtlas.waitFor({ state: "visible", timeout: 60000 });
+  check("V142 does not auto-apply the saved appearance in real battle",
+    (await liveAtlas.getAttribute("data-regional-profile-source")) === "native" &&
+    (await liveAtlas.getAttribute("data-regional-profile-active")) === "false");
+  await liveAtlas.getByTestId("war-atlas-local-load-v142").click();
+  check("V142 explicit request loads the correct planet code without changing war state",
+    (await liveAtlas.getAttribute("data-regional-profile-source")) === "local" &&
+    (await liveAtlas.getAttribute("data-regional-profile-code")) === code);
+  await liveAtlas.getByTestId("war-atlas-local-reset-v142").click();
+  check("V142 local reset restores native game atlas",
+    (await liveAtlas.getAttribute("data-regional-profile-source")) === "native" &&
+    (await liveAtlas.getAttribute("data-regional-profile-active")) === "false");
+
   await kit.getByTestId("planet-visual-delete-v134").click();
   check("V134 deletion only clears the local key, not the live draft or the planet",
     await page.evaluate(key => window.localStorage.getItem(key) === null, visualStorageKey) &&

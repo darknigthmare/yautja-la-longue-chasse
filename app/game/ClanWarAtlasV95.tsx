@@ -12,6 +12,8 @@ import {
 } from "./systems/clanWarAtlasV95";
 import styles from "./ClanWarAtlasV95.module.css";
 import PlanetMaterialCanvasV101 from "./PlanetMaterialCanvasV101";
+import { readPlanetVisualProfileV134 } from "./systems/clanWarPlanetVisualProfileV134";
+import { resolveWarAtlasVisualV142 } from "./systems/clanWarAtlasVisualV142";
 import type { PlanetVisualProfileV134 } from "./systems/clanWarPlanetVisualProfileV134";
 import { DEFAULT_PLANET_MATERIAL_SETTINGS_V101 } from "./systems/planetMaterialV101";
 import { warConvoyRouteIssueV105 } from "./systems/clanWarConvoyRouteV105";
@@ -118,7 +120,7 @@ function PlanetSurfaceDefinitions({ planet, unique }: { planet: WarPlanetV96; un
 /** Geography, names and routes follow the active planet; only faction control colors are shared. */
 export default function ClanWarAtlasV95({
   simulation, selectedTerritoryId, targetTerritoryId, onSelectTerritory, onSelectTarget,
-  visualProfile = null,
+  visualProfile,
 }: ClanWarAtlasV95Props) {
   const unique = `war-atlas-${useId().replace(/[^a-zA-Z0-9_-]/g, "")}`;
   const planet = warPlanetV96(simulation.planetId) ?? warPlanetV96()!;
@@ -137,6 +139,23 @@ export default function ClanWarAtlasV95({
   const [showNames, setShowNames] = useState(false);
   const [showIntelligence, setShowIntelligence] = useState(false);
   const [materialReady, setMaterialReady] = useState(false);
+  const [localAppearanceV142, setLocalAppearanceV142] = useState<PlanetVisualProfileV134 | null>(null);
+  const [visualNoticeV142, setVisualNoticeV142] = useState("");
+  const manuallyControlledV142 = visualProfile === undefined;
+  const visualSelectionV142 = resolveWarAtlasVisualV142(planet, visualProfile, localAppearanceV142);
+  const appearanceV142 = visualSelectionV142.profile;
+  const loadLocalAppearanceV142 = () => {
+    const stored = readPlanetVisualProfileV134(planet, window.localStorage);
+    if (stored.status === "loaded") {
+      setLocalAppearanceV142(stored.profile);
+      setVisualNoticeV142("Profil régional local activé pour ce monde, sans modification des archives de guerre.");
+    } else {
+      setLocalAppearanceV142(null);
+      setVisualNoticeV142(stored.status === "invalid" ? "Profil local incompatible ou altéré : ignoré."
+        : stored.status === "unavailable" ? "Stockage local indisponible."
+        : "Aucun profil visuel local enregistré pour ce monde.");
+    }
+  };
   const [mapColors, setMapColors] = useState<"terrain" | "control">("terrain");
   const [materialSettings, setMaterialSettings] = useState({ ...DEFAULT_PLANET_MATERIAL_SETTINGS_V101, aurora: true });
   const [regionFilter, setRegionFilter] = useState("");
@@ -246,8 +265,9 @@ export default function ClanWarAtlasV95({
   const statusLabel = (id: string) => id === source.id ? "Départ / sélection" : id === targetTerritoryId ? "Cible" : source.neighbors.includes(id) ? "Voisin accessible" : "";
 
   return <section className={styles.atlas} aria-labelledby={`${unique}-heading`} data-testid="clan-war-atlas-v95" data-planet-id={planet.id} data-planet-style={planet.style} data-surface-kind={planet.surface.kind} data-landmass-count={landmasses.length}
-      data-regional-profile-active={Boolean(visualProfile)}
-      data-regional-profile-code={visualProfile?.worldCode ?? ""}>
+      data-regional-profile-active={Boolean(appearanceV142)}
+      data-regional-profile-code={appearanceV142?.worldCode ?? ""}
+      data-regional-profile-source={visualSelectionV142.source}>
     <header className={styles.header}>
       <div><p className={styles.eyebrow}>THÉÂTRE PLANÉTAIRE / {planet.subtitle}</p><h4 id={`${unique}-heading`}>{planet.name}<span>Atlas des territoires</span></h4></div>
       <div className={styles.turn}><span className={styles.signal} aria-hidden="true"/>Tour <strong>{String(simulation.turn).padStart(2, "0")}</strong><small>{territories.length} territoires · {regions.length} régions</small><small>{landmassLabel}</small></div>
@@ -275,7 +295,19 @@ export default function ClanWarAtlasV95({
         const region = regions.find(item => item.id === event.target.value);
         if (region) { setLongitude(region.longitude); setLatitude(region.latitude); }
       }}><option value="">Toute la planète</option>{regions.map(region => <option key={region.id} value={region.id}>{region.name}</option>)}</select></label>
+      {manuallyControlledV142 && <div className={styles.segmented} aria-label="Apparence régionale locale" data-testid="war-atlas-local-profile-v142">
+        <button type="button" data-testid="war-atlas-local-load-v142"
+          onClick={loadLocalAppearanceV142}>Charger mes matières locales</button>
+        <button type="button" data-testid="war-atlas-local-reset-v142"
+          disabled={!appearanceV142}
+          onClick={()=>{
+            setLocalAppearanceV142(null);
+            setVisualNoticeV142("Matériaux natifs restaurés, sans écriture du front.");
+          }}>Matières natives</button>
+      </div>}
     </div>
+    {manuallyControlledV142 && visualNoticeV142 && <p className={styles.mapNote}
+      data-testid="war-atlas-visual-status-v142" role="status">{visualNoticeV142}</p>}
 
     <div className={styles.workspace}>
       <div className={styles.cartography}>
@@ -312,8 +344,8 @@ export default function ClanWarAtlasV95({
             <foreignObject x="0" y="0" width="960" height="620" pointerEvents="none" aria-hidden="true">
               <PlanetMaterialCanvasV101 planet={planet} projection={projection} width={960} height={620} longitude={longitude} latitude={latitude}
                 radius={view.radius} centerX={480} centerY={306} mapTop={70} mapHeight={480} resolution={960}
-                regionalKit={visualProfile?.kit} regionalPbr={visualProfile?.quality === "pbr"}
-                coastalInfluenceKm={visualProfile?.coastalInfluenceKm}
+                regionalKit={appearanceV142?.kit} regionalPbr={appearanceV142?.quality === "pbr"}
+                coastalInfluenceKm={appearanceV142?.coastalInfluenceKm}
                 settings={materialSettings} onReady={setMaterialReady}/>
             </foreignObject>
             <g transform={projection === "map" ? "translate(0 70)" : undefined}>
