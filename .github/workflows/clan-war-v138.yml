@@ -1,4 +1,4 @@
-name: V138 four-mode tactical progress and source QA
+name: V138 four-mode tactical progress and source-safe QA
 on:
   push:
     branches: [feat/v138-four-modes-tactics-intel-medics-20261031]
@@ -79,6 +79,7 @@ jobs:
             /tests/clan-war-four-modes-v136.test.mjs
             /tests/clan-war-four-modes-v137.test.mjs
             /tests/clan-war-four-modes-v138.test.mjs
+            /tests/clan-war-production-v138.test.mjs
             /tests/clan-war-production-v137.test.mjs
             /tests/clan-war-production-v136.test.mjs
             /tests/clan-war-production-v135.test.mjs
@@ -99,10 +100,10 @@ jobs:
       - name: npm ci — locked packages
         run: npm ci --ignore-scripts --no-audit --no-fund
       - name: Four modes V138 plus V115–V137 regression
-        run: node --test --test-reporter=spec tests/clan-war-four-modes-v138.test.mjs tests/clan-war-four-modes-v137.test.mjs tests/clan-war-production-v137.test.mjs tests/clan-war-four-modes-v136.test.mjs tests/clan-war-production-v136.test.mjs tests/clan-war-four-modes-v135.test.mjs tests/clan-war-production-v135.test.mjs tests/clan-war-operations-v115.test.mjs tests/clan-war-operation-cross-mode-v115.test.mjs tests/clan-war-outer-recall-v116.test.mjs tests/clan-war-tactical-runtime-v115.test.mjs tests/clan-war-assault-special-v117.test.mjs tests/clan-war-rts-squads-v133.test.mjs tests/clan-war-rts-rally-v134.test.mjs
+        run: node --test --test-reporter=spec tests/clan-war-four-modes-v138.test.mjs tests/clan-war-production-v138.test.mjs tests/clan-war-four-modes-v137.test.mjs tests/clan-war-production-v137.test.mjs tests/clan-war-four-modes-v136.test.mjs tests/clan-war-production-v136.test.mjs tests/clan-war-four-modes-v135.test.mjs tests/clan-war-production-v135.test.mjs tests/clan-war-operations-v115.test.mjs tests/clan-war-operation-cross-mode-v115.test.mjs tests/clan-war-outer-recall-v116.test.mjs tests/clan-war-tactical-runtime-v115.test.mjs tests/clan-war-assault-special-v117.test.mjs tests/clan-war-rts-squads-v133.test.mjs tests/clan-war-rts-rally-v134.test.mjs
       - name: TypeScript cross-mode
         if: always()
         run: npx --no-install tsc --noEmit --project tsconfig.clan-war-v138.json
       - name: ESLint — four modes and UI
         if: always()
-        run: npx --no-install eslint app/game/systems/clanWarOperationsV115.ts app/game/systems/clanWarParallelModesV135.ts app/game/systems/clanWarParallelModesV136.ts app/game/systems/clanWarParallelModesV137.ts app/game/systems/clanWarParallelModesV138.ts app/game/systems/clanWarRtsSquadsV133.ts app/game/ClanWarOperationsV115.tsx app/game/ClanWarRtsSquadsV133.tsx tests/clan-war-four-modes-v135.test.mjs tests/clan-war-four-modes-v136.test.mjs tests/clan-war-production-v136.test.mjs tests/clan-war-production-v135.test.mjs tests/clan-war-four-modes-v137.test.mjs tests/clan-war-four-modes-v138.test.mjs tests/clan-war-production-v137.test.mjs
+        run: npx --no-install eslint app/game/systems/clanWarOperationsV115.ts app/game/systems/clanWarParallelModesV135.ts app/game/systems/clanWarParallelModesV136.ts app/game/systems/clanWarParallelModesV137.ts app/game/systems/clanWarParallelModesV138.ts app/game/systems/clanWarRtsSquadsV133.ts app/game/ClanWarOperationsV115.tsx app/game/ClanWarRtsSquadsV133.tsx tests/clan-war-four-modes-v135.test.mjs tests/clan-war-four-modes-v136.test.mjs tests/clan-war-production-v136.test.mjs tests/clan-war-production-v135.test.mjs tests/clan-war-four-modes-v137.test.mjs tests/clan-war-four-modes-v138.test.mjs tests/clan-war-production-v137.test.mjs tests/clan-war-production-v138.test.mjs
