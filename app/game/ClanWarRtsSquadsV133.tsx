@@ -4,7 +4,7 @@ import type {WarRulesV6} from "./systems/clanWarBibleV6";
 import {
  createWarRtsSquadsV133,draftWarRtsSquadV133,removeWarRtsSquadV133,
  launchWarRtsSquadsV133,commandWarRtsSquadsV133,visibleWarRtsEnemiesV133,
- planWarRtsRallyV134,commandWarRtsRallyV134,commandWarRtsSuppressV135,commandWarRtsOverwatchV136,commandWarRtsBraceV137,commandWarRtsMedicV138,evacuateWarRtsSquadV139,warRtsEnvironmentalWindowV140,
+ planWarRtsRallyV134,commandWarRtsRallyV134,commandWarRtsSuppressV135,commandWarRtsCrossfireV144,commandWarRtsOverwatchV136,commandWarRtsBraceV137,commandWarRtsMedicV138,evacuateWarRtsSquadV139,warRtsEnvironmentalWindowV140,
  type WarRtsSquadsStateV133,type WarRtsSquadOrderV133,
 } from "./systems/clanWarRtsSquadsV133";
 import {WAR_SOURCE_RTS_IDS_V129} from "./systems/clanWarRtsSourceMissionsV129";
@@ -251,6 +251,14 @@ export default function ClanWarRtsSquadsV133({rules}:{rules:WarRulesV6}){
          onClick={()=>send({kind:"attack",squadId:selected.id,targetId:e.id})}>
          {e.unitId} · {e.hp} PV · ({e.x},{e.y}) {inRange?"· Tir 1 RAV":"· Hors portée"}
         </button>
+        {inRange&&state.squads.filter(other=>other.id!==selected.id&&
+           other.status==="active"&&other.hp>0&&d(other,e)<=other.range&&
+           warMapLineOfSightV128(map,other,e)).map(helper=><button type="button"
+           key={"crossfire144-"+selected.id+"-"+helper.id+"-"+e.id}
+           disabled={state.ravRemaining<2||selected.status!=="active"}
+           onClick={()=>apply(commandWarRtsCrossfireV144(state,selected.id,helper.id,e.id))}>
+           Tir croisé V144 · {selected.unitId} + {helper.unitId} → {e.unitId} (2 RAV, 1 tour)
+         </button>)}
         <button type="button" disabled={!inRange||state.ravRemaining<2||selected.status!=="active"}
          onClick={()=>apply(commandWarRtsSuppressV135(state,selected.id,e.id))}>
          Tir de couverture (2 RAV) · bloque une riposte

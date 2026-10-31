@@ -31,6 +31,9 @@ import {warOuterWeightedProgressV141} from "./systems/clanWarOuterWeightedProgre
 import {warOuterRouteChoicesV142} from "./systems/clanWarOuterChoicesV142";
 import {issueWarAssaultFocusV142} from "./systems/clanWarFocusV142";
 import {commandWarAssaultBraceV143} from "./systems/clanWarBraceV143";
+import {commandWarAssaultRegroupV144} from "./systems/clanWarRegroupV144";
+import {commandWarOuterRerouteV144} from "./systems/clanWarOuterRerouteV144";
+import {commandWarStealthAlertReinforcementV144} from "./systems/clanWarStealthReinforcementV144";
 import {commandWarStealthDashV143} from "./systems/clanWarStealthDashV143";
 import {commandWarOuterIncidentV143,warOuterIncidentV143} from "./systems/clanWarOuterIncidentV143";
 import {planWarStealthStepV142,commandWarStealthStepV142} from "./systems/clanWarStealthPathV142";
@@ -222,6 +225,9 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
   const rts=current?.mode==="rts"?current.rts:undefined;
   const missionTerrain=current?warMissionTerrainV116(current.targetId,rules):null;
   const guardVisible=Boolean(stealth&&missionTerrain&&warStealthGuardVisibleV138(stealth,missionTerrain));
+  const secondGuardVisible=Boolean(stealth?.supportGuard&&missionTerrain&&
+    warStealthGuardVisibleV138({...stealth,guardX:stealth.supportGuard.x,
+      guardY:stealth.supportGuard.y},missionTerrain));
   const soundBearing=stealth?warStealthSoundBearingV138(stealth,current?.tick??0):null;
   const available=world.teams.filter(team=>!world.assignments[team.id] && team.members.some(member=>member.status==="fit"));
   const teamsById=(teamId:string)=>rules.units.find(unit=>unit.id===world.teams.find(team=>team.id===teamId)?.unitId)?.name ?? teamId;
@@ -431,6 +437,18 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
           </button>;
         })}</div>
         <p className={styles.explain}>Posture défensive V143 : une formation existante sur sa moitié de terrain réduit chaque dommage subi de 1 durant deux échanges, sans guérison ni nouvelle armure canonique.</p>
+        <div className={styles.cards}>{assault.actors.filter(a=>a.side==="ally"&&a.hp>0&&a.teamId)
+          .flatMap((a,index,array)=>array.slice(index+1).map(b=><button type="button"
+           key={"regroup144-"+a.id+"-"+b.id}
+           disabled={blocked||assault.ap<16||Math.abs(a.x-b.x)>10||
+              a.x<=8||b.x<=8||a.x>55||b.x>55||
+              (assault.regroupUsedIds??[]).includes(a.teamId!)||
+              (assault.regroupUsedIds??[]).includes(b.teamId!)}
+           onClick={()=>commit(commandWarAssaultRegroupV144(worldRef.current,
+              a.teamId!,b.teamId!,rules))}>
+           Replier ensemble {a.unitId} + {b.unitId} (16 AP, 1 vrai tour)
+          </button>))}</div>
+        <p className={styles.explain}>V144 : deux formations réelles proches se replient sans franchir les ennemis ; un seul tour normal de riposte adverse suit l'ordre.</p>
         <p>Points d&apos;assaut <strong>{assault.ap} AP</strong> · Cadence <strong>niveau {assault.apLevel??1}/3</strong> · Réserve maximale <strong>{100+((assault.apLevel??1)-1)*35} AP</strong> · Rempart allié <strong>{assault.ownBase}/80</strong> · Rempart adverse <strong>{assault.rivalBase}/80</strong>. Les équipes avancent et engagent automatiquement ; vous décidez du moment du déploiement.</p>
         <div className={styles.cards}>
           <button type="button" disabled={blocked||(assault.apLevel??1)>=3||assault.ap<((assault.apLevel??1)===1?35:55)}
@@ -527,6 +545,13 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
       {stealth && <div>
         <p>Rejoindre le relais (7,1), le désactiver, puis rejoindre l&apos;extraction (1,4). Alerte <strong>{stealth.alarm}/3</strong> · énergie de camouflage <strong>{stealth.energy}/5</strong> · relais <strong>{stealth.sabotaged?"neutralisé":"actif"}</strong> · diversion <strong>{stealth.decoyUsed?"épuisée": "disponible"}</strong> · leurre <strong>{stealth.decoyTurns??0} tour(s) à la position émise</strong> · couverts utilisés <strong>{(stealth.usedCoverIds??[]).length}/{missionTerrain?.cover.length??0}</strong> · écoutes <strong>{stealth.acousticUsed??0}/2</strong>.</p>
         <p className={styles.explain}>Terrain régional : {missionTerrain?.title} · {missionTerrain?.ground} · obstacle : {missionTerrain?.wallLabel}.</p>
+        <button type="button" disabled={blocked||stealth.alarm<1||
+           Boolean(stealth.reinforcementIssued)||Boolean(stealth.supportGuard)}
+          onClick={()=>commit(commandWarStealthAlertReinforcementV144(worldRef.current,rules))}>
+          Sécurité renforcée V144 · activer un second garde pour cette infiltration
+        </button>
+        {stealth.supportGuard&&<p className={styles.explain}>Deux gardes physiques patrouillent maintenant le secteur ;
+          la dissimulation et la détection tiennent compte de leurs deux positions réelles.</p>}
         <div className={styles.stealthControls}>{(["up","left","down","right"] as const).map(dir=>{
           const dx=dir==="right"?1:dir==="left"?-1:0;
           const dy=dir==="down"?1:dir==="up"?-1:0;
@@ -552,7 +577,8 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
         <div className={styles.grid} style={{gridTemplateColumns:"repeat(9,minmax(0,1fr))"}} role="img" aria-label="Plan d'infiltration : X pisteur, G uniquement si visible, R relais, E extraction et obstacles">
           {Array.from({length:54},(_,index)=>{
             const x=index%9,y=Math.floor(index/9),wall=Boolean(missionTerrain?.walls.includes(x+","+y));
-            const mark=stealth.x===x&&stealth.y===y?"X":guardVisible&&stealth.guardX===x&&y===(stealth.guardY??2)?"G":x===7&&y===1?"R":x===1&&y===4?"E":wall?"▥":stealth.decoyTurns&&stealth.decoyX===x&&
+            const mark=stealth.x===x&&stealth.y===y?"X":secondGuardVisible&&stealth.supportGuard?.x===x&&stealth.supportGuard?.y===y?"G₂":
+              guardVisible&&stealth.guardX===x&&y===(stealth.guardY??2)?"G":x===7&&y===1?"R":x===1&&y===4?"E":wall?"▥":stealth.decoyTurns&&stealth.decoyX===x&&
               (stealth.decoyY??2)===y?"♪":
               missionTerrain?.cover.includes(x+","+y)?"▤":"·";
             return <span className={styles.cell} data-wall={wall} data-actor={mark==="X"?"ally":mark==="G"?"rival":""} key={index} title={"Case "+x+","+y}>{mark}</span>;
@@ -701,6 +727,10 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
       {world.outer.length?world.outer.map(order=>{
         const transit=warOuterWeightedProgressV141(order,now,rules);
         const incident=warOuterIncidentV143(order,now,rules);
+        const routePc=order.teamIds.reduce((pc,id)=>pc+
+          (rules.units.find(u=>u.id===world.teams.find(t=>t.id===id)?.unitId)?.commandPoints??0),0);
+        const earlyOptions=warOuterRouteChoicesV142(world.baseId,order.targetId,routePc,rules)
+          .filter(path=>path.passageIds.join("|")!==order.routeIds.join("|"));
         return <div className={styles.delegatedOrder} key={order.id}>
         <strong>{order.id} · {focusLabels[order.focus]}</strong>
         <span>{order.targetId} · {order.teamIds.map(teamsById).join(", ")}</span>
@@ -727,6 +757,20 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
         {order.fieldSupport&&<small className={styles.explain}>Soutien de terrain V136 : {order.fieldSupport.paidRav} RAV engagés à {order.fieldSupport.allocatedAt} ; aucune victoire anticipée.</small>}
         {order.reconHalt&&<small className={styles.explain}>Halte V137 : ancienne échéance {order.reconHalt.originalDueAt}, nouveau rapport après 15 secondes supplémentaires ; effectifs et route inchangés.</small>}
         {order.departureContext&&<small className={styles.explain}>Briefing figé au départ : renseignements {order.departureContext.intel?"confirmés":"non confirmés"}, relais {order.departureContext.weakened?"affaibli":"non confirmé"}, pression {order.departureContext.pressure}. Les résultats ultérieurs des autres modes ne modifient pas ce mandat.</small>}
+        {!order.recall&&!order.routeDiversion&&!order.routeIncident&&!order.reconHalt&&
+          now>=order.startedAt&&now-order.startedAt<=Math.min(5000,
+            (order.dueAt-order.startedAt)*.15)&&
+          earlyOptions.length>0&&<div className={styles.cards}>
+           {earlyOptions.map(route=><button type="button" key={"reroute144-"+route.id}
+              disabled={blocked||world.rav<1}
+              onClick={()=>commit(commandWarOuterRerouteV144(worldRef.current,
+                order.id,route.passageIds,Date.now(),rules))}>
+              Réviser le trajet · {route.id} · {route.cost} coût V6 (1 RAV, +5 s)
+            </button>)}
+          </div>}
+        {order.routeDiversion&&<small className={styles.explain}>Route modifiée V144 :
+          un RAV engagé à {order.routeDiversion.changedAt}, échéance rallongée de cinq secondes,
+          mêmes membres et aucun gain anticipé.</small>}
         {order.routeIncident&&<p className={styles.explain}>Incident V143 traité sur {order.routeIncident.passageId} :
           <strong> {order.routeIncident.kind==="secure"?"sécurisation 2 RAV":"détour +10 secondes"}</strong>.
           L&apos;échéance réelle et les personnes restent enregistrées.</p>}

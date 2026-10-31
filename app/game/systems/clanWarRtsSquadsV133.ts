@@ -546,6 +546,41 @@ export function commandWarRtsOverwatchV136(
 }
 
 /**
+ * V144 coordinated crossfire: exactly TWO existing W3 squads each spend
+ * ONE exercise RAV and both deliver a physical ranged hit against the SAME
+ * visible rival. Only ONE standard enemy/weather turn advances. This never
+ * lets a shooter fire through a wall or an invisible target, creates no
+ * campaign mutations and cannot clone an additional squad.
+ */
+export function commandWarRtsCrossfireV144(
+ state:WarRtsSquadsStateV133,firstId:string,secondId:string,targetId:string,
+):WarRtsSquadsUpdateV133{
+ if(state.phase!=="active"||state.report)return fail(state,"Aucune opération tactique active.");
+ if(!firstId||!secondId||firstId===secondId)
+  return fail(state,"Deux formations existantes et différentes sont nécessaires.");
+ if(state.ravRemaining<2)return fail(state,"Le tir croisé demande deux RAV réels, un par groupe.");
+ const squadA=activeSquads(state).find(u=>u.id===firstId);
+ const squadB=activeSquads(state).find(u=>u.id===secondId);
+ if(!squadA||!squadB)
+  return fail(state,"Les deux tireurs doivent être vivants et déployés.");
+ const target=visibleWarRtsEnemiesV133(state).find(e=>e.id===targetId);
+ if(!target||![squadA,squadB].every(u=>distance(u,target)<=u.range&&
+    warMapLineOfSightV128(state.map,u,target)))
+  return fail(state,"L'adversaire doit être physiquement à portée et dans le champ de chacun.");
+ // Compute simultaneous damage against pre-turn HP. A target downed by
+ // either squad does not act in the subsequent standard enemy response.
+ const cover=warMapTileV128(state.map,target.x,target.y)?.cover;
+ const dmg=[squadA,squadB].map(u=>clamp(Math.ceil(u.attack/4)-(cover?1:0),1,6));
+ const hp=Math.max(0,target.hp-dmg[0]-dmg[1]);
+ const enemies=state.enemies.map(e=>e.id===target.id?
+    {...e,hp,status:hp>0?"active" as const:"down" as const}:e);
+ const advanced=advance({...state,enemies,ravRemaining:state.ravRemaining-2},
+  "Tir croisé physique de "+squadA.unitId+" et "+squadB.unitId+
+  " sur "+target.unitId+" : "+dmg.join("+")+" PV pour deux RAV, un tour d'IA.");
+ return accept(advanced,advanced.lastMessage);
+}
+
+/**
  * V135 squad fire suppression: spend 2 exercise-RAV from a known, live,
  * adjacent-range line of sight. The targeted rival misses exactly ONE
  * response turn; no free hit, invisible targeting, stun lore or campaign XP.
