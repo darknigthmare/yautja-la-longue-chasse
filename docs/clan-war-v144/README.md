@@ -20,3 +20,11 @@ Le fichier `tests/clan-war-four-modes-v144.test.mjs` teste les quatre modes, les
 Le classeur V143 canonique de **73 onglets** reste dans la PR #53 : `docs/clan-war-v143/Yautja_Guerres_Clans_Suivi_Production_V143_2026-10-31.xlsx`. Un registre complémentaire **V144** est ajouté dans cette PR avec les exigences et tests nouveaux, une matrice inter-modes et les liens à l'historique sans prétendre dupliquer ni réécrire les 73 feuilles historiques. Il distingue spécifications, comportements testés et QA navigateur/manette encore à conduire.
 
 **Toujours ouvert** : intégration campagne V85 persistante, 1 200 missions jouables de bout en bout, vrai multijoueur coop/PvP serveur, décor et sprites cinéma/PHG 1:1, tests manette/navigateur, qualité de la carte planétaire. La CI ciblée ne valide pas ces chantiers.
+
+## Production V144 — état vérifié le 31/10/2026
+
+Le code du commit `73b44ddd` a passé **154 tests sur 154**, TypeScript et ESLint : [GitHub Actions 41248749626](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41248749626). Ce résultat inclut les neuf nouveaux tests, les régressions précédentes, la correction de l'expiration de l'écran du bastion et les renforts de patrouille déclenchés seulement après alerte réelle **associée à un leurre sonore**.
+
+Le nouveau fichier `docs/clan-war-v144/Yautja_Guerres_Clans_Suivi_Production_V144_2026-10-31.xlsx` est un **registre incrémental de 9 onglets**. Il contient 52 exigences détaillées (13 par mode), 32 QA, 16 relations inter-modes, provenance V143, backlog V145 et un pilotage avec formules. **4 exigences V144 validées en CI ciblée**, 30 prototypes partiels, 18 à développer ; 16 contrôles QA ciblés passés sur 32, les autres restent à conduire. Le véritable Excel V143 à **73 onglets demeure dans la PR #53** et n'a pas été remplacé.
+
+Le registre V144 sera testé à partir des vrais octets committés par `tests/clan-war-production-v144.test.mjs`. Les captures manuelles et le multijoueur réel restent ouverts.
