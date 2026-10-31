@@ -33,7 +33,7 @@ export function warOuterRouteProgressV140(
  if(invalid)throw new RangeError("Horloge ou parcours de mandat extérieur invalide.");
  const before=now<order.startedAt;
  const done=now>=order.dueAt;
- let phase:WarOuterRouteProgressV140["phase"]=before?"not-started":
+ const phase:WarOuterRouteProgressV140["phase"]=before?"not-started":
   done?"arrived":order.recall?"returning":"outbound";
  let travelled:string[]=[];
  let passageId:string|null=null;
