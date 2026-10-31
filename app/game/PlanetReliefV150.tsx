@@ -8,6 +8,7 @@ import {
   type PlanetTerrainSlopeV152, type PlanetTerrainRouteDossierV152,
 } from "./systems/clanWarPlanetTerrainV152";
 import { createPlanetRegionIndexMaskV124 } from "./planetModularExportV124";
+import PlanetTraversalLabV154 from "./PlanetTraversalLabV154";
 import {
   encodePlanetReliefV150, PLANET_RELIEF_DEFAULT_V150,
   type PlanetReliefRasterV150,
@@ -32,6 +33,7 @@ export default function PlanetReliefV150({planet}:{planet:WarPlanetV96}){
   const [lastRendered,setLastRendered]=useState("");
   const [raster,setRaster]=useState<PlanetReliefRasterV150|null>(null);
   const [terrain,setTerrain]=useState<PlanetTerrainSlopeV152|null>(null);
+  const [regionIndexMask,setRegionIndexMask]=useState<Uint8ClampedArray|null>(null);
   const [routeStudy,setRouteStudy]=useState<PlanetTerrainRouteDossierV152|null>(null);
   const [display,setDisplay]=useState<"relief"|"slope">("relief");
   const [message,setMessage]=useState("");
@@ -42,7 +44,7 @@ export default function PlanetReliefV150({planet}:{planet:WarPlanetV96}){
     ? details.physical.radiusKm:null;
   const currentKey=planet.id+"/"+String(radiusKm)+"/"+maxElevation+"/"+ruggedness+"/"+seedOffset+"/"+size;
   const ready=expanded && lastRendered===currentKey && raster!==null &&
-    terrain!==null && routeStudy!==null;
+    terrain!==null && routeStudy!==null && regionIndexMask!==null;
   const regionLabels=useMemo(()=>planet.regions.map(region=>region.name),[planet]);
   const biomes=useMemo(()=>planet.regions.map(region=>
     details?.regions.find(item=>item.regionId===region.id)?.biome??planet.landBiome),[planet,details]);
@@ -73,10 +75,12 @@ export default function PlanetReliefV150({planet}:{planet:WarPlanetV96}){
         const slopePixels=slopeContext.createImageData(size,size/2);
         slopePixels.data.set(slopes.preview);slopeContext.putImageData(slopePixels,0,0);
         setRaster(result);setTerrain(slopes);setRouteStudy(routes);
+        setRegionIndexMask(new Uint8ClampedArray(source));
         setLastRendered(currentKey);
       }catch(error){
         if(cancelled)return;
-        setRaster(null);setTerrain(null);setRouteStudy(null);setLastRendered(currentKey);
+        setRaster(null);setTerrain(null);setRouteStudy(null);
+        setRegionIndexMask(null);setLastRendered(currentKey);
         setMessage(error instanceof Error?error.message:"L'altimétrie n'a pas pu être produite.");
       }
     });
@@ -264,6 +268,9 @@ export default function PlanetReliefV150({planet}:{planet:WarPlanetV96}){
             {route.nonLandSamples} échantillon(s) non terrestres · catégorie {route.class}.</p>
         </article>)}
       </div>}
+      {ready&&raster&&terrain&&regionIndexMask&&
+        <PlanetTraversalLabV154 key={currentKey} planet={planet}
+          raster={raster} slope={terrain} regionMask={regionIndexMask}/>}
       <p className={styles.note}>Les pentes représentent une moyenne à la résolution du planisphère, et non la pente d’une route locale ou une topographie canonique. Les traversées, collisions, véhicules et missions restent inchangés.</p>
       <p role="status">{message}</p>
     </div>}
