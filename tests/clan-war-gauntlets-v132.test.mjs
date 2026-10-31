@@ -55,7 +55,7 @@ test("single live atlas, no combat patch, no duplicate campaign session and corr
   assert.equal((panel.match(/<ClanWarAtlasV95\b/g)||[]).length,1);
   assert.equal((panel.match(/<ClanWarGauntletLockerV132\b/g)||[]).length,1);
   assert.match(panel,/useHunterGauntletV133\(save.createdAt, save.profile.rankId\)/);
-  assert.match(panel,/gauntletUnlockedV132\(id, save.profile.rankId\)/);
+  assert.match(panel,/gauntletUnlockedV132\(id, save.profile.rankId,save.gauntletV134\?\.claimedStudies\?\?\[\]\)/);
   assert.match(stage,/data-gauntlet-model=\{equipped.id\}/);
   assert.match(stage,/gauntletId: string;/);
   assert.match(vector,/data-art-validation="blockout-awaiting-source-review"/);
