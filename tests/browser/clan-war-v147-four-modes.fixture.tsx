@@ -14,7 +14,7 @@ const target=rules.territories.find(site=>site.id!==state.baseId &&
 if(!lead||!target)throw new Error("No valid real V6 mission/team for V147 QA");
 function Fixture(){
  const [gauntlet,setGauntlet]=useState("jungle-hunter");
- return <main data-testid="v147-actual-four-mode-lab" data-legal-team={lead} data-legal-target={target}>
+ return <main data-testid="v147-actual-four-mode-lab" data-legal-team={lead} data-legal-target={target} data-initial-rav={state.rav}>
    <h1>V147 · quatre gameplays réels V115</h1>
    <p>Exercice V6 indépendant, sans récompense de chasse ni annexion de planète V85.</p>
    <div role="group" aria-label="Gauntlets de comparaison">
