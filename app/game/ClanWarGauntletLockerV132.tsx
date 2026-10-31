@@ -40,6 +40,7 @@ export default function ClanWarGauntletLockerV132({ hunterRank, equippedId, onEq
   const display=visible.slice(currentPage*PAGE_SIZE,(currentPage+1)*PAGE_SIZE);
   const preview=gauntletByIdV132(previewId) ?? gauntletByIdV132(equippedId) ?? GAUNTLET_CATALOG_V132[0];
   const unlocked=GAUNTLET_CATALOG_V132.filter(item=>gauntletUnlockedV132(item.id,hunterRank,claimedStudies)).length;
+  const individualModel=preview.id==="jungle-hunter" || isKnownHunterGauntletV135(preview.id);
   const study=preview.unlock.startsWith("challenge:") && campaignEvidence
     ? evaluateGauntletStudyV134(campaignEvidence,preview.id) : null;
   const studyClaimed=claimedStudies.includes(preview.id);
@@ -69,7 +70,11 @@ export default function ClanWarGauntletLockerV132({ hunterRank, equippedId, onEq
         <p>{preview.artBrief}</p>
         <p>Interface : {GAUNTLET_READOUT_LABELS_V132[preview.readout]} · animation : {GAUNTLET_PALETTES_V132[preview.theme].motion} · son prévu : {GAUNTLET_PALETTES_V132[preview.theme].sound}.</p>
         <p className={styles.note}>{preview.notes}</p>
-        <p className={styles.note}>Aperçu vectoriel de travail : fidélité 1:1 non encore validée.</p>
+        <p className={styles.note}>
+          {individualModel
+            ? "Étude graphique indépendante du modèle sélectionné, non validée 1:1. Les formes et matériaux restent à confronter au film."
+            : "Visuel provisoire partagé avec plusieurs personnages : aucun modèle individuel conforme aux sources n'a encore été produit pour cette identité."}
+        </p>
         {study && <section className={styles.research} aria-label="Dossier d'étude du gauntlet">
           <h4>Dossier d&apos;étude · reconstitution de l&apos;atelier de clan</h4>
           <p>Source de preuve : {study.study?.missionId} · trophée {study.study?.quality} · {study.study?.minimumScans} scans au total.</p>
