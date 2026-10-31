@@ -14,7 +14,8 @@ import {
   queueWarRecruitmentV115, settleWarRecruitmentsV115,
   queueWarTreatmentV116, settleWarTreatmentsV116, cancelWarTreatmentV116,
   leaveWarOperationV115, readWarOperationsV115, stepWarRtsRealtimeV115, toggleWarRtsRealtimeV115,
-  settleWarOuterOpsV115, recallWarOuterMissionV116, stepAssaultV115, warMissionEligibleV115, warOuterSecondsRemainingV115,
+  settleWarOuterOpsV115, recallWarOuterMissionV116, stepAssaultV115, warAssaultWaveProfileV140,
+  warMissionEligibleV115, warOuterSecondsRemainingV115,
   type WarMissionModeV115, type OuterFocusV115, type WarOperationsStateV115,
   type WarOperationsUpdateV115,
 } from "./systems/clanWarOperationsV115";
@@ -26,6 +27,7 @@ import {
  commandWarAssaultSurgeV138,requestWarOuterSignalV138,
  warStealthGuardVisibleV138,warStealthSoundBearingV138,
 } from "./systems/clanWarParallelModesV138";
+import {warOuterRouteProgressV140} from "./systems/clanWarOuterRouteProgressV140";
 import styles from "./ClanWarOperationsV115.module.css";
 
 const modeLabels: Record<WarMissionModeV115, string> = {
@@ -376,6 +378,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
         <button type="button" disabled={blocked} onClick={()=>commit(leaveWarOperationV115(worldRef.current,rules))}>Ordonner le repli</button></div>
 
       {assault && <div>
+        <p>Vagues régionales : <strong>{assault.wavesIssued??0} / {warAssaultWaveProfileV140(world.active?.targetId??world.baseId,rules).maximumWaves}</strong> · profils d&apos;unités de la Bible V6 : {(assault.rivalRosterIds??[]).join(", ")||"archive V115 à initialiser"}.</p>
         <p>Points d&apos;assaut <strong>{assault.ap} AP</strong> · Cadence <strong>niveau {assault.apLevel??1}/3</strong> · Réserve maximale <strong>{100+((assault.apLevel??1)-1)*35} AP</strong> · Rempart allié <strong>{assault.ownBase}/80</strong> · Rempart adverse <strong>{assault.rivalBase}/80</strong>. Les équipes avancent et engagent automatiquement ; vous décidez du moment du déploiement.</p>
         <div className={styles.cards}>
           <button type="button" disabled={blocked||(assault.apLevel??1)>=3||assault.ap<((assault.apLevel??1)===1?35:55)}
@@ -478,7 +481,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
         <div className={styles.grid} style={{gridTemplateColumns:"repeat(9,minmax(0,1fr))"}} role="img" aria-label="Plan d'infiltration : X pisteur, G uniquement si visible, R relais, E extraction et obstacles">
           {Array.from({length:54},(_,index)=>{
             const x=index%9,y=Math.floor(index/9),wall=Boolean(missionTerrain?.walls.includes(x+","+y));
-            const mark=stealth.x===x&&stealth.y===y?"X":guardVisible&&stealth.guardX===x&&y===2?"G":x===7&&y===1?"R":x===1&&y===4?"E":wall?"▥":missionTerrain?.cover.includes(x+","+y)?"▤":"·";
+            const mark=stealth.x===x&&stealth.y===y?"X":guardVisible&&stealth.guardX===x&&y===(stealth.guardY??2)?"G":x===7&&y===1?"R":x===1&&y===4?"E":wall?"▥":missionTerrain?.cover.includes(x+","+y)?"▤":"·";
             return <span className={styles.cell} data-wall={wall} data-actor={mark==="X"?"ally":mark==="G"?"rival":""} key={index} title={"Case "+x+","+y}>{mark}</span>;
           })}
         </div>
@@ -622,10 +625,19 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
     <section className={styles.delegated}>
       <h4>Outer Ops · opérations en attente ({world.outer.length}/3)</h4>
       <p>Le délai utilise l&apos;heure de l&apos;appareil. Un rappel ne téléporte pas l&apos;équipe : son trajet de retour est décompté jusqu&apos;au rapport final.</p>
-      {world.outer.length?world.outer.map(order=><div className={styles.delegatedOrder} key={order.id}>
+      {world.outer.length?world.outer.map(order=>{
+        const transit=warOuterRouteProgressV140(order,now,rules);
+        return <div className={styles.delegatedOrder} key={order.id}>
         <strong>{order.id} · {focusLabels[order.focus]}</strong>
         <span>{order.targetId} · {order.teamIds.map(teamsById).join(", ")}</span>
         <span>{order.recall?"Retour au clan":"Rapport de mission"} dans {formatTime(warOuterSecondsRemainingV115(order,now))} · {order.routeIds.length} passage(s)</span>
+        <span>Progression simulée sur les passages V6 : <strong>{transit.phase==="returning"?"retour":
+          transit.phase==="outbound"?"aller":transit.phase==="arrived"?"arrivé":"en attente"}</strong> ·
+          {Math.floor(transit.legProgress*100)} % du trajet courant ·
+          <strong> {transit.currentPassageName??"aucun passage actuellement traversé"}</strong>
+          {transit.currentPassageId?" ("+transit.currentPassageId+")":""}.
+        </span>
+        {transit.sourceCondition&&<small className={styles.explain}>Condition publique du passage : {transit.sourceCondition}. Aucune position ennemie calculée.</small>}
         {order.recall ? <small className={styles.explain}>Rappel transmis : équipe toujours engagée jusqu&apos;à l&apos;arrivée.</small> : <button type="button" disabled={blocked||now<order.startedAt||now>=order.dueAt} onClick={()=>commit(recallWarOuterMissionV116(worldRef.current,order.id,Date.now(),rules))}>Rappeler l&apos;équipe</button>}
         {!order.recall&&!order.retask&&now>=order.startedAt&&2*(now-order.startedAt)<((order.reconHalt?.originalDueAt??order.dueAt)-order.startedAt)&&
           <div className={styles.cards}>
@@ -658,7 +670,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
             onClick={()=>commit(supplyWarOuterMissionV136(worldRef.current,order.id,Date.now(),rules))}>
             Envoyer des fournitures de terrain · 2 RAV
           </button>}
-      </div>):<p>Aucune équipe actuellement déléguée.</p>}
+      </div>;}):<p>Aucune équipe actuellement déléguée.</p>}
       <button type="button" disabled={blocked||!world.outer.some(order=>now>=order.dueAt)}
         onClick={()=>commit(settleWarOuterOpsV115(worldRef.current,Date.now(),rules))}>Recevoir les rapports arrivés</button>
     </section>

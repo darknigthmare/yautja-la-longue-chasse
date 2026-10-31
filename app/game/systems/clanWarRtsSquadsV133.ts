@@ -172,6 +172,13 @@ function refreshIntel(s:WarRtsSquadsStateV133):WarRtsSquadsStateV133{
  for(const enemy of found)seen.set(enemy.id,{id:enemy.id,unitId:enemy.unitId,x:enemy.x,y:enemy.y,lastSeenTurn:s.turn});
  return {...s,intel:[...seen.values()].sort((a,b)=>a.id.localeCompare(b.id))};
 }
+/** Source-authorable environment clock, not a prediction of hidden enemies.
+ * All sides use the same terrain hazard cells at T%8 = 3 or 4. */
+export function warRtsEnvironmentalWindowV140(s:WarRtsSquadsStateV133){
+ return {turn:s.turn,nextTurn:s.turn+1,activeNow:hazardsNow(s.turn),
+  activeNextTurn:hazardsNow(s.turn+1),hazardTileCount:s.map.hazards.length,
+  worldStratum:s.map.worldStratum,mapId:s.map.id};
+}
 function taskRestriction(s:WarRtsSquadsStateV133,task:WarRtsTaskV129):string|null{
  if(task.requiresPower&&!s.power)return "Réseau hors tension : tâche alimentée impossible.";
  if(task.requiresPressure&&!s.airlockStable)return "Pression du sas non stabilisée.";
@@ -272,11 +279,24 @@ function advance(s:WarRtsSquadsStateV133,narration:string):WarRtsSquadsStateV133
  const turn=s.turn+1;
  let next:WarRtsSquadsStateV133={...s,turn};
  if(hazardsNow(turn)){
-  next={...next,squads:next.squads.map(u=>{
-   if(u.status!=="active"||!next.map.hazards.some(h=>at(h)===at(u)))return u;
+  const hazardTiles=new Set(next.map.hazards.map(at));
+  // V140 fairness: a thermal jet, flood, ice fall or atmospheric exposure
+  // affects BOTH sides on the same physical cells at the same tick.
+  // Existing neutral escort handling remains in updateEscort below.
+  const squads=next.squads.map(u=>{
+   if(u.status!=="active"||!hazardTiles.has(at(u)))return u;
    const hp=Math.max(0,u.hp-2);
-   return {...u,hp,status:hp>0?"active":"down"};
-  })};
+   return {...u,hp,status:hp>0?"active" as const:"down" as const};
+  });
+  const enemies=next.enemies.map(e=>{
+   if(e.hp<=0||!hazardTiles.has(at(e)))return e;
+   const hp=Math.max(0,e.hp-2);
+   return {...e,hp,status:hp>0?"active" as const:"down" as const};
+  });
+  next={...next,squads,enemies};
+  const affected=s.squads.filter(u=>u.status==="active"&&hazardTiles.has(at(u))).length+
+   s.enemies.filter(e=>e.hp>0&&hazardTiles.has(at(e))).length;
+  if(affected)narration+=" Danger régional : "+affected+" unité(s) exposée(s) quel que soit leur camp.";
  }
  next=updateEnemyAI(next);
  next={...next,suppressedEnemyIds:[],brace:(next.brace??[]).filter(b=>b.expiresAt>turn)};

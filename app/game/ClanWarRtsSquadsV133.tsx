@@ -4,7 +4,7 @@ import type {WarRulesV6} from "./systems/clanWarBibleV6";
 import {
  createWarRtsSquadsV133,draftWarRtsSquadV133,removeWarRtsSquadV133,
  launchWarRtsSquadsV133,commandWarRtsSquadsV133,visibleWarRtsEnemiesV133,
- planWarRtsRallyV134,commandWarRtsRallyV134,commandWarRtsSuppressV135,commandWarRtsOverwatchV136,commandWarRtsBraceV137,commandWarRtsMedicV138,evacuateWarRtsSquadV139,
+ planWarRtsRallyV134,commandWarRtsRallyV134,commandWarRtsSuppressV135,commandWarRtsOverwatchV136,commandWarRtsBraceV137,commandWarRtsMedicV138,evacuateWarRtsSquadV139,warRtsEnvironmentalWindowV140,
  type WarRtsSquadsStateV133,type WarRtsSquadOrderV133,
 } from "./systems/clanWarRtsSquadsV133";
 import {WAR_SOURCE_RTS_IDS_V129} from "./systems/clanWarRtsSourceMissionsV129";
@@ -27,6 +27,7 @@ export default function ClanWarRtsSquadsV133({rules}:{rules:WarRulesV6}){
  const [rallyTarget,setRallyTarget]=useState<{x:number;y:number}>(()=>({...state.map.observation}));
  const [rallyExcluded,setRallyExcluded]=useState<string[]>([]);
  const mission=state.mission,map=state.map;
+ const environmental=warRtsEnvironmentalWindowV140(state);
  const current=mission.tasks[state.completedTaskIds.length]??null;
  const selected=state.squads.find(u=>u.id===selectedId)??state.squads[0];
  const rallyIds=state.squads.filter(u=>u.status==="active"&&!rallyExcluded.includes(u.id)).map(u=>u.id);
@@ -73,6 +74,7 @@ export default function ClanWarRtsSquadsV133({rules}:{rules:WarRulesV6}){
    <span><strong>{state.ravRemaining} / {state.initialRav}</strong><small>RAV d&apos;exercice</small></span>
    <span><strong>{state.squads.filter(u=>u.status==="active").length} / {state.squads.length}</strong><small>Détachements aptes</small></span>
    <span><strong>{state.turn}</strong><small>Ordres/tours</small></span>
+   <span><strong>{environmental.hazardTileCount}</strong><small>Cases à risque</small></span>
    <span><strong>{state.overwatch?.length??0}</strong><small>Veilles actives</small></span>
    <span><strong>{state.brace?.length??0}</strong><small>Groupes retranchés</small></span>
    <span><strong>{state.triageReceipts?.length??0}</strong><small>Interventions médicales</small></span>
@@ -152,6 +154,11 @@ export default function ClanWarRtsSquadsV133({rules}:{rules:WarRulesV6}){
       Groupe
      </label>}
     </div>)}</div>
+    {state.phase==="active"&&environmental.hazardTileCount>0&&<p className={styles.hint} role="status">
+     Cycle régional W3 : danger {environmental.activeNow?"actif":"inactif"} maintenant,
+     {environmental.activeNextTurn?" ACTIF au prochain tour.":" inactif au prochain tour."}
+     Les mêmes cases affectent tous les combattants, indépendamment de leur camp.
+    </p>}
     {state.phase==="active"&&<div className={styles.rallyPanel}>
      <h5>Ordre collectif · un seul tour pour toutes les escouades</h5>
      <p>Choisissez les groupes ci-dessus puis une case de rassemblement. Chaque formation parcourt au plus une case. Les obstacles, portes sans courant et adversaires restent bloquants ; les groupes ne se superposent pas.</p>

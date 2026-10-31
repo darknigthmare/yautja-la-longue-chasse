@@ -9,6 +9,7 @@ import { warRtsScriptedEligibilityV119, createWarRtsScriptedObjectiveV119, resol
 import { warMissionTerrainV116, warTerrainCellBlockedV116, warTerrainLineOfSightV116,
   warTerrainPathLengthV116, type WarMissionTerrainV116 } from "./clanWarMissionTerrainV116";
 import { warRtsNextPathStepV118 } from "./clanWarTacticalNavigationV118";
+import {warStealthPatrolSpawnV140,warStealthPatrolStepV140} from "./clanWarStealthPatrolV140";
 
 /**
  * V115: self-contained V6 training theatre. This is NOT a CON-T/RTS-U campaign
@@ -31,8 +32,10 @@ export interface WarAssaultV115 {
   extractedIds?: string[];
   surgeIssuedIds?: string[];
   fallbackCounts?: Record<string,number>;
+  /** Source-pinned finite rival wave study; no newly invented V6 unit types. */
+  rivalRosterIds?: string[];wavesIssued?:number;
 }
-export interface WarStealthV115 { x: number; y: number; guardX: number; guardDirection: -1 | 1; alarm: number; cloaked: boolean; energy: number; sabotaged: boolean;
+export interface WarStealthV115 { x: number; y: number; guardX: number;guardY?:number; guardDirection: -1 | 1; alarm: number; cloaked: boolean; energy: number; sabotaged: boolean;
   /** V135 sound diversion at the hunter's physical position; no canonical device assumed. */
   decoyX?: number; decoyTurns?: number; decoyUsed?: boolean;
   usedCoverIds?: string[];
@@ -298,8 +301,11 @@ export function beginWarOperationV115(
   const active:WarPlayableMissionV115 = { id,mode,targetId,teamIds:[...teamIds],tick:0 };
   if (mode === "assault") active.assault = { ap:state.intelIds.includes(targetId)?36:24,ownBase:80,
     rivalBase:Math.max(45,80-(state.weakenedIds.includes(targetId)?12:0)-Math.min(20,(state.pressure[targetId]??0)*3)),
-    actors:[],launched:[],fallen:[],apLevel:1,usedSpecials:[] };
-  if (mode === "stealth") active.stealth = { x:1,y:4,guardX:6,guardDirection:-1,alarm:0,cloaked:false,energy:5,sabotaged:false,decoyTurns:0,decoyUsed:false };
+    actors:[],launched:[],fallen:[],apLevel:1,usedSpecials:[],
+    rivalRosterIds:warAssaultWaveProfileV140(targetId,rules).unitIds,wavesIssued:0 };
+  if (mode === "stealth") active.stealth = {x:1,y:4,
+    ...warStealthPatrolSpawnV140(warMissionTerrainV116(targetId,rules)),
+    alarm:0,cloaked:false,energy:5,sabotaged:false,decoyTurns:0,decoyUsed:false};
   if (mode === "rts") {
     const allied = teamIds.map((teamId,index) => ({id:"ally-"+index,teamId,unitId:ownTeam(state,teamId)!.unitId,side:"ally" as const,x:1,y:1+index,hp:lifeFor(ownTeam(state,teamId)!.unitId,rules)}));
     const enemyUnits = rules.units.filter(unit => unit.fullMembers>0).slice(0,3);
@@ -420,15 +426,50 @@ export function issueWarAssaultSpecialV117(
     "Concentration de tir V6 : "+actor.unitId+" engage une cible en portée. Manœuvre déjà consommée pour ce mandat.");
 }
 
+/**
+ * V140 finite source-bound opposition plan. Profiles are GAME-AUTHORED:
+ * all units already exist in the V6 Bible; regional salt is not a film
+ * franchise canonical spawn table. Four distinct unit roles when possible.
+ */
+export interface WarAssaultWaveProfileV140{
+ territoryId:string;regionId:string;unitIds:string[];maximumWaves:number;
+}
+export function warAssaultWaveProfileV140(targetId:string,rules:WarRulesV6):WarAssaultWaveProfileV140 {
+ const territory=rules.territories.find(t=>t.id===targetId);
+ if(!territory)throw new RangeError("Territoire W3 inconnu de la Bible V6.");
+ const source=rules.units.filter(u=>u.fullMembers>0&&u.commandPoints>0)
+  .sort((a,b)=>a.id.localeCompare(b.id));
+ if(!source.length)throw new Error("Aucune unité opposée existante dans la Bible V6.");
+ let hash=2166136261;
+ for(const char of territory.region+":"+territory.id)hash=Math.imul(hash^char.charCodeAt(0),16777619)>>>0;
+ const rotated=source.slice(hash%source.length).concat(source.slice(0,hash%source.length));
+ const taken=new Set<string>(),roles=new Set<string>();
+ const picked:string[]=[];
+ for(const u of rotated){
+  if(picked.length>=4)break;
+  if(roles.has(u.role))continue;
+  picked.push(u.id);taken.add(u.id);roles.add(u.role);
+ }
+ for(const u of rotated){if(picked.length>=4)break;if(!taken.has(u.id)){picked.push(u.id);taken.add(u.id);}}
+ return {territoryId:territory.id,regionId:territory.region,unitIds:picked,
+  maximumWaves:Math.min(9,6+Math.floor(Math.max(0,territory.terrainDefense)/12))};
+}
+
 export function stepAssaultV115(state:WarOperationsStateV115,rules:WarRulesV6):WarOperationsUpdateV115 {
   const mission=state.active, arena=mission?.assault;
   if(mission?.mode!=="assault" || !arena) return reject(state,"Aucune bataille latérale en cours.");
   const tick=mission.tick+1;
   const actors=arena.actors.map(actor=>({...actor}));
-  if(tick%8===0 && actors.filter(actor=>actor.side==="rival").length<7) {
-    const units=rules.units.filter(unit=>unit.fullMembers>0);
-    const unit=units[Math.floor(tick/8)%units.length];
-    if(unit) actors.push({id:"rival-"+tick,teamId:null,unitId:unit.id,side:"rival",x:95,hp:lifeFor(unit.id,rules)});
+  const profile=warAssaultWaveProfileV140(mission.targetId,rules);
+  const roster=arena.rivalRosterIds?.length?arena.rivalRosterIds:profile.unitIds;
+  let wavesIssued=arena.wavesIssued??0;
+  if(tick%8===0&&wavesIssued<profile.maximumWaves&&
+      actors.filter(a=>a.side==="rival"&&a.hp>0).length<7&&
+      !actors.some(a=>a.hp>0&&a.x>=95)) {
+    const sourceId=roster[wavesIssued%roster.length];
+    const source=rules.units.find(u=>u.id===sourceId&&u.fullMembers>0&&u.commandPoints>0);
+    if(source){actors.push({id:"rival-"+tick,teamId:null,unitId:source.id,
+       side:"rival",x:95,hp:lifeFor(source.id,rules)});wavesIssued++;}
   }
   let ownBase=arena.ownBase,rivalBase=arena.rivalBase;
   const wounds:string[]=[...arena.fallen];
@@ -448,6 +489,7 @@ export function stepAssaultV115(state:WarOperationsStateV115,rules:WarRulesV6):W
   const level=arena.apLevel??1;
   const nextArena={...arena,ap:clamp(arena.ap+9+(level-1)*4,0,100+(level-1)*35),ownBase:Math.max(0,ownBase),rivalBase:Math.max(0,rivalBase),
     actors:actors.filter(actor=>actor.hp>0),fallen:unique(wounds),
+    rivalRosterIds:[...roster],wavesIssued,
     heldUntil:Object.fromEntries(Object.entries(arena.heldUntil??{}).filter(([,until])=>until>tick))};
   const advanced={...state,clock:state.clock+1,active:{...mission,tick,assault:nextArena}};
   if(rivalBase<=0 || ownBase<=0 || tick>=95) {
@@ -466,6 +508,7 @@ export function commandStealthV115(state:WarOperationsStateV115,command:StealthC
   return reject(state,"Action inconnue.");
  const terrain=warMissionTerrainV116(mission.targetId,rules);
  let {x,y,cloaked,energy,alarm,sabotaged,guardX,guardDirection}=stealth;
+ let guardY=stealth.guardY??2;
  let decoyX=stealth.decoyX,decoyTurns=stealth.decoyTurns??0,decoyUsed=stealth.decoyUsed??false;
  let usedCoverIds=[...(stealth.usedCoverIds??[])];
  let silentStepsUsed=stealth.silentStepsUsed??0;
@@ -474,7 +517,7 @@ export function commandStealthV115(state:WarOperationsStateV115,command:StealthC
  const quietMovement=command.startsWith("cover-");
  if(command==="listen"){
   if(!terrain.cover.includes(coord(x,y))||cloaked||energy<1||acousticUsed>=2||
-    distance({x,y},{x:guardX,y:2})>5)
+    distance({x,y},{x:guardX,y:guardY})>5)
    return reject(state,"Écoute refusée : couvert réel, patrouille à portée acoustique, batterie et limite de deux usages.");
   acousticUsed++;energy--;
  }
@@ -522,22 +565,17 @@ export function commandStealthV115(state:WarOperationsStateV115,command:StealthC
   x=nx;y=ny;
  }
  if(cloaked){energy=Math.max(0,energy-1);if(!energy)cloaked=false;}
- if(decoyTurns>0&&decoyX!==undefined){
-  const destination=Math.max(4,Math.min(7,decoyX));
-  const dir=destination>guardX?1:destination<guardX?-1:guardDirection;
-  guardX=Math.max(4,Math.min(7,guardX+dir));
-  guardDirection=dir===1||dir===-1?dir:guardDirection;
-  decoyTurns--;
- }else{
-  guardX+=guardDirection;
-  if(guardX<=4||guardX>=7)guardDirection=guardDirection===1?-1:1;
- }
+ const patrol=warStealthPatrolStepV140(terrain,
+  {guardX,guardY,guardDirection},decoyTurns>0?decoyX:undefined);
+ guardX=patrol.guardX;guardY=patrol.guardY;guardDirection=patrol.guardDirection;
+ if(decoyTurns>0)decoyTurns--;
  // An authored cover breaks distant LOS only during a hide action.
  // A guard physically adjacent still sees the hunter.
  const hiding=(command==="hide"||quietMovement)&&terrain.cover.includes(coord(x,y))&&
    distance({x,y},{x:guardX,y:2})>1;
- const seen=!cloaked&&!hiding&&((y===2&&Math.abs(x-guardX)<=2)||(x===guardX&&Math.abs(y-2)<=1))&&
-  warTerrainLineOfSightV116(terrain,{x:guardX,y:2},{x,y});
+ const seen=!cloaked&&!hiding&&((y===guardY&&Math.abs(x-guardX)<=2)||
+   (x===guardX&&Math.abs(y-guardY)<=1))&&
+  warTerrainLineOfSightV116(terrain,{x:guardX,y:guardY},{x,y});
  if(seen||command==="interact")alarm++;
  if(command==="listen"){
   // Direction is coarse relative bearing only. No guard x-coordinate,
@@ -552,7 +590,7 @@ export function commandStealthV115(state:WarOperationsStateV115,command:StealthC
   alarm=Math.max(0,alarm-1);
   energy=Math.min(5,energy+1);
  }
- const nextStealth={x,y,guardX,guardDirection,alarm,cloaked,energy,sabotaged,
+ const nextStealth={x,y,guardX,guardY,guardDirection,alarm,cloaked,energy,sabotaged,
   decoyX,decoyTurns,decoyUsed,usedCoverIds,silentStepsUsed,acousticUsed,heardBearing,heardAtTick,
   silentSabotageUsed:stealth.silentSabotageUsed||command==="quiet-sabotage"};
  const advanced={...state,clock:state.clock+1,active:{...mission,tick:mission.tick+1,stealth:nextStealth}};
@@ -1004,6 +1042,12 @@ export function readWarOperationsV115(raw:string,rules:WarRulesV6):WarOperations
         !Array.isArray(a.fortifiedIds??[])||
         !Array.isArray(a.holdIssuedIds??[])||
         !Array.isArray(a.extractedIds??[])||
+        (a.rivalRosterIds!==undefined&&(!Array.isArray(a.rivalRosterIds)||
+          a.rivalRosterIds.length<1||a.rivalRosterIds.length>4||
+          unique(a.rivalRosterIds).length!==a.rivalRosterIds.length||
+          a.rivalRosterIds.some(id=>!rules.units.some(u=>u.id===id&&u.fullMembers>0&&u.commandPoints>0))))||
+        (a.wavesIssued!==undefined&&(!Number.isInteger(a.wavesIssued)||
+          a.wavesIssued<0||a.wavesIssued>warAssaultWaveProfileV140(active.targetId,rules).maximumWaves))||
         !Array.isArray(a.surgeIssuedIds??[])||
         (a.fallbackCounts!==undefined&&(!a.fallbackCounts||
           typeof a.fallbackCounts!=="object"||Array.isArray(a.fallbackCounts)||
@@ -1039,6 +1083,7 @@ export function readWarOperationsV115(raw:string,rules:WarRulesV6):WarOperations
       if(!Number.isInteger(v1.x)||v1.x<0||v1.x>8||
         !Number.isInteger(v1.y)||v1.y<0||v1.y>5||
         !Number.isInteger(v1.guardX)||v1.guardX<0||v1.guardX>8||
+        (v1.guardY!==undefined&&(!Number.isInteger(v1.guardY)||v1.guardY<1||v1.guardY>3))||
         ![-1,1].includes(v1.guardDirection)||
         !Number.isInteger(v1.alarm)||v1.alarm<0||v1.alarm>3||
         !Number.isInteger(v1.energy)||v1.energy<0||v1.energy>5||

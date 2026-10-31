@@ -108,9 +108,10 @@ export function requestWarOuterSignalV138(
 export function warStealthGuardVisibleV138(
  stealth:WarStealthV115,terrain:WarMissionTerrainV116,
 ):boolean {
- const distance=Math.abs(stealth.x-stealth.guardX)+Math.abs(stealth.y-2);
+ const guardY=stealth.guardY??2;
+ const distance=Math.abs(stealth.x-stealth.guardX)+Math.abs(stealth.y-guardY);
  return distance<=4&&warTerrainLineOfSightV116(terrain,
-  {x:stealth.x,y:stealth.y},{x:stealth.guardX,y:2});
+  {x:stealth.x,y:stealth.y},{x:stealth.guardX,y:guardY});
 }
 export function warStealthSoundBearingV138(
  stealth:WarStealthV115,missionTick:number,
