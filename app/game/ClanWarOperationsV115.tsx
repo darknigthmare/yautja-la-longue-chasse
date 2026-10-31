@@ -111,30 +111,56 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
     return ()=>window.clearTimeout(ticket);
   },[rules,persist,defaultSource,initialScenarioId]);
 
+  /** V148: a stale tab must never overwrite another tab's V115 archive,
+   * including through reset, or after a dropped background storage event.
+   * This compares the exact locally observed bytes; it is not a remote/cloud
+   * transaction and does not claim to solve simultaneous non-cooperating writes. */
+  function verifyOwnV115ArchiveV148():boolean {
+    if(!persist) return true;
+    try {
+      if(window.localStorage.getItem(WAR_OPERATIONS_STORAGE_V115)===knownArchiveBytesRef.current) return true;
+      setBlocked(true);
+      setStorageIssue("Front V115 modifié dans un autre onglet : aucune action ni réinitialisation. Rechargez pour consulter l’archive actuelle.");
+    } catch {
+      setBlocked(true);
+      setStorageIssue("Stockage V115 indisponible : aucune nouvelle écriture ni réinitialisation autorisée.");
+    }
+    return false;
+  }
+
   useEffect(()=>{
-    if(!persist) return;
-    const externalChange=(event:StorageEvent)=>{
-      if((event.key===WAR_OPERATIONS_STORAGE_V115||event.key===null) &&
-        event.newValue!==knownArchiveBytesRef.current){
+    if(!persist||!hydrated) return;
+    const verifyOnReturn=()=>{
+      if(!active||document.visibilityState!=="visible")return;
+      try {
+        if(window.localStorage.getItem(WAR_OPERATIONS_STORAGE_V115)!==knownArchiveBytesRef.current){
+          setBlocked(true);
+          setStorageIssue("Front V115 modifié dans un autre onglet : opérations verrouillées avant toute nouvelle action.");
+        }
+      } catch {
         setBlocked(true);
-        setStorageIssue("Front mis à jour depuis un autre onglet : opérations suspendues pour éviter tout écrasement.");
+        setStorageIssue("Stockage V115 indisponible : aucune nouvelle écriture autorisée.");
       }
     };
+    const externalChange=(event:StorageEvent)=>{
+      try {if(event.storageArea!==window.localStorage)return;}catch{return;}
+      if(event.key===WAR_OPERATIONS_STORAGE_V115||event.key===null)verifyOnReturn();
+    };
     window.addEventListener("storage",externalChange);
-    return ()=>window.removeEventListener("storage",externalChange);
-  },[persist]);
+    window.addEventListener("focus",verifyOnReturn);
+    document.addEventListener("visibilitychange",verifyOnReturn);
+    return ()=>{
+      window.removeEventListener("storage",externalChange);
+      window.removeEventListener("focus",verifyOnReturn);
+      document.removeEventListener("visibilitychange",verifyOnReturn);
+    };
+  },[persist,hydrated,active]);
 
   function commit(update:WarOperationsUpdateV115) {
-    setMessage(update.message);
-    if(!update.accepted || blocked || !hydrated) return;
+    if(!update.accepted){setMessage(update.message);return;}
+    if(blocked||!hydrated||!active||!verifyOwnV115ArchiveV148())return;
     if(persist) {
       try {
-        const currentBytes=window.localStorage.getItem(WAR_OPERATIONS_STORAGE_V115);
-        if(currentBytes!==knownArchiveBytesRef.current){
-          setBlocked(true);
-          setStorageIssue("Conflit de sauvegarde : un autre onglet a modifié le front. Rechargez pour consulter les dernières données ; aucun écrasement effectué.");
-          return;
-        }
         const updatedBytes=JSON.stringify(update.state);
         window.localStorage.setItem(WAR_OPERATIONS_STORAGE_V115,updatedBytes);
         knownArchiveBytesRef.current=updatedBytes;
@@ -144,7 +170,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
         return;
       }
     }
-    worldRef.current=update.state;setWorld(update.state);
+    worldRef.current=update.state;setWorld(update.state);setMessage(update.message);
   }
   useEffect(()=>{
     if(!active || !hydrated || blocked || world.active?.mode!=="assault") return;
@@ -228,16 +254,26 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
     } else commit(result);
   }
   function reset() {
-    if(!window.confirm("Remplacer uniquement les mandats d'exercice V115 ? Les archives V3, V6 et la campagne ne seront pas modifiées.")) return;
+    if(!hydrated||blocked||!active||!verifyOwnV115ArchiveV148())return;
+    if(!window.confirm("Remplacer uniquement les mandats d'exercice V115 ? Les archives V3, V6 et la campagne ne seront pas modifiées."))return;
+    // A different tab may write while the confirmation dialog is open.
+    if(!verifyOwnV115ArchiveV148())return;
     const next=createWarOperationsV115(rules);
     if(persist) {
       try {
         const encoded=JSON.stringify(next);
         window.localStorage.setItem(WAR_OPERATIONS_STORAGE_V115,encoded);
         knownArchiveBytesRef.current=encoded;
-      } catch {setStorageIssue("Impossible de remplacer l'archive ; aucune donnée effacée.");return;}
+      } catch {
+        setBlocked(true);
+        setStorageIssue("Impossible de remplacer l'archive V115 ; aucun changement local appliqué.");
+        return;
+      }
     }
     worldRef.current=next;setWorld(next);setBlocked(false);setStorageIssue("");setHydrated(true);
+    setMode(initialScenarioId?"rts":"assault");
+    setSelectedIds([]);setRtsSelectedId("");
+    setTargetId((initialScenarioId?rules.territories.find(site=>site.id===sourcePilotSiteId)?.id:undefined)??rules.territories[1]?.id??"");
     setMessage("Exercice V115 réinitialisé explicitement.");
   }
 
@@ -246,7 +282,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
     <div className={styles.intro}>
       <div><span className={styles.overline}>CONSEIL DES MANDATS · EXERCICE V115</span><h3>Quatre façons de mener la guerre</h3>
       <p>Une même équipe identifiable peut être envoyée en assaut latéral, en opération déléguée, en infiltration ou en bataille tactique. Les blessures, l&apos;expérience, les renseignements et les rapports suivent la même archive d&apos;exercice.</p></div>
-      <button type="button" className={styles.reset} onClick={reset}>Réinitialiser V115 uniquement</button>
+      <button type="button" className={styles.reset} disabled={blocked||!hydrated||!active} onClick={reset}>Réinitialiser V115 uniquement</button>
     </div>
     {holographic && <aside className={styles.gauntletRibbon} style={gauntletVars}
       aria-label="Projection tactique du gauntlet équipé" data-testid="clan-operations-gauntlet-v133" data-gauntlet-model={equipped?.id ?? "jungle-hunter"} data-current-mode={mode}>
