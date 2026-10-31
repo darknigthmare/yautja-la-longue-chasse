@@ -232,11 +232,18 @@ function updateEnemyAI(s:WarRtsSquadsStateV133):WarRtsSquadsStateV133{
    target.hp=Math.max(0,target.hp-damage);
    if(target.hp===0)target.status="down";
   }else{
+   // V141: the opposition is subject to the exact same *next-turn* physical
+   // hazard cycle as the allied commander's route planner. The actor may
+   // wait at a chokepoint rather than step onto a source-defined dangerous
+   // tile just before a heat/flood/ice pulse. No invisible enemy intel leaks.
+   const unsafeNext=hazardsNow(s.turn+1)?s.map.hazards:[];
    const occupied=[...allTargets(),...enemies.filter(e=>e.id!==enemy.id&&e.hp>0),
-    ...(!s.power?s.map.poweredDoors:[])];
+    ...(!s.power?s.map.poweredDoors:[]),...unsafeNext];
    const path=warMapFindPathV128(s.map,enemy,target,occupied);
    const step=path?.[1];
-   if(step&&!occupied.some(other=>at(other)===at(step))){enemy.x=step.x;enemy.y=step.y;}
+   if(step&&!occupied.some(other=>at(other)===at(step))){
+    enemy.x=step.x;enemy.y=step.y;
+   }
   }
  }
  return {...s,enemies,squads};

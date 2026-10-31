@@ -9,7 +9,9 @@ import { warRtsScriptedEligibilityV119, createWarRtsScriptedObjectiveV119, resol
 import { warMissionTerrainV116, warTerrainCellBlockedV116, warTerrainLineOfSightV116,
   warTerrainPathLengthV116, type WarMissionTerrainV116 } from "./clanWarMissionTerrainV116";
 import { warRtsNextPathStepV118 } from "./clanWarTacticalNavigationV118";
-import {warStealthPatrolSpawnV140,warStealthPatrolStepV140} from "./clanWarStealthPatrolV140";
+import {warStealthPatrolSpawnV140} from "./clanWarStealthPatrolV140";
+import {warStealthDecoyPatrolV141} from "./clanWarStealthDecoyV141";
+import {warAssaultContactV141} from "./clanWarAssaultContactV141";
 
 /**
  * V115: self-contained V6 training theatre. This is NOT a CON-T/RTS-U campaign
@@ -37,7 +39,7 @@ export interface WarAssaultV115 {
 }
 export interface WarStealthV115 { x: number; y: number; guardX: number;guardY?:number; guardDirection: -1 | 1; alarm: number; cloaked: boolean; energy: number; sabotaged: boolean;
   /** V135 sound diversion at the hunter's physical position; no canonical device assumed. */
-  decoyX?: number; decoyTurns?: number; decoyUsed?: boolean;
+  decoyX?: number; decoyY?:number; decoyTurns?: number; decoyUsed?: boolean;
   usedCoverIds?: string[];
   /** V137: real one-cell steps into authored cover; two per mission. */
   silentStepsUsed?: number;
@@ -471,24 +473,16 @@ export function stepAssaultV115(state:WarOperationsStateV115,rules:WarRulesV6):W
     if(source){actors.push({id:"rival-"+tick,teamId:null,unitId:source.id,
        side:"rival",x:95,hp:lifeFor(source.id,rules)});wavesIssued++;}
   }
-  let ownBase=arena.ownBase,rivalBase=arena.rivalBase;
-  const wounds:string[]=[...arena.fallen];
-  for(const actor of actors) {
-    if(actor.hp<=0) continue;
-    const hostile=actors.filter(other=>other.side!==actor.side && other.hp>0)
-      .sort((a,b)=>Math.abs(a.x-actor.x)-Math.abs(b.x-actor.x))[0];
-    const unit=unitFor(rules,actor.unitId);
-    const range=clamp((unit?.range??1)*2+3,5,22);
-    if(hostile && Math.abs(hostile.x-actor.x)<=range) hostile.hp-=damageFor(actor.unitId,rules);
-    else if(!(actor.side==="ally"&&actor.teamId&&(arena.heldUntil?.[actor.teamId]??0)>tick))
-      actor.x+= (actor.side==="ally"?1:-1)*clamp(2+(unit?.mobility??1)*0.25,2,5);
-    if(actor.side==="ally" && actor.x>=94){rivalBase-=damageFor(actor.unitId,rules)*3;actor.x=94;}
-    if(actor.side==="rival" && actor.x<=6){ownBase-=damageFor(actor.unitId,rules)*3;actor.x=6;}
-  }
-  for(const actor of actors) if(actor.hp<=0 && actor.teamId) wounds.push(actor.teamId);
+  // Damage is a simultaneous exchange: array processing order no longer
+  // changes who was able to strike during this same tactical second.
+  const exchange=warAssaultContactV141(actors,rules,arena.heldUntil??{},tick);
+  const ownBase=arena.ownBase-exchange.ownBaseDamage;
+  const rivalBase=arena.rivalBase-exchange.rivalBaseDamage;
+  const wounds=unique([...arena.fallen,...exchange.actors
+    .filter(actor=>actor.hp<=0&&actor.teamId).map(actor=>actor.teamId!)]);
   const level=arena.apLevel??1;
   const nextArena={...arena,ap:clamp(arena.ap+9+(level-1)*4,0,100+(level-1)*35),ownBase:Math.max(0,ownBase),rivalBase:Math.max(0,rivalBase),
-    actors:actors.filter(actor=>actor.hp>0),fallen:unique(wounds),
+    actors:exchange.actors.filter(actor=>actor.hp>0),fallen:wounds,
     rivalRosterIds:[...roster],wavesIssued,
     heldUntil:Object.fromEntries(Object.entries(arena.heldUntil??{}).filter(([,until])=>until>tick))};
   const advanced={...state,clock:state.clock+1,active:{...mission,tick,assault:nextArena}};
@@ -509,7 +503,7 @@ export function commandStealthV115(state:WarOperationsStateV115,command:StealthC
  const terrain=warMissionTerrainV116(mission.targetId,rules);
  let {x,y,cloaked,energy,alarm,sabotaged,guardX,guardDirection}=stealth;
  let guardY=stealth.guardY??2;
- let decoyX=stealth.decoyX,decoyTurns=stealth.decoyTurns??0,decoyUsed=stealth.decoyUsed??false;
+ let decoyX=stealth.decoyX,decoyY=stealth.decoyY,decoyTurns=stealth.decoyTurns??0,decoyUsed=stealth.decoyUsed??false;
  let usedCoverIds=[...(stealth.usedCoverIds??[])];
  let silentStepsUsed=stealth.silentStepsUsed??0;
  let acousticUsed=stealth.acousticUsed??0;
@@ -545,7 +539,7 @@ export function commandStealthV115(state:WarOperationsStateV115,command:StealthC
  else if(command==="decoy"){
   // Physical emission from the hunter's current tile; guard hears the signal
   // only during the next three decisions and never teleports to it.
-  energy-=2;decoyUsed=true;decoyX=x;decoyTurns=3;
+  energy-=2;decoyUsed=true;decoyX=x;decoyY=y;decoyTurns=3;
  }else if(command==="interact"){
   if(distance({x,y},terrain.relay)>1||sabotaged)
    return reject(state,"Atteignez le relais non désactivé avant de le saboter.");
@@ -565,14 +559,15 @@ export function commandStealthV115(state:WarOperationsStateV115,command:StealthC
   x=nx;y=ny;
  }
  if(cloaked){energy=Math.max(0,energy-1);if(!energy)cloaked=false;}
- const patrol=warStealthPatrolStepV140(terrain,
-  {guardX,guardY,guardDirection},decoyTurns>0?decoyX:undefined);
+ const patrol=warStealthDecoyPatrolV141(terrain,
+  {guardX,guardY,guardDirection},decoyTurns>0&&decoyX!==undefined?
+   {x:decoyX,y:decoyY??2}:null);
  guardX=patrol.guardX;guardY=patrol.guardY;guardDirection=patrol.guardDirection;
  if(decoyTurns>0)decoyTurns--;
  // An authored cover breaks distant LOS only during a hide action.
  // A guard physically adjacent still sees the hunter.
  const hiding=(command==="hide"||quietMovement)&&terrain.cover.includes(coord(x,y))&&
-   distance({x,y},{x:guardX,y:2})>1;
+   distance({x,y},{x:guardX,y:guardY})>1;
  const seen=!cloaked&&!hiding&&((y===guardY&&Math.abs(x-guardX)<=2)||
    (x===guardX&&Math.abs(y-guardY)<=1))&&
   warTerrainLineOfSightV116(terrain,{x:guardX,y:guardY},{x,y});
@@ -591,7 +586,7 @@ export function commandStealthV115(state:WarOperationsStateV115,command:StealthC
   energy=Math.min(5,energy+1);
  }
  const nextStealth={x,y,guardX,guardY,guardDirection,alarm,cloaked,energy,sabotaged,
-  decoyX,decoyTurns,decoyUsed,usedCoverIds,silentStepsUsed,acousticUsed,heardBearing,heardAtTick,
+  decoyX,decoyY,decoyTurns,decoyUsed,usedCoverIds,silentStepsUsed,acousticUsed,heardBearing,heardAtTick,
   silentSabotageUsed:stealth.silentSabotageUsed||command==="quiet-sabotage"};
  const advanced={...state,clock:state.clock+1,active:{...mission,tick:mission.tick+1,stealth:nextStealth}};
  if(alarm>=3)return accept(recordOutcome(advanced,mission.id,"stealth",null,mission.targetId,mission.teamIds,"defeat",mission.teamIds.slice(0,1),rules,
@@ -1092,6 +1087,8 @@ export function readWarOperationsV115(raw:string,rules:WarRulesV6):WarOperations
         (v1.silentSabotageUsed!==undefined&&
           (typeof v1.silentSabotageUsed!=="boolean"||v1.silentSabotageUsed&&!v1.sabotaged))||
         (v1.decoyX!==undefined&&(!Number.isInteger(v1.decoyX)||v1.decoyX<0||v1.decoyX>8))||
+        (v1.decoyY!==undefined&&(!Number.isInteger(v1.decoyY)||
+          v1.decoyY<0||v1.decoyY>5||v1.decoyX===undefined))||
         (v1.decoyTurns!==undefined&&(!Number.isInteger(v1.decoyTurns)||v1.decoyTurns<0||v1.decoyTurns>3))||
         (v1.acousticUsed!==undefined&&(!Number.isInteger(v1.acousticUsed)||
            v1.acousticUsed<0||v1.acousticUsed>2))||

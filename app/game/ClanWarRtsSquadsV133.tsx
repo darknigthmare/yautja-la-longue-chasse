@@ -158,6 +158,7 @@ export default function ClanWarRtsSquadsV133({rules}:{rules:WarRulesV6}){
      Cycle régional W3 : danger {environmental.activeNow?"actif":"inactif"} maintenant,
      {environmental.activeNextTurn?" ACTIF au prochain tour.":" inactif au prochain tour."}
      Les mêmes cases affectent tous les combattants, indépendamment de leur camp.
+     Les adversaires peuvent contourner un couloir dangereux avant le prochain cycle ; leur position cachée n'est jamais dévoilée.
     </p>}
     {state.phase==="active"&&<div className={styles.rallyPanel}>
      <h5>Ordre collectif · un seul tour pour toutes les escouades</h5>

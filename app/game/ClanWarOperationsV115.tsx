@@ -27,7 +27,7 @@ import {
  commandWarAssaultSurgeV138,requestWarOuterSignalV138,
  warStealthGuardVisibleV138,warStealthSoundBearingV138,
 } from "./systems/clanWarParallelModesV138";
-import {warOuterRouteProgressV140} from "./systems/clanWarOuterRouteProgressV140";
+import {warOuterWeightedProgressV141} from "./systems/clanWarOuterWeightedProgressV141";
 import styles from "./ClanWarOperationsV115.module.css";
 
 const modeLabels: Record<WarMissionModeV115, string> = {
@@ -379,6 +379,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
 
       {assault && <div>
         <p>Vagues régionales : <strong>{assault.wavesIssued??0} / {warAssaultWaveProfileV140(world.active?.targetId??world.baseId,rules).maximumWaves}</strong> · profils d&apos;unités de la Bible V6 : {(assault.rivalRosterIds??[]).join(", ")||"archive V115 à initialiser"}.</p>
+        <p className={styles.explain}>V141 : échanges de tirs simulés simultanément au cours du même tour. Aucun combattant ne peut passer à travers un front ennemi ou se déplacer en dehors de la voie.</p>
         <p>Points d&apos;assaut <strong>{assault.ap} AP</strong> · Cadence <strong>niveau {assault.apLevel??1}/3</strong> · Réserve maximale <strong>{100+((assault.apLevel??1)-1)*35} AP</strong> · Rempart allié <strong>{assault.ownBase}/80</strong> · Rempart adverse <strong>{assault.rivalBase}/80</strong>. Les équipes avancent et engagent automatiquement ; vous décidez du moment du déploiement.</p>
         <div className={styles.cards}>
           <button type="button" disabled={blocked||(assault.apLevel??1)>=3||assault.ap<((assault.apLevel??1)===1?35:55)}
@@ -473,7 +474,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
       </div>}
 
       {stealth && <div>
-        <p>Rejoindre le relais (7,1), le désactiver, puis rejoindre l&apos;extraction (1,4). Alerte <strong>{stealth.alarm}/3</strong> · énergie de camouflage <strong>{stealth.energy}/5</strong> · relais <strong>{stealth.sabotaged?"neutralisé":"actif"}</strong> · diversion <strong>{stealth.decoyUsed?"épuisée": "disponible"}</strong> · écho sonore <strong>{stealth.decoyTurns??0} tour(s)</strong> · couverts utilisés <strong>{(stealth.usedCoverIds??[]).length}/{missionTerrain?.cover.length??0}</strong> · écoutes <strong>{stealth.acousticUsed??0}/2</strong>.</p>
+        <p>Rejoindre le relais (7,1), le désactiver, puis rejoindre l&apos;extraction (1,4). Alerte <strong>{stealth.alarm}/3</strong> · énergie de camouflage <strong>{stealth.energy}/5</strong> · relais <strong>{stealth.sabotaged?"neutralisé":"actif"}</strong> · diversion <strong>{stealth.decoyUsed?"épuisée": "disponible"}</strong> · leurre <strong>{stealth.decoyTurns??0} tour(s) à la position émise</strong> · couverts utilisés <strong>{(stealth.usedCoverIds??[]).length}/{missionTerrain?.cover.length??0}</strong> · écoutes <strong>{stealth.acousticUsed??0}/2</strong>.</p>
         <p className={styles.explain}>Terrain régional : {missionTerrain?.title} · {missionTerrain?.ground} · obstacle : {missionTerrain?.wallLabel}.</p>
         <p className={styles.explain}>Patrouille : {guardVisible?"visible à portée réelle":
           soundBearing?("bruit perçu vers "+soundBearing+" · position exacte inconnue"):
@@ -481,7 +482,9 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
         <div className={styles.grid} style={{gridTemplateColumns:"repeat(9,minmax(0,1fr))"}} role="img" aria-label="Plan d'infiltration : X pisteur, G uniquement si visible, R relais, E extraction et obstacles">
           {Array.from({length:54},(_,index)=>{
             const x=index%9,y=Math.floor(index/9),wall=Boolean(missionTerrain?.walls.includes(x+","+y));
-            const mark=stealth.x===x&&stealth.y===y?"X":guardVisible&&stealth.guardX===x&&y===(stealth.guardY??2)?"G":x===7&&y===1?"R":x===1&&y===4?"E":wall?"▥":missionTerrain?.cover.includes(x+","+y)?"▤":"·";
+            const mark=stealth.x===x&&stealth.y===y?"X":guardVisible&&stealth.guardX===x&&y===(stealth.guardY??2)?"G":x===7&&y===1?"R":x===1&&y===4?"E":wall?"▥":stealth.decoyTurns&&stealth.decoyX===x&&
+              (stealth.decoyY??2)===y?"♪":
+              missionTerrain?.cover.includes(x+","+y)?"▤":"·";
             return <span className={styles.cell} data-wall={wall} data-actor={mark==="X"?"ally":mark==="G"?"rival":""} key={index} title={"Case "+x+","+y}>{mark}</span>;
           })}
         </div>
@@ -626,7 +629,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
       <h4>Outer Ops · opérations en attente ({world.outer.length}/3)</h4>
       <p>Le délai utilise l&apos;heure de l&apos;appareil. Un rappel ne téléporte pas l&apos;équipe : son trajet de retour est décompté jusqu&apos;au rapport final.</p>
       {world.outer.length?world.outer.map(order=>{
-        const transit=warOuterRouteProgressV140(order,now,rules);
+        const transit=warOuterWeightedProgressV141(order,now,rules);
         return <div className={styles.delegatedOrder} key={order.id}>
         <strong>{order.id} · {focusLabels[order.focus]}</strong>
         <span>{order.targetId} · {order.teamIds.map(teamsById).join(", ")}</span>
@@ -636,6 +639,8 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
           {Math.floor(transit.legProgress*100)} % du trajet courant ·
           <strong> {transit.currentPassageName??"aucun passage actuellement traversé"}</strong>
           {transit.currentPassageId?" ("+transit.currentPassageId+")":""}.
+          {transit.currentMovementCost!==null&&<> Progression dans ce passage :
+           <strong> {Math.floor(transit.currentPassageProgress*100)} %</strong> · poids de déplacement V6 {transit.currentMovementCost}.</>}
         </span>
         {transit.sourceCondition&&<small className={styles.explain}>Condition publique du passage : {transit.sourceCondition}. Aucune position ennemie calculée.</small>}
         {order.recall ? <small className={styles.explain}>Rappel transmis : équipe toujours engagée jusqu&apos;à l&apos;arrivée.</small> : <button type="button" disabled={blocked||now<order.startedAt||now>=order.dueAt} onClick={()=>commit(recallWarOuterMissionV116(worldRef.current,order.id,Date.now(),rules))}>Rappeler l&apos;équipe</button>}
