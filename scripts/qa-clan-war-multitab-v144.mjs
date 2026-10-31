@@ -81,7 +81,7 @@ async function getFence(page){
       const tx=db.transaction("intents","readonly");
       const read=tx.objectStore("intents").get(key);
       read.onerror=()=>{db.close();reject(new Error("IDB record read failed"));};
-      read.onsuccess=()=>{db.close();resolve(read.result??null);};
+      read.onsuccess=()=>{db.close();resolveFence(read.result??null);};
     };
   }),WAR_KEY),new Promise((_,reject)=>{timeout=setTimeout(()=>reject(new Error("IndexedDB fence read timed out in browser QA")),15000);})]);}
   finally{clearTimeout(timeout);}
