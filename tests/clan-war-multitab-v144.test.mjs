@@ -105,3 +105,18 @@ test("source integration includes read-only conflict banner, focus recheck, non-
  assert.match(panel,/data-war-campaign-write="none"/);
  assert.ok(!session.includes("gauntletCampaignClaimV134("));
 });
+
+test("V145 real three-tab QA covers two distinct planetary fences and settles the IDB browser read",()=>{
+ const qa=read("scripts/qa-clan-war-multitab-v144.mjs");
+ const fixture=read("tests/browser/clan-war-v143.fixture.tsx");
+ assert.match(fixture,/QA_PLANET/);
+ assert.match(fixture,/initialPlanetId=\{QA_PLANET\}/);
+ assert.match(qa,/THALASSA_KEY="yautja\.clan-war\.v96\.planet\.thalassa\.free\.v1"/);
+ assert.match(qa,/c\.goto\(url\+"\?planet=thalassa"/);
+ assert.match(qa,/getFence\(c,THALASSA_KEY\)/);
+ assert.match(qa,/read\.onsuccess=\(\)=>\{db\.close\(\);resolveFence\(read\.result\?\?null\);\}/);
+ assert.doesNotMatch(qa,/read\.onsuccess=\(\)=>\{db\.close\(\);resolve\(/);
+ assert.match(qa,/threeTabMultiPlanetCoverage:true/);
+ assert.match(qa,/assert\.equal\(checks\.length,8\)/);
+ assert.match(qa,/foreign-tab-conflict-v144/);
+});
