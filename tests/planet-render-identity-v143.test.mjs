@@ -29,8 +29,8 @@ test("all three view dimensions and PBR material changes invalidate a drawn canv
     {...base,coastKm:300},
     {...base,layer:"albedo"},
     {...base,switches:[false,...base.switches.slice(1)]},
-    {...base,regions:base.regions.map((x,i)=>i?x:{...x,landMaterialId:"land-karst"}},
-    {...base,regions:base.regions.map((x,i)=>i?x:{...x,surfaceMaterialId:null}},
+    {...base,regions:base.regions.map((x,i)=>i?x:{...x,landMaterialId:"land-karst"})},
+    {...base,regions:base.regions.map((x,i)=>i?x:{...x,surfaceMaterialId:null})},
     {...base,revision:1},
     {...base,regions:null},
   ]) assert.notEqual(sig(changed),original);
