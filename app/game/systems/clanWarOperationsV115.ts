@@ -42,6 +42,9 @@ export interface WarAssaultV115 {
   focusUsedIds?:string[];
   braceUsedIds?:string[];bracedUntil?:Record<string,number>;
   regroupUsedIds?:string[];
+  /** V145 finite physical damage transfer; never additional hit points. */
+  interposeUsedIds?:string[];
+  interposeOrders?:Record<string,{guardianTeamId:string;expiresAtTick:number}>;
 }
 export interface WarStealthV115 { x: number; y: number; guardX: number;guardY?:number; guardDirection: -1 | 1; alarm: number; cloaked: boolean; energy: number; sabotaged: boolean;
   /** V135 sound diversion at the hunter's physical position; no canonical device assumed. */
@@ -503,7 +506,7 @@ export function stepAssaultV115(state:WarOperationsStateV115,rules:WarRulesV6):W
   // Damage is a simultaneous exchange: array processing order no longer
   // changes who was able to strike during this same tactical second.
   const exchange=warAssaultContactV141(actors,rules,arena.heldUntil??{},tick,
-    arena.focusOrders??{},arena.bracedUntil??{});
+    arena.focusOrders??{},arena.bracedUntil??{},arena.interposeOrders??{});
   const ownBase=arena.ownBase-exchange.ownBaseDamage;
   const rivalBase=arena.rivalBase-exchange.rivalBaseDamage;
   const wounds=unique([...arena.fallen,...exchange.actors
@@ -514,6 +517,9 @@ export function stepAssaultV115(state:WarOperationsStateV115,rules:WarRulesV6):W
     rivalRosterIds:[...roster],wavesIssued,
     bracedUntil:Object.fromEntries(Object.entries(arena.bracedUntil??{})
       .filter(([,until])=>until>tick)),
+    interposeOrders:Object.fromEntries(Object.entries(arena.interposeOrders??{})
+      .filter(([,order])=>order.expiresAtTick>tick&&
+        exchange.actors.some(a=>a.teamId===order.guardianTeamId&&a.hp>0))),
     focusOrders:Object.fromEntries(Object.entries(arena.focusOrders??{})
       .filter(([teamId,order])=>!exchange.focusedTeamIds.includes(teamId)&&
         order.expiresAtTick>tick)),
@@ -1130,6 +1136,21 @@ export function readWarOperationsV115(raw:string,rules:WarRulesV6):WarOperations
         !Array.isArray(a.usedSpecials??[])||
         !Array.isArray(a.fortifiedIds??[])||
         !Array.isArray(a.braceUsedIds??[])||
+        (a.interposeUsedIds!==undefined&&(!Array.isArray(a.interposeUsedIds)||
+          a.interposeUsedIds.length>4||
+          a.interposeUsedIds.some(id=>!a.launched.includes(id))||
+          unique(a.interposeUsedIds).length!==a.interposeUsedIds.length))||
+        (a.interposeOrders!==undefined&&(!a.interposeOrders||
+          typeof a.interposeOrders!=="object"||Array.isArray(a.interposeOrders)||
+          Object.keys(a.interposeOrders).length>4||
+          Object.entries(a.interposeOrders).some(([targetId,order])=>
+            !a.launched.includes(targetId)||!order||
+            !a.launched.includes(order.guardianTeamId)||
+            targetId===order.guardianTeamId||
+            !(a.interposeUsedIds??[]).includes(order.guardianTeamId)||
+            !Number.isSafeInteger(order.expiresAtTick)||
+            order.expiresAtTick<=active.tick||
+            order.expiresAtTick>active.tick+3)))||
         (a.regroupUsedIds!==undefined&&(!Array.isArray(a.regroupUsedIds)||
           a.regroupUsedIds.length>4||
           a.regroupUsedIds.some(id=>!a.launched.includes(id))||

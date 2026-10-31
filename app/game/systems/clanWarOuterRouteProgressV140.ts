@@ -18,7 +18,11 @@ const fraction=(n:number)=>Math.min(1,Math.max(0,n));
 const safe=(v:number)=>Number.isFinite(v)?Math.max(0,v):0;
 
 function outboundFraction(order:WarOuterMissionV115,now:number):number {
- const original=order.reconHalt?.originalDueAt??order.routeIncident?.originalDueAt??order.recall?.originalDueAt??order.dueAt;
+ // A V144 re-route costs a real 5-second maneuver. Its original deadline
+ // is the earliest available source clock before later V137/V143 holds.
+ const original=order.routeDiversion?.originalDueAt??
+   order.reconHalt?.originalDueAt??order.routeIncident?.originalDueAt??
+   order.recall?.originalDueAt??order.dueAt;
  const total=Math.max(1,original-order.startedAt);
  // A V137 halt truly consumes 15 seconds without moving along a passage.
  const reconPause=order.reconHalt&&now>order.reconHalt.orderedAt?
@@ -26,7 +30,9 @@ function outboundFraction(order:WarOuterMissionV115,now:number):number {
  const incidentPause=order.routeIncident?.kind==="detour"&&
    now>order.routeIncident.orderedAt?
    Math.min(10000,now-order.routeIncident.orderedAt):0;
- return fraction((now-order.startedAt-reconPause-incidentPause)/total);
+ const reroutePause=order.routeDiversion&&now>order.routeDiversion.changedAt?
+   Math.min(5000,now-order.routeDiversion.changedAt):0;
+ return fraction((now-order.startedAt-reconPause-incidentPause-reroutePause)/total);
 }
 export function warOuterRouteProgressV140(
  order:WarOuterMissionV115,now:number,rules:WarRulesV6,

@@ -32,6 +32,8 @@ import {warOuterRouteChoicesV142} from "./systems/clanWarOuterChoicesV142";
 import {issueWarAssaultFocusV142} from "./systems/clanWarFocusV142";
 import {commandWarAssaultBraceV143} from "./systems/clanWarBraceV143";
 import {commandWarAssaultRegroupV144} from "./systems/clanWarRegroupV144";
+import {commandWarAssaultInterposeV145} from "./systems/clanWarInterposeV145";
+import {warOuterTravelLedgerV145} from "./systems/clanWarTravelLedgerV145";
 import {commandWarOuterRerouteV144} from "./systems/clanWarOuterRerouteV144";
 import {commandWarStealthAlertReinforcementV144} from "./systems/clanWarStealthReinforcementV144";
 import {commandWarStealthDashV143} from "./systems/clanWarStealthDashV143";
@@ -449,6 +451,18 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
            Replier ensemble {a.unitId} + {b.unitId} (16 AP, 1 vrai tour)
           </button>))}</div>
         <p className={styles.explain}>V144 : deux formations réelles proches se replient sans franchir les ennemis ; un seul tour normal de riposte adverse suit l&apos;ordre.</p>
+        <div className={styles.cards}>{assault.actors.filter(u=>u.side==="ally"&&u.hp>0&&u.teamId)
+         .flatMap((target)=>assault.actors.filter(guard=>guard.side==="ally"&&guard.hp>0&&
+            guard.teamId&&guard.id!==target.id&&guard.x<=target.x&&target.x-guard.x<=6)
+           .map(guard=><button type="button" key={"interpose145-"+guard.id+"-"+target.id}
+             disabled={blocked||assault.ap<10||
+               (assault.interposeUsedIds??[]).includes(guard.teamId!)||
+               Boolean(assault.interposeOrders?.[target.teamId!])}
+             onClick={()=>commit(commandWarAssaultInterposeV145(worldRef.current,
+               guard.teamId!,target.teamId!,rules))}>
+             Protéger {target.unitId} par {guard.unitId} (10 AP, deux échanges)
+           </button>))}</div>
+        <p className={styles.explain}>Interposition V145 : un groupe arrière absorbe physiquement une blessure du groupe avancé sur une vraie attaque. Les dégâts totaux sont conservés, sans soins gratuits.</p>
         <p>Points d&apos;assaut <strong>{assault.ap} AP</strong> · Cadence <strong>niveau {assault.apLevel??1}/3</strong> · Réserve maximale <strong>{100+((assault.apLevel??1)-1)*35} AP</strong> · Rempart allié <strong>{assault.ownBase}/80</strong> · Rempart adverse <strong>{assault.rivalBase}/80</strong>. Les équipes avancent et engagent automatiquement ; vous décidez du moment du déploiement.</p>
         <div className={styles.cards}>
           <button type="button" disabled={blocked||(assault.apLevel??1)>=3||assault.ap<((assault.apLevel??1)===1?35:55)}
@@ -551,7 +565,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
           Sécurité renforcée V144 · activer un second garde pour cette infiltration
         </button>
         {stealth.supportGuard&&<p className={styles.explain}>Deux gardes physiques patrouillent maintenant le secteur ;
-          la dissimulation et la détection tiennent compte de leurs deux positions réelles.</p>}
+          la dissimulation, l'écoute et le sabotage discret tiennent compte des deux gardes. Les patrouilles ne peuvent plus occuper la même case.</p>}
         <div className={styles.stealthControls}>{(["up","left","down","right"] as const).map(dir=>{
           const dx=dir==="right"?1:dir==="left"?-1:0;
           const dy=dir==="down"?1:dir==="up"?-1:0;
@@ -726,6 +740,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
       <p>Le délai utilise l&apos;heure de l&apos;appareil. Un rappel ne téléporte pas l&apos;équipe : son trajet de retour est décompté jusqu&apos;au rapport final.</p>
       {world.outer.length?world.outer.map(order=>{
         const transit=warOuterWeightedProgressV141(order,now,rules);
+        const travelLedger=warOuterTravelLedgerV145(order,now,rules);
         const incident=warOuterIncidentV143(order,now,rules);
         const routePc=order.teamIds.reduce((pc,id)=>pc+
           (rules.units.find(u=>u.id===world.teams.find(t=>t.id===id)?.unitId)?.commandPoints??0),0);
@@ -768,7 +783,11 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
               Réviser le trajet · {route.id} · {route.cost} coût V6 (1 RAV, +5 s)
             </button>)}
           </div>}
-        {order.routeDiversion&&<small className={styles.explain}>Route modifiée V144 :
+        {travelLedger.pauseReasons.length>0&&<p className={styles.explain}>
+          Pause physique du convoi : <strong>{travelLedger.pauseReasons.join(", ")}</strong>.
+          Temps de manœuvre déjà comptabilisé : {Math.floor(travelLedger.pausedMs/1000)} s.
+          Le passage affiché ne progresse pas gratuitement pendant cette pause.</p>}
+                {order.routeDiversion&&<small className={styles.explain}>Route modifiée V144 :
           un RAV engagé à {order.routeDiversion.changedAt}, échéance rallongée de cinq secondes,
           mêmes membres et aucun gain anticipé.</small>}
         {order.routeIncident&&<p className={styles.explain}>Incident V143 traité sur {order.routeIncident.passageId} :

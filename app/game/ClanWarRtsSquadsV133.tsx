@@ -4,7 +4,7 @@ import type {WarRulesV6} from "./systems/clanWarBibleV6";
 import {
  createWarRtsSquadsV133,draftWarRtsSquadV133,removeWarRtsSquadV133,
  launchWarRtsSquadsV133,commandWarRtsSquadsV133,visibleWarRtsEnemiesV133,
- planWarRtsRallyV134,commandWarRtsRallyV134,commandWarRtsSuppressV135,commandWarRtsCrossfireV144,commandWarRtsOverwatchV136,commandWarRtsBraceV137,commandWarRtsMedicV138,evacuateWarRtsSquadV139,warRtsEnvironmentalWindowV140,
+ planWarRtsRallyV134,commandWarRtsRallyV134,commandWarRtsSuppressV135,commandWarRtsCrossfireV144,commandWarRtsPostHandoverV145,commandWarRtsOverwatchV136,commandWarRtsBraceV137,commandWarRtsMedicV138,evacuateWarRtsSquadV139,warRtsEnvironmentalWindowV140,
  type WarRtsSquadsStateV133,type WarRtsSquadOrderV133,
 } from "./systems/clanWarRtsSquadsV133";
 import {WAR_SOURCE_RTS_IDS_V129} from "./systems/clanWarRtsSourceMissionsV129";
@@ -277,6 +277,13 @@ export default function ClanWarRtsSquadsV133({rules}:{rules:WarRulesV6}){
    </li>)}</ol>
    {state.tracked&&<p className={styles.hint}>Protection : {state.tracked.kind} · {state.tracked.hp} PV · {state.tracked.secured?"sécurisé":"à récupérer"} · {state.tracked.carrierSquadId??"aucun responsable"}{state.tracked.isNeutral?" · personne neutre":""}.</p>}
    {state.hold&&<p>Maintien de poste : <strong>{state.hold.progress}/{state.hold.required} tours</strong>, escouade {state.hold.squadId}.</p>}
+   {state.hold&&current&&selected&&selected.id!==state.hold.squadId&&
+     selected.status==="active"&&d(selected,current.location)<=1&&
+     <button type="button" disabled={(state.handoverUsedIds??[]).includes(state.hold.squadId)}
+      onClick={()=>apply(commandWarRtsPostHandoverV145(state,selected.id))}>
+      Relève physique V145 · transmettre le maintien de poste à {selected.unitId} (1 tour)
+     </button>}
+   {state.handoverUsedIds?.length?<p className={styles.hint}>Relèves de poste effectuées : {state.handoverUsedIds.length}, sans recruter de nouvelles unités.</p>:null}
    {state.report&&<div className={styles.report} role="status"><strong>Reçu unique : {state.report.outcome}</strong>
     <p>{state.report.id}. Preuves : {state.report.completedTaskIds.length}/3, RAV restants : {state.report.remainingRav}, groupe(s) hors combat : {state.report.downSquadIds.length}, évacué(s) : {state.report.evacuatedSquadIds?.length??0}, laissé(s) sur place : {state.report.leftBehindSquadIds.length}. Aucun gain sur la sauvegarde V85/V6.</p></div>}
   </div>

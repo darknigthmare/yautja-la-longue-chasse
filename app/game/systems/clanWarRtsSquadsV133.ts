@@ -57,6 +57,8 @@ export interface WarRtsSquadsStateV133 {
  brace?:WarRtsBraceV137[];braceIssuedIds?:string[];
  /** Real W3-U18 field medics; cannot create new people from a casualty. */
  triageReceipts?:WarRtsTriageV138[];
+ /** V145 one physical post handover per original holder, no fake hold ticks. */
+ handoverUsedIds?:string[];
 }
 export type WarRtsSquadOrderV133 =
  |{kind:"move";squadId:string;direction:"up"|"down"|"left"|"right"}
@@ -543,6 +545,34 @@ export function commandWarRtsOverwatchV136(
  return issue(state,"Veille tactique engagée par "+ally.unitId+
   " pour deux tours maximum, sans tir invisible ni munition prélevée à vide.",
   {overwatch:pending});
+}
+
+/**
+ * V145 station relief: two real squads must simultaneously be within one
+ * source-map step of the SAME currently held mission task. The previous
+ * holder's progress is conserved, not duplicated, and a NORMAL single enemy
+ * response is simulated as the new holder takes position. No RAV or V85 XP.
+ */
+export function commandWarRtsPostHandoverV145(
+ s:WarRtsSquadsStateV133,newSquadId:string,
+):WarRtsSquadsUpdateV133{
+ if(s.phase!=="active"||s.report||!s.hold)
+  return fail(s,"Aucun poste tactique en cours à transmettre.");
+ const oldId=s.hold.squadId,task=currentTask(s);
+ if(!newSquadId||newSquadId===oldId||!task||task.id!==s.hold.taskId)
+  return fail(s,"Relève invalide : poste ou escouade identiques/inexistants.");
+ if((s.handoverUsedIds??[]).includes(oldId))
+  return fail(s,"Ce chef a déjà transmis son poste pendant la mission.");
+ const holder=activeSquads(s).find(u=>u.id===oldId);
+ const newHolder=activeSquads(s).find(u=>u.id===newSquadId);
+ if(!holder||!newHolder||distance(holder,task.location)>1||
+    distance(newHolder,task.location)>1)
+  return fail(s,"Deux escouades vivantes et physiquement au même poste W3 sont nécessaires.");
+ if(taskRestriction(s,task))return fail(s,"Le poste est bloqué par un état de sécurité réel.");
+ return issue(s,"Relève physique du poste "+task.title+" entre "+
+  holder.unitId+" et "+newHolder.unitId+" : progression acquise conservée, un vrai tour d'opposition.",
+  {hold:{...s.hold,squadId:newHolder.id},
+   handoverUsedIds:[...(s.handoverUsedIds??[]),oldId]});
 }
 
 /**

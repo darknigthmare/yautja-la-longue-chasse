@@ -20,6 +20,7 @@ export function warAssaultContactV141(
  heldUntil:Readonly<Record<string,number>>,tick:number,
  focusOrders:Readonly<Record<string,{targetId:string;expiresAtTick:number}>>={},
  bracedUntil:Readonly<Record<string,number>>={},
+ interposeOrders:Readonly<Record<string,{guardianTeamId:string;expiresAtTick:number}>>={},
 ):WarAssaultContactV141{
  const alive=original.filter(a=>a.hp>0);
  const harm=new Map<string,number>();
@@ -44,8 +45,18 @@ export function warAssaultContactV141(
    const defensive=hostile.side==="ally"&&hostile.teamId&&
      (bracedUntil[hostile.teamId]??0)>tick?1:0;
    const damage=Math.max(1,unguarded-defensive);
-   harm.set(hostile.id,(harm.get(hostile.id)??0)+damage);
-   shots.push({attackerId:actor.id,targetId:hostile.id,damage});
+   const protection=hostile.side==="ally"&&hostile.teamId?
+     interposeOrders[hostile.teamId]:undefined;
+   const guardian=protection&&protection.expiresAtTick>=tick&&damage>=2?
+     alive.find(u=>u.side==="ally"&&u.teamId===protection.guardianTeamId&&
+       u.id!==hostile.id&&u.x<=hostile.x&&hostile.x-u.x<=6):undefined;
+   const absorbed=guardian?1:0;
+   harm.set(hostile.id,(harm.get(hostile.id)??0)+damage-absorbed);
+   shots.push({attackerId:actor.id,targetId:hostile.id,damage:damage-absorbed});
+   if(guardian){
+    harm.set(guardian.id,(harm.get(guardian.id)??0)+absorbed);
+    shots.push({attackerId:actor.id,targetId:guardian.id,damage:absorbed});
+   }
    if(focus&&actor.teamId)focusedTeamIds.push(actor.teamId);
   }else if(!(actor.side==="ally"&&actor.teamId&&
      ((heldUntil[actor.teamId]??0)>tick||(bracedUntil[actor.teamId]??0)>tick))){
