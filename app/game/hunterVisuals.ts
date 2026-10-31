@@ -16,6 +16,7 @@ import type {
 } from "./types";
 import { preservedBiomaskV62, referenceBiomaskV62, referenceBiomaskPathV62 } from "./biomaskCatalogueV62.ts";
 import { conceptBiomaskV133 } from "./conceptBiomasksV133.ts";
+import {conceptMaskRigPlacementV137} from "./conceptMaskFitV137.ts";
 import { hunterHeadArtV62, type HunterLayerPlacement } from "./hunterHeadArtV62.ts";
 
 export const HUNTER_ASSET_ROOT =
@@ -141,7 +142,9 @@ export function hunterMaskRigPath(maskId: BiomaskId): string {
 
 /** Native V62 alpha cutouts keep their original pixels; layout aligns them to the V3 head socket. */
 export function hunterMaskRigPlacement(maskId: BiomaskId) {
-  return referenceBiomaskV62(maskId)?.placement ?? { x: 0, y: 0, width: 256, height: 384 };
+  return conceptMaskRigPlacementV137(maskId)
+    ?? referenceBiomaskV62(maskId)?.placement
+    ?? {x:0,y:0,width:256,height:384};
 }
 
 export function hunterDreadPath(dreadId: DreadStyleId): string {

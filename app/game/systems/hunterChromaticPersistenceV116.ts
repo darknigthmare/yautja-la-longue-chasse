@@ -3,7 +3,7 @@
  * save; the caller must update React state AFTER this operation confirms.
  */
 import { normalizeHunterChromaticsV113, maskOriginForCustomizationV135,
-  type HunterChromaticsV113 } from "../hunterChromaticsV113.ts";
+  maskChromaticsForAppearanceV131,type HunterChromaticsV113 } from "../hunterChromaticsV113.ts";
 import type { SaveGame } from "../types";
 import type { SaveWriteFailure, SaveWriteResult, SaveWriteReconciliation } from "../save";
 
@@ -25,10 +25,14 @@ export function commitHunterChromaticsV116(input: {
   // The caller may change colors, but cannot grant an Alpha/Samurai-only
   // biomask by forging draft.maskOriginId. Use the last durable owner record.
   approved.maskOriginId = maskOriginForCustomizationV135(current.appearance);
+  // Validate class-restricted biomask material against CURRENT durable
+  // owner and mask geometry, not a user-modified draft identity.
+  const candidateAppearance={...current.appearance,presetId:"custom",
+    chromaticsV113:approved};
+  const safe=maskChromaticsForAppearanceV131(candidateAppearance);
   const next: SaveGame = {
     ...current,
-    appearance: { ...current.appearance, presetId: "custom",
-      chromaticsV113: approved },
+    appearance:{...candidateAppearance,chromaticsV113:safe},
   };
   let attempt: SaveWriteResult;
   try { attempt = write(next); }
