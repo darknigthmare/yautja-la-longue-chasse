@@ -15,7 +15,7 @@ import {
 const OWNER="2026-10-31T22:44:00.000Z";
 const study=GAUNTLET_STUDIES_V134.find(x=>x.rank==="blooded"&&!x.workshop&&x.completions===1);
 if(!study)throw Error("V144 QA requires one existing blooded study without workshop");
-const other=GAUNTLET_STUDIES_V134.find(x=>x.id!==study.id);
+const other=GAUNTLET_STUDIES_V134.find(x=>x.id!==study.id && x.missionId!==study.missionId);
 if(!other)throw Error("V144 requires a locked control item");
 export const V144_STUDY_ID=study.id;
 export const V144_UNEARNED_ID=other.id;
