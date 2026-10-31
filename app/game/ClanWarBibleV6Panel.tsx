@@ -21,7 +21,7 @@ import type { WarSourceRtsScenarioIdV119 } from "./systems/clanWarRtsScenariosV1
 
 const fold = (value: string) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 /** Latest workbook figures and route planning, without invented campaign acquisitions. */
-export default function ClanWarBibleV6Panel({ active = true }: { active?: boolean }) {
+export default function ClanWarBibleV6Panel({ active = true, gauntletId = "jungle-hunter", holographic = false }: { active?: boolean; gauntletId?: string; holographic?: boolean }) {
   const [privateRules, setPrivateRules] = useState<WarRulesV6 | null>(null);
   const [importName, setImportName] = useState(""), [importError, setImportError] = useState(""), [importBusy, setImportBusy] = useState(false);
   const importTicket = useRef(0);
@@ -90,7 +90,7 @@ export default function ClanWarBibleV6Panel({ active = true }: { active?: boolea
     <div hidden={section !== "missions"}><ClanWarOperationsV115
       key={rulesGeneration+":"+(requestedRtsPilot??"free")}
       rules={rules} active={active && section === "missions"}
-      persist={rules === DEFAULT_WAR_RULES_V6} initialScenarioId={requestedRtsPilot}/></div>
+      persist={rules === DEFAULT_WAR_RULES_V6} initialScenarioId={requestedRtsPilot} gauntletId={gauntletId} holographic={holographic}/></div>
     {section === "variants" && <ClanWarVariantAtlasV120 onOpenPrototype={()=>{setRequestedRtsPilot(null);setSection("missions");}}/>}
     {section === "geoai" && <ClanWarGeoAiV126/>}
     {section === "w3maps" && <ClanWarSourceMapStudyV128 rules={rules}/>}
