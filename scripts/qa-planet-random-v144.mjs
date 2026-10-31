@@ -133,7 +133,7 @@ try {
   check("V144 global roll respects V103 and V115 locks simultaneously",
     afterAll.original.territoryCount === fixedTerritories &&
     afterAll.original.landBiome === fixedBiome &&
-    afterAll.advanced.planetSize === fixedSize &&
+    afterAll.advanced.planetSize === beforeAll.advanced.planetSize &&
     afterAll.advanced.landMaterial === beforeMaterials.advanced.landMaterial);
   check("V144 global roll preserves N >= 3R for the gameplay map",
     Number(afterAll.original.territoryCount) >= 3 * Number(afterAll.original.regionCount));
