@@ -27,8 +27,11 @@ export function commitHunterChromaticsV116(input: {
   approved.maskOriginId = maskOriginForCustomizationV135(current.appearance);
   // Validate class-restricted biomask material against CURRENT durable
   // owner and mask geometry, not a user-modified draft identity.
-  const candidateAppearance={...current.appearance,presetId:"custom",
-    chromaticsV113:approved};
+  // Contextual typing keeps "custom" a valid HunterPresetId instead of
+  // widening the object literal to an arbitrary string (TS2322 in V137 CI).
+  const candidateAppearance: SaveGame["appearance"] = {
+    ...current.appearance, presetId: "custom", chromaticsV113: approved,
+  };
   const safe=maskChromaticsForAppearanceV131(candidateAppearance);
   const next: SaveGame = {
     ...current,
