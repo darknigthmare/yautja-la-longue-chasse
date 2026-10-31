@@ -33,7 +33,7 @@ test("gauntlet UI integrates with the REAL ship armory, character and clan war",
   assert.match(game,/gauntletVariantId=\{hunterGauntlet.equippedId\}/);
   assert.equal((game.match(/gauntletVariantId=\{hunterGauntlet.equippedId\}/g)||[]).length,3);
   assert.match(rig,/data-gauntlet-equipped=\{selectedGauntlet\?\.id \?\? "jungle-hunter"\}/);
-  assert.match(rig,/data-gauntlet-visual-validation="shared-rig-material-proxy"/);
+  assert.match(rig,/data-gauntlet-visual-validation="individual-v139-rig-blockout-not-film-approved"/);
   assert.match(panel,/useHunterGauntletV133\(save.createdAt, save.profile.rankId,save.gauntletV134\)/);
   assert.equal((panel.match(/<ClanWarAtlasV95\b/g)||[]).length,1);
   assert.match(bible,/holographic=\{holographic\}/);
