@@ -238,6 +238,57 @@ try {
   await page.waitForFunction(() => document.querySelector('[data-testid="planet-regional-preview-v129"]')
     ?.getAttribute("data-render-status") === "ready", null, { timeout: 60000 });
 
+  // Spatial parity: choose one actual region, render *raw* albedo without
+  // atmospheric/postprocessing differences, then compare the same lon/lat.
+  await preview.getByTestId("planet-regional-layer-v138").selectOption("albedo");
+  await preview.getByTestId("planet-regional-focus-v138").selectOption(regions[0]);
+  await preview.getByTestId("planet-regional-projection-v129").selectOption("map");
+  await page.waitForFunction(() => {
+    const node = document.querySelector('[data-testid="planet-regional-preview-v129"]');
+    return node?.getAttribute("data-render-status") === "ready" &&
+      node.getAttribute("data-view-layer") === "albedo" &&
+      node.getAttribute("data-projection") === "map";
+  }, null, { timeout: 60000 });
+  const geographicPoint = await preview.evaluate(node => ({
+    lon: Number(node.getAttribute("data-focus-longitude")),
+    lat: Number(node.getAttribute("data-focus-latitude")),
+  }));
+  const sample = (x, y) => visual.evaluate((position) => {
+    const canvas = document.querySelector('[data-testid="planet-regional-visual-v129"]');
+    const context = canvas.getContext("2d");
+    const centerX = Math.max(2, Math.min(canvas.width - 3, Math.round(position.x)));
+    const centerY = Math.max(2, Math.min(canvas.height - 3, Math.round(position.y)));
+    const data = context.getImageData(centerX - 2, centerY - 2, 5, 5).data;
+    const rgb = [0,0,0], alpha = 0;
+    for(let p=0;p<data.length;p+=4){
+      rgb[0] += data[p]; rgb[1] += data[p+1]; rgb[2] += data[p+2]; alpha += data[p+3];
+    }
+    return { rgb:rgb.map(v=>v/25), alpha:alpha/25 };
+  }, { x, y });
+  const mapPoint = await sample((geographicPoint.lon + 180) / 360 * 768,
+    (90 - geographicPoint.lat) / 180 * 384);
+  await preview.getByTestId("planet-regional-projection-v129").selectOption("globe");
+  await page.waitForFunction(() => {
+    const node = document.querySelector('[data-testid="planet-regional-preview-v129"]');
+    return node?.getAttribute("data-render-status") === "ready" &&
+      node.getAttribute("data-projection") === "globe";
+  }, null, { timeout: 60000 });
+  const globePoint = await sample(192,192);
+  const maxDifference = Math.max(...mapPoint.rgb.map((value,index) =>
+    Math.abs(value-globePoint.rgb[index])));
+  check("V138 map and globe sample the same actual geographic position in raw albedo",
+    mapPoint.alpha > 220 && globePoint.alpha > 220 && maxDifference < 95);
+  await preview.getByTestId("planet-regional-projection-v129").selectOption("map");
+  await preview.getByTestId("planet-regional-layer-v138").selectOption("composite");
+  await page.waitForFunction(() => {
+    const node = document.querySelector('[data-testid="planet-regional-preview-v129"]');
+    return node?.getAttribute("data-render-status") === "ready" &&
+      node.getAttribute("data-view-layer") === "composite" &&
+      node.getAttribute("data-projection") === "map";
+  }, null, { timeout: 60000 });
+  check("V138 comparison does not alter the canonical planet code",
+    (await generator.getAttribute("data-preview-planet-code")) === code);
+
   const hasSupplementalSurface = (await surfaceSelect.locator("option").count()) > 1;
   check("Surface selection reports whether this biome can support fluid details", hasSupplementalSurface || await surfaceSelect.isDisabled());
 

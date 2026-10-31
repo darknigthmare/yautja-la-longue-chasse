@@ -21,6 +21,9 @@ export default function PlanetRegionalPreviewV129({
   const [status, setStatus] = useState<"loading" | "ready" | "unavailable">("loading");
   const [revision, setRevision] = useState(0);
   const [activeMode, setActiveMode] = useState("waiting");
+  const [focusRegionId, setFocusRegionId] = useState(() => planet.regions[0]?.id ?? "");
+  const [diagnosticLayer, setDiagnosticLayer] = useState<"composite" | "albedo">("composite");
+  const focusedRegion = planet.regions.find(region => region.id === focusRegionId) ?? planet.regions[0];
 
   useEffect(() => {
     const rerender = () => setRevision(current => current + 1);
@@ -39,8 +42,9 @@ export default function PlanetRegionalPreviewV129({
       canvas.getContext("2d")?.clearRect(0, 0, canvas.width, canvas.height);
       void drawPlanetMaterialV101(canvas, {
         planet, regionalKit: kit, regionalPbr: quality === "pbr", coastalInfluenceKm: coastKm,
-        projection, width, height,
-        longitude: -25, latitude: 15, radius: map ? 164 : 170,
+        projection, width, height, layer: diagnosticLayer,
+        longitude: focusedRegion.longitude, latitude: focusedRegion.latitude,
+        radius: map ? 164 : 170,
         centerX: width / 2, centerY: height / 2, mapTop: 0, mapHeight: height,
         textureSize: 512, signal: controller.signal,
       }).then(ready => {
@@ -49,7 +53,8 @@ export default function PlanetRegionalPreviewV129({
       }).catch(() => { if (!controller.signal.aborted) setStatus("unavailable"); });
     });
     return () => { controller.abort(); cancelAnimationFrame(frame); };
-  }, [planet, kit, projection, quality, coastKm, revision]);
+  }, [planet, kit, projection, quality, coastKm, diagnosticLayer,
+    focusedRegion.longitude, focusedRegion.latitude, revision]);
 
   const exportCoastalMask = () => {
     const canvas = createPlanetCoastalRegionMaskV131(planet, kit, 512, coastKm);
@@ -72,7 +77,7 @@ export default function PlanetRegionalPreviewV129({
       const url = URL.createObjectURL(blob);
       const anchor = document.createElement("a");
       anchor.href = url;
-      anchor.download = planet.id + "-regional-study-v131-" + activeMode + "-" + projection + ".png";
+      anchor.download = planet.id + "-regional-study-v138-" + activeMode + "-" + projection + "-" + diagnosticLayer + ".png";
       document.body.appendChild(anchor);
       try { anchor.click(); }
       finally { anchor.remove(); setTimeout(() => URL.revokeObjectURL(url), 30000); }
@@ -80,7 +85,9 @@ export default function PlanetRegionalPreviewV129({
   };
 
   return <div data-testid="planet-regional-preview-v129" data-render-status={status}
-    data-render-mode={status === "ready" ? activeMode : "loading"}>
+    data-render-mode={status === "ready" ? activeMode : "loading"} data-projection={projection}
+    data-view-layer={diagnosticLayer} data-focus-longitude={focusedRegion.longitude}
+    data-focus-latitude={focusedRegion.latitude}>
     <p><strong>Rendu régional V131</strong> — sols par région, matériaux des milieux appliqués seulement aux côtes proches et aux bassins existants. Normales, rugosité, hauteur et émission sont composées dans le shader WebGL si le GPU dispose de dix unités de texture. Il s’agit d’un éclairage de matière (GGX simplifié), pas d’une simulation physique de l’eau ni de déplacements du relief.</p>
     <label>Projection de comparaison
       <select value={projection} onChange={event => setProjection(event.target.value as "map" | "globe")} data-testid="planet-regional-projection-v129">
@@ -88,6 +95,20 @@ export default function PlanetRegionalPreviewV129({
         <option value="globe">Globe 3D</option>
       </select>
     </label>
+    <label>Comparer une même position géographique
+      <select value={focusRegionId} data-testid="planet-regional-focus-v138"
+        onChange={event => setFocusRegionId(event.target.value)}>
+        {planet.regions.map(region => <option key={region.id} value={region.id}>{region.name}</option>)}
+      </select>
+    </label>
+    <label>Calque à examiner
+      <select value={diagnosticLayer} data-testid="planet-regional-layer-v138"
+        onChange={event => setDiagnosticLayer(event.target.value as "composite" | "albedo")}>
+        <option value="composite">Rendu assemblé</option>
+        <option value="albedo">Couleur brute (sans météo et diffusion)</option>
+      </select>
+    </label>
+    <p>Position de contrôle : longitude {focusedRegion.longitude.toLocaleString("fr-FR")}°, latitude {focusedRegion.latitude.toLocaleString("fr-FR")}°. La carte et le globe consultent exactement la même région et le même matériau.</p>
     <label>Qualité du matériau
       <select value={quality} onChange={event => onQualityChange(event.target.value as PlanetVisualQualityV134)}
         data-testid="planet-regional-quality-v131">
