@@ -117,6 +117,25 @@ test("powered doors, water, lava and active hazards are not crossed by group pat
  assert.ok(hazardPlan.steps.every(step=>!unsafe.has(coord(step.to))),"Rally walked into a live warning");
 });
 
+test("fog of war: an unseen enemy position never changes a commander's rally route",()=>{
+ let checked=0;
+ for(const id of api.WAR_SOURCE_RTS_IDS_V129){
+  const state=start(id),ids=live(state).map(u=>u.id);
+  const visible=new Set(api.visibleWarRtsEnemiesV133(state).map(e=>e.id));
+  const hidden=state.enemies.filter(e=>e.hp>0&&!visible.has(e.id));
+  if(!hidden.length)continue;
+  const original=api.planWarRtsRallyV134(state,ids,state.map.goal);
+  const withoutHidden={...state,enemies:state.enemies.filter(e=>visible.has(e.id))};
+  const redacted=api.planWarRtsRallyV134(withoutHidden,ids,state.map.goal);
+  assert.equal(original.valid,redacted.valid,id+" leaked hidden enemy validity");
+  assert.deepEqual(original.steps,redacted.steps,id+" route anticipated hidden patrol");
+  assert.deepEqual(original.blockedIds,redacted.blockedIds,id+" blocked-group intel leak");
+  assert.deepEqual(original.holdingIds,redacted.holdingIds);
+  checked++;
+ }
+ assert.ok(checked>=8,"Need multiple source theatres with real unseen opponents");
+});
+
 test("a survivor or a neutral witness can receive a physically adjacent escort leader after a casualty",()=>{
  for(const [id,neutral] of [["W3-RTS06",false],["W3-RTS24",true]]){
   const original=start(id);

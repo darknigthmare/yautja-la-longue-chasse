@@ -386,7 +386,9 @@ export function planWarRtsRallyV134(
  }
  const units=squadIds.map(id=>s.squads.find(u=>u.id===id&&u.status==="active"&&u.hp>0));
  if(units.some(u=>!u)){result.reason="Une escouade sélectionnée est absente ou hors de combat.";return result;}
- const occupiedByEnemy=s.enemies.filter(e=>e.hp>0);
+ // The commander may route only around adversaries currently in line of sight.
+ // Hidden patrol positions must not leak through path selections or warnings.
+ const occupiedByEnemy=visibleWarRtsEnemiesV133(s);
  const inaccessible=s.power?[]:s.map.poweredDoors;
  const unsafe=hazardsNow(s.turn+1)?s.map.hazards:[];
  const candidates:WarMapPointV128[]=[];
@@ -443,14 +445,21 @@ export function commandWarRtsRallyV134(
 ):WarRtsSquadsUpdateV133 {
  const plan=planWarRtsRallyV134(s,squadIds,target);
  if(!plan.valid||!plan.steps.length)return fail(s,plan.reason);
- const moves=new Map(plan.steps.map(step=>[step.squadId,step.to]));
+ // Simulate *actual* physical occupancy only at execution. The player did
+ // not know hidden enemy positions during planning; a surprise stop consumes
+ // its tactical turn but never reveals an unseen enemy identity or overlaps it.
+ const actualRivals=new Set(s.enemies.filter(e=>e.hp>0).map(at));
+ const safeSteps=plan.steps.filter(step=>!actualRivals.has(at(step.to)));
+ const unexpected=plan.steps.length-safeSteps.length;
+ const moves=new Map(safeSteps.map(step=>[step.squadId,step.to]));
  const nextSquads=s.squads.map(u=>{
   const location=moves.get(u.id);return location?{...u,x:location.x,y:location.y}:u;
  });
  // One advance, even with four simultaneous orders: no hidden extra AI turns.
  const next=advance({...s,squads:nextSquads},
-  "Rassemblement tactique W3 "+at(target)+" : "+plan.steps.length+
-  " escouade(s) déplacée(s) d'une case, "+plan.blockedIds.length+" bloquée(s).");
+  "Rassemblement tactique W3 "+at(target)+" : "+safeSteps.length+
+  " escouade(s) déplacée(s) d'une case, "+
+  (plan.blockedIds.length+unexpected)+" progression(s) bloquée(s) ou incertaines.");
  return accept(next,next.lastMessage);
 }
 

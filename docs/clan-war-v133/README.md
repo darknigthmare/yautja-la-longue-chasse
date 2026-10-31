@@ -38,6 +38,8 @@ L'interface de la Bible V6 permet de cocher plusieurs escouades, de choisir une 
 
 La commande de reprise d'escorte prend maintenant en charge les **personnes secourues et témoins neutres**, ainsi que les charges physiques. Si le responsable est neutralisé, une autre escouade **déjà présente à proximité réelle** peut reprendre la responsabilité sans dupliquer l'acteur, inventer un recrutement ni modifier son statut neutre.
 
+Le planificateur de regroupement se base désormais uniquement sur les **ennemis visibles aux escouades** ; les patrouilles cachées ne modifient ni le chemin ni la liste des cases supposées bloquées. Le moteur conserve les collisions physiques réelles lors de l'exécution, sans révéler à distance les identités adverses.
+
 La liste des positions d'objectif dans le panneau est **masquée avant reconnaissance** ; elle n'offre plus leurs coordonnées en lecture directe avant que le joueur ait observé les accès.
 
 **Limites conservées :** étude au tour par tour sur cartes W3 générées, pas encore pathfinding dynamique de guerre totale, ni serveur autoritaire, ni troupe de campagne persistante, ni animations/sprites cinématographiques 1:1. Les pions et la fenêtre de regroupement de deux cases sont des mécanismes de jeu originaux, pas du lore filmique.
