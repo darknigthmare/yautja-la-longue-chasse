@@ -10,6 +10,7 @@ on:
       - 'app/game/systems/clanWarOperationsV115.ts'
       - 'app/game/systems/clanWarParallelModesV136.ts'
       - 'tests/clan-war-four-modes-v136.test.mjs'
+      - 'tests/clan-war-production-v136.test.mjs'
       - 'docs/clan-war-v136/**'
       - 'tsconfig.clan-war-v136.json'
       - 'app/game/systems/clanWarParallelModesV135.ts'
@@ -60,6 +61,7 @@ jobs:
             /app/game/systems/clanWarRtsSquadsV133.ts
             /tests/clan-war-four-modes-v135.test.mjs
             /tests/clan-war-four-modes-v136.test.mjs
+            /tests/clan-war-production-v136.test.mjs
             /tests/clan-war-production-v135.test.mjs
             /tests/clan-war-operations-v115.test.mjs
             /tests/clan-war-operation-cross-mode-v115.test.mjs
@@ -76,10 +78,10 @@ jobs:
       - name: npm ci — locked packages
         run: npm ci --ignore-scripts --no-audit --no-fund
       - name: Four modes V136 plus V115/V133/V134/V135 regression
-        run: node --test --test-reporter=spec tests/clan-war-four-modes-v136.test.mjs tests/clan-war-four-modes-v135.test.mjs tests/clan-war-production-v135.test.mjs tests/clan-war-operations-v115.test.mjs tests/clan-war-operation-cross-mode-v115.test.mjs tests/clan-war-outer-recall-v116.test.mjs tests/clan-war-tactical-runtime-v115.test.mjs tests/clan-war-assault-special-v117.test.mjs tests/clan-war-rts-squads-v133.test.mjs tests/clan-war-rts-rally-v134.test.mjs
+        run: node --test --test-reporter=spec tests/clan-war-four-modes-v136.test.mjs tests/clan-war-production-v136.test.mjs tests/clan-war-four-modes-v135.test.mjs tests/clan-war-production-v135.test.mjs tests/clan-war-operations-v115.test.mjs tests/clan-war-operation-cross-mode-v115.test.mjs tests/clan-war-outer-recall-v116.test.mjs tests/clan-war-tactical-runtime-v115.test.mjs tests/clan-war-assault-special-v117.test.mjs tests/clan-war-rts-squads-v133.test.mjs tests/clan-war-rts-rally-v134.test.mjs
       - name: TypeScript cross-mode
         if: always()
         run: npx --no-install tsc --noEmit --project tsconfig.clan-war-v136.json
       - name: ESLint — four modes and UI
         if: always()
-        run: npx --no-install eslint app/game/systems/clanWarOperationsV115.ts app/game/systems/clanWarParallelModesV135.ts app/game/systems/clanWarParallelModesV136.ts app/game/systems/clanWarRtsSquadsV133.ts app/game/ClanWarOperationsV115.tsx app/game/ClanWarRtsSquadsV133.tsx tests/clan-war-four-modes-v135.test.mjs tests/clan-war-four-modes-v136.test.mjs tests/clan-war-production-v135.test.mjs
+        run: npx --no-install eslint app/game/systems/clanWarOperationsV115.ts app/game/systems/clanWarParallelModesV135.ts app/game/systems/clanWarParallelModesV136.ts app/game/systems/clanWarRtsSquadsV133.ts app/game/ClanWarOperationsV115.tsx app/game/ClanWarRtsSquadsV133.tsx tests/clan-war-four-modes-v135.test.mjs tests/clan-war-four-modes-v136.test.mjs tests/clan-war-production-v136.test.mjs tests/clan-war-production-v135.test.mjs

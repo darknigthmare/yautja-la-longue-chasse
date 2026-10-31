@@ -24,3 +24,16 @@ Le suivi Excel V136 conserve l'historique V130–V135, les 1 200 dossiers V120, 
 **Niveau prototype** : aucun serveur multijoueur ou coopératif, aucune campagne de clans V85 persistante/annexion réelle, aucun village de Gunnison reproduit sur une planète extraterrestre, aucune guerre totale multi-région achevée, aucune scène de film 1:1 certifiée, aucune collection de 1 200 missions jouables. Les différences de terrain terrestre/extraterrestre sont couvertes par le catalogue et les règles de cohérence précédents, non par des niveaux filmés finis.
 
 Les tests automatisés ne remplacent ni les tests navigateur/jeu continu, ni la validation manette/mobile, ni une certification d'assets par œuvre et continuité. La PR reste en **draft** jusqu'à ce que les dépendances de la chaîne soient correctement fusionnées et les étapes de QA complémentaires réalisées.
+
+## Excel de suivi V136 versionné dans la PR #45
+
+Le classeur **`Yautja_Guerres_Clans_Suivi_Production_V136_2026-10-31.xlsx`** est déposé à côté de ce README. Il **importe intégralement les 20 onglets V135** (1 200 variants CW120, 24 missions RTS W3, 12 cartes, 36 missions W5-LM, Excel V130 à V135) et ajoute quatre feuilles éditables :
+
+- `MODES_V136_PARALLELE` : **48 exigences** détaillées, 12 par gameplay, avec préconditions, sources, échecs, rôles V6, état d'implémentation, fidélité et travail restant.
+- `QA_V136` : **32 critères** (8 par gameplay), dont contrôles automatiques séparés des essais navigateur/manette/lore/serveur.
+- `INTERMODES_V136` : **16 interfaces source→destination**, avec distinction des vrais effets V115 et des raccordements V85 ou W3 V133 *encore à faire*.
+- `SUIVI_V136` : **dashboard à formules** COUNTIFS, 48 tâches suivies : 22 « validé CI ciblée », 8 partielles, 18 non développées, **aucune homologation 1:1**.
+
+Le nouveau test `tests/clan-war-production-v136.test.mjs` vérifie les **octets réellement commités** : 24 feuilles XLSX, 48 IDs de tâche V136, 32 IDs QA, 16 lignes inter-modes, les 1 200 ID historiques V120, 24 ID W3-RTS, 12 cartes et 36 W5-LM. La CI doit repasser **sur le commit incluant le classeur**, pas uniquement sur le moteur.
+
+**QA moteur effectuée** : [Actions 41188164678](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41188164678), **55/55 tests, TypeScript, ESLint**. Le statut visuel de déploiement Vercel peut être bloqué par le *build-rate-limit* du projet indépendamment de cette suite.
