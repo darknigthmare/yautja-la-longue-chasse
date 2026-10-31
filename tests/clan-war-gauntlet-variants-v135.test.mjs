@@ -23,7 +23,7 @@ test("V135 contains 16 physical independent SVG source layers, four families",()
 test("film-inspired controls do not accidentally reuse the Jungle Hunter five-row display",()=>{
   const panel=family=>read(`public/game/assets/v135/gauntlets/${family}/03-panel.svg`);
   assert.equal((panel("city-hunter").match(/<rect x="/g)||[]).length-1,4);
-  assert.equal((panel("wolf").match(/<rect x="/g)||[]).length,5);
+  assert.equal((panel("wolf").match(/<rect x="/g)||[]).length-1,5);
   assert.match(panel("feral"),/stroke="#664b31"/);
   assert.match(panel("dek"),/<circle cx="287" cy="151" r="39"/);
   assert.notEqual(panel("city-hunter"),panel("wolf"));
