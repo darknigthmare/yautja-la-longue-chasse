@@ -201,9 +201,32 @@ try {
     await surfaceSelect.selectOption(initialSurface);
   }
   await preview.getByTestId("planet-regional-quality-v131").selectOption("albedo");
-  await page.waitForFunction(() => document.querySelector('[data-testid="planet-regional-preview-v129"]')
-    ?.getAttribute("data-render-mode") === "albedo-v129", null, { timeout: 60000 });
-  check("Fallback/compare path still renders original albedo shader", (await generator.getAttribute("data-preview-planet-code")) === code);
+  const expectedAlbedoMode = jsonKit.entries.some(entry => entry.surfaceMaterialId !== null)
+    ? "albedo-coastal-v135" : "albedo-v129";
+  await page.waitForFunction(expected => document.querySelector('[data-testid="planet-regional-preview-v129"]')
+    ?.getAttribute("data-render-mode") === expected, expectedAlbedoMode, { timeout: 60000 });
+  check("V135 albedo preserves valid geographic surface choices or uses legacy land fallback",
+    (await generator.getAttribute("data-preview-planet-code")) === code);
+  if (expectedAlbedoMode === "albedo-coastal-v135") {
+    const ids = await surfaceSelect.locator("option").evaluateAll(nodes => nodes.map(node => node.value).filter(Boolean));
+    if (ids.length > 1) {
+      const beforeSurface = await surfaceSelect.inputValue();
+      const nextSurface = ids.find(id => id !== beforeSurface);
+      const originalPixels = await visual.evaluate(canvas => Array.from(canvas.getContext("2d")
+        .getImageData(0, 0, canvas.width, canvas.height).data));
+      await surfaceSelect.selectOption(nextSurface);
+      await page.waitForFunction(previous => {
+        const panel = document.querySelector('[data-testid="planet-regional-preview-v129"]');
+        if (panel?.getAttribute("data-render-mode") !== "albedo-coastal-v135") return false;
+        const canvas = panel.querySelector('canvas[data-testid="planet-regional-visual-v129"]');
+        if (!canvas) return false;
+        const rgba = canvas.getContext("2d").getImageData(0, 0, canvas.width, canvas.height).data;
+        return rgba.some((value,index) => value !== previous[index]);
+      }, originalPixels, { timeout: 60000 });
+      check("V135 albedo sea material selection visibly changes the actual planisphere", true);
+      await surfaceSelect.selectOption(beforeSurface);
+    }
+  }
   await preview.getByTestId("planet-regional-quality-v131").selectOption("pbr");
   await page.waitForFunction(() => document.querySelector('[data-testid="planet-regional-preview-v129"]')
     ?.getAttribute("data-render-mode") === "pbr-v131", null, { timeout: 60000 });

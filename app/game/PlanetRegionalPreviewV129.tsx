@@ -112,9 +112,13 @@ export default function PlanetRegionalPreviewV129({
     <p>Masque indépendant : R = région ou milieu natif, B = coefficient de fondu, A = opaque. L’export ne modifie pas les territoires ni les sauvegardes.</p>
     <p role="status">{status === "ready" ? activeMode === "pbr-v131"
       ? "Rendu PBR V131 prêt : sols et médias régionaux côtiers, sans écriture du monde."
-      : quality === "pbr"
-        ? "GPU limité : comparaison albédo V129 affichée en secours, sauvegarde intacte."
-        : "Comparaison albédo V129 prête, sans modification du code du monde." :
+      : activeMode === "albedo-coastal-v135"
+        ? quality === "pbr"
+          ? "GPU à huit textures : sols et mers régionales en albédo V135, sans altérer la partie."
+          : "Comparaison albédo V135 : mêmes terres et matières côtières, sans PBR."
+        : quality === "pbr"
+          ? "GPU limité : albédo terrestre V129 en secours, sauvegarde intacte."
+          : "Comparaison albédo V129 prête, sans modification du code du monde." :
       status === "loading" ? "Rendu régional en préparation…" : "WebGL indisponible : les kits V128 restent exportables."}</p>
   </div>;
 }
