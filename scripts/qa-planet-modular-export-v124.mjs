@@ -189,6 +189,10 @@ try {
     && manifest.modularMasks?.shapeCatalog?.length === 120);
   check("V125 manifest includes 32 independent earthlike / alien material entries",
     manifest.modularMasks?.supplementalMaterialCatalog?.length === 32);
+  const legacyIds = manifest.modularMasks?.supplementalMaterialCatalog?.map(item => item.id) ?? [];
+  const newIds = manifest.modularMasks?.supplementalMaterialAdditionsV130?.map(item => item.id) ?? [];
+  check("V140 manifest adds 16 new V130 materials without reordering the 32 historical entries",
+    newIds.length === 16 && new Set([...legacyIds,...newIds]).size === 48);
   check("V124 manifest matches every exported file and real canvas dimensions",
     manifest.layers.every(layer => {
       const file = files.get(layer.name);

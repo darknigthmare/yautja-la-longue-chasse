@@ -10,6 +10,7 @@ const folder = await mkdtemp(join(tmpdir(), "planet-physical-v136-"));
 after(() => rm(folder, {recursive:true,force:true}));
 const bundle = await build({ stdin: { contents: [
   'export { analyzePlanetPhysicalSurfaceV136 } from "./app/game/systems/clanWarPlanetSurfaceBudgetV136";',
+  'export { analyzeWarPlanetPhysicalIndexV125 } from "./app/game/systems/clanWarPlanetPhysicalIndexV125";',
   'export { generateWarPlanetV115, normalizeWarPlanetRecipeV115 } from "./app/game/systems/clanWarPlanetGeneratorV115";',
   'export { generateWarPlanetV103, normalizeWarPlanetRecipeV103 } from "./app/game/systems/clanWarPlanetGeneratorV103";',
 ].join("\n"), resolveDir: process.cwd(), loader: "ts" },
@@ -28,6 +29,13 @@ test("V136 accounts for all three classes of surface exactly, without subtractin
     const planet = make(size), source = JSON.stringify(planet);
     const budget = api.analyzePlanetPhysicalSurfaceV136(planet);
     assert(budget);
+    const legacy = api.analyzeWarPlanetPhysicalIndexV125(planet);
+    assert(legacy);
+    for(const region of budget.regions) {
+      const corresponding = legacy.regions.find(item => item.id === region.regionId);
+      assert(corresponding);
+      assert.equal(corresponding.percentageOfLand,region.shareOfNetMappedLandPercent);
+    }
     assert.equal(budget.worldCode,planet.id);
     assert.equal(budget.surfaceKm2,budget.dryLandKm2+budget.inlandMediumKm2+budget.exteriorMediumKm2);
     assert.equal(budget.dryLandKm2,planet.procedural.physical.landAreaKm2);

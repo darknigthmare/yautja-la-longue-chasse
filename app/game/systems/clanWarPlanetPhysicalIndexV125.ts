@@ -1,6 +1,7 @@
 import type { WarPlanetV96 } from "./clanWarPlanetsV96";
 import { sphericalPolygonAreaV103 } from "./clanWarPlanetGeographyV103";
 import { PLANET_RADII_KM_V115, WAR_SHAPE_TEMPLATES_V115, type PlanetSizeV115 } from "./clanWarShapeAtlasV115";
+import { analyzePlanetPhysicalSurfaceV136 } from "./clanWarPlanetSurfaceBudgetV136";
 
 /**
  * Read-only, recipe-derived physical coverage. These are projected areas of
@@ -32,7 +33,8 @@ export function analyzeWarPlanetPhysicalIndexV125(planet: WarPlanetV96): WarPlan
   if (!procedural || procedural.recipe.version !== 115 || !("physical" in procedural)) return null;
   const size = procedural.recipe.planetSize;
   const radiusKm = PLANET_RADII_KM_V115[size];
-  const regionOf = new Map(planet.territories.map(t => [t.id, t.regionId] as const));
+  const netShares = new Map((analyzePlanetPhysicalSurfaceV136(planet)?.regions ?? [])
+    .map(region => [region.regionId, region.shareOfNetMappedLandPercent] as const));
   const territories = planet.territories.map(t => ({
     id: t.id, regionId: t.regionId, landmassId: t.landmassId ?? null,
     areaKm2: km2(t.points, radiusKm),
@@ -42,7 +44,7 @@ export function analyzeWarPlanetPhysicalIndexV125(planet: WarPlanetV96): WarPlan
   const regions = planet.regions.map(r => {
     const projectedAreaKm2 = r.territoryIds.reduce((sum, id) => sum + (byId.get(id)?.areaKm2 ?? 0), 0);
     return { id: r.id, name: r.name, territoryCount: r.territoryIds.length,
-      projectedAreaKm2, percentageOfLand: landArea ? Math.round(projectedAreaKm2 / landArea * 1000) / 10 : 0 };
+      projectedAreaKm2, percentageOfLand: netShares.get(r.id) ?? 0 };
   });
   const landmasses = planet.landmasses.map(m => {
     const territoryCount = territories.filter(t => t.landmassId === m.id).length;
@@ -56,7 +58,7 @@ export function analyzeWarPlanetPhysicalIndexV125(planet: WarPlanetV96): WarPlan
     surroundingsKm2: Math.max(0, procedural.physical.surfaceKm2 - landArea),
     territories, regions, landmasses,
     routes: procedural.physical.routeDistancesKm.map(route => ({ ...route })),
-    scaleNote: "Les aires sont calculées sur les polygones sphériques existants et arrondies. Les régions correspondent à la somme brute des cellules, sans soustraction locale des lacs/chenaux. La taille physique ne modifie ni les frontières, ni les coûts de guerre.",
+    scaleNote: "Les aires projectedAreaKm2 sont les cellules brutes. Les pourcentages percentageOfLand se fondent sur l'index V136 des terres nettes estimees apres retrait des bassins. Les mondes et couts de guerre ne changent pas.",
   };
 }
 
