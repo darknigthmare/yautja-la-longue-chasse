@@ -30,6 +30,9 @@ on:
       - 'tests/gauntlet-qa-proxy-runtime-v138.test.mjs'
       - 'tests/clan-war-gauntlet*.test.mjs'
       - 'tests/clan-war-turn-gate-v143.test.mjs'
+      - 'tests/gauntlet-preference-v144.test.mjs'
+      - 'tests/browser/gauntlet-campaign-v144.fixture.tsx'
+      - 'scripts/qa-gauntlet-campaign-v144.mjs'
       - 'tests/browser/clan-war-v143.fixture.tsx'
       - 'scripts/qa-real-clan-war-v143.mjs'
       - 'app/game/systems/clanWarTurnGateV143.ts'
@@ -152,6 +155,18 @@ jobs:
         with:
           name: gauntlet-dual-view-browser-v137
           path: outputs/gauntlet-v137-war-browser/
+          retention-days: 30
+          if-no-files-found: warn
+      - name: V144 owner-bound challenge preference preserves earned studies without granting new rights
+        run: node --experimental-strip-types --test --test-reporter=spec tests/gauntlet-preference-v144.test.mjs
+      - name: V144 true campaign trophy claim in live clan-war armory, SaveGame V13 reload and second-tab forgery test
+        run: node scripts/qa-gauntlet-campaign-v144.mjs
+      - name: Preserve V144 real campaign / war armory screenshot evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: yautja-real-archive-gauntlet-v144-chrome
+          path: outputs/gauntlet-campaign-v144/
           retention-days: 30
           if-no-files-found: warn
       - name: Real V143 clan-war panel, fenced turn, two views and world sessions
