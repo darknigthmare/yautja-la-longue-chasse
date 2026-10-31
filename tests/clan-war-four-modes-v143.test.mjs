@@ -21,7 +21,7 @@ const compiled=await build({
 const api=await import("data:text/javascript;base64,"+
  Buffer.from(compiled.outputFiles[0].text).toString("base64"));
 const rules=api.DEFAULT_WAR_RULES_V6;
-const at=p=>p.x+","+p.y,dist=(a,b)=>Math.abs(a.x-b.x)+Math.abs(a.y-b.y);
+const dist=(a,b)=>Math.abs(a.x-b.x)+Math.abs(a.y-b.y);
 const start=(mode)=>{
  const original=api.createWarOperationsV115(rules);
  const team=original.teams[0].id;

@@ -616,7 +616,8 @@ export function commandStealthV115(state:WarOperationsStateV115,command:StealthC
  }
  const nextStealth={x,y,guardX,guardY,guardDirection,alarm,cloaked,energy,sabotaged,
   decoyX,decoyY,decoyTurns,decoyUsed,usedCoverIds,silentStepsUsed,acousticUsed,heardBearing,heardAtTick,
-  silentSabotageUsed:stealth.silentSabotageUsed||command==="quiet-sabotage"};
+  silentSabotageUsed:stealth.silentSabotageUsed||command==="quiet-sabotage",
+  dashUsed:stealth.dashUsed};
  const advanced={...state,clock:state.clock+1,active:{...mission,tick:mission.tick+1,stealth:nextStealth}};
  if(alarm>=3)return accept(recordOutcome(advanced,mission.id,"stealth",null,mission.targetId,mission.teamIds,"defeat",mission.teamIds.slice(0,1),rules,
   "Patrouille alertée : extraction abandonnée."),"Infiltration compromise.");
@@ -1014,7 +1015,7 @@ export function readWarOperationsV115(raw:string,rules:WarRulesV6):WarOperations
         order.routeIncident.paidRav!==(order.routeIncident.kind==="secure"?2:0)||
         order.routeIncident.originalDueAt+
           (order.routeIncident.kind==="detour"?10000:0)!==
-          (order.routeIncident?.originalDueAt??order.recall?.originalDueAt??order.dueAt)||
+          (order.recall?.originalDueAt??order.dueAt)||
         !order.routeIds.includes(order.routeIncident.passageId)||
         !rules.passages.some(p=>p.id===order.routeIncident!.passageId&&
           (p.incident?.trim()||p.condition?.trim()||"").slice(0,240)===
@@ -1048,7 +1049,7 @@ export function readWarOperationsV115(raw:string,rules:WarRulesV6):WarOperations
         2*(order.reconHalt.orderedAt-order.startedAt)>=
           order.reconHalt.originalDueAt-order.startedAt||
         order.reconHalt.originalDueAt+order.reconHalt.extraMs!==
-          (order.recall?.originalDueAt??order.dueAt)||
+          (order.routeIncident?.originalDueAt??order.recall?.originalDueAt??order.dueAt)||
         order.reconHalt.originalDueAt+order.reconHalt.extraMs-order.startedAt>86400000))||
       (order.fieldSupport!==undefined&&(!order.fieldSupport||typeof order.fieldSupport!=="object"||
          order.fieldSupport.paidRav!==2||
