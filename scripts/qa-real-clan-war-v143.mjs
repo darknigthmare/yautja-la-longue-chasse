@@ -24,7 +24,7 @@ const bundle=await build({
   plugins:[{
     name:"qa-static-next-image-only",
     setup(compilation){
-      compilation.onResolve({filter:/^next\\/image$/},()=>({path:"qa-static-image",namespace:"qa-image"}));
+      compilation.onResolve({filter:new RegExp("^next/image$")},()=>({path:"qa-static-image",namespace:"qa-image"}));
       compilation.onLoad({filter:/.*/,namespace:"qa-image"},()=>({
         loader:"tsx",
         contents:`import React from "react";
@@ -48,7 +48,7 @@ const server=createServer(async(req,res)=>{
     if(p==="/war-v143.js"){res.writeHead(200,{"content-type":"text/javascript;charset=utf-8"});res.end(js);return;}
     if(p==="/war-v143.css"){res.writeHead(200,{"content-type":"text/css;charset=utf-8"});res.end(css);return;}
     if(p==="/favicon.ico"){res.writeHead(204);res.end();return;}
-    if((p.startsWith("/game/assets/")||p.startsWith("/sprites/")) && /\\.(svg|webp|png|jpg|jpeg)$/.test(p)){
+    if((p.startsWith("/game/assets/")||p.startsWith("/sprites/")) && [".svg",".webp",".png",".jpg",".jpeg"].some(ext=>p.endsWith(ext))){
       const full=resolve(publicRoot,p.slice(1));
       if(!full.startsWith(publicRoot+sep)){res.writeHead(403);res.end();return;}
       try{
