@@ -27,6 +27,10 @@ on:
       - 'public/game/assets/v134/gauntlets/jungle-hunter/**'
       - 'scripts/export-gauntlet-png-v134.mjs'
       - 'scripts/audit-gauntlet-completeness-v134.mjs'
+      - 'app/game/GauntletKnownHuntersV135.*'
+      - 'public/game/assets/v135/gauntlets/**'
+      - 'scripts/export-gauntlet-variants-v135.mjs'
+      - 'tests/clan-war-gauntlet-variants-v135.test.mjs'
       - 'docs/Yautja_Gauntlets_V134_Arsenal_Clans.xlsx'
       - 'app/game/systems/gauntletCampaignV134.ts'
       - 'app/game/types.ts'
@@ -75,6 +79,11 @@ jobs:
             /public/game/assets/v134/gauntlets/jungle-hunter/
             /scripts/export-gauntlet-png-v134.mjs
             /scripts/audit-gauntlet-completeness-v134.mjs
+            /app/game/GauntletKnownHuntersV135.tsx
+            /app/game/GauntletKnownHuntersV135.module.css
+            /public/game/assets/v135/gauntlets/
+            /scripts/export-gauntlet-variants-v135.mjs
+            /tests/clan-war-gauntlet-variants-v135.test.mjs
             /docs/Yautja_Gauntlets_V134_Arsenal_Clans.xlsx
             /app/game/systems/gauntletCampaignV134.ts
             /app/game/types.ts
@@ -94,11 +103,11 @@ jobs:
       - name: Reproducible dependencies
         run: npm ci --ignore-scripts --no-audit --no-fund
       - name: Verify dual-view invariants
-        run: node --experimental-strip-types --test --test-reporter=spec tests/clan-war-gauntlet-v131.test.mjs tests/clan-war-gauntlets-v132.test.mjs tests/clan-war-gauntlets-v133.test.mjs tests/clan-war-gauntlet-research-v134.test.mjs tests/clan-war-gauntlet-assets-v134.test.mjs
+        run: node --experimental-strip-types --test --test-reporter=spec tests/clan-war-gauntlet-v131.test.mjs tests/clan-war-gauntlets-v132.test.mjs tests/clan-war-gauntlets-v133.test.mjs tests/clan-war-gauntlet-research-v134.test.mjs tests/clan-war-gauntlet-assets-v134.test.mjs tests/clan-war-gauntlet-variants-v135.test.mjs
       - name: Typecheck the projector and mode parser
         run: npx --no-install tsc --noEmit --project tsconfig.clan-war-v131.json
       - name: Lint changed game-facing code and tests
-        run: npx --no-install eslint app/game/ClanWarPanelV85.tsx app/game/ClanWarGauntletV131.tsx app/game/HunterGauntletArtV132.tsx app/game/ClanWarGauntletLockerV132.tsx app/game/systems/clanWarViewV131.ts app/game/systems/clanWarGauntletCatalogV132.ts app/game/systems/useHunterGauntletV133.ts app/game/GameClient.tsx app/game/HunterRigPreview.tsx app/game/ClanWarBibleV6Panel.tsx app/game/ClanWarOperationsV115.tsx app/game/sound.ts tests/clan-war-gauntlet-v131.test.mjs tests/clan-war-gauntlets-v132.test.mjs tests/clan-war-gauntlets-v133.test.mjs app/game/systems/gauntletCampaignV134.ts app/game/save.ts app/game/types.ts tests/clan-war-gauntlet-research-v134.test.mjs app/game/JungleHunterLayeredV134.tsx tests/clan-war-gauntlet-assets-v134.test.mjs scripts/export-gauntlet-png-v134.mjs scripts/audit-gauntlet-completeness-v134.mjs
+        run: npx --no-install eslint app/game/ClanWarPanelV85.tsx app/game/ClanWarGauntletV131.tsx app/game/HunterGauntletArtV132.tsx app/game/ClanWarGauntletLockerV132.tsx app/game/systems/clanWarViewV131.ts app/game/systems/clanWarGauntletCatalogV132.ts app/game/systems/useHunterGauntletV133.ts app/game/GameClient.tsx app/game/HunterRigPreview.tsx app/game/ClanWarBibleV6Panel.tsx app/game/ClanWarOperationsV115.tsx app/game/sound.ts tests/clan-war-gauntlet-v131.test.mjs tests/clan-war-gauntlets-v132.test.mjs tests/clan-war-gauntlets-v133.test.mjs app/game/systems/gauntletCampaignV134.ts app/game/save.ts app/game/types.ts tests/clan-war-gauntlet-research-v134.test.mjs app/game/JungleHunterLayeredV134.tsx tests/clan-war-gauntlet-assets-v134.test.mjs scripts/export-gauntlet-png-v134.mjs scripts/audit-gauntlet-completeness-v134.mjs app/game/GauntletKnownHuntersV135.tsx tests/clan-war-gauntlet-variants-v135.test.mjs scripts/export-gauntlet-variants-v135.mjs
       - name: Verify production Excel archive integrity
         run: unzip -t docs/Yautja_Gauntlets_V132_Arsenal_Clans.xlsx | tail -1
       - name: Verify V133 extended production Excel archive integrity
@@ -111,6 +120,17 @@ jobs:
         run: node scripts/audit-gauntlet-completeness-v134.mjs outputs/gauntlet-v134
       - name: Validate V134 Excel (17 tabs including 44 studies)
         run: unzip -t docs/Yautja_Gauntlets_V134_Arsenal_Clans.xlsx | tail -1
+      - name: Verify four V135 source families and 16 individual layers
+        run: node scripts/export-gauntlet-variants-v135.mjs --check
+      - name: Export four V135 families to 16 alpha PNGs and four composites
+        run: node scripts/export-gauntlet-variants-v135.mjs outputs/gauntlet-v135
+      - name: Publish original City Hunter Wolf Feral Dek art study files for review
+        uses: actions/upload-artifact@v4
+        with:
+          name: yautja-4-gauntlet-variants-v135-blockouts
+          path: outputs/gauntlet-v135/
+          retention-days: 30
+          if-no-files-found: error
       - name: Preserve seven layers and 1080px composite for visual QA
         uses: actions/upload-artifact@v4
         with:
