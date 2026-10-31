@@ -12,6 +12,8 @@ export interface WarSessionSnapshotV85 {
   loaded: boolean; writableWar: boolean; writableCanyon: boolean; writableComposition: boolean; storageMessage: string;
   persistedWar: boolean; persistedCanyon: boolean; persistedComposition: boolean;
   pendingWrites: number; canRetryPersistence: boolean;
+  /** An acknowledged other-session edit makes this renderer STALE, not merely offline. */
+  staleWar: boolean;
 }
 type Update<T> = T | ((current: T) => T);
 type Kind = "simulation" | "canyon" | "selection";
@@ -66,6 +68,7 @@ export function createWarSessionV85(getStorage: () => WarSessionStorageV85 | nul
     simulation: createWarSimulationV85(undefined, planetId), canyon: createCanyonV85(), selection: { ...CANYON_PRESET_V85 },
     loaded: false, writableWar: true, writableCanyon: sharedExercises, writableComposition: sharedExercises, storageMessage: "",
     persistedWar: false, persistedCanyon: false, persistedComposition: false, pendingWrites: 0, canRetryPersistence: false,
+    staleWar: false,
   };
   let snapshot = initial, storage: WarSessionStorageV85 | null = null, tail: Promise<void> = Promise.resolve(), hydrating = false;
   const listeners = new Set<() => void>();
@@ -82,7 +85,10 @@ export function createWarSessionV85(getStorage: () => WarSessionStorageV85 | nul
     failures.set(kind, failure); notices.set(kind, `${domains[kind].label} : ${message}`);
     snapshot = { ...snapshot, [domains[kind].writable]: false, [domains[kind].persisted]: false }; summarize();
   }
-  const conflict = (kind: Kind) => block(kind, "conflict", "archive modifiée dans une autre session. Aucune écriture ; fermez puis rouvrez le panneau pour la relire.");
+  const conflict = (kind: Kind) => {
+    if(kind==="simulation") snapshot={...snapshot,staleWar:true};
+    block(kind, "conflict", "archive modifiée dans une autre session. Aucune écriture ; fermez puis rouvrez le panneau pour la relire.");
+  };
   const unacknowledged = (kind: Kind) => block(kind, "write", "sauvegarde non confirmée. L’exercice continue en mémoire ; vous pouvez réessayer sans recommencer.");
   function hydrate() {
     if (snapshot.loaded || hydrating) return;
@@ -133,6 +139,27 @@ export function createWarSessionV85(getStorage: () => WarSessionStorageV85 | nul
         }
       }
     }).finally(finish);
+  }
+  /** Idempotent passive observation: never imports foreign data, resets a tour,
+   * or writes any bytes. Browser storage events fire in OTHER documents only;
+   * the panel also rechecks on focus after a suspended/background window. */
+  function observeExternalStorageChange(key: string | null):void {
+    if(!snapshot.loaded || snapshot.pendingWrites > 0 || !storage)return;
+    let changed=false;
+    for(const kind of kinds){
+      if(key!==null && key!==domains[kind].key)continue;
+      if(!observed.has(kind) || failures.get(kind)==="conflict")continue;
+      try{
+        const raw=storage.getItem(domains[kind].key);
+        if(raw!==observed.get(kind)){
+          conflict(kind);changed=true;
+        }
+      }catch{
+        block(kind,"unreadable","archives devenues illisibles, conservation en mémoire sans écriture.");
+        changed=true;
+      }
+    }
+    if(changed)emit();
   }
   function mayWrite(kind: Kind, reset: boolean, retry: boolean): boolean {
     const reason = failures.get(kind);
@@ -216,6 +243,7 @@ export function createWarSessionV85(getStorage: () => WarSessionStorageV85 | nul
     setSelection: (value: Update<Record<string, number>>) => update("selection", value),
     unlockWarAfterExplicitReset: () => unlock("simulation"),
     unlockCanyonAfterExplicitReset: () => unlock("canyon"),
+    observeExternalStorageChange,
     retryPersistence: () => {
       hydrate();
       const retry = () => { for (const kind of kinds) if (["write", "lock"].includes(failures.get(kind) ?? "")) enqueue(kind, false, true); emit(); };
