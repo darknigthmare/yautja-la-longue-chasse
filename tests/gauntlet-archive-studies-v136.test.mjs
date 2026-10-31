@@ -54,7 +54,7 @@ test("V136 regeneration is deterministic and the CLI declares 0 verified film as
   assert.match(cli,/candidates\.length!==49/);
 });
 test("the original concept renderer and visual QA parse as TSX",()=>{
-  for(const path of ["app/game/GauntletArchiveStudiesV136.tsx","app/game/ClanWarGauntletV131.tsx","app/game/ClanWarGauntletLockerV132.tsx","app/gauntlet-qa-v136/page.tsx"]){
+  for(const path of ["app/game/GauntletArchiveStudiesV136.tsx","app/game/ClanWarGauntletV131.tsx","app/game/ClanWarGauntletLockerV132.tsx","app/gauntlet-qa-v136/client.tsx"]){
     const result=ts.transpileModule(read(path),{fileName:path,reportDiagnostics:true,
       compilerOptions:{jsx:ts.JsxEmit.ReactJSX,module:ts.ModuleKind.ESNext,target:ts.ScriptTarget.ES2022}});
     const errors=(result.diagnostics||[]).filter(x=>x.category===ts.DiagnosticCategory.Error);
@@ -64,7 +64,7 @@ test("the original concept renderer and visual QA parse as TSX",()=>{
 
 
 test("V136 reference visual QA uses only local object URLs and cleans up private image data",()=>{
-  const page=read("app/gauntlet-qa-v136/page.tsx");
+  const page=read("app/gauntlet-qa-v136/client.tsx");
   assert.match(page,/URL\.createObjectURL\(file\)/);
   assert.match(page,/URL\.revokeObjectURL\(referenceObjectUrl\.current\)/);
   assert.match(page,/file\.size>12\*1024\*1024/);
