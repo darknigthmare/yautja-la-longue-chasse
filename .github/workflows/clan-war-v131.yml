@@ -213,7 +213,5 @@ jobs:
       - name: Validate current 33-sheet V137 open-work tracker
         run: |
           unzip -t docs/Yautja_Gauntlets_V137_Arsenal_Clans.xlsx | tail -1
-          count=$(unzip -Z1 docs/Yautja_Gauntlets_V137_Arsenal_Clans.xlsx | grep -Ec '^xl/worksheets/sheet[0-9]+\.xml
-)
-          test "$count" -eq 33
-          echo "V137: $count worksheets, archive valid"
+          unzip -Z1 docs/Yautja_Gauntlets_V137_Arsenal_Clans.xlsx | grep -Ec 'xl/worksheets/sheet[0-9]+[.]xml' | grep -qx 33
+          echo "V137: 33 worksheets, archive valid"
