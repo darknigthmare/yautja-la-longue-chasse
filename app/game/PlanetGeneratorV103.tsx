@@ -7,6 +7,7 @@ import PlanetLayerExportV102 from "./PlanetLayerExportV102";
 import type { PlanetVisualProfileV134 } from "./systems/clanWarPlanetVisualProfileV134";
 import PlanetShapePreviewV125 from "./PlanetShapePreviewV125";
 import PlanetShapeLibraryV137 from "./PlanetShapeLibraryV137";
+import { recommendPlanetTopologyV139 } from "./systems/clanWarPlanetTopologyAdvisorV139";
 import {
   DEFAULT_WAR_PLANET_RECIPE_V103, WAR_PLANET_RECIPE_FIELDS_V103,
   randomizeWarPlanetRecipeV103, seedFromTextV103, type WarPlanetRecipeFieldV103, type WarPlanetRecipeV103,
@@ -167,6 +168,7 @@ export default function PlanetGeneratorV103({ activePlanet, pending = false, onO
   const physicalIndex = useMemo(() => analyzeWarPlanetPhysicalIndexV125(planet), [planet]);
   const surfaceBudgetV136 = useMemo(() => analyzePlanetPhysicalSurfaceV136(planet), [planet]);
   const materialDossier = useMemo(() => describeWarPlanetMaterialsV114(planet), [planet]);
+  const topologySuggestionV139 = recommendPlanetTopologyV139(planetSizeV115,draft,locked);
   function currentRecipe(): WarPlanetRecipeAnyV103 {
     const base = { ...draft, seed: numericSeed(seedText) };
     if (!advancedV115) return base;
@@ -337,6 +339,20 @@ export default function PlanetGeneratorV103({ activePlanet, pending = false, onO
                   <select id={`${unique}-planet-size-v115`} value={planetSizeV115} onChange={event => { importIntent.current++; setPlanetSizeV115(event.target.value as PlanetSizeV115); }}>
                     {Object.entries(PLANET_SIZE_LABELS_V115).map(([value, label]) => <option value={value} key={value}>{label}</option>)}
                   </select></div>
+                <div className={styles.control} data-testid="planet-scale-topology-v139">
+                  <p className={styles.hint}>Maillage conseillé : {topologySuggestionV139.recommendedTerritories} territoires, {topologySuggestionV139.recommendedRegions} régions. Pour la géographie sélectionnée, {topologySuggestionV139.range[0]} à {topologySuggestionV139.range[1]} masses terrestres. Plafond : 96 territoires et 12 régions.</p>
+                  <button type="button" data-testid="planet-scale-apply-v139"
+                    disabled={topologySuggestionV139.locked ||
+                      (topologySuggestionV139.territoryCount===draft.territoryCount &&
+                       topologySuggestionV139.regionCount===draft.regionCount)}
+                    onClick={()=>{
+                      importIntent.current++;
+                      setDraft(current=>({...current,
+                        territoryCount:topologySuggestionV139.territoryCount,
+                        regionCount:topologySuggestionV139.regionCount}));
+                      setMessage("Maillage adapté au rayon dans le brouillon V115 ; générez la planète pour appliquer la nouvelle géographie.");
+                    }}>Adapter le maillage à cette taille</button>
+                </div>
                 {([
                   ["island", "Forme des îles", islandShapeV115, setIslandShapeV115],
                   ["continent", "Forme des continents", continentShapeV115, setContinentShapeV115],

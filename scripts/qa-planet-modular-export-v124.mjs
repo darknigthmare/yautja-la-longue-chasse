@@ -71,6 +71,24 @@ try {
   await library.getByTestId("planet-shape-library-toggle-v137").click();
 
 
+  const topology = generator.getByTestId("planet-scale-topology-v139");
+  const sizeSelect = generator.locator('select[id$="-planet-size-v115"]');
+  const territorySelect = generator.locator('[data-generator-field="territoryCount"] select');
+  const regionCountSelect = generator.locator('[data-generator-field="regionCount"] select');
+  const beforeSize = await sizeSelect.inputValue();
+  const beforeTerritories = await territorySelect.inputValue();
+  const beforeRegions = await regionCountSelect.inputValue();
+  await sizeSelect.selectOption("colossal");
+  await topology.getByTestId("planet-scale-apply-v139").click();
+  check("V139 chooses the physical-size 96-territory and 12-region draft without altering the preview",
+    (await territorySelect.inputValue())==="96" && (await regionCountSelect.inputValue())==="12" &&
+    (await generator.getAttribute("data-preview-planet-code"))===planetCode);
+  await regionCountSelect.selectOption(beforeRegions);
+  await territorySelect.selectOption(beforeTerritories);
+  await sizeSelect.selectOption(beforeSize);
+  check("V139 can restore the exact previous draft topology",
+    (await generator.getAttribute("data-preview-planet-code"))===planetCode);
+
   const exporter = generator.getByTestId("planet-layer-export-v102");
   await exporter.locator("summary").click();
   await exporter.screenshot({ path: path.join(output, "after-modular-export-panel.png") });

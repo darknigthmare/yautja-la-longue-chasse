@@ -59,6 +59,7 @@ jobs:
           tests/planet-surface-budget-v136.test.mjs
           tests/planet-shape-library-v137.test.mjs
           tests/planet-projection-parity-v138.test.mjs
+          tests/planet-topology-advisor-v139.test.mjs
           tests/planet-strategy-v114.test.mjs
           tests/planet-generator-draft-v103.test.mjs
           tests/planet-generator-v103.test.mjs
@@ -92,6 +93,7 @@ jobs:
           app/game/PlanetShapeLibraryV137.tsx
           app/game/systems/clanWarShapeLibraryV137.ts
           app/game/systems/planetProjectionParityV138.ts
+          app/game/systems/clanWarPlanetTopologyAdvisorV139.ts
 
   browser-modules:
     name: V124 live PNG and ZIP verification
