@@ -29,3 +29,17 @@ Les 1 200 contrats V120 demeurent **design-only** : ils ne deviennent pas jouabl
 3. Enregistrer un reçu signé/idempotent via le contrat de résultat de la campagne ; gérer les groupes blessés, absents et repliés.
 4. Séparer simulation locale, règles serveur et snapshots masqués dans les parties en ligne.
 5. Valider explicitement chaque source de lore par œuvre, époque et continuité, sans inventer de conflit canonique.
+
+## V134 — ordres synchronisés et reprise physique des escortes
+
+L'interface de la Bible V6 permet de cocher plusieurs escouades, de choisir une case de rassemblement et de faire avancer leurs formations pendant **un même tour tactique** (au plus une case chacune). Le planificateur `planWarRtsRallyV134` choisit des cases distinctes à deux cases au plus de l'objectif, utilise le réseau physique de la carte W3, refuse murs, eau profonde, lave, ennemis et portes motorisées hors tension. Les zones de danger **actives au prochain tour** sont évitées par le planificateur. Les colonnes groupées ne traversent jamais une formation alliée ni un ennemi. Une route congestionnée est signalée au lieu de téléporter les membres.
+
+`commandWarRtsRallyV134` applique simultanément les déplacements acceptables en une seule réaction adverse. Le joueur peut commander plusieurs escouades **sans payer plusieurs réactions ennemies artificielles**, contrairement à la boucle de commandes individuelles V133. Aucun RAV supplémentaire n'est consommé pour cet ordre et aucune expérience, conquête ou recrue n'est créée. Les mouvements bloqués sont signalés et le joueur peut modifier le rassemblement.
+
+La commande de reprise d'escorte prend maintenant en charge les **personnes secourues et témoins neutres**, ainsi que les charges physiques. Si le responsable est neutralisé, une autre escouade **déjà présente à proximité réelle** peut reprendre la responsabilité sans dupliquer l'acteur, inventer un recrutement ni modifier son statut neutre.
+
+La liste des positions d'objectif dans le panneau est **masquée avant reconnaissance** ; elle n'offre plus leurs coordonnées en lecture directe avant que le joueur ait observé les accès.
+
+**Limites conservées :** étude au tour par tour sur cartes W3 générées, pas encore pathfinding dynamique de guerre totale, ni serveur autoritaire, ni troupe de campagne persistante, ni animations/sprites cinématographiques 1:1. Les pions et la fenêtre de regroupement de deux cases sont des mécanismes de jeu originaux, pas du lore filmique.
+
+**QA à vérifier :** `tests/clan-war-rts-rally-v134.test.mjs` vérifie 24 cartes, un seul tick adverse par mouvement collectif, indépendance et absence de collision, portes, dangers, refus sans effet de bord, reprise des escortes/survivants/témoins neutres, maintien des identités et reçus uniques. Répéter sur navigateur desktop/mobile et manette avant release.

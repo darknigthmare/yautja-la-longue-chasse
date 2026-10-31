@@ -4,6 +4,7 @@ import type {WarRulesV6} from "./systems/clanWarBibleV6";
 import {
  createWarRtsSquadsV133,draftWarRtsSquadV133,removeWarRtsSquadV133,
  launchWarRtsSquadsV133,commandWarRtsSquadsV133,visibleWarRtsEnemiesV133,
+ planWarRtsRallyV134,commandWarRtsRallyV134,
  type WarRtsSquadsStateV133,type WarRtsSquadOrderV133,
 } from "./systems/clanWarRtsSquadsV133";
 import {WAR_SOURCE_RTS_IDS_V129} from "./systems/clanWarRtsSourceMissionsV129";
@@ -23,14 +24,20 @@ export default function ClanWarRtsSquadsV133({rules}:{rules:WarRulesV6}){
  const [selectedId,setSelectedId]=useState<string|null>(null);
  const [unitToAdd,setUnitToAdd]=useState("W3-U01");
  const [feedback,setFeedback]=useState("");
+ const [rallyTarget,setRallyTarget]=useState<{x:number;y:number}>(()=>({...state.map.observation}));
+ const [rallyExcluded,setRallyExcluded]=useState<string[]>([]);
  const mission=state.mission,map=state.map;
  const current=mission.tasks[state.completedTaskIds.length]??null;
  const selected=state.squads.find(u=>u.id===selectedId)??state.squads[0];
+ const rallyIds=state.squads.filter(u=>u.status==="active"&&!rallyExcluded.includes(u.id)).map(u=>u.id);
+ const rallyPlan=planWarRtsRallyV134(state,rallyIds,rallyTarget);
  const enemies=useMemo(()=>visibleWarRtsEnemiesV133(state),[state]);
  const follower=state.tracked&&(state.tracked.secured||state.squads.some(u=>u.status==="active"&&d(u,state.tracked!)<=7&&
   warMapLineOfSightV128(map,u,state.tracked!)))?state.tracked:null;
  function restart(id:string){
-  try{setState(createWarRtsSquadsV133(id,rules));setSelectedId(null);setFeedback("");}
+  try{const next=createWarRtsSquadsV133(id,rules);
+   setState(next);setSelectedId(null);setFeedback("");
+   setRallyTarget({...next.map.observation});setRallyExcluded([]);}
   catch(e){setFeedback(e instanceof Error?e.message:"La mission V6 ne peut pas être chargée.");}
  }
  function apply(result:{state:WarRtsSquadsStateV133;accepted:boolean;message:string}){
@@ -134,7 +141,32 @@ export default function ClanWarRtsSquadsV133({rules}:{rules:WarRulesV6}){
       <small>{u.memberCount} membres · {u.hp}/{u.maxHp} PV · {u.commandPoints} PC · portée {u.range} · {u.status}</small>
      </button>
      {state.phase==="planning"&&<button type="button" onClick={()=>apply(removeWarRtsSquadV133(state,u.id))} aria-label={`Retirer ${u.unitId}`}>×</button>}
+     {state.phase==="active"&&u.status==="active"&&<label className={styles.rallyCheck}>
+      <input type="checkbox" checked={!rallyExcluded.includes(u.id)}
+       aria-label={`Inclure ${u.unitId} au rassemblement`}
+       onChange={event=>setRallyExcluded(current=>event.target.checked?
+        current.filter(id=>id!==u.id):[...current,u.id])}/>
+      Groupe
+     </label>}
     </div>)}</div>
+    {state.phase==="active"&&<div className={styles.rallyPanel}>
+     <h5>Ordre collectif · un seul tour pour toutes les escouades</h5>
+     <p>Choisissez les groupes ci-dessus puis une case de rassemblement. Chaque formation parcourt au plus une case. Les obstacles, portes sans courant et adversaires restent bloquants ; les groupes ne se superposent pas.</p>
+     <div className={styles.rallyControls}>
+      <label>Case X<input type="number" min={0} max={map.width-1} value={rallyTarget.x}
+       onChange={event=>setRallyTarget(current=>({...current,x:Math.floor(Number(event.target.value)||0)}))}/></label>
+      <label>Case Y<input type="number" min={0} max={map.height-1} value={rallyTarget.y}
+       onChange={event=>setRallyTarget(current=>({...current,y:Math.floor(Number(event.target.value)||0)}))}/></label>
+      <button type="button" onClick={()=>setRallyTarget({...map.observation})}>Vers reconnaissance</button>
+      {state.observed&&current&&<button type="button"
+       onClick={()=>setRallyTarget({...current.location})}>Vers objectif identifié</button>}
+      <button type="button" className={styles.primary} disabled={!rallyPlan.valid||rallyPlan.steps.length===0}
+       onClick={()=>apply(commandWarRtsRallyV134(state,rallyIds,rallyTarget))}>
+       Déplacer {rallyPlan.steps.length} escouade(s) · 1 tour
+      </button>
+     </div>
+     <p className={styles.rallyStatus} role="status">{rallyPlan.reason}</p>
+    </div>}
     {state.phase==="active"&&selected&&<>
      <p className={styles.selected}>Ordres de <strong>{selected.unitName}</strong> — position ({selected.x}, {selected.y})</p>
      <div className={styles.moveGrid}>{direct.map(dir=><button type="button" key={dir.id}
@@ -144,7 +176,7 @@ export default function ClanWarRtsSquadsV133({rules}:{rules:WarRulesV6}){
       {(["observe","interact","wait","power","stabilize","pickup","extract","retreat"] as const).map(kind=><button
        type="button" key={kind} disabled={selected.status!=="active"}
        onClick={()=>action(kind)}>{({observe:"Reconnaître",interact:"Interagir",wait:"Attendre / tenir",power:"Réseau électrique",
-        stabilize:"Stabiliser sas",pickup:"Reprendre charge",extract:"Extraire tous",retreat:"Se replier"})[kind]}</button>)}
+        stabilize:"Stabiliser sas",pickup:"Reprendre charge ou escorte",extract:"Extraire tous",retreat:"Se replier"})[kind]}</button>)}
      </div>
      <h5>Adversaires à portée du détachement</h5>
      {enemies.length===0?<p className={styles.hint}>Aucun adversaire actuellement observé.</p>:
@@ -163,7 +195,7 @@ export default function ClanWarRtsSquadsV133({rules}:{rules:WarRulesV6}){
    <h4>Trois épreuves physiques W3 · {mission.id}</h4>
    <p>{mission.sourceObjective}</p>
    <ol>{mission.tasks.map((t,i)=><li key={t.id} data-status={state.completedTaskIds.includes(t.id)?"done":current?.id===t.id?"active":"pending"}>
-    <strong>{i+1}. {t.title}</strong><small>{t.kind} · repère ({t.location.x},{t.location.y}) · provenance {t.sourcedFrom} · {t.holdTurns??1} tick(s){t.requiresPower?" · énergie requise":""}{t.requiresPressure?" · pression requise":""}{t.requiresWindow?" · fenêtre climatique":""}</small>
+    <strong>{i+1}. {t.title}</strong><small>{t.kind} · {state.observed?("repère ("+t.location.x+","+t.location.y+")"):"coordonnées masquées avant reconnaissance"} · provenance {t.sourcedFrom} · {t.holdTurns??1} tick(s){t.requiresPower?" · énergie requise":""}{t.requiresPressure?" · pression requise":""}{t.requiresWindow?" · fenêtre climatique":""}</small>
    </li>)}</ol>
    {state.tracked&&<p className={styles.hint}>Protection : {state.tracked.kind} · {state.tracked.hp} PV · {state.tracked.secured?"sécurisé":"à récupérer"} · {state.tracked.carrierSquadId??"aucun responsable"}{state.tracked.isNeutral?" · personne neutre":""}.</p>}
    {state.hold&&<p>Maintien de poste : <strong>{state.hold.progress}/{state.hold.required} tours</strong>, escouade {state.hold.squadId}.</p>}

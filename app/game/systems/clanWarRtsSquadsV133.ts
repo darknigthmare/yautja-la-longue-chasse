@@ -319,10 +319,13 @@ export function commandWarRtsSquadsV133(s:WarRtsSquadsStateV133,order:WarRtsSqua
  }
  if(order.kind==="pickup"){
   const tracked=s.tracked;
-  if(!tracked||!tracked.secured||!securedCargo(tracked.kind)||tracked.carrierSquadId)
-   return fail(s,"Aucune charge déjà sécurisée et posée à reprendre.");
-  if(distance(actor,tracked)>1)return fail(s,"Charge physiquement hors de portée.");
-  return issue(s,"Charge reprise à "+at(tracked)+" par "+actor.unitId+".",
+  if(!tracked||!tracked.secured||tracked.hp<=0||tracked.extracted)
+   return fail(s,"Aucune charge ou personne escortée apte à être reprise.");
+  if(tracked.carrierSquadId===actor.id)return fail(s,"Cette escouade accompagne déjà cette charge ou personne.");
+  if(distance(actor,tracked)>1)return fail(s,"La charge ou la personne se trouve physiquement hors de portée.");
+  // A casualty leader can be replaced by a REAL nearby squad; a witness
+  // keeps their neutral status. Heavy objects also require a real handoff.
+  return issue(s,"Responsabilité de l'escorte transférée à "+at(tracked)+" vers "+actor.unitId+".",
    {tracked:{...tracked,carrierSquadId:actor.id}});
  }
  if(order.kind==="wait")return issue(s,"Tenue de positions et observation.",{});
@@ -346,6 +349,111 @@ export function commandWarRtsSquadsV133(s:WarRtsSquadsStateV133,order:WarRtsSqua
  }
  return fail(s,"Ordre tactique invalide.");
 }
+
+/**
+ * V134: synchronized 2D rally movement, authored as an ORIGINAL clan-war
+ * tactical convenience. One group command = at most one physical tile per
+ * squad and exactly ONE enemy/environment turn; no simulated teleport,
+ * extra RAV, campaign award, server authority or automatic objective.
+ * All planned routes honor the original W3 tactical map and door state.
+ */
+export interface WarRtsRallyStepV134 {
+ squadId:string;unitId:string;from:WarMapPointV128;to:WarMapPointV128;remainingCells:number;
+}
+export interface WarRtsRallyPlanV134 {
+ valid:boolean;reason:string;target:WarMapPointV128;
+ squadIds:string[];steps:WarRtsRallyStepV134[];
+ holdingIds:string[];blockedIds:string[];
+}
+export function planWarRtsRallyV134(
+ s:WarRtsSquadsStateV133,squadIds:readonly string[],target:WarMapPointV128,
+):WarRtsRallyPlanV134 {
+ const result:WarRtsRallyPlanV134={
+  valid:false,reason:"",target:target?{x:target.x,y:target.y}:{x:-1,y:-1},
+  squadIds:Array.isArray(squadIds)?[...squadIds]:[],steps:[],holdingIds:[],blockedIds:[],
+ };
+ if(s.phase!=="active"||s.report){result.reason="Seul un combat actif peut recevoir un ordre collectif.";return result;}
+ if(!Array.isArray(squadIds)||squadIds.length<1||squadIds.length>4||
+    new Set(squadIds).size!==squadIds.length){
+  result.reason="Sélectionnez de une à quatre escouades distinctes.";return result;
+ }
+ if(!target||!Number.isInteger(target.x)||!Number.isInteger(target.y)||
+    !warMapWalkableV128(s.map,target)){
+  result.reason="Le point de rassemblement doit être une case traversable de la carte W3.";return result;
+ }
+ if(!s.power&&s.map.poweredDoors.some(p=>at(p)===at(target))){
+  result.reason="La cible est derrière une porte motorisée sans courant.";return result;
+ }
+ const units=squadIds.map(id=>s.squads.find(u=>u.id===id&&u.status==="active"&&u.hp>0));
+ if(units.some(u=>!u)){result.reason="Une escouade sélectionnée est absente ou hors de combat.";return result;}
+ const occupiedByEnemy=s.enemies.filter(e=>e.hp>0);
+ const inaccessible=s.power?[]:s.map.poweredDoors;
+ const unsafe=hazardsNow(s.turn+1)?s.map.hazards:[];
+ const candidates:WarMapPointV128[]=[];
+ for(let y=Math.max(0,target.y-2);y<=Math.min(s.map.height-1,target.y+2);y++)
+  for(let x=Math.max(0,target.x-2);x<=Math.min(s.map.width-1,target.x+2);x++){
+   const p=pos(x,y);
+   if(distance(p,target)<=2&&warMapWalkableV128(s.map,p)&&
+      !inaccessible.some(t=>at(t)===at(p))&&
+      !unsafe.some(t=>at(t)===at(p))&&
+      !occupiedByEnemy.some(e=>at(e)===at(p)))candidates.push(p);
+  }
+ if(!candidates.length){result.reason="Aucune place de rassemblement sûre autour du point.";return result;}
+ const reserved=new Set<string>();
+ for(const unit of units){
+  if(!unit)continue;
+  const from=pos(unit.x,unit.y);
+  if(distance(from,target)<=2){result.holdingIds.push(unit.id);reserved.add(at(from));continue;}
+  const occupied=[
+   ...activeSquads(s).filter(other=>other.id!==unit.id),
+   ...occupiedByEnemy,...inaccessible,...unsafe,
+   ...[...reserved].map(cell=>{const [x,y]=cell.split(",").map(Number);return pos(x,y);}),
+  ];
+  const forbidden=new Set(occupied.map(at));
+  let best:{route:WarMapPointV128[];goal:WarMapPointV128}|null=null;
+  for(const goal of candidates){
+   if(forbidden.has(at(goal)))continue;
+   const route=warMapFindPathV128(s.map,from,goal,occupied);
+   if(!route||route.length<2)continue;
+   const next=route[1];
+   if(forbidden.has(at(next)))continue;
+   if(!best||route.length<best.route.length||
+      route.length===best.route.length&&distance(goal,target)<distance(best.goal,target)||
+      route.length===best.route.length&&distance(goal,target)===distance(best.goal,target)&&
+        (goal.y<best.goal.y||goal.y===best.goal.y&&goal.x<best.goal.x))
+    best={route,goal};
+  }
+  if(!best){result.blockedIds.push(unit.id);continue;}
+  const next=best.route[1];
+  if(distance(from,next)!==1||reserved.has(at(next))){result.blockedIds.push(unit.id);continue;}
+  result.steps.push({squadId:unit.id,unitId:unit.unitId,from,to:pos(next.x,next.y),
+   remainingCells:best.route.length-2});
+  reserved.add(at(next));
+ }
+ result.valid=true;
+ result.reason=result.steps.length?
+  result.steps.length+" déplacement(s) synchronisé(s) possibles ; 1 seul tour de réaction adverse.":
+  result.blockedIds.length?
+   "Tous les itinéraires sont actuellement obstrués ; changez le point ou la formation.":
+   "Les escouades sélectionnées se trouvent déjà dans le périmètre de regroupement.";
+ return result;
+}
+export function commandWarRtsRallyV134(
+ s:WarRtsSquadsStateV133,squadIds:readonly string[],target:WarMapPointV128,
+):WarRtsSquadsUpdateV133 {
+ const plan=planWarRtsRallyV134(s,squadIds,target);
+ if(!plan.valid||!plan.steps.length)return fail(s,plan.reason);
+ const moves=new Map(plan.steps.map(step=>[step.squadId,step.to]));
+ const nextSquads=s.squads.map(u=>{
+  const location=moves.get(u.id);return location?{...u,x:location.x,y:location.y}:u;
+ });
+ // One advance, even with four simultaneous orders: no hidden extra AI turns.
+ const next=advance({...s,squads:nextSquads},
+  "Rassemblement tactique W3 "+at(target)+" : "+plan.steps.length+
+  " escouade(s) déplacée(s) d'une case, "+plan.blockedIds.length+" bloquée(s).");
+ return accept(next,next.lastMessage);
+}
+
 /** QA guard: all 24 W3 scenarios must have at least two source-budgeted teams,
  * distinct deployment tiles and no automatic campaign award. */
 export function auditWarRtsSquadsV133(rules:WarRulesV6){
