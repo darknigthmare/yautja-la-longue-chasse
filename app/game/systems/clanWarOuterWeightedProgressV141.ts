@@ -46,7 +46,8 @@ export function warOuterWeightedProgressV141(
  // On recall, the team reverses only those passages it actually reached,
  // not the entire untraversed advertised outbound itinerary.
  const outbound=order.recall?
-  warOuterRouteProgressV140({...order,recall:undefined},
+  warOuterRouteProgressV140({...order,recall:undefined,
+   dueAt:order.recall.originalDueAt},
    order.recall.orderedAt,rules):null;
  const prefix=outbound&&full.length?
   segment(full,outbound.legProgress,rules).complete.concat(

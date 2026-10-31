@@ -15,7 +15,6 @@ const compiled=await build({stdin:{contents:[
  platform:"node",format:"esm",target:"es2022",logLevel:"silent"});
 const api=await import("data:text/javascript;base64,"+Buffer.from(compiled.outputFiles[0].text).toString("base64"));
 const rules=api.DEFAULT_WAR_RULES_V6;
-const coords=p=>p.x+","+p.y;
 const dist=(a,b)=>Math.abs(a.x-b.x)+Math.abs(a.y-b.y);
 const start=(mode)=>{
  const base=api.createWarOperationsV115(rules),team=base.teams[0].id;

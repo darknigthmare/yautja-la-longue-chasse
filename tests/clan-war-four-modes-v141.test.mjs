@@ -128,7 +128,7 @@ test("Stealth V141: source guard always follows a physical one-step route toward
  let differentY=0;
  for(const site of rules.territories){
   const terrain=api.warMissionTerrainV116(site.id,rules);
-  regions.add(site.regionId);
+  regions.add(site.region);
   const initial=api.warStealthPatrolSpawnV140(terrain);
   for(const lure of [{x:1,y:1},{x:1,y:4}]){
    let guard=initial;
