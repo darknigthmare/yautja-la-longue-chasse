@@ -1,6 +1,6 @@
 "use client";
 import ConservationPanelV112, {type ConservationPanelActionV112} from "./ConservationPanelV112";
-import {startConservationV112,workConservationV112,repairFieldToolV112,archiveMountedSpecimenV112,deliverHarvestV112,harvestInventoryForV112,capacityForArmorV112} from "./systems/harvestInventoryV112";
+import {startConservationV112,workConservationV112,pauseConservationV112,resumeConservationV112,repairFieldToolV112,archiveMountedSpecimenV112,deliverHarvestV112,harvestInventoryForV112,capacityForArmorV112} from "./systems/harvestInventoryV112";
 import { normalizeHuntAccessibilityV112 } from "./systems/huntAccessibilityV112";
 import { FIELD_TOOLS_V111, quoteFieldToolV111, purchaseFieldToolV111 } from "./systems/fieldToolsV111";
 import {recoverAnyArchiveV71} from "./systems/archiveRecoveryV71";
@@ -2924,7 +2924,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     if(settingsOpen||archiveTransferBusy||archiveRecoveryIssue||campaignSaveBusy||!(screen==="armory"||screen==="trophies"))
       return {ok:false,message:"Atelier suspendu : reprenez le poste actif avant de travailler."};
     const current=saveRef.current;
-    const result=action==="start"?startConservationV112(current,id):action==="work"?workConservationV112(current,id):action==="archive"?archiveMountedSpecimenV112(current,id):repairFieldToolV112(current);
+    const result=action==="start"?startConservationV112(current,id):action==="work"?workConservationV112(current,id):action==="pause"?pauseConservationV112(current,id):action==="resume"?resumeConservationV112(current,id):action==="archive"?archiveMountedSpecimenV112(current,id):repairFieldToolV112(current);
     if(!result.ok)return {ok:false,message:result.message};
     if(!persistSocialProgress({profile:result.save.profile,inventory:result.save.inventory}))
       return {ok:false,message:"Travail non confirmé : aucun succès annoncé. Réessayez le même geste pour récupérer son enregistrement."};

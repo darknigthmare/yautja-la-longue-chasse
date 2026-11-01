@@ -7,7 +7,7 @@ import {CONSERVATION_STEPS_V112,HARVEST_DEPOT_LIMIT_V112,SPECIMEN_STAGE_LABELS_V
   harvestInventoryForV112,flayingToolWorkMultiplierV112,type FieldSpecimenV112} from "./systems/harvestInventoryV112";
 import styles from "./ConservationPanelV112.module.css";
 
-export type ConservationPanelActionV112 = "start" | "work" | "repair" | "archive";
+export type ConservationPanelActionV112 = "start" | "work" | "pause" | "resume" | "repair" | "archive";
 export interface ConservationPanelV112Props {
   inventory: PlayerInventory;
   clanMarks: number;
@@ -46,11 +46,11 @@ export default function ConservationPanelV112({inventory,clanMarks,disabled=fals
       <p>Une opération achevée use de 5 points. Un geste interrompu ne coûte rien. Un outil émoussé reste utilisable ; l’affûtage au poste est gratuit.</p>
       </div><button type="button" className="button" disabled={disabled||!owned||ledger.toolCondition===100}
         onClick={()=>act("repair","flaying-tool")}>Affûter gratuitement</button></div>
-    <p className={styles.legend}>Étapes : Nettoyer · 2 marques / 3 gestes → Traiter · 4 / 4 → Sécher · 3 / 5 → Monter · 5 / 3. Le coût est payé une seule fois à l’engagement de chaque étape. Jusqu’à 16 opérations en parallèle.</p>
+    <p className={styles.legend}>Étapes : Nettoyer · 2 marques / 3 gestes → Traiter · 4 / 4 → Sécher · 3 / 5 → Monter · 5 / 3. Le coût est payé une seule fois à l’engagement de chaque étape. Jusqu’à 16 opérations en parallèle. Suspendre libère un poste en conservant la prise, les marques déjà payées et les gestes enregistrés ; reprendre ne coûte rien.</p>
     {feedback&&<p role="status" className={styles.feedback}>{feedback}</p>}
     {ledger.specimens.length===0?<p>Aucune prise anatomique rapportée. Prélevez une partie compatible sur une proie vaincue, puis réussissez l’extraction pour la déposer ici.</p>:
       <div className={styles.grid}>{ledger.specimens.map(item=>{
-        const job=ledger.jobs.find(j=>j.specimenId===item.id&&j.status==="active");
+        const job=ledger.jobs.find(j=>j.specimenId===item.id&&j.status!=="completed");
         const next=CONSERVATION_STEPS_V112.find(s=>s.from===item.stage);
         return <article className={styles.card} key={item.id} aria-label={item.label}>
           <SpecimenGlyphV112 item={item}/>
@@ -58,9 +58,14 @@ export default function ConservationPanelV112({inventory,clanMarks,disabled=fals
             <p>{item.massKg.toFixed(1)} kg · {item.volumeUnits.toFixed(1)} volumes · <strong>{SPECIMEN_STAGE_LABELS_V112[item.stage]}</strong></p>
             </div>
           {job?<div className={styles.work}>
-            <label htmlFor={"conservation-progress-"+item.id}>{SPECIMEN_STAGE_LABELS_V112[job.toStage]} : {job.unitsDone}/{job.unitsRequired} gestes · {job.costPaid} marques déjà payées</label>
+            <label htmlFor={"conservation-progress-"+item.id}>{job.status==="paused"?"Suspendu · ":""}{SPECIMEN_STAGE_LABELS_V112[job.toStage]} : {job.unitsDone}/{job.unitsRequired} gestes · {job.costPaid} marques déjà payées</label>
             <progress id={"conservation-progress-"+item.id} max={job.unitsRequired} value={job.unitsDone}/>
-            <button type="button" className="button" disabled={disabled} onClick={()=>act("work",job.id)}>Effectuer un geste · {item.label}</button>
+            {job.status==="paused"?<button type="button" className="button" disabled={disabled||ledger.jobs.filter(j=>j.status==="active").length>=16}
+              onClick={()=>act("resume",job.id)}>Reprendre sans frais · {item.label}</button>:<>
+              <button type="button" className="button" disabled={disabled} onClick={()=>act("work",job.id)}>Effectuer un geste · {item.label}</button>
+              <button type="button" className="ghost-button" disabled={disabled} onClick={()=>act("pause",job.id)}>Suspendre sans perte · {item.label}</button>
+            </>}
+            <small>La prise et les gestes sont conservés. Les {job.costPaid} marques de cette étape restent payées et ne sont pas facturées à la reprise.</small>
           </div>:next?<div className={styles.work}><p>{next.units} gestes manuels, sans délai réel.</p>
             <button type="button" className="button" disabled={disabled||clanMarks<next.cost||ledger.jobs.filter(j=>j.status==="active").length>=16}
               onClick={()=>act("start",item.id)}>{next.label} · {next.cost} marques · {item.label}</button></div>:

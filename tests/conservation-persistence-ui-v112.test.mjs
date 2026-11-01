@@ -109,3 +109,74 @@ test("recovery of one paid work order cannot overwrite it with a stale different
   assert.equal(h.writes.length,2);assert.equal(h.saveRef.current.profile.clanMarks,96);
   assert.equal(h.saveRef.current.inventory.harvestV112.jobs.length,2);
 });
+
+test("suspending and resuming the real station callback preserve paid marks, source, quality and every recorded gesture",()=>{
+  const h=harness(),fn=h.handler;
+  assert.equal(fn("start",specimen.id).ok,true);
+  const jobId=h.saveRef.current.inventory.harvestV112.jobs[0].id;
+  assert.equal(fn("work",jobId).ok,true);
+  const before=structuredClone(h.saveRef.current);
+  const paused=fn("pause",jobId);
+  assert.equal(paused.ok,true);assert.match(paused.message,/conservés/);
+  assert.equal(fn("pause",jobId).ok,false);
+  assert.equal(fn("start",specimen.id).ok,false);
+  assert.equal(fn("work",jobId).ok,false);
+  assert.equal(h.saveRef.current.profile.clanMarks,98);
+  const ledger=api.normalizeHarvestInventoryV112(JSON.parse(JSON.stringify(h.saveRef.current.inventory.harvestV112)));
+  assert.ok(ledger);assert.equal(ledger.jobs[0].status,"paused");assert.equal(ledger.jobs[0].unitsDone,1);
+  assert.deepEqual(ledger.specimens,before.inventory.harvestV112.specimens);
+  assert.equal(fn("resume",jobId).ok,true);assert.equal(fn("resume",jobId).ok,false);
+  assert.equal(h.saveRef.current.profile.clanMarks,98);
+  assert.equal(fn("work",jobId).ok,true);assert.equal(fn("work",jobId).ok,true);
+  assert.equal(h.saveRef.current.inventory.harvestV112.specimens[0].stage,"cleaned");
+  assert.equal(fn("pause",jobId).ok,false);assert.equal(fn("resume",jobId).ok,false);
+  assert.equal(api.normalizeHarvestInventoryV112(h.saveRef.current.inventory.harvestV112).jobs[0].status,"completed");
+});
+test("suspended work frees one of sixteen slots; a full bench refuses resumption without losing progress or charging",()=>{
+  let save=api.defaultSave("2026-11-01T00:00:00.000Z");save.profile.clanMarks=100;
+  save.inventory.harvestV112.specimens=Array.from({length:17},(_,i)=>({...specimen,id:"jungle-vey:0:prey-"+i+":hide",sourceId:"jungle-vey:0:prey-"+i}));
+  for(let i=0;i<16;i++){const r=api.startConservationV112(save,save.inventory.harvestV112.specimens[i].id);assert.equal(r.ok,true);save=r.save;}
+  const first=save.inventory.harvestV112.jobs[0].id;
+  save=api.workConservationV112(save,first).save;
+  save=api.pauseConservationV112(save,first).save;
+  const last=save.inventory.harvestV112.specimens[16].id;
+  const started=api.startConservationV112(save,last);assert.equal(started.ok,true);save=started.save;
+  const refused=api.resumeConservationV112(save,first);
+  assert.equal(refused.ok,false);assert.equal(refused.save,save);assert.equal(save.profile.clanMarks,66);
+  assert.equal(save.inventory.harvestV112.jobs[0].unitsDone,1);
+  save=api.pauseConservationV112(save,last+":cleaned").save;
+  const resumed=api.resumeConservationV112(save,first);assert.equal(resumed.ok,true);
+  assert.equal(resumed.save.profile.clanMarks,66);
+  assert.equal(resumed.save.inventory.harvestV112.jobs.filter(j=>j.status==="active").length,16);
+  assert.ok(api.normalizeHarvestInventoryV112(resumed.save.inventory.harvestV112));
+});
+test("a suspended receipt survives save import and cannot masquerade as completed or duplicate active work",()=>{
+  const h=harness();h.handler("start",specimen.id);
+  const jobId=h.saveRef.current.inventory.harvestV112.jobs[0].id;h.handler("work",jobId);h.handler("pause",jobId);
+  const parsed=api.parseSaveImport(JSON.stringify(h.saveRef.current));assert.ok(parsed.save);
+  const ledger=parsed.save.inventory.harvestV112;assert.equal(ledger.jobs[0].status,"paused");assert.equal(ledger.jobs[0].unitsDone,1);
+  for(const mutate of [
+    x=>x.jobs.push({...x.jobs[0],status:"active"}),
+    x=>x.jobs[0].unitsDone=x.jobs[0].unitsRequired,
+    x=>x.jobs[0].costPaid=0,
+    x=>x.specimens[0].stage="cleaned"
+  ]){
+    const malformed=structuredClone(ledger);mutate(malformed);assert.equal(api.normalizeHarvestInventoryV112(malformed),null);
+  }
+  const resumed=api.resumeConservationV112(parsed.save,jobId);assert.equal(resumed.ok,true);
+  assert.equal(resumed.save.profile.clanMarks,98);
+});
+test("failed suspension acknowledgement reconciles the same receipt once before allowing a different action",()=>{
+  const h=recoveryHarness();h.setConfirm(true);
+  assert.equal(h.handler("start",specimen.id).ok,true);
+  const jobId=h.saveRef.current.inventory.harvestV112.jobs[0].id;
+  assert.equal(h.handler("work",jobId).ok,true);h.setConfirm(false);
+  const before=h.saveRef.current,writeCount=h.writes.length;
+  assert.equal(h.handler("pause",jobId).ok,false);assert.equal(h.saveRef.current,before);
+  assert.equal(h.pendingSocialWriteRef.current.attempt.save.inventory.harvestV112.jobs[0].status,"paused");
+  assert.equal(h.handler("pause",jobId).ok,true);
+  assert.equal(h.writes.length,writeCount+1);assert.equal(h.saveRef.current.inventory.harvestV112.jobs[0].status,"paused");
+  assert.equal(h.saveRef.current.inventory.harvestV112.jobs[0].unitsDone,1);
+  assert.equal(h.saveRef.current.profile.clanMarks,98);
+  h.setConfirm(true);assert.equal(h.handler("resume",jobId).ok,true);assert.equal(h.saveRef.current.profile.clanMarks,98);
+});
