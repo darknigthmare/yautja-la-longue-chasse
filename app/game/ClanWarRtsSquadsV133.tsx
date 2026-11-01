@@ -11,6 +11,7 @@ import {WAR_SOURCE_RTS_IDS_V129} from "./systems/clanWarRtsSourceMissionsV129";
 import {warMapLineOfSightV128} from "./systems/clanWarSourceMapsV128";
 import {planWarRtsWaypointV142,commandWarRtsWaypointV142,type WarRtsWaypointV142} from "./systems/clanWarRtsWaypointV142";
 import {commandWarRtsMarchV143} from "./systems/clanWarRtsMarchV143";
+import {buildWarCouncilAuditV146} from "./systems/clanWarCouncilAuditV146";
 import styles from "./ClanWarRtsSquadsV133.module.css";
 
 const d=(a:{x:number;y:number},b:{x:number;y:number})=>Math.abs(a.x-b.x)+Math.abs(a.y-b.y);
@@ -35,6 +36,7 @@ export default function ClanWarRtsSquadsV133({rules}:{rules:WarRulesV6}){
  const rallyIds=state.squads.filter(u=>u.status==="active"&&!rallyExcluded.includes(u.id)).map(u=>u.id);
  const rallyPlan=planWarRtsRallyV134(state,rallyIds,rallyTarget);
  const enemies=useMemo(()=>visibleWarRtsEnemiesV133(state),[state]);
+ const councilAudit=useMemo(()=>buildWarCouncilAuditV146(null,state,rules),[state,rules]);
  const follower=state.tracked&&(state.tracked.secured||state.squads.some(u=>u.status==="active"&&d(u,state.tracked!)<=7&&
   warMapLineOfSightV128(map,u,state.tracked!)))?state.tracked:null;
  function restart(id:string){
@@ -287,7 +289,19 @@ export default function ClanWarRtsSquadsV133({rules}:{rules:WarRulesV6}){
    {state.report&&<div className={styles.report} role="status"><strong>Reçu unique : {state.report.outcome}</strong>
     <p>{state.report.id}. Preuves : {state.report.completedTaskIds.length}/3, RAV restants : {state.report.remainingRav}, groupe(s) hors combat : {state.report.downSquadIds.length}, évacué(s) : {state.report.evacuatedSquadIds?.length??0}, laissé(s) sur place : {state.report.leftBehindSquadIds.length}. Aucun gain sur la sauvegarde V85/V6.</p></div>}
   </div>
-  <details className={styles.logs}><summary>Journal opérationnel (60 entrées maximum)</summary>
+  {state.report&&<details className={styles.logs}>
+   <summary>Conseil des clans V146 · dossier W3 source vérifiée</summary>
+   {councilAudit.issues.map((issue,i)=><p key={i} role="alert">{issue}</p>)}
+   {councilAudit.dossiers.map(d=><div key={d.id}>
+    <p><strong>{d.id}</strong> · {d.outcome} · planète de la carte : {d.planetId}.
+      Objectifs prouvés : {d.completedTaskIds.length}/{state.mission.tasks.length}.
+      Blessés de l&apos;exercice : {d.woundedCount}.</p>
+    <p>Équipes : {d.teamIds.length} · Types V6 : {d.unitIds.join(", ")}.
+      Statut de preuve : {d.status}. Aucune annexion V85.</p>
+    <p>Éléments encore manquants : {d.missingEvidence.join(" · ")}.</p>
+   </div>)}
+  </details>}
+    <details className={styles.logs}><summary>Journal opérationnel (60 entrées maximum)</summary>
    <ol>{state.log.map((line,i)=><li key={`${i}-${line}`}>{line}</li>)}</ol>
   </details>
   <p className={styles.hint}>Fidélité : données de mission, unités et plafond PC proviennent de la Bible V6 ; le moteur reste une simulation tactique 2D originale. Les décors, animations, pertes individuelles, armes 1:1 et effets de campagne doivent encore être certifiés.</p>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { planWarRouteV6, type WarRulesV6 } from "./systems/clanWarBibleV6";
 import { warMissionTerrainV116,warTerrainCellBlockedV116 } from "./systems/clanWarMissionTerrainV116";
 import { warSourceRtsScenarioV119, warRtsScriptedEligibilityV119,
@@ -34,6 +34,7 @@ import {commandWarAssaultBraceV143} from "./systems/clanWarBraceV143";
 import {commandWarAssaultRegroupV144} from "./systems/clanWarRegroupV144";
 import {commandWarAssaultInterposeV145} from "./systems/clanWarInterposeV145";
 import {warOuterTravelLedgerV145} from "./systems/clanWarTravelLedgerV145";
+import {buildWarCouncilAuditV146} from "./systems/clanWarCouncilAuditV146";
 import {commandWarOuterRerouteV144} from "./systems/clanWarOuterRerouteV144";
 import {commandWarStealthAlertReinforcementV144} from "./systems/clanWarStealthReinforcementV144";
 import {commandWarStealthDashV143} from "./systems/clanWarStealthDashV143";
@@ -56,6 +57,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
     (initialScenarioId==="W3-RTS03"||initialScenarioId==="W3-RTS04")?"W3-K07":"W3-K02";
   const [world,setWorld]=useState<WarOperationsStateV115>(()=>createWarOperationsV115(rules));
   const worldRef=useRef(world);
+  const councilAudit=useMemo(()=>buildWarCouncilAuditV146(world,null,rules),[world,rules]);
   const knownArchiveBytesRef=useRef<string|null>(null);
   const [hydrated,setHydrated]=useState(false),[blocked,setBlocked]=useState(false);
   const [storageIssue,setStorageIssue]=useState(""),[message,setMessage]=useState("Choisissez votre théâtre, vos équipes, puis le type d'opération.");
@@ -272,6 +274,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
       <div>Vacations simulées<strong>{world.clock}</strong></div>
       <div>Équipes libres<strong>{available.length}/{world.teams.length}</strong></div>
       <div>Rapports enregistrés<strong>{world.reports.length}</strong></div>
+      <div>Dossiers source V146<strong>{councilAudit.total}</strong></div>
     </div>
     <p className={styles.message} role="status" aria-live="polite">{message}</p>
     <div className={styles.selector}>
@@ -831,6 +834,21 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
     <section className={styles.reports}>
       <h4>Chronique de guerre et conséquences enregistrées</h4>
       <p>Renseignements : {world.intelIds.length} · relais sabotés : {world.weakenedIds.length} · itinéraires escortés : {world.escortedIds.length}. La pression n&apos;est pas une annexion : il faut encore les ordres de conquête et une garnison dans le moteur stratégique.</p>
+      <details className={styles.debriefDetails}>
+        <summary>Conseil des clans V146 — dossiers de fin de mission · {councilAudit.total}</summary>
+        <p>Ces dossiers sont des preuves d&apos;exercice et non des ordres d&apos;annexion V85.
+          Les quatre modes utilisent le même format de compte rendu, avec les lacunes explicitées.</p>
+        {councilAudit.issues.map((issue,i)=><p key={i} role="alert">{issue}</p>)}
+        <ol>{councilAudit.dossiers.slice(-24).reverse().map(d=><li key={d.id}>
+          <strong>{d.mode} · {d.outcome} · {d.operationId}</strong>
+          <p>{d.territoryName} · équipe(s) {d.teamIds.length} · blessé(s) {d.woundedCount}.
+            Référence source : {d.sourceType}. Aucune mutation V85.</p>
+          <details><summary>Preuves et éléments restant à produire</summary>
+            <p>Confirmé : {d.provenFacts.join(" · ")}</p>
+            <p>Non démontré : {d.missingEvidence.join(" · ")}</p>
+          </details>
+        </li>)}</ol>
+      </details>
       <ol>{world.reports.slice(-16).reverse().map(report=><li key={report.id}>
         <strong>{report.id} · {report.outcome==="victory"?"Succès":report.outcome==="retreat"?"Repli":"Échec"}</strong>
         <span>{report.mode==="outer"?focusLabels[report.focus??"recon"]:modeLabels[report.mode]} · {report.targetId} · vacation {report.clock}</span>
