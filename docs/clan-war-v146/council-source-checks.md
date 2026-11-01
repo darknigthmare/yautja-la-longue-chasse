@@ -7,8 +7,8 @@ autorisée par ce dossier.
 
 Le contrôle reconstruit la mission et la carte à partir du catalogue V6 fourni :
 phase terminale, identifiants de carte et planète, cellules source, ordre des
-objectifs et identifiants des formations sont contrôlés avant de produire le
-dossier. Une victoire requiert tous les objectifs et, lorsqu'elle existe,
+objectifs et existence des types d'unité V6 sont contrôlés avant de produire le
+dossier. Un type V6 substitué par un autre ne peut pas être détecté ici. Une victoire requiert tous les objectifs et, lorsqu'elle existe,
 l'extraction de l'escorte. Les noms, unités, positions et actions ne sont pas
 certifiés par un serveur ; le contrôle n'est pas un anti-triche complet.
 
