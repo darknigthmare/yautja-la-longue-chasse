@@ -12,10 +12,10 @@ import {
   createWarOperationsV115, deployAssaultUnitV115, issueWarRtsRealtimeOrderV115,
   holdWarRtsAlternatingV119,
   upgradeWarAssaultApV117, issueWarAssaultSpecialV117,
-  queueWarRecruitmentV115, settleWarRecruitmentsV115,
-  queueWarTreatmentV116, settleWarTreatmentsV116, cancelWarTreatmentV116,
+  queueWarRecruitmentV115,
+  queueWarTreatmentV116, cancelWarTreatmentV116,
   leaveWarOperationV115, readWarOperationsV115, stepWarRtsRealtimeV115, toggleWarRtsRealtimeV115,
-  settleWarOuterOpsV115, recallWarOuterMissionV116, stepAssaultV115, warAssaultWaveProfileV140,
+  settleWarDueEventsV151, recallWarOuterMissionV116, stepAssaultV115, warAssaultWaveProfileV140,
   warMissionEligibleV115, warOuterSecondsRemainingV115,
   type WarMissionModeV115, type OuterFocusV115, type WarOperationsStateV115,
   type WarOperationsUpdateV115,
@@ -241,11 +241,10 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
     function check() {
       const stamp=Date.now();setNow(stamp);
       const state=worldRef.current;
-      if(state.outer.some(order=>stamp>=order.dueAt)) commit(settleWarOuterOpsV115(state,stamp,rules));
-      const current=worldRef.current;
-      if(current.pendingRecruits?.some(order=>stamp>=order.dueAt)) commit(settleWarRecruitmentsV115(current,stamp,rules));
-      const latest=worldRef.current;
-      if(latest.pendingTreatments?.some(order=>stamp>=order.dueAt)) commit(settleWarTreatmentsV116(latest,stamp,rules));
+      const anyDue=state.outer.some(order=>stamp>=order.dueAt)||
+        (state.pendingRecruits??[]).some(order=>stamp>=order.dueAt)||
+        (state.pendingTreatments??[]).some(order=>stamp>=order.dueAt);
+      if(anyDue)commit(settleWarDueEventsV151(state,stamp,rules));
     }
     check();const timer=window.setInterval(check,1000);
     return ()=>window.clearInterval(timer);
