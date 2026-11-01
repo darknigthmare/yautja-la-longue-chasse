@@ -4,6 +4,7 @@
 import type { ChromaticMaterialV113 } from "./hunterChromaticsV113.ts";
 import catalog from "./data/phgBiomaskV132Catalog.json" with { type: "json" };
 import installed from "./data/phgBiomaskV132Installed.json" with { type: "json" };
+import {conceptBiomaskV133} from "./conceptBiomasksV133.ts";
 
 export type PhgMaskClassV132 = "alpha" | "samurai";
 export const PHG_BIOMASK_V132_SOURCE = catalog.sourceUrl;
@@ -39,10 +40,12 @@ export function maskClassForAppearanceV132(appearance: {
     ? p.maskOriginId : null;
   // Original V133 mask shapes are not PHG masks; they inherit only the
   // authenticated class lineage of the Yautja owning the selection.
-  const concept=typeof appearance.biomaskId==="string"
-    && appearance.biomaskId.startsWith("concept-v133-");
+  const concept=conceptBiomaskV133(appearance.biomaskId);
+  // Never recognize a made-up "concept-v133-*" ID; a Samurai owner may
+  // choose only the two deliberately dual-class original concept masks.
   if(concept && (appearance.presetId==="alpha" || prior==="alpha"))return "alpha";
-  if(concept && (appearance.presetId==="samurai" || prior==="samurai"))return "samurai";
+  if(concept && concept.classHint==="alpha-or-samurai"
+    && (appearance.presetId==="samurai" || prior==="samurai"))return "samurai";
   if(appearance.biomaskId==="feral" && (appearance.presetId==="alpha" || prior==="alpha"))
     return "alpha";
   if(appearance.biomaskId==="celtic" && (appearance.presetId==="samurai" || prior==="samurai"))

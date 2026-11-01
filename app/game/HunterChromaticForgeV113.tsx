@@ -229,6 +229,9 @@ export default function HunterChromaticForgeV113({
           {maskClass ? " Famille de biomask : " + maskClass + "." : ""}
           Les sept finitions nommées de V132 sont des reconstructions originales :
           aucune couleur officielle ni carte UV n’est certifiée.</small>
+        <small>Requiem et Nova sont aussi des **teintes d'armure PHG distinctes** :
+          leurs textures d'armure ne sont pas encore certifiées ni installées dans ce canal.
+          Les six Warpaints PHG sont également des cosmétiques séparés des motifs originaux du clan.</small>
       </fieldset>}
     </div>
     <div className={styles.grid} data-yautja-decal-atelier-v133>
