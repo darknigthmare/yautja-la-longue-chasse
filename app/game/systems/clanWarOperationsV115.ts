@@ -339,7 +339,7 @@ export function beginWarOperationV115(
     rivalRosterIds:warAssaultWaveProfileV140(targetId,rules).unitIds,wavesIssued:0 };
   if (mode === "stealth") active.stealth = {x:1,y:4,
     ...warStealthPatrolSpawnV140(warMissionTerrainV116(targetId,rules)),
-    alarm:0,cloaked:false,energy:5,sabotaged:false,decoyTurns:0,decoyUsed:false};
+    alarm:0,cloaked:false,energy:5,sabotaged:false,decoyTurns:0,decoyUsed:false,reinforcementMode:"manual"};
   if (mode === "rts") {
     const allied = teamIds.map((teamId,index) => ({id:"ally-"+index,teamId,unitId:ownTeam(state,teamId)!.unitId,side:"ally" as const,x:1,y:1+index,hp:lifeFor(ownTeam(state,teamId)!.unitId,rules)}));
     const enemyUnits = rules.units.filter(unit => unit.fullMembers>0).slice(0,3);
@@ -538,6 +538,8 @@ export type StealthCommandV115 = "up"|"down"|"left"|"right"|"cloak"|"interact"|"
 export function commandStealthV115(state:WarOperationsStateV115,command:StealthCommandV115,rules:WarRulesV6):WarOperationsUpdateV115 {
  const mission=state.active, stealth=mission?.stealth;
  if(mission?.mode!=="stealth" || !stealth)return reject(state,"Aucune infiltration active.");
+ if(stealth.reinforcementMode===undefined&&!stealth.supportGuard&&!stealth.reinforcementIssued)
+  return reject(state,"Choisissez la règle de renfort pour reprendre cette archive.");
  if(state.sourceSha!==rules.metadata.sha256)return reject(state,"Bible de l'infiltration incompatible.");
  if(!["up","down","left","right","cloak","interact","wait","decoy","hide","listen","quiet-sabotage","cover-up","cover-down","cover-left","cover-right"].includes(command))
   return reject(state,"Action inconnue.");

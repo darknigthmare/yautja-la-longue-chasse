@@ -75,3 +75,28 @@ test("automatic diversion rule is opt-in, persistent and spawns only one local g
  const old=api.commandStealthV115(manual,"wait",rules);
  assert.equal(old.state.active.stealth.supportGuard,undefined);
 });
+test("ambiguous legacy mission pauses until an explicit choice, preserving its state",()=>{
+ const base=mission();
+ const legacy=structuredClone(base);
+ delete legacy.active.stealth.reinforcementMode;
+ legacy.active.stealth.alarm=1;
+ legacy.active.stealth.decoyUsed=true;
+ const before=JSON.stringify(legacy);
+ const restored=api.readWarOperationsV115(before,rules);
+ assert.ok(restored);
+ const blocked=api.commandStealthV115(restored,"wait",rules);
+ assert.equal(blocked.accepted,false);
+ assert.equal(JSON.stringify(blocked.state),before);
+ for(const mode of ["manual","decoy"]){
+  const chosen=api.setStealthReinforcementMode(restored,rules,mode);
+  assert.equal(chosen.accepted,true,chosen.message);
+  assert.deepEqual({...chosen.state.active.stealth,reinforcementMode:undefined},
+   {...restored.active.stealth,reinforcementMode:undefined});
+  assert.equal(chosen.state.clock,restored.clock);
+  const roundtrip=api.readWarOperationsV115(JSON.stringify(chosen.state),rules);
+  assert.equal(roundtrip.active.stealth.reinforcementMode,mode);
+  const step=api.commandStealthV115(roundtrip,"wait",rules);
+  assert.equal(step.accepted,true);
+  assert.equal(Boolean(step.state.active.stealth.supportGuard),mode==="decoy");
+ }
+});

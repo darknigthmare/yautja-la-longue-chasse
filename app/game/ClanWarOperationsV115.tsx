@@ -562,13 +562,16 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
       {stealth && <div>
         <p>Rejoindre le relais (7,1), le désactiver, puis rejoindre l&apos;extraction (1,4). Alerte <strong>{stealth.alarm}/3</strong> · énergie de camouflage <strong>{stealth.energy}/5</strong> · relais <strong>{stealth.sabotaged?"neutralisé":"actif"}</strong> · diversion <strong>{stealth.decoyUsed?"épuisée": "disponible"}</strong> · leurre <strong>{stealth.decoyTurns??0} tour(s) à la position émise</strong> · couverts utilisés <strong>{(stealth.usedCoverIds??[]).length}/{missionTerrain?.cover.length??0}</strong> · écoutes <strong>{stealth.acousticUsed??0}/2</strong>.</p>
         <p className={styles.explain}>Terrain régional : {missionTerrain?.title} · {missionTerrain?.ground} · obstacle : {missionTerrain?.wallLabel}.</p>
-        <label>Règle de renfort : <select value={stealth.reinforcementMode??"manual"}
-          disabled={blocked||stealth.alarm>0||Boolean(stealth.decoyUsed)||Boolean(stealth.supportGuard)}
-          onChange={event=>commit(setStealthReinforcementMode(worldRef.current,rules,
-            event.target.value==="decoy"?"decoy":"manual"))}>
+        {stealth.reinforcementMode===undefined&&!stealth.supportGuard&&<p role="alert">Cette archive ne précise pas la règle de renfort. Choisissez le comportement pour reprendre l&apos;infiltration ; son état actuel sera conservé.</p>}
+        {!stealth.supportGuard?<label>Règle de renfort : <select value={stealth.reinforcementMode??""}
+          disabled={blocked||(stealth.reinforcementMode!==undefined&&(stealth.alarm>0||Boolean(stealth.decoyUsed)))}
+          onChange={event=>{if(event.target.value==="manual"||event.target.value==="decoy")
+            commit(setStealthReinforcementMode(worldRef.current,rules,event.target.value));}}>
+          <option value="" disabled>Choisir une règle</option>
           <option value="manual">Renfort manuel après alerte</option>
           <option value="decoy">Renfort automatique après diversion et alerte</option>
-        </select></label>
+        </select></label>:<p>Renfort déjà présent dans cette infiltration.</p>}
+        <fieldset disabled={blocked||(stealth.reinforcementMode===undefined&&!stealth.supportGuard)}>
         <button type="button" disabled={blocked||stealth.reinforcementMode==="decoy"||stealth.alarm<1||
            Boolean(stealth.reinforcementIssued)||Boolean(stealth.supportGuard)}
           onClick={()=>commit(commandWarStealthAlertReinforcementV144(worldRef.current,rules))}>
@@ -634,6 +637,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
         </div>
         <p className={styles.explain}>V137 : deux déplacements protégés possibles par infiltration, uniquement vers une case de couvert adjacente. Les gardes à proximité immédiate conservent leur ligne de vue. Pas de camouflage illimité.</p>
         <p className={styles.explain}>La patrouille réagit à la position et au sabotage. Le camouflage protège à distance mais possède une réserve finie ; aucune exécution déshonorante n&apos;est requise.</p>
+        </fieldset>
       </div>}
 
       {rts && <div>
