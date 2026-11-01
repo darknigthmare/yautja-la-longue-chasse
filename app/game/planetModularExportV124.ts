@@ -5,6 +5,8 @@ import { unwrapPlanetPolygonV101 } from "./systems/planetMaterialV101";
 import { WAR_PLANET_LAND_TEXTURES_V115 } from "./systems/clanWarTextureLibraryV115";
 import { analyzeWarPlanetPhysicalIndexV125, describeWarPlanetShapeCatalogV125 } from "./systems/clanWarPlanetPhysicalIndexV125";
 import { WAR_PLANET_TEXTURES_V125 } from "./systems/clanWarTextureLibraryV125";
+import { WAR_PLANET_TEXTURES_V130 } from "./systems/clanWarTextureLibraryV130";
+import { analyzePlanetPhysicalSurfaceV136 } from "./systems/clanWarPlanetSurfaceBudgetV136";
 
 export type PlanetInlandMaskKindV124 = "lake" | "river";
 
@@ -130,6 +132,7 @@ export function describePlanetModularMasksV124(planet: WarPlanetV96) {
       regionIds: [...feature.regionIds],
     })),
     physicalIndex: analyzeWarPlanetPhysicalIndexV125(planet),
+    physicalSurfaceBudgetV136: analyzePlanetPhysicalSurfaceV136(planet),
     selectedShapeIds: recipe?.version === 115 ? {
       island: `isl-${String(recipe.islandShape + 1).padStart(2, "0")}`,
       continent: `con-${String(recipe.continentShape + 1).padStart(2, "0")}`,
@@ -141,5 +144,13 @@ export function describePlanetModularMasksV124(planet: WarPlanetV96) {
       domain: item.domain, origin: item.origin, pattern: item.pattern,
       channels: ["albedo", "height", "normal", "roughness", "emissive"] as const,
     })),
+    // The V124 32-source field is stable; V130 adds its 16 unique sources
+    // separately instead of silently changing the established manifest.
+    supplementalMaterialAdditionsV130: WAR_PLANET_TEXTURES_V130
+      .slice(WAR_PLANET_TEXTURES_V125.length).map(item => ({
+        id: item.id, name: item.name, description: item.description,
+        domain: item.domain, origin: item.origin, pattern: item.pattern,
+        channels: ["albedo", "height", "normal", "roughness", "emissive"] as const,
+      })),
   };
 }
