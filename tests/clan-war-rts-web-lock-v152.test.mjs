@@ -59,7 +59,7 @@ test("V152 the real Chromium fixture never mocks the engine or campaign storage"
   const script=read("scripts/qa-clan-war-rts-two-tabs-v152.mjs");
   assert.match(script,/entryPoints:\["tests\/browser\/clan-war-v151-four-modes\.fixture\.tsx"\]/);
   assert.match(script,/navigator\.locks\.request\(name/);
-  assert.match(script,/rts\.realtime===true/);
+  assert.match(script,/rts\?\.realtime===true/);
   assert.match(script,/frozen\.active\.tick/);
   assert.match(script,/Shared Web Lock must freeze native realtime RTS ticks/);
   assert.match(script,/resumed\.rav,initialRav/);
