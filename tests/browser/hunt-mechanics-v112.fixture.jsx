@@ -21,7 +21,7 @@ const fresh=()=>{
  return save;
 };
 const blankAssets={
- background:null,farLake:null,hunterBodyFull:null,hunterBodyParts:{},hunterNetParts:{},hunterDreads:null,hunterMask:null,
+ background:null,farLake:null,hunterBodyFull:null,hunterBodyParts:{},hunterNetParts:{},hunterDreads:null,hunterMaterialsV113:{skin:null,dread:null,outfit:null},hunterMask:null,
  hunterArmor:{},hunterPlasma:{},hunterGauntlet:{},hunterWristblades:{},hunterWeapons:{},hunterGear:{},hunterTrophies:{},
  treeTrunk:null,vineLadder:null,platformRoot:null,platformStone:null,pilotModule:null,iceRegionTextures:{},expansionDeviceTextures:{},
  platformCrown:null,platformExpedition:null,foregroundFerns:null,foregroundVines:null,foregroundReeds:null,enemyV4:{},enemyV7:{},enemyV8:{},
