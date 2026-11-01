@@ -95,7 +95,7 @@ function hasSourceRtsRoster(state:WarRtsSquadsStateV133,rules:WarRulesV6):boolea
   const suffix=squad.id.startsWith(prefix)?squad.id.slice(prefix.length):"";
   const number=Number(suffix);
   const unit=rules.units.find(u=>u.id===squad.unitId&&u.fullMembers>0&&u.commandPoints>0);
-  if(!unit||!/^[1-9]\\d*$/.test(suffix)||!Number.isSafeInteger(number)||
+  if(!unit||!/^[1-9][0-9]*$/.test(suffix)||!Number.isSafeInteger(number)||
      number>=state.nextSquadNumber||seen.has(squad.id))return false;
   seen.add(squad.id);
   const hpCap=Math.max(7,Math.min(28,5+Math.ceil(unit.defense/3)+unit.fullMembers));
