@@ -26,8 +26,8 @@ function saveBlob(blob:Blob,filename:string){
 
 export default function PlanetReliefV150({planet}:{planet:WarPlanetV96}){
   const [expanded,setExpanded]=useState(false);
-  const [maxElevation,setMaxElevation]=useState(PLANET_RELIEF_DEFAULT_V150.maxElevationMeters);
-  const [ruggedness,setRuggedness]=useState(PLANET_RELIEF_DEFAULT_V150.ruggedness);
+  const [maxElevation,setMaxElevation]=useState<number>(PLANET_RELIEF_DEFAULT_V150.maxElevationMeters);
+  const [ruggedness,setRuggedness]=useState<number>(PLANET_RELIEF_DEFAULT_V150.ruggedness);
   const [seedOffset,setSeedOffset]=useState(0);
   const [size,setSize]=useState<ReliefSizeV150>(512);
   const [lastRendered,setLastRendered]=useState("");

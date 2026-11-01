@@ -9,7 +9,7 @@ export const PLANET_SIZE_TOPOLOGY_PRESETS_V139=Object.freeze({
   terran:{territoryCount:48,regionCount:8},large:{territoryCount:72,regionCount:12},
   giant:{territoryCount:96,regionCount:12},colossal:{territoryCount:96,regionCount:12},
 } as const);
-const nearest=(options:readonly number[],target:number):number=>
+const nearest=<T extends number>(options:readonly T[],target:number):T=>
   options.slice().sort((a,b)=>Math.abs(a-target)-Math.abs(b-target)||b-a)[0];
 
 /** Real bounds from V103 geography.plans(), not an image-based guess. */
