@@ -12,6 +12,7 @@ import ts from 'typescript';
 import sharp from 'sharp';
 import {chromium} from 'playwright-core';
 import {runAccessibilityBrowserV112} from './lib/qa-hunt-accessibility-v112.mjs';
+import {runFieldGuideBrowserV112} from './lib/qa-hunt-field-guide-v112.mjs';
 const root=fileURLToPath(new URL('../',import.meta.url)),out=path.join(root,'outputs/qa-hunt-v112');
 await fs.mkdir(out,{recursive:true});
 const bundle=await build({absWorkingDir:root,entryPoints:['tests/browser/hunt-mechanics-v112.fixture.jsx'],
@@ -70,6 +71,10 @@ try{
  };
  await scenario('real accessibility controls, remapping, readable guide and narrow viewport',async()=>{
   const checks=await runAccessibilityBrowserV112(page);if(Array.isArray(checks))for(const check of checks)results.push(typeof check==='string'?{name:check,status:'PASS'}:check);
+ });
+ await scenario('field guide native disclosure, remapped cue and 200% text',async()=>{
+  const checks=await runFieldGuideBrowserV112(page);for(const name of checks)results.push({name,status:'PASS'});
+  await capture('field-guide-readable');
  });
  await reset();await page.setViewportSize({width:390,height:844});await show('accessibility');await capture('accessibility-phone');
  await page.setViewportSize({width:1120,height:850});await reset();await show('workshop');

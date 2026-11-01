@@ -6,12 +6,14 @@ import {ecologyV8EnemyForId} from "./ecologyV8";
 import {CONSERVATION_STEPS_V112,HARVEST_DEPOT_LIMIT_V112,SPECIMEN_STAGE_LABELS_V112,
   harvestInventoryForV112,flayingToolWorkMultiplierV112,type FieldSpecimenV112} from "./systems/harvestInventoryV112";
 import styles from "./ConservationPanelV112.module.css";
+import {DEFAULT_HUNT_GAMEPAD_V112,HUNT_GAMEPAD_LABELS_V112,type HuntGamepadButtonsV112} from "./systems/huntAccessibilityV112";
 
 export type ConservationPanelActionV112 = "start" | "work" | "pause" | "resume" | "repair" | "archive";
 export interface ConservationPanelV112Props {
   inventory: PlayerInventory;
   clanMarks: number;
   disabled?: boolean;
+  gamepadButtons?: HuntGamepadButtonsV112;
   onAction(action:ConservationPanelActionV112,id:string):{ok:boolean;message:string};
 }
 const LEGACY_PREY_LABELS_V112:Readonly<Record<string,string>>=Object.freeze({
@@ -29,7 +31,7 @@ function SpecimenGlyphV112({item}:{item:FieldSpecimenV112}) {
     {item.stage==="mounted"&&<path d="M8 3h40v50H8Z" fill="none" stroke="currentColor"/>}
   </svg>;
 }
-export default function ConservationPanelV112({inventory,clanMarks,disabled=false,onAction}:ConservationPanelV112Props) {
+export default function ConservationPanelV112({inventory,clanMarks,disabled=false,onAction,gamepadButtons=DEFAULT_HUNT_GAMEPAD_V112}:ConservationPanelV112Props) {
   const [feedback,setFeedback]=useState("");
   const ledger=harvestInventoryForV112(inventory),owned=inventory.fieldToolIds.includes("flaying-tool");
   const act=(action:ConservationPanelActionV112,id:string)=> {
@@ -47,6 +49,7 @@ export default function ConservationPanelV112({inventory,clanMarks,disabled=fals
       </div><button type="button" className="button" disabled={disabled||!owned||ledger.toolCondition===100}
         onClick={()=>act("repair","flaying-tool")}>Affûter gratuitement</button></div>
     <p className={styles.legend}>Étapes : Nettoyer · 2 marques / 3 gestes → Traiter · 4 / 4 → Sécher · 3 / 5 → Monter · 5 / 3. Le coût est payé une seule fois à l’engagement de chaque étape. Jusqu’à 16 opérations en parallèle. Suspendre libère un poste en conservant la prise, les marques déjà payées et les gestes enregistrés ; reprendre ne coûte rien.</p>
+    <p className={styles.legend}>Commandes : Tab puis Entrée au clavier. À la manette, directions pour choisir, {HUNT_GAMEPAD_LABELS_V112[gamepadButtons.jump]} pour confirmer et {HUNT_GAMEPAD_LABELS_V112[gamepadButtons.interact]} pour revenir. Les boutons suivent vos réglages Saut et Interagir.</p>
     {feedback&&<p role="status" className={styles.feedback}>{feedback}</p>}
     {ledger.specimens.length===0?<p>Aucune prise anatomique rapportée. Prélevez une partie compatible sur une proie vaincue, puis réussissez l’extraction pour la déposer ici.</p>:
       <div className={styles.grid}>{ledger.specimens.map(item=>{

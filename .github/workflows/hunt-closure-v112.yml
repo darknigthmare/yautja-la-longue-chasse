@@ -77,6 +77,8 @@ jobs:
           tests/hunt-field-load-v112.test.mjs
           tests/hunt-field-stash-runtime-v112.test.mjs
           tests/hunt-mechanics-workbook-v112.test.mjs
+          tests/hunt-catalogue-contract-v112.test.mjs
+          tests/hunt-field-guide-v112.test.mjs
       - name: Independent workbook and generated resource checks
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: |

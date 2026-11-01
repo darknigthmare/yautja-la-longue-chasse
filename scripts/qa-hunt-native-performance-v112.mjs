@@ -87,8 +87,9 @@ function scenario(missionId,kind,pass){
   assert.ok(initialEnemies>0,"real start wave required: "+missionId);
   // Survival fixture only: retain native world, physics, AI and damage paths
   // while preventing a dead player from turning later measurements into no-ops.
-  state.player.health=state.player.maxHealth=1e9;
-  state.player.invulnerability=1e9;
+  // Keep native health within the rites' validated numeric domain (<1e8).
+  // Invulnerability alone keeps this fixed-duration CPU scene alive.
+  state.player.invulnerability=1e6;
   if(kind==="authored-waves-with-corpses"){
     // Stress schedule: all actual mission waves are made available at t=0.
     // No additional enemy definition, geometry or fake corpse is introduced.
@@ -201,7 +202,7 @@ const report={schemaVersion:1,generatedAt:new Date().toISOString(),qualification
     cpuModel:cpu[0]?.model??"unknown",logicalCpus:cpu.length,totalMemoryBytes:totalmem()},
   configuration,limits,scope:{
     measured:"Native CPU stepGame and separately 10 Hz HUD snapshot. Eight actual mission worlds, both original and stress-scheduled authored enemies.",
-    survivalFixture:"Player health/maxHealth/invulnerability set to 1e9; simulation, geometry, AI, collision and native damage/death stay enabled.",
+    survivalFixture:"Native health/maxHealth retained; player invulnerability set to 1e6 seconds. Simulation, geometry, AI, collision and enemy damage/death stay enabled.",
     input:"Deterministic normalized keyboard InputHub commands; no physical input device, DOM, renderer, asset loading or audio.",
     stressSchedule:"All-waves scenario moves existing mission wave activation to t=0, kills up to three real actors through damageEnemy, retains other native enemies.",
     memory:"Before/after process heap samples are informational, not a leak qualification.",
