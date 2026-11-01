@@ -18,8 +18,12 @@ Les six fiches sont explicitement `reference-only` avec `encounterId: null`. Ell
 
 ## Raccordement Yautja ajouté depuis les mises à jour d'Alien Base
 
-Le registre canonique central a évolué à **580 fiches et 1 546 correspondances**, puis a été réconcilié avec le catalogue initial de la branche `main`. La PR dépendante #8 intègre désormais le roster réel de `HUNTER_PRESETS` : **53 fiches** documentaires, dont **6 identités** et **5 modèles d'équipement** vérifiés comme correspondants au niveau de leur nom et de leur oeuvre.
+Le registre canonique central a évolué à **652 fiches et 1 669 correspondances**, puis a été réconcilié avec le catalogue initial de la branche `main`. La PR dépendante #8 intègre désormais le roster réel de `HUNTER_PRESETS` : **53 fiches** documentaires, dont **15 identités** et **5 modèles d'équipement** vérifiés comme correspondants au niveau de leur nom et de leur oeuvre.
 
-Le fichier `alienBaseYautjaBindingsV1.ts` expose les six liens documentaires et cinq objets de l'arsenal commun, sans créer d'alias pour les 47 autres chasseurs ni pour les quatre termes d'équipement ambigus. `CatalogueHunterBrowser` indique cette correspondance lorsque le preset effectivement associé existe. Les entrées de catalogue sans preset ne reçoivent **aucun lien deviné**.
+Le fichier `alienBaseYautjaBindingsV1.ts` expose les quinze liens documentaires et cinq objets de l'arsenal commun, sans créer d'alias pour les 38 autres chasseurs ni pour les quatre termes d'équipement ambigus. `CatalogueHunterBrowser` indique cette correspondance lorsque le preset effectivement associé existe. Les entrées de catalogue sans preset ne reçoivent **aucun lien deviné**.
 
 **Aucun** changement d'ID de sauvegarde, de sélection de personnage, de profil de combat, d'atlas ou de condition d'accès. Les liens servent à retrouver des sources et à éviter de refaire les fiches de référence dans d'autres jeux, pas à certifier un modèle 1:1.
+
+## Rapprochement des chasseurs des films avec Apex Hunt
+
+Neuf personnages supplémentaires de La Longue Chasse sont reliés aux entrées du registre consolidé #21 : **Scar, Celtic, Chopper** (*Alien vs. Predator*, 2004), **Berserker, Falconer, Tracker** (*Predators*, 2010), **Fugitive** (*The Predator*, 2018), **Dek et Kwei** (*Predator: Badlands*, 2025). La validation porte sur leur nom et leur œuvre, pas sur leur sprite, leurs accessoires ou leurs paramètres de combat. Le reste (38 chasseurs, quatre objets ambigus) reste volontairement indépendant, notamment Greyback et les appellations de *Killer of Killers* qui demandent une preuve d'identité plus précise.
