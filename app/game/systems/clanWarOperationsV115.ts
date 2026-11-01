@@ -1019,6 +1019,41 @@ export function settleWarOuterOpsV115(state:WarOperationsStateV115, now:number,r
   }
   return accept(next,due.length+" opération(s) déléguée(s) résolue(s), chacune avec un reçu unique.");
 }
+/**
+ * V151 — one write for all completed exercise deadlines.
+ * Each category uses its existing V6 rules and source receipts. Fail the
+ * entire candidate state if a due order is inconsistent: never persist half
+ * a reconciliation, heal an imaginary participant or double-charge RAV.
+ *
+ * The caller owns the Web Lock and persists the returned state once.
+ * This is a local exercise transaction, not a campaign V85 or server event.
+ */
+export function settleWarDueEventsV151(
+  state:WarOperationsStateV115,now:number,rules:WarRulesV6,
+):WarOperationsUpdateV115 {
+  if(!Number.isSafeInteger(now)||now<0||state.sourceSha!==rules.metadata.sha256)
+    return reject(state,"Échéance groupée invalide ou source V6 incompatible.");
+  let next=state;
+  const events:string[]=[];
+  if(next.outer.some(order=>now>=order.dueAt)){
+    const result=settleWarOuterOpsV115(next,now,rules);
+    if(!result.accepted)return reject(state,"Outer Ops non résolu : "+result.message);
+    next=result.state;events.push(result.message);
+  }
+  if((next.pendingRecruits??[]).some(order=>now>=order.dueAt)){
+    const result=settleWarRecruitmentsV115(next,now,rules);
+    if(!result.accepted)return reject(state,"Renforts non résolus : "+result.message);
+    next=result.state;events.push(result.message);
+  }
+  if((next.pendingTreatments??[]).some(order=>now>=order.dueAt)){
+    const result=settleWarTreatmentsV116(next,now,rules);
+    if(!result.accepted)return reject(state,"Soins non résolus : "+result.message);
+    next=result.state;events.push(result.message);
+  }
+  if(!events.length)return reject(state,"Aucun mandat, recrutement ou soin arrivé à échéance.");
+  return accept(next,"Rapprochement V151, une archive : "+events.join(" · "));
+}
+
 export function warOuterSecondsRemainingV115(order:WarOuterMissionV115,now:number):number {
   return Math.max(0,Math.ceil((order.dueAt-now)/1000));
 }
