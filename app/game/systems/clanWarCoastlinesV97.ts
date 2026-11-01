@@ -79,7 +79,7 @@ function macroPartitions(columns: number, rows: number, seed: number): Rect[] {
   return rects;
 }
 
-function grid(input: CoastInputV97) {
+function grid(input: Pick<CoastInputV97, "layout" | "columns" | "regions">) {
   const localColumns = input.columns, localRows = 6 / localColumns;
   const regionColumns = input.layout === "meridians" ? 6 : input.layout === "basins" ? 3 : input.layout === "plates" ? 2 : 1;
   const columns = regionColumns * localColumns, rows = 36 / columns;
@@ -145,6 +145,23 @@ function boundaryNodes(rect: Rect, step = 1): WarAtlasPointV95[] {
 function distance(a: WarAtlasPointV95, b: WarAtlasPointV95) {
   const h = Math.sin((a[1] - b[1]) * RAD / 2) ** 2 + Math.cos(a[1] * RAD) * Math.cos(b[1] * RAD) * Math.sin((a[0] - b[0]) * RAD / 2) ** 2;
   return 2 * Math.asin(Math.sqrt(Math.min(1, h))) / RAD;
+}
+
+/** V156 level design: pairs of territories that share a visible land border on
+ * the drawn atlas (same continent, orthogonally adjacent grid cells). The
+ * continent partition depends only on layout, columns and seed, so these
+ * borders are known before routes are fixed and never move a coastline. */
+export function coastLandBordersV97(input: Pick<CoastInputV97, "seed" | "layout" | "columns" | "regions">): [string, string][] {
+  const { columns, rows, cells } = grid(input);
+  const partitions = macroPartitions(columns, rows, input.seed);
+  const landOf = (cell: Cell) => partitions.findIndex(rect => cell.x >= rect.x && cell.x < rect.x + rect.width && cell.y >= rect.y && cell.y < rect.y + rect.height);
+  const byPosition = new Map(cells.map(cell => [`${cell.x},${cell.y}`, cell]));
+  const borders: [string, string][] = [];
+  for (const cell of cells) for (const [dx, dy] of [[1, 0], [0, 1]]) {
+    const other = byPosition.get(`${cell.x + dx},${cell.y + dy}`);
+    if (other && landOf(cell) === landOf(other)) borders.push(cell.id < other.id ? [cell.id, other.id] : [other.id, cell.id]);
+  }
+  return borders;
 }
 
 export function coastGeographyV97(input: CoastInputV97): { regions: WarAtlasRegionV95[]; territories: WarAtlasTerritoryV95[]; landmasses: WarLandmassV97[] } {

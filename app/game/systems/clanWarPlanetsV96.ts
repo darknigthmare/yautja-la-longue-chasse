@@ -1,6 +1,6 @@
 import type { WarAtlasPointV95, WarAtlasRegionV95, WarAtlasTerritoryV95 } from "./clanWarAtlasV95";
 import { WAR_TERRITORIES_V85, type WarTerritoryDefinitionV85 } from "./clanWarV85Data";
-import { coastGeographyV97, type WarLandmassV97 } from "./clanWarCoastlinesV97";
+import { coastGeographyV97, coastLandBordersV97, type WarLandmassV97 } from "./clanWarCoastlinesV97";
 import type { WarPlanetProceduralV102 } from "./clanWarPlanetGeneratorV102";
 import type { WarPlanetProceduralV103 } from "./clanWarPlanetGeneratorV103";
 import type { WarPlanetProceduralV115 } from "./clanWarPlanetGeneratorV115";
@@ -39,6 +39,8 @@ interface PlanetDesign {
   id: string; name: string; subtitle: string; description: string;
   surface: WarPlanetSurfaceV96; layout: Layout; columns: number;
   regionNames: string[]; terrain: string[];
+  /** Authored sea crossings (territory numbers) added on top of land borders. */
+  straits?: [number, number][];
 }
 const surface = (kind: WarPlanetSurfaceKindV96, name: string, base: string, deep: string, accent: string, detail: string): WarPlanetSurfaceV96 => ({ kind, name, base, deep, accent, detail });
 const designs: PlanetDesign[] = [
@@ -69,7 +71,7 @@ const designs: PlanetDesign[] = [
   { id: "dunara", name: "Dunara", subtitle: "Dorsales rouges dans les dunes bleues", description: "Des dorsales de grès rouge coupent des mers de dunes bleues. Les couloirs de sable sont courts et chaque terre conserve plusieurs accès.", surface: surface("sand", "Dunes bleues", "#4c7095", "#2b405a", "#87b5d2", "#d1e5ee"), layout: "meridians", columns: 1, regionNames: ["Dorsale des Grès Rouges", "Crêtes du Sable Bleu", "Éperons des Mirages Froids", "Arêtes des Ombres Longues", "Tables du Couchant", "Caps des Dunes Lentes"], terrain: ["grès rouge", "pierre ferrugineuse", "mesa carmin", "quartz enfoui", "ravins secs", "dalles rouillées"] },
   { id: "ignara", name: "Ignara", subtitle: "Bassins de lave violette", description: "Des masses basaltiques compactes sont séparées par de courts bras de lave violette. Des péninsules se répondent et concentrent les fronts de conquête.", surface: surface("lava", "Lave violette", "#673f91", "#281e43", "#b785ed", "#edd1ff"), layout: "basins", columns: 3, regionNames: ["Bassins du Feu Pourpre", "Caps des Cendres Claires", "Massif des Scories Noires", "Terres des Fournaises Violettes", "Arches du Basalte", "Plateaux des Braises"], terrain: ["basalte veiné", "scories violettes", "cendres froides", "obsidienne fendue", "cratères éteints", "lave solidifiée"] },
   { id: "rosalith", name: "Rosalith", subtitle: "Plaques sombres et saumures corail", description: "Six plaques sombres s'imbriquent autour de saumures corail. Les chenaux resserrés multiplient les rencontres entre régions voisines.", surface: surface("brine", "Saumures corail", "#b2706c", "#613c4b", "#f0b095", "#ffe0ca"), layout: "plates", columns: 2, regionNames: ["Plaques des Marais Salins", "Terrasses du Corail Rouge", "Crêtes des Dépôts Roses", "Arches des Vasques Claires", "Terres des Sauniers Noirs", "Marches des Salines Hautes"], terrain: ["schiste sombre", "croûte corail", "sel rouge", "granit brun", "dalles salines", "quartz rose"] },
-  { id: "viridia", name: "Viridia", subtitle: "Anneaux sous la lueur radioactive", description: "Des anneaux de terres vert sombre entourent des nappes radioactives jaune électrique. Les bandes rapprochées offrent de nombreux passages courts.", surface: surface("radioactive", "Nappes jaune électrique", "#8c942b", "#313f30", "#e0ff3d", "#f7ffb6"), layout: "belts", columns: 6, regionNames: ["Anneau des Lumières Jaunes", "Ceinture des Sondes Longues", "Ruban des Écrans Noirs", "Terres des Dalles Vertes", "Marches des Capteurs", "Dorsale des Blindages"], terrain: ["roche plombifère", "schiste vert", "quartz fluorescent", "cuirasse minérale", "dalles blindées", "basalte jaune"] },
+  { id: "viridia", name: "Viridia", subtitle: "Anneaux sous la lueur radioactive", description: "Des anneaux de terres vert sombre entourent des nappes radioactives jaune électrique. Les bandes rapprochées offrent de nombreux passages courts.", surface: surface("radioactive", "Nappes jaune électrique", "#8c942b", "#313f30", "#e0ff3d", "#f7ffb6"), layout: "belts", columns: 6, regionNames: ["Anneau des Lumières Jaunes", "Ceinture des Sondes Longues", "Ruban des Écrans Noirs", "Terres des Dalles Vertes", "Marches des Capteurs", "Dorsale des Blindages"], terrain: ["roche plombifère", "schiste vert", "quartz fluorescent", "cuirasse minérale", "dalles blindées", "basalte jaune"] , straits: [[10, 17], [28, 23]] },
   { id: "iolexia", name: "Iolexia", subtitle: "Dorsales au-dessus des prismes azur", description: "Des dorsales sinueuses traversent une étendue de prismes bleu clair. Les continents voisins s'emboîtent sans laisser un hémisphère désert.", surface: surface("crystal", "Prismes bleu clair", "#5186b2", "#263d67", "#9edcf3", "#e7fbff"), layout: "meridians", columns: 2, regionNames: ["Dorsale des Prismes Bleus", "Arêtes des Facettes Claires", "Crêtes du Spectre Froid", "Terres des Géodes Azur", "Éperons des Reflets", "Marches du Cristal Mat"], terrain: ["quartz azur", "cristaux mats", "granit bleu", "prismes usés", "roche nacrée", "schiste irisé"] },
   { id: "nyctera", name: "Nyctéra", subtitle: "Bassins nocturnes aux spores violettes", description: "Des terres nocturnes s'emboîtent autour de nappes de spores violettes. Les goulets resserrés et les côtes imbriquées donnent des fronts proches sur toute la planète.", surface: surface("spores", "Spores violettes", "#68517f", "#24243e", "#b39ed6", "#e3d9ff"), layout: "basins", columns: 2, regionNames: ["Bassins des Lanternes Violettes", "Caps des Corolles Noires", "Terres des Racines Lentes", "Canopée du Crépuscule", "Plateaux des Hyphes Clairs", "Rives des Lucioles Bleues"], terrain: ["racines noires", "humus violet", "roche moussue", "mycélium ferme", "écorce fossile", "terrasses fongiques"] },
 ];
@@ -97,7 +99,9 @@ const classicProfiles: Record<string, ClassicProfile> = {
   boralis: { landBiome: "snow", subtitle: "Continents enneigés et banquise blanche", description: "Des continents enneigés et des forêts boréales s'étendent entre des banquises blanches. Les six régions couvrent les deux hémisphères et se font face à courte distance.", surface: surface("ice", "Banquise blanche", "#92adb8", "#52718a", "#cbdfe1", "#f7fbf8"), regionNames: ["Ceinture des Aurores", "Ruban des Refuges Blancs", "Terres des Séracs", "Marches du Vent Froid", "Dorsale des Neiges", "Rives des Fjords Noirs"], terrain: ["quartz givré", "forêt boréale", "moraine blanche", "roche polie", "toundra gelée", "terrasses enneigées"] },
   dunara: { landBiome: "desert", subtitle: "Dorsales rouges et dunes dorées", description: "Des dorsales de grès rouge et des mesas coupent des mers de dunes dorées. Les couloirs de sable sont courts et chaque terre conserve plusieurs accès.", surface: surface("sand", "Dunes dorées", "#ad8550", "#68503a", "#d6b47a", "#f4dfa8"), regionNames: ["Dorsale des Grès Rouges", "Crêtes du Sable Doré", "Éperons des Mirages", "Arêtes des Ombres Longues", "Tables du Couchant", "Caps des Dunes Lentes"] },
 };
-const exoticBiomes: Record<WarPlanetSurfaceKindV96, WarPlanetLandBiomeV96> = { water: "ocean", acid: "swamp", ice: "snow", sand: "desert", lava: "volcanic", brine: "salt", radioactive: "irradiated", crystal: "crystal", spores: "fungal", mist: "mountain" };
+// V156: acid worlds (Vitriol, Vénéfra) are authored as vitrified basalt and
+// sulphur ridges, not wetlands; "swamp" gave them marsh text and climate.
+const exoticBiomes: Record<WarPlanetSurfaceKindV96, WarPlanetLandBiomeV96> = { water: "ocean", acid: "volcanic", ice: "snow", sand: "desert", lava: "volcanic", brine: "salt", radioactive: "irradiated", crystal: "crystal", spores: "fungal", mist: "mountain" };
 const coastalBiomeDescriptions: Record<WarPlanetLandBiomeV96, string> = {
   temperate: "Des forêts tempérées et des crêtes rocheuses occupent les péninsules et les terres intérieures.",
   jungle: "La jungle dense, les mangroves et les falaises littorales bordent des golfes profonds.",
@@ -112,6 +116,12 @@ const coastalBiomeDescriptions: Record<WarPlanetLandBiomeV96, string> = {
   crystal: "Des crêtes cristallines et des géodes jalonnent les péninsules et les côtes aux reflets changeants.",
   fungal: "Les forêts fongiques et les racines minéralisées couvrent des terres aux baies profondes.",
   irradiated: "Des crêtes minérales et des roches irradiées dominent les caps et les bassins lumineux.",
+};
+
+// Exotic surfaces whose land text must name the surface rather than the
+// generic biome line (an acid world is not described as lava basins).
+const exoticSurfaceDescriptions: Partial<Record<WarPlanetSurfaceKindV96, string>> = {
+  acid: "Le basalte vitrifié et les crêtes soufrées forment des plateaux rongés autour des bassins corrosifs.",
 };
 
 const radians = Math.PI / 180;
@@ -243,6 +253,19 @@ function buildPlanet(input: PlanetDesign, index: number): WarPlanetV96 {
   const original = geography(design, seed);
   const routes = localRoutes(original.territories, seed);
   const { regions } = original;
+  // V156: the V96 routes were computed on the pre-V97 meshes, so the drawn
+  // atlas showed land borders with no road (dead ends and single-file belts).
+  // Every visible land border is now also a road. Routes are only added, never
+  // removed: saved orders and the Korthas workbook graph stay valid.
+  if (design.id !== "korthas") for (const [a, b] of coastLandBordersV97({ seed, layout: design.layout, columns: design.columns, regions })) {
+    routes.get(a)!.add(b); routes.get(b)!.add(a);
+  }
+  // Authored crossings give worlds that share a continent split their own
+  // topology (Viridia's diagonal passages across its divide vs Sporion).
+  for (const [first, second] of design.straits ?? []) {
+    const a = territoryId(first - 1), b = territoryId(second - 1);
+    routes.get(a)!.add(b); routes.get(b)!.add(a);
+  }
   const definitions = WAR_TERRITORIES_V85.map((source, territoryIndex) => {
     if (design.id === "korthas") return { ...source, neighbors: [...source.neighbors], income: { ...source.income } };
     const regionIndex = Math.floor(territoryIndex / 6), localIndex = territoryIndex % 6;
@@ -258,7 +281,8 @@ function buildPlanet(input: PlanetDesign, index: number): WarPlanetV96 {
   });
   const coast = coastGeographyV97({ id: design.id, seed, layout: design.layout, columns: design.columns, regions, definitions });
   const landBiome = classic?.landBiome ?? exoticBiomes[design.surface.kind];
-  const description = `${coastalBiomeDescriptions[landBiome]} ${design.surface.name} : la surface entre les terres reste non jouable. ${coast.landmasses.length} continents accueillent six régions administratives ; les routes affichées relient leurs détroits.`;
+  const landText = (!classic && exoticSurfaceDescriptions[design.surface.kind]) || coastalBiomeDescriptions[landBiome];
+  const description = `${landText} ${design.surface.name} : la surface entre les terres reste non jouable. ${coast.landmasses.length} continents accueillent six régions administratives ; les routes affichées relient leurs détroits.`;
   return { id: design.id, name: design.name, subtitle: `${coast.landmasses.length} continents · ${design.surface.name}`, description, seed, style: classic ? "classic" : "exotic", landBiome, surface: { ...design.surface }, layout: `${design.layout}-${design.columns}×${6 / design.columns}`, landFraction: warPlanetLandFractionV96(coast.territories), ...coast, definitions };
 }
 
