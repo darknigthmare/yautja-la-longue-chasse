@@ -49,8 +49,8 @@ test("V139: all seven V137 translated concept biomasks have real owner offset",(
    assert.equal(frame.height,384);
    assert.ok(frame.x>0,"V137 uses a translated owner sprite "+mask.id);
    const translated=project(frame,"biomask");
-   assert.equal(translated.ownerPx.x,frame.x);
-   assert.equal(translated.ownerPx.y,frame.y);
+   assert.ok(abs(translated.ownerPx.x-frame.x)<1e-7,"V137 owner x offset must be preserved");
+   assert.ok(abs(translated.ownerPx.y-frame.y)<1e-7,"V137 owner y offset must be preserved");
    assert.notEqual(translated.p.owner.left,"0%");
    assert.notEqual(translated.p.decal.left,String(DECAL_ANCHORS_V133.biomask.x/256*100)+"%");
  }
