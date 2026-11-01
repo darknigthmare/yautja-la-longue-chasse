@@ -18,7 +18,7 @@ import { phgMaterialReferenceV130 } from "./phgReferenceCatalogV130";
 import { DECAL_FIELDS_V133,DECAL_ZONES_V133,DECAL_ATLAS_PATH_V133,
   Y_A_U_T_J_A_DECALS_V133,PHG_WARPAINT_EVIDENCE_V133 } from "./yautjaDecalsV133.ts";
 import { PHG_BIOMASK_V132_CANDIDATES, maskClassForAppearanceV132, maskMaterialAllowedV132 } from "./phgBiomaskStudiesV132";
-import { PHG_BIOMASK_REFERENCES_V131, PHG_OGRE_BIOMASK_ID_V131,
+import { PHG_OGRE_BIOMASK_ID_V131,
   PHG_OGRE_BIOMASK_SOURCE_V131, alphaMaskEligibleV131 } from "./phgBiomaskTintsV131";
 import styles from "./HunterChromaticForgeV113.module.css";
 
@@ -230,7 +230,7 @@ export default function HunterChromaticForgeV113({
           Les sept finitions nommées de V132 sont des reconstructions originales :
           aucune couleur officielle ni carte UV n’est certifiée.</small>
         <small>Requiem et Nova sont aussi des <strong>teintes d’armure PHG distinctes</strong> :
-          leurs textures d'armure ne sont pas encore certifiées ni installées dans ce canal.
+          leurs textures d’armure ne sont pas encore certifiées ni installées dans ce canal.
           Les six Warpaints PHG sont également des cosmétiques séparés des motifs originaux du clan.</small>
       </fieldset>}
     </div>
