@@ -4274,7 +4274,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                   })}
                 </ArmorySection>
                 <ConservationPanelV112 inventory={save.inventory} clanMarks={save.profile.clanMarks}
-              gamepadButtons={conservationPadButtonsV112}
+              gamepadButtons={conservationPadButtonsV112} onClose={menuBack}
                   disabled={settingsOpen||archiveTransferBusy||!!archiveRecoveryIssue||campaignSaveBusy} onAction={performConservationActionV112}/>
                 <p>Emport de l’armure : {capacityForArmorV112(save.loadout.armorId).massKg} kg / {capacityForArmorV112(save.loadout.armorId).volumeUnits} volumes. Au maximum : déplacement −32 %, saut −16 %, effort d’escalade +60 %, bruit +80 %. Une partie trop lourde reste sur la proie.</p>
                 <ArmorySection title="Armes de chasse">
@@ -4885,7 +4885,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
               <PitHonorsPanel owner={save.createdAt} onOpenPit={openPit} />
             </Suspense>
             <ConservationPanelV112 inventory={save.inventory} clanMarks={save.profile.clanMarks}
-              gamepadButtons={conservationPadButtonsV112}
+              gamepadButtons={conservationPadButtonsV112} onClose={menuBack}
               disabled={settingsOpen||archiveTransferBusy||!!archiveRecoveryIssue||campaignSaveBusy} onAction={performConservationActionV112}/>
             <div className="trophy-grid">
               <details className="franchise-trophy-archive">

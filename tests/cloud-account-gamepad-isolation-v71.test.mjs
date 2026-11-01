@@ -14,6 +14,8 @@ function run(inert) {
     window: { requestAnimationFrame: () => 1 }, document: { hidden: false, hasFocus: () => true, activeElement: null },
     navigator: { getGamepads: () => [{ connected: true, index: 0, id: "QA pad", axes: [0, 0], buttons: [ { pressed: false }, { pressed: true } ] }] },
     frameId: 0, tick: () => {}, padIdentity: "0:QA pad", state: { armed: true },
+    // The hook's unchanged defaults captured by the extracted tick closure.
+    confirmButton: 0, backButton: 1,
     freshMenuPadState: () => { resets++; return { armed: false }; },
     menuPadStep: () => ({ state: { armed: true }, direction: null, confirm: false, back: true }),
     rootRef: { current: { closest: () => inert ? {} : null, querySelectorAll: () => [] } },

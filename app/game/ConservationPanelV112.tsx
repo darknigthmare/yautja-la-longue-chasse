@@ -14,6 +14,7 @@ export interface ConservationPanelV112Props {
   clanMarks: number;
   disabled?: boolean;
   gamepadButtons?: HuntGamepadButtonsV112;
+  onClose?():void;
   onAction(action:ConservationPanelActionV112,id:string):{ok:boolean;message:string};
 }
 const LEGACY_PREY_LABELS_V112:Readonly<Record<string,string>>=Object.freeze({
@@ -31,7 +32,7 @@ function SpecimenGlyphV112({item}:{item:FieldSpecimenV112}) {
     {item.stage==="mounted"&&<path d="M8 3h40v50H8Z" fill="none" stroke="currentColor"/>}
   </svg>;
 }
-export default function ConservationPanelV112({inventory,clanMarks,disabled=false,onAction,gamepadButtons=DEFAULT_HUNT_GAMEPAD_V112}:ConservationPanelV112Props) {
+export default function ConservationPanelV112({inventory,clanMarks,disabled=false,onAction,gamepadButtons=DEFAULT_HUNT_GAMEPAD_V112,onClose}:ConservationPanelV112Props) {
   const [feedback,setFeedback]=useState("");
   const ledger=harvestInventoryForV112(inventory),owned=inventory.fieldToolIds.includes("flaying-tool");
   const act=(action:ConservationPanelActionV112,id:string)=> {
@@ -50,6 +51,7 @@ export default function ConservationPanelV112({inventory,clanMarks,disabled=fals
         onClick={()=>act("repair","flaying-tool")}>Affûter gratuitement</button></div>
     <p className={styles.legend}>Étapes : Nettoyer · 2 marques / 3 gestes → Traiter · 4 / 4 → Sécher · 3 / 5 → Monter · 5 / 3. Le coût est payé une seule fois à l’engagement de chaque étape. Jusqu’à 16 opérations en parallèle. Suspendre libère un poste en conservant la prise, les marques déjà payées et les gestes enregistrés ; reprendre ne coûte rien.</p>
     <p className={styles.legend}>Commandes : Tab puis Entrée au clavier. À la manette, directions pour choisir, {HUNT_GAMEPAD_LABELS_V112[gamepadButtons.jump]} pour confirmer et {HUNT_GAMEPAD_LABELS_V112[gamepadButtons.interact]} pour revenir. Les boutons suivent vos réglages Saut et Interagir.</p>
+    {onClose&&<button type="button" className="ghost-button" disabled={disabled} onClick={onClose}>Quitter l’atelier</button>}
     {feedback&&<p role="status" className={styles.feedback}>{feedback}</p>}
     {ledger.specimens.length===0?<p>Aucune prise anatomique rapportée. Prélevez une partie compatible sur une proie vaincue, puis réussissez l’extraction pour la déposer ici.</p>:
       <div className={styles.grid}>{ledger.specimens.map(item=>{
@@ -57,7 +59,7 @@ export default function ConservationPanelV112({inventory,clanMarks,disabled=fals
         const next=CONSERVATION_STEPS_V112.find(s=>s.from===item.stage);
         return <article className={styles.card} key={item.id} aria-label={item.label}>
           <SpecimenGlyphV112 item={item}/>
-          <div><h3>{item.label}</h3><p>{speciesLabelV112(item.speciesId)} · intégrité {item.quality}/100</p>
+          <div><h3>{item.label}</h3><p>{speciesLabelV112(item.speciesId)} · qualité {item.quality}/100</p>
             <p>{item.massKg.toFixed(1)} kg · {item.volumeUnits.toFixed(1)} volumes · <strong>{SPECIMEN_STAGE_LABELS_V112[item.stage]}</strong></p>
             </div>
           {job?<div className={styles.work}>
@@ -75,6 +77,6 @@ export default function ConservationPanelV112({inventory,clanMarks,disabled=fals
             <p className={styles.mounted}>Prise montée et exposée dans cet atelier. La collection de trophées et les rangs restent distincts.<br/><button type="button" className="button" disabled={disabled} onClick={()=>act("archive",item.id)}>Ranger en réserve · {item.label}</button><small>Libère un emplacement. La prise reste possédée dans la réserve comptée ci-dessous.</small></p>}
         </article>;
       })}</div>}
-    {ledger.archive.length>0&&<div className={styles.reserve}><h3>Réserve permanente</h3><ul>{ledger.archive.map(a=><li key={a.speciesId+":"+a.partId}>{a.count} × {a.label} · {speciesLabelV112(a.speciesId)} · intégrité moyenne {Math.round(a.qualityTotal/a.count)}/100</li>)}</ul></div>}
+    {ledger.archive.length>0&&<div className={styles.reserve}><h3>Réserve permanente</h3><ul>{ledger.archive.map(a=><li key={a.speciesId+":"+a.partId}>{a.count} × {a.label} · {speciesLabelV112(a.speciesId)} · qualité moyenne {Math.round(a.qualityTotal/a.count)}/100</li>)}</ul></div>}
   </section>;
 }

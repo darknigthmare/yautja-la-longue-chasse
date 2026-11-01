@@ -55,7 +55,7 @@ test("keyboard and controller remaps reach both immediate objective cues and the
 test("nearby-body help exposes pointer and keyboard access separately from direct trophy collection",()=>{
   const text=cue(render({corpseNearby:true}));
   assert.match(text,/Examiner la proie vaincue/);assert.match(text,/clavier ou au toucher/);
-  assert.match(text,/Bas \+ B \/ Rond/);assert.match(text,/Interagir seul/);
+  assert.match(text,/Bas \+ B \/ Cercle/);assert.match(text,/Interagir seul/);
 });
 test("actual missing tool, worn tool, and both capacity dimensions are visible before a body gesture",()=>{
   const load={massKg:24,volumeUnits:8,capacityMassKg:24,capacityVolumeUnits:18};

@@ -100,7 +100,8 @@ try{
   await page.mouse.move(box.x+box.width/2,box.y+box.height/2);await page.mouse.down();
   await page.waitForFunction(x=>window.__huntLifecycleV112.state().player.x>x+10,before.player.x);
   await page.mouse.up();await frame();assert.deepEqual((await state()).inputs.touch,[]);
-  await right.dispatchEvent('pointercancel',{pointerId:1});await frame();assert.deepEqual((await state()).inputs.touch,[]);
+  await page.mouse.down();await page.waitForFunction(()=>window.__huntLifecycleV112.state().inputs.touch.includes('right'));
+  await right.dispatchEvent('pointercancel',{pointerId:1,pointerType:'mouse'});await frame();assert.deepEqual((await state()).inputs.touch,[]);await page.mouse.up();
  });
  await scenario('mounted polling handles an emulated controller and native disconnection without stale held input',async()=>{
   await page.locator('canvas').first().focus();await frame();const before=await state();
@@ -112,7 +113,7 @@ try{
   await page.evaluate(()=>window.__huntLifecycleV112.reconnect());await page.getByRole('button',{name:'Reprendre',exact:true}).click();
   await page.waitForFunction(()=>!window.__huntLifecycleV112.state().paused);
  });
- await scenario('actual blur listener pauses, persists and clears keyboard state until explicit resume',async()=>{
+ await scenario('injected blur event reaches the actual listener, pauses, emits its checkpoint callback and clears keyboard state until explicit resume',async()=>{
   await page.locator('canvas').first().focus();await page.keyboard.down('ArrowRight');await frame();
   await page.evaluate(()=>window.dispatchEvent(new Event('blur')));await page.keyboard.up('ArrowRight');
   const before=await state();assert.equal(before.paused,true);assert.deepEqual(before.inputs.keyboard,[]);
@@ -140,6 +141,8 @@ try{
   await page.waitForFunction(()=>window.__huntLifecycleV112.state().harvested?.length===1);
   const done=await state();assert.equal(done.corpses.length,1);assert.equal(done.harvested.length,1);assert.equal(done.harvested[0].stage,'raw');
   assert.equal(done.events.filter(id=>id.startsWith('flay:')).length,1);assert.equal(done.events.filter(id=>id.startsWith('harvest-')).length,1);
+  await page.getByRole('button',{name:'Interrompre le geste',exact:true}).waitFor({state:'hidden'});
+  await page.locator('[data-rite-action-v112^="harvest-"]:disabled').first().waitFor({state:'visible'});
   await capture('mounted-harvest');
  });
  await scenario('native extraction segment boards through actual input and settles the harvested identity through the unmodified GameClient callback',async()=>{
@@ -185,34 +188,54 @@ try{
   const after=await page.evaluate(()=>window.__huntLifecycleV112.save());
   assert.deepEqual(after.inventory.harvestV112,before.inventory.harvestV112);assert.equal(after.profile.clanMarks,before.profile.clanMarks);
  });
+ await scenario('native workshop remains usable at 390 px and its exit button supports Tab and Enter',async()=>{
+  await page.setViewportSize({width:390,height:844});await frame();
+  const exit=page.getByRole('button',{name:/^Quitter l.atelier$/});await exit.scrollIntoViewIfNeeded();await exit.focus();
+  await page.keyboard.press('Tab');assert.notEqual(await page.evaluate(()=>document.activeElement?.textContent),'Quitter l’atelier');
+  await page.keyboard.press('Shift+Tab');assert.match(await page.evaluate(()=>document.activeElement?.textContent??''),/Quitter l.atelier/);
+  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth+1),true,'No horizontal overflow at 390 px');
+  const reserve=page.getByRole('button',{name:/^Ranger en réserve ·/});await reserve.scrollIntoViewIfNeeded();
+  const box=await reserve.boundingBox();assert.ok(box&&box.x>=0&&box.x+box.width<=391);
+  await capture('mapped-workshop-phone');await exit.focus();await page.keyboard.press('Enter');await frame();
+  assert.equal(await page.evaluate(()=>window.__huntLifecycleV112.menuBacks),1);
+  assert.equal(await exit.count(),0);
+  await page.evaluate(()=>window.__huntLifecycleV112.workshop());await page.setViewportSize({width:1120,height:900});await frame();
+ });
  await scenario('actual menu hook navigates and confirms with standard bindings, then uses saved workshop remaps',async()=>{
   await page.bringToFront();await frame();
+  const backBase=await page.evaluate(()=>window.__huntLifecycleV112.menuBacks??0);
   const repair=page.getByRole('button',{name:'Affûter gratuitement',exact:true});await repair.focus();
   const before=await page.evaluate(()=>window.__huntLifecycleV112.save().profile.clanMarks);
   await page.evaluate(()=>window.__huntLifecycleV112.menuPad(0,true));
   await page.waitForFunction(()=>window.__huntLifecycleV112.save().inventory.harvestV112.toolCondition===100);
   await page.evaluate(()=>window.__huntLifecycleV112.menuPad(0,false));await frame();
-  await page.evaluate(()=>window.__huntLifecycleV112.pad('down',true));await frame();
-  await page.evaluate(()=>window.__huntLifecycleV112.pad('down',false));await frame();
+  for(let i=0;i<12&&!/Ranger en réserve/.test(await page.evaluate(()=>document.activeElement?.textContent??''));i++){
+   await page.evaluate(()=>window.__huntLifecycleV112.pad('down',true));await frame();
+   await page.evaluate(()=>window.__huntLifecycleV112.pad('down',false));await frame();
+  }
   assert.match(await page.evaluate(()=>document.activeElement?.textContent??''),/Ranger en réserve/);
   const standardBack=await page.evaluate(()=>window.__huntLifecycleV112.save().settings.huntAccessibility.gamepadButtons.interact);
   await page.evaluate(index=>window.__huntLifecycleV112.menuPad(index,true),standardBack);
-  await page.waitForFunction(()=>window.__huntLifecycleV112.menuBacks===1);
+  await page.waitForFunction(expected=>window.__huntLifecycleV112.menuBacks===expected,backBase+1);
   await page.evaluate(index=>window.__huntLifecycleV112.menuPad(index,false),standardBack);await frame();
   await page.evaluate(()=>{window.__huntLifecycleV112.remapWorkshop();window.__huntLifecycleV112.workshop();});await frame();
   await page.getByRole('button',{name:/^Ranger en réserve ·/}).focus();
   await page.evaluate(()=>window.__huntLifecycleV112.menuPad(0,true));await frame();
   assert.equal(await page.evaluate(()=>window.__huntLifecycleV112.save().inventory.harvestV112.archive.length),0);
   await page.evaluate(()=>window.__huntLifecycleV112.menuPad(0,false));await frame();
+  await page.evaluate(()=>window.__huntLifecycleV112.disconnect());await frame();
+  await page.evaluate(()=>{window.__huntLifecycleV112.reconnect();window.__huntLifecycleV112.menuPad(2,true);});await frame();
+  assert.equal(await page.evaluate(()=>window.__huntLifecycleV112.save().inventory.harvestV112.archive.length),0,'Held confirm on reconnection needs a neutral frame');
+  await page.evaluate(()=>window.__huntLifecycleV112.menuPad(2,false));await frame();
   await page.evaluate(()=>window.__huntLifecycleV112.menuPad(2,true));
   await page.waitForFunction(()=>window.__huntLifecycleV112.save().inventory.harvestV112.archive.length===1);
   await page.evaluate(()=>window.__huntLifecycleV112.menuPad(2,false));await frame();
   assert.equal(await page.evaluate(()=>window.__huntLifecycleV112.save().profile.clanMarks),before);
   await page.evaluate(()=>window.__huntLifecycleV112.menuPad(3,true));
-  await page.waitForFunction(()=>window.__huntLifecycleV112.menuBacks===2);
+  await page.waitForFunction(expected=>window.__huntLifecycleV112.menuBacks===expected,backBase+2);
   await page.evaluate(()=>window.__huntLifecycleV112.menuPad(3,false));await frame();
  });
- const report={schemaVersion:1,release:'V112',runtimeCommit:process.env.GITHUB_SHA??'unrecorded-local',scope:'Mounted HuntCanvas and native rAF/window/pointer/pad lifecycle; real death, analysis, flay and anatomy; Apex/mission prerequisites seeded solely before actual shuttle segment; exact GameClient callbacks AST-extracted with fixture session admission, real browser save writer/load/reconciliation and mounted conservation panel with actual useMenuGamepad navigation with default and persisted workshop confirm/back remapping. Entire GameClient, complete campaign, real controller/phone and art remain unqualified.',results,errors,captures,fallbackRequests};
+ const report={schemaVersion:1,release:'V112',runtimeCommit:process.env.GITHUB_SHA??'unrecorded-local',scope:'Mounted HuntCanvas and native rAF/window/pointer/pad lifecycle, injected blur to its real listener, active pointer cancellation and held-confirm reconnect protection; real death, analysis, flay and anatomy; Apex/mission prerequisites seeded solely before actual shuttle segment; exact GameClient callbacks AST-extracted with fixture session admission, real browser save writer/load/reconciliation and mounted conservation panel with actual useMenuGamepad navigation with default and persisted workshop confirm/back remapping; 390 px native panel and keyboard exit. Hunt checkpoint payloads are captured in memory; campaign persistence uses actual browser storage. Entire GameClient, complete campaign, real controller/phone and art remain unqualified.',results,errors,captures,fallbackRequests};
  await fs.writeFile(path.join(out,'report.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report,null,2));
- assert.deepEqual(errors,[]);assert.equal(results.filter(row=>row.status!=='PASS').length,0);assert.equal(results.length,11);
+ assert.deepEqual(errors,[]);assert.equal(results.filter(row=>row.status!=='PASS').length,0);assert.equal(results.length,12);
 }finally{await browser?.close();server.closeAllConnections();await new Promise(resolve=>server.close(resolve));}

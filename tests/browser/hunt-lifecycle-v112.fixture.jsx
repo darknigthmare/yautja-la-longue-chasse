@@ -34,7 +34,8 @@ function Fixture(){
  const menuRoot=useRef(null);
  const saveRef=useRef(save),[screen,setScreen]=useState(()=>save.inventory.harvestV112.specimens.length?'workshop':'hunt'),[generation,setGeneration]=useState(0),[status,setStatus]=useState(''),lastResult=useRef(null),sessionAliveRef=useRef(true);
  const callbacks=useRef(null),kindRef=useRef('rites'),resumeRef=useRef(null);
- useMenuGamepad(menuRoot,screen==='workshop','lifecycle:'+screen,()=>{audit.menuBacks=(audit.menuBacks??0)+1;setScreen('menu');},{confirmButton:save.settings.huntAccessibility.gamepadButtons.jump,backButton:save.settings.huntAccessibility.gamepadButtons.interact});
+ const closeWorkshop=()=>{audit.menuBacks=(audit.menuBacks??0)+1;setScreen('menu');};
+ useMenuGamepad(menuRoot,screen==='workshop','lifecycle:'+screen,closeWorkshop,{confirmButton:save.settings.huntAccessibility.gamepadButtons.jump,backButton:save.settings.huntAccessibility.gamepadButtons.interact});
  const recordSave=value=>{saveRef.current=value;setSave(value);};
  if(!callbacks.current)callbacks.current=makeGameClientCallbacksV112({
   saveRef,sessionAliveRef,setSave:recordSave,setScreen:value=>setScreen(value==='debrief'?'workshop':value),setToast:value=>{audit.toasts.push(value);setStatus(value);},
@@ -87,7 +88,7 @@ function Fixture(){
  const persist=payload=>{audit.persisted.push(payload);};
  return <main ref={menuRoot}><header><h1>Chasse V112 : cycle natif et persistance</h1><p>Insertion de contrôle, carcasse créée par dégâts réels, images de repli. Les prérequis Apex sont amorcés avant le seul segment d’extraction ; aucune campagne complète ni appareil physique qualifié.</p></header>
  {screen==='hunt'&&<HuntCanvas key={generation} mission={mission} encounterRun={0} loadout={save.loadout} inventory={save.inventory} appearance={save.appearance} difficulty={save.settings.difficultyId} controlBindings={save.settings.controlBindings} huntAccessibility={save.settings.huntAccessibility} reducedGore={true} screenShake={false} highContrastVision={false} explorationProgress={save.exploration} onFinish={finish} onAbort={finish} onPersistHunt={persist} onSuspendHunt={persist}/>}
- {screen==='workshop'&&<ConservationPanelV112 gamepadButtons={save.settings.huntAccessibility.gamepadButtons} inventory={save.inventory} clanMarks={save.profile.clanMarks} onAction={(action,id)=>callbacks.current.performConservationActionV112(action,id)}/>}
+ {screen==='workshop'&&<ConservationPanelV112 onClose={closeWorkshop} gamepadButtons={save.settings.huntAccessibility.gamepadButtons} inventory={save.inventory} clanMarks={save.profile.clanMarks} onAction={(action,id)=>callbacks.current.performConservationActionV112(action,id)}/>}
  <p role="status" id="lifecycle-status">{status}</p></main>;
 }
 createRoot(document.getElementById('root')).render(<Fixture/>);

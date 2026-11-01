@@ -218,7 +218,7 @@ export function archiveMountedSpecimenV112(save:SaveGame,specimenId:string):Cons
   if(existing&&existing.count>=Math.floor(Number.MAX_SAFE_INTEGER/100))return {ok:false,save,message:"Comptage de réserve maximal ; la prise reste exposée."};
   const archive=existing?ledger.archive.map(a=>a===existing?{...a,count:a.count+1,qualityTotal:a.qualityTotal+item.quality}:a):
     [...ledger.archive,{speciesId:item.speciesId,partId:item.partId,label:item.label,count:1,qualityTotal:item.quality}];
-  return {ok:true,message:"Prise rangée dans la réserve permanente ; sa possession et son intégrité restent comptées.",
+  return {ok:true,message:"Prise rangée dans la réserve permanente ; sa possession et sa qualité restent comptées.",
     save:{...save,inventory:{...save.inventory,harvestV112:{...ledger,archive,
       specimens:ledger.specimens.filter(s=>s.id!==item.id),jobs:ledger.jobs.filter(j=>j.specimenId!==item.id)}}}};
 }
