@@ -13,6 +13,8 @@ const context = createHistoricalExcelContext({
   manifestPath: 'tests/fixtures/excel-history-v112-homeworld-v113.json',
   manifestSha256: EXCEL_HOMEWORLD_HISTORY_MANIFEST_SHA256_V113,
   archiveSha256: EXCEL_HOMEWORLD_HISTORY_ARCHIVE_SHA256_V113,
+  // The V112 follow-up verifies every proof as a regular local file.
+  hardLinkShared: true,
 });
 export const getHistoricalHomeworldExcelContextV113 = context.get;
 export const verifyHistoricalHomeworldExcelContextV113 = context.verify;
