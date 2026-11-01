@@ -5,8 +5,8 @@
     "bytes": 264999,
     "sha256": "8eee8a5f5a043f2a67477bc6bcff97fffb1ee1666864bd7aed60c7a6c21ca138"
   },
-  "files": 1608,
-  "bytes": 935775688,
+  "files": 1649,
+  "bytes": 936235908,
   "entries": [
     {
       "path": ".openai/hosting.json",
@@ -125,8 +125,8 @@
     },
     {
       "path": "app/game/ClanWarAtlasV95.tsx",
-      "bytes": 50034,
-      "sha256": "1fb4fd822262727d5dd5612dc8ab421e149374ea560385ea2a0ded604f0bbf03"
+      "bytes": 52861,
+      "sha256": "e5fdceeefc7e31ccb6740e4dcafdcd8be97bb3ebca3fd62c369ebf3ff64e7842"
     },
     {
       "path": "app/game/ClanWarBibleV6Panel.tsx",
@@ -1124,6 +1124,26 @@
       "sha256": "3ed8e30dc5f4572df40db0c1ffa1eb679e131abd5dbf6fc0cba5b8e3bbcfd1a5"
     },
     {
+      "path": "app/game/PlanetEarthReferenceV147.module.css",
+      "bytes": 2289,
+      "sha256": "5e963a31081a90f71dcdf6768633330d59910118774376729309e5f5315b15f4"
+    },
+    {
+      "path": "app/game/PlanetEarthReferenceV147.tsx",
+      "bytes": 10443,
+      "sha256": "4cc8ced9590d4edc2a4e02945073d3d596e7abb1903421a24db8c65ec4c468ad"
+    },
+    {
+      "path": "app/game/PlanetEnvironmentalDossierV146.module.css",
+      "bytes": 1757,
+      "sha256": "89799efdd5ad1df6f0e0a69a8f3572864d5e40ff17022dce9094ed9a5ba2dc04"
+    },
+    {
+      "path": "app/game/PlanetEnvironmentalDossierV146.tsx",
+      "bytes": 8306,
+      "sha256": "409c3c688d1ddd93d033562ddd5cda17699ffd5b3a7090e7465fea1c4dbc25ef"
+    },
+    {
       "path": "app/game/PlanetGeneratorV102.module.css",
       "bytes": 6184,
       "sha256": "10618833c066ced78ef30a9666abd1a2a550cf55aa3feffb89f9c2210e7c3746"
@@ -1135,28 +1155,63 @@
     },
     {
       "path": "app/game/PlanetGeneratorV103.module.css",
-      "bytes": 10136,
-      "sha256": "cf148b6f905825e46d6c8361fe06fa36d5cf46e9bedad57e2c2396ae18378061"
+      "bytes": 11342,
+      "sha256": "f60fd02268f9c34c848792327fdd388216ea1f063a6fbff8b1d45280b3d7b1a0"
     },
     {
       "path": "app/game/PlanetGeneratorV103.tsx",
-      "bytes": 39772,
-      "sha256": "409a99a6046ed1d08b95c0ab375bed5a0e24649f4b7eeb1496d8c688635d75d6"
+      "bytes": 50795,
+      "sha256": "5f47d3b0ed0f0dc757a4a2c868eedab22511a8ad30d63c8217e6d8a74685e59f"
     },
     {
       "path": "app/game/PlanetLayerExportV102.module.css",
-      "bytes": 2358,
-      "sha256": "234c177f778c26d70a3fbf23b2e149dee1dde80dfb94b8451c18ca2c3cf9d7ac"
+      "bytes": 3372,
+      "sha256": "688fa01eba62868ea429e0dc6e5b2e7ef1440be6e63600e37e87ddfbc78a3e0d"
     },
     {
       "path": "app/game/PlanetLayerExportV102.tsx",
-      "bytes": 17219,
-      "sha256": "c7c4fbb2230e7be1ec3f93d026649b529636cec681f1c1aa3cf11726a1f678ff"
+      "bytes": 42790,
+      "sha256": "339395bdca00ed1d906761701a0424ce47788d26a67f9859d3fa5782971e2d12"
     },
     {
       "path": "app/game/PlanetMaterialCanvasV101.tsx",
-      "bytes": 4031,
-      "sha256": "5b77126bda4dc49d9c5b94c59e924bf05596f7b5b1db89e2198ff03b946b6f58"
+      "bytes": 5697,
+      "sha256": "3941a180f5389ef7f3de079f7e4d1246d04792e5b593a57ee3f34b78fda5bcb9"
+    },
+    {
+      "path": "app/game/PlanetPreflightV149.module.css",
+      "bytes": 1196,
+      "sha256": "78ae821e115cf543185a195bb474e21545ad0cc67183c8ce739669ab9c6e9940"
+    },
+    {
+      "path": "app/game/PlanetPreflightV149.tsx",
+      "bytes": 3971,
+      "sha256": "a0c43693c1b8203c80d34a813e24ef3ac4e9ac278e5b7c9a64263b33c83c74ff"
+    },
+    {
+      "path": "app/game/PlanetRegionalPreviewV129.tsx",
+      "bytes": 9381,
+      "sha256": "16dc9c3ec887c6597fa9fe44e449f801a14427ba4195ab022df24a07a601ff78"
+    },
+    {
+      "path": "app/game/PlanetReliefV150.module.css",
+      "bytes": 2315,
+      "sha256": "19795a84a39a2c2dacd6b8a54543c49b4a0dda97b559186cf00ead67c1ab1622"
+    },
+    {
+      "path": "app/game/PlanetReliefV150.tsx",
+      "bytes": 16490,
+      "sha256": "8baa830f7181ccbf076609c69195bf1d8112e745460dd6a8dd0b71e6c6de6e67"
+    },
+    {
+      "path": "app/game/PlanetShapeLibraryV137.module.css",
+      "bytes": 1664,
+      "sha256": "02099cc28929ae45c5daf2f2562026f9f93cd7b629f3862952b51d9e954757d3"
+    },
+    {
+      "path": "app/game/PlanetShapeLibraryV137.tsx",
+      "bytes": 5008,
+      "sha256": "09ef3b42426221e6508ec857e75935a0d32ffc47964599fbf00639d84aed7b3d"
     },
     {
       "path": "app/game/PlanetShapePreviewV125.module.css",
@@ -1167,6 +1222,16 @@
       "path": "app/game/PlanetShapePreviewV125.tsx",
       "bytes": 2115,
       "sha256": "59ceddf84fecdfb2c555d82800c98bdc6a01609567ce1f3ab361767b222161ba"
+    },
+    {
+      "path": "app/game/PlanetTraversalLabV154.module.css",
+      "bytes": 3264,
+      "sha256": "6f5724813ede3698470d129f1829a05b506bb807763518759cc8dbaecf6650dd"
+    },
+    {
+      "path": "app/game/PlanetTraversalLabV154.tsx",
+      "bytes": 13137,
+      "sha256": "eccd7659a82662e709c9bea70317050a3e5775c35f9f4a2e11d8ea0430c850bf"
     },
     {
       "path": "app/game/RecentFaunaReferencesV85.tsx",
@@ -1959,6 +2024,11 @@
       "sha256": "f7f4acabc051e496ddc13ffdce36b39e79696d16dc66a070a364fac3f8160d5a"
     },
     {
+      "path": "app/game/data/planetVisualFidelityV132.json",
+      "bytes": 40939,
+      "sha256": "99904c398159d9a11d9bfd48dacfd9c94ec470c6fdf4f15fac370ccf6eeabf9b"
+    },
+    {
       "path": "app/game/data/recentApprovedHuntersV85.json",
       "bytes": 15058,
       "sha256": "0f2b0a279210cde6b29be259313e761f71355f8eb6b824ac81589756dec1d4e3"
@@ -2002,6 +2072,11 @@
       "path": "app/game/discoverySignalsV112.ts",
       "bytes": 1825,
       "sha256": "66869868bacfb31ff9cc17eeea5b5ac0d914ab04f4c0767529438464c3ac8adc"
+    },
+    {
+      "path": "app/game/earthGeoReferenceV147.ts",
+      "bytes": 7706,
+      "sha256": "4da097cb2a503746fd8217aad346a3a5fa1eb1cf93cc16e2840d8cbdd60699ea"
     },
     {
       "path": "app/game/ecologyEncounterV8.ts",
@@ -2514,6 +2589,21 @@
       "sha256": "88961f9fd4d20dcb8683f50b9570726739987116dc8d607e1abf5c220f7341b0"
     },
     {
+      "path": "app/game/planetAssetStudiesV151.ts",
+      "bytes": 6911,
+      "sha256": "32f0bd60ed8e58c142bb47719d56ae512ec69246867f84eaca7285aebeeb34ec"
+    },
+    {
+      "path": "app/game/planetClimateMapV146.ts",
+      "bytes": 2636,
+      "sha256": "393796271f65f7226bd2b869dce173be6cea75cb2b13691ccbbdd14e2b43b100"
+    },
+    {
+      "path": "app/game/planetCoastalRegionsV131.ts",
+      "bytes": 7415,
+      "sha256": "ca871d53124c8544b4c8b0ebba8dea4a358d3306712a32ccb848aa2ea4f3977c"
+    },
+    {
       "path": "app/game/planetDetailMaterialsV103.ts",
       "bytes": 2344,
       "sha256": "c48bc070b1f2ddde2ad7fd3e8dfd7986ebd8449245b4eb722059f714c26cb269"
@@ -2525,18 +2615,38 @@
     },
     {
       "path": "app/game/planetMaterialRendererV101.ts",
-      "bytes": 29123,
-      "sha256": "6599af439d6eaf362143ed730ad2098109197b99329d5d16d2522d53e2487693"
+      "bytes": 39733,
+      "sha256": "789fc2c5b9c0aba94a284358014f43125f78b59d0580e97e21cb2af0a559a164"
     },
     {
       "path": "app/game/planetModularExportV124.ts",
-      "bytes": 6872,
-      "sha256": "986143376430da45c1d2d633b0413232f214190f5835efc73e2199abd282b434"
+      "bytes": 7628,
+      "sha256": "83c39b6ca0c62840e0c9244d37bcd74679fa0a4f4c601ad62fb7096a3f709c0a"
+    },
+    {
+      "path": "app/game/planetRegionKitRasterV128.ts",
+      "bytes": 1679,
+      "sha256": "0e16dca39e22bee415b1a88ebaa1e63b24d275d85c1e64646de673b6386f6742"
     },
     {
       "path": "app/game/planetRegionalMaterialsV102.ts",
       "bytes": 7070,
       "sha256": "fa93176af93102186a7e714993cb2041912c2855e14e8001bbac3b5e81958a9a"
+    },
+    {
+      "path": "app/game/planetRegionalPbrAtlasesV131.ts",
+      "bytes": 5025,
+      "sha256": "7a670747ee990a2a8dd9ac3985e948bb33209ec4b01d962820cc2536d9fa7427"
+    },
+    {
+      "path": "app/game/planetRegionalShaderAtlasV129.ts",
+      "bytes": 3292,
+      "sha256": "10a4b92c8371f0f5a5ec6c34fbd9e2e14582b0607ef128e450dbf2da1f99ca82"
+    },
+    {
+      "path": "app/game/planetRegionalSurfaceAlbedoV135.ts",
+      "bytes": 3632,
+      "sha256": "383075db5c6ddbd16e77f6fc754a065302ab09d46c8c680b69173a4a5f193fb1"
     },
     {
       "path": "app/game/preserveHumanConceptsV36.json",
@@ -2739,6 +2849,11 @@
       "sha256": "97a130994aabf0a8aa446724d2a8e4bafe5a8f5ef80e530af916733a26499b33"
     },
     {
+      "path": "app/game/systems/clanWarAtlasVisualV142.ts",
+      "bytes": 1077,
+      "sha256": "085e42c7388f639838e421e0f300a2d430e9f2e87ea03026e2d0a7729593ab10"
+    },
+    {
       "path": "app/game/systems/clanWarBattleModelV106.ts",
       "bytes": 509,
       "sha256": "26e90066fbbdafed1fd7785e9bd81f30fd6901cd73b7f2fc4bcba4476d83668b"
@@ -2814,9 +2929,19 @@
       "sha256": "03a8c7a8168607c152629c00d025ca142f530cb306f6855fedf7ceb6b8479169"
     },
     {
+      "path": "app/game/systems/clanWarPlanetDraftRandomV144.ts",
+      "bytes": 6921,
+      "sha256": "5ce7cbe35c8e84e97854b3df0f6d769d5c4ffec90db471453455c0458405383c"
+    },
+    {
       "path": "app/game/systems/clanWarPlanetDraftV103.ts",
       "bytes": 9427,
       "sha256": "f392cc8d75d0143b4404aeddf02f377bf53d1ea6f791ffda1121dd65239e56b0"
+    },
+    {
+      "path": "app/game/systems/clanWarPlanetEnvironmentV146.ts",
+      "bytes": 8565,
+      "sha256": "80afeab8a1e302aaaa68d401e047d3584821b36a934047154a4caa1d2a00d3ac"
     },
     {
       "path": "app/game/systems/clanWarPlanetGeneratorV102.ts",
@@ -2855,13 +2980,53 @@
     },
     {
       "path": "app/game/systems/clanWarPlanetPhysicalIndexV125.ts",
-      "bytes": 4031,
-      "sha256": "f7db31dc98e45adc8ae776b62782d6b9f3aba64afc53616c3668f8dc362621c4"
+      "bytes": 4204,
+      "sha256": "e971f7bf2a7bca4dac69bba79f0b2afade56b0cdfa3494e8853f22fbb3553f38"
+    },
+    {
+      "path": "app/game/systems/clanWarPlanetPreflightV149.ts",
+      "bytes": 10289,
+      "sha256": "29d465ea84e4c0e9f77d78ad009f61d87fc019a546f6334c35da6498ac0893e2"
+    },
+    {
+      "path": "app/game/systems/clanWarPlanetReliefV150.ts",
+      "bytes": 7848,
+      "sha256": "aa5d0baaeb618f84e24f1fe028fa313cbdd365b89356a0c87e698ce1895283ab"
     },
     {
       "path": "app/game/systems/clanWarPlanetStrategyV114.ts",
       "bytes": 8031,
       "sha256": "196fbcf521c08f8ee59a26ddef003cae0ca8a6560b7dd2b81fa9110846e06f76"
+    },
+    {
+      "path": "app/game/systems/clanWarPlanetSurfaceBudgetV136.ts",
+      "bytes": 5177,
+      "sha256": "486a3eaa7f7c946cad06998d49577afd4dd10c4f400b5d0065d5b76df32b775c"
+    },
+    {
+      "path": "app/game/systems/clanWarPlanetTerrainV152.ts",
+      "bytes": 10780,
+      "sha256": "060ec661542bd66252e353341f4b1eb7618ab446475176627fc849a66d446cb9"
+    },
+    {
+      "path": "app/game/systems/clanWarPlanetTopologyAdvisorV139.ts",
+      "bytes": 2807,
+      "sha256": "e5e44b954aefe8a4385b725a608cd523c7445dc600fdab02c2fd971d9ad39af7"
+    },
+    {
+      "path": "app/game/systems/clanWarPlanetTraverseSectionV155.ts",
+      "bytes": 4010,
+      "sha256": "809f50a0dc319c7ae7cc1d8d4a4ce6f764055b37f8daa858cc3eb703641262fc"
+    },
+    {
+      "path": "app/game/systems/clanWarPlanetTraverseV154.ts",
+      "bytes": 13623,
+      "sha256": "291f4e01b4f1c2bf9a86b39d057f2e11c5e9662543e0c01b924aed66483c85e1"
+    },
+    {
+      "path": "app/game/systems/clanWarPlanetVisualProfileV134.ts",
+      "bytes": 4298,
+      "sha256": "f628a0b7d0efaf7a33e7208b0839336b25d7d46f0f1d2dd6a2b14ebde546e482"
     },
     {
       "path": "app/game/systems/clanWarPlanetsV96.ts",
@@ -2874,6 +3039,16 @@
       "sha256": "d9c1ed8d312b131671a48b4a4a3bf9743051bab0b30c7df5137cb7de7b7bb322"
     },
     {
+      "path": "app/game/systems/clanWarRegionalMaterialKitV128.ts",
+      "bytes": 10806,
+      "sha256": "436bfc02e0cca7234c7bbccc606a52f3f6ebb5b3e6b9c0a07688efb5a15e4c0d"
+    },
+    {
+      "path": "app/game/systems/clanWarRegionalMaterialRandomV145.ts",
+      "bytes": 5392,
+      "sha256": "56bd490beb08197014f4fba7e4a07cd4227f77cdb9c18dbebe2296a53733fd3a"
+    },
+    {
       "path": "app/game/systems/clanWarSessionV85.ts",
       "bytes": 14183,
       "sha256": "d19609c69abd59811eb6f3728705ce8c7437b9f2a1669bd99b925cb915fc3e4f"
@@ -2882,6 +3057,11 @@
       "path": "app/game/systems/clanWarShapeAtlasV115.ts",
       "bytes": 4648,
       "sha256": "234e53759ebc4acd2c86529776e56524a4e526df57d4529335fea2ab899e77c7"
+    },
+    {
+      "path": "app/game/systems/clanWarShapeLibraryV137.ts",
+      "bytes": 1764,
+      "sha256": "a89d7f833442f06af78c5693bef691521185809424577db5058003a5c5153bda"
     },
     {
       "path": "app/game/systems/clanWarSpecializedV107.ts",
@@ -2897,6 +3077,11 @@
       "path": "app/game/systems/clanWarTextureLibraryV125.ts",
       "bytes": 10408,
       "sha256": "c32166fba5647bbe20e5b38f1cb11a330ddcaf9e47689609829db60da31fa2d0"
+    },
+    {
+      "path": "app/game/systems/clanWarTextureLibraryV130.ts",
+      "bytes": 5348,
+      "sha256": "eac960db982d5deb6a1f5886b0a69ac390a40f50e9f6cdf043e44303df3d4155"
     },
     {
       "path": "app/game/systems/clanWarV85.ts",
@@ -4470,8 +4655,13 @@
     },
     {
       "path": "app/game/systems/planetExportZipV114.ts",
-      "bytes": 3853,
-      "sha256": "d26f93a0a2a110cbae021ba3597549b0de60d2b9b430c0aea56ae7c8e0f926d9"
+      "bytes": 4421,
+      "sha256": "09d5b6c662776c3f89a25ff360fe77e1574121cc0dce9f519d88f0b6d988167a"
+    },
+    {
+      "path": "app/game/systems/planetLoreSettingsV148.ts",
+      "bytes": 4978,
+      "sha256": "a88fca25bc50ec01cc04b59db0965496f3550c0a0813e6dab85dc73caddc8e96"
     },
     {
       "path": "app/game/systems/planetMaterialProfilesV103.ts",
@@ -4482,6 +4672,16 @@
       "path": "app/game/systems/planetMaterialV101.ts",
       "bytes": 7036,
       "sha256": "28391a50e665f8906e30116891df4978cd78b8e72a6d1c06b4858b09e2e2ff29"
+    },
+    {
+      "path": "app/game/systems/planetProjectionParityV138.ts",
+      "bytes": 1862,
+      "sha256": "f43119188b87c147dadb20c277beba324fe0b5dd71e0467f644e7161096e1111"
+    },
+    {
+      "path": "app/game/systems/planetRenderSignatureV143.ts",
+      "bytes": 1365,
+      "sha256": "ca38eab891a6212db40830c9a473a2e08b1929cd3350d93d92aea396ec99b0d4"
     },
     {
       "path": "app/game/systems/platformCollision.ts",
@@ -5385,8 +5585,8 @@
     },
     {
       "path": "docs/v112-runtime-public-inputs.json",
-      "bytes": 13882,
-      "sha256": "5860dfea54e548170071754e34e1913af6ec9ca4f2844ea6b0c859b41271b125"
+      "bytes": 14024,
+      "sha256": "9c8049baf24f924c4dbac745e6f033cc09c6ecb007d4d2147e94cf961a1b18da"
     },
     {
       "path": "next.config.ts",
@@ -5727,6 +5927,11 @@
       "path": "public/game/homeworld/v84/maintenance-console-right.png",
       "bytes": 1334645,
       "sha256": "a7a43de4384a75ecac48a5c8cd50bc6cd4eb82ffda47719a1022299b90bb966b"
+    },
+    {
+      "path": "public/game/planets/earth/ne_110m_land.geojson",
+      "bytes": 138160,
+      "sha256": "9e0729ee253ca7d7a5c4ae9395fb1902264c5377c52e224d13dd85010e2835d9"
     },
     {
       "path": "public/game/production/enforcer-alternatives-v107/alpha/enforcers-comics-10.png",
@@ -7665,8 +7870,8 @@
     },
     {
       "path": "scripts/build-runtime-public-inputs-v112.mjs",
-      "bytes": 4060,
-      "sha256": "9d3da9e35d8ba6d76f08832a03e2a85bd14ad841f6d6e9e7366000c11330797a"
+      "bytes": 4372,
+      "sha256": "fa3a95ae96b3415eb3fea5a9507352ea93912cf45fdf683cbd14d3f7945901aa"
     },
     {
       "path": "scripts/collect-pit-variant-inputs-v107.mjs",
@@ -7765,8 +7970,8 @@
     },
     {
       "path": "scripts/qa-pit-backward-throws-v112.mjs",
-      "bytes": 36101,
-      "sha256": "5e0eb6ed98b82d029433ea759f846709ea4f39d6f29b4abb688e0b94f582728f"
+      "bytes": 36391,
+      "sha256": "eb50526c6106146768097cbc0298c4465f84ffa9b2a71b0c4cb8c2660bc2ac8f"
     },
     {
       "path": "scripts/qa-pit-forward-throws-v109.mjs",
@@ -8020,8 +8225,8 @@
     },
     {
       "path": "tests/pit-browser-whiff-observation-v112.test.mjs",
-      "bytes": 4550,
-      "sha256": "54c68ef25e63ecaafa2b4be05d65bd1baabad1c9f54c708e47fdd1947e79bb65"
+      "bytes": 5086,
+      "sha256": "924d9ed69ca2df8dfa714ca5951e6cbfedbda5a909787badf99d7fa64b1be322"
     },
     {
       "path": "tests/pit-browser-worker-observation-v112.test.mjs",

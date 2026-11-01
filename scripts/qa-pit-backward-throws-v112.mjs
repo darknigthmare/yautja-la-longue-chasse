@@ -170,7 +170,7 @@ async function launch(slot, input = 'button') {
 async function observedOutOfRangeWhiff(slot, label, ids) {
   const spec = api.PIT_WORKBOOK_BACKWARD_THROW_V112, totalFrames = spec.startup + spec.active + spec.recovery;
   const before = await read(), observation = {kind: 'played-observed-whiff', label, slot, before,
-    started: null, recovered: null, startFrame: null, effectiveFrames: null, samples: [before], maximumPolls: 180};
+    started: null, recovered: null, startFrame: null, effectiveFrames: null, samples: [before], clockAdvances: [], maximumPolls: 180};
   observations.push(observation);
   const require = (name, condition, state) => {if (!condition) check(label + ': ' + name, false, {before, started: observation.started, state, samples: observation.samples});};
   const validate = state => {
@@ -209,7 +209,10 @@ async function observedOutOfRangeWhiff(slot, label, ids) {
         Number.isInteger(action.actionFrame) && action.actionFrame >= 0 && action.actionFrame < totalFrames &&
         state.frame - action.actionFrame === observation.startFrame && action.phase === expectedPhase, state);
     }
-    await page.clock.runFor(17); state = await read();
+    const remainingFrames = observation.started ? totalFrames - (state.frame - observation.startFrame) : totalFrames;
+    const clockStepMs = remainingFrames <= 3 ? 1 : 17;
+    observation.clockAdvances.push({fromFrame: state.frame, milliseconds: clockStepMs});
+    await page.clock.runFor(clockStepMs); state = await read();
   }
   check(label + ': actual startup and recovery are both observed within the bounded whiff', Boolean(observation.started && observation.recovered), observation);
   check(label + ': real out-of-range4+L+M whiffs without damage or an invented target', observation.samples.every(sample =>
