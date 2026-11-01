@@ -170,3 +170,50 @@ test("Council V146: a self-consistent receipt cannot invent a finished phase, so
   assert.ok(audit.issues.length);
  }
 });
+
+test("Council V146 rejects source geometry, mission instructions and numeric state changed together",()=>{
+ const done=w3Receipt();
+ const candidates=[
+  {...done,mission:{...done.mission,tasks:done.mission.tasks.map((t,i)=>i? t : {...t,location:{x:0,y:0}})}},
+  {...done,mission:{...done.mission,tasks:done.mission.tasks.map((t,i)=>i? t : {...t,kind:"repair",requiresPower:false})}},
+  {...done,map:{...done.map,extraction:{x:0,y:0}}},
+  {...done,turn:-1,report:{...done.report,turn:-1,id:`W133-${done.mission.id}-${done.phase}--1`}},
+  {...done,ravRemaining:-1,report:{...done.report,remainingRav:-1}},
+  {...done,report:{...done.report,leftBehindSquadIds:["invented"]}},
+ ];
+ for(const candidate of candidates){
+  const audit=api.buildWarCouncilAuditV146(null,candidate,rules);
+  assert.equal(audit.total,0,"modified source geometry, mission or numeric state must be rejected");
+  assert.ok(audit.issues.length);
+ }
+});
+
+test("Council accepts generated retreats and defeats across all 24 missions with casualties and evacuations",()=>{
+ for(const missionId of api.WAR_SOURCE_RTS_IDS_V129){
+  const launched=api.launchWarRtsSquadsV133(api.createWarRtsSquadsV133(missionId,rules));
+  assert.equal(launched.accepted,true,missionId);
+  const s=launched.state;
+  const exit=s.map.extraction;
+  // Fixture positions are arranged directly; closure, casualty/evacuation
+  // receipts and the audit use the actual W133 engine.
+  const near=s.squads.map((u,i)=>({...u,x:exit.x+i,y:exit.y}));
+  const ev=api.evacuateWarRtsSquadV139({...s,squads:near,enemies:[]},near[0].id);
+  assert.equal(ev.accepted,true,missionId+": "+ev.message);
+  const actor=ev.state.squads.find(u=>u.status==="active");
+  const retreat=api.commandWarRtsSquadsV133(ev.state,{kind:"retreat",squadId:actor.id});
+  assert.equal(retreat.accepted,true,missionId+": "+retreat.message);
+  assert.equal(api.buildWarCouncilAuditV146(null,retreat.state,rules).total,1,missionId+" retreat");
+  const ground=s.map.tiles.find(tile=>!tile.solid&&!tile.cover&&
+   s.map.tiles.some(other=>!other.solid&&Math.abs(other.x-tile.x)+Math.abs(other.y-tile.y)===1));
+  assert.ok(ground,missionId+" has an exposed cell");
+  const neighbour=s.map.tiles.find(tile=>!tile.solid&&Math.abs(tile.x-ground.x)+Math.abs(tile.y-ground.y)===1);
+  const vulnerable=s.squads.map((u,i)=>({...u,x:ground.x,y:ground.y,hp:i===0?1:0,status:i===0?"active":"down"}));
+  const enemy={...s.enemies[0],x:neighbour.x,y:neighbour.y,hp:9,status:"active"};
+  const defeat=api.commandWarRtsSquadsV133({...s,squads:vulnerable,enemies:[enemy]},
+   {kind:"wait",squadId:vulnerable[0].id});
+  assert.equal(defeat.state.phase,"defeat",missionId+": "+defeat.message);
+  const audit=api.buildWarCouncilAuditV146(null,defeat.state,rules);
+  assert.equal(audit.total,1,missionId+" defeat: "+audit.issues.join(", "));
+  assert.deepEqual(audit.dossiers[0].casualtyIds,vulnerable.map(u=>u.id));
+ }
+});

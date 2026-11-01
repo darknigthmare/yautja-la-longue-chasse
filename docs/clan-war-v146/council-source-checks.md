@@ -23,3 +23,24 @@ Le classeur V146 conserve ses statuts et son historique : les exigences de
 jeu complet, de références artistiques, de campagne et de serveur restent
 ouvertes. Cette correction améliore les contrôles `CW146-RTS-001/002` et
 `QA-CW146-RTS-01/02/03` sans les élever à une validation de partie authentifiée.
+
+## Complément — mission et sortie source (requalification ciblée)
+
+Le contrôle local compare maintenant la définition complète et immuable de la
+mission W3 au catalogue V6 reconstruit, ainsi que les points de départ, objectif
+et extraction de la carte. Il refuse les tours et RAV impossibles, une escorte
+d'un autre scénario, et une liste de groupes laissés en arrière incompatible
+avec les positions reçues. Ce sont des contrôles de cohérence : les données du
+client restent modifiables et ne démontrent pas le déroulement réel d'une partie.
+
+Le test `tests/clan-war-council-v146.test.mjs` vérifie les rejets, puis construit
+24 retraites avec évacuation et 24 défaites avec pertes via le moteur W133. Les
+positions et les blessures de ces tests sont initialisées par fixture. Les 24
+victoires du test séparé sont aussi isolées, sans ennemis ni aléas. Ni ces tests
+ni la compilation ne valident une partie complète, un serveur, une carte filmique
+ou des assets 1:1.
+
+L'addendum `Yautja_Conseil_V146_Controle_Source_Addendum.xlsx` conserve le
+classeur V146 historique intact. Il rectifie le terme « authentifié » de
+`CW146-RTS-001`, distingue les preuves locales des contrôles encore requis et
+ne promeut aucun statut avant une CI effective.

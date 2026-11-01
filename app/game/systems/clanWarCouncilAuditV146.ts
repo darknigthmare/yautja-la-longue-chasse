@@ -39,14 +39,34 @@ export interface WarCouncilAuditV146 {
 }
 const unique=(values:string[])=>[...new Set(values)];
 const sameStrings=(a:string[],b:string[])=>a.length===b.length&&a.every((v,i)=>v===b[i]);
+// Authored mission data is immutable in W133; compare structure without
+// depending on JavaScript property insertion order after serialization.
+function sameSourceValue(a:unknown,b:unknown):boolean {
+ if(a===b)return true;
+ if(!a||!b||typeof a!=="object"||typeof b!=="object")return false;
+ if(Array.isArray(a)||Array.isArray(b))return Array.isArray(a)&&Array.isArray(b)&&
+  a.length===b.length&&a.every((value,i)=>sameSourceValue(value,b[i]));
+ const left=a as Record<string,unknown>,right=b as Record<string,unknown>;
+ const keys=Object.keys(left).filter(key=>left[key]!==undefined).sort();
+ const other=Object.keys(right).filter(key=>right[key]!==undefined).sort();
+ return sameStrings(keys,other)&&keys.every(key=>sameSourceValue(left[key],right[key]));
+}
 /** Consistency with the local V6 catalog, not authentication of a client save. */
 function hasKnownRtsSource(state:WarRtsSquadsStateV133,rules:WarRulesV6):boolean {
  try {
   const source=createWarRtsMissionStateV129(state.mission.id,rules);
   const mission=source.mission,map=source.base.map;
   return (state.phase==="victory"||state.phase==="defeat"||state.phase==="retreat")&&
+   sameSourceValue(state.mission,mission)&&
    state.mission.mapId===mission.mapId&&state.mission.planetId===mission.planetId&&
    state.map.id===map.id&&state.map.planetId===map.planetId&&
+   sameSourceValue(state.map.start,map.start)&&sameSourceValue(state.map.goal,map.goal)&&
+   sameSourceValue(state.map.extraction,map.extraction)&&
+   state.initialRav===mission.initialRav&&Number.isSafeInteger(state.ravRemaining)&&
+   state.ravRemaining>=0&&state.ravRemaining<=state.initialRav&&
+   Number.isSafeInteger(state.turn)&&state.turn>=0&&
+   (source.tracked?Boolean(state.tracked&&state.tracked.id===source.tracked.id&&
+    state.tracked.kind===source.tracked.kind&&state.tracked.isNeutral===source.tracked.isNeutral):state.tracked===null)&&
    sameStrings(state.mission.sourceCells,mission.sourceCells)&&
    sameStrings(state.map.sourceCells,map.sourceCells)&&
    sameStrings(state.mission.tasks.map(t=>t.id),mission.tasks.map(t=>t.id))&&
@@ -173,6 +193,9 @@ export function buildWarCouncilAuditV146(
    report.turn===rts.turn&&report.remainingRav===rts.ravRemaining&&
    report.squadIds.join(":")===rts.squads.map(u=>u.id).join(":")&&
    report.downSquadIds.join(":")===rts.squads.filter(u=>u.status==="down").map(u=>u.id).join(":")&&
+   report.leftBehindSquadIds.join(":")===(report.outcome==="retreat"?
+    rts.squads.filter(u=>u.status==="active"&&u.hp>0&&
+     Math.abs(u.x-rts.map.extraction.x)+Math.abs(u.y-rts.map.extraction.y)>2).map(u=>u.id):[]).join(":")&&
    (report.evacuatedSquadIds??[]).join(":")===rts.squads.filter(u=>u.status==="evacuated").map(u=>u.id).join(":")&&
    report.escortExtracted===Boolean(rts.tracked?.extracted)&&
    report.completedTaskIds.join(":")===rts.completedTaskIds.join(":")&&
