@@ -55,7 +55,8 @@ const GUARD_UNIT="W3-U07";
 const DIST=(a:{x:number;y:number},c:{x:number;y:number})=>Math.abs(a.x-c.x)+Math.abs(a.y-c.y);
 
 export function warSourceRtsScenarioV119(id:string,rules:WarRulesV6): WarSourceRtsScenarioDefinitionV119|null {
-  if(!["W3-RTS01","W3-RTS02","W3-RTS03","W3-RTS04","W3-RTS05","W3-RTS06"].includes(id))return null;
+  if(id!=="W3-RTS01"&&id!=="W3-RTS02"&&id!=="W3-RTS03"&&
+    id!=="W3-RTS04"&&id!=="W3-RTS05"&&id!=="W3-RTS06")return null;
   const entry=rules.entries.find(item=>item.sheet==="Scénarios RTS"&&item.id===id);
   if(!entry)return null;
   const v=(column:string)=>String(entry.fields.find(field=>field.column===column)?.value??"").trim();
