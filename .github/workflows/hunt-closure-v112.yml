@@ -83,6 +83,11 @@ jobs:
           node scripts/build-hunt-mechanics-workbook-v112.mjs --check
           python3 scripts/verify-hunt-mechanics-workbook-v112.py
           node scripts/build-discovery-signals-v112.mjs --check
+      - name: Measure native hunting CPU and bounded ecosystem under deterministic loads
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: |
+          node scripts/qa-hunt-native-performance-v112.mjs --report outputs/qa-v112-followup/native-performance.json
+          node -e 'const fs=require("node:fs"); console.log("V112_NATIVE_PERFORMANCE_BEGIN:"+fs.readFileSync("outputs/qa-v112-followup/native-performance.json","utf8")+":V112_NATIVE_PERFORMANCE_END")'
       - name: Existing native React and hunting input browser qualification
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: node scripts/qa-hunt-mechanics-browser-v112.mjs
@@ -94,6 +99,6 @@ jobs:
           path: |
             outputs/qa-hunt-v112/
             outputs/qa-hunt-lifecycle-v112/
-            outputs/hunt-performance-v112/
+            outputs/qa-v112-followup/
           if-no-files-found: warn
           retention-days: 30
