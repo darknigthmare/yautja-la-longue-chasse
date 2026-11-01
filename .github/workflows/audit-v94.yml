@@ -911,14 +911,13 @@ jobs:
       - name: Exercise V112 geometry, public-life, mobility, backward throws and evidence guards
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v112.test.mjs
-      - name: Verify V112 open-workstream audit and reproducible append-only workbook
+      - name: Verify current V112 resources and the original immutable Homeworld publication
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: |
           python3 scripts/audit-open-workstreams-v112.py --check
           node scripts/build-pit-backward-art-v112.mjs --check
           node scripts/build-runtime-public-inputs-v112.mjs --check
-          node scripts/snapshot-runtime-v112.mjs --check docs/v112-runtime-freeze.json
-          node scripts/build-homeworld-followup-v112.mjs --check
+          node scripts/check-homeworld-publication-history-v112.mjs --check
       - name: Verify live Homeworld guidance in the real React atlas and native Worker
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: node scripts/qa-homeworld-live-guidance-v112.mjs

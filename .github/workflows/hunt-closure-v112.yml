@@ -87,11 +87,27 @@ jobs:
           tests/hunt-catalogue-contract-v112.test.mjs
           tests/hunt-field-guide-v112.test.mjs
           tests/hunt-ground-recovery-v112.test.mjs
+      - name: Load immutable generator baseline for seeded source comparison
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: git fetch --no-tags --depth=1 --filter=blob:none origin e1e45fbf85d843c26ac1bf4f816baf46313795b0
+      - name: Lint changed hunting controls and inherited planet consumers
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: >-
+          node node_modules/eslint/bin/eslint.js --max-warnings=0
+          app/game/ConservationPanelV112.tsx app/game/HuntFieldGuideV112.tsx
+          app/game/HuntCanvas.tsx app/game/GameClient.tsx app/game/useMenuGamepad.ts
+          app/game/systems/harvestInventoryV112.ts app/game/PlanetGeneratorV103.tsx
+          app/game/systems/clanWarPlanetGeneratorV115.ts app/game/systems/clanWarTextureLibraryV115.ts
+      - name: Current Homeworld position recovery and dynamic motor regressions
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: >-
+          node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1
+          tests/homeworld-mobility-v112.test.mjs tests/homeworld-dynamic-navigation-v109.test.mjs
       - name: Legacy and current planet consumer version compatibility
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: >-
           node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1
-          tests/planet-version-consumers-v115.test.mjs
+          tests/planet-version-consumers-v115.test.mjs tests/planet-source-preservation-v115.test.mjs
       - name: Independent workbook and generated resource checks
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: |

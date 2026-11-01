@@ -1,6 +1,6 @@
 import type { WarPlanetV96 } from "./clanWarPlanetsV96";
 import {
-  DEFAULT_WAR_PLANET_RECIPE_V103, describeWarPlanetV103, encodeWarPlanetV103, generateWarPlanetV103,
+  DEFAULT_WAR_PLANET_RECIPE_V103, WAR_PLANET_RECIPE_FIELDS_V103, describeWarPlanetV103, encodeWarPlanetV103, generateWarPlanetV103,
   parseWarPlanetV103, validateWarPlanetRecipeV103,
   type WarPlanetProceduralV103, type WarPlanetRecipeV103,
 } from "./clanWarPlanetGeneratorV103";
@@ -69,11 +69,22 @@ export function normalizeWarPlanetRecipeV115(value: Partial<WarPlanetRecipeV115>
   if (!result) throw new RangeError("Recette planétaire V115 invalide.");
   return result;
 }
+/** Explicit V103 projection for the legacy generator and editor. Keep all V115
+ * fields on the original recipe; copying only published V103 fields avoids
+ * leaking shape, physical-size or texture modules into its strict validator. */
+export function projectWarPlanetRecipeV103FromV115(recipe: WarPlanetRecipeV115): WarPlanetRecipeV103 {
+  const projected = validateWarPlanetRecipeV103({
+    version: 103,
+    ...Object.fromEntries(WAR_PLANET_RECIPE_FIELDS_V103.map(field => [field, recipe[field]])),
+  });
+  if (!projected) throw new RangeError("Base de recette V103 invalide.");
+  return projected;
+}
 export function encodeWarPlanetV115(value: WarPlanetRecipeV115): string {
   const recipe = validateWarPlanetRecipeV115(value);
   if (!recipe) throw new RangeError("Recette planétaire V115 invalide.");
-  const { version, planetSize, islandShape, continentShape, regionShape, landMaterial, liquidMaterial, ...base } = recipe;
-  const legacy = encodeWarPlanetV103({ ...base, version: 103 });
+  const { planetSize, islandShape, continentShape, regionShape, landMaterial, liquidMaterial } = recipe;
+  const legacy = encodeWarPlanetV103(projectWarPlanetRecipeV103FromV115(recipe));
   const segments = legacy.split("-");
   const suffix = [sizes.indexOf(planetSize).toString(36),
     islandShape.toString(36).padStart(2, "0"),
@@ -105,8 +116,8 @@ export function parseWarPlanetV115(code: string): WarPlanetRecipeV115 | null {
 export function describeWarPlanetV115(id: string) {
   const recipe = parseWarPlanetV115(id);
   if (!recipe) return undefined;
-  const { version, planetSize, islandShape, continentShape, regionShape, landMaterial, liquidMaterial, ...base } = recipe;
-  const legacyId = encodeWarPlanetV103({ ...base, version: 103 });
+  const { planetSize } = recipe;
+  const legacyId = encodeWarPlanetV103(projectWarPlanetRecipeV103FromV115(recipe));
   const summary = describeWarPlanetV103(legacyId);
   if (!summary) return undefined;
   return { ...summary, id, version: 115 as const,
@@ -115,9 +126,9 @@ export function describeWarPlanetV115(id: string) {
 export function generateWarPlanetV115(input: WarPlanetRecipeV115): GeneratedWarPlanetV115 {
   const recipe = validateWarPlanetRecipeV115(input);
   if (!recipe) throw new RangeError("Recette planétaire V115 invalide.");
-  const { version, planetSize, islandShape, continentShape, regionShape, landMaterial, liquidMaterial, ...base } = recipe;
+  const { planetSize, islandShape, continentShape, regionShape, landMaterial, liquidMaterial } = recipe;
   const id = encodeWarPlanetV115(recipe), radiusKm = PLANET_RADII_KM_V115[planetSize];
-  const planet = generateWarPlanetV103({ ...base, version: 103 }, {
+  const planet = generateWarPlanetV103(projectWarPlanetRecipeV103FromV115(recipe), {
     worldId: id, shapes: { islandShape, continentShape, regionShape },
   });
   const island = warShapeTemplateV115("island", islandShape);
