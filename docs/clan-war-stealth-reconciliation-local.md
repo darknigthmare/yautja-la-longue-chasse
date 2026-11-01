@@ -1,0 +1,11 @@
+# Réconciliation de la deuxième patrouille V144
+
+Base : PR #61, commit `dfa21d9d6a65d484e61792b201185fd5ea98f288`, avec les correctifs de #59. La PR #57, commit `f25cd7a33e04f789e7c6df231ccad9116a50b38c`, est une branche parallèle ; elle n'est ni fusionnée ni entièrement intégrée par ce lot.
+
+L'infiltration garde par défaut le renfort manuel de #56/#59. Avant la première alerte ou diversion, un sélecteur permet à la place d'activer une règle expérimentale : déclencher une patrouille après alerte et diversion préalablement utilisée, comme dans #57. Cette règle est conservée dans la sauvegarde d'exercice V115 ; elle n'altère pas la campagne V85. Une seule patrouille supplémentaire peut être produite. Sa case est praticable, différente de celle du premier garde et à au moins trois cases du joueur lors de l'apparition.
+
+La lecture de l'archive convertit `secondGuard` de #57 vers `supportGuard` et `reinforcementIssued` du moteur #59. Elle refuse les deux représentations si elles sont contradictoires, sans réécrire l'archive source. Les anciennes archives sans renfort restent lisibles. Une archive #57 sans `secondGuard` ne contient pas de marque permettant de distinguer sa politique automatique d'une archive #56 : elle reprend donc la règle manuelle par défaut, sans inférer son origine.
+
+Le premier garde ne se déplace plus sur l'ancienne case occupée du second. La logique d'écoute et de sabotage tenant compte des deux gardes est conservée depuis #59. Les états et mouvements restent ceux d'un exercice 2D original ; ils ne certifient ni la fidélité 1:1, ni les capacités réseau, ni le parcours navigateur.
+
+Les tests `tests/clan-war-stealth-reconciliation.test.mjs` utilisent des sauvegardes construites à partir de l'état V115 avec les champs de #57 : conversion, relecture, conflit, refus des coordonnées invalides, placement, politique et non-duplication. Ils ne remplacent pas l'essai d'une archive authentique exportée depuis #57, un rechargement navigateur ou une validation manette. Les classeurs #56 et #57 n'ont pas été écrasés ou marqués clos.

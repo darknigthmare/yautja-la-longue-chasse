@@ -11,6 +11,7 @@ import { warMissionTerrainV116, warTerrainCellBlockedV116, warTerrainLineOfSight
 import { warRtsNextPathStepV118 } from "./clanWarTacticalNavigationV118";
 import {warStealthPatrolSpawnV140} from "./clanWarStealthPatrolV140";
 import {warStealthDecoyPatrolV141} from "./clanWarStealthDecoyV141";
+import {chooseStealthSupportGuard} from "./clanWarStealthGuardPlacement";
 import {warOuterRouteChoicesV142} from "./clanWarOuterChoicesV142";
 import {warAssaultContactV141} from "./clanWarAssaultContactV141";
 
@@ -59,6 +60,7 @@ export interface WarStealthV115 { x: number; y: number; guardX: number;guardY?:n
   dashUsed?:boolean;
   supportGuard?:{x:number;y:number;direction:-1|1};
   reinforcementIssued?:boolean;
+  reinforcementMode?:"manual"|"decoy";
 }
 export interface WarRtsOrderV115 { x: number; y: number; kind: "advance" | "hold" | "attack" }
 export interface WarRtsV115 {
@@ -601,10 +603,15 @@ export function commandStealthV115(state:WarOperationsStateV115,command:StealthC
   x=nx;y=ny;
  }
  if(cloaked){energy=Math.max(0,energy-1);if(!energy)cloaked=false;}
+ const previousGuard={guardX,guardY,guardDirection};
  const patrol=warStealthDecoyPatrolV141(terrain,
   {guardX,guardY,guardDirection},decoyTurns>0&&decoyX!==undefined?
    {x:decoyX,y:decoyY??2}:null);
- guardX=patrol.guardX;guardY=patrol.guardY;guardDirection=patrol.guardDirection;
+ // Reserve the second guard's old tile before moving either actor. Otherwise
+ // a trapped second guard can be left sharing the primary guard's new tile.
+ const first=supportGuard&&patrol.guardX===supportGuard.x&&patrol.guardY===supportGuard.y?
+  previousGuard:patrol;
+ guardX=first.guardX;guardY=first.guardY;guardDirection=first.guardDirection;
  if(supportGuard){
   const second=warStealthDecoyPatrolV141(terrain,
     {guardX:supportGuard.x,guardY:supportGuard.y,guardDirection:supportGuard.direction},
@@ -644,6 +651,13 @@ export function commandStealthV115(state:WarOperationsStateV115,command:StealthC
    warTerrainLineOfSightV116(terrain,supportGuard,{x,y}));
  const seen=primarySeen||supportSeen;
  if(seen||command==="interact")alarm++;
+ // The automatic PR #57 behavior is opt-in for new exercises. The default
+ // remains the existing manual rule; never create a second guard twice.
+ let reinforcementIssued=stealth.reinforcementIssued;
+ if(stealth.reinforcementMode==="decoy"&&decoyUsed&&alarm>=1&&!supportGuard&&!reinforcementIssued){
+  supportGuard=chooseStealthSupportGuard(terrain,{x:guardX,y:guardY},{x,y});
+  if(supportGuard)reinforcementIssued=true;
+ }
  if(command==="listen"){
   // Direction is coarse relative bearing only. No guard x-coordinate,
   // opponent ID, camera reveal or cross-planet information enters the record.
@@ -662,7 +676,7 @@ export function commandStealthV115(state:WarOperationsStateV115,command:StealthC
  const nextStealth={x,y,guardX,guardY,guardDirection,alarm,cloaked,energy,sabotaged,
   decoyX,decoyY,decoyTurns,decoyUsed,usedCoverIds,silentStepsUsed,acousticUsed,heardBearing,heardAtTick,
   silentSabotageUsed:stealth.silentSabotageUsed||command==="quiet-sabotage",
-  dashUsed:stealth.dashUsed,supportGuard,reinforcementIssued:stealth.reinforcementIssued};
+  dashUsed:stealth.dashUsed,supportGuard,reinforcementIssued,reinforcementMode:stealth.reinforcementMode};
  const advanced={...state,clock:state.clock+1,active:{...mission,tick:mission.tick+1,stealth:nextStealth}};
  if(alarm>=3)return accept(recordOutcome(advanced,mission.id,"stealth",null,mission.targetId,mission.teamIds,"defeat",mission.teamIds.slice(0,1),rules,
   "Patrouille alertée : extraction abandonnée."),"Infiltration compromise.");
@@ -1238,6 +1252,24 @@ export function readWarOperationsV115(raw:string,rules:WarRulesV6):WarOperations
     }
     if(active?.mode==="stealth"){
       const v1=active.stealth!;
+      // PR #57 used a different field for the same live second guard. Migrate
+      // only validated coordinates; reject conflicting dual representations.
+      const legacy=v1 as WarStealthV115&{secondGuard?:unknown};
+      if(Object.prototype.hasOwnProperty.call(legacy,"secondGuard")){
+        const second=legacy.secondGuard as {guardX?:unknown;guardY?:unknown;guardDirection?:unknown}|null;
+        if(!second||typeof second!=="object"||Array.isArray(second)||
+          !Number.isInteger(second.guardX)||!Number.isInteger(second.guardY)||
+          (second.guardDirection!==-1&&second.guardDirection!==1)) return null;
+        const converted:NonNullable<WarStealthV115["supportGuard"]>={x:second.guardX as number,y:second.guardY as number,
+          direction:second.guardDirection};
+        if(v1.reinforcementIssued===false||
+          (Object.prototype.hasOwnProperty.call(v1,"supportGuard")&&!v1.supportGuard)||
+          (v1.supportGuard&&(v1.supportGuard.x!==converted.x||
+            v1.supportGuard.y!==converted.y||v1.supportGuard.direction!==converted.direction))) return null;
+        v1.supportGuard=converted;
+        v1.reinforcementIssued=true;
+        delete legacy.secondGuard;
+      }
       if(!Number.isInteger(v1.x)||v1.x<0||v1.x>8||
         !Number.isInteger(v1.y)||v1.y<0||v1.y>5||
         !Number.isInteger(v1.guardX)||v1.guardX<0||v1.guardX>8||
@@ -1249,6 +1281,7 @@ export function readWarOperationsV115(raw:string,rules:WarRulesV6):WarOperations
         (v1.decoyUsed!==undefined&&typeof v1.decoyUsed!=="boolean")||
         (v1.dashUsed!==undefined&&typeof v1.dashUsed!=="boolean")||
         (v1.reinforcementIssued!==undefined&&typeof v1.reinforcementIssued!=="boolean")||
+        (v1.reinforcementMode!==undefined&&!['manual','decoy'].includes(v1.reinforcementMode))||
         (v1.reinforcementIssued===true&&v1.supportGuard===undefined)||
         (v1.supportGuard!==undefined&&(!v1.reinforcementIssued||
           !v1.supportGuard||typeof v1.supportGuard!=="object"||

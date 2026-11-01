@@ -36,7 +36,7 @@ import {commandWarAssaultInterposeV145} from "./systems/clanWarInterposeV145";
 import {warOuterTravelLedgerV145} from "./systems/clanWarTravelLedgerV145";
 import {buildWarCouncilAuditV146} from "./systems/clanWarCouncilAuditV146";
 import {commandWarOuterRerouteV144} from "./systems/clanWarOuterRerouteV144";
-import {commandWarStealthAlertReinforcementV144} from "./systems/clanWarStealthReinforcementV144";
+import {commandWarStealthAlertReinforcementV144,setStealthReinforcementMode} from "./systems/clanWarStealthReinforcementV144";
 import {commandWarStealthDashV143} from "./systems/clanWarStealthDashV143";
 import {commandWarOuterIncidentV143,warOuterIncidentV143} from "./systems/clanWarOuterIncidentV143";
 import {planWarStealthStepV142,commandWarStealthStepV142} from "./systems/clanWarStealthPathV142";
@@ -562,7 +562,14 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
       {stealth && <div>
         <p>Rejoindre le relais (7,1), le désactiver, puis rejoindre l&apos;extraction (1,4). Alerte <strong>{stealth.alarm}/3</strong> · énergie de camouflage <strong>{stealth.energy}/5</strong> · relais <strong>{stealth.sabotaged?"neutralisé":"actif"}</strong> · diversion <strong>{stealth.decoyUsed?"épuisée": "disponible"}</strong> · leurre <strong>{stealth.decoyTurns??0} tour(s) à la position émise</strong> · couverts utilisés <strong>{(stealth.usedCoverIds??[]).length}/{missionTerrain?.cover.length??0}</strong> · écoutes <strong>{stealth.acousticUsed??0}/2</strong>.</p>
         <p className={styles.explain}>Terrain régional : {missionTerrain?.title} · {missionTerrain?.ground} · obstacle : {missionTerrain?.wallLabel}.</p>
-        <button type="button" disabled={blocked||stealth.alarm<1||
+        <label>Règle de renfort : <select value={stealth.reinforcementMode??"manual"}
+          disabled={blocked||stealth.alarm>0||Boolean(stealth.decoyUsed)||Boolean(stealth.supportGuard)}
+          onChange={event=>commit(setStealthReinforcementMode(worldRef.current,rules,
+            event.target.value==="decoy"?"decoy":"manual"))}>
+          <option value="manual">Renfort manuel après alerte</option>
+          <option value="decoy">Renfort automatique après diversion et alerte</option>
+        </select></label>
+        <button type="button" disabled={blocked||stealth.reinforcementMode==="decoy"||stealth.alarm<1||
            Boolean(stealth.reinforcementIssued)||Boolean(stealth.supportGuard)}
           onClick={()=>commit(commandWarStealthAlertReinforcementV144(worldRef.current,rules))}>
           Sécurité renforcée V144 · activer un second garde pour cette infiltration
