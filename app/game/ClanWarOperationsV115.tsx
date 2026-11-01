@@ -15,7 +15,7 @@ import {
   queueWarRecruitmentV115,
   queueWarTreatmentV116, cancelWarTreatmentV116,
   leaveWarOperationV115, readWarOperationsV115, stepWarRtsRealtimeV115, toggleWarRtsRealtimeV115,
-  settleWarDueEventsV151, recallWarOuterMissionV116, stepAssaultV115, warAssaultWaveProfileV140,
+  settleWarDueEventsV151, settleWarOuterOpsV115, recallWarOuterMissionV116, stepAssaultV115, warAssaultWaveProfileV140,
   warMissionEligibleV115, warOuterSecondsRemainingV115,
   type WarMissionModeV115, type OuterFocusV115, type WarOperationsStateV115,
   type WarOperationsUpdateV115,
