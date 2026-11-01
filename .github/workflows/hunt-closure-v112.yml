@@ -187,6 +187,9 @@ jobs:
       - name: Mounted hunt lifecycle, extraction bridge, real storage and mapped workshop
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: node scripts/qa-hunt-lifecycle-browser-v112.mjs
+      - name: Current native Atlas Worker routes and cancellation
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node scripts/qa-homeworld-atlas-browser-v109.mjs
       - name: Print compact browser reports
         if: always()
         run: >-
@@ -199,5 +202,6 @@ jobs:
           path: |
             outputs/qa-hunt-v112/
             outputs/qa-hunt-lifecycle-v112/
+            outputs/qa-v109-atlas-integration/
           if-no-files-found: warn
           retention-days: 30
