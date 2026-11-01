@@ -36,7 +36,7 @@ test("V151 operations guard re-checks local bytes on focus and visibility and ig
 });
 test("V151 two-tab Chrome QA uses real V115 panels, refuses stale reset and reopens authoritative state",()=>{
   const src=read("scripts/qa-clan-war-v115-multitab-v151.mjs");
-  assert.match(src,/entryPoints:\["tests\/browser\/clan-war-v147-four-modes\.fixture\.tsx"\]/);
+  assert.match(src,/entryPoints:\["tests\/browser\/clan-war-v151-four-modes\.fixture\.tsx"\]/);
   assert.match(src,/const a=await ctx\.newPage\(\),b=await ctx\.newPage\(\)/);
   assert.match(src,/await selectTeamAndLaunch\(a,"outer"\)/);
   assert.match(src,/await reset\(b\)\.isDisabled\(\)/);
