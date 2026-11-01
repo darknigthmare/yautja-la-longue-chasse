@@ -53,6 +53,10 @@ jobs:
             /docs/qa/v112-hunt-closure/
             /public/game/ui/v112/
             /public/game/assets/v112/discovery/
+            /public/game/dialogues/v85/bible-dialogues.json
+            /public/game/homeworld/v83/basalt-planter-left.png
+            /public/game/homeworld/v83/clan-waymarker-right.png
+            /public/game/homeworld/v84/maintenance-console-right.png
             /public/**/manifest.json
             /public/game/sprites/v7/enemies/flora-other/xeno-drone-sheet.png
       - name: Node 22
@@ -103,6 +107,11 @@ jobs:
         run: >-
           node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1
           tests/homeworld-mobility-v112.test.mjs tests/homeworld-dynamic-navigation-v109.test.mjs
+      - name: Existing V104 cartography approaches and V112 public-place collision reserves
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: >-
+          node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1
+          tests/homeworld-cartography-v104.test.mjs tests/homeworld-public-places-v112.test.mjs
       - name: Legacy and current planet consumer version compatibility
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: >-
