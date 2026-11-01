@@ -63,7 +63,20 @@ try{
  const selected=JSON.parse(await page.evaluate(key=>localStorage.getItem(key),key));
  assert.deepEqual(selected.active.stealth.guardInvestigation,found.active.stealth.guardInvestigation);
  await page.getByRole("button",{name:"Camouflage optique",exact:true}).click();
+ // The PR71 Web Lock commits this action asynchronously. A click does not
+ // imply localStorage has been durably updated. Poll the REAL validated V115
+ // archive until the first memory tick is persisted; never inject test state.
+ await page.waitForFunction(({key,previousClock,expected})=>{
+   const raw=localStorage.getItem(key);
+   if(!raw)return false;
+   try{
+     const current=JSON.parse(raw);
+     return current.clock===previousClock+1 &&
+       current.active?.stealth?.guardInvestigation?.turns===expected;
+   }catch{return false;}
+ },{key,previousClock:found.clock,expected:1},{timeout:30000});
  const updated=JSON.parse(await page.evaluate(key=>localStorage.getItem(key),key));
+ assert.equal(updated.clock,found.clock+1);
  assert.deepEqual(updated.active.stealth.guardInvestigation,{...found.active.stealth.guardInvestigation,turns:1});
  await page.reload();await page.getByText("Rejoindre le relais",{exact:false}).waitFor();
  assert.deepEqual(JSON.parse(await page.evaluate(key=>localStorage.getItem(key),key)).active.stealth.guardInvestigation,updated.active.stealth.guardInvestigation);
