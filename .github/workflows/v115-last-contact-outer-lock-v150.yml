@@ -78,6 +78,8 @@ jobs:
             /types/
             /tests/browser/
             /scripts/qa-stealth-last-contact-browser.mjs
+            /scripts/qa-outer-pace-browser.mjs
+            /scripts/qa-clan-war-v115-multitab-v148.mjs
             /public/game/assets/v14/hunter-kit/manifest.json
             /public/game/assets/v15/trophies/manifest.json
             /public/game/assets/v16/franchise-trophies/manifest.json
@@ -87,11 +89,21 @@ jobs:
         with:
           node-version: '22'
       - run: npm ci --ignore-scripts --no-audit --no-fund
-      - name: Fetch source-verified PR55 original engine data
-        run: git fetch --no-tags --depth=1 --filter=blob:none origin fa0322800d5c51e16a4dd56ef6d0fc80d8020394
+      - name: Fetch source-verified PR55 and PR57 archived engine data
+        run: |
+          git fetch --no-tags --depth=1 --filter=blob:none origin fa0322800d5c51e16a4dd56ef6d0fc80d8020394
+          git fetch --no-tags --depth=1 --filter=blob:none origin f25cd7a33e04f789e7c6df231ccad9116a50b38c
       - name: Install headless Chromium
         run: npx --no-install playwright-core install --with-deps chromium
       - name: Real V115 UI + PR55 generated archive + cloak + reload
         run: |
           export CHROMIUM_EXECUTABLE_PATH="$(node -e 'process.stdout.write(require("playwright-core").chromium.executablePath())')"
           node scripts/qa-stealth-last-contact-browser.mjs
+      - name: Real PR71 forced pace, recall and preserved route timing
+        run: |
+          export CHROMIUM_EXECUTABLE_PATH="$(node -e 'process.stdout.write(require("playwright-core").chromium.executablePath())')"
+          node scripts/qa-outer-pace-browser.mjs
+      - name: Real two-tab locked V115 write and non-destructive reload
+        run: |
+          export AUDIT_CHROME_EXECUTABLE="$(node -e 'process.stdout.write(require("playwright-core").chromium.executablePath())')"
+          node scripts/qa-clan-war-v115-multitab-v148.mjs
