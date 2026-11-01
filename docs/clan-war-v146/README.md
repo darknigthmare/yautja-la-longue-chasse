@@ -31,3 +31,15 @@ Ce code ne confond plus un **reçu d'exercice** et une **preuve de conquête**. 
 **Aucun mapping géographique/roster n'a été inventé.** Pour ouvrir ensuite une conséquence militaire de campagne, il faudra des liens d'origine vérifiés, une identité d'acteur persistante et une transaction serveur autoritaire/idempotente ; la V146 ne prétend pas réaliser cela. Les **1 200 variantes V120** demeurent des dossiers design-only et non 1 200 niveaux terminés. Les travaux sur les décors/armes/PNJ en fidélité 1:1, la coop, le PvP et la QA réelle restent ouverts.
 
 Le suivi **Excel V146** complète celui de la V145 et conserve les audits et tâches non finalisées, sans effacer le classeur V143 de 73 onglets, ni le complément V144.
+
+## Classeur V146 intégré et preuve GitHub
+
+`docs/clan-war-v146/Yautja_Guerres_Clans_Provenance_V146_2026-11-01.xlsx` est un véritable XLSX binaire. Il conserve intégralement les **19 feuilles V145**, y compris les neuf V144, et ajoute sept feuilles V146 : géographie, roster, quatre modes, QA, provenance, backlog et tableau de bord (**26 onglets**).
+
+- **32 exigences V146** (8 par mode) : **28 validées en CI ciblée** et **4 à développer** ; elles ne valent pas une acceptation graphique ou un terrain conquis.
+- **24 procédures QA** (six par mode) : **20 tests ciblés** documentés, **4 contrôles navigateur/manette ouverts**.
+- **12 échantillons W3-K/CON-T non appariés**, **8 contrats de rosters**, **10 garanties de provenance**, **12 chantiers non réalisés**, dont le monde persistant V85 et les 1 200 scènes du catalogue V120.
+- Les formules `COUNTIF`/`COUNTIFS`/`COUNTA` calculent réellement le dashboard. Tous les liens vers les IDs QA V146 sont vérifiés.
+- **[GitHub Actions 41255067773](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41255067773)** a validé **182/182 tests Node**, TypeScript et ESLint sur le code V146. La CI du dernier commit incluant l'XLSX ajoutera `tests/clan-war-production-v146.test.mjs` qui vérifie le véritable binaire (26 onglets et IDs historiques).
+
+**Important :** les numéros similaires W3-K01 et CON-T01 sont affichés uniquement comme contre-exemples de mapping, pas comme un rapprochement attesté.
