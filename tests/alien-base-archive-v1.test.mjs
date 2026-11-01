@@ -6,7 +6,7 @@ const source = readFileSync(file, "utf8");
 const bestiary = readFileSync(new URL("../app/game/EnemyBestiaryV8.tsx", import.meta.url), "utf8");
 const ui = readFileSync(new URL("../app/game/AlienBaseArchiveV1.tsx", import.meta.url), "utf8");
 test("Six distinct film lifecycle identities and no gameplay admission", () => {
-  const ids = [...source.matchAll(/"id": "(bio\\.xenomorph\\.[a-z0-9-]+)"/g)].map(m => m[1]);
+  const ids = [...source.matchAll(/"id": "(bio\.xenomorph\.[a-z0-9-]+)"/g)].map(m => m[1]);
   assert.equal(ids.length, 6);
   assert.equal(new Set(ids).size, 6);
   for (const id of ["ovomorph", "facehugger", "chestburster", "drone", "warrior", "queen"])
