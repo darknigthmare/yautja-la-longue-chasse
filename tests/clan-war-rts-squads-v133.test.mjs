@@ -8,6 +8,7 @@ const compiled=await build({
   "export * from './app/game/systems/clanWarRtsSourceMissionsV129';",
   "export * from './app/game/systems/clanWarSourceMapsV128';",
   "export * from './app/game/systems/clanWarBibleV6';",
+  "export * from './app/game/systems/clanWarCouncilAuditV146';",
  ].join("\n"),resolveDir:process.cwd()},bundle:true,write:false,
  platform:"node",format:"esm",target:"es2022",logLevel:"silent",
 });
@@ -223,4 +224,10 @@ test("24 isolated objective chains: 72 physical tasks, escorts, return and uniqu
  assert.equal(outcomes.reduce((a,s)=>a+s.completedTaskIds.length,0),72);
  assert.ok(outcomes.filter(s=>s.tracked).length>=8);
  assert.ok(outcomes.every(s=>s.report?.outcome==="victory"&&!s.report.campaignMutation));
+ for(const state of outcomes){
+  const audit=api.buildWarCouncilAuditV146(null,state,rules);
+  assert.equal(audit.total,1,state.mission.id+": "+audit.issues.join(", "));
+  assert.equal(audit.dossiers[0].status,"source-checked");
+  assert.ok(audit.dossiers[0].missingEvidence.some(x=>x.includes("non authentifiée")));
+ }
 });

@@ -154,3 +154,19 @@ test("Council V146: 24 source mission scripts and neutral escort provenance rema
  assert.equal(state.context,"free");
  assert.equal(state.reports.length,0);
 });
+
+test("Council V146: a self-consistent receipt cannot invent a finished phase, source mission, map or unit",()=>{
+ const done=w3Receipt();
+ const fakeActive={...done,phase:"active",report:{...done.report,outcome:"active",id:`W133-${done.mission.id}-active-${done.turn}`}};
+ const fakePlanet={...done,map:{...done.map,planetId:"NOT-A-PLANET"},report:{...done.report,planetId:"NOT-A-PLANET"}};
+ const fakeMap={...done,map:{...done.map,id:"W3-MAP-FAKE"},report:{...done.report,mapId:"W3-MAP-FAKE"}};
+ const fakeMission={...done,mission:{...done.mission,id:"W3-FAKE"},report:{...done.report,missionId:"W3-FAKE",id:`W133-W3-FAKE-${done.phase}-${done.turn}`}};
+ const fakeSquad={...done,squads:done.squads.map((s,i)=>i? s : {...s,unitId:"W3-UNKNOWN"})};
+ const fakeVictory={...done,phase:"victory",report:{...done.report,outcome:"victory",id:`W133-${done.mission.id}-victory-${done.turn}`}};
+ const fakeCells={...done,mission:{...done.mission,sourceCells:["FAKE"]},report:{...done.report,sourceCells:["FAKE",...done.map.sourceCells]}};
+ for(const candidate of [fakeActive,fakePlanet,fakeMap,fakeMission,fakeSquad,fakeVictory,fakeCells]){
+  const audit=api.buildWarCouncilAuditV146(null,candidate,rules);
+  assert.equal(audit.total,0,"inconsistent source data must not become evidence");
+  assert.ok(audit.issues.length);
+ }
+});

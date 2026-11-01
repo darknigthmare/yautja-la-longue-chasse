@@ -6,6 +6,7 @@ import {readWarOperationsV115} from "./clanWarOperationsV115";
 import type {
  WarRtsSquadsStateV133,WarRtsSquadsReceiptV133,
 } from "./clanWarRtsSquadsV133";
+import {createWarRtsMissionStateV129} from "./clanWarRtsSourceMissionsV129";
 
 /**
  * V146 — a single, READ-ONLY evidence envelope across all four Clan War
@@ -37,6 +38,27 @@ export interface WarCouncilAuditV146 {
  sourceSha:string;campaignMutation:false;
 }
 const unique=(values:string[])=>[...new Set(values)];
+const sameStrings=(a:string[],b:string[])=>a.length===b.length&&a.every((v,i)=>v===b[i]);
+/** Consistency with the local V6 catalog, not authentication of a client save. */
+function hasKnownRtsSource(state:WarRtsSquadsStateV133,rules:WarRulesV6):boolean {
+ try {
+  const source=createWarRtsMissionStateV129(state.mission.id,rules);
+  const mission=source.mission,map=source.base.map;
+  return (state.phase==="victory"||state.phase==="defeat"||state.phase==="retreat")&&
+   state.mission.mapId===mission.mapId&&state.mission.planetId===mission.planetId&&
+   state.map.id===map.id&&state.map.planetId===map.planetId&&
+   sameStrings(state.mission.sourceCells,mission.sourceCells)&&
+   sameStrings(state.map.sourceCells,map.sourceCells)&&
+   sameStrings(state.mission.tasks.map(t=>t.id),mission.tasks.map(t=>t.id))&&
+   state.completedTaskIds.every((id,i)=>id===mission.tasks[i]?.id)&&
+   (state.phase!=="victory"||(state.completedTaskIds.length===mission.tasks.length&&
+    (!mission.escortKind||Boolean(state.tracked?.extracted))))&&
+   state.squads.length>=2&&state.squads.length<=4&&
+   state.squads.every(s=>rules.units.some(u=>u.id===s.unitId&&u.fullMembers>0&&u.commandPoints>0));
+ } catch {
+  return false;
+ }
+}
 const staticMissing:Record<WarCouncilModeV146,string[]>={
  assault:["Chronologie spatiale des touches non archivée dans le rapport V115",
   "Validation de continuité filmique et de conquête V85 absente"],
@@ -69,7 +91,7 @@ function dossierV115(report:WarMissionReportV115,ops:WarOperationsStateV115,
   remainingRav:null,summary:report.summary,
   engagementLog:(report.engagementLog??[]).slice(0,12),
   provenFacts:[
-   "Rapport V115 source V6 signé : "+report.id,
+   "Rapport V115 rattaché au catalogue V6 : "+report.id,
    "Issue enregistrée : "+report.outcome,
    "Détachements identifiés : "+teamIds.length,
    ...(report.mode==="outer"&&report.focus?
@@ -95,6 +117,7 @@ function dossierRts(report:WarRtsSquadsReceiptV133,state:WarRtsSquadsStateV133,
    ...(report.outcome==="victory"&&!complete?
        ["Preuves des trois objectifs ou escorte finale incomplètes"]:[]),
    "Simulation libre W3 : progression et terrain V85 non fusionnés",
+  "Archive locale non authentifiée : la cohérence source ne prouve pas le déroulement réel",
    "Validation 1:1 des scènes, armes et décors non réalisée",
  ];
  return {
@@ -141,7 +164,7 @@ export function buildWarCouncilAuditV146(
  }
  if(rts?.report){
   const report=rts.report;
-  const correct=rts.sourceSha===rules.metadata.sha256&&
+  const correct=hasKnownRtsSource(rts,rules)&&rts.sourceSha===rules.metadata.sha256&&
    rts.mode==="free-exercise"&&report.source==="V6-W3-original-field-study"&&
    report.campaignMutation===false&&report.missionId===rts.mission.id&&
    report.mapId===rts.map.id&&report.planetId===rts.map.planetId&&

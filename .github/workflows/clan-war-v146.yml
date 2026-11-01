@@ -3,7 +3,7 @@ on:
   push:
     branches: [feat/v146-clan-war-evidence-20261101]
   pull_request:
-    branches: [feat/v145-four-mode-physical-protection-20261101]
+    branches: [feat/v145-four-mode-physical-protection-20261101, feat/v146-clan-war-evidence-20261101]
     paths:
       - 'app/game/ClanWarOperationsV115.tsx'
       - 'app/game/ClanWarRtsSquadsV133.tsx'
