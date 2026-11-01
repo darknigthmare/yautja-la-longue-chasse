@@ -79,6 +79,9 @@ test("physical size scales region and territory area and route distances without
     assert.equal(manifest.selectedShapeIds.region,"reg-40");
     assert.equal(manifest.shapeCatalog.length,120);
     assert.equal(manifest.supplementalMaterialCatalog.length,32);
+    assert.equal(manifest.supplementalMaterialAdditionsV130.length,16);
+    assert.equal(new Set([...manifest.supplementalMaterialCatalog,...manifest.supplementalMaterialAdditionsV130]
+      .map(item=>item.id)).size,48);
   }
   for(let i=1;i<metrics.length;i++) {
     const a=metrics[i-1],b=metrics[i];
