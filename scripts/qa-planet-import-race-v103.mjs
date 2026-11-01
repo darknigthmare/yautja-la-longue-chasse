@@ -201,7 +201,7 @@ try {
   await staleRead("Rejected shuffle with a locked invalid seed supersedes the older file read", async () => {
     await seedInput(page).fill("4294967296");
     await root(page).getByRole("checkbox", { name: "Conserver : Graine du monde", exact: true }).setChecked(true);
-  }, () => button(page, "Mélanger les réglages").click(), seedError);
+  }, () => root(page).getByTestId("planet-random-all-v144").click(), seedError);
   await staleRead("Rejected code import prepared before the file supersedes its pending read", () => codeInput(page).fill("invalid-world-code-v103"), () => button(page, "Retrouver le monde").click(), codeError);
   await staleRead("Editing the code field after native reading preserves the newer unfinished input", async () => {}, async () => {
     const before = await snapshot();

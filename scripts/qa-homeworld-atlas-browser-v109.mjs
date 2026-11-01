@@ -30,18 +30,21 @@ const fixture={save:saved,groundChanged,foreign,origin:{actor:f.b.passage.start,
 const bundle=await build({entryPoints:[path.join(root,'tests/browser/homeworld-atlas-v109.fixture.tsx')],bundle:true,write:false,outdir:path.join(root,'outputs/qa-v109-atlas-build'),format:'esm',platform:'browser',jsx:'automatic',define:{'process.env.NODE_ENV':'"production"'},logLevel:'silent',plugins});
 const workerFile=path.join(root,'app/game/homeworldRouteWorkerV111.ts');
 const worker=await build({entryPoints:[workerFile],bundle:true,write:false,format:'esm',platform:'browser',logLevel:'silent'});
+// Since V112 the actual Atlas constructs homeworldRouteWorkerV112.ts; serve that real Worker as well.
+const workerV112=await build({entryPoints:[path.join(root,'app/game/homeworldRouteWorkerV112.ts')],bundle:true,write:false,format:'esm',platform:'browser',logLevel:'silent'});
 const js=bundle.outputFiles.find(file=>file.path.endsWith('.js')).contents,css=bundle.outputFiles.find(file=>file.path.endsWith('.css'))?.contents??'',workerJs=worker.outputFiles[0].contents;
 const server=http.createServer((req,res)=>{
  if(req.url==='/fixture.js'){res.setHeader('Content-Type','text/javascript');res.end(js);}
  else if(req.url==='/fixture.css'){res.setHeader('Content-Type','text/css');res.end(css);}
  else if(req.url==='/homeworldRouteWorkerV111.ts'){res.setHeader('Content-Type','text/javascript');res.end(workerJs);}
+ else if(req.url==='/homeworldRouteWorkerV112.ts'){res.setHeader('Content-Type','text/javascript');res.end(workerV112.outputFiles[0].contents);}
  else if(req.url==='/'){res.setHeader('Content-Type','text/html');res.end('<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Atlas V109 integration</title><link rel="icon" href="data:,"><link rel="stylesheet" href="/fixture.css"><div id="root"></div><script>window.__atlasFixturesV109='+JSON.stringify(fixture).replaceAll('<','\\u003c')+'</script><script type="module" src="/fixture.js"></script>');}
  else{res.writeHead(404);res.end('Not found');}
 });
 await new Promise((resolve,reject)=>{server.once('error',reject);server.listen(0,'127.0.0.1',resolve);});
 const origin='http://127.0.0.1:'+server.address().port,checks=[],errors=[],consoleErrors=[],httpErrors=[],captures=[];let browser,failure;
 const sha=value=>createHash('sha256').update(value).digest('hex');await fs.mkdir(output,{recursive:true});
-const sourceFiles=['app/game/HomeworldWorldMapV77.tsx','app/game/homeworldRouteWorkerV111.ts','app/game/systems/homeworldCourtArtV80.ts','app/game/systems/homeworldCivicDecorV80.ts','tests/browser/homeworld-atlas-v109.fixture.tsx','scripts/qa-homeworld-atlas-browser-v109.mjs'];
+const sourceFiles=['app/game/HomeworldWorldMapV77.tsx','app/game/homeworldRouteWorkerV111.ts','app/game/homeworldRouteWorkerV112.ts','app/game/systems/homeworldCourtArtV80.ts','app/game/systems/homeworldCivicDecorV80.ts','tests/browser/homeworld-atlas-v109.fixture.tsx','scripts/qa-homeworld-atlas-browser-v109.mjs'];
 const sources=await Promise.all(sourceFiles.map(async file=>({path:file,sha256:sha(await fs.readFile(baselineHost&&path.join(root,file)===hostFile?baselineHost:path.join(root,file)))})));
 async function check(name,run){const context=await browser.newContext({viewport:{width:1200,height:1000},reducedMotion:'reduce'}),page=await context.newPage();page.setDefaultTimeout(30000);page.on('pageerror',e=>errors.push(e.message));
  page.on('console',entry=>{if(entry.type()==='error')consoleErrors.push(entry.text());});page.on('response',response=>{if(response.status()>=400)httpErrors.push({url:response.url(),status:response.status()});});
