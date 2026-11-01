@@ -1,0 +1,68 @@
+name: V112 Homeworld mobility requalification
+on:
+  pull_request:
+    branches: [fix/v122-planet-v103-v115-types-20261030]
+    paths:
+      - 'app/game/**'
+      - 'tests/homeworld-mobility-v112.test.mjs'
+      - 'tests/homeworld-market-rejoin-v112.test.mjs'
+      - 'tests/helpers/homeworld-scene-ssr-v78.mjs'
+      - 'tests/fixtures/excel-history-v111-homeworld-v112.json'
+      - 'scripts/historical-excel-context-homeworld-v112.mjs'
+      - 'scripts/lib/historical-excel-context.mjs'
+      - '.github/workflows/homeworld-mobility-requalification-v112.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  mobility:
+    name: Pinned V111 comparison and current V112 motor
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /docs/
+            /scripts/
+            /tests/
+            /public/**/manifest.json
+      - name: Select exact shared historical evidence
+        id: evidence
+        run: |
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          print('patterns<<V112_PATTERNS_END')
+          import json
+          print('/*\n!/*/\n/app/\n/docs/\n/scripts/\n/tests/\n/public/**/manifest.json')
+          with open('tests/fixtures/excel-history-v111-homeworld-v112.json') as f:
+              shared = json.load(f)['shared']
+          for row in shared:
+              path = row['path']
+              assert isinstance(path, str) and not path.startswith('/') and all(part not in ('', '.', '..') for part in path.split('/'))
+              if path.startswith(('public/', 'art-source/')):
+                  print('/' + path)
+          print('V112_PATTERNS_END')
+          PY
+      - name: Checkout source and exact historical evidence
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: ${{ steps.evidence.outputs.patterns }}
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Install locked dependencies without lifecycle scripts
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Execute historical comparison and current motor regressions
+        run: >-
+          node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1
+          tests/homeworld-mobility-v112.test.mjs
+          tests/homeworld-market-rejoin-v112.test.mjs
