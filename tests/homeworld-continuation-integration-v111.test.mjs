@@ -201,7 +201,7 @@ test('V111 actual interact refuses an available doorway while A carries the frag
   assert.deepEqual([...state.values],durable);assert.equal(state.writes,0);
 });
 
-test('V111 Save11 to12 preserves the genuine V110 campaign and B document while initializing additive hunting defaults',async()=>{
+test('V111 Save11 to12 preserves the genuine V110 campaign and B document while initializing additive hunting and appearance defaults',async()=>{
   const history=await getHistoricalHomeworldExcelContextV111(),old=homeworldSceneSsrV78(history.root).load('app/game/save.ts');
   assert.equal(old.SAVE_VERSION,11);assert.equal(saves.SAVE_VERSION,12);
   const state=stateAt('working'),legacy=old.defaultSave(owner);
@@ -214,7 +214,10 @@ test('V111 Save11 to12 preserves the genuine V110 campaign and B document while 
   assert.deepEqual(migrated,{...previous,version:12,
     inventory:{...previous.inventory,fieldToolIds:[],harvestV112:emptyHarvestInventoryV112()},
     settings:{...previous.settings,huntAccessibility:normalizeHuntAccessibilityV112(undefined)},
-  },'every pre-existing campaign field survives; additive hunting inventory and accessibility use their real production defaults');
+    // Main already adds optional V113 materials. An old campaign selects none;
+    // the private historical V111 assertion remains unchanged in its capsule.
+    appearance:{...previous.appearance,skinMaterialId:null,dreadMaterialId:null,outfitMaterialId:null},
+  },'every pre-existing campaign field survives; additive hunting and appearance fields use their production defaults');
   assert.equal(JSON.stringify(migrated.homeworld.archivePlaqueV109),JSON.stringify(previous.homeworld.archivePlaqueV109));
   assert.equal(migrated.homeworld.archiveContinuationV111,undefined,'migration does not create or auto-start an A continuation');
 });
