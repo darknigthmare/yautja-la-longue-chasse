@@ -1,0 +1,223 @@
+name: V146 four modes — no-false-mapping provenance audit and QA
+on:
+  push:
+    branches: [feat/v146-clan-war-provenance-audit-20261101]
+  pull_request:
+    branches: [feat/v145-clan-war-proof-ledger-20261101]
+    paths:
+      - 'app/game/ClanWarOperationsV115.tsx'
+      - 'app/game/ClanWarRtsSquadsV133.tsx'
+      - 'app/game/systems/clanWarOperationsV115.ts'
+      - 'app/game/systems/clanWarParallelModesV136.ts'
+      - 'app/game/systems/clanWarParallelModesV137.ts'
+      - 'app/game/systems/clanWarParallelModesV138.ts'
+      - 'app/game/systems/clanWarParallelModesV139.ts'
+      - 'app/game/systems/clanWarOuterRouteProgressV140.ts'
+      - 'app/game/systems/clanWarStealthPatrolV140.ts'
+      - 'tests/clan-war-four-modes-v140.test.mjs'
+      - 'tests/clan-war-four-modes-v141.test.mjs'
+      - 'tests/clan-war-four-modes-v142.test.mjs'
+      - 'tests/clan-war-four-modes-v143.test.mjs'
+      - 'tests/clan-war-debrief-v144.test.mjs'
+      - 'tests/clan-war-proof-sync-v145.test.mjs'
+      - 'tests/clan-war-provenance-v146.test.mjs'
+      - 'tests/clan-war-production-v146.test.mjs'
+      - 'app/game/systems/clanWarSourceAuditV146.ts'
+      - 'docs/clan-war-v146/**'
+      - 'tsconfig.clan-war-v146.json'
+      - '.github/workflows/clan-war-v146.yml'
+      - 'tests/clan-war-session-v85.test.mjs'
+      - 'tests/clan-war-production-v145.test.mjs'
+      - 'app/game/systems/clanWarProofSyncV145.ts'
+      - 'app/game/ClanWarPanelV85.tsx'
+      - 'docs/clan-war-v145/**'
+      - 'tsconfig.clan-war-v145.json'
+      - '.github/workflows/clan-war-v145.yml'
+      - 'tests/clan-war-production-v144.test.mjs'
+      - 'app/game/systems/clanWarDebriefV144.ts'
+      - 'docs/clan-war-v144/**'
+      - 'tsconfig.clan-war-v144.json'
+      - '.github/workflows/clan-war-v144.yml'
+      - 'tests/clan-war-production-v143.test.mjs'
+      - 'tests/clan-war-production-v143.test.mjs'
+      - 'app/game/systems/clanWarBraceV143.ts'
+      - 'app/game/systems/clanWarOuterIncidentV143.ts'
+      - 'app/game/systems/clanWarStealthDashV143.ts'
+      - 'app/game/systems/clanWarRtsMarchV143.ts'
+      - 'docs/clan-war-v143/**'
+      - 'tsconfig.clan-war-v143.json'
+      - '.github/workflows/clan-war-v143.yml'
+      - 'tests/clan-war-production-v142.test.mjs'
+      - 'tests/clan-war-production-v142.test.mjs'
+      - 'app/game/systems/clanWarOuterChoicesV142.ts'
+      - 'app/game/systems/clanWarFocusV142.ts'
+      - 'app/game/systems/clanWarStealthPathV142.ts'
+      - 'app/game/systems/clanWarRtsWaypointV142.ts'
+      - 'docs/clan-war-v142/**'
+      - 'tsconfig.clan-war-v142.json'
+      - '.github/workflows/clan-war-v142.yml'
+      - 'tests/clan-war-production-v141.test.mjs'
+      - 'app/game/systems/clanWarAssaultContactV141.ts'
+      - 'app/game/systems/clanWarOuterWeightedProgressV141.ts'
+      - 'app/game/systems/clanWarStealthDecoyV141.ts'
+      - 'docs/clan-war-v141/**'
+      - 'tsconfig.clan-war-v141.json'
+      - '.github/workflows/clan-war-v141.yml'
+      - 'tests/clan-war-production-v140.test.mjs'
+      - 'docs/clan-war-v140/**'
+      - 'tsconfig.clan-war-v140.json'
+      - '.github/workflows/clan-war-v140.yml'
+      - 'tests/clan-war-four-modes-v139.test.mjs'
+      - 'tests/clan-war-production-v139.test.mjs'
+      - 'docs/clan-war-v139/**'
+      - 'tsconfig.clan-war-v139.json'
+      - '.github/workflows/clan-war-v139.yml'
+      - 'tests/clan-war-four-modes-v138.test.mjs'
+      - 'tests/clan-war-production-v138.test.mjs'
+      - 'docs/clan-war-v138/**'
+      - 'tsconfig.clan-war-v138.json'
+      - '.github/workflows/clan-war-v138.yml'
+      - 'tests/clan-war-four-modes-v137.test.mjs'
+      - 'tests/clan-war-production-v137.test.mjs'
+      - 'docs/clan-war-v137/**'
+      - 'tsconfig.clan-war-v137.json'
+      - '.github/workflows/clan-war-v137.yml'
+      - 'tests/clan-war-four-modes-v136.test.mjs'
+      - 'tests/clan-war-production-v136.test.mjs'
+      - 'docs/clan-war-v136/**'
+      - 'tsconfig.clan-war-v136.json'
+      - 'app/game/systems/clanWarParallelModesV135.ts'
+      - 'app/game/systems/clanWarRtsSquadsV133.ts'
+      - 'tests/clan-war-four-modes-v135.test.mjs'
+      - 'tests/clan-war-production-v135.test.mjs'
+      - 'docs/clan-war-v135/**'
+      - '.github/workflows/clan-war-v136.yml'
+      - '.github/workflows/clan-war-v135.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  four-modes:
+    name: Assault · Outer Ops · Stealth · RTS (single V6 contract)
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Sparse checkout V146 provenance, protected session, UI and QA
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /package.json
+            /package-lock.json
+            /eslint.config.mjs
+            /tsconfig.json
+            /tsconfig.clan-war-v135.json
+            /tsconfig.clan-war-v136.json
+            /tsconfig.clan-war-v137.json
+            /tsconfig.clan-war-v138.json
+            /tsconfig.clan-war-v139.json
+            /tsconfig.clan-war-v140.json
+            /tsconfig.clan-war-v141.json
+            /tsconfig.clan-war-v142.json
+            /tsconfig.clan-war-v143.json
+            /tsconfig.clan-war-v144.json
+            /tsconfig.clan-war-v145.json
+            /tsconfig.clan-war-v146.json
+            /types/clan-war-v120-css.d.ts
+            /app/game/
+            /public/game/assets/v15/trophies/manifest.json
+            /app/game/clanWarBibleV6Source.json
+            /app/game/clanWarV85Source.json
+            /app/game/ClanWarOperationsV115.tsx
+            /app/game/ClanWarOperationsV115.module.css
+            /app/game/ClanWarRtsSquadsV133.tsx
+            /app/game/ClanWarRtsSquadsV133.module.css
+            /app/game/systems/clanWarBibleV6.ts
+            /app/game/systems/clanWarV85Data.ts
+            /app/game/systems/clanWarOperationsV115.ts
+            /app/game/systems/clanWarParallelModesV135.ts
+            /app/game/systems/clanWarParallelModesV136.ts
+            /app/game/systems/clanWarParallelModesV137.ts
+            /app/game/systems/clanWarParallelModesV138.ts
+            /app/game/systems/clanWarParallelModesV139.ts
+            /app/game/systems/clanWarOuterRouteProgressV140.ts
+            /app/game/systems/clanWarStealthPatrolV140.ts
+            /app/game/systems/clanWarAssaultContactV141.ts
+            /app/game/systems/clanWarOuterWeightedProgressV141.ts
+            /app/game/systems/clanWarStealthDecoyV141.ts
+            /app/game/systems/clanWarOuterChoicesV142.ts
+            /app/game/systems/clanWarFocusV142.ts
+            /app/game/systems/clanWarStealthPathV142.ts
+            /app/game/systems/clanWarRtsWaypointV142.ts
+            /app/game/systems/clanWarBraceV143.ts
+            /app/game/systems/clanWarOuterIncidentV143.ts
+            /app/game/systems/clanWarStealthDashV143.ts
+            /app/game/systems/clanWarRtsMarchV143.ts
+            /app/game/systems/clanWarDebriefV144.ts
+            /app/game/systems/clanWarProofSyncV145.ts
+            /app/game/systems/clanWarSourceAuditV146.ts
+            /app/game/ClanWarPanelV85.tsx
+            /app/game/
+            /app/game/systems/clanWarMissionTerrainV116.ts
+            /app/game/systems/clanWarTacticalNavigationV118.ts
+            /app/game/systems/clanWarRtsScenariosV119.ts
+            /app/game/systems/clanWarSourceMapsV128.ts
+            /app/game/systems/clanWarRtsSourceMissionsV129.ts
+            /app/game/systems/clanWarRtsSquadsV133.ts
+            /tests/clan-war-four-modes-v135.test.mjs
+            /tests/clan-war-four-modes-v136.test.mjs
+            /tests/clan-war-four-modes-v137.test.mjs
+            /tests/clan-war-four-modes-v138.test.mjs
+            /tests/clan-war-four-modes-v139.test.mjs
+            /tests/clan-war-four-modes-v140.test.mjs
+            /tests/clan-war-four-modes-v141.test.mjs
+            /tests/clan-war-four-modes-v142.test.mjs
+            /tests/clan-war-four-modes-v143.test.mjs
+            /tests/clan-war-debrief-v144.test.mjs
+            /tests/clan-war-proof-sync-v145.test.mjs
+            /tests/clan-war-provenance-v146.test.mjs
+            /tests/clan-war-production-v145.test.mjs
+            /tests/clan-war-session-v85.test.mjs
+            /tests/clan-war-production-v144.test.mjs
+            /tests/clan-war-production-v143.test.mjs
+            /tests/clan-war-production-v142.test.mjs
+            /tests/clan-war-production-v141.test.mjs
+            /tests/clan-war-production-v140.test.mjs
+            /tests/clan-war-production-v139.test.mjs
+            /tests/clan-war-production-v138.test.mjs
+            /tests/clan-war-production-v137.test.mjs
+            /tests/clan-war-production-v136.test.mjs
+            /tests/clan-war-production-v135.test.mjs
+            /tests/clan-war-operations-v115.test.mjs
+            /tests/clan-war-operation-cross-mode-v115.test.mjs
+            /tests/clan-war-outer-recall-v116.test.mjs
+            /tests/clan-war-tactical-runtime-v115.test.mjs
+            /tests/clan-war-assault-special-v117.test.mjs
+            /tests/clan-war-rts-squads-v133.test.mjs
+            /tests/clan-war-rts-rally-v134.test.mjs
+            /docs/clan-war-v135/
+            /docs/clan-war-v136/
+            /docs/clan-war-v137/
+            /docs/clan-war-v138/
+            /docs/clan-war-v139/
+            /docs/clan-war-v140/
+            /docs/clan-war-v141/
+            /docs/clan-war-v142/
+            /docs/clan-war-v143/
+            /docs/clan-war-v144/
+            /docs/clan-war-v145/
+            /docs/clan-war-v146/
+      - name: Use Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with: {node-version: '22'}
+      - name: npm ci — locked packages
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Four modes V146 plus V85/session and V115–V145 regression
+        run: node --test --test-reporter=spec tests/clan-war-provenance-v146.test.mjs tests/clan-war-production-v145.test.mjs tests/clan-war-proof-sync-v145.test.mjs tests/clan-war-session-v85.test.mjs tests/clan-war-debrief-v144.test.mjs tests/clan-war-production-v144.test.mjs tests/clan-war-four-modes-v143.test.mjs tests/clan-war-production-v143.test.mjs tests/clan-war-four-modes-v142.test.mjs tests/clan-war-production-v142.test.mjs tests/clan-war-four-modes-v141.test.mjs tests/clan-war-production-v141.test.mjs tests/clan-war-four-modes-v140.test.mjs tests/clan-war-production-v140.test.mjs tests/clan-war-four-modes-v139.test.mjs tests/clan-war-four-modes-v140.test.mjs tests/clan-war-production-v140.test.mjs tests/clan-war-production-v139.test.mjs tests/clan-war-four-modes-v138.test.mjs tests/clan-war-production-v138.test.mjs tests/clan-war-four-modes-v137.test.mjs tests/clan-war-production-v137.test.mjs tests/clan-war-four-modes-v136.test.mjs tests/clan-war-production-v136.test.mjs tests/clan-war-four-modes-v135.test.mjs tests/clan-war-production-v135.test.mjs tests/clan-war-operations-v115.test.mjs tests/clan-war-operation-cross-mode-v115.test.mjs tests/clan-war-outer-recall-v116.test.mjs tests/clan-war-tactical-runtime-v115.test.mjs tests/clan-war-assault-special-v117.test.mjs tests/clan-war-rts-squads-v133.test.mjs tests/clan-war-rts-rally-v134.test.mjs
+      - name: TypeScript cross-mode
+        if: always()
+        run: npx --no-install tsc --noEmit --project tsconfig.clan-war-v146.json
+      - name: ESLint — four modes and UI
+        if: always()
+        run: npx --no-install eslint app/game/systems/clanWarOperationsV115.ts app/game/systems/clanWarParallelModesV135.ts app/game/systems/clanWarParallelModesV136.ts app/game/systems/clanWarParallelModesV137.ts app/game/systems/clanWarParallelModesV138.ts app/game/systems/clanWarParallelModesV139.ts app/game/systems/clanWarOuterRouteProgressV140.ts app/game/systems/clanWarStealthPatrolV140.ts app/game/systems/clanWarAssaultContactV141.ts app/game/systems/clanWarOuterWeightedProgressV141.ts app/game/systems/clanWarStealthDecoyV141.ts app/game/systems/clanWarOuterChoicesV142.ts app/game/systems/clanWarFocusV142.ts app/game/systems/clanWarStealthPathV142.ts app/game/systems/clanWarRtsWaypointV142.ts app/game/systems/clanWarBraceV143.ts app/game/systems/clanWarOuterIncidentV143.ts app/game/systems/clanWarStealthDashV143.ts app/game/systems/clanWarRtsMarchV143.ts app/game/systems/clanWarDebriefV144.ts app/game/systems/clanWarProofSyncV145.ts app/game/systems/clanWarSourceAuditV146.ts app/game/systems/clanWarRtsSquadsV133.ts app/game/ClanWarOperationsV115.tsx app/game/ClanWarPanelV85.tsx app/game/ClanWarRtsSquadsV133.tsx tests/clan-war-four-modes-v135.test.mjs tests/clan-war-four-modes-v136.test.mjs tests/clan-war-production-v136.test.mjs tests/clan-war-production-v135.test.mjs tests/clan-war-four-modes-v137.test.mjs tests/clan-war-four-modes-v138.test.mjs tests/clan-war-four-modes-v139.test.mjs tests/clan-war-four-modes-v140.test.mjs tests/clan-war-four-modes-v141.test.mjs tests/clan-war-four-modes-v142.test.mjs tests/clan-war-four-modes-v143.test.mjs tests/clan-war-debrief-v144.test.mjs tests/clan-war-proof-sync-v145.test.mjs tests/clan-war-provenance-v146.test.mjs tests/clan-war-production-v145.test.mjs tests/clan-war-production-v144.test.mjs tests/clan-war-production-v143.test.mjs tests/clan-war-production-v142.test.mjs tests/clan-war-production-v141.test.mjs tests/clan-war-production-v140.test.mjs tests/clan-war-production-v139.test.mjs tests/clan-war-production-v137.test.mjs tests/clan-war-production-v138.test.mjs

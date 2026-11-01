@@ -29,6 +29,7 @@ import { createWarSessionV85 } from "./systems/clanWarSessionV85";
 import {DEFAULT_WAR_RULES_V6} from "./systems/clanWarBibleV6";
 import {WAR_OPERATIONS_STORAGE_V115} from "./systems/clanWarOperationsV115";
 import {reviewWarProofSyncV145,importWarProofV145} from "./systems/clanWarProofSyncV145";
+import {inspectWarSourcesV146} from "./systems/clanWarSourceAuditV146";
 import ClanWarAtlasV95 from "./ClanWarAtlasV95";
 import ClanWarPlanetsV96, { WAR_PLANET_SELECTION_KEY_V96 } from "./ClanWarPlanetsV96";
 import ClanWarCommandV98, { ClanWarOrderPreviewV98 } from "./ClanWarCommandV98";
@@ -100,6 +101,9 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false, init
   const [warProofSource,setWarProofSource]=useState<string|null>(null);
   const warProofPreview=useMemo(()=>warProofSource?
     reviewWarProofSyncV145(warProofSource,simulation,DEFAULT_WAR_RULES_V6):null,
+    [warProofSource,simulation]);
+  const sourceAuditV146=useMemo(()=>warProofSource?
+    inspectWarSourcesV146(warProofSource,simulation,DEFAULT_WAR_RULES_V6):null,
     [warProofSource,simulation]);
   const [query, setQuery] = useState(""), [section, setSection] = useState("Toutes les feuilles"), [page, setPage] = useState(0);
   const [selectedEntryId, setSelectedEntryId] = useState("OPS-01");
@@ -419,6 +423,39 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false, init
             <p>{warProofPreview.sourceReportCount} rapport(s) source ;
              {warProofPreview.eligible.length} preuve(s) territoriales proposées,
              {warProofPreview.rejectedIds.length} non appariée(s) ou refusée(s).</p>
+            {sourceAuditV146&&<details>
+              <summary>Audit V146 · géographie, effectifs et preuves des quatre modes</summary>
+              <p role="status">{sourceAuditV146.message}</p>
+              <p>Territoires V6 : <strong>{sourceAuditV146.territories.length}</strong>
+               · sans correspondance CON-T : <strong>{sourceAuditV146.territories.filter(t=>t.status==="unmapped").length}</strong>
+               · même identifiant mais encore sans preuve géographique : <strong>{sourceAuditV146.territories.filter(t=>t.status!=="unmapped").length}</strong>.</p>
+              <p>Équipes de source V115 : <strong>{sourceAuditV146.roster.sourceTeamCount}</strong>
+               · membres de source : <strong>{sourceAuditV146.roster.sourcePersonCount}</strong>
+               · soldats stratégiques V85 : <strong>{sourceAuditV146.roster.strategyCombatantCount}</strong>.
+               Aucune identité commune n&apos;est homologuée.</p>
+              <p>Import documentaire possible, mais transfert de conquête, blessure ou XP : <strong>interdit</strong> jusqu&apos;à validation d&apos;une correspondance explicite.</p>
+              <ul>{(["assault","outer","stealth","rts"] as const).map(mode=>{
+                const reports=sourceAuditV146.proofs.filter(proof=>proof.mode===mode);
+                return <li key={mode}><strong>{mode}</strong> : {reports.length} rapport(s) d&apos;origine,
+                  {reports.filter(p=>p.documentaryCanImport).length} dossier(s) encore archivable(s)
+                  dans le journal V85, sans effet militaire.</li>;
+              })}</ul>
+              <details>
+                <summary>Comparer les lieux V6 et les territoires V85</summary>
+                <ul>{sourceAuditV146.territories.map(territory=><li key={territory.sourceId}>
+                  {territory.sourceId} · {territory.sourceName} ({territory.sourceRegion}) :
+                  {territory.destinationId?(" "+territory.destinationId+" · référence à vérifier"):" aucun lien territorial V85 prouvé"}
+                </li>)}</ul>
+              </details>
+              <details>
+                <summary>Empreintes locales des bilans (non cryptographiques)</summary>
+                <ul>{sourceAuditV146.proofs.map(proof=><li key={proof.receiptKey}>
+                  {proof.receiptKey} · {proof.mode} · {proof.outcome} · empreinte
+                  <code> {proof.sourceFingerprint.slice(0,16)}</code> · territoire :
+                  non apparié ; identité militaire : non appariée.
+                </li>)}</ul>
+              </details>
+            </details>}
             {warProofPreview.eligible.slice(-30).map(item=><div key={item.receiptKey}>
               <span>{item.mode} · {item.outcome} · {item.territoryName}
                · {item.matchedV85TerritoryId??"sans correspondance territoriale V85"}
