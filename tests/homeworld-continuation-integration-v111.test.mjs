@@ -214,6 +214,8 @@ test('V111 Save11 to12 preserves the genuine V110 campaign and B document while 
   assert.deepEqual(migrated,{...previous,version:12,
     inventory:{...previous.inventory,fieldToolIds:[],harvestV112:emptyHarvestInventoryV112()},
     settings:{...previous.settings,huntAccessibility:normalizeHuntAccessibilityV112(undefined)},
+    // V113 hunter materials are additive appearance fields; a Save11 profile has none, so they normalize to null.
+    appearance:{...previous.appearance,skinMaterialId:null,dreadMaterialId:null,outfitMaterialId:null},
   },'every pre-existing campaign field survives; additive hunting inventory and accessibility use their real production defaults');
   assert.equal(JSON.stringify(migrated.homeworld.archivePlaqueV109),JSON.stringify(previous.homeworld.archivePlaqueV109));
   assert.equal(migrated.homeworld.archiveContinuationV111,undefined,'migration does not create or auto-start an A continuation');
