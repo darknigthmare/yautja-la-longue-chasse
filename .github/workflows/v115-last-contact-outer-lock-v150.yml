@@ -51,11 +51,12 @@ jobs:
             tests/clan-war-outer-pace-reconcile.test.mjs \
             tests/clan-war-stealth-reconciliation.test.mjs \
             tests/clan-war-v115-multitab-v148.test.mjs \
-            tests/clan-war-operations-v115.test.mjs
+            tests/clan-war-operations-v115.test.mjs \
+            tests/clan-war-due-events-v151.test.mjs
       - name: Typecheck real V146 game types
         run: npx --no-install tsc --noEmit -p tsconfig.clan-war-v146.json
       - name: Lint integrated gameplay
-        run: npx --no-install eslint app/game/ClanWarOperationsV115.tsx app/game/systems/clanWarOperationsV115.ts tests/clan-war-stealth-last-contact.test.mjs tests/clan-war-integrated-last-contact-v150.test.mjs
+        run: npx --no-install eslint app/game/ClanWarOperationsV115.tsx app/game/systems/clanWarOperationsV115.ts tests/clan-war-due-events-v151.test.mjs tests/clan-war-stealth-last-contact.test.mjs tests/clan-war-integrated-last-contact-v150.test.mjs
       - name: Validate integrated workbook format and sheet count
         run: |
           python3 -c "import zipfile; f='docs/Yautja_ClanWar_V150_Reconciliation_Patrouilles.xlsx'; z=zipfile.ZipFile(f); assert z.testzip() is None; assert len([n for n in z.namelist() if n.startswith('xl/worksheets/sheet') and n.endswith('.xml')])==5"
