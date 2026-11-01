@@ -138,6 +138,73 @@ try{
   await unsupported.close();
   pass("Missing Web Locks leaves persistent archive unchanged",{readOnly:true});
 
+  // Defer the first callback to model a slow local storage write and submit two
+  // clicks in the same turn. The second action must not disappear silently.
+  await a.evaluate(()=>{
+    const manager=navigator.locks;
+    const original=manager.request.bind(manager);
+    window.restoreRequestV149=()=>delete manager.request;
+    Object.defineProperty(manager,"request",{configurable:true,value:(name,options,callback)=>original(name,options,async lock=>{
+      if(lock){window.heldOwnWriteV149=true;await new Promise(resolve=>{window.releaseOwnWriteV149=resolve;});}
+      return callback(lock);
+    })});
+  });
+  await op(a).getByRole("button",{name:/^Mandats délégués/}).click();
+  await a.evaluate(()=>{
+    const button=[...document.querySelectorAll('button')].find(item=>item.textContent?.trim().startsWith('Lancer :'));
+    button?.click();button?.click();
+  });
+  await a.waitForFunction(()=>window.heldOwnWriteV149===true);
+  await op(a).getByText(/Une écriture V115 est en cours/).waitFor({timeout:3000});
+  assert.equal(await readRaw(a),null);
+  a.once("dialog",dialog=>dialog.accept());
+  await reset(a).click();
+  await op(a).getByText(/Une écriture V115 est en cours/).waitFor();
+  assert.equal(await readRaw(a),null);
+  await a.evaluate(()=>{window.releaseOwnWriteV149();window.restoreRequestV149();});
+  await a.waitForFunction(key=>{const value=localStorage.getItem(key);return value&&JSON.parse(value).serial===1;},key);
+  assert.equal((await read(a)).outer.length,1);
+  pass("Rapid same-tab submissions provide feedback and charge only once",{serial:1});
+  await a.evaluate(key=>localStorage.removeItem(key),key);
+  await Promise.all([a.reload({waitUntil:"domcontentloaded"}),b.reload({waitUntil:"domcontentloaded"})]);
+  await Promise.all([op(a).waitFor(),op(b).waitFor()]);
+
+  // Start a real assault, hold its shared lock in B across several ticks,
+  // then release it and check that the timer advances from the saved state.
+  await op(a).getByRole("button",{name:/^Lancer :/}).click();
+  await a.waitForFunction(key=>{const raw=localStorage.getItem(key);return raw&&JSON.parse(raw).active?.mode==="assault";},key);
+  await b.evaluate(()=>{window.timerLockHeld=false;void navigator.locks.request("yautja.clan-war.v115.operations.free.v1.write",()=>{
+    window.timerLockHeld=true;return new Promise(resolve=>{window.releaseTimerLock=resolve;});
+  });});
+  await b.waitForFunction(()=>window.timerLockHeld===true);
+  const frozenTick=(await read(a)).active.tick;
+  await a.waitForTimeout(1800);
+  assert.equal((await read(a)).active.tick,frozenTick);
+  await b.evaluate(()=>window.releaseTimerLock());
+  await a.waitForFunction(({key,tick})=>{const raw=localStorage.getItem(key);return raw&&JSON.parse(raw).active?.tick>tick;},{key,tick:frozenTick},{timeout:5000});
+  assert.equal(await a.evaluate(k=>localStorage.getItem(k),sentinel),"hunter-campaign-safe");
+  pass("Assault timer waits for lock and resumes after release",{frozenTick});
+  await a.evaluate(key=>localStorage.removeItem(key),key);
+  await Promise.all([a.reload({waitUntil:"domcontentloaded"}),b.reload({waitUntil:"domcontentloaded"})]);
+  await Promise.all([op(a).waitFor(),op(b).waitFor()]);
+
+  // Real Outer Ops and real recruitment become due together. Move the clock
+  // forward without altering either persisted record, and wait for both timers.
+  await selectTeamAndLaunch(a,"outer");
+  await op(a).getByRole("button",{name:/^Recruter ·/}).click();
+  await a.waitForFunction(key=>{const raw=localStorage.getItem(key);return raw&&JSON.parse(raw).pendingRecruits?.length===1;},key);
+  const dueBefore=await read(a);
+  const jump=Math.max(dueBefore.outer[0].dueAt,dueBefore.pendingRecruits[0].dueAt)+1;
+  await a.evaluate(stamp=>{Date.now=()=>stamp;},jump);
+  await a.waitForFunction(key=>{const raw=localStorage.getItem(key);if(!raw)return false;const state=JSON.parse(raw);
+    return state.outer.length===0&&state.pendingRecruits.length===0&&state.recruitedTeamIds.length===1&&state.reports.length>=1;
+  },key,{timeout:10000});
+  assert.equal(await a.evaluate(k=>localStorage.getItem(k),sentinel),"hunter-campaign-safe");
+  pass("Simultaneous due mandate and recruitment both settle without losing either",{mandates:1,recruits:1,clockAdvanced:true});
+  await a.evaluate(key=>localStorage.removeItem(key),key);
+  await Promise.all([a.reload({waitUntil:"domcontentloaded"}),b.reload({waitUntil:"domcontentloaded"})]);
+  await Promise.all([op(a).waitFor(),op(b).waitFor()]);
+
   await a.bringToFront();
   const launched=await selectTeamAndLaunch(a,"outer");
   const firstBytes=await readRaw(a);

@@ -165,7 +165,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
   // lock. Never fall back to an unsafe read-then-write when Web Locks is absent.
   function writeV115(operation:()=>void) {
     if(!persist){operation();return;}
-    if(writingV115Ref.current)return;
+    if(writingV115Ref.current){setMessage("Une écriture V115 est en cours ; réessayez.");return;}
     if(typeof navigator.locks?.request!=="function"){
       setBlocked(true);
       setStorageIssue("Verrouillage sécurisé indisponible : archive V115 conservée en lecture seule.");

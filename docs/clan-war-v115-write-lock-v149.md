@@ -21,3 +21,17 @@ tester.
 L'annexe `Yautja_ClanWar_V149_Verrou_Local.xlsx` préserve les cinq feuilles
 historiques V148 et ajoute une feuille V149. Les résultats y sont marqués tests
 locaux, les autres travaux restent ouverts. Aucun gauntlet n'est validé 1:1.
+
+## Actions rapides et minuterie d'assaut
+
+Un second ordre ou reset confirmé pouvait être ignoré sans retour pendant une
+écriture en cours dans le même onglet. Un message demande désormais de réessayer,
+sans mettre en file un instantané périmé. Le test Chromium local retient le
+verrou, déclenche deux lancements et un reset confirmé, vérifie le message et
+l'unique mandat. Un autre test retient le verrou depuis le second onglet pendant
+plusieurs ticks d'un véritable assaut, puis observe la reprise du tick après
+libération et la préservation de la sentinelle de campagne. 14 scénarios locaux
+passent au total. Un mandat et un recrutement réels arrivant à échéance ensemble
+ont aussi été réglés tous deux : le test avance Date.now sans modifier les
+enregistrements. La minuterie RTS, les soins simultanés, les anciens clients et
+le cloud restent à vérifier séparément.
