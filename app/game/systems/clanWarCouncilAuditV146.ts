@@ -6,6 +6,7 @@ import {readWarOperationsV115} from "./clanWarOperationsV115";
 import type {
  WarRtsSquadsStateV133,WarRtsSquadsReceiptV133,
 } from "./clanWarRtsSquadsV133";
+import {createWarRtsMissionStateV129} from "./clanWarRtsSourceMissionsV129";
 
 /**
  * V146 — a single, READ-ONLY evidence envelope across all four Clan War
@@ -37,6 +38,79 @@ export interface WarCouncilAuditV146 {
  sourceSha:string;campaignMutation:false;
 }
 const unique=(values:string[])=>[...new Set(values)];
+const sameStrings=(a:string[],b:string[])=>a.length===b.length&&a.every((v,i)=>v===b[i]);
+// Authored mission data is immutable in W133; compare structure without
+// depending on JavaScript property insertion order after serialization.
+function sameSourceValue(a:unknown,b:unknown):boolean {
+ if(a===b)return true;
+ if(!a||!b||typeof a!=="object"||typeof b!=="object")return false;
+ if(Array.isArray(a)||Array.isArray(b))return Array.isArray(a)&&Array.isArray(b)&&
+  a.length===b.length&&a.every((value,i)=>sameSourceValue(value,b[i]));
+ const left=a as Record<string,unknown>,right=b as Record<string,unknown>;
+ const keys=Object.keys(left).filter(key=>left[key]!==undefined).sort();
+ const other=Object.keys(right).filter(key=>right[key]!==undefined).sort();
+ return sameStrings(keys,other)&&keys.every(key=>sameSourceValue(left[key],right[key]));
+}
+/** Consistency with the local V6 catalog, not authentication of a client save. */
+function hasKnownRtsSource(state:WarRtsSquadsStateV133,rules:WarRulesV6):boolean {
+ try {
+  const source=createWarRtsMissionStateV129(state.mission.id,rules);
+  const mission=source.mission,map=source.base.map;
+  return (state.phase==="victory"||state.phase==="defeat"||state.phase==="retreat")&&
+   sameSourceValue(state.mission,mission)&&
+   state.mission.mapId===mission.mapId&&state.mission.planetId===mission.planetId&&
+   state.map.id===map.id&&state.map.planetId===map.planetId&&
+   sameSourceValue(state.map,map)&&hasSourceRtsRoster(state,rules)&&
+   state.initialRav===mission.initialRav&&Number.isSafeInteger(state.ravRemaining)&&
+   state.ravRemaining>=0&&state.ravRemaining<=state.initialRav&&
+   Number.isSafeInteger(state.turn)&&state.turn>=0&&
+   (source.tracked?Boolean(state.tracked&&state.tracked.id===source.tracked.id&&
+    state.tracked.kind===source.tracked.kind&&state.tracked.isNeutral===source.tracked.isNeutral):state.tracked===null)&&
+   sameStrings(state.mission.sourceCells,mission.sourceCells)&&
+   sameStrings(state.map.sourceCells,map.sourceCells)&&
+   sameStrings(state.mission.tasks.map(t=>t.id),mission.tasks.map(t=>t.id))&&
+   state.completedTaskIds.every((id,i)=>id===mission.tasks[i]?.id)&&
+   (state.phase!=="victory"||(state.completedTaskIds.length===mission.tasks.length&&
+    (!mission.escortKind||Boolean(state.tracked?.extracted))))&&
+   state.squads.length>=2&&state.squads.length<=4&&
+   state.squads.every(s=>rules.units.some(u=>u.id===s.unitId&&u.fullMembers>0&&u.commandPoints>0));
+ } catch {
+  return false;
+ }
+}
+/**
+ * Local V6 budget and roster consistency. No combatant identity or combat
+ * history is authenticated here; this rejects impossible saved formations,
+ * inflated statistics and fictional command-point allowances.
+ */
+function hasSourceRtsRoster(state:WarRtsSquadsStateV133,rules:WarRulesV6):boolean {
+ if(state.pcMaximum!==state.mission.pcMaximum||
+    !Number.isSafeInteger(state.pcCommitted)||
+    !Number.isSafeInteger(state.nextSquadNumber)||
+    state.nextSquadNumber<3)return false;
+ const prefix="W133-"+state.mission.id+"-ALLY-";
+ const seen=new Set<string>();
+ let spent=0;
+ for(const squad of state.squads){
+  const suffix=squad.id.startsWith(prefix)?squad.id.slice(prefix.length):"";
+  const number=Number(suffix);
+  const unit=rules.units.find(u=>u.id===squad.unitId&&u.fullMembers>0&&u.commandPoints>0);
+  if(!unit||!/^[1-9][0-9]*$/.test(suffix)||!Number.isSafeInteger(number)||
+     number>=state.nextSquadNumber||seen.has(squad.id))return false;
+  seen.add(squad.id);
+  const hpCap=Math.max(7,Math.min(28,5+Math.ceil(unit.defense/3)+unit.fullMembers));
+  const range=Math.max(1,Math.min(4,unit.range));
+  if(squad.unitName!==unit.name||squad.memberCount!==unit.fullMembers||
+     squad.maxHp!==hpCap||!Number.isSafeInteger(squad.hp)||
+     squad.hp<0||squad.hp>hpCap||
+     squad.attack!==unit.attack||squad.defense!==unit.defense||
+     squad.range!==range||squad.mobility!==unit.mobility||
+     squad.commandPoints!==unit.commandPoints||squad.upkeepRav!==unit.upkeepRav||
+     squad.status==="ready")return false;
+  spent+=unit.commandPoints;
+ }
+ return spent===state.pcCommitted&&spent<=state.pcMaximum;
+}
 const staticMissing:Record<WarCouncilModeV146,string[]>={
  assault:["Chronologie spatiale des touches non archivée dans le rapport V115",
   "Validation de continuité filmique et de conquête V85 absente"],
@@ -69,7 +143,7 @@ function dossierV115(report:WarMissionReportV115,ops:WarOperationsStateV115,
   remainingRav:null,summary:report.summary,
   engagementLog:(report.engagementLog??[]).slice(0,12),
   provenFacts:[
-   "Rapport V115 source V6 signé : "+report.id,
+   "Rapport V115 rattaché au catalogue V6 : "+report.id,
    "Issue enregistrée : "+report.outcome,
    "Détachements identifiés : "+teamIds.length,
    ...(report.mode==="outer"&&report.focus?
@@ -95,6 +169,7 @@ function dossierRts(report:WarRtsSquadsReceiptV133,state:WarRtsSquadsStateV133,
    ...(report.outcome==="victory"&&!complete?
        ["Preuves des trois objectifs ou escorte finale incomplètes"]:[]),
    "Simulation libre W3 : progression et terrain V85 non fusionnés",
+  "Archive locale non authentifiée : la cohérence source ne prouve pas le déroulement réel",
    "Validation 1:1 des scènes, armes et décors non réalisée",
  ];
  return {
@@ -141,7 +216,7 @@ export function buildWarCouncilAuditV146(
  }
  if(rts?.report){
   const report=rts.report;
-  const correct=rts.sourceSha===rules.metadata.sha256&&
+  const correct=hasKnownRtsSource(rts,rules)&&rts.sourceSha===rules.metadata.sha256&&
    rts.mode==="free-exercise"&&report.source==="V6-W3-original-field-study"&&
    report.campaignMutation===false&&report.missionId===rts.mission.id&&
    report.mapId===rts.map.id&&report.planetId===rts.map.planetId&&
@@ -150,6 +225,9 @@ export function buildWarCouncilAuditV146(
    report.turn===rts.turn&&report.remainingRav===rts.ravRemaining&&
    report.squadIds.join(":")===rts.squads.map(u=>u.id).join(":")&&
    report.downSquadIds.join(":")===rts.squads.filter(u=>u.status==="down").map(u=>u.id).join(":")&&
+   report.leftBehindSquadIds.join(":")===(report.outcome==="retreat"?
+    rts.squads.filter(u=>u.status==="active"&&u.hp>0&&
+     Math.abs(u.x-rts.map.extraction.x)+Math.abs(u.y-rts.map.extraction.y)>2).map(u=>u.id):[]).join(":")&&
    (report.evacuatedSquadIds??[]).join(":")===rts.squads.filter(u=>u.status==="evacuated").map(u=>u.id).join(":")&&
    report.escortExtracted===Boolean(rts.tracked?.extracted)&&
    report.completedTaskIds.join(":")===rts.completedTaskIds.join(":")&&

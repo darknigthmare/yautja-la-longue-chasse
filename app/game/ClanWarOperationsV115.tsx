@@ -36,7 +36,8 @@ import {commandWarAssaultInterposeV145} from "./systems/clanWarInterposeV145";
 import {warOuterTravelLedgerV145} from "./systems/clanWarTravelLedgerV145";
 import {buildWarCouncilAuditV146} from "./systems/clanWarCouncilAuditV146";
 import {commandWarOuterRerouteV144} from "./systems/clanWarOuterRerouteV144";
-import {commandWarStealthAlertReinforcementV144} from "./systems/clanWarStealthReinforcementV144";
+import {commandWarOuterPaceV144} from "./systems/clanWarOuterPaceV144";
+import {commandWarStealthAlertReinforcementV144,setStealthReinforcementMode} from "./systems/clanWarStealthReinforcementV144";
 import {commandWarStealthDashV143} from "./systems/clanWarStealthDashV143";
 import {commandWarOuterIncidentV143,warOuterIncidentV143} from "./systems/clanWarOuterIncidentV143";
 import {planWarStealthStepV142,commandWarStealthStepV142} from "./systems/clanWarStealthPathV142";
@@ -562,7 +563,17 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
       {stealth && <div>
         <p>Rejoindre le relais (7,1), le désactiver, puis rejoindre l&apos;extraction (1,4). Alerte <strong>{stealth.alarm}/3</strong> · énergie de camouflage <strong>{stealth.energy}/5</strong> · relais <strong>{stealth.sabotaged?"neutralisé":"actif"}</strong> · diversion <strong>{stealth.decoyUsed?"épuisée": "disponible"}</strong> · leurre <strong>{stealth.decoyTurns??0} tour(s) à la position émise</strong> · couverts utilisés <strong>{(stealth.usedCoverIds??[]).length}/{missionTerrain?.cover.length??0}</strong> · écoutes <strong>{stealth.acousticUsed??0}/2</strong>.</p>
         <p className={styles.explain}>Terrain régional : {missionTerrain?.title} · {missionTerrain?.ground} · obstacle : {missionTerrain?.wallLabel}.</p>
-        <button type="button" disabled={blocked||stealth.alarm<1||
+        {stealth.reinforcementMode===undefined&&!stealth.supportGuard&&<p role="alert">Cette archive ne précise pas la règle de renfort. Choisissez le comportement pour reprendre l&apos;infiltration ; son état actuel sera conservé.</p>}
+        {!stealth.supportGuard?<label>Règle de renfort : <select value={stealth.reinforcementMode??""}
+          disabled={blocked||(stealth.reinforcementMode!==undefined&&(stealth.alarm>0||Boolean(stealth.decoyUsed)))}
+          onChange={event=>{if(event.target.value==="manual"||event.target.value==="decoy")
+            commit(setStealthReinforcementMode(worldRef.current,rules,event.target.value));}}>
+          <option value="" disabled>Choisir une règle</option>
+          <option value="manual">Renfort manuel après alerte</option>
+          <option value="decoy">Renfort automatique après diversion et alerte</option>
+        </select></label>:<p>Renfort déjà présent dans cette infiltration.</p>}
+        <fieldset disabled={blocked||(stealth.reinforcementMode===undefined&&!stealth.supportGuard)}>
+        <button type="button" disabled={blocked||stealth.reinforcementMode==="decoy"||stealth.alarm<1||
            Boolean(stealth.reinforcementIssued)||Boolean(stealth.supportGuard)}
           onClick={()=>commit(commandWarStealthAlertReinforcementV144(worldRef.current,rules))}>
           Sécurité renforcée V144 · activer un second garde pour cette infiltration
@@ -581,6 +592,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
           </button>;
         })}</div>
         <p className={styles.explain}>Le sprint V143 traverse deux cases réelles avec une réaction de la patrouille après chaque case. Usage unique par infiltration, aucune téléportation ni camouflage gratuit.</p>
+        {guardVisible&&stealth.guardInvestigation&&<p className={styles.explain}>La patrouille visible recherche le dernier contact observé ; elle ne connaît pas une position devenue cachée.</p>}
         <p className={styles.explain}>Patrouille : {guardVisible?"visible à portée réelle":
           soundBearing?("bruit perçu vers "+soundBearing+" · position exacte inconnue"):
           "hors du champ de perception ; aucune position exacte affichée"}.</p>
@@ -627,6 +639,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
         </div>
         <p className={styles.explain}>V137 : deux déplacements protégés possibles par infiltration, uniquement vers une case de couvert adjacente. Les gardes à proximité immédiate conservent leur ligne de vue. Pas de camouflage illimité.</p>
         <p className={styles.explain}>La patrouille réagit à la position et au sabotage. Le camouflage protège à distance mais possède une réserve finie ; aucune exécution déshonorante n&apos;est requise.</p>
+        </fieldset>
       </div>}
 
       {rts && <div>
@@ -775,7 +788,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
         {order.fieldSupport&&<small className={styles.explain}>Soutien de terrain V136 : {order.fieldSupport.paidRav} RAV engagés à {order.fieldSupport.allocatedAt} ; aucune victoire anticipée.</small>}
         {order.reconHalt&&<small className={styles.explain}>Halte V137 : ancienne échéance {order.reconHalt.originalDueAt}, nouveau rapport après 15 secondes supplémentaires ; effectifs et route inchangés.</small>}
         {order.departureContext&&<small className={styles.explain}>Briefing figé au départ : renseignements {order.departureContext.intel?"confirmés":"non confirmés"}, relais {order.departureContext.weakened?"affaibli":"non confirmé"}, pression {order.departureContext.pressure}. Les résultats ultérieurs des autres modes ne modifient pas ce mandat.</small>}
-        {!order.recall&&!order.routeDiversion&&!order.routeIncident&&!order.reconHalt&&
+        {!order.recall&&!order.forcedPace&&!order.routeDiversion&&!order.routeIncident&&!order.reconHalt&&
           now>=order.startedAt&&now-order.startedAt<=Math.min(5000,
             (order.dueAt-order.startedAt)*.15)&&
           earlyOptions.length>0&&<div className={styles.cards}>
@@ -811,11 +824,11 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
         {order.fieldSignal&&<p className={styles.explain}>Transmission V138 : <strong>{order.fieldSignal.assessment}</strong> · {order.fieldSignal.passages} passage(s) connus, {order.fieldSignal.fitMembers} membre(s) aptes. Ceci ne dévoile ni garnison cachée, ni résultat de combat.</p>}
         {!order.recall&&!order.fieldSignal&&now>=order.startedAt+
           Math.ceil(((order.reconHalt?.originalDueAt??order.routeIncident?.originalDueAt??order.dueAt)-order.startedAt)/2)&&
-          now<order.dueAt&&<button type="button" disabled={blocked}
+          now<order.dueAt&&(!order.forcedPace||transit.legProgress>=.5)&&<button type="button" disabled={blocked}
            onClick={()=>commit(requestWarOuterSignalV138(worldRef.current,order.id,Date.now(),rules))}>
            Obtenir le bulletin de terrain · aucune résolution anticipée
           </button>}
-        {!order.recall&&!order.reconHalt&&(order.focus==="recon"||order.focus==="escort")&&
+        {!order.recall&&!order.forcedPace&&!order.reconHalt&&(order.focus==="recon"||order.focus==="escort")&&
           now>=order.startedAt&&2*(now-order.startedAt)<order.dueAt-order.startedAt&&
           <button type="button" disabled={blocked}
            onClick={()=>commit(orderWarOuterReconHaltV137(worldRef.current,order.id,Date.now(),rules))}>
@@ -827,6 +840,13 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
             onClick={()=>commit(supplyWarOuterMissionV136(worldRef.current,order.id,Date.now(),rules))}>
             Envoyer des fournitures de terrain · 2 RAV
           </button>}
+        {!order.recall&&!order.forcedPace&&!order.routeDiversion&&!order.routeIncident&&!order.reconHalt&&!order.fieldSignal&&
+          now>=order.startedAt&&4*(now-order.startedAt)<=order.dueAt-order.startedAt&&
+          <button type="button" disabled={blocked||world.rav<3}
+           onClick={()=>commit(commandWarOuterPaceV144(worldRef.current,order.id,Date.now(),rules))}>
+           Marche forcée · 3 RAV · retour avancé de 8 s · résistance +2
+          </button>}
+        {order.forcedPace&&<small className={styles.explain}>Marche forcée : 3 RAV engagés, aucun résultat anticipé.</small>}
       </div>;}):<p>Aucune équipe actuellement déléguée.</p>}
       <button type="button" disabled={blocked||!world.outer.some(order=>now>=order.dueAt)}
         onClick={()=>commit(settleWarOuterOpsV115(worldRef.current,Date.now(),rules))}>Recevoir les rapports arrivés</button>

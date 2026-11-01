@@ -22,7 +22,9 @@ export function warAssaultContactV141(
  bracedUntil:Readonly<Record<string,number>>={},
  interposeOrders:Readonly<Record<string,{guardianTeamId:string;expiresAtTick:number}>>={},
 ):WarAssaultContactV141{
- const alive=original.filter(a=>a.hp>0);
+ // Compute every tick with stable actor ordering, independent of array
+ // insertion so multiple protective transfers resolve deterministically.
+ const alive=original.filter(a=>a.hp>0).sort((a,b)=>a.id.localeCompare(b.id));
  const harm=new Map<string,number>();
  const shots:WarAssaultContactV141["shots"]=[];
  const focusedTeamIds:string[]=[];
@@ -50,10 +52,16 @@ export function warAssaultContactV141(
    const guardian=protection&&protection.expiresAtTick>=tick&&damage>=2?
      alive.find(u=>u.side==="ally"&&u.teamId===protection.guardianTeamId&&
        u.id!==hostile.id&&u.x<=hostile.x&&hostile.x-u.x<=6):undefined;
-   const absorbed=guardian?1:0;
+   // A guardian cannot absorb more damage than its actual remaining HP.
+   // Previously several simultaneous attacks could each redirect a point
+   // into a one-HP guardian; extra redirected damage then disappeared after
+   // HP clamping. Keep damage conserved without free medical effects.
+   const absorptionBudget=guardian?Math.max(0,
+     guardian.hp-(harm.get(guardian.id)??0)):0;
+   const absorbed=guardian&&absorptionBudget>=1?1:0;
    harm.set(hostile.id,(harm.get(hostile.id)??0)+damage-absorbed);
    shots.push({attackerId:actor.id,targetId:hostile.id,damage:damage-absorbed});
-   if(guardian){
+   if(guardian&&absorbed){
     harm.set(guardian.id,(harm.get(guardian.id)??0)+absorbed);
     shots.push({attackerId:actor.id,targetId:guardian.id,damage:absorbed});
    }

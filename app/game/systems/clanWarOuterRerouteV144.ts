@@ -14,7 +14,7 @@ export function commandWarOuterRerouteV144(
  if(state.sourceSha!==rules.metadata.sha256||!Number.isSafeInteger(now)||now<0)
   return fail("Horloge ou Bible V6 incompatible.");
  const order=state.outer.find(o=>o.id===id);
- if(!order||order.recall||order.routeDiversion||order.routeIncident||
+ if(!order||order.recall||order.forcedPace||order.routeDiversion||order.routeIncident||
     order.reconHalt||order.fieldSignal)
   return fail("Le trajet n'est plus modifiable, a déjà été corrigé ou est en retour.");
  if(state.rav<1)return fail("Une vraie unité RAV est nécessaire pour modifier l'ordre.");

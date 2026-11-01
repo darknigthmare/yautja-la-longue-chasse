@@ -18,6 +18,16 @@ const fraction=(n:number)=>Math.min(1,Math.max(0,n));
 const safe=(v:number)=>Number.isFinite(v)?Math.max(0,v):0;
 
 function outboundFraction(order:WarOuterMissionV115,now:number):number {
+ // Preserve the already travelled fraction at the exact order time. The
+ // remaining distance is covered over the shorter remaining interval.
+ if(order.forcedPace){
+  const {orderedAt,originalDueAt,savedMs}=order.forcedPace;
+  const total=Math.max(1,originalDueAt-order.startedAt);
+  const before=fraction((orderedAt-order.startedAt)/total);
+  if(now<=orderedAt)return fraction((now-order.startedAt)/total);
+  return fraction(before+(1-before)*(now-orderedAt)/
+   Math.max(1,originalDueAt-savedMs-orderedAt));
+ }
  // A V144 re-route costs a real 5-second maneuver. Its original deadline
  // is the earliest available source clock before later V137/V143 holds.
  const original=order.routeDiversion?.originalDueAt??

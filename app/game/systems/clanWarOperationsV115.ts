@@ -11,6 +11,7 @@ import { warMissionTerrainV116, warTerrainCellBlockedV116, warTerrainLineOfSight
 import { warRtsNextPathStepV118 } from "./clanWarTacticalNavigationV118";
 import {warStealthPatrolSpawnV140} from "./clanWarStealthPatrolV140";
 import {warStealthDecoyPatrolV141} from "./clanWarStealthDecoyV141";
+import {chooseStealthSupportGuard} from "./clanWarStealthGuardPlacement";
 import {warOuterRouteChoicesV142} from "./clanWarOuterChoicesV142";
 import {warAssaultContactV141} from "./clanWarAssaultContactV141";
 
@@ -57,8 +58,11 @@ export interface WarStealthV115 { x: number; y: number; guardX: number;guardY?:n
   heardAtTick?: number;
   silentSabotageUsed?: boolean;
   dashUsed?:boolean;
+  /** PR #55: only the primary guard's last observed player position. */
+  guardInvestigation?:{x:number;y:number;turns:number};
   supportGuard?:{x:number;y:number;direction:-1|1};
   reinforcementIssued?:boolean;
+  reinforcementMode?:"manual"|"decoy";
 }
 export interface WarRtsOrderV115 { x: number; y: number; kind: "advance" | "hold" | "attack" }
 export interface WarRtsV115 {
@@ -86,6 +90,8 @@ export interface WarOuterMissionV115 {
   departureContext?: {intel:boolean;weakened:boolean;escorted:boolean;pressure:number};
   /** V142 authorized alternative passage selection; optional for old archives. */
   routeChoiceId?:string;
+  /** Optional #57 pace order, retained across historical V115 saves. */
+  forcedPace?:{orderedAt:number;originalDueAt:number;paidRav:3;savedMs:8000};
   routeDiversion?:{fromPassageIds:string[];originalDueAt:number;changedAt:number;paidRav:1};
   routeIncident?:{
     passageId:string;sourceIncident:string;kind:"secure"|"detour";
@@ -337,7 +343,7 @@ export function beginWarOperationV115(
     rivalRosterIds:warAssaultWaveProfileV140(targetId,rules).unitIds,wavesIssued:0 };
   if (mode === "stealth") active.stealth = {x:1,y:4,
     ...warStealthPatrolSpawnV140(warMissionTerrainV116(targetId,rules)),
-    alarm:0,cloaked:false,energy:5,sabotaged:false,decoyTurns:0,decoyUsed:false};
+    alarm:0,cloaked:false,energy:5,sabotaged:false,decoyTurns:0,decoyUsed:false,reinforcementMode:"manual"};
   if (mode === "rts") {
     const allied = teamIds.map((teamId,index) => ({id:"ally-"+index,teamId,unitId:ownTeam(state,teamId)!.unitId,side:"ally" as const,x:1,y:1+index,hp:lifeFor(ownTeam(state,teamId)!.unitId,rules)}));
     const enemyUnits = rules.units.filter(unit => unit.fullMembers>0).slice(0,3);
@@ -536,6 +542,8 @@ export type StealthCommandV115 = "up"|"down"|"left"|"right"|"cloak"|"interact"|"
 export function commandStealthV115(state:WarOperationsStateV115,command:StealthCommandV115,rules:WarRulesV6):WarOperationsUpdateV115 {
  const mission=state.active, stealth=mission?.stealth;
  if(mission?.mode!=="stealth" || !stealth)return reject(state,"Aucune infiltration active.");
+ if(stealth.reinforcementMode===undefined&&!stealth.supportGuard&&!stealth.reinforcementIssued)
+  return reject(state,"Choisissez la règle de renfort pour reprendre cette archive.");
  if(state.sourceSha!==rules.metadata.sha256)return reject(state,"Bible de l'infiltration incompatible.");
  if(!["up","down","left","right","cloak","interact","wait","decoy","hide","listen","quiet-sabotage","cover-up","cover-down","cover-left","cover-right"].includes(command))
   return reject(state,"Action inconnue.");
@@ -548,6 +556,7 @@ export function commandStealthV115(state:WarOperationsStateV115,command:StealthC
  let silentStepsUsed=stealth.silentStepsUsed??0;
  let acousticUsed=stealth.acousticUsed??0;
  let heardBearing=stealth.heardBearing,heardAtTick=stealth.heardAtTick;
+ let investigation=stealth.guardInvestigation;
  const quietMovement=command.startsWith("cover-");
  if(command==="listen"){
   if(!terrain.cover.includes(coord(x,y))||cloaked||energy<1||acousticUsed>=2||
@@ -601,10 +610,21 @@ export function commandStealthV115(state:WarOperationsStateV115,command:StealthC
   x=nx;y=ny;
  }
  if(cloaked){energy=Math.max(0,energy-1);if(!energy)cloaked=false;}
+ const previousGuard={guardX,guardY,guardDirection};
+ // The first guard follows a memory only after losing the player. The sound
+ // decoy has priority; the support guard never receives this private memory.
+ const lostSight=cloaked||distance({x,y},{x:guardX,y:guardY})>3||
+  !warTerrainLineOfSightV116(terrain,{x:guardX,y:guardY},{x,y});
+ const memoryTarget=investigation&&investigation.turns>0&&lostSight?
+  {x:investigation.x,y:investigation.y}:null;
+ const decoyTarget=decoyTurns>0&&decoyX!==undefined?{x:decoyX,y:decoyY??2}:null;
  const patrol=warStealthDecoyPatrolV141(terrain,
-  {guardX,guardY,guardDirection},decoyTurns>0&&decoyX!==undefined?
-   {x:decoyX,y:decoyY??2}:null);
- guardX=patrol.guardX;guardY=patrol.guardY;guardDirection=patrol.guardDirection;
+  {guardX,guardY,guardDirection},decoyTarget??memoryTarget);
+ // Reserve the second guard's old tile before moving either actor. Otherwise
+ // a trapped second guard can be left sharing the primary guard's new tile.
+ const first=supportGuard&&patrol.guardX===supportGuard.x&&patrol.guardY===supportGuard.y?
+  previousGuard:patrol;
+ guardX=first.guardX;guardY=first.guardY;guardDirection=first.guardDirection;
  if(supportGuard){
   const second=warStealthDecoyPatrolV141(terrain,
     {guardX:supportGuard.x,guardY:supportGuard.y,guardDirection:supportGuard.direction},
@@ -630,6 +650,8 @@ export function commandStealthV115(state:WarOperationsStateV115,command:StealthC
       occupiedFree.x<supportGuard.x?-1:second.guardDirection};
  }
  if(decoyTurns>0)decoyTurns--;
+ if(investigation)investigation=investigation.turns>1?
+  {...investigation,turns:investigation.turns-1}:undefined;
  // An authored cover breaks distant LOS only during a hide action.
  // A guard physically adjacent still sees the hunter.
  const hiding=(command==="hide"||quietMovement)&&terrain.cover.includes(coord(x,y))&&
@@ -644,6 +666,14 @@ export function commandStealthV115(state:WarOperationsStateV115,command:StealthC
    warTerrainLineOfSightV116(terrain,supportGuard,{x,y}));
  const seen=primarySeen||supportSeen;
  if(seen||command==="interact")alarm++;
+ if(primarySeen)investigation={x,y,turns:2};
+ // The automatic PR #57 behavior is opt-in for new exercises. The default
+ // remains the existing manual rule; never create a second guard twice.
+ let reinforcementIssued=stealth.reinforcementIssued;
+ if(stealth.reinforcementMode==="decoy"&&decoyUsed&&alarm>=1&&!supportGuard&&!reinforcementIssued){
+  supportGuard=chooseStealthSupportGuard(terrain,{x:guardX,y:guardY},{x,y});
+  if(supportGuard)reinforcementIssued=true;
+ }
  if(command==="listen"){
   // Direction is coarse relative bearing only. No guard x-coordinate,
   // opponent ID, camera reveal or cross-planet information enters the record.
@@ -662,7 +692,8 @@ export function commandStealthV115(state:WarOperationsStateV115,command:StealthC
  const nextStealth={x,y,guardX,guardY,guardDirection,alarm,cloaked,energy,sabotaged,
   decoyX,decoyY,decoyTurns,decoyUsed,usedCoverIds,silentStepsUsed,acousticUsed,heardBearing,heardAtTick,
   silentSabotageUsed:stealth.silentSabotageUsed||command==="quiet-sabotage",
-  dashUsed:stealth.dashUsed,supportGuard,reinforcementIssued:stealth.reinforcementIssued};
+  dashUsed:stealth.dashUsed,guardInvestigation:investigation,
+  supportGuard,reinforcementIssued,reinforcementMode:stealth.reinforcementMode};
  const advanced={...state,clock:state.clock+1,active:{...mission,tick:mission.tick+1,stealth:nextStealth}};
  if(alarm>=3)return accept(recordOutcome(advanced,mission.id,"stealth",null,mission.targetId,mission.teamIds,"defeat",mission.teamIds.slice(0,1),rules,
   "Patrouille alertée : extraction abandonnée."),"Infiltration compromise.");
@@ -901,7 +932,7 @@ export function simulateWarOuterMissionV115(
   const strength=Math.round((order.focus==="recon"?scout*1.4:order.focus==="escort"?shield*.9:assault*.9)+support+sabotage+escorted+pressure+fieldBonus+reconHaltBonus+incidentBonus);
   const roll=(round:number)=>hashSeed(order.id+"-"+order.targetId+"-"+order.focus+"-"+round)%11-5;
   const baseThreat=Math.max(8,territory.terrainDefense+order.routeIds.length*2);
-  const threshold=order.focus==="recon"?Math.round(baseThreat*.7):order.focus==="escort"?Math.round(baseThreat*.9):baseThreat;
+  const threshold=(order.focus==="recon"?Math.round(baseThreat*.7):order.focus==="escort"?Math.round(baseThreat*.9):baseThreat)+(order.forcedPace?2:0);
   const engagementLog=[
     ...(order.departureContext?["Briefing V139 figé au départ : aucun bonus stratégique rétroactif."]:[]),
     ...(order.fieldSignal?["Bulletin V138 : "+order.fieldSignal.assessment+
@@ -910,6 +941,7 @@ export function simulateWarOuterMissionV115(
     ...(order.retask?["Réorientation V135 : "+order.retask.oldFocus+" → "+order.focus+" à "+order.retask.changedAt+" ; aucun coût ou résultat anticipé."]:[]),
     ...(order.fieldSupport?["Soutien V136 : 2 RAV réels engagés à "+order.fieldSupport.allocatedAt+
       " ; +4 capacité de terrain sur ce mandat uniquement."]:[]),
+    ...(order.forcedPace?["Marche forcée V144 : 3 RAV engagés, échéance avancée de 8 secondes, résistance +2."]:[]),
     ...(order.routeIncident?["Incident de passage V143 "+order.routeIncident.passageId+
       " : "+order.routeIncident.sourceIncident+" · décision "+order.routeIncident.kind+
       " · "+order.routeIncident.paidRav+" RAV engagés, aucun résultat anticipé."]:[]),
@@ -1043,6 +1075,18 @@ export function readWarOperationsV115(raw:string,rules:WarRulesV6):WarOperations
     if(v.outer.some(order=>!isTextId(order.id)||!sites.has(order.targetId)||!Array.isArray(order.teamIds)||
       !order.teamIds.length||order.teamIds.some(id=>!ownTeam(v,id))||!Number.isSafeInteger(order.dueAt)||
       !Number.isSafeInteger(order.startedAt)||order.startedAt<0||order.dueAt<=order.startedAt||order.dueAt-order.startedAt>86400000||
+      (order.forcedPace!==undefined&&(!order.forcedPace||
+        typeof order.forcedPace!=="object"||Array.isArray(order.forcedPace)||
+        !Number.isSafeInteger(order.forcedPace.orderedAt)||
+        !Number.isSafeInteger(order.forcedPace.originalDueAt)||
+        order.forcedPace.orderedAt<order.startedAt||
+        4*(order.forcedPace.orderedAt-order.startedAt)>
+          order.forcedPace.originalDueAt-order.startedAt||
+        order.forcedPace.paidRav!==3||order.forcedPace.savedMs!==8000||
+        order.forcedPace.originalDueAt-8000!==(order.recall?.originalDueAt??order.dueAt)||
+        order.forcedPace.orderedAt+2000>=order.forcedPace.originalDueAt-8000||
+        order.routeDiversion!==undefined||order.reconHalt!==undefined||order.routeIncident!==undefined||
+        (order.recall!==undefined&&order.forcedPace.orderedAt>order.recall.orderedAt)))||
       (order.routeDiversion!==undefined&&(!order.routeDiversion||
         typeof order.routeDiversion!=="object"||
         !Array.isArray(order.routeDiversion.fromPassageIds)||
@@ -1238,6 +1282,24 @@ export function readWarOperationsV115(raw:string,rules:WarRulesV6):WarOperations
     }
     if(active?.mode==="stealth"){
       const v1=active.stealth!;
+      // PR #57 used a different field for the same live second guard. Migrate
+      // only validated coordinates; reject conflicting dual representations.
+      const legacy=v1 as WarStealthV115&{secondGuard?:unknown};
+      if(Object.prototype.hasOwnProperty.call(legacy,"secondGuard")){
+        const second=legacy.secondGuard as {guardX?:unknown;guardY?:unknown;guardDirection?:unknown}|null;
+        if(!second||typeof second!=="object"||Array.isArray(second)||
+          !Number.isInteger(second.guardX)||!Number.isInteger(second.guardY)||
+          (second.guardDirection!==-1&&second.guardDirection!==1)) return null;
+        const converted:NonNullable<WarStealthV115["supportGuard"]>={x:second.guardX as number,y:second.guardY as number,
+          direction:second.guardDirection};
+        if(v1.reinforcementIssued===false||
+          (Object.prototype.hasOwnProperty.call(v1,"supportGuard")&&!v1.supportGuard)||
+          (v1.supportGuard&&(v1.supportGuard.x!==converted.x||
+            v1.supportGuard.y!==converted.y||v1.supportGuard.direction!==converted.direction))) return null;
+        v1.supportGuard=converted;
+        v1.reinforcementIssued=true;
+        delete legacy.secondGuard;
+      }
       if(!Number.isInteger(v1.x)||v1.x<0||v1.x>8||
         !Number.isInteger(v1.y)||v1.y<0||v1.y>5||
         !Number.isInteger(v1.guardX)||v1.guardX<0||v1.guardX>8||
@@ -1248,7 +1310,15 @@ export function readWarOperationsV115(raw:string,rules:WarRulesV6):WarOperations
         typeof v1.cloaked!=="boolean"||typeof v1.sabotaged!=="boolean"||
         (v1.decoyUsed!==undefined&&typeof v1.decoyUsed!=="boolean")||
         (v1.dashUsed!==undefined&&typeof v1.dashUsed!=="boolean")||
+        (v1.guardInvestigation!==undefined&&(!v1.guardInvestigation||
+          typeof v1.guardInvestigation!=="object"||Array.isArray(v1.guardInvestigation)||
+          !Number.isInteger(v1.guardInvestigation.x)||!Number.isInteger(v1.guardInvestigation.y)||
+          !Number.isInteger(v1.guardInvestigation.turns)||
+          v1.guardInvestigation.turns<1||v1.guardInvestigation.turns>2||
+          warTerrainCellBlockedV116(warMissionTerrainV116(active.targetId,rules),
+            v1.guardInvestigation.x,v1.guardInvestigation.y)))||
         (v1.reinforcementIssued!==undefined&&typeof v1.reinforcementIssued!=="boolean")||
+        (v1.reinforcementMode!==undefined&&!['manual','decoy'].includes(v1.reinforcementMode))||
         (v1.reinforcementIssued===true&&v1.supportGuard===undefined)||
         (v1.supportGuard!==undefined&&(!v1.reinforcementIssued||
           !v1.supportGuard||typeof v1.supportGuard!=="object"||
