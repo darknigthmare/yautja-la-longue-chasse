@@ -1,0 +1,91 @@
+name: Stealth reinforcement reconciliation
+
+on:
+  pull_request:
+    branches: [feat/v146-clan-war-evidence-20261101]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  engine:
+    name: V115–V146 engine, types and lint
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /package.json
+            /package-lock.json
+            /tsconfig*.json
+            /eslint.config.mjs
+            /app/game/
+            /tests/
+            /scripts/
+            /types/
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Regression tests
+        run: |
+          node --experimental-strip-types --test --test-concurrency=1 \
+            tests/clan-war-stealth-reconciliation.test.mjs \
+            tests/clan-war-four-modes-v{135,136,137,138,139,140,141,142,143,144,145}.test.mjs \
+            tests/clan-war-operations-v115.test.mjs \
+            tests/clan-war-operation-cross-mode-v115.test.mjs \
+            tests/clan-war-outer-recall-v116.test.mjs \
+            tests/clan-war-tactical-runtime-v115.test.mjs \
+            tests/clan-war-assault-special-v117.test.mjs \
+            tests/clan-war-rts-squads-v133.test.mjs \
+            tests/clan-war-rts-rally-v134.test.mjs \
+            tests/clan-war-council-v146.test.mjs
+      - run: npx --no-install tsc --noEmit -p tsconfig.clan-war-v146.json
+      - name: Lint changed files
+        run: |
+          npx --no-install eslint app/game/ClanWarOperationsV115.tsx \
+            app/game/systems/clanWarOperationsV115.ts \
+            app/game/systems/clanWarStealthReinforcementV144.ts \
+            app/game/systems/clanWarStealthGuardPlacement.ts \
+            tests/clan-war-stealth-reconciliation.test.mjs \
+            scripts/qa-stealth-reconciliation-browser.mjs \
+            tests/browser/stealth-reconciliation.tsx tests/browser/stealth-game-client.tsx
+
+  chromium:
+    name: Chromium PR57 archive and GameClient fixture
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /package.json
+            /package-lock.json
+            /app/game/
+            /tests/browser/
+            /scripts/qa-stealth-reconciliation-browser.mjs
+            /public/game/assets/v14/hunter-kit/manifest.json
+            /public/game/assets/v15/trophies/manifest.json
+            /public/game/assets/v16/franchise-trophies/manifest.json
+            /public/game/assets/v17/enemy-trophies/manifest.json
+            /public/game/assets/v18/enemy-trophy-gameplay/manifest.json
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Fetch pinned PR57 commit and trees without history or blobs
+        run: git fetch --no-tags --depth=1 --filter=blob:none origin f25cd7a33e04f789e7c6df231ccad9116a50b38c
+      - name: Install Chromium and system dependencies
+        run: npx --no-install playwright-core install --with-deps chromium
+      - name: Exercise generated PR57 archives in GameClient
+        env:
+          QA_GAME_CLIENT: '1'
+        run: |
+          export CHROMIUM_EXECUTABLE_PATH="$(node -e 'process.stdout.write(require("playwright-core").chromium.executablePath())')"
+          node scripts/qa-stealth-reconciliation-browser.mjs
