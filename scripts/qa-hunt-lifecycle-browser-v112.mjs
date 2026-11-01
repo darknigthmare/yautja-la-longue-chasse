@@ -75,7 +75,7 @@ try{
  const state=()=>page.evaluate(()=>window.__huntLifecycleV112.state());
  const frame=()=>page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
  const capture=async name=>{
-  const original=await page.screenshot({animations:'disabled'});
+  const original=await page.screenshot({animations:'disabled',fullPage:name==='mapped-workshop-phone'});
   const png=await sharp(original).resize({width:640,withoutEnlargement:true}).png({palette:true,colours:32,dither:0,compressionLevel:9}).toBuffer();
   assert.ok(png.length<=100000);await fs.writeFile(path.join(out,name+'.png'),png);
   captures.push({file:name+'.png',bytes:png.length});console.log('V112_LIFECYCLE_CAPTURE_BEGIN:'+name+':'+png.toString('base64')+':V112_LIFECYCLE_CAPTURE_END');
@@ -196,6 +196,12 @@ try{
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth+1),true,'No horizontal overflow at 390 px');
   const reserve=page.getByRole('button',{name:/^Ranger en réserve ·/});await reserve.scrollIntoViewIfNeeded();
   const box=await reserve.boundingBox();assert.ok(box&&box.x>=0&&box.x+box.width<=391);
+  const controls=await page.locator('section[aria-labelledby="conservation-v112-title"] button').all();
+  assert.ok(controls.length>=3);
+  for(const control of controls){
+   await control.scrollIntoViewIfNeeded();const rect=await control.boundingBox();
+   assert.ok(rect&&rect.height>=44&&rect.x>=0&&rect.x+rect.width<=391,'Every native workshop button has a 44 px target within the viewport');
+  }
   await capture('mapped-workshop-phone');await exit.focus();await page.keyboard.press('Enter');await frame();
   assert.equal(await page.evaluate(()=>window.__huntLifecycleV112.menuBacks),1);
   assert.equal(await exit.count(),0);
