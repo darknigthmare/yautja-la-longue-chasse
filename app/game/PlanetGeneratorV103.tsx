@@ -32,7 +32,7 @@ import {
 import { WAR_BIOME_LABELS_V96 } from "./systems/clanWarPlanetLabelsV102";
 import type { WarPlanetV96 } from "./systems/clanWarPlanetsV96";
 import {
-  DEFAULT_WAR_PLANET_RECIPE_V115, projectWarPlanetRecipeV103FromV115, type WarPlanetRecipeV115,
+  DEFAULT_WAR_PLANET_RECIPE_V115, projectWarPlanetRecipeV103FromV115,
 } from "./systems/clanWarPlanetGeneratorV115";
 import { PLANET_SIZE_LABELS_V115, WAR_SHAPE_TEMPLATES_V115, type PlanetSizeV115 } from "./systems/clanWarShapeAtlasV115";
 import { WAR_PLANET_LAND_TEXTURES_V115, WAR_PLANET_LIQUID_TEXTURES_V115 } from "./systems/clanWarTextureLibraryV115";
