@@ -2,6 +2,7 @@ import type {WarRulesV6} from "./clanWarBibleV6";
 import type {WarOperationsStateV115,WarMissionReportV115} from "./clanWarOperationsV115";
 import type {WarRtsSquadsStateV133} from "./clanWarRtsSquadsV133";
 import {WAR_TERRITORIES_V85} from "./clanWarV85Data";
+import {isWarRtsSourceConsistentV147} from "./clanWarCouncilReviewV147";
 
 /** V144 strictly read-only four-mode debrief contract.
  * A source-linked territory is NOT a V85 conquest or persistence write.
@@ -95,6 +96,12 @@ export function auditWarRtsDebriefV144(
  };
  const report=state.report;
  if(!report)return {debriefs:[],rejectedIds:[]};
+ // V147 reconciliation: a report and its mutable in-memory map agreeing
+ // with each other is NOT sufficient. Reconstruct the unmodified W3 mission
+ // and map from the source V6 catalog, including roster and terminal receipt.
+ // This is still a local consistency gate, not client authentication.
+ if(!isWarRtsSourceConsistentV147(state,rules))
+  return {debriefs:[],rejectedIds:["V133:"+String(report.id)]};
  const key="V133:"+String(report.id);
  if(!validId(report.id)||!validId(report.missionId)||
    report.missionId!==state.mission.id||

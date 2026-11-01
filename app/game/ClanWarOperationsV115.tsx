@@ -35,6 +35,7 @@ import {commandWarStealthDashV143} from "./systems/clanWarStealthDashV143";
 import {commandWarOuterIncidentV143,warOuterIncidentV143} from "./systems/clanWarOuterIncidentV143";
 import {planWarStealthStepV142,commandWarStealthStepV142} from "./systems/clanWarStealthPathV142";
 import {auditWarOperationsDebriefsV144} from "./systems/clanWarDebriefV144";
+import {buildWarCouncilAuditV147} from "./systems/clanWarCouncilReviewV147";
 import styles from "./ClanWarOperationsV115.module.css";
 
 const modeLabels: Record<WarMissionModeV115, string> = {
@@ -217,6 +218,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
     warOuterRouteChoicesV142(world.baseId,targetId,missionPc,rules):[];
   const selectedOuterRoute=routeOptions.find(item=>item.id===outerRouteChoice)??
     routeOptions.find(item=>item.isPrimary);
+  const councilV147=useMemo(()=>buildWarCouncilAuditV147(world,null,rules),[world,rules]);
   const current=world.active;
   const assault=current?.mode==="assault"?current.assault:undefined;
   const stealth=current?.mode==="stealth"?current.stealth:undefined;
@@ -777,6 +779,15 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
         {report.engagementLog?.length ? <details className={styles.debriefDetails}><summary>Journal opérationnel · {report.engagementLog.length} phases</summary>
           <ol>{report.engagementLog.map((item,index)=><li key={report.id+"-"+index}>{item}</li>)}</ol></details>:null}
         <small>Équipes : {report.teamIds.join(", ")} · Blessés : {report.woundedIds.length?report.woundedIds.join(", "):"aucun déclaré"} · Source : {report.sourceIds.join(", ")}</small>
+        {councilV147.dossiers.filter(d=>d.id==="V115:"+report.id).map(d=>
+          <details key={d.id} className={styles.debriefDetails}>
+            <summary>Conseil V147 · {report.mode} · {d.status==="source-checked"?"source cohérente":"preuves partielles"}</summary>
+            <p>Unités source : {d.unitIds.join(", ")||"à confirmer"}.
+              Informations confirmées : {d.provenFacts.length}.
+              {d.campaignMutation===false?" Aucune mutation V85 autorisée.":""}
+            </p>
+            <ul>{d.missingEvidence.map((e,i)=><li key={i}>{e}</li>)}</ul>
+          </details>)}
         {auditWarOperationsDebriefsV144(world,rules).debriefs.filter(d=>d.missionId===report.id).map(d=>
          <small key={d.receiptKey}>Contrat V144 : {d.receiptKey} · secteur source {d.territoryName??"inconnu"}
           · cible V85 {d.campaignCandidateTerritoryId??"non appariée"}

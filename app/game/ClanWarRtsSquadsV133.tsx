@@ -12,6 +12,7 @@ import {warMapLineOfSightV128} from "./systems/clanWarSourceMapsV128";
 import {planWarRtsWaypointV142,commandWarRtsWaypointV142,type WarRtsWaypointV142} from "./systems/clanWarRtsWaypointV142";
 import {commandWarRtsMarchV143} from "./systems/clanWarRtsMarchV143";
 import {auditWarRtsDebriefV144} from "./systems/clanWarDebriefV144";
+import {buildWarCouncilAuditV147} from "./systems/clanWarCouncilReviewV147";
 import styles from "./ClanWarRtsSquadsV133.module.css";
 
 const d=(a:{x:number;y:number},b:{x:number;y:number})=>Math.abs(a.x-b.x)+Math.abs(a.y-b.y);
@@ -277,6 +278,18 @@ export default function ClanWarRtsSquadsV133({rules}:{rules:WarRulesV6}){
       Aucune prise de territoire ou mutation V85 : liaison de campagne encore à autoriser et tester.
      </p>)}</div>}
   </div>
+  {state.report&&<details className={styles.logs}>
+    <summary>Conseil V147 · contrôle de source mission/carte/unités RTS</summary>
+    {buildWarCouncilAuditV147(null,state,rules).dossiers.map(d=>
+      <div key={d.id}>
+        <p>{d.status==="source-checked"?"Catalogue local cohérent":"Sources partielles"}
+          · {d.unitIds.length} unités sources V6 · {d.completedTaskIds.length} objectifs
+          · planète {d.planetId??"inconnue"} · campagne V85 non modifiée.</p>
+        <ul>{d.missingEvidence.map((e,i)=><li key={i}>{e}</li>)}</ul>
+      </div>)}
+    {buildWarCouncilAuditV147(null,state,rules).issues.map((issue,i)=>
+      <p role="alert" key={i}>Vérification source refusée : {issue}</p>)}
+  </details>}
   <details className={styles.logs}><summary>Journal opérationnel (60 entrées maximum)</summary>
    <ol>{state.log.map((line,i)=><li key={`${i}-${line}`}>{line}</li>)}</ol>
   </details>
