@@ -11,6 +11,9 @@ on:
       - 'tests/browser/clan-war-v147-four-modes.fixture.tsx'
       - '.github/workflows/clan-war-v148-multitab-ops.yml'
       - 'docs/Yautja_ClanWar_V148_Securite_Multionglets.xlsx'
+  pull_request:
+    branches:
+      - feat/v131-gauntlet-hologram-dual-view-20261030
   workflow_dispatch:
 permissions:
   contents: read
@@ -39,6 +42,7 @@ jobs:
             /tests/browser/clan-war-v147-four-modes.fixture.tsx
             /tests/clan-war-four-modes-v147.test.mjs
             /docs/Yautja_ClanWar_V148_Securite_Multionglets.xlsx
+            /docs/Yautja_ClanWar_V149_Verrou_Local.xlsx
       - name: Node 22
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
@@ -53,6 +57,10 @@ jobs:
         run: |
           unzip -t docs/Yautja_ClanWar_V148_Securite_Multionglets.xlsx | tail -1
           python3 -c "import zipfile; z=zipfile.ZipFile('docs/Yautja_ClanWar_V148_Securite_Multionglets.xlsx'); assert sum(x.startswith('xl/worksheets/sheet') and x.endswith('.xml') for x in z.namelist()) == 5"
+      - name: Check V149 workbook annex
+        run: |
+          unzip -t docs/Yautja_ClanWar_V149_Verrou_Local.xlsx | tail -1
+          python3 -c "import zipfile; z=zipfile.ZipFile('docs/Yautja_ClanWar_V149_Verrou_Local.xlsx'); assert sum(x.startswith('xl/worksheets/sheet') and x.endswith('.xml') for x in z.namelist()) == 6"
       - name: Preserve browser evidence of two real V115 panels
         if: always()
         uses: actions/upload-artifact@v4

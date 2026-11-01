@@ -66,7 +66,7 @@ try{
   await new Promise((ok,fail)=>{server.once("error",fail);server.listen(0,"127.0.0.1",ok);});
   online=true;
   const addr=server.address();assert.ok(addr&&typeof addr==="object");
-  browser=await chromium.launch({channel:process.env.AUDIT_CHROME_CHANNEL||"chrome",headless:true});
+  browser=await chromium.launch(process.env.AUDIT_CHROME_EXECUTABLE?{executablePath:process.env.AUDIT_CHROME_EXECUTABLE,headless:true}:{channel:process.env.AUDIT_CHROME_CHANNEL||"chrome",headless:true});
   const ctx=await browser.newContext({locale:"fr-FR",viewport:{width:1280,height:850}});
   const url=`http://127.0.0.1:${addr.port}/`;
   const a=await ctx.newPage(),b=await ctx.newPage();
@@ -80,6 +80,63 @@ try{
   assert.equal(await read(a),null);
   assert.equal(await read(b),null);
   pass("Both real V115 panels initially observe an empty exercise archive",{tabs:2});
+
+  // A lock held in another real tab must prevent both an operation and reset.
+  await b.evaluate(()=>{
+    window.lockHeldV149=false;
+    void navigator.locks.request("yautja.clan-war.v115.operations.free.v1.write",()=>{
+      window.lockHeldV149=true;
+      return new Promise(resolve=>{window.releaseV149=resolve;});
+    });
+  });
+  await b.waitForFunction(()=>window.lockHeldV149===true);
+  await a.bringToFront();
+  await op(a).getByRole("button",{name:/^Mandats délégués/}).click();
+  const launchLocked=op(a).getByRole("button",{name:/^Lancer :/});
+  assert.equal(await launchLocked.isEnabled(),true);
+  await launchLocked.click();
+  await op(a).getByText(/Une autre écriture V115 est en cours/).waitFor();
+  assert.equal(await readRaw(a),null);
+  await op(b).getByRole("button",{name:/^Lancer :/}).click();
+  await op(b).getByText(/Une autre écriture V115 est en cours/).waitFor();
+  assert.equal(await readRaw(b),null);
+  a.once("dialog",dialog=>dialog.accept());
+  await reset(a).click();
+  await a.waitForTimeout(100);
+  assert.equal(await readRaw(a),null);
+  await b.evaluate(()=>window.releaseV149());
+  await b.waitForTimeout(100);
+  pass("A held lock rejects V115 mission and reset without writing",{locked:true});
+
+  // Start two actual panels at nearly the same instant. Exactly one archive
+  // is accepted; the loser may observe the lock or the new bytes first.
+  await op(b).getByRole("button",{name:/^Mandats délégués/}).click();
+  assert.equal(await op(b).getByRole("button",{name:/^Lancer :/}).isEnabled(),true);
+  await Promise.all([a,b].map(page=>page.evaluate(()=>{
+    const button=[...document.querySelectorAll('button')].find(item=>item.textContent?.trim().startsWith('Lancer :'));
+    button?.click();
+  })));
+  await a.waitForFunction(key=>{const raw=localStorage.getItem(key);return !!raw&&JSON.parse(raw).serial===1;},key);
+  await a.waitForTimeout(200);
+  const raced=await read(a);
+  assert.equal(raced.serial,1);
+  assert.equal(raced.outer.length,1);
+  assert.equal(await readRaw(a),await readRaw(b));
+  pass("Simultaneous real panels accept one mission and preserve one archive",{serial:1,orders:1});
+  // Fixture cleanup followed by full hydration of both real panels.
+  await a.evaluate(key=>localStorage.removeItem(key),key);
+  await Promise.all([a.reload({waitUntil:"domcontentloaded"}),b.reload({waitUntil:"domcontentloaded"})]);
+  await Promise.all([op(a).waitFor(),op(b).waitFor()]);
+
+  const unsupported=await ctx.newPage();
+  await unsupported.addInitScript(()=>Object.defineProperty(navigator,"locks",{value:undefined,configurable:true}));
+  await unsupported.goto(url,{waitUntil:"domcontentloaded"});
+  await op(unsupported).waitFor();
+  await op(unsupported).getByRole("button",{name:/^Lancer :/}).click();
+  await op(unsupported).getByRole("alert").filter({hasText:/Verrouillage sécurisé indisponible/}).waitFor();
+  assert.equal(await readRaw(unsupported),null);
+  await unsupported.close();
+  pass("Missing Web Locks leaves persistent archive unchanged",{readOnly:true});
 
   await a.bringToFront();
   const launched=await selectTeamAndLaunch(a,"outer");
@@ -145,7 +202,7 @@ try{
 
   assert.equal(await a.evaluate(k=>localStorage.getItem(k),sentinel),"hunter-campaign-safe");
   assert.deepEqual(errors,[]);
-  const report={schema:148,scope:"Two real ClanWarOperationsV115 tabs, source V6 missions and localStorage. Tests sequential stale-reset safety, NOT atomic simultaneous writes, IDB/cloud or full GameClient.",
+  const report={schema:148,scope:"Two real V115 panels, Web Locks and shared localStorage: contended writes, unavailable lock and stale reset. Only cooperating tabs, not legacy writers, other devices, cloud or full GameClient.",
     checked:checks.length,preventedStaleReset:true,verifiedFocusRefresh:true,localOnly:true,
     sourceModes:["outer","stealth"],campaignUnchanged:true,oneToOneValidated:0,
     checks,errors,artApproved:false};
