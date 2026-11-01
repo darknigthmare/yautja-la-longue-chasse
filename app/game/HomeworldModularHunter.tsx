@@ -78,15 +78,21 @@ export default function HomeworldModularHunter({ morphId, dreadStyleId, classNam
         <img alt="" draggable={false} src={hunterDreadPath(dreadStyleId)} style={{ ...imageStyle, filter: HUNTER_DREAD_FILTERS_V114[appearance?.dreadTintId ?? "obsidian"] }} />
         <ChromaticSurfaceV113 appearance={appearance} channel="dreads" maskPath={hunterDreadPath(dreadStyleId)} style={imageStyle} />
       </span>)}
-      <span data-homeworld-layer="body" style={{ ...imageStyle, zIndex: 10, filter: HUNTER_SKIN_FILTERS_V114[appearance?.skinId ?? "ochre-mottle"] }}>
+      {/* Apply the base grade to anatomical bitmap pixels only. A filter on
+          this parent also recolors tattoos, custom pigments and decals;
+          the animated rig and hunt Canvas do NOT grade those overlays. */}
+      <span data-homeworld-layer="body" style={{ ...imageStyle, zIndex: 10 }}>
         {HUNTER_BODY_PART_IDS.map(partId => {
           const placement = hunterBodyPartPlacement(morphId, partId, appearance?.headStyleId);
           const source = hunterBodyPartPath(morphId, partId, appearance?.headStyleId);
+          const gradedFilter = hunterBodyPartColorV62(morphId, partId,
+            HUNTER_SKIN_FILTERS_V114[appearance?.skinId ?? "ochre-mottle"]);
           return <span key={partId} style={{ ...imageStyle }} data-homeworld-body-part={partId}>
             <img alt="" draggable={false} src={source} style={placement ? {
               position: "absolute", left: `${placement.x / 256 * 100}%`, top: `${placement.y / 384 * 100}%`,
               width: `${placement.width / 256 * 100}%`, height: `${placement.height / 384 * 100}%`, objectFit: "fill", zIndex: 1,
-            } : { ...imageStyle, filter: hunterBodyPartColorV62(morphId, partId, "none"), clipPath: hunterBodyPartClipCssV62(morphId, partId) }} />
+              filter: gradedFilter,
+            } : { ...imageStyle, filter: gradedFilter, clipPath: hunterBodyPartClipCssV62(morphId, partId) }} />
             <ChromaticSurfaceV113 appearance={appearance} channel="skin" maskPath={source} placement={placement}
               style={{ ...imageStyle, zIndex: 2, clipPath: hunterBodyPartClipCssV62(morphId, partId) }} />
             {(partId === "head" || partId === "torso") && <DecalSurfaceV133
