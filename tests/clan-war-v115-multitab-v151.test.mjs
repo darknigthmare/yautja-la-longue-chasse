@@ -7,18 +7,18 @@ const root=fileURLToPath(new URL("../",import.meta.url));
 const read=p=>readFileSync(root+p,"utf8");
 test("V151 V115 destructive reset verifies current version BEFORE and AFTER confirmation",()=>{
   const component=read("app/game/ClanWarOperationsV115.tsx");
-  assert.match(component,/function verifyOwnV115ArchiveV151\(\):boolean/);
+  assert.match(component,/function verifyOwnV115ArchiveV148\(\):boolean/);
   assert.match(component,/getItem\(WAR_OPERATIONS_STORAGE_V115\)===knownArchiveBytesRef\.current/);
   const reset=component.slice(component.indexOf("  function reset() {"),component.indexOf("  if(!hydrated) return"));
-  assert.match(reset,/if\(!hydrated\|\|blocked\|\|!active\|\|!verifyOwnV115ArchiveV151\(\)\)return;/);
+  assert.match(reset,/if\(!hydrated\|\|blocked\|\|!active\|\|!verifyOwnV115ArchiveV148\(\)\)return;/);
   assert.match(reset,/window\.confirm\(/);
-  assert.match(reset,/if\(!verifyOwnV115ArchiveV151\(\)\)return;/);
-  assert.ok(reset.indexOf("if(!verifyOwnV115ArchiveV151())return;")<
+  assert.match(reset,/if\(!verifyOwnV115ArchiveV148\(\)\)return;/);
+  assert.ok(reset.indexOf("if(!verifyOwnV115ArchiveV148())return;")<
     reset.indexOf("window.localStorage.setItem(WAR_OPERATIONS_STORAGE_V115,encoded)"));
   assert.ok(reset.indexOf("window.localStorage.setItem(WAR_OPERATIONS_STORAGE_V115,encoded)")<
     reset.indexOf("worldRef.current=next;setWorld(next)"));
   assert.match(component,/disabled=\{blocked\|\|!hydrated\|\|!active\} onClick=\{reset\}/);
-  assert.doesNotMatch(reset,/setBlocked\(false\).*?verifyOwnV115ArchiveV151/s);
+  assert.doesNotMatch(reset,/setBlocked\(false\).*?verifyOwnV115ArchiveV148/s);
 });
 test("V151 operations guard re-checks local bytes on focus and visibility and ignores nonlocal storage events",()=>{
   const component=read("app/game/ClanWarOperationsV115.tsx");
@@ -26,7 +26,7 @@ test("V151 operations guard re-checks local bytes on focus and visibility and ig
   assert.match(component,/window\.addEventListener\("focus",verifyOnReturn\)/);
   assert.match(component,/document\.addEventListener\("visibilitychange",verifyOnReturn\)/);
   assert.match(component,/document\.visibilityState!=="visible"/);
-  assert.match(component,/if\(blocked\|\|!hydrated\|\|!active\|\|!verifyOwnV115ArchiveV151\(\)\)return;/);
+  assert.match(component,/if\(blocked\|\|!hydrated\|\|!active\|\|!verifyOwnV115ArchiveV148\(\)\)return;/);
   assert.match(component,/if\(!update\.accepted\)\{setMessage\(update\.message\);return;\}/);
   assert.doesNotMatch(component,/localStorage\.setItem\("yautja-long-hunt\./);
   const result=ts.transpileModule(component,{fileName:"ClanWarOperationsV115.tsx",
