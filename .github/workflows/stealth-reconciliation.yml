@@ -1,6 +1,8 @@
 name: Stealth reinforcement reconciliation
 
 on:
+  push:
+    branches: [codex/stealth-last-contact-20261101]
   pull_request:
     branches: [feat/v146-clan-war-evidence-20261101, codex/reconcile-stealth-v144-20261101]
   workflow_dispatch:
