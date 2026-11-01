@@ -156,7 +156,7 @@ try {
   await generator(page).getByRole("button", { name: "Base extraterrestre", exact: true }).press("Enter");
   let current = await values(page);
   check("the extraterrestrial base preserves seed, both counts and independently locked palettes", ["seed", "territoryCount", "regionCount", "landPalette", "surfacePalette"].every(field => current[field] === lockedBefore[field]) && current.landVariant === "alien" && current.surfaceVariant === "alien");
-  await generator(page).getByRole("button", { name: "Mélanger les réglages", exact: true }).press("Enter");
+  await generator(page).getByRole("button", { name: "Tout mélanger au hasard", exact: true }).press("Enter");
   current = await values(page);
   check("global randomization honors every active lock and leaves the applied world unchanged", ["seed", "territoryCount", "regionCount", "landPalette", "surfacePalette"].every(field => current[field] === lockedBefore[field]) && await code(page) === initial);
   const moduleBefore = await values(page);
