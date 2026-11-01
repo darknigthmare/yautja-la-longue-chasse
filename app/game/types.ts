@@ -1,3 +1,5 @@
+import type {FieldSpecimenV112,HarvestInventoryV112} from "./systems/harvestInventoryV112";
+import type { HuntAccessibilityV112 } from "./systems/huntAccessibilityV112";
 /**
  * Shared game contracts.
  *
@@ -118,7 +120,12 @@ export interface ExplorationProgress {
 export type HunterSkinId =
   | "ochre-mottle"
   | "ashen-mottle"
-  | "dark-mottle";
+  | "dark-mottle"
+  | "moss-mottle"
+  | "copper-mottle"
+  | "sand-mottle"
+  | "storm-mottle"
+  | "ivory-mottle";
 
 export type HunterBodyMorphId =
   | "classic"
@@ -229,12 +236,12 @@ export type DreadStyleId =
   | "feral"
   | "huntress";
 
-export type DreadTintId = "obsidian" | "umber" | "ashen";
+export type DreadTintId = "obsidian" | "umber" | "ashen" | "copper" | "bone" | "moss" | "blue-black";
 
 /** The preserved V3 head is an original clan design, not a named film likeness. */
 export type HunterHeadStyleId = "reference" | "legacy-clan";
 
-export type ArmorTintId = "gunmetal" | "bronze" | "obsidian";
+export type ArmorTintId = "gunmetal" | "bronze" | "obsidian" | "bone" | "jade" | "rust" | "crimson";
 
 export type LaserColorId = "crimson" | "electric" | "amber" | "violet" | "cyan";
 
@@ -268,6 +275,10 @@ export interface HunterAppearance {
   dreadTintId: DreadTintId;
   armorStyleId: HunterArmorStyleId;
   armorTintId: ArmorTintId;
+  /** Optional imported visual-reconstruction materials, independent of classical tints. */
+  skinMaterialId?: string | null;
+  dreadMaterialId?: string | null;
+  outfitMaterialId?: string | null;
   trophyAdornmentId: TrophyAdornmentId;
   /** Optional on legacy/preset objects; persistence always supplies a value. */
   laserColorId?: LaserColorId;
@@ -550,6 +561,12 @@ export interface MissionResult {
   trophyQuality: TrophyQuality | null;
   /** Empty when no removable trophy part was claimed. */
   trophyClaims: TrophyClaim[];
+  /** Finite anatomical specimens are delivered only after successful extraction. */
+  specimensV112?: FieldSpecimenV112[];
+  /** IDs of actual completed operations; wear is applied once, including failed hunts. */
+  toolUseIdsV112?: string[];
+  /** Monotone actual encounter index, matching missionProgress.attempts at launch. */
+  harvestEncounterRunV112?: number;
   kills: number;
   scans: number;
   /** Stable V7/V8 roster identities encountered during this hunt. */
@@ -597,6 +614,8 @@ export interface PlayerProfile {
 }
 
 export interface PlayerInventory {
+  /** Additive V112 ledger; missing old data migrates to an empty depot and sharp tool. */
+  harvestV112?: HarvestInventoryV112;
   /** Purchased once at the armory; absence in an older save grants nothing. */
   fieldToolIds: FieldToolId[];
   unlockedWeaponIds: WeaponId[];
@@ -626,6 +645,8 @@ export interface GameStatistics {
 }
 
 export interface GameSettings {
+  /** Optional on legacy saves; normalizer supplies a complete, versioned profile. */
+  huntAccessibility?: HuntAccessibilityV112;
   difficultyId: DifficultyId;
   masterVolume: number;
   musicVolume: number;

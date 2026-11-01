@@ -89,7 +89,8 @@ test("SSR retains territory keyboard access and geographic fallback while materi
     assert.match(html, /Affichage planétaire/);
     assert.match(html, /Atmosphère/);
     assert.match(html, /Nuages/);
-    assert.match(html, /Brumes et aurores/);
+    assert.match(html, /Brumes et météo/);
+    assert.match(html, /Aurores/);
     assert.match(html, /Éclairage/);
     assert.doesNotMatch(html, /NaN|Infinity/);
   }

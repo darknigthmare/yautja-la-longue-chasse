@@ -104,3 +104,9 @@
   .openingPanel ol { margin: 8px 0; }
   .openingPanel h2 { font-size: 24px; }
 }
+
+.fieldLoadV112 { margin: .35rem .75rem; padding: .5rem .75rem; color: #eadbb4; background: #10231f; border: 1px solid #6d7958; border-radius: .5rem; font-size: .8rem; }
+.fieldLoadV112 summary { cursor: pointer; min-height: 2.25rem; display: list-item; align-content: center; }
+.fieldLoadV112 summary:focus-visible { outline: 2px solid #f1d49a; outline-offset: 3px; }
+.fieldLoadV112 p { margin: .4rem 0 0; max-width: 80ch; line-height: 1.5; }
+@media(max-width: 480px) { .fieldLoadV112 { margin-inline: .35rem; font-size: .72rem; } }

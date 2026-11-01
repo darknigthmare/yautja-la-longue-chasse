@@ -10,3 +10,10 @@
 .export :focus-visible { outline: 2px solid #e7cc82; outline-offset: 4px; }
 .status { min-height: 1.6em; margin-bottom: 0 !important; overflow-wrap: anywhere; }
 @media (max-width: 480px) { .controls { display: grid; grid-template-columns: minmax(0, 1fr); } .export { padding: 12px; } }
+
+.composition { display: flex; flex-wrap: wrap; gap: 10px 16px; margin: 16px 0 0; border: 1px solid #40594d; border-radius: 8px; padding: 10px 12px 12px; min-width: 0; }
+.composition legend { padding: 0 7px; color: #d4e4b0; font-size: .8rem; font-weight: 650; }
+.composition label { display: inline-flex; align-items: center; gap: 8px; font-size: .78rem; color: #dae8dc; min-height: 32px; cursor: pointer; }
+.composition input { width: 17px; height: 17px; accent-color: #94bb81; }
+.composition p { flex-basis: 100%; margin: 0 !important; font-size: .74rem; }
+.composition:disabled { opacity: .6; }

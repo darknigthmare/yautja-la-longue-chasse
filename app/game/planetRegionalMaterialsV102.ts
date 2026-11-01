@@ -1,6 +1,7 @@
 import type { WarPlanetLandBiomeV96, WarPlanetV96 } from "./systems/clanWarPlanetsV96";
 import { PLANET_MATERIAL_ROOT_V101, planetMaterialSourceV101, unwrapPlanetPolygonV101 } from "./systems/planetMaterialV101";
 import { planetLandProfileV103, planetMaterialSourceV103, planetRegionalLayoutV103 } from "./systems/planetMaterialProfilesV103";
+import { planetTextureUriV115 } from "./systems/clanWarTextureLibraryV115";
 import { loadPlanetDetailedMaterialV103 } from "./planetDetailMaterialsV103";
 
 // A single atlas keeps the renderer within WebGL1's texture-unit budget.
@@ -27,7 +28,9 @@ export function planetRegionalAtlasKeyV102(planet: WarPlanetV96, tileSize: numbe
   // are uniforms and geography lives in separate masks, so neither duplicates it.
   return recipe?.version === 103
     ? `v103:${planetRegionalBiomesV102(planet).join(",")}:${recipe.landVariant}:${sourceSize}:${tileSize}`
-    : `${planet.id}:${sourceSize}:${tileSize}`;
+    : recipe?.version === 115
+      ? `v115:${planetRegionalBiomesV102(planet).join(",")}:${recipe.landMaterial}:${sourceSize}:${tileSize}`
+      : `${planet.id}:${sourceSize}:${tileSize}`;
 }
 
 export async function loadPlanetRegionalAtlasV102(
@@ -43,12 +46,13 @@ export async function loadPlanetRegionalAtlasV102(
   if (loading) return loading;
   const task = (async () => {
     const recipe = planet.procedural?.recipe;
-    const profile = recipe?.version === 103 ? planetLandProfileV103(recipe) : null;
+    const profile = recipe?.version === 103 || recipe?.version === 115 ? planetLandProfileV103(recipe) : null;
     const layout = profile ? planetRegionalLayoutV103(planet.regions.length, tileSize, Number.MAX_SAFE_INTEGER) : null;
     if (layout && layout.tileSize !== tileSize) throw new RangeError("Regional material atlas exceeds its pixel budget");
     if (!profile && planet.regions.length !== 6) throw new Error("Regional materials require the six-region planet schema");
     const columns = layout?.columns ?? 4, rows = layout?.rows ?? 2;
-    const detail = profile?.detail ? sourceSize > 512 ? planetMaterialSourceV103(profile.detail) : profile.detail : null;
+    const detail = recipe?.version === 115 ? planetTextureUriV115("land", recipe.landMaterial)
+      : profile?.detail ? sourceSize > 512 ? planetMaterialSourceV103(profile.detail) : profile.detail : null;
     const sources = await Promise.all(planetRegionalBiomesV102(planet).map(biome => {
       const runtime = `${PLANET_MATERIAL_ROOT_V101}land-${biome}.webp`;
       const url = sourceSize > 512 ? planetMaterialSourceV101(runtime) : runtime;

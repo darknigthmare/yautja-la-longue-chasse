@@ -23,7 +23,11 @@ export function homeworldMotionSourcesV74(youth:boolean):readonly HomeworldMotio
   return youth?allSources:civilianSources;
 }
 function resources(youth:boolean,additionalSources:readonly HomeworldMotionSourceV74[]){
-  return [...new Map([...homeworldMotionSourcesV74(youth),...additionalSources].map(source=>[source.src,source])).values()];
+  // Keep every distinct crop contract, regardless of declaration order. A
+  // duplicate URL must not hide incompatible dimensions used by another actor.
+  return [...new Map([...homeworldMotionSourcesV74(youth),...additionalSources].map(source=>[
+    JSON.stringify([source.src,source.sourceWidth,source.sourceHeight,source.kind==='scene'?'scene':'animation']),source,
+  ])).values()];
 }
 
 /** Resource loader separated for lifecycle tests. It has no simulation clock,

@@ -2,7 +2,7 @@ import type { SaveGame } from '../types';
 import type { HomeworldVec2 } from './homeworldCity';
 import { homeworldAtlasTargetV83, homeworldAtlasFloorLinksV83, type HomeworldAtlasLandmarkV83 } from './homeworldAtlasLandmarksV83';
 import { HOMEWORLD_BUILDINGS_V77, HOMEWORLD_CONNECTORS_V77, HOMEWORLD_LEVELS_V77, type HomeworldLevelV77 } from './homeworldWorldV77';
-import { homeworldWorldRouteV77, type HomeworldWalkRouteV77 } from './homeworldNavigationV77';
+import type { HomeworldWalkRouteV77 } from './homeworldNavigationV77';
 import { homeworldCargoGeometryKeyV109, homeworldWalkRouteV109, homeworldRouteSegmentV109 } from './homeworldNavigationV109';
 import { homeworldAtlasLandmarksV111 } from './homeworldObjectivesV111';
 import {HOMEWORLD_ACTOR} from './homeworldCity';
@@ -77,16 +77,38 @@ function worldRoute(from: { levelId: HomeworldLevelV77; point: HomeworldVec2 }, 
   if (!links) return { status: 'unavailable', segments: [] };
   const segments: (HomeworldWalkRouteV77 | {connectorId: string; reverse: boolean})[] = [];
   const fallback = () => {
-    const result = homeworldWorldRouteV77(from, to);
-    const repaired = result.segments.map(segment => 'connectorId' in segment ? segment : homeworldWalkRouteV109(segment.levelId, segment.points[0], segment.points.at(-1)!, ledger));
-    return { status: result.status === 'reachable' && repaired.every(segment => 'connectorId' in segment || segment.status === 'reachable') ? 'reachable' as const : 'unavailable' as const, segments: repaired };
+    // A parked load can close one stair while another public connector stays
+    // usable. Search live walking edges instead of repairing only the first
+    // static itinerary, and reject an occupied arrival before boarding it.
+    const queue = [{...from, segments: [] as typeof segments, used: new Set<string>()}];
+    const key = (point: typeof from) => `${point.levelId}:${point.point.x}:${point.point.y}`;
+    const visited = new Set([key(from)]);
+    for (let index = 0; index < queue.length && index < 128; index++) {
+      const state = queue[index];
+      if (state.levelId === to.levelId) {
+        const walk = homeworldWalkRouteV109(state.levelId, state.point, to.point, ledger);
+        if (walk.status === 'reachable') return {status: 'reachable' as const, segments: [...state.segments, walk]};
+      }
+      for (const connector of HOMEWORLD_CONNECTORS_V77) {
+        if (state.used.has(connector.id)) continue;
+        const reverse = connector.to.levelId === state.levelId;
+        const start = reverse ? connector.to : connector.from, end = reverse ? connector.from : connector.to;
+        if (start.levelId !== state.levelId || visited.has(key(end))
+          || !homeworldExteriorArrivalAllowedV110(end.levelId, end.point, ledger)) continue;
+        const walk = homeworldWalkRouteV109(state.levelId, state.point, start.point, ledger);
+        if (walk.status !== 'reachable') continue;
+        visited.add(key(end));
+        queue.push({levelId: end.levelId, point: end.point, segments: [...state.segments, walk, {connectorId: connector.id, reverse}], used: new Set([...state.used, connector.id])});
+      }
+    }
+    return {status: 'unavailable' as const, segments: []};
   };
   let cursor = from;
   for (const link of links) {
     const connector = HOMEWORLD_CONNECTORS_V77.find(entry => entry.id === link.id)!;
     const reverse = connector.to.levelId === cursor.levelId, start = reverse ? connector.to : connector.from, end = reverse ? connector.from : connector.to;
     const walk = homeworldWalkRouteV109(cursor.levelId, cursor.point, start.point, ledger);
-    if (walk.status !== 'reachable') return fallback();
+    if (walk.status !== 'reachable' || !homeworldExteriorArrivalAllowedV110(end.levelId, end.point, ledger)) return fallback();
     segments.push(walk, { connectorId: connector.id, reverse }); cursor = end;
   }
   const final = homeworldWalkRouteV109(cursor.levelId, cursor.point, to.point, ledger);
@@ -229,12 +251,13 @@ export function homeworldRouteGuidanceV111(plan: HomeworldRoutePlanV109, origin:
   // Project onto every segment: after consolidation, the nearest vertex can
   // belong to another street even while the hunter is on a long safe segment.
   let nearest = -1, nearestRatio = 0, nearestDistance = Infinity;
+  let nearestProjection = origin.actor;
   for (let n = 0; n < stage.points.length - 1; n++) {
     const a = stage.points[n], b = stage.points[n + 1], dx = b.x - a.x, dy = b.y - a.y;
     const ratio = Math.max(0, Math.min(1, ((origin.actor.x - a.x) * dx + (origin.actor.y - a.y) * dy) / (dx * dx + dy * dy || 1)));
     const projected = { x: a.x + dx * ratio, y: a.y + dy * ratio };
     const candidateDistance = distance(origin.actor, projected);
-    if (candidateDistance < nearestDistance) { nearest = n; nearestRatio = ratio; nearestDistance = candidateDistance; }
+    if (candidateDistance < nearestDistance) { nearest = n; nearestRatio = ratio; nearestDistance = candidateDistance; nearestProjection = projected; }
   }
   if (nearest < 0 || nearestDistance > 180) return lost;
   const candidates: { point: HomeworldVec2; after: number }[] = [];
@@ -247,7 +270,15 @@ export function homeworldRouteGuidanceV111(plan: HomeworldRoutePlanV109, origin:
     walking += length * (1 - ratio);
     if (walking >= 240) break;
   }
-  const waypoint = candidates.reverse().find(candidate => distance(origin.actor, candidate.point) > Math.min(5, stage.radius) && safe(candidate.point));
+  const minimumAdvance = Math.min(5, stage.radius);
+  const waypoint = candidates.reverse().find(candidate => distance(origin.actor, candidate.point) > minimumAdvance && safe(candidate.point))
+    // A close corner may be the only safe step when looking farther cuts a
+    // wall. Finish that turn, but never return the current point and stall.
+    ?? candidates.find(candidate => distance(origin.actor, candidate.point) > .001
+      && distance(origin.actor, candidate.point) <= minimumAdvance && safe(candidate.point))
+    // A previously safe shortcut may leave the actor beside the route. The
+    // existing 180-unit bound and the same collider also govern this rejoin.
+    ?? (nearestDistance > .001 && safe(nearestProjection) ? {point: nearestProjection, after: nearest + 1} : undefined);
   if (!waypoint) return lost;
   const angle = Math.atan2((waypoint.point.y - origin.actor.y) * HOMEWORLD_GEOMETRY_V64.depthScale, waypoint.point.x - origin.actor.x);
   const remaining = distance(origin.actor, waypoint.point) + stage.points.slice(waypoint.after).reduce((sum, point, n) => sum + distance(n ? stage.points[waypoint.after + n - 1] : waypoint.point, point), 0) + laterDistance;

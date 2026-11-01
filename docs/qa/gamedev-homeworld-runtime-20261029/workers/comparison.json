@@ -1,0 +1,358 @@
+{
+  "baselineCommit": "842d513fef9e1c80adc7c6d6b25cd2ae4b081fca",
+  "orderChosenBeforeExecution": [
+    "before",
+    "after",
+    "after",
+    "before",
+    "before",
+    "after"
+  ],
+  "method": "Three alternating before/after pairs; a fresh browser and Worker for every run. First response includes Worker startup. No timing assertion or retry.",
+  "scope": "Shared managed environment, one audience-to-port fixture, exact same full plan; not FPS or a target-device budget.",
+  "runs": [
+    {
+      "number": 1,
+      "variant": "before",
+      "startedAt": "2026-10-29T15:47:49.042724+00:00",
+      "environmentBefore": {
+        "loadAverage": "6.88 19.47 32.86 10/466 400503",
+        "memoryCurrentBytes": "7006068736",
+        "memoryMaxBytes": "8589934592",
+        "cpuQuota": "800000 100000"
+      },
+      "log": "01-before.log",
+      "exitCode": 0,
+      "environmentAfter": {
+        "loadAverage": "6.89 19.26 32.72 7/487 400723",
+        "memoryCurrentBytes": "7050629120",
+        "memoryMaxBytes": "8589934592",
+        "cpuQuota": "800000 100000"
+      },
+      "report": "01-before/run-n0Qpnp/report.json",
+      "coldMs": 4156,
+      "repeatMs": 25.700000002980232,
+      "planSha256": "c8c4a2539a3cff7c808db31201899e7e5fce2d9a25b15cb7857108ea12d880e5",
+      "fixtureSha256": "ee550c4877e6081b07f5fa608bd17be903e4da400ffb5f1bda5c66a676926438",
+      "runtime": {
+        "node": "v24.22.1",
+        "chromium": "153.0.8010.0",
+        "playwright": "1.62.1",
+        "esbuild": "0.25.12"
+      },
+      "sources": [
+        {
+          "path": "app/game/systems/homeworldNavigationV77.ts",
+          "sha256": "372896bc10acc6389af30234e0ae2934fa8efedf6a624df17a4514961a2ff078"
+        },
+        {
+          "path": "app/game/systems/homeworldNavigationV99.ts",
+          "sha256": "709fdaf1c2fe5cd040f9bcb0e6ef465ae6cb402131988299979509cdf76a45fd"
+        },
+        {
+          "path": "app/game/systems/homeworldNavigationV109.ts",
+          "sha256": "8203bed6ba14ae3b15d6eb6b1834eb884ff4804438b079bc6eb7d90bb86863f9"
+        },
+        {
+          "path": "app/game/systems/homeworldWayfindingV111.ts",
+          "sha256": "a9894db25bb18208ef2a6b34e0118af5a2eec2570988b8b60da25a23f41e453b"
+        },
+        {
+          "path": "app/game/systems/homeworldCourtArtV80.ts",
+          "sha256": "74959060f87be423305bc7207f00a3cdde1712d9348a789389c8c4e9dd45bbee"
+        },
+        {
+          "path": "app/game/systems/homeworldCivicDecorV80.ts",
+          "sha256": "eff8fea8396066424225b57147032c8868e23cc10a15713ba5807dbc14bee373"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "variant": "after",
+      "startedAt": "2026-10-29T15:47:54.788630+00:00",
+      "environmentBefore": {
+        "loadAverage": "6.89 19.26 32.72 11/487 400723",
+        "memoryCurrentBytes": "7052988416",
+        "memoryMaxBytes": "8589934592",
+        "cpuQuota": "800000 100000"
+      },
+      "log": "02-after.log",
+      "exitCode": 0,
+      "environmentAfter": {
+        "loadAverage": "6.98 19.08 32.59 18/570 400978",
+        "memoryCurrentBytes": "7397019648",
+        "memoryMaxBytes": "8589934592",
+        "cpuQuota": "800000 100000"
+      },
+      "report": "02-after/run-SAqwxy/report.json",
+      "coldMs": 3856.10000000149,
+      "repeatMs": 15.399999998509884,
+      "planSha256": "c8c4a2539a3cff7c808db31201899e7e5fce2d9a25b15cb7857108ea12d880e5",
+      "fixtureSha256": "ee550c4877e6081b07f5fa608bd17be903e4da400ffb5f1bda5c66a676926438",
+      "runtime": {
+        "node": "v24.22.1",
+        "chromium": "153.0.8010.0",
+        "playwright": "1.62.1",
+        "esbuild": "0.25.12"
+      },
+      "sources": [
+        {
+          "path": "app/game/systems/homeworldNavigationV77.ts",
+          "sha256": "372896bc10acc6389af30234e0ae2934fa8efedf6a624df17a4514961a2ff078"
+        },
+        {
+          "path": "app/game/systems/homeworldNavigationV99.ts",
+          "sha256": "709fdaf1c2fe5cd040f9bcb0e6ef465ae6cb402131988299979509cdf76a45fd"
+        },
+        {
+          "path": "app/game/systems/homeworldNavigationV109.ts",
+          "sha256": "8203bed6ba14ae3b15d6eb6b1834eb884ff4804438b079bc6eb7d90bb86863f9"
+        },
+        {
+          "path": "app/game/systems/homeworldWayfindingV111.ts",
+          "sha256": "a9894db25bb18208ef2a6b34e0118af5a2eec2570988b8b60da25a23f41e453b"
+        },
+        {
+          "path": "app/game/systems/homeworldCourtArtV80.ts",
+          "sha256": "47bdc7fc91f660c68928ebd9e7555c360a0ba9a534a070dcbdebeaa2b059c57a"
+        },
+        {
+          "path": "app/game/systems/homeworldCivicDecorV80.ts",
+          "sha256": "0df98ed2bb30e7e1149a8379c1e7146e1821a174016cf7c3702002e7791b048e"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "variant": "after",
+      "startedAt": "2026-10-29T15:48:00.141272+00:00",
+      "environmentBefore": {
+        "loadAverage": "6.98 19.08 32.59 18/570 400978",
+        "memoryCurrentBytes": "7399903232",
+        "memoryMaxBytes": "8589934592",
+        "cpuQuota": "800000 100000"
+      },
+      "log": "03-after.log",
+      "exitCode": 0,
+      "environmentAfter": {
+        "loadAverage": "8.59 19.02 32.43 14/442 401161",
+        "memoryCurrentBytes": "7098146816",
+        "memoryMaxBytes": "8589934592",
+        "cpuQuota": "800000 100000"
+      },
+      "report": "03-after/run-ayIuo8/report.json",
+      "coldMs": 4663.20000000298,
+      "repeatMs": 19.799999997019768,
+      "planSha256": "c8c4a2539a3cff7c808db31201899e7e5fce2d9a25b15cb7857108ea12d880e5",
+      "fixtureSha256": "ee550c4877e6081b07f5fa608bd17be903e4da400ffb5f1bda5c66a676926438",
+      "runtime": {
+        "node": "v24.22.1",
+        "chromium": "153.0.8010.0",
+        "playwright": "1.62.1",
+        "esbuild": "0.25.12"
+      },
+      "sources": [
+        {
+          "path": "app/game/systems/homeworldNavigationV77.ts",
+          "sha256": "372896bc10acc6389af30234e0ae2934fa8efedf6a624df17a4514961a2ff078"
+        },
+        {
+          "path": "app/game/systems/homeworldNavigationV99.ts",
+          "sha256": "709fdaf1c2fe5cd040f9bcb0e6ef465ae6cb402131988299979509cdf76a45fd"
+        },
+        {
+          "path": "app/game/systems/homeworldNavigationV109.ts",
+          "sha256": "8203bed6ba14ae3b15d6eb6b1834eb884ff4804438b079bc6eb7d90bb86863f9"
+        },
+        {
+          "path": "app/game/systems/homeworldWayfindingV111.ts",
+          "sha256": "a9894db25bb18208ef2a6b34e0118af5a2eec2570988b8b60da25a23f41e453b"
+        },
+        {
+          "path": "app/game/systems/homeworldCourtArtV80.ts",
+          "sha256": "47bdc7fc91f660c68928ebd9e7555c360a0ba9a534a070dcbdebeaa2b059c57a"
+        },
+        {
+          "path": "app/game/systems/homeworldCivicDecorV80.ts",
+          "sha256": "0df98ed2bb30e7e1149a8379c1e7146e1821a174016cf7c3702002e7791b048e"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "variant": "before",
+      "startedAt": "2026-10-29T15:48:07.029468+00:00",
+      "environmentBefore": {
+        "loadAverage": "8.59 19.02 32.43 16/442 401161",
+        "memoryCurrentBytes": "7095099392",
+        "memoryMaxBytes": "8589934592",
+        "cpuQuota": "800000 100000"
+      },
+      "log": "04-before.log",
+      "exitCode": 0,
+      "environmentAfter": {
+        "loadAverage": "9.26 18.99 32.35 18/444 401384",
+        "memoryCurrentBytes": "7154511872",
+        "memoryMaxBytes": "8589934592",
+        "cpuQuota": "800000 100000"
+      },
+      "report": "04-before/run-xMtfc0/report.json",
+      "coldMs": 6449.89999999851,
+      "repeatMs": 33.20000000298023,
+      "planSha256": "c8c4a2539a3cff7c808db31201899e7e5fce2d9a25b15cb7857108ea12d880e5",
+      "fixtureSha256": "ee550c4877e6081b07f5fa608bd17be903e4da400ffb5f1bda5c66a676926438",
+      "runtime": {
+        "node": "v24.22.1",
+        "chromium": "153.0.8010.0",
+        "playwright": "1.62.1",
+        "esbuild": "0.25.12"
+      },
+      "sources": [
+        {
+          "path": "app/game/systems/homeworldNavigationV77.ts",
+          "sha256": "372896bc10acc6389af30234e0ae2934fa8efedf6a624df17a4514961a2ff078"
+        },
+        {
+          "path": "app/game/systems/homeworldNavigationV99.ts",
+          "sha256": "709fdaf1c2fe5cd040f9bcb0e6ef465ae6cb402131988299979509cdf76a45fd"
+        },
+        {
+          "path": "app/game/systems/homeworldNavigationV109.ts",
+          "sha256": "8203bed6ba14ae3b15d6eb6b1834eb884ff4804438b079bc6eb7d90bb86863f9"
+        },
+        {
+          "path": "app/game/systems/homeworldWayfindingV111.ts",
+          "sha256": "a9894db25bb18208ef2a6b34e0118af5a2eec2570988b8b60da25a23f41e453b"
+        },
+        {
+          "path": "app/game/systems/homeworldCourtArtV80.ts",
+          "sha256": "74959060f87be423305bc7207f00a3cdde1712d9348a789389c8c4e9dd45bbee"
+        },
+        {
+          "path": "app/game/systems/homeworldCivicDecorV80.ts",
+          "sha256": "eff8fea8396066424225b57147032c8868e23cc10a15713ba5807dbc14bee373"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "variant": "before",
+      "startedAt": "2026-10-29T15:48:15.413438+00:00",
+      "environmentBefore": {
+        "loadAverage": "9.26 18.99 32.35 18/444 401384",
+        "memoryCurrentBytes": "7154511872",
+        "memoryMaxBytes": "8589934592",
+        "cpuQuota": "800000 100000"
+      },
+      "log": "05-before.log",
+      "exitCode": 0,
+      "environmentAfter": {
+        "loadAverage": "10.11 18.85 32.15 16/448 401529",
+        "memoryCurrentBytes": "7187648512",
+        "memoryMaxBytes": "8589934592",
+        "cpuQuota": "800000 100000"
+      },
+      "report": "05-before/run-rKg3g2/report.json",
+      "coldMs": 5388.5,
+      "repeatMs": 27.5,
+      "planSha256": "c8c4a2539a3cff7c808db31201899e7e5fce2d9a25b15cb7857108ea12d880e5",
+      "fixtureSha256": "ee550c4877e6081b07f5fa608bd17be903e4da400ffb5f1bda5c66a676926438",
+      "runtime": {
+        "node": "v24.22.1",
+        "chromium": "153.0.8010.0",
+        "playwright": "1.62.1",
+        "esbuild": "0.25.12"
+      },
+      "sources": [
+        {
+          "path": "app/game/systems/homeworldNavigationV77.ts",
+          "sha256": "372896bc10acc6389af30234e0ae2934fa8efedf6a624df17a4514961a2ff078"
+        },
+        {
+          "path": "app/game/systems/homeworldNavigationV99.ts",
+          "sha256": "709fdaf1c2fe5cd040f9bcb0e6ef465ae6cb402131988299979509cdf76a45fd"
+        },
+        {
+          "path": "app/game/systems/homeworldNavigationV109.ts",
+          "sha256": "8203bed6ba14ae3b15d6eb6b1834eb884ff4804438b079bc6eb7d90bb86863f9"
+        },
+        {
+          "path": "app/game/systems/homeworldWayfindingV111.ts",
+          "sha256": "a9894db25bb18208ef2a6b34e0118af5a2eec2570988b8b60da25a23f41e453b"
+        },
+        {
+          "path": "app/game/systems/homeworldCourtArtV80.ts",
+          "sha256": "74959060f87be423305bc7207f00a3cdde1712d9348a789389c8c4e9dd45bbee"
+        },
+        {
+          "path": "app/game/systems/homeworldCivicDecorV80.ts",
+          "sha256": "eff8fea8396066424225b57147032c8868e23cc10a15713ba5807dbc14bee373"
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "variant": "after",
+      "startedAt": "2026-10-29T15:48:23.220514+00:00",
+      "environmentBefore": {
+        "loadAverage": "10.11 18.85 32.15 18/448 401529",
+        "memoryCurrentBytes": "7187648512",
+        "memoryMaxBytes": "8589934592",
+        "cpuQuota": "800000 100000"
+      },
+      "log": "06-after.log",
+      "exitCode": 0,
+      "environmentAfter": {
+        "loadAverage": "11.04 18.75 31.98 12/474 401667",
+        "memoryCurrentBytes": "7330304000",
+        "memoryMaxBytes": "8589934592",
+        "cpuQuota": "800000 100000"
+      },
+      "report": "06-after/run-FGyLgd/report.json",
+      "coldMs": 5320,
+      "repeatMs": 31.5,
+      "planSha256": "c8c4a2539a3cff7c808db31201899e7e5fce2d9a25b15cb7857108ea12d880e5",
+      "fixtureSha256": "ee550c4877e6081b07f5fa608bd17be903e4da400ffb5f1bda5c66a676926438",
+      "runtime": {
+        "node": "v24.22.1",
+        "chromium": "153.0.8010.0",
+        "playwright": "1.62.1",
+        "esbuild": "0.25.12"
+      },
+      "sources": [
+        {
+          "path": "app/game/systems/homeworldNavigationV77.ts",
+          "sha256": "372896bc10acc6389af30234e0ae2934fa8efedf6a624df17a4514961a2ff078"
+        },
+        {
+          "path": "app/game/systems/homeworldNavigationV99.ts",
+          "sha256": "709fdaf1c2fe5cd040f9bcb0e6ef465ae6cb402131988299979509cdf76a45fd"
+        },
+        {
+          "path": "app/game/systems/homeworldNavigationV109.ts",
+          "sha256": "8203bed6ba14ae3b15d6eb6b1834eb884ff4804438b079bc6eb7d90bb86863f9"
+        },
+        {
+          "path": "app/game/systems/homeworldWayfindingV111.ts",
+          "sha256": "a9894db25bb18208ef2a6b34e0118af5a2eec2570988b8b60da25a23f41e453b"
+        },
+        {
+          "path": "app/game/systems/homeworldCourtArtV80.ts",
+          "sha256": "47bdc7fc91f660c68928ebd9e7555c360a0ba9a534a070dcbdebeaa2b059c57a"
+        },
+        {
+          "path": "app/game/systems/homeworldCivicDecorV80.ts",
+          "sha256": "0df98ed2bb30e7e1149a8379c1e7146e1821a174016cf7c3702002e7791b048e"
+        }
+      ]
+    }
+  ],
+  "beforeColdMedianMs": 5388.5,
+  "afterColdMedianMs": 4663.20000000298,
+  "coldReductionPercent": 13.46014660846283,
+  "beforeRepeatMedianMs": 27.5,
+  "afterRepeatMedianMs": 19.799999997019768,
+  "checksPassed": 24,
+  "pathChanged": false
+}

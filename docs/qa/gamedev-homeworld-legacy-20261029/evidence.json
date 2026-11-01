@@ -1,0 +1,298 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-29T14:09:43.435259+00:00",
+  "baseCommit": "177a31d670f2d729ec39da8783f4f233348e27a6",
+  "mainCommit": "3943522296dff8cdb2d183dd7f9b7132b2a912c6",
+  "pullRequest": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/25",
+  "scope": "Working tree based on the base commit; source hashes identify the verified corrections. Publication SHA is recorded in the pull request.",
+  "sources": [
+    {
+      "path": "app/game/PlanetGeneratorV102.tsx",
+      "bytes": 18173,
+      "sha256": "7760f35afe7e38e185d4d05a78df7095e0e97e86944b24595191e0b23ecb0db5"
+    },
+    {
+      "path": "app/game/systems/homeworldWayfindingV111.ts",
+      "bytes": 23210,
+      "sha256": "a9894db25bb18208ef2a6b34e0118af5a2eec2570988b8b60da25a23f41e453b"
+    },
+    {
+      "path": "tests/planet-generator-import-race-v102.test.mjs",
+      "bytes": 11228,
+      "sha256": "9d9c902615e1511c214a8090874f12dad8993b2767117419e0a42d58d3e50d1a"
+    },
+    {
+      "path": "tests/homeworld-connector-detour-v113.test.mjs",
+      "bytes": 15933,
+      "sha256": "a94b30426247c0a44f321df89f00dd3307fa108fded61e1a17ed7308c7c4216e"
+    },
+    {
+      "path": ".github/workflows/audit-v94.yml",
+      "bytes": 56002,
+      "sha256": "4ec0ce322425cbddb391d4e676e56d1a64e3d8f2f04bb795e14902a56e5ac099"
+    },
+    {
+      "path": "tests/helpers/cargo-v108-route.mjs",
+      "bytes": 4633,
+      "sha256": "6e696f607f0c14410c4e3c0672f28617c3cb5673eb3aa7af58ed74c5e819bde1"
+    }
+  ],
+  "moduleRuns": [
+    {
+      "id": "v102-import",
+      "command": "node --experimental-strip-types --test --test-isolation=none --test-reporter=spec tests/planet-generator-import-race-v102.test.mjs",
+      "log": "v102-import-green.log",
+      "passed": 14,
+      "failed": 0,
+      "skipped": 0,
+      "exitCode": 0
+    },
+    {
+      "id": "homeworld-detour",
+      "command": "node --test-reporter=tap tests/homeworld-connector-detour-v113.test.mjs",
+      "log": "homeworld-route-green.log",
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0,
+      "exitCode": 0
+    },
+    {
+      "id": "homeworld-v109",
+      "command": "node --test-reporter=tap tests/homeworld-dynamic-navigation-v109.test.mjs",
+      "log": "homeworld-v109.log",
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "exitCode": 0
+    },
+    {
+      "id": "homeworld-v111",
+      "command": "node --test-reporter=tap tests/homeworld-objectives-v111.test.mjs",
+      "log": "homeworld-v111.log",
+      "passed": 11,
+      "failed": 0,
+      "skipped": 0,
+      "exitCode": 0
+    }
+  ],
+  "moduleTestsPassed": 39,
+  "redPhases": [
+    {
+      "id": "v102-before-correction",
+      "baseCommit": "177a31d670f2d729ec39da8783f4f233348e27a6",
+      "log": "v102-import-red.log",
+      "passed": 3,
+      "failed": 11
+    },
+    {
+      "id": "homeworld-original-planner",
+      "baseCommit": "177a31d670f2d729ec39da8783f4f233348e27a6",
+      "log": "homeworld-route-red.log",
+      "passed": 2,
+      "failed": 2
+    },
+    {
+      "id": "homeworld-close-corner",
+      "log": "homeworld-close-corner-red.log",
+      "passed": 0,
+      "failed": 1,
+      "state": "Intermediate state after the connector correction and before the close-corner fallback."
+    },
+    {
+      "id": "homeworld-rejoin",
+      "log": "homeworld-rejoin-red.log",
+      "passed": 0,
+      "failed": 1,
+      "state": "Intermediate state after the close-corner fallback and before the projection fallback."
+    }
+  ],
+  "typechecks": [
+    {
+      "command": "node_modules/.bin/tsc --noEmit --strict --skipLibCheck --target es2022 --module esnext --moduleResolution bundler --resolveJsonModule --esModuleInterop --jsx react-jsx --lib es2022,dom next-env.d.ts app/game/PlanetGeneratorV102.tsx",
+      "log": "v102-typecheck.log",
+      "exitCode": 0
+    },
+    {
+      "command": "node_modules/.bin/tsc --noEmit --strict --skipLibCheck --target es2022 --module esnext --moduleResolution bundler --resolveJsonModule --esModuleInterop --jsx react-jsx --lib es2023,dom next-env.d.ts app/game/systems/homeworldWayfindingV111.ts",
+      "log": "homeworld-typecheck.log",
+      "exitCode": 0
+    }
+  ],
+  "browser": {
+    "command": "YAUTJA_QA_BASE_URL=http://127.0.0.1:3101 AUDIT_CHROME_EXECUTABLE=/tmp/chromium node docs/qa/gamedev-homeworld-legacy-20261029/v102-browser-run.mjs",
+    "report": "v102-browser.json",
+    "log": "v102-browser.log",
+    "passed": 6,
+    "failed": 0,
+    "serverMode": "development",
+    "runtime": {
+      "chromium": "153.0.8010.0",
+      "node": "v24.22.1",
+      "next": "16.3.5",
+      "playwright": "1.62.1"
+    },
+    "nativeFileTextRestored": true,
+    "javaScriptErrors": 0,
+    "consoleErrors": 0,
+    "httpErrors": 0
+  },
+  "homeworldJourney": {
+    "fixture": {
+      "nativeCarryingSteps": 1421,
+      "distanceMinimumWorldUnits": 7100,
+      "groundLanding": {
+        "x": 4500,
+        "y": 2900
+      }
+    },
+    "outward": {
+      "planMs": 775.7390429999996,
+      "ticks": 854,
+      "walked": 4315.92830795082,
+      "rideTicks": 172,
+      "nativeMotorSteps": 850,
+      "connectors": [
+        "clan-lift",
+        "acropolis-stair"
+      ],
+      "arrival": "nearestHomeworldInteriorTargetV64 pointId = audience-point"
+    },
+    "returned": {
+      "planMs": 13761.008555,
+      "ticks": 1910,
+      "walked": 9455.891617821404,
+      "rideTicks": 172,
+      "nativeMotorSteps": 1906,
+      "connectors": [
+        "acropolis-stair",
+        "clan-lift"
+      ],
+      "arrival": "cargoPostReachedV108 = true at level 0 outside interiors"
+    },
+    "units": {
+      "ticks": "guide consultations including one arrival observation per stage",
+      "walked": "world units",
+      "rideTicks": "native transit steps at dt = 0.1 seconds",
+      "planMs": "wall-clock duration of the direct route-planner call in this shared environment"
+    }
+  },
+  "independentReview": {
+    "result": "No blocking findings",
+    "scope": [
+      "V102 import invalidation and regression callbacks",
+      "Cargo-aware connector fallback",
+      "Safe nonzero near-corner and nearest-projection fallbacks",
+      "Actual port admission assertion",
+      "Workflow YAML parse and structural comparison; five test files exist; pinned report upload; existing lint coverage"
+    ],
+    "heavyTestsRepeatedByReviewer": false
+  },
+  "baselineCI": {
+    "report": "baseline-ci.json",
+    "scope": "The captured remote checks apply only to baseCommit, not to the new working tree.",
+    "applicationConclusion": "success",
+    "observedAt": "2026-10-29 14:10:08 UTC"
+  },
+  "limits": [
+    "Homeworld uses actual production functions in a seeded source fixture with controlled analog inputs. It is not a keyboard browser journey or a fresh campaign.",
+    "The browser scenarios exercise the real V102 Next development route and native exported files; they do not qualify a production package or artistic fidelity.",
+    "Cold return planning remained about 13.76 seconds in the final guided run. This is not a measured FPS improvement.",
+    "Local Node 24.22.1 / Playwright 1.62.1 differs from CI Node 22 / locked Playwright 1.63.0.",
+    "The previous local full production build was blocked by disk space. No new complete production build is claimed.",
+    "Final source hashes identify green-run code. Red traces document sequential development states."
+  ],
+  "proofFiles": [
+    {
+      "path": "docs/qa/gamedev-homeworld-legacy-20261029/baseline-ci.json",
+      "bytes": 11621,
+      "sha256": "2d9239e54750e91f1c778bccf5922c1428068d5f5efb822428fe4380cbb3134b"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-legacy-20261029/homeworld-close-corner-red.log",
+      "bytes": 1162,
+      "sha256": "b3c7791ed58209112673bfbde7a8784b52eb3e4bd3c05679365a0b49f37213af"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-legacy-20261029/homeworld-plan-cost-after.json",
+      "bytes": 446,
+      "sha256": "0840c1786aca323e34b813abd8a25a17585bd1efefeca42b9c5d3f2a79631294"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-legacy-20261029/homeworld-plan-cost-before.json",
+      "bytes": 420,
+      "sha256": "eb91a4092d49d45aa96adb9ec52234b0df27205461b0dd46546da78759f9c8c1"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-legacy-20261029/homeworld-plan-cost-run.mjs",
+      "bytes": 3334,
+      "sha256": "c2b5b43413f1a78b6c359b3aab9184e6ff67c772649d4d36fbfc6c4ee22c14a1"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-legacy-20261029/homeworld-rejoin-red.log",
+      "bytes": 1203,
+      "sha256": "d24c6428f578557fd4006293ad5a647d9eba2ce5886b483ec73860e78f12406c"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-legacy-20261029/homeworld-route-green.log",
+      "bytes": 1931,
+      "sha256": "e4691bfe91731a16085cd5af00987959347ac54c3bbb94532dde8da528d4ead3"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-legacy-20261029/homeworld-route-red.log",
+      "bytes": 3266,
+      "sha256": "ceded7ebd2da97adda790d33095e20e1c5e52d68715e99a8b3d369cd95a8cb8a"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-legacy-20261029/homeworld-typecheck.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-legacy-20261029/homeworld-v109.log",
+      "bytes": 2447,
+      "sha256": "1292d29106b6db59988b25bf8fd3a01df68c4382049521b3f6ccbfb2f829b291"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-legacy-20261029/homeworld-v111.log",
+      "bytes": 3339,
+      "sha256": "7353ac76761fa0bf3702884389084af5e29d269f95919d0de0d6f06291da164d"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-legacy-20261029/v102-browser-run.mjs",
+      "bytes": 10734,
+      "sha256": "9391420a82872c4b393c3c74342a2ac18e3696e05707f8746887ed8aa9dc7e05"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-legacy-20261029/v102-browser.json",
+      "bytes": 15552,
+      "sha256": "46ca8558fec6a3748d54855af5efa194aa59173fdc013018843b426433c7b927"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-legacy-20261029/v102-browser.log",
+      "bytes": 469,
+      "sha256": "b073226d6ade2514a0460d8bb5a5106c15e4e9878f560aaf1118eb4460ce0f40"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-legacy-20261029/v102-import-green.log",
+      "bytes": 1466,
+      "sha256": "f06bf0687f482240480a648a38abb353618758b02e86d98b638930479d1e59bb"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-legacy-20261029/v102-import-red.log",
+      "bytes": 15762,
+      "sha256": "85aa6d9daa3b556799638976ad9725d43c3e94f9403ec6b8604955a901be3771"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-legacy-20261029/v102-typecheck.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "plannerCostObservation": {
+    "before": "homeworld-plan-cost-before.json",
+    "after": "homeworld-plan-cost-after.json",
+    "script": "homeworld-plan-cost-run.mjs",
+    "warmCallsPerVariant": 20,
+    "scope": "Separate sequential processes after the same native carrying fixture; baseline refuses this route, corrected planner finds clan-lift and acropolis-stair. Not a whole-game cold-start or FPS benchmark. Script retains its actual environment paths."
+  }
+}

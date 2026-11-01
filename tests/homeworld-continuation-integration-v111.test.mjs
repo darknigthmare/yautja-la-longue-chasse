@@ -9,6 +9,8 @@ import {getHistoricalHomeworldExcelContextV111} from '../scripts/historical-exce
 
 const route=archiveContinuationRouteV111(),initial=structuredClone(route.state()),{qa,owner,b}=route;
 const saves=qa.load('app/game/save.ts');
+const {emptyHarvestInventoryV112}=qa.load('app/game/systems/harvestInventoryV112.ts');
+const {normalizeHuntAccessibilityV112}=qa.load('app/game/systems/huntAccessibilityV112.ts');
 const api=Object.assign({},...[
   'homeworldWorldV77','homeworldLocationV77','homeworldCartographyLedgerV104','homeworldCartographyV104',
   'homeworldCartographyLedgerV105','homeworldCartographyV105','homeworldArchiveLedgerV106','homeworldArchiveV106',
@@ -199,7 +201,7 @@ test('V111 actual interact refuses an available doorway while A carries the frag
   assert.deepEqual([...state.values],durable);assert.equal(state.writes,0);
 });
 
-test('V111 Save11 to12 preserves the genuine V110 campaign and B document while initializing empty fieldToolIds',async()=>{
+test('V111 Save11 to12 preserves the genuine V110 campaign and B document while initializing additive hunting defaults',async()=>{
   const history=await getHistoricalHomeworldExcelContextV111(),old=homeworldSceneSsrV78(history.root).load('app/game/save.ts');
   assert.equal(old.SAVE_VERSION,11);assert.equal(saves.SAVE_VERSION,12);
   const state=stateAt('working'),legacy=old.defaultSave(owner);
@@ -209,7 +211,10 @@ test('V111 Save11 to12 preserves the genuine V110 campaign and B document while 
   legacy.homeworld.locationV77=oldLocation.createHomeworldCheckpointV77(owner,'0',state.actor,null,state.actor);
   const previous=old.parseSaveImport(JSON.stringify(legacy)).save;assert(previous);
   const migrated=saves.parseSaveImport(JSON.stringify(previous)).save;assert(migrated);
-  assert.deepEqual(migrated,{...previous,version:12,inventory:{...previous.inventory,fieldToolIds:[]}},'every pre-existing campaign field survives; the newly integrated field-tool inventory defaults to empty');
+  assert.deepEqual(migrated,{...previous,version:12,
+    inventory:{...previous.inventory,fieldToolIds:[],harvestV112:emptyHarvestInventoryV112()},
+    settings:{...previous.settings,huntAccessibility:normalizeHuntAccessibilityV112(undefined)},
+  },'every pre-existing campaign field survives; additive hunting inventory and accessibility use their real production defaults');
   assert.equal(JSON.stringify(migrated.homeworld.archivePlaqueV109),JSON.stringify(previous.homeworld.archivePlaqueV109));
   assert.equal(migrated.homeworld.archiveContinuationV111,undefined,'migration does not create or auto-start an A continuation');
 });

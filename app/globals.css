@@ -6162,3 +6162,34 @@ select:focus-visible,
   min-height: 100%;
   padding-top: 12px;
 }
+
+/* V113 - two physically accessible, noncanonical cosmetic craft services. */
+.pigment-lab-access {
+  position: absolute;
+  z-index: 14;
+  top: 86px;
+  right: clamp(12px, 3vw, 44px);
+  width: min(340px, 38vw);
+  padding: 12px 14px;
+  border: 1px solid rgb(124 205 172 / 45%);
+  border-radius: 6px;
+  background: rgb(4 21 17 / 94%);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 45%);
+  color: #e0f1e8;
+}
+.pigment-lab-access strong,
+.hunter-material-facility strong { display: block; color: #f0c88a; letter-spacing: .035em; }
+.pigment-lab-access p,
+.hunter-material-facility p { margin: .45rem 0; color: #acc7b8; font-size: .85rem; }
+.pigment-lab-access button { min-height: 42px; margin-top: 7px; }
+.hunter-material-facility {
+  border-left: 3px solid #c79b63;
+  background: rgb(17 34 29 / 65%);
+  margin: 1rem 0;
+  padding: .75rem 1rem;
+  max-width: 920px;
+}
+.hunter-material-facility small { color: #9cb1a7; }
+@media (max-width: 760px) {
+  .pigment-lab-access { position: relative; top: auto; right: auto; width: auto; margin: 140px 12px 12px; }
+}

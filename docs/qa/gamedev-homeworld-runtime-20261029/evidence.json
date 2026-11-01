@@ -1,0 +1,591 @@
+{
+  "schemaVersion": 1,
+  "preparedAt": "2026-10-29T16:05:06.917728+00:00",
+  "baselineCommit": "842d513fef9e1c80adc7c6d6b25cd2ae4b081fca",
+  "publication": {
+    "pullRequest": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/25",
+    "commit": "The containing Git commit; omitted here to avoid a self-referential hash."
+  },
+  "scope": "Incremental Court/Civic collision reuse and immediate Atlas request cancellation; unchanged route solvers and fixture. Reports are dated executions, not a full production release certificate.",
+  "unitTests": {
+    "total": 48,
+    "passed": 48,
+    "suites": [
+      {
+        "log": "collision-green.log",
+        "tests": 5,
+        "pass": 5,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      {
+        "log": "navigation-cost.log",
+        "tests": 1,
+        "pass": 1,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      {
+        "log": "guided-roundtrip.log",
+        "tests": 6,
+        "pass": 6,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      {
+        "log": "navigation-v99.log",
+        "tests": 4,
+        "pass": 4,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      {
+        "log": "navigation-review-v99.log",
+        "tests": 3,
+        "pass": 3,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      {
+        "log": "navigation-v109.log",
+        "tests": 8,
+        "pass": 8,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      {
+        "log": "navigation-v111.log",
+        "tests": 11,
+        "pass": 11,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      {
+        "log": "cancellation-green.log",
+        "tests": 10,
+        "pass": 10,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    ],
+    "typescript": "Host and its imports: successful exit, empty typecheck.log; esnext,dom,dom.iterable libraries",
+    "execution": "Sequential behavior tests, then separately scheduled browser measurements"
+  },
+  "redTests": {
+    "collision": {
+      "passed": 3,
+      "failed": 2,
+      "method": "Only the Court and Civic modules are read from pinned baseline sources through collision-baseline-overlay.mjs."
+    },
+    "cancellation": {
+      "passed": 2,
+      "failed": 8,
+      "method": "The new test ran before editing the Atlas component, still identical to the baseline. Collision changes were already present; hooks, Worker and RAF were controlled. No full checkout restoration or actual solver execution."
+    }
+  },
+  "workerComparison": {
+    "file": "workers/comparison.json",
+    "runs": 6,
+    "checksPassed": 24,
+    "orderChosenBeforeExecution": [
+      "before",
+      "after",
+      "after",
+      "before",
+      "before",
+      "after"
+    ],
+    "beforeColdMedianMs": 5388.5,
+    "afterColdMedianMs": 4663.20000000298,
+    "coldReductionPercent": 13.46014660846283,
+    "planSha256": "c8c4a2539a3cff7c808db31201899e7e5fce2d9a25b15cb7857108ea12d880e5",
+    "pathChanged": false,
+    "changedModules": [
+      "app/game/systems/homeworldCourtArtV80.ts",
+      "app/game/systems/homeworldCivicDecorV80.ts"
+    ],
+    "exploratoryBefore": "initial-worker-before.json is a separate 13051.7 ms baseline observation under earlier shared load. It is excluded from the subsequently predeclared six-run series."
+  },
+  "atlasBrowser": {
+    "baselineHostOnly": {
+      "passed": 10,
+      "failed": 5,
+      "file": "atlas-before/result.json",
+      "hostSha256": "67e35a41fe5f7496f005db3b01002f3a35df56ce2361a160fa9080da5b0e4dd4"
+    },
+    "corrected": {
+      "passed": 15,
+      "failed": 0,
+      "file": "atlas-after/result.json",
+      "hostSha256": "69a0043234b023aa8eb319e217e9761f56858505afcb2cc58d6e5924c4a06aec"
+    },
+    "sameHarnessWorkerAndCaches": true,
+    "errors": {
+      "uncaught": 0,
+      "console": 0,
+      "http": 0
+    },
+    "initialHarnessDrift": "atlas-initial/result.json preserves 9/15 passes: five genuine cancellation failures plus one obsolete V109 assertion. The final harness opens current V111 guide options and checks the current stale-route state/message; both final variants use that same harness.",
+    "visualInspection": [
+      "atlas-after/actual-worker-cargo-detour.png",
+      "atlas-after/mobile-cargo-register.png"
+    ],
+    "visualScope": "Inspected SVG route/cargo detail and 390px register in an isolated React fixture; no full-game artwork or production CSS validation."
+  },
+  "validation": {
+    "typescript": "Strict targeted host/import graph passed without diagnostics; typecheck.log is intentionally empty.",
+    "eslint": "Unavailable locally; lint-unavailable.log preserves the failure. Workflow extends the existing lint list to both collision modules.",
+    "parentCi": {
+      "commit": "842d513fef9e1c80adc7c6d6b25cd2ae4b081fca",
+      "applicationStepsPassed": 59,
+      "run": 40897374187,
+      "snapshot": "parent-ci.json"
+    },
+    "newCi": "Starts when this continuation is published; inspect PR checks for the resulting commit. Parent results are not attributed to this continuation."
+  },
+  "limitations": [
+    "Three fresh-browser/Worker samples per variant on one fixture in a shared 8 GiB environment; no statistical confidence claim, FPS gain or target-device latency guarantee.",
+    "Before/after cold times include native Worker startup, route calculation and delivery. Warm observations are preserved but no warm speedup is claimed.",
+    "Do not compare this 4663.2 ms median directly with the 4207.2 ms median from the earlier separately loaded environment, or compound the measured percentages.",
+    "Browser cancellation baseline replaces only the Atlas component. It is not execution of the entire baseline commit.",
+    "Unit cancellation tests control hooks and responses; real mounted React and the native V111 Worker are covered separately by the browser reports.",
+    "Local Node 24.22.1 / Playwright 1.62.1 differ from Node 22 / locked Playwright 1.63.0 in CI.",
+    "ENOSPC stopped the initial comparison setup before any Worker started. Only this checkout's generated .next directory was removed; sources, dependencies and reports were preserved."
+  ],
+  "commandsWorkingDirectory": "/workspace/scratch/56a0bf56582d/yautja-apply-guides",
+  "commandsExecuted": [
+    "NODE_OPTIONS=--max-old-space-size=1024 node --test-reporter=tap tests/homeworld-collision-cost-v113.test.mjs",
+    "NODE_OPTIONS=--max-old-space-size=1024 node --test-reporter=tap tests/homeworld-navigation-cost-v113.test.mjs",
+    "NODE_OPTIONS=--max-old-space-size=1024 node --test-reporter=tap tests/homeworld-connector-detour-v113.test.mjs",
+    "NODE_OPTIONS=--max-old-space-size=1024 node --test-reporter=tap tests/homeworld-navigation-v99.test.mjs",
+    "NODE_OPTIONS=--max-old-space-size=1024 node --test-reporter=tap tests/homeworld-navigation-review-v99.test.mjs",
+    "NODE_OPTIONS=--max-old-space-size=1024 node --test-reporter=tap tests/homeworld-dynamic-navigation-v109.test.mjs",
+    "NODE_OPTIONS=--max-old-space-size=1024 node --test-reporter=tap tests/homeworld-objectives-v111.test.mjs",
+    "NODE_OPTIONS=--max-old-space-size=1024 node --import /tmp/yautja-collision-baseline-overlay.mjs --test-reporter=tap tests/homeworld-collision-cost-v113.test.mjs",
+    "node --experimental-strip-types --test --test-isolation=none --test-reporter=spec tests/homeworld-route-cancellation-v113.test.mjs",
+    "node_modules/.bin/tsc --noEmit --strict --skipLibCheck --target es2022 --module esnext --moduleResolution bundler --resolveJsonModule --esModuleInterop --jsx react-jsx --lib esnext,dom,dom.iterable next-env.d.ts app/game/HomeworldWorldMapV77.tsx",
+    "AUDIT_CHROME_EXECUTABLE=/tmp/chromium python docs/qa/gamedev-homeworld-runtime-20261029/compare-workers.py /workspace/scratch/56a0bf56582d/yautja-apply-guides /tmp/yautja-homeworld-runtime-20261029/baseline /tmp/yautja-homeworld-runtime-20261029/paired",
+    "YAUTJA_ATLAS_V109_BASELINE_HOST=/tmp/yautja-homeworld-runtime-20261029/baseline/HomeworldWorldMapV77.tsx YAUTJA_ATLAS_V109_OUTPUT=/tmp/yautja-homeworld-runtime-20261029/atlas-before-final CHROMIUM_EXECUTABLE_PATH=/tmp/chromium node scripts/qa-homeworld-atlas-browser-v109.mjs",
+    "YAUTJA_ATLAS_V109_OUTPUT=/tmp/yautja-homeworld-runtime-20261029/atlas-after CHROMIUM_EXECUTABLE_PATH=/tmp/chromium node scripts/qa-homeworld-atlas-browser-v109.mjs"
+  ],
+  "sourceArtifacts": [
+    {
+      "path": ".github/workflows/audit-v94.yml",
+      "bytes": 57467,
+      "sha256": "afbd62d5d309464d9bdbefb3e8804b197f7654b518d131e18c4b956620622d6b"
+    },
+    {
+      "path": "app/game/HomeworldWorldMapV77.tsx",
+      "bytes": 26580,
+      "sha256": "69a0043234b023aa8eb319e217e9761f56858505afcb2cc58d6e5924c4a06aec"
+    },
+    {
+      "path": "app/game/homeworldRouteWorkerV111.ts",
+      "bytes": 791,
+      "sha256": "11a35dab36df18ddd97cd8613243b8844994781c2f06089e46447bd9b64f9b94"
+    },
+    {
+      "path": "app/game/systems/homeworldCivicDecorV80.ts",
+      "bytes": 14870,
+      "sha256": "0df98ed2bb30e7e1149a8379c1e7146e1821a174016cf7c3702002e7791b048e"
+    },
+    {
+      "path": "app/game/systems/homeworldCourtArtV80.ts",
+      "bytes": 5974,
+      "sha256": "47bdc7fc91f660c68928ebd9e7555c360a0ba9a534a070dcbdebeaa2b059c57a"
+    },
+    {
+      "path": "app/game/systems/homeworldNavigationV109.ts",
+      "bytes": 8669,
+      "sha256": "8203bed6ba14ae3b15d6eb6b1834eb884ff4804438b079bc6eb7d90bb86863f9"
+    },
+    {
+      "path": "app/game/systems/homeworldNavigationV77.ts",
+      "bytes": 7355,
+      "sha256": "372896bc10acc6389af30234e0ae2934fa8efedf6a624df17a4514961a2ff078"
+    },
+    {
+      "path": "app/game/systems/homeworldNavigationV99.ts",
+      "bytes": 12842,
+      "sha256": "709fdaf1c2fe5cd040f9bcb0e6ef465ae6cb402131988299979509cdf76a45fd"
+    },
+    {
+      "path": "app/game/systems/homeworldWayfindingV111.ts",
+      "bytes": 23210,
+      "sha256": "a9894db25bb18208ef2a6b34e0118af5a2eec2570988b8b60da25a23f41e453b"
+    },
+    {
+      "path": "docs/GAMEDEV_AGENT_GUIDE.md",
+      "bytes": 18467,
+      "sha256": "a25fc2a1c65366428bc02d629a82e5bf56e24bf7c33958a8a70c1c5e83bb3c0f"
+    },
+    {
+      "path": "docs/gamedev-homeworld-runtime-20261029.md",
+      "bytes": 11879,
+      "sha256": "3735ba069e80b03c49734427cb2bfc3f0954f4e201e36d702a49ecba356a9690"
+    },
+    {
+      "path": "docs/gamedev-skill-sources.json",
+      "bytes": 3724,
+      "sha256": "fec9d88c980d959f1140582029d13fe7c07c2b7a8473a295647bbaacfac3cde5"
+    },
+    {
+      "path": "scripts/qa-homeworld-atlas-browser-v109.mjs",
+      "bytes": 17407,
+      "sha256": "18355cc757501f6a2b5560b8334c38786ab597eb6800589adc8621ca3a39da86"
+    },
+    {
+      "path": "scripts/qa-homeworld-route-worker-v113.mjs",
+      "bytes": 11048,
+      "sha256": "af5be3cf57a4af538a9659d1fefc5fd5b3417f536b69a6d6a3bae7274efc46c3"
+    },
+    {
+      "path": "tests/browser/homeworld-atlas-v109.fixture.tsx",
+      "bytes": 2111,
+      "sha256": "ae58c4ab5522be5e028cf30f8f24afdf96310f40aeacfd0d49a1f9dcd49a5ac4"
+    },
+    {
+      "path": "tests/fixtures/homeworld-return-route-v113.json",
+      "bytes": 15911,
+      "sha256": "ee550c4877e6081b07f5fa608bd17be903e4da400ffb5f1bda5c66a676926438"
+    },
+    {
+      "path": "tests/homeworld-collision-cost-v113.test.mjs",
+      "bytes": 9241,
+      "sha256": "bbbdd469effdd7d56d8788a536ebb2d584bca495d67afaf3843d3757f221690d"
+    },
+    {
+      "path": "tests/homeworld-connector-detour-v113.test.mjs",
+      "bytes": 15933,
+      "sha256": "a94b30426247c0a44f321df89f00dd3307fa108fded61e1a17ed7308c7c4216e"
+    },
+    {
+      "path": "tests/homeworld-dynamic-navigation-v109.test.mjs",
+      "bytes": 13197,
+      "sha256": "d793477b3838bda8acaee64cae679561db31a6c33e27972167d82a61c470b88c"
+    },
+    {
+      "path": "tests/homeworld-navigation-cost-v113.test.mjs",
+      "bytes": 2317,
+      "sha256": "7e840e864d905671e1941eae7e7de122224e49004ad2bd2649b9c43282e459b8"
+    },
+    {
+      "path": "tests/homeworld-navigation-review-v99.test.mjs",
+      "bytes": 5586,
+      "sha256": "7b4b686019ae506fbd074068559558dae483cfca941fd6b8fe50f167fce83aa2"
+    },
+    {
+      "path": "tests/homeworld-navigation-v99.test.mjs",
+      "bytes": 6004,
+      "sha256": "70c4cb3f5b5e0f13af27cef6fabb009087d161ef610dd2c001a9719df966bab3"
+    },
+    {
+      "path": "tests/homeworld-objectives-v111.test.mjs",
+      "bytes": 12112,
+      "sha256": "af82788f52423ff359e01dbddb18f12f50fff7348c5131ae3e73a62c6d69be6c"
+    },
+    {
+      "path": "tests/homeworld-route-cancellation-v113.test.mjs",
+      "bytes": 13265,
+      "sha256": "bab9727007c2fa9d3ba990383a130c3874598e22886237c0bdb69debc61f1df2"
+    }
+  ],
+  "proofArtifacts": [
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/atlas-after/actual-worker-cargo-detour.png",
+      "bytes": 28051,
+      "sha256": "d2a0c799645cf47817a129d91646acc1c2702488f17cd6fa756d5499a42ec371"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/atlas-after/mobile-cargo-register.png",
+      "bytes": 46885,
+      "sha256": "e024f292a05dc904b401fa4db0554d26ddf734b0300a545af49af706e14850a5"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/atlas-after/result.json",
+      "bytes": 4255,
+      "sha256": "cdce97aeee7f1c206a902f9826228389f452c82134dc577d15b9f09e1bccf311"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/atlas-after/run.log",
+      "bytes": 1418,
+      "sha256": "fbd4eddc13d25eab8cbaaed5a1d8352a943146740f4942684ea6db17592fd1f8"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/atlas-before/actual-worker-cargo-detour.png",
+      "bytes": 28051,
+      "sha256": "d2a0c799645cf47817a129d91646acc1c2702488f17cd6fa756d5499a42ec371"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/atlas-before/failure-10.png",
+      "bytes": 25665,
+      "sha256": "2c86c02e61de274aca82ee49d0316ed7149449e55d3d3494c6eb22cd3c6ae628"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/atlas-before/failure-11.png",
+      "bytes": 25607,
+      "sha256": "b9776db296a914cb37f3da4c7146c61626d1a28f52b2a06c09c471c15d3ace1f"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/atlas-before/failure-12.png",
+      "bytes": 28415,
+      "sha256": "839665253c1bba917d8eaa213b9ae3a08701a018efd97f9ea2bfa12065726915"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/atlas-before/failure-8.png",
+      "bytes": 23933,
+      "sha256": "1733b8d106ec1f23e55d549fc3714334e346ba99732288569181f9396bc96d5a"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/atlas-before/failure-9.png",
+      "bytes": 23933,
+      "sha256": "1733b8d106ec1f23e55d549fc3714334e346ba99732288569181f9396bc96d5a"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/atlas-before/mobile-cargo-register.png",
+      "bytes": 46885,
+      "sha256": "e024f292a05dc904b401fa4db0554d26ddf734b0300a545af49af706e14850a5"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/atlas-before/result.json",
+      "bytes": 4761,
+      "sha256": "05648561d972f3d3f4d8d054b1c886c874e53a39f40809d00d00a4de6bd51bb6"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/atlas-before/run.log",
+      "bytes": 1670,
+      "sha256": "28b0fc9581318678d192ddb6dab53fffc75c8c819a276af982ab9d8beca20ce9"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/atlas-initial/actual-worker-cargo-detour.png",
+      "bytes": 28051,
+      "sha256": "d2a0c799645cf47817a129d91646acc1c2702488f17cd6fa756d5499a42ec371"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/atlas-initial/failure-10.png",
+      "bytes": 25665,
+      "sha256": "2c86c02e61de274aca82ee49d0316ed7149449e55d3d3494c6eb22cd3c6ae628"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/atlas-initial/failure-11.png",
+      "bytes": 25607,
+      "sha256": "b9776db296a914cb37f3da4c7146c61626d1a28f52b2a06c09c471c15d3ace1f"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/atlas-initial/failure-12.png",
+      "bytes": 28415,
+      "sha256": "839665253c1bba917d8eaa213b9ae3a08701a018efd97f9ea2bfa12065726915"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/atlas-initial/failure-7.png",
+      "bytes": 27474,
+      "sha256": "2e88add6c0c96f24390df68f99e289caa51357f62222311aa3c9018e6f9beb00"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/atlas-initial/failure-8.png",
+      "bytes": 23933,
+      "sha256": "1733b8d106ec1f23e55d549fc3714334e346ba99732288569181f9396bc96d5a"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/atlas-initial/failure-9.png",
+      "bytes": 23933,
+      "sha256": "1733b8d106ec1f23e55d549fc3714334e346ba99732288569181f9396bc96d5a"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/atlas-initial/mobile-cargo-register.png",
+      "bytes": 46885,
+      "sha256": "e024f292a05dc904b401fa4db0554d26ddf734b0300a545af49af706e14850a5"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/atlas-initial/result.json",
+      "bytes": 4721,
+      "sha256": "4b1383b524ba2d833f04b2b4aae33804b5f3a10b06b3c247e327e3b4c5adffcd"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/atlas-initial/run.log",
+      "bytes": 1877,
+      "sha256": "7ef350c554e41c7b5d91427cd561159e3fdf0225d622dd7532025984540ab1c0"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/baseline-sources.json",
+      "bytes": 1014,
+      "sha256": "35eeb81904309e3d4e54489a54e9aef164b93d90e04ca5eefbfc43f2af2e5fa5"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/cancellation-green.log",
+      "bytes": 1135,
+      "sha256": "9d75b01ce9a27811769f951b35ece483b9653c851af8b5750c5ba2d2f8aa3c19"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/cancellation-red.log",
+      "bytes": 13544,
+      "sha256": "94eb8a97c3fc8e5ad3f4457ce99f1f9c2b59b074b8ea9b5a737b7f0aba0b5e38"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/collision-baseline-overlay.mjs",
+      "bytes": 704,
+      "sha256": "b83e7a7e8744f6c7cbac6a18718c2aee9fbdfaded2420b428bb5bce7101e2fcd"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/collision-green.log",
+      "bytes": 1586,
+      "sha256": "ea4f804d62fca9c2610c4ca50210942760cc74efdab7dad85204528e48d99b5e"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/collision-red.log",
+      "bytes": 3230,
+      "sha256": "d454780e6ff083f33fa5ba6923e1053e8e8169dd10fe665bf1051a385db1dcff"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/compare-workers.py",
+      "bytes": 5015,
+      "sha256": "41d24ce493b98d449b5185c5b12682b3db3c1baaf5bff64288bf4a8128ac2ae9"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/environment-setup.json",
+      "bytes": 518,
+      "sha256": "c7982133027048c493906338dd51b7a52ac06bf3808ddac24052db6b33555b1b"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/guided-roundtrip.log",
+      "bytes": 1936,
+      "sha256": "f2920e4195e1bfe3da55aa09716259d2088bb223c2413031853e0b69274c86ff"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/initial-worker-before.json",
+      "bytes": 7775,
+      "sha256": "ea3fb4b5943d9b39a9f1f5aeb809eb772340a6ccb38af70475a0425e7972712d"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/initial-worker-before.log",
+      "bytes": 389,
+      "sha256": "b1cd3cb88a12952817ae712b8e02cb39a80638ce19e5555929a154eb91e496ab"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/lint-unavailable.log",
+      "bytes": 71,
+      "sha256": "316c938925d2106365ed75f6ac22d88d3ef1657cf29654864adfd7c159a1456e"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/navigation-cost.log",
+      "bytes": 477,
+      "sha256": "d79028e79407964b7b1a93992d9a129f89fe5bb89c74eb6445539be1032f9519"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/navigation-review-v99.log",
+      "bytes": 1001,
+      "sha256": "a025b32a655797e97922ef431eb2330ad22a920f227d0b39541d0afebfe41279"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/navigation-v109.log",
+      "bytes": 2448,
+      "sha256": "385714c2df96de74a24710c061fa2c1f5faa080265026aa65b7af317cfbd6fee"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/navigation-v111.log",
+      "bytes": 3340,
+      "sha256": "12078d8aefec0cfd7d5ac2ea5ea322123f5de4a0d609a9f2cc0a71cc4f58ee89"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/navigation-v99.log",
+      "bytes": 1135,
+      "sha256": "ec208821991dadf06cc5f39ea94dbc8ff8aced6f15876a56d6ae7b001d059b99"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/parent-ci.json",
+      "bytes": 12322,
+      "sha256": "9365c7a616fa2d0a25204b44069f5e02b646d16c58b45fdef30018f19a8c65d7"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/typecheck.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/unit-summary.json",
+      "bytes": 1542,
+      "sha256": "1da28826b3d3b48685d9e9328eb09134fff8834a1d8489d39aea74e5d0332d82"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/workers/01-before/run-n0Qpnp/report.json",
+      "bytes": 7735,
+      "sha256": "103e9181df541cf10375cd0d8c12836ac994e1b745b0be35df8811b940505905"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/workers/01-before.log",
+      "bytes": 391,
+      "sha256": "60e9fcd06732f83fe2896c49187efbf048290839fd56f36ca52e318f7295b019"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/workers/02-after/run-SAqwxy/report.json",
+      "bytes": 7762,
+      "sha256": "72a441f0b0c3f603031f84d47cc07d1304d14717e82b160a46b1481e9c42e846"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/workers/02-after.log",
+      "bytes": 390,
+      "sha256": "6f94b22f89039326b47f57be84cf4622804446800704c744317a94f3b5815454"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/workers/03-after/run-ayIuo8/report.json",
+      "bytes": 7764,
+      "sha256": "a05d422b00f749f003032d144f713e0c131551f8ed4eedb37e81b78f64b35da8"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/workers/03-after.log",
+      "bytes": 390,
+      "sha256": "e1b4037f2834b3fbb8755d50b4c69c687e82389ab2f20a98dd7ef40168bd0f03"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/workers/04-before/run-xMtfc0/report.json",
+      "bytes": 7772,
+      "sha256": "928883beeff022059524b64eeb38ae7eb5c4b2690e26774db9622130826d2f66"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/workers/04-before.log",
+      "bytes": 391,
+      "sha256": "7111bc0027db848acfdc12ef32637fcde2a65243070290c986285c0ea66ecccd"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/workers/05-before/run-rKg3g2/report.json",
+      "bytes": 7721,
+      "sha256": "5ff9c2da3e92727813f8265ef1df064e193337df8a0df1a59888f184bd2cf024"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/workers/05-before.log",
+      "bytes": 391,
+      "sha256": "03bf774c845dac128b83d71bad1e851da6141eb1e528d8763b268862474ef62f"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/workers/06-after/run-FGyLgd/report.json",
+      "bytes": 7738,
+      "sha256": "302de87a562344eb4f22c3a1c0a6aeac34c748893ab70706986111585f1ccf60"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/workers/06-after.log",
+      "bytes": 390,
+      "sha256": "6351fbab7a57f2b202c0f3f6c060c5d194401afaa3feac42282183c01f9b3770"
+    },
+    {
+      "path": "docs/qa/gamedev-homeworld-runtime-20261029/workers/comparison.json",
+      "bytes": 13315,
+      "sha256": "95bcbf0c9c7b6a891da9e884bbff0e9ffeef68ef0cf36b0423ba5b472fc46f2f"
+    }
+  ]
+}

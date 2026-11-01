@@ -481,13 +481,16 @@ export function advanceWarTurnV85(state: WarSimulationV85): WarUpdateV85 {
 }
 /** Reject future/corrupt archives. The caller preserves their bytes and disables writes until an explicit new exercise. */
 export function readWarSimulationV85(value: unknown): WarSimulationV85 | null {
-  if (!record(value) || ![1, 2].includes(Number(value.version)) || typeof value.version !== "number" || value.context !== "free" || !integer(value.turn, 5000) || value.turn < 1 || !integer(value.seed, 0xffffffff) || !integer(value.revision) || !record(value.territories) || !record(value.stocks) || !Array.isArray(value.combatants) || value.combatants.length > 300 || !Array.isArray(value.orders) || value.orders.length > 4 || !Array.isArray(value.observations) || !Array.isArray(value.reports) || value.reports.length > 100000 || !Array.isArray(value.appliedResultIds) || !Array.isArray(value.completedObjectives) || !integer(value.totalStability) || !integer(value.regionStability) || !integer(value.corridorStability)) return null;
+  if (!record(value) || typeof value.version !== "number" || ![1, 2].includes(value.version) || value.context !== "free" || !integer(value.turn, 5000) || value.turn < 1 || !integer(value.seed, 0xffffffff) || !integer(value.revision) || !record(value.territories) || !record(value.stocks) || !Array.isArray(value.combatants) || value.combatants.length > 300 || !Array.isArray(value.orders) || value.orders.length > 4 || !Array.isArray(value.observations) || !Array.isArray(value.reports) || value.reports.length > 100000 || !Array.isArray(value.appliedResultIds) || !Array.isArray(value.completedObjectives) || !integer(value.totalStability) || !integer(value.regionStability) || !integer(value.corridorStability)) return null;
   if (!(value.planetId === undefined || typeof value.planetId === "string")) return null;
   const planet = warPlanetV96(value.planetId);
   if (!planet) return null;
   const definitions = planet.definitions;
-  const territoryById = (id: string) => definitions.find(territory => territory.id === id);
   const territoryIds = new Set(definitions.map(territory => territory.id));
+  // Archive values must already have their runtime types. String(["CON-T01"])
+  // looks valid here, but strict identity comparisons would lose its garrison,
+  // observations or held stocks after loading the unchanged array.
+  const validTerritoryId = (id: unknown): id is string => typeof id === "string" && territoryIds.has(id);
   if (Object.keys(value.territories).some(id => !territoryIds.has(id)) || Object.keys(value.stocks).some(id => !territoryIds.has(id))) return null;
   for (const territory of definitions) {
     const item = value.territories[territory.id];
@@ -495,15 +498,15 @@ export function readWarSimulationV85(value: unknown): WarSimulationV85 | null {
   }
   const ids = new Set<string>();
   for (const actor of value.combatants) {
-    if (!record(actor) || typeof actor.id !== "string" || actor.id.length > 80 || ids.has(actor.id) || typeof actor.unitTypeId !== "string" || !/^RTS-U\d{2}$/.test(actor.unitTypeId) || !factions.includes(actor.factionId as WarFactionIdV85) || !territoryById(String(actor.territoryId)) || !["fit", "wounded", "dead"].includes(String(actor.status)) || !integer(actor.xp) || typeof actor.garrison !== "boolean" || !(actor.trainingUntilTurn === null || integer(actor.trainingUntilTurn))) return null;
+    if (!record(actor) || typeof actor.id !== "string" || actor.id.length > 80 || ids.has(actor.id) || typeof actor.unitTypeId !== "string" || !/^RTS-U\d{2}$/.test(actor.unitTypeId) || !factions.includes(actor.factionId as WarFactionIdV85) || !validTerritoryId(actor.territoryId) || typeof actor.status !== "string" || !["fit", "wounded", "dead"].includes(actor.status) || !integer(actor.xp) || typeof actor.garrison !== "boolean" || !(actor.trainingUntilTurn === null || integer(actor.trainingUntilTurn))) return null;
     ids.add(actor.id);
   }
-  if (!value.appliedResultIds.every(id => typeof id === "string" && id.length < 180) || !value.completedObjectives.every(id => ["CON-O01", "CON-O02", "CON-O03"].includes(String(id)))) return null;
-  if (!value.reports.every(item => record(item) && typeof item.id === "string" && integer(item.turn) && typeof item.text === "string" && item.text.length < 4000 && Array.isArray(item.sourceIds) && item.sourceIds.every(id => typeof id === "string")) || !value.observations.every(item => record(item) && typeof item.sourceId === "string" && territoryById(String(item.territoryId)) && integer(item.turn) && integer(item.lower, 300) && integer(item.upper, 300) && Number(item.lower) <= Number(item.upper))) return null;
+  if (!value.appliedResultIds.every(id => typeof id === "string" && id.length < 180) || !value.completedObjectives.every(id => typeof id === "string" && ["CON-O01", "CON-O02", "CON-O03"].includes(id))) return null;
+  if (!value.reports.every(item => record(item) && typeof item.id === "string" && integer(item.turn) && typeof item.text === "string" && item.text.length < 4000 && Array.isArray(item.sourceIds) && item.sourceIds.every(id => typeof id === "string")) || !value.observations.every(item => record(item) && typeof item.sourceId === "string" && validTerritoryId(item.territoryId) && integer(item.turn) && integer(item.lower, 300) && integer(item.upper, 300) && Number(item.lower) <= Number(item.upper))) return null;
   for (const order of value.orders) {
-    if (!record(order) || typeof order.id !== "string" || order.id.length > 180 || !["move", "attack", "recon", "cession", "transit", "logistics", "heal", "evacuate"].includes(String(order.kind)) || !territoryById(String(order.fromId)) || !territoryById(String(order.targetId)) || order.factionId !== PLAYER || order.mode !== "auto" || !validBudget(order.cargo) || !Array.isArray(order.combatantIds) || order.combatantIds.length > 8 || !order.combatantIds.every(id => typeof id === "string" && ids.has(id))) return null;
+    if (!record(order) || typeof order.id !== "string" || order.id.length > 180 || typeof order.kind !== "string" || !["move", "attack", "recon", "cession", "transit", "logistics", "heal", "evacuate"].includes(order.kind) || !validTerritoryId(order.fromId) || !validTerritoryId(order.targetId) || order.factionId !== PLAYER || order.mode !== "auto" || !validBudget(order.cargo) || !Array.isArray(order.combatantIds) || order.combatantIds.length > 8 || !order.combatantIds.every(id => typeof id === "string" && ids.has(id))) return null;
   }
-  if (!(value.stableRegionId === undefined || value.stableRegionId === null || typeof value.stableRegionId === "string" && definitions.some(territory => territory.region === value.stableRegionId)) || !(value.heldStocks === undefined || Array.isArray(value.heldStocks) && value.heldStocks.length <= 10000 && value.heldStocks.every(item => record(item) && territoryById(String(item.territoryId)) && factions.includes(item.owner as WarFactionIdV85) && validBudget(item.budget)))) return null;
+  if (!(value.stableRegionId === undefined || value.stableRegionId === null || typeof value.stableRegionId === "string" && definitions.some(territory => territory.region === value.stableRegionId)) || !(value.heldStocks === undefined || Array.isArray(value.heldStocks) && value.heldStocks.length <= 10000 && value.heldStocks.every(item => record(item) && validTerritoryId(item.territoryId) && factions.includes(item.owner as WarFactionIdV85) && validBudget(item.budget)))) return null;
   const result = copy(value as unknown as WarSimulationV85);
   result.stableRegionId ??= null; result.heldStocks ??= [];
   // An archive cannot smuggle a route from another world's graph or bypass

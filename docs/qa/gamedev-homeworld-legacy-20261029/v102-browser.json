@@ -1,0 +1,648 @@
+{
+  "startedAt": "2026-10-29T13:51:57.789Z",
+  "route": "http://127.0.0.1:3101/planet-generator-v102",
+  "serverMode": "development",
+  "scope": "Real V102 Next route, React controls and generated/exported JSON. Native File.text delivery is delayed in a fresh context.",
+  "checks": [
+    {
+      "name": "Editing the seed supersedes an older native file",
+      "pass": true,
+      "nativeReadDelivered": true,
+      "preserved": {
+        "preview": "proc-v102-5l-1110011-tc2o9",
+        "atlas": "proc-v102-5l-1110011-tc2o9",
+        "modified": "true",
+        "message": "Shauun-5L retrouvé à partir de son code.",
+        "shared": "proc-v102-5l-1110011-tc2o9",
+        "inputs": [
+          {
+            "label": "Graine du monde",
+            "value": "205"
+          },
+          {
+            "label": "Répartition des terres",
+            "value": "continents"
+          },
+          {
+            "label": "Étendue des terres",
+            "value": "balanced"
+          },
+          {
+            "label": "Dessin des côtes",
+            "value": "rugged"
+          },
+          {
+            "label": "Biomes des régions",
+            "value": "varied"
+          },
+          {
+            "label": "Terres dominantes",
+            "value": "temperate"
+          },
+          {
+            "label": "Mers et milieux intermédiaires",
+            "value": "water"
+          },
+          {
+            "label": "Atmosphère",
+            "value": "haze"
+          },
+          {
+            "label": "Région",
+            "value": ""
+          },
+          {
+            "label": "Rotation",
+            "value": "-77"
+          },
+          {
+            "label": "Zoom",
+            "value": "1"
+          },
+          {
+            "label": "",
+            "value": "on"
+          },
+          {
+            "label": "",
+            "value": "on"
+          },
+          {
+            "label": "",
+            "value": "on"
+          },
+          {
+            "label": "Couleurs",
+            "value": "terrain"
+          },
+          {
+            "label": "",
+            "value": "on"
+          },
+          {
+            "label": "",
+            "value": "on"
+          },
+          {
+            "label": "",
+            "value": "on"
+          },
+          {
+            "label": "",
+            "value": "on"
+          },
+          {
+            "label": "Calque",
+            "value": "composite"
+          },
+          {
+            "label": "Projection",
+            "value": "map"
+          },
+          {
+            "label": "Importer un code de monde",
+            "value": "proc-v102-5l-1110011-tc2o9"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Editing atmosphere supersedes an older native file",
+      "pass": true,
+      "nativeReadDelivered": true,
+      "preserved": {
+        "preview": "proc-v102-5l-1110011-tc2o9",
+        "atlas": "proc-v102-5l-1110011-tc2o9",
+        "modified": "true",
+        "message": "Shauun-5L retrouvé à partir de son code.",
+        "shared": "proc-v102-5l-1110011-tc2o9",
+        "inputs": [
+          {
+            "label": "Graine du monde",
+            "value": "201"
+          },
+          {
+            "label": "Répartition des terres",
+            "value": "continents"
+          },
+          {
+            "label": "Étendue des terres",
+            "value": "balanced"
+          },
+          {
+            "label": "Dessin des côtes",
+            "value": "rugged"
+          },
+          {
+            "label": "Biomes des régions",
+            "value": "varied"
+          },
+          {
+            "label": "Terres dominantes",
+            "value": "temperate"
+          },
+          {
+            "label": "Mers et milieux intermédiaires",
+            "value": "water"
+          },
+          {
+            "label": "Atmosphère",
+            "value": "aurora"
+          },
+          {
+            "label": "Région",
+            "value": ""
+          },
+          {
+            "label": "Rotation",
+            "value": "-77"
+          },
+          {
+            "label": "Zoom",
+            "value": "1"
+          },
+          {
+            "label": "",
+            "value": "on"
+          },
+          {
+            "label": "",
+            "value": "on"
+          },
+          {
+            "label": "",
+            "value": "on"
+          },
+          {
+            "label": "Couleurs",
+            "value": "terrain"
+          },
+          {
+            "label": "",
+            "value": "on"
+          },
+          {
+            "label": "",
+            "value": "on"
+          },
+          {
+            "label": "",
+            "value": "on"
+          },
+          {
+            "label": "",
+            "value": "on"
+          },
+          {
+            "label": "Calque",
+            "value": "composite"
+          },
+          {
+            "label": "Projection",
+            "value": "map"
+          },
+          {
+            "label": "Importer un code de monde",
+            "value": "proc-v102-5l-1110011-tc2o9"
+          }
+        ]
+      }
+    },
+    {
+      "name": "A rejected generation preserves its error after the older read",
+      "pass": true,
+      "nativeReadDelivered": true,
+      "preserved": {
+        "preview": "proc-v102-5l-1110011-tc2o9",
+        "atlas": "proc-v102-5l-1110011-tc2o9",
+        "modified": "true",
+        "message": "Une graine numérique doit être comprise entre 0 et 4 294 967 295.",
+        "shared": "proc-v102-5l-1110011-tc2o9",
+        "inputs": [
+          {
+            "label": "Graine du monde",
+            "value": "4294967296"
+          },
+          {
+            "label": "Répartition des terres",
+            "value": "continents"
+          },
+          {
+            "label": "Étendue des terres",
+            "value": "balanced"
+          },
+          {
+            "label": "Dessin des côtes",
+            "value": "rugged"
+          },
+          {
+            "label": "Biomes des régions",
+            "value": "varied"
+          },
+          {
+            "label": "Terres dominantes",
+            "value": "temperate"
+          },
+          {
+            "label": "Mers et milieux intermédiaires",
+            "value": "water"
+          },
+          {
+            "label": "Atmosphère",
+            "value": "haze"
+          },
+          {
+            "label": "Région",
+            "value": ""
+          },
+          {
+            "label": "Rotation",
+            "value": "-77"
+          },
+          {
+            "label": "Zoom",
+            "value": "1"
+          },
+          {
+            "label": "",
+            "value": "on"
+          },
+          {
+            "label": "",
+            "value": "on"
+          },
+          {
+            "label": "",
+            "value": "on"
+          },
+          {
+            "label": "Couleurs",
+            "value": "terrain"
+          },
+          {
+            "label": "",
+            "value": "on"
+          },
+          {
+            "label": "",
+            "value": "on"
+          },
+          {
+            "label": "",
+            "value": "on"
+          },
+          {
+            "label": "",
+            "value": "on"
+          },
+          {
+            "label": "Calque",
+            "value": "composite"
+          },
+          {
+            "label": "Projection",
+            "value": "map"
+          },
+          {
+            "label": "Importer un code de monde",
+            "value": "proc-v102-5l-1110011-tc2o9"
+          }
+        ]
+      }
+    },
+    {
+      "name": "A rejected code import preserves its error after the older read",
+      "pass": true,
+      "nativeReadDelivered": true,
+      "preserved": {
+        "preview": "proc-v102-5l-1110011-tc2o9",
+        "atlas": "proc-v102-5l-1110011-tc2o9",
+        "modified": "false",
+        "message": "Ce code de monde n’est pas reconnu. Vérifiez qu’il est complet.",
+        "shared": "proc-v102-5l-1110011-tc2o9",
+        "inputs": [
+          {
+            "label": "Graine du monde",
+            "value": "201"
+          },
+          {
+            "label": "Répartition des terres",
+            "value": "continents"
+          },
+          {
+            "label": "Étendue des terres",
+            "value": "balanced"
+          },
+          {
+            "label": "Dessin des côtes",
+            "value": "rugged"
+          },
+          {
+            "label": "Biomes des régions",
+            "value": "varied"
+          },
+          {
+            "label": "Terres dominantes",
+            "value": "temperate"
+          },
+          {
+            "label": "Mers et milieux intermédiaires",
+            "value": "water"
+          },
+          {
+            "label": "Atmosphère",
+            "value": "haze"
+          },
+          {
+            "label": "Région",
+            "value": ""
+          },
+          {
+            "label": "Rotation",
+            "value": "-77"
+          },
+          {
+            "label": "Zoom",
+            "value": "1"
+          },
+          {
+            "label": "",
+            "value": "on"
+          },
+          {
+            "label": "",
+            "value": "on"
+          },
+          {
+            "label": "",
+            "value": "on"
+          },
+          {
+            "label": "Couleurs",
+            "value": "terrain"
+          },
+          {
+            "label": "",
+            "value": "on"
+          },
+          {
+            "label": "",
+            "value": "on"
+          },
+          {
+            "label": "",
+            "value": "on"
+          },
+          {
+            "label": "",
+            "value": "on"
+          },
+          {
+            "label": "Calque",
+            "value": "composite"
+          },
+          {
+            "label": "Projection",
+            "value": "map"
+          },
+          {
+            "label": "Importer un code de monde",
+            "value": "incomplete-world-code"
+          }
+        ]
+      }
+    },
+    {
+      "name": "A newer unfinished code edit remains intact after the older read",
+      "pass": true,
+      "nativeReadDelivered": true,
+      "preserved": {
+        "preview": "proc-v102-5l-1110011-tc2o9",
+        "atlas": "proc-v102-5l-1110011-tc2o9",
+        "modified": "false",
+        "message": "Shauun-5L retrouvé à partir de son code.",
+        "shared": "proc-v102-5l-1110011-tc2o9",
+        "inputs": [
+          {
+            "label": "Graine du monde",
+            "value": "201"
+          },
+          {
+            "label": "Répartition des terres",
+            "value": "continents"
+          },
+          {
+            "label": "Étendue des terres",
+            "value": "balanced"
+          },
+          {
+            "label": "Dessin des côtes",
+            "value": "rugged"
+          },
+          {
+            "label": "Biomes des régions",
+            "value": "varied"
+          },
+          {
+            "label": "Terres dominantes",
+            "value": "temperate"
+          },
+          {
+            "label": "Mers et milieux intermédiaires",
+            "value": "water"
+          },
+          {
+            "label": "Atmosphère",
+            "value": "haze"
+          },
+          {
+            "label": "Région",
+            "value": ""
+          },
+          {
+            "label": "Rotation",
+            "value": "-77"
+          },
+          {
+            "label": "Zoom",
+            "value": "1"
+          },
+          {
+            "label": "",
+            "value": "on"
+          },
+          {
+            "label": "",
+            "value": "on"
+          },
+          {
+            "label": "",
+            "value": "on"
+          },
+          {
+            "label": "Couleurs",
+            "value": "terrain"
+          },
+          {
+            "label": "",
+            "value": "on"
+          },
+          {
+            "label": "",
+            "value": "on"
+          },
+          {
+            "label": "",
+            "value": "on"
+          },
+          {
+            "label": "",
+            "value": "on"
+          },
+          {
+            "label": "Calque",
+            "value": "composite"
+          },
+          {
+            "label": "Projection",
+            "value": "map"
+          },
+          {
+            "label": "Importer un code de monde",
+            "value": "newer-unfinished-world-code"
+          }
+        ]
+      }
+    },
+    {
+      "name": "A fresh V102 native import still succeeds after the cancelled reads",
+      "pass": true,
+      "imported": {
+        "preview": "proc-v102-5m-1110011-85m0q",
+        "atlas": "proc-v102-5m-1110011-85m0q",
+        "modified": "false",
+        "message": "Fiche importée. Sa géographie est reconstruite à partir du code de monde.",
+        "shared": "proc-v102-5m-1110011-85m0q",
+        "inputs": [
+          {
+            "label": "Graine du monde",
+            "value": "202"
+          },
+          {
+            "label": "Répartition des terres",
+            "value": "continents"
+          },
+          {
+            "label": "Étendue des terres",
+            "value": "balanced"
+          },
+          {
+            "label": "Dessin des côtes",
+            "value": "rugged"
+          },
+          {
+            "label": "Biomes des régions",
+            "value": "varied"
+          },
+          {
+            "label": "Terres dominantes",
+            "value": "temperate"
+          },
+          {
+            "label": "Mers et milieux intermédiaires",
+            "value": "water"
+          },
+          {
+            "label": "Atmosphère",
+            "value": "haze"
+          },
+          {
+            "label": "Région",
+            "value": ""
+          },
+          {
+            "label": "Rotation",
+            "value": "-77"
+          },
+          {
+            "label": "Zoom",
+            "value": "1"
+          },
+          {
+            "label": "",
+            "value": "on"
+          },
+          {
+            "label": "",
+            "value": "on"
+          },
+          {
+            "label": "",
+            "value": "on"
+          },
+          {
+            "label": "Couleurs",
+            "value": "terrain"
+          },
+          {
+            "label": "",
+            "value": "on"
+          },
+          {
+            "label": "",
+            "value": "on"
+          },
+          {
+            "label": "",
+            "value": "on"
+          },
+          {
+            "label": "",
+            "value": "on"
+          },
+          {
+            "label": "Calque",
+            "value": "composite"
+          },
+          {
+            "label": "Projection",
+            "value": "map"
+          },
+          {
+            "label": "Importer un code de monde",
+            "value": "newer-unfinished-world-code"
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "httpErrors": [],
+  "fixtures": [
+    {
+      "seed": 201,
+      "code": "proc-v102-5l-1110011-tc2o9",
+      "bytes": 5848,
+      "sha256": "2aec887e173a320d9b826e42652ae117366ea192c144559a04aa0803685ac8d7"
+    },
+    {
+      "seed": 202,
+      "code": "proc-v102-5m-1110011-85m0q",
+      "bytes": 6341,
+      "sha256": "debea3b56c1b14776df507d1b880f9b36428af051437a05fef7105767c3aaa8c"
+    }
+  ],
+  "nativeFileTextRestored": true,
+  "limits": [
+    "This targeted browser probe does not qualify a production package, full Homeworld or artistic fidelity."
+  ],
+  "runtime": {
+    "chromium": "153.0.8010.0",
+    "node": "v24.22.1",
+    "next": "16.3.5",
+    "playwright": "1.62.1"
+  },
+  "status": "PASS",
+  "completedAt": "2026-10-29T13:52:10.974Z"
+}

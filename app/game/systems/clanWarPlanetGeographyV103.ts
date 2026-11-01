@@ -1,6 +1,10 @@
 import type { WarAtlasPointV95, WarAtlasRegionV95, WarAtlasTerritoryV95 } from "./clanWarAtlasV95";
 import type { WarLandmassV97 } from "./clanWarCoastlinesV97";
 import type { WarPlanetHydrologyFeatureV103, WarPlanetRecipeV103, WarPlanetRouteV103 } from "./clanWarPlanetGeneratorV103";
+import { shapedRadiusV115, warShapeTemplateV115 } from "./clanWarShapeAtlasV115";
+export interface WarPlanetShapeSelectionV115 {
+  islandShape: number; continentShape: number; regionShape: number;
+}
 
 type Point = readonly [number, number];
 interface Box { x0: number; x1: number; y0: number; y1: number }
@@ -158,8 +162,11 @@ function radius(angle: number, phase: number, coast: WarPlanetRecipeV103["coast"
           : .65 + .25 * Math.cos(2 * angle + phase) + .045 * Math.sin(5 * angle - phase);
   return Math.max(.28, Math.min(.98, value));
 }
-function createMacro(plan: Plan, index: number, recipe: WarPlanetRecipeV103, id: string): Macro {
+function createMacro(plan: Plan, index: number, recipe: WarPlanetRecipeV103, id: string, shape?: WarPlanetShapeSelectionV115): Macro {
   const { box } = plan, width = box.x1 - box.x0, height = box.y1 - box.y0, phase = random(recipe.seed, 600 + index) * TAU, rotation = random(recipe.seed, 700 + index) * TAU;
+  const massSize = plan.parts.reduce((sum, part) => sum + part.count, 0);
+  const continental = recipe.landform === "supercontinent" || massSize >= Math.max(6, Math.round(recipe.territoryCount / 10));
+  const template = shape ? warShapeTemplateV115(continental ? "continent" : "island", continental ? shape.continentShape : shape.islandShape) : null;
   const bayCount = 5 + Math.floor(random(recipe.seed, 120000 + index * 64) * 4);
   const bays = Array.from({ length: bayCount }, (_, i) => ({
     center: phase + (i + .1 + random(recipe.seed, 120001 + index * 64 + i * 3) * .8) * TAU / bayCount,
@@ -170,8 +177,14 @@ function createMacro(plan: Plan, index: number, recipe: WarPlanetRecipeV103, id:
   // Center displacement plus maximum radius stay below half the box width.
   // Disjoint layout boxes therefore give disjoint actual landmass polygons.
   const center: Point = [(box.x0 + box.x1) / 2 + (random(recipe.seed, 800 + index) - .5) * width * .08, (box.y0 + box.y1) / 2 + (random(recipe.seed, 900 + index) - .5) * height * .08];
-  const target: Point[] = circle.map((p, i) => { const r = radius(i * TAU / FAN, phase, recipe.coast, bays); return [r * (p[0] * Math.cos(rotation) - p[1] * Math.sin(rotation)), r * (p[0] * Math.sin(rotation) + p[1] * Math.cos(rotation))]; });
-  const xScale = width * .46 * coverage, yScale = height * .46 * coverage, pointCache = new Map<string, WarAtlasPointV95>(), edgeCache = new Map<string, WarAtlasPointV95[]>();
+  const target: Point[] = circle.map((p, i) => {
+    const angle = i * TAU / FAN;
+    const original = radius(angle, phase, recipe.coast, bays);
+    const r = template ? shapedRadiusV115(original, angle, template, index) : original;
+    return [r * (p[0] * Math.cos(rotation) - p[1] * Math.sin(rotation)), r * (p[0] * Math.sin(rotation) + p[1] * Math.cos(rotation))];
+  });
+  const footprint = template ? template.scale : 1;
+  const xScale = width * .46 * coverage * footprint, yScale = height * .46 * coverage * footprint, pointCache = new Map<string, WarAtlasPointV95>(), edgeCache = new Map<string, WarAtlasPointV95[]>();
   const map = (point: Point): WarAtlasPointV95 => {
     const cacheKey = key(point), previous = pointCache.get(cacheKey);
     if (previous) return previous;
@@ -341,13 +354,16 @@ function intersects(a: Point, b: Point, c: Point, d: Point) {
   return first * second < -1e-12 && third * fourth < -1e-12;
 }
 
-export function generatedPlanetGeographyV103(recipe: WarPlanetRecipeV103, id: string, regionNames: readonly string[]) {
-  const planning = plans(recipe), macros = planning.plans.map((plan, index) => createMacro(plan, index, recipe, id));
+export function generatedPlanetGeographyV103(recipe: WarPlanetRecipeV103, id: string, regionNames: readonly string[], shape?: WarPlanetShapeSelectionV115) {
+  const planning = plans(recipe), macros = planning.plans.map((plan, index) => createMacro(plan, index, recipe, id, shape));
   const offsets = planning.regionSizes.map((_, index) => planning.regionSizes.slice(0, index).reduce((sum, value) => sum + value, 0)), counters = planning.regionSizes.map(() => 0), cells: Cell[] = [];
   planning.plans.forEach((plan, macroIndex) => {
-    const regionSites = seeds(circle, plan.parts.length, recipe.seed, 2000 + macroIndex * 3101, true), regionPolygons = voronoi(circle, regionSites);
+    const regionSalt = shape ? (shape.regionShape + 1) * 517 : 0;
+    const regionSites = seeds(circle, plan.parts.length, recipe.seed, 2000 + macroIndex * 3101 + regionSalt, true), regionPolygons = voronoi(circle, regionSites);
     plan.parts.forEach((part, partIndex) => {
-      const sites = seeds(regionPolygons[partIndex], part.count, recipe.seed, 10000 + macroIndex * 1703 + part.region * 967, recipe.territoryStyle === "compact"), polygons = voronoi(regionPolygons[partIndex], sites);
+      const sites = seeds(regionPolygons[partIndex], part.count, recipe.seed,
+          10000 + macroIndex * 1703 + part.region * 967 + (shape ? (shape.regionShape + 1) * 263 : 0),
+          recipe.territoryStyle === "compact"), polygons = voronoi(regionPolygons[partIndex], sites);
       sites.forEach((center, local) => {
         const index = offsets[part.region] + counters[part.region]++, cell: Cell = { id: `CON-T${String(index + 1).padStart(2, "0")}`, index, region: part.region, macro: macroIndex, center, points: polygons[local] };
         cells.push(cell); macros[macroIndex].cells.push(cell);

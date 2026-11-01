@@ -34,6 +34,7 @@ on:
       - 'public/game/homeworld/v83/cargo-rack-right.png'
       - 'public/game/sprites/v62/heads/classic-head.png'
       - 'public/game/planets/v103/**'
+      - 'public/game/backgrounds/ship.webp'
       - 'public/game/dialogues/v85/*.json'
       - 'art-source/v6/catalogue/*.xlsx'
       - 'docs/THE_PIT*.xlsx'
@@ -57,6 +58,8 @@ on:
       - 'docs/YAUTJA_V110_SUIVI.xlsx'
       - 'docs/YAUTJA_V111_MECANIQUES_CHASSE.xlsx'
       - 'docs/hunt-mechanics-v111.*'
+      - 'docs/hunt-mechanics-v112.*'
+      - 'docs/YAUTJA_V112_MECANIQUES_CHASSE.xlsx'
       - 'docs/*v110*'
       - 'docs/qa/v110*/**'
       - 'docs/YAUTJA_V111*.xlsx'
@@ -267,6 +270,7 @@ jobs:
             /public/game/planets/v101/runtime/
             /public/game/planets/v101/materials/
             /public/game/planets/v103/
+            /public/game/backgrounds/ship.webp
             /art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx
             /docs/THE_PIT_STAGES_V60_SUIVI.xlsx
             /docs/THE_PIT_STAGES_V61_SUIVI.xlsx
@@ -295,6 +299,10 @@ jobs:
             /docs/YAUTJA_V110_SUIVI.xlsx
             /docs/YAUTJA_V111_MECANIQUES_CHASSE.xlsx
             /docs/hunt-mechanics-v111.*
+            /docs/hunt-mechanics-v112.*
+            /docs/YAUTJA_V112_MECANIQUES_CHASSE.xlsx
+            /public/game/ui/v112/
+            /public/game/assets/v112/discovery/
             /docs/*v110*
             /docs/qa/v110*/
             /docs/YAUTJA_V111*.xlsx
@@ -566,6 +574,26 @@ jobs:
         run: node node_modules/next/dist/bin/next typegen
       - name: Check application TypeScript
         run: npm run typecheck
+      - name: Exercise current V112 hunting mechanics and invariants
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v112.test.mjs
+      - name: Verify deterministic V112 workbook and discovery resources
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: |
+          node scripts/build-hunt-mechanics-workbook-v112.mjs --check
+          python3 scripts/verify-hunt-mechanics-workbook-v112.py
+          node scripts/build-discovery-signals-v112.mjs --check
+      - name: Exercise actual V112 controls, workshop, corpse rites and canopy in Chromium
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node scripts/qa-hunt-mechanics-browser-v112.mjs
+      - name: Upload bounded V112 browser report and inspected-capture candidates
+        if: ${{ always() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: hunt-v112-browser-${{ github.run_id }}
+          path: outputs/qa-hunt-v112/
+          retention-days: 7
+          if-no-files-found: ignore
       - name: Verify V111 hunt compatibility guards and reproducible hunting workbook
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: |
@@ -613,6 +641,8 @@ jobs:
           app/pit-lab/PitWorkbookAnimationLabV100.tsx app/pit-lab/PitProductionAnimationLab.tsx
           app/game/ClanWarPanelV85.tsx app/game/systems/clanWarSessionV85.ts app/game/systems/clanWarCanyonV85.ts
           app/game/ClanWarAtlasV95.tsx app/game/systems/clanWarAtlasV95.ts
+          app/game/hunterPaletteFiltersV114.ts app/game/HomeworldModularHunter.tsx app/game/HunterRigPreview.tsx
+          app/game/systems/clanWarPlanetStrategyV114.ts
           app/game/ClanWarPlanetsV96.tsx app/game/systems/clanWarPlanetsV96.ts app/game/systems/clanWarV85.ts
           app/game/systems/clanWarCoastlinesV97.ts
           app/game/PlanetGeneratorV102.tsx app/game/PlanetLayerExportV102.tsx
@@ -627,6 +657,9 @@ jobs:
           app/game/systems/clanWarPlanetGeneratorV103.ts app/game/systems/clanWarPlanetGeographyV103.ts
           app/game/systems/clanWarDeploymentV103.ts app/game/systems/clanWarGeneratedCatalogV103.ts
           app/game/systems/planetMaterialProfilesV103.ts
+          app/game/systems/clanWarPlanetGeneratorV115.ts
+          app/game/systems/clanWarShapeAtlasV115.ts
+          app/game/systems/clanWarTextureLibraryV115.ts
           app/planet-generator-v103/page.tsx app/planet-generator-v103/review.tsx
           app/game/ClanWarCommandV98.tsx app/game/systems/clanWarCommandV98.ts
           app/game/ClanWarGarrisonV99.tsx
@@ -637,6 +670,7 @@ jobs:
           app/game/HomeworldRouteGuideV98.tsx app/game/systems/homeworldWayfindingV98.ts
           app/game/systems/homeworldNavigationV77.ts app/game/systems/homeworldNavigationV99.ts
           app/game/systems/homeworldCivicWorldV80.ts
+          app/game/systems/homeworldCourtArtV80.ts app/game/systems/homeworldCivicDecorV80.ts
           app/game/systems/homeworldAtlasLandmarksV83.ts
           app/game/homeworldRouteWorkerV98.ts
           app/game/HuntCanvas.tsx app/game/GameClient.tsx app/game/systems/huntStructuralBarrierV94.ts
@@ -668,6 +702,40 @@ jobs:
           app/game/HuntRitesMenuV77.tsx app/game/systems/ritesOfHuntV77.ts
           app/game/systems/huntRitesRuntimeV77.ts
           app/game/PitExperienceV79.tsx app/game/ClanWarBibleV6Panel.tsx
+      - name: Verify gamedev archive, asset, import and route regressions
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: >-
+          node --test --test-reporter=spec --test-concurrency=1
+          tests/planet-archive-validation-v103.test.mjs
+          tests/homeworld-motion-source-contracts-v113.test.mjs
+          tests/planet-generator-import-race-v102.test.mjs
+          tests/planet-generator-import-race-v103.test.mjs
+          tests/homeworld-connector-detour-v113.test.mjs
+          tests/homeworld-navigation-cost-v113.test.mjs
+          tests/homeworld-collision-cost-v113.test.mjs
+          tests/homeworld-route-cancellation-v113.test.mjs
+      - name: Exercise current Homeworld route Worker and stale snapshots in Chromium
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node scripts/qa-homeworld-route-worker-v113.mjs
+      - name: Preserve current Homeworld route Worker report
+        if: ${{ always() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: homeworld-route-worker-v113-${{ github.run_id }}
+          path: outputs/qa-homeworld-route-worker-v113/run-*/report.json
+          retention-days: 7
+          if-no-files-found: ignore
+      - name: Exercise current Homeworld Atlas Worker cancellation in Chromium
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node scripts/qa-homeworld-atlas-browser-v109.mjs
+      - name: Preserve current Homeworld Atlas Worker report
+        if: ${{ always() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: homeworld-atlas-integration-${{ github.run_id }}
+          path: outputs/qa-v109-atlas-integration/run-*/result.json
+          retention-days: 7
+          if-no-files-found: ignore
       - name: Exercise input resilience, fixed-step edges and original V74 metadata
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: >-
@@ -726,6 +794,9 @@ jobs:
       - name: Exercise actual Mausoleum React component (placeholder art, emulated pad)
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: node scripts/qa-mausoleum-browser-v94.mjs
+      - name: Validate complete Yautja palette maps after extended customization
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node --experimental-strip-types --test --test-reporter=spec tests/hunter-palette-filters-v114.test.mjs
       - name: Exercise free clan-war durability, lifecycle and planetary atlas regressions
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: >-
@@ -741,6 +812,7 @@ jobs:
           tests/planet-regional-material-v102.test.mjs
           tests/planet-generator-v103.test.mjs tests/planet-generator-integration-v103.test.mjs
           tests/planet-generator-draft-v103.test.mjs tests/planet-material-profiles-v103.test.mjs
+          tests/planet-strategy-v114.test.mjs tests/planet-export-zip-v114.test.mjs tests/planet-generator-v115.test.mjs
       - name: Exercise generated planets, independent bitmap layers and real saved fronts
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: |
@@ -752,9 +824,18 @@ jobs:
             sleep 1
           done
           curl --fail --silent http://127.0.0.1:3101/planet-generator-v102 > /dev/null
+          YAUTJA_QA_SERVER_MODE=development node scripts/qa-planet-import-race-v103.mjs
           node scripts/qa-planet-regional-materials-v102.mjs
           node scripts/qa-planet-generator-v102.mjs
           node scripts/qa-planet-generator-v103.mjs
+      - name: Preserve planet import ordering browser report
+        if: ${{ always() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: planet-import-order-v103-${{ github.run_id }}
+          path: outputs/qa-planet-import-race-v103/run-*/report.json
+          retention-days: 7
+          if-no-files-found: ignore
       - name: Compare historical WebGL pixels and verify modular V103 materials
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: node scripts/qa-planet-materials-v103.mjs
@@ -820,6 +901,14 @@ jobs:
       - name: Execute unchanged V111 assertions and regenerate all 113 historical worksheets
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: node scripts/check-excel-history-homeworld-v112.mjs --check --tests
+      - name: Exercise parallel V111 hunt compatibility suite
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node scripts/test-current-v111-v112.mjs
+      - name: Preserve parallel V112 Homeworld and hunt historical workbooks
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: |
+          node scripts/check-homeworld-history-v112.mjs --check --tests
+          node scripts/check-excel-history-v112.mjs --check --tests
       - name: Exercise V112 geometry, public-life, mobility, backward throws and evidence guards
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v112.test.mjs

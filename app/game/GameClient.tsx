@@ -1,4 +1,7 @@
 "use client";
+import ConservationPanelV112, {type ConservationPanelActionV112} from "./ConservationPanelV112";
+import {startConservationV112,workConservationV112,repairFieldToolV112,archiveMountedSpecimenV112,deliverHarvestV112,harvestInventoryForV112,capacityForArmorV112} from "./systems/harvestInventoryV112";
+import { normalizeHuntAccessibilityV112 } from "./systems/huntAccessibilityV112";
 import { FIELD_TOOLS_V111, quoteFieldToolV111, purchaseFieldToolV111 } from "./systems/fieldToolsV111";
 import {recoverAnyArchiveV71} from "./systems/archiveRecoveryV71";
 import { REFERENCE_BIOMASKS_V62, PRESERVED_BIOMASKS_V62 } from "./biomaskCatalogueV62";
@@ -136,6 +139,7 @@ import {
   resolveV6TrophyVisualId,
   type V6VisualId,
 } from "./v6Visuals";
+import { PHG_MATERIALS_V113, phgMaterialLabelV113 } from "./hunterMaterialsV113";
 import {
   HUNTER_EXPANDED_PRESETS,
   HUNTER_FILM_GROUPS,
@@ -295,6 +299,7 @@ const CatalogueHunterBrowser = React.lazy(() =>
     default: module.CatalogueHunterBrowser,
   })),
 );
+const HuntAccessibilityPanelV112 = React.lazy(() => import("./HuntAccessibilityPanelV112"));
 const ControlBindingsPanel = React.lazy(
   () => import("./ControlBindingsPanel"),
 );
@@ -429,6 +434,7 @@ function huntConfiguration(save: SaveGame, elapsed = 0): JsonObject {
       screenShake: save.settings.screenShake,
       reducedGore: save.settings.reducedGore,
       highContrastVision: save.settings.highContrastVision,
+      huntAccessibility: normalizeHuntAccessibilityV112(save.settings.huntAccessibility) as unknown as JsonObject,
     },
     elapsedSeconds: Math.max(0, Number.isFinite(elapsed) ? elapsed : 0),
   };
@@ -466,6 +472,7 @@ function normalizeHuntConfiguration(
       screenShake: visualOptions.screenShake,
       reducedGore: visualOptions.reducedGore,
       highContrastVision: visualOptions.highContrastVision,
+      huntAccessibility: visualOptions.huntAccessibility ?? baseSave.settings.huntAccessibility,
     },
   });
   return normalized.settings.difficultyId === sidecar.difficultyId
@@ -532,6 +539,11 @@ const SKIN_OPTIONS: ReadonlyArray<{
     detail: "Motifs sombres de traque nocturne",
     swatch: "#403a31",
   },
+  { id: "moss-mottle", label: "Mousse des canopées", detail: "Verts organiques des chasseurs forestiers", swatch: "#677b4b" },
+  { id: "copper-mottle", label: "Cuivre sauvage", detail: "Oxydes rouge-brun des terres volcaniques", swatch: "#a35a3e" },
+  { id: "sand-mottle", label: "Sable fossile", detail: "Pigmentation beige des déserts rocheux", swatch: "#b2a17a" },
+  { id: "storm-mottle", label: "Ardoise orageuse", detail: "Pigments froids des climats humides", swatch: "#647b85" },
+  { id: "ivory-mottle", label: "Ivoire des cendres", detail: "Tonalité ivoire peu saturée, non albinos imposé", swatch: "#bcb4a2" },
 ];
 
 const MASK_OPTIONS: ReadonlyArray<{ id: BiomaskId | null; label: string; detail: string; image?: string; preferImage?: boolean }> = [
@@ -701,6 +713,10 @@ const DREAD_TINT_OPTIONS: ReadonlyArray<{
   { id: "obsidian", label: "Obsidienne", swatch: "#17181b" },
   { id: "umber", label: "Terre d’ombre", swatch: "#4b3428" },
   { id: "ashen", label: "Cendre", swatch: "#8a8881" },
+  { id: "copper", label: "Cuivre", swatch: "#85513f" },
+  { id: "bone", label: "Ivoire de parure", swatch: "#bbb29c" },
+  { id: "moss", label: "Vert terne", swatch: "#586a4b" },
+  { id: "blue-black", label: "Noir bleuté", swatch: "#343e53" },
 ];
 
 const ARMOR_TINT_OPTIONS: ReadonlyArray<{
@@ -711,6 +727,10 @@ const ARMOR_TINT_OPTIONS: ReadonlyArray<{
   { id: "gunmetal", label: "Métal canon", swatch: "#75818a" },
   { id: "bronze", label: "Bronze du clan", swatch: "#98704b" },
   { id: "obsidian", label: "Obsidienne", swatch: "#272b31" },
+  { id: "bone", label: "Os traité", swatch: "#afa68d" },
+  { id: "jade", label: "Patine verte", swatch: "#466f5b" },
+  { id: "rust", label: "Fer ancien", swatch: "#8b503d" },
+  { id: "crimson", label: "Laque de sang", swatch: "#873938" },
 ];
 
 const LASER_COLOR_OPTIONS: ReadonlyArray<{
@@ -1034,6 +1054,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     useState<MapReturnScreen>("deck");
   const [stationReturnScreen, setStationReturnScreen] =
     useState<StationReturnScreen>("deck");
+  const [paletteFacility, setPaletteFacility] = useState<"ship" | "forge" | "lab">("ship");
   const [lastResult, setLastResult] = useState<MissionResult | null>(null);
   const [lastRewardSummary, setLastRewardSummary] =
     useState<RewardSummary | null>(null);
@@ -2429,6 +2450,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
           ? "Ta formation est en cours. Rejoins le mentor pour reprendre les exercices à l’étape sauvegardée ; cet accès ne remplace pas les exercices du dojo."
           : "Rencontre d’abord le chef du clan puis l’instructeur des terrasses. Son dialogue ouvre le dojo ; la lame et le biomask se reçoivent uniquement aux étapes réussies de la formation."); return;
     }
+    if (service === "customization") setPaletteFacility("forge");
     if (service === "justice") setJusticeJurisdiction("homeworld");
     if (service === "pit") openPit();
     else openStationScreen(service, "homeworld");
@@ -2763,6 +2785,10 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         if (activeHuntSessionRef.current) setPendingHuntResult({ result, returnToDeck });
         return;
       }
+      const delivery=deliverHarvestV112(saveRef.current,result.specimensV112,result.toolUseIdsV112,result.outcome==="success",result.missionId,result.harvestEncounterRunV112);
+      if(!delivery.ok) {
+        setPendingHuntResult({result,returnToDeck});setToast(delivery.reason);return;
+      }
       setPendingHuntResult(null);
       missionSettlementRef.current = true;
       const current = saveRef.current;
@@ -2808,15 +2834,16 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   const updateSettings = useCallback(
     (patch: Partial<GameSettings>) => {
+      const current=saveRef.current;
       persist({
-        ...save,
+        ...current,
         settings: {
-          ...save.settings,
+          ...current.settings,
           ...patch,
         },
       });
     },
-    [persist, save],
+    [persist],
   );
 
   const selectArmor = useCallback(
@@ -2893,6 +2920,17 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     void playSound("select");
   }, [persistSocialProgress, playSound]);
 
+  const performConservationActionV112=useCallback((action:ConservationPanelActionV112,id:string)=>{
+    if(settingsOpen||archiveTransferBusy||archiveRecoveryIssue||campaignSaveBusy||!(screen==="armory"||screen==="trophies"))
+      return {ok:false,message:"Atelier suspendu : reprenez le poste actif avant de travailler."};
+    const current=saveRef.current;
+    const result=action==="start"?startConservationV112(current,id):action==="work"?workConservationV112(current,id):action==="archive"?archiveMountedSpecimenV112(current,id):repairFieldToolV112(current);
+    if(!result.ok)return {ok:false,message:result.message};
+    if(!persistSocialProgress({profile:result.save.profile,inventory:result.save.inventory}))
+      return {ok:false,message:"Travail non confirmé : aucun succès annoncé. Réessayez le même geste pour récupérer son enregistrement."};
+    return {ok:true,message:result.message};
+  },[archiveRecoveryIssue,archiveTransferBusy,campaignSaveBusy,persistSocialProgress,screen,settingsOpen]);
+
   const purchaseEquipmentUpgrade = useCallback(
     (request: UpgradePurchaseRequest) => {
       const quote = quoteUpgrade(save, request);
@@ -2940,6 +2978,13 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         [key]: value,
       };
       if (key !== "presetId") appearance.presetId = "custom";
+      // A flat tint replaces a woven/material swatch in its layer; other layers stay independent.
+      if (key === "skinId") appearance.skinMaterialId = null;
+      if (key === "dreadTintId") appearance.dreadMaterialId = null;
+      if (key === "armorTintId") appearance.outfitMaterialId = null;
+      if (key === "skinMaterialId") appearance.skinId = "ochre-mottle";
+      if (key === "dreadMaterialId") appearance.dreadTintId = "obsidian";
+      if (key === "outfitMaterialId") appearance.armorTintId = "gunmetal";
       setSelectedCatalogueEntryId(null);
       persist({
         ...save,
@@ -3842,6 +3887,14 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             >
               {hubLocation === "homeworld" ? "← Retour à la cité" : "← Retour au pont physique"}
             </button>
+            {screen === "medbay" && <aside className="pigment-lab-access" aria-label="Station pigmentaire de la maison des soins">
+              <strong>Mélangeur des matrices pigmentaires</strong>
+              <p>Les soigneurs travaillent sur la pigmentation superficielle. Aucune réécriture ADN ou mutation instantanée n’est attribuée au lore.</p>
+              <button type="button" className="alien-button" onClick={() => {
+                setPaletteFacility("lab");
+                openStationScreen("customization", hubLocation);
+              }}>Ouvrir la station des pigments</button>
+            </aside>}
             <ShipHub
               embedded
               suspended={settingsOpen || trophyWorkshop !== null}
@@ -3855,9 +3908,10 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
               onOpenArmory={() => openStationScreen("armory", hubLocation)}
               onOpenTrophies={() => openStationScreen("trophies", hubLocation)}
               onOpenArchives={() => openStationScreen("codex", hubLocation)}
-              onOpenCustomization={() =>
-                openStationScreen("customization", hubLocation)
-              }
+              onOpenCustomization={() => {
+                setPaletteFacility("lab");
+                openStationScreen("customization", hubLocation);
+              }}
               onOpenPit={openPit}
               onApplyLoadout={applyShipLoadout}
               onSelectedShipChange={setSelectedShipId}
@@ -4206,6 +4260,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                       <h3>{tool.name}</h3>
                       <p>{tool.description}</p>
                       <p>Outil permanent · aucun emplacement d’équipement actif.</p>
+                      {quote.owned&&<p>Affûtage {harvestInventoryForV112(save.inventory).toolCondition}/100 · entretien gratuit dans l’atelier.</p>}
                       <button type="button" className="button" disabled={!quote.canPurchase}
                         onClick={() => purchasePermanentFieldTool(tool.id)}>
                         {quote.owned ? "Acquis" : quote.canPurchase
@@ -4215,6 +4270,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                     </article>;
                   })}
                 </ArmorySection>
+                <ConservationPanelV112 inventory={save.inventory} clanMarks={save.profile.clanMarks}
+                  disabled={settingsOpen||archiveTransferBusy||!!archiveRecoveryIssue||campaignSaveBusy} onAction={performConservationActionV112}/>
+                <p>Emport de l’armure : {capacityForArmorV112(save.loadout.armorId).massKg} kg / {capacityForArmorV112(save.loadout.armorId).volumeUnits} volumes. Au maximum : déplacement −32 %, saut −16 %, effort d’escalade +60 %, bruit +80 %. Une partie trop lourde reste sur la proie.</p>
                 <ArmorySection title="Armes de chasse">
                   {WEAPONS.map((weapon) => {
                     const unlocked =
@@ -4353,12 +4411,17 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         >
           <div className="screen-safe">
             <PanelHeader
-              eyebrow={newGamePhase ? "Nouvelle partie // Identité du chasseur" : "Vaisseau // Quartier du chasseur"}
+              eyebrow={newGamePhase ? "Nouvelle partie // Identité du chasseur" : paletteFacility === "forge" && stationReturnScreen === "homeworld" ? "Homeworld // Teinturerie des Forges" : paletteFacility === "lab" ? "Maison des soins // Matrice pigmentaire" : "Vaisseau // Quartier du chasseur"}
               title="Personnalisation du Yautja"
               subtitle="Le biomask permet d’étudier séparément l’anatomie, le filet, les dreadlocks, les plaques, l’armement, les gantelets et les trophées."
               id="customization-title"
               onBack={() => newGamePhase ? void returnToMainMenu() : go(stationReturnScreen)}
             />
+            {!newGamePhase && <section className="hunter-material-facility" aria-label="Atelier de personnalisation lore-compatible">
+              <strong>{paletteFacility === "lab" ? "Mélangeur de pigments biologiques" : paletteFacility === "forge" && stationReturnScreen === "homeworld" ? "Teinturerie du Cercle des Forges" : "Poste de préparation du chasseur"}</strong>
+              <p>Peau, ligatures des dreadlocks et équipements utilisent des matériaux distincts. Les PNG inspirés de Hunting Grounds sont des reconstitutions et ne modifient ni les compétences, ni les trophées, ni le rang.</p>
+              <small>Dans la cité : teinturerie au quartier des Forges ; laboratoire pigmentaire dans la Maison des soins. Aucun « DNA mixer » universel n’est présenté comme une technologie canonique.</small>
+            </section>}
             {newGamePhase === "identity" && <section className="save-transfer" aria-label="Début de campagne jouable" data-new-game-identity>
               <h2>{save.profile.hunterName} · Première chasse</h2>
               <p>Ce checkpoint conserve l’ancien départ de campagne : personnalisation, briefing de Vey puis chasse en jungle. Aucun rite de jeunesse n’est attribué par ce raccourci historique. Pour commencer par la nurserie et poursuivre la formation Unblooded, crée une nouvelle partie dans un emplacement libre depuis le menu principal ; cette sauvegarde restera disponible.</p>
@@ -4613,6 +4676,17 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 </CustomizationSection>
 
                 <CustomizationSection
+                  title="Matrice pigmentaire · textures PHG"
+                  detail="Textures de peau reconstruites et conservées séparément des dreadlocks et des pièces portées."
+                >
+                  <AppearanceOption label="Pigment uni / aucun motif importé" detail="Conserver la palette de base sans texture PHG" selected={!save.appearance.skinMaterialId} onSelect={() => updateAppearance("skinMaterialId", null)} />
+                  {PHG_MATERIALS_V113.filter(material => material.category === "skin" && !material.archived).map(material => (
+                    <AppearanceOption key={material.id} label={material.label} detail={phgMaterialLabelV113(material)} image={material.src}
+                      selected={save.appearance.skinMaterialId === material.id} onSelect={() => updateAppearance("skinMaterialId", material.id)} />
+                  ))}
+                </CustomizationSection>
+
+                <CustomizationSection
                   title="Biomask"
                   detail="Le masque peut être porté ou retiré à tout moment"
                 >
@@ -4699,6 +4773,17 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 </CustomizationSection>
 
                 <CustomizationSection
+                  title="Atelier des ligatures · textures PHG"
+                  detail="Parures et motifs des mèches, sans modification de la morphologie faciale."
+                >
+                  <AppearanceOption label="Pigment uni / aucun motif importé" detail="Conserver la palette de base sans texture PHG" selected={!save.appearance.dreadMaterialId} onSelect={() => updateAppearance("dreadMaterialId", null)} />
+                  {PHG_MATERIALS_V113.filter(material => material.category === "dread" && !material.archived).map(material => (
+                    <AppearanceOption key={material.id} label={material.label} detail={phgMaterialLabelV113(material)} image={material.src}
+                      selected={save.appearance.dreadMaterialId === material.id} onSelect={() => updateAppearance("dreadMaterialId", material.id)} />
+                  ))}
+                </CustomizationSection>
+
+                <CustomizationSection
                   title="Famille d’armure"
                   detail="Les plaques restent attachées au membre qu’elles protègent"
                 >
@@ -4730,6 +4815,17 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                         updateAppearance("armorTintId", option.id)
                       }
                     />
+                  ))}
+                </CustomizationSection>
+
+                <CustomizationSection
+                  title="Teinturerie des forges · matières PHG"
+                  detail="Cuir, laque, étoffes et motifs d’armure, sans changer la classe de protection."
+                >
+                  <AppearanceOption label="Pigment uni / aucun motif importé" detail="Conserver la palette de base sans texture PHG" selected={!save.appearance.outfitMaterialId} onSelect={() => updateAppearance("outfitMaterialId", null)} />
+                  {PHG_MATERIALS_V113.filter(material => material.category === "outfit" && !material.archived).map(material => (
+                    <AppearanceOption key={material.id} label={material.label} detail={phgMaterialLabelV113(material)} image={material.src}
+                      selected={save.appearance.outfitMaterialId === material.id} onSelect={() => updateAppearance("outfitMaterialId", material.id)} />
                   ))}
                 </CustomizationSection>
 
@@ -4784,6 +4880,8 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             <Suspense fallback={<p>Lecture des distinctions THE PIT…</p>}>
               <PitHonorsPanel owner={save.createdAt} onOpenPit={openPit} />
             </Suspense>
+            <ConservationPanelV112 inventory={save.inventory} clanMarks={save.profile.clanMarks}
+              disabled={settingsOpen||archiveTransferBusy||!!archiveRecoveryIssue||campaignSaveBusy} onAction={performConservationActionV112}/>
             <div className="trophy-grid">
               <details className="franchise-trophy-archive">
                 <summary>
@@ -5116,6 +5214,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             appearance={activeMissionSave.appearance}
             difficulty={activeMissionSave.settings.difficultyId}
             controlBindings={activeMissionSave.settings.controlBindings}
+            huntAccessibility={activeMissionSave.settings.huntAccessibility}
             reducedGore={activeMissionSave.settings.reducedGore}
             screenShake={activeMissionSave.settings.screenShake}
             highContrastVision={
@@ -5398,6 +5497,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                   updateSettings({ highContrastVision })
                 }
               />
+              <Suspense fallback={<p role="status">Chargement des aides de chasse…</p>}>
+                <HuntAccessibilityPanelV112 value={save.settings.huntAccessibility} onChange={(huntAccessibility) => updateSettings({ huntAccessibility })}/>
+              </Suspense>
               <section aria-labelledby="keyboard-controls-title">
                 <h3 id="keyboard-controls-title">Commandes clavier</h3>
                 <Suspense
@@ -5830,7 +5932,7 @@ function AppearanceOption({
         {art ?? (visualId ? (
           <V6AtlasSprite id={visualId} decorative />
         ) : image ? (
-          <img src={image} alt="" />
+          <img src={image} alt="" loading="lazy" decoding="async" />
         ) : null)}
         {swatch ? (
           <i

@@ -140,6 +140,19 @@ try {
   const original = await world(page, { seed: 10317, territoryCount: 48, regionCount: 12, hydrology: "none", atmosphere: "aurora" });
   const initial = {};
   for (const layer of ["land", "surface", "clouds", "weather", "atmosphere", "aurora", "mask"]) initial[layer] = await decode(await render(page, original, layer));
+  const none = { atmosphere: false, clouds: false, weather: false, lighting: false, aurora: false };
+  const auroraOnly = { ...none, aurora: true };
+  const weatherOnly = { ...none, weather: true };
+  const noEffects = await decode(await render(page, original, "composite", { settings: none }));
+  const auroraEffects = await decode(await render(page, original, "composite", { settings: auroraOnly }));
+  const weatherEffects = await decode(await render(page, original, "composite", { settings: weatherOnly }));
+  const auroraChanges = difference(auroraEffects, noEffects);
+  const weatherChanges = difference(weatherEffects, noEffects);
+  assert.ok(auroraChanges > 50, "aurora lights the map independently when weather is off");
+  assert.ok(weatherChanges > 50, "weather remains independently visible when aurora is off");
+  assert.deepEqual(await decode(await render(page, original, "aurora", { settings: none })), initial.aurora,
+    "exporting an isolated aurora ignores the composed-image toggle");
+  report.checks.push({ name: "V114 aurora and weather toggles are pixel-independent", auroraChanges, weatherChanges });
   const changes = [
     { landVariant: "earthlike" }, { landVariant: "alien" }, { landScale: "fine" }, { landContrast: "strong" }, { landPalette: "violet" },
     { surfaceVariant: "earthlike" }, { surfaceVariant: "alien" }, { surfaceScale: "broad" }, { surfaceContrast: "soft" }, { surfacePalette: "amber" },

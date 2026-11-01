@@ -1,0 +1,35 @@
+TAP version 13
+# Subtest: V113 a cold lift-to-steward request joins the coarse streets without a global fine-grid search
+not ok 1 - V113 a cold lift-to-steward request joins the coarse streets without a global fine-grid search
+  ---
+  duration_ms: 16494.548673
+  type: 'test'
+  location: '/workspace/scratch/56a0bf56582d/yautja-apply-guides/tests/homeworld-navigation-cost-v113.test.mjs:5:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    a local connector exit must not restart the fine search across the whole city
+    
+    1 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/56a0bf56582d/yautja-apply-guides/tests/homeworld-navigation-cost-v113.test.mjs:21:12)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.start (node:internal/test_runner/test:1262:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)
+  ...
+# {"coldMs":13462.921169,"globalFineCalls":1,"distance":6836.316343955092,"points":16}
+1..1
+# tests 1
+# suites 0
+# pass 0
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 16502.86515

@@ -1,0 +1,80 @@
+TAP version 13
+# Subtest: V113 native court collision reuses its private shape without repeating support projection
+not ok 1 - V113 native court collision reuses its private shape without repeating support projection
+  ---
+  duration_ms: 2.446228
+  type: 'test'
+  location: '/workspace/scratch/56a0bf56582d/yautja-apply-guides/tests/homeworld-collision-cost-v113.test.mjs:45:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    unchanged native support is not projected again for every collision query
+    
+    100 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 100
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/56a0bf56582d/yautja-apply-guides/tests/homeworld-collision-cost-v113.test.mjs:57:12)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.start (node:internal/test_runner/test:1262:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)
+  ...
+# {"repeatedCourtQueries":100,"supportMapsAfterPreparation":100}
+# Subtest: V113 civic collision reuses bounds of its existing polygon without repeating four array maps
+not ok 2 - V113 civic collision reuses bounds of its existing polygon without repeating four array maps
+  ---
+  duration_ms: 2.149681
+  type: 'test'
+  location: '/workspace/scratch/56a0bf56582d/yautja-apply-guides/tests/homeworld-collision-cost-v113.test.mjs:68:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    unchanged public polygon does not rebuild its four coordinate arrays
+    
+    400 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 400
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/56a0bf56582d/yautja-apply-guides/tests/homeworld-collision-cost-v113.test.mjs:79:12)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+  ...
+# {"repeatedCivicQueries":100,"polygonMapsAfterPreparation":400}
+# Subtest: V113 cached collision agrees with the native predicates for every mounted court and civic hull
+ok 3 - V113 cached collision agrees with the native predicates for every mounted court and civic hull
+  ---
+  duration_ms: 265.007225
+  type: 'test'
+  ...
+# Subtest: V113 court collision refreshes placement, art and in-place native geometry without changing public polygons
+ok 4 - V113 court collision refreshes placement, art and in-place native geometry without changing public polygons
+  ---
+  duration_ms: 83.141486
+  type: 'test'
+  ...
+# Subtest: V113 bounds follow edits to exposed legacy and civic polygons while retaining their existing cache semantics
+ok 5 - V113 bounds follow edits to exposed legacy and civic polygons while retaining their existing cache semantics
+  ---
+  duration_ms: 36.394258
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 3
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 462.179942

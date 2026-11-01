@@ -1,0 +1,198 @@
+✖ an unrecognized world code supersedes an older pending file even when refused (48.78643ms)
+✖ generation with an invalid seed supersedes an older pending file even when refused (5.476135ms)
+✖ a preset with an invalid seed supersedes an older pending file even when refused (2.703054ms)
+✖ randomization with an invalid locked seed supersedes an older pending file even when refused (12.641305ms)
+✖ editing the shared-world code supersedes an older file before submitting the new code (6.128027ms)
+✖ a late read rejection does not replace the error from a newer refused code import (14.025561ms)
+✔ the current V102 file still restores its exact code without opening a front (59.272556ms)
+✔ the current V103 file still restores its exact code without opening a front (0.935871ms)
+✔ file B keeps its exact legacy identity when the older file A completes last (2.339957ms)
+✔ an older completion cannot replace the preview while the latest file is still pending (6.100506ms)
+✔ a late read rejection from file A preserves the accepted file B (9.1621ms)
+✔ a successful generation keeps its new recipe when an older file finishes (69.003685ms)
+✔ a successful shared-code import keeps its world when an older file finishes (1.975438ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 7
+ℹ fail 6
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2018.105978
+
+✖ failing tests:
+
+test at tests/planet-generator-import-race-v103.test.mjs:128:38
+✖ an unrecognized world code supersedes an older pending file even when refused (48.78643ms)
+  AssertionError [ERR_ASSERTION]: the refused action keeps its draft, preview and error after an older file completes
+  + actual - expected
+  
+    {
+      changed: false,
+  +   code: 'proc-v103-5m-000013100011000111100-ybn45',
+  -   code: 'proc-v103-5l-000013100011000111100-m9puy',
+      importCode: 'incomplete-world-code',
+  +   message: 'Fiche importée. Le monde conserve sa version et sa géographie d’origine.',
+  -   message: 'Ce code de monde n’est pas reconnu. Vérifiez qu’il est complet.',
+      opened: [],
+  +   seed: '202',
+  -   seed: '201',
+      version: 103
+    }
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/56a0bf56582d/yautja-apply-guides/tests/planet-generator-import-race-v103.test.mjs:138:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [Object],
+    expected: [Object],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/planet-generator-import-race-v103.test.mjs:128:38
+✖ generation with an invalid seed supersedes an older pending file even when refused (5.476135ms)
+  AssertionError [ERR_ASSERTION]: the refused action keeps its draft, preview and error after an older file completes
+  + actual - expected
+  
+    {
+  +   changed: false,
+  +   code: 'proc-v103-5m-000013100011000111100-ybn45',
+  -   changed: true,
+  -   code: 'proc-v103-5l-000013100011000111100-m9puy',
+      importCode: '',
+  +   message: 'Fiche importée. Le monde conserve sa version et sa géographie d’origine.',
+  -   message: 'Une graine numérique doit être comprise entre 0 et 4 294 967 295.',
+      opened: [],
+  +   seed: '202',
+  -   seed: '4294967296',
+      version: 103
+    }
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/56a0bf56582d/yautja-apply-guides/tests/planet-generator-import-race-v103.test.mjs:138:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [Object],
+    expected: [Object],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/planet-generator-import-race-v103.test.mjs:128:38
+✖ a preset with an invalid seed supersedes an older pending file even when refused (2.703054ms)
+  AssertionError [ERR_ASSERTION]: the refused action keeps its draft, preview and error after an older file completes
+  + actual - expected
+  
+    {
+  +   changed: false,
+  +   code: 'proc-v103-5m-000013100011000111100-ybn45',
+  -   changed: true,
+  -   code: 'proc-v103-5l-000013100011000111100-m9puy',
+      importCode: '',
+  +   message: 'Fiche importée. Le monde conserve sa version et sa géographie d’origine.',
+  -   message: 'Une graine numérique doit être comprise entre 0 et 4 294 967 295.',
+      opened: [],
+  +   seed: '202',
+  -   seed: '4294967296',
+      version: 103
+    }
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/56a0bf56582d/yautja-apply-guides/tests/planet-generator-import-race-v103.test.mjs:138:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [Object],
+    expected: [Object],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/planet-generator-import-race-v103.test.mjs:128:38
+✖ randomization with an invalid locked seed supersedes an older pending file even when refused (12.641305ms)
+  AssertionError [ERR_ASSERTION]: the refused action keeps its draft, preview and error after an older file completes
+  + actual - expected
+  
+    {
+  +   changed: false,
+  +   code: 'proc-v103-5m-000013100011000111100-ybn45',
+  -   changed: true,
+  -   code: 'proc-v103-5l-000013100011000111100-m9puy',
+      importCode: '',
+  +   message: 'Fiche importée. Le monde conserve sa version et sa géographie d’origine.',
+  -   message: 'Une graine numérique doit être comprise entre 0 et 4 294 967 295.',
+      opened: [],
+  +   seed: '202',
+  -   seed: '4294967296',
+      version: 103
+    }
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/56a0bf56582d/yautja-apply-guides/tests/planet-generator-import-race-v103.test.mjs:138:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [Object],
+    expected: [Object],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/planet-generator-import-race-v103.test.mjs:142:1
+✖ editing the shared-world code supersedes an older file before submitting the new code (6.128027ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    {
+      changed: false,
+  +   code: 'proc-v103-5m-000013100011000111100-ybn45',
+  -   code: 'proc-v103-5l-000013100011000111100-m9puy',
+      importCode: 'proc-v102-5n-0110011-p01gc',
+  +   message: 'Fiche importée. Le monde conserve sa version et sa géographie d’origine.',
+  -   message: '',
+      opened: [],
+  +   seed: '202',
+  -   seed: '201',
+      version: 103
+    }
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/56a0bf56582d/yautja-apply-guides/tests/planet-generator-import-race-v103.test.mjs:147:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [Object],
+    expected: [Object],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/planet-generator-import-race-v103.test.mjs:154:1
+✖ a late read rejection does not replace the error from a newer refused code import (14.025561ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    {
+      changed: false,
+      code: 'proc-v103-5l-000013100011000111100-m9puy',
+      importCode: 'invalid-code',
+  +   message: 'old file read failed',
+  -   message: 'Ce code de monde n’est pas reconnu. Vérifiez qu’il est complet.',
+      opened: [],
+      seed: '201',
+      version: 103
+    }
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/56a0bf56582d/yautja-apply-guides/tests/planet-generator-import-race-v103.test.mjs:159:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [Object],
+    expected: [Object],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

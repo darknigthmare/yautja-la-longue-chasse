@@ -90,6 +90,24 @@ try {
   const crystalSea = world({ ...crystal.procedural.recipe, surface: "radioactive" });
   assert.deepEqual((await decode(await render(page, crystal, "land"))).data, (await decode(await render(page, crystalSea, "land"))).data);
   report.checks.push({ name: "uniform exotic land tint remains independent of surface palette" });
+  // V114: weather and aurora are independent only when the new explicit
+  // switch is used. Old callers without "aurora" still inherit weather.
+  const polar = world({ seed: 114909, atmosphere: "aurora", landBiome: "snow", surface: "water" });
+  const neutral = { atmosphere: true, clouds: false, weather: false, lighting: false, aurora: false };
+  const baseComposite = (await decode(await render(page, polar, "composite", { settings: neutral }))).data;
+  const auroraComposite = (await decode(await render(page, polar, "composite", { settings: { ...neutral, aurora: true } }))).data;
+  const weatherComposite = (await decode(await render(page, polar, "composite", { settings: { ...neutral, weather: true } }))).data;
+  assert.ok(difference(baseComposite, auroraComposite) > 200, "aurora must work when weather is disabled");
+  assert.ok(difference(baseComposite, weatherComposite) > 200, "weather must work when aurora is disabled");
+  assert.deepEqual(
+    (await decode(await render(page, polar, "composite", { settings: { atmosphere: true, clouds: false, weather: false, lighting: false } }))).data,
+    baseComposite,
+    "legacy callers without an aurora switch inherit the weather toggle",
+  );
+  const auroraIsolated = (await decode(await render(page, polar, "aurora", { settings: neutral }))).data;
+  assert.ok(auroraIsolated.some((channel, index) => index % 4 === 3 && channel > 0), "explicit aurora layer remains exportable even when disabled in the composite");
+  report.checks.push({ name: "V114 independent aurora/weather switches preserve legacy defaults and source exports" });
+
 
   for (let seed = 0; seed < 28; seed++) await render(page, world({ seed: 73000 + seed, landform: "archipelago" }), "land", { width: 256, height: 128 });
   const status = await page.evaluate(() => ({ ...window.__YAUTJA_PLANET_MATERIALS_V101__.status(), actualContexts: window.__regionalQaContexts.length }));

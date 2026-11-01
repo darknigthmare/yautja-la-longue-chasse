@@ -1,0 +1,281 @@
+{
+  "schemaVersion": 1,
+  "release": "V112",
+  "recordedOn": "2026-10-28",
+  "repository": "darknigthmare/yautja-la-longue-chasse",
+  "pullRequest": 23,
+  "executionOrigin": "GitHub Actions with locked dependencies; no local executor or physical-device test",
+  "nativeQualification": {
+    "branchHead": "e407979502d1cd4986e2e1810a4ed013f8abac8a",
+    "branchTree": "e1b5e0cec9da90e2efaeb879630545b1e6b862e0",
+    "executedMerge": "37c472f2f727ae56cea52708a4c1e4922348fe82",
+    "executedTree": "e1b5e0cec9da90e2efaeb879630545b1e6b862e0",
+    "parents": [
+      "a5a951e3f6dbb3fa399bd38f774a1f0b6ec58f5e",
+      "e407979502d1cd4986e2e1810a4ed013f8abac8a"
+    ],
+    "runUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/40673101025",
+    "jobId": 122764589221,
+    "command": "node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v112.test.mjs",
+    "result": "PASS",
+    "pass": 237,
+    "fail": 0,
+    "skip": 0,
+    "typecheck": "PASS",
+    "treeIdentityVerified": true,
+    "canopy": {
+      "isolatedTraversals": 72,
+      "missions": 8,
+      "armors": 3,
+      "normalizedInputSets": 3,
+      "enemiesRemoved": true,
+      "noIntermediateReposition": true,
+      "wholeCombatCampaign": false,
+      "longVines": {
+        "productionWorld": "Oseris unlocked by aerial-boost",
+        "realSupportHeights": [
+          862,
+          1054
+        ],
+        "nativeGraspLengths": [
+          760,
+          900
+        ],
+        "maximumLength": 2048,
+        "newPureCases": 2,
+        "newNativeCases": 2,
+        "schemaAndPhysicalDomainMatch": true
+      }
+    },
+    "nextCompile": {
+      "status": "PASS",
+      "runId": 40673100949,
+      "jobId": 122764590563,
+      "command": "node node_modules/next/dist/bin/next build --webpack",
+      "step": 14
+    },
+    "compiledHttp": {
+      "status": "PASS",
+      "command": "npm run qa:next-production",
+      "step": 15
+    },
+    "eslint": {
+      "status": "PASS",
+      "step": 16,
+      "commandLocation": ".github/workflows/audit-v94.yml"
+    },
+    "applicationWorkflowIncompleteAtRecording": true
+  },
+  "preservedFullRun": {
+    "branchHead": "ab47a9c2d2bf4b0a866c109efa2c96f68d526de8",
+    "branchTree": "6e0e7507301cd1ce395a6bd0cba732770c23282e",
+    "executedMerge": "87a66e187a94616e46c657876d93aaaa933ba868",
+    "executedTree": "6e0e7507301cd1ce395a6bd0cba732770c23282e",
+    "parents": [
+      "a5a951e3f6dbb3fa399bd38f774a1f0b6ec58f5e",
+      "ab47a9c2d2bf4b0a866c109efa2c96f68d526de8"
+    ],
+    "runUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/40667918140",
+    "jobId": 122747551239,
+    "applicationResult": "SUCCESS",
+    "allApplicationSteps": "PASS",
+    "treeIdentityVerified": true,
+    "workflows": [
+      {
+        "id": 40667918140,
+        "name": "V94 regression tests",
+        "result": "success"
+      },
+      {
+        "id": 40667918136,
+        "name": "V94 campaign routes and bounded cloud transport",
+        "result": "success"
+      },
+      {
+        "id": 40667918143,
+        "name": "V94 ship training persistence",
+        "result": "success"
+      },
+      {
+        "id": 40667918246,
+        "name": "V94 transactional exercises and trophy confirmation",
+        "result": "success"
+      }
+    ],
+    "nativeV112": 233,
+    "currentV111": 119,
+    "v111HarvestAndTools": 54,
+    "cloud": 64,
+    "overlappingSuitesNotAdded": true,
+    "campaign": {
+      "pass": 159,
+      "fail": 0,
+      "skip": 1,
+      "skipReason": "Private V6 source is not distributed in Git"
+    },
+    "build": {
+      "typecheck": "PASS",
+      "nextCompile": "PASS",
+      "eslint": "PASS",
+      "compiledHttp": {
+        "status": "PASS",
+        "checks": 5,
+        "scope": "homepage, client JS and three protected QA routes"
+      }
+    },
+    "browser": {
+      "command": "node scripts/qa-hunt-mechanics-browser-v112.mjs",
+      "report": "browser-report.json",
+      "reportGitBlob": "fe075763cf400f07fbf2bc94c251697f93a8885d",
+      "groups": 18,
+      "pass": 18,
+      "pageerrorExceptions": 0,
+      "artifactUrl": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/40667918140/artifacts/12806722733",
+      "artifactZipSha256": "4ead0b59e21b3a4a89c5379c71559749d383bd3af5f748c521998f67e6025d79",
+      "retentionDays": 7
+    }
+  },
+  "historicalPublications": [
+    {
+      "release": "V110",
+      "executedAtBranchHead": "ab47a9c2d2bf4b0a866c109efa2c96f68d526de8",
+      "command": "node scripts/check-excel-history-v112.mjs --check --tests",
+      "pinnedSourceCommit": "dff1f6734284891b5a24238f890070616a8325cc",
+      "frozenInputsVerified": 1386,
+      "originalTestFiles": 8,
+      "originalAssertions": 56,
+      "result": "PASS",
+      "xlsxBytes": 6260095,
+      "xlsxSha256": "0b7d7890c8d235a9cda0f6d61c62001efe150f2c4022924c20d88196afcdbd7c",
+      "currentRuntimeCovered": false
+    },
+    {
+      "release": "Homeworld V111",
+      "executedAtBranchHead": "ab47a9c2d2bf4b0a866c109efa2c96f68d526de8",
+      "command": "node scripts/check-homeworld-history-v112.mjs --check --tests",
+      "pinnedSourceCommit": "a5a951e3f6dbb3fa399bd38f774a1f0b6ec58f5e",
+      "frozenInputsVerified": 1433,
+      "originalTestFiles": 11,
+      "originalAssertions": 68,
+      "result": "PASS",
+      "xlsxBytes": 8150642,
+      "xlsxSha256": "fa5ebf78a08c36b4a567246dfae41de535a8e36c7294ba33190e3e1e2ec9ad05",
+      "currentRuntimeCovered": false
+    }
+  ],
+  "captures": [
+    {
+      "file": "accessibility-phone.png",
+      "bytes": 15542,
+      "nativeExcelExecuted": false,
+      "width": 390,
+      "height": 844,
+      "gitBlob": "fbe0721431ef77a5dfa23fd496f325d5528924e7",
+      "visualInspection": "PASS",
+      "sourceBranchHead": "ab47a9c2d2bf4b0a866c109efa2c96f68d526de8",
+      "sourceExecutedMerge": "87a66e187a94616e46c657876d93aaaa933ba868"
+    },
+    {
+      "file": "workshop-cleaned.png",
+      "bytes": 71513,
+      "nativeExcelExecuted": false,
+      "width": 640,
+      "height": 486,
+      "gitBlob": "78ade847c3ab1565ea50e3b78f675095f5a27da6",
+      "visualInspection": "PASS",
+      "sourceBranchHead": "ab47a9c2d2bf4b0a866c109efa2c96f68d526de8",
+      "sourceExecutedMerge": "87a66e187a94616e46c657876d93aaaa933ba868"
+    },
+    {
+      "file": "corpse-rites.png",
+      "bytes": 56335,
+      "nativeExcelExecuted": false,
+      "width": 640,
+      "height": 486,
+      "gitBlob": "4e812e63cca4f96d92bbc1121981f4764e7770b4",
+      "visualInspection": "PASS",
+      "sourceBranchHead": "ab47a9c2d2bf4b0a866c109efa2c96f68d526de8",
+      "sourceExecutedMerge": "87a66e187a94616e46c657876d93aaaa933ba868"
+    },
+    {
+      "file": "canopy-native-release.png",
+      "bytes": 48314,
+      "nativeExcelExecuted": false,
+      "width": 640,
+      "height": 486,
+      "gitBlob": "a36616cd43b5aa1a55c354d057c9058533a3fb2d",
+      "visualInspection": "PASS",
+      "sourceBranchHead": "ab47a9c2d2bf4b0a866c109efa2c96f68d526de8",
+      "sourceExecutedMerge": "87a66e187a94616e46c657876d93aaaa933ba868"
+    },
+    {
+      "file": "corpse-rites-gamepad.png",
+      "bytes": 55519,
+      "nativeExcelExecuted": false,
+      "width": 640,
+      "height": 486,
+      "gitBlob": "4ca01269f5a5018bdd25c4c5288c9d1cdf88538a",
+      "visualInspection": "PASS",
+      "sourceBranchHead": "ab47a9c2d2bf4b0a866c109efa2c96f68d526de8",
+      "sourceExecutedMerge": "87a66e187a94616e46c657876d93aaaa933ba868"
+    }
+  ],
+  "visualReview": {
+    "finalAb47Images": "All five PNGs inspected in this qualification task on 2026-10-28",
+    "independentReview": {
+      "fourSceneLogJob": 122716560692,
+      "fourSceneHead": "f3037e77406aa4e0bf0bcc3c6990c08696d6ad0a",
+      "gamepadMenuLogJob": 122744609503,
+      "gamepadMenuHead": "de52da88ff41f769e148d562a72bf261b9d70958",
+      "observations": "390px controls readable with scrolling; workshop phase/cost consistent; corpse menu has internal scroll; fallback canopy release visible; gamepad focus frame and 4.4s worn-tool duration visible"
+    }
+  },
+  "workbook": {
+    "source": "../../hunt-mechanics-v112.json",
+    "delivered": "../../YAUTJA_V112_MECANIQUES_CHASSE.xlsx",
+    "sheets": 19,
+    "rows": 362,
+    "sourceHyperlinks": 327,
+    "cells": 2264,
+    "priorVersion": {
+      "executedAtBranchHead": "e407979502d1cd4986e2e1810a4ed013f8abac8a",
+      "command": "node scripts/build-hunt-mechanics-workbook-v112.mjs --check",
+      "independentCommand": "python3 scripts/verify-hunt-mechanics-workbook-v112.py",
+      "result": "PASS",
+      "bytes": 427476
+    },
+    "evidenceVersion": {
+      "status": "A_EXECUTER_AT_RECORDING",
+      "reason": "The exact delivered bytes change when this evidence is inserted. Final PR checks validate them; no future commit SHA or result is invented here.",
+      "bytes": 444448,
+      "sameGeneratorTwoCallsInToolIsolate": true,
+      "independentCheckPending": true
+    },
+    "nativeExcelExecuted": false
+  },
+  "softwareScope": [
+    "Actual hunt functions bundled from HuntCanvas",
+    "Actual React accessibility, rites and conservation panels",
+    "Emulated gamepad follows production polling, stepGame and DOM navigation for corpse rites",
+    "Canopy keyboard/pointer paths use explicit fixture adapters",
+    "Conservation parent acknowledgement uses native localStorage; separate GameClient persistence tests cover actual handlers",
+    "Native fallback renderer; this is not full illustration-bank qualification"
+  ],
+  "nonQualified": [
+    "Physical phone",
+    "Physical controller",
+    "Target-device performance",
+    "Novice comprehension",
+    "Whole interactive combat campaign"
+  ],
+  "commands": {
+    "v112": "node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v112.test.mjs",
+    "browser": "node scripts/qa-hunt-mechanics-browser-v112.mjs",
+    "workbook": "node scripts/build-hunt-mechanics-workbook-v112.mjs --check",
+    "independentWorkbook": "python3 scripts/verify-hunt-mechanics-workbook-v112.py",
+    "currentV111": "node scripts/test-current-v111-v112.mjs",
+    "historicalV110": "node scripts/check-excel-history-v112.mjs --check --tests",
+    "historicalV111": "node scripts/check-homeworld-history-v112.mjs --check --tests"
+  },
+  "documentationFollowup": "The commit adding this directory changes documentation only. Production-code links are pinned to e407; existing run URLs identify earlier captures/history. No evidence link names a nonexistent future commit."
+}

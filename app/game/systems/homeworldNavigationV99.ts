@@ -7,6 +7,10 @@ const SPACING = 96;
 const COLUMNS = Math.ceil(HOMEWORLD_WORLD_V77.width / SPACING);
 const ROWS = Math.ceil(HOMEWORLD_WORLD_V77.height / SPACING);
 const CACHE_LIMIT = 256;
+const LOCAL_STEP = 32;
+const LOCAL_RADIUS = SPACING * 3;
+const LOCAL_NODE_LIMIT = (LOCAL_RADIUS * 2 / LOCAL_STEP + 1) ** 2;
+const LOCAL_ANCHOR_LIMIT = 8;
 const routes = new Map<string, HomeworldWalkRouteV77>();
 const nodes = new Map<string, boolean>();
 const edges = new Map<string, boolean>();
@@ -73,7 +77,8 @@ function anchors(level: HomeworldLevelV77, point: HomeworldVec2) {
 
 /** Every coarse edge is checked by the same full-body, four-unit sampler as
  * V77. Wider grid spacing changes search effort, never the permitted surface. */
-function coarseRoute(level: HomeworldLevelV77, from: HomeworldVec2, to: HomeworldVec2): HomeworldWalkRouteV77 | null {
+function coarseRoute(level: HomeworldLevelV77, from: HomeworldVec2, to: HomeworldVec2,
+  failure?: { component?: ReadonlySet<number> }): HomeworldWalkRouteV77 | null {
   const starts = anchors(level, from), goals = anchors(level, to);
   if (!starts.length || !goals.length) return null;
   const goalKeys = new Set(goals.map(goal => goal.key));
@@ -102,6 +107,72 @@ function coarseRoute(level: HomeworldLevelV77, from: HomeworldVec2, to: Homeworl
       scores.set(key, score); previous.set(key, current);
       push(heap, { key, cost: score + heuristic(position(key)) });
     }
+  }
+  if (failure) failure.component = closed;
+  return null;
+}
+
+/** A narrow connector exit can strand the coarse anchors in one component.
+ * Try real fine-grid prefixes only inside the existing 576-unit anchor square:
+ * at most 361 nodes and eight new anchors outside that exhausted component.
+ * These temporary caches never survive a request or a geometry revision. */
+function reconnectCoarseRoute(level: HomeworldLevelV77, from: HomeworldVec2, to: HomeworldVec2,
+  component: ReadonlySet<number>): HomeworldWalkRouteV77 | null {
+  const columns = Math.ceil(HOMEWORLD_WORLD_V77.width / LOCAL_STEP), rows = Math.ceil(HOMEWORLD_WORLD_V77.height / LOCAL_STEP);
+  const center = { x: Math.round(from.x / SPACING) * SPACING, y: Math.round(from.y / SPACING) * SPACING };
+  const pointAt = (key: number): HomeworldVec2 => ({ x: key % columns * LOCAL_STEP, y: Math.floor(key / columns) * LOCAL_STEP });
+  const localNodes = new Map<number, boolean>(), localEdges = new Map<string, boolean>();
+  const walkable = (key: number) => {
+    const cached = localNodes.get(key);
+    if (cached !== undefined) return cached;
+    const point = pointAt(key);
+    const clear = Math.abs(point.x - center.x) <= LOCAL_RADIUS && Math.abs(point.y - center.y) <= LOCAL_RADIUS
+      && homeworldCivicWalkableV80(level, point) && homeworldCivicWalkableV80(level, point, { halfWidth: 36, halfDepth: 26 });
+    localNodes.set(key, clear); return clear;
+  };
+  const goals = new Set<number>();
+  for (let dy = -3; dy <= 3; dy++) for (let dx = -3; dx <= 3; dx++) {
+    const x = center.x / SPACING + dx, y = center.y / SPACING + dy;
+    if (x < 0 || x >= COLUMNS || y < 0 || y >= ROWS || component.has(y * COLUMNS + x)) continue;
+    const key = y * SPACING / LOCAL_STEP * columns + x * SPACING / LOCAL_STEP;
+    if (walkable(key)) goals.add(key);
+  }
+  if (!goals.size) return null;
+  const scores = new Map<number, number>(), previous = new Map<number, number>(), closed = new Set<number>(), heap: Candidate[] = [];
+  for (let dy = -3; dy <= 3; dy++) for (let dx = -3; dx <= 3; dx++) {
+    const x = Math.round(from.x / LOCAL_STEP) + dx, y = Math.round(from.y / LOCAL_STEP) + dy, key = y * columns + x;
+    if (x < 0 || x >= columns || y < 0 || y >= rows || !walkable(key) || !homeworldRouteSegmentV77(level, from, pointAt(key))) continue;
+    const cost = distance(from, pointAt(key));
+    scores.set(key, cost); push(heap, { key, cost });
+  }
+  const prefixes: HomeworldVec2[][] = [];
+  while (heap.length && closed.size < LOCAL_NODE_LIMIT && prefixes.length < LOCAL_ANCHOR_LIMIT && prefixes.length < goals.size) {
+    const current = pop(heap).key;
+    if (closed.has(current)) continue;
+    closed.add(current);
+    if (goals.has(current)) {
+      const points = [pointAt(current)]; let cursor = current;
+      while (previous.has(cursor)) { cursor = previous.get(cursor)!; points.push(pointAt(cursor)); }
+      points.push({ ...from }); prefixes.push(points.reverse());
+    }
+    const x = current % columns, y = Math.floor(current / columns);
+    for (const [dx, dy] of [[-1, 0], [1, 0], [0, -1], [0, 1], [-1, -1], [1, -1], [-1, 1], [1, 1]]) {
+      const column = x + dx, row = y + dy, key = row * columns + column;
+      if (column < 0 || column >= columns || row < 0 || row >= rows || closed.has(key) || !walkable(key)) continue;
+      const cost = scores.get(current)! + Math.hypot(dx, dy) * LOCAL_STEP;
+      if (cost >= (scores.get(key) ?? Infinity)) continue;
+      const edge = [Math.min(current, key), Math.max(current, key)].join(':');
+      let clear = localEdges.get(edge);
+      if (clear === undefined) { clear = homeworldRouteSegmentV77(level, pointAt(current), pointAt(key)); localEdges.set(edge, clear); }
+      if (!clear) continue;
+      scores.set(key, cost); previous.set(key, current); push(heap, { key, cost });
+    }
+  }
+  for (const prefix of prefixes) {
+    const continuation = coarseRoute(level, prefix.at(-1)!, to);
+    if (!continuation) continue;
+    const points = [...prefix.slice(0, -1), ...continuation.points];
+    return { levelId: level, status: 'reachable', points, distance: routeLength(points) };
   }
   return null;
 }
@@ -139,9 +210,15 @@ export function homeworldWalkRouteV99(level: HomeworldLevelV77, from: HomeworldV
   const key = [level, from.x, from.y, to.x, to.y].join(':');
   const cached = routes.get(key);
   if (cached) return { ...cached, points: copied(cached.points) };
+  const failure: { component?: ReadonlySet<number> } = {};
   const route = homeworldRouteSegmentV77(level, from, to)
     ? { levelId: level, status: 'reachable' as const, points: copied([from, to]), distance: distance(from, to) }
-    : coarseRoute(level, from, to) ?? homeworldWalkRouteV77(level, from, to);
+    : coarseRoute(level, from, to, failure)
+      // Keep short fine escapes and missing-anchor doorways unchanged. This
+      // extra bounded pass only amortizes a long cross-city fallback; it does
+      // not promise a globally shortest route or replace the complete search.
+      ?? (failure.component && distance(from, to) > SPACING * 16 ? reconnectCoarseRoute(level, from, to, failure.component) : null)
+      ?? homeworldWalkRouteV77(level, from, to);
   const simplified = homeworldSimplifyRouteV99(route);
   if (routes.size >= CACHE_LIMIT) routes.delete(routes.keys().next().value!);
   routes.set(key, simplified);

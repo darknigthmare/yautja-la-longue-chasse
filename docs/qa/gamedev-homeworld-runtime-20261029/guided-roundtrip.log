@@ -1,0 +1,47 @@
+TAP version 13
+# Subtest: V113 connector obstruction comes from an actual 1,421-step carry and park, with no invented placement
+ok 1 - V113 connector obstruction comes from an actual 1,421-step carry and park, with no invented placement
+  ---
+  duration_ms: 12057.539521
+  type: 'test'
+  ...
+# Subtest: V113 a carried load preserves the direct Council/acropolis chain and never becomes a ground obstruction
+ok 2 - V113 a carried load preserves the direct Council/acropolis chain and never becomes a ground obstruction
+  ---
+  duration_ms: 544.231548
+  type: 'test'
+  ...
+# Subtest: V113 a blocked departure takes the lift, reaches the real audience, and returns through an unoccupied landing
+ok 3 - V113 a blocked departure takes the lift, reaches the real audience, and returns through an unoccupied landing
+  ---
+  duration_ms: 16430.512101
+  type: 'test'
+  ...
+# {"outward":{"planMs":1072.6817160000064,"ticks":854,"walked":4315.92830795082,"rideTicks":172},"returned":{"planMs":2814.938194999995,"ticks":1940,"walked":9609.76251764046,"rideTicks":172}}
+# Subtest: V113 a free departure cannot select the Council stair when its ground arrival is occupied
+ok 4 - V113 a free departure cannot select the Council stair when its ground arrival is occupied
+  ---
+  duration_ms: 182.848518
+  type: 'test'
+  ...
+# Subtest: V113 the guide reaches a nearby safe corner when every farther candidate cuts the turn
+ok 5 - V113 the guide reaches a nearby safe corner when every farther candidate cuts the turn
+  ---
+  duration_ms: 587.238767
+  type: 'test'
+  ...
+# Subtest: V113 the guide rejoins the nearby path after an earlier safe shortcut leaves its long lookahead blocked
+ok 6 - V113 the guide rejoins the nearby path after an earlier safe shortcut leaves its long lookahead blocked
+  ---
+  duration_ms: 13.058028
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 29901.37423

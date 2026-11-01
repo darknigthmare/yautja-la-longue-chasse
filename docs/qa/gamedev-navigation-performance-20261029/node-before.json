@@ -1,0 +1,386 @@
+{
+  "label": "baseline",
+  "node": "v24.22.1",
+  "platform": "linux",
+  "arch": "x64",
+  "cpuModel": "AMD EPYC 9V74 80-Core Processor",
+  "elapsedMs": 10678.656156,
+  "cpuMs": {
+    "user": 11524.635,
+    "system": 512.983
+  },
+  "memoryBefore": {
+    "rss": 337346560,
+    "heapTotal": 197459968,
+    "heapUsed": 74891200,
+    "external": 29854762,
+    "arrayBuffers": 9260311
+  },
+  "memoryAfter": {
+    "rss": 356876288,
+    "heapTotal": 205148160,
+    "heapUsed": 82430880,
+    "external": 29854802,
+    "arrayBuffers": 9260311
+  },
+  "hashes": {
+    "app/game/systems/homeworldWayfindingV111.ts": "a9894db25bb18208ef2a6b34e0118af5a2eec2570988b8b60da25a23f41e453b",
+    "app/game/systems/homeworldNavigationV109.ts": "8203bed6ba14ae3b15d6eb6b1834eb884ff4804438b079bc6eb7d90bb86863f9"
+  },
+  "request": {
+    "origin": {
+      "actor": {
+        "x": 534,
+        "y": 305.66666666666686,
+        "vx": 0,
+        "vy": -259.99999999999886,
+        "facing": 1,
+        "grounded": true
+      },
+      "levelId": "+2",
+      "interiorId": "throne-audience"
+    },
+    "destinationId": "cargo-steward-v108"
+  },
+  "plan": {
+    "status": "reachable",
+    "distance": 9763.732440208994,
+    "stages": [
+      {
+        "kind": "exit",
+        "levelId": "+2",
+        "interiorId": "throne-audience",
+        "points": [
+          {
+            "x": 534,
+            "y": 305.66666666666686,
+            "vx": 0,
+            "vy": -259.99999999999886,
+            "facing": 1,
+            "grounded": true
+          },
+          {
+            "x": 534,
+            "y": 641.6666666666669
+          }
+        ],
+        "distance": 336
+      },
+      {
+        "kind": "connector",
+        "levelId": "+2",
+        "interiorId": null,
+        "connectorId": "acropolis-stair",
+        "points": [
+          {
+            "x": 4528.758731814701,
+            "y": 1059.6217455981562
+          },
+          {
+            "x": 4800,
+            "y": 1248
+          },
+          {
+            "x": 4704,
+            "y": 1440
+          },
+          {
+            "x": 4880,
+            "y": 1610
+          }
+        ],
+        "distance": 789.5978535869111
+      },
+      {
+        "kind": "connector",
+        "levelId": "+1",
+        "interiorId": null,
+        "connectorId": "clan-lift",
+        "points": [
+          {
+            "x": 4880,
+            "y": 2110
+          },
+          {
+            "x": 4704,
+            "y": 2016
+          },
+          {
+            "x": 3936,
+            "y": 2016
+          },
+          {
+            "x": 3552,
+            "y": 2016
+          },
+          {
+            "x": 3250,
+            "y": 2350
+          }
+        ],
+        "distance": 1801.8182426669923
+      },
+      {
+        "kind": "interact",
+        "levelId": "0",
+        "interiorId": null,
+        "points": [
+          {
+            "x": 3250,
+            "y": 2350
+          },
+          {
+            "x": 3232,
+            "y": 2368
+          },
+          {
+            "x": 3232,
+            "y": 2496
+          },
+          {
+            "x": 3424,
+            "y": 2528
+          },
+          {
+            "x": 3392,
+            "y": 3200
+          },
+          {
+            "x": 3200,
+            "y": 3392
+          },
+          {
+            "x": 3200,
+            "y": 4160
+          },
+          {
+            "x": 3200,
+            "y": 4736
+          },
+          {
+            "x": 3424,
+            "y": 5120
+          },
+          {
+            "x": 3744,
+            "y": 5248
+          },
+          {
+            "x": 4480,
+            "y": 5280
+          },
+          {
+            "x": 5248,
+            "y": 5280
+          },
+          {
+            "x": 6016,
+            "y": 5280
+          },
+          {
+            "x": 6784,
+            "y": 5280
+          },
+          {
+            "x": 7040,
+            "y": 5280
+          },
+          {
+            "x": 7070,
+            "y": 5390
+          }
+        ],
+        "distance": 6836.316343955092
+      }
+    ]
+  },
+  "trace": [
+    {
+      "name": "homeworldWalkRouteV109",
+      "level": "+2",
+      "from": {
+        "x": 4528.758731814701,
+        "y": 1059.6217455981562
+      },
+      "to": {
+        "x": 4880,
+        "y": 1610
+      },
+      "ms": 74.88671299999987,
+      "status": "reachable",
+      "points": 4,
+      "distance": 789.5978535869111,
+      "startedMs": 30.723027999999886
+    },
+    {
+      "name": "homeworldWalkRouteV99",
+      "level": "+2",
+      "from": {
+        "x": 4528.758731814701,
+        "y": 1059.6217455981562
+      },
+      "to": {
+        "x": 4880,
+        "y": 1610
+      },
+      "ms": 74.7500970000001,
+      "status": "reachable",
+      "points": 4,
+      "distance": 789.5978535869111,
+      "startedMs": 30.840975999999955
+    },
+    {
+      "name": "homeworldWalkRouteV109",
+      "level": "+1",
+      "from": {
+        "x": 4880,
+        "y": 2110
+      },
+      "to": {
+        "x": 4500,
+        "y": 2720
+      },
+      "ms": 153.4604300000001,
+      "status": "reachable",
+      "points": 6,
+      "distance": 1429.8764847530763,
+      "startedMs": 105.90160100000003
+    },
+    {
+      "name": "homeworldWalkRouteV99",
+      "level": "+1",
+      "from": {
+        "x": 4880,
+        "y": 2110
+      },
+      "to": {
+        "x": 4500,
+        "y": 2720
+      },
+      "ms": 153.4421729999999,
+      "status": "reachable",
+      "points": 6,
+      "distance": 1429.8764847530763,
+      "startedMs": 105.9103439999999
+    },
+    {
+      "name": "homeworldWalkRouteV109",
+      "level": "+2",
+      "from": {
+        "x": 4528.758731814701,
+        "y": 1059.6217455981562
+      },
+      "to": {
+        "x": 4880,
+        "y": 1610
+      },
+      "ms": 0.04613999999992302,
+      "status": "reachable",
+      "points": 4,
+      "distance": 789.5978535869111,
+      "startedMs": 260.3866760000001
+    },
+    {
+      "name": "homeworldWalkRouteV99",
+      "level": "+2",
+      "from": {
+        "x": 4528.758731814701,
+        "y": 1059.6217455981562
+      },
+      "to": {
+        "x": 4880,
+        "y": 1610
+      },
+      "ms": 0.03512300000011237,
+      "status": "reachable",
+      "points": 4,
+      "distance": 789.5978535869111,
+      "startedMs": 260.39468799999986
+    },
+    {
+      "name": "homeworldWalkRouteV109",
+      "level": "+1",
+      "from": {
+        "x": 4880,
+        "y": 2110
+      },
+      "to": {
+        "x": 3250,
+        "y": 2350
+      },
+      "ms": 83.55144800000016,
+      "status": "reachable",
+      "points": 5,
+      "distance": 1801.8182426669923,
+      "startedMs": 260.950656
+    },
+    {
+      "name": "homeworldWalkRouteV99",
+      "level": "+1",
+      "from": {
+        "x": 4880,
+        "y": 2110
+      },
+      "to": {
+        "x": 3250,
+        "y": 2350
+      },
+      "ms": 83.53688599999987,
+      "status": "reachable",
+      "points": 5,
+      "distance": 1801.8182426669923,
+      "startedMs": 260.956635
+    },
+    {
+      "name": "homeworldWalkRouteV109",
+      "level": "0",
+      "from": {
+        "x": 3250,
+        "y": 2350
+      },
+      "to": {
+        "x": 7070,
+        "y": 5390
+      },
+      "ms": 10333.817133999999,
+      "status": "reachable",
+      "points": 16,
+      "distance": 6836.316343955092,
+      "startedMs": 344.58516899999995
+    },
+    {
+      "name": "homeworldWalkRouteV99",
+      "level": "0",
+      "from": {
+        "x": 3250,
+        "y": 2350
+      },
+      "to": {
+        "x": 7070,
+        "y": 5390
+      },
+      "ms": 10179.339726,
+      "status": "reachable",
+      "points": 16,
+      "distance": 6836.316343955092,
+      "startedMs": 344.67035799999985
+    },
+    {
+      "name": "homeworldWalkRouteV77",
+      "level": "0",
+      "from": {
+        "x": 3250,
+        "y": 2350
+      },
+      "to": {
+        "x": 7070,
+        "y": 5390
+      },
+      "ms": 9146.412087,
+      "status": "reachable",
+      "points": 207,
+      "distance": 6932.57006655141,
+      "startedMs": 1038.6946279999997
+    }
+  ]
+}
