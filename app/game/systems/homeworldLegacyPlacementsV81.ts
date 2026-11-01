@@ -8,7 +8,7 @@ export const HOMEWORLD_LEGACY_PROP_PLACEMENTS_V81:Readonly<Record<string,{x:numb
  'beacon-v64-dock-control':{x:7215,y:3395,reason:'V82 : balise de la traverse des équipages, après la face de chargement du stock scellé.'},
  'beacon-v64-market-armory':{x:1910,y:2900,reason:'V82 : repère à l’angle oriental de la halte, hors du coffre et de la présentation d’équipement.'},
  'beacon-v64-market-canopy':{x:2475,y:2825,reason:'V82 : lumière à la sortie de la ruelle marchande, hors de la face clients et du banc voisin.'},
- 'beacon-v64-training-hall':{x:2600,y:1940,reason:'V82 : repère de la voie latérale d’entraînement, pas devant le rack utilisé par le maître.'},
+ 'beacon-v64-training-hall':{x:2600,y:1960,reason:'V82 : repère de la voie latérale d’entraînement, pas devant le rack utilisé par le maître. V113 : descendue de 20u, son socle chevauchait le banc de la halle ; 12u de dégagement conservés.'},
  'beacon-v64-enforcer-bastion':{x:5030,y:2105,reason:'V82 : lumière du bord oriental de la galerie, loin du fret et de la patrouille du bastion.'},
  'beacon-v64-memory-vault':{x:1515,y:1015,reason:'V82 : lumière latérale du registre ; la poche frontale du banc reste libre.'},
  'beacon-v64-pit-gate':{x:1990,y:1180,reason:'V82 : balise dans le raccord occidental du cercle, hors des deux approches des assises.'},
@@ -18,7 +18,9 @@ export const HOMEWORLD_LEGACY_PROP_PLACEMENTS_V81:Readonly<Record<string,{x:numb
  'bench-v64-trophy-mausoleum':{x:530,y:2260,reason:'V82 : halte tournée vers la promenade côtière, après le parvis cérémoniel et son seuil.'},
  'garden-v64-clan-lodge':{x:3770,y:2050,reason:'V82 : bac rocheux au revers oriental du quartier, pas devant le banc de délégation.'},
  'life-v68-26-0':{x:3590,y:3500,reason:'V82 : végétation minérale à la rive occidentale des galeries, hors de la nouvelle maison artisan.'},
- 'life-v68-33-1':{x:1490,y:1350,reason:'V82 : petite halte du scribe entre les deux îlots, hors de la manutention du coffre domestique.'},
+ 'life-v68-33-1':{x:1490,y:1330,reason:'V82 : petite halte du scribe entre les deux îlots, hors de la manutention du coffre domestique. V113 : remontée de 20u, son socle recouvrait celui de life-v68-42-0 sur 2 000u².'},
+ 'life-v68-3-0':{x:2585,y:2903.5,reason:'V113 : atelier sorti de la fondation de residence-market-2 (3 872u² encastrés), 70u au nord sur le sol public, hors des trajets des artisanes.'},
+ 'garden-v64-rite-sanctum':{x:4065,y:834,reason:'V113 : bac sorti de la fondation du sanctuaire des rites (2 848u² encastrés), 57u devant le parvis ; le tour complet des caisses de la Chaîne des orages reste praticable.'},
 };
 
 export const HOMEWORLD_LEGACY_EXTERIOR_PLACEMENTS_V82:Readonly<Record<string,{x:number;y:number;reason:string}>>={

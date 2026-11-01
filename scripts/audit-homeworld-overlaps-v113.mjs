@@ -17,6 +17,12 @@ import {fileURLToPath, pathToFileURL} from 'node:url';
 import {homeworldSceneSsrV78} from '../tests/helpers/homeworld-scene-ssr-v78.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+/** The motor's own V77 ground-prop box (homeworldPreservedCollisionV77): a
+ * sprite prop rises 2*depth above its anchor, a sprite-less one is centred. */
+export const legacyPropBoxV113 = prop => {
+  const w = prop.footprint?.halfWidth ?? Math.max(18, prop.width * .22), d = prop.footprint?.halfDepth ?? Math.max(10, Math.min(24, prop.height * .14));
+  return {left: prop.x - w, right: prop.x + w, top: prop.y - (prop.artId ? 2 : 1) * d, bottom: prop.y + (prop.artId ? 0 : d)};
+};
 const asPolygon = shape => Array.isArray(shape) ? shape : shape?.polygon ?? (shape && Number.isFinite(shape.left)
   ? [{x: shape.left, y: shape.top}, {x: shape.right, y: shape.top}, {x: shape.right, y: shape.bottom}, {x: shape.left, y: shape.bottom}] : null);
 
@@ -36,7 +42,7 @@ export function collectHomeworldSolidsV113(root = ROOT) {
   for (const e of world.HOMEWORLD_EXTERIOR_V77.filter(item => item.solid)) add('exterior-v76', e, exterior.homeworldExteriorPolygonV76(e));
   for (const f of world.HOMEWORLD_FRONTAGE_V77) add('frontage-v75', f, furniture.homeworldFurnitureFootprintV72(f));
   for (const f of world.HOMEWORLD_CONNECTION_FURNITURE_V77) add('connection-v72', f, furniture.homeworldFurnitureFootprintV72(f));
-  for (const p of world.HOMEWORLD_PROPS_V77.filter(p => p.footprint)) add('prop-v77', p, {left: p.x - p.footprint.halfWidth, right: p.x + p.footprint.halfWidth, top: p.y - p.footprint.halfDepth, bottom: p.y + p.footprint.halfDepth});
+  for (const p of world.HOMEWORLD_PROPS_V77.filter(p => p.plane === 'ground')) add('prop-v77', p, legacyPropBoxV113(p));
   for (const p of civic.HOMEWORLD_CIVIC_PROPS_V80) add('civic-v80', p, civic.homeworldCivicPolygonV80(p));
   for (const p of street.HOMEWORLD_URBAN_PROPS_V78) add('court-v78', p, court.homeworldCourtPolygonV80(p));
   for (const p of street.HOMEWORLD_CITY_GENERATED_PROPS_V78) add('generated-v78', p, native.homeworldCityNativePolygonV78(p));
