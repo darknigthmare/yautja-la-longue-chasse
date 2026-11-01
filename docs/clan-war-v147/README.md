@@ -40,3 +40,19 @@ Le classeur compagnon V147 conserve les **26 feuilles V146** (qui elles-mêmes h
 Les modèles du Conseil, les coûts AP/RAV, les tactiques et les routes sont des créations du jeu. Les apparences exactes des Yautja, armures/gauntlets, armes, vaisseaux, biomes, espèces et lieux connus demandent des **références média/scène et une vérification visuelle 1:1 distincte** avant de passer au statut « validé ». Ne jamais placer une ville terrestre sur une planète extraterrestre sans source attestée.
 
 **À venir** : intégration contrôlée des PR #67/#69/#70/#71/#72, compatibilité des verrous multi-onglets, QA navigateur et manette, autorité réseau et liaison géographique/personnelle V6→V85. La PR V147 reste en brouillon, avec ses dépendances.
+
+## Classement Excel V147 réellement livré
+
+Le classeur `docs/clan-war-v147/Yautja_Guerres_Clans_Source_Conseil_V147_2026-11-01.xlsx` est un **vrai XLSX binaire** de **33 onglets**. Il conserve **les 26 onglets V146** et ajoute sept feuilles :
+
+- `26_CONSEIL_V147` : 20 exigences pour les quatre modes, avec statut.
+- `27_SOURCE_W3_V147` : 16 garde-fous issus du contrôle des sources W3 (#68), dont 14 validés en CI ciblée et deux toujours à développer (serveur/fidélité artistique).
+- `28_RTS_W3_24_V147` : 24 scénarios source, essais de victoires **isolés** ; ne pas afficher « partie complète ».
+- `29_PR_V147` : 11 PR ouvertes/parallèles à réconcilier. L'algorithme #68 est adapté, pas la totalité des branches #61/#67–#72.
+- `30_QA_V147` : 24 scénarios QA sur provenance, refus des falsifications, géographie et liens V85 ; QA navigateur/manette/serveur non validées.
+- `31_FIDELITE_1TO1` : 24 éléments visuels/géographiques proposés par films, jeu, comics ou création originale, **tous à documenter et vérifier**. Pas de reproduction certifiée 1:1.
+- `32_PILOTAGE_V147` : bilan avec `COUNTIF`/`COUNTIFS`/`COUNTA` sur les véritables statuts.
+
+**CI source :** [GitHub Actions 41318859615](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41318859615) valide **207/207 tests du code, TypeScript et ESLint**. La nouvelle CI `tests/clan-war-production-v147.test.mjs` ouvre le véritable binaire de cette PR et vérifie les 33 feuilles, les IDs et les formules. Aucune ancienne feuille n'est écrasée.
+
+**Attention aux branches concurrentes et aux versions** : la PR #42 mentionne sa propre V147/V148 gauntlet. La V147 ici est uniquement **Guerre des clans / Conseil / provenance**, basée sur PR #60 ; ne pas confondre ni fusionner les PR automatiquement.
