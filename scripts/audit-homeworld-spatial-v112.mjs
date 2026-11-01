@@ -46,6 +46,7 @@ export function auditHomeworldSpatialV112(root=process.cwd()) {
   load('homeworldPublicPlacesMountV112');
   const support=load('homeworldFoundationSupportsV112');
   const joins=load('homeworldGroundJointsV112');
+  const activity=load('homeworldActivityAccessV112');
   const buildings=[...world.HOMEWORLD_BUILDINGS_V77,...facades.HOMEWORLD_URBAN_FACADES_V78];
   const grounds=[...world.HOMEWORLD_GROUND_V77,...world.HOMEWORLD_CONNECTOR_PADS_V82,...urban.HOMEWORLD_URBAN_GROUND_V78];
   const prior=grounds.filter(ground=>!ground.id.startsWith('foundation-v112:'));
@@ -91,6 +92,23 @@ export function auditHomeworldSpatialV112(root=process.cwd()) {
   const localBefore=scanHomeworldGroundJointsV112(beforeJoints,city.pointInHomeworldPolygon,joins.HOMEWORLD_GROUND_JOINT_SCAN_V112);
   const localAfter=scanHomeworldGroundJointsV112(grounds,city.pointInHomeworldPolygon,joins.HOMEWORLD_GROUND_JOINT_SCAN_V112);
   const area=polygon=>Math.abs(polygon.reduce((sum,p,i)=>{const b=polygon[(i+1)%polygon.length];return sum+p.x*b.y-b.x*p.y;},0))/2;
+  const profiles=[{halfWidth:24,halfDepth:14},activity.HOMEWORLD_ACTIVITY_ACCESS_BODY_V112];
+  const activityPoints=activity.HOMEWORLD_ACTIVITY_FIXED_ACCESS_V112.map(row=>({...row,
+    profiles:profiles.map(body=>({body,newCollision:places.homeworldPublicPlaceCollisionV112(row.levelId,row.point,body)}))}));
+  const activitySegments=activity.HOMEWORLD_ACTIVITY_FIXED_SEGMENTS_V112.map(row=>{
+    const distance=Math.hypot(row.to.x-row.from.x,row.to.y-row.from.y),samples=Math.max(1,Math.ceil(distance)),hits=[];
+    const clearance={halfWidth:Math.max(36,row.body.halfWidth),halfDepth:Math.max(26,row.body.halfDepth)};
+    for(let index=0;index<=samples;index++){
+      const ratio=index/samples,point={x:row.from.x+(row.to.x-row.from.x)*ratio,y:row.from.y+(row.to.y-row.from.y)*ratio};
+      for(const body of [row.body,clearance]){
+        const collision=places.homeworldPublicPlaceCollisionV112(row.levelId,point,body);
+        if(collision)hits.push({index,point,body,collision});
+      }
+    }
+    return{...row,samples:samples+1,clearance,newHits:hits.length,firstHit:hits[0]??null};
+  });
+  const activityPointConflicts=activityPoints.filter(row=>row.profiles.some(profile=>profile.newCollision));
+  const activitySegmentConflicts=activitySegments.filter(row=>row.newHits);
   return {
     schemaVersion:1,release:'V112',method:'Actual retained facade contacts sampled every four world units; before excludes only foundation-v112 polygons. Geometry/model evidence, not pixel or browser QA.',
     buildings:buildings.length,interactiveBuildings:world.HOMEWORLD_BUILDINGS_V77.length,closedFacades:facades.HOMEWORLD_URBAN_FACADES_V78.length,
@@ -104,7 +122,11 @@ export function auditHomeworldSpatialV112(root=process.cwd()) {
     furniture:{candidates:places.HOMEWORLD_PUBLIC_PLACE_CANDIDATES_V112.length,
       admitted:places.HOMEWORLD_PUBLIC_PLACES_V112.map(item=>({id:item.id,artId:item.artId,levelId:item.levelId,x:item.x,y:item.y})),
       refused:places.HOMEWORLD_PUBLIC_PLACE_REFUSALS_V112,
-      newNativeImages:0,services:0},
+      newNativeImages:0,services:0,revisions:places.HOMEWORLD_PUBLIC_PLACE_REVISIONS_V112},
+    activityAccess:{method:'Real V104–V111 definitions, retained lectern, fixed V110/Atlas endpoints and30 functional links. Only new V112 furniture is tested as a regression; existing solid object anchors are not falsely promised as player stands. Dynamic interrupted positions remain handled by explicit recovery.',
+      records:activityPoints.length,uniquePositions:new Set(activityPoints.map(row=>[row.levelId,row.point.x,row.point.y].join(':'))).size,
+      protectedReserves:activity.HOMEWORLD_ACTIVITY_ACCESS_RESERVES_V112.length,
+      profiles,points:activityPoints,segments:activitySegments,pointConflicts:activityPointConflicts,segmentConflicts:activitySegmentConflicts},
     naturalPlacementFollowup:{status:'VALIDE_CIBLE_MODELE',method:'Conservative authored V71 source ground-support rectangle intersects current public paving. Refused instances remain unchanged in the historical registry, not automatically relocated or shrunk. Native civic planters belong to separate solid providers.',
       historicalInstances:natural.HOMEWORLD_NATURAL_MODULES_V80.length,intersectionsBefore:naturalPublicOverlap.length,
       admittedInstances:activeNatural.HOMEWORLD_NATURAL_MODULES_V112.length,refusedInstances:activeNatural.HOMEWORLD_NATURAL_PLACEMENT_REFUSALS_V112.length,
@@ -123,5 +145,5 @@ if (process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.u
     fs.writeFileSync(target,JSON.stringify(result,null,2)+'\n');
   }
   console.log(JSON.stringify(result,null,2));
-  if (result.unsupportedAfter.length||result.foundationOverlaps.length||result.addedPlinthOverlapsWithOtherBuildings.length||result.naturalPlacementFollowup.intersectionsAfter||result.groundJoints.after.enclosed.length||result.groundJoints.before.exteriorSamples!==result.groundJoints.after.exteriorSamples) process.exitCode=1;
+  if (result.unsupportedAfter.length||result.foundationOverlaps.length||result.addedPlinthOverlapsWithOtherBuildings.length||result.naturalPlacementFollowup.intersectionsAfter||result.groundJoints.after.enclosed.length||result.groundJoints.before.exteriorSamples!==result.groundJoints.after.exteriorSamples||result.activityAccess.pointConflicts.length||result.activityAccess.segmentConflicts.length) process.exitCode=1;
 }

@@ -211,8 +211,9 @@ jobs:
   application:
     name: Application compile, types, runtime lint and browser integration
     runs-on: ubuntu-24.04
-    # V106 used about 25 minutes; keep room for the additional V107 checks.
-    timeout-minutes: 60
+    # Keep every historical assertion and the V112 browser checks on the
+    # hosted runner; the preserved-source suites exceed one hour together.
+    timeout-minutes: 120
     env:
       NEXT_TELEMETRY_DISABLED: '1'
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
