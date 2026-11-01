@@ -47,11 +47,14 @@ function jumpRightTo(state, landingX, landingY) {
   assert.fail(`no physical landing at ${landingX}/${landingY}; got ${state.player.x}/${state.player.y}`);
 }
 function reachLookout() {
-  let state = walkTo(quietExpedition(), 4620);
+  let state = walkTo(quietExpedition(), 4000);
   state = reserve.stepGameReserveV66(state, { jump: true });
   state = advance(state, 60);
-  assert.equal(state.player.y, 360, "the first new branch is reached from the ground");
-  state = jumpRightTo(walkTo(state, 4830), 4920, 300);
+  assert.equal(state.player.y, 351, "the camp branch is reached from the ground");
+  // The camp ledges stand above the shuttle hull: they are climbed from the camp branch, never from inside the hull.
+  state = jumpRightTo(walkTo(state, 4140), 4290, 280);
+  state = jumpRightTo(walkTo(state, 4520), 4590, 262);
+  state = jumpRightTo(walkTo(state, 4810), 4920, 300);
   state = jumpRightTo(walkTo(state, 5190), 5280, 345);
   state = jumpRightTo(walkTo(state, 5550), 5640, 280);
   state = walkTo(state, 5840);

@@ -15,7 +15,7 @@ export const GAME_RESERVE_V66_PLATFORMS = [
   { x: 350, y: 365, w: 220 }, { x: 600, y: 292, w: 350 }, { x: 1030, y: 338, w: 300 },
   { x: 1430, y: 365, w: 200 }, { x: 1770, y: 355, w: 280 }, { x: 2120, y: 280, w: 350 },
   { x: 2630, y: 344, w: 330 }, { x: 3140, y: 362, w: 260 }, { x: 3490, y: 285, w: 300 },
-  { x: 3860, y: 351, w: 290 }, { x: 4290, y: 365, w: 260 },
+  { x: 3860, y: 351, w: 290 }, { x: 4290, y: 280, w: 240 },
 ] as const;
 /** Dense vegetation breaks sight and fire. Routes remain walkable underneath/behind it. */
 export const GAME_RESERVE_V66_COVER = [
