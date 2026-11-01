@@ -99,7 +99,7 @@ test("Council V146: completed W3 RTS receipt carries actual source-map, unit and
  assert.equal(d.planetId,done.map.planetId);
  assert.equal(d.sourceType,"W133-source-study");
  assert.equal(d.remainingRav,done.ravRemaining);
- assert.deepEqual(d.sourceIds,done.report.sourceCells);
+ assert.deepEqual(d.sourceIds,[...new Set(done.report.sourceCells)]);
  assert.deepEqual(d.completedTaskIds,done.report.completedTaskIds);
  assert.deepEqual(d.teamIds,done.squads.map(s=>s.id));
  assert.deepEqual(d.casualtyIds,done.report.downSquadIds);
