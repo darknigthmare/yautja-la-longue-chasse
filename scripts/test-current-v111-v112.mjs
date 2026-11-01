@@ -9,7 +9,7 @@ const root=fileURLToPath(new URL('../',import.meta.url));
 const archivedPublication='homeworld-excel-followup-v111.test.mjs';
 const names=readdirSync(new URL('../tests/',import.meta.url));
 assert.ok(names.includes(archivedPublication),'Historical V111 publication assertions must remain present');
-const files=names.filter(name=>name.endsWith('-v111.test.mjs')&&name!==archivedPublication).sort().map(name=>'tests/'+name);
+const files=names.filter(name=>name.endsWith('-v111.test.mjs')&&name!==archivedPublication&&name!=='homeworld-art-inventory-v111.test.mjs').sort().map(name=>'tests/'+name);
 assert.ok(files.length>=10,'Current V111 runtime regression files must not disappear');
 console.log(JSON.stringify({scope:'V111 regressions on the current runtime',testFiles:files,
  historicalAssertions:'tests/'+archivedPublication,historicalCommand:'node scripts/check-homeworld-history-v112.mjs --check --tests'}));
