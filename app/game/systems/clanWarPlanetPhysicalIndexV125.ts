@@ -32,7 +32,6 @@ export function analyzeWarPlanetPhysicalIndexV125(planet: WarPlanetV96): WarPlan
   if (!procedural || procedural.recipe.version !== 115 || !("physical" in procedural)) return null;
   const size = procedural.recipe.planetSize;
   const radiusKm = PLANET_RADII_KM_V115[size];
-  const regionOf = new Map(planet.territories.map(t => [t.id, t.regionId] as const));
   const territories = planet.territories.map(t => ({
     id: t.id, regionId: t.regionId, landmassId: t.landmassId ?? null,
     areaKm2: km2(t.points, radiusKm),

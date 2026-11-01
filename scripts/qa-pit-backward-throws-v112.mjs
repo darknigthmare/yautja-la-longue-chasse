@@ -9,6 +9,7 @@ import {build} from 'esbuild';
 import {chromium} from 'playwright-core';
 import sharp from 'sharp';
 import {snapshotRuntimeV112} from './snapshot-runtime-v112.mjs';
+import {observePitBackwardThrowLaunchV112, releasePitLaunchKeysV112} from './lib/pit-observed-launch-v112.mjs';
 import {firstTracksCompleted} from '../tests/helpers/solo-v67-campaign-route.mjs';
 import {choosePitFighter, choosePitStage, openPitSelectionOptions, closePitSelectionOptions} from './pit-selection-browser-helpers.mjs';
 
@@ -148,18 +149,23 @@ async function approach(slot = 0, distance = 58) {
   await page.clock.runFor(17);
 }
 async function launch(slot, input = 'button') {
-  if (input === 'button') {await page.locator(`[data-pit-backward-throw-button-v112="${slot}"]`).click(); await page.clock.runFor(17); return;}
-  const state = await read(), facing = state.facings[slot];
+  assert(['button', 'keyboard', 'pad'].includes(input));
+  const initial = await read(), facing = initial.facings[slot];
   const backKey = slot === 0 ? facing === 1 ? 'ArrowLeft' : 'ArrowRight' : facing === 1 ? 'Numpad4' : 'Numpad6';
+  const keys = [backKey, ...(slot === 0 ? ['KeyJ', 'KeyK'] : ['Numpad1', 'Numpad3'])];
   await page.locator('[data-pit-immersive]').focus();
-  if (input === 'pad') {
-    await page.evaluate(({slot,facing}) => {const pad=window.__pitBackwardThrowQaV112.pads[slot]; pad.axes[0]=-facing; for(const index of [2,3])pad.buttons[index]={pressed:true,value:1,touched:true};}, {slot,facing});
-    await page.clock.runFor(17);
-    await page.evaluate(slot => {const pad=window.__pitBackwardThrowQaV112.pads[slot];pad.axes[0]=0;for(const index of [2,3])pad.buttons[index]={pressed:false,value:0,touched:false};},slot);
-  } else {
-    const keys = [backKey,...(slot===0?['KeyJ','KeyK']:['Numpad1','Numpad3'])];
-    for(const key of keys)await page.keyboard.down(key); await page.clock.runFor(17); for(const key of keys)await page.keyboard.up(key);
-  }
+  return observePitBackwardThrowLaunchV112({slot, input, read, observations, advance: ms => page.clock.runFor(ms),
+    press: async () => {
+      if (input === 'button') {await page.locator(`[data-pit-backward-throw-button-v112="${slot}"]`).click(); return;}
+      if (input === 'pad') {
+        await page.evaluate(({slot, facing}) => {const pad = window.__pitBackwardThrowQaV112.pads[slot]; pad.axes[0] = -facing; for (const index of [2, 3]) pad.buttons[index] = {pressed: true, value: 1, touched: true};}, {slot, facing}); return;
+      }
+      for (const key of keys) await page.keyboard.down(key);
+    }, release: async () => {
+      if (input === 'button') return;
+      if (input === 'pad') {await page.evaluate(slot => {const pad = window.__pitBackwardThrowQaV112.pads[slot]; pad.axes[0] = 0; for (const index of [2, 3]) pad.buttons[index] = {pressed: false, value: 0, touched: false};}, slot); return;}
+      await releasePitLaunchKeysV112(keys, page.keyboard);
+    }});
 }
 async function observedOutOfRangeWhiff(slot, label, ids) {
   const spec = api.PIT_WORKBOOK_BACKWARD_THROW_V112, totalFrames = spec.startup + spec.active + spec.recovery;

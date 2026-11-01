@@ -5,8 +5,8 @@
     "bytes": 264999,
     "sha256": "8eee8a5f5a043f2a67477bc6bcff97fffb1ee1666864bd7aed60c7a6c21ca138"
   },
-  "files": 1601,
-  "bytes": 935726762,
+  "files": 1608,
+  "bytes": 935775688,
   "entries": [
     {
       "path": ".openai/hosting.json",
@@ -1140,23 +1140,33 @@
     },
     {
       "path": "app/game/PlanetGeneratorV103.tsx",
-      "bytes": 38940,
-      "sha256": "8633282e92fbe545b355364959497dfb06ce2eac36cd5a6c351a974066892f89"
+      "bytes": 39772,
+      "sha256": "409a99a6046ed1d08b95c0ab375bed5a0e24649f4b7eeb1496d8c688635d75d6"
     },
     {
       "path": "app/game/PlanetLayerExportV102.module.css",
-      "bytes": 1905,
-      "sha256": "c197a586f5103db2f12ae3ef4dff46d3cdeceeb0e9f17eae0232fa426e6388f9"
+      "bytes": 2358,
+      "sha256": "234c177f778c26d70a3fbf23b2e149dee1dde80dfb94b8451c18ca2c3cf9d7ac"
     },
     {
       "path": "app/game/PlanetLayerExportV102.tsx",
-      "bytes": 10784,
-      "sha256": "01bd0c32182aa61ffa2a691dcecfee0a2b0370e4b7ae91d3b698994d05654bca"
+      "bytes": 17219,
+      "sha256": "c7c4fbb2230e7be1ec3f93d026649b529636cec681f1c1aa3cf11726a1f678ff"
     },
     {
       "path": "app/game/PlanetMaterialCanvasV101.tsx",
       "bytes": 4031,
       "sha256": "5b77126bda4dc49d9c5b94c59e924bf05596f7b5b1db89e2198ff03b946b6f58"
+    },
+    {
+      "path": "app/game/PlanetShapePreviewV125.module.css",
+      "bytes": 809,
+      "sha256": "a2aede397901d2121f642a5bea880e0b474790924a1b5b5ff2d94190cdf70050"
+    },
+    {
+      "path": "app/game/PlanetShapePreviewV125.tsx",
+      "bytes": 2115,
+      "sha256": "59ceddf84fecdfb2c555d82800c98bdc6a01609567ce1f3ab361767b222161ba"
     },
     {
       "path": "app/game/RecentFaunaReferencesV85.tsx",
@@ -2515,8 +2525,13 @@
     },
     {
       "path": "app/game/planetMaterialRendererV101.ts",
-      "bytes": 28583,
-      "sha256": "ac388f2ca8f8166ea73dcd7204191546f02d3312b361b51fc9fd90d56de85d80"
+      "bytes": 29123,
+      "sha256": "6599af439d6eaf362143ed730ad2098109197b99329d5d16d2522d53e2487693"
+    },
+    {
+      "path": "app/game/planetModularExportV124.ts",
+      "bytes": 6872,
+      "sha256": "986143376430da45c1d2d633b0413232f214190f5835efc73e2199abd282b434"
     },
     {
       "path": "app/game/planetRegionalMaterialsV102.ts",
@@ -2839,6 +2854,11 @@
       "sha256": "bb62eb039f44acfbe0cf5a97fb2b8102d293c0ce14d63d797d5839607b86cfce"
     },
     {
+      "path": "app/game/systems/clanWarPlanetPhysicalIndexV125.ts",
+      "bytes": 4031,
+      "sha256": "f7db31dc98e45adc8ae776b62782d6b9f3aba64afc53616c3668f8dc362621c4"
+    },
+    {
       "path": "app/game/systems/clanWarPlanetStrategyV114.ts",
       "bytes": 8031,
       "sha256": "196fbcf521c08f8ee59a26ddef003cae0ca8a6560b7dd2b81fa9110846e06f76"
@@ -2872,6 +2892,11 @@
       "path": "app/game/systems/clanWarTextureLibraryV115.ts",
       "bytes": 8521,
       "sha256": "72c86a1d87fb417db563f420df888192edf85d1fbbee6a98da4277191a1e3e6e"
+    },
+    {
+      "path": "app/game/systems/clanWarTextureLibraryV125.ts",
+      "bytes": 10408,
+      "sha256": "c32166fba5647bbe20e5b38f1cb11a330ddcaf9e47689609829db60da31fa2d0"
     },
     {
       "path": "app/game/systems/clanWarV85.ts",
@@ -5355,8 +5380,8 @@
     },
     {
       "path": "docs/v112-production-proof-protocol.md",
-      "bytes": 4407,
-      "sha256": "4e3a4e7ca8b9aa73390cf925c73242c6e05c383ecaff24a590b9079d20ebe01b"
+      "bytes": 4900,
+      "sha256": "13f84e9280ba80b1f424d96256617cae97536971151cf3855a2fb01e2b9cd969"
     },
     {
       "path": "docs/v112-runtime-public-inputs.json",
@@ -7684,6 +7709,11 @@
       "sha256": "dd56a6b51bb183d77a5394ca36bcb071f4509a9c4aacf165f2668afea98084b9"
     },
     {
+      "path": "scripts/lib/pit-observed-launch-v112.mjs",
+      "bytes": 5185,
+      "sha256": "0f60e6845d1f899da6b7a5d5b439bc045018d9bfe9d4765069d0f60eb47f8f97"
+    },
+    {
       "path": "scripts/pit-selection-browser-helpers.mjs",
       "bytes": 4665,
       "sha256": "c09d2a4b15dd66f1fe42d5d0728f2c1cd9b12ff599c213d383fc3aa9cfb34430"
@@ -7735,8 +7765,8 @@
     },
     {
       "path": "scripts/qa-pit-backward-throws-v112.mjs",
-      "bytes": 35704,
-      "sha256": "9c4992f4536259fb7f9423f8fcda5ba5c078be05042f6aff19160e0cc896a70a"
+      "bytes": 36101,
+      "sha256": "5e0eb6ed98b82d029433ea759f846709ea4f39d6f29b4abb688e0b94f582728f"
     },
     {
       "path": "scripts/qa-pit-forward-throws-v109.mjs",
@@ -7780,8 +7810,8 @@
     },
     {
       "path": "scripts/snapshot-runtime-v112.mjs",
-      "bytes": 8117,
-      "sha256": "3c63f4348614cfb229dd2fa0dd5762473aff2b533099537f2620975c1d27ba73"
+      "bytes": 8175,
+      "sha256": "18c02deea0a849ca46be73699d789b754f5b08804e6a98744443ed7f49c56afa"
     },
     {
       "path": "scripts/vercel-native-origin-v89.mjs",
@@ -7982,6 +8012,11 @@
       "path": "tests/pit-backward-throw-art-v112.test.mjs",
       "bytes": 12252,
       "sha256": "19a20a49544b69a9dcce493a3fe22fbf924da3ba4e5d8fbd08e543314cfb2249"
+    },
+    {
+      "path": "tests/pit-browser-launch-observation-v112.test.mjs",
+      "bytes": 10298,
+      "sha256": "415e5ab302fd6c436900d9e14b77d0a0cacba9c4faa23ef8407b3937f1c1d2b4"
     },
     {
       "path": "tests/pit-browser-whiff-observation-v112.test.mjs",

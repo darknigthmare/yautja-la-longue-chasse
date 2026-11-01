@@ -102,6 +102,7 @@ export async function snapshotRuntimeV112({root = V112_ROOT} = {}) {
     'tests/pit-browser-worker-observation-v112.test.mjs',
     'tests/pit-replay-export-v112.test.mjs',
     'tests/pit-browser-whiff-observation-v112.test.mjs',
+    'tests/pit-browser-launch-observation-v112.test.mjs',
     'tests/homeworld-ground-joints-v112.test.mjs',
     'tests/homeworld-activity-access-v112.test.mjs',
     'tests/homeworld-continuation-integration-v111.test.mjs',
