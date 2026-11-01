@@ -217,3 +217,35 @@ test("Council accepts generated retreats and defeats across all 24 missions with
   assert.deepEqual(audit.dossiers[0].casualtyIds,vulnerable.map(u=>u.id));
  }
 });
+
+test("Council V146: V6 squad identities, combat stats, PC budget and entire W3 map are source-checked",()=>{
+ const done=w3Receipt();
+ assert.equal(api.buildWarCouncilAuditV146(null,done,rules).total,1);
+ const changedSquads=(edit)=>({...done,squads:done.squads.map((s,i)=>i===0?edit(s):s)});
+ const altered=[
+  {...done,pcMaximum:done.pcMaximum+1},
+  {...done,pcCommitted:done.pcCommitted-1},
+  {...done,nextSquadNumber:1},
+  changedSquads(s=>({...s,memberCount:s.memberCount+1})),
+  changedSquads(s=>({...s,attack:s.attack+100})),
+  changedSquads(s=>({...s,defense:s.defense+100})),
+  changedSquads(s=>({...s,range:s.range+4})),
+  changedSquads(s=>({...s,maxHp:s.maxHp+20,hp:s.hp+20})),
+  changedSquads(s=>({...s,commandPoints:0})),
+  changedSquads(s=>({...s,upkeepRav:-1})),
+  changedSquads(s=>({...s,unitName:"unverified source model"})),
+  changedSquads(s=>({...s,id:"W133-FOREIGN-ALLY-1"})),
+  {...done,map:{...done.map,tiles:done.map.tiles.map((tile,i)=>
+   i===0?{...tile,solid:!tile.solid}:tile)}},
+  {...done,map:{...done.map,hazards:[...done.map.hazards,{x:0,y:0}]}},
+ ];
+ const repeated=changedSquads(s=>({...s,id:done.squads[1].id}));
+ altered.push({...repeated,report:{...done.report,squadIds:repeated.squads.map(s=>s.id)}});
+ for(const [index,candidate] of altered.entries()){
+  const checked=api.buildWarCouncilAuditV146(null,candidate,rules);
+  assert.equal(checked.total,0,"tampered V6 roster or terrain accepted at case "+index);
+  assert.ok(checked.issues.length>0,"missing audit rejection at case "+index);
+ }
+ assert.equal(api.buildWarCouncilAuditV146(null,done,rules).total,1,
+  "the original source-backed completed state must still work");
+});
