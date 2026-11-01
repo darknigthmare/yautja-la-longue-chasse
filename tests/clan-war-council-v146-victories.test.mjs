@@ -43,11 +43,11 @@ function moveNear(state,squadId,target,radius=1,limit=400){
  }
  assert.fail(s.mission.id+" move limit reached");
 }
-/** Isolates authored objective traversal, without claiming a full PvP victory.
- * Enemy AI, hazards and fog have their own live-state tests below. */
+/** Isolates enemy combat without rewriting the W3 terrain source.
+ * Hazard windows and source geometry remain physical; this is NOT a full PvP victory. */
 function isolated(id){
  const original=start(id);
- return {...original,enemies:[],map:{...original.map,hazards:[]}};
+ return {...original,enemies:[]};
 }
 function fullSourceMission(id){
  let state=isolated(id);
