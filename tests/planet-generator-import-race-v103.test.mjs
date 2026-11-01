@@ -33,6 +33,9 @@ export function useMemo(calculate, dependencies) {
   }
   return slots[index].value;
 }
+// Render-only descendants import this hook, but JSX below does not mount them.
+// Fail if the tested parent ever starts depending on effect execution.
+export function useEffect() { throw new Error('unsupported effect in controlled import harness'); }
 export function useSyncExternalStore(_subscribe, _snapshot, serverSnapshot) { cursor++; return serverSnapshot(); }`;
 const compiled = await build({
   stdin: {

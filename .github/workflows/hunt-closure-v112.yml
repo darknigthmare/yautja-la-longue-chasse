@@ -117,6 +117,7 @@ jobs:
         run: >-
           node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1
           tests/planet-version-consumers-v115.test.mjs tests/planet-source-preservation-v115.test.mjs
+          tests/planet-generator-import-race-v103.test.mjs
       - name: Independent workbook and generated resource checks
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: |
