@@ -7,6 +7,7 @@ export interface PlanetZipEntryV114 {
   bytes: Uint8Array;
 }
 const MAX_ENTRIES = 16;
+const MAX_ENTRIES_V151 = 24;
 const MAX_BYTES = 64 * 1024 * 1024;
 const MAX_NAME = 160;
 
@@ -19,8 +20,17 @@ export function planetZipCrc32V114(bytes: Uint8Array): number {
   return (crc ^ 0xffffffff) >>> 0;
 }
 
+/** V114 stays bounded to 16 entries, preserving its historical behavior and
+ * byte-identical output. V151 extends the same deterministic ZIP32 codec to
+ * 24 files, with the same 64 MiB total safety cap. */
 export function makePlanetStoredZipV114(entries: readonly PlanetZipEntryV114[]): Uint8Array {
-  if (!entries.length || entries.length > MAX_ENTRIES) throw new RangeError("Le nombre de fichiers du pack planétaire est invalide.");
+  return makePlanetStoredZipBounded(entries, MAX_ENTRIES);
+}
+export function makePlanetStoredZipV151(entries: readonly PlanetZipEntryV114[]): Uint8Array {
+  return makePlanetStoredZipBounded(entries, MAX_ENTRIES_V151);
+}
+function makePlanetStoredZipBounded(entries: readonly PlanetZipEntryV114[], maxEntries: number): Uint8Array {
+  if (!entries.length || entries.length > maxEntries) throw new RangeError("Le nombre de fichiers du pack planétaire est invalide.");
   const encoder = new TextEncoder();
   const names = new Set<string>();
   const files = entries.map(entry => {

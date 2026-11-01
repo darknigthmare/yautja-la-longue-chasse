@@ -73,3 +73,14 @@ test("ZIP32 permits a zero-length layer and nested safe filenames", () => {
   const files = unpackStoredZip(api.makePlanetStoredZipV114([{ name: "layers/empty.png", bytes: new Uint8Array(0) }]));
   assert.equal(files.get("layers/empty.png").length, 0);
 });
+
+
+test("V151 extends the same ZIP32 encoding up to 24 entries, without altering the stable V114 limit", () => {
+  const base=Array.from({length:24},(_,i)=>({name:"layer-"+i+".png",bytes:new Uint8Array([i,255-i])}));
+  assert.throws(()=>api.makePlanetStoredZipV114(base.slice(0,17)),RangeError);
+  const v151=api.makePlanetStoredZipV151(base);
+  assert.equal(unpackStoredZip(v151).size,24);
+  assert.throws(()=>api.makePlanetStoredZipV151([...base,{name:"too-many.png",bytes:new Uint8Array([9])}]),RangeError);
+  const smaller=base.slice(0,8);
+  assert.deepEqual(api.makePlanetStoredZipV151(smaller),api.makePlanetStoredZipV114(smaller));
+});

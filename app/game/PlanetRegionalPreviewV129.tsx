@@ -1,0 +1,159 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import type { WarPlanetV96 } from "./systems/clanWarPlanetsV96";
+import type { PlanetRegionalMaterialKitV128 } from "./systems/clanWarRegionalMaterialKitV128";
+import { drawPlanetMaterialV101, planetMaterialRendererStatusV101, PLANET_RENDERER_EVENT_V101 } from "./planetMaterialRendererV101";
+import { createPlanetCoastalRegionMaskV131 } from "./planetCoastalRegionsV131";
+import type { PlanetVisualQualityV134, PlanetVisualCoastV134 } from "./systems/clanWarPlanetVisualProfileV134";
+
+/** An explicitly activated visual comparison; does not mutate planet or war saves. */
+export default function PlanetRegionalPreviewV129({
+  planet, kit, quality, coastKm, onQualityChange, onCoastKmChange,
+}: {
+  planet: WarPlanetV96; kit: PlanetRegionalMaterialKitV128;
+  quality: PlanetVisualQualityV134; coastKm: PlanetVisualCoastV134;
+  onQualityChange: (value: PlanetVisualQualityV134) => void;
+  onCoastKmChange: (value: PlanetVisualCoastV134) => void;
+}) {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [projection, setProjection] = useState<"map" | "globe">("map");
+  const [status, setStatus] = useState<"loading" | "ready" | "unavailable">("loading");
+  const [revision, setRevision] = useState(0);
+  const [activeMode, setActiveMode] = useState("waiting");
+  const [lastRenderedKey, setLastRenderedKey] = useState("");
+  const [focusRegionId, setFocusRegionId] = useState(() => planet.regions[0]?.id ?? "");
+  const [diagnosticLayer, setDiagnosticLayer] = useState<"composite" | "albedo">("composite");
+  const focusedRegion = planet.regions.find(region => region.id === focusRegionId) ?? planet.regions[0];
+  // The old image is never reported as "ready" after any projection, material
+  // or camera change; the GPU draw must actually finish for that exact view.
+  const renderKey = JSON.stringify([
+    planet.id, projection, quality, coastKm, diagnosticLayer,
+    focusedRegion.id, focusedRegion.longitude, focusedRegion.latitude, revision,
+    ...kit.entries.map(entry => [entry.regionId,entry.landMaterialId,entry.surfaceMaterialId]),
+  ]);
+  const visibleStatus = lastRenderedKey === renderKey ? status : "loading";
+
+  useEffect(() => {
+    const rerender = () => setRevision(current => current + 1);
+    window.addEventListener(PLANET_RENDERER_EVENT_V101, rerender);
+    return () => window.removeEventListener(PLANET_RENDERER_EVENT_V101, rerender);
+  }, []);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const controller = new AbortController();
+    const frame = requestAnimationFrame(() => {
+      const map = projection === "map";
+      const width = map ? 768 : 384, height = map ? 384 : 384;
+      setStatus("loading");
+      canvas.getContext("2d")?.clearRect(0, 0, canvas.width, canvas.height);
+      void drawPlanetMaterialV101(canvas, {
+        planet, regionalKit: kit, regionalPbr: quality === "pbr", coastalInfluenceKm: coastKm,
+        projection, width, height, layer: diagnosticLayer,
+        longitude: focusedRegion.longitude, latitude: focusedRegion.latitude,
+        radius: map ? 164 : 170,
+        centerX: width / 2, centerY: height / 2, mapTop: 0, mapHeight: height,
+        textureSize: 512, signal: controller.signal,
+      }).then(ready => {
+        if (!controller.signal.aborted) {
+          setActiveMode(planetMaterialRendererStatusV101().renderMode);
+          setLastRenderedKey(renderKey);
+          setStatus(ready ? "ready" : "unavailable");
+        }
+      }).catch(() => {
+        if (!controller.signal.aborted) { setLastRenderedKey(renderKey); setStatus("unavailable"); }
+      });
+    });
+    return () => { controller.abort(); cancelAnimationFrame(frame); };
+  }, [planet, kit, projection, quality, coastKm, diagnosticLayer,
+    focusedRegion.longitude, focusedRegion.latitude, revision, renderKey]);
+
+  const exportCoastalMask = () => {
+    const canvas = createPlanetCoastalRegionMaskV131(planet, kit, 512, coastKm);
+    canvas.toBlob(blob => {
+      if (!blob) return;
+      const url = URL.createObjectURL(blob);
+      const anchor = document.createElement("a");
+      anchor.href = url; anchor.download = planet.id + "-coast-" + coastKm + "km-v131.png";
+      document.body.appendChild(anchor);
+      try { anchor.click(); }
+      finally { anchor.remove(); setTimeout(() => URL.revokeObjectURL(url), 30000); }
+    }, "image/png");
+  };
+
+  const exportPreview = () => {
+    const canvas = canvasRef.current;
+    if (!canvas || visibleStatus !== "ready") return;
+    canvas.toBlob(blob => {
+      if (!blob) { setStatus("unavailable"); return; }
+      const url = URL.createObjectURL(blob);
+      const anchor = document.createElement("a");
+      anchor.href = url;
+      anchor.download = planet.id + "-regional-study-v138-" + activeMode + "-" + projection + "-" + diagnosticLayer + ".png";
+      document.body.appendChild(anchor);
+      try { anchor.click(); }
+      finally { anchor.remove(); setTimeout(() => URL.revokeObjectURL(url), 30000); }
+    }, "image/png");
+  };
+
+  return <div data-testid="planet-regional-preview-v129" data-render-status={visibleStatus}
+    data-render-mode={visibleStatus === "ready" ? activeMode : "loading"} data-projection={projection}
+    data-view-layer={diagnosticLayer} data-focus-longitude={focusedRegion.longitude}
+    data-focus-latitude={focusedRegion.latitude}>
+    <p><strong>Rendu régional V131</strong> — sols par région, matériaux des milieux appliqués seulement aux côtes proches et aux bassins existants. Normales, rugosité, hauteur et émission sont composées dans le shader WebGL si le GPU dispose de dix unités de texture. Il s’agit d’un éclairage de matière (GGX simplifié), pas d’une simulation physique de l’eau ni de déplacements du relief.</p>
+    <label>Projection de comparaison
+      <select value={projection} onChange={event => setProjection(event.target.value as "map" | "globe")} data-testid="planet-regional-projection-v129">
+        <option value="map">Planisphère</option>
+        <option value="globe">Globe 3D</option>
+      </select>
+    </label>
+    <label>Comparer une même position géographique
+      <select value={focusRegionId} data-testid="planet-regional-focus-v138"
+        onChange={event => setFocusRegionId(event.target.value)}>
+        {planet.regions.map(region => <option key={region.id} value={region.id}>{region.name}</option>)}
+      </select>
+    </label>
+    <label>Calque à examiner
+      <select value={diagnosticLayer} data-testid="planet-regional-layer-v138"
+        onChange={event => setDiagnosticLayer(event.target.value as "composite" | "albedo")}>
+        <option value="composite">Rendu assemblé</option>
+        <option value="albedo">Couleur brute (sans météo et diffusion)</option>
+      </select>
+    </label>
+    <p>Position de contrôle : longitude {focusedRegion.longitude.toLocaleString("fr-FR")}°, latitude {focusedRegion.latitude.toLocaleString("fr-FR")}°. La carte et le globe consultent exactement la même région et le même matériau.</p>
+    <label>Qualité du matériau
+      <select value={quality} onChange={event => onQualityChange(event.target.value as PlanetVisualQualityV134)}
+        data-testid="planet-regional-quality-v131">
+        <option value="pbr">PBR régional (WebGL)</option>
+        <option value="albedo">Albédo V129 (comparaison)</option>
+      </select>
+    </label>
+    <label>Influence côtière réelle
+      <select value={coastKm} onChange={event => onCoastKmChange(Number(event.target.value) as PlanetVisualCoastV134)}
+        data-testid="planet-regional-coastal-v131">
+        <option value={300}>300 km</option>
+        <option value={900}>900 km</option>
+        <option value={1800}>1 800 km</option>
+      </select>
+    </label>
+    <canvas ref={canvasRef} width={projection === "map" ? 768 : 384} height={384}
+      data-testid="planet-regional-visual-v129" role="img"
+      aria-label={"Aperçu régional " + projection + " de " + planet.name}
+      style={{ display: "block", width: "100%", maxWidth: projection === "map" ? 768 : 384, height: "auto" }}/>
+    <button type="button" disabled={visibleStatus !== "ready"} onClick={exportPreview} data-testid="planet-regional-download-v129">Télécharger cet aperçu PNG</button>
+    <button type="button" onClick={exportCoastalMask} data-testid="planet-regional-coast-mask-v131">Télécharger le masque côtier V131</button>
+    <p>Masque indépendant : R = région ou milieu natif, B = coefficient de fondu, A = opaque. L’export ne modifie pas les territoires ni les sauvegardes.</p>
+    <p role="status">{visibleStatus === "ready" ? activeMode === "pbr-v131"
+      ? "Rendu PBR V131 prêt : sols et médias régionaux côtiers, sans écriture du monde."
+      : activeMode === "albedo-coastal-v135"
+        ? quality === "pbr"
+          ? "GPU à huit textures : sols et mers régionales en albédo V135, sans altérer la partie."
+          : "Comparaison albédo V135 : mêmes terres et matières côtières, sans PBR."
+        : quality === "pbr"
+          ? "GPU limité : albédo terrestre V129 en secours, sauvegarde intacte."
+          : "Comparaison albédo V129 prête, sans modification du code du monde." :
+      visibleStatus === "loading" ? "Rendu régional en préparation…" : "WebGL indisponible : les kits V128 restent exportables."}</p>
+  </div>;
+}
