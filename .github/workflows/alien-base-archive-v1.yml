@@ -6,6 +6,9 @@ on:
       - 'app/game/AlienBaseArchiveV1.tsx'
       - 'app/game/AlienBaseArchiveV1.module.css'
       - 'app/game/EnemyBestiaryV8.tsx'
+      - 'app/game/alienBaseYautjaBindingsV1.ts'
+      - 'app/game/CatalogueHunterBrowser.tsx'
+      - 'tests/alien-base-hunters-v1.test.mjs'
       - 'tests/alien-base-archive-v1.test.mjs'
       - '.github/workflows/alien-base-archive-v1.yml'
   push:
@@ -21,4 +24,4 @@ jobs:
         with:
           node-version: '22'
       - name: Validate distinct film identities and no gameplay admission
-        run: node --test tests/alien-base-archive-v1.test.mjs
+        run: node --experimental-strip-types --test tests/alien-base-archive-v1.test.mjs tests/alien-base-hunters-v1.test.mjs
