@@ -33,3 +33,12 @@ Le mode principal de **Yautja — La Longue Chasse** reste *Dynasty Warriors-lik
 **Liaison géographique V6→V85 attestée**, correspondance vérifiable des personnages, signature d'événements par un serveur autoritaire, conséquences militaires transactionnelles, vraie guerre multi-clans persistante, coop/PvP réseau, scène/sprites 1:1 des œuvres et QA Next.js/manette. **Pas de déploiement V152 confirmé.** Les rapports et tableaux de bord sont des outils de suivi, pas un certificat de jeu achevé.
 
 **Excel :** `docs/clan-war-v152/Yautja_ClanWar_V152_Provenance_QA.xlsx` complète sans effacer le classeur V151 de 5 feuilles. Il contient le registre des quatre modes, les garanties géographiques/identitaires, les tests et la feuille des chantiers 1:1, avec statuts calculés par formules.
+
+
+## Livrable Excel V152 non destructif
+
+Le classeur `docs/clan-war-v152/Yautja_ClanWar_V152_Provenance_QA.xlsx` est un **vrai fichier XLSX de dix feuilles** (ZIP vérifié), conservé en addendum. Il n'écrase pas `docs/Yautja_ClanWar_V151_Quatre_Modes_Verrou.xlsx` (cinq feuilles conservées dans le parent #77). Contenu : 40 exigences (10/mode), 32 QA (8/mode), 30 lignes de **non-correspondance territoriale W3-K / CON-T**, 24 études RTS W3, 16 contrôles de roster, 13 PR ouvertes, 22 références média/œuvre avec URLs, 24 chantiers restant et 12 garde-fous. Formules `COUNTIF`/`COUNTIFS`/`COUNTA`, sans erreur de référence détectée.
+
+Les sources **officielles** `https://predator.illfonic.com/the-predator/` et `https://thewaltdisneycompany.com/news/predator-badlands/`, ainsi qu'un portfolio d'équipe VFX de `The Predator`, sont placés dans le registre visuel. Elles établissent l'existence de sujets ou d'équipements, **pas la fidélité 1:1 des modèles du jeu**. Aucun asset n'est déclaré homologué par la simple présence de ces liens.
+
+La CI V152 inclut désormais `tests/clan-war-production-v152.test.mjs` qui ouvre le **vrai XLSX commité** et contrôle les dix feuilles, les 40 IDs de production, 32 QA, 24 scénarios W3, 22 références, formules et avertissements de non-conquête. Toutes les QA manuelles restent ouvertes.
