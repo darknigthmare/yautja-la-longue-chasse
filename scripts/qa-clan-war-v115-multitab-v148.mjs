@@ -40,7 +40,7 @@ async function selectTeamAndLaunch(page,mode){
   const targetId=await lab.getAttribute("data-legal-target");
   const teamId=await lab.getAttribute("data-legal-team");
   assert.ok(targetId&&teamId);
-  await op(page).getByRole("button",{name:mode==="outer"?/^Mandats délégués/:/^Infiltration et sabotage/}).click();
+  await op(page).getByRole("button",{name:mode==="outer"?/^Mandats délégués/:mode==="rts"?/^Bataille totale/:/^Infiltration et sabotage/}).click();
   await op(page).getByRole("combobox",{name:"Territoire de la Bible V6"}).selectOption(targetId);
   const members=op(page).locator('input[type="checkbox"]');
   for(let i=await members.count()-1;i>=1;i--){
@@ -188,6 +188,37 @@ try{
   await Promise.all([a.reload({waitUntil:"domcontentloaded"}),b.reload({waitUntil:"domcontentloaded"})]);
   await Promise.all([op(a).waitFor(),op(b).waitFor()]);
 
+  // V149: the RTS realtime clock uses the same exclusive origin-wide lock
+  // as assault and report settlement. Test the real V115 RTS timer with two
+  // browser tabs, preserving all scenario/map and campaign state.
+  await selectTeamAndLaunch(a,"rts");
+  await a.waitForFunction(key=>{const raw=localStorage.getItem(key);
+    if(!raw)return false;const state=JSON.parse(raw);
+    return state.active?.mode==="rts"&&state.active.rts?.realtime===true;
+  },key);
+  await b.evaluate(()=>{window.rtsTimerLockHeldV149=false;
+    void navigator.locks.request("yautja.clan-war.v115.operations.free.v1.write",()=>{
+      window.rtsTimerLockHeldV149=true;
+      return new Promise(resolve=>{window.releaseRtsTimerLockV149=resolve;});
+    });
+  });
+  await b.waitForFunction(()=>window.rtsTimerLockHeldV149===true);
+  const rtsFrozenTick=(await read(a)).active.tick;
+  await a.waitForTimeout(2250);
+  assert.equal((await read(a)).active.tick,rtsFrozenTick,
+    "RTS must not simulate while another tab owns the exclusive V115 lock");
+  await b.evaluate(()=>window.releaseRtsTimerLockV149());
+  await a.waitForFunction(({key,tick})=>{const raw=localStorage.getItem(key);
+    if(!raw)return false;const state=JSON.parse(raw);
+    return state.active?.mode==="rts"&&state.active.tick>tick;
+  },{key,tick:rtsFrozenTick},{timeout:6000});
+  assert.equal(await a.evaluate(k=>localStorage.getItem(k),sentinel),"hunter-campaign-safe");
+  pass("RTS realtime timer pauses under cross-tab Web Lock and resumes after release",
+    {mode:"rts",frozenTick:rtsFrozenTick,campaignUnchanged:true});
+  await a.evaluate(key=>localStorage.removeItem(key),key);
+  await Promise.all([a.reload({waitUntil:"domcontentloaded"}),b.reload({waitUntil:"domcontentloaded"})]);
+  await Promise.all([op(a).waitFor(),op(b).waitFor()]);
+
   // Real Outer Ops and real recruitment become due together. Move the clock
   // forward without altering either persisted record, and wait for both timers.
   await selectTeamAndLaunch(a,"outer");
@@ -271,7 +302,7 @@ try{
   assert.deepEqual(errors,[]);
   const report={schema:148,scope:"Two real V115 panels, Web Locks and shared localStorage: contended writes, unavailable lock and stale reset. Only cooperating tabs, not legacy writers, other devices, cloud or full GameClient.",
     checked:checks.length,preventedStaleReset:true,verifiedFocusRefresh:true,localOnly:true,
-    sourceModes:["outer","stealth"],campaignUnchanged:true,oneToOneValidated:0,
+    sourceModes:["outer","stealth","rts"],campaignUnchanged:true,oneToOneValidated:0,
     checks,errors,artApproved:false};
   await writeFile(resolve(out,"v148-two-tab-operations-proof.json"),JSON.stringify(report,null,2)+"\n");
   console.log(JSON.stringify({checked:report.checked,preventedStaleReset:report.preventedStaleReset,
