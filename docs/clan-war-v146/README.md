@@ -27,6 +27,16 @@ Les deux interfaces React possèdent un volet Conseil des clans ouvrable après 
 
 `tests/clan-war-council-v146.test.mjs` teste les quatre types de reçus V115, le résultat autonome RTS, les sources falsifiées, les doublons, les objectifs inventés, les cartes et RAV altérés et l'absence de mutation. La CI `.github/workflows/clan-war-v146.yml` reprend les **régressions de V115 à V145**, TypeScript et ESLint.
 
-Le classeur `docs/clan-war-v146/Yautja_Guerres_Clans_Avenants_V144_V146_2026-11-01.xlsx` conserve le suivi existant V144/V145 sans prétendre inclure les anciens **73 onglets V143**, qui restent dans [PR #53](https://github.com/darknigthmare/yautja-la-longue-chasse/pull/53). Les fiches des **1 200 variantes CW120** ne sont pas des missions finies.
+Le classeur `docs/clan-war-v146/Yautja_Guerres_Clans_Avenants_Production_V144_V146_2026-11-01.xlsx` conserve le suivi existant V144/V145 sans prétendre inclure les anciens **73 onglets V143**, qui restent dans [PR #53](https://github.com/darknigthmare/yautja-la-longue-chasse/pull/53). Les fiches des **1 200 variantes CW120** ne sont pas des missions finies.
 
 **À réaliser après V146 :** preuves physiques par tour et voie / sauvegarde de campagne V85 / tests navigateur, mobile et manette / multijoueur serveur / scènes et assets films/comics/PHG vérifiés 1:1 / contrôle complet de cohérence des planètes. La chasse principale reste de type Dynasty-Warriors-like, les quatre modes sont additionnels.
+
+## V146 — Traçabilité Excel et vérification ciblée
+
+**La CI du code sur le commit `a55484dc` a validé 181/181 tests Node, TypeScript et ESLint** ([GitHub Actions 41255158029](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41255158029)).
+
+Le fichier **binaire** dans `docs/clan-war-v146/` conserve les **16 onglets V144/V145** et ajoute huit onglets V146 (`ASSAUT_V146`, `OUTER_OPS_V146`, `INFILTRATION_V146`, `RTS_V146`, `QA_V146`, `INTERMODES_V146`, `CONTINUITE_V85`, `SUIVI_V146`) : **24 feuilles réelles**.
+
+Le V146 suit **48 exigences** réparties sur les quatre modes (**12 validées en CI ciblée, 12 prototypes partiels, 24 à développer**), **32 QA** et **12 interactions**. Un onglet de 16 prérequis V85 empêche tout récit trompeur de transfert de conquête. Les historiques V144/V145 sont maintenus physiquement ; les **73 feuilles V143 demeurent dans la PR #53** et ne sont pas reproduites dans cet avenant.
+
+La CI finale `tests/clan-war-production-v146.test.mjs` examine le fichier Excel exact commité : feuilles, clés uniques, source, statuts, formules et références GitHub. Un succès de tests ne vaut pas validation de gameplay sur navigateur/manette ni reproduction fidèle 1:1 des œuvres.
