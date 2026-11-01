@@ -264,12 +264,17 @@ import type { GlassDesertProof } from "./systems/glassDesert";
 import { advanceJusticeTime, applyJusticeAction, getJusticeStatus, getJusticeRouteControl, type JusticeProgress, type JusticeJurisdictionId } from "./systems/justice";
 
 import { normalizeHomeworldExpeditionProof, type HomeworldExpeditionProof } from "./systems/homeworldExpedition";
+import { useHunterGauntletV133 } from "./systems/useHunterGauntletV133";
+import { gauntletCampaignClaimV134,gauntletCampaignEquipV134 } from "./systems/gauntletCampaignV134";
+import { gauntletByIdV132, type GauntletThemeV132 } from "./systems/clanWarGauntletCatalogV132";
+import { captureHuntGauntletV142, resumeHuntGauntletV142 } from "./systems/huntGauntletIdentityV142";
 
 const HomeworldExpedition = React.lazy(() => import("./HomeworldExpedition"));
 const GlassDesertExpedition = React.lazy(() => import("./GlassDesertExpedition"));
 const JusticePanel = React.lazy(() => import("./JusticePanel"));
 const ClanChroniclePanel = React.lazy(() => import("./ClanChroniclePanel"));
 const ClanWarPanelV85 = React.lazy(() => import("./ClanWarPanelV85"));
+const ClanWarGauntletLockerV132 = React.lazy(() => import("./ClanWarGauntletLockerV132"));
 const RecentSpriteLibraryV85 = React.lazy(() => import("./RecentSpriteLibraryV85"));
 const Mausoleum = React.lazy(() => import("./Mausoleum"));
 const HomeworldHub = React.lazy(() => import("./HomeworldHub"));
@@ -393,6 +398,8 @@ interface ActiveHuntSession {
 interface HuntResumePayload {
   snapshot: JsonObject;
   retryCheckpoint: JsonObject | null;
+  /** Preserves the mission-start cosmetic; no extra reward or unlock. */
+  gauntletVariantId: string;
 }
 
 /** Main-save exploration never changes the hunt owner or consumes an attempt. */
@@ -425,11 +432,12 @@ function isJsonObject(value: unknown): value is JsonObject {
   return typeof value === "object" && value !== null && !Array.isArray(value);
 }
 
-function huntConfiguration(save: SaveGame, elapsed = 0): JsonObject {
+function huntConfiguration(save: SaveGame, gauntletVariantId: string, elapsed = 0): JsonObject {
   return {
     inventory: save.inventory as unknown as JsonObject,
     loadout: save.loadout as unknown as JsonObject,
     appearance: save.appearance as unknown as JsonObject,
+    gauntletVariantId: captureHuntGauntletV142(gauntletVariantId,save.profile.rankId,save.gauntletV134?.claimedStudies??[]),
     visualOptions: {
       screenShake: save.settings.screenShake,
       reducedGore: save.settings.reducedGore,
@@ -1042,6 +1050,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   // Runtime discoveries and terminal callbacks may occur before React commits.
   // Update this ref alongside every local save so their unions never use stale state.
   const saveRef = useRef(save);
+  const hunterGauntlet = useHunterGauntletV133(save.createdAt,save.profile.rankId,save.gauntletV134);
   const expeditionOwnerRef = useRef<string | null>(null);
   const [homeworldArrivalV67, setHomeworldArrivalV67] = useState<{ pointId: string; requestId: string } | null>(null);
   const [selectedMission, setSelectedMission] =
@@ -1511,6 +1520,13 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     void audio.unlock();
     audio.playSfx(sound);
   }, []);
+
+  const playGauntletSignal = useCallback((theme: GauntletThemeV132) => {
+    const audio=audioRef.current;
+    if (!audio) return;
+    void audio.unlock();
+    audio.playGauntletSignalV133(theme);
+  },[]);
 
   const reconcileHuntWrite = useCallback(() => {
     const latest = loadActiveHuntSave();
@@ -2075,7 +2091,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   // City choices are acknowledged only after durable storage confirms the write.
   // A failed write must not announce a completed investigation or apply a reward.
-  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "inventory" | "profile" | "homeworld" | "justice" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88" | "shipAcquisitionV89">>): boolean => {
+  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "inventory" | "profile" | "homeworld" | "justice" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88" | "shipAcquisitionV89" | "gauntletV134">>): boolean => {
     if (!sessionAliveRef.current) return false;
     const current = saveRef.current;
     if (pendingTrophyCommitRef.current) {
@@ -2085,7 +2101,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       setToast("Termine la sauvegarde du résultat de chasse avant de poursuivre le dossier.");
       return false;
     }
-    const updateSerialized = JSON.stringify({ inventory: update.inventory, profile: update.profile, homeworld: update.homeworld, justice: update.justice, gameReserveV66: update.gameReserveV66, homeworldPassageV67: update.homeworldPassageV67, homeworldRegionV68: update.homeworldRegionV68, shipPreparationV88: update.shipPreparationV88, shipAcquisitionV89: update.shipAcquisitionV89 });
+    const updateSerialized = JSON.stringify({ inventory: update.inventory, profile: update.profile, homeworld: update.homeworld, justice: update.justice, gameReserveV66: update.gameReserveV66, homeworldPassageV67: update.homeworldPassageV67, homeworldRegionV68: update.homeworldRegionV68, shipPreparationV88: update.shipPreparationV88, shipAcquisitionV89: update.shipAcquisitionV89, gauntletV134: update.gauntletV134 });
     const pending = pendingSocialWriteRef.current;
     if (pending) {
       const recovered = reconcileSaveWrite(pending.attempt, current.createdAt);
@@ -2123,6 +2139,29 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     setSave(result.save);
     return true;
   }, [reconcileHuntWrite]);
+
+  // Research is awarded only from a real trophy/rite/mission receipt and
+  // confirmed by the existing transactional campaign-save writer.
+  const claimGauntletResearchV134 = (id:string):boolean=>{
+    const claim=gauntletCampaignClaimV134(saveRef.current,id);
+    if(!claim.ok||!claim.archive){setToast(claim.reason);return false;}
+    const stored=persistSocialProgress({gauntletV134:claim.archive});
+    if(stored) setToast(`Dossier ${gauntletByIdV132(id)?.name??id} étudié ; reconstitution cosmétique disponible.`);
+    return stored;
+  };
+  const equipGauntletCampaignV134 = (id:string):boolean=>{
+    const claim=gauntletCampaignEquipV134(saveRef.current,id);
+    if(!claim.ok||!claim.archive){setToast(claim.reason);return false;}
+    const stored=persistSocialProgress({gauntletV134:claim.archive});
+    if(stored){
+      // An old local preference is still updated for the V133 fallback, but
+      // the V134 campaign archive becomes the authoritative equipment slot.
+      hunterGauntlet.equip(id);
+      playGauntletSignal(gauntletByIdV132(id)?.theme??"classic");
+      setToast(`Gauntlet ${gauntletByIdV132(id)?.name??id} équipé et sauvegardé avec la campagne.`);
+    }
+    return stored;
+  };
 
   // The observed position comes from the nearby button on the physical deck.
   // Read the owned fleet without creating or adopting a fallback registration.
@@ -2599,7 +2638,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
           runId: createHuntRunId(),
           sequence: 0,
           startedAt: now,
-          configuration: huntConfiguration(runtimeSave),
+          configuration: huntConfiguration(runtimeSave,hunterGauntlet.equippedId),
           lastPersisted: null,
           lastAttempted: null,
         }
@@ -2669,6 +2708,12 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     setHuntResumePayload({
       snapshot: resumed.snapshot,
       retryCheckpoint: resumed.retryCheckpoint,
+      gauntletVariantId: resumeHuntGauntletV142(
+        resumed.configuration,
+        hunterGauntlet.equippedId,
+        save.profile.rankId,
+        save.gauntletV134?.claimedStudies??[],
+      ),
     });
     void playSound("select");
     setScreen("mission");
@@ -3502,7 +3547,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       <div hidden={screen === "homeworld" || screen === "sprite-library"} inert={shipStationOpen || settingsOpen || screen === "sprite-library"}>{topBar}</div>
 
       {screen === "clan-war" && <section className="screen panel-screen" inert={settingsOpen}>
-        <Suspense fallback={<DeferredGameScreen />}><ClanWarPanelV85 save={save} onClose={() => go(archiveReturnV85)} /></Suspense>
+        <Suspense fallback={<DeferredGameScreen />}><ClanWarPanelV85 save={save} onClose={() => go(archiveReturnV85)} onGauntletSound={playGauntletSignal} onEquipGauntlet={equipGauntletCampaignV134} onClaimGauntletStudy={claimGauntletResearchV134} /></Suspense>
       </section>}
       {screen === "sprite-library" && <Suspense fallback={<DeferredGameScreen />}>
         <RecentSpriteLibraryV85 onClose={() => go(archiveReturnV85)} />
@@ -3675,6 +3720,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 armorId={save.loadout.armorId}
                 weaponIds={save.loadout.weaponIds}
                 gearIds={save.loadout.gearIds}
+                gauntletVariantId={hunterGauntlet.equippedId}
                 size="clamp(320px, 44svh, 500px)"
                 aiming
                 bladesExtended
@@ -4221,6 +4267,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                       previewMaskWorn && save.appearance.biomaskId !== null
                     }
                     gauntletOpen={previewGauntletOpen}
+                    gauntletVariantId={hunterGauntlet.equippedId}
                     bladesExtended={previewBladesExtended}
                     aiming={previewAiming}
                   />
@@ -4244,6 +4291,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                   <h3>Configuration active</h3>
                   <div className="loadout-tags">
                     <span>{selectedArmor.name}</span>
+                    <span>Gauntlet : {gauntletByIdV132(hunterGauntlet.equippedId)?.name ?? "Jungle Hunter"}</span>
                     <span>Énergie maximale {selectedArmorMaxEnergy}</span>
                     <span>{primaryWeapon.name}</span>
                     {selectedGear.map((gear) => (
@@ -4253,6 +4301,21 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 </div>
               </aside>
               <div className="armory-sections">
+                <section className="panel" data-testid="hunter-gauntlet-slot-v133" aria-label="Gauntlet équipé du chasseur">
+                  <h3>Ordinateur de poignet · emplacement indépendant</h3>
+                  <p>Gauntlet équipé : <strong>{gauntletByIdV132(hunterGauntlet.equippedId)?.name ?? "Jungle Hunter"}</strong>. Utilisé dans l&apos;aperçu du chasseur et la projection des guerres de clans. Cosmétique et lecture tactique seulement.</p>
+                  <Suspense fallback={<p>Ouverture de l&apos;armurerie des gauntlets…</p>}>
+                    <ClanWarGauntletLockerV132 hunterRank={save.profile.rankId}
+                      equippedId={hunterGauntlet.equippedId}
+                      claimedStudies={save.gauntletV134?.claimedStudies??[]}
+                      campaignEvidence={save}
+                      disabled={settingsOpen||archiveTransferBusy||campaignSaveBusy||Boolean(archiveRecoveryIssue)}
+                      onClaimStudy={claimGauntletResearchV134}
+                      onEquip={equipGauntletCampaignV134}/>
+                  </Suspense>
+                  {hunterGauntlet.storageWarning && <p role="status">{hunterGauntlet.storageWarning}</p>}
+                  <small>Préférence V134 incluse dans la sauvegarde de campagne. Les modèles à étude exigent des preuves de chasse réelles, puis une validation au comptoir. Les anciens réglages V133 restent lisibles.</small>
+                </section>
                 <ArmorySection title="Outils de terrain permanents">
                   {FIELD_TOOLS_V111.map((tool) => {
                     const quote = quoteFieldToolV111(save, tool.id);
@@ -4442,6 +4505,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                       previewMaskWorn && save.appearance.biomaskId !== null
                     }
                     gauntletOpen={previewGauntletOpen}
+                    gauntletVariantId={hunterGauntlet.equippedId}
                     bladesExtended={previewBladesExtended}
                     aiming={previewAiming}
                   />
@@ -5212,6 +5276,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             explorationProgress={activeMissionSave.exploration}
             onExplorationProgress={persistExplorationProgress}
             appearance={activeMissionSave.appearance}
+            gauntletVariantId={huntResumePayload?.gauntletVariantId ?? hunterGauntlet.equippedId}
             difficulty={activeMissionSave.settings.difficultyId}
             controlBindings={activeMissionSave.settings.controlBindings}
             huntAccessibility={activeMissionSave.settings.huntAccessibility}

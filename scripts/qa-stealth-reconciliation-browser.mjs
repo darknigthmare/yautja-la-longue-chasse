@@ -84,7 +84,30 @@ try{
  assert.equal(await first.page.evaluate(key=>localStorage.getItem(key),storage),legacyRaw,"load must not write");
  await first.page.getByRole("alert").getByText("Cette archive ne précise pas",{exact:false}).waitFor();
  assert.equal(await first.page.getByRole("button",{name:"Attendre / récupérer énergie"}).isDisabled(),true);
+ if(mode==="manual"){
+  // A cooperating tab holding the common write lock must not let a legacy
+  // migration overwrite bytes or silently make the unresolved choice appear saved.
+  const other=await first.context.newPage();
+  await other.goto(origin+"/tests/browser/stealth-reconciliation.html");
+  await other.getByText("Rejoindre le relais",{exact:false}).waitFor();
+  await other.evaluate(()=>{window.qaStealthLockHeld=false;void navigator.locks.request(
+   "yautja.clan-war.v115.operations.free.v1.write",()=>{window.qaStealthLockHeld=true;
+    return new Promise(resolve=>{window.qaReleaseStealthLock=resolve;});});});
+  await other.waitForFunction(()=>window.qaStealthLockHeld===true);
+  await first.page.getByLabel("Règle de renfort :").selectOption(mode);
+  await first.page.getByText("Une autre écriture V115 est en cours ; réessayez.").waitFor();
+  assert.equal(await first.page.evaluate(key=>localStorage.getItem(key),storage),legacyRaw);
+  assert.equal(await first.page.getByLabel("Règle de renfort :").inputValue(),"");
+  await other.evaluate(()=>window.qaReleaseStealthLock());
+  await other.waitForFunction(async()=>!(await navigator.locks.query()).held.some(
+   lock=>lock.name==="yautja.clan-war.v115.operations.free.v1.write"));
+  await other.close();
+ }
  await first.page.getByLabel("Règle de renfort :").selectOption(mode);
+ await first.page.waitForFunction(({storage,mode})=>{
+  const raw=localStorage.getItem(storage);
+  return raw&&JSON.parse(raw).active?.stealth?.reinforcementMode===mode;
+ },{storage,mode});
  const chosen=JSON.parse(await first.page.evaluate(key=>localStorage.getItem(key),storage));
  assert.equal(chosen.active.stealth.reinforcementMode,mode);
  const rest={...chosen.active.stealth};delete rest.reinforcementMode;
@@ -101,6 +124,9 @@ try{
  await second.page.getByText("Renfort déjà présent",{exact:false}).waitFor();
  assert.equal(await second.page.getByRole("button",{name:"Attendre / récupérer énergie"}).isEnabled(),true);
  await second.page.getByRole("button",{name:"Attendre / récupérer énergie"}).click();
+ await second.page.waitForFunction(storage=>{
+  const raw=localStorage.getItem(storage);return raw&&JSON.parse(raw).active?.stealth?.supportGuard;
+ },storage);
  const converted=JSON.parse(await second.page.evaluate(key=>localStorage.getItem(key),storage));
  assert.ok(converted.active?.stealth?.supportGuard,"real action must persist migrated guard");
  const previous=found.active.stealth.secondGuard,migrated=converted.active.stealth.supportGuard;
@@ -127,6 +153,9 @@ try{
   assert.equal(await page.evaluate(key=>localStorage.getItem(key),storage),legacyRaw);
   await page.getByText("Cette archive ne précise pas",{exact:false}).waitFor();
   await page.getByLabel("Règle de renfort :").selectOption("decoy");
+  await page.waitForFunction(storage=>{
+   const raw=localStorage.getItem(storage);return raw&&JSON.parse(raw).active?.stealth?.reinforcementMode==="decoy";
+  },storage);
   const state=JSON.parse(await page.evaluate(key=>localStorage.getItem(key),storage));
   assert.equal(state.active.stealth.reinforcementMode,"decoy");
   const rest={...state.active.stealth};delete rest.reinforcementMode;
@@ -135,6 +164,9 @@ try{
   assert.equal(await page.getByLabel("Règle de renfort :").inputValue(),"decoy");
   const actionLabels={up:"↑ Nord",down:"↓ Sud",left:"← Ouest",right:"→ Est",wait:"Attendre / récupérer énergie",decoy:"Diversion sonore (2 énergie)"};
   await page.getByRole("button",{name:actionLabels[triggerAction],exact:true}).click();
+  await page.waitForFunction(storage=>{
+   const raw=localStorage.getItem(storage);return raw&&JSON.parse(raw).active?.stealth?.supportGuard;
+  },storage);
   const afterAction=JSON.parse(await page.evaluate(key=>localStorage.getItem(key),storage));
   assert.ok(afterAction.active?.stealth?.supportGuard,"GameClient must persist the guard after the triggering action");
   assert.equal(afterAction.active.tick,prior.active.tick+1);

@@ -33,6 +33,7 @@ import { isHomeworldContractsV68 } from "./systems/homeworldContractsV68";
 import { normalizeGameReserveV66, gameReserveV66Supported } from "./systems/gameReserveV66";
 import { normalizeShipPreparationV88 } from "./systems/shipPreparationV88";
 import { normalizeShipAcquisitionV89 } from "./systems/shipAcquisitionV89";
+import { emptyGauntletCampaignV134, normalizeGauntletCampaignV134 } from "./systems/gauntletCampaignV134";
 import {
   ARMORS,
   CODEX_ENTRIES,
@@ -89,7 +90,7 @@ import type {
 // Storage schema and defaults
 // ---------------------------------------------------------------------------
 
-export const SAVE_VERSION = 12;
+export const SAVE_VERSION = 13;
 export const SAVE_STORAGE_KEY = "yautja-long-hunt.save";
 export const SAVE_MAX_SERIALIZED_BYTES = 1024 * 1024;
 const SAVE_EXPORT_FORMAT = "yautja-long-hunt.save-export";
@@ -329,6 +330,7 @@ export function defaultSave(now = new Date().toISOString()): SaveGame {
     homeworldRegionV68: null,
     homeworldPassageV67: null,
     gameReserveV66: null,
+    gauntletV134: emptyGauntletCampaignV134(now),
     createdAt: now,
     updatedAt: now,
     profile: {
@@ -582,6 +584,8 @@ const SAVE_MIGRATIONS: Readonly<
   // Preserve all existing documents. Older clients must refuse new continuation
   // and restoration receipts instead of silently dropping their optional fields.
   11: (input) => ({ ...input, version: 12 }),
+  // Never auto-award archive studies or fabricate research evidence in legacy V12 saves.
+  12: (input) => ({ ...input, version: 13 }),
 };
 
 function migrateSavePayload(value: unknown): UnknownRecord | null {
@@ -1229,6 +1233,9 @@ export function normalizeSave(value: unknown): SaveGame {
     appearance: normalizeAppearance(source.appearance),
     missionProgress,
     trophies: normalizeTrophies(source.trophies),
+    ...(source.gauntletV134 === undefined ? {} : {
+      gauntletV134: normalizeGauntletCampaignV134(source.gauntletV134,validIsoDate(source.createdAt,fallback.createdAt)),
+    }),
     codex: { unlockedEntryIds, scanCounts, discoveredEnemyIds },
     exploration: normalizeExplorationProgress(source.exploration),
     statistics: {
@@ -1455,6 +1462,14 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   }
   // Preserve incompatible inspection bytes instead of silently clearing a
   // player's checkpoint during import, archive export or account transfer.
+  // A newer or cross-owner gauntlet receipt cannot be silently dropped during import/export.
+  if (value.gauntletV134 !== undefined && value.gauntletV134 !== null) {
+    if (isRecord(value.gauntletV134) && Number(value.gauntletV134.version) > 1)
+      return { save:null, failure:"future-version" };
+    if (typeof value.createdAt !== "string" ||
+        !normalizeGauntletCampaignV134(value.gauntletV134,value.createdAt))
+      return { save:null, failure:"invalid-save" };
+  }
   if (value.shipPreparationV88 !== undefined && value.shipPreparationV88 !== null) {
     const raw = value.shipPreparationV88;
     if (isRecord(raw) && Number(raw.version) > 1) return { save: null, failure: "future-version" };

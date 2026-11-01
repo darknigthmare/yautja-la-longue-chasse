@@ -9,6 +9,10 @@ import { warRtsNextPathStepV118 } from "./clanWarTacticalNavigationV118";
  * The other 18 RTS sources are still dossiers, not pretend playable missions.
  */
 export type WarSourceRtsScenarioIdV119 = "W3-RTS01" | "W3-RTS02" | "W3-RTS03" | "W3-RTS04" | "W3-RTS05" | "W3-RTS06";
+const WAR_SOURCE_RTS_IDS_V119 = ["W3-RTS01","W3-RTS02","W3-RTS03","W3-RTS04","W3-RTS05","W3-RTS06"] as const satisfies readonly WarSourceRtsScenarioIdV119[];
+export function isWarSourceRtsScenarioIdV119(value:string):value is WarSourceRtsScenarioIdV119 {
+  return (WAR_SOURCE_RTS_IDS_V119 as readonly string[]).includes(value);
+}
 export interface WarSourceRtsScenarioDefinitionV119 {
   id: WarSourceRtsScenarioIdV119;
   title: string;
@@ -55,7 +59,7 @@ const GUARD_UNIT="W3-U07";
 const DIST=(a:{x:number;y:number},c:{x:number;y:number})=>Math.abs(a.x-c.x)+Math.abs(a.y-c.y);
 
 export function warSourceRtsScenarioV119(id:string,rules:WarRulesV6): WarSourceRtsScenarioDefinitionV119|null {
-  if(!["W3-RTS01","W3-RTS02","W3-RTS03","W3-RTS04","W3-RTS05","W3-RTS06"].includes(id))return null;
+  if(!isWarSourceRtsScenarioIdV119(id))return null;
   const entry=rules.entries.find(item=>item.sheet==="Scénarios RTS"&&item.id===id);
   if(!entry)return null;
   const v=(column:string)=>String(entry.fields.find(field=>field.column===column)?.value??"").trim();
@@ -63,7 +67,7 @@ export function warSourceRtsScenarioV119(id:string,rules:WarRulesV6): WarSourceR
   if(v("C")!==mapId || !rules.entries.some(item=>item.sheet==="Cartes des escarmouches"&&item.id===mapId))
     return null;
   return {
-    id:id as WarSourceRtsScenarioIdV119,title:String(entry.title),sourceMapId:mapId,
+    id,title:String(entry.title),sourceMapId:mapId,
     sourceCells:["C","D","E","F","G","H","I","J","K","L","M","N","O"]
       .map(column=>entry.fields.find(field=>field.column===column)?.cell).filter((cell):cell is string=>!!cell),
     situation:v("E"),tactics:v("I"),enemyPlan:v("J"),completion:v("L"),

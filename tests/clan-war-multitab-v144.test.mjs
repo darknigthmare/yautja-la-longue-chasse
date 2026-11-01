@@ -1,0 +1,165 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import {readFileSync} from "node:fs";
+import {fileURLToPath} from "node:url";
+import {build} from "esbuild";
+
+const root=fileURLToPath(new URL("../",import.meta.url));
+const read=path=>readFileSync(root+path,"utf8");
+const built=await build({stdin:{
+  contents:"export * from './app/game/systems/clanWarSessionV85'; export * from './app/game/systems/clanWarV85'; export * from './app/game/systems/clanWarTurnGateV143'; export * from './app/game/systems/clanWarPlanetsV96';",
+  resolveDir:root,
+},bundle:true,write:false,format:"esm",platform:"node",logLevel:"silent"});
+const system=await import("data:text/javascript;base64,"+Buffer.from(built.outputFiles[0].text).toString("base64"));
+const noopLock=async operation=>({acquired:true,value:await operation()});
+function fixture(){
+ const storageData=new Map(),writes=[];
+ const storage={
+   getItem:key=>storageData.get(key)??null,
+   setItem(key,value){storageData.set(key,value);writes.push({key,value});},
+ };
+ const create=async()=>{
+   const s=system.createWarSessionV85(()=>storage,noopLock,null);
+   s.subscribe(()=>{});
+   await s.whenSettled();
+   return s;
+ };
+ return {storageData,storage,writes,create};
+}
+test("a foreign-tab archive edit invalidates only the affected Korthas front and cannot overwrite",async()=>{
+ const f=fixture(),one=await f.create(),two=await f.create();
+ const key=system.WAR_STORAGE_KEY_V85;
+ assert.equal(one.getSnapshot().simulation.turn,1);
+ assert.equal(two.getSnapshot().staleWar,false);
+ one.setSimulation(current=>({...current,turn:2,revision:current.revision+1}));
+ await one.whenSettled();
+ assert.equal(JSON.parse(f.storage.getItem(key)).turn,2);
+ two.observeExternalStorageChange("yautja.clan-war.presentation.v1");
+ assert.equal(two.getSnapshot().staleWar,false);
+ two.observeExternalStorageChange(key);
+ assert.equal(two.getSnapshot().staleWar,true);
+ assert.equal(two.getSnapshot().writableWar,false);
+ assert.match(two.getSnapshot().storageMessage,/autre session/);
+ assert.equal(system.inspectWarTurnGateV143(two.getSnapshot(),0,true,false).reason,"conflict");
+ const baseline=f.writes.length;
+ two.setSimulation(current=>({...current,turn:99,revision:99}));
+ two.unlockWarAfterExplicitReset();
+ await two.whenSettled();
+ assert.equal(two.getSnapshot().simulation.turn,1,"stale renderer cannot even mutate its in-memory war");
+ assert.equal(f.writes.length,baseline,"stale renderer must not overwrite source bytes");
+ assert.equal(JSON.parse(f.storage.getItem(key)).turn,2);
+ const reopen=await f.create();
+ assert.equal(reopen.getSnapshot().simulation.turn,2);
+ assert.equal(reopen.getSnapshot().staleWar,false);
+});
+test("unrelated planet writes never stale an independent live front",async()=>{
+ const f=fixture(),korthas=await f.create();
+ const other=system.createWarSessionV85(()=>f.storage,noopLock,null,{planetId:"thalassa"});
+ other.subscribe(()=>{});
+ await other.whenSettled();
+ assert.equal(korthas.getSnapshot().staleWar,false);
+ assert.equal(other.getSnapshot().staleWar,false);
+ const otherKey=system.warPlanetStorageKeyV96("thalassa");
+ assert.notEqual(otherKey,system.WAR_STORAGE_KEY_V85);
+ korthas.setSimulation(state=>({...state,revision:state.revision+1,turn:2}));
+ await korthas.whenSettled();
+ other.observeExternalStorageChange(system.WAR_STORAGE_KEY_V85);
+ assert.equal(other.getSnapshot().staleWar,false);
+ other.setSimulation(state=>({...state,revision:state.revision+1,turn:2}));
+ await other.whenSettled();
+ korthas.observeExternalStorageChange(otherKey);
+ assert.equal(korthas.getSnapshot().staleWar,false);
+ assert.equal(korthas.getSnapshot().simulation.turn,2);
+ assert.equal(other.getSnapshot().simulation.turn,2);
+ assert.equal(JSON.parse(f.storage.getItem(otherKey)).planetId,"thalassa");
+ assert.equal(JSON.parse(f.storage.getItem(system.WAR_STORAGE_KEY_V85)).planetId ?? "korthas","korthas");
+});
+test("offline memory-only exercises stay usable, never confused with a concurrent edit",async()=>{
+ const session=system.createWarSessionV85(()=>null,noopLock,null);
+ session.subscribe(()=>{});
+ await session.whenSettled();
+ const before=session.getSnapshot();
+ assert.equal(before.loaded,true);
+ assert.equal(before.writableWar,false);
+ assert.equal(before.staleWar,false);
+ assert.equal(system.inspectWarTurnGateV143(before,before.simulation.revision,true,false).reason,"ready");
+ session.setSimulation(current=>({...current,turn:2,revision:current.revision+1}));
+ await session.whenSettled();
+ assert.equal(session.getSnapshot().simulation.turn,2);
+ assert.equal(session.getSnapshot().staleWar,false);
+ assert.equal(session.getSnapshot().persistedWar,false);
+});
+test("source integration includes read-only conflict banner, focus recheck, non-destructive gates and one atlas",()=>{
+ const session=read("app/game/systems/clanWarSessionV85.ts");
+ const panel=read("app/game/ClanWarPanelV85.tsx");
+ const gate=read("app/game/systems/clanWarTurnGateV143.ts");
+ assert.match(session,/function observeExternalStorageChange\(key: string \| null\)/);
+ assert.match(session,/kind==="simulation" && snapshot.staleWar/);
+ assert.match(panel,/session\.observeExternalStorageChange\(key\)/);
+ assert.match(panel,/window\.addEventListener\("storage",onStorage\)/);
+ assert.match(panel,/document\.addEventListener\("visibilitychange",onFocus\)/);
+ assert.match(panel,/data-testid="clan-war-foreign-tab-conflict-v144"/);
+ assert.match(panel,/if \(strategic\.staleWar\)/);
+ assert.match(gate,/if\(snapshot\.staleWar\)return \{allowed:false,reason:"conflict"\}/);
+ assert.equal((panel.match(/<ClanWarAtlasV95\b/g)||[]).length,1);
+ assert.match(panel,/data-war-campaign-write="none"/);
+ assert.ok(!session.includes("gauntletCampaignClaimV134("));
+});
+
+test("V145 real three-tab QA covers two distinct planetary fences and settles the IDB browser read",()=>{
+ const qa=read("scripts/qa-clan-war-multitab-v144.mjs");
+ const fixture=read("tests/browser/clan-war-v143.fixture.tsx");
+ assert.match(fixture,/QA_PLANET/);
+ assert.match(fixture,/initialPlanetId=\{QA_PLANET\}/);
+ assert.match(qa,/THALASSA_KEY="yautja\.clan-war\.v96\.planet\.thalassa\.free\.v1"/);
+ assert.match(qa,/c\.goto\(url\+"\?planet=thalassa"/);
+ assert.match(qa,/getFence\(c,THALASSA_KEY\)/);
+ assert.match(qa,/read\.onsuccess=\(\)=>\{db\.close\(\);resolveFence\(read\.result\?\?null\);\}/);
+ assert.doesNotMatch(qa,/read\.onsuccess=\(\)=>\{db\.close\(\);resolve\(/);
+ assert.match(qa,/threeTabMultiPlanetCoverage:true/);
+ assert.match(qa,/assert\.equal\(checks\.length,8\)/);
+ assert.match(qa,/foreign-tab-conflict-v144/);
+});
+
+test("V145 verifies isolated storage and foreign-session notifications for all 30 registered planet fronts",async()=>{
+ const worlds=system.WAR_PLANETS_V96;
+ assert.equal(worlds.length,30);
+ const ids=new Set(worlds.map(world=>world.id));
+ assert.equal(ids.size,30);
+ const f=fixture(),sessions=new Map();
+ for(const world of worlds){
+   const session=system.createWarSessionV85(()=>f.storage,noopLock,null,{planetId:world.id});
+   session.subscribe(()=>{});
+   await session.whenSettled();
+   const snap=session.getSnapshot();
+   assert.equal(snap.loaded,true,world.id);
+   assert.equal(snap.simulation.planetId??"korthas",world.id);
+   sessions.set(world.id,session);
+ }
+ const keys=new Set();
+ for(const world of worlds){
+   const key=system.warPlanetStorageKeyV96(world.id);
+   assert.ok(!keys.has(key),`Duplicate planet storage key ${key}`);
+   keys.add(key);
+   const session=sessions.get(world.id);
+   session.setSimulation(state=>({...state,turn:2,revision:state.revision+1}));
+   await session.whenSettled();
+   assert.equal(session.getSnapshot().simulation.turn,2,world.id);
+   assert.equal(JSON.parse(f.storage.getItem(key)).planetId??"korthas",world.id);
+   for(const other of worlds){
+     if(other.id===world.id)continue;
+     const unrelated=sessions.get(other.id);
+     unrelated.observeExternalStorageChange(key);
+     assert.equal(unrelated.getSnapshot().staleWar,false,
+       `Writing ${world.id} must not stale ${other.id}`);
+   }
+ }
+ assert.equal(keys.size,30);
+ assert.equal([...sessions.values()].filter(session=>session.getSnapshot().simulation.turn===2).length,30);
+ for(const world of worlds){
+   const key=system.warPlanetStorageKeyV96(world.id);
+   const snap=JSON.parse(f.storage.getItem(key));
+   assert.equal(snap.turn,2);
+   assert.equal(snap.planetId??"korthas",world.id);
+ }
+});

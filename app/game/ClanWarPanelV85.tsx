@@ -39,6 +39,19 @@ import { pageActivitySnapshotV94, serverPageActivityV94, subscribePageActivityV9
 import ClanWarConvoyRouteV105 from "./ClanWarConvoyRouteV105";
 import ClanWarAssaultV106 from "./ClanWarAssaultV106";
 import { queuePreparedWarAssaultV106, type WarAssaultPlanV106 } from "./systems/clanWarAssaultV106";
+import ClanWarGauntletV131 from "./ClanWarGauntletV131";
+import gauntletStyles from "./ClanWarGauntletV131.module.css";
+import ClanWarGauntletLockerV132 from "./ClanWarGauntletLockerV132";
+import {
+  DEFAULT_GAUNTLET_ID_V132, GAUNTLET_READOUT_LABELS_V132,
+  gauntletByIdV132, gauntletUnlockedV132, type GauntletThemeV132,
+} from "./systems/clanWarGauntletCatalogV132";
+import { useHunterGauntletV133 } from "./systems/useHunterGauntletV133";
+import {inspectWarTurnGateV143,WAR_TURN_GATE_MESSAGES_V143} from "./systems/clanWarTurnGateV143";
+import {
+  DEFAULT_WAR_PRESENTATION_V131, WAR_PRESENTATION_KEY_V131, parseClanWarPresentationV131,
+  type ClanWarPresentationV131,
+} from "./systems/clanWarViewV131";
 
 const fold = (value: string) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 const orderLabels: Record<WarOrderKindV85, string> = { move: "Déplacer", attack: "Assaut F02", recon: "Reconnaissance", cession: "Cession négociée", transit: "Droit de transit", logistics: "Convoi terrestre", heal: "Soins légers", evacuate: "Évacuer les blessés" };
@@ -65,11 +78,15 @@ function Entry({ entry }: { entry: ClanWarEntryV85 }) {
 }
 
 /** Autonomous exercises and source dossier. Main campaign progress is read only. */
-export default function ClanWarPanelV85({ save, onClose, suspended = false, initialPlanetId }: { save: SaveGame; onClose: () => void; suspended?: boolean; initialPlanetId?: string }) {
+export default function ClanWarPanelV85({ save, onClose, suspended = false, initialPlanetId, onGauntletSound,onEquipGauntlet,onClaimGauntletStudy }: { save: SaveGame; onClose: () => void; suspended?: boolean; initialPlanetId?: string; onGauntletSound?: (theme: GauntletThemeV132) => void; onEquipGauntlet?: (id:string)=>boolean; onClaimGauntletStudy?: (id:string)=>boolean }) {
   const root = useRef<HTMLElement>(null);
   const focusPlanetSelection = useRef(Boolean(initialPlanetId));
   const pageActive = useSyncExternalStore(subscribePageActivityV94, pageActivitySnapshotV94, serverPageActivityV94);
   const [tab, setTab] = useState<"bible" | "canyon" | "composition" | "korthas" | "dossier">("korthas");
+  // Presentation is independent from the war archive. Server and first client render match.
+  const [presentation, setPresentation] = useState<ClanWarPresentationV131>(DEFAULT_WAR_PRESENTATION_V131);
+  const presentationTouched = useRef(false);
+  const { equippedId: equippedGauntletId, equip, storageWarning: gauntletStorageWarning } = useHunterGauntletV133(save.createdAt, save.profile.rankId,save.gauntletV134);
   const [sessionStore] = useState(() => createWarSessionV85(() => typeof window === "undefined" ? null : window.localStorage));
   const [activePlanetId, setActivePlanetId] = useState(() => preferredWarPlanetV96(initialPlanetId));
   const [planetSessions, setPlanetSessions] = useState<Record<string, ReturnType<typeof createWarSessionV85>>>(() => ({
@@ -78,6 +95,27 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false, init
   }));
   const retainedPlanetIds = useMemo(() => Object.keys(planetSessions), [planetSessions]);
   const planetSession = planetSessions[activePlanetId];
+  /** V144: passively invalidate stale exercises when a sibling tab updates
+   * their local archive; never import foreign turns into a live renderer. */
+  useEffect(()=>{
+    const refresh=(key:string|null)=>{
+      for(const session of new Set(Object.values(planetSessions)))session.observeExternalStorageChange(key);
+    };
+    const onStorage=(event:StorageEvent)=>{
+      try{if(event.storageArea!==window.localStorage)return;}catch{return;}
+      refresh(event.key);
+    };
+    const onFocus=()=>{if(document.visibilityState==="visible")refresh(null);};
+    window.addEventListener("storage",onStorage);
+    window.addEventListener("focus",onFocus);
+    document.addEventListener("visibilitychange",onFocus);
+    return ()=>{
+      window.removeEventListener("storage",onStorage);
+      window.removeEventListener("focus",onFocus);
+      document.removeEventListener("visibilitychange",onFocus);
+    };
+  },[planetSessions]);
+
   const shared = useSyncExternalStore(sessionStore.subscribe, sessionStore.getSnapshot, sessionStore.getServerSnapshot);
   const strategic = useSyncExternalStore(planetSession.subscribe, planetSession.getSnapshot, planetSession.getServerSnapshot);
   const { simulation, persistedWar } = strategic;
@@ -99,11 +137,49 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false, init
   const [selectedPeople, setSelectedPeople] = useState<string[]>([]);
   const [cargoS, setCargoS] = useState(0), [cargoM, setCargoM] = useState(0);
   const [confirmTurn, setConfirmTurn] = useState(false);
+  // Revision visible when the player began reviewing this end-turn decision.
+  // A different order, tab or renderer cannot re-use a stale confirmation.
+  const confirmTurnRevision = useRef<number | null>(null);
   const [evacuationConfirmation, setEvacuationConfirmation] = useState<string | null>(null);
   const [selectedFormation, setSelectedFormation] = useState("");
   const [tacticalOrder, setTacticalOrder] = useState<CanyonOrderKindV85>("move");
   const [tacticalX, setTacticalX] = useState(28), [tacticalLevel, setTacticalLevel] = useState<0 | 1>(0);
   const [running, setRunning] = useState(false);
+
+  useEffect(() => {
+    const frame = window.requestAnimationFrame(() => {
+      if (presentationTouched.current) return;
+      let stored: string | null = null;
+      try { stored = window.localStorage.getItem(WAR_PRESENTATION_KEY_V131); }
+      catch { /* The hologram remains usable without preference storage. */ }
+      setPresentation(parseClanWarPresentationV131(stored));
+    });
+    const onPreferenceFromOtherTab = (event: StorageEvent) => {
+      if (event.key === WAR_PRESENTATION_KEY_V131 || event.key === null) {
+        setPresentation(parseClanWarPresentationV131(event.newValue));
+      }
+    };
+    window.addEventListener("storage", onPreferenceFromOtherTab);
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener("storage", onPreferenceFromOtherTab);
+    };
+  }, []);
+
+  function equipGauntlet(id: string) {
+    if (suspended || !pageActive || !gauntletUnlockedV132(id, save.profile.rankId,save.gauntletV134?.claimedStudies??[])) return;
+    if (onEquipGauntlet?onEquipGauntlet(id):equip(id)) {
+      if(!onEquipGauntlet)onGauntletSound?.(gauntletByIdV132(id)?.theme ?? "classic");
+      setMessage(`Gauntlet ${gauntletByIdV132(id)?.name ?? id} équipé. Le front et ses ordres restent inchangés.`);
+    }
+  }
+  function choosePresentation(next: ClanWarPresentationV131) {
+    presentationTouched.current = true;
+    setPresentation(next);
+    if (next === "gauntlet") onGauntletSound?.(gauntletByIdV132(equippedGauntletId)?.theme ?? "classic");
+    try { window.localStorage.setItem(WAR_PRESENTATION_KEY_V131, next); }
+    catch { /* Preference may remain temporary; no war save or order is touched. */ }
+  }
 
   useEffect(() => {
     if (!loaded || !focusPlanetSelection.current) return;
@@ -124,6 +200,15 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false, init
 
   const composition = useMemo(() => warCompositionV85(selection), [selection]);
   const supplied = useMemo(() => warSuppliedV85(simulation), [simulation]);
+  const effectiveGauntlet=gauntletUnlockedV132(equippedGauntletId,save.profile.rankId,save.gauntletV134?.claimedStudies??[])
+    ? gauntletByIdV132(equippedGauntletId) : gauntletByIdV132(DEFAULT_GAUNTLET_ID_V132);
+  const gauntletReadout=effectiveGauntlet?.readout??"intel";
+  const gauntletReadoutValue =
+    gauntletReadout==="routes" ? `${warTerritoriesForSimulationV96(simulation).length} sites · ${simulation.orders.filter(o=>o.kind==="move").length} déplacements réservés` :
+    gauntletReadout==="medical" ? `${simulation.combatants.filter(c=>c.factionId==="CON-F01"&&c.status==="wounded").length} blessés · ${simulation.combatants.filter(c=>c.factionId==="CON-F01"&&c.status==="fit").length} aptes` :
+    gauntletReadout==="command" ? `${simulation.orders.length} ordres réservés · tour ${simulation.turn}` :
+    gauntletReadout==="supply" ? `${supplied.size} sites ravitaillés` :
+    `${simulation.observations.length} observations · ${simulation.reports.length} rapports historiques`;
   const budget = useMemo(() => warBudgetV85(simulation), [simulation]);
   // Derive defaults from the hydrated front. A newly opened world may already
   // have lost its original departure, and its routes need not include T02–T08.
@@ -203,7 +288,7 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false, init
   }
   function queue(confirmEvacuation = false, assaultPlan: WarAssaultPlanV106 | null = null): boolean {
     const live = planetSession.getSnapshot();
-    if (suspended || !pageActivitySnapshotV94() || !live.loaded || live.pendingWrites > 0) return false;
+    if (suspended || !pageActivitySnapshotV94() || !live.loaded || live.pendingWrites > 0 || live.staleWar) return false;
     const result = draft.kind === "attack" ? queuePreparedWarAssaultV106(live.simulation, draft, assaultPlan) : queueWarOrderV85(live.simulation, draft);
     if (!result.accepted) { setMessage(result.message); return false; }
     const liveKey = JSON.stringify([planet.id, live.simulation.revision, draft.fromId, draft.targetId, draft.combatantIds]);
@@ -248,7 +333,7 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false, init
   }
   function changeGarrison(draft: WarGarrisonDraftV99) {
     const live = planetSession.getSnapshot();
-    if (suspended || !pageActivitySnapshotV94() || !live.loaded || live.pendingWrites > 0) return false;
+    if (suspended || !pageActivitySnapshotV94() || !live.loaded || live.pendingWrites > 0 || live.staleWar) return false;
     const result = changeWarGarrisonV99(live.simulation, draft);
     setMessage(result.message);
     if (result.accepted) { setSimulation(result.state); setSelectedPeople([]); setConfirmTurn(false); }
@@ -256,7 +341,7 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false, init
   }
   function updateConvoy(operation: (current: WarSimulationV85) => WarUpdateV85, expectedRevision?: number) {
     const live = planetSession.getSnapshot();
-    if (suspended || !pageActivitySnapshotV94() || !live.loaded || !live.writableWar || live.pendingWrites > 0) return false;
+    if (suspended || !pageActivitySnapshotV94() || !live.loaded || !live.writableWar || live.pendingWrites > 0 || live.staleWar) return false;
     if (expectedRevision !== undefined && live.simulation.revision !== expectedRevision) {
       setMessage("Le front a changé depuis la vérification du fichier. Relisez le fichier avant le remplacement."); return false;
     }
@@ -265,7 +350,44 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false, init
     if (result.accepted) { setSimulation(result.state); setSelectedPeople([]); setConfirmTurn(false); }
     return result.accepted;
   }
+  function requestWarTurnReview() {
+    const live=planetSession.getSnapshot();
+    const gate=inspectWarTurnGateV143(live,live.simulation.revision,pageActivitySnapshotV94(),suspended);
+    if(!gate.allowed){setMessage(WAR_TURN_GATE_MESSAGES_V143[gate.reason]);setConfirmTurn(false);return;}
+    confirmTurnRevision.current=live.simulation.revision;
+    setConfirmTurn(true);
+  }
+  function resolveReviewedWarTurn() {
+    const live=planetSession.getSnapshot();
+    const gate=inspectWarTurnGateV143(live,confirmTurnRevision.current,pageActivitySnapshotV94(),suspended);
+    if(!gate.allowed){
+      setMessage(WAR_TURN_GATE_MESSAGES_V143[gate.reason]);
+      setConfirmTurn(false);confirmTurnRevision.current=null;return;
+    }
+    // The session store updates synchronously and starts a write fence. A
+    // second click therefore sees pendingWrites>0 or a different revision.
+    const result=advanceWarTurnV85(live.simulation);
+    setMessage(result.message);
+    if(result.accepted)setSimulation(result.state);
+    confirmTurnRevision.current=null;
+    setConfirmTurn(false);setSelectedPeople([]);
+  }
+  function removeReservedWarOrder(orderId:string) {
+    const live=planetSession.getSnapshot();
+    if(suspended||!pageActivitySnapshotV94()||!live.loaded||live.pendingWrites>0||live.staleWar){
+      setMessage(live.staleWar ? WAR_TURN_GATE_MESSAGES_V143.conflict
+        : "Une archive est en cours d'enregistrement ou le front est inactif : aucun ordre retiré.");
+      return;
+    }
+    if(!live.simulation.orders.some(order=>order.id===orderId)){
+      setMessage("Cet ordre a déjà changé ; relisez les réservations avant de le retirer.");
+      return;
+    }
+    setSimulation(cancelWarOrderV85(live.simulation,orderId));
+    confirmTurnRevision.current=null;setConfirmTurn(false);
+  }
   function restartWar() {
+    if (strategic.staleWar) {setMessage(WAR_TURN_GATE_MESSAGES_V143.conflict);return;}
     if (!window.confirm(`Recommencer le front de ${planet.name} et remplacer uniquement son archive locale ? Les autres planètes seront conservées.`)) return;
     setSimulation(createWarSimulationV85(undefined, planet.id)); planetSession.unlockWarAfterExplicitReset(); setTerritoryId(null); setTargetId(null); setOrderKind(null); setConfirmTurn(false); setSelectedPeople([]); setCargoS(0); setCargoM(0); setMessage(`Nouveau front de ${planet.name} ouvert.`);
   }
@@ -281,15 +403,29 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false, init
 
   if (!loaded) return <section className={styles.panel} aria-labelledby="clan-war-loading-title" data-clan-war-v85="loading" inert={suspended} ref={root}><h2 id="clan-war-loading-title">Archives des exercices</h2><p role="status">Vérification des archives et des écritures interrompues…</p><button type="button" onClick={onClose}>Retour</button></section>;
 
-  return <section className={styles.panel} aria-labelledby="clan-war-v85-title" data-clan-war-v85="free-profile" data-war-campaign-write="none" inert={suspended} ref={root}>
+  return <section className={`${styles.panel} ${presentation === "gauntlet" ? gauntletStyles.holoPanel : ""}`} aria-labelledby="clan-war-v85-title" data-clan-war-v85="free-profile" data-war-campaign-write="none" data-war-presentation={presentation} inert={suspended} ref={root}>
     <header className={styles.header}><div><p className={styles.eyebrow}>TABLE DES MANDATS · GUERRES DE CLANS</p><h2 id="clan-war-v85-title">Guerres de territoire</h2><p>Trente mondes répertoriés et vos nouvelles découvertes. Préparez vos routes, reconnaissez le front et tenez vos conquêtes.</p></div><button type="button" onClick={onClose}>Retour</button></header>
     <div className={styles.notice}><strong>Fronts libres · archives locales indépendantes</strong><p>Chaque planète et le canyon possèdent leurs propres unités et archives sur cet appareil. Votre chasse conserve son matériel, ses rites et ses personnes.</p><p>{save.profile.hunterName} · rang {save.profile.rankId}. Ces exercices de conquête restent séparés du voyage et des récompenses de la campagne.</p></div>
     <nav className={styles.tabs} aria-label="Échelles des guerres de clans">{([["korthas", "Planètes · conquête"], ["bible", "Bible V6 · règles actuelles"], ["canyon", "Exercice V3 · canyon"], ["composition", "Exercice V3 · formations"], ["dossier", "Archive V3 · fiches et clans"]] as const).map(([id, label]) => <button type="button" key={id} aria-pressed={tab === id} onClick={() => { setTab(id); setRunning(false); }}>{label}</button>)}</nav>
+    <div className={gauntletStyles.switchRow} data-testid="clan-war-view-switch-v131">
+      <div className={gauntletStyles.switchCopy}>
+        <strong>Présentation du commandement</strong>
+        <small>Deux vues du même front · aucun ordre ni état de campagne réinitialisé.</small>
+      </div>
+      <div className={gauntletStyles.switchActions} role="group" aria-label="Changer la vue stratégique">
+        <button type="button" aria-pressed={presentation === "gauntlet"} onClick={() => choosePresentation("gauntlet")}>Gauntlet holographique</button>
+        <button type="button" aria-pressed={presentation === "classic"} onClick={() => choosePresentation("classic")}>Vue stratégique classique</button>
+      </div>
+    </div>
     <p className={styles.status} role="status" aria-live="polite">{message}</p>
     {storageMessage && <p className={styles.storage} role="status">{storageMessage}</p>}
+    {strategic.staleWar && <p className={styles.warning} role="alert" data-testid="clan-war-foreign-tab-conflict-v144">
+      Front modifié dans un autre onglet : les commandes de ce front sont verrouillées pour éviter d&apos;écraser l&apos;archive. Fermez et rouvrez cet écran pour relire la version enregistrée.
+    </p>}
+    {gauntletStorageWarning && <p className={styles.storage} role="status">{gauntletStorageWarning}</p>}
     {pendingWrites > 0 && <p className={styles.storage} role="status">Enregistrement des exercices en cours…</p>}
     {canRetryPersistence && <button type="button" disabled={pendingWrites > 0} onClick={() => { sessionStore.retryPersistence(); if (planetSession !== sessionStore) planetSession.retryPersistence(); }}>Réessayer la sauvegarde des exercices</button>}
-    <div hidden={tab !== "bible"}><ClanWarBibleV6Panel active={tab === "bible" && !suspended && pageActive}/></div>
+    <div hidden={tab !== "bible"}><ClanWarBibleV6Panel active={tab === "bible" && !suspended && pageActive} gauntletId={equippedGauntletId} holographic={presentation==="gauntlet"}/></div>
 
     {tab === "composition" && <div>
       <div className={styles.sectionHeader}><div><h3>Formations et limites de composition</h3><p>Le commandement compte aussi les réserves et les groupes en transit.</p></div><button type="button" onClick={() => { setSelection({ ...CANYON_PRESET_V85 }); setMessage("Effectif d’exemple du classeur : 12 commandement, 112 matériaux et 60 énergie."); }}>Effectif du classeur</button></div>
@@ -336,6 +472,9 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false, init
     </div>}
 
     {tab === "korthas" && <div>
+      <ClanWarGauntletLockerV132 hunterRank={save.profile.rankId} equippedId={effectiveGauntlet?.id??DEFAULT_GAUNTLET_ID_V132} onEquip={equipGauntlet}
+        claimedStudies={save.gauntletV134?.claimedStudies??[]} campaignEvidence={save}
+        onClaimStudy={onClaimGauntletStudy} disabled={suspended||!pageActive}/>
       <ClanWarPlanetsV96 planet={planet} turn={simulation.turn} persisted={persistedWar} pending={pendingWrites > 0} retainedPlanetIds={retainedPlanetIds} onSelect={selectPlanet}/>
       <div className={styles.sectionHeader}><div><h3>{planet.name} · tour {simulation.turn}</h3><p>Routes du théâtre, détachements présents et informations adverses estimées.</p></div><button type="button" onClick={restartWar}>Nouvel exercice</button></div>
       <div className={styles.metrics}><p>Stock consolidé <Budget {...budget}/></p><p>Contrôle <strong>{controlled.length}/{definitions.length}</strong></p><p>Aptes <strong>{warFitCombatantsV85(simulation).length}</strong></p><p>Entretien prévu <strong>S{warUpkeepV85(simulation)}</strong></p></div>
@@ -343,27 +482,35 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false, init
       <p>Domination : contrôlez les {definitions.length} sites intacts et ravitaillés, avec au moins une garnison apte dans chacune des {planet.regions.length} régions, pendant deux fins de tour avec entretien payé.</p>
       <details><summary>Conditions de la région et du corridor</summary><p>Pour tenir une région, chaque territoire de cette région doit rester intact, ravitaillé et occupé par une garnison apte pendant deux fins de tour avec entretien payé.</p><p>Sites du corridor à contrôler et garnir : {corridorIds.map(id => id.replace("CON-", "")).join(" · ")}. Maintenez leurs liaisons de ravitaillement et au moins un droit de transit actif auprès des Passes autonomes pendant deux fins de tour avec entretien payé.{planet.id === "korthas" ? " T02 doit également rester relié au ravitaillement." : ""}</p></details>
       {simulation.completedObjectives.includes("CON-O01") && <p className={styles.positive} role="status">{planet.name} maîtrisée · domination confirmée après deux fins de tour. {persistedWar ? "Victoire archivée sur cet appareil." : "Victoire en mémoire · sauvegarde à confirmer."}</p>}
-      <ClanWarAtlasV95 key={`atlas:${planet.id}`} simulation={simulation} selectedTerritoryId={territoryId} targetTerritoryId={targetId} onSelectTerritory={selectTerritory} onSelectTarget={selectTarget}/>
+      <ClanWarGauntletV131 view={presentation} planetName={planet.name} turn={simulation.turn}
+        departure={territory.name} destination={warTerritoryForSimulationV96(simulation, targetId)?.name ?? targetId}
+        controlled={controlled.length} territories={definitions.length} queuedOrders={simulation.orders.length}
+        persisted={persistedWar} pending={pendingWrites > 0}
+        gauntletId={effectiveGauntlet?.id??DEFAULT_GAUNTLET_ID_V132}
+        readoutLabel={GAUNTLET_READOUT_LABELS_V132[gauntletReadout]}
+        readoutValue={gauntletReadoutValue}>
+        <ClanWarAtlasV95 key={`atlas:${planet.id}`} simulation={simulation} selectedTerritoryId={territoryId} targetTerritoryId={targetId} onSelectTerritory={selectTerritory} onSelectTarget={selectTarget}/>
+      </ClanWarGauntletV131>
       <ClanWarConvoyRouteV105 key={`convoy:${planet.id}`} simulation={simulation} fromId={territoryId} disabled={suspended || !pageActive || !loaded || !strategic.writableWar || pendingWrites > 0} onUpdate={updateConvoy} onInspect={selectTerritory}/>
       <ClanWarCommandV98 key={`command:${planet.id}`} simulation={simulation} selectedTerritoryId={territoryId} onPrepare={prepareSite} onManageGarrison={manageGarrisonSite}/>
       <div className={styles.strategicCommand}>
         <aside className={styles.orderPanel} aria-label="Commandement du territoire" data-testid="war-order-panel-v98"><p className={styles.eyebrow}>{territory.id} · {territory.region}</p><h4>{territory.name}</h4><p>{WAR_FACTIONS_V85[simulation.territories[territoryId].controller]}</p>{simulation.territories[territoryId].controller === "CON-F01" && <><p>Stock sur place <Budget {...simulation.stocks[territoryId]}/></p><p>{warGarrisonV85(simulation, territoryId).length} garde(s) · {supplied.has(territoryId) ? "liaison ouverte" : "liaison absente"}.</p></>}<p>{territory.terrain}</p>
           {simulation.territories[territoryId].controller === "CON-F01" ? <div>
-            <ClanWarGarrisonV99 key={`garrison:${planet.id}:${territoryId}`} simulation={simulation} territoryId={territoryId} disabled={suspended || !pageActive || pendingWrites > 0} onChange={changeGarrison}/>
+            <ClanWarGarrisonV99 key={`garrison:${planet.id}:${territoryId}`} simulation={simulation} territoryId={territoryId} disabled={suspended || !pageActive || pendingWrites > 0 || strategic.staleWar} onChange={changeGarrison}/>
             <label>Ordre<select data-war-order-kind-v98 value={orderKind} onChange={event => { setOrderKind(event.target.value as WarOrderKindV85); setSelectedPeople([]); setConfirmTurn(false); }}>{Object.entries(orderLabels).map(([id, label]) => <option key={id} value={id}>{label}</option>)}</select></label>
             {orderKind !== "heal" && <label>Route voisine<select value={targetId} onChange={event => selectTarget(event.target.value)}>{territory.neighbors.map(id => <option value={id} key={id}>{id.replace("CON-", "")} · {warTerritoryForSimulationV96(simulation, id)?.name}</option>)}</select></label>}
             <fieldset><legend>Personnes au départ · huit maximum</legend><div className={styles.actions}><button type="button" onClick={() => { setSelectedPeople(orderKind === "evacuate" ? warEvacuationSelectionV100(simulation, territoryId) : candidates.filter(actor => !reservedPeople.has(actor.id) && (orderKind === "heal" || !actor.garrison)).slice(0, 8).map(actor => actor.id)); setConfirmTurn(false); }}>{orderKind === "evacuate" ? "Préparer une évacuation sans dégarnir" : orderKind === "heal" ? "Sélectionner les blessés" : "Sélectionner les mobiles"}</button><button type="button" disabled={selectedPeople.length === 0} onClick={() => { setSelectedPeople([]); setConfirmTurn(false); }}>Tout effacer</button></div>{candidates.map(actor => <label className={styles.person} key={actor.id}><input type="checkbox" disabled={reservedPeople.has(actor.id) || selectedPeople.length >= 8 && !selectedPeople.includes(actor.id)} checked={selectedPeople.includes(actor.id)} onChange={event => { setSelectedPeople(current => event.target.checked ? current.length < 8 ? [...current, actor.id] : current : current.filter(id => id !== actor.id)); setConfirmTurn(false); }}/><span>{actor.id} · {warUnitV85(actor.unitTypeId)?.name} · {actor.status === "wounded" ? "blessé · patient" : orderKind === "evacuate" ? `apte · escorte${actor.garrison ? " · garde" : ""}` : actor.garrison ? "garde" : "mobile"}{reservedPeople.has(actor.id) ? " · déjà affecté à un ordre" : ""}<small>{actor.xp} XP · {warVeterancyV85(actor.xp).label}</small></span></label>)}{candidates.length === 0 && <p>Aucune personne disponible pour cet ordre.</p>}</fieldset>
             {orderKind === "evacuate" && <ClanWarEvacuationV100 simulation={simulation} draft={draft}/>}
             {orderKind === "logistics" && <div className={styles.controlGrid}><label>Lots S<input type="number" min={0} max={1000} value={cargoS} onChange={event => setCargoS(Math.max(0, Math.min(1000, Math.floor(Number(event.target.value) || 0))))}/></label><label>Lots M<input type="number" min={0} max={1000} value={cargoM} onChange={event => setCargoM(Math.max(0, Math.min(1000, Math.floor(Number(event.target.value) || 0))))}/></label></div>}
-            <p>Réservation locale <Budget {...selectedCost}/></p><ClanWarOrderPreviewV98 simulation={simulation} draft={draft}/>{orderKind === "attack" ? <ClanWarAssaultV106 key={planet.id} simulation={simulation} draft={draft} disabled={pendingWrites > 0 || suspended || !pageActive} onReserve={plan => queue(false, plan)} onRecon={() => prepareSite(territoryId, targetId, "recon")}/> : <button type="button" data-war-reserve-order-v100 disabled={!!orderIssue || pendingWrites > 0 || suspended || !pageActive} onClick={() => queue()}>Réserver l’ordre</button>}
+            <p>Réservation locale <Budget {...selectedCost}/></p><ClanWarOrderPreviewV98 simulation={simulation} draft={draft}/>{orderKind === "attack" ? <ClanWarAssaultV106 key={planet.id} simulation={simulation} draft={draft} disabled={pendingWrites > 0 || suspended || !pageActive || strategic.staleWar} onReserve={plan => queue(false, plan)} onRecon={() => prepareSite(territoryId, targetId, "recon")}/> : <button type="button" data-war-reserve-order-v100 disabled={!!orderIssue || pendingWrites > 0 || suspended || !pageActive || strategic.staleWar} onClick={() => queue()}>Réserver l’ordre</button>}
             {orderKind === "evacuate" && evacuationConfirmation === evacuationConfirmationKey && <div className={styles.confirm} role="group" aria-label="Confirmer une évacuation sans garde" data-testid="war-evacuation-warning-v100"><p>Cette évacuation engage le dernier garde apte du départ. Si le déplacement aboutit, le site reste contrôlé mais perd sa production jusqu’à une nouvelle garde. Réserver n’avance pas le tour.</p><div className={styles.actions}><button type="button" disabled={pendingWrites > 0 || suspended || !pageActive} onClick={() => queue(true)}>Confirmer l’évacuation sans garde</button><button type="button" onClick={() => { setEvacuationConfirmation(null); setMessage("Évacuation non réservée ; les personnes conservent leurs affectations."); restoreOrderFocus(); }}>Conserver la garde</button></div></div>}
           </div> : <p>{warAtlasIntelV95(simulation, territoryId).label}. Envoyez une reconnaissance depuis un territoire voisin pour actualiser le renseignement.</p>}
           <details><summary>Sites, capture et risques</summary><p>{territory.sites}</p><p>{territory.capture}</p><p>{territory.effect}</p><p>{territory.risk}</p></details>
         </aside>
         <aside className={styles.frontGuide} aria-label="Préparer le tour"><p className={styles.eyebrow}>COMMANDER LE FRONT</p><h4>Reconnaître, engager, tenir</h4><ol><li>Sélectionnez un territoire des Haltes comme départ, puis une destination reliée par une route.</li><li>Choisissez l’ordre et jusqu’à huit personnes présentes. Les réservations utilisent le stock local.</li><li>Relisez les ordres et confirmez le tour : les Forges agissent aussi, les positions et les couleurs évoluent.</li></ol><p>Les Passes autonomes se négocient. Un droit de transit donne accès à leurs routes sans en changer le drapeau.</p><p>Conservez une garnison et une liaison de ravitaillement pour que vos sites produisent. Les personnes gardent leurs blessures et leur expérience.</p><p className={persistedWar ? styles.positive : styles.storage} role="status">{persistedWar ? `Le front de ${planet.name} est archivé sur cet appareil. Changer de planète conserve cette partie.` : pendingWrites > 0 ? `Enregistrement du front de ${planet.name} en cours…` : `Le front de ${planet.name} est conservé en mémoire. La sauvegarde sur cet appareil reste à confirmer.`}</p></aside>
       </div>
-      <div className={styles.orderQueue}><h4>Ordres réservés</h4><p>Deux opérationnels, un logistique et un diplomatique par tour. Le mode de résolution de cet exercice est automatique.</p>{simulation.orders.length === 0 && <p>Aucun ordre. Passer un tour fera agir les Forges et paiera l’entretien.</p>}{simulation.orders.map(order => <div key={order.id}><span>{orderLabels[order.kind]} · {order.fromId.replace("CON-", "")} → {order.targetId.replace("CON-", "")} · {order.combatantIds.join(", ") || "mandat local"}</span><button type="button" onClick={() => { setSimulation(cancelWarOrderV85(simulation, order.id)); setConfirmTurn(false); }}>Retirer</button></div>)}</div>
-      {!confirmTurn ? <button type="button" onClick={() => setConfirmTurn(true)}>Fin de préparation · relire avant résolution</button> : <div className={styles.confirm}><p>Les ordres seront scellés, les détachements adverses agiront avec leurs effectifs présents et l’entretien sera prélevé. Les revenus du prochain tour dépendront des sites encore reliés.</p><div className={styles.actions}><button type="button" onClick={() => { const result = advanceWarTurnV85(simulation); setMessage(result.message); if (result.accepted) setSimulation(result.state); setConfirmTurn(false); setSelectedPeople([]); }}>Confirmer et résoudre le tour</button><button type="button" onClick={() => setConfirmTurn(false)}>Revenir aux ordres</button></div></div>}
+      <div className={styles.orderQueue}><h4>Ordres réservés</h4><p>Deux opérationnels, un logistique et un diplomatique par tour. Le mode de résolution de cet exercice est automatique.</p>{simulation.orders.length === 0 && <p>Aucun ordre. Passer un tour fera agir les Forges et paiera l’entretien.</p>}{simulation.orders.map(order => <div key={order.id}><span>{orderLabels[order.kind]} · {order.fromId.replace("CON-", "")} → {order.targetId.replace("CON-", "")} · {order.combatantIds.join(", ") || "mandat local"}</span><button type="button" disabled={suspended || !pageActive || strategic.pendingWrites > 0 || strategic.staleWar} onClick={() => removeReservedWarOrder(order.id)}>Retirer</button></div>)}</div>
+      {!confirmTurn ? <button type="button" data-testid="war-end-turn-review-v143" disabled={suspended || !pageActive || !loaded || strategic.pendingWrites > 0 || strategic.staleWar} onClick={requestWarTurnReview}>Fin de préparation · relire avant résolution</button> : <div className={styles.confirm} data-testid="war-turn-confirmation-v143"><p>Les ordres seront scellés, les détachements adverses agiront avec leurs effectifs présents et l’entretien sera prélevé. Les revenus du prochain tour dépendront des sites encore reliés.</p><div className={styles.actions}><button type="button" data-testid="war-end-turn-commit-v143" disabled={suspended || !pageActive || !loaded || strategic.pendingWrites > 0 || strategic.staleWar} onClick={resolveReviewedWarTurn}>Confirmer et résoudre le tour</button><button type="button" onClick={() => {confirmTurnRevision.current=null;setConfirmTurn(false);}}>Revenir aux ordres</button></div></div>}
       <details className={styles.roster}><summary>Registre individuel · aptes, blessés et mémorial</summary><div className={styles.scrollTable}><table><thead><tr><th>Personne</th><th>Lieu</th><th>État</th><th>Affectation</th><th>XP</th><th>Vétérance</th></tr></thead><tbody>{simulation.combatants.filter(actor => actor.factionId === "CON-F01").map(actor => <tr key={actor.id}><th>{actor.id}</th><td>{actor.territoryId.replace("CON-", "")}</td><td>{actor.status === "fit" ? "Apte" : actor.status === "wounded" ? "Blessé" : "Mort"}{actor.trainingUntilTurn !== null ? ` · soins jusqu’au tour ${actor.trainingUntilTurn}` : ""}</td><td>{actor.garrison ? "Garnison" : "Détachement"}</td><td>{actor.xp}</td><td>{warVeterancyV85(actor.xp).label}</td></tr>)}</tbody></table></div></details>
       <ol className={styles.log} aria-label="Journal stratégique">{simulation.reports.slice(-12).map(item => <li key={item.id}><strong>Tour {item.turn}</strong> · {item.text}</li>)}</ol>
       <details><summary>Règles de cet exercice stratégique</summary><p>{modularStrategy ? `Ce front V103 comporte ${definitions.length} territoires et ${planet.regions.length} régions. Ses deux forces commencent dans des poches contiguës, chacune avec une base et des sites S/M/I. Les effectifs initiaux couvrent la plus grande région ou le corridor avec une réserve mobile ; les stocks sont dimensionnés pour ce format. La domination exige une garnison apte par région et la liaison à votre base ${modularStrategy.headquarters["CON-F01"].replace("CON-", "")}. L’entretien et les plafonds d’XP suivent les règles communes.` : "Les ressources, effectifs Pxx de départ, entretien et plafonds d’XP reprennent l’exercice de Korthas. Pour rendre la domination possible avec ses 24 personnes, les fronts historiques et V102 utilisent une garnison apte par région : cette adaptation de l’exercice ne modifie pas la fiche source du classeur."} Les autres planètes sont des théâtres du projet avec leurs propres terres, noms et routes. Le modèle automatique compare les effectifs présents à une résistance de même effectif, avec une variation déterministe de 0 ou 1. Il produit des blessures, un éventuel décès et un repli sans recréer les personnes.</p><p>La répartition initiale des stocks, le prix de transit I1, sa durée de deux tours, les soins légers S1 et les cessions au-delà de T07 sont des choix de cet exercice. Une cession y est toujours acceptée après paiement et affectation d’un garde. Les contre-offensives emploient des colonnes réelles ; ce modèle n’est pas encore la diplomatie narrative complète du projet.</p></details>

@@ -1,6 +1,7 @@
 "use client";
 
 import { huntStructuralBarrierV94 } from "./systems/huntStructuralBarrierV94";
+import { loadGauntletRigPartV141 } from "./systems/gauntletMissionVisualV141";
 import { createCorpseDiscoveryV112, stepCorpseDiscoveryV112, restoreCorpseDiscoveryV112,
   corpseDiscoveryReactionV112, corpseZoneFearV112, animalCorpseResponseV112,
   type CorpseDiscoveryStateV112, type DiscoveryActorV112 } from "./systems/corpseDiscoveryV112";
@@ -289,6 +290,8 @@ interface HuntCanvasProps {
   controlBindings?: ControlBindings;
   huntAccessibility?: HuntAccessibilityV112;
   appearance: HunterAppearance;
+  /** Cosmetic-only wrist model chosen before mission entry; never a combat stat. */
+  gauntletVariantId?: string;
   reducedGore: boolean;
   screenShake: boolean;
   highContrastVision: boolean;
@@ -10056,6 +10059,7 @@ export default function HuntCanvas({
   controlBindings,
   huntAccessibility,
   appearance,
+  gauntletVariantId,
   reducedGore,
   screenShake,
   highContrastVision,
@@ -10072,6 +10076,10 @@ export default function HuntCanvas({
   onInvalidateHunt,
   onResumeFailure,
 }: HuntCanvasProps) {
+  // Freeze the model for the current hunt. An external-tab cosmetic preference
+  // update must not restart the same simulation or replace assets mid-combat.
+  const gauntletVisualIdRef=useRef(gauntletVariantId ?? "jungle-hunter");
+  const gauntletVisualId=gauntletVisualIdRef.current;
   const activeBindings = controlBindings ?? DEFAULT_CONTROL_BINDINGS;
   const activeAccessibility = huntAccessibility ?? DEFAULT_HUNT_ACCESSIBILITY_CANVAS_V112;
   const huntRootRef = useRef<HTMLElement | null>(null);
@@ -10546,12 +10554,15 @@ export default function HuntCanvas({
         assets.hunterPlasma[moduleId] = image;
       });
     }
-    for (const [moduleId, path] of Object.entries(
+    for (const [moduleId, legacyPath] of Object.entries(
       HUNTER_EQUIPMENT_V3.gauntlet,
     ) as Array<[HunterGauntletAssetId, string]>) {
-      queueImage(path, (image) => {
-        assets.hunterGauntlet[moduleId] = image;
-      });
+      // Draws the same registered source as HunterRigPreview. Only a missing
+      // image falls back to the V3 generic; never mutate PlayerState / stats.
+      loadTasks.push(
+        loadGauntletRigPartV141(gauntletVisualId,moduleId,loadImage,legacyPath)
+          .then(image=>{if(alive) assets.hunterGauntlet[moduleId]=image;}),
+      );
     }
     for (const [moduleId, path] of Object.entries(
       HUNTER_EQUIPMENT_V3.wristblades,
@@ -11118,6 +11129,7 @@ export default function HuntCanvas({
     };
   }, [
     firstHuntGuideEnabled,
+    gauntletVisualId,
     activeBindings,
     activeAccessibility,
     appearance,

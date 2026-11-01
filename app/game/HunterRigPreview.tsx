@@ -4,6 +4,8 @@
 
 import type { CSSProperties } from "react";
 import { phgMaterialForV113 } from "./hunterMaterialsV113";
+import { gauntletByIdV132 } from "./systems/clanWarGauntletCatalogV132";
+import { gauntletRigSpriteV139 } from "./systems/gauntletRigSpritesV139";
 
 import type {
   ArmorId,
@@ -56,6 +58,8 @@ export interface HunterRigPreviewProps {
   label?: string;
   maskWorn?: boolean;
   gauntletOpen?: boolean;
+  /** Cosmetic wrist-unit identity; V139 loads independent but still unverified rig sprites. */
+  gauntletVariantId?: string;
   bladesExtended?: boolean;
   aiming?: boolean;
   trophyCarried?: boolean;
@@ -374,6 +378,7 @@ export function HunterRigPreview({
   label,
   maskWorn = appearance.biomaskId !== null,
   gauntletOpen = false,
+  gauntletVariantId,
   bladesExtended = false,
   aiming = false,
   trophyCarried = false,
@@ -463,6 +468,8 @@ export function HunterRigPreview({
   const dreadMaterial = phgMaterialForV113("dread", appearance.dreadMaterialId);
   const outfitMaterial = phgMaterialForV113("outfit", appearance.outfitMaterialId);
   const armorFilter = `${ARMOR_FILTER[appearance.armorTintId]} drop-shadow(0 3px 3px rgb(0 0 0 / .82))`;
+  const selectedGauntlet = gauntletByIdV132(gauntletVariantId ?? "jungle-hunter") ?? gauntletByIdV132("jungle-hunter");
+  const rigGauntletId = selectedGauntlet?.id ?? "jungle-hunter";
   const netOpacity =
     appearance.armorStyleId === "feral"
       ? 0.28
@@ -471,7 +478,7 @@ export function HunterRigPreview({
         : 0.9;
   const resolvedLabel =
     label ??
-    buildAccessibleLabel({
+    `${buildAccessibleLabel({
       appearance,
       armorId,
       weaponIds,
@@ -480,7 +487,7 @@ export function HunterRigPreview({
       bladesExtended,
       aiming,
       trophyCarried,
-    });
+    })} Gauntlet de type ${selectedGauntlet?.name ?? "Jungle Hunter"} ; modèle visuel expérimental.`;
 
   const armorSlots: Array<{
     id: string;
@@ -542,6 +549,9 @@ export function HunterRigPreview({
       data-head-style={appearance.headStyleId ?? "reference"}
       data-armor={armorId}
       data-armor-style={appearance.armorStyleId}
+      data-gauntlet-equipped={selectedGauntlet?.id ?? "jungle-hunter"}
+      data-gauntlet-visual-validation="individual-v139-rig-blockout-not-film-approved"
+      data-gauntlet-rig-registration="back-lower-arm-256x384"
       data-mask={
         maskWorn && appearance.biomaskId ? appearance.biomaskId : "off"
       }
@@ -750,13 +760,13 @@ export function HunterRigPreview({
       )}
 
       {registeredLayer(
-        HUNTER_EQUIPMENT_V3.gauntlet.base,
+        gauntletRigSpriteV139(rigGauntletId, "base"),
         gauntletMatrix,
         64,
         "gauntlet-base",
       )}
       {registeredLayer(
-        HUNTER_EQUIPMENT_V3.gauntlet.lid,
+        gauntletRigSpriteV139(rigGauntletId, "lid"),
         lidMatrix,
         65,
         "gauntlet-lid",
