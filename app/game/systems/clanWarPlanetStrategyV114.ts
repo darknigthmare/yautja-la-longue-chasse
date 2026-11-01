@@ -109,14 +109,13 @@ export function analyzeWarPlanetStrategyV114(planet: WarPlanetV96): WarPlanetStr
   const headquarters = headquartersFor(planet, procedural);
   const path = shortestPath(graph, headquarters["CON-F01"], headquarters["CON-F02"]);
   const chokepoints = articulationPoints(graph);
+  // Capture the V115 discriminant outside asynchronous/iterator callbacks.
+  // A V102/V103 world keeps the historical unitless distance.
+  const planetSizeV115 = procedural?.recipe.version === 115 ? procedural.recipe.planetSize : null;
   const territoryRegion = new Map<string, string>();
   for (const region of planet.regions) for (const id of region.territoryIds) territoryRegion.set(id, region.id);
 
   const crossingRoutes = procedural?.routes.filter(route => route.kind === "crossing") ?? [];
-  // V115 extends V103, but its physical distance cannot be read on a V103
-  // recipe. Check the owning procedural shape before using the radius.
-  const physicalV115 = procedural && "physical" in procedural && procedural.recipe.version === 115
-    ? procedural : null;
 
   const definitionById = new Map(planet.definitions.map(item => [item.id, item] as const));
   const regionName = new Map(planet.regions.map(item => [item.id, item.name] as const));
@@ -150,11 +149,11 @@ export function analyzeWarPlanetStrategyV114(planet: WarPlanetV96): WarPlanetStr
     territoryCount: planet.territories.length, regionCount: planet.regions.length,
     topology: topologyFor(planet, procedural), scale: scaleFor(planet.territories.length), headquarters,
     headquartersDistance: Math.max(0, path.length - 1),
-    ...(physicalV115 ? {
+    ...(planetSizeV115 !== null ? {
       headquartersDistanceKm: Math.round(path.slice(1).reduce((distance, target, index) => {
         const source = path[index];
-        const route = physicalV115.routes.find(item => (item.fromId === source && item.toId === target) || (item.fromId === target && item.toId === source));
-        return distance + (route ? planetArcKilometersV115(route.distanceDegrees, physicalV115.recipe.planetSize) : 0);
+        const route = procedural?.routes.find(item => (item.fromId === source && item.toId === target) || (item.fromId === target && item.toId === source));
+        return distance + (route ? planetArcKilometersV115(route.distanceDegrees, planetSizeV115) : 0);
       }, 0)),
     } : {}),
     headquartersPath: path,
