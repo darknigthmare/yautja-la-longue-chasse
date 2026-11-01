@@ -1,0 +1,24 @@
+name: Alien Base bestiary archive contract
+on:
+  pull_request:
+    paths:
+      - 'app/game/alienBaseArchiveV1.ts'
+      - 'app/game/AlienBaseArchiveV1.tsx'
+      - 'app/game/AlienBaseArchiveV1.module.css'
+      - 'app/game/EnemyBestiaryV8.tsx'
+      - 'tests/alien-base-archive-v1.test.mjs'
+      - '.github/workflows/alien-base-archive-v1.yml'
+  push:
+    branches: [feat/alien-base-crossgame-bestiary-20261101]
+permissions:
+  contents: read
+jobs:
+  contract:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate distinct film identities and no gameplay admission
+        run: node --test tests/alien-base-archive-v1.test.mjs
