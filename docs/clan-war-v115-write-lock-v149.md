@@ -35,3 +35,24 @@ passent au total. Un mandat et un recrutement réels arrivant à échéance ense
 ont aussi été réglés tous deux : le test avance Date.now sans modifier les
 enregistrements. La minuterie RTS, les soins simultanés, les anciens clients et
 le cloud restent à vérifier séparément.
+
+## V149 — Minuterie RTS réelle sous verrou inter-onglets (1er novembre 2026)
+
+Le banc `scripts/qa-clan-war-v115-multitab-v148.mjs` ouvre désormais une
+bataille RTS V115 réellement jouable en temps réel. Dans le second onglet, un
+Web Lock exclusif est maintenu pendant plusieurs ticks ; le test vérifie que le
+compteur de simulation RTS ne progresse pas pendant cette contention. Il
+relâche ensuite le verrou et contrôle que les tours reprennent à partir du même
+état sauvegardé, sans toucher à la sentinelle de campagne.
+
+**Preuve reproductible :** [CI GitHub Actions 41318722592](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41318722592)
+— **15 contrôles Chromium réussis**, six tests Node réussis, deux fichiers
+XLSX V148/V149 structurellement validés. Le nouveau test n'a pas neutralisé
+les ennemis, les cartes, les règles PC/RAV ou les écritures de campagne.
+
+**Limites :** la preuve porte sur deux onglets coopérants d'un même navigateur.
+Elle ne garantit pas les clients anciens sans Web Locks, les appareils différents,
+la synchronisation cloud, une partie multijoueur autoritaire, l'exécution
+ininterrompue lorsque le navigateur suspend l'onglet, ni la fidélité visuelle
+1:1 du bracelet et des espèces Yautja. Les soins arrivant à échéance ensemble
+restent un scénario distinct à couvrir.
