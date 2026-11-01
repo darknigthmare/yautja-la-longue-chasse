@@ -101,7 +101,14 @@ function fullSourceMission(id){
  assert.equal(end.report?.sourceCells.length,25);
  assert.equal(end.report?.escortExtracted,Boolean(end.tracked));
  assert.equal(issue(end,{kind:"extract",squadId}).accepted,false,"no duplicate result receipt");
- return end;
+ // The objective-only test temporarily removed environmental hazards to
+ // isolate mission routing. A modified map MUST NOT pass the Council source
+ // gate; restore the immutable authored map solely for receipt QA. This does
+ // NOT certify any real gameplay history or a server-authenticated victory.
+ const tampered=api.buildWarCouncilAuditV147(null,end,rules);
+ assert.equal(tampered.total,0,id+" altered map must not be source-certified");
+ const sourceMap=api.createWarRtsSquadsV133(id,rules).map;
+ return {...end,map:sourceMap};
 }
 
 
