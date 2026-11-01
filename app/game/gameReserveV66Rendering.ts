@@ -66,14 +66,19 @@ export function drawGameReserveV66(ctx: CanvasRenderingContext2D, s: GameReserve
       const atmosphere = ctx.createLinearGradient(0, 120, 0, 540); atmosphere.addColorStop(0, sector.atmosphere + "16"); atmosphere.addColorStop(1, sector.atmosphere + "66");
       ctx.fillStyle = atmosphere; ctx.fillRect(sector.left, 0, sector.right - sector.left, 540);
     }
-    ctx.drawImage(bank.machinery, 8560, 105, 570, 330);
-    ctx.drawImage(bank.machinery, 10020, 310, 220, 125);
-    ctx.drawImage(bank.machinery, 12310, 145, 310, 142);
+    if (s.version === 3) {
+      ctx.drawImage(bank.machinery, 8560, 105, 570, 330);
+      ctx.drawImage(bank.machinery, 10020, 310, 220, 125);
+      ctx.drawImage(bank.machinery, 12310, 145, 310, 142);
+    }
   }
   // Derelict machine walls stay behind the walkable strip. Native hulls never sit on the canopy route.
   if (biome) {
     for (const sector of biome.sectors) {const atmosphere = ctx.createLinearGradient(0,120,0,540);atmosphere.addColorStop(0,sector.atmosphere+'10');atmosphere.addColorStop(1,sector.atmosphere+'45');ctx.fillStyle=atmosphere;ctx.fillRect(sector.left,0,1600,540);}
     for (const ship of ships) ctx.drawImage(bank.machinery,ship.x-140,310,280,125);
+  } else if (s.version === 4) {
+    // Avar’Kesh has its own geography: its machinery follows its own transports, never Vharuun's wall positions.
+    for (const ship of ships) ctx.drawImage(bank.machinery, ship.x - 140, 310, 280, 125);
   } else {ctx.drawImage(bank.machinery, 1960, 200, 690, 233); ctx.drawImage(bank.machinery, 4310, 251, 380, 182);}
   if (s.version === 2) {
     // Existing native machinery marks the lookout; the survey icon is functional HUD, not a new prop asset.
@@ -93,6 +98,14 @@ export function drawGameReserveV66(ctx: CanvasRenderingContext2D, s: GameReserve
     ctx.strokeStyle=recorded?'#8dcbb8':'#f0dba6';ctx.lineWidth=2;ctx.strokeRect(site.x-12,site.y-46,24,32);
     label(ctx,recorded?site.name+' · CONSIGNÉ':site.name+' · RELEVÉ (2 s)',site.x,site.y-70,recorded?'#a1dac3':'#f0dba6');
   }
+  // Transport hulls sit behind the hunter's walkways: a ledge crossing a hull stays readable and is never hidden by it.
+  for (let n = 0; n < s.ships.length; n++) {
+    const ship = s.ships[n], definition = ships[n], elapsed = ship.departedAt === null ? 0 : s.tick - ship.departedAt;
+    if (elapsed >= 150) continue;
+    const lift = ship.departedAt !== null ? Math.min(600, elapsed * 3.5) : ship.launch !== null && !reducedMotion ? Math.sin(s.tick / 8) * 1.4 : 0;
+    // Measured native alpha rectangle; a 3/4 side cutout is retained without distorting its perspective.
+    ctx.drawImage(bank.ship, 152, 146, 1385, 525, definition.x - 195 + elapsed * 1.5, 435 - 149 - lift, 392, 149);
+  }
   for (const platform of platforms) {
     const image = biome ? 'kind' in platform && platform.kind === 'gantry' ? bank.industrialPlatform : bank.branch : s.version === 4 ? [2, 3, 5, 7].includes(Math.floor(platform.x / 1600)) ? bank.industrialPlatform : bank.branch : platform.x >= 1700 && platform.x < 3000 || s.version === 3 && platform.x >= 8000 && platform.x < 9600 || s.version === 3 && platform.x >= 11200 ? bank.industrialPlatform : bank.branch;
     if (biome) ctx.drawImage(image,24,24,image.naturalWidth-48,image.naturalHeight-48,platform.x,platform.y,platform.w,platform.w*(image.naturalHeight-48)/(image.naturalWidth-48));
@@ -108,12 +121,7 @@ export function drawGameReserveV66(ctx: CanvasRenderingContext2D, s: GameReserve
     if (s.deniedSupplies?.[n]) label(ctx, s.deniedSupplies[n] + " lot(s) neutralisé(s)", supplies[n], 477, "#d9bd9d");
   });
   for (let n = 0; n < s.ships.length; n++) {
-    const ship = s.ships[n], definition = ships[n], elapsed = ship.departedAt === null ? 0 : s.tick - ship.departedAt;
-    if (elapsed < 150) {
-      const lift = ship.departedAt !== null ? Math.min(600, elapsed * 3.5) : ship.launch !== null && !reducedMotion ? Math.sin(s.tick / 8) * 1.4 : 0;
-      // Measured native alpha rectangle; a 3/4 side cutout is retained without distorting its perspective.
-      ctx.drawImage(bank.ship, 152, 146, 1385, 525, definition.x - 195 + elapsed * 1.5, 435 - 149 - lift, 392, 149);
-    }
+    const ship = s.ships[n], definition = ships[n];
     const status = ship.departedAt !== null ? "Parti" : ship.launch !== null ? "Départ " + Math.max(0, 15 - Math.floor((s.tick - ship.launch) / 60)) + " s" : "Pièces " + Math.min(3, ship.parts) + "/3 · réparation " + Math.floor(ship.repair / 36) + " %";
     label(ctx, definition.name, definition.x, 242); label(ctx, status, definition.x, 266, ship.launch !== null ? "#ffc276" : "#b8d3c2");
     if (ship.departedAt === null) { ctx.strokeStyle = ship.launch !== null ? "#ffc276" : "#7cbcaf"; ctx.lineWidth = ship.launch !== null ? 3 : 1; ctx.strokeRect(definition.x - 25, 399, 50, 39); label(ctx, ship.launch !== null ? "RAMPE · SABOTAGE POSSIBLE" : "Accès", definition.x, 459, ship.launch !== null ? "#ffc276" : "#e9efd4"); }
