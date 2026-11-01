@@ -38,10 +38,3 @@ tests
 # This exact historical group is served by the SHA-pinned beforeFiles rewrite.
 # Exclude it at packaging time instead of mutating mounted generated copies.
 /public/game/imports/v85
-
-# Claude Code Game Studios workflow files are development tooling, not deployment sources.
-/.claude
-/studio-tests
-/design
-/production
-/project.yaml
