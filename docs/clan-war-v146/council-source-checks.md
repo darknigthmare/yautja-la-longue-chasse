@@ -44,3 +44,31 @@ L'addendum `Yautja_Conseil_V146_Controle_Source_Addendum.xlsx` conserve le
 classeur V146 historique intact. Il rectifie le terme « authentifié » de
 `CW146-RTS-001`, distingue les preuves locales des contrôles encore requis et
 ne promeut aucun statut avant une CI effective.
+
+## V147 — cohérence du budget, des détachements et du terrain source
+
+Le contrôle du Conseil vérifie désormais **la totalité de la carte source W3**
+(reconstruite à partir du scénario V6, y compris ses tuiles et ses zones de
+danger), plutôt que seulement les points de départ, objectif et sortie.
+Il refuse les changements concordants de l'état local et de son reçu si le
+terrain n'est plus celui du contrat.
+
+Les formations du reçu sont aussi confrontées aux définitions V6 : identifiants
+de détachements propres à la mission et sans doublons, effectifs, nom d'unité,
+attaque, défense, portée, mobilité, PV maximum, PV courants et entretien RAV.
+Le plafond PC doit être celui de la mission et la somme des coûts PC doit être
+exactement le montant engagé. Les groupes non déployés ne peuvent pas apparaître
+dans un reçu final.
+
+**Limite :** il s'agit d'une validation de cohérence statique d'une archive
+locale, ni d'une signature, ni d'une relecture autoritaire des ordres. Un
+utilisateur peut encore modifier ses propres états client ; aucune preuve de
+conquête V85 n'est créée. Cette extension ne modifie ni les règles de combat
+ni les récompenses des quatre modes.
+
+Le suivi Excel-compatible [QA_Conseil_V147_Rosters_Terrain.csv](QA_Conseil_V147_Rosters_Terrain.csv)
+contient 20 points de contrôle, dont des prérequis physiques et 1:1 toujours
+ouverts. Le classeur binaire V146 et son addendum ne sont pas modifiés dans
+ce lot. Les nouveaux cas de falsification sont testés dans
+`tests/clan-war-council-v146.test.mjs`. Les parcours manette, navigateur,
+multijoueur, assets et fidélité planétaire restent à vérifier manuellement.
