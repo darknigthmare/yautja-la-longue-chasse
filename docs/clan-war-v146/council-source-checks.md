@@ -14,7 +14,7 @@ certifiés par un serveur ; le contrôle n'est pas un anti-triche complet.
 
 Le test `clan-war-council-v146.test.mjs` essaie notamment des modifications
 cohérentes du reçu *et* de l'état, ainsi qu'une victoire prématurée. Le test
-`clan-war-rts-squads-v133.test.mjs` vérifie que les 24 scénarios W3 terminés
+`clan-war-council-v146-victories.test.mjs` vérifie que les 24 scénarios W3 terminés
 par parcours d'objectifs isolé restent recevables. Ce parcours désactive les
 ennemis et les aléas ; il ne démontre pas une victoire en conditions complètes,
 une compatibilité multijoueur, une QA navigateur ou une fidélité artistique 1:1.
