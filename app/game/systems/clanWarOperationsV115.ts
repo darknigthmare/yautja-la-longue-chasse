@@ -88,6 +88,8 @@ export interface WarOuterMissionV115 {
   departureContext?: {intel:boolean;weakened:boolean;escorted:boolean;pressure:number};
   /** V142 authorized alternative passage selection; optional for old archives. */
   routeChoiceId?:string;
+  /** Optional #57 pace order, retained across historical V115 saves. */
+  forcedPace?:{orderedAt:number;originalDueAt:number;paidRav:3;savedMs:8000};
   routeDiversion?:{fromPassageIds:string[];originalDueAt:number;changedAt:number;paidRav:1};
   routeIncident?:{
     passageId:string;sourceIncident:string;kind:"secure"|"detour";
@@ -917,7 +919,7 @@ export function simulateWarOuterMissionV115(
   const strength=Math.round((order.focus==="recon"?scout*1.4:order.focus==="escort"?shield*.9:assault*.9)+support+sabotage+escorted+pressure+fieldBonus+reconHaltBonus+incidentBonus);
   const roll=(round:number)=>hashSeed(order.id+"-"+order.targetId+"-"+order.focus+"-"+round)%11-5;
   const baseThreat=Math.max(8,territory.terrainDefense+order.routeIds.length*2);
-  const threshold=order.focus==="recon"?Math.round(baseThreat*.7):order.focus==="escort"?Math.round(baseThreat*.9):baseThreat;
+  const threshold=(order.focus==="recon"?Math.round(baseThreat*.7):order.focus==="escort"?Math.round(baseThreat*.9):baseThreat)+(order.forcedPace?2:0);
   const engagementLog=[
     ...(order.departureContext?["Briefing V139 figé au départ : aucun bonus stratégique rétroactif."]:[]),
     ...(order.fieldSignal?["Bulletin V138 : "+order.fieldSignal.assessment+
@@ -926,6 +928,7 @@ export function simulateWarOuterMissionV115(
     ...(order.retask?["Réorientation V135 : "+order.retask.oldFocus+" → "+order.focus+" à "+order.retask.changedAt+" ; aucun coût ou résultat anticipé."]:[]),
     ...(order.fieldSupport?["Soutien V136 : 2 RAV réels engagés à "+order.fieldSupport.allocatedAt+
       " ; +4 capacité de terrain sur ce mandat uniquement."]:[]),
+    ...(order.forcedPace?["Marche forcée V144 : 3 RAV engagés, échéance avancée de 8 secondes, résistance +2."]:[]),
     ...(order.routeIncident?["Incident de passage V143 "+order.routeIncident.passageId+
       " : "+order.routeIncident.sourceIncident+" · décision "+order.routeIncident.kind+
       " · "+order.routeIncident.paidRav+" RAV engagés, aucun résultat anticipé."]:[]),
@@ -1059,6 +1062,18 @@ export function readWarOperationsV115(raw:string,rules:WarRulesV6):WarOperations
     if(v.outer.some(order=>!isTextId(order.id)||!sites.has(order.targetId)||!Array.isArray(order.teamIds)||
       !order.teamIds.length||order.teamIds.some(id=>!ownTeam(v,id))||!Number.isSafeInteger(order.dueAt)||
       !Number.isSafeInteger(order.startedAt)||order.startedAt<0||order.dueAt<=order.startedAt||order.dueAt-order.startedAt>86400000||
+      (order.forcedPace!==undefined&&(!order.forcedPace||
+        typeof order.forcedPace!=="object"||Array.isArray(order.forcedPace)||
+        !Number.isSafeInteger(order.forcedPace.orderedAt)||
+        !Number.isSafeInteger(order.forcedPace.originalDueAt)||
+        order.forcedPace.orderedAt<order.startedAt||
+        4*(order.forcedPace.orderedAt-order.startedAt)>
+          order.forcedPace.originalDueAt-order.startedAt||
+        order.forcedPace.paidRav!==3||order.forcedPace.savedMs!==8000||
+        order.forcedPace.originalDueAt-8000!==(order.recall?.originalDueAt??order.dueAt)||
+        order.forcedPace.orderedAt+2000>=order.forcedPace.originalDueAt-8000||
+        order.routeDiversion!==undefined||order.reconHalt!==undefined||order.routeIncident!==undefined||
+        (order.recall!==undefined&&order.forcedPace.orderedAt>order.recall.orderedAt)))||
       (order.routeDiversion!==undefined&&(!order.routeDiversion||
         typeof order.routeDiversion!=="object"||
         !Array.isArray(order.routeDiversion.fromPassageIds)||

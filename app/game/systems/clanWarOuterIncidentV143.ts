@@ -14,7 +14,7 @@ export type WarOuterIncidentDecisionV143="secure"|"detour";
 export function warOuterIncidentV143(
  order:WarOuterMissionV115,now:number,rules:WarRulesV6,
 ):WarOuterIncidentVisibleV143|null {
- if(order.recall||order.routeIncident||!Number.isSafeInteger(now)||
+ if(order.recall||order.forcedPace||order.routeIncident||!Number.isSafeInteger(now)||
     now<=order.startedAt||now>=order.dueAt)return null;
  const progress=warOuterWeightedProgressV141(order,now,rules);
  if(progress.phase!=="outbound"||!progress.currentPassageId)return null;
@@ -39,7 +39,7 @@ export function commandWarOuterIncidentV143(
  if(state.sourceSha!==rules.metadata.sha256||!["secure","detour"].includes(decision))
   return fail("Source V6 ou décision d'incident invalide.");
  const order=state.outer.find(m=>m.id===operationId);
- if(!order||order.recall||order.routeIncident)
+ if(!order||order.recall||order.forcedPace||order.routeIncident)
   return fail("Mandat indisponible, rappel en cours ou incident déjà traité.");
  const publicIncident=warOuterIncidentV143(order,now,rules);
  if(!publicIncident)return fail("Aucun incident public traversé par cette équipe à cette heure.");

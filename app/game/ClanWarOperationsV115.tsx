@@ -37,6 +37,7 @@ import {commandWarAssaultInterposeV145} from "./systems/clanWarInterposeV145";
 import {warOuterTravelLedgerV145} from "./systems/clanWarTravelLedgerV145";
 import {buildWarCouncilAuditV146} from "./systems/clanWarCouncilAuditV146";
 import {commandWarOuterRerouteV144} from "./systems/clanWarOuterRerouteV144";
+import {commandWarOuterPaceV144} from "./systems/clanWarOuterPaceV144";
 import {commandWarStealthAlertReinforcementV144,setStealthReinforcementMode} from "./systems/clanWarStealthReinforcementV144";
 import {commandWarStealthDashV143} from "./systems/clanWarStealthDashV143";
 import {commandWarOuterIncidentV143,warOuterIncidentV143} from "./systems/clanWarOuterIncidentV143";
@@ -882,7 +883,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
         {order.fieldSupport&&<small className={styles.explain}>Soutien de terrain V136 : {order.fieldSupport.paidRav} RAV engagés à {order.fieldSupport.allocatedAt} ; aucune victoire anticipée.</small>}
         {order.reconHalt&&<small className={styles.explain}>Halte V137 : ancienne échéance {order.reconHalt.originalDueAt}, nouveau rapport après 15 secondes supplémentaires ; effectifs et route inchangés.</small>}
         {order.departureContext&&<small className={styles.explain}>Briefing figé au départ : renseignements {order.departureContext.intel?"confirmés":"non confirmés"}, relais {order.departureContext.weakened?"affaibli":"non confirmé"}, pression {order.departureContext.pressure}. Les résultats ultérieurs des autres modes ne modifient pas ce mandat.</small>}
-        {!order.recall&&!order.routeDiversion&&!order.routeIncident&&!order.reconHalt&&
+        {!order.recall&&!order.forcedPace&&!order.routeDiversion&&!order.routeIncident&&!order.reconHalt&&
           now>=order.startedAt&&now-order.startedAt<=Math.min(5000,
             (order.dueAt-order.startedAt)*.15)&&
           earlyOptions.length>0&&<div className={styles.cards}>
@@ -918,11 +919,11 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
         {order.fieldSignal&&<p className={styles.explain}>Transmission V138 : <strong>{order.fieldSignal.assessment}</strong> · {order.fieldSignal.passages} passage(s) connus, {order.fieldSignal.fitMembers} membre(s) aptes. Ceci ne dévoile ni garnison cachée, ni résultat de combat.</p>}
         {!order.recall&&!order.fieldSignal&&now>=order.startedAt+
           Math.ceil(((order.reconHalt?.originalDueAt??order.routeIncident?.originalDueAt??order.dueAt)-order.startedAt)/2)&&
-          now<order.dueAt&&<button type="button" disabled={blocked}
+          now<order.dueAt&&(!order.forcedPace||transit.legProgress>=.5)&&<button type="button" disabled={blocked}
            onClick={()=>commit(requestWarOuterSignalV138(worldRef.current,order.id,Date.now(),rules))}>
            Obtenir le bulletin de terrain · aucune résolution anticipée
           </button>}
-        {!order.recall&&!order.reconHalt&&(order.focus==="recon"||order.focus==="escort")&&
+        {!order.recall&&!order.forcedPace&&!order.reconHalt&&(order.focus==="recon"||order.focus==="escort")&&
           now>=order.startedAt&&2*(now-order.startedAt)<order.dueAt-order.startedAt&&
           <button type="button" disabled={blocked}
            onClick={()=>commit(orderWarOuterReconHaltV137(worldRef.current,order.id,Date.now(),rules))}>
@@ -934,6 +935,13 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
             onClick={()=>commit(supplyWarOuterMissionV136(worldRef.current,order.id,Date.now(),rules))}>
             Envoyer des fournitures de terrain · 2 RAV
           </button>}
+        {!order.recall&&!order.forcedPace&&!order.routeDiversion&&!order.routeIncident&&!order.reconHalt&&!order.fieldSignal&&
+          now>=order.startedAt&&4*(now-order.startedAt)<=order.dueAt-order.startedAt&&
+          <button type="button" disabled={blocked||world.rav<3}
+           onClick={()=>commit(commandWarOuterPaceV144(worldRef.current,order.id,Date.now(),rules))}>
+           Marche forcée · 3 RAV · retour avancé de 8 s · résistance +2
+          </button>}
+        {order.forcedPace&&<small className={styles.explain}>Marche forcée : 3 RAV engagés, aucun résultat anticipé.</small>}
       </div>;}):<p>Aucune équipe actuellement déléguée.</p>}
       <button type="button" disabled={blocked||!world.outer.some(order=>now>=order.dueAt)}
         onClick={()=>commit(settleWarOuterOpsV115(worldRef.current,Date.now(),rules))}>Recevoir les rapports arrivés</button>

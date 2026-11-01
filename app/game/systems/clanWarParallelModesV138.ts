@@ -5,6 +5,7 @@ import type {
 import {
  warTerrainLineOfSightV116,type WarMissionTerrainV116,
 } from "./clanWarMissionTerrainV116";
+import {warOuterRouteProgressV140} from "./clanWarOuterRouteProgressV140";
 
 /**
  * V138 — gameplay tactics based on the V6 game's actual teams and routes.
@@ -78,7 +79,7 @@ export function requestWarOuterSignalV138(
   return deny(state,"Rapport de terrain déjà émis, mandat clos ou rappel en cours.");
  const baseDueAt=order.reconHalt?.originalDueAt??order.routeIncident?.originalDueAt??order.dueAt;
  if(now<order.startedAt+Math.ceil((baseDueAt-order.startedAt)/2)||
-    now>=order.dueAt)
+    now>=order.dueAt||(order.forcedPace&&warOuterRouteProgressV140(order,now,rules).legProgress<.5))
   return deny(state,"Transmission terrain autorisée seulement après la mi-parcours réelle, avant le retour.");
  const territory=rules.territories.find(t=>t.id===order.targetId);
  if(!territory)return deny(state,"Territoire du mandat absent de la Bible V6.");
