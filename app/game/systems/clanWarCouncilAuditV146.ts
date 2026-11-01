@@ -60,8 +60,7 @@ function hasKnownRtsSource(state:WarRtsSquadsStateV133,rules:WarRulesV6):boolean
    sameSourceValue(state.mission,mission)&&
    state.mission.mapId===mission.mapId&&state.mission.planetId===mission.planetId&&
    state.map.id===map.id&&state.map.planetId===map.planetId&&
-   sameSourceValue(state.map.start,map.start)&&sameSourceValue(state.map.goal,map.goal)&&
-   sameSourceValue(state.map.extraction,map.extraction)&&
+   sameSourceValue(state.map,map)&&hasSourceRtsRoster(state,rules)&&
    state.initialRav===mission.initialRav&&Number.isSafeInteger(state.ravRemaining)&&
    state.ravRemaining>=0&&state.ravRemaining<=state.initialRav&&
    Number.isSafeInteger(state.turn)&&state.turn>=0&&
@@ -78,6 +77,39 @@ function hasKnownRtsSource(state:WarRtsSquadsStateV133,rules:WarRulesV6):boolean
  } catch {
   return false;
  }
+}
+/**
+ * Local V6 budget and roster consistency. No combatant identity or combat
+ * history is authenticated here; this rejects impossible saved formations,
+ * inflated statistics and fictional command-point allowances.
+ */
+function hasSourceRtsRoster(state:WarRtsSquadsStateV133,rules:WarRulesV6):boolean {
+ if(state.pcMaximum!==state.mission.pcMaximum||
+    !Number.isSafeInteger(state.pcCommitted)||
+    !Number.isSafeInteger(state.nextSquadNumber)||
+    state.nextSquadNumber<3)return false;
+ const prefix="W133-"+state.mission.id+"-ALLY-";
+ const seen=new Set<string>();
+ let spent=0;
+ for(const squad of state.squads){
+  const suffix=squad.id.startsWith(prefix)?squad.id.slice(prefix.length):"";
+  const number=Number(suffix);
+  const unit=rules.units.find(u=>u.id===squad.unitId&&u.fullMembers>0&&u.commandPoints>0);
+  if(!unit||!/^[1-9]\\d*$/.test(suffix)||!Number.isSafeInteger(number)||
+     number>=state.nextSquadNumber||seen.has(squad.id))return false;
+  seen.add(squad.id);
+  const hpCap=Math.max(7,Math.min(28,5+Math.ceil(unit.defense/3)+unit.fullMembers));
+  const range=Math.max(1,Math.min(4,unit.range));
+  if(squad.unitName!==unit.name||squad.memberCount!==unit.fullMembers||
+     squad.maxHp!==hpCap||!Number.isSafeInteger(squad.hp)||
+     squad.hp<0||squad.hp>hpCap||
+     squad.attack!==unit.attack||squad.defense!==unit.defense||
+     squad.range!==range||squad.mobility!==unit.mobility||
+     squad.commandPoints!==unit.commandPoints||squad.upkeepRav!==unit.upkeepRav||
+     squad.status==="ready")return false;
+  spent+=unit.commandPoints;
+ }
+ return spent===state.pcCommitted&&spent<=state.pcMaximum;
 }
 const staticMissing:Record<WarCouncilModeV146,string[]>={
  assault:["Chronologie spatiale des touches non archivée dans le rapport V115",
