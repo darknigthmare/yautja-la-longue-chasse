@@ -43,7 +43,7 @@ assert.equal(started.accepted,true,started.message);
 const before=started.state;
 assert.equal(api.readWarOperationsV115(JSON.stringify(before),rules)?.active?.mode,"stealth");
 // Exhaustively try ordinary player actions; no direct mutation of actor/guard state.
-const queue=[before],seen=new Set();let found,prior;
+const queue=[before],seen=new Set();let found,prior,triggerAction;
 for(let i=0;i<queue.length&&i<12000&&!found;i++){
  const s=queue[i].active?.stealth;if(!s)continue;
  const key=JSON.stringify([s.x,s.y,s.guardX,s.guardY,s.guardDirection,s.alarm,s.energy,s.cloaked,s.decoyUsed,s.decoyTurns]);
@@ -53,7 +53,7 @@ for(let i=0;i<queue.length&&i<12000&&!found;i++){
  for(const action of ["up","down","left","right","wait","decoy"]){
   const next=api.commandStealthV115(queue[i],action,rules);
   if(next.accepted&&next.state.active?.mode==="stealth"){
-   if(next.state.active.stealth.secondGuard){prior=queue[i];found=next.state;break;}
+   if(next.state.active.stealth.secondGuard){prior=queue[i];found=next.state;triggerAction=action;break;}
    queue.push(next.state);
   }
  }
@@ -63,7 +63,7 @@ const genuineRuntimeSave=JSON.stringify(found);
 assert.ok(api.readWarOperationsV115(genuineRuntimeSave,rules));
 assert.ok(prior);
 const legacyRaw=JSON.stringify(prior),storage="yautja.clan-war.v115.operations.free.v1";
-const server=await createServer({configFile:false,server:{host:"127.0.0.1",port:0,strictPort:false},appType:"spa"});
+const server=await createServer({configFile:false,publicDir:false,define:{"process.env":"{}"},esbuild:{jsx:"automatic"},server:{host:"127.0.0.1",port:0,strictPort:false},appType:"spa"});
 let browser;
 try{
  await server.listen();
@@ -110,5 +110,36 @@ try{
  await second.page.reload();
  await second.page.getByText("Renfort déjà présent",{exact:false}).waitFor();
  assert.deepEqual(second.errors,[]);await second.context.close();
- console.log(JSON.stringify({sourceCommit:sha,source:"runtime-generated from unmodified PR57 source; not a historical user archive",exploredStates:seen.size,guardTick:found.active.tick,chromium:browser.version(),checks:"both ambiguous choices, no load write, state preservation, reload, original runtime guard migration and action"}));
+ if(process.env.QA_GAME_CLIENT==="1"){
+  const context=await browser.newContext();
+  await context.addInitScript(({storage,raw})=>{if(localStorage.getItem(storage)===null)localStorage.setItem(storage,raw);},{storage,raw:legacyRaw});
+  const page=await context.newPage(),errors=[];
+  page.on("pageerror",err=>errors.push(err.message));
+  await page.goto(origin+"/tests/browser/stealth-game-client.html",{timeout:90000});
+  async function openFromMenu(){
+   await page.getByRole("button",{name:"Guerres des clans",exact:false}).first().click({timeout:90000});
+   await page.getByRole("button",{name:"Accéder malgré les spoilers"}).click();
+   await page.getByRole("button",{name:"Bible V6 · règles actuelles"}).click({timeout:90000});
+   await page.getByRole("button",{name:"Opérations jouables · 4 modes"}).click();
+   await page.getByText("Rejoindre le relais",{exact:false}).waitFor();
+  }
+  await openFromMenu();
+  assert.equal(await page.evaluate(key=>localStorage.getItem(key),storage),legacyRaw);
+  await page.getByText("Cette archive ne précise pas",{exact:false}).waitFor();
+  await page.getByLabel("Règle de renfort :").selectOption("decoy");
+  const state=JSON.parse(await page.evaluate(key=>localStorage.getItem(key),storage));
+  assert.equal(state.active.stealth.reinforcementMode,"decoy");
+  const rest={...state.active.stealth};delete rest.reinforcementMode;
+  assert.deepEqual(rest,JSON.parse(legacyRaw).active.stealth);
+  await page.reload({timeout:90000});await openFromMenu();
+  assert.equal(await page.getByLabel("Règle de renfort :").inputValue(),"decoy");
+  const actionLabels={up:"↑ Nord",down:"↓ Sud",left:"← Ouest",right:"→ Est",wait:"Attendre / récupérer énergie",decoy:"Diversion sonore (2 énergie)"};
+  await page.getByRole("button",{name:actionLabels[triggerAction],exact:true}).click();
+  const afterAction=JSON.parse(await page.evaluate(key=>localStorage.getItem(key),storage));
+  assert.ok(afterAction.active?.stealth?.supportGuard,"GameClient must persist the guard after the triggering action");
+  assert.equal(afterAction.active.tick,prior.active.tick+1);
+  assert.equal(await page.evaluate(()=>localStorage.getItem("yautja-long-hunt.save")),null,"exercise must not write the campaign");
+  assert.deepEqual(errors,[]);await context.close();
+ }
+ console.log(JSON.stringify({sourceCommit:sha,source:"runtime-generated from unmodified PR57 source; not a historical user archive",exploredStates:seen.size,guardTick:found.active.tick,triggerAction,gameClient:process.env.QA_GAME_CLIENT==="1",chromium:browser.version(),checks:"both ambiguous choices, no load write, state preservation, reload, original runtime guard migration and action"}));
 }finally{if(browser)await browser.close();await server.close();}
