@@ -17,3 +17,8 @@
 .composition input { width: 17px; height: 17px; accent-color: #94bb81; }
 .composition p { flex-basis: 100%; margin: 0 !important; font-size: .74rem; }
 .composition:disabled { opacity: .6; }
+
+.texturePreviewPanel{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:12px}
+.texturePreviewPanel canvas{display:block;width:160px;height:160px;max-width:100%;border:1px solid #536d61;border-radius:8px;image-rendering:auto;background:#14272b}
+.texturePreviewPanel p{flex:1 1 220px;max-width:560px;margin:0!important}
+@media(max-width:480px){.texturePreviewPanel{align-items:start}.texturePreviewPanel canvas{width:140px;height:140px}}
