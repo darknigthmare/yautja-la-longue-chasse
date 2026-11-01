@@ -129,8 +129,16 @@ def build():
         shared.append({'path': file, 'sha256': digest, 'bytes': path.stat().st_size})
     assert not changed_shared, 'Published historical bytes changed: ' + ', '.join(changed_shared[:10])
     inventory = json.loads(git_bytes('docs/v109-runtime-public-inputs.json'))
-    materialized = sorted(row['path'] for row in shared if row['path'].endswith('.json')
-                          and any(row['path'].startswith(directory + '/') for directory in inventory['sourceDocumentDirectories']))
+    materialized = {row['path'] for row in shared if row['path'].endswith('.json')
+                    and any(row['path'].startswith(directory + '/') for directory in inventory['sourceDocumentDirectories'])}
+    # build-runtime-public-inputs-v112 and snapshot-runtime-v112 walk these
+    # directories with Dirent.isFile(), which a symlink fails by design. Keep the
+    # 52 inventoried V112 assets and receipts as verified private copies.
+    v112_inventory = json.loads(git_bytes('docs/v112-runtime-public-inputs.json'))
+    v112_files = {row['path'] for row in v112_inventory['assets'] + v112_inventory['provenance']}
+    shared_files = {row['path'] for row in shared}
+    assert v112_files <= shared_files, 'V112 inventory file missing from shared evidence: ' + ', '.join(sorted(v112_files - shared_files)[:5])
+    materialized = sorted(materialized | v112_files)
     payload = (json.dumps({'schemaVersion': 1, 'sourceCommit': COMMIT, 'files': files}, separators=(',', ':'), ensure_ascii=False)).encode()
     assert len(payload) <= 96 * 1024 * 1024, 'Historical source budget exceeded'
     compressed = gzip.compress(payload, compresslevel=9, mtime=0)
