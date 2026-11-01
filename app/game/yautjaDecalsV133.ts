@@ -18,6 +18,40 @@ export const DECAL_ANCHORS_V133: Readonly<Record<YautjaDecalZoneV133,DecalAnchor
   body:{x:112,y:108,width:62,height:66},
   armor:{x:116,y:113,width:67,height:56},
 });
+
+export type DecalRigPlacementV139={x:number;y:number;width:number;height:number};
+export const DECAL_RIG_SIZE_V139={width:256,height:384} as const;
+/** Geometry parity contract between CSS overlay and the 256×384 hunt Canvas.
+ *
+ * V62 heads are compact cutouts inside their placement rectangle, whereas
+ * V133 concepts are full-size 256×384 sprites translated by V137 fitting.
+ * A CSS mask-position percentage has NO effect when the mask itself is 100%
+ * wide. Always move the actual mask OWNER rectangle, then locate the decal
+ * within that rectangle in the same canonical global rig coordinates.
+ */
+export function decalProjectionV139(
+ zone:YautjaDecalZoneV133,
+ placement?:DecalRigPlacementV139,
+){
+ const frame=placement ?? {x:0,y:0,...DECAL_RIG_SIZE_V139};
+ const anchor=DECAL_ANCHORS_V133[zone];
+ const percent=(value:number,total:number)=>String(value/total*100)+"%";
+ return {
+   owner:{
+     left:percent(frame.x,DECAL_RIG_SIZE_V139.width),
+     top:percent(frame.y,DECAL_RIG_SIZE_V139.height),
+     width:percent(frame.width,DECAL_RIG_SIZE_V139.width),
+     height:percent(frame.height,DECAL_RIG_SIZE_V139.height),
+   },
+   decal:{
+     left:percent(anchor.x-frame.x,frame.width),
+     top:percent(anchor.y-frame.y,frame.height),
+     width:percent(anchor.width,frame.width),
+     height:percent(anchor.height,frame.height),
+   },
+ };
+}
+
 export const Y_A_U_T_J_A_DECALS_V133 = Object.freeze(data.records.map(record => ({
   ...record,src:data.atlasPath,
 })));
