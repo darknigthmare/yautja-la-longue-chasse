@@ -60,7 +60,8 @@ test("V146 48 unique requirements, 32 QA, 12 cross-mode and 16 explicit V85 bloc
  assert.equal(distinct(/INT-CW146-\d{3}/g),12);
  assert.equal(distinct(/BRG-V146-(?:ASS|OUT|INF|RTS)-\d{2}/g),16);
  assert.ok(data.includes("buildWarCouncilAuditV146"),"Council implementation trace missing");
- assert.ok(data.includes("readyForCampaign")||data.includes("source-V6/W3"));
+ assert.ok(data.includes("campagne V85")&&data.includes("aucun résultat"),
+  "Spreadsheet must state the restricted campaign handoff using its actual French source text");
 });
 test("V146 dashboard status formulas and historical records survive export",()=>{
  const dashboard=files.get("xl/worksheets/sheet24.xml")??"";
