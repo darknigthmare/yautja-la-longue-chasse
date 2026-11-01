@@ -72,7 +72,7 @@ export function normalizeWarPlanetRecipeV115(value: Partial<WarPlanetRecipeV115>
 export function encodeWarPlanetV115(value: WarPlanetRecipeV115): string {
   const recipe = validateWarPlanetRecipeV115(value);
   if (!recipe) throw new RangeError("Recette planétaire V115 invalide.");
-  const { version, planetSize, islandShape, continentShape, regionShape, landMaterial, liquidMaterial, ...base } = recipe;
+  const { planetSize, islandShape, continentShape, regionShape, landMaterial, liquidMaterial, ...base } = recipe;
   const legacy = encodeWarPlanetV103({ ...base, version: 103 });
   const segments = legacy.split("-");
   const suffix = [sizes.indexOf(planetSize).toString(36),
@@ -105,6 +105,8 @@ export function parseWarPlanetV115(code: string): WarPlanetRecipeV115 | null {
 export function describeWarPlanetV115(id: string) {
   const recipe = parseWarPlanetV115(id);
   if (!recipe) return undefined;
+  // Strip V115-only fields before encoding the strict historical V103 recipe.
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { version, planetSize, islandShape, continentShape, regionShape, landMaterial, liquidMaterial, ...base } = recipe;
   const legacyId = encodeWarPlanetV103({ ...base, version: 103 });
   const summary = describeWarPlanetV103(legacyId);
@@ -115,7 +117,7 @@ export function describeWarPlanetV115(id: string) {
 export function generateWarPlanetV115(input: WarPlanetRecipeV115): GeneratedWarPlanetV115 {
   const recipe = validateWarPlanetRecipeV115(input);
   if (!recipe) throw new RangeError("Recette planétaire V115 invalide.");
-  const { version, planetSize, islandShape, continentShape, regionShape, landMaterial, liquidMaterial, ...base } = recipe;
+  const { planetSize, islandShape, continentShape, regionShape, landMaterial, liquidMaterial, ...base } = recipe;
   const id = encodeWarPlanetV115(recipe), radiusKm = PLANET_RADII_KM_V115[planetSize];
   const planet = generateWarPlanetV103({ ...base, version: 103 }, {
     worldId: id, shapes: { islandShape, continentShape, regionShape },
