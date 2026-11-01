@@ -93,6 +93,13 @@ jobs:
       - name: Existing native React and hunting input browser qualification
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: node scripts/qa-hunt-mechanics-browser-v112.mjs
+      - name: Mounted hunt lifecycle, extraction bridge, real storage and mapped workshop
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node scripts/qa-hunt-lifecycle-browser-v112.mjs
+      - name: Print compact JSON evidence for independent review
+        if: always()
+        run: >-
+          node -e 'const fs=require("node:fs");for(const [name,file] of [["native-performance","outputs/qa-v112-followup/native-performance.json"],["lifecycle","outputs/qa-hunt-lifecycle-v112/report.json"],["controls-guide","outputs/qa-hunt-v112/report.json"]])if(fs.existsSync(file))console.log("V112_CLOSURE_REPORT_BEGIN:"+name+":"+fs.readFileSync(file,"utf8")+":V112_CLOSURE_REPORT_END")'
       - name: Preserve bounded browser reports and captures
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
