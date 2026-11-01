@@ -5,6 +5,9 @@ on:
     paths:
       - "docs/production/Yautja_PHG_QA_Visual_Morphologies_V139.xlsx"
       - "docs/production/Yautja_PHG_QA_Visual_Morphologies_V140.xlsx"
+      - "docs/production/Yautja_PHG_QA_Visual_Morphologies_V141.xlsx"
+      - "scripts/verify-phg-official-v141.py"
+      - "tests/test_phg_official_v141.py"
       - "scripts/verify-phg-filter-v140.py"
       - "scripts/verify-phg-visual-v139.py"
       - "tests/test_phg_visual_v139.py"
@@ -26,6 +29,9 @@ jobs:
           sparse-checkout: |
             /docs/production/Yautja_PHG_QA_Visual_Morphologies_V139.xlsx
             /docs/production/Yautja_PHG_QA_Visual_Morphologies_V140.xlsx
+            /docs/production/Yautja_PHG_QA_Visual_Morphologies_V141.xlsx
+            /scripts/verify-phg-official-v141.py
+            /tests/test_phg_official_v141.py
             /scripts/verify-phg-filter-v140.py
             /scripts/verify-phg-visual-v139.py
             /scripts/verify-phg-production-xlsx-v138.py
@@ -35,3 +41,5 @@ jobs:
           python3 scripts/verify-phg-visual-v139.py
           python3 -m unittest discover -s tests -p test_phg_visual_v139.py -v
           python3 scripts/verify-phg-filter-v140.py
+          python3 scripts/verify-phg-official-v141.py
+          python3 -m unittest discover -s tests -p test_phg_official_v141.py -v
