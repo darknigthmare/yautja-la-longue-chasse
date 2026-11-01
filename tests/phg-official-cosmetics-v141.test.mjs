@@ -58,6 +58,6 @@ test("V141 class restrictions honor real V133 catalog class hints, never arbitra
 test("V141 forge warns armor shader Nova/Requiem is not the same as the mask tile",()=>{
  const text=readFileSync("app/game/HunterChromaticForgeV113.tsx","utf8");
  assert.match(text,/Requiem et Nova sont aussi des/);
- assert.match(text,/teintes d'armure PHG distinctes/);
+ assert.match(text,/teintes d’armure PHG distinctes/);
  assert.match(text,/Les six Warpaints PHG/);
 });
