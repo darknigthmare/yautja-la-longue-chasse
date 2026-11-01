@@ -28,3 +28,14 @@ Un Web Lock ne protège que des onglets **coopérants de la même origine**. Il 
 **Fidélité visuelle : 0/54 gauntlets certifiés 1:1.** Les sprites disponibles sont des prototypes originaux, pas une validation des accessoires des films. Les photogrammes, proportions, glyphes, patine, animations, essais humains et droits restent à fournir avant toute homologation.
 
 Le workflow GitHub du dernier commit doit être lu **avant** d'attribuer le statut PASS. Ne pas fusionner cette PR sans revue.
+
+
+## Validation réelle sur la branche d'intégration
+
+[GitHub Actions V151 : run 41320212943](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41320212943) : **41 tests métier réussis sur 41**, TypeScript et ESLint verts, **14 étapes Chromium réussies**, vérification ZIP XLSX cinq feuilles réussie. [Captures + rapport navigateur](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41320212943/artifacts/13089605205).
+
+Tests navigateurs réels : deux panneaux V115, verrou détenu, démarrage concurrent avec un seul mandat accepté, absence de Web Locks bloquant l'écriture, double clic, minuterie d'assaut suspendue puis reprise, fin simultanée Outer Ops + recrutement sans perte, reset périmé bloqué et rechargement. **Cela n'homologue pas un scénario entier de campagne ou une performance sur mobile.**
+
+**Excel révisé :** 18/26 critères techniques validés avec preuve, 8 ouverts/partiels. Le statut 0/54 des gauntlets 1:1 reste inchangé.
+
+Premier lancement CI : deux erreurs du banc de contrôle, pas des règles V115. Correction du checkout de `tests/fixtures/outer-pace-pr57/` et du nom conservé de la fonction `verifyOwnV115ArchiveV148`. Run ci-dessus : vert après correctifs.
