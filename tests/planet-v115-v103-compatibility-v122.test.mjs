@@ -1,9 +1,15 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { DEFAULT_WAR_PLANET_RECIPE_V103, generateWarPlanetV103 } from "../app/game/systems/clanWarPlanetGeneratorV103.ts";
-import { DEFAULT_WAR_PLANET_RECIPE_V115, generateWarPlanetV115 } from "../app/game/systems/clanWarPlanetGeneratorV115.ts";
-import { analyzeWarPlanetStrategyV114 } from "../app/game/systems/clanWarPlanetStrategyV114.ts";
-import { warDeploymentV103 } from "../app/game/systems/clanWarDeploymentV103.ts";
+import { homeworldSceneSsrV78 } from "./helpers/homeworld-scene-ssr-v78.mjs";
+
+// Reuse the project's actual TypeScript source loader: these engines retain
+// extensionless internal imports for the application bundler. No SSR rendering
+// or CSS substitution is involved in this pure compatibility test.
+const { load } = homeworldSceneSsrV78();
+const { DEFAULT_WAR_PLANET_RECIPE_V103, generateWarPlanetV103 } = load("app/game/systems/clanWarPlanetGeneratorV103.ts");
+const { DEFAULT_WAR_PLANET_RECIPE_V115, generateWarPlanetV115 } = load("app/game/systems/clanWarPlanetGeneratorV115.ts");
+const { analyzeWarPlanetStrategyV114 } = load("app/game/systems/clanWarPlanetStrategyV114.ts");
+const { warDeploymentV103 } = load("app/game/systems/clanWarDeploymentV103.ts");
 
 test("V122 V103 and V115 share deployment semantics without recipe conversion", () => {
   const old = generateWarPlanetV103({ ...DEFAULT_WAR_PLANET_RECIPE_V103, seed: 11220001 });

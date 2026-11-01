@@ -43,6 +43,13 @@ const sizes = ["dwarf", "small", "terran", "large", "giant", "colossal"] as cons
 const integer = (value: unknown, limit: number) => typeof value === "number" && Number.isInteger(value) && value >= 0 && value < limit;
 const record = (value: unknown): value is Record<string, unknown> => value !== null && typeof value === "object" && !Array.isArray(value);
 const extraFields = ["planetSize", "islandShape", "continentShape", "regionShape", "landMaterial", "liquidMaterial"] as const;
+/** Preserve the original rest-exclusion order while deriving the old contract.
+ * Deletion only touches this fresh copy, never the caller's versioned recipe. */
+export function baseWarPlanetRecipeV103FromV115(recipe: WarPlanetRecipeV115): WarPlanetRecipeV103 {
+  const base = { ...recipe };
+  for (const field of ["version", ...extraFields]) Reflect.deleteProperty(base, field);
+  return { ...base, version: 103 };
+}
 function fnv(text: string) {
   let value = 2166136261;
   for (let i = 0; i < text.length; i++) value = Math.imul(value ^ text.charCodeAt(i), 16777619);
@@ -72,8 +79,8 @@ export function normalizeWarPlanetRecipeV115(value: Partial<WarPlanetRecipeV115>
 export function encodeWarPlanetV115(value: WarPlanetRecipeV115): string {
   const recipe = validateWarPlanetRecipeV115(value);
   if (!recipe) throw new RangeError("Recette planétaire V115 invalide.");
-  const { version, planetSize, islandShape, continentShape, regionShape, landMaterial, liquidMaterial, ...base } = recipe;
-  const legacy = encodeWarPlanetV103({ ...base, version: 103 });
+  const { planetSize, islandShape, continentShape, regionShape, landMaterial, liquidMaterial } = recipe;
+  const legacy = encodeWarPlanetV103(baseWarPlanetRecipeV103FromV115(recipe));
   const segments = legacy.split("-");
   const suffix = [sizes.indexOf(planetSize).toString(36),
     islandShape.toString(36).padStart(2, "0"),
@@ -105,8 +112,8 @@ export function parseWarPlanetV115(code: string): WarPlanetRecipeV115 | null {
 export function describeWarPlanetV115(id: string) {
   const recipe = parseWarPlanetV115(id);
   if (!recipe) return undefined;
-  const { version, planetSize, islandShape, continentShape, regionShape, landMaterial, liquidMaterial, ...base } = recipe;
-  const legacyId = encodeWarPlanetV103({ ...base, version: 103 });
+  const { planetSize } = recipe;
+  const legacyId = encodeWarPlanetV103(baseWarPlanetRecipeV103FromV115(recipe));
   const summary = describeWarPlanetV103(legacyId);
   if (!summary) return undefined;
   return { ...summary, id, version: 115 as const,
@@ -115,9 +122,9 @@ export function describeWarPlanetV115(id: string) {
 export function generateWarPlanetV115(input: WarPlanetRecipeV115): GeneratedWarPlanetV115 {
   const recipe = validateWarPlanetRecipeV115(input);
   if (!recipe) throw new RangeError("Recette planétaire V115 invalide.");
-  const { version, planetSize, islandShape, continentShape, regionShape, landMaterial, liquidMaterial, ...base } = recipe;
+  const { planetSize, islandShape, continentShape, regionShape, landMaterial, liquidMaterial } = recipe;
   const id = encodeWarPlanetV115(recipe), radiusKm = PLANET_RADII_KM_V115[planetSize];
-  const planet = generateWarPlanetV103({ ...base, version: 103 }, {
+  const planet = generateWarPlanetV103(baseWarPlanetRecipeV103FromV115(recipe), {
     worldId: id, shapes: { islandShape, continentShape, regionShape },
   });
   const island = warShapeTemplateV115("island", islandShape);
