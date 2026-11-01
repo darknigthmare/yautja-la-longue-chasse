@@ -58,6 +58,8 @@ export interface WarStealthV115 { x: number; y: number; guardX: number;guardY?:n
   heardAtTick?: number;
   silentSabotageUsed?: boolean;
   dashUsed?:boolean;
+  /** PR #55: only the primary guard's last observed player position. */
+  guardInvestigation?:{x:number;y:number;turns:number};
   supportGuard?:{x:number;y:number;direction:-1|1};
   reinforcementIssued?:boolean;
   reinforcementMode?:"manual"|"decoy";
@@ -552,6 +554,7 @@ export function commandStealthV115(state:WarOperationsStateV115,command:StealthC
  let silentStepsUsed=stealth.silentStepsUsed??0;
  let acousticUsed=stealth.acousticUsed??0;
  let heardBearing=stealth.heardBearing,heardAtTick=stealth.heardAtTick;
+ let investigation=stealth.guardInvestigation;
  const quietMovement=command.startsWith("cover-");
  if(command==="listen"){
   if(!terrain.cover.includes(coord(x,y))||cloaked||energy<1||acousticUsed>=2||
@@ -606,9 +609,15 @@ export function commandStealthV115(state:WarOperationsStateV115,command:StealthC
  }
  if(cloaked){energy=Math.max(0,energy-1);if(!energy)cloaked=false;}
  const previousGuard={guardX,guardY,guardDirection};
+ // The first guard follows a memory only after losing the player. The sound
+ // decoy has priority; the support guard never receives this private memory.
+ const lostSight=cloaked||distance({x,y},{x:guardX,y:guardY})>3||
+  !warTerrainLineOfSightV116(terrain,{x:guardX,y:guardY},{x,y});
+ const memoryTarget=investigation&&investigation.turns>0&&lostSight?
+  {x:investigation.x,y:investigation.y}:null;
+ const decoyTarget=decoyTurns>0&&decoyX!==undefined?{x:decoyX,y:decoyY??2}:null;
  const patrol=warStealthDecoyPatrolV141(terrain,
-  {guardX,guardY,guardDirection},decoyTurns>0&&decoyX!==undefined?
-   {x:decoyX,y:decoyY??2}:null);
+  {guardX,guardY,guardDirection},decoyTarget??memoryTarget);
  // Reserve the second guard's old tile before moving either actor. Otherwise
  // a trapped second guard can be left sharing the primary guard's new tile.
  const first=supportGuard&&patrol.guardX===supportGuard.x&&patrol.guardY===supportGuard.y?
@@ -639,6 +648,8 @@ export function commandStealthV115(state:WarOperationsStateV115,command:StealthC
       occupiedFree.x<supportGuard.x?-1:second.guardDirection};
  }
  if(decoyTurns>0)decoyTurns--;
+ if(investigation)investigation=investigation.turns>1?
+  {...investigation,turns:investigation.turns-1}:undefined;
  // An authored cover breaks distant LOS only during a hide action.
  // A guard physically adjacent still sees the hunter.
  const hiding=(command==="hide"||quietMovement)&&terrain.cover.includes(coord(x,y))&&
@@ -653,6 +664,7 @@ export function commandStealthV115(state:WarOperationsStateV115,command:StealthC
    warTerrainLineOfSightV116(terrain,supportGuard,{x,y}));
  const seen=primarySeen||supportSeen;
  if(seen||command==="interact")alarm++;
+ if(primarySeen)investigation={x,y,turns:2};
  // The automatic PR #57 behavior is opt-in for new exercises. The default
  // remains the existing manual rule; never create a second guard twice.
  let reinforcementIssued=stealth.reinforcementIssued;
@@ -678,7 +690,8 @@ export function commandStealthV115(state:WarOperationsStateV115,command:StealthC
  const nextStealth={x,y,guardX,guardY,guardDirection,alarm,cloaked,energy,sabotaged,
   decoyX,decoyY,decoyTurns,decoyUsed,usedCoverIds,silentStepsUsed,acousticUsed,heardBearing,heardAtTick,
   silentSabotageUsed:stealth.silentSabotageUsed||command==="quiet-sabotage",
-  dashUsed:stealth.dashUsed,supportGuard,reinforcementIssued,reinforcementMode:stealth.reinforcementMode};
+  dashUsed:stealth.dashUsed,guardInvestigation:investigation,
+  supportGuard,reinforcementIssued,reinforcementMode:stealth.reinforcementMode};
  const advanced={...state,clock:state.clock+1,active:{...mission,tick:mission.tick+1,stealth:nextStealth}};
  if(alarm>=3)return accept(recordOutcome(advanced,mission.id,"stealth",null,mission.targetId,mission.teamIds,"defeat",mission.teamIds.slice(0,1),rules,
   "Patrouille alertée : extraction abandonnée."),"Infiltration compromise.");
@@ -1282,6 +1295,13 @@ export function readWarOperationsV115(raw:string,rules:WarRulesV6):WarOperations
         typeof v1.cloaked!=="boolean"||typeof v1.sabotaged!=="boolean"||
         (v1.decoyUsed!==undefined&&typeof v1.decoyUsed!=="boolean")||
         (v1.dashUsed!==undefined&&typeof v1.dashUsed!=="boolean")||
+        (v1.guardInvestigation!==undefined&&(!v1.guardInvestigation||
+          typeof v1.guardInvestigation!=="object"||Array.isArray(v1.guardInvestigation)||
+          !Number.isInteger(v1.guardInvestigation.x)||!Number.isInteger(v1.guardInvestigation.y)||
+          !Number.isInteger(v1.guardInvestigation.turns)||
+          v1.guardInvestigation.turns<1||v1.guardInvestigation.turns>2||
+          warTerrainCellBlockedV116(warMissionTerrainV116(active.targetId,rules),
+            v1.guardInvestigation.x,v1.guardInvestigation.y)))||
         (v1.reinforcementIssued!==undefined&&typeof v1.reinforcementIssued!=="boolean")||
         (v1.reinforcementMode!==undefined&&!['manual','decoy'].includes(v1.reinforcementMode))||
         (v1.reinforcementIssued===true&&v1.supportGuard===undefined)||

@@ -2,7 +2,7 @@ name: Stealth reinforcement reconciliation
 
 on:
   pull_request:
-    branches: [feat/v146-clan-war-evidence-20261101]
+    branches: [feat/v146-clan-war-evidence-20261101, codex/reconcile-stealth-v144-20261101]
   workflow_dispatch:
 
 permissions:
@@ -27,6 +27,7 @@ jobs:
             /tests/
             /scripts/
             /types/
+            /docs/clan-war-stealth-last-contact/Suivi_Contact_Patrouille.xlsx
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: '22'
@@ -35,6 +36,7 @@ jobs:
         run: |
           node --experimental-strip-types --test --test-concurrency=1 \
             tests/clan-war-stealth-reconciliation.test.mjs \
+            tests/clan-war-stealth-last-contact.test.mjs \
             tests/clan-war-four-modes-v{135,136,137,138,139,140,141,142,143,144,145}.test.mjs \
             tests/clan-war-operations-v115.test.mjs \
             tests/clan-war-operation-cross-mode-v115.test.mjs \
@@ -45,6 +47,11 @@ jobs:
             tests/clan-war-rts-rally-v134.test.mjs \
             tests/clan-war-council-v146.test.mjs
       - run: npx --no-install tsc --noEmit -p tsconfig.clan-war-v146.json
+      - name: Validate the additive workbook
+        run: |
+          python3 -m venv "$RUNNER_TEMP/stealth-tracker-venv"
+          "$RUNNER_TEMP/stealth-tracker-venv/bin/pip" install 'openpyxl==3.1.5'
+          "$RUNNER_TEMP/stealth-tracker-venv/bin/python" -m unittest tests/test_stealth_contact_tracker.py
       - name: Lint changed files
         run: |
           npx --no-install eslint app/game/ClanWarOperationsV115.tsx \
@@ -52,7 +59,9 @@ jobs:
             app/game/systems/clanWarStealthReinforcementV144.ts \
             app/game/systems/clanWarStealthGuardPlacement.ts \
             tests/clan-war-stealth-reconciliation.test.mjs \
+            tests/clan-war-stealth-last-contact.test.mjs \
             scripts/qa-stealth-reconciliation-browser.mjs \
+            scripts/qa-stealth-last-contact-browser.mjs \
             tests/browser/stealth-reconciliation.tsx tests/browser/stealth-game-client.tsx
 
   chromium:
@@ -70,6 +79,7 @@ jobs:
             /app/game/
             /tests/browser/
             /scripts/qa-stealth-reconciliation-browser.mjs
+            /scripts/qa-stealth-last-contact-browser.mjs
             /public/game/assets/v14/hunter-kit/manifest.json
             /public/game/assets/v15/trophies/manifest.json
             /public/game/assets/v16/franchise-trophies/manifest.json
@@ -80,7 +90,9 @@ jobs:
           node-version: '22'
       - run: npm ci --ignore-scripts --no-audit --no-fund
       - name: Fetch pinned PR57 commit and trees without history or blobs
-        run: git fetch --no-tags --depth=1 --filter=blob:none origin f25cd7a33e04f789e7c6df231ccad9116a50b38c
+        run: |
+          git fetch --no-tags --depth=1 --filter=blob:none origin f25cd7a33e04f789e7c6df231ccad9116a50b38c
+          git fetch --no-tags --depth=1 --filter=blob:none origin fa0322800d5c51e16a4dd56ef6d0fc80d8020394
       - name: Install Chromium and system dependencies
         run: npx --no-install playwright-core install --with-deps chromium
       - name: Exercise generated PR57 archives in GameClient
@@ -89,3 +101,4 @@ jobs:
         run: |
           export CHROMIUM_EXECUTABLE_PATH="$(node -e 'process.stdout.write(require("playwright-core").chromium.executablePath())')"
           node scripts/qa-stealth-reconciliation-browser.mjs
+          node scripts/qa-stealth-last-contact-browser.mjs

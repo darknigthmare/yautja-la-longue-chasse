@@ -591,6 +591,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
           </button>;
         })}</div>
         <p className={styles.explain}>Le sprint V143 traverse deux cases réelles avec une réaction de la patrouille après chaque case. Usage unique par infiltration, aucune téléportation ni camouflage gratuit.</p>
+        {guardVisible&&stealth.guardInvestigation&&<p className={styles.explain}>La patrouille visible recherche le dernier contact observé ; elle ne connaît pas une position devenue cachée.</p>}
         <p className={styles.explain}>Patrouille : {guardVisible?"visible à portée réelle":
           soundBearing?("bruit perçu vers "+soundBearing+" · position exacte inconnue"):
           "hors du champ de perception ; aucune position exacte affichée"}.</p>
