@@ -158,8 +158,10 @@ try {
   const played = await createPage({ clock: true }); await seed(played, "quiet"); await entry(played); await mounted(played);
   await played.clock.pauseAt(new Date(await played.evaluate(() => Date.now() + 100)));
   await played.getByRole("button", { name: "Commencer l’expédition", exact: true }).click({ force: true }); await played.clock.runFor(160);
-  await walk(played, 4620); await jump(played, 360);
-  await walk(played, 4830); await jump(played, 300, true);
+  await walk(played, 4000); await jump(played, 351);
+  await walk(played, 4140); await jump(played, 280, true);
+  await walk(played, 4520); await jump(played, 262, true);
+  await walk(played, 4810); await jump(played, 300, true);
   await walk(played, 5190); await jump(played, 345, true);
   await walk(played, 5550); await jump(played, 280, true);
   await walk(played, 5840);

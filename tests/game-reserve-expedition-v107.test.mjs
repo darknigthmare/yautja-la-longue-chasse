@@ -14,7 +14,7 @@ function walk(state,x){const move=x>state.player.x?1:-1;for(let i=0;i<7000&&(x-s
 function jumpTo(state,x,y){state=api.stepGameReserveV66(state,{move:1,jump:true});assert(state.player.vy<0);for(let i=0;i<90;i++){state=api.stepGameReserveV66(state,{move:1});if(state.player.x>=x&&state.player.y===y&&state.player.vy===0){valid(state);return state;}}assert.fail(`no physical landing at ${x}/${y}; got ${state.player.x}/${state.player.y}`);}
 function jumpHere(state,y){state=api.stepGameReserveV66(state,{jump:true});assert(state.player.vy<0);state=ticks(state,60);assert.equal(state.player.y,y);valid(state);return state;}
 function record(state,index){assert.equal(api.gameReserveV66Interaction(state).target,index);const before=clone(state);state=ticks(state,119,{interact:true});assert.equal(state.routeV107.siteRecords[index].recordedAt,null);assert.equal(api.stepGameReserveV66(state,{interact:true},true),state);state=api.stepGameReserveV66(state,{interact:true});assert.equal(state.routeV107.siteRecords[index].recordedAt,state.tick);assert.equal(state.routeV107.siteRecords[index].hunterX,state.player.x);assert.equal(state.routeV107.siteRecords[index].hunterY,state.player.y);assert(api.canAdvanceGameReserveV66(before,state));valid(state);return state;}
-function reachFirst(){let state=walk(quiet(),4620);state=jumpHere(state,360);state=jumpTo(walk(state,4830),4920,300);state=jumpTo(walk(state,5190),5280,345);state=jumpTo(walk(state,5550),5640,280);return walk(state,5840);}
+function reachFirst(){let state=walk(quiet(),4000);state=jumpHere(state,351);state=jumpTo(walk(state,4140),4290,280);state=jumpTo(walk(state,4520),4590,262);state=jumpTo(walk(state,4810),4920,300);state=jumpTo(walk(state,5190),5280,345);state=jumpTo(walk(state,5550),5640,280);return walk(state,5840);}
 
 test('V107 is explicitly selected with eight contiguous sectors, sixteen adults and four physical escape groups',()=>{
  const state=api.createGameReserveV107(107);valid(state);assert.equal(state.version,3);assert.equal(state.reserveId,'vharuun-transect-expedition');assert.equal(api.gameReserveV66World(state).width,12800);
@@ -39,7 +39,7 @@ test('all four posts and eight sectors are reached with native walking and jumps
  let state=record(reachFirst(),0);state=record(walk(state,7410),1);
  state=jumpHere(walk(state,8170),365);state=jumpTo(walk(state,8370),8490,294);state=jumpTo(walk(state,8735),8830,226);state=record(walk(state,8990),2);
  state=jumpHere(walk(state,9790),350);state=jumpTo(walk(state,9970),10070,270);state=jumpTo(walk(state,10335),10430,325);state=jumpTo(walk(state,10735),10830,365);
- state=jumpHere(walk(state,12030),365);state=jumpTo(walk(state,12235),12330,290);state=record(walk(state,12420),3);
+ state=jumpHere(walk(state,11700),315);state=jumpTo(walk(state,11875),11990,282);state=jumpTo(walk(state,12235),12330,290);state=record(walk(state,12420),3);
  assert.deepEqual(state.visited,[0,1,2,3,4,5,6,7]);const recorded=clone(state.routeV107);const outbound=clone(state);state=ticks(walk(state,115),60,{interact:true});assert.equal(state.status,'returned');assert.deepEqual(state.routeV107,recorded);assert(api.canAdvanceGameReserveV66(outbound,state));assert.equal(api.stepGameReserveV66(state,{move:1}),state);valid(state);
 });
 
