@@ -1,4 +1,4 @@
-name: V113 candidate production and immutable workbook
+name: V113/V114 candidate production and immutable workbooks
 
 on:
   pull_request:
@@ -28,7 +28,7 @@ permissions:
 
 jobs:
   workbook:
-    name: V113 source cells, native candidate pins and historical preservation
+    name: V113/V114 source cells, native candidate pins and historical preservation
     runs-on: ubuntu-24.04
     timeout-minutes: 20
     steps:
@@ -246,3 +246,14 @@ jobs:
         run: python3 scripts/verify-open-production-workbook-v113.py
       - name: Reject altered source claims, historic cells and current products
         run: python3 tests/open-production-workbook-v113.test.py
+      - name: Install pinned native PNG verification dependency in an isolated environment
+        run: |
+          python3 -m venv "$RUNNER_TEMP/v114-python"
+          "$RUNNER_TEMP/v114-python/bin/python" -m pip install --disable-pip-version-check --only-binary=:all: Pillow==12.3.0
+          echo "$RUNNER_TEMP/v114-python/bin" >> "$GITHUB_PATH"
+      - name: Verify V114 native PNGs, source cells and all 130 historical worksheets
+        run: python3 production/native-open-20261102/tools/verify-native-open-workbook-v114.py
+      - name: Reproduce the five appended V114 sheets and their exact workbook bytes
+        run: python3 production/native-open-20261102/tools/build-native-open-workbook-v114.py --check
+      - name: Reject corrupt V114 sources, titles, historical cells and false admissions
+        run: python3 production/native-open-20261102/tools/test-native-open-workbook-v114.py

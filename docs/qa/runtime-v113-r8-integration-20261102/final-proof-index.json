@@ -92,6 +92,48 @@
       "path": "docs/qa/runtime-v113-r8-integration-20261102/b2-current-certificates.tap",
       "bytes": 481,
       "sha256": "ce0c3df6d7fc640a03920d5907b2ae09d274756a6032c275700e32c9d325061a"
+    },
+    {
+      "path": ".github/workflows/audit-v94.yml",
+      "bytes": 100089,
+      "sha256": "8d81bb214f27f3c86fb80036b5962d4bb5dfb6d40cbec5394334411c95ffcad8"
+    },
+    {
+      "path": ".github/workflows/open-production-v113.yml",
+      "bytes": 14903,
+      "sha256": "24b4a9913cd4f1287e20a12b5bfa4ba43480eb857d41bd07d185ca34ad7a8e62"
+    },
+    {
+      "path": "eslint.config.mjs",
+      "bytes": 858,
+      "sha256": "02c28bc989065859c21e2ad2727953eb5c60518d7a51d22e7e62cc43c322ea9e"
+    },
+    {
+      "path": "docs/qa/runtime-v113-r8-integration-20261102/ci-cold-application/archive-files.json",
+      "bytes": 2837,
+      "sha256": "19a141aeec7519d2a9c830302f6e338c23af39e3c92f8d52ffa1cbae62e33636"
+    },
+    {
+      "path": "docs/qa/runtime-v113-r8-integration-20261102/ci-cold-application/cold-summary.json",
+      "bytes": 6381,
+      "sha256": "01e01dfd5678c14a87d2250701ed94d74d688f332e22cc4d0dd88d0e4c32c2af"
+    },
+    {
+      "path": "docs/qa/runtime-v113-r8-integration-20261102/ci-cold-workbooks/evidence-manifest.json",
+      "bytes": 3933,
+      "sha256": "34e0e85aed822fc4b6cb8eba61e00588f26aae42ee12e050129d8a9f70412003"
+    },
+    {
+      "path": "docs/qa/runtime-v113-r8-integration-20261102/ci-cold-workbooks/real-clone-verification.json",
+      "bytes": 1784,
+      "sha256": "99d282ad23618ae34ce9409a5dbea8bf7cf4c99f7ff3a87497a906fe1ff03505"
     }
-  ]
+  ],
+  "coldCheckoutChecks": {
+    "sourcePublicationCommit": "837684333b42ee1a5e3a0be9ce1967e2486a2fd3",
+    "application": "PASS_1964_FROZEN_INPUTS_TWO_REPORTS_78_PNGS",
+    "workbooks": "PASS_5_V113_AND_10_V114_TESTS_PINNED_PILLOW_12_3_0",
+    "hostedGitHubActionsExecutedByTheseChecks": false,
+    "newBuildOrBrowserExecutedByTheseChecks": false
+  }
 }
