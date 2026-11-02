@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "release": "V113",
+  "run": "R8 B2 targeted Homeworld",
+  "status": "PASS_TARGETED_COMPILED_APP_WITH_OPEN_LIMITS",
+  "completeRecipe": false,
+  "humanArtisticAdmission": false,
+  "runtimeCommit": "719fe0d77e65be5349b76f507938309f56a67619",
+  "buildId": "OzWVxNAbS8mWbL_Pue9Zg",
+  "baseUrl": "http://127.0.0.1:3108",
+  "recipes": [
+    {
+      "name": "forge",
+      "rawResult": {
+        "file": "forge/result.json",
+        "bytes": 28320,
+        "sha256": "04bceb0c19f23d72f662816a3c3ecd0489cd4d50de8dac5eed066f57a99854f3"
+      },
+      "status": "PASS_TARGETED_COMPILED_APP",
+      "checks": 7,
+      "captures": 11,
+      "allCapturesOpened": true,
+      "review": "forge/opened-review.json",
+      "completeRecipe": false,
+      "driver": {
+        "file": "scripts/qa-homeworld-forge-fire-v113.mjs",
+        "bytes": 21522,
+        "sha256": "8dd2056e15a458fadc794aad48b66851b119a05583dcb4c9265dbeeb2500c4b5"
+      }
+    },
+    {
+      "name": "marsh",
+      "rawResult": {
+        "file": "marsh/result.json",
+        "bytes": 44243,
+        "sha256": "ab8117ab957e0b85f7e4509cd999523da220eaa524c236d75b8d485f417a604b"
+      },
+      "status": "PASS_TARGETED_COMPILED_APP",
+      "checks": 57,
+      "captures": 18,
+      "allCapturesOpened": true,
+      "review": "marsh/opened-review.json",
+      "completeRecipe": false,
+      "driver": {
+        "file": "scripts/qa-homeworld-marsh-ground-joints-v113.mjs",
+        "bytes": 16875,
+        "sha256": "16a6f92f2b43128dc5a8e89058ce77c109ca63124aa4e7781e1e316098cc0282"
+      }
+    }
+  ],
+  "captureCount": 29,
+  "allCapturesOpened": true,
+  "historicalEvidenceUnchanged": true,
+  "futureBuildPolicy": "This evidence applies only to its exact B2 Build ID. Fresh compiled-app runs are required after any rebuild.",
+  "errors": "Marsh has zero raw errors; Forge retains four deliberately refused request failures and four corresponding console errors, strictly attributed in its raw result. Zero ordinary Forge errors.",
+  "limits": [
+    "Only the thirteen narrow physical joints are qualified. The larger exterior point (6653,2800) remains unsupported/nontraversable and open; the successful quay crossing at y2700 does not correct it.",
+    "Large dark exterior cutouts, angular/rectangular terrain outlines and relief/background composition remain visible in the end views and open in docs/qa/homeworld-marsh-edge-diagnostic-20261101. No broad exterior platform or complete marsh composition correction is claimed.",
+    "Initial locations and completed First Tracks state are explicit local fixtures. Native keyboard crossings, returns and the Worker-guided dock approach are observed afterward; no played approach between separate cameras is claimed.",
+    "This is the after phase on B2 only. Historical before/after evidence remains unchanged in docs/qa/homeworld-marsh-ground-joints-v113-20261102. A future build requires fresh compiled-app runs.",
+    "Five local application/fixture inputs plus the executed driver are fingerprinted. This bounded recipe is not a complete served runtime inventory, full Homeworld-domain certificate or human artistic admission.",
+    "Forge missing-facade evidence shows unavailable/loading at Animations39/92 with no orphan fire; no completed readiness or recovery is claimed.",
+    "Forge uses six existing native frame drawings; no newly drawn animation delivery or human admission is claimed.",
+    "The pause screenshot is covered by the native pause blur. Frame hold and repeated reduced-motion hold are established by the raw timed observations, not a single static image."
+  ],
+  "freezeIdentityProvidedByRoot": {
+    "entries": 1964,
+    "sha256": "f39b5089fc130a726b87a6120470dacb3c3ef41098582a7203844620ce57f164",
+    "scope": "Context supplied by root; no complete freeze audit claimed by these two targeted recipes."
+  }
+}

@@ -1,0 +1,946 @@
+{
+  "schemaVersion": 1,
+  "release": "V113",
+  "domain": "Homeworld Forge fire V113",
+  "completeRecipe": false,
+  "driver": {
+    "file": "scripts/qa-homeworld-forge-fire-v113.mjs",
+    "bytes": 21522,
+    "sha256": "8dd2056e15a458fadc794aad48b66851b119a05583dcb4c9265dbeeb2500c4b5"
+  },
+  "startedAt": "2026-11-02T07:44:18.098Z",
+  "baseUrl": "http://127.0.0.1:3108",
+  "output": "/tmp/homeworld-forge-r8-b1-20261102",
+  "production": {
+    "mode": "compiled-app",
+    "runtimeCommit": "a83d23911ad4b5370494de0ca0bb025bd1d89449",
+    "buildId": "wUnrV1ggo6EZPYklVbGCp",
+    "servedBuilds": [
+      {
+        "navigation": "initial",
+        "phase": "ordinary",
+        "url": "http://127.0.0.1:3108/",
+        "status": 200,
+        "htmlSha256": "5c75402c1bae22b8f8864467db0f159005fd551bc82b1d6d49e785a49959a969",
+        "expectedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+        "observedBuildIds": [
+          "wUnrV1ggo6EZPYklVbGCp"
+        ],
+        "observedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+        "foundInHtml": true,
+        "buildIdVerified": true
+      },
+      {
+        "navigation": "fixture-applied",
+        "phase": "ordinary",
+        "url": "http://127.0.0.1:3108/",
+        "status": 200,
+        "htmlSha256": "5c75402c1bae22b8f8864467db0f159005fd551bc82b1d6d49e785a49959a969",
+        "expectedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+        "observedBuildIds": [
+          "wUnrV1ggo6EZPYklVbGCp"
+        ],
+        "observedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+        "foundInHtml": true,
+        "buildIdVerified": true
+      },
+      {
+        "navigation": "missing-flame",
+        "phase": "missing-flame",
+        "url": "http://127.0.0.1:3108/",
+        "status": 200,
+        "htmlSha256": "5c75402c1bae22b8f8864467db0f159005fd551bc82b1d6d49e785a49959a969",
+        "expectedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+        "observedBuildIds": [
+          "wUnrV1ggo6EZPYklVbGCp"
+        ],
+        "observedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+        "foundInHtml": true,
+        "buildIdVerified": true
+      },
+      {
+        "navigation": "native-flame-restored",
+        "phase": "ordinary-recovery",
+        "url": "http://127.0.0.1:3108/",
+        "status": 200,
+        "htmlSha256": "5c75402c1bae22b8f8864467db0f159005fd551bc82b1d6d49e785a49959a969",
+        "expectedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+        "observedBuildIds": [
+          "wUnrV1ggo6EZPYklVbGCp"
+        ],
+        "observedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+        "foundInHtml": true,
+        "buildIdVerified": true
+      },
+      {
+        "navigation": "missing-facade",
+        "phase": "missing-facade",
+        "url": "http://127.0.0.1:3108/",
+        "status": 200,
+        "htmlSha256": "5c75402c1bae22b8f8864467db0f159005fd551bc82b1d6d49e785a49959a969",
+        "expectedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+        "observedBuildIds": [
+          "wUnrV1ggo6EZPYklVbGCp"
+        ],
+        "observedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+        "foundInHtml": true,
+        "buildIdVerified": true
+      }
+    ]
+  },
+  "invocation": {
+    "command": "node scripts/qa-homeworld-forge-fire-v113.mjs",
+    "environment": {
+      "YAUTJA_QA_MODE": "compiled-app",
+      "YAUTJA_QA_BASE_URL": "http://127.0.0.1:3108",
+      "YAUTJA_QA_BUILD_ID": "wUnrV1ggo6EZPYklVbGCp",
+      "YAUTJA_QA_RUNTIME_COMMIT": "a83d23911ad4b5370494de0ca0bb025bd1d89449",
+      "YAUTJA_FORGE_OUTPUT": "/tmp/homeworld-forge-r8-b1-20261102"
+    }
+  },
+  "scope": "Targeted actual native building render with a declared completed-First-Tracks campaign/location fixture and two consumed network-refusal fixtures. No played approach, crafting completion, complete Homeworld certification or human artistic admission is claimed.",
+  "sourceObservationScope": "Five local application/fixture inputs plus this driver and the seven native asset bytes are observed. This is not the complete served runtime inventory.",
+  "sourceBefore": [
+    {
+      "file": "app/game/HomeworldForgeFireV113.tsx",
+      "bytes": 2608,
+      "sha256": "a111ca1df93324314d102a0e8a83e616c4a9836cbccdf7c9e2dfb1384d911751"
+    },
+    {
+      "file": "app/game/systems/homeworldForgeFireV113.ts",
+      "bytes": 3715,
+      "sha256": "2039b8d16a6ea5f099b8741a9ff8e1814340ae90365a475b9b90ed2936d61922"
+    },
+    {
+      "file": "app/game/HomeworldWorldSceneV77.tsx",
+      "bytes": 25627,
+      "sha256": "b616e13d21e118804c776446bf85b366d1c9b92093cdd48e6985d449ad86c40f"
+    },
+    {
+      "file": "app/game/systems/homeworldWorldV77.ts",
+      "bytes": 36518,
+      "sha256": "e9f6da87934bdfab044a17b5d3ea46f3d16bfe5dab998c36021f699cfc6585de"
+    },
+    {
+      "file": "tests/helpers/solo-v67-campaign-route.mjs",
+      "bytes": 1270,
+      "sha256": "50dc9c5ddbd91306cca8fc6bf1eebca9829cd46242cbe78f254c87f738e6c411"
+    },
+    {
+      "file": "scripts/qa-homeworld-forge-fire-v113.mjs",
+      "bytes": 21522,
+      "sha256": "8dd2056e15a458fadc794aad48b66851b119a05583dcb4c9265dbeeb2500c4b5"
+    }
+  ],
+  "assetsBefore": [
+    {
+      "file": "public/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png",
+      "bytes": 1253095,
+      "sha256": "c7e2903e1ff3021b8a81fb36817769716b68d6c920f1e76811b9ed78d2a4357d"
+    },
+    {
+      "file": "public/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f01.png",
+      "bytes": 1378750,
+      "sha256": "6dbb39f0d2b2a54cd74463ee54136446a5cb4a676e29d6da138d70fe39d7ff0b"
+    },
+    {
+      "file": "public/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f02.png",
+      "bytes": 1326562,
+      "sha256": "b8afc945c9021d55216bd117ae2b2751cc30153fafd176d09adf9d277b9fba86"
+    },
+    {
+      "file": "public/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f03.png",
+      "bytes": 1317805,
+      "sha256": "cf27819e6f2934263fbe939865f013ad53f5cc8e8aafb423bf379f81d7c8e8d5"
+    },
+    {
+      "file": "public/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f04.png",
+      "bytes": 1219860,
+      "sha256": "321b1b1eb34c2e131ec7a37bce3ffec5ef51aaa215a1d7e067d127ccd9e46a22"
+    },
+    {
+      "file": "public/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f05.png",
+      "bytes": 1304701,
+      "sha256": "bc7e020f0a13b8bd652656c8667a35d72422ebc18ffbdf0e31079d190e819721"
+    },
+    {
+      "file": "public/game/homeworld/v72/civic-identity-atlas.png",
+      "bytes": 2324390,
+      "sha256": "79fe4cb8ee1d7ed10805ec1c37506f59fecbedffdf0e7d663b0e6b0edec22710"
+    }
+  ],
+  "checks": [
+    {
+      "name": "actual local Next page responds",
+      "status": "PASS",
+      "detail": {
+        "status": 200
+      }
+    },
+    {
+      "name": "native child uses exact parent building extent without multiplying opacity",
+      "status": "PASS",
+      "detail": {
+        "source": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f02.png",
+        "status": "EXISTING_NATIVE_REUSE_CANDIDATE_NOT_HUMAN_ADMITTED",
+        "frame": "2",
+        "viewBox": "0 0 520 512",
+        "rect": {
+          "x": 429.848388671875,
+          "y": 101.92333984375,
+          "width": 546.637451171875,
+          "height": 538.22802734375,
+          "top": 101.92333984375,
+          "right": 976.48583984375,
+          "bottom": 640.1513671875,
+          "left": 429.848388671875
+        },
+        "parentRect": {
+          "x": 429.848388671875,
+          "y": 101.92333984375,
+          "width": 546.637451171875,
+          "height": 538.22802734375,
+          "top": 101.92333984375,
+          "right": 976.48583984375,
+          "bottom": 640.1513671875,
+          "left": 429.848388671875
+        },
+        "parentBuildingId": "deep-forge",
+        "parentSource": "/game/homeworld/v72/civic-identity-atlas.png",
+        "parentOpacity": "1",
+        "ownOpacity": "1"
+      }
+    },
+    {
+      "name": "six distinct native flame drawings are painted on the actual building",
+      "status": "PASS",
+      "detail": {
+        "frames": [
+          3,
+          4,
+          5,
+          0,
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "name": "game pause holds native frame",
+      "status": "PASS",
+      "detail": {
+        "frame": "2"
+      }
+    },
+    {
+      "name": "reduced motion holds first native drawing",
+      "status": "PASS",
+      "detail": {
+        "samples": [
+          {
+            "index": 0,
+            "source": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png",
+            "href": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png"
+          },
+          {
+            "index": 0,
+            "source": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png",
+            "href": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png"
+          },
+          {
+            "index": 0,
+            "source": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png",
+            "href": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png"
+          },
+          {
+            "index": 0,
+            "source": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png",
+            "href": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png"
+          },
+          {
+            "index": 0,
+            "source": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png",
+            "href": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png"
+          },
+          {
+            "index": 0,
+            "source": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png",
+            "href": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png"
+          }
+        ]
+      }
+    },
+    {
+      "name": "a missing native flame retains the existing static building and omits overlay",
+      "status": "PASS"
+    },
+    {
+      "name": "missing facade atlas prevents orphan flame",
+      "status": "PASS"
+    }
+  ],
+  "captures": [
+    {
+      "name": "00-context",
+      "file": "00-context.png",
+      "bytes": 1756537,
+      "sha256": "8c540f9753562c1dd4cd2decb4ece775a8b13d0bab28a32620e54efddd2e9ec0",
+      "phase": "ordinary"
+    },
+    {
+      "name": "frame-3",
+      "file": "frame-3.png",
+      "bytes": 489481,
+      "sha256": "d6ed6e4045a8bdf4611c5d2e585e0b06596decd03485bea98e754e0ff9f707ed",
+      "phase": "ordinary"
+    },
+    {
+      "name": "frame-4",
+      "file": "frame-4.png",
+      "bytes": 489383,
+      "sha256": "3aca7707bc1ce653e6f90583ee4b31c426cff9a668f5fcb16ca5129d4ad23128",
+      "phase": "ordinary"
+    },
+    {
+      "name": "frame-5",
+      "file": "frame-5.png",
+      "bytes": 489423,
+      "sha256": "e5bd9540ae3371fe8b4eb7a16f2583338ba5116701d6e77c5a66e1ed99b61ebc",
+      "phase": "ordinary"
+    },
+    {
+      "name": "frame-0",
+      "file": "frame-0.png",
+      "bytes": 489337,
+      "sha256": "22771f2fc2a32f3f24d67496e62f7c9ae63f968d443af262750c752ddf327fa5",
+      "phase": "ordinary"
+    },
+    {
+      "name": "frame-1",
+      "file": "frame-1.png",
+      "bytes": 489548,
+      "sha256": "bb0fdd4d8fc3e1e7ac8d9d18a0e050d7daec4dc5335f8c750801df3905da32fd",
+      "phase": "ordinary"
+    },
+    {
+      "name": "frame-2",
+      "file": "frame-2.png",
+      "bytes": 489433,
+      "sha256": "2d2f56faaecd03908471d77b780909d755fd0b9ac505a4529b89292848fce859",
+      "phase": "ordinary"
+    },
+    {
+      "name": "pause",
+      "file": "pause.png",
+      "bytes": 154259,
+      "sha256": "a8f4cfb48d385799fab8e4757f67cf8ac1b84ada6dd8f74b9c2fb02587f7dbae",
+      "phase": "ordinary"
+    },
+    {
+      "name": "reduced-motion",
+      "file": "reduced-motion.png",
+      "bytes": 517694,
+      "sha256": "49d5a278de3183b525b16fa61aeec63f0f525a14e4c1c852187037f096b7da71",
+      "phase": "ordinary"
+    },
+    {
+      "name": "missing-resource-static",
+      "file": "missing-resource-static.png",
+      "bytes": 515441,
+      "sha256": "61bcf17f07100c360feb52fdc0b5ca436d6b9006e8e7dc3f4a8c3300286f8b96",
+      "phase": "missing-flame"
+    },
+    {
+      "name": "missing-facade-no-orphan-fire",
+      "file": "missing-facade-no-orphan-fire.png",
+      "bytes": 523666,
+      "sha256": "87b813494e5ff8b97529765e118d0fb357a183f560d9380fab6cf6ff37b79f4a",
+      "phase": "missing-facade"
+    }
+  ],
+  "screenshots": [
+    {
+      "name": "00-context",
+      "file": "00-context.png",
+      "bytes": 1756537,
+      "sha256": "8c540f9753562c1dd4cd2decb4ece775a8b13d0bab28a32620e54efddd2e9ec0",
+      "phase": "ordinary"
+    },
+    {
+      "name": "frame-3",
+      "file": "frame-3.png",
+      "bytes": 489481,
+      "sha256": "d6ed6e4045a8bdf4611c5d2e585e0b06596decd03485bea98e754e0ff9f707ed",
+      "phase": "ordinary"
+    },
+    {
+      "name": "frame-4",
+      "file": "frame-4.png",
+      "bytes": 489383,
+      "sha256": "3aca7707bc1ce653e6f90583ee4b31c426cff9a668f5fcb16ca5129d4ad23128",
+      "phase": "ordinary"
+    },
+    {
+      "name": "frame-5",
+      "file": "frame-5.png",
+      "bytes": 489423,
+      "sha256": "e5bd9540ae3371fe8b4eb7a16f2583338ba5116701d6e77c5a66e1ed99b61ebc",
+      "phase": "ordinary"
+    },
+    {
+      "name": "frame-0",
+      "file": "frame-0.png",
+      "bytes": 489337,
+      "sha256": "22771f2fc2a32f3f24d67496e62f7c9ae63f968d443af262750c752ddf327fa5",
+      "phase": "ordinary"
+    },
+    {
+      "name": "frame-1",
+      "file": "frame-1.png",
+      "bytes": 489548,
+      "sha256": "bb0fdd4d8fc3e1e7ac8d9d18a0e050d7daec4dc5335f8c750801df3905da32fd",
+      "phase": "ordinary"
+    },
+    {
+      "name": "frame-2",
+      "file": "frame-2.png",
+      "bytes": 489433,
+      "sha256": "2d2f56faaecd03908471d77b780909d755fd0b9ac505a4529b89292848fce859",
+      "phase": "ordinary"
+    },
+    {
+      "name": "pause",
+      "file": "pause.png",
+      "bytes": 154259,
+      "sha256": "a8f4cfb48d385799fab8e4757f67cf8ac1b84ada6dd8f74b9c2fb02587f7dbae",
+      "phase": "ordinary"
+    },
+    {
+      "name": "reduced-motion",
+      "file": "reduced-motion.png",
+      "bytes": 517694,
+      "sha256": "49d5a278de3183b525b16fa61aeec63f0f525a14e4c1c852187037f096b7da71",
+      "phase": "ordinary"
+    },
+    {
+      "name": "missing-resource-static",
+      "file": "missing-resource-static.png",
+      "bytes": 515441,
+      "sha256": "61bcf17f07100c360feb52fdc0b5ca436d6b9006e8e7dc3f4a8c3300286f8b96",
+      "phase": "missing-flame"
+    },
+    {
+      "name": "missing-facade-no-orphan-fire",
+      "file": "missing-facade-no-orphan-fire.png",
+      "bytes": 523666,
+      "sha256": "87b813494e5ff8b97529765e118d0fb357a183f560d9380fab6cf6ff37b79f4a",
+      "phase": "missing-facade"
+    }
+  ],
+  "responses": [
+    {
+      "navigation": "initial",
+      "phase": "ordinary",
+      "url": "http://127.0.0.1:3108/",
+      "status": 200,
+      "htmlSha256": "5c75402c1bae22b8f8864467db0f159005fd551bc82b1d6d49e785a49959a969",
+      "expectedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+      "observedBuildIds": [
+        "wUnrV1ggo6EZPYklVbGCp"
+      ],
+      "observedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+      "foundInHtml": true,
+      "buildIdVerified": true
+    },
+    {
+      "navigation": "fixture-applied",
+      "phase": "ordinary",
+      "url": "http://127.0.0.1:3108/",
+      "status": 200,
+      "htmlSha256": "5c75402c1bae22b8f8864467db0f159005fd551bc82b1d6d49e785a49959a969",
+      "expectedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+      "observedBuildIds": [
+        "wUnrV1ggo6EZPYklVbGCp"
+      ],
+      "observedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+      "foundInHtml": true,
+      "buildIdVerified": true
+    },
+    {
+      "navigation": "missing-flame",
+      "phase": "missing-flame",
+      "url": "http://127.0.0.1:3108/",
+      "status": 200,
+      "htmlSha256": "5c75402c1bae22b8f8864467db0f159005fd551bc82b1d6d49e785a49959a969",
+      "expectedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+      "observedBuildIds": [
+        "wUnrV1ggo6EZPYklVbGCp"
+      ],
+      "observedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+      "foundInHtml": true,
+      "buildIdVerified": true
+    },
+    {
+      "navigation": "native-flame-restored",
+      "phase": "ordinary-recovery",
+      "url": "http://127.0.0.1:3108/",
+      "status": 200,
+      "htmlSha256": "5c75402c1bae22b8f8864467db0f159005fd551bc82b1d6d49e785a49959a969",
+      "expectedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+      "observedBuildIds": [
+        "wUnrV1ggo6EZPYklVbGCp"
+      ],
+      "observedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+      "foundInHtml": true,
+      "buildIdVerified": true
+    },
+    {
+      "navigation": "missing-facade",
+      "phase": "missing-facade",
+      "url": "http://127.0.0.1:3108/",
+      "status": 200,
+      "htmlSha256": "5c75402c1bae22b8f8864467db0f159005fd551bc82b1d6d49e785a49959a969",
+      "expectedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+      "observedBuildIds": [
+        "wUnrV1ggo6EZPYklVbGCp"
+      ],
+      "observedBuildId": "wUnrV1ggo6EZPYklVbGCp",
+      "foundInHtml": true,
+      "buildIdVerified": true
+    }
+  ],
+  "pageErrors": [],
+  "consoleErrors": [
+    {
+      "phase": "missing-flame",
+      "text": "Failed to load resource: net::ERR_FAILED",
+      "location": {
+        "url": "http://127.0.0.1:3108/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f02.png",
+        "line": 0,
+        "column": 0,
+        "lineNumber": 0,
+        "columnNumber": 0
+      }
+    },
+    {
+      "phase": "missing-facade",
+      "text": "Failed to load resource: net::ERR_FAILED",
+      "location": {
+        "url": "http://127.0.0.1:3108/game/homeworld/v72/civic-identity-atlas.png",
+        "line": 0,
+        "column": 0,
+        "lineNumber": 0,
+        "columnNumber": 0
+      }
+    },
+    {
+      "phase": "missing-facade",
+      "text": "Failed to load resource: net::ERR_FAILED",
+      "location": {
+        "url": "http://127.0.0.1:3108/game/homeworld/v72/civic-identity-atlas.png",
+        "line": 0,
+        "column": 0,
+        "lineNumber": 0,
+        "columnNumber": 0
+      }
+    },
+    {
+      "phase": "missing-facade",
+      "text": "Failed to load resource: net::ERR_FAILED",
+      "location": {
+        "url": "http://127.0.0.1:3108/game/homeworld/v72/civic-identity-atlas.png",
+        "line": 0,
+        "column": 0,
+        "lineNumber": 0,
+        "columnNumber": 0
+      }
+    }
+  ],
+  "workerErrors": [],
+  "requestFailures": [
+    {
+      "id": 316,
+      "phase": "missing-flame",
+      "url": "http://127.0.0.1:3108/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f02.png",
+      "method": "GET",
+      "resourceType": "image",
+      "failure": {
+        "errorText": "net::ERR_FAILED"
+      },
+      "declaredRefusal": {
+        "fixtureId": "missing-flame",
+        "observationId": 1
+      }
+    },
+    {
+      "id": 657,
+      "phase": "missing-facade",
+      "url": "http://127.0.0.1:3108/game/homeworld/v72/civic-identity-atlas.png",
+      "method": "GET",
+      "resourceType": "image",
+      "failure": {
+        "errorText": "net::ERR_FAILED"
+      },
+      "declaredRefusal": {
+        "fixtureId": "missing-facade",
+        "observationId": 2
+      }
+    },
+    {
+      "id": 668,
+      "phase": "missing-facade",
+      "url": "http://127.0.0.1:3108/game/homeworld/v72/civic-identity-atlas.png",
+      "method": "GET",
+      "resourceType": "image",
+      "failure": {
+        "errorText": "net::ERR_FAILED"
+      },
+      "declaredRefusal": {
+        "fixtureId": "missing-facade",
+        "observationId": 3
+      }
+    },
+    {
+      "id": 684,
+      "phase": "missing-facade",
+      "url": "http://127.0.0.1:3108/game/homeworld/v72/civic-identity-atlas.png",
+      "method": "GET",
+      "resourceType": "image",
+      "failure": {
+        "errorText": "net::ERR_FAILED"
+      },
+      "declaredRefusal": {
+        "fixtureId": "missing-facade",
+        "observationId": 4
+      }
+    }
+  ],
+  "httpErrors": [],
+  "routeErrors": [],
+  "declaredNetworkRefusals": [
+    {
+      "id": "missing-flame",
+      "phase": "missing-flame",
+      "path": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f02.png",
+      "error": "failed",
+      "scope": "Only this original native image is aborted; the real existing facade must remain painted."
+    },
+    {
+      "id": "missing-facade",
+      "phase": "missing-facade",
+      "path": "/game/homeworld/v72/civic-identity-atlas.png",
+      "error": "failed",
+      "scope": "Only the real facade atlas is aborted. This checks absence of orphan fire during loading, not successful global readiness or recovery."
+    }
+  ],
+  "networkRefusalObservations": [
+    {
+      "id": 1,
+      "phase": "missing-flame",
+      "url": "http://127.0.0.1:3108/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f02.png",
+      "method": "GET",
+      "resourceType": "image",
+      "fixtureId": "missing-flame",
+      "requestId": 316
+    },
+    {
+      "id": 2,
+      "phase": "missing-facade",
+      "url": "http://127.0.0.1:3108/game/homeworld/v72/civic-identity-atlas.png",
+      "method": "GET",
+      "resourceType": "image",
+      "fixtureId": "missing-facade",
+      "requestId": 657
+    },
+    {
+      "id": 3,
+      "phase": "missing-facade",
+      "url": "http://127.0.0.1:3108/game/homeworld/v72/civic-identity-atlas.png",
+      "method": "GET",
+      "resourceType": "image",
+      "fixtureId": "missing-facade",
+      "requestId": 668
+    },
+    {
+      "id": 4,
+      "phase": "missing-facade",
+      "url": "http://127.0.0.1:3108/game/homeworld/v72/civic-identity-atlas.png",
+      "method": "GET",
+      "resourceType": "image",
+      "fixtureId": "missing-facade",
+      "requestId": 684
+    }
+  ],
+  "frameObservations": [
+    {
+      "index": 3,
+      "source": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f03.png",
+      "href": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f03.png"
+    },
+    {
+      "index": 4,
+      "source": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f04.png",
+      "href": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f04.png"
+    },
+    {
+      "index": 5,
+      "source": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f05.png",
+      "href": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f05.png"
+    },
+    {
+      "index": 0,
+      "source": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png",
+      "href": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png"
+    },
+    {
+      "index": 1,
+      "source": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f01.png",
+      "href": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f01.png"
+    },
+    {
+      "index": 3,
+      "source": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f03.png",
+      "href": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f03.png"
+    },
+    {
+      "index": 4,
+      "source": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f04.png",
+      "href": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f04.png"
+    },
+    {
+      "index": 4,
+      "source": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f04.png",
+      "href": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f04.png"
+    },
+    {
+      "index": 0,
+      "source": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png",
+      "href": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png"
+    },
+    {
+      "index": 1,
+      "source": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f01.png",
+      "href": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f01.png"
+    },
+    {
+      "index": 1,
+      "source": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f01.png",
+      "href": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f01.png"
+    },
+    {
+      "index": 3,
+      "source": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f03.png",
+      "href": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f03.png"
+    },
+    {
+      "index": 4,
+      "source": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f04.png",
+      "href": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f04.png"
+    },
+    {
+      "index": 5,
+      "source": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f05.png",
+      "href": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f05.png"
+    },
+    {
+      "index": 0,
+      "source": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png",
+      "href": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png"
+    },
+    {
+      "index": 1,
+      "source": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f01.png",
+      "href": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f01.png"
+    },
+    {
+      "index": 2,
+      "source": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f02.png",
+      "href": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f02.png"
+    }
+  ],
+  "fixture": {
+    "source": "firstTracksCompleted()",
+    "location": {
+      "x": 3080,
+      "y": 3000,
+      "levelId": "0"
+    },
+    "playedApproach": false,
+    "clock": "Declared Playwright clock; native city clock/render is observed, not replaced"
+  },
+  "native": {
+    "source": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f02.png",
+    "status": "EXISTING_NATIVE_REUSE_CANDIDATE_NOT_HUMAN_ADMITTED",
+    "frame": "2",
+    "viewBox": "0 0 520 512",
+    "rect": {
+      "x": 429.848388671875,
+      "y": 101.92333984375,
+      "width": 546.637451171875,
+      "height": 538.22802734375,
+      "top": 101.92333984375,
+      "right": 976.48583984375,
+      "bottom": 640.1513671875,
+      "left": 429.848388671875
+    },
+    "parentRect": {
+      "x": 429.848388671875,
+      "y": 101.92333984375,
+      "width": 546.637451171875,
+      "height": 538.22802734375,
+      "top": 101.92333984375,
+      "right": 976.48583984375,
+      "bottom": 640.1513671875,
+      "left": 429.848388671875
+    },
+    "parentBuildingId": "deep-forge",
+    "parentSource": "/game/homeworld/v72/civic-identity-atlas.png",
+    "parentOpacity": "1",
+    "ownOpacity": "1"
+  },
+  "staticFacadeDecoded": true,
+  "restoredNativeFrame": {
+    "index": 0,
+    "source": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png",
+    "href": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png"
+  },
+  "facadeRefusalState": {
+    "motionReady": "false",
+    "buildingSource": "/game/homeworld/v72/civic-identity-atlas.png",
+    "scope": "Observed loading/unavailable context, not a successful global-readiness recovery"
+  },
+  "sourceAfter": [
+    {
+      "file": "app/game/HomeworldForgeFireV113.tsx",
+      "bytes": 2608,
+      "sha256": "a111ca1df93324314d102a0e8a83e616c4a9836cbccdf7c9e2dfb1384d911751"
+    },
+    {
+      "file": "app/game/systems/homeworldForgeFireV113.ts",
+      "bytes": 3715,
+      "sha256": "2039b8d16a6ea5f099b8741a9ff8e1814340ae90365a475b9b90ed2936d61922"
+    },
+    {
+      "file": "app/game/HomeworldWorldSceneV77.tsx",
+      "bytes": 25627,
+      "sha256": "b616e13d21e118804c776446bf85b366d1c9b92093cdd48e6985d449ad86c40f"
+    },
+    {
+      "file": "app/game/systems/homeworldWorldV77.ts",
+      "bytes": 36518,
+      "sha256": "e9f6da87934bdfab044a17b5d3ea46f3d16bfe5dab998c36021f699cfc6585de"
+    },
+    {
+      "file": "tests/helpers/solo-v67-campaign-route.mjs",
+      "bytes": 1270,
+      "sha256": "50dc9c5ddbd91306cca8fc6bf1eebca9829cd46242cbe78f254c87f738e6c411"
+    },
+    {
+      "file": "scripts/qa-homeworld-forge-fire-v113.mjs",
+      "bytes": 21522,
+      "sha256": "8dd2056e15a458fadc794aad48b66851b119a05583dcb4c9265dbeeb2500c4b5"
+    }
+  ],
+  "assetsAfter": [
+    {
+      "file": "public/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png",
+      "bytes": 1253095,
+      "sha256": "c7e2903e1ff3021b8a81fb36817769716b68d6c920f1e76811b9ed78d2a4357d"
+    },
+    {
+      "file": "public/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f01.png",
+      "bytes": 1378750,
+      "sha256": "6dbb39f0d2b2a54cd74463ee54136446a5cb4a676e29d6da138d70fe39d7ff0b"
+    },
+    {
+      "file": "public/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f02.png",
+      "bytes": 1326562,
+      "sha256": "b8afc945c9021d55216bd117ae2b2751cc30153fafd176d09adf9d277b9fba86"
+    },
+    {
+      "file": "public/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f03.png",
+      "bytes": 1317805,
+      "sha256": "cf27819e6f2934263fbe939865f013ad53f5cc8e8aafb423bf379f81d7c8e8d5"
+    },
+    {
+      "file": "public/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f04.png",
+      "bytes": 1219860,
+      "sha256": "321b1b1eb34c2e131ec7a37bce3ffec5ef51aaa215a1d7e067d127ccd9e46a22"
+    },
+    {
+      "file": "public/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f05.png",
+      "bytes": 1304701,
+      "sha256": "bc7e020f0a13b8bd652656c8667a35d72422ebc18ffbdf0e31079d190e819721"
+    },
+    {
+      "file": "public/game/homeworld/v72/civic-identity-atlas.png",
+      "bytes": 2324390,
+      "sha256": "79fe4cb8ee1d7ed10805ec1c37506f59fecbedffdf0e7d663b0e6b0edec22710"
+    }
+  ],
+  "sourceUnchanged": true,
+  "assetsUnchanged": true,
+  "errorClassification": {
+    "declared": {
+      "requestFailures": [
+        {
+          "index": 0,
+          "fixtureId": "missing-flame",
+          "observationId": 1
+        },
+        {
+          "index": 1,
+          "fixtureId": "missing-facade",
+          "observationId": 2
+        },
+        {
+          "index": 2,
+          "fixtureId": "missing-facade",
+          "observationId": 3
+        },
+        {
+          "index": 3,
+          "fixtureId": "missing-facade",
+          "observationId": 4
+        }
+      ],
+      "consoleErrors": [
+        {
+          "index": 0,
+          "fixtureId": "missing-flame",
+          "observationId": 1,
+          "matchingBasis": "exact failed URL and phase"
+        },
+        {
+          "index": 1,
+          "fixtureId": "missing-facade",
+          "observationId": 2,
+          "matchingBasis": "exact failed URL and phase"
+        },
+        {
+          "index": 2,
+          "fixtureId": "missing-facade",
+          "observationId": 3,
+          "matchingBasis": "exact failed URL and phase"
+        },
+        {
+          "index": 3,
+          "fixtureId": "missing-facade",
+          "observationId": 4,
+          "matchingBasis": "exact failed URL and phase"
+        }
+      ]
+    },
+    "ordinary": {
+      "pageErrors": [],
+      "consoleErrors": [],
+      "workerErrors": [],
+      "requestFailures": [],
+      "httpErrors": [],
+      "routeErrors": []
+    },
+    "unmatchedAborts": []
+  },
+  "status": "PASS_TARGETED_COMPILED_APP",
+  "endedAt": "2026-11-02T07:45:06.612Z"
+}

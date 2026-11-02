@@ -1,0 +1,29 @@
+✖ historical03cf connector assertions retain1421 real steps without certifying the current route (9989.664322ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 10081.532046
+
+✖ failing tests:
+
+test at ../connector-counter-r8-20261102/historical-proposed-replay.test.mjs:20:1
+✖ historical03cf connector assertions retain1421 real steps without certifying the current route (9989.664322ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /# pass 6\b/. Input:
+  
+  ''
+  
+      at TestContext.<anonymous> (file:///workspace/connector-counter-r8-20261102/historical-proposed-replay.test.mjs:37:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '',
+    expected: /# pass 6\b/,
+    operator: 'match',
+    diff: 'simple'
+  }

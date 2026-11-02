@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "task": "Independent read-only review of the two PR62 hunt fixes and three supporting files",
+  "verdict": "NO_CONCRETE_DEFECT_FOUND",
+  "findings": [],
+  "method": {
+    "gitUsed": false,
+    "repositoryWrites": false,
+    "testsRerun": false,
+    "newBrowserRun": false,
+    "existingScreenshotsOpened": 6,
+    "sourceAndRecordedArtifactHashesCompared": true
+  },
+  "sources": [
+    {
+      "path": "app/game/systems/huntRitesRuntimeV77.ts",
+      "sha256": "fa9098ff0f1c34cfb7849e515556398564bcd5c0d7f3439f4216a0338b318ab3"
+    },
+    {
+      "path": "app/game/discoverySignalsV112.ts",
+      "sha256": "eaac00b22e9976499f2a7ce1e0439ba33eba0d2fd5aa1f40faa9c9887d4b6349"
+    },
+    {
+      "path": "tests/hunt-carried-corpse-menu-v112.test.mjs",
+      "sha256": "80bd2d401e8f33d8a756e7591553958dfd90235a3db9d9dfb47f68396cb09ebc"
+    },
+    {
+      "path": "tests/discovery-signals-hud-v112.test.mjs",
+      "sha256": "9423d1a6bfb1fa6cb024415e4313697acb1a2c954dbd616f74e1db70d03732e8"
+    },
+    {
+      "path": "scripts/qa-discovery-hud-layout-v112.mjs",
+      "sha256": "880524c808ee32aa5544e4d3f8d119fd93ada92bc7e349fae49882f7be3c7cc9"
+    }
+  ],
+  "productionChecks": [
+    {
+      "path": "app/game/systems/huntRitesRuntimeV77.ts",
+      "line": 119,
+      "conclusion": "A structurally valid carried corpse is preferred within the existing 88-unit native reach. Invalid or absent carried identities retain the ordinary nearest-corpse fallback. The source array is not sorted or mutated."
+    },
+    {
+      "path": "app/game/discoverySignalsV112.ts",
+      "line": 1,
+      "conclusion": "The presentation separates discovery cause and requested response, preserves the legacy label contract, and saves/restores Canvas state. It does not change ecosystem reaction emission or pursuit."
+    }
+  ],
+  "evidenceReview": {
+    "twoProductFilesEqualPinnedUpstreamSourceBytes": true,
+    "currentSourcesAndHuntCanvasMatchCarriedReport": true,
+    "compressedAndUncompressedExecutedMenuBundleHashesMatch": true,
+    "hudSourceDriverBundleFixtureAndSixCaptureHashesMatch": true,
+    "recordedCarcassCases": 20,
+    "recordedHudTextBoundsMeasurements": 72,
+    "recordedHudPageErrors": 0,
+    "recordedHudConsoleErrors": 0,
+    "minimumRecordedTextGapCssPx": 0.5,
+    "screenshotsOpened": [
+      {
+        "path": "docs/qa/hunt-pr62-followup-r8-20261102/hud-layout/label-matrix-320-dpr1.png",
+        "sha256": "bd5181455a35745611b3e3c00ee11af6beab18b1adc53516a7516931f5176e9f",
+        "opened": true
+      },
+      {
+        "path": "docs/qa/hunt-pr62-followup-r8-20261102/hud-layout/label-matrix-320-dpr2.png",
+        "sha256": "de60ab419a348f3f180c5746c599877da02d9fd4bd1ddbba6d562301290c9d30",
+        "opened": true
+      },
+      {
+        "path": "docs/qa/hunt-pr62-followup-r8-20261102/hud-layout/label-matrix-768-dpr1.png",
+        "sha256": "51df6d5834c8cbbdd7b114e39469af1947a7ce578f85b7267656aaeeaf04a08c",
+        "opened": true
+      },
+      {
+        "path": "docs/qa/hunt-pr62-followup-r8-20261102/hud-layout/label-matrix-768-dpr2.png",
+        "sha256": "6da9809f60b05a154cf93df6b21e0eec7cf22540fafd3a1c12e3ee48bc5c874e",
+        "opened": true
+      },
+      {
+        "path": "docs/qa/hunt-pr62-followup-r8-20261102/hud-layout/label-matrix-1280-dpr1.png",
+        "sha256": "ebdb86b24b69badbb277b0bd36a3b46df11089653eae633849dd2d0a01434937",
+        "opened": true
+      },
+      {
+        "path": "docs/qa/hunt-pr62-followup-r8-20261102/hud-layout/label-matrix-1280-dpr2.png",
+        "sha256": "e0164cd36743a532316446203bc4d22bff9453a6fba7c8783104c1d786b63c1f",
+        "opened": true
+      }
+    ]
+  },
+  "scopeLimits": [
+    {
+      "path": "tests/hunt-carried-corpse-menu-v112.test.mjs",
+      "line": 26,
+      "detail": "The fixture exercises the actual extracted production menu callback and server-rendered menu. emitPersistence is observed with a counter and persistHuntRef.current is null: this does not qualify campaign storage persistence or a mounted GameClient encounter."
+    },
+    {
+      "path": "tests/discovery-signals-hud-v112.test.mjs",
+      "line": 31,
+      "detail": "The 12 combinations cover the public rendering contract across independent cause and response axes; they do not establish that every pair is emitted by an encounter."
+    },
+    {
+      "path": "scripts/qa-discovery-hud-layout-v112.mjs",
+      "line": 16,
+      "detail": "The browser evidence uses a fixed 1280x720 Canvas scaled to CSS widths 320/768/1280. At 320, 9/8 logical font pixels become 2.25/2 CSS pixels. The opened screenshots show very small text there. This is geometry evidence, not a mobile reading qualification; the driver explicitly states this limit at line 59."
+    }
+  ],
+  "recommendation": "No blocking change requested for these five paths. Preserve the explicit constructed-fixture and geometric-only qualifications; do not describe this review as a live mission, campaign persistence, physical controller, or phone readability qualification."
+}

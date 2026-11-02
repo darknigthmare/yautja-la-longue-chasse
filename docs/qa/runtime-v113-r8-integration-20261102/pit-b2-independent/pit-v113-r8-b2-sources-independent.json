@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS_INDEPENDENT_B2_SOURCE_IDENTITY",
+  "scope": "Read-only identity audit of all B2 frozen source files and their exact runtime Git blobs; no gameplay, browser replay or artistic validation performed by this agent.",
+  "startedAt": "2026-11-02T08:21:25.456Z",
+  "completedAt": "2026-11-02T08:22:01.894Z",
+  "elapsedMs": 36438,
+  "branch": "codex/runtime-v113-r8-20261102",
+  "runtimeCommit": "719fe0d77e65be5349b76f507938309f56a67619",
+  "headBefore": "719fe0d77e65be5349b76f507938309f56a67619",
+  "headAfter": "719fe0d77e65be5349b76f507938309f56a67619",
+  "buildId": "OzWVxNAbS8mWbL_Pue9Zg",
+  "freeze": {
+    "file": "docs/v113-runtime-freeze.json",
+    "bytes": 367432,
+    "sha256": "f39b5089fc130a726b87a6120470dacb3c3ef41098582a7203844620ce57f164",
+    "entries": 1964,
+    "totalInputBytes": 1089650270
+  },
+  "driver": {
+    "file": "scripts/qa-pit-backward-throws-v113.mjs",
+    "bytes": 36408,
+    "sha256": "be2930ffa991107fb4abe55d50bcb04c430862f4be851ad57207d22c2c65a869",
+    "frozenPinMatches": true
+  },
+  "checks": [
+    {
+      "name": "Expected runtime HEAD before and after",
+      "status": "PASS"
+    },
+    {
+      "name": "Expected compiled build ID before and after",
+      "status": "PASS"
+    },
+    {
+      "name": "Exact freeze bytes and 1964-entry inventory",
+      "status": "PASS"
+    },
+    {
+      "name": "Complete snapshotRuntimeV113 before equals freeze",
+      "status": "PASS"
+    },
+    {
+      "name": "All 1964 actual file bytes and SHA256 match regular blobs in runtime commit via verifyRuntimeCommitV112",
+      "status": "PASS"
+    },
+    {
+      "name": "Complete snapshotRuntimeV113 after equals freeze and before",
+      "status": "PASS"
+    },
+    {
+      "name": "Freeze bytes unchanged throughout audit",
+      "status": "PASS"
+    },
+    {
+      "name": "Canonical Pit driver unchanged and included in freeze",
+      "status": "PASS"
+    }
+  ],
+  "helpers": [
+    {
+      "file": "scripts/snapshot-runtime-v113.mjs",
+      "bytes": 7504,
+      "sha256": "6f624914c5366e40d6a83d6dd2331fb209af0ea5056f1f157a2efa281bd95188"
+    },
+    {
+      "file": "scripts/snapshot-runtime-v112.mjs",
+      "bytes": 8175,
+      "sha256": "18c02deea0a849ca46be73699d789b754f5b08804e6a98744443ed7f49c56afa"
+    },
+    {
+      "file": "scripts/publish-validation-v112.mjs",
+      "bytes": 12767,
+      "sha256": "72e1def9f58f0c68aa3d66b502937c64a8271ec9a4300a484d338a9146030ee2"
+    }
+  ],
+  "limits": {
+    "browserRunExecuted": false,
+    "browserResultInspected": false,
+    "capturesOpened": 0,
+    "replayValidated": false,
+    "newCertificateCreated": false,
+    "publicationPerformed": false,
+    "repositoryFilesWritten": 0,
+    "gitMutationsPerformed": false,
+    "secretsRead": false
+  }
+}

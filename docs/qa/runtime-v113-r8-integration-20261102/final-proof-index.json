@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS_BOUNDED_V113_R8_B2_DELIVERY",
+  "runtimeCommit": "719fe0d77e65be5349b76f507938309f56a67619",
+  "buildId": "OzWVxNAbS8mWbL_Pue9Zg",
+  "fullCurrentDomainRecipes": [
+    {
+      "domain": "Homeworld",
+      "checks": 249,
+      "openedCaptures": 39
+    },
+    {
+      "domain": "Pit",
+      "checks": 127,
+      "openedCaptures": 39,
+      "actualCompleteVictories": 1,
+      "actualReplayExports": 1
+    }
+  ],
+  "modelTestsPassed": 556,
+  "currentCertificateTestPassed": 1,
+  "allSourceRequirementsClosed": false,
+  "humanArtisticAdmissions": 0,
+  "nativeExcelExecuted": false,
+  "files": [
+    {
+      "path": "docs/v113-runtime-freeze.json",
+      "bytes": 367432,
+      "sha256": "f39b5089fc130a726b87a6120470dacb3c3ef41098582a7203844620ce57f164"
+    },
+    {
+      "path": "docs/v113-homeworld-validation.json",
+      "bytes": 866216,
+      "sha256": "7d42b5a70705d8720fca2a50818554b6e9973db988645d1b687d8862c8c61a66"
+    },
+    {
+      "path": "docs/v113-pit-validation.json",
+      "bytes": 1379421,
+      "sha256": "e2440ed86acfdb81a1f5d68147e92993fa4636939586666d078055d6eb1eff6c"
+    },
+    {
+      "path": "docs/qa/v113-homeworld/entry.json",
+      "bytes": 9209,
+      "sha256": "a2548f2f653d5111b8c624c9bcdb41da7f6cebf864da81a849364bb4b058cd90"
+    },
+    {
+      "path": "docs/qa/v113-pit/entry.json",
+      "bytes": 8702,
+      "sha256": "b7921267e4d3cae7c952d9b852955ae0bcf14ae161b74a1e55791606bcb0a956"
+    },
+    {
+      "path": "docs/qa/v113-pit-replay/entry.json",
+      "bytes": 3560,
+      "sha256": "5e5a3e480a8553d387107813b8d14430315f752c30848039d03f36cbb7d549f0"
+    },
+    {
+      "path": "docs/qa/homeworld-r8-combined-20261102/b2/summary.json",
+      "bytes": 3864,
+      "sha256": "bbd0b5f99b8f17501b9b84b44591e69c02a1eda6e99180a6a8c8efc66b9b3c2c"
+    },
+    {
+      "path": "docs/qa/preserve-v6-r8-combined-20261102/b2/INDEX.json",
+      "bytes": 3636,
+      "sha256": "4778bf6db34d1316bec07a3da917ba123fc68c7826331e0e35f8b671ab28be49"
+    },
+    {
+      "path": "docs/qa/hunt-pr62-followup-r8-20261102/verification.json",
+      "bytes": 1495,
+      "sha256": "571c2fa07ffe615f4855dcd7e9367db137c1fadbd033ab3d2f49c611989ebd0a"
+    },
+    {
+      "path": "production/YAUTJA_V114_SUIVI.xlsx",
+      "bytes": 10600088,
+      "sha256": "1367ac28a95c1ecf069ee1b5ee84b9438857c28ed5fb1b4e3b7059e4db619240"
+    },
+    {
+      "path": "production/native-open-20261102/source-manifest.json",
+      "bytes": 534565,
+      "sha256": "682a9dc03da5887eaa8816371f2f543ab731dcbf4b0464c9cee1da3b9c044f7e"
+    },
+    {
+      "path": "production/native-open-gallery-20261102.html",
+      "bytes": 43419,
+      "sha256": "25f20db37d72d50f4c447a5eae5e0c134e84c318b079a36112751aae24ed3042"
+    },
+    {
+      "path": "docs/qa/runtime-v113-r8-integration-20261102/b2-model-tests.tap",
+      "bytes": 145159,
+      "sha256": "c95c32a23e42838afa6418fefc23a9102e6b94f91ecc9b7706ec84d02614ea32"
+    },
+    {
+      "path": "docs/qa/runtime-v113-r8-integration-20261102/b2-current-certificates.tap",
+      "bytes": 481,
+      "sha256": "ce0c3df6d7fc640a03920d5907b2ae09d274756a6032c275700e32c9d325061a"
+    }
+  ]
+}
