@@ -37,6 +37,7 @@ import {warOuterTravelLedgerV145} from "./systems/clanWarTravelLedgerV145";
 import {buildWarCouncilAuditV146} from "./systems/clanWarCouncilAuditV146";
 import {commandWarOuterRerouteV144} from "./systems/clanWarOuterRerouteV144";
 import {commandWarOuterPaceV144} from "./systems/clanWarOuterPaceV144";
+import {inspectWarOuterPassageV144} from "./systems/clanWarOuterInspectionV144";
 import {commandWarStealthAlertReinforcementV144,setStealthReinforcementMode} from "./systems/clanWarStealthReinforcementV144";
 import {commandWarStealthDashV143} from "./systems/clanWarStealthDashV143";
 import {commandWarOuterIncidentV143,warOuterIncidentV143} from "./systems/clanWarOuterIncidentV143";
@@ -860,7 +861,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
         {order.fieldSupport&&<small className={styles.explain}>Soutien de terrain V136 : {order.fieldSupport.paidRav} RAV engagés à {order.fieldSupport.allocatedAt} ; aucune victoire anticipée.</small>}
         {order.reconHalt&&<small className={styles.explain}>Halte V137 : ancienne échéance {order.reconHalt.originalDueAt}, nouveau rapport après 15 secondes supplémentaires ; effectifs et route inchangés.</small>}
         {order.departureContext&&<small className={styles.explain}>Briefing figé au départ : renseignements {order.departureContext.intel?"confirmés":"non confirmés"}, relais {order.departureContext.weakened?"affaibli":"non confirmé"}, pression {order.departureContext.pressure}. Les résultats ultérieurs des autres modes ne modifient pas ce mandat.</small>}
-        {!order.recall&&!order.forcedPace&&!order.routeDiversion&&!order.routeIncident&&!order.reconHalt&&
+        {!order.recall&&!order.forcedPace&&!order.passageCheck&&!order.routeDiversion&&!order.routeIncident&&!order.reconHalt&&
           now>=order.startedAt&&now-order.startedAt<=Math.min(5000,
             (order.dueAt-order.startedAt)*.15)&&
           earlyOptions.length>0&&<div className={styles.cards}>
@@ -919,6 +920,12 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
            Marche forcée · 3 RAV · retour avancé de 8 s · résistance +2
           </button>}
         {order.forcedPace&&<small className={styles.explain}>Marche forcée : 3 RAV engagés, aucun résultat anticipé.</small>}
+        {order.passageCheck?<small className={styles.explain}>Passage {order.passageCheck.passageId} inspecté : {order.passageCheck.sourceCondition||"aucune condition publiée"} · 1 RAV engagé.</small>:
+          !order.recall&&travelLedger.workable&&now>order.startedAt&&now<order.dueAt&&
+          <button type="button" disabled={blocked||world.rav<1}
+           onClick={()=>commit(inspectWarOuterPassageV144(worldRef.current,order.id,Date.now(),rules))}>
+           Inspecter le passage actuel · 1 RAV · préparation +2 au rapport
+          </button>}
       </div>;}):<p>Aucune équipe actuellement déléguée.</p>}
       <button type="button" disabled={blocked||!world.outer.some(order=>now>=order.dueAt)}
         onClick={()=>commit(settleWarOuterOpsV115(worldRef.current,Date.now(),rules))}>Recevoir les rapports arrivés</button>

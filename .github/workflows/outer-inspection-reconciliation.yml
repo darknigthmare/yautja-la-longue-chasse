@@ -1,0 +1,65 @@
+name: Outer Ops passage inspection and recall
+on:
+  pull_request:
+    branches: [feat/v152-clan-war-provenance-gate-20261101]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          filter: blob:none
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /package.json
+            /package-lock.json
+            /tsconfig*.json
+            /eslint.config.mjs
+            /app/game/
+            /types/
+            /lib/
+            /tests/
+            /scripts/qa-outer-inspection-browser.mjs
+            /public/game/assets/v15/trophies/manifest.json
+            /docs/clan-war-v152/Yautja_OuterOps_Inspection_V153.xlsx
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Source and existing-mode regressions
+        run: |
+          node --experimental-strip-types --test --test-concurrency=1 \
+            tests/clan-war-operations-v115.test.mjs \
+            tests/clan-war-outer-recall-v116.test.mjs \
+            tests/clan-war-parallel-modes-v135.test.mjs \
+            tests/clan-war-parallel-modes-v136.test.mjs \
+            tests/clan-war-four-modes-v{137,138,139,140,141,142,143,144,145}.test.mjs \
+            tests/clan-war-outer-pace-reconcile.test.mjs \
+            tests/clan-war-outer-inspection-reconcile.test.mjs \
+            tests/clan-war-v115-multitab-v151.test.mjs \
+            tests/clan-war-provenance-gate-v152.test.mjs \
+            tests/clan-war-council-v146.test.mjs
+      - run: npx --no-install tsc --noEmit -p tsconfig.clan-war-v152.json
+      - name: Lint changed code
+        run: |
+          npx --no-install eslint app/game/ClanWarOperationsV115.tsx \
+            app/game/systems/clanWarOperationsV115.ts \
+            app/game/systems/clanWarOuterInspectionV144.ts \
+            app/game/systems/clanWarOuterRerouteV144.ts \
+            tests/clan-war-outer-inspection-reconcile.test.mjs \
+            scripts/qa-outer-inspection-browser.mjs tests/browser/outer-inspection.tsx
+      - name: Install Chromium
+        run: npx --no-install playwright-core install --with-deps chromium
+      - name: Actual component inspection, recall and reload
+        run: |
+          export CHROMIUM_EXECUTABLE_PATH="$(node -e 'process.stdout.write(require("playwright-core").chromium.executablePath())')"
+          node scripts/qa-outer-inspection-browser.mjs
+      - name: Validate follow-up workbook
+        run: |
+          python3 -c "import zipfile; p='docs/clan-war-v152/Yautja_OuterOps_Inspection_V153.xlsx'; z=zipfile.ZipFile(p); assert z.testzip() is None and 'xl/workbook.xml' in z.namelist()"

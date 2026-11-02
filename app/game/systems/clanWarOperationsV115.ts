@@ -90,6 +90,8 @@ export interface WarOuterMissionV115 {
   departureContext?: {intel:boolean;weakened:boolean;escorted:boolean;pressure:number};
   /** V142 authorized alternative passage selection; optional for old archives. */
   routeChoiceId?:string;
+  /** V144 public source-passage inspection retained in #55 archives. */
+  passageCheck?:{passageId:string;sourceCondition:string;checkedAt:number;paidRav:1};
   /** Optional #57 pace order, retained across historical V115 saves. */
   forcedPace?:{orderedAt:number;originalDueAt:number;paidRav:3;savedMs:8000};
   routeDiversion?:{fromPassageIds:string[];originalDueAt:number;changedAt:number;paidRav:1};
@@ -929,7 +931,8 @@ export function simulateWarOuterMissionV115(
   const reconHaltBonus=order.reconHalt&&["recon","escort"].includes(order.focus)?3:0;
   const incidentBonus=order.routeIncident?.kind==="secure"?3:
     order.routeIncident?.kind==="detour"?2:0;
-  const strength=Math.round((order.focus==="recon"?scout*1.4:order.focus==="escort"?shield*.9:assault*.9)+support+sabotage+escorted+pressure+fieldBonus+reconHaltBonus+incidentBonus);
+  const passageBonus=order.passageCheck?.paidRav===1?2:0;
+  const strength=Math.round((order.focus==="recon"?scout*1.4:order.focus==="escort"?shield*.9:assault*.9)+support+sabotage+escorted+pressure+fieldBonus+reconHaltBonus+incidentBonus+passageBonus);
   const roll=(round:number)=>hashSeed(order.id+"-"+order.targetId+"-"+order.focus+"-"+round)%11-5;
   const baseThreat=Math.max(8,territory.terrainDefense+order.routeIds.length*2);
   const threshold=(order.focus==="recon"?Math.round(baseThreat*.7):order.focus==="escort"?Math.round(baseThreat*.9):baseThreat)+(order.forcedPace?2:0);
@@ -941,6 +944,8 @@ export function simulateWarOuterMissionV115(
     ...(order.retask?["Réorientation V135 : "+order.retask.oldFocus+" → "+order.focus+" à "+order.retask.changedAt+" ; aucun coût ou résultat anticipé."]:[]),
     ...(order.fieldSupport?["Soutien V136 : 2 RAV réels engagés à "+order.fieldSupport.allocatedAt+
       " ; +4 capacité de terrain sur ce mandat uniquement."]:[]),
+    ...(order.passageCheck?["Contrôle V144 de passage "+order.passageCheck.passageId+
+      " · condition : "+order.passageCheck.sourceCondition+" · 1 RAV payé, +2 préparation au résultat."]:[]),
     ...(order.forcedPace?["Marche forcée V144 : 3 RAV engagés, échéance avancée de 8 secondes, résistance +2."]:[]),
     ...(order.routeIncident?["Incident de passage V143 "+order.routeIncident.passageId+
       " : "+order.routeIncident.sourceIncident+" · décision "+order.routeIncident.kind+
@@ -1105,6 +1110,16 @@ export function readWarOperationsV115(raw:string,rules:WarRulesV6):WarOperations
             (unitFor(rules,ownTeam(v,id)?.unitId??"")?.commandPoints??0),0),rules)
           .some(route=>route.passageIds.join("|")===
             order.routeDiversion!.fromPassageIds.join("|"))))||
+      (order.passageCheck!==undefined&&(!order.passageCheck||
+        typeof order.passageCheck!=="object"||Array.isArray(order.passageCheck)||
+        order.passageCheck.paidRav!==1||
+        !Number.isSafeInteger(order.passageCheck.checkedAt)||
+        order.passageCheck.checkedAt<=order.startedAt||
+        order.passageCheck.checkedAt>=(order.recall?.originalDueAt??order.dueAt)||
+        (order.recall!==undefined&&order.passageCheck.checkedAt>order.recall.orderedAt)||
+        !order.routeIds.includes(order.passageCheck.passageId)||
+        !rules.passages.some(p=>p.id===order.passageCheck!.passageId&&
+          String(p.condition??"").slice(0,240)===order.passageCheck!.sourceCondition)))||
       (order.routeChoiceId!==undefined&&(
         typeof order.routeChoiceId!=="string"||
         !warOuterRouteChoicesV142(v.baseId,order.targetId,
@@ -1140,8 +1155,9 @@ export function readWarOperationsV115(raw:string,rules:WarRulesV6):WarOperations
         typeof order.fieldSignal!=="object"||
         !Number.isSafeInteger(order.fieldSignal.transmittedAt)||
         order.fieldSignal.transmittedAt<order.startedAt+
-          Math.ceil(((order.reconHalt?.originalDueAt??order.routeIncident?.originalDueAt??order.dueAt)-order.startedAt)/2)||
-        order.fieldSignal.transmittedAt>=order.dueAt||
+          Math.ceil(((order.reconHalt?.originalDueAt??order.routeIncident?.originalDueAt??order.recall?.originalDueAt??order.dueAt)-order.startedAt)/2)||
+        order.fieldSignal.transmittedAt>=(order.recall?.originalDueAt??order.dueAt)||
+        (order.recall!==undefined&&order.fieldSignal.transmittedAt>order.recall.orderedAt)||
         !["voie-stable","terrain-expose","transit-complexe"].includes(order.fieldSignal.assessment)||
         !Number.isInteger(order.fieldSignal.passages)||
         order.fieldSignal.passages!==order.routeIds.length||
