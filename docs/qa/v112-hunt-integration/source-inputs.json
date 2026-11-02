@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "sourceRef": "d90c2812e265b831e8af7cb21fd7d94f90ea1ffe",
+  "sourceRef": "e168edf951166efca90e4f0cf3ef6da7167dece6",
   "scope": "Tracked application, runtime/build configuration, scripts, tests and their fixtures, and the two affected CI workflows. This source fingerprint does not execute archived browser journeys, certify all artwork, qualify physical hardware or replace the separate workbook checks. Historical Homeworld publications keep their own documents and identities.",
-  "files": 2458,
-  "bytes": 126747352,
+  "files": 2461,
+  "bytes": 126781723,
   "entries": [
     {
       "path": ".github/workflows/audit-v94.yml",
@@ -12,8 +12,8 @@
     },
     {
       "path": ".github/workflows/hunt-closure-v112.yml",
-      "bytes": 12786,
-      "sha256": "5002ec6bb58b41e6d90e87c6514e16c245efb0412924f64af85859c664adadee"
+      "bytes": 12817,
+      "sha256": "5eb787c473058aaa54b50cc84196d950b2a43e5b41237a163e3557bd69b9bfc3"
     },
     {
       "path": ".openai/hosting.json",
@@ -5801,6 +5801,11 @@
       "sha256": "39bc4fa5ddff6b29c007e7af90860b4a2da39cc7d4fe66877d1c46e4da4f9b97"
     },
     {
+      "path": "scripts/build-open-production-workbook-v113.py",
+      "bytes": 16906,
+      "sha256": "91b7073a467cc7352692acaf210ac5451604f2667f7c98c9b1415807c6334784"
+    },
+    {
       "path": "scripts/build-pit-arena-runtime-v33.mjs",
       "bytes": 10983,
       "sha256": "984dba8ffd4c292f5cd206a1e0867fe7316da72032231ed1893f7adfd71c3e5e"
@@ -6977,8 +6982,8 @@
     },
     {
       "path": "scripts/qa-hunt-mechanics-browser-v112.mjs",
-      "bytes": 17205,
-      "sha256": "fc3d6abf29e83d37ba179dc32f64c814177129147d1ad837a439da0c9850eb92"
+      "bytes": 17426,
+      "sha256": "d8ef9e4295e914a832c5a8807b9b9d360c9ce848dabf4fb566de3e27d1a5e791"
     },
     {
       "path": "scripts/qa-hunt-native-performance-v112.mjs",
@@ -7157,8 +7162,8 @@
     },
     {
       "path": "scripts/qa-qualification-kit-v112.mjs",
-      "bytes": 15566,
-      "sha256": "e2ba758da8e01d95f7aefb67d2ca02d6814b2351c244f6bc2aac2f2af09cb4e2"
+      "bytes": 18498,
+      "sha256": "857a092abde9663424b8a53d463b88a303fcf9d4bc19670e466c227edd34215c"
     },
     {
       "path": "scripts/qa-scene-images-browser-v94.mjs",
@@ -7787,8 +7792,8 @@
     },
     {
       "path": "scripts/verify-hunt-printable-v112.py",
-      "bytes": 16514,
-      "sha256": "1ec3a254d1837b1bf6f3e232900c1001fdcf8cfa8991cb65d0d497381e70071a"
+      "bytes": 19639,
+      "sha256": "a163140066c7b12a05947ad065d9479c499beb8df8caca7b82a298c521ff0da9"
     },
     {
       "path": "scripts/verify-hunter-choice-v63.mjs",
@@ -7879,6 +7884,11 @@
       "path": "scripts/verify-nursery-victory-v71.mjs",
       "bytes": 9899,
       "sha256": "36c9fd7829ae7293c5edce83f8c8b0a7236bb8f02452474723006a221855e87d"
+    },
+    {
+      "path": "scripts/verify-open-production-workbook-v113.py",
+      "bytes": 3989,
+      "sha256": "ff3c68a3d872f78827c8ffb439fa03e9da634ca3da2790e084e548d3e23e5471"
     },
     {
       "path": "scripts/verify-pit-air-movement-v50.mjs",
@@ -10697,8 +10707,8 @@
     },
     {
       "path": "tests/hunt-review-cycle-v112.test.mjs",
-      "bytes": 8169,
-      "sha256": "f3a39eb029b0ecf830239f2719198ff21a24094729b8952e7388b58b43fe518a"
+      "bytes": 9673,
+      "sha256": "d92d144ac378243db746b3cda7e02984334a4faf96e4b8e8dce62c6df84d49e5"
     },
     {
       "path": "tests/hunt-rites-v77.test.mjs",
@@ -10904,6 +10914,11 @@
       "path": "tests/objective-placement.test.mjs",
       "bytes": 3668,
       "sha256": "55a42521600645dd0a12780e564436379bc619886606efd75c714d58ef4e5bba"
+    },
+    {
+      "path": "tests/open-production-workbook-v113.test.py",
+      "bytes": 5663,
+      "sha256": "564f3160655929c0993a3b31d02d790e52eec74a115f908996790fcfac0a631f"
     },
     {
       "path": "tests/open-workstreams-audit-v107.test.mjs",
