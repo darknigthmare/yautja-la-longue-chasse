@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "inspectedAtUtc": "2026-11-02T05:27:52.291056+00:00",
+  "scope": "Nine newly executed bounded component screenshots actually opened via view_image; existing driver compression/scaling retained. No complete production game/art/physical-device review.",
+  "captures": [
+    {
+      "path": "docs/qa/pr62-hunt-integration-20261102/controls-guide/field-guide-readable.png",
+      "bytes": 25862,
+      "sha256": "bc3db97b5cc746fabad5fca98f9758467fa8ace444dc8324908f5f18325a59bf",
+      "width": 390,
+      "height": 844,
+      "actuallyOpenedWithViewImage": true
+    },
+    {
+      "path": "docs/qa/pr62-hunt-integration-20261102/controls-guide/accessibility-phone.png",
+      "bytes": 25939,
+      "sha256": "9a08819dee20cc26b43bb97c8d957f8a7c0ac12af97c70cae2defd63202cc599",
+      "width": 390,
+      "height": 844,
+      "actuallyOpenedWithViewImage": true
+    },
+    {
+      "path": "docs/qa/pr62-hunt-integration-20261102/controls-guide/workshop-cleaned.png",
+      "bytes": 83626,
+      "sha256": "3c638d5679cd97e72008987c2702b9983b4400c4107f6ec3602e6d17a7204b25",
+      "width": 640,
+      "height": 486,
+      "actuallyOpenedWithViewImage": true
+    },
+    {
+      "path": "docs/qa/pr62-hunt-integration-20261102/controls-guide/corpse-rites.png",
+      "bytes": 53837,
+      "sha256": "7955f5340e9f4ff648abb9c4b643acce8909f35af543ed690b863185e24436d8",
+      "width": 640,
+      "height": 486,
+      "actuallyOpenedWithViewImage": true
+    },
+    {
+      "path": "docs/qa/pr62-hunt-integration-20261102/controls-guide/canopy-native-release.png",
+      "bytes": 48921,
+      "sha256": "748c09867c18b15fe7c9c77de63ee89ab1c9379887a59b9f0d9eafcd5f6488a0",
+      "width": 640,
+      "height": 486,
+      "actuallyOpenedWithViewImage": true
+    },
+    {
+      "path": "docs/qa/pr62-hunt-integration-20261102/controls-guide/corpse-rites-gamepad.png",
+      "bytes": 53712,
+      "sha256": "35e2232e6e5f741938a3fd99763f1a2e13af111168a54561c1eb5eb58154340b",
+      "width": 640,
+      "height": 486,
+      "actuallyOpenedWithViewImage": true
+    },
+    {
+      "path": "docs/qa/pr62-hunt-integration-20261102/lifecycle-final/mounted-harvest.png",
+      "bytes": 60911,
+      "sha256": "eaa0c94be5b940c0d16d083f70522f38d184ca157cffec5517e7debdf408dd21",
+      "width": 640,
+      "height": 514,
+      "actuallyOpenedWithViewImage": true
+    },
+    {
+      "path": "docs/qa/pr62-hunt-integration-20261102/lifecycle-final/mounted-conservation.png",
+      "bytes": 73438,
+      "sha256": "02397481308579501a4c3964d14d191b91c2cec3a10e6f1c9fa084ffacecc242",
+      "width": 640,
+      "height": 514,
+      "actuallyOpenedWithViewImage": true
+    },
+    {
+      "path": "docs/qa/pr62-hunt-integration-20261102/lifecycle-final/mapped-workshop-phone.png",
+      "bytes": 70779,
+      "sha256": "7c767010c0e9f90e148c649d761e22edc983393c3e07020bba0aad510a1bdf14",
+      "width": 390,
+      "height": 1496,
+      "actuallyOpenedWithViewImage": true
+    }
+  ],
+  "notes": [
+    "Guide image is a partial viewport; all eleven checklist entries are tested separately, not all visible on this PNG.",
+    "Mapped workshop phone capture precedes remapping; changed mappings are verified by actual emulated-pad assertions.",
+    "Fallback graphics are visible and declared. They do not qualify final character art.",
+    "The final lifecycle fixture was rerun after moving setup to a layout effect. Its three final PNG were opened again; the first lifecycle run is retained separately."
+  ]
+}

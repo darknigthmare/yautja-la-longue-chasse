@@ -1,0 +1,43 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Only the complete Homeworld recipe can certify a compiled app
++ actual - expected
+
+  [
++   'PublicLife',
++   'PublicPlaces',
+    'Foundations',
+-   'PublicPlaces',
+-   'PublicLife',
+    'InteriorArrival',
+    'Mobile',
+    'UpgradeRecovery'
+  ]
+
+    at file:///workspace/yautja-la-longue-chasse/scripts/qa-homeworld-public-spaces-v113.mjs:23:33
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: [
+    'PublicLife',
+    'PublicPlaces',
+    'Foundations',
+    'InteriorArrival',
+    'Mobile',
+    'UpgradeRecovery'
+  ],
+  expected: [
+    'Foundations',
+    'PublicPlaces',
+    'PublicLife',
+    'InteriorArrival',
+    'Mobile',
+    'UpgradeRecovery'
+  ],
+  operator: 'deepStrictEqual',
+  diff: 'simple'
+}
+
+Node.js v22.23.4

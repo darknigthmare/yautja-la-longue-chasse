@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "scope": "Only these fifteen immutable notes/logs plus this manifest are intended for the CI cold-application archive. No clone, Git pack, dependency directory or operational Python script.",
+  "sourcePublicationCommit": "837684333b42ee1a5e3a0be9ce1967e2486a2fd3",
+  "runtimeCommit": "719fe0d77e65be5349b76f507938309f56a67619",
+  "archiveTarget": "docs/qa/runtime-v113-r8-integration-20261102/ci-cold-application/",
+  "manifestExcludesItself": true,
+  "fileCount": 15,
+  "bytes": 54022,
+  "files": [
+    {
+      "file": "README.md",
+      "bytes": 2226,
+      "sha256": "8e09c56b64442b00a66f91f4b734e85cde8964b615c2b0e1c059ae636dade154"
+    },
+    {
+      "file": "cold-summary.json",
+      "bytes": 6381,
+      "sha256": "01e01dfd5678c14a87d2250701ed94d74d688f332e22cc4d0dd88d0e4c32c2af"
+    },
+    {
+      "file": "cold-initial.json",
+      "bytes": 487,
+      "sha256": "6efb754f51f8df522cf996aa7ec6a1af3045dd5e3653724d42a38781481f3a06"
+    },
+    {
+      "file": "checkout-result.json",
+      "bytes": 1530,
+      "sha256": "5d458e48c441e6dedbf6ec5a198ae1740ceb747fc6791d7b69ad49cfcf8c6e23"
+    },
+    {
+      "file": "runtime-probe-after-checkout.json",
+      "bytes": 249,
+      "sha256": "22acadf785e323dc28fe4b5e5f0061fc26a6d530dab5de64d326d1f1ff96d8e6"
+    },
+    {
+      "file": "dependency-reuse.json",
+      "bytes": 562,
+      "sha256": "8b883361376b860faae037e317abcf3ae3a48a79452b7405039ce364b89710b2"
+    },
+    {
+      "file": "verification-result.json",
+      "bytes": 1715,
+      "sha256": "d15b0004d5519300600521f51e17bdf94813c40dcc7f6f6778cf3fe8898bc454"
+    },
+    {
+      "file": "test-scope-review.md",
+      "bytes": 5304,
+      "sha256": "0b0427c20e9d400becce1f3197ae140af57b24ae24fcafefdbcf4b97e5c9c585"
+    },
+    {
+      "file": "clone.log",
+      "bytes": 61,
+      "sha256": "737a9b4ced2cba98acd79a4598d06648063b609c95f49aaa2006e74676d67d1a"
+    },
+    {
+      "file": "checkout.log",
+      "bytes": 89,
+      "sha256": "c7e5916e3ede38d4edd26d8f103cf3f47be57e8fcc9d6a284a51bec078f1f9db"
+    },
+    {
+      "file": "runtime-bootstrap.log",
+      "bytes": 213,
+      "sha256": "383fcf983cdec221bca39d48fd7599faf6156b3668113b84f147f28861703e6e"
+    },
+    {
+      "file": "freeze-check.log",
+      "bytes": 148,
+      "sha256": "188afc80490c5ed5128bbb4d439feaf2596b15b4c0cb4413e35baa3269e63ce5"
+    },
+    {
+      "file": "current-production-test.log",
+      "bytes": 282,
+      "sha256": "fbb19ac852dc44ccdcc15256735747937dbd3cd38b2cbea99046c70fa7124968"
+    },
+    {
+      "file": "executed-bootstrap.mjs",
+      "bytes": 1383,
+      "sha256": "076e09ce68237b9760fc13aa44bef94fd0eec24cc078984b72fa1a523825c96f"
+    },
+    {
+      "file": "application-sparse.txt",
+      "bytes": 33392,
+      "sha256": "a4acc9d1a1101b205f3c9f8050691fd5ce25a8438c8a2176ca6c0c90d239fe47"
+    }
+  ]
+}

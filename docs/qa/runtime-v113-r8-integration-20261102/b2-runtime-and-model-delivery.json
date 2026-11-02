@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "release": "V113/R8",
+  "runtimeCommit": "719fe0d77e65be5349b76f507938309f56a67619",
+  "buildId": "OzWVxNAbS8mWbL_Pue9Zg",
+  "sourceFreeze": {
+    "path": "docs/v113-runtime-freeze.json",
+    "bytes": 367432,
+    "sha256": "f39b5089fc130a726b87a6120470dacb3c3ef41098582a7203844620ce57f164",
+    "files": 1964
+  },
+  "modelTests": {
+    "status": "PASS",
+    "checks": 556,
+    "failures": 0,
+    "skipped": 0,
+    "files": 60,
+    "tap": "docs/qa/runtime-v113-r8-integration-20261102/b2-model-tests.tap",
+    "execution": "docs/qa/runtime-v113-r8-integration-20261102/b2-model-execution.json"
+  },
+  "productionBuild": {
+    "status": "PASS",
+    "log": "docs/qa/runtime-v113-r8-integration-20261102/runtime-v113-r8-b2-build.log",
+    "vercelOnlyOriginAndStaticSteps": "SKIPPED_OUTSIDE_EXACT_VERCEL_BUILD_ROOT"
+  },
+  "httpSmoke": {
+    "status": "PASS",
+    "checks": 5,
+    "log": "docs/qa/runtime-v113-r8-integration-20261102/runtime-v113-r8-b2-production-smoke.log"
+  },
+  "historicalR7": {
+    "status": "PASS_HISTORICAL_ONLY",
+    "tests": 5,
+    "originalAssertions": 9,
+    "originalCLI": 3,
+    "currentRuntimeCovered": false,
+    "tap": "docs/qa/runtime-v113-r8-integration-20261102/runtime-v113-r8-r7-history.tap"
+  },
+  "historicalConnector": {
+    "originalAssertions": 6,
+    "sourceCommit": "03cf51badd450338d748da55599a317a71debd28",
+    "currentRuntimeCovered": false,
+    "includedInModelSuite": true
+  },
+  "openSourceRequirements": 56,
+  "openArtTargets": 354,
+  "globalSourceClosuresClaimed": 0,
+  "humanArtisticAdmissions": 0,
+  "nativeExcelExecuted": false
+}

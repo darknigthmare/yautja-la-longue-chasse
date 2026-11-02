@@ -1,0 +1,796 @@
+TAP version 13
+# Subtest: actual menu gamepad does not close the game settings behind an inert account modal
+ok 1 - actual menu gamepad does not close the game settings behind an inert account modal
+  ---
+  duration_ms: 1.46469
+  type: 'test'
+  ...
+# Subtest: actual active account menu still accepts controller back exactly once
+ok 2 - actual active account menu still accepts controller back exactly once
+  ---
+  duration_ms: 0.664622
+  type: 'test'
+  ...
+# Subtest: the actual station callback reports no success and changes no campaign after refused storage acknowledgement
+ok 3 - the actual station callback reports no success and changes no campaign after refused storage acknowledgement
+  ---
+  duration_ms: 46.589652
+  type: 'test'
+  ...
+# Subtest: the same pre-render callback uses the updated authoritative ref and cannot pay twice
+ok 4 - the same pre-render callback uses the updated authoritative ref and cannot pay twice
+  ---
+  duration_ms: 12.10445
+  type: 'test'
+  ...
+# Subtest: hidden, suspended or busy stations refuse every action before persistence
+ok 5 - hidden, suspended or busy stations refuse every action before persistence
+  ---
+  duration_ms: 66.611736
+  type: 'test'
+  ...
+# Subtest: tool repair is acknowledged with the same inventory write and preserves its immutable usage watermark
+ok 6 - tool repair is acknowledged with the same inventory write and preserves its immutable usage watermark
+  ---
+  duration_ms: 6.453716
+  type: 'test'
+  ...
+# Subtest: terminal delivery preflight retains an incompatible result without retiring the active hunt or writing campaign rewards
+ok 7 - terminal delivery preflight retains an incompatible result without retiring the active hunt or writing campaign rewards
+  ---
+  duration_ms: 10.047427
+  type: 'test'
+  ...
+# Subtest: a failed conservation start reconciles its exact paid job on the same gesture and never writes or debits twice
+ok 8 - a failed conservation start reconciles its exact paid job on the same gesture and never writes or debits twice
+  ---
+  duration_ms: 13.619105
+  type: 'test'
+  ...
+# Subtest: recovery of one paid work order cannot overwrite it with a stale different order
+ok 9 - recovery of one paid work order cannot overwrite it with a stale different order
+  ---
+  duration_ms: 34.120412
+  type: 'test'
+  ...
+# Subtest: suspending and resuming the real station callback preserve paid marks, source, quality and every recorded gesture
+ok 10 - suspending and resuming the real station callback preserve paid marks, source, quality and every recorded gesture
+  ---
+  duration_ms: 8.063814
+  type: 'test'
+  ...
+# Subtest: suspended work frees one of sixteen slots; a full bench refuses resumption without losing progress or charging
+ok 11 - suspended work frees one of sixteen slots; a full bench refuses resumption without losing progress or charging
+  ---
+  duration_ms: 1.307092
+  type: 'test'
+  ...
+# Subtest: a suspended receipt survives save import and cannot masquerade as completed or duplicate active work
+ok 12 - a suspended receipt survives save import and cannot masquerade as completed or duplicate active work
+  ---
+  duration_ms: 11.955205
+  type: 'test'
+  ...
+# Subtest: failed suspension acknowledgement reconciles the same receipt once before allowing a different action
+ok 13 - failed suspension acknowledgement reconciles the same receipt once before allowing a different action
+  ---
+  duration_ms: 19.577854
+  type: 'test'
+  ...
+# Subtest: old inventory migrates empty without granting a field tool
+ok 14 - old inventory migrates empty without granting a field tool
+  ---
+  duration_ms: 6.232872
+  type: 'test'
+  ...
+# Subtest: present invalid or future preservation data is refused by actual save import: x=>x.version=2
+ok 15 - present invalid or future preservation data is refused by actual save import: x=>x.version=2
+  ---
+  duration_ms: 1.19341
+  type: 'test'
+  ...
+# Subtest: present invalid or future preservation data is refused by actual save import: x=>x.toolCondition=NaN
+ok 16 - present invalid or future preservation data is refused by actual save import: x=>x.toolCondition=NaN
+  ---
+  duration_ms: 0.311871
+  type: 'test'
+  ...
+# Subtest: present invalid or future preservation data is refused by actual save import: x=>x.toolCondition=101
+ok 17 - present invalid or future preservation data is refused by actual save import: x=>x.toolCondition=101
+  ---
+  duration_ms: 0.27848
+  type: 'test'
+  ...
+# Subtest: present invalid or future preservation data is refused by actual save import: x=>x.toolCondition=4.5
+ok 18 - present invalid or future preservation data is refused by actual save import: x=>x.toolCondition=4.5
+  ---
+  duration_ms: 0.423449
+  type: 'test'
+  ...
+# Subtest: present invalid or future preservation data is refused by actual save import: x=>x.specimens=[{...item(),massKg:Infinity}]
+ok 19 - present invalid or future preservation data is refused by actual save import: x=>x.specimens=[{...item(),massKg:Infinity}]
+  ---
+  duration_ms: 0.507746
+  type: 'test'
+  ...
+# Subtest: present invalid or future preservation data is refused by actual save import: x=>x.specimens=[{...item(),stage:"invented"}]
+ok 20 - present invalid or future preservation data is refused by actual save import: x=>x.specimens=[{...item(),stage:"invented"}]
+  ---
+  duration_ms: 0.372942
+  type: 'test'
+  ...
+# Subtest: present invalid or future preservation data is refused by actual save import: x=>x.specimens=[item(),item()]
+ok 21 - present invalid or future preservation data is refused by actual save import: x=>x.specimens=[item(),item()]
+  ---
+  duration_ms: 0.367734
+  type: 'test'
+  ...
+# Subtest: present invalid or future preservation data is refused by actual save import: x=>x.jobs=[{id:"invented"}]
+ok 22 - present invalid or future preservation data is refused by actual save import: x=>x.jobs=[{id:"invented"}]
+  ---
+  duration_ms: 0.596901
+  type: 'test'
+  ...
+# Subtest: present invalid or future preservation data is refused by actual save import: x=>x.toolUseIds=["x","x"]
+ok 23 - present invalid or future preservation data is refused by actual save import: x=>x.toolUseIds=["x","x"]
+  ---
+  duration_ms: 0.70312
+  type: 'test'
+  ...
+# Subtest: present invalid or future preservation data is refused by actual save import: x=>x.settledEncounterRuns={"unknown":0}
+ok 24 - present invalid or future preservation data is refused by actual save import: x=>x.settledEncounterRuns={"unknown":0}
+  ---
+  duration_ms: 0.336778
+  type: 'test'
+  ...
+# Subtest: present invalid or future preservation data is refused by actual save import: x=>x.archive=[{speciesId:"x",partId:"bone",label:"Bone",count:0,qualityTotal:0}]
+ok 25 - present invalid or future preservation data is refused by actual save import: x=>x.archive=[{speciesId:"x",partId:"bone",label:"Bone",count:0,qualityTotal:0}]
+  ---
+  duration_ms: 0.27845
+  type: 'test'
+  ...
+# Subtest: present invalid or future preservation data is refused by actual save import: x=>x.specimens=[{...item(),stage:"mounted"}]
+ok 26 - present invalid or future preservation data is refused by actual save import: x=>x.specimens=[{...item(),stage:"mounted"}]
+  ---
+  duration_ms: 0.412612
+  type: 'test'
+  ...
+# Subtest: capacity is explicit for all armor classes and rejected pickup leaves source inventory untouched
+ok 27 - capacity is explicit for all armor classes and rejected pickup leaves source inventory untouched
+  ---
+  duration_ms: 0.467505
+  type: 'test'
+  ...
+# Subtest: volume can fill a pack before mass, and repeated anatomical part has no second slot
+ok 28 - volume can fill a pack before mass, and repeated anatomical part has no second slot
+  ---
+  duration_ms: 0.208325
+  type: 'test'
+  ...
+# Subtest: load changes movement jump climb effort and noise continuously; body mass adds load
+ok 29 - load changes movement jump climb effort and noise continuously; body mass adds load
+  ---
+  duration_ms: 0.209496
+  type: 'test'
+  ...
+# Subtest: a successful extraction deposits finite specimens and records actual tool wear atomically
+ok 30 - a successful extraction deposits finite specimens and records actual tool wear atomically
+  ---
+  duration_ms: 0.890954
+  type: 'test'
+  ...
+# Subtest: failed and abandoned extraction only records completed work wear, without bringing specimens home
+ok 31 - failed and abandoned extraction only records completed work wear, without bringing specimens home
+  ---
+  duration_ms: 0.149215
+  type: 'test'
+  ...
+# Subtest: same completed encounter cannot charge wear or restore a specimen after repair
+ok 32 - same completed encounter cannot charge wear or restore a specimen after repair
+  ---
+  duration_ms: 0.212321
+  type: 'test'
+  ...
+# Subtest: per-mission watermark compacts usage receipts safely across later encounters
+ok 33 - per-mission watermark compacts usage receipts safely across later encounters
+  ---
+  duration_ms: 0.209005
+  type: 'test'
+  ...
+# Subtest: forged, duplicated, malformed or stale mission payload is refused: [[{"id":"jungle-vey:0:prey:hide","sourceId":"other:0:prey","speciesId":"rifle-soldier","partId":"hide","label":"Peau préparée","quality":84,"massKg":3,"volumeUnits":2,"stage":"raw"}],["jungle-vey:0:flay:prey"],0]
+ok 34 - forged, duplicated, malformed or stale mission payload is refused: [[{"id":"jungle-vey:0:prey:hide","sourceId":"other:0:prey","speciesId":"rifle-soldier","partId":"hide","label":"Peau préparée","quality":84,"massKg":3,"volumeUnits":2,"stage":"raw"}],["jungle-vey:0:flay:prey"],0]
+  ---
+  duration_ms: 0.392833
+  type: 'test'
+  ...
+# Subtest: forged, duplicated, malformed or stale mission payload is refused: [[{"id":"jungle-vey:0:prey:hide","sourceId":"jungle-vey:0:prey","speciesId":"rifle-soldier","partId":"hide","label":"Peau préparée","quality":84,"massKg":3,"volumeUnits":2,"stage":"raw"}],["other:0:flay:prey"],0]
+ok 35 - forged, duplicated, malformed or stale mission payload is refused: [[{"id":"jungle-vey:0:prey:hide","sourceId":"jungle-vey:0:prey","speciesId":"rifle-soldier","partId":"hide","label":"Peau préparée","quality":84,"massKg":3,"volumeUnits":2,"stage":"raw"}],["other:0:flay:prey"],0]
+  ---
+  duration_ms: 0.308556
+  type: 'test'
+  ...
+# Subtest: forged, duplicated, malformed or stale mission payload is refused: [[{"id":"jungle-vey:0:prey:hide","sourceId":"jungle-vey:0:prey","speciesId":"rifle-soldier","partId":"hide","label":"Peau préparée","quality":84,"massKg":3,"volumeUnits":2,"stage":"raw"}],["jungle-vey:0:flay:prey"],1]
+ok 36 - forged, duplicated, malformed or stale mission payload is refused: [[{"id":"jungle-vey:0:prey:hide","sourceId":"jungle-vey:0:prey","speciesId":"rifle-soldier","partId":"hide","label":"Peau préparée","quality":84,"massKg":3,"volumeUnits":2,"stage":"raw"}],["jungle-vey:0:flay:prey"],1]
+  ---
+  duration_ms: 0.374895
+  type: 'test'
+  ...
+# Subtest: forged, duplicated, malformed or stale mission payload is refused: [[{"id":"jungle-vey:0:prey:hide","sourceId":"jungle-vey:0:prey","speciesId":"rifle-soldier","partId":"hide","label":"Peau préparée","quality":84,"massKg":3,"volumeUnits":2,"stage":"raw"}],["jungle-vey:0:flay:prey","jungle-vey:0:flay:prey"],0]
+ok 37 - forged, duplicated, malformed or stale mission payload is refused: [[{"id":"jungle-vey:0:prey:hide","sourceId":"jungle-vey:0:prey","speciesId":"rifle-soldier","partId":"hide","label":"Peau préparée","quality":84,"massKg":3,"volumeUnits":2,"stage":"raw"}],["jungle-vey:0:flay:prey","jungle-vey:0:flay:prey"],0]
+  ---
+  duration_ms: 0.329057
+  type: 'test'
+  ...
+# Subtest: forged, duplicated, malformed or stale mission payload is refused: ["invalid",[],0]
+ok 38 - forged, duplicated, malformed or stale mission payload is refused: ["invalid",[],0]
+  ---
+  duration_ms: 0.27866
+  type: 'test'
+  ...
+# Subtest: forged, duplicated, malformed or stale mission payload is refused: [[],{},0]
+ok 39 - forged, duplicated, malformed or stale mission payload is refused: [[],{},0]
+  ---
+  duration_ms: 0.32471
+  type: 'test'
+  ...
+# Subtest: forged, duplicated, malformed or stale mission payload is refused: [[{"id":"jungle-vey:0:prey:hide","sourceId":"jungle-vey:0:prey","speciesId":"rifle-soldier","partId":"hide","label":"Peau préparée","quality":84,"massKg":-1,"volumeUnits":2,"stage":"raw"}],[],0]
+ok 40 - forged, duplicated, malformed or stale mission payload is refused: [[{"id":"jungle-vey:0:prey:hide","sourceId":"jungle-vey:0:prey","speciesId":"rifle-soldier","partId":"hide","label":"Peau préparée","quality":84,"massKg":-1,"volumeUnits":2,"stage":"raw"}],[],0]
+  ---
+  duration_ms: 0.316067
+  type: 'test'
+  ...
+# Subtest: forged, duplicated, malformed or stale mission payload is refused: [[{"id":"jungle-vey:0:prey:hide","sourceId":"jungle-vey:0:prey","speciesId":"rifle-soldier","partId":"hide","label":"Peau préparée","quality":84,"massKg":3,"volumeUnits":2,"stage":"raw"},{"id":"jungle-vey:0:prey:hide","sourceId":"jungle-vey:0:prey","speciesId":"rifle-soldier","partId":"hide","label":"Peau préparée","quality":84,"massKg":3,"volumeUnits":2,"stage":"raw"}],[],0]
+ok 41 - forged, duplicated, malformed or stale mission payload is refused: [[{"id":"jungle-vey:0:prey:hide","sourceId":"jungle-vey:0:prey","speciesId":"rifle-soldier","partId":"hide","label":"Peau préparée","quality":84,"massKg":3,"volumeUnits":2,"stage":"raw"},{"id":"jungle-vey:0:prey:hide","sourceId":"jungle-vey:0:prey","speciesId":"rifle-soldier","partId":"hide","label":"Peau préparée","quality":84,"massKg":3,"volumeUnits":2,"stage":"raw"}],[],0]
+  ---
+  duration_ms: 0.30485
+  type: 'test'
+  ...
+# Subtest: tool-free campaign cannot claim wear or completed tool operations
+ok 42 - tool-free campaign cannot claim wear or completed tool operations
+  ---
+  duration_ms: 0.117077
+  type: 'test'
+  ...
+# Subtest: missing encounter proof cannot grant a new specimen; legacy empty results stay compatible
+ok 43 - missing encounter proof cannot grant a new specimen; legacy empty results stay compatible
+  ---
+  duration_ms: 0.116446
+  type: 'test'
+  ...
+# Subtest: start pays once, each work unit survives save roundtrip, completed step cannot repeat
+ok 44 - start pays once, each work unit survives save roundtrip, completed step cannot repeat
+  ---
+  duration_ms: 2.491429
+  type: 'test'
+  ...
+# Subtest: all four conservation stages require paid work, preserve quality, and mount a separate physical specimen
+ok 45 - all four conservation stages require paid work, preserve quality, and mount a separate physical specimen
+  ---
+  duration_ms: 6.231018
+  type: 'test'
+  ...
+# Subtest: archiving raw work is refused and insufficient marks never creates a job
+ok 46 - archiving raw work is refused and insufficient marks never creates a job
+  ---
+  duration_ms: 0.175755
+  type: 'test'
+  ...
+# Subtest: queue has 16 work stations and does not charge a seventeenth item
+ok 47 - queue has 16 work stations and does not charge a seventeenth item
+  ---
+  duration_ms: 0.86147
+  type: 'test'
+  ...
+# Subtest: full workbench refuses delivery as a whole, preserving every item and the terminal operation
+ok 48 - full workbench refuses delivery as a whole, preserving every item and the terminal operation
+  ---
+  duration_ms: 1.777932
+  type: 'test'
+  ...
+# Subtest: wear is deterministic at successful completion and worn tools remain recoverable free of charge
+ok 49 - wear is deterministic at successful completion and worn tools remain recoverable free of charge
+  ---
+  duration_ms: 0.218219
+  type: 'test'
+  ...
+# Subtest: real campaign reducer keeps specimens and tool wear through content unlocks in one result
+ok 50 - real campaign reducer keeps specimens and tool wear through content unlocks in one result
+  ---
+  duration_ms: 2.945053
+  type: 'test'
+  ...
+# Subtest: actual failed/abandoned campaign results retain wear and no raw specimens
+ok 51 - actual failed/abandoned campaign results retain wear and no raw specimens
+  ---
+  duration_ms: 0.898666
+  type: 'test'
+  ...
+# Subtest: a worn owned field tool can be sharpened with zero clan marks without blocking the campaign
+ok 52 - a worn owned field tool can be sharpened with zero clan marks without blocking the campaign
+  ---
+  duration_ms: 0.768469
+  type: 'test'
+  ...
+# Subtest: manual preservation keeps its paid partial work across a much later real save normalization
+ok 53 - manual preservation keeps its paid partial work across a much later real save normalization
+  ---
+  duration_ms: 1.048612
+  type: 'test'
+  ...
+# Subtest: every one of the 39 documented species has its exact compatible production parts and physical values
+ok 54 - every one of the 39 documented species has its exact compatible production parts and physical values
+  ---
+  duration_ms: 2.422975
+  type: 'test'
+  ...
+# Subtest: finite anatomy, actual source restore and single campaign delivery: hell-hound-stalker
+ok 55 - finite anatomy, actual source restore and single campaign delivery: hell-hound-stalker
+  ---
+  duration_ms: 10.786411
+  type: 'test'
+  ...
+# Subtest: finite anatomy, actual source restore and single campaign delivery: cinder-12--hell-hound-stalker
+ok 56 - finite anatomy, actual source restore and single campaign delivery: cinder-12--hell-hound-stalker
+  ---
+  duration_ms: 2.776919
+  type: 'test'
+  ...
+# Subtest: finite anatomy, actual source restore and single campaign delivery: razorback-grazer
+ok 57 - finite anatomy, actual source restore and single campaign delivery: razorback-grazer
+  ---
+  duration_ms: 2.97681
+  type: 'test'
+  ...
+# Subtest: finite anatomy, actual source restore and single campaign delivery: nivalis-k--razorback-grazer
+ok 58 - finite anatomy, actual source restore and single campaign delivery: nivalis-k--razorback-grazer
+  ---
+  duration_ms: 2.568144
+  type: 'test'
+  ...
+# Subtest: finite anatomy, actual source restore and single campaign delivery: oseris-iv--vineback-grazer
+ok 59 - finite anatomy, actual source restore and single campaign delivery: oseris-iv--vineback-grazer
+  ---
+  duration_ms: 4.590855
+  type: 'test'
+  ...
+# Subtest: finite anatomy, actual source restore and single campaign delivery: oseris-iv--mist-pouncer
+ok 60 - finite anatomy, actual source restore and single campaign delivery: oseris-iv--mist-pouncer
+  ---
+  duration_ms: 1.586243
+  type: 'test'
+  ...
+# Subtest: finite anatomy, actual source restore and single campaign delivery: oseris-iv--mirror-chameleon
+ok 61 - finite anatomy, actual source restore and single campaign delivery: oseris-iv--mirror-chameleon
+  ---
+  duration_ms: 1.529017
+  type: 'test'
+  ...
+# Subtest: finite anatomy, actual source restore and single campaign delivery: naraka-delta--reed-cat
+ok 62 - finite anatomy, actual source restore and single campaign delivery: naraka-delta--reed-cat
+  ---
+  duration_ms: 2.003802
+  type: 'test'
+  ...
+# Subtest: finite anatomy, actual source restore and single campaign delivery: nivalis-k--snow-prowler
+ok 63 - finite anatomy, actual source restore and single campaign delivery: nivalis-k--snow-prowler
+  ---
+  duration_ms: 2.478098
+  type: 'test'
+  ...
+# Subtest: finite anatomy, actual source restore and single campaign delivery: serekh-9--dust-jackal
+ok 64 - finite anatomy, actual source restore and single campaign delivery: serekh-9--dust-jackal
+  ---
+  duration_ms: 1.919376
+  type: 'test'
+  ...
+# Subtest: finite anatomy, actual source restore and single campaign delivery: nivalis-k--glacier-ram
+ok 65 - finite anatomy, actual source restore and single campaign delivery: nivalis-k--glacier-ram
+  ---
+  duration_ms: 1.642688
+  type: 'test'
+  ...
+# Subtest: finite anatomy, actual source restore and single campaign delivery: cinder-12--basalt-ram
+ok 66 - finite anatomy, actual source restore and single campaign delivery: cinder-12--basalt-ram
+  ---
+  duration_ms: 1.775699
+  type: 'test'
+  ...
+# Subtest: finite anatomy, actual source restore and single campaign delivery: serekh-9--salt-ram
+ok 67 - finite anatomy, actual source restore and single campaign delivery: serekh-9--salt-ram
+  ---
+  duration_ms: 1.754207
+  type: 'test'
+  ...
+# Subtest: finite anatomy, actual source restore and single campaign delivery: xeno-drone
+ok 68 - finite anatomy, actual source restore and single campaign delivery: xeno-drone
+  ---
+  duration_ms: 1.339701
+  type: 'test'
+  ...
+# Subtest: finite anatomy, actual source restore and single campaign delivery: common--wandering-xeno-drone
+ok 69 - finite anatomy, actual source restore and single campaign delivery: common--wandering-xeno-drone
+  ---
+  duration_ms: 1.254572
+  type: 'test'
+  ...
+# Subtest: finite anatomy, actual source restore and single campaign delivery: oseris-iv--jungle-xeno-scout
+ok 70 - finite anatomy, actual source restore and single campaign delivery: oseris-iv--jungle-xeno-scout
+  ---
+  duration_ms: 1.460273
+  type: 'test'
+  ...
+# Subtest: finite anatomy, actual source restore and single campaign delivery: nivalis-k--frost-xeno
+ok 71 - finite anatomy, actual source restore and single campaign delivery: nivalis-k--frost-xeno
+  ---
+  duration_ms: 1.341804
+  type: 'test'
+  ...
+# Subtest: finite anatomy, actual source restore and single campaign delivery: cinder-12--scorch-xeno
+ok 72 - finite anatomy, actual source restore and single campaign delivery: cinder-12--scorch-xeno
+  ---
+  duration_ms: 1.967377
+  type: 'test'
+  ...
+# Subtest: finite anatomy, actual source restore and single campaign delivery: acheron-sigma--temple-xeno
+ok 73 - finite anatomy, actual source restore and single campaign delivery: acheron-sigma--temple-xeno
+  ---
+  duration_ms: 1.141151
+  type: 'test'
+  ...
+# Subtest: finite anatomy, actual source restore and single campaign delivery: pelagos-m--swimmer-xeno
+ok 74 - finite anatomy, actual source restore and single campaign delivery: pelagos-m--swimmer-xeno
+  ---
+  duration_ms: 1.476166
+  type: 'test'
+  ...
+# Subtest: finite anatomy, actual source restore and single campaign delivery: xeno-praetorian
+ok 75 - finite anatomy, actual source restore and single campaign delivery: xeno-praetorian
+  ---
+  duration_ms: 2.143273
+  type: 'test'
+  ...
+# Subtest: finite anatomy, actual source restore and single campaign delivery: oseris-iv--needle-frog
+ok 76 - finite anatomy, actual source restore and single campaign delivery: oseris-iv--needle-frog
+  ---
+  duration_ms: 0.882011
+  type: 'test'
+  ...
+# Subtest: finite anatomy, actual source restore and single campaign delivery: naraka-delta--lantern-toad
+ok 77 - finite anatomy, actual source restore and single campaign delivery: naraka-delta--lantern-toad
+  ---
+  duration_ms: 0.774097
+  type: 'test'
+  ...
+# Subtest: finite anatomy, actual source restore and single campaign delivery: pelagos-m--storm-eel
+ok 78 - finite anatomy, actual source restore and single campaign delivery: pelagos-m--storm-eel
+  ---
+  duration_ms: 0.751373
+  type: 'test'
+  ...
+# Subtest: finite anatomy, actual source restore and single campaign delivery: naraka-delta--sludge-eel
+ok 79 - finite anatomy, actual source restore and single campaign delivery: naraka-delta--sludge-eel
+  ---
+  duration_ms: 0.796021
+  type: 'test'
+  ...
+# Subtest: finite anatomy, actual source restore and single campaign delivery: serekh-9--dune-strider
+ok 80 - finite anatomy, actual source restore and single campaign delivery: serekh-9--dune-strider
+  ---
+  duration_ms: 0.770822
+  type: 'test'
+  ...
+# Subtest: finite anatomy, actual source restore and single campaign delivery: mycora-v--spore-hound
+ok 81 - finite anatomy, actual source restore and single campaign delivery: mycora-v--spore-hound
+  ---
+  duration_ms: 1.087891
+  type: 'test'
+  ...
+# Subtest: finite anatomy, actual source restore and single campaign delivery: mycora-v--glow-moth
+ok 82 - finite anatomy, actual source restore and single campaign delivery: mycora-v--glow-moth
+  ---
+  duration_ms: 0.772776
+  type: 'test'
+  ...
+# Subtest: finite anatomy, actual source restore and single campaign delivery: bonecrest-ravager
+ok 83 - finite anatomy, actual source restore and single campaign delivery: bonecrest-ravager
+  ---
+  duration_ms: 1.103575
+  type: 'test'
+  ...
+# Subtest: finite anatomy, actual source restore and single campaign delivery: naraka-delta--iron-croc
+ok 84 - finite anatomy, actual source restore and single campaign delivery: naraka-delta--iron-croc
+  ---
+  duration_ms: 1.045938
+  type: 'test'
+  ...
+# Subtest: finite anatomy, actual source restore and single campaign delivery: oseris-iv--thunder-macaque
+ok 85 - finite anatomy, actual source restore and single campaign delivery: oseris-iv--thunder-macaque
+  ---
+  duration_ms: 1.113229
+  type: 'test'
+  ...
+# Subtest: finite anatomy, actual source restore and single campaign delivery: amber-mire-lurker
+ok 86 - finite anatomy, actual source restore and single campaign delivery: amber-mire-lurker
+  ---
+  duration_ms: 1.090195
+  type: 'test'
+  ...
+# Subtest: finite anatomy, actual source restore and single campaign delivery: naraka-delta--bog-stalker
+ok 87 - finite anatomy, actual source restore and single campaign delivery: naraka-delta--bog-stalker
+  ---
+  duration_ms: 1.149905
+  type: 'test'
+  ...
+# Subtest: finite anatomy, actual source restore and single campaign delivery: naraka-delta--fen-leaper
+ok 88 - finite anatomy, actual source restore and single campaign delivery: naraka-delta--fen-leaper
+  ---
+  duration_ms: 1.297007
+  type: 'test'
+  ...
+# Subtest: finite anatomy, actual source restore and single campaign delivery: serekh-9--quill-lizard
+ok 89 - finite anatomy, actual source restore and single campaign delivery: serekh-9--quill-lizard
+  ---
+  duration_ms: 1.231838
+  type: 'test'
+  ...
+# Subtest: finite anatomy, actual source restore and single campaign delivery: cinder-12--smoke-wyvern
+ok 90 - finite anatomy, actual source restore and single campaign delivery: cinder-12--smoke-wyvern
+  ---
+  duration_ms: 1.090185
+  type: 'test'
+  ...
+# Subtest: finite anatomy, actual source restore and single campaign delivery: pelagos-m--hunter-manta
+ok 91 - finite anatomy, actual source restore and single campaign delivery: pelagos-m--hunter-manta
+  ---
+  duration_ms: 1.176565
+  type: 'test'
+  ...
+# Subtest: finite anatomy, actual source restore and single campaign delivery: nivalis-k--frost-manta
+ok 92 - finite anatomy, actual source restore and single campaign delivery: nivalis-k--frost-manta
+  ---
+  duration_ms: 1.073038
+  type: 'test'
+  ...
+# Subtest: finite anatomy, actual source restore and single campaign delivery: pelagos-m--razor-shark
+ok 93 - finite anatomy, actual source restore and single campaign delivery: pelagos-m--razor-shark
+  ---
+  duration_ms: 1.295464
+  type: 'test'
+  ...
+# Subtest: all 33 documented V112 parameters agree with production constants or observed boundary behavior
+ok 94 - all 33 documented V112 parameters agree with production constants or observed boundary behavior
+  ---
+  duration_ms: 3.165755
+  type: 'test'
+  ...
+# Subtest: a grounded beginner sees the currently assigned grip action and a ground fallback before opening help
+ok 95 - a grounded beginner sees the currently assigned grip action and a ground fallback before opening help
+  ---
+  duration_ms: 8.193039
+  type: 'test'
+  ...
+# Subtest: an airborne exhausted grip takes priority over a nearby corpse and the trophy objective
+ok 96 - an airborne exhausted grip takes priority over a nearby corpse and the trophy objective
+  ---
+  duration_ms: 2.467693
+  type: 'test'
+  ...
+# Subtest: in-flight and attached help offer appropriate movement recovery without a remote corpse interaction
+ok 97 - in-flight and attached help offer appropriate movement recovery without a remote corpse interaction
+  ---
+  duration_ms: 1.558671
+  type: 'test'
+  ...
+# Subtest: keyboard and controller remaps reach both immediate objective cues and the full help
+ok 98 - keyboard and controller remaps reach both immediate objective cues and the full help
+  ---
+  duration_ms: 1.162413
+  type: 'test'
+  ...
+# Subtest: nearby-body help exposes pointer and keyboard access separately from direct trophy collection
+ok 99 - nearby-body help exposes pointer and keyboard access separately from direct trophy collection
+  ---
+  duration_ms: 0.737322
+  type: 'test'
+  ...
+# Subtest: actual missing tool, worn tool, and both capacity dimensions are visible before a body gesture
+ok 100 - actual missing tool, worn tool, and both capacity dimensions are visible before a body gesture
+  ---
+  duration_ms: 3.224153
+  type: 'test'
+  ...
+# Subtest: the body-to-workshop sequence names irreversible stock, carrying limits, dropped items and four manual stages
+ok 101 - the body-to-workshop sequence names irreversible stock, carrying limits, dropped items and four manual stages
+  ---
+  duration_ms: 0.779446
+  type: 'test'
+  ...
+# Subtest: expanded help keeps native disclosure and distinct cancellation, preparation and extraction semantics
+ok 102 - expanded help keeps native disclosure and distinct cancellation, preparation and extraction semantics
+  ---
+  duration_ms: 0.66267
+  type: 'test'
+  ...
+# Subtest: field stock slows native movement for every armor and the HUD exposes the same actual load
+ok 103 - field stock slows native movement for every armor and the HUD exposes the same actual load
+  ---
+  duration_ms: 162.444138
+  type: 'test'
+  ...
+# Subtest: native jumps preserve assistance and pay the explicit load penalty without consuming a boost
+ok 104 - native jumps preserve assistance and pay the explicit load penalty without consuming a boost
+  ---
+  duration_ms: 9.847816
+  type: 'test'
+  ...
+# Subtest: native climbing charges the weight effort and reduces ascent speed for all armors
+ok 105 - native climbing charges the weight effort and reduces ascent speed for all armors
+  ---
+  duration_ms: 47.609938
+  type: 'test'
+  ...
+# Subtest: pack noise changes footsteps and landings while hostile or weapon signals retain their meaning
+ok 106 - pack noise changes footsteps and landings while hostile or weapon signals retain their meaning
+  ---
+  duration_ms: 1.726004
+  type: 'test'
+  ...
+# Subtest: carcass is dropped before jumping and never charges the jump as if still carried
+ok 107 - carcass is dropped before jumping and never charges the jump as if still carried
+  ---
+  duration_ms: 1.673775
+  type: 'test'
+  ...
+# Subtest: loaded ground fallback, native pause-pack deposit and recovered jump: jungle-vey / scout
+ok 108 - loaded ground fallback, native pause-pack deposit and recovered jump: jungle-vey / scout
+  ---
+  duration_ms: 826.350547
+  type: 'test'
+  ...
+# Subtest: loaded ground fallback, native pause-pack deposit and recovered jump: jungle-vey / hunter
+ok 109 - loaded ground fallback, native pause-pack deposit and recovered jump: jungle-vey / hunter
+  ---
+  duration_ms: 902.163021
+  type: 'test'
+  ...
+# Subtest: loaded ground fallback, native pause-pack deposit and recovered jump: jungle-vey / berserker
+ok 110 - loaded ground fallback, native pause-pack deposit and recovered jump: jungle-vey / berserker
+  ---
+  duration_ms: 1134.434781
+  type: 'test'
+  ...
+# Subtest: loaded ground fallback, native pause-pack deposit and recovered jump: ice-cryostalker / scout
+ok 111 - loaded ground fallback, native pause-pack deposit and recovered jump: ice-cryostalker / scout
+  ---
+  duration_ms: 637.665946
+  type: 'test'
+  ...
+# Subtest: loaded ground fallback, native pause-pack deposit and recovered jump: ice-cryostalker / hunter
+ok 112 - loaded ground fallback, native pause-pack deposit and recovered jump: ice-cryostalker / hunter
+  ---
+  duration_ms: 752.333265
+  type: 'test'
+  ...
+# Subtest: loaded ground fallback, native pause-pack deposit and recovered jump: ice-cryostalker / berserker
+ok 113 - loaded ground fallback, native pause-pack deposit and recovered jump: ice-cryostalker / berserker
+  ---
+  duration_ms: 878.195432
+  type: 'test'
+  ...
+# Subtest: loaded ground fallback, native pause-pack deposit and recovered jump: volcano-bad-blood / scout
+ok 114 - loaded ground fallback, native pause-pack deposit and recovered jump: volcano-bad-blood / scout
+  ---
+  duration_ms: 969.307312
+  type: 'test'
+  ...
+# Subtest: loaded ground fallback, native pause-pack deposit and recovered jump: volcano-bad-blood / hunter
+ok 115 - loaded ground fallback, native pause-pack deposit and recovered jump: volcano-bad-blood / hunter
+  ---
+  duration_ms: 1108.845849
+  type: 'test'
+  ...
+# Subtest: loaded ground fallback, native pause-pack deposit and recovered jump: volcano-bad-blood / berserker
+ok 116 - loaded ground fallback, native pause-pack deposit and recovered jump: volcano-bad-blood / berserker
+  ---
+  duration_ms: 1391.312593
+  type: 'test'
+  ...
+# Subtest: loaded ground fallback, native pause-pack deposit and recovered jump: swamp-hydra / scout
+ok 117 - loaded ground fallback, native pause-pack deposit and recovered jump: swamp-hydra / scout
+  ---
+  duration_ms: 845.480133
+  type: 'test'
+  ...
+# Subtest: loaded ground fallback, native pause-pack deposit and recovered jump: swamp-hydra / hunter
+ok 118 - loaded ground fallback, native pause-pack deposit and recovered jump: swamp-hydra / hunter
+  ---
+  duration_ms: 1076.412264
+  type: 'test'
+  ...
+# Subtest: loaded ground fallback, native pause-pack deposit and recovered jump: swamp-hydra / berserker
+ok 119 - loaded ground fallback, native pause-pack deposit and recovered jump: swamp-hydra / berserker
+  ---
+  duration_ms: 1271.471971
+  type: 'test'
+  ...
+# Subtest: loaded ground fallback, native pause-pack deposit and recovered jump: desert-sandmaw / scout
+ok 120 - loaded ground fallback, native pause-pack deposit and recovered jump: desert-sandmaw / scout
+  ---
+  duration_ms: 662.472523
+  type: 'test'
+  ...
+# Subtest: loaded ground fallback, native pause-pack deposit and recovered jump: desert-sandmaw / hunter
+ok 121 - loaded ground fallback, native pause-pack deposit and recovered jump: desert-sandmaw / hunter
+  ---
+  duration_ms: 796.931287
+  type: 'test'
+  ...
+# Subtest: loaded ground fallback, native pause-pack deposit and recovered jump: desert-sandmaw / berserker
+ok 122 - loaded ground fallback, native pause-pack deposit and recovered jump: desert-sandmaw / berserker
+  ---
+  duration_ms: 1025.97398
+  type: 'test'
+  ...
+# Subtest: loaded ground fallback, native pause-pack deposit and recovered jump: ocean-leviathan / scout
+ok 123 - loaded ground fallback, native pause-pack deposit and recovered jump: ocean-leviathan / scout
+  ---
+  duration_ms: 548.45043
+  type: 'test'
+  ...
+# Subtest: loaded ground fallback, native pause-pack deposit and recovered jump: ocean-leviathan / hunter
+ok 124 - loaded ground fallback, native pause-pack deposit and recovered jump: ocean-leviathan / hunter
+  ---
+  duration_ms: 689.659235
+  type: 'test'
+  ...
+# Subtest: loaded ground fallback, native pause-pack deposit and recovered jump: ocean-leviathan / berserker
+ok 125 - loaded ground fallback, native pause-pack deposit and recovered jump: ocean-leviathan / berserker
+  ---
+  duration_ms: 876.954457
+  type: 'test'
+  ...
+# Subtest: loaded ground fallback, native pause-pack deposit and recovered jump: fungal-hivemind / scout
+ok 126 - loaded ground fallback, native pause-pack deposit and recovered jump: fungal-hivemind / scout
+  ---
+  duration_ms: 706.167105
+  type: 'test'
+  ...
+# Subtest: loaded ground fallback, native pause-pack deposit and recovered jump: fungal-hivemind / hunter
+ok 127 - loaded ground fallback, native pause-pack deposit and recovered jump: fungal-hivemind / hunter
+  ---
+  duration_ms: 903.53433
+  type: 'test'
+  ...
+# Subtest: loaded ground fallback, native pause-pack deposit and recovered jump: fungal-hivemind / berserker
+ok 128 - loaded ground fallback, native pause-pack deposit and recovered jump: fungal-hivemind / berserker
+  ---
+  duration_ms: 1153.39368
+  type: 'test'
+  ...
+# Subtest: loaded ground fallback, native pause-pack deposit and recovered jump: ruins-ancient-guardian / scout
+ok 129 - loaded ground fallback, native pause-pack deposit and recovered jump: ruins-ancient-guardian / scout
+  ---
+  duration_ms: 537.346164
+  type: 'test'
+  ...
+# Subtest: loaded ground fallback, native pause-pack deposit and recovered jump: ruins-ancient-guardian / hunter
+ok 130 - loaded ground fallback, native pause-pack deposit and recovered jump: ruins-ancient-guardian / hunter
+  ---
+  duration_ms: 632.167553
+  type: 'test'
+  ...
+# Subtest: loaded ground fallback, native pause-pack deposit and recovered jump: ruins-ancient-guardian / berserker
+ok 131 - loaded ground fallback, native pause-pack deposit and recovered jump: ruins-ancient-guardian / berserker
+  ---
+  duration_ms: 830.530777
+  type: 'test'
+  ...
+1..131
+# tests 131
+# suites 0
+# pass 131
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 25469.861501

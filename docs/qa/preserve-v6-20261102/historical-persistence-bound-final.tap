@@ -1,0 +1,58 @@
+TAP version 13
+# Subtest: V3 active checkpoints retain all sixteen people, four aircraft and route records through real imports, slots and integral archives
+ok 1 - V3 active checkpoints retain all sixteen people, four aircraft and route records through real imports, slots and integral archives
+  ---
+  duration_ms: 236.919578
+  type: 'test'
+  ...
+# Subtest: a declared surveyed V3 fixture physically returns and preserves only its actual site records
+ok 2 - a declared surveyed V3 fixture physically returns and preserves only its actual site records
+  ---
+  duration_ms: 82.000246
+  type: 'test'
+  ...
+# Subtest: V3 manual-checkpoint storage refusal leaves the previously durable campaign intact and retryable
+ok 3 - V3 manual-checkpoint storage refusal leaves the previously durable campaign intact and retryable
+  ---
+  duration_ms: 52.680629
+  type: 'test'
+  ...
+# Subtest: V1 and V2 remain supported; mixed identities are invalid and only version four remains future [historical V107]
+ok 4 - V1 and V2 remain supported; mixed identities are invalid and only version four remains future [historical V107]
+  ---
+  duration_ms: 162.875723
+  type: 'test'
+  ...
+# Subtest: all four exact reserve identities roundtrip through campaign import; future five and mixed worlds are refused [historical V108]
+ok 5 - all four exact reserve identities roundtrip through campaign import; future five and mixed worlds are refused [historical V108]
+  ---
+  duration_ms: 243.172151
+  type: 'test'
+  ...
+# Subtest: V4 sixteen adults, ship events and four route records survive real slots and complete archives
+ok 6 - V4 sixteen adults, ship events and four route records survive real slots and complete archives
+  ---
+  duration_ms: 106.990768
+  type: 'test'
+  ...
+# Subtest: a declared four-site persistence fixture physically returns, and an intercepted launch remains an event rather than a free reward
+ok 7 - a declared four-site persistence fixture physically returns, and an intercepted launch remains an event rather than a free reward
+  ---
+  duration_ms: 25.659292
+  type: 'test'
+  ...
+# Subtest: refused V4 checkpoint writes preserve durable bytes and retry the original expedition
+ok 8 - refused V4 checkpoint writes preserve durable bytes and retry the original expedition
+  ---
+  duration_ms: 41.474463
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4921.106255

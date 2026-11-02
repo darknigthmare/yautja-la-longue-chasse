@@ -1,0 +1,99 @@
+{
+  "checkedAt": "2026-11-02T07:55:16.020816Z",
+  "status": "REVIEWED_WITH_COPY_FINDING",
+  "captureFiles": 15,
+  "uniqueImageBytes": 14,
+  "images": [
+    {
+      "file": "vharuun-grand-hunt-native-canvas.png",
+      "sha256": "2060ef5430e216bbc9f70ca8d6ee862e610b6ae80b3caf80a74718af77c3da35",
+      "openedAndReviewed": true
+    },
+    {
+      "file": "vharuun-grand-hunt-native-start.png",
+      "sha256": "7a73d4cff535890f529eeb13f198141bb63847b1c3cf530983b0c648bba94bd1",
+      "openedAndReviewed": true
+    },
+    {
+      "file": "vharuun-grand-hunt-native-cache-objectives.png",
+      "sha256": "72da68e0e65a89516b55f8914f270e4e5a5e16ffe116e00c8d52339e655db7e5",
+      "openedAndReviewed": true
+    },
+    {
+      "file": "avar-kesh-grand-hunt-native-canvas.png",
+      "sha256": "509e4c72bde192981b10aa70afd81346d1b1b5b7f17af8543f9465a407dce631",
+      "openedAndReviewed": true
+    },
+    {
+      "file": "avar-kesh-grand-hunt-native-start.png",
+      "sha256": "f9e8bbca322f48635a97bff83247591eebb09a6da28301c09d87208a49cd3f41",
+      "openedAndReviewed": true
+    },
+    {
+      "file": "khar-duun-grand-hunt-native-canvas.png",
+      "sha256": "9d2267f910ee739c4595fcc0d746652f85cf47d30935f65e9af77c747dd43731",
+      "openedAndReviewed": true
+    },
+    {
+      "file": "khar-duun-grand-hunt-native-start.png",
+      "sha256": "8415b6f1f16b60d4b8e98199f659166f588295a13d9369f84b6911e62d2ff9fb",
+      "openedAndReviewed": true
+    },
+    {
+      "file": "khar-duun-grand-hunt-native-cache-objectives.png",
+      "sha256": "902508ae566d3ead02a05c7389f41f751a1319b58251d724d8215ec07a4e2092",
+      "openedAndReviewed": true
+    },
+    {
+      "file": "iskhel-grand-hunt-native-canvas.png",
+      "sha256": "4277a889f7a6bbc720704d3303dd2c3879dad10dd8d5f3a15112b95926ac8118",
+      "openedAndReviewed": true
+    },
+    {
+      "file": "iskhel-grand-hunt-native-start.png",
+      "sha256": "58e75e159a0778b7ee76b3b114036b862ae13321bb8b9c7326408d5c56758fbb",
+      "openedAndReviewed": true
+    },
+    {
+      "file": "khar-native-hazard.png",
+      "sha256": "05d0634b3a6118c3e662ddf39a8113528859811925454ff7ecdb006d16ecebca",
+      "openedAndReviewed": true
+    },
+    {
+      "file": "v6-mobile-notebook.png",
+      "sha256": "c5d0c5159dfd333b74cded42613010fa7950abb31b53d7e59d46dcaed9f0273b",
+      "openedAndReviewed": true
+    },
+    {
+      "file": "v6-mobile-notebook-last-post.png",
+      "sha256": "c5d0c5159dfd333b74cded42613010fa7950abb31b53d7e59d46dcaed9f0273b",
+      "openedAndReviewed": true
+    },
+    {
+      "file": "v6-physical-return.png",
+      "sha256": "0a5f84e6cccdc227a8b5d977ef3ddebdf5370f84b69fa289fb46edd10272886b",
+      "openedAndReviewed": true
+    },
+    {
+      "file": "v6-real-campaign-entry.png",
+      "sha256": "62ed037296a4bda04bdecb1ca89d0217cf42a693b581d19cf72b2bc4f7c424b1",
+      "openedAndReviewed": true
+    }
+  ],
+  "findings": [
+    {
+      "type": "product-copy",
+      "source": "app/game/GameReserveV66.tsx:179",
+      "text": "Décors natifs existants ; aucun nouvel atlas humain.",
+      "impact": "Implementation detail visible in pause/result footer; parent requested a separate minimal B2copy correction. No B1source modified."
+    }
+  ],
+  "observations": [
+    "All four native canvases and pause screens opened. Distinct jungle, canyon and ice panoramas; readable health/energy/route HUD.",
+    "Vharuun interception0/1 and2-depot objective visible; KharDuun4-depot objective visible.",
+    "Hazard capture shows actual vitality92 and ground-danger label.",
+    "Both390px notebook images show all six post names and fit horizontally; first/last files are byte-identical and are not counted as distinct views.",
+    "Physical extraction and campaign entry images opened; no full combat or final art approval claimed."
+  ],
+  "finalArtApproval": false
+}

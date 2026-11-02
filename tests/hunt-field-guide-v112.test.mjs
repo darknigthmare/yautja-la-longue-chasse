@@ -14,9 +14,9 @@ export {DEFAULT_HUNT_GAMEPAD_V112,normalizeHuntAccessibilityV112,rebindHuntGamep
 `,resolveDir:fileURLToPath(new URL("../app/game/",import.meta.url)),loader:"tsx"},
   bundle:true,write:false,platform:"node",format:"cjs",jsx:"automatic",
   loader:{".module.css":"empty"},external:["react","react/jsx-runtime"],logLevel:"silent"});
-const module={exports:{}};
-runInNewContext(built.outputFiles[0].text,{module,exports:module.exports,require:createRequire(import.meta.url)});
-const api=module.exports;
+const compiledModule={exports:{}};
+runInNewContext(built.outputFiles[0].text,{module:compiledModule,exports:compiledModule.exports,require:createRequire(import.meta.url)});
+const api=compiledModule.exports;
 const defaults={bindings:api.DEFAULT_CONTROL_BINDINGS,phase:"tracking",climbing:false,grounded:true,stamina:100,corpseNearby:false};
 const render=patch=>renderToStaticMarkup(createElement(api.Guide,{...defaults,...patch}));
 const cue=html=>html.match(/<p data-guide-cue-v112[^>]*>([\s\S]*?)<\/p>/)?.[1];

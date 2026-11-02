@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "verdict": "NO_CONCRETE_DEFECT_FOUND",
+  "findings": [],
+  "recommendedMissingPaths": [],
+  "workflow": {
+    "path": ".github/workflows/open-production-v113.yml",
+    "sha256": "24b4a9913cd4f1287e20a12b5bfa4ba43480eb857d41bd07d185ca34ad7a8e62",
+    "sparsePatterns": 198,
+    "uniqueSparsePatterns": 196,
+    "yamlParsed": true,
+    "bashSyntaxBlocksChecked": 8
+  },
+  "coverage": [
+    {
+      "manifest": "production/native-open-20261102/source-manifest.json",
+      "sha256": "682a9dc03da5887eaa8816371f2f543ab731dcbf4b0464c9cee1da3b9c044f7e",
+      "sourcePins": 152,
+      "contexts": {
+        "INHERITED_FROZEN_PRODUCT": 8,
+        "CURRENT_V114_PRODUCT_STRICT": 6,
+        "ARCHIVE_SNAPSHOT_BYTE_STRICT": 138
+      },
+      "coveredPins": 152,
+      "missingPaths": []
+    },
+    {
+      "manifest": "docs/suivi-production/v113-open-production-20261102/source-manifest.json",
+      "sha256": "2078785acd36e89aa6911522baba01c70ecbf995c049e25a3b24ec3f8b12d720",
+      "sourcePins": 208,
+      "contexts": {
+        "SNAPSHOT_HISTORIQUE": 190,
+        "CURRENT_V113_PRODUCT_STRICT": 18
+      },
+      "coveredPins": 208,
+      "missingPaths": []
+    }
+  ],
+  "v114FirstMatchingPatternCounts": {
+    "/docs/suivi-production/v113-open-production-20261102/": 5,
+    "/production/": 145,
+    "/scripts/": 2
+  },
+  "v114WorkflowTriggerCoverage": {
+    "pull_request": {
+      "coveredPins": 152,
+      "missingPaths": []
+    },
+    "push": {
+      "coveredPins": 152,
+      "missingPaths": []
+    }
+  },
+  "checks": {
+    "v113FourCommandsPreservedExactly": true,
+    "historicalSnapshotCommitPreserved": "03cf51badd450338d748da55599a317a71debd28",
+    "pillowPinnedVersion": "12.3.0",
+    "pillowBinaryWheelOnly": true,
+    "pillowInstalledInIsolatedVenv": true,
+    "venvAddedToGithubPathBeforeThreeV114Commands": true,
+    "v114VerifyBuildCheckAndTestsPresent": true,
+    "permissionsContents": "read",
+    "persistCredentials": false,
+    "fetchDepth": 3,
+    "sparseConeMode": false
+  },
+  "bashSyntax": [
+    {
+      "name": "Fetch the exact public source snapshot without moving the current checkout",
+      "exitCode": 0
+    },
+    {
+      "name": "Reproduce the dated workbook from its pinned historical sources and current candidate files",
+      "exitCode": 0
+    },
+    {
+      "name": "Compare all appended cells and preserve the original 122 worksheets",
+      "exitCode": 0
+    },
+    {
+      "name": "Reject altered source claims, historic cells and current products",
+      "exitCode": 0
+    },
+    {
+      "name": "Install pinned native PNG verification dependency in an isolated environment",
+      "exitCode": 0
+    },
+    {
+      "name": "Verify V114 native PNGs, source cells and all 130 historical worksheets",
+      "exitCode": 0
+    },
+    {
+      "name": "Reproduce the five appended V114 sheets and their exact workbook bytes",
+      "exitCode": 0
+    },
+    {
+      "name": "Reject corrupt V114 sources, titles, historical cells and false admissions",
+      "exitCode": 0
+    }
+  ],
+  "reviewScope": {
+    "gitUsed": false,
+    "repositoryWrites": false,
+    "cloneCreatedByReviewer": false,
+    "dependencyInstalledByReviewer": false,
+    "productionTestsRerunByReviewer": false,
+    "realCloneAndSixCommandExecutionOwnedByParent": true
+  },
+  "limits": [
+    "Sparse coverage was checked from the declared literal-root/directory patterns without invoking Git; the parent performs the actual shallow partial clone and execution.",
+    "The 190 V113 historical source pins remain historical Git-object reads, distinct from current product files.",
+    "YAML parsing and bash -n verify parsing and shell syntax; this report does not replace the parent real-clone run."
+  ]
+}

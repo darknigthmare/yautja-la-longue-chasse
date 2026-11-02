@@ -1,0 +1,216 @@
+{
+  "schemaVersion": 1,
+  "targetId": "target-v81-73-308",
+  "label": "échafaudage",
+  "attempt": 1,
+  "family": "BAS_QUARTIERS_PROPS",
+  "tool": "image_gen.imagegen",
+  "parameters": {
+    "transparent_background": true,
+    "referenced_image_paths": "omitted for new original generation",
+    "num_last_images_to_include": "omitted"
+  },
+  "prompt": "One ORIGINAL complete native PNG game prop for a Yautja homeworld fan game, an original lore-compatible design rather than an official replica. One whole independent object in three-quarter isometric view, looking down25-30degrees, front and right sides visible. Cohesive family: weathered charcoal porous basalt and dark gunmetal with worn antique-bronze angular chamfered ribs, restrained geometric alien carving, tiny physical amber fittings, realistic prerendered2.5D detail, warm neutral top-left light, readable silhouette/midtone contrast. Entire base and top fully inside the native canvas, SMALL centered object occupying central55percent, very generous20percent transparent empty margin requested all sides. True alpha transparency, exact alpha0 outside silhouette and at all canvas edges. No surrounding fog/glow, no detached shadow/ground tile, no background/checkerboard, no text, labels, logos, numbers, humans, animals, scene, atlas/grid/repeated views or cropped parts. Preserve actual tool-native canvas, no need to force the requested square size. Static native candidate only. SUBJECT: one complete freestanding ALIEN FACADE SCAFFOLDING MODULE. Four slender dark-gunmetal posts with heavy bronze clamp joints support two open grated work decks at different heights, angular cross braces and a single integral narrow access ladder. Tall open structural silhouette, all sides and feet visible; no building or wall behind it. Match rugged Yautja basalt-and-bronze engineering with a few small basalt foot blocks and restrained amber clamp apertures. Decks are connected to the same frame, visible empty spaces between beams, safe clear platform surfaces rather than a solid machinery block. No crane arm, crane claw, cargo boxes, curtains or sign. A single compact two-storey maintenance scaffold, not a city tower or doorway. Whole top rail and bottom supports fully visible with very large alpha margins.",
+  "nativeSourcePath": "/workspace/generated_images/exec-c4ed2a84-e2c0-4132-8a2b-a0a1fdb6b0d8.png",
+  "candidatePath": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-73-308-echafaudage-native.png",
+  "referencesOpened": [
+    "public/game/homeworld/v81/spaceport-gantry.png",
+    "public/game/homeworld/v75/architecture/convoy-workshop.png"
+  ],
+  "visualAssessment": {
+    "status": "ASSISTANT_NATIVE_VIEW_ONLY_NOT_HUMAN_APPROVAL",
+    "wholeSingleObject": true,
+    "visibleCroppedObject": false,
+    "duplicateGrid": false,
+    "materialCameraCoherent": true,
+    "functionReadable": true,
+    "notes": "One coherent open scaffold with two decks,cross braces and integral access ladder; all visible rails and feet contained,not a copied crane. No load-bearing,access or collision qualification."
+  },
+  "lore": "LORE_COMPATIBLE_ORIGINAL",
+  "humanValidated": false,
+  "pixelsEdited": false,
+  "inspection": {
+    "targetId": "target-v81-73-308",
+    "attempt": 1,
+    "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-73-308-echafaudage-native.png",
+    "nativeSourcePath": "/workspace/generated_images/exec-c4ed2a84-e2c0-4132-8a2b-a0a1fdb6b0d8.png",
+    "bytes": 1231883,
+    "sha256": "07a2036bcbb0fe11ddc12c83d98c8cfb8765fd4553e0daa0bcc2574f23e70bb2",
+    "mode": "RGBA",
+    "dimensions": [
+      1218,
+      1291
+    ],
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "transparentPixels": 1157741,
+    "alpha1or2Pixels": 27539,
+    "alpha1to8Pixels": 39148,
+    "thresholdMeasurements": {
+      "0": {
+        "bboxExclusive": [
+          35,
+          21,
+          1188,
+          1267
+        ],
+        "margins": [
+          35,
+          21,
+          30,
+          24
+        ],
+        "visiblePixels": 414697,
+        "edgeVisiblePixels": 0
+      },
+      "2": {
+        "bboxExclusive": [
+          291,
+          141,
+          980,
+          1159
+        ],
+        "margins": [
+          291,
+          141,
+          238,
+          132
+        ],
+        "visiblePixels": 387158,
+        "edgeVisiblePixels": 0
+      },
+      "8": {
+        "bboxExclusive": [
+          292,
+          143,
+          978,
+          1157
+        ],
+        "margins": [
+          292,
+          143,
+          240,
+          134
+        ],
+        "visiblePixels": 375549,
+        "edgeVisiblePixels": 0
+      }
+    },
+    "strict48pxAlphaGt0MarginPass": false,
+    "diagnostic48pxAlphaGt8MarginPass": true,
+    "diagnosticImageAnchor": {
+      "x": 634,
+      "y": 1156,
+      "status": "PROPOSED_BBOX_ANCHOR_NOT_RUNTIME_TESTED",
+      "rule": "Bottom-center alpha>8 enclosure. A wall-mounted object still needs an attachment pivot; this is not physical ground-contact proof."
+    },
+    "nativeByteExactCopy": true,
+    "pixelsEdited": false,
+    "runtimeIntegrated": false,
+    "humanValidated": false,
+    "status": "CANDIDAT_NON_ADMIS",
+    "limits": [
+      "All original canvas and pixels retained; no crop,resize,mirror,cleanup or compression.",
+      "Alpha thresholds2/8 are diagnostics and never replace the strict alpha>0 measurement.",
+      "Low alpha counts include antialiasing; border speckle and clipping need individual visual interpretation.",
+      "No in-game scale,collision,usage envelope,animation or artistic admission is established."
+    ]
+  },
+  "status": "CANDIDAT_NON_ADMIS",
+  "runtimeIntegrated": false,
+  "sourceClosureClaimed": false,
+  "sourceLocators": {
+    "catalogue": {
+      "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+      "jsonPointer": "/entries/307"
+    },
+    "v111Inventory": {
+      "path": "docs/v111-homeworld-art-inventory.json",
+      "jsonPointer": "/entries/307"
+    },
+    "activeV112Followup": {
+      "path": "docs/v112-homeworld-followup.json",
+      "jsonPointer": "/artTargets/307"
+    },
+    "brief": {
+      "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+      "section": 73,
+      "line": 1998
+    },
+    "workbookCells": [
+      {
+        "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+        "sheet": "CatalogueArtV111",
+        "part": "xl/worksheets/v111-sheet-110.xml",
+        "row": 312,
+        "idCell": {
+          "cell": "A312",
+          "value": "target-v81-73-308"
+        },
+        "labelCell": {
+          "cell": "D312",
+          "value": "échafaudage"
+        },
+        "historicalPresenceCell": {
+          "cell": "G312",
+          "value": "MISSING"
+        },
+        "openArtCell": {
+          "cell": "F312",
+          "value": "NON_CLOTURE_ART"
+        }
+      },
+      {
+        "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+        "sheet": "CatalogueArtV112",
+        "part": "xl/worksheets/v112-sheet-119.xml",
+        "row": 312,
+        "idCell": {
+          "cell": "A312",
+          "value": "target-v81-73-308"
+        },
+        "labelCell": {
+          "cell": "C312",
+          "value": "échafaudage"
+        },
+        "historicalPresenceCell": {
+          "cell": "D312",
+          "value": "MISSING"
+        },
+        "openArtCell": {
+          "cell": "E312",
+          "value": "NON_CLOTURE_ART"
+        }
+      }
+    ]
+  },
+  "sourceLocatorContext": "SNAPSHOT_HISTORIQUE: dated source audit 2026-11-02; historical V111/V112 cells are unchanged by this production.",
+  "requiredCriteriaIds": [
+    "COMMON-NATIVE",
+    "COMMON-IDENTITY",
+    "COMMON-SCALE",
+    "COMMON-CONTEXT"
+  ],
+  "targetSpecificLimits": [
+    "One static scaffold module with two levels and integral ladder; no climbable/collision, structural or safety qualification."
+  ],
+  "frame": {
+    "rect": [
+      0,
+      0,
+      1218,
+      1291
+    ],
+    "grid": [
+      1,
+      1
+    ],
+    "frameCount": 1,
+    "wholeNativeCanvasRetained": true
+  },
+  "referenceUse": "Previously opened real project PNGs informed the textual brief. No source image was supplied as conditioning and no source pixels were extracted.",
+  "retryUsed": false,
+  "retryDecision": "No retry: no actual clipping or repeated-object grid observed. Padding failures and faint alpha noise remain explicit, never cleaned or force-admitted."
+}

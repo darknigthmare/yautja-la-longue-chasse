@@ -6,6 +6,7 @@ import {fileURLToPath} from "node:url";
 import {runInNewContext} from "node:vm";
 import {createHash} from "node:crypto";
 import {dirname,resolve} from "node:path";
+import {gzipSync} from "node:zlib";
 import {renderToStaticMarkup} from "react-dom/server";
 import {createElement} from "react";
 import {build} from "esbuild";
@@ -111,6 +112,10 @@ after(async()=>{
  const reportPath=resolve(root,process.env.YAUTJA_CARCASS_MENU_QA_REPORT);
  const report={schema:1,classification:"CONSTRUCTED_NATIVE_MENU_REGRESSION_NOT_CAMPAIGN",result:records.length===20?"OK":"INCOMPLETE",cases:records,
   sourceSha256:hash(await readFile(root+"app/game/systems/huntRitesRuntimeV77.ts")),canvasSourceSha256:hash(source),testSourceSha256:hash(await readFile(fileURLToPath(import.meta.url))),bundleSha256:hash(bundle.outputFiles[0].text),node:process.version,
-  previousConstructedCounterexample:"docs/qa/v112-ground-deposit-composition/operator-report.json",limits:["Fixture actors and tool ownership are admitted for a focused integration regression.","The actual menu component is server-rendered and its production callback is exercised; this is not a mounted GameClient campaign or a hardware test.","The earlier geometric report remains an unchanged baseline."]};
- await mkdir(dirname(reportPath),{recursive:true});await writeFile(reportPath,JSON.stringify(report,null,2)+"\n");
+  previousConstructedCounterexample:"https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b00b091623b968c2f84e6909deb590ecf70581eb/docs/qa/v112-ground-deposit-composition/operator-report.json",limits:["Fixture actors and tool ownership are admitted for a focused integration regression.","The actual menu component is server-rendered and its production callback is exercised; this is not a mounted GameClient campaign or a hardware test.","The earlier geometric report is a pinned upstream reference, not a local current-run result."]};
+ await mkdir(dirname(reportPath),{recursive:true});
+ const rawBundle=gzipSync(bundle.outputFiles[0].text),bundleName="native-menu-bundle.cjs.gz";
+ await writeFile(resolve(dirname(reportPath),bundleName),rawBundle);
+ report.rawExecutedBundle={path:bundleName,bytes:rawBundle.length,sha256:hash(rawBundle),encoding:"gzip of the actual in-memory esbuild CommonJS bundle"};
+ await writeFile(reportPath,JSON.stringify(report,null,2)+"\n");
 });

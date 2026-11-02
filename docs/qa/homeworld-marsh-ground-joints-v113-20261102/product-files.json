@@ -1,0 +1,65 @@
+{
+  "scope": "Owned V113 isolated worktree implementation and targeted verification, excluding existing identical public inputs and generated Next files",
+  "files": [
+    {
+      "path": "app/game/HomeworldForgeFireV113.tsx",
+      "change": "new",
+      "bytes": 2608,
+      "sha256": "a111ca1df93324314d102a0e8a83e616c4a9836cbccdf7c9e2dfb1384d911751"
+    },
+    {
+      "path": "app/game/systems/homeworldForgeFireV113.ts",
+      "change": "new",
+      "bytes": 3715,
+      "sha256": "2039b8d16a6ea5f099b8741a9ff8e1814340ae90365a475b9b90ed2936d61922"
+    },
+    {
+      "path": "app/game/systems/homeworldMarshGroundJointsV113.ts",
+      "change": "new",
+      "bytes": 11068,
+      "sha256": "8f2fb324502bed8221373da485f0b07500820ba0f7fbd22bdb8fec94f34eed21"
+    },
+    {
+      "path": "app/game/systems/homeworldWorldV77.ts",
+      "change": "modified",
+      "bytes": 36518,
+      "sha256": "e9f6da87934bdfab044a17b5d3ea46f3d16bfe5dab998c36021f699cfc6585de"
+    },
+    {
+      "path": "app/game/systems/homeworldGeometryRecoveryV112.ts",
+      "change": "modified",
+      "bytes": 23508,
+      "sha256": "52b9a63831661b90bace0047a63ab98b95249b19d9c6b54f4d5fdf9221c70c69"
+    },
+    {
+      "path": "app/game/HomeworldWorldSceneV77.tsx",
+      "change": "modified",
+      "bytes": 25627,
+      "sha256": "b616e13d21e118804c776446bf85b366d1c9b92093cdd48e6985d449ad86c40f"
+    },
+    {
+      "path": "tests/homeworld-forge-fire-v113.test.mjs",
+      "change": "new",
+      "bytes": 3265,
+      "sha256": "f8fda7b15da367fd143d527881370045aaac429685314113057944d90f48efca"
+    },
+    {
+      "path": "tests/homeworld-marsh-ground-joints-v113.test.mjs",
+      "change": "new",
+      "bytes": 6806,
+      "sha256": "4a253c413c1ba707bb2cd44dd692bd752e172339f56250eac28d1a5e4b4dde0f"
+    },
+    {
+      "path": "tests/homeworld-ground-joints-v112.test.mjs",
+      "change": "modified",
+      "bytes": 11084,
+      "sha256": "0836d5779d53e2a70b2d09c63a005cc51ac4d0a92c8e14f5f4cf336be913916a"
+    },
+    {
+      "path": "scripts/qa-homeworld-marsh-ground-joints-v113.mjs",
+      "change": "new",
+      "bytes": 14034,
+      "sha256": "525a232e26db6d73b6e8c3fa487a0e22044d59dba401422aae013b7bb484a179"
+    }
+  ]
+}

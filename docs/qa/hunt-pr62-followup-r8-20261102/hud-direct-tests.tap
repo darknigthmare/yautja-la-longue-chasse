@@ -1,0 +1,100 @@
+TAP version 13
+# Subtest: visual/investigate: acquisition cause and requested response stay distinct
+ok 1 - visual/investigate: acquisition cause and requested response stay distinct
+  ---
+  duration_ms: 1.629188
+  type: 'test'
+  ...
+# Subtest: visual/avoid: acquisition cause and requested response stay distinct
+ok 2 - visual/avoid: acquisition cause and requested response stay distinct
+  ---
+  duration_ms: 0.243938
+  type: 'test'
+  ...
+# Subtest: visual/inspect: acquisition cause and requested response stay distinct
+ok 3 - visual/inspect: acquisition cause and requested response stay distinct
+  ---
+  duration_ms: 0.079741
+  type: 'test'
+  ...
+# Subtest: visual/guard: acquisition cause and requested response stay distinct
+ok 4 - visual/guard: acquisition cause and requested response stay distinct
+  ---
+  duration_ms: 0.129485
+  type: 'test'
+  ...
+# Subtest: radio/investigate: acquisition cause and requested response stay distinct
+ok 5 - radio/investigate: acquisition cause and requested response stay distinct
+  ---
+  duration_ms: 0.766476
+  type: 'test'
+  ...
+# Subtest: radio/avoid: acquisition cause and requested response stay distinct
+ok 6 - radio/avoid: acquisition cause and requested response stay distinct
+  ---
+  duration_ms: 0.407014
+  type: 'test'
+  ...
+# Subtest: radio/inspect: acquisition cause and requested response stay distinct
+ok 7 - radio/inspect: acquisition cause and requested response stay distinct
+  ---
+  duration_ms: 0.103666
+  type: 'test'
+  ...
+# Subtest: radio/guard: acquisition cause and requested response stay distinct
+ok 8 - radio/guard: acquisition cause and requested response stay distinct
+  ---
+  duration_ms: 0.089184
+  type: 'test'
+  ...
+# Subtest: scent/investigate: acquisition cause and requested response stay distinct
+ok 9 - scent/investigate: acquisition cause and requested response stay distinct
+  ---
+  duration_ms: 0.335276
+  type: 'test'
+  ...
+# Subtest: scent/avoid: acquisition cause and requested response stay distinct
+ok 10 - scent/avoid: acquisition cause and requested response stay distinct
+  ---
+  duration_ms: 0.595959
+  type: 'test'
+  ...
+# Subtest: scent/inspect: acquisition cause and requested response stay distinct
+ok 11 - scent/inspect: acquisition cause and requested response stay distinct
+  ---
+  duration_ms: 0.177968
+  type: 'test'
+  ...
+# Subtest: scent/guard: acquisition cause and requested response stay distinct
+ok 12 - scent/guard: acquisition cause and requested response stay distinct
+  ---
+  duration_ms: 0.096826
+  type: 'test'
+  ...
+# Subtest: legacy labels retain their historical cause-or-animal-response meaning
+ok 13 - legacy labels retain their historical cause-or-animal-response meaning
+  ---
+  duration_ms: 0.413213
+  type: 'test'
+  ...
+# Subtest: Canvas emits two independent text commands while preserving badge geometry and paint state
+ok 14 - Canvas emits two independent text commands while preserving badge geometry and paint state
+  ---
+  duration_ms: 3.032105
+  type: 'test'
+  ...
+# Subtest: declared text baselines and maximum width stay inside the existing 132 by 26 badge
+ok 15 - declared text baselines and maximum width stay inside the existing 132 by 26 badge
+  ---
+  duration_ms: 0.109996
+  type: 'test'
+  ...
+1..15
+# tests 15
+# suites 0
+# pass 15
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 28.718219

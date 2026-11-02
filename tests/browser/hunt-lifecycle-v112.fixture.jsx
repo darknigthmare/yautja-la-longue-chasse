@@ -1,4 +1,4 @@
-import {useEffect,useRef,useState} from 'react';
+import {useCallback,useEffect,useLayoutEffect,useRef,useState} from 'react';
 import {createRoot} from 'react-dom/client';
 import HuntCanvas,{__qaApiV112 as native} from 'hunt-lifecycle-native-v112';
 import {makeGameClientCallbacksV112} from 'hunt-lifecycle-callbacks-v112';
@@ -36,8 +36,9 @@ function Fixture(){
  const callbacks=useRef(null),kindRef=useRef('rites'),resumeRef=useRef(null);
  const closeWorkshop=()=>{audit.menuBacks=(audit.menuBacks??0)+1;setScreen('menu');};
  useMenuGamepad(menuRoot,screen==='workshop','lifecycle:'+screen,closeWorkshop,{confirmButton:save.settings.huntAccessibility.gamepadButtons.jump,backButton:save.settings.huntAccessibility.gamepadButtons.interact});
- const recordSave=value=>{saveRef.current=value;setSave(value);};
- if(!callbacks.current)callbacks.current=makeGameClientCallbacksV112({
+ const recordSave=useCallback(value=>{saveRef.current=value;setSave(value);},[]);
+ useLayoutEffect(()=>{
+ if(callbacks.current===null)callbacks.current=makeGameClientCallbacksV112({
   saveRef,sessionAliveRef,setSave:recordSave,setScreen:value=>setScreen(value==='debrief'?'workshop':value),setToast:value=>{audit.toasts.push(value);setStatus(value);},
   setSaveFailure:value=>{audit.failure=value;},setLastResult:value=>{lastResult.current=value;},clearHuntSession:()=>{audit.clears++;},
  });
@@ -56,6 +57,8 @@ function Fixture(){
    if(g.huntRites.corpses.length!==1)throw Error('Actual damage did not create one corpse');
   }
  };
+ return()=>{delete window.__onHuntLifecycleMountV112;};
+ },[recordSave]);
  useEffect(()=>{
   Object.assign(audit,{
    save:()=>JSON.parse(JSON.stringify(saveRef.current)),disk:()=>JSON.parse(localStorage.getItem(SAVE_STORAGE_KEY)),result:()=>lastResult.current,
@@ -83,7 +86,7 @@ function Fixture(){
    },
    reloadSave(){const loaded=loadSaveWithStatus();if(!loaded.loaded)throw Error(loaded.failure);recordSave(loaded.save);return loaded.source;},
   });
- },[]);
+ },[recordSave]);
  const finish=result=>callbacks.current.completeMission(result);
  const persist=payload=>{audit.persisted.push(payload);};
  return <main ref={menuRoot}><header><h1>Chasse V112 : cycle natif et persistance</h1><p>Insertion de contrôle, carcasse créée par dégâts réels, images de repli. Les prérequis Apex sont amorcés avant le seul segment d’extraction ; aucune campagne complète ni appareil physique qualifié.</p></header>

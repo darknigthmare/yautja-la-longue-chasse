@@ -1,0 +1,314 @@
+{
+  "schemaVersion": 1,
+  "domain": "Homeworld Forge fire V113",
+  "review": "R8 B1 independent image review",
+  "reviewedAtUtc": "2026-11-02T07:49:24.842002+00:00",
+  "rawStatus": "PASS_TARGETED_COMPILED_APP",
+  "reviewStatus": "REVIEWED_WITH_EXPLICIT_LIMITS",
+  "completeRecipe": false,
+  "rawResult": {
+    "file": "result.json",
+    "bytes": 30454,
+    "sha256": "12106003203ebc3d2857299882bbc07850008270c0ebddf74bb98d16009a7455"
+  },
+  "production": {
+    "mode": "compiled-app",
+    "buildId": "wUnrV1ggo6EZPYklVbGCp",
+    "runtimeCommit": "a83d23911ad4b5370494de0ca0bb025bd1d89449",
+    "htmlResponsesVerified": 5
+  },
+  "method": "All eleven listed original PNG files were actually opened with view_image in this independent review, one or two at a time. Every listed filename, byte count and SHA256 was then compared with the executed result. No image editing, overlay change, crop, screenshot replacement or additional driver execution was performed for this review.",
+  "paths": "All evidence file references are relative to this review directory. Per-building framing is the original driver capture, not a later image edit.",
+  "criteriaPassed": 7,
+  "criteria": [
+    {
+      "name": "actual local Next page responds",
+      "status": "PASS",
+      "detail": {
+        "status": 200
+      }
+    },
+    {
+      "name": "native child uses exact parent building extent without multiplying opacity",
+      "status": "PASS",
+      "detail": {
+        "source": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f02.png",
+        "status": "EXISTING_NATIVE_REUSE_CANDIDATE_NOT_HUMAN_ADMITTED",
+        "frame": "2",
+        "viewBox": "0 0 520 512",
+        "rect": {
+          "x": 429.848388671875,
+          "y": 101.92333984375,
+          "width": 546.637451171875,
+          "height": 538.22802734375,
+          "top": 101.92333984375,
+          "right": 976.48583984375,
+          "bottom": 640.1513671875,
+          "left": 429.848388671875
+        },
+        "parentRect": {
+          "x": 429.848388671875,
+          "y": 101.92333984375,
+          "width": 546.637451171875,
+          "height": 538.22802734375,
+          "top": 101.92333984375,
+          "right": 976.48583984375,
+          "bottom": 640.1513671875,
+          "left": 429.848388671875
+        },
+        "parentBuildingId": "deep-forge",
+        "parentSource": "/game/homeworld/v72/civic-identity-atlas.png",
+        "parentOpacity": "1",
+        "ownOpacity": "1"
+      }
+    },
+    {
+      "name": "six distinct native flame drawings are painted on the actual building",
+      "status": "PASS",
+      "detail": {
+        "frames": [
+          3,
+          4,
+          5,
+          0,
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "name": "game pause holds native frame",
+      "status": "PASS",
+      "detail": {
+        "frame": "2"
+      }
+    },
+    {
+      "name": "reduced motion holds first native drawing",
+      "status": "PASS",
+      "detail": {
+        "samples": [
+          {
+            "index": 0,
+            "source": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png",
+            "href": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png"
+          },
+          {
+            "index": 0,
+            "source": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png",
+            "href": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png"
+          },
+          {
+            "index": 0,
+            "source": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png",
+            "href": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png"
+          },
+          {
+            "index": 0,
+            "source": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png",
+            "href": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png"
+          },
+          {
+            "index": 0,
+            "source": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png",
+            "href": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png"
+          },
+          {
+            "index": 0,
+            "source": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png",
+            "href": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png"
+          }
+        ]
+      }
+    },
+    {
+      "name": "a missing native flame retains the existing static building and omits overlay",
+      "status": "PASS"
+    },
+    {
+      "name": "missing facade atlas prevents orphan flame",
+      "status": "PASS"
+    }
+  ],
+  "captureCount": 11,
+  "captures": [
+    {
+      "file": "00-context.png",
+      "bytes": 1756537,
+      "sha256": "8c540f9753562c1dd4cd2decb4ece775a8b13d0bab28a32620e54efddd2e9ec0",
+      "opened": true,
+      "phase": "ordinary",
+      "observation": "La forge deep-forge est réellement présente dans la cité. Le feu tient dans le foyer gauche de la façade ; aucun débordement visible sur le capot, la lèvre ou la porte centrale."
+    },
+    {
+      "file": "frame-3.png",
+      "bytes": 489481,
+      "sha256": "d6ed6e4045a8bdf4611c5d2e585e0b06596decd03485bea98e754e0ff9f707ed",
+      "opened": true,
+      "phase": "ordinary",
+      "observation": "Dessin natif 3 réellement ouvert : autre forme de langue et de cœur lumineux, sans débordement hors du foyer."
+    },
+    {
+      "file": "frame-4.png",
+      "bytes": 489383,
+      "sha256": "3aca7707bc1ce653e6f90583ee4b31c426cff9a668f5fcb16ca5129d4ad23128",
+      "opened": true,
+      "phase": "ordinary",
+      "observation": "Dessin natif 4 réellement ouvert : variation visible de la silhouette de flamme dans la même ouverture."
+    },
+    {
+      "file": "frame-5.png",
+      "bytes": 489423,
+      "sha256": "e5bd9540ae3371fe8b4eb7a16f2583338ba5116701d6e77c5a66e1ed99b61ebc",
+      "opened": true,
+      "phase": "ordinary",
+      "observation": "Dessin natif 5 réellement ouvert : sixième forme retenue dans le foyer, même parent et même masque."
+    },
+    {
+      "file": "frame-0.png",
+      "bytes": 489337,
+      "sha256": "22771f2fc2a32f3f24d67496e62f7c9ae63f968d443af262750c752ddf327fa5",
+      "opened": true,
+      "phase": "ordinary",
+      "observation": "Dessin natif 0 réellement ouvert : contour de flamme distinct, ancré dans le même foyer et le même cadrage de façade."
+    },
+    {
+      "file": "frame-1.png",
+      "bytes": 489548,
+      "sha256": "bb0fdd4d8fc3e1e7ac8d9d18a0e050d7daec4dc5335f8c750801df3905da32fd",
+      "opened": true,
+      "phase": "ordinary",
+      "observation": "Dessin natif 1 réellement ouvert : variation visible des langues de feu dans la même ouverture ; socle, lèvre et masque conservés."
+    },
+    {
+      "file": "frame-2.png",
+      "bytes": 489433,
+      "sha256": "2d2f56faaecd03908471d77b780909d755fd0b9ac505a4529b89292848fce859",
+      "opened": true,
+      "phase": "ordinary",
+      "observation": "Dessin natif 2 réellement ouvert : contour distinct de la flamme ; la façade et le foyer restent alignés."
+    },
+    {
+      "file": "pause.png",
+      "bytes": 154259,
+      "sha256": "a8f4cfb48d385799fab8e4757f67cf8ac1b84ada6dd8f74b9c2fb02587f7dbae",
+      "opened": true,
+      "phase": "ordinary",
+      "observation": "Le dialogue « Exploration en pause » est visible avec son voile flou natif. Cette image seule ne permet pas de distinguer précisément la frame ; le brut observe la frame 2 inchangée pendant 2000 ms."
+    },
+    {
+      "file": "reduced-motion.png",
+      "bytes": 517694,
+      "sha256": "49d5a278de3183b525b16fa61aeec63f0f525a14e4c1c852187037f096b7da71",
+      "opened": true,
+      "phase": "ordinary",
+      "observation": "Le dessin 0 est visible dans le foyer. Les six lectures brutes successives restent sur 0 ; une capture isolée ne prouve pas cette stabilité temporelle."
+    },
+    {
+      "file": "missing-resource-static.png",
+      "bytes": 515441,
+      "sha256": "61bcf17f07100c360feb52fdc0b5ca436d6b9006e8e7dc3f4a8c3300286f8b96",
+      "opened": true,
+      "phase": "missing-flame",
+      "observation": "Après le refus réel de la frame f02, la façade existante et son ancien foyer orange statique restent visibles. Les langues animées ajoutées sont absentes."
+    },
+    {
+      "file": "missing-facade-no-orphan-fire.png",
+      "bytes": 523666,
+      "sha256": "87b813494e5ff8b97529765e118d0fb357a183f560d9380fab6cf6ff37b79f4a",
+      "opened": true,
+      "phase": "missing-facade",
+      "observation": "Aucun feu orphelin visible ; la forge manque derrière le voile « Préparation de la cité — Animations : 20 / 92 ». Il s’agit du contexte de chargement indisponible déclaré, pas d’une préparation complète ni d’une récupération démontrée."
+    }
+  ],
+  "geometryObservation": {
+    "buildingId": "deep-forge",
+    "viewBox": "0 0 520 512",
+    "parentWidth": 546.637451171875,
+    "parentHeight": 538.22802734375,
+    "childWidth": 546.637451171875,
+    "childHeight": 538.22802734375,
+    "parentOpacity": "1",
+    "childOpacity": "1"
+  },
+  "stability": {
+    "sourceBeforeEqualsAfter": true,
+    "localSourceFilesObserved": 6,
+    "assetsBeforeEqualAfter": true,
+    "nativeAssetFilesObserved": 7
+  },
+  "errorRecords": {
+    "rawPageErrors": 0,
+    "rawConsoleErrors": 4,
+    "rawWorkerErrors": 0,
+    "rawRequestFailures": 4,
+    "rawHttpErrors": 0,
+    "rawRouteErrors": 0,
+    "declaredRequestFailureReferences": [
+      {
+        "index": 0,
+        "fixtureId": "missing-flame",
+        "observationId": 1
+      },
+      {
+        "index": 1,
+        "fixtureId": "missing-facade",
+        "observationId": 2
+      },
+      {
+        "index": 2,
+        "fixtureId": "missing-facade",
+        "observationId": 3
+      },
+      {
+        "index": 3,
+        "fixtureId": "missing-facade",
+        "observationId": 4
+      }
+    ],
+    "declaredConsoleErrorReferences": [
+      {
+        "index": 0,
+        "fixtureId": "missing-flame",
+        "observationId": 1,
+        "matchingBasis": "exact failed URL and phase"
+      },
+      {
+        "index": 1,
+        "fixtureId": "missing-facade",
+        "observationId": 2,
+        "matchingBasis": "exact failed URL and phase"
+      },
+      {
+        "index": 2,
+        "fixtureId": "missing-facade",
+        "observationId": 3,
+        "matchingBasis": "exact failed URL and phase"
+      },
+      {
+        "index": 3,
+        "fixtureId": "missing-facade",
+        "observationId": 4,
+        "matchingBasis": "exact failed URL and phase"
+      }
+    ],
+    "ordinaryCounts": {
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "workerErrors": 0,
+      "requestFailures": 0,
+      "httpErrors": 0,
+      "routeErrors": 0
+    },
+    "unmatchedAborts": [],
+    "note": "The four intentional request failures and their four console errors remain in the raw result; this review does not erase them or claim zero raw errors."
+  },
+  "limits": [
+    "The declared campaign/location is an initial fixture. No played approach, crafting completion or travel between unrelated fixtures is established.",
+    "Pause stability and repeated reduced-motion stability depend on the driver observations; static images alone establish their visible presentation.",
+    "Missing-facade evidence shows the declared unavailable/loading state at Animations 20 / 92. It proves no orphan overlay in that state, not successful global readiness, a completed recovery or restored navigation.",
+    "This is targeted compiled-app evidence with seven criteria and eleven inspected captures. It is not a complete Homeworld-domain certificate or a complete runtime-freeze audit. The six local input files and seven native asset files observed by the driver retain that limited scope.",
+    "The six flame drawings are reuse of existing native sources. No new animation drawing delivery or human artistic admission is claimed.",
+    "The broader angular relief, repeated motifs, city layout and unfinished source requirements are outside this bounded Forge review."
+  ]
+}

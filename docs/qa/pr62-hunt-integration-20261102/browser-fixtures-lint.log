@@ -1,0 +1,68 @@
+
+/workspace/yautja-pr62-integration-20261102/tests/browser/hunt-lifecycle-v112.fixture.jsx
+  40:6    error  Error: Cannot access refs during render
+
+React refs are values that are not needed for rendering. Refs should only be accessed outside of render, such as in event handlers or effects. Accessing a ref value (the `current` property) during render can cause your component not to update as expected (https://react.dev/reference/react/useRef).
+
+  38 |  useMenuGamepad(menuRoot,screen==='workshop','lifecycle:'+screen,closeWorkshop,{confirmButton:save.settings.huntAccessibility.gamepadButtons.jump,backButton:save.settings.huntAccessibility.gamepadButtons.interact});
+  39 |  const recordSave=value=>{saveRef.current=value;setSave(value);};
+> 40 |  if(!callbacks.current)callbacks.current=makeGameClientCallbacksV112({
+     |      ^^^^^^^^^^^^^^^^^ Cannot access ref value during render
+  41 |   saveRef,sessionAliveRef,setSave:recordSave,setScreen:value=>setScreen(value==='debrief'?'workshop':value),setToast:value=>{audit.toasts.push(value);setStatus(value);},
+  42 |   setSaveFailure:value=>{audit.failure=value;},setLastResult:value=>{lastResult.current=value;},clearHuntSession:()=>{audit.clears++;},
+  43 |  });
+
+To initialize a ref only once, check that the ref is null with the pattern `if (ref.current == null) { ref.current = ... }`                                                                                                                                                                                                                                                                                                                                                                                                                                                                 react-hooks/refs
+  40:70   error  Error: Cannot access refs during render
+
+React refs are values that are not needed for rendering. Refs should only be accessed outside of render, such as in event handlers or effects. Accessing a ref value (the `current` property) during render can cause your component not to update as expected (https://react.dev/reference/react/useRef).
+
+  38 |  useMenuGamepad(menuRoot,screen==='workshop','lifecycle:'+screen,closeWorkshop,{confirmButton:save.settings.huntAccessibility.gamepadButtons.jump,backButton:save.settings.huntAccessibility.gamepadButtons.interact});
+  39 |  const recordSave=value=>{saveRef.current=value;setSave(value);};
+> 40 |  if(!callbacks.current)callbacks.current=makeGameClientCallbacksV112({
+     |                                                                      ^
+> 41 |   saveRef,sessionAliveRef,setSave:recordSave,setScreen:value=>setScreen(value==='debrief'?'workshop':value),setToast:value=>{audit.toasts.push(value);setStatus(value);},
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 42 |   setSaveFailure:value=>{audit.failure=value;},setLastResult:value=>{lastResult.current=value;},clearHuntSession:()=>{audit.clears++;},
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 43 |  });
+     | ^^^ Passing a ref to a function may read its value during render
+  44 |  window.__onHuntLifecycleMountV112=handle=>{
+  45 |   audit.mounts++;audit.runtime=handle;
+  46 |   if(resumeRef.current)return;  react-hooks/refs
+  42:26   error  Error: This value cannot be modified
+
+Modifying a variable defined outside a component or hook is not allowed. Consider using an effect.
+
+  40 |  if(!callbacks.current)callbacks.current=makeGameClientCallbacksV112({
+  41 |   saveRef,sessionAliveRef,setSave:recordSave,setScreen:value=>setScreen(value==='debrief'?'workshop':value),setToast:value=>{audit.toasts.push(value);setStatus(value);},
+> 42 |   setSaveFailure:value=>{audit.failure=value;},setLastResult:value=>{lastResult.current=value;},clearHuntSession:()=>{audit.clears++;},
+     |                          ^^^^^ value cannot be modified
+  43 |  });
+  44 |  window.__onHuntLifecycleMountV112=handle=>{
+  45 |   audit.mounts++;audit.runtime=handle;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    react-hooks/immutability
+  42:119  error  Error: This value cannot be modified
+
+Modifying a variable defined outside a component or hook is not allowed. Consider using an effect.
+
+  40 |  if(!callbacks.current)callbacks.current=makeGameClientCallbacksV112({
+  41 |   saveRef,sessionAliveRef,setSave:recordSave,setScreen:value=>setScreen(value==='debrief'?'workshop':value),setToast:value=>{audit.toasts.push(value);setStatus(value);},
+> 42 |   setSaveFailure:value=>{audit.failure=value;},setLastResult:value=>{lastResult.current=value;},clearHuntSession:()=>{audit.clears++;},
+     |                                                                                                                       ^^^^^ value cannot be modified
+  43 |  });
+  44 |  window.__onHuntLifecycleMountV112=handle=>{
+  45 |   audit.mounts++;audit.runtime=handle;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       react-hooks/immutability
+  44:2    error  Error: This value cannot be modified
+
+Modifying a variable defined outside a component or hook is not allowed. Consider using an effect.
+
+  42 |   setSaveFailure:value=>{audit.failure=value;},setLastResult:value=>{lastResult.current=value;},clearHuntSession:()=>{audit.clears++;},
+  43 |  });
+> 44 |  window.__onHuntLifecycleMountV112=handle=>{
+     |  ^^^^^^ value cannot be modified
+  45 |   audit.mounts++;audit.runtime=handle;
+  46 |   if(resumeRef.current)return;
+  47 |   const g=handle.game;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      react-hooks/immutability
+
+✖ 5 problems (5 errors, 0 warnings)
+

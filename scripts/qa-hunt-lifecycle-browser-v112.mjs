@@ -12,7 +12,7 @@ import {build} from 'esbuild';
 import ts from 'typescript';
 import sharp from 'sharp';
 import {chromium} from 'playwright-core';
-const root=fileURLToPath(new URL('../',import.meta.url)),out=path.join(root,'outputs/qa-hunt-lifecycle-v112');
+const root=fileURLToPath(new URL('../',import.meta.url)),out=path.resolve(root,process.env.YAUTJA_HUNT_LIFECYCLE_OUTPUT??'outputs/qa-hunt-lifecycle-v112');
 await fs.mkdir(out,{recursive:true});
 function extractCallback(source,name){
  const ast=ts.createSourceFile('GameClient.tsx',source,ts.ScriptTarget.Latest,true,ts.ScriptKind.TSX);let expression;
@@ -68,7 +68,8 @@ const scenario=async(name,fn)=>{try{await fn();results.push({name,status:'PASS'}
 try{
  await new Promise((resolve,reject)=>{server.once('error',reject);server.listen(0,'127.0.0.1',resolve);});
  const address=server.address();assert.ok(address&&typeof address==='object');
- browser=await chromium.launch(process.env.AUDIT_CHROME_CHANNEL?{channel:process.env.AUDIT_CHROME_CHANNEL}:{});
+ const executablePath=process.env.CHROMIUM_EXECUTABLE_PATH??process.env.AUDIT_CHROME_EXECUTABLE;
+ browser=await chromium.launch(executablePath?{executablePath,args:['--no-sandbox','--disable-dev-shm-usage']}:process.env.AUDIT_CHROME_CHANNEL?{channel:process.env.AUDIT_CHROME_CHANNEL}:{});
  const page=await browser.newPage({viewport:{width:1120,height:900}});page.setDefaultTimeout(12000);
  page.on('pageerror',error=>errors.push(error.message));
  await page.goto('http://127.0.0.1:'+address.port+'/');await page.bringToFront();

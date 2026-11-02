@@ -1,0 +1,275 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-02",
+  "status": "PASS_TARGETED_DEVELOPMENT_REUSE_CANDIDATE_R6_FINAL_RENDERER",
+  "targetId": "target-v81-63-141",
+  "rawResult": "/workspace/native-forge-production-20261102/context-run-TzZnh7/result.json",
+  "rawResultSha256": "5714039a8027e5187fc8bee39e770806ed423c0f4d7e552c4c68a896943bff5e",
+  "scope": "Development Next app on3105, actual native building render with declared completed-first-tracks campaign/location fixture. No journey, crafting completion or human art admission is claimed.",
+  "checks": [
+    {
+      "name": "actual local Next page responds",
+      "status": "PASS",
+      "detail": {
+        "status": 200
+      }
+    },
+    {
+      "name": "native child uses exact parent building extent without multiplying opacity",
+      "status": "PASS",
+      "detail": {
+        "source": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f02.png",
+        "status": "EXISTING_NATIVE_REUSE_CANDIDATE_NOT_HUMAN_ADMITTED",
+        "frame": "2",
+        "viewBox": "0 0 520 512",
+        "rect": {
+          "x": 429.848388671875,
+          "y": 101.92333984375,
+          "width": 546.637451171875,
+          "height": 538.22802734375,
+          "top": 101.92333984375,
+          "right": 976.48583984375,
+          "bottom": 640.1513671875,
+          "left": 429.848388671875
+        },
+        "parentRect": {
+          "x": 429.848388671875,
+          "y": 101.92333984375,
+          "width": 546.637451171875,
+          "height": 538.22802734375,
+          "top": 101.92333984375,
+          "right": 976.48583984375,
+          "bottom": 640.1513671875,
+          "left": 429.848388671875
+        },
+        "parentOpacity": "1",
+        "ownOpacity": "1"
+      }
+    },
+    {
+      "name": "six distinct native flame drawings are painted on the actual building",
+      "status": "PASS",
+      "detail": {
+        "frames": [
+          3,
+          4,
+          5,
+          0,
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "name": "game pause holds native frame",
+      "status": "PASS",
+      "detail": {
+        "frame": "2"
+      }
+    },
+    {
+      "name": "reduced motion holds first native drawing",
+      "status": "PASS"
+    },
+    {
+      "name": "a missing native flame retains the existing static building and omits overlay",
+      "status": "PASS"
+    },
+    {
+      "name": "missing facade atlas prevents orphan flame",
+      "status": "PASS"
+    }
+  ],
+  "sourceIdentity": [
+    {
+      "path": "app/game/HomeworldForgeFireV113.tsx",
+      "bytes": 2608,
+      "sha256": "a111ca1df93324314d102a0e8a83e616c4a9836cbccdf7c9e2dfb1384d911751"
+    },
+    {
+      "path": "app/game/systems/homeworldForgeFireV113.ts",
+      "bytes": 3715,
+      "sha256": "2039b8d16a6ea5f099b8741a9ff8e1814340ae90365a475b9b90ed2936d61922"
+    },
+    {
+      "path": "app/game/HomeworldWorldSceneV77.tsx",
+      "bytes": 25627,
+      "sha256": "b616e13d21e118804c776446bf85b366d1c9b92093cdd48e6985d449ad86c40f"
+    }
+  ],
+  "sourceUnchangedDuringRun": true,
+  "screenshotsOpened": [
+    {
+      "name": "00-context",
+      "path": "/workspace/native-forge-production-20261102/context-run-TzZnh7/00-context.png",
+      "bytes": 1758122,
+      "sha256": "b77f190e3433bdff502cc777124e4eb5ca629dc7bdbe13854a0838e30773f647",
+      "openedBy": "assistant using view_image",
+      "humanArtisticValidation": false
+    },
+    {
+      "name": "frame-3",
+      "path": "/workspace/native-forge-production-20261102/context-run-TzZnh7/frame-3.png",
+      "bytes": 489481,
+      "sha256": "d6ed6e4045a8bdf4611c5d2e585e0b06596decd03485bea98e754e0ff9f707ed",
+      "openedBy": "assistant using view_image",
+      "humanArtisticValidation": false
+    },
+    {
+      "name": "frame-4",
+      "path": "/workspace/native-forge-production-20261102/context-run-TzZnh7/frame-4.png",
+      "bytes": 489383,
+      "sha256": "3aca7707bc1ce653e6f90583ee4b31c426cff9a668f5fcb16ca5129d4ad23128",
+      "openedBy": "assistant using view_image",
+      "humanArtisticValidation": false
+    },
+    {
+      "name": "frame-5",
+      "path": "/workspace/native-forge-production-20261102/context-run-TzZnh7/frame-5.png",
+      "bytes": 489423,
+      "sha256": "e5bd9540ae3371fe8b4eb7a16f2583338ba5116701d6e77c5a66e1ed99b61ebc",
+      "openedBy": "assistant using view_image",
+      "humanArtisticValidation": false
+    },
+    {
+      "name": "frame-0",
+      "path": "/workspace/native-forge-production-20261102/context-run-TzZnh7/frame-0.png",
+      "bytes": 489337,
+      "sha256": "22771f2fc2a32f3f24d67496e62f7c9ae63f968d443af262750c752ddf327fa5",
+      "openedBy": "assistant using view_image",
+      "humanArtisticValidation": false
+    },
+    {
+      "name": "frame-1",
+      "path": "/workspace/native-forge-production-20261102/context-run-TzZnh7/frame-1.png",
+      "bytes": 489548,
+      "sha256": "bb0fdd4d8fc3e1e7ac8d9d18a0e050d7daec4dc5335f8c750801df3905da32fd",
+      "openedBy": "assistant using view_image",
+      "humanArtisticValidation": false
+    },
+    {
+      "name": "frame-2",
+      "path": "/workspace/native-forge-production-20261102/context-run-TzZnh7/frame-2.png",
+      "bytes": 489435,
+      "sha256": "4e7ef3b8c0f761ebeb627ffe4f6269fcd966e89cace3f992c73d9ac0d558edda",
+      "openedBy": "assistant using view_image",
+      "humanArtisticValidation": false
+    },
+    {
+      "name": "pause",
+      "path": "/workspace/native-forge-production-20261102/context-run-TzZnh7/pause.png",
+      "bytes": 154259,
+      "sha256": "a8f4cfb48d385799fab8e4757f67cf8ac1b84ada6dd8f74b9c2fb02587f7dbae",
+      "openedBy": "assistant using view_image",
+      "humanArtisticValidation": false
+    },
+    {
+      "name": "reduced-motion",
+      "path": "/workspace/native-forge-production-20261102/context-run-TzZnh7/reduced-motion.png",
+      "bytes": 516002,
+      "sha256": "7d41c735f7690003a76cb9df333f9e43fa00e1cb9d3e19e57c3cc4138cc4fd7d",
+      "openedBy": "assistant using view_image",
+      "humanArtisticValidation": false
+    },
+    {
+      "name": "missing-resource-static",
+      "path": "/workspace/native-forge-production-20261102/context-run-TzZnh7/missing-resource-static.png",
+      "bytes": 515441,
+      "sha256": "61bcf17f07100c360feb52fdc0b5ca436d6b9006e8e7dc3f4a8c3300286f8b96",
+      "openedBy": "assistant using view_image",
+      "humanArtisticValidation": false
+    },
+    {
+      "name": "missing-facade-no-orphan-fire",
+      "path": "/workspace/native-forge-production-20261102/context-run-TzZnh7/missing-facade-no-orphan-fire.png",
+      "bytes": 525071,
+      "sha256": "72a21ae9d2b2f215f5c98a66d1a31f41d337e342f2be4739ce25f94ec885e0af",
+      "openedBy": "assistant using view_image",
+      "humanArtisticValidation": false
+    }
+  ],
+  "visualFindings": [
+    "The active V72 building is present in the successful context; the flame sits inside the native front-left hearth, beneath its hood and above its lip.",
+    "All six distinct painted shapes were opened at actual building scale; the base stays registered, with no floating detached campfire or full-facade brightness pulse.",
+    "Pause UI holds one frame and reduced-motion holds frame0. Missing flame frame02 keeps the painted static hearth.",
+    "The missing-facade screenshot was taken during the16/92 city-loading state. It shows no orphaned fire, but is not evidence of completed reload or recovery after global scene readiness."
+  ],
+  "ordinaryRuntimeErrors": {
+    "pageErrors": [],
+    "httpErrors": [],
+    "requestFailures": []
+  },
+  "deliberateResourceFailureEvidence": {
+    "requests": [
+      {
+        "url": "http://127.0.0.1:3105/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f02.png",
+        "failure": {
+          "errorText": "net::ERR_FAILED"
+        }
+      },
+      {
+        "url": "http://127.0.0.1:3105/game/homeworld/v72/civic-identity-atlas.png",
+        "failure": {
+          "errorText": "net::ERR_FAILED"
+        }
+      },
+      {
+        "url": "http://127.0.0.1:3105/game/homeworld/v72/civic-identity-atlas.png",
+        "failure": {
+          "errorText": "net::ERR_FAILED"
+        }
+      },
+      {
+        "url": "http://127.0.0.1:3105/game/homeworld/v72/civic-identity-atlas.png",
+        "failure": {
+          "errorText": "net::ERR_FAILED"
+        }
+      }
+    ],
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_FAILED",
+      "Failed to load resource: net::ERR_FAILED",
+      "Failed to load resource: net::ERR_FAILED",
+      "Failed to load resource: net::ERR_FAILED"
+    ],
+    "consoleErrorCount": 4,
+    "requestFailureCount": 4,
+    "method": "Exact same four raw console/request failure observations from explicit route.abort; none filtered from raw result. Ordinary errors0 is distinct from global error count4."
+  },
+  "verification": {
+    "unitTests": "5 passed; node tests/homeworld-forge-fire-v113.test.mjs; latest log targeted-tests-r2.log",
+    "eslint": "PASS targeted component/system",
+    "typecheck": "PASS ./node_modules/.bin/tsc --noEmit --incremental false",
+    "productionBuildOrCertificate": false,
+    "playedApproachOrFullGameplayJourney": false,
+    "fpsMeasured": false,
+    "focusLossTestedInThisDriver": false,
+    "behindBuildingFadeTested": "Native child and wrapper share extent; opacity remains1 on child and is inherited once. The player was not walked behind the facade in this driver."
+  },
+  "historicalFailedAttempts": [
+    {
+      "path": "/workspace/native-forge-production-20261102/context-run-WiXRZS/result.json",
+      "reason": "Environment:76HTTP404,56unique missing old assets; city not motion-ready. Preserved unchanged."
+    },
+    {
+      "path": "/workspace/native-forge-production-20261102/context-run-PLDRdn/result.json",
+      "reason": "Missing native V72 facade exposed orphan fire in initial component. Product fixed by requiring exact facade decode before overlay; old screenshot preserved and visually rejected. Driver late clock install also prevented valid phase measurement."
+    },
+    {
+      "path": "/workspace/native-forge-production-20261102/context-run-7utEDu/result.json",
+      "reason": "Driver pauseAt only100ms ahead ran into the past. Actual facade/fire screenshot opened; no runtime error or source mutation."
+    },
+    {
+      "path": "/workspace/native-forge-production-20261102/context-run-gezswA/result.json",
+      "reason": "Six frames passed; driver used Escape rather than actual Pause button. UI never entered pause. Preserved as failed driver attempt."
+    }
+  ],
+  "admission": {
+    "humanValidated": false,
+    "catalogueOrSourceClosed": false,
+    "newForgeImagesGenerated": 0,
+    "newArtCounts": 0,
+    "status": "EXISTING_NATIVE_REUSE_CANDIDATE_NOT_HUMAN_ADMITTED"
+  },
+  "integrationLimit": "Fresh R6 after the owner changed WorldScene for final physical joints. Exact three source hashes checked before/after. Separate from frozen initial V113130/classer; no production certificate, global completion or human artistic validation."
+}
