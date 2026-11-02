@@ -12,6 +12,7 @@ export const HOMEWORLD_PUBLIC_PLACE_CANDIDATES_V112:readonly HomeworldPublicPlac
   ...item,levelId:item.levelId as HomeworldLevelV77,interactive:false,solid:true,
 }));
 export const HOMEWORLD_PUBLIC_PLACE_COMPOSITIONS_V112=authored.compositions;
+export const HOMEWORLD_PUBLIC_PLACE_REVISIONS_V112=authored.placementRevisions;
 export const homeworldPublicPlacePolygonV112=(item:HomeworldPublicPlaceV112)=>homeworldStreetDecorPolygonV84(item,HOMEWORLD_PUBLIC_PLACE_ART_V112);
 export const homeworldPublicPlaceUsageV112=(item:HomeworldPublicPlaceV112)=>homeworldStreetDecorUsageV84(item,HOMEWORLD_PUBLIC_PLACE_ART_V112);
 export const homeworldPublicPlaceSafetyV112=(item:HomeworldPublicPlaceV112)=>homeworldStreetDecorSafetyV84(item,HOMEWORLD_PUBLIC_PLACE_ART_V112);

@@ -1,0 +1,154 @@
+TAP version 13
+# Subtest: V104 cartographer source is an exact authorized V6 extraction, including all eight lines and both distinct options
+ok 1 - V104 cartographer source is an exact authorized V6 extraction, including all eight lines and both distinct options
+  ---
+  duration_ms: 74.236843
+  type: 'test'
+  ...
+# Subtest: V104 cartographer and three approaches use existing native objects and connected visible ground without replacing residents
+ok 2 - V104 cartographer and three approaches use existing native objects and connected visible ground without replacing residents
+  ---
+  duration_ms: 69.175003
+  type: 'test'
+  ...
+# Subtest: V104 cartographer gates the live owner, floor, known district, supported foot approach, availability and scene state
+ok 3 - V104 cartographer gates the live owner, floor, known district, supported foot approach, availability and scene state
+  ---
+  duration_ms: 2.588049
+  type: 'test'
+  ...
+# Subtest: V104 complete option B requires actual movement through both physical approaches and return to the source speaker
+ok 4 - V104 complete option B requires actual movement through both physical approaches and return to the source speaker
+  ---
+  duration_ms: 157.696478
+  type: 'test'
+  ...
+# Subtest: V104 buttons cannot grant a waypoint, teleport a route, cross floors, bypass a pause or report from afar
+ok 5 - V104 buttons cannot grant a waypoint, teleport a route, cross floors, bypass a pause or report from afar
+  ---
+  duration_ms: 8.457627
+  type: 'test'
+  ...
+# Subtest: V104 interruptions preserve the walked prefix and resume only at the recorded safe position for the same owner and revision
+ok 6 - V104 interruptions preserve the walked prefix and resume only at the recorded safe position for the same owner and revision
+  ---
+  duration_ms: 48.796192
+  type: 'test'
+  ...
+# Subtest: V104 the return leg also interrupts safely and resumes as return without losing its two approaches
+ok 7 - V104 the return leg also interrupts safely and resumes as return without losing its two approaches
+  ---
+  duration_ms: 183.492
+  type: 'test'
+  ...
+# Subtest: V104 long real walks compact the drawn trace without locking progress, inventing shortcuts or losing the earned approaches
+ok 8 - V104 long real walks compact the drawn trace without locking progress, inventing shortcuts or losing the earned approaches
+  ---
+  duration_ms: 2520.663893
+  type: 'test'
+  ...
+# Subtest: V104 the actual city transaction cannot publish a choice after a refused write or a stale callback
+ok 9 - V104 the actual city transaction cannot publish a choice after a refused write or a stale callback
+  ---
+  duration_ms: 4.398962
+  type: 'test'
+  ...
+# Subtest: V104 imported receipts reject forged waypoint counts, missing paths, future versions, foreign sources and extra fields
+ok 10 - V104 imported receipts reject forged waypoint counts, missing paths, future versions, foreign sources and extra fields
+  ---
+  duration_ms: 8.417372
+  type: 'test'
+  ...
+# Subtest: V104 ledger is additive to the normal save, survives ordinary city actions and gives no marks, trophies, items or campaign permission
+ok 11 - V104 ledger is additive to the normal save, survives ordinary city actions and gives no marks, trophies, items or campaign permission
+  ---
+  duration_ms: 18.126221
+  type: 'test'
+  ...
+# Subtest: V104 main-save inspection rejects incompatible present ledgers before they can replace stored bytes
+ok 12 - V104 main-save inspection rejects incompatible present ledgers before they can replace stored bytes
+  ---
+  duration_ms: 9.681477
+  type: 'test'
+  ...
+# Subtest: V104 actual React source host, conversation, recorded map and interruption controls render with bounded scope
+ok 13 - V104 actual React source host, conversation, recorded map and interruption controls render with bounded scope
+  ---
+  duration_ms: 80.230715
+  type: 'test'
+  ...
+# Subtest: V104 storage retry stays available after closing every pre-walk phase without advertising an earned waypoint or resume
+ok 14 - V104 storage retry stays available after closing every pre-walk phase without advertising an earned waypoint or resume
+  ---
+  duration_ms: 4.746385
+  type: 'test'
+  ...
+# Subtest: V105 binds the exact source A action, choice and response while retaining the eight-line V104 extraction
+ok 15 - V105 binds the exact source A action, choice and response while retaining the eight-line V104 extraction
+  ---
+  duration_ms: 0.898155
+  type: 'test'
+  ...
+# Subtest: V105 walks the real city, the eight-second Council stairs and the actual upper viaduct before earning observation
+ok 16 - V105 walks the real city, the eight-second Council stairs and the actual upper viaduct before earning observation
+  ---
+  duration_ms: 10632.704493
+  type: 'test'
+  ...
+# Subtest: V105 comparison is ordered, requires the physical high point and retains the actual observation time
+ok 17 - V105 comparison is ordered, requires the physical high point and retains the actual observation time
+  ---
+  duration_ms: 1.30856
+  type: 'test'
+  ...
+# Subtest: V105 a completed survey requires the real descent and walked return to the source speaker
+ok 18 - V105 a completed survey requires the real descent and walked return to the source speaker
+  ---
+  duration_ms: 5652.975404
+  type: 'test'
+  ...
+# Subtest: V105 movement and stairs reject floor swaps, teleports, fabricated duration and a stale source endpoint
+ok 19 - V105 movement and stairs reject floor swaps, teleports, fabricated duration and a stale source endpoint
+  ---
+  duration_ms: 8.167378
+  type: 'test'
+  ...
+# Subtest: V105 interruption and reload preserve comparison, time and last safe floor without replaying actions
+ok 20 - V105 interruption and reload preserve comparison, time and last safe floor without replaying actions
+  ---
+  duration_ms: 0.862672
+  type: 'test'
+  ...
+# Subtest: V105 a refused durable action never publishes choice, comparison, date or success and stale callbacks cannot overwrite it
+ok 21 - V105 a refused durable action never publishes choice, comparison, date or success and stale callbacks cannot overwrite it
+  ---
+  duration_ms: 5.978259
+  type: 'test'
+  ...
+# Subtest: V105 the optional save ledger preserves old saves and V104 B and grants no rewards or permissions
+ok 22 - V105 the optional save ledger preserves old saves and V104 B and grants no rewards or permissions
+  ---
+  duration_ms: 19.610597
+  type: 'test'
+  ...
+# Subtest: V105 strict import rejects future, foreign, extra, contradictory, missing-high-point and forged-completion receipts without replacing bytes
+ok 23 - V105 strict import rejects future, foreign, extra, contradictory, missing-high-point and forged-completion receipts without replacing bytes
+  ---
+  duration_ms: 8.552366
+  type: 'test'
+  ...
+# Subtest: V105 real React dialogs expose exact source A, two known objects, date, preserved B and retry outside all pre-walk phases
+ok 24 - V105 real React dialogs expose exact source A, two known objects, date, preserved B and retry outside all pre-walk phases
+  ---
+  duration_ms: 86.283907
+  type: 'test'
+  ...
+1..24
+# tests 24
+# suites 0
+# pass 24
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 24303.958774

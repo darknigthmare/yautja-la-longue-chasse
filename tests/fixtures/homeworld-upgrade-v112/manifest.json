@@ -4,12 +4,28 @@
   "sourceCommit": "def899ad07fea582053c5c204e4e578d8e0d7f9b",
   "equivalentMergedBaseline": "a5a951e3f6dbb3fa399bd38f774a1f0b6ec58f5e",
   "privateSourceManifestSha256": "d4bf56b2e785959bc2c0217bfd308d321707a9ecb5bc52b22dd70a1b6154572a",
-  "provenance": "V105/Cargo108/Archive106/Comparison107 were played in the verified private V111 capsule. V104/Plaque109/Continuation111 were played from the identical merged baseline tree during independent review. See scripts and logs in the V112 upgrade recovery proof folder.",
+  "provenance": "V105/Cargo108/Archive106/Comparison107 were played in the verified private V111 capsule. The original V104/Plaque109/Continuation111 receipts were played from the identical merged baseline tree during independent review. Both later V104 receipts were played in the verified private V111 capsule through the genuine first waypoint, old motor and métier sampler. The original 56-step and intermediate 72-step V104 files remain byte-identical and now witness free points requiring no recovery. The final 82-step receipt reaches the admitted V112 register marker at (6270,4990). See generation scripts and logs in the V112 upgrade recovery proof folder.",
   "fixtures": [
     {
       "path": "v112-v104-played-blocked-fixture.json",
       "sha256": "7222cbd947414bce1ead6d8b14c5f64c93b42b7491eabe4dc6a62ff8967789d3",
-      "oldNativeSteps": 56
+      "oldNativeSteps": 56,
+      "expectedRecovery": false,
+      "scope": "Preserved original 56-step receipt; its point is now free after moving only the V112 marker."
+    },
+    {
+      "path": "v112-reviewed-v104-register-marker-fixture.json",
+      "sha256": "98afb56c8750278b1a8a3aaa083bd839f00720e6264b79c2bd3ceacfa53c74a0",
+      "oldNativeSteps": 72,
+      "expectedRecovery": false,
+      "scope": "Preserved 72-step private V111 receipt at the earlier proposed (6220,5020) anchor; its actual (6219,5020) foot is now free and requires no recovery."
+    },
+    {
+      "path": "v112-reviewed-v104-final-register-marker-fixture.json",
+      "sha256": "e5b2a5548311ad95cefd59afa27c411cc6d5fb5ca06d6a2b590320628f8b9d83",
+      "oldNativeSteps": 82,
+      "expectedRecovery": true,
+      "scope": "Genuine private V111 receipt at the final admitted register marker (6270,4990); 414.71002773681545 units walked, first waypoint genuinely earned."
     },
     {
       "path": "v112-reviewed-v105-walking-fixture.json",

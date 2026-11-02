@@ -1,0 +1,234 @@
+{
+  "runtimeCommit": "bda14a95aa8c9e6cf37039e2d67ea1544a8e8de1",
+  "buildId": "wVuSG_xIKNn3geLlIq7Cb",
+  "freeze": {
+    "path": "docs/v112-runtime-freeze.json",
+    "bytes": 306338,
+    "sha256": "c35f8b454ec26d1b05852cabbe4f6ee111d71e7413aef80282582d3ca5ee6a3e"
+  },
+  "testFiles": [
+    "tests/canopy-traversal-v112.test.mjs",
+    "tests/carcass-anatomy-v112.test.mjs",
+    "tests/conservation-persistence-ui-v112.test.mjs",
+    "tests/corpse-discovery-v112.test.mjs",
+    "tests/excel-history-preservation-v112.test.mjs",
+    "tests/field-stash-v112.test.mjs",
+    "tests/harvest-inventory-v112.test.mjs",
+    "tests/homeworld-activity-access-v112.test.mjs",
+    "tests/homeworld-ecotones-v112.test.mjs",
+    "tests/homeworld-geometry-recovery-integration-v112.test.mjs",
+    "tests/homeworld-geometry-recovery-matrix-v112.test.mjs",
+    "tests/homeworld-geometry-recovery-v112.test.mjs",
+    "tests/homeworld-ground-joints-v112.test.mjs",
+    "tests/homeworld-live-guidance-v112.test.mjs",
+    "tests/homeworld-mobility-v112.test.mjs",
+    "tests/homeworld-natural-placements-v112.test.mjs",
+    "tests/homeworld-natural-rock-faces-v112.test.mjs",
+    "tests/homeworld-public-life-v112.test.mjs",
+    "tests/homeworld-public-places-v112.test.mjs",
+    "tests/homeworld-spatial-v112.test.mjs",
+    "tests/hunt-accessibility-v112.test.mjs",
+    "tests/hunt-canopy-runtime-v112.test.mjs",
+    "tests/hunt-carcass-runtime-v112.test.mjs",
+    "tests/hunt-field-load-v112.test.mjs",
+    "tests/hunt-field-stash-runtime-v112.test.mjs",
+    "tests/hunt-mechanics-workbook-v112.test.mjs",
+    "tests/pit-backward-art-provenance-v112.test.mjs",
+    "tests/pit-backward-controls-v112.test.mjs",
+    "tests/pit-backward-throw-art-v112.test.mjs",
+    "tests/pit-backward-throws-v112.test.mjs",
+    "tests/pit-browser-launch-observation-v112.test.mjs",
+    "tests/pit-browser-whiff-observation-v112.test.mjs",
+    "tests/pit-browser-worker-observation-v112.test.mjs",
+    "tests/pit-replay-export-v112.test.mjs",
+    "tests/production-evidence-v112.test.mjs"
+  ],
+  "testFingerprints": [
+    {
+      "path": "tests/canopy-traversal-v112.test.mjs",
+      "sha256": "9c0f2f57e91a925b4c51a20a5f45a28ca33f21c7c77f5840a3b24fd7bc414391"
+    },
+    {
+      "path": "tests/carcass-anatomy-v112.test.mjs",
+      "sha256": "bae476edffa54daab2169cc86b2674c1f8b428a4ade47c0f9ccdc98aff81de56"
+    },
+    {
+      "path": "tests/conservation-persistence-ui-v112.test.mjs",
+      "sha256": "c858336022ce95bcf5abf5b6fc531a5bea8452ff35bd29ba3a6c3b779d606f04"
+    },
+    {
+      "path": "tests/corpse-discovery-v112.test.mjs",
+      "sha256": "4be65421b5151fa8576bce328a949b3538c233dc750dfa140e280698b9e25cf8"
+    },
+    {
+      "path": "tests/excel-history-preservation-v112.test.mjs",
+      "sha256": "069772b6e96debf65d48c0744889bd6b255a023905183f8e9f6d9c65df04b6ab"
+    },
+    {
+      "path": "tests/field-stash-v112.test.mjs",
+      "sha256": "2cdb4f86f5ee52317d097c776ee652ea6001a3bd2716ad6d35e729f351138dba"
+    },
+    {
+      "path": "tests/harvest-inventory-v112.test.mjs",
+      "sha256": "d2f546770728b059e4af16e2c27cf9d743ccb57e4823663bbb567a4642eae072"
+    },
+    {
+      "path": "tests/homeworld-activity-access-v112.test.mjs",
+      "sha256": "fe0f378822cfffc87765ed6a415aa39061e4c61464b911ad2d6be82958ea10cb"
+    },
+    {
+      "path": "tests/homeworld-ecotones-v112.test.mjs",
+      "sha256": "f403ca844ff42d9a31be36284f64cd9d7feef3c4037ead0b2efdd49ca1d342f2"
+    },
+    {
+      "path": "tests/homeworld-geometry-recovery-integration-v112.test.mjs",
+      "sha256": "b63cd25fbe7014bfbc7fa7e5d5300aafa2750b80008e0b5442c57a9288ac7396"
+    },
+    {
+      "path": "tests/homeworld-geometry-recovery-matrix-v112.test.mjs",
+      "sha256": "616a5307d4b320a965c2200c625cd36a3f9b3e3e71a416ff9434c75db81efb73"
+    },
+    {
+      "path": "tests/homeworld-geometry-recovery-v112.test.mjs",
+      "sha256": "ebca0af94392acec7c673c2f4b9fbb3d6996ca56a53c1d63f1c720cb1ee91d8a"
+    },
+    {
+      "path": "tests/homeworld-ground-joints-v112.test.mjs",
+      "sha256": "b8884a1646645bc75734b0d5ef6e8c057cf244d36f4687cc6398d3e997823a15"
+    },
+    {
+      "path": "tests/homeworld-live-guidance-v112.test.mjs",
+      "sha256": "c8e3fc2a42c2bdbe89884e2c6f4b8715018b7a1a5994a223a5594b497286c73f"
+    },
+    {
+      "path": "tests/homeworld-mobility-v112.test.mjs",
+      "sha256": "643b5ecf1ead9d9d142b319ddb560cf91a1777a3bd009e9654feda46aab6b6fc"
+    },
+    {
+      "path": "tests/homeworld-natural-placements-v112.test.mjs",
+      "sha256": "5a92c1feae273cd50874d5e8d220f7f6a06ca50e3e8c96cc901c5fa0f5e0df03"
+    },
+    {
+      "path": "tests/homeworld-natural-rock-faces-v112.test.mjs",
+      "sha256": "7ea0622b080fec7c74d2f2e795b1f9d1d5af7ac54eef18da83fb1f335ee77a34"
+    },
+    {
+      "path": "tests/homeworld-public-life-v112.test.mjs",
+      "sha256": "9f64846eb196fc88fd76b56c37ca605f829de12169dd59151cc0b51c05e08925"
+    },
+    {
+      "path": "tests/homeworld-public-places-v112.test.mjs",
+      "sha256": "2f14201b12959e75ce6505f7e27619b454852aeee0e2531e8afec5d73da4ba43"
+    },
+    {
+      "path": "tests/homeworld-spatial-v112.test.mjs",
+      "sha256": "826c4b5cf531c4812ccf3e7f4ed344af69b5f8b2fde3753afb37e64d27dc5e07"
+    },
+    {
+      "path": "tests/hunt-accessibility-v112.test.mjs",
+      "sha256": "c325b2c74222db30ac48fff436d5f68e9c407de54133d25c1b20e53e12ae035f"
+    },
+    {
+      "path": "tests/hunt-canopy-runtime-v112.test.mjs",
+      "sha256": "45f81414d59d8c2567e0a48531ff055a1026a7d2ef9a998991ae40cf951cc69a"
+    },
+    {
+      "path": "tests/hunt-carcass-runtime-v112.test.mjs",
+      "sha256": "224154ee9d446eabc3895d876bf8f8b81459cb1c936269801e2a6c1e825e1f01"
+    },
+    {
+      "path": "tests/hunt-field-load-v112.test.mjs",
+      "sha256": "8fc6334c08b0a5877c87c333b8b768090b527c688016e2df597cd4764094622d"
+    },
+    {
+      "path": "tests/hunt-field-stash-runtime-v112.test.mjs",
+      "sha256": "8591550daee93135755bc582f62e6e08b557edf982ad9616a6d41f104e1d5f07"
+    },
+    {
+      "path": "tests/hunt-mechanics-workbook-v112.test.mjs",
+      "sha256": "e0790f15410bdcedb1a7e9224cf91cd7b956c974b9c1a4de506b2a83447475ae"
+    },
+    {
+      "path": "tests/pit-backward-art-provenance-v112.test.mjs",
+      "sha256": "1d661a1929e3f1d68eba9b1adbfa99d603c196feb80a8727b450d3e571b8424d"
+    },
+    {
+      "path": "tests/pit-backward-controls-v112.test.mjs",
+      "sha256": "10842499efea7337215b6af7db29b6604946e2ebf7833158e4f7e4a0d68ce22d"
+    },
+    {
+      "path": "tests/pit-backward-throw-art-v112.test.mjs",
+      "sha256": "19a20a49544b69a9dcce493a3fe22fbf924da3ba4e5d8fbd08e543314cfb2249"
+    },
+    {
+      "path": "tests/pit-backward-throws-v112.test.mjs",
+      "sha256": "6ed85f35afcadae954f8e0441df25a2da630212a8819e223484b0ee3ef14bf27"
+    },
+    {
+      "path": "tests/pit-browser-launch-observation-v112.test.mjs",
+      "sha256": "415e5ab302fd6c436900d9e14b77d0a0cacba9c4faa23ef8407b3937f1c1d2b4"
+    },
+    {
+      "path": "tests/pit-browser-whiff-observation-v112.test.mjs",
+      "sha256": "924d9ed69ca2df8dfa714ca5951e6cbfedbda5a909787badf99d7fa64b1be322"
+    },
+    {
+      "path": "tests/pit-browser-worker-observation-v112.test.mjs",
+      "sha256": "a24e0cfffa1fae9bced23222accb0cbc04811388e880becad8ff5eb910e23bc0"
+    },
+    {
+      "path": "tests/pit-replay-export-v112.test.mjs",
+      "sha256": "8d7293d56a43d374e8504eee75a6f4b8d26801fe78fa3be5195f37e5c24c3761"
+    },
+    {
+      "path": "tests/production-evidence-v112.test.mjs",
+      "sha256": "1b9116d656e89e8279a1d03faaab1f0c3b5186300903ad442a356120f9768e65"
+    }
+  ],
+  "command": [
+    "node",
+    "--experimental-strip-types",
+    "--test",
+    "--test-reporter=tap",
+    "--test-concurrency=1",
+    "tests/canopy-traversal-v112.test.mjs",
+    "tests/carcass-anatomy-v112.test.mjs",
+    "tests/conservation-persistence-ui-v112.test.mjs",
+    "tests/corpse-discovery-v112.test.mjs",
+    "tests/excel-history-preservation-v112.test.mjs",
+    "tests/field-stash-v112.test.mjs",
+    "tests/harvest-inventory-v112.test.mjs",
+    "tests/homeworld-activity-access-v112.test.mjs",
+    "tests/homeworld-ecotones-v112.test.mjs",
+    "tests/homeworld-geometry-recovery-integration-v112.test.mjs",
+    "tests/homeworld-geometry-recovery-matrix-v112.test.mjs",
+    "tests/homeworld-geometry-recovery-v112.test.mjs",
+    "tests/homeworld-ground-joints-v112.test.mjs",
+    "tests/homeworld-live-guidance-v112.test.mjs",
+    "tests/homeworld-mobility-v112.test.mjs",
+    "tests/homeworld-natural-placements-v112.test.mjs",
+    "tests/homeworld-natural-rock-faces-v112.test.mjs",
+    "tests/homeworld-public-life-v112.test.mjs",
+    "tests/homeworld-public-places-v112.test.mjs",
+    "tests/homeworld-spatial-v112.test.mjs",
+    "tests/hunt-accessibility-v112.test.mjs",
+    "tests/hunt-canopy-runtime-v112.test.mjs",
+    "tests/hunt-carcass-runtime-v112.test.mjs",
+    "tests/hunt-field-load-v112.test.mjs",
+    "tests/hunt-field-stash-runtime-v112.test.mjs",
+    "tests/hunt-mechanics-workbook-v112.test.mjs",
+    "tests/pit-backward-art-provenance-v112.test.mjs",
+    "tests/pit-backward-controls-v112.test.mjs",
+    "tests/pit-backward-throw-art-v112.test.mjs",
+    "tests/pit-backward-throws-v112.test.mjs",
+    "tests/pit-browser-launch-observation-v112.test.mjs",
+    "tests/pit-browser-whiff-observation-v112.test.mjs",
+    "tests/pit-browser-worker-observation-v112.test.mjs",
+    "tests/pit-replay-export-v112.test.mjs",
+    "tests/production-evidence-v112.test.mjs"
+  ],
+  "excludedSourceCertificateTests": [
+    "homeworld-excel-followup-v112.test.mjs",
+    "homeworld-excel-history-v112.test.mjs"
+  ]
+}

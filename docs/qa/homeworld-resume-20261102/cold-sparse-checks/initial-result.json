@@ -1,0 +1,56 @@
+{
+  "commit": "1e5a8fbc8553e0d68991589f54aa1ef4dcab0a37",
+  "checks": [
+    {
+      "command": [
+        "python3",
+        "scripts/audit-open-workstreams-v112.py",
+        "--check"
+      ],
+      "exitCode": 0,
+      "seconds": 0.04,
+      "log": "/tmp/homeworld-final-cold-validation-20261102/01.log"
+    },
+    {
+      "command": [
+        "node",
+        "scripts/build-pit-backward-art-v112.mjs",
+        "--check"
+      ],
+      "exitCode": 0,
+      "seconds": 0.917,
+      "log": "/tmp/homeworld-final-cold-validation-20261102/02.log"
+    },
+    {
+      "command": [
+        "node",
+        "scripts/build-runtime-public-inputs-v112.mjs",
+        "--check"
+      ],
+      "exitCode": 0,
+      "seconds": 2.396,
+      "log": "/tmp/homeworld-final-cold-validation-20261102/03.log"
+    },
+    {
+      "command": [
+        "node",
+        "scripts/snapshot-runtime-v112.mjs",
+        "--check",
+        "docs/v112-runtime-freeze.json"
+      ],
+      "exitCode": 0,
+      "seconds": 2.237,
+      "log": "/tmp/homeworld-final-cold-validation-20261102/04.log"
+    },
+    {
+      "command": [
+        "node",
+        "scripts/build-homeworld-followup-v112.mjs",
+        "--check"
+      ],
+      "exitCode": 1,
+      "seconds": 0.436,
+      "log": "/tmp/homeworld-final-cold-validation-20261102/05.log"
+    }
+  ]
+}

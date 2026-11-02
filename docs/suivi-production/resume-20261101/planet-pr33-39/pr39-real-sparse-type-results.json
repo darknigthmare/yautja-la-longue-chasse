@@ -1,0 +1,30 @@
+{
+  "baseHeadSha": "f54dd68ce1a8708409d0075f0dcc7a76f2be647b",
+  "candidateOnly": true,
+  "realGitSparseCheckout": true,
+  "cwd": "/tmp/yautja-pr39-reviewfix",
+  "noLockOrTypeScopeChange": true,
+  "commands": [
+    {
+      "label": "typegen",
+      "command": [
+        "node",
+        "node_modules/next/dist/bin/next",
+        "typegen"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 0.318
+    },
+    {
+      "label": "typecheck",
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 51.703
+    }
+  ],
+  "pass": true
+}

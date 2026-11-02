@@ -1,0 +1,7 @@
+app/game/PlanetGeneratorV103.tsx(431,32): error TS2345: Argument of type '(current: WarPlanetRecipeV103) => { territoryCount: number; regionCount: number; version: 103; seed: number; landform: "supercontinent" | "continents" | "archipelago" | "shattered"; ... 17 more ...; surfacePalette: "amber" | ... 4 more ... | "obsidian"; }' is not assignable to parameter of type 'SetStateAction<WarPlanetRecipeV103>'.
+  Type '(current: WarPlanetRecipeV103) => { territoryCount: number; regionCount: number; version: 103; seed: number; landform: "supercontinent" | "continents" | "archipelago" | "shattered"; ... 17 more ...; surfacePalette: "amber" | ... 4 more ... | "obsidian"; }' is not assignable to type '(prevState: WarPlanetRecipeV103) => WarPlanetRecipeV103'.
+    Call signature return types '{ territoryCount: number; regionCount: number; version: 103; seed: number; landform: "supercontinent" | "continents" | "archipelago" | "shattered"; arrangement: "scattered" | "equatorial" | "hemispheres" | "polar"; ... 16 more ...; surfacePalette: "amber" | ... 4 more ... | "obsidian"; }' and 'WarPlanetRecipeV103' are incompatible.
+      The types of 'territoryCount' are incompatible between these types.
+        Type 'number' is not assignable to type '24 | 18 | 36 | 48 | 96 | 72'.
+app/game/PlanetReliefV150.tsx(197,67): error TS2345: Argument of type 'number' is not assignable to parameter of type 'SetStateAction<8000>'.
+app/game/PlanetReliefV150.tsx(202,44): error TS2345: Argument of type 'number' is not assignable to parameter of type 'SetStateAction<0.55>'.

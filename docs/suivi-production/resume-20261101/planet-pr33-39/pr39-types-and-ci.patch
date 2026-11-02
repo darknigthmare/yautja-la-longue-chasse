@@ -1,0 +1,81 @@
+--- a/app/game/systems/clanWarPlanetTopologyAdvisorV139.ts
++++ b/app/game/systems/clanWarPlanetTopologyAdvisorV139.ts
+@@ -9,7 +9,7 @@
+   terran:{territoryCount:48,regionCount:8},large:{territoryCount:72,regionCount:12},
+   giant:{territoryCount:96,regionCount:12},colossal:{territoryCount:96,regionCount:12},
+ } as const);
+-const nearest=(options:readonly number[],target:number):number=>
++const nearest=<T extends number>(options:readonly T[],target:number):T=>
+   options.slice().sort((a,b)=>Math.abs(a-target)-Math.abs(b-target)||b-a)[0];
+ 
+ /** Real bounds from V103 geography.plans(), not an image-based guess. */
+--- a/app/game/PlanetReliefV150.tsx
++++ b/app/game/PlanetReliefV150.tsx
+@@ -26,8 +26,8 @@
+ 
+ export default function PlanetReliefV150({planet}:{planet:WarPlanetV96}){
+   const [expanded,setExpanded]=useState(false);
+-  const [maxElevation,setMaxElevation]=useState(PLANET_RELIEF_DEFAULT_V150.maxElevationMeters);
+-  const [ruggedness,setRuggedness]=useState(PLANET_RELIEF_DEFAULT_V150.ruggedness);
++  const [maxElevation,setMaxElevation]=useState<number>(PLANET_RELIEF_DEFAULT_V150.maxElevationMeters);
++  const [ruggedness,setRuggedness]=useState<number>(PLANET_RELIEF_DEFAULT_V150.ruggedness);
+   const [seedOffset,setSeedOffset]=useState(0);
+   const [size,setSize]=useState<ReliefSizeV150>(512);
+   const [lastRendered,setLastRendered]=useState("");
+--- a/.github/workflows/planet-v114.yml
++++ b/.github/workflows/planet-v114.yml
+@@ -32,6 +32,45 @@
+   group: planet-v114-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+   cancel-in-progress: true
+ jobs:
++  types:
++    name: Full application TypeScript (planet PR)
++    runs-on: ubuntu-latest
++    timeout-minutes: 20
++    env:
++      NEXT_TELEMETRY_DISABLED: '1'
++      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
++      NODE_OPTIONS: --max-old-space-size=6144
++    steps:
++      - name: Checkout real application, configuration and manifests for full types
++        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
++        with:
++          fetch-depth: 1
++          sparse-checkout-cone-mode: false
++          sparse-checkout: |
++            /*
++            !/*/
++            /app/
++            /desktop/
++            /scripts/
++            /tests/
++            /db/
++            /worker/
++            /drizzle/
++            /build/
++            /.openai/hosting.json
++            /public/**/manifest.json
++      - name: Node 22
++        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
++        with:
++          node-version: '22'
++          cache: npm
++      - name: Install exact locked dependencies without lifecycle scripts
++        run: npm ci --ignore-scripts --no-audit --no-fund
++      - name: Generate Next route and environment types
++        run: node node_modules/next/dist/bin/next typegen
++      - name: Check the complete application TypeScript
++        run: npm run typecheck
++
+   domain:
+     runs-on: ubuntu-latest
+     timeout-minutes: 15
+@@ -147,7 +186,7 @@
+ 
+   browser-modules:
+     name: V124 live PNG and ZIP verification
+-    needs: domain
++    needs: [domain, types]
+     runs-on: ubuntu-latest
+     timeout-minutes: 20
+     env:

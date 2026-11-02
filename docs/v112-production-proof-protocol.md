@@ -12,6 +12,8 @@ La recette Pit couvre `FeralScar` puis `ScarFeral`. Les huit admissions représe
 
 Le premier essai hors portée doit montrer un vrai démarrage `TH_B`, puis sa récupération selon les images effectives du moteur. Une attente de durée fixe ou une entrée non consommée ne prouve pas un échec de saisie. Chaque lecture conservée vérifie l'absence de cible capturée et de dégâts ; les fenêtres d'action et le nombre maximal d'appels sont bornés. L'export et la relecture du duel complet portent sur le parcours Feral contre Scar ; le parcours inverse vérifie séparément les projections, les partenaires, les orientations, la déchoppe et le mur.
 
+Chaque lancement garde un seul appui jusqu'à l'observation du véritable démarrage `TH_B`, dans des bornes de simulation et de lectures explicites, puis relâche toutes ses touches dans `finally`. Dix-sept millisecondes d'horloge peuvent ne produire aucun tick effectif : elles ne remplacent pas cette observation. Le pilote conserve les états avant, pendant et après l'appui, refuse une autre action ou un démarrage non observé, et ne réémet pas la commande pour obtenir un succès.
+
 Les erreurs de page, `console.error`, Workers et requêtes échouées restent enregistrées sans filtrage. Un parcours partiel, une source modifiée, un inventaire incomplet, un résultat exploratoire ou une image non inspectée interdit toute publication. Toutes les captures finales sont ouvertes avant leur copie, sans retouche, dans les preuves portables. Les captures diagnostiques avec éléments temporairement masqués ne certifient aucun rendu final.
 
 ```sh

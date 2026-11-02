@@ -1,0 +1,3755 @@
+{
+  "schemaVersion": 1,
+  "snapshotDate": "2026-11-01",
+  "scope": "Local XLSX bytes read separately from the dated 33-PR snapshot. Pinned remote observations are transcribed from PR-STACKS, not downloaded or rerun here.",
+  "coordinationWorkbookExcludedFromOwnInputs": "docs/YAUTJA_REPRISE_CHANTIERS_20261101.xlsx",
+  "sourceFingerprints": [
+    {
+      "path": "docs/suivi-production/resume-20261101/PR-STACKS.json",
+      "bytes": 218189,
+      "sha256": "f5b8d89025a4eef4738afb51fa1daf441940f102b55015c16bf3ef2d06cd3420"
+    },
+    {
+      "path": "docs/suivi-production/resume-20261101/PR_INVENTORY.json",
+      "bytes": 59347,
+      "sha256": "b07ba28ac763ed744fd466386edfaca6b4ca7b05ba0f5f198d868b9a2ee759de"
+    },
+    {
+      "path": "docs/v112-open-workstreams-audit.json",
+      "bytes": 149638,
+      "sha256": "206af5e9bea23d8186323ea5769111ae44463a662692160047efc08dc75dbf0a"
+    },
+    {
+      "path": "docs/suivi-production/resume-20261101/PR33-RETARGET-EVENT.json",
+      "bytes": 269,
+      "sha256": "e3cceca1f14b132013097e62565bc70038d3361954d36b9a6d2de9f5515bf6cf"
+    },
+    {
+      "path": "docs/qa/homeworld-marsh-edge-diagnostic-20261101/README.md",
+      "bytes": 3113,
+      "sha256": "4ae371ce5e575b50bc15e368e438340e254f596dda4d83fdf66b402cacd4a001"
+    }
+  ],
+  "remainingHomeworldDiagnostic": {
+    "status": "OUVERT_NON_CORRIGE",
+    "path": "docs/qa/homeworld-marsh-edge-diagnostic-20261101/README.md",
+    "scope": "R5/R6 visual edge composition diagnosis; no current application patch or closure claimed."
+  },
+  "localWorkbooks": [
+    {
+      "id": "LOCAL-001",
+      "observation": "OCTETS_LOCAUX_LUS",
+      "path": "art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+      "bytes": 62111,
+      "sha256": "6b696cabe94f0821f4bc02a1587ca5782789ffcc58ad52339626cc173515e68e",
+      "worksheets": 12,
+      "sheetNames": [
+        "Synthèse",
+        "Index maître",
+        "Films & animation",
+        "Jeux vidéo",
+        "Comics & romans",
+        "Kenner",
+        "NECA",
+        "Fan-films",
+        "Alias & doublons",
+        "Clans & classes",
+        "Exclusions",
+        "Sources"
+      ]
+    },
+    {
+      "id": "LOCAL-002",
+      "observation": "OCTETS_LOCAUX_LUS",
+      "path": "docs/THE_PIT_STAGES_V60_SUIVI.xlsx",
+      "bytes": 35380,
+      "sha256": "d1ef8866b4cd94e5e90130efe8ed62a6c099dc0093215bd17348ff25c946ef04",
+      "worksheets": 2,
+      "sheetNames": [
+        "Stages",
+        "Animations"
+      ]
+    },
+    {
+      "id": "LOCAL-003",
+      "observation": "OCTETS_LOCAUX_LUS",
+      "path": "docs/THE_PIT_STAGES_V61_SUIVI.xlsx",
+      "bytes": 14262,
+      "sha256": "5dd113dfb7cb40f3517ba4f1081bd1ece977a9fba3e9cedc01de87835effd2e6",
+      "worksheets": 2,
+      "sheetNames": [
+        "AnimationsV61",
+        "Resteclasseur"
+      ]
+    },
+    {
+      "id": "LOCAL-004",
+      "observation": "OCTETS_LOCAUX_LUS",
+      "path": "docs/THE_PIT_V62_SUIVI.xlsx",
+      "bytes": 29389,
+      "sha256": "c7c9986d872faf0cbc8398e697a28b9eae57328989fb09eed2881c431c1b57bb",
+      "worksheets": 3,
+      "sheetNames": [
+        "LotV62",
+        "CombattantsV54",
+        "Resteclasseur"
+      ]
+    },
+    {
+      "id": "LOCAL-005",
+      "observation": "OCTETS_LOCAUX_LUS",
+      "path": "docs/THE_PIT_V63_SUIVI.xlsx",
+      "bytes": 56229,
+      "sha256": "192b168456091239e65939b99c4630de791cfaca4f33f61a1c6a8a032fc9c7af",
+      "worksheets": 5,
+      "sheetNames": [
+        "LotV62",
+        "CombattantsV54",
+        "Resteclasseur",
+        "LotV63",
+        "StagesV54"
+      ]
+    },
+    {
+      "id": "LOCAL-006",
+      "observation": "OCTETS_LOCAUX_LUS",
+      "path": "docs/YAUTJA_V100_SUIVI.xlsx",
+      "bytes": 1862541,
+      "sha256": "4fabae6cb4f1cb92560f106a784b9b1100df934c69f332507e83eef341c1edcf",
+      "worksheets": 27,
+      "sheetNames": [
+        "LotV62",
+        "CombattantsV54",
+        "Resteclasseur",
+        "LotV63",
+        "StagesV54",
+        "SyntheseV99",
+        "ChantiersV99",
+        "SourcesV99",
+        "PlanetesV99",
+        "OuvragesV6",
+        "PitOuvertV99",
+        "StagesOuvertsV99",
+        "ValidationsV99",
+        "EntreesV99",
+        "JournalV99",
+        "SyntheseV100",
+        "ChantiersV100",
+        "AnimationsV100",
+        "OrientationsV100",
+        "ContactsV100",
+        "PlanetesV100",
+        "OuvragesV100",
+        "PitOuvertV100",
+        "SourcesV100",
+        "ValidationsV100",
+        "EntreesV100",
+        "JournalV100"
+      ]
+    },
+    {
+      "id": "LOCAL-007",
+      "observation": "OCTETS_LOCAUX_LUS",
+      "path": "docs/YAUTJA_V104_SUIVI.xlsx",
+      "bytes": 2411658,
+      "sha256": "ce78bac96ae57cbee732bc868acecd46b0dc57e5ade49f669fb15c8b12ea03aa",
+      "worksheets": 39,
+      "sheetNames": [
+        "LotV62",
+        "CombattantsV54",
+        "Resteclasseur",
+        "LotV63",
+        "StagesV54",
+        "SyntheseV99",
+        "ChantiersV99",
+        "SourcesV99",
+        "PlanetesV99",
+        "OuvragesV6",
+        "PitOuvertV99",
+        "StagesOuvertsV99",
+        "ValidationsV99",
+        "EntreesV99",
+        "JournalV99",
+        "SyntheseV100",
+        "ChantiersV100",
+        "AnimationsV100",
+        "OrientationsV100",
+        "ContactsV100",
+        "PlanetesV100",
+        "OuvragesV100",
+        "PitOuvertV100",
+        "SourcesV100",
+        "ValidationsV100",
+        "EntreesV100",
+        "JournalV100",
+        "SyntheseV104",
+        "ChantiersV104",
+        "NormalesV104",
+        "CartographieV104",
+        "PreserveV104",
+        "PlanetesV104",
+        "VariantesV104",
+        "ManquantsV104",
+        "SourcesV104",
+        "ValidationsV104",
+        "EntreesV104",
+        "JournalV104"
+      ]
+    },
+    {
+      "id": "LOCAL-008",
+      "observation": "OCTETS_LOCAUX_LUS",
+      "path": "docs/YAUTJA_V105_SUIVI.xlsx",
+      "bytes": 2973530,
+      "sha256": "b0a317b339736d44bcf5b7dc11708749091740e2d9636e67beaa7751118f10bc",
+      "worksheets": 49,
+      "sheetNames": [
+        "LotV62",
+        "CombattantsV54",
+        "Resteclasseur",
+        "LotV63",
+        "StagesV54",
+        "SyntheseV99",
+        "ChantiersV99",
+        "SourcesV99",
+        "PlanetesV99",
+        "OuvragesV6",
+        "PitOuvertV99",
+        "StagesOuvertsV99",
+        "ValidationsV99",
+        "EntreesV99",
+        "JournalV99",
+        "SyntheseV100",
+        "ChantiersV100",
+        "AnimationsV100",
+        "OrientationsV100",
+        "ContactsV100",
+        "PlanetesV100",
+        "OuvragesV100",
+        "PitOuvertV100",
+        "SourcesV100",
+        "ValidationsV100",
+        "EntreesV100",
+        "JournalV100",
+        "SyntheseV104",
+        "ChantiersV104",
+        "NormalesV104",
+        "CartographieV104",
+        "PreserveV104",
+        "PlanetesV104",
+        "VariantesV104",
+        "ManquantsV104",
+        "SourcesV104",
+        "ValidationsV104",
+        "EntreesV104",
+        "JournalV104",
+        "SyntheseV105",
+        "ChantiersV105",
+        "ActionsV105",
+        "ClipsV105",
+        "HomeworldV105",
+        "ClansV105",
+        "ManquantsV105",
+        "SourcesV105",
+        "ValidationsV105",
+        "JournalV105"
+      ]
+    },
+    {
+      "id": "LOCAL-009",
+      "observation": "OCTETS_LOCAUX_LUS",
+      "path": "docs/YAUTJA_V106_SUIVI.xlsx",
+      "bytes": 3529434,
+      "sha256": "1994f345308b91555021b216146652108f25df93067f7398606af774472af04e",
+      "worksheets": 60,
+      "sheetNames": [
+        "LotV62",
+        "CombattantsV54",
+        "Resteclasseur",
+        "LotV63",
+        "StagesV54",
+        "SyntheseV99",
+        "ChantiersV99",
+        "SourcesV99",
+        "PlanetesV99",
+        "OuvragesV6",
+        "PitOuvertV99",
+        "StagesOuvertsV99",
+        "ValidationsV99",
+        "EntreesV99",
+        "JournalV99",
+        "SyntheseV100",
+        "ChantiersV100",
+        "AnimationsV100",
+        "OrientationsV100",
+        "ContactsV100",
+        "PlanetesV100",
+        "OuvragesV100",
+        "PitOuvertV100",
+        "SourcesV100",
+        "ValidationsV100",
+        "EntreesV100",
+        "JournalV100",
+        "SyntheseV104",
+        "ChantiersV104",
+        "NormalesV104",
+        "CartographieV104",
+        "PreserveV104",
+        "PlanetesV104",
+        "VariantesV104",
+        "ManquantsV104",
+        "SourcesV104",
+        "ValidationsV104",
+        "EntreesV104",
+        "JournalV104",
+        "SyntheseV105",
+        "ChantiersV105",
+        "ActionsV105",
+        "ClipsV105",
+        "HomeworldV105",
+        "ClansV105",
+        "ManquantsV105",
+        "SourcesV105",
+        "ValidationsV105",
+        "JournalV105",
+        "SyntheseV106",
+        "ChantiersV106",
+        "ActionsV106",
+        "ClipsV106",
+        "MotionsV106",
+        "HomeworldV106",
+        "ClansV106",
+        "ManquantsV106",
+        "SourcesV106",
+        "ValidationsV106",
+        "JournalV106"
+      ]
+    },
+    {
+      "id": "LOCAL-010",
+      "observation": "OCTETS_LOCAUX_LUS",
+      "path": "docs/YAUTJA_V107_SUIVI.xlsx",
+      "bytes": 4359489,
+      "sha256": "a9a2419702387868f6f54efd068008422609bc880b58e9a85c35a51e5fdfb66d",
+      "worksheets": 73,
+      "sheetNames": [
+        "LotV62",
+        "CombattantsV54",
+        "Resteclasseur",
+        "LotV63",
+        "StagesV54",
+        "SyntheseV99",
+        "ChantiersV99",
+        "SourcesV99",
+        "PlanetesV99",
+        "OuvragesV6",
+        "PitOuvertV99",
+        "StagesOuvertsV99",
+        "ValidationsV99",
+        "EntreesV99",
+        "JournalV99",
+        "SyntheseV100",
+        "ChantiersV100",
+        "AnimationsV100",
+        "OrientationsV100",
+        "ContactsV100",
+        "PlanetesV100",
+        "OuvragesV100",
+        "PitOuvertV100",
+        "SourcesV100",
+        "ValidationsV100",
+        "EntreesV100",
+        "JournalV100",
+        "SyntheseV104",
+        "ChantiersV104",
+        "NormalesV104",
+        "CartographieV104",
+        "PreserveV104",
+        "PlanetesV104",
+        "VariantesV104",
+        "ManquantsV104",
+        "SourcesV104",
+        "ValidationsV104",
+        "EntreesV104",
+        "JournalV104",
+        "SyntheseV105",
+        "ChantiersV105",
+        "ActionsV105",
+        "ClipsV105",
+        "HomeworldV105",
+        "ClansV105",
+        "ManquantsV105",
+        "SourcesV105",
+        "ValidationsV105",
+        "JournalV105",
+        "SyntheseV106",
+        "ChantiersV106",
+        "ActionsV106",
+        "ClipsV106",
+        "MotionsV106",
+        "HomeworldV106",
+        "ClansV106",
+        "ManquantsV106",
+        "SourcesV106",
+        "ValidationsV106",
+        "JournalV106",
+        "SyntheseV107",
+        "ChantiersV107",
+        "FamillesV107",
+        "ActionsV107",
+        "CampagnesV107",
+        "VariantesV107",
+        "HomeworldV107",
+        "ClansV107",
+        "PreserveV107",
+        "ManquantsV107",
+        "SourcesV107",
+        "ValidationsV107",
+        "JournalV107"
+      ]
+    },
+    {
+      "id": "LOCAL-011",
+      "observation": "OCTETS_LOCAUX_LUS",
+      "path": "docs/YAUTJA_V108_SUIVI.xlsx",
+      "bytes": 4757180,
+      "sha256": "2a9490d4e37ff63405039f4f7e7b8c473373f15f83414ca5ff46e142ca5cdaba",
+      "worksheets": 85,
+      "sheetNames": [
+        "LotV62",
+        "CombattantsV54",
+        "Resteclasseur",
+        "LotV63",
+        "StagesV54",
+        "SyntheseV99",
+        "ChantiersV99",
+        "SourcesV99",
+        "PlanetesV99",
+        "OuvragesV6",
+        "PitOuvertV99",
+        "StagesOuvertsV99",
+        "ValidationsV99",
+        "EntreesV99",
+        "JournalV99",
+        "SyntheseV100",
+        "ChantiersV100",
+        "AnimationsV100",
+        "OrientationsV100",
+        "ContactsV100",
+        "PlanetesV100",
+        "OuvragesV100",
+        "PitOuvertV100",
+        "SourcesV100",
+        "ValidationsV100",
+        "EntreesV100",
+        "JournalV100",
+        "SyntheseV104",
+        "ChantiersV104",
+        "NormalesV104",
+        "CartographieV104",
+        "PreserveV104",
+        "PlanetesV104",
+        "VariantesV104",
+        "ManquantsV104",
+        "SourcesV104",
+        "ValidationsV104",
+        "EntreesV104",
+        "JournalV104",
+        "SyntheseV105",
+        "ChantiersV105",
+        "ActionsV105",
+        "ClipsV105",
+        "HomeworldV105",
+        "ClansV105",
+        "ManquantsV105",
+        "SourcesV105",
+        "ValidationsV105",
+        "JournalV105",
+        "SyntheseV106",
+        "ChantiersV106",
+        "ActionsV106",
+        "ClipsV106",
+        "MotionsV106",
+        "HomeworldV106",
+        "ClansV106",
+        "ManquantsV106",
+        "SourcesV106",
+        "ValidationsV106",
+        "JournalV106",
+        "SyntheseV107",
+        "ChantiersV107",
+        "FamillesV107",
+        "ActionsV107",
+        "CampagnesV107",
+        "VariantesV107",
+        "HomeworldV107",
+        "ClansV107",
+        "PreserveV107",
+        "ManquantsV107",
+        "SourcesV107",
+        "ValidationsV107",
+        "JournalV107",
+        "SyntheseV108",
+        "ChantiersV108",
+        "FamillesV108",
+        "ManquantsV108",
+        "PitV108",
+        "HomeworldV108",
+        "ClansV108",
+        "PreserveV108",
+        "ArtV108",
+        "SourcesV108",
+        "ValidationsV108",
+        "JournalV108"
+      ]
+    },
+    {
+      "id": "LOCAL-012",
+      "observation": "OCTETS_LOCAUX_LUS",
+      "path": "docs/YAUTJA_V109_SUIVI.xlsx",
+      "bytes": 5277296,
+      "sha256": "e80fcea5fdf768d5c9b6fd1874f89bc42badee24fbac9a3cf7cecb447c49ed3f",
+      "worksheets": 97,
+      "sheetNames": [
+        "LotV62",
+        "CombattantsV54",
+        "Resteclasseur",
+        "LotV63",
+        "StagesV54",
+        "SyntheseV99",
+        "ChantiersV99",
+        "SourcesV99",
+        "PlanetesV99",
+        "OuvragesV6",
+        "PitOuvertV99",
+        "StagesOuvertsV99",
+        "ValidationsV99",
+        "EntreesV99",
+        "JournalV99",
+        "SyntheseV100",
+        "ChantiersV100",
+        "AnimationsV100",
+        "OrientationsV100",
+        "ContactsV100",
+        "PlanetesV100",
+        "OuvragesV100",
+        "PitOuvertV100",
+        "SourcesV100",
+        "ValidationsV100",
+        "EntreesV100",
+        "JournalV100",
+        "SyntheseV104",
+        "ChantiersV104",
+        "NormalesV104",
+        "CartographieV104",
+        "PreserveV104",
+        "PlanetesV104",
+        "VariantesV104",
+        "ManquantsV104",
+        "SourcesV104",
+        "ValidationsV104",
+        "EntreesV104",
+        "JournalV104",
+        "SyntheseV105",
+        "ChantiersV105",
+        "ActionsV105",
+        "ClipsV105",
+        "HomeworldV105",
+        "ClansV105",
+        "ManquantsV105",
+        "SourcesV105",
+        "ValidationsV105",
+        "JournalV105",
+        "SyntheseV106",
+        "ChantiersV106",
+        "ActionsV106",
+        "ClipsV106",
+        "MotionsV106",
+        "HomeworldV106",
+        "ClansV106",
+        "ManquantsV106",
+        "SourcesV106",
+        "ValidationsV106",
+        "JournalV106",
+        "SyntheseV107",
+        "ChantiersV107",
+        "FamillesV107",
+        "ActionsV107",
+        "CampagnesV107",
+        "VariantesV107",
+        "HomeworldV107",
+        "ClansV107",
+        "PreserveV107",
+        "ManquantsV107",
+        "SourcesV107",
+        "ValidationsV107",
+        "JournalV107",
+        "SyntheseV108",
+        "ChantiersV108",
+        "FamillesV108",
+        "ManquantsV108",
+        "PitV108",
+        "HomeworldV108",
+        "ClansV108",
+        "PreserveV108",
+        "ArtV108",
+        "SourcesV108",
+        "ValidationsV108",
+        "JournalV108",
+        "SyntheseV109",
+        "ChantiersV109",
+        "FamillesV109",
+        "ManquantsV109",
+        "PitV109",
+        "HomeworldV109",
+        "ClansV109",
+        "PreserveV109",
+        "ArtV109",
+        "SourcesV109",
+        "ValidationsV109",
+        "JournalV109"
+      ]
+    },
+    {
+      "id": "LOCAL-013",
+      "observation": "OCTETS_LOCAUX_LUS",
+      "path": "docs/YAUTJA_V110_SUIVI.xlsx",
+      "bytes": 6260095,
+      "sha256": "0b7d7890c8d235a9cda0f6d61c62001efe150f2c4022924c20d88196afcdbd7c",
+      "worksheets": 105,
+      "sheetNames": [
+        "LotV62",
+        "CombattantsV54",
+        "Resteclasseur",
+        "LotV63",
+        "StagesV54",
+        "SyntheseV99",
+        "ChantiersV99",
+        "SourcesV99",
+        "PlanetesV99",
+        "OuvragesV6",
+        "PitOuvertV99",
+        "StagesOuvertsV99",
+        "ValidationsV99",
+        "EntreesV99",
+        "JournalV99",
+        "SyntheseV100",
+        "ChantiersV100",
+        "AnimationsV100",
+        "OrientationsV100",
+        "ContactsV100",
+        "PlanetesV100",
+        "OuvragesV100",
+        "PitOuvertV100",
+        "SourcesV100",
+        "ValidationsV100",
+        "EntreesV100",
+        "JournalV100",
+        "SyntheseV104",
+        "ChantiersV104",
+        "NormalesV104",
+        "CartographieV104",
+        "PreserveV104",
+        "PlanetesV104",
+        "VariantesV104",
+        "ManquantsV104",
+        "SourcesV104",
+        "ValidationsV104",
+        "EntreesV104",
+        "JournalV104",
+        "SyntheseV105",
+        "ChantiersV105",
+        "ActionsV105",
+        "ClipsV105",
+        "HomeworldV105",
+        "ClansV105",
+        "ManquantsV105",
+        "SourcesV105",
+        "ValidationsV105",
+        "JournalV105",
+        "SyntheseV106",
+        "ChantiersV106",
+        "ActionsV106",
+        "ClipsV106",
+        "MotionsV106",
+        "HomeworldV106",
+        "ClansV106",
+        "ManquantsV106",
+        "SourcesV106",
+        "ValidationsV106",
+        "JournalV106",
+        "SyntheseV107",
+        "ChantiersV107",
+        "FamillesV107",
+        "ActionsV107",
+        "CampagnesV107",
+        "VariantesV107",
+        "HomeworldV107",
+        "ClansV107",
+        "PreserveV107",
+        "ManquantsV107",
+        "SourcesV107",
+        "ValidationsV107",
+        "JournalV107",
+        "SyntheseV108",
+        "ChantiersV108",
+        "FamillesV108",
+        "ManquantsV108",
+        "PitV108",
+        "HomeworldV108",
+        "ClansV108",
+        "PreserveV108",
+        "ArtV108",
+        "SourcesV108",
+        "ValidationsV108",
+        "JournalV108",
+        "SyntheseV109",
+        "ChantiersV109",
+        "FamillesV109",
+        "ManquantsV109",
+        "PitV109",
+        "HomeworldV109",
+        "ClansV109",
+        "PreserveV109",
+        "ArtV109",
+        "SourcesV109",
+        "ValidationsV109",
+        "JournalV109",
+        "SyntheseV110",
+        "ChantiersV110",
+        "HomeworldV110",
+        "ManquantsSourceV110",
+        "CatalogueArtV110",
+        "SourcesV110",
+        "ValidationsV110",
+        "JournalV110"
+      ]
+    },
+    {
+      "id": "LOCAL-014",
+      "observation": "OCTETS_LOCAUX_LUS",
+      "path": "docs/YAUTJA_V111_MECANIQUES_CHASSE.xlsx",
+      "bytes": 156564,
+      "sha256": "32dd0d2f8eb2300a53b845e3d6f7ba15a73e3312c4f586962d1c1e0e21b9a012",
+      "worksheets": 8,
+      "sheetNames": [
+        "Sources",
+        "Depecage",
+        "Trophees",
+        "Locomotion",
+        "Parametres",
+        "Transitions",
+        "Validation",
+        "Backlog"
+      ]
+    },
+    {
+      "id": "LOCAL-015",
+      "observation": "OCTETS_LOCAUX_LUS",
+      "path": "docs/YAUTJA_V111_SUIVI.xlsx",
+      "bytes": 8150642,
+      "sha256": "fa5ebf78a08c36b4a567246dfae41de535a8e36c7294ba33190e3e1e2ec9ad05",
+      "worksheets": 113,
+      "sheetNames": [
+        "LotV62",
+        "CombattantsV54",
+        "Resteclasseur",
+        "LotV63",
+        "StagesV54",
+        "SyntheseV99",
+        "ChantiersV99",
+        "SourcesV99",
+        "PlanetesV99",
+        "OuvragesV6",
+        "PitOuvertV99",
+        "StagesOuvertsV99",
+        "ValidationsV99",
+        "EntreesV99",
+        "JournalV99",
+        "SyntheseV100",
+        "ChantiersV100",
+        "AnimationsV100",
+        "OrientationsV100",
+        "ContactsV100",
+        "PlanetesV100",
+        "OuvragesV100",
+        "PitOuvertV100",
+        "SourcesV100",
+        "ValidationsV100",
+        "EntreesV100",
+        "JournalV100",
+        "SyntheseV104",
+        "ChantiersV104",
+        "NormalesV104",
+        "CartographieV104",
+        "PreserveV104",
+        "PlanetesV104",
+        "VariantesV104",
+        "ManquantsV104",
+        "SourcesV104",
+        "ValidationsV104",
+        "EntreesV104",
+        "JournalV104",
+        "SyntheseV105",
+        "ChantiersV105",
+        "ActionsV105",
+        "ClipsV105",
+        "HomeworldV105",
+        "ClansV105",
+        "ManquantsV105",
+        "SourcesV105",
+        "ValidationsV105",
+        "JournalV105",
+        "SyntheseV106",
+        "ChantiersV106",
+        "ActionsV106",
+        "ClipsV106",
+        "MotionsV106",
+        "HomeworldV106",
+        "ClansV106",
+        "ManquantsV106",
+        "SourcesV106",
+        "ValidationsV106",
+        "JournalV106",
+        "SyntheseV107",
+        "ChantiersV107",
+        "FamillesV107",
+        "ActionsV107",
+        "CampagnesV107",
+        "VariantesV107",
+        "HomeworldV107",
+        "ClansV107",
+        "PreserveV107",
+        "ManquantsV107",
+        "SourcesV107",
+        "ValidationsV107",
+        "JournalV107",
+        "SyntheseV108",
+        "ChantiersV108",
+        "FamillesV108",
+        "ManquantsV108",
+        "PitV108",
+        "HomeworldV108",
+        "ClansV108",
+        "PreserveV108",
+        "ArtV108",
+        "SourcesV108",
+        "ValidationsV108",
+        "JournalV108",
+        "SyntheseV109",
+        "ChantiersV109",
+        "FamillesV109",
+        "ManquantsV109",
+        "PitV109",
+        "HomeworldV109",
+        "ClansV109",
+        "PreserveV109",
+        "ArtV109",
+        "SourcesV109",
+        "ValidationsV109",
+        "JournalV109",
+        "SyntheseV110",
+        "ChantiersV110",
+        "HomeworldV110",
+        "ManquantsSourceV110",
+        "CatalogueArtV110",
+        "SourcesV110",
+        "ValidationsV110",
+        "JournalV110",
+        "SyntheseV111",
+        "ChantiersV111",
+        "HomeworldV111",
+        "ManquantsSourceV111",
+        "CatalogueArtV111",
+        "SourcesV111",
+        "ValidationsV111",
+        "JournalV111"
+      ]
+    },
+    {
+      "id": "LOCAL-016",
+      "observation": "OCTETS_LOCAUX_LUS",
+      "path": "docs/YAUTJA_V112_MECANIQUES_CHASSE.xlsx",
+      "bytes": 444448,
+      "sha256": "1b13e05253640034458601f62032fb21e7be4cf1d30f2a2a4912e63dae229b29",
+      "worksheets": 19,
+      "sheetNames": [
+        "Sources",
+        "Depecage",
+        "Trophees",
+        "Locomotion",
+        "Pendule",
+        "Routes",
+        "Suspension",
+        "Anatomie",
+        "Charge",
+        "Entretien",
+        "Conservation",
+        "Accessibilite",
+        "Ecosysteme",
+        "Apprentissage",
+        "Parametres",
+        "Transitions",
+        "Qualification",
+        "FermetureFUT",
+        "Preuves"
+      ]
+    },
+    {
+      "id": "LOCAL-017",
+      "observation": "OCTETS_LOCAUX_LUS",
+      "path": "docs/YAUTJA_V112_SUIVI.xlsx",
+      "bytes": 9433700,
+      "sha256": "723cc894b643d55dcd076cab8b615866c6879ecc481c55616adcdd0508d2eccc",
+      "worksheets": 122,
+      "sheetNames": [
+        "LotV62",
+        "CombattantsV54",
+        "Resteclasseur",
+        "LotV63",
+        "StagesV54",
+        "SyntheseV99",
+        "ChantiersV99",
+        "SourcesV99",
+        "PlanetesV99",
+        "OuvragesV6",
+        "PitOuvertV99",
+        "StagesOuvertsV99",
+        "ValidationsV99",
+        "EntreesV99",
+        "JournalV99",
+        "SyntheseV100",
+        "ChantiersV100",
+        "AnimationsV100",
+        "OrientationsV100",
+        "ContactsV100",
+        "PlanetesV100",
+        "OuvragesV100",
+        "PitOuvertV100",
+        "SourcesV100",
+        "ValidationsV100",
+        "EntreesV100",
+        "JournalV100",
+        "SyntheseV104",
+        "ChantiersV104",
+        "NormalesV104",
+        "CartographieV104",
+        "PreserveV104",
+        "PlanetesV104",
+        "VariantesV104",
+        "ManquantsV104",
+        "SourcesV104",
+        "ValidationsV104",
+        "EntreesV104",
+        "JournalV104",
+        "SyntheseV105",
+        "ChantiersV105",
+        "ActionsV105",
+        "ClipsV105",
+        "HomeworldV105",
+        "ClansV105",
+        "ManquantsV105",
+        "SourcesV105",
+        "ValidationsV105",
+        "JournalV105",
+        "SyntheseV106",
+        "ChantiersV106",
+        "ActionsV106",
+        "ClipsV106",
+        "MotionsV106",
+        "HomeworldV106",
+        "ClansV106",
+        "ManquantsV106",
+        "SourcesV106",
+        "ValidationsV106",
+        "JournalV106",
+        "SyntheseV107",
+        "ChantiersV107",
+        "FamillesV107",
+        "ActionsV107",
+        "CampagnesV107",
+        "VariantesV107",
+        "HomeworldV107",
+        "ClansV107",
+        "PreserveV107",
+        "ManquantsV107",
+        "SourcesV107",
+        "ValidationsV107",
+        "JournalV107",
+        "SyntheseV108",
+        "ChantiersV108",
+        "FamillesV108",
+        "ManquantsV108",
+        "PitV108",
+        "HomeworldV108",
+        "ClansV108",
+        "PreserveV108",
+        "ArtV108",
+        "SourcesV108",
+        "ValidationsV108",
+        "JournalV108",
+        "SyntheseV109",
+        "ChantiersV109",
+        "FamillesV109",
+        "ManquantsV109",
+        "PitV109",
+        "HomeworldV109",
+        "ClansV109",
+        "PreserveV109",
+        "ArtV109",
+        "SourcesV109",
+        "ValidationsV109",
+        "JournalV109",
+        "SyntheseV110",
+        "ChantiersV110",
+        "HomeworldV110",
+        "ManquantsSourceV110",
+        "CatalogueArtV110",
+        "SourcesV110",
+        "ValidationsV110",
+        "JournalV110",
+        "SyntheseV111",
+        "ChantiersV111",
+        "HomeworldV111",
+        "ManquantsSourceV111",
+        "CatalogueArtV111",
+        "SourcesV111",
+        "ValidationsV111",
+        "JournalV111",
+        "SyntheseV112",
+        "ChantiersV112",
+        "PrioritesV112",
+        "HomeworldV112",
+        "ManquantsSourceV112",
+        "CatalogueArtV112",
+        "SourcesV112",
+        "ValidationsV112",
+        "JournalV112"
+      ]
+    },
+    {
+      "id": "LOCAL-018",
+      "observation": "OCTETS_LOCAUX_LUS",
+      "path": "docs/YAUTJA_V99_SUIVI.xlsx",
+      "bytes": 1130515,
+      "sha256": "53116e8f0fe10867702cccdb2d7bf2c8bbc5baa7c6a9c528085c12f780392a15",
+      "worksheets": 15,
+      "sheetNames": [
+        "LotV62",
+        "CombattantsV54",
+        "Resteclasseur",
+        "LotV63",
+        "StagesV54",
+        "SyntheseV99",
+        "ChantiersV99",
+        "SourcesV99",
+        "PlanetesV99",
+        "OuvragesV6",
+        "PitOuvertV99",
+        "StagesOuvertsV99",
+        "ValidationsV99",
+        "EntreesV99",
+        "JournalV99"
+      ]
+    },
+    {
+      "id": "LOCAL-019",
+      "observation": "OCTETS_LOCAUX_LUS",
+      "path": "docs/qa/v111-homeworld-before-pr21/YAUTJA_V111_SUIVI.xlsx",
+      "bytes": 8123460,
+      "sha256": "db66ff179b03891051afca7fb5979700d576c9ff4f87bf816fc77ef5daf7bfe0",
+      "worksheets": 113,
+      "sheetNames": [
+        "LotV62",
+        "CombattantsV54",
+        "Resteclasseur",
+        "LotV63",
+        "StagesV54",
+        "SyntheseV99",
+        "ChantiersV99",
+        "SourcesV99",
+        "PlanetesV99",
+        "OuvragesV6",
+        "PitOuvertV99",
+        "StagesOuvertsV99",
+        "ValidationsV99",
+        "EntreesV99",
+        "JournalV99",
+        "SyntheseV100",
+        "ChantiersV100",
+        "AnimationsV100",
+        "OrientationsV100",
+        "ContactsV100",
+        "PlanetesV100",
+        "OuvragesV100",
+        "PitOuvertV100",
+        "SourcesV100",
+        "ValidationsV100",
+        "EntreesV100",
+        "JournalV100",
+        "SyntheseV104",
+        "ChantiersV104",
+        "NormalesV104",
+        "CartographieV104",
+        "PreserveV104",
+        "PlanetesV104",
+        "VariantesV104",
+        "ManquantsV104",
+        "SourcesV104",
+        "ValidationsV104",
+        "EntreesV104",
+        "JournalV104",
+        "SyntheseV105",
+        "ChantiersV105",
+        "ActionsV105",
+        "ClipsV105",
+        "HomeworldV105",
+        "ClansV105",
+        "ManquantsV105",
+        "SourcesV105",
+        "ValidationsV105",
+        "JournalV105",
+        "SyntheseV106",
+        "ChantiersV106",
+        "ActionsV106",
+        "ClipsV106",
+        "MotionsV106",
+        "HomeworldV106",
+        "ClansV106",
+        "ManquantsV106",
+        "SourcesV106",
+        "ValidationsV106",
+        "JournalV106",
+        "SyntheseV107",
+        "ChantiersV107",
+        "FamillesV107",
+        "ActionsV107",
+        "CampagnesV107",
+        "VariantesV107",
+        "HomeworldV107",
+        "ClansV107",
+        "PreserveV107",
+        "ManquantsV107",
+        "SourcesV107",
+        "ValidationsV107",
+        "JournalV107",
+        "SyntheseV108",
+        "ChantiersV108",
+        "FamillesV108",
+        "ManquantsV108",
+        "PitV108",
+        "HomeworldV108",
+        "ClansV108",
+        "PreserveV108",
+        "ArtV108",
+        "SourcesV108",
+        "ValidationsV108",
+        "JournalV108",
+        "SyntheseV109",
+        "ChantiersV109",
+        "FamillesV109",
+        "ManquantsV109",
+        "PitV109",
+        "HomeworldV109",
+        "ClansV109",
+        "PreserveV109",
+        "ArtV109",
+        "SourcesV109",
+        "ValidationsV109",
+        "JournalV109",
+        "SyntheseV110",
+        "ChantiersV110",
+        "HomeworldV110",
+        "ManquantsSourceV110",
+        "CatalogueArtV110",
+        "SourcesV110",
+        "ValidationsV110",
+        "JournalV110",
+        "SyntheseV111",
+        "ChantiersV111",
+        "HomeworldV111",
+        "ManquantsSourceV111",
+        "CatalogueArtV111",
+        "SourcesV111",
+        "ValidationsV111",
+        "JournalV111"
+      ]
+    },
+    {
+      "id": "LOCAL-020",
+      "observation": "OCTETS_LOCAUX_LUS",
+      "path": "docs/suivi-production/classeurs/Yautja_V5_Bible_Reconstituee_et_Extensions.xlsx",
+      "bytes": 1107914,
+      "sha256": "f4f604a407cff43be6b2e96896dc18fd8d8a0e5f901fc634e8d777f65818c71f",
+      "worksheets": 129,
+      "sheetNames": [
+        "Vue d’ensemble",
+        "Mode d’emploi",
+        "Index V5",
+        "Lire Histoire",
+        "Lire Mondes",
+        "Lire Maison et clan",
+        "Lire Trophées",
+        "Lire Guerre",
+        "Lire Production",
+        "Simuler Résidence",
+        "Simuler Warp",
+        "Manifeste du navire",
+        "Simuler Une équipe",
+        "Campagne 12 tours",
+        "Carte de Korthas",
+        "Réglages des simulateurs",
+        "Données >>",
+        "Les six voies",
+        "Missions des six voies",
+        "Campagne commune",
+        "Socle du jeu",
+        "Rangs et fonctions",
+        "Interactions des voies",
+        "Fins des six voies",
+        "Contrats des clans",
+        "Règles du Warp",
+        "Époques du Warp",
+        "Missions du Warp",
+        "Chroniques cinéma",
+        "Justice et Enforcers",
+        "THE PIT",
+        "Mausolée et DLC",
+        "V5 Transitions des voies",
+        "V5 Arcs historiques",
+        "V5 Scènes historiques",
+        "V5 Prologue jouable",
+        "Parcours complet",
+        "Régions du Homeworld",
+        "Identités des clans",
+        "Les vingt communautés",
+        "Lieux de la cité",
+        "Métiers et PNJ",
+        "Vie et culture",
+        "Cent gardes de clans",
+        "Atlas des mondes",
+        "Les dix bases spatiales",
+        "Soixante salles des bases",
+        "Vaisseau personnel",
+        "Catalogue des vaisseaux",
+        "Incidents des routes",
+        "Faune et adversaires",
+        "Véhicules et montures",
+        "Lien des montures",
+        "Game Preserve",
+        "Cent combattants humains",
+        "Armes et outils",
+        "Xeno Prime",
+        "Direction musicale",
+        "V5 Arcs des bases spatiales",
+        "V5 Manœuvres spatiales",
+        "V5 Comportements de faune",
+        "V5 Missions des montures",
+        "V5 Arcs des biomes",
+        "V5 Ressources et économie",
+        "Règles de résidence",
+        "Résidences des tribus",
+        "Pièces des maisons",
+        "Vie dans la maison",
+        "Règles du navire de clan",
+        "Ponts du navire de clan",
+        "Équipage incarné",
+        "Missions du navire",
+        "Gestion du clan",
+        "Multijoueur futur",
+        "Voies maison et clan",
+        "V5 Scènes des résidences",
+        "V5 Incidents de l’équipage",
+        "V5 Aménagements",
+        "V5 Missions collectives",
+        "Règles des trophées",
+        "Écrans de l’atelier",
+        "Gestes de l’atelier",
+        "Familles de trophées",
+        "Histoires des objets",
+        "Révélations des objets",
+        "Meubles et exposition",
+        "Missions de l’atelier",
+        "Aides des mini-jeux",
+        "États des trophées",
+        "V5 Enquêtes de trophées",
+        "Méthode de guerre",
+        "Paramètres de guerre",
+        "Doctrines des clans",
+        "Unités de guerre",
+        "V5 Spécialisations des unités",
+        "Progression militaire",
+        "Structures de guerre",
+        "Mondes en guerre",
+        "Régions de Korthas",
+        "Territoires de Korthas",
+        "Passages de Korthas",
+        "Cartes des escarmouches",
+        "Arcs de guerre narrative",
+        "Missions de guerre narrative",
+        "Scénarios RTS",
+        "Règles de guerre",
+        "Objectifs militaires",
+        "Diplomatie des clans",
+        "V5 Événements territoriaux",
+        "V5 Campagnes des trois modes",
+        "V5 Missions des trois modes",
+        "Guerre et six origines",
+        "Guerre et Warp",
+        "V5 Guerre et habitats",
+        "V5 Recette de la guerre",
+        "V5 Styles de campagne",
+        "V5 Simulations chiffrées",
+        "Données campagne 12 tours",
+        "V5 Couverture des théâtres",
+        "V5 Régions des cinq mondes",
+        "V5 Règles des cinq mondes",
+        "V5 Territoires des cinq mondes",
+        "V5 Passages des cinq mondes",
+        "Couverture de reconstruction",
+        "Sources et provenance",
+        "V5 Cité et placement",
+        "V5 États communs",
+        "V5 Recette du jeu",
+        "V5 Lots de réalisation"
+      ]
+    },
+    {
+      "id": "LOCAL-021",
+      "observation": "OCTETS_LOCAUX_LUS",
+      "path": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+      "bytes": 2101543,
+      "sha256": "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183",
+      "worksheets": 139,
+      "sheetNames": [
+        "Vue d’ensemble",
+        "Mode d’emploi",
+        "Index V5",
+        "Lire Histoire",
+        "Lire Mondes",
+        "Lire Maison et clan",
+        "Lire Trophées",
+        "Lire Guerre",
+        "Lire Production",
+        "Simuler Résidence",
+        "Simuler Warp",
+        "Manifeste du navire",
+        "Simuler Une équipe",
+        "Campagne 12 tours",
+        "Carte de Korthas",
+        "Réglages des simulateurs",
+        "Données >>",
+        "Les six voies",
+        "Missions des six voies",
+        "Campagne commune",
+        "Socle du jeu",
+        "Rangs et fonctions",
+        "Interactions des voies",
+        "Fins des six voies",
+        "Contrats des clans",
+        "Règles du Warp",
+        "Époques du Warp",
+        "Missions du Warp",
+        "Chroniques cinéma",
+        "Justice et Enforcers",
+        "THE PIT",
+        "Mausolée et DLC",
+        "V5 Transitions des voies",
+        "V5 Arcs historiques",
+        "V5 Scènes historiques",
+        "V5 Prologue jouable",
+        "Parcours complet",
+        "Régions du Homeworld",
+        "Identités des clans",
+        "Les vingt communautés",
+        "Lieux de la cité",
+        "Métiers et PNJ",
+        "Vie et culture",
+        "Cent gardes de clans",
+        "Atlas des mondes",
+        "Les dix bases spatiales",
+        "Soixante salles des bases",
+        "Vaisseau personnel",
+        "Catalogue des vaisseaux",
+        "Incidents des routes",
+        "Faune et adversaires",
+        "Véhicules et montures",
+        "Lien des montures",
+        "Game Preserve",
+        "Cent combattants humains",
+        "Armes et outils",
+        "Xeno Prime",
+        "Direction musicale",
+        "V5 Arcs des bases spatiales",
+        "V5 Manœuvres spatiales",
+        "V5 Comportements de faune",
+        "V5 Missions des montures",
+        "V5 Arcs des biomes",
+        "V5 Ressources et économie",
+        "Règles de résidence",
+        "Résidences des tribus",
+        "Pièces des maisons",
+        "Vie dans la maison",
+        "Règles du navire de clan",
+        "Ponts du navire de clan",
+        "Équipage incarné",
+        "Missions du navire",
+        "Gestion du clan",
+        "Multijoueur futur",
+        "Voies maison et clan",
+        "V5 Scènes des résidences",
+        "V5 Incidents de l’équipage",
+        "V5 Aménagements",
+        "V5 Missions collectives",
+        "Règles des trophées",
+        "Écrans de l’atelier",
+        "Gestes de l’atelier",
+        "Familles de trophées",
+        "Histoires des objets",
+        "Révélations des objets",
+        "Meubles et exposition",
+        "Missions de l’atelier",
+        "Aides des mini-jeux",
+        "États des trophées",
+        "V5 Enquêtes de trophées",
+        "Méthode de guerre",
+        "Paramètres de guerre",
+        "Doctrines des clans",
+        "Unités de guerre",
+        "V5 Spécialisations des unités",
+        "Progression militaire",
+        "Structures de guerre",
+        "Mondes en guerre",
+        "Régions de Korthas",
+        "Territoires de Korthas",
+        "Passages de Korthas",
+        "Cartes des escarmouches",
+        "Arcs de guerre narrative",
+        "Missions de guerre narrative",
+        "Scénarios RTS",
+        "Règles de guerre",
+        "Objectifs militaires",
+        "Diplomatie des clans",
+        "V5 Événements territoriaux",
+        "V5 Campagnes des trois modes",
+        "V5 Missions des trois modes",
+        "Guerre et six origines",
+        "Guerre et Warp",
+        "V5 Guerre et habitats",
+        "V5 Recette de la guerre",
+        "V5 Styles de campagne",
+        "V5 Simulations chiffrées",
+        "Données campagne 12 tours",
+        "V5 Couverture des théâtres",
+        "V5 Régions des cinq mondes",
+        "V5 Règles des cinq mondes",
+        "V5 Territoires des cinq mondes",
+        "V5 Passages des cinq mondes",
+        "Couverture de reconstruction",
+        "Sources et provenance",
+        "V5 Cité et placement",
+        "V5 États communs",
+        "V5 Recette du jeu",
+        "V5 Lots de réalisation",
+        "Lire dialogues V6",
+        "Scènes de dialogue V6",
+        "Répliques V6",
+        "Choix et actions V6",
+        "Variantes V6",
+        "Réactions et gestes V6",
+        "Voix V6",
+        "Mise en scène V6",
+        "Références de lore V6",
+        "Couverture V6"
+      ]
+    },
+    {
+      "id": "LOCAL-022",
+      "observation": "OCTETS_LOCAUX_LUS",
+      "path": "docs/suivi-production/v611/Yautja_Suivi_Variantes_2026-10-21.xlsx",
+      "bytes": 1642587,
+      "sha256": "c154f8203cdd1894dfc384cf9704da56badab64417fa0d2e5920b4199cf6b32f",
+      "worksheets": 6,
+      "sheetNames": [
+        "Synthèse",
+        "Variantes",
+        "Production PR",
+        "Sources jeu",
+        "Classeurs",
+        "Contrôles"
+      ]
+    },
+    {
+      "id": "LOCAL-023",
+      "observation": "OCTETS_LOCAUX_LUS",
+      "path": "docs/suivi-production/v611/references/Yautja_Suivi_Variantes_2026-10-20.xlsx",
+      "bytes": 1624759,
+      "sha256": "76fe0e138a2ee2c901b491c48edea9e8d3777f1babeb9c480b932c82ffca0d6e",
+      "worksheets": 6,
+      "sheetNames": [
+        "Synthèse",
+        "Variantes",
+        "Production PR",
+        "Sources jeu",
+        "Classeurs",
+        "Contrôles"
+      ]
+    },
+    {
+      "id": "LOCAL-024",
+      "observation": "OCTETS_LOCAUX_LUS",
+      "path": "docs/suivi-production/v612/Yautja_Suivi_Variantes_V612_2026-10-21.xlsx",
+      "bytes": 1672140,
+      "sha256": "26c1a5b62d93c73910c33964cb7a942010c8e9986bfb473ef59c537cd79bdb74",
+      "worksheets": 6,
+      "sheetNames": [
+        "Synthèse",
+        "Variantes",
+        "Production PR",
+        "Sources jeu",
+        "Classeurs",
+        "Contrôles"
+      ]
+    },
+    {
+      "id": "LOCAL-025",
+      "observation": "OCTETS_LOCAUX_LUS",
+      "path": "docs/suivi-production/v613/Yautja_Suivi_Variantes_V613_2026-10-22.xlsx",
+      "bytes": 1698239,
+      "sha256": "a00b50b46df297ec5ac54ebde19da5a0c420499ebfe765d1c12aad79b2fe0b3e",
+      "worksheets": 6,
+      "sheetNames": [
+        "Synthèse",
+        "Variantes",
+        "Production PR",
+        "Sources jeu",
+        "Classeurs",
+        "Contrôles"
+      ]
+    },
+    {
+      "id": "LOCAL-026",
+      "observation": "OCTETS_LOCAUX_LUS",
+      "path": "docs/suivi-production/v614/Yautja_Suivi_Variantes_V614_2026-10-23.xlsx",
+      "bytes": 1715728,
+      "sha256": "92b5bbcb95919db1a9e8eced6153a91f3dbfa3944bd37484c8852311a8250faa",
+      "worksheets": 6,
+      "sheetNames": [
+        "Synthèse",
+        "Variantes",
+        "Production PR",
+        "Sources jeu",
+        "Classeurs",
+        "Contrôles"
+      ]
+    },
+    {
+      "id": "LOCAL-027",
+      "observation": "OCTETS_LOCAUX_LUS",
+      "path": "docs/suivi-production/v615/Yautja_Suivi_Variantes_V615_2026-10-23.xlsx",
+      "bytes": 1731753,
+      "sha256": "90f03e170a07d4867f8f8bc588e486d3055c11a826a496ce50790d6a35e3a2f8",
+      "worksheets": 6,
+      "sheetNames": [
+        "Synthèse",
+        "Variantes",
+        "Production PR",
+        "Sources jeu",
+        "Classeurs",
+        "Contrôles"
+      ]
+    }
+  ],
+  "pinnedRemoteWorkbooks": [
+    {
+      "id": "PR-PIN-001",
+      "observation": "OBSERVATION_ZIP_EPINGLEE_DANS_AUDIT_PR",
+      "pr": 49,
+      "headSha": "d567d657f0b9e316eb951a50132efc02e64f671f",
+      "path": "docs/clan-war-v140/Yautja_Guerres_Clans_Suivi_Production_V140_2026-10-31.xlsx",
+      "blobSha": "f9aa468ffbf60eadd01906e43d546f6547cebd06",
+      "bytes": 357776,
+      "sha256": "8c2a2299ac8e9c8b0d83d4a23d77b9abcf600911ae59f25dc0237375b916068b",
+      "worksheets": 49,
+      "sheetParts": [
+        {
+          "name": "ASSAUT",
+          "part": "xl/worksheets/sheet1.xml",
+          "bytes": 29077,
+          "sha256": "4816f6c3a9952563a14e3a349a4a74616f5d49dd2c015d5f7852a4b7853db6b6"
+        },
+        {
+          "name": "OUTER_OPS",
+          "part": "xl/worksheets/sheet2.xml",
+          "bytes": 28673,
+          "sha256": "a8ae32be187d9a74e4c1f941de7cbd1118cbb0ed0fb79c6102a75f6fd84ce6c7"
+        },
+        {
+          "name": "INFILTRATION",
+          "part": "xl/worksheets/sheet3.xml",
+          "bytes": 28741,
+          "sha256": "27d0f9d6a70e144b67787b5417b908bb2ffa10cb1eecf33d684fb3678a40a25b"
+        },
+        {
+          "name": "RTS",
+          "part": "xl/worksheets/sheet4.xml",
+          "bytes": 34255,
+          "sha256": "3e7e1aac0fa17b12dad6e35bcbb8a2630d0aec311ae9d09e0f5d18b265237637"
+        },
+        {
+          "name": "SYSTEMES_COMMUNS",
+          "part": "xl/worksheets/sheet5.xml",
+          "bytes": 34344,
+          "sha256": "d059290ae65e160a821cfaf73d29360667cf91124d1df3afe894e3011e022c45"
+        },
+        {
+          "name": "MULTIJOUEUR",
+          "part": "xl/worksheets/sheet6.xml",
+          "bytes": 23422,
+          "sha256": "9f9fa3b785f6dd2d3d5bd6fcd90626f49784d1ea9d5bc8f1a64af52d1a737976"
+        },
+        {
+          "name": "MISSIONS_1200",
+          "part": "xl/worksheets/sheet7.xml",
+          "bytes": 1307177,
+          "sha256": "f1f63b4589163fce220999777e2995cb80e74d79af4accbc1f5114d0f134b729"
+        },
+        {
+          "name": "W3_24_RTS",
+          "part": "xl/worksheets/sheet8.xml",
+          "bytes": 36891,
+          "sha256": "59a0b140b3debb164a4453d09222a84bfd0832a5b86259b713c89a8ebef42485"
+        },
+        {
+          "name": "CARTES_W3_12",
+          "part": "xl/worksheets/sheet9.xml",
+          "bytes": 15100,
+          "sha256": "6c76a2b537c9e7964f25d57a42502d87525cb0abc3c41b542535abc540ead9e8"
+        },
+        {
+          "name": "W5_CAMPAGNES_36",
+          "part": "xl/worksheets/sheet10.xml",
+          "bytes": 31255,
+          "sha256": "d004c72dfa1f3a4de81e8ccecad0abf9ef19125c261c3bbaca148a1be80b49a3"
+        },
+        {
+          "name": "LORE_CONTINUITE",
+          "part": "xl/worksheets/sheet11.xml",
+          "bytes": 14485,
+          "sha256": "b7f9304210c8144b5ffb68eaef23190706ceed0afef695cd258e0798d028bf6e"
+        },
+        {
+          "name": "QA_ACCEPTATION",
+          "part": "xl/worksheets/sheet12.xml",
+          "bytes": 162547,
+          "sha256": "847cc69b85a0844c7441e1892bbf1f9e9928f2b2fdf7abc780283702f8ba5818"
+        },
+        {
+          "name": "CHAINES_PR",
+          "part": "xl/worksheets/sheet13.xml",
+          "bytes": 7403,
+          "sha256": "4d8f70ead05148c92f6b2a7bc238b47b3379f906073a32dea3887ff9d60cddac"
+        },
+        {
+          "name": "SOURCES",
+          "part": "xl/worksheets/sheet14.xml",
+          "bytes": 7619,
+          "sha256": "523b89b4d8234a706ccefdb096e0a68bb9100881cb900a239727f8a6d388eefd"
+        },
+        {
+          "name": "ROADMAP_GLOBALE",
+          "part": "xl/worksheets/sheet15.xml",
+          "bytes": 159909,
+          "sha256": "02fe96f81b05bea8cde8b1faa9269aa8f8b84c8cebcbbacffaf2de1c3817a750"
+        },
+        {
+          "name": "00_PILOTAGE",
+          "part": "xl/worksheets/sheet16.xml",
+          "bytes": 19278,
+          "sha256": "4d77abe9ff5b0148aec453be763b6dd1d448ab94e152c401b4f471a7559d9ec3"
+        },
+        {
+          "name": "LEGENDE_ET_MODE",
+          "part": "xl/worksheets/sheet17.xml",
+          "bytes": 4225,
+          "sha256": "cf3772807a659b7d5ba39340fc521ed8960d836709094a9c4999f617c12a9fff"
+        },
+        {
+          "name": "RTS_V134_SYNCHRO",
+          "part": "xl/worksheets/sheet18.xml",
+          "bytes": 50703,
+          "sha256": "3ea1c91724e2284564cc23cd3a32f4e72c7275118ce30cca8a19127443725e37"
+        },
+        {
+          "name": "MODES_V135_PARALLELE",
+          "part": "xl/worksheets/sheet19.xml",
+          "bytes": 53860,
+          "sha256": "0f7efebc4cb786bfd38c355a5b44bbcc7103a39e501ea3fa82838133488a6457"
+        },
+        {
+          "name": "QA_V135",
+          "part": "xl/worksheets/sheet20.xml",
+          "bytes": 21298,
+          "sha256": "f09c844d6cb283ecedcb979e6a60b29e4e63ee0e9d5beffb06752f29546d0c5b"
+        },
+        {
+          "name": "MODES_V136_PARALLELE",
+          "part": "xl/worksheets/sheet21.xml",
+          "bytes": 55221,
+          "sha256": "b90b7bd4cf47b021b04da94a4681be967926f76b8d65cec466bcfff5ba90f303"
+        },
+        {
+          "name": "QA_V136",
+          "part": "xl/worksheets/sheet22.xml",
+          "bytes": 28553,
+          "sha256": "688bce29b4a5aef0fc06c4de253bd088fda12e52f189fc8d414de3dfa2c631b3"
+        },
+        {
+          "name": "INTERMODES_V136",
+          "part": "xl/worksheets/sheet23.xml",
+          "bytes": 12559,
+          "sha256": "9598cb0556a940241075a07c6df354c1c0dadca585680e41ce7f9743e3161004"
+        },
+        {
+          "name": "SUIVI_V136",
+          "part": "xl/worksheets/sheet24.xml",
+          "bytes": 16118,
+          "sha256": "beaa3a4fc0bc6f6be4be3568be2d7d230ca51aab620e3a23bcb265554ebcdd16"
+        },
+        {
+          "name": "ASSAUT_V137",
+          "part": "xl/worksheets/sheet25.xml",
+          "bytes": 18201,
+          "sha256": "b13a112fdbba3036e30986dddb9bf4236cb073548c7724247c304a5035aabd54"
+        },
+        {
+          "name": "OUTER_OPS_V137",
+          "part": "xl/worksheets/sheet26.xml",
+          "bytes": 17912,
+          "sha256": "73bc6760cdfca0c6dfca810377cf82ba0d2d0a0fab0e2e7d60a369d3cb54d8cf"
+        },
+        {
+          "name": "INFILTRATION_V137",
+          "part": "xl/worksheets/sheet27.xml",
+          "bytes": 17712,
+          "sha256": "bb05c00d93b4ca13fde315afc151d851d403b5d898dc3299ca92d587e49fbb9f"
+        },
+        {
+          "name": "RTS_V137",
+          "part": "xl/worksheets/sheet28.xml",
+          "bytes": 17827,
+          "sha256": "8de7c218f72f58a89d34ae32f9a5f34a9ee4ceb6c4ef8943cd0ce7587c9692be"
+        },
+        {
+          "name": "QA_V137",
+          "part": "xl/worksheets/sheet29.xml",
+          "bytes": 35378,
+          "sha256": "a7cd5ce48bd0ec6e65918235e74c5aee08603fcd6b56df2482eaf319232ea7df"
+        },
+        {
+          "name": "CROISEMENTS_V137",
+          "part": "xl/worksheets/sheet30.xml",
+          "bytes": 16597,
+          "sha256": "98905736e2b59d934bbffd2c31eaa3a8dbf41e5b7b932a44e835483625454e34"
+        },
+        {
+          "name": "SUIVI_V137",
+          "part": "xl/worksheets/sheet31.xml",
+          "bytes": 11223,
+          "sha256": "01a012fc6e2f116084e25e2b1308841c560f75a5a7ce73d9d40dc8d06b4fcd77"
+        },
+        {
+          "name": "ASSAUT_V138",
+          "part": "xl/worksheets/sheet32.xml",
+          "bytes": 19790,
+          "sha256": "18a88850951e829fb356b4346d862655d7cb4930286ff5e35868d4f72ece53ba"
+        },
+        {
+          "name": "OUTER_OPS_V138",
+          "part": "xl/worksheets/sheet33.xml",
+          "bytes": 19503,
+          "sha256": "1100b4bb2b0869ecd3ece325468f6a46f5e00ce4fc9933b9695488065edc56fe"
+        },
+        {
+          "name": "INFILTRATION_V138",
+          "part": "xl/worksheets/sheet34.xml",
+          "bytes": 19333,
+          "sha256": "3f75e89b5c9d592cfef854c0e773593fc930b2c46f45ee28e4ea3fdb97745984"
+        },
+        {
+          "name": "RTS_V138",
+          "part": "xl/worksheets/sheet35.xml",
+          "bytes": 19434,
+          "sha256": "494e12e680cb4b8f60af1071a0b65b5eeb09cc03945d26789b0758a7865188a4"
+        },
+        {
+          "name": "QA_V138",
+          "part": "xl/worksheets/sheet36.xml",
+          "bytes": 44795,
+          "sha256": "a2d515239e6f7a3cfcdddd4495a713e6fdbdcd29d00014230b443e8b85159f97"
+        },
+        {
+          "name": "CROISEMENTS_V138",
+          "part": "xl/worksheets/sheet37.xml",
+          "bytes": 19729,
+          "sha256": "ee5bf7de7f8d812040fde84895f731fe118cb7d5ec2b9239897e2405ad3453fc"
+        },
+        {
+          "name": "SUIVI_V138",
+          "part": "xl/worksheets/sheet38.xml",
+          "bytes": 11355,
+          "sha256": "079eace6567aaecd736780c6b4d052d764be3c3956353a769140c17e2591578a"
+        },
+        {
+          "name": "ASSAUT_V139",
+          "part": "xl/worksheets/sheet39.xml",
+          "bytes": 20517,
+          "sha256": "b631a82eabe17ac2603122893ff884d1dbf5f7750fd94e2ea00189e45df9a507"
+        },
+        {
+          "name": "OUTER_OPS_V139",
+          "part": "xl/worksheets/sheet40.xml",
+          "bytes": 20298,
+          "sha256": "5079d2d73547dbf1800d2d4a895ca4f9eee3aa478919b4b670e73b884ce670a4"
+        },
+        {
+          "name": "INFILTRATION_V139",
+          "part": "xl/worksheets/sheet41.xml",
+          "bytes": 20106,
+          "sha256": "4922da830df6bf5f806fa34b27f2870c7472e3380faeba6718f6bf7376b9ac7e"
+        },
+        {
+          "name": "RTS_V139",
+          "part": "xl/worksheets/sheet42.xml",
+          "bytes": 20231,
+          "sha256": "81081e9804fb302ecefbaced1589dce40743182c6d7f04c6f1ef21b8628cc135"
+        },
+        {
+          "name": "QA_V139",
+          "part": "xl/worksheets/sheet43.xml",
+          "bytes": 51525,
+          "sha256": "c289aab3e70cbfcb3fd9ef1c94fb7890e8d56ab068d084cd945246fffa2355d5"
+        },
+        {
+          "name": "CROISEMENTS_V139",
+          "part": "xl/worksheets/sheet44.xml",
+          "bytes": 22644,
+          "sha256": "94e63a42ad9dfc2bc14fdf971dcc4d205032d8da580cd36c4d69135b446e9497"
+        },
+        {
+          "name": "SUIVI_V139",
+          "part": "xl/worksheets/sheet45.xml",
+          "bytes": 10762,
+          "sha256": "e631ec58d332d314702f991347588cf47503c11c597cce7c94cbc04d31a5bd13"
+        },
+        {
+          "name": "POINTS_OUVERTS_V140",
+          "part": "xl/worksheets/sheet46.xml",
+          "bytes": 30448,
+          "sha256": "27678abbed402c63280437104d174e410cd419d9ef8e0b35499b594c495ab5d3"
+        },
+        {
+          "name": "QA_V140",
+          "part": "xl/worksheets/sheet47.xml",
+          "bytes": 22409,
+          "sha256": "71728ed37ded00c2dc52ac9653d969ee3591a09f07cf72eabc0d703d899c1f3b"
+        },
+        {
+          "name": "PRIORITES_V140",
+          "part": "xl/worksheets/sheet48.xml",
+          "bytes": 24940,
+          "sha256": "fc86f24290cfe2f059d98b2aa95fb51e966a6352ca152d2ac59acce877943d28"
+        },
+        {
+          "name": "SUIVI_V140",
+          "part": "xl/worksheets/sheet49.xml",
+          "bytes": 14473,
+          "sha256": "c3962efb76bc2cd8f0358a086b8c63557e79a3ce834415e6f5ac2830c352cdf9"
+        }
+      ]
+    },
+    {
+      "id": "PR-PIN-002",
+      "observation": "OBSERVATION_ZIP_EPINGLEE_DANS_AUDIT_PR",
+      "pr": 50,
+      "headSha": "0b64a5ffbbd3d58e10fbdfed6d55a9ce4613237d",
+      "path": "docs/clan-war-v140/Yautja_Guerres_Clans_Suivi_Production_V140_2026-10-31.xlsx",
+      "blobSha": "3cdd1d1d7f201e01e037e0a543e64a560e4514bc",
+      "bytes": 379347,
+      "sha256": "e5a8f3ac7a31312cd0f0ff7da6fabd23510c0f8d861afebfa5870137e3deb44e",
+      "worksheets": 52,
+      "sheetParts": [
+        {
+          "name": "ASSAUT",
+          "part": "xl/worksheets/sheet1.xml",
+          "bytes": 29077,
+          "sha256": "17db80f694147a90d975039dd938ba3e20508af47942847efa90edaf1f79abd0"
+        },
+        {
+          "name": "OUTER_OPS",
+          "part": "xl/worksheets/sheet2.xml",
+          "bytes": 28673,
+          "sha256": "84662d1742c15804c9bf10fc6fbb04c54d59ad16a8bcd0d87141b33b54afa4e5"
+        },
+        {
+          "name": "INFILTRATION",
+          "part": "xl/worksheets/sheet3.xml",
+          "bytes": 28741,
+          "sha256": "f6c3e7f6a1e35ed098c6defe33315d5f9b310efa8734cfaf6ae4040d81ee7815"
+        },
+        {
+          "name": "RTS",
+          "part": "xl/worksheets/sheet4.xml",
+          "bytes": 34255,
+          "sha256": "f8846b4fa7a924340a82132ca4690610f1a3cf10c8969b6de93f432cbe261842"
+        },
+        {
+          "name": "SYSTEMES_COMMUNS",
+          "part": "xl/worksheets/sheet5.xml",
+          "bytes": 34344,
+          "sha256": "a54621c5aefcbeb8afa7799abcd5056ac88fc733073efc9623bef3738553dbb8"
+        },
+        {
+          "name": "MULTIJOUEUR",
+          "part": "xl/worksheets/sheet6.xml",
+          "bytes": 23422,
+          "sha256": "4642d9ad8b8a826be116b7a3a48b008818a3ee523cb0c73965d533beb043e695"
+        },
+        {
+          "name": "MISSIONS_1200",
+          "part": "xl/worksheets/sheet7.xml",
+          "bytes": 1307177,
+          "sha256": "bf6da450c3bfedb2873a6450623cd69d6083daca062ab3a7b28a2878228080f8"
+        },
+        {
+          "name": "W3_24_RTS",
+          "part": "xl/worksheets/sheet8.xml",
+          "bytes": 36891,
+          "sha256": "290dcf08c0e6ac5404f6fe9c5bef1244acb5977f055c5d2d568cbc543206c989"
+        },
+        {
+          "name": "CARTES_W3_12",
+          "part": "xl/worksheets/sheet9.xml",
+          "bytes": 15100,
+          "sha256": "a1f8c22e0b44ad64a50a2ba7a9cc89e3e54e997a91afa82513fb2d251c0fb1d4"
+        },
+        {
+          "name": "W5_CAMPAGNES_36",
+          "part": "xl/worksheets/sheet10.xml",
+          "bytes": 31255,
+          "sha256": "1c9f01e965948b64fc071580b54d1d359256682eb21abfdcf5457fd351d0f799"
+        },
+        {
+          "name": "LORE_CONTINUITE",
+          "part": "xl/worksheets/sheet11.xml",
+          "bytes": 14485,
+          "sha256": "e5f717cccdcf7cdf259d2c14451f9a024119ec93fce81409b66294c32870338d"
+        },
+        {
+          "name": "QA_ACCEPTATION",
+          "part": "xl/worksheets/sheet12.xml",
+          "bytes": 162547,
+          "sha256": "d637b0991bd0e9b18b4f22c2160088f916873f689fe1b402f86dfbf7f3d7495d"
+        },
+        {
+          "name": "CHAINES_PR",
+          "part": "xl/worksheets/sheet13.xml",
+          "bytes": 7403,
+          "sha256": "afbc52f7040b2243e376f0812bb232724e53c1c49ddb335a62a1ea5a81d922ad"
+        },
+        {
+          "name": "SOURCES",
+          "part": "xl/worksheets/sheet14.xml",
+          "bytes": 7619,
+          "sha256": "1cd640d7d329563d4710cc52ff64eb69b4f599157df7e891ca333c8f41320004"
+        },
+        {
+          "name": "ROADMAP_GLOBALE",
+          "part": "xl/worksheets/sheet15.xml",
+          "bytes": 159909,
+          "sha256": "5b3906ba62e2395150eeb6fa8edb1499ee70e1d6bfc1e11f4fa083e92fa67946"
+        },
+        {
+          "name": "00_PILOTAGE",
+          "part": "xl/worksheets/sheet16.xml",
+          "bytes": 19278,
+          "sha256": "6009fb0fb1e8e6b6f1849f21973946755a4dcee4079f4be3e59e9c14bbbcaf22"
+        },
+        {
+          "name": "LEGENDE_ET_MODE",
+          "part": "xl/worksheets/sheet17.xml",
+          "bytes": 4225,
+          "sha256": "0ad1f905c749dae85c85bd490c90234b78635d6a4b89d3498e685bd4d8148658"
+        },
+        {
+          "name": "RTS_V134_SYNCHRO",
+          "part": "xl/worksheets/sheet18.xml",
+          "bytes": 50703,
+          "sha256": "3ea1c91724e2284564cc23cd3a32f4e72c7275118ce30cca8a19127443725e37"
+        },
+        {
+          "name": "MODES_V135_PARALLELE",
+          "part": "xl/worksheets/sheet19.xml",
+          "bytes": 53860,
+          "sha256": "70f0010aa7d64667703d5dbdeaa1287b8126cb2bdb45fa6cc8cc1658ff1a93ac"
+        },
+        {
+          "name": "QA_V135",
+          "part": "xl/worksheets/sheet20.xml",
+          "bytes": 21298,
+          "sha256": "88523cc3b1372c0d3c0d253ce166f3e7d95251560e56a74da01b236ec6bcf743"
+        },
+        {
+          "name": "MODES_V136_PARALLELE",
+          "part": "xl/worksheets/sheet21.xml",
+          "bytes": 55221,
+          "sha256": "b90b7bd4cf47b021b04da94a4681be967926f76b8d65cec466bcfff5ba90f303"
+        },
+        {
+          "name": "QA_V136",
+          "part": "xl/worksheets/sheet22.xml",
+          "bytes": 28553,
+          "sha256": "688bce29b4a5aef0fc06c4de253bd088fda12e52f189fc8d414de3dfa2c631b3"
+        },
+        {
+          "name": "INTERMODES_V136",
+          "part": "xl/worksheets/sheet23.xml",
+          "bytes": 12559,
+          "sha256": "9598cb0556a940241075a07c6df354c1c0dadca585680e41ce7f9743e3161004"
+        },
+        {
+          "name": "SUIVI_V136",
+          "part": "xl/worksheets/sheet24.xml",
+          "bytes": 16118,
+          "sha256": "beaa3a4fc0bc6f6be4be3568be2d7d230ca51aab620e3a23bcb265554ebcdd16"
+        },
+        {
+          "name": "ASSAUT_V137",
+          "part": "xl/worksheets/sheet25.xml",
+          "bytes": 18201,
+          "sha256": "b13a112fdbba3036e30986dddb9bf4236cb073548c7724247c304a5035aabd54"
+        },
+        {
+          "name": "OUTER_OPS_V137",
+          "part": "xl/worksheets/sheet26.xml",
+          "bytes": 17912,
+          "sha256": "73bc6760cdfca0c6dfca810377cf82ba0d2d0a0fab0e2e7d60a369d3cb54d8cf"
+        },
+        {
+          "name": "INFILTRATION_V137",
+          "part": "xl/worksheets/sheet27.xml",
+          "bytes": 17712,
+          "sha256": "bb05c00d93b4ca13fde315afc151d851d403b5d898dc3299ca92d587e49fbb9f"
+        },
+        {
+          "name": "RTS_V137",
+          "part": "xl/worksheets/sheet28.xml",
+          "bytes": 17827,
+          "sha256": "8de7c218f72f58a89d34ae32f9a5f34a9ee4ceb6c4ef8943cd0ce7587c9692be"
+        },
+        {
+          "name": "QA_V137",
+          "part": "xl/worksheets/sheet29.xml",
+          "bytes": 35378,
+          "sha256": "a7cd5ce48bd0ec6e65918235e74c5aee08603fcd6b56df2482eaf319232ea7df"
+        },
+        {
+          "name": "CROISEMENTS_V137",
+          "part": "xl/worksheets/sheet30.xml",
+          "bytes": 16597,
+          "sha256": "98905736e2b59d934bbffd2c31eaa3a8dbf41e5b7b932a44e835483625454e34"
+        },
+        {
+          "name": "SUIVI_V137",
+          "part": "xl/worksheets/sheet31.xml",
+          "bytes": 11223,
+          "sha256": "f9703eeee7a7db61621a6946cf25af11c0a5de2aaa1a3f407bbb02e8644bc809"
+        },
+        {
+          "name": "ASSAUT_V138",
+          "part": "xl/worksheets/sheet32.xml",
+          "bytes": 19790,
+          "sha256": "18a88850951e829fb356b4346d862655d7cb4930286ff5e35868d4f72ece53ba"
+        },
+        {
+          "name": "OUTER_OPS_V138",
+          "part": "xl/worksheets/sheet33.xml",
+          "bytes": 19503,
+          "sha256": "1100b4bb2b0869ecd3ece325468f6a46f5e00ce4fc9933b9695488065edc56fe"
+        },
+        {
+          "name": "INFILTRATION_V138",
+          "part": "xl/worksheets/sheet34.xml",
+          "bytes": 19333,
+          "sha256": "3f75e89b5c9d592cfef854c0e773593fc930b2c46f45ee28e4ea3fdb97745984"
+        },
+        {
+          "name": "RTS_V138",
+          "part": "xl/worksheets/sheet35.xml",
+          "bytes": 19434,
+          "sha256": "494e12e680cb4b8f60af1071a0b65b5eeb09cc03945d26789b0758a7865188a4"
+        },
+        {
+          "name": "QA_V138",
+          "part": "xl/worksheets/sheet36.xml",
+          "bytes": 44795,
+          "sha256": "a2d515239e6f7a3cfcdddd4495a713e6fdbdcd29d00014230b443e8b85159f97"
+        },
+        {
+          "name": "CROISEMENTS_V138",
+          "part": "xl/worksheets/sheet37.xml",
+          "bytes": 19729,
+          "sha256": "ee5bf7de7f8d812040fde84895f731fe118cb7d5ec2b9239897e2405ad3453fc"
+        },
+        {
+          "name": "SUIVI_V138",
+          "part": "xl/worksheets/sheet38.xml",
+          "bytes": 11355,
+          "sha256": "ae619d37a9a5a349808682dc4b6345bedc139970daf081da0d2c0095d801d4b7"
+        },
+        {
+          "name": "ASSAUT_V139",
+          "part": "xl/worksheets/sheet39.xml",
+          "bytes": 20456,
+          "sha256": "63e3287ba636c49e43f5a0896b46f4a0a194f38beaba29f9fc878639a40b34bf"
+        },
+        {
+          "name": "OUTER_OPS_V139",
+          "part": "xl/worksheets/sheet40.xml",
+          "bytes": 20209,
+          "sha256": "f7d498a545626c48b6aaab3465c796ba31ab0f563cb5018942c4813560fa20a5"
+        },
+        {
+          "name": "INFILTRATION_V139",
+          "part": "xl/worksheets/sheet41.xml",
+          "bytes": 20036,
+          "sha256": "91b64eda07a51f977f74c9928c7bdd3e3a053c564b70410117d7373a420aa7c4"
+        },
+        {
+          "name": "RTS_V139",
+          "part": "xl/worksheets/sheet42.xml",
+          "bytes": 20172,
+          "sha256": "be441f3db5fd6c677ef4cbee2d36485b91a13d8997ba99d81ae83d0e717d709c"
+        },
+        {
+          "name": "QA_V139",
+          "part": "xl/worksheets/sheet43.xml",
+          "bytes": 51525,
+          "sha256": "c289aab3e70cbfcb3fd9ef1c94fb7890e8d56ab068d084cd945246fffa2355d5"
+        },
+        {
+          "name": "CROISEMENTS_V139",
+          "part": "xl/worksheets/sheet44.xml",
+          "bytes": 22644,
+          "sha256": "94e63a42ad9dfc2bc14fdf971dcc4d205032d8da580cd36c4d69135b446e9497"
+        },
+        {
+          "name": "SUIVI_V139",
+          "part": "xl/worksheets/sheet45.xml",
+          "bytes": 10761,
+          "sha256": "f2ba16a0479733864aa4061ac5e868449241920c65030cb6fe160dd2443ff765"
+        },
+        {
+          "name": "ASSAUT_V140",
+          "part": "xl/worksheets/sheet46.xml",
+          "bytes": 21873,
+          "sha256": "d4b88ea393df1d3e17ca520e7057093d95f1d6ed1283eb08d6210f0c6e530cb1"
+        },
+        {
+          "name": "OUTER_OPS_V140",
+          "part": "xl/worksheets/sheet47.xml",
+          "bytes": 21606,
+          "sha256": "643f147f48d2f20c4ee091d61142c50b19b32e52b0eddd216ff50794f4a38d1b"
+        },
+        {
+          "name": "INFILTRATION_V140",
+          "part": "xl/worksheets/sheet48.xml",
+          "bytes": 21402,
+          "sha256": "801927bafba8fc0ac8f201253b7e311575feb198cc66324eaa59590d4cf3b0e8"
+        },
+        {
+          "name": "RTS_V140",
+          "part": "xl/worksheets/sheet49.xml",
+          "bytes": 21566,
+          "sha256": "9f896e6f7097447366c6eaaa59737a8a99c584e0b93c193726302dc674eec106"
+        },
+        {
+          "name": "QA_V140",
+          "part": "xl/worksheets/sheet50.xml",
+          "bytes": 58139,
+          "sha256": "e7c2e637f3d57f192a23f1fcb8b3827d58af674daf39b5f72d2639938b3e3beb"
+        },
+        {
+          "name": "CROISEMENTS_V140",
+          "part": "xl/worksheets/sheet51.xml",
+          "bytes": 25804,
+          "sha256": "5cc923f2fd582922862d3c7b1139daf1fa4274039b35d9ce131411e7e5b293cb"
+        },
+        {
+          "name": "SUIVI_V140",
+          "part": "xl/worksheets/sheet52.xml",
+          "bytes": 10568,
+          "sha256": "efed1dc5191c3ce0dd5201abfece174fb3154837f8e86bdbd325cc96e604adaf"
+        }
+      ]
+    },
+    {
+      "id": "PR-PIN-003",
+      "observation": "OBSERVATION_ZIP_EPINGLEE_DANS_AUDIT_PR",
+      "pr": 53,
+      "headSha": "37583f63ea5c68554b06868b577b96cadb7bcfd3",
+      "path": "docs/clan-war-v143/Yautja_Guerres_Clans_Suivi_Production_V143_2026-10-31.xlsx",
+      "blobSha": "b322d205784960f415d988ae327295e48cb02322",
+      "bytes": 523571,
+      "sha256": "814c057e8638c2baedb03c408304285ef92d912bb75625e11b7d0463ec4c7103",
+      "worksheets": 73,
+      "sheetParts": [
+        {
+          "name": "ASSAUT",
+          "part": "xl/worksheets/sheet1.xml",
+          "bytes": 29077,
+          "sha256": "f74a0f300e5169c2a90ed37c87c13913d5744a634a51c6ace3bbda9ec5cd20ef"
+        },
+        {
+          "name": "OUTER_OPS",
+          "part": "xl/worksheets/sheet2.xml",
+          "bytes": 28673,
+          "sha256": "5da6c77169b2d172b4b3ff0fda3fea5c43f8508e3747c72015240a59e3067b62"
+        },
+        {
+          "name": "INFILTRATION",
+          "part": "xl/worksheets/sheet3.xml",
+          "bytes": 28741,
+          "sha256": "8c5f259c10460ce8b08c7da80e7fcbdee05610383ebb60706a3a7ca1da97f830"
+        },
+        {
+          "name": "RTS",
+          "part": "xl/worksheets/sheet4.xml",
+          "bytes": 34255,
+          "sha256": "1f1867c169b52673577f0dbab393271b0e4d275ed77e81587e97ded81d96cb24"
+        },
+        {
+          "name": "SYSTEMES_COMMUNS",
+          "part": "xl/worksheets/sheet5.xml",
+          "bytes": 34344,
+          "sha256": "c8fad1d7c00ff9cb9d4399a47269072c03ff621c25ea46ab39853a3190ea5e66"
+        },
+        {
+          "name": "MULTIJOUEUR",
+          "part": "xl/worksheets/sheet6.xml",
+          "bytes": 23422,
+          "sha256": "92c1cf5a907088989fdef3e1142bf5901306d5548ae3b8effcff4688efa7f096"
+        },
+        {
+          "name": "MISSIONS_1200",
+          "part": "xl/worksheets/sheet7.xml",
+          "bytes": 1307177,
+          "sha256": "7f17351bd3e4c2de0b83a81ee422c14a13a07844681210ccf81c98cede95a0c4"
+        },
+        {
+          "name": "W3_24_RTS",
+          "part": "xl/worksheets/sheet8.xml",
+          "bytes": 36891,
+          "sha256": "76d660026dd25ca1eb52cdae3e01ae2b620468b2713a43b7ba9efc4dc838fbe4"
+        },
+        {
+          "name": "CARTES_W3_12",
+          "part": "xl/worksheets/sheet9.xml",
+          "bytes": 15100,
+          "sha256": "39b738d0795713e653b020221a711f3c8c2f8ecfad97f95afafbb2bca166ed26"
+        },
+        {
+          "name": "W5_CAMPAGNES_36",
+          "part": "xl/worksheets/sheet10.xml",
+          "bytes": 31255,
+          "sha256": "893b1450f9f5d5c48e1d30344a4684dbb6fce51c153f780b805ce33940661c94"
+        },
+        {
+          "name": "LORE_CONTINUITE",
+          "part": "xl/worksheets/sheet11.xml",
+          "bytes": 14485,
+          "sha256": "52f94504701b37c6b80defa5dd505fdd1f9ff80e1e0b448ad3a9e8574255d686"
+        },
+        {
+          "name": "QA_ACCEPTATION",
+          "part": "xl/worksheets/sheet12.xml",
+          "bytes": 162547,
+          "sha256": "43a2fe287801e16488f73584771d72eeb9e3a80273b9f50242d654520d58603a"
+        },
+        {
+          "name": "CHAINES_PR",
+          "part": "xl/worksheets/sheet13.xml",
+          "bytes": 7403,
+          "sha256": "1facb3e4c4e4a4603e392382fe93cb6eea8c396fd348b96c8185e71c9195fc27"
+        },
+        {
+          "name": "SOURCES",
+          "part": "xl/worksheets/sheet14.xml",
+          "bytes": 7619,
+          "sha256": "4378d0fd85a4ccdd49de8592f5feb5048df0f2d2ee7a6aa9172a225b685c2ef9"
+        },
+        {
+          "name": "ROADMAP_GLOBALE",
+          "part": "xl/worksheets/sheet15.xml",
+          "bytes": 159909,
+          "sha256": "494a77a048d803672d4c3b4b3ee72ac4f887aeb7048434871fea12fbcda38d9d"
+        },
+        {
+          "name": "00_PILOTAGE",
+          "part": "xl/worksheets/sheet16.xml",
+          "bytes": 19278,
+          "sha256": "8dae392babd8fec31571ec36724ec21d9c15d4a70d0d009192c5161b16711b78"
+        },
+        {
+          "name": "LEGENDE_ET_MODE",
+          "part": "xl/worksheets/sheet17.xml",
+          "bytes": 4225,
+          "sha256": "80bf1795eb53105072283b36e7c3bb12269deafc42baa1d1230f15f28ea5eb80"
+        },
+        {
+          "name": "RTS_V134_SYNCHRO",
+          "part": "xl/worksheets/sheet18.xml",
+          "bytes": 50703,
+          "sha256": "3ea1c91724e2284564cc23cd3a32f4e72c7275118ce30cca8a19127443725e37"
+        },
+        {
+          "name": "MODES_V135_PARALLELE",
+          "part": "xl/worksheets/sheet19.xml",
+          "bytes": 53860,
+          "sha256": "00a3085c22f1138244232c86c8b20efb2461dc5f52db5af1a797de5d7beb0bc2"
+        },
+        {
+          "name": "QA_V135",
+          "part": "xl/worksheets/sheet20.xml",
+          "bytes": 21298,
+          "sha256": "de244f8843d098f3fd6cac1665448c2d0d549d84c9e166c08334230ae171fc7a"
+        },
+        {
+          "name": "MODES_V136_PARALLELE",
+          "part": "xl/worksheets/sheet21.xml",
+          "bytes": 55221,
+          "sha256": "b90b7bd4cf47b021b04da94a4681be967926f76b8d65cec466bcfff5ba90f303"
+        },
+        {
+          "name": "QA_V136",
+          "part": "xl/worksheets/sheet22.xml",
+          "bytes": 28553,
+          "sha256": "688bce29b4a5aef0fc06c4de253bd088fda12e52f189fc8d414de3dfa2c631b3"
+        },
+        {
+          "name": "INTERMODES_V136",
+          "part": "xl/worksheets/sheet23.xml",
+          "bytes": 12559,
+          "sha256": "9598cb0556a940241075a07c6df354c1c0dadca585680e41ce7f9743e3161004"
+        },
+        {
+          "name": "SUIVI_V136",
+          "part": "xl/worksheets/sheet24.xml",
+          "bytes": 16118,
+          "sha256": "beaa3a4fc0bc6f6be4be3568be2d7d230ca51aab620e3a23bcb265554ebcdd16"
+        },
+        {
+          "name": "ASSAUT_V137",
+          "part": "xl/worksheets/sheet25.xml",
+          "bytes": 18201,
+          "sha256": "b13a112fdbba3036e30986dddb9bf4236cb073548c7724247c304a5035aabd54"
+        },
+        {
+          "name": "OUTER_OPS_V137",
+          "part": "xl/worksheets/sheet26.xml",
+          "bytes": 17912,
+          "sha256": "73bc6760cdfca0c6dfca810377cf82ba0d2d0a0fab0e2e7d60a369d3cb54d8cf"
+        },
+        {
+          "name": "INFILTRATION_V137",
+          "part": "xl/worksheets/sheet27.xml",
+          "bytes": 17712,
+          "sha256": "bb05c00d93b4ca13fde315afc151d851d403b5d898dc3299ca92d587e49fbb9f"
+        },
+        {
+          "name": "RTS_V137",
+          "part": "xl/worksheets/sheet28.xml",
+          "bytes": 17827,
+          "sha256": "8de7c218f72f58a89d34ae32f9a5f34a9ee4ceb6c4ef8943cd0ce7587c9692be"
+        },
+        {
+          "name": "QA_V137",
+          "part": "xl/worksheets/sheet29.xml",
+          "bytes": 35378,
+          "sha256": "a7cd5ce48bd0ec6e65918235e74c5aee08603fcd6b56df2482eaf319232ea7df"
+        },
+        {
+          "name": "CROISEMENTS_V137",
+          "part": "xl/worksheets/sheet30.xml",
+          "bytes": 16597,
+          "sha256": "98905736e2b59d934bbffd2c31eaa3a8dbf41e5b7b932a44e835483625454e34"
+        },
+        {
+          "name": "SUIVI_V137",
+          "part": "xl/worksheets/sheet31.xml",
+          "bytes": 11223,
+          "sha256": "ab2701a6ac007125b46999ab2408747399fae5490bc83c3a4d13ab162453b19b"
+        },
+        {
+          "name": "ASSAUT_V138",
+          "part": "xl/worksheets/sheet32.xml",
+          "bytes": 19790,
+          "sha256": "18a88850951e829fb356b4346d862655d7cb4930286ff5e35868d4f72ece53ba"
+        },
+        {
+          "name": "OUTER_OPS_V138",
+          "part": "xl/worksheets/sheet33.xml",
+          "bytes": 19503,
+          "sha256": "1100b4bb2b0869ecd3ece325468f6a46f5e00ce4fc9933b9695488065edc56fe"
+        },
+        {
+          "name": "INFILTRATION_V138",
+          "part": "xl/worksheets/sheet34.xml",
+          "bytes": 19333,
+          "sha256": "3f75e89b5c9d592cfef854c0e773593fc930b2c46f45ee28e4ea3fdb97745984"
+        },
+        {
+          "name": "RTS_V138",
+          "part": "xl/worksheets/sheet35.xml",
+          "bytes": 19434,
+          "sha256": "494e12e680cb4b8f60af1071a0b65b5eeb09cc03945d26789b0758a7865188a4"
+        },
+        {
+          "name": "QA_V138",
+          "part": "xl/worksheets/sheet36.xml",
+          "bytes": 44795,
+          "sha256": "a2d515239e6f7a3cfcdddd4495a713e6fdbdcd29d00014230b443e8b85159f97"
+        },
+        {
+          "name": "CROISEMENTS_V138",
+          "part": "xl/worksheets/sheet37.xml",
+          "bytes": 19729,
+          "sha256": "ee5bf7de7f8d812040fde84895f731fe118cb7d5ec2b9239897e2405ad3453fc"
+        },
+        {
+          "name": "SUIVI_V138",
+          "part": "xl/worksheets/sheet38.xml",
+          "bytes": 11355,
+          "sha256": "ae097f988efb6548c7a6c1d74d20299e0e709fd0f6190331c2c29b8feb7bac70"
+        },
+        {
+          "name": "ASSAUT_V139",
+          "part": "xl/worksheets/sheet39.xml",
+          "bytes": 20456,
+          "sha256": "63e3287ba636c49e43f5a0896b46f4a0a194f38beaba29f9fc878639a40b34bf"
+        },
+        {
+          "name": "OUTER_OPS_V139",
+          "part": "xl/worksheets/sheet40.xml",
+          "bytes": 20209,
+          "sha256": "f7d498a545626c48b6aaab3465c796ba31ab0f563cb5018942c4813560fa20a5"
+        },
+        {
+          "name": "INFILTRATION_V139",
+          "part": "xl/worksheets/sheet41.xml",
+          "bytes": 20036,
+          "sha256": "91b64eda07a51f977f74c9928c7bdd3e3a053c564b70410117d7373a420aa7c4"
+        },
+        {
+          "name": "RTS_V139",
+          "part": "xl/worksheets/sheet42.xml",
+          "bytes": 20172,
+          "sha256": "be441f3db5fd6c677ef4cbee2d36485b91a13d8997ba99d81ae83d0e717d709c"
+        },
+        {
+          "name": "QA_V139",
+          "part": "xl/worksheets/sheet43.xml",
+          "bytes": 51525,
+          "sha256": "c289aab3e70cbfcb3fd9ef1c94fb7890e8d56ab068d084cd945246fffa2355d5"
+        },
+        {
+          "name": "CROISEMENTS_V139",
+          "part": "xl/worksheets/sheet44.xml",
+          "bytes": 22644,
+          "sha256": "94e63a42ad9dfc2bc14fdf971dcc4d205032d8da580cd36c4d69135b446e9497"
+        },
+        {
+          "name": "SUIVI_V139",
+          "part": "xl/worksheets/sheet45.xml",
+          "bytes": 10761,
+          "sha256": "b86e661654e5c7b3b23227a4fdb4a5a51ae3cfef2e6bbfd38ac131d96097e3dd"
+        },
+        {
+          "name": "ASSAUT_V140",
+          "part": "xl/worksheets/sheet46.xml",
+          "bytes": 21873,
+          "sha256": "d4b88ea393df1d3e17ca520e7057093d95f1d6ed1283eb08d6210f0c6e530cb1"
+        },
+        {
+          "name": "OUTER_OPS_V140",
+          "part": "xl/worksheets/sheet47.xml",
+          "bytes": 21606,
+          "sha256": "643f147f48d2f20c4ee091d61142c50b19b32e52b0eddd216ff50794f4a38d1b"
+        },
+        {
+          "name": "INFILTRATION_V140",
+          "part": "xl/worksheets/sheet48.xml",
+          "bytes": 21402,
+          "sha256": "801927bafba8fc0ac8f201253b7e311575feb198cc66324eaa59590d4cf3b0e8"
+        },
+        {
+          "name": "RTS_V140",
+          "part": "xl/worksheets/sheet49.xml",
+          "bytes": 21566,
+          "sha256": "9f896e6f7097447366c6eaaa59737a8a99c584e0b93c193726302dc674eec106"
+        },
+        {
+          "name": "QA_V140",
+          "part": "xl/worksheets/sheet50.xml",
+          "bytes": 58139,
+          "sha256": "e7c2e637f3d57f192a23f1fcb8b3827d58af674daf39b5f72d2639938b3e3beb"
+        },
+        {
+          "name": "CROISEMENTS_V140",
+          "part": "xl/worksheets/sheet51.xml",
+          "bytes": 25804,
+          "sha256": "5cc923f2fd582922862d3c7b1139daf1fa4274039b35d9ce131411e7e5b293cb"
+        },
+        {
+          "name": "SUIVI_V140",
+          "part": "xl/worksheets/sheet52.xml",
+          "bytes": 10568,
+          "sha256": "6dadf131b926271f4d7666706bce7347b2db3ef0300c2935d5d9b44e16104f91"
+        },
+        {
+          "name": "ASSAUT_V141",
+          "part": "xl/worksheets/sheet53.xml",
+          "bytes": 23377,
+          "sha256": "594ab6cb49a8d8e2bcd48d3aa84cc6d1a37cd09cb0cfc6cc30d8f22ea16453ab"
+        },
+        {
+          "name": "OUTER_OPS_V141",
+          "part": "xl/worksheets/sheet54.xml",
+          "bytes": 23084,
+          "sha256": "df5dfcc99acde77f520f93b6c2370befb379f7aa00fc50e8c0d46c0c31a94ce0"
+        },
+        {
+          "name": "INFILTRATION_V141",
+          "part": "xl/worksheets/sheet55.xml",
+          "bytes": 22927,
+          "sha256": "3607dd875a0bd8ae830402892fbff1e1c5f52b88db197e15b3925c7680255d96"
+        },
+        {
+          "name": "RTS_V141",
+          "part": "xl/worksheets/sheet56.xml",
+          "bytes": 23061,
+          "sha256": "2888e54df67d740122186b2d5b176fdb0b3becf839674040743c2e1af4e9394e"
+        },
+        {
+          "name": "QA_V141",
+          "part": "xl/worksheets/sheet57.xml",
+          "bytes": 66663,
+          "sha256": "11b646a37421507f58c980474ed7ab6e40d121e570f121d7dab52c9c29464c88"
+        },
+        {
+          "name": "CROISEMENTS_V141",
+          "part": "xl/worksheets/sheet58.xml",
+          "bytes": 29052,
+          "sha256": "5121823a079fc5e2298737b57f4598f0b23cfae2c028e84b73efe057e651565c"
+        },
+        {
+          "name": "SUIVI_V141",
+          "part": "xl/worksheets/sheet59.xml",
+          "bytes": 11594,
+          "sha256": "94807f6c85ec40385bbe7ddcfd007351933c5851f73b8abc4dde231db1e67419"
+        },
+        {
+          "name": "ASSAUT_V142",
+          "part": "xl/worksheets/sheet60.xml",
+          "bytes": 24877,
+          "sha256": "64606322fb5b9bd0efc3dd8bc9b4a7e72479a347ec4c856651b7401e555535a6"
+        },
+        {
+          "name": "OUTER_OPS_V142",
+          "part": "xl/worksheets/sheet61.xml",
+          "bytes": 24638,
+          "sha256": "e6054e112d34f0f0a7ae80aecf3c3999cb87b5b1cb2567f9fd404e5826dde670"
+        },
+        {
+          "name": "INFILTRATION_V142",
+          "part": "xl/worksheets/sheet62.xml",
+          "bytes": 24406,
+          "sha256": "d42b8fbe60936808ebce97ed35d992f88825f370c68138a5f97ea05a3b03bae8"
+        },
+        {
+          "name": "RTS_V142",
+          "part": "xl/worksheets/sheet63.xml",
+          "bytes": 24542,
+          "sha256": "defe196e0a8cafaaca865e33300c2d9f42230caea70d9101535914d30a304688"
+        },
+        {
+          "name": "QA_V142",
+          "part": "xl/worksheets/sheet64.xml",
+          "bytes": 75093,
+          "sha256": "88149765dbd88a8beaaa3e3703976fccae4937cf7c2504cba4e7e9d5e07840a0"
+        },
+        {
+          "name": "CROISEMENTS_V142",
+          "part": "xl/worksheets/sheet65.xml",
+          "bytes": 32419,
+          "sha256": "35888df2b1627af6c646c2e71545f8dd18ec77d05eda35966e4511c9ce91041b"
+        },
+        {
+          "name": "SUIVI_V142",
+          "part": "xl/worksheets/sheet66.xml",
+          "bytes": 11465,
+          "sha256": "c995f5621daa124ae3e3ee064236144d12ea657b7674a5f64a020c599f8e3a36"
+        },
+        {
+          "name": "ASSAUT_V143",
+          "part": "xl/worksheets/sheet67.xml",
+          "bytes": 26371,
+          "sha256": "e06d121d66fc81115487c868071359cebe97536dce8073e49d234ef6461c1299"
+        },
+        {
+          "name": "OUTER_OPS_V143",
+          "part": "xl/worksheets/sheet68.xml",
+          "bytes": 26145,
+          "sha256": "8986010e1e17213f0c8522a0991c172a5f72fcd233df7e9a78df0788085aa82e"
+        },
+        {
+          "name": "INFILTRATION_V143",
+          "part": "xl/worksheets/sheet69.xml",
+          "bytes": 25865,
+          "sha256": "731ffa95f8652e8e8c84039f751a463b58683b52d809d2449d12b7b6945a32b4"
+        },
+        {
+          "name": "RTS_V143",
+          "part": "xl/worksheets/sheet70.xml",
+          "bytes": 26007,
+          "sha256": "d5a78ff8870daad373a00d31dd442fa9bbf50a4f9f6ba2d5532adbc4f7ab2d29"
+        },
+        {
+          "name": "QA_V143",
+          "part": "xl/worksheets/sheet71.xml",
+          "bytes": 83403,
+          "sha256": "cef2c0e3b215656dbff97e4201a6d32b28f684d16260e3c586b62f5d9342a92d"
+        },
+        {
+          "name": "CROISEMENTS_V143",
+          "part": "xl/worksheets/sheet72.xml",
+          "bytes": 35653,
+          "sha256": "87ab78526c8c21b439b6d6b967ac045826b858e5521974fa069608d49a1a1823"
+        },
+        {
+          "name": "SUIVI_V143",
+          "part": "xl/worksheets/sheet73.xml",
+          "bytes": 11377,
+          "sha256": "1c720b6c67b0e7ce7822be3ffdf33d50937c496c510ba590eff0b4f8b7acd965"
+        }
+      ]
+    },
+    {
+      "id": "PR-PIN-004",
+      "observation": "OBSERVATION_ZIP_EPINGLEE_DANS_AUDIT_PR",
+      "pr": 54,
+      "headSha": "cadd1242926a3ecfc0c19682f524294ac9641e3c",
+      "path": "docs/clan-war-v144/Yautja_Guerres_Clans_Contrats_Bilans_V144_2026-10-31.xlsx",
+      "blobSha": "b4aec62812230c09309ce7e2f730f149189d907c",
+      "bytes": 33993,
+      "sha256": "0011926ea776190e21c43c92ed0d63a63ce215b9de9caccf26cc568fd9b17fe1",
+      "worksheets": 9,
+      "sheetParts": [
+        {
+          "name": "01_ASSAUT",
+          "part": "xl/worksheets/sheet1.xml",
+          "bytes": 18154,
+          "sha256": "5a5c5afe9bf91591e23e9365a5eb14f06e0fe23679150f591b5257cfbb703fa8"
+        },
+        {
+          "name": "02_OUTER_OPS",
+          "part": "xl/worksheets/sheet2.xml",
+          "bytes": 17624,
+          "sha256": "5e47dd0835babb2280ba81b1075a052cd44a70198b9487801f9adc2945cdad72"
+        },
+        {
+          "name": "03_INFILTRATION",
+          "part": "xl/worksheets/sheet3.xml",
+          "bytes": 17832,
+          "sha256": "03b09c0086731aeccf990628f21d8ecf24fe6ee62f5db6ab64137f891ac3b06a"
+        },
+        {
+          "name": "04_RTS",
+          "part": "xl/worksheets/sheet4.xml",
+          "bytes": 17762,
+          "sha256": "c68c12b20c65aa4ddb560a09e3614ff72e6e69f45f521b9a0f6131d94309e84d"
+        },
+        {
+          "name": "05_QA",
+          "part": "xl/worksheets/sheet5.xml",
+          "bytes": 16999,
+          "sha256": "fdb173efd0207bc339d92e134280f5e872c05b21f7174f84b71a775f9bce31a6"
+        },
+        {
+          "name": "06_CONTRAT_V6_V85",
+          "part": "xl/worksheets/sheet6.xml",
+          "bytes": 9510,
+          "sha256": "04965316a435ea60a52875a99e3406598431d2ae25b63bc1f12f21557dee8bef"
+        },
+        {
+          "name": "07_MANQUANTS_1TO1",
+          "part": "xl/worksheets/sheet7.xml",
+          "bytes": 13371,
+          "sha256": "4ee2c1854a0f7bcd04bdce36d75edb7205ed3cfdac2b53d1b7dc3ef0c5c22c25"
+        },
+        {
+          "name": "08_HISTORIQUE",
+          "part": "xl/worksheets/sheet8.xml",
+          "bytes": 6414,
+          "sha256": "6cc705bdee66392e6fd0b68bc5586ffaa99c25e65bfb53cfba13eca759a92012"
+        },
+        {
+          "name": "00_PILOTAGE",
+          "part": "xl/worksheets/sheet9.xml",
+          "bytes": 11107,
+          "sha256": "dab088722694e44d17a320db1bb4922e64514a57b705c09b681ca7fbe71e88f9"
+        }
+      ]
+    },
+    {
+      "id": "PR-PIN-005",
+      "observation": "OBSERVATION_ZIP_EPINGLEE_DANS_AUDIT_PR",
+      "pr": 55,
+      "headSha": "fa0322800d5c51e16a4dd56ef6d0fc80d8020394",
+      "path": "docs/clan-war-v144/Yautja_Guerres_Clans_Suivi_Production_V144_2026-10-31.xlsx",
+      "blobSha": "fe76b659c2955905bd05ae3cbaef1b83ef9afe45",
+      "bytes": 34819,
+      "sha256": "406167c0aacde29858c47e918cc31d9aa5c27cf88e65f12a68a6d56377582916",
+      "worksheets": 9,
+      "sheetParts": [
+        {
+          "name": "ASSAUT_V144",
+          "part": "xl/worksheets/sheet1.xml",
+          "bytes": 16566,
+          "sha256": "56df0fdef6d3a8d17be944b4784397b5376a7781d011fc5c61ada817e52808ff"
+        },
+        {
+          "name": "OUTER_OPS_V144",
+          "part": "xl/worksheets/sheet2.xml",
+          "bytes": 16254,
+          "sha256": "ba4612cea4b990324774820870532a95dbac81d390ecedc5f3490f7f177dc14d"
+        },
+        {
+          "name": "INFILTRATION_V144",
+          "part": "xl/worksheets/sheet3.xml",
+          "bytes": 15928,
+          "sha256": "f144a52f3e820ce1cc3986c150ebc1beba1daa736a71b5d45ad7c8436c070a3b"
+        },
+        {
+          "name": "RTS_V144",
+          "part": "xl/worksheets/sheet4.xml",
+          "bytes": 15817,
+          "sha256": "2f19ca765d7d03e4426ec0f66c2f8d28c7ec7198090da2b7c3f4c83c0a015402"
+        },
+        {
+          "name": "QA_V144",
+          "part": "xl/worksheets/sheet5.xml",
+          "bytes": 34732,
+          "sha256": "9168fca8add04775f6bb2262205960accb1ff07c46c61937aa654fc7baa604da"
+        },
+        {
+          "name": "CROISEMENTS_V144",
+          "part": "xl/worksheets/sheet6.xml",
+          "bytes": 12446,
+          "sha256": "0fd6edd02f950cb3154fca2b1e0e02a6faf4bb741812b9bf1870fa50ceebbcbd"
+        },
+        {
+          "name": "SOURCES_HISTORIQUES",
+          "part": "xl/worksheets/sheet7.xml",
+          "bytes": 7383,
+          "sha256": "64701f529973011b5948acc113357d50921868e7871686e7ebcd81dd4b8ef300"
+        },
+        {
+          "name": "STATUTS_CI",
+          "part": "xl/worksheets/sheet8.xml",
+          "bytes": 3237,
+          "sha256": "b208cf604f562aa605b3be2df5557872b9b70e5b6a791e38b733cf45433d0a49"
+        },
+        {
+          "name": "SUIVI_V144",
+          "part": "xl/worksheets/sheet9.xml",
+          "bytes": 10953,
+          "sha256": "dd92e828069991ce8dd37ccb310929de3ed01c7b2909f18c3e778aacae25265a"
+        }
+      ]
+    },
+    {
+      "id": "PR-PIN-006",
+      "observation": "OBSERVATION_ZIP_EPINGLEE_DANS_AUDIT_PR",
+      "pr": 56,
+      "headSha": "8452dc217e3b92469c156e54dc1be18280bbe141",
+      "path": "docs/clan-war-v144/Yautja_Guerres_Clans_Avenant_Production_V144_2026-10-31.xlsx",
+      "blobSha": "6217eb00b88c03c63ca27db8b0c9ea3b5868d119",
+      "bytes": 30273,
+      "sha256": "eb99f7022dcd4dc566e401139488bfd6caeb39447443627e3124f86998d09fdd",
+      "worksheets": 8,
+      "sheetParts": [
+        {
+          "name": "ASSAUT_V144",
+          "part": "xl/worksheets/sheet1.xml",
+          "bytes": 14892,
+          "sha256": "17890bb21124ffeddfd9b6a686e8a31a19a74b237bf00e8f9c61e221fbbbae69"
+        },
+        {
+          "name": "OUTER_OPS_V144",
+          "part": "xl/worksheets/sheet2.xml",
+          "bytes": 14583,
+          "sha256": "14d96f460a4292593a825795904a9d0ef699e896e3f8ceb7e2bc63e1597f064d"
+        },
+        {
+          "name": "INFILTRATION_V144",
+          "part": "xl/worksheets/sheet3.xml",
+          "bytes": 14652,
+          "sha256": "3e10e8dfa019a997a89c5c7482f8a6f9ecf7fae9200a16b091d30e220324eb21"
+        },
+        {
+          "name": "RTS_V144",
+          "part": "xl/worksheets/sheet4.xml",
+          "bytes": 14358,
+          "sha256": "4bbe9263baec8aef4ff37fa212160632891834084c7ebacb91993732d2e49cbb"
+        },
+        {
+          "name": "QA_V144",
+          "part": "xl/worksheets/sheet5.xml",
+          "bytes": 25623,
+          "sha256": "6294d2ca6387f3c34fbb009fc3e606a0566569ff54114b840c4eaa07a506a7b5"
+        },
+        {
+          "name": "INTERMODES_V144",
+          "part": "xl/worksheets/sheet6.xml",
+          "bytes": 10695,
+          "sha256": "4c1c9169f85d017200f47ece4205ef18f4b421621f4e3294bbd112c9930b762e"
+        },
+        {
+          "name": "HISTORIQUE_ET_CANON",
+          "part": "xl/worksheets/sheet7.xml",
+          "bytes": 7638,
+          "sha256": "a453a69084d4014491dab1f308d6657278ee9c1f5d9551a6a1322347b6223731"
+        },
+        {
+          "name": "SUIVI_V144",
+          "part": "xl/worksheets/sheet8.xml",
+          "bytes": 9075,
+          "sha256": "5318f927650abe012e799ae5b611fff1040460261462517ccb8dbfd2dd658907"
+        }
+      ]
+    },
+    {
+      "id": "PR-PIN-007",
+      "observation": "OBSERVATION_ZIP_EPINGLEE_DANS_AUDIT_PR",
+      "pr": 57,
+      "headSha": "f25cd7a33e04f789e7c6df231ccad9116a50b38c",
+      "path": "docs/clan-war-v144/Yautja_Guerres_Clans_Suivi_Production_V144_2026-10-31.xlsx",
+      "blobSha": "412dca71428ade3d28d462e3a0029e6a633544cf",
+      "bytes": 33228,
+      "sha256": "4649a6754223f3346ef749cc31523aacb359d4c7e809e8813595686d23a26626",
+      "worksheets": 9,
+      "sheetParts": [
+        {
+          "name": "ASSAUT_V144",
+          "part": "xl/worksheets/sheet1.xml",
+          "bytes": 17049,
+          "sha256": "f84ef514d95c2f43ce60ee1e701852bf8742b82ed987626c90063bb7b04ec705"
+        },
+        {
+          "name": "OUTER_OPS_V144",
+          "part": "xl/worksheets/sheet2.xml",
+          "bytes": 16388,
+          "sha256": "79409f7f3e3e4e66106290353611fa8fa099b13a1b9c2e05122ea7499fe99e31"
+        },
+        {
+          "name": "INFILTRATION_V144",
+          "part": "xl/worksheets/sheet3.xml",
+          "bytes": 16242,
+          "sha256": "ef9856467f718a45c11b5b58547de78af456083361386fe6eb1bd2c6e13b2d44"
+        },
+        {
+          "name": "RTS_V144",
+          "part": "xl/worksheets/sheet4.xml",
+          "bytes": 16363,
+          "sha256": "8377bf9603b2e6aab0526672ac28008431583f9c5ac9772a35ec8084d50a439b"
+        },
+        {
+          "name": "QA_V144",
+          "part": "xl/worksheets/sheet5.xml",
+          "bytes": 27954,
+          "sha256": "0b5d022857cf1af441dfb2291f44e361b5d0883b28d8d5dde2de3921cb17de0f"
+        },
+        {
+          "name": "INTERMODES_V144",
+          "part": "xl/worksheets/sheet6.xml",
+          "bytes": 13542,
+          "sha256": "b36838786db7bc607977da41848c65fd013a529f822acb7e89db9d9c44667c5b"
+        },
+        {
+          "name": "PROVENANCE_V143",
+          "part": "xl/worksheets/sheet7.xml",
+          "bytes": 5544,
+          "sha256": "c50aba2498014d88bbec4c7cbe58cf76f920f9811884233ef04056044adc905c"
+        },
+        {
+          "name": "ROADMAP_V145",
+          "part": "xl/worksheets/sheet8.xml",
+          "bytes": 12921,
+          "sha256": "4b9153e541802a99cecec0d050a9c9526bdce76c230ed69c0e34eb67d6089fe1"
+        },
+        {
+          "name": "PILOTAGE_V144",
+          "part": "xl/worksheets/sheet9.xml",
+          "bytes": 11578,
+          "sha256": "14c3266b2bff5768fe97b9063d94cc3dd32476c4a5bad1fd5ae011b6923185ac"
+        }
+      ]
+    },
+    {
+      "id": "PR-PIN-008",
+      "observation": "OBSERVATION_ZIP_EPINGLEE_DANS_AUDIT_PR",
+      "pr": 58,
+      "headSha": "a9a8dcebcd05774b73db1e371c04cbd6373c32da",
+      "path": "docs/clan-war-v145/Yautja_Guerres_Clans_Preuves_Transfert_V145_2026-11-01.xlsx",
+      "blobSha": "db9a02d6400e5c086ecbcb6ae9c10b8a8721b1b8",
+      "bytes": 61088,
+      "sha256": "60bbacdba4b2acc486e3618a59d6cc0260e78f04c4e8377fb14ae54e59c394b7",
+      "worksheets": 19,
+      "sheetParts": [
+        {
+          "name": "01_ASSAUT",
+          "part": "xl/worksheets/sheet1.xml",
+          "bytes": 18154,
+          "sha256": "5a5c5afe9bf91591e23e9365a5eb14f06e0fe23679150f591b5257cfbb703fa8"
+        },
+        {
+          "name": "02_OUTER_OPS",
+          "part": "xl/worksheets/sheet2.xml",
+          "bytes": 17624,
+          "sha256": "5e47dd0835babb2280ba81b1075a052cd44a70198b9487801f9adc2945cdad72"
+        },
+        {
+          "name": "03_INFILTRATION",
+          "part": "xl/worksheets/sheet3.xml",
+          "bytes": 17832,
+          "sha256": "03b09c0086731aeccf990628f21d8ecf24fe6ee62f5db6ab64137f891ac3b06a"
+        },
+        {
+          "name": "04_RTS",
+          "part": "xl/worksheets/sheet4.xml",
+          "bytes": 17762,
+          "sha256": "c68c12b20c65aa4ddb560a09e3614ff72e6e69f45f521b9a0f6131d94309e84d"
+        },
+        {
+          "name": "05_QA",
+          "part": "xl/worksheets/sheet5.xml",
+          "bytes": 16999,
+          "sha256": "fdb173efd0207bc339d92e134280f5e872c05b21f7174f84b71a775f9bce31a6"
+        },
+        {
+          "name": "06_CONTRAT_V6_V85",
+          "part": "xl/worksheets/sheet6.xml",
+          "bytes": 9510,
+          "sha256": "04965316a435ea60a52875a99e3406598431d2ae25b63bc1f12f21557dee8bef"
+        },
+        {
+          "name": "07_MANQUANTS_1TO1",
+          "part": "xl/worksheets/sheet7.xml",
+          "bytes": 13371,
+          "sha256": "4ee2c1854a0f7bcd04bdce36d75edb7205ed3cfdac2b53d1b7dc3ef0c5c22c25"
+        },
+        {
+          "name": "08_HISTORIQUE",
+          "part": "xl/worksheets/sheet8.xml",
+          "bytes": 6414,
+          "sha256": "6cc705bdee66392e6fd0b68bc5586ffaa99c25e65bfb53cfba13eca759a92012"
+        },
+        {
+          "name": "00_PILOTAGE",
+          "part": "xl/worksheets/sheet9.xml",
+          "bytes": 11107,
+          "sha256": "f769daf350a327b4a88edad609fcc6226f61d0115a6298ee7ff44874a048ed49"
+        },
+        {
+          "name": "09_ASSAUT_V145",
+          "part": "xl/worksheets/sheet10.xml",
+          "bytes": 9765,
+          "sha256": "aa5a85c394b94751c10d5f01cf4d07f1f1f28ac4473296d6c11d727c814874bb"
+        },
+        {
+          "name": "10_OUTER_OPS_V145",
+          "part": "xl/worksheets/sheet11.xml",
+          "bytes": 9485,
+          "sha256": "82bff3b0eb33325974d51d86974f51a6ceff0b41addaf5f9bb7e6b9c55c62565"
+        },
+        {
+          "name": "11_INFILTRATION_V145",
+          "part": "xl/worksheets/sheet12.xml",
+          "bytes": 9585,
+          "sha256": "eed666b82f1ddc33d55d1233e0bf1d0f36e0d4c0b1575793d2db31d175bef88b"
+        },
+        {
+          "name": "12_RTS_V145",
+          "part": "xl/worksheets/sheet13.xml",
+          "bytes": 9529,
+          "sha256": "21cab6315cec8c5516d24ae4eb3edb3f0e5dcb67093e767bb555af0713c85a8f"
+        },
+        {
+          "name": "13_QA_V145",
+          "part": "xl/worksheets/sheet14.xml",
+          "bytes": 21059,
+          "sha256": "55cbff877af84b988363a620c48f54b515709513b00af0993c5a915e0f3321e6"
+        },
+        {
+          "name": "14_SECURITE_V145",
+          "part": "xl/worksheets/sheet15.xml",
+          "bytes": 10939,
+          "sha256": "9e480bdbde0140b20fc518f3898edf12da1416b93c6eb155e739dd4275c3a344"
+        },
+        {
+          "name": "15_MAPPING_V145",
+          "part": "xl/worksheets/sheet16.xml",
+          "bytes": 9990,
+          "sha256": "1e2c8f31551f96e56d1416f34a5e4fff593fb115f3523c141e9384fc0316c68c"
+        },
+        {
+          "name": "16_BACKLOG_V145",
+          "part": "xl/worksheets/sheet17.xml",
+          "bytes": 16769,
+          "sha256": "dc193a069ce3d1d45a02f0d29a50d2dcf67b0cadbb28f70726b76e3edae785f8"
+        },
+        {
+          "name": "17_CROISEMENTS_V145",
+          "part": "xl/worksheets/sheet18.xml",
+          "bytes": 10896,
+          "sha256": "c985609c221d397cd8971311186cf3bb6f30cd8ae0f234741e4906c1fb36e5f7"
+        },
+        {
+          "name": "18_PILOTAGE_V145",
+          "part": "xl/worksheets/sheet19.xml",
+          "bytes": 13564,
+          "sha256": "d5562c96a1d4f4f9690d398ec0890190836ff0e0ceb5b8259573e41d6c137a83"
+        }
+      ]
+    },
+    {
+      "id": "PR-PIN-009",
+      "observation": "OBSERVATION_ZIP_EPINGLEE_DANS_AUDIT_PR",
+      "pr": 59,
+      "headSha": "985e036b5e4a3ef00077c515e102e9230b2b7bb4",
+      "path": "docs/clan-war-v145/Yautja_Guerres_Clans_Avenants_Production_V144_V145_2026-11-01.xlsx",
+      "blobSha": "36feea95c3d5e4d96068a767525a28790b403eff",
+      "bytes": 58897,
+      "sha256": "b697528cf7f5ec9972dcf9087b0a3fdbd4657a0654db580101d4ecf08c8e5b1b",
+      "worksheets": 16,
+      "sheetParts": [
+        {
+          "name": "ASSAUT_V144",
+          "part": "xl/worksheets/sheet1.xml",
+          "bytes": 14892,
+          "sha256": "17890bb21124ffeddfd9b6a686e8a31a19a74b237bf00e8f9c61e221fbbbae69"
+        },
+        {
+          "name": "OUTER_OPS_V144",
+          "part": "xl/worksheets/sheet2.xml",
+          "bytes": 14583,
+          "sha256": "14d96f460a4292593a825795904a9d0ef699e896e3f8ceb7e2bc63e1597f064d"
+        },
+        {
+          "name": "INFILTRATION_V144",
+          "part": "xl/worksheets/sheet3.xml",
+          "bytes": 14652,
+          "sha256": "3e10e8dfa019a997a89c5c7482f8a6f9ecf7fae9200a16b091d30e220324eb21"
+        },
+        {
+          "name": "RTS_V144",
+          "part": "xl/worksheets/sheet4.xml",
+          "bytes": 14358,
+          "sha256": "4bbe9263baec8aef4ff37fa212160632891834084c7ebacb91993732d2e49cbb"
+        },
+        {
+          "name": "QA_V144",
+          "part": "xl/worksheets/sheet5.xml",
+          "bytes": 25623,
+          "sha256": "6294d2ca6387f3c34fbb009fc3e606a0566569ff54114b840c4eaa07a506a7b5"
+        },
+        {
+          "name": "INTERMODES_V144",
+          "part": "xl/worksheets/sheet6.xml",
+          "bytes": 10695,
+          "sha256": "4c1c9169f85d017200f47ece4205ef18f4b421621f4e3294bbd112c9930b762e"
+        },
+        {
+          "name": "HISTORIQUE_ET_CANON",
+          "part": "xl/worksheets/sheet7.xml",
+          "bytes": 7638,
+          "sha256": "a453a69084d4014491dab1f308d6657278ee9c1f5d9551a6a1322347b6223731"
+        },
+        {
+          "name": "SUIVI_V144",
+          "part": "xl/worksheets/sheet8.xml",
+          "bytes": 9075,
+          "sha256": "f2b6b34337d2250a6c00f9a8abe05b689a078afed6a5ad96de48cc8808ddf26f"
+        },
+        {
+          "name": "ASSAUT_V145",
+          "part": "xl/worksheets/sheet9.xml",
+          "bytes": 16134,
+          "sha256": "6c8e691cb675533760da83d20960816ffbebd79de705d76f309d84fa1c0b596c"
+        },
+        {
+          "name": "OUTER_OPS_V145",
+          "part": "xl/worksheets/sheet10.xml",
+          "bytes": 15984,
+          "sha256": "b00063e5404b4275066ea45a834f2c48e629c4a88d2bf5b0d5dc146dea207bac"
+        },
+        {
+          "name": "INFILTRATION_V145",
+          "part": "xl/worksheets/sheet11.xml",
+          "bytes": 15922,
+          "sha256": "a6776501d550f1678cde484af26830cfa5be1865f086df14c397e8177f7c406d"
+        },
+        {
+          "name": "RTS_V145",
+          "part": "xl/worksheets/sheet12.xml",
+          "bytes": 15923,
+          "sha256": "01c30a0f340b11c1e28b5ef9424ee9445e35adfa9e264fdc3ebf05268d08f26c"
+        },
+        {
+          "name": "QA_V145",
+          "part": "xl/worksheets/sheet13.xml",
+          "bytes": 27891,
+          "sha256": "456eeeb1ea119b398eb37d12ad33f2439f3b213bfcf87768d7bc2f819cdb1591"
+        },
+        {
+          "name": "INTERMODES_V145",
+          "part": "xl/worksheets/sheet14.xml",
+          "bytes": 10944,
+          "sha256": "ba040d3d49060eb959f10d47e8df2dabe325cff9840728b81b24e28f38eb169b"
+        },
+        {
+          "name": "HISTORIQUE_V145",
+          "part": "xl/worksheets/sheet15.xml",
+          "bytes": 8644,
+          "sha256": "59e2d1de99b85fb10077c005fe676436eb80f4347ac584f099e2c8e2277891bb"
+        },
+        {
+          "name": "SUIVI_V145",
+          "part": "xl/worksheets/sheet16.xml",
+          "bytes": 11578,
+          "sha256": "5f5dc7d07ce266164e2e411bff450b2baa87b030d5c1eb29cf2468c60f99b7c1"
+        }
+      ]
+    },
+    {
+      "id": "PR-PIN-010",
+      "observation": "OBSERVATION_ZIP_EPINGLEE_DANS_AUDIT_PR",
+      "pr": 60,
+      "headSha": "9e595ef585412f75958d22174ebacf50d188d2d8",
+      "path": "docs/clan-war-v146/Yautja_Guerres_Clans_Provenance_V146_2026-11-01.xlsx",
+      "blobSha": "9ebff3e41218a02452fb9f24a847441a6de25047",
+      "bytes": 79555,
+      "sha256": "e324adc53899343fce337526fa5d13a9c3fe0b47d9e0859d70cda861ae0fe4cd",
+      "worksheets": 26,
+      "sheetParts": [
+        {
+          "name": "01_ASSAUT",
+          "part": "xl/worksheets/sheet1.xml",
+          "bytes": 18154,
+          "sha256": "5a5c5afe9bf91591e23e9365a5eb14f06e0fe23679150f591b5257cfbb703fa8"
+        },
+        {
+          "name": "02_OUTER_OPS",
+          "part": "xl/worksheets/sheet2.xml",
+          "bytes": 17624,
+          "sha256": "5e47dd0835babb2280ba81b1075a052cd44a70198b9487801f9adc2945cdad72"
+        },
+        {
+          "name": "03_INFILTRATION",
+          "part": "xl/worksheets/sheet3.xml",
+          "bytes": 17832,
+          "sha256": "03b09c0086731aeccf990628f21d8ecf24fe6ee62f5db6ab64137f891ac3b06a"
+        },
+        {
+          "name": "04_RTS",
+          "part": "xl/worksheets/sheet4.xml",
+          "bytes": 17762,
+          "sha256": "c68c12b20c65aa4ddb560a09e3614ff72e6e69f45f521b9a0f6131d94309e84d"
+        },
+        {
+          "name": "05_QA",
+          "part": "xl/worksheets/sheet5.xml",
+          "bytes": 16999,
+          "sha256": "fdb173efd0207bc339d92e134280f5e872c05b21f7174f84b71a775f9bce31a6"
+        },
+        {
+          "name": "06_CONTRAT_V6_V85",
+          "part": "xl/worksheets/sheet6.xml",
+          "bytes": 9510,
+          "sha256": "04965316a435ea60a52875a99e3406598431d2ae25b63bc1f12f21557dee8bef"
+        },
+        {
+          "name": "07_MANQUANTS_1TO1",
+          "part": "xl/worksheets/sheet7.xml",
+          "bytes": 13371,
+          "sha256": "4ee2c1854a0f7bcd04bdce36d75edb7205ed3cfdac2b53d1b7dc3ef0c5c22c25"
+        },
+        {
+          "name": "08_HISTORIQUE",
+          "part": "xl/worksheets/sheet8.xml",
+          "bytes": 6414,
+          "sha256": "6cc705bdee66392e6fd0b68bc5586ffaa99c25e65bfb53cfba13eca759a92012"
+        },
+        {
+          "name": "00_PILOTAGE",
+          "part": "xl/worksheets/sheet9.xml",
+          "bytes": 11107,
+          "sha256": "a97758f1cae4854c7c3946bab172e844c6797cfe1f2025353eaf433eb8f9f822"
+        },
+        {
+          "name": "09_ASSAUT_V145",
+          "part": "xl/worksheets/sheet10.xml",
+          "bytes": 9765,
+          "sha256": "aa5a85c394b94751c10d5f01cf4d07f1f1f28ac4473296d6c11d727c814874bb"
+        },
+        {
+          "name": "10_OUTER_OPS_V145",
+          "part": "xl/worksheets/sheet11.xml",
+          "bytes": 9485,
+          "sha256": "82bff3b0eb33325974d51d86974f51a6ceff0b41addaf5f9bb7e6b9c55c62565"
+        },
+        {
+          "name": "11_INFILTRATION_V145",
+          "part": "xl/worksheets/sheet12.xml",
+          "bytes": 9585,
+          "sha256": "eed666b82f1ddc33d55d1233e0bf1d0f36e0d4c0b1575793d2db31d175bef88b"
+        },
+        {
+          "name": "12_RTS_V145",
+          "part": "xl/worksheets/sheet13.xml",
+          "bytes": 9529,
+          "sha256": "21cab6315cec8c5516d24ae4eb3edb3f0e5dcb67093e767bb555af0713c85a8f"
+        },
+        {
+          "name": "13_QA_V145",
+          "part": "xl/worksheets/sheet14.xml",
+          "bytes": 21059,
+          "sha256": "55cbff877af84b988363a620c48f54b515709513b00af0993c5a915e0f3321e6"
+        },
+        {
+          "name": "14_SECURITE_V145",
+          "part": "xl/worksheets/sheet15.xml",
+          "bytes": 10939,
+          "sha256": "9e480bdbde0140b20fc518f3898edf12da1416b93c6eb155e739dd4275c3a344"
+        },
+        {
+          "name": "15_MAPPING_V145",
+          "part": "xl/worksheets/sheet16.xml",
+          "bytes": 9990,
+          "sha256": "1e2c8f31551f96e56d1416f34a5e4fff593fb115f3523c141e9384fc0316c68c"
+        },
+        {
+          "name": "16_BACKLOG_V145",
+          "part": "xl/worksheets/sheet17.xml",
+          "bytes": 16769,
+          "sha256": "dc193a069ce3d1d45a02f0d29a50d2dcf67b0cadbb28f70726b76e3edae785f8"
+        },
+        {
+          "name": "17_CROISEMENTS_V145",
+          "part": "xl/worksheets/sheet18.xml",
+          "bytes": 10896,
+          "sha256": "c985609c221d397cd8971311186cf3bb6f30cd8ae0f234741e4906c1fb36e5f7"
+        },
+        {
+          "name": "18_PILOTAGE_V145",
+          "part": "xl/worksheets/sheet19.xml",
+          "bytes": 13564,
+          "sha256": "205e487d154400b576fc57d8107c6e465dfc3e50fcf91fe64387982b29752af6"
+        },
+        {
+          "name": "19_GEO_V146",
+          "part": "xl/worksheets/sheet20.xml",
+          "bytes": 13752,
+          "sha256": "55b0b58d31fd262fbcf04485b2e998c0cce7afe3370b577cb1b2ceffb1a2a7ef"
+        },
+        {
+          "name": "20_ROSTER_V146",
+          "part": "xl/worksheets/sheet21.xml",
+          "bytes": 9278,
+          "sha256": "7787f7ef1d0a338f4b0b89954156160f96c6a8a73048a09470d29ea3e0982bbf"
+        },
+        {
+          "name": "21_MODES_V146",
+          "part": "xl/worksheets/sheet22.xml",
+          "bytes": 32217,
+          "sha256": "af50bde3f40d7d166590b9deb23246deeb1a366a3fe86d963e63376ca5efd9b5"
+        },
+        {
+          "name": "22_QA_V146",
+          "part": "xl/worksheets/sheet23.xml",
+          "bytes": 21758,
+          "sha256": "a6bbc0f98ab341c825ebe6a14fa231bda180f3c118e7094d1a70ea14e3cda3c2"
+        },
+        {
+          "name": "23_PROVENANCE_V146",
+          "part": "xl/worksheets/sheet24.xml",
+          "bytes": 8673,
+          "sha256": "b3f822324949fb82a55ccea28665043ec9b217b5c1ceedd9d37311c65252f409"
+        },
+        {
+          "name": "24_BACKLOG_V146",
+          "part": "xl/worksheets/sheet25.xml",
+          "bytes": 10642,
+          "sha256": "0234cbe28585bbf774d5092a9a9d59a5f44668df360d6b2443221750bae25fbb"
+        },
+        {
+          "name": "25_PILOTAGE_V146",
+          "part": "xl/worksheets/sheet26.xml",
+          "bytes": 13566,
+          "sha256": "abfc135fddfecabaefa7916ed006066d8f028657d07e480c97d21734b5a5a1ad"
+        }
+      ]
+    },
+    {
+      "id": "PR-PIN-011",
+      "observation": "OBSERVATION_ZIP_EPINGLEE_DANS_AUDIT_PR",
+      "pr": 61,
+      "headSha": "dfa21d9d6a65d484e61792b201185fd5ea98f288",
+      "path": "docs/clan-war-v146/Yautja_Guerres_Clans_Avenants_Production_V144_V146_2026-11-01.xlsx",
+      "blobSha": "c6539fdc6d591ec97b83c019664c3c20ac7c8be7",
+      "bytes": 85510,
+      "sha256": "1c38044d5ea702222336eb65e3378dd87c411918acf315403ebf86de5ef004e5",
+      "worksheets": 24,
+      "sheetParts": [
+        {
+          "name": "ASSAUT_V144",
+          "part": "xl/worksheets/sheet1.xml",
+          "bytes": 14892,
+          "sha256": "17890bb21124ffeddfd9b6a686e8a31a19a74b237bf00e8f9c61e221fbbbae69"
+        },
+        {
+          "name": "OUTER_OPS_V144",
+          "part": "xl/worksheets/sheet2.xml",
+          "bytes": 14583,
+          "sha256": "14d96f460a4292593a825795904a9d0ef699e896e3f8ceb7e2bc63e1597f064d"
+        },
+        {
+          "name": "INFILTRATION_V144",
+          "part": "xl/worksheets/sheet3.xml",
+          "bytes": 14652,
+          "sha256": "3e10e8dfa019a997a89c5c7482f8a6f9ecf7fae9200a16b091d30e220324eb21"
+        },
+        {
+          "name": "RTS_V144",
+          "part": "xl/worksheets/sheet4.xml",
+          "bytes": 14358,
+          "sha256": "4bbe9263baec8aef4ff37fa212160632891834084c7ebacb91993732d2e49cbb"
+        },
+        {
+          "name": "QA_V144",
+          "part": "xl/worksheets/sheet5.xml",
+          "bytes": 25623,
+          "sha256": "6294d2ca6387f3c34fbb009fc3e606a0566569ff54114b840c4eaa07a506a7b5"
+        },
+        {
+          "name": "INTERMODES_V144",
+          "part": "xl/worksheets/sheet6.xml",
+          "bytes": 10695,
+          "sha256": "4c1c9169f85d017200f47ece4205ef18f4b421621f4e3294bbd112c9930b762e"
+        },
+        {
+          "name": "HISTORIQUE_ET_CANON",
+          "part": "xl/worksheets/sheet7.xml",
+          "bytes": 7638,
+          "sha256": "a453a69084d4014491dab1f308d6657278ee9c1f5d9551a6a1322347b6223731"
+        },
+        {
+          "name": "SUIVI_V144",
+          "part": "xl/worksheets/sheet8.xml",
+          "bytes": 9075,
+          "sha256": "8b82fc17c9708b0bc3cf03f4c6f89d5ee8dcc7561582ae8bcfdef4ac52fdecbf"
+        },
+        {
+          "name": "ASSAUT_V145",
+          "part": "xl/worksheets/sheet9.xml",
+          "bytes": 16134,
+          "sha256": "6c8e691cb675533760da83d20960816ffbebd79de705d76f309d84fa1c0b596c"
+        },
+        {
+          "name": "OUTER_OPS_V145",
+          "part": "xl/worksheets/sheet10.xml",
+          "bytes": 15984,
+          "sha256": "b00063e5404b4275066ea45a834f2c48e629c4a88d2bf5b0d5dc146dea207bac"
+        },
+        {
+          "name": "INFILTRATION_V145",
+          "part": "xl/worksheets/sheet11.xml",
+          "bytes": 15922,
+          "sha256": "a6776501d550f1678cde484af26830cfa5be1865f086df14c397e8177f7c406d"
+        },
+        {
+          "name": "RTS_V145",
+          "part": "xl/worksheets/sheet12.xml",
+          "bytes": 15923,
+          "sha256": "01c30a0f340b11c1e28b5ef9424ee9445e35adfa9e264fdc3ebf05268d08f26c"
+        },
+        {
+          "name": "QA_V145",
+          "part": "xl/worksheets/sheet13.xml",
+          "bytes": 27891,
+          "sha256": "456eeeb1ea119b398eb37d12ad33f2439f3b213bfcf87768d7bc2f819cdb1591"
+        },
+        {
+          "name": "INTERMODES_V145",
+          "part": "xl/worksheets/sheet14.xml",
+          "bytes": 10944,
+          "sha256": "ba040d3d49060eb959f10d47e8df2dabe325cff9840728b81b24e28f38eb169b"
+        },
+        {
+          "name": "HISTORIQUE_V145",
+          "part": "xl/worksheets/sheet15.xml",
+          "bytes": 8644,
+          "sha256": "59e2d1de99b85fb10077c005fe676436eb80f4347ac584f099e2c8e2277891bb"
+        },
+        {
+          "name": "SUIVI_V145",
+          "part": "xl/worksheets/sheet16.xml",
+          "bytes": 11578,
+          "sha256": "20047d499d5e505e4b4517aa04f21d211011d63502351a7164821465f5d283db"
+        },
+        {
+          "name": "ASSAUT_V146",
+          "part": "xl/worksheets/sheet17.xml",
+          "bytes": 15974,
+          "sha256": "0410d3c14a772d5069bb2fd6204221d8ea17615b3c435311d179146523e879b7"
+        },
+        {
+          "name": "OUTER_OPS_V146",
+          "part": "xl/worksheets/sheet18.xml",
+          "bytes": 16064,
+          "sha256": "78696f8ef7aacc5b16a344fcec7c03ec25d66108e1994018f0ffcc462a68b76e"
+        },
+        {
+          "name": "INFILTRATION_V146",
+          "part": "xl/worksheets/sheet19.xml",
+          "bytes": 16238,
+          "sha256": "269bf177df80d7a761ace2a167fd618f0c6137b60e7c3a112201379b66e66f80"
+        },
+        {
+          "name": "RTS_V146",
+          "part": "xl/worksheets/sheet20.xml",
+          "bytes": 16085,
+          "sha256": "192dad314beb0c946f31090b2205f0998bea2c1d6e42784bfe915e6961479892"
+        },
+        {
+          "name": "QA_V146",
+          "part": "xl/worksheets/sheet21.xml",
+          "bytes": 29936,
+          "sha256": "47d071a9316ebddbf9e8e19626d990ee9547e1333b940a5bf88604b75a492568"
+        },
+        {
+          "name": "INTERMODES_V146",
+          "part": "xl/worksheets/sheet22.xml",
+          "bytes": 11570,
+          "sha256": "8b0b68516d35d580ebeb71567287d6f9a29b3df3feba4f2c17e7e339527ac503"
+        },
+        {
+          "name": "CONTINUITE_V85",
+          "part": "xl/worksheets/sheet23.xml",
+          "bytes": 11828,
+          "sha256": "d966e61a2545d25ebb24cd70af1dd794a23355dd08a0820b48d46f6244b3bb5c"
+        },
+        {
+          "name": "SUIVI_V146",
+          "part": "xl/worksheets/sheet24.xml",
+          "bytes": 11446,
+          "sha256": "f360aaa6b69c338cc9229de2568a152dcfa607f3f21deba30a476b3547a3a388"
+        }
+      ]
+    },
+    {
+      "id": "PR-PIN-012",
+      "observation": "OBSERVATION_ZIP_EPINGLEE_DANS_AUDIT_PR",
+      "pr": 48,
+      "headSha": "86bc081601975874d323e67f535bc1668b89ccc0",
+      "path": "docs/clan-war-v139/Yautja_Guerres_Clans_Suivi_Production_V139_2026-10-31.xlsx",
+      "blobSha": "3d3b9c5e28c97b21fc5adfa80a94cf0c17198c45",
+      "bytes": 338291,
+      "sha256": "8b2eb718ba8b97d634911ddb8a01f1f3f85a13fb09571e42b21cf36728dc4608",
+      "worksheets": 45,
+      "sheetParts": [
+        {
+          "name": "ASSAUT",
+          "part": "xl/worksheets/sheet1.xml",
+          "bytes": 29077,
+          "sha256": "7c22103943274bde23769a33e7c7b3061f5d1fb1500dcdb5ae4b808f709ca43e"
+        },
+        {
+          "name": "OUTER_OPS",
+          "part": "xl/worksheets/sheet2.xml",
+          "bytes": 28673,
+          "sha256": "cbad3d05f13cd536e916775d1b585a3421687a5cd96d4a688ad63bc890d09137"
+        },
+        {
+          "name": "INFILTRATION",
+          "part": "xl/worksheets/sheet3.xml",
+          "bytes": 28741,
+          "sha256": "7a39344c794819f8a39d1ba2e25edadee99c7e383bd6dd7a6b68d4bee070fd6b"
+        },
+        {
+          "name": "RTS",
+          "part": "xl/worksheets/sheet4.xml",
+          "bytes": 34255,
+          "sha256": "56ed04608a7de3cf6107a7e3322395a4c510a5ec4d9b40ea1c7b1fd9e3a045d6"
+        },
+        {
+          "name": "SYSTEMES_COMMUNS",
+          "part": "xl/worksheets/sheet5.xml",
+          "bytes": 34344,
+          "sha256": "8fc09ade70767e0403a2778c94f2a500910f8bba2a41ad3a9532b84c48fcd5e3"
+        },
+        {
+          "name": "MULTIJOUEUR",
+          "part": "xl/worksheets/sheet6.xml",
+          "bytes": 23422,
+          "sha256": "cd9539a93d1b3ed20f8e97cbee7650afd31e5a4dedc425bbad7c5de953cd33e9"
+        },
+        {
+          "name": "MISSIONS_1200",
+          "part": "xl/worksheets/sheet7.xml",
+          "bytes": 1307177,
+          "sha256": "281e64ef4e737d3dc981eb8ad88bc948e2dbf21c723d64ad9d6ddd68bad3b4bb"
+        },
+        {
+          "name": "W3_24_RTS",
+          "part": "xl/worksheets/sheet8.xml",
+          "bytes": 36891,
+          "sha256": "85c0c3ad322c0407f54e98a6cb07cb056015808162d6db5161a513b7a2ab6910"
+        },
+        {
+          "name": "CARTES_W3_12",
+          "part": "xl/worksheets/sheet9.xml",
+          "bytes": 15100,
+          "sha256": "b60dcc93f9e4b0da1e4daffb965485fe636bc44ba65b8ac3fc8f8dd013dbe1a7"
+        },
+        {
+          "name": "W5_CAMPAGNES_36",
+          "part": "xl/worksheets/sheet10.xml",
+          "bytes": 31255,
+          "sha256": "fe47345a6830801463780bfc36f6db512043de853e30c1ef3b708952983e05ed"
+        },
+        {
+          "name": "LORE_CONTINUITE",
+          "part": "xl/worksheets/sheet11.xml",
+          "bytes": 14485,
+          "sha256": "1a93bdb0f73c6584ad1a959ded6df9052f96025cfe6838d483422f9537ba976d"
+        },
+        {
+          "name": "QA_ACCEPTATION",
+          "part": "xl/worksheets/sheet12.xml",
+          "bytes": 162547,
+          "sha256": "8cd3bc561ad32f1b5398f3d7475072b635cb2a65f11c89e79e84436df34709f2"
+        },
+        {
+          "name": "CHAINES_PR",
+          "part": "xl/worksheets/sheet13.xml",
+          "bytes": 7403,
+          "sha256": "adab5ed7db6fd2de8c6eb28d008de840798c1cce2ae9e22a1c1e83a71fa1007d"
+        },
+        {
+          "name": "SOURCES",
+          "part": "xl/worksheets/sheet14.xml",
+          "bytes": 7619,
+          "sha256": "9ebe7d6ff12c9f08f0d80f55466f25e536726b9c0131892006a636485e34fdf6"
+        },
+        {
+          "name": "ROADMAP_GLOBALE",
+          "part": "xl/worksheets/sheet15.xml",
+          "bytes": 159909,
+          "sha256": "1e4807f52ec35be16680fb4f3d5c5ceaa21a3cb81988ed7c87cbd035b9cc0bed"
+        },
+        {
+          "name": "00_PILOTAGE",
+          "part": "xl/worksheets/sheet16.xml",
+          "bytes": 19278,
+          "sha256": "2e964c14957e82b7a62f189f721cae30acb963de10c0010e7b489124cb47ccce"
+        },
+        {
+          "name": "LEGENDE_ET_MODE",
+          "part": "xl/worksheets/sheet17.xml",
+          "bytes": 4225,
+          "sha256": "5d0d1a164ac353e3853909aad56ee72d3d1a284a172885b79c17197e9db57a1a"
+        },
+        {
+          "name": "RTS_V134_SYNCHRO",
+          "part": "xl/worksheets/sheet18.xml",
+          "bytes": 50703,
+          "sha256": "3ea1c91724e2284564cc23cd3a32f4e72c7275118ce30cca8a19127443725e37"
+        },
+        {
+          "name": "MODES_V135_PARALLELE",
+          "part": "xl/worksheets/sheet19.xml",
+          "bytes": 53860,
+          "sha256": "8081e19b8dfd1c5e9b302078766d0bb461e532068c6e21e798632e7437e78b84"
+        },
+        {
+          "name": "QA_V135",
+          "part": "xl/worksheets/sheet20.xml",
+          "bytes": 21298,
+          "sha256": "e5dfff3101aa403d6b2250c6003b43c5c58114fc61309894fe2a6c6c5cae3427"
+        },
+        {
+          "name": "MODES_V136_PARALLELE",
+          "part": "xl/worksheets/sheet21.xml",
+          "bytes": 55221,
+          "sha256": "b90b7bd4cf47b021b04da94a4681be967926f76b8d65cec466bcfff5ba90f303"
+        },
+        {
+          "name": "QA_V136",
+          "part": "xl/worksheets/sheet22.xml",
+          "bytes": 28553,
+          "sha256": "688bce29b4a5aef0fc06c4de253bd088fda12e52f189fc8d414de3dfa2c631b3"
+        },
+        {
+          "name": "INTERMODES_V136",
+          "part": "xl/worksheets/sheet23.xml",
+          "bytes": 12559,
+          "sha256": "9598cb0556a940241075a07c6df354c1c0dadca585680e41ce7f9743e3161004"
+        },
+        {
+          "name": "SUIVI_V136",
+          "part": "xl/worksheets/sheet24.xml",
+          "bytes": 16118,
+          "sha256": "beaa3a4fc0bc6f6be4be3568be2d7d230ca51aab620e3a23bcb265554ebcdd16"
+        },
+        {
+          "name": "ASSAUT_V137",
+          "part": "xl/worksheets/sheet25.xml",
+          "bytes": 18201,
+          "sha256": "b13a112fdbba3036e30986dddb9bf4236cb073548c7724247c304a5035aabd54"
+        },
+        {
+          "name": "OUTER_OPS_V137",
+          "part": "xl/worksheets/sheet26.xml",
+          "bytes": 17912,
+          "sha256": "73bc6760cdfca0c6dfca810377cf82ba0d2d0a0fab0e2e7d60a369d3cb54d8cf"
+        },
+        {
+          "name": "INFILTRATION_V137",
+          "part": "xl/worksheets/sheet27.xml",
+          "bytes": 17712,
+          "sha256": "bb05c00d93b4ca13fde315afc151d851d403b5d898dc3299ca92d587e49fbb9f"
+        },
+        {
+          "name": "RTS_V137",
+          "part": "xl/worksheets/sheet28.xml",
+          "bytes": 17827,
+          "sha256": "8de7c218f72f58a89d34ae32f9a5f34a9ee4ceb6c4ef8943cd0ce7587c9692be"
+        },
+        {
+          "name": "QA_V137",
+          "part": "xl/worksheets/sheet29.xml",
+          "bytes": 35378,
+          "sha256": "a7cd5ce48bd0ec6e65918235e74c5aee08603fcd6b56df2482eaf319232ea7df"
+        },
+        {
+          "name": "CROISEMENTS_V137",
+          "part": "xl/worksheets/sheet30.xml",
+          "bytes": 16597,
+          "sha256": "98905736e2b59d934bbffd2c31eaa3a8dbf41e5b7b932a44e835483625454e34"
+        },
+        {
+          "name": "SUIVI_V137",
+          "part": "xl/worksheets/sheet31.xml",
+          "bytes": 11223,
+          "sha256": "ca03455badfdfe2a8e2dc745a5317514d802bc4a354d45a54988aea9e0dc6808"
+        },
+        {
+          "name": "ASSAUT_V138",
+          "part": "xl/worksheets/sheet32.xml",
+          "bytes": 19790,
+          "sha256": "18a88850951e829fb356b4346d862655d7cb4930286ff5e35868d4f72ece53ba"
+        },
+        {
+          "name": "OUTER_OPS_V138",
+          "part": "xl/worksheets/sheet33.xml",
+          "bytes": 19503,
+          "sha256": "1100b4bb2b0869ecd3ece325468f6a46f5e00ce4fc9933b9695488065edc56fe"
+        },
+        {
+          "name": "INFILTRATION_V138",
+          "part": "xl/worksheets/sheet34.xml",
+          "bytes": 19333,
+          "sha256": "3f75e89b5c9d592cfef854c0e773593fc930b2c46f45ee28e4ea3fdb97745984"
+        },
+        {
+          "name": "RTS_V138",
+          "part": "xl/worksheets/sheet35.xml",
+          "bytes": 19434,
+          "sha256": "494e12e680cb4b8f60af1071a0b65b5eeb09cc03945d26789b0758a7865188a4"
+        },
+        {
+          "name": "QA_V138",
+          "part": "xl/worksheets/sheet36.xml",
+          "bytes": 44795,
+          "sha256": "a2d515239e6f7a3cfcdddd4495a713e6fdbdcd29d00014230b443e8b85159f97"
+        },
+        {
+          "name": "CROISEMENTS_V138",
+          "part": "xl/worksheets/sheet37.xml",
+          "bytes": 19729,
+          "sha256": "ee5bf7de7f8d812040fde84895f731fe118cb7d5ec2b9239897e2405ad3453fc"
+        },
+        {
+          "name": "SUIVI_V138",
+          "part": "xl/worksheets/sheet38.xml",
+          "bytes": 11355,
+          "sha256": "8e8c27a1cd02a8b7c5ebcb7184d2f281c4f34a18a599dcfe8d58259c272ecaca"
+        },
+        {
+          "name": "ASSAUT_V139",
+          "part": "xl/worksheets/sheet39.xml",
+          "bytes": 20456,
+          "sha256": "63e3287ba636c49e43f5a0896b46f4a0a194f38beaba29f9fc878639a40b34bf"
+        },
+        {
+          "name": "OUTER_OPS_V139",
+          "part": "xl/worksheets/sheet40.xml",
+          "bytes": 20209,
+          "sha256": "f7d498a545626c48b6aaab3465c796ba31ab0f563cb5018942c4813560fa20a5"
+        },
+        {
+          "name": "INFILTRATION_V139",
+          "part": "xl/worksheets/sheet41.xml",
+          "bytes": 20036,
+          "sha256": "91b64eda07a51f977f74c9928c7bdd3e3a053c564b70410117d7373a420aa7c4"
+        },
+        {
+          "name": "RTS_V139",
+          "part": "xl/worksheets/sheet42.xml",
+          "bytes": 20172,
+          "sha256": "be441f3db5fd6c677ef4cbee2d36485b91a13d8997ba99d81ae83d0e717d709c"
+        },
+        {
+          "name": "QA_V139",
+          "part": "xl/worksheets/sheet43.xml",
+          "bytes": 51525,
+          "sha256": "c289aab3e70cbfcb3fd9ef1c94fb7890e8d56ab068d084cd945246fffa2355d5"
+        },
+        {
+          "name": "CROISEMENTS_V139",
+          "part": "xl/worksheets/sheet44.xml",
+          "bytes": 22644,
+          "sha256": "94e63a42ad9dfc2bc14fdf971dcc4d205032d8da580cd36c4d69135b446e9497"
+        },
+        {
+          "name": "SUIVI_V139",
+          "part": "xl/worksheets/sheet45.xml",
+          "bytes": 10761,
+          "sha256": "3c402e8ef3ecb56b2e2d234c8e56e7ef980ea30781f54c4cb4bff7b9c575f029"
+        }
+      ]
+    }
+  ]
+}

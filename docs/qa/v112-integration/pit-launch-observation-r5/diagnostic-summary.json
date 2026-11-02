@@ -1,0 +1,97 @@
+{
+  "status": "PASS_DIAGNOSTIC_NOT_PUBLISHABLE",
+  "completeRecipe": false,
+  "domain": "PitDiagnostic",
+  "scope": "Targeted ScarFeral until J2 initial capture, not the two complete public Pit journeys.",
+  "production": {
+    "mode": "compiled-app",
+    "runtimeCommit": "f02e5f1002765d4f2a1ae1f0eaab1f358f61942a",
+    "buildId": "Oy38-xd57M5zeGgmvnJuy",
+    "freezeEntriesObserved": 1601,
+    "freezeSha256": "ea0b54d2a8eb3edb1c7b716a419041efdde19019d5359f99604a98a255a8ae7c"
+  },
+  "diagnosticToolsOutsideRuntimeCommit": true,
+  "sourceCompletion": false,
+  "checks": 39,
+  "captureCandidatesArchived": 13,
+  "captureInspection": "Retained as diagnostic candidates; not admitted or presented as a new complete artistic review.",
+  "raw": {
+    "file": "browser-result.json.gz",
+    "decodedBytes": 11538100,
+    "decodedSha256": "3ce1fe62566d0accef002dcc511a79a483fb48a84c99e4b1be4d42d5de914743"
+  },
+  "result": "At J2 initial, before frame411 and consecutive observed launch frames411,411,412 demonstrate that the first17ms clock call produced no effective simulation tick in this run. The same single held combo reached actual TH_B startup at frame412 before release. This establishes a recipe observation defect, not a demonstrated product input bug.",
+  "launches": [
+    {
+      "slot": 0,
+      "input": "keyboard",
+      "beforeFrame": 3,
+      "sampleFrames": [
+        3,
+        4
+      ],
+      "startFrame": 4,
+      "effectiveFrames": 1,
+      "pressCalls": 1,
+      "releaseCalls": 1,
+      "status": "PASS"
+    },
+    {
+      "slot": 0,
+      "input": "keyboard",
+      "beforeFrame": 215,
+      "sampleFrames": [
+        215,
+        215,
+        216
+      ],
+      "startFrame": 216,
+      "effectiveFrames": 1,
+      "pressCalls": 1,
+      "releaseCalls": 1,
+      "status": "PASS"
+    },
+    {
+      "slot": 0,
+      "input": "button",
+      "beforeFrame": 313,
+      "sampleFrames": [
+        313,
+        314
+      ],
+      "startFrame": 314,
+      "effectiveFrames": 1,
+      "pressCalls": 1,
+      "releaseCalls": 1,
+      "status": "PASS"
+    },
+    {
+      "slot": 1,
+      "input": "keyboard",
+      "beforeFrame": 411,
+      "sampleFrames": [
+        411,
+        411,
+        412
+      ],
+      "startFrame": 412,
+      "effectiveFrames": 1,
+      "pressCalls": 1,
+      "releaseCalls": 1,
+      "status": "PASS"
+    }
+  ],
+  "browserErrors": {
+    "errors": [],
+    "consoleErrors": [],
+    "workerErrors": [],
+    "requestsFailed": []
+  },
+  "limits": [
+    "The unchanged1601-entry snapshot identifies the f02 application and original full recipe. The experimental helper and targeted recipe were executed separately outside that commit; their actual original bytes are archived here.",
+    "The targeted run does not certify the current recipe or close any source action, variant, partner or full kit.",
+    "The previous complete attempt remains FAIL and is preserved separately; no result was rewritten or relabeled.",
+    "The archived experimental source preserves actual executed absolute imports. It is a source record, not a portable runnable replacement for the canonical driver.",
+    "The diagnostic key-event field preventedAfterDispatch was sampled at a listener microtask and does not prove the final event default-prevention state. No causal conclusion relies on that field."
+  ]
+}

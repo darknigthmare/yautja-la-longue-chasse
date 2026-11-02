@@ -1,0 +1,430 @@
+Command: node scripts/check-homeworld-history-v112.mjs --check --tests
+TAP version 13
+# Subtest: V111 opens a later A episode only from a genuinely completed B, preserving the exact original JSON and all source history
+ok 1 - V111 opens a later A episode only from a genuinely completed B, preserving the exact original JSON and all source history
+  ---
+  duration_ms: 28.775344
+  type: 'test'
+  ...
+# Subtest: V111 physically completes edge, mismatch, voluntary reprise and a separately carried candidate, without repeating the two B deposits
+ok 2 - V111 physically completes edge, mismatch, voluntary reprise and a separately carried candidate, without repeating the two B deposits
+  ---
+  duration_ms: 759.27902
+  type: 'test'
+  ...
+# Subtest: V111 refusal guards require the current consenting owner, visible post, fresh revision and a separate new choice and consent
+ok 3 - V111 refusal guards require the current consenting owner, visible post, fresh revision and a separate new choice and consent
+  ---
+  duration_ms: 6.898694
+  type: 'test'
+  ...
+# Subtest: V111 quota, stale/foreign B replacement and impossible movement never mutate either confirmed receipt
+ok 4 - V111 quota, stale/foreign B replacement and impossible movement never mutate either confirmed receipt
+  ---
+  duration_ms: 91.986063
+  type: 'test'
+  ...
+# Subtest: V111 strict imports reject future/forged/unbound episodes and preserve completed B source lines independently
+ok 5 - V111 strict imports reject future/forged/unbound episodes and preserve completed B source lines independently
+  ---
+  duration_ms: 5.979861
+  type: 'test'
+  ...
+# Subtest: V111 a carried candidate survives serialization, interrupt/park/resume and retains the old discovery places
+ok 6 - V111 a carried candidate survives serialization, interrupt/park/resume and retains the old discovery places
+  ---
+  duration_ms: 260.408403
+  type: 'test'
+  ...
+# Subtest: four independent native whole-body PNGs retain their untouched raw bytes and measured alpha registration
+ok 7 - four independent native whole-body PNGs retain their untouched raw bytes and measured alpha registration
+  ---
+  duration_ms: 905.09488
+  type: 'test'
+  ...
+# Subtest: local decorative clock is bounded, suspends without catch-up and never advances while inactive or hidden
+ok 8 - local decorative clock is bounded, suspends without catch-up and never advances while inactive or hidden
+  ---
+  duration_ms: 0.568747
+  type: 'test'
+  ...
+# Subtest: actual drawing renders the entire native canvas at one uniform positive scale with its measured foot pivot
+ok 9 - actual drawing renders the entire native canvas at one uniform positive scale with its measured foot pivot
+  ---
+  duration_ms: 225.161205
+  type: 'test'
+  ...
+# Subtest: situated K-17 preserves physical pieces and only reveals the fragment after the real source reprise
+ok 10 - situated K-17 preserves physical pieces and only reveals the fragment after the real source reprise
+  ---
+  duration_ms: 6568.358431
+  type: 'test'
+  ...
+# Subtest: dialogue portrait reuses the same native component and keeps an honest original fallback before decode
+ok 11 - dialogue portrait reuses the same native component and keeps an honest original fallback before decode
+  ---
+  duration_ms: 91.707407
+  type: 'test'
+  ...
+# Subtest: V111 source note describes the four conversation drawings while the rest of the source UI stays exact
+ok 12 - V111 source note describes the four conversation drawings while the rest of the source UI stays exact
+  ---
+  duration_ms: 5055.757947
+  type: 'test'
+  ...
+# Subtest: V111 actual Hub opens a read-only recovery at the walked exit, then atomically restores and reloads without changing cargo
+ok 13 - V111 actual Hub opens a read-only recovery at the walked exit, then atomically restores and reloads without changing cargo
+  ---
+  duration_ms: 6786.989125
+  type: 'test'
+  ...
+# Subtest: V111 actual Hub rolls every temporary actor/room/level reference back on real quota refusal or a throwing save host
+ok 14 - V111 actual Hub rolls every temporary actor/room/level reference back on real quota refusal or a throwing save host
+  ---
+  duration_ms: 401.742731
+  type: 'test'
+  ...
+# Subtest: V111 actual Hub refuses a delayed confirmation after local movement, owner replacement, pause or changed operation source
+ok 15 - V111 actual Hub refuses a delayed confirmation after local movement, owner replacement, pause or changed operation source
+  ---
+  duration_ms: 543.280073
+  type: 'test'
+  ...
+# Subtest: V111 actual Hub rejects a source draft that would change the documents preserved by the preview
+ok 16 - V111 actual Hub rejects a source draft that would change the documents preserved by the preview
+  ---
+  duration_ms: 201.964123
+  type: 'test'
+  ...
+# Subtest: V111 actual Hub preserves the other tab on a real same-owner storage conflict and leaves the recovery dialog retryable
+ok 17 - V111 actual Hub preserves the other tab on a real same-owner storage conflict and leaves the recovery dialog retryable
+  ---
+  duration_ms: 176.070772
+  type: 'test'
+  ...
+# Subtest: V111: the real603-step legacy trap proposes only its recorded empty-handed exterior point at the walked interior exit
+ok 18 - V111: the real603-step legacy trap proposes only its recorded empty-handed exterior point at the walked interior exit
+  ---
+  duration_ms: 6235.762376
+  type: 'test'
+  ...
+# Subtest: V111: quota failure and throwing storage acknowledgements never consume the restoration or its original documents
+ok 19 - V111: quota failure and throwing storage acknowledgements never consume the restoration or its original documents
+  ---
+  duration_ms: 14.569202
+  type: 'test'
+  ...
+# Subtest: V111: a delayed confirmation rechecks ledger revision, interior pose, owner, pause and live obstacles
+ok 20 - V111: a delayed confirmation rechecks ledger revision, interior pose, owner, pause and live obstacles
+  ---
+  duration_ms: 44.603483
+  type: 'test'
+  ...
+# Subtest: V111: an occupied or distant recorded point, another carrier or an unknown/future document cannot be restored
+ok 21 - V111: an occupied or distant recorded point, another carrier or an unknown/future document cannot be restored
+  ---
+  duration_ms: 19.143727
+  type: 'test'
+  ...
+# Subtest: V111: free ordinary anchors and unwalked interior positions retain the existing exit instead of granting recovery
+ok 22 - V111: free ordinary anchors and unwalked interior positions retain the existing exit instead of granting recovery
+  ---
+  duration_ms: 5.775825
+  type: 'test'
+  ...
+# Subtest: V111: strict backup import rejects forged destination, source revision, owner, shape and future recovery versions
+ok 23 - V111: strict backup import rejects forged destination, source revision, owner, shape and future recovery versions
+  ---
+  duration_ms: 1.973281
+  type: 'test'
+  ...
+# Subtest: V111: one real atomic save retains the original interior checkpoint and all ledgers through load and ordinary egress
+ok 24 - V111: one real atomic save retains the original interior checkpoint and all ledgers through load and ordinary egress
+  ---
+  duration_ms: 12.837474
+  type: 'test'
+  ...
+# Subtest: V111: the real save quota adapter refuses the entire checkpoint/backup pair and leaves the old campaign intact
+ok 25 - V111: the real save quota adapter refuses the entire checkpoint/backup pair and leaves the old campaign intact
+  ---
+  duration_ms: 14.785367
+  type: 'test'
+  ...
+# Subtest: V111: the actual same-owner storage conflict prevents a stale-tab restore despite an unchanged local preview
+ok 26 - V111: the actual same-owner storage conflict prevents a stale-tab restore despite an unchanged local preview
+  ---
+  duration_ms: 8.711764
+  type: 'test'
+  ...
+# Subtest: current354 art families retain their original source IDs and candidate statuses without pretending to be all absent or complete
+ok 27 - current354 art families retain their original source IDs and candidate statuses without pretending to be all absent or complete
+  ---
+  duration_ms: 37.797948
+  type: 'test'
+  ...
+# Subtest: a family candidate, copied native asset or mismatched count cannot be promoted to visual/source completion
+ok 28 - a family candidate, copied native asset or mismatched count cannot be promoted to visual/source completion
+  ---
+  duration_ms: 263.561567
+  type: 'test'
+  ...
+# Subtest: current source bytes and four new PNGs are mandatory; old image repository identity is checked without claiming visual quality
+ok 29 - current source bytes and four new PNGs are mandatory; old image repository identity is checked without claiming visual quality
+  ---
+  duration_ms: 24418.174421
+  type: 'test'
+  ...
+# Subtest: V111 real Save import, write and load preserve B byte-exact across offer, active carry and completed continuation
+ok 30 - V111 real Save import, write and load preserve B byte-exact across offer, active carry and completed continuation
+  ---
+  duration_ms: 2900.308335
+  type: 'test'
+  ...
+# Subtest: V111 real Save rejects future, foreign, no-B, mutated-base and unsupported actor/object pairs before writing
+ok 31 - V111 real Save rejects future, foreign, no-B, mutated-base and unsupported actor/object pairs before writing
+  ---
+  duration_ms: 7.697417
+  type: 'test'
+  ...
+# Subtest: V111 actual Hub sampler and onProgress persist the carried candidate with its new checkpoint without changing archived B
+ok 32 - V111 actual Hub sampler and onProgress persist the carried candidate with its new checkpoint without changing archived B
+  ---
+  duration_ms: 187.861794
+  type: 'test'
+  ...
+# Subtest: V111 actual Hub quota refusal freezes new actions without rewriting either durable receipt, then Retry can persist the same episode
+ok 33 - V111 actual Hub quota refusal freezes new actions without rewriting either durable receipt, then Retry can persist the same episode
+  ---
+  duration_ms: 204.572079
+  type: 'test'
+  ...
+# Subtest: V111 actual Hub callbacks refuse replaced owners, stale outer revisions and an old legacy adapter
+ok 34 - V111 actual Hub callbacks refuse replaced owners, stale outer revisions and an old legacy adapter
+  ---
+  duration_ms: 113.007104
+  type: 'test'
+  ...
+# Subtest: V111 continuation UI uses newly played source lines and binds its inner controls to the outer render revision
+ok 35 - V111 continuation UI uses newly played source lines and binds its inner controls to the outer render revision
+  ---
+  duration_ms: 193.204125
+  type: 'test'
+  ...
+# Subtest: V111 actual motor and render gates stop an interrupted carried candidate, despite its archived B being completed
+ok 36 - V111 actual motor and render gates stop an interrupted carried candidate, despite its archived B being completed
+  ---
+  duration_ms: 6.402919
+  type: 'test'
+  ...
+# Subtest: V111 actual interact refuses an available doorway while A carries the fragment and B is completed
+ok 37 - V111 actual interact refuses an available doorway while A carries the fragment and B is completed
+  ---
+  duration_ms: 2727.428435
+  type: 'test'
+  ...
+# Subtest: V111 Save11 to12 preserves the genuine V110 campaign and B document while initializing empty fieldToolIds
+ok 38 - V111 Save11 to12 preserves the genuine V110 campaign and B document while initializing empty fieldToolIds
+  ---
+  duration_ms: 19731.129463
+  type: 'test'
+  ...
+# Subtest: V111 actual V110 client treats a12 campaign as future and cannot drop its new continuation or overwrite its bytes
+ok 39 - V111 actual V110 client treats a12 campaign as future and cannot drop its new continuation or overwrite its bytes
+  ---
+  duration_ms: 3636.211902
+  type: 'test'
+  ...
+# Subtest: V111 integrated main keeps a real field-tool purchase through Save11 migration and a quota-refused B to A continuation write
+ok 40 - V111 integrated main keeps a real field-tool purchase through Save11 migration and a quota-refused B to A continuation write
+  ---
+  duration_ms: 19.03862
+  type: 'test'
+  ...
+# Subtest: V111 prelude keeps the first record and K17 controls in the same labelled scrollport through the actual offer and consent
+ok 41 - V111 prelude keeps the first record and K17 controls in the same labelled scrollport through the actual offer and consent
+  ---
+  duration_ms: 31.650095
+  type: 'test'
+  ...
+# Subtest: V111 active and interrupted journals group the continuation counter, first record and current study under one scrollport
+ok 42 - V111 active and interrupted journals group the continuation counter, first record and current study under one scrollport
+  ---
+  duration_ms: 47.437029
+  type: 'test'
+  ...
+# Subtest: V111 evidence: only a complete compiled recipe with every opened PNG can be certified
+ok 43 - V111 evidence: only a complete compiled recipe with every opened PNG can be certified
+  ---
+  duration_ms: 20.481972
+  type: 'test'
+  ...
+# Subtest: V111 evidence: served HTML identity and nested production counters cannot contradict raw execution
+ok 44 - V111 evidence: served HTML identity and nested production counters cannot contradict raw execution
+  ---
+  duration_ms: 1.520979
+  type: 'test'
+  ...
+# Subtest: V111 evidence: unchanged raw observations still refuse changed, absent or unfrozen source bytes
+ok 45 - V111 evidence: unchanged raw observations still refuse changed, absent or unfrozen source bytes
+  ---
+  duration_ms: 45.536648
+  type: 'test'
+  ...
+# Subtest: V111 evidence: original V110 freeze cannot be replaced to authorize different historical native inputs
+ok 46 - V111 evidence: original V110 freeze cannot be replaced to authorize different historical native inputs
+  ---
+  duration_ms: 6.090219
+  type: 'test'
+  ...
+# Subtest: V111 evidence: the recipe freeze follows the real transitive played fixture loaders
+ok 47 - V111 evidence: the recipe freeze follows the real transitive played fixture loaders
+  ---
+  duration_ms: 403.726433
+  type: 'test'
+  ...
+# Subtest: V111 evidence: new native inputs cannot replace old artwork or lose their source receipt
+ok 48 - V111 evidence: new native inputs cannot replace old artwork or lose their source receipt
+  ---
+  duration_ms: 17.625162
+  type: 'test'
+  ...
+# Subtest: V111 preserves its exact 105 sheet baseline, 56 open requirements and 354 art targets as separate inventories
+ok 49 - V111 preserves its exact 105 sheet baseline, 56 open requirements and 354 art targets as separate inventories
+  ---
+  duration_ms: 14377.583777
+  type: 'test'
+  ...
+# Subtest: unrelated closures, invented art, duplicate workstreams and unsupported browser promotions are refused
+ok 50 - unrelated closures, invented art, duplicate workstreams and unsupported browser promotions are refused
+  ---
+  duration_ms: 16.257557
+  type: 'test'
+  ...
+# Traceback (most recent call last):
+#   File "/tmp/yautja-homeworld-v111-history-v112-AlUqfD/scripts/build-homeworld-followup-v111.py", line 25, in <module>
+#     json.dump(append.verify_workbook(payload), sys.stdout, ensure_ascii=True)
+#               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+#   File "/tmp/yautja-homeworld-v111-history-v112-AlUqfD/scripts/lib/excel_followup_append.py", line 105, in verify_workbook
+#     assert set(changed) <= ASSEMBLY_PARTS, changed
+#            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# AssertionError: ['[Content_Types].xml', 'xl/_rels/workbook.xml.rels', 'xl/styles.xml', 'xl/workbook.xml', 'xl/worksheets/v110-sheet-98.xml']
+# Subtest: 113 worksheets retain all 105 historical parts, styles, formulas and cells exactly
+ok 51 - 113 worksheets retain all 105 historical parts, styles, formulas and cells exactly
+  ---
+  duration_ms: 24302.30522
+  type: 'test'
+  ...
+# Subtest: a V110 browser recipe cannot be relabelled as V111 validation
+ok 52 - a V110 browser recipe cannot be relabelled as V111 validation
+  ---
+  duration_ms: 41.747491
+  type: 'test'
+  ...
+# Subtest: V111 workbook and metadata regenerate exactly without executing browser or native Excel
+ok 53 - V111 workbook and metadata regenerate exactly without executing browser or native Excel
+  ---
+  duration_ms: 37064.0408
+  type: 'test'
+  ...
+# Subtest: historical art fallback binds the audited bytes to the current regular Git blob, while sparse identity is not visual admission
+ok 54 - historical art fallback binds the audited bytes to the current regular Git blob, while sparse identity is not visual admission
+  ---
+  duration_ms: 2.276257
+  type: 'test'
+  ...
+# Subtest: the certified V110 sources and eight original tests remain private while V111 imports stay current
+ok 55 - the certified V110 sources and eight original tests remain private while V111 imports stay current
+  ---
+  duration_ms: 5693.748427
+  type: 'test'
+  ...
+# Subtest: tampering with private V110 source is rejected without changing the current Homeworld
+ok 56 - tampering with private V110 source is rejected without changing the current Homeworld
+  ---
+  duration_ms: 2747.534756
+  type: 'test'
+  ...
+# Subtest: the V111 Homeworld wrapper executes unchanged V110 doorway assertions and refuses unreviewed tests
+ok 57 - the V111 Homeworld wrapper executes unchanged V110 doorway assertions and refuses unreviewed tests
+  ---
+  duration_ms: 12303.117322
+  type: 'test'
+  ...
+# Subtest: V111 keeps every legacy-only recommendation, landmark and path without saved-state changes
+ok 58 - V111 keeps every legacy-only recommendation, landmark and path without saved-state changes
+  ---
+  duration_ms: 10.694245
+  type: 'test'
+  ...
+# Subtest: V111 actual later choice, reply and consent receive distinct current-objective IDs at the unchanged K17 post
+ok 59 - V111 actual later choice, reply and consent receive distinct current-objective IDs at the unchanged K17 post
+  ---
+  duration_ms: 26.631326
+  type: 'test'
+  ...
+# Subtest: V111 continuation offers do not steal the current objective from another actual in-progress operation
+ok 60 - V111 continuation offers do not steal the current objective from another actual in-progress operation
+  ---
+  duration_ms: 2766.225374
+  type: 'test'
+  ...
+# Subtest: V111 voluntary interruption keeps its real exact stand, three-unit route and stale-result rejection
+ok 61 - V111 voluntary interruption keeps its real exact stand, three-unit route and stale-result rejection
+  ---
+  duration_ms: 165.645138
+  type: 'test'
+  ...
+# Subtest: V111 real failure and return recommend only the next source action, preserving physical legacy IDs and B bytes
+ok 62 - V111 real failure and return recommend only the next source action, preserving physical legacy IDs and B bytes
+  ---
+  duration_ms: 472.33083
+  type: 'test'
+  ...
+# Subtest: V111 owner, changed-base, future and unknown-port continuation receipts cannot supply objectives or fragment locations
+ok 63 - V111 owner, changed-base, future and unknown-port continuation receipts cannot supply objectives or fragment locations
+  ---
+  duration_ms: 170.522326
+  type: 'test'
+  ...
+# Subtest: V111 uses the real603-step doorway stand and only a motor-valid bounded departure before ordinary street clearance
+ok 64 - V111 uses the real603-step doorway stand and only a motor-valid bounded departure before ordinary street clearance
+  ---
+  duration_ms: 9920.002992
+  type: 'test'
+  ...
+# Subtest: V111 the actual native motor follows the side-door guide into the normal street route without a phantom movement or cargo mutation
+ok 65 - V111 the actual native motor follows the side-door guide into the normal street route without a phantom movement or cargo mutation
+  ---
+  duration_ms: 4133.628902
+  type: 'test'
+  ...
+# Subtest: V111 a real later pickup invalidates the accepted side-door prefix just like every other cargo route
+ok 66 - V111 a real later pickup invalidates the accepted side-door prefix just like every other cargo route
+  ---
+  duration_ms: 28.08427
+  type: 'test'
+  ...
+# Subtest: V111 cannot use a foreign, wrong-room, wrong-floor or blocked old checkpoint as a side-door departure
+ok 67 - V111 cannot use a foreign, wrong-room, wrong-floor or blocked old checkpoint as a side-door departure
+  ---
+  duration_ms: 5.821363
+  type: 'test'
+  ...
+# Subtest: V111 arrived guide collapses to its real destination and mapped action while options remain accessible and pause/stale hide action advice
+ok 68 - V111 arrived guide collapses to its real destination and mapped action while options remain accessible and pause/stale hide action advice
+  ---
+  duration_ms: 20.303297
+  type: 'test'
+  ...
+1..68
+# tests 68
+# suites 0
+# pass 68
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 249099.441542
+{"result":"PASS_HISTORICAL_HOMEWORLD_V111","sourceCommit":"a5a951e3f6dbb3fa399bd38f774a1f0b6ec58f5e","sha256":"fa5ebf78a08c36b4a567246dfae41de535a8e36c7294ba33190e3e1e2ec9ad05","bytes":8150642,"frozenInputsVerified":1433,"restoredSources":54,"originalTestFiles":11,"originalTestsExecuted":true,"currentRuntimeCovered":false}
+
+Exit code: 0

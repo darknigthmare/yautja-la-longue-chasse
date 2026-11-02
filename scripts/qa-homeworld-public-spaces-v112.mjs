@@ -30,7 +30,7 @@ const sha=bytes=>createHash('sha256').update(bytes).digest('hex');
 const sourceBefore=(await snapshotRuntimeV112()).entries;
 const api=homeworldQaModelV64(process.cwd(),[
  'homeworldPublicLifeV112.ts','homeworldPublicPlacesV112.ts','homeworldPublicPlacesMountV112.ts',
- 'homeworldFoundationSupportsV112.ts','homeworldGroundJointsV112.ts','homeworldNaturalRockFacesV112.ts','homeworldNaturalPlacementsV112.ts','homeworldGeometryRecoveryV112.ts',
+ 'homeworldFoundationSupportsV112.ts','homeworldGroundJointsV112.ts','homeworldActivityAccessV112.ts','homeworldCartographyDefinitionV104.ts','homeworldNaturalRockFacesV112.ts','homeworldNaturalPlacementsV112.ts','homeworldGeometryRecoveryV112.ts',
  'homeworldCivicWorldV80.ts','homeworldWorldV77.ts','homeworldGeometryV64.ts','homeworldInteriorsV64.ts','homeworldObjectivesV111.ts','homeworldWayfindingV75.ts','homeworldCargoV108.ts',
 ]);
 const centroid=polygon=>({x:polygon.reduce((sum,p)=>sum+p.x,0)/polygon.length,y:polygon.reduce((sum,p)=>sum+p.y,0)/polygon.length});
@@ -164,6 +164,11 @@ async function publicPlaces(){
    const exact=await f.page.locator('[data-homeworld-actor]').evaluate(element=>{const match=element.style.transform.match(/translate\(([-\d.e]+)px,\s*([-\d.e]+)px\)/);return match&&element.dataset.moving==='false'?{x:Number(match[1]),projectedY:Number(match[2]),elevation:Number(element.dataset.homeworldElevationV77)}:null;});
    const p=exact?{x:exact.x,y:(exact.projectedY+exact.elevation)/api.HOMEWORLD_GEOMETRY_V64.depthScale}:blocked??await f.actor(),dx=prepared.center.x-p.x,dy=prepared.center.y-p.y,length=Math.hypot(dx,dy),probe={x:p.x+dx/length*4,y:p.y+dy/length*4};
    check(item.id+' real keyboard movement is stopped by the matching native solid',!!blocked&&api.homeworldCivicWalkableV80(item.levelId,p)&&api.homeworldPublicPlaceCollisionV112(item.levelId,probe)===item.id,{blocked,probe,collision:api.homeworldCivicCollisionV80(item.levelId,probe)});
+   if(item.id==='public-place-v112:register-marker'){
+    const target=api.HOMEWORLD_CARTOGRAPHY_V104.waypoints[0],before=await f.actor();
+    await f.steer(target,4);const reached=await f.actor(),bodies=[{halfWidth:24,halfDepth:14},{halfWidth:36,halfDepth:26}];
+    check('The relocated register marker preserves the original V104 waypoint reached by real keyboard movement',Math.hypot(reached.x-before.x,reached.y-before.y)>40&&Math.hypot(reached.x-target.x,reached.y-target.y)<=4&&bodies.every(body=>api.homeworldCivicWalkableV80('0',reached,body)),{target,before,reached,bodies});
+   }
    await f.capture('native-contact-and-clearance');
   });
  }

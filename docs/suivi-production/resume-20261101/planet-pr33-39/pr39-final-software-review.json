@@ -1,0 +1,174 @@
+{
+  "reviewedAtUtc": "2026-11-01T01:26:30+00:00",
+  "headSha": "04d9d4dd306cc4e27d4c44c6a1eca01be9328b26",
+  "mainAtReview": "c5fc51dc42d8e04a4a8f0ca79273c44e4921f7e1",
+  "verdict": "FAVORABLE_FOR_NORMAL_SOFTWARE_MERGE_WITH_DECLARED_SCOPE",
+  "additionalSoftwareBlockersFound": [],
+  "scope": "Bounded source review of version/import/save/sidecar contracts, presentation lifetime, relief/traversal boundaries, public assets and fidelity claims. This is not exhaustive gameplay or artistic certification.",
+  "unchangedCoreContracts": [
+    {
+      "path": "app/game/save.ts",
+      "baseBlob": "97dc3da8eee5ed958a11f364281b2714f51dda72",
+      "headBlob": "97dc3da8eee5ed958a11f364281b2714f51dda72",
+      "identical": true
+    },
+    {
+      "path": "app/game/types.ts",
+      "baseBlob": "2056fececd3935b100be5036e76fb01094851765",
+      "headBlob": "2056fececd3935b100be5036e76fb01094851765",
+      "identical": true
+    },
+    {
+      "path": "app/game/systems/clanWarPlanetGeneratorV102.ts",
+      "baseBlob": "aa44cc3c75fbe47deb38a8df7fa5faf95cf277c5",
+      "headBlob": "aa44cc3c75fbe47deb38a8df7fa5faf95cf277c5",
+      "identical": true
+    },
+    {
+      "path": "app/game/systems/clanWarPlanetGeneratorV103.ts",
+      "baseBlob": "36c6239867fcaabb569670e3c86e5b232f4835ff",
+      "headBlob": "36c6239867fcaabb569670e3c86e5b232f4835ff",
+      "identical": true
+    },
+    {
+      "path": "app/game/systems/clanWarPlanetGeneratorV115.ts",
+      "baseBlob": "e663c367a4bb50c9ba9493ff0da5b39ed980c814",
+      "headBlob": "e663c367a4bb50c9ba9493ff0da5b39ed980c814",
+      "identical": true
+    },
+    {
+      "path": "app/game/systems/clanWarPlanetsV96.ts",
+      "baseBlob": "5dcb8b84d63f739931560e0deb23edf7c994a9ab",
+      "headBlob": "5dcb8b84d63f739931560e0deb23edf7c994a9ab",
+      "identical": true
+    },
+    {
+      "path": "app/game/systems/clanWarSessionV85.ts",
+      "baseBlob": "f377c8895eb400d5c1a8ad4cdff4dd38b731c79a",
+      "headBlob": "f377c8895eb400d5c1a8ad4cdff4dd38b731c79a",
+      "identical": true
+    },
+    {
+      "path": "app/game/systems/clanWarV85.ts",
+      "baseBlob": "fc345b01324c5365a24498778a1bd8ec14f964ff",
+      "headBlob": "fc345b01324c5365a24498778a1bd8ec14f964ff",
+      "identical": true
+    }
+  ],
+  "reviewedSourceBlobs": [
+    {
+      "path": "app/game/PlanetGeneratorV103.tsx",
+      "headBlob": "f985392dc4ecc8de29802704dea5db05d16bdcd8"
+    },
+    {
+      "path": "app/game/PlanetLayerExportV102.tsx",
+      "headBlob": "321fd030ad0ce94bceb30dd14d3bbd0bd5c4f5c0"
+    },
+    {
+      "path": "app/game/PlanetMaterialCanvasV101.tsx",
+      "headBlob": "a242b5bc6bb79bd52adf252a75a407715a16df25"
+    },
+    {
+      "path": "app/game/PlanetRegionalPreviewV129.tsx",
+      "headBlob": "38e03240274cad84481fb77c060ee92d035f0d3f"
+    },
+    {
+      "path": "app/game/PlanetEarthReferenceV147.tsx",
+      "headBlob": "2bc68a2ad241cd7fcc43267dda5195c265a37bbf"
+    },
+    {
+      "path": "app/game/earthGeoReferenceV147.ts",
+      "headBlob": "a1faa9a1103f918e203cc24d4e756dc3b6ac799a"
+    },
+    {
+      "path": "app/game/PlanetReliefV150.tsx",
+      "headBlob": "967ac10567b80b5aa5a44e8d44f1d5d40c2871ff"
+    },
+    {
+      "path": "app/game/PlanetTraversalLabV154.tsx",
+      "headBlob": "9e314b72eed0adcc9466549a66683a6a7c397fa1"
+    },
+    {
+      "path": "app/game/systems/clanWarPlanetTraverseV154.ts",
+      "headBlob": "c8ee968a527e16c8594f678c114b7daf882d47d4"
+    },
+    {
+      "path": "app/game/systems/clanWarPlanetTraverseSectionV155.ts",
+      "headBlob": "10b2caf6e179bf5504ef297034792ee1984eb986"
+    },
+    {
+      "path": "app/game/systems/clanWarRegionalMaterialKitV128.ts",
+      "headBlob": "4ed79cdfd8730a33c290d8655acc7fd4733d3646"
+    },
+    {
+      "path": "app/game/systems/clanWarPlanetVisualProfileV134.ts",
+      "headBlob": "b100755758682c27ce3b8dfb115108d01540c9bc"
+    },
+    {
+      "path": "app/game/systems/clanWarAtlasVisualV142.ts",
+      "headBlob": "425b21e1540aac377343d89b86128340988c5cb9"
+    },
+    {
+      "path": "app/game/ClanWarAtlasV95.tsx",
+      "headBlob": "d55fde14549a87af10a539f82170dcb9ca398c02"
+    },
+    {
+      "path": "app/game/planetAssetStudiesV151.ts",
+      "headBlob": "392263f11346b431a6eb7b85df73a82a3501ca0f"
+    },
+    {
+      "path": "app/game/systems/planetExportZipV114.ts",
+      "headBlob": "11951706cbfc350a3260eefc07c4217d88e3bb1e"
+    },
+    {
+      "path": "app/game/systems/planetRenderSignatureV143.ts",
+      "headBlob": "06c85f709b67f9dc53fffae402610843f07c3e7a"
+    },
+    {
+      "path": "app/game/data/planetVisualFidelityV132.json",
+      "headBlob": "1edc846e6853daffaf3fd7d415e2d74181991d0d"
+    },
+    {
+      "path": ".vercelignore",
+      "headBlob": "9df19d25832956639e79f908727009e1527eb192"
+    }
+  ],
+  "observations": {
+    "worldImport": "64 KiB file limit, async intent guard, exact record.version/code/validated recipe agreement, no automatic V102-to-V103/V115 migration",
+    "visualSidecar": "Exact keys, version134, worldCode equality, canonical region order/seed and compatibility validation; 64 KiB maximum; quota/errors returned explicitly; opt-in loading into battle presentation",
+    "lifetime": "AbortController plus RAF cancellation for canvas/fetch; IntersectionObserver and renderer listeners detached; exporter keyed by planet.id with abort and import-intent invalidation; no new Worker introduced by the inspected planet features",
+    "traversal": "Private component session, four-neighbour passability and world identity checks; water blocks, mobility resets, real height/profile samples; keyed parent resets when authored raster settings change",
+    "zip": "Historical V114 entry bound16 retained, separate V151 bound24, both64MiB, safe names/CRC/duplicate rejection; default relief exports documented separately from editor settings",
+    "catalogAndWarPersistence": "Core catalogue, generators, campaign save/types, V85 session and rules are unchanged Git blobs; regional looks do not write tactical state"
+  },
+  "newPublicDataset": {
+    "path": "public/game/planets/earth/ne_110m_land.geojson",
+    "bytes": 138160,
+    "gitBlob": "04811d72fff2701ec67587e30ad8942675b511e3",
+    "sha256": "9e0729ee253ca7d7a5c4ae9395fb1902264c5377c52e224d13dd85010e2835d9",
+    "licenseClaimAndPublisher": "Natural Earth/NACIS public-domain land polygons, 1:110m overview",
+    "packagingExcludedByVercelignore": false,
+    "runtimeReferenceStructureAndComplexityValidated": true
+  },
+  "artisticRegister": {
+    "shapes": 120,
+    "materials": 48,
+    "approved1to1True": 0,
+    "officialFilmUvOrWorldGeoreferencingClaimed": false
+  },
+  "concreteNonBlockingRisks": [
+    "Raster/PBR/export work has bounded but synchronous main-thread CPU and memory costs; physical mobile performance is not benchmarked here.",
+    "GPU sampler limits can select an advertised albedo/SVG fallback rather than regional PBR.",
+    "Visual localStorage preferences use last-writer storage without a multi-tab transaction contract; campaign ledgers are outside that keyspace.",
+    "V154/V155 traversal remains a coarse global-pixel exercise and must not be described as local character or vehicle collision."
+  ],
+  "validationUsed": {
+    "originalLocalDomainPass": 164,
+    "isolatedTypeFixTargetedPass": 20,
+    "targeted20OverlapOriginal164": true,
+    "fullTypecheckPassedOnRealSparse": true,
+    "sameHeadThreeJobCiSuccess": 41259282388
+  },
+  "gitMutationPerformedByReviewer": false,
+  "newCodeWrittenDuringThisFinalReview": false
+}

@@ -1,0 +1,716 @@
+{
+  "status": "PASS_INDEPENDENT_XML_AND_FROZEN_INPUTS",
+  "method": "Python standard-library direct ZIP/XML and SHA256 checks; does not call the V112 workbook generator or verifier.",
+  "workbook": {
+    "path": "docs/YAUTJA_V112_SUIVI.xlsx",
+    "bytes": 9433700,
+    "sha256": "723cc894b643d55dcd076cab8b615866c6879ecc481c55616adcdd0508d2eccc"
+  },
+  "baseline": {
+    "path": "docs/YAUTJA_V111_SUIVI.xlsx",
+    "bytes": 8150642,
+    "sha256": "fa5ebf78a08c36b4a567246dfae41de535a8e36c7294ba33190e3e1e2ec9ad05"
+  },
+  "worksheets": 122,
+  "historicalWorksheetsByteIdentical": 113,
+  "allHistoricalSheetNamesAndPartPathsPreserved": true,
+  "historicalZipPartsByteIdentical": 126,
+  "xmlPartsParsed": 139,
+  "historicalWorksheets": [
+    {
+      "sheet": "LotV62",
+      "part": "xl/worksheets/sheet1.xml",
+      "bytes": 20699,
+      "sha256": "ccc24e7c02f02f04195871c61eac5f7ce3c604602e85137a07285fa460e9c5c1"
+    },
+    {
+      "sheet": "CombattantsV54",
+      "part": "xl/worksheets/sheet2.xml",
+      "bytes": 143525,
+      "sha256": "e1a4bc3fdbacf03c5b177a91c4de393b31a2bc2d152f96aee6b82979636bfda5"
+    },
+    {
+      "sheet": "Resteclasseur",
+      "part": "xl/worksheets/sheet3.xml",
+      "bytes": 18457,
+      "sha256": "db007f03a09681457b4d90b3f985d57a7e04c272fe655733d3624c6fcb0c4d38"
+    },
+    {
+      "sheet": "LotV63",
+      "part": "xl/worksheets/sheet4.xml",
+      "bytes": 19580,
+      "sha256": "da7781df746bfeaabfdf1c0520e17dd1daf3c22bcbaad4a1ee509cd73208c855"
+    },
+    {
+      "sheet": "StagesV54",
+      "part": "xl/worksheets/sheet5.xml",
+      "bytes": 159600,
+      "sha256": "00ced0d77265eea7a3ef3a92761f74155c453937bb8ced262a8acd8b0c304960"
+    },
+    {
+      "sheet": "SyntheseV99",
+      "part": "xl/worksheets/v99-sheet-6.xml",
+      "bytes": 11492,
+      "sha256": "35b37017e048b257e88731556b1b778363170723f58d8e2941fdd33c8178b2d5"
+    },
+    {
+      "sheet": "ChantiersV99",
+      "part": "xl/worksheets/v99-sheet-7.xml",
+      "bytes": 39011,
+      "sha256": "39f9f3ac965956172fe0dfbf06eb702e0d937dcba48537dd2841937884cbcfd0"
+    },
+    {
+      "sheet": "SourcesV99",
+      "part": "xl/worksheets/v99-sheet-8.xml",
+      "bytes": 11777,
+      "sha256": "458491c69e418b5dc97db60cb3e0e74141e32fcf6ddbfbdea51ebce4eb567c33"
+    },
+    {
+      "sheet": "PlanetesV99",
+      "part": "xl/worksheets/v99-sheet-9.xml",
+      "bytes": 44016,
+      "sha256": "98d61c8dba1059054bb077ed7084892f2e50f83ab66a69c75ac08cbe43355780"
+    },
+    {
+      "sheet": "OuvragesV6",
+      "part": "xl/worksheets/v99-sheet-10.xml",
+      "bytes": 27998,
+      "sha256": "1fb1ba715915b8239c939f63f43a89a19aee977cce02d3248511d0e1d86b3397"
+    },
+    {
+      "sheet": "PitOuvertV99",
+      "part": "xl/worksheets/v99-sheet-11.xml",
+      "bytes": 10720,
+      "sha256": "3b2e4f22185a08d70bc6c6fd3c2f1c2b6db0da46c47a5ecc54272f6791b431be"
+    },
+    {
+      "sheet": "StagesOuvertsV99",
+      "part": "xl/worksheets/v99-sheet-12.xml",
+      "bytes": 539974,
+      "sha256": "08b9484270635d1ccd32c1beea2bc0f7639e6cc79641d0ad7848ad80fd7e2a27"
+    },
+    {
+      "sheet": "ValidationsV99",
+      "part": "xl/worksheets/v99-sheet-13.xml",
+      "bytes": 12499,
+      "sha256": "68ada38dc13762c59baedccff5636a6a76491e4ce1040bee5f4fd9ce0773f2a9"
+    },
+    {
+      "sheet": "EntreesV99",
+      "part": "xl/worksheets/v99-sheet-14.xml",
+      "bytes": 17630,
+      "sha256": "5d7aea9397b8d7b8a00d40ccda83c7cbc6e8ee7d26bf0e57d0a3e3a4197a6626"
+    },
+    {
+      "sheet": "JournalV99",
+      "part": "xl/worksheets/v99-sheet-15.xml",
+      "bytes": 6359,
+      "sha256": "b63bb6c4bb8640d4e2b541cda6abd1eb425133d459f1e007ff256fb1a79f7bb9"
+    },
+    {
+      "sheet": "SyntheseV100",
+      "part": "xl/worksheets/v100-sheet-16.xml",
+      "bytes": 11786,
+      "sha256": "7799d3520af5fae38bbb1f49b04e1bce96afd3f534a8cca6cdfa3d123e491475"
+    },
+    {
+      "sheet": "ChantiersV100",
+      "part": "xl/worksheets/v100-sheet-17.xml",
+      "bytes": 18584,
+      "sha256": "97ce0a9a61aebe71cd6bd10af3caad7dfd09bb6e468e2c39b0cdbef89c9b4a6e"
+    },
+    {
+      "sheet": "AnimationsV100",
+      "part": "xl/worksheets/v100-sheet-18.xml",
+      "bytes": 195429,
+      "sha256": "fe8f74ba8e1a91bc5974e747ce168f7ae013eb2c9c4811751c32deb741ae0400"
+    },
+    {
+      "sheet": "OrientationsV100",
+      "part": "xl/worksheets/v100-sheet-19.xml",
+      "bytes": 218741,
+      "sha256": "47111ed99f8b5b77adaae3952b742307b1a73ab36547fae76ed7a88aa4d6cc17"
+    },
+    {
+      "sheet": "ContactsV100",
+      "part": "xl/worksheets/v100-sheet-20.xml",
+      "bytes": 16948,
+      "sha256": "1044063b7b57505b2703a5d2bbc39dbe568cf80285bbe6b9e2d9e607011236b4"
+    },
+    {
+      "sheet": "PlanetesV100",
+      "part": "xl/worksheets/v100-sheet-21.xml",
+      "bytes": 29761,
+      "sha256": "c017bf49c336a42c7008d72ee2401e1f011a556e42fd98618f1e3edd574bbe1a"
+    },
+    {
+      "sheet": "OuvragesV100",
+      "part": "xl/worksheets/v100-sheet-22.xml",
+      "bytes": 23335,
+      "sha256": "1094b5ac3f4a40a5660fc539c0c24dffaf979a5c593a5b3c6e04b3654fa66aeb"
+    },
+    {
+      "sheet": "PitOuvertV100",
+      "part": "xl/worksheets/v100-sheet-23.xml",
+      "bytes": 9461,
+      "sha256": "327272492631138b90e3d550edd7003bd82c997c2f36d9a5c29584c6ea6c15ec"
+    },
+    {
+      "sheet": "SourcesV100",
+      "part": "xl/worksheets/v100-sheet-24.xml",
+      "bytes": 72676,
+      "sha256": "7995baf7bb5e3c0ebe581feb05ab3786ea81ae029ce7a6a83a3ad6a19e0ae11a"
+    },
+    {
+      "sheet": "ValidationsV100",
+      "part": "xl/worksheets/v100-sheet-25.xml",
+      "bytes": 8776,
+      "sha256": "43100f14323a105342f155bea34884d83b29075bb59f58780c5ef8fbdfeefdd2"
+    },
+    {
+      "sheet": "EntreesV100",
+      "part": "xl/worksheets/v100-sheet-26.xml",
+      "bytes": 111062,
+      "sha256": "5ca990ed1e2eefdb3d59e0bf8605e623b3672e9ce7e24eaeb81b0bc5321ee1ee"
+    },
+    {
+      "sheet": "JournalV100",
+      "part": "xl/worksheets/v100-sheet-27.xml",
+      "bytes": 6627,
+      "sha256": "ba150ff74a0e0217d03e63ddd9ba5f45a10bb46c7e58557e39c13f73437814fa"
+    },
+    {
+      "sheet": "SyntheseV104",
+      "part": "xl/worksheets/v104-sheet-28.xml",
+      "bytes": 13515,
+      "sha256": "4745a550f3a26399fb026918dc5fad1c37fdc0505f4ce4a7e6e4ba3f526dd124"
+    },
+    {
+      "sheet": "ChantiersV104",
+      "part": "xl/worksheets/v104-sheet-29.xml",
+      "bytes": 19231,
+      "sha256": "17f0ac8fb36338b989117277bde68dd997e0a04e131921408842cd1efdec165c"
+    },
+    {
+      "sheet": "NormalesV104",
+      "part": "xl/worksheets/v104-sheet-30.xml",
+      "bytes": 50411,
+      "sha256": "02108d2ae7c6c5245d6451f9da21a6a5b6fc0c522b1abeadccc0373d82f3cd1e"
+    },
+    {
+      "sheet": "CartographieV104",
+      "part": "xl/worksheets/v104-sheet-31.xml",
+      "bytes": 21113,
+      "sha256": "c34acdabb45ad55bf0b55072e11328f37c14c4aa96d63d232e6fbbc4f119a4e7"
+    },
+    {
+      "sheet": "PreserveV104",
+      "part": "xl/worksheets/v104-sheet-32.xml",
+      "bytes": 5715,
+      "sha256": "c73ff096f0399a5c3d0716ed0febfc09ef7362fcf9515d76380771d393f6aec9"
+    },
+    {
+      "sheet": "PlanetesV104",
+      "part": "xl/worksheets/v104-sheet-33.xml",
+      "bytes": 47632,
+      "sha256": "554d94822ef8108eec5d3911c8778d133ac5d3a9696c1c45e76b493b6499e36e"
+    },
+    {
+      "sheet": "VariantesV104",
+      "part": "xl/worksheets/v104-sheet-34.xml",
+      "bytes": 181319,
+      "sha256": "6a2689dbfc4d467687202532c79c78e20ca7c1aaa573ffd7367fd965341e0af8"
+    },
+    {
+      "sheet": "ManquantsV104",
+      "part": "xl/worksheets/v104-sheet-35.xml",
+      "bytes": 25892,
+      "sha256": "5e8d86d70d4fe20006e71400bb88371b646908c8d05a8ff47c602581d991a52f"
+    },
+    {
+      "sheet": "SourcesV104",
+      "part": "xl/worksheets/v104-sheet-36.xml",
+      "bytes": 77298,
+      "sha256": "55ddb5303a2677766ed33738c0e9fb8ceea7aee6e240244532e3db59a996078b"
+    },
+    {
+      "sheet": "ValidationsV104",
+      "part": "xl/worksheets/v104-sheet-37.xml",
+      "bytes": 10189,
+      "sha256": "21d1fffd14e929925abd121b5d9e7a6533764d89615e4f5c4d70b0b3e91c6761"
+    },
+    {
+      "sheet": "EntreesV104",
+      "part": "xl/worksheets/v104-sheet-38.xml",
+      "bytes": 81243,
+      "sha256": "9ca06449fc8af6f29013b4442364c28154a1026472cff95067044fa0272a0d5f"
+    },
+    {
+      "sheet": "JournalV104",
+      "part": "xl/worksheets/v104-sheet-39.xml",
+      "bytes": 6433,
+      "sha256": "83746881e4ca7ffcef402b12aeb5ed9dbe3cd0f4fb2c8a00d40acd3d567762a8"
+    },
+    {
+      "sheet": "SyntheseV105",
+      "part": "xl/worksheets/v105-sheet-40.xml",
+      "bytes": 8999,
+      "sha256": "d2b9f69c18dcd48b03b32589d59c2fc459b10e2e58a0988776e51ce7a3a7d54f"
+    },
+    {
+      "sheet": "ChantiersV105",
+      "part": "xl/worksheets/v105-sheet-41.xml",
+      "bytes": 14372,
+      "sha256": "9cad760dfc0991c245dc358b36ca20ce582798691dfe601026a489b73f9e2b79"
+    },
+    {
+      "sheet": "ActionsV105",
+      "part": "xl/worksheets/v105-sheet-42.xml",
+      "bytes": 178905,
+      "sha256": "83c8439c69dc22deb5552fde990f5cb37d56c3c908549c05839827adb22f3e46"
+    },
+    {
+      "sheet": "ClipsV105",
+      "part": "xl/worksheets/v105-sheet-43.xml",
+      "bytes": 124951,
+      "sha256": "f377aa5dc2abd450c0e6453b2b920c1edd7a916cdadc94e3f12b15a329c35cb0"
+    },
+    {
+      "sheet": "HomeworldV105",
+      "part": "xl/worksheets/v105-sheet-44.xml",
+      "bytes": 6662,
+      "sha256": "08a27765fa44f534df122941b516aa7c7612c498d757a7553a3442c95e96f6ec"
+    },
+    {
+      "sheet": "ClansV105",
+      "part": "xl/worksheets/v105-sheet-45.xml",
+      "bytes": 9715,
+      "sha256": "6e72175c2b5b44f077c851191ac96b82e14f37d460a85041370e0f468cf28995"
+    },
+    {
+      "sheet": "ManquantsV105",
+      "part": "xl/worksheets/v105-sheet-46.xml",
+      "bytes": 80627,
+      "sha256": "46e88b877162ceb3a47db146453fd07ee5500b157dd74740e9722d72a55a4d4e"
+    },
+    {
+      "sheet": "SourcesV105",
+      "part": "xl/worksheets/v105-sheet-47.xml",
+      "bytes": 115857,
+      "sha256": "51dad629e2190e772457d2cdf7bd8ba708799348c91658ad459f611fe45740c0"
+    },
+    {
+      "sheet": "ValidationsV105",
+      "part": "xl/worksheets/v105-sheet-48.xml",
+      "bytes": 7963,
+      "sha256": "dc3200de9396219c820c5212e4cbf181c806da4354bb677adad364c6cee5048a"
+    },
+    {
+      "sheet": "JournalV105",
+      "part": "xl/worksheets/v105-sheet-49.xml",
+      "bytes": 6299,
+      "sha256": "ec91125ae87c56dc61651224f1a4d58fcceecf1faedbf087e4c300ffa8e96195"
+    },
+    {
+      "sheet": "SyntheseV106",
+      "part": "xl/worksheets/v106-sheet-50.xml",
+      "bytes": 8645,
+      "sha256": "ee46717b2b52b5e53f250f68bb3c84f79865e1e1544373497faa75a52d53cb15"
+    },
+    {
+      "sheet": "ChantiersV106",
+      "part": "xl/worksheets/v106-sheet-51.xml",
+      "bytes": 15168,
+      "sha256": "d020475c24cd227d60a2fa03c4384e43eeb281f7dec7f154848b1ce2dfdf9b21"
+    },
+    {
+      "sheet": "ActionsV106",
+      "part": "xl/worksheets/v106-sheet-52.xml",
+      "bytes": 191521,
+      "sha256": "fab02d9cbf8ce0148840dca30a2b6475bed1cfe0f71b08d6b23dcabefec38f3b"
+    },
+    {
+      "sheet": "ClipsV106",
+      "part": "xl/worksheets/v106-sheet-53.xml",
+      "bytes": 72822,
+      "sha256": "31e9d19b88fa7a7875b41c3bdc74e016347844d2ba4756224ead644429255bfd"
+    },
+    {
+      "sheet": "MotionsV106",
+      "part": "xl/worksheets/v106-sheet-54.xml",
+      "bytes": 12403,
+      "sha256": "e7c2ec8018bfe20cf3629acdb5cbd2a0ee00b386013273cfcadb3862b44c4275"
+    },
+    {
+      "sheet": "HomeworldV106",
+      "part": "xl/worksheets/v106-sheet-55.xml",
+      "bytes": 5645,
+      "sha256": "e706946b11595685816ed73a60390bf81e8e8e7771fb12ecabd2ef2a4784747f"
+    },
+    {
+      "sheet": "ClansV106",
+      "part": "xl/worksheets/v106-sheet-56.xml",
+      "bytes": 8088,
+      "sha256": "cae4c222fb24c11f6028ef021f76ceb71be91a664a9f9fe3043a460e043f8708"
+    },
+    {
+      "sheet": "ManquantsV106",
+      "part": "xl/worksheets/v106-sheet-57.xml",
+      "bytes": 73486,
+      "sha256": "f95011e81cd436d36c27148f5340652a8f6f4d8ef55529cc6d937577b3d51be5"
+    },
+    {
+      "sheet": "SourcesV106",
+      "part": "xl/worksheets/v106-sheet-58.xml",
+      "bytes": 142283,
+      "sha256": "2b4c343684c2a44e3a858621a084924a790eefee713a77198471cb853c2a9b78"
+    },
+    {
+      "sheet": "ValidationsV106",
+      "part": "xl/worksheets/v106-sheet-59.xml",
+      "bytes": 9055,
+      "sha256": "e50ce84542f19d4c35ac29e7417d673989874546cbdd5637dd395468476a6175"
+    },
+    {
+      "sheet": "JournalV106",
+      "part": "xl/worksheets/v106-sheet-60.xml",
+      "bytes": 8754,
+      "sha256": "6f92e52ee77609a86f245e2ad8e15b709028ac5f6669a2eeaabe2a6280f6babe"
+    },
+    {
+      "sheet": "SyntheseV107",
+      "part": "xl/worksheets/v107-sheet-61.xml",
+      "bytes": 10780,
+      "sha256": "0b273709ac56f6b2b52ee51da7370d09a2ec771846fcc0e8086c53e7b0665235"
+    },
+    {
+      "sheet": "ChantiersV107",
+      "part": "xl/worksheets/v107-sheet-62.xml",
+      "bytes": 26339,
+      "sha256": "9bfa1c83caf5cb114082e9e17ca2a909ad4212a4c09bbf512a8461d08851ceae"
+    },
+    {
+      "sheet": "FamillesV107",
+      "part": "xl/worksheets/v107-sheet-63.xml",
+      "bytes": 20693,
+      "sha256": "9412124d84de3d5eb04070e1a5ca03d7dbff6b3938a65c2d5341a131b1ab31ca"
+    },
+    {
+      "sheet": "ActionsV107",
+      "part": "xl/worksheets/v107-sheet-64.xml",
+      "bytes": 158310,
+      "sha256": "081d49f1070e68e805cc4a03f70ee63fd7ebeb98a4ca6c9397fa0cf03359812b"
+    },
+    {
+      "sheet": "CampagnesV107",
+      "part": "xl/worksheets/v107-sheet-65.xml",
+      "bytes": 31947,
+      "sha256": "dfa48957f7f96f7f292a9087db1576bb88f78d7c0a2ae3b91f618ef9271527d8"
+    },
+    {
+      "sheet": "VariantesV107",
+      "part": "xl/worksheets/v107-sheet-66.xml",
+      "bytes": 23105,
+      "sha256": "a66f241e81e72e53204758b7eb4bc79fd3c7262f4106ab20dcef8560971ca3ac"
+    },
+    {
+      "sheet": "HomeworldV107",
+      "part": "xl/worksheets/v107-sheet-67.xml",
+      "bytes": 7966,
+      "sha256": "6c7bdf23f6ef541b5a9a524541771132e10ded5b28f4a3f47cd53d9038698b94"
+    },
+    {
+      "sheet": "ClansV107",
+      "part": "xl/worksheets/v107-sheet-68.xml",
+      "bytes": 15627,
+      "sha256": "b5803cc646245568051f5296a3e0a9ce7d54d51d818894376128b54a9e9c4f0b"
+    },
+    {
+      "sheet": "PreserveV107",
+      "part": "xl/worksheets/v107-sheet-69.xml",
+      "bytes": 5788,
+      "sha256": "13c7047bb219218ca164761dab7495b37c57e0f932e6a59364595458afc41767"
+    },
+    {
+      "sheet": "ManquantsV107",
+      "part": "xl/worksheets/v107-sheet-70.xml",
+      "bytes": 120904,
+      "sha256": "2d1013d6a38bef827d9cb19c42cc18aa7510e10456e3103d8dfe2de0c1f0f9c1"
+    },
+    {
+      "sheet": "SourcesV107",
+      "part": "xl/worksheets/v107-sheet-71.xml",
+      "bytes": 377143,
+      "sha256": "a3df72593cb036770a7e81200a3819691187a147bf146878b77286e25b4b8c7c"
+    },
+    {
+      "sheet": "ValidationsV107",
+      "part": "xl/worksheets/v107-sheet-72.xml",
+      "bytes": 14676,
+      "sha256": "dabf7fb657582668e041c699cd9e7eda26fb9d8dd28a4f3b1d40e23e0b55813e"
+    },
+    {
+      "sheet": "JournalV107",
+      "part": "xl/worksheets/v107-sheet-73.xml",
+      "bytes": 7705,
+      "sha256": "08cd7d926242e7a86abf3089b202ed2d384fccd0b8eed326a270ffb633a12425"
+    },
+    {
+      "sheet": "SyntheseV108",
+      "part": "xl/worksheets/v108-sheet-74.xml",
+      "bytes": 8417,
+      "sha256": "40984cf6320864a7182e1b63779818db65536fe50e5d38448b5f90c6652e0e7a"
+    },
+    {
+      "sheet": "ChantiersV108",
+      "part": "xl/worksheets/v108-sheet-75.xml",
+      "bytes": 27726,
+      "sha256": "c7f0a976b77032a7b4447d4cde861beae99a55c29950ad1832221c3c970581df"
+    },
+    {
+      "sheet": "FamillesV108",
+      "part": "xl/worksheets/v108-sheet-76.xml",
+      "bytes": 13389,
+      "sha256": "18b392ac2170649748cad7c8dfc8b0f23b4ba07eba4c4d80aa51c22ed3db3954"
+    },
+    {
+      "sheet": "ManquantsV108",
+      "part": "xl/worksheets/v108-sheet-77.xml",
+      "bytes": 118246,
+      "sha256": "a7fdb4852b5be55ae7596c1b22d3409004a2a5e5606f7854332d81fe275e070e"
+    },
+    {
+      "sheet": "PitV108",
+      "part": "xl/worksheets/v108-sheet-78.xml",
+      "bytes": 16330,
+      "sha256": "7e2fd770e1bfc880eaf039c83f8938ba5fe502cd584f7d9dcf99c7f3a610a941"
+    },
+    {
+      "sheet": "HomeworldV108",
+      "part": "xl/worksheets/v108-sheet-79.xml",
+      "bytes": 13413,
+      "sha256": "9ad8638547e1a46f0759490aeec8c043710032fe6b81a30af692a78228909242"
+    },
+    {
+      "sheet": "ClansV108",
+      "part": "xl/worksheets/v108-sheet-80.xml",
+      "bytes": 13196,
+      "sha256": "2efb0ea5bb6f904e5cff3074a77a71f2f8b10aa76d06778072022edef28b01c3"
+    },
+    {
+      "sheet": "PreserveV108",
+      "part": "xl/worksheets/v108-sheet-81.xml",
+      "bytes": 4844,
+      "sha256": "794fa015eed4607827a11e61d502d8db3b5b4bbffce6d22cf7ed78133f2b9be9"
+    },
+    {
+      "sheet": "ArtV108",
+      "part": "xl/worksheets/v108-sheet-82.xml",
+      "bytes": 9481,
+      "sha256": "76ece78a34750f0bda0ca98487496ca84aeea4d13ef1e4b379969a440afb1316"
+    },
+    {
+      "sheet": "SourcesV108",
+      "part": "xl/worksheets/v108-sheet-83.xml",
+      "bytes": 132465,
+      "sha256": "ac8c9044d5c4090c79a0dc9c567eb8d6873a5e7516e0a0540b108fd4a54f671e"
+    },
+    {
+      "sheet": "ValidationsV108",
+      "part": "xl/worksheets/v108-sheet-84.xml",
+      "bytes": 23687,
+      "sha256": "28d934b9e43250aae01bbb57089a20c8da0daf43a9c4dca66e62f6632c99ecf2"
+    },
+    {
+      "sheet": "JournalV108",
+      "part": "xl/worksheets/v108-sheet-85.xml",
+      "bytes": 7949,
+      "sha256": "df665facdce7d879aacb79d2973997bdaaa55d311beb89765f8a1464f5088015"
+    },
+    {
+      "sheet": "SyntheseV109",
+      "part": "xl/worksheets/v109-sheet-86.xml",
+      "bytes": 7780,
+      "sha256": "a295a1543ddcd55c719922969c86793bed4d27dc83a8ea469d05ff441449aa78"
+    },
+    {
+      "sheet": "ChantiersV109",
+      "part": "xl/worksheets/v109-sheet-87.xml",
+      "bytes": 28467,
+      "sha256": "488dbdc16250fb1f015f011e03e5ea9aa0b5fed761b9bd8a342b79272c7ca7c8"
+    },
+    {
+      "sheet": "FamillesV109",
+      "part": "xl/worksheets/v109-sheet-88.xml",
+      "bytes": 13383,
+      "sha256": "75cfdaff43535f9761b9c1d5aa5b3fcb374706591b44e6f4660d662351d7575b"
+    },
+    {
+      "sheet": "ManquantsV109",
+      "part": "xl/worksheets/v109-sheet-89.xml",
+      "bytes": 121789,
+      "sha256": "6fa99d8afabde00a130ec0a0ac4b78fbc25b72d3be6487eb8c219a46acc4e259"
+    },
+    {
+      "sheet": "PitV109",
+      "part": "xl/worksheets/v109-sheet-90.xml",
+      "bytes": 28114,
+      "sha256": "6d26a48f5307fd26f3f1eb3e159c9573dca5a58b1eea4607cdb286bb6cbc26c8"
+    },
+    {
+      "sheet": "HomeworldV109",
+      "part": "xl/worksheets/v109-sheet-91.xml",
+      "bytes": 14902,
+      "sha256": "34d40cce81156c5360d75133072830745dae90da77bf29edd412073c7350cd7c"
+    },
+    {
+      "sheet": "ClansV109",
+      "part": "xl/worksheets/v109-sheet-92.xml",
+      "bytes": 14722,
+      "sha256": "8b6c3c0674fecde2b91d1947ffea1b0ab7bbe48788202fe3aa3ce8b0f4e03941"
+    },
+    {
+      "sheet": "PreserveV109",
+      "part": "xl/worksheets/v109-sheet-93.xml",
+      "bytes": 22219,
+      "sha256": "2759117533abddcbdf71cdca17abacd0a4051c4e5cf3a78d987054e07e48dc8c"
+    },
+    {
+      "sheet": "ArtV109",
+      "part": "xl/worksheets/v109-sheet-94.xml",
+      "bytes": 25617,
+      "sha256": "217ef8288316b56e67997e978569c71f128f0f6a2e99386704562f272be48660"
+    },
+    {
+      "sheet": "SourcesV109",
+      "part": "xl/worksheets/v109-sheet-95.xml",
+      "bytes": 193949,
+      "sha256": "000ff404c6c560d5a0c6904c8113db44b301aedca48ef0c8cd116df233c3ea34"
+    },
+    {
+      "sheet": "ValidationsV109",
+      "part": "xl/worksheets/v109-sheet-96.xml",
+      "bytes": 33466,
+      "sha256": "8fcdfa4d59a06c1382044cfe3a7dfcae984669a95b241474e622d95cd90b69fa"
+    },
+    {
+      "sheet": "JournalV109",
+      "part": "xl/worksheets/v109-sheet-97.xml",
+      "bytes": 7160,
+      "sha256": "2846a6e5a5c61404fa1924be963e707614fc6f2445fe3858cbc1090cda4a4161"
+    },
+    {
+      "sheet": "SyntheseV110",
+      "part": "xl/worksheets/v110-sheet-98.xml",
+      "bytes": 7073,
+      "sha256": "4e0acd0f724266182469359acce1206fe9fd4e3d3efe86e4407336f12eae39f0"
+    },
+    {
+      "sheet": "ChantiersV110",
+      "part": "xl/worksheets/v110-sheet-99.xml",
+      "bytes": 13757,
+      "sha256": "a29537a783771c8dd91ae91e59224917ec742872fed84e1080607acca1d03224"
+    },
+    {
+      "sheet": "HomeworldV110",
+      "part": "xl/worksheets/v110-sheet-100.xml",
+      "bytes": 4990,
+      "sha256": "e4f1f1d78fb3ab9c63fe0ff4c6072f3ca44c0c2b2ef78dd9040eb13fa34602d2"
+    },
+    {
+      "sheet": "ManquantsSourceV110",
+      "part": "xl/worksheets/v110-sheet-101.xml",
+      "bytes": 73811,
+      "sha256": "6347d6a1ea68433925bc489e903625b646fa2459bd3ee2b67d29fbd8fd96b5f3"
+    },
+    {
+      "sheet": "CatalogueArtV110",
+      "part": "xl/worksheets/v110-sheet-102.xml",
+      "bytes": 305596,
+      "sha256": "ca0cb7a6f9a668f91c163b4b1bd5fd76bffca5cfbf27c323438351f6a519ab18"
+    },
+    {
+      "sheet": "SourcesV110",
+      "part": "xl/worksheets/v110-sheet-103.xml",
+      "bytes": 548803,
+      "sha256": "37732b69b41afa85a4cd87a1dc5e9bdee9bc63a2e15645f56341a128107e2261"
+    },
+    {
+      "sheet": "ValidationsV110",
+      "part": "xl/worksheets/v110-sheet-104.xml",
+      "bytes": 17489,
+      "sha256": "bbc687e5393a48f76deffa93515af9db13d9944dbbf50506a184f7f040c2f7f9"
+    },
+    {
+      "sheet": "JournalV110",
+      "part": "xl/worksheets/v110-sheet-105.xml",
+      "bytes": 5004,
+      "sha256": "c0c17cb40bebb1749c2d05cdac6549376c288b71ea42e65160572e7dc5db1144"
+    },
+    {
+      "sheet": "SyntheseV111",
+      "part": "xl/worksheets/v111-sheet-106.xml",
+      "bytes": 7225,
+      "sha256": "b37e9b63804c482a5faf5c90b1286dff67ba4f97c4b63fcb3cfffa8eef4e5db8"
+    },
+    {
+      "sheet": "ChantiersV111",
+      "part": "xl/worksheets/v111-sheet-107.xml",
+      "bytes": 15758,
+      "sha256": "32beb3c43ab0b255be7492fce0755d2179e375aee05bdeb7421967e24e667e8f"
+    },
+    {
+      "sheet": "HomeworldV111",
+      "part": "xl/worksheets/v111-sheet-108.xml",
+      "bytes": 4897,
+      "sha256": "041fa39d1dee414715f199ebf8d52f383ab950f162b9bfbfef5bde66726e7969"
+    },
+    {
+      "sheet": "ManquantsSourceV111",
+      "part": "xl/worksheets/v111-sheet-109.xml",
+      "bytes": 74419,
+      "sha256": "deab165b8cbcb92affdec4a3aded6490f1788ed113d6451ea6456e36d0c59e68"
+    },
+    {
+      "sheet": "CatalogueArtV111",
+      "part": "xl/worksheets/v111-sheet-110.xml",
+      "bytes": 406901,
+      "sha256": "8942fe5df785cc455185f8a29efd611ea53696f06c5b67c3b9b243c76903c885"
+    },
+    {
+      "sheet": "SourcesV111",
+      "part": "xl/worksheets/v111-sheet-111.xml",
+      "bytes": 1341656,
+      "sha256": "d936c28e38c4c795d5e3bff32abfa2484f71829fa3b13f514696ecacc9dc5606"
+    },
+    {
+      "sheet": "ValidationsV111",
+      "part": "xl/worksheets/v111-sheet-112.xml",
+      "bytes": 27560,
+      "sha256": "8b9e50cb03d79bb20e4416732db59e50d15a60248c23010982fea17cc0f84160"
+    },
+    {
+      "sheet": "JournalV111",
+      "part": "xl/worksheets/v111-sheet-113.xml",
+      "bytes": 5840,
+      "sha256": "028cab1c73388c14a840048e4d1c3a19b80a7718061cf5b8804729ee2439c122"
+    }
+  ],
+  "freeze": {
+    "path": "docs/v112-runtime-freeze.json",
+    "bytes": 306338,
+    "sha256": "c35f8b454ec26d1b05852cabbe4f6ee111d71e7413aef80282582d3ca5ee6a3e"
+  },
+  "frozenFilesVerifiedUnchanged": 1649,
+  "sourceRequirementsOpen": 56,
+  "sourceActionsIncluded": 9,
+  "artisticTargetsNotClosed": 354,
+  "newlyClosedSourceRequirements": 0,
+  "marshDiagnostic": "OUVERT_NON_CORRIGE",
+  "historicalRegistryByteIdentical": {
+    "path": "docs/qa/v112-excel-followup-r7-recovery/source-registry-r4.json",
+    "bytes": 74763,
+    "sha256": "dcbb756254bb6e2781c2970b34a7b0154c7f5ed5d44254d93a973254020826b9"
+  },
+  "nativeExcelExecuted": false
+}

@@ -59,7 +59,6 @@ export function planetTextureUriV115(domain: PlanetMaterialDomainV115, index: nu
   if (!Number.isInteger(index) || index < 0 || index >= 16) throw new RangeError("Matière planétaire inconnue.");
   return `yautja-v115:${domain}:${index}`;
 }
-function fraction(v: number) { return v - Math.floor(v); }
 function hash(x: number, y: number, seed: number) {
   const a = Math.imul((x + 1) ^ seed, 374761393), b = Math.imul((y + 1) ^ (seed >>> 1), 668265263);
   let n = Math.imul(a ^ b, 1274126177); n ^= n >>> 13;

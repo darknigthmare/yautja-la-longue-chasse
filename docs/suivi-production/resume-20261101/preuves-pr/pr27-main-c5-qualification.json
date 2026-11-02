@@ -1,0 +1,55 @@
+{
+  "scope": "Local reconciliation qualification, no production build or mixed V112 certification.",
+  "previousLocalHead": "23bec58a092001c5b1e824a6219d69f464cdbb14",
+  "incomingMain": "c5fc51dc42d8e04a4a8f0ca79273c44e4921f7e1",
+  "testsPassed": 41,
+  "previousTargetedTestsPreserved": 27,
+  "additionalPlanetV124V125Tests": 14,
+  "completeTypecheck": "PASS",
+  "strictRuntimeLintModules": 7,
+  "lintErrors": 0,
+  "lintWarnings": 0,
+  "onlyManualChangeAfterIncomingMain": {
+    "path": "app/game/systems/clanWarPlanetPhysicalIndexV125.ts",
+    "change": "Remove exactly the unused regionOf Map declaration; all other bytes match incoming main."
+  },
+  "runtimeModules": [
+    {
+      "path": "app/game/PlanetGeneratorV103.tsx",
+      "bytes": 39772,
+      "sha256": "409a99a6046ed1d08b95c0ab375bed5a0e24649f4b7eeb1496d8c688635d75d6"
+    },
+    {
+      "path": "app/game/PlanetLayerExportV102.tsx",
+      "bytes": 17219,
+      "sha256": "c7c4fbb2230e7be1ec3f93d026649b529636cec681f1c1aa3cf11726a1f678ff"
+    },
+    {
+      "path": "app/game/PlanetShapePreviewV125.tsx",
+      "bytes": 2115,
+      "sha256": "59ceddf84fecdfb2c555d82800c98bdc6a01609567ce1f3ab361767b222161ba"
+    },
+    {
+      "path": "app/game/planetMaterialRendererV101.ts",
+      "bytes": 29123,
+      "sha256": "6599af439d6eaf362143ed730ad2098109197b99329d5d16d2522d53e2487693"
+    },
+    {
+      "path": "app/game/planetModularExportV124.ts",
+      "bytes": 6872,
+      "sha256": "986143376430da45c1d2d633b0413232f214190f5835efc73e2199abd282b434"
+    },
+    {
+      "path": "app/game/systems/clanWarPlanetPhysicalIndexV125.ts",
+      "bytes": 4031,
+      "sha256": "f7db31dc98e45adc8ae776b62782d6b9f3aba64afc53616c3668f8dc362621c4"
+    },
+    {
+      "path": "app/game/systems/clanWarTextureLibraryV125.ts",
+      "bytes": 10408,
+      "sha256": "c32166fba5647bbe20e5b38f1cb11a330ddcaf9e47689609829db60da31fa2d0"
+    }
+  ],
+  "reviewerGitMutations": false,
+  "principalHomeworldRuntimeChangedByReviewer": false
+}

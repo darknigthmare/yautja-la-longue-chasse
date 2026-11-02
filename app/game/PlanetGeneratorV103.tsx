@@ -32,7 +32,7 @@ import {
 import { WAR_BIOME_LABELS_V96 } from "./systems/clanWarPlanetLabelsV102";
 import type { WarPlanetV96 } from "./systems/clanWarPlanetsV96";
 import {
-  DEFAULT_WAR_PLANET_RECIPE_V115, type WarPlanetRecipeV115,
+  DEFAULT_WAR_PLANET_RECIPE_V115, baseWarPlanetRecipeV103FromV115,
 } from "./systems/clanWarPlanetGeneratorV115";
 import { PLANET_SIZE_LABELS_V115, WAR_SHAPE_TEMPLATES_V115, type PlanetSizeV115 } from "./systems/clanWarShapeAtlasV115";
 import { WAR_PLANET_LAND_TEXTURES_V115, WAR_PLANET_LIQUID_TEXTURES_V115 } from "./systems/clanWarTextureLibraryV115";
@@ -70,8 +70,7 @@ function worldForRecipe(recipe: WarPlanetRecipeAnyV103): GeneratedWarPlanetAnyV1
 function convertToV103Recipe(recipe: WarPlanetRecipeAnyV103): WarPlanetRecipeV103 {
   if (recipe.version === 102) return prepareWarPlanetVariantV103(recipe);
   if (recipe.version === 103) return { ...recipe };
-  const { version, planetSize, islandShape, continentShape, regionShape, landMaterial, liquidMaterial, ...base } = recipe;
-  return { ...base, version: 103 };
+  return baseWarPlanetRecipeV103FromV115(recipe);
 }
 
 function downloadJson(planet: GeneratedWarPlanetAnyV103) {

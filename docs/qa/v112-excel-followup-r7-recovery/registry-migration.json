@@ -1,0 +1,48 @@
+{
+  "status": "UPDATED_SCOPE_AND_CURRENT_PINS_ONLY",
+  "runtimeCommit": "bda14a95aa8c9e6cf37039e2d67ea1544a8e8de1",
+  "buildId": "wVuSG_xIKNn3geLlIq7Cb",
+  "refreshedCurrentProofs": [
+    {
+      "path": "docs/v112-pit-validation.json",
+      "sha256": "42bfd97315d3ebbc9f1a2416fd996fa204f62b4680871e2482c1893f4509ef60",
+      "bytes": 1230898
+    },
+    {
+      "path": "docs/qa/v112-spatial/audit.json",
+      "sha256": "05f7503173375a599b71df60ebcba2548c60e06659b7cd5867d7c325a7a03aaa",
+      "bytes": 94335
+    },
+    {
+      "path": "docs/v112-homeworld-validation.json",
+      "sha256": "431198b2e6bda28085f2758a66c1c84344712009e6f97b5c23a078eba0326124",
+      "bytes": 744079
+    },
+    {
+      "path": "docs/qa/v112-homeworld/entry.json",
+      "sha256": "fb6602c8ac4d4a61a07cec2d02057db734c0706563fb06235918d185db8142a1",
+      "bytes": 9208
+    },
+    {
+      "path": "docs/v112-runtime-freeze.json",
+      "sha256": "c35f8b454ec26d1b05852cabbe4f6ee111d71e7413aef80282582d3ca5ee6a3e",
+      "bytes": 306338
+    },
+    {
+      "path": "docs/qa/v112-pit/entry.json",
+      "sha256": "2bfe9f5e752b2a4cee6391b304c49a577e73d3c14133ee8892bfb8b64ca10552",
+      "bytes": 8702
+    }
+  ],
+  "sourceCompletion": false,
+  "closedSourceIds": [],
+  "historicalRegistry": {
+    "path": "docs/qa/v112-excel-followup-r7-recovery/source-registry-r4.json",
+    "sha256": "dcbb756254bb6e2781c2970b34a7b0154c7f5ed5d44254d93a973254020826b9",
+    "bytes": 74763
+  },
+  "limits": [
+    "R4 source registry preserved byte-exact as a documentary snapshot, not rerun against its former current paths.",
+    "No app, art, canonical browser driver, frozen input or historical workbook changed."
+  ]
+}

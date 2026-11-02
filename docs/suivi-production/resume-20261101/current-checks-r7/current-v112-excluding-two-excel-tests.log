@@ -1,0 +1,2263 @@
+Command: node --experimental-strip-types --test --test-reporter=tap --test-concurrency=1 tests/canopy-traversal-v112.test.mjs tests/carcass-anatomy-v112.test.mjs tests/conservation-persistence-ui-v112.test.mjs tests/corpse-discovery-v112.test.mjs tests/excel-history-preservation-v112.test.mjs tests/field-stash-v112.test.mjs tests/harvest-inventory-v112.test.mjs tests/homeworld-activity-access-v112.test.mjs tests/homeworld-ecotones-v112.test.mjs tests/homeworld-geometry-recovery-integration-v112.test.mjs tests/homeworld-geometry-recovery-matrix-v112.test.mjs tests/homeworld-geometry-recovery-v112.test.mjs tests/homeworld-ground-joints-v112.test.mjs tests/homeworld-live-guidance-v112.test.mjs tests/homeworld-mobility-v112.test.mjs tests/homeworld-natural-placements-v112.test.mjs tests/homeworld-natural-rock-faces-v112.test.mjs tests/homeworld-public-life-v112.test.mjs tests/homeworld-public-places-v112.test.mjs tests/homeworld-spatial-v112.test.mjs tests/hunt-accessibility-v112.test.mjs tests/hunt-canopy-runtime-v112.test.mjs tests/hunt-carcass-runtime-v112.test.mjs tests/hunt-field-load-v112.test.mjs tests/hunt-field-stash-runtime-v112.test.mjs tests/hunt-mechanics-workbook-v112.test.mjs tests/pit-backward-art-provenance-v112.test.mjs tests/pit-backward-controls-v112.test.mjs tests/pit-backward-throw-art-v112.test.mjs tests/pit-backward-throws-v112.test.mjs tests/pit-browser-launch-observation-v112.test.mjs tests/pit-browser-whiff-observation-v112.test.mjs tests/pit-browser-worker-observation-v112.test.mjs tests/pit-replay-export-v112.test.mjs tests/production-evidence-v112.test.mjs
+TAP version 13
+# Subtest: grasp initializes from the actual hand without changing position; rigid and short supports refuse
+ok 1 - grasp initializes from the actual hand without changing position; rigid and short supports refuse
+  ---
+  duration_ms: 3.353168
+  type: 'test'
+  ...
+# Subtest: unpowered pendulum uses rope length and gravity, with damping rather than energy growth
+ok 2 - unpowered pendulum uses rope length and gravity, with damping rather than energy growth
+  ---
+  duration_ms: 123.2419
+  type: 'test'
+  ...
+# Subtest: pumping and length adjustment remain finite, bounded and charge stamina only for simulated time
+ok 3 - pumping and length adjustment remain finite, bounded and charge stamina only for simulated time
+  ---
+  duration_ms: 179.567613
+  type: 'test'
+  ...
+# Subtest: release exports tangent velocity, including downward motion, without adding a boost
+ok 4 - release exports tangent velocity, including downward motion, without adding a boost
+  ---
+  duration_ms: 0.191809
+  type: 'test'
+  ...
+# Subtest: swept swing stops at a thin solid wall and releases rather than crossing or snapping to the rope
+ok 5 - swept swing stops at a thin solid wall and releases rather than crossing or snapping to the rope
+  ---
+  duration_ms: 0.618381
+  type: 'test'
+  ...
+# Subtest: support reach checks reject remote or wall-separated grips and malformed suspended state
+ok 6 - support reach checks reject remote or wall-separated grips and malformed suspended state
+  ---
+  duration_ms: 0.298459
+  type: 'test'
+  ...
+# Subtest: each authored hunt has reachable resting sequences, real end supports and an optional fallback
+ok 7 - each authored hunt has reachable resting sequences, real end supports and an optional fallback
+  ---
+  duration_ms: 6.721469
+  type: 'test'
+  ...
+# Subtest: authoring is idempotent and excludes solid exploration rooms after replacements
+ok 8 - authoring is idempotent and excludes solid exploration rooms after replacements
+  ---
+  duration_ms: 16.091424
+  type: 'test'
+  ...
+# Subtest: actual Oseris vine lengths above 720 share the attach, simulation and snapshot domain
+ok 9 - actual Oseris vine lengths above 720 share the attach, simulation and snapshot domain
+  ---
+  duration_ms: 6.80849
+  type: 'test'
+  ...
+# Subtest: the shared maximum refuses an overlong grasp gracefully and caps reeling without invalid state
+ok 10 - the shared maximum refuses an overlong grasp gracefully and caps reeling without invalid state
+  ---
+  duration_ms: 1.860511
+  type: 'test'
+  ...
+# Subtest: anatomical tables are species-specific and never invent universal human or synthetic meat
+ok 11 - anatomical tables are species-specific and never invent universal human or synthetic meat
+  ---
+  duration_ms: 1.381199
+  type: 'test'
+  ...
+# Subtest: all real hits contribute deterministic damage and excessive finishing damage costs integrity
+ok 12 - all real hits contribute deterministic damage and excessive finishing damage costs integrity
+  ---
+  duration_ms: 0.157637
+  type: 'test'
+  ...
+# Subtest: analysis must precede the irreversible finite extraction and improves its previewed quality
+ok 13 - analysis must precede the irreversible finite extraction and improves its previewed quality
+  ---
+  duration_ms: 3.300399
+  type: 'test'
+  ...
+# Subtest: skin requires preparation; a full or changed pack never consumes a part
+ok 14 - skin requires preparation; a full or changed pack never consumes a part
+  ---
+  duration_ms: 0.629708
+  type: 'test'
+  ...
+# Subtest: damage, lost tool, source or footing interrupt anatomy without a specimen
+ok 15 - damage, lost tool, source or footing interrupt anatomy without a specimen
+  ---
+  duration_ms: 0.539202
+  type: 'test'
+  ...
+# Subtest: transport and attachment are separate, require real capacity and cannot occupy one hook twice
+ok 16 - transport and attachment are separate, require real capacity and cannot occupy one hook twice
+  ---
+  duration_ms: 0.433072
+  type: 'test'
+  ...
+# Subtest: drop preserves the single original source and an unfinished hang preserves no attachment
+ok 17 - drop preserves the single original source and an unfinished hang preserves no attachment
+  ---
+  duration_ms: 0.384669
+  type: 'test'
+  ...
+# Subtest: restoration cross-checks attachment and anatomy against the real source, tool and geometry
+ok 18 - restoration cross-checks attachment and anatomy against the real source, tool and geometry
+  ---
+  duration_ms: 1.52821
+  type: 'test'
+  ...
+# Subtest: socket authoring uses real structural geometry and excludes decoration, narrow supports and blocked space
+ok 19 - socket authoring uses real structural geometry and excludes decoration, narrow supports and blocked space
+  ---
+  duration_ms: 1.44088
+  type: 'test'
+  ...
+# Subtest: legacy corpse anatomy is derived from its real actor rather than a universal fallback mass
+ok 20 - legacy corpse anatomy is derived from its real actor rather than a universal fallback mass
+  ---
+  duration_ms: 0.509777
+  type: 'test'
+  ...
+# Subtest: the actual station callback reports no success and changes no campaign after refused storage acknowledgement
+ok 21 - the actual station callback reports no success and changes no campaign after refused storage acknowledgement
+  ---
+  duration_ms: 181.924271
+  type: 'test'
+  ...
+# Subtest: the same pre-render callback uses the updated authoritative ref and cannot pay twice
+ok 22 - the same pre-render callback uses the updated authoritative ref and cannot pay twice
+  ---
+  duration_ms: 35.095042
+  type: 'test'
+  ...
+# Subtest: hidden, suspended or busy stations refuse every action before persistence
+ok 23 - hidden, suspended or busy stations refuse every action before persistence
+  ---
+  duration_ms: 233.269111
+  type: 'test'
+  ...
+# Subtest: tool repair is acknowledged with the same inventory write and preserves its immutable usage watermark
+ok 24 - tool repair is acknowledged with the same inventory write and preserves its immutable usage watermark
+  ---
+  duration_ms: 39.251069
+  type: 'test'
+  ...
+# Subtest: terminal delivery preflight retains an incompatible result without retiring the active hunt or writing campaign rewards
+ok 25 - terminal delivery preflight retains an incompatible result without retiring the active hunt or writing campaign rewards
+  ---
+  duration_ms: 62.253337
+  type: 'test'
+  ...
+# Subtest: a failed conservation start reconciles its exact paid job on the same gesture and never writes or debits twice
+ok 26 - a failed conservation start reconciles its exact paid job on the same gesture and never writes or debits twice
+  ---
+  duration_ms: 45.258343
+  type: 'test'
+  ...
+# Subtest: recovery of one paid work order cannot overwrite it with a stale different order
+ok 27 - recovery of one paid work order cannot overwrite it with a stale different order
+  ---
+  duration_ms: 54.736581
+  type: 'test'
+  ...
+# Subtest: a body is visual evidence once, with local fear and no hunter position
+ok 28 - a body is visual evidence once, with local fear and no hunter position
+  ---
+  duration_ms: 1.330163
+  type: 'test'
+  ...
+# Subtest: occlusion, inactive actors and boss never create discoveries or radios
+ok 29 - occlusion, inactive actors and boss never create discoveries or radios
+  ---
+  duration_ms: 0.421154
+  type: 'test'
+  ...
+# Subtest: radio waits for transmission, stays in faction and range, and stops after one hop
+ok 30 - radio waits for transmission, stays in faction and range, and stops after one hop
+  ---
+  duration_ms: 1.045934
+  type: 'test'
+  ...
+# Subtest: killed or erased radio source cancels the untransmitted report
+ok 31 - killed or erased radio source cancels the untransmitted report
+  ---
+  duration_ms: 0.231248
+  type: 'test'
+  ...
+# Subtest: radio receipt followed by real sight is a distinct event, never a duplicate visual
+ok 32 - radio receipt followed by real sight is a distinct event, never a duplicate visual
+  ---
+  duration_ms: 0.287493
+  type: 'test'
+  ...
+# Subtest: legacy V111 witnesses are seeded silently and do not replay morale or alert
+ok 33 - legacy V111 witnesses are seeded silently and do not replay morale or alert
+  ---
+  duration_ms: 0.134753
+  type: 'test'
+  ...
+# Subtest: beasts use local scent and ecological behavior instead of human fear
+ok 34 - beasts use local scent and ecological behavior instead of human fear
+  ---
+  duration_ms: 0.474484
+  type: 'test'
+  ...
+# Subtest: scent does not cross a solid occluder and is limited to 140 pixels
+ok 35 - scent does not cross a solid occluder and is limited to 140 pixels
+  ---
+  duration_ms: 0.143025
+  type: 'test'
+  ...
+# Subtest: fear decays locally, follows moved corpse, and never affects wildlife or rival factions
+ok 36 - fear decays locally, follows moved corpse, and never affects wildlife or rival factions
+  ---
+  duration_ms: 0.424809
+  type: 'test'
+  ...
+# Subtest: line-of-sight workload and radio fanout are strictly bounded under a dense encounter
+ok 37 - line-of-sight workload and radio fanout are strictly bounded under a dense encounter
+  ---
+  duration_ms: 1.251665
+  type: 'test'
+  ...
+# Subtest: full receipt capacity preserves histories without deleting them to create duplicate rewards
+ok 38 - full receipt capacity preserves histories without deleting them to create duplicate rewards
+  ---
+  duration_ms: 0.400303
+  type: 'test'
+  ...
+# Subtest: persistence restores detached data and rejects foreign identities, invented radio and altered timing
+ok 39 - persistence restores detached data and rejects foreign identities, invented radio and altered timing
+  ---
+  duration_ms: 0.780596
+  type: 'test'
+  ...
+# Subtest: native HuntCanvas discovery records the actual body and no last-known hunter position
+ok 40 - native HuntCanvas discovery records the actual body and no last-known hunter position
+  ---
+  duration_ms: 221.821192
+  type: 'test'
+  ...
+# Subtest: native structural wall prevents body discovery, local fear and radio
+ok 41 - native structural wall prevents body discovery, local fear and radio
+  ---
+  duration_ms: 2.101443
+  type: 'test'
+  ...
+# Subtest: native allied report investigates the body without revealing hunter behind terrain
+ok 42 - native allied report investigates the body without revealing hunter behind terrain
+  ---
+  duration_ms: 1.703575
+  type: 'test'
+  ...
+# Subtest: native animal avoidance changes real movement and suppresses a corpse-directed attack
+ok 43 - native animal avoidance changes real movement and suppresses a corpse-directed attack
+  ---
+  duration_ms: 13.842759
+  type: 'test'
+  ...
+# Subtest: native predator examines a body instead of inheriting herbivore avoidance
+ok 44 - native predator examines a body instead of inheriting herbivore avoidance
+  ---
+  duration_ms: 4.675609
+  type: 'test'
+  ...
+# Subtest: native territorial wildlife gives space to the body and keeps a guard radius
+ok 45 - native territorial wildlife gives space to the body and keeps a guard radius
+  ---
+  duration_ms: 5.931409
+  type: 'test'
+  ...
+# Subtest: native discovery archive round-trips without replaying evidence or source coordinates
+ok 46 - native discovery archive round-trips without replaying evidence or source coordinates
+  ---
+  duration_ms: 24.170416
+  type: 'test'
+  ...
+# Subtest: signal text and shape are independent of color and asset loading
+ok 47 - signal text and shape are independent of color and asset loading
+  ---
+  duration_ms: 0.323597
+  type: 'test'
+  ...
+# Subtest: historical preparation restores a newly changed frozen source and leaves current source/immutable evidence alone
+ok 48 - historical preparation restores a newly changed frozen source and leaves current source/immutable evidence alone
+  ---
+  duration_ms: 59.694385
+  type: 'test'
+  ...
+# Subtest: historical restoration refuses wrong pinned bytes before changing any source
+ok 49 - historical restoration refuses wrong pinned bytes before changing any source
+  ---
+  duration_ms: 45.248508
+  type: 'test'
+  ...
+# Subtest: historical restoration rejects escaping paths and symlink parents
+ok 50 - historical restoration rejects escaping paths and symlink parents
+  ---
+  duration_ms: 22.918071
+  type: 'test'
+  ...
+# Subtest: deposit creates one physical position without freeing or copying the harvested anatomy
+ok 51 - deposit creates one physical position without freeing or copying the harvested anatomy
+  ---
+  duration_ms: 1.762874
+  type: 'test'
+  ...
+# Subtest: pick up returns the same item once without changing source or completion receipt
+ok 52 - pick up returns the same item once without changing source or completion receipt
+  ---
+  duration_ms: 0.616819
+  type: 'test'
+  ...
+# Subtest: drop and take refuse airborne without altering the unique item
+ok 53 - drop and take refuse airborne without altering the unique item
+  ---
+  duration_ms: 0.16618
+  type: 'test'
+  ...
+# Subtest: drop and take refuse climbing without altering the unique item
+ok 54 - drop and take refuse climbing without altering the unique item
+  ---
+  duration_ms: 0.083595
+  type: 'test'
+  ...
+# Subtest: drop and take refuse dead without altering the unique item
+ok 55 - drop and take refuse dead without altering the unique item
+  ---
+  duration_ms: 0.246962
+  type: 'test'
+  ...
+# Subtest: drop and take refuse invalidhealth without altering the unique item
+ok 56 - drop and take refuse invalidhealth without altering the unique item
+  ---
+  duration_ms: 0.183356
+  type: 'test'
+  ...
+# Subtest: drop and take refuse nonfinite without altering the unique item
+ok 57 - drop and take refuse nonfinite without altering the unique item
+  ---
+  duration_ms: 0.111088
+  type: 'test'
+  ...
+# Subtest: drop and take refuse invalidbody without altering the unique item
+ok 58 - drop and take refuse invalidbody without altering the unique item
+  ---
+  duration_ms: 0.070366
+  type: 'test'
+  ...
+# Subtest: suspended or busy manipulation does no work: {"suspended":true}
+ok 59 - suspended or busy manipulation does no work: {"suspended":true}
+  ---
+  duration_ms: 0.236996
+  type: 'test'
+  ...
+# Subtest: suspended or busy manipulation does no work: {"operationActive":true}
+ok 60 - suspended or busy manipulation does no work: {"operationActive":true}
+  ---
+  duration_ms: 7.756777
+  type: 'test'
+  ...
+# Subtest: a stash cannot manufacture an item absent from the finite source registry
+ok 61 - a stash cannot manufacture an item absent from the finite source registry
+  ---
+  duration_ms: 0.343127
+  type: 'test'
+  ...
+# Subtest: pickup uses true two dimensional distance and requires a settled source
+ok 62 - pickup uses true two dimensional distance and requires a settled source
+  ---
+  duration_ms: 0.155494
+  type: 'test'
+  ...
+# Subtest: solid occlusion blocks retrieval while a one-way ledge remains traversable
+ok 63 - solid occlusion blocks retrieval while a one-way ledge remains traversable
+  ---
+  duration_ms: 3.334791
+  type: 'test'
+  ...
+# Subtest: mass volume and free depot slots all gate retrieval without losing the world item
+ok 64 - mass volume and free depot slots all gate retrieval without losing the world item
+  ---
+  duration_ms: 0.927286
+  type: 'test'
+  ...
+# Subtest: paused serialization retains the same stash and rejects duplicate nonfinite or foreign positions
+ok 65 - paused serialization retains the same stash and rejects duplicate nonfinite or foreign positions
+  ---
+  duration_ms: 0.353001
+  type: 'test'
+  ...
+# Subtest: a deposited item stays on its authored ledge and falls when that support disappears
+ok 66 - a deposited item stays on its authored ledge and falls when that support disappears
+  ---
+  duration_ms: 0.466713
+  type: 'test'
+  ...
+# Subtest: swept contact catches a thin ledge at high fall speed without tunneling
+ok 67 - swept contact catches a thin ledge at high fall speed without tunneling
+  ---
+  duration_ms: 0.134833
+  type: 'test'
+  ...
+# Subtest: deposit reduces carried load without changing ownership, and retrieval restores that exact load
+ok 68 - deposit reduces carried load without changing ownership, and retrieval restores that exact load
+  ---
+  duration_ms: 0.228865
+  type: 'test'
+  ...
+# Subtest: old inventory migrates empty without granting a field tool
+ok 69 - old inventory migrates empty without granting a field tool
+  ---
+  duration_ms: 32.374346
+  type: 'test'
+  ...
+# Subtest: present invalid or future preservation data is refused by actual save import: x=>x.version=2
+ok 70 - present invalid or future preservation data is refused by actual save import: x=>x.version=2
+  ---
+  duration_ms: 3.314339
+  type: 'test'
+  ...
+# Subtest: present invalid or future preservation data is refused by actual save import: x=>x.toolCondition=NaN
+ok 71 - present invalid or future preservation data is refused by actual save import: x=>x.toolCondition=NaN
+  ---
+  duration_ms: 0.53769
+  type: 'test'
+  ...
+# Subtest: present invalid or future preservation data is refused by actual save import: x=>x.toolCondition=101
+ok 72 - present invalid or future preservation data is refused by actual save import: x=>x.toolCondition=101
+  ---
+  duration_ms: 0.338831
+  type: 'test'
+  ...
+# Subtest: present invalid or future preservation data is refused by actual save import: x=>x.toolCondition=4.5
+ok 73 - present invalid or future preservation data is refused by actual save import: x=>x.toolCondition=4.5
+  ---
+  duration_ms: 0.90962
+  type: 'test'
+  ...
+# Subtest: present invalid or future preservation data is refused by actual save import: x=>x.specimens=[{...item(),massKg:Infinity}]
+ok 74 - present invalid or future preservation data is refused by actual save import: x=>x.specimens=[{...item(),massKg:Infinity}]
+  ---
+  duration_ms: 0.607214
+  type: 'test'
+  ...
+# Subtest: present invalid or future preservation data is refused by actual save import: x=>x.specimens=[{...item(),stage:"invented"}]
+ok 75 - present invalid or future preservation data is refused by actual save import: x=>x.specimens=[{...item(),stage:"invented"}]
+  ---
+  duration_ms: 0.552813
+  type: 'test'
+  ...
+# Subtest: present invalid or future preservation data is refused by actual save import: x=>x.specimens=[item(),item()]
+ok 76 - present invalid or future preservation data is refused by actual save import: x=>x.specimens=[item(),item()]
+  ---
+  duration_ms: 3.08864
+  type: 'test'
+  ...
+# Subtest: present invalid or future preservation data is refused by actual save import: x=>x.jobs=[{id:"invented"}]
+ok 77 - present invalid or future preservation data is refused by actual save import: x=>x.jobs=[{id:"invented"}]
+  ---
+  duration_ms: 2.324199
+  type: 'test'
+  ...
+# Subtest: present invalid or future preservation data is refused by actual save import: x=>x.toolUseIds=["x","x"]
+ok 78 - present invalid or future preservation data is refused by actual save import: x=>x.toolUseIds=["x","x"]
+  ---
+  duration_ms: 1.799419
+  type: 'test'
+  ...
+# Subtest: present invalid or future preservation data is refused by actual save import: x=>x.settledEncounterRuns={"unknown":0}
+ok 79 - present invalid or future preservation data is refused by actual save import: x=>x.settledEncounterRuns={"unknown":0}
+  ---
+  duration_ms: 0.389657
+  type: 'test'
+  ...
+# Subtest: present invalid or future preservation data is refused by actual save import: x=>x.archive=[{speciesId:"x",partId:"bone",label:"Bone",count:0,qualityTotal:0}]
+ok 80 - present invalid or future preservation data is refused by actual save import: x=>x.archive=[{speciesId:"x",partId:"bone",label:"Bone",count:0,qualityTotal:0}]
+  ---
+  duration_ms: 0.319611
+  type: 'test'
+  ...
+# Subtest: present invalid or future preservation data is refused by actual save import: x=>x.specimens=[{...item(),stage:"mounted"}]
+ok 81 - present invalid or future preservation data is refused by actual save import: x=>x.specimens=[{...item(),stage:"mounted"}]
+  ---
+  duration_ms: 0.38553
+  type: 'test'
+  ...
+# Subtest: capacity is explicit for all armor classes and rejected pickup leaves source inventory untouched
+ok 82 - capacity is explicit for all armor classes and rejected pickup leaves source inventory untouched
+  ---
+  duration_ms: 0.569447
+  type: 'test'
+  ...
+# Subtest: volume can fill a pack before mass, and repeated anatomical part has no second slot
+ok 83 - volume can fill a pack before mass, and repeated anatomical part has no second slot
+  ---
+  duration_ms: 0.144027
+  type: 'test'
+  ...
+# Subtest: load changes movement jump climb effort and noise continuously; body mass adds load
+ok 84 - load changes movement jump climb effort and noise continuously; body mass adds load
+  ---
+  duration_ms: 0.213641
+  type: 'test'
+  ...
+# Subtest: a successful extraction deposits finite specimens and records actual tool wear atomically
+ok 85 - a successful extraction deposits finite specimens and records actual tool wear atomically
+  ---
+  duration_ms: 1.070512
+  type: 'test'
+  ...
+# Subtest: failed and abandoned extraction only records completed work wear, without bringing specimens home
+ok 86 - failed and abandoned extraction only records completed work wear, without bringing specimens home
+  ---
+  duration_ms: 0.366041
+  type: 'test'
+  ...
+# Subtest: same completed encounter cannot charge wear or restore a specimen after repair
+ok 87 - same completed encounter cannot charge wear or restore a specimen after repair
+  ---
+  duration_ms: 4.061575
+  type: 'test'
+  ...
+# Subtest: per-mission watermark compacts usage receipts safely across later encounters
+ok 88 - per-mission watermark compacts usage receipts safely across later encounters
+  ---
+  duration_ms: 0.318149
+  type: 'test'
+  ...
+# Subtest: forged, duplicated, malformed or stale mission payload is refused: [[{"id":"jungle-vey:0:prey:hide","sourceId":"other:0:prey","speciesId":"rifle-soldier","partId":"hide","label":"Peau préparée","quality":84,"massKg":3,"volumeUnits":2,"stage":"raw"}],["jungle-vey:0:flay:prey"],0]
+ok 89 - forged, duplicated, malformed or stale mission payload is refused: [[{"id":"jungle-vey:0:prey:hide","sourceId":"other:0:prey","speciesId":"rifle-soldier","partId":"hide","label":"Peau préparée","quality":84,"massKg":3,"volumeUnits":2,"stage":"raw"}],["jungle-vey:0:flay:prey"],0]
+  ---
+  duration_ms: 1.458876
+  type: 'test'
+  ...
+# Subtest: forged, duplicated, malformed or stale mission payload is refused: [[{"id":"jungle-vey:0:prey:hide","sourceId":"jungle-vey:0:prey","speciesId":"rifle-soldier","partId":"hide","label":"Peau préparée","quality":84,"massKg":3,"volumeUnits":2,"stage":"raw"}],["other:0:flay:prey"],0]
+ok 90 - forged, duplicated, malformed or stale mission payload is refused: [[{"id":"jungle-vey:0:prey:hide","sourceId":"jungle-vey:0:prey","speciesId":"rifle-soldier","partId":"hide","label":"Peau préparée","quality":84,"massKg":3,"volumeUnits":2,"stage":"raw"}],["other:0:flay:prey"],0]
+  ---
+  duration_ms: 2.934287
+  type: 'test'
+  ...
+# Subtest: forged, duplicated, malformed or stale mission payload is refused: [[{"id":"jungle-vey:0:prey:hide","sourceId":"jungle-vey:0:prey","speciesId":"rifle-soldier","partId":"hide","label":"Peau préparée","quality":84,"massKg":3,"volumeUnits":2,"stage":"raw"}],["jungle-vey:0:flay:prey"],1]
+ok 91 - forged, duplicated, malformed or stale mission payload is refused: [[{"id":"jungle-vey:0:prey:hide","sourceId":"jungle-vey:0:prey","speciesId":"rifle-soldier","partId":"hide","label":"Peau préparée","quality":84,"massKg":3,"volumeUnits":2,"stage":"raw"}],["jungle-vey:0:flay:prey"],1]
+  ---
+  duration_ms: 0.438751
+  type: 'test'
+  ...
+# Subtest: forged, duplicated, malformed or stale mission payload is refused: [[{"id":"jungle-vey:0:prey:hide","sourceId":"jungle-vey:0:prey","speciesId":"rifle-soldier","partId":"hide","label":"Peau préparée","quality":84,"massKg":3,"volumeUnits":2,"stage":"raw"}],["jungle-vey:0:flay:prey","jungle-vey:0:flay:prey"],0]
+ok 92 - forged, duplicated, malformed or stale mission payload is refused: [[{"id":"jungle-vey:0:prey:hide","sourceId":"jungle-vey:0:prey","speciesId":"rifle-soldier","partId":"hide","label":"Peau préparée","quality":84,"massKg":3,"volumeUnits":2,"stage":"raw"}],["jungle-vey:0:flay:prey","jungle-vey:0:flay:prey"],0]
+  ---
+  duration_ms: 0.360603
+  type: 'test'
+  ...
+# Subtest: forged, duplicated, malformed or stale mission payload is refused: ["invalid",[],0]
+ok 93 - forged, duplicated, malformed or stale mission payload is refused: ["invalid",[],0]
+  ---
+  duration_ms: 0.275465
+  type: 'test'
+  ...
+# Subtest: forged, duplicated, malformed or stale mission payload is refused: [[],{},0]
+ok 94 - forged, duplicated, malformed or stale mission payload is refused: [[],{},0]
+  ---
+  duration_ms: 0.274863
+  type: 'test'
+  ...
+# Subtest: forged, duplicated, malformed or stale mission payload is refused: [[{"id":"jungle-vey:0:prey:hide","sourceId":"jungle-vey:0:prey","speciesId":"rifle-soldier","partId":"hide","label":"Peau préparée","quality":84,"massKg":-1,"volumeUnits":2,"stage":"raw"}],[],0]
+ok 95 - forged, duplicated, malformed or stale mission payload is refused: [[{"id":"jungle-vey:0:prey:hide","sourceId":"jungle-vey:0:prey","speciesId":"rifle-soldier","partId":"hide","label":"Peau préparée","quality":84,"massKg":-1,"volumeUnits":2,"stage":"raw"}],[],0]
+  ---
+  duration_ms: 5.976046
+  type: 'test'
+  ...
+# Subtest: forged, duplicated, malformed or stale mission payload is refused: [[{"id":"jungle-vey:0:prey:hide","sourceId":"jungle-vey:0:prey","speciesId":"rifle-soldier","partId":"hide","label":"Peau préparée","quality":84,"massKg":3,"volumeUnits":2,"stage":"raw"},{"id":"jungle-vey:0:prey:hide","sourceId":"jungle-vey:0:prey","speciesId":"rifle-soldier","partId":"hide","label":"Peau préparée","quality":84,"massKg":3,"volumeUnits":2,"stage":"raw"}],[],0]
+ok 96 - forged, duplicated, malformed or stale mission payload is refused: [[{"id":"jungle-vey:0:prey:hide","sourceId":"jungle-vey:0:prey","speciesId":"rifle-soldier","partId":"hide","label":"Peau préparée","quality":84,"massKg":3,"volumeUnits":2,"stage":"raw"},{"id":"jungle-vey:0:prey:hide","sourceId":"jungle-vey:0:prey","speciesId":"rifle-soldier","partId":"hide","label":"Peau préparée","quality":84,"massKg":3,"volumeUnits":2,"stage":"raw"}],[],0]
+  ---
+  duration_ms: 0.45863
+  type: 'test'
+  ...
+# Subtest: tool-free campaign cannot claim wear or completed tool operations
+ok 97 - tool-free campaign cannot claim wear or completed tool operations
+  ---
+  duration_ms: 0.198609
+  type: 'test'
+  ...
+# Subtest: missing encounter proof cannot grant a new specimen; legacy empty results stay compatible
+ok 98 - missing encounter proof cannot grant a new specimen; legacy empty results stay compatible
+  ---
+  duration_ms: 0.134012
+  type: 'test'
+  ...
+# Subtest: start pays once, each work unit survives save roundtrip, completed step cannot repeat
+ok 99 - start pays once, each work unit survives save roundtrip, completed step cannot repeat
+  ---
+  duration_ms: 5.567932
+  type: 'test'
+  ...
+# Subtest: all four conservation stages require paid work, preserve quality, and mount a separate physical specimen
+ok 100 - all four conservation stages require paid work, preserve quality, and mount a separate physical specimen
+  ---
+  duration_ms: 6.152492
+  type: 'test'
+  ...
+# Subtest: archiving raw work is refused and insufficient marks never creates a job
+ok 101 - archiving raw work is refused and insufficient marks never creates a job
+  ---
+  duration_ms: 0.184868
+  type: 'test'
+  ...
+# Subtest: queue has 16 work stations and does not charge a seventeenth item
+ok 102 - queue has 16 work stations and does not charge a seventeenth item
+  ---
+  duration_ms: 1.311114
+  type: 'test'
+  ...
+# Subtest: full workbench refuses delivery as a whole, preserving every item and the terminal operation
+ok 103 - full workbench refuses delivery as a whole, preserving every item and the terminal operation
+  ---
+  duration_ms: 1.855152
+  type: 'test'
+  ...
+# Subtest: wear is deterministic at successful completion and worn tools remain recoverable free of charge
+ok 104 - wear is deterministic at successful completion and worn tools remain recoverable free of charge
+  ---
+  duration_ms: 0.529447
+  type: 'test'
+  ...
+# Subtest: real campaign reducer keeps specimens and tool wear through content unlocks in one result
+ok 105 - real campaign reducer keeps specimens and tool wear through content unlocks in one result
+  ---
+  duration_ms: 3.985951
+  type: 'test'
+  ...
+# Subtest: actual failed/abandoned campaign results retain wear and no raw specimens
+ok 106 - actual failed/abandoned campaign results retain wear and no raw specimens
+  ---
+  duration_ms: 1.048409
+  type: 'test'
+  ...
+# Subtest: a worn owned field tool can be sharpened with zero clan marks without blocking the campaign
+ok 107 - a worn owned field tool can be sharpened with zero clan marks without blocking the campaign
+  ---
+  duration_ms: 1.231614
+  type: 'test'
+  ...
+# Subtest: manual preservation keeps its paid partial work across a much later real save normalization
+ok 108 - manual preservation keeps its paid partial work across a much later real save normalization
+  ---
+  duration_ms: 1.480639
+  type: 'test'
+  ...
+# Subtest: late admission protects all64 actual activity coordinates and30 functional links, including derived pickup/Atlas stands
+ok 109 - late admission protects all64 actual activity coordinates and30 functional links, including derived pickup/Atlas stands
+  ---
+  duration_ms: 21.715911
+  type: 'test'
+  ...
+# Subtest: the original V112 proposal reproduces the blocked fixed waypoint and both unsafe proposals now fail actual admission
+ok 110 - the original V112 proposal reproduces the blocked fixed waypoint and both unsafe proposals now fail actual admission
+  ---
+  duration_ms: 85.9184
+  type: 'test'
+  ...
+# Subtest: every fixed activity contact and every sampled functional link stays clear of all six new native solids
+ok 111 - every fixed activity contact and every sampled functional link stays clear of all six new native solids
+  ---
+  duration_ms: 34.234651
+  type: 'test'
+  ...
+# Subtest: the unchanged V104 source objects, fixed centers and three motor-clear legs remain usable
+ok 112 - the unchanged V104 source objects, fixed centers and three motor-clear legs remain usable
+  ---
+  duration_ms: 294.013593
+  type: 'test'
+  ...
+# Subtest: all14 source patches are retained, seven regional/4plateau patches mounted and three unsupported upper levels explicitly refused
+ok 113 - all14 source patches are retained, seven regional/4plateau patches mounted and three unsupported upper levels explicitly refused
+  ---
+  duration_ms: 11.52616
+  type: 'test'
+  ...
+# Subtest: regional anchors follow the real translated port and redesigned coast/lava docks, with genuinely supported arrivals
+ok 114 - regional anchors follow the real translated port and redesigned coast/lava docks, with genuinely supported arrivals
+  ---
+  duration_ms: 0.988247
+  type: 'test'
+  ...
+# Subtest: every mounted patch exposes a substantial retained natural surface in real desktop and mobile arrival cameras
+ok 115 - every mounted patch exposes a substantial retained natural surface in real desktop and mobile arrival cameras
+  ---
+  duration_ms: 7906.87099
+  type: 'test'
+  ...
+# Subtest: the scene restores all six immutable material windows with uniform pixel scale then exactly one35degree ground projection
+ok 116 - the scene restores all six immutable material windows with uniform pixel scale then exactly one35degree ground projection
+  ---
+  duration_ms: 187.1868
+  type: 'test'
+  ...
+# Subtest: actual JSX clips ellipses to all existing formations and excludes every active public polygon plus native pad/shuttle paint
+ok 117 - actual JSX clips ellipses to all existing formations and excludes every active public polygon plus native pad/shuttle paint
+  ---
+  duration_ms: 1628.413854
+  type: 'test'
+  ...
+# Subtest: culling and per-floor rendering never paint a refused upper-floor ecotone or a distant natural layer
+ok 118 - culling and per-floor rendering never paint a refused upper-floor ecotone or a distant natural layer
+  ---
+  duration_ms: 488.127787
+  type: 'test'
+  ...
+# Subtest: the real aggregate codex resolves every relocated anchor and marks refused candidates as documentary, without changing source records
+ok 119 - the real aggregate codex resolves every relocated anchor and marks refused candidates as documentary, without changing source records
+  ---
+  duration_ms: 558.835973
+  type: 'test'
+  ...
+# Subtest: V112 actual Hub preview retains the occupied saved checkpoint and all seven draft/actor references while ordinary position saves remain blocked
+ok 120 - V112 actual Hub preview retains the occupied saved checkpoint and all seven draft/actor references while ordinary position saves remain blocked
+  ---
+  duration_ms: 224.860465
+  type: 'test'
+  ...
+# Subtest: V112 actual Hub adopts only its submitted exact proposal when a successful write receives a delayed acknowledgement
+ok 121 - V112 actual Hub adopts only its submitted exact proposal when a successful write receives a delayed acknowledgement
+  ---
+  duration_ms: 284.173707
+  type: 'test'
+  ...
+# Subtest: V112 an unrelated incoming Save or missing exact backup cannot acknowledge a submitted restoration
+ok 122 - V112 an unrelated incoming Save or missing exact backup cannot acknowledge a submitted restoration
+  ---
+  duration_ms: 1008.694261
+  type: 'test'
+  ...
+# Subtest: V112 actual Hub backup/save quota and a throwing persistence host retain every actor, room, level and draft reference; retry commits once
+ok 123 - V112 actual Hub backup/save quota and a throwing persistence host retain every actor, room, level and draft reference; retry commits once
+  ---
+  duration_ms: 887.316914
+  type: 'test'
+  ...
+# Subtest: V112 actual Hub delayed confirmation refuses owner replacement, a changed actor, hidden document or replaced operation bytes
+ok 124 - V112 actual Hub delayed confirmation refuses owner replacement, a changed actor, hidden document or replaced operation bytes
+  ---
+  duration_ms: 536.633511
+  type: 'test'
+  ...
+# Subtest: V112 actual Hub remote study and parked object confirmations preserve the exact free actor/room/level/checkpoint
+ok 125 - V112 actual Hub remote study and parked object confirmations preserve the exact free actor/room/level/checkpoint
+  ---
+  duration_ms: 15913.712128
+  type: 'test'
+  ...
+# Subtest: V112 genuine played receipt v112-v104-played-blocked-fixture.json preserves coupled documents and exact original bytes
+ok 126 - V112 genuine played receipt v112-v104-played-blocked-fixture.json preserves coupled documents and exact original bytes
+  ---
+  duration_ms: 1184.992208
+  type: 'test'
+  ...
+# Subtest: V112 genuine played receipt v112-reviewed-v104-register-marker-fixture.json preserves coupled documents and exact original bytes
+ok 127 - V112 genuine played receipt v112-reviewed-v104-register-marker-fixture.json preserves coupled documents and exact original bytes
+  ---
+  duration_ms: 3.106576
+  type: 'test'
+  ...
+# Subtest: V112 genuine played receipt v112-reviewed-v104-final-register-marker-fixture.json preserves coupled documents and exact original bytes
+ok 128 - V112 genuine played receipt v112-reviewed-v104-final-register-marker-fixture.json preserves coupled documents and exact original bytes
+  ---
+  duration_ms: 155.411612
+  type: 'test'
+  ...
+# Subtest: V112 genuine played receipt v112-reviewed-v105-walking-fixture.json preserves coupled documents and exact original bytes
+ok 129 - V112 genuine played receipt v112-reviewed-v105-walking-fixture.json preserves coupled documents and exact original bytes
+  ---
+  duration_ms: 67.001407
+  type: 'test'
+  ...
+# Subtest: V112 genuine played receipt v112-reviewed-cargo-wide-carried-fixture.json preserves coupled documents and exact original bytes
+ok 130 - V112 genuine played receipt v112-reviewed-cargo-wide-carried-fixture.json preserves coupled documents and exact original bytes
+  ---
+  duration_ms: 82.223351
+  type: 'test'
+  ...
+# Subtest: V112 genuine played receipt v112-reviewed-cargo-wide-ground-fixture.json preserves coupled documents and exact original bytes
+ok 131 - V112 genuine played receipt v112-reviewed-cargo-wide-ground-fixture.json preserves coupled documents and exact original bytes
+  ---
+  duration_ms: 160.437759
+  type: 'test'
+  ...
+# Subtest: V112 genuine played receipt v112-reviewed-archive106-carried-fixture.json preserves coupled documents and exact original bytes
+ok 132 - V112 genuine played receipt v112-reviewed-archive106-carried-fixture.json preserves coupled documents and exact original bytes
+  ---
+  duration_ms: 44.256094
+  type: 'test'
+  ...
+# Subtest: V112 genuine played receipt v112-reviewed-archive106-ground-fixture.json preserves coupled documents and exact original bytes
+ok 133 - V112 genuine played receipt v112-reviewed-archive106-ground-fixture.json preserves coupled documents and exact original bytes
+  ---
+  duration_ms: 66.067521
+  type: 'test'
+  ...
+# Subtest: V112 genuine played receipt v112-reviewed-comparison107-carried-fixture.json preserves coupled documents and exact original bytes
+ok 134 - V112 genuine played receipt v112-reviewed-comparison107-carried-fixture.json preserves coupled documents and exact original bytes
+  ---
+  duration_ms: 66.303536
+  type: 'test'
+  ...
+# Subtest: V112 genuine played receipt v112-reviewed-comparison107-ground-fixture.json preserves coupled documents and exact original bytes
+ok 135 - V112 genuine played receipt v112-reviewed-comparison107-ground-fixture.json preserves coupled documents and exact original bytes
+  ---
+  duration_ms: 57.436107
+  type: 'test'
+  ...
+# Subtest: V112 genuine played receipt v112-reviewed-continuation-carried-fragment-fixture.json preserves coupled documents and exact original bytes
+ok 136 - V112 genuine played receipt v112-reviewed-continuation-carried-fragment-fixture.json preserves coupled documents and exact original bytes
+  ---
+  duration_ms: 100.433827
+  type: 'test'
+  ...
+# Subtest: V112 genuine played receipt v112-reviewed-carried-plaque-fixture.json preserves coupled documents and exact original bytes
+ok 137 - V112 genuine played receipt v112-reviewed-carried-plaque-fixture.json preserves coupled documents and exact original bytes
+  ---
+  duration_ms: 103.855307
+  type: 'test'
+  ...
+# Subtest: V112 parked wide cargo cannot be restored onto its conserved owner; the actual native motor can leave afterwards
+ok 138 - V112 parked wide cargo cannot be restored onto its conserved owner; the actual native motor can leave afterwards
+  ---
+  duration_ms: 16558.793459
+  type: 'test'
+  ...
+# Subtest: V112 a schema-boundary512-point trace compacts safely before its declared geometry break without doubling interruptions
+ok 139 - V112 a schema-boundary512-point trace compacts safely before its declared geometry break without doubling interruptions
+  ---
+  duration_ms: 35.228914
+  type: 'test'
+  ...
+# Subtest: V112 revision and interruption bounds refuse the whole proposal without changing any supplied receipt
+ok 140 - V112 revision and interruption bounds refuse the whole proposal without changing any supplied receipt
+  ---
+  duration_ms: 21285.598184
+  type: 'test'
+  ...
+# Subtest: V112 continuation resume attaches a nearby real checkpoint and its carried fragment while immutable B stays exact
+ok 141 - V112 continuation resume attaches a nearby real checkpoint and its carried fragment while immutable B stays exact
+  ---
+  duration_ms: 204.110629
+  type: 'test'
+  ...
+# Subtest: V112 reproduces the pinned old543-step occupied checkpoint then previews a local geometry migration without changing one input byte
+ok 142 - V112 reproduces the pinned old543-step occupied checkpoint then previews a local geometry migration without changing one input byte
+  ---
+  duration_ms: 109.955592
+  type: 'test'
+  ...
+# Subtest: V112 confirmation writes an exact readable backup before one atomic campaign write and makes real K17 resumption possible
+ok 143 - V112 confirmation writes an exact readable backup before one atomic campaign write and makes real K17 resumption possible
+  ---
+  duration_ms: 130.04485
+  type: 'test'
+  ...
+# Subtest: V112 quota, unreadable backup and conflicting retained bytes refuse before a campaign write; retry keeps the original copy
+ok 144 - V112 quota, unreadable backup and conflicting retained bytes refuse before a campaign write; retry keeps the original copy
+  ---
+  duration_ms: 298.704707
+  type: 'test'
+  ...
+# Subtest: V112 an owner, actor, document, availability or nonce change invalidates confirmation before it can mutate a campaign
+ok 145 - V112 an owner, actor, document, availability or nonce change invalidates confirmation before it can mutate a campaign
+  ---
+  duration_ms: 148.777405
+  type: 'test'
+  ...
+# Subtest: V112 a genuinely free actor remains at its checkpoint while its remote interrupted study receives only a local anchor migration
+ok 146 - V112 a genuinely free actor remains at its checkpoint while its remote interrupted study receives only a local anchor migration
+  ---
+  duration_ms: 9852.83262
+  type: 'test'
+  ...
+# Subtest: V112 a genuinely parked and documented piece is migrated locally without moving its free owner or granting a pickup/provenance
+ok 147 - V112 a genuinely parked and documented piece is migrated locally without moving its free owner or granting a pickup/provenance
+  ---
+  duration_ms: 6005.903358
+  type: 'test'
+  ...
+# Subtest: V112 real resume within the admitted four-unit range attaches the exact active checkpoint without fabricating walking
+ok 148 - V112 real resume within the admitted four-unit range attaches the exact active checkpoint without fabricating walking
+  ---
+  duration_ms: 54.722761
+  type: 'test'
+  ...
+# Subtest: the two exact joints occupy measured unsupported pockets between retained same-floor pavements
+ok 149 - the two exact joints occupy measured unsupported pockets between retained same-floor pavements
+  ---
+  duration_ms: 40.787201
+  type: 'test'
+  ...
+# Subtest: the full bounded unit-grid sweep removes both enclosed cracks while preserving open relief
+ok 150 - the full bounded unit-grid sweep removes both enclosed cracks while preserving open relief
+  ---
+  duration_ms: 375.081617
+  type: 'test'
+  ...
+# Subtest: native and enlarged bodies gain continuous support across the joints without bypassing a solid
+ok 151 - native and enlarged bodies gain continuous support across the joints without bypassing a solid
+  ---
+  duration_ms: 1681.989956
+  type: 'test'
+  ...
+# Subtest: retained solids, thresholds, floor ownership and recovery history stay unchanged
+ok 152 - retained solids, thresholds, floor ownership and recovery history stay unchanged
+  ---
+  duration_ms: 264.232261
+  type: 'test'
+  ...
+# Subtest: physical floor, actual paving, rock mask, atlas and codex share exactly the same joint polygons
+ok 153 - physical floor, actual paving, rock mask, atlas and codex share exactly the same joint polygons
+  ---
+  duration_ms: 2057.04309
+  type: 'test'
+  ...
+# Subtest: only the two false interior cliff faces disappear and every true exposed face keeps its exact geometry
+ok 154 - only the two false interior cliff faces disappear and every true exposed face keeps its exact geometry
+  ---
+  duration_ms: 298.670749
+  type: 'test'
+  ...
+# Subtest: the actual React origin memo depends on both published coordinates and the physical space, without a delayed second state
+ok 155 - the actual React origin memo depends on both published coordinates and the physical space, without a delayed second state
+  ---
+  duration_ms: 20.017906
+  type: 'test'
+  ...
+# Subtest: the unchanged current guide changes its heading for a newly published body and preserves owner and ground refusals
+ok 156 - the unchanged current guide changes its heading for a newly published body and preserves owner and ground refusals
+  ---
+  duration_ms: 549.972184
+  type: 'test'
+  ...
+# Subtest: the actual browser follower refuses a stale arrived guide before accepting the last step
+ok 157 - the actual browser follower refuses a stale arrived guide before accepting the last step
+  ---
+  duration_ms: 20.645901
+  type: 'test'
+  ...
+# Subtest: V112 reproduces the premature officer arrival and continues toward the actual interaction range
+ok 158 - V112 reproduces the premature officer arrival and continues toward the actual interaction range
+  ---
+  duration_ms: 44.307931
+  type: 'test'
+  ...
+# Subtest: V112 interior arrivals match the real requested target for every service and audience, including the former 24-unit halo
+ok 159 - V112 interior arrivals match the real requested target for every service and audience, including the former 24-unit halo
+  ---
+  duration_ms: 635.469805
+  type: 'test'
+  ...
+# Subtest: V112 the unchanged native interior motor follows every guide until the requested interlocutor is actually in reach
+ok 160 - V112 the unchanged native interior motor follows every guide until the requested interlocutor is actually in reach
+  ---
+  duration_ms: 762.305494
+  type: 'test'
+  ...
+# Subtest: V112 preserves the V111 street plan and owner, geometry and stale-target refusals
+ok 161 - V112 preserves the V111 street plan and owner, geometry and stale-target refusals
+  ---
+  duration_ms: 11.988738
+  type: 'test'
+  ...
+# Subtest: V112 recalculates from the exact real motor position where the pinned V111 market guide stopped
+ok 162 - V112 recalculates from the exact real motor position where the pinned V111 market guide stopped
+  ---
+  duration_ms: 8641.825025
+  type: 'test'
+  ...
+# Subtest: V112 rejects the native mausoleum corner missed between old four-unit samples and repairs its actual route
+ok 163 - V112 rejects the native mausoleum corner missed between old four-unit samples and repairs its actual route
+  ---
+  duration_ms: 44.555945
+  type: 'test'
+  ...
+# Subtest: V112 requires the real archivist post range instead of the shifted landmark arrival halo
+ok 164 - V112 requires the real archivist post range instead of the shifted landmark arrival halo
+  ---
+  duration_ms: 56.255448
+  type: 'test'
+  ...
+# Subtest: V112 the actual Worker computes repaired interior paths and still refuses a mismatched live cargo snapshot
+ok 165 - V112 the actual Worker computes repaired interior paths and still refuses a mismatched live cargo snapshot
+  ---
+  duration_ms: 64.510409
+  type: 'test'
+  ...
+# Subtest: V112 a refused incoming edge does not hide an exit node reachable from another corridor
+ok 166 - V112 a refused incoming edge does not hide an exit node reachable from another corridor
+  ---
+  duration_ms: 3.597816
+  type: 'test'
+  ...
+# Subtest: V112 reproduces 77 natural contacts on later public paving and admits the other 315 unchanged sources without relocating or shrinking anything
+ok 167 - V112 reproduces 77 natural contacts on later public paving and admits the other 315 unchanged sources without relocating or shrinking anything
+  ---
+  duration_ms: 175.795506
+  type: 'test'
+  ...
+# Subtest: all 39 drawing formations and material masks derive solely from admitted roots, preserving deliberate native civic planters
+ok 168 - all 39 drawing formations and material masks derive solely from admitted roots, preserving deliberate native civic planters
+  ---
+  duration_ms: 917.878975
+  type: 'test'
+  ...
+# Subtest: the current scene renders all 315 native roots exactly once, no refused sprite, and no natural plane on other floors
+ok 169 - the current scene renders all 315 native roots exactly once, no refused sprite, and no natural plane on other floors
+  ---
+  duration_ms: 1611.287157
+  type: 'test'
+  ...
+# Subtest: the live codex marks refused placements as authoring with no world footprint and retains exact admitted roots
+ok 170 - the live codex marks refused placements as authoring with no world footprint and retains exact admitted roots
+  ---
+  duration_ms: 434.419768
+  type: 'test'
+  ...
+# Subtest: V112 natural fronts remain attached to their source top edge and use no second piece below an intervening floor
+ok 171 - V112 natural fronts remain attached to their source top edge and use no second piece below an intervening floor
+  ---
+  duration_ms: 2.133852
+  type: 'test'
+  ...
+# Subtest: V112 sweeps floor corners and sloping boundaries without exposing faces through the first paved surface
+ok 172 - V112 sweeps floor corners and sloping boundaries without exposing faces through the first paved surface
+  ---
+  duration_ms: 0.31865
+  type: 'test'
+  ...
+# Subtest: the real causeway witness has no retained old floating quad and every natural face paints from one local native source row
+ok 173 - the real causeway witness has no retained old floating quad and every natural face paints from one local native source row
+  ---
+  duration_ms: 3357.461967
+  type: 'test'
+  ...
+# Subtest: V112 seven short public-link circuits have supported visible full bodies without moving existing citizens or operation sockets
+ok 174 - V112 seven short public-link circuits have supported visible full bodies without moving existing citizens or operation sockets
+  ---
+  duration_ms: 53.683878
+  type: 'test'
+  ...
+# Subtest: V112 the existing motor can actually traverse each complete circuit in both directions with its unchanged body
+ok 175 - V112 the existing motor can actually traverse each complete circuit in both directions with its unchanged body
+  ---
+  duration_ms: 174.638718
+  type: 'test'
+  ...
+# Subtest: V112 placement rejects unsupported routes, existing routes, source operations, bad data and duplicates instead of manufacturing support
+ok 176 - V112 placement rejects unsupported routes, existing routes, source operations, bad data and duplicates instead of manufacturing support
+  ---
+  duration_ms: 7.256333
+  type: 'test'
+  ...
+# Subtest: V112 city-time poses remain continuous and deterministic, holding a real native drawing at both halts
+ok 177 - V112 city-time poses remain continuous and deterministic, holding a real native drawing at both halts
+  ---
+  duration_ms: 149.568003
+  type: 'test'
+  ...
+# Subtest: V112 paint uses unchanged real left/right atlas bytes, native foot pivots, uniform scale and the correct floor elevation
+ok 178 - V112 paint uses unchanged real left/right atlas bytes, native foot pivots, uniform scale and the correct floor elevation
+  ---
+  duration_ms: 10.860409
+  type: 'test'
+  ...
+# Subtest: V112 real React layer paints only the active physical floor, complete source pivots and no synthetic mirrors or service controls
+ok 179 - V112 real React layer paints only the active physical floor, complete source pivots and no synthetic mirrors or service controls
+  ---
+  duration_ms: 1482.693396
+  type: 'test'
+  ...
+# Subtest: V112 admits six fixed places, retains four explicit refusals, and recompiles without colliding against itself
+ok 180 - V112 admits six fixed places, retains four explicit refusals, and recompiles without colliding against itself
+  ---
+  duration_ms: 27.508049
+  type: 'test'
+  ...
+# Subtest: every admitted contact is supported and solid on its own floor while the actual operator body and route stay free
+ok 181 - every admitted contact is supported and solid on its own floor while the actual operator body and route stay free
+  ---
+  duration_ms: 4274.843462
+  type: 'test'
+  ...
+# Subtest: the retained native bytes, scale, source orientation, projected foot and depth drive the actual six-instance renderer
+ok 182 - the retained native bytes, scale, source orientation, projected foot and depth drive the actual six-instance renderer
+  ---
+  duration_ms: 30.595697
+  type: 'test'
+  ...
+# Subtest: the real actor walks then stops against a visible V112 place without teleporting and every retained door approach remains free
+ok 183 - the real actor walks then stops against a visible V112 place without teleporting and every retained door approach remains free
+  ---
+  duration_ms: 51.407016
+  type: 'test'
+  ...
+# Subtest: V112 reproduces six unsupported retained foundations then supports every native edge of all 51 facades
+ok 184 - V112 reproduces six unsupported retained foundations then supports every native edge of all 51 facades
+  ---
+  duration_ms: 1916.65234
+  type: 'test'
+  ...
+# Subtest: foundation lips remain local to retained solids on their true floor and never relocate a threshold or make a whole outside district walkable
+ok 185 - foundation lips remain local to retained solids on their true floor and never relocate a threshold or make a whole outside district walkable
+  ---
+  duration_ms: 1.717305
+  type: 'test'
+  ...
+# Subtest: the real world draw pass paints the exact six physical plinth polygons and shares exposed foundation extraction
+ok 186 - the real world draw pass paints the exact six physical plinth polygons and shares exposed foundation extraction
+  ---
+  duration_ms: 1540.226745
+  type: 'test'
+  ...
+# Subtest: old and future profiles receive safe defaults without input latches or grants
+ok 187 - old and future profiles receive safe defaults without input latches or grants
+  ---
+  duration_ms: 6.807537
+  type: 'test'
+  ...
+# Subtest: accessibility settings survive ordinary save export/import
+ok 188 - accessibility settings survive ordinary save export/import
+  ---
+  duration_ms: 2.833145
+  type: 'test'
+  ...
+# Subtest: malformed flags and duplicate/out-of-range gamepad buttons normalize safely
+ok 189 - malformed flags and duplicate/out-of-range gamepad buttons normalize safely
+  ---
+  duration_ms: 0.405971
+  type: 'test'
+  ...
+# Subtest: every controller rebind is a permutation retaining all twelve actions
+ok 190 - every controller rebind is a permutation retaining all twelve actions
+  ---
+  duration_ms: 1.756594
+  type: 'test'
+  ...
+# Subtest: hold latches use rising edges, release cleanly and reset while a physical button remains held
+ok 191 - hold latches use rising edges, release cleanly and reset while a physical button remains held
+  ---
+  duration_ms: 0.387964
+  type: 'test'
+  ...
+# Subtest: standard timing is unchanged, generous timing accepts later, unlimited timing still requires correct glyph
+ok 192 - standard timing is unchanged, generous timing accepts later, unlimited timing still requires correct glyph
+  ---
+  duration_ms: 0.51127
+  type: 'test'
+  ...
+# Subtest: press confirmation is one explicit event, never an automatic stream
+ok 193 - press confirmation is one explicit event, never an automatic stream
+  ---
+  duration_ms: 0.236105
+  type: 'test'
+  ...
+# Subtest: hold confirmation needs sustained input and never carries into next glyph
+ok 194 - hold confirmation needs sustained input and never carries into next glyph
+  ---
+  duration_ms: 0.330037
+  type: 'test'
+  ...
+# Subtest: toggle confirmation can disarm and requires a fresh arm on every glyph
+ok 195 - toggle confirmation can disarm and requires a fresh arm on every glyph
+  ---
+  duration_ms: 0.376086
+  type: 'test'
+  ...
+# Subtest: ready phase never advances a confirmation, even when armed
+ok 196 - ready phase never advances a confirmation, even when armed
+  ---
+  duration_ms: 0.413562
+  type: 'test'
+  ...
+# Subtest: production controller polling uses remapped actions and held jump/aim
+ok 197 - production controller polling uses remapped actions and held jump/aim
+  ---
+  duration_ms: 0.702017
+  type: 'test'
+  ...
+# Subtest: real fixed-step input keeps vertical axes physical while grip and aim can latch
+ok 198 - real fixed-step input keeps vertical axes physical while grip and aim can latch
+  ---
+  duration_ms: 69.271838
+  type: 'test'
+  ...
+# Subtest: pause and focus loss disarm production hold toggles and pending confirmations
+ok 199 - pause and focus loss disarm production hold toggles and pending confirmations
+  ---
+  duration_ms: 8.176769
+  type: 'test'
+  ...
+# Subtest: production snapshot uses the selected timing scale and unlimited meter stays static
+ok 200 - production snapshot uses the selected timing scale and unlimited meter stays static
+  ---
+  duration_ms: 2.520253
+  type: 'test'
+  ...
+# Subtest: real cue meter distinguishes finite progress from an explicitly unlimited static band
+ok 201 - real cue meter distinguishes finite progress from an explicitly unlimited static band
+  ---
+  duration_ms: 6.380024
+  type: 'test'
+  ...
+# Subtest: real settings callback preserves freshly confirmed inventory and successive preference patches before React rerenders
+ok 202 - real settings callback preserves freshly confirmed inventory and successive preference patches before React rerenders
+  ---
+  duration_ms: 164.345085
+  type: 'test'
+  ...
+# Subtest: flaying duration preview and real menu match the timed operation for sharp, worn and blunt tools
+ok 203 - flaying duration preview and real menu match the timed operation for sharp, worn and blunt tools
+  ---
+  duration_ms: 9.450205
+  type: 'test'
+  ...
+# Subtest: the native score formula has no direct accessibility modifier and still counts elapsed hunt time
+ok 204 - the native score formula has no direct accessibility modifier and still counts elapsed hunt time
+  ---
+  duration_ms: 21.143598
+  type: 'test'
+  ...
+# Subtest: native down+remapped interact opens a real corpse without dropping a carried body or starting its trophy
+ok 205 - native down+remapped interact opens a real corpse without dropping a carried body or starting its trophy
+  ---
+  duration_ms: 121.694761
+  type: 'test'
+  ...
+# Subtest: corpse pad navigation is edge-triggered while the real rite, clock and enemy keep advancing
+ok 206 - corpse pad navigation is edge-triggered while the real rite, clock and enemy keep advancing
+  ---
+  duration_ms: 5.623125
+  type: 'test'
+  ...
+# Subtest: corpse menu close cancels safely, requires controller release and preserves ordinary trophy interaction
+ok 207 - corpse menu close cancels safely, requires controller release and preserves ordinary trophy interaction
+  ---
+  duration_ms: 3.438646
+  type: 'test'
+  ...
+# Subtest: corpse pad suppression keeps simultaneous keyboard and touch actions, including overlapping fresh edges
+ok 208 - corpse pad suppression keeps simultaneous keyboard and touch actions, including overlapping fresh edges
+  ---
+  duration_ms: 12.134576
+  type: 'test'
+  ...
+# Subtest: opening requires a real nearby corpse and focus loss still pauses before any corpse UI action
+ok 209 - opening requires a real nearby corpse and focus loss still pauses before any corpse UI action
+  ---
+  duration_ms: 2.967347
+  type: 'test'
+  ...
+# Subtest: shared keyboard, touch and gamepad actions activate, pump and release the real pendulum
+ok 210 - shared keyboard, touch and gamepad actions activate, pump and release the real pendulum
+  ---
+  duration_ms: 123.751669
+  type: 'test'
+  ...
+# Subtest: real checkpoint cloning restores the same swing without replaying an impulse and rejects phantom anchors
+ok 211 - real checkpoint cloning restores the same swing without replaying an impulse and rejects phantom anchors
+  ---
+  duration_ms: 7.094128
+  type: 'test'
+  ...
+# Subtest: remote active supports cannot attract the real player through a wall or across the world
+ok 212 - remote active supports cannot attract the real player through a wall or across the world
+  ---
+  duration_ms: 2.248325
+  type: 'test'
+  ...
+# Subtest: stamina exhaustion releases the swing and requires a real landing before reacquisition
+ok 213 - stamina exhaustion releases the swing and requires a real landing before reacquisition
+  ---
+  duration_ms: 2.909931
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: jungle-vey, scout, keyboardHeld
+ok 214 - complete authored canopy rests: jungle-vey, scout, keyboardHeld
+  ---
+  duration_ms: 166.870818
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: jungle-vey, scout, touchHeld
+ok 215 - complete authored canopy rests: jungle-vey, scout, touchHeld
+  ---
+  duration_ms: 126.779306
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: jungle-vey, scout, gamepadHeld
+ok 216 - complete authored canopy rests: jungle-vey, scout, gamepadHeld
+  ---
+  duration_ms: 149.667961
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: jungle-vey, hunter, keyboardHeld
+ok 217 - complete authored canopy rests: jungle-vey, hunter, keyboardHeld
+  ---
+  duration_ms: 126.246645
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: jungle-vey, hunter, touchHeld
+ok 218 - complete authored canopy rests: jungle-vey, hunter, touchHeld
+  ---
+  duration_ms: 115.878467
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: jungle-vey, hunter, gamepadHeld
+ok 219 - complete authored canopy rests: jungle-vey, hunter, gamepadHeld
+  ---
+  duration_ms: 110.537908
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: jungle-vey, berserker, keyboardHeld
+ok 220 - complete authored canopy rests: jungle-vey, berserker, keyboardHeld
+  ---
+  duration_ms: 124.715488
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: jungle-vey, berserker, touchHeld
+ok 221 - complete authored canopy rests: jungle-vey, berserker, touchHeld
+  ---
+  duration_ms: 117.68085
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: jungle-vey, berserker, gamepadHeld
+ok 222 - complete authored canopy rests: jungle-vey, berserker, gamepadHeld
+  ---
+  duration_ms: 121.772148
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: ice-cryostalker, scout, keyboardHeld
+ok 223 - complete authored canopy rests: ice-cryostalker, scout, keyboardHeld
+  ---
+  duration_ms: 178.569278
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: ice-cryostalker, scout, touchHeld
+ok 224 - complete authored canopy rests: ice-cryostalker, scout, touchHeld
+  ---
+  duration_ms: 142.64558
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: ice-cryostalker, scout, gamepadHeld
+ok 225 - complete authored canopy rests: ice-cryostalker, scout, gamepadHeld
+  ---
+  duration_ms: 112.968226
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: ice-cryostalker, hunter, keyboardHeld
+ok 226 - complete authored canopy rests: ice-cryostalker, hunter, keyboardHeld
+  ---
+  duration_ms: 126.66919
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: ice-cryostalker, hunter, touchHeld
+ok 227 - complete authored canopy rests: ice-cryostalker, hunter, touchHeld
+  ---
+  duration_ms: 127.545208
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: ice-cryostalker, hunter, gamepadHeld
+ok 228 - complete authored canopy rests: ice-cryostalker, hunter, gamepadHeld
+  ---
+  duration_ms: 133.298565
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: ice-cryostalker, berserker, keyboardHeld
+ok 229 - complete authored canopy rests: ice-cryostalker, berserker, keyboardHeld
+  ---
+  duration_ms: 123.982296
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: ice-cryostalker, berserker, touchHeld
+ok 230 - complete authored canopy rests: ice-cryostalker, berserker, touchHeld
+  ---
+  duration_ms: 123.128681
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: ice-cryostalker, berserker, gamepadHeld
+ok 231 - complete authored canopy rests: ice-cryostalker, berserker, gamepadHeld
+  ---
+  duration_ms: 121.46129
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: volcano-bad-blood, scout, keyboardHeld
+ok 232 - complete authored canopy rests: volcano-bad-blood, scout, keyboardHeld
+  ---
+  duration_ms: 114.363677
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: volcano-bad-blood, scout, touchHeld
+ok 233 - complete authored canopy rests: volcano-bad-blood, scout, touchHeld
+  ---
+  duration_ms: 111.658333
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: volcano-bad-blood, scout, gamepadHeld
+ok 234 - complete authored canopy rests: volcano-bad-blood, scout, gamepadHeld
+  ---
+  duration_ms: 119.353568
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: volcano-bad-blood, hunter, keyboardHeld
+ok 235 - complete authored canopy rests: volcano-bad-blood, hunter, keyboardHeld
+  ---
+  duration_ms: 114.278107
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: volcano-bad-blood, hunter, touchHeld
+ok 236 - complete authored canopy rests: volcano-bad-blood, hunter, touchHeld
+  ---
+  duration_ms: 113.247526
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: volcano-bad-blood, hunter, gamepadHeld
+ok 237 - complete authored canopy rests: volcano-bad-blood, hunter, gamepadHeld
+  ---
+  duration_ms: 114.26683
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: volcano-bad-blood, berserker, keyboardHeld
+ok 238 - complete authored canopy rests: volcano-bad-blood, berserker, keyboardHeld
+  ---
+  duration_ms: 123.514391
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: volcano-bad-blood, berserker, touchHeld
+ok 239 - complete authored canopy rests: volcano-bad-blood, berserker, touchHeld
+  ---
+  duration_ms: 122.773316
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: volcano-bad-blood, berserker, gamepadHeld
+ok 240 - complete authored canopy rests: volcano-bad-blood, berserker, gamepadHeld
+  ---
+  duration_ms: 120.902981
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: swamp-hydra, scout, keyboardHeld
+ok 241 - complete authored canopy rests: swamp-hydra, scout, keyboardHeld
+  ---
+  duration_ms: 111.966468
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: swamp-hydra, scout, touchHeld
+ok 242 - complete authored canopy rests: swamp-hydra, scout, touchHeld
+  ---
+  duration_ms: 108.808955
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: swamp-hydra, scout, gamepadHeld
+ok 243 - complete authored canopy rests: swamp-hydra, scout, gamepadHeld
+  ---
+  duration_ms: 114.991932
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: swamp-hydra, hunter, keyboardHeld
+ok 244 - complete authored canopy rests: swamp-hydra, hunter, keyboardHeld
+  ---
+  duration_ms: 126.690922
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: swamp-hydra, hunter, touchHeld
+ok 245 - complete authored canopy rests: swamp-hydra, hunter, touchHeld
+  ---
+  duration_ms: 121.518587
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: swamp-hydra, hunter, gamepadHeld
+ok 246 - complete authored canopy rests: swamp-hydra, hunter, gamepadHeld
+  ---
+  duration_ms: 110.867413
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: swamp-hydra, berserker, keyboardHeld
+ok 247 - complete authored canopy rests: swamp-hydra, berserker, keyboardHeld
+  ---
+  duration_ms: 121.318817
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: swamp-hydra, berserker, touchHeld
+ok 248 - complete authored canopy rests: swamp-hydra, berserker, touchHeld
+  ---
+  duration_ms: 118.592272
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: swamp-hydra, berserker, gamepadHeld
+ok 249 - complete authored canopy rests: swamp-hydra, berserker, gamepadHeld
+  ---
+  duration_ms: 119.151324
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: desert-sandmaw, scout, keyboardHeld
+ok 250 - complete authored canopy rests: desert-sandmaw, scout, keyboardHeld
+  ---
+  duration_ms: 106.993802
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: desert-sandmaw, scout, touchHeld
+ok 251 - complete authored canopy rests: desert-sandmaw, scout, touchHeld
+  ---
+  duration_ms: 109.366684
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: desert-sandmaw, scout, gamepadHeld
+ok 252 - complete authored canopy rests: desert-sandmaw, scout, gamepadHeld
+  ---
+  duration_ms: 109.809691
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: desert-sandmaw, hunter, keyboardHeld
+ok 253 - complete authored canopy rests: desert-sandmaw, hunter, keyboardHeld
+  ---
+  duration_ms: 118.310463
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: desert-sandmaw, hunter, touchHeld
+ok 254 - complete authored canopy rests: desert-sandmaw, hunter, touchHeld
+  ---
+  duration_ms: 121.646348
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: desert-sandmaw, hunter, gamepadHeld
+ok 255 - complete authored canopy rests: desert-sandmaw, hunter, gamepadHeld
+  ---
+  duration_ms: 115.291523
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: desert-sandmaw, berserker, keyboardHeld
+ok 256 - complete authored canopy rests: desert-sandmaw, berserker, keyboardHeld
+  ---
+  duration_ms: 117.352947
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: desert-sandmaw, berserker, touchHeld
+ok 257 - complete authored canopy rests: desert-sandmaw, berserker, touchHeld
+  ---
+  duration_ms: 114.850187
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: desert-sandmaw, berserker, gamepadHeld
+ok 258 - complete authored canopy rests: desert-sandmaw, berserker, gamepadHeld
+  ---
+  duration_ms: 116.031935
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: ocean-leviathan, scout, keyboardHeld
+ok 259 - complete authored canopy rests: ocean-leviathan, scout, keyboardHeld
+  ---
+  duration_ms: 116.931284
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: ocean-leviathan, scout, touchHeld
+ok 260 - complete authored canopy rests: ocean-leviathan, scout, touchHeld
+  ---
+  duration_ms: 105.852231
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: ocean-leviathan, scout, gamepadHeld
+ok 261 - complete authored canopy rests: ocean-leviathan, scout, gamepadHeld
+  ---
+  duration_ms: 104.376299
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: ocean-leviathan, hunter, keyboardHeld
+ok 262 - complete authored canopy rests: ocean-leviathan, hunter, keyboardHeld
+  ---
+  duration_ms: 108.722813
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: ocean-leviathan, hunter, touchHeld
+ok 263 - complete authored canopy rests: ocean-leviathan, hunter, touchHeld
+  ---
+  duration_ms: 116.013553
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: ocean-leviathan, hunter, gamepadHeld
+ok 264 - complete authored canopy rests: ocean-leviathan, hunter, gamepadHeld
+  ---
+  duration_ms: 127.058423
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: ocean-leviathan, berserker, keyboardHeld
+ok 265 - complete authored canopy rests: ocean-leviathan, berserker, keyboardHeld
+  ---
+  duration_ms: 131.166697
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: ocean-leviathan, berserker, touchHeld
+ok 266 - complete authored canopy rests: ocean-leviathan, berserker, touchHeld
+  ---
+  duration_ms: 130.778142
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: ocean-leviathan, berserker, gamepadHeld
+ok 267 - complete authored canopy rests: ocean-leviathan, berserker, gamepadHeld
+  ---
+  duration_ms: 132.8882
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: fungal-hivemind, scout, keyboardHeld
+ok 268 - complete authored canopy rests: fungal-hivemind, scout, keyboardHeld
+  ---
+  duration_ms: 123.572466
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: fungal-hivemind, scout, touchHeld
+ok 269 - complete authored canopy rests: fungal-hivemind, scout, touchHeld
+  ---
+  duration_ms: 101.884007
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: fungal-hivemind, scout, gamepadHeld
+ok 270 - complete authored canopy rests: fungal-hivemind, scout, gamepadHeld
+  ---
+  duration_ms: 101.151685
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: fungal-hivemind, hunter, keyboardHeld
+ok 271 - complete authored canopy rests: fungal-hivemind, hunter, keyboardHeld
+  ---
+  duration_ms: 106.416
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: fungal-hivemind, hunter, touchHeld
+ok 272 - complete authored canopy rests: fungal-hivemind, hunter, touchHeld
+  ---
+  duration_ms: 106.692707
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: fungal-hivemind, hunter, gamepadHeld
+ok 273 - complete authored canopy rests: fungal-hivemind, hunter, gamepadHeld
+  ---
+  duration_ms: 106.354137
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: fungal-hivemind, berserker, keyboardHeld
+ok 274 - complete authored canopy rests: fungal-hivemind, berserker, keyboardHeld
+  ---
+  duration_ms: 114.519848
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: fungal-hivemind, berserker, touchHeld
+ok 275 - complete authored canopy rests: fungal-hivemind, berserker, touchHeld
+  ---
+  duration_ms: 114.264064
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: fungal-hivemind, berserker, gamepadHeld
+ok 276 - complete authored canopy rests: fungal-hivemind, berserker, gamepadHeld
+  ---
+  duration_ms: 118.621924
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: ruins-ancient-guardian, scout, keyboardHeld
+ok 277 - complete authored canopy rests: ruins-ancient-guardian, scout, keyboardHeld
+  ---
+  duration_ms: 115.063617
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: ruins-ancient-guardian, scout, touchHeld
+ok 278 - complete authored canopy rests: ruins-ancient-guardian, scout, touchHeld
+  ---
+  duration_ms: 101.328442
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: ruins-ancient-guardian, scout, gamepadHeld
+ok 279 - complete authored canopy rests: ruins-ancient-guardian, scout, gamepadHeld
+  ---
+  duration_ms: 102.501818
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: ruins-ancient-guardian, hunter, keyboardHeld
+ok 280 - complete authored canopy rests: ruins-ancient-guardian, hunter, keyboardHeld
+  ---
+  duration_ms: 106.094226
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: ruins-ancient-guardian, hunter, touchHeld
+ok 281 - complete authored canopy rests: ruins-ancient-guardian, hunter, touchHeld
+  ---
+  duration_ms: 106.409099
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: ruins-ancient-guardian, hunter, gamepadHeld
+ok 282 - complete authored canopy rests: ruins-ancient-guardian, hunter, gamepadHeld
+  ---
+  duration_ms: 111.336642
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: ruins-ancient-guardian, berserker, keyboardHeld
+ok 283 - complete authored canopy rests: ruins-ancient-guardian, berserker, keyboardHeld
+  ---
+  duration_ms: 126.068804
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: ruins-ancient-guardian, berserker, touchHeld
+ok 284 - complete authored canopy rests: ruins-ancient-guardian, berserker, touchHeld
+  ---
+  duration_ms: 121.64243
+  type: 'test'
+  ...
+# Subtest: complete authored canopy rests: ruins-ancient-guardian, berserker, gamepadHeld
+ok 285 - complete authored canopy rests: ruins-ancient-guardian, berserker, gamepadHeld
+  ---
+  duration_ms: 118.335442
+  type: 'test'
+  ...
+# Subtest: canopy and airborne controls do not inherit mud from a distant ground surface
+ok 286 - canopy and airborne controls do not inherit mud from a distant ground surface
+  ---
+  duration_ms: 10.651404
+  type: 'test'
+  ...
+# Subtest: a pumped native pendulum releases and catches the next authored vine without a boost
+ok 287 - a pumped native pendulum releases and catches the next authored vine without a boost
+  ---
+  duration_ms: 50.128179
+  type: 'test'
+  ...
+# Subtest: real unlocked Oseris long vine jungle-vertical-vine-heart starts, resumes and releases above 720 px
+ok 288 - real unlocked Oseris long vine jungle-vertical-vine-heart starts, resumes and releases above 720 px
+  ---
+  duration_ms: 9.682034
+  type: 'test'
+  ...
+# Subtest: real unlocked Oseris long vine jungle-vertical-vine-east starts, resumes and releases above 720 px
+ok 289 - real unlocked Oseris long vine jungle-vertical-vine-east starts, resumes and releases above 720 px
+  ---
+  duration_ms: 8.37061
+  type: 'test'
+  ...
+# Subtest: native damage, flay, carry, attachment and falling preserve one real collision actor
+ok 290 - native damage, flay, carry, attachment and falling preserve one real collision actor
+  ---
+  duration_ms: 79.856809
+  type: 'test'
+  ...
+# Subtest: native anatomy preview, finite harvest and mission extraction produce the same source and quality
+ok 291 - native anatomy preview, finite harvest and mission extraction produce the same source and quality
+  ---
+  duration_ms: 8.480236
+  type: 'test'
+  ...
+# Subtest: native interrupted anatomy and a full depot never consume or invent specimen stock
+ok 292 - native interrupted anatomy and a full depot never consume or invent specimen stock
+  ---
+  duration_ms: 4.061524
+  type: 'test'
+  ...
+# Subtest: live source teleport across a solid obstruction cannot complete a harvest
+ok 293 - live source teleport across a solid obstruction cannot complete a harvest
+  ---
+  duration_ms: 3.816185
+  type: 'test'
+  ...
+# Subtest: carrying into blocked space drops the same corpse without moving it through the wall
+ok 294 - carrying into blocked space drops the same corpse without moving it through the wall
+  ---
+  duration_ms: 3.758147
+  type: 'test'
+  ...
+# Subtest: a clear final transport point cannot teleport its source across an intervening solid wall
+ok 295 - a clear final transport point cannot teleport its source across an intervening solid wall
+  ---
+  duration_ms: 3.752859
+  type: 'test'
+  ...
+# Subtest: an authored hook cannot attach an actual wide body through a wall outside its preview icon
+ok 296 - an authored hook cannot attach an actual wide body through a wall outside its preview icon
+  ---
+  duration_ms: 3.086576
+  type: 'test'
+  ...
+# Subtest: native suspended corpse restore admits the real source and refuses the same ledger when that actor is removed
+ok 297 - native suspended corpse restore admits the real source and refuses the same ledger when that actor is removed
+  ---
+  duration_ms: 6.468005
+  type: 'test'
+  ...
+# Subtest: field stock slows native movement for every armor and the HUD exposes the same actual load
+ok 298 - field stock slows native movement for every armor and the HUD exposes the same actual load
+  ---
+  duration_ms: 137.429235
+  type: 'test'
+  ...
+# Subtest: native jumps preserve assistance and pay the explicit load penalty without consuming a boost
+ok 299 - native jumps preserve assistance and pay the explicit load penalty without consuming a boost
+  ---
+  duration_ms: 7.243524
+  type: 'test'
+  ...
+# Subtest: native climbing charges the weight effort and reduces ascent speed for all armors
+ok 300 - native climbing charges the weight effort and reduces ascent speed for all armors
+  ---
+  duration_ms: 51.379283
+  type: 'test'
+  ...
+# Subtest: pack noise changes footsteps and landings while hostile or weapon signals retain their meaning
+ok 301 - pack noise changes footsteps and landings while hostile or weapon signals retain their meaning
+  ---
+  duration_ms: 1.60728
+  type: 'test'
+  ...
+# Subtest: carcass is dropped before jumping and never charges the jump as if still carried
+ok 302 - carcass is dropped before jumping and never charges the jump as if still carried
+  ---
+  duration_ms: 1.486157
+  type: 'test'
+  ...
+# Subtest: native anatomy, paused deposit, resume and retrieval retain exactly one consumed body part
+ok 303 - native anatomy, paused deposit, resume and retrieval retain exactly one consumed body part
+  ---
+  duration_ms: 168.765255
+  type: 'test'
+  ...
+# Subtest: the actual result only delivers specimens carried to extraction and never a distant world stash
+ok 304 - the actual result only delivers specimens carried to extraction and never a distant world stash
+  ---
+  duration_ms: 33.514891
+  type: 'test'
+  ...
+# Subtest: paused capture/deserialize/restore keeps canonical proof and the exact ledge deposit
+ok 305 - paused capture/deserialize/restore keeps canonical proof and the exact ledge deposit
+  ---
+  duration_ms: 47.833826
+  type: 'test'
+  ...
+# Subtest: forged duplicate or foreign stash identity is refused before restoring a saved hunt
+ok 306 - forged duplicate or foreign stash identity is refused before restoring a saved hunt
+  ---
+  duration_ms: 41.615945
+  type: 'test'
+  ...
+# Subtest: native pause pack rejects not in pause without losing a specimen
+ok 307 - native pause pack rejects not in pause without losing a specimen
+  ---
+  duration_ms: 23.635269
+  type: 'test'
+  ...
+# Subtest: native pause pack rejects dead without losing a specimen
+ok 308 - native pause pack rejects dead without losing a specimen
+  ---
+  duration_ms: 38.776932
+  type: 'test'
+  ...
+# Subtest: native pause pack rejects no footing without losing a specimen
+ok 309 - native pause pack rejects no footing without losing a specimen
+  ---
+  duration_ms: 22.297004
+  type: 'test'
+  ...
+# Subtest: native pause pack rejects climbing without losing a specimen
+ok 310 - native pause pack rejects climbing without losing a specimen
+  ---
+  duration_ms: 24.592549
+  type: 'test'
+  ...
+# Subtest: native pause pack rejects active rite without losing a specimen
+ok 311 - native pause pack rejects active rite without losing a specimen
+  ---
+  duration_ms: 43.969704
+  type: 'test'
+  ...
+# Subtest: native pickup cannot reach through a new solid wall or succeed when capacity was filled
+ok 312 - native pickup cannot reach through a new solid wall or succeed when capacity was filled
+  ---
+  duration_ms: 31.970286
+  type: 'test'
+  ...
+# Subtest: V112 workbook reproduces its delivered bytes and keeps every future requirement individually visible
+ok 313 - V112 workbook reproduces its delivered bytes and keeps every future requirement individually visible
+  ---
+  duration_ms: 151.240375
+  type: 'test'
+  ...
+# Subtest: V112 OOXML package uses nineteen unique relationships, frozen headers and text rather than executable formulas
+ok 314 - V112 OOXML package uses nineteen unique relationships, frozen headers and text rather than executable formulas
+  ---
+  duration_ms: 99.587817
+  type: 'test'
+  ...
+# Subtest: invalid workbook schema, duplicate identities, unknown cells and nonfinite numbers are refused
+ok 315 - invalid workbook schema, duplicate identities, unknown cells and nonfinite numbers are refused
+  ---
+  duration_ms: 11.278647
+  type: 'test'
+  ...
+# Subtest: all48 backward BODY regions reproduce byte-exact metadata and remain22 unchanged native source pages
+ok 316 - all48 backward BODY regions reproduce byte-exact metadata and remain22 unchanged native source pages
+  ---
+  duration_ms: 1732.122576
+  type: 'test'
+  ...
+# Subtest: the native region admission rejects a nonzero source gutter and a displaced grounded support
+ok 317 - the native region admission rejects a nonzero source gutter and a displaced grounded support
+  ---
+  duration_ms: 92.130509
+  type: 'test'
+  ...
+# Subtest: a source-byte change or an edited/rejected generation receipt cannot publish an admitted native registry
+ok 318 - a source-byte change or an edited/rejected generation receipt cannot publish an admitted native registry
+  ---
+  duration_ms: 61.04226
+  type: 'test'
+  ...
+# Subtest: actual public forward button staysTH_F while either fighter holds retreat in either native facing
+ok 319 - actual public forward button staysTH_F while either fighter holds retreat in either native facing
+  ---
+  duration_ms: 7.689435
+  type: 'test'
+  ...
+# Subtest: actual backward button forces4 from the current fighter facing even with a forward direction held
+ok 320 - actual backward button forces4 from the current fighter facing even with a forward direction held
+  ---
+  duration_ms: 3.476123
+  type: 'test'
+  ...
+# Subtest: public keyboard and pad4+L+M remain contextual and preserve their held retreat direction
+ok 321 - public keyboard and pad4+L+M remain contextual and preserve their held retreat direction
+  ---
+  duration_ms: 1.745728
+  type: 'test'
+  ...
+# Subtest: actual forward button during a backward capture remains a fresh successful tech, including held retreat
+ok 322 - actual forward button during a backward capture remains a fresh successful tech, including held retreat
+  ---
+  duration_ms: 3.107248
+  type: 'test'
+  ...
+# Subtest: the independentV16 public forward option keeps its historical input shape and forward action
+ok 323 - the independentV16 public forward option keeps its historical input shape and forward action
+  ---
+  duration_ms: 0.378229
+  type: 'test'
+  ...
+# Subtest: the complete native duo admits exactly48 actual pixel-distinct drawings and both bounded runtime source IDs
+ok 324 - the complete native duo admits exactly48 actual pixel-distinct drawings and both bounded runtime source IDs
+  ---
+  duration_ms: 907.243907
+  type: 'test'
+  ...
+# Subtest: a failed independent victim PNG blocks the entire public pair instead of admitting a fallback body
+ok 325 - a failed independent victim PNG blocks the entire public pair instead of admitting a fallback body
+  ---
+  duration_ms: 953.344113
+  type: 'test'
+  ...
+# Subtest: all backward roles decoding successfully still cannot authorize a public recipe with absent forward roles
+ok 326 - all backward roles decoding successfully still cannot authorize a public recipe with absent forward roles
+  ---
+  duration_ms: 278.442804
+  type: 'test'
+  ...
+# Subtest: real capture/release/recovery and independent victim ticks select all48 decoded native drawings, including an unobserved flight seek
+ok 327 - real capture/release/recovery and independent victim ticks select all48 decoded native drawings, including an unobserved flight seek
+  ---
+  duration_ms: 59.927084
+  type: 'test'
+  ...
+# Subtest: a real whiff, fresh tech and training knockout draw only their explicit admitted held poses
+ok 328 - a real whiff, fresh tech and training knockout draw only their explicit admitted held poses
+  ---
+  duration_ms: 35.740473
+  type: 'test'
+  ...
+# Subtest: V17 is opt-in and source10/3/32 110/0 belongs only to the unvaried native duo
+ok 329 - V17 is opt-in and source10/3/32 110/0 belongs only to the unvaried native duo
+  ---
+  duration_ms: 2.122515
+  type: 'test'
+  ...
+# Subtest: assigned keyboard and actual pad L+M preserve4; fresh real fighter facing decides backward or forward
+ok 330 - assigned keyboard and actual pad L+M preserve4; fresh real fighter facing decides backward or forward
+  ---
+  duration_ms: 3.591306
+  type: 'test'
+  ...
+# Subtest: both fighters, slots and native orientations move one real target continuously over the thrower and damage only at a clear landing
+ok 331 - both fighters, slots and native orientations move one real target continuously over the thrower and damage only at a clear landing
+  ---
+  duration_ms: 35.98361
+  type: 'test'
+  ...
+# Subtest: first and last fresh tech edges cancel the backward capture with no hit, meter or teleport
+ok 332 - first and last fresh tech edges cancel the backward capture with no hit, meter or teleport
+  ---
+  duration_ms: 3.183312
+  type: 'test'
+  ...
+# Subtest: held Projection and an input after tick8 cannot undo the real flight or landing
+ok 333 - held Projection and an input after tick8 cannot undo the real flight or landing
+  ---
+  duration_ms: 22.870468
+  type: 'test'
+  ...
+# Subtest: continuous pair reconstruction owns native clocks, including a mid-flight snapshot without prior observation
+ok 334 - continuous pair reconstruction owns native clocks, including a mid-flight snapshot without prior observation
+  ---
+  duration_ms: 21.014105
+  type: 'test'
+  ...
+# Subtest: laboratory shows45source ticks and backward target phases, and reset preservesV17 while clearing both captures
+ok 335 - laboratory shows45source ticks and backward target phases, and reset preservesV17 while clearing both captures
+  ---
+  duration_ms: 1.079796
+  type: 'test'
+  ...
+# Subtest: real startup/active/recovery whiff is10/3/32 with no held-button cancel
+ok 336 - real startup/active/recovery whiff is10/3/32 with no held-button cancel
+  ---
+  duration_ms: 3.931759
+  type: 'test'
+  ...
+# Subtest: a wall truncates a safe rear landing and an insufficient rear clearance refuses capture
+ok 337 - a wall truncates a safe rear landing and an insufficient rear clearance refuses capture
+  ---
+  duration_ms: 24.203015
+  type: 'test'
+  ...
+# Subtest: capture eligibility refuses airborne, wake, knockdown and existing hitstun instead of resetting a combo
+ok 338 - capture eligibility refuses airborne, wake, knockdown and existing hitstun instead of resetting a combo
+  ---
+  duration_ms: 1.803996
+  type: 'test'
+  ...
+# Subtest: source capture consumes resource, attack and jump edges and preserves a deployed finite device
+ok 339 - source capture consumes resource, attack and jump edges and preserves a deployed finite device
+  ---
+  duration_ms: 4.406394
+  type: 'test'
+  ...
+# Subtest: the CPU reacts after five visible ticks and a training knockout holds native landing for sixty ticks
+ok 340 - the CPU reacts after five visible ticks and a training knockout holds native landing for sixty ticks
+  ---
+  duration_ms: 10.437553
+  type: 'test'
+  ...
+# Subtest: tampering cannot create a capture, alter a landing, importTH_B intoV16 or combine both throws
+ok 341 - tampering cannot create a capture, alter a landing, importTH_B intoV16 or combine both throws
+  ---
+  duration_ms: 1.300948
+  type: 'test'
+  ...
+# Subtest: timeout clears the real pair and round transition retains17 without carrying an old capture
+ok 342 - timeout clears the real pair and round transition retains17 without carrying an old capture
+  ---
+  duration_ms: 26.540874
+  type: 'test'
+  ...
+# Subtest: real walking4+Projection is recorded and replayed onV17; relabelling16orrecipe cannot forge it
+ok 343 - real walking4+Projection is recorded and replayed onV17; relabelling16orrecipe cannot forge it
+  ---
+  duration_ms: 42.533679
+  type: 'test'
+  ...
+# Subtest: a complete two-roundV17 match uses actual walking and back throws, then replays its genuine victory
+ok 344 - a complete two-roundV17 match uses actual walking and back throws, then replays its genuine victory
+  ---
+  duration_ms: 257.776349
+  type: 'test'
+  ...
+# Subtest: one actual held edge reaches real TH_B startup after non-progressing clock calls, then releases once
+ok 345 - one actual held edge reaches real TH_B startup after non-progressing clock calls, then releases once
+  ---
+  duration_ms: 4.481847
+  type: 'test'
+  ...
+# Subtest: ignored input is refused by the effective-frame bound without a second press, with release and raw observations retained
+ok 346 - ignored input is refused by the effective-frame bound without a second press, with release and raw observations retained
+  ---
+  duration_ms: 1.975123
+  type: 'test'
+  ...
+# Subtest: a blocked simulation is refused by absence of progression and always releases the one input edge
+ok 347 - a blocked simulation is refused by absence of progression and always releases the one input edge
+  ---
+  duration_ms: 0.435967
+  type: 'test'
+  ...
+# Subtest: the independent poll bound refuses a permanently stalled clock even when the stall allowance is larger
+ok 348 - the independent poll bound refuses a permanently stalled clock even when the stall allowance is larger
+  ---
+  duration_ms: 0.483298
+  type: 'test'
+  ...
+# Subtest: an actual normal attack cannot masquerade as the requested backward startup
+ok 349 - an actual normal attack cannot masquerade as the requested backward startup
+  ---
+  duration_ms: 0.526723
+  type: 'test'
+  ...
+# Subtest: a real TH_B startup on the other slot is refused immediately
+ok 350 - a real TH_B startup on the other slot is refused immediately
+  ---
+  duration_ms: 0.443127
+  type: 'test'
+  ...
+# Subtest: a positive simulation frame that actually moves backward is rejected with its raw sample retained
+ok 351 - a positive simulation frame that actually moves backward is rejected with its raw sample retained
+  ---
+  duration_ms: 0.611892
+  type: 'test'
+  ...
+# Subtest: reversed frames, skipped startup, unready state and changed health remain explicit failures
+ok 352 - reversed frames, skipped startup, unready state and changed health remain explicit failures
+  ---
+  duration_ms: 1.444044
+  type: 'test'
+  ...
+# Subtest: partially failed press still releases, and a failed release cannot be published as successful input observation
+ok 353 - partially failed press still releases, and a failed release cannot be published as successful input observation
+  ---
+  duration_ms: 0.69788
+  type: 'test'
+  ...
+# Subtest: the actual release routine attempts every keyup even when one native release rejects
+ok 354 - the actual release routine attempts every keyup even when one native release rejects
+  ---
+  duration_ms: 1.269091
+  type: 'test'
+  ...
+# Subtest: the actual browser adapter holds one J2 combo across clock calls with no tick, then releases all three keys after real startup
+ok 355 - the actual browser adapter holds one J2 combo across clock calls with no tick, then releases all three keys after real startup
+  ---
+  duration_ms: 2.464169
+  type: 'test'
+  ...
+# Subtest: a partial native keydown failure in the actual adapter releases every owned key, including unreached ones
+ok 356 - a partial native keydown failure in the actual adapter releases every owned key, including unreached ones
+  ---
+  duration_ms: 0.999415
+  type: 'test'
+  ...
+# Subtest: a native keyup failure in the actual adapter still releases the remaining keys and fails the observation
+ok 357 - a native keyup failure in the actual adapter still releases the remaining keys and fails the observation
+  ---
+  duration_ms: 0.89694
+  type: 'test'
+  ...
+# Subtest: the actual whiff observer proves real startup and45 effective frames even when clock calls sometimes produce no simulation tick
+ok 358 - the actual whiff observer proves real startup and45 effective frames even when clock calls sometimes produce no simulation tick
+  ---
+  duration_ms: 9.372399
+  type: 'test'
+  ...
+# Subtest: an input never consumed by the real simulation cannot masquerade as a successful whiff
+ok 359 - an input never consumed by the real simulation cannot masquerade as a successful whiff
+  ---
+  duration_ms: 1.729423
+  type: 'test'
+  ...
+# Subtest: a capture during the observed interval is refused immediately and remains in the failure trace
+ok 360 - a capture during the observed interval is refused immediately and remains in the failure trace
+  ---
+  duration_ms: 1.36846
+  type: 'test'
+  ...
+# Subtest: a health change during the observed interval is refused rather than hidden by a later recovery
+ok 361 - a health change during the observed interval is refused rather than hidden by a later recovery
+  ---
+  duration_ms: 0.95653
+  type: 'test'
+  ...
+# Subtest: a stopped or blocked simulation cannot pass and cannot make the actual observer wait forever
+ok 362 - a stopped or blocked simulation cannot pass and cannot make the actual observer wait forever
+  ---
+  duration_ms: 22.036913
+  type: 'test'
+  ...
+# Subtest: premature idle, oversized action clocks and frame-window overruns are rejected by the actual routine
+ok 363 - premature idle, oversized action clocks and frame-window overruns are rejected by the actual routine
+  ---
+  duration_ms: 2.710371
+  type: 'test'
+  ...
+# Subtest: the actual observer narrows only its final three source frames and preserves the existing 46-frame upper bound
+ok 364 - the actual observer narrows only its final three source frames and preserves the existing 46-frame upper bound
+  ---
+  duration_ms: 6.82827
+  type: 'test'
+  ...
+# Subtest: the actual browser initializer records and rethrows a native Worker constructor failure even when the app catches it
+ok 365 - the actual browser initializer records and rethrows a native Worker constructor failure even when the app catches it
+  ---
+  duration_ms: 1.784897
+  type: 'test'
+  ...
+# Subtest: actual native error listeners stay attached and retain the unfiltered asynchronous Worker failure
+ok 366 - actual native error listeners stay attached and retain the unfiltered asynchronous Worker failure
+  ---
+  duration_ms: 0.690299
+  type: 'test'
+  ...
+# Subtest: the actual final collector captures early-abort records once and refuses an unobservable open page
+ok 367 - the actual final collector captures early-abort records once and refuses an unobservable open page
+  ---
+  duration_ms: 1.348691
+  type: 'test'
+  ...
+# Subtest: actual victory JSX offers export for the real unvaried Feral/ScarV17 recording and retainsV16
+ok 368 - actual victory JSX offers export for the real unvaried Feral/ScarV17 recording and retainsV16
+  ---
+  duration_ms: 0.739573
+  type: 'test'
+  ...
+# Subtest: the actual export predicate keeps previously admitted expansion and originalV56 branches intact
+ok 369 - the actual export predicate keeps previously admitted expansion and originalV56 branches intact
+  ---
+  duration_ms: 0.194823
+  type: 'test'
+  ...
+# Subtest: the actual browser recipe awaits visibility before arming a download, so absent buttons enter its failure handler
+ok 370 - the actual browser recipe awaits visibility before arming a download, so absent buttons enter its failure handler
+  ---
+  duration_ms: 2.408366
+  type: 'test'
+  ...
+# Subtest: actual export click and download are awaited together, preserving a catchable failure without an orphan rejection
+ok 371 - actual export click and download are awaited together, preserving a catchable failure without an orphan rejection
+  ---
+  duration_ms: 2.063176
+  type: 'test'
+  ...
+# Subtest: V112 refuses incomplete, relabeled, erroneous or changed browser results
+ok 372 - V112 refuses incomplete, relabeled, erroneous or changed browser results
+  ---
+  duration_ms: 11.456847
+  type: 'test'
+  ...
+# Subtest: V112 validates immutable executed bytes against the runtime freeze
+ok 373 - V112 validates immutable executed bytes against the runtime freeze
+  ---
+  duration_ms: 9.224266
+  type: 'test'
+  ...
+# Subtest: V112 native inventory rejects replaced artwork, missing provenance, undeclared pages and edited source bytes
+ok 374 - V112 native inventory rejects replaced artwork, missing provenance, undeclared pages and edited source bytes
+  ---
+  duration_ms: 8.370762
+  type: 'test'
+  ...
+# Subtest: V112 runtime identity must name the actual committed source, including newly added files
+ok 375 - V112 runtime identity must name the actual committed source, including newly added files
+  ---
+  duration_ms: 87.022547
+  type: 'test'
+  ...
+1..375
+# tests 375
+# suites 0
+# pass 375
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 239163.366686
+
+Exit code: 0

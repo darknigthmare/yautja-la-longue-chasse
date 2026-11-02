@@ -28,20 +28,29 @@ const groundChanged=structuredClone(saved);groundChanged.homeworld.cargoV108=ini
 const foreign=structuredClone(saved);foreign.createdAt='2026-10-26T10:00:00.000Z';foreign.homeworld.cargoV108=undefined;
 const fixture={save:saved,groundChanged,foreign,origin:{actor:f.b.passage.start,levelId:'0',interiorId:null},otherOrigin:{actor:{x:5000,y:3600},levelId:'+1',interiorId:null},targetId:f.b.npcId};
 const bundle=await build({entryPoints:[path.join(root,'tests/browser/homeworld-atlas-v109.fixture.tsx')],bundle:true,write:false,outdir:path.join(root,'outputs/qa-v109-atlas-build'),format:'esm',platform:'browser',jsx:'automatic',define:{'process.env.NODE_ENV':'"production"'},logLevel:'silent',plugins});
-const workerFile=path.join(root,'app/game/homeworldRouteWorkerV111.ts');
-const worker=await build({entryPoints:[workerFile],bundle:true,write:false,format:'esm',platform:'browser',logLevel:'silent'});
-const js=bundle.outputFiles.find(file=>file.path.endsWith('.js')).contents,css=bundle.outputFiles.find(file=>file.path.endsWith('.css'))?.contents??'',workerJs=worker.outputFiles[0].contents;
+// The current host constructs V112; an explicit historical host may still
+// construct V111. Serve both actual modules without changing either contract.
+const workerFiles=['app/game/homeworldRouteWorkerV111.ts','app/game/homeworldRouteWorkerV112.ts'];
+const workerBundles=await Promise.all(workerFiles.map(async file=>{
+ const built=await build({entryPoints:[path.join(root,file)],bundle:true,write:false,format:'esm',platform:'browser',logLevel:'silent'});
+ return {path:file,url:'/'+path.basename(file),source:await fs.readFile(path.join(root,file)),javascript:built.outputFiles[0].contents};
+}));
+const workersByUrl=new Map(workerBundles.map(item=>[item.url,item])),servedWorkerRequests=[];
+const js=bundle.outputFiles.find(file=>file.path.endsWith('.js')).contents,css=bundle.outputFiles.find(file=>file.path.endsWith('.css'))?.contents??'';
 const server=http.createServer((req,res)=>{
  if(req.url==='/fixture.js'){res.setHeader('Content-Type','text/javascript');res.end(js);}
  else if(req.url==='/fixture.css'){res.setHeader('Content-Type','text/css');res.end(css);}
- else if(req.url==='/homeworldRouteWorkerV111.ts'){res.setHeader('Content-Type','text/javascript');res.end(workerJs);}
+ else if(workersByUrl.has(req.url)){
+  const item=workersByUrl.get(req.url);servedWorkerRequests.push({path:item.path,status:200,sourceSha256:createHash('sha256').update(item.source).digest('hex'),javascriptSha256:createHash('sha256').update(item.javascript).digest('hex')});
+  res.setHeader('Content-Type','text/javascript');res.end(item.javascript);
+ }
  else if(req.url==='/'){res.setHeader('Content-Type','text/html');res.end('<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Atlas V109 integration</title><link rel="icon" href="data:,"><link rel="stylesheet" href="/fixture.css"><div id="root"></div><script>window.__atlasFixturesV109='+JSON.stringify(fixture).replaceAll('<','\\u003c')+'</script><script type="module" src="/fixture.js"></script>');}
  else{res.writeHead(404);res.end('Not found');}
 });
 await new Promise((resolve,reject)=>{server.once('error',reject);server.listen(0,'127.0.0.1',resolve);});
 const origin='http://127.0.0.1:'+server.address().port,checks=[],errors=[],consoleErrors=[],httpErrors=[],captures=[];let browser,failure;
 const sha=value=>createHash('sha256').update(value).digest('hex');await fs.mkdir(output,{recursive:true});
-const sourceFiles=['app/game/HomeworldWorldMapV77.tsx','app/game/homeworldRouteWorkerV111.ts','app/game/systems/homeworldCourtArtV80.ts','app/game/systems/homeworldCivicDecorV80.ts','tests/browser/homeworld-atlas-v109.fixture.tsx','scripts/qa-homeworld-atlas-browser-v109.mjs'];
+const sourceFiles=['app/game/HomeworldWorldMapV77.tsx',...workerFiles,'app/game/systems/homeworldCourtArtV80.ts','app/game/systems/homeworldCivicDecorV80.ts','tests/browser/homeworld-atlas-v109.fixture.tsx','scripts/qa-homeworld-atlas-browser-v109.mjs'];
 const sources=await Promise.all(sourceFiles.map(async file=>({path:file,sha256:sha(await fs.readFile(baselineHost&&path.join(root,file)===hostFile?baselineHost:path.join(root,file)))})));
 async function check(name,run){const context=await browser.newContext({viewport:{width:1200,height:1000},reducedMotion:'reduce'}),page=await context.newPage();page.setDefaultTimeout(30000);page.on('pageerror',e=>errors.push(e.message));
  page.on('console',entry=>{if(entry.type()==='error')consoleErrors.push(entry.text());});page.on('response',response=>{if(response.status()>=400)httpErrors.push({url:response.url(),status:response.status()});});
@@ -104,6 +113,6 @@ try{
  });
  await check('A390px atlas keeps its register and cancellation controls inside the viewport',async page=>{await page.setViewportSize({width:390,height:844});assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));await page.locator('[data-homeworld-cargo-register-v109] summary').click();assert.equal(await page.locator('[data-homeworld-cargo-register-v109] li').count(),2);await capture(page,'mobile-cargo-register');});
  checks.push({name:'No uncaught browser exceptions, console errors or HTTP failures',status:errors.length||consoleErrors.length||httpErrors.length?'FAIL':'PASS'});assert.deepEqual(errors,[]);assert.deepEqual(consoleErrors,[]);assert.deepEqual(httpErrors,[]);
-}catch(error){failure??=error;console.error(error);}finally{await browser?.close();await new Promise(resolve=>server.close(resolve));await fs.writeFile(path.join(output,'result.json'),JSON.stringify({status:failure?'FAIL':'PASS',variant:baselineHost?'baseline-host':'working-tree',sources,scope:'Isolated actual React Atlas and current V111 module Worker. Prepared model-played cargo placements, direct fixture parent updates, and explicitly deferred native Worker delivery and animation frames test browser lifecycle boundaries; no campaign victory, production build or art admission is claimed.',checks,captures,errors,consoleErrors,httpErrors,fixtureIO:['Model-played initial carried/parked cargo checkpoint','Fixture parent changes for owner, floor, suspension and confirmed lot placements','Actual Worker message delivery delayed after computation; no route result or model outcome is fabricated','Animation frames may be held after a native response is ready to exercise cancellation before its UI update']},null,2)+'\n');console.log('Report: '+path.join(output,'result.json'));}
+}catch(error){failure??=error;console.error(error);}finally{await browser?.close();await new Promise(resolve=>server.close(resolve));await fs.writeFile(path.join(output,'result.json'),JSON.stringify({status:failure?'FAIL':'PASS',variant:baselineHost?'baseline-host':'working-tree',sources,workerModules:workerBundles.map(item=>({path:item.path,sourceSha256:sha(item.source),javascriptSha256:sha(item.javascript)})),servedWorkerRequests,scope:'Isolated actual React Atlas and real V111/V112 module Workers; servedWorkerRequests identifies the module actually requested by the selected host. Prepared model-played cargo placements, direct fixture parent updates, and explicitly deferred native Worker delivery and animation frames test browser lifecycle boundaries; no campaign victory, production build or art admission is claimed.',checks,captures,errors,consoleErrors,httpErrors,fixtureIO:['Model-played initial carried/parked cargo checkpoint','Fixture parent changes for owner, floor, suspension and confirmed lot placements','Actual Worker message delivery delayed after computation; no route result or model outcome is fabricated','Animation frames may be held after a native response is ready to exercise cancellation before its UI update']},null,2)+'\n');console.log('Report: '+path.join(output,'result.json'));}
 if(failure)reportGithubActionsFailure('Current Homeworld Atlas Worker integration',failure);
 if(failure)process.exitCode=1;
