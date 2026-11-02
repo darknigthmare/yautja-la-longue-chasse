@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "sourceRef": "f269ea2290f41ecd7651854c216995d18ef52c1e",
+  "sourceRef": "d90c2812e265b831e8af7cb21fd7d94f90ea1ffe",
   "scope": "Tracked application, runtime/build configuration, scripts, tests and their fixtures, and the two affected CI workflows. This source fingerprint does not execute archived browser journeys, certify all artwork, qualify physical hardware or replace the separate workbook checks. Historical Homeworld publications keep their own documents and identities.",
-  "files": 2456,
-  "bytes": 126722812,
+  "files": 2458,
+  "bytes": 126747352,
   "entries": [
     {
       "path": ".github/workflows/audit-v94.yml",
@@ -12,8 +12,8 @@
     },
     {
       "path": ".github/workflows/hunt-closure-v112.yml",
-      "bytes": 10136,
-      "sha256": "e70c2b0065d6684001a31300a8a9c560141b98c39bba364709f4a22ec134ff34"
+      "bytes": 12786,
+      "sha256": "5002ec6bb58b41e6d90e87c6514e16c245efb0412924f64af85859c664adadee"
     },
     {
       "path": ".openai/hosting.json",
@@ -6521,6 +6521,11 @@
       "sha256": "d597266f69f77870455ea65adc1f91a9166a70629fd0d4826439437296e16bd7"
     },
     {
+      "path": "scripts/materialize-site-assets-v112.mjs",
+      "bytes": 10929,
+      "sha256": "29a12df766d95760dcd2669f6007b383b9e380ca506bb77fde433da60d9664c2"
+    },
+    {
       "path": "scripts/measure-biomasks-v62.mjs",
       "bytes": 1297,
       "sha256": "68a1c2aaefdbd83ea5d7b920f45d0278dcb3946cf74aefdc8ec1e2ab5851b554"
@@ -12059,6 +12064,11 @@
       "path": "tests/ship-training-recovery-v94.test.mjs",
       "bytes": 10588,
       "sha256": "c08d08badc8fd7b2a59d86cecbd7601925440df235cbdb1e6efb8aede71b538c"
+    },
+    {
+      "path": "tests/site-asset-materialization-v112.test.mjs",
+      "bytes": 10961,
+      "sha256": "aca4732153f833262a80cfd0657fa7512fbd8039a652d95a44b615eac559ec59"
     },
     {
       "path": "tests/solo-rendering-v67.test.mjs",
