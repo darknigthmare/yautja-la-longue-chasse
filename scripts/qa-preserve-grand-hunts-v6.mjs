@@ -4,6 +4,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {createHash} from 'node:crypto';
+import {execFileSync} from 'node:child_process';
 import {build} from 'esbuild';
 import {chromium} from 'playwright-core';
 import {campaignFixture, enterCampaignDeck} from './campaign-browser-helpers.mjs';
@@ -12,6 +13,11 @@ const baseUrl = process.env.YAUTJA_QA_BASE_URL ?? 'http://127.0.0.1:3116';
 assert(['127.0.0.1', 'localhost'].includes(new URL(baseUrl).hostname));
 const buildId = process.env.YAUTJA_QA_BUILD_ID;
 assert(buildId, 'The production build identity must be supplied');
+const runtimeCommit = process.env.YAUTJA_QA_RUNTIME_COMMIT;
+assert.match(runtimeCommit ?? '', /^[a-f0-9]{40}$/, 'The exact compiled runtime commit must be supplied');
+const localHead = () => execFileSync('git', ['rev-parse', 'HEAD'], {encoding: 'utf8'}).trim();
+const headBefore = localHead();
+assert.equal(headBefore, runtimeCommit, 'The local source HEAD must match the pinned runtime commit');
 const output = path.resolve(process.env.YAUTJA_PRESERVE_V6_OUTPUT ?? 'work-local/preserve-v6-20261102/browser/attempt-01');
 await fs.mkdir(output, {recursive: true});
 const key = 'yautja-main-menu-bonus.v81.reserve';
@@ -25,7 +31,7 @@ const appFiles = (await fs.readdir('app', {recursive: true})).filter(name => /\.
 const sourceFiles = [...appFiles, 'next.config.ts', 'package.json', 'package-lock.json', 'scripts/qa-preserve-grand-hunts-v6.mjs', 'scripts/campaign-browser-helpers.mjs', ...[...nativePaths].map(src => 'public' + src)].sort();
 const snapshot = () => Promise.all(sourceFiles.map(async file => {const bytes = await fs.readFile(file); return {file, bytes: bytes.length, sha256: sha(bytes)};}));
 const sourceBefore = await snapshot();
-const checks = [], captures = [], fixtures = [], errors = [], consoleErrors = [], httpErrors = [], textures = new Map(), contexts = [], outcomes = {};
+const checks = [], captures = [], fixtures = [], errors = [], consoleErrors = [], httpErrors = [], textures = new Map(), contexts = [], outcomes = {}, servedBuilds = [], coverObservations = [];
 const check = (name, value) => {checks.push({name, status: value ? 'PASS' : 'FAIL'}); console.log((value ? 'PASS ' : 'FAIL ') + name); assert(value, name);};
 const browser = await chromium.launch({executablePath: process.env.CHROMIUM_EXECUTABLE_PATH ?? '/usr/bin/chromium', headless: true, args: ['--no-sandbox', '--disable-dev-shm-usage', '--mute-audio']});
 const canvas = page => page.locator('canvas[data-reserve-tick]');
@@ -35,6 +41,29 @@ const disk = async page => JSON.parse(await raw(page))?.state;
 let failure;
 async function page(initial) {
   const context = await browser.newContext({viewport: {width: 1440, height: 1000}, reducedMotion: 'reduce'}); contexts.push(context);
+  // Passive observation: the original browser drawImage runs first with its
+  // original receiver and arguments. No image, state or rendering is replaced.
+  await context.addInitScript(() => {
+    const original = CanvasRenderingContext2D.prototype.drawImage, samples = new Map(), observerErrors = [];
+    CanvasRenderingContext2D.prototype.drawImage = function (...args) {
+      const result = Reflect.apply(original, this, args);
+      try {
+        const image = args[0];
+        if (args.length === 9 && image instanceof HTMLImageElement && this.canvas.closest?.('[data-game-reserve-v66]')) {
+          const source = new URL(image.src, location.href).pathname;
+          if (/^\/game\/assets\/v19\/biome-decor\/[^/]+\/cov\/.+\.webp$/.test(source)) {
+            const sample = {source, bitmap: [image.naturalWidth, image.naturalHeight], crop: args.slice(1, 5), destination: args.slice(5, 9), canvas: [this.canvas.width, this.canvas.height]};
+            samples.set(JSON.stringify([source, sample.crop, sample.destination]), sample);
+          }
+        }
+      } catch (error) {observerErrors.push(String(error));}
+      return result;
+    };
+    window.__preserveCoverObservationV6 = {
+      samples: () => [...samples.values()], errors: () => [...observerErrors],
+      restore: () => {CanvasRenderingContext2D.prototype.drawImage = original; return CanvasRenderingContext2D.prototype.drawImage === original;},
+    };
+  });
   if (initial) await context.addInitScript(({key, initial}) => {if (!localStorage.getItem(key)) localStorage.setItem(key, JSON.stringify({version: 1, state: initial}));}, {key, initial});
   const p = await context.newPage(); p.setDefaultTimeout(30000); await p.clock.install();
   p.on('pageerror', error => errors.push(error.message));
@@ -52,7 +81,8 @@ async function page(initial) {
 }
 async function enter(p, protectedEntry = false) {
   const response = await p.goto(baseUrl, {waitUntil: 'domcontentloaded', timeout: 120000});
-  assert.equal(response.status(), 200); assert((await p.content()).includes(buildId), 'Served production build identity');
+  const html = await p.content(), served = {url: p.url(), status: response.status(), expectedBuildId: buildId, foundInHtml: html.includes(buildId), htmlSha256: sha(html)};
+  servedBuilds.push(served); assert.equal(served.status, 200); assert(served.foundInHtml, 'Served production build identity');
   await p.locator('[data-campaign-menu="main"]').waitFor();
   await p.locator('[data-main-menu-mode="game-reserve"]').click();
   await p.getByRole('button', {name: 'Accéder malgré les spoilers', exact: true}).click();
@@ -76,6 +106,20 @@ async function walk(p, target) {
   }
   throw new Error('Physical movement did not reach ' + target);
 }
+async function observeNativeCovers(p, id) {
+  const definition = api.GAME_RESERVE_GRAND_CATALOGUE.find(item => item.id === id);
+  const observed = await p.evaluate(() => ({samples: window.__preserveCoverObservationV6.samples(), errors: window.__preserveCoverObservationV6.errors()}));
+  const rows = definition.cover.map(cover => {
+    const source = definition.nativeArt.covers[cover.art].src;
+    const sample = observed.samples.find(item => item.source === source && item.destination[0] === cover.x && item.destination[2] === cover.w);
+    if (!sample) return {source, cover, observed: false};
+    const [sx, sy, sw, sh] = sample.crop, [x, y, width, height] = sample.destination;
+    return {...sample, observed: true, scaleX: width / sw, scaleY: height / sh,
+      valid: sx === 24 && sy === 24 && sw === sample.bitmap[0] - 48 && sh === sample.bitmap[1] - 48 && x === cover.x && width === cover.w && Math.abs(width / sw - height / sh) < 1e-12 && Math.abs(y + height - (definition.world.ground + 6)) < 1e-9};
+  });
+  coverObservations.push({id, scope: 'Passive calls of the actual compiled renderer and original native HTMLImageElements; no image or engine substitution.', errors: observed.errors, expectedCoverCount: definition.cover.length, rows});
+  check(id + ': actual compiled R3 cover drawImage preserves native crop proportions and ground foot', rows.length > 0 && observed.errors.length === 0 && rows.every(item => item.observed && item.valid));
+}
 try {
   for (const id of api.GAME_RESERVE_GRAND_IDS) {
     const p = await page(); await enter(p);
@@ -84,6 +128,7 @@ try {
     check(id + ': public menu creates exact V6 identity with24healthy adults,6aircraft and48lots', initial.version === 6 && initial.reserveId === id && initial.humans.length === 24 && initial.humans.every(h => h.status === 'active' && h.hp === 70) && initial.ships.length === 6 && initial.supplies.reduce((a, b) => a + b, 0) === 48);
     await button(p, 'Commencer l’expédition'); await hold(p, 'ArrowRight', 400);
     check(id + ': actual keyboard input advances a healthy native world', Number((await view(p)).reserveX) > 150 && Number((await view(p)).reserveTick) > 0);
+    await observeNativeCovers(p, id);
     if (id === 'vharuun-grand-hunt') check('Vharuun: interception0/1 is visible in the live HUD without any mechanic goal', await p.locator('[data-reserve-field-status]').getByText('Départs interrompus : 0/1', {exact: true}).isVisible());
     await capture(p, id + '-native-canvas', canvas(p));
     await button(p, 'Pause'); const stopped = await view(p), durable = await raw(p); await p.clock.runFor(600);
@@ -157,9 +202,15 @@ try {
 } finally {
   const sourceAfter = await snapshot();
   if (JSON.stringify(sourceBefore) !== JSON.stringify(sourceAfter)) failure ??= 'Source bytes changed during browser journey';
-  await fs.writeFile(path.join(output, 'report.json'), JSON.stringify({status: failure ? 'FAIL' : 'PASS', checkedAt: new Date().toISOString(), mode: 'Next production compiled isolated worktree', baseCommit: '03cf51badd450338d748da55599a317a71debd28', sourcePR82: '904cfa12519c5af1837b1e8b614e046c52982200', buildId, baseUrl,
-    scope: 'Four healthy V6 public entries and actual keyboard/pause, declared geometry hazard/storage/mobile/reload/extraction, untouched V4 replacement cancellation, real V7 protection and adult-campaign entry. No full combat victory,20–35minute duration, global performance or R7 recertification claimed.',
-    checks, fixtures, captures, outcomes, textures: [...textures.values()], errors, consoleErrors, httpErrors, sourceBefore, sourceAfter, ...(failure ? {failure} : {})}, null, 2) + '\n');
+  const headAfter = localHead(); if (headAfter !== runtimeCommit) failure ??= 'Pinned runtime HEAD changed during browser journey';
+  const restoredObservers = await Promise.all(contexts.map(async (context, index) => ({context: index, restored: await context.pages()[0]?.evaluate(() => window.__preserveCoverObservationV6?.restore() === true).catch(() => false)})));
+  const restored = restoredObservers.every(item => item.restored);
+  checks.push({name: 'Passive native drawImage observers are restored before contexts close', status: restored ? 'PASS' : 'FAIL'});
+  if (!restored) failure ??= 'A passive drawImage observer was not restored';
+  await fs.writeFile(path.join(output, 'report.json'), JSON.stringify({status: failure ? 'FAIL' : 'PASS', checkedAt: new Date().toISOString(), mode: 'Next production compiled combined runtime', runtimeCommit, headBefore, headAfter, baseCommit: '03cf51badd450338d748da55599a317a71debd28', sourcePR82: '904cfa12519c5af1837b1e8b614e046c52982200', buildId, baseUrl,
+    runtime: {node: process.version, chromium: browser.version()}, invocation: {command: 'node scripts/qa-preserve-grand-hunts-v6.mjs', environment: {YAUTJA_QA_BASE_URL: baseUrl, YAUTJA_QA_BUILD_ID: buildId, YAUTJA_QA_RUNTIME_COMMIT: runtimeCommit, YAUTJA_PRESERVE_V6_OUTPUT: output}},
+    scope: 'Four healthy V6 public entries and actual keyboard/pause, passive real compiled cover drawImage observations, declared geometry hazard/storage/mobile/reload/extraction, untouched V4 replacement cancellation, real V7 protection and adult-campaign entry. No full combat victory,20–35minute duration, global performance or historical-certificate recertification claimed.',
+    checks, fixtures, captures, outcomes, servedBuilds, coverObservations, restoredObservers, textures: [...textures.values()], errors, consoleErrors, httpErrors, sourceBefore, sourceAfter, ...(failure ? {failure} : {})}, null, 2) + '\n');
   await Promise.allSettled(contexts.map(context => context.close())); await browser.close();
 }
 if (failure) process.exitCode = 1; else console.log(JSON.stringify({status: 'PASS', checks: checks.length, captures: captures.length, output}));

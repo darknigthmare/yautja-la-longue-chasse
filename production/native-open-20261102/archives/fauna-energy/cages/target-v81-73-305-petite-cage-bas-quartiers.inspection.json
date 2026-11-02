@@ -1,0 +1,199 @@
+{
+  "id": "target-v81-73-305",
+  "label": "petite cage bas-quartiers",
+  "attempt": 1,
+  "status": "CANDIDATE_NON_ADMITTED",
+  "humanValidated": false,
+  "runtimeActivated": false,
+  "generatedBy": "image_gen.imagegen",
+  "toolOriginalPath": "/workspace/generated_images/exec-15c98502-3543-49e9-8018-0a75a43462d1.png",
+  "copiedNativePath": "/workspace/native-homeworld-open-20261102/fauna-energy/cages/target-v81-73-305-petite-cage-bas-quartiers-native.png",
+  "toolOriginalBytes": 1402545,
+  "copiedBytes": 1402545,
+  "sha256": "10e6f4a7e4d95a5daf1057c5968365c04566e71ae28f4267609cb7a3eb6a1499",
+  "sourceDestinationByteIdentical": true,
+  "sourceHashUnchangedAfterInspection": true,
+  "nativeHashUnchangedAfterInspection": true,
+  "pixelEditing": false,
+  "cropping": false,
+  "mirroring": false,
+  "promptFile": "/workspace/native-homeworld-open-20261102/fauna-energy/cages/target-v81-73-305-petite-cage-bas-quartiers.prompt.txt",
+  "promptSha256": "4588080aa637b8f2c0cd9d125c007e3873cb11d4fd7ab78867e76cb1654546b4",
+  "requestedDimensions": [
+    1024,
+    1024
+  ],
+  "nativeDimensions": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "frame": {
+    "rect": [
+      0,
+      0,
+      1254,
+      1254
+    ],
+    "atlas": false,
+    "expectedObjectCount": 1,
+    "noPixelNormalization": true
+  },
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "zeroPixels": 1028965,
+    "lowAlpha1to2Pixels": 29389,
+    "measurements": {
+      "0": {
+        "alphaGreaterThan": 0,
+        "pixelCount": 543551,
+        "bboxExclusive": [
+          0,
+          23,
+          1218,
+          1254
+        ],
+        "marginsLTRB": [
+          0,
+          23,
+          36,
+          0
+        ],
+        "canvasEdgePixelCount": 2,
+        "outer64BandPixelCount": 87
+      },
+      "2": {
+        "alphaGreaterThan": 2,
+        "pixelCount": 514162,
+        "bboxExclusive": [
+          84,
+          238,
+          1177,
+          1053
+        ],
+        "marginsLTRB": [
+          84,
+          238,
+          77,
+          201
+        ],
+        "canvasEdgePixelCount": 0,
+        "outer64BandPixelCount": 0
+      },
+      "8": {
+        "alphaGreaterThan": 8,
+        "pixelCount": 500063,
+        "bboxExclusive": [
+          84,
+          240,
+          1175,
+          1051
+        ],
+        "marginsLTRB": [
+          84,
+          240,
+          79,
+          203
+        ],
+        "canvasEdgePixelCount": 0,
+        "outer64BandPixelCount": 0
+      },
+      "128": {
+        "alphaGreaterThan": 128,
+        "pixelCount": 487349,
+        "bboxExclusive": [
+          87,
+          240,
+          1174,
+          1050
+        ],
+        "marginsLTRB": [
+          87,
+          240,
+          80,
+          204
+        ],
+        "canvasEdgePixelCount": 0,
+        "outer64BandPixelCount": 0
+      },
+      "254": {
+        "alphaGreaterThan": 254,
+        "pixelCount": 1639,
+        "bboxExclusive": [
+          88,
+          242,
+          1173,
+          1033
+        ],
+        "marginsLTRB": [
+          88,
+          242,
+          81,
+          221
+        ],
+        "canvasEdgePixelCount": 0,
+        "outer64BandPixelCount": 0
+      }
+    },
+    "componentsAlphaGreater8": {
+      "connectivity": 8,
+      "count": 53,
+      "largestAreas": [
+        499983,
+        7,
+        5,
+        5,
+        4,
+        3,
+        3,
+        2,
+        2,
+        2
+      ]
+    },
+    "transparentPixelsInsideAlphaGreater8BBox": 342038,
+    "lowAlpha1to2CanvasEdgePixels": 2,
+    "dominantComponentFractionAtGreater8": 0.9998400201574602
+  },
+  "strictRequestedAlphaMarginSatisfied": false,
+  "substantiveAlphaGreater2MarginSatisfied": true,
+  "visualInspection": {
+    "wholeNativeImageOpened": true,
+    "oneWholeEmptyCage": true,
+    "noVisibleClipping": true,
+    "realBarGapsVisible": true,
+    "structure": "Distinct sloped trapezoidal salvage cage, repaired riveted tall rear corner, diagonal brace, mostly barred roof with a patch over rear quarter; lower near-end shut hatch.",
+    "family": "Charcoal porous basalt and worn bronze with restrained latch amber; salvaged geometry differs from the three clean fauna cages, not a recolor.",
+    "limitations": [
+      "Native dimensions differ from requested1024²; exact source retained.",
+      "Prompt requested extra128px border ideally; actual native margins recorded at each alpha threshold. No normalization.",
+      "Candidacy is not human art admission or in-context integration.",
+      "Strict64px alpha>0 transparent-border contract fails; low-alpha and substantive thresholds recorded separately. Never silently relaxed."
+    ],
+    "openedFilename": "target-v81-73-305-petite-cage-bas-quartiers-native.png"
+  },
+  "pivotProposal": {
+    "kind": "diagnostic bottom center of alpha>8 bbox only",
+    "point": [
+      629.5,
+      1050
+    ],
+    "runtimeApproved": false,
+    "supportFootprintNeedsInContextReview": true
+  },
+  "retryUsed": false,
+  "integration": "NONE",
+  "toolReceiptFile": "/workspace/native-homeworld-open-20261102/fauna-energy/cages/target-v81-73-305-petite-cage-bas-quartiers.tool-receipt.json",
+  "toolReceiptSha256": "26bc43d1ae87eebe62e85fe42eb7799e86994853d2da0a6a1bdb8e79a1ecf6bd",
+  "exactPromptUtf8Sha256": "6147a2c3ec7d74379562adcf423ba0f65a3f8b1075a157102e4c5eb2844e37ca",
+  "promptTextFileTrailingNewlineOnly": true,
+  "retryDecision": "No retry: complete recognizable single object without visible clipping or overlap; requested border deviations retained explicitly.",
+  "gridInspection": {
+    "isAtlas": false,
+    "expectedFrames": 1,
+    "visuallyObservedIndependentObjects": 1,
+    "repeatedObjectGrid": false,
+    "disconnectedAlphaComponentsDoNotEqualSemanticObjectCount": true
+  }
+}

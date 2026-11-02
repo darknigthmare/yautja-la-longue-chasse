@@ -1,0 +1,217 @@
+{
+  "schemaVersion": 1,
+  "targetId": "target-v81-74-315",
+  "label": "radiateur",
+  "attempt": 1,
+  "family": "INDUSTRIEL",
+  "tool": "image_gen.imagegen",
+  "parameters": {
+    "transparent_background": true,
+    "referenced_image_paths": "omitted for new original generation",
+    "num_last_images_to_include": "omitted"
+  },
+  "prompt": "ONE original native PNG game-object sprite for the Yautja homeworld fan game La Longue Chasse, not an official movie prop. Same coherent observed family as dark maintenance consoles and convoy workshop: charcoal porous basalt plus dark gunmetal, worn antique-bronze chamfered structural ribs, restrained angular geometric engraving, contained amber apertures, realistic detailed prerendered 2.5D surface with readable midtones, warm neutral light from top-left. Three-quarter isometric view looking down25-30degrees, front and right side visible. One connected complete object only, all edges and feet fully visible. Square native transparent canvas; keep the object SMALLER and comfortably centered, only central55percent of canvas, with huge fully empty transparent padding on every side. Preserve the tool's exact native canvas. Exact alpha0 outside its physical silhouette, including edges, no detached speckles, no haze or external bloom, no outside shadow, no ground plane, no painted backdrop/checkerboard, no labels/text/numbers/logos, no people, no scenery, no atlas/grid or repeated objects, no crop. One static native candidate, not a functioning or admitted asset. SUBJECT: an independent alien INDUSTRIAL RADIATOR/HEAT EXCHANGER. A low wide freestanding horizontal bank of clearly separated dark-metal cooling fins inside a rigid angular antique-bronze frame, with two thick armored end manifolds, a compact curved return pipe, four short chunky integral feet, and a small physical amber inspection port. The silhouette is a thin broad finned panel, not a generator core, control console, human house radiator, decorative gate or grille on a wall. The fin spacing must remain readable at game scale. Whole machine and piping connected, no steam, smoke, fire, fog or effect outside its silhouette.",
+  "nativeSourcePath": "/workspace/generated_images/exec-6393f89a-0517-456b-a88d-c4052a4af42e.png",
+  "candidatePath": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-74-315-radiateur-native.png",
+  "referencesOpened": [
+    "public/game/homeworld/v84/maintenance-console-right.png",
+    "public/game/homeworld/v75/architecture/convoy-workshop.png",
+    "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-74-310-generateur-native.png"
+  ],
+  "visualAssessment": {
+    "status": "ASSISTANT_NATIVE_VIEW_ONLY_NOT_HUMAN_APPROVAL",
+    "wholeSingleObject": true,
+    "visibleCroppedObject": false,
+    "duplicateGrid": false,
+    "materialCameraCoherent": true,
+    "functionReadable": true,
+    "notes": "One complete finned radiator with two manifolds and connected return pipe. Coherent bronze/basalt finish, readable silhouette and no clipped strong-alpha edge. No coolant simulation or admission inferred."
+  },
+  "lore": "LORE_COMPATIBLE_ORIGINAL",
+  "humanValidated": false,
+  "pixelsEdited": false,
+  "inspection": {
+    "targetId": "target-v81-74-315",
+    "attempt": 1,
+    "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-74-315-radiateur-native.png",
+    "nativeSourcePath": "/workspace/generated_images/exec-6393f89a-0517-456b-a88d-c4052a4af42e.png",
+    "bytes": 1210491,
+    "sha256": "4473276936bb5f85d9a65b83b80b03f71315859ed9f473fa5dd5fe625c6bf750",
+    "mode": "RGBA",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "transparentPixels": 1076897,
+    "alpha1or2Pixels": 12573,
+    "alpha1to8Pixels": 15901,
+    "thresholdMeasurements": {
+      "0": {
+        "bboxExclusive": [
+          0,
+          31,
+          1232,
+          1254
+        ],
+        "margins": [
+          0,
+          31,
+          22,
+          0
+        ],
+        "visiblePixels": 495619,
+        "edgeVisiblePixels": 77
+      },
+      "2": {
+        "bboxExclusive": [
+          120,
+          260,
+          1178,
+          1022
+        ],
+        "margins": [
+          120,
+          260,
+          76,
+          232
+        ],
+        "visiblePixels": 483046,
+        "edgeVisiblePixels": 0
+      },
+      "8": {
+        "bboxExclusive": [
+          122,
+          262,
+          1176,
+          1020
+        ],
+        "margins": [
+          122,
+          262,
+          78,
+          234
+        ],
+        "visiblePixels": 479718,
+        "edgeVisiblePixels": 0
+      }
+    },
+    "strict48pxAlphaGt0MarginPass": false,
+    "diagnostic48pxAlphaGt8MarginPass": true,
+    "diagnosticImageAnchor": {
+      "x": 648,
+      "y": 1019,
+      "status": "PROPOSED_BBOX_ANCHOR_NOT_RUNTIME_TESTED",
+      "rule": "Bottom-center alpha>8 enclosure. A wall-mounted object still needs an attachment pivot; this is not physical ground-contact proof."
+    },
+    "nativeByteExactCopy": true,
+    "pixelsEdited": false,
+    "runtimeIntegrated": false,
+    "humanValidated": false,
+    "status": "CANDIDAT_NON_ADMIS",
+    "limits": [
+      "All original canvas and pixels retained; no crop,resize,mirror,cleanup or compression.",
+      "Alpha thresholds2/8 are diagnostics and never replace the strict alpha>0 measurement.",
+      "Low alpha counts include antialiasing; border speckle and clipping need individual visual interpretation.",
+      "No in-game scale,collision,usage envelope,animation or artistic admission is established."
+    ]
+  },
+  "status": "CANDIDAT_NON_ADMIS",
+  "runtimeIntegrated": false,
+  "sourceClosureClaimed": false,
+  "sourceLocators": {
+    "catalogue": {
+      "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+      "jsonPointer": "/entries/314"
+    },
+    "v111Inventory": {
+      "path": "docs/v111-homeworld-art-inventory.json",
+      "jsonPointer": "/entries/314"
+    },
+    "activeV112Followup": {
+      "path": "docs/v112-homeworld-followup.json",
+      "jsonPointer": "/artTargets/314"
+    },
+    "brief": {
+      "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+      "section": 74,
+      "line": 2010
+    },
+    "workbookCells": [
+      {
+        "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+        "sheet": "CatalogueArtV111",
+        "part": "xl/worksheets/v111-sheet-110.xml",
+        "row": 319,
+        "idCell": {
+          "cell": "A319",
+          "value": "target-v81-74-315"
+        },
+        "labelCell": {
+          "cell": "D319",
+          "value": "radiateur"
+        },
+        "historicalPresenceCell": {
+          "cell": "G319",
+          "value": "MISSING"
+        },
+        "openArtCell": {
+          "cell": "F319",
+          "value": "NON_CLOTURE_ART"
+        }
+      },
+      {
+        "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+        "sheet": "CatalogueArtV112",
+        "part": "xl/worksheets/v112-sheet-119.xml",
+        "row": 319,
+        "idCell": {
+          "cell": "A319",
+          "value": "target-v81-74-315"
+        },
+        "labelCell": {
+          "cell": "C319",
+          "value": "radiateur"
+        },
+        "historicalPresenceCell": {
+          "cell": "D319",
+          "value": "MISSING"
+        },
+        "openArtCell": {
+          "cell": "E319",
+          "value": "NON_CLOTURE_ART"
+        }
+      }
+    ]
+  },
+  "sourceLocatorContext": "SNAPSHOT_HISTORIQUE: dated source audit 2026-11-02; historical V111/V112 cells are unchanged by this production.",
+  "requiredCriteriaIds": [
+    "COMMON-NATIVE",
+    "COMMON-IDENTITY",
+    "COMMON-SCALE",
+    "COMMON-CONTEXT"
+  ],
+  "targetSpecificLimits": [
+    "Static radiator candidate only; no heat/steam state or authored cooling cycle."
+  ],
+  "frame": {
+    "rect": [
+      0,
+      0,
+      1254,
+      1254
+    ],
+    "grid": [
+      1,
+      1
+    ],
+    "frameCount": 1,
+    "wholeNativeCanvasRetained": true
+  },
+  "referenceUse": "Previously opened real project PNGs informed the textual brief. No source image was supplied as conditioning and no source pixels were extracted.",
+  "retryUsed": false,
+  "retryDecision": "No retry: no actual clipping or repeated-object grid observed. Padding failures and faint alpha noise remain explicit, never cleaned or force-admitted."
+}

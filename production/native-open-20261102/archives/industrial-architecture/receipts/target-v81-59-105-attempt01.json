@@ -1,0 +1,221 @@
+{
+  "schemaVersion": 1,
+  "targetId": "target-v81-59-105",
+  "label": "hangar",
+  "attempt": 1,
+  "family": "ARCHITECTURE_LOGISTIQUE",
+  "tool": "image_gen.imagegen",
+  "parameters": {
+    "transparent_background": true,
+    "referenced_image_paths": "omitted for new original generation",
+    "num_last_images_to_include": "omitted"
+  },
+  "prompt": "Create ONE ORIGINAL independent architecture asset for an existing Yautja-inspired alien Homeworld city as a complete single object, not an atlas, no grid, no labels or letters, no watermark, no people, no ship, no separate props. Transparent background with alpha, absolutely no background scene or surrounding ground plane, no outer glow, vignette, haze or rectangular matte, no cast shadow outside the object. Camera: orthographic three-quarter front/right view, looking down roughly 25–30 degrees, restrained perspective. Rendered 3D game sprite, angular monumental but functional alien engineering, near-black porous basalt (#282725), dark gunmetal structural work (#353838), worn antique bronze edge bands (#9a7446), sparse warm amber lights recessed inside the structure (#ffab3b). Fine material texture, broad readable forms, warm top-left light and subdued neutral fill. Original alien geometric relief motifs only, no real-world writing or emblems. All parts in the same material family. Compose the ENTIRE silhouette SMALLER in the central roughly two thirds of the image, leaving very generous completely clean transparent margins all around (at least 140 pixels if the canvas is around 1254 square). The entire roof, rear wall, front entrance, footing and side buttresses must be inside frame, no cut edges. Create natively, do not paste or edit existing source parts. Subject: ONE complete low broad LOGISTICS HANGAR BUILDING. Wide uninterrupted open vehicle bay across the front, a substantial roof held by heavy connected side piers, full rear wall and side walls forming a deep volume, and an integral low foundation. Show the continuous dark EMPTY interior floor through the bay and structural roof depth from above so the building is visibly more than a flat facade. Distinct compact horizontal trapezoidal silhouette, reinforced basalt buttresses and ribbed bronze beams, restrained amber bay guide strips built into the jambs. One connected roof with vent ridges, no towering palace spires, no banner, crane, vehicle, person, cargo, workshop machinery or separate props. Avoid a big forecourt, landscape, cutaway diagram or several buildings. Full roof and foundation entirely visible. One static whole-building candidate with abundant transparent padding.",
+  "nativeSourcePath": "/workspace/generated_images/exec-d8c98ab3-c9a8-4cf1-bac9-3afdab9f1b7c.png",
+  "candidatePath": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-59-105-hangar-native.png",
+  "referencesOpened": [
+    "public/game/homeworld/v81/spaceport-gantry.png",
+    "public/game/homeworld/v76/architecture/dock-control.png",
+    "public/game/homeworld/v76/architecture/convoy-workshop.png"
+  ],
+  "referenceUse": "Previously opened real project PNGs informed the textual brief. No source image was supplied as conditioning and no source pixels were extracted.",
+  "visualAssessment": {
+    "status": "ASSISTANT_NATIVE_VIEW_ONLY_NOT_HUMAN_APPROVAL",
+    "openedNativeOutput": true,
+    "singleObjectNotGrid": true,
+    "fullStrongAlphaSilhouetteVisible": true,
+    "notes": [
+      "One broad low hangar building with connected roof, rear/side walls, open bay and empty interior floor; distinct from the smaller airlock.",
+      "Whole strong-alpha building visible, but left/right strong-alpha margins45/26px are below48px. The native canvas is kept unchanged; no retry for padding alone.",
+      "No ship, enterable rendered room, navigation, clearance, collision or occupancy claim."
+    ]
+  },
+  "lore": "LORE_COMPATIBLE_ORIGINAL",
+  "humanValidated": false,
+  "pixelsEdited": false,
+  "inspection": {
+    "targetId": "target-v81-59-105",
+    "attempt": 1,
+    "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-59-105-hangar-native.png",
+    "nativeSourcePath": "/workspace/generated_images/exec-d8c98ab3-c9a8-4cf1-bac9-3afdab9f1b7c.png",
+    "bytes": 1137036,
+    "sha256": "e572e40597d39c0a5bdb89b09e21302b7ab6cac5202bf882a3bf86cc902f88a3",
+    "mode": "RGBA",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "transparentPixels": 1125710,
+    "alpha1or2Pixels": 5975,
+    "alpha1to8Pixels": 8322,
+    "thresholdMeasurements": {
+      "0": {
+        "bboxExclusive": [
+          0,
+          52,
+          1240,
+          1254
+        ],
+        "margins": [
+          0,
+          52,
+          14,
+          0
+        ],
+        "visiblePixels": 446806,
+        "edgeVisiblePixels": 72
+      },
+      "2": {
+        "bboxExclusive": [
+          43,
+          362,
+          1230,
+          980
+        ],
+        "margins": [
+          43,
+          362,
+          24,
+          274
+        ],
+        "visiblePixels": 440831,
+        "edgeVisiblePixels": 0
+      },
+      "8": {
+        "bboxExclusive": [
+          45,
+          364,
+          1228,
+          978
+        ],
+        "margins": [
+          45,
+          364,
+          26,
+          276
+        ],
+        "visiblePixels": 438484,
+        "edgeVisiblePixels": 0
+      }
+    },
+    "strict48pxAlphaGt0MarginPass": false,
+    "diagnostic48pxAlphaGt8MarginPass": false,
+    "diagnosticImageAnchor": {
+      "x": 636,
+      "y": 977,
+      "status": "PROPOSED_BBOX_ANCHOR_NOT_RUNTIME_TESTED",
+      "rule": "Bottom-center alpha>8 enclosure. A wall-mounted object still needs an attachment pivot; this is not physical ground-contact proof."
+    },
+    "nativeByteExactCopy": true,
+    "pixelsEdited": false,
+    "runtimeIntegrated": false,
+    "humanValidated": false,
+    "status": "CANDIDAT_NON_ADMIS",
+    "limits": [
+      "All original canvas and pixels retained; no crop,resize,mirror,cleanup or compression.",
+      "Alpha thresholds2/8 are diagnostics and never replace the strict alpha>0 measurement.",
+      "Low alpha counts include antialiasing; border speckle and clipping need individual visual interpretation.",
+      "No in-game scale,collision,usage envelope,animation or artistic admission is established."
+    ]
+  },
+  "status": "CANDIDAT_NON_ADMIS",
+  "runtimeIntegrated": false,
+  "sourceClosureClaimed": false,
+  "sourceLocators": {
+    "catalogue": {
+      "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+      "jsonPointer": "/entries/104"
+    },
+    "v111Inventory": {
+      "path": "docs/v111-homeworld-art-inventory.json",
+      "jsonPointer": "/entries/104"
+    },
+    "activeV112Followup": {
+      "path": "docs/v112-homeworld-followup.json",
+      "jsonPointer": "/artTargets/104"
+    },
+    "brief": {
+      "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+      "section": 59,
+      "line": 1716
+    },
+    "workbookCells": [
+      {
+        "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+        "sheet": "CatalogueArtV111",
+        "part": "xl/worksheets/v111-sheet-110.xml",
+        "row": 109,
+        "idCell": {
+          "cell": "A109",
+          "value": "target-v81-59-105"
+        },
+        "labelCell": {
+          "cell": "D109",
+          "value": "hangar"
+        },
+        "historicalPresenceCell": {
+          "cell": "G109",
+          "value": "MISSING"
+        },
+        "openArtCell": {
+          "cell": "F109",
+          "value": "NON_CLOTURE_ART"
+        }
+      },
+      {
+        "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+        "sheet": "CatalogueArtV112",
+        "part": "xl/worksheets/v112-sheet-119.xml",
+        "row": 109,
+        "idCell": {
+          "cell": "A109",
+          "value": "target-v81-59-105"
+        },
+        "labelCell": {
+          "cell": "C109",
+          "value": "hangar"
+        },
+        "historicalPresenceCell": {
+          "cell": "D109",
+          "value": "MISSING"
+        },
+        "openArtCell": {
+          "cell": "E109",
+          "value": "NON_CLOTURE_ART"
+        }
+      }
+    ]
+  },
+  "sourceLocatorContext": "SNAPSHOT_HISTORIQUE: dated source audit 2026-11-02; historical V111/V112 cells are unchanged by this production.",
+  "requiredCriteriaIds": [
+    "COMMON-NATIVE",
+    "COMMON-IDENTITY",
+    "COMMON-SCALE",
+    "COMMON-CONTEXT",
+    "ARCHITECTURE-ACCESS"
+  ],
+  "targetSpecificLimits": [
+    "One complete empty hangar building candidate only; dark interior pixels do not establish an enterable room or gameplay.",
+    "Strong-alpha side margins45/26px fail the48px diagnostic."
+  ],
+  "frame": {
+    "rect": [
+      0,
+      0,
+      1254,
+      1254
+    ],
+    "grid": [
+      1,
+      1
+    ],
+    "frameCount": 1,
+    "wholeNativeCanvasRetained": true
+  },
+  "retryUsed": false,
+  "retryDecision": "No retry: no actual clipping or repeated-object grid observed. Padding failures and faint alpha noise remain explicit, never cleaned or force-admitted."
+}

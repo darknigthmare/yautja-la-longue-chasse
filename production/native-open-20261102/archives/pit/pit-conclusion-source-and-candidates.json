@@ -1,0 +1,562 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-02",
+  "task": "Missing synchronized conclusion partner, source preparation and native victim candidates only",
+  "targetId": "CIN_F003_FATALITE_1",
+  "label": "La pointe et le silence",
+  "sourceSpriteId": "F003_CIN_FATALITE_1",
+  "sourceCell": "07_PRESENTATIONS!H7",
+  "relatedCampaignCells": [
+    {
+      "cell": "08_CAMPAGNES!E7",
+      "opponentId": "npc-xeno-drone",
+      "scope": "First proposed Scar campaign opposition, incarnation still to fix; not a current Pit fighter admission."
+    },
+    {
+      "cell": "08_CAMPAGNES!I7",
+      "opponentId": "npc-xeno-drone",
+      "scope": "Special-stage encounter, not an automatic conclusion victim qualification."
+    }
+  ],
+  "sourceText": "CIN_F003_FATALITE_1 · La pointe et le silence\nIl fixe un xénomorphe avec la lance puis tranche au shuriken ; la géométrie et les éclaboussures acides utilisent le module de victime xéno.\nDéclenchement : Seulement après victoire finale, contre une menace hostile adulte ; interdite en entraînement, entre alliés ou sur un civil désarmé.\n0–1 s : intention lisible ; 1–3 s : geste ; 3–5 s : pose de sortie. Taunt cible 0,8–1,2 s. Durées proposées.\nSprite : F003_CIN_FATALITE_1 · objets : E_F003_shuriken ; E_F003_plasma\nLore : Ne pas anticiper la marque au début du récit ; alliance avec Lex, fin alternative signalée.\nAdaptation / embranchement alternatif",
+  "originalV54Workbook": {
+    "pathAsDeclared": "THE_PIT_BIBLE_COMBATTANTS_STAGES_V54.xlsx",
+    "sha256AsDeclared": "32f2ee8e4fd801e7ca677a54862f2bd0123a2e78d12c015f64b50ab28184c380",
+    "physicallyAvailable": false,
+    "exactCellsReadFrom": "docs/v56-excel-priorities.json and unchanged action plan, not a recovered private workbook"
+  },
+  "currentTrackingCells": {
+    "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+    "sheet": "ManquantsSourceV112",
+    "idCell": "A29",
+    "sourceCell": "C29",
+    "statusCells": [
+      "D29",
+      "E29"
+    ],
+    "values": [
+      "CIN_F003_FATALITE_1",
+      "07_PRESENTATIONS!H7",
+      "OUVERT_SOURCE",
+      "OUVERT_SOURCE"
+    ]
+  },
+  "nineOpenSourceActions": [
+    {
+      "id": "M_F006_TH_F",
+      "source": "05_MOVES_PROPOSES!M10",
+      "statusV112": "OUVERT_SOURCE"
+    },
+    {
+      "id": "M_F006_TH_B",
+      "source": "05_MOVES_PROPOSES!N10",
+      "statusV112": "OUVERT_SOURCE"
+    },
+    {
+      "id": "CIN_F006_FATALITE_1",
+      "source": "07_PRESENTATIONS!H10",
+      "statusV112": "OUVERT_SOURCE"
+    },
+    {
+      "id": "CIN_F006_FATALITE_2",
+      "source": "07_PRESENTATIONS!I10",
+      "statusV112": "OUVERT_SOURCE"
+    },
+    {
+      "id": "CIN_F006_CLEMENCE",
+      "source": "07_PRESENTATIONS!J10",
+      "statusV112": "OUVERT_SOURCE"
+    },
+    {
+      "id": "M_F003_TH_F",
+      "source": "05_MOVES_PROPOSES!M7",
+      "statusV112": "OUVERT_SOURCE"
+    },
+    {
+      "id": "M_F003_TH_B",
+      "source": "05_MOVES_PROPOSES!N7",
+      "statusV112": "OUVERT_SOURCE"
+    },
+    {
+      "id": "CIN_F003_FATALITE_1",
+      "source": "07_PRESENTATIONS!H7",
+      "statusV112": "OUVERT_SOURCE"
+    },
+    {
+      "id": "CIN_F003_CLEMENCE",
+      "source": "07_PRESENTATIONS!J7",
+      "statusV112": "OUVERT_SOURCE"
+    }
+  ],
+  "existingBodyDoNotRedraw": {
+    "fighterId": "scar",
+    "appearanceId": "runtime-default",
+    "atlasId": "scar-special-fatalite-1-body-v100",
+    "historicalReview": {
+      "status": "validated",
+      "scope": "Native BODY artwork, source action choreography, alpha separation and manually reviewed foot pivots; not confirmation of combat mechanics.",
+      "sourceSha256": "a6b55fb4c86bb25d458aaced51ddddd9d309dcf5b9908e9cde7dd797ee81c8a6",
+      "notes": "Six independently articulated drawings for each facing, with preparation, equipment action and recovery. Feet and complete weapon tips visually inspected; all six source cells per orientation have clear alpha gutters and zero visible border pixels. One fixed body reference per native page, no per-pose fitting. Horizontal pivots manually reviewed between actual supporting feet; vertical candidates reviewed as feet, not weapon tips. Original PNG copied byte-identically. No mirror, rigging, crop rewrite, chroma cleanup or pixel editing. BODY-only visual sequence: source mechanical phases and inventory/duel synchronization remain separate. Real pin, retrieve closedshuriken, unfold, cut, withdraw/retract and exit; ONEshuriken only. Hip belt is empty after retrieval while opened weapon is held, without inventing a second device or holster lore. Xenomorph, acid and contact geometry are external scene dependencies; no partner is painted and no duel execution synchronized. Fixed per-page body references exclude spear/star extents. Two independent pages preserve six real stages per direction; every admitted PNG remains byte-identical to imagegen output. Independent engine and QA source/anatomy review approved as BODY study only; fixed mask-to-soles references per native page, public copies byte-identical and SHA-verified.",
+      "sourceHashes": {
+        "/game/sprites/v100/pit/scar/scar-special-fatalite-1-right.png": "a6b55fb4c86bb25d458aaced51ddddd9d309dcf5b9908e9cde7dd797ee81c8a6",
+        "/game/sprites/v100/pit/scar/scar-special-fatalite-1-left.png": "671cdac6459e42ba0ce9999bce87350b2bd284eeb154c63234498758b9fcf2ff"
+      }
+    },
+    "sourceDefinition": {
+      "fighterId": "scar",
+      "bodyHeightPx": 265,
+      "atlas": {
+        "schemaVersion": 1,
+        "id": "scar-special-fatalite-1-body-v100",
+        "characterId": "scar",
+        "variantId": "body-default-v100",
+        "sourceKind": "authored-frames",
+        "status": "validated",
+        "pages": [
+          {
+            "id": "scar-special-fatalite-1-right-page-01",
+            "src": "/game/sprites/v100/pit/scar/scar-special-fatalite-1-right.png",
+            "width": 1536,
+            "height": 1024,
+            "status": "validated",
+            "transparency": {
+              "mode": "alpha",
+              "noiseFloor": 2
+            }
+          },
+          {
+            "id": "scar-special-fatalite-1-left-page-01",
+            "src": "/game/sprites/v100/pit/scar/scar-special-fatalite-1-left.png",
+            "width": 1536,
+            "height": 1024,
+            "status": "validated",
+            "transparency": {
+              "mode": "alpha",
+              "noiseFloor": 2
+            }
+          }
+        ],
+        "clips": [
+          {
+            "id": "workbook.CIN_F003_FATALITE_1",
+            "facing": "right",
+            "status": "validated",
+            "loop": false,
+            "ticksPerSecond": 60,
+            "frames": [
+              {
+                "pageId": "scar-special-fatalite-1-right-page-01",
+                "rect": [
+                  0,
+                  0,
+                  793,
+                  352
+                ],
+                "pivot": [
+                  327,
+                  330
+                ],
+                "durationTicks": 30
+              },
+              {
+                "pageId": "scar-special-fatalite-1-right-page-01",
+                "rect": [
+                  792,
+                  0,
+                  744,
+                  352
+                ],
+                "pivot": [
+                  278,
+                  334
+                ],
+                "durationTicks": 30
+              },
+              {
+                "pageId": "scar-special-fatalite-1-right-page-01",
+                "rect": [
+                  0,
+                  351,
+                  793,
+                  317
+                ],
+                "pivot": [
+                  322,
+                  297
+                ],
+                "durationTicks": 60
+              },
+              {
+                "pageId": "scar-special-fatalite-1-right-page-01",
+                "rect": [
+                  792,
+                  351,
+                  744,
+                  317
+                ],
+                "pivot": [
+                  285,
+                  299
+                ],
+                "durationTicks": 60
+              },
+              {
+                "pageId": "scar-special-fatalite-1-right-page-01",
+                "rect": [
+                  0,
+                  667,
+                  852,
+                  357
+                ],
+                "pivot": [
+                  321,
+                  298
+                ],
+                "durationTicks": 60
+              },
+              {
+                "pageId": "scar-special-fatalite-1-right-page-01",
+                "rect": [
+                  851,
+                  667,
+                  685,
+                  357
+                ],
+                "pivot": [
+                  287,
+                  298
+                ],
+                "durationTicks": 60
+              }
+            ]
+          },
+          {
+            "id": "workbook.CIN_F003_FATALITE_1",
+            "facing": "left",
+            "status": "validated",
+            "loop": false,
+            "ticksPerSecond": 60,
+            "frames": [
+              {
+                "pageId": "scar-special-fatalite-1-left-page-01",
+                "rect": [
+                  0,
+                  0,
+                  710,
+                  346
+                ],
+                "pivot": [
+                  458,
+                  328
+                ],
+                "durationTicks": 30
+              },
+              {
+                "pageId": "scar-special-fatalite-1-left-page-01",
+                "rect": [
+                  709,
+                  0,
+                  827,
+                  346
+                ],
+                "pivot": [
+                  504,
+                  328
+                ],
+                "durationTicks": 30
+              },
+              {
+                "pageId": "scar-special-fatalite-1-left-page-01",
+                "rect": [
+                  0,
+                  345,
+                  742,
+                  329
+                ],
+                "pivot": [
+                  469,
+                  325
+                ],
+                "durationTicks": 60
+              },
+              {
+                "pageId": "scar-special-fatalite-1-left-page-01",
+                "rect": [
+                  741,
+                  345,
+                  795,
+                  329
+                ],
+                "pivot": [
+                  483,
+                  326
+                ],
+                "durationTicks": 60
+              },
+              {
+                "pageId": "scar-special-fatalite-1-left-page-01",
+                "rect": [
+                  0,
+                  673,
+                  851,
+                  351
+                ],
+                "pivot": [
+                  480,
+                  319
+                ],
+                "durationTicks": 60
+              },
+              {
+                "pageId": "scar-special-fatalite-1-left-page-01",
+                "rect": [
+                  850,
+                  673,
+                  686,
+                  351
+                ],
+                "pivot": [
+                  325,
+                  325
+                ],
+                "durationTicks": 60
+              }
+            ]
+          }
+        ]
+      },
+      "pageBodyHeightPx": {
+        "scar-special-fatalite-1-right-page-01": 265,
+        "scar-special-fatalite-1-left-page-01": 296
+      }
+    },
+    "historicalBodyHeightPerPage": {
+      "scar-special-fatalite-1-right-page-01": 265,
+      "scar-special-fatalite-1-left-page-01": 296
+    },
+    "runtimeScarBodyHeightWorld": 118,
+    "renderScaleRule": "bodyHeightWorld / fixed pageBodyHeightPx; one positive uniform factor per page, native rect/pivot, no per-pose fit or mirror.",
+    "actualVisualFinding": "Both original Scar pages were opened: six standalone Scar poses per direction, spear and shuriken action, no Xenomorph painted in any cell.",
+    "historicalScopeWarning": "pitWorkbookScopeV105.nativeAdmission.partnerComposite=true and generic viewer partner-study wording are historical/category descriptors. They do not contradict the current opened BODY-only PNGs or justify redrawing them."
+  },
+  "genuineMissingScope": {
+    "missing": "Independent specific Xenomorph victim pin/recoil/release reaction and its admitted synchronized scene/entity/contact geometry for H7, including any acid effect as a separate module.",
+    "notGloballyAbsent": "Generic Xenomorph hunt sprites V7/V8 already exist with six locomotion/attack/hit/death drawings; do not call all Xenomorph artwork missing.",
+    "futurePartnerSourceId": "npc-xeno-drone",
+    "runtimePitFighterExists": false,
+    "identityScope": "Generic drone adaptation only; no assignment to Grid, no claim of exact film incarnation or canonical event.",
+    "newArtLocalCandidateIds": [
+      "candidate-scar-fatalite-1-xeno-victim-right",
+      "candidate-scar-fatalite-1-xeno-victim-left"
+    ],
+    "candidateIdsAreOriginalLocalNotExcelEntityIds": true
+  },
+  "activationToday": {
+    "controllerKeys": [
+      "FATALITE_2",
+      "CLEMENCE"
+    ],
+    "registrySource": "app/game/pitWorkbookRegistryV107.ts:7",
+    "H7BodyCanBeStudiedInViewer": true,
+    "H7CanRunInCurrentConclusionController": false,
+    "actualPartnerResolver": "app/game/pitWorkbookConclusionRenderingV107.ts:66 accepts only feral-hunter with no variant.",
+    "actualPublicObjective": "app/game/pitWorkbookObjectiveSessionV107.ts:5 accepts only Scar/Feral defaults, CPU/local; no Xeno substitution.",
+    "eligibility": "Scar final victory with>=2rounds, winner alive, victimHP0, realKO; lethal hostile-adult context, no training/ally/civil/replay/narrative/reduced-gore and required equipment. This existing FATALITE_2 context does not automatically authorize H7.",
+    "disarmRegistry": "PIT_WORKBOOK_CONCLUSION_DISARM_ADMISSIONS_V107 remains empty; removing the inert objective device is not an admitted offensive disarm.",
+    "noRulesChanged": true,
+    "noNewNpcActivated": true
+  },
+  "nativeProduction": {
+    "tool": "image_gen.imagegen",
+    "generations": 3,
+    "retainedCandidatePages": 2,
+    "reactionDrawingsInRetainedPages": 12,
+    "rejectedPages": 1,
+    "rejectedReactionDrawings": 6,
+    "originalBytesPreserved": true,
+    "pixelEdits": false,
+    "ScarBodyRedrawn": false,
+    "humanValidated": false,
+    "gameplayIntegrated": false,
+    "selected": [
+      "/workspace/native-pit-production-20261102/scar-fatalite-1-xeno-victim-right-native.png",
+      "/workspace/native-pit-production-20261102/scar-fatalite-1-xeno-victim-left-native-attempt02.png"
+    ],
+    "rejected": [
+      "/workspace/native-pit-production-20261102/scar-fatalite-1-xeno-victim-left-native.png"
+    ],
+    "receipts": "/workspace/native-pit-production-20261102/generation-receipts.json",
+    "technicalInspection": "/workspace/native-pit-production-20261102/native-technical-inspection.json",
+    "actualGrid": [
+      3,
+      2,
+      512,
+      512
+    ],
+    "actualDimensions": [
+      1536,
+      1024
+    ],
+    "actualAlphaRange": [
+      0,
+      254
+    ],
+    "strictRequested32pxAlpha0GuttersPassed": false,
+    "selectedPagesAlphaGt2BoundaryPixels": 0,
+    "selectionReason": "Right and replacement-left show whole independent creatures, six distinct physical reactions each, no painted attacker/weapon or acid. First left has visible boundary contact in two cells and remains rejected. Retained pages still fail strict gutters; no noise-floor or alpha correction applied."
+  },
+  "proposedFrameContract": {
+    "sourceBodyTicksPerSecond": 60,
+    "sourceBodyLoop": false,
+    "totalTicks": 300,
+    "bodyFrameDurationTicks": [
+      30,
+      30,
+      60,
+      60,
+      60,
+      60
+    ],
+    "candidateVictimPoseOrder": [
+      "injured-upright",
+      "pin-contact-recoil",
+      "braced-held",
+      "shoulder-twist",
+      "cut-contact-recoil",
+      "collapse-release"
+    ],
+    "timelineScope": "Candidate adaptation to existing6BODY phases, not newly inferred Excel frame counts for an absent entity. Do not activate until physical contact/timing and partner admission are qualified.",
+    "sourceRectRule": "Whole native512x512cells at [(0,0),(512,0),(1024,0),(0,512),(512,512),(1024,512)], unedited source atlas.",
+    "pivotRule": "Actual per-cell support proposals and one fixed page body reference in native-technical-inspection.json are diagnostics, not admission. Do not force requested pivots or rescale each pose.",
+    "healthRule": "Victim stays the actual losing actor withHP0; a sidecar native reaction must not invent health or replace a different opponent.",
+    "facingRule": "Native independent right/left pages. Victim faces winner; choose opposite of Scar facing, never mirror a page.",
+    "acidScope": "No acid PNG was generated. Acid contact/effect entity remains separate and unqualified."
+  },
+  "qualificationRequiredBeforeRuntimeAdmission": [
+    "Review exact full creature identity, anatomy, complete dome/claws/feet/tail, per-cell alpha and truly empty native gutters. Both selected pages currently fail strict32px alpha>0 margins.",
+    "Measure actual contact anchors for H7 spear pin, held victim and shuriken contact directly on existing BODY pixels and new victim, using fixed body references. Current FATALITE_2 geometry cannot be relabeled H7.",
+    "Admit a real independent Xenomorph partner/entity and required interaction contract separately; keep all current non-admitted partners and outfits disabled. No arbitrary Feral victim substitution.",
+    "Implement a versioned H7 scene/eligibility only after those admissions, then prove actual finalKO trigger and victimidentity, supported contacts, owned equipment, acid object if delivered, zero-health reaction, skip/pause/reduced-motion/reduced-gore/failure fallback, no reward/inventory invention.",
+    "Qualify both native orientations and allowed/blocked outcomes on the exact compiled runtime, with full original captures opened and exact source hashes; keep snapshots/replays/training and frozen V113130 history unchanged."
+  ],
+  "sourcePins": [
+    {
+      "path": "app/game/systems/pitWorkbookConclusionsV107.ts",
+      "bytes": 29094,
+      "sha256": "d0d31130aa1ee72b48cb902d539233a91eab0d8c7de91ab46578be4cf6a95782"
+    },
+    {
+      "path": "app/game/systems/pitWorkbookConclusionSourceV107.ts",
+      "bytes": 2567,
+      "sha256": "88d408c77ddb1441cc475322260654bbc24dc4524f69d85c34652747ed30b804"
+    },
+    {
+      "path": "app/game/pitWorkbookRegistryV107.ts",
+      "bytes": 5178,
+      "sha256": "f6bd8c1bda925cc24d6f45d254be77db49bca62090d207a3259b75ad15dae6f5"
+    },
+    {
+      "path": "app/game/pitWorkbookConclusionRenderingV107.ts",
+      "bytes": 10417,
+      "sha256": "af9ff71bf5d3cbfeaf50ee91cd11e2912f159f53774b2884e52c6ab49a8e7620"
+    },
+    {
+      "path": "app/game/pitWorkbookObjectiveSessionV107.ts",
+      "bytes": 1654,
+      "sha256": "425ee4e0c6e6298daae9238c9ad370701c29d652985433b0724e08be342912d3"
+    },
+    {
+      "path": "app/game/data/pitWorkbookConclusionAnchorsV107.json",
+      "bytes": 13609,
+      "sha256": "1a81fdfc6d91531591d5ba85b47aa001a5761b7a8a4bf560711dddefcb4b10ce"
+    },
+    {
+      "path": "app/game/data/pitWorkbookAnimationsV100.json",
+      "bytes": 476546,
+      "sha256": "5de70a8a5a08ac1c2bbe56f11fddfac52b6285cde4e606970141e74b8cc21956"
+    },
+    {
+      "path": "app/game/data/pitWorkbookAnimationPlanV100.json",
+      "bytes": 56186,
+      "sha256": "e320476807a1e5c36bb82202d243761097497e48b4d893884a8771bbf01f3141"
+    },
+    {
+      "path": "app/game/data/pitWorkbookScopeV105.json",
+      "bytes": 117299,
+      "sha256": "83a9dfac30079c3e3c3553e929469425b33c8ea9dfa91e0580b33ffa5f3543bd"
+    },
+    {
+      "path": "app/game/systems/pitCombat.ts",
+      "bytes": 170110,
+      "sha256": "865885aa6dfeaef9de5cceadc9b607932938b138bdf99ca0bcd664803c73b9e9"
+    },
+    {
+      "path": "docs/v56-excel-priorities.json",
+      "bytes": 776044,
+      "sha256": "fc8e1c6c81de62d8966e04746ed0751b0eeefc62f0458728c818896ad79972f4"
+    },
+    {
+      "path": "docs/v112-homeworld-followup.json",
+      "bytes": 1070467,
+      "sha256": "21ba550dfe6b65dfc77aceb343630ee0f0a92944215c7a6eaa913f968c452ebd"
+    }
+  ],
+  "openedReferencePngs": [
+    {
+      "path": "public/game/sprites/v100/pit/scar/scar-special-fatalite-1-right.png",
+      "bytes": 1774259,
+      "sha256": "a6b55fb4c86bb25d458aaced51ddddd9d309dcf5b9908e9cde7dd797ee81c8a6",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "openedActualPng": true,
+      "scope": "Existing Scar BODY or generic hunt fauna reference; no new artistic validation inferred."
+    },
+    {
+      "path": "public/game/sprites/v100/pit/scar/scar-special-fatalite-1-left.png",
+      "bytes": 1940063,
+      "sha256": "671cdac6459e42ba0ce9999bce87350b2bd284eeb154c63234498758b9fcf2ff",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "openedActualPng": true,
+      "scope": "Existing Scar BODY or generic hunt fauna reference; no new artistic validation inferred."
+    },
+    {
+      "path": "public/game/sprites/v7/enemies/flora-other/xeno-drone-sheet.png",
+      "bytes": 217751,
+      "sha256": "5c8c72333dd0eead9721e90d1024f96cfc0e33aaec30ff10d2b09cb94d6dd9f9",
+      "dimensions": [
+        1536,
+        192
+      ],
+      "mode": "RGBA",
+      "openedActualPng": true,
+      "scope": "Existing Scar BODY or generic hunt fauna reference; no new artistic validation inferred."
+    },
+    {
+      "path": "public/game/sprites/v8/ecology/common/wandering-xeno-drone-sheet.png",
+      "bytes": 246865,
+      "sha256": "6e2998625c3065eda68f18deb0335a502017cfe2461efa15118a51cf71d90861",
+      "dimensions": [
+        1536,
+        192
+      ],
+      "mode": "RGBA",
+      "openedActualPng": true,
+      "scope": "Existing Scar BODY or generic hunt fauna reference; no new artistic validation inferred."
+    }
+  ],
+  "preservation": {
+    "gitUsed": false,
+    "repositoryAppOrRulesChanged": false,
+    "V113130FrozenProductChanged": false,
+    "initialV113WorkbookChanged": false,
+    "sourceCompletion": false,
+    "humanArtisticAdmission": false
+  }
+}

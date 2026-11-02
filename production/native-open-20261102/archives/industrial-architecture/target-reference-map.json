@@ -1,0 +1,2944 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-02",
+  "repository": "/workspace/yautja-la-longue-chasse",
+  "purpose": "Read-only reference preparation for exactly17 Homeworld art targets. No image generation, repository edit, Git, workbook update or source closure.",
+  "authorizedOutputDirectory": "/workspace/native-homeworld-open-20261102/industrial-architecture",
+  "targetCount": 17,
+  "targetIds": [
+    "target-v81-55-26",
+    "target-v81-55-42",
+    "target-v81-55-43",
+    "target-v81-56-56",
+    "target-v81-59-105",
+    "target-v81-65-175",
+    "target-v81-66-192",
+    "target-v81-68-236",
+    "target-v81-73-295",
+    "target-v81-73-301",
+    "target-v81-73-308",
+    "target-v81-74-310",
+    "target-v81-74-311",
+    "target-v81-74-315",
+    "target-v81-74-316",
+    "target-v81-74-319",
+    "target-v81-76-354"
+  ],
+  "requestedProvenance": "LORE_COMPATIBLE_ORIGINAL",
+  "candidateStatusPolicy": "Native existing presence, generation, decode, hashes, technical checks or assistant inspection never grant human artistic validation or source admission.",
+  "sourcePins": [
+    {
+      "path": "/workspace/open-workstreams-production-20261102/art-gap-manifest.json",
+      "absolutePath": "/workspace/open-workstreams-production-20261102/art-gap-manifest.json",
+      "bytes": 185798,
+      "sha256": "265dab986d1b6962da57edc583778a94c25344f7bbaec1baefd71a0248aecc3d"
+    },
+    {
+      "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+      "absolutePath": "/workspace/yautja-la-longue-chasse/app/game/data/homeworldAssetCatalogueTargetV81.json",
+      "bytes": 61893,
+      "sha256": "9f3fe5bb48ae4bbc7284006c15b17788e721f67822db3893fd1e142efc294e24"
+    },
+    {
+      "path": "app/game/systems/homeworldAssetCatalogueV81.ts",
+      "absolutePath": "/workspace/yautja-la-longue-chasse/app/game/systems/homeworldAssetCatalogueV81.ts",
+      "bytes": 8182,
+      "sha256": "72d0a350e00393464b574189e8bbb87baf198f7940afd89d4421e021e916c70e"
+    },
+    {
+      "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+      "absolutePath": "/workspace/yautja-la-longue-chasse/docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+      "bytes": 59973,
+      "sha256": "ea50cc8eb6f7446dfb82811b548884cc6e363c64a4af131fea4f125a3d513159"
+    },
+    {
+      "path": "app/game/HomeworldNativePropV64.tsx",
+      "absolutePath": "/workspace/yautja-la-longue-chasse/app/game/HomeworldNativePropV64.tsx",
+      "bytes": 1806,
+      "sha256": "8df29c0a8e09f2493369944278c0ae5c538840b7971bd6a6883ff8cb4cd36d6c"
+    },
+    {
+      "path": "docs/v111-homeworld-art-inventory.json",
+      "absolutePath": "/workspace/yautja-la-longue-chasse/docs/v111-homeworld-art-inventory.json",
+      "bytes": 1891891,
+      "sha256": "bd12952381d4bd01a5c35bec27d88c2478987a56922b7149e8b4f509e893039b"
+    },
+    {
+      "path": "docs/v112-homeworld-followup.json",
+      "absolutePath": "/workspace/yautja-la-longue-chasse/docs/v112-homeworld-followup.json",
+      "bytes": 1070467,
+      "sha256": "21ba550dfe6b65dfc77aceb343630ee0f0a92944215c7a6eaa913f968c452ebd"
+    },
+    {
+      "path": "app/game/data/homeworldCityGeneratedProvenanceV78.json",
+      "absolutePath": "/workspace/yautja-la-longue-chasse/app/game/data/homeworldCityGeneratedProvenanceV78.json",
+      "bytes": 65859,
+      "sha256": "f6914e3c6cc4504f2c2570daedbd24bfeb5ea3f18d3978610cbfccafd941c925"
+    },
+    {
+      "path": "app/game/data/pitStageLifeV60.json",
+      "absolutePath": "/workspace/yautja-la-longue-chasse/app/game/data/pitStageLifeV60.json",
+      "bytes": 214597,
+      "sha256": "0a58cc62847116a3304efaba4434bea6921ab259962e1ee7b6a2a513d271321a"
+    },
+    {
+      "path": "docs/v60-generation/arena-166-forge-cyborg.json",
+      "absolutePath": "/workspace/yautja-la-longue-chasse/docs/v60-generation/arena-166-forge-cyborg.json",
+      "bytes": 19506,
+      "sha256": "0f4726677d180543e99ed3a97f646fb6fe0ea939b2fcc49406c8e267f367e2bc"
+    },
+    {
+      "path": "app/game/ecologyV8.ts",
+      "absolutePath": "/workspace/yautja-la-longue-chasse/app/game/ecologyV8.ts",
+      "bytes": 45583,
+      "sha256": "010b4a5bf56c688689f7e70f1ddb8cd5b91f0ad16069d4fa87f09291fcc24ebf"
+    },
+    {
+      "path": "AGENTS.md",
+      "absolutePath": "/workspace/yautja-la-longue-chasse/AGENTS.md",
+      "bytes": 2097,
+      "sha256": "89b5ba672bb61d19769bd227777e4964f4bf904e803b314b567d44002b1aecb5"
+    },
+    {
+      "path": "docs/GAMEDEV_AGENT_GUIDE.md",
+      "absolutePath": "/workspace/yautja-la-longue-chasse/docs/GAMEDEV_AGENT_GUIDE.md",
+      "bytes": 18467,
+      "sha256": "a25fc2a1c65366428bc02d629a82e5bf56e24bf7c33958a8a70c1c5e83bb3c0f"
+    },
+    {
+      "path": "app/game/data/homeworldCityGenerationSpecsV78.json",
+      "absolutePath": "/workspace/yautja-la-longue-chasse/app/game/data/homeworldCityGenerationSpecsV78.json",
+      "bytes": 13014,
+      "sha256": "8b532fb8111675e41922ccb1342ed0f2f8823c3c974b06ca005ee8f39bc8b694"
+    },
+    {
+      "path": "docs/homeworld-native-prompts-v83.json",
+      "absolutePath": "/workspace/yautja-la-longue-chasse/docs/homeworld-native-prompts-v83.json",
+      "bytes": 15756,
+      "sha256": "b76a6fd5e128355181802e16361aac63c462f4eb83b113dfb0f558fb81e1f930"
+    },
+    {
+      "path": "docs/homeworld-native-prompts-v84.json",
+      "absolutePath": "/workspace/yautja-la-longue-chasse/docs/homeworld-native-prompts-v84.json",
+      "bytes": 7989,
+      "sha256": "f8f17884df5eff27bea4d793d391c5158695763d18b08ca38f7e488120cb4793"
+    }
+  ],
+  "sourceSemantics": {
+    "historicalMissing": "V111 MISSING is a conservative family-matcher absence in its Homeworld inventory, not proof every matching noun has no file anywhere in the repository.",
+    "currentScope": "All17 exact IDs/labels/lore compared to V81 catalogue and V112 artTargets. Dedicated filename alias searches scoped to public/game/homeworld; Homeworld source/registry noun searches and selected cross-domain Pit/trophy searches also read. No exhaustive visual census of all unlabeled atlases claimed.",
+    "matcherSource": "app/game/systems/homeworldAssetCatalogueV81.ts:6–8,12–23,48–65",
+    "missingConcreteFiles": [],
+    "existingLiftTargetsExplicitlyExcluded": [
+      "target-v81-55-40",
+      "target-v81-55-41"
+    ],
+    "outsideDomainExistingCandidates": 3,
+    "mandatoryPreGenerationReview": "Pump Pit life-03 is a real native candidate; inspect before producing target-v81-74-316. Trophy reward hook also exists and must not be erased from presence semantics."
+  },
+  "commonAdmissionCriteria": [
+    {
+      "id": "COMMON-NATIVE",
+      "requirement": "Original independent native PNG/atlas cell, silhouette whole, positive uniform scale, explicit native rectangle/dimensions/pivot, actual alpha and occupied bounds including all margins and edge pixels; do not manufacture missing function by extracting a painted detail. Preserve original bytes and SHA256/provenance.",
+      "sources": [
+        "docs/GAMEDEV_AGENT_GUIDE.md#Sprites, PNJ et fidélité visuelle",
+        "app/game/HomeworldNativePropV64.tsx",
+        "docs/specifications/homeworld-v81/mission-grammaire-original.txt:2640"
+      ]
+    },
+    {
+      "id": "COMMON-IDENTITY",
+      "requirement": "Keep exact target ID, role/function, provenance category and candidate status. Existing presence, decode, tests or an assistant inspection never grant human artistic validated status. This audit closes no catalogue entry.",
+      "sources": [
+        "app/game/hunterSpriteAtlas.ts:1",
+        "docs/v111-homeworld-art.md",
+        "docs/specifications/homeworld-v81/mission-grammaire-original.txt:2069"
+      ]
+    },
+    {
+      "id": "COMMON-SCALE",
+      "requirement": "Prop isolation screenshot with a real reference Yautja; inspect silhouette, scale, pivot, alpha, orientation and physical ground support. World dimensions are separate from bitmap dimensions and collision footprint.",
+      "sources": [
+        "docs/specifications/homeworld-v81/mission-grammaire-original.txt:1536",
+        "docs/specifications/homeworld-v81/mission-grammaire-original.txt:2640",
+        "app/game/HomeworldNativePropV64.tsx"
+      ]
+    },
+    {
+      "id": "COMMON-CONTEXT",
+      "requirement": "Inspect in actual district with wide/medium/near screenshots; verify free approach, usage and exit space, depth and ground support. Common props need visual diversity ideally4–8 native variants. A candidate image does not prove integration/gameplay completion.",
+      "sources": [
+        "docs/specifications/homeworld-v81/mission-grammaire-original.txt:2080",
+        "docs/specifications/homeworld-v81/mission-grammaire-original.txt:2604",
+        "docs/specifications/homeworld-v81/mission-grammaire-original.txt:2657"
+      ]
+    },
+    {
+      "id": "ARCHITECTURE-ACCESS",
+      "requirement": "Verify plot support, facade orientation, reachable entrance, true passage/cabin clearance and both travel directions. Existing lift V82 must be reviewed rather than regenerated merely because of historical MISSING. No route or collision claim arises from an image.",
+      "sources": [
+        "docs/specifications/homeworld-v81/mission-grammaire-original.txt:447",
+        "app/game/data/homeworldConnectorArtV82.json",
+        "app/game/data/homeworldLiftCabinArtV82.json"
+      ]
+    },
+    {
+      "id": "NATIVE-ORIENTATION",
+      "requirement": "Author left/right views independently where requested; do not rotate, mirror, skew or stretch a PNG to claim a missing native orientation.",
+      "sources": [
+        "docs/specifications/homeworld-v81/mission-grammaire-original.txt:520",
+        "docs/specifications/homeworld-v81/mission-grammaire-original.txt:2558"
+      ]
+    }
+  ],
+  "deliveryProposal": {
+    "status": "PROPOSED_NOT_SOURCE_FIXED_OR_ADMITTED",
+    "format": "Raw native transparent PNG, independent full object or explicitly authored atlas cells; preserve exact generated bytes and receipt/prompt/SHA256.",
+    "dimensions": "Architectural families may use landscape framing; props may use square framing. Requested dimensions are not guaranteed by image_gen; record actual dimensions without resampling. Source imposes no target pixel dimensions.",
+    "frame": "Whole raw PNG or native frame rectangle declared explicitly; complete silhouette and transparent safety margin including minor protrusions, shadow, fittings and top.",
+    "pivot": "Measure physical support/attachment on actual pixels. Floor props: support point; wall parts: fastening/interface; holes/doors: threshold. Do not assume all pivots are bottom-center.",
+    "orientation": "Native oblique view coherent with each reference family, no CSS mirror/rotation/skew/stretch to claim an authored missing view.",
+    "qualification": "Isolation with a reference Yautja, then actual district/context at wide/medium/near distances; inspect scale, alpha, occupied borders, complete silhouette, support, orientation, depth, access and usage. Scene behavior/animation are separate proofs."
+  },
+  "families": [
+    {
+      "id": "facade-balcony",
+      "label": "Balcon de façade",
+      "targetIds": [
+        "target-v81-55-26"
+      ],
+      "referencePaths": [
+        "public/game/homeworld/v81/clan-residence-left.png",
+        "public/game/homeworld/v78/terrace-retaining-front.png",
+        "public/game/homeworld/v78/palace-frontage-safe.png"
+      ],
+      "referenceUse": "Ouvrir ces originaux avant image_gen ; style, matière et orientation uniquement. Aucun détail peint extrait, aucun ref admis automatiquement pour les cibles."
+    },
+    {
+      "id": "tunnel-access",
+      "label": "Tunnel et bouche de tunnel",
+      "targetIds": [
+        "target-v81-55-42",
+        "target-v81-55-43"
+      ],
+      "referencePaths": [
+        "public/game/homeworld/v75/architecture/undercity-refuge.png",
+        "public/game/homeworld/v72/region-gateway-kit.png",
+        "public/game/homeworld/v78/lower-quarter-ramp-front.png"
+      ],
+      "referenceUse": "Ouvrir ces originaux avant image_gen ; style, matière et orientation uniquement. Aucun détail peint extrait, aucun ref admis automatiquement pour les cibles."
+    },
+    {
+      "id": "hangar-logistics",
+      "label": "Hangar et sas",
+      "targetIds": [
+        "target-v81-56-56",
+        "target-v81-59-105"
+      ],
+      "referencePaths": [
+        "public/game/homeworld/v76/architecture/dock-control.png",
+        "public/game/homeworld/v81/spaceport-gantry.png",
+        "public/game/homeworld/v76/architecture/convoy-workshop.png"
+      ],
+      "referenceUse": "Ouvrir ces originaux avant image_gen ; style, matière et orientation uniquement. Aucun détail peint extrait, aucun ref admis automatiquement pour les cibles."
+    },
+    {
+      "id": "clan-symbol",
+      "label": "Totem clanique",
+      "targetIds": [
+        "target-v81-65-175"
+      ],
+      "referencePaths": [
+        "public/game/homeworld/v83/clan-waymarker-right.png",
+        "public/game/homeworld/v80/clan-banner-standard.png"
+      ],
+      "referenceUse": "Ouvrir ces originaux avant image_gen ; style, matière et orientation uniquement. Aucun détail peint extrait, aucun ref admis automatiquement pour les cibles."
+    },
+    {
+      "id": "trophy-fixture",
+      "label": "Crochet de présentation de trophée",
+      "targetIds": [
+        "target-v81-66-192"
+      ],
+      "referencePaths": [
+        "public/game/homeworld/v80/maintenance-rack.png",
+        "public/game/homeworld/v83/cargo-rack-right.png",
+        "public/game/homeworld/v84/training-rack-left.png"
+      ],
+      "referenceUse": "Ouvrir ces originaux avant image_gen ; style, matière et orientation uniquement. Aucun détail peint extrait, aucun ref admis automatiquement pour les cibles."
+    },
+    {
+      "id": "street-ground-access",
+      "label": "Trappe au sol",
+      "targetIds": [
+        "target-v81-68-236"
+      ],
+      "referencePaths": [
+        "public/game/homeworld/v81/paving-undercity.png",
+        "public/game/homeworld/v64/interior-panels.png",
+        "public/game/homeworld/v84/maintenance-console-right.png"
+      ],
+      "referenceUse": "Ouvrir ces originaux avant image_gen ; style, matière et orientation uniquement. Aucun détail peint extrait, aucun ref admis automatiquement pour les cibles."
+    },
+    {
+      "id": "undercity-recovery",
+      "label": "Ferraille de récupération",
+      "targetIds": [
+        "target-v81-73-301"
+      ],
+      "referencePaths": [
+        "public/game/homeworld/v80/maintenance-rack.png",
+        "public/game/homeworld/v83/cargo-rack-right.png",
+        "public/game/homeworld/v75/architecture/convoy-workshop.png"
+      ],
+      "referenceUse": "Ouvrir ces originaux avant image_gen ; style, matière et orientation uniquement. Aucun détail peint extrait, aucun ref admis automatiquement pour les cibles."
+    },
+    {
+      "id": "industrial-scaffold",
+      "label": "Échafaudage des bas-quartiers",
+      "targetIds": [
+        "target-v81-73-308"
+      ],
+      "referencePaths": [
+        "public/game/homeworld/v81/spaceport-gantry.png",
+        "public/game/homeworld/v75/architecture/convoy-workshop.png"
+      ],
+      "referenceUse": "Ouvrir ces originaux avant image_gen ; style, matière et orientation uniquement. Aucun détail peint extrait, aucun ref admis automatiquement pour les cibles."
+    },
+    {
+      "id": "industrial-power-thermal",
+      "label": "Production/transformation électrique et dissipation",
+      "targetIds": [
+        "target-v81-74-310",
+        "target-v81-74-311",
+        "target-v81-74-315"
+      ],
+      "referencePaths": [
+        "public/game/homeworld/v84/maintenance-console-right.png",
+        "public/game/homeworld/v80/maintenance-rack.png",
+        "public/game/homeworld/v78/forge-workstation-left.png"
+      ],
+      "referenceUse": "Ouvrir ces originaux avant image_gen ; style, matière et orientation uniquement. Aucun détail peint extrait, aucun ref admis automatiquement pour les cibles."
+    },
+    {
+      "id": "industrial-hydraulics",
+      "label": "Tuyau, pompe et valve",
+      "targetIds": [
+        "target-v81-73-295",
+        "target-v81-74-316",
+        "target-v81-74-319"
+      ],
+      "referencePaths": [
+        "public/game/homeworld/v78/civic-water-cistern-right.png",
+        "public/game/homeworld/v84/maintenance-console-right.png"
+      ],
+      "referenceUse": "Ouvrir ces originaux avant image_gen ; style, matière et orientation uniquement. Aucun détail peint extrait, aucun ref admis automatiquement pour les cibles."
+    },
+    {
+      "id": "royal-alcove",
+      "label": "Alcôves du palais",
+      "targetIds": [
+        "target-v81-76-354"
+      ],
+      "referencePaths": [
+        "public/game/homeworld/v78/palace-frontage-safe.png",
+        "public/game/homeworld/v81/royal-pyramid-front.png",
+        "public/game/homeworld/v64/interior-panels.png"
+      ],
+      "referenceUse": "Ouvrir ces originaux avant image_gen ; style, matière et orientation uniquement. Aucun détail peint extrait, aucun ref admis automatiquement pour les cibles."
+    }
+  ],
+  "references": [
+    {
+      "path": "public/game/homeworld/v81/clan-residence-left.png",
+      "absolutePath": "/workspace/yautja-la-longue-chasse/public/game/homeworld/v81/clan-residence-left.png",
+      "bytes": 2582864,
+      "sha256": "e0c6bcc3657f18680063618e25fbc15d4c0775b5956370d92fd57e63f577fc17",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "format": "PNG",
+      "hasAlphaChannel": true,
+      "relationship": "EXISTING_STYLE_OR_COMPOSITE_REFERENCE_NOT_ADMITTED_FOR_TARGET",
+      "role": "Façade domestique clanique ; masses, détails de façade et orientation gauche. Le balcon reste une pièce indépendante à produire.",
+      "openedVisuallyByThisMapWriter": false,
+      "humanValidatedByThisTask": false,
+      "openedVisuallyByDelegatedReadOnlyAudit": false,
+      "currentSourceDeclarations": [
+        {
+          "path": "app/game/data/homeworldNativeArchitectureV81.json",
+          "line": 19532
+        }
+      ]
+    },
+    {
+      "path": "public/game/homeworld/v78/terrace-retaining-front.png",
+      "absolutePath": "/workspace/yautja-la-longue-chasse/public/game/homeworld/v78/terrace-retaining-front.png",
+      "bytes": 2759314,
+      "sha256": "00b1323bac81f0ddd0aefe31220f97efbf58876c6863abdd160c4769ffff2c44",
+      "dimensions": [
+        1774,
+        887
+      ],
+      "mode": "RGBA",
+      "format": "PNG",
+      "hasAlphaChannel": true,
+      "relationship": "EXISTING_STYLE_OR_COMPOSITE_REFERENCE_NOT_ADMITTED_FOR_TARGET",
+      "role": "Mur de soutènement continu frontal ; pierre, parapet et appui. Ne livre pas une plateforme réellement praticable.",
+      "openedVisuallyByThisMapWriter": false,
+      "humanValidatedByThisTask": false,
+      "openedVisuallyByDelegatedReadOnlyAudit": false,
+      "currentSourceDeclarations": [
+        {
+          "path": "app/game/data/homeworldCityGeneratedProvenanceV78.json",
+          "line": 835
+        },
+        {
+          "path": "app/game/data/homeworldCityGeneratedProvenanceV78.json",
+          "line": 902
+        }
+      ]
+    },
+    {
+      "path": "public/game/homeworld/v78/palace-frontage-safe.png",
+      "absolutePath": "/workspace/yautja-la-longue-chasse/public/game/homeworld/v78/palace-frontage-safe.png",
+      "bytes": 2604459,
+      "sha256": "9847e7e87d0e4c8822a1e2218fee7e2c0bd68231e60ebb2ffbfddbc68f5dc1f4",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "format": "PNG",
+      "hasAlphaChannel": true,
+      "relationship": "EXISTING_STYLE_OR_COMPOSITE_REFERENCE_NOT_ADMITTED_FOR_TARGET",
+      "role": "Façade cérémonielle originale ; palette et modénature. Source historiquement withheld, pas preuve d’intérieur ni admission pour une nouvelle cible.",
+      "openedVisuallyByThisMapWriter": false,
+      "humanValidatedByThisTask": false,
+      "openedVisuallyByDelegatedReadOnlyAudit": false,
+      "currentSourceDeclarations": [
+        {
+          "path": "app/game/data/homeworldCityGeneratedProvenanceV78.json",
+          "line": 1407
+        }
+      ]
+    },
+    {
+      "path": "public/game/homeworld/v75/architecture/undercity-refuge.png",
+      "absolutePath": "/workspace/yautja-la-longue-chasse/public/game/homeworld/v75/architecture/undercity-refuge.png",
+      "bytes": 2492889,
+      "sha256": "3923720daf1bee1f3ecfc181597dd9b7689ab4b4a2e42da1ee2d51e40c5465c0",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "format": "PNG",
+      "hasAlphaChannel": true,
+      "relationship": "EXISTING_STYLE_OR_COMPOSITE_REFERENCE_NOT_ADMITTED_FOR_TARGET",
+      "role": "Architecture basse/refuge ; pierre sombre, ouvertures et intégration souterraine. Ne prouve pas un tunnel traversable.",
+      "openedVisuallyByThisMapWriter": false,
+      "humanValidatedByThisTask": false,
+      "openedVisuallyByDelegatedReadOnlyAudit": false,
+      "currentSourceDeclarations": [
+        {
+          "path": "app/game/data/homeworldArchitectureArtV75.json",
+          "line": 111
+        }
+      ]
+    },
+    {
+      "path": "public/game/homeworld/v72/region-gateway-kit.png",
+      "absolutePath": "/workspace/yautja-la-longue-chasse/public/game/homeworld/v72/region-gateway-kit.png",
+      "bytes": 2164987,
+      "sha256": "9f22da436027bd16dd4aac9c64c42d473afe5b7670f36172059db1d925d687dd",
+      "dimensions": [
+        1312,
+        1199
+      ],
+      "mode": "RGBA",
+      "format": "PNG",
+      "hasAlphaChannel": true,
+      "relationship": "EXISTING_STYLE_OR_COMPOSITE_REFERENCE_NOT_ADMITTED_FOR_TARGET",
+      "role": "Portail régional en kit ; ouvertures et cadres. Plusieurs cellules/éléments existants, pas un tunnel indépendant.",
+      "openedVisuallyByThisMapWriter": false,
+      "humanValidatedByThisTask": false,
+      "openedVisuallyByDelegatedReadOnlyAudit": false,
+      "currentSourceDeclarations": [
+        {
+          "path": "app/game/data/homeworldGatewayArtV72.json",
+          "line": 3
+        },
+        {
+          "path": "app/game/data/homeworldGatewayArtV72.json",
+          "line": 34
+        },
+        {
+          "path": "app/game/data/homeworldGatewayArtV72.json",
+          "line": 65
+        },
+        {
+          "path": "app/game/data/homeworldGatewayArtV72.json",
+          "line": 96
+        }
+      ]
+    },
+    {
+      "path": "public/game/homeworld/v78/lower-quarter-ramp-front.png",
+      "absolutePath": "/workspace/yautja-la-longue-chasse/public/game/homeworld/v78/lower-quarter-ramp-front.png",
+      "bytes": 2108255,
+      "sha256": "41ce9f8311df9d5fdfa34c8f2cadae6a56a949e3dd91f5f70b4ab1c73c9f4f20",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "format": "PNG",
+      "hasAlphaChannel": true,
+      "relationship": "EXISTING_STYLE_OR_COMPOSITE_REFERENCE_NOT_ADMITTED_FOR_TARGET",
+      "role": "Rampe frontale complète ; raccordements et matières. Source historiquement withheld ; pas un tunnel.",
+      "openedVisuallyByThisMapWriter": false,
+      "humanValidatedByThisTask": false,
+      "openedVisuallyByDelegatedReadOnlyAudit": false,
+      "currentSourceDeclarations": [
+        {
+          "path": "app/game/data/homeworldCityGeneratedProvenanceV78.json",
+          "line": 1679
+        }
+      ]
+    },
+    {
+      "path": "public/game/homeworld/v76/architecture/dock-control.png",
+      "absolutePath": "/workspace/yautja-la-longue-chasse/public/game/homeworld/v76/architecture/dock-control.png",
+      "bytes": 2635268,
+      "sha256": "bd96ea2fdfd665ba6b97e1a18b3375aa92a56d7f8ee998f14177151064198782",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "format": "PNG",
+      "hasAlphaChannel": true,
+      "relationship": "EXISTING_STYLE_OR_COMPOSITE_REFERENCE_NOT_ADMITTED_FOR_TARGET",
+      "role": "Bâtiment de contrôle du port ; langage logistique et façade. Pas un sas de hangar indépendant.",
+      "openedVisuallyByThisMapWriter": false,
+      "humanValidatedByThisTask": false,
+      "openedVisuallyByDelegatedReadOnlyAudit": false,
+      "currentSourceDeclarations": [
+        {
+          "path": "app/game/data/homeworldArchitectureArtV76.json",
+          "line": 4689
+        }
+      ]
+    },
+    {
+      "path": "public/game/homeworld/v81/spaceport-gantry.png",
+      "absolutePath": "/workspace/yautja-la-longue-chasse/public/game/homeworld/v81/spaceport-gantry.png",
+      "bytes": 2173945,
+      "sha256": "132bad9c636868b8db42ea28add5c39f3f3a4b166dc05e2502be06ce5280bf20",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "format": "PNG",
+      "hasAlphaChannel": true,
+      "relationship": "EXISTING_STYLE_OR_COMPOSITE_REFERENCE_NOT_ADMITTED_FOR_TARGET",
+      "role": "Portique/gantry ; charpente industrielle du spatioport. Pas un hangar clos ni un échafaudage indépendant.",
+      "openedVisuallyByThisMapWriter": false,
+      "humanValidatedByThisTask": false,
+      "openedVisuallyByDelegatedReadOnlyAudit": true,
+      "currentSourceDeclarations": [
+        {
+          "path": "app/game/data/homeworldNativeArchitectureV81.json",
+          "line": 13788
+        }
+      ]
+    },
+    {
+      "path": "public/game/homeworld/v76/architecture/convoy-workshop.png",
+      "absolutePath": "/workspace/yautja-la-longue-chasse/public/game/homeworld/v76/architecture/convoy-workshop.png",
+      "bytes": 2483645,
+      "sha256": "5f238a9b689cebe0aaf61b9faf3c5fe324dbd721a3ba447713b2cf339bad6b51",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "format": "PNG",
+      "hasAlphaChannel": true,
+      "relationship": "EXISTING_STYLE_OR_COMPOSITE_REFERENCE_NOT_ADMITTED_FOR_TARGET",
+      "role": "Atelier convoyeur ; matières et structure industrielle. Distinguer les originaux V75/V76 selon le path et hash exacts.",
+      "openedVisuallyByThisMapWriter": false,
+      "humanValidatedByThisTask": false,
+      "openedVisuallyByDelegatedReadOnlyAudit": false,
+      "currentSourceDeclarations": [
+        {
+          "path": "app/game/data/homeworldArchitectureArtV76.json",
+          "line": 7
+        }
+      ]
+    },
+    {
+      "path": "public/game/homeworld/v83/clan-waymarker-right.png",
+      "absolutePath": "/workspace/yautja-la-longue-chasse/public/game/homeworld/v83/clan-waymarker-right.png",
+      "bytes": 828271,
+      "sha256": "60148ddbac32d32dec3a38a626ee11c3fcead4cec2947abf1dcc36d463fa8b6d",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "format": "PNG",
+      "hasAlphaChannel": true,
+      "relationship": "EXISTING_STYLE_OR_COMPOSITE_REFERENCE_NOT_ADMITTED_FOR_TARGET",
+      "role": "Marqueur clanique original, vue droite ; vocabulaire de glyphes local et socle. Ne prouve pas un totem distinct.",
+      "openedVisuallyByThisMapWriter": false,
+      "humanValidatedByThisTask": false,
+      "openedVisuallyByDelegatedReadOnlyAudit": false,
+      "currentSourceDeclarations": [
+        {
+          "path": "app/game/data/homeworldStreetDecorSourcesV83.json",
+          "line": 59
+        }
+      ]
+    },
+    {
+      "path": "public/game/homeworld/v80/clan-banner-standard.png",
+      "absolutePath": "/workspace/yautja-la-longue-chasse/public/game/homeworld/v80/clan-banner-standard.png",
+      "bytes": 601287,
+      "sha256": "93538d8c833a6e299302784a62eb87df8ab79b14ced658bd6d85a84df458a06a",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "format": "PNG",
+      "hasAlphaChannel": true,
+      "relationship": "EXISTING_STYLE_OR_COMPOSITE_REFERENCE_NOT_ADMITTED_FOR_TARGET",
+      "role": "Bannière clanique standard ; identité locale originale, couleurs et fixation. Aucune canonicité déduite.",
+      "openedVisuallyByThisMapWriter": false,
+      "humanValidatedByThisTask": false,
+      "openedVisuallyByDelegatedReadOnlyAudit": false,
+      "currentSourceDeclarations": [
+        {
+          "path": "app/game/data/homeworldNativeDecorV80.json",
+          "line": 392
+        }
+      ]
+    },
+    {
+      "path": "public/game/homeworld/v80/maintenance-rack.png",
+      "absolutePath": "/workspace/yautja-la-longue-chasse/public/game/homeworld/v80/maintenance-rack.png",
+      "bytes": 1610167,
+      "sha256": "7f5e1579691085f0df4330d3c6fe8d97201e6691d0e0ca8762bd113462fd9d20",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "format": "PNG",
+      "hasAlphaChannel": true,
+      "relationship": "EXISTING_STYLE_OR_COMPOSITE_REFERENCE_NOT_ADMITTED_FOR_TARGET",
+      "role": "Rack de maintenance ; assemblage, métal usé et outils. Les petits détails peints ne deviennent pas des sprites indépendants.",
+      "openedVisuallyByThisMapWriter": false,
+      "humanValidatedByThisTask": false,
+      "openedVisuallyByDelegatedReadOnlyAudit": true,
+      "currentSourceDeclarations": [
+        {
+          "path": "app/game/data/homeworldNativeDecorV80.json",
+          "line": 110
+        }
+      ]
+    },
+    {
+      "path": "public/game/homeworld/v83/cargo-rack-right.png",
+      "absolutePath": "/workspace/yautja-la-longue-chasse/public/game/homeworld/v83/cargo-rack-right.png",
+      "bytes": 1922894,
+      "sha256": "c6146c0577b832012a099e87b6008f5315771c72725932ce8eb850e4f9f43eb4",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "format": "PNG",
+      "hasAlphaChannel": true,
+      "relationship": "EXISTING_STYLE_OR_COMPOSITE_REFERENCE_NOT_ADMITTED_FOR_TARGET",
+      "role": "Rack cargo, vue droite ; métal, stockage et calages. Pas une pile scrap autonome.",
+      "openedVisuallyByThisMapWriter": false,
+      "humanValidatedByThisTask": false,
+      "openedVisuallyByDelegatedReadOnlyAudit": true,
+      "currentSourceDeclarations": [
+        {
+          "path": "app/game/data/homeworldStreetDecorSourcesV83.json",
+          "line": 33
+        }
+      ]
+    },
+    {
+      "path": "public/game/homeworld/v84/training-rack-left.png",
+      "absolutePath": "/workspace/yautja-la-longue-chasse/public/game/homeworld/v84/training-rack-left.png",
+      "bytes": 1662707,
+      "sha256": "04b83e9a2cb0c1a0d85420eb40798d5e85b2961949148fd6faf03d5105b16be1",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "format": "PNG",
+      "hasAlphaChannel": true,
+      "relationship": "EXISTING_STYLE_OR_COMPOSITE_REFERENCE_NOT_ADMITTED_FOR_TARGET",
+      "role": "Rack couvert de préparation, vue gauche ; attaches et supports. Pas un crochet indépendant.",
+      "openedVisuallyByThisMapWriter": false,
+      "humanValidatedByThisTask": false,
+      "openedVisuallyByDelegatedReadOnlyAudit": false,
+      "currentSourceDeclarations": [
+        {
+          "path": "app/game/data/homeworldStreetDecorSourcesV84.json",
+          "line": 33
+        }
+      ]
+    },
+    {
+      "path": "public/game/homeworld/v81/paving-undercity.png",
+      "absolutePath": "/workspace/yautja-la-longue-chasse/public/game/homeworld/v81/paving-undercity.png",
+      "bytes": 3202523,
+      "sha256": "4618657e0fdda051d8d50b7cb3b48268b4c25c47dc5c96001631110a2bedeb62",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "format": "PNG",
+      "hasAlphaChannel": false,
+      "relationship": "EXISTING_STYLE_OR_COMPOSITE_REFERENCE_NOT_ADMITTED_FOR_TARGET",
+      "role": "Sol des bas-quartiers ; perspective, palette et raccords au sol. Une trappe doit rester séparée et lisible.",
+      "openedVisuallyByThisMapWriter": false,
+      "humanValidatedByThisTask": false,
+      "openedVisuallyByDelegatedReadOnlyAudit": false,
+      "currentSourceDeclarations": [
+        {
+          "path": "app/game/data/homeworldNativeArchitectureV81.json",
+          "line": 24442
+        }
+      ]
+    },
+    {
+      "path": "public/game/homeworld/v64/interior-panels.png",
+      "absolutePath": "/workspace/yautja-la-longue-chasse/public/game/homeworld/v64/interior-panels.png",
+      "bytes": 2231516,
+      "sha256": "cfa204f776d84849b38ea25bcd19d879aa469406bf0ab4c384baabd179de4a21",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "format": "PNG",
+      "hasAlphaChannel": true,
+      "relationship": "EXISTING_STYLE_OR_COMPOSITE_REFERENCE_NOT_ADMITTED_FOR_TARGET",
+      "role": "Atlas de panneaux intérieurs ; langage des cadres/niches. Ne prouve pas une alcôve indépendante ni un intérieur de palais.",
+      "openedVisuallyByThisMapWriter": false,
+      "humanValidatedByThisTask": false,
+      "openedVisuallyByDelegatedReadOnlyAudit": false,
+      "currentSourceDeclarations": []
+    },
+    {
+      "path": "public/game/homeworld/v84/maintenance-console-right.png",
+      "absolutePath": "/workspace/yautja-la-longue-chasse/public/game/homeworld/v84/maintenance-console-right.png",
+      "bytes": 1334645,
+      "sha256": "a7a43de4384a75ecac48a5c8cd50bc6cd4eb82ffda47719a1022299b90bb966b",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "format": "PNG",
+      "hasAlphaChannel": true,
+      "relationship": "EXISTING_STYLE_OR_COMPOSITE_REFERENCE_NOT_ADMITTED_FOR_TARGET",
+      "role": "Poste de réglage/contrôle, vue droite ; carters, commandes et face opérateur. Ne livre pas générateur/transformateur/radiateur/pompe/valve.",
+      "openedVisuallyByThisMapWriter": false,
+      "humanValidatedByThisTask": false,
+      "openedVisuallyByDelegatedReadOnlyAudit": true,
+      "currentSourceDeclarations": [
+        {
+          "path": "app/game/data/homeworldStreetDecorSourcesV84.json",
+          "line": 7
+        }
+      ]
+    },
+    {
+      "path": "public/game/homeworld/v75/architecture/convoy-workshop.png",
+      "absolutePath": "/workspace/yautja-la-longue-chasse/public/game/homeworld/v75/architecture/convoy-workshop.png",
+      "bytes": 2368526,
+      "sha256": "da7787f9ad19485ecc3a056164a9cca08d0001278420b4d6ca26df15cc9b3155",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "format": "PNG",
+      "hasAlphaChannel": true,
+      "relationship": "EXISTING_STYLE_OR_COMPOSITE_REFERENCE_NOT_ADMITTED_FOR_TARGET",
+      "role": "Atelier convoyeur ; matières et structure industrielle. Distinguer les originaux V75/V76 selon le path et hash exacts.",
+      "openedVisuallyByThisMapWriter": false,
+      "humanValidatedByThisTask": false,
+      "openedVisuallyByDelegatedReadOnlyAudit": false,
+      "currentSourceDeclarations": [
+        {
+          "path": "app/game/data/homeworldArchitectureArtV75.json",
+          "line": 371
+        },
+        {
+          "path": "app/game/data/homeworldArchitectureArtV76.json",
+          "line": 4673
+        }
+      ]
+    },
+    {
+      "path": "public/game/homeworld/v78/forge-workstation-left.png",
+      "absolutePath": "/workspace/yautja-la-longue-chasse/public/game/homeworld/v78/forge-workstation-left.png",
+      "bytes": 2654456,
+      "sha256": "495980e1053bc95a64c639a1a0091f1a7fae5fa14c73671e0dd8567c09ab3fcb",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "format": "PNG",
+      "hasAlphaChannel": true,
+      "relationship": "EXISTING_STYLE_OR_COMPOSITE_REFERENCE_NOT_ADMITTED_FOR_TARGET",
+      "role": "Poste de forge complet, vue gauche ; métal, échange thermique et outillage. Pas un radiateur autonome.",
+      "openedVisuallyByThisMapWriter": false,
+      "humanValidatedByThisTask": false,
+      "openedVisuallyByDelegatedReadOnlyAudit": true,
+      "currentSourceDeclarations": [
+        {
+          "path": "app/game/data/homeworldCityArtManifestV78.json",
+          "line": 113
+        },
+        {
+          "path": "app/game/data/homeworldCityGeneratedProvenanceV78.json",
+          "line": 467
+        },
+        {
+          "path": "app/game/data/homeworldCityGeneratedProvenanceV78.json",
+          "line": 534
+        }
+      ]
+    },
+    {
+      "path": "public/game/homeworld/v78/civic-water-cistern-right.png",
+      "absolutePath": "/workspace/yautja-la-longue-chasse/public/game/homeworld/v78/civic-water-cistern-right.png",
+      "bytes": 2151259,
+      "sha256": "8417c094e895d8f7d521d5e6c05098a7dcdfe5cb6cbfec75f099ce71b6304049",
+      "dimensions": [
+        1350,
+        1165
+      ],
+      "mode": "RGBA",
+      "format": "PNG",
+      "hasAlphaChannel": true,
+      "relationship": "EXISTING_STYLE_OR_COMPOSITE_REFERENCE_NOT_ADMITTED_FOR_TARGET",
+      "role": "Module composite de citerne/bassin avec robinet/valve intégrés, vue droite ; plomberie réelle peinte, sans pièces indépendantes.",
+      "openedVisuallyByThisMapWriter": false,
+      "humanValidatedByThisTask": false,
+      "openedVisuallyByDelegatedReadOnlyAudit": true,
+      "currentSourceDeclarations": [
+        {
+          "path": "app/game/data/homeworldCityGeneratedProvenanceV78.json",
+          "line": 2061
+        },
+        {
+          "path": "app/game/data/homeworldCityGeneratedProvenanceV78.json",
+          "line": 2137
+        }
+      ]
+    },
+    {
+      "path": "public/game/homeworld/v81/royal-pyramid-front.png",
+      "absolutePath": "/workspace/yautja-la-longue-chasse/public/game/homeworld/v81/royal-pyramid-front.png",
+      "bytes": 2779127,
+      "sha256": "7e5ac8f9aff607ea9e8a7da21947b529154f2d0b809970d44053c1b725c94655",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "format": "PNG",
+      "hasAlphaChannel": true,
+      "relationship": "EXISTING_STYLE_OR_COMPOSITE_REFERENCE_NOT_ADMITTED_FOR_TARGET",
+      "role": "Masse pyramidale royale frontale ; langage monumental original. Pas une preuve de niche/alcôve indépendante.",
+      "openedVisuallyByThisMapWriter": false,
+      "humanValidatedByThisTask": false,
+      "openedVisuallyByDelegatedReadOnlyAudit": false,
+      "currentSourceDeclarations": [
+        {
+          "path": "app/game/data/homeworldNativeArchitectureV81.json",
+          "line": 22
+        }
+      ]
+    }
+  ],
+  "existingOutsideHomeworldCandidates": [
+    {
+      "path": "public/game/sprites/v60/pit-life/arena-166-forge-cyborg/life-03.png",
+      "absolutePath": "/workspace/yautja-la-longue-chasse/public/game/sprites/v60/pit-life/arena-166-forge-cyborg/life-03.png",
+      "bytes": 2192283,
+      "sha256": "3dc86491e09d70e337db40454c0e61d9d4a413428d48423c3a36f1c77d0baae0",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "format": "PNG",
+      "relatedTargetIds": [
+        "target-v81-74-316",
+        "target-v81-74-319"
+      ],
+      "relationship": "EXISTING_NATIVE_OUTSIDE_HOMEWORLD_REUSE_REVIEW_BEFORE_GENERATION",
+      "sourceDeclaration": {
+        "path": "app/game/data/pitStageLifeV60.json",
+        "line": 1835,
+        "label": "Pompe de maintenance — soupapes et vapeur"
+      },
+      "generationReceipt": {
+        "path": "docs/v60-generation/arena-166-forge-cyborg.json",
+        "line": 424,
+        "promptRole": "cooling valve unit",
+        "nativeOriginal": "exec-4361244c-4997-4c8d-97d7-4fc2185a4560.png",
+        "copyByteIdenticalRecorded": true
+      },
+      "atlasContract": {
+        "frames": [
+          {
+            "rect": [
+              0,
+              0,
+              512,
+              512
+            ],
+            "pivot": [
+              265.5,
+              479
+            ],
+            "alphaBounds": [
+              84,
+              138,
+              364,
+              341
+            ]
+          },
+          {
+            "rect": [
+              512,
+              0,
+              512,
+              512
+            ],
+            "pivot": [
+              268,
+              479
+            ],
+            "alphaBounds": [
+              88,
+              87,
+              361,
+              392
+            ]
+          },
+          {
+            "rect": [
+              1024,
+              0,
+              512,
+              512
+            ],
+            "pivot": [
+              256.5,
+              482
+            ],
+            "alphaBounds": [
+              75,
+              23,
+              364,
+              459
+            ]
+          },
+          {
+            "rect": [
+              0,
+              512,
+              512,
+              512
+            ],
+            "pivot": [
+              265,
+              451
+            ],
+            "alphaBounds": [
+              84,
+              55,
+              363,
+              396
+            ]
+          },
+          {
+            "rect": [
+              512,
+              512,
+              512,
+              512
+            ],
+            "pivot": [
+              269,
+              451
+            ],
+            "alphaBounds": [
+              90,
+              74,
+              361,
+              377
+            ]
+          },
+          {
+            "rect": [
+              1024,
+              512,
+              512,
+              512
+            ],
+            "pivot": [
+              258.5,
+              455
+            ],
+            "alphaBounds": [
+              77,
+              66,
+              364,
+              389
+            ]
+          }
+        ],
+        "fps": 3,
+        "restFrame": 0,
+        "reducedMotionFrame": 0
+      },
+      "visualReview": "Opened by read-only industrial sub-audit: six native states of a mechanical pump/valve unit; side view. No Homeworld aesthetic/orientation/admission verdict.",
+      "reuseLimit": "Whole native atlas cells only, no pixel edit/crop export. Side camera, function as pump vs cooling valve and Homeworld scale/ground/depth still need qualification.",
+      "humanValidatedByThisTask": false,
+      "homeworldBindingIdentified": false
+    },
+    {
+      "path": "public/game/assets/v17/enemy-trophies/enemy-trophy-crochet-a-trophees.webp",
+      "absolutePath": "/workspace/yautja-la-longue-chasse/public/game/assets/v17/enemy-trophies/enemy-trophy-crochet-a-trophees.webp",
+      "bytes": 84164,
+      "sha256": "573b02b3b4ea02aa72775b35c58329ab29909e2bb87a7a1f8f2bcf087b30743e",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "format": "WEBP",
+      "relatedTargetIds": [
+        "target-v81-66-192"
+      ],
+      "relationship": "EXISTING_OTHER_DOMAIN_TROPHY_REWARD_NOT_HOMEWORLD_FIXTURE",
+      "sourceDeclaration": {
+        "path": "app/game/ecologyV8.ts",
+        "line": 364,
+        "identity": "trophy-seeker reward: Crochet à trophées"
+      },
+      "visualReview": "V17 original opened by map writer: handheld ornamental bone/red hook silhouette, not an identified wall hanging fixture. V18 not opened separately.",
+      "homeworldBindingIdentified": false,
+      "humanValidatedByThisTask": false
+    },
+    {
+      "path": "public/game/assets/v18/enemy-trophy-gameplay/enemy-trophy-crochet-a-trophees.webp",
+      "absolutePath": "/workspace/yautja-la-longue-chasse/public/game/assets/v18/enemy-trophy-gameplay/enemy-trophy-crochet-a-trophees.webp",
+      "bytes": 33370,
+      "sha256": "8b47958103ae73801156c08b1ac2acfe3de0e2f550f631a9cc5abfa68d96867e",
+      "dimensions": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "format": "WEBP",
+      "relatedTargetIds": [
+        "target-v81-66-192"
+      ],
+      "relationship": "EXISTING_OTHER_DOMAIN_TROPHY_REWARD_NOT_HOMEWORLD_FIXTURE",
+      "sourceDeclaration": {
+        "path": "app/game/ecologyV8.ts",
+        "line": 364,
+        "identity": "trophy-seeker reward: Crochet à trophées"
+      },
+      "visualReview": "V17 original opened by map writer: handheld ornamental bone/red hook silhouette, not an identified wall hanging fixture. V18 not opened separately.",
+      "homeworldBindingIdentified": false,
+      "humanValidatedByThisTask": false
+    }
+  ],
+  "entries": [
+    {
+      "id": "target-v81-55-26",
+      "label": "balcon",
+      "section": 55,
+      "sourceFamily": "ARCHITECTURE MANQUANTE / À COMPLÉTER",
+      "productionFamily": "facade-balcony",
+      "provenance": "LORE_COMPATIBLE_ORIGINAL",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/25"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/25"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/25"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 55,
+          "line": 1613
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 30,
+            "idCell": {
+              "cell": "A30",
+              "value": "target-v81-55-26"
+            },
+            "labelCell": {
+              "cell": "D30",
+              "value": "balcon"
+            },
+            "historicalPresenceCell": {
+              "cell": "G30",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F30",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 30,
+            "idCell": {
+              "cell": "A30",
+              "value": "target-v81-55-26"
+            },
+            "labelCell": {
+              "cell": "C30",
+              "value": "balcon"
+            },
+            "historicalPresenceCell": {
+              "cell": "D30",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E30",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "catalogueIdLine": 182,
+      "catalogueLabelLine": 185,
+      "function": "Pièce de balcon architectural ; sa fonction de plateforme saillante se distingue de la corniche et de la terrasse voisines dans la liste §55.",
+      "functionAuthority": "Brief catalogue label/family is authoritative; elaboration and delivery choices below are a production proposal, not an already implemented gameplay contract.",
+      "sourceFramePivotContract": null,
+      "sourceFramePivotLimit": "Le catalogue ne fixe ni dimensions de livraison, rectangle de frame ni pivot pour cette cible. Mesurer le PNG natif effectivement obtenu et ses appuis/fixations ; ne pas inventer une métrologie déjà validée.",
+      "historicalV111Status": "MISSING",
+      "statusV112": "NON_CLOTURE_ART",
+      "scopedDisposition": "NO_INDEPENDENT_TARGET_SPRITE_IDENTIFIED_IN_HOMEWORLD_INVENTORY_AND_TARGETED_SEARCH",
+      "historicalCandidateCount": 0,
+      "historicalConsumerCount": 0,
+      "specializedFilenameSearchPattern": "balcony|balcon",
+      "homeworldFilenameMatches": [],
+      "notAMissingReferencedFile": true,
+      "specificRequiredDestinationPathSpecifiedBySource": null,
+      "existingCompositeCaveat": "Façades/terrasses voisines ; aucune pièce balcon indépendante identifiée.",
+      "referencePaths": [
+        "public/game/homeworld/v81/clan-residence-left.png",
+        "public/game/homeworld/v78/terrace-retaining-front.png",
+        "public/game/homeworld/v78/palace-frontage-safe.png"
+      ],
+      "specificAdmissionCriteria": [
+        "Montrer plateau, garde-corps et raccord/console côté façade ; silhouette indépendante, pas une maison entière.",
+        "Cadrage oblique compatible avec la façade de référence ; déclarer interface d’ancrage au mur et support/pivot mesurés. Un bitmap ne crée pas un sol accessible.",
+        "Prouver le dégagement du joueur et le raccord à une vraie façade avant toute intégration praticable."
+      ],
+      "commonAdmissionCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT",
+        "ARCHITECTURE-ACCESS"
+      ],
+      "candidateStatus": "UNPRODUCED_IN_THIS_TASK; any later generated/reused file remains CANDIDATE_NOT_ADMITTED",
+      "humanValidated": false,
+      "integrationClaimed": false,
+      "sourceClosureClaimed": false
+    },
+    {
+      "id": "target-v81-55-42",
+      "label": "tunnel",
+      "section": 55,
+      "sourceFamily": "ARCHITECTURE MANQUANTE / À COMPLÉTER",
+      "productionFamily": "tunnel-access",
+      "provenance": "LORE_COMPATIBLE_ORIGINAL",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/41"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/41"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/41"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 55,
+          "line": 1629
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 46,
+            "idCell": {
+              "cell": "A46",
+              "value": "target-v81-55-42"
+            },
+            "labelCell": {
+              "cell": "D46",
+              "value": "tunnel"
+            },
+            "historicalPresenceCell": {
+              "cell": "G46",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F46",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 46,
+            "idCell": {
+              "cell": "A46",
+              "value": "target-v81-55-42"
+            },
+            "labelCell": {
+              "cell": "C46",
+              "value": "tunnel"
+            },
+            "historicalPresenceCell": {
+              "cell": "D46",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E46",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "catalogueIdLine": 294,
+      "catalogueLabelLine": 297,
+      "function": "Corps/segment de tunnel architectural ; cible distincte de son entrée.",
+      "functionAuthority": "Brief catalogue label/family is authoritative; elaboration and delivery choices below are a production proposal, not an already implemented gameplay contract.",
+      "sourceFramePivotContract": null,
+      "sourceFramePivotLimit": "Le catalogue ne fixe ni dimensions de livraison, rectangle de frame ni pivot pour cette cible. Mesurer le PNG natif effectivement obtenu et ses appuis/fixations ; ne pas inventer une métrologie déjà validée.",
+      "historicalV111Status": "MISSING",
+      "statusV112": "NON_CLOTURE_ART",
+      "scopedDisposition": "NO_INDEPENDENT_TARGET_SPRITE_IDENTIFIED_IN_HOMEWORLD_INVENTORY_AND_TARGETED_SEARCH",
+      "historicalCandidateCount": 0,
+      "historicalConsumerCount": 0,
+      "specializedFilenameSearchPattern": "tunnel",
+      "homeworldFilenameMatches": [],
+      "notAMissingReferencedFile": true,
+      "specificRequiredDestinationPathSpecifiedBySource": null,
+      "existingCompositeCaveat": "Refuge, portail régional et rampe sont des voisins ; aucun tunnel indépendant identifié.",
+      "referencePaths": [
+        "public/game/homeworld/v75/architecture/undercity-refuge.png",
+        "public/game/homeworld/v72/region-gateway-kit.png",
+        "public/game/homeworld/v78/lower-quarter-ramp-front.png"
+      ],
+      "specificAdmissionCriteria": [
+        "Montrer volume couvert et passage intérieur lisible, raccords entrée/sortie ; ne livrer ni une arche seule ni la même bouche que target-v81-55-43.",
+        "Identifier les zones devant/derrière qui devront être séparées en rendu pour laisser voir le joueur ; aucun passage jouable déduit du PNG.",
+        "Prouver dimensions de passage, sol et trajet dans les deux sens si monté."
+      ],
+      "commonAdmissionCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT",
+        "ARCHITECTURE-ACCESS"
+      ],
+      "candidateStatus": "UNPRODUCED_IN_THIS_TASK; any later generated/reused file remains CANDIDATE_NOT_ADMITTED",
+      "humanValidated": false,
+      "integrationClaimed": false,
+      "sourceClosureClaimed": false
+    },
+    {
+      "id": "target-v81-55-43",
+      "label": "entrée tunnel",
+      "section": 55,
+      "sourceFamily": "ARCHITECTURE MANQUANTE / À COMPLÉTER",
+      "productionFamily": "tunnel-access",
+      "provenance": "LORE_COMPATIBLE_ORIGINAL",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/42"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/42"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/42"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 55,
+          "line": 1630
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 47,
+            "idCell": {
+              "cell": "A47",
+              "value": "target-v81-55-43"
+            },
+            "labelCell": {
+              "cell": "D47",
+              "value": "entrée tunnel"
+            },
+            "historicalPresenceCell": {
+              "cell": "G47",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F47",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 47,
+            "idCell": {
+              "cell": "A47",
+              "value": "target-v81-55-43"
+            },
+            "labelCell": {
+              "cell": "C47",
+              "value": "entrée tunnel"
+            },
+            "historicalPresenceCell": {
+              "cell": "D47",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E47",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "catalogueIdLine": 301,
+      "catalogueLabelLine": 304,
+      "function": "Bouche/entrée de tunnel ; cadre et seuil architectural distincts du corps de tunnel.",
+      "functionAuthority": "Brief catalogue label/family is authoritative; elaboration and delivery choices below are a production proposal, not an already implemented gameplay contract.",
+      "sourceFramePivotContract": null,
+      "sourceFramePivotLimit": "Le catalogue ne fixe ni dimensions de livraison, rectangle de frame ni pivot pour cette cible. Mesurer le PNG natif effectivement obtenu et ses appuis/fixations ; ne pas inventer une métrologie déjà validée.",
+      "historicalV111Status": "MISSING",
+      "statusV112": "NON_CLOTURE_ART",
+      "scopedDisposition": "NO_INDEPENDENT_TARGET_SPRITE_IDENTIFIED_IN_HOMEWORLD_INVENTORY_AND_TARGETED_SEARCH",
+      "historicalCandidateCount": 0,
+      "historicalConsumerCount": 0,
+      "specializedFilenameSearchPattern": "tunnel",
+      "homeworldFilenameMatches": [],
+      "notAMissingReferencedFile": true,
+      "specificRequiredDestinationPathSpecifiedBySource": null,
+      "existingCompositeCaveat": "Entrées/portails statiques voisins ; aucune bouche de tunnel indépendante identifiée.",
+      "referencePaths": [
+        "public/game/homeworld/v75/architecture/undercity-refuge.png",
+        "public/game/homeworld/v72/region-gateway-kit.png",
+        "public/game/homeworld/v78/lower-quarter-ramp-front.png"
+      ],
+      "specificAdmissionCriteria": [
+        "Montrer ouverture réellement vide/lisible, cadre, profondeur immédiate et seuil ; ne peindre ni panneau opaque ni fond de scène à la place du passage.",
+        "Conserver raccord visuel avec le tunnel mais livrer une ressource indépendante et son pivot de seuil.",
+        "Vérifier clearance du Yautja, masquage devant/derrière et accès dans les deux sens lors de l’intégration."
+      ],
+      "commonAdmissionCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT",
+        "ARCHITECTURE-ACCESS"
+      ],
+      "candidateStatus": "UNPRODUCED_IN_THIS_TASK; any later generated/reused file remains CANDIDATE_NOT_ADMITTED",
+      "humanValidated": false,
+      "integrationClaimed": false,
+      "sourceClosureClaimed": false
+    },
+    {
+      "id": "target-v81-56-56",
+      "label": "sas hangar",
+      "section": 56,
+      "sourceFamily": "PORTES / ACCÈS",
+      "productionFamily": "hangar-logistics",
+      "provenance": "LORE_COMPATIBLE_ORIGINAL",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/55"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/55"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/55"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 56,
+          "line": 1648
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 60,
+            "idCell": {
+              "cell": "A60",
+              "value": "target-v81-56-56"
+            },
+            "labelCell": {
+              "cell": "D60",
+              "value": "sas hangar"
+            },
+            "historicalPresenceCell": {
+              "cell": "G60",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F60",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 60,
+            "idCell": {
+              "cell": "A60",
+              "value": "target-v81-56-56"
+            },
+            "labelCell": {
+              "cell": "C60",
+              "value": "sas hangar"
+            },
+            "historicalPresenceCell": {
+              "cell": "D60",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E60",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "catalogueIdLine": 392,
+      "catalogueLabelLine": 395,
+      "function": "Sas d’accès de hangar dans la famille portes/accès ; distinct de la grande coque du hangar.",
+      "functionAuthority": "Brief catalogue label/family is authoritative; elaboration and delivery choices below are a production proposal, not an already implemented gameplay contract.",
+      "sourceFramePivotContract": null,
+      "sourceFramePivotLimit": "Le catalogue ne fixe ni dimensions de livraison, rectangle de frame ni pivot pour cette cible. Mesurer le PNG natif effectivement obtenu et ses appuis/fixations ; ne pas inventer une métrologie déjà validée.",
+      "historicalV111Status": "MISSING",
+      "statusV112": "NON_CLOTURE_ART",
+      "scopedDisposition": "NO_INDEPENDENT_TARGET_SPRITE_IDENTIFIED_IN_HOMEWORLD_INVENTORY_AND_TARGETED_SEARCH",
+      "historicalCandidateCount": 0,
+      "historicalConsumerCount": 0,
+      "specializedFilenameSearchPattern": "hangar",
+      "homeworldFilenameMatches": [],
+      "notAMissingReferencedFile": true,
+      "specificRequiredDestinationPathSpecifiedBySource": null,
+      "existingCompositeCaveat": "Contrôle du port/portique statiques ; ne prouvent pas un sas ou son cycle.",
+      "referencePaths": [
+        "public/game/homeworld/v76/architecture/dock-control.png",
+        "public/game/homeworld/v81/spaceport-gantry.png",
+        "public/game/homeworld/v76/architecture/convoy-workshop.png"
+      ],
+      "specificAdmissionCriteria": [
+        "Montrer cadre épais, panneaux/ouvrants et seuil d’un accès logistique ; face opérateur lisible.",
+        "Choisir un état statique explicite. Si une ouverture est annoncée, livrer des états natifs cohérents sur même cadrage/pivot ; une image ne prouve ni cycle ni interaction.",
+        "Dégagement adapté au passage retenu et raccord au hangar à vérifier, sans véhicule ou acteur incorporé."
+      ],
+      "commonAdmissionCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT",
+        "ARCHITECTURE-ACCESS"
+      ],
+      "candidateStatus": "UNPRODUCED_IN_THIS_TASK; any later generated/reused file remains CANDIDATE_NOT_ADMITTED",
+      "humanValidated": false,
+      "integrationClaimed": false,
+      "sourceClosureClaimed": false
+    },
+    {
+      "id": "target-v81-59-105",
+      "label": "hangar",
+      "section": 59,
+      "sourceFamily": "BÂTIMENTS CIVIQUES",
+      "productionFamily": "hangar-logistics",
+      "provenance": "LORE_COMPATIBLE_ORIGINAL",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/104"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/104"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/104"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 59,
+          "line": 1716
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 109,
+            "idCell": {
+              "cell": "A109",
+              "value": "target-v81-59-105"
+            },
+            "labelCell": {
+              "cell": "D109",
+              "value": "hangar"
+            },
+            "historicalPresenceCell": {
+              "cell": "G109",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F109",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 109,
+            "idCell": {
+              "cell": "A109",
+              "value": "target-v81-59-105"
+            },
+            "labelCell": {
+              "cell": "C109",
+              "value": "hangar"
+            },
+            "historicalPresenceCell": {
+              "cell": "D109",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E109",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "catalogueIdLine": 735,
+      "catalogueLabelLine": 738,
+      "function": "Bâtiment civique/logistique hangar ; distinct du dock control, de l’atelier et du sas.",
+      "functionAuthority": "Brief catalogue label/family is authoritative; elaboration and delivery choices below are a production proposal, not an already implemented gameplay contract.",
+      "sourceFramePivotContract": null,
+      "sourceFramePivotLimit": "Le catalogue ne fixe ni dimensions de livraison, rectangle de frame ni pivot pour cette cible. Mesurer le PNG natif effectivement obtenu et ses appuis/fixations ; ne pas inventer une métrologie déjà validée.",
+      "historicalV111Status": "MISSING",
+      "statusV112": "NON_CLOTURE_ART",
+      "scopedDisposition": "NO_INDEPENDENT_TARGET_SPRITE_IDENTIFIED_IN_HOMEWORLD_INVENTORY_AND_TARGETED_SEARCH",
+      "historicalCandidateCount": 0,
+      "historicalConsumerCount": 0,
+      "specializedFilenameSearchPattern": "hangar",
+      "homeworldFilenameMatches": [],
+      "notAMissingReferencedFile": true,
+      "specificRequiredDestinationPathSpecifiedBySource": null,
+      "existingCompositeCaveat": "Architecture logistique existante ; ne prouve ni volume de hangar ni intérieur ni sas.",
+      "referencePaths": [
+        "public/game/homeworld/v76/architecture/dock-control.png",
+        "public/game/homeworld/v81/spaceport-gantry.png",
+        "public/game/homeworld/v76/architecture/convoy-workshop.png"
+      ],
+      "specificAdmissionCriteria": [
+        "Montrer une enveloppe/nef couverte avec grande baie et volume logistique crédible, pas seulement un portique.",
+        "Entrée et appuis doivent rester visibles et mesurables ; préserver de la place sur le parvis.",
+        "Définir ensuite la correspondance baie/footprint/intérieur ; aucune pièce visitable ni véhicule ne sont admis par cette seule façade."
+      ],
+      "commonAdmissionCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT",
+        "ARCHITECTURE-ACCESS"
+      ],
+      "candidateStatus": "UNPRODUCED_IN_THIS_TASK; any later generated/reused file remains CANDIDATE_NOT_ADMITTED",
+      "humanValidated": false,
+      "integrationClaimed": false,
+      "sourceClosureClaimed": false
+    },
+    {
+      "id": "target-v81-65-175",
+      "label": "totem",
+      "section": 65,
+      "sourceFamily": "CLANS",
+      "productionFamily": "clan-symbol",
+      "provenance": "LORE_COMPATIBLE_ORIGINAL",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/174"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/174"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/174"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 65,
+          "line": 1820
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 179,
+            "idCell": {
+              "cell": "A179",
+              "value": "target-v81-65-175"
+            },
+            "labelCell": {
+              "cell": "D179",
+              "value": "totem"
+            },
+            "historicalPresenceCell": {
+              "cell": "G179",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F179",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 179,
+            "idCell": {
+              "cell": "A179",
+              "value": "target-v81-65-175"
+            },
+            "labelCell": {
+              "cell": "C179",
+              "value": "totem"
+            },
+            "historicalPresenceCell": {
+              "cell": "D179",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E179",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "catalogueIdLine": 1225,
+      "catalogueLabelLine": 1228,
+      "function": "Totem clanique dans la famille CLANS ; pièce sculpturale identitaire distincte d’une bannière ou d’une simple borne.",
+      "functionAuthority": "Brief catalogue label/family is authoritative; elaboration and delivery choices below are a production proposal, not an already implemented gameplay contract.",
+      "sourceFramePivotContract": null,
+      "sourceFramePivotLimit": "Le catalogue ne fixe ni dimensions de livraison, rectangle de frame ni pivot pour cette cible. Mesurer le PNG natif effectivement obtenu et ses appuis/fixations ; ne pas inventer une métrologie déjà validée.",
+      "historicalV111Status": "MISSING",
+      "statusV112": "NON_CLOTURE_ART",
+      "scopedDisposition": "NO_INDEPENDENT_TARGET_SPRITE_IDENTIFIED_IN_HOMEWORLD_INVENTORY_AND_TARGETED_SEARCH",
+      "historicalCandidateCount": 0,
+      "historicalConsumerCount": 0,
+      "specializedFilenameSearchPattern": "totem",
+      "homeworldFilenameMatches": [],
+      "notAMissingReferencedFile": true,
+      "specificRequiredDestinationPathSpecifiedBySource": null,
+      "existingCompositeCaveat": "Repère de clan et bannière présents ; aucune sculpture totem autonome identifiée, aucune canonicité déduite.",
+      "referencePaths": [
+        "public/game/homeworld/v83/clan-waymarker-right.png",
+        "public/game/homeworld/v80/clan-banner-standard.png"
+      ],
+      "specificAdmissionCriteria": [
+        "Montrer sculpture verticale et socle/contact sol complets ; fonction de repère clanique lisible à l’échelle du joueur.",
+        "Motifs inventés explicitement locaux : LORE_COMPATIBLE_ORIGINAL, aucun symbole prétendu canonique.",
+        "Éviter d’intégrer une bannière complète à la place du totem ou un personnage."
+      ],
+      "commonAdmissionCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT"
+      ],
+      "candidateStatus": "UNPRODUCED_IN_THIS_TASK; any later generated/reused file remains CANDIDATE_NOT_ADMITTED",
+      "humanValidated": false,
+      "integrationClaimed": false,
+      "sourceClosureClaimed": false
+    },
+    {
+      "id": "target-v81-66-192",
+      "label": "crochet",
+      "section": 66,
+      "sourceFamily": "TROPHÉES",
+      "productionFamily": "trophy-fixture",
+      "provenance": "LORE_COMPATIBLE_ORIGINAL",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/191"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/191"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/191"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 66,
+          "line": 1842
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 196,
+            "idCell": {
+              "cell": "A196",
+              "value": "target-v81-66-192"
+            },
+            "labelCell": {
+              "cell": "D196",
+              "value": "crochet"
+            },
+            "historicalPresenceCell": {
+              "cell": "G196",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F196",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 196,
+            "idCell": {
+              "cell": "A196",
+              "value": "target-v81-66-192"
+            },
+            "labelCell": {
+              "cell": "C196",
+              "value": "crochet"
+            },
+            "historicalPresenceCell": {
+              "cell": "D196",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E196",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "catalogueIdLine": 1344,
+      "catalogueLabelLine": 1347,
+      "function": "Crochet de la famille TROPHÉES ; proposition de réalisation : support de suspension mural/de présentation, pas une arme portative.",
+      "functionAuthority": "Brief catalogue label/family is authoritative; elaboration and delivery choices below are a production proposal, not an already implemented gameplay contract.",
+      "sourceFramePivotContract": null,
+      "sourceFramePivotLimit": "Le catalogue ne fixe ni dimensions de livraison, rectangle de frame ni pivot pour cette cible. Mesurer le PNG natif effectivement obtenu et ses appuis/fixations ; ne pas inventer une métrologie déjà validée.",
+      "historicalV111Status": "MISSING",
+      "statusV112": "NON_CLOTURE_ART",
+      "scopedDisposition": "NO_INDEPENDENT_TARGET_SPRITE_IDENTIFIED_IN_HOMEWORLD_INVENTORY_AND_TARGETED_SEARCH",
+      "historicalCandidateCount": 0,
+      "historicalConsumerCount": 0,
+      "specializedFilenameSearchPattern": "hook|crochet",
+      "homeworldFilenameMatches": [],
+      "notAMissingReferencedFile": true,
+      "specificRequiredDestinationPathSpecifiedBySource": null,
+      "existingCompositeCaveat": "Racks/outillage voisins ; un détail peint dans un rack ne livre pas un crochet indépendant.",
+      "referencePaths": [
+        "public/game/homeworld/v80/maintenance-rack.png",
+        "public/game/homeworld/v83/cargo-rack-right.png",
+        "public/game/homeworld/v84/training-rack-left.png"
+      ],
+      "specificAdmissionCriteria": [
+        "Crochet, embase/fixation et courbe de suspension lisibles, sans trophée fusionné au support.",
+        "Si mural, mesurer pivot au point de fixation et réserver un mur réel ; ne pas inventer un contact sol. Si autoportant, déclarer explicitement le pied.",
+        "Examiner le crochet de récompense WEBP V17/V18 déjà présent ; il est portatif/ornemental et hors contrat Homeworld, pas une absence globale de fichier crochet."
+      ],
+      "commonAdmissionCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT"
+      ],
+      "candidateStatus": "UNPRODUCED_IN_THIS_TASK; any later generated/reused file remains CANDIDATE_NOT_ADMITTED",
+      "humanValidated": false,
+      "integrationClaimed": false,
+      "sourceClosureClaimed": false
+    },
+    {
+      "id": "target-v81-68-236",
+      "label": "trappe",
+      "section": 68,
+      "sourceFamily": "RUE",
+      "productionFamily": "street-ground-access",
+      "provenance": "LORE_COMPATIBLE_ORIGINAL",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/235"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/235"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/235"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 68,
+          "line": 1896
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 240,
+            "idCell": {
+              "cell": "A240",
+              "value": "target-v81-68-236"
+            },
+            "labelCell": {
+              "cell": "D240",
+              "value": "trappe"
+            },
+            "historicalPresenceCell": {
+              "cell": "G240",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F240",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 240,
+            "idCell": {
+              "cell": "A240",
+              "value": "target-v81-68-236"
+            },
+            "labelCell": {
+              "cell": "C240",
+              "value": "trappe"
+            },
+            "historicalPresenceCell": {
+              "cell": "D240",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E240",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "catalogueIdLine": 1652,
+      "catalogueLabelLine": 1655,
+      "function": "Trappe dans la famille RUE ; élément d’accès au sol distinct d’une plaque de pavage.",
+      "functionAuthority": "Brief catalogue label/family is authoritative; elaboration and delivery choices below are a production proposal, not an already implemented gameplay contract.",
+      "sourceFramePivotContract": null,
+      "sourceFramePivotLimit": "Le catalogue ne fixe ni dimensions de livraison, rectangle de frame ni pivot pour cette cible. Mesurer le PNG natif effectivement obtenu et ses appuis/fixations ; ne pas inventer une métrologie déjà validée.",
+      "historicalV111Status": "MISSING",
+      "statusV112": "NON_CLOTURE_ART",
+      "scopedDisposition": "NO_INDEPENDENT_TARGET_SPRITE_IDENTIFIED_IN_HOMEWORLD_INVENTORY_AND_TARGETED_SEARCH",
+      "historicalCandidateCount": 0,
+      "historicalConsumerCount": 0,
+      "specializedFilenameSearchPattern": "hatch|trappe",
+      "homeworldFilenameMatches": [],
+      "notAMissingReferencedFile": true,
+      "specificRequiredDestinationPathSpecifiedBySource": null,
+      "existingCompositeCaveat": "Sol et panneaux voisins ; aucune trappe indépendante et ses états ouvert/fermé identifiés.",
+      "referencePaths": [
+        "public/game/homeworld/v81/paving-undercity.png",
+        "public/game/homeworld/v64/interior-panels.png",
+        "public/game/homeworld/v84/maintenance-console-right.png"
+      ],
+      "specificAdmissionCriteria": [
+        "Montrer cadre/rim et panneau/charnières ou prise d’ouverture ; projection au sol compatible avec paving-undercity.",
+        "Déclarer état fermé/ouvert choisi. Des états multiples, si produits, gardent cadre, dimensions et pivot stables.",
+        "Ne pas peindre un trou franchissable en décor sans contrat de collision ; distinguer épaisseur de sol et panneau vertical."
+      ],
+      "commonAdmissionCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT"
+      ],
+      "candidateStatus": "UNPRODUCED_IN_THIS_TASK; any later generated/reused file remains CANDIDATE_NOT_ADMITTED",
+      "humanValidated": false,
+      "integrationClaimed": false,
+      "sourceClosureClaimed": false
+    },
+    {
+      "id": "target-v81-73-295",
+      "label": "tuyau apparent",
+      "section": 73,
+      "sourceFamily": "BAS-QUARTIERS : PROPS",
+      "productionFamily": "industrial-hydraulics",
+      "provenance": "LORE_COMPATIBLE_ORIGINAL",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/294"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/294"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/294"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 73,
+          "line": 1985
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 299,
+            "idCell": {
+              "cell": "A299",
+              "value": "target-v81-73-295"
+            },
+            "labelCell": {
+              "cell": "D299",
+              "value": "tuyau apparent"
+            },
+            "historicalPresenceCell": {
+              "cell": "G299",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F299",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 299,
+            "idCell": {
+              "cell": "A299",
+              "value": "target-v81-73-295"
+            },
+            "labelCell": {
+              "cell": "C299",
+              "value": "tuyau apparent"
+            },
+            "historicalPresenceCell": {
+              "cell": "D299",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E299",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "catalogueIdLine": 2065,
+      "catalogueLabelLine": 2068,
+      "function": "Tuyau apparent de bas-quartier ; conduite de surface indépendante.",
+      "functionAuthority": "Brief catalogue label/family is authoritative; elaboration and delivery choices below are a production proposal, not an already implemented gameplay contract.",
+      "sourceFramePivotContract": null,
+      "sourceFramePivotLimit": "Le catalogue ne fixe ni dimensions de livraison, rectangle de frame ni pivot pour cette cible. Mesurer le PNG natif effectivement obtenu et ses appuis/fixations ; ne pas inventer une métrologie déjà validée.",
+      "historicalV111Status": "MISSING",
+      "statusV112": "NON_CLOTURE_ART",
+      "scopedDisposition": "NO_INDEPENDENT_TARGET_SPRITE_IDENTIFIED_IN_HOMEWORLD_INVENTORY_AND_TARGETED_SEARCH",
+      "historicalCandidateCount": 0,
+      "historicalConsumerCount": 0,
+      "specializedFilenameSearchPattern": "pipe|tuyau",
+      "homeworldFilenameMatches": [],
+      "notAMissingReferencedFile": true,
+      "specificRequiredDestinationPathSpecifiedBySource": null,
+      "existingCompositeCaveat": "La citerne contient plomberie/spigot intégrés ; aucun tuyau autonome. Ne pas extraire un détail peint.",
+      "referencePaths": [
+        "public/game/homeworld/v78/civic-water-cistern-right.png",
+        "public/game/homeworld/v84/maintenance-console-right.png"
+      ],
+      "specificAdmissionCriteria": [
+        "Segments, coudes, raccords et brides lisibles ; usure locale, sans machine/citerne complète.",
+        "Choisir pose murale ou sol et mesurer ses points d’attache/appuis ; orientation native, aucun miroir pour fabriquer l’autre vue.",
+        "Le robinet/plomberie de la citerne V78 existe comme détail composite ; ne pas le découper ou le compter comme tuyau livré."
+      ],
+      "commonAdmissionCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT"
+      ],
+      "candidateStatus": "UNPRODUCED_IN_THIS_TASK; any later generated/reused file remains CANDIDATE_NOT_ADMITTED",
+      "humanValidated": false,
+      "integrationClaimed": false,
+      "sourceClosureClaimed": false
+    },
+    {
+      "id": "target-v81-73-301",
+      "label": "pile scrap",
+      "section": 73,
+      "sourceFamily": "BAS-QUARTIERS : PROPS",
+      "productionFamily": "undercity-recovery",
+      "provenance": "LORE_COMPATIBLE_ORIGINAL",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/300"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/300"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/300"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 73,
+          "line": 1991
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 305,
+            "idCell": {
+              "cell": "A305",
+              "value": "target-v81-73-301"
+            },
+            "labelCell": {
+              "cell": "D305",
+              "value": "pile scrap"
+            },
+            "historicalPresenceCell": {
+              "cell": "G305",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F305",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 305,
+            "idCell": {
+              "cell": "A305",
+              "value": "target-v81-73-301"
+            },
+            "labelCell": {
+              "cell": "C305",
+              "value": "pile scrap"
+            },
+            "historicalPresenceCell": {
+              "cell": "D305",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E305",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "catalogueIdLine": 2107,
+      "catalogueLabelLine": 2110,
+      "function": "Pile de scrap/ferraille des bas-quartiers ; amas au sol distinct du rack de récupération.",
+      "functionAuthority": "Brief catalogue label/family is authoritative; elaboration and delivery choices below are a production proposal, not an already implemented gameplay contract.",
+      "sourceFramePivotContract": null,
+      "sourceFramePivotLimit": "Le catalogue ne fixe ni dimensions de livraison, rectangle de frame ni pivot pour cette cible. Mesurer le PNG natif effectivement obtenu et ses appuis/fixations ; ne pas inventer une métrologie déjà validée.",
+      "historicalV111Status": "MISSING",
+      "statusV112": "NON_CLOTURE_ART",
+      "scopedDisposition": "NO_INDEPENDENT_TARGET_SPRITE_IDENTIFIED_IN_HOMEWORLD_INVENTORY_AND_TARGETED_SEARCH",
+      "historicalCandidateCount": 0,
+      "historicalConsumerCount": 0,
+      "specializedFilenameSearchPattern": "scrap",
+      "homeworldFilenameMatches": [],
+      "notAMissingReferencedFile": true,
+      "specificRequiredDestinationPathSpecifiedBySource": null,
+      "existingCompositeCaveat": "Récupération/atelier voisins ; aucune pile de ferraille autonome identifiée.",
+      "referencePaths": [
+        "public/game/homeworld/v80/maintenance-rack.png",
+        "public/game/homeworld/v83/cargo-rack-right.png",
+        "public/game/homeworld/v75/architecture/convoy-workshop.png"
+      ],
+      "specificAdmissionCriteria": [
+        "Montrer amas asymétrique de pièces récupérées, contacts au sol et silhouette contenue ; pas une étagère ou des caisses ordonnées.",
+        "Matières Yautja locales, pièces originales ; éviter carcasse ou trophée canonique implicite.",
+        "Mesurer emprise au sol et ne pas bloquer passage public ni usage des ateliers."
+      ],
+      "commonAdmissionCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT"
+      ],
+      "candidateStatus": "UNPRODUCED_IN_THIS_TASK; any later generated/reused file remains CANDIDATE_NOT_ADMITTED",
+      "humanValidated": false,
+      "integrationClaimed": false,
+      "sourceClosureClaimed": false
+    },
+    {
+      "id": "target-v81-73-308",
+      "label": "échafaudage",
+      "section": 73,
+      "sourceFamily": "BAS-QUARTIERS : PROPS",
+      "productionFamily": "industrial-scaffold",
+      "provenance": "LORE_COMPATIBLE_ORIGINAL",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/307"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/307"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/307"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 73,
+          "line": 1998
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 312,
+            "idCell": {
+              "cell": "A312",
+              "value": "target-v81-73-308"
+            },
+            "labelCell": {
+              "cell": "D312",
+              "value": "échafaudage"
+            },
+            "historicalPresenceCell": {
+              "cell": "G312",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F312",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 312,
+            "idCell": {
+              "cell": "A312",
+              "value": "target-v81-73-308"
+            },
+            "labelCell": {
+              "cell": "C312",
+              "value": "échafaudage"
+            },
+            "historicalPresenceCell": {
+              "cell": "D312",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E312",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "catalogueIdLine": 2156,
+      "catalogueLabelLine": 2159,
+      "function": "Échafaudage des bas-quartiers ; structure temporaire indépendante de travail en façade.",
+      "functionAuthority": "Brief catalogue label/family is authoritative; elaboration and delivery choices below are a production proposal, not an already implemented gameplay contract.",
+      "sourceFramePivotContract": null,
+      "sourceFramePivotLimit": "Le catalogue ne fixe ni dimensions de livraison, rectangle de frame ni pivot pour cette cible. Mesurer le PNG natif effectivement obtenu et ses appuis/fixations ; ne pas inventer une métrologie déjà validée.",
+      "historicalV111Status": "MISSING",
+      "statusV112": "NON_CLOTURE_ART",
+      "scopedDisposition": "NO_INDEPENDENT_TARGET_SPRITE_IDENTIFIED_IN_HOMEWORLD_INVENTORY_AND_TARGETED_SEARCH",
+      "historicalCandidateCount": 0,
+      "historicalConsumerCount": 0,
+      "specializedFilenameSearchPattern": "scaffold|echafaudage",
+      "homeworldFilenameMatches": [],
+      "notAMissingReferencedFile": true,
+      "specificRequiredDestinationPathSpecifiedBySource": null,
+      "existingCompositeCaveat": "Portique/atelier existants ; pas un échafaudage autonome adapté aux façades.",
+      "referencePaths": [
+        "public/game/homeworld/v81/spaceport-gantry.png",
+        "public/game/homeworld/v75/architecture/convoy-workshop.png"
+      ],
+      "specificAdmissionCriteria": [
+        "Montrer montants, croisillons, pieds et plateau de travail ; structure entière autonome, sans bâtiment fusionné.",
+        "Raccord de façade et vide de circulation lisibles ; ne pas remplacer par grue ou portique du port.",
+        "Une image ne rend pas le plateau praticable ; support, accès et protection à qualifier séparément si parcours annoncé."
+      ],
+      "commonAdmissionCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT"
+      ],
+      "candidateStatus": "UNPRODUCED_IN_THIS_TASK; any later generated/reused file remains CANDIDATE_NOT_ADMITTED",
+      "humanValidated": false,
+      "integrationClaimed": false,
+      "sourceClosureClaimed": false
+    },
+    {
+      "id": "target-v81-74-310",
+      "label": "Générateur",
+      "section": 74,
+      "sourceFamily": "INDUSTRIEL",
+      "productionFamily": "industrial-power-thermal",
+      "provenance": "LORE_COMPATIBLE_ORIGINAL",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/309"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/309"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/309"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 74,
+          "line": 2005
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 314,
+            "idCell": {
+              "cell": "A314",
+              "value": "target-v81-74-310"
+            },
+            "labelCell": {
+              "cell": "D314",
+              "value": "Générateur"
+            },
+            "historicalPresenceCell": {
+              "cell": "G314",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F314",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 314,
+            "idCell": {
+              "cell": "A314",
+              "value": "target-v81-74-310"
+            },
+            "labelCell": {
+              "cell": "C314",
+              "value": "Générateur"
+            },
+            "historicalPresenceCell": {
+              "cell": "D314",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E314",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "catalogueIdLine": 2170,
+      "catalogueLabelLine": 2173,
+      "function": "Générateur de la famille INDUSTRIEL ; proposition de fonction : machine de production/énergie identifiable.",
+      "functionAuthority": "Brief catalogue label/family is authoritative; elaboration and delivery choices below are a production proposal, not an already implemented gameplay contract.",
+      "sourceFramePivotContract": null,
+      "sourceFramePivotLimit": "Le catalogue ne fixe ni dimensions de livraison, rectangle de frame ni pivot pour cette cible. Mesurer le PNG natif effectivement obtenu et ses appuis/fixations ; ne pas inventer une métrologie déjà validée.",
+      "historicalV111Status": "MISSING",
+      "statusV112": "NON_CLOTURE_ART",
+      "scopedDisposition": "NO_INDEPENDENT_TARGET_SPRITE_IDENTIFIED_IN_HOMEWORLD_INVENTORY_AND_TARGETED_SEARCH",
+      "historicalCandidateCount": 0,
+      "historicalConsumerCount": 0,
+      "specializedFilenameSearchPattern": "generator|generateur",
+      "homeworldFilenameMatches": [],
+      "notAMissingReferencedFile": true,
+      "specificRequiredDestinationPathSpecifiedBySource": null,
+      "existingCompositeCaveat": "Console/atelier statiques ; aucune machine génératrice autonome identifiée.",
+      "referencePaths": [
+        "public/game/homeworld/v84/maintenance-console-right.png",
+        "public/game/homeworld/v80/maintenance-rack.png",
+        "public/game/homeworld/v78/forge-workstation-left.png"
+      ],
+      "specificAdmissionCriteria": [
+        "Montrer carter/chambre de production, connexions de sortie et base propre ; silhouette distincte d’une console ou d’un transformateur.",
+        "Face maintenance/commande accessible et échelle cohérente ; ne pas ajouter d’icône ou texte humain moderne.",
+        "Si actif/animé revendiqué plus tard, vrais états natifs et preuve temporelle requis ; le sprite statique ne ferme pas une animation."
+      ],
+      "commonAdmissionCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT"
+      ],
+      "candidateStatus": "UNPRODUCED_IN_THIS_TASK; any later generated/reused file remains CANDIDATE_NOT_ADMITTED",
+      "humanValidated": false,
+      "integrationClaimed": false,
+      "sourceClosureClaimed": false
+    },
+    {
+      "id": "target-v81-74-311",
+      "label": "transformateur",
+      "section": 74,
+      "sourceFamily": "INDUSTRIEL",
+      "productionFamily": "industrial-power-thermal",
+      "provenance": "LORE_COMPATIBLE_ORIGINAL",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/310"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/310"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/310"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 74,
+          "line": 2006
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 315,
+            "idCell": {
+              "cell": "A315",
+              "value": "target-v81-74-311"
+            },
+            "labelCell": {
+              "cell": "D315",
+              "value": "transformateur"
+            },
+            "historicalPresenceCell": {
+              "cell": "G315",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F315",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 315,
+            "idCell": {
+              "cell": "A315",
+              "value": "target-v81-74-311"
+            },
+            "labelCell": {
+              "cell": "C315",
+              "value": "transformateur"
+            },
+            "historicalPresenceCell": {
+              "cell": "D315",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E315",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "catalogueIdLine": 2177,
+      "catalogueLabelLine": 2180,
+      "function": "Transformateur industriel ; machine distincte du générateur.",
+      "functionAuthority": "Brief catalogue label/family is authoritative; elaboration and delivery choices below are a production proposal, not an already implemented gameplay contract.",
+      "sourceFramePivotContract": null,
+      "sourceFramePivotLimit": "Le catalogue ne fixe ni dimensions de livraison, rectangle de frame ni pivot pour cette cible. Mesurer le PNG natif effectivement obtenu et ses appuis/fixations ; ne pas inventer une métrologie déjà validée.",
+      "historicalV111Status": "MISSING",
+      "statusV112": "NON_CLOTURE_ART",
+      "scopedDisposition": "NO_INDEPENDENT_TARGET_SPRITE_IDENTIFIED_IN_HOMEWORLD_INVENTORY_AND_TARGETED_SEARCH",
+      "historicalCandidateCount": 0,
+      "historicalConsumerCount": 0,
+      "specializedFilenameSearchPattern": "transformer|transformateur",
+      "homeworldFilenameMatches": [],
+      "notAMissingReferencedFile": true,
+      "specificRequiredDestinationPathSpecifiedBySource": null,
+      "existingCompositeCaveat": "Console et maintenance voisins ; aucun transformateur autonome identifié.",
+      "referencePaths": [
+        "public/game/homeworld/v84/maintenance-console-right.png",
+        "public/game/homeworld/v80/maintenance-rack.png",
+        "public/game/homeworld/v78/forge-workstation-left.png"
+      ],
+      "specificAdmissionCriteria": [
+        "Montrer noyau/bobinages ou dispositif de conversion et entrées/sorties reliables visuellement ; base et protections.",
+        "Silhouette indépendante ; pas une simple recoloration du générateur et pas une console seule.",
+        "Déclarer face de maintenance et orientation ; raccords et dégagements à vérifier en contexte."
+      ],
+      "commonAdmissionCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT"
+      ],
+      "candidateStatus": "UNPRODUCED_IN_THIS_TASK; any later generated/reused file remains CANDIDATE_NOT_ADMITTED",
+      "humanValidated": false,
+      "integrationClaimed": false,
+      "sourceClosureClaimed": false
+    },
+    {
+      "id": "target-v81-74-315",
+      "label": "radiateur",
+      "section": 74,
+      "sourceFamily": "INDUSTRIEL",
+      "productionFamily": "industrial-power-thermal",
+      "provenance": "LORE_COMPATIBLE_ORIGINAL",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/314"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/314"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/314"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 74,
+          "line": 2010
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 319,
+            "idCell": {
+              "cell": "A319",
+              "value": "target-v81-74-315"
+            },
+            "labelCell": {
+              "cell": "D319",
+              "value": "radiateur"
+            },
+            "historicalPresenceCell": {
+              "cell": "G319",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F319",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 319,
+            "idCell": {
+              "cell": "A319",
+              "value": "target-v81-74-315"
+            },
+            "labelCell": {
+              "cell": "C319",
+              "value": "radiateur"
+            },
+            "historicalPresenceCell": {
+              "cell": "D319",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E319",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "catalogueIdLine": 2205,
+      "catalogueLabelLine": 2208,
+      "function": "Radiateur industriel ; organe de dissipation thermique indépendant.",
+      "functionAuthority": "Brief catalogue label/family is authoritative; elaboration and delivery choices below are a production proposal, not an already implemented gameplay contract.",
+      "sourceFramePivotContract": null,
+      "sourceFramePivotLimit": "Le catalogue ne fixe ni dimensions de livraison, rectangle de frame ni pivot pour cette cible. Mesurer le PNG natif effectivement obtenu et ses appuis/fixations ; ne pas inventer une métrologie déjà validée.",
+      "historicalV111Status": "MISSING",
+      "statusV112": "NON_CLOTURE_ART",
+      "scopedDisposition": "NO_INDEPENDENT_TARGET_SPRITE_IDENTIFIED_IN_HOMEWORLD_INVENTORY_AND_TARGETED_SEARCH",
+      "historicalCandidateCount": 0,
+      "historicalConsumerCount": 0,
+      "specializedFilenameSearchPattern": "radiator|radiateur",
+      "homeworldFilenameMatches": [],
+      "notAMissingReferencedFile": true,
+      "specificRequiredDestinationPathSpecifiedBySource": null,
+      "existingCompositeCaveat": "Équipement industriel/forge voisins ; aucun radiateur autonome identifié.",
+      "referencePaths": [
+        "public/game/homeworld/v84/maintenance-console-right.png",
+        "public/game/homeworld/v80/maintenance-rack.png",
+        "public/game/homeworld/v78/forge-workstation-left.png"
+      ],
+      "specificAdmissionCriteria": [
+        "Montrer faisceau/ailettes et liaisons thermiques ; aucune ambiguïté avec une caisse, console ou foyer.",
+        "Silhouette entière et base/attache mesurée ; aucune flamme requise par le libellé.",
+        "Dégagement maintenance et exposition de la surface de dissipation à vérifier, sans promettre refroidissement gameplay."
+      ],
+      "commonAdmissionCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT"
+      ],
+      "candidateStatus": "UNPRODUCED_IN_THIS_TASK; any later generated/reused file remains CANDIDATE_NOT_ADMITTED",
+      "humanValidated": false,
+      "integrationClaimed": false,
+      "sourceClosureClaimed": false
+    },
+    {
+      "id": "target-v81-74-316",
+      "label": "pompe",
+      "section": 74,
+      "sourceFamily": "INDUSTRIEL",
+      "productionFamily": "industrial-hydraulics",
+      "provenance": "LORE_COMPATIBLE_ORIGINAL",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/315"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/315"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/315"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 74,
+          "line": 2011
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 320,
+            "idCell": {
+              "cell": "A320",
+              "value": "target-v81-74-316"
+            },
+            "labelCell": {
+              "cell": "D320",
+              "value": "pompe"
+            },
+            "historicalPresenceCell": {
+              "cell": "G320",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F320",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 320,
+            "idCell": {
+              "cell": "A320",
+              "value": "target-v81-74-316"
+            },
+            "labelCell": {
+              "cell": "C320",
+              "value": "pompe"
+            },
+            "historicalPresenceCell": {
+              "cell": "D320",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E320",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "catalogueIdLine": 2212,
+      "catalogueLabelLine": 2215,
+      "function": "Pompe industrielle ; machine de transfert fluide indépendante. Un atlas Pit de pompe/soupapes existe hors périmètre Homeworld.",
+      "functionAuthority": "Brief catalogue label/family is authoritative; elaboration and delivery choices below are a production proposal, not an already implemented gameplay contract.",
+      "sourceFramePivotContract": null,
+      "sourceFramePivotLimit": "Le catalogue ne fixe ni dimensions de livraison, rectangle de frame ni pivot pour cette cible. Mesurer le PNG natif effectivement obtenu et ses appuis/fixations ; ne pas inventer une métrologie déjà validée.",
+      "historicalV111Status": "MISSING",
+      "statusV112": "NON_CLOTURE_ART",
+      "scopedDisposition": "NO_INDEPENDENT_TARGET_SPRITE_IDENTIFIED_IN_HOMEWORLD_INVENTORY_AND_TARGETED_SEARCH",
+      "historicalCandidateCount": 0,
+      "historicalConsumerCount": 0,
+      "specializedFilenameSearchPattern": "pump|pompe",
+      "homeworldFilenameMatches": [],
+      "notAMissingReferencedFile": true,
+      "specificRequiredDestinationPathSpecifiedBySource": null,
+      "existingCompositeCaveat": "La spécification V78 appelle la citerne «cistern/pump gardenmodule», avec simple spigot intégré. Candidat composite réel, pas preuve d’une pompe industrielle indépendante.",
+      "referencePaths": [
+        "public/game/homeworld/v78/civic-water-cistern-right.png",
+        "public/game/homeworld/v84/maintenance-console-right.png"
+      ],
+      "specificAdmissionCriteria": [
+        "Examiner d’abord le candidat Pit natif life-03 : six cellules512², vue latérale, cooling valve unit ; cadrage, orientation oblique et fonction de pompe à qualifier avant nouvelle génération.",
+        "Si production nécessaire, montrer corps moteur/pompe, entrée et sortie fluide lisibles, appuis et face maintenance ; pas un simple robinet de citerne.",
+        "Aucun découpage/redessin du module V78 ou de l’atlas Pit ; le réemploi d’une cellule entière, s’il retenu, garde rectangle/pivot/source originaux."
+      ],
+      "commonAdmissionCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT"
+      ],
+      "candidateStatus": "UNPRODUCED_IN_THIS_TASK; any later generated/reused file remains CANDIDATE_NOT_ADMITTED",
+      "humanValidated": false,
+      "integrationClaimed": false,
+      "sourceClosureClaimed": false
+    },
+    {
+      "id": "target-v81-74-319",
+      "label": "valve",
+      "section": 74,
+      "sourceFamily": "INDUSTRIEL",
+      "productionFamily": "industrial-hydraulics",
+      "provenance": "LORE_COMPATIBLE_ORIGINAL",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/318"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/318"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/318"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 74,
+          "line": 2014
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 323,
+            "idCell": {
+              "cell": "A323",
+              "value": "target-v81-74-319"
+            },
+            "labelCell": {
+              "cell": "D323",
+              "value": "valve"
+            },
+            "historicalPresenceCell": {
+              "cell": "G323",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F323",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 323,
+            "idCell": {
+              "cell": "A323",
+              "value": "target-v81-74-319"
+            },
+            "labelCell": {
+              "cell": "C323",
+              "value": "valve"
+            },
+            "historicalPresenceCell": {
+              "cell": "D323",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E323",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "catalogueIdLine": 2233,
+      "catalogueLabelLine": 2236,
+      "function": "Valve industrielle ; organe de fermeture/réglage indépendant, distinct d’une machine complète.",
+      "functionAuthority": "Brief catalogue label/family is authoritative; elaboration and delivery choices below are a production proposal, not an already implemented gameplay contract.",
+      "sourceFramePivotContract": null,
+      "sourceFramePivotLimit": "Le catalogue ne fixe ni dimensions de livraison, rectangle de frame ni pivot pour cette cible. Mesurer le PNG natif effectivement obtenu et ses appuis/fixations ; ne pas inventer une métrologie déjà validée.",
+      "historicalV111Status": "MISSING",
+      "statusV112": "NON_CLOTURE_ART",
+      "scopedDisposition": "NO_INDEPENDENT_TARGET_SPRITE_IDENTIFIED_IN_HOMEWORLD_INVENTORY_AND_TARGETED_SEARCH",
+      "historicalCandidateCount": 0,
+      "historicalConsumerCount": 0,
+      "specializedFilenameSearchPattern": "valve",
+      "homeworldFilenameMatches": [],
+      "notAMissingReferencedFile": true,
+      "specificRequiredDestinationPathSpecifiedBySource": null,
+      "existingCompositeCaveat": "Spigot/commandes intégrés voisins ; aucune vanne autonome identifiée.",
+      "referencePaths": [
+        "public/game/homeworld/v78/civic-water-cistern-right.png",
+        "public/game/homeworld/v84/maintenance-console-right.png"
+      ],
+      "specificAdmissionCriteria": [
+        "Montrer corps, entrée/sortie et organe d’actionnement lisible, sans citerne complète fusionnée.",
+        "Déclarer pose au sol/en ligne/murale et mesurer ses ancrages ; ne pas compter la valve peinte dans la citerne V78 comme sprite autonome.",
+        "Le module Pit cooling valve unit est un voisin réel complet à examiner ; pas une admission automatique d’une valve indépendante."
+      ],
+      "commonAdmissionCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT"
+      ],
+      "candidateStatus": "UNPRODUCED_IN_THIS_TASK; any later generated/reused file remains CANDIDATE_NOT_ADMITTED",
+      "humanValidated": false,
+      "integrationClaimed": false,
+      "sourceClosureClaimed": false
+    },
+    {
+      "id": "target-v81-76-354",
+      "label": "alcôves",
+      "section": 76,
+      "sourceFamily": "PALAIS / ROI",
+      "productionFamily": "royal-alcove",
+      "provenance": "LORE_COMPATIBLE_ORIGINAL",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/353"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/353"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/353"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 76,
+          "line": 2061
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 358,
+            "idCell": {
+              "cell": "A358",
+              "value": "target-v81-76-354"
+            },
+            "labelCell": {
+              "cell": "D358",
+              "value": "alcôves"
+            },
+            "historicalPresenceCell": {
+              "cell": "G358",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F358",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 358,
+            "idCell": {
+              "cell": "A358",
+              "value": "target-v81-76-354"
+            },
+            "labelCell": {
+              "cell": "C358",
+              "value": "alcôves"
+            },
+            "historicalPresenceCell": {
+              "cell": "D358",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E358",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "catalogueIdLine": 2478,
+      "catalogueLabelLine": 2481,
+      "function": "Alcôves du palais/roi ; niches architecturales cérémonielles distinctes de la façade royale complète.",
+      "functionAuthority": "Brief catalogue label/family is authoritative; elaboration and delivery choices below are a production proposal, not an already implemented gameplay contract.",
+      "sourceFramePivotContract": null,
+      "sourceFramePivotLimit": "Le catalogue ne fixe ni dimensions de livraison, rectangle de frame ni pivot pour cette cible. Mesurer le PNG natif effectivement obtenu et ses appuis/fixations ; ne pas inventer une métrologie déjà validée.",
+      "historicalV111Status": "MISSING",
+      "statusV112": "NON_CLOTURE_ART",
+      "scopedDisposition": "NO_INDEPENDENT_TARGET_SPRITE_IDENTIFIED_IN_HOMEWORLD_INVENTORY_AND_TARGETED_SEARCH",
+      "historicalCandidateCount": 0,
+      "historicalConsumerCount": 0,
+      "specializedFilenameSearchPattern": "alcove|alcôve",
+      "homeworldFilenameMatches": [],
+      "notAMissingReferencedFile": true,
+      "specificRequiredDestinationPathSpecifiedBySource": null,
+      "existingCompositeCaveat": "Façade/pyramide/panneaux voisins ; aucune alcôve indépendante ni intérieur du palais déduit.",
+      "referencePaths": [
+        "public/game/homeworld/v78/palace-frontage-safe.png",
+        "public/game/homeworld/v81/royal-pyramid-front.png",
+        "public/game/homeworld/v64/interior-panels.png"
+      ],
+      "specificAdmissionCriteria": [
+        "Montrer niche(s), profondeur, cadre latéral/haut et seuil/appui dans une pièce native indépendante ; éviter façade entière ou simple panneau décoratif.",
+        "Langage monumental sobre et motifs locaux explicitement originaux ; aucun roi/emblème universel canonique inventé.",
+        "Fixation à un vrai mur, échelle du joueur, profondeur/occlusion et zone d’approche à qualifier. Le pluriel du libellé ne fixe pas un nombre de variantes livré."
+      ],
+      "commonAdmissionCriteriaIds": [
+        "COMMON-NATIVE",
+        "COMMON-IDENTITY",
+        "COMMON-SCALE",
+        "COMMON-CONTEXT",
+        "ARCHITECTURE-ACCESS"
+      ],
+      "candidateStatus": "UNPRODUCED_IN_THIS_TASK; any later generated/reused file remains CANDIDATE_NOT_ADMITTED",
+      "humanValidated": false,
+      "integrationClaimed": false,
+      "sourceClosureClaimed": false
+    }
+  ],
+  "limitations": [
+    "No image generated or file copied to repository. Only these two external map outputs written.",
+    "References dimensions/modes/SHA256 re-read from original files. Six Homeworld references and the Pit pump were also opened by a delegated read-only audit; the map writer opened the V17 hook. No artistic admission follows from those inspections. Parent should open the exact originals it chooses.",
+    "No human artistic validation claimed; no integration, gameplay completion, admission, workbook cell update or source closure.",
+    "LORE_COMPATIBLE_ORIGINAL denotes original local design compatible with project style; it does not establish canonical symbols, machinery or architecture."
+  ]
+}

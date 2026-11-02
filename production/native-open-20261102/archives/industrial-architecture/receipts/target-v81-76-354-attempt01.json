@@ -1,0 +1,220 @@
+{
+  "schemaVersion": 1,
+  "targetId": "target-v81-76-354",
+  "label": "alcôves",
+  "attempt": 1,
+  "family": "ARCHITECTURE_PALAIS",
+  "tool": "image_gen.imagegen",
+  "parameters": {
+    "transparent_background": true,
+    "referenced_image_paths": "omitted for new original generation",
+    "num_last_images_to_include": "omitted"
+  },
+  "prompt": "Create ONE ORIGINAL independent game architecture asset for an existing Yautja-inspired alien Homeworld city, as a complete single object, not an atlas, no grid, no labels or letters, no watermark, no people, no separate props. Transparent background with alpha, no background scene, no ground plane, no cast shadow beyond the object, absolutely no outer glow, vignette, haze or rectangular matte. The whole object must be visible, not clipped. Camera: orthographic three-quarter front/right view, looking down roughly 25–30 degrees, restrained perspective. Rendered 3D game sprite, angular monumental construction, near-black porous basalt (#282725), dark gunmetal structural work (#353838), worn antique bronze edge bands (#9a7446), very sparse warm amber recessed lights (#ffab3b). Fine material texture, broad readable forms, top-left warm light and subdued neutral fill. Original alien geometric relief motifs, no real-world writing or emblems. Keep this same material family for every part. Compose the whole silhouette SMALLER with very generous clean completely transparent margins on every side (at least 140 pixels if the canvas is around 1254 square); no tip, base, railing or bracket may approach the image edge. No image editing, no pasted source parts; create it natively. Specific subject: ONE independent PALACE ALCOVE MODULE, not several variants. A deep EMPTY architectural niche with a solid inset back wall, a shallow integral floor ledge, two substantial side pilasters and a heavy angular vaulted lintel connected into one complete unit. Clearly show the deep dark recessed interior from this three-quarter view; distinguish its recessed back from the side walls. The raised step at the bottom and top crown must both be fully visible. Dignified monumental basalt and antique bronze, subtle invented angular relief and a pair of dim amber lights in the side recesses. No throne, figure, skull, trophy, statue, furniture, banner, doorway through to outdoors, full palace, or disconnected props. The niche itself is the one whole object. One candidate, no atlas.",
+  "nativeSourcePath": "/workspace/generated_images/exec-20dbf0a1-df17-41f3-8003-b68323eb531e.png",
+  "candidatePath": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-76-354-alcoves-native.png",
+  "referencesOpened": [
+    "public/game/homeworld/v78/palace-frontage-safe.png",
+    "public/game/homeworld/v64/interior-panels.png"
+  ],
+  "referenceUse": "Previously opened real project PNGs informed the textual brief. No source image was supplied as conditioning and no source pixels were extracted.",
+  "visualAssessment": {
+    "status": "ASSISTANT_NATIVE_VIEW_ONLY_NOT_HUMAN_APPROVAL",
+    "openedNativeOutput": true,
+    "singleObjectNotGrid": true,
+    "fullStrongAlphaSilhouetteVisible": true,
+    "notes": [
+      "Single empty niche with deep recessed back wall, connected side pilasters, heavy lintel and visible floor step; no throne, person or separate assets.",
+      "Whole native silhouette visible. Fine faint alpha edge noise remains untouched; strong-alpha object has clear margin on all sides.",
+      "Source plural label alcôves is represented by ONE candidate module only; not a delivered set nor playable palace interior."
+    ]
+  },
+  "lore": "LORE_COMPATIBLE_ORIGINAL",
+  "humanValidated": false,
+  "pixelsEdited": false,
+  "inspection": {
+    "targetId": "target-v81-76-354",
+    "attempt": 1,
+    "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-76-354-alcoves-native.png",
+    "nativeSourcePath": "/workspace/generated_images/exec-20dbf0a1-df17-41f3-8003-b68323eb531e.png",
+    "bytes": 2036235,
+    "sha256": "378356c33ffced593db6604a87efe9aee902ee1849312fe8f9f96cdc32430c74",
+    "mode": "RGBA",
+    "dimensions": [
+      1133,
+      1388
+    ],
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "transparentPixels": 707169,
+    "alpha1or2Pixels": 7315,
+    "alpha1to8Pixels": 10613,
+    "thresholdMeasurements": {
+      "0": {
+        "bboxExclusive": [
+          0,
+          8,
+          1130,
+          1388
+        ],
+        "margins": [
+          0,
+          8,
+          3,
+          0
+        ],
+        "visiblePixels": 865435,
+        "edgeVisiblePixels": 81
+      },
+      "2": {
+        "bboxExclusive": [
+          120,
+          87,
+          1050,
+          1293
+        ],
+        "margins": [
+          120,
+          87,
+          83,
+          95
+        ],
+        "visiblePixels": 858120,
+        "edgeVisiblePixels": 0
+      },
+      "8": {
+        "bboxExclusive": [
+          122,
+          89,
+          1050,
+          1293
+        ],
+        "margins": [
+          122,
+          89,
+          83,
+          95
+        ],
+        "visiblePixels": 854822,
+        "edgeVisiblePixels": 0
+      }
+    },
+    "strict48pxAlphaGt0MarginPass": false,
+    "diagnostic48pxAlphaGt8MarginPass": true,
+    "diagnosticImageAnchor": {
+      "x": 586,
+      "y": 1292,
+      "status": "PROPOSED_BBOX_ANCHOR_NOT_RUNTIME_TESTED",
+      "rule": "Bottom-center alpha>8 enclosure. A wall-mounted object still needs an attachment pivot; this is not physical ground-contact proof."
+    },
+    "nativeByteExactCopy": true,
+    "pixelsEdited": false,
+    "runtimeIntegrated": false,
+    "humanValidated": false,
+    "status": "CANDIDAT_NON_ADMIS",
+    "limits": [
+      "All original canvas and pixels retained; no crop,resize,mirror,cleanup or compression.",
+      "Alpha thresholds2/8 are diagnostics and never replace the strict alpha>0 measurement.",
+      "Low alpha counts include antialiasing; border speckle and clipping need individual visual interpretation.",
+      "No in-game scale,collision,usage envelope,animation or artistic admission is established."
+    ]
+  },
+  "status": "CANDIDAT_NON_ADMIS",
+  "runtimeIntegrated": false,
+  "sourceClosureClaimed": false,
+  "sourceLocators": {
+    "catalogue": {
+      "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+      "jsonPointer": "/entries/353"
+    },
+    "v111Inventory": {
+      "path": "docs/v111-homeworld-art-inventory.json",
+      "jsonPointer": "/entries/353"
+    },
+    "activeV112Followup": {
+      "path": "docs/v112-homeworld-followup.json",
+      "jsonPointer": "/artTargets/353"
+    },
+    "brief": {
+      "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+      "section": 76,
+      "line": 2061
+    },
+    "workbookCells": [
+      {
+        "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+        "sheet": "CatalogueArtV111",
+        "part": "xl/worksheets/v111-sheet-110.xml",
+        "row": 358,
+        "idCell": {
+          "cell": "A358",
+          "value": "target-v81-76-354"
+        },
+        "labelCell": {
+          "cell": "D358",
+          "value": "alcôves"
+        },
+        "historicalPresenceCell": {
+          "cell": "G358",
+          "value": "MISSING"
+        },
+        "openArtCell": {
+          "cell": "F358",
+          "value": "NON_CLOTURE_ART"
+        }
+      },
+      {
+        "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+        "sheet": "CatalogueArtV112",
+        "part": "xl/worksheets/v112-sheet-119.xml",
+        "row": 358,
+        "idCell": {
+          "cell": "A358",
+          "value": "target-v81-76-354"
+        },
+        "labelCell": {
+          "cell": "C358",
+          "value": "alcôves"
+        },
+        "historicalPresenceCell": {
+          "cell": "D358",
+          "value": "MISSING"
+        },
+        "openArtCell": {
+          "cell": "E358",
+          "value": "NON_CLOTURE_ART"
+        }
+      }
+    ]
+  },
+  "sourceLocatorContext": "SNAPSHOT_HISTORIQUE: dated source audit 2026-11-02; historical V111/V112 cells are unchanged by this production.",
+  "requiredCriteriaIds": [
+    "COMMON-NATIVE",
+    "COMMON-IDENTITY",
+    "COMMON-SCALE",
+    "COMMON-CONTEXT",
+    "ARCHITECTURE-ACCESS"
+  ],
+  "targetSpecificLimits": [
+    "Source plural alcôves is represented by ONE candidate niche module, not a set of variants or a finished palace interior.",
+    "Wall placement, reference-character scale, approach and floor support remain unqualified."
+  ],
+  "frame": {
+    "rect": [
+      0,
+      0,
+      1133,
+      1388
+    ],
+    "grid": [
+      1,
+      1
+    ],
+    "frameCount": 1,
+    "wholeNativeCanvasRetained": true
+  },
+  "retryUsed": false,
+  "retryDecision": "No retry: no actual clipping or repeated-object grid observed. Padding failures and faint alpha noise remain explicit, never cleaned or force-admitted."
+}
