@@ -20,6 +20,7 @@ test('immutable Homeworld V112 publication executes all nine original assertions
  assert.equal(result.sha256,'b29aa412000717cdfd81be1a60e2c2f9d8489c0b8b2ed5d29404668d04dd1d02');
  assert.equal(result.originalTestsExecuted,true);assert.equal(result.currentRuntimeCovered,false);
  assert.equal(result.originalRuntimeFreezeCheckExecuted,true);assert.equal(result.originalWorkbookCheckExecuted,true);
+ assert.equal(result.originalNativeInventoryCheckExecuted,true);
  assert.equal(result.runtimeBrowserEvidenceReexecuted,false);assert.equal(result.nativeExcelExecuted,false);
 });
 test('private V112 publication rejects altered source and Git identity while keeping current files untouched',async()=>{

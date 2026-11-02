@@ -27,6 +27,7 @@ const METADATA=Object.freeze([
  {path:'docs/v112-homeworld-followup.json',gitBlobSha:'e340461c6294133658585d2b88b864363529baae'},
  {path:'docs/v112-homeworld-source.json',gitBlobSha:'e054847e5f5c7269136f8e808fff9cc199228d03'},
  {path:'docs/v112-runtime-freeze.json',gitBlobSha:'e77d41874c4d2162b8189b6e031d38ab9fc7b69d'},
+ {path:'docs/v112-runtime-public-inputs.json',gitBlobSha:'59e6b5128312d31069ce13df2a1bd1e72c656292'},
  {path:'docs/v112-homeworld-followup-qa.json',gitBlobSha:'3b2f0f2f82a23c27fec624b43176174de35ace47'},
 ]);
 const WORKBOOK=Object.freeze({path:'docs/YAUTJA_V112_SUIVI.xlsx',bytes:9383908,
@@ -189,6 +190,7 @@ export async function checkHistoricalHomeworldPublicationV112({tests=false,repos
   const environment={...process.env};delete environment.NODE_TEST_CONTEXT;
   const historicalCommands=[
    ['scripts/snapshot-runtime-v112.mjs','--check','docs/v112-runtime-freeze.json'],
+   ['scripts/build-runtime-public-inputs-v112.mjs','--check'],
    ['scripts/build-homeworld-followup-v112.mjs','--check'],
   ];
   console.log(JSON.stringify({scope:'Immutable Homeworld V112 publication only; current runtime is tested separately',
@@ -206,14 +208,17 @@ export async function checkHistoricalHomeworldPublicationV112({tests=false,repos
   }
   assert.equal(commandOutput[0].status,'PASS');
   assert.equal(commandOutput[0].path,'docs/v112-runtime-freeze.json');
-  assert.equal(commandOutput[1].result,'PASS_STRUCTURE');
-  const result={workbookSha256:commandOutput[1].sha256,bytes:commandOutput[1].bytes};
+  assert.equal(commandOutput[1].status,'PASS');
+  assert.equal(commandOutput[1].path,'docs/v112-runtime-public-inputs.json');
+  assert.equal(commandOutput[1].bytes,12992);
+  assert.equal(commandOutput[2].result,'PASS_STRUCTURE');
+  const result={workbookSha256:commandOutput[2].sha256,bytes:commandOutput[2].bytes};
   const integrity=await verifyHistoricalHomeworldPublicationV112(context);
   assert.equal(result.workbookSha256,WORKBOOK.sha256);assert.equal(result.bytes,WORKBOOK.bytes);
   return {result:'PASS_HISTORICAL_HOMEWORLD_PUBLICATION_V112',...integrity,
    originalTestFiles:1,originalAssertions:HOMEWORLD_PUBLICATION_TEST_V112.assertions,originalTestsExecuted:tests,
    restoredSources:context.restoredSources,sha256:result.workbookSha256,bytes:result.bytes,
-   originalRuntimeFreezeCheckExecuted:true,originalWorkbookCheckExecuted:true,
+   originalRuntimeFreezeCheckExecuted:true,originalNativeInventoryCheckExecuted:true,originalWorkbookCheckExecuted:true,
    runtimeBrowserEvidenceReexecuted:false,nativeExcelExecuted:false};
  }finally{await context.dispose();}
 }

@@ -212,9 +212,13 @@ test('V111 Save11 to12 preserves the genuine V110 campaign and B document while 
   const previous=old.parseSaveImport(JSON.stringify(legacy)).save;assert(previous);
   const migrated=saves.parseSaveImport(JSON.stringify(previous)).save;assert(migrated);
   assert.deepEqual(migrated,{...previous,version:12,
+    appearance:{...previous.appearance,skinMaterialId:null,dreadMaterialId:null,outfitMaterialId:null},
     inventory:{...previous.inventory,fieldToolIds:[],harvestV112:emptyHarvestInventoryV112()},
     settings:{...previous.settings,huntAccessibility:normalizeHuntAccessibilityV112(undefined)},
-  },'every pre-existing campaign field survives; additive hunting inventory and accessibility use their real production defaults');
+  },'every pre-existing campaign field survives; additive hunting, accessibility and material fields use their production defaults');
+  const {skinMaterialId,dreadMaterialId,outfitMaterialId}=migrated.appearance;
+  assert.deepEqual({skinMaterialId,dreadMaterialId,outfitMaterialId},
+    {skinMaterialId:null,dreadMaterialId:null,outfitMaterialId:null},'V113 does not select a material for a genuine V110 appearance');
   assert.equal(JSON.stringify(migrated.homeworld.archivePlaqueV109),JSON.stringify(previous.homeworld.archivePlaqueV109));
   assert.equal(migrated.homeworld.archiveContinuationV111,undefined,'migration does not create or auto-start an A continuation');
 });

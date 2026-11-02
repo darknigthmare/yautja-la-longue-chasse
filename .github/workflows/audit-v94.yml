@@ -938,7 +938,6 @@ jobs:
         run: |
           python3 scripts/audit-open-workstreams-v112.py --check
           node scripts/build-pit-backward-art-v112.mjs --check
-          node scripts/build-runtime-public-inputs-v112.mjs --check
           node scripts/check-homeworld-publication-history-v112.mjs --check
       - name: Verify live Homeworld guidance in the real React atlas and native Worker
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
