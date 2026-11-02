@@ -6,6 +6,8 @@ Les projections V103 conservent leurs deux contrats : projection canonique expli
 
 ## Vérifications réellement exécutées
 
+Le contrôle global du commit publié `403e046a13ff4aa27f210de4da5b10aabfe66e91` a passé toutes ses étapes sauf la comparaison du classeur de coordination daté du 1er novembre avec les fichiers courants. Le seul XLSX divergent de cet ancien inventaire est le classeur chasse, légitimement enrichi depuis. Le wrapper `scripts/check-resume-workbook-history-20261101.py` conserve les octets publiés de l’inventaire et du classeur de coordination ; il restaure leurs 36 entrées dans une copie temporaire épinglée à `1e5a8fbc8553e0d68991589f54aa1ef4dcab0a37`, puis exécute les deux scripts originaux sans modifier leurs assertions. La régénération exacte de 62 258 octets et la vérification de 4 437 cellules / 484 liens passent ; les 33 PR datées et les 56 exigences source ouvertes restent intactes. Ce contrôle historique ne qualifie pas le runtime courant. Les sept autres workflows GitHub Actions du commit `403e046a` ont réussi, dont les 360 assertions natives chasse.
+
 - [359 assertions de chasse](hunting-native-359.log), dont le journal de reprise, les signaux à deux lignes et la sélection de carcasse portée, sur l’état de travail ensuite committé dans `9e463aa13`.
 - [52 assertions Homeworld/planètes](homeworld-planets-52.log) sur l’arbre réuni : contacts conservés, trajets réels du moteur, reçus originaux et refus de migrations invalides, import concurrent et projection V103/V115.
 - [TypeScript](application-types.log) et [ESLint ciblé](changed-source-lint.log) passent sur l’arbre réuni.

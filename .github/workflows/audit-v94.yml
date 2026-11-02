@@ -955,9 +955,7 @@ jobs:
           node scripts/check-hunt-integration-source-v112.mjs --check
       - name: Verify the dated PR and open-workstream coordination workbook
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
-        run: |
-          python3 scripts/build-resume-workbook-20261101.py --check
-          python3 scripts/verify-resume-workbook-20261101.py
+        run: python3 scripts/check-resume-workbook-history-20261101.py
       - name: Verify live Homeworld guidance in the real React atlas and native Worker
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: node scripts/qa-homeworld-live-guidance-v112.mjs
