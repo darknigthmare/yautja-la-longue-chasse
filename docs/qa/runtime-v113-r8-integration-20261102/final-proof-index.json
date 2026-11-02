@@ -95,8 +95,8 @@
     },
     {
       "path": ".github/workflows/audit-v94.yml",
-      "bytes": 100089,
-      "sha256": "8d81bb214f27f3c86fb80036b5962d4bb5dfb6d40cbec5394334411c95ffcad8"
+      "bytes": 99829,
+      "sha256": "016769446148ca68469c13095c5795cb7ca3ad657c5168222e38366ae78bce20"
     },
     {
       "path": ".github/workflows/open-production-v113.yml",
@@ -127,6 +127,11 @@
       "path": "docs/qa/runtime-v113-r8-integration-20261102/ci-cold-workbooks/real-clone-verification.json",
       "bytes": 1784,
       "sha256": "99d282ad23618ae34ce9409a5dbea8bf7cf4c99f7ff3a87497a906fe1ff03505"
+    },
+    {
+      "path": "docs/qa/runtime-v113-r8-integration-20261102/ci-current-selection-once.json",
+      "bytes": 2386,
+      "sha256": "8d7bcf730ece42526283a94ea8558abea70292509eaf99709291bb57c7d71906"
     }
   ],
   "coldCheckoutChecks": {
@@ -135,5 +140,11 @@
     "workbooks": "PASS_5_V113_AND_10_V114_TESTS_PINNED_PILLOW_12_3_0",
     "hostedGitHubActionsExecutedByTheseChecks": false,
     "newBuildOrBrowserExecutedByTheseChecks": false
+  },
+  "ciSelection": {
+    "currentV112Files": 41,
+    "currentV112Invocations": 1,
+    "historicalR7SuiteInvocations": 1,
+    "originalAssertionsRemoved": 0
   }
 }

@@ -1027,9 +1027,24 @@ jobs:
         run: node node_modules/next/dist/bin/next typegen
       - name: Check application TypeScript
         run: npm run typecheck
-      - name: Exercise current V112 hunting mechanics and invariants
+      - name: Exercise every current V112 model except its separately preserved historical publication
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
-        run: node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v112.test.mjs
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import {spawnSync} from 'node:child_process';
+          const files = fs.readdirSync('tests').filter(file =>
+            file.endsWith('-v112.test.mjs') && file !== 'homeworld-excel-followup-v112.test.mjs'
+          ).sort().map(file => 'tests/' + file);
+          if (!files.length) throw new Error('No current V112 model tests selected');
+          console.log('Current V112 application tests:\n' + files.join('\n'));
+          const result = spawnSync(process.execPath, [
+            '--experimental-strip-types', '--test', '--test-reporter=spec', '--test-concurrency=1', ...files,
+          ], {stdio: 'inherit'});
+          if (result.error) throw result.error;
+          if (!Number.isInteger(result.status) || result.status < 0) throw new Error('V112 tests did not complete: ' + result.signal);
+          process.exitCode = result.status;
+          NODE
       - name: Verify deterministic V112 workbook and discovery resources
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: |
@@ -1362,24 +1377,6 @@ jobs:
         run: |
           node scripts/check-homeworld-history-v112.mjs --check --tests
           node scripts/check-excel-history-v112.mjs --check --tests
-      - name: Exercise every current V112 model except its separately preserved historical publication
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
-        run: |
-          node --input-type=module <<'NODE'
-          import fs from 'node:fs';
-          import {spawnSync} from 'node:child_process';
-          const files = fs.readdirSync('tests').filter(file =>
-            file.endsWith('-v112.test.mjs') && file !== 'homeworld-excel-followup-v112.test.mjs'
-          ).sort().map(file => 'tests/' + file);
-          if (!files.length) throw new Error('No current V112 model tests selected');
-          console.log('Current V112 application tests:\n' + files.join('\n'));
-          const result = spawnSync(process.execPath, [
-            '--experimental-strip-types', '--test', '--test-reporter=spec', '--test-concurrency=1', ...files,
-          ], {stdio: 'inherit'});
-          if (result.error) throw result.error;
-          if (!Number.isInteger(result.status) || result.status < 0) throw new Error('V112 tests did not complete: ' + result.signal);
-          process.exitCode = result.status;
-          NODE
       - name: Preserve exact historical R7 once (nine original assertions and three CLI; currentRuntimeCovered=false)
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         # The five capsule tests also exercise tampering and real private Git bootstrap.
