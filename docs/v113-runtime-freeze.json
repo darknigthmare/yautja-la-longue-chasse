@@ -5,8 +5,8 @@
     "bytes": 264999,
     "sha256": "8eee8a5f5a043f2a67477bc6bcff97fffb1ee1666864bd7aed60c7a6c21ca138"
   },
-  "files": 1917,
-  "bytes": 1089231031,
+  "files": 1964,
+  "bytes": 1089650270,
   "entries": [
     {
       "path": ".openai/hosting.json",
@@ -410,8 +410,8 @@
     },
     {
       "path": "app/game/GameReserveV66.tsx",
-      "bytes": 28413,
-      "sha256": "d0ce8665bae5b3036ec1a05715253a610f842647cc626b2fe0cdb9dd5f8cfef8"
+      "bytes": 27931,
+      "sha256": "b145904c88f81b45495c17ad68eb9699cae2475c9134e922ccbf0be4a59f9448"
     },
     {
       "path": "app/game/GlassDesertExpedition.module.css",
@@ -2075,8 +2075,8 @@
     },
     {
       "path": "app/game/discoverySignalsV112.ts",
-      "bytes": 1825,
-      "sha256": "66869868bacfb31ff9cc17eeea5b5ac0d914ab04f4c0767529438464c3ac8adc"
+      "bytes": 2944,
+      "sha256": "eaac00b22e9976499f2a7ce1e0439ba33eba0d2fd5aa1f40faa9c9887d4b6349"
     },
     {
       "path": "app/game/earthGeoReferenceV147.ts",
@@ -4230,8 +4230,8 @@
     },
     {
       "path": "app/game/systems/huntRitesRuntimeV77.ts",
-      "bytes": 12775,
-      "sha256": "6f06fd17fe2557d58a018dc940f298913d507c4f7efc8ff7f24e415db9efe174"
+      "bytes": 13349,
+      "sha256": "fa9098ff0f1c34cfb7849e515556398564bcd5c0d7f3439f4216a0338b318ab3"
     },
     {
       "path": "app/game/systems/huntStructuralBarrierV94.ts",
@@ -8959,6 +8959,16 @@
       "sha256": "d101b1bdb9b4c7da777fc0a911351450941c0646989f55d0fa5579195747c062"
     },
     {
+      "path": "scripts/build-homeworld-followup-v111.mjs",
+      "bytes": 28365,
+      "sha256": "f0f9de97887ce167684b840933fcb275255fd234b936e29d6caa70a3997d45e2"
+    },
+    {
+      "path": "scripts/build-hunt-mechanics-workbook-v112.mjs",
+      "bytes": 16836,
+      "sha256": "433ba188a5752831cf535c87a35e1cfe218f0fddaaeff546fcbc46ad98ddfd45"
+    },
+    {
       "path": "scripts/build-pit-backward-art-v112.mjs",
       "bytes": 10075,
       "sha256": "c6d39a1d54a52e36bf8e897cb416f3d96082e287279c6f71c415119e622d4cc3"
@@ -8982,6 +8992,11 @@
       "path": "scripts/campaign-browser-helpers.mjs",
       "bytes": 1399,
       "sha256": "e2498c702c844d41a902697cbd4e2058c406c180f17b5bd990f530902cdf7aea"
+    },
+    {
+      "path": "scripts/check-excel-history-v112.mjs",
+      "bytes": 12834,
+      "sha256": "e15e5931523a0645753e64d5eec5a3d3a3f22495f10bf41973c834ced4fe50e0"
     },
     {
       "path": "scripts/check-homeworld-publication-history-v112-r7.mjs",
@@ -9079,6 +9094,11 @@
       "sha256": "54bb7a9722fcfb9b8384ff64d17b34a107e7cc798efbe5c16fdca86c5513810c"
     },
     {
+      "path": "scripts/qa-discovery-hud-layout-v112.mjs",
+      "bytes": 5619,
+      "sha256": "880524c808ee32aa5544e4d3f8d119fd93ada92bc7e349fae49882f7be3c7cc9"
+    },
+    {
       "path": "scripts/qa-homeworld-coherence-v110.mjs",
       "bytes": 36314,
       "sha256": "7a5504b716c36388254ce329d8c8d272580e76a56943bfb34a3dc3b0bd30f44d"
@@ -9165,8 +9185,8 @@
     },
     {
       "path": "scripts/runtime-v113-inputs.json",
-      "bytes": 3218,
-      "sha256": "40d5735926dc3e2eb55aa3ea2ee9a492b2afe2956ac6de2c461106ae636db06d"
+      "bytes": 5929,
+      "sha256": "cf753fd8e24876cb1c8795cf9eeead224fdae929a45cafb38507a98824fbf248"
     },
     {
       "path": "scripts/snapshot-runtime-v107.mjs",
@@ -9224,6 +9244,16 @@
       "sha256": "be3f290981c601dc294a7be55e38e7422d0b354b12b25f9e9e73acb21480dc73"
     },
     {
+      "path": "tests/canopy-traversal-v112.test.mjs",
+      "bytes": 11629,
+      "sha256": "9c0f2f57e91a925b4c51a20a5f45a28ca33f21c7c77f5840a3b24fd7bc414391"
+    },
+    {
+      "path": "tests/carcass-anatomy-v112.test.mjs",
+      "bytes": 8945,
+      "sha256": "bae476edffa54daab2169cc86b2674c1f8b428a4ade47c0f9ccdc98aff81de56"
+    },
+    {
       "path": "tests/cloud-account-gamepad-isolation-v71.test.mjs",
       "bytes": 2215,
       "sha256": "8899081075d17bbe7a75d6bf04889b8295dc0e96484e4423c94c7cc1ff272abd"
@@ -9234,6 +9264,26 @@
       "sha256": "cc504e152aa027806eb74e2452db30ee05cd09b99c859589ad8582b69b621453"
     },
     {
+      "path": "tests/corpse-discovery-v112.test.mjs",
+      "bytes": 15113,
+      "sha256": "4be65421b5151fa8576bce328a949b3538c233dc750dfa140e280698b9e25cf8"
+    },
+    {
+      "path": "tests/discovery-signals-hud-v112.test.mjs",
+      "bytes": 5275,
+      "sha256": "9423d1a6bfb1fa6cb024415e4313697acb1a2c954dbd616f74e1db70d03732e8"
+    },
+    {
+      "path": "tests/excel-history-preservation-v112.test.mjs",
+      "bytes": 3136,
+      "sha256": "069772b6e96debf65d48c0744889bd6b255a023905183f8e9f6d9c65df04b6ab"
+    },
+    {
+      "path": "tests/field-stash-v112.test.mjs",
+      "bytes": 7771,
+      "sha256": "2cdb4f86f5ee52317d097c776ee652ea6001a3bd2716ad6d35e729f351138dba"
+    },
+    {
       "path": "tests/fixtures/excel-history-v111-homeworld-v112.json",
       "bytes": 1087365,
       "sha256": "d4bf56b2e785959bc2c0217bfd308d321707a9ecb5bc52b22dd70a1b6154572a"
@@ -9242,6 +9292,11 @@
       "path": "tests/fixtures/excel-history-v111-homeworld-v112.json.gz",
       "bytes": 11664783,
       "sha256": "972cb71ff3b3448a7d298f7d8628d70783864f7b8b9debe3594b3bcf078741c6"
+    },
+    {
+      "path": "tests/fixtures/homeworld-connector-detour-03cf-v113.test.mjs.txt",
+      "bytes": 15933,
+      "sha256": "a94b30426247c0a44f321df89f00dd3307fa108fded61e1a17ed7308c7c4216e"
     },
     {
       "path": "tests/fixtures/homeworld-publication-r7-v113.json.gz",
@@ -9389,6 +9444,11 @@
       "sha256": "cb640cff66b92c60657944c9a1021f5bebd948d2c58e0d13cfdd6f9a292406c9"
     },
     {
+      "path": "tests/harvest-inventory-v112.test.mjs",
+      "bytes": 15083,
+      "sha256": "d2f546770728b059e4af16e2c27cf9d743ccb57e4823663bbb567a4642eae072"
+    },
+    {
       "path": "tests/helpers/archive-continuation-v111-route.mjs",
       "bytes": 3219,
       "sha256": "fec3fe26b532bebd2cab721ba01672e92b0de2012e50bc323cffd1b13656f315"
@@ -9479,6 +9539,21 @@
       "sha256": "34ea359f2de040706caf2453bae90206e5508e85f955a4c3bb4b332fab3266db"
     },
     {
+      "path": "tests/homeworld-collision-cost-v113.test.mjs",
+      "bytes": 9241,
+      "sha256": "bbbdd469effdd7d56d8788a536ebb2d584bca495d67afaf3843d3757f221690d"
+    },
+    {
+      "path": "tests/homeworld-connector-detour-history-v113.test.mjs",
+      "bytes": 2817,
+      "sha256": "f837e348778a17e912a6f0f0c216c1b4261f02df0d56dcf8abc289df77b19b09"
+    },
+    {
+      "path": "tests/homeworld-connector-detour-v113.test.mjs",
+      "bytes": 16178,
+      "sha256": "5300d27253191870592a77141f2211b4642a707e99e6a70cfc47e2832d89a5c4"
+    },
+    {
       "path": "tests/homeworld-continuation-integration-v111.test.mjs",
       "bytes": 26100,
       "sha256": "5330aee6308f20c76fa1a269f082ab12138eda9a79b55753c20337122d8e3a3a"
@@ -9487,6 +9562,11 @@
       "path": "tests/homeworld-current-production-v113.test.mjs",
       "bytes": 7327,
       "sha256": "60c1dd6bba8abaa4de94c6036770516aa7ba06b96ba64943a8199a9d8eab9069"
+    },
+    {
+      "path": "tests/homeworld-ecotones-v112.test.mjs",
+      "bytes": 11786,
+      "sha256": "f403ca844ff42d9a31be36284f64cd9d7feef3c4037ead0b2efdd49ca1d342f2"
     },
     {
       "path": "tests/homeworld-evidence-v110.test.mjs",
@@ -9504,9 +9584,29 @@
       "sha256": "f482bb8be489a11cd58e13efcfeea1c997bdcccb6649fa11aee3e0b83205cc70"
     },
     {
+      "path": "tests/homeworld-excel-history-v112.test.mjs",
+      "bytes": 4133,
+      "sha256": "046ca0db32eafab9d8ff6ce7942adb9a913ea7284502fdd7cf5bdb8bd4115681"
+    },
+    {
       "path": "tests/homeworld-forge-fire-v113.test.mjs",
       "bytes": 3265,
       "sha256": "f8fda7b15da367fd143d527881370045aaac429685314113057944d90f48efca"
+    },
+    {
+      "path": "tests/homeworld-geometry-recovery-integration-v112.test.mjs",
+      "bytes": 13817,
+      "sha256": "b63cd25fbe7014bfbc7fa7e5d5300aafa2750b80008e0b5442c57a9288ac7396"
+    },
+    {
+      "path": "tests/homeworld-geometry-recovery-matrix-v112.test.mjs",
+      "bytes": 10533,
+      "sha256": "616a5307d4b320a965c2200c625cd36a3f9b3e3e71a416ff9434c75db81efb73"
+    },
+    {
+      "path": "tests/homeworld-geometry-recovery-v112.test.mjs",
+      "bytes": 10774,
+      "sha256": "ebca0af94392acec7c673c2f4b9fbb3d6996ca56a53c1d63f1c720cb1ee91d8a"
     },
     {
       "path": "tests/homeworld-ground-joints-v112.test.mjs",
@@ -9524,6 +9624,96 @@
       "sha256": "4a253c413c1ba707bb2cd44dd692bd752e172339f56250eac28d1a5e4b4dde0f"
     },
     {
+      "path": "tests/homeworld-mobility-v112.test.mjs",
+      "bytes": 14880,
+      "sha256": "643b5ecf1ead9d9d142b319ddb560cf91a1777a3bd009e9654feda46aab6b6fc"
+    },
+    {
+      "path": "tests/homeworld-motion-source-contracts-v113.test.mjs",
+      "bytes": 5063,
+      "sha256": "c8d43ad3a66edacd767af2f1d95d013e7c170496ad5b2b2f23efb0b8bd7c5ce4"
+    },
+    {
+      "path": "tests/homeworld-natural-placements-v112.test.mjs",
+      "bytes": 6475,
+      "sha256": "5a92c1feae273cd50874d5e8d220f7f6a06ca50e3e8c96cc901c5fa0f5e0df03"
+    },
+    {
+      "path": "tests/homeworld-natural-rock-faces-v112.test.mjs",
+      "bytes": 5398,
+      "sha256": "7ea0622b080fec7c74d2f2e795b1f9d1d5af7ac54eef18da83fb1f335ee77a34"
+    },
+    {
+      "path": "tests/homeworld-navigation-cost-v113.test.mjs",
+      "bytes": 2317,
+      "sha256": "7e840e864d905671e1941eae7e7de122224e49004ad2bd2649b9c43282e459b8"
+    },
+    {
+      "path": "tests/homeworld-public-life-v112.test.mjs",
+      "bytes": 8743,
+      "sha256": "9f64846eb196fc88fd76b56c37ca605f829de12169dd59151cc0b51c05e08925"
+    },
+    {
+      "path": "tests/homeworld-public-places-v112.test.mjs",
+      "bytes": 7594,
+      "sha256": "2f14201b12959e75ce6505f7e27619b454852aeee0e2531e8afec5d73da4ba43"
+    },
+    {
+      "path": "tests/homeworld-route-cancellation-v113.test.mjs",
+      "bytes": 13265,
+      "sha256": "bab9727007c2fa9d3ba990383a130c3874598e22886237c0bdb69debc61f1df2"
+    },
+    {
+      "path": "tests/homeworld-spatial-v112.test.mjs",
+      "bytes": 4034,
+      "sha256": "826c4b5cf531c4812ccf3e7f4ed344af69b5f8b2fde3753afb37e64d27dc5e07"
+    },
+    {
+      "path": "tests/homeworld-world-checkpoint-v77.test.mjs",
+      "bytes": 2053,
+      "sha256": "5cfd30bc8402ea15b82cda082c7fb5bada148e522987cbc4fc9871d89eea9497"
+    },
+    {
+      "path": "tests/homeworld-world-codex-v77.test.mjs",
+      "bytes": 3139,
+      "sha256": "0b24e1659821b710b1cd26b3477fbcd73e561d905a7afa9d58e5d4b6afc65745"
+    },
+    {
+      "path": "tests/homeworld-world-native-v77.test.mjs",
+      "bytes": 4761,
+      "sha256": "339de377b1cc724d598d09c847c06130a0036693f8c60511d460d5f53877471a"
+    },
+    {
+      "path": "tests/homeworld-world-navigation-v77.test.mjs",
+      "bytes": 1803,
+      "sha256": "7393183826d31650f4cab0d72f0e71f5600ff2ae8ccdc850466c6c5b124d5aaa"
+    },
+    {
+      "path": "tests/homeworld-world-v77.test.mjs",
+      "bytes": 5059,
+      "sha256": "d1f0168a84ea2bec5cf12d1ef0a4cb08e9aa5942fdc041575d502bedaf7ed808"
+    },
+    {
+      "path": "tests/hunt-accessibility-v112.test.mjs",
+      "bytes": 25967,
+      "sha256": "c325b2c74222db30ac48fff436d5f68e9c407de54133d25c1b20e53e12ae035f"
+    },
+    {
+      "path": "tests/hunt-canopy-runtime-v112.test.mjs",
+      "bytes": 16414,
+      "sha256": "45f81414d59d8c2567e0a48531ff055a1026a7d2ef9a998991ae40cf951cc69a"
+    },
+    {
+      "path": "tests/hunt-carcass-runtime-v112.test.mjs",
+      "bytes": 9973,
+      "sha256": "224154ee9d446eabc3895d876bf8f8b81459cb1c936269801e2a6c1e825e1f01"
+    },
+    {
+      "path": "tests/hunt-carried-corpse-menu-v112.test.mjs",
+      "bytes": 10092,
+      "sha256": "80bd2d401e8f33d8a756e7591553958dfd90235a3db9d9dfb47f68396cb09ebc"
+    },
+    {
       "path": "tests/hunt-catalogue-contract-v112.test.mjs",
       "bytes": 14315,
       "sha256": "695460bdf1b91ce649be16f2ac63c6901fa21ef8b631455a18052969c9228de4"
@@ -9534,9 +9724,44 @@
       "sha256": "1f5dbf1e6720642ffe42a642963808c543e61095b9e9e31e38de88685e7f2e01"
     },
     {
+      "path": "tests/hunt-field-load-v112.test.mjs",
+      "bytes": 5694,
+      "sha256": "8fc6334c08b0a5877c87c333b8b768090b527c688016e2df597cd4764094622d"
+    },
+    {
+      "path": "tests/hunt-field-stash-runtime-v112.test.mjs",
+      "bytes": 9882,
+      "sha256": "8591550daee93135755bc582f62e6e08b557edf982ad9616a6d41f104e1d5f07"
+    },
+    {
       "path": "tests/hunt-ground-recovery-v112.test.mjs",
       "bytes": 9322,
       "sha256": "92d028896ff1e6ce8c25847f19c77c7972d8fb69aa25cd7a9b27a90ea2afd35f"
+    },
+    {
+      "path": "tests/hunt-mechanics-workbook-v112.test.mjs",
+      "bytes": 3240,
+      "sha256": "e0790f15410bdcedb1a7e9224cf91cd7b956c974b9c1a4de506b2a83447475ae"
+    },
+    {
+      "path": "tests/hunter-material-facilities-v113.test.mjs",
+      "bytes": 704,
+      "sha256": "4ad26ff7a75380993ac622620e4eecf759a5684af66b1d5213e3af657fbcac6f"
+    },
+    {
+      "path": "tests/hunter-material-hunt-v113.test.mjs",
+      "bytes": 573,
+      "sha256": "7fb507bd4bc282be73084215d3d5614cbcab07f960a3ba7890587a70594be527"
+    },
+    {
+      "path": "tests/hunter-material-preview-v113.test.mjs",
+      "bytes": 557,
+      "sha256": "0dff094aac6dc23ea4506e3045a7b2e1246c1d61b57eb73edeb9219342ca8047"
+    },
+    {
+      "path": "tests/hunter-materials-v113.test.mjs",
+      "bytes": 1077,
+      "sha256": "4fc0be7f63e23ee3a0ac9b80b7560304f766c32bedda4d163130e8ad4ce8fa21"
     },
     {
       "path": "tests/pit-backward-art-provenance-v112.test.mjs",
@@ -9544,9 +9769,19 @@
       "sha256": "1d661a1929e3f1d68eba9b1adbfa99d603c196feb80a8727b450d3e571b8424d"
     },
     {
+      "path": "tests/pit-backward-controls-v112.test.mjs",
+      "bytes": 5332,
+      "sha256": "10842499efea7337215b6af7db29b6604946e2ebf7833158e4f7e4a0d68ce22d"
+    },
+    {
       "path": "tests/pit-backward-throw-art-v112.test.mjs",
       "bytes": 12252,
       "sha256": "19a20a49544b69a9dcce493a3fe22fbf924da3ba4e5d8fbd08e543314cfb2249"
+    },
+    {
+      "path": "tests/pit-backward-throws-v112.test.mjs",
+      "bytes": 15410,
+      "sha256": "6ed85f35afcadae954f8e0441df25a2da630212a8819e223484b0ee3ef14bf27"
     },
     {
       "path": "tests/pit-browser-launch-observation-v112.test.mjs",

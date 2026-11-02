@@ -145,9 +145,12 @@ function follow(save, origin, destinationId, station = lifts.createHomeworldLift
   return {plan, origin: originAt(actor, levelId, interiorId), station, arrivals, ticks, walked, rideTicks, planMs};
 }
 
-test('V113 connector obstruction comes from an actual 1,421-step carry and park, with no invented placement', () => {
+test('current V113 connector obstruction comes from an actual 1,394-step carry and park, with no invented placement', () => {
   const fixture = occupiedCouncil();
-  assert.equal(fixture.ticks, 1421); assert(fixture.walked > 7100);
+  // Thirteen additive physical ground joints change the native route. The
+  // original 1,421-step/>7,100 assertion is replayed on exact 03cf sources by
+  // homeworld-connector-detour-history-v113.test.mjs; no counters are relabelled.
+  assert.equal(fixture.ticks, 1394); assert(fixture.walked > 7000);
   assert.equal(fixture.parked.ledger.receipt.carrier, null);
   assert.equal(fixture.parked.ledger.receipt.phase, 'interrupted');
   assert.equal(f.api.cargoCaseCollisionV108(fixture.parked.ledger, council.from.point), 'cargo-lot-wide-v108');
