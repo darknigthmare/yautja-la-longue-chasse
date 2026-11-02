@@ -1666,7 +1666,7 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
       prologue: normalizeNurseryCampaign(value.prologue), homeworld: normalizeHomeworldProgress(value.homeworld),
     }, passage.regionId).allowed) return { save: null, failure: "invalid-save" };
   }
-  if (isRecord(value.gameReserveV66) && Number(value.gameReserveV66.version) > 5) return { save: null, failure: "future-version" };
+  if (isRecord(value.gameReserveV66) && Number(value.gameReserveV66.version) > 6) return { save: null, failure: "future-version" };
   if (!gameReserveV66Supported(value.gameReserveV66) || value.gameReserveV66 && isRecord(value.prologue)) return { save: null, failure: "invalid-save" };
   if (!soloV66MatchesSave(value) || isRecord(value.homeworld) && (
       value.homeworld.sideStoryV66 !== undefined && !isHomeworldSideStoryV66State(value.homeworld.sideStoryV66) ||
