@@ -13,6 +13,7 @@ import {
 } from "./ecologyV8";
 import EnemyTrophyPreview from "./EnemyTrophyPreview";
 import HomeworldFaunaCatalogueV77 from "./HomeworldFaunaCatalogueV77";
+import AlienBaseArchiveV1 from "./AlienBaseArchiveV1";
 
 const CATEGORY_LABELS: Record<EcologyV8Category, string> = {
   fauna: "Faune",
@@ -248,6 +249,7 @@ export default function EnemyBestiaryV8({
         })}
       </div>
       <HomeworldFaunaCatalogueV77 />
+      <AlienBaseArchiveV1 />
     </section>
   );
 }
