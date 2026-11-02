@@ -35,7 +35,13 @@ function adjustControl(element: HTMLElement | null, direction: MenuDirection): b
 }
 
 /** Active only on menus without their own controller loop. No synthetic gameplay keys. */
-export function useMenuGamepad(rootRef: RefObject<HTMLElement | null>, enabled: boolean, contextKey: string, onBack: () => void) {
+export interface MenuGamepadButtons { confirmButton: number; backButton: number }
+export function useMenuGamepad(rootRef: RefObject<HTMLElement | null>, enabled: boolean, contextKey: string, onBack: () => void, buttons?: MenuGamepadButtons) {
+  const validButtons=Number.isInteger(buttons?.confirmButton)&&Number.isInteger(buttons?.backButton)&&
+    buttons!.confirmButton>=0&&buttons!.confirmButton<12&&buttons!.backButton>=0&&buttons!.backButton<12&&
+    buttons!.confirmButton!==buttons!.backButton;
+  const confirmButton=validButtons?buttons!.confirmButton:0;
+  const backButton=validButtons?buttons!.backButton:1;
   // A changed callback is not a new menu. Keep repeat/edge state through ordinary
   // parent renders, but use the latest committed action when Back is pressed.
   const onBackRef = useRef(onBack);
@@ -64,7 +70,7 @@ export function useMenuGamepad(rootRef: RefObject<HTMLElement | null>, enabled: 
       const direction = pressed(12) ? "up" : pressed(13) ? "down" : pressed(14) ? "left" : pressed(15) ? "right"
         : Math.max(Math.abs(x), Math.abs(y)) < 0.55 ? null
         : Math.abs(x) > Math.abs(y) ? (x < 0 ? "left" : "right") : (y < 0 ? "up" : "down");
-      const result = menuPadStep(state, { direction, confirm: pressed(0), back: pressed(1) }, now);
+      const result = menuPadStep(state, { direction, confirm: pressed(confirmButton), back: pressed(backButton) }, now);
       state = result.state;
       if (!result.direction && !result.confirm && !result.back) return;
       const dialogs = Array.from(root.querySelectorAll<HTMLElement>('[role="dialog"][aria-modal="true"]'))
@@ -93,5 +99,5 @@ export function useMenuGamepad(rootRef: RefObject<HTMLElement | null>, enabled: 
     };
     frameId = window.requestAnimationFrame(tick);
     return () => window.cancelAnimationFrame(frameId);
-  }, [enabled, contextKey, rootRef]);
+  }, [enabled, contextKey, rootRef, confirmButton, backButton]);
 }

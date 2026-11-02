@@ -7,7 +7,7 @@ export interface FieldSpecimenV112 {
 }
 export interface ConservationJobV112 {
   id: string; specimenId: string; fromStage: SpecimenStageV112; toStage: SpecimenStageV112;
-  unitsDone: number; unitsRequired: number; costPaid: number; status: "active" | "completed";
+  unitsDone: number; unitsRequired: number; costPaid: number; status: "active" | "paused" | "completed";
 }
 export interface HarvestInventoryV112 {
   version: 1; specimens: FieldSpecimenV112[]; toolCondition: number;
@@ -71,14 +71,14 @@ export function normalizeHarvestInventoryV112(raw:unknown): HarvestInventoryV112
     const step=CONSERVATION_STEPS_V112.find(s=>s.from===j.fromStage&&s.to===j.toStage);
     const item=typed.find(s=>s.id===j.specimenId);
     if(!step||!item||j.id!==item.id+":"+step.to||j.unitsRequired!==step.units||j.costPaid!==step.cost||
-      !Number.isInteger(j.unitsDone)||!bounded(j.unitsDone,0,step.units)||!["active","completed"].includes(j.status as string)||
-      (j.status==="active"&&(j.unitsDone===step.units||item.stage!==step.from))||
+      !Number.isInteger(j.unitsDone)||!bounded(j.unitsDone,0,step.units)||!["active","paused","completed"].includes(j.status as string)||
+      ((j.status==="active"||j.status==="paused")&&(j.unitsDone===step.units||item.stage!==step.from))||
       (j.status==="completed"&&(j.unitsDone!==step.units||stages.indexOf(item.stage)<stages.indexOf(step.to)))) return null;
     jobs.push({id:j.id,specimenId:j.specimenId,fromStage:step.from,toStage:step.to,unitsDone:j.unitsDone,
       unitsRequired:step.units,costPaid:step.cost,status:j.status as ConservationJobV112["status"]});
   }
   if(new Set(jobs.map(j=>j.id)).size!==jobs.length ||
-    new Set(jobs.filter(j=>j.status==="active").map(j=>j.specimenId)).size!==jobs.filter(j=>j.status==="active").length ||
+    new Set(jobs.filter(j=>j.status!=="completed").map(j=>j.specimenId)).size!==jobs.filter(j=>j.status!=="completed").length ||
     jobs.filter(j=>j.status==="active").length>16) return null;
   for(const item of typed) {
     const completed = jobs.filter(j=>j.specimenId===item.id&&j.status==="completed");
@@ -161,7 +161,7 @@ export function startConservationV112(save:SaveGame,specimenId:string):Conservat
   const item=ledger?.specimens.find(s=>s.id===specimenId),step=item&&CONSERVATION_STEPS_V112.find(s=>s.from===item.stage);
   const refuse=(message:string)=>({ok:false,save,message});
   if(!ledger||!item||!step)return refuse("Cette prise ne demande plus de travail ou n'existe pas.");
-  if(ledger.jobs.some(j=>j.specimenId===item.id&&j.status==="active"))return refuse("Une opération est déjà en cours sur cette prise.");
+  if(ledger.jobs.some(j=>j.specimenId===item.id&&j.status!=="completed"))return refuse("Une opération existe déjà sur cette prise. Reprenez-la sans payer de nouveau.");
   if(ledger.jobs.filter(j=>j.status==="active").length>=16)return refuse("Les 16 postes de travail sont occupés.");
   if(!Number.isSafeInteger(save.profile.clanMarks)||save.profile.clanMarks<step.cost)return refuse("Marques insuffisantes ; aucun travail engagé.");
   const job:ConservationJobV112={id:item.id+":"+step.to,specimenId:item.id,fromStage:step.from,toStage:step.to,
@@ -178,6 +178,27 @@ export function workConservationV112(save:SaveGame,jobId:string):ConservationAct
     save:{...save,inventory:{...save.inventory,harvestV112:{...ledger,
       specimens:ledger.specimens.map(s=>s.id===job.specimenId&&complete?{...s,stage:job.toStage}:s),
       jobs:ledger.jobs.map(j=>j.id===job.id?{...j,unitsDone:done,status:complete?"completed":"active"}:j)}}}};
+}
+/** Suspending releases a workbench slot without consuming a specimen, paid marks
+ * or confirmed gestures. Resuming claims an active slot and never charges again. */
+function setConservationPausedV112(save:SaveGame,jobId:string,paused:boolean):ConservationActionResultV112 {
+  const ledger=normalizeHarvestInventoryV112(save.inventory.harvestV112);
+  const expected=paused?"active":"paused";
+  const job=ledger?.jobs.find(j=>j.id===jobId&&j.status===expected);
+  if(!ledger||!job)return {ok:false,save,message:"Cette opération ne peut pas être "+(paused?"suspendue":"reprise")+"."};
+  if(!paused&&ledger.jobs.filter(j=>j.status==="active").length>=16)
+    return {ok:false,save,message:"Les 16 postes sont occupés. Le travail reste suspendu sans perte."};
+  return {ok:true,message:paused
+    ?"Opération suspendue. La prise, les "+job.unitsDone+"/"+job.unitsRequired+" gestes et les "+job.costPaid+" marques déjà payées sont conservés. Reprise sans frais."
+    :"Opération reprise sans frais. Les gestes déjà enregistrés sont conservés.",
+    save:{...save,inventory:{...save.inventory,harvestV112:{...ledger,
+      jobs:ledger.jobs.map(j=>j.id===job.id?{...j,status:paused?"paused":"active"}:j)}}}};
+}
+export function pauseConservationV112(save:SaveGame,jobId:string):ConservationActionResultV112 {
+  return setConservationPausedV112(save,jobId,true);
+}
+export function resumeConservationV112(save:SaveGame,jobId:string):ConservationActionResultV112 {
+  return setConservationPausedV112(save,jobId,false);
 }
 export function repairFieldToolV112(save:SaveGame):ConservationActionResultV112 {
   const ledger=normalizeHarvestInventoryV112(save.inventory.harvestV112);
@@ -197,7 +218,7 @@ export function archiveMountedSpecimenV112(save:SaveGame,specimenId:string):Cons
   if(existing&&existing.count>=Math.floor(Number.MAX_SAFE_INTEGER/100))return {ok:false,save,message:"Comptage de réserve maximal ; la prise reste exposée."};
   const archive=existing?ledger.archive.map(a=>a===existing?{...a,count:a.count+1,qualityTotal:a.qualityTotal+item.quality}:a):
     [...ledger.archive,{speciesId:item.speciesId,partId:item.partId,label:item.label,count:1,qualityTotal:item.quality}];
-  return {ok:true,message:"Prise rangée dans la réserve permanente ; sa possession et son intégrité restent comptées.",
+  return {ok:true,message:"Prise rangée dans la réserve permanente ; sa possession et sa qualité restent comptées.",
     save:{...save,inventory:{...save.inventory,harvestV112:{...ledger,archive,
       specimens:ledger.specimens.filter(s=>s.id!==item.id),jobs:ledger.jobs.filter(j=>j.specimenId!==item.id)}}}};
 }
