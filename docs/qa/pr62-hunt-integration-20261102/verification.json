@@ -1,0 +1,331 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS_BOUNDED_HUNT_INTEGRATION",
+  "verifiedAtUtc": "2026-11-02T05:27:52.292971+00:00",
+  "worktree": "/workspace/yautja-pr62-integration-20261102",
+  "baseCommit": "03cf51badd450338d748da55599a317a71debd28",
+  "importedSourceCommit": "e4a6c64a1e77edad8865aa05ca7c2901d62bfa09",
+  "currentHead": "03cf51badd450338d748da55599a317a71debd28",
+  "workingTreeContainsUncommittedIntegration": true,
+  "sourceIdentity": [
+    {
+      "path": "app/game/ConservationPanelV112.module.css",
+      "bytes": 1965,
+      "sha256": "374da9b461a5bef48d742bf60b7f455e6873e44874ac9514af1cefd5ac0940ce"
+    },
+    {
+      "path": "app/game/ConservationPanelV112.tsx",
+      "bytes": 7644,
+      "sha256": "6f9dabeaa03f4f36aa2b2388c1afa7ba62d9b30742b9e7706b7a743902978a2b"
+    },
+    {
+      "path": "app/game/GameClient.tsx",
+      "bytes": 292863,
+      "sha256": "f034ac0de7136d6a4abd29e286dcdeaa5940f22b2968b8ea62e36c3f3026ef47"
+    },
+    {
+      "path": "app/game/HuntAccessibilityV112.module.css",
+      "bytes": 2129,
+      "sha256": "e931db3b3cb6efb58a75215e7f4e2ac5c8465f6d68406e71c69799005a21f369"
+    },
+    {
+      "path": "app/game/HuntCanvas.tsx",
+      "bytes": 413206,
+      "sha256": "8bf504951e6d7d6af9df2bf1d125b99d25f06009723efc96b47636b53b5471c5"
+    },
+    {
+      "path": "app/game/HuntFieldGuideV112.tsx",
+      "bytes": 7565,
+      "sha256": "c6d4e5f7feb34786deccc7668e6cb00f798cc5129776d3abdb16c59a1a19dcf3"
+    },
+    {
+      "path": "app/game/systems/harvestInventoryV112.ts",
+      "bytes": 17889,
+      "sha256": "a36764dda125def1bec5a6326ee907428ff90d63780f648848f23d1657d359b1"
+    },
+    {
+      "path": "app/game/useMenuGamepad.ts",
+      "bytes": 6584,
+      "sha256": "7fcb3efdc52140d41c29f4901932fb7bf826fc88cfbfdb648a9e6ecb1a3ac5ba"
+    },
+    {
+      "path": "scripts/lib/qa-hunt-field-guide-v112.mjs",
+      "bytes": 3686,
+      "sha256": "de63f60a480b2e1d87004afa9a20403f2960bea4abb503bd4bcaa9ebfc5ce1f4"
+    },
+    {
+      "path": "scripts/qa-hunt-lifecycle-browser-v112.mjs",
+      "bytes": 22957,
+      "sha256": "2915f5a563e4837eac8bae8e4857df16d202d540f4091193e6afcaaedb4da9c5"
+    },
+    {
+      "path": "scripts/qa-hunt-mechanics-browser-v112.mjs",
+      "bytes": 17426,
+      "sha256": "d8ef9e4295e914a832c5a8807b9b9d360c9ce848dabf4fb566de3e27d1a5e791"
+    },
+    {
+      "path": "scripts/qa-hunt-native-performance-v112.mjs",
+      "bytes": 15314,
+      "sha256": "e73ed15ba170b91d2de67e918cc6df765089e34d8d9a5dddcc1ff0351fbfe58c"
+    },
+    {
+      "path": "tests/browser/hunt-lifecycle-v112.fixture.jsx",
+      "bytes": 9416,
+      "sha256": "701d5adf2a2d443098f279cc76246d68a212a27b4c4a8d2a79588ba8b04f23aa"
+    },
+    {
+      "path": "tests/browser/hunt-mechanics-v112.fixture.jsx",
+      "bytes": 11366,
+      "sha256": "be3f290981c601dc294a7be55e38e7422d0b354b12b25f9e9e73acb21480dc73"
+    },
+    {
+      "path": "tests/cloud-account-gamepad-isolation-v71.test.mjs",
+      "bytes": 2215,
+      "sha256": "8899081075d17bbe7a75d6bf04889b8295dc0e96484e4423c94c7cc1ff272abd"
+    },
+    {
+      "path": "tests/conservation-persistence-ui-v112.test.mjs",
+      "bytes": 13653,
+      "sha256": "cc504e152aa027806eb74e2452db30ee05cd09b99c859589ad8582b69b621453"
+    },
+    {
+      "path": "tests/hunt-catalogue-contract-v112.test.mjs",
+      "bytes": 14315,
+      "sha256": "695460bdf1b91ce649be16f2ac63c6901fa21ef8b631455a18052969c9228de4"
+    },
+    {
+      "path": "tests/hunt-field-guide-v112.test.mjs",
+      "bytes": 6619,
+      "sha256": "1f5dbf1e6720642ffe42a642963808c543e61095b9e9e31e38de88685e7f2e01"
+    },
+    {
+      "path": "tests/hunt-ground-recovery-v112.test.mjs",
+      "bytes": 9322,
+      "sha256": "92d028896ff1e6ce8c25847f19c77c7972d8fb69aa25cd7a9b27a90ea2afd35f"
+    }
+  ],
+  "applicationFilesImportedExactly": 8,
+  "supportFiles": 11,
+  "localSupportAdjustments": [
+    "tests/hunt-field-guide-v112.test.mjs: rename reserved module binding without changing test behavior",
+    "Both browser drivers: add explicit optional Chromium executable and dated output directory env; existing browser assertions retained",
+    "Lifecycle fixture: initialize callbacks and the native mount hook in useLayoutEffect with a stable recordSave callback; clean up the owned hook. This fixes five React lint errors without disabling rules. Its twelve browser groups were rerun successfully."
+  ],
+  "verification": {
+    "nativeTests": {
+      "uniqueTests": 131,
+      "pass": 131,
+      "fail": 0,
+      "skipped": 0,
+      "log": {
+        "path": "docs/qa/pr62-hunt-integration-20261102/native-integration-tests.log",
+        "bytes": 36605,
+        "sha256": "b87a4954e5b75660bac765eacf67f11a86d276a002b0729fded45f759cc685be"
+      }
+    },
+    "guideAfterBindingCorrection": {
+      "tests": 8,
+      "subsetOfNative131": true,
+      "pass": 8,
+      "log": {
+        "path": "docs/qa/pr62-hunt-integration-20261102/guide-test-lint-correction.log",
+        "bytes": 2224,
+        "sha256": "1d464518a43abaef3f40caff1351b3358b390ce06af63bffe790334844f59f7d"
+      }
+    },
+    "targetedLint": {
+      "status": "PASS",
+      "maxWarnings": 0,
+      "log": {
+        "path": "docs/qa/pr62-hunt-integration-20261102/final-targeted-lint.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "initialFailedLogRetained": "docs/qa/pr62-hunt-integration-20261102/targeted-lint.log"
+    },
+    "nextTypegen": {
+      "status": "PASS",
+      "log": {
+        "path": "docs/qa/pr62-hunt-integration-20261102/typegen.log",
+        "bytes": 59,
+        "sha256": "adba4af9194e10e47dda75ff0fd0f8c2b756474896d0eba5612799c527ff372a"
+      }
+    },
+    "fullApplicationTypeScript": {
+      "status": "PASS",
+      "command": "node node_modules/typescript/bin/tsc --noEmit",
+      "log": {
+        "path": "docs/qa/pr62-hunt-integration-20261102/typecheck.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "browser": [
+      {
+        "name": "controls-guide",
+        "groups": 22,
+        "pageErrors": 0,
+        "report": {
+          "path": "docs/qa/pr62-hunt-integration-20261102/controls-guide/report.json",
+          "bytes": 4003,
+          "sha256": "e520a2ab2e7e628bdb30f423ff2b0e5dd6258306f1251a38c0a62b8de6470661"
+        },
+        "runtimeCommit": "unrecorded-local",
+        "scope": "Actual React components and hunt source functions; fixture keyboard/pointer adapters, actual gamepad polling and stepGame/DOM routing with an emulated pad, localStorage acknowledgement and fallback renderer; no whole-component input lifecycle, full campaign or physical-device qualification",
+        "fallbackRequests": null
+      },
+      {
+        "name": "lifecycle",
+        "groups": 12,
+        "pageErrors": 0,
+        "report": {
+          "path": "docs/qa/pr62-hunt-integration-20261102/lifecycle-final/report.json",
+          "bytes": 2940,
+          "sha256": "dbec9bf2eccfa1b0b0860b303aed6e84ded5e2e50098595cfa8805b66711120c"
+        },
+        "runtimeCommit": "unrecorded-local",
+        "scope": "Mounted HuntCanvas and native rAF/window/pointer/pad lifecycle, injected blur to its real listener, active pointer cancellation and held-confirm reconnect protection; real death, analysis, flay and anatomy; Apex/mission prerequisites seeded solely before actual shuttle segment; exact GameClient callbacks AST-extracted with fixture session admission, real browser save writer/load/reconciliation and mounted conservation panel with actual useMenuGamepad navigation with default and persisted workshop confirm/back remapping; 390 px native panel and keyboard exit. Hunt checkpoint payloads are captured in memory; campaign persistence uses actual browser storage. Entire GameClient, complete campaign, real controller/phone and art remain unqualified.",
+        "fallbackRequests": 267,
+        "log": {
+          "path": "docs/qa/pr62-hunt-integration-20261102/final-lifecycle-browser.log",
+          "bytes": 277885,
+          "sha256": "e7dee8e7abee0cfb4eacb2c61795973b4e6a8bcf06f4e292db53cba9d95f7920"
+        },
+        "initialRunRetained": "docs/qa/pr62-hunt-integration-20261102/lifecycle/report.json"
+      }
+    ],
+    "actuallyOpenedNewCaptures": 9,
+    "imageReview": {
+      "path": "docs/qa/pr62-hunt-integration-20261102/opened.json",
+      "bytes": 3494,
+      "sha256": "4ac6c2ab2ead4fe73a3aa01e6a8530a4c5795a0b2b916923318738532c7f7db6"
+    },
+    "browserFixturesLint": {
+      "status": "PASS",
+      "maxWarnings": 0,
+      "log": {
+        "path": "docs/qa/pr62-hunt-integration-20261102/final-browser-fixtures-lint.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "initialFailedLogRetained": "docs/qa/pr62-hunt-integration-20261102/browser-fixtures-lint.log"
+    },
+    "diffCheck": {
+      "status": "PASS",
+      "command": "git diff --check -- app scripts tests"
+    }
+  },
+  "preservedProtectedFiles": [
+    {
+      "path": "app/game/data/homeworldPublicPlacesV112.json",
+      "bytes": 6532,
+      "sha256": "ff274d324df61074675668ed920c9d612b70379a3794c4d8b5349835196dbfa2"
+    },
+    {
+      "path": "app/game/systems/homeworldPublicPlacesMountV112.ts",
+      "bytes": 1445,
+      "sha256": "9b982638cde0751f4d57ce00f9ea975f103901140049a6fe3c8cebf9ab706877"
+    },
+    {
+      "path": "app/game/systems/homeworldActivityAccessV112.ts",
+      "bytes": 7729,
+      "sha256": "5ea84d43b84aea7c1c181317fa901bf45bab30434cc660c17b088d2c08b624c0"
+    },
+    {
+      "path": "tests/fixtures/homeworld-upgrade-v112/manifest.json",
+      "bytes": 3936,
+      "sha256": "ec30e1f2ec95121533c5634e9b167af8288fd7c7f5e8562b8463b63e0982c6dd"
+    },
+    {
+      "path": "tests/homeworld-geometry-recovery-matrix-v112.test.mjs",
+      "bytes": 10533,
+      "sha256": "616a5307d4b320a965c2200c625cd36a3f9b3e3e71a416ff9434c75db81efb73"
+    },
+    {
+      "path": "tests/homeworld-mobility-v112.test.mjs",
+      "bytes": 14880,
+      "sha256": "643b5ecf1ead9d9d142b319ddb560cf91a1777a3bd009e9654feda46aab6b6fc"
+    },
+    {
+      "path": "tests/homeworld-public-places-v112.test.mjs",
+      "bytes": 7594,
+      "sha256": "2f14201b12959e75ce6505f7e27619b454852aeee0e2531e8afec5d73da4ba43"
+    },
+    {
+      "path": "docs/v112-runtime-freeze.json",
+      "bytes": 306338,
+      "sha256": "c35f8b454ec26d1b05852cabbe4f6ee111d71e7413aef80282582d3ca5ee6a3e"
+    },
+    {
+      "path": "docs/v112-runtime-public-inputs.json",
+      "bytes": 14024,
+      "sha256": "9c8049baf24f924c4dbac745e6f033cc09c6ecb007d4d2147e94cf961a1b18da"
+    },
+    {
+      "path": "docs/v112-homeworld-source.json",
+      "bytes": 85776,
+      "sha256": "5470ea3326281fa6b3f33ba4f731eee2f3479138b9c8ad138b296eddc7046376"
+    },
+    {
+      "path": "docs/v112-homeworld-followup.json",
+      "bytes": 1070467,
+      "sha256": "21ba550dfe6b65dfc77aceb343630ee0f0a92944215c7a6eaa913f968c452ebd"
+    },
+    {
+      "path": "docs/v112-homeworld-followup-qa.json",
+      "bytes": 4237,
+      "sha256": "fb4f69c6c57475fc2bbc066298c9afa2f3ea5251cc99ea480589d493fa115a0e"
+    },
+    {
+      "path": "docs/v112-homeworld-validation.json",
+      "bytes": 744079,
+      "sha256": "431198b2e6bda28085f2758a66c1c84344712009e6f97b5c23a078eba0326124"
+    },
+    {
+      "path": "docs/v112-pit-validation.json",
+      "bytes": 1230898,
+      "sha256": "42bfd97315d3ebbc9f1a2416fd996fa204f62b4680871e2482c1893f4509ef60"
+    },
+    {
+      "path": "docs/YAUTJA_V112_SUIVI.xlsx",
+      "bytes": 9433700,
+      "sha256": "723cc894b643d55dcd076cab8b615866c6879ecc481c55616adcdd0508d2eccc"
+    },
+    {
+      "path": "docs/YAUTJA_V112_MECANIQUES_CHASSE.xlsx",
+      "bytes": 444448,
+      "sha256": "1b13e05253640034458601f62032fb21e7be4cf1d30f2a2a4912e63dae229b29"
+    },
+    {
+      "path": "docs/hunt-mechanics-v112.json",
+      "bytes": 163625,
+      "sha256": "9c9383d923d4ab5554fdf807bc535f023846c3aea251f7ac2026aed8f76d9d5f"
+    }
+  ],
+  "preservedHomeworld": {
+    "marker": {
+      "x": 6270,
+      "y": 4990
+    },
+    "activityUniquePositions": 64,
+    "activityFunctionalSegments": 30,
+    "accepted": 6,
+    "refused": 4,
+    "verification": "Exact main03cf bytes of geometry, registry and relevant tests remain unchanged; prior gameplay evidence is not relabeled."
+  },
+  "historicalR7DocumentsChanged": false,
+  "workbooksChanged": false,
+  "newFreezeWritten": false,
+  "newProductionCertificateWritten": false,
+  "newBuildExecuted": false,
+  "r7CertifiesIntegratedCurrentRuntime": false,
+  "currentProductionFollowup": "Root coordinates new R8 production under V113 after source/art stabilization. These component/model results do not replace the V113 build/recipes.",
+  "capsuleImplemented": false,
+  "capsulePlan": "/workspace/pr62-integration-plan-20261102/CI-current-and-R7.md",
+  "limits": [
+    "Current source is a local uncommitted integration, not runtime bda; browser reports intentionally retain unrecorded-local.",
+    "Mounted HuntCanvas and AST-extracted production callbacks are exercised with declared encounters/Apex prerequisites; the entire GameClient, sidecar reload and a complete campaign are not qualified.",
+    "Browser recipes record pageerror only; their declared fallback requests are not strict whole-production empty-network-error certificates.",
+    "No physical phone/controller, full final art, native Excel or performance benchmark was qualified here."
+  ]
+}
