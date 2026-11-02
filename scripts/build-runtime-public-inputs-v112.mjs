@@ -5,6 +5,7 @@ import path from 'node:path';
 import {fileURLToPath, pathToFileURL} from 'node:url';
 import {homeworldSceneSsrV78} from '../tests/helpers/homeworld-scene-ssr-v78.mjs';
 import {fingerprintV112} from './snapshot-runtime-v112.mjs';
+import {isV112HuntNativeAsset} from './lib/v112-hunt-native-scope.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 async function walk(directory) {
@@ -33,7 +34,7 @@ export async function buildRuntimePublicInputsV112() {
   const natural = load('homeworldNaturalPlacementsV112'), naturalArt = load('homeworldOutskirtsArtV71').HOMEWORLD_OUTSKIRTS_ART_V71;
   for (const item of natural.HOMEWORLD_NATURAL_MODULES_V112) add(naturalArt[item.artId].src);
   for (const material of Object.values(load('homeworldLandscapeV75').HOMEWORLD_LANDSCAPE_MATERIALS_V75)) add(material.src);
-  const assets = (await walk('public/game')).filter(file => /\/v112\//.test(file)).sort();
+  const assets = (await walk('public/game')).filter(file => /\/v112\//.test(file) && !isV112HuntNativeAsset(file)).sort();
   const provenance = [...await walk('art-source/v112'), ...await walk('art-source/v112-pit-backward'),
     ...await walk('docs/suivi-production/v112-pit-backward')].sort();
   return {schemaVersion: 1, release: 'V112',

@@ -6,6 +6,7 @@ import {createHash} from 'node:crypto';
 import {fileURLToPath, pathToFileURL} from 'node:url';
 import ts from 'typescript';
 import {local, proofShape} from './lib/excel-followup-evidence.mjs';
+import {V112_HUNT_NATIVE_ASSETS, isV112HuntNativeAsset} from './lib/v112-hunt-native-scope.mjs';
 
 export const V112_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 export const V112_RECIPES = Object.freeze({
@@ -75,7 +76,7 @@ export async function verifyNativeInputsV112(root, historical, inventory) {
     assert.ok(row.path.startsWith('art-source/v112/') || row.path.startsWith('art-source/v112-pit-backward/') || row.path.startsWith('docs/suivi-production/v112'));
   }
   for (const row of rows) assert.deepEqual(await fingerprintV112(root, row.path), row, 'Declared native bytes changed: ' + row.path);
-  const bank = (await walk(root, 'public/game')).filter(file => /\/v112\//.test(file));
+  const bank = (await walk(root, 'public/game')).filter(file => /\/v112\//.test(file) && !isV112HuntNativeAsset(file));
   const declared = new Set(inventory.assets.map(row => row.path));
   for (const file of bank) assert.ok(declared.has(file), 'V112 native input absent from inventory: ' + file);
   return rows;
@@ -93,7 +94,8 @@ export async function snapshotRuntimeV112({root = V112_ROOT} = {}) {
   const native = await verifyNativeInputsV112(root, immutable, inventory);
   const files = [...new Set([
     ...await walk(root, 'app'), ...previous.entries.filter(row => !row.path.startsWith('app/')).map(row => row.path),
-    baseline.path, inventoryPath, ...native.map(row => row.path),
+    baseline.path, inventoryPath, ...native.map(row => row.path), ...V112_HUNT_NATIVE_ASSETS,
+    'scripts/lib/v112-hunt-native-scope.mjs',
     ...await collectV112RecipeInputs(root), 'scripts/snapshot-runtime-v112.mjs',
     'scripts/build-runtime-public-inputs-v112.mjs',
     'scripts/build-pit-backward-art-v112.mjs',
