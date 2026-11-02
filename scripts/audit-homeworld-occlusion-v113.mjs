@@ -45,20 +45,23 @@ export async function auditHomeworldOcclusionV113({root = ROOT, minCover = .6} =
     ...[...world.HOMEWORLD_EXTERIOR_V77, ...street.HOMEWORLD_URBAN_PROPS_V78].map(p => {
       const a = courtArt[p.artId]; return sprite(p.id.startsWith('exterior-v76') ? 'exterior-v76' : 'court-v78', p, a, a ? a.heightWorld * p.scale : 0);
     }),
+    ...(() => {load('homeworldCivicWorldV80'); const d = load('homeworldDressingV113'), comp = load('homeworldStreetCompositionV92').HOMEWORLD_STREET_COMPOSITION_ART_V92;
+      return [...d.HOMEWORLD_DRESSING_FIXTURES_V113.map(p => {const a = courtArt[p.artId]; return sprite('dressing-v113', p, a, a ? a.heightWorld * p.scale : 0);}),
+        ...d.HOMEWORLD_DRESSING_PLACES_V113.map(p => sprite('dressing-v113', p, comp[p.artId], comp[p.artId].heightWorld * p.scale))];})(),
   ].filter(Boolean);
+  const painters = [...world.HOMEWORLD_BUILDINGS_V77, ...load('homeworldUrbanFacadesV78').HOMEWORLD_URBAN_FACADES_V78, ...load('homeworldDressingV113').HOMEWORLD_DRESSING_FACADES_V113];
   const findings = [];
   for (const prop of props) {
     const area = prop.box.width * prop.box.height; if (!(area > 0)) continue;
-    for (const b of world.HOMEWORLD_BUILDINGS_V77) {
+    for (const b of painters) {
       if (b.levelId !== prop.levelId) continue;
       const depth = city.homeworldBuildingRenderDepthV76(b, prop);
       if (!(prop.y < depth)) continue; // painted after the building: visible over it
-      const v = city.homeworldBuildingVisibleBoundsV72(b);
-      const ix = Math.max(0, Math.min(prop.box.left + prop.box.width, v.left + v.width) - Math.max(prop.box.left, v.left));
-      const iy = Math.max(0, Math.min(prop.box.top + prop.box.height, v.top + v.height) - Math.max(prop.box.top, v.top));
+      const place0 = geo.homeworldBuildingSpritePlacementV64(b), place = {...place0, top: place0.top - world.homeworldLevelV77(b.levelId).elevation}, art = b.art, rect = art.sourceRect ?? {x: 0, y: 0, width: art.sourceWidth, height: art.sourceHeight};
+      const ix = Math.max(0, Math.min(prop.box.left + prop.box.width, place.left + place.width) - Math.max(prop.box.left, place.left));
+      const iy = Math.max(0, Math.min(prop.box.top + prop.box.height, place.top + place.height) - Math.max(prop.box.top, place.top));
       if (ix * iy / area < minCover * .5) continue;
       // Sample the building image's own alpha over a 12x12 grid of the prop sprite.
-      const place = geo.homeworldBuildingSpritePlacementV64(b), art = b.art, rect = art.sourceRect ?? {x: 0, y: 0, width: art.sourceWidth, height: art.sourceHeight};
       const scale = place.width / rect.width, {data, info} = await alphaOf(root, art.src);
       let opaque = 0, samples = 0;
       for (let gy = 0; gy < 12; gy++) for (let gx = 0; gx < 12; gx++) {
@@ -73,7 +76,7 @@ export async function auditHomeworldOcclusionV113({root = ROOT, minCover = .6} =
   }
   findings.sort((a, b) => b.cover - a.cover);
   return {schemaVersion: 1, release: 'V113', minCover,
-    method: 'Scene prop() sprite boxes against building image bounds for buildings painted later (prop y < building front-edge depth). Bounding-box cover; confirm on screen.',
+    method: 'Scene prop() sprite boxes against the real alpha of buildings and closed facades (V78, V113) painted later (prop y < building front-edge depth). Bounding-box cover; confirm on screen.',
     props: props.length, findings};
 }
 

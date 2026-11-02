@@ -28,6 +28,7 @@ import {homeworldFoundationSupportsV112} from './homeworldFoundationSupportsV112
 import {HOMEWORLD_GROUND_JOINTS_V112} from './homeworldGroundJointsV112';
 import {compileHomeworldMarshGroundJointsV113} from './homeworldMarshGroundJointsV113';
 import {homeworldPublicPlaceCollisionV112} from './homeworldPublicPlacesV112';
+import {homeworldDressingCollisionV113} from './homeworldDressingV113';
 
 /** Overlay of the existing real City model. No new save rewards or parallel game.
  * Vertical coordinates are physical world units, not a CSS transform of actors. */
@@ -186,6 +187,7 @@ export function homeworldTerrainV77(levelId:HomeworldLevelV77,point:HomeworldVec
 }
 export function homeworldCollisionV77(levelId:HomeworldLevelV77,point:HomeworldVec2,body:HomeworldFootprint=HOMEWORLD_ACTOR){
  const publicPlaceV112=homeworldPublicPlaceCollisionV112(levelId,point,body);if(publicPlaceV112)return{kind:'prop',id:publicPlaceV112};
+ const dressingV113=homeworldDressingCollisionV113(levelId,point,body);if(dressingV113)return dressingV113;
  return homeworldCollisionBeforePublicPlacesV112(levelId,point,body);
 }
 /** Explicit previous static collision view for a retained checkpoint recovery.

@@ -3,7 +3,8 @@
  * Collects the ground polygons of every exterior solid provider the motor
  * reads (buildings, V75 frontage, V72 connection furniture, V77 legacy props,
  * V76 exterior decor, V78 courts and generated props, V80 civic props,
- * V83/V84 street decor, V92 street compositions, V112 public places),
+ * V83/V84 street decor, V92 street compositions, V112 public places, V113
+ * dressing fixtures, places and closed facades),
  * rasterizes them at `step` units and reports every pair whose ground
  * footprints share area. Each provider's own polygon helper is used, so the
  * result is what the game itself considers occupied ground.
@@ -50,6 +51,10 @@ export function collectHomeworldSolidsV113(root = ROOT) {
   for (const p of d84.HOMEWORLD_STREET_DECOR_PROPS_V84 ?? []) add('street-v84', p, d84.homeworldStreetDecorPolygonV84(p));
   for (const p of comp.HOMEWORLD_STREET_COMPOSITION_PROPS_V92 ?? []) add('composition-v92', p, comp.homeworldStreetCompositionPolygonV92(p));
   for (const p of places.HOMEWORLD_PUBLIC_PLACES_V112 ?? []) add('public-place-v112', p, places.homeworldPublicPlacePolygonV112(p));
+  const dress = load('homeworldDressingV113');
+  for (const p of dress.HOMEWORLD_DRESSING_FIXTURES_V113) add('dressing-v113', p, dress.homeworldDressingFixturePolygonV113(p));
+  for (const p of dress.HOMEWORLD_DRESSING_PLACES_V113) add('dressing-v113', p, dress.homeworldDressingPlacePolygonV113(p));
+  for (const b of dress.HOMEWORLD_DRESSING_FACADES_V113) add('dressing-facade-v113', b, dress.homeworldDressingFacadePolygonV113(b), b.label);
   return solids;
 }
 

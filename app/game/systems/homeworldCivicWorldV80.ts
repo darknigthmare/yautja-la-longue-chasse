@@ -6,6 +6,7 @@ import {HOMEWORLD_CIVIC_PROPS_V80,homeworldCivicTouchesV80} from './homeworldCiv
 import {homeworldArchiveCollisionV106} from './homeworldArchiveSolidsV106';
 import {cargoFixedCollisionV108} from './homeworldCargoSolidsV108';
 import './homeworldPublicPlacesMountV112';
+import './homeworldDressingMountV113';
 
 /** Presentation and movement read the same new measured solids. Terrain,
  * speed, body, floor IDs and checkpoint schema are inherited unchanged. */
