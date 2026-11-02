@@ -27,7 +27,11 @@ jobs:
           filter: blob:none
           sparse-checkout-cone-mode: false
           sparse-checkout: |
-            /*
+            /package.json
+            /package-lock.json
+            /tsconfig.json
+            /eslint.config.mjs
+            /*.ts
             /app/
             /tests/
             /scripts/
