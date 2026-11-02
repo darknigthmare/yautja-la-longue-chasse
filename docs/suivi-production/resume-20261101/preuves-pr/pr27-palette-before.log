@@ -1,0 +1,110 @@
+✖ every declared HunterSkinId has a finite visible filter (6.367767ms)
+✖ every declared DreadTintId has a finite visible filter (1.392434ms)
+✖ every declared ArmorTintId has a finite visible filter (0.430938ms)
+✔ both Homeworld and combat rig use the same palette source (0.394113ms)
+✔ the three previously published family values retain their original visual filters (0.234623ms)
+✔ V121: V114 filters and V117 canonical PHG chromatic masks coexist without duplicate renders (0.744099ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 3
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 159.338303
+
+✖ failing tests:
+
+test at tests/hunter-palette-filters-v114.test.mjs:22:4
+✖ every declared HunterSkinId has a finite visible filter (6.367767ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      'ashen-mottle',
+  +   'copper-mottle',
+      'dark-mottle',
+  +   'ivory-mottle',
+  +   'moss-mottle',
+      'ochre-mottle',
+  +   'sand-mottle',
+  +   'storm-mottle'
+    ]
+  
+      at TestContext.<anonymous> (file:///tmp/pr27-review-r5/tests/hunter-palette-filters-v114.test.mjs:23:10)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.start (node:internal/test_runner/test:944:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'ashen-mottle', 'copper-mottle', 'dark-mottle', 'ivory-mottle', 'moss-mottle', 'ochre-mottle', 'sand-mottle', 'storm-mottle' ],
+    expected: [ 'ashen-mottle', 'dark-mottle', 'ochre-mottle' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/hunter-palette-filters-v114.test.mjs:22:4
+✖ every declared DreadTintId has a finite visible filter (1.392434ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      'ashen',
+  +   'blue-black',
+  +   'bone',
+  +   'copper',
+  +   'moss',
+      'obsidian',
+      'umber'
+    ]
+  
+      at TestContext.<anonymous> (file:///tmp/pr27-review-r5/tests/hunter-palette-filters-v114.test.mjs:23:10)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'ashen', 'blue-black', 'bone', 'copper', 'moss', 'obsidian', 'umber' ],
+    expected: [ 'ashen', 'obsidian', 'umber' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/hunter-palette-filters-v114.test.mjs:22:4
+✖ every declared ArmorTintId has a finite visible filter (0.430938ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   'bone',
+      'bronze',
+  +   'crimson',
+      'gunmetal',
+  +   'jade',
+      'obsidian',
+  +   'rust'
+    ]
+  
+      at TestContext.<anonymous> (file:///tmp/pr27-review-r5/tests/hunter-palette-filters-v114.test.mjs:23:10)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:744:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [
+      'bone',    'bronze',
+      'crimson', 'gunmetal',
+      'jade',    'obsidian',
+      'rust'
+    ],
+    expected: [ 'bronze', 'gunmetal', 'obsidian' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

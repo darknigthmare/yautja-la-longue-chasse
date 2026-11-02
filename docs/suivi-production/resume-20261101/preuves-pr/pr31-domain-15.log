@@ -1,0 +1,23 @@
+✔ 120 explicit silhouettes across three categories, with 10 distinct motifs and four scales each (1.015138ms)
+✔ 32 independently addressable true land/liquid bitmap definitions (0.177608ms)
+✔ all six radii preserve angular topology but scale kilometers and square kilometers (0.449596ms)
+✔ V115 recipes roundtrip exactly and reject malformed codes or unrecognized extra fields (14.653309ms)
+✔ V115 generated world is a playable connected front and all physical paths are consistent (2063.282228ms)
+✔ V115 shapes and material choices affect canonically distinct worlds while V103 bytes stay fixed (1582.450205ms)
+✔ six strategic presets stay valid and preserve locked material modules (1.294439ms)
+✔ eight ambience presets change materials without changing strategic geometry fields (3.932199ms)
+✔ strategic dossier agrees with every preset graph and public region incomes (12670.312371ms)
+✔ legacy V102 worlds also receive a public graph dossier without changing identity (113.714126ms)
+✔ all published land and sea materials have descriptions, without introducing a new recipe field (0.239912ms)
+✔ regional material descriptions match exact V102/V103 region IDs without changing generation (1585.374159ms)
+✔ V122: legacy V103 worlds keep their original topology and unitless distances (564.867919ms)
+✔ V122: V115 physical worlds retain scale, shape and distinct km distances (1120.336641ms)
+✔ V122: editor discriminates V115 before reading physical, shapes and detail materials (0.685011ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15080.849206

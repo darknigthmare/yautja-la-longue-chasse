@@ -1,0 +1,199 @@
+{
+  "status": "FAIL_ATTEMPT_NOT_PUBLISHABLE",
+  "runtimeCommit": "f02e5f1002765d4f2a1ae1f0eaab1f358f61942a",
+  "buildId": "Oy38-xd57M5zeGgmvnJuy",
+  "completeRecipe": false,
+  "completedJourneys": [
+    "FeralScar"
+  ],
+  "checksBeforeException": 92,
+  "capturesBeforeException": 29,
+  "openedImages": 30,
+  "failure": "Error: Public V112 journey timed out: scar-vs-feral-hunter-J2-initial real capture {\"frame\":3288,\"phase\":\"fight\",\"combatPhase\":\"round\",\"terminal\":\"false\",\"blocked\":\"false\",\"recipe\":\"workbook-v112\",\"throw\":null,\"forwardThrow\":null,\"facings\":[1,-1],\"positions\":[{\"x\":642.85,\"y\":0},{\"x\":696.85,\"y\":0}],\"actions\":[{\"phase\":\"idle\",\"normalMove\":null,\"workbookMove\":null,\"actionFrame\":null,\"connected\":null,\"superConfirmed\":null},{\"phase\":\"idle\",\"normalMove\":null,\"workbookMove\":null,\"actionFrame\":null,\"connected\":null,\"superConfirmed\":null}],\"life\":[1010,630],\"meter\":[348,183],\"inventory\":[{\"item\":\"shuriken\",\"status\":\"ready\",\"effectId\":null},{\"item\":\"mine\",\"status\":\"ready\",\"effectId\":null}]}",
+  "rawDecodedBytes": 9257215,
+  "rawDecodedSha256": "ab431fef62c4da8e6bb6dd67a46451c1b0580af51ad3bca36596c1d9885837fe",
+  "frozenInputsStable": 1601,
+  "unfilteredErrorArraysEmpty": true,
+  "limits": [
+    "The complete recipe timed out on ScarFeral J2-initial. Its92successful checks do not constitute complete Pit validation.",
+    "The pre-failure capture list does not observe whether the fixed17ms keyboard launch was consumed. No product cause is established from the final idle state.",
+    "No automatic retry and no publication were performed."
+  ],
+  "files": [
+    {
+      "file": "browser-result.json.gz",
+      "bytes": 284335,
+      "sha256": "8fee29f4fa1d607b080448b784a66a5e4a91a98d2539bd11424de54e08ed1873"
+    },
+    {
+      "file": "execution.log",
+      "bytes": 10830,
+      "sha256": "3059416a4111866c20e68df2c7c13b026e074d41469bab0433855ff247c3f408"
+    },
+    {
+      "file": "failure.png",
+      "bytes": 1286646,
+      "sha256": "c60daab8a562c6ac262c0f8f55d82a8126e61c88783c431868b57d3eda991986"
+    },
+    {
+      "file": "feral-hunter-vs-scar-J1-initial-capture.png",
+      "bytes": 1317006,
+      "sha256": "50fbc69156e58b38a4f50461163ca0649ab2f90c7f971041a8959a07bbd437dc"
+    },
+    {
+      "file": "feral-hunter-vs-scar-J1-initial-flight.png",
+      "bytes": 1286435,
+      "sha256": "90dddbb07677394334a7728c0f7991bb951a548fc868b34be83f2f291d1c0bc1"
+    },
+    {
+      "file": "feral-hunter-vs-scar-J1-initial-landing.png",
+      "bytes": 1295094,
+      "sha256": "30b6ca46a82cb40948dabf73131fd5da62ca7be33362c0e2b791e2b312a38049"
+    },
+    {
+      "file": "feral-hunter-vs-scar-J1-initial-recovered.png",
+      "bytes": 1286272,
+      "sha256": "1681b0714a59d06ee714786958aaa59e40c24cbf40d5c8f73a19b0c27ee48aaf"
+    },
+    {
+      "file": "feral-hunter-vs-scar-J1-return-capture.png",
+      "bytes": 1277924,
+      "sha256": "8367c6dfbb83953618c8dccd0aa76fdef5ca35236941f9722be1130030523dc0"
+    },
+    {
+      "file": "feral-hunter-vs-scar-J1-return-flight.png",
+      "bytes": 1304298,
+      "sha256": "b2bc199aa16203aa8d556c214ed121a988346c3cfdab75786fdad17df88c8334"
+    },
+    {
+      "file": "feral-hunter-vs-scar-J1-return-landing.png",
+      "bytes": 1257863,
+      "sha256": "491bc8790a9522822acbe9009d7aa314af5970aad0d8fa4ac5bd928ce6feefc1"
+    },
+    {
+      "file": "feral-hunter-vs-scar-J1-return-recovered.png",
+      "bytes": 1290014,
+      "sha256": "c179baad7e763bde47744089ef950f6ae74d648c23d32a4c3355ac4d617a41dc"
+    },
+    {
+      "file": "feral-hunter-vs-scar-J2-initial-capture.png",
+      "bytes": 1282812,
+      "sha256": "099d5fc1ab8929f4b0550a1fc71d6133d9e76db50d71742e865302618ccaf4d1"
+    },
+    {
+      "file": "feral-hunter-vs-scar-J2-initial-flight.png",
+      "bytes": 1324090,
+      "sha256": "c43f8edc06a528afc0bd088c1e5a387bb50c60ce2894c1d6c1c1de77454230f6"
+    },
+    {
+      "file": "feral-hunter-vs-scar-J2-initial-landing.png",
+      "bytes": 1275151,
+      "sha256": "d414d448eed5cbbe95424ddaf0225ec3062f6a28d58af3a380f4642ce609fb11"
+    },
+    {
+      "file": "feral-hunter-vs-scar-J2-initial-recovered.png",
+      "bytes": 1273760,
+      "sha256": "12311cfb38333a3870146f327903407bc2ae809341491e2b74ef9bd84869196b"
+    },
+    {
+      "file": "feral-hunter-vs-scar-J2-return-capture.png",
+      "bytes": 1290700,
+      "sha256": "6bea265b16610c38f72fcf278d57991f9b399b5aabb135e600f844ea8112acf2"
+    },
+    {
+      "file": "feral-hunter-vs-scar-J2-return-flight.png",
+      "bytes": 1344313,
+      "sha256": "02ce149c5a95f20a2506b8c06025138101328938e37f2d719e0980eef4d545ed"
+    },
+    {
+      "file": "feral-hunter-vs-scar-J2-return-landing.png",
+      "bytes": 1307058,
+      "sha256": "16923756fe3f51196a57e39fdae833ee9c79db08379a66e85ddce0e1002e4167"
+    },
+    {
+      "file": "feral-hunter-vs-scar-J2-return-recovered.png",
+      "bytes": 1273816,
+      "sha256": "9673d616450142293d878af59a8f9690f883da659af6c892d9aa8b4e309299c1"
+    },
+    {
+      "file": "feral-hunter-vs-scar-actual-victory.png",
+      "bytes": 357178,
+      "sha256": "3da361419a0897d82ca28fbc48fe3b13101ae894d8b3fc00c531b3e0383959bb"
+    },
+    {
+      "file": "feral-hunter-vs-scar-forward-button-forward-button-held-retreat.png",
+      "bytes": 1288108,
+      "sha256": "e6fd2ffa6b14d410cd8a8aaf7ca82095f713e84bd2f2ed8a07c613ee8cce06ba"
+    },
+    {
+      "file": "feral-hunter-vs-scar-tech.png",
+      "bytes": 1322063,
+      "sha256": "8570ce01a1c392f020189b5db3fe497ddbe11e7130bb8efb6fb24c90ebfe5c1b"
+    },
+    {
+      "file": "feral-hunter-vs-scar-wall-refusal.png",
+      "bytes": 1288705,
+      "sha256": "b225909553f357afefce52660b1ae0f920093da3446ac847537591087a237e99"
+    },
+    {
+      "file": "image-review-partial.json",
+      "bytes": 4848,
+      "sha256": "a11c31e4f6e0517183b03d35f545c4bef80a48b6afe32b475e00f8f0e512c726"
+    },
+    {
+      "file": "opened-partial.json",
+      "bytes": 1442,
+      "sha256": "d1a3271b49793f5b2d5a767a6a71755008ee1defb9352bc05b6c451f5859edce"
+    },
+    {
+      "file": "runtime-freeze.json",
+      "bytes": 297819,
+      "sha256": "ea0b54d2a8eb3edb1c7b716a419041efdde19019d5359f99604a98a255a8ae7c"
+    },
+    {
+      "file": "scar-vs-feral-hunter-J1-initial-capture.png",
+      "bytes": 1294231,
+      "sha256": "4d1153d9db78a67ef4aba37ab93aaddae3d10ed29521513caa441247d3f828be"
+    },
+    {
+      "file": "scar-vs-feral-hunter-J1-initial-flight.png",
+      "bytes": 1307980,
+      "sha256": "54bc775a670b7ea4fe268e6b4caf05affc669b30f36143005b8147a7ccb6b01e"
+    },
+    {
+      "file": "scar-vs-feral-hunter-J1-initial-landing.png",
+      "bytes": 1276413,
+      "sha256": "6b90d56723d38dd4a68b38ae9f6f0dce2a5de5a84bc2881589fcef5189e95367"
+    },
+    {
+      "file": "scar-vs-feral-hunter-J1-initial-recovered.png",
+      "bytes": 1277056,
+      "sha256": "1c39be2db788013548ef315062ad49682adae571faefc5d7a33ac7a7054be6ad"
+    },
+    {
+      "file": "scar-vs-feral-hunter-J1-return-capture.png",
+      "bytes": 1275959,
+      "sha256": "aa54a827e0043015531737d22453e4725587178e0a96c175b258560abea4eca2"
+    },
+    {
+      "file": "scar-vs-feral-hunter-J1-return-flight.png",
+      "bytes": 1318186,
+      "sha256": "b5a511b65bed5e8d9024b9066e761886e7d532186da8095d3296c452e50ef791"
+    },
+    {
+      "file": "scar-vs-feral-hunter-J1-return-landing.png",
+      "bytes": 1281788,
+      "sha256": "bba9e5d07fe94fa82bb77771e0dd3eb9a2525437008096163e479bdad1022ff5"
+    },
+    {
+      "file": "scar-vs-feral-hunter-J1-return-recovered.png",
+      "bytes": 1283018,
+      "sha256": "ee051dbc83f51061b4b9f8f6bd64a6896c1a1599e211ab91036adef5c5bda396"
+    },
+    {
+      "file": "scar-vs-feral-hunter-forward-button-forward-button-held-retreat.png",
+      "bytes": 1280261,
+      "sha256": "6b1b85cda8ea3527902598ca7121697d1befc616c04edbb27ad653597b522b8d"
+    }
+  ]
+}

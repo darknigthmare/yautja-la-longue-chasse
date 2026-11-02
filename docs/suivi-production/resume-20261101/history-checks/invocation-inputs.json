@@ -1,0 +1,62 @@
+{
+  "scope": "Observed inputs for the three historical commands; private historical applications are tested, not the current game.",
+  "coordinatorHeadObserved": "f02e5f1002765d4f2a1ae1f0eaab1f358f61942a",
+  "inputFingerprints": [
+    {
+      "path": "scripts/check-homeworld-history-v112.mjs",
+      "bytes": 5560,
+      "sha256": "e3269c76bf7d38e4b182d0ce258ebb64ca3e82d4c82456f7b29ce0ecc8df54ed"
+    },
+    {
+      "path": "scripts/check-excel-history-v112.mjs",
+      "bytes": 12834,
+      "sha256": "e15e5931523a0645753e64d5eec5a3d3a3f22495f10bf41973c834ced4fe50e0"
+    },
+    {
+      "path": "scripts/check-excel-history-homeworld-v112.mjs",
+      "bytes": 1874,
+      "sha256": "586c60a7e639addc81df47928415027a689025a21d17fc4c678d11b83f17d9aa"
+    },
+    {
+      "path": "scripts/check-excel-history-compat-v112.mjs",
+      "bytes": 3865,
+      "sha256": "a50a16b41f008488ebbdc1085f3f02293dd3ffc0c30fbde1ce4ae7c210f325c9"
+    },
+    {
+      "path": "scripts/historical-excel-context-homeworld-v112.mjs",
+      "bytes": 2928,
+      "sha256": "8a5f325db1873183f8e329e69d438e4cb34940e2dbab81a13a54e9c17e51cb19"
+    },
+    {
+      "path": "tests/fixtures/excel-history-v111-homeworld-v112.json",
+      "bytes": 1087365,
+      "sha256": "d4bf56b2e785959bc2c0217bfd308d321707a9ecb5bc52b22dd70a1b6154572a"
+    },
+    {
+      "path": "tests/fixtures/excel-history-v111-homeworld-v112.json.gz",
+      "bytes": 11664783,
+      "sha256": "972cb71ff3b3448a7d298f7d8628d70783864f7b8b9debe3594b3bcf078741c6"
+    },
+    {
+      "path": "docs/v111-runtime-freeze.json",
+      "bytes": 264999,
+      "sha256": "8eee8a5f5a043f2a67477bc6bcff97fffb1ee1666864bd7aed60c7a6c21ca138"
+    },
+    {
+      "path": "docs/v110-runtime-freeze.json",
+      "bytes": 256333,
+      "sha256": "c54a5e97c199d16584a229f332692f5890874f5494b015657f66cf9659bfe3f1"
+    },
+    {
+      "path": "docs/YAUTJA_V111_SUIVI.xlsx",
+      "bytes": 8150642,
+      "sha256": "fa5ebf78a08c36b4a567246dfae41de535a8e36c7294ba33190e3e1e2ec9ad05"
+    },
+    {
+      "path": "docs/YAUTJA_V110_SUIVI.xlsx",
+      "bytes": 6260095,
+      "sha256": "0b7d7890c8d235a9cda0f6d61c62001efe150f2c4022924c20d88196afcdbd7c"
+    }
+  ],
+  "nodeVersion": "v22.23.4"
+}

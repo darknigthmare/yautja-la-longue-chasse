@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "domain": "Homeworld",
+  "run": "R6",
+  "runtimeCommit": "0f79d3d8eac494cec4c418ac5b2f867929850bb7",
+  "buildId": "vxOXqmuKalwQbkLqTZnwN",
+  "method": "All 39 PNGs produced by this R6 recipe were opened individually with view_image. Original R6 bytes remain unchanged. R5 images are not reused or relabelled.",
+  "capturesOpened": [
+    "foundation-residence-clans-1-supported-facade.png",
+    "foundation-residence-esplanade-2-supported-facade.png",
+    "foundation-residence-forges-1-supported-facade.png",
+    "foundation-trophy-mausoleum-supported-facade.png",
+    "foundation-residence-arenas-1-supported-facade.png",
+    "foundation-residence-terraces-3-supported-facade.png",
+    "natural-face-causeway-unmodified-connected-rock-faces.png",
+    "place-traveler-marker-native-contact-and-clearance.png",
+    "place-arrival-marker-native-contact-and-clearance.png",
+    "place-arrival-planter-native-contact-and-clearance.png",
+    "place-delegation-planter-native-contact-and-clearance.png",
+    "place-register-marker-native-contact-and-clearance.png",
+    "life-causeway-maintenance-native-grounded.png",
+    "life-causeway-return-native-grounded.png",
+    "place-maintenance-console-native-contact-and-clearance.png",
+    "life-causeway-relay-native-grounded.png",
+    "life-quay-approach-native-grounded.png",
+    "life-rampart-watch-native-grounded.png",
+    "life-marsh-watch-native-grounded.png",
+    "life-reserve-viaduct-native-grounded.png",
+    "mobility-archive-arrival-actual-archive-post.png",
+    "mobility-mausoleum-desktop-actual-service-dialog.png",
+    "mobility-officer-desktop-actual-service-dialog.png",
+    "mobility-officer-mobile-actual-service-dialog.png",
+    "upgrade-checkpoint-accepted-local-migration.png",
+    "upgrade-checkpoint-explicit-migration-preview.png",
+    "upgrade-checkpoint-voluntary-study-reprise.png",
+    "upgrade-remote-last-accepted-local-migration.png",
+    "upgrade-remote-last-explicit-migration-preview.png",
+    "upgrade-cargo-ground-piece-accepted-local-migration.png",
+    "upgrade-cargo-ground-piece-explicit-migration-preview.png",
+    "upgrade-cargo-ground-piece-voluntary-cargo-reprise.png",
+    "upgrade-checkpoint-mobile-accepted-local-migration.png",
+    "upgrade-checkpoint-mobile-explicit-migration-preview.png",
+    "upgrade-checkpoint-mobile-voluntary-study-reprise.png",
+    "upgrade-ground-piece-accepted-local-migration.png",
+    "upgrade-ground-piece-explicit-migration-preview.png",
+    "upgrade-ground-piece-voluntary-study-reprise.png",
+    "upgrade-remote-last-voluntary-study-reprise.png"
+  ],
+  "observations": [
+    {
+      "area": "Foundations",
+      "finding": "All six retained facades remain attached to their local supports. Continuous paving covers both small mausoleum joints. Original doors, native art, foreground transparency and intentional outer relief remain."
+    },
+    {
+      "area": "PublicPlaces",
+      "finding": "All six native props remain grounded with their original scale. The register marker remains to the right of the retained planter; real keyboard walking reaches the original V104 waypoint after the collision check. Existing operator approaches remain free in the executed scenarios."
+    },
+    {
+      "area": "PublicLife",
+      "finding": "All seven walkers show complete grounded bodies on their tested lanes, including the upper Reserve viaduct. Existing native left/right banks remain in use; no new role-specific animation or global density completion is asserted."
+    },
+    {
+      "area": "Interactions",
+      "finding": "Officer, mausoleum and archive dialogs open through real interaction. The 390px mobile officer dialog remains within the viewport and scrolls natively. The recovery preview retains both actions and a visible terrain area."
+    },
+    {
+      "area": "UpgradeRecovery",
+      "finding": "All five cases show preview, accepted local restore and voluntary study/cargo reprise. The actor and the relocated parked object retain separate visible positions; the marker and adjacent public ground remain visible."
+    }
+  ],
+  "openVisualFollowup": [
+    {
+      "capture": "life-marsh-watch-native-grounded.png",
+      "finding": "Fine dark vertical silhouettes remain visible near dock control, around image x414 and x882. Nearby model probes find retained supported ground; a separate read-only DOM/paint-layer diagnostic is in progress. This review does not identify or fill an unsupported physical hole from the image alone."
+    },
+    {
+      "captures": [
+        "foundation-residence-arenas-1-supported-facade.png",
+        "natural-face-causeway-unmodified-connected-rock-faces.png",
+        "life-reserve-viaduct-native-grounded.png"
+      ],
+      "finding": "The preserved outer relief retains angular dark backgrounds and repeated native motifs. Broader landscape composition, dedicated artwork and suspended natural placements remain open."
+    }
+  ],
+  "limitations": [
+    "Initial campaign checkpoints, completed First Tracks and pre-owned tool are declared fixtures; the recipe does not certify player travel between every city location or every inherited source requirement.",
+    "Existing foreground transparency and large dark exterior cliffs remain visible. The bounded review does not establish every possible camera or occlusion case.",
+    "Technical visual inspection does not confer the repository status reserved for human artistic validation."
+  ]
+}

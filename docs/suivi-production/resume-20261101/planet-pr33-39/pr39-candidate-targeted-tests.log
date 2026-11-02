@@ -1,0 +1,28 @@
+✔ land elevation is a genuine 16-bit RG texture: non-land, lake, river and sea are transparent zero (42.144244ms)
+✔ relief is higher inland than the shoreline of the same actual continent (16.874512ms)
+✔ longitude seam wraps; latitude edges never invent a second polar continent (22.595131ms)
+✔ spherical ridges are deterministic, biome-aware and require no generated war save changes (40.048927ms)
+✔ radius affects shoreline distance in km, not identity or count of land pixels (31.441779ms)
+✔ invalid region IDs, options, physical dimensions and byte decoder reject corrupted input (4.071314ms)
+✔ six physical sizes offer valid bounded density recommendations (7.348332ms)
+✔ locked controls are never overwritten (0.34538ms)
+✔ predicted archipelago sizes match the real generator across physical counts (10652.219626ms)
+✔ invalid counts and dimensions are rejected (0.619884ms)
+✔ six actual clan-war RTS unit IDs have distinct prototype mobility caps (1.535872ms)
+✔ true coast pixels are blocked and can't be bypassed by diagonal or fictional bridge (13.437265ms)
+✔ a pisteur can follow the one actual dry pass, while a chariot cannot cross the 22% ridge (1.84602ms)
+✔ the playable exercise advances one real adjacent tile at a time; bad cross-world plan is ignored (0.671091ms)
+✔ antimeridian wraps, pole edges are out-of-world instead of mirrored, inputs remain immutable (0.344138ms)
+✔ invalid local resolution, foreign region gradient and unusable slope map are rejected (0.463678ms)
+✔ V155 profile includes the actual starting altitude with no fabricated points (7.67653ms)
+✔ V155 profile follows a real V154 path; one step moves the marker, not the terrain (2.750702ms)
+✔ V155 refuses a different world, a forged teleport and a submerged route (0.608696ms)
+✔ an uninhabitable grid gives an honest empty elevation profile (9.787399ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 12482.757513

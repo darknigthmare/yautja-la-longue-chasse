@@ -1,0 +1,211 @@
+--- a/app/game/PlanetGeneratorV103.tsx
++++ b/app/game/PlanetGeneratorV103.tsx
+@@ -20,7 +20,7 @@
+ import { WAR_BIOME_LABELS_V96 } from "./systems/clanWarPlanetLabelsV102";
+ import type { WarPlanetV96 } from "./systems/clanWarPlanetsV96";
+ import {
+-  DEFAULT_WAR_PLANET_RECIPE_V115, type WarPlanetRecipeV115,
++  DEFAULT_WAR_PLANET_RECIPE_V115, baseWarPlanetRecipeV103FromV115,
+ } from "./systems/clanWarPlanetGeneratorV115";
+ import { PLANET_SIZE_LABELS_V115, WAR_SHAPE_TEMPLATES_V115, type PlanetSizeV115 } from "./systems/clanWarShapeAtlasV115";
+ import { WAR_PLANET_LAND_TEXTURES_V115, WAR_PLANET_LIQUID_TEXTURES_V115 } from "./systems/clanWarTextureLibraryV115";
+@@ -56,8 +56,7 @@
+ function convertToV103Recipe(recipe: WarPlanetRecipeAnyV103): WarPlanetRecipeV103 {
+   if (recipe.version === 102) return prepareWarPlanetVariantV103(recipe);
+   if (recipe.version === 103) return { ...recipe };
+-  const { version, planetSize, islandShape, continentShape, regionShape, landMaterial, liquidMaterial, ...base } = recipe;
+-  return { ...base, version: 103 };
++  return baseWarPlanetRecipeV103FromV115(recipe);
+ }
+ 
+ function downloadJson(planet: GeneratedWarPlanetAnyV103) {
+--- a/app/game/systems/clanWarPlanetGeneratorV115.ts
++++ b/app/game/systems/clanWarPlanetGeneratorV115.ts
+@@ -43,6 +43,13 @@
+ const integer = (value: unknown, limit: number) => typeof value === "number" && Number.isInteger(value) && value >= 0 && value < limit;
+ const record = (value: unknown): value is Record<string, unknown> => value !== null && typeof value === "object" && !Array.isArray(value);
+ const extraFields = ["planetSize", "islandShape", "continentShape", "regionShape", "landMaterial", "liquidMaterial"] as const;
++/** Preserve the original rest-exclusion order while deriving the old contract.
++ * Deletion only touches this fresh copy, never the caller's versioned recipe. */
++export function baseWarPlanetRecipeV103FromV115(recipe: WarPlanetRecipeV115): WarPlanetRecipeV103 {
++  const base = { ...recipe };
++  for (const field of ["version", ...extraFields]) Reflect.deleteProperty(base, field);
++  return { ...base, version: 103 };
++}
+ function fnv(text: string) {
+   let value = 2166136261;
+   for (let i = 0; i < text.length; i++) value = Math.imul(value ^ text.charCodeAt(i), 16777619);
+@@ -72,8 +79,8 @@
+ export function encodeWarPlanetV115(value: WarPlanetRecipeV115): string {
+   const recipe = validateWarPlanetRecipeV115(value);
+   if (!recipe) throw new RangeError("Recette planétaire V115 invalide.");
+-  const { version, planetSize, islandShape, continentShape, regionShape, landMaterial, liquidMaterial, ...base } = recipe;
+-  const legacy = encodeWarPlanetV103({ ...base, version: 103 });
++  const { planetSize, islandShape, continentShape, regionShape, landMaterial, liquidMaterial } = recipe;
++  const legacy = encodeWarPlanetV103(baseWarPlanetRecipeV103FromV115(recipe));
+   const segments = legacy.split("-");
+   const suffix = [sizes.indexOf(planetSize).toString(36),
+     islandShape.toString(36).padStart(2, "0"),
+@@ -105,8 +112,8 @@
+ export function describeWarPlanetV115(id: string) {
+   const recipe = parseWarPlanetV115(id);
+   if (!recipe) return undefined;
+-  const { version, planetSize, islandShape, continentShape, regionShape, landMaterial, liquidMaterial, ...base } = recipe;
+-  const legacyId = encodeWarPlanetV103({ ...base, version: 103 });
++  const { planetSize } = recipe;
++  const legacyId = encodeWarPlanetV103(baseWarPlanetRecipeV103FromV115(recipe));
+   const summary = describeWarPlanetV103(legacyId);
+   if (!summary) return undefined;
+   return { ...summary, id, version: 115 as const,
+@@ -115,9 +122,9 @@
+ export function generateWarPlanetV115(input: WarPlanetRecipeV115): GeneratedWarPlanetV115 {
+   const recipe = validateWarPlanetRecipeV115(input);
+   if (!recipe) throw new RangeError("Recette planétaire V115 invalide.");
+-  const { version, planetSize, islandShape, continentShape, regionShape, landMaterial, liquidMaterial, ...base } = recipe;
++  const { planetSize, islandShape, continentShape, regionShape, landMaterial, liquidMaterial } = recipe;
+   const id = encodeWarPlanetV115(recipe), radiusKm = PLANET_RADII_KM_V115[planetSize];
+-  const planet = generateWarPlanetV103({ ...base, version: 103 }, {
++  const planet = generateWarPlanetV103(baseWarPlanetRecipeV103FromV115(recipe), {
+     worldId: id, shapes: { islandShape, continentShape, regionShape },
+   });
+   const island = warShapeTemplateV115("island", islandShape);
+--- a/app/game/systems/clanWarTextureLibraryV115.ts
++++ b/app/game/systems/clanWarTextureLibraryV115.ts
+@@ -59,7 +59,6 @@
+   if (!Number.isInteger(index) || index < 0 || index >= 16) throw new RangeError("Matière planétaire inconnue.");
+   return `yautja-v115:${domain}:${index}`;
+ }
+-function fraction(v: number) { return v - Math.floor(v); }
+ function hash(x: number, y: number, seed: number) {
+   const a = Math.imul((x + 1) ^ seed, 374761393), b = Math.imul((y + 1) ^ (seed >>> 1), 668265263);
+   let n = Math.imul(a ^ b, 1274126177); n ^= n >>> 13;
+--- a/scripts/qa-homeworld-atlas-browser-v109.mjs
++++ b/scripts/qa-homeworld-atlas-browser-v109.mjs
+@@ -28,20 +28,29 @@
+ const foreign=structuredClone(saved);foreign.createdAt='2026-10-26T10:00:00.000Z';foreign.homeworld.cargoV108=undefined;
+ const fixture={save:saved,groundChanged,foreign,origin:{actor:f.b.passage.start,levelId:'0',interiorId:null},otherOrigin:{actor:{x:5000,y:3600},levelId:'+1',interiorId:null},targetId:f.b.npcId};
+ const bundle=await build({entryPoints:[path.join(root,'tests/browser/homeworld-atlas-v109.fixture.tsx')],bundle:true,write:false,outdir:path.join(root,'outputs/qa-v109-atlas-build'),format:'esm',platform:'browser',jsx:'automatic',define:{'process.env.NODE_ENV':'"production"'},logLevel:'silent',plugins});
+-const workerFile=path.join(root,'app/game/homeworldRouteWorkerV111.ts');
+-const worker=await build({entryPoints:[workerFile],bundle:true,write:false,format:'esm',platform:'browser',logLevel:'silent'});
+-const js=bundle.outputFiles.find(file=>file.path.endsWith('.js')).contents,css=bundle.outputFiles.find(file=>file.path.endsWith('.css'))?.contents??'',workerJs=worker.outputFiles[0].contents;
++// The current host constructs V112; an explicit historical host may still
++// construct V111. Serve both actual modules without changing either contract.
++const workerFiles=['app/game/homeworldRouteWorkerV111.ts','app/game/homeworldRouteWorkerV112.ts'];
++const workerBundles=await Promise.all(workerFiles.map(async file=>{
++ const built=await build({entryPoints:[path.join(root,file)],bundle:true,write:false,format:'esm',platform:'browser',logLevel:'silent'});
++ return {path:file,url:'/'+path.basename(file),source:await fs.readFile(path.join(root,file)),javascript:built.outputFiles[0].contents};
++}));
++const workersByUrl=new Map(workerBundles.map(item=>[item.url,item])),servedWorkerRequests=[];
++const js=bundle.outputFiles.find(file=>file.path.endsWith('.js')).contents,css=bundle.outputFiles.find(file=>file.path.endsWith('.css'))?.contents??'';
+ const server=http.createServer((req,res)=>{
+  if(req.url==='/fixture.js'){res.setHeader('Content-Type','text/javascript');res.end(js);}
+  else if(req.url==='/fixture.css'){res.setHeader('Content-Type','text/css');res.end(css);}
+- else if(req.url==='/homeworldRouteWorkerV111.ts'){res.setHeader('Content-Type','text/javascript');res.end(workerJs);}
++ else if(workersByUrl.has(req.url)){
++  const item=workersByUrl.get(req.url);servedWorkerRequests.push({path:item.path,status:200,sourceSha256:createHash('sha256').update(item.source).digest('hex'),javascriptSha256:createHash('sha256').update(item.javascript).digest('hex')});
++  res.setHeader('Content-Type','text/javascript');res.end(item.javascript);
++ }
+  else if(req.url==='/'){res.setHeader('Content-Type','text/html');res.end('<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Atlas V109 integration</title><link rel="icon" href="data:,"><link rel="stylesheet" href="/fixture.css"><div id="root"></div><script>window.__atlasFixturesV109='+JSON.stringify(fixture).replaceAll('<','\\u003c')+'</script><script type="module" src="/fixture.js"></script>');}
+  else{res.writeHead(404);res.end('Not found');}
+ });
+ await new Promise((resolve,reject)=>{server.once('error',reject);server.listen(0,'127.0.0.1',resolve);});
+ const origin='http://127.0.0.1:'+server.address().port,checks=[],errors=[],consoleErrors=[],httpErrors=[],captures=[];let browser,failure;
+ const sha=value=>createHash('sha256').update(value).digest('hex');await fs.mkdir(output,{recursive:true});
+-const sourceFiles=['app/game/HomeworldWorldMapV77.tsx','app/game/homeworldRouteWorkerV111.ts','app/game/systems/homeworldCourtArtV80.ts','app/game/systems/homeworldCivicDecorV80.ts','tests/browser/homeworld-atlas-v109.fixture.tsx','scripts/qa-homeworld-atlas-browser-v109.mjs'];
++const sourceFiles=['app/game/HomeworldWorldMapV77.tsx',...workerFiles,'app/game/systems/homeworldCourtArtV80.ts','app/game/systems/homeworldCivicDecorV80.ts','tests/browser/homeworld-atlas-v109.fixture.tsx','scripts/qa-homeworld-atlas-browser-v109.mjs'];
+ const sources=await Promise.all(sourceFiles.map(async file=>({path:file,sha256:sha(await fs.readFile(baselineHost&&path.join(root,file)===hostFile?baselineHost:path.join(root,file)))})));
+ async function check(name,run){const context=await browser.newContext({viewport:{width:1200,height:1000},reducedMotion:'reduce'}),page=await context.newPage();page.setDefaultTimeout(30000);page.on('pageerror',e=>errors.push(e.message));
+  page.on('console',entry=>{if(entry.type()==='error')consoleErrors.push(entry.text());});page.on('response',response=>{if(response.status()>=400)httpErrors.push({url:response.url(),status:response.status()});});
+@@ -104,6 +113,6 @@
+  });
+  await check('A390px atlas keeps its register and cancellation controls inside the viewport',async page=>{await page.setViewportSize({width:390,height:844});assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));await page.locator('[data-homeworld-cargo-register-v109] summary').click();assert.equal(await page.locator('[data-homeworld-cargo-register-v109] li').count(),2);await capture(page,'mobile-cargo-register');});
+  checks.push({name:'No uncaught browser exceptions, console errors or HTTP failures',status:errors.length||consoleErrors.length||httpErrors.length?'FAIL':'PASS'});assert.deepEqual(errors,[]);assert.deepEqual(consoleErrors,[]);assert.deepEqual(httpErrors,[]);
+-}catch(error){failure??=error;console.error(error);}finally{await browser?.close();await new Promise(resolve=>server.close(resolve));await fs.writeFile(path.join(output,'result.json'),JSON.stringify({status:failure?'FAIL':'PASS',variant:baselineHost?'baseline-host':'working-tree',sources,scope:'Isolated actual React Atlas and current V111 module Worker. Prepared model-played cargo placements, direct fixture parent updates, and explicitly deferred native Worker delivery and animation frames test browser lifecycle boundaries; no campaign victory, production build or art admission is claimed.',checks,captures,errors,consoleErrors,httpErrors,fixtureIO:['Model-played initial carried/parked cargo checkpoint','Fixture parent changes for owner, floor, suspension and confirmed lot placements','Actual Worker message delivery delayed after computation; no route result or model outcome is fabricated','Animation frames may be held after a native response is ready to exercise cancellation before its UI update']},null,2)+'\n');console.log('Report: '+path.join(output,'result.json'));}
++}catch(error){failure??=error;console.error(error);}finally{await browser?.close();await new Promise(resolve=>server.close(resolve));await fs.writeFile(path.join(output,'result.json'),JSON.stringify({status:failure?'FAIL':'PASS',variant:baselineHost?'baseline-host':'working-tree',sources,workerModules:workerBundles.map(item=>({path:item.path,sourceSha256:sha(item.source),javascriptSha256:sha(item.javascript)})),servedWorkerRequests,scope:'Isolated actual React Atlas and real V111/V112 module Workers; servedWorkerRequests identifies the module actually requested by the selected host. Prepared model-played cargo placements, direct fixture parent updates, and explicitly deferred native Worker delivery and animation frames test browser lifecycle boundaries; no campaign victory, production build or art admission is claimed.',checks,captures,errors,consoleErrors,httpErrors,fixtureIO:['Model-played initial carried/parked cargo checkpoint','Fixture parent changes for owner, floor, suspension and confirmed lot placements','Actual Worker message delivery delayed after computation; no route result or model outcome is fabricated','Animation frames may be held after a native response is ready to exercise cancellation before its UI update']},null,2)+'\n');console.log('Report: '+path.join(output,'result.json'));}
+ if(failure)reportGithubActionsFailure('Current Homeworld Atlas Worker integration',failure);
+ if(failure)process.exitCode=1;
+--- a/tests/hunter-palette-filters-v114.test.mjs
++++ b/tests/hunter-palette-filters-v114.test.mjs
+@@ -2,6 +2,7 @@
+ import test from "node:test";
+ import { readFileSync } from "node:fs";
+ import { HUNTER_SKIN_FILTERS_V114, HUNTER_DREAD_FILTERS_V114, HUNTER_ARMOR_FILTERS_V114 } from "../app/game/hunterPaletteFiltersV114.ts";
++import { migrateLegacyPhgAppearanceV115 } from "../app/game/hunterChromaticsV113.ts";
+ 
+ const types = readFileSync(new URL("../app/game/types.ts", import.meta.url), "utf8");
+ const source = {
+@@ -15,12 +16,31 @@
+   return [...definition[1].matchAll(/"([^"]+)"/g)].map(match => match[1]).sort();
+ };
+ 
++// Retained V114 fallback entries remain valid legacy save inputs. V115
++// converts exactly these aliases to explicit chromatic fields; they are not
++// additional selectable members of the current three-value base tint types.
++const legacyAliases = {
++  HunterSkinId: { field: "skinId", target: "skinHex", values: {
++    "moss-mottle": "#677b4b", "copper-mottle": "#a35a3e", "sand-mottle": "#b2a17a",
++    "storm-mottle": "#647b85", "ivory-mottle": "#bcb4a2",
++  } },
++  DreadTintId: { field: "dreadTintId", target: "dreadHex", values: {
++    copper: "#85513f", bone: "#bbb29c", moss: "#586a4b", "blue-black": "#343e53",
++  } },
++  ArmorTintId: { field: "armorTintId", target: "armorHex", values: {
++    bone: "#afa68d", jade: "#466f5b", rust: "#8b503d", crimson: "#873938",
++  } },
++};
++
+ for (const [type, filters] of [
+   ["HunterSkinId", HUNTER_SKIN_FILTERS_V114],
+   ["DreadTintId", HUNTER_DREAD_FILTERS_V114],
+   ["ArmorTintId", HUNTER_ARMOR_FILTERS_V114],
+-]) test(`every declared ${type} has a finite visible filter`, () => {
+-  assert.deepEqual(Object.keys(filters).sort(), declared(type));
++]) test(`every declared ${type} and retained migration alias has a finite visible filter`, () => {
++  const current = declared(type), aliases = Object.keys(legacyAliases[type].values);
++  assert.ok(aliases.every(id => !current.includes(id)), "migrated aliases do not expand the active base tint type");
++  // Keep exact equality: an invented or silently missing entry still fails.
++  assert.deepEqual(Object.keys(filters).sort(), [...current, ...aliases].sort());
+   for (const [id, value] of Object.entries(filters)) {
+     assert.ok(typeof value === "string" && value.length > 0, id);
+     assert.doesNotMatch(value, /url\(|expression\(|none.*none/i);
+@@ -56,3 +76,18 @@
+   assert.match(source.preview, /HUNTER_DREAD_FILTERS_V114\[appearance\.dreadTintId/);
+   assert.match(source.preview, /HUNTER_ARMOR_FILTERS_V114\[appearance\.armorTintId/);
+ });
++
++test("all thirteen retained tint aliases migrate exactly and never override explicit modern choices", () => {
++  let count = 0;
++  for (const { field, target, values } of Object.values(legacyAliases)) {
++    for (const [id, expected] of Object.entries(values)) {
++      assert.equal(migrateLegacyPhgAppearanceV115({ [field]: id })[target], expected);
++      assert.equal(migrateLegacyPhgAppearanceV115({ [field]: id, chromaticsV113: { [target]: "#123456" } })[target], "#123456");
++      assert.equal(migrateLegacyPhgAppearanceV115({ [field]: id, chromaticsV113: { [target]: null } })[target], null);
++      count++;
++    }
++    assert.equal(migrateLegacyPhgAppearanceV115({ [field]: "invented-tint" })[target], null);
++    assert.equal(migrateLegacyPhgAppearanceV115({ [field]: "__proto__" })[target], null);
++  }
++  assert.equal(count, 13);
++});
+--- a/tests/planet-v115-v103-compatibility-v122.test.mjs
++++ b/tests/planet-v115-v103-compatibility-v122.test.mjs
+@@ -1,9 +1,15 @@
+ import test from "node:test";
+ import assert from "node:assert/strict";
+-import { DEFAULT_WAR_PLANET_RECIPE_V103, generateWarPlanetV103 } from "../app/game/systems/clanWarPlanetGeneratorV103.ts";
+-import { DEFAULT_WAR_PLANET_RECIPE_V115, generateWarPlanetV115 } from "../app/game/systems/clanWarPlanetGeneratorV115.ts";
+-import { analyzeWarPlanetStrategyV114 } from "../app/game/systems/clanWarPlanetStrategyV114.ts";
+-import { warDeploymentV103 } from "../app/game/systems/clanWarDeploymentV103.ts";
++import { homeworldSceneSsrV78 } from "./helpers/homeworld-scene-ssr-v78.mjs";
++
++// Reuse the project's actual TypeScript source loader: these engines retain
++// extensionless internal imports for the application bundler. No SSR rendering
++// or CSS substitution is involved in this pure compatibility test.
++const { load } = homeworldSceneSsrV78();
++const { DEFAULT_WAR_PLANET_RECIPE_V103, generateWarPlanetV103 } = load("app/game/systems/clanWarPlanetGeneratorV103.ts");
++const { DEFAULT_WAR_PLANET_RECIPE_V115, generateWarPlanetV115 } = load("app/game/systems/clanWarPlanetGeneratorV115.ts");
++const { analyzeWarPlanetStrategyV114 } = load("app/game/systems/clanWarPlanetStrategyV114.ts");
++const { warDeploymentV103 } = load("app/game/systems/clanWarDeploymentV103.ts");
+ 
+ test("V122 V103 and V115 share deployment semantics without recipe conversion", () => {
+   const old = generateWarPlanetV103({ ...DEFAULT_WAR_PLANET_RECIPE_V103, seed: 11220001 });

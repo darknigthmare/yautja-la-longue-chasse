@@ -1,0 +1,910 @@
+{
+  "scope": "Exploratory local fixture; DOM visibility toggles are attribution diagnostics, not gameplay certification.",
+  "errors": [],
+  "before": {
+    "world": {
+      "data-homeworld-camera-mode": "follow",
+      "data-homeworld-camera-zoom": "0.900",
+      "style": "pointer-events: none; width: 10400px; height: 3670.89px; transform: translate(-5105.7px, -902.913px) scale(0.9);"
+    },
+    "actor": {
+      "data-homeworld-actor": "true",
+      "data-homeworld-depth-layer-v81": "1",
+      "data-homeworld-level-v77": "0",
+      "data-homeworld-elevation-v77": "0.000",
+      "data-x": "6473",
+      "data-y": "2800",
+      "data-moving": "false",
+      "data-homeworld-running-v81": "false",
+      "data-facing": "1",
+      "data-youth-distance-v74": "0.000"
+    },
+    "sites": [
+      {
+        "site": {
+          "x": 414,
+          "y": 400
+        },
+        "hits": [
+          {
+            "tag": "polygon",
+            "attrs": {},
+            "parentAttrs": {
+              "data-homeworld-exposed-ground-edge-v81": "connection-v72:luminous-marshes:0:8:2"
+            },
+            "svgAttrs": {
+              "data-homeworld-depth-layer-v81": "2",
+              "data-homeworld-real-foundations-v81": "0"
+            },
+            "fill": "#1c1510",
+            "points": "6140,1350.0726817716688 6132.997176315661,1345.4609671697804 6132.997176315661,1645.4609671697804 6140,1650.0726817716688",
+            "z": "-11500",
+            "rect": {
+              "x": -0.00048828125,
+              "y": 56.498291015625,
+              "width": 1440,
+              "height": 874.996826171875,
+              "top": 56.498291015625,
+              "right": 1439.99951171875,
+              "bottom": 931.4951171875,
+              "left": -0.00048828125
+            },
+            "point": {
+              "x": 6132.999338060848,
+              "y": 1384.9062085080448
+            }
+          },
+          {
+            "tag": "polygon",
+            "attrs": {},
+            "parentAttrs": {
+              "data-homeworld-exposed-ground-edge-v81": "connection-v72:luminous-marshes:0:8:2"
+            },
+            "svgAttrs": {
+              "data-homeworld-depth-layer-v81": "2",
+              "data-homeworld-real-foundations-v81": "0"
+            },
+            "fill": "url(#_r_1_-foundation-0-connection-v72:luminous-marshes:0:8:2)",
+            "points": "6140,1350.0726817716688 6132.997176315661,1345.4609671697804 6132.997176315661,1645.4609671697804 6140,1650.0726817716688",
+            "z": "-11500",
+            "rect": {
+              "x": -0.00048828125,
+              "y": 56.498291015625,
+              "width": 1440,
+              "height": 874.996826171875,
+              "top": 56.498291015625,
+              "right": 1439.99951171875,
+              "bottom": 931.4951171875,
+              "left": -0.00048828125
+            },
+            "point": {
+              "x": 6132.999338060848,
+              "y": 1384.9062085080448
+            }
+          },
+          {
+            "tag": "rect",
+            "attrs": {},
+            "parentAttrs": {},
+            "svgAttrs": {
+              "data-homeworld-natural-ground-v77": "true",
+              "data-natural-support-solid-v85": "false",
+              "data-homeworld-natural-admission-v112": "315"
+            },
+            "fill": "white",
+            "points": null,
+            "z": "-11001",
+            "rect": {
+              "x": -0.00048828125,
+              "y": 56.498291015625,
+              "width": 1440,
+              "height": 874.996826171875,
+              "top": 56.498291015625,
+              "right": 1439.99951171875,
+              "bottom": 931.4951171875,
+              "left": -0.00048828125
+            },
+            "point": {
+              "x": 6132.999338060848,
+              "y": 1384.9062085080448
+            }
+          },
+          {
+            "tag": "rect",
+            "attrs": {},
+            "parentAttrs": {},
+            "svgAttrs": {
+              "data-homeworld-ecotones-v112": "true",
+              "data-natural-support-solid-v112": "false"
+            },
+            "fill": "white",
+            "points": null,
+            "z": "-11001",
+            "rect": {
+              "x": -0.00048828125,
+              "y": 56.498291015625,
+              "width": 1440,
+              "height": 874.996826171875,
+              "top": 56.498291015625,
+              "right": 1439.99951171875,
+              "bottom": 931.4951171875,
+              "left": -0.00048828125
+            },
+            "point": {
+              "x": 6132.999338060848,
+              "y": 1384.9062085080448
+            }
+          }
+        ]
+      },
+      {
+        "site": {
+          "x": 414,
+          "y": 750
+        },
+        "hits": [
+          {
+            "tag": "polygon",
+            "attrs": {},
+            "parentAttrs": {
+              "data-homeworld-exposed-ground-edge-v81": "forecourt-v76:rampart-watch:2:2"
+            },
+            "svgAttrs": {
+              "data-homeworld-depth-layer-v81": "2",
+              "data-homeworld-real-foundations-v81": "0"
+            },
+            "fill": "#1c1510",
+            "points": "6140,1700.766425999825 6108.523988405785,1708.089768113443 6108.523988405785,2008.089768113443 6140,2000.766425999825",
+            "z": "-11500",
+            "rect": {
+              "x": -0.00048828125,
+              "y": 56.498291015625,
+              "width": 1440,
+              "height": 874.996826171875,
+              "top": 56.498291015625,
+              "right": 1439.99951171875,
+              "bottom": 931.4951171875,
+              "left": -0.00048828125
+            },
+            "point": {
+              "x": 6132.999338060848,
+              "y": 1773.7964993055407
+            }
+          },
+          {
+            "tag": "polygon",
+            "attrs": {},
+            "parentAttrs": {
+              "data-homeworld-exposed-ground-edge-v81": "forecourt-v76:rampart-watch:2:2"
+            },
+            "svgAttrs": {
+              "data-homeworld-depth-layer-v81": "2",
+              "data-homeworld-real-foundations-v81": "0"
+            },
+            "fill": "url(#_r_1_-foundation-0-forecourt-v76:rampart-watch:2:2)",
+            "points": "6140,1700.766425999825 6108.523988405785,1708.089768113443 6108.523988405785,2008.089768113443 6140,2000.766425999825",
+            "z": "-11500",
+            "rect": {
+              "x": -0.00048828125,
+              "y": 56.498291015625,
+              "width": 1440,
+              "height": 874.996826171875,
+              "top": 56.498291015625,
+              "right": 1439.99951171875,
+              "bottom": 931.4951171875,
+              "left": -0.00048828125
+            },
+            "point": {
+              "x": 6132.999338060848,
+              "y": 1773.7964993055407
+            }
+          },
+          {
+            "tag": "rect",
+            "attrs": {},
+            "parentAttrs": {},
+            "svgAttrs": {
+              "data-homeworld-natural-ground-v77": "true",
+              "data-natural-support-solid-v85": "false",
+              "data-homeworld-natural-admission-v112": "315"
+            },
+            "fill": "white",
+            "points": null,
+            "z": "-11001",
+            "rect": {
+              "x": -0.00048828125,
+              "y": 56.498291015625,
+              "width": 1440,
+              "height": 874.996826171875,
+              "top": 56.498291015625,
+              "right": 1439.99951171875,
+              "bottom": 931.4951171875,
+              "left": -0.00048828125
+            },
+            "point": {
+              "x": 6132.999338060848,
+              "y": 1773.7964993055407
+            }
+          },
+          {
+            "tag": "rect",
+            "attrs": {},
+            "parentAttrs": {},
+            "svgAttrs": {
+              "data-homeworld-ecotones-v112": "true",
+              "data-natural-support-solid-v112": "false"
+            },
+            "fill": "white",
+            "points": null,
+            "z": "-11001",
+            "rect": {
+              "x": -0.00048828125,
+              "y": 56.498291015625,
+              "width": 1440,
+              "height": 874.996826171875,
+              "top": 56.498291015625,
+              "right": 1439.99951171875,
+              "bottom": 931.4951171875,
+              "left": -0.00048828125
+            },
+            "point": {
+              "x": 6132.999338060848,
+              "y": 1773.7964993055407
+            }
+          }
+        ]
+      },
+      {
+        "site": {
+          "x": 414,
+          "y": 880
+        },
+        "hits": [
+          {
+            "tag": "polygon",
+            "attrs": {},
+            "parentAttrs": {
+              "data-homeworld-exposed-ground-edge-v81": "forecourt-v76:rampart-watch:2:2"
+            },
+            "svgAttrs": {
+              "data-homeworld-depth-layer-v81": "2",
+              "data-homeworld-real-foundations-v81": "0"
+            },
+            "fill": "#1c1510",
+            "points": "6140,1700.766425999825 6108.523988405785,1708.089768113443 6108.523988405785,2008.089768113443 6140,2000.766425999825",
+            "z": "-11500",
+            "rect": {
+              "x": -0.00048828125,
+              "y": 56.498291015625,
+              "width": 1440,
+              "height": 874.996826171875,
+              "top": 56.498291015625,
+              "right": 1439.99951171875,
+              "bottom": 931.4951171875,
+              "left": -0.00048828125
+            },
+            "point": {
+              "x": 6132.999338060848,
+              "y": 1918.2414644588962
+            }
+          },
+          {
+            "tag": "polygon",
+            "attrs": {},
+            "parentAttrs": {
+              "data-homeworld-exposed-ground-edge-v81": "forecourt-v76:rampart-watch:2:2"
+            },
+            "svgAttrs": {
+              "data-homeworld-depth-layer-v81": "2",
+              "data-homeworld-real-foundations-v81": "0"
+            },
+            "fill": "url(#_r_1_-foundation-0-forecourt-v76:rampart-watch:2:2)",
+            "points": "6140,1700.766425999825 6108.523988405785,1708.089768113443 6108.523988405785,2008.089768113443 6140,2000.766425999825",
+            "z": "-11500",
+            "rect": {
+              "x": -0.00048828125,
+              "y": 56.498291015625,
+              "width": 1440,
+              "height": 874.996826171875,
+              "top": 56.498291015625,
+              "right": 1439.99951171875,
+              "bottom": 931.4951171875,
+              "left": -0.00048828125
+            },
+            "point": {
+              "x": 6132.999338060848,
+              "y": 1918.2414644588962
+            }
+          },
+          {
+            "tag": "rect",
+            "attrs": {},
+            "parentAttrs": {},
+            "svgAttrs": {
+              "data-homeworld-natural-ground-v77": "true",
+              "data-natural-support-solid-v85": "false",
+              "data-homeworld-natural-admission-v112": "315"
+            },
+            "fill": "white",
+            "points": null,
+            "z": "-11001",
+            "rect": {
+              "x": -0.00048828125,
+              "y": 56.498291015625,
+              "width": 1440,
+              "height": 874.996826171875,
+              "top": 56.498291015625,
+              "right": 1439.99951171875,
+              "bottom": 931.4951171875,
+              "left": -0.00048828125
+            },
+            "point": {
+              "x": 6132.999338060848,
+              "y": 1918.2414644588962
+            }
+          },
+          {
+            "tag": "rect",
+            "attrs": {},
+            "parentAttrs": {},
+            "svgAttrs": {
+              "data-homeworld-ecotones-v112": "true",
+              "data-natural-support-solid-v112": "false"
+            },
+            "fill": "white",
+            "points": null,
+            "z": "-11001",
+            "rect": {
+              "x": -0.00048828125,
+              "y": 56.498291015625,
+              "width": 1440,
+              "height": 874.996826171875,
+              "top": 56.498291015625,
+              "right": 1439.99951171875,
+              "bottom": 931.4951171875,
+              "left": -0.00048828125
+            },
+            "point": {
+              "x": 6132.999338060848,
+              "y": 1918.2414644588962
+            }
+          }
+        ]
+      },
+      {
+        "site": {
+          "x": 882,
+          "y": 540
+        },
+        "hits": [
+          {
+            "tag": "polygon",
+            "attrs": {},
+            "parentAttrs": {
+              "data-homeworld-exposed-ground-edge-v81": "connection-v72:ash-marches:0:17:1"
+            },
+            "svgAttrs": {
+              "data-homeworld-depth-layer-v81": "2",
+              "data-homeworld-real-foundations-v81": "0"
+            },
+            "fill": "#1c1510",
+            "points": "6704.23236575951,1588.932527810135 6650,1480.0601030048438 6650,1780.0601030048438 6704.23236575951,1888.932527810135",
+            "z": "-11500",
+            "rect": {
+              "x": -0.00048828125,
+              "y": 56.498291015625,
+              "width": 1440,
+              "height": 874.996826171875,
+              "top": 56.498291015625,
+              "right": 1439.99951171875,
+              "bottom": 931.4951171875,
+              "left": -0.00048828125
+            },
+            "point": {
+              "x": 6653.001212612929,
+              "y": 1540.4623248270432
+            }
+          },
+          {
+            "tag": "polygon",
+            "attrs": {},
+            "parentAttrs": {
+              "data-homeworld-exposed-ground-edge-v81": "connection-v72:ash-marches:0:17:1"
+            },
+            "svgAttrs": {
+              "data-homeworld-depth-layer-v81": "2",
+              "data-homeworld-real-foundations-v81": "0"
+            },
+            "fill": "url(#_r_1_-foundation-0-connection-v72:ash-marches:0:17:1)",
+            "points": "6704.23236575951,1588.932527810135 6650,1480.0601030048438 6650,1780.0601030048438 6704.23236575951,1888.932527810135",
+            "z": "-11500",
+            "rect": {
+              "x": -0.00048828125,
+              "y": 56.498291015625,
+              "width": 1440,
+              "height": 874.996826171875,
+              "top": 56.498291015625,
+              "right": 1439.99951171875,
+              "bottom": 931.4951171875,
+              "left": -0.00048828125
+            },
+            "point": {
+              "x": 6653.001212612929,
+              "y": 1540.4623248270432
+            }
+          },
+          {
+            "tag": "rect",
+            "attrs": {},
+            "parentAttrs": {},
+            "svgAttrs": {
+              "data-homeworld-natural-ground-v77": "true",
+              "data-natural-support-solid-v85": "false",
+              "data-homeworld-natural-admission-v112": "315"
+            },
+            "fill": "white",
+            "points": null,
+            "z": "-11001",
+            "rect": {
+              "x": -0.00048828125,
+              "y": 56.498291015625,
+              "width": 1440,
+              "height": 874.996826171875,
+              "top": 56.498291015625,
+              "right": 1439.99951171875,
+              "bottom": 931.4951171875,
+              "left": -0.00048828125
+            },
+            "point": {
+              "x": 6653.001212612929,
+              "y": 1540.4623248270432
+            }
+          },
+          {
+            "tag": "polygon",
+            "attrs": {
+              "data-natural-support-top-v85": "true"
+            },
+            "parentAttrs": {
+              "data-homeworld-natural-formation-v85": "v71:rampart-walk",
+              "data-homeworld-natural-formation-v112": "v71:rampart-walk",
+              "data-natural-ground-anchor-v85": "rampart-low-causeway:2"
+            },
+            "svgAttrs": {
+              "data-homeworld-natural-ground-v77": "true",
+              "data-natural-support-solid-v85": "false",
+              "data-homeworld-natural-admission-v112": "315"
+            },
+            "fill": "url(#_r_0_-natural)",
+            "points": "5977.7,615.1033703428618 6093,520.5206159885743 6317,520.5206159885743 6882.3,869.4271622209155 8133.75,1723.5971912348934 8133.75,1784.9698699244552 6645.25,2115.923473699009 6470.75,2115.923473699009 6460,2096.3071595758033 5977.7,699.1896759119252",
+            "z": "-11001",
+            "rect": {
+              "x": -0.00048828125,
+              "y": 56.498291015625,
+              "width": 1440,
+              "height": 874.996826171875,
+              "top": 56.498291015625,
+              "right": 1439.99951171875,
+              "bottom": 931.4951171875,
+              "left": -0.00048828125
+            },
+            "point": {
+              "x": 6653.001212612929,
+              "y": 1540.4623248270432
+            }
+          },
+          {
+            "tag": "polygon",
+            "attrs": {
+              "data-ecotone-formation-v112": "v71:rampart-walk"
+            },
+            "parentAttrs": {},
+            "svgAttrs": {
+              "data-homeworld-ecotones-v112": "true",
+              "data-natural-support-solid-v112": "false"
+            },
+            "fill": null,
+            "points": "5977.7,615.1033703428618 6093,520.5206159885743 6317,520.5206159885743 6882.3,869.4271622209155 8133.75,1723.5971912348934 8133.75,1784.9698699244552 6645.25,2115.923473699009 6470.75,2115.923473699009 6460,2096.3071595758033 5977.7,699.1896759119252",
+            "z": "-11001",
+            "rect": {
+              "x": -0.00048828125,
+              "y": 56.498291015625,
+              "width": 1440,
+              "height": 874.996826171875,
+              "top": 56.498291015625,
+              "right": 1439.99951171875,
+              "bottom": 931.4951171875,
+              "left": -0.00048828125
+            },
+            "point": {
+              "x": 6653.001212612929,
+              "y": 1540.4623248270432
+            }
+          },
+          {
+            "tag": "rect",
+            "attrs": {},
+            "parentAttrs": {},
+            "svgAttrs": {
+              "data-homeworld-ecotones-v112": "true",
+              "data-natural-support-solid-v112": "false"
+            },
+            "fill": "white",
+            "points": null,
+            "z": "-11001",
+            "rect": {
+              "x": -0.00048828125,
+              "y": 56.498291015625,
+              "width": 1440,
+              "height": 874.996826171875,
+              "top": 56.498291015625,
+              "right": 1439.99951171875,
+              "bottom": 931.4951171875,
+              "left": -0.00048828125
+            },
+            "point": {
+              "x": 6653.001212612929,
+              "y": 1540.4623248270432
+            }
+          }
+        ]
+      },
+      {
+        "site": {
+          "x": 882,
+          "y": 650
+        },
+        "hits": [
+          {
+            "tag": "polygon",
+            "attrs": {},
+            "parentAttrs": {
+              "data-homeworld-exposed-ground-edge-v81": "connection-v72:ash-marches:0:17:1"
+            },
+            "svgAttrs": {
+              "data-homeworld-depth-layer-v81": "2",
+              "data-homeworld-real-foundations-v81": "0"
+            },
+            "fill": "#1c1510",
+            "points": "6704.23236575951,1588.932527810135 6650,1480.0601030048438 6650,1780.0601030048438 6704.23236575951,1888.932527810135",
+            "z": "-11500",
+            "rect": {
+              "x": -0.00048828125,
+              "y": 56.498291015625,
+              "width": 1440,
+              "height": 874.996826171875,
+              "top": 56.498291015625,
+              "right": 1439.99951171875,
+              "bottom": 931.4951171875,
+              "left": -0.00048828125
+            },
+            "point": {
+              "x": 6653.001212612929,
+              "y": 1662.6849876491133
+            }
+          },
+          {
+            "tag": "polygon",
+            "attrs": {},
+            "parentAttrs": {
+              "data-homeworld-exposed-ground-edge-v81": "connection-v72:ash-marches:0:17:1"
+            },
+            "svgAttrs": {
+              "data-homeworld-depth-layer-v81": "2",
+              "data-homeworld-real-foundations-v81": "0"
+            },
+            "fill": "url(#_r_1_-foundation-0-connection-v72:ash-marches:0:17:1)",
+            "points": "6704.23236575951,1588.932527810135 6650,1480.0601030048438 6650,1780.0601030048438 6704.23236575951,1888.932527810135",
+            "z": "-11500",
+            "rect": {
+              "x": -0.00048828125,
+              "y": 56.498291015625,
+              "width": 1440,
+              "height": 874.996826171875,
+              "top": 56.498291015625,
+              "right": 1439.99951171875,
+              "bottom": 931.4951171875,
+              "left": -0.00048828125
+            },
+            "point": {
+              "x": 6653.001212612929,
+              "y": 1662.6849876491133
+            }
+          },
+          {
+            "tag": "rect",
+            "attrs": {},
+            "parentAttrs": {},
+            "svgAttrs": {
+              "data-homeworld-natural-ground-v77": "true",
+              "data-natural-support-solid-v85": "false",
+              "data-homeworld-natural-admission-v112": "315"
+            },
+            "fill": "white",
+            "points": null,
+            "z": "-11001",
+            "rect": {
+              "x": -0.00048828125,
+              "y": 56.498291015625,
+              "width": 1440,
+              "height": 874.996826171875,
+              "top": 56.498291015625,
+              "right": 1439.99951171875,
+              "bottom": 931.4951171875,
+              "left": -0.00048828125
+            },
+            "point": {
+              "x": 6653.001212612929,
+              "y": 1662.6849876491133
+            }
+          },
+          {
+            "tag": "polygon",
+            "attrs": {
+              "data-natural-support-top-v85": "true"
+            },
+            "parentAttrs": {
+              "data-homeworld-natural-formation-v85": "v71:rampart-walk",
+              "data-homeworld-natural-formation-v112": "v71:rampart-walk",
+              "data-natural-ground-anchor-v85": "rampart-low-causeway:2"
+            },
+            "svgAttrs": {
+              "data-homeworld-natural-ground-v77": "true",
+              "data-natural-support-solid-v85": "false",
+              "data-homeworld-natural-admission-v112": "315"
+            },
+            "fill": "url(#_r_0_-natural)",
+            "points": "5977.7,615.1033703428618 6093,520.5206159885743 6317,520.5206159885743 6882.3,869.4271622209155 8133.75,1723.5971912348934 8133.75,1784.9698699244552 6645.25,2115.923473699009 6470.75,2115.923473699009 6460,2096.3071595758033 5977.7,699.1896759119252",
+            "z": "-11001",
+            "rect": {
+              "x": -0.00048828125,
+              "y": 56.498291015625,
+              "width": 1440,
+              "height": 874.996826171875,
+              "top": 56.498291015625,
+              "right": 1439.99951171875,
+              "bottom": 931.4951171875,
+              "left": -0.00048828125
+            },
+            "point": {
+              "x": 6653.001212612929,
+              "y": 1662.6849876491133
+            }
+          },
+          {
+            "tag": "polygon",
+            "attrs": {
+              "data-ecotone-formation-v112": "v71:rampart-walk"
+            },
+            "parentAttrs": {},
+            "svgAttrs": {
+              "data-homeworld-ecotones-v112": "true",
+              "data-natural-support-solid-v112": "false"
+            },
+            "fill": null,
+            "points": "5977.7,615.1033703428618 6093,520.5206159885743 6317,520.5206159885743 6882.3,869.4271622209155 8133.75,1723.5971912348934 8133.75,1784.9698699244552 6645.25,2115.923473699009 6470.75,2115.923473699009 6460,2096.3071595758033 5977.7,699.1896759119252",
+            "z": "-11001",
+            "rect": {
+              "x": -0.00048828125,
+              "y": 56.498291015625,
+              "width": 1440,
+              "height": 874.996826171875,
+              "top": 56.498291015625,
+              "right": 1439.99951171875,
+              "bottom": 931.4951171875,
+              "left": -0.00048828125
+            },
+            "point": {
+              "x": 6653.001212612929,
+              "y": 1662.6849876491133
+            }
+          },
+          {
+            "tag": "rect",
+            "attrs": {},
+            "parentAttrs": {},
+            "svgAttrs": {
+              "data-homeworld-ecotones-v112": "true",
+              "data-natural-support-solid-v112": "false"
+            },
+            "fill": "white",
+            "points": null,
+            "z": "-11001",
+            "rect": {
+              "x": -0.00048828125,
+              "y": 56.498291015625,
+              "width": 1440,
+              "height": 874.996826171875,
+              "top": 56.498291015625,
+              "right": 1439.99951171875,
+              "bottom": 931.4951171875,
+              "left": -0.00048828125
+            },
+            "point": {
+              "x": 6653.001212612929,
+              "y": 1662.6849876491133
+            }
+          }
+        ]
+      },
+      {
+        "site": {
+          "x": 880,
+          "y": 700
+        },
+        "hits": [
+          {
+            "tag": "polygon",
+            "attrs": {},
+            "parentAttrs": {
+              "data-homeworld-exposed-ground-edge-v81": "connection-v72:ash-marches:0:17:1"
+            },
+            "svgAttrs": {
+              "data-homeworld-depth-layer-v81": "2",
+              "data-homeworld-real-foundations-v81": "0"
+            },
+            "fill": "#1c1510",
+            "points": "6704.23236575951,1588.932527810135 6650,1480.0601030048438 6650,1780.0601030048438 6704.23236575951,1888.932527810135",
+            "z": "-11500",
+            "rect": {
+              "x": -0.00048828125,
+              "y": 56.498291015625,
+              "width": 1440,
+              "height": 874.996826171875,
+              "top": 56.498291015625,
+              "right": 1439.99951171875,
+              "bottom": 931.4951171875,
+              "left": -0.00048828125
+            },
+            "point": {
+              "x": 6650.778982379799,
+              "y": 1718.240743477327
+            }
+          },
+          {
+            "tag": "polygon",
+            "attrs": {},
+            "parentAttrs": {
+              "data-homeworld-exposed-ground-edge-v81": "connection-v72:ash-marches:0:17:1"
+            },
+            "svgAttrs": {
+              "data-homeworld-depth-layer-v81": "2",
+              "data-homeworld-real-foundations-v81": "0"
+            },
+            "fill": "url(#_r_1_-foundation-0-connection-v72:ash-marches:0:17:1)",
+            "points": "6704.23236575951,1588.932527810135 6650,1480.0601030048438 6650,1780.0601030048438 6704.23236575951,1888.932527810135",
+            "z": "-11500",
+            "rect": {
+              "x": -0.00048828125,
+              "y": 56.498291015625,
+              "width": 1440,
+              "height": 874.996826171875,
+              "top": 56.498291015625,
+              "right": 1439.99951171875,
+              "bottom": 931.4951171875,
+              "left": -0.00048828125
+            },
+            "point": {
+              "x": 6650.778982379799,
+              "y": 1718.240743477327
+            }
+          },
+          {
+            "tag": "rect",
+            "attrs": {},
+            "parentAttrs": {},
+            "svgAttrs": {
+              "data-homeworld-natural-ground-v77": "true",
+              "data-natural-support-solid-v85": "false",
+              "data-homeworld-natural-admission-v112": "315"
+            },
+            "fill": "white",
+            "points": null,
+            "z": "-11001",
+            "rect": {
+              "x": -0.00048828125,
+              "y": 56.498291015625,
+              "width": 1440,
+              "height": 874.996826171875,
+              "top": 56.498291015625,
+              "right": 1439.99951171875,
+              "bottom": 931.4951171875,
+              "left": -0.00048828125
+            },
+            "point": {
+              "x": 6650.778982379799,
+              "y": 1718.240743477327
+            }
+          },
+          {
+            "tag": "polygon",
+            "attrs": {
+              "data-natural-support-top-v85": "true"
+            },
+            "parentAttrs": {
+              "data-homeworld-natural-formation-v85": "v71:rampart-walk",
+              "data-homeworld-natural-formation-v112": "v71:rampart-walk",
+              "data-natural-ground-anchor-v85": "rampart-low-causeway:2"
+            },
+            "svgAttrs": {
+              "data-homeworld-natural-ground-v77": "true",
+              "data-natural-support-solid-v85": "false",
+              "data-homeworld-natural-admission-v112": "315"
+            },
+            "fill": "url(#_r_0_-natural)",
+            "points": "5977.7,615.1033703428618 6093,520.5206159885743 6317,520.5206159885743 6882.3,869.4271622209155 8133.75,1723.5971912348934 8133.75,1784.9698699244552 6645.25,2115.923473699009 6470.75,2115.923473699009 6460,2096.3071595758033 5977.7,699.1896759119252",
+            "z": "-11001",
+            "rect": {
+              "x": -0.00048828125,
+              "y": 56.498291015625,
+              "width": 1440,
+              "height": 874.996826171875,
+              "top": 56.498291015625,
+              "right": 1439.99951171875,
+              "bottom": 931.4951171875,
+              "left": -0.00048828125
+            },
+            "point": {
+              "x": 6650.778982379799,
+              "y": 1718.240743477327
+            }
+          },
+          {
+            "tag": "polygon",
+            "attrs": {
+              "data-ecotone-formation-v112": "v71:rampart-walk"
+            },
+            "parentAttrs": {},
+            "svgAttrs": {
+              "data-homeworld-ecotones-v112": "true",
+              "data-natural-support-solid-v112": "false"
+            },
+            "fill": null,
+            "points": "5977.7,615.1033703428618 6093,520.5206159885743 6317,520.5206159885743 6882.3,869.4271622209155 8133.75,1723.5971912348934 8133.75,1784.9698699244552 6645.25,2115.923473699009 6470.75,2115.923473699009 6460,2096.3071595758033 5977.7,699.1896759119252",
+            "z": "-11001",
+            "rect": {
+              "x": -0.00048828125,
+              "y": 56.498291015625,
+              "width": 1440,
+              "height": 874.996826171875,
+              "top": 56.498291015625,
+              "right": 1439.99951171875,
+              "bottom": 931.4951171875,
+              "left": -0.00048828125
+            },
+            "point": {
+              "x": 6650.778982379799,
+              "y": 1718.240743477327
+            }
+          },
+          {
+            "tag": "rect",
+            "attrs": {},
+            "parentAttrs": {},
+            "svgAttrs": {
+              "data-homeworld-ecotones-v112": "true",
+              "data-natural-support-solid-v112": "false"
+            },
+            "fill": "white",
+            "points": null,
+            "z": "-11001",
+            "rect": {
+              "x": -0.00048828125,
+              "y": 56.498291015625,
+              "width": 1440,
+              "height": 874.996826171875,
+              "top": 56.498291015625,
+              "right": 1439.99951171875,
+              "bottom": 931.4951171875,
+              "left": -0.00048828125
+            },
+            "point": {
+              "x": 6650.778982379799,
+              "y": 1718.240743477327
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
