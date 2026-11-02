@@ -11295,7 +11295,8 @@ export default function HuntCanvas({
       </details>
       {activeAccessibility.fieldGuide && <HuntFieldGuideV112 bindings={activeBindings} gamepadButtons={activeAccessibility.gamepadButtons}
         phase={ui.phase} climbing={ui.climbing} grounded={ui.grounded} stamina={ui.stamina} corpseNearby={!!ui.huntRiteMenu}
-        gripExhausted={ui.gripExhaustedV112}/>}
+        gripExhausted={ui.gripExhaustedV112} toolOwned={ownsFieldToolV111(inventory,"flaying-tool")}
+        toolCondition={ui.toolConditionV112} fieldLoad={ui.fieldLoadV112}/>}
       {/* Bloc : objectif courant annoncé aux lecteurs d’écran. */}
       <div style={styles.objectiveBar}>
         <div aria-live="polite" aria-atomic="true">

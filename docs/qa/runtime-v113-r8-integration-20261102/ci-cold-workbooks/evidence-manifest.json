@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS_REAL_CANONICAL_SPARSE_V113_AND_V114",
+  "productCommit": "837684333b42ee1a5e3a0be9ce1967e2486a2fd3",
+  "candidateWorkflow": {
+    "path": ".github/workflows/open-production-v113.yml",
+    "sha256": "24b4a9913cd4f1287e20a12b5bfa4ba43480eb857d41bd07d185ca34ad7a8e62"
+  },
+  "originalSparsePatterns": 198,
+  "newSparsePatternsAdded": 0,
+  "V113InputPinsCovered": 208,
+  "V114InputPinsCovered": 152,
+  "V113TestsPassed": 5,
+  "V114TestsPassed": 10,
+  "actualWorkflowRunBlocksPassed": 8,
+  "pillowVersion": "12.3.0",
+  "downloadedWheel": {
+    "filename": "pillow-12.3.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+    "bytes": 6940830,
+    "sha256": "78cb2c6865a35ab8ff8b75fd122f6033b92a62c82801110e48ddd6c936a45d91",
+    "includedInPortableEvidence": false
+  },
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 5050,
+      "sha256": "8284705181a94037f4002b2974658638db916e0d2cab91bd7311fdc17a10c41a"
+    },
+    {
+      "path": "real-clone-verification.json",
+      "bytes": 1784,
+      "sha256": "99d282ad23618ae34ce9409a5dbea8bf7cf4c99f7ff3a87497a906fe1ff03505"
+    },
+    {
+      "path": "independent-workflow-review.json",
+      "bytes": 3729,
+      "sha256": "61aec090758275306560ed16eb233b5505e92660126284e02c6922da66473389"
+    },
+    {
+      "path": "independent-workflow-review.md",
+      "bytes": 1427,
+      "sha256": "5e7a76a847a54dbfe800b24decf574231b774fb1003e6301641bc0a1acd39397"
+    },
+    {
+      "path": "workflow-candidate.yml",
+      "bytes": 14903,
+      "sha256": "24b4a9913cd4f1287e20a12b5bfa4ba43480eb857d41bd07d185ca34ad7a8e62"
+    },
+    {
+      "path": "workflow-run-blocks.json",
+      "bytes": 2004,
+      "sha256": "8cc61c66b9e835d59b186b1010204532b2b3fa4f86c6a621a02db226d64188ca"
+    },
+    {
+      "path": "sparse-patterns.txt",
+      "bytes": 9541,
+      "sha256": "d841e2228891d23ca44c0d3f36a9513d90c7e0f4ebfc462a95e86333d4f4c622"
+    },
+    {
+      "path": "clone.log",
+      "bytes": 66,
+      "sha256": "6f277bb6ffadc1e1df205f207f50373ef77a7a3766f3bf34bef2e9541fb859d0"
+    },
+    {
+      "path": "sparse-materialization.log",
+      "bytes": 227,
+      "sha256": "97754f1cf373daadb2dded3127c0465e2dca05b66b5f5464d3a9ebe112282206"
+    },
+    {
+      "path": "actual-steps.json",
+      "bytes": 3781,
+      "sha256": "a7bb32ec5880a92154c3b0973b823ccb117d064d5ced7a3f4f41abc108d45e4b"
+    },
+    {
+      "path": "actual-step-01.log",
+      "bytes": 138,
+      "sha256": "d22f05625fad11439ade9472c77670e1e03508f02ea53a90d87ca4b39bb5ce2c"
+    },
+    {
+      "path": "actual-step-02.log",
+      "bytes": 362,
+      "sha256": "0640bdd99fcf1521810111a438674f7415ede640e72ca15aea5d048f04dcbdc1"
+    },
+    {
+      "path": "actual-step-03.log",
+      "bytes": 296,
+      "sha256": "fbced3800e1fc0a53cfc3d8122f4c6df68d70b09919837d7d05ea8516df09877"
+    },
+    {
+      "path": "actual-step-04.log",
+      "bytes": 861,
+      "sha256": "13020ff930cb748a76a079f62650a6c88072fa2fa9b300a5298a83e5681ecee0"
+    },
+    {
+      "path": "actual-step-05.log",
+      "bytes": 304,
+      "sha256": "5555134a46bae5651ef911bfb01d53cb088910c3c152d82e9fc6deed01da5d94"
+    },
+    {
+      "path": "actual-step-06.log",
+      "bytes": 569,
+      "sha256": "5eb56bca0e29581ad46a9e3a568425edf47beb724b57a6faffaf37b1fabe845c"
+    },
+    {
+      "path": "actual-step-07.log",
+      "bytes": 381,
+      "sha256": "9864650a751dfc346f386a766838cb3756673a1073ecc8016472fc699ab0a43e"
+    },
+    {
+      "path": "actual-step-08.log",
+      "bytes": 1433,
+      "sha256": "e3b84a5a2ea8b7f35b75e85ebc8eddc38408cd9550cddf0495d1778ee7723c0b"
+    }
+  ],
+  "excluded": [
+    "sparse-clone/",
+    "runner-temp/",
+    "wheels/",
+    "allGitObjectPacks"
+  ],
+  "scope": "Exact candidate commands executed locally in independent canonical network clone, not an observed GitHub Actions run. Only the workflow changed in shared repository; frozen products remain untouched."
+}

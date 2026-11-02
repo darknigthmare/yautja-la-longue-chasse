@@ -1,6 +1,6 @@
 "use client";
 import ConservationPanelV112, {type ConservationPanelActionV112} from "./ConservationPanelV112";
-import {startConservationV112,workConservationV112,repairFieldToolV112,archiveMountedSpecimenV112,deliverHarvestV112,harvestInventoryForV112,capacityForArmorV112} from "./systems/harvestInventoryV112";
+import {startConservationV112,workConservationV112,pauseConservationV112,resumeConservationV112,repairFieldToolV112,archiveMountedSpecimenV112,deliverHarvestV112,harvestInventoryForV112,capacityForArmorV112} from "./systems/harvestInventoryV112";
 import { normalizeHuntAccessibilityV112 } from "./systems/huntAccessibilityV112";
 import { FIELD_TOOLS_V111, quoteFieldToolV111, purchaseFieldToolV111 } from "./systems/fieldToolsV111";
 import {recoverAnyArchiveV71} from "./systems/archiveRecoveryV71";
@@ -2924,7 +2924,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     if(settingsOpen||archiveTransferBusy||archiveRecoveryIssue||campaignSaveBusy||!(screen==="armory"||screen==="trophies"))
       return {ok:false,message:"Atelier suspendu : reprenez le poste actif avant de travailler."};
     const current=saveRef.current;
-    const result=action==="start"?startConservationV112(current,id):action==="work"?workConservationV112(current,id):action==="archive"?archiveMountedSpecimenV112(current,id):repairFieldToolV112(current);
+    const result=action==="start"?startConservationV112(current,id):action==="work"?workConservationV112(current,id):action==="pause"?pauseConservationV112(current,id):action==="resume"?resumeConservationV112(current,id):action==="archive"?archiveMountedSpecimenV112(current,id):repairFieldToolV112(current);
     if(!result.ok)return {ok:false,message:result.message};
     if(!persistSocialProgress({profile:result.save.profile,inventory:result.save.inventory}))
       return {ok:false,message:"Travail non confirmé : aucun succès annoncé. Réessayez le même geste pour récupérer son enregistrement."};
@@ -3409,7 +3409,10 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   }, [screen, settingsOpen, menuBack]);
   const menuGamepadEnabled = Boolean(archiveRecoveryIssue) || (!trophyWorkshop && (settingsOpen || Boolean(pendingHuntResult) ||
     !["prologue", "youth-training", "solo-v66", "solo-v67", "solo-v68", "solo-v69", "solo-v70", "solo-v90", "homeworld-region-v68", "homeworld-passage-v67", "game-reserve", "mission", "deck", "ship", "map", "training", "pit", "pit-narrative", "mausoleum", "homeworld", "homeworld-expedition", "glass-desert-expedition"].includes(screen)));
-  useMenuGamepad(gameShellRef, menuGamepadEnabled, `${screen}:${settingsOpen}:${Boolean(pendingHuntResult)}:${Boolean(archiveRecoveryIssue)}`, menuBack);
+  const conservationPadButtonsV112=normalizeHuntAccessibilityV112(save.settings.huntAccessibility).gamepadButtons;
+  const conservationPadActiveV112=!settingsOpen&&!pendingHuntResult&&!archiveRecoveryIssue&&(screen==="armory"||screen==="trophies");
+  useMenuGamepad(gameShellRef, menuGamepadEnabled, `${screen}:${settingsOpen}:${Boolean(pendingHuntResult)}:${Boolean(archiveRecoveryIssue)}`, menuBack,
+    conservationPadActiveV112?{confirmButton:conservationPadButtonsV112.jump,backButton:conservationPadButtonsV112.interact}:undefined);
 
   const primaryWeapon =
     WEAPONS.find((weapon) => weapon.id === save.loadout.weaponIds[1]) ??
@@ -4271,6 +4274,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                   })}
                 </ArmorySection>
                 <ConservationPanelV112 inventory={save.inventory} clanMarks={save.profile.clanMarks}
+              gamepadButtons={conservationPadButtonsV112} onClose={menuBack}
                   disabled={settingsOpen||archiveTransferBusy||!!archiveRecoveryIssue||campaignSaveBusy} onAction={performConservationActionV112}/>
                 <p>Emport de l’armure : {capacityForArmorV112(save.loadout.armorId).massKg} kg / {capacityForArmorV112(save.loadout.armorId).volumeUnits} volumes. Au maximum : déplacement −32 %, saut −16 %, effort d’escalade +60 %, bruit +80 %. Une partie trop lourde reste sur la proie.</p>
                 <ArmorySection title="Armes de chasse">
@@ -4881,6 +4885,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
               <PitHonorsPanel owner={save.createdAt} onOpenPit={openPit} />
             </Suspense>
             <ConservationPanelV112 inventory={save.inventory} clanMarks={save.profile.clanMarks}
+              gamepadButtons={conservationPadButtonsV112} onClose={menuBack}
               disabled={settingsOpen||archiveTransferBusy||!!archiveRecoveryIssue||campaignSaveBusy} onAction={performConservationActionV112}/>
             <div className="trophy-grid">
               <details className="franchise-trophy-archive">

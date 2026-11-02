@@ -1,0 +1,12 @@
+{
+  "initialHead": "837684333b42ee1a5e3a0be9ce1967e2486a2fd3",
+  "runtimeProbeBefore": {
+    "command": "GIT_NO_LAZY_FETCH=1 git cat-file -t 719fe0d77e65be5349b76f507938309f56a67619",
+    "exitCode": 128,
+    "stdout": "",
+    "stderr": "fatal: git cat-file: could not get object info\n"
+  },
+  "gitObjectStatsBefore": "count: 0\nsize: 0\nin-pack: 1800\npacks: 1\nsize-pack: 786\nprune-packable: 0\ngarbage: 0\nsize-garbage: 0\n",
+  "coldClone": true,
+  "alternateObjectStores": false
+}

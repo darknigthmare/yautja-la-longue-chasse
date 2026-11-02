@@ -1,0 +1,261 @@
+{
+  "driver": {
+    "path": "file:///workspace/native-forge-production-20261102/qa-forge-context-r6.mjs",
+    "sha256": "ee1577bc962e67d754bd966cba88c1f86cf5b907e14f33a166aca207f328de58"
+  },
+  "scope": "Development Next app on3105, actual native building render with declared completed-first-tracks campaign/location fixture. No journey, crafting completion or human art admission is claimed.",
+  "startedAt": "2026-11-02T06:25:03.604Z",
+  "base": "http://127.0.0.1:3105",
+  "output": "/workspace/native-forge-production-20261102/context-run-TzZnh7",
+  "sourceBefore": [
+    {
+      "path": "app/game/HomeworldForgeFireV113.tsx",
+      "bytes": 2608,
+      "sha256": "a111ca1df93324314d102a0e8a83e616c4a9836cbccdf7c9e2dfb1384d911751"
+    },
+    {
+      "path": "app/game/systems/homeworldForgeFireV113.ts",
+      "bytes": 3715,
+      "sha256": "2039b8d16a6ea5f099b8741a9ff8e1814340ae90365a475b9b90ed2936d61922"
+    },
+    {
+      "path": "app/game/HomeworldWorldSceneV77.tsx",
+      "bytes": 25627,
+      "sha256": "b616e13d21e118804c776446bf85b366d1c9b92093cdd48e6985d449ad86c40f"
+    }
+  ],
+  "checks": [
+    {
+      "name": "actual local Next page responds",
+      "status": "PASS",
+      "detail": {
+        "status": 200
+      }
+    },
+    {
+      "name": "native child uses exact parent building extent without multiplying opacity",
+      "status": "PASS",
+      "detail": {
+        "source": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f02.png",
+        "status": "EXISTING_NATIVE_REUSE_CANDIDATE_NOT_HUMAN_ADMITTED",
+        "frame": "2",
+        "viewBox": "0 0 520 512",
+        "rect": {
+          "x": 429.848388671875,
+          "y": 101.92333984375,
+          "width": 546.637451171875,
+          "height": 538.22802734375,
+          "top": 101.92333984375,
+          "right": 976.48583984375,
+          "bottom": 640.1513671875,
+          "left": 429.848388671875
+        },
+        "parentRect": {
+          "x": 429.848388671875,
+          "y": 101.92333984375,
+          "width": 546.637451171875,
+          "height": 538.22802734375,
+          "top": 101.92333984375,
+          "right": 976.48583984375,
+          "bottom": 640.1513671875,
+          "left": 429.848388671875
+        },
+        "parentOpacity": "1",
+        "ownOpacity": "1"
+      }
+    },
+    {
+      "name": "six distinct native flame drawings are painted on the actual building",
+      "status": "PASS",
+      "detail": {
+        "frames": [
+          3,
+          4,
+          5,
+          0,
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "name": "game pause holds native frame",
+      "status": "PASS",
+      "detail": {
+        "frame": "2"
+      }
+    },
+    {
+      "name": "reduced motion holds first native drawing",
+      "status": "PASS"
+    },
+    {
+      "name": "a missing native flame retains the existing static building and omits overlay",
+      "status": "PASS"
+    },
+    {
+      "name": "missing facade atlas prevents orphan flame",
+      "status": "PASS"
+    }
+  ],
+  "screenshots": [
+    {
+      "name": "00-context",
+      "path": "/workspace/native-forge-production-20261102/context-run-TzZnh7/00-context.png",
+      "bytes": 1758122,
+      "sha256": "b77f190e3433bdff502cc777124e4eb5ca629dc7bdbe13854a0838e30773f647"
+    },
+    {
+      "name": "frame-3",
+      "path": "/workspace/native-forge-production-20261102/context-run-TzZnh7/frame-3.png",
+      "bytes": 489481,
+      "sha256": "d6ed6e4045a8bdf4611c5d2e585e0b06596decd03485bea98e754e0ff9f707ed"
+    },
+    {
+      "name": "frame-4",
+      "path": "/workspace/native-forge-production-20261102/context-run-TzZnh7/frame-4.png",
+      "bytes": 489383,
+      "sha256": "3aca7707bc1ce653e6f90583ee4b31c426cff9a668f5fcb16ca5129d4ad23128"
+    },
+    {
+      "name": "frame-5",
+      "path": "/workspace/native-forge-production-20261102/context-run-TzZnh7/frame-5.png",
+      "bytes": 489423,
+      "sha256": "e5bd9540ae3371fe8b4eb7a16f2583338ba5116701d6e77c5a66e1ed99b61ebc"
+    },
+    {
+      "name": "frame-0",
+      "path": "/workspace/native-forge-production-20261102/context-run-TzZnh7/frame-0.png",
+      "bytes": 489337,
+      "sha256": "22771f2fc2a32f3f24d67496e62f7c9ae63f968d443af262750c752ddf327fa5"
+    },
+    {
+      "name": "frame-1",
+      "path": "/workspace/native-forge-production-20261102/context-run-TzZnh7/frame-1.png",
+      "bytes": 489548,
+      "sha256": "bb0fdd4d8fc3e1e7ac8d9d18a0e050d7daec4dc5335f8c750801df3905da32fd"
+    },
+    {
+      "name": "frame-2",
+      "path": "/workspace/native-forge-production-20261102/context-run-TzZnh7/frame-2.png",
+      "bytes": 489435,
+      "sha256": "4e7ef3b8c0f761ebeb627ffe4f6269fcd966e89cace3f992c73d9ac0d558edda"
+    },
+    {
+      "name": "pause",
+      "path": "/workspace/native-forge-production-20261102/context-run-TzZnh7/pause.png",
+      "bytes": 154259,
+      "sha256": "a8f4cfb48d385799fab8e4757f67cf8ac1b84ada6dd8f74b9c2fb02587f7dbae"
+    },
+    {
+      "name": "reduced-motion",
+      "path": "/workspace/native-forge-production-20261102/context-run-TzZnh7/reduced-motion.png",
+      "bytes": 516002,
+      "sha256": "7d41c735f7690003a76cb9df333f9e43fa00e1cb9d3e19e57c3cc4138cc4fd7d"
+    },
+    {
+      "name": "missing-resource-static",
+      "path": "/workspace/native-forge-production-20261102/context-run-TzZnh7/missing-resource-static.png",
+      "bytes": 515441,
+      "sha256": "61bcf17f07100c360feb52fdc0b5ca436d6b9006e8e7dc3f4a8c3300286f8b96"
+    },
+    {
+      "name": "missing-facade-no-orphan-fire",
+      "path": "/workspace/native-forge-production-20261102/context-run-TzZnh7/missing-facade-no-orphan-fire.png",
+      "bytes": 525071,
+      "sha256": "72a21ae9d2b2f215f5c98a66d1a31f41d337e342f2be4739ce25f94ec885e0af"
+    }
+  ],
+  "pageErrors": [],
+  "consoleErrors": [
+    "Failed to load resource: net::ERR_FAILED",
+    "Failed to load resource: net::ERR_FAILED",
+    "Failed to load resource: net::ERR_FAILED",
+    "Failed to load resource: net::ERR_FAILED"
+  ],
+  "requestFailures": [
+    {
+      "url": "http://127.0.0.1:3105/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f02.png",
+      "failure": {
+        "errorText": "net::ERR_FAILED"
+      }
+    },
+    {
+      "url": "http://127.0.0.1:3105/game/homeworld/v72/civic-identity-atlas.png",
+      "failure": {
+        "errorText": "net::ERR_FAILED"
+      }
+    },
+    {
+      "url": "http://127.0.0.1:3105/game/homeworld/v72/civic-identity-atlas.png",
+      "failure": {
+        "errorText": "net::ERR_FAILED"
+      }
+    },
+    {
+      "url": "http://127.0.0.1:3105/game/homeworld/v72/civic-identity-atlas.png",
+      "failure": {
+        "errorText": "net::ERR_FAILED"
+      }
+    }
+  ],
+  "httpErrors": [],
+  "fixture": {
+    "source": "firstTracksCompleted()",
+    "location": {
+      "x": 3080,
+      "y": 3000,
+      "levelId": "0"
+    },
+    "playedApproach": false
+  },
+  "native": {
+    "source": "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f02.png",
+    "status": "EXISTING_NATIVE_REUSE_CANDIDATE_NOT_HUMAN_ADMITTED",
+    "frame": "2",
+    "viewBox": "0 0 520 512",
+    "rect": {
+      "x": 429.848388671875,
+      "y": 101.92333984375,
+      "width": 546.637451171875,
+      "height": 538.22802734375,
+      "top": 101.92333984375,
+      "right": 976.48583984375,
+      "bottom": 640.1513671875,
+      "left": 429.848388671875
+    },
+    "parentRect": {
+      "x": 429.848388671875,
+      "y": 101.92333984375,
+      "width": 546.637451171875,
+      "height": 538.22802734375,
+      "top": 101.92333984375,
+      "right": 976.48583984375,
+      "bottom": 640.1513671875,
+      "left": 429.848388671875
+    },
+    "parentOpacity": "1",
+    "ownOpacity": "1"
+  },
+  "deliberateFailure": "p3-c-brazier-flame-f02.png",
+  "deliberateBaseFailure": "civic-identity-atlas.png",
+  "sourceAfter": [
+    {
+      "path": "app/game/HomeworldForgeFireV113.tsx",
+      "bytes": 2608,
+      "sha256": "a111ca1df93324314d102a0e8a83e616c4a9836cbccdf7c9e2dfb1384d911751"
+    },
+    {
+      "path": "app/game/systems/homeworldForgeFireV113.ts",
+      "bytes": 3715,
+      "sha256": "2039b8d16a6ea5f099b8741a9ff8e1814340ae90365a475b9b90ed2936d61922"
+    },
+    {
+      "path": "app/game/HomeworldWorldSceneV77.tsx",
+      "bytes": 25627,
+      "sha256": "b616e13d21e118804c776446bf85b366d1c9b92093cdd48e6985d449ad86c40f"
+    }
+  ],
+  "sourceUnchanged": true,
+  "endedAt": "2026-11-02T06:25:35.532Z"
+}

@@ -1,0 +1,221 @@
+{
+  "schemaVersion": 1,
+  "targetId": "target-v81-55-26",
+  "label": "balcon",
+  "attempt": 1,
+  "family": "ARCHITECTURE_RESIDENTIELLE",
+  "tool": "image_gen.imagegen",
+  "parameters": {
+    "transparent_background": true,
+    "referenced_image_paths": "omitted for new original generation",
+    "num_last_images_to_include": "omitted"
+  },
+  "prompt": "Create ONE ORIGINAL independent game architecture asset for an existing Yautja-inspired alien Homeworld city, as a complete single object, not an atlas, no grid, no labels or letters, no watermark, no people, no separate props. Transparent background with alpha, no background scene, no ground plane, no cast shadow beyond the object, absolutely no outer glow, vignette, haze or rectangular matte. The whole object must be visible, not clipped. Camera: orthographic three-quarter front/right view, looking down roughly 25–30 degrees, restrained perspective. Rendered 3D game sprite, angular monumental construction, near-black porous basalt (#282725), dark gunmetal structural work (#353838), worn antique bronze edge bands (#9a7446), very sparse warm amber recessed lights (#ffab3b). Fine material texture, broad readable forms, top-left warm light and subdued neutral fill. Original alien geometric relief motifs, no real-world writing or emblems. Keep this same material family for every part. Compose the whole silhouette SMALLER with very generous clean completely transparent margins on every side (at least 140 pixels if the canvas is around 1254 square); no tip, base, railing or bracket may approach the image edge. No image editing, no pasted source parts; create it natively. Specific subject: ONE projecting residential BALCONY MODULE, detached from any building. A wide shallow rectangular basalt deck with visible top paving, a low front parapet and two short side railings of bronze-framed stone, the rear edge OPEN and flush so it can attach to a wall. Two clearly visible connected triangular corbels hang below the deck to carry its load. The whole rear attachment edge and all corbel ends must be inside frame. Do not add a back wall, roof, tall doorway, building, stairway, ground pillars or surrounding terrace. The silhouette should immediately read as a raised wall-mounted balcony, with its under-deck supports visible; restrained ceremonial details and two small recessed amber lamps. One coherent solid module, one candidate view.",
+  "nativeSourcePath": "/workspace/generated_images/exec-16b92c02-c541-40cf-b099-411f0768c1e3.png",
+  "candidatePath": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-55-26-balcon-native.png",
+  "referencesOpened": [
+    "public/game/homeworld/v81/clan-residence-left.png",
+    "public/game/homeworld/v78/terrace-retaining-front.png",
+    "public/game/homeworld/v78/palace-frontage-safe.png"
+  ],
+  "referenceUse": "Previously opened real project PNGs informed the textual brief. No source image was supplied as conditioning and no source pixels were extracted.",
+  "visualAssessment": {
+    "status": "ASSISTANT_NATIVE_VIEW_ONLY_NOT_HUMAN_APPROVAL",
+    "openedNativeOutput": true,
+    "singleObjectNotGrid": true,
+    "fullStrongAlphaSilhouetteVisible": true,
+    "notes": [
+      "Single projecting balcony module, coherent basalt/bronze family; open rear edge, shallow deck, front/side parapets and two under-deck corbels all visible.",
+      "The view is intact and not clipped at strong alpha; scattered faint edge pixels remain native. No back wall or detached props.",
+      "Wall attachment pivot and structural/access/collision tests are not established; one static candidate only."
+    ]
+  },
+  "lore": "LORE_COMPATIBLE_ORIGINAL",
+  "humanValidated": false,
+  "pixelsEdited": false,
+  "inspection": {
+    "targetId": "target-v81-55-26",
+    "attempt": 1,
+    "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-55-26-balcon-native.png",
+    "nativeSourcePath": "/workspace/generated_images/exec-16b92c02-c541-40cf-b099-411f0768c1e3.png",
+    "bytes": 1120730,
+    "sha256": "e94bc9876855a3ba7ae4efadb12fca22b7663a6e31d538335d7946a4203d6dfd",
+    "mode": "RGBA",
+    "dimensions": [
+      1388,
+      1133
+    ],
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "transparentPixels": 1138796,
+    "alpha1or2Pixels": 5136,
+    "alpha1to8Pixels": 7873,
+    "thresholdMeasurements": {
+      "0": {
+        "bboxExclusive": [
+          0,
+          52,
+          1382,
+          1109
+        ],
+        "margins": [
+          0,
+          52,
+          6,
+          24
+        ],
+        "visiblePixels": 433808,
+        "edgeVisiblePixels": 6
+      },
+      "2": {
+        "bboxExclusive": [
+          114,
+          212,
+          1296,
+          967
+        ],
+        "margins": [
+          114,
+          212,
+          92,
+          166
+        ],
+        "visiblePixels": 428672,
+        "edgeVisiblePixels": 0
+      },
+      "8": {
+        "bboxExclusive": [
+          116,
+          214,
+          1296,
+          967
+        ],
+        "margins": [
+          116,
+          214,
+          92,
+          166
+        ],
+        "visiblePixels": 425935,
+        "edgeVisiblePixels": 0
+      }
+    },
+    "strict48pxAlphaGt0MarginPass": false,
+    "diagnostic48pxAlphaGt8MarginPass": true,
+    "diagnosticImageAnchor": {
+      "x": 706,
+      "y": 966,
+      "status": "PROPOSED_BBOX_ANCHOR_NOT_RUNTIME_TESTED",
+      "rule": "Bottom-center alpha>8 enclosure. A wall-mounted object still needs an attachment pivot; this is not physical ground-contact proof."
+    },
+    "nativeByteExactCopy": true,
+    "pixelsEdited": false,
+    "runtimeIntegrated": false,
+    "humanValidated": false,
+    "status": "CANDIDAT_NON_ADMIS",
+    "limits": [
+      "All original canvas and pixels retained; no crop,resize,mirror,cleanup or compression.",
+      "Alpha thresholds2/8 are diagnostics and never replace the strict alpha>0 measurement.",
+      "Low alpha counts include antialiasing; border speckle and clipping need individual visual interpretation.",
+      "No in-game scale,collision,usage envelope,animation or artistic admission is established."
+    ]
+  },
+  "status": "CANDIDAT_NON_ADMIS",
+  "runtimeIntegrated": false,
+  "sourceClosureClaimed": false,
+  "sourceLocators": {
+    "catalogue": {
+      "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+      "jsonPointer": "/entries/25"
+    },
+    "v111Inventory": {
+      "path": "docs/v111-homeworld-art-inventory.json",
+      "jsonPointer": "/entries/25"
+    },
+    "activeV112Followup": {
+      "path": "docs/v112-homeworld-followup.json",
+      "jsonPointer": "/artTargets/25"
+    },
+    "brief": {
+      "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+      "section": 55,
+      "line": 1613
+    },
+    "workbookCells": [
+      {
+        "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+        "sheet": "CatalogueArtV111",
+        "part": "xl/worksheets/v111-sheet-110.xml",
+        "row": 30,
+        "idCell": {
+          "cell": "A30",
+          "value": "target-v81-55-26"
+        },
+        "labelCell": {
+          "cell": "D30",
+          "value": "balcon"
+        },
+        "historicalPresenceCell": {
+          "cell": "G30",
+          "value": "MISSING"
+        },
+        "openArtCell": {
+          "cell": "F30",
+          "value": "NON_CLOTURE_ART"
+        }
+      },
+      {
+        "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+        "sheet": "CatalogueArtV112",
+        "part": "xl/worksheets/v112-sheet-119.xml",
+        "row": 30,
+        "idCell": {
+          "cell": "A30",
+          "value": "target-v81-55-26"
+        },
+        "labelCell": {
+          "cell": "C30",
+          "value": "balcon"
+        },
+        "historicalPresenceCell": {
+          "cell": "D30",
+          "value": "MISSING"
+        },
+        "openArtCell": {
+          "cell": "E30",
+          "value": "NON_CLOTURE_ART"
+        }
+      }
+    ]
+  },
+  "sourceLocatorContext": "SNAPSHOT_HISTORIQUE: dated source audit 2026-11-02; historical V111/V112 cells are unchanged by this production.",
+  "requiredCriteriaIds": [
+    "COMMON-NATIVE",
+    "COMMON-IDENTITY",
+    "COMMON-SCALE",
+    "COMMON-CONTEXT",
+    "ARCHITECTURE-ACCESS"
+  ],
+  "targetSpecificLimits": [
+    "Wall-mounted balcony only: attach by its rear deck edge; image bbox bottom-center is not the wall attachment pivot.",
+    "Deck/corbels are visible, but structural support, railing collision, usable standing space and access have not been qualified."
+  ],
+  "frame": {
+    "rect": [
+      0,
+      0,
+      1388,
+      1133
+    ],
+    "grid": [
+      1,
+      1
+    ],
+    "frameCount": 1,
+    "wholeNativeCanvasRetained": true
+  },
+  "retryUsed": false,
+  "retryDecision": "No retry: no actual clipping or repeated-object grid observed. Padding failures and faint alpha noise remain explicit, never cleaned or force-admitted."
+}

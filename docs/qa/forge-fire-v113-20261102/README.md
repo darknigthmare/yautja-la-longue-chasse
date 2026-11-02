@@ -1,0 +1,13 @@
+# Forge native V113 — réemploi candidat vérifié
+
+La forge `deep-forge` affiche désormais six dessins de flamme natifs déjà utilisés dans le Pit V33. Le nouveau composant est monté immédiatement après le bitmap, dans le même `div` de bâtiment. Sa position, sa projection, sa profondeur et sa transparence sont héritées une seule fois du parent. L’API filtre exactement la source V72 et sa cellule `(0,512,520,512)` ; le masque conserve l’ouverture du foyer et sa lèvre. Aucun PNG ni ancien dessin Pit n’est modifié.
+
+Le cycle utilise l’horloge de la ville à huit images par seconde. Pause fige la pose et le mouvement réduit garde le premier dessin. Les six flammes et la façade native doivent être décodées avant tout affichage ; sinon le foyer statique demeure seul. Ce dernier contrôle évite une flamme suspendue dans un lot dont la façade serait absente. Aucun timer CSS ou RAF autonome ni écriture de sauvegarde n’est ajouté.
+
+La [qualification contextuelle R6](contextual-r6/result.json), exécutée après la dernière modification du renderer, passe sept contrôles ciblés. Ses onze captures ont toutes été réellement ouvertes puis copiées sans retouche ; [la revue](contextual-r6/review.json), [les noms ouverts](contextual-r6/opened.json), le pilote exact et les empreintes sont conservés ensemble. Les trois sources contrôlées sont identiques au début et à la fin et correspondent au produit final.
+
+Les six phases visibles sont `3,4,5,0,1,2`. Les captures montrent le raccord au foyer, Pause, le mouvement réduit, le maintien du support statique lorsqu’une flamme manque et l’absence de flamme orpheline lorsque la façade manque. Aucun échec JavaScript ou HTTP ordinaire n’est constaté. Les quatre erreurs console et quatre requêtes échouées provenant des deux refus réseau volontaires restent présentes dans le brut ; cette recette n’est pas un certificat de production sans erreurs.
+
+La campagne et l’arrivée devant la forge sont des fixtures déclarées. Aucun trajet joué, fabrication accomplie, passage derrière la façade ou test de perte de focus n’est déduit de cette vérification. La capture du refus de façade montre encore un chargement partiel, sans prétendre prouver une reprise après disponibilité globale. Le pilote conservé garde les chemins de cette session ; une exécution ailleurs doit adapter ses seuls chemins de travail.
+
+**État : réemploi candidat vérifié dans Next en développement.** `target-v81-63-141` reste non clôturé et aucune validation artistique humaine, nouvel atlas ou clôture globale n’est revendiquée. Les classeurs et certificats historiques demeurent inchangés.

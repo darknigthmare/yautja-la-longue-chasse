@@ -1,0 +1,1357 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-02",
+  "scope": "Exactly6 allocated Homeworld gear targets; live native production outside repository. No activation, authored cycle, creature body, NPC, runtime or frozen V113 edits.",
+  "targetCount": 6,
+  "generatedPngCount": 6,
+  "retryCount": 0,
+  "rejectedAttemptCount": 0,
+  "candidateStatus": "CANDIDAT_NON_ADMIS",
+  "humanValidated": false,
+  "sourceClosed": false,
+  "newArtAdmissions": 0,
+  "provenance": "LORE_COMPATIBLE_ORIGINAL",
+  "tool": "image_gen.imagegen",
+  "toolUsage": {
+    "transparentBackground": true,
+    "newGeneration": true,
+    "referencedImagePathsOmitted": true,
+    "numLastImagesToIncludeOmitted": true,
+    "styleReferenceUse": "Originals opened, then verbal locked style repeated in each prompt. No image edit invocation.",
+    "generatedImageResultExposedForEveryCall": true
+  },
+  "nativePreservation": {
+    "originalsDirectory": "/workspace/generated_images",
+    "allOriginalsPreserved": true,
+    "copiesByteIdentical": true,
+    "noPixelEditCropMirrorPaddingOrRecolor": true,
+    "measurementOnly": "Pillow reads; temporary alpha masks used only for bbox measurement, never saved as altered images."
+  },
+  "sourcePins": [
+    {
+      "path": "/workspace/open-workstreams-production-20261102/art-gap-manifest.json",
+      "bytes": 185798,
+      "sha256": "265dab986d1b6962da57edc583778a94c25344f7bbaec1baefd71a0248aecc3d"
+    },
+    {
+      "path": "/workspace/yautja-la-longue-chasse/AGENTS.md",
+      "bytes": 2097,
+      "sha256": "89b5ba672bb61d19769bd227777e4964f4bf904e803b314b567d44002b1aecb5"
+    },
+    {
+      "path": "/workspace/yautja-la-longue-chasse/docs/GAMEDEV_AGENT_GUIDE.md",
+      "bytes": 18467,
+      "sha256": "a25fc2a1c65366428bc02d629a82e5bf56e24bf7c33958a8a70c1c5e83bb3c0f"
+    },
+    {
+      "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/guides/create-game-assets-SKILL.md",
+      "bytes": 8152,
+      "sha256": "36cd246a434fefe1e36feff066597a6268d9f63364bee387ee65a22f03838b5d"
+    },
+    {
+      "path": "/workspace/yautja-la-longue-chasse/app/game/data/homeworldAssetCatalogueTargetV81.json",
+      "bytes": 61893,
+      "sha256": "9f3fe5bb48ae4bbc7284006c15b17788e721f67822db3893fd1e142efc294e24"
+    },
+    {
+      "path": "/workspace/yautja-la-longue-chasse/docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+      "bytes": 59973,
+      "sha256": "ea50cc8eb6f7446dfb82811b548884cc6e363c64a4af131fea4f125a3d513159"
+    },
+    {
+      "path": "/workspace/yautja-la-longue-chasse/docs/v34-vehicles-production-manifest.json",
+      "bytes": 696405,
+      "sha256": "ecdb80603ddcf4e6a5bc95bfee1b293b9397d9b6c14940d40c1e04a78ad77b6e"
+    }
+  ],
+  "referenceReceipt": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/reference-receipt.json",
+  "styleLock": {
+    "materials": "porous charcoal basalt integral supports; thick angular patinated bronze; minimal amber; red-brown leather on appropriate gear",
+    "camera": "requested elevated orthographic three-quarter32degree downward, front toward lower-left; observed oblique view, exact camera angle not metrically established",
+    "lighting": "requested upper-left soft key, neutral fill",
+    "requestedNativeFormat": "one independent complete object per transparent1024square PNG; actual native outputs1254square preserved without resampling"
+  },
+  "sourceInterpretationLimits": [
+    "Both support-harnais IDs have exactly the SAME source label; FAUNE vs MONTURES is source context. Low care gantry vs vertical tack stand are proposed contextual constructions, NOT new canonical families or proved uses. An alias remains possible after human review.",
+    "The six catalogue labels do not fix detailed mechanisms, native pixel sizes, frame rectangles or pivots. Proposed pivots here are unvalidated visual estimates, not in-game registration.",
+    "V34 separate saddle/harness sheets already exist as RGB two-profile opaque-magenta boards. New72-284 is a contextual transparent three-quarter candidate, never first saddle/harness invented for the repository.",
+    "V77 horse is a reference-only equipped statuette, not a validated playable mount. No adaptation anatomique of generated harness/saddle, rider fit, attachment, animation, handling, feeding or riding gameplay is proved.",
+    "All6 images visually opened by assistant and technically measured. No human artistic validation, in-game context QA, collision, usage, admission or source closure claimed.",
+    "Requested96pixel transparent margins are retained as the contract. All thresholds0/2/8/128 and alpha1/2 edge noise are reported.4candidates miss96pixel substantial margin at alpha>2;5have alpha1/2 edge dots. No edge pixels alpha>2 or visible silhouette cut."
+  ],
+  "entries": [
+    {
+      "id": "target-v81-71-273",
+      "label": "support harnais",
+      "sourceFamily": "FAUNE",
+      "provenance": "LORE_COMPATIBLE_ORIGINAL",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/272"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/272"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/272"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 71,
+          "line": 1950
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 277,
+            "idCell": {
+              "cell": "A277",
+              "value": "target-v81-71-273"
+            },
+            "labelCell": {
+              "cell": "D277",
+              "value": "support harnais"
+            },
+            "historicalPresenceCell": {
+              "cell": "G277",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F277",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 277,
+            "idCell": {
+              "cell": "A277",
+              "value": "target-v81-71-273"
+            },
+            "labelCell": {
+              "cell": "C277",
+              "value": "support harnais"
+            },
+            "historicalPresenceCell": {
+              "cell": "D277",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E277",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "constructionInterpretation": "PROPOSED contextual FAUNE construction: low empty four-foot animal-care support gantry. Source itself says only support harnais.",
+      "sourceDefinesDetailedMechanism": false,
+      "supportLabelAliasPossibleAfterHumanReview": true,
+      "nativeOriginal": "/workspace/generated_images/exec-84f30631-75e6-43de-8734-af8488e478db.png",
+      "png": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-71-273-fauna-harness-support-native.png",
+      "bytes": 1222952,
+      "sha256": "92b2d4dfd704ab774f840d56c41132072fdbeb06e204e56ba1d9cf617456ee7a",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "byteIdenticalToOriginal": true,
+      "receipt": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-71-273-fauna-harness-support-native.receipt.json",
+      "prompt": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-71-273-fauna-harness-support-native.prompt.txt",
+      "inspection": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-71-273-fauna-harness-support-native.inspection.json",
+      "requestedSize": [
+        1024,
+        1024
+      ],
+      "requestedMarginPx": 96,
+      "alphaMeasurements": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "bboxExclusive": [
+            0,
+            23,
+            1223,
+            1254
+          ],
+          "margins": {
+            "left": 0,
+            "top": 23,
+            "right": 31,
+            "bottom": 0
+          },
+          "visiblePixels": 435406,
+          "edgePixels": 13
+        },
+        "2": {
+          "comparison": "alpha > threshold",
+          "bboxExclusive": [
+            25,
+            165,
+            1222,
+            1144
+          ],
+          "margins": {
+            "left": 25,
+            "top": 165,
+            "right": 32,
+            "bottom": 110
+          },
+          "visiblePixels": 419012,
+          "edgePixels": 0
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "bboxExclusive": [
+            27,
+            167,
+            1220,
+            1142
+          ],
+          "margins": {
+            "left": 27,
+            "top": 167,
+            "right": 34,
+            "bottom": 112
+          },
+          "visiblePixels": 412812,
+          "edgePixels": 0
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "bboxExclusive": [
+            28,
+            168,
+            1219,
+            1141
+          ],
+          "margins": {
+            "left": 28,
+            "top": 168,
+            "right": 35,
+            "bottom": 113
+          },
+          "visiblePixels": 406755,
+          "edgePixels": 0
+        }
+      },
+      "edgeAlpha1or2": 13,
+      "strict96PxMarginAllAlphaPositive": false,
+      "strict96PxMarginAtAlphaGreaterThan2": false,
+      "proposedPivot": {
+        "x": 640,
+        "y": 810
+      },
+      "pivotStatus": "PROPOSED_UNVALIDATED",
+      "anchorRole": "Proposed projected centre of the four foot-contact polygon, not a measured calibrated ground origin.",
+      "nativeSourceRect": {
+        "x": 0,
+        "y": 0,
+        "width": 1254,
+        "height": 1254
+      },
+      "worldHeight": null,
+      "anatomicalFitProven": false,
+      "inGameFitProven": false,
+      "visualClippingObservedByAssistant": false,
+      "visualNotes": [
+        "One connected low open frame, four visible porous-basalt footings, bronze rails and four padded contact cradles; no beast, harness or saddle.",
+        "The result has four padded contact cradles rather than the two adjustable support arms requested in the prompt. Proposed care function remains unproved.",
+        "Same source label as72-282; construction/context distinction is a production proposal, not a new canonical family. Alias remains possible after human review."
+      ],
+      "status": "CANDIDAT_NON_ADMIS",
+      "humanValidated": false,
+      "integrated": false,
+      "sourceClosed": false,
+      "retryCount": 0
+    },
+    {
+      "id": "target-v81-72-282",
+      "label": "support harnais",
+      "sourceFamily": "MONTURES",
+      "provenance": "LORE_COMPATIBLE_ORIGINAL",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/281"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/281"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/281"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 72,
+          "line": 1964
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 286,
+            "idCell": {
+              "cell": "A286",
+              "value": "target-v81-72-282"
+            },
+            "labelCell": {
+              "cell": "D286",
+              "value": "support harnais"
+            },
+            "historicalPresenceCell": {
+              "cell": "G286",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F286",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 286,
+            "idCell": {
+              "cell": "A286",
+              "value": "target-v81-72-282"
+            },
+            "labelCell": {
+              "cell": "C286",
+              "value": "support harnais"
+            },
+            "historicalPresenceCell": {
+              "cell": "D286",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E286",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "constructionInterpretation": "PROPOSED contextual MONTURES construction: empty vertical tack-storage trestle. Source itself says only support harnais.",
+      "sourceDefinesDetailedMechanism": false,
+      "supportLabelAliasPossibleAfterHumanReview": true,
+      "nativeOriginal": "/workspace/generated_images/exec-cb284dad-b21a-4b5d-9dd7-25d31b231c8f.png",
+      "png": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-282-mount-harness-support-native.png",
+      "bytes": 592752,
+      "sha256": "e32266329f168b89f0318b0ddb666a9044bc90ee9d2677cbd02f580857bc5acc",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "byteIdenticalToOriginal": true,
+      "receipt": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-282-mount-harness-support-native.receipt.json",
+      "prompt": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-282-mount-harness-support-native.prompt.txt",
+      "inspection": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-282-mount-harness-support-native.inspection.json",
+      "requestedSize": [
+        1024,
+        1024
+      ],
+      "requestedMarginPx": 96,
+      "alphaMeasurements": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "bboxExclusive": [
+            23,
+            21,
+            1224,
+            1254
+          ],
+          "margins": {
+            "left": 23,
+            "top": 21,
+            "right": 30,
+            "bottom": 0
+          },
+          "visiblePixels": 203622,
+          "edgePixels": 10
+        },
+        "2": {
+          "comparison": "alpha > threshold",
+          "bboxExclusive": [
+            336,
+            78,
+            917,
+            1173
+          ],
+          "margins": {
+            "left": 336,
+            "top": 78,
+            "right": 337,
+            "bottom": 81
+          },
+          "visiblePixels": 189117,
+          "edgePixels": 0
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "bboxExclusive": [
+            338,
+            80,
+            915,
+            1170
+          ],
+          "margins": {
+            "left": 338,
+            "top": 80,
+            "right": 339,
+            "bottom": 84
+          },
+          "visiblePixels": 184616,
+          "edgePixels": 0
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "bboxExclusive": [
+            339,
+            81,
+            914,
+            1170
+          ],
+          "margins": {
+            "left": 339,
+            "top": 81,
+            "right": 340,
+            "bottom": 84
+          },
+          "visiblePixels": 179958,
+          "edgePixels": 0
+        }
+      },
+      "edgeAlpha1or2": 10,
+      "strict96PxMarginAllAlphaPositive": false,
+      "strict96PxMarginAtAlphaGreaterThan2": false,
+      "proposedPivot": {
+        "x": 646,
+        "y": 1048
+      },
+      "pivotStatus": "PROPOSED_UNVALIDATED",
+      "anchorRole": "Proposed centre of tripod ground-contact polygon, not calibrated in game.",
+      "nativeSourceRect": {
+        "x": 0,
+        "y": 0,
+        "width": 1254,
+        "height": 1254
+      },
+      "worldHeight": null,
+      "anatomicalFitProven": false,
+      "inGameFitProven": false,
+      "visualClippingObservedByAssistant": false,
+      "visualNotes": [
+        "One tall freestanding bronze spine with upper padded hooks and lower empty loops on a porous-basalt tripod; no harness or saddle.",
+        "Construction visibly distinct from low FAUNE gantry; empty storage role remains a proposed interpretation.",
+        "Same source label as71-273; alias remains possible after human review."
+      ],
+      "status": "CANDIDAT_NON_ADMIS",
+      "humanValidated": false,
+      "integrated": false,
+      "sourceClosed": false,
+      "retryCount": 0
+    },
+    {
+      "id": "target-v81-72-283",
+      "label": "harnais",
+      "sourceFamily": "MONTURES",
+      "provenance": "LORE_COMPATIBLE_ORIGINAL",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/282"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/282"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/282"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 72,
+          "line": 1965
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 287,
+            "idCell": {
+              "cell": "A287",
+              "value": "target-v81-72-283"
+            },
+            "labelCell": {
+              "cell": "D287",
+              "value": "harnais"
+            },
+            "historicalPresenceCell": {
+              "cell": "G287",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F287",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 287,
+            "idCell": {
+              "cell": "A287",
+              "value": "target-v81-72-283"
+            },
+            "labelCell": {
+              "cell": "C287",
+              "value": "harnais"
+            },
+            "historicalPresenceCell": {
+              "cell": "D287",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E287",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "constructionInterpretation": "PROPOSED independent three-quarter mount body harness, red-brown leather straps and angular bronze chest yoke.",
+      "sourceDefinesDetailedMechanism": false,
+      "supportLabelAliasPossibleAfterHumanReview": false,
+      "nativeOriginal": "/workspace/generated_images/exec-43ebc76e-a7c7-49b5-8e47-aab143ccc882.png",
+      "png": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-283-mount-harness-native.png",
+      "bytes": 1405605,
+      "sha256": "1dd4cf02adcfc98d04529cf00d9c290016c7bac9678d7d1432bda6db583a6d45",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "byteIdenticalToOriginal": true,
+      "receipt": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-283-mount-harness-native.receipt.json",
+      "prompt": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-283-mount-harness-native.prompt.txt",
+      "inspection": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-283-mount-harness-native.inspection.json",
+      "requestedSize": [
+        1024,
+        1024
+      ],
+      "requestedMarginPx": 96,
+      "alphaMeasurements": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "bboxExclusive": [
+            0,
+            31,
+            1206,
+            1254
+          ],
+          "margins": {
+            "left": 0,
+            "top": 31,
+            "right": 48,
+            "bottom": 0
+          },
+          "visiblePixels": 531054,
+          "edgePixels": 53
+        },
+        "2": {
+          "comparison": "alpha > threshold",
+          "bboxExclusive": [
+            118,
+            154,
+            1202,
+            1061
+          ],
+          "margins": {
+            "left": 118,
+            "top": 154,
+            "right": 52,
+            "bottom": 193
+          },
+          "visiblePixels": 513276,
+          "edgePixels": 0
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "bboxExclusive": [
+            121,
+            156,
+            1200,
+            1061
+          ],
+          "margins": {
+            "left": 121,
+            "top": 156,
+            "right": 54,
+            "bottom": 193
+          },
+          "visiblePixels": 505970,
+          "edgePixels": 0
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "bboxExclusive": [
+            122,
+            157,
+            1197,
+            1060
+          ],
+          "margins": {
+            "left": 122,
+            "top": 157,
+            "right": 57,
+            "bottom": 194
+          },
+          "visiblePixels": 498815,
+          "edgePixels": 0
+        }
+      },
+      "edgeAlpha1or2": 53,
+      "strict96PxMarginAllAlphaPositive": false,
+      "strict96PxMarginAtAlphaGreaterThan2": false,
+      "proposedPivot": {
+        "x": 606,
+        "y": 720
+      },
+      "pivotStatus": "PROPOSED_UNVALIDATED",
+      "anchorRole": "Proposed equipment registration near chest-yoke/strap junction. Not a ground or anatomy attachment point.",
+      "nativeSourceRect": {
+        "x": 0,
+        "y": 0,
+        "width": 1254,
+        "height": 1254
+      },
+      "worldHeight": null,
+      "anatomicalFitProven": false,
+      "inGameFitProven": false,
+      "visualClippingObservedByAssistant": false,
+      "visualNotes": [
+        "Connected empty loops and bronze buckles read as one harness; no animal, stand, saddle or mannequin is incorporated.",
+        "Bronze/charcoal/leather palette follows the verbal style lock.",
+        "Anatomical adaptation to a V77 mount, scale, registration, straps under deformation and wearable fit are NOT proven. Tack already exists in V34 references."
+      ],
+      "status": "CANDIDAT_NON_ADMIS",
+      "humanValidated": false,
+      "integrated": false,
+      "sourceClosed": false,
+      "retryCount": 0
+    },
+    {
+      "id": "target-v81-72-284",
+      "label": "selle",
+      "sourceFamily": "MONTURES",
+      "provenance": "LORE_COMPATIBLE_ORIGINAL",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/283"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/283"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/283"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 72,
+          "line": 1966
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 288,
+            "idCell": {
+              "cell": "A288",
+              "value": "target-v81-72-284"
+            },
+            "labelCell": {
+              "cell": "D288",
+              "value": "selle"
+            },
+            "historicalPresenceCell": {
+              "cell": "G288",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F288",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 288,
+            "idCell": {
+              "cell": "A288",
+              "value": "target-v81-72-284"
+            },
+            "labelCell": {
+              "cell": "C288",
+              "value": "selle"
+            },
+            "historicalPresenceCell": {
+              "cell": "D288",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E288",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "constructionInterpretation": "PROPOSED contextual transparent three-quarter saddle candidate. Separate V34 saddle/harness boards already exist.",
+      "sourceDefinesDetailedMechanism": false,
+      "supportLabelAliasPossibleAfterHumanReview": false,
+      "nativeOriginal": "/workspace/generated_images/exec-217ce8e1-4395-40aa-83c6-2d0ab4701620.png",
+      "png": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-284-mount-saddle-native.png",
+      "bytes": 982818,
+      "sha256": "01569e77489c2296a019269eb863e7a3f48c16002991ad220b0a67b1719b4615",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "byteIdenticalToOriginal": true,
+      "receipt": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-284-mount-saddle-native.receipt.json",
+      "prompt": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-284-mount-saddle-native.prompt.txt",
+      "inspection": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-284-mount-saddle-native.inspection.json",
+      "requestedSize": [
+        1024,
+        1024
+      ],
+      "requestedMarginPx": 96,
+      "alphaMeasurements": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "bboxExclusive": [
+            0,
+            19,
+            1238,
+            1254
+          ],
+          "margins": {
+            "left": 0,
+            "top": 19,
+            "right": 16,
+            "bottom": 0
+          },
+          "visiblePixels": 343921,
+          "edgePixels": 26
+        },
+        "2": {
+          "comparison": "alpha > threshold",
+          "bboxExclusive": [
+            246,
+            210,
+            1076,
+            1060
+          ],
+          "margins": {
+            "left": 246,
+            "top": 210,
+            "right": 178,
+            "bottom": 194
+          },
+          "visiblePixels": 326764,
+          "edgePixels": 0
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "bboxExclusive": [
+            248,
+            212,
+            1075,
+            1060
+          ],
+          "margins": {
+            "left": 248,
+            "top": 212,
+            "right": 179,
+            "bottom": 194
+          },
+          "visiblePixels": 321203,
+          "edgePixels": 0
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "bboxExclusive": [
+            249,
+            213,
+            1074,
+            1059
+          ],
+          "margins": {
+            "left": 249,
+            "top": 213,
+            "right": 180,
+            "bottom": 195
+          },
+          "visiblePixels": 316074,
+          "edgePixels": 0
+        }
+      },
+      "edgeAlpha1or2": 26,
+      "strict96PxMarginAllAlphaPositive": false,
+      "strict96PxMarginAtAlphaGreaterThan2": true,
+      "proposedPivot": {
+        "x": 664,
+        "y": 615
+      },
+      "pivotStatus": "PROPOSED_UNVALIDATED",
+      "anchorRole": "Proposed underside saddle-tree registration. Not measured against any creature or rider.",
+      "nativeSourceRect": {
+        "x": 0,
+        "y": 0,
+        "width": 1254,
+        "height": 1254
+      },
+      "worldHeight": null,
+      "anatomicalFitProven": false,
+      "inGameFitProven": false,
+      "visualClippingObservedByAssistant": false,
+      "visualNotes": [
+        "One padded seat in angular bronze tree, connected girth loops and two complete stirrups, no mount/rider/stand.",
+        "Native three-quarter view and true alpha are newly requested contexts; never first-ever saddle or harness in repository.",
+        "Anatomical adaptation, saddle-tree fit, rider placement and assembly/animation remain unproved."
+      ],
+      "status": "CANDIDAT_NON_ADMIS",
+      "humanValidated": false,
+      "integrated": false,
+      "sourceClosed": false,
+      "retryCount": 0
+    },
+    {
+      "id": "target-v81-72-285",
+      "label": "rack selle",
+      "sourceFamily": "MONTURES",
+      "provenance": "LORE_COMPATIBLE_ORIGINAL",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/284"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/284"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/284"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 72,
+          "line": 1967
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 289,
+            "idCell": {
+              "cell": "A289",
+              "value": "target-v81-72-285"
+            },
+            "labelCell": {
+              "cell": "D289",
+              "value": "rack selle"
+            },
+            "historicalPresenceCell": {
+              "cell": "G289",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F289",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 289,
+            "idCell": {
+              "cell": "A289",
+              "value": "target-v81-72-285"
+            },
+            "labelCell": {
+              "cell": "C289",
+              "value": "rack selle"
+            },
+            "historicalPresenceCell": {
+              "cell": "D289",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E289",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "constructionInterpretation": "PROPOSED low horizontal empty saddle rack with two shaped padded rest arches and two basalt feet.",
+      "sourceDefinesDetailedMechanism": false,
+      "supportLabelAliasPossibleAfterHumanReview": false,
+      "nativeOriginal": "/workspace/generated_images/exec-cf6b87ad-44b7-4f00-86c2-f8bf11d54c8a.png",
+      "png": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-285-saddle-rack-native.png",
+      "bytes": 571145,
+      "sha256": "ea4496e16d3e74bd5beb121445a3b72451b3712ac717277112ab55c615ee834c",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "byteIdenticalToOriginal": true,
+      "receipt": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-285-saddle-rack-native.receipt.json",
+      "prompt": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-285-saddle-rack-native.prompt.txt",
+      "inspection": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-285-saddle-rack-native.inspection.json",
+      "requestedSize": [
+        1024,
+        1024
+      ],
+      "requestedMarginPx": 96,
+      "alphaMeasurements": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "bboxExclusive": [
+            23,
+            52,
+            1211,
+            1166
+          ],
+          "margins": {
+            "left": 23,
+            "top": 52,
+            "right": 43,
+            "bottom": 88
+          },
+          "visiblePixels": 205406,
+          "edgePixels": 0
+        },
+        "2": {
+          "comparison": "alpha > threshold",
+          "bboxExclusive": [
+            199,
+            319,
+            1121,
+            945
+          ],
+          "margins": {
+            "left": 199,
+            "top": 319,
+            "right": 133,
+            "bottom": 309
+          },
+          "visiblePixels": 195960,
+          "edgePixels": 0
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "bboxExclusive": [
+            201,
+            321,
+            1118,
+            943
+          ],
+          "margins": {
+            "left": 201,
+            "top": 321,
+            "right": 136,
+            "bottom": 311
+          },
+          "visiblePixels": 191796,
+          "edgePixels": 0
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "bboxExclusive": [
+            202,
+            322,
+            1117,
+            942
+          ],
+          "margins": {
+            "left": 202,
+            "top": 322,
+            "right": 137,
+            "bottom": 312
+          },
+          "visiblePixels": 187883,
+          "edgePixels": 0
+        }
+      },
+      "edgeAlpha1or2": 0,
+      "strict96PxMarginAllAlphaPositive": false,
+      "strict96PxMarginAtAlphaGreaterThan2": true,
+      "proposedPivot": {
+        "x": 667,
+        "y": 805
+      },
+      "pivotStatus": "PROPOSED_UNVALIDATED",
+      "anchorRole": "Proposed midpoint between the two foot contacts, not calibrated in scene.",
+      "nativeSourceRect": {
+        "x": 0,
+        "y": 0,
+        "width": 1254,
+        "height": 1254
+      },
+      "worldHeight": null,
+      "anatomicalFitProven": false,
+      "inGameFitProven": false,
+      "visualClippingObservedByAssistant": false,
+      "visualNotes": [
+        "One connected narrow spine with two separated shaped cradles, open middle, bronze braces and two complete footings.",
+        "Empty rack is visually distinct from vertical harness-support trestle and animal-care frame.",
+        "Fit between this rack and generated saddle is not yet measured or proved."
+      ],
+      "status": "CANDIDAT_NON_ADMIS",
+      "humanValidated": false,
+      "integrated": false,
+      "sourceClosed": false,
+      "retryCount": 0
+    },
+    {
+      "id": "target-v81-72-288",
+      "label": "mangeoire adaptée",
+      "sourceFamily": "MONTURES",
+      "provenance": "LORE_COMPATIBLE_ORIGINAL",
+      "sourceLocators": {
+        "catalogue": {
+          "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+          "jsonPointer": "/entries/287"
+        },
+        "v111Inventory": {
+          "path": "docs/v111-homeworld-art-inventory.json",
+          "jsonPointer": "/entries/287"
+        },
+        "activeV112Followup": {
+          "path": "docs/v112-homeworld-followup.json",
+          "jsonPointer": "/artTargets/287"
+        },
+        "brief": {
+          "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+          "section": 72,
+          "line": 1970
+        },
+        "workbookCells": [
+          {
+            "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+            "sheet": "CatalogueArtV111",
+            "part": "xl/worksheets/v111-sheet-110.xml",
+            "row": 292,
+            "idCell": {
+              "cell": "A292",
+              "value": "target-v81-72-288"
+            },
+            "labelCell": {
+              "cell": "D292",
+              "value": "mangeoire adaptée"
+            },
+            "historicalPresenceCell": {
+              "cell": "G292",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "F292",
+              "value": "NON_CLOTURE_ART"
+            }
+          },
+          {
+            "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+            "sheet": "CatalogueArtV112",
+            "part": "xl/worksheets/v112-sheet-119.xml",
+            "row": 292,
+            "idCell": {
+              "cell": "A292",
+              "value": "target-v81-72-288"
+            },
+            "labelCell": {
+              "cell": "C292",
+              "value": "mangeoire adaptée"
+            },
+            "historicalPresenceCell": {
+              "cell": "D292",
+              "value": "MISSING"
+            },
+            "openArtCell": {
+              "cell": "E292",
+              "value": "NON_CLOTURE_ART"
+            }
+          }
+        ]
+      },
+      "constructionInterpretation": "PROPOSED raised mount feeder with low front neck-contact lip, bronze vessel, dry ration layer and two basalt piers.",
+      "sourceDefinesDetailedMechanism": false,
+      "supportLabelAliasPossibleAfterHumanReview": false,
+      "nativeOriginal": "/workspace/generated_images/exec-b40c8c36-4e9f-4f54-93be-64c73f8c17b0.png",
+      "png": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-288-adapted-mount-feeder-native.png",
+      "bytes": 1198158,
+      "sha256": "22f2344dc1fb0c67a2ef1c28fa01a4a8998bdac18a7d5c8509c16785f89dd953",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "byteIdenticalToOriginal": true,
+      "receipt": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-288-adapted-mount-feeder-native.receipt.json",
+      "prompt": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-288-adapted-mount-feeder-native.prompt.txt",
+      "inspection": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-288-adapted-mount-feeder-native.inspection.json",
+      "requestedSize": [
+        1024,
+        1024
+      ],
+      "requestedMarginPx": 96,
+      "alphaMeasurements": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "bboxExclusive": [
+            0,
+            23,
+            1240,
+            1254
+          ],
+          "margins": {
+            "left": 0,
+            "top": 23,
+            "right": 14,
+            "bottom": 0
+          },
+          "visiblePixels": 461530,
+          "edgePixels": 72
+        },
+        "2": {
+          "comparison": "alpha > threshold",
+          "bboxExclusive": [
+            132,
+            233,
+            1180,
+            1103
+          ],
+          "margins": {
+            "left": 132,
+            "top": 233,
+            "right": 74,
+            "bottom": 151
+          },
+          "visiblePixels": 451532,
+          "edgePixels": 0
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "bboxExclusive": [
+            134,
+            235,
+            1178,
+            1101
+          ],
+          "margins": {
+            "left": 134,
+            "top": 235,
+            "right": 76,
+            "bottom": 153
+          },
+          "visiblePixels": 447860,
+          "edgePixels": 0
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "bboxExclusive": [
+            135,
+            236,
+            1177,
+            1100
+          ],
+          "margins": {
+            "left": 135,
+            "top": 236,
+            "right": 77,
+            "bottom": 154
+          },
+          "visiblePixels": 444186,
+          "edgePixels": 0
+        }
+      },
+      "edgeAlpha1or2": 72,
+      "strict96PxMarginAllAlphaPositive": false,
+      "strict96PxMarginAtAlphaGreaterThan2": false,
+      "proposedPivot": {
+        "x": 710,
+        "y": 927
+      },
+      "pivotStatus": "PROPOSED_UNVALIDATED",
+      "anchorRole": "Proposed midpoint between two splayed pier foot contacts, not calibrated in scene.",
+      "nativeSourceRect": {
+        "x": 0,
+        "y": 0,
+        "width": 1254,
+        "height": 1254
+      },
+      "worldHeight": null,
+      "anatomicalFitProven": false,
+      "inGameFitProven": false,
+      "visualClippingObservedByAssistant": false,
+      "visualNotes": [
+        "One raised feeding vessel containing dry brown ration nuggets, with lower padded approach lip and open space under vessel. No water, animal or human stable.",
+        "Mount-adapted function is a design proposal; mouth/neck clearance, feeding height and biology of food are not demonstrated.",
+        "Scale and fit with V77 reference mount and difference from other food/water stations need contextual review."
+      ],
+      "status": "CANDIDAT_NON_ADMIS",
+      "humanValidated": false,
+      "integrated": false,
+      "sourceClosed": false,
+      "retryCount": 0
+    }
+  ],
+  "files": [
+    {
+      "path": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/reference-receipt.json",
+      "bytes": 2028,
+      "sha256": "ac2998385aa0954bde4888b8ce4777030e6101779a195fcd2c5e38146bb40100"
+    },
+    {
+      "path": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-71-273-fauna-harness-support-native.inspection.json",
+      "bytes": 3986,
+      "sha256": "91e1a7eab5139f5be932090eb764cb7c7335c081701cda7d645a32d022d64971"
+    },
+    {
+      "path": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-71-273-fauna-harness-support-native.png",
+      "bytes": 1222952,
+      "sha256": "92b2d4dfd704ab774f840d56c41132072fdbeb06e204e56ba1d9cf617456ee7a"
+    },
+    {
+      "path": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-71-273-fauna-harness-support-native.prompt.txt",
+      "bytes": 2538,
+      "sha256": "b1eeab773951648f672f82e7f380071eb9b94276ea4c5e6dd35f89bce782a03c"
+    },
+    {
+      "path": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-71-273-fauna-harness-support-native.receipt.json",
+      "bytes": 3964,
+      "sha256": "2b3e7ed5a7df03f153562156ee3739d26dbf53d9b4a2cd347263e178da9c68e8"
+    },
+    {
+      "path": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-282-mount-harness-support-native.inspection.json",
+      "bytes": 3777,
+      "sha256": "e34efcde2acb5b2fcdd243e5b4baabb15e49b623d08bb57866030b7dd45e6da0"
+    },
+    {
+      "path": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-282-mount-harness-support-native.png",
+      "bytes": 592752,
+      "sha256": "e32266329f168b89f0318b0ddb666a9044bc90ee9d2677cbd02f580857bc5acc"
+    },
+    {
+      "path": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-282-mount-harness-support-native.prompt.txt",
+      "bytes": 2423,
+      "sha256": "b7bb6ed06ea629b4b932c81de6960152aad4c314f56905e6fe4055cdecf733c1"
+    },
+    {
+      "path": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-282-mount-harness-support-native.receipt.json",
+      "bytes": 3851,
+      "sha256": "58036868b676e7c44f2e5be871f0fcd578c5caa6cbaf3f41beb7bfca1ee448ac"
+    },
+    {
+      "path": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-283-mount-harness-native.inspection.json",
+      "bytes": 3732,
+      "sha256": "994647cf9ecfda40d154d57ec6d0ae54d7cdcecc1175ab2b97e67830af59fdd7"
+    },
+    {
+      "path": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-283-mount-harness-native.png",
+      "bytes": 1405605,
+      "sha256": "1dd4cf02adcfc98d04529cf00d9c290016c7bac9678d7d1432bda6db583a6d45"
+    },
+    {
+      "path": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-283-mount-harness-native.prompt.txt",
+      "bytes": 2620,
+      "sha256": "6a038fa726886e675d8008d3961e8801ce304e1c65c89e57f4b968ef310225a1"
+    },
+    {
+      "path": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-283-mount-harness-native.receipt.json",
+      "bytes": 4033,
+      "sha256": "197e1ff7577e666da8982fb16e612e0fafb69f59ba6f23576af3487efbac2617"
+    },
+    {
+      "path": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-284-mount-saddle-native.inspection.json",
+      "bytes": 3706,
+      "sha256": "0b58fc10d008a65956934aa537e266ff6bb2ddd3b34e1d80b2622bcbaba9f5bf"
+    },
+    {
+      "path": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-284-mount-saddle-native.png",
+      "bytes": 982818,
+      "sha256": "01569e77489c2296a019269eb863e7a3f48c16002991ad220b0a67b1719b4615"
+    },
+    {
+      "path": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-284-mount-saddle-native.prompt.txt",
+      "bytes": 2653,
+      "sha256": "108e027308af5dd9bb0c19d9a6846a2819c9737620e84bd1c6918372c7422ee5"
+    },
+    {
+      "path": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-284-mount-saddle-native.receipt.json",
+      "bytes": 4062,
+      "sha256": "645261598b1dc1c727469f5df54f65178f9dc4037402ede95b898062089c9ed8"
+    },
+    {
+      "path": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-285-saddle-rack-native.inspection.json",
+      "bytes": 3713,
+      "sha256": "b2d65c54e4c4159d92f3ce7297dcd5369978c5bd66e17103ef81f84e8e36abf8"
+    },
+    {
+      "path": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-285-saddle-rack-native.png",
+      "bytes": 571145,
+      "sha256": "ea4496e16d3e74bd5beb121445a3b72451b3712ac717277112ab55c615ee834c"
+    },
+    {
+      "path": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-285-saddle-rack-native.prompt.txt",
+      "bytes": 2547,
+      "sha256": "8383aab3f6045890da8e65d39c493700464c9ee66e8a6ba8745b1152501df427"
+    },
+    {
+      "path": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-285-saddle-rack-native.receipt.json",
+      "bytes": 3960,
+      "sha256": "8a83300db9cb045d4919a17addc6bf5a926b79ee5250633d762cbdd0c86c09cb"
+    },
+    {
+      "path": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-288-adapted-mount-feeder-native.inspection.json",
+      "bytes": 3841,
+      "sha256": "c27db78bcd02a4e21148e03a9ce29d698b767e3abb84627a22f783f3c9966de2"
+    },
+    {
+      "path": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-288-adapted-mount-feeder-native.png",
+      "bytes": 1198158,
+      "sha256": "22f2344dc1fb0c67a2ef1c28fa01a4a8998bdac18a7d5c8509c16785f89dd953"
+    },
+    {
+      "path": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-288-adapted-mount-feeder-native.prompt.txt",
+      "bytes": 2809,
+      "sha256": "cdf4f23aedd7688cd5e8bddb2794976b7999b9c3935738b6eb9e33be845bcc77"
+    },
+    {
+      "path": "/workspace/native-homeworld-open-20261102/fauna-energy/gear/target-v81-72-288-adapted-mount-feeder-native.receipt.json",
+      "bytes": 4240,
+      "sha256": "2cfcb2ccdbfe90a3e75a202b5a88e70354e040b8f664e1f8f6111999d819fcf3"
+    }
+  ]
+}

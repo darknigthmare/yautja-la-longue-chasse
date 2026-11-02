@@ -1,0 +1,54 @@
+{
+  "status": "PASS",
+  "scope": "Real network cold partial application checkout plus exact canonical bounded runtime-object bootstrap, full V113 freeze check and unchanged current-production certificate test. Reused dependencies explicitly declared; no fresh install, build or browser replay.",
+  "publicationCommit": "837684333b42ee1a5e3a0be9ce1967e2486a2fd3",
+  "runtimeCommit": "719fe0d77e65be5349b76f507938309f56a67619",
+  "freeze": {
+    "entries": 1964,
+    "bytes": 367432,
+    "sha256": "f39b5089fc130a726b87a6120470dacb3c3ef41098582a7203844620ce57f164"
+  },
+  "Node": "v22.23.4",
+  "dependencyReuse": true,
+  "headUnchanged": true,
+  "runtimeMissingBeforeBootstrap": true,
+  "gitObjectStatsAfter": "count: 0\nsize: 0\nin-pack: 7768\npacks: 4\nsize-pack: 2060381\nprune-packable: 0\ngarbage: 0\nsize-garbage: 0\n",
+  "events": [
+    {
+      "command": [
+        "node",
+        "/workspace/r8-ci-cold-20261102/executed-bootstrap.mjs"
+      ],
+      "name": "runtime-bootstrap",
+      "exitCode": 0,
+      "seconds": 0.403,
+      "log": "runtime-bootstrap.log"
+    },
+    {
+      "command": [
+        "node",
+        "scripts/snapshot-runtime-v113.mjs",
+        "--check",
+        "docs/v113-runtime-freeze.json"
+      ],
+      "name": "freeze-check",
+      "exitCode": 0,
+      "seconds": 5.189,
+      "log": "freeze-check.log"
+    },
+    {
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "--test",
+        "--test-reporter=spec",
+        "--test-concurrency=1",
+        "tests/homeworld-current-production-v113.test.mjs"
+      ],
+      "name": "current-production-test",
+      "exitCode": 0,
+      "seconds": 13.979,
+      "log": "current-production-test.log"
+    }
+  ]
+}

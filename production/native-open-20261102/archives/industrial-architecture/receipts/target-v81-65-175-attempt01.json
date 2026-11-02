@@ -1,0 +1,217 @@
+{
+  "schemaVersion": 1,
+  "targetId": "target-v81-65-175",
+  "label": "totem",
+  "attempt": 1,
+  "family": "CLANS",
+  "tool": "image_gen.imagegen",
+  "parameters": {
+    "transparent_background": true,
+    "referenced_image_paths": "omitted for new original generation",
+    "num_last_images_to_include": "omitted"
+  },
+  "prompt": "Draw ONE original native whole-object PNG sprite for the Yautja homeworld fan game La Longue Chasse, a lore-compatible ORIGINAL design, not a canonical film-prop assertion. The visual family has charcoal porous basalt/dark gunmetal, worn antique-bronze chamfered angular reinforcement, fine restrained geometric carving, small contained amber fittings, realistic prerendered2.5D materials, warm neutral top-left light. Readable silhouette at small game size. Three-quarter isometric, front and right side visible, camera down25-30degrees. One connected object only, all tips,base and attachments entirely visible. Keep it modestly sized centrally on the square native canvas with vast20percent empty TRANSPARENT padding on every side. Preserve native emitted dimensions. Exact alpha0 everywhere outside physical silhouette including every edge; no haze/bloom,cast shadow,ground patch,backdrop/checkerboard,scenery,text/letters/numbers/logos,people/creatures,grid/atlas/repeated views or cropping. Static candidate only; no gameplay or art admission implied. SUBJECT: one CLAN TOTEM SCULPTURE, a heavy freestanding vertical basalt monolith with three bold stacked angular carved relief masses and a distinctive forked crown. Bronze braces frame a single invented abstract claw-and-diamond clan mark carved into the central mass; this is fictional local iconography, not a real franchise emblem or writing. A broad compact octagonal integral stone foot anchors it. More sculptural and ceremonial than a simple wayfinding marker; no arrow/signboard,flagcloth,face/head/statue of a human or Yautja,skulls,bodies or trophies. Restrained amber recesses only,not a glowing energy machine. Entire forked top and complete foot with huge clear margins.",
+  "nativeSourcePath": "/workspace/generated_images/exec-7012c129-52f2-4bcb-9466-bbef403e42ab.png",
+  "candidatePath": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-65-175-totem-native.png",
+  "referencesOpened": [
+    "public/game/homeworld/v83/clan-waymarker-right.png",
+    "public/game/homeworld/v80/clan-banner-standard.png"
+  ],
+  "visualAssessment": {
+    "status": "ASSISTANT_NATIVE_VIEW_ONLY_NOT_HUMAN_APPROVAL",
+    "wholeSingleObject": true,
+    "visibleCroppedObject": false,
+    "duplicateGrid": false,
+    "materialCameraCoherent": true,
+    "functionReadable": true,
+    "notes": "One complete sculptural clan totem with forked crown and invented geometric relief,not a canonical emblem. Strong silhouette stays inside canvas but top/bottom visible margins are only21px; no retry for padding/noise,not admitted."
+  },
+  "lore": "LORE_COMPATIBLE_ORIGINAL",
+  "humanValidated": false,
+  "pixelsEdited": false,
+  "inspection": {
+    "targetId": "target-v81-65-175",
+    "attempt": 1,
+    "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-65-175-totem-native.png",
+    "nativeSourcePath": "/workspace/generated_images/exec-7012c129-52f2-4bcb-9466-bbef403e42ab.png",
+    "bytes": 993338,
+    "sha256": "6e40b491d9555c09654364dc85ac9eb5ab8907f8048efc1d1acf8010c02dfc55",
+    "mode": "RGBA",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "transparentPixels": 1227313,
+    "alpha1or2Pixels": 7752,
+    "alpha1to8Pixels": 11758,
+    "thresholdMeasurements": {
+      "0": {
+        "bboxExclusive": [
+          33,
+          18,
+          1222,
+          1237
+        ],
+        "margins": [
+          33,
+          18,
+          32,
+          17
+        ],
+        "visiblePixels": 345203,
+        "edgeVisiblePixels": 0
+      },
+      "2": {
+        "bboxExclusive": [
+          384,
+          19,
+          882,
+          1235
+        ],
+        "margins": [
+          384,
+          19,
+          372,
+          19
+        ],
+        "visiblePixels": 337451,
+        "edgeVisiblePixels": 0
+      },
+      "8": {
+        "bboxExclusive": [
+          384,
+          21,
+          880,
+          1233
+        ],
+        "margins": [
+          384,
+          21,
+          374,
+          21
+        ],
+        "visiblePixels": 333445,
+        "edgeVisiblePixels": 0
+      }
+    },
+    "strict48pxAlphaGt0MarginPass": false,
+    "diagnostic48pxAlphaGt8MarginPass": false,
+    "diagnosticImageAnchor": {
+      "x": 632,
+      "y": 1232,
+      "status": "PROPOSED_BBOX_ANCHOR_NOT_RUNTIME_TESTED",
+      "rule": "Bottom-center alpha>8 enclosure. A wall-mounted object still needs an attachment pivot; this is not physical ground-contact proof."
+    },
+    "nativeByteExactCopy": true,
+    "pixelsEdited": false,
+    "runtimeIntegrated": false,
+    "humanValidated": false,
+    "status": "CANDIDAT_NON_ADMIS",
+    "limits": [
+      "All original canvas and pixels retained; no crop,resize,mirror,cleanup or compression.",
+      "Alpha thresholds2/8 are diagnostics and never replace the strict alpha>0 measurement.",
+      "Low alpha counts include antialiasing; border speckle and clipping need individual visual interpretation.",
+      "No in-game scale,collision,usage envelope,animation or artistic admission is established."
+    ]
+  },
+  "status": "CANDIDAT_NON_ADMIS",
+  "runtimeIntegrated": false,
+  "sourceClosureClaimed": false,
+  "sourceLocators": {
+    "catalogue": {
+      "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+      "jsonPointer": "/entries/174"
+    },
+    "v111Inventory": {
+      "path": "docs/v111-homeworld-art-inventory.json",
+      "jsonPointer": "/entries/174"
+    },
+    "activeV112Followup": {
+      "path": "docs/v112-homeworld-followup.json",
+      "jsonPointer": "/artTargets/174"
+    },
+    "brief": {
+      "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+      "section": 65,
+      "line": 1820
+    },
+    "workbookCells": [
+      {
+        "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+        "sheet": "CatalogueArtV111",
+        "part": "xl/worksheets/v111-sheet-110.xml",
+        "row": 179,
+        "idCell": {
+          "cell": "A179",
+          "value": "target-v81-65-175"
+        },
+        "labelCell": {
+          "cell": "D179",
+          "value": "totem"
+        },
+        "historicalPresenceCell": {
+          "cell": "G179",
+          "value": "MISSING"
+        },
+        "openArtCell": {
+          "cell": "F179",
+          "value": "NON_CLOTURE_ART"
+        }
+      },
+      {
+        "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+        "sheet": "CatalogueArtV112",
+        "part": "xl/worksheets/v112-sheet-119.xml",
+        "row": 179,
+        "idCell": {
+          "cell": "A179",
+          "value": "target-v81-65-175"
+        },
+        "labelCell": {
+          "cell": "C179",
+          "value": "totem"
+        },
+        "historicalPresenceCell": {
+          "cell": "D179",
+          "value": "MISSING"
+        },
+        "openArtCell": {
+          "cell": "E179",
+          "value": "NON_CLOTURE_ART"
+        }
+      }
+    ]
+  },
+  "sourceLocatorContext": "SNAPSHOT_HISTORIQUE: dated source audit 2026-11-02; historical V111/V112 cells are unchanged by this production.",
+  "requiredCriteriaIds": [
+    "COMMON-NATIVE",
+    "COMMON-IDENTITY",
+    "COMMON-SCALE",
+    "COMMON-CONTEXT"
+  ],
+  "targetSpecificLimits": [
+    "Invented original monumental totem, not a canonical screen-derived prop.",
+    "Strong-alpha top/bottom margins21px fail the48px diagnostic; silhouette is visible and not cropped."
+  ],
+  "frame": {
+    "rect": [
+      0,
+      0,
+      1254,
+      1254
+    ],
+    "grid": [
+      1,
+      1
+    ],
+    "frameCount": 1,
+    "wholeNativeCanvasRetained": true
+  },
+  "referenceUse": "Previously opened real project PNGs informed the textual brief. No source image was supplied as conditioning and no source pixels were extracted.",
+  "retryUsed": false,
+  "retryDecision": "No retry: no actual clipping or repeated-object grid observed. Padding failures and faint alpha noise remain explicit, never cleaned or force-admitted."
+}

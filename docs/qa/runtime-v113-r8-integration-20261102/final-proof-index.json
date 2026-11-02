@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS_BOUNDED_V113_R8_B2_DELIVERY",
+  "runtimeCommit": "719fe0d77e65be5349b76f507938309f56a67619",
+  "buildId": "OzWVxNAbS8mWbL_Pue9Zg",
+  "fullCurrentDomainRecipes": [
+    {
+      "domain": "Homeworld",
+      "checks": 249,
+      "openedCaptures": 39
+    },
+    {
+      "domain": "Pit",
+      "checks": 127,
+      "openedCaptures": 39,
+      "actualCompleteVictories": 1,
+      "actualReplayExports": 1
+    }
+  ],
+  "modelTestsPassed": 556,
+  "currentCertificateTestPassed": 1,
+  "allSourceRequirementsClosed": false,
+  "humanArtisticAdmissions": 0,
+  "nativeExcelExecuted": false,
+  "files": [
+    {
+      "path": "docs/v113-runtime-freeze.json",
+      "bytes": 367432,
+      "sha256": "f39b5089fc130a726b87a6120470dacb3c3ef41098582a7203844620ce57f164"
+    },
+    {
+      "path": "docs/v113-homeworld-validation.json",
+      "bytes": 866216,
+      "sha256": "7d42b5a70705d8720fca2a50818554b6e9973db988645d1b687d8862c8c61a66"
+    },
+    {
+      "path": "docs/v113-pit-validation.json",
+      "bytes": 1379421,
+      "sha256": "e2440ed86acfdb81a1f5d68147e92993fa4636939586666d078055d6eb1eff6c"
+    },
+    {
+      "path": "docs/qa/v113-homeworld/entry.json",
+      "bytes": 9209,
+      "sha256": "a2548f2f653d5111b8c624c9bcdb41da7f6cebf864da81a849364bb4b058cd90"
+    },
+    {
+      "path": "docs/qa/v113-pit/entry.json",
+      "bytes": 8702,
+      "sha256": "b7921267e4d3cae7c952d9b852955ae0bcf14ae161b74a1e55791606bcb0a956"
+    },
+    {
+      "path": "docs/qa/v113-pit-replay/entry.json",
+      "bytes": 3560,
+      "sha256": "5e5a3e480a8553d387107813b8d14430315f752c30848039d03f36cbb7d549f0"
+    },
+    {
+      "path": "docs/qa/homeworld-r8-combined-20261102/b2/summary.json",
+      "bytes": 3864,
+      "sha256": "bbd0b5f99b8f17501b9b84b44591e69c02a1eda6e99180a6a8c8efc66b9b3c2c"
+    },
+    {
+      "path": "docs/qa/preserve-v6-r8-combined-20261102/b2/INDEX.json",
+      "bytes": 3636,
+      "sha256": "4778bf6db34d1316bec07a3da917ba123fc68c7826331e0e35f8b671ab28be49"
+    },
+    {
+      "path": "docs/qa/hunt-pr62-followup-r8-20261102/verification.json",
+      "bytes": 1495,
+      "sha256": "571c2fa07ffe615f4855dcd7e9367db137c1fadbd033ab3d2f49c611989ebd0a"
+    },
+    {
+      "path": "production/YAUTJA_V114_SUIVI.xlsx",
+      "bytes": 10600088,
+      "sha256": "1367ac28a95c1ecf069ee1b5ee84b9438857c28ed5fb1b4e3b7059e4db619240"
+    },
+    {
+      "path": "production/native-open-20261102/source-manifest.json",
+      "bytes": 534565,
+      "sha256": "682a9dc03da5887eaa8816371f2f543ab731dcbf4b0464c9cee1da3b9c044f7e"
+    },
+    {
+      "path": "production/native-open-gallery-20261102.html",
+      "bytes": 43419,
+      "sha256": "25f20db37d72d50f4c447a5eae5e0c134e84c318b079a36112751aae24ed3042"
+    },
+    {
+      "path": "docs/qa/runtime-v113-r8-integration-20261102/b2-model-tests.tap",
+      "bytes": 145159,
+      "sha256": "c95c32a23e42838afa6418fefc23a9102e6b94f91ecc9b7706ec84d02614ea32"
+    },
+    {
+      "path": "docs/qa/runtime-v113-r8-integration-20261102/b2-current-certificates.tap",
+      "bytes": 481,
+      "sha256": "ce0c3df6d7fc640a03920d5907b2ae09d274756a6032c275700e32c9d325061a"
+    },
+    {
+      "path": ".github/workflows/audit-v94.yml",
+      "bytes": 99829,
+      "sha256": "016769446148ca68469c13095c5795cb7ca3ad657c5168222e38366ae78bce20"
+    },
+    {
+      "path": ".github/workflows/open-production-v113.yml",
+      "bytes": 14903,
+      "sha256": "24b4a9913cd4f1287e20a12b5bfa4ba43480eb857d41bd07d185ca34ad7a8e62"
+    },
+    {
+      "path": "eslint.config.mjs",
+      "bytes": 858,
+      "sha256": "02c28bc989065859c21e2ad2727953eb5c60518d7a51d22e7e62cc43c322ea9e"
+    },
+    {
+      "path": "docs/qa/runtime-v113-r8-integration-20261102/ci-cold-application/archive-files.json",
+      "bytes": 2837,
+      "sha256": "19a141aeec7519d2a9c830302f6e338c23af39e3c92f8d52ffa1cbae62e33636"
+    },
+    {
+      "path": "docs/qa/runtime-v113-r8-integration-20261102/ci-cold-application/cold-summary.json",
+      "bytes": 6381,
+      "sha256": "01e01dfd5678c14a87d2250701ed94d74d688f332e22cc4d0dd88d0e4c32c2af"
+    },
+    {
+      "path": "docs/qa/runtime-v113-r8-integration-20261102/ci-cold-workbooks/evidence-manifest.json",
+      "bytes": 3933,
+      "sha256": "34e0e85aed822fc4b6cb8eba61e00588f26aae42ee12e050129d8a9f70412003"
+    },
+    {
+      "path": "docs/qa/runtime-v113-r8-integration-20261102/ci-cold-workbooks/real-clone-verification.json",
+      "bytes": 1784,
+      "sha256": "99d282ad23618ae34ce9409a5dbea8bf7cf4c99f7ff3a87497a906fe1ff03505"
+    },
+    {
+      "path": "docs/qa/runtime-v113-r8-integration-20261102/ci-current-selection-once.json",
+      "bytes": 2386,
+      "sha256": "8d7bcf730ece42526283a94ea8558abea70292509eaf99709291bb57c7d71906"
+    }
+  ],
+  "coldCheckoutChecks": {
+    "sourcePublicationCommit": "837684333b42ee1a5e3a0be9ce1967e2486a2fd3",
+    "application": "PASS_1964_FROZEN_INPUTS_TWO_REPORTS_78_PNGS",
+    "workbooks": "PASS_5_V113_AND_10_V114_TESTS_PINNED_PILLOW_12_3_0",
+    "hostedGitHubActionsExecutedByTheseChecks": false,
+    "newBuildOrBrowserExecutedByTheseChecks": false
+  },
+  "ciSelection": {
+    "currentV112Files": 41,
+    "currentV112Invocations": 1,
+    "historicalR7SuiteInvocations": 1,
+    "originalAssertionsRemoved": 0
+  }
+}

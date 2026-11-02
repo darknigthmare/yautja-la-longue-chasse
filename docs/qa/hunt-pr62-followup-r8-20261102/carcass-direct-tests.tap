@@ -1,0 +1,130 @@
+TAP version 13
+# Subtest: a native carried body remains the real menu target above a nearer corpse, and its drop callback works
+ok 1 - a native carried body remains the real menu target above a nearer corpse, and its drop callback works
+  ---
+  duration_ms: 21.62311
+  type: 'test'
+  ...
+# Subtest: selection is read only for a deeply frozen corpse registry and retains its array order
+ok 2 - selection is read only for a deeply frozen corpse registry and retains its array order
+  ---
+  duration_ms: 11.377262
+  type: 'test'
+  ...
+# Subtest: carried preference preserves fallback and validity: missing carried identity
+ok 3 - carried preference preserves fallback and validity: missing carried identity
+  ---
+  duration_ms: 0.255667
+  type: 'test'
+  ...
+# Subtest: carried preference preserves fallback and validity: erased carried body
+ok 4 - carried preference preserves fallback and validity: erased carried body
+  ---
+  duration_ms: 0.523913
+  type: 'test'
+  ...
+# Subtest: carried preference preserves fallback and validity: supported carried body
+ok 5 - carried preference preserves fallback and validity: supported carried body
+  ---
+  duration_ms: 0.240804
+  type: 'test'
+  ...
+# Subtest: carried preference preserves fallback and validity: inconsistent hanging anchor
+ok 6 - carried preference preserves fallback and validity: inconsistent hanging anchor
+  ---
+  duration_ms: 0.206243
+  type: 'test'
+  ...
+# Subtest: carried preference preserves fallback and validity: unflayed carried body
+ok 7 - carried preference preserves fallback and validity: unflayed carried body
+  ---
+  duration_ms: 0.200293
+  type: 'test'
+  ...
+# Subtest: carried preference preserves fallback and validity: overweight carried body
+ok 8 - carried preference preserves fallback and validity: overweight carried body
+  ---
+  duration_ms: 0.311782
+  type: 'test'
+  ...
+# Subtest: carried preference preserves fallback and validity: nonphysical carried mass
+ok 9 - carried preference preserves fallback and validity: nonphysical carried mass
+  ---
+  duration_ms: 0.555991
+  type: 'test'
+  ...
+# Subtest: carried preference preserves fallback and validity: nonfinite carried mass
+ok 10 - carried preference preserves fallback and validity: nonfinite carried mass
+  ---
+  duration_ms: 0.653459
+  type: 'test'
+  ...
+# Subtest: carried preference preserves fallback and validity: nonfinite carried position
+ok 11 - carried preference preserves fallback and validity: nonfinite carried position
+  ---
+  duration_ms: 0.219723
+  type: 'test'
+  ...
+# Subtest: carried preference preserves fallback and validity: legacy omitted mass
+ok 12 - carried preference preserves fallback and validity: legacy omitted mass
+  ---
+  duration_ms: 0.148995
+  type: 'test'
+  ...
+# Subtest: carried preference preserves fallback and validity: exact native reach
+ok 13 - carried preference preserves fallback and validity: exact native reach
+  ---
+  duration_ms: 0.115835
+  type: 'test'
+  ...
+# Subtest: carried preference preserves fallback and validity: outside native reach
+ok 14 - carried preference preserves fallback and validity: outside native reach
+  ---
+  duration_ms: 0.108714
+  type: 'test'
+  ...
+# Subtest: carried preference preserves fallback and validity: vertical outside native reach
+ok 15 - carried preference preserves fallback and validity: vertical outside native reach
+  ---
+  duration_ms: 0.095845
+  type: 'test'
+  ...
+# Subtest: carried preference preserves fallback and validity: no carried body
+ok 16 - carried preference preserves fallback and validity: no carried body
+  ---
+  duration_ms: 0.135054
+  type: 'test'
+  ...
+# Subtest: invalid actor never obtains remote carried access: NaN
+ok 17 - invalid actor never obtains remote carried access: NaN
+  ---
+  duration_ms: 0.097087
+  type: 'test'
+  ...
+# Subtest: invalid actor never obtains remote carried access: Infinity
+ok 18 - invalid actor never obtains remote carried access: Infinity
+  ---
+  duration_ms: 0.044838
+  type: 'test'
+  ...
+# Subtest: invalid actor never obtains remote carried access: 1000000000
+ok 19 - invalid actor never obtains remote carried access: 1000000000
+  ---
+  duration_ms: 0.039229
+  type: 'test'
+  ...
+# Subtest: unavailable menu remains unavailable even while carrying
+ok 20 - unavailable menu remains unavailable even while carrying
+  ---
+  duration_ms: 0.060281
+  type: 'test'
+  ...
+1..20
+# tests 20
+# suites 0
+# pass 20
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 141.068991

@@ -1,0 +1,529 @@
+TAP version 13
+# Subtest: V3 active checkpoints retain all sixteen people, four aircraft and route records through real imports, slots and integral archives
+ok 1 - V3 active checkpoints retain all sixteen people, four aircraft and route records through real imports, slots and integral archives
+  ---
+  duration_ms: 80.865484
+  type: 'test'
+  ...
+# Subtest: a declared surveyed V3 fixture physically returns and preserves only its actual site records
+ok 2 - a declared surveyed V3 fixture physically returns and preserves only its actual site records
+  ---
+  duration_ms: 17.145909
+  type: 'test'
+  ...
+# Subtest: V3 manual-checkpoint storage refusal leaves the previously durable campaign intact and retryable
+ok 3 - V3 manual-checkpoint storage refusal leaves the previously durable campaign intact and retryable
+  ---
+  duration_ms: 30.450804
+  type: 'test'
+  ...
+# Subtest: V1 and V2 remain supported; mixed identities are invalid and only version four remains future [historical V107]
+ok 4 - V1 and V2 remain supported; mixed identities are invalid and only version four remains future [historical V107]
+  ---
+  duration_ms: 80.220841
+  type: 'test'
+  ...
+# Subtest: all four exact reserve identities roundtrip through campaign import; future five and mixed worlds are refused [historical V108]
+not ok 5 - all four exact reserve identities roundtrip through campaign import; future five and mixed worlds are refused [historical V108]
+  ---
+  duration_ms: 80.65698
+  type: 'test'
+  location: '/workspace/yautja-preserve-v6-20261102/tests/game-reserve-expedition-persistence-v108.test.mjs:11:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+    + undefined
+    - {
+    -   channel: {
+    -     kind: 'none',
+    -     target: -1,
+    -     ticks: 0
+    -   },
+    -   humans: [
+    -     {
+    -       alertUntil: 0,
+    -       carrying: false,
+    -       downAt: null,
+    -       facing: 1,
+    -       hp: 70,
+    -       id: 'reserve-veyra',
+    -       identified: false,
+    -       lastSeenX: null,
+    -       lastSeenY: 395,
+    -       moving: false,
+    -       scan: 0,
+    -       secured: false,
+    -       shotCooldown: 50,
+    -       status: 'active',
+    -       targetSupply: 0,
+    -       team: 0,
+    -       windup: 0,
+    -       work: 0,
+    -       x: 698
+    -     },
+    -     {
+    -       alertUntil: 0,
+    -       carrying: false,
+    -       downAt: null,
+    -       facing: 1,
+    -       hp: 70,
+    -       id: 'reserve-marek',
+    -       identified: false,
+    -       lastSeenX: null,
+    -       lastSeenY: 395,
+    -       moving: false,
+    -       scan: 0,
+    -       secured: false,
+    -       shotCooldown: 67,
+    -       status: 'active',
+    -       targetSupply: 1,
+    -       team: 0,
+    -       windup: 0,
+    -       work: 0,
+    -       x: 1155
+    -     },
+    -     {
+    -       alertUntil: 0,
+    -       carrying: false,
+    -       downAt: null,
+    -       facing: 1,
+    -       hp: 70,
+    -       id: 'reserve-solen',
+    -       identified: false,
+    -       lastSeenX: null,
+    -       lastSeenY: 395,
+    -       moving: false,
+    -       scan: 0,
+    -       secured: false,
+    -       shotCooldown: 84,
+    -       status: 'active',
+    -       targetSupply: 2,
+    -       team: 0,
+    -       windup: 0,
+    -       work: 0,
+    -       x: 1522
+    -     },
+    -     {
+    -       alertUntil: 0,
+    -       carrying: false,
+    -       downAt: null,
+    -       facing: 1,
+    -       hp: 70,
+    -       id: 'reserve-oren',
+    -       identified: false,
+    -       lastSeenX: null,
+    -       lastSeenY: 395,
+    -       moving: false,
+    -       scan: 0,
+    -       secured: false,
+    -       shotCooldown: 101,
+    -       status: 'active',
+    -       targetSupply: 3,
+    -       team: 0,
+    -       windup: 0,
+    -       work: 0,
+    -       x: 1979
+    -     },
+    -     {
+    -       alertUntil: 0,
+    -       carrying: false,
+    -       downAt: null,
+    -       facing: 1,
+    -       hp: 70,
+    -       id: 'reserve-nara',
+    -       identified: false,
+    -       lastSeenX: null,
+    -       lastSeenY: 395,
+    -       moving: false,
+    -       scan: 0,
+    -       secured: false,
+    -       shotCooldown: 118,
+    -       status: 'active',
+    -       targetSupply: 4,
+    -       team: 1,
+    -       windup: 0,
+    -       work: 0,
+    -       x: 2436
+    -     },
+    -     {
+    -       alertUntil: 0,
+    -       carrying: false,
+    -       downAt: null,
+    -       facing: 1,
+    -       hp: 70,
+    -       id: 'reserve-kess',
+    -       identified: false,
+    -       lastSeenX: null,
+    -       lastSeenY: 395,
+    -       moving: false,
+    -       scan: 0,
+    -       secured: false,
+    -       shotCooldown: 135,
+    -       status: 'active',
+    -       targetSupply: 5,
+    -       team: 1,
+    -       windup: 0,
+    -       work: 0,
+    -       x: 2803
+    -     },
+    -     {
+    -       alertUntil: 0,
+    -       carrying: false,
+    -       downAt: null,
+    -       facing: 1,
+    -       hp: 70,
+    -       id: 'reserve-toren',
+    -       identified: false,
+    -       lastSeenX: null,
+    -       lastSeenY: 395,
+    -       moving: false,
+    -       scan: 0,
+    -       secured: false,
+    -       shotCooldown: 152,
+    -       status: 'active',
+    -       targetSupply: 6,
+    -       team: 1,
+    -       windup: 0,
+    -       work: 0,
+    -       x: 3260
+    -     },
+    -     {
+    -       alertUntil: 0,
+    -       carrying: false,
+    -       downAt: null,
+    -       facing: 1,
+    -       hp: 70,
+    -       id: 'reserve-ira',
+    -       identified: false,
+    -       lastSeenX: null,
+    -       lastSeenY: 395,
+    -       moving: false,
+    -       scan: 0,
+    -       secured: false,
+    -       shotCooldown: 169,
+    -       status: 'active',
+    -       targetSupply: 7,
+    -       team: 1,
+    -       windup: 0,
+    -       work: 0,
+    -       x: 3627
+    -     }
+    -   ],
+    -   inputArmed: false,
+    -   log: [
+    -     {
+    -       message: 'Deux groupes armés cherchent une issue. Les huit combattants et cette réserve sont des créations du jeu.',
+    -       tick: 0
+    -     }
+    -   ],
+    -   player: {
+    -     cloak: false,
+    -     cooldown: 0,
+    -     energy: 100,
+    -     facing: 1,
+    -     hp: 100,
+    -     moving: false,
+    -     vy: 0,
+    -     x: 115,
+    -     y: 438
+    -   },
+    -   previous: {
+    -     attack: false,
+    -     cloak: false,
+    -     jump: false,
+    -     melee: false
+    -   },
+    -   projectiles: [],
+    -   reserveId: 'vharuun-first-expedition',
+    -   seed: 108,
+    -   ships: [
+    -     {
+    -       departedAt: null,
+    -       launch: null,
+    -       parts: 0,
+    -       repair: 0,
+    -       sabotages: 0
+    -     },
+    -     {
+    -       departedAt: null,
+    -       launch: null,
+    -       parts: 0,
+    -       repair: 0,
+    -       sabotages: 0
+    -     }
+    -   ],
+    -   status: 'active',
+    -   supplies: [
+    -     2,
+    -     2,
+    -     2,
+    -     2,
+    -     2,
+    -     2,
+    -     2,
+    -     2
+    -   ],
+    -   terminalTick: null,
+    -   tick: 0,
+    -   tracks: [],
+    -   version: 1,
+    -   visited: [
+    -     0
+    -   ]
+    - }
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    version: 1
+    reserveId: 'vharuun-first-expedition'
+    seed: 108
+    tick: 0
+    status: 'active'
+    player:
+      x: 115
+      y: 438
+      vy: 0
+      facing: 1
+      hp: 100
+      energy: 100
+      cloak: false
+      cooldown: 0
+      moving: false
+    humans:
+      0:
+        id: 'reserve-veyra'
+        x: 698
+        facing: 1
+        hp: 70
+        status: 'active'
+        team: 0
+        carrying: false
+        targetSupply: 0
+        work: 0
+        lastSeenX: ~
+        lastSeenY: 395
+        alertUntil: 0
+        shotCooldown: 50
+        windup: 0
+        moving: false
+        identified: false
+        scan: 0
+        secured: false
+        downAt: ~
+      1:
+        id: 'reserve-marek'
+        x: 1155
+        facing: 1
+        hp: 70
+        status: 'active'
+        team: 0
+        carrying: false
+        targetSupply: 1
+        work: 0
+        lastSeenX: ~
+        lastSeenY: 395
+        alertUntil: 0
+        shotCooldown: 67
+        windup: 0
+        moving: false
+        identified: false
+        scan: 0
+        secured: false
+        downAt: ~
+      2:
+        id: 'reserve-solen'
+        x: 1522
+        facing: 1
+        hp: 70
+        status: 'active'
+        team: 0
+        carrying: false
+        targetSupply: 2
+        work: 0
+        lastSeenX: ~
+        lastSeenY: 395
+        alertUntil: 0
+        shotCooldown: 84
+        windup: 0
+        moving: false
+        identified: false
+        scan: 0
+        secured: false
+        downAt: ~
+      3:
+        id: 'reserve-oren'
+        x: 1979
+        facing: 1
+        hp: 70
+        status: 'active'
+        team: 0
+        carrying: false
+        targetSupply: 3
+        work: 0
+        lastSeenX: ~
+        lastSeenY: 395
+        alertUntil: 0
+        shotCooldown: 101
+        windup: 0
+        moving: false
+        identified: false
+        scan: 0
+        secured: false
+        downAt: ~
+      4:
+        id: 'reserve-nara'
+        x: 2436
+        facing: 1
+        hp: 70
+        status: 'active'
+        team: 1
+        carrying: false
+        targetSupply: 4
+        work: 0
+        lastSeenX: ~
+        lastSeenY: 395
+        alertUntil: 0
+        shotCooldown: 118
+        windup: 0
+        moving: false
+        identified: false
+        scan: 0
+        secured: false
+        downAt: ~
+      5:
+        id: 'reserve-kess'
+        x: 2803
+        facing: 1
+        hp: 70
+        status: 'active'
+        team: 1
+        carrying: false
+        targetSupply: 5
+        work: 0
+        lastSeenX: ~
+        lastSeenY: 395
+        alertUntil: 0
+        shotCooldown: 135
+        windup: 0
+        moving: false
+        identified: false
+        scan: 0
+        secured: false
+        downAt: ~
+      6:
+        id: 'reserve-toren'
+        x: 3260
+        facing: 1
+        hp: 70
+        status: 'active'
+        team: 1
+        carrying: false
+        targetSupply: 6
+        work: 0
+        lastSeenX: ~
+        lastSeenY: 395
+        alertUntil: 0
+        shotCooldown: 152
+        windup: 0
+        moving: false
+        identified: false
+        scan: 0
+        secured: false
+        downAt: ~
+      7:
+        id: 'reserve-ira'
+        x: 3627
+        facing: 1
+        hp: 70
+        status: 'active'
+        team: 1
+        carrying: false
+        targetSupply: 7
+        work: 0
+        lastSeenX: ~
+        lastSeenY: 395
+        alertUntil: 0
+        shotCooldown: 169
+        windup: 0
+        moving: false
+        identified: false
+        scan: 0
+        secured: false
+        downAt: ~
+    ships:
+      0:
+        parts: 0
+        repair: 0
+        launch: ~
+        departedAt: ~
+        sabotages: 0
+      1:
+        parts: 0
+        repair: 0
+        launch: ~
+        departedAt: ~
+        sabotages: 0
+    supplies:
+      0: 2
+      1: 2
+      2: 2
+      3: 2
+      4: 2
+      5: 2
+      6: 2
+      7: 2
+    tracks:
+    projectiles:
+    channel:
+      kind: 'none'
+      target: -1
+      ticks: 0
+    visited:
+      0: 0
+    log:
+      0:
+        tick: 0
+        message: 'Deux groupes armés cherchent une issue. Les huit combattants et cette réserve sont des créations du jeu.'
+    terminalTick: ~
+    inputArmed: false
+    previous:
+      jump: false
+      attack: false
+      melee: false
+      cloak: false
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/yautja-preserve-v6-20261102/tests/game-reserve-expedition-persistence-v108.test.mjs:13:157)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: V4 sixteen adults, ship events and four route records survive real slots and complete archives
+ok 6 - V4 sixteen adults, ship events and four route records survive real slots and complete archives
+  ---
+  duration_ms: 89.986427
+  type: 'test'
+  ...
+# Subtest: a declared four-site persistence fixture physically returns, and an intercepted launch remains an event rather than a free reward
+ok 7 - a declared four-site persistence fixture physically returns, and an intercepted launch remains an event rather than a free reward
+  ---
+  duration_ms: 21.565498
+  type: 'test'
+  ...
+# Subtest: refused V4 checkpoint writes preserve durable bytes and retry the original expedition
+ok 8 - refused V4 checkpoint writes preserve durable bytes and retry the original expedition
+  ---
+  duration_ms: 37.096386
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 7
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1701.601819

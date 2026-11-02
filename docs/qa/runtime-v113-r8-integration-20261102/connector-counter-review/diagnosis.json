@@ -1,0 +1,369 @@
+{
+  "schemaVersion": 1,
+  "status": "PROPOSED_B2_READY_CURRENT_AND_HISTORICAL_BOUNDARIES_PASS",
+  "sourceBase": "a83d23911ad4b5370494de0ca0bb025bd1d89449",
+  "historicalCommit": "03cf51badd450338d748da55599a317a71debd28",
+  "proposedFilesManifest": {
+    "path": "proposal-manifest.json",
+    "sha256": "24d3fad689d72d47354f0c4d7f40c34b09bd25177682ec636adcd31bce1054a3"
+  },
+  "measurements": {
+    "current-measurement.json": {
+      "mode": "current-a83d",
+      "ticks": 1394,
+      "walked": 7034.4925605987555,
+      "motorCalls": 1394,
+      "samples": 1394,
+      "stepDistance": {
+        "min": 1.0000000000536602,
+        "max": 5.5
+      },
+      "ledgerCarryDelta": 7034.492560598753,
+      "allObstructionAndNormalisationAssertionsPass": true,
+      "ledgerCountersDirectlyAssigned": false,
+      "teleports": false
+    },
+    "historical-measurement.json": {
+      "mode": "historical-03cf",
+      "ticks": 1421,
+      "walked": 7140.3749410165365,
+      "motorCalls": 1421,
+      "samples": 1421,
+      "stepDistance": {
+        "min": 1.0000000000536602,
+        "max": 5.5
+      },
+      "ledgerCarryDelta": 7140.374941016534,
+      "allObstructionAndNormalisationAssertionsPass": true,
+      "ledgerCountersDirectlyAssigned": false,
+      "teleports": false
+    },
+    "joints-disabled-measurement.json": {
+      "mode": "current-native-declared-unit-fixture-only-joints-disabled",
+      "ticks": 1421,
+      "walked": 7140.3749410165365,
+      "motorCalls": 1421,
+      "samples": 1421,
+      "stepDistance": {
+        "min": 1.0000000000536602,
+        "max": 5.5
+      },
+      "ledgerCarryDelta": 7140.374941016534,
+      "allObstructionAndNormalisationAssertionsPass": true,
+      "ledgerCountersDirectlyAssigned": false,
+      "teleports": false
+    }
+  },
+  "causality": {
+    "commonPrefixPoints": 13,
+    "lastCommonPoint": {
+      "x": 4032,
+      "y": 2976
+    },
+    "historicalSuffix": [
+      {
+        "x": 4320,
+        "y": 2784
+      },
+      {
+        "x": 4416,
+        "y": 2784
+      },
+      {
+        "x": 4500,
+        "y": 2960
+      }
+    ],
+    "currentSuffix": [
+      {
+        "x": 4128,
+        "y": 2880
+      },
+      {
+        "x": 4320,
+        "y": 2976
+      },
+      {
+        "x": 4416,
+        "y": 2976
+      },
+      {
+        "x": 4500,
+        "y": 2960
+      }
+    ],
+    "currentEdges": [
+      {
+        "from": {
+          "x": 6790,
+          "y": 5540
+        },
+        "to": {
+          "x": 6144,
+          "y": 5376
+        },
+        "supportedByHistoricalNavigation": true,
+        "supportedByCurrentNavigation": true
+      },
+      {
+        "from": {
+          "x": 6144,
+          "y": 5376
+        },
+        "to": {
+          "x": 5472,
+          "y": 5280
+        },
+        "supportedByHistoricalNavigation": true,
+        "supportedByCurrentNavigation": true
+      },
+      {
+        "from": {
+          "x": 5472,
+          "y": 5280
+        },
+        "to": {
+          "x": 4704,
+          "y": 5280
+        },
+        "supportedByHistoricalNavigation": true,
+        "supportedByCurrentNavigation": true
+      },
+      {
+        "from": {
+          "x": 4704,
+          "y": 5280
+        },
+        "to": {
+          "x": 3936,
+          "y": 5280
+        },
+        "supportedByHistoricalNavigation": true,
+        "supportedByCurrentNavigation": true
+      },
+      {
+        "from": {
+          "x": 3936,
+          "y": 5280
+        },
+        "to": {
+          "x": 3264,
+          "y": 5184
+        },
+        "supportedByHistoricalNavigation": true,
+        "supportedByCurrentNavigation": true
+      },
+      {
+        "from": {
+          "x": 3264,
+          "y": 5184
+        },
+        "to": {
+          "x": 3168,
+          "y": 5088
+        },
+        "supportedByHistoricalNavigation": true,
+        "supportedByCurrentNavigation": true
+      },
+      {
+        "from": {
+          "x": 3168,
+          "y": 5088
+        },
+        "to": {
+          "x": 3168,
+          "y": 4320
+        },
+        "supportedByHistoricalNavigation": true,
+        "supportedByCurrentNavigation": true
+      },
+      {
+        "from": {
+          "x": 3168,
+          "y": 4320
+        },
+        "to": {
+          "x": 3168,
+          "y": 3552
+        },
+        "supportedByHistoricalNavigation": true,
+        "supportedByCurrentNavigation": true
+      },
+      {
+        "from": {
+          "x": 3168,
+          "y": 3552
+        },
+        "to": {
+          "x": 3168,
+          "y": 3360
+        },
+        "supportedByHistoricalNavigation": true,
+        "supportedByCurrentNavigation": true
+      },
+      {
+        "from": {
+          "x": 3168,
+          "y": 3360
+        },
+        "to": {
+          "x": 3744,
+          "y": 3264
+        },
+        "supportedByHistoricalNavigation": true,
+        "supportedByCurrentNavigation": true
+      },
+      {
+        "from": {
+          "x": 3744,
+          "y": 3264
+        },
+        "to": {
+          "x": 4032,
+          "y": 3168
+        },
+        "supportedByHistoricalNavigation": true,
+        "supportedByCurrentNavigation": true
+      },
+      {
+        "from": {
+          "x": 4032,
+          "y": 3168
+        },
+        "to": {
+          "x": 4032,
+          "y": 2976
+        },
+        "supportedByHistoricalNavigation": true,
+        "supportedByCurrentNavigation": true
+      },
+      {
+        "from": {
+          "x": 4032,
+          "y": 2976
+        },
+        "to": {
+          "x": 4128,
+          "y": 2880
+        },
+        "supportedByHistoricalNavigation": true,
+        "supportedByCurrentNavigation": true
+      },
+      {
+        "from": {
+          "x": 4128,
+          "y": 2880
+        },
+        "to": {
+          "x": 4320,
+          "y": 2976
+        },
+        "supportedByHistoricalNavigation": true,
+        "supportedByCurrentNavigation": true
+      },
+      {
+        "from": {
+          "x": 4320,
+          "y": 2976
+        },
+        "to": {
+          "x": 4416,
+          "y": 2976
+        },
+        "supportedByHistoricalNavigation": true,
+        "supportedByCurrentNavigation": true
+      },
+      {
+        "from": {
+          "x": 4416,
+          "y": 2976
+        },
+        "to": {
+          "x": 4500,
+          "y": 2960
+        },
+        "supportedByHistoricalNavigation": true,
+        "supportedByCurrentNavigation": true
+      }
+    ],
+    "currentRouteRequiresNewJointOnItsOwnEdges": false,
+    "physicalDistanceReduction": 105.88238041778095,
+    "tickReduction": 27,
+    "newJointCount": 13,
+    "interpretation": "The added physical ground changes the navigation graph and selected bounded/coarse route; disabling only that provider recovers the historical route byte-for-byte. This is route selection, not a change of motor, sampler, destination or parked coordinates. Do not infer that the chosen path itself crosses a new joint without reading currentEdges."
+  },
+  "proposal": {
+    "currentExactTicks": 1394,
+    "currentPhysicalDistanceLowerBound": 7000,
+    "historicalExactTicksPreserved": 1421,
+    "historicalDistanceLowerBoundPreserved": 7100,
+    "otherCurrentAssertionsUnchanged": true,
+    "R7VerifierOr1895FileCountModified": false,
+    "fixtureOriginGitBlob": "67b7e2416e108ab385fcb2c985817504e16d0a14"
+  },
+  "validation": {
+    "currentProposedFileExit": 0,
+    "historicalOuterTestPass": 1,
+    "historicalOriginalAssertionsPass": 6,
+    "historicalOriginalSkipped": 0,
+    "currentMeasurementAllOriginalObstructionAndNormalisationAssertionsPass": true,
+    "initialHarnessFailureRetained": "historical-proposed.tap",
+    "harnessCorrection": "Child NODE_TEST_CONTEXT cleared and explicit TAP reporter, same existing R7 subprocess boundary.",
+    "browserRecipeOrArtisticAdmissionClaimed": false
+  },
+  "rootCodeWrittenByThisAgent": false,
+  "GitSharedMutation": false,
+  "pixelOperations": [],
+  "evidence": [
+    {
+      "path": "README.md",
+      "bytes": 3318,
+      "sha256": "1e0a2c65642e815ad4446f4ba41a78bef3e17ab891f9b1b5f5c842ccd53808f9"
+    },
+    {
+      "path": "proposal-manifest.json",
+      "bytes": 1238,
+      "sha256": "24d3fad689d72d47354f0c4d7f40c34b09bd25177682ec636adcd31bce1054a3"
+    },
+    {
+      "path": "proposed-b2.patch",
+      "bytes": 20392,
+      "sha256": "f2833401b0498a0e6f99d42bf8349ea82698105673137e4a451c68d8a031dbb8"
+    },
+    {
+      "path": "current-measurement.json",
+      "bytes": 4613,
+      "sha256": "f446db004ece57d199d228543d00c0e7c434fa61a55df56c687fd6bf16fd15ab"
+    },
+    {
+      "path": "historical-measurement.json",
+      "bytes": 4558,
+      "sha256": "8fe72e363841c2c33bb5b582cd4d278c3da5af54e52e4f1035653d8b5aea339c"
+    },
+    {
+      "path": "joints-disabled-measurement.json",
+      "bytes": 4600,
+      "sha256": "43a634a706d255593cf4515e037d7fa2a229ef8203e1da232584d20edb3970bd"
+    },
+    {
+      "path": "route-attribution.json",
+      "bytes": 4608,
+      "sha256": "f101532bad66e4d392411dde732692041931dd13f55c196e0a5dceb087eedcdd"
+    },
+    {
+      "path": "current-proposed.final.tap",
+      "bytes": 342,
+      "sha256": "aa4fbc64933c1c15ae31049ee088d8dcfe53b53c62ab7d43ac4c07e1753f0584"
+    },
+    {
+      "path": "historical-proposed.final.tap",
+      "bytes": 496,
+      "sha256": "a0a45112d2b4af5e2b126f736254d6f80660a56d9a6580c2917cf99c8dfbb2a2"
+    },
+    {
+      "path": "historical-proposed.tap",
+      "bytes": 1068,
+      "sha256": "a961a7991e09c0919d362b62a876f904d1efb92e04d7257f6e83a3693e5d0e05"
+    }
+  ]
+}

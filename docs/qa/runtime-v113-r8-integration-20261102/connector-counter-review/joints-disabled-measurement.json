@@ -1,0 +1,207 @@
+{
+  "mode": "current-native-declared-unit-fixture-only-joints-disabled",
+  "ticks": 1421,
+  "walked": 7140.3749410165365,
+  "motorCalls": 1421,
+  "samples": 1421,
+  "stepDistance": {
+    "min": 1.0000000000536602,
+    "max": 5.5
+  },
+  "ledgerCarryDelta": 7140.374941016534,
+  "route": {
+    "levelId": "0",
+    "status": "reachable",
+    "points": [
+      {
+        "x": 6790,
+        "y": 5540
+      },
+      {
+        "x": 6144,
+        "y": 5376
+      },
+      {
+        "x": 5472,
+        "y": 5280
+      },
+      {
+        "x": 4704,
+        "y": 5280
+      },
+      {
+        "x": 3936,
+        "y": 5280
+      },
+      {
+        "x": 3264,
+        "y": 5184
+      },
+      {
+        "x": 3168,
+        "y": 5088
+      },
+      {
+        "x": 3168,
+        "y": 4320
+      },
+      {
+        "x": 3168,
+        "y": 3552
+      },
+      {
+        "x": 3168,
+        "y": 3360
+      },
+      {
+        "x": 3744,
+        "y": 3264
+      },
+      {
+        "x": 4032,
+        "y": 3168
+      },
+      {
+        "x": 4032,
+        "y": 2976
+      },
+      {
+        "x": 4320,
+        "y": 2784
+      },
+      {
+        "x": 4416,
+        "y": 2784
+      },
+      {
+        "x": 4500,
+        "y": 2960
+      }
+    ],
+    "distance": 7140.576561020594
+  },
+  "start": {
+    "actor": {
+      "x": 6790,
+      "y": 5540,
+      "vx": -254.07467811301103,
+      "vy": 131.57438687994727,
+      "facing": -1,
+      "grounded": true
+    },
+    "ledgerWalked": 315.31730050855117
+  },
+  "carried": {
+    "actor": {
+      "x": 4500,
+      "y": 2960,
+      "vx": 45.53097584244824,
+      "vy": 95.3982350984279,
+      "facing": 1,
+      "grounded": true
+    },
+    "ledger": {
+      "version": 1,
+      "ownerCreatedAt": "2026-10-29T12:00:00.000Z",
+      "revision": 5,
+      "receipt": {
+        "sceneId": "D6-W-PNJ-ROLE-19",
+        "operationId": "port-compatible-cargo-v108",
+        "sourceSha256": "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183",
+        "sourceCorpusSha256": "e36efdc3d5ac8fddb74dd683458b72873203446204e768b02aa13e4db17eed30",
+        "phase": "working",
+        "resumePhase": null,
+        "option": "A",
+        "last": {
+          "x": 4500,
+          "y": 2960
+        },
+        "walked": 7455.692241525085,
+        "lots": [
+          {
+            "id": "wide",
+            "ownerId": "local-quay-return-team",
+            "x": 4500,
+            "y": 2960,
+            "place": "carried"
+          },
+          {
+            "id": "narrow",
+            "ownerId": "local-quay-maintenance-team",
+            "x": 6740,
+            "y": 5420,
+            "place": "source"
+          }
+        ],
+        "carrier": "wide",
+        "ownerConsents": true,
+        "depositConsent": false,
+        "firstRackPrepared": false,
+        "passageTested": false,
+        "pickupWalked": 315.31730050855117,
+        "passageStartWalked": null,
+        "retryLineReady": false,
+        "refusals": 0,
+        "interruptedCount": 0
+      }
+    }
+  },
+  "parked": {
+    "ledger": {
+      "version": 1,
+      "ownerCreatedAt": "2026-10-29T12:00:00.000Z",
+      "revision": 7,
+      "receipt": {
+        "sceneId": "D6-W-PNJ-ROLE-19",
+        "operationId": "port-compatible-cargo-v108",
+        "sourceSha256": "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183",
+        "sourceCorpusSha256": "e36efdc3d5ac8fddb74dd683458b72873203446204e768b02aa13e4db17eed30",
+        "phase": "interrupted",
+        "resumePhase": "working",
+        "option": "A",
+        "last": {
+          "x": 4500,
+          "y": 2960
+        },
+        "walked": 7455.692241525085,
+        "lots": [
+          {
+            "id": "wide",
+            "ownerId": "local-quay-return-team",
+            "x": 4500,
+            "y": 2900,
+            "place": "ground"
+          },
+          {
+            "id": "narrow",
+            "ownerId": "local-quay-maintenance-team",
+            "x": 6740,
+            "y": 5420,
+            "place": "source"
+          }
+        ],
+        "carrier": null,
+        "ownerConsents": true,
+        "depositConsent": false,
+        "firstRackPrepared": false,
+        "passageTested": false,
+        "pickupWalked": null,
+        "passageStartWalked": null,
+        "retryLineReady": false,
+        "refusals": 0,
+        "interruptedCount": 1
+      }
+    },
+    "actor": {
+      "x": 4500,
+      "y": 2960,
+      "vx": 45.53097584244824,
+      "vy": 95.3982350984279,
+      "facing": 1,
+      "grounded": true
+    }
+  },
+  "allObstructionAndNormalisationAssertionsPass": true,
+  "ledgerCountersDirectlyAssigned": false,
+  "teleports": false
+}

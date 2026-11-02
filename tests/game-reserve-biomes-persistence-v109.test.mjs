@@ -7,11 +7,11 @@ const withState=gameReserveV66=>({...api.defaultSave('2026-10-25T08:00:00.000Z')
 function storage(save){const values=new Map([[api.SAVE_STORAGE_KEY,JSON.stringify(save)]]);let refused=false;return{get length(){return values.size;},key:index=>[...values.keys()][index]??null,getItem:key=>values.get(key)??null,setItem:(key,raw)=>{if(refused)throw new DOMException('V109 quota fixture','QuotaExceededError');values.set(key,raw);},removeItem:key=>values.delete(key),refuse:value=>refused=value,bytes:()=>JSON.stringify([...values])};}
 async function locked(run){const old=Object.getOwnPropertyDescriptor(globalThis,'navigator');Object.defineProperty(globalThis,'navigator',{configurable:true,value:{locks:{request:async(_name,_options,callback)=>callback({})}}});try{await run();}finally{if(old)Object.defineProperty(globalThis,'navigator',old);else delete globalThis.navigator;}}
 
-test('all six exact identities import independently; V6 is future and mixed V5 bodies, terrain or authority are invalid',()=>{
+test('all six exact identities import independently; V7 is future and mixed V5 bodies, terrain or authority are invalid',()=>{
  const states=[api.createGameReserveV66(109),api.createGameReserveV104(109),api.createGameReserveV107(109),api.createGameReserveV108(109),...api.GAME_RESERVE_V109_IDS.map(id=>api.createGameReserveV109(109,id))];
  for(const state of states)assert.deepEqual(api.parseSaveImport(JSON.stringify(withState(state))).save?.gameReserveV66,state);
  const state=states[4];for(const wrong of[{...state,reserveId:states[5].reserveId},{...state,version:4},{...state,routeV108:state.routeV109},{...state,routeV109:null},{...state,humans:states[5].humans},{...state,objectives:{completed:true}}]){const parsed=api.parseSaveImport(JSON.stringify(withState(wrong)));assert.equal(parsed.save,null);assert.equal(parsed.failure,'invalid-save');}
- for(const version of[6,99]){const parsed=api.parseSaveImport(JSON.stringify(withState({...state,version})));assert.equal(parsed.save,null);assert.equal(parsed.failure,'future-version');}
+ for(const version of[7,99]){const parsed=api.parseSaveImport(JSON.stringify(withState({...state,version})));assert.equal(parsed.save,null);assert.equal(parsed.failure,'future-version');}
 });
 
 test('both V5 reserves keep their exact identities, route and physical state through real campaign slots and complete archives',async()=>locked(async()=>{

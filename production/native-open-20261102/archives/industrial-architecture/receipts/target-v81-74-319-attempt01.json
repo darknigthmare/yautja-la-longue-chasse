@@ -1,0 +1,218 @@
+{
+  "schemaVersion": 1,
+  "targetId": "target-v81-74-319",
+  "label": "valve",
+  "attempt": 1,
+  "family": "INDUSTRIEL",
+  "tool": "image_gen.imagegen",
+  "parameters": {
+    "transparent_background": true,
+    "referenced_image_paths": "omitted for new original generation",
+    "num_last_images_to_include": "omitted"
+  },
+  "prompt": "Create ONE original native game prop for the Yautja homeworld fan game La Longue Chasse; an original lore-compatible design, not a certified canonical object. Native square PNG with TRUE transparent alpha, one single connected whole object, no atlas. Cohesive material/camera family: charcoal porous basalt and gunmetal, worn antique bronze chamfered ribs, angular shallow alien geometric marks, small contained amber indicators, realistic prerendered 2.5D detail and midtone edge contrast, warm neutral light from upper left. Three-quarter isometric view looking down25-30degrees, front and right visible. The object is SMALL and CENTERED like a miniature seen from farther away, only central50-55percent of the canvas width/height; enormous empty alpha0 margin around every side. Entire object and all base/contact parts visible. Preserve the exact native canvas the tool emits. Every pixel outside the physical object must have exact alpha0, including canvas edges; no faint isolated speckles, no outside glow, no steam/fog, no ground or shadow patch, no scenery, no background or checkerboard, no humans/animals, no text/labels/numbers/logos, no extra separate pieces, no crop/mirror, no repeated views. Candidate static drawing only; no mechanics or admission implied. SUBJECT: one independent ALIEN INDUSTRIAL VALVE unit. A short thick dark gunmetal pipe body with two wide antique-bronze flanged ends on the same axis and a clear central shutoff housing. Above it rises one chunky angular three-spoke bronze handwheel set at a readable diagonal on a short stem. Small geometric position notch, no text and no human red wheel. Four small integral basalt feet stabilize the valve body. Broad readable handwheel silhouette and both pipe mouths fully visible. A self-contained shutoff valve, NOT a water tap/spigot, pump, cistern, generator, building or circular portal.",
+  "nativeSourcePath": "/workspace/generated_images/exec-6280fb8f-95e1-4ee5-9ab0-d783790992da.png",
+  "candidatePath": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-74-319-valve-native.png",
+  "referencesOpened": [
+    "public/game/homeworld/v78/civic-water-cistern-right.png",
+    "public/game/homeworld/v84/maintenance-console-right.png",
+    "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-74-310-generateur-native.png"
+  ],
+  "visualAssessment": {
+    "status": "ASSISTANT_NATIVE_VIEW_ONLY_NOT_HUMAN_APPROVAL",
+    "wholeSingleObject": true,
+    "visibleCroppedObject": false,
+    "duplicateGrid": false,
+    "materialCameraCoherent": true,
+    "functionReadable": true,
+    "notes": "One complete autonomous valve with a readable three-spoke wheel and both pipe-mouth flanges. Not a tap extracted from the cistern. Preview halo/low alpha remains native; no function or integration proven."
+  },
+  "lore": "LORE_COMPATIBLE_ORIGINAL",
+  "humanValidated": false,
+  "pixelsEdited": false,
+  "inspection": {
+    "targetId": "target-v81-74-319",
+    "attempt": 1,
+    "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-74-319-valve-native.png",
+    "nativeSourcePath": "/workspace/generated_images/exec-6280fb8f-95e1-4ee5-9ab0-d783790992da.png",
+    "bytes": 1330910,
+    "sha256": "0d30ec4dd0a82c6ce28a81630ea4b99a9bfaee08bfb5c4f0c769f33485235a5c",
+    "mode": "RGBA",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "alphaExtrema": [
+      0,
+      254
+    ],
+    "transparentPixels": 1332043,
+    "alpha1or2Pixels": 8606,
+    "alpha1to8Pixels": 11712,
+    "thresholdMeasurements": {
+      "0": {
+        "bboxExclusive": [
+          55,
+          75,
+          1448,
+          1006
+        ],
+        "margins": [
+          55,
+          75,
+          88,
+          18
+        ],
+        "visiblePixels": 240821,
+        "edgeVisiblePixels": 0
+      },
+      "2": {
+        "bboxExclusive": [
+          449,
+          176,
+          1075,
+          819
+        ],
+        "margins": [
+          449,
+          176,
+          461,
+          205
+        ],
+        "visiblePixels": 232215,
+        "edgeVisiblePixels": 0
+      },
+      "8": {
+        "bboxExclusive": [
+          449,
+          177,
+          1073,
+          819
+        ],
+        "margins": [
+          449,
+          177,
+          463,
+          205
+        ],
+        "visiblePixels": 229109,
+        "edgeVisiblePixels": 0
+      }
+    },
+    "strict48pxAlphaGt0MarginPass": false,
+    "diagnostic48pxAlphaGt8MarginPass": true,
+    "diagnosticImageAnchor": {
+      "x": 760,
+      "y": 818,
+      "status": "PROPOSED_BBOX_ANCHOR_NOT_RUNTIME_TESTED",
+      "rule": "Bottom-center alpha>8 enclosure. A wall-mounted object still needs an attachment pivot; this is not physical ground-contact proof."
+    },
+    "nativeByteExactCopy": true,
+    "pixelsEdited": false,
+    "runtimeIntegrated": false,
+    "humanValidated": false,
+    "status": "CANDIDAT_NON_ADMIS",
+    "limits": [
+      "All original canvas and pixels retained; no crop,resize,mirror,cleanup or compression.",
+      "Alpha thresholds2/8 are diagnostics and never replace the strict alpha>0 measurement.",
+      "Low alpha counts include antialiasing; border speckle and clipping need individual visual interpretation.",
+      "No in-game scale,collision,usage envelope,animation or artistic admission is established."
+    ]
+  },
+  "status": "CANDIDAT_NON_ADMIS",
+  "runtimeIntegrated": false,
+  "sourceClosureClaimed": false,
+  "sourceLocators": {
+    "catalogue": {
+      "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+      "jsonPointer": "/entries/318"
+    },
+    "v111Inventory": {
+      "path": "docs/v111-homeworld-art-inventory.json",
+      "jsonPointer": "/entries/318"
+    },
+    "activeV112Followup": {
+      "path": "docs/v112-homeworld-followup.json",
+      "jsonPointer": "/artTargets/318"
+    },
+    "brief": {
+      "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+      "section": 74,
+      "line": 2014
+    },
+    "workbookCells": [
+      {
+        "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+        "sheet": "CatalogueArtV111",
+        "part": "xl/worksheets/v111-sheet-110.xml",
+        "row": 323,
+        "idCell": {
+          "cell": "A323",
+          "value": "target-v81-74-319"
+        },
+        "labelCell": {
+          "cell": "D323",
+          "value": "valve"
+        },
+        "historicalPresenceCell": {
+          "cell": "G323",
+          "value": "MISSING"
+        },
+        "openArtCell": {
+          "cell": "F323",
+          "value": "NON_CLOTURE_ART"
+        }
+      },
+      {
+        "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+        "sheet": "CatalogueArtV112",
+        "part": "xl/worksheets/v112-sheet-119.xml",
+        "row": 323,
+        "idCell": {
+          "cell": "A323",
+          "value": "target-v81-74-319"
+        },
+        "labelCell": {
+          "cell": "C323",
+          "value": "valve"
+        },
+        "historicalPresenceCell": {
+          "cell": "D323",
+          "value": "MISSING"
+        },
+        "openArtCell": {
+          "cell": "E323",
+          "value": "NON_CLOTURE_ART"
+        }
+      }
+    ]
+  },
+  "sourceLocatorContext": "SNAPSHOT_HISTORIQUE: dated source audit 2026-11-02; historical V111/V112 cells are unchanged by this production.",
+  "requiredCriteriaIds": [
+    "COMMON-NATIVE",
+    "COMMON-IDENTITY",
+    "COMMON-SCALE",
+    "COMMON-CONTEXT"
+  ],
+  "targetSpecificLimits": [
+    "New original independent valve candidate; a painted cistern tap and older Pit cooling-valve imagery were visually checked as related context.",
+    "No open/closed pair, wheel animation, fluid state or gameplay is established."
+  ],
+  "frame": {
+    "rect": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "grid": [
+      1,
+      1
+    ],
+    "frameCount": 1,
+    "wholeNativeCanvasRetained": true
+  },
+  "referenceUse": "Previously opened real project PNGs informed the textual brief. No source image was supplied as conditioning and no source pixels were extracted.",
+  "retryUsed": false,
+  "retryDecision": "No retry: no actual clipping or repeated-object grid observed. Padding failures and faint alpha noise remain explicit, never cleaned or force-admitted."
+}

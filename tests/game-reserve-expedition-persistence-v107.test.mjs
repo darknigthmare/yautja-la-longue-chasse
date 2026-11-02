@@ -1,3 +1,4 @@
+import {historicalReserveApiV6} from './helpers/preserve-historical-v6.mjs';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import {build} from 'esbuild';
@@ -30,7 +31,8 @@ test('V3 manual-checkpoint storage refusal leaves the previously durable campaig
  const retried=await api.saveCampaignCheckpoint(1,{kind:'manual',index:1,expectedRevision:slot.revision,location:'game-reserve'},disk);assert.equal(retried.ok,true,retried.message);assert.equal(retried.checkpoint.resumeLocation,'game-reserve');
 }));
 
-test('V1 and V2 remain supported; mixed identities are invalid and only version four remains future',()=>{
+test('V1 and V2 remain supported; mixed identities are invalid and only version four remains future [historical V107]',async()=>{
+ const api = await historicalReserveApiV6(107);
  const source=api.defaultSave('2026-10-23T08:01:00.000Z');for(const checkpoint of[api.createGameReserveV66(107),api.createGameReserveV104(107),api.createGameReserveV107(107)])assert.deepEqual(api.parseSaveImport(JSON.stringify({...source,gameReserveV66:checkpoint})).save?.gameReserveV66,checkpoint);
  const v3=api.createGameReserveV107(107);for(const checkpoint of[{...v3,version:2},{...v3,reserveId:'vharuun-first-expedition'},{...v3,routeV107:null},{...v3,humans:v3.humans.slice(0,8)}]){const result=api.parseSaveImport(JSON.stringify({...source,gameReserveV66:checkpoint}));assert.equal(result.save,null);assert.equal(result.failure,'invalid-save');}
  const future=api.parseSaveImport(JSON.stringify({...source,gameReserveV66:{...v3,version:4}}));assert.equal(future.save,null);assert.equal(future.failure,'future-version');

@@ -1,0 +1,216 @@
+{
+  "schemaVersion": 1,
+  "targetId": "target-v81-73-301",
+  "label": "pile scrap",
+  "attempt": 1,
+  "family": "BAS_QUARTIERS_PROPS",
+  "tool": "image_gen.imagegen",
+  "parameters": {
+    "transparent_background": true,
+    "referenced_image_paths": "omitted for new original generation",
+    "num_last_images_to_include": "omitted"
+  },
+  "prompt": "One ORIGINAL complete native PNG game prop for a Yautja homeworld fan game, an original lore-compatible design rather than an official replica. One whole independent object in three-quarter isometric view, looking down25-30degrees, front and right sides visible. Cohesive family: weathered charcoal porous basalt and dark gunmetal with worn antique-bronze angular chamfered ribs, restrained geometric alien carving, tiny physical amber fittings, realistic prerendered2.5D detail, warm neutral top-left light, readable silhouette/midtone contrast. Entire base and top fully inside the native canvas, SMALL centered object occupying central55percent, very generous20percent transparent empty margin requested all sides. True alpha transparency, exact alpha0 outside silhouette and at all canvas edges. No surrounding fog/glow, no detached shadow/ground tile, no background/checkerboard, no text, labels, logos, numbers, humans, animals, scene, atlas/grid/repeated views or cropped parts. Preserve actual tool-native canvas, no need to force the requested square size. Static native candidate only. SUBJECT: a compact PILE OF ALIEN INDUSTRIAL SCRAP, a single connected heap of broken and bent dark-metal armor plates, worn bronze pipe elbows, a fractured ribbed housing, a short coil of thick severed cable, and a few blunt jagged machine brackets. Readable low irregular mound, clearly discarded material rather than neat intact equipment or a rack. Components visibly rest against each other in one gravity-supported heap; nothing floats or lies separately away from it. Keep pieces recognizably manufactured alien dark bronze/basalt engineering, no human car, tire, barrel, gun, skeleton, gore, plastic rubbish, modern recycling logo or human writing. No enclosing crate, no platform or concrete base. Whole scrap mound silhouette uncut, clear empty alpha around every extremity.",
+  "nativeSourcePath": "/workspace/generated_images/exec-2bdb2b25-d08b-4889-9536-8342e7559b26.png",
+  "candidatePath": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-73-301-pile-scrap-native.png",
+  "referencesOpened": [
+    "public/game/homeworld/v80/maintenance-rack.png",
+    "public/game/homeworld/v83/cargo-rack-right.png"
+  ],
+  "visualAssessment": {
+    "status": "ASSISTANT_NATIVE_VIEW_ONLY_NOT_HUMAN_APPROVAL",
+    "wholeSingleObject": true,
+    "visibleCroppedObject": false,
+    "duplicateGrid": false,
+    "materialCameraCoherent": true,
+    "functionReadable": true,
+    "notes": "One connected low scrap heap with bent plates,cables,broken grille and pipe ends; no separate reward or extraction from a rack. Whole mound visible; native low-alpha halo remains unedited."
+  },
+  "lore": "LORE_COMPATIBLE_ORIGINAL",
+  "humanValidated": false,
+  "pixelsEdited": false,
+  "inspection": {
+    "targetId": "target-v81-73-301",
+    "attempt": 1,
+    "path": "/workspace/native-homeworld-open-20261102/industrial-architecture/target-v81-73-301-pile-scrap-native.png",
+    "nativeSourcePath": "/workspace/generated_images/exec-2bdb2b25-d08b-4889-9536-8342e7559b26.png",
+    "bytes": 1714895,
+    "sha256": "e8b94e27a855f7dddb99e0961c7ac7e77cdae2bbf609a6aef5edea242d45b1d7",
+    "mode": "RGBA",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "alphaExtrema": [
+      0,
+      254
+    ],
+    "transparentPixels": 1167325,
+    "alpha1or2Pixels": 13227,
+    "alpha1to8Pixels": 16368,
+    "thresholdMeasurements": {
+      "0": {
+        "bboxExclusive": [
+          0,
+          9,
+          1522,
+          1024
+        ],
+        "margins": [
+          0,
+          9,
+          14,
+          0
+        ],
+        "visiblePixels": 405539,
+        "edgeVisiblePixels": 49
+      },
+      "2": {
+        "bboxExclusive": [
+          257,
+          178,
+          1278,
+          834
+        ],
+        "margins": [
+          257,
+          178,
+          258,
+          190
+        ],
+        "visiblePixels": 392312,
+        "edgeVisiblePixels": 0
+      },
+      "8": {
+        "bboxExclusive": [
+          258,
+          178,
+          1276,
+          832
+        ],
+        "margins": [
+          258,
+          178,
+          260,
+          192
+        ],
+        "visiblePixels": 389171,
+        "edgeVisiblePixels": 0
+      }
+    },
+    "strict48pxAlphaGt0MarginPass": false,
+    "diagnostic48pxAlphaGt8MarginPass": true,
+    "diagnosticImageAnchor": {
+      "x": 766,
+      "y": 831,
+      "status": "PROPOSED_BBOX_ANCHOR_NOT_RUNTIME_TESTED",
+      "rule": "Bottom-center alpha>8 enclosure. A wall-mounted object still needs an attachment pivot; this is not physical ground-contact proof."
+    },
+    "nativeByteExactCopy": true,
+    "pixelsEdited": false,
+    "runtimeIntegrated": false,
+    "humanValidated": false,
+    "status": "CANDIDAT_NON_ADMIS",
+    "limits": [
+      "All original canvas and pixels retained; no crop,resize,mirror,cleanup or compression.",
+      "Alpha thresholds2/8 are diagnostics and never replace the strict alpha>0 measurement.",
+      "Low alpha counts include antialiasing; border speckle and clipping need individual visual interpretation.",
+      "No in-game scale,collision,usage envelope,animation or artistic admission is established."
+    ]
+  },
+  "status": "CANDIDAT_NON_ADMIS",
+  "runtimeIntegrated": false,
+  "sourceClosureClaimed": false,
+  "sourceLocators": {
+    "catalogue": {
+      "path": "app/game/data/homeworldAssetCatalogueTargetV81.json",
+      "jsonPointer": "/entries/300"
+    },
+    "v111Inventory": {
+      "path": "docs/v111-homeworld-art-inventory.json",
+      "jsonPointer": "/entries/300"
+    },
+    "activeV112Followup": {
+      "path": "docs/v112-homeworld-followup.json",
+      "jsonPointer": "/artTargets/300"
+    },
+    "brief": {
+      "path": "docs/specifications/homeworld-v81/mission-grammaire-original.txt",
+      "section": 73,
+      "line": 1991
+    },
+    "workbookCells": [
+      {
+        "workbook": "docs/YAUTJA_V111_SUIVI.xlsx",
+        "sheet": "CatalogueArtV111",
+        "part": "xl/worksheets/v111-sheet-110.xml",
+        "row": 305,
+        "idCell": {
+          "cell": "A305",
+          "value": "target-v81-73-301"
+        },
+        "labelCell": {
+          "cell": "D305",
+          "value": "pile scrap"
+        },
+        "historicalPresenceCell": {
+          "cell": "G305",
+          "value": "MISSING"
+        },
+        "openArtCell": {
+          "cell": "F305",
+          "value": "NON_CLOTURE_ART"
+        }
+      },
+      {
+        "workbook": "docs/YAUTJA_V112_SUIVI.xlsx",
+        "sheet": "CatalogueArtV112",
+        "part": "xl/worksheets/v112-sheet-119.xml",
+        "row": 305,
+        "idCell": {
+          "cell": "A305",
+          "value": "target-v81-73-301"
+        },
+        "labelCell": {
+          "cell": "C305",
+          "value": "pile scrap"
+        },
+        "historicalPresenceCell": {
+          "cell": "D305",
+          "value": "MISSING"
+        },
+        "openArtCell": {
+          "cell": "E305",
+          "value": "NON_CLOTURE_ART"
+        }
+      }
+    ]
+  },
+  "sourceLocatorContext": "SNAPSHOT_HISTORIQUE: dated source audit 2026-11-02; historical V111/V112 cells are unchanged by this production.",
+  "requiredCriteriaIds": [
+    "COMMON-NATIVE",
+    "COMMON-IDENTITY",
+    "COMMON-SCALE",
+    "COMMON-CONTEXT"
+  ],
+  "targetSpecificLimits": [
+    "One connected scrap heap candidate; no salvage, pickup or material economy interaction."
+  ],
+  "frame": {
+    "rect": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "grid": [
+      1,
+      1
+    ],
+    "frameCount": 1,
+    "wholeNativeCanvasRetained": true
+  },
+  "referenceUse": "Previously opened real project PNGs informed the textual brief. No source image was supplied as conditioning and no source pixels were extracted.",
+  "retryUsed": false,
+  "retryDecision": "No retry: no actual clipping or repeated-object grid observed. Padding failures and faint alpha noise remain explicit, never cleaned or force-admitted."
+}

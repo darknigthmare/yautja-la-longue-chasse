@@ -1,0 +1,148 @@
+{
+  "status": "PASS",
+  "validatedAt": "2026-11-02T08:25:39.888723+00:00",
+  "rawReportSha256": "71f5221aaf8d359a304b711e2f948bf36729a4592c6a0997991acbdaff884243",
+  "runtimeCommit": "719fe0d77e65be5349b76f507938309f56a67619",
+  "buildId": "OzWVxNAbS8mWbL_Pue9Zg",
+  "checks": {
+    "passed": 32,
+    "total": 32
+  },
+  "servedHtmlBuildChecks": 8,
+  "sourceSnapshot": {
+    "filesBefore": 1099,
+    "filesAfter": 1099,
+    "identical": true
+  },
+  "covers": {
+    "worlds": 4,
+    "actualNativeDrawImageCallsVerified": 92,
+    "perWorld": {
+      "vharuun-grand-hunt": 23,
+      "avar-kesh-grand-hunt": 23,
+      "khar-duun-grand-hunt": 23,
+      "iskhel-grand-hunt": 23
+    },
+    "allObservedValid": true,
+    "maxScaleDifference": 2.7755575615628914e-17,
+    "groundPlusSixAnchor": 444,
+    "maxAnchorDifference": 0.0
+  },
+  "nativeObserversRestored": 8,
+  "textures": {
+    "paths": 77,
+    "allHaveGenuineImage200": true,
+    "responseStatuses": [
+      200,
+      304
+    ]
+  },
+  "errors": {
+    "browser": 0,
+    "console": 0,
+    "http": 0
+  },
+  "captures": {
+    "files": 15,
+    "uniqueSha256": 14,
+    "metadataMatches": true,
+    "verifiedFiles": [
+      {
+        "file": "vharuun-grand-hunt-native-canvas.png",
+        "bytes": 1492181,
+        "sha256": "60f50638c9330ae1c47c170618bde960888308c8dad438a8bacb480749f6cd9c",
+        "matchesRawReport": true
+      },
+      {
+        "file": "vharuun-grand-hunt-native-start.png",
+        "bytes": 636991,
+        "sha256": "b571bafa737d1101999406c4363fab48e7ccf9f19d3691e56802bcbd98e40521",
+        "matchesRawReport": true
+      },
+      {
+        "file": "vharuun-grand-hunt-native-cache-objectives.png",
+        "bytes": 515692,
+        "sha256": "a8c762dd876dac630784716b8b184fe335b62ee4b86a779a84ee9627ce4306dc",
+        "matchesRawReport": true
+      },
+      {
+        "file": "avar-kesh-grand-hunt-native-canvas.png",
+        "bytes": 1643115,
+        "sha256": "d7123e540271af9a8aec9eedebd0c70cfd2a2dab3f20980ea55f1b1bc8af183e",
+        "matchesRawReport": true
+      },
+      {
+        "file": "avar-kesh-grand-hunt-native-start.png",
+        "bytes": 674835,
+        "sha256": "0516b0843911d3ddb99e0ca22f525ce2573546e8793163a45eff5dbfbda1f043",
+        "matchesRawReport": true
+      },
+      {
+        "file": "khar-duun-grand-hunt-native-canvas.png",
+        "bytes": 1573214,
+        "sha256": "f0787d5366756297c5987213705b5b324863bf3fc71bc3004662b508e0adba58",
+        "matchesRawReport": true
+      },
+      {
+        "file": "khar-duun-grand-hunt-native-start.png",
+        "bytes": 709589,
+        "sha256": "34de7e9290b2e7831bc2491edf61acfe5d45ff50d7ff5dac34b81635f96ce127",
+        "matchesRawReport": true
+      },
+      {
+        "file": "khar-duun-grand-hunt-native-cache-objectives.png",
+        "bytes": 584520,
+        "sha256": "66ae6105f858b1b054f877d25abac1258b3e3d3d3cff3615e65da40c600b57e5",
+        "matchesRawReport": true
+      },
+      {
+        "file": "iskhel-grand-hunt-native-canvas.png",
+        "bytes": 1660116,
+        "sha256": "63e9e365f43c160cda1f9de20362eb22c141c702567b02671f86d5a2e36b6323",
+        "matchesRawReport": true
+      },
+      {
+        "file": "iskhel-grand-hunt-native-start.png",
+        "bytes": 730185,
+        "sha256": "37b852eb2526422d0e90e9a4eca8e40926ab14cc12235fc853bfdc5152760dba",
+        "matchesRawReport": true
+      },
+      {
+        "file": "khar-native-hazard.png",
+        "bytes": 1587022,
+        "sha256": "05d0634b3a6118c3e662ddf39a8113528859811925454ff7ecdb006d16ecebca",
+        "matchesRawReport": true
+      },
+      {
+        "file": "v6-mobile-notebook.png",
+        "bytes": 141076,
+        "sha256": "c5d0c5159dfd333b74cded42613010fa7950abb31b53d7e59d46dcaed9f0273b",
+        "matchesRawReport": true
+      },
+      {
+        "file": "v6-mobile-notebook-last-post.png",
+        "bytes": 141076,
+        "sha256": "c5d0c5159dfd333b74cded42613010fa7950abb31b53d7e59d46dcaed9f0273b",
+        "matchesRawReport": true
+      },
+      {
+        "file": "v6-physical-return.png",
+        "bytes": 170532,
+        "sha256": "d520323d0535df7ae7ee1b744ad75414546d34ad03af58e05b777f67afe59ea3",
+        "matchesRawReport": true
+      },
+      {
+        "file": "v6-real-campaign-entry.png",
+        "bytes": 684884,
+        "sha256": "88589252469ed3f267ebd4ecfb02964c9d562fa67a4586317e84eb56900d467c",
+        "matchesRawReport": true
+      }
+    ]
+  },
+  "rawExecutionLog": {
+    "source": "/tmp/preserve-r8-b2-20261102.log",
+    "archive": "execution.log",
+    "identicalSha256": "c4e0a6af783750fba6a71677a627c37054f3cd8512bb03d31694fa127e5992bd"
+  },
+  "scope": "Four healthy V6 public entries and actual keyboard/pause, passive real compiled cover drawImage observations, declared geometry hazard/storage/mobile/reload/extraction, untouched V4 replacement cancellation, real V7 protection and adult-campaign entry. No full combat victory,20–35minute duration, global performance or historical-certificate recertification claimed."
+}

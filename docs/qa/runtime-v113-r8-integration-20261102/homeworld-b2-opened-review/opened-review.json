@@ -1,0 +1,484 @@
+{
+  "schemaVersion": 1,
+  "status": "REVIEWED_WITH_OPEN_COPY_FINDINGS",
+  "reviewedAt": "2026-11-02T08:34:38.816760+00:00",
+  "reviewer": "Codex /root/pr_remote_recovery",
+  "method": "39 fichiers PNG du seul dossier canonique B2 ouverts individuellement avec view_image puis examinés ; aucun navigateur piloté, aucune image retouchée, aucune source modifiée.",
+  "scope": "Homeworld canonique B2 : six familles de parcours ; exclut les 29 captures ciblées Forge/Marais.",
+  "humanArtisticApproval": false,
+  "runtimeCommit": "719fe0d77e65be5349b76f507938309f56a67619",
+  "buildId": "OzWVxNAbS8mWbL_Pue9Zg",
+  "rawResultSha256": "70169c392664a2636d77da4acbf5c4605566d8a1ac706d359abd09ce9d030473",
+  "rawRecipe": {
+    "status": "PASS",
+    "completeRecipe": true,
+    "criteriaPassed": 249,
+    "criteriaFailed": 0,
+    "completedJourneys": [
+      "Foundations",
+      "PublicPlaces",
+      "PublicLife",
+      "InteriorArrival",
+      "Mobile",
+      "UpgradeRecovery"
+    ],
+    "completedUpgradeCases": [
+      "checkpoint",
+      "remote-last",
+      "ground-piece",
+      "checkpoint-mobile",
+      "cargo-ground-piece"
+    ],
+    "emptyErrorArrays": [
+      "errors",
+      "consoleErrors",
+      "workerErrors",
+      "requestsFailed"
+    ],
+    "sourceEntriesBefore": 1964,
+    "sourceEntriesAfter": 1964,
+    "sourceSnapshotsIdentical": true,
+    "servedBuildResponsesVerified": 58
+  },
+  "captureVerification": {
+    "expected": 39,
+    "rawNamesUnique": 39,
+    "pngFilesOnDisk": 39,
+    "openedIndividually": 39,
+    "exactRawNameSet": true,
+    "allBytesAndSha256Match": true,
+    "openedJsonOrder": "Same order as raw result.json captures; names only.",
+    "actualOpenOrder": [
+      "foundation-residence-arenas-1-supported-facade.png",
+      "foundation-residence-clans-1-supported-facade.png",
+      "foundation-residence-esplanade-2-supported-facade.png",
+      "foundation-residence-forges-1-supported-facade.png",
+      "foundation-residence-terraces-3-supported-facade.png",
+      "foundation-trophy-mausoleum-supported-facade.png",
+      "place-arrival-marker-native-contact-and-clearance.png",
+      "place-arrival-planter-native-contact-and-clearance.png",
+      "place-delegation-planter-native-contact-and-clearance.png",
+      "place-maintenance-console-native-contact-and-clearance.png",
+      "place-register-marker-native-contact-and-clearance.png",
+      "place-traveler-marker-native-contact-and-clearance.png",
+      "life-causeway-maintenance-native-grounded.png",
+      "life-causeway-relay-native-grounded.png",
+      "life-causeway-return-native-grounded.png",
+      "life-marsh-watch-native-grounded.png",
+      "life-quay-approach-native-grounded.png",
+      "life-rampart-watch-native-grounded.png",
+      "life-reserve-viaduct-native-grounded.png",
+      "natural-face-causeway-unmodified-connected-rock-faces.png",
+      "mobility-archive-arrival-actual-archive-post.png",
+      "mobility-mausoleum-desktop-actual-service-dialog.png",
+      "mobility-officer-desktop-actual-service-dialog.png",
+      "mobility-officer-mobile-actual-service-dialog.png",
+      "upgrade-checkpoint-explicit-migration-preview.png",
+      "upgrade-checkpoint-accepted-local-migration.png",
+      "upgrade-checkpoint-voluntary-study-reprise.png",
+      "upgrade-remote-last-explicit-migration-preview.png",
+      "upgrade-remote-last-accepted-local-migration.png",
+      "upgrade-remote-last-voluntary-study-reprise.png",
+      "upgrade-ground-piece-explicit-migration-preview.png",
+      "upgrade-ground-piece-accepted-local-migration.png",
+      "upgrade-ground-piece-voluntary-study-reprise.png",
+      "upgrade-cargo-ground-piece-explicit-migration-preview.png",
+      "upgrade-cargo-ground-piece-accepted-local-migration.png",
+      "upgrade-cargo-ground-piece-voluntary-cargo-reprise.png",
+      "upgrade-checkpoint-mobile-explicit-migration-preview.png",
+      "upgrade-checkpoint-mobile-accepted-local-migration.png",
+      "upgrade-checkpoint-mobile-voluntary-study-reprise.png"
+    ]
+  },
+  "physicalBlockersEstablishedFromScreenshots": [],
+  "findings": [
+    {
+      "id": "inherited-public-court-copy-edge_cluster",
+      "status": "OPEN",
+      "kind": "player-copy",
+      "severity": "minor",
+      "visibleText": "Cour edge_cluster",
+      "captures": [
+        "place-arrival-marker-native-contact-and-clearance.png",
+        "life-quay-approach-native-grounded.png"
+      ],
+      "source": "app/game/systems/homeworldCivicNeighborhoodsV80.ts:16",
+      "mechanism": "detail:'Cour '+c.composition.toLowerCase()+' : '+c.focus+'. L’axe piéton reste libre.'",
+      "dataSource": "app/game/systems/homeworldAuthoredLotsV81.ts:38",
+      "scope": "Libellé technique hérité visible dans les descriptions de quartier ; inchangé dans ce lot B2. Ce constat de texte n’est pas un défaut physique."
+    },
+    {
+      "id": "inherited-public-court-copy-edge_stagger",
+      "status": "OPEN",
+      "kind": "player-copy",
+      "severity": "minor",
+      "visibleText": "Cour edge_stagger",
+      "captures": [
+        "place-arrival-planter-native-contact-and-clearance.png",
+        "place-register-marker-native-contact-and-clearance.png"
+      ],
+      "source": "app/game/systems/homeworldCivicNeighborhoodsV80.ts:16",
+      "mechanism": "detail:'Cour '+c.composition.toLowerCase()+' : '+c.focus+'. L’axe piéton reste libre.'",
+      "dataSource": "app/game/systems/homeworldAuthoredLotsV81.ts:32",
+      "scope": "Libellé technique hérité visible dans les descriptions de quartier ; inchangé dans ce lot B2. Ce constat de texte n’est pas un défaut physique."
+    },
+    {
+      "id": "inherited-public-court-copy-single_anchor",
+      "status": "OPEN",
+      "kind": "player-copy",
+      "severity": "minor",
+      "visibleText": "Cour single_anchor",
+      "captures": [
+        "place-delegation-planter-native-contact-and-clearance.png",
+        "life-causeway-maintenance-native-grounded.png"
+      ],
+      "source": "app/game/systems/homeworldCivicNeighborhoodsV80.ts:16",
+      "mechanism": "detail:'Cour '+c.composition.toLowerCase()+' : '+c.focus+'. L’axe piéton reste libre.'",
+      "dataSource": "app/game/systems/homeworldAuthoredLotsV81.ts:29",
+      "scope": "Libellé technique hérité visible dans les descriptions de quartier ; inchangé dans ce lot B2. Ce constat de texte n’est pas un défaut physique."
+    },
+    {
+      "id": "inherited-public-court-copy-rest_pocket",
+      "status": "OPEN",
+      "kind": "player-copy",
+      "severity": "minor",
+      "visibleText": "Cour rest_pocket",
+      "captures": [
+        "place-traveler-marker-native-contact-and-clearance.png",
+        "life-causeway-return-native-grounded.png"
+      ],
+      "source": "app/game/systems/homeworldCivicNeighborhoodsV80.ts:16",
+      "mechanism": "detail:'Cour '+c.composition.toLowerCase()+' : '+c.focus+'. L’axe piéton reste libre.'",
+      "dataSource": "app/game/systems/homeworldAuthoredLotsV81.ts:26",
+      "scope": "Libellé technique hérité visible dans les descriptions de quartier ; inchangé dans ce lot B2. Ce constat de texte n’est pas un défaut physique."
+    }
+  ],
+  "visualSummary": {
+    "terrain": "Sol visible sous les joueurs/citoyens examinés ; continuité de la voie et appuis rocheux représentés. Coutures polygonales, répétitions des faces rocheuses et aplats sombres restent perceptibles sous ou entre les rives hors axe. Une capture seule ne permet pas de conclure à un trou physique ; aucune validation esthétique exhaustive n’est donnée.",
+    "bodies": "Pas de corps nouvellement établi dans le vide sur les vues examinées ; plusieurs citoyens se croisent et certaines façades passent en transparence au premier plan. La capture ne prouve pas toutes les phases animées.",
+    "furniture": "Points de contact des six meubles et bords de passages visibles ; meubles en retrait des seuils examinés. Les collisions réelles sont celles du rapport brut, cette revue statique ne les rejoue pas.",
+    "accessAndInteriors": "Six seuils avec invite Entrer ; dialogues réels officier/mausolée/archive visibles. Les captures de dialogue ne montrent pas chaque mètre des intérieurs ni toutes leurs pièces.",
+    "mobileAndMigration": "Officier et récupération à 390 px lisibles dans leur largeur ; acceptation explicite, maintien en pause, conservation sans récompense et reprise volontaire visibles. Certaines parties du panneau sont hors champ parce que le contenu défile."
+  },
+  "limits": [
+    "Pas d’admission artistique humaine, de conformité canonique 1:1, de validation esthétique complète ou de clôture globale Homeworld.",
+    "Revue statique seulement : aucune nouvelle interaction navigateur ni rejeu de collision/migration effectué par le relecteur.",
+    "Les assertions fonctionnelles et la stabilité source sont celles du rapport brut vérifié ; les images seules ne prouvent pas les distances, écritures refusées ou sauvegardes byte-for-byte.",
+    "Les 29 captures ciblées Forge/Marais sont distinctes et n’ont pas été comptées dans ces 39 ouvertures.",
+    "Quatre libellés techniques hérités restent ouverts ; les coutures/répétitions visuelles ne sont pas une approbation de finition complète."
+  ],
+  "captures": [
+    {
+      "file": "foundation-trophy-mausoleum-supported-facade.png",
+      "bytes": 1837862,
+      "sha256": "4054bbc3b4ddd2e8735adcd11d747419521dc33a8ab2fe297f3cab0b8d22cbe5",
+      "opened": true,
+      "rawMetadataMatches": true,
+      "observation": "Seuil du Mausolée des prises avec invite Entrer ; mobilier au bord du parvis, sol sous le joueur visible."
+    },
+    {
+      "file": "foundation-residence-forges-1-supported-facade.png",
+      "bytes": 2220687,
+      "sha256": "b156eef644cdaf697d6a231bdfc9e0da4c634f46f7d59ba5f18502cc7b1d8c40",
+      "opened": true,
+      "rawMetadataMatches": true,
+      "observation": "Seuil du Foyer des ateliers avec invite Entrer ; joueur et citoyens sur chaussée ; mobilier en bordure."
+    },
+    {
+      "file": "foundation-residence-esplanade-2-supported-facade.png",
+      "bytes": 2076695,
+      "sha256": "23ab5a54ed27f0e190c417b0401b7367bf3c93a8ab30bb7fb5b5092007b801f2",
+      "opened": true,
+      "rawMetadataMatches": true,
+      "observation": "Seuil de la Maison des hôtes lisible ; mobilier décalé ; façade au premier plan rendue transparente autour du joueur."
+    },
+    {
+      "file": "foundation-residence-clans-1-supported-facade.png",
+      "bytes": 2099660,
+      "sha256": "6dd8e2c4925ff6f9f081c47a343e61c479fada7c2a4ba10eda4e1ad9d12fa4e6",
+      "opened": true,
+      "rawMetadataMatches": true,
+      "observation": "Joueur au seuil de la Maison des hôtes ; passage devant la façade et mobilier latéral visibles ; grand escalier à droite."
+    },
+    {
+      "file": "foundation-residence-arenas-1-supported-facade.png",
+      "bytes": 2196802,
+      "sha256": "605b3cccb703c052d0abfcf7aeec0bceefaa0f9e80b869ba626ff9e56ca3cc73",
+      "opened": true,
+      "rawMetadataMatches": true,
+      "observation": "Joueur au seuil de la Maison du clan 16 sur sol visible ; invite Entrer ; groupe de citoyens voisin dense, aucun corps hors du sol établi sur cette vue."
+    },
+    {
+      "file": "foundation-residence-terraces-3-supported-facade.png",
+      "bytes": 2058822,
+      "sha256": "a7cbe257e619ba921f78eda468fd1623834da85557a8404f3a3cd0e3d0d3913b",
+      "opened": true,
+      "rawMetadataMatches": true,
+      "observation": "Seuil de la Maison du clan 23 sur chaussée ; banc et vasque décalés ; transparence du premier plan visible."
+    },
+    {
+      "file": "natural-face-causeway-unmodified-connected-rock-faces.png",
+      "bytes": 1616294,
+      "sha256": "71b1ca031eacb895af43c5d4b9547484768e95ff0d5b577284dd89e356b61840",
+      "opened": true,
+      "rawMetadataMatches": true,
+      "observation": "Chaussée centrale continue sous le joueur ; faces rocheuses et appuis visibles sous les rives ; des coutures et aplats sombres restent visibles hors axe."
+    },
+    {
+      "file": "place-traveler-marker-native-contact-and-clearance.png",
+      "bytes": 1558226,
+      "sha256": "a7e8abfc150b6eadd8a5b6549029fbcb047e71632c1a25e95514fd4318117acb",
+      "opened": true,
+      "rawMetadataMatches": true,
+      "observation": "Marqueur du belvédère, bac et brasero sur l’épaulement ; joueur sur sol. Texte technique rest_pocket encore affiché."
+    },
+    {
+      "file": "place-delegation-planter-native-contact-and-clearance.png",
+      "bytes": 1699878,
+      "sha256": "90d3536900579415aa61b2e1be01dee2113028939362dedd6706e07fa04ad095",
+      "opened": true,
+      "rawMetadataMatches": true,
+      "observation": "Bac, brasero et bannière disposés sur l’épaulement du parvis ; joueur sur sol. Texte technique single_anchor encore affiché."
+    },
+    {
+      "file": "place-register-marker-native-contact-and-clearance.png",
+      "bytes": 1676562,
+      "sha256": "08f26371ca7049e4b75de2cdacc64f1b3cd894ac789c141dbff3dc9ecd68026a",
+      "opened": true,
+      "rawMetadataMatches": true,
+      "observation": "Marqueur et bac en bordure de galerie ; joueur sur sol. Texte technique edge_stagger encore affiché."
+    },
+    {
+      "file": "place-arrival-marker-native-contact-and-clearance.png",
+      "bytes": 1786757,
+      "sha256": "844be6f743a06772a3c82513fe770f51b9733094b1e58630781dc070cefefa3c",
+      "opened": true,
+      "rawMetadataMatches": true,
+      "observation": "Marqueur sur parvis ; joueur au pied sur chaussée ; mobilier de cargaison et supports A/B visibles en retrait. Texte technique edge_cluster encore affiché."
+    },
+    {
+      "file": "place-arrival-planter-native-contact-and-clearance.png",
+      "bytes": 1772503,
+      "sha256": "4f6e0ee3db29cb60e9ebdc617dde5c0c2b603e7d2502bc68755fce115dd2b2ce",
+      "opened": true,
+      "rawMetadataMatches": true,
+      "observation": "Joueur à côté du bac végétal, pieds sur chaussée ; mobilier en retrait. Texte technique edge_stagger encore affiché."
+    },
+    {
+      "file": "place-maintenance-console-native-contact-and-clearance.png",
+      "bytes": 1778587,
+      "sha256": "2384562ed8f59bd33746a44aca3b9e2210ffcfc4468ed22c2c5070ce6f1ad70a",
+      "opened": true,
+      "rawMetadataMatches": true,
+      "observation": "Joueur auprès de la console de maintenance ; arche proche rendue transparente ; sol visible au point de contact."
+    },
+    {
+      "file": "life-causeway-return-native-grounded.png",
+      "bytes": 1783005,
+      "sha256": "54f6ec850de4ac4a1e794636b1fecbbf373b02cfd9aec165b29392658c8d2186",
+      "opened": true,
+      "rawMetadataMatches": true,
+      "observation": "Citoyen près du joueur sur la chaussée du belvédère ; faces rocheuses sous les rives. Texte rest_pocket visible."
+    },
+    {
+      "file": "life-causeway-maintenance-native-grounded.png",
+      "bytes": 1559091,
+      "sha256": "ff811da40c6802c19e3e793b8a4d981ab1020fe189133ab04f436cfcdccdd115",
+      "opened": true,
+      "rawMetadataMatches": true,
+      "observation": "Citoyen près du joueur sur chaussée centrale ; mobilier en retrait ; aucun flottement établi. Texte single_anchor visible."
+    },
+    {
+      "file": "life-causeway-relay-native-grounded.png",
+      "bytes": 1596067,
+      "sha256": "88e232d08b4ccc75d4f599309bf96dc82d8426561637bbb5b855e9ed3d1eda92",
+      "opened": true,
+      "rawMetadataMatches": true,
+      "observation": "Citoyen et joueur sur chaussée de galerie ; points de dépôt et mobilier visibles sur le côté. Texte edge_stagger visible."
+    },
+    {
+      "file": "life-quay-approach-native-grounded.png",
+      "bytes": 1891940,
+      "sha256": "a36dced091fadc27194964603afc08c38559bafac341b6523e70acfc79faadf8",
+      "opened": true,
+      "rawMetadataMatches": true,
+      "observation": "Citoyen et joueur sur la voie de liaison au quai ; objets et archiviste à l’écart. Texte edge_cluster visible."
+    },
+    {
+      "file": "life-rampart-watch-native-grounded.png",
+      "bytes": 1605400,
+      "sha256": "743d24f183994574e12a96f47186eb0895dde53d9ed6d109137b712dd0fe84e0",
+      "opened": true,
+      "rawMetadataMatches": true,
+      "observation": "Guetteur et joueur sur voie dallée ; volcanisme et végétation en contrebas ; aucun flottement établi."
+    },
+    {
+      "file": "life-marsh-watch-native-grounded.png",
+      "bytes": 1826864,
+      "sha256": "25f15b0c71f79d42d9f681add1088639f2e15adb95b6a34d913389d0cc5384de",
+      "opened": true,
+      "rawMetadataMatches": true,
+      "observation": "Guetteur près du joueur sur parvis ; caisses et console en bordure ; aucun corps hors du sol établi."
+    },
+    {
+      "file": "life-reserve-viaduct-native-grounded.png",
+      "bytes": 1943508,
+      "sha256": "ae1634fe7e5e1b98efcf50254cae49491c2af5a61147bb6fd24806340a00b01b",
+      "opened": true,
+      "rawMetadataMatches": true,
+      "observation": "Guetteur et joueur sur viaduc supérieur ; supports rocheux sous la voie ; pas de corps dans le vide établi sur cette vue."
+    },
+    {
+      "file": "mobility-officer-desktop-actual-service-dialog.png",
+      "bytes": 396869,
+      "sha256": "5fd695aaadb382b2d18fbdb4bb232a0b2b07adf4a888007ec6f71fda1851757e",
+      "opened": true,
+      "rawMetadataMatches": true,
+      "observation": "Dialogue réel de l’Officier des quais avec demande et circuit distincts ; contenu long défilant, bouton inférieur partiellement hors champ dans cette capture."
+    },
+    {
+      "file": "mobility-mausoleum-desktop-actual-service-dialog.png",
+      "bytes": 168894,
+      "sha256": "119404986c9ab4ffab186a20a58bbf7004422245278069aa0743455578cb3939",
+      "opened": true,
+      "rawMetadataMatches": true,
+      "observation": "Dialogue réel du Mausolée ; deux actions lisibles : accéder au service et revenir dans la salle."
+    },
+    {
+      "file": "mobility-archive-arrival-actual-archive-post.png",
+      "bytes": 416548,
+      "sha256": "d0956eae56c7a1fa7b0ed9569c1597ccd96ada5770aedec4cb7db17235f7adbf",
+      "opened": true,
+      "rawMetadataMatches": true,
+      "observation": "Dialogue réel de l’archiviste ; supports A/B séparés et distinction plaque/empreinte K-17 explicités ; actions lisibles."
+    },
+    {
+      "file": "mobility-officer-mobile-actual-service-dialog.png",
+      "bytes": 189266,
+      "sha256": "a9c536c6956bef2aab0a899cd4d8041daec373140150234eefe3a8e700233362",
+      "opened": true,
+      "rawMetadataMatches": true,
+      "observation": "Dialogue de l’Officier à 390 px ; demande et bouton Suivre cette demande lisibles dans la largeur ; suite du circuit hors champ statique."
+    },
+    {
+      "file": "upgrade-checkpoint-explicit-migration-preview.png",
+      "bytes": 1342561,
+      "sha256": "a785d01eb8632ed08fffc073036d2b47e5e448f967782d36b7a9c182d5720af2",
+      "opened": true,
+      "rawMetadataMatches": true,
+      "observation": "Prévisualisation de restauration explicite ; boutons Restaurer et Conserver en pause visibles ; documents/distances conservés, aucune récompense ajoutée, aucun déplacement restauré compté comme marche."
+    },
+    {
+      "file": "upgrade-checkpoint-accepted-local-migration.png",
+      "bytes": 1213001,
+      "sha256": "36d692754a4e64bf4ab89e3bed95a21b9c5a8f57089ef5ff8809050c5b4176ea",
+      "opened": true,
+      "rawMetadataMatches": true,
+      "observation": "Après acceptation : joueur/objet près du marqueur sur sol ; étude K-17 reste en reprise volontaire, sans bilan ni récompense ajouté ; boutons lisibles."
+    },
+    {
+      "file": "upgrade-checkpoint-voluntary-study-reprise.png",
+      "bytes": 1067909,
+      "sha256": "af15249288ee6701b9fc1f1c1d96fdf98d64c561f4f46cd97957f26017b1aac1",
+      "opened": true,
+      "rawMetadataMatches": true,
+      "observation": "Après reprise volontaire : étude K-17 active, consigne plaque/lieu/surface et commande Interrompre et conserver les pièces visibles ; joueur sur sol."
+    },
+    {
+      "file": "upgrade-remote-last-explicit-migration-preview.png",
+      "bytes": 1075640,
+      "sha256": "ed370eb0a04812d86a8e331aef2bd3e2e41b70d77d9879626c2127191c185c97",
+      "opened": true,
+      "rawMetadataMatches": true,
+      "observation": "Prévisualisation de restauration explicite ; boutons Restaurer et Conserver en pause visibles ; documents/distances conservés, aucune récompense ajoutée, aucun déplacement restauré compté comme marche."
+    },
+    {
+      "file": "upgrade-remote-last-accepted-local-migration.png",
+      "bytes": 1305454,
+      "sha256": "2b9742531f1554c6a41a6e79aab4e9da26da5db5a0c78b4a3ba29ae7bf65eea1",
+      "opened": true,
+      "rawMetadataMatches": true,
+      "observation": "Après acceptation distante : joueur toujours au quai ; étude interrompue affichée et reprise ici désactivée, prochain repère à pied disponible."
+    },
+    {
+      "file": "upgrade-remote-last-voluntary-study-reprise.png",
+      "bytes": 1053158,
+      "sha256": "5cb8e89e2151c0f3d35aeb5cad003e5c74d9b59d51b91d677f28408b3c68680a",
+      "opened": true,
+      "rawMetadataMatches": true,
+      "observation": "Après reprise volontaire : étude K-17 active, consigne plaque/lieu/surface et commande Interrompre et conserver les pièces visibles ; joueur sur sol."
+    },
+    {
+      "file": "upgrade-ground-piece-explicit-migration-preview.png",
+      "bytes": 1036813,
+      "sha256": "fc5921d95cfce78899dc809a951f1d5796b5371290b6cc3240c1d6d919d25304",
+      "opened": true,
+      "rawMetadataMatches": true,
+      "observation": "Prévisualisation de restauration explicite ; boutons Restaurer et Conserver en pause visibles ; documents/distances conservés, aucune récompense ajoutée, aucun déplacement restauré compté comme marche."
+    },
+    {
+      "file": "upgrade-ground-piece-accepted-local-migration.png",
+      "bytes": 1223390,
+      "sha256": "6c16fd08e1d3b7f50c504bfd544f4499d5d9a6be18c27e83ba350e6da59bf6ec",
+      "opened": true,
+      "rawMetadataMatches": true,
+      "observation": "Après acceptation : joueur/objet près du marqueur sur sol ; étude K-17 reste en reprise volontaire, sans bilan ni récompense ajouté ; boutons lisibles."
+    },
+    {
+      "file": "upgrade-ground-piece-voluntary-study-reprise.png",
+      "bytes": 1071053,
+      "sha256": "71203f3ce05f3f4cc3edc68e7f9f16640b096bda3a1997ed69ba50a68b44135b",
+      "opened": true,
+      "rawMetadataMatches": true,
+      "observation": "Après reprise volontaire : étude K-17 active, consigne plaque/lieu/surface et commande Interrompre et conserver les pièces visibles ; joueur sur sol."
+    },
+    {
+      "file": "upgrade-checkpoint-mobile-explicit-migration-preview.png",
+      "bytes": 170109,
+      "sha256": "3d30ce8d41c74259491f7d6b5e1068fe27f1cc1685d209b6bd3fec2b19afae9b",
+      "opened": true,
+      "rawMetadataMatches": true,
+      "observation": "Prévisualisation de restauration explicite ; boutons Restaurer et Conserver en pause visibles ; texte préserve documents/distances et refuse une récompense ajoutée. La capture mobile montre le panneau défilé, avec la partie supérieure du détail hors champ."
+    },
+    {
+      "file": "upgrade-checkpoint-mobile-accepted-local-migration.png",
+      "bytes": 248285,
+      "sha256": "bfe0aab9b1cb7764b6615afa4d90a557d6b4ac7bfd31fb978d92637f0eaf7884",
+      "opened": true,
+      "rawMetadataMatches": true,
+      "observation": "Après acceptation : joueur/objet près du marqueur sur sol ; étude K-17 reste en reprise volontaire, sans bilan ni récompense ajouté ; boutons lisibles."
+    },
+    {
+      "file": "upgrade-checkpoint-mobile-voluntary-study-reprise.png",
+      "bytes": 241333,
+      "sha256": "c2a2e601fda49b2dd914fea433b19749e2500526d7084c634b0d7419263b2358",
+      "opened": true,
+      "rawMetadataMatches": true,
+      "observation": "Après reprise volontaire : étude K-17 active, consigne plaque/lieu/surface et commande Interrompre et conserver les pièces visibles ; joueur sur sol."
+    },
+    {
+      "file": "upgrade-cargo-ground-piece-explicit-migration-preview.png",
+      "bytes": 1036924,
+      "sha256": "4b4fe653bf54c08dcccd4a3beb5ccaba23c5ac28df271609105045f52ce84a49",
+      "opened": true,
+      "rawMetadataMatches": true,
+      "observation": "Prévisualisation de restauration explicite ; boutons Restaurer et Conserver en pause visibles ; documents/distances conservés, aucune récompense ajoutée, aucun déplacement restauré compté comme marche."
+    },
+    {
+      "file": "upgrade-cargo-ground-piece-accepted-local-migration.png",
+      "bytes": 1234434,
+      "sha256": "dda3d8899b0d0a083349ebccbf3b93c0de380e05754607b879ee3855dbaf6dd6",
+      "opened": true,
+      "rawMetadataMatches": true,
+      "observation": "Après acceptation : lot large visible près du marqueur ; panneau Charges du quai reste à 0/2 et marche mesurée 2486 ; reprise de manutention distincte."
+    },
+    {
+      "file": "upgrade-cargo-ground-piece-voluntary-cargo-reprise.png",
+      "bytes": 1180189,
+      "sha256": "caaa43224b018bc297305bcb4a2fa541ac0c1184b821a984b143999efab71b91",
+      "opened": true,
+      "rawMetadataMatches": true,
+      "observation": "Après reprise volontaire : panneau de manutention actif, 0/2 charges rangées et distance 2486 conservées ; commande Interrompre et conserver les lots visible."
+    }
+  ]
+}

@@ -15,6 +15,8 @@ const eslintConfig = defineConfig([
     "dist/**",
     // Generated QA exports are not application source.
     "outputs/**",
+    // Preserve the exact executed bundle archived with its browser evidence.
+    "docs/qa/hunt-pr62-followup-r8-20261102/hud-layout/native-badge.bundle.js",
     "tmp/**",
     "work/**",
     "work-local/**",

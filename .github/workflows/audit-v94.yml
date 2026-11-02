@@ -157,6 +157,225 @@ on:
       - 'docs/suivi-production/**/*.xlsx'
       - 'docs/YAUTJA_REPRISE_CHANTIERS_20261101.xlsx'
       - 'docs/suivi-production/resume-20261101/**'
+      - 'docs/suivi-production/resume-20261102/**'
+      - 'docs/v113-*'
+      - 'docs/qa/v113-*/**'
+      - 'docs/suivi-production/v113*/**'
+      - 'art-source/v113/**'
+      - 'public/game/homeworld/v113/**'
+      # Asset-only changes to additional V113 runtime inputs also run these gates.
+      - 'public/audio/sfx/cloak-off/v54.wav'
+      - 'public/audio/sfx/cloak-on/v54.wav'
+      - 'public/audio/sfx/defeat/v54.wav'
+      - 'public/audio/sfx/enemy-alert/v54.wav'
+      - 'public/audio/sfx/footstep/v54.wav'
+      - 'public/audio/sfx/hit/v54.wav'
+      - 'public/audio/sfx/jump/v54.wav'
+      - 'public/audio/sfx/mask-off/v54.wav'
+      - 'public/audio/sfx/mask-on/v54.wav'
+      - 'public/audio/sfx/medicomp/v54.wav'
+      - 'public/audio/sfx/netgun/v54.wav'
+      - 'public/audio/sfx/objective/v54.wav'
+      - 'public/audio/sfx/plasma/v54.wav'
+      - 'public/audio/sfx/select/v54.wav'
+      - 'public/audio/sfx/slash/v54.wav'
+      - 'public/audio/sfx/snare/v54.wav'
+      - 'public/audio/sfx/trophy/v54.wav'
+      - 'public/audio/sfx/ui/v54.wav'
+      - 'public/audio/sfx/victory/v54.wav'
+      - 'public/audio/sfx/weapon-switch/v54.wav'
+      - 'public/game/assets/v19/biome-decor/desert/clm/clm-anchor-rope-01-straight.webp'
+      - 'public/game/assets/v19/biome-decor/desert/clm/clm-canyon-rock-face-01-straight.webp'
+      - 'public/game/assets/v19/biome-decor/desert/clm/clm-canyon-rock-face-04-interrupted.webp'
+      - 'public/game/assets/v19/biome-decor/desert/clm/clm-mine-ladder-01-straight.webp'
+      - 'public/game/assets/v19/biome-decor/desert/cov/cov-buried-cargo-01-narrow.webp'
+      - 'public/game/assets/v19/biome-decor/desert/cov/cov-buried-cargo-02-broad.webp'
+      - 'public/game/assets/v19/biome-decor/desert/cov/cov-obsidian-glass-fin-02-broad.webp'
+      - 'public/game/assets/v19/biome-decor/desert/plt/plt-eroded-arch-01-low-wide.webp'
+      - 'public/game/assets/v19/biome-decor/desert/plt/plt-eroded-arch-04-broken.webp'
+      - 'public/game/assets/v19/biome-decor/desert/plt/plt-sandstone-ledge-04-broken.webp'
+      - 'public/game/assets/v19/biome-decor/desert/plt/plt-vitrified-glass-slab-01-low-wide.webp'
+      - 'public/game/assets/v19/biome-decor/desert/plt/plt-vitrified-glass-slab-04-broken.webp'
+      - 'public/game/assets/v19/biome-decor/ice/clm/clm-crystal-column-01-straight.webp'
+      - 'public/game/assets/v19/biome-decor/ice/clm/clm-ice-wall-04-interrupted.webp'
+      - 'public/game/assets/v19/biome-decor/ice/clm/clm-maintenance-rope-01-straight.webp'
+      - 'public/game/assets/v19/biome-decor/ice/cov/cov-frozen-cargo-stack-01-narrow.webp'
+      - 'public/game/assets/v19/biome-decor/ice/cov/cov-frozen-cargo-stack-02-broad.webp'
+      - 'public/game/assets/v19/biome-decor/ice/cov/cov-overturned-drill-01-narrow.webp'
+      - 'public/game/assets/v19/biome-decor/ice/cov/cov-overturned-drill-02-broad.webp'
+      - 'public/game/assets/v19/biome-decor/ice/haz/haz-cryo-steam-vent-02-linear.webp'
+      - 'public/game/assets/v19/biome-decor/ice/haz/haz-thin-ice-02-linear.webp'
+      - 'public/game/assets/v19/biome-decor/ice/orn/orn-bone-cache-04-fallen.webp'
+      - 'public/game/assets/v19/biome-decor/ice/orn/orn-emergency-beacon-01-single.webp'
+      - 'public/game/assets/v19/biome-decor/ice/orn/orn-frozen-cordage-04-fallen.webp'
+      - 'public/game/assets/v19/biome-decor/ice/orn/orn-mineral-nodule-01-single.webp'
+      - 'public/game/assets/v19/biome-decor/ice/orn/orn-mineral-nodule-04-fallen.webp'
+      - 'public/game/assets/v19/biome-decor/ice/plt/plt-crystal-bridge-01-low-wide.webp'
+      - 'public/game/assets/v19/biome-decor/ice/plt/plt-frozen-wreck-deck-01-low-wide.webp'
+      - 'public/game/assets/v19/biome-decor/ice/plt/plt-frozen-wreck-deck-04-broken.webp'
+      - 'public/game/assets/v19/biome-decor/ice/plt/plt-glacier-shelf-04-broken.webp'
+      - 'public/game/assets/v19/biome-decor/ice/plt/plt-mine-gantry-04-broken.webp'
+      - 'public/game/assets/v19/biome-decor/ice/srf/srf-black-ice-02-trail.webp'
+      - 'public/game/assets/v19/biome-decor/ice/srf/srf-black-ice-05-transition.webp'
+      - 'public/game/assets/v19/biome-decor/ice/srf/srf-frost-shard-trail-02-trail.webp'
+      - 'public/game/assets/v19/biome-decor/ice/srf/srf-snowdrift-track-02-trail.webp'
+      - 'public/game/assets/v19/biome-decor/ice/srf/srf-snowdrift-track-03-ridge.webp'
+      - 'public/game/assets/v19/biome-decor/jungle/clm/clm-buttress-trunk-01-straight.webp'
+      - 'public/game/assets/v19/biome-decor/jungle/clm/clm-buttress-trunk-04-interrupted.webp'
+      - 'public/game/assets/v19/biome-decor/jungle/clm/clm-hanging-vine-01-straight.webp'
+      - 'public/game/assets/v19/biome-decor/jungle/cov/cov-ruined-idol-01-narrow.webp'
+      - 'public/game/assets/v19/biome-decor/jungle/cov/cov-ruined-idol-04-fallen.webp'
+      - 'public/game/assets/v19/biome-decor/jungle/cov/cov-strangler-root-wall-01-narrow.webp'
+      - 'public/game/assets/v19/biome-decor/jungle/cov/cov-strangler-root-wall-02-broad.webp'
+      - 'public/game/assets/v19/biome-decor/jungle/cov/cov-supply-palisade-01-narrow.webp'
+      - 'public/game/assets/v19/biome-decor/jungle/cov/cov-supply-palisade-02-broad.webp'
+      - 'public/game/assets/v19/biome-decor/jungle/haz/haz-collapsing-branch-02-linear.webp'
+      - 'public/game/assets/v19/biome-decor/jungle/haz/haz-flooded-sinkhole-02-linear.webp'
+      - 'public/game/assets/v19/biome-decor/jungle/haz/haz-spectral-flare-tripwire-02-linear.webp'
+      - 'public/game/assets/v19/biome-decor/jungle/orn/orn-lake-reeds-01-single.webp'
+      - 'public/game/assets/v19/biome-decor/jungle/orn/orn-lake-reeds-02-pair.webp'
+      - 'public/game/assets/v19/biome-decor/jungle/orn/orn-storm-flower-01-single.webp'
+      - 'public/game/assets/v19/biome-decor/jungle/orn/orn-storm-flower-04-fallen.webp'
+      - 'public/game/assets/v19/biome-decor/jungle/orn/orn-transponder-debris-01-single.webp'
+      - 'public/game/assets/v19/biome-decor/jungle/orn/orn-transponder-debris-04-fallen.webp'
+      - 'public/game/assets/v19/biome-decor/jungle/plt/plt-canopy-crown-01-low-wide.webp'
+      - 'public/game/assets/v19/biome-decor/jungle/plt/plt-expedition-deck-01-low-wide.webp'
+      - 'public/game/assets/v19/biome-decor/jungle/plt/plt-expedition-deck-04-broken.webp'
+      - 'public/game/assets/v19/biome-decor/jungle/plt/plt-mossy-ruin-slab-01-low-wide.webp'
+      - 'public/game/assets/v19/biome-decor/jungle/plt/plt-mossy-ruin-slab-04-broken.webp'
+      - 'public/game/assets/v19/biome-decor/jungle/plt/plt-root-bridge-01-low-wide.webp'
+      - 'public/game/assets/v19/biome-decor/jungle/plt/plt-root-bridge-04-broken.webp'
+      - 'public/game/assets/v19/biome-decor/jungle/srf/srf-crushed-fern-bed-02-trail.webp'
+      - 'public/game/assets/v19/biome-decor/jungle/srf/srf-crushed-fern-bed-04-crater.webp'
+      - 'public/game/assets/v19/biome-decor/jungle/srf/srf-footprint-mud-02-trail.webp'
+      - 'public/game/assets/v19/biome-decor/jungle/srf/srf-footprint-mud-03-ridge.webp'
+      - 'public/game/assets/v19/biome-decor/jungle/srf/srf-rain-puddle-02-trail.webp'
+      - 'public/game/assets/v19/biome-decor/volcano/srf/srf-obsidian-shard-bed-03-ridge.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/armor/registered/belt.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/armor/registered/bracer.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/armor/registered/chest-classic.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/armor/registered/knee.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/armor/registered/shin.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/armor/registered/shoulder-classic.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/armor/registered/thigh-lower.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/armor/registered/thigh.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/hand-back.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/hand-front.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/lower-arm-back.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/lower-arm-front.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/pelvis.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/shin-back.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/shin-front.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/thigh-back.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/thigh-front.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/torso.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/upper-arm-back.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/upper-arm-front.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/equipment/registered/barrel.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/equipment/registered/cannon.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/equipment/registered/caster-lower.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/equipment/registered/caster-upper.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/equipment/registered/gauntlet-base.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/equipment/registered/gauntlet-lid.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/equipment/registered/laser.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/equipment/registered/mount.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/equipment/registered/muzzle.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/equipment/registered/yoke.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/gear/registered/audio-decoy.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/gear/registered/motion-sensor.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/trophies/registered/trophy-bindings.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/trophies/registered/trophy-skull.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/trophies/registered/trophy-spine.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/weapons/registered/combistick.webp'
+      - 'public/game/assets/v37/tribes/thumbnails/v2/decor-mycora-nox-v2--3e6eac0a53939544.webp'
+      - 'public/game/assets/v37/tribes/thumbnails/v2/homeworld-darkjungle-v2--fbc392bc9618642d.webp'
+      - 'public/game/assets/v37/tribes/thumbnails/v2/homeworld-desert-v2--470faca98471efc2.webp'
+      - 'public/game/assets/v37/tribes/thumbnails/v2/homeworld-forest-v2--8fdc633789dcd9c0.webp'
+      - 'public/game/assets/v37/tribes/thumbnails/v2/homeworld-lava-v2--ecd85e06796799d2.webp'
+      - 'public/game/assets/v37/tribes/thumbnails/v2/homeworld-slums-v2--da9558ecc579b3b8.webp'
+      - 'public/game/assets/v37/tribes/thumbnails/v2/personnage-mycora-nox-v2--83d29a29d54af4d7.webp'
+      - 'public/game/assets/v37/tribes/thumbnails/v2/texture-mycora-nox-v2--19267310fd547557.webp'
+      - 'public/game/assets/v37/tribes/v2/personnage-mycora-nox-v2--83d29a29d54af4d7.webp'
+      - 'public/game/backgrounds/jungle-depth-v4.webp'
+      - 'public/game/homeworld/v64/house-c-ribbed.png'
+      - 'public/game/homeworld/v64/interior-panels.png'
+      - 'public/game/homeworld/v64/landing-pad.png'
+      - 'public/game/homeworld/v64/pavement.png'
+      - 'public/game/homeworld/v64/props-atlas.png'
+      - 'public/game/homeworld/v72/civic-furniture-kit.png'
+      - 'public/game/homeworld/v72/civic-identity-atlas.png'
+      - 'public/game/homeworld/v72/civic-specialists-spaced-atlas.png'
+      - 'public/game/homeworld/v72/civilian-roles-atlas.png'
+      - 'public/game/homeworld/v72/region-gateway-kit.png'
+      - 'public/game/homeworld/v75/architecture/market-canopy.png'
+      - 'public/game/homeworld/v75/architecture/rampart-north-lodge.png'
+      - 'public/game/homeworld/v75/architecture/rampart-south-lodge.png'
+      - 'public/game/homeworld/v76/architecture/convoy-store.png'
+      - 'public/game/homeworld/v76/architecture/convoy-workshop.png'
+      - 'public/game/homeworld/v76/architecture/dock-control.png'
+      - 'public/game/homeworld/v76/architecture/rampart-watch.png'
+      - 'public/game/homeworld/v76/architecture/rite-sanctum.png'
+      - 'public/game/homeworld/v76/interior/bench-left.png'
+      - 'public/game/homeworld/v76/interior/chest-diagonal.png'
+      - 'public/game/homeworld/v76/interior/rack-lateral.png'
+      - 'public/game/homeworld/v76/interior/worktable-right.png'
+      - 'public/game/homeworld/v76/logistics-container-rack-native.png'
+      - 'public/game/homeworld/v76/merchant-canopy-diagonal-native.png'
+      - 'public/game/homeworld/v76/mineral-planter-left-native.png'
+      - 'public/game/homeworld/v76/terrace-bench-right-native.png'
+      - 'public/game/homeworld/v77/council-stair-native.png'
+      - 'public/game/homeworld/v77/lava-warrior-left.png'
+      - 'public/game/homeworld/v77/lava-warrior-right.png'
+      - 'public/game/homeworld/v78/archive-shelf-right.png'
+      - 'public/game/homeworld/v78/civic-water-cistern-right.png'
+      - 'public/game/homeworld/v78/clan-common-table-left.png'
+      - 'public/game/homeworld/v78/forge-workstation-left.png'
+      - 'public/game/homeworld/v78/market-stall-right.png'
+      - 'public/game/homeworld/v78/terrace-retaining-front.png'
+      - 'public/game/homeworld/v80/amber-lamp-post.png'
+      - 'public/game/homeworld/v80/bench-left.png'
+      - 'public/game/homeworld/v80/clan-banner-standard.png'
+      - 'public/game/homeworld/v80/corner-wall-left.png'
+      - 'public/game/homeworld/v80/maintenance-rack.png'
+      - 'public/game/homeworld/v80/mineral-basin-right.png'
+      - 'public/game/homeworld/v81/council-hall-left.png'
+      - 'public/game/homeworld/v81/distant-city-terraces.png'
+      - 'public/game/homeworld/v81/prime-sky.png'
+      - 'public/game/homeworld/v81/royal-pyramid-front.png'
+      - 'public/game/homeworld/v81/spaceport-gantry.png'
+      - 'public/game/homeworld/v82/acropolis-stair.png'
+      - 'public/game/homeworld/v82/clan-lift-cabin.png'
+      - 'public/game/homeworld/v82/clan-lift-gantry-adult.png'
+      - 'public/game/homeworld/v82/diagonal-service-ramp.png'
+      - 'public/game/homeworld/v82/industrial-distant-quarter.png'
+      - 'public/game/homeworld/v82/industrial-ramp.png'
+      - 'public/game/homeworld/v82/lower-gallery-stair.png'
+      - 'public/game/homeworld/v82/port-distant-quarter.png'
+      - 'public/game/homeworld/v83/forge-bench-right.png'
+      - 'public/game/homeworld/v83/merchant-counter-left.png'
+      - 'public/game/homeworld/v84/care-cabinet-left.png'
+      - 'public/game/homeworld/v84/npcs/dock-officer/15.png'
+      - 'public/game/homeworld/v84/ritual-brazier-right.png'
+      - 'public/game/homeworld/v84/training-rack-left.png'
+      - 'public/game/prologue/v47/village.png'
+      - 'public/game/ship-interior/v20/corridor-wall.webp'
+      - 'public/game/ship-interior/v21/console-navigation.webp'
+      - 'public/game/ship-interior/v21/door-frame.webp'
+      - 'public/game/ship-interior/v21/door-leaf.webp'
+      - 'public/game/ship-interior/v21/foreground-rib.webp'
+      - 'public/game/ship-interior/v21/wall-sanctum.webp'
+      - 'public/game/ship-interior/v22/floor-edge.webp'
+      - 'public/game/ship-interior/v22/gantry.webp'
+      - 'public/game/ship-interior/v22/service-ladder.webp'
+      - 'public/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png'
+      - 'public/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f01.png'
+      - 'public/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f02.png'
+      - 'public/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f03.png'
+      - 'public/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f04.png'
+      - 'public/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f05.png'
+      - 'public/game/sprites/v6/prey-atlas.png'
+      - 'public/game/sprites/v62/masks/jungle.png'
+      - 'public/game/youth/v48/unblooded-right.png'
       - 'public/game/production/sucklings-v615/**'
       - 'public/game/production/enforcers-v61*/**'
       - 'art-source/v100/**'
@@ -315,13 +534,237 @@ jobs:
             /docs/*v112*
             /docs/qa/v112*/
             /docs/suivi-production/v112*/
+            /docs/v113-*
+            /docs/qa/v113-*/
+            /docs/suivi-production/v113*/
             /docs/suivi-production/resume-20261101/
+            /docs/suivi-production/resume-20261102/
             /docs/qa/homeworld-resume-20261102/
             /docs/qa/homeworld-legacy-regressions-20261101-r7/
             /docs/qa/homeworld-marsh-edge-diagnostic-20261101/
+            /docs/qa/homeworld-marsh-ground-joints-v113-20261102/
+            /docs/qa/forge-fire-v113-20261102/
+            /docs/qa/hunt-material-fixture-20261102/
+            /docs/qa/pr62-*-20261102/
+            /docs/qa/preserve-v6-20261102*/
             /docs/**/*.xlsx
             /art-source/**/*.xlsx
             /public/game/sprites/v112/
+            /public/game/homeworld/v113/
+            # Exact additional existing runtime files declared by V113.
+            /public/audio/sfx/cloak-off/v54.wav
+            /public/audio/sfx/cloak-on/v54.wav
+            /public/audio/sfx/defeat/v54.wav
+            /public/audio/sfx/enemy-alert/v54.wav
+            /public/audio/sfx/footstep/v54.wav
+            /public/audio/sfx/hit/v54.wav
+            /public/audio/sfx/jump/v54.wav
+            /public/audio/sfx/mask-off/v54.wav
+            /public/audio/sfx/mask-on/v54.wav
+            /public/audio/sfx/medicomp/v54.wav
+            /public/audio/sfx/netgun/v54.wav
+            /public/audio/sfx/objective/v54.wav
+            /public/audio/sfx/plasma/v54.wav
+            /public/audio/sfx/select/v54.wav
+            /public/audio/sfx/slash/v54.wav
+            /public/audio/sfx/snare/v54.wav
+            /public/audio/sfx/trophy/v54.wav
+            /public/audio/sfx/ui/v54.wav
+            /public/audio/sfx/victory/v54.wav
+            /public/audio/sfx/weapon-switch/v54.wav
+            /public/game/assets/v19/biome-decor/desert/clm/clm-anchor-rope-01-straight.webp
+            /public/game/assets/v19/biome-decor/desert/clm/clm-canyon-rock-face-01-straight.webp
+            /public/game/assets/v19/biome-decor/desert/clm/clm-canyon-rock-face-04-interrupted.webp
+            /public/game/assets/v19/biome-decor/desert/clm/clm-mine-ladder-01-straight.webp
+            /public/game/assets/v19/biome-decor/desert/cov/cov-buried-cargo-01-narrow.webp
+            /public/game/assets/v19/biome-decor/desert/cov/cov-buried-cargo-02-broad.webp
+            /public/game/assets/v19/biome-decor/desert/cov/cov-obsidian-glass-fin-02-broad.webp
+            /public/game/assets/v19/biome-decor/desert/plt/plt-eroded-arch-01-low-wide.webp
+            /public/game/assets/v19/biome-decor/desert/plt/plt-eroded-arch-04-broken.webp
+            /public/game/assets/v19/biome-decor/desert/plt/plt-sandstone-ledge-04-broken.webp
+            /public/game/assets/v19/biome-decor/desert/plt/plt-vitrified-glass-slab-01-low-wide.webp
+            /public/game/assets/v19/biome-decor/desert/plt/plt-vitrified-glass-slab-04-broken.webp
+            /public/game/assets/v19/biome-decor/ice/clm/clm-crystal-column-01-straight.webp
+            /public/game/assets/v19/biome-decor/ice/clm/clm-ice-wall-04-interrupted.webp
+            /public/game/assets/v19/biome-decor/ice/clm/clm-maintenance-rope-01-straight.webp
+            /public/game/assets/v19/biome-decor/ice/cov/cov-frozen-cargo-stack-01-narrow.webp
+            /public/game/assets/v19/biome-decor/ice/cov/cov-frozen-cargo-stack-02-broad.webp
+            /public/game/assets/v19/biome-decor/ice/cov/cov-overturned-drill-01-narrow.webp
+            /public/game/assets/v19/biome-decor/ice/cov/cov-overturned-drill-02-broad.webp
+            /public/game/assets/v19/biome-decor/ice/haz/haz-cryo-steam-vent-02-linear.webp
+            /public/game/assets/v19/biome-decor/ice/haz/haz-thin-ice-02-linear.webp
+            /public/game/assets/v19/biome-decor/ice/orn/orn-bone-cache-04-fallen.webp
+            /public/game/assets/v19/biome-decor/ice/orn/orn-emergency-beacon-01-single.webp
+            /public/game/assets/v19/biome-decor/ice/orn/orn-frozen-cordage-04-fallen.webp
+            /public/game/assets/v19/biome-decor/ice/orn/orn-mineral-nodule-01-single.webp
+            /public/game/assets/v19/biome-decor/ice/orn/orn-mineral-nodule-04-fallen.webp
+            /public/game/assets/v19/biome-decor/ice/plt/plt-crystal-bridge-01-low-wide.webp
+            /public/game/assets/v19/biome-decor/ice/plt/plt-frozen-wreck-deck-01-low-wide.webp
+            /public/game/assets/v19/biome-decor/ice/plt/plt-frozen-wreck-deck-04-broken.webp
+            /public/game/assets/v19/biome-decor/ice/plt/plt-glacier-shelf-04-broken.webp
+            /public/game/assets/v19/biome-decor/ice/plt/plt-mine-gantry-04-broken.webp
+            /public/game/assets/v19/biome-decor/ice/srf/srf-black-ice-02-trail.webp
+            /public/game/assets/v19/biome-decor/ice/srf/srf-black-ice-05-transition.webp
+            /public/game/assets/v19/biome-decor/ice/srf/srf-frost-shard-trail-02-trail.webp
+            /public/game/assets/v19/biome-decor/ice/srf/srf-snowdrift-track-02-trail.webp
+            /public/game/assets/v19/biome-decor/ice/srf/srf-snowdrift-track-03-ridge.webp
+            /public/game/assets/v19/biome-decor/jungle/clm/clm-buttress-trunk-01-straight.webp
+            /public/game/assets/v19/biome-decor/jungle/clm/clm-buttress-trunk-04-interrupted.webp
+            /public/game/assets/v19/biome-decor/jungle/clm/clm-hanging-vine-01-straight.webp
+            /public/game/assets/v19/biome-decor/jungle/cov/cov-ruined-idol-01-narrow.webp
+            /public/game/assets/v19/biome-decor/jungle/cov/cov-ruined-idol-04-fallen.webp
+            /public/game/assets/v19/biome-decor/jungle/cov/cov-strangler-root-wall-01-narrow.webp
+            /public/game/assets/v19/biome-decor/jungle/cov/cov-strangler-root-wall-02-broad.webp
+            /public/game/assets/v19/biome-decor/jungle/cov/cov-supply-palisade-01-narrow.webp
+            /public/game/assets/v19/biome-decor/jungle/cov/cov-supply-palisade-02-broad.webp
+            /public/game/assets/v19/biome-decor/jungle/haz/haz-collapsing-branch-02-linear.webp
+            /public/game/assets/v19/biome-decor/jungle/haz/haz-flooded-sinkhole-02-linear.webp
+            /public/game/assets/v19/biome-decor/jungle/haz/haz-spectral-flare-tripwire-02-linear.webp
+            /public/game/assets/v19/biome-decor/jungle/orn/orn-lake-reeds-01-single.webp
+            /public/game/assets/v19/biome-decor/jungle/orn/orn-lake-reeds-02-pair.webp
+            /public/game/assets/v19/biome-decor/jungle/orn/orn-storm-flower-01-single.webp
+            /public/game/assets/v19/biome-decor/jungle/orn/orn-storm-flower-04-fallen.webp
+            /public/game/assets/v19/biome-decor/jungle/orn/orn-transponder-debris-01-single.webp
+            /public/game/assets/v19/biome-decor/jungle/orn/orn-transponder-debris-04-fallen.webp
+            /public/game/assets/v19/biome-decor/jungle/plt/plt-canopy-crown-01-low-wide.webp
+            /public/game/assets/v19/biome-decor/jungle/plt/plt-expedition-deck-01-low-wide.webp
+            /public/game/assets/v19/biome-decor/jungle/plt/plt-expedition-deck-04-broken.webp
+            /public/game/assets/v19/biome-decor/jungle/plt/plt-mossy-ruin-slab-01-low-wide.webp
+            /public/game/assets/v19/biome-decor/jungle/plt/plt-mossy-ruin-slab-04-broken.webp
+            /public/game/assets/v19/biome-decor/jungle/plt/plt-root-bridge-01-low-wide.webp
+            /public/game/assets/v19/biome-decor/jungle/plt/plt-root-bridge-04-broken.webp
+            /public/game/assets/v19/biome-decor/jungle/srf/srf-crushed-fern-bed-02-trail.webp
+            /public/game/assets/v19/biome-decor/jungle/srf/srf-crushed-fern-bed-04-crater.webp
+            /public/game/assets/v19/biome-decor/jungle/srf/srf-footprint-mud-02-trail.webp
+            /public/game/assets/v19/biome-decor/jungle/srf/srf-footprint-mud-03-ridge.webp
+            /public/game/assets/v19/biome-decor/jungle/srf/srf-rain-puddle-02-trail.webp
+            /public/game/assets/v19/biome-decor/volcano/srf/srf-obsidian-shard-bed-03-ridge.webp
+            /public/game/assets/v3/actors/yautja/hunter/armor/registered/belt.webp
+            /public/game/assets/v3/actors/yautja/hunter/armor/registered/bracer.webp
+            /public/game/assets/v3/actors/yautja/hunter/armor/registered/chest-classic.webp
+            /public/game/assets/v3/actors/yautja/hunter/armor/registered/knee.webp
+            /public/game/assets/v3/actors/yautja/hunter/armor/registered/shin.webp
+            /public/game/assets/v3/actors/yautja/hunter/armor/registered/shoulder-classic.webp
+            /public/game/assets/v3/actors/yautja/hunter/armor/registered/thigh-lower.webp
+            /public/game/assets/v3/actors/yautja/hunter/armor/registered/thigh.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/hand-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/hand-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/lower-arm-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/lower-arm-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/pelvis.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/shin-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/shin-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/thigh-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/thigh-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/torso.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/upper-arm-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/upper-arm-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/equipment/registered/barrel.webp
+            /public/game/assets/v3/actors/yautja/hunter/equipment/registered/cannon.webp
+            /public/game/assets/v3/actors/yautja/hunter/equipment/registered/caster-lower.webp
+            /public/game/assets/v3/actors/yautja/hunter/equipment/registered/caster-upper.webp
+            /public/game/assets/v3/actors/yautja/hunter/equipment/registered/gauntlet-base.webp
+            /public/game/assets/v3/actors/yautja/hunter/equipment/registered/gauntlet-lid.webp
+            /public/game/assets/v3/actors/yautja/hunter/equipment/registered/laser.webp
+            /public/game/assets/v3/actors/yautja/hunter/equipment/registered/mount.webp
+            /public/game/assets/v3/actors/yautja/hunter/equipment/registered/muzzle.webp
+            /public/game/assets/v3/actors/yautja/hunter/equipment/registered/yoke.webp
+            /public/game/assets/v3/actors/yautja/hunter/gear/registered/audio-decoy.webp
+            /public/game/assets/v3/actors/yautja/hunter/gear/registered/motion-sensor.webp
+            /public/game/assets/v3/actors/yautja/hunter/trophies/registered/trophy-bindings.webp
+            /public/game/assets/v3/actors/yautja/hunter/trophies/registered/trophy-skull.webp
+            /public/game/assets/v3/actors/yautja/hunter/trophies/registered/trophy-spine.webp
+            /public/game/assets/v3/actors/yautja/hunter/weapons/registered/combistick.webp
+            /public/game/assets/v37/tribes/thumbnails/v2/decor-mycora-nox-v2--3e6eac0a53939544.webp
+            /public/game/assets/v37/tribes/thumbnails/v2/homeworld-darkjungle-v2--fbc392bc9618642d.webp
+            /public/game/assets/v37/tribes/thumbnails/v2/homeworld-desert-v2--470faca98471efc2.webp
+            /public/game/assets/v37/tribes/thumbnails/v2/homeworld-forest-v2--8fdc633789dcd9c0.webp
+            /public/game/assets/v37/tribes/thumbnails/v2/homeworld-lava-v2--ecd85e06796799d2.webp
+            /public/game/assets/v37/tribes/thumbnails/v2/homeworld-slums-v2--da9558ecc579b3b8.webp
+            /public/game/assets/v37/tribes/thumbnails/v2/personnage-mycora-nox-v2--83d29a29d54af4d7.webp
+            /public/game/assets/v37/tribes/thumbnails/v2/texture-mycora-nox-v2--19267310fd547557.webp
+            /public/game/assets/v37/tribes/v2/personnage-mycora-nox-v2--83d29a29d54af4d7.webp
+            /public/game/backgrounds/jungle-depth-v4.webp
+            /public/game/homeworld/v64/house-c-ribbed.png
+            /public/game/homeworld/v64/interior-panels.png
+            /public/game/homeworld/v64/landing-pad.png
+            /public/game/homeworld/v64/pavement.png
+            /public/game/homeworld/v64/props-atlas.png
+            /public/game/homeworld/v72/civic-furniture-kit.png
+            /public/game/homeworld/v72/civic-identity-atlas.png
+            /public/game/homeworld/v72/civic-specialists-spaced-atlas.png
+            /public/game/homeworld/v72/civilian-roles-atlas.png
+            /public/game/homeworld/v72/region-gateway-kit.png
+            /public/game/homeworld/v75/architecture/market-canopy.png
+            /public/game/homeworld/v75/architecture/rampart-north-lodge.png
+            /public/game/homeworld/v75/architecture/rampart-south-lodge.png
+            /public/game/homeworld/v76/architecture/convoy-store.png
+            /public/game/homeworld/v76/architecture/convoy-workshop.png
+            /public/game/homeworld/v76/architecture/dock-control.png
+            /public/game/homeworld/v76/architecture/rampart-watch.png
+            /public/game/homeworld/v76/architecture/rite-sanctum.png
+            /public/game/homeworld/v76/interior/bench-left.png
+            /public/game/homeworld/v76/interior/chest-diagonal.png
+            /public/game/homeworld/v76/interior/rack-lateral.png
+            /public/game/homeworld/v76/interior/worktable-right.png
+            /public/game/homeworld/v76/logistics-container-rack-native.png
+            /public/game/homeworld/v76/merchant-canopy-diagonal-native.png
+            /public/game/homeworld/v76/mineral-planter-left-native.png
+            /public/game/homeworld/v76/terrace-bench-right-native.png
+            /public/game/homeworld/v77/council-stair-native.png
+            /public/game/homeworld/v77/lava-warrior-left.png
+            /public/game/homeworld/v77/lava-warrior-right.png
+            /public/game/homeworld/v78/archive-shelf-right.png
+            /public/game/homeworld/v78/civic-water-cistern-right.png
+            /public/game/homeworld/v78/clan-common-table-left.png
+            /public/game/homeworld/v78/forge-workstation-left.png
+            /public/game/homeworld/v78/market-stall-right.png
+            /public/game/homeworld/v78/terrace-retaining-front.png
+            /public/game/homeworld/v80/amber-lamp-post.png
+            /public/game/homeworld/v80/bench-left.png
+            /public/game/homeworld/v80/clan-banner-standard.png
+            /public/game/homeworld/v80/corner-wall-left.png
+            /public/game/homeworld/v80/maintenance-rack.png
+            /public/game/homeworld/v80/mineral-basin-right.png
+            /public/game/homeworld/v81/council-hall-left.png
+            /public/game/homeworld/v81/distant-city-terraces.png
+            /public/game/homeworld/v81/prime-sky.png
+            /public/game/homeworld/v81/royal-pyramid-front.png
+            /public/game/homeworld/v81/spaceport-gantry.png
+            /public/game/homeworld/v82/acropolis-stair.png
+            /public/game/homeworld/v82/clan-lift-cabin.png
+            /public/game/homeworld/v82/clan-lift-gantry-adult.png
+            /public/game/homeworld/v82/diagonal-service-ramp.png
+            /public/game/homeworld/v82/industrial-distant-quarter.png
+            /public/game/homeworld/v82/industrial-ramp.png
+            /public/game/homeworld/v82/lower-gallery-stair.png
+            /public/game/homeworld/v82/port-distant-quarter.png
+            /public/game/homeworld/v83/forge-bench-right.png
+            /public/game/homeworld/v83/merchant-counter-left.png
+            /public/game/homeworld/v84/care-cabinet-left.png
+            /public/game/homeworld/v84/npcs/dock-officer/15.png
+            /public/game/homeworld/v84/ritual-brazier-right.png
+            /public/game/homeworld/v84/training-rack-left.png
+            /public/game/prologue/v47/village.png
+            /public/game/ship-interior/v20/corridor-wall.webp
+            /public/game/ship-interior/v21/console-navigation.webp
+            /public/game/ship-interior/v21/door-frame.webp
+            /public/game/ship-interior/v21/door-leaf.webp
+            /public/game/ship-interior/v21/foreground-rib.webp
+            /public/game/ship-interior/v21/wall-sanctum.webp
+            /public/game/ship-interior/v22/floor-edge.webp
+            /public/game/ship-interior/v22/gantry.webp
+            /public/game/ship-interior/v22/service-ladder.webp
+            /public/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png
+            /public/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f01.png
+            /public/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f02.png
+            /public/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f03.png
+            /public/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f04.png
+            /public/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f05.png
+            /public/game/sprites/v6/prey-atlas.png
+            /public/game/sprites/v62/masks/jungle.png
+            /public/game/youth/v48/unblooded-right.png
+            /art-source/v113/
             /public/game/planets/earth/ne_110m_land.geojson
             /art-source/v112/
             /art-source/v112-pit-backward/
@@ -584,9 +1027,24 @@ jobs:
         run: node node_modules/next/dist/bin/next typegen
       - name: Check application TypeScript
         run: npm run typecheck
-      - name: Exercise current V112 hunting mechanics and invariants
+      - name: Exercise every current V112 model except its separately preserved historical publication
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
-        run: node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v112.test.mjs
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import {spawnSync} from 'node:child_process';
+          const files = fs.readdirSync('tests').filter(file =>
+            file.endsWith('-v112.test.mjs') && file !== 'homeworld-excel-followup-v112.test.mjs'
+          ).sort().map(file => 'tests/' + file);
+          if (!files.length) throw new Error('No current V112 model tests selected');
+          console.log('Current V112 application tests:\n' + files.join('\n'));
+          const result = spawnSync(process.execPath, [
+            '--experimental-strip-types', '--test', '--test-reporter=spec', '--test-concurrency=1', ...files,
+          ], {stdio: 'inherit'});
+          if (result.error) throw result.error;
+          if (!Number.isInteger(result.status) || result.status < 0) throw new Error('V112 tests did not complete: ' + result.signal);
+          process.exitCode = result.status;
+          NODE
       - name: Verify deterministic V112 workbook and discovery resources
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: |
@@ -919,17 +1377,65 @@ jobs:
         run: |
           node scripts/check-homeworld-history-v112.mjs --check --tests
           node scripts/check-excel-history-v112.mjs --check --tests
-      - name: Exercise V112 geometry, public-life, mobility, backward throws and evidence guards
+      - name: Preserve exact historical R7 once (nine original assertions and three CLI; currentRuntimeCovered=false)
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
-        run: node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v112.test.mjs
-      - name: Verify V112 open-workstream audit and reproducible append-only workbook
+        # The five capsule tests also exercise tampering and real private Git bootstrap.
+        # The standalone --check --tests CLI and V112 adapter are manual entrypoints;
+        # neither is repeated here, since this suite executes all nine assertions and three CLI.
+        run: node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/r7-publication-history-v113.test.mjs
+      - name: Verify current source backlog audit and unchanged native V112 Pit delivery
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: |
           python3 scripts/audit-open-workstreams-v112.py --check
           node scripts/build-pit-backward-art-v112.mjs --check
-          node scripts/build-runtime-public-inputs-v112.mjs --check
-          node scripts/snapshot-runtime-v112.mjs --check docs/v112-runtime-freeze.json
-          node scripts/build-homeworld-followup-v112.mjs --check
+      - name: Fetch the exact current runtime declared by both production publications
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: |
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import fs from 'node:fs';
+          import {execFileSync, spawnSync} from 'node:child_process';
+          const headBefore = execFileSync('git', ['rev-parse', 'HEAD'], {encoding: 'utf8'});
+          const commits = ['homeworld', 'pit'].map(domain =>
+            JSON.parse(fs.readFileSync('docs/v113-' + domain + '-validation.json', 'utf8')).production.runtimeCommit
+          );
+          for (const commit of commits) assert.match(commit, /^[a-f0-9]{40}$/);
+          assert.equal(commits[0], commits[1], 'Both publications must name the same current runtime');
+          const runtimeCommit = commits[0];
+          const probe = spawnSync('git', ['cat-file', '-t', runtimeCommit], {
+            encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'],
+            env: {...process.env, GIT_NO_LAZY_FETCH: '1'},
+          });
+          if (probe.status !== 0 || probe.stdout.trim() !== 'commit') {
+            execFileSync('git', ['fetch', '--no-tags', '--filter=blob:none', '--depth=1',
+              'https://github.com/darknigthmare/yautja-la-longue-chasse.git', runtimeCommit], {stdio: 'inherit'});
+          }
+          assert.equal(execFileSync('git', ['cat-file', '-t', runtimeCommit], {
+            encoding: 'utf8', env: {...process.env, GIT_NO_LAZY_FETCH: '1'},
+          }).trim(), 'commit');
+          assert.equal(execFileSync('git', ['rev-parse', 'HEAD'], {encoding: 'utf8'}), headBefore,
+            'Fetching evidence history must not change the application checkout');
+          console.log('Current runtime object available: ' + runtimeCommit);
+          NODE
+      - name: Verify current V113 freeze, current models and both complete current production certificates
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: |
+          node scripts/snapshot-runtime-v113.mjs --check docs/v113-runtime-freeze.json
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import {spawnSync} from 'node:child_process';
+          const files = fs.readdirSync('tests').filter(file =>
+            file.endsWith('-v113.test.mjs') && file !== 'r7-publication-history-v113.test.mjs'
+          ).sort().map(file => 'tests/' + file);
+          if (!files.includes('tests/homeworld-current-production-v113.test.mjs')) throw new Error('Current V113 production certificates must be verified');
+          console.log('Current V113 application and production tests:\n' + files.join('\n'));
+          const result = spawnSync(process.execPath, [
+            '--experimental-strip-types', '--test', '--test-reporter=spec', '--test-concurrency=1', ...files,
+          ], {stdio: 'inherit'});
+          if (result.error) throw result.error;
+          if (!Number.isInteger(result.status) || result.status < 0) throw new Error('V113 tests did not complete: ' + result.signal);
+          process.exitCode = result.status;
+          NODE
       - name: Verify the dated PR and open-workstream coordination workbook
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: |

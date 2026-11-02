@@ -1,0 +1,30 @@
+{
+  "revision": "R3",
+  "checkedAt": "2026-11-02T06:21:47.550514Z",
+  "baseCommit": "03cf51badd450338d748da55599a317a71debd28",
+  "scope": "Source-only V6 cover aspect fix after completed R2 browser journey. Real native image metadata and renderer drawImage observation, plus legacy parity. No new production build/browser replay assigned to R3.",
+  "results": {
+    "nativeCoverWorldCasesPassed": 4,
+    "legacyParityCasesReplayedPassed": 6,
+    "totalCasesThisRun": 10,
+    "failed": 0,
+    "types": "PASS",
+    "targetedLint": "PASS"
+  },
+  "behavior": {
+    "nativeCrop": "24px transparent border removed on each edge",
+    "scale": "same scale on both axes, measured from actual drawImage crop and destination arguments",
+    "footAnchor": "existing ground+6 preserved by moving destination y; simulation/collision geometry unchanged",
+    "legacy": "V1–V5 draw commands and traces remain exact03cf"
+  },
+  "latestBrowserEvidence": {
+    "revision": "R2",
+    "buildId": "wykGbB5CIbk8_a6MIh9Q6",
+    "checksPassed": 27,
+    "appliesToRendererR3": false,
+    "path": "../preserve-v6-20261102-r2"
+  },
+  "requiredNext": "Parent compiled R8 integration browser qualification includes this renderer; no previous browser proof is retroactively attributed.",
+  "newArt": false,
+  "certificatesOrFreezeModified": false
+}
