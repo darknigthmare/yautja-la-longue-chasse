@@ -43,4 +43,5 @@ export const HOMEWORLD_LEGACY_EXTERIOR_PLACEMENTS_V82:Readonly<Record<string,{x:
 };
 export const HOMEWORLD_LEGACY_FRONTAGE_PLACEMENTS_V82:Readonly<Record<string,{x:number;y:number;reason:string}>>={
  'v75-frontage:pit-gate:1':{x:2680,y:1050,reason:'Le gong devient le repère de l’aile orientale du cercle ; il ne partage plus la face de l’assise oblique occidentale.'},
+ 'v75-frontage:residence-terraces-1:1':{x:2428,y:2201.2,reason:'V113 : jarres de la maison des terrasses ramenées devant l’aile droite de leur propre façade, hors du couloir de sa porte ; elles étaient dans le volume du couvert du marché et peintes derrière lui.'},
 };
