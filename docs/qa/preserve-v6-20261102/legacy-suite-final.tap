@@ -1,0 +1,598 @@
+TAP version 13
+# Subtest: all six exact identities import independently; V7 is future and mixed V5 bodies, terrain or authority are invalid
+ok 1 - all six exact identities import independently; V7 is future and mixed V5 bodies, terrain or authority are invalid
+  ---
+  duration_ms: 51.192957
+  type: 'test'
+  ...
+# Subtest: both V5 reserves keep their exact identities, route and physical state through real campaign slots and complete archives
+ok 2 - both V5 reserves keep their exact identities, route and physical state through real campaign slots and complete archives
+  ---
+  duration_ms: 246.129257
+  type: 'test'
+  ...
+# Subtest: route and interception persistence fixtures retain exact events while goals remain derived and no campaign reward appears
+ok 3 - route and interception persistence fixtures retain exact events while goals remain derived and no campaign reward appears
+  ---
+  duration_ms: 67.956049
+  type: 'test'
+  ...
+# Subtest: refused V5 writes preserve every durable byte and retry the original chosen world without resetting it
+ok 4 - refused V5 writes preserve every durable byte and retry the original chosen world without resetting it
+  ---
+  duration_ms: 138.587676
+  type: 'test'
+  ...
+# Subtest: two actual biome reserves add16 distinct sectors and32 original adults, without counting old expedition variants twice
+ok 5 - two actual biome reserves add16 distinct sectors and32 original adults, without counting old expedition variants twice
+  ---
+  duration_ms: 24.73929
+  type: 'test'
+  ...
+# Subtest: all V1–V4 original factory bytes and900-tick traces remain exactly those captured before V109 edits
+ok 6 - all V1–V4 original factory bytes and900-tick traces remain exactly those captured before V109 edits
+  ---
+  duration_ms: 1416.656894
+  type: 'test'
+  ...
+# Subtest: khar-duun-canyon-expedition: four posts and eight sectors require physical jumps, channels and a walked return
+ok 7 - khar-duun-canyon-expedition: four posts and eight sectors require physical jumps, channels and a walked return
+  ---
+  duration_ms: 923.453662
+  type: 'test'
+  ...
+# Subtest: iskhel-ice-expedition: four posts and eight sectors require physical jumps, channels and a walked return
+ok 8 - iskhel-ice-expedition: four posts and eight sectors require physical jumps, channels and a walked return
+  ---
+  duration_ms: 751.021677
+  type: 'test'
+  ...
+# Subtest: V5 real upper-platform jump apices and human sightings remain valid without relaxing legacy terrain bounds
+ok 9 - V5 real upper-platform jump apices and human sightings remain valid without relaxing legacy terrain bounds
+  ---
+  duration_ms: 50.96151
+  type: 'test'
+  ...
+# Subtest: V5 records interrupt on movement and the last-frame real projectile, and cannot regress or be backdated
+ok 10 - V5 records interrupt on movement and the last-frame real projectile, and cannot regress or be backdated
+  ---
+  duration_ms: 119.066563
+  type: 'test'
+  ...
+# Subtest: Khar-Duun goals require a real interruptible denial at each different known depot, not a cumulative arbitrary count
+ok 11 - Khar-Duun goals require a real interruptible denial at each different known depot, not a cumulative arbitrary count
+  ---
+  duration_ms: 666.523401
+  type: 'test'
+  ...
+# Subtest: Iskhel mechanic observations come from actual sight lines and identify two independent adults
+ok 12 - Iskhel mechanic observations come from actual sight lines and identify two independent adults
+  ---
+  duration_ms: 83.552464
+  type: 'test'
+  ...
+# Subtest: new biome work decisions use actual co-workers, release at launch and fall back when alone or threatened
+ok 13 - new biome work decisions use actual co-workers, release at launch and fall back when alone or threatened
+  ---
+  duration_ms: 4.322193
+  type: 'test'
+  ...
+# Subtest: khar-duun-canyon-expedition: living teams carry finite components, repair, release posts and physically board all four aircraft
+ok 14 - khar-duun-canyon-expedition: living teams carry finite components, repair, release posts and physically board all four aircraft
+  ---
+  duration_ms: 2125.831877
+  type: 'test'
+  ...
+# Subtest: iskhel-ice-expedition: living teams carry finite components, repair, release posts and physically board all four aircraft
+ok 15 - iskhel-ice-expedition: living teams carry finite components, repair, release posts and physically board all four aircraft
+  ---
+  duration_ms: 1531.234646
+  type: 'test'
+  ...
+# Subtest: Iskhel only counts a launch interrupted at its real ramp after naturally carried parts, repairs and boarding
+ok 16 - Iskhel only counts a launch interrupted at its real ramp after naturally carried parts, repairs and boarding
+  ---
+  duration_ms: 509.817299
+  type: 'test'
+  ...
+# Subtest: V5 rejects cross-reserve swaps, hidden authority, invented materials and future identities, and keeps unobserved contacts private
+ok 17 - V5 rejects cross-reserve swaps, hidden authority, invented materials and future identities, and keeps unobserved contacts private
+  ---
+  duration_ms: 722.426771
+  type: 'test'
+  ...
+# Subtest: reserve active and physically returned checkpoints roundtrip, while explicit Homeworld/deck choices remain independent
+ok 18 - reserve active and physically returned checkpoints roundtrip, while explicit Homeworld/deck choices remain independent
+  ---
+  duration_ms: 303.317522
+  type: 'test'
+  ...
+# Subtest: old archives preserve normal locations, absent reserve cannot mint its entry, and a forged reserve location is protected
+ok 19 - old archives preserve normal locations, absent reserve cannot mint its entry, and a forged reserve location is protected
+  ---
+  duration_ms: 70.616555
+  type: 'test'
+  ...
+# Subtest: V3 active checkpoints retain all sixteen people, four aircraft and route records through real imports, slots and integral archives
+ok 20 - V3 active checkpoints retain all sixteen people, four aircraft and route records through real imports, slots and integral archives
+  ---
+  duration_ms: 91.95514
+  type: 'test'
+  ...
+# Subtest: a declared surveyed V3 fixture physically returns and preserves only its actual site records
+ok 21 - a declared surveyed V3 fixture physically returns and preserves only its actual site records
+  ---
+  duration_ms: 19.764018
+  type: 'test'
+  ...
+# Subtest: V3 manual-checkpoint storage refusal leaves the previously durable campaign intact and retryable
+ok 22 - V3 manual-checkpoint storage refusal leaves the previously durable campaign intact and retryable
+  ---
+  duration_ms: 41.328373
+  type: 'test'
+  ...
+# Subtest: V1 and V2 remain supported; mixed identities are invalid and only version four remains future [historical V107]
+ok 23 - V1 and V2 remain supported; mixed identities are invalid and only version four remains future [historical V107]
+  ---
+  duration_ms: 133.496605
+  type: 'test'
+  ...
+# Subtest: all four exact reserve identities roundtrip through campaign import; future five and mixed worlds are refused [historical V108]
+ok 24 - all four exact reserve identities roundtrip through campaign import; future five and mixed worlds are refused [historical V108]
+  ---
+  duration_ms: 108.767915
+  type: 'test'
+  ...
+# Subtest: V4 sixteen adults, ship events and four route records survive real slots and complete archives
+ok 25 - V4 sixteen adults, ship events and four route records survive real slots and complete archives
+  ---
+  duration_ms: 90.99428
+  type: 'test'
+  ...
+# Subtest: a declared four-site persistence fixture physically returns, and an intercepted launch remains an event rather than a free reward
+ok 26 - a declared four-site persistence fixture physically returns, and an intercepted launch remains an event rather than a free reward
+  ---
+  duration_ms: 28.641306
+  type: 'test'
+  ...
+# Subtest: refused V4 checkpoint writes preserve durable bytes and retry the original expedition
+ok 27 - refused V4 checkpoint writes preserve durable bytes and retry the original expedition
+  ---
+  duration_ms: 56.786052
+  type: 'test'
+  ...
+# Subtest: V107 is explicitly selected with eight contiguous sectors, sixteen adults and four physical escape groups
+ok 28 - V107 is explicitly selected with eight contiguous sectors, sixteen adults and four physical escape groups
+  ---
+  duration_ms: 3.168792
+  type: 'test'
+  ...
+# Subtest: V1 and V2 factories and deterministic played traces remain byte-identical to the frozen V106 source
+ok 29 - V1 and V2 factories and deterministic played traces remain byte-identical to the frozen V106 source
+  ---
+  duration_ms: 3458.276238
+  type: 'test'
+  ...
+# Subtest: all four posts and eight sectors are reached with native walking and jumps, then physically returned
+ok 30 - all four posts and eight sectors are reached with native walking and jumps, then physically returned
+  ---
+  duration_ms: 846.428431
+  type: 'test'
+  ...
+# Subtest: root platforms provide a distinct physical upper route and do not replace the walkable ground
+ok 31 - root platforms provide a distinct physical upper route and do not replace the walkable ground
+  ---
+  duration_ms: 143.766849
+  type: 'test'
+  ...
+# Subtest: V3 channels require their real post, exact duration, exposure and an independent record for each site
+ok 32 - V3 channels require their real post, exact duration, exposure and an independent record for each site
+  ---
+  duration_ms: 141.893372
+  type: 'test'
+  ...
+# Subtest: V3 normalization rejects malformed routes, mixed versions, forged positions and array bounds
+ok 33 - V3 normalization rejects malformed routes, mixed versions, forged positions and array bounds
+  ---
+  duration_ms: 2.453718
+  type: 'test'
+  ...
+# Subtest: recorded posts, wounds, visits and material cannot regress or be backdated in a V3 checkpoint
+ok 34 - recorded posts, wounds, visits and material cannot regress or be backdated in a V3 checkpoint
+  ---
+  duration_ms: 193.333205
+  type: 'test'
+  ...
+# Subtest: the four groups actually transport conserved components, repair and board their own physical aircraft
+ok 35 - the four groups actually transport conserved components, repair and board their own physical aircraft
+  ---
+  duration_ms: 2228.632228
+  type: 'test'
+  ...
+# Subtest: new sight and witness profiles affect actual simulation while the field notebook conceals unseen people
+ok 36 - new sight and witness profiles affect actual simulation while the field notebook conceals unseen people
+  ---
+  duration_ms: 675.456389
+  type: 'test'
+  ...
+# Subtest: V4 is a second eight-sector reserve with sixteen distinct adults and four physical groups; Vharuun is deduplicated
+ok 37 - V4 is a second eight-sector reserve with sixteen distinct adults and four physical groups; Vharuun is deduplicated
+  ---
+  duration_ms: 3.924422
+  type: 'test'
+  ...
+# Subtest: all V1/V2/V3 factory bytes and played traces retain the V107 hashes captured before V108 editing
+ok 38 - all V1/V2/V3 factory bytes and played traces retain the V107 hashes captured before V108 editing
+  ---
+  duration_ms: 668.869922
+  type: 'test'
+  ...
+# Subtest: the four high posts, eight different sectors and return require actual walking and landing geometry
+ok 39 - the four high posts, eight different sectors and return require actual walking and landing geometry
+  ---
+  duration_ms: 458.820694
+  type: 'test'
+  ...
+# Subtest: V4 observation channels interrupt on movement or real injury and notes cannot regress or be backdated
+ok 40 - V4 observation channels interrupt on movement or real injury and notes cannot regress or be backdated
+  ---
+  duration_ms: 55.556827
+  type: 'test'
+  ...
+# Subtest: V4 normalization rejects mixed identities, hidden authority, inventory creation, invalid geometry and future versions
+ok 41 - V4 normalization rejects mixed identities, hidden authority, inventory creation, invalid geometry and future versions
+  ---
+  duration_ms: 2.286751
+  type: 'test'
+  ...
+# Subtest: escorts actually follow nearby visible carriers instead of collecting; unseen or threatened partners do not guide them
+ok 42 - escorts actually follow nearby visible carriers instead of collecting; unseen or threatened partners do not guide them
+  ---
+  duration_ms: 0.837404
+  type: 'test'
+  ...
+# Subtest: ramp defenders and cover observers take different physical posts, release them for boarding and repair alone
+ok 43 - ramp defenders and cover observers take different physical posts, release them for boarding and repair alone
+  ---
+  duration_ms: 1.28532
+  type: 'test'
+  ...
+# Subtest: cover observers cannot see through vegetation or leak distant contacts to the notebook
+ok 44 - cover observers cannot see through vegetation or leak distant contacts to the notebook
+  ---
+  duration_ms: 469.397049
+  type: 'test'
+  ...
+# Subtest: four living teams genuinely use all three behaviors, carry conserved materials, repair, walk aboard and depart
+ok 45 - four living teams genuinely use all three behaviors, carry conserved materials, repair, walk aboard and depart
+  ---
+  duration_ms: 1640.69621
+  type: 'test'
+  ...
+# Subtest: a naturally prepared V4 launch is physically interrupted at its ramp and passengers exit without free material or healing
+ok 46 - a naturally prepared V4 launch is physically interrupted at its ramp and passengers exit without free material or healing
+  ---
+  duration_ms: 744.997195
+  type: 'test'
+  ...
+# Subtest: an observer whose aircraft departed walks towards the observation post of the actual replacement team
+ok 47 - an observer whose aircraft departed walks towards the observation post of the actual replacement team
+  ---
+  duration_ms: 4.198203
+  type: 'test'
+  ...
+# Subtest: interception completes strictly before departure; the last tick cannot resurrect an escaped passenger
+ok 48 - interception completes strictly before departure; the last tick cannot resurrect an escaped passenger
+  ---
+  duration_ms: 33.642632
+  type: 'test'
+  ...
+# Subtest: pausing or an incoming hit cannot finish an interception channel
+ok 49 - pausing or an incoming hit cannot finish an interception channel
+  ---
+  duration_ms: 8.006477
+  type: 'test'
+  ...
+# Subtest: a sabotage already in progress remains writable when engines start on its final channel tick
+ok 50 - a sabotage already in progress remains writable when engines start on its final channel tick
+  ---
+  duration_ms: 35.591998
+  type: 'test'
+  ...
+# Subtest: boarding is reversible only through a newer interception; old receipts cannot authorize a later rewind
+ok 51 - boarding is reversible only through a newer interception; old receipts cannot authorize a later rewind
+  ---
+  duration_ms: 21.14577
+  type: 'test'
+  ...
+# Subtest: a checkpoint spanning interception and combat preserves the observed identity and irreversible casualty
+ok 52 - a checkpoint spanning interception and combat preserves the observed identity and irreversible casualty
+  ---
+  duration_ms: 14.820166
+  type: 'test'
+  ...
+# Subtest: legacy saves remain exact; two played launches, approaches and interceptions stay writable every 120 ticks
+ok 53 - legacy saves remain exact; two played launches, approaches and interceptions stay writable every 120 ticks
+  ---
+  duration_ms: 810.75048
+  type: 'test'
+  ...
+# Subtest: intercepted campaign checkpoints roundtrip through manual slots and integral archives; free-play writes stay outside them
+ok 54 - intercepted campaign checkpoints roundtrip through manual slots and integral archives; free-play writes stay outside them
+  ---
+  duration_ms: 1297.520471
+  type: 'test'
+  ...
+# Subtest: review: a secured fallen carrier has one physical recovery claimant and one eventual delivery across sparse checkpoints
+ok 55 - review: a secured fallen carrier has one physical recovery claimant and one eventual delivery across sparse checkpoints
+  ---
+  duration_ms: 23.755036
+  type: 'test'
+  ...
+# Subtest: review: the final recovery frame is interrupted by a real projectile and a surviving ally restarts the physical channel
+ok 56 - review: the final recovery frame is interrupted by a real projectile and a surviving ally restarts the physical channel
+  ---
+  duration_ms: 4.894463
+  type: 'test'
+  ...
+# Subtest: review: full aircraft retain late components through boarding and departure, including a readable historical deficit
+ok 57 - review: full aircraft retain late components through boarding and departure, including a readable historical deficit
+  ---
+  duration_ms: 30.395835
+  type: 'test'
+  ...
+# Subtest: review: ground depot sabotage is atomic at 120 frames and a hit on the final frame discards progress
+ok 58 - review: ground depot sabotage is atomic at 120 frames and a hit on the final frame discards progress
+  ---
+  duration_ms: 14.860092
+  type: 'test'
+  ...
+# Subtest: review: a last depot lot taken by a survivor on the completion frame cannot also be neutralized
+ok 59 - review: a last depot lot taken by a survivor on the completion frame cannot also be neutralized
+  ---
+  duration_ms: 0.499834
+  type: 'test'
+  ...
+# Subtest: V1 and V2 active checkpoints retain their exact terrain through manual slots and integral archives
+ok 60 - V1 and V2 active checkpoints retain their exact terrain through manual slots and integral archives
+  ---
+  duration_ms: 254.721374
+  type: 'test'
+  ...
+# Subtest: a surveyed V2 fixture physically returns and preserves its observation and outcome in the archive
+ok 61 - a surveyed V2 fixture physically returns and preserves its observation and outcome in the archive
+  ---
+  duration_ms: 30.46591
+  type: 'test'
+  ...
+# Subtest: future versions and mixed terrain identities remain protected, without silently converting V1
+ok 62 - future versions and mixed terrain identities remain protected, without silently converting V1
+  ---
+  duration_ms: 2.95627
+  type: 'test'
+  ...
+# Subtest: V104 is an explicit second expedition and the original V1 geometry and bounds stay unchanged
+ok 63 - V104 is an explicit second expedition and the original V1 geometry and bounds stay unchanged
+  ---
+  duration_ms: 4.469432
+  type: 'test'
+  ...
+# Subtest: the fourth sector and canopy observation are reached by walking and jumping, followed by a physical return
+ok 64 - the fourth sector and canopy observation are reached by walking and jumping, followed by a physical return
+  ---
+  duration_ms: 130.041929
+  type: 'test'
+  ...
+# Subtest: the upper survey requires exactly 120 active ticks and records its real local position once
+ok 65 - the upper survey requires exactly 120 active ticks and records its real local position once
+  ---
+  duration_ms: 54.802922
+  type: 'test'
+  ...
+# Subtest: movement, jumping and a real projectile injury interrupt an unfinished survey
+ok 66 - movement, jumping and a real projectile injury interrupt an unfinished survey
+  ---
+  duration_ms: 44.794298
+  type: 'test'
+  ...
+# Subtest: a visit or nearby ground position cannot remotely complete the upper observation
+ok 67 - a visit or nearby ground position cannot remotely complete the upper observation
+  ---
+  duration_ms: 48.739541
+  type: 'test'
+  ...
+# Subtest: observation proofs reject partial, future, out-of-place and unvisited records
+ok 68 - observation proofs reject partial, future, out-of-place and unvisited records
+  ---
+  duration_ms: 43.408948
+  type: 'test'
+  ...
+# Subtest: sparse checkpoints preserve the exact observation and ordinary irreversible expedition facts
+ok 69 - sparse checkpoints preserve the exact observation and ordinary irreversible expedition facts
+  ---
+  duration_ms: 48.260859
+  type: 'test'
+  ...
+# Subtest: new vegetation blocks local sight without changing V1 cover or the extended world bounds
+ok 70 - new vegetation blocks local sight without changing V1 cover or the extended world bounds
+  ---
+  duration_ms: 54.911877
+  type: 'test'
+  ...
+# Subtest: the loader requests the exact native assets of each chosen biome and rejects wrong decoded dimensions until a genuine retry
+ok 71 - the loader requests the exact native assets of each chosen biome and rejects wrong decoded dimensions until a genuine retry
+  ---
+  duration_ms: 4.501824
+  type: 'test'
+  ...
+# Subtest: the actual renderer places each native prop at the physical surface or cover with its measured alpha crop and unchanged aspect ratio
+ok 72 - the actual renderer places each native prop at the physical surface or cover with its measured alpha crop and unchanged aspect ratio
+  ---
+  duration_ms: 3.656948
+  type: 'test'
+  ...
+# Subtest: all eight depots across three sectors can lose both lots without granting inventory or erasing transported material
+ok 73 - all eight depots across three sectors can lose both lots without granting inventory or erasing transported material
+  ---
+  duration_ms: 83.26915
+  type: 'test'
+  ...
+# Subtest: depot work uses strict ground range, release and movement reset it, and starting the exposed work removes camouflage
+ok 74 - depot work uses strict ground range, release and movement reset it, and starting the exposed work removes camouflage
+  ---
+  duration_ms: 11.969315
+  type: 'test'
+  ...
+# Subtest: recovery discovers only a nearby visible allied carrier, rather than a distant, covered or foreign body
+ok 75 - recovery discovers only a nearby visible allied carrier, rather than a distant, covered or foreign body
+  ---
+  duration_ms: 20.556529
+  type: 'test'
+  ...
+# Subtest: a partial recovery reloads exactly, pauses inertly, and an actual nearby threat discards its progress
+ok 76 - a partial recovery reloads exactly, pauses inertly, and an actual nearby threat discards its progress
+  ---
+  duration_ms: 10.106025
+  type: 'test'
+  ...
+# Subtest: a nonlethal last-frame projectile interrupts recovery without revealing the hidden hunter's current position
+ok 77 - a nonlethal last-frame projectile interrupts recovery without revealing the hidden hunter's current position
+  ---
+  duration_ms: 0.937715
+  type: 'test'
+  ...
+# Subtest: malformed denial facts and contradictory recovery jobs are rejected without rewriting supported legacy saves
+ok 78 - malformed denial facts and contradictory recovery jobs are rejected without rewriting supported legacy saves
+  ---
+  duration_ms: 0.704473
+  type: 'test'
+  ...
+# Subtest: the notebook reveals cache stock only on the ground nearby and recovery intent only for visible contacts
+ok 79 - the notebook reveals cache stock only on the ground nearby and recovery intent only for visible contacts
+  ---
+  duration_ms: 866.208052
+  type: 'test'
+  ...
+# Subtest: the live renderer handles all cache target indices and uses the same duration as the accessible action
+ok 80 - the live renderer handles all cache target indices and uses the same duration as the accessible action
+  ---
+  duration_ms: 3.472217
+  type: 'test'
+  ...
+# Subtest: V99 denial facts and an in-progress named recovery survive campaign imports, manual slots and integral archive roundtrips
+ok 81 - V99 denial facts and an in-progress named recovery survive campaign imports, manual slots and integral archive roundtrips
+  ---
+  duration_ms: 873.156625
+  type: 'test'
+  ...
+# Subtest: field notebook follows real sectors and never mutates the expedition
+ok 82 - field notebook follows real sectors and never mutates the expedition
+  ---
+  duration_ms: 4.381029
+  type: 'test'
+  ...
+# Subtest: a known sector and a distant audible launch do not reveal parts, repair or passengers
+ok 83 - a known sector and a distant audible launch do not reveal parts, repair or passengers
+  ---
+  duration_ms: 1.435916
+  type: 'test'
+  ...
+# Subtest: contacts require local line of sight; unnamed roles remain private until actual observation
+ok 84 - contacts require local line of sight; unnamed roles remain private until actual observation
+  ---
+  duration_ms: 0.598984
+  type: 'test'
+  ...
+# Subtest: an active launch takes priority over a body at the ramp, with physical channel progress
+ok 85 - an active launch takes priority over a body at the ramp, with physical channel progress
+  ---
+  duration_ms: 0.585554
+  type: 'test'
+  ...
+# Subtest: notebook renders accessible geography and honest uninspected ship states
+ok 86 - notebook renders accessible geography and honest uninspected ship states
+  ---
+  duration_ms: 91.984327
+  type: 'test'
+  ...
+# Subtest: closed expeditions show a historical notebook without suggesting playable actions
+ok 87 - closed expeditions show a historical notebook without suggesting playable actions
+  ---
+  duration_ms: 8.26
+  type: 'test'
+  ...
+# Subtest: first expedition restores exactly, respects seed and rejects future/contradictory checkpoints
+ok 88 - first expedition restores exactly, respects seed and rejects future/contradictory checkpoints
+  ---
+  duration_ms: 16.263734
+  type: 'test'
+  ...
+# Subtest: held inputs must be released before starting; pause is inert and never advances AI
+ok 89 - held inputs must be released before starting; pause is inert and never advances AI
+  ---
+  duration_ms: 8.52521
+  type: 'test'
+  ...
+# Subtest: JSON arrays and lookalike scalars never become status, projectile-owner or channel enums
+ok 90 - JSON arrays and lookalike scalars never become status, projectile-owner or channel enums
+  ---
+  duration_ms: 3.279166
+  type: 'test'
+  ...
+# Subtest: all three sectors connect by movement and branches support the hunter without teleportation
+ok 91 - all three sectors connect by movement and branches support the hunter without teleportation
+  ---
+  duration_ms: 142.080717
+  type: 'test'
+  ...
+# Subtest: cover interrupts sight/fire and AI has no knowledge of a hidden offscreen hunter
+ok 92 - cover interrupts sight/fire and AI has no knowledge of a hidden offscreen hunter
+  ---
+  duration_ms: 1.122233
+  type: 'test'
+  ...
+# Subtest: scan records only a physically visible role; weapons expose the hunter and have a cost/cadence
+ok 93 - scan records only a physically visible role; weapons expose the hunter and have a cost/cadence
+  ---
+  duration_ms: 8.210897
+  type: 'test'
+  ...
+# Subtest: a downed armed human requires a vulnerable channel; a shot interrupts it
+ok 94 - a downed armed human requires a vulnerable channel; a shot interrupts it
+  ---
+  duration_ms: 17.482823
+  type: 'test'
+  ...
+# Subtest: humans carry real components along the ground, finish without a technician and escape by actual boarding
+ok 95 - humans carry real components along the ground, finish without a technician and escape by actual boarding
+  ---
+  duration_ms: 971.887184
+  type: 'test'
+  ...
+# Subtest: sabotage delays but does not erase components or permanently disable an escape route
+ok 96 - sabotage delays but does not erase components or permanently disable an escape route
+  ---
+  duration_ms: 258.04736
+  type: 'test'
+  ...
+# Subtest: return and defeat freeze a durable outcome with no campaign grants; illegal regression is refused
+ok 97 - return and defeat freeze a durable outcome with no campaign grants; illegal regression is refused
+  ---
+  duration_ms: 2.92337
+  type: 'test'
+  ...
+# Subtest: native render assets exist and the screen refuses running through image/write failures
+ok 98 - native render assets exist and the screen refuses running through image/write failures
+  ---
+  duration_ms: 8.522956
+  type: 'test'
+  ...
+1..98
+# tests 98
+# suites 0
+# pass 98
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 40218.2035

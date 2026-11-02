@@ -1,9 +1,10 @@
 import type {GameReserveV107RouteRecord, GameReserveV107Tactics} from './gameReserveExpeditionV107';
+import {GAME_RESERVE_GRAND_CATALOGUE, type GameReserveGrandId} from './gameReserveGrandHunt';
 
 /** Project-original adaptations of two proposed catalogue geographies. Native art is reused. */
 export const GAME_RESERVE_V109_IDS = ['khar-duun-canyon-expedition', 'iskhel-ice-expedition'] as const;
 export type GameReserveV109Id = typeof GAME_RESERVE_V109_IDS[number];
-export type GameReserveChoiceV109 = 1 | 2 | 3 | 4 | GameReserveV109Id;
+export type GameReserveChoiceV109 = 1 | 2 | 3 | 4 | GameReserveV109Id | GameReserveGrandId;
 export type GameReserveV109Behavior = 'cache-guard' | 'repair-cover' | 'carrier-escort';
 export type GameReserveV109RouteRecord = GameReserveV107RouteRecord;
 export interface GameReserveV109Site {id: string; name: string; x: number; y: number; range: number; ticks: number; sector: number; description: string}
@@ -12,12 +13,21 @@ export interface GameReserveV109Person {
   art: 'raider' | 'marine' | 'sniper'; description: string; tactics: GameReserveV107Tactics;
   behavior?: GameReserveV109Behavior;
 }
+/** Native prop reference with its recorded pixel size; the loader refuses a different file. */
+export interface GameReserveNativeArt {src: string; size: readonly [number, number] | readonly number[]}
+/** Ground hazard: slow mud/thin ice, harmful shards/steam/branches, or a tripwire that reveals the hunter on entry. */
+export interface GameReserveHazard {x: number; w: number; kind: 'slow' | 'harm' | 'alarm'; art: number}
+export interface GameReserveDecor {x: number; y: number; w: number; h: number; art: number; layer: 'ground' | 'back' | 'support'}
 export interface GameReserveV109Definition {
-  id: GameReserveV109Id; name: string; biome: 'desert' | 'ice'; introduction: string;
+  id: GameReserveV109Id | GameReserveGrandId; name: string; biome: 'desert' | 'ice' | 'jungle'; introduction: string;
+  /** Present on V6 grand hunts only. */
+  version?: 6; title?: string; hazards?: readonly GameReserveHazard[]; decor?: readonly GameReserveDecor[];
+  nativeArt?: {background: GameReserveNativeArt; ledge: GameReserveNativeArt; gantry: GameReserveNativeArt; cover: GameReserveNativeArt;
+    platforms: readonly GameReserveNativeArt[]; covers: readonly GameReserveNativeArt[]; hazards: readonly GameReserveNativeArt[]; decor: readonly GameReserveNativeArt[]};
   world: {width: number; height: number; ground: number; returnX: number};
   sectors: readonly {id: string; name: string; left: number; right: number; atmosphere: string; terrain: string}[];
-  platforms: readonly {x: number; y: number; w: number; kind: 'ledge' | 'gantry'}[];
-  cover: readonly {x: number; w: number; top: number}[];
+  platforms: readonly {x: number; y: number; w: number; kind: 'ledge' | 'gantry'; art?: number}[];
+  cover: readonly {x: number; w: number; top: number; art?: number}[];
   supplies: readonly number[]; ships: readonly {id: string; name: string; x: number}[];
   sites: readonly GameReserveV109Site[]; people: readonly GameReserveV109Person[];
   factions: readonly {id: string; name: string; description: string}[];
@@ -77,9 +87,21 @@ export const GAME_RESERVE_V109_ART_DIMENSIONS = {
   desert: {background:[1823,863],branch:[768,166],industrialPlatform:[768,241],ferns:[359,768]},
   ice: {background:[1672,941],branch:[768,227],industrialPlatform:[768,226],ferns:[307,768]},
 } as const;
+/** V5 biome reserves and V6 grand hunts share one definition contract; each version only resolves its own identities. */
 export function gameReserveV109Definition(value?: {version?: number; reserveId?: string}): GameReserveV109Definition | null {
-  return value?.version === 5 ? GAME_RESERVE_CATALOGUE_V109.find(definition=>definition.id===value.reserveId)??null : null;
+  if (value?.version === 5) return GAME_RESERVE_CATALOGUE_V109.find(definition=>definition.id===value.reserveId)??null;
+  if (value?.version === 6) return GAME_RESERVE_GRAND_CATALOGUE.find(definition=>definition.id===value.reserveId)??null;
+  return null;
 }
+/** Every reserve offered as a string choice, in menu order. */
+export const GAME_RESERVE_STRING_CATALOGUE: readonly GameReserveV109Definition[] = [...GAME_RESERVE_CATALOGUE_V109, ...GAME_RESERVE_GRAND_CATALOGUE];
 export function parseGameReserveChoiceV109(value: string): GameReserveChoiceV109 {
-  return GAME_RESERVE_V109_IDS.includes(value as GameReserveV109Id) ? value as GameReserveV109Id : value === '4' ? 4 : value === '3' ? 3 : value === '2' ? 2 : 1;
+  if (GAME_RESERVE_STRING_CATALOGUE.some(definition => definition.id === value)) return value as GameReserveV109Id | GameReserveGrandId;
+  return value === '4' ? 4 : value === '3' ? 3 : value === '2' ? 2 : 1;
+}
+/** Short menu label shared by the campaign entry and the free menu. */
+export function gameReserveChoiceLabel(definition: GameReserveV109Definition): string {
+  const land = definition.biome === 'desert' ? 'canyons désertiques' : definition.biome === 'ice' ? 'terrasses et galeries glacées' : 'jungle';
+  return definition.version === 6 ? `${definition.title} · ${land} · ${definition.sectors.length} secteurs, ${definition.people.length} combattants, dangers actifs`
+    : `${definition.name} · ${land} · huit secteurs`;
 }

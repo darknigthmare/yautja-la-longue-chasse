@@ -1,3 +1,4 @@
+import {historicalReserveApiV6} from './helpers/preserve-historical-v6.mjs';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import {build} from 'esbuild';
@@ -7,7 +8,9 @@ function storage(save){const values=new Map([[api.SAVE_STORAGE_KEY,JSON.stringif
 async function locked(run){const before=Object.getOwnPropertyDescriptor(globalThis,'navigator');Object.defineProperty(globalThis,'navigator',{configurable:true,value:{locks:{request:async(_name,_options,callback)=>callback({})}}});try{await run();}finally{if(before)Object.defineProperty(globalThis,'navigator',before);else delete globalThis.navigator;}}
 const saveWith=gameReserveV66=>({...api.defaultSave('2026-10-24T08:00:00.000Z'),gameReserveV66});
 
-test('all four exact reserve identities roundtrip through campaign import; future five and mixed worlds are refused',()=>{
+test('all four exact reserve identities roundtrip through campaign import; future five and mixed worlds are refused [historical V108]',async()=>{
+ const api = await historicalReserveApiV6(108);
+ const saveWith=gameReserveV66=>({...api.defaultSave('2026-10-24T08:00:00.000Z'),gameReserveV66});
  for(const factory of['createGameReserveV66','createGameReserveV104','createGameReserveV107','createGameReserveV108']){const state=api[factory](108);assert.deepEqual(api.parseSaveImport(JSON.stringify(saveWith(state))).save?.gameReserveV66,state);}
  const state=api.createGameReserveV108(108);for(const wrong of[{...state,version:3},{...state,reserveId:'vharuun-transect-expedition'},{...state,routeV107:state.routeV108},{...state,routeV108:null},{...state,humans:api.createGameReserveV107(107).humans}]){const r=api.parseSaveImport(JSON.stringify(saveWith(wrong)));assert.equal(r.save,null);assert.equal(r.failure,'invalid-save');}
  for(const version of[5,99]){const r=api.parseSaveImport(JSON.stringify(saveWith({...state,version})));assert.equal(r.save,null);assert.equal(r.failure,'future-version');}
