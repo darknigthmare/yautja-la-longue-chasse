@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Independent PDF check against the unchanged source JSON; requires PyMuPDF."""
 import argparse
+from collections import Counter
 from datetime import datetime, timezone
 import hashlib
 from html.parser import HTMLParser
@@ -99,15 +100,48 @@ def main():
     document = fitz.open(args.pdf)
     errors = []
     journal = next((sheet for sheet in source['sheets'] if sheet['name'] == 'Reprise'), None)
+    archival_checks = {}
     if source['schemaVersion'] == 3:
         if len(source['sheets']) != 22 or source.get('cycleBaseline', {}).get('commit') != 'e4a6c64a1e77edad8865aa05ca7c2901d62bfa09':
             errors.append('Schema 3 requires 22 sheets and the exact e4 cycle baseline.')
-        if not journal or [row['id'] for row in journal['rows']] != ['RPR112-001', 'RPR112-002']:
-            errors.append('Expected the two ordered continuation entries RPR112-001/002.')
-        elif {row['target'] for row in journal['rows']} != {'CHA112-02', 'ROU112-06'} or any(row['status'] != 'VALIDE_AUTOMATISE' for row in journal['rows']):
-            errors.append('Only CHA112-02 and ROU112-06 may receive these two automated continuation decisions.')
+        approved_targets = {'CHA112-02', 'ROU112-06', 'ROU112-05', 'CHA112-05'}
+        count = len(journal['rows']) if journal else 0
+        required_targets = {'CHA112-02', 'ROU112-06'} if count == 2 else approved_targets
+        if not journal or count not in {2, 4} or [row['id'] for row in journal['rows']] != [f'RPR112-{i:03}' for i in range(1, count + 1)]:
+            errors.append('Expected two or four ordered approved continuation entries.')
+        elif {row['target'] for row in journal['rows']} != required_targets or any(row['status'] != 'VALIDE_AUTOMATISE' for row in journal['rows']):
+            errors.append('Continuation targets or automated decisions differ from the approved set.')
+        expected_journal_sources = {
+            'CHA112-02': 'https://github.com/darknigthmare/yautja-la-longue-chasse/blob/e0347c7645667c6dd7fabc48527704d4b5f1ca32/docs/qa/v112-ground-campaign/qualified-unladen/report.json',
+            'ROU112-06': 'https://github.com/darknigthmare/yautja-la-longue-chasse/blob/e0347c7645667c6dd7fabc48527704d4b5f1ca32/docs/qa/v112-canopy-choice/report.json',
+            'ROU112-05': 'https://github.com/darknigthmare/yautja-la-longue-chasse/blob/6e5999aa2507e296f754f581e5b97caa566fb7f2/docs/qa/v112-ground-deposit-composition/composed-review.md',
+            'CHA112-05': 'https://github.com/darknigthmare/yautja-la-longue-chasse/blob/6e5999aa2507e296f754f581e5b97caa566fb7f2/docs/qa/v112-ground-deposit-composition/composed-review.md'
+        }
+        for entry in journal['rows'] if journal else []:
+            if entry['source'] != expected_journal_sources.get(entry['target']):
+                errors.append(entry['id'] + ': source link differs from its approved immutable evidence.')
         if any(row['status'] != 'NON_QUALIFIE' for row in groups[1]['rows']):
             errors.append('All eight outstanding criteria must retain NON_QUALIFIE.')
+        historical_hashes = {'Cloture': '56358c148e54541cca896101215c2353d642b4ecea75dddfaea37593b9ca2456',
+                             'Restant': 'f11671a1ac604c61463215d631ff12ad9d6efea95f067b240b3dd3bea940f89d'}
+        for group in groups:
+            digest = hashlib.sha256(json.dumps(group, ensure_ascii=False, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
+            archival_checks[group['name']] = {'canonicalSha256': digest, 'matchesExactE4Snapshot': digest == historical_hashes[group['name']]}
+            if digest != historical_hashes[group['name']]:
+                errors.append(group['name'] + ': archived sheet differs from the exact e4 snapshot.')
+        if source['reviewRef'] != 'e1e45fbf85d843c26ac1bf4f816baf46313795b0':
+            errors.append('Historical source link reference must remain the exact e4 reference.')
+    current_states = {row['target']: row['status'] for row in groups[0]['rows']}
+    for entry in journal['rows'] if journal else []:
+        if current_states.get(entry['target']) != entry['previous']:
+            errors.append(entry['id'] + ': continuation does not follow its archived previous status.')
+        current_states[entry['target']] = entry['status']
+    current_counts = dict(Counter(current_states.values()))
+    if journal and len(journal['rows']) in {2, 4}:
+        expected_counts = {'VALIDE_AUTOMATISE': 205 if len(journal['rows']) == 4 else 203,
+                           'DOCUMENTE': 9, 'PARTIELLEMENT_QUALIFIE': 3 if len(journal['rows']) == 4 else 5, 'NON_QUALIFIE': 2}
+        if current_counts != expected_counts:
+            errors.append('Effective review counts differ from the approved continuation scope.')
     html_path = args.html or args.pdf.with_suffix('.html')
     html_tree = None
     if html_path.is_file():
@@ -257,6 +291,7 @@ def main():
         'html': str(html_path.resolve()) if html_path.is_file() else None,
         'htmlSha256': hashlib.sha256(html_path.read_bytes()).hexdigest() if html_path.is_file() else None,
         'journalEntries': journal_checks,
+        'archivalSheetChecks': archival_checks, 'effectiveReviewStatusCounts': current_counts,
         'recordHeadingsFound': len(headings), 'minimumTextFontPt': min((span['size'] for span in spans), default=None),
         'pageChecks': pages, 'fieldAndLinkChecks': field_checks, 'missingSourceLinks': missing_links,
         'screenshots': screenshots, 'errors': errors, 'result': 'OK' if not errors else 'FAILED',

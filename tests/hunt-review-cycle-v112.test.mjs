@@ -92,3 +92,17 @@ else:raise AssertionError('Forged proof commit accepted')
 `;
  await new Promise((resolve,reject)=>{const child=spawn('python3',['-c',script,fileURLToPath(new URL('../scripts/verify-hunt-mechanics-workbook-v112.py',import.meta.url))],{timeout:10000});let errors='';child.stderr.on('data',c=>{errors+=c});child.on('error',reject);child.on('close',code=>{try{assert.equal(code,0,errors);resolve()}catch(error){reject(error)}});child.stdin.end(JSON.stringify(source));});
 });
+
+test('the approved geometric composition closes four criteria while retaining all eight original remaining actions',async()=>{
+ const source=JSON.parse(await fs.readFile(new URL('../docs/hunt-mechanics-v112.json',import.meta.url),'utf8'));
+ assert.deepEqual(sheet(source,'Reprise').rows.map(r=>r.target),['CHA112-02','ROU112-06','ROU112-05','CHA112-05']);
+ assert.deepEqual(sheet(source,'Restant'),sheet(frozen,'Restant'));
+ const states=resolveHuntReviewV112(source),counts={};
+ for(const record of sheet(source,'Cloture').rows){const status=states.get(record.target);counts[status]=(counts[status]??0)+1;}
+ assert.deepEqual(counts,{DOCUMENTE:9,NON_QUALIFIE:2,VALIDE_AUTOMATISE:205,PARTIELLEMENT_QUALIFIE:3});
+ const proof=row(source,'PRF112-15');
+ assert.equal(proof.source,'https://github.com/'+source.repository+'/blob/6e5999aa2507e296f754f581e5b97caa566fb7f2/docs/qa/v112-ground-deposit-composition/composed-review.md');
+ for(const commit of ['6e5999aa2507e296f754f581e5b97caa566fb7f2','e0347c7645667c6dd7fabc48527704d4b5f1ca32','9e463aa136c97e102dc9a975405370a4c7bc5d3a'])assert.ok(proof.acceptance.includes(commit));
+ for(const target of ['ROU112-05','CHA112-05']){const entry=sheet(source,'Reprise').rows.find(r=>r.target===target);assert.equal(entry.proofs,'PRF112-15');assert.equal(entry.status,'VALIDE_AUTOMATISE');assert.match(entry.scope,/géométrique/);assert.match(entry.scope,/abandon/);assert.match(entry.scope,/REM112-08/);}
+ assert.equal(states.get('REM112-08'),'NON_QUALIFIE');
+});

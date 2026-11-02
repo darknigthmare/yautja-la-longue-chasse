@@ -1,12 +1,20 @@
 {
   "schema": 1,
-  "scope": "V112_SCHEMA3_DOCUMENTARY_CONTINUATION",
-  "createdAtUtc": "2026-11-02T06:11:13.686Z",
+  "scope": "V112_SCHEMA3_FOUR_DECISION_DOCUMENTARY_CONTINUATION",
+  "createdAtUtc": "2026-11-02T07:39:56.005Z",
   "gameplayEvidenceReceiptCommit": "e0347c7645667c6dd7fabc48527704d4b5f1ca32",
   "gameplayApplicationSourceRef": "e4a6c64a1e77edad8865aa05ca7c2901d62bfa09",
-  "documentaryValidationState": "Recorded working-tree bytes after the receipt commit; final committed-byte checks are separate.",
+  "composedGeometricReview": {
+    "receiptCommit": "6e5999aa2507e296f754f581e5b97caa566fb7f2",
+    "reviewedCodeRef": "6ad331a5ceccf48f25659dc2b32ded247a0226f2",
+    "originalGroundAndOperatorReceiptCommit": "e0347c7645667c6dd7fabc48527704d4b5f1ca32",
+    "carriedCorpseFixReceiptCommit": "9e463aa136c97e102dc9a975405370a4c7bc5d3a",
+    "newGameplayRuns": 0,
+    "scope": "Geometric passability with explicit optional-load abandonment; no guarantee of retained loot or victory from every compromised state."
+  },
+  "documentaryValidationState": "Recorded working-tree bytes after the composed-review receipt commit; final committed-byte checks remain separate.",
   "sheets": 22,
-  "rows": 610,
+  "rows": 613,
   "originalIdentities": 362,
   "historical": {
     "cycleCommit": "e4a6c64a1e77edad8865aa05ca7c2901d62bfa09",
@@ -28,8 +36,8 @@
     "closureResults": {
       "DOCUMENTE": 9,
       "NON_QUALIFIE": 2,
-      "VALIDE_AUTOMATISE": 203,
-      "PARTIELLEMENT_QUALIFIE": 5
+      "VALIDE_AUTOMATISE": 205,
+      "PARTIELLEMENT_QUALIFIE": 3
     },
     "remainingStatuses": {
       "REM112-01": "NON_QUALIFIE",
@@ -57,29 +65,45 @@
         "status": "VALIDE_AUTOMATISE",
         "proofs": "PRF112-14",
         "source": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/e0347c7645667c6dd7fabc48527704d4b5f1ca32/docs/qa/v112-canopy-choice/report.json"
+      },
+      {
+        "id": "RPR112-003",
+        "target": "ROU112-05",
+        "previous": "PARTIELLEMENT_QUALIFIE",
+        "status": "VALIDE_AUTOMATISE",
+        "proofs": "PRF112-15",
+        "source": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/6e5999aa2507e296f754f581e5b97caa566fb7f2/docs/qa/v112-ground-deposit-composition/composed-review.md"
+      },
+      {
+        "id": "RPR112-004",
+        "target": "CHA112-05",
+        "previous": "PARTIELLEMENT_QUALIFIE",
+        "status": "VALIDE_AUTOMATISE",
+        "proofs": "PRF112-15",
+        "source": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/6e5999aa2507e296f754f581e5b97caa566fb7f2/docs/qa/v112-ground-deposit-composition/composed-review.md"
       }
     ]
   },
   "artifacts": [
     {
       "path": "docs/YAUTJA_V112_MECANIQUES_CHASSE.xlsx",
-      "bytes": 734128,
-      "sha256": "f13dd1a3548aebac25ba77e11ad5c5835757fc49da94491dbe69dbd291b59989"
+      "bytes": 740369,
+      "sha256": "39f9470537721b13766bf4436d0f43623e06d1bee8c860ec570a4ab1f4f867ec"
     },
     {
       "path": "docs/hunt-mechanics-v112.json",
-      "bytes": 427613,
-      "sha256": "d234a07dc60824d91da0bdc843a9f21d8aa867f8ffe457ac43c89dff8113278a"
+      "bytes": 432273,
+      "sha256": "47b91ad876359968ffaa7a41c8413e9bc69ebf01715dd2a5884a69b466f44b5e"
     },
     {
       "path": "docs/hunt-mechanics-v112.md",
-      "bytes": 15171,
-      "sha256": "80614f9e9f6b9d6cefa99edd86c43154ed21e7e4f21eed2878b645b1e0abf786"
+      "bytes": 15549,
+      "sha256": "a0476d1092bbcdb644f8f159cd14e572156a06de34d7c9b280620c36681572a1"
     },
     {
       "path": "docs/qa/v112-hunt-continuation/README.md",
-      "bytes": 7555,
-      "sha256": "f68f42b5f7b60ea1929d529bbb57625c8a055665a990a72a078b6bf261bb9f67"
+      "bytes": 9668,
+      "sha256": "1750ef4d46ee0c3f819790d1dc654e41915b88704374ab27fc226f51e4be50e8"
     },
     {
       "path": "docs/qa/v112-hunt-continuation/first-copy-before-spacing/libreoffice-compatibility.json",
@@ -132,24 +156,129 @@
       "sha256": "88601f567e4fa22bbbb7f2d4bc76cdfef1f0c9e5b6f1a1da7204956904b0ace9"
     },
     {
-      "path": "docs/qa/v112-hunt-continuation/hunt-review-v112.html",
+      "path": "docs/qa/v112-hunt-continuation/first-two-closure-baseline/README.md",
+      "bytes": 428,
+      "sha256": "c2fa0c341ff9f5b7a0cf5e414fd4a5e3ea3fb16c749519a14b324b5b965b985c"
+    },
+    {
+      "path": "docs/qa/v112-hunt-continuation/first-two-closure-baseline/YAUTJA_V112_MECANIQUES_CHASSE.xlsx",
+      "bytes": 734128,
+      "sha256": "f13dd1a3548aebac25ba77e11ad5c5835757fc49da94491dbe69dbd291b59989"
+    },
+    {
+      "path": "docs/qa/v112-hunt-continuation/first-two-closure-baseline/archive-index.json",
+      "bytes": 5357,
+      "sha256": "96d244f4b215384cce55a6fa03ee95b06a2e7e47e9e13adb8c6a0ce8488cc1f0"
+    },
+    {
+      "path": "docs/qa/v112-hunt-continuation/first-two-closure-baseline/continuation-readme.md",
+      "bytes": 7555,
+      "sha256": "f68f42b5f7b60ea1929d529bbb57625c8a055665a990a72a078b6bf261bb9f67"
+    },
+    {
+      "path": "docs/qa/v112-hunt-continuation/first-two-closure-baseline/hunt-mechanics-v112.json",
+      "bytes": 427613,
+      "sha256": "d234a07dc60824d91da0bdc843a9f21d8aa867f8ffe457ac43c89dff8113278a"
+    },
+    {
+      "path": "docs/qa/v112-hunt-continuation/first-two-closure-baseline/hunt-mechanics-v112.md",
+      "bytes": 15171,
+      "sha256": "80614f9e9f6b9d6cefa99edd86c43154ed21e7e4f21eed2878b645b1e0abf786"
+    },
+    {
+      "path": "docs/qa/v112-hunt-continuation/first-two-closure-baseline/hunt-review-v112.html",
       "bytes": 341149,
       "sha256": "234d5419909490055047c5770885410e521d415cd28f8485d3dcf554391525ea"
     },
     {
-      "path": "docs/qa/v112-hunt-continuation/hunt-review-v112.pdf",
+      "path": "docs/qa/v112-hunt-continuation/first-two-closure-baseline/hunt-review-v112.pdf",
       "bytes": 1480498,
       "sha256": "e7b5793d7be0151b01bdc67919074f2bf21a713bdb037ec945b8b3d9d789e5dc"
     },
     {
-      "path": "docs/qa/v112-hunt-continuation/libreoffice-compatibility.json",
+      "path": "docs/qa/v112-hunt-continuation/first-two-closure-baseline/libreoffice-compatibility.json",
       "bytes": 9661,
       "sha256": "50d0f4cff438c1c3c74accdf0edda3c93073753cd39543002fefe4222569acd2"
     },
     {
-      "path": "docs/qa/v112-hunt-continuation/printable-page-001.png",
+      "path": "docs/qa/v112-hunt-continuation/first-two-closure-baseline/manifest.json",
+      "bytes": 9789,
+      "sha256": "c2b1175b3972390053d87236669f91a8a44d7d7b78a95f23fb4a748395d0a193"
+    },
+    {
+      "path": "docs/qa/v112-hunt-continuation/first-two-closure-baseline/printable-page-001.png",
       "bytes": 186724,
       "sha256": "aff5fab04b183043f556aa0e81fc5ca9f3eced5651b6a8469006860e3d203ffb"
+    },
+    {
+      "path": "docs/qa/v112-hunt-continuation/first-two-closure-baseline/printable-page-013.png",
+      "bytes": 242513,
+      "sha256": "f91768f5fff5722270b1bfa1d64dc6bff1de57728a60bfdd90b438834f9c00b1"
+    },
+    {
+      "path": "docs/qa/v112-hunt-continuation/first-two-closure-baseline/printable-page-045.png",
+      "bytes": 257096,
+      "sha256": "c520c0aca1c0ea0c0ab35e244838ea8ab411dece5099f0c6334ced7cec79545d"
+    },
+    {
+      "path": "docs/qa/v112-hunt-continuation/first-two-closure-baseline/printable-page-047.png",
+      "bytes": 162803,
+      "sha256": "58d5c6b717db63d60a276c39becea64561605aa46c4a41d584ad66d5d063d7c0"
+    },
+    {
+      "path": "docs/qa/v112-hunt-continuation/first-two-closure-baseline/printable-page-087.png",
+      "bytes": 233743,
+      "sha256": "f42305609ef320d91b28601397e263ac5fc9c81615558b285f6422739ffa6a56"
+    },
+    {
+      "path": "docs/qa/v112-hunt-continuation/first-two-closure-baseline/printable-page-090.png",
+      "bytes": 218931,
+      "sha256": "3939668266c9b9ef3878714d2bf81f1aa6fb6b770b955d6d5260ed2929586679"
+    },
+    {
+      "path": "docs/qa/v112-hunt-continuation/first-two-closure-baseline/printable-page-092.png",
+      "bytes": 78425,
+      "sha256": "67e2938e6b17f7ae9e7954c34d47fa1994f4331e62e2d9d63e4e77e0bd4b6641"
+    },
+    {
+      "path": "docs/qa/v112-hunt-continuation/first-two-closure-baseline/printable-verification.json",
+      "bytes": 112121,
+      "sha256": "4359676fde25434841f10c1fb8f35ae3f9d7283214fd92d8d4e38aef05ccc620"
+    },
+    {
+      "path": "docs/qa/v112-hunt-continuation/first-two-closure-baseline/public-downloads.json",
+      "bytes": 809,
+      "sha256": "5511dffa59e31119645a151ea0502cc99f1994a86eac51ad476e17e22b9d9048"
+    },
+    {
+      "path": "docs/qa/v112-hunt-continuation/first-two-closure-baseline/validation-results.json",
+      "bytes": 4556,
+      "sha256": "1cdd231870698c138bbe143765c0821af3bff1f3ef83f3978bd4ae447f071915"
+    },
+    {
+      "path": "docs/qa/v112-hunt-continuation/hunt-review-v112.html",
+      "bytes": 346087,
+      "sha256": "8bdcbfcc3a6aac7236f122ba5c61f1f059231a4d4b30c33b3efca8781479317a"
+    },
+    {
+      "path": "docs/qa/v112-hunt-continuation/hunt-review-v112.pdf",
+      "bytes": 1499808,
+      "sha256": "32f84c72fc965deb817b640b4cb8b17e837542a2b1dde6ed2a74c053b1461442"
+    },
+    {
+      "path": "docs/qa/v112-hunt-continuation/libreoffice-compatibility.json",
+      "bytes": 9661,
+      "sha256": "1f981ec547c96ea1351b422c7b4af6fef15adf4ed9add58a8eb96acc767bd0a1"
+    },
+    {
+      "path": "docs/qa/v112-hunt-continuation/printable-page-001.png",
+      "bytes": 186870,
+      "sha256": "3fbe55ca5223d90845cd79bf374d263f6e63fdebf293b8e781f11fdfa00fec74"
+    },
+    {
+      "path": "docs/qa/v112-hunt-continuation/printable-page-012.png",
+      "bytes": 277555,
+      "sha256": "f461f63c89947dbc49ecde37b392f79869344a31fabfde39c974f847460e53c0"
     },
     {
       "path": "docs/qa/v112-hunt-continuation/printable-page-013.png",
@@ -163,8 +292,8 @@
     },
     {
       "path": "docs/qa/v112-hunt-continuation/printable-page-047.png",
-      "bytes": 162803,
-      "sha256": "58d5c6b717db63d60a276c39becea64561605aa46c4a41d584ad66d5d063d7c0"
+      "bytes": 269136,
+      "sha256": "00ec070e7332e711bc3572f205f4b5f8883fda6fae1a874dc9be38891b329adb"
     },
     {
       "path": "docs/qa/v112-hunt-continuation/printable-page-087.png",
@@ -172,9 +301,19 @@
       "sha256": "f42305609ef320d91b28601397e263ac5fc9c81615558b285f6422739ffa6a56"
     },
     {
+      "path": "docs/qa/v112-hunt-continuation/printable-page-088.png",
+      "bytes": 233743,
+      "sha256": "0ebeecbb16f2ab20a19a69c2261b466c527ebd8b378b3999e5ff4c9d6c48032b"
+    },
+    {
       "path": "docs/qa/v112-hunt-continuation/printable-page-090.png",
       "bytes": 218931,
       "sha256": "3939668266c9b9ef3878714d2bf81f1aa6fb6b770b955d6d5260ed2929586679"
+    },
+    {
+      "path": "docs/qa/v112-hunt-continuation/printable-page-091.png",
+      "bytes": 218937,
+      "sha256": "69cc78f0bb03953134b2d48c1bb7d51110773ee77bc739caf414ad1d72472eac"
     },
     {
       "path": "docs/qa/v112-hunt-continuation/printable-page-092.png",
@@ -182,34 +321,39 @@
       "sha256": "67e2938e6b17f7ae9e7954c34d47fa1994f4331e62e2d9d63e4e77e0bd4b6641"
     },
     {
+      "path": "docs/qa/v112-hunt-continuation/printable-page-093.png",
+      "bytes": 78425,
+      "sha256": "2842a426c01779b19e6532f3349c84e50b9194cd0ee8461ce6776cf21343ef79"
+    },
+    {
       "path": "docs/qa/v112-hunt-continuation/printable-verification.json",
-      "bytes": 112121,
-      "sha256": "4359676fde25434841f10c1fb8f35ae3f9d7283214fd92d8d4e38aef05ccc620"
+      "bytes": 113832,
+      "sha256": "590535024f729f0bc0dd37d87486fa6f343988f488d0d1dfee1ab7474cce7759"
     },
     {
       "path": "docs/qa/v112-hunt-continuation/public-downloads.json",
       "bytes": 809,
-      "sha256": "5511dffa59e31119645a151ea0502cc99f1994a86eac51ad476e17e22b9d9048"
+      "sha256": "4fd7a20e650e4a0bd3c92ca406d5f0c4e419ecc9b5531077f92a317ab8acc750"
     },
     {
       "path": "docs/qa/v112-hunt-continuation/validation-results.json",
-      "bytes": 4556,
-      "sha256": "1cdd231870698c138bbe143765c0821af3bff1f3ef83f3978bd4ae447f071915"
+      "bytes": 4884,
+      "sha256": "4c3fd38da5a53ae5a660a9056a17b1738c1da5d945396bfd88786bdab5b60c13"
     },
     {
       "path": "public/aide/YAUTJA_V112_MECANIQUES_CHASSE.xlsx",
-      "bytes": 734128,
-      "sha256": "f13dd1a3548aebac25ba77e11ad5c5835757fc49da94491dbe69dbd291b59989"
+      "bytes": 740369,
+      "sha256": "39f9470537721b13766bf4436d0f43623e06d1bee8c860ec570a4ab1f4f867ec"
     },
     {
       "path": "public/aide/YAUTJA_V112_REVUES_IMPRIMABLE.html",
-      "bytes": 341149,
-      "sha256": "234d5419909490055047c5770885410e521d415cd28f8485d3dcf554391525ea"
+      "bytes": 346087,
+      "sha256": "8bdcbfcc3a6aac7236f122ba5c61f1f059231a4d4b30c33b3efca8781479317a"
     },
     {
       "path": "public/aide/YAUTJA_V112_REVUES_IMPRIMABLE.pdf",
-      "bytes": 1480498,
-      "sha256": "e7b5793d7be0151b01bdc67919074f2bf21a713bdb037ec945b8b3d9d789e5dc"
+      "bytes": 1499808,
+      "sha256": "32f84c72fc965deb817b640b4cb8b17e837542a2b1dde6ed2a74c053b1461442"
     },
     {
       "path": "scripts/build-hunt-mechanics-workbook-v112.mjs",
@@ -233,8 +377,8 @@
     },
     {
       "path": "scripts/verify-hunt-printable-v112.py",
-      "bytes": 16514,
-      "sha256": "1ec3a254d1837b1bf6f3e232900c1001fdcf8cfa8991cb65d0d497381e70071a"
+      "bytes": 19639,
+      "sha256": "a163140066c7b12a05947ad065d9479c499beb8df8caca7b82a298c521ff0da9"
     },
     {
       "path": "tests/fixtures/hunt-mechanics-e4a6c64-v112.json.gz",
@@ -248,8 +392,8 @@
     },
     {
       "path": "tests/hunt-review-cycle-v112.test.mjs",
-      "bytes": 8169,
-      "sha256": "f3a39eb029b0ecf830239f2719198ff21a24094729b8952e7388b58b43fe518a"
+      "bytes": 9673,
+      "sha256": "d92d144ac378243db746b3cda7e02984334a4faf96e4b8e8dce62c6df84d49e5"
     }
   ]
 }

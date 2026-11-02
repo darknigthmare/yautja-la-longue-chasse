@@ -3888,6 +3888,14 @@
           "rule": "GameClient et HuntCanvas natifs, insertion canonique, guide développé et vrais inputs : choix du repos à 95,05/100, vraie réception puis récupération à 100.",
           "source": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/e0347c7645667c6dd7fabc48527704d4b5f1ca32/docs/qa/v112-canopy-choice/report.json",
           "acceptance": "commit e0347c7645667c6dd7fabc48527704d4b5f1ca32 de consignation du runner et des preuves ; application exécutée e4a6c64a1e77edad8865aa05ca7c2901d62bfa09 ; commande node scripts/qa-hunt-canopy-choice-browser-v112.mjs --output outputs/qa-hunt-canopy-choice-v112/attempt-r1 --wall-seconds 300 ; FUNCTIONAL_NATIVE_BROWSER_PASS, quatre ennemis actifs conservés, PV 160→143,68, aucun soin ni mutation de champ. Le guide développé distingue route, appui et support souple. Le message contextuel de grimpe conserve une formulation de liane sur arbre rigide ; la limite est consignée. Aucune étude novice ni saisie de liane revendiquée."
+        },
+        {
+          "id": "PRF112-15",
+          "status": "VALIDE_AUTOMATISE",
+          "topic": "Franchissabilité géométrique et abandon optionnel",
+          "rule": "Preuve logicielle composée : 24 parcours terrestres sans récolte, opérateur local de dépôt et dépose distincte de carcasse portée. La charge optionnelle peut être abandonnée pour restaurer les capacités ; le maintien du butin n’est pas qualifié.",
+          "source": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/6e5999aa2507e296f754f581e5b97caa566fb7f2/docs/qa/v112-ground-deposit-composition/composed-review.md",
+          "acceptance": "commit 6e5999aa2507e296f754f581e5b97caa566fb7f2 : relecture composée des critères géométriques, sans nouvelle mission ajoutée. Sources et exécutions originelles distinctes : les 24 parcours et le lemme initial sont consignés en e0347c7645667c6dd7fabc48527704d4b5f1ca32 sur application e4a6c64a1e77edad8865aa05ca7c2901d62bfa09 ; commande node scripts/qa-hunt-ground-campaign-v112.mjs --seconds=240 --replay=true --requireComplete=true --output=docs/qa/v112-ground-campaign/qualified-unladen ; commande node scripts/qa-hunt-ground-deposit-composition-v112.mjs (24 fixtures et 5 394 sondes construites, distinctes des parcours). Le correctif de carcasse portée et ses 20 cas sont consignés en 9e463aa136c97e102dc9a975405370a4c7bc5d3a ; commande YAUTJA_CARCASS_MENU_QA_REPORT=docs/qa/v112-carried-corpse-menu-fix/native-report.json node --experimental-strip-types --test tests/hunt-carried-corpse-menu-v112.test.mjs. La note relit le code 6ad331a5ceccf48f25659dc2b32ded247a0226f2. Portée : franchissabilité après abandon explicite de charge optionnelle, sans promesse de butin gardé, de victoire depuis tout état compromis ou de durabilité après écriture refusée. REM112-08 reste ouvert dans son texte original."
         }
       ]
     },
@@ -6758,6 +6766,30 @@
           "scope": "Possibilité fonctionnelle observée avec les vrais boutons et inputs dans GameClient/HuntCanvas : guide développé distinguant route/appui/support souple, choix à 95,05/100, réception sur le vrai repos et récupération 97,52→100. Le message contextuel de grimpe sur arbre conserve une formulation de liane, explicitée au rapport. Ce parcours ne démontre ni compréhension novice, ni liane saisie, ni canopée complète ; FUT-11 et REM112-01 restent ouverts.",
           "source": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/e0347c7645667c6dd7fabc48527704d4b5f1ca32/docs/qa/v112-canopy-choice/report.json",
           "remaining": ""
+        },
+        {
+          "id": "RPR112-003",
+          "target": "ROU112-05",
+          "previous": "PARTIELLEMENT_QUALIFIE",
+          "status": "VALIDE_AUTOMATISE",
+          "criterion": "Les parcours de canopée sont optionnels et conservent le chemin terrestre. | Aucune mission bloquée par une charge ou armure.",
+          "kind": "AUTOMATISE",
+          "proofs": "PRF112-15",
+          "scope": "Franchissabilité géométrique : les 24 parcours terrestres déclarés couvrent huit missions et trois armures sans canopée. À la frontière d’acquisition en appui et sans opération active, l’opérateur natif permet d’abandonner la charge optionnelle du sac sans déplacer le joueur ou le monde et restaure les facteurs à 1 ; la dépose de la carcasse portée est un opérateur distinct, corrigé et vérifié par 20 cas. Cette composition accepte explicitement l’abandon du bénéfice optionnel. Elle ne promet ni maintien du butin ni victoire depuis tout état compromis. REM112-08 conserve son critère original de parcours avec charge et armure déclarées.",
+          "source": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/6e5999aa2507e296f754f581e5b97caa566fb7f2/docs/qa/v112-ground-deposit-composition/composed-review.md",
+          "remaining": ""
+        },
+        {
+          "id": "RPR112-004",
+          "target": "CHA112-05",
+          "previous": "PARTIELLEMENT_QUALIFIE",
+          "status": "VALIDE_AUTOMATISE",
+          "criterion": "Charge ajuste l'impulsion par coefficient borné. | Jamais de coefficient négatif ou d'obligation inaccessible.",
+          "kind": "AUTOMATISE",
+          "proofs": "PRF112-15",
+          "scope": "Franchissabilité géométrique et borne de l’impulsion : l’effort est dans [0,1] et le coefficient de saut dans [0,84 ; 1]. Les opérateurs natifs de dépôt du sac et de dépose du corps peuvent neutraliser la charge optionnelle avant un passage, puis restaurer les capacités terrestres déjà qualifiées pour l’armure. Le critère est clos avec possibilité explicite d’abandon du bénéfice optionnel. Cette composition ne garantit ni butin gardé, ni récupération ultérieure, ni victoire depuis tout état compromis ; REM112-08 reste ouvert selon son texte exact.",
+          "source": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/6e5999aa2507e296f754f581e5b97caa566fb7f2/docs/qa/v112-ground-deposit-composition/composed-review.md",
+          "remaining": ""
         }
       ]
     }
@@ -8798,7 +8830,7 @@
     ]
   },
   "integrationBaseCommit": "81fc1916fc285ca85d3c434737bc35b1e5f2fb7f",
-  "deliveryValidationScope": "Les preuves de code portent sur e1e45fbf85d843c26ac1bf4f816baf46313795b0 et son arbre c32dcc50b200929c71bef159a09c83106ac144c4. Les trois anciennes attentes Excel sont closes pour l'artefact 252c à 19 onglets/362 lignes ; les nouveaux scripts schéma2 et octets 21 onglets/606 lignes sont contrôlés séparément par les checks de la PR de reprise, sans attribuer leur résultat à un commit antérieur. Les nouvelles preuves de route au sol et de choix de repos sont consignées au commit e0347c7645667c6dd7fabc48527704d4b5f1ca32, pour l’application exécutée e4a6c64a1e77edad8865aa05ca7c2901d62bfa09. Les nouveaux scripts schéma3, la source JSON, le compagnon et le XLSX reçoivent leurs vérifications documentaires séparées ; leurs octets ne sont pas attribués à ce commit de consignation.",
+  "deliveryValidationScope": "Les preuves de code portent sur e1e45fbf85d843c26ac1bf4f816baf46313795b0 et son arbre c32dcc50b200929c71bef159a09c83106ac144c4. Les trois anciennes attentes Excel sont closes pour l'artefact 252c à 19 onglets/362 lignes ; les nouveaux scripts schéma2 et octets 21 onglets/606 lignes sont contrôlés séparément par les checks de la PR de reprise, sans attribuer leur résultat à un commit antérieur. Les nouvelles preuves de route au sol et de choix de repos sont consignées au commit e0347c7645667c6dd7fabc48527704d4b5f1ca32, pour l’application exécutée e4a6c64a1e77edad8865aa05ca7c2901d62bfa09. Les nouveaux scripts schéma3, la source JSON, le compagnon et le XLSX reçoivent leurs vérifications documentaires séparées ; leurs octets ne sont pas attribués à ce commit de consignation. La preuve géométrique composée des décisions RPR112-003/004 est consignée en 6e5999aa2507e296f754f581e5b97caa566fb7f2 ; ses parcours, tests d’opérateur et correctif porté gardent les sources et commandes originelles distinctes, sans ajout de mission ni clôture de REM112-08.",
   "printLayout": {
     "fitToPage": true
   },

@@ -8,7 +8,15 @@ import { chromium } from 'playwright-core';
 
 // These checks exercise the local carnet, never the game or physical hardware.
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const output = path.join(root, 'docs/qa/v112-validation-kit/r2');
+const output = path.join(root, 'docs/qa/v112-validation-kit/r3');
+const inputPaths = ['public/aide/qualification-chasse.html', 'scripts/qa-qualification-kit-v112.mjs', 'docs/hunt-mechanics-v112.json', 'docs/YAUTJA_V112_MECANIQUES_CHASSE.xlsx', 'docs/qa/v112-hunt-continuation/hunt-review-v112.pdf', 'public/aide/YAUTJA_V112_MECANIQUES_CHASSE.xlsx', 'public/aide/YAUTJA_V112_REVUES_IMPRIMABLE.pdf'];
+async function inputFingerprints() {
+  return Promise.all(inputPaths.map(async file => {
+    const bytes = await readFile(path.join(root, file));
+    return { path: file, bytes: bytes.length, sha256: createHash('sha256').update(bytes).digest('hex') };
+  }));
+}
+const frozenInputs = await inputFingerprints();
 const html = await readFile(path.join(root, 'public/aide/qualification-chasse.html'));
 const downloads = await Promise.all([
   ['YAUTJA_V112_MECANIQUES_CHASSE.xlsx', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'],
@@ -16,8 +24,19 @@ const downloads = await Promise.all([
 ].map(async ([filename, contentType]) => ({ filename, contentType, url: '/aide/' + filename, bytes: await readFile(path.join(root, 'public/aide', filename)) })));
 const source = JSON.parse(await readFile(path.join(root, 'docs/hunt-mechanics-v112.json'), 'utf8'));
 const originals = source.sheets.find(sheet => sheet.name === 'Restant').rows;
+const decisionRows = source.sheets.find(sheet => sheet.name === 'Reprise').rows;
+const reviewedDecisions = decisionRows.map(row => ({ target: row.target, status: row.status }));
+assert.deepEqual(reviewedDecisions.map(row => row.target).sort(), ['CHA112-02', 'CHA112-05', 'ROU112-05', 'ROU112-06'], 'The reference journal contains exactly the four reviewed decisions');
+assert.ok(reviewedDecisions.every(row => row.status === 'VALIDE_AUTOMATISE'));
+for (const decision of decisionRows) {
+  const original = source.sheets.flatMap(sheet => sheet.rows).find(row => row.id === decision.target && typeof row.rule === 'string');
+  assert.equal(decision.criterion, `${original.rule} | ${original.acceptance}`, 'Every reviewed decision preserves its exact original rule and acceptance');
+}
+assert.equal(originals.length, 8);
+assert.ok(originals.every(row => row.status === 'NON_QUALIFIE'), 'All eight remaining qualifications stay open');
 const workbookHash = createHash('sha256').update(await readFile(path.join(root, 'docs/YAUTJA_V112_MECANIQUES_CHASSE.xlsx'))).digest('hex');
 assert.equal(createHash('sha256').update(downloads[0].bytes).digest('hex'), workbookHash, 'The public workbook must be the delivered workbook');
+assert.deepEqual(downloads[1].bytes, await readFile(path.join(root, 'docs/qa/v112-hunt-continuation/hunt-review-v112.pdf')), 'The public printable must be the delivered PDF');
 await mkdir(output, { recursive: true });
 const serverRequests = [];
 const server = createServer((request, response) => {
@@ -40,6 +59,12 @@ try {
   page.on('request', request => requests.push(request.url()));
   page.on('pageerror', error => errors.push(error.message));
   await page.goto(url, { waitUntil: 'load' });
+  async function checkReviewedDecisions(targetPage) {
+    const displayed = await targetPage.locator('#current-reviewed-decisions [data-reviewed-target]').evaluateAll(nodes => nodes.map(node => ({ target: node.textContent.trim(), status: node.dataset.reviewedStatus })));
+    assert.deepEqual(displayed, reviewedDecisions, 'Displayed reference decisions must match the Reprise journal exactly');
+    assert.match(await targetPage.locator('#current-reviewed-decisions').textContent(), /Ces quatre décisions ne proviennent pas de ce carnet/);
+  }
+  await checkReviewedDecisions(page);
   assert.equal(await page.title(), 'Qualification de la chasse — carnet local du validateur');
   assert.equal(await page.locator('html').getAttribute('lang'), 'fr');
   assert.equal(await page.locator('#collect-browser').isDisabled(), true);
@@ -125,6 +150,7 @@ try {
     await page.locator('#configuration details').evaluate(node => node.open = false);
     await page.evaluate(() => scrollTo(0, 0));
     await page.screenshot({ path: path.join(output, `carnet-${viewport.width}.png`), fullPage: false });
+    await page.locator('#documents').screenshot({ path: path.join(output, `carnet-documents-${viewport.width}.png`) });
   }
   assert.deepEqual(await page.evaluate(() => ({ local: localStorage.length, session: sessionStorage.length, cookies: document.cookie })), { local: 0, session: 0, cookies: '' });
   assert.deepEqual(requests, [url], 'No request follows the single page load');
@@ -157,6 +183,7 @@ try {
     const staticRequests = [];
     noScript.on('request', request => staticRequests.push(request.url()));
     await noScript.goto(url, { waitUntil: 'load' });
+    await checkReviewedDecisions(noScript);
     assert.equal(await noScript.locator('noscript').isVisible(), true);
     assert.equal(await noScript.locator('#criteria > article').count(), 6);
     assert.equal(await noScript.locator('#criteria [data-criterion-protocol][open]').count(), 6, 'Every detailed protocol is expanded without JavaScript');
@@ -186,7 +213,8 @@ try {
     assert.ok(serverRequests.every(request => request.method === 'GET' && !request.path.includes('?')));
     assert.ok(serverRequests.filter(request => downloads.some(file => file.url === request.path)).every(request => request.referrer === null), 'Voluntary downloads do not transmit carnet fields or a referrer');
   } finally { await noScriptContext.close(); }
-  const summary = { result: 'OK', scope: 'LOCAL_CARNET_SOFTWARE_ONLY', chromeVersion: browser.version(), nodeVersion: process.version, viewports: ['390x844', '1280x900'], criteriaAutomaticallyClosed: [], checks: ['source criteria unchanged', '45 novice observations empty by default', 'manual consent and revocation', 'invalid attestations rejected', 'Excel / LibreOffice distinction', 'reviewed JSON equals download', 'edit invalidates review', 'field labels and keyboard skip link', 'no horizontal page overflow', 'no automatic follow-up network requests', 'no browser storage', 'reload clears report', 'JavaScript disabled: six complete protocols expanded', 'JavaScript disabled: nine shared novice objectives and observations', 'JavaScript disabled: no result or export fabricated', 'voluntary XLSX/PDF downloads preserve exact bytes with and without JavaScript'], downloadChecks, htmlSha256: createHash('sha256').update(html).digest('hex'), workbookSha256: workbookHash };
+  assert.deepEqual(await inputFingerprints(), frozenInputs, 'Frozen carnet, runner, criteria and download inputs remain unchanged during the run');
+  const summary = { result: 'OK', scope: 'LOCAL_CARNET_SOFTWARE_ONLY', chromeVersion: browser.version(), nodeVersion: process.version, viewports: ['390x844', '1280x900'], criteriaAutomaticallyClosed: [], referenceReviewedDecisions: reviewedDecisions, remainingCriteriaOpen: originals.map(row => row.id), sourceGuard: { result: 'UNCHANGED_DURING_RUN', files: frozenInputs }, checks: ['source criteria unchanged', 'four reference decisions match Reprise with and without JavaScript', 'all eight remaining qualifications stay open', '45 novice observations empty by default', 'manual consent and revocation', 'invalid attestations rejected', 'Excel / LibreOffice distinction', 'reviewed JSON equals download', 'edit invalidates review', 'field labels and keyboard skip link', 'no horizontal page overflow', 'no automatic follow-up network requests', 'no browser storage', 'reload clears report', 'JavaScript disabled: six complete protocols expanded', 'JavaScript disabled: nine shared novice objectives and observations', 'JavaScript disabled: no result or export fabricated', 'voluntary XLSX/PDF downloads preserve exact bytes with and without JavaScript'], downloadChecks, htmlSha256: createHash('sha256').update(html).digest('hex'), workbookSha256: workbookHash };
   await writeFile(path.join(output, 'carnet-software-report.json'), JSON.stringify(summary, null, 2) + '\n');
   console.log(JSON.stringify(summary, null, 2));
   await context.close();
