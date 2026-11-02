@@ -1,0 +1,111 @@
+TAP version 13
+# Subtest: R7 retains the nine assertions, 1894 publication files and the original V111 negative-test fixture
+ok 1 - R7 retains the nine assertions, 1894 publication files and the original V111 negative-test fixture
+  ---
+  duration_ms: 11209.582133
+  type: 'test'
+  ...
+# TAP version 13
+# \# Subtest: V112 retains every inherited requirement and keeps nine actions inside the 56 source rows
+# ok 1 - V112 retains every inherited requirement and keeps nine actions inside the 56 source rows
+#   ---
+#   duration_ms: 3704.293147
+#   type: 'test'
+#   ...
+# \# Subtest: unrelated closures, partial closures, duplicate workstreams and unsupported browser promotions are refused
+# ok 2 - unrelated closures, partial closures, duplicate workstreams and unsupported browser promotions are refused
+#   ---
+#   duration_ms: 16.167882
+#   type: 'test'
+#   ...
+# \# Traceback (most recent call last):
+# \#   File "/tmp/yautja-r7-publication-v113-LXypqM/scripts/build-homeworld-followup-v112.py", line 35, in <module>
+# \#     raise ValueError('Historical workbook ZIP part changed: ' + name)
+# \# ValueError: Historical workbook ZIP part changed: xl/worksheets/v111-sheet-106.xml
+# \# Subtest: 122 worksheets retain all 113 historical parts and detect a cell-text-only mutation precisely
+# ok 3 - 122 worksheets retain all 113 historical parts and detect a cell-text-only mutation precisely
+#   ---
+#   duration_ms: 4454.971814
+#   type: 'test'
+#   ...
+# \# Subtest: a historical V111 production report cannot certify V112
+# ok 4 - a historical V111 production report cannot certify V112
+#   ---
+#   duration_ms: 10.243219
+#   type: 'test'
+#   ...
+# \# Subtest: failed or omitted network requests cannot receive a current production pass
+# ok 5 - failed or omitted network requests cannot receive a current production pass
+#   ---
+#   duration_ms: 3.967558
+#   type: 'test'
+#   ...
+# \# Subtest: real raw file identities match frozen path identities without rewriting the executed evidence
+# ok 6 - real raw file identities match frozen path identities without rewriting the executed evidence
+#   ---
+#   duration_ms: 0.45726
+#   type: 'test'
+#   ...
+# \# Subtest: conflicting path aliases, duplicate observations and changed frozen bytes cannot be hidden by normalization
+# ok 7 - conflicting path aliases, duplicate observations and changed frozen bytes cannot be hidden by normalization
+#   ---
+#   duration_ms: 1.33212
+#   type: 'test'
+#   ...
+# \# Subtest: individually valid domain certificates cannot be mixed across runtime commits or compiled builds
+# ok 8 - individually valid domain certificates cannot be mixed across runtime commits or compiled builds
+#   ---
+#   duration_ms: 0.561487
+#   type: 'test'
+#   ...
+# \# Subtest: V112 workbook and metadata reproduce exactly without executing historical gameplay or native Excel
+# ok 9 - V112 workbook and metadata reproduce exactly without executing historical gameplay or native Excel
+#   ---
+#   duration_ms: 9262.405184
+#   type: 'test'
+#   ...
+# 1..9
+# \# tests 9
+# \# suites 0
+# \# pass 9
+# \# fail 0
+# \# cancelled 0
+# \# skipped 0
+# \# todo 0
+# \# duration_ms 17877.709081
+# {"status":"PASS","path":"docs/v112-runtime-freeze.json","bytes":306338,"sha256":"c35f8b454ec26d1b05852cabbe4f6ee111d71e7413aef80282582d3ca5ee6a3e"}
+# {"status":"PASS","path":"docs/v112-runtime-public-inputs.json","bytes":14024}
+# {"result":"PASS_STRUCTURE","sha256":"723cc894b643d55dcd076cab8b615866c6879ecc481c55616adcdd0508d2eccc","bytes":9433700,"inputs":1891,"facts":{"inheritedSourceRequirements":56,"sourceRequirementsOpen":56,"sourceActionsIncluded":9,"sourceActionsRemaining":9,"newlyClosedSourceRequirements":0,"boundedWorkstreams":6,"deferredWorkstreamsOpen":4,"artisticTargetsNotClosed":354,"sourceCompletion":false},"production":{"runtimeCommit":"bda14a95aa8c9e6cf37039e2d67ea1544a8e8de1","buildId":"wVuSG_xIKNn3geLlIq7Cb","browserChecks":249,"inspectedCaptures":39,"freezeEntriesVerified":1649}}
+# Subtest: R7 executes its complete unchanged nine-assertion test and three original CLIs without certifying current code
+ok 2 - R7 executes its complete unchanged nine-assertion test and three original CLIs without certifying current code
+  ---
+  duration_ms: 38857.670895
+  type: 'test'
+  ...
+# Subtest: R7 rejects private input, metadata and HEAD tampering while original current files stay unchanged
+ok 3 - R7 rejects private input, metadata and HEAD tampering while original current files stay unchanged
+  ---
+  duration_ms: 6327.178742
+  type: 'test'
+  ...
+# Subtest: R7 refuses substituted current contexts, unpinned metadata labels and symlinked historical directories
+ok 4 - R7 refuses substituted current contexts, unpinned metadata labels and symlinked historical directories
+  ---
+  duration_ms: 4294.313512
+  type: 'test'
+  ...
+# Subtest: missing shallow-checkout objects are fetched from the named canonical commits only into private Git
+ok 5 - missing shallow-checkout objects are fetched from the named canonical commits only into private Git
+  ---
+  duration_ms: 17870.592504
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 78696.159473

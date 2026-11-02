@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS_EXACT_HISTORICAL_R7_CAPSULE",
+  "verifiedAtUtc": "2026-11-02T05:48:12.371706+00:00",
+  "implementationFiles": [
+    {
+      "path": "scripts/check-homeworld-publication-history-v112-r7.mjs",
+      "bytes": 17120,
+      "sha256": "220654f2978bfa3f2e0487f579b2efc328a4d90d2aa636aae433b25f699199a4"
+    },
+    {
+      "path": "tests/r7-publication-history-v113.test.mjs",
+      "bytes": 5730,
+      "sha256": "c7fbd97b5ae793f97c331a3ce9e36a26442d31551bcfbc5f7c13e106c32ab601"
+    },
+    {
+      "path": "tests/fixtures/homeworld-publication-r7-v113.json.gz",
+      "bytes": 153325,
+      "sha256": "c8a9d9d5c447c5e0a471ea0bc2e69688233e525a41976e9bf36bd332698c54e2"
+    }
+  ],
+  "publicationCommit": "03cf51badd450338d748da55599a317a71debd28",
+  "publicationTree": "8955aa3ae57f3c1c5151fc6e2980d083bbcd0aaa",
+  "runtimeCommit": "bda14a95aa8c9e6cf37039e2d67ea1544a8e8de1",
+  "buildId": "wVuSG_xIKNn3geLlIq7Cb",
+  "originalPublicationInputs": 1891,
+  "frozenInputs": 1649,
+  "publicationRegularFiles": 1894,
+  "additionalOriginalTestFixtures": [
+    {
+      "path": "docs/v111-homeworld-validation.json",
+      "bytes": 549822,
+      "sha256": "808c4d76e512207c9a0b757cb517624e836ac696c08614638e81e122bcd478b0",
+      "gitBlobSha": "338421fb55f8b8dd004fc1254caaf1d3606d557e",
+      "reason": "The unchanged original negative test reads this genuine V111 report to reject it as V112. It was not part of snapshot.inputs."
+    }
+  ],
+  "totalPrivateRegularFiles": 1895,
+  "newTests": {
+    "tests": 5,
+    "pass": 5,
+    "fail": 0,
+    "skipped": 0,
+    "elapsedMilliseconds": 78696.159473,
+    "log": {
+      "path": "docs/qa/pr62-r7-capsule-20261102/final-tests.log",
+      "bytes": 5174,
+      "sha256": "c3ccde296242ab0b5cdf3b885ba83ad8c24cd58af7bc3283d1dc433d479683fb"
+    }
+  },
+  "originalTests": {
+    "completeFile": true,
+    "assertions": 9,
+    "pass": 9,
+    "fail": 0,
+    "skipped": 0,
+    "sourceFileBytes": 9389,
+    "sourceFileSha256": "cc1b2370e7eb9a61c39ba42044a073662056be1c4ce44848e64d521f858eafaf",
+    "assertionsModified": false
+  },
+  "originalCLIResults": [
+    {
+      "status": "PASS",
+      "path": "docs/v112-runtime-freeze.json",
+      "bytes": 306338,
+      "sha256": "c35f8b454ec26d1b05852cabbe4f6ee111d71e7413aef80282582d3ca5ee6a3e"
+    },
+    {
+      "status": "PASS",
+      "path": "docs/v112-runtime-public-inputs.json",
+      "bytes": 14024
+    },
+    {
+      "result": "PASS_STRUCTURE",
+      "sha256": "723cc894b643d55dcd076cab8b615866c6879ecc481c55616adcdd0508d2eccc",
+      "bytes": 9433700,
+      "inputs": 1891,
+      "facts": {
+        "inheritedSourceRequirements": 56,
+        "sourceRequirementsOpen": 56,
+        "sourceActionsIncluded": 9,
+        "sourceActionsRemaining": 9,
+        "newlyClosedSourceRequirements": 0,
+        "boundedWorkstreams": 6,
+        "deferredWorkstreamsOpen": 4,
+        "artisticTargetsNotClosed": 354,
+        "sourceCompletion": false
+      },
+      "production": {
+        "runtimeCommit": "bda14a95aa8c9e6cf37039e2d67ea1544a8e8de1",
+        "buildId": "wVuSG_xIKNn3geLlIq7Cb",
+        "browserChecks": 249,
+        "inspectedCaptures": 39,
+        "freezeEntriesVerified": 1649
+      }
+    }
+  ],
+  "lint": {
+    "status": "PASS",
+    "maxWarnings": 0,
+    "log": {
+      "path": "docs/qa/pr62-r7-capsule-20261102/final-lint.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "negativeCasesPassed": [
+    "Private source bytes",
+    "Private metadata bytes",
+    "Private read-only HEAD content",
+    "Substituted context object",
+    "Context redirected to current working tree",
+    "Changed historical publication label",
+    "Changed historical runtime label",
+    "Historical docs directory replaced with a symlink"
+  ],
+  "canonicalPrivateGitBootstrap": {
+    "executedAgainstAnEmptySourceObjectDatabase": true,
+    "bothNamedCommitsActuallyFetched": true,
+    "sourceHEADAndRefsUnchanged": true,
+    "sourceRepositoryGitMutation": false,
+    "testElapsedMilliseconds": 17870.592504,
+    "largeArtworkDuplicatedInGit": false
+  },
+  "materialization": "Only current regular files matching byte count, SHA256 and Git blob identity are copied/reflinked; other bytes come from the real pinned Git tree. All application, docs, public and art-source files are private regular copies; only the matching locked node_modules directory is shared.",
+  "sourceBatchBarrier": {
+    "validatedHuntSourceFilesStillExact": 19,
+    "previousHuntQAUnchanged": true,
+    "previousVerification": {
+      "path": "docs/qa/pr62-hunt-integration-20261102/verification.json",
+      "bytes": 13470,
+      "sha256": "1c530c9668e0c9d496aa4be10f7cbfd8efcc3de607ce44fd3ea5df94e4526756"
+    }
+  },
+  "currentRuntimeCovered": false,
+  "runtimeBrowserEvidenceReexecuted": false,
+  "nativeExcelExecuted": false,
+  "newProductionCertificateWritten": false,
+  "newFreezeWritten": false,
+  "newWorkbookWritten": false,
+  "existingWorkflowsModified": false,
+  "existingHomeworldPublicationTestModified": false,
+  "initialFailureRetained": {
+    "log": "docs/qa/pr62-r7-capsule-20261102/tests.log",
+    "diagnostic": "docs/qa/pr62-r7-capsule-20261102/original-command-diagnostic.log",
+    "cause": "Original negative test needed its historical V111 report; added its real pinned blob, retaining all nine original assertions."
+  },
+  "limits": [
+    "The capsule reproduces R7 only. Current V112/V113 model tests and future V113 production checks must still run on current application sources.",
+    "The canonical Git bootstrap uses GitHub network access when required; an offline object archive is not claimed.",
+    "No new build, browser gameplay, visual/artistic qualification or physical device test is performed by this capsule."
+  ]
+}
