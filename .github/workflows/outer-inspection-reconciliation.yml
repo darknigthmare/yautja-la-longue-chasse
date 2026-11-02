@@ -1,5 +1,7 @@
 name: Outer Ops passage inspection and recall
 on:
+  push:
+    branches: [codex/outer-signal-recall-20261102]
   pull_request:
     branches: [feat/v152-clan-war-provenance-gate-20261101]
   workflow_dispatch:
