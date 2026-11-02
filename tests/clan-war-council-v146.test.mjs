@@ -249,3 +249,34 @@ test("Council V146: V6 squad identities, combat stats, PC budget and entire W3 m
  assert.equal(api.buildWarCouncilAuditV146(null,done,rules).total,1,
   "the original source-backed completed state must still work");
 });
+
+test("Council V147: a W133 casualty or evacuee cannot be both active and down",()=>{
+ const done=w3Receipt();
+ assert.equal(api.buildWarCouncilAuditV146(null,done,rules).total,1);
+ const actor=done.squads[0];
+ assert.ok(actor.hp>0,"fixture needs a surviving squad");
+ const cases=[
+  {...actor,hp:0,status:"active"},
+  {...actor,hp:actor.hp,status:"down"},
+  {...actor,hp:actor.hp,status:"ghost"},
+  {...actor,hp:0,status:"evacuated"},
+ ];
+ for(const [index,altered] of cases.entries()){
+  const squads=done.squads.map(u=>u.id===actor.id?altered:u);
+  // Synchronize the receipt on purpose: validating only the terminal report
+  // is insufficient when saved status and health contradict one another.
+  const report={...done.report,
+   squadIds:squads.map(u=>u.id),
+   downSquadIds:squads.filter(u=>u.status==="down").map(u=>u.id),
+   evacuatedSquadIds:squads.filter(u=>u.status==="evacuated").map(u=>u.id),
+   leftBehindSquadIds:squads.filter(u=>u.status==="active"&&u.hp>0&&
+    Math.abs(u.x-done.map.extraction.x)+Math.abs(u.y-done.map.extraction.y)>2)
+    .map(u=>u.id),
+  };
+  const audited=api.buildWarCouncilAuditV146(null,{...done,squads,report},rules);
+  assert.equal(audited.total,0,"impossible W133 health/status passed at "+index);
+  assert.ok(audited.issues.length>0);
+ }
+ assert.equal(api.buildWarCouncilAuditV146(null,done,rules).total,1,
+  "untouched engine receipts must remain accepted");
+});

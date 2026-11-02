@@ -106,7 +106,8 @@ function hasSourceRtsRoster(state:WarRtsSquadsStateV133,rules:WarRulesV6):boolea
      squad.attack!==unit.attack||squad.defense!==unit.defense||
      squad.range!==range||squad.mobility!==unit.mobility||
      squad.commandPoints!==unit.commandPoints||squad.upkeepRav!==unit.upkeepRav||
-     squad.status==="ready")return false;
+     !["active","down","evacuated"].includes(squad.status)||
+     (squad.hp===0)!==(squad.status==="down"))return false;
   spent+=unit.commandPoints;
  }
  return spent===state.pcCommitted&&spent<=state.pcMaximum;
