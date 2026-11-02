@@ -1,6 +1,6 @@
 "use client";
 
-import { ALIEN_BASE_ARCHIVE_V1 } from "./alienBaseArchiveV1";
+import { ALIEN_BASE_ARCHIVE_V1 } from "./alienBaseReferenceDataV1";
 import styles from "./AlienBaseArchiveV1.module.css";
 
 /** Archive purement documentaire. Aucun sprite ou spawn déclenché par l'affichage. */

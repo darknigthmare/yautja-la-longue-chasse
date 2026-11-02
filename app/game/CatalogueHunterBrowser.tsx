@@ -413,7 +413,7 @@ export function CatalogueHunterBrowser({
                   role="note"
                 >
                   Alien Base · identité documentaire commune : {sharedIdentityIds.join(", ")}
-                  {" · "}Cette correspondance ne certifie pas la fidélité du sprite ou de l'équipement.
+                  {" · "}Cette correspondance ne certifie pas la fidélité du sprite ou de l&apos;équipement.
                 </p>
               ) : null}
 
