@@ -13,7 +13,7 @@ import sharp from 'sharp';
 import {chromium} from 'playwright-core';
 import {runAccessibilityBrowserV112} from './lib/qa-hunt-accessibility-v112.mjs';
 import {runFieldGuideBrowserV112} from './lib/qa-hunt-field-guide-v112.mjs';
-const root=fileURLToPath(new URL('../',import.meta.url)),out=path.join(root,'outputs/qa-hunt-v112');
+const root=fileURLToPath(new URL('../',import.meta.url)),out=path.resolve(root,process.env.YAUTJA_HUNT_CONTROLS_OUTPUT??'outputs/qa-hunt-v112');
 await fs.mkdir(out,{recursive:true});
 const bundle=await build({absWorkingDir:root,entryPoints:['tests/browser/hunt-mechanics-v112.fixture.jsx'],
  bundle:true,write:false,jsx:'automatic',platform:'browser',outfile:'fixture.js',logLevel:'silent',
@@ -50,7 +50,8 @@ const scenario=async(name,fn)=>{try{await fn();results.push({name,status:'PASS'}
 try{
  await new Promise((resolve,reject)=>{server.once('error',reject);server.listen(0,'127.0.0.1',resolve);});
  const address=server.address();assert.ok(address&&typeof address==='object');
- browser=await chromium.launch(process.env.AUDIT_CHROME_CHANNEL?{channel:process.env.AUDIT_CHROME_CHANNEL}:{});
+ const executablePath=process.env.CHROMIUM_EXECUTABLE_PATH??process.env.AUDIT_CHROME_EXECUTABLE;
+ browser=await chromium.launch(executablePath?{executablePath,args:['--no-sandbox','--disable-dev-shm-usage']}:process.env.AUDIT_CHROME_CHANNEL?{channel:process.env.AUDIT_CHROME_CHANNEL}:{});
  const page=await browser.newPage({viewport:{width:1120,height:850}});
  page.setDefaultTimeout(12000);
  page.on('pageerror',error=>errors.push(error.message));

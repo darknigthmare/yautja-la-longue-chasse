@@ -93,7 +93,7 @@ jobs:
           assert.equal(paths.length, 1173);
           assert.equal(alreadyIncludedTests, 46);
           assert.ok(paths.includes('/art-source/v107/enforcer-poses/augmentes-assassin--enforcers-comics-10-first-attempt.png'));
-          assert.equal(execFileSync('git', ['config', '--bool', 'core.sparseCheckoutCone'], {encoding:'utf8'}).trim(), 'false');
+          assert.equal(execFileSync('git', ['config', '--bool', '--default', 'false', '--get', 'core.sparseCheckoutCone'], {encoding:'utf8'}).trim(), 'false');
           execFileSync('git', ['sparse-checkout', 'add', '--stdin'], {
             input: paths.sort().join('\n') + '\n', stdio: ['pipe', 'inherit', 'inherit'],
           });

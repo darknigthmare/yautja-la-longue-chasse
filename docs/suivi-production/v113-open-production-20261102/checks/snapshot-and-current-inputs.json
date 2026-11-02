@@ -1,0 +1,20 @@
+{
+  "status": "PASS_DATED_SNAPSHOT_AND_STRICT_PRODUCTS",
+  "snapshot": {
+    "context": "SNAPSHOT_HISTORIQUE",
+    "commit": "03cf51badd450338d748da55599a317a71debd28",
+    "tree": "8955aa3ae57f3c1c5151fc6e2980d083bbcd0aaa"
+  },
+  "manifest": {
+    "path": "docs/suivi-production/v113-open-production-20261102/source-manifest.json",
+    "bytes": 958889,
+    "sha256": "2078785acd36e89aa6911522baba01c70ecbf995c049e25a3b24ec3f8b12d720"
+  },
+  "historicalRegularGitBlobsVerified": 190,
+  "strictCurrentInputsVerified": 18,
+  "totalSourcePinsVerified": 208,
+  "historicalDataFallback": "Read-only exact Git blob,only when old working bytes differ. No automatic fetch,pin update or Git mutation.",
+  "currentProductFallbackAllowed": false,
+  "legacyAppendToolchainStrict": true,
+  "codeImportRedirectionInstalled": false
+}

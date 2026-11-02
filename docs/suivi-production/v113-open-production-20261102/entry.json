@@ -1,0 +1,191 @@
+{
+  "schemaVersion": 1,
+  "release": "V113",
+  "status": "PASS_OPEN_PRODUCTION_TRACKING_CANDIDATES_NOT_ADMITTED",
+  "scope": "Dated source audit and native candidate production only. No new runtime integration,gameplay completion or human artistic validation.",
+  "snapshot": {
+    "context": "SNAPSHOT_HISTORIQUE",
+    "commit": "03cf51badd450338d748da55599a317a71debd28",
+    "tree": "8955aa3ae57f3c1c5151fc6e2980d083bbcd0aaa"
+  },
+  "workbook": {
+    "path": "production/YAUTJA_V113_SUIVI.xlsx",
+    "bytes": 10373135,
+    "sha256": "082ccfdd584a8989124f81851bdcb50e1c6206940c9d1f46b328d758e428d84f"
+  },
+  "tools": [
+    {
+      "path": "scripts/build-open-production-workbook-v113.py",
+      "bytes": 16906,
+      "sha256": "91b7073a467cc7352692acaf210ac5451604f2667f7c98c9b1415807c6334784"
+    },
+    {
+      "path": "scripts/verify-open-production-workbook-v113.py",
+      "bytes": 3989,
+      "sha256": "ff3c68a3d872f78827c8ffb439fa03e9da634ca3da2790e084e548d3e23e5471"
+    },
+    {
+      "path": "tests/open-production-workbook-v113.test.py",
+      "bytes": 5663,
+      "sha256": "564f3160655929c0993a3b31d02d790e52eec74a115f908996790fcfac0a631f"
+    }
+  ],
+  "files": [
+    {
+      "path": "docs/suivi-production/v113-open-production-20261102/README.md",
+      "bytes": 7955,
+      "sha256": "45b87d01bcfb2e8d3c6c1dd3993dae46c22fcdc61ae8bdcc4bdd1dcbed95a82b"
+    },
+    {
+      "path": "docs/suivi-production/v113-open-production-20261102/annexes/art-gap-manifest.json",
+      "bytes": 185798,
+      "sha256": "265dab986d1b6962da57edc583778a94c25344f7bbaec1baefd71a0248aecc3d"
+    },
+    {
+      "path": "docs/suivi-production/v113-open-production-20261102/annexes/art-gap-manifest.md",
+      "bytes": 4014,
+      "sha256": "cac6c9090b2c7690821c748c6aa44cfbc75916ad6add048d17d0cc765ad25b8c"
+    },
+    {
+      "path": "docs/suivi-production/v113-open-production-20261102/annexes/generation-receipts.json",
+      "bytes": 8467,
+      "sha256": "dfe3aba41b947d84d9ca871ed3e5a0da17c56828cc8af904666cbc376caee1cd"
+    },
+    {
+      "path": "docs/suivi-production/v113-open-production-20261102/annexes/native-technical-inspection.json",
+      "bytes": 9749,
+      "sha256": "1894035738a29d3a2d8359217347ac76247aec4f1979e0b50cb92eb5a83065f2"
+    },
+    {
+      "path": "docs/suivi-production/v113-open-production-20261102/annexes/pr-premerge-AUDIT.md",
+      "bytes": 5039,
+      "sha256": "f63bad0c25eed8db2f73da2e574ed1107d9deaf569d043ff988eb910ae668af6"
+    },
+    {
+      "path": "docs/suivi-production/v113-open-production-20261102/annexes/pr-premerge-audit.json",
+      "bytes": 77809,
+      "sha256": "2b1e13053daee5921f68245e42a18c5c81041a03a579a6276df5db52f925d146"
+    },
+    {
+      "path": "docs/suivi-production/v113-open-production-20261102/annexes/pr84-parent-confirmed-event.json",
+      "bytes": 966,
+      "sha256": "c1cb3433f2c0d272aa7cdc221e3ba1617eda80ca37f2b00399b3810ed930161f"
+    },
+    {
+      "path": "docs/suivi-production/v113-open-production-20261102/annexes/production-lots.json",
+      "bytes": 17186,
+      "sha256": "33c4a1acab6e4722c851c37c484d8553d402c6943490a1c68c1f468a322003a9"
+    },
+    {
+      "path": "docs/suivi-production/v113-open-production-20261102/annexes/requirements-audit.json",
+      "bytes": 226229,
+      "sha256": "f7c9d2d1aa83b94f1ca430f9568cf775ede66fe14a4d21252d160fe4b7c301ae"
+    },
+    {
+      "path": "docs/suivi-production/v113-open-production-20261102/checks/before-snapshot-generation.log",
+      "bytes": 362,
+      "sha256": "a7df604ea29473b8b8cbd50743454417003b74218fd97fc60b8c3ddf731968d7"
+    },
+    {
+      "path": "docs/suivi-production/v113-open-production-20261102/checks/before-snapshot-reproduction.log",
+      "bytes": 362,
+      "sha256": "a7df604ea29473b8b8cbd50743454417003b74218fd97fc60b8c3ddf731968d7"
+    },
+    {
+      "path": "docs/suivi-production/v113-open-production-20261102/checks/before-snapshot-tests.log",
+      "bytes": 664,
+      "sha256": "50d6054c77ca5eedaa24deba68dbae66fab55f67d22ccb253aa5814f80901943"
+    },
+    {
+      "path": "docs/suivi-production/v113-open-production-20261102/checks/before-snapshot-verification.log",
+      "bytes": 296,
+      "sha256": "e7a41ade06fb34645650302044a979b86223e191343b67ece7c4942a4bdbd97f"
+    },
+    {
+      "path": "docs/suivi-production/v113-open-production-20261102/checks/generation.log",
+      "bytes": 362,
+      "sha256": "0640bdd99fcf1521810111a438674f7415ede640e72ca15aea5d048f04dcbdc1"
+    },
+    {
+      "path": "docs/suivi-production/v113-open-production-20261102/checks/r7-coordination-preserved.log",
+      "bytes": 440,
+      "sha256": "bd9ec6b4f7a5c1a8da8707c0a27bf58af15d2a32f39e62d00e4a837ea16593e0"
+    },
+    {
+      "path": "docs/suivi-production/v113-open-production-20261102/checks/r7-preservation.json",
+      "bytes": 664,
+      "sha256": "082532298bc5bf076419ba017025c71f02ac9bab92004fec5fac700daa21cd35"
+    },
+    {
+      "path": "docs/suivi-production/v113-open-production-20261102/checks/r7-primary-reproduction.log",
+      "bytes": 579,
+      "sha256": "66474b52c6106efaeaaf31325c110cb27049d1512df715e465c9ea0bf9d3a192"
+    },
+    {
+      "path": "docs/suivi-production/v113-open-production-20261102/checks/reproduction.log",
+      "bytes": 362,
+      "sha256": "0640bdd99fcf1521810111a438674f7415ede640e72ca15aea5d048f04dcbdc1"
+    },
+    {
+      "path": "docs/suivi-production/v113-open-production-20261102/checks/snapshot-and-current-inputs.json",
+      "bytes": 819,
+      "sha256": "ef107267a35225b2685d6d8b74b3a23c2bc2b5f5f29448353854677f4d0d634a"
+    },
+    {
+      "path": "docs/suivi-production/v113-open-production-20261102/checks/tests-initial-failed.log",
+      "bytes": 2506,
+      "sha256": "3ac1aaf3cbf500d68d2e2330142c8ba4faa1dc579f82f7d68bc39423116cdbcd"
+    },
+    {
+      "path": "docs/suivi-production/v113-open-production-20261102/checks/tests.log",
+      "bytes": 861,
+      "sha256": "3f83aba43a3b299c9b17d0c2129acbbdc4fc99021c43091eed7f21d816daf40c"
+    },
+    {
+      "path": "docs/suivi-production/v113-open-production-20261102/checks/verification.log",
+      "bytes": 296,
+      "sha256": "fbced3800e1fc0a53cfc3d8122f4c6df68d70b09919837d7d05ea8516df09877"
+    },
+    {
+      "path": "docs/suivi-production/v113-open-production-20261102/finalization.json",
+      "bytes": 4436,
+      "sha256": "d50f0fc62f8a5548c29d1c05c7578c426f5aecb8e332585393a830d49efce695"
+    },
+    {
+      "path": "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-271-abreuvoir-alien-native-attempt02.png",
+      "bytes": 1215787,
+      "sha256": "644a9652da91d51ddd2e8576f786af3ba262ffc1413cabd2aa3abbd22b4e595a"
+    },
+    {
+      "path": "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-271-abreuvoir-alien-native.png",
+      "bytes": 1432776,
+      "sha256": "26a2e6e9217834667ab7ccd3d18aaf03aa0794a845e506570415592483d5bcd7"
+    },
+    {
+      "path": "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-272-nourrisseur-native.png",
+      "bytes": 1400802,
+      "sha256": "214e44126281c66f8d526e57f2cb90527c7c255c7380c516a991a0d3cc3be91b"
+    },
+    {
+      "path": "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-280-signal-danger-native.png",
+      "bytes": 1146909,
+      "sha256": "ffb1626d43f1b4abff1ebaf568b6e01eff18827283a40afe2bdffe11d4fc14d3"
+    },
+    {
+      "path": "docs/suivi-production/v113-open-production-20261102/source-manifest.json",
+      "bytes": 958889,
+      "sha256": "2078785acd36e89aa6911522baba01c70ecbf995c049e25a3b24ec3f8b12d720"
+    },
+    {
+      "path": "docs/suivi-production/v113-open-production-20261102/workbook-qa.json",
+      "bytes": 4519,
+      "sha256": "a3808b56c825b420dde7ffe1ea38846227d1ac7b9f92c1d1380f6d36824f10ab"
+    }
+  ],
+  "sourceRequirementsOpen": 56,
+  "artTargetsOpen": 354,
+  "humanArtisticValidations": 0,
+  "nativeCandidates": 4,
+  "runtimeIntegrated": 0,
+  "pixelsEdited": false
+}

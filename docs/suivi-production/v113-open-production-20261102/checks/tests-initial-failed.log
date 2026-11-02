@@ -1,0 +1,33 @@
+test_generation_cannot_close_requirements_or_claim_validation (__main__.ProductionWorkbookV113.test_generation_cannot_close_requirements_or_claim_validation) ... ok
+test_new_source_cell_forgery_is_rejected (__main__.ProductionWorkbookV113.test_new_source_cell_forgery_is_rejected) ... ERROR
+test_source_boundaries_and_all_appended_cells (__main__.ProductionWorkbookV113.test_source_boundaries_and_all_appended_cells) ... ok
+test_valid_xml_historical_cell_mutation_is_rejected (__main__.ProductionWorkbookV113.test_valid_xml_historical_cell_mutation_is_rejected) ... ERROR
+
+======================================================================
+ERROR: test_new_source_cell_forgery_is_rejected (__main__.ProductionWorkbookV113.test_new_source_cell_forgery_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/yautja-la-longue-chasse/tests/open-production-workbook-v113.test.py", line 85, in test_new_source_cell_forgery_is_rejected
+    changed = self.changed_cell('xl/worksheets/v113-sheet-124.xml','A5','FAUSSE EXIGENCE')
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/yautja-la-longue-chasse/tests/open-production-workbook-v113.test.py", line 50, in changed_cell
+    file = Path(self.temp.name)/(cell or 'historical')+'.xlsx'
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~
+TypeError: unsupported operand type(s) for +: 'PosixPath' and 'str'
+
+======================================================================
+ERROR: test_valid_xml_historical_cell_mutation_is_rejected (__main__.ProductionWorkbookV113.test_valid_xml_historical_cell_mutation_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/yautja-la-longue-chasse/tests/open-production-workbook-v113.test.py", line 80, in test_valid_xml_historical_cell_mutation_is_rejected
+    changed = self.changed_cell(first,None,'HISTORIQUE ALTERE')
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/yautja-la-longue-chasse/tests/open-production-workbook-v113.test.py", line 45, in changed_cell
+    selected = next(item for item in tree.iter(verify.MAIN+'t') if item.text)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+StopIteration
+
+----------------------------------------------------------------------
+Ran 4 tests in 2.049s
+
+FAILED (errors=2)
