@@ -15,6 +15,7 @@ import HomeworldLavaSceneV77 from './HomeworldLavaSceneV77';
 import HomeworldBackdropV81 from './HomeworldBackdropV81';
 import HomeworldRetainingSupportV82 from './HomeworldRetainingSupportV82';
 import HomeworldEcotonesV112 from './HomeworldEcotonesV112';
+import HomeworldForgeFireV113 from './HomeworldForgeFireV113';
 import HomeworldCartographerV104 from './HomeworldCartographerV104';
 import HomeworldPublicLifeV112 from './HomeworldPublicLifeV112';
 import HomeworldPublicPlacesV112 from './HomeworldPublicPlacesV112';
@@ -145,6 +146,7 @@ export default memo(function HomeworldWorldSceneV77({actor,levelId,camera,second
      backgroundSize:`${building.art.sourceWidth*image.width/building.art.sourceRect.width}px ${building.art.sourceHeight*image.height/building.art.sourceRect.height}px`,
      backgroundPosition:`${-building.art.sourceRect.x*image.width/building.art.sourceRect.width}px ${-building.art.sourceRect.y*image.height/building.art.sourceRect.height}px`}}/>
      :<img src={building.art.src} alt="" draggable={false}/>}
+    <HomeworldForgeFireV113 building={building} width={image.width} height={image.height} seconds={seconds} reducedMotion={reducedMotion}/>
     {building.id===activeDoorId&&(()=>{const socket=homeworldProjectGroundV64(homeworldBuildingDoorwayV64(building).threshold,z);return <span className={styles.doorMarkerV64} data-painted-door-id={building.id} style={{left:socket.x-box.left,top:socket.y-box.top}}><i/><b>{building.label}</b></span>;})()}
    </div>;
   })}

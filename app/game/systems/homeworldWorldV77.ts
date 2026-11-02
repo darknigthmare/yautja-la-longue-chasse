@@ -26,6 +26,7 @@ import {HOMEWORLD_URBAN_LOTS_V78,HOMEWORLD_URBAN_GROUND_V78,HOMEWORLD_URBAN_STRE
 import {HOMEWORLD_AUTHORED_COURTS_V81} from './homeworldAuthoredLotsV81';
 import {homeworldFoundationSupportsV112} from './homeworldFoundationSupportsV112';
 import {HOMEWORLD_GROUND_JOINTS_V112} from './homeworldGroundJointsV112';
+import {compileHomeworldMarshGroundJointsV113} from './homeworldMarshGroundJointsV113';
 import {homeworldPublicPlaceCollisionV112} from './homeworldPublicPlacesV112';
 
 /** Overlay of the existing real City model. No new save rewards or parallel game.
@@ -97,7 +98,7 @@ const road=(id:string,levelId:HomeworldLevelV77,nodes:HomeworldVec2[],width=260)
  * the lodge and the neighbouring ground/upper buildings. The socket delta and
  * uniform native scale stay unchanged; real lower/upper terraces support it. */
 export const HOMEWORLD_COUNCIL_STAIR_LANDINGS_V77={from:{levelId:'0' as const,point:{x:4500,y:2900},elevation:0},to:{levelId:'+1' as const,point:{x:4500,y:2720},elevation:520}};
-export const HOMEWORLD_GROUND_V77=[...HOMEWORLD_DISTRICTS_V77,...oldRoads,
+export const HOMEWORLD_RETAINED_GROUND_V113=[...HOMEWORLD_DISTRICTS_V77,...oldRoads,
  ...homeworldFoundationSupportsV112(HOMEWORLD_BUILDINGS_V77),
  ...HOMEWORLD_GROUND_JOINTS_V112,
  // Actual native hulls receive their authored masonry plinths, not borrowed
@@ -154,6 +155,13 @@ export const HOMEWORLD_CONNECTORS_V77:readonly HomeworldConnectorV77[]=[
 /** Same native flat landing polygons are actual floor support and painted by
  * the world renderer. The pure helper has no V77 import or invisible rails. */
 export const HOMEWORLD_CONNECTOR_PADS_V82=homeworldConnectorSupportsV82(HOMEWORLD_CONNECTORS_V77,HOMEWORLD_LEVELS_V77);
+/** Repair only the measured same-elevation cracks. The same new polygons are
+ * rendered as paving, indexed as real actor support and excluded from natural
+ * scenery; retained source polygons, buildings and objects stay unchanged. */
+export const HOMEWORLD_MARSH_GROUND_JOINTS_V113=compileHomeworldMarshGroundJointsV113([
+ ...HOMEWORLD_RETAINED_GROUND_V113,...HOMEWORLD_CONNECTOR_PADS_V82,...HOMEWORLD_URBAN_GROUND_V78,
+]);
+export const HOMEWORLD_GROUND_V77=[...HOMEWORLD_RETAINED_GROUND_V113,...HOMEWORLD_MARSH_GROUND_JOINTS_V113];
 export const HOMEWORLD_REGIONAL_DOCKS_V77=[
  {regionId:'leviathan-coast',levelId:'0' as const,point:{x:260,y:2230},kind:'walk' as const,name:'Sentier du rivage · côte occidentale'},
  {regionId:'thermal-caves',levelId:'0' as const,point:{x:460,y:3600},kind:'skiff' as const,name:'Passeur du canyon volcanique · Grottes Thermiques',duration:12,

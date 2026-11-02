@@ -1,0 +1,58 @@
+PASS central restores exact declared physical checkpoint
+PASS central mounts expected comparison renderer
+PASS central actual scene remains visible
+PASS rampart-upper-end restores exact declared physical checkpoint
+PASS rampart-upper-end mounts expected comparison renderer
+PASS rampart-upper-end actual scene remains visible
+PASS rampart-lower-end restores exact declared physical checkpoint
+PASS rampart-lower-end mounts expected comparison renderer
+PASS rampart-lower-end actual scene remains visible
+PASS dock-upper-end restores exact declared physical checkpoint
+PASS dock-upper-end mounts expected comparison renderer
+PASS dock-upper-end actual scene remains visible
+PASS dock-lower-end restores exact declared physical checkpoint
+PASS dock-lower-end mounts expected comparison renderer
+PASS dock-lower-end actual scene remains visible
+PASS central-mobile restores exact declared physical checkpoint
+PASS central-mobile mounts expected comparison renderer
+PASS central-mobile actual scene remains visible
+PASS cross-rampart-upper restores exact declared physical checkpoint
+PASS cross-rampart-upper mounts expected comparison renderer
+PASS cross-rampart-upper actual scene remains visible
+PASS cross-rampart-upper actual physical crossing follows served geometry
+PASS cross-rampart-upper native return reaches the original side
+PASS cross-rampart-upper actual scene remains visible
+PASS cross-rampart-lower restores exact declared physical checkpoint
+PASS cross-rampart-lower mounts expected comparison renderer
+PASS cross-rampart-lower actual scene remains visible
+PASS cross-rampart-lower actual physical crossing follows served geometry
+PASS cross-rampart-lower native return reaches the original side
+PASS cross-rampart-lower actual scene remains visible
+PASS cross-dock-road restores exact declared physical checkpoint
+PASS cross-dock-road mounts expected comparison renderer
+PASS cross-dock-road actual scene remains visible
+PASS cross-dock-road actual physical crossing follows served geometry
+PASS cross-dock-road native return reaches the original side
+PASS cross-dock-road actual scene remains visible
+PASS marsh-watch-return restores exact declared physical checkpoint
+PASS marsh-watch-return mounts expected comparison renderer
+PASS marsh-watch-return actual scene remains visible
+PASS real marsh-watch lane outward traversal
+PASS real marsh-watch lane return traversal
+PASS marsh-watch-return actual scene remains visible
+PASS dock-door restores exact declared physical checkpoint
+PASS dock-door mounts expected comparison renderer
+PASS dock-door actual scene remains visible
+PASS real Worker reaches the retained dock door
+PASS dock-door actual scene remains visible
+PASS real E enters retained dock-control interior
+PASS dock-door actual scene remains visible
+PASS retained dock exit is actually reachable
+PASS real E returns through the retained dock door
+PASS dock-door actual scene remains visible
+PASS no page error
+PASS no console.error
+PASS no Worker error
+PASS no failed request
+PASS no HTTP error
+{"status":"PASS_TARGETED_EXPLORATORY","checks":57,"captures":18,"output":"/tmp/homeworld-marsh-ground-v113-before-final","failure":null}
