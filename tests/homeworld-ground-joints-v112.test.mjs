@@ -121,7 +121,9 @@ test('only the two false interior cliff faces disappear and every true exposed f
   const signature=edge=>[edge.a,edge.b].map(p=>`${p.x.toFixed(8)},${p.y.toFixed(8)}`).sort().join('|');
   const oldEdges=before.HOMEWORLD_EXPOSED_EDGES_V81['0'];
   for(const id of oldFaceIds)assert(oldEdges.some(item=>item.id===id),'the old actual extractor must reproduce the false interior cliff');
-  assert.equal(oldEdges.length,155);assert.equal(after.HOMEWORLD_EXPOSED_EDGES_V81['0'].length,153);
+  // Both caches include the later same-floor marsh joints. The comparison
+  // still removes only the two original mausoleum cracks and their faces.
+  assert.equal(oldEdges.length,154);assert.equal(after.HOMEWORLD_EXPOSED_EDGES_V81['0'].length,152);
   for(const level of world.HOMEWORLD_LEVELS_V77){
     const expected=before.HOMEWORLD_EXPOSED_EDGES_V81[level.id].filter(item=>!oldFaceIds.includes(item.id));
     assert.deepEqual(after.HOMEWORLD_EXPOSED_EDGES_V81[level.id].map(signature).sort(),expected.map(signature).sort(),'outer cliff geometry must neither grow nor leave new seams');

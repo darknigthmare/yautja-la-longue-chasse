@@ -49,7 +49,7 @@ function documents(raw:unknown,owner:string):HomeworldGeometryRecoveryLedgersV11
   }
   return structuredClone(raw) as HomeworldGeometryRecoveryLedgersV112;
 }
-const historicalGround=[...HOMEWORLD_GROUND_V77.filter(g=>!g.id.startsWith('foundation-v112:')),...HOMEWORLD_CONNECTOR_PADS_V82,...HOMEWORLD_URBAN_GROUND_V78].filter(g=>g.levelId==='0');
+const historicalGround=[...HOMEWORLD_GROUND_V77.filter(g=>!g.id.startsWith('foundation-v112:')&&!g.id.startsWith('ground-joint-v113:')),...HOMEWORLD_CONNECTOR_PADS_V82,...HOMEWORLD_URBAN_GROUND_V78].filter(g=>g.levelId==='0');
 /** Exact former floor union and all retained collision providers. Only the new
  * V112 public furniture is absent; dynamic old cargo still blocks this query. */
 export function homeworldBeforePublicPlacesWalkableV112(p:Point,cargo?:Parameters<typeof cargoCaseCollisionV108>[0],body:HomeworldFootprint={halfWidth:24,halfDepth:14}):boolean {

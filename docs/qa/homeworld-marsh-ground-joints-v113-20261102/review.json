@@ -1,0 +1,217 @@
+{
+  "scope": "Targeted V113 physical seam repair only; not a complete V112 production or campaign certificate",
+  "reviewedAtUtc": "2026-11-02T06:27:39.781908+00:00",
+  "status": "PASS_TARGETED_EXPLORATORY",
+  "rawResults": {
+    "before": {
+      "bytes": 28628,
+      "sha256": "d911ee9dc66c9ee5bfbf7a06c7cdd56211e6337ab7cd18f4d716c20d1c6c4bdd"
+    },
+    "after": {
+      "bytes": 28543,
+      "sha256": "e9b8a9f099f2030ac749a2ff3e26a341d14f965da5b0c37a7d4f76c0f8c5e9d5"
+    }
+  },
+  "capturesActuallyOpened": {
+    "before": 18,
+    "after": 18,
+    "total": 36
+  },
+  "inspectionMethod": "All before captures actually opened by the delegated geometry/review agent; all after captures actually opened by the owner with view_image. Original PNG bytes copied without edits. Per-phase opened lists and checkpoints retain the exact names and fingerprints.",
+  "checksPassedPerPhase": 57,
+  "cameraComparisons": [
+    {
+      "file": "central-camera.png",
+      "sameActualCamera": true,
+      "sameActualActor": true,
+      "before": "b4072e13b0394c19d125692ffe421897f1576db6a6e6d77fa5280cb32c2771bb",
+      "after": "7e2d7c60427459917d915f71eaef5004aa49f82583d337f2a64b23f1150ace0a"
+    },
+    {
+      "file": "rampart-upper-end-camera.png",
+      "sameActualCamera": true,
+      "sameActualActor": true,
+      "before": "c265fe55ecc1fa75b021637ad65c5fe5769938b3e324fc58406f1d3e958f6815",
+      "after": "d3b83ad4e265b2dfb63f9d11b2a2b019827131e473406d0335c44645f2a4a99a"
+    },
+    {
+      "file": "rampart-lower-end-camera.png",
+      "sameActualCamera": true,
+      "sameActualActor": true,
+      "before": "00f44adf24b27b66a9b43c345e5a3b87584769a40d0b9bcb7e1788d0d3b02b4b",
+      "after": "972f2d555cb7173665d31137b489f52bd02e36f05d2614dc78d84e92c166f72e"
+    },
+    {
+      "file": "dock-upper-end-camera.png",
+      "sameActualCamera": true,
+      "sameActualActor": true,
+      "before": "ea5a5718b1ccb55145dfb1ce45fd8a518aeeca319015293e880912fe630ec818",
+      "after": "0052302c38c6a2e438e509e98cf0b8ce91667ff1092c167466bd962fdf96ca1b"
+    },
+    {
+      "file": "dock-lower-end-camera.png",
+      "sameActualCamera": true,
+      "sameActualActor": true,
+      "before": "88f39f4220e786cf550157cad7f2d7eb2e482ebb97543c12533494349000ec61",
+      "after": "2d9bae7950ead29ccc4e03fef02febac50c7b3eacd197f44f6590f510606f911"
+    },
+    {
+      "file": "central-mobile-camera.png",
+      "sameActualCamera": true,
+      "sameActualActor": true,
+      "before": "d2e622f4ab3e09f861525e95bb87ba1a9b923a9e657a014df8b77591f68662a9",
+      "after": "90088bfb4eccca32219ab19709e1bc715b187950ab5f9e75705dcf0e6107def8"
+    }
+  ],
+  "crossings": {
+    "before": [
+      {
+        "phase": "before",
+        "start": {
+          "x": 6175,
+          "y": 2500
+        },
+        "target": {
+          "x": 6080,
+          "y": 2500
+        },
+        "outward": {
+          "x": 6164,
+          "y": 2500,
+          "arrived": false,
+          "blocked": true,
+          "steps": 93
+        }
+      },
+      {
+        "phase": "before",
+        "start": {
+          "x": 6175,
+          "y": 3250
+        },
+        "target": {
+          "x": 6050,
+          "y": 3250
+        },
+        "outward": {
+          "x": 6164,
+          "y": 3250,
+          "arrived": false,
+          "blocked": true,
+          "steps": 94
+        }
+      },
+      {
+        "phase": "before",
+        "start": {
+          "x": 6600,
+          "y": 2700
+        },
+        "target": {
+          "x": 6750,
+          "y": 2700
+        },
+        "outward": {
+          "x": 6621,
+          "y": 2700,
+          "arrived": false,
+          "blocked": true,
+          "steps": 99
+        }
+      }
+    ],
+    "after": [
+      {
+        "phase": "after",
+        "start": {
+          "x": 6175,
+          "y": 2500
+        },
+        "target": {
+          "x": 6080,
+          "y": 2500
+        },
+        "outward": {
+          "x": 6085,
+          "y": 2500,
+          "arrived": true,
+          "steps": 26
+        }
+      },
+      {
+        "phase": "after",
+        "start": {
+          "x": 6175,
+          "y": 3250
+        },
+        "target": {
+          "x": 6050,
+          "y": 3250
+        },
+        "outward": {
+          "x": 6054,
+          "y": 3250,
+          "arrived": true,
+          "steps": 37
+        }
+      },
+      {
+        "phase": "after",
+        "start": {
+          "x": 6600,
+          "y": 2700
+        },
+        "target": {
+          "x": 6750,
+          "y": 2700
+        },
+        "outward": {
+          "x": 6748,
+          "y": 2700,
+          "arrived": true,
+          "steps": 41
+        }
+      }
+    ]
+  },
+  "visualFindings": [
+    "The six fixed views now show continuous paving at the narrow repaired fissures, including the 390px view. The paving phase is shared with the retained floors.",
+    "Both rampart endpoints were inspected; the lower native outer cliff and the existing court crossing remain visible. No independent vertical basalt strips or artificial orange cornice remain.",
+    "The dock road end views preserve existing props and door approaches. The Worker guide reaches the actual dock door; real E enters and leaves its unchanged interior.",
+    "The marsh-watch lane is actually walked outward and back. Initial camera points remain declared campaign fixtures and are not claimed as a journey between checkpoints."
+  ],
+  "limits": [
+    {
+      "status": "OPEN_NOT_CORRECTED",
+      "point": {
+        "x": 6653,
+        "y": 2800
+      },
+      "detail": "The wider eastern exterior gap exceeds this bounded narrow-joint treatment. It remains without point support and without full-body passage. Successful crossing at y2700 does not certify this y2800 point."
+    },
+    {
+      "status": "OPEN_COMPOSITION_FOLLOWUP",
+      "detail": "Large angular exterior silhouettes, native motif repetition, broad negative spaces and abrupt background/terrain transitions remain outside this repair."
+    }
+  ],
+  "sourceLimits": [
+    "Five local driver/V113 input files were observed unchanged, not a complete server inventory.",
+    "The before raw Build ID extraction is null; baseline-identity.json independently finds the exact R7 Build ID and matches all 22 executed response HTML fingerprints.",
+    "The after app is a development Next runtime, not a newly frozen compiled R8 runtime. A complete production recipe remains the coordinator’s separate release step.",
+    "No existing native PNG, placed object, threshold, save position or older proof was edited. No human artistic approval or completion of all 56/354 inherited requirements is claimed."
+  ],
+  "checks": {
+    "coreTestFiles": 5,
+    "accessAndMobilityTestFiles": 5,
+    "jointDetailedTests": 4,
+    "typescript": "PASS",
+    "targetedEslint": "PASS",
+    "errorsPerPhase": {
+      "page": 0,
+      "console": 0,
+      "worker": 0,
+      "requestFailed": 0,
+      "http": 0
+    }
+  }
+}

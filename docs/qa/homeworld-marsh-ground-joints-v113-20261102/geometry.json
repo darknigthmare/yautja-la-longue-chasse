@@ -1,0 +1,1009 @@
+{
+  "scope": "Actual production data model, extracted without changing any record",
+  "levelId": "0",
+  "elevation": 0,
+  "jointCount": 13,
+  "addedArea": 38008.178029377945,
+  "maximumWidth": 64,
+  "limits": {
+    "maxGap": 64,
+    "rampartMaxY": 3460,
+    "dockMinY": 2450,
+    "dockMaxY": 3160
+  },
+  "retainedPublicRecords": 164,
+  "joints": [
+    {
+      "id": "ground-joint-v113:rampart-upper:0",
+      "label": "Joint physique · remparts hauts",
+      "levelId": "0",
+      "kind": "passage",
+      "accent": "#ab8f63",
+      "siteId": "rampart-upper",
+      "sourceGroundIds": [
+        "rampart-walk",
+        "rampart-low-causeway:2",
+        "forecourt-v76:rampart-watch",
+        "connection-v72:luminous-marshes:0"
+      ],
+      "polygon": [
+        {
+          "x": 6132.997176315661,
+          "y": 2345.739611845417
+        },
+        {
+          "x": 6132.997176315661,
+          "y": 2345.739611845417
+        },
+        {
+          "x": 6140,
+          "y": 2353.7798908903987
+        },
+        {
+          "x": 6132.685939707469,
+          "y": 2353.7798908903987
+        }
+      ],
+      "area": 29.403542852029204,
+      "maxGapWidth": 7.314060292531394,
+      "witness": {
+        "x": 6134.670073084698,
+        "y": 2349.759751367908
+      },
+      "bounds": {
+        "left": 6132.685939707469,
+        "right": 6140,
+        "top": 2345.739611845417,
+        "bottom": 2353.7798908903987,
+        "width": 7.314060292531394,
+        "depth": 8.040279044981617
+      },
+      "sourceWitness": {
+        "left": {
+          "groundId": "rampart-walk",
+          "edgeIndex": 2,
+          "a": {
+            "x": 6150,
+            "y": 1906.5
+          },
+          "b": {
+            "x": 6090,
+            "y": 3456.5
+          }
+        },
+        "right": {
+          "groundId": "connection-v72:luminous-marshes:0",
+          "edgeIndex": 8,
+          "a": {
+            "x": 6217.051024452507,
+            "y": 2442.245881928462
+          },
+          "b": {
+            "x": 5947.051024452507,
+            "y": 2132.245881928462
+          }
+        },
+        "sample": {
+          "x": 6134.670073084698,
+          "y": 2349.759751367908
+        },
+        "width": 3.6570301462652424
+      }
+    },
+    {
+      "id": "ground-joint-v113:rampart-upper:1",
+      "label": "Joint physique · remparts hauts",
+      "levelId": "0",
+      "kind": "passage",
+      "accent": "#ab8f63",
+      "siteId": "rampart-upper",
+      "sourceGroundIds": [
+        "rampart-walk",
+        "rampart-low-causeway:2",
+        "forecourt-v76:rampart-watch"
+      ],
+      "polygon": [
+        {
+          "x": 6132.685939707469,
+          "y": 2353.7798908903987
+        },
+        {
+          "x": 6140,
+          "y": 2353.7798908903987
+        },
+        {
+          "x": 6140,
+          "y": 2721.54588183517
+        },
+        {
+          "x": 6118.4498368321865,
+          "y": 2721.54588183517
+        }
+      ],
+      "area": 5307.639871871099,
+      "maxGapWidth": 21.55016316781348,
+      "witness": {
+        "x": 6132.783944134913,
+        "y": 2537.6628863627843
+      },
+      "bounds": {
+        "left": 6118.4498368321865,
+        "right": 6140,
+        "top": 2353.7798908903987,
+        "bottom": 2721.54588183517,
+        "width": 21.55016316781348,
+        "depth": 367.76599094477115
+      },
+      "sourceWitness": {
+        "left": {
+          "groundId": "rampart-walk",
+          "edgeIndex": 2,
+          "a": {
+            "x": 6150,
+            "y": 1906.5
+          },
+          "b": {
+            "x": 6090,
+            "y": 3456.5
+          }
+        },
+        "right": {
+          "groundId": "rampart-low-causeway:2",
+          "edgeIndex": 2,
+          "a": {
+            "x": 6140,
+            "y": 1740
+          },
+          "b": {
+            "x": 6140,
+            "y": 4360
+          }
+        },
+        "sample": {
+          "x": 6132.783944134913,
+          "y": 2537.6628863627843
+        },
+        "width": 14.432111730172437
+      }
+    },
+    {
+      "id": "ground-joint-v113:rampart-upper:2",
+      "label": "Joint physique · remparts hauts",
+      "levelId": "0",
+      "kind": "passage",
+      "accent": "#ab8f63",
+      "siteId": "rampart-upper",
+      "sourceGroundIds": [
+        "rampart-walk",
+        "rampart-low-causeway:2",
+        "forecourt-v76:rampart-watch"
+      ],
+      "polygon": [
+        {
+          "x": 6118.4498368321865,
+          "y": 2721.54588183517
+        },
+        {
+          "x": 6123.457014343164,
+          "y": 2721.54588183517
+        },
+        {
+          "x": 6118.369959360714,
+          "y": 2723.609383181535
+        },
+        {
+          "x": 6118.369959360714,
+          "y": 2723.609383181535
+        }
+      ],
+      "area": 5.166158768348396,
+      "maxGapWidth": 5.007177510977272,
+      "witness": {
+        "x": 6119.661692474196,
+        "y": 2722.5776325083525
+      },
+      "bounds": {
+        "left": 6118.369959360714,
+        "right": 6123.457014343164,
+        "top": 2721.54588183517,
+        "bottom": 2723.609383181535,
+        "width": 5.087054982449445,
+        "depth": 2.0635013463652285
+      },
+      "sourceWitness": {
+        "left": {
+          "groundId": "rampart-walk",
+          "edgeIndex": 2,
+          "a": {
+            "x": 6150,
+            "y": 1906.5
+          },
+          "b": {
+            "x": 6090,
+            "y": 3456.5
+          }
+        },
+        "right": {
+          "groundId": "forecourt-v76:rampart-watch",
+          "edgeIndex": 0,
+          "a": {
+            "x": 5511.8585785269315,
+            "y": 2969.63327229897
+          },
+          "b": {
+            "x": 6123.457014343164,
+            "y": 2721.54588183517
+          }
+        },
+        "sample": {
+          "x": 6119.661692474196,
+          "y": 2722.5776325083525
+        },
+        "width": 2.503588755488636
+      }
+    },
+    {
+      "id": "ground-joint-v113:rampart-upper:3",
+      "label": "Joint physique · remparts hauts",
+      "levelId": "0",
+      "kind": "passage",
+      "accent": "#ab8f63",
+      "siteId": "rampart-upper",
+      "sourceGroundIds": [
+        "rampart-walk",
+        "rampart-low-causeway:2",
+        "forecourt-v76:rampart-watch"
+      ],
+      "polygon": [
+        {
+          "x": 6123.457014343164,
+          "y": 2721.54588183517
+        },
+        {
+          "x": 6140,
+          "y": 2721.54588183517
+        },
+        {
+          "x": 6140,
+          "y": 2762.328543672744
+        },
+        {
+          "x": 6140,
+          "y": 2762.328543672744
+        }
+      ],
+      "area": 337.333494912833,
+      "maxGapWidth": 16.54298565683621,
+      "witness": {
+        "x": 6135.864253585791,
+        "y": 2741.9372127539573
+      },
+      "bounds": {
+        "left": 6123.457014343164,
+        "right": 6140,
+        "top": 2721.54588183517,
+        "bottom": 2762.328543672744,
+        "width": 16.54298565683621,
+        "depth": 40.782661837574324
+      },
+      "sourceWitness": {
+        "left": {
+          "groundId": "forecourt-v76:rampart-watch",
+          "edgeIndex": 1,
+          "a": {
+            "x": 6123.457014343164,
+            "y": 2721.54588183517
+          },
+          "b": {
+            "x": 6210.6634909910445,
+            "y": 2936.5319986675427
+          }
+        },
+        "right": {
+          "groundId": "rampart-low-causeway:2",
+          "edgeIndex": 2,
+          "a": {
+            "x": 6140,
+            "y": 1740
+          },
+          "b": {
+            "x": 6140,
+            "y": 4360
+          }
+        },
+        "sample": {
+          "x": 6135.864253585791,
+          "y": 2741.9372127539573
+        },
+        "width": 8.27149282841765
+      }
+    },
+    {
+      "id": "ground-joint-v113:rampart-lower:0",
+      "label": "Joint physique · remparts bas",
+      "levelId": "0",
+      "kind": "passage",
+      "accent": "#ab8f63",
+      "siteId": "rampart-lower",
+      "sourceGroundIds": [
+        "rampart-walk",
+        "rampart-low-causeway:2",
+        "forecourt-v76:rampart-watch"
+      ],
+      "polygon": [
+        {
+          "x": 6140,
+          "y": 2965.1957755093426
+        },
+        {
+          "x": 6140,
+          "y": 2965.1957755093426
+        },
+        {
+          "x": 6140,
+          "y": 2977.9636328505667
+        },
+        {
+          "x": 6108.523988405784,
+          "y": 2977.9636328505667
+        }
+      ],
+      "area": 200.9406128525734,
+      "maxGapWidth": 31.47601159421629,
+      "witness": {
+        "x": 6132.130997101446,
+        "y": 2971.5797041799547
+      },
+      "bounds": {
+        "left": 6108.523988405784,
+        "right": 6140,
+        "top": 2965.1957755093426,
+        "bottom": 2977.9636328505667,
+        "width": 31.47601159421629,
+        "depth": 12.767857341224044
+      },
+      "sourceWitness": {
+        "left": {
+          "groundId": "forecourt-v76:rampart-watch",
+          "edgeIndex": 2,
+          "a": {
+            "x": 6210.6634909910445,
+            "y": 2936.5319986675427
+          },
+          "b": {
+            "x": 5599.065055174812,
+            "y": 3184.619389131343
+          }
+        },
+        "right": {
+          "groundId": "rampart-low-causeway:2",
+          "edgeIndex": 2,
+          "a": {
+            "x": 6140,
+            "y": 1740
+          },
+          "b": {
+            "x": 6140,
+            "y": 4360
+          }
+        },
+        "sample": {
+          "x": 6132.130997101446,
+          "y": 2971.5797041799547
+        },
+        "width": 15.73800579710769
+      }
+    },
+    {
+      "id": "ground-joint-v113:rampart-lower:1",
+      "label": "Joint physique · remparts bas",
+      "levelId": "0",
+      "kind": "passage",
+      "accent": "#ab8f63",
+      "siteId": "rampart-lower",
+      "sourceGroundIds": [
+        "rampart-walk",
+        "rampart-low-causeway:2",
+        "forecourt-v76:rampart-watch"
+      ],
+      "polygon": [
+        {
+          "x": 6108.523988405785,
+          "y": 2977.9636328505667
+        },
+        {
+          "x": 6140,
+          "y": 2977.9636328505667
+        },
+        {
+          "x": 6140,
+          "y": 3456.5
+        },
+        {
+          "x": 6090,
+          "y": 3456.5
+        }
+      ],
+      "area": 19494.61729906127,
+      "maxGapWidth": 50,
+      "witness": {
+        "x": 6119.630997101446,
+        "y": 3217.2318164252833
+      },
+      "bounds": {
+        "left": 6090,
+        "right": 6140,
+        "top": 2977.9636328505667,
+        "bottom": 3456.5,
+        "width": 50,
+        "depth": 478.5363671494333
+      },
+      "sourceWitness": {
+        "left": {
+          "groundId": "rampart-walk",
+          "edgeIndex": 2,
+          "a": {
+            "x": 6150,
+            "y": 1906.5
+          },
+          "b": {
+            "x": 6090,
+            "y": 3456.5
+          }
+        },
+        "right": {
+          "groundId": "rampart-low-causeway:2",
+          "edgeIndex": 2,
+          "a": {
+            "x": 6140,
+            "y": 1740
+          },
+          "b": {
+            "x": 6140,
+            "y": 4360
+          }
+        },
+        "sample": {
+          "x": 6119.630997101446,
+          "y": 3217.2318164252833
+        },
+        "width": 40.73800579710769
+      }
+    },
+    {
+      "id": "ground-joint-v113:rampart-lower:2",
+      "label": "Joint physique · remparts bas",
+      "levelId": "0",
+      "kind": "passage",
+      "accent": "#ab8f63",
+      "siteId": "rampart-lower",
+      "sourceGroundIds": [
+        "rampart-walk",
+        "rampart-low-causeway:2",
+        "forecourt-v76:rampart-watch"
+      ],
+      "polygon": [
+        {
+          "x": 6090,
+          "y": 3456.5
+        },
+        {
+          "x": 6140,
+          "y": 3456.5
+        },
+        {
+          "x": 6140,
+          "y": 3460
+        },
+        {
+          "x": 6087.55376344086,
+          "y": 3460
+        }
+      ],
+      "area": 179.28091397881508,
+      "maxGapWidth": 52.446236559139834,
+      "witness": {
+        "x": 6114.388440860215,
+        "y": 3458.25
+      },
+      "bounds": {
+        "left": 6087.55376344086,
+        "right": 6140,
+        "top": 3456.5,
+        "bottom": 3460,
+        "width": 52.446236559139834,
+        "depth": 3.5
+      },
+      "sourceWitness": {
+        "left": {
+          "groundId": "rampart-walk",
+          "edgeIndex": 3,
+          "a": {
+            "x": 6090,
+            "y": 3456.5
+          },
+          "b": {
+            "x": 5700,
+            "y": 4014.5
+          }
+        },
+        "right": {
+          "groundId": "rampart-low-causeway:2",
+          "edgeIndex": 2,
+          "a": {
+            "x": 6140,
+            "y": 1740
+          },
+          "b": {
+            "x": 6140,
+            "y": 4360
+          }
+        },
+        "sample": {
+          "x": 6114.388440860215,
+          "y": 3458.25
+        },
+        "width": 51.22311827956946
+      }
+    },
+    {
+      "id": "ground-joint-v113:dock-road:0",
+      "label": "Joint physique · contrôle des quais",
+      "levelId": "0",
+      "kind": "passage",
+      "accent": "#ab8f63",
+      "siteId": "dock-road",
+      "sourceGroundIds": [
+        "port-marches-road:1",
+        "connection-v72:ash-marches:0"
+      ],
+      "polygon": [
+        {
+          "x": 6650,
+          "y": 2580.4060439104273
+        },
+        {
+          "x": 6650,
+          "y": 2580.4060439104273
+        },
+        {
+          "x": 6704.23236575951,
+          "y": 2770.2193240687116
+        },
+        {
+          "x": 6650,
+          "y": 2770.2193240687116
+        }
+      ],
+      "area": 5147.011617777869,
+      "maxGapWidth": 54.232365759509776,
+      "witness": {
+        "x": 6663.558091439878,
+        "y": 2675.3126839895695
+      },
+      "bounds": {
+        "left": 6650,
+        "right": 6704.23236575951,
+        "top": 2580.4060439104273,
+        "bottom": 2770.2193240687116,
+        "width": 54.232365759509776,
+        "depth": 189.81328015828421
+      },
+      "sourceWitness": {
+        "left": {
+          "groundId": "port-marches-road:1",
+          "edgeIndex": 0,
+          "a": {
+            "x": 6650,
+            "y": 3350
+          },
+          "b": {
+            "x": 6650,
+            "y": 2250
+          }
+        },
+        "right": {
+          "groundId": "connection-v72:ash-marches:0",
+          "edgeIndex": 17,
+          "a": {
+            "x": 6704.23236575951,
+            "y": 2770.2193240687116
+          },
+          "b": {
+            "x": 6644.23236575951,
+            "y": 2560.2193240687116
+          }
+        },
+        "sample": {
+          "x": 6663.558091439878,
+          "y": 2675.3126839895695
+        },
+        "width": 27.116182879754888
+      }
+    },
+    {
+      "id": "ground-joint-v113:dock-road:1",
+      "label": "Joint physique · contrôle des quais",
+      "levelId": "0",
+      "kind": "passage",
+      "accent": "#ab8f63",
+      "siteId": "dock-road",
+      "sourceGroundIds": [
+        "port-marches-road:1",
+        "connection-v72:ash-marches:0"
+      ],
+      "polygon": [
+        {
+          "x": 6650,
+          "y": 2770.2193240687116
+        },
+        {
+          "x": 6704.23236575951,
+          "y": 2770.2193240687116
+        },
+        {
+          "x": 6714,
+          "y": 2789.2288419465553
+        },
+        {
+          "x": 6650,
+          "y": 2789.2288419465553
+        }
+      ],
+      "area": 1123.7701353244483,
+      "maxGapWidth": 64,
+      "witness": {
+        "x": 6679.558091439878,
+        "y": 2779.7240830076335
+      },
+      "bounds": {
+        "left": 6650,
+        "right": 6714,
+        "top": 2770.2193240687116,
+        "bottom": 2789.2288419465553,
+        "width": 64,
+        "depth": 19.00951787784379
+      },
+      "sourceWitness": {
+        "left": {
+          "groundId": "port-marches-road:1",
+          "edgeIndex": 0,
+          "a": {
+            "x": 6650,
+            "y": 3350
+          },
+          "b": {
+            "x": 6650,
+            "y": 2250
+          }
+        },
+        "right": {
+          "groundId": "connection-v72:ash-marches:0",
+          "edgeIndex": 16,
+          "a": {
+            "x": 6723.847882181439,
+            "y": 2808.3945362976947
+          },
+          "b": {
+            "x": 6704.23236575951,
+            "y": 2770.2193240687116
+          }
+        },
+        "sample": {
+          "x": 6679.558091439878,
+          "y": 2779.7240830076335
+        },
+        "width": 59.11618287975489
+      }
+    },
+    {
+      "id": "ground-joint-v113:dock-road:2",
+      "label": "Joint physique · contrôle des quais",
+      "levelId": "0",
+      "kind": "passage",
+      "accent": "#ab8f63",
+      "siteId": "dock-road",
+      "sourceGroundIds": [
+        "port-marches-road:1",
+        "resident-terrace:resident-v69-port-1:0:0"
+      ],
+      "polygon": [
+        {
+          "x": 6650,
+          "y": 2859.5
+        },
+        {
+          "x": 6685,
+          "y": 2859.5
+        },
+        {
+          "x": 6685,
+          "y": 2986.2134474562463
+        },
+        {
+          "x": 6650,
+          "y": 2986.2134474562463
+        }
+      ],
+      "area": 4434.970660969615,
+      "maxGapWidth": 35,
+      "witness": {
+        "x": 6667.5,
+        "y": 2922.856723728123
+      },
+      "bounds": {
+        "left": 6650,
+        "right": 6685,
+        "top": 2859.5,
+        "bottom": 2986.2134474562463,
+        "width": 35,
+        "depth": 126.71344745624629
+      },
+      "sourceWitness": {
+        "left": {
+          "groundId": "port-marches-road:1",
+          "edgeIndex": 0,
+          "a": {
+            "x": 6650,
+            "y": 3350
+          },
+          "b": {
+            "x": 6650,
+            "y": 2250
+          }
+        },
+        "right": {
+          "groundId": "resident-terrace:resident-v69-port-1:0:0",
+          "edgeIndex": 0,
+          "a": {
+            "x": 6685,
+            "y": 2859.5
+          },
+          "b": {
+            "x": 6685,
+            "y": 3084.5
+          }
+        },
+        "sample": {
+          "x": 6667.5,
+          "y": 2922.856723728123
+        },
+        "width": 35
+      }
+    },
+    {
+      "id": "ground-joint-v113:dock-road:3",
+      "label": "Joint physique · contrôle des quais",
+      "levelId": "0",
+      "kind": "passage",
+      "accent": "#ab8f63",
+      "siteId": "dock-road",
+      "sourceGroundIds": [
+        "port-marches-road:1",
+        "forecourt-v76:dock-control"
+      ],
+      "polygon": [
+        {
+          "x": 6650,
+          "y": 2986.2134474562463
+        },
+        {
+          "x": 6685,
+          "y": 2986.2134474562463
+        },
+        {
+          "x": 6658.8095916044595,
+          "y": 3045.2837975997973
+        },
+        {
+          "x": 6650,
+          "y": 3045.2837975997973
+        }
+      ],
+      "area": 1293.9239578600973,
+      "maxGapWidth": 35,
+      "witness": {
+        "x": 6660.952397901115,
+        "y": 3015.7486225280218
+      },
+      "bounds": {
+        "left": 6650,
+        "right": 6685,
+        "top": 2986.2134474562463,
+        "bottom": 3045.2837975997973,
+        "width": 35,
+        "depth": 59.07035014355097
+      },
+      "sourceWitness": {
+        "left": {
+          "groundId": "port-marches-road:1",
+          "edgeIndex": 0,
+          "a": {
+            "x": 6650,
+            "y": 3350
+          },
+          "b": {
+            "x": 6650,
+            "y": 2250
+          }
+        },
+        "right": {
+          "groundId": "forecourt-v76:dock-control",
+          "edgeIndex": 3,
+          "a": {
+            "x": 6658.8095916044595,
+            "y": 3045.2837975997973
+          },
+          "b": {
+            "x": 6752.844550217043,
+            "y": 2833.1955457829426
+          }
+        },
+        "sample": {
+          "x": 6660.952397901115,
+          "y": 3015.7486225280218
+        },
+        "width": 21.904795802229273
+      }
+    },
+    {
+      "id": "ground-joint-v113:dock-road:4",
+      "label": "Joint physique · contrôle des quais",
+      "levelId": "0",
+      "kind": "passage",
+      "accent": "#ab8f63",
+      "siteId": "dock-road",
+      "sourceGroundIds": [
+        "port-marches-road:1",
+        "forecourt-v76:dock-control"
+      ],
+      "polygon": [
+        {
+          "x": 6650,
+          "y": 3045.2837975997973
+        },
+        {
+          "x": 6658.8095916044595,
+          "y": 3045.2837975997973
+        },
+        {
+          "x": 6683.766955535233,
+          "y": 3056.349307660845
+        },
+        {
+          "x": 6650,
+          "y": 3056.349307660845
+        }
+      ],
+      "area": 235.56560536660254,
+      "maxGapWidth": 33.76695553523314,
+      "witness": {
+        "x": 6660.644136784923,
+        "y": 3050.816552630321
+      },
+      "bounds": {
+        "left": 6650,
+        "right": 6683.766955535233,
+        "top": 3045.2837975997973,
+        "bottom": 3056.349307660845,
+        "width": 33.76695553523314,
+        "depth": 11.065510061047917
+      },
+      "sourceWitness": {
+        "left": {
+          "groundId": "port-marches-road:1",
+          "edgeIndex": 0,
+          "a": {
+            "x": 6650,
+            "y": 3350
+          },
+          "b": {
+            "x": 6650,
+            "y": 2250
+          }
+        },
+        "right": {
+          "groundId": "forecourt-v76:dock-control",
+          "edgeIndex": 2,
+          "a": {
+            "x": 7262.164101083443,
+            "y": 3312.797041928701
+          },
+          "b": {
+            "x": 6658.8095916044595,
+            "y": 3045.2837975997973
+          }
+        },
+        "sample": {
+          "x": 6660.644136784923,
+          "y": 3050.816552630321
+        },
+        "width": 21.288273569845842
+      }
+    },
+    {
+      "id": "ground-joint-v113:dock-road:5",
+      "label": "Joint physique · contrôle des quais",
+      "levelId": "0",
+      "kind": "passage",
+      "accent": "#ab8f63",
+      "siteId": "dock-road",
+      "sourceGroundIds": [
+        "port-marches-road:1",
+        "port"
+      ],
+      "polygon": [
+        {
+          "x": 6650,
+          "y": 3056.349307660845
+        },
+        {
+          "x": 6683.766955535232,
+          "y": 3056.349307660845
+        },
+        {
+          "x": 6681.781298964442,
+          "y": 3063.017804311083
+        },
+        {
+          "x": 6650,
+          "y": 3063.017804311083
+        }
+      ],
+      "area": 218.554157782346,
+      "maxGapWidth": 33.76695553523223,
+      "witness": {
+        "x": 6666.3870636249185,
+        "y": 3059.683555985964
+      },
+      "bounds": {
+        "left": 6650,
+        "right": 6683.766955535232,
+        "top": 3056.349307660845,
+        "bottom": 3063.017804311083,
+        "width": 33.76695553523223,
+        "depth": 6.668496650238012
+      },
+      "sourceWitness": {
+        "left": {
+          "groundId": "port-marches-road:1",
+          "edgeIndex": 0,
+          "a": {
+            "x": 6650,
+            "y": 3350
+          },
+          "b": {
+            "x": 6650,
+            "y": 2250
+          }
+        },
+        "right": {
+          "groundId": "port",
+          "edgeIndex": 0,
+          "a": {
+            "x": 6680,
+            "y": 3069
+          },
+          "b": {
+            "x": 6860,
+            "y": 2464.5
+          }
+        },
+        "sample": {
+          "x": 6666.3870636249185,
+          "y": 3059.683555985964
+        },
+        "width": 32.774127249836965
+      }
+    }
+  ],
+  "wideGapStillOpen": {
+    "point": {
+      "x": 6653,
+      "y": 2800
+    },
+    "pointHasPhysicalGround": false,
+    "fullBodyCanWalk": false,
+    "reason": "Outside the bounded narrow joints; not corrected or hidden by the successful y2700 crossing"
+  }
+}
