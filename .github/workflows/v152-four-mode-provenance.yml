@@ -4,7 +4,7 @@ on:
   push:
     branches: [feat/v152-clan-war-provenance-gate-20261101]
   pull_request:
-    branches: [codex/reconcile-v115-lock-four-modes-20261101]
+    branches: [codex/reconcile-v115-lock-four-modes-20261101, feat/v152-clan-war-provenance-gate-20261101]
   workflow_dispatch:
 
 permissions:
@@ -42,6 +42,8 @@ jobs:
             /tests/clan-war-production-v152.test.mjs
             /docs/clan-war-v152/
             /tests/browser/clan-war-v151-four-modes.fixture.tsx
+            /tests/browser/clan-war-provenance-v152.fixture.tsx
+            /scripts/qa-clan-provenance-v152-browser.mjs
             /scripts/qa-clan-war-v115-multitab-v151.mjs
             /docs/Yautja_ClanWar_V151_Quatre_Modes_Verrou.xlsx
       - name: Use Node.js 22
@@ -64,13 +66,17 @@ jobs:
       - name: Typecheck V152 provenance and existing V151 modules
         run: npx --no-install tsc --noEmit -p tsconfig.clan-war-v152.json
       - name: Lint integrated gameplay and browser tools
-        run: npx --no-install eslint app/game/ClanWarOperationsV115.tsx app/game/ClanWarPanelV85.tsx app/game/systems/clanWarProvenanceGateV152.ts tests/clan-war-provenance-gate-v152.test.mjs tests/clan-war-production-v152.test.mjs tests/clan-war-v115-multitab-v151.test.mjs scripts/qa-clan-war-v115-multitab-v151.mjs tests/browser/clan-war-v151-four-modes.fixture.tsx
+        run: npx --no-install eslint app/game/ClanWarOperationsV115.tsx app/game/ClanWarPanelV85.tsx app/game/systems/clanWarProvenanceGateV152.ts tests/clan-war-provenance-gate-v152.test.mjs tests/clan-war-production-v152.test.mjs tests/clan-war-v115-multitab-v151.test.mjs scripts/qa-clan-war-v115-multitab-v151.mjs tests/browser/clan-war-v151-four-modes.fixture.tsx scripts/qa-clan-provenance-v152-browser.mjs tests/browser/clan-war-provenance-v152.fixture.tsx
       - name: Install Chromium
         run: npx --no-install playwright-core install --with-deps chromium
       - name: Real two-tab race, stale reset, timers and simultaneous Outer/recruits
         run: |
           export AUDIT_CHROME_EXECUTABLE="$(node -e 'process.stdout.write(require("playwright-core").chromium.executablePath())')"
           node scripts/qa-clan-war-v115-multitab-v151.mjs
+      - name: V85 provenance view refreshes only after explicit inspection
+        run: |
+          export AUDIT_CHROME_EXECUTABLE="$(node -e 'process.stdout.write(require("playwright-core").chromium.executablePath())')"
+          node scripts/qa-clan-provenance-v152-browser.mjs
       - name: Verify V152 provenance companion and preserved V151 workbook
         run: |
           unzip -t docs/clan-war-v152/Yautja_ClanWar_V152_Provenance_QA.xlsx | tail -1

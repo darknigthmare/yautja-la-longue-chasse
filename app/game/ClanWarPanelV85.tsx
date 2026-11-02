@@ -96,9 +96,29 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false, init
   const corridorIds = planet.id === "korthas" ? ["CON-T01", "CON-T08", "CON-T14", "CON-T15", "CON-T21", "CON-T22"] : warObjectiveCorridorV96(simulation);
   const [message, setMessage] = useState("Choisissez une planète, un départ et une destination voisine pour préparer votre front.");
   const [evidenceRawV152,setEvidenceRawV152]=useState<string|null>(null);
+  const evidenceRawRefV152=useRef<string|null>(null);
+  const [evidenceStaleV152,setEvidenceStaleV152]=useState(false);
   const evidenceV152=useMemo(()=>evidenceRawV152?
     reviewWarProvenanceV152(evidenceRawV152,simulation,DEFAULT_WAR_RULES_V6):null,
     [evidenceRawV152,simulation]);
+  useEffect(()=>{
+    // A storage event does not grant permission to import new bytes: discard
+    // the old conclusion and wait for an explicit new inspection instead.
+    const changed=(event:StorageEvent)=>{
+      if(evidenceRawRefV152.current===null)return;
+      if(event.storageArea!==window.localStorage)return;
+      if(event.key===null||(event.key===WAR_OPERATIONS_STORAGE_V115&&
+        event.newValue!==evidenceRawRefV152.current))setEvidenceStaleV152(true);
+    };
+    window.addEventListener("storage",changed);
+    return ()=>window.removeEventListener("storage",changed);
+  },[]);
+  useEffect(()=>{
+    // The V115 exercise can write in this very tab while another panel is
+    // open; storage events only notify other documents. Require a new read
+    // after leaving the evidence view, without reading the archive in effect.
+    if(tab!=="korthas"&&evidenceRawRefV152.current!==null)setEvidenceStaleV152(true);
+  },[tab]);
   const [query, setQuery] = useState(""), [section, setSection] = useState("Toutes les feuilles"), [page, setPage] = useState(0);
   const [selectedEntryId, setSelectedEntryId] = useState("OPS-01");
   const [territoryChoice, setTerritoryId] = useState<string | null>(null), [targetChoice, setTargetId] = useState<string | null>(null);
@@ -350,16 +370,21 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false, init
         <button type="button" disabled={!loaded||pendingWrites>0} onClick={()=>{
           try{
             const raw=window.localStorage.getItem(WAR_OPERATIONS_STORAGE_V115);
+            evidenceRawRefV152.current=raw;
             setEvidenceRawV152(raw);
+            setEvidenceStaleV152(false);
             setMessage(raw?
               "Instantané local V115 lu pour un audit documentaire. Cette analyse n'authentifie pas une partie serveur.":
               "Aucune archive de missions V115 enregistrée dans ce navigateur.");
           }catch{
+            evidenceRawRefV152.current=null;
             setEvidenceRawV152(null);
+            setEvidenceStaleV152(false);
             setMessage("Accès à l'archive V115 impossible : aucune donnée V85 modifiée.");
           }
         }}>Examiner les sources V115 · lecture seule</button>
-        {evidenceV152&&<details>
+        {evidenceStaleV152&&<p role="status">Le bilan V115 peut être périmé. Examinez à nouveau les sources pour l’actualiser.</p>}
+        {evidenceV152&&!evidenceStaleV152&&<details>
           <summary>Contrôles de provenance V152 · {evidenceV152.dossiers.length} bilans</summary>
           <p role="status">{evidenceV152.message}</p>
           <p>Territoires V6 examinés : {evidenceV152.territoryChecks.length}.

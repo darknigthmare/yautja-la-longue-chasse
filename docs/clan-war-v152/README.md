@@ -42,3 +42,22 @@ Le classeur `docs/clan-war-v152/Yautja_ClanWar_V152_Provenance_QA.xlsx` est un *
 Les sources **officielles** `https://predator.illfonic.com/the-predator/` et `https://thewaltdisneycompany.com/news/predator-badlands/`, ainsi qu'un portfolio d'équipe VFX de `The Predator`, sont placés dans le registre visuel. Elles établissent l'existence de sujets ou d'équipements, **pas la fidélité 1:1 des modèles du jeu**. Aucun asset n'est déclaré homologué par la simple présence de ces liens.
 
 La CI V152 inclut désormais `tests/clan-war-production-v152.test.mjs` qui ouvre le **vrai XLSX commité** et contrôle les dix feuilles, les 40 IDs de production, 32 QA, 24 scénarios W3, 22 références, formules et avertissements de non-conquête. Toutes les QA manuelles restent ouvertes.
+
+## Complément : bilan V115 périmé
+
+Une inspection V152 crée un instantané. Une modification ou suppression de
+l'archive V115 depuis un autre onglet, ou le départ de l'onglet Conseil vers une
+autre section qui peut modifier l'exercice, masque cet ancien bilan et demande
+une nouvelle inspection explicite. L'événement de stockage ne charge pas le
+nouveau contenu et ne change aucune archive. La restriction reste locale : pas
+de synchronisation entre appareils, pas d'authentification ni de preuve 1:1.
+
+`scripts/qa-clan-provenance-v152-browser.mjs` ouvre deux vrais onglets Chromium,
+utilise le panneau V85 réel, émet deux rapports V115 par les moteurs existants et
+vérifie : inspection, changement d'une autre clé, écriture distante, masquage,
+lecture manuelle, changement de section, suppression et `clear`. Les octets de
+campagne et V85 sont comparés avant/après l'audit, hors `clear` intentionnel.
+Le profil et les images sont des fixtures ; ni le parcours GameClient complet,
+ni la manette physique ou le rendu artistique ne sont validés. L'onglet Bible
+reste monté et hydrate son propre exercice V115 ; cette recette n'affirme donc
+pas qu'aucun composant du jeu ne lit V115 avant le clic d'inspection.
