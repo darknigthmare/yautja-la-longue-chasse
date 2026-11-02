@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "sourceRef": "e168edf951166efca90e4f0cf3ef6da7167dece6",
+  "sourceRef": "3da59a605b6b39d45fc36e9df79a6ae93822a804",
   "scope": "Tracked application, runtime/build configuration, scripts, tests and their fixtures, and the two affected CI workflows. This source fingerprint does not execute archived browser journeys, certify all artwork, qualify physical hardware or replace the separate workbook checks. Historical Homeworld publications keep their own documents and identities.",
-  "files": 2461,
-  "bytes": 126781723,
+  "files": 2462,
+  "bytes": 126787911,
   "entries": [
     {
       "path": ".github/workflows/audit-v94.yml",
-      "bytes": 63664,
-      "sha256": "bb4bc7ab5b39d36c61f8b944b9de07efecdec19cfc1f9f56a0fa735dd52e4575"
+      "bytes": 63591,
+      "sha256": "57de47ed98e551b31c447ba7b81886f5ddc093a13b25b5ee6c848bbfeb391519"
     },
     {
       "path": ".github/workflows/hunt-closure-v112.yml",
@@ -5999,6 +5999,11 @@
       "path": "scripts/check-open-workstreams-audit-v107.mjs",
       "bytes": 6649,
       "sha256": "11eea2b8df5dcf2c19936028a2fc6d39a42891e65d33ca6be12dd52f3550a79b"
+    },
+    {
+      "path": "scripts/check-resume-workbook-history-20261101.py",
+      "bytes": 6261,
+      "sha256": "ded91a7837013c723ffe451bd61c637b45c2a786364deee8cab19a887441b3e4"
     },
     {
       "path": "scripts/checkpoint-enforcer-production-v612.mjs",
