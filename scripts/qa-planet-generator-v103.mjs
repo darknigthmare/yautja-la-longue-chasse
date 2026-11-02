@@ -156,7 +156,7 @@ try {
   await generator(page).getByRole("button", { name: "Base extraterrestre", exact: true }).press("Enter");
   let current = await values(page);
   check("the extraterrestrial base preserves seed, both counts and independently locked palettes", ["seed", "territoryCount", "regionCount", "landPalette", "surfacePalette"].every(field => current[field] === lockedBefore[field]) && current.landVariant === "alien" && current.surfaceVariant === "alien");
-  await generator(page).getByRole("button", { name: "Mélanger les réglages", exact: true }).press("Enter");
+  await generator(page).getByRole("button", { name: "Tout mélanger au hasard", exact: true }).press("Enter");
   current = await values(page);
   check("global randomization honors every active lock and leaves the applied world unchanged", ["seed", "territoryCount", "regionCount", "landPalette", "surfacePalette"].every(field => current[field] === lockedBefore[field]) && await code(page) === initial);
   const moduleBefore = await values(page);
@@ -257,7 +257,7 @@ try {
   console.log("QA V103: exact legacy world, archive and explicit variant action");
   await page.goto(`${baseUrl}/planet-generator-v102`, { waitUntil: "domcontentloaded", timeout: 90000 });
   const oldEditor = page.getByTestId("planet-generator-v102"); await oldEditor.waitFor();
-  await oldEditor.locator("canvas").scrollIntoViewIfNeeded();
+  await oldEditor.getByTestId("planet-material-v101").scrollIntoViewIfNeeded();
   await oldEditor.locator('canvas[data-render-status="ready"], canvas[data-render-status="fallback"]').waitFor({ timeout: 90000 });
   worldLegacy = await oldEditor.getAttribute("data-preview-planet-code");
   const oldAtlas = oldEditor.getByTestId("clan-war-atlas-v95"); await map(oldAtlas);

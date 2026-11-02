@@ -1,0 +1,22 @@
+{
+  "route": "/planet-generator-v103",
+  "checkedAt": "2026-11-02T04:40:59.666Z",
+  "viewport": [
+    1440,
+    1080
+  ],
+  "mobileViewport": [
+    390,
+    844
+  ],
+  "checks": [
+    "the editor exposes four independent sections and all 22 lockable recipe fields",
+    "incompatible region counts are explicitly unavailable on an 18-territory front",
+    "the extraterrestrial base preserves seed, both counts and independently locked palettes"
+  ],
+  "restoredFrontChecks": [],
+  "errors": [],
+  "consoleErrors": [],
+  "passed": false,
+  "failure": "locator.press: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('planet-generator-v103').visible().getByRole('button', { name: 'Mélanger les réglages', exact: true })\u001b[22m\n\n    at /workspace/yautja-la-longue-chasse/scripts/qa-planet-generator-v103.mjs:159:93"
+}

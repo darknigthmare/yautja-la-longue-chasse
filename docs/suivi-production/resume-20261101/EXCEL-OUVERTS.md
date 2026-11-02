@@ -1,10 +1,16 @@
-# Reprise des classeurs — 1er novembre 2026
+# Reprise des classeurs — 1er novembre, finalisation du 2 novembre 2026
 
 Cette lecture porte sur la branche `codex/homeworld-access-followup-20261101`,
 après intégration du `main` `f1856f66`, au commit `439370c7`.
 Les PR 23 et 24 ont déjà été fusionnées. Leur contenu n'est donc pas un chantier
 de PR à rouvrir. La qualification de chasse en cours dans la PR 62 garde son
 propre suivi ; ce document ne modifie ni son code ni ses attestations.
+
+La finalisation locale du 2 novembre utilise désormais les deux certificats R7
+du runtime `bda14a95aa8c9e6cf37039e2d67ea1544a8e8de1` et du build conservé
+`wVuSG_xIKNn3geLlIq7Cb`. L'instantané PR du 1er novembre et ses neuf événements
+restent distincts des observations distantes ultérieures ; ils ne sont pas
+remplacés par un relevé implicite de l'état GitHub vivant.
 
 ## Classeur de coordination de la reprise
 
@@ -56,6 +62,11 @@ locaux sont un relevé reproductible ; si un classeur source change ensuite, une
 nouvelle génération explicite est nécessaire. Aucun état GitHub vivant ni Excel
 natif n'est déduit de ce relevé.
 
+Après actualisation du classeur V112 principal, la coordination est régénérée et
+vérifiée à nouveau dans le [dossier de finalisation R7](../../qa/v112-excel-followup-r7-recovery/README.md).
+Elle conserve ses cinq feuilles, les 33 PR initiales, les 29 dépendances et les
+neuf événements ; l'inventaire épingle les nouveaux octets du classeur principal.
+
 Le [diagnostic de rive du passage des marais](../../qa/homeworld-marsh-edge-diagnostic-20261101/README.md)
 reste `OUVERT_NON_CORRIGE` dans `Synthese` et `OuvertsSource`. Les interstices
 visuels extérieurs observés en R5/R6 ne sont pas présentés comme un trou physique
@@ -66,7 +77,7 @@ n'est déduit de ce diagnostic ou des recettes compilées.
 
 | Classeur | Portée et taille vérifiées | Suite à donner |
 | --- | --- | --- |
-| [YAUTJA_V112_SUIVI.xlsx](../../YAUTJA_V112_SUIVI.xlsx) | 122 feuilles ; 113 feuilles historiques V111 conservées ; suivi transversal Homeworld, Pit, clans, Preserve et provenance. Les neuf feuilles V112 décrivent la publication R4. | Actualiser les preuves après le nouveau gel et les deux recettes compilées complètes, puis régénérer. Ne pas attribuer la validation R4 aux sources réconciliées. |
+| [YAUTJA_V112_SUIVI.xlsx](../../YAUTJA_V112_SUIVI.xlsx) | 122 feuilles ; 113 feuilles historiques V111 identiques ; les neuf feuilles V112 suivent les deux certificats R7 et le gel de 1 649 sources. | 14 contrôles du suivi, reproduction exacte et contrôle XML séparé ; 56 exigences restent ouvertes, dont neuf actions, ainsi que les 354 cibles artistiques. |
 | [YAUTJA_V112_MECANIQUES_CHASSE.xlsx](../../YAUTJA_V112_MECANIQUES_CHASSE.xlsx) | 19 feuilles, 362 lignes ; douze extensions FUT, règles, paramètres, transitions, qualification et preuves. Source éditable : [hunt-mechanics-v112.json](../../hunt-mechanics-v112.json). | Conserver la distinction entre implémentation, qualification automatique et matériel/usage non qualifié. La PR 62 poursuit ce domaine séparément. |
 | [YAUTJA_V111_MECANIQUES_CHASSE.xlsx](../../YAUTJA_V111_MECANIQUES_CHASSE.xlsx) | Huit feuilles ; état antérieur de la chaîne de chasse. | Historique immuable ; les extensions et leurs preuves se lisent dans le classeur de chasse V112. |
 | [THE_PIT_V63_SUIVI.xlsx](../../THE_PIT_V63_SUIVI.xlsx) | Cinq feuilles ; combattants, stages et premiers lots. | Historique repris dans les classeurs cumulatifs. Pour les progrès courants Feral / Scar, lire les feuilles V112 et la production native associée. |
@@ -124,26 +135,37 @@ par ces deux contrôles ZIP/XML.
 
 ## Actualisation du suivi Homeworld
 
-La collecte courante refuse correctement le registre avant actualisation :
-l'audit spatial enregistré à 27 632 octets fait maintenant 94 335 octets après
-protection des activités fixes. Le gel R4 diffère aussi sur 44 entrées de la base
-réconciliée inspectée. Le nouveau registre ne peut donc pas réutiliser les anciens
-certificats comme preuves courantes.
+Le registre R4 exact est conservé dans
+[source-registry-r4.json](../../qa/v112-excel-followup-r7-recovery/source-registry-r4.json).
+Ses six références courantes sont actualisées avec des portées R7 explicites,
+dont l'audit spatial de 94 335 octets qui protège les activités fixes. Les anciens
+journaux et certificats R4/R5/R6 gardent leurs identités propres.
 
 Les trois métadonnées historiques V111 et le classeur V111 restent identiques aux
 empreintes attendues par le générateur. Les capsules historiques existantes
 suffisent à leur périmètre ; aucun relâchement de vérification ni nouvelle capsule
 n'est nécessaire pour accepter de vraies preuves compilées de la nouvelle base.
 
-Ordre de finalisation :
+Le marqueur de registre est replacé sans bloquer les 64 positions fixes ni les
+30 liaisons fonctionnelles déclarées (2 709 échantillons de modèle). Les deux
+domaines partagent exactement le runtime, le Build ID et le gel de 1 649 entrées :
+Homeworld est entièrement rejoué après récupération, avec **249 contrôles et
+39 captures nouvellement ouvertes** ; Pit conserve sa publication **127/39**,
+dont huit contrôles indépendants vérifient l'intégrité, sans nouveau gameplay.
+La Legacy R7 **87/14** reste une preuve de compatibilité distincte sur
+1 532 sources observées parmi 1 649.
 
-1. Terminer et geler la correction du nouveau marqueur de registre, en protégeant
-   les 64 coordonnées fixes et 30 parcours des activités existantes.
-2. Construire la production, puis exécuter les recettes Homeworld et Pit complètes
-   sur le même commit et le même Build ID, avec toutes les captures inspectées.
-3. Actualiser les empreintes du registre, les portées et les preuves de validation.
-4. Régénérer les neuf feuilles V112, contrôler les 122 feuilles et les 113 parties
-   historiques, exécuter les 14 contrôles du suivi puis reproduire les octets.
+Les neuf feuilles V112 sont régénérées, avec 122 feuilles finales et leurs
+113 feuilles V111 historiques identiques. Les 14 contrôles du suivi passent ;
+une seconde exécution vérifie les mêmes contrôles après consignation de leurs
+preuves, sans compter 28 comportements distincts. La reproduction du classeur et
+les journaux complets se trouvent dans le
+[dossier de finalisation R7](../../qa/v112-excel-followup-r7-recovery/README.md).
+
+Classeur principal : **9 433 700 octets**, SHA256
+`723cc894b643d55dcd076cab8b615866c6879ecc481c55616adcdd0508d2eccc`.
+Le replay Pit exporté et relu est observé dans le brut ; ses octets JSON ne sont
+pas une pièce portable conservée et aucune copie n'est reconstruite.
 
 Cette reprise ne ferme aucune exigence sans sa preuve propre et conserve les
 échecs/tentatives antérieurs dans leur contexte historique.
@@ -163,14 +185,14 @@ pas comme des comportements distincts. Ces réussites historiques ne certifient
 pas le code courant. Les journaux complets, commandes, résultats et SHA256 se
 trouvent dans [history-checks](history-checks/README.md).
 
-## Contrôles courants avant publication R7
+## Contrôles courants R7
 
 Une exécution unique des 35 fichiers V112 courants passe **375 assertions**,
 sans échec, annulation ni test ignoré, sur le runtime
 `bda14a95aa8c9e6cf37039e2d67ea1544a8e8de1` et le gel
 `c35f8b454ec26d1b05852cabbe4f6ee111d71e7413aef80282582d3ca5ee6a3e`.
-Les deux suites de suivi Excel/certificat sont exclues exactement, en attendant
-les certificats compilés des deux domaines ; les historiques aux mêmes onze
-empreintes ne sont pas rejoués. Ce résultat ne remplace pas les parcours
+Les deux suites de suivi Excel/certificat sont exclues exactement et exécutées
+séparément après publication des certificats des deux domaines ; les historiques
+aux mêmes onze empreintes ne sont pas rejoués. Ce résultat ne remplace pas les parcours
 navigateurs ni une admission artistique. Commande complète, empreintes et journal :
 [current-checks-r7](current-checks-r7/README.md).
