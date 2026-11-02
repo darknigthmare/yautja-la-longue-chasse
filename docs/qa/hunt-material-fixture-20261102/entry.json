@@ -1,0 +1,72 @@
+{
+  "status": "PASS_BOUNDED_HUNT_FIXTURE",
+  "sourceCommit": "0a797f5e54074f5d3564bca29142527ef615d7ab",
+  "groupsPassed": 18,
+  "groupsFailed": 0,
+  "pageErrors": [],
+  "capturesOpened": [
+    "accessibility-phone.png",
+    "workshop-cleaned.png",
+    "corpse-rites.png",
+    "canopy-native-release.png",
+    "corpse-rites-gamepad.png"
+  ],
+  "scope": "Actual React components and hunt source functions; fixture keyboard/pointer adapters, actual gamepad polling and stepGame/DOM routing with an emulated pad, localStorage acknowledgement and fallback renderer; no whole-component input lifecycle, full campaign or physical-device qualification",
+  "freezePreserved": {
+    "path": "docs/v112-runtime-freeze.json",
+    "files": 1649,
+    "sha256": "c35f8b454ec26d1b05852cabbe4f6ee111d71e7413aef80282582d3ca5ee6a3e"
+  },
+  "files": [
+    {
+      "path": "docs/qa/hunt-material-fixture-20261102/accessibility-phone.png",
+      "bytes": 15085,
+      "sha256": "f14cae6819e380b5eb72f9e65afbe0b0e23a4f3fc2b2119a5b79b47ad3323538"
+    },
+    {
+      "path": "docs/qa/hunt-material-fixture-20261102/before-diagnostic-scope.json",
+      "bytes": 358,
+      "sha256": "e79f283d68dcbac10fa5f01a510704f76580f35eaf6ee6328498a1edc9f6803d"
+    },
+    {
+      "path": "docs/qa/hunt-material-fixture-20261102/before-diagnostic.log",
+      "bytes": 2478,
+      "sha256": "cf88585e55461bbaeedb472641917caa7c0591c31aee46ac522b2b476b9e5cae"
+    },
+    {
+      "path": "docs/qa/hunt-material-fixture-20261102/browser-driver.log",
+      "bytes": 326960,
+      "sha256": "2ae9e19d1681b47a475d79ef266b33ceb8abd59b24b79124f3cbdb75c19aed58"
+    },
+    {
+      "path": "docs/qa/hunt-material-fixture-20261102/canopy-native-release.png",
+      "bytes": 48921,
+      "sha256": "748c09867c18b15fe7c9c77de63ee89ab1c9379887a59b9f0d9eafcd5f6488a0"
+    },
+    {
+      "path": "docs/qa/hunt-material-fixture-20261102/corpse-rites-gamepad.png",
+      "bytes": 54553,
+      "sha256": "727080b59c4407aa54a2d168bf29c07b439ee40642b95055d3d3853ac30e9ed7"
+    },
+    {
+      "path": "docs/qa/hunt-material-fixture-20261102/corpse-rites.png",
+      "bytes": 54632,
+      "sha256": "2eb08aae433cecf36c3c95a31e957ceccef7a21004807d6eeffd66a0033f6608"
+    },
+    {
+      "path": "docs/qa/hunt-material-fixture-20261102/report.json",
+      "bytes": 3362,
+      "sha256": "a63df1854ac972a67f36d296209499584087ae6a9b9f918b86fa95bae201de79"
+    },
+    {
+      "path": "docs/qa/hunt-material-fixture-20261102/workshop-cleaned.png",
+      "bytes": 69293,
+      "sha256": "e66f82341b70533cdc94a05375c6a600deb8b6f8a708b1ad5a9b7b04b7455581"
+    }
+  ],
+  "limits": [
+    "The before diagnostic used explicit local Chromium,12-second action waits and extra progress logs in a disposable clone; it reproduces the missing material object locally, not the inaccessible exact remote log.",
+    "Existing driver capture compression/scaling is retained and documented; these are component fixture captures, not new production/art certificates.",
+    "No product source, native artwork, save format or R7 domain report was modified."
+  ]
+}

@@ -1,0 +1,45 @@
+DIAGNOSTIC_START real accessibility controls, remapping, readable guide and narrow viewport
+DIAGNOSTIC_CAPTURE accessibility-phone
+DIAGNOSTIC_START denied write leaves the actual conservation panel and stock unconfirmed
+DIAGNOSTIC_START actual panel drives all four persistent manual stages exactly once
+DIAGNOSTIC_CAPTURE workshop-cleaned
+DIAGNOSTIC_START free sharpening and explicit counted reserve preserve possession
+DIAGNOSTIC_PAGE_ERROR TypeError: Cannot read properties of undefined (reading 'skin')
+    at drawHunterLayered (http://127.0.0.1:34995/fixture.js:136065:82)
+    at Object.renderGame (http://127.0.0.1:34995/fixture.js:137451:7)
+    at http://127.0.0.1:34995/fixture.js:141545:27
+    at Object.react_stack_bottom_frame (http://127.0.0.1:34995/fixture.js:19830:22)
+    at runWithFiberInDEV (http://127.0.0.1:34995/fixture.js:2260:74)
+    at commitHookEffectListMount (http://127.0.0.1:34995/fixture.js:10674:165)
+    at commitHookLayoutEffects (http://127.0.0.1:34995/fixture.js:10654:62)
+    at commitLayoutEffectOnFiber (http://127.0.0.1:34995/fixture.js:11167:28)
+    at recursivelyTraverseLayoutEffects (http://127.0.0.1:34995/fixture.js:12055:15)
+    at commitLayoutEffectOnFiber (http://127.0.0.1:34995/fixture.js:11226:15)
+DIAGNOSTIC_START actual corpse menu starts, interrupts and completes the native flaying operation
+DIAGNOSTIC_START keyboard: fixture keyboard/pointer or actual gamepad polling feeds the real canopy pendulum
+DIAGNOSTIC_START touch: fixture keyboard/pointer or actual gamepad polling feeds the real canopy pendulum
+DIAGNOSTIC_START gamepad: fixture keyboard/pointer or actual gamepad polling feeds the real canopy pendulum
+DIAGNOSTIC_START default: real gamepad opens, navigates, activates and closes the actual corpse menu while simulation continues
+DIAGNOSTIC_START remapped: real gamepad opens, navigates, activates and closes the actual corpse menu while simulation continues
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected
+
++ [
++   "Cannot read properties of undefined (reading 'skin')"
++ ]
+- []
+
+    at file:///tmp/homeworld-final-ci-sparse-20261102/scripts/qa-hunt-mechanics-browser-v112.mjs:182:9 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: [ "Cannot read properties of undefined (reading 'skin')" ],
+  expected: [],
+  operator: 'deepStrictEqual',
+  diff: 'simple'
+}
+
+Node.js v22.23.4
