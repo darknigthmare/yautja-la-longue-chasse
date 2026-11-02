@@ -1,0 +1,946 @@
+{
+  "missionId": "fungal-hivemind",
+  "armorId": "hunter",
+  "success": true,
+  "result": {
+    "missionId": "fungal-hivemind",
+    "exploration": {
+      "abilityIds": [],
+      "openedGateIds": [],
+      "secretIds": [],
+      "discoveredRoomIds": [
+        "fungal-memory-approach",
+        "fungal-memory-return"
+      ]
+    },
+    "difficultyId": "hunter",
+    "outcome": "success",
+    "score": 95,
+    "elapsedSeconds": 79,
+    "completedObjectiveIds": [
+      "fungal-hivemind-scan",
+      "fungal-hivemind-hunt",
+      "fungal-hivemind-recover",
+      "fungal-hivemind-boss",
+      "fungal-hivemind-extract"
+    ],
+    "honorEvents": [
+      {
+        "id": "scan-trace-1",
+        "label": "Signature étudiée",
+        "value": 3,
+        "kind": "scan"
+      },
+      {
+        "id": "honor-rule:fungal-hivemind-restraint",
+        "label": "Code rompu : Force mesurée",
+        "value": -15,
+        "kind": "violation"
+      },
+      {
+        "id": "kill-fungal-hivemind-foragers-0",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "scan-trace-2",
+        "label": "Signature étudiée",
+        "value": 3,
+        "kind": "scan"
+      },
+      {
+        "id": "kill-fungal-hivemind-foragers-1",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "scan-trace-3",
+        "label": "Signature étudiée",
+        "value": 3,
+        "kind": "scan"
+      },
+      {
+        "id": "objective-fungal-hivemind-scan",
+        "label": "Cartographier le réseau mycélien",
+        "value": 20,
+        "kind": "objective"
+      },
+      {
+        "id": "kill-fungal-hivemind-foragers-4",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "kill-fungal-hivemind-foragers-2",
+        "label": "Mise à mort rapprochée",
+        "value": 3,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "recover-technology-1",
+        "label": "Technologie du clan sécurisée",
+        "value": 5,
+        "kind": "objective"
+      },
+      {
+        "id": "kill-fungal-hivemind-foragers-3",
+        "label": "Mise à mort rapprochée",
+        "value": 3,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "kill-fungal-hivemind-territorials-1",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "objective-fungal-hivemind-hunt",
+        "label": "Rompre la mémoire de meute",
+        "value": 25,
+        "kind": "objective"
+      },
+      {
+        "id": "recover-technology-2",
+        "label": "Technologie du clan sécurisée",
+        "value": 5,
+        "kind": "objective"
+      },
+      {
+        "id": "objective-fungal-hivemind-recover",
+        "label": "Isoler les graines-mémoires",
+        "value": 25,
+        "kind": "objective"
+      },
+      {
+        "id": "kill-fungal-hivemind-territorials-2",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "kill-fungal-hivemind-territorials-3",
+        "label": "Mise à mort rapprochée",
+        "value": 3,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "objective-fungal-hivemind-boss",
+        "label": "Affronter Cœur-Mère mycélien",
+        "value": 55,
+        "kind": "objective"
+      },
+      {
+        "id": "boss-honorable-kill",
+        "label": "Victoire sur Cœur-Mère mycélien",
+        "value": 18,
+        "kind": "duel"
+      },
+      {
+        "id": "kill-fungal-hivemind-guardians-2",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "kill-fungal-hivemind-guardians-0",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "kill-fungal-hivemind-territorials-0",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "trophy-claimed",
+        "label": "Noyau du Cœur-Mère",
+        "value": 12,
+        "kind": "objective"
+      },
+      {
+        "id": "objective-fungal-hivemind-extract",
+        "label": "Rejoindre le faisceau d'extraction",
+        "value": 15,
+        "kind": "objective"
+      },
+      {
+        "id": "honor-rule:fungal-hivemind-study",
+        "label": "Code respecté : Cartographier avant de frapper",
+        "value": 20,
+        "kind": "objective"
+      },
+      {
+        "id": "honor-rule:fungal-hivemind-survive",
+        "label": "Code respecté : Chasseur inébranlable",
+        "value": 20,
+        "kind": "objective"
+      }
+    ],
+    "trophyQuality": "blooded",
+    "trophyClaims": [
+      {
+        "id": "fungal-hivemind-apex-mvyt1h2q-se-3wnfbth9",
+        "definitionId": "trophy-fungal-hivemind",
+        "targetName": "Cœur-Mère mycélien",
+        "targetKind": "beast",
+        "partId": "skull",
+        "quality": "blooded",
+        "condition": "pristine"
+      }
+    ],
+    "specimensV112": [],
+    "toolUseIdsV112": [],
+    "harvestEncounterRunV112": 0,
+    "kills": 12,
+    "scans": 5,
+    "discoveredEnemyIds": [
+      "mycora-v--cap-mimic",
+      "mycora-v--queen-hypha"
+    ],
+    "secondWindUsed": false,
+    "completedAt": "2026-11-02T05:14:51.000Z"
+  },
+  "climbFrames": 0,
+  "swingFrames": 0,
+  "authoredCanopyContactFrames": 0,
+  "maxX": 7988.99999999999,
+  "terminal": {
+    "t": 78.9,
+    "phase": "finished",
+    "x": 7989,
+    "y": 173,
+    "vx": 0,
+    "vy": 0,
+    "health": 138.56,
+    "stamina": 100,
+    "energy": 100,
+    "kills": 11,
+    "boss": {
+      "active": true,
+      "alive": false,
+      "health": 0,
+      "x": 6808.3462328960695
+    },
+    "scans": [
+      true,
+      true,
+      true
+    ],
+    "recoveries": [
+      true,
+      true
+    ],
+    "objectives": [
+      "fungal-hivemind-scan",
+      "fungal-hivemind-hunt",
+      "fungal-hivemind-recover",
+      "fungal-hivemind-boss",
+      "fungal-hivemind-extract"
+    ],
+    "message": "Objectif accompli : Rejoindre le faisceau d'extraction",
+    "grounded": false,
+    "climbing": false,
+    "load": {
+      "massKg": 0,
+      "volumeUnits": 0,
+      "capacityMassKg": 36,
+      "capacityVolumeUnits": 24,
+      "ratio": 0,
+      "overloaded": false,
+      "movementMultiplier": 1,
+      "jumpMultiplier": 1,
+      "climbStaminaMultiplier": 1,
+      "noiseMultiplier": 1
+    },
+    "energyWeaponsLocked": false,
+    "weaponSlot": 1,
+    "threats": [
+      {
+        "id": "fungal-hivemind-guardians-1",
+        "x": 4711.614433333266,
+        "y": 542,
+        "health": 218.79,
+        "width": 98,
+        "height": 82
+      },
+      {
+        "id": "extraction-fungal-hivemind-1023-0",
+        "x": 7859.640959999912,
+        "y": 535,
+        "health": 245.30999999999997,
+        "width": 106,
+        "height": 89
+      },
+      {
+        "id": "extraction-fungal-hivemind-1024-1",
+        "x": 7568,
+        "y": 534,
+        "health": 218.79,
+        "width": 98,
+        "height": 90
+      },
+      {
+        "id": "extraction-fungal-hivemind-1025-2",
+        "x": 7877.694599999971,
+        "y": 527,
+        "health": 245.30999999999997,
+        "width": 68,
+        "height": 97
+      }
+    ]
+  },
+  "admission": {
+    "missionId": "fungal-hivemind",
+    "armorId": "hunter",
+    "loadout": {
+      "armorId": "hunter",
+      "weaponIds": [
+        "combistick",
+        "plasma-caster"
+      ],
+      "gearIds": [
+        "motion-sensor",
+        "audio-decoy"
+      ]
+    },
+    "inventory": {
+      "fieldToolIds": [],
+      "harvestV112": {
+        "version": 1,
+        "specimens": [],
+        "toolCondition": 100,
+        "toolUseIds": [],
+        "jobs": [],
+        "settledEncounterRuns": {},
+        "archive": []
+      },
+      "unlockedWeaponIds": [
+        "wristblades",
+        "combistick",
+        "plasma-caster"
+      ],
+      "unlockedGearIds": [
+        "motion-sensor",
+        "audio-decoy"
+      ],
+      "unlockedArmorIds": [
+        "hunter",
+        "scout",
+        "berserker"
+      ],
+      "weaponUpgrades": {
+        "wristblades": 0,
+        "combistick": 0,
+        "plasma-caster": 0,
+        "smart-disc": 0,
+        "yautja-bow": 0
+      },
+      "gearUpgrades": {
+        "netgun": 0,
+        "motion-sensor": 0,
+        "audio-decoy": 0,
+        "snare": 0
+      },
+      "armorUpgrades": {
+        "scout": 0,
+        "hunter": 0,
+        "berserker": 0
+      }
+    },
+    "toolOrigin": null,
+    "difficulty": "hunter",
+    "encounterRun": 0,
+    "random": {
+      "algorithm": "xorshift32",
+      "seed": 17965094
+    },
+    "spawn": {
+      "x": 225,
+      "y": 508
+    },
+    "initial": {
+      "t": 0,
+      "phase": "tracking",
+      "x": 225,
+      "y": 508,
+      "vx": 0,
+      "vy": 0,
+      "health": 160,
+      "stamina": 100,
+      "energy": 100,
+      "kills": 0,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 1120,
+        "x": 6914.4
+      },
+      "scans": [
+        false,
+        false,
+        false
+      ],
+      "recoveries": [
+        false,
+        false
+      ],
+      "objectives": [],
+      "message": "La chasse commence. Localise les signatures.",
+      "grounded": true,
+      "climbing": false,
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "fungal-hivemind-foragers-0",
+          "x": 1536.6595276650041,
+          "y": 534,
+          "health": 104.94,
+          "width": 98,
+          "height": 90
+        }
+      ]
+    },
+    "world": {
+      "width": 8400,
+      "bossArena": {
+        "x": 6180,
+        "y": 310,
+        "width": 1530,
+        "height": 314
+      },
+      "extraction": {
+        "x": 8025,
+        "y": 624
+      },
+      "platforms": [
+        {
+          "x": 720,
+          "y": 280,
+          "width": 360,
+          "height": 24,
+          "id": "fungal-memory-upper-floor",
+          "material": "mycelium",
+          "routeId": "fungal-memory-route",
+          "collision": "solid",
+          "noiseMultiplier": 1,
+          "trackPersistence": 0.12
+        },
+        {
+          "x": 1110,
+          "y": 380,
+          "width": 150,
+          "height": 24,
+          "id": "fungal-memory-vault-underfloor",
+          "material": "mycelium",
+          "routeId": "fungal-memory-route",
+          "collision": "solid",
+          "noiseMultiplier": 1,
+          "trackPersistence": 0.12
+        },
+        {
+          "x": 1260,
+          "y": 380,
+          "width": 190,
+          "height": 24,
+          "id": "fungal-memory-vault-floor",
+          "material": "mycelium",
+          "routeId": "fungal-memory-route",
+          "collision": "solid",
+          "noiseMultiplier": 1,
+          "trackPersistence": 0.12
+        },
+        {
+          "x": 1570,
+          "y": 0,
+          "width": 28,
+          "height": 404,
+          "id": "fungal-memory-outer-wall",
+          "material": "mycelium",
+          "routeId": "fungal-memory-route",
+          "collision": "solid",
+          "noiseMultiplier": 1,
+          "trackPersistence": 0.12
+        },
+        {
+          "x": 1080,
+          "y": 0,
+          "width": 30,
+          "height": 404,
+          "id": "fungal-memory-membrane",
+          "material": "mycelium",
+          "routeId": "fungal-memory-route",
+          "collision": "solid",
+          "noiseMultiplier": 1,
+          "trackPersistence": 0.12
+        },
+        {
+          "x": 1450,
+          "y": 380,
+          "width": 120,
+          "height": 24,
+          "id": "fungal-ancient-lattice",
+          "material": "mycelium",
+          "routeId": "fungal-memory-route",
+          "collision": "solid",
+          "noiseMultiplier": 1,
+          "trackPersistence": 0.12
+        }
+      ],
+      "hazards": [
+        {
+          "id": "j-flora-center",
+          "x": 4020,
+          "y": 574,
+          "width": 232.5,
+          "height": 50,
+          "kind": "mycelial-snare",
+          "routeId": "ground",
+          "damagePerSecond": 6,
+          "movementMultiplier": 0.4,
+          "noisePerSecond": 0.1,
+          "trackMultiplier": 2.3,
+          "revealsCloak": false,
+          "telegraphSeconds": 0.7,
+          "cycle": {
+            "periodSeconds": 8,
+            "activeSeconds": 3,
+            "phaseSeconds": 1
+          }
+        },
+        {
+          "id": "j-flood-pulse",
+          "x": 4815,
+          "y": 570,
+          "width": 915,
+          "height": 54,
+          "kind": "acid-bloom",
+          "routeId": "flooded-cut",
+          "damagePerSecond": 15,
+          "movementMultiplier": 0.65,
+          "noisePerSecond": 0.4,
+          "trackMultiplier": 0.6,
+          "revealsCloak": true,
+          "telegraphSeconds": 1,
+          "cycle": {
+            "periodSeconds": 6.5,
+            "activeSeconds": 1.5,
+            "phaseSeconds": 1.2
+          }
+        },
+        {
+          "id": "feature-fungal-3-ecology",
+          "x": 2811.5,
+          "y": 290,
+          "width": 290,
+          "height": 334,
+          "kind": "spore-cloud",
+          "routeId": "ground",
+          "damagePerSecond": 4,
+          "movementMultiplier": 0.72,
+          "noisePerSecond": 0.18,
+          "trackMultiplier": 1.6,
+          "revealsCloak": true,
+          "telegraphSeconds": 1.6,
+          "cycle": {
+            "periodSeconds": 12,
+            "activeSeconds": 4,
+            "phaseSeconds": 2.6
+          }
+        },
+        {
+          "x": 900,
+          "y": 164,
+          "width": 210,
+          "height": 116,
+          "id": "fungal-memory-ability-hazard",
+          "kind": "spore-cloud",
+          "routeId": "fungal-memory-route",
+          "damagePerSecond": 12,
+          "movementMultiplier": 0.7,
+          "noisePerSecond": 0.18,
+          "trackMultiplier": 0.5,
+          "revealsCloak": true,
+          "telegraphSeconds": 0,
+          "cycle": null
+        }
+      ]
+    },
+    "scanNodes": [
+      {
+        "id": "trace-1",
+        "x": 924,
+        "y": 588,
+        "scanned": false
+      },
+      {
+        "id": "trace-2",
+        "x": 2016,
+        "y": 395,
+        "scanned": false
+      },
+      {
+        "id": "trace-3",
+        "x": 3108,
+        "y": 588,
+        "scanned": false
+      }
+    ],
+    "recoveryNodes": [
+      {
+        "id": "technology-1",
+        "x": 3955.499,
+        "y": 590,
+        "recovered": false
+      },
+      {
+        "id": "technology-2",
+        "x": 4519.5,
+        "y": 590,
+        "recovered": false
+      }
+    ]
+  },
+  "events": [
+    {
+      "t": 11.467,
+      "phase": "target",
+      "x": 2668.57,
+      "y": 508,
+      "vx": 239.8,
+      "vy": 0,
+      "health": 141.3,
+      "stamina": 99.43,
+      "energy": 33.9,
+      "kills": 2,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 1120,
+        "x": 6914.4
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        false,
+        false
+      ],
+      "objectives": [
+        "fungal-hivemind-scan"
+      ],
+      "message": "Cœur-Mère mycélien peut désormais être pisté.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0,
+        "volumeUnits": 0,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0,
+        "overloaded": false,
+        "movementMultiplier": 1,
+        "jumpMultiplier": 1,
+        "climbStaminaMultiplier": 1,
+        "noiseMultiplier": 1
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "fungal-hivemind-foragers-2",
+          "x": 3097.113959999997,
+          "y": 535,
+          "health": 117.65999999999998,
+          "width": 106,
+          "height": 89
+        },
+        {
+          "id": "fungal-hivemind-foragers-3",
+          "x": 3604.355550659762,
+          "y": 530,
+          "health": 104.94,
+          "width": 66,
+          "height": 94
+        },
+        {
+          "id": "fungal-hivemind-foragers-4",
+          "x": 2314.366583482259,
+          "y": 514,
+          "health": 0.7448339999999867,
+          "width": 118,
+          "height": 110
+        },
+        {
+          "id": "fungal-hivemind-territorials-0",
+          "x": 5758.001,
+          "y": 514,
+          "health": 189.42,
+          "width": 118,
+          "height": 110
+        }
+      ]
+    },
+    {
+      "t": 46.767,
+      "phase": "trophy",
+      "x": 6684.79,
+      "y": 471.19,
+      "vx": 3.96,
+      "vy": -254.17,
+      "health": 91.48,
+      "stamina": 76.37,
+      "energy": 27.17,
+      "kills": 8,
+      "boss": {
+        "active": true,
+        "alive": false,
+        "health": 0,
+        "x": 6808.3462328960695
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true,
+        true
+      ],
+      "objectives": [
+        "fungal-hivemind-scan",
+        "fungal-hivemind-hunt",
+        "fungal-hivemind-recover",
+        "fungal-hivemind-boss"
+      ],
+      "message": "Cœur-Mère mycélien est vaincu. Intégrité du trophée 85 %. Réclame le trophée avec [E].",
+      "grounded": false,
+      "climbing": false,
+      "load": {
+        "massKg": 0,
+        "volumeUnits": 0,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0,
+        "overloaded": false,
+        "movementMultiplier": 1,
+        "jumpMultiplier": 1,
+        "climbStaminaMultiplier": 1,
+        "noiseMultiplier": 1
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "fungal-hivemind-territorials-0",
+          "x": 5812.256002508852,
+          "y": 514,
+          "health": 119.637269,
+          "width": 118,
+          "height": 110
+        },
+        {
+          "id": "fungal-hivemind-guardians-0",
+          "x": 5833.662366876711,
+          "y": 524,
+          "health": 104.02393199999997,
+          "width": 108,
+          "height": 100
+        },
+        {
+          "id": "fungal-hivemind-guardians-1",
+          "x": 4713.308199999932,
+          "y": 542,
+          "health": 218.79,
+          "width": 98,
+          "height": 82
+        },
+        {
+          "id": "fungal-hivemind-guardians-2",
+          "x": 6388.001,
+          "y": 504,
+          "health": 28.61726899999998,
+          "width": 84,
+          "height": 120
+        }
+      ]
+    },
+    {
+      "t": 67.667,
+      "phase": "extraction",
+      "x": 6850.01,
+      "y": 508,
+      "vx": 0,
+      "vy": 0,
+      "health": 91.48,
+      "stamina": 100,
+      "energy": 97.9,
+      "kills": 11,
+      "boss": {
+        "active": true,
+        "alive": false,
+        "health": 0,
+        "x": 6808.3462328960695
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true,
+        true
+      ],
+      "objectives": [
+        "fungal-hivemind-scan",
+        "fungal-hivemind-hunt",
+        "fungal-hivemind-recover",
+        "fungal-hivemind-boss"
+      ],
+      "message": "Noyau du Cœur-Mère : prise récupérée et scellée. Le chasseur célèbre sa victoire ; vaisseau en approche.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0,
+        "volumeUnits": 0,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0,
+        "overloaded": false,
+        "movementMultiplier": 1,
+        "jumpMultiplier": 1,
+        "climbStaminaMultiplier": 1,
+        "noiseMultiplier": 1
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "fungal-hivemind-guardians-1",
+          "x": 4760.733666666589,
+          "y": 542,
+          "health": 218.79,
+          "width": 98,
+          "height": 82
+        },
+        {
+          "id": "extraction-fungal-hivemind-1023-0",
+          "x": 7410.37108,
+          "y": 535,
+          "health": 245.30999999999997,
+          "width": 106,
+          "height": 89
+        }
+      ]
+    },
+    {
+      "t": 78.9,
+      "phase": "finished",
+      "x": 7989,
+      "y": 173,
+      "vx": 0,
+      "vy": 0,
+      "health": 138.56,
+      "stamina": 100,
+      "energy": 100,
+      "kills": 11,
+      "boss": {
+        "active": true,
+        "alive": false,
+        "health": 0,
+        "x": 6808.3462328960695
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true,
+        true
+      ],
+      "objectives": [
+        "fungal-hivemind-scan",
+        "fungal-hivemind-hunt",
+        "fungal-hivemind-recover",
+        "fungal-hivemind-boss",
+        "fungal-hivemind-extract"
+      ],
+      "message": "Objectif accompli : Rejoindre le faisceau d'extraction",
+      "grounded": false,
+      "climbing": false,
+      "load": {
+        "massKg": 0,
+        "volumeUnits": 0,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0,
+        "overloaded": false,
+        "movementMultiplier": 1,
+        "jumpMultiplier": 1,
+        "climbStaminaMultiplier": 1,
+        "noiseMultiplier": 1
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "fungal-hivemind-guardians-1",
+          "x": 4711.614433333266,
+          "y": 542,
+          "health": 218.79,
+          "width": 98,
+          "height": 82
+        },
+        {
+          "id": "extraction-fungal-hivemind-1023-0",
+          "x": 7859.640959999912,
+          "y": 535,
+          "health": 245.30999999999997,
+          "width": 106,
+          "height": 89
+        },
+        {
+          "id": "extraction-fungal-hivemind-1024-1",
+          "x": 7568,
+          "y": 534,
+          "health": 218.79,
+          "width": 98,
+          "height": 90
+        },
+        {
+          "id": "extraction-fungal-hivemind-1025-2",
+          "x": 7877.694599999971,
+          "y": 527,
+          "health": 245.30999999999997,
+          "width": 68,
+          "height": 97
+        }
+      ]
+    }
+  ],
+  "traceFrames": 719,
+  "ticksExecuted": 4734,
+  "harvestActions": [],
+  "peakLoadRatio": 0,
+  "peakSpecimens": [],
+  "firstLoadAt": null,
+  "replay": {
+    "verified": true,
+    "ticks": 4734,
+    "terminalSha256": "7d29d7c91a453cd09d4ba5a48f8dfbb96c9458fa2ee9313202fe97806f472d5f"
+  },
+  "rawData": {
+    "archive": "../native-runs-raw.tar.gz",
+    "member": "qualified-unladen/fungal-hivemind-hunter.json",
+    "sha256": "80ddd48f6a736265cbd9983ee0482716a76271194808b73e164916c063b5b015"
+  }
+}

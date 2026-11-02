@@ -1,0 +1,1124 @@
+{
+  "missionId": "swamp-hydra",
+  "armorId": "hunter",
+  "success": true,
+  "result": {
+    "missionId": "swamp-hydra",
+    "exploration": {
+      "abilityIds": [],
+      "openedGateIds": [],
+      "secretIds": [],
+      "discoveredRoomIds": [
+        "jungle-pilot-approach",
+        "jungle-pilot-underpass",
+        "jungle-pilot-module",
+        "jungle-pilot-ravine",
+        "jungle-pilot-river-caves",
+        "jungle-pilot-vey-camp",
+        "jungle-pilot-duel-extraction",
+        "ice-region-approach",
+        "ice-region-shaft",
+        "ice-region-return",
+        "swamp-brood-approach",
+        "swamp-brood-return"
+      ]
+    },
+    "difficultyId": "hunter",
+    "outcome": "success",
+    "score": 98,
+    "elapsedSeconds": 76,
+    "completedObjectiveIds": [
+      "swamp-hydra-scan",
+      "swamp-hydra-hunt",
+      "swamp-hydra-recover",
+      "swamp-hydra-boss",
+      "swamp-hydra-extract"
+    ],
+    "honorEvents": [
+      {
+        "id": "scan-trace-1",
+        "label": "Signature étudiée",
+        "value": 3,
+        "kind": "scan"
+      },
+      {
+        "id": "honor-rule:swamp-hydra-restraint",
+        "label": "Code rompu : Force mesurée",
+        "value": -15,
+        "kind": "violation"
+      },
+      {
+        "id": "kill-swamp-hydra-foragers-0",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "scan-trace-2",
+        "label": "Signature étudiée",
+        "value": 3,
+        "kind": "scan"
+      },
+      {
+        "id": "kill-swamp-hydra-foragers-4",
+        "label": "Mise à mort rapprochée",
+        "value": 3,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "scan-trace-3",
+        "label": "Signature étudiée",
+        "value": 3,
+        "kind": "scan"
+      },
+      {
+        "id": "objective-swamp-hydra-scan",
+        "label": "Lire les remous de chasse",
+        "value": 20,
+        "kind": "objective"
+      },
+      {
+        "id": "kill-swamp-hydra-foragers-1",
+        "label": "Mise à mort rapprochée",
+        "value": 3,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "kill-swamp-hydra-foragers-2",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "kill-swamp-hydra-territorials-1",
+        "label": "Mise à mort rapprochée",
+        "value": 3,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "recover-technology-1",
+        "label": "Technologie du clan sécurisée",
+        "value": 5,
+        "kind": "objective"
+      },
+      {
+        "id": "kill-swamp-hydra-foragers-3",
+        "label": "Mise à mort rapprochée",
+        "value": 3,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "objective-swamp-hydra-hunt",
+        "label": "Briser la meute amphibie",
+        "value": 25,
+        "kind": "objective"
+      },
+      {
+        "id": "recover-technology-2",
+        "label": "Technologie du clan sécurisée",
+        "value": 5,
+        "kind": "objective"
+      },
+      {
+        "id": "objective-swamp-hydra-recover",
+        "label": "Prélever les œufs sentinelles",
+        "value": 25,
+        "kind": "objective"
+      },
+      {
+        "id": "kill-swamp-hydra-territorials-2",
+        "label": "Mise à mort rapprochée",
+        "value": 3,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "kill-swamp-hydra-territorials-0",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "kill-swamp-hydra-territorials-3",
+        "label": "Mise à mort rapprochée",
+        "value": 3,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "kill-swamp-hydra-guardians-2",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "kill-swamp-hydra-guardians-0",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "objective-swamp-hydra-boss",
+        "label": "Affronter Hydre de vase",
+        "value": 55,
+        "kind": "objective"
+      },
+      {
+        "id": "boss-honorable-kill",
+        "label": "Victoire sur Hydre de vase",
+        "value": 10,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "trophy-claimed",
+        "label": "Crâne trifide de l'Hydre",
+        "value": 12,
+        "kind": "objective"
+      },
+      {
+        "id": "objective-swamp-hydra-extract",
+        "label": "Rejoindre le faisceau d'extraction",
+        "value": 15,
+        "kind": "objective"
+      },
+      {
+        "id": "honor-rule:swamp-hydra-study",
+        "label": "Code respecté : Cartographier avant de frapper",
+        "value": 20,
+        "kind": "objective"
+      },
+      {
+        "id": "honor-rule:swamp-hydra-survive",
+        "label": "Code respecté : Chasseur inébranlable",
+        "value": 20,
+        "kind": "objective"
+      }
+    ],
+    "trophyQuality": "elite",
+    "trophyClaims": [
+      {
+        "id": "swamp-hydra-apex-mvyt0603-pm-rmq361tk",
+        "definitionId": "trophy-swamp-hydra",
+        "targetName": "Hydre de vase",
+        "targetKind": "beast",
+        "partId": "skull-and-spine",
+        "quality": "elite",
+        "condition": "intact"
+      }
+    ],
+    "specimensV112": [
+      {
+        "id": "swamp-hydra:0:swamp-hydra-foragers-4:hide",
+        "sourceId": "swamp-hydra:0:swamp-hydra-foragers-4",
+        "speciesId": "naraka-delta--fen-leaper",
+        "partId": "hide",
+        "label": "Peau du sauteur",
+        "quality": 52,
+        "massKg": 1.5,
+        "volumeUnits": 3,
+        "stage": "raw"
+      }
+    ],
+    "toolUseIdsV112": [
+      "swamp-hydra:0:flay:swamp-hydra-foragers-4",
+      "swamp-hydra:0:harvest-hide:swamp-hydra-foragers-4"
+    ],
+    "harvestEncounterRunV112": 0,
+    "kills": 12,
+    "scans": 5,
+    "discoveredEnemyIds": [
+      "naraka-delta--snap-root",
+      "naraka-delta--fen-leaper"
+    ],
+    "secondWindUsed": false,
+    "completedAt": "2026-11-02T05:13:49.907Z"
+  },
+  "climbFrames": 0,
+  "swingFrames": 0,
+  "authoredCanopyContactFrames": 0,
+  "maxX": 7988.999999999991,
+  "terminal": {
+    "t": 76.117,
+    "phase": "finished",
+    "x": 7989,
+    "y": 173,
+    "vx": 0,
+    "vy": 0,
+    "health": 142.15,
+    "stamina": 100,
+    "energy": 100,
+    "kills": 11,
+    "boss": {
+      "active": true,
+      "alive": false,
+      "health": 0,
+      "x": 6792.546882202515
+    },
+    "scans": [
+      true,
+      true,
+      true
+    ],
+    "recoveries": [
+      true,
+      true
+    ],
+    "objectives": [
+      "swamp-hydra-scan",
+      "swamp-hydra-hunt",
+      "swamp-hydra-recover",
+      "swamp-hydra-boss",
+      "swamp-hydra-extract"
+    ],
+    "message": "Objectif accompli : Rejoindre le faisceau d'extraction",
+    "grounded": false,
+    "climbing": false,
+    "load": {
+      "massKg": 1.5,
+      "volumeUnits": 3,
+      "capacityMassKg": 36,
+      "capacityVolumeUnits": 24,
+      "ratio": 0.125,
+      "overloaded": false,
+      "movementMultiplier": 0.96,
+      "jumpMultiplier": 0.98,
+      "climbStaminaMultiplier": 1.075,
+      "noiseMultiplier": 1.1
+    },
+    "energyWeaponsLocked": false,
+    "weaponSlot": 1,
+    "threats": [
+      {
+        "id": "swamp-hydra-guardians-1",
+        "x": 4280.501,
+        "y": 534,
+        "health": 195.03,
+        "width": 98,
+        "height": 90
+      },
+      {
+        "id": "extraction-swamp-hydra-923-0",
+        "x": 7873.047539999971,
+        "y": 528,
+        "health": 242.31,
+        "width": 114,
+        "height": 96
+      },
+      {
+        "id": "extraction-swamp-hydra-924-1",
+        "x": 7933.295653333221,
+        "y": 530,
+        "health": 195.03,
+        "width": 66,
+        "height": 94
+      },
+      {
+        "id": "extraction-swamp-hydra-925-2",
+        "x": 7894.659919999963,
+        "y": 535,
+        "health": 218.67,
+        "width": 106,
+        "height": 89
+      }
+    ]
+  },
+  "admission": {
+    "missionId": "swamp-hydra",
+    "armorId": "hunter",
+    "loadout": {
+      "armorId": "hunter",
+      "weaponIds": [
+        "combistick",
+        "plasma-caster"
+      ],
+      "gearIds": [
+        "motion-sensor",
+        "audio-decoy"
+      ]
+    },
+    "inventory": {
+      "fieldToolIds": [
+        "flaying-tool"
+      ],
+      "harvestV112": {
+        "version": 1,
+        "specimens": [],
+        "toolCondition": 100,
+        "toolUseIds": [],
+        "jobs": [],
+        "settledEncounterRuns": {
+          "jungle-vey": 0,
+          "ice-cryostalker": 0
+        },
+        "archive": []
+      },
+      "unlockedWeaponIds": [
+        "wristblades",
+        "combistick",
+        "plasma-caster",
+        "yautja-bow",
+        "smart-disc"
+      ],
+      "unlockedGearIds": [
+        "motion-sensor",
+        "audio-decoy",
+        "netgun",
+        "snare"
+      ],
+      "unlockedArmorIds": [
+        "hunter",
+        "scout",
+        "berserker"
+      ],
+      "weaponUpgrades": {
+        "wristblades": 0,
+        "combistick": 0,
+        "plasma-caster": 0,
+        "smart-disc": 0,
+        "yautja-bow": 0
+      },
+      "gearUpgrades": {
+        "netgun": 0,
+        "motion-sensor": 0,
+        "audio-decoy": 0,
+        "snare": 0
+      },
+      "armorUpgrades": {
+        "scout": 0,
+        "hunter": 0,
+        "berserker": 0
+      }
+    },
+    "toolOrigin": {
+      "path": "docs/qa/v112-ground-campaign/tool-origin.json",
+      "sha256": "0b489bc90df80e0643be22c971d0412ffbff434805812c75fc00f2690beef63b",
+      "missions": [
+        {
+          "missionId": "jungle-vey",
+          "outcome": "success",
+          "score": 98,
+          "elapsedSeconds": 61
+        },
+        {
+          "missionId": "ice-cryostalker",
+          "outcome": "success",
+          "score": 96,
+          "elapsedSeconds": 56
+        }
+      ],
+      "balanceBefore": 806,
+      "spentClanMarks": 120,
+      "balanceAfter": 686
+    },
+    "difficulty": "hunter",
+    "encounterRun": 0,
+    "random": {
+      "algorithm": "xorshift32",
+      "seed": 17965094
+    },
+    "spawn": {
+      "x": 225,
+      "y": 508
+    },
+    "initial": {
+      "t": 0,
+      "phase": "tracking",
+      "x": 225,
+      "y": 508,
+      "vx": 0,
+      "vy": 0,
+      "health": 160,
+      "stamina": 100,
+      "energy": 100,
+      "kills": 0,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 940,
+        "x": 6914.4
+      },
+      "scans": [
+        false,
+        false,
+        false
+      ],
+      "recoveries": [
+        false,
+        false
+      ],
+      "objectives": [],
+      "message": "La chasse commence. Localise les signatures.",
+      "grounded": true,
+      "climbing": false,
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "swamp-hydra-foragers-0",
+          "x": 1536.6595276650041,
+          "y": 524,
+          "health": 104.33999999999999,
+          "width": 108,
+          "height": 100
+        }
+      ]
+    },
+    "world": {
+      "width": 8400,
+      "bossArena": {
+        "x": 6180,
+        "y": 310,
+        "width": 1530,
+        "height": 314
+      },
+      "extraction": {
+        "x": 8025,
+        "y": 624
+      },
+      "platforms": [
+        {
+          "x": 650,
+          "y": 350,
+          "width": 400,
+          "height": 24,
+          "id": "swamp-brood-upper-floor",
+          "material": "root",
+          "routeId": "swamp-brood-route",
+          "collision": "solid",
+          "noiseMultiplier": 1,
+          "trackPersistence": 0.32
+        },
+        {
+          "x": 1080,
+          "y": 476,
+          "width": 150,
+          "height": 24,
+          "id": "swamp-brood-vault-underfloor",
+          "material": "root",
+          "routeId": "swamp-brood-route",
+          "collision": "solid",
+          "noiseMultiplier": 1,
+          "trackPersistence": 0.32
+        },
+        {
+          "x": 1230,
+          "y": 476,
+          "width": 220,
+          "height": 24,
+          "id": "swamp-brood-vault-floor",
+          "material": "root",
+          "routeId": "swamp-brood-route",
+          "collision": "solid",
+          "noiseMultiplier": 1,
+          "trackPersistence": 0.32
+        },
+        {
+          "x": 1570,
+          "y": 0,
+          "width": 28,
+          "height": 500,
+          "id": "swamp-brood-outer-wall",
+          "material": "root",
+          "routeId": "swamp-brood-route",
+          "collision": "solid",
+          "noiseMultiplier": 1,
+          "trackPersistence": 0.32
+        },
+        {
+          "x": 1050,
+          "y": 0,
+          "width": 30,
+          "height": 500,
+          "id": "swamp-acid-sluice",
+          "material": "root",
+          "routeId": "swamp-brood-route",
+          "collision": "solid",
+          "noiseMultiplier": 1,
+          "trackPersistence": 0.32
+        },
+        {
+          "x": 1450,
+          "y": 476,
+          "width": 120,
+          "height": 24,
+          "id": "swamp-cut-root",
+          "material": "root",
+          "routeId": "swamp-brood-route",
+          "collision": "solid",
+          "noiseMultiplier": 1,
+          "trackPersistence": 0.32
+        }
+      ],
+      "hazards": [
+        {
+          "id": "j-flora-center",
+          "x": 4020,
+          "y": 574,
+          "width": 232.5,
+          "height": 50,
+          "kind": "predatory-flora",
+          "routeId": "ground",
+          "damagePerSecond": 10,
+          "movementMultiplier": 0.7,
+          "noisePerSecond": 0.42,
+          "trackMultiplier": 1.2,
+          "revealsCloak": true,
+          "telegraphSeconds": 0.45,
+          "cycle": {
+            "periodSeconds": 4.5,
+            "activeSeconds": 1.4,
+            "phaseSeconds": 0.8
+          }
+        },
+        {
+          "id": "j-flood-pulse",
+          "x": 4815,
+          "y": 570,
+          "width": 915,
+          "height": 54,
+          "kind": "tidal-surge",
+          "routeId": "flooded-cut",
+          "damagePerSecond": 8,
+          "movementMultiplier": 0.44,
+          "noisePerSecond": 0.82,
+          "trackMultiplier": 0.15,
+          "revealsCloak": true,
+          "telegraphSeconds": 1.5,
+          "cycle": {
+            "periodSeconds": 11,
+            "activeSeconds": 3,
+            "phaseSeconds": 2.4
+          }
+        },
+        {
+          "id": "feature-swamp-3-ecology",
+          "x": 2761.5,
+          "y": 560,
+          "width": 390,
+          "height": 64,
+          "kind": "tidal-surge",
+          "routeId": "ground",
+          "damagePerSecond": 8,
+          "movementMultiplier": 0.44,
+          "noisePerSecond": 0.82,
+          "trackMultiplier": 0.15,
+          "revealsCloak": true,
+          "telegraphSeconds": 1.5,
+          "cycle": {
+            "periodSeconds": 11,
+            "activeSeconds": 3,
+            "phaseSeconds": 1.2
+          }
+        },
+        {
+          "x": 790,
+          "y": 234,
+          "width": 290,
+          "height": 116,
+          "id": "swamp-brood-ability-hazard",
+          "kind": "acid-bloom",
+          "routeId": "swamp-brood-route",
+          "damagePerSecond": 12,
+          "movementMultiplier": 0.7,
+          "noisePerSecond": 0.66,
+          "trackMultiplier": 1.8,
+          "revealsCloak": true,
+          "telegraphSeconds": 0,
+          "cycle": null
+        }
+      ]
+    },
+    "scanNodes": [
+      {
+        "id": "trace-1",
+        "x": 924,
+        "y": 588,
+        "scanned": false
+      },
+      {
+        "id": "trace-2",
+        "x": 2016,
+        "y": 395,
+        "scanned": false
+      },
+      {
+        "id": "trace-3",
+        "x": 3108,
+        "y": 588,
+        "scanned": false
+      }
+    ],
+    "recoveryNodes": [
+      {
+        "id": "technology-1",
+        "x": 3955.499,
+        "y": 590,
+        "recovered": false
+      },
+      {
+        "id": "technology-2",
+        "x": 4519.5,
+        "y": 590,
+        "recovered": false
+      }
+    ]
+  },
+  "events": [
+    {
+      "t": 10.117,
+      "phase": "target",
+      "x": 2672.36,
+      "y": 508,
+      "vx": 299.99,
+      "vy": 0,
+      "health": 160,
+      "stamina": 100,
+      "energy": 19.73,
+      "kills": 2,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 940,
+        "x": 6914.4
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        false,
+        false
+      ],
+      "objectives": [
+        "swamp-hydra-scan"
+      ],
+      "message": "Hydre de vase peut désormais être pisté.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0,
+        "volumeUnits": 0,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0,
+        "overloaded": false,
+        "movementMultiplier": 1,
+        "jumpMultiplier": 1,
+        "climbStaminaMultiplier": 1,
+        "noiseMultiplier": 1
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "swamp-hydra-foragers-1",
+          "x": 2253.2150092417896,
+          "y": 534,
+          "health": 5.453932000000009,
+          "width": 98,
+          "height": 90
+        },
+        {
+          "id": "swamp-hydra-foragers-2",
+          "x": 3179.501,
+          "y": 534,
+          "health": 93.06,
+          "width": 98,
+          "height": 90
+        },
+        {
+          "id": "swamp-hydra-foragers-3",
+          "x": 3536.35923065975,
+          "y": 530,
+          "health": 93.06,
+          "width": 66,
+          "height": 94
+        },
+        {
+          "id": "swamp-hydra-territorials-0",
+          "x": 4688.999,
+          "y": 422,
+          "health": 134.64,
+          "width": 98,
+          "height": 82
+        }
+      ]
+    },
+    {
+      "t": 58.9,
+      "phase": "trophy",
+      "x": 6666.79,
+      "y": 508,
+      "vx": 0,
+      "vy": 0,
+      "health": 90.17,
+      "stamina": 92.8,
+      "energy": 10.47,
+      "kills": 11,
+      "boss": {
+        "active": true,
+        "alive": false,
+        "health": 0,
+        "x": 6792.546882202515
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true,
+        true
+      ],
+      "objectives": [
+        "swamp-hydra-scan",
+        "swamp-hydra-hunt",
+        "swamp-hydra-recover",
+        "swamp-hydra-boss"
+      ],
+      "message": "Hydre de vase est vaincu. Intégrité du trophée 80 %. Réclame le trophée avec [E].",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 1.5,
+        "volumeUnits": 3,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.125,
+        "overloaded": false,
+        "movementMultiplier": 0.96,
+        "jumpMultiplier": 0.98,
+        "climbStaminaMultiplier": 1.075,
+        "noiseMultiplier": 1.1
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "swamp-hydra-guardians-1",
+          "x": 4280.501,
+          "y": 534,
+          "health": 195.03,
+          "width": 98,
+          "height": 90
+        }
+      ]
+    },
+    {
+      "t": 64.683,
+      "phase": "extraction",
+      "x": 6837.8,
+      "y": 508,
+      "vx": 0,
+      "vy": 0,
+      "health": 90.17,
+      "stamina": 100,
+      "energy": 68.3,
+      "kills": 11,
+      "boss": {
+        "active": true,
+        "alive": false,
+        "health": 0,
+        "x": 6792.546882202515
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true,
+        true
+      ],
+      "objectives": [
+        "swamp-hydra-scan",
+        "swamp-hydra-hunt",
+        "swamp-hydra-recover",
+        "swamp-hydra-boss"
+      ],
+      "message": "Crâne trifide de l'Hydre : prise récupérée et scellée. Le chasseur célèbre sa victoire ; vaisseau en approche.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 1.5,
+        "volumeUnits": 3,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.125,
+        "overloaded": false,
+        "movementMultiplier": 0.96,
+        "jumpMultiplier": 0.98,
+        "climbStaminaMultiplier": 1.075,
+        "noiseMultiplier": 1.1
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "swamp-hydra-guardians-1",
+          "x": 4280.501,
+          "y": 534,
+          "health": 195.03,
+          "width": 98,
+          "height": 90
+        },
+        {
+          "id": "extraction-swamp-hydra-923-0",
+          "x": 7410.40524,
+          "y": 528,
+          "health": 242.31,
+          "width": 114,
+          "height": 96
+        }
+      ]
+    },
+    {
+      "t": 76.117,
+      "phase": "finished",
+      "x": 7989,
+      "y": 173,
+      "vx": 0,
+      "vy": 0,
+      "health": 142.15,
+      "stamina": 100,
+      "energy": 100,
+      "kills": 11,
+      "boss": {
+        "active": true,
+        "alive": false,
+        "health": 0,
+        "x": 6792.546882202515
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true,
+        true
+      ],
+      "objectives": [
+        "swamp-hydra-scan",
+        "swamp-hydra-hunt",
+        "swamp-hydra-recover",
+        "swamp-hydra-boss",
+        "swamp-hydra-extract"
+      ],
+      "message": "Objectif accompli : Rejoindre le faisceau d'extraction",
+      "grounded": false,
+      "climbing": false,
+      "load": {
+        "massKg": 1.5,
+        "volumeUnits": 3,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0.125,
+        "overloaded": false,
+        "movementMultiplier": 0.96,
+        "jumpMultiplier": 0.98,
+        "climbStaminaMultiplier": 1.075,
+        "noiseMultiplier": 1.1
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "swamp-hydra-guardians-1",
+          "x": 4280.501,
+          "y": 534,
+          "health": 195.03,
+          "width": 98,
+          "height": 90
+        },
+        {
+          "id": "extraction-swamp-hydra-923-0",
+          "x": 7873.047539999971,
+          "y": 528,
+          "health": 242.31,
+          "width": 114,
+          "height": 96
+        },
+        {
+          "id": "extraction-swamp-hydra-924-1",
+          "x": 7933.295653333221,
+          "y": 530,
+          "health": 195.03,
+          "width": 66,
+          "height": 94
+        },
+        {
+          "id": "extraction-swamp-hydra-925-2",
+          "x": 7894.659919999963,
+          "y": 535,
+          "health": 218.67,
+          "width": 106,
+          "height": 89
+        }
+      ]
+    }
+  ],
+  "traceFrames": 615,
+  "ticksExecuted": 4567,
+  "harvestActions": [
+    {
+      "tick": 793,
+      "t": 13.216666666666903,
+      "action": "open",
+      "corpseId": "swamp-hydra-foragers-4",
+      "sourceEnemyId": "naraka-delta--fen-leaper",
+      "operation": null
+    },
+    {
+      "tick": 794,
+      "t": 13.23333333333357,
+      "action": "flay",
+      "corpseId": "swamp-hydra-foragers-4",
+      "sourceEnemyId": "naraka-delta--fen-leaper",
+      "operation": {
+        "corpseId": "swamp-hydra-foragers-4",
+        "action": "flay",
+        "elapsed": 0,
+        "startHealth": 160,
+        "supportId": null,
+        "confirmedDishonor": false
+      }
+    },
+    {
+      "tick": 986,
+      "t": 16.43333333333368,
+      "action": "harvest-hide",
+      "corpseId": "swamp-hydra-foragers-4",
+      "sourceEnemyId": "naraka-delta--fen-leaper",
+      "operation": {
+        "corpseId": "swamp-hydra-foragers-4",
+        "action": "harvest-hide",
+        "elapsed": 0,
+        "startHealth": 160,
+        "supportId": null,
+        "confirmedDishonor": false
+      }
+    }
+  ],
+  "peakLoadRatio": 0.125,
+  "peakSpecimens": [
+    {
+      "id": "swamp-hydra:0:swamp-hydra-foragers-4:hide",
+      "sourceId": "swamp-hydra:0:swamp-hydra-foragers-4",
+      "speciesId": "naraka-delta--fen-leaper",
+      "partId": "hide",
+      "label": "Peau du sauteur",
+      "quality": 52,
+      "massKg": 1.5,
+      "volumeUnits": 3,
+      "stage": "raw"
+    }
+  ],
+  "firstLoadAt": {
+    "tick": 1222,
+    "t": 20.383,
+    "phase": "target",
+    "x": 1969.2,
+    "y": 508,
+    "vx": 36.19,
+    "vy": 0,
+    "health": 160,
+    "stamina": 100,
+    "energy": 100,
+    "kills": 3,
+    "boss": {
+      "active": false,
+      "alive": true,
+      "health": 940,
+      "x": 6914.4
+    },
+    "scans": [
+      true,
+      true,
+      true
+    ],
+    "recoveries": [
+      false,
+      false
+    ],
+    "objectives": [
+      "swamp-hydra-scan"
+    ],
+    "message": "Geste inscrit dans la trace de cette chasse.",
+    "grounded": true,
+    "climbing": false,
+    "load": {
+      "massKg": 1.5,
+      "volumeUnits": 3,
+      "capacityMassKg": 36,
+      "capacityVolumeUnits": 24,
+      "ratio": 0.125,
+      "overloaded": false,
+      "movementMultiplier": 0.96,
+      "jumpMultiplier": 0.98,
+      "climbStaminaMultiplier": 1.075,
+      "noiseMultiplier": 1.1
+    },
+    "energyWeaponsLocked": false,
+    "weaponSlot": 1,
+    "threats": [
+      {
+        "id": "swamp-hydra-foragers-2",
+        "x": 3179.501,
+        "y": 534,
+        "health": 93.06,
+        "width": 98,
+        "height": 90
+      },
+      {
+        "id": "swamp-hydra-foragers-3",
+        "x": 3582.458430659758,
+        "y": 530,
+        "health": 93.06,
+        "width": 66,
+        "height": 94
+      },
+      {
+        "id": "swamp-hydra-territorials-0",
+        "x": 4687.8622,
+        "y": 398.0266482835505,
+        "health": 134.64,
+        "width": 98,
+        "height": 82
+      },
+      {
+        "id": "swamp-hydra-territorials-1",
+        "x": 3929.279991571043,
+        "y": 542,
+        "health": 134.64,
+        "width": 98,
+        "height": 82
+      },
+      {
+        "id": "swamp-hydra-territorials-2",
+        "x": 4574.6084999999775,
+        "y": 542,
+        "health": 134.64,
+        "width": 98,
+        "height": 82
+      },
+      {
+        "id": "swamp-hydra-territorials-3",
+        "x": 5676.711800000081,
+        "y": 535,
+        "health": 150.95999999999998,
+        "width": 106,
+        "height": 89
+      }
+    ]
+  },
+  "replay": {
+    "verified": true,
+    "ticks": 4567,
+    "terminalSha256": "f8a0ccf354a538809fced1f85626197cc356ec4f6905c5628a3af0c3a086fca9"
+  },
+  "rawData": {
+    "archive": "../native-runs-raw.tar.gz",
+    "member": "qualified-harvested/swamp-hydra-hunter.json",
+    "sha256": "0d289ffb7302a68a27a21abd23564e3cff53ef55d327094e89eae90a2bace6a4"
+  }
+}

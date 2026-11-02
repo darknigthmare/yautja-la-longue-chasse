@@ -1,0 +1,1033 @@
+{
+  "missionId": "jungle-vey",
+  "armorId": "scout",
+  "success": true,
+  "result": {
+    "missionId": "jungle-vey",
+    "exploration": {
+      "abilityIds": [],
+      "openedGateIds": [],
+      "secretIds": [],
+      "discoveredRoomIds": [
+        "jungle-pilot-approach",
+        "jungle-pilot-underpass",
+        "jungle-pilot-module",
+        "jungle-pilot-ravine",
+        "jungle-pilot-river-caves",
+        "jungle-pilot-vey-camp",
+        "jungle-pilot-duel-extraction",
+        "ice-region-approach",
+        "ice-region-shaft",
+        "ice-region-return"
+      ]
+    },
+    "difficultyId": "hunter",
+    "outcome": "success",
+    "score": 98,
+    "elapsedSeconds": 73,
+    "completedObjectiveIds": [
+      "scan-vanguard",
+      "recover-transponder",
+      "defeat-vey",
+      "extract-jungle-trophy"
+    ],
+    "honorEvents": [
+      {
+        "id": "scan-trace-1",
+        "label": "Signature étudiée",
+        "value": 3,
+        "kind": "scan"
+      },
+      {
+        "id": "honor-rule:restrained-caster",
+        "label": "Code rompu : Puissance mesurée",
+        "value": -10,
+        "kind": "violation"
+      },
+      {
+        "id": "kill-jungle-patrol-0",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "scan-trace-2",
+        "label": "Signature étudiée",
+        "value": 3,
+        "kind": "scan"
+      },
+      {
+        "id": "kill-jungle-patrol-3",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "kill-jungle-patrol-1",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "scan-trace-3",
+        "label": "Signature étudiée",
+        "value": 3,
+        "kind": "scan"
+      },
+      {
+        "id": "objective-scan-vanguard",
+        "label": "Étudier l'avant-garde",
+        "value": 15,
+        "kind": "objective"
+      },
+      {
+        "id": "kill-jungle-patrol-2",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "kill-jungle-scouts-1",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "recover-technology-1",
+        "label": "Technologie du clan sécurisée",
+        "value": 5,
+        "kind": "objective"
+      },
+      {
+        "id": "objective-recover-transponder",
+        "label": "Reprendre le transpondeur",
+        "value": 25,
+        "kind": "objective"
+      },
+      {
+        "id": "kill-jungle-scouts-0",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "kill-jungle-scouts-2",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "kill-vey-guard-1",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "honor-rule:study-vey",
+        "label": "Code rompu : Connaître sa proie",
+        "value": 0,
+        "kind": "violation"
+      },
+      {
+        "id": "kill-vey-guard-878-0",
+        "label": "Mise à mort rapprochée",
+        "value": 3,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "objective-defeat-vey",
+        "label": "Affronter la commandante Vey",
+        "value": 40,
+        "kind": "objective"
+      },
+      {
+        "id": "boss-honorable-kill",
+        "label": "Victoire sur Commandante Vey",
+        "value": 18,
+        "kind": "duel"
+      },
+      {
+        "id": "kill-vey-guard-879-1",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "trophy-claimed",
+        "label": "Insigne de Vey",
+        "value": 12,
+        "kind": "objective"
+      },
+      {
+        "id": "objective-extract-jungle-trophy",
+        "label": "Quitter la zone de chasse",
+        "value": 10,
+        "kind": "objective"
+      },
+      {
+        "id": "honor-rule:protect-tech",
+        "label": "Code respecté : Ne laisser aucune technologie",
+        "value": 20,
+        "kind": "objective"
+      }
+    ],
+    "trophyQuality": "elite",
+    "trophyClaims": [
+      {
+        "id": "jungle-vey-apex-mvysyg7m-t3-xm7ykbog",
+        "definitionId": "trophy-vey",
+        "targetName": "Commandante Vey",
+        "targetKind": "human",
+        "partId": "insignia",
+        "quality": "elite",
+        "condition": "intact"
+      }
+    ],
+    "specimensV112": [
+      {
+        "id": "jungle-vey:1:jungle-patrol-0:tissue",
+        "sourceId": "jungle-vey:1:jungle-patrol-0",
+        "speciesId": "oseris-iv--needle-frog",
+        "partId": "tissue",
+        "label": "Tissu glandulaire d'aiguillon",
+        "quality": 0,
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "stage": "raw"
+      }
+    ],
+    "toolUseIdsV112": [
+      "jungle-vey:1:flay:jungle-patrol-0",
+      "jungle-vey:1:harvest-tissue:jungle-patrol-0"
+    ],
+    "harvestEncounterRunV112": 1,
+    "kills": 11,
+    "scans": 3,
+    "discoveredEnemyIds": [],
+    "secondWindUsed": false,
+    "completedAt": "2026-11-02T05:12:29.546Z"
+  },
+  "climbFrames": 0,
+  "swingFrames": 0,
+  "authoredCanopyContactFrames": 0,
+  "maxX": 7988.99999999999,
+  "terminal": {
+    "t": 72.667,
+    "phase": "finished",
+    "x": 7989,
+    "y": 173,
+    "vx": 0,
+    "vy": 0,
+    "health": 113.34,
+    "stamina": 115,
+    "energy": 110,
+    "kills": 10,
+    "boss": {
+      "active": true,
+      "alive": false,
+      "health": 0,
+      "x": 7460.290113742427
+    },
+    "scans": [
+      true,
+      true,
+      true
+    ],
+    "recoveries": [
+      true
+    ],
+    "objectives": [
+      "scan-vanguard",
+      "recover-transponder",
+      "defeat-vey",
+      "extract-jungle-trophy"
+    ],
+    "message": "Objectif accompli : Quitter la zone de chasse",
+    "grounded": false,
+    "climbing": false,
+    "load": {
+      "massKg": 0.4,
+      "volumeUnits": 1,
+      "capacityMassKg": 24,
+      "capacityVolumeUnits": 18,
+      "ratio": 0.05555555555555555,
+      "overloaded": false,
+      "movementMultiplier": 0.9822222222222222,
+      "jumpMultiplier": 0.9911111111111112,
+      "climbStaminaMultiplier": 1.0333333333333334,
+      "noiseMultiplier": 1.0444444444444445
+    },
+    "energyWeaponsLocked": false,
+    "weaponSlot": 1,
+    "threats": [
+      {
+        "id": "vey-guard-0",
+        "x": 4377.53877293922,
+        "y": 517,
+        "health": 78.89393199999998,
+        "width": 88,
+        "height": 107
+      },
+      {
+        "id": "extraction-jungle-vey-1048-0",
+        "x": 7558.130464886052,
+        "y": 530,
+        "health": 148.5,
+        "width": 66,
+        "height": 94
+      },
+      {
+        "id": "extraction-jungle-vey-1049-1",
+        "x": 7814.450666666656,
+        "y": 466.8686475184807,
+        "health": 148.5,
+        "width": 98,
+        "height": 82
+      }
+    ]
+  },
+  "admission": {
+    "missionId": "jungle-vey",
+    "armorId": "scout",
+    "loadout": {
+      "armorId": "scout",
+      "weaponIds": [
+        "wristblades",
+        "plasma-caster"
+      ],
+      "gearIds": [
+        "motion-sensor",
+        "audio-decoy"
+      ]
+    },
+    "inventory": {
+      "fieldToolIds": [
+        "flaying-tool"
+      ],
+      "harvestV112": {
+        "version": 1,
+        "specimens": [],
+        "toolCondition": 100,
+        "toolUseIds": [],
+        "jobs": [],
+        "settledEncounterRuns": {
+          "jungle-vey": 0,
+          "ice-cryostalker": 0
+        },
+        "archive": []
+      },
+      "unlockedWeaponIds": [
+        "wristblades",
+        "combistick",
+        "plasma-caster",
+        "yautja-bow",
+        "smart-disc"
+      ],
+      "unlockedGearIds": [
+        "motion-sensor",
+        "audio-decoy",
+        "netgun",
+        "snare"
+      ],
+      "unlockedArmorIds": [
+        "hunter",
+        "scout",
+        "berserker"
+      ],
+      "weaponUpgrades": {
+        "wristblades": 0,
+        "combistick": 0,
+        "plasma-caster": 0,
+        "smart-disc": 0,
+        "yautja-bow": 0
+      },
+      "gearUpgrades": {
+        "netgun": 0,
+        "motion-sensor": 0,
+        "audio-decoy": 0,
+        "snare": 0
+      },
+      "armorUpgrades": {
+        "scout": 0,
+        "hunter": 0,
+        "berserker": 0
+      }
+    },
+    "toolOrigin": {
+      "path": "docs/qa/v112-ground-campaign/tool-origin.json",
+      "sha256": "0b489bc90df80e0643be22c971d0412ffbff434805812c75fc00f2690beef63b",
+      "missions": [
+        {
+          "missionId": "jungle-vey",
+          "outcome": "success",
+          "score": 98,
+          "elapsedSeconds": 61
+        },
+        {
+          "missionId": "ice-cryostalker",
+          "outcome": "success",
+          "score": 96,
+          "elapsedSeconds": 56
+        }
+      ],
+      "balanceBefore": 806,
+      "spentClanMarks": 120,
+      "balanceAfter": 686
+    },
+    "difficulty": "hunter",
+    "encounterRun": 1,
+    "random": {
+      "algorithm": "xorshift32",
+      "seed": 17965094
+    },
+    "spawn": {
+      "x": 225,
+      "y": 508
+    },
+    "initial": {
+      "t": 0,
+      "phase": "tracking",
+      "x": 225,
+      "y": 508,
+      "vx": 0,
+      "vy": 0,
+      "health": 125,
+      "stamina": 115,
+      "energy": 110,
+      "kills": 0,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 600,
+        "x": 6914.4
+      },
+      "scans": [
+        false,
+        false,
+        false
+      ],
+      "recoveries": [
+        false
+      ],
+      "objectives": [],
+      "message": "La chasse commence. Localise les signatures.",
+      "grounded": true,
+      "climbing": false,
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "jungle-patrol-0",
+          "x": 1448.999,
+          "y": 542,
+          "health": 54.45,
+          "width": 98,
+          "height": 82
+        },
+        {
+          "id": "jungle-patrol-1",
+          "x": 2442.5510092417894,
+          "y": 534,
+          "health": 54.45,
+          "width": 98,
+          "height": 90
+        },
+        {
+          "id": "jungle-patrol-2",
+          "x": 3396.8989385484156,
+          "y": 524,
+          "health": 61.04999999999999,
+          "width": 108,
+          "height": 100
+        },
+        {
+          "id": "jungle-patrol-3",
+          "x": 2233.001,
+          "y": 504,
+          "health": 67.65,
+          "width": 84,
+          "height": 120
+        }
+      ]
+    },
+    "world": {
+      "width": 8400,
+      "bossArena": {
+        "x": 6180,
+        "y": 310,
+        "width": 1530,
+        "height": 314
+      },
+      "extraction": {
+        "x": 8025,
+        "y": 624
+      },
+      "platforms": [
+        {
+          "x": 800,
+          "y": 392,
+          "width": 1180,
+          "height": 24,
+          "id": "jungle-pilot-gallery-west",
+          "material": "ruin",
+          "routeId": "canopy",
+          "collision": "solid",
+          "noiseMultiplier": 0.85,
+          "trackPersistence": 0.12
+        },
+        {
+          "x": 2140,
+          "y": 392,
+          "width": 60,
+          "height": 24,
+          "id": "jungle-pilot-gallery-east",
+          "material": "ruin",
+          "routeId": "canopy",
+          "collision": "solid",
+          "noiseMultiplier": 0.85,
+          "trackPersistence": 0.12
+        },
+        {
+          "x": 2200,
+          "y": 0,
+          "width": 28,
+          "height": 416,
+          "id": "jungle-pilot-right-wall",
+          "material": "ruin",
+          "routeId": "canopy",
+          "collision": "solid",
+          "noiseMultiplier": 0.85,
+          "trackPersistence": 0.12
+        },
+        {
+          "x": 1120,
+          "y": -800,
+          "width": 28,
+          "height": 1192,
+          "id": "jungle-resonance-seal",
+          "material": "ruin",
+          "routeId": "canopy",
+          "collision": "solid",
+          "noiseMultiplier": 0.85,
+          "trackPersistence": 0.12
+        },
+        {
+          "x": 1980,
+          "y": 392,
+          "width": 160,
+          "height": 24,
+          "id": "jungle-canopy-hatch",
+          "material": "ruin",
+          "routeId": "canopy",
+          "collision": "solid",
+          "noiseMultiplier": 0.85,
+          "trackPersistence": 0.12
+        },
+        {
+          "id": "jungle-pilot-cave-roof-west",
+          "x": 4000,
+          "y": 400,
+          "width": 520,
+          "height": 34,
+          "material": "stone",
+          "routeId": "flooded-cut",
+          "collision": "solid",
+          "noiseMultiplier": 0.9,
+          "trackPersistence": 0.12
+        },
+        {
+          "id": "jungle-pilot-cave-roof-east",
+          "x": 4590,
+          "y": 400,
+          "width": 480,
+          "height": 34,
+          "material": "root",
+          "routeId": "flooded-cut",
+          "collision": "solid",
+          "noiseMultiplier": 0.76,
+          "trackPersistence": 0.2
+        }
+      ],
+      "hazards": [
+        {
+          "id": "j-mud-west",
+          "x": 1575,
+          "y": 582,
+          "width": 630,
+          "height": 42,
+          "kind": "deep-mud",
+          "routeId": "ground",
+          "damagePerSecond": 0,
+          "movementMultiplier": 0.58,
+          "noisePerSecond": 0.08,
+          "trackMultiplier": 2.4,
+          "revealsCloak": false,
+          "telegraphSeconds": 0,
+          "cycle": null
+        },
+        {
+          "id": "j-flora-center",
+          "x": 4020,
+          "y": 574,
+          "width": 232.5,
+          "height": 50,
+          "kind": "predatory-flora",
+          "routeId": "ground",
+          "damagePerSecond": 9,
+          "movementMultiplier": 0.72,
+          "noisePerSecond": 0.42,
+          "trackMultiplier": 1.1,
+          "revealsCloak": true,
+          "telegraphSeconds": 0.45,
+          "cycle": {
+            "periodSeconds": 4.5,
+            "activeSeconds": 1.4,
+            "phaseSeconds": 0.8
+          }
+        },
+        {
+          "id": "j-flood-pulse",
+          "x": 4815,
+          "y": 570,
+          "width": 915,
+          "height": 54,
+          "kind": "flash-flood",
+          "routeId": "flooded-cut",
+          "damagePerSecond": 6,
+          "movementMultiplier": 0.48,
+          "noisePerSecond": 0.6,
+          "trackMultiplier": 0.2,
+          "revealsCloak": true,
+          "telegraphSeconds": 1.25,
+          "cycle": {
+            "periodSeconds": 12,
+            "activeSeconds": 3.5,
+            "phaseSeconds": 2
+          }
+        }
+      ]
+    },
+    "scanNodes": [
+      {
+        "id": "trace-1",
+        "x": 924,
+        "y": 588,
+        "scanned": false
+      },
+      {
+        "id": "trace-2",
+        "x": 2016,
+        "y": 395,
+        "scanned": false
+      },
+      {
+        "id": "trace-3",
+        "x": 3108,
+        "y": 588,
+        "scanned": false
+      }
+    ],
+    "recoveryNodes": [
+      {
+        "id": "technology-1",
+        "x": 4389.7505,
+        "y": 590,
+        "recovered": false
+      }
+    ]
+  },
+  "events": [
+    {
+      "t": 28.583,
+      "phase": "target",
+      "x": 2672.59,
+      "y": 508,
+      "vx": 338.87,
+      "vy": 0,
+      "health": 125,
+      "stamina": 115,
+      "energy": 102.2,
+      "kills": 3,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 600,
+        "x": 6914.4
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        false
+      ],
+      "objectives": [
+        "scan-vanguard"
+      ],
+      "message": "Commandante Vey peut désormais être pisté.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 24,
+        "capacityVolumeUnits": 18,
+        "ratio": 0.05555555555555555,
+        "overloaded": false,
+        "movementMultiplier": 0.9822222222222222,
+        "jumpMultiplier": 0.9911111111111112,
+        "climbStaminaMultiplier": 1.0333333333333334,
+        "noiseMultiplier": 1.0444444444444445
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "jungle-patrol-2",
+          "x": 3379.941438548417,
+          "y": 524,
+          "health": 61.04999999999999,
+          "width": 108,
+          "height": 100
+        },
+        {
+          "id": "jungle-scouts-0",
+          "x": 5758.001,
+          "y": 542,
+          "health": 44.55,
+          "width": 98,
+          "height": 82
+        }
+      ]
+    },
+    {
+      "t": 54.183,
+      "phase": "trophy",
+      "x": 7419.69,
+      "y": 508,
+      "vx": 0,
+      "vy": 0,
+      "health": 125,
+      "stamina": 101.8,
+      "energy": 29.17,
+      "kills": 9,
+      "boss": {
+        "active": true,
+        "alive": false,
+        "health": 0,
+        "x": 7460.290113742427
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true
+      ],
+      "objectives": [
+        "scan-vanguard",
+        "recover-transponder",
+        "defeat-vey"
+      ],
+      "message": "Commandante Vey est vaincu. Intégrité du trophée 79 %. Réclame le trophée avec [E].",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 24,
+        "capacityVolumeUnits": 18,
+        "ratio": 0.05555555555555555,
+        "overloaded": false,
+        "movementMultiplier": 0.9822222222222222,
+        "jumpMultiplier": 0.9911111111111112,
+        "climbStaminaMultiplier": 1.0333333333333334,
+        "noiseMultiplier": 1.0444444444444445
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "vey-guard-0",
+          "x": 4208.704563923695,
+          "y": 517,
+          "health": 78.89393199999998,
+          "width": 88,
+          "height": 107
+        },
+        {
+          "id": "vey-guard-879-1",
+          "x": 7609.700000000008,
+          "y": 530,
+          "health": 150,
+          "width": 66,
+          "height": 94
+        }
+      ]
+    },
+    {
+      "t": 64.15,
+      "phase": "extraction",
+      "x": 7471.26,
+      "y": 508,
+      "vx": 0,
+      "vy": 0,
+      "health": 69,
+      "stamina": 115,
+      "energy": 79.63,
+      "kills": 10,
+      "boss": {
+        "active": true,
+        "alive": false,
+        "health": 0,
+        "x": 7460.290113742427
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true
+      ],
+      "objectives": [
+        "scan-vanguard",
+        "recover-transponder",
+        "defeat-vey"
+      ],
+      "message": "Insigne de Vey : prise récupérée et scellée. Le chasseur célèbre sa victoire ; vaisseau en approche.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 24,
+        "capacityVolumeUnits": 18,
+        "ratio": 0.05555555555555555,
+        "overloaded": false,
+        "movementMultiplier": 0.9822222222222222,
+        "jumpMultiplier": 0.9911111111111112,
+        "climbStaminaMultiplier": 1.0333333333333334,
+        "noiseMultiplier": 1.0444444444444445
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "vey-guard-0",
+          "x": 4377.53877293922,
+          "y": 517,
+          "health": 78.89393199999998,
+          "width": 88,
+          "height": 107
+        },
+        {
+          "id": "extraction-jungle-vey-1048-0",
+          "x": 7462.847833333333,
+          "y": 530,
+          "health": 148.5,
+          "width": 66,
+          "height": 94
+        }
+      ]
+    },
+    {
+      "t": 72.667,
+      "phase": "finished",
+      "x": 7989,
+      "y": 173,
+      "vx": 0,
+      "vy": 0,
+      "health": 113.34,
+      "stamina": 115,
+      "energy": 110,
+      "kills": 10,
+      "boss": {
+        "active": true,
+        "alive": false,
+        "health": 0,
+        "x": 7460.290113742427
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true
+      ],
+      "objectives": [
+        "scan-vanguard",
+        "recover-transponder",
+        "defeat-vey",
+        "extract-jungle-trophy"
+      ],
+      "message": "Objectif accompli : Quitter la zone de chasse",
+      "grounded": false,
+      "climbing": false,
+      "load": {
+        "massKg": 0.4,
+        "volumeUnits": 1,
+        "capacityMassKg": 24,
+        "capacityVolumeUnits": 18,
+        "ratio": 0.05555555555555555,
+        "overloaded": false,
+        "movementMultiplier": 0.9822222222222222,
+        "jumpMultiplier": 0.9911111111111112,
+        "climbStaminaMultiplier": 1.0333333333333334,
+        "noiseMultiplier": 1.0444444444444445
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "vey-guard-0",
+          "x": 4377.53877293922,
+          "y": 517,
+          "health": 78.89393199999998,
+          "width": 88,
+          "height": 107
+        },
+        {
+          "id": "extraction-jungle-vey-1048-0",
+          "x": 7558.130464886052,
+          "y": 530,
+          "health": 148.5,
+          "width": 66,
+          "height": 94
+        },
+        {
+          "id": "extraction-jungle-vey-1049-1",
+          "x": 7814.450666666656,
+          "y": 466.8686475184807,
+          "health": 148.5,
+          "width": 98,
+          "height": 82
+        }
+      ]
+    }
+  ],
+  "traceFrames": 390,
+  "ticksExecuted": 4360,
+  "harvestActions": [
+    {
+      "tick": 968,
+      "t": 16.1333333333337,
+      "action": "open",
+      "corpseId": "jungle-patrol-0",
+      "sourceEnemyId": "oseris-iv--needle-frog",
+      "operation": null
+    },
+    {
+      "tick": 969,
+      "t": 16.150000000000365,
+      "action": "flay",
+      "corpseId": "jungle-patrol-0",
+      "sourceEnemyId": "oseris-iv--needle-frog",
+      "operation": {
+        "corpseId": "jungle-patrol-0",
+        "action": "flay",
+        "elapsed": 0,
+        "startHealth": 125,
+        "supportId": null,
+        "confirmedDishonor": false
+      }
+    },
+    {
+      "tick": 1161,
+      "t": 19.350000000000183,
+      "action": "harvest-tissue",
+      "corpseId": "jungle-patrol-0",
+      "sourceEnemyId": "oseris-iv--needle-frog",
+      "operation": {
+        "corpseId": "jungle-patrol-0",
+        "action": "harvest-tissue",
+        "elapsed": 0,
+        "startHealth": 125,
+        "supportId": null,
+        "confirmedDishonor": false
+      }
+    }
+  ],
+  "peakLoadRatio": 0.05555555555555555,
+  "peakSpecimens": [
+    {
+      "id": "jungle-vey:1:jungle-patrol-0:tissue",
+      "sourceId": "jungle-vey:1:jungle-patrol-0",
+      "speciesId": "oseris-iv--needle-frog",
+      "partId": "tissue",
+      "label": "Tissu glandulaire d'aiguillon",
+      "quality": 0,
+      "massKg": 0.4,
+      "volumeUnits": 1,
+      "stage": "raw"
+    }
+  ],
+  "firstLoadAt": {
+    "tick": 1323,
+    "t": 22.067,
+    "phase": "tracking",
+    "x": 1615.95,
+    "y": 508,
+    "vx": 24.7,
+    "vy": 0,
+    "health": 125,
+    "stamina": 115,
+    "energy": 110,
+    "kills": 3,
+    "boss": {
+      "active": false,
+      "alive": true,
+      "health": 600,
+      "x": 6914.4
+    },
+    "scans": [
+      true,
+      true,
+      false
+    ],
+    "recoveries": [
+      false
+    ],
+    "objectives": [],
+    "message": "Geste inscrit dans la trace de cette chasse.",
+    "grounded": true,
+    "climbing": false,
+    "load": {
+      "massKg": 0.4,
+      "volumeUnits": 1,
+      "capacityMassKg": 24,
+      "capacityVolumeUnits": 18,
+      "ratio": 0.05555555555555555,
+      "overloaded": false,
+      "movementMultiplier": 0.9822222222222222,
+      "jumpMultiplier": 0.9911111111111112,
+      "climbStaminaMultiplier": 1.0333333333333334,
+      "noiseMultiplier": 1.0444444444444445
+    },
+    "energyWeaponsLocked": false,
+    "weaponSlot": 1,
+    "threats": [
+      {
+        "id": "jungle-patrol-2",
+        "x": 3443.308938548412,
+        "y": 524,
+        "health": 61.04999999999999,
+        "width": 108,
+        "height": 100
+      }
+    ]
+  },
+  "replay": {
+    "verified": true,
+    "ticks": 4360,
+    "terminalSha256": "18de19a205ea7e97d637eb5d1e3f8e5de525b3b6b1f7b0b65814a54cee08b5c4"
+  },
+  "rawData": {
+    "archive": "../native-runs-raw.tar.gz",
+    "member": "qualified-harvested/jungle-vey-scout.json",
+    "sha256": "be129f23019b60f50d4d8292a74478922e0819724e9408f79894dcff4a3b0c28"
+  }
+}
