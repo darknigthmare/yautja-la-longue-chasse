@@ -1,0 +1,245 @@
+{
+  "schema": "yautja.homeworld.original-concept-props.v158.pr-intake",
+  "release": "V158",
+  "repository": "darknigthmare/yautja-la-longue-chasse",
+  "sourcePackage": "YAUTJA_HOMEWORLD_LOT_URBAIN_10_V158.zip",
+  "sourceAvailability": "COMPANION_DOWNLOAD_ONLY_NOT_COMMITTED_IN_THIS_PR",
+  "status": "METADATA_AND_VERIFICATION_ONLY_ART_CANDIDATES_NOT_ADMITTED",
+  "camera": {
+    "reference": "app/game/systems/homeworldGeometryV64.ts",
+    "projection": "orthographic",
+    "yawDegrees": 0,
+    "pitchDegrees": 35,
+    "depthScale": 0.573576436351046,
+    "noCssRotationOrMirror": true
+  },
+  "canon": {
+    "claim1to1": false,
+    "classification": "LORE_COMPATIBLE_ORIGINAL_NOT_CANON_ATTESTED",
+    "humanArtApproval": false
+  },
+  "runtime": {
+    "integrated": false,
+    "placementsValidated": false,
+    "collisionValidated": false,
+    "npcRoutesValidated": false,
+    "doorwaysMeasured": false
+  },
+  "candidates": [
+    {
+      "id": "HW1031",
+      "label": "Passerelle suspendue en basalte",
+      "category": "infrastructure",
+      "orientation": "front-right",
+      "sourceType": "independent_1536x1024",
+      "originalArchivePath": "sprites_png/HW1031_passerelle_basalte_3q_droite.png",
+      "sha256": "51c004cf7840ddd09a79b47aedf4cddc0ab834839ce962680e2a1f05f191a831",
+      "bytes": 1595485,
+      "dimensionsPx": {
+        "width": 1473,
+        "height": 1023
+      },
+      "existingTargetFamilyHints": [
+        "target-v81-55-33",
+        "target-v81-55-34"
+      ],
+      "artState": "CANDIDATE_NOT_ADMITTED",
+      "sourceInGit": false,
+      "pngCornersAlphaObserved": "transparent_in_local_package",
+      "nativeGroundPivot": null,
+      "footprintWorld": null,
+      "doorway": null
+    },
+    {
+      "id": "HW1032",
+      "label": "Aire secondaire d’arrimage",
+      "category": "spaceport",
+      "orientation": "front-right",
+      "sourceType": "sprite-sheet-crop",
+      "originalArchivePath": "sprites_png/HW1032_aire_atterrissage_laterale.png",
+      "sha256": "001902dc16483f82984a67778f2a7737e6f00c1780ec7fcf9ce195bc4b0e1d7b",
+      "bytes": 49836,
+      "dimensionsPx": {
+        "width": 272,
+        "height": 172
+      },
+      "existingTargetFamilyHints": [],
+      "artState": "CANDIDATE_NOT_ADMITTED",
+      "sourceInGit": false,
+      "pngCornersAlphaObserved": "transparent_in_local_package",
+      "nativeGroundPivot": null,
+      "footprintWorld": null,
+      "doorway": null
+    },
+    {
+      "id": "HW1033",
+      "label": "Cuisine commune sous auvent",
+      "category": "social",
+      "orientation": "front-left",
+      "sourceType": "sprite-sheet-crop",
+      "originalArchivePath": "sprites_png/HW1033_cuisine_collective_auvent.png",
+      "sha256": "50afd1d317e58a5a7a8e7958a2054a97cf93c8a4dc6834c5d89a8826247dbede",
+      "bytes": 49343,
+      "dimensionsPx": {
+        "width": 212,
+        "height": 142
+      },
+      "existingTargetFamilyHints": [],
+      "artState": "CANDIDATE_NOT_ADMITTED",
+      "sourceInGit": false,
+      "pngCornersAlphaObserved": "transparent_in_local_package",
+      "nativeGroundPivot": null,
+      "footprintWorld": null,
+      "doorway": null
+    },
+    {
+      "id": "HW1034",
+      "label": "Séchoir de peaux et prises",
+      "category": "craft",
+      "orientation": "front-right",
+      "sourceType": "sprite-sheet-crop",
+      "originalArchivePath": "sprites_png/HW1034_sechoir_trophes_peaux.png",
+      "sha256": "de29209f97b960a176197dc6034762d0fb053b4754ae9299ef6dffdea074a71d",
+      "bytes": 46278,
+      "dimensionsPx": {
+        "width": 197,
+        "height": 141
+      },
+      "existingTargetFamilyHints": [],
+      "artState": "CANDIDATE_NOT_ADMITTED",
+      "sourceInGit": false,
+      "pngCornersAlphaObserved": "transparent_in_local_package",
+      "nativeGroundPivot": null,
+      "footprintWorld": null,
+      "doorway": null
+    },
+    {
+      "id": "HW1035",
+      "label": "Abri de soins pour faune",
+      "category": "fauna",
+      "orientation": "front-left",
+      "sourceType": "sprite-sheet-crop",
+      "originalArchivePath": "sprites_png/HW1035_poste_soins_faune.png",
+      "sha256": "dbb7c4f30cb2dd4b31dff46049b2354962dba6eebc58f530b5a78d22c8e68656",
+      "bytes": 54890,
+      "dimensionsPx": {
+        "width": 207,
+        "height": 140
+      },
+      "existingTargetFamilyHints": [],
+      "artState": "CANDIDATE_NOT_ADMITTED",
+      "sourceInGit": false,
+      "pngCornersAlphaObserved": "transparent_in_local_package",
+      "nativeGroundPivot": null,
+      "footprintWorld": null,
+      "doorway": null
+    },
+    {
+      "id": "HW1036",
+      "label": "Portique de desserte",
+      "category": "architecture",
+      "orientation": "front",
+      "sourceType": "sprite-sheet-crop",
+      "originalArchivePath": "sprites_png/HW1036_portique_quartier_service.png",
+      "sha256": "204d6dbd93f6ef85808d6ac55e67d27afe5caddca5e5745936e7a9cb2ae87f3a",
+      "bytes": 41791,
+      "dimensionsPx": {
+        "width": 206,
+        "height": 144
+      },
+      "existingTargetFamilyHints": [],
+      "artState": "CANDIDATE_NOT_ADMITTED",
+      "sourceInGit": false,
+      "pngCornersAlphaObserved": "transparent_in_local_package",
+      "nativeGroundPivot": null,
+      "footprintWorld": null,
+      "doorway": null
+    },
+    {
+      "id": "HW1037",
+      "label": "Garde-corps lumineux modulaire",
+      "category": "street",
+      "orientation": "front",
+      "sourceType": "sprite-sheet-crop",
+      "originalArchivePath": "sprites_png/HW1037_garde_corps_lumineux.png",
+      "sha256": "a6b34bb8e8cab47ad67137d44571a96f769a8b71946fab62222e6aecf0b71793",
+      "bytes": 18856,
+      "dimensionsPx": {
+        "width": 173,
+        "height": 69
+      },
+      "existingTargetFamilyHints": [],
+      "artState": "CANDIDATE_NOT_ADMITTED",
+      "sourceInGit": false,
+      "pngCornersAlphaObserved": "transparent_in_local_package",
+      "nativeGroundPivot": null,
+      "footprintWorld": null,
+      "doorway": null
+    },
+    {
+      "id": "HW1038",
+      "label": "Panneau de soutènement renforcé",
+      "category": "architecture",
+      "orientation": "side-right",
+      "sourceType": "sprite-sheet-crop",
+      "originalArchivePath": "sprites_png/HW1038_panneau_soutenement.png",
+      "sha256": "4629e63904576c79500d6eb78a96ddd1ee6bf198d887b59582b6edf85a397ca0",
+      "bytes": 36404,
+      "dimensionsPx": {
+        "width": 187,
+        "height": 113
+      },
+      "existingTargetFamilyHints": [
+        "target-v81-55-11"
+      ],
+      "artState": "CANDIDATE_NOT_ADMITTED",
+      "sourceInGit": false,
+      "pngCornersAlphaObserved": "transparent_in_local_package",
+      "nativeGroundPivot": null,
+      "footprintWorld": null,
+      "doorway": null
+    },
+    {
+      "id": "HW1039",
+      "label": "Bac de végétation endémique",
+      "category": "nature",
+      "orientation": "front-left",
+      "sourceType": "sprite-sheet-crop",
+      "originalArchivePath": "sprites_png/HW1039_bac_flore_aliene_vert.png",
+      "sha256": "fbee4b180678ba064df47e89c186a98c8a71c7a89548cab2df94b28be2da2c9e",
+      "bytes": 30312,
+      "dimensionsPx": {
+        "width": 144,
+        "height": 125
+      },
+      "existingTargetFamilyHints": [],
+      "artState": "CANDIDATE_NOT_ADMITTED",
+      "sourceInGit": false,
+      "pngCornersAlphaObserved": "transparent_in_local_package",
+      "nativeGroundPivot": null,
+      "footprintWorld": null,
+      "doorway": null
+    },
+    {
+      "id": "HW1040",
+      "label": "Bassin de refroidissement public",
+      "category": "utility",
+      "orientation": "front-right",
+      "sourceType": "sprite-sheet-crop",
+      "originalArchivePath": "sprites_png/HW1040_circuit_refroidissement.png",
+      "sha256": "4bf71a74546ae7c9abc2152060dd60a7a934c56c93c079fce83e8bb38f4ac6",
+      "bytes": 36331,
+      "dimensionsPx": {
+        "width": 173,
+        "height": 133
+      },
+      "existingTargetFamilyHints": [],
+      "artState": "CANDIDATE_NOT_ADMITTED",
+      "sourceInGit": false,
+      "pngCornersAlphaObserved": "transparent_in_local_package",
+      "nativeGroundPivot": null,
+      "footprintWorld": null,
+      "doorway": null
+    }
+  ]
+}
