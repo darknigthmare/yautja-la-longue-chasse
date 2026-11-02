@@ -1,0 +1,97 @@
+✔ V113 native court collision reuses its private shape without repeating support projection (5.513718ms)
+ℹ {"repeatedCourtQueries":100,"supportMapsAfterPreparation":0}
+✔ V113 civic collision reuses bounds of its existing polygon without repeating four array maps (0.814368ms)
+ℹ {"repeatedCivicQueries":100,"polygonMapsAfterPreparation":0}
+✔ V113 cached collision agrees with the native predicates for every mounted court and civic hull (184.769642ms)
+✔ V113 court collision refreshes placement, art and in-place native geometry without changing public polygons (55.006779ms)
+✔ V113 bounds follow edits to exposed legacy and civic polygons while retaining their existing cache semantics (32.670014ms)
+✔ V113 connector obstruction comes from an actual 1,421-step carry and park, with no invented placement (4918.947511ms)
+✔ V113 a carried load preserves the direct Council/acropolis chain and never becomes a ground obstruction (182.100227ms)
+✔ V113 a blocked departure takes the lift, reaches the real audience, and returns through an unoccupied landing (7360.970775ms)
+ℹ {"outward":{"planMs":364.87435000000005,"ticks":854,"walked":4315.92830795082,"rideTicks":172},"returned":{"planMs":1015.0011000000013,"ticks":1940,"walked":9609.76251764046,"rideTicks":172}}
+✔ V113 a free departure cannot select the Council stair when its ground arrival is occupied (105.132882ms)
+✔ V113 the guide reaches a nearby safe corner when every farther candidate cuts the turn (342.758701ms)
+✔ V113 the guide rejoins the nearby path after an earlier safe shortcut leaves its long lookahead blocked (9.240059ms)
+✔ identical source contracts still share one decoder in adult and youth batches (4.025192ms)
+✔ conflicting dimensions cannot be hidden by source order: correct declaration last (0.637371ms)
+✔ conflicting dimensions cannot be hidden by source order: incorrect declaration last (0.457701ms)
+✔ a duplicate of native metadata cannot erase a contradictory consumer of the same PNG (0.445752ms)
+✔ retry retains all dimension contracts and refreshes the exact renderer URL (0.690862ms)
+✔ V113 a cold lift-to-steward request joins the coarse streets without a global fine-grid search (4182.946558ms)
+ℹ {"coldMs":2509.99936,"globalFineCalls":0,"distance":7101.073952597615,"points":16}
+✔ atlas button cancels the request before the parent closes or a frame runs (907.057464ms)
+✔ atlas Escape cancels the request before the parent closes or a frame runs (864.396425ms)
+✔ atlas gamepad cancels the request before the parent closes or a frame runs (823.68815ms)
+✔ an external atlas close rejects a response before the cancellation UI frame (866.495727ms)
+✔ reopening before the cancellation frame cannot revive the old request or leave planning stuck (805.283177ms)
+✔ cancelling a replacement keeps the previously confirmed route (905.623981ms)
+✔ suspension invalidates a pending replacement before RAF and preserves the confirmed route after resuming (971.618315ms)
+✔ an old cancellation frame cannot stop or clear a newer request after reopening (862.859662ms)
+✔ voluntary recalculation while the atlas is closed still installs its current result (1052.142492ms)
+✔ late worker errors after cancellation cannot replace a new request notice or prevent retry (1007.827137ms)
+✔ valid Korthas, V102 and V103 archives retain real pending orders through a cold reload (1145.867172ms)
+✔ strict identities preserve legacy optional fields, zero markers and the V2 empty-convoy schema (6.097839ms)
+✔ archive validation refuses version object with a noncallable toString instead of coercing JSON (1.957263ms)
+✔ archive validation refuses combatant status array instead of coercing JSON (2.521915ms)
+✔ archive validation refuses combatant territory array instead of coercing JSON (2.167921ms)
+✔ archive validation refuses status object with a noncallable toString instead of coercing JSON (1.444309ms)
+✔ archive validation refuses completed objective array instead of coercing JSON (1.807087ms)
+✔ archive validation refuses observation territory array instead of coercing JSON (1.58497ms)
+✔ archive validation refuses held stock territory array instead of coercing JSON (2.045586ms)
+✔ archive validation refuses order kind array instead of coercing JSON (2.018204ms)
+✔ archive validation refuses order origin array instead of coercing JSON (3.873033ms)
+✔ archive validation refuses order target array instead of coercing JSON (1.626544ms)
+✔ a damaged garrison archive stays protected instead of silently reloading without its guard (6.889843ms)
+✔ an invalid live update preserves the previous playable snapshot and its confirmed save (1.041151ms)
+✔ the V102 seed draft survives a file that started before the edit (6.914612ms)
+✔ the V102 landform draft survives a file that started before the edit (1.361313ms)
+✔ the V102 coverage draft survives a file that started before the edit (1.799725ms)
+✔ the V102 coast draft survives a file that started before the edit (1.220712ms)
+✔ the V102 diversity draft survives a file that started before the edit (1.289836ms)
+✔ the V102 land biome draft survives a file that started before the edit (1.041722ms)
+✔ the V102 surface draft survives a file that started before the edit (0.931085ms)
+✔ the V102 atmosphere draft survives a file that started before the edit (0.868391ms)
+✔ a rejected V102 generation cancels an older file even with invalid input prepared before reading (1.43846ms)
+✔ a refused V102 shared code keeps its error when a previously started file succeeds or rejects (2.503086ms)
+✔ editing a V102 shared code cancels a previous file without automatically opening the typed world (20.027784ms)
+✔ a newly selected V102 file still restores its exact historical recipe after an edit cancelled another read (1.247482ms)
+✔ a successful V102 generation and manual import remain newer than a pending file (3.597748ms)
+✔ the latest V102 file wins in either completion order and keeps the front unopened (2.63803ms)
+node:internal/test_runner/harness:99
+      throw err;
+      ^
+
+Error: Build failed with 3 errors:
+app/game/PlanetEarthReferenceV147.tsx:3:9: ERROR: No matching export in "controlled-react:react" for import "useEffect"
+app/game/PlanetEnvironmentalDossierV146.tsx:3:9: ERROR: No matching export in "controlled-react:react" for import "useEffect"
+app/game/PlanetReliefV150.tsx:3:9: ERROR: No matching export in "controlled-react:react" for import "useEffect"
+    at failureErrorWithLog (/workspace/yautja-la-longue-chasse/node_modules/esbuild/lib/main.js:1748:15)
+    at /workspace/yautja-la-longue-chasse/node_modules/esbuild/lib/main.js:1207:25
+    at runOnEndCallbacks (/workspace/yautja-la-longue-chasse/node_modules/esbuild/lib/main.js:1588:45)
+    at buildResponseToResult (/workspace/yautja-la-longue-chasse/node_modules/esbuild/lib/main.js:1205:7)
+    at /workspace/yautja-la-longue-chasse/node_modules/esbuild/lib/main.js:1232:16
+    at responseCallbacks.<computed> (/workspace/yautja-la-longue-chasse/node_modules/esbuild/lib/main.js:884:9)
+    at handleIncomingPacket (/workspace/yautja-la-longue-chasse/node_modules/esbuild/lib/main.js:939:12)
+    at Socket.readFromStdout (/workspace/yautja-la-longue-chasse/node_modules/esbuild/lib/main.js:862:7)
+    at Socket.emit (node:events:519:28)
+    at addChunk (node:internal/streams/readable:561:12) {
+  errors: [Getter/Setter],
+  warnings: [Getter/Setter]
+}
+
+Node.js v22.23.4
+✖ tests/planet-generator-import-race-v103.test.mjs (131.463675ms)
+ℹ tests 56
+ℹ suites 0
+ℹ pass 55
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 35045.617795
+
+✖ failing tests:
+
+test at tests/planet-generator-import-race-v103.test.mjs:1:1
+✖ tests/planet-generator-import-race-v103.test.mjs (131.463675ms)
+  'test failed'

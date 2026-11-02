@@ -52,7 +52,7 @@ const compiled = await build({
         contents: args.path === "react" ? hooks : `export const Fragment = 'fragment'; export function jsx(type, props) { return { type, props }; } export const jsxs = jsx;`,
         loader: "js",
       }));
-      build.onResolve({ filter: /^\.\/(ClanWarAtlasV95|PlanetMaterialCanvasV101|PlanetLayerExportV102)$/ }, args => ({ path: args.path, namespace: "render-only-child" }));
+      build.onResolve({ filter: /^\.\/(ClanWarAtlasV95|PlanetMaterialCanvasV101|PlanetLayerExportV102|PlanetEarthReferenceV147|PlanetEnvironmentalDossierV146|PlanetReliefV150)$/ }, args => ({ path: args.path, namespace: "render-only-child" }));
       build.onLoad({ filter: /.*/, namespace: "render-only-child" }, () => ({ contents: "export default function RenderOnlyChild() { return null; }", loader: "js" }));
       build.onLoad({ filter: /\.module\.css$/ }, () => ({ contents: "export default {};", loader: "js" }));
     },
@@ -123,7 +123,7 @@ const refusedActions = [
   { name: "an unrecognized world code", prepare: ui => ui.edit("Collez un code de monde", "incomplete-world-code"), act: ui => ui.click("Retrouver le monde"), error: /code de monde n’est pas reconnu/ },
   { name: "generation with an invalid seed", prepare: ui => ui.edit("Un nom ou un nombre", "4294967296"), act: ui => ui.generate(), error: /4 294 967 295/ },
   { name: "a preset with an invalid seed", prepare: ui => ui.edit("Un nom ou un nombre", "4294967296"), act: ui => ui.click("Base terrestre"), error: /4 294 967 295/ },
-  { name: "randomization with an invalid locked seed", prepare: ui => { ui.edit("Un nom ou un nombre", "4294967296"); ui.lockSeed(); }, act: ui => ui.click("Mélanger les réglages"), error: /4 294 967 295/ },
+  { name: "randomization with an invalid locked seed", prepare: ui => { ui.edit("Un nom ou un nombre", "4294967296"); ui.lockSeed(); }, act: ui => ui.click("Tout mélanger au hasard"), error: /4 294 967 295/ },
 ];
 for (const action of refusedActions) test(`${action.name} supersedes an older pending file even when refused`, async () => {
   const ui = component();
