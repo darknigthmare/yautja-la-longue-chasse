@@ -1,6 +1,11 @@
 import { GAME_RESERVE_EXPEDITION_V108_SECTORS, GAME_RESERVE_EXPEDITION_V108_SITES } from "./systems/gameReserveExpeditionV108";
 import {gameReserveV109Definition, GAME_RESERVE_V109_ART_DIMENSIONS, type GameReserveNativeArt} from './systems/gameReserveExpeditionV109';
 import {GAME_RESERVE_HAZARD_RULES} from './systems/gameReserveGrandHunt';
+import {GAME_RESERVE_LEGACY_DECOR} from './systems/gameReserveLegacyDecorData';
+/** Render-only native decor of the V1–V5 terrains, keyed like the generated data. */
+/** Public paths of the render-only decor a V1–V5 terrain may draw (empty for V6). */
+export const gameReserveLegacyDecorSources = (s: {version: number; reserveId?: string}): string[] => legacyDecor(s)?.art.map(entry => entry.src) ?? [];
+const legacyDecor = (s: {version: number; reserveId?: string}) => s.version === 6 ? null : GAME_RESERVE_LEGACY_DECOR[(s.version === 5 ? s.reserveId : 'v' + s.version) as keyof typeof GAME_RESERVE_LEGACY_DECOR] ?? null;
 import { drawActorContactShadow } from "./spriteContact";
 import { GAME_RESERVE_V99_RECOVERY_TICKS, gameReserveV66People, gameReserveV66Ships, gameReserveV66Supplies, gameReserveV66Interaction, gameReserveV66InteractionDuration, gameReserveV66LineClear, gameReserveV66Sector, gameReserveV66World, gameReserveV66Sectors, gameReserveV66Platforms, gameReserveV66Cover, type GameReserveV66State } from "./systems/gameReserveV66";
 import { GAME_RESERVE_LOOKOUT_V104_SURVEY } from "./systems/gameReserveLookoutV104";
@@ -30,7 +35,13 @@ export async function loadGameReserveV66Art(state?: GameReserveV66State | null):
   });
   const items = await Promise.all(Object.entries(sources).map(([key, src]) => load(key, src)));
   const bank = Object.fromEntries(items) as unknown as GameReserveV66Art;
-  const native = biome?.nativeArt;
+  const native = biome?.nativeArt, legacy = state ? legacyDecor(state) : null;
+  if (legacy) {
+    // Optional dressing: a missing or mismatched prop is skipped, never blocking an existing expedition.
+    const loaded = await Promise.all(legacy.art.map(entry => load(entry.src, entry.src).catch(() => null)));
+    bank.kit = Object.fromEntries(loaded.filter((item): item is [string, HTMLImageElement] => !!item &&
+      legacy.art.some(entry => entry.src === item[0] && entry.size[0] === item[1].naturalWidth && entry.size[1] === item[1].naturalHeight)));
+  }
   if (native) {
     // Every V6 kit image must be the recorded native file; a different size blocks the simulation like the base art.
     const kit: GameReserveNativeArt[] = [native.background, native.ledge, native.gantry, native.cover, ...native.platforms, ...native.covers, ...native.hazards, ...native.decor];
@@ -119,6 +130,14 @@ export function drawGameReserveV66(ctx: CanvasRenderingContext2D, s: GameReserve
     label(ctx,recorded?site.name+' · CONSIGNÉ':site.name+' · RELEVÉ (2 s)',site.x,site.y-70,recorded?'#a1dac3':'#f0dba6');
   }
   const native = biome?.nativeArt, kit = bank.kit, viewLeft = camera - 320, viewRight = camera + viewportWidth + 320;
+  const legacy = legacyDecor(s);
+  if (legacy && kit) {
+    for (const layer of ['support', 'ground', 'back'] as const) for (const item of legacy.decor) {
+      if (item.layer !== layer || item.x > viewRight || item.x + item.w < viewLeft) continue;
+      ctx.globalAlpha = layer === 'support' ? .72 : .9;
+      const entry = (legacy.art as readonly {src: string}[])[item.art]; if (entry) trimmed(ctx, kit[entry.src], item.x, item.y, item.w, item.h);
+    } ctx.globalAlpha = 1;
+  }
   if (native && kit) {
     // Back layer: ground surfaces, standing props and the columns that read as supports of the upper routes.
     for (const layer of ['support', 'ground', 'back'] as const) for (const item of biome.decor ?? []) {
