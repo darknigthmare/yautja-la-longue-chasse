@@ -88,7 +88,8 @@ test("stealth is grid-based: no remote sabotage, no walking through solid walls,
 
 test("an actual stealth path reaches the relay, sabotages it and extracts with one unique V6 receipt",()=>{
   const chosen=legal(),started=api.beginWarOperationV115(initial(),"stealth",chosen.targetId,chosen.teamIds,rules,2000).state;
-  const route=["up","up","up","right","right","right","right","right","interact","left","left","left","left","left","down","down","down"];
+  // Wait for the patrol and use the existing sound decoy before approaching.
+  const route=["wait","up","decoy","up","up","right","right","right","right","right","interact","left","left","left","left","left","down","down","down"];
   let state=started;
   for(const action of route) {
     const result=api.commandStealthV115(state,action,rules);

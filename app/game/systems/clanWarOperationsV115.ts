@@ -134,6 +134,12 @@ const clamp = (number: number, min: number, max: number) => Math.max(min, Math.m
 const isTextId = (value: unknown) => typeof value === "string" && /^[A-Za-z0-9:_-]{1,150}$/.test(value);
 const coord = (x: number, y: number) => String(x) + "," + String(y);
 const distance = (a: {x:number;y:number}, b: {x:number;y:number}) => Math.abs(a.x-b.x) + Math.abs(a.y-b.y);
+function guardSeesHunter(terrain:WarMissionTerrainV116,guard:{x:number;y:number},
+ hunter:{x:number;y:number},cloaked:boolean,hidden:boolean):boolean{
+ return !cloaked&&!hidden&&((hunter.y===guard.y&&Math.abs(hunter.x-guard.x)<=2)||
+  (hunter.x===guard.x&&Math.abs(hunter.y-guard.y)<=1))&&
+  warTerrainLineOfSightV116(terrain,guard,hunter);
+}
 const unique = (items: string[]) => [...new Set(items)];
 const ownTeam = (state: WarOperationsStateV115, id: string) => state.teams.find(item => item.id === id);
 const unitFor = (rules: WarRulesV6, unitId: string) => rules.units.find(unit => unit.id === unitId);
@@ -613,8 +619,10 @@ export function commandStealthV115(state:WarOperationsStateV115,command:StealthC
  const previousGuard={guardX,guardY,guardDirection};
  // The first guard follows a memory only after losing the player. The sound
  // decoy has priority; the support guard never receives this private memory.
- const lostSight=cloaked||distance({x,y},{x:guardX,y:guardY})>3||
-  !warTerrainLineOfSightV116(terrain,{x:guardX,y:guardY},{x,y});
+ const hiddenBeforePatrol=(command==="hide"||quietMovement)&&terrain.cover.includes(coord(x,y))&&
+  distance({x,y},{x:guardX,y:guardY})>1&&
+  (!supportGuard||distance({x,y},supportGuard)>1);
+ const lostSight=!guardSeesHunter(terrain,{x:guardX,y:guardY},{x,y},cloaked,hiddenBeforePatrol);
  const memoryTarget=investigation&&investigation.turns>0&&lostSight?
   {x:investigation.x,y:investigation.y}:null;
  const decoyTarget=decoyTurns>0&&decoyX!==undefined?{x:decoyX,y:decoyY??2}:null;
@@ -657,13 +665,8 @@ export function commandStealthV115(state:WarOperationsStateV115,command:StealthC
  const hiding=(command==="hide"||quietMovement)&&terrain.cover.includes(coord(x,y))&&
    distance({x,y},{x:guardX,y:guardY})>1&&
    (!supportGuard||distance({x,y},supportGuard)>1);
- const primarySeen=!cloaked&&!hiding&&((y===guardY&&Math.abs(x-guardX)<=2)||
-   (x===guardX&&Math.abs(y-guardY)<=1))&&
-  warTerrainLineOfSightV116(terrain,{x:guardX,y:guardY},{x,y});
- const supportSeen=Boolean(supportGuard&&!cloaked&&!hiding&&
-   ((y===supportGuard.y&&Math.abs(x-supportGuard.x)<=2)||
-    (x===supportGuard.x&&Math.abs(y-supportGuard.y)<=1))&&
-   warTerrainLineOfSightV116(terrain,supportGuard,{x,y}));
+ const primarySeen=guardSeesHunter(terrain,{x:guardX,y:guardY},{x,y},cloaked,hiding);
+ const supportSeen=Boolean(supportGuard&&guardSeesHunter(terrain,supportGuard,{x,y},cloaked,hiding));
  const seen=primarySeen||supportSeen;
  if(seen||command==="interact")alarm++;
  if(primarySeen)investigation={x,y,turns:2};
