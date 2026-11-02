@@ -9,7 +9,7 @@ const declaration=source.statements.find(node=>ts.isFunctionDeclaration(node)&&n
 const bundled=await build({stdin:{contents:"export * from './app/game/systems/pitCombat';export * from './app/game/systems/pitWorkbookCombatV112';",resolveDir:process.cwd()},bundle:true,write:false,format:'esm',platform:'node'});
 const api=await import('data:text/javascript;base64,'+Buffer.from(bundled.outputFiles[0].text).toString('base64'));
 function actualRoutine({consume=true,stall=false,fault}={}){
- let state=api.createPitCombatState('feral-hunter','scar',{normalMoves:'workbook-v112',mode:'training'}),calls=0;
+ let state=api.createPitCombatState('feral-hunter','scar',{normalMoves:'workbook-v112',mode:'training'}),calls=0,clockMillis=0;
  const observations=[],checks=[];
  const read=async()=>{
   const snapshot={frame:state.frame,phase:'fight',combatPhase:state.phase,blocked:'false',throw:state.sourceThrowV112,forwardThrow:state.sourceThrowV109,
@@ -19,7 +19,7 @@ function actualRoutine({consume=true,stall=false,fault}={}){
  };
  const scope={api,read,observations,launch:async()=>{if(consume)state=api.stepPitCombat(state,[{throw:true,left:true},{}]);},
   check:(name,condition,detail)=>{checks.push({name,condition});if(!condition){const error=Error(name);error.detail=detail;throw error;}},
-  page:{clock:{runFor:async ms=>{assert.equal(ms,17);calls++;if(!stall&&calls%3!==0)state=api.stepPitCombat(state);}}}};
+  page:{clock:{runFor:async ms=>{assert([1,17].includes(ms));calls++;if(!stall&&calls%3!==0){clockMillis+=ms;while(clockMillis>=1000/60){clockMillis-=1000/60;state=api.stepPitCombat(state);}}}}}};
  vm.runInNewContext(declaration.getText(source)+';globalThis.execute=observedOutOfRangeWhiff;',scope);
  return{execute:()=>scope.execute(0,'actual-observer-fixture',['feral-hunter','scar']),observations,checks,calls:()=>calls};
 }
@@ -48,4 +48,10 @@ test('premature idle, oversized action clocks and frame-window overruns are reje
  for(const fault of [s=>{s.actions[0]={phase:'idle',workbookMove:null,actionFrame:null};},s=>{s.actions[0].actionFrame=45;},s=>{s.frame+=50;}]){
   const x=actualRoutine({fault});await assert.rejects(x.execute(),/before all source frames|source windows stay coherent|source-frame bound/);
  }
+});
+
+test('the actual observer narrows only its final three source frames and preserves the existing 46-frame upper bound', async()=>{
+ const x=actualRoutine();await x.execute();const o=x.observations[0];
+ assert.equal(o.effectiveFrames,45);assert(o.clockAdvances.some(a=>a.milliseconds===1));assert(o.clockAdvances.some(a=>a.milliseconds===17));
+ assert(o.clockAdvances.filter(a=>a.milliseconds===1).every(a=>45-(a.fromFrame-o.startFrame)<=3));
 });

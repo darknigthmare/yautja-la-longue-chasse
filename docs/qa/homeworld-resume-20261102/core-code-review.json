@@ -1,0 +1,313 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS_NO_BLOCKING_CODE_FINDINGS",
+  "reviewedAtUtc": "2026-11-02T04:47:31.179047+00:00",
+  "reviewType": "Independent read-only final code review; existing test and certificate evidence read without rerunning gameplay, builds or tests.",
+  "repository": "darknigthmare/yautja-la-longue-chasse",
+  "baseRef": "origin/main",
+  "baseCommit": "f3a1acec8c2603b3442da774457dfe75947d97d8",
+  "reviewedHeadCommit": "cef8cbd2abd7b9ca9108849fe4bcb59bbd9313b7",
+  "runtimeCommit": "bda14a95aa8c9e6cf37039e2d67ea1544a8e8de1",
+  "comparison": "git diff origin/main...HEAD -- app scripts tests .github",
+  "reviewedChangedFileCount": 26,
+  "reviewedChangedFiles": [
+    {
+      "path": ".github/workflows/audit-v94.yml",
+      "bytes": 62351,
+      "sha256": "12969b3640059362e9828e4b1e87be8b597bfe75ca8e7416046f92419106aeaa"
+    },
+    {
+      "path": "app/game/PlanetGeneratorV103.tsx",
+      "bytes": 50795,
+      "sha256": "5f47d3b0ed0f0dc757a4a2c868eedab22511a8ad30d63c8217e6d8a74685e59f"
+    },
+    {
+      "path": "app/game/data/homeworldPublicPlacesV112.json",
+      "bytes": 6532,
+      "sha256": "ff274d324df61074675668ed920c9d612b70379a3794c4d8b5349835196dbfa2"
+    },
+    {
+      "path": "app/game/systems/clanWarPlanetGeneratorV115.ts",
+      "bytes": 10438,
+      "sha256": "840636091bb1d025a38f7db42ed87dcc3cf3621e49bdd271b0740ae884d12c7d"
+    },
+    {
+      "path": "app/game/systems/clanWarTextureLibraryV115.ts",
+      "bytes": 8521,
+      "sha256": "72c86a1d87fb417db563f420df888192edf85d1fbbee6a98da4277191a1e3e6e"
+    },
+    {
+      "path": "app/game/systems/homeworldActivityAccessV112.ts",
+      "bytes": 7729,
+      "sha256": "5ea84d43b84aea7c1c181317fa901bf45bab30434cc660c17b088d2c08b624c0"
+    },
+    {
+      "path": "app/game/systems/homeworldPublicPlacesMountV112.ts",
+      "bytes": 1445,
+      "sha256": "9b982638cde0751f4d57ce00f9ea975f103901140049a6fe3c8cebf9ab706877"
+    },
+    {
+      "path": "app/game/systems/homeworldPublicPlacesV112.ts",
+      "bytes": 3688,
+      "sha256": "31b3710e8ec31d3d163df7e79aa16e6bd8ce8fc2d692c9f8ed588122228b60da"
+    },
+    {
+      "path": "scripts/audit-homeworld-spatial-v112.mjs",
+      "bytes": 11751,
+      "sha256": "341b310d55668349ab26b0324abfca721eaf58dea5f42941ae56242dd58881b0"
+    },
+    {
+      "path": "scripts/build-resume-workbook-20261101.py",
+      "bytes": 25973,
+      "sha256": "e45d85361f2bd054f71600ab34f31344568f1167c1ec1990a53ac162c5474a49"
+    },
+    {
+      "path": "scripts/build-runtime-public-inputs-v112.mjs",
+      "bytes": 4372,
+      "sha256": "fa3a95ae96b3415eb3fea5a9507352ea93912cf45fdf683cbd14d3f7945901aa"
+    },
+    {
+      "path": "scripts/lib/pit-observed-launch-v112.mjs",
+      "bytes": 5185,
+      "sha256": "0f60e6845d1f899da6b7a5d5b439bc045018d9bfe9d4765069d0f60eb47f8f97"
+    },
+    {
+      "path": "scripts/qa-homeworld-atlas-browser-v109.mjs",
+      "bytes": 18307,
+      "sha256": "8d4518072bc69c88696f572b3df8d924c88c45bb0e104322bdd979d5123a69a3"
+    },
+    {
+      "path": "scripts/qa-homeworld-public-spaces-v112.mjs",
+      "bytes": 52106,
+      "sha256": "1dacd57a6c886a551f809b93c58767b56a1710cf7007b93cf2b5dba683010b24"
+    },
+    {
+      "path": "scripts/qa-pit-backward-throws-v112.mjs",
+      "bytes": 36391,
+      "sha256": "eb50526c6106146768097cbc0298c4465f84ffa9b2a71b0c4cb8c2660bc2ac8f"
+    },
+    {
+      "path": "scripts/snapshot-runtime-v112.mjs",
+      "bytes": 8175,
+      "sha256": "18c02deea0a849ca46be73699d789b754f5b08804e6a98744443ed7f49c56afa"
+    },
+    {
+      "path": "scripts/verify-resume-workbook-20261101.py",
+      "bytes": 5859,
+      "sha256": "7c3945d293c875673f3a1ecd30c47aac7f762d8b45272734e4fb496a361f84e6"
+    },
+    {
+      "path": "tests/fixtures/homeworld-upgrade-v112/manifest.json",
+      "bytes": 3936,
+      "sha256": "ec30e1f2ec95121533c5634e9b167af8288fd7c7f5e8562b8463b63e0982c6dd"
+    },
+    {
+      "path": "tests/fixtures/homeworld-upgrade-v112/v112-reviewed-v104-final-register-marker-fixture.json",
+      "bytes": 5003,
+      "sha256": "e5b2a5548311ad95cefd59afa27c411cc6d5fb5ca06d6a2b590320628f8b9d83"
+    },
+    {
+      "path": "tests/fixtures/homeworld-upgrade-v112/v112-reviewed-v104-register-marker-fixture.json",
+      "bytes": 4455,
+      "sha256": "98afb56c8750278b1a8a3aaa083bd839f00720e6264b79c2bd3ceacfa53c74a0"
+    },
+    {
+      "path": "tests/homeworld-activity-access-v112.test.mjs",
+      "bytes": 5632,
+      "sha256": "fe0f378822cfffc87765ed6a415aa39061e4c61464b911ad2d6be82958ea10cb"
+    },
+    {
+      "path": "tests/homeworld-continuation-integration-v111.test.mjs",
+      "bytes": 26100,
+      "sha256": "5330aee6308f20c76fa1a269f082ab12138eda9a79b55753c20337122d8e3a3a"
+    },
+    {
+      "path": "tests/homeworld-geometry-recovery-matrix-v112.test.mjs",
+      "bytes": 10533,
+      "sha256": "616a5307d4b320a965c2200c625cd36a3f9b3e3e71a416ff9434c75db81efb73"
+    },
+    {
+      "path": "tests/homeworld-mobility-v112.test.mjs",
+      "bytes": 14880,
+      "sha256": "643b5ecf1ead9d9d142b319ddb560cf91a1777a3bd009e9654feda46aab6b6fc"
+    },
+    {
+      "path": "tests/pit-browser-launch-observation-v112.test.mjs",
+      "bytes": 10298,
+      "sha256": "415e5ab302fd6c436900d9e14b77d0a0cacba9c4faa23ef8407b3937f1c1d2b4"
+    },
+    {
+      "path": "tests/pit-browser-whiff-observation-v112.test.mjs",
+      "bytes": 5086,
+      "sha256": "924d9ed69ca2df8dfa714ca5951e6cbfedbda5a909787badf99d7fa64b1be322"
+    }
+  ],
+  "findings": [],
+  "blockingFindingCount": 0,
+  "sourceIdentity": {
+    "appDiffRuntimeToReviewedHeadEmpty": true,
+    "appWorkingTreeDiffEmpty": true,
+    "freeze": {
+      "path": "docs/v112-runtime-freeze.json",
+      "bytes": 306338,
+      "sha256": "c35f8b454ec26d1b05852cabbe4f6ee111d71e7413aef80282582d3ca5ee6a3e"
+    },
+    "frozenFiles": 1649,
+    "runtimeAppTree": "e857f4e2fcbb53e06b08595eae542784c3bea5b0",
+    "reviewedHeadAppTree": "e857f4e2fcbb53e06b08595eae542784c3bea5b0",
+    "buildId": "wVuSG_xIKNn3geLlIq7Cb"
+  },
+  "areasReviewed": [
+    {
+      "area": "Homeworld activity admission and public furniture",
+      "verdict": "PASS",
+      "files": [
+        "app/game/systems/homeworldActivityAccessV112.ts",
+        "app/game/systems/homeworldPublicPlacesMountV112.ts",
+        "app/game/data/homeworldPublicPlacesV112.json",
+        "tests/homeworld-activity-access-v112.test.mjs"
+      ],
+      "assessment": "The late V112 registry derives reserves from retained V104–V111 definitions before admitting new furniture. Point and segment guards include wide cargo clearance. Only the new register marker moves to (6270,4990); original fixed waypoint (6120,5020), historical objects and refused candidates remain unchanged. The tests reproduce both unsafe proposals and preserve six accepted/four refused candidates."
+    },
+    {
+      "area": "Genuine save fixtures and historical assertions",
+      "verdict": "PASS",
+      "files": [
+        "tests/fixtures/homeworld-upgrade-v112/manifest.json",
+        "tests/homeworld-geometry-recovery-matrix-v112.test.mjs",
+        "tests/homeworld-mobility-v112.test.mjs",
+        "tests/homeworld-continuation-integration-v111.test.mjs"
+      ],
+      "assessment": "The unchanged original 56-step and added genuine 72-step V104 receipts now assert free positions without recovery; the genuine 82-step receipt retains first-waypoint credit and supplies the final blocked case. Recovery boundary tests still execute and require interruption. The former V111 mobility failure is reproduced in its pinned private context while current V111 is asserted repaired. Migration equality adds only the three null material defaults already defined on main; full prior campaign and independent B state remain compared. No private historical test or capsule bytes are changed in the reviewed diff."
+    },
+    {
+      "area": "Pit real launch observation and whiff cadence",
+      "verdict": "PASS",
+      "files": [
+        "scripts/lib/pit-observed-launch-v112.mjs",
+        "scripts/qa-pit-backward-throws-v112.mjs",
+        "tests/pit-browser-launch-observation-v112.test.mjs",
+        "tests/pit-browser-whiff-observation-v112.test.mjs"
+      ],
+      "assessment": "The browser adapter emits one input edge and holds until actual TH_B startup is observed under effective-frame, poll and stall bounds. It rejects wrong-slot/action, captures before observed startup, frame reversal, health changes and loss of ready state. Finally releases every keyboard key with allSettled and fails on release error. The whiff observer narrows cadence only in its final three source frames and retains the existing 46-frame upper bound; no combat-state mutation or retry was introduced."
+    },
+    {
+      "area": "V115 to V103 recipe projection",
+      "verdict": "PASS",
+      "files": [
+        "app/game/PlanetGeneratorV103.tsx",
+        "app/game/systems/clanWarPlanetGeneratorV115.ts",
+        "app/game/systems/clanWarTextureLibraryV115.ts"
+      ],
+      "assessment": "The shared projection copies the versioned recipe, removes version and exactly the six existing V115-only fields from the fresh copy, then appends version 103. Its exclusion set and remaining property order match the former rest-destructuring implementation; callers are not mutated. Encoding, description, generation and UI conversion share this operation. Removed texture helper was unused."
+    },
+    {
+      "area": "Native Worker QA, runtime capsules and CI",
+      "verdict": "PASS",
+      "files": [
+        "scripts/qa-homeworld-atlas-browser-v109.mjs",
+        "scripts/build-runtime-public-inputs-v112.mjs",
+        "scripts/snapshot-runtime-v112.mjs",
+        ".github/workflows/audit-v94.yml"
+      ],
+      "assessment": "The isolated Atlas harness serves the real V111 and V112 Worker modules requested by each host and records requested source/bundle identities without fabricated route results. Freeze collection includes the added launch test, activity test, continuation integration test and transitive launch helper. The merged Natural Earth asset is pinned as reused runtime data rather than art admission. CI adds the Earth file and all local workbook inputs, the dated coordination inputs and retained marsh diagnostic to sparse checkout. Historical assertions remain enabled; only total job time increases and new deterministic workbook checks are added."
+    },
+    {
+      "area": "Dated coordination workbook tools",
+      "verdict": "PASS",
+      "files": [
+        "scripts/build-resume-workbook-20261101.py",
+        "scripts/verify-resume-workbook-20261101.py"
+      ],
+      "assessment": "The stdlib-only writer keeps the original 33-PR snapshot, later events, remote observations and local workbook bytes explicitly separate; all 56 source requirements and the marsh diagnostic stay open. Output excludes itself from input discovery, uses literal inlineStr cells, validates XML character/cell limits, and creates deterministic ZIP entries. The reader verifies archive integrity, relationships, every literal cell, frozen panes, filters and source event continuity. Native Excel execution is not claimed."
+    }
+  ],
+  "verificationPerformedNow": [
+    {
+      "check": "Read all 26 changed app/scripts/tests/CI files in the committed comparison and relevant unchanged callers/contracts",
+      "status": "PASS"
+    },
+    {
+      "check": "git diff --check origin/main...HEAD -- app scripts tests .github",
+      "status": "PASS"
+    },
+    {
+      "check": "Read and fingerprint the existing 375-test result, complete TAP log and all 35 exact current test inputs",
+      "status": "PASS",
+      "testsRerun": false,
+      "inputs": {
+        "path": "docs/suivi-production/resume-20261101/current-checks-r7/inputs.json",
+        "bytes": 9591,
+        "sha256": "773b9470618cd60a2b05f1bac6fd0c33a9d78a54a753e1e6f82a754eca8e7450"
+      },
+      "result": {
+        "path": "docs/suivi-production/resume-20261101/current-checks-r7/result.json",
+        "bytes": 678,
+        "sha256": "41f4eba40eb0c8d4f2224e59fbb4f569af1c0c09217e3527d7f5ba8b4a6b6a7c"
+      },
+      "log": {
+        "path": "docs/suivi-production/resume-20261101/current-checks-r7/current-v112-excluding-two-excel-tests.log",
+        "bytes": 99754,
+        "sha256": "3150cd1be81d49d591c7020b0749228c45401ff49631e3ce94b98b054b88c3c0"
+      },
+      "unchangedTestFingerprints": 35
+    },
+    {
+      "check": "Read current published Homeworld and Pit certificates and compare common runtime/build/freeze identity and error arrays",
+      "status": "PASS",
+      "certificates": [
+        {
+          "path": "docs/v112-homeworld-validation.json",
+          "bytes": 744079,
+          "sha256": "431198b2e6bda28085f2758a66c1c84344712009e6f97b5c23a078eba0326124",
+          "status": "PASS_CIBLE",
+          "checks": 249,
+          "captures": 39,
+          "runtimeCommit": "bda14a95aa8c9e6cf37039e2d67ea1544a8e8de1",
+          "buildId": "wVuSG_xIKNn3geLlIq7Cb",
+          "sourceBeforeEqualsAfter": true,
+          "fourErrorArraysEmpty": true
+        },
+        {
+          "path": "docs/v112-pit-validation.json",
+          "bytes": 1230898,
+          "sha256": "42bfd97315d3ebbc9f1a2416fd996fa204f62b4680871e2482c1893f4509ef60",
+          "status": "PASS_CIBLE",
+          "checks": 127,
+          "captures": 39,
+          "runtimeCommit": "bda14a95aa8c9e6cf37039e2d67ea1544a8e8de1",
+          "buildId": "wVuSG_xIKNn3geLlIq7Cb",
+          "sourceBeforeEqualsAfter": true,
+          "fourErrorArraysEmpty": true
+        }
+      ]
+    },
+    {
+      "check": "Confirm app unchanged between validated runtime, reviewed HEAD and current working tree",
+      "status": "PASS"
+    }
+  ],
+  "preservedPitIntegrityAudit": {
+    "path": "docs/qa/homeworld-resume-20261102/pit-preserved-verification.json",
+    "bytes": 15897,
+    "sha256": "3710b49fdcf878ea8f811d8869a9f8aa35eda2f59b8c68b261c4014470d21c92"
+  },
+  "limits": [
+    "This is a code review and integrity comparison, not a new gameplay run, build, performance measurement or full visual review.",
+    "The two Excel/certificate suites excluded from the 375-test run are being finalized by the separate Excel agent; this review does not certify their new execution.",
+    "The two planet browser drivers currently modified in the working tree are outside this committed comparison and belong to the separate driver-repair review.",
+    "The preserved marsh-edge composition issue remains explicitly OPEN; this code review does not close broader Homeworld art or production requirements.",
+    "GitHub hosted checks and mergeability are outside this local code review; no Git operation or merge is performed."
+  ],
+  "mutations": {
+    "applicationChanged": false,
+    "driversChanged": false,
+    "freezeChanged": false,
+    "certificatesChanged": false,
+    "gitChanged": false,
+    "writtenArtifacts": [
+      "docs/qa/homeworld-resume-20261102/core-code-review.json",
+      "docs/qa/homeworld-resume-20261102/core-code-review.md"
+    ]
+  }
+}

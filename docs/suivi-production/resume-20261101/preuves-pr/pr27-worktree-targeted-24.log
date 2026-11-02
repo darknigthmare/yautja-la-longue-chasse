@@ -1,0 +1,32 @@
+✔ PR25 experimental tints survive as V113 colors, without separate source fields (3.993492ms)
+✔ special-case old V85 ids map to their existing V113 save IDs (0.232069ms)
+✔ explicit null or newly selected modern material overrides any conflicting old PR25 field (0.178188ms)
+✔ unregistered or malicious legacy input never turns into an asset URL (0.13955ms)
+✔ every declared HunterSkinId and retained migration alias has a finite visible filter (1.61402ms)
+✔ every declared DreadTintId and retained migration alias has a finite visible filter (0.384339ms)
+✔ every declared ArmorTintId and retained migration alias has a finite visible filter (0.289555ms)
+✔ both Homeworld and combat rig use the same palette source (0.244207ms)
+✔ the three previously published family values retain their original visual filters (0.215234ms)
+✔ V121: V114 filters and V117 canonical PHG chromatic masks coexist without duplicate renders (5.173859ms)
+✔ all thirteen retained tint aliases migrate exactly and never override explicit modern choices (27.69199ms)
+✔ 120 explicit silhouettes across three categories, with 10 distinct motifs and four scales each (1.263041ms)
+✔ 32 independently addressable true land/liquid bitmap definitions (0.171027ms)
+✔ all six radii preserve angular topology but scale kilometers and square kilometers (0.191028ms)
+✔ V115 recipes roundtrip exactly and reject malformed codes or unrecognized extra fields (15.561737ms)
+✔ V115 generated world is a playable connected front and all physical paths are consistent (1637.802974ms)
+✔ V115 shapes and material choices affect canonically distinct worlds while V103 bytes stay fixed (940.986869ms)
+✔ six strategic presets stay valid and preserve locked material modules (4.670892ms)
+✔ eight ambience presets change materials without changing strategic geometry fields (0.439672ms)
+✔ strategic dossier agrees with every preset graph and public region incomes (9579.290832ms)
+✔ legacy V102 worlds also receive a public graph dossier without changing identity (54.833342ms)
+✔ all published land and sea materials have descriptions, without introducing a new recipe field (0.345881ms)
+✔ regional material descriptions match exact V102/V103 region IDs without changing generation (1422.958853ms)
+✔ V122 V103 and V115 share deployment semantics without recipe conversion (561.042437ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 24
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 17490.590922

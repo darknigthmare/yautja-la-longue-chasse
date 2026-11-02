@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { homeworldSceneSsrV78 } from './helpers/homeworld-scene-ssr-v78.mjs';
+import { getHistoricalHomeworldExcelContextV112 } from '../scripts/historical-excel-context-homeworld-v112.mjs';
 
 const qa = homeworldSceneSsrV78();
 const current = qa.load('app/game/systems/homeworldWayfindingV112.ts');
@@ -99,7 +100,7 @@ test('V112 preserves the V111 street plan and owner, geometry and stale-target r
   assert.equal(current.homeworldRouteGuidanceV112({...plan, destinationKey: 'changed-target'}, origin, save).state, 'off-route');
 });
 
-test('V112 recalculates from the former market halt while live V111 short-corner or rejoin guidance remains physically valid', () => {
+test('V112 recalculates from the exact real motor position where the pinned V111 market guide stopped', async () => {
   const target = inside.find(target => target.pointId === 'market-service'), origin = originFor(target);
   const room = rooms.homeworldInteriorForBuildingV64(target.buildingId);
   const actor = {x: 198.4823632125863, y: 178.47060535431052};
@@ -107,6 +108,26 @@ test('V112 recalculates from the former market halt while live V111 short-corner
   const spawnPlan = old.homeworldRoutePlanV111(save, origin, target.id);
   const before = JSON.stringify({save, plan, spawnPlan});
   assert.equal(plan.status, 'reachable');
+  // Main subsequently repaired the V111 guide too. Reproduce the former stop
+  // in its verified original application, rather than requiring live code to
+  // retain that defect or replacing its runtime with a historical import.
+  const historicalContext = await getHistoricalHomeworldExcelContextV112();
+  const historicalQa = homeworldSceneSsrV78(historicalContext.root);
+  const historical = historicalQa.load('app/game/systems/homeworldWayfindingV111.ts');
+  const historicalRooms = historicalQa.load('app/game/systems/homeworldInteriorsV64.ts');
+  const historicalSave = historicalQa.load('app/game/save.ts').defaultSave(save.createdAt);
+  historicalSave.homeworld.visitedDistrictIds = [...save.homeworld.visitedDistrictIds];
+  const historicalOrigin = {...origin, actor: historicalRooms.homeworldInteriorForBuildingV64(target.buildingId).spawn};
+  const historicalPlan = historical.homeworldRoutePlanV111(historicalSave, historicalOrigin, target.id);
+  assert.equal(historicalPlan.status, 'reachable');
+  assert.equal(historical.homeworldRouteGuidanceV111(historicalPlan, {...historicalOrigin, actor}, historicalSave).state, 'off-route');
+  const livePlan = old.homeworldRoutePlanV111(save, origin, target.id);
+  assert.equal(old.homeworldRouteGuidanceV111(livePlan, {...origin, actor}, save).state, 'walking');
+  const guide = current.homeworldRouteGuidanceV112(plan, {...origin, actor}, save);
+  assert.equal(guide.state, 'walking');
+  assert(Math.hypot(guide.waypoint.x - actor.x, guide.waypoint.y - actor.y) > .000001);
+  assert(rooms.isHomeworldInteriorWalkableV64(rooms.homeworldInteriorForBuildingV64(target.buildingId), guide.waypoint));
+
   assert(rooms.isHomeworldInteriorWalkableV64(room, actor));
   assert.notEqual(rooms.nearestHomeworldInteriorTargetV64(room, actor)?.pointId, target.pointId);
   const live = old.homeworldRouteGuidanceV111(spawnPlan, {...origin, actor}, save);

@@ -1,0 +1,102 @@
+{
+  "scope": "Targeted evidence on the integrated runtime; React/Worker images use explicit component fixtures and do not certify compiled-app movement or art. Initial failed expectations are preserved with corrected reruns. Full compiled Homeworld/Pit recipes are published separately.",
+  "runtimeCommit": "f02e5f1002765d4f2a1ae1f0eaab1f358f61942a",
+  "buildId": "Oy38-xd57M5zeGgmvnJuy",
+  "freezeFiles": 1601,
+  "freezeSha256": "ea0b54d2a8eb3edb1c7b716a419041efdde19019d5359f99604a98a255a8ae7c",
+  "runtimeLint": {
+    "exitCode": 0,
+    "maxWarnings": 0,
+    "argumentsIncludingFlag": 274
+  },
+  "reactWorker": {
+    "checks": 11,
+    "openedCaptures": [
+      {
+        "file": "1440px-live-guidance.png",
+        "bytes": 24664,
+        "sha256": "d3b39ffa02879f1272a2c28a75c1e1314af2489c6dbe56d5a1dbd631f4ec9b25"
+      },
+      {
+        "file": "390px-live-guidance.png",
+        "bytes": 19300,
+        "sha256": "80025a626865acead7a3f374588c63d298e3c1b7c0025cc9ccb015ab88472870"
+      }
+    ],
+    "inspection": "Both original screenshots opened. The guide is visible within the desktop and390px fixture viewports; this white fixture background is intentionally not a scene-render proof."
+  },
+  "modelReruns": {
+    "initialV111": "115/116 PASS; only added null appearance defaults differed",
+    "correctedV111Integration": "11/11 PASS; complete old state and B equality retained",
+    "initialHomeworld": "128/129 PASS; live V111 no longer retains a historical guide defect",
+    "correctedMobility": "9/9 PASS; old off-route assertion uses genuine pinned V111 and current guide is also checked",
+    "planetCompatibility": "15/15 PASS after projection cleanup"
+  },
+  "artifacts": [
+    {
+      "file": "1440px-live-guidance.png",
+      "bytes": 24664,
+      "sha256": "d3b39ffa02879f1272a2c28a75c1e1314af2489c6dbe56d5a1dbd631f4ec9b25"
+    },
+    {
+      "file": "390px-live-guidance.png",
+      "bytes": 19300,
+      "sha256": "80025a626865acead7a3f374588c63d298e3c1b7c0025cc9ccb015ab88472870"
+    },
+    {
+      "file": "current-v111-initial.log",
+      "bytes": 19716,
+      "sha256": "2411932ca48c2f6a0da72380e68857d4a1daea6098c64c426f1509f647ef5372"
+    },
+    {
+      "file": "current-v111-integration-corrected.log",
+      "bytes": 1585,
+      "sha256": "af02c21eb64174f7fb99f81a841e2061fed92ec5875da3322f8a0b837ebd3d87"
+    },
+    {
+      "file": "homeworld-mobility-corrected.log",
+      "bytes": 1182,
+      "sha256": "e1fac366b603915f4f1ac3724fffa5b9b17f436a5354715fe64fc77fb1d3a859"
+    },
+    {
+      "file": "homeworld-models-initial.log",
+      "bytes": 18014,
+      "sha256": "e39ea9e39ad516c524f34207a91e0ced604233e84414dfebfbecae715413cd81"
+    },
+    {
+      "file": "live-react-worker-result.json",
+      "bytes": 3377,
+      "sha256": "81afa44983e7b515b95a1d85c33aff3bca8092ed76da11e6649983b97bcb77ed"
+    },
+    {
+      "file": "live-react-worker.log",
+      "bytes": 682,
+      "sha256": "b127f08abd18361cd06d349e28f7246e701c44f3805b6267dc90f60144ad8578"
+    },
+    {
+      "file": "planet-v103-v115-tests.log",
+      "bytes": 3669,
+      "sha256": "6fc227005f2615f56384a70edb02401345bcb453689747c0fec378c3950cf0c9"
+    },
+    {
+      "file": "production-build.log",
+      "bytes": 889,
+      "sha256": "922d575bd728f206addd21056be3a007eadd7fcd45448838e45379f5c5d6ba57"
+    },
+    {
+      "file": "runtime-git-identity.json",
+      "bytes": 90,
+      "sha256": "a599fea1e2598eea856bb96020588a707745c9eeae212025b095f76212d3d1d6"
+    },
+    {
+      "file": "runtime-lint-command.json",
+      "bytes": 13092,
+      "sha256": "c5482a3488c18dc16f08bbaac8fd3fd21e327a692c34ab4c6f2ecbdd15cf00a6"
+    },
+    {
+      "file": "typescript-pr31-integrated.log",
+      "bytes": 59,
+      "sha256": "7e963cd266edc6da8946458eef070015c14509120a807963ef61b9535323931b"
+    }
+  ]
+}

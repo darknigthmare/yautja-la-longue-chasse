@@ -2,6 +2,17 @@
   "version": "V112",
   "provenance": "LORE_COMPATIBLE_ORIGINAL",
   "method": "Individually authored anchors on retained supported courts; exact native source scale and facing; refused candidates remain unmounted.",
+  "placementRevisions": [
+    {
+      "id": "public-place-v112:register-marker",
+      "before": { "x": 6140, "y": 5020 },
+      "after": { "x": 6270, "y": 4990 },
+      "rejectedAlternatives": [
+        { "x": 6220, "y": 5020, "reason": "Usage face intersects the retained V104 waypoint-to-lamp corridor." }
+      ],
+      "reason": "The original V112 proposal occupied the unchanged V104 cartography waypoint. Its new authored anchor preserves fixed activity bodies, paths and older furniture."
+    }
+  ],
   "compositions": [
     {
       "id": "quay-loading",
@@ -99,8 +110,8 @@
       "levelId": "0",
       "districtId": "port",
       "buildingId": null,
-      "x": 6140,
-      "y": 5020,
+      "x": 6270,
+      "y": 4990,
       "scale": 1,
       "label": "Repère de la galerie des registres",
       "purpose": "Repère du revers documentaire, sans nouveau service de consultation."

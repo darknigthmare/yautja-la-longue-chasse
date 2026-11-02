@@ -1,0 +1,56 @@
+node:internal/child_process:1120
+    result.error = new ErrnoException(result.error, 'spawnSync ' + options.file);
+                   ^
+
+<ref *1> Error: spawnSync python3 EPERM
+    at Object.spawnSync (node:internal/child_process:1120:20)
+    at spawnSync (node:child_process:902:24)
+    at execFileSync (node:child_process:945:15)
+    at python (file:///workspace/yautja-la-longue-chasse/scripts/build-homeworld-followup-v112.mjs:166:12)
+    at async generateFollowupV112 (file:///workspace/yautja-la-longue-chasse/scripts/build-homeworld-followup-v112.mjs:269:60)
+    at async file:///workspace/yautja-la-longue-chasse/scripts/build-homeworld-followup-v112.mjs:285:18 {
+  errno: -1,
+  code: 'EPERM',
+  syscall: 'spawnSync python3',
+  path: 'python3',
+  spawnargs: [
+    '/workspace/yautja-la-longue-chasse/scripts/build-homeworld-followup-v112.py',
+    '--request',
+    '/tmp/yautja-excel-v112-ynw2EI/request.json'
+  ],
+  error: [Circular *1],
+  status: 0,
+  signal: null,
+  output: [
+    null,
+    Buffer(9432855) [Uint8Array] [
+       80,  75,   3,   4,  20,   0,   0,   0,   0,   0,   0,   0,
+       92,  93,  69, 137,  36,  44, 104,  75,   0,   0, 104,  75,
+        0,   0,  19,   0,   0,   0,  91,  67, 111, 110, 116, 101,
+      110, 116,  95,  84, 121, 112, 101, 115,  93,  46, 120, 109,
+      108,  60,  63, 120, 109, 108,  32, 118, 101, 114, 115, 105,
+      111, 110,  61,  39,  49,  46,  48,  39,  32, 101, 110,  99,
+      111, 100, 105, 110, 103,  61,  39, 117, 116, 102,  45,  56,
+       39,  63,  62,  10,  60,  99, 116,  58,  84, 121, 112, 101,
+      115,  32, 120, 109,
+      ... 9432755 more items
+    ],
+    Buffer(0) [Uint8Array] []
+  ],
+  pid: 50809,
+  stdout: Buffer(9432855) [Uint8Array] [
+     80,  75,   3,   4,  20,   0,   0,   0,   0,   0,   0,   0,
+     92,  93,  69, 137,  36,  44, 104,  75,   0,   0, 104,  75,
+      0,   0,  19,   0,   0,   0,  91,  67, 111, 110, 116, 101,
+    110, 116,  95,  84, 121, 112, 101, 115,  93,  46, 120, 109,
+    108,  60,  63, 120, 109, 108,  32, 118, 101, 114, 115, 105,
+    111, 110,  61,  39,  49,  46,  48,  39,  32, 101, 110,  99,
+    111, 100, 105, 110, 103,  61,  39, 117, 116, 102,  45,  56,
+     39,  63,  62,  10,  60,  99, 116,  58,  84, 121, 112, 101,
+    115,  32, 120, 109,
+    ... 9432755 more items
+  ],
+  stderr: Buffer(0) [Uint8Array] []
+}
+
+Node.js v22.23.4

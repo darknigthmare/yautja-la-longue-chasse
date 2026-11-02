@@ -34,6 +34,7 @@ on:
       - 'public/game/homeworld/v83/cargo-rack-right.png'
       - 'public/game/sprites/v62/heads/classic-head.png'
       - 'public/game/planets/v103/**'
+      - 'public/game/planets/earth/**'
       - 'public/game/backgrounds/ship.webp'
       - 'public/game/dialogues/v85/*.json'
       - 'art-source/v6/catalogue/*.xlsx'
@@ -154,6 +155,8 @@ on:
       - 'docs/suivi-production/v615/references/production-plan-v615.json'
       - 'docs/suivi-production/v615/receipts/**'
       - 'docs/suivi-production/**/*.xlsx'
+      - 'docs/YAUTJA_REPRISE_CHANTIERS_20261101.xlsx'
+      - 'docs/suivi-production/resume-20261101/**'
       - 'public/game/production/sucklings-v615/**'
       - 'public/game/production/enforcers-v61*/**'
       - 'art-source/v100/**'
@@ -214,8 +217,9 @@ jobs:
   application:
     name: Application compile, types, runtime lint and browser integration
     runs-on: ubuntu-24.04
-    # V106 used about 25 minutes; keep room for the additional V107 checks.
-    timeout-minutes: 75
+    # Keep every historical assertion and the V112 browser checks on the
+    # hosted runner; the preserved-source suites exceed one hour together.
+    timeout-minutes: 120
     env:
       NEXT_TELEMETRY_DISABLED: '1'
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
@@ -311,7 +315,14 @@ jobs:
             /docs/*v112*
             /docs/qa/v112*/
             /docs/suivi-production/v112*/
+            /docs/suivi-production/resume-20261101/
+            /docs/qa/homeworld-resume-20261102/
+            /docs/qa/homeworld-legacy-regressions-20261101-r7/
+            /docs/qa/homeworld-marsh-edge-diagnostic-20261101/
+            /docs/**/*.xlsx
+            /art-source/**/*.xlsx
             /public/game/sprites/v112/
+            /public/game/planets/earth/ne_110m_land.geojson
             /art-source/v112/
             /art-source/v112-pit-backward/
             /public/audio/provenance-v54.json
@@ -939,6 +950,12 @@ jobs:
           python3 scripts/audit-open-workstreams-v112.py --check
           node scripts/build-pit-backward-art-v112.mjs --check
           node scripts/check-homeworld-publication-history-v112.mjs --check
+          node scripts/check-hunt-integration-source-v112.mjs --check
+      - name: Verify the dated PR and open-workstream coordination workbook
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: |
+          python3 scripts/build-resume-workbook-20261101.py --check
+          python3 scripts/verify-resume-workbook-20261101.py
       - name: Verify live Homeworld guidance in the real React atlas and native Worker
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: node scripts/qa-homeworld-live-guidance-v112.mjs

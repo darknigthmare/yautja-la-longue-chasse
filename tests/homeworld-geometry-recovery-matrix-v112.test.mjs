@@ -11,7 +11,7 @@ const directory=new URL('./fixtures/homeworld-upgrade-v112/',import.meta.url),ma
 const fixtures=manifest.fixtures.map(row=>{
   const bytes=fs.readFileSync(new URL(row.path,directory));assert.equal(createHash('sha256').update(bytes).digest('hex'),row.sha256);
   const raw=JSON.parse(bytes),f=raw.ledger?{...raw,owner:raw.ownerCreatedAt,ledgers:{cartographyV104:raw.ledger},actor:raw.actorAtSavedCheckpoint}:raw;
-  return{name:row.path,...f};
+  return{name:row.path,expectedRecovery:row.expectedRecovery!==false,...f};
 });
 const contextFor=f=>({ownerCreatedAt:f.owner,currentOwnerCreatedAt:f.owner,checkpoint:f.checkpoint,ledgers:f.ledgers,
   actor:load('homeworldCivicWorldV80').homeworldCivicWalkableV80('0',f.actor)?f.actor:load('homeworldWorldV77').createHomeworldWorldActorV77(),levelId:'0',interiorId:null,active:true});
@@ -22,15 +22,16 @@ function validSave(owner,ledgers,checkpoint){
 }
 
 /** Synthetic geometry only: wrap the public queries in an isolated module
- * graph with the measured hull of the now-refused marker. This does not mount
+ * graph with the measured hull at the marker’s retired position. This does not mount
  * it in the game, modify the authentic receipt, or claim a historical play.
  * Every native collision remains active; the former-ground query is unchanged.
  */
 function syntheticBlockedCartographyGeometry(){
   const isolated=homeworldSceneSsrV78(),read=name=>isolated.load('app/game/systems/'+name+'.ts');
   const civic=read('homeworldCivicWorldV80'),places=read('homeworldPublicPlacesV112');
-  const candidate=places.HOMEWORLD_PUBLIC_PLACE_CANDIDATES_V112.find(p=>p.id==='public-place-v112:register-marker');
-  assert(candidate);assert(!places.HOMEWORLD_PUBLIC_PLACES_V112.some(p=>p.id===candidate.id));
+  const marker=places.HOMEWORLD_PUBLIC_PLACE_CANDIDATES_V112.find(p=>p.id==='public-place-v112:register-marker');
+  assert(marker);const candidate={...marker,x:6140,y:5020};
+  assert(!places.HOMEWORLD_PUBLIC_PLACES_V112.some(p=>p.id===candidate.id&&p.x===candidate.x&&p.y===candidate.y));
   const polygon=places.homeworldPublicPlacePolygonV112(candidate),overlap=read('homeworldStreetDecorV83').homeworldStreetDecorOverlapV83;
   const nativeCollision=places.homeworldPublicPlaceCollisionV112,nativeWalkable=civic.homeworldCivicWalkableV80;
   const obstacleId='synthetic-test-only:retired-register-marker';
@@ -73,6 +74,17 @@ for(const f of fixtures)test('V112 genuine played receipt '+f.name+' preserves c
     assert.equal(JSON.stringify(context),before,'normal restoration and real walking cannot mutate fixture bytes');
     return;
   }
+  if(!f.expectedRecovery){
+    // Keep the original played receipt byte-identical. Moving only the new
+    // register marker frees both earlier points, so no migration is due.
+    const preservedSteps={'v112-v104-played-blocked-fixture.json':56,'v112-reviewed-v104-register-marker-fixture.json':72};
+    assert(Object.hasOwn(preservedSteps,f.name));assert.equal(f.oldNativeSteps,preservedSteps[f.name]);
+    assert.equal(load('homeworldCivicWorldV80').homeworldCivicWalkableV80('0',f.checkpoint.exterior),true);
+    assert.equal(load('homeworldCivicWorldV80').homeworldCivicWalkableV80('0',f.ledgers.cartographyV104.receipt.last),true);
+    assert.equal(api.homeworldGeometryRecoveryRequiredV112(f.checkpoint,f.owner,f.ledgers),false);
+    assert.equal(inspection.ok,false);assert.equal(inspection.plan,null);
+    assert.equal(JSON.stringify(context),before);return;
+  }
   assert(inspection.ok,inspection.reason);const plan=inspection.plan;
   assert(plan.migrations.every(m=>Math.hypot(m.to.x-m.from.x,m.to.y-m.from.y)<=96.000001));
   assert.equal(plan.backup.originalCheckpointJson,JSON.stringify(f.checkpoint));
@@ -83,6 +95,7 @@ for(const f of fixtures)test('V112 genuine played receipt '+f.name+' preserves c
     const old=receipt(f.ledgers,key),now=receipt(plan.ledgers,key);
     if(old.phase==='completed')assert.deepEqual(plan.ledgers[key],f.ledgers[key],'completed B or prerequisite remains byte-exact');
     else{
+      assert.equal(now.phase,'interrupted','a geometry migration requires a voluntary métier resume');
       assert.equal(now.walked,old.walked);assert.equal(now.option,old.option);
       for(const field of ['ownerConsents','ownerConsent','depositConsent','provenances','observations','lineIds','consent','waypointIds','nextWaypoint','legWalked','pickupWalked','passageStartWalked']){
         assert.deepEqual(now[field],old[field],key+'.'+field+' cannot be granted by geometry');
@@ -121,7 +134,7 @@ test('V112 parked wide cargo cannot be restored onto its conserved owner; the ac
 });
 
 test('V112 a schema-boundary512-point trace compacts under explicit synthetic native-hull geometry without doubling interruptions',()=>{
-  const f=structuredClone(fixtures.find(f=>f.ledgers.cartographyV104)),ledger=f.ledgers.cartographyV104;
+  const f=structuredClone(fixtures.find(f=>f.name==='v112-v104-played-blocked-fixture.json')),ledger=f.ledgers.cartographyV104;
   // Zero-distance duplicate samples construct a schema-capacity boundary. They
   // do not claim that the old UI emitted this 512-point trace.
   while(ledger.receipt.trail.length<512)ledger.receipt.trail.splice(1,0,{...ledger.receipt.trail[0]});
@@ -143,7 +156,7 @@ test('V112 a schema-boundary512-point trace compacts under explicit synthetic na
 
 test('V112 revision and interruption bounds refuse the whole proposal without changing any supplied receipt',()=>{
   for(const boundary of ['revision','interruptedCount','trimmedCount']){
-    const f=structuredClone(fixtures.find(f=>f.ledgers.cartographyV104)),ledger=f.ledgers.cartographyV104;
+    const f=structuredClone(fixtures.find(f=>f.name==='v112-v104-played-blocked-fixture.json')),ledger=f.ledgers.cartographyV104;
     if(boundary==='revision')ledger.revision=999990;
     else if(boundary==='interruptedCount')ledger.receipt.interruptedCount=10000;
     else{

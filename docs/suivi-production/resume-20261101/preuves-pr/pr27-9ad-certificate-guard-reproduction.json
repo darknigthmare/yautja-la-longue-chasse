@@ -1,0 +1,22 @@
+{
+  "headCommit": "9ad29df77e8a11ca36bf1b37f6b4c6f08db3d05d",
+  "scope": "One precisely reproduced assertion from the mixed V112 suite, not an exhaustive diagnosis of every failure in the remote glob. No native files, source files, tests or historical evidence were changed.",
+  "testFile": "tests/homeworld-excel-followup-v112.test.mjs",
+  "testName": "V112 retains every inherited requirement and keeps nine actions inside the 56 source rows",
+  "status": "EXPECTED_PROVENANCE_GUARD_REJECTION",
+  "testPassed": false,
+  "error": "Changed evidence size: app/game/ClanWarAtlasV95.tsx",
+  "currentCommittedSource": {
+    "path": "app/game/ClanWarAtlasV95.tsx",
+    "bytes": 50034,
+    "sha256": "1fb4fd822262727d5dd5612dc8ab421e149374ea560385ea2a0ded604f0bbf03"
+  },
+  "historicalFrozenInput": {
+    "path": "app/game/ClanWarAtlasV95.tsx",
+    "bytes": 49834,
+    "sha256": "657b645b8a8ef35ca66a10edee10086a08df46855a23c8ae9d00cca0c28b68e0"
+  },
+  "historicalReportRuntimeCommit": "aa891dfff9bc022d1b7363d4b7085aca19b4d1e3",
+  "historicalReportBuildId": "WZwxZDYUZhpepqlaPWKpe",
+  "relaxedAssertions": false
+}

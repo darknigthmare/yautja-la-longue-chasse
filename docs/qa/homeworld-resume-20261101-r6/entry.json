@@ -1,0 +1,43 @@
+{
+  "runtimeCommit": "0f79d3d8eac494cec4c418ac5b2f867929850bb7",
+  "buildId": "vxOXqmuKalwQbkLqTZnwN",
+  "freezeFiles": 1608,
+  "freezeSha256": "c53ebc858df672268d6c59ae37cb5ddae67cd39fe73ba86682c6cd8c7a586cfe",
+  "buildExitCode": 0,
+  "targetedLintExitCode": 0,
+  "mixedCurrentV112": {
+    "pass": 374,
+    "fail": 0,
+    "skip": 0,
+    "excluded": [
+      "homeworld-excel-followup-v112.test.mjs",
+      "homeworld-excel-history-v112.test.mjs"
+    ],
+    "exclusionReason": "Require both final compiled reports before follow-up generation."
+  },
+  "limits": [
+    "Static/model checks do not replace complete compiled-app browser recipes."
+  ],
+  "artifacts": [
+    {
+      "path": "docs/qa/homeworld-resume-20261101-r6/current-v112-mixed-374-tests.log",
+      "bytes": 42226,
+      "sha256": "508adad7bab47720eb4679bbaae2d3f1d636e42fd300510f4978a8eb524bd208"
+    },
+    {
+      "path": "docs/qa/homeworld-resume-20261101-r6/production-build.log",
+      "bytes": 889,
+      "sha256": "2b31cce3280a29d59c35369b7013319f9629d4eceb4a1431a07506a762b4a096"
+    },
+    {
+      "path": "docs/qa/homeworld-resume-20261101-r6/runtime-git-identity.json",
+      "bytes": 90,
+      "sha256": "2a72155366739733ffe04280768a063fa4ea84b4584ed2cee5944dfec060b603"
+    },
+    {
+      "path": "docs/qa/homeworld-resume-20261101-r6/targeted-lint.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

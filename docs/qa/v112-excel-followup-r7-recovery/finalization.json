@@ -1,0 +1,194 @@
+{
+  "schemaVersion": 1,
+  "release": "V112",
+  "status": "PASS_FOLLOWUP_FINALIZATION",
+  "finishedAtUtc": "2026-11-02T04:48:44.370708+00:00",
+  "runtimeCommit": "bda14a95aa8c9e6cf37039e2d67ea1544a8e8de1",
+  "buildId": "wVuSG_xIKNn3geLlIq7Cb",
+  "checks": {
+    "topLevelTests": 14,
+    "sameTestsExecutedBeforeAndAfterEvidenceRegistration": true,
+    "testExecutions": 2,
+    "failed": 0,
+    "skipped": 0,
+    "targetedLintFiles": 3,
+    "sourceAuditReproduced": true,
+    "workbookAndMetadataReproduced": true,
+    "frozenEntriesUnchanged": 1649,
+    "worksheets": 122,
+    "historicalWorksheetsByteIdentical": 113,
+    "historicalZipPartsByteIdentical": 126,
+    "xmlPartsParsed": 139,
+    "formulas": 5,
+    "inputFingerprints": 1891,
+    "declaredRegistryProofFilesVerified": 129,
+    "newlyClosedSourceRequirements": 0
+  },
+  "domainCertificates": [
+    {
+      "path": "docs/v112-homeworld-validation.json",
+      "bytes": 744079,
+      "sha256": "431198b2e6bda28085f2758a66c1c84344712009e6f97b5c23a078eba0326124"
+    },
+    {
+      "path": "docs/v112-pit-validation.json",
+      "bytes": 1230898,
+      "sha256": "42bfd97315d3ebbc9f1a2416fd996fa204f62b4680871e2482c1893f4509ef60"
+    }
+  ],
+  "sourceFreeze": {
+    "path": "docs/v112-runtime-freeze.json",
+    "bytes": 306338,
+    "sha256": "c35f8b454ec26d1b05852cabbe4f6ee111d71e7413aef80282582d3ca5ee6a3e"
+  },
+  "products": [
+    {
+      "path": "docs/YAUTJA_V112_SUIVI.xlsx",
+      "bytes": 9433700,
+      "sha256": "723cc894b643d55dcd076cab8b615866c6879ecc481c55616adcdd0508d2eccc"
+    },
+    {
+      "path": "docs/v112-homeworld-followup.json",
+      "bytes": 1070467,
+      "sha256": "21ba550dfe6b65dfc77aceb343630ee0f0a92944215c7a6eaa913f968c452ebd"
+    },
+    {
+      "path": "docs/v112-homeworld-followup-qa.json",
+      "bytes": 4237,
+      "sha256": "fb4f69c6c57475fc2bbc066298c9afa2f3ea5251cc99ea480589d493fa115a0e"
+    },
+    {
+      "path": "docs/v112-homeworld-source.json",
+      "bytes": 85776,
+      "sha256": "5470ea3326281fa6b3f33ba4f731eee2f3479138b9c8ad138b296eddc7046376"
+    },
+    {
+      "path": "docs/YAUTJA_REPRISE_CHANTIERS_20261101.xlsx",
+      "bytes": 62258,
+      "sha256": "999e11f136329c54b3f3c59ea015f4c839f59fa00db5baae838888ad9635bcde"
+    },
+    {
+      "path": "docs/suivi-production/resume-20261101/EXCEL-INVENTORY.json",
+      "bytes": 120442,
+      "sha256": "9d11d9c4cefdf04ccd27d00d2f952cf580727cc383bd582c4a7c71e1f467108d"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "docs/qa/v112-excel-followup-r7-recovery/followup-and-history-14-tests.log",
+      "bytes": 6469,
+      "sha256": "711119e9a277f78b24656163aad092c23b61a322917f9cf4da51acc7a68fce77"
+    },
+    {
+      "path": "docs/qa/v112-excel-followup-r7-recovery/final-metadata-14-tests.log",
+      "bytes": 6469,
+      "sha256": "ecc3a5a29ae2ccfb96a23fc086de67cf4a698eb39a0b9a2c9d404e3302d13007"
+    },
+    {
+      "path": "docs/qa/v112-excel-followup-r7-recovery/metadata-tools-lint.json",
+      "bytes": 892,
+      "sha256": "b5ab7380163f8f21ab9ad16bd6e46a4495120ba6b731979401032d8bc908ba58"
+    },
+    {
+      "path": "docs/qa/v112-excel-followup-r7-recovery/metadata-tools-lint.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/qa/v112-excel-followup-r7-recovery/source-audit-reproduction.log",
+      "bytes": 450,
+      "sha256": "31e58777f34c0e12c2858a84f9439c94b9a70b527bba0135e434a415faca2d0d"
+    },
+    {
+      "path": "docs/qa/v112-excel-followup-r7-recovery/initial-generation.log",
+      "bytes": 2336,
+      "sha256": "9c3048cc4b2f38be763dff6a44bce9ecb89fa635e76b49f0a3da26e56dc6e00c"
+    },
+    {
+      "path": "docs/qa/v112-excel-followup-r7-recovery/generation.log",
+      "bytes": 579,
+      "sha256": "d322957c78241c0ecd0e811f29d55632eb3dd85d66cfa3fe7cda3676b7242b89"
+    },
+    {
+      "path": "docs/qa/v112-excel-followup-r7-recovery/final-generation.log",
+      "bytes": 579,
+      "sha256": "66474b52c6106efaeaaf31325c110cb27049d1512df715e465c9ea0bf9d3a192"
+    },
+    {
+      "path": "docs/qa/v112-excel-followup-r7-recovery/final-reproduction.log",
+      "bytes": 579,
+      "sha256": "66474b52c6106efaeaaf31325c110cb27049d1512df715e465c9ea0bf9d3a192"
+    },
+    {
+      "path": "docs/qa/v112-excel-followup-r7-recovery/independent-xml-and-freeze-verification.json",
+      "bytes": 23715,
+      "sha256": "8f22051b2537769f47aac27a3e34558492c9327567b826e78b5e3f97f114b9ad"
+    },
+    {
+      "path": "docs/qa/v112-excel-followup-r7-recovery/independent-xml-and-freeze-verification.log",
+      "bytes": 1245,
+      "sha256": "35ebb96888bd26eeaf4a95c82429fb4c1169f000787c0226126bcdd67a8d6b50"
+    },
+    {
+      "path": "docs/qa/v112-excel-followup-r7-recovery/coordination-generation.log",
+      "bytes": 426,
+      "sha256": "bd104feac7af7dcc0d05762835f6ab96fdf92576eddb9c8a7456fbb33fea3923"
+    },
+    {
+      "path": "docs/qa/v112-excel-followup-r7-recovery/coordination-reproduction.log",
+      "bytes": 440,
+      "sha256": "bd9ec6b4f7a5c1a8da8707c0a27bf58af15d2a32f39e62d00e4a837ea16593e0"
+    },
+    {
+      "path": "docs/qa/v112-excel-followup-r7-recovery/coordination-verification.log",
+      "bytes": 416,
+      "sha256": "8c581d1bece37ff9f42eb9641685c4b0b213e06dad794cb67388599488d6be63"
+    },
+    {
+      "path": "docs/qa/v112-excel-followup-r7-recovery/source-registry-r4.json",
+      "bytes": 74763,
+      "sha256": "dcbb756254bb6e2781c2970b34a7b0154c7f5ed5d44254d93a973254020826b9"
+    },
+    {
+      "path": "docs/qa/v112-excel-followup-r7-recovery/followup-guide-r4.md",
+      "bytes": 6351,
+      "sha256": "0c266700a5fb7a6ccd567f49860fcdc55bdb4c1c14d47dfe5d57d914ef474516"
+    },
+    {
+      "path": "docs/qa/v112-excel-followup-r7-recovery/preflight.json",
+      "bytes": 2548,
+      "sha256": "2c1fdfad2abcf6f90d5d3b312098f817403b076b42686ea5b73da8d642420b37"
+    },
+    {
+      "path": "docs/qa/v112-excel-followup-r7-recovery/registry-migration.json",
+      "bytes": 1683,
+      "sha256": "ade88517deb2c58b20c0bfde3735c1eb0ae61e2228801175d3d09eb88fab23e1"
+    }
+  ],
+  "coordination": {
+    "worksheets": 5,
+    "cellsChecked": 4437,
+    "hyperlinksChecked": 484,
+    "snapshotPRs": 33,
+    "dependencyEdges": 29,
+    "datedProgressEvents": 9,
+    "localWorkbooks": 27,
+    "pinnedRemoteWorkbooks": 12,
+    "formulas": 0,
+    "macros": 0,
+    "marshDiagnostic": "OUVERT_NON_CORRIGE",
+    "reproduced": true
+  },
+  "limits": [
+    "The same14top-level checks run twice; nested historic assertions overlap the132suite and are not distinct gameplay behaviors.",
+    "Existing historical68/132/56 and current375model runs were not repeated against unchanged frozen inputs.",
+    "Excel native application, native calculation engine, physical hardware and deployment/CDN are not executed.",
+    "Homeworld249/39 is replayed in full after recovery; Pit127/39 retains its original R7 publication and a separate eight-check conservation audit.",
+    "Legacy87/14 observes1532sources among1649and cannot replace either complete current domain certificate.",
+    "All56source requirements, including nine actions, and354art targets remain globally open.",
+    "Pit exported replay JSON bytes were not retained as a portable publication file and are not reconstructed.",
+    "Marsh-edge composition remains OUVERT_NON_CORRIGE; no app/render correction is qualified.",
+    "The initial confined generation hit EPERM spawnSync python3; subsequent authorized local execution passed without changing sources or criteria.",
+    "No Git mutation by this finalization agent."
+  ]
+}

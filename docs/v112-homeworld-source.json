@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "release": "V112",
-  "asOf": "2026-10-28",
+  "asOf": "2026-11-02",
   "baseline": {
     "path": "docs/YAUTJA_V111_SUIVI.xlsx",
     "sha256": "fa5ebf78a08c36b4a567246dfae41de535a8e36c7294ba33190e3e1e2ec9ad05"
@@ -13,8 +13,8 @@
     {
       "id": "M_F006_TH_B",
       "status": "LIVRE_PARTIEL",
-      "progress": "Projection arrière V17 raccordée et vérifiée pour le duo Feral/Scar d’origine : fenêtres10/3/32, cible réelle, arc continu, mur, déchoppe, reprise et replay ; 48 dessins natifs sur22PNG. Le compilé R4 passe127contrôles sur deux parcours ; une victoire Feral–Scar est exportée et relue publiquement. Le parcours inverse vérifie les prises et réactions sans prétendre à une seconde victoire exportée.",
-      "remaining": "Exigence source toujours ouverte : autres partenaires, costumes et variantes non couverts. La validation ciblée du duo et des deux orientations ne clôture ni cette exigence globale ni les kits. La première tentative R4 échouée et sa seule reprise identique restent documentées, sans cause attribuée au lancement manqué.",
+      "progress": "Projection arrière V17 raccordée et vérifiée pour le duo Feral/Scar d’origine : fenêtres10/3/32, cible réelle, arc continu, mur, déchoppe, reprise et replay ; 48 dessins natifs sur22PNG. Le compilé R7 passe127contrôles sur deux parcours ; une victoire Feral–Scar exportée et relue publiquement est observée dans le brut. Le parcours inverse vérifie les prises et réactions sans prétendre à une seconde victoire exportée.",
+      "remaining": "Exigence source toujours ouverte : autres partenaires, costumes et variantes non couverts. La validation ciblée du duo et des deux orientations ne clôture ni cette exigence globale ni les kits. Les tentatives R4/R5/R6 restent archivées avec leurs identités. Le R7 observe14appuis uniques et deux whiffs à45frames ; le JSON exporté du replay n’est pas une pièce portable conservée.",
       "proof": [
         {
           "path": "docs/qa/v112-pit-backward/model-tests.log",
@@ -63,16 +63,21 @@
         },
         {
           "path": "docs/v112-pit-validation.json",
-          "sha256": "6f357c742ee396fc94add6210116e163620df358e3cb3d18909fc38564710872",
-          "bytes": 931415
+          "sha256": "42bfd97315d3ebbc9f1a2416fd996fa204f62b4680871e2482c1893f4509ef60",
+          "bytes": 1230898
+        },
+        {
+          "path": "docs/qa/homeworld-resume-20261102/pit-preserved-verification.json",
+          "sha256": "3710b49fdcf878ea8f811d8869a9f8aa35eda2f59b8c68b261c4014470d21c92",
+          "bytes": 15897
         }
       ]
     },
     {
       "id": "M_F003_TH_B",
       "status": "LIVRE_PARTIEL",
-      "progress": "Projection arrière V17 raccordée et vérifiée pour le duo Feral/Scar d’origine : fenêtres10/3/32, cible réelle, arc continu, mur, déchoppe, reprise et replay ; 48 dessins natifs sur22PNG. Le compilé R4 passe127contrôles sur deux parcours ; une victoire Feral–Scar est exportée et relue publiquement. Le parcours inverse vérifie les prises et réactions sans prétendre à une seconde victoire exportée.",
-      "remaining": "Exigence source toujours ouverte : autres partenaires, costumes et variantes non couverts. La validation ciblée du duo et des deux orientations ne clôture ni cette exigence globale ni les kits. La première tentative R4 échouée et sa seule reprise identique restent documentées, sans cause attribuée au lancement manqué.",
+      "progress": "Projection arrière V17 raccordée et vérifiée pour le duo Feral/Scar d’origine : fenêtres10/3/32, cible réelle, arc continu, mur, déchoppe, reprise et replay ; 48 dessins natifs sur22PNG. Le compilé R7 passe127contrôles sur deux parcours ; une victoire Feral–Scar exportée et relue publiquement est observée dans le brut. Le parcours inverse vérifie les prises et réactions sans prétendre à une seconde victoire exportée.",
+      "remaining": "Exigence source toujours ouverte : autres partenaires, costumes et variantes non couverts. La validation ciblée du duo et des deux orientations ne clôture ni cette exigence globale ni les kits. Les tentatives R4/R5/R6 restent archivées avec leurs identités. Le R7 observe14appuis uniques et deux whiffs à45frames ; le JSON exporté du replay n’est pas une pièce portable conservée.",
       "proof": [
         {
           "path": "docs/qa/v112-pit-backward/model-tests.log",
@@ -121,8 +126,13 @@
         },
         {
           "path": "docs/v112-pit-validation.json",
-          "sha256": "6f357c742ee396fc94add6210116e163620df358e3cb3d18909fc38564710872",
-          "bytes": 931415
+          "sha256": "42bfd97315d3ebbc9f1a2416fd996fa204f62b4680871e2482c1893f4509ef60",
+          "bytes": 1230898
+        },
+        {
+          "path": "docs/qa/homeworld-resume-20261102/pit-preserved-verification.json",
+          "sha256": "3710b49fdcf878ea8f811d8869a9f8aa35eda2f59b8c68b261c4014470d21c92",
+          "bytes": 15897
         }
       ]
     }
@@ -132,7 +142,7 @@
       "id": "HW112-SPATIAL-COHERENCE",
       "title": "Cohérence des placements et des passages du Homeworld",
       "source": "Brief Homeworld V81 §§12, 18, 23",
-      "behavior": "Six socles corrigent 95 points sans support sur 51 façades et 20 098 échantillons. Deux raccords exacts devant le mausolée ajoutent 1 507,446455 unités² de sol commun au moteur et au rendu : deux poches locales deviennent nulles, les 34 485 échantillons extérieurs restent inchangés. Six meubles admis sur dix propositions occupent cinq cours. Sur 392 origines naturelles, 315 instances sont admises et 77 refusées sans relocalisation, avec 39 formations et onze écotones.",
+      "behavior": "Six socles corrigent 95 points sans support sur 51 façades et 20 098 échantillons. Deux raccords exacts devant le mausolée ajoutent 1 507,446455 unités² de sol commun au moteur et au rendu : deux poches locales deviennent nulles, les 34 485 échantillons extérieurs restent inchangés. Six meubles admis sur dix propositions occupent cinq cours. Sur 392 origines naturelles, 315 instances sont admises et 77 refusées sans relocalisation, avec 39 formations et onze écotones. Le repère du registre est replacé à (6270,4990) afin de protéger les contacts fixes V104–V111 : 72 enregistrements, 64 positions distinctes et 30 liaisons fonctionnelles (2709 échantillons), sans nouveau conflit avec les six solides V112.",
       "status": "VALIDE_CIBLE",
       "implementation": [
         "app/game/systems/homeworldFoundationSupportsV112.ts",
@@ -154,13 +164,15 @@
         "tests/homeworld-natural-placements-v112.test.mjs",
         "tests/homeworld-ecotones-v112.test.mjs",
         "app/game/systems/homeworldGroundJointsV112.ts",
-        "tests/homeworld-ground-joints-v112.test.mjs"
+        "tests/homeworld-ground-joints-v112.test.mjs",
+        "app/game/systems/homeworldActivityAccessV112.ts",
+        "tests/homeworld-activity-access-v112.test.mjs"
       ],
       "proof": [
         {
           "path": "docs/qa/v112-spatial/audit.json",
-          "sha256": "228baa46b79e25e17a15a647941d2eb381bb08455679588319db509003b7c74d",
-          "bytes": 27632
+          "sha256": "05f7503173375a599b71df60ebcba2548c60e06659b7cd5867d7c325a7a03aaa",
+          "bytes": 94335
         },
         {
           "path": "docs/qa/v112-spatial/ground-joints-previous-21-assertions.log",
@@ -179,11 +191,21 @@
         },
         {
           "path": "docs/v112-homeworld-validation.json",
-          "sha256": "b9a0ba49b28dd042813861c2909cb913cd9eb2049c38979f819aeee6ebf8323e",
-          "bytes": 712807
+          "sha256": "431198b2e6bda28085f2758a66c1c84344712009e6f97b5c23a078eba0326124",
+          "bytes": 744079
+        },
+        {
+          "path": "docs/qa/v112-spatial/activity-access-four-tests.log",
+          "sha256": "9b07e7808f714b703f4a72d85e5c4b4c9fa64d445f9cbddc2b24acda0002723b",
+          "bytes": 1262
+        },
+        {
+          "path": "docs/qa/v112-spatial/activity-access-local-search.json",
+          "sha256": "c06b9ff46b1e75648c390058c3af78bc17ad7f4876cd8f417a1dc01230069975",
+          "bytes": 93658
         }
       ],
-      "remaining": "Six socles, deux raccords locaux et les instances déclarées sont validés dans le jeu compilé R4. Les autres géographies, façades, variantes artistiques et besoins de toute la cité restent ouverts. Les sources natives sont réemployées ; aucun nouveau dessin Homeworld, service ou fermeture des 354 cibles n’est déduit."
+      "remaining": "Les six socles, deux raccords locaux, six meubles et instances déclarées ont leur recette compilée R7 complète. Les 64 positions fixes et 30 liaisons relèvent aussi de gardes de modèle ; elles ne promettent ni tous les déplacements ni les positions dynamiques. Les fines bandes de rive du passage des marais restent OUVERT_NON_CORRIGE, documentées par un diagnostic exploratoire distinct. Les autres géographies, façades, variantes artistiques et besoins de toute la cité restent ouverts. Les sources natives sont réemployées ; aucun nouveau dessin Homeworld ni clôture des 354 cibles n’est déduit."
     },
     {
       "id": "HW112-MOBILITY-ACCESS",
@@ -249,8 +271,8 @@
         },
         {
           "path": "docs/v112-homeworld-validation.json",
-          "sha256": "b9a0ba49b28dd042813861c2909cb913cd9eb2049c38979f819aeee6ebf8323e",
-          "bytes": 712807
+          "sha256": "431198b2e6bda28085f2758a66c1c84344712009e6f97b5c23a078eba0326124",
+          "bytes": 744079
         }
       ],
       "remaining": "Le modèle couvre 90 positions et quinze services ; le compilé vérifie officier, mausolée, archives, route après restauration et mobile390. Il ne parcourt pas toutes les combinaisons de charges et d’études. Le calcul pur mesuré≈5ms/appel exclut React/layout/peinture ; le profil390px est une émulation, pas une mesure sur téléphone physique."
@@ -277,8 +299,8 @@
         },
         {
           "path": "docs/v112-homeworld-validation.json",
-          "sha256": "b9a0ba49b28dd042813861c2909cb913cd9eb2049c38979f819aeee6ebf8323e",
-          "bytes": 712807
+          "sha256": "431198b2e6bda28085f2758a66c1c84344712009e6f97b5c23a078eba0326124",
+          "bytes": 744079
         }
       ],
       "remaining": "Sept figurants passifs réemploient trois atlas V74 et leurs deux sens natifs. Pas de nouveau PNG, idle, geste social, service, quête, gain ou sauvegarde. L’admission est vérifiée contre la géométrie fixe ; pas d’évitement autonome des charges déplacées après coup ni clôture globale des rôles ou du catalogue."
@@ -310,7 +332,9 @@
         "tests/fixtures/homeworld-upgrade-v112/v112-reviewed-comparison107-ground-fixture.json",
         "tests/fixtures/homeworld-upgrade-v112/v112-reviewed-continuation-carried-fragment-fixture.json",
         "tests/fixtures/homeworld-upgrade-v112/v112-reviewed-v105-walking-fixture.json",
-        "tests/fixtures/homeworld-upgrade-v112/v112-v104-played-blocked-fixture.json"
+        "tests/fixtures/homeworld-upgrade-v112/v112-v104-played-blocked-fixture.json",
+        "tests/fixtures/homeworld-upgrade-v112/v112-reviewed-v104-register-marker-fixture.json",
+        "tests/fixtures/homeworld-upgrade-v112/v112-reviewed-v104-final-register-marker-fixture.json"
       ],
       "proof": [
         {
@@ -325,11 +349,11 @@
         },
         {
           "path": "docs/v112-homeworld-validation.json",
-          "sha256": "b9a0ba49b28dd042813861c2909cb913cd9eb2049c38979f819aeee6ebf8323e",
-          "bytes": 712807
+          "sha256": "431198b2e6bda28085f2758a66c1c84344712009e6f97b5c23a078eba0326124",
+          "bytes": 744079
         }
       ],
-      "remaining": "Les 27 scénarios modèle/moteur/Hub et cinq témoins compilés couvrent checkpoint desktop/mobile, last distant, plaque au sol et lot de cargaison au sol. La copie des sept originaux reste exacte ; seuls les points concernés migrent localement. Ni marche créditée, accord, récompense ou objet créé. Les autres opérations/campagnes et les exigences source héritées restent ouvertes."
+      "remaining": "Les tests modèle/moteur/Hub et les cinq témoins compilés R7 couvrent checkpoint desktop/mobile, last distant, plaque au sol et lot de cargaison au sol ; les fixtures authentiques de l’ancien puis du nouveau repère sont conservées. La copie des sept originaux reste exacte ; seuls les points concernés migrent localement. Ni marche créditée, accord, récompense ou objet créé. Les autres opérations/campagnes et les exigences source héritées restent ouvertes."
     },
     {
       "id": "PIT112-BACKWARD-THROWS",
@@ -354,7 +378,10 @@
         "tests/pit-backward-controls-v112.test.mjs",
         "tests/pit-backward-art-provenance-v112.test.mjs",
         "docs/suivi-production/v112-pit-backward/README.md",
-        "tests/pit-replay-export-v112.test.mjs"
+        "tests/pit-replay-export-v112.test.mjs",
+        "scripts/lib/pit-observed-launch-v112.mjs",
+        "tests/pit-browser-launch-observation-v112.test.mjs",
+        "tests/pit-browser-whiff-observation-v112.test.mjs"
       ],
       "proof": [
         {
@@ -484,15 +511,20 @@
         },
         {
           "path": "docs/v112-pit-validation.json",
-          "sha256": "6f357c742ee396fc94add6210116e163620df358e3cb3d18909fc38564710872",
-          "bytes": 931415
+          "sha256": "42bfd97315d3ebbc9f1a2416fd996fa204f62b4680871e2482c1893f4509ef60",
+          "bytes": 1230898
+        },
+        {
+          "path": "docs/qa/homeworld-resume-20261102/pit-preserved-verification.json",
+          "sha256": "3710b49fdcf878ea8f811d8869a9f8aa35eda2f59b8c68b261c4014470d21c92",
+          "bytes": 15897
         }
       ],
-      "remaining": "Le compilé valide deux parcours du duo d’origine, huit groupes de rôles/orientations et 48 dessins runtime sélectionnés sur 22 PNG. Une victoire Feral–Scar est réellement jouée, exportée et relue publiquement ; le parcours inverse vérifie prises, orientations, déchoppe et mur. La première tentative R4 expire sur le lancement J2, cause non attribuée ; sa seule reprise complète byte-identique passe127/39 sans changement de code ou de critère. Autres partenaires, costumes, variantes, finishers, campagnes et kits complets restent ouverts.",
+      "remaining": "La recette compilée R7 publiée valide127contrôles/39captures, deux parcours du duo d’origine, huit groupes de rôles/orientations et48dessins runtime sur22PNG. Une victoire Feral–Scar jouée, exportée et relue est observée dans le brut ; le fichier JSON exporté n’a pas de copie portable conservée et n’est pas reconstruit. Le parcours inverse vérifie prises, orientations, déchoppe et mur. Les14appuis uniques et les deux whiffs de45frames sont conservés par l’observateur borné. Les échecs antérieurs R4/R5/R6 gardent leurs propres bruts, identités et limites. Autres partenaires, costumes, variantes, finishers, campagnes et kits complets restent ouverts.",
       "production": {
         "path": "docs/v112-pit-validation.json",
-        "sha256": "6f357c742ee396fc94add6210116e163620df358e3cb3d18909fc38564710872",
-        "bytes": 931415
+        "sha256": "42bfd97315d3ebbc9f1a2416fd996fa204f62b4680871e2482c1893f4509ef60",
+        "bytes": 1230898
       }
     },
     {
@@ -581,7 +613,7 @@
       "title": "Rôles, intérieurs et parcours Homeworld encore incomplets",
       "source": "Brief Homeworld V81 et scènes source V6",
       "status": "OUVERT",
-      "detail": "Les corrections de placement, d'accès et de densité ne certifient pas toute la cité, ses rôles, animations, dialogues et variantes."
+      "detail": "Les corrections de placement, d'accès et de densité ne certifient pas toute la cité, ses rôles, animations, dialogues et variantes. Les interstices extérieurs du passage des marais restent explicitement OUVERT_NON_CORRIGE : composition naturelle de rive à reprendre, sans patch app qualifié ni prétendue correction des PNG natifs."
     },
     {
       "id": "HW112-REMAINING-ACTIVITIES",
@@ -595,37 +627,32 @@
     {
       "id": "V112-EXCEL-STRUCTURE-AND-HISTORY-GUARDS",
       "status": "PASS_STRUCTURE",
-      "scope": "14 contrôles de premier niveau : neuf sur le suivi/classeur V112, quatre sur la capsule historique et un wrapper original V90. Préservation des 113 feuilles, 122 finales, cinq formules, mutation de texte détectée, compteurs 56/9/354, refus des erreurs/régressions de provenance et de mélange de builds, régénération exacte. Lint de trois outils courants sans erreur.",
+      "scope": "Exécution sur le registre R7 publié : 14 contrôles de premier niveau : neuf sur le suivi/classeur V112, quatre sur la capsule historique et un wrapper original V90. Préservation des 113 feuilles, 122 finales, cinq formules, mutation de texte détectée, compteurs 56/9/354, refus des erreurs/régressions de provenance et de mélange de builds, régénération exacte. Lint de trois outils courants sans erreur.",
       "command": "node --experimental-strip-types --test --test-concurrency=1 tests/homeworld-excel-followup-v112.test.mjs tests/homeworld-excel-history-v112.test.mjs tests/homeworld-ecotones-v90.test.mjs ; node node_modules/eslint/bin/eslint.js scripts/build-homeworld-followup-v112.mjs scripts/check-excel-history-compat-v112.mjs tests/homeworld-excel-followup-v112.test.mjs",
       "evidence": [
         {
-          "path": "docs/qa/v112-excel-followup/initial-followup-and-history-tests.log",
-          "sha256": "33745b2c20ae67deed3a28119cf766a428806051b7a28e0f20a588974c091560",
-          "bytes": 2752
+          "path": "docs/qa/v112-excel-followup-r7-recovery/followup-and-history-14-tests.log",
+          "bytes": 6469,
+          "sha256": "711119e9a277f78b24656163aad092c23b61a322917f9cf4da51acc7a68fce77"
         },
         {
-          "path": "docs/qa/v112-excel-followup/final-followup-and-history-14-tests.log",
-          "sha256": "3dbe7e2adc429452352d211eecbeff78504a1023bed57d37361338e705b02b56",
-          "bytes": 6818
-        },
-        {
-          "path": "docs/qa/v112-excel-followup/final-metadata-tools-lint.json",
-          "sha256": "2ad40aa66eb572280e4d7652a98836e674d9b1659f77777b4aa015bf594a5d5f",
-          "bytes": 272
+          "path": "docs/qa/v112-excel-followup-r7-recovery/metadata-tools-lint.json",
+          "bytes": 892,
+          "sha256": "b5ab7380163f8f21ab9ad16bd6e46a4495120ba6b731979401032d8bc908ba58"
         }
       ],
-      "limit": "Structure ZIP/XML et provenance, sans Excel natif. Le journal initial couvre neuf contrôles antérieurs ; le journal final couvre les 14 actuels. Les onze assertions de porte et les sept assertions V90 imbriquées recouvrent la suite historique de 132, sans addition comme comportements distincts. Les rendus compilés sont certifiés séparément par domaine."
+      "limit": "Structure ZIP/XML et provenance, sans Excel natif. Le journal R7 couvre14contrôles de premier niveau. Les onze assertions de porte et les sept assertions V90 imbriquées recouvrent la suite historique de132, sans addition comme comportements distincts. Les rendus compilés sont certifiés séparément par domaine ; la reproduction finale et la seconde exécution des mêmes14contrôles sont consignées dans le dossier de finalisation, sans nouveau comportement compté."
     },
     {
       "id": "V112-SPATIAL-MODEL",
       "status": "PASS_MODELE",
-      "scope": "27 scénarios actuels : 21 précédents repassent et six nouveaux couvrent les deux raccords exacts du mausolée. Deux poches locales à pas1u deviennent nulles ; les 34 485 échantillons extérieurs restent inchangés. Six socles, six meubles, 315/392 instances naturelles admises, 77 refusées, 39 formations, onze écotones.",
+      "scope": "27 scénarios actuels : 21 précédents repassent et six nouveaux couvrent les deux raccords exacts du mausolée. Deux poches locales à pas1u deviennent nulles ; les 34 485 échantillons extérieurs restent inchangés. Six socles, six meubles, 315/392 instances naturelles admises, 77 refusées, 39 formations, onze écotones. Le modèle courant ajoute quatre gardes d’accès :72enregistrements/64positions,30liaisons/2709échantillons, zéro conflit avec le mobilier nouveau ; le diagnostic de rive reste distinct et ouvert.",
       "command": "Commandes exactes dans ground-joints-previous-21-assertions.log, ground-joints-six-assertions.log et ground-joints-model-audit.log.",
       "evidence": [
         {
           "path": "docs/qa/v112-spatial/audit.json",
-          "sha256": "228baa46b79e25e17a15a647941d2eb381bb08455679588319db509003b7c74d",
-          "bytes": 27632
+          "sha256": "05f7503173375a599b71df60ebcba2548c60e06659b7cd5867d7c325a7a03aaa",
+          "bytes": 94335
         },
         {
           "path": "docs/qa/v112-spatial/ground-joints-previous-21-assertions.log",
@@ -641,6 +668,16 @@
           "path": "docs/qa/v112-spatial/ground-joints-model-audit.log",
           "sha256": "228baa46b79e25e17a15a647941d2eb381bb08455679588319db509003b7c74d",
           "bytes": 27632
+        },
+        {
+          "path": "docs/qa/v112-spatial/activity-access-four-tests.log",
+          "sha256": "9b07e7808f714b703f4a72d85e5c4b4c9fa64d445f9cbddc2b24acda0002723b",
+          "bytes": 1262
+        },
+        {
+          "path": "docs/qa/v112-spatial/activity-access-local-search.json",
+          "sha256": "c06b9ff46b1e75648c390058c3af78bc17ad7f4876cd8f417a1dc01230069975",
+          "bytes": 93658
         }
       ],
       "limit": "Ni capture navigateur ni admission artistique globale."
@@ -1256,49 +1293,49 @@
       "limit": "Compatibilité seulement, observation partielle du gel ; ne remplace ni le certificat complet Homeworld ni celui de Pit. Archive R2 et anciens certificats V111 préservés à l’octet ; aucune identité de build relabellisée."
     },
     {
-      "id": "V112-HOMEWORLD-COMPILED-R4",
+      "id": "V112-HOMEWORLD-COMPILED-R7-RECOVERY",
       "status": "PASS_COMPILE_CIBLE",
-      "scope": "248 contrôles et 39 captures réellement inspectées, six familles complètes sur le build WZwxZDYUZhpepqlaPWKpe/runtime aa891dfff9bc022d1b7363d4b7085aca19b4d1e3. Les 1 563 sources sont identiques avant/après et au gel. Les cinq témoins de restauration incluent les refus d’écriture, copie exacte, départ/reprise volontaires et contrôle mobile.",
-      "command": "node scripts/qa-homeworld-public-spaces-v112.mjs ; invocation et environnement exacts du brut publiés.",
+      "scope": "249contrôles et39captures nouvellement inspectées, six familles complètes et cinq cas de reprise sur le build conservé wVuSG_xIKNn3geLlIq7Cb/runtime bda14a95aa8c9e6cf37039e2d67ea1544a8e8de1. Les1649sources sont identiques avant/après et au gel. Les quatre tableaux d’erreurs sont vides. Ce replay complet remplace le R7 interrompu ; il ne relabelise pas les passes R5/R6.",
+      "command": "node scripts/qa-homeworld-public-spaces-v112.mjs ; invocation et environnement exacts de la reprise complète conservés dans le brut publié.",
       "evidence": [
         {
           "path": "docs/v112-homeworld-validation.json",
-          "sha256": "b9a0ba49b28dd042813861c2909cb913cd9eb2049c38979f819aeee6ebf8323e",
-          "bytes": 712807
+          "sha256": "431198b2e6bda28085f2758a66c1c84344712009e6f97b5c23a078eba0326124",
+          "bytes": 744079
         },
         {
           "path": "docs/qa/v112-homeworld/entry.json",
-          "sha256": "bf2798617053468f32f727ea2bc7e12322bf05542ba11a6cafd4baa3cf83bf55",
+          "sha256": "fb6602c8ac4d4a61a07cec2d02057db734c0706563fb06235918d185db8142a1",
           "bytes": 9208
         },
         {
           "path": "docs/v112-runtime-freeze.json",
-          "sha256": "988097f754c3cc8fa825190b6644e21926c0515557cbad72912bb003f7e44df6",
-          "bytes": 291082
+          "sha256": "c35f8b454ec26d1b05852cabbe4f6ee111d71e7413aef80282582d3ca5ee6a3e",
+          "bytes": 306338
         }
       ],
       "limit": "Fixtures initiales déclarées : First Tracks préparé par modèle, quartiers connus et outil préacquis. Chaque scénario a son checkpoint, sans prétendre que le déplacement entre eux a été joué. Aucun achèvement global Homeworld/source/art ni déplacement fictif n’est déduit."
     },
     {
-      "id": "V112-PIT-COMPILED-R4",
+      "id": "V112-PIT-COMPILED-R7",
       "status": "PASS_COMPILE_CIBLE",
-      "scope": "127 contrôles et39captures réellement inspectées, deux parcours complets du duo Feral/Scar sur le runtime aa891dfff9bc022d1b7363d4b7085aca19b4d1e3 / build WZwxZDYUZhpepqlaPWKpe. Les1563sources restent exactes avant/après et au gel ; JS,console,Worker et requêtes échouées sont vides.",
-      "command": "node scripts/qa-pit-backward-throws-v112.mjs ; invocation canonique complète et environnement exacts conservés dans le brut de l’unique reprise R4.",
+      "scope": "127contrôles et39captures inspectées dans la recette R7 conservée, deux parcours complets du duo Feral/Scar sur le runtime bda14a95aa8c9e6cf37039e2d67ea1544a8e8de1/build wVuSG_xIKNn3geLlIq7Cb. Les1649sources restent exactes avant/après et au gel ; JS,console,Worker et requêtes échouées sont vides. L’audit de conservation du2novembre valide huit contrôles d’intégrité, sans nouveau gameplay ni nouvelle revue des39images.",
+      "command": "node scripts/qa-pit-backward-throws-v112.mjs ; invocation canonique R7 conservée dans le brut. Audit de conservation distinct décrit dans pit-preserved-verification.json.",
       "evidence": [
         {
           "path": "docs/v112-pit-validation.json",
-          "sha256": "6f357c742ee396fc94add6210116e163620df358e3cb3d18909fc38564710872",
-          "bytes": 931415
+          "sha256": "42bfd97315d3ebbc9f1a2416fd996fa204f62b4680871e2482c1893f4509ef60",
+          "bytes": 1230898
         },
         {
           "path": "docs/v112-runtime-freeze.json",
-          "sha256": "988097f754c3cc8fa825190b6644e21926c0515557cbad72912bb003f7e44df6",
-          "bytes": 291082
+          "sha256": "c35f8b454ec26d1b05852cabbe4f6ee111d71e7413aef80282582d3ca5ee6a3e",
+          "bytes": 306338
         },
         {
           "path": "docs/qa/v112-pit/entry.json",
-          "sha256": "6db9a5638967c997bfacf8a33a61af590014c5fc45a8e8c01ca7efba5c900ad4",
-          "bytes": 8701
+          "sha256": "2bfe9f5e752b2a4cee6391b304c49a577e73d3c14133ee8892bfb8b64ca10552",
+          "bytes": 8702
         },
         {
           "path": "docs/qa/v112-integration/pit-launch-r4/attempt-sequence.json",
@@ -1319,14 +1356,19 @@
           "path": "docs/qa/v112-integration/pit-launch-r4/launch-diagnostic-unattributed.json",
           "sha256": "7693b630306139d1c9b83ac3d1ef26a64e9c4c83584b462166183db7ce1057c7",
           "bytes": 5637
+        },
+        {
+          "path": "docs/qa/homeworld-resume-20261102/pit-preserved-verification.json",
+          "sha256": "3710b49fdcf878ea8f811d8869a9f8aa35eda2f59b8c68b261c4014470d21c92",
+          "bytes": 15897
         }
       ],
-      "limit": "Première tentative R4 FAIL92contrôles/29captures sur capture J2, cause non attribuée. Une seule reprise complète avec sources/build/assertions byte-identiques passe127/39 ; le premier brut reste conservé, sans relabellage. Une seule victoire Feral–Scar exportée et relue ; autres partenaires/variantes et exigences source globales restent ouverts."
+      "limit": "Les échecs R4/R5/R6 restent documentés sous leurs identités ; les diagnostics candidats ne sont pas des certificats. Une seule victoire Feral–Scar exportée et relue est observée dans le brut, sans copie portable du JSON exporté. Deux images témoins ont été rouvertes lors de l’audit d’intégrité, sans revendiquer une nouvelle revue complète. Autres partenaires/variantes et exigences source restent ouverts."
     },
     {
-      "id": "V112-CURRENT-COMPILED-BUILD-R4",
+      "id": "V112-HISTORICAL-COMPILED-BUILD-R4",
       "status": "PASS_BUILD_ET_PUBLICATION",
-      "scope": "Build R4 terminé, même runtime et Build ID pour les deux domaines publiés. Les contrôles de publication vérifient les1563blobs réguliers du commit, les octets observés, le gel988097f754c3cc8fa825190b6644e21926c0515557cbad72912bb003f7e44df6, le brut et les78captures copiées à l’identique.",
+      "scope": "Archive historique de la livraison R4 : Build R4 terminé, même runtime et Build ID pour les deux domaines publiés. Les contrôles de publication vérifient les1563blobs réguliers du commit, les octets observés, le gel988097f754c3cc8fa825190b6644e21926c0515557cbad72912bb003f7e44df6, le brut et les78captures copiées à l’identique.",
       "command": "npm run build:production ; node scripts/publish-validation-v112.mjs --domain Homeworld puis --domain Pit avec les paramètres exacts conservés dans les journaux.",
       "evidence": [
         {
@@ -1350,7 +1392,118 @@
           "bytes": 2492
         }
       ],
-      "limit": "Build et recettes locales compilées, pas une validation de déploiement/CDN. Les phases R1–R3 et la première tentative Pit R4 ne deviennent pas des preuves finales par changement de nom."
+      "limit": "Build et recettes locales compilées, pas une validation de déploiement/CDN. Les phases R1–R3 et la première tentative Pit R4 ne deviennent pas des preuves finales par changement de nom. Cette ligne ne certifie pas les rapports courants R7 ; son ancien registre exact est archivé dans source-registry-r4.json."
+    },
+    {
+      "id": "V112-CURRENT-COMPILED-DOMAINS-R7",
+      "status": "PASS_CURRENT_DOMAIN_CHAIN",
+      "scope": "Les deux domaines publiés utilisent le même runtime bda14a95aa8c9e6cf37039e2d67ea1544a8e8de1, le même build conservé wVuSG_xIKNn3geLlIq7Cb et le même gel1649. Le Homeworld complet249/39 est rejoué après récupération ; le Pit127/39 garde ses octets d’origine. Les78captures de domaines conservent leurs chaînes propres.",
+      "command": "Vérification stricte des deux certificats par collectFollowupV112 et verifyProductionV112, sans nouveau build.",
+      "evidence": [
+        {
+          "path": "docs/v112-homeworld-validation.json",
+          "sha256": "431198b2e6bda28085f2758a66c1c84344712009e6f97b5c23a078eba0326124",
+          "bytes": 744079
+        },
+        {
+          "path": "docs/qa/v112-homeworld/entry.json",
+          "sha256": "fb6602c8ac4d4a61a07cec2d02057db734c0706563fb06235918d185db8142a1",
+          "bytes": 9208
+        },
+        {
+          "path": "docs/v112-pit-validation.json",
+          "sha256": "42bfd97315d3ebbc9f1a2416fd996fa204f62b4680871e2482c1893f4509ef60",
+          "bytes": 1230898
+        },
+        {
+          "path": "docs/qa/v112-pit/entry.json",
+          "sha256": "2bfe9f5e752b2a4cee6391b304c49a577e73d3c14133ee8892bfb8b64ca10552",
+          "bytes": 8702
+        },
+        {
+          "path": "docs/v112-runtime-freeze.json",
+          "sha256": "c35f8b454ec26d1b05852cabbe4f6ee111d71e7413aef80282582d3ca5ee6a3e",
+          "bytes": 306338
+        },
+        {
+          "path": "docs/qa/homeworld-resume-20261102/pit-preserved-verification.json",
+          "sha256": "3710b49fdcf878ea8f811d8869a9f8aa35eda2f59b8c68b261c4014470d21c92",
+          "bytes": 15897
+        }
+      ],
+      "limit": "Application compilée locale ; aucun déploiement/CDN ni nouvelle admission artistique. Les captures et les tests de modèle ne s’additionnent pas comme comportements distincts."
+    },
+    {
+      "id": "V112-CURRENT-MODELS-R7",
+      "status": "PASS_CURRENT_MODEL_REGRESSION",
+      "scope": "Une exécution courante de35fichiers V112 produit375assertions PASS, sans échec/ignoré/annulé. Les35empreintes et le document de gel restent exacts. Les deux suites Excel/certificat sont exclues de cette exécution puis exécutées séparément après publication.",
+      "command": "Commande et liste exactes dans current-checks-r7/inputs.json ; glob tests/*-v112.test.mjs avec deux exclusions déclarées.",
+      "evidence": [
+        {
+          "path": "docs/suivi-production/resume-20261101/current-checks-r7/result.json",
+          "sha256": "41f4eba40eb0c8d4f2224e59fbb4f569af1c0c09217e3527d7f5ba8b4a6b6a7c",
+          "bytes": 678
+        },
+        {
+          "path": "docs/suivi-production/resume-20261101/current-checks-r7/inputs.json",
+          "sha256": "773b9470618cd60a2b05f1bac6fd0c33a9d78a54a753e1e6f82a754eca8e7450",
+          "bytes": 9591
+        },
+        {
+          "path": "docs/suivi-production/resume-20261101/current-checks-r7/current-v112-excluding-two-excel-tests.log",
+          "sha256": "3150cd1be81d49d591c7020b0749228c45401ff49631e3ce94b98b054b88c3c0",
+          "bytes": 99754
+        }
+      ],
+      "limit": "Modèles, fonctions de production et gardes de source ; aucune nouvelle recette navigateur. Les suites historiques68/132/56 déjà réussies aux mêmes empreintes restent séparées et ne sont pas rejouées."
+    },
+    {
+      "id": "V112-LEGACY-UI-COMPATIBILITY-R7",
+      "status": "PASS_COMPATIBILITY_REGRESSION",
+      "scope": "Quatre parcours Legacy passent87contrôles/14captures inspectées sur bda14a95/wVu. Les1532sources observées identiques sont un sous-ensemble du gel1649 ; les quatre sauvegardes restent en version12, les inventaires et les91anciens artefacts conservés restent exacts.",
+      "command": "Recette Legacy de compatibilité archivée dans homeworld-legacy-regressions-20261101-r7/entry.json ; pas de nouveau certificat V111.",
+      "evidence": [
+        {
+          "path": "docs/qa/homeworld-legacy-regressions-20261101-r7/entry.json",
+          "sha256": "7d4ddbfd9da3b36778171ecec06b0fbcc446917328dd4f5d98540e286b611240",
+          "bytes": 7764
+        },
+        {
+          "path": "docs/qa/homeworld-legacy-regressions-20261101-r7/verification.json",
+          "sha256": "f106e57dbee97ed4b0c9aea2b7ae6ad37841473ef64b86a9ab2b3516570d111e",
+          "bytes": 15864
+        }
+      ],
+      "limit": "Compatibilité distincte :1532sources observées ne remplacent pas l’observation complète1649 exigée pour chacun des deux domaines V112. Aucune relabellisation du V111 historique."
+    },
+    {
+      "id": "V112-MARSH-EDGE-DIAGNOSTIC-OPEN",
+      "status": "OUVERT_NON_CORRIGE",
+      "scope": "Six images exploratoires réellement ouvertes sur le build R6 isolent de fins interstices extérieurs entre contours publics au passage des marais. Les coordonnées sont déduites des matrices DOM et du zoom extérieur réel0,9 ; la composition naturelle sous-jacente reste visible.",
+      "command": "Diagnostic exploratoire archivé avec traces DOM et sondages, sans nouvelle marche ni recette complète.",
+      "evidence": [
+        {
+          "path": "docs/qa/homeworld-marsh-edge-diagnostic-20261101/entry.json",
+          "sha256": "20110d49f8b22c92faff40e2bbf6870bd0d845c71c4d3a89aa572f817cdf83d9",
+          "bytes": 3266
+        },
+        {
+          "path": "docs/qa/homeworld-marsh-edge-diagnostic-20261101/README.md",
+          "sha256": "4ae371ce5e575b50bc15e368e438340e254f596dda4d83fdf66b402cacd4a001",
+          "bytes": 3113
+        },
+        {
+          "path": "docs/qa/homeworld-marsh-edge-diagnostic-20261101/exact-ground-probes.json",
+          "sha256": "aa4e682fd5ab4f27c833e2f4252dbb5d18a99bf22154e401b029d4863004daca",
+          "bytes": 2085
+        },
+        {
+          "path": "docs/qa/homeworld-marsh-edge-diagnostic-20261101/pixel-comparison.json",
+          "sha256": "35ebbe125c763be4711650adbf84e044155b0eee0f326f6ded8051d1baad0f5f",
+          "bytes": 3527
+        }
+      ],
+      "limit": "Aucun patch app qualifié. Le contributeur de rendu n’est pas réduit à une primitive unique ; ne pas supprimer une falaise réelle ni maquiller un espace non praticable par du pavement. Les PNG natifs restent intacts."
     }
   ],
   "limits": [
@@ -1359,19 +1512,21 @@
     "Les 354 cibles artistiques sont un catalogue distinct, pas une liste de 354 absences.",
     "Les tests de modèle, les captures du jeu compilé et la structure Excel certifient des périmètres différents.",
     "L'application Excel native et son moteur de calcul ne sont pas exécutés par ce suivi.",
-    "La passe UI de compatibilité Legacy conserve son identité R2 433ca03 / NRapDZCMK0dVatwXlwZcw (87 contrôles, 14 captures, 1 458 sources sur 1 560). Elle ne remplace ni ne relabelise les certificats complets des domaines sur le build courant R4.",
-    "Les deux certificats de domaines courants utilisent aa891dfff9bc022d1b7363d4b7085aca19b4d1e3 / WZwxZDYUZhpepqlaPWKpe et le même gel1563 ; la compatibilité Legacy R4 reste une validation distincte sur1458sources observées, pas un remplacement du gel complet.",
-    "La première tentative Pit R4 a échoué sur le lancement J2 du second parcours sans cause attribuée. Sa seule reprise complète, mêmes sources/build/assertions, passe127contrôles. Les deux tentatives sont conservées ; aucune absence générale d’intermittence n’est déduite de ce succès.",
-    "Les mesures du calcul de guidage Chromium coûtent environ5ms/appel et excluent React, mise en page et peinture. Le profil390px est une émulation sur le même CPU, pas une mesure sur téléphone physique."
+    "Les compatibilités Legacy R2/R4 conservent leurs identités et sources propres. La Legacy R7 passe87/14 sur1532sources observées parmi1649 ; aucune ne remplace le certificat complet Homeworld ni ne transforme les anciennes preuves V111 en validation courante.",
+    "Les deux certificats de domaines courants partagent bda14a95aa8c9e6cf37039e2d67ea1544a8e8de1/wVuSG_xIKNn3geLlIq7Cb et le gel1649c35f8b45. Homeworld249/39 est entièrement rejoué après récupération ; Pit127/39 conserve exactement sa publication antérieure au redémarrage.",
+    "La première tentative Pit R4 a échoué sur le lancement J2 du second parcours sans cause attribuée. Sa seule reprise complète, mêmes sources/build/assertions, passe127contrôles. Les deux tentatives sont conservées ; aucune absence générale d’intermittence n’est déduite de ce succès. Les échecs R5 (lancement) et R6 (lecture tardive du whiff) restent archivés ; les corrections bornées du pilote n’affaiblissent pas les critères et ne constituent pas un correctif du produit. Le R7 conserve14appuis uniques et des whiffs45/45.",
+    "Les mesures du calcul de guidage Chromium coûtent environ5ms/appel et excluent React, mise en page et peinture. Le profil390px est une émulation sur le même CPU, pas une mesure sur téléphone physique.",
+    "Le JSON de replay exporté par la victoire R7 est observé par le brut et son empreinte, mais ses octets ne sont pas dans la publication portable ; aucune copie n’est reconstruite ni revendiquée.",
+    "Le diagnostic des fines bandes extérieures du passage des marais reste OUVERT_NON_CORRIGE. Les249contrôles Homeworld, la protection des activités fixes et les six images exploratoires ne ferment pas ce défaut de composition de rive."
   ],
   "runtimeFreeze": {
     "path": "docs/v112-runtime-freeze.json",
-    "sha256": "988097f754c3cc8fa825190b6644e21926c0515557cbad72912bb003f7e44df6",
-    "bytes": 291082
+    "sha256": "c35f8b454ec26d1b05852cabbe4f6ee111d71e7413aef80282582d3ca5ee6a3e",
+    "bytes": 306338
   },
   "production": {
     "path": "docs/v112-homeworld-validation.json",
-    "sha256": "b9a0ba49b28dd042813861c2909cb913cd9eb2049c38979f819aeee6ebf8323e",
-    "bytes": 712807
+    "sha256": "431198b2e6bda28085f2758a66c1c84344712009e6f97b5c23a078eba0326124",
+    "bytes": 744079
   }
 }

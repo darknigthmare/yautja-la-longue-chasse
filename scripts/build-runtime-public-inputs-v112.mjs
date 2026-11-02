@@ -19,6 +19,9 @@ export async function buildRuntimePublicInputsV112() {
   load('homeworldPublicPlacesMountV112');
   const life = load('homeworldPublicLifeV112'), motion = load('homeworldCivilianMotionV74');
   const sourcePaths = new Set();
+  // The merged planet tools read this unchanged public-domain geography file.
+  // Pin its bytes without counting it as a Homeworld or Pit art admission.
+  sourcePaths.add('public/game/planets/earth/ne_110m_land.geojson');
   const add = src => {assert.ok(typeof src === 'string' && src.startsWith('/game/')); sourcePaths.add('public' + src);};
   for (const item of places.HOMEWORLD_PUBLIC_PLACES_V112) add(places.HOMEWORLD_PUBLIC_PLACE_ART_V112[item.artId].src);
   for (const inhabitant of life.HOMEWORLD_PUBLIC_LIFE_V112) {
@@ -37,7 +40,7 @@ export async function buildRuntimePublicInputsV112() {
   const provenance = [...await walk('art-source/v112'), ...await walk('art-source/v112-pit-backward'),
     ...await walk('docs/suivi-production/v112-pit-backward')].sort();
   return {schemaVersion: 1, release: 'V112',
-    scope: 'Unedited new V112 native sources and original receipts; explicitly reused civilian motion, public furniture, six facades and foundation/paving images. Reuse does not close an artistic target.',
+    scope: 'Unedited new V112 native sources and original receipts; explicitly reused civilian motion, public furniture, six facades and foundation/paving images; unchanged public-domain Natural Earth data used by the merged planet tools. Reuse and geography do not close an artistic target.',
     assets: await Promise.all(assets.map(file => fingerprintV112(ROOT, file))),
     provenance: await Promise.all(provenance.map(file => fingerprintV112(ROOT, file))),
     runtimeAssets: [...sourcePaths].sort()};

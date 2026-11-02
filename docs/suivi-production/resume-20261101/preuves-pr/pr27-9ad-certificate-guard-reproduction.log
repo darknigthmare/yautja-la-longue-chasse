@@ -1,0 +1,31 @@
+✖ V112 retains every inherited requirement and keeps nine actions inside the 56 source rows (295.623498ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 750.924777
+
+✖ failing tests:
+
+test at tests/homeworld-excel-followup-v112.test.mjs:15:1
+✖ V112 retains every inherited requirement and keeps nine actions inside the 56 source rows (295.623498ms)
+  AssertionError [ERR_ASSERTION]: Changed evidence size: app/game/ClanWarAtlasV95.tsx
+  
+  50034 !== 49834
+  
+      at verifyProof (file:///tmp/yautja-pr27-reviewfix/scripts/build-homeworld-followup-v112.mjs:35:42)
+      at async verifyProductionV112 (file:///tmp/yautja-pr27-reviewfix/scripts/build-homeworld-followup-v112.mjs:130:37)
+      at async collectFollowupV112 (file:///tmp/yautja-pr27-reviewfix/scripts/build-homeworld-followup-v112.mjs:195:44)
+      at async TestContext.<anonymous> (file:///tmp/yautja-pr27-reviewfix/tests/homeworld-excel-followup-v112.test.mjs:16:20)
+      at async Test.run (node:internal/test_runner/test:1054:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 50034,
+    expected: 49834,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

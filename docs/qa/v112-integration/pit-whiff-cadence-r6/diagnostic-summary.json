@@ -1,0 +1,51 @@
+{
+  "status": "PASS_DIAGNOSTIC_NOT_PUBLISHABLE",
+  "domain": "PitCadenceDiagnostic",
+  "completeRecipe": false,
+  "runtimeCommit": "0f79d3d8eac494cec4c418ac5b2f867929850bb7",
+  "buildId": "vxOXqmuKalwQbkLqTZnwN",
+  "sourceCompletion": false,
+  "frozenInputsObserved": 1608,
+  "frozenInputsUnchanged": true,
+  "checksPassed": 127,
+  "captureCandidates": 39,
+  "captureReviewStatus": "Diagnostic candidates retained unchanged; not a newly claimed39-capture visual admission.",
+  "completedJourneys": [
+    "FeralScar",
+    "ScarFeral"
+  ],
+  "rawDecodedBytes": 12634925,
+  "rawDecodedSha256": "619a5bb115d7e654436fefee4c39f0639d9c0b108743edd483c79576766aa62d",
+  "effectiveWhiffs": [
+    {
+      "label": "feral-hunter-vs-scar-first-whiff",
+      "frames": 45,
+      "samples": 77,
+      "narrowPolls": 34
+    },
+    {
+      "label": "scar-vs-feral-hunter-first-whiff",
+      "frames": 45,
+      "samples": 68,
+      "narrowPolls": 25
+    }
+  ],
+  "unchangedBounds": {
+    "maximumWhiffPolls": 180,
+    "sourceDurationFrames": 45,
+    "maximumObservedRecoveryFrameOffset": 46
+  },
+  "browserErrors": {
+    "errors": [],
+    "consoleErrors": [],
+    "workerErrors": [],
+    "requestsFailed": []
+  },
+  "limits": [
+    "The original R6 complete recipe failed at a sampling boundary and is retained separately in failed-complete.",
+    "Both targeted diagnostics and this complete candidate exercise outside-commit QA tools. They never certify a new canonical driver or close any source item.",
+    "The cadence only narrows the last three source frames to1ms requests; all phase, health, capture, source clock, upper recovery bound, trajectory and native drawing checks remain intact.",
+    "A fresh committed driver, freeze, production build and both complete domain recipes remain required.",
+    "The declared first-tracks menu profile, neutral virtual input pads and sourceCompletion=false remain explicit."
+  ]
+}

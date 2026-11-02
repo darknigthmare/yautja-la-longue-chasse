@@ -1,0 +1,16 @@
+PASS feral-hunter-vs-scar: local app serves the declared build
+PASS feral-hunter-vs-scar: public option enters the separate V17 source recipe
+PASS feral-hunter-vs-scar-first-whiff: the actual two bodies begin beyond source throw reach
+FAIL feral-hunter-vs-scar-first-whiff: recovery stays inside the source-frame bound
+AssertionError [ERR_ASSERTION]: feral-hunter-vs-scar-first-whiff: recovery stays inside the source-frame bound
+    at check (file:///workspace/yautja-la-longue-chasse/scripts/qa-pit-backward-throws-v112.mjs:69:194)
+    at require (file:///workspace/yautja-la-longue-chasse/scripts/qa-pit-backward-throws-v112.mjs:175:64)
+    at observedOutOfRangeWhiff (file:///workspace/yautja-la-longue-chasse/scripts/qa-pit-backward-throws-v112.mjs:202:7)
+    at async file:///workspace/yautja-la-longue-chasse/scripts/qa-pit-backward-throws-v112.mjs:348:5 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}

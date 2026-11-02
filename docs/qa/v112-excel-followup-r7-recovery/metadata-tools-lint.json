@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "command": "node node_modules/eslint/bin/eslint.js scripts/build-homeworld-followup-v112.mjs scripts/check-excel-history-compat-v112.mjs tests/homeworld-excel-followup-v112.test.mjs",
+  "exitCode": 0,
+  "checkedFiles": [
+    {
+      "path": "scripts/build-homeworld-followup-v112.mjs",
+      "bytes": 28254,
+      "sha256": "822c2acdb211da4314880e5285f92c709d66ea51e35fa11d780a8c8a80356bf6"
+    },
+    {
+      "path": "scripts/check-excel-history-compat-v112.mjs",
+      "bytes": 3865,
+      "sha256": "a50a16b41f008488ebbdc1085f3f02293dd3ffc0c30fbde1ce4ae7c210f325c9"
+    },
+    {
+      "path": "tests/homeworld-excel-followup-v112.test.mjs",
+      "bytes": 9389,
+      "sha256": "cc1b2370e7eb9a61c39ba42044a073662056be1c4ce44848e64d521f858eafaf"
+    }
+  ],
+  "log": "docs/qa/v112-excel-followup-r7-recovery/metadata-tools-lint.log",
+  "stdoutAndStderrEmpty": true
+}

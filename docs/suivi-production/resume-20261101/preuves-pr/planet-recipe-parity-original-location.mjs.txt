@@ -1,0 +1,22 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+import {build} from '/workspace/yautja-la-longue-chasse/node_modules/esbuild/lib/main.js';
+const root='/tmp/pr27-review-r5', resolveDir=root+'/app/game/systems';
+const oldSource=await fs.readFile(root+'/recipe-original-v115.ts.txt','utf8');
+const newSource=await fs.readFile(resolveDir+'/clanWarPlanetGeneratorV115.ts','utf8');
+async function compile(contents){const b=await build({stdin:{contents,resolveDir,loader:'ts'},bundle:true,write:false,platform:'node',format:'esm',logLevel:'silent'});return import('data:text/javascript;base64,'+Buffer.from(b.outputFiles[0].text).toString('base64'));}
+const before=await compile(oldSource),after=await compile(newSource);const sizes=['dwarf','small','terran','large','giant','colossal'];let cases=0;const worlds=[];
+for(const planetSize of sizes)for(let i=0;i<32;i++){
+ const recipe=Object.freeze({...before.DEFAULT_WAR_PLANET_RECIPE_V115,planetSize,seed:(1038507+i*7321)>>>0,islandShape:i%40,continentShape:(i*7)%40,regionShape:(i*11)%40,landMaterial:i%16,liquidMaterial:(i*3)%16});
+ const rawBefore=JSON.stringify(recipe), excluded=new Set(['version','planetSize','islandShape','continentShape','regionShape','landMaterial','liquidMaterial']);
+ const expected={...Object.fromEntries(Object.entries(recipe).filter(([k])=>!excluded.has(k))),version:103};
+ assert.equal(JSON.stringify(after.baseWarPlanetRecipeV103FromV115(recipe)),JSON.stringify(expected),'exact ordered rest-exclusion');
+ const oldCode=before.encodeWarPlanetV115(recipe),newCode=after.encodeWarPlanetV115(recipe);assert.equal(newCode,oldCode);
+ assert.equal(JSON.stringify(after.parseWarPlanetV115(newCode)),JSON.stringify(before.parseWarPlanetV115(oldCode)));
+ assert.equal(JSON.stringify(after.describeWarPlanetV115(newCode)),JSON.stringify(before.describeWarPlanetV115(oldCode)));
+ assert.equal(JSON.stringify(recipe),rawBefore,'input remains frozen and identical');cases++;
+ if(i===0){const b=JSON.stringify(before.generateWarPlanetV115(recipe)),a=JSON.stringify(after.generateWarPlanetV115(recipe));assert.equal(a,b,'entire generated world remains byte-identical');worlds.push({planetSize,bytes:Buffer.byteLength(a),sha256:createHash('sha256').update(a).digest('hex')});}
+}
+const result={status:'PASS',scope:'Isolated before/after cleanup; exact ordered base recipe, codes, parse, descriptions and six complete serialized generated worlds. No browser/visual or campaign claim.',recipes:cases,worlds,beforeModuleSha256:createHash('sha256').update(oldSource).digest('hex'),afterModuleSha256:createHash('sha256').update(newSource).digest('hex')};
+await fs.writeFile('/tmp/pr27-review-r5-recipe-parity.json',JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify(result,null,2));

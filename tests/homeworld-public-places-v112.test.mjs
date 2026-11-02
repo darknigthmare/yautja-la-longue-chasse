@@ -10,10 +10,10 @@ const world=load('homeworldWorldV77'),civic=load('homeworldCivicWorldV80'),geome
 const nav=load('homeworldNavigationV77');
 const center=polygon=>({x:polygon.reduce((sum,p)=>sum+p.x,0)/polygon.length,y:polygon.reduce((sum,p)=>sum+p.y,0)/polygon.length});
 
-test('V112 admits five fixed places, retains five explicit refusals, and preserves the earlier cartographic approach',()=>{
+test('V112 admits six fixed places, retains four explicit refusals, and recompiles without colliding against itself',()=>{
   assert.equal(places.HOMEWORLD_PUBLIC_PLACE_CANDIDATES_V112.length,10);
-  assert.equal(places.HOMEWORLD_PUBLIC_PLACES_V112.length,5);
-  assert.equal(places.HOMEWORLD_PUBLIC_PLACE_REFUSALS_V112.length,5);
+  assert.equal(places.HOMEWORLD_PUBLIC_PLACES_V112.length,6);
+  assert.equal(places.HOMEWORLD_PUBLIC_PLACE_REFUSALS_V112.length,4);
   const all=new Set([...places.HOMEWORLD_PUBLIC_PLACES_V112,...places.HOMEWORLD_PUBLIC_PLACE_REFUSALS_V112].map(item=>item.id));
   assert.equal(all.size,10);
   assert(places.HOMEWORLD_PUBLIC_PLACE_REFUSALS_V112.some(item=>item.reason.includes('stable-supplies')),'a retained civilian path wins over a proposed marker');
@@ -25,39 +25,23 @@ test('V112 admits five fixed places, retains five explicit refusals, and preserv
   assert.equal(load('homeworldStreetCompositionV92').HOMEWORLD_STREET_COMPOSITION_PROPS_V92.length,23);
 });
 
-test('the new register marker stays inventoried but cannot occupy the unchanged V104 native approach or displace any other place',()=>{
+test('the relocated register marker preserves the exact earlier cartographic route and refuses its old obstructing position',()=>{
   const binding=load('homeworldCartographyDefinitionV104').HOMEWORLD_CARTOGRAPHY_V104;
   const approach=binding.waypoints[0],id='public-place-v112:register-marker';
   const candidate=places.HOMEWORLD_PUBLIC_PLACE_CANDIDATES_V112.find(item=>item.id===id);
-  assert(candidate);assert.equal(candidate.x,6140);assert.equal(candidate.y,5020);
-  assert.equal(candidate.interactive,false,'a refused scenery proposal cannot retain a world interaction');
-  const reserve=mount.HOMEWORLD_PUBLIC_PLACE_INPUT_V112.reserves.find(item=>item.id==='native-cartography-approach:'+approach.id);
-  assert(reserve,'the earlier recorded on-foot destination has an explicit native reserve');
-  const body=load('homeworldCity').HOMEWORLD_ACTOR;
-  const contact=[
-    {x:approach.x-body.halfWidth,y:approach.y-body.halfDepth},
-    {x:approach.x+body.halfWidth,y:approach.y-body.halfDepth},
-    {x:approach.x+body.halfWidth,y:approach.y+body.halfDepth},
-    {x:approach.x-body.halfWidth,y:approach.y+body.halfDepth},
-  ];
-  assert(load('homeworldStreetDecorV83').homeworldStreetDecorOverlapV83(
-    places.homeworldPublicPlacePolygonV112(candidate),contact),'the actual measured marker hull reproduces the obstructed V104 body');
-  const prior=places.compileHomeworldPublicPlacesV112({...mount.HOMEWORLD_PUBLIC_PLACE_INPUT_V112,
-    reserves:mount.HOMEWORLD_PUBLIC_PLACE_INPUT_V112.reserves.filter(item=>item!==reserve)});
-  assert.equal(prior.accepted.length,6);assert.equal(prior.refusals.length,4);
-  assert(prior.accepted.some(item=>item.id===id),'the missing legacy approach reserve caused the earlier bad admission');
-  assert.deepEqual(places.HOMEWORLD_PUBLIC_PLACES_V112,prior.accepted.filter(item=>item.id!==id),'every other admitted prop is retained exactly');
-  assert.deepEqual(places.HOMEWORLD_PUBLIC_PLACE_REFUSALS_V112.filter(item=>item.id!==id),prior.refusals);
-  assert.deepEqual(places.HOMEWORLD_PUBLIC_PLACE_REFUSALS_V112.find(item=>item.id===id),
-    {id,reason:'reserved:native-cartography-approach:'+approach.id});
-  assert(civic.homeworldCivicWalkableV80('0',approach),'full native body can stand at the original coordinates');
+  assert(candidate);assert.equal(candidate.x,6270);assert.equal(candidate.y,4990);
+  assert(places.HOMEWORLD_PUBLIC_PLACES_V112.some(item=>item.id===id),'the reviewed new position remains admitted');
+  const oldPosition={...candidate,x:6140,y:5020};
+  const refused=places.compileHomeworldPublicPlacesV112(mount.HOMEWORLD_PUBLIC_PLACE_INPUT_V112,[oldPosition]);
+  assert.equal(refused.accepted.length,0);assert.equal(refused.refusals.length,1);
+  assert.match(refused.refusals[0].reason,/^reserved:/,'the retained physical approach prevents a regression to the old position');
+  assert(civic.homeworldCivicWalkableV80('0',approach));
   assert.equal(places.homeworldPublicPlaceCollisionV112('0',approach),null);
   const points=[binding.post,...binding.waypoints,binding.post];
   for(let index=1;index<points.length;index++)assert(nav.homeworldRouteSegmentV77('0',points[index-1],points[index]));
-  assert(load('homeworldCartographyV104').cartographyServicePresentV104(),'the actual old planter/lectern/lamp service remains present');
-  const html=qa.render('app/game/HomeworldPublicPlacesV112.tsx',{actor:binding.post,levelId:'0',paintedLevels:['0'],
-    camera:{x:-2000,y:-2000,viewWidth:18000,viewHeight:18000}});
-  assert(!html.includes('data-homeworld-prop-id="'+id+'"'),'a refused marker has neither a mounted sprite nor an interaction surface');
+  assert(load('homeworldCartographyV104').cartographyServicePresentV104());
+  const html=qa.render('app/game/HomeworldPublicPlacesV112.tsx',{actor:binding.post,levelId:'0',paintedLevels:['0'],camera:{x:-2000,y:-2000,viewWidth:18000,viewHeight:18000}});
+  assert(html.includes('data-homeworld-prop-id="'+id+'"'),'the reviewed relocated native sprite is actually mounted');
 });
 
 test('every admitted contact is supported and solid on its own floor while the actual operator body and route stay free',()=>{
@@ -89,12 +73,12 @@ test('every admitted contact is supported and solid on its own floor while the a
   }
 });
 
-test('the retained native bytes, scale, source orientation, projected foot and depth drive the actual five-instance renderer',()=>{
+test('the retained native bytes, scale, source orientation, projected foot and depth drive the actual six-instance renderer',()=>{
   const camera={x:-2000,y:-2000,viewWidth:18000,viewHeight:18000};
   const props={actor:world.HOMEWORLD_SPACEPORT_V77.spawn,levelId:'0',paintedLevels:['0'],camera};
   const html=qa.render('app/game/HomeworldPublicPlacesV112.tsx',props);
   const tags=[...html.matchAll(/<span[^>]*data-homeworld-prop-id="([^"]+)"[^>]*>/g)];
-  assert.equal(tags.length,5);
+  assert.equal(tags.length,6);
   for (const item of places.HOMEWORLD_PUBLIC_PLACES_V112) {
     const art=places.HOMEWORLD_PUBLIC_PLACE_ART_V112[item.artId],raw=fs.readFileSync('public'+art.src);
     assert.equal(createHash('sha256').update(raw).digest('hex'),art.sha256);

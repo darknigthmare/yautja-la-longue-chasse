@@ -1,0 +1,27 @@
+{
+  "baseHeadSha": "f54dd68ce1a8708409d0075f0dcc7a76f2be647b",
+  "realGitWorktree": "/tmp/yautja-pr39-reviewfix",
+  "exactSparsePatterns": [
+    "/*",
+    "!/*/",
+    "/app/",
+    "/desktop/",
+    "/scripts/",
+    "/tests/",
+    "/db/",
+    "/worker/",
+    "/drizzle/",
+    "/build/",
+    "/.openai/hosting.json",
+    "/public/**/manifest.json"
+  ],
+  "matchesProposedTypesJob": true,
+  "realPublicManifests": 17,
+  "rootBuildImportsPresent": true,
+  "patchedOnlyTwoProductModules": [
+    "app/game/systems/clanWarPlanetTopologyAdvisorV139.ts",
+    "app/game/PlanetReliefV150.tsx"
+  ],
+  "nodeModulesReuse": "Symlink to existing locked install whose package-lock is byte-identical",
+  "sourceOnlyNoBrowser": true
+}

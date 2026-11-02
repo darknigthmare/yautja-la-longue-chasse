@@ -1,0 +1,22 @@
+{
+  "method": "Both PNG files opened with view_image by the reviewing agent on 2026-11-01.",
+  "captures": [
+    {
+      "file": "actual-worker-cargo-detour.png",
+      "sha256": "d2a0c799645cf47817a129d91646acc1c2702488f17cd6fa756d5499a42ec371",
+      "bytes": 28051
+    },
+    {
+      "file": "mobile-cargo-register.png",
+      "sha256": "1fbe530cecfc727d458e47f14a298324fc70e661edba036fa862662c556cec9a",
+      "bytes": 65963
+    }
+  ],
+  "context": "Current Homeworld working tree; final harness scope annotation.",
+  "findings": [
+    "The cargo detour and two independent ground polygons are visibly drawn.",
+    "The 390px fixture has no horizontal overflow; the cargo list continues in scrollable content."
+  ],
+  "compiledApplicationCertified": false,
+  "physicalMobileTested": false
+}

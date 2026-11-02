@@ -201,7 +201,7 @@ test('V111 actual interact refuses an available doorway while A carries the frag
   assert.deepEqual([...state.values],durable);assert.equal(state.writes,0);
 });
 
-test('V111 Save11 to12 preserves the genuine V110 campaign and B document while initializing additive hunting defaults',async()=>{
+test('V111 Save11 to12 preserves the genuine V110 campaign and B document while initializing additive hunting and appearance defaults',async()=>{
   const history=await getHistoricalHomeworldExcelContextV111(),old=homeworldSceneSsrV78(history.root).load('app/game/save.ts');
   assert.equal(old.SAVE_VERSION,11);assert.equal(saves.SAVE_VERSION,12);
   const state=stateAt('working'),legacy=old.defaultSave(owner);
