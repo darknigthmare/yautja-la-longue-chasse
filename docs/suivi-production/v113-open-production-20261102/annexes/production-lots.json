@@ -1,0 +1,319 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-02",
+  "status": "BOUNDED_PRODUCTION_BACKLOG_NO_CLOSURES",
+  "lots": [
+    {
+      "id": "V113-HW-03-NATIVE-PROPS",
+      "priority": 1,
+      "domain": "Homeworld / habitat Preserve",
+      "sourceIds": [
+        "target-v81-71-271",
+        "target-v81-71-272",
+        "target-v81-71-280"
+      ],
+      "deliverable": "Trois props natifs indépendants : abreuvoir alien,nourrisseur,signal danger. Quatre PNG bruts produits pour trois cibles, dont deux essais abreuvoir.",
+      "sessionState": "GENERATED_CANDIDATES_TECHNICALLY_NOT_ADMITTED",
+      "missingReality": "Les images sont de nouveaux candidats. Aucun ne satisfait la demande stricte de48px de marge alpha>0 ; le signal manque aussi de marge visuelle forte. Aucun fichier runtime,interaction ou collision n’est raccordé.",
+      "existingPaths": [
+        "/workspace/native-production-20261102/generation-receipts.json",
+        "/workspace/native-production-20261102/native-technical-inspection.json"
+      ],
+      "admission": [
+        "Fichier natif exact,origine outil/reçu,SHA/dimensions/RGBA et transparence vérifiés.",
+        "Silhouette entière,48px de marge et absence de bruit alpha détaché réellement vérifiés sans retouche des pixels.",
+        "Pivot au sol mesuré,silhouette lisible à échelle Homeworld,référence d’usage séparée de la collision.",
+        "Revue visuelle puis intégration explicite,accès/sortie sauvegarde et recette compilée avant toute livraison ciblée.",
+        "validated reste réservé à une revue artistique humaine."
+      ],
+      "doesNotClose": [
+        "Aucune des354cibles artistiques par simple génération.",
+        "PRESERVE-SECTEURS",
+        "PRESERVE-COMBATTANTS"
+      ]
+    },
+    {
+      "id": "V113-FS-OFFENSIVE-DISARM",
+      "priority": 1,
+      "domain": "Feral et Scar",
+      "sourceIds": [
+        "CIN_F006_CLEMENCE",
+        "CIN_F003_CLEMENCE",
+        "VAR-feral-hunter.lost-or-stowed-equipment",
+        "VAR-scar.lost-or-stowed-equipment"
+      ],
+      "sessionState": "READY_FOR_BOUNDED_NATIVE_PRODUCTION_AFTER_REFERENCE_REVIEW",
+      "deliverable": "Arme offensive autonome et victime réellement désarmée dans les deux sens,à raccorder aux BODY CLEMENCE déjà présents.",
+      "missingReality": "Le module courant ne détache qu’un dispositif inerte ; la liste des admissions de désarmement offensif est vide. Il manque une vraie arme autonome et ses prises victimemainvide,ainsi que leur contact/transfert/ramassage.",
+      "existingPaths": [
+        "app/game/data/pitWorkbookConclusionAnchorsV107.json",
+        "app/game/systems/pitWorkbookConclusionsV107.ts",
+        "app/game/systems/pitWorkbookConclusionSourceV107.ts",
+        "docs/pit-workbook-conclusions-v107.md",
+        "app/game/data/pitWorkbookAnimationsV100.json"
+      ],
+      "admission": [
+        "Ouvrir les BODY CLEMENCE existants et les gardes natives de chaque victime ; même incarnation et même équipement réel.",
+        "Dessins offensifs séparés de la victime,deux orientations natives sans miroir ; main effectivement vide après détachement.",
+        "Un seul contact causal ; ownership conservé,arc/chute/sol et ramassage par proximité réels,ni arme dupliquée ni inventaire recréé.",
+        "Tester refus victoire/contexte/équipement,interruptions,réduit/allié,pause,replay,sauvegarde et reprise.",
+        "Recette du compilé et revue des captures distinctes d’une génération ou admission technique."
+      ],
+      "doesNotClose": [
+        "PIT-KITS-COMPLETS",
+        "Les partenaires et costumes non exercés."
+      ]
+    },
+    {
+      "id": "V113-FERAL-CONCLUSION-PARTNER",
+      "priority": 2,
+      "domain": "Feral",
+      "sourceIds": [
+        "CIN_F006_FATALITE_1",
+        "CIN_F006_FATALITE_2"
+      ],
+      "sessionState": "BODY_PRESENT_PARTNER_CONTACTS_TO_PRODUCE",
+      "deliverable": "Partenaire autonome,contacts et continuité bouclier/lance/lames pour les deux conclusions Feral existantes.",
+      "missingReality": "Les pages BODY existent déjà ; une victime peinte dans la même page ou une pose de fin ne qualifie ni saisie ni contact ni issue réelle.",
+      "existingPaths": [
+        "app/game/data/pitWorkbookAnimationsV100.json",
+        "app/game/data/pitWorkbookAnimationPlanV100.json",
+        "app/game/systems/pitWorkbookConclusionsV107.ts"
+      ],
+      "admission": [
+        "Réutiliser les BODY existants et mesurer pivots,fenêtres et points de contact sans retoucher les dessins.",
+        "Adulte hostile réellement vaincu et équipement compatible,aucune branche létale en entraînement/allié/réduit.",
+        "Victime séparée,contact synchronisé,mur/relief réel et objets gardant leur identité.",
+        "Feral : anatomie spécifique,pas de canon d’épaule classique ; visée seulement avec masque fonctionnel."
+      ]
+    },
+    {
+      "id": "V113-SCAR-XENO-PARTNER",
+      "priority": 2,
+      "domain": "Scar",
+      "sourceIds": [
+        "CIN_F003_FATALITE_1",
+        "CAM-scar.02",
+        "CAM-scar.03",
+        "CAM-scar.05",
+        "CAM-scar.07"
+      ],
+      "sessionState": "SOURCE_VICTIM_REFERENCE_AND_COMBAT_ADMISSION_REQUIRED",
+      "deliverable": "Géométrie,victime xénomorphe indépendante et réaction acide ; Grid distinct du drone.",
+      "missingReality": "Le BODY Scar existe ; npc-grid et npc-xeno-drone ne sont pas inscrits au roster de duel. Une écologie xéno ou un portrait n’est pas ce combattant.",
+      "existingPaths": [
+        "app/game/data/pitWorkbookScopeV105.json",
+        "app/game/data/pitWorkbookAnimationsV100.json",
+        "docs/pit-workbook-conclusions-v107.md"
+      ],
+      "admission": [
+        "Verrouiller la référence d’incarnation de chaque xénomorphe avant dessin.",
+        "Deux acteurs indépendants,anatomie et dégâts/contacts compatibles ; acidité et mouvement de victime ne sont pas un filtre vert arbitraire.",
+        "Scar sans marque au début de l’histoire ; armes réelles et branche alternative explicitement étiquetée.",
+        "Qualité native puis raccord collision,IA/entrées,réactions et vraie rencontre jouée."
+      ]
+    },
+    {
+      "id": "V113-FS-EQUIPMENT-VARIANTS",
+      "priority": 2,
+      "domain": "Feral et Scar",
+      "sourceIds": [
+        "VAR-feral-hunter.masked",
+        "VAR-feral-hunter.unmasked",
+        "VAR-feral-hunter.damage-and-armor",
+        "VAR-scar.masked",
+        "VAR-scar.unmasked",
+        "VAR-scar.damage-and-armor"
+      ],
+      "sessionState": "NATIVE_REFERENCES_EXIST_NEW_TRANSITION_DRAWINGS_REQUIRED",
+      "deliverable": "Un seul état de masque/équipement cohérent par personnage,avec ses transitions et deux sens natifs ; pas toutes les14contraintes promises.",
+      "missingReality": "Les26actions d’étude par personnage couvrent l’apparence par défaut. Scar masqué a sept séquences partielles mais pas ses attaques ; les autres poses statiques ne livrent pas un cycle.",
+      "existingPaths": [
+        "app/game/pitWorkbookVariantCapabilitiesV107.ts",
+        "app/game/data/pitUserVariantsV63.json",
+        "docs/pit-workbook-variant-capabilities-v107.md"
+      ],
+      "admission": [
+        "Sélectionner une incarnation/chapitre exacts et ouvrir ses références existantes.",
+        "Masque et arme doivent persister dans les mains/emplacements ; perte,rangement et armure cassée bloquent leurs coups jusqu’au vrai rééquipement.",
+        "Deux vues natives mesurées,aucun miroir qui inverse équipement ou cicatrice.",
+        "Conserver connaissance,blessures,sortie/entrée et refus de la variante non produite."
+      ]
+    },
+    {
+      "id": "V113-PRESERVE-ONE-RESERVE",
+      "priority": 2,
+      "domain": "Preserve",
+      "sourceIds": [
+        "PRESERVE-SECTEURS",
+        "PRESERVE-COMBATTANTS"
+      ],
+      "sessionState": "BOUNDED_IMPLEMENTATION_POSSIBLE_WITH_VERSIONED_NEW_DEFINITION",
+      "deliverable": "Une réserve originale de huit secteurs avec géométrie réellement différente,objectifs locaux,retour physique et un effectif explicite réellement défini.",
+      "missingReality": "32/80secteurs et64/100adultes sont définis dans quatre réserves. Restent48secteurs/36adultes ; ne pas ajouter48+36compteurs ni annoncer100fiches à partir des trois atlas partagés.",
+      "existingPaths": [
+        "app/game/systems/gameReserveV66.ts",
+        "app/game/systems/gameReserveExpeditionV109.ts",
+        "app/game/GameReserveV66.tsx",
+        "app/game/gameReserveV66Rendering.ts",
+        "docs/v109-preserve-hunt-biomes.md",
+        "tests/game-reserve-biomes-v109.test.mjs",
+        "tests/game-reserve-biomes-persistence-v109.test.mjs"
+      ],
+      "admission": [
+        "Nouvelle identité et version de définition ; aucune migration automatique des vieux checkpoints1–5.",
+        "Huit secteurs uniques/contigus,hauteurs,couvertures et routes hautes/basses propres ; ne pas recolorer Khar-Duun/Iskhel.",
+        "Adultes nommés,rôles et comportements paramétrés,stocks et appareils finis ; compter uniquement les identités nouvellement définies.",
+        "Aller/retour par vrais sauts/marche,objectifs déclenchés par gestes et faits réels ; refus d’écriture et reprise sans duplication.",
+        "Un atlas partagé ne devient pas un nouveau BODY ni une fiche H001–H100."
+      ]
+    },
+    {
+      "id": "V113-PRESERVE-ADULT-IDENTITIES",
+      "priority": 3,
+      "domain": "Preserve",
+      "sourceIds": [
+        "PRESERVE-COMBATTANTS"
+      ],
+      "sessionState": "GRAPHIC_SHEETS_STILL_UNADMITTED",
+      "deliverable": "Premier lot de fiches adultes avec rôle,équipement et deux sens natifs mesurés,sans renommer les atlas de simulation.",
+      "missingReality": "64adultes de simulation ne sont pas64fiches graphiques uniques ; trois atlas humains sont partagés. L’objectif100adultes et sa représentation graphique doivent garder des comptes distincts.",
+      "existingPaths": [
+        "app/game/systems/gameReserveExpeditionV107.ts",
+        "app/game/systems/gameReserveExpeditionV108.ts",
+        "app/game/systems/gameReserveExpeditionV109.ts",
+        "app/game/preserveHumanConceptsV36.json"
+      ],
+      "admission": [
+        "Référence et identité propres à chaque fiche,adulte armé clairement identifié.",
+        "Silhouette native droite/gauche,matériel réellement porté et variantes de rôle lisibles sans simple recoloration.",
+        "Locomotion,réaction,combat,portage/réparation/embarquement adaptés à sa vraie fonction.",
+        "Aucun nombre de combattants ajouté avant données distinctes,raccord et comportement effectivement testés."
+      ]
+    },
+    {
+      "id": "V113-CLAN-CAMPAIGN-AUTHORITY",
+      "priority": 2,
+      "domain": "Guerre de clans / Homeworld",
+      "sourceIds": [
+        "W3-S09",
+        "W3-S10",
+        "W3-S13",
+        "W3-S14",
+        "W3-S15",
+        "W3-S18"
+      ],
+      "additionalExactSource": [
+        "R2-M021 : Campagne commune!D26:J26 ; Scènes de dialogue V6!H597:J597"
+      ],
+      "sessionState": "UPSTREAM_REAL_AUTHORITY_PRODUCER_MISSING",
+      "deliverable": "Définir puis raccorder un producteur durable et sourcé de moyens/accord ; conserver les six ouvrages existants comme exercice tant qu’il manque.",
+      "missingReality": "Le convoi et la tournée physiques fonctionnent comme exercice doté de600RAV. GameClient fournit toujours authority:null ; ni catalogue54coques ni clanMarks ni fixture ne crée une propriété de campagne.",
+      "existingPaths": [
+        "app/game/systems/shipAcquisitionV89.ts",
+        "app/game/systems/clanLogisticsV108.ts",
+        "app/game/systems/clanSupplyRouteV109.ts",
+        "docs/ship-acquisition-v89.md",
+        "docs/v108-clan-logistics-contract.md",
+        "docs/v109-clan-supply-route.md"
+      ],
+      "admission": [
+        "Source économie/accord exacte à identifier ; pas de taux de conversion arbitraire.",
+        "Même propriétaire,candidat/coque,responsable,accord et moyens consommés,reçus durables uniques.",
+        "Présence physique,droits puis entrée effective avant propriété et départ réel.",
+        "Stocks,transport,énergie,duel consenti et sons situés conservés ; tests refus/replay/sauvegarde/concurrence puis recette compilée."
+      ]
+    },
+    {
+      "id": "V113-HW-FORGE-ACTIVE",
+      "priority": 2,
+      "domain": "Homeworld",
+      "sourceIds": [
+        "target-v81-63-141"
+      ],
+      "sessionState": "ONLY_HISTORIC_MISSING_ANIMATION_TARGET",
+      "deliverable": "Cycle professionnel de forge active,mouvements natifs cohérents et interaction de travail distincte du décor statique.",
+      "missingReality": "La cible unique MISSING_ANIMATION est Forge active ; un bâtiment,une flamme fixe ou une marche PNJ ne livre pas le cycle de travail.",
+      "existingPaths": [
+        "docs/v111-homeworld-art-inventory.json",
+        "app/game/HomeworldPublicLifeV112.tsx",
+        "app/game/systems/homeworldPublicLifeV112.ts"
+      ],
+      "admission": [
+        "Ouvrir les assets et références de forge existants avant génération,conserver leur identité de rôle.",
+        "Définir cadence,outil,contact,pivot et surface avant les dessins ; quantité de frames proposée clairement distinguée des exigences Excel.",
+        "Dessins natifs cohérents,outil/particule séparés si la scène le requiert,pas de rotation/miroir/recoloration comptée comme animation.",
+        "Raccord à l’acteur réel,arrêt/pause/reprise,mouvement réduit,usage et accès compilés ; pas de nouvelle quête/récompense implicite."
+      ]
+    },
+    {
+      "id": "V113-HW-MARSH-COMPOSITION",
+      "priority": 1,
+      "domain": "Homeworld",
+      "sourceIds": [
+        "HW112-SPATIAL-COHERENCE"
+      ],
+      "sessionState": "OPEN_NOT_CORRECTED",
+      "deliverable": "Qualifier une composition explicite des rives aux interstices extérieurs observés,sans masquer la vraie géographie.",
+      "missingReality": "Les traces DOM au zoom0,9 localisent les bandes hors polygones publics. Aucun patch minimal n’est qualifié et le contributeur naturel n’est pas réduit à une seule primitive.",
+      "existingPaths": [
+        "docs/qa/homeworld-marsh-edge-diagnostic-20261101/README.md",
+        "docs/qa/homeworld-marsh-edge-diagnostic-20261101/exact-ground-probes.json",
+        "docs/qa/homeworld-marsh-edge-diagnostic-20261101/pixel-comparison.json"
+      ],
+      "admission": [
+        "Reproduire mêmespoints/caméra et isoler la primitive réelle.",
+        "Ne pas supprimer une falaise réelle ni remplir de pavement un espace non praticable ; préserver collisions et PNG natifs.",
+        "Comparer captures originales et nouvelles,accès/cargo/guetteur et pause,même build/source observés.",
+        "Rester OUVERT_NON_CORRIGE tant que le résultat n’est pas qualifié."
+      ]
+    },
+    {
+      "id": "V113-ROSTER-TWO-LEFT-NATIVE",
+      "priority": 3,
+      "domain": "The Pit",
+      "sourceIds": [
+        "add-last-hunt-super",
+        "add-avp-classic"
+      ],
+      "sessionState": "RIGHT_STATIC_REFERENCES_ALREADY_PRESENT",
+      "deliverable": "Vues gauches natives indépendantes puis premier cycle propre à chacune des deux incarnations déjà identifiées.",
+      "missingReality": "Les références droites existent ; la gauche temporaire miroir et le kit partagé ne complètent pas les personnages.",
+      "existingPaths": [
+        "docs/v79-reference-hunters-art.md",
+        "docs/v107-open-workstreams-audit.md"
+      ],
+      "admission": [
+        "Même incarnation et arsenal explicitement documentés ; aucune confusion AVPClassic2000 / Classic2010 ou LastHuntSuper / MrBlack.",
+        "Ouvrir les références natives existantes,SHA et proportions ; produire la seconde vue sans flip.",
+        "Puis cycle et kit spécifique raccordés,coûts,collisions et replay ; aucune clôture par un portrait."
+      ]
+    },
+    {
+      "id": "V113-PROVENANCE-RECOVERY",
+      "priority": 4,
+      "domain": "Enforcers",
+      "sourceIds": [
+        "ENFORCERS-V613-RECEIPTS",
+        "ENFORCERS-V610-TRACES"
+      ],
+      "sessionState": "AUTHENTIC_ARTIFACT_RECOVERY_REQUIRED_NOT_GENERATABLE",
+      "deliverable": "Retrouver les21reçus finaux V6.13 et36traces/PNG V6.10 authentiques.",
+      "missingReality": "Un prompt planifié ou une image nouvelle ne reconstitue pas une soumission historique attestée.",
+      "existingPaths": [
+        "docs/v107-open-workstreams-audit.md",
+        "docs/v112-open-workstreams-audit.json"
+      ],
+      "admission": [
+        "Reçu natif original avec identifiant/paramètres réellement soumis.",
+        "Correspondance du fichier originel et de son SHA ; attribution nominative attestée.",
+        "Aucune datation ou provenance reconstruite par génération nouvelle."
+      ]
+    }
+  ],
+  "limits": [
+    "Lots overlap source requirements; do not count12lots as12closed requirements.",
+    "Native generation is only a candidate stage.",
+    "No technical test or image generation grants human validated status."
+  ]
+}

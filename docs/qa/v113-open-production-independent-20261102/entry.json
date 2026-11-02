@@ -1,0 +1,83 @@
+{
+  "status": "PASS_INDEPENDENT_PACKAGING_NOT_ART_ADMISSION",
+  "sourceSnapshot": "03cf51badd450338d748da55599a317a71debd28",
+  "worksheetsByteIdentical": 122,
+  "nativeAttempts": 4,
+  "candidateTargets": 3,
+  "manifestSha256": "2078785acd36e89aa6911522baba01c70ecbf995c049e25a3b24ec3f8b12d720",
+  "workbookSha256": "082ccfdd584a8989124f81851bdcb50e1c6206940c9d1f46b328d758e428d84f",
+  "nativeChecks": [
+    {
+      "path": "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-271-abreuvoir-alien-native.png",
+      "bytes": 1432776,
+      "sha256": "26a2e6e9217834667ab7ccd3d18aaf03aa0794a845e506570415592483d5bcd7",
+      "mode": "RGBA",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alpha1or2PixelCount": 7126,
+      "status": "CANDIDAT_NON_ADMIS",
+      "pixelsEdited": false
+    },
+    {
+      "path": "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-271-abreuvoir-alien-native-attempt02.png",
+      "bytes": 1215787,
+      "sha256": "644a9652da91d51ddd2e8576f786af3ba262ffc1413cabd2aa3abbd22b4e595a",
+      "mode": "RGBA",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alpha1or2PixelCount": 5791,
+      "status": "CANDIDAT_NON_ADMIS",
+      "pixelsEdited": false
+    },
+    {
+      "path": "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-272-nourrisseur-native.png",
+      "bytes": 1400802,
+      "sha256": "214e44126281c66f8d526e57f2cb90527c7c255c7380c516a991a0d3cc3be91b",
+      "mode": "RGBA",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alpha1or2PixelCount": 8886,
+      "status": "CANDIDAT_NON_ADMIS",
+      "pixelsEdited": false
+    },
+    {
+      "path": "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-280-signal-danger-native.png",
+      "bytes": 1146909,
+      "sha256": "ffb1626d43f1b4abff1ebaf568b6e01eff18827283a40afe2bdffe11d4fc14d3",
+      "mode": "RGBA",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alpha1or2PixelCount": 8835,
+      "status": "CANDIDAT_NON_ADMIS",
+      "pixelsEdited": false
+    }
+  ],
+  "limits": [
+    "No pixel editing or art admission. Candidate strict48px-alpha>0 failures remain explicit.",
+    "No native Excel or additional gameplay execution in this independent packaging check."
+  ]
+}

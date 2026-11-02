@@ -1,0 +1,248 @@
+name: V113 candidate production and immutable workbook
+
+on:
+  pull_request:
+    paths:
+      - 'production/**'
+      - 'docs/suivi-production/v113-open-production-20261102/**'
+      - 'scripts/build-open-production-workbook-v113.py'
+      - 'scripts/verify-open-production-workbook-v113.py'
+      - 'scripts/lib/excel_followup_append.py'
+      - 'scripts/build-excel-followup-v100.py'
+      - 'tests/open-production-workbook-v113.test.py'
+      - '.github/workflows/open-production-v113.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'production/**'
+      - 'docs/suivi-production/v113-open-production-20261102/**'
+      - 'scripts/build-open-production-workbook-v113.py'
+      - 'scripts/verify-open-production-workbook-v113.py'
+      - 'scripts/lib/excel_followup_append.py'
+      - 'scripts/build-excel-followup-v100.py'
+      - 'tests/open-production-workbook-v113.test.py'
+      - '.github/workflows/open-production-v113.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  workbook:
+    name: V113 source cells, native candidate pins and historical preservation
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          fetch-depth: 3
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /scripts/
+            /tests/open-production-workbook-v113.test.py
+            /docs/suivi-production/v113-open-production-20261102/
+            /production/
+            /docs/YAUTJA_V112_SUIVI.xlsx
+            /AGENTS.md
+            /app/game/ClanSupplyRouteV109.tsx
+            /app/game/GameReserveV66.tsx
+            /app/game/PitWorkbookCampaignV108.tsx
+            /app/game/data/homeworldAssetCatalogueTargetV81.json
+            /app/game/data/pitUserVariantsV63.json
+            /app/game/data/pitWorkbookAnimationPlanV100.json
+            /app/game/data/pitWorkbookAnimationsV100.json
+            /app/game/data/pitWorkbookScopeV105.json
+            /app/game/data/pitWorkbookThrowsV109.json
+            /app/game/data/pitWorkbookThrowsV112.json
+            /app/game/gameReserveV66Rendering.ts
+            /app/game/pitWorkbookVariantCapabilitiesV107.ts
+            /app/game/systems/clanLogisticsV108.ts
+            /app/game/systems/clanSupplyRouteV109.ts
+            /app/game/systems/gameReserveExpeditionV107.ts
+            /app/game/systems/gameReserveExpeditionV108.ts
+            /app/game/systems/gameReserveExpeditionV109.ts
+            /app/game/systems/gameReserveV66.ts
+            /app/game/systems/homeworldAssetCatalogueV81.ts
+            /app/game/systems/pitWorkbookCampaignV108.ts
+            /app/game/systems/pitWorkbookCombatV112.ts
+            /app/game/systems/pitWorkbookConclusionSourceV107.ts
+            /app/game/systems/pitWorkbookConclusionsV107.ts
+            /app/game/systems/shipAcquisitionV89.ts
+            /art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx
+            /docs/GAMEDEV_AGENT_GUIDE.md
+            /docs/THE_PIT_STAGES_V60_SUIVI.xlsx
+            /docs/THE_PIT_STAGES_V61_SUIVI.xlsx
+            /docs/THE_PIT_V62_SUIVI.xlsx
+            /docs/THE_PIT_V63_SUIVI.xlsx
+            /docs/YAUTJA_REPRISE_CHANTIERS_20261101.xlsx
+            /docs/YAUTJA_V100_SUIVI.xlsx
+            /docs/YAUTJA_V104_SUIVI.xlsx
+            /docs/YAUTJA_V105_SUIVI.xlsx
+            /docs/YAUTJA_V106_SUIVI.xlsx
+            /docs/YAUTJA_V107_SUIVI.xlsx
+            /docs/YAUTJA_V108_SUIVI.xlsx
+            /docs/YAUTJA_V109_SUIVI.xlsx
+            /docs/YAUTJA_V110_SUIVI.xlsx
+            /docs/YAUTJA_V111_MECANIQUES_CHASSE.xlsx
+            /docs/YAUTJA_V111_SUIVI.xlsx
+            /docs/YAUTJA_V112_MECANIQUES_CHASSE.xlsx
+            /docs/YAUTJA_V112_SUIVI.xlsx
+            /docs/YAUTJA_V99_SUIVI.xlsx
+            /docs/excel-followup-homeworld-v112.md
+            /docs/pit-campaign-continuity-v108.md
+            /docs/pit-workbook-conclusions-v107.md
+            /docs/pit-workbook-variant-capabilities-v107.md
+            /docs/qa/v111-homeworld-before-pr21/YAUTJA_V111_SUIVI.xlsx
+            /docs/ship-acquisition-v89.md
+            /docs/specifications/homeworld-v81/mission-grammaire-original.txt
+            /docs/suivi-production/classeurs/Yautja_V5_Bible_Reconstituee_et_Extensions.xlsx
+            /docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx
+            /docs/suivi-production/resume-20261101/EXCEL-INVENTORY.json
+            /docs/suivi-production/resume-20261101/EXCEL-OUVERTS.md
+            /docs/suivi-production/v611/Yautja_Suivi_Variantes_2026-10-21.xlsx
+            /docs/suivi-production/v611/references/Yautja_Suivi_Variantes_2026-10-20.xlsx
+            /docs/suivi-production/v612/Yautja_Suivi_Variantes_V612_2026-10-21.xlsx
+            /docs/suivi-production/v613/Yautja_Suivi_Variantes_V613_2026-10-22.xlsx
+            /docs/suivi-production/v614/Yautja_Suivi_Variantes_V614_2026-10-23.xlsx
+            /docs/suivi-production/v615/Yautja_Suivi_Variantes_V615_2026-10-23.xlsx
+            /docs/v107-open-workstreams-audit.md
+            /docs/v108-clan-logistics-contract.md
+            /docs/v109-clan-supply-route.md
+            /docs/v109-preserve-hunt-biomes.md
+            /docs/v109-preserve-public-inputs.json
+            /docs/v111-homeworld-art-inventory.json
+            /docs/v111-homeworld-source.json
+            /docs/v112-homeworld-followup.json
+            /docs/v112-homeworld-source.json
+            /docs/v112-open-workstreams-audit.json
+            /docs/v112-pit-validation.json
+            /docs/v79-reference-hunters-art.md
+            /public/game/assets/v15/trophies/trophy-ruins-ancient-guardian.webp
+            /public/game/homeworld/v109/archive-plaque-atlas-v109.png
+            /public/game/homeworld/v54/basalt-pavement.png
+            /public/game/homeworld/v54/compact-relay.png
+            /public/game/homeworld/v54/wayfinding-beacon.png
+            /public/game/homeworld/v56/mask-pedestal.png
+            /public/game/homeworld/v56/mausoleum-hall.png
+            /public/game/homeworld/v64/civic-forge.png
+            /public/game/homeworld/v64/clan-shuttle.png
+            /public/game/homeworld/v64/house-a-basalt.png
+            /public/game/homeworld/v64/house-b-basalt.png
+            /public/game/homeworld/v64/house-c-ribbed.png
+            /public/game/homeworld/v64/interior-panels.png
+            /public/game/homeworld/v64/landing-pad.png
+            /public/game/homeworld/v64/pavement.png
+            /public/game/homeworld/v64/props-atlas.png
+            /public/game/homeworld/v67/processional-bridge.png
+            /public/game/homeworld/v69/clan-brazier.png
+            /public/game/homeworld/v71/cinder-ground.png
+            /public/game/homeworld/v71/outskirts-kit.png
+            /public/game/homeworld/v72/civic-furniture-kit.png
+            /public/game/homeworld/v72/civic-identity-atlas.png
+            /public/game/homeworld/v72/civic-specialists-spaced-atlas.png
+            /public/game/homeworld/v72/civilian-roles-atlas.png
+            /public/game/homeworld/v72/region-gateway-kit.png
+            /public/game/homeworld/v74/02-healer-archivist-walk-spaced.png
+            /public/game/homeworld/v74/03-guard-courier-walk-spaced-left-fixed.png
+            /public/game/homeworld/v74/05-dock-forge-walk-spaced.png
+            /public/game/homeworld/v75/architecture/convoy-south-shelter.png
+            /public/game/homeworld/v75/architecture/convoy-store.png
+            /public/game/homeworld/v75/architecture/convoy-workshop.png
+            /public/game/homeworld/v75/architecture/dock-control.png
+            /public/game/homeworld/v75/architecture/enforcer-bastion.png
+            /public/game/homeworld/v75/architecture/market-canopy.png
+            /public/game/homeworld/v75/architecture/pit-gate.png
+            /public/game/homeworld/v75/architecture/rampart-north-lodge.png
+            /public/game/homeworld/v75/architecture/rampart-south-lodge.png
+            /public/game/homeworld/v75/architecture/rampart-watch.png
+            /public/game/homeworld/v75/architecture/trophy-mausoleum.png
+            /public/game/homeworld/v75/architecture/undercity-refuge.png
+            /public/game/homeworld/v75/landscape-ground-materials-native.png
+            /public/game/homeworld/v76/architecture/convoy-store.png
+            /public/game/homeworld/v76/architecture/convoy-workshop.png
+            /public/game/homeworld/v76/architecture/dock-control.png
+            /public/game/homeworld/v76/architecture/rampart-watch.png
+            /public/game/homeworld/v76/architecture/trophy-mausoleum.png
+            /public/game/homeworld/v76/interior/bench-left.png
+            /public/game/homeworld/v76/interior/chest-diagonal.png
+            /public/game/homeworld/v76/interior/rack-lateral.png
+            /public/game/homeworld/v76/interior/worktable-right.png
+            /public/game/homeworld/v76/logistics-container-rack-native.png
+            /public/game/homeworld/v76/merchant-canopy-diagonal-native.png
+            /public/game/homeworld/v76/mineral-planter-left-native.png
+            /public/game/homeworld/v76/terrace-bench-right-native.png
+            /public/game/homeworld/v77/council-stair-native.png
+            /public/game/homeworld/v77/fauna-habitat-native.png
+            /public/game/homeworld/v77/fauna/armored-rhinoceros-titan.png
+            /public/game/homeworld/v77/fauna/cavern-scene-reference.png
+            /public/game/homeworld/v77/fauna/crustacean-broken-tusk-v1.png
+            /public/game/homeworld/v77/fauna/crustacean-symmetric-tusks-v2.png
+            /public/game/homeworld/v77/fauna/mounts-bestiary-sheet-1.png
+            /public/game/homeworld/v77/fauna/yautja-horse-corrected.png
+            /public/game/homeworld/v77/lava-transit-skiff.png
+            /public/game/homeworld/v77/lava-warrior-left.png
+            /public/game/homeworld/v77/lava-warrior-right.png
+            /public/game/homeworld/v78/acropolis-stair-front.png
+            /public/game/homeworld/v78/archive-shelf-right.png
+            /public/game/homeworld/v78/civic-water-cistern-right.png
+            /public/game/homeworld/v78/civilian-forge-artisan.png
+            /public/game/homeworld/v78/clan-common-table-left.png
+            /public/game/homeworld/v78/forge-workstation-left.png
+            /public/game/homeworld/v78/lower-quarter-ramp-front.png
+            /public/game/homeworld/v78/market-stall-right.png
+            /public/game/homeworld/v78/merchant-home-right-safe.png
+            /public/game/homeworld/v78/palace-frontage-safe.png
+            /public/game/homeworld/v78/port-cargo-sorting-cart.png
+            /public/game/homeworld/v78/terrace-retaining-front.png
+            /public/game/homeworld/v80/amber-lamp-post.png
+            /public/game/homeworld/v80/bench-left.png
+            /public/game/homeworld/v80/clan-banner-standard.png
+            /public/game/homeworld/v80/clan-lectern-right.png
+            /public/game/homeworld/v80/corner-wall-left.png
+            /public/game/homeworld/v80/maintenance-rack.png
+            /public/game/homeworld/v80/mineral-basin-right.png
+            /public/game/homeworld/v80/sealed-cargo-case-left.png
+            /public/game/homeworld/v81/basalt-city-foundation.png
+            /public/game/homeworld/v81/clan-residence-left.png
+            /public/game/homeworld/v81/council-hall-left.png
+            /public/game/homeworld/v81/industrial-residence-right.png
+            /public/game/homeworld/v81/paving-council.png
+            /public/game/homeworld/v81/paving-undercity.png
+            /public/game/homeworld/v81/royal-pyramid-front.png
+            /public/game/homeworld/v81/spaceport-gantry.png
+            /public/game/homeworld/v82/clan-lift-cabin.png
+            /public/game/homeworld/v82/clan-lift-fixed-frame.png
+            /public/game/homeworld/v82/clan-lift-gantry-adult.png
+            /public/game/homeworld/v82/industrial-distant-quarter.png
+            /public/game/homeworld/v83/basalt-planter-left.png
+            /public/game/homeworld/v83/cargo-rack-right.png
+            /public/game/homeworld/v83/clan-waymarker-right.png
+            /public/game/homeworld/v83/forge-bench-right.png
+            /public/game/homeworld/v83/merchant-counter-left.png
+            /public/game/homeworld/v84/maintenance-console-right.png
+            /public/game/homeworld/v84/npcs/elder-council/01.png
+            /public/game/homeworld/v84/npcs/guard/01.png
+            /public/game/homeworld/v84/npcs/guard/02.png
+            /public/game/homeworld/v84/npcs/guard/03.png
+            /public/game/homeworld/v84/npcs/guard/04.png
+            /public/game/homeworld/v84/npcs/guard/05.png
+            /public/game/homeworld/v84/npcs/stable-keeper/01.png
+            /public/game/homeworld/v84/npcs/stable-keeper/02.png
+            /public/game/homeworld/v84/npcs/stable-keeper/03.png
+            /public/game/homeworld/v84/npcs/tribe-lava-medic/01.png
+            /public/game/homeworld/v84/npcs/tribe-lava-medic/02.png
+            /public/game/homeworld/v84/ritual-brazier-right.png
+            /public/game/homeworld/v84/training-rack-left.png
+            /tests/open-production-workbook-v113.test.py
+      - name: Fetch the exact public source snapshot without moving the current checkout
+        run: >-
+          git -c protocol.file.allow=never fetch --filter=blob:none --no-tags --depth=1
+          origin 03cf51badd450338d748da55599a317a71debd28
+      - name: Reproduce the dated workbook from its pinned historical sources and current candidate files
+        run: python3 scripts/build-open-production-workbook-v113.py --check
+      - name: Compare all appended cells and preserve the original 122 worksheets
+        run: python3 scripts/verify-open-production-workbook-v113.py
+      - name: Reject altered source claims, historic cells and current products
+        run: python3 tests/open-production-workbook-v113.test.py

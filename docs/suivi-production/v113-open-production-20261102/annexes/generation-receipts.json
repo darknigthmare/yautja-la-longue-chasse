@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "createdOn": "2026-11-02",
+  "producer": "/root/excel_final_recovery/art_gap_manifest",
+  "tool": "image_gen.imagegen",
+  "parameters": {
+    "transparent_background": true,
+    "referenced_image_paths": "omitted for new original images",
+    "num_last_images_to_include": "omitted"
+  },
+  "requestedDimensions": [
+    1024,
+    1024
+  ],
+  "status": "CANDIDATES_ONLY",
+  "humanValidated": false,
+  "integrated": false,
+  "changesToPixels": "NONE: byte-exact file copies only",
+  "referencesOpened": [
+    "public/game/homeworld/v77/fauna-habitat-native.png",
+    "public/game/homeworld/v78/civic-water-cistern-right.png",
+    "public/game/homeworld/v80/mineral-basin-right.png",
+    "public/game/homeworld/v80/amber-lamp-post.png"
+  ],
+  "generations": [
+    {
+      "targetId": "target-v81-71-271",
+      "attempt": 1,
+      "src": "/workspace/generated_images/exec-83bf8a9a-1e29-4522-98e7-611aa9c7ea4f.png",
+      "candidatePath": "/workspace/native-production-20261102/target-v81-71-271-abreuvoir-alien-native.png",
+      "prompt": "Create ONE original production candidate game sprite: target-v81-71-271, an alien fauna drinking trough for a Yautja homeworld city. Native single PNG with TRUE transparent alpha background. Request 1024 by 1024 canvas. One complete freestanding low broad oval animal WATER trough, designed for large alien mounts, in coherent realistic prerendered 2.5D fantasy science-fiction game art. Dark charcoal porous basalt body, restrained worn antique-bronze reinforcing ribs and angular alien engraved geometric marks, subtle cool teal water surface clearly visible inside. No plants, no soil, no pottery, no human modern plumbing. The open low basin is instantly readable as an animal drinking trough. Three-quarter isometric view, top visible, camera looking down about30degrees, front and right side visible. Warm neutral top-left light with restrained highlights. Detailed hard materials with clean readable silhouette for gameplay. Entire independent object in frame with ALL its feet and base visible. Keep at least64pixels transparent empty margin on every side; object horizontal center512, lowest native contact point approximately y880, base ground contact pivot planned(512,880). No painted ground patch, no pedestal tile, no cast shadow outside the object, no background color, no gradient, no checkerboard, no framing, no labels, no text, no people or animals. This is a native sprite drawing, not a photograph, no collage or atlas. Style anchor from existing project: rugged black basalt civic water cistern and mineral basin with bronze geometric braces. Deliver only the isolated new trough, not that cistern or planter."
+    },
+    {
+      "targetId": "target-v81-71-271",
+      "attempt": 2,
+      "src": "/workspace/generated_images/exec-a35b35b8-c9bb-47f8-b15c-ee2fe671091f.png",
+      "candidatePath": "/workspace/native-production-20261102/target-v81-71-271-abreuvoir-alien-native-attempt02.png",
+      "prompt": "Native game-asset PNG with actual transparent alpha. Generate ONE standalone alien fauna drinking trough for a dark basalt Yautja homeworld city (target-v81-71-271). Requested1024x1024 square canvas. A low wide oval water trough, dark porous charcoal basalt with restrained worn antique-bronze geometric ribs and four short solid feet; clearly visible clean teal WATER inside, suitable for large alien mounts, not a planter. Whole independent object, camera at3/4 isometric looking down30degrees, warm neutral top-left light, realistic detailed prerendered2.5D game sprite. Keep the object SMALLER within the canvas, with 20percent of the full width EMPTY TRANSPARENT on both left and right, and generous empty top and bottom. Object bounding box should approximately be x200..824,y350..800. Full basin, all feet, all bronze edges fully visible. Ground-contact center approx(512,780). Every pixel outside the object silhouette MUST have EXACT alpha0, including every pixel on all four image edges: no faint speckles, no fog, no transparent color noise, no shadows. Native transparent cutout generated from scratch; no checkerboard, no painted background, no black backdrop, no gradient, no ground tile, no separate cast shadow, no text, no labels, no people or animal, no plants, no pottery, no modern human plumbing. The ONLY visible shape is the trough itself. This new sprite must be ready for alpha measurement while staying a candidate for later human art review."
+    },
+    {
+      "targetId": "target-v81-71-272",
+      "attempt": 1,
+      "src": "/workspace/generated_images/exec-e04973ec-ab57-4a4d-b301-c94b5b9890be.png",
+      "candidatePath": "/workspace/native-production-20261102/target-v81-71-272-nourrisseur-native.png",
+      "prompt": "Create ONE native standalone game sprite on a truly transparent PNG alpha background: target-v81-71-272, a freestanding alien-fauna NOURRISSEUR (animal feeding station) for a Yautja basalt homeworld city. Requested square1024x1024 canvas, accept native tool size. Realistic detailed prerendered2.5D sci-fi game prop; three-quarter isometric view looking downward30degrees, front and right side visible, neutral warm top-left light. Match a visual family of charcoal porous basalt and restrained worn antique bronze angular bracing. Design a compact feeding hopper rising behind a LOW OPEN TROUGH containing only several clearly distinct dark reddish dried feed pellets and tough alien seed pods, no liquid. A metal shutter and gravity-feed neck show its feeding function; front feeding lip open and reachable by large alien fauna. Heavy weathered basalt bowl on three solid low feet, dark bronze armored hopper with small angular inlaid geometric marks, rugged alien utilitarian construction. Clearly different silhouette from the low oval water trough. One connected complete independent object only, all parts and feet fully visible, no background scenery. Keep the object modestly sized in the canvas with20percent EMPTY transparent margins on each side and plenty above and below; no pixel visible at any image edge. Ground-contact pivot at horizontal center, base near lower threequarters of canvas. Every pixel outside silhouette must have exact alpha0, no wisps, noise or detached shadows. No painted ground tile or pedestal, no checkerboard or black backdrop, no outside cast shadow, no text or letters, no danger sign, no animal or person, no grass or plants, no modern human stable or farm equipment, no atlas or collage. Native original drawing, no crop or reuse of a cistern."
+    },
+    {
+      "targetId": "target-v81-71-280",
+      "attempt": 1,
+      "src": "/workspace/generated_images/exec-7758bdca-3346-4e27-8934-64b6b429c591.png",
+      "candidatePath": "/workspace/native-production-20261102/target-v81-71-280-signal-danger-native.png",
+      "prompt": "Produce ONE independent native game-prop PNG with TRUE transparent alpha: target-v81-71-280, a danger warning signal for a dangerous ALIEN FAUNA enclosure in a Yautja homeworld city. Requested1024x1024 square native image. Original realistic detailed prerendered2.5D isometric sprite, camera3/4 looking down30degrees, front and right side visible, neutral warm light from upper left. A rugged freestanding tapered charcoal porous basalt warning post with worn antique-bronze angular reinforcements on a broad stable squat three-footed base. Upper half has a single clearly readable dark-bronze angular shield/panel with a strong inset AMBER warning light and a simple invented three-claw pictogram carved in bas-relief, not human writing. The shield silhouette and amber light make its danger function visible from far away. No modern road triangle, no human exclamation mark, no skull trophy, no literal letters, no text, no canonical emblem claim. Coherent with basalt and bronze alien trough/feeder family. Whole object all feet and top fully in frame, tidy clear silhouette, moderately sized with at least15percent EMPTY transparent margin on all sides. Native ground contact pivot at the center of its base near lower threequarters of canvas. All pixels outside silhouette must have exact alpha0: no detached fog, no random alpha specks, no glow beyond the physical lamp aperture, no cast shadows outside object. No backdrop or checkerboard, no ground tile or extra pedestal slab, no scene, no animal, no person, no plants, no collage or atlas. The panel is integral to one post. Full original drawing with no crop or mirror."
+    }
+  ]
+}
