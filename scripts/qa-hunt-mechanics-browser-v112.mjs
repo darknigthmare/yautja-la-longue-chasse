@@ -12,7 +12,7 @@ import ts from 'typescript';
 import sharp from 'sharp';
 import {chromium} from 'playwright-core';
 import {runAccessibilityBrowserV112} from './lib/qa-hunt-accessibility-v112.mjs';
-const root=fileURLToPath(new URL('../',import.meta.url)),out=path.join(root,'outputs/qa-hunt-v112');
+const root=fileURLToPath(new URL('../',import.meta.url)),out=path.resolve(root,process.env.YAUTJA_HUNT_CONTROLS_OUTPUT??'outputs/qa-hunt-v112');
 await fs.mkdir(out,{recursive:true});
 const bundle=await build({absWorkingDir:root,entryPoints:['tests/browser/hunt-mechanics-v112.fixture.jsx'],
  bundle:true,write:false,jsx:'automatic',platform:'browser',outfile:'fixture.js',logLevel:'silent',
@@ -49,8 +49,10 @@ const scenario=async(name,fn)=>{try{await fn();results.push({name,status:'PASS'}
 try{
  await new Promise((resolve,reject)=>{server.once('error',reject);server.listen(0,'127.0.0.1',resolve);});
  const address=server.address();assert.ok(address&&typeof address==='object');
- browser=await chromium.launch(process.env.AUDIT_CHROME_CHANNEL?{channel:process.env.AUDIT_CHROME_CHANNEL}:{});
+ const executablePath=process.env.CHROMIUM_EXECUTABLE_PATH??process.env.AUDIT_CHROME_EXECUTABLE;
+ browser=await chromium.launch(executablePath?{executablePath,args:['--no-sandbox','--disable-dev-shm-usage']}:process.env.AUDIT_CHROME_CHANNEL?{channel:process.env.AUDIT_CHROME_CHANNEL}:{});
  const page=await browser.newPage({viewport:{width:1120,height:850}});
+ page.setDefaultTimeout(12000);
  page.on('pageerror',error=>errors.push(error.message));
  await page.goto('http://127.0.0.1:'+address.port+'/');await page.bringToFront();
  await page.waitForFunction(()=>!!window.__huntMechanicsQaV112?.settings());
@@ -179,8 +181,8 @@ try{
   assert.equal(state.riteMenuCorpseId,null);assert.equal(state.trophyExtracting,false);assert.equal(state.paused,false);
   await page.evaluate(()=>{window.__huntMechanicsQaV112.pad('jump',false);window.__huntMechanicsQaV112.pad('interact',false);window.__huntMechanicsQaV112.nativeTick(1);});await paint();
  });
- assert.deepEqual(errors,[]);
  const report={schemaVersion:1,release:'V112',runtimeCommit:process.env.GITHUB_SHA??'unrecorded-local',scope:'Actual React components and hunt source functions; fixture keyboard/pointer adapters, actual gamepad polling and stepGame/DOM routing with an emulated pad, localStorage acknowledgement and fallback renderer; no whole-component input lifecycle, full campaign or physical-device qualification',results,errors,captures};
  await fs.writeFile(path.join(out,'report.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report,null,2));
+ assert.deepEqual(errors,[]);
  assert.ok(results.length>=8);assert.equal(results.filter(row=>row.status!=='PASS').length,0);
 }finally{await browser?.close();server.closeAllConnections();await new Promise(resolve=>server.close(resolve));}
