@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'none'; img-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <title>Qualification de la chasse — carnet local du validateur</title>
+  <style>
+    :root { color-scheme: dark; font-family: system-ui, sans-serif; background: #101816; color: #edf3ed; line-height: 1.6; }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    main, header, footer { width: min(100% - 2rem, 62rem); margin: auto; }
+    header { padding: 2rem 0 1rem; }
+    main { padding-bottom: 2rem; }
+    h1 { line-height: 1.2; font-size: clamp(1.8rem, 5vw, 2.7rem); }
+    h2 { line-height: 1.3; margin-top: 0; }
+    h3 { line-height: 1.4; }
+    a { color: #d2efb6; text-underline-offset: .2em; }
+    section, article { padding: 1.25rem; margin: 1.2rem 0; background: #19241f; border: 1px solid #536558; border-radius: .5rem; }
+    article { background: #121e18; }
+    .lead { font-size: 1.12rem; }
+    .notice { border-left: .3rem solid #d2efb6; padding: .8rem 1rem; background: #263326; }
+    .muted { color: #c1cfc5; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: 1rem; }
+    label { display: block; margin: .6rem 0; }
+    input, select, textarea, button { font: inherit; }
+    input:not([type=checkbox]), select, textarea { display: block; width: 100%; margin-top: .3rem; padding: .65rem; border: 1px solid #8b9e8e; border-radius: .25rem; background: #0b130f; color: #fff; min-height: 2.75rem; }
+    textarea { min-height: 6rem; resize: vertical; }
+    input[type=checkbox] { width: 1.2rem; height: 1.2rem; margin: .4rem .5rem .4rem 0; vertical-align: middle; }
+    button { min-height: 2.75rem; padding: .6rem 1rem; margin: .4rem .5rem .4rem 0; border: 2px solid #b9d498; border-radius: .3rem; background: #c8e6a9; color: #10190d; font-weight: 650; cursor: pointer; }
+    button.secondary { background: transparent; color: #e8f4de; }
+    button:disabled { opacity: .55; cursor: not-allowed; }
+    :focus-visible { outline: 3px solid #ffdc83; outline-offset: 4px; }
+    code, pre { overflow-wrap: anywhere; white-space: pre-wrap; }
+    pre { font-size: .88rem; padding: .8rem; background: #0b130f; border-radius: .3rem; }
+    summary { cursor: pointer; min-height: 2.75rem; padding: .6rem 0; font-weight: 650; }
+    details { border-top: 1px solid #536558; margin-top: .6rem; }
+    li { margin: .5rem 0; }
+    fieldset { border: 1px solid #708573; padding: 1rem; margin: 1rem 0; min-width: 0; }
+    legend { padding: 0 .3rem; font-weight: 650; }
+    .error { color: #ffe0ac; font-weight: 650; }
+    #report-preview { max-height: 32rem; overflow: auto; }
+    .skip { position: absolute; left: -9999px; }
+    .skip:focus { position: fixed; top: .5rem; left: .5rem; z-index: 10; background: #101816; padding: 1rem; }
+    footer { padding: 1rem 0 2rem; }
+    @media print { :root { color-scheme: light; color: #000; background: #fff; } section, article, .notice { color: #000; background: #fff; border-color: #333; } button, .skip { display: none; } input, select, textarea { color: #000 !important; background: #fff !important; } details { break-inside: avoid; } }
+  </style>
+</head>
+<body>
+<a class="skip" href="#carnet">Aller au carnet</a>
+<header>
+  <p class="muted">Yautja : La Longue Chasse · qualification V112</p>
+  <h1>Le carnet local du validateur</h1>
+  <p class="lead">Préparer et consigner les essais qui demandent de vrais joueurs, appareils et applications.</p>
+  <p class="notice">Ce carnet recueille vos déclarations. Il ne pilote pas le jeu, ne consulte aucune sauvegarde et ne ferme aucun critère du classeur. Seule une session réellement exécutée et revue peut servir de preuve.</p>
+  <p>Tout reste en mémoire dans cette page jusqu’à votre export JSON. Aucun envoi, stockage navigateur, capture ou accès fichier automatique. Une fermeture ou un rechargement efface le carnet : exportez-le avant de quitter. Ne saisissez pas de nom personnel, numéro de série ou contenu privé.</p>
+  <nav aria-label="Sections du carnet"><a href="#documents">Documents</a> · <a href="#configuration">Configuration</a> · <a href="#essais">Essais</a> · <a href="#novices">5 novices</a> · <a href="#export">Relire et exporter</a></nav>
+</header>
+<main id="carnet" tabindex="-1">
+  <noscript><p class="notice">JavaScript est désactivé. Les protocoles restent lisibles ; la saisie et l’export JSON nécessitent JavaScript. Vous pouvez imprimer cette page et consigner vos observations séparément.</p></noscript>
+  <section id="documents" aria-labelledby="documents-title">
+    <h2 id="documents-title">Documents de référence à télécharger</h2>
+    <p><a id="download-workbook" href="/aide/YAUTJA_V112_MECANIQUES_CHASSE.xlsx" download="YAUTJA_V112_MECANIQUES_CHASSE.xlsx">Télécharger le classeur de suivi XLSX</a> · <a id="download-printable" href="/aide/YAUTJA_V112_REVUES_IMPRIMABLE.pdf" download="YAUTJA_V112_REVUES_IMPRIMABLE.pdf">Télécharger le compagnon imprimable A4 PDF</a></p>
+    <p>Le classeur courant conserve l’historique et ajoute l’onglet <strong>Reprise</strong> : après revue, <strong>CHA112-02</strong> et <strong>ROU112-06</strong> passent de PARTIELLEMENT_QUALIFIE à VALIDE_AUTOMATISE. Ces deux décisions ne proviennent pas de ce carnet.</p>
+    <p>Le compagnon PDF présente les <strong>219 revues historiques et huit critères restants</strong>. Il complète le classeur ; consultez l’onglet Reprise pour les statuts courants.</p>
+    <p class="muted">Ces téléchargements sont demandés uniquement à votre clic, sans envoyer les données saisies dans le carnet. Les liens fonctionnent aussi sans JavaScript.</p>
+  </section>
+  <form id="qualification-form" autocomplete="off">
+  <section id="configuration" aria-labelledby="configuration-title">
+    <h2 id="configuration-title">1. Identifier cette session</h2>
+    <p>Un navigateur tactile, un user-agent ou une API Gamepad ne prouve jamais la présence d’un téléphone ou d’une manette physique. Décrivez vous-même le matériel tenu en main et la version jouée.</p>
+    <div class="grid">
+      <label>Identifiant anonyme du validateur <input name="validator" maxlength="100" placeholder="Ex. VALIDATEUR-01"></label>
+      <label>Date et heure de l’essai <input name="sessionDate" type="datetime-local"></label>
+      <label>Commit complet ou version exacte jouée <input name="testedVersion" maxlength="160" placeholder="SHA ou identifiant de version vérifiable"></label>
+      <label>Identifiant public du déploiement / build <input name="build" maxlength="200" placeholder="Sans jeton ni lien privé"></label>
+      <label>Cadre déclaré par le validateur <select name="environment"><option value="NON_RENSEIGNE">Non renseigné</option><option value="APPAREIL_PHYSIQUE">Appareil physique tenu et utilisé</option><option value="EMULATION">Émulation / machine distante</option><option value="AUTRE">Autre cadre décrit dans les conditions</option></select></label>
+      <label>Modèle de téléphone / ordinateur <input name="deviceModel" maxlength="200"></label>
+      <label>Système et version <input name="osVersion" maxlength="200" placeholder="Ex. Android / iOS / Windows et version"></label>
+      <label>Navigateur et version (saisie manuelle) <input name="browserVersion" maxlength="200"></label>
+      <label>Viewport et orientation en jeu <input name="gameViewport" maxlength="200" placeholder="Dimensions CSS, portrait / paysage"></label>
+      <label>Manette, modèle et transport <input name="controller" maxlength="200" placeholder="USB / Bluetooth, si utilisé"></label>
+      <label>CPU / GPU / RAM <input name="hardware" maxlength="300" placeholder="Pour la mesure de performance"></label>
+      <label>Réglages d’accessibilité et remappages <input name="accessibility" maxlength="500"></label>
+    </div>
+    <label>Conditions de l’essai <textarea name="conditions" maxlength="3000" placeholder="Alimentation, température, réseau, résolution, sons, scène, armure, charge, interruptions ; indiquer ce qui n’est pas connu."></textarea></label>
+    <details>
+      <summary>Informations techniques facultatives, collectées avec votre accord</summary>
+      <p>Ce relevé concerne <strong>cette page</strong>, au moment du clic : navigateur déclaré, viewport, écran, tactile et disponibilité des API. Il ne mesure pas les performances du jeu, ne recherche pas de périphérique et ne qualifie aucun appareil physique. Les versions et capacités peuvent être limitées ou déclarées de façon inexacte par le navigateur.</p>
+      <label><input id="browser-consent" type="checkbox"> J’autorise ce relevé local et son inclusion dans le JSON que je choisirai d’exporter.</label>
+      <button id="collect-browser" type="button" disabled>Relever les informations locales</button>
+      <button id="clear-browser" class="secondary" type="button">Effacer ce relevé</button>
+      <p id="browser-state" role="status" aria-live="polite">Aucun relevé effectué.</p>
+      <pre id="browser-preview" hidden></pre>
+    </details>
+  </section>
+  <section id="essais" aria-labelledby="essais-title">
+    <h2 id="essais-title">2. Exécuter les essais concernés</h2>
+    <p>Ouvrez le jeu séparément. Lisez le protocole avant de commencer ; notez ce que vous avez réellement observé, y compris les blocages. Laissez les autres essais à <strong>NON_EXECUTE</strong>. Un état <strong>ATTESTE_PAR_VALIDATEUR</strong> atteste l’exécution décrite, avec ses éventuels écarts ; il ne signifie pas conformité ni clôture.</p>
+    <p>Pour joindre une capture, conservez-la vous-même à côté du rapport et notez un nom de fichier anonyme dans les observations. Cette page ne lit, ne capture ni n’envoie d’image. Aucune preuve privée ne doit être ajoutée automatiquement au dépôt.</p>
+    <div id="criteria">
+    <article id="REM112-01">
+      <h3>REM112-01 · <span data-criterion-title>Compréhension débutant</span></h3>
+      <p data-criterion-rule>Un joueur nouveau comprend prise, repos, épuisement, préparation, prélèvement, extraction et conservation sans explication extérieure.</p>
+      <details data-criterion-protocol open>
+        <summary>Critère original et protocole à exécuter</summary>
+        <p data-criterion-acceptance>Exécuter les 9 tâches du protocole avec 5 nouveaux joueurs ; noter aide, erreurs, temps et explication. Cible 4/5 sans aide pour les tâches essentielles. Aucun participant ni résultat humain n&#39;est consigné ; textes et états logiciels testés ne prouvent pas cette compréhension.</p>
+        <ol data-criterion-steps><li>Suivre la préparation et les neuf tâches ci-dessous avec cinq nouveaux joueurs ; consigner chaque essai avant toute aide.</li><li>Tester séparément le refus sans outil et le sac / dépôt plein ; noter les explications et les moyens de poursuivre.</li><li>Faire relire les résultats et la cible 4/5 par tâche essentielle ; garder les échecs et toute nouvelle session distincte.</li></ol>
+      </details>
+    </article>
+    <article id="REM112-02" data-physical="true">
+      <h3>REM112-02 · <span data-criterion-title>Téléphone Android physique</span></h3>
+      <p data-criterion-rule>Commandes tactiles et sorties dans une chasse réelle sur téléphone Android identifié.</p>
+      <details data-criterion-protocol open>
+        <summary>Critère original et protocole à exécuter</summary>
+        <p data-criterion-acceptance>Consigner modèle, OS, navigateur, viewport, version testée, orientation, gestes, perte de focus et reprise ; joindre captures et incidents. Une émulation Chromium ne ferme pas ce critère.</p>
+        <ol data-criterion-steps><li>Identifier le téléphone Android réellement utilisé, son OS, le navigateur et la version du jeu ; noter les dimensions en jeu.</li><li>Dans une chasse réelle, essayer déplacements tactiles, gestes simultanés, menus, confirmation, annulation et retour. Relever les actions involontaires ou commandes masquées.</li><li>Passer portrait → paysage → portrait, relever les changements de viewport et l’accès aux commandes.</li><li>Pendant une entrée maintenue puis un geste, changer d’application / verrouiller, revenir et vérifier focus, interruption et absence d’action bloquée ; consigner la reprise réelle.</li></ol>
+      </details>
+    </article>
+    <article id="REM112-03" data-physical="true">
+      <h3>REM112-03 · <span data-criterion-title>Téléphone iOS physique</span></h3>
+      <p data-criterion-rule>Commandes tactiles et sorties dans une chasse réelle sur iPhone identifié.</p>
+      <details data-criterion-protocol open>
+        <summary>Critère original et protocole à exécuter</summary>
+        <p data-criterion-acceptance>Consigner modèle, iOS, Safari, viewport, version, orientation, gestes, perte de focus et reprise ; joindre captures/incidents. Aucun appareil réel utilisé dans cette qualification.</p>
+        <ol data-criterion-steps><li>Identifier l’iPhone réellement utilisé, iOS, Safari et la version du jeu ; relever le viewport et les barres du navigateur en jeu.</li><li>Dans une chasse réelle, essayer déplacements tactiles et gestes simultanés, menus, confirmation, annulation et retour ; noter les gestes du système et les zones difficiles à atteindre.</li><li>Passer portrait → paysage → portrait ; vérifier la lisibilité et l’accès aux commandes, avec les barres du navigateur affichées puis réduites.</li><li>Changer d’application / verrouiller pendant une entrée maintenue puis un geste, revenir ; vérifier focus, interruption et reprise sans commande bloquée.</li></ol>
+      </details>
+    </article>
+    <article id="REM112-04" data-physical="true">
+      <h3>REM112-04 · <span data-criterion-title>Manette physique</span></h3>
+      <p data-criterion-rule>Commande corporelle et atelier, remappage, branchement/rebranchement sur contrôleur identifié.</p>
+      <details data-criterion-protocol open>
+        <summary>Critère original et protocole à exécuter</summary>
+        <p data-criterion-acceptance>Consigner modèle, transport USB/Bluetooth, OS/navigateur, affectations, navigation, confirmation/annulation, reconnexion et absence d&#39;action derrière le menu. Le pad logiciel ne qualifie pas le périphérique.</p>
+        <ol data-criterion-steps><li>Noter le modèle physique, USB / Bluetooth, OS, navigateur, mapping et réglages ; brancher réellement la manette puis agir pour son activation.</li><li>Dans le jeu, essayer navigation des menus, confirmation, annulation, focus et retour ; vérifier qu’aucune attaque ou action ne passe derrière le menu.</li><li>Essayer la commande corporelle et l’atelier ; remapper une commande puis vérifier son action et son libellé dans le guide.</li><li>Débrancher / déconnecter réellement pendant une entrée maintenue, vérifier l’arrêt ; rebrancher / reconnecter, réactiver et reprendre sans répétition involontaire. Refaire après perte de focus.</li></ol>
+      </details>
+    </article>
+    <article id="REM112-05" data-physical="true">
+      <h3>REM112-05 · <span data-criterion-title>Performance sur matériel cible</span></h3>
+      <p data-criterion-rule>Coût de trame et mémoire dans le produit avec rendu, illustrations et sons sur matériel cible.</p>
+      <details data-criterion-protocol open>
+        <summary>Critère original et protocole à exécuter</summary>
+        <p data-criterion-acceptance>Consigner CPU/GPU/RAM, OS, navigateur, résolution, version et scène dense ; relever p 50/p 95/p 99/max des trames, pics mémoire et durée. Une mesure Node du CPU de simulation en CI reste distincte.</p>
+        <ol data-criterion-steps><li>Identifier CPU / GPU / RAM, OS / navigateur, résolution, alimentation et conditions thermiques ; ne pas les déduire du user-agent.</li><li>Jouer une scène dense identifiée dans le produit complet avec rendu, illustrations et sons ; consigner charge / armure, acteurs, parcours, échauffement et durée.</li><li>Avec un outil de profilage identifié et sa méthode, relever p50 / p95 / p99 / max des durées de trame en ms, pics mémoire en Mo et durée. Consigner les métriques indisponibles sans les inventer.</li><li>Conserver les profils localement et noter leurs noms anonymes, les saccades / échauffements et les limites de mesure. Cette page ne mesure pas le jeu.</li></ol>
+      </details>
+    </article>
+    <article id="REM112-07">
+      <h3>REM112-07 · <span data-criterion-title>Application Microsoft Excel native</span></h3>
+      <p data-criterion-rule>Ouverture et usage du classeur livré dans Excel, sans alerte de réparation.</p>
+      <details data-criterion-protocol open>
+        <summary>Critère original et protocole à exécuter</summary>
+        <p data-criterion-acceptance>Consigner version Excel/OS et empreinte du XLSX ; essayer filtres, volets gelés, liens et impression. ZIP/XML et reproduction déterministe ne constituent pas une session Excel native.</p>
+        <ol data-criterion-steps><li>Relever l’application exacte, sa version et l’OS. Microsoft Excel natif doit réellement être ouvert ; Excel Web, LibreOffice et vérification XML restent des compatibilités séparées.</li><li>Sur une copie du classeur livré, calculer son SHA-256 et le comparer à la référence ci-dessous. Sous Windows : Get-FileHash -Algorithm SHA256 &lt;fichier&gt; ; macOS : shasum -a 256 &lt;fichier&gt;. Un hash différent exige de retrouver la version concernée.</li><li>Ouvrir dans Microsoft Excel et noter toute alerte de réparation, contenu supprimé, lien externe ou fichier bloqué ; conserver la copie originale.</li><li>Essayer les filtres par ID et statut, réinitialiser puis vérifier les lignes ; défiler verticalement et horizontalement pour contrôler les volets gelés et en-têtes.</li><li>Ouvrir des liens de preuves représentatifs : noter feuille, cellule, destination, résultat et limites hors ligne sans autoriser un accès privé.</li><li>Dans l’aperçu avant impression, vérifier toutes les feuilles, titres répétés, orientation, sauts, lisibilité et absence de colonnes tronquées ; consigner imprimante / PDF et pages observées. Ne pas confondre un export LibreOffice avec cette session Excel.</li></ol>
+        <p>Classeur de référence : <code id="reference-workbook-path">docs/YAUTJA_V112_MECANIQUES_CHASSE.xlsx</code></p>
+        <p>SHA-256 : <code id="reference-workbook-sha256">f13dd1a3548aebac25ba77e11ad5c5835757fc49da94491dbe69dbd291b59989</code></p>
+      </details>
+    </article>
+    </div>
+  </section>
+  <section id="novices" aria-labelledby="novices-title">
+    <h2 id="novices-title">3. Observer neuf tâches avec cinq novices</h2>
+    <p>Protocole source : <code>docs/qa/v112-hunt/beginner-protocol.md</code>. Recrutez cinq personnes qui n’ont pas appris ces mécaniques, sous des identifiants anonymes. Lisez seulement l’objectif, sans montrer la commande. Le guide et Options restent autorisés. À 90 secondes sans progrès, notez le blocage avant de proposer une aide ; toute aide exclut « sans aide ».</p>
+    <p>Préparez une vraie campagne avec le Flaying Tool, de la place au dépôt et assez de marques ; utilisez une copie sans achat pour le refus d’outil. Les corps doivent provenir d’un combat réellement achevé. Aucune fixture, téléportation, récompense accordée ou résultat forcé. Chaque participant garde ses réglages et son matériel consignés.</p>
+    <p>« Réalisée sans aide » exige le résultat observé <strong>et</strong> une explication concordante du joueur. Cible à faire relire : au moins 4 joueurs sur 5 sans aide pour chacune des tâches essentielles <strong>NOV112-01, 03, 04, 07 et 08</strong>. Aucun calcul de ce carnet ne prononce leur validation.</p>
+    <details id="novice-objective-protocol" open>
+      <summary>Les neuf objectifs et les observations du protocole</summary>
+      <ol id="novice-objective-source">
+        <li data-task-id="NOV112-01"><strong>NOV112-01</strong><p>Objectif à lire : « <span data-task-objective>Trouve une façon de passer au prochain arbre, puis de revenir au sol.</span> »</p><p>À observer sans souffler : <span data-task-observation>Vraie prise, repos et repli ; expliquer la différence tronc / liane.</span></p></li>
+        <li data-task-id="NOV112-02"><strong>NOV112-02</strong><p>Objectif à lire : « <span data-task-objective>Ajuste ton balancement et lâche vers un appui.</span> »</p><p>À observer sans souffler : <span data-task-observation>Pompage, longueur et lâcher ; expliquer la réception requise après épuisement.</span></p></li>
+        <li data-task-id="NOV112-03"><strong>NOV112-03</strong><p>Objectif à lire : « <span data-task-objective>Prépare une partie de cette proie pour la rapporter.</span> »</p><p>À observer sans souffler : <span data-task-observation>Examen, analyse avant prise, outil et capacité ; distinguer préparer le corps et obtenir une partie.</span></p></li>
+        <li data-task-id="NOV112-04"><strong>NOV112-04</strong><p>Objectif à lire : « <span data-task-objective>Interromps ce geste, puis reprends-le.</span> »</p><p>À observer sans souffler : <span data-task-observation>Annulation comprise ; aucun prélèvement achevé après interruption.</span></p></li>
+        <li data-task-id="NOV112-05"><strong>NOV112-05</strong><p>Objectif à lire : « <span data-task-objective>Déplace puis suspends ce corps près du support.</span> »</p><p>À observer sans souffler : <span data-task-observation>Même corps porté au sol puis suspendu ; il n’est pas encore rapporté.</span></p></li>
+        <li data-task-id="NOV112-06"><strong>NOV112-06</strong><p>Objectif à lire : « <span data-task-objective>Allège le sac, puis récupère ce que tu veux emporter.</span> »</p><p>À observer sans souffler : <span data-task-observation>Dépôt et reprise réels ; prises laissées sur place, limites kg / volumes.</span></p></li>
+        <li data-task-id="NOV112-07"><strong>NOV112-07</strong><p>Objectif à lire : « <span data-task-objective>Rapporte cette partie au vaisseau.</span> »</p><p>À observer sans souffler : <span data-task-observation>Extraction et embarquement, inventaire après rechargement ; expliquer l’effet d’un abandon.</span></p></li>
+        <li data-task-id="NOV112-08"><strong>NOV112-08</strong><p>Objectif à lire : « <span data-task-objective>Préserve la partie pour la garder, puis libère sa place au dépôt.</span> »</p><p>À observer sans souffler : <span data-task-observation>Nettoyage, traitement, séchage, montage manuels puis réserve ; débits uniques et absence de progrès hors ligne.</span></p></li>
+        <li data-task-id="NOV112-09"><strong>NOV112-09</strong><p>Objectif à lire : « <span data-task-objective>Reconfigure une commande et retrouve-la dans le guide.</span> »</p><p>À observer sans souffler : <span data-task-observation>Action et aide concordent ; focus, annulation et retour utilisables.</span></p></li>
+      </ol>
+    </details>
+    <div id="participants"></div>
+    <label>Refus sans outil et sac / dépôt plein, testés séparément <textarea name="noviceRefusals" maxlength="3000" placeholder="Observations, participants, explication du refus et manière de poursuivre sans perdre une partie. Ne pas accorder d’objet pour contourner le refus."></textarea></label>
+    <label>Lecture humaine de la cible 4/5 et décisions <textarea name="noviceReview" maxlength="3000" placeholder="Décompte par tâche essentielle, difficultés communes, aide, corrections ou nouvelles sessions à prévoir. Conserver les premiers résultats."></textarea></label>
+  </section>
+  <section id="export" aria-labelledby="export-title">
+    <h2 id="export-title">4. Relire, puis exporter volontairement</h2>
+    <p>La relecture affiche exactement le JSON téléchargeable. Vérifiez la version, le matériel et vos observations. Le fichier n’est ni signé ni certifié ; un relecteur doit vérifier les pièces et la portée. Conservez les rapports d’essais distincts, puis associez leurs identifiants aux lignes du classeur après revue.</p>
+    <label><input id="review-consent" type="checkbox"> J’ai relu ce carnet ; les essais déclarés sont mes observations. Je décide de télécharger ce rapport local.</label>
+    <button id="preview-report" type="button">Relire le JSON</button>
+    <button id="export-report" type="button" disabled>Télécharger le JSON</button>
+    <p id="export-state" role="status" aria-live="polite">Aucun fichier créé. Les critères restent ouverts.</p>
+    <p id="export-error" class="error" role="alert" tabindex="-1" hidden></p>
+    <pre id="report-preview" tabindex="0" aria-label="Rapport JSON à relire" hidden></pre>
+  </section>
+  </form>
+</main>
+<footer><p>Outil facultatif de préparation et de consignation · Source des critères : <code>docs/hunt-mechanics-v112.json</code>, feuille <code>Restant</code>. REM112-06 et REM112-08 demandent leurs campagnes intégrales séparées. Ce carnet ne remplace aucun parcours de jeu.</p></footer>
+<script>
+'use strict';
+(() => {
+  // The readable HTML is the sole source for both the no-script protocols and the interactive report.
+  const referenceWorkbook = { path: document.querySelector('#reference-workbook-path').textContent.trim(), sha256: document.querySelector('#reference-workbook-sha256').textContent.trim() };
+  const criteria = Array.from(document.querySelectorAll('#criteria > article')).map(article => ({
+    id: article.id, title: article.querySelector('[data-criterion-title]').textContent.trim(), physical: article.dataset.physical === 'true',
+    rule: article.querySelector('[data-criterion-rule]').textContent.trim(), acceptance: article.querySelector('[data-criterion-acceptance]').textContent.trim(),
+    steps: Array.from(article.querySelectorAll('[data-criterion-steps] > li'), node => node.textContent.trim())
+  }));
+  const tasks = Array.from(document.querySelectorAll('#novice-objective-source > li'), item => [item.dataset.taskId, item.querySelector('[data-task-objective]').textContent.trim(), item.querySelector('[data-task-observation]').textContent.trim()]);
+  for (const article of document.querySelectorAll('#criteria > article')) article.querySelector('[data-criterion-protocol]').open = false;
+  document.querySelector('#novice-objective-protocol').open = false;
+  const form = document.querySelector('#qualification-form');
+  let browserRecord = null;
+  let previewText = null;
+  function element(tag, text, parent) { const node = document.createElement(tag); if (text) node.textContent = text; if (parent) parent.append(node); return node; }
+  function field(parent, text, name, type = 'text', options = null) {
+    const label = element('label', text, parent);
+    const input = element(options ? 'select' : type === 'textarea' ? 'textarea' : 'input', '', label);
+    input.name = name; input.id = name;
+    if (!options && type !== 'textarea') input.type = type;
+    if (options) for (const [value, labelText] of options) { const option = element('option', labelText, input); option.value = value; }
+    else if (type !== 'checkbox') input.maxLength = type === 'textarea' ? 3000 : 500;
+    if (type === 'number') { input.min = '0'; input.step = '0.1'; input.removeAttribute('maxlength'); }
+    return input;
+  }
+  const statuses = [['NON_EXECUTE', 'NON_EXECUTE — aucun essai consigné'], ['PARTIEL', 'PARTIEL — seulement les étapes décrites'], ['ATTESTE_PAR_VALIDATEUR', 'ATTESTE_PAR_VALIDATEUR — exécution déclarée, écarts possibles']];
+  for (const criterion of criteria) {
+    const article = document.getElementById(criterion.id);
+    if (criterion.id === 'REM112-07') {
+      field(article, 'Application, version et OS utilisés', `${criterion.id}-application`);
+      field(article, 'Type de session bureautique', `${criterion.id}-office`, 'text', [['NON_RENSEIGNE', 'Non renseigné'], ['MICROSOFT_EXCEL_NATIF', 'Microsoft Excel natif réellement utilisé'], ['LIBREOFFICE_COMPATIBILITE', 'LibreOffice — compatibilité séparée'], ['AUTRE_COMPATIBILITE', 'Autre — compatibilité séparée']]);
+      field(article, 'SHA-256 du fichier réellement ouvert', `${criterion.id}-workbookHash`);
+    }
+    if (criterion.id === 'REM112-05') field(article, 'Outil, scène, durée, p50 / p95 / p99 / max (ms) et pics mémoire (Mo)', `${criterion.id}-measurements`, 'textarea');
+    field(article, 'État déclaré de cet essai', `${criterion.id}-status`, 'text', statuses);
+    field(article, 'Résultat observé, à choisir manuellement', `${criterion.id}-outcome`, 'text', [['NON_OBSERVE', 'Non observé'], ['CONFORME_OBSERVE', 'Comportement attendu observé dans le périmètre décrit'], ['ECART_OBSERVE', 'Écart ou incident observé'], ['INDETERMINE', 'Résultat indéterminé / preuve insuffisante']]);
+    field(article, 'Étapes exécutées, observations, incidents, limites et références de captures locales', `${criterion.id}-notes`, 'textarea');
+    field(article, 'J’atteste personnellement avoir exécuté / observé les étapes décrites, avec ce matériel et cette version. Cela ne prononce aucune clôture.', `${criterion.id}-attestation`, 'checkbox');
+  }
+  for (let p = 1; p <= 5; p++) {
+    const participant = element('details', '', document.querySelector('#participants'));
+    element('summary', `Participant ${p} · neuf observations`, participant);
+    field(participant, 'Identifiant anonyme', `p${p}-id`);
+    field(participant, 'Je confirme que cette personne n’avait pas appris ces mécaniques avant la session.', `p${p}-novice`, 'checkbox');
+    field(participant, 'Matériel, réglages, remappages et version de sauvegarde (aucun contenu de sauvegarde)', `p${p}-configuration`, 'textarea');
+    for (const [id, objective, observation] of tasks) {
+      const task = element('details', '', participant);
+      element('summary', `${id} · ${objective}`, task);
+      element('p', `Objectif à lire : « ${objective} »`, task);
+      element('p', `À observer sans souffler : ${observation}`, task);
+      const prefix = `p${p}-${id}`;
+      field(task, 'Résultat déclaré', `${prefix}-status`, 'text', [['NON_EXECUTE', 'NON_EXECUTE'], ['REALISE_SANS_AIDE', 'Réalisée sans aide, résultat et explication observés'], ['REALISE_AVEC_AIDE', 'Réalisée avec aide'], ['ECHEC', 'Échec observé'], ['INTERROMPUE', 'Interrompue / observation incomplète']]);
+      field(task, 'Première action et chemin suivi', `${prefix}-path`, 'textarea');
+      field(task, 'Durée observée (secondes)', `${prefix}-duration`, 'number');
+      field(task, 'Erreurs ou blocages (écrire « aucun » si observé)', `${prefix}-errors`, 'textarea');
+      field(task, 'Lecture du guide', `${prefix}-guide`, 'text', [['NON_OBSERVE', 'Non observé'], ['OUI', 'Oui'], ['NON', 'Non']]);
+      field(task, 'Aide demandée / fournie (écrire « aucune » si observé)', `${prefix}-help`, 'textarea');
+      field(task, 'Résultat réellement observé', `${prefix}-observed`, 'textarea');
+      field(task, 'Explication finale du joueur, mots ou paraphrase fidèle', `${prefix}-explanation`, 'textarea');
+    }
+  }
+  function value(name) { return form.elements.namedItem(name)?.value.trim() || ''; }
+  function checked(name) { return Boolean(form.elements.namedItem(name)?.checked); }
+  function invalidatePreview() {
+    previewText = null;
+    document.querySelector('#export-report').disabled = true;
+    document.querySelector('#report-preview').hidden = true;
+    document.querySelector('#export-state').textContent = 'Carnet modifié : relisez le JSON avant de télécharger. Les critères restent ouverts.';
+  }
+  form.addEventListener('submit', event => event.preventDefault());
+  form.addEventListener('input', invalidatePreview);
+  form.addEventListener('change', invalidatePreview);
+  const consent = document.querySelector('#browser-consent');
+  consent.addEventListener('change', () => {
+    document.querySelector('#collect-browser').disabled = !consent.checked;
+    if (!consent.checked) clearBrowser();
+  });
+  function clearBrowser() {
+    browserRecord = null;
+    document.querySelector('#browser-preview').textContent = '';
+    document.querySelector('#browser-preview').hidden = true;
+    document.querySelector('#browser-state').textContent = 'Aucun relevé conservé.';
+    invalidatePreview();
+  }
+  document.querySelector('#clear-browser').addEventListener('click', clearBrowser);
+  document.querySelector('#collect-browser').addEventListener('click', () => {
+    if (!consent.checked) return;
+    browserRecord = {
+      capturedAt: new Date().toISOString(), scope: 'PAGE_D_AIDE_UNIQUEMENT', physicalDeviceQualified: false,
+      userAgentDeclaredByBrowser: navigator.userAgent,
+      language: navigator.language,
+      viewportCss: { width: innerWidth, height: innerHeight, pixelRatio: devicePixelRatio },
+      screenCss: { width: screen.width, height: screen.height },
+      orientationDeclared: screen.orientation?.type || 'NON_DISPONIBLE',
+      capabilitiesOnly: { maxTouchPoints: navigator.maxTouchPoints ?? null, pointerEvents: 'PointerEvent' in window, gamepadApiAvailable: typeof navigator.getGamepads === 'function', secureContext: isSecureContext }
+    };
+    document.querySelector('#browser-preview').textContent = JSON.stringify(browserRecord, null, 2);
+    document.querySelector('#browser-preview').hidden = false;
+    document.querySelector('#browser-state').textContent = 'Relevé local prêt à relire. Aucun appareil physique qualifié.';
+    invalidatePreview();
+  });
+  function makeReport() {
+    return {
+      schemaVersion: 1, kind: 'CARNET_DECLARATIF_QUALIFICATION_CHASSE_V112', createdAt: new Date().toISOString(),
+      scope: { declarativeOnly: true, criteriaClosedByThisReport: [], automaticPass: false, noGameAccess: true, browserStorageUsed: false, transmittedByThisPage: false },
+      criteriaSource: 'docs/hunt-mechanics-v112.json#Restant', beginnerProtocolSource: 'docs/qa/v112-hunt/beginner-protocol.md', referenceWorkbook,
+      session: Object.fromEntries(['validator', 'sessionDate', 'testedVersion', 'build', 'environment', 'deviceModel', 'osVersion', 'browserVersion', 'gameViewport', 'controller', 'hardware', 'accessibility', 'conditions'].map(name => [name, value(name)])),
+      optionalBrowserRecord: consent.checked ? browserRecord : null,
+      criteria: criteria.map(c => ({ id: c.id, title: c.title, originalRule: c.rule, originalAcceptance: c.acceptance, status: value(`${c.id}-status`), observedOutcome: value(`${c.id}-outcome`), observations: value(`${c.id}-notes`), personallyAttested: checked(`${c.id}-attestation`), ...(c.id === 'REM112-07' ? { applicationVersionOs: value(`${c.id}-application`), officeSessionType: value(`${c.id}-office`), observedWorkbookSha256: value(`${c.id}-workbookHash`) } : {}), ...(c.id === 'REM112-05' ? { measurementsAndMethod: value(`${c.id}-measurements`) } : {}) })),
+      beginners: {
+        targetForHumanReview: 'Au moins 4/5 sans aide pour NOV112-01/03/04/07/08 ; aucune décision automatique.',
+        participants: Array.from({ length: 5 }, (_, i) => { const p = i + 1; return { anonymousId: value(`p${p}-id`), noviceDeclaredByValidator: checked(`p${p}-novice`), configuration: value(`p${p}-configuration`), tasks: tasks.map(([id]) => { const prefix = `p${p}-${id}`; return { id, status: value(`${prefix}-status`), firstActionAndPath: value(`${prefix}-path`), durationSeconds: value(`${prefix}-duration`) === '' ? null : Number(value(`${prefix}-duration`)), errors: value(`${prefix}-errors`), guideRead: value(`${prefix}-guide`), help: value(`${prefix}-help`), observedResult: value(`${prefix}-observed`), playerExplanation: value(`${prefix}-explanation`) }; }) }; }),
+        separateRefusalTests: value('noviceRefusals'), humanReview: value('noviceReview')
+      }
+    };
+  }
+  function validateReport(report) {
+    const errors = [];
+    for (const c of report.criteria) {
+      if (c.status !== 'NON_EXECUTE' && !c.observations) errors.push(`${c.id} : décrire les étapes réellement exécutées et leurs observations.`);
+      if (c.status !== 'ATTESTE_PAR_VALIDATEUR') continue;
+      if (!c.personallyAttested || c.observedOutcome === 'NON_OBSERVE') errors.push(`${c.id} : choisir le résultat observé et attester personnellement l’exécution.`);
+      if (!report.session.validator || !report.session.sessionDate || !report.session.testedVersion) errors.push(`${c.id} : renseigner le validateur, la date et la version exacte.`);
+      if (criteria.find(item => item.id === c.id).physical && (report.session.environment !== 'APPAREIL_PHYSIQUE' || !report.session.deviceModel || !report.session.osVersion || !report.session.browserVersion || !report.session.gameViewport)) errors.push(`${c.id} : identifier manuellement l’appareil physique, OS, navigateur et viewport en jeu.`);
+      if (c.id === 'REM112-04' && !report.session.controller) errors.push(`${c.id} : identifier la manette physique et son transport.`);
+      if (c.id === 'REM112-05' && (!report.session.hardware || !c.measurementsAndMethod || !report.session.conditions)) errors.push(`${c.id} : décrire le matériel, les conditions et la méthode / métriques réellement relevées, avec leurs limites.`);
+      if (c.id === 'REM112-07' && (c.officeSessionType !== 'MICROSOFT_EXCEL_NATIF' || !c.applicationVersionOs || !/^[a-f\d]{64}$/i.test(c.observedWorkbookSha256))) errors.push(`${c.id} : une attestation Excel native exige Microsoft Excel réellement utilisé, version / OS et SHA-256 ; consigner les autres suites en PARTIEL, comme compatibilité séparée.`);
+      if (c.id === 'REM112-01') {
+        for (let i = 0; i < report.beginners.participants.length; i++) {
+          const p = report.beginners.participants[i];
+          if (!p.anonymousId || !p.noviceDeclaredByValidator || !p.configuration) errors.push(`Participant ${i + 1} : identifiant anonyme, novice et configuration requis pour attester REM112-01.`);
+          for (const t of p.tasks) if (t.status === 'NON_EXECUTE' || !t.firstActionAndPath || t.durationSeconds === null || !Number.isFinite(t.durationSeconds) || t.durationSeconds < 0 || !t.errors || t.guideRead === 'NON_OBSERVE' || !t.help || !t.observedResult || !t.playerExplanation) errors.push(`Participant ${i + 1}, ${t.id} : observation complète requise ; sinon conserver REM112-01 en PARTIEL.`);
+        }
+        if (!report.beginners.separateRefusalTests || !report.beginners.humanReview) errors.push('REM112-01 : consigner les refus séparés et la lecture humaine de la cible 4/5.');
+      }
+    }
+    return errors;
+  }
+  document.querySelector('#preview-report').addEventListener('click', () => {
+    const report = makeReport();
+    const errors = validateReport(report);
+    const error = document.querySelector('#export-error');
+    error.hidden = errors.length === 0;
+    error.textContent = errors.slice(0, 8).join(' ') + (errors.length > 8 ? ` (${errors.length - 8} autres observations à compléter.)` : '');
+    if (errors.length) { previewText = null; document.querySelector('#export-report').disabled = true; document.querySelector('#report-preview').hidden = true; error.focus(); return; }
+    previewText = JSON.stringify(report, null, 2);
+    document.querySelector('#report-preview').textContent = previewText;
+    document.querySelector('#report-preview').hidden = false;
+    document.querySelector('#export-report').disabled = !document.querySelector('#review-consent').checked;
+    document.querySelector('#export-state').textContent = 'JSON prêt à relire ; le téléchargement exige votre accord coché avant la relecture. Aucun critère fermé.';
+  });
+  document.querySelector('#export-report').addEventListener('click', () => {
+    if (!previewText || !document.querySelector('#review-consent').checked) return;
+    const url = URL.createObjectURL(new Blob([previewText], { type: 'application/json;charset=utf-8' }));
+    const link = element('a'); link.href = url; link.download = `qualification-chasse-v112-${new Date().toISOString().slice(0, 10)}.json`;
+    document.body.append(link); link.click(); link.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000);
+    document.querySelector('#export-state').textContent = 'Téléchargement local demandé. Vous décidez de conserver et partager le fichier. Aucun critère fermé.';
+  });
+})();
+</script>
+</body>
+</html>

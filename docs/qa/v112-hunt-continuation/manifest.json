@@ -1,0 +1,255 @@
+{
+  "schema": 1,
+  "scope": "V112_SCHEMA3_DOCUMENTARY_CONTINUATION",
+  "createdAtUtc": "2026-11-02T06:11:13.686Z",
+  "gameplayEvidenceReceiptCommit": "e0347c7645667c6dd7fabc48527704d4b5f1ca32",
+  "gameplayApplicationSourceRef": "e4a6c64a1e77edad8865aa05ca7c2901d62bfa09",
+  "documentaryValidationState": "Recorded working-tree bytes after the receipt commit; final committed-byte checks are separate.",
+  "sheets": 22,
+  "rows": 610,
+  "originalIdentities": 362,
+  "historical": {
+    "cycleCommit": "e4a6c64a1e77edad8865aa05ca7c2901d62bfa09",
+    "sourceJsonSha256": "76b33d9f2acadf9bc6f07f395c545c0873c83a41d27f5168ac083bb5a4b9a8ff",
+    "closureSheetSha256": "56358c148e54541cca896101215c2353d642b4ecea75dddfaea37593b9ca2456",
+    "closureBaselineSha256": "ccf1710981ca54e1c05d292a90d8d03475917c8da97c2c80febd6b011ce66a1d",
+    "remainingSheetSha256": "f11671a1ac604c61463215d631ff12ad9d6efea95f067b240b3dd3bea940f89d",
+    "reviewRef": "e1e45fbf85d843c26ac1bf4f816baf46313795b0",
+    "sourceLinks": 569,
+    "sourceBindingsSha256": "13b9547c6ddc97488018630b8762ce05354424b0ca70d5cfa82832a1feb13eff",
+    "closureResults": {
+      "DOCUMENTE": 9,
+      "NON_QUALIFIE": 2,
+      "VALIDE_AUTOMATISE": 201,
+      "PARTIELLEMENT_QUALIFIE": 7
+    }
+  },
+  "current": {
+    "closureResults": {
+      "DOCUMENTE": 9,
+      "NON_QUALIFIE": 2,
+      "VALIDE_AUTOMATISE": 203,
+      "PARTIELLEMENT_QUALIFIE": 5
+    },
+    "remainingStatuses": {
+      "REM112-01": "NON_QUALIFIE",
+      "REM112-02": "NON_QUALIFIE",
+      "REM112-03": "NON_QUALIFIE",
+      "REM112-04": "NON_QUALIFIE",
+      "REM112-05": "NON_QUALIFIE",
+      "REM112-06": "NON_QUALIFIE",
+      "REM112-07": "NON_QUALIFIE",
+      "REM112-08": "NON_QUALIFIE"
+    },
+    "journal": [
+      {
+        "id": "RPR112-001",
+        "target": "CHA112-02",
+        "previous": "PARTIELLEMENT_QUALIFIE",
+        "status": "VALIDE_AUTOMATISE",
+        "proofs": "PRF112-13",
+        "source": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/e0347c7645667c6dd7fabc48527704d4b5f1ca32/docs/qa/v112-ground-campaign/qualified-unladen/report.json"
+      },
+      {
+        "id": "RPR112-002",
+        "target": "ROU112-06",
+        "previous": "PARTIELLEMENT_QUALIFIE",
+        "status": "VALIDE_AUTOMATISE",
+        "proofs": "PRF112-14",
+        "source": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/e0347c7645667c6dd7fabc48527704d4b5f1ca32/docs/qa/v112-canopy-choice/report.json"
+      }
+    ]
+  },
+  "artifacts": [
+    {
+      "path": "docs/YAUTJA_V112_MECANIQUES_CHASSE.xlsx",
+      "bytes": 734128,
+      "sha256": "f13dd1a3548aebac25ba77e11ad5c5835757fc49da94491dbe69dbd291b59989"
+    },
+    {
+      "path": "docs/hunt-mechanics-v112.json",
+      "bytes": 427613,
+      "sha256": "d234a07dc60824d91da0bdc843a9f21d8aa867f8ffe457ac43c89dff8113278a"
+    },
+    {
+      "path": "docs/hunt-mechanics-v112.md",
+      "bytes": 15171,
+      "sha256": "80614f9e9f6b9d6cefa99edd86c43154ed21e7e4f21eed2878b645b1e0abf786"
+    },
+    {
+      "path": "docs/qa/v112-hunt-continuation/README.md",
+      "bytes": 7555,
+      "sha256": "f68f42b5f7b60ea1929d529bbb57625c8a055665a990a72a078b6bf261bb9f67"
+    },
+    {
+      "path": "docs/qa/v112-hunt-continuation/first-copy-before-spacing/libreoffice-compatibility.json",
+      "bytes": 9661,
+      "sha256": "a7d7da6410a9e91d5f2a2a954838a76507f2a2209fce5eec2215c315dbf84849"
+    },
+    {
+      "path": "docs/qa/v112-hunt-continuation/first-copy-before-spacing/printable-page-001.png",
+      "bytes": 186550,
+      "sha256": "4bfb4530bd95eba99ae50e948ddf960adf8665a4aa3416b9fc0969eae82ee336"
+    },
+    {
+      "path": "docs/qa/v112-hunt-continuation/first-copy-before-spacing/printable-page-013.png",
+      "bytes": 242342,
+      "sha256": "bc7907111f09c82a7db544a396692dbb078c67d096cd7228bd3121ea7bd89ef3"
+    },
+    {
+      "path": "docs/qa/v112-hunt-continuation/first-copy-before-spacing/printable-page-045.png",
+      "bytes": 255588,
+      "sha256": "8376a550db82875600cc4f8f409d06a0fc0f940dccf6a3586fb2c14aa30a2784"
+    },
+    {
+      "path": "docs/qa/v112-hunt-continuation/first-copy-before-spacing/printable-page-047.png",
+      "bytes": 162803,
+      "sha256": "58d5c6b717db63d60a276c39becea64561605aa46c4a41d584ad66d5d063d7c0"
+    },
+    {
+      "path": "docs/qa/v112-hunt-continuation/first-copy-before-spacing/printable-page-087.png",
+      "bytes": 233743,
+      "sha256": "f42305609ef320d91b28601397e263ac5fc9c81615558b285f6422739ffa6a56"
+    },
+    {
+      "path": "docs/qa/v112-hunt-continuation/first-copy-before-spacing/printable-page-090.png",
+      "bytes": 218931,
+      "sha256": "3939668266c9b9ef3878714d2bf81f1aa6fb6b770b955d6d5260ed2929586679"
+    },
+    {
+      "path": "docs/qa/v112-hunt-continuation/first-copy-before-spacing/printable-page-092.png",
+      "bytes": 78425,
+      "sha256": "67e2938e6b17f7ae9e7954c34d47fa1994f4331e62e2d9d63e4e77e0bd4b6641"
+    },
+    {
+      "path": "docs/qa/v112-hunt-continuation/first-copy-before-spacing/printable-verification.json",
+      "bytes": 112121,
+      "sha256": "5cf3caadedd0bfb07560fd33456b9ea9b730ac87facc255a1cebfe4db614376c"
+    },
+    {
+      "path": "docs/qa/v112-hunt-continuation/first-copy-before-spacing/public-downloads.json",
+      "bytes": 809,
+      "sha256": "88601f567e4fa22bbbb7f2d4bc76cdfef1f0c9e5b6f1a1da7204956904b0ace9"
+    },
+    {
+      "path": "docs/qa/v112-hunt-continuation/hunt-review-v112.html",
+      "bytes": 341149,
+      "sha256": "234d5419909490055047c5770885410e521d415cd28f8485d3dcf554391525ea"
+    },
+    {
+      "path": "docs/qa/v112-hunt-continuation/hunt-review-v112.pdf",
+      "bytes": 1480498,
+      "sha256": "e7b5793d7be0151b01bdc67919074f2bf21a713bdb037ec945b8b3d9d789e5dc"
+    },
+    {
+      "path": "docs/qa/v112-hunt-continuation/libreoffice-compatibility.json",
+      "bytes": 9661,
+      "sha256": "50d0f4cff438c1c3c74accdf0edda3c93073753cd39543002fefe4222569acd2"
+    },
+    {
+      "path": "docs/qa/v112-hunt-continuation/printable-page-001.png",
+      "bytes": 186724,
+      "sha256": "aff5fab04b183043f556aa0e81fc5ca9f3eced5651b6a8469006860e3d203ffb"
+    },
+    {
+      "path": "docs/qa/v112-hunt-continuation/printable-page-013.png",
+      "bytes": 242513,
+      "sha256": "f91768f5fff5722270b1bfa1d64dc6bff1de57728a60bfdd90b438834f9c00b1"
+    },
+    {
+      "path": "docs/qa/v112-hunt-continuation/printable-page-045.png",
+      "bytes": 257096,
+      "sha256": "c520c0aca1c0ea0c0ab35e244838ea8ab411dece5099f0c6334ced7cec79545d"
+    },
+    {
+      "path": "docs/qa/v112-hunt-continuation/printable-page-047.png",
+      "bytes": 162803,
+      "sha256": "58d5c6b717db63d60a276c39becea64561605aa46c4a41d584ad66d5d063d7c0"
+    },
+    {
+      "path": "docs/qa/v112-hunt-continuation/printable-page-087.png",
+      "bytes": 233743,
+      "sha256": "f42305609ef320d91b28601397e263ac5fc9c81615558b285f6422739ffa6a56"
+    },
+    {
+      "path": "docs/qa/v112-hunt-continuation/printable-page-090.png",
+      "bytes": 218931,
+      "sha256": "3939668266c9b9ef3878714d2bf81f1aa6fb6b770b955d6d5260ed2929586679"
+    },
+    {
+      "path": "docs/qa/v112-hunt-continuation/printable-page-092.png",
+      "bytes": 78425,
+      "sha256": "67e2938e6b17f7ae9e7954c34d47fa1994f4331e62e2d9d63e4e77e0bd4b6641"
+    },
+    {
+      "path": "docs/qa/v112-hunt-continuation/printable-verification.json",
+      "bytes": 112121,
+      "sha256": "4359676fde25434841f10c1fb8f35ae3f9d7283214fd92d8d4e38aef05ccc620"
+    },
+    {
+      "path": "docs/qa/v112-hunt-continuation/public-downloads.json",
+      "bytes": 809,
+      "sha256": "5511dffa59e31119645a151ea0502cc99f1994a86eac51ad476e17e22b9d9048"
+    },
+    {
+      "path": "docs/qa/v112-hunt-continuation/validation-results.json",
+      "bytes": 4556,
+      "sha256": "1cdd231870698c138bbe143765c0821af3bff1f3ef83f3978bd4ae447f071915"
+    },
+    {
+      "path": "public/aide/YAUTJA_V112_MECANIQUES_CHASSE.xlsx",
+      "bytes": 734128,
+      "sha256": "f13dd1a3548aebac25ba77e11ad5c5835757fc49da94491dbe69dbd291b59989"
+    },
+    {
+      "path": "public/aide/YAUTJA_V112_REVUES_IMPRIMABLE.html",
+      "bytes": 341149,
+      "sha256": "234d5419909490055047c5770885410e521d415cd28f8485d3dcf554391525ea"
+    },
+    {
+      "path": "public/aide/YAUTJA_V112_REVUES_IMPRIMABLE.pdf",
+      "bytes": 1480498,
+      "sha256": "e7b5793d7be0151b01bdc67919074f2bf21a713bdb037ec945b8b3d9d789e5dc"
+    },
+    {
+      "path": "scripts/build-hunt-mechanics-workbook-v112.mjs",
+      "bytes": 35041,
+      "sha256": "accae4c379f005d91ec9ede2fe9135a1e642c11f7310201447999cdc400713cf"
+    },
+    {
+      "path": "scripts/build-hunt-printable-v112.mjs",
+      "bytes": 9274,
+      "sha256": "9782d9eb14813866cb7c757274f1d8c2f41a1fd36ab71d7c1999f6abbb4fd0b2"
+    },
+    {
+      "path": "scripts/qa-workbook-libreoffice-v112.py",
+      "bytes": 8942,
+      "sha256": "bc06b95707aaaaed17865026547d4fccd6c412a624edcb34cd248a0628f07f15"
+    },
+    {
+      "path": "scripts/verify-hunt-mechanics-workbook-v112.py",
+      "bytes": 21721,
+      "sha256": "dbb79bf435d2f41aeca32f8edf24d652a5b2263daa1a05113b24287c0279107b"
+    },
+    {
+      "path": "scripts/verify-hunt-printable-v112.py",
+      "bytes": 16514,
+      "sha256": "1ec3a254d1837b1bf6f3e232900c1001fdcf8cfa8991cb65d0d497381e70071a"
+    },
+    {
+      "path": "tests/fixtures/hunt-mechanics-e4a6c64-v112.json.gz",
+      "bytes": 72130,
+      "sha256": "0c42b1a26bbd6bc31f13121756af4a504975c2b2a8ed78e9e86c181e076095ad"
+    },
+    {
+      "path": "tests/hunt-mechanics-workbook-v112.test.mjs",
+      "bytes": 12975,
+      "sha256": "49e87ed346df6dcc1230528e2344fc97071e147f74e53ab9e4de01478d0a60c7"
+    },
+    {
+      "path": "tests/hunt-review-cycle-v112.test.mjs",
+      "bytes": 8169,
+      "sha256": "f3a39eb029b0ecf830239f2719198ff21a24094729b8952e7388b58b43fe518a"
+    }
+  ]
+}

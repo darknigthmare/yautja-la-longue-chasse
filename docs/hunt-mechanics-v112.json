@@ -1,12 +1,12 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "release": "V112",
-  "asOf": "2026-11-01",
+  "asOf": "2026-11-02",
   "title": "Yautja : La Longue Chasse — chasse, anatomie et canopée",
   "repository": "darknigthmare/yautja-la-longue-chasse",
   "baseCommit": "96ba117a35b54142640ad2915fe3e9847fe060ad",
   "reviewRef": "e1e45fbf85d843c26ac1bf4f816baf46313795b0",
-  "scope": "Reprise de qualification de la chasse V112 sur la base V114. Chaque point initialement ouvert conserve une trace avant/après, ses preuves et sa portée ; les contrôles humains, matériels et la campagne interactive complète restent identifiés séparément.",
+  "scope": "Reprise de qualification de la chasse V112 sur la base V114. Chaque point initialement ouvert conserve une trace avant/après, ses preuves et sa portée ; les contrôles humains, matériels et la campagne interactive complète restent identifiés séparément. Le journal Reprise conserve l’audit e4 et affiche les décisions courantes sans réécrire les critères historiques.",
   "legend": {
     "BASE_V111": "Règle livrée par PR21 ; régressions courantes exécutées séparément.",
     "IMPLEMENTE_A_VALIDER": "Règle implémentée ; son périmètre automatique et ses résultats figurent dans Qualification/Preuves, sans qualification humaine implicite.",
@@ -3872,6 +3872,22 @@
           "rule": "24recettes au sol avec vrais ennemis/dangers,900 px aller/retour local ; décharge et saut natifs.",
           "source": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41257774503",
           "acceptance": "commit e1e45fbf85d843c26ac1bf4f816baf46313795b0 ; merge exécuté 3c9575809068ac6c9e4a97f57896c4a4cfc60479, arbre identique c32dcc50b200929c71bef159a09c83106ac144c4 ; commande node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/canopy-traversal-v112.test.mjs tests/carcass-anatomy-v112.test.mjs tests/conservation-persistence-ui-v112.test.mjs tests/corpse-discovery-v112.test.mjs tests/excel-history-preservation-v112.test.mjs tests/field-stash-v112.test.mjs tests/harvest-inventory-v112.test.mjs tests/hunt-accessibility-v112.test.mjs tests/hunt-canopy-runtime-v112.test.mjs tests/hunt-carcass-runtime-v112.test.mjs tests/hunt-field-load-v112.test.mjs tests/hunt-field-stash-runtime-v112.test.mjs tests/hunt-mechanics-workbook-v112.test.mjs tests/hunt-catalogue-contract-v112.test.mjs tests/hunt-field-guide-v112.test.mjs tests/hunt-ground-recovery-v112.test.mjs ; 24 cas hunt-ground-recovery PASS,8 missions×3 armures. Charge préparée par acteurs/gestes natifs avant départ ; 900 px aller/retour local sous la première route avec ennemis/dangers conservés, puis vraie pause/sac/décharge et saut non encombré. Pas de soin/invulnérabilité ni téléportation après le setup ; pas de mission entière qualifiée."
+        },
+        {
+          "id": "PRF112-13",
+          "status": "VALIDE_AUTOMATISE",
+          "topic": "Route principale sans récolte",
+          "rule": "24/24 extractions natives : huit missions et trois armures, sans récolte optionnelle, sans grimpe, balancement ni contact de repos de canopée.",
+          "source": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/e0347c7645667c6dd7fabc48527704d4b5f1ca32/docs/qa/v112-ground-campaign/qualified-unladen/report.json",
+          "acceptance": "commit e0347c7645667c6dd7fabc48527704d4b5f1ca32 de consignation des runners et preuves ; application exécutée e4a6c64a1e77edad8865aa05ca7c2901d62bfa09 ; commande node scripts/qa-hunt-ground-campaign-v112.mjs --seconds=240 --replay=true --requireComplete=true --output=docs/qa/v112-ground-campaign/qualified-unladen ; PASS, 24/24 avec replay terminal exact. Armures admises comme replays logiciels, ennemis/objectifs/Apex/rite/navette natifs conservés. Les budgets déjà qualifiés restent archivés dans QA112-22/23. Cette preuve ne qualifie ni progression de campagne dans GameClient, ni charges pleines, ni matériel physique."
+        },
+        {
+          "id": "PRF112-14",
+          "status": "VALIDE_AUTOMATISE",
+          "topic": "Choisir un repos avant épuisement",
+          "rule": "GameClient et HuntCanvas natifs, insertion canonique, guide développé et vrais inputs : choix du repos à 95,05/100, vraie réception puis récupération à 100.",
+          "source": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/e0347c7645667c6dd7fabc48527704d4b5f1ca32/docs/qa/v112-canopy-choice/report.json",
+          "acceptance": "commit e0347c7645667c6dd7fabc48527704d4b5f1ca32 de consignation du runner et des preuves ; application exécutée e4a6c64a1e77edad8865aa05ca7c2901d62bfa09 ; commande node scripts/qa-hunt-canopy-choice-browser-v112.mjs --output outputs/qa-hunt-canopy-choice-v112/attempt-r1 --wall-seconds 300 ; FUNCTIONAL_NATIVE_BROWSER_PASS, quatre ennemis actifs conservés, PV 160→143,68, aucun soin ni mutation de champ. Le guide développé distingue route, appui et support souple. Le message contextuel de grimpe conserve une formulation de liane sur arbre rigide ; la limite est consignée. Aucune étude novice ni saisie de liane revendiquée."
         }
       ]
     },
@@ -6662,6 +6678,88 @@
           "acceptance": "Vérifier le parcours intégral jusqu'à l'extraction avec charge/armure déterminées. Les 72 traversées de canopée isolées démontrent les repos et accès, pas toutes les campagnes au sol."
         }
       ]
+    },
+    {
+      "name": "Reprise",
+      "title": "Journal des décisions après l’audit e4",
+      "columns": [
+        {
+          "key": "id",
+          "label": "ID revue",
+          "width": 18
+        },
+        {
+          "key": "target",
+          "label": "Exigence originale",
+          "width": 20
+        },
+        {
+          "key": "previous",
+          "label": "Statut initial",
+          "width": 25
+        },
+        {
+          "key": "status",
+          "label": "Statut après revue",
+          "width": 28
+        },
+        {
+          "key": "criterion",
+          "label": "Critère original conservé",
+          "width": 90
+        },
+        {
+          "key": "kind",
+          "label": "Nature de preuve",
+          "width": 26
+        },
+        {
+          "key": "proofs",
+          "label": "Recettes / preuves",
+          "width": 35
+        },
+        {
+          "key": "scope",
+          "label": "Portée vérifiée",
+          "width": 80
+        },
+        {
+          "key": "source",
+          "label": "Source",
+          "width": 68
+        },
+        {
+          "key": "remaining",
+          "label": "Critères encore ouverts",
+          "width": 35
+        }
+      ],
+      "rows": [
+        {
+          "id": "RPR112-001",
+          "target": "CHA112-02",
+          "previous": "PARTIELLEMENT_QUALIFIE",
+          "status": "VALIDE_AUTOMATISE",
+          "criterion": "Budgets propres à chaque armure. | Route principale terminable sans récolte optionnelle.",
+          "kind": "AUTOMATISE",
+          "proofs": "PRF112-13",
+          "scope": "Le critère de route principale sans récolte optionnelle est couvert pour huit missions × trois armures par 24 extractions natives complètes et leurs replays terminaux exacts, sans grimpe ni repos de canopée. Les budgets d’armure restent qualifiés par QA112-22/23 archivées. Les admissions de replay sont explicites. Les charges pleines, autres tirages et difficultés, progression GameClient et appareils restent hors de cette preuve et conservent leurs limites distinctes.",
+          "source": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/e0347c7645667c6dd7fabc48527704d4b5f1ca32/docs/qa/v112-ground-campaign/qualified-unladen/report.json",
+          "remaining": ""
+        },
+        {
+          "id": "RPR112-002",
+          "target": "ROU112-06",
+          "previous": "PARTIELLEMENT_QUALIFIE",
+          "status": "VALIDE_AUTOMATISE",
+          "criterion": "Le guide distingue route, appui et prise flexible. | Le joueur peut choisir un repos avant épuisement.",
+          "kind": "AUTOMATISE",
+          "proofs": "PRF112-14",
+          "scope": "Possibilité fonctionnelle observée avec les vrais boutons et inputs dans GameClient/HuntCanvas : guide développé distinguant route/appui/support souple, choix à 95,05/100, réception sur le vrai repos et récupération 97,52→100. Le message contextuel de grimpe sur arbre conserve une formulation de liane, explicitée au rapport. Ce parcours ne démontre ni compréhension novice, ni liane saisie, ni canopée complète ; FUT-11 et REM112-01 restent ouverts.",
+          "source": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/e0347c7645667c6dd7fabc48527704d4b5f1ca32/docs/qa/v112-canopy-choice/report.json",
+          "remaining": ""
+        }
+      ]
     }
   ],
   "closureBaseline": {
@@ -8700,5 +8798,118 @@
     ]
   },
   "integrationBaseCommit": "81fc1916fc285ca85d3c434737bc35b1e5f2fb7f",
-  "deliveryValidationScope": "Les preuves de code portent sur e1e45fbf85d843c26ac1bf4f816baf46313795b0 et son arbre c32dcc50b200929c71bef159a09c83106ac144c4. Les trois anciennes attentes Excel sont closes pour l'artefact 252c à 19 onglets/362 lignes ; les nouveaux scripts schéma2 et octets 21 onglets/606 lignes sont contrôlés séparément par les checks de la PR de reprise, sans attribuer leur résultat à un commit antérieur."
+  "deliveryValidationScope": "Les preuves de code portent sur e1e45fbf85d843c26ac1bf4f816baf46313795b0 et son arbre c32dcc50b200929c71bef159a09c83106ac144c4. Les trois anciennes attentes Excel sont closes pour l'artefact 252c à 19 onglets/362 lignes ; les nouveaux scripts schéma2 et octets 21 onglets/606 lignes sont contrôlés séparément par les checks de la PR de reprise, sans attribuer leur résultat à un commit antérieur. Les nouvelles preuves de route au sol et de choix de repos sont consignées au commit e0347c7645667c6dd7fabc48527704d4b5f1ca32, pour l’application exécutée e4a6c64a1e77edad8865aa05ca7c2901d62bfa09. Les nouveaux scripts schéma3, la source JSON, le compagnon et le XLSX reçoivent leurs vérifications documentaires séparées ; leurs octets ne sont pas attribués à ce commit de consignation.",
+  "printLayout": {
+    "fitToPage": true
+  },
+  "cycleBaseline": {
+    "commit": "e4a6c64a1e77edad8865aa05ca7c2901d62bfa09",
+    "sourceJsonSha256": "76b33d9f2acadf9bc6f07f395c545c0873c83a41d27f5168ac083bb5a4b9a8ff",
+    "closureSheetSha256": "56358c148e54541cca896101215c2353d642b4ecea75dddfaea37593b9ca2456",
+    "remainingSheetSha256": "f11671a1ac604c61463215d631ff12ad9d6efea95f067b240b3dd3bea940f89d",
+    "closureBaselineSha256": "ccf1710981ca54e1c05d292a90d8d03475917c8da97c2c80febd6b011ce66a1d",
+    "reviewRef": "e1e45fbf85d843c26ac1bf4f816baf46313795b0",
+    "remainingSheet": {
+      "name": "Restant",
+      "title": "Critères encore ouverts et moyens de les clore",
+      "columns": [
+        {
+          "key": "id",
+          "label": "ID",
+          "width": 18
+        },
+        {
+          "key": "status",
+          "label": "Statut",
+          "width": 24
+        },
+        {
+          "key": "topic",
+          "label": "Étape / sujet",
+          "width": 32
+        },
+        {
+          "key": "rule",
+          "label": "Règle et retour joueur",
+          "width": 76
+        },
+        {
+          "key": "source",
+          "label": "Source vérifiable",
+          "width": 68
+        },
+        {
+          "key": "acceptance",
+          "label": "Validation / limite",
+          "width": 78
+        }
+      ],
+      "rows": [
+        {
+          "id": "REM112-01",
+          "status": "NON_QUALIFIE",
+          "topic": "Compréhension débutant",
+          "rule": "Un joueur nouveau comprend prise, repos, épuisement, préparation, prélèvement, extraction et conservation sans explication extérieure.",
+          "source": "docs/qa/v112-hunt/beginner-protocol.md",
+          "acceptance": "Exécuter les 9 tâches du protocole avec 5 nouveaux joueurs ; noter aide, erreurs, temps et explication. Cible 4/5 sans aide pour les tâches essentielles. Aucun participant ni résultat humain n'est consigné ; textes et états logiciels testés ne prouvent pas cette compréhension."
+        },
+        {
+          "id": "REM112-02",
+          "status": "NON_QUALIFIE",
+          "topic": "Téléphone Android physique",
+          "rule": "Commandes tactiles et sorties dans une chasse réelle sur téléphone Android identifié.",
+          "source": "docs/hunt-mechanics-v112.md",
+          "acceptance": "Consigner modèle, OS, navigateur, viewport, version testée, orientation, gestes, perte de focus et reprise ; joindre captures et incidents. Une émulation Chromium ne ferme pas ce critère."
+        },
+        {
+          "id": "REM112-03",
+          "status": "NON_QUALIFIE",
+          "topic": "Téléphone iOS physique",
+          "rule": "Commandes tactiles et sorties dans une chasse réelle sur iPhone identifié.",
+          "source": "docs/hunt-mechanics-v112.md",
+          "acceptance": "Consigner modèle, iOS, Safari, viewport, version, orientation, gestes, perte de focus et reprise ; joindre captures/incidents. Aucun appareil réel utilisé dans cette qualification."
+        },
+        {
+          "id": "REM112-04",
+          "status": "NON_QUALIFIE",
+          "topic": "Manette physique",
+          "rule": "Commande corporelle et atelier, remappage, branchement/rebranchement sur contrôleur identifié.",
+          "source": "docs/hunt-mechanics-v112.md",
+          "acceptance": "Consigner modèle, transport USB/Bluetooth, OS/navigateur, affectations, navigation, confirmation/annulation, reconnexion et absence d'action derrière le menu. Le pad logiciel ne qualifie pas le périphérique."
+        },
+        {
+          "id": "REM112-05",
+          "status": "NON_QUALIFIE",
+          "topic": "Performance matériel cible",
+          "rule": "Coût de trame et mémoire dans le produit avec rendu, illustrations et sons sur matériel cible.",
+          "source": "docs/hunt-mechanics-v112.md",
+          "acceptance": "Consigner CPU/GPU/RAM, OS, navigateur, résolution, version et scène dense ; relever p 50/p 95/p 99/max des trames, pics mémoire et durée. Une mesure Node du CPU de simulation en CI reste distincte."
+        },
+        {
+          "id": "REM112-06",
+          "status": "NON_QUALIFIE",
+          "topic": "Campagne interactive complète",
+          "rule": "Huit chasses avec combat, canopée optionnelle, prélèvements, extraction, sauvegarde/reprise et atelier par les entrées du produit.",
+          "source": "docs/hunt-mechanics-v112.md",
+          "acceptance": "Jouer chaque chasse sans retirer ennemis, téléporter ni forcer un résultat ; conserver armure, charge, profil d'accessibilité, parcours, morts/reprises et stock final. Les scénarios automatisés bornés restent explicitement bornés."
+        },
+        {
+          "id": "REM112-07",
+          "status": "NON_QUALIFIE",
+          "topic": "Application Excel native",
+          "rule": "Ouverture et usage du classeur livré dans Excel, sans alerte de réparation.",
+          "source": "docs/hunt-mechanics-v112.md",
+          "acceptance": "Consigner version Excel/OS et empreinte du XLSX ; essayer filtres, volets gelés, liens et impression. ZIP/XML et reproduction déterministe ne constituent pas une session Excel native."
+        },
+        {
+          "id": "REM112-08",
+          "status": "NON_QUALIFIE",
+          "topic": "Repli terrestre complet",
+          "rule": "Le repli au sol reste praticable dans les huit missions avec armures et charges admissibles, ennemis et objectifs réels.",
+          "source": "app/game/systems/canopyTraversalV112.ts",
+          "acceptance": "Vérifier le parcours intégral jusqu'à l'extraction avec charge/armure déterminées. Les 72 traversées de canopée isolées démontrent les repos et accès, pas toutes les campagnes au sol."
+        }
+      ]
+    }
+  }
 }

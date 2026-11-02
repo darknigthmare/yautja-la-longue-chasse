@@ -79,6 +79,7 @@ jobs:
           tests/carcass-anatomy-v112.test.mjs
           tests/conservation-persistence-ui-v112.test.mjs
           tests/corpse-discovery-v112.test.mjs
+          tests/discovery-signals-hud-v112.test.mjs
           tests/excel-history-preservation-v112.test.mjs
           tests/field-stash-v112.test.mjs
           tests/harvest-inventory-v112.test.mjs
@@ -88,6 +89,8 @@ jobs:
           tests/hunt-field-load-v112.test.mjs
           tests/hunt-field-stash-runtime-v112.test.mjs
           tests/hunt-mechanics-workbook-v112.test.mjs
+          tests/hunt-review-cycle-v112.test.mjs
+          tests/hunt-carried-corpse-menu-v112.test.mjs
           tests/hunt-catalogue-contract-v112.test.mjs
           tests/hunt-field-guide-v112.test.mjs
           tests/hunt-ground-recovery-v112.test.mjs
@@ -100,6 +103,7 @@ jobs:
           node node_modules/eslint/bin/eslint.js --max-warnings=0
           app/game/ConservationPanelV112.tsx app/game/HuntFieldGuideV112.tsx
           app/game/HuntCanvas.tsx app/game/GameClient.tsx app/game/useMenuGamepad.ts
+          app/game/discoverySignalsV112.ts
           app/game/systems/harvestInventoryV112.ts app/game/PlanetGeneratorV103.tsx
           app/game/systems/clanWarPlanetGeneratorV115.ts app/game/systems/clanWarTextureLibraryV115.ts
       - name: Current Homeworld position recovery and dynamic motor regressions

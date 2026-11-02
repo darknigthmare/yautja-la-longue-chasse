@@ -118,7 +118,15 @@ export interface HuntRiteMenuSnapshotV77 {
 }
 export function huntRiteMenuSnapshotV77(state:RitesOfHuntV77,actor:{x:number;y:number},selectedId:string|null,available:boolean,
   options:RiteRuntimeOptionsV111=DEFAULT_RITE_RUNTIME_OPTIONS_V111):HuntRiteMenuSnapshotV77|null{
-  if(!available)return null;const corpse=nearestRiteCorpseV77(state,actor);if(!corpse)return null;
+  if(!available)return null;
+  // Keep the body in the hunter's hands actionable when another corpse is
+  // nearer. Reuse the normal reach check; carrying never grants remote access.
+  const carried=state.carryingCorpseId?state.corpses.find(c=>c.id===state.carryingCorpseId&&
+    c.flayed===true&&c.erased===false&&c.supportId===null&&c.hangingAt===null&&
+    Number.isFinite(c.x)&&Number.isFinite(c.y)&&
+    (c.massKg===undefined||typeof c.massKg==="number"&&Number.isFinite(c.massKg)&&c.massKg>=12&&c.massKg<=170)):null;
+  const corpse=(carried?nearestRiteCorpseV77({...state,corpses:[carried]},actor):null)??nearestRiteCorpseV77(state,actor);
+  if(!corpse)return null;
   const flayLockedReason=corpse.flayed?'Dépeçage déjà terminé.':options.flayingToolOwned!==true?'Acheter le Flaying Tool à l’armurerie.':
     corpse.protectedPrey||!corpse.worthy?'Le Code protège cette proie.':null;
   const workMultiplier=Math.max(1,Math.min(1.65,options.toolWorkMultiplier??1));
