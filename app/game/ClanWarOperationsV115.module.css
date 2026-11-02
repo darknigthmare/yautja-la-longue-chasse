@@ -1,0 +1,76 @@
+.root{margin:18px 0 26px;padding:18px;border:1px solid #5b7163;background:linear-gradient(155deg,#10201b,#182922 67%,#151e20);color:#e9eddc;font-size:.91rem;line-height:1.5}
+.root *{box-sizing:border-box}.root h3{font-size:1.45rem;margin:5px 0 12px}.root h4{font-size:1.12rem;margin:0 0 10px}.root p{margin:8px 0 14px}
+.root button,.root select{font:inherit;border:1px solid #83957e;border-radius:5px;background:#263f33;color:#ebeddc;padding:9px 11px;min-height:43px;cursor:pointer}
+.root button:hover{background:#395746}.root button:disabled{opacity:.48;cursor:default}
+.root button:focus-visible,.root select:focus-visible,.root input:focus-visible{outline:3px solid #eccc8b;outline-offset:2px}
+.intro,.battleHeader{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}.intro p{max-width:760px}.overline{font-size:.7rem;letter-spacing:.13em;color:#dfce97;font-weight:700}
+.disclaimer,.explain{font-size:.79rem;color:#c1ceba}.disclaimer{padding:13px 15px;border-inline-start:3px solid #b69b61;background:#252922}.warning{color:#ffd0a7;padding:11px;border:1px solid #b4855b;background:#2d2018}.reset{flex:none}
+.metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin:20px 0}
+.metrics>div{border:1px solid #496152;padding:11px;background:#12241b;font-size:.76rem;color:#bfcfbc}
+.metrics strong{display:block;margin-top:5px;font-size:1.3rem;color:#e9db9c}
+.message{background:#243627;border:1px solid #536747;color:#e0dfc5;padding:12px 14px}
+.selector{display:grid;grid-template-columns:minmax(200px,.8fr) minmax(220px,1fr) minmax(260px,1.1fr);gap:12px;align-items:start;margin:22px 0}
+.selector fieldset{min-width:0;margin:0;padding:12px;border:1px solid #4b6255;min-height:250px}
+.selector legend{font-weight:700;padding:0 6px;color:#d6c594}
+.selector label{display:block;font-size:.83rem}.selector select{display:block;width:100%;margin-top:8px;background:#0f2019}
+.modes,.roster{display:flex;flex-direction:column;gap:8px}.modes button{text-align:left;width:100%;font-size:.82rem}.modes button[aria-pressed=true],.cards button[aria-pressed=true]{border-color:#e1cc91;background:#53634b;color:#fff5cf}
+.team{border:1px solid #526854;padding:9px 10px;background:#172920;display:flex!important;flex-direction:column;gap:4px;cursor:pointer}
+.team[data-engaged=true]{opacity:.7}.team>span{display:flex;align-items:center;flex-wrap:wrap;gap:7px}.team strong{font-size:.8rem}.team small{font-size:.67rem;color:#bac7b3}.team input[type=checkbox]{width:20px;height:20px;accent-color:#d5bc7a;flex:none}
+.launch{border:1px solid #88744b;background:#25291b;padding:14px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.launch p{font-size:.81rem;margin:0}.launch button{background:#6b633c;flex:none}
+.battle,.delegated,.reports{margin-top:24px;padding:17px;border:1px solid #506d5f;background:#101e19}
+.battleHeader{margin-bottom:15px}.battleHeader button{background:#523931}
+.sideScene{display:block;width:100%;height:auto;max-height:320px;background:#142521;border:1px solid #597363;margin:14px 0}
+.cards,.stealthControls{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}.cards button,.stealthControls button{font-size:.79rem}
+.grid{display:grid;width:min(100%,610px);aspect-ratio:9/6;gap:3px;background:#13211b;padding:6px;margin:15px auto;border:1px solid #566759}
+.cell{display:flex;align-items:center;justify-content:center;background:#263e32;border:1px solid #46594b;color:#b9c9b7;font:700 clamp(.7rem,2vw,1.2rem)/1 ui-monospace,monospace;min-width:0;min-height:0;padding:0}
+.cell[data-wall=true]{background:#393c37;color:#b6b5a4}.cell[data-actor=ally],.cell[data-actor=X]{background:#527868;color:#fff8cf}.cell[data-actor=rival],.cell[data-actor=G]{background:#784a3e;color:#ffe1bb}.cell[data-objective=true]{border:2px solid #ebd38b}
+button.cell{min-height:0;border-radius:0}button.cell:hover{background:#658f7d}button.cell:disabled{opacity:1;cursor:default}
+.delegatedOrder{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;border-top:1px solid #43604d;padding:12px 0;font-size:.8rem}
+.delegatedOrder strong{color:#e8d79e}.delegatedOrder span{color:#cad4c1}
+.reports ol{list-style:none;padding:0;margin:10px 0}.reports li{padding:12px;border-bottom:1px solid #3c5244;background:#182922;margin:5px 0;font-size:.8rem}
+.reports li strong,.reports li span,.reports li small{display:block}.reports li strong{color:#eadba0}.reports li span{color:#b8caba}.reports li small{color:#abbdad}
+@media(max-width:1050px){.selector{grid-template-columns:1fr 1fr}.selector fieldset:last-child{grid-column:1/-1;min-height:0}.roster{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){.root{padding:11px}.intro,.battleHeader,.launch{flex-direction:column;align-items:stretch}.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.selector{grid-template-columns:1fr}.selector fieldset{min-height:0}.selector fieldset:last-child{grid-column:auto}.roster{grid-template-columns:1fr}.launch button{width:100%}}
+@media(prefers-reduced-motion:reduce){.root *{scroll-behavior:auto}}
+
+.brief{margin:12px 0;padding:9px 10px;border:1px solid #516a55;background:#12251c;font-size:.74rem}
+.brief summary{cursor:pointer;color:#d8c58b;font-weight:700}.brief p{margin:7px 0;color:#bdcfbb}
+.path{display:block;margin-top:7px;color:#d5d0a9;font-size:.75rem}
+
+.reinforcements{margin:20px 0;border:1px solid #63775d;background:#15261d;padding:17px}
+.reinforcements h4{margin:0 0 8px;color:#e6d9a7}
+.reinforcements p{font-size:.81rem;color:#c7d3c2}
+.recruitControls{display:flex;flex-wrap:wrap;gap:12px;align-items:end}
+.recruitControls label{flex:1;min-width:min(100%,270px)}
+.recruitControls select{display:block;width:100%;margin-top:8px}
+.recruitControls button{flex:none}
+.recruitOrder{padding:8px 11px;background:#293929;border-inline-start:3px solid #bdab72}
+.debriefDetails{border-top:1px solid #49604f;padding-top:6px;margin:10px 0}
+.debriefDetails summary{cursor:pointer;color:#eddb9f}
+.debriefDetails ol{list-style:decimal;padding-left:20px;margin:8px 0}
+.debriefDetails li{background:transparent;border:0;margin:0;padding:5px 0;font-size:.78rem;color:#c3d4c7}
+.cell[data-cover=true]{box-shadow:inset 0 0 0 2px #9d9c77}
+@media(max-width:640px){.reinforcements{padding:12px}.recruitControls{flex-direction:column;align-items:stretch}}
+
+.medicalPanel{margin:20px 0;padding:17px;background:#14251f;border:1px solid #66867c}
+.medicalPanel h4{color:#e6dcaa}
+.medicalPanel>p{font-size:.83rem}
+.medicalControls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr)) auto;gap:10px;align-items:end;margin:15px 0}
+.medicalControls label{min-width:0;display:flex;flex-direction:column;gap:7px;font-size:.8rem;color:#c8d9ce}
+.medicalControls select{width:100%;min-width:0;background:#0e211b}
+.medicalControls button{white-space:nowrap}
+.treatmentOrder{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px;border-top:1px solid #45665b;color:#d7e3d6;font-size:.8rem}
+.treatmentOrder strong{color:#f1dba2}
+.treatmentOrder button{font-size:.75rem}
+@media(max-width:900px){.medicalControls{grid-template-columns:1fr 1fr}.medicalControls button{grid-column:1/-1;white-space:normal}}
+@media(max-width:600px){.medicalControls{grid-template-columns:1fr}.treatmentOrder{align-items:stretch;flex-direction:column}}
+
+/* Source-linked W3-RTS01/02 pilot objectives, intentionally not a full W3-MAP01 level. */
+.sourceScenario{margin:12px 0;padding:10px;border:1px solid #667957;background:#1b2d22}
+.sourceScenario>label{display:block;font-size:.79rem}.sourceScenario select{width:100%;margin-top:6px}
+.sourceScenario .brief{margin:10px 0 0;padding:10px;background:#24392b;border:1px solid #607159}
+.sourceScenario .brief p{margin:6px 0;font-size:.76rem;color:#d4ddca}
+.sourceScenario .brief small{display:block;font-size:.71rem;color:#e4ce90}
+.scenarioStatus{padding:11px 14px;background:#273824;border-inline-start:3px solid #d0b97b;display:flex;gap:6px;flex-wrap:wrap;font-size:.77rem}
+.scenarioStatus strong{color:#f0dc9f}

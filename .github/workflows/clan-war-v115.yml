@@ -1,0 +1,86 @@
+name: V115 four-mode clan war targeted QA
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'app/game/ClanWarOperationsV115*'
+      - 'app/game/ClanWarBibleV6Panel.tsx'
+      - 'app/game/systems/clanWarOperationsV115.ts'
+      - 'app/game/systems/clanWarMissionTerrainV116.ts'
+      - 'app/game/systems/clanWarTacticalNavigationV118.ts'
+      - 'app/game/ClanWarMissionDossiersV117*'
+      - 'app/game/systems/clanWarMissionDossiersV117.ts'
+      - 'app/game/systems/clanWarRtsScenariosV119.ts'
+      - 'tests/clan-war-*v115.test.mjs'
+      - 'tests/clan-war-terrain-v116.test.mjs'
+      - 'tests/clan-war-medical-v116.test.mjs'
+      - 'tests/clan-war-outer-recall-v116.test.mjs'
+      - 'tests/clan-war-tactical-nav-v118.test.mjs'
+      - 'tests/clan-war-source-dossiers-v117.test.mjs'
+      - 'tests/clan-war-assault-special-v117.test.mjs'
+      - 'tests/clan-war-rts-source-scenarios-v119.test.mjs'
+      - 'tests/clan-war-rts-circuit-v120.test.mjs'
+      - 'tests/clan-war-beacon-v121.test.mjs'
+      - 'tests/clan-war-wind-extraction-v122.test.mjs'
+      - 'tests/clan-war-rts-report-log-v123.test.mjs'
+      - '.github/workflows/clan-war-v115.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  clan-missions:
+    name: Four modes, reports, archive and UI lint
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout exact V115 inputs, not large art archives
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /package.json
+            /package-lock.json
+            /eslint.config.mjs
+            /tsconfig.json
+            /app/game/clanWarBibleV6Source.json
+            /app/game/clanWarV85Source.json
+            /app/game/ClanWarOperationsV115.tsx
+            /app/game/ClanWarOperationsV115.module.css
+            /app/game/ClanWarMissionDossiersV117.tsx
+            /app/game/ClanWarMissionDossiersV117.module.css
+            /app/game/systems/clanWarMissionDossiersV117.ts
+            /app/game/systems/clanWarRtsScenariosV119.ts
+            /app/game/systems/clanWarOperationsV115.ts
+            /app/game/systems/clanWarMissionTerrainV116.ts
+            /app/game/systems/clanWarTacticalNavigationV118.ts
+            /app/game/systems/clanWarBibleV6.ts
+            /app/game/systems/clanWarV85Data.ts
+            /tests/clan-war-operations-v115.test.mjs
+            /tests/clan-war-operation-cross-mode-v115.test.mjs
+            /tests/clan-war-tactical-runtime-v115.test.mjs
+            /tests/clan-war-recruitment-v115.test.mjs
+            /tests/clan-war-terrain-v116.test.mjs
+            /tests/clan-war-medical-v116.test.mjs
+            /tests/clan-war-outer-recall-v116.test.mjs
+            /tests/clan-war-tactical-nav-v118.test.mjs
+            /tests/clan-war-source-dossiers-v117.test.mjs
+            /tests/clan-war-assault-special-v117.test.mjs
+            /tests/clan-war-rts-source-scenarios-v119.test.mjs
+            /tests/clan-war-rts-circuit-v120.test.mjs
+            /tests/clan-war-beacon-v121.test.mjs
+            /tests/clan-war-wind-extraction-v122.test.mjs
+            /tests/clan-war-rts-report-log-v123.test.mjs
+      - name: Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Install locked dependencies without lifecycle scripts
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Execute four-mode model and cross-mode tests
+        run: node --test --test-reporter=spec tests/clan-war-*v115.test.mjs tests/clan-war-terrain-v116.test.mjs tests/clan-war-medical-v116.test.mjs tests/clan-war-outer-recall-v116.test.mjs tests/clan-war-tactical-nav-v118.test.mjs tests/clan-war-source-dossiers-v117.test.mjs tests/clan-war-assault-special-v117.test.mjs tests/clan-war-rts-source-scenarios-v119.test.mjs tests/clan-war-rts-circuit-v120.test.mjs tests/clan-war-beacon-v121.test.mjs tests/clan-war-wind-extraction-v122.test.mjs tests/clan-war-rts-report-log-v123.test.mjs
+      - name: Lint engine and mission UI
+        run: npx --no-install eslint app/game/systems/clanWarOperationsV115.ts app/game/systems/clanWarMissionTerrainV116.ts app/game/systems/clanWarTacticalNavigationV118.ts app/game/ClanWarOperationsV115.tsx app/game/ClanWarMissionDossiersV117.tsx app/game/systems/clanWarMissionDossiersV117.ts app/game/systems/clanWarRtsScenariosV119.ts tests/clan-war-*v115.test.mjs tests/clan-war-source-dossiers-v117.test.mjs tests/clan-war-assault-special-v117.test.mjs tests/clan-war-rts-source-scenarios-v119.test.mjs tests/clan-war-rts-circuit-v120.test.mjs tests/clan-war-beacon-v121.test.mjs tests/clan-war-wind-extraction-v122.test.mjs tests/clan-war-rts-report-log-v123.test.mjs tests/clan-war-terrain-v116.test.mjs tests/clan-war-medical-v116.test.mjs tests/clan-war-outer-recall-v116.test.mjs tests/clan-war-tactical-nav-v118.test.mjs

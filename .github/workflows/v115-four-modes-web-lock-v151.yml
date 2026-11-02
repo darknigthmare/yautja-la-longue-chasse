@@ -1,0 +1,79 @@
+name: V151 Four Modes Council + Origin Web Locks Integration
+
+on:
+  push:
+    branches: [codex/reconcile-v115-lock-four-modes-20261101]
+  pull_request:
+    branches: [feat/v147-clan-war-reconcile-four-modes-20261101]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  integrated:
+    name: Real four-mode V115 engine, Web Locks and two-tab Chromium
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Sparse checkout verified V115 sources and QA
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /package.json
+            /package-lock.json
+            /tsconfig*.json
+            /eslint.config.mjs
+            /app/game/
+            /types/
+            /lib/
+            /tests/clan-war-v115-multitab-v151.test.mjs
+            /tests/clan-war-operations-v115.test.mjs
+            /tests/clan-war-stealth-last-contact.test.mjs
+            /tests/clan-war-outer-pace-reconcile.test.mjs
+            /tests/fixtures/outer-pace-pr57/
+            /tests/clan-war-council-v146.test.mjs
+            /tests/clan-war-source-consolidation-v147.test.mjs
+            /tests/browser/clan-war-v151-four-modes.fixture.tsx
+            /scripts/qa-clan-war-v115-multitab-v151.mjs
+            /docs/Yautja_ClanWar_V151_Quatre_Modes_Verrou.xlsx
+      - name: Use Node.js 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Restore pinned dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Source tests — live missions, guards, Council and lock
+        run: |
+          node --experimental-strip-types --test --test-concurrency=1 \
+            tests/clan-war-v115-multitab-v151.test.mjs \
+            tests/clan-war-operations-v115.test.mjs \
+            tests/clan-war-stealth-last-contact.test.mjs \
+            tests/clan-war-outer-pace-reconcile.test.mjs \
+            tests/clan-war-council-v146.test.mjs \
+            tests/clan-war-source-consolidation-v147.test.mjs
+      - name: Typecheck integrated V147 modules
+        run: npx --no-install tsc --noEmit -p tsconfig.clan-war-v147.json
+      - name: Lint integrated gameplay and browser tools
+        run: npx --no-install eslint app/game/ClanWarOperationsV115.tsx tests/clan-war-v115-multitab-v151.test.mjs scripts/qa-clan-war-v115-multitab-v151.mjs tests/browser/clan-war-v151-four-modes.fixture.tsx
+      - name: Install Chromium
+        run: npx --no-install playwright-core install --with-deps chromium
+      - name: Real two-tab race, stale reset, timers and simultaneous Outer/recruits
+        run: |
+          export AUDIT_CHROME_EXECUTABLE="$(node -e 'process.stdout.write(require("playwright-core").chromium.executablePath())')"
+          node scripts/qa-clan-war-v115-multitab-v151.mjs
+      - name: Verify tracking workbook (five sheets)
+        run: |
+          unzip -t docs/Yautja_ClanWar_V151_Quatre_Modes_Verrou.xlsx | tail -1
+          python3 -c "import zipfile; p='docs/Yautja_ClanWar_V151_Quatre_Modes_Verrou.xlsx'; z=zipfile.ZipFile(p); assert sum(n.startswith('xl/worksheets/sheet') and n.endswith('.xml') for n in z.namelist()) == 5"
+      - name: Keep screenshots and browser evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: yautja-v151-four-modes-real-two-tab-web-lock
+          path: outputs/clan-war-v115-multitab-v151/
+          retention-days: 30
+          if-no-files-found: warn

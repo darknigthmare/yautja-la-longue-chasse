@@ -26,6 +26,9 @@ import styles from "./ClanWarPanelV85.module.css";
 import ClanWarBibleV6Panel from "./ClanWarBibleV6Panel";
 import { importedYautjaArtVariantsV85 } from "./systems/recentSpriteLibraryV85";
 import { createWarSessionV85 } from "./systems/clanWarSessionV85";
+import {DEFAULT_WAR_RULES_V6} from "./systems/clanWarBibleV6";
+import {WAR_OPERATIONS_STORAGE_V115} from "./systems/clanWarOperationsV115";
+import {reviewWarProvenanceV152} from "./systems/clanWarProvenanceGateV152";
 import ClanWarAtlasV95 from "./ClanWarAtlasV95";
 import ClanWarPlanetsV96, { WAR_PLANET_SELECTION_KEY_V96 } from "./ClanWarPlanetsV96";
 import ClanWarCommandV98, { ClanWarOrderPreviewV98 } from "./ClanWarCommandV98";
@@ -93,6 +96,10 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false, init
   const modularStrategy = planet.procedural && "strategy" in planet.procedural ? planet.procedural.strategy : null;
   const corridorIds = planet.id === "korthas" ? ["CON-T01", "CON-T08", "CON-T14", "CON-T15", "CON-T21", "CON-T22"] : warObjectiveCorridorV96(simulation);
   const [message, setMessage] = useState("Choisissez une planète, un départ et une destination voisine pour préparer votre front.");
+  const [evidenceRawV152,setEvidenceRawV152]=useState<string|null>(null);
+  const evidenceV152=useMemo(()=>evidenceRawV152?
+    reviewWarProvenanceV152(evidenceRawV152,simulation,DEFAULT_WAR_RULES_V6):null,
+    [evidenceRawV152,simulation]);
   const [query, setQuery] = useState(""), [section, setSection] = useState("Toutes les feuilles"), [page, setPage] = useState(0);
   const [selectedEntryId, setSelectedEntryId] = useState("OPS-01");
   const [territoryChoice, setTerritoryId] = useState<string | null>(null), [targetChoice, setTargetId] = useState<string | null>(null);
@@ -337,6 +344,55 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false, init
       <ol className={styles.log} aria-label="Journal du canyon">{canyon.messages.slice(-9).map((text, index) => <li key={`${index}-${text}`}>{text}</li>)}</ol>
     </div>}
 
+    {tab === "korthas" && planet.id==="korthas"&&<section aria-label="Conseil des sources V152" className={styles.sectionHeader}>
+      <div>
+        <h3>Conseil V152 · provenance des quatre modes</h3>
+        <p>Comparer les territoires W3 et V85, les effectifs et les preuves des missions.
+         Inspection volontaire et lecture seule : ni capture, ni XP, ni sauvegarde modifiée.</p>
+        <button type="button" disabled={!loaded||pendingWrites>0} onClick={()=>{
+          try{
+            const raw=window.localStorage.getItem(WAR_OPERATIONS_STORAGE_V115);
+            setEvidenceRawV152(raw);
+            setMessage(raw?
+              "Instantané local V115 lu pour un audit documentaire. Cette analyse n'authentifie pas une partie serveur.":
+              "Aucune archive de missions V115 enregistrée dans ce navigateur.");
+          }catch{
+            setEvidenceRawV152(null);
+            setMessage("Accès à l'archive V115 impossible : aucune donnée V85 modifiée.");
+          }
+        }}>Examiner les sources V115 · lecture seule</button>
+        {evidenceV152&&<details>
+          <summary>Contrôles de provenance V152 · {evidenceV152.dossiers.length} bilans</summary>
+          <p role="status">{evidenceV152.message}</p>
+          <p>Territoires V6 examinés : {evidenceV152.territoryChecks.length}.
+           Sans ID V85 identique : {evidenceV152.territoryChecks.filter(t=>t.status==="no-id-match").length}.
+           Attention : même un ID et nom semblables ne prouvent pas la géographie.</p>
+          <p>Équipes V115 : {evidenceV152.roster.v115Teams} · membres V115 :
+           {evidenceV152.roster.v115Members} · combattants V85 :
+           {evidenceV152.roster.v85Combatants}. Personnages appariés officiellement : 0.</p>
+          <p>Rapports par mode — assaut {evidenceV152.dossierCounts.assault},
+           Outer Ops {evidenceV152.dossierCounts.outer},
+           infiltration {evidenceV152.dossierCounts.stealth},
+           RTS {evidenceV152.dossierCounts.rts}.
+           Transfert militaire autorisé : <strong>non</strong>.</p>
+          {evidenceV152.issues.map((issue,i)=><p role="alert" key={i}>{issue}</p>)}
+          <details><summary>Cartographie : lieux connus et liens non prouvés</summary>
+            <ul>{evidenceV152.territoryChecks.map(t=><li key={t.sourceId}>
+              {t.sourceId} · {t.sourceName} ({t.sourceRegion})
+              {t.strategicId?" · ID semblable à vérifier : "+t.strategicId:
+                " · aucune identité territoriale confirmée"}.
+            </li>)}</ul>
+          </details>
+          <details><summary>Bilans du Conseil et éléments manquants</summary>
+            <ul>{evidenceV152.dossiers.map(d=><li key={d.receiptId}>
+              <strong>{d.mode} · {d.outcome} · {d.receiptId}</strong>
+              · {d.sourceType}, lieu {d.sourceTargetId} · {d.blockerCodes.length}
+              contraintes encore ouvertes. Authentification serveur : non.
+            </li>)}</ul>
+          </details>
+        </details>}
+      </div>
+    </section>}
     {tab === "korthas" && <div>
       <ClanWarPlanetsV96 planet={planet} turn={simulation.turn} persisted={persistedWar} pending={pendingWrites > 0} retainedPlanetIds={retainedPlanetIds} onSelect={selectPlanet}/>
       <div className={styles.sectionHeader}><div><h3>{planet.name} · tour {simulation.turn}</h3><p>Routes du théâtre, détachements présents et informations adverses estimées.</p></div><button type="button" onClick={restartWar}>Nouvel exercice</button></div>

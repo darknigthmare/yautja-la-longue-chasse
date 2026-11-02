@@ -1,0 +1,955 @@
+"use client";
+
+import { useEffect, useMemo, useRef, useState } from "react";
+import { planWarRouteV6, type WarRulesV6 } from "./systems/clanWarBibleV6";
+import { warMissionTerrainV116,warTerrainCellBlockedV116 } from "./systems/clanWarMissionTerrainV116";
+import { warSourceRtsScenarioV119, warRtsScriptedEligibilityV119,
+  type WarSourceRtsScenarioIdV119,
+} from "./systems/clanWarRtsScenariosV119";
+import {
+  WAR_OPERATIONS_STORAGE_V115, beginWarOperationV115, commandRtsV115, commandStealthV115,
+  createWarOperationsV115, deployAssaultUnitV115, issueWarRtsRealtimeOrderV115,
+  holdWarRtsAlternatingV119,
+  upgradeWarAssaultApV117, issueWarAssaultSpecialV117,
+  queueWarRecruitmentV115, settleWarRecruitmentsV115,
+  queueWarTreatmentV116, settleWarTreatmentsV116, cancelWarTreatmentV116,
+  leaveWarOperationV115, readWarOperationsV115, stepWarRtsRealtimeV115, toggleWarRtsRealtimeV115,
+  settleWarOuterOpsV115, recallWarOuterMissionV116, stepAssaultV115, warAssaultWaveProfileV140,
+  warMissionEligibleV115, warOuterSecondsRemainingV115,
+  type WarMissionModeV115, type OuterFocusV115, type WarOperationsStateV115,
+  type WarOperationsUpdateV115,
+} from "./systems/clanWarOperationsV115";
+import {reinforceWarAssaultLineV135,redirectWarOuterOpsV135} from "./systems/clanWarParallelModesV135";
+import {orderWarAssaultHoldV136,supplyWarOuterMissionV136} from "./systems/clanWarParallelModesV136";
+import {withdrawWarAssaultSquadV137,orderWarOuterReconHaltV137} from "./systems/clanWarParallelModesV137";
+import {fallbackWarAssaultV139} from "./systems/clanWarParallelModesV139";
+import {
+ commandWarAssaultSurgeV138,requestWarOuterSignalV138,
+ warStealthGuardVisibleV138,warStealthSoundBearingV138,
+} from "./systems/clanWarParallelModesV138";
+import {warOuterWeightedProgressV141} from "./systems/clanWarOuterWeightedProgressV141";
+import {warOuterRouteChoicesV142} from "./systems/clanWarOuterChoicesV142";
+import {issueWarAssaultFocusV142} from "./systems/clanWarFocusV142";
+import {commandWarAssaultBraceV143} from "./systems/clanWarBraceV143";
+import {commandWarAssaultRegroupV144} from "./systems/clanWarRegroupV144";
+import {commandWarAssaultInterposeV145} from "./systems/clanWarInterposeV145";
+import {warOuterTravelLedgerV145} from "./systems/clanWarTravelLedgerV145";
+import {buildWarCouncilAuditV146} from "./systems/clanWarCouncilAuditV146";
+import {commandWarOuterRerouteV144} from "./systems/clanWarOuterRerouteV144";
+import {commandWarOuterPaceV144} from "./systems/clanWarOuterPaceV144";
+import {commandWarStealthAlertReinforcementV144,setStealthReinforcementMode} from "./systems/clanWarStealthReinforcementV144";
+import {commandWarStealthDashV143} from "./systems/clanWarStealthDashV143";
+import {commandWarOuterIncidentV143,warOuterIncidentV143} from "./systems/clanWarOuterIncidentV143";
+import {planWarStealthStepV142,commandWarStealthStepV142} from "./systems/clanWarStealthPathV142";
+import styles from "./ClanWarOperationsV115.module.css";
+
+const modeLabels: Record<WarMissionModeV115, string> = {
+  assault: "Assaut latéral · déploiement AP", outer: "Mandats délégués · rapport différé",
+  stealth: "Infiltration et sabotage", rts: "Bataille totale · commandement RTS",
+};
+const focusLabels: Record<OuterFocusV115, string> = {
+  recon: "Reconnaissance", intercept: "Interception", escort: "Protection de passage",
+};
+const formatTime = (seconds:number) => String(Math.floor(seconds / 60)).padStart(2,"0")+":"+String(seconds%60).padStart(2,"0");
+type Props={rules:WarRulesV6;active?:boolean;persist?:boolean;initialScenarioId?:WarSourceRtsScenarioIdV119|null};
+
+export default function ClanWarOperationsV115({rules,active=true,persist=false,initialScenarioId=null}:Props) {
+  const sourcePilotSiteId=(initialScenarioId==="W3-RTS05"||initialScenarioId==="W3-RTS06")?"W3-K13":
+    (initialScenarioId==="W3-RTS03"||initialScenarioId==="W3-RTS04")?"W3-K07":"W3-K02";
+  const [world,setWorld]=useState<WarOperationsStateV115>(()=>createWarOperationsV115(rules));
+  const worldRef=useRef(world);
+  const councilAudit=useMemo(()=>buildWarCouncilAuditV146(world,null,rules),[world,rules]);
+  const knownArchiveBytesRef=useRef<string|null>(null);
+  const writingV115Ref=useRef(false);
+  const mountedV115Ref=useRef(false);
+  const activeV115Ref=useRef(active);
+  useEffect(()=>{activeV115Ref.current=active;},[active]);
+  useEffect(()=>{mountedV115Ref.current=true;return()=>{mountedV115Ref.current=false;};},[]);
+  const [hydrated,setHydrated]=useState(false),[blocked,setBlocked]=useState(false);
+  const [storageIssue,setStorageIssue]=useState(""),[message,setMessage]=useState("Choisissez votre théâtre, vos équipes, puis le type d'opération.");
+  const [mode,setMode]=useState<WarMissionModeV115>(initialScenarioId?"rts":"assault"),[focus,setFocus]=useState<OuterFocusV115>("recon");
+  const [targetId,setTargetId]=useState(initialScenarioId?
+    rules.territories.find(item=>item.id===sourcePilotSiteId)?.id??rules.territories[1]?.id??"":
+    rules.territories[1]?.id??"");
+  const [selectedIds,setSelectedIds]=useState<string[]>([]);
+  const [outerRouteChoice,setOuterRouteChoice]=useState("");
+  const [rtsSelectedId,setRtsSelectedId]=useState("");
+  const [rtsScenarioId,setRtsScenarioId]=useState<"free"|WarSourceRtsScenarioIdV119>(initialScenarioId??"free");
+  const [recruitUnitId,setRecruitUnitId]=useState(rules.units[8]?.id??rules.units[0]?.id??"");
+  const [careMemberId,setCareMemberId]=useState("");
+  const [careMedicTeamId,setCareMedicTeamId]=useState("");
+  const [now,setNow]=useState(0);
+  const defaultSource=rules.metadata.sha256;
+
+  useEffect(()=>{
+    // Loading an external browser archive is an asynchronous subscription
+    // event, never a cascading synchronous render during effect setup.
+    const ticket=window.setTimeout(()=>{
+      let current=createWarOperationsV115(rules),lock=false,issue="";
+      if(persist) {
+        try {
+          const raw=window.localStorage.getItem(WAR_OPERATIONS_STORAGE_V115);
+          knownArchiveBytesRef.current=raw;
+          if(raw) {
+            const parsed=readWarOperationsV115(raw,rules);
+          knownArchiveBytesRef.current=raw;
+            if(parsed) current=parsed;
+            else {lock=true;issue="Archive V115 illisible ou incompatible : octets conservés, aucune réécriture autorisée.";}
+          }
+        } catch {lock=true;issue="Stockage indisponible : archive existante préservée. Les opérations sont verrouillées.";}
+      }
+      worldRef.current=current;setWorld(current);setBlocked(lock);setStorageIssue(issue);
+      // Restore the actual persisted mission rather than defaulting to Assault.
+      const resumedMode:WarMissionModeV115=current.active?.mode ??
+        (current.outer.length>0?"outer":initialScenarioId?"rts":"assault");
+      setMode(resumedMode);
+      setRtsSelectedId(current.active?.mode==="rts" ? current.active.teamIds[0]??"" : "");
+      const activeTeams=current.teams.filter(team=>!current.assignments[team.id]&&team.members.some(member=>member.status==="fit"));
+      if(initialScenarioId==="W3-RTS01"){
+        const scout=activeTeams.find(team=>["W3-U01","W3-U02","W3-U05","W3-U06"].includes(team.unitId));
+        const porter=activeTeams.find(team=>["W3-U17","W3-U19"].includes(team.unitId));
+        setSelectedIds([...(scout?[scout.id]:[]),...(porter?[porter.id]:[])]);
+      }else if(initialScenarioId==="W3-RTS02"){
+        const guard=activeTeams.find(team=>team.unitId==="W3-U07");
+        const support=activeTeams.find(team=>team.id!==guard?.id);
+        setSelectedIds([...(guard?[guard.id]:[]),...(support?[support.id]:[])]);
+      }else if(initialScenarioId==="W3-RTS03"){
+        const porter=activeTeams.find(team=>team.unitId==="W3-U19");
+        const artisans=activeTeams.find(team=>team.unitId==="W3-U20");
+        setSelectedIds([...(porter?[porter.id]:[]),...(artisans?[artisans.id]:[])]);
+      }else if(initialScenarioId==="W3-RTS04"){
+        const guard=activeTeams.find(team=>team.unitId==="W3-U07");
+        const scout=activeTeams.find(team=>team.id!==guard?.id);
+        setSelectedIds([...(guard?[guard.id]:[]),...(scout?[scout.id]:[])]);
+      }else if(initialScenarioId==="W3-RTS05"){
+        const scout=activeTeams.find(team=>team.unitId==="W3-U01");
+        const tracker=activeTeams.find(team=>team.unitId==="W3-U04");
+        setSelectedIds([...(scout?[scout.id]:[]),...(tracker?[tracker.id]:[])]);
+      }else if(initialScenarioId==="W3-RTS06"){
+        const guide=activeTeams.find(team=>team.unitId==="W3-U02");
+        const extraction=activeTeams.find(team=>team.unitId==="W3-U17");
+        setSelectedIds([...(guide?[guide.id]:[]),...(extraction?[extraction.id]:[])]);
+      }else setSelectedIds(activeTeams.slice(0,2).map(team=>team.id));
+      setTargetId(current.active?.targetId ?? current.outer[0]?.targetId ??
+        (initialScenarioId?rules.territories.find(item=>item.id===sourcePilotSiteId)?.id:undefined) ??
+        rules.territories[1]?.id??"");
+      setHydrated(true);setNow(Date.now());
+    },0);
+    return ()=>window.clearTimeout(ticket);
+  },[rules,persist,defaultSource,initialScenarioId,sourcePilotSiteId]);
+
+  /** V148: a stale tab must never overwrite another tab's V115 archive,
+   * including through reset, or after a dropped background storage event.
+   * This compares the exact locally observed bytes; it is not a remote/cloud
+   * transaction and does not claim to solve simultaneous non-cooperating writes. */
+  function verifyOwnV115ArchiveV148():boolean {
+    if(!persist) return true;
+    try {
+      if(window.localStorage.getItem(WAR_OPERATIONS_STORAGE_V115)===knownArchiveBytesRef.current) return true;
+      setBlocked(true);
+      setStorageIssue("Front V115 modifié dans un autre onglet : aucune action ni réinitialisation. Rechargez pour consulter l’archive actuelle.");
+    } catch {
+      setBlocked(true);
+      setStorageIssue("Stockage V115 indisponible : aucune nouvelle écriture ni réinitialisation autorisée.");
+    }
+    return false;
+  }
+
+  useEffect(()=>{
+    if(!persist||!hydrated) return;
+    const verifyOnReturn=()=>{
+      if(!active||document.visibilityState!=="visible")return;
+      try {
+        if(window.localStorage.getItem(WAR_OPERATIONS_STORAGE_V115)!==knownArchiveBytesRef.current){
+          setBlocked(true);
+          setStorageIssue("Front V115 modifié dans un autre onglet : opérations verrouillées avant toute nouvelle action.");
+        }
+      } catch {
+        setBlocked(true);
+        setStorageIssue("Stockage V115 indisponible : aucune nouvelle écriture autorisée.");
+      }
+    };
+    const externalChange=(event:StorageEvent)=>{
+      try {if(event.storageArea!==window.localStorage)return;}catch{return;}
+      if(event.key===WAR_OPERATIONS_STORAGE_V115||event.key===null)verifyOnReturn();
+    };
+    window.addEventListener("storage",externalChange);
+    window.addEventListener("focus",verifyOnReturn);
+    document.addEventListener("visibilitychange",verifyOnReturn);
+    return ()=>{
+      window.removeEventListener("storage",externalChange);
+      window.removeEventListener("focus",verifyOnReturn);
+      document.removeEventListener("visibilitychange",verifyOnReturn);
+    };
+  },[persist,hydrated,active]);
+
+  // All cooperating V115 writers, including timers and reset, use one origin-wide
+  // lock. Never fall back to an unsafe read-then-write when Web Locks is absent.
+  function writeV115(operation:()=>void) {
+    if(!persist){operation();return;}
+    if(writingV115Ref.current){setMessage("Une écriture V115 est en cours ; réessayez.");return;}
+    if(typeof navigator.locks?.request!=="function"){
+      setBlocked(true);
+      setStorageIssue("Verrouillage sécurisé indisponible : archive V115 conservée en lecture seule.");
+      return;
+    }
+    writingV115Ref.current=true;
+    void navigator.locks.request("yautja.clan-war.v115.operations.free.v1.write", {mode:"exclusive",ifAvailable:true}, lock=>{
+      if(!mountedV115Ref.current||!activeV115Ref.current)return;
+      if(!lock){setMessage("Une autre écriture V115 est en cours ; réessayez.");return;}
+      operation();
+    }).catch(()=>{
+      if(mountedV115Ref.current){setBlocked(true);setStorageIssue("Verrouillage V115 indisponible : archive conservée sans écriture.");}
+    }).finally(()=>{writingV115Ref.current=false;});
+  }
+
+  function commit(update:WarOperationsUpdateV115) {
+    if(!update.accepted){setMessage(update.message);return;}
+    if(blocked||!hydrated||!active||!verifyOwnV115ArchiveV148())return;
+    writeV115(()=>{
+      if(!verifyOwnV115ArchiveV148())return;
+      if(persist) {
+        try {
+          const updatedBytes=JSON.stringify(update.state);
+          window.localStorage.setItem(WAR_OPERATIONS_STORAGE_V115,updatedBytes);
+          knownArchiveBytesRef.current=updatedBytes;
+        } catch {
+          setBlocked(true);
+          setStorageIssue("Échec de sauvegarde : l'ancienne archive n'a pas été remplacée. Réessayez avec un espace de stockage disponible.");
+          return;
+        }
+      }
+      worldRef.current=update.state;setWorld(update.state);setMessage(update.message);
+    });
+  }
+  useEffect(()=>{
+    if(!active || !hydrated || blocked || world.active?.mode!=="assault") return;
+    const timer=window.setInterval(()=>{
+      const state=worldRef.current;
+      if(state.active?.mode==="assault") commit(stepAssaultV115(state,rules));
+    },700);
+    return ()=>window.clearInterval(timer);
+    // The mission ID, not the actor positions, owns this timer.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[active,hydrated,blocked,world.active?.id,world.active?.mode,rules,persist]);
+
+  useEffect(()=>{
+    if(!active || !hydrated || blocked) return;
+    function check() {
+      const stamp=Date.now();setNow(stamp);
+      const state=worldRef.current;
+      if(state.outer.some(order=>stamp>=order.dueAt)) commit(settleWarOuterOpsV115(state,stamp,rules));
+      const current=worldRef.current;
+      if(current.pendingRecruits?.some(order=>stamp>=order.dueAt)) commit(settleWarRecruitmentsV115(current,stamp,rules));
+      const latest=worldRef.current;
+      if(latest.pendingTreatments?.some(order=>stamp>=order.dueAt)) commit(settleWarTreatmentsV116(latest,stamp,rules));
+    }
+    check();const timer=window.setInterval(check,1000);
+    return ()=>window.clearInterval(timer);
+    // Read clock and save only while this panel is visible; dueAt survives closing it.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[active,hydrated,blocked,rules,persist]);
+
+  useEffect(()=>{
+    if(!active||!hydrated||blocked||world.active?.mode!=="rts"||!world.active.rts?.realtime) return;
+    const timer=window.setInterval(()=>{
+      const state=worldRef.current;
+      if(state.active?.mode==="rts"&&state.active.rts?.realtime) commit(stepWarRtsRealtimeV115(state,rules));
+    },1000);
+    return ()=>window.clearInterval(timer);
+    // The operation id owns this interval, not every actor's live position.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[active,hydrated,blocked,world.active?.id,world.active?.rts?.realtime,rules,persist]);
+
+  const scenarioIssue=mode==="rts"&&rtsScenarioId!=="free"?
+    warRtsScriptedEligibilityV119(rtsScenarioId,rules,targetId,
+      selectedIds.map(id=>world.teams.find(team=>team.id===id)?.unitId??"")):null;
+  const scenarioBrief=mode==="rts"&&rtsScenarioId!=="free"?warSourceRtsScenarioV119(rtsScenarioId,rules):null;
+  const requestIssue=hydrated?
+    warMissionEligibleV115(world,rules,targetId,selectedIds)??scenarioIssue:"Chargement de l'archive";
+  const target=rules.territories.find(site=>site.id===targetId);
+  const recruitUnit=rules.units.find(unit=>unit.id===recruitUnitId);
+  const woundedMembers=world.teams.flatMap(team=>team.members.filter(member=>member.status==="wounded")
+    .map(member=>({member,team}))).filter(item=>!world.assignments[item.team.id]);
+  const freeMedics=world.teams.filter(team=>team.unitId==="W3-U18"&&!world.assignments[team.id]&&
+    team.members.some(member=>member.status==="fit"));
+  const carePatient=woundedMembers.find(item=>item.member.id===careMemberId);
+  const careMedic=freeMedics.find(team=>team.id===careMedicTeamId);
+  const careFee=rules.units.find(unit=>unit.id==="W3-U18")?.upkeepRav??0;
+  const missionPc=selectedIds.reduce((pc,id)=>pc+(rules.units.find(unit=>unit.id===world.teams.find(team=>team.id===id)?.unitId)?.commandPoints??0),0);
+  const routePreview=missionPc>0&&missionPc<=rules.parameters.pc_cap_1?
+    planWarRouteV6(world.baseId,targetId,missionPc,[],rules):null;
+  const routeOptions=mode==="outer"&&missionPc>0&&missionPc<=rules.parameters.pc_cap_1?
+    warOuterRouteChoicesV142(world.baseId,targetId,missionPc,rules):[];
+  const selectedOuterRoute=routeOptions.find(item=>item.id===outerRouteChoice)??
+    routeOptions.find(item=>item.isPrimary);
+  const current=world.active;
+  const assault=current?.mode==="assault"?current.assault:undefined;
+  const stealth=current?.mode==="stealth"?current.stealth:undefined;
+  const rts=current?.mode==="rts"?current.rts:undefined;
+  const missionTerrain=current?warMissionTerrainV116(current.targetId,rules):null;
+  const guardVisible=Boolean(stealth&&missionTerrain&&warStealthGuardVisibleV138(stealth,missionTerrain));
+  const secondGuardVisible=Boolean(stealth?.supportGuard&&missionTerrain&&
+    warStealthGuardVisibleV138({...stealth,guardX:stealth.supportGuard.x,
+      guardY:stealth.supportGuard.y},missionTerrain));
+  const soundBearing=stealth?warStealthSoundBearingV138(stealth,current?.tick??0):null;
+  const available=world.teams.filter(team=>!world.assignments[team.id] && team.members.some(member=>member.status==="fit"));
+  const teamsById=(teamId:string)=>rules.units.find(unit=>unit.id===world.teams.find(team=>team.id===teamId)?.unitId)?.name ?? teamId;
+
+  function start(atTime:number) {
+    const result=beginWarOperationV115(worldRef.current,mode,targetId,selectedIds,rules,atTime,focus,
+      mode==="rts"&&rtsScenarioId!=="free"?rtsScenarioId:null,
+      mode==="outer"?selectedOuterRoute?.passageIds:undefined);
+    if(result.accepted && mode==="rts") {
+      setRtsSelectedId(result.state.active?.teamIds[0]??"");
+      const enabled=toggleWarRtsRealtimeV115(result.state,true);
+      commit(enabled.accepted?{...enabled,message:"Déploiement RTS confirmé. Le temps réel est actif : donnez vos ordres."}:result);
+    } else commit(result);
+  }
+  function reset() {
+    if(!hydrated||blocked||!active||!verifyOwnV115ArchiveV148())return;
+    if(!window.confirm("Remplacer uniquement les mandats d'exercice V115 ? Les archives V3, V6 et la campagne ne seront pas modifiées."))return;
+    // Recheck after confirmation, then again inside the shared lock.
+    if(!verifyOwnV115ArchiveV148())return;
+    writeV115(()=>{
+    if(!verifyOwnV115ArchiveV148())return;
+    const next=createWarOperationsV115(rules);
+    if(persist) {
+      try {
+        const encoded=JSON.stringify(next);
+        window.localStorage.setItem(WAR_OPERATIONS_STORAGE_V115,encoded);
+        knownArchiveBytesRef.current=encoded;
+      } catch {
+        setBlocked(true);
+        setStorageIssue("Impossible de remplacer l'archive V115 ; aucun changement local appliqué.");
+        return;
+      }
+    }
+    worldRef.current=next;setWorld(next);setBlocked(false);setStorageIssue("");setHydrated(true);
+    setMode(initialScenarioId?"rts":"assault");
+    setSelectedIds([]);setRtsSelectedId("");
+    setTargetId((initialScenarioId?rules.territories.find(site=>site.id===sourcePilotSiteId)?.id:undefined)??rules.territories[1]?.id??"");
+    setMessage("Exercice V115 réinitialisé explicitement.");
+    });
+  }
+
+  if(!hydrated) return <section className={styles.root} role="status">Lecture des mandats V115 et de leur archive…</section>;
+  return <section className={styles.root} data-testid="clan-operations-v115" data-war-campaign-write="none" aria-label="Opérations de clan, exercice V115">
+    <div className={styles.intro}>
+      <div><span className={styles.overline}>CONSEIL DES MANDATS · EXERCICE V115</span><h3>Quatre façons de mener la guerre</h3>
+      <p>Une même équipe identifiable peut être envoyée en assaut latéral, en opération déléguée, en infiltration ou en bataille tactique. Les blessures, l&apos;expérience, les renseignements et les rapports suivent la même archive d&apos;exercice.</p></div>
+      <button type="button" className={styles.reset} disabled={blocked||!hydrated||!active} onClick={reset}>Réinitialiser V115 uniquement</button>
+    </div>
+    <p className={styles.disclaimer}>Les unités, passages, coûts RAV et gains d&apos;expérience proviennent de la Bible V6. Les chronomètres, jauges AP, déplacements et IA de ces minijeux sont des paramètres de prototype, sans identité canonique ajoutée. Les victoires n&apos;annexent aucun site V85, ne délivrent aucun trophée et ne modifient pas la chasse principale.</p>
+    {storageIssue && <p role="alert" className={styles.warning}>{storageIssue}</p>}
+    <div className={styles.metrics}>
+      <div>RAV de l&apos;exercice<strong>{world.rav}</strong></div>
+      <div>Vacations simulées<strong>{world.clock}</strong></div>
+      <div>Équipes libres<strong>{available.length}/{world.teams.length}</strong></div>
+      <div>Rapports enregistrés<strong>{world.reports.length}</strong></div>
+      <div>Dossiers source V146<strong>{councilAudit.total}</strong></div>
+    </div>
+    <p className={styles.message} role="status" aria-live="polite">{message}</p>
+    <div className={styles.selector}>
+      <fieldset disabled={blocked}>
+        <legend>1. Choisir un mode</legend>
+        <div className={styles.modes}>{(Object.keys(modeLabels) as WarMissionModeV115[]).map(key=>
+          <button key={key} type="button" aria-pressed={mode===key} onClick={()=>setMode(key)}>{modeLabels[key]}</button>)}</div>
+      </fieldset>
+      <fieldset disabled={blocked}>
+        <legend>2. Mandat territorial et renseignements</legend>
+        <label>Territoire de la Bible V6
+          <select value={targetId} onChange={event=>setTargetId(event.target.value)}>
+            {rules.territories.filter(site=>site.id!==world.baseId).map(site=><option key={site.id} value={site.id}>{site.id} · {site.name}</option>)}
+          </select>
+        </label>
+        {target && <><p className={styles.explain}><strong>{target.name}</strong> · {target.region} · défense de terrain {target.terrainDefense} · renseignement {world.intelIds.includes(target.id)?"obtenu":"non confirmé"} · pression d&apos;exercice {world.pressure[target.id]??0}.</p>
+          <details className={styles.brief}><summary>Ordre territorial · Bible V6</summary>
+            <p><strong>Mission :</strong> {target.objective}</p><p><strong>Reconnaissance :</strong> {target.reconnaissance}</p>
+            <p><strong>Contrôle :</strong> {target.control}</p><p><strong>Vie locale :</strong> {target.life}</p><p><strong>Repli :</strong> {target.retreat}</p>
+          </details></>}
+        {mode==="outer" && <label>Consigne du détachement
+          <select value={focus} onChange={event=>setFocus(event.target.value as OuterFocusV115)}>
+            {(Object.keys(focusLabels) as OuterFocusV115[]).map(key=><option value={key} key={key}>{focusLabels[key]}</option>)}
+          </select>
+        </label>}
+        {mode==="outer"&&routeOptions.length>0&&<label>Itinéraire de convoi V6 autorisé
+          <select value={selectedOuterRoute?.id??""} onChange={event=>setOuterRouteChoice(event.target.value)}>
+           {routeOptions.map(path=><option value={path.id} key={path.id}>
+             {path.isPrimary?"Trajet optimal":"Alternative légale"} · {path.cost} coût V6 · {path.passageIds.length} passages
+           </option>)}
+          </select>
+          <small className={styles.path}>Trajet réellement prévu : {selectedOuterRoute?.passageIds.join(" → ")}.
+           Conditions publiques : {selectedOuterRoute?.conditionLabels.join(" / ")}.
+           Les équipes doivent pouvoir traverser chaque passage selon leur PC.</small>
+        </label>}
+        {mode==="rts"&&<div className={styles.sourceScenario}>
+          <label>Objectif RTS
+            <select value={rtsScenarioId} onChange={event=>setRtsScenarioId(event.target.value as "free"|WarSourceRtsScenarioIdV119)}>
+              <option value="free">Escarmouche libre · balise</option>
+              {(["W3-RTS01","W3-RTS02","W3-RTS03","W3-RTS04","W3-RTS05","W3-RTS06"] as const).map(id=>{
+                const source=warSourceRtsScenarioV119(id,rules);
+                return source?<option value={id} key={id}>{id} · {source.title}</option>:null;
+              })}
+            </select>
+          </label>
+          {scenarioBrief&&<div className={styles.brief}><strong>{scenarioBrief.id} · {scenarioBrief.title}</strong>
+            <p>{scenarioBrief.situation}</p><p><strong>Objectif :</strong> {scenarioBrief.completion}</p>
+            <p><strong>Riposte attendue :</strong> {scenarioBrief.enemyPlan}</p>
+            <small>Épreuve fonctionnelle 9 × 6 uniquement ; la carte {scenarioBrief.sourceMapId} complète et son scénario cinématique restent à réaliser.</small>
+          </div>}
+        </div>}
+      </fieldset>
+      <fieldset disabled={blocked}>
+        <legend>3. Affecter jusqu&apos;à {mode==="stealth"?"deux":"quatre"} équipes existantes</legend>
+        <div className={styles.roster}>
+          {world.teams.map(team=>{
+            const unit=rules.units.find(item=>item.id===team.unitId);
+            const engaged=world.assignments[team.id],chosen=selectedIds.includes(team.id);
+            const fit=team.members.filter(member=>member.status==="fit").length;
+            return <label key={team.id} className={styles.team} data-engaged={Boolean(engaged)}>
+              <span><input type="checkbox" checked={chosen} disabled={(!chosen&&Boolean(engaged))||(!chosen&&fit===0)} onChange={event=>setSelectedIds(list=>event.target.checked?[...list,team.id]:list.filter(id=>id!==team.id))}/>
+                <strong>{unit?.name??team.unitId}</strong><small>{team.id} · {unit?.commandPoints} PC · {unit?.upkeepRav} RAV</small></span>
+              <small>{unit?.role} · ATQ {unit?.attack} · DEF {unit?.defense} · MOB {unit?.mobility}</small>
+              <small>{fit}/{team.members.length} aptes · fatigue {team.fatigue} · {engaged?"engagé "+engaged:"disponible"}</small>
+            </label>;
+          })}
+        </div>
+      </fieldset>
+    </div>
+    <div className={styles.launch}>
+      <p>{requestIssue ?? "Ordre admissible : RAV débités une seule fois, détachements immobilisés jusqu'au rapport."}
+        {routePreview && <small className={styles.path}>Passages V6 : {routePreview.passageIds.join(" → ")||"sur place"} · coût de mouvement {routePreview.cost} · {missionPc} PC</small>}</p>
+      <button type="button" disabled={blocked||Boolean(requestIssue)||((mode!=="outer")&&Boolean(current))||(mode==="outer"&&world.outer.length>=3)||(mode==="stealth"&&selectedIds.length>2)} onClick={()=>start(Date.now())}>Lancer : {modeLabels[mode]}</button>
+    </div>
+
+    <section className={styles.reinforcements} aria-label="Registre de recrutement V6">
+      <div><h4>Renforts de clan · catalogue V6 complet</h4>
+        <p>Trente formations sont disponibles depuis les fiches W3-U. Les volontaires arrivent seulement après leur délai de recrutement et avec de nouvelles identités, jamais avec l&apos;expérience d&apos;un vétéran.</p></div>
+      <div className={styles.recruitControls}>
+        <label>Former un nouveau détachement
+          <select value={recruitUnitId} disabled={blocked} onChange={event=>setRecruitUnitId(event.target.value)}>
+            {rules.units.map(unit=><option key={unit.id} value={unit.id}>{unit.id} · {unit.name} · {unit.recruitmentRav} RAV</option>)}
+          </select>
+        </label>
+        <button type="button" disabled={blocked||!recruitUnit||world.rav<recruitUnit.recruitmentRav||
+          world.teams.length+(world.pendingRecruits?.length??0)>=16||(world.pendingRecruits?.length??0)>=4}
+          onClick={()=>commit(queueWarRecruitmentV115(worldRef.current,recruitUnitId,Date.now(),rules))}>
+          Recruter · {recruitUnit?.recruitmentRav??"?"} RAV
+        </button>
+      </div>
+      {recruitUnit&&<p className={styles.explain}>{recruitUnit.name} · {recruitUnit.fullMembers} membre(s) · {recruitUnit.commandPoints} PC ·
+        {recruitUnit.upkeepRav} RAV d&apos;entretien par opération · arrivée après {recruitUnit.delayTurns} tour(s) source
+        ({Math.max(1,recruitUnit.delayTurns)*15} secondes d&apos;exercice).</p>}
+      {(world.pendingRecruits??[]).map(order=><p className={styles.recruitOrder} key={order.id}>
+        {order.id} · {rules.units.find(unit=>unit.id===order.unitId)?.name??order.unitId} · arrivée dans
+        {formatTime(Math.max(0,Math.ceil((order.dueAt-now)/1000)))}
+      </p>)}
+      <p className={styles.explain}>Équipes formées en renfort : {(world.recruitedTeamIds??[]).length}. Coût et délai de base issus de la Bible V6 ; conversion des tours en secondes propre à ce prototype.</p>
+    </section>
+
+    <section className={styles.medicalPanel} aria-label="Relève et récupération des blessés V6">
+      <h4>Triage du clan · récupération des blessures légères</h4>
+      <p>Les participants blessés restent identifiés, avec leur expérience antérieure. Leur retour exige une équipe de soigneur de terrain W3-U18 réellement recrutée, disponible, des RAV et 45 secondes de traitement. Ce délai est propre à l&apos;exercice ; aucune blessure majeure ne guérit automatiquement.</p>
+      <div className={styles.medicalControls}>
+        <label>Personne blessée à relever
+          <select value={careMemberId} disabled={blocked} onChange={event=>setCareMemberId(event.target.value)}>
+            <option value="">Choisir un blessé disponible</option>
+            {woundedMembers.map(({member,team})=><option key={member.id} value={member.id}>{team.id} · {member.id} · XP {member.xp}</option>)}
+          </select>
+        </label>
+        <label>Soigneur de terrain recruté
+          <select value={careMedicTeamId} disabled={blocked} onChange={event=>setCareMedicTeamId(event.target.value)}>
+            <option value="">Choisir un soigneur W3-U18 libre</option>
+            {freeMedics.map(team=><option key={team.id} value={team.id}>{team.id} · {team.members.filter(member=>member.status==="fit").length} apte(s)</option>)}
+          </select>
+        </label>
+        <button type="button" disabled={blocked||!carePatient||!careMedic||
+          carePatient.team.id===careMedic.id||world.rav<careFee||(world.pendingTreatments?.length??0)>=2}
+          onClick={()=>commit(queueWarTreatmentV116(worldRef.current,carePatient?.team.id??"",
+            careMemberId,careMedicTeamId,Date.now(),rules))}>Engager les soins · {careFee} RAV</button>
+      </div>
+      <p className={styles.explain}>Un traitement immobilise les deux équipes, bloque les doubles missions et conserve les identités. La guérison exige une échéance réelle et un membre soigneur encore apte.</p>
+      {(world.pendingTreatments??[]).map(order=><div className={styles.treatmentOrder} key={order.id}>
+        <span><strong>{order.id}</strong> · {order.memberId} pris en charge par {order.medicTeamId} ·
+          {formatTime(Math.max(0,Math.ceil((order.dueAt-now)/1000)))} restant</span>
+        <button type="button" disabled={blocked} onClick={()=>commit(cancelWarTreatmentV116(worldRef.current,order.id))}>Interrompre sans remboursement</button>
+      </div>)}
+      {!world.teams.some(team=>team.members.some(member=>member.status==="wounded"))&&<p className={styles.explain}>Aucune blessure légère actuellement enregistrée.</p>}
+      {(world.treatmentReceipts??[]).length>0&&<p className={styles.explain}>{world.treatmentReceipts?.length} traitement(s) validé(s), chacun clôturé une seule fois.</p>}
+    </section>
+
+    {current && <section className={styles.battle} aria-label="Mission jouable active" data-mode={current.mode}>
+      <div className={styles.battleHeader}><div><span className={styles.overline}>{current.id} · {current.targetId} · action {current.tick}</span>
+        <h4>{modeLabels[current.mode]}</h4></div>
+        <button type="button" disabled={blocked} onClick={()=>commit(leaveWarOperationV115(worldRef.current,rules))}>Ordonner le repli</button></div>
+
+      {assault && <div>
+        <p>Vagues régionales : <strong>{assault.wavesIssued??0} / {warAssaultWaveProfileV140(world.active?.targetId??world.baseId,rules).maximumWaves}</strong> · profils d&apos;unités de la Bible V6 : {(assault.rivalRosterIds??[]).join(", ")||"archive V115 à initialiser"}.</p>
+        <p className={styles.explain}>V141 : échanges de tirs simulés simultanément au cours du même tour. Aucun combattant ne peut passer à travers un front ennemi ou se déplacer en dehors de la voie.</p>
+        <div className={styles.cards}>
+         {assault.actors.filter(u=>u.side==="ally"&&u.hp>0&&u.teamId).map(ally=>{
+          const unit=rules.units.find(u=>u.id===ally.unitId);
+          const range=Math.max(5,Math.min(22,(unit?.range??1)*2+3));
+          const foes=assault.actors.filter(enemy=>enemy.side==="rival"&&enemy.hp>0&&
+            Math.abs(enemy.x-ally.x)<=range&&
+            !assault.actors.some(other=>other.side==="rival"&&other.hp>0&&other.id!==enemy.id&&
+              Math.abs(other.x-ally.x)<Math.abs(enemy.x-ally.x)));
+          return <div key={"focus-"+ally.id}>{foes.map(enemy=><button type="button"
+           key={enemy.id} disabled={blocked||assault.ap<12||
+             (assault.focusUsedIds??[]).includes(ally.teamId!)}
+           onClick={()=>commit(issueWarAssaultFocusV142(worldRef.current,ally.teamId!,enemy.id,rules))}>
+           Priorité de tir · {ally.unitId} → {enemy.unitId} (12 AP, une salve)
+          </button>)}</div>;
+         })}
+        </div>
+        <p className={styles.explain}>V142 : une seule priorité de tir par équipe pendant ce combat. Le bonus ponctuel demande portée réelle et cible sans autre ennemi interposé ; aucun tir à distance infinie.</p>
+        <div className={styles.cards}>{current.teamIds.filter(id=>assault.launched.includes(id)).map(id=>{
+          const actor=assault.actors.find(a=>a.teamId===id&&a.side==="ally"&&a.hp>0);
+          const already=(assault.braceUsedIds??[]).includes(id);
+          const activeUntil=assault.bracedUntil?.[id]??0;
+          return <button type="button" key={"brace143-"+id}
+           disabled={blocked||already||!actor||actor.x>40||assault.ap<14}
+           onClick={()=>commit(commandWarAssaultBraceV143(worldRef.current,id,rules))}>
+           {teamsById(id)} · défendre le front (14 AP){activeUntil>current.tick?" · retranché":already?" · utilisé":""}
+          </button>;
+        })}</div>
+        <p className={styles.explain}>Posture défensive V143 : une formation existante sur sa moitié de terrain réduit chaque dommage subi de 1 durant deux échanges, sans guérison ni nouvelle armure canonique.</p>
+        <div className={styles.cards}>{assault.actors.filter(a=>a.side==="ally"&&a.hp>0&&a.teamId)
+          .flatMap((a,index,array)=>array.slice(index+1).map(b=><button type="button"
+           key={"regroup144-"+a.id+"-"+b.id}
+           disabled={blocked||assault.ap<16||Math.abs(a.x-b.x)>10||
+              a.x<=8||b.x<=8||a.x>55||b.x>55||
+              (assault.regroupUsedIds??[]).includes(a.teamId!)||
+              (assault.regroupUsedIds??[]).includes(b.teamId!)}
+           onClick={()=>commit(commandWarAssaultRegroupV144(worldRef.current,
+              a.teamId!,b.teamId!,rules))}>
+           Replier ensemble {a.unitId} + {b.unitId} (16 AP, 1 vrai tour)
+          </button>))}</div>
+        <p className={styles.explain}>V144 : deux formations réelles proches se replient sans franchir les ennemis ; un seul tour normal de riposte adverse suit l&apos;ordre.</p>
+        <div className={styles.cards}>{assault.actors.filter(u=>u.side==="ally"&&u.hp>0&&u.teamId)
+         .flatMap((target)=>assault.actors.filter(guard=>guard.side==="ally"&&guard.hp>0&&
+            guard.teamId&&guard.id!==target.id&&guard.x<=target.x&&target.x-guard.x<=6)
+           .map(guard=><button type="button" key={"interpose145-"+guard.id+"-"+target.id}
+             disabled={blocked||assault.ap<10||
+               (assault.interposeUsedIds??[]).includes(guard.teamId!)||
+               Boolean(assault.interposeOrders?.[target.teamId!])}
+             onClick={()=>commit(commandWarAssaultInterposeV145(worldRef.current,
+               guard.teamId!,target.teamId!,rules))}>
+             Protéger {target.unitId} par {guard.unitId} (10 AP, deux échanges)
+           </button>))}</div>
+        <p className={styles.explain}>Interposition V145 : un groupe arrière absorbe physiquement une blessure du groupe avancé sur une vraie attaque. Les dégâts totaux sont conservés, sans soins gratuits.</p>
+        <p>Points d&apos;assaut <strong>{assault.ap} AP</strong> · Cadence <strong>niveau {assault.apLevel??1}/3</strong> · Réserve maximale <strong>{100+((assault.apLevel??1)-1)*35} AP</strong> · Rempart allié <strong>{assault.ownBase}/80</strong> · Rempart adverse <strong>{assault.rivalBase}/80</strong>. Les équipes avancent et engagent automatiquement ; vous décidez du moment du déploiement.</p>
+        <div className={styles.cards}>
+          <button type="button" disabled={blocked||(assault.apLevel??1)>=3||assault.ap<((assault.apLevel??1)===1?35:55)}
+            onClick={()=>commit(upgradeWarAssaultApV117(worldRef.current))}>
+            {(assault.apLevel??1)>=3?"Cadence maximale atteinte":"Accélérer la coordination AP · "+((assault.apLevel??1)===1?35:55)+" AP"}
+          </button>
+          <p className={styles.explain}>Cette montée de cadence ne recrute personne ; elle augmente uniquement le rythme des ordres sur cette simulation.</p>
+        </div>
+        <svg className={styles.sideScene} viewBox="0 0 1000 220" role="img" aria-label="Vue de côté du champ de bataille, bastions et unités">
+          <rect width="1000" height="220" fill="#172825"/>
+          <path d="M0 175 H1000" stroke="#8d856d" strokeWidth="4"/>
+          {Array.from({length:12},(_,index)=><path key={index} d={"M"+(index*88)+" 175 l35 -50 l26 50"} stroke="#486057" strokeWidth="1.5" fill="none"/>)}
+          <rect x="8" y="72" width="45" height="103" fill="#667c76" stroke="#d0d3a8" strokeWidth="3"/>
+          <rect x="947" y="72" width="45" height="103" fill="#805b50" stroke="#e7ae87" strokeWidth="3"/>
+          {assault.actors.map(actor=><g key={actor.id} transform={"translate("+(18+actor.x*9.6)+",142)"}>
+            <circle r="15" fill={actor.side==="ally"?"#8aa79b":"#ba7a69"} stroke="#f0e4c6" strokeWidth="2"/>
+            <path d="M-8 13 L-12 29 M8 13 L12 29 M-15 -5 L-26 2 M15 -5 L26 2" stroke="#eee1bd" strokeWidth="4"/>
+            <title>{actor.side==="ally"?teamsById(actor.teamId??""):"Opposition d'exercice"} · vie {Math.max(0,actor.hp)}</title>
+          </g>)}
+          <text x="14" y="24" fill="#e9e2b8" fontSize="19">HALTE</text><text x="887" y="24" fill="#e9c9b4" fontSize="19">RELAIS</text>
+        </svg>
+        <div className={styles.cards}>{current.teamIds.map(id=>{
+          const team=world.teams.find(item=>item.id===id)!;
+          const unit=rules.units.find(item=>item.id===team.unitId)!;
+          const cost=Math.max(8,Math.min(72,unit.commandPoints*8));
+          return <button type="button" key={id} disabled={blocked||assault.launched.includes(id)||assault.ap<cost}
+            onClick={()=>commit(deployAssaultUnitV115(worldRef.current,id,rules))}>
+            {unit.name} · {cost} AP {assault.launched.includes(id)?"· déployée":""}</button>;
+        })}</div>
+        <div className={styles.cards}>
+          {current.teamIds.filter(id=>assault.launched.includes(id)).map(id=><button type="button" key={"special-"+id}
+            disabled={blocked||assault.ap<20||(assault.usedSpecials??[]).includes(id)||!assault.actors.some(actor=>actor.teamId===id&&actor.hp>0)}
+            onClick={()=>commit(issueWarAssaultSpecialV117(worldRef.current,id,rules))}>
+            {teamsById(id)} · feu concentré (20 AP){(assault.usedSpecials??[]).includes(id)?" · utilisé":""}
+          </button>)}
+        </div>
+        <div className={styles.cards}>{current.teamIds.filter(id=>assault.launched.includes(id)).map(id=>{
+          const inPosition=assault.actors.some(actor=>actor.teamId===id&&actor.hp>0&&actor.x<=18);
+          const already=(assault.fortifiedIds??[]).includes(id);
+          return <button key={"fortify-"+id} type="button"
+           disabled={blocked||already||!inPosition||assault.ap<18||assault.ownBase>=80}
+           onClick={()=>commit(reinforceWarAssaultLineV135(worldRef.current,id,rules))}>
+           {teamsById(id)} · protéger le bastion (18 AP){already?" · utilisé":""}
+          </button>;
+        })}</div>
+        <p className={styles.explain}>Une équipe présente près du bastion peut sécuriser sa ligne une fois par assaut en convertissant 18 AP en protection. Aucune troupe ou ressource de campagne n&apos;est créée.</p>
+        <div className={styles.cards}>{current.teamIds.filter(id=>assault.launched.includes(id)).map(id=>{
+          const teamOnLine=assault.actors.some(actor=>actor.teamId===id&&actor.hp>0&&actor.x<=25);
+          const already=(assault.holdIssuedIds??[]).includes(id);
+          const until=assault.heldUntil?.[id]??0;
+          return <button key={"hold-"+id} type="button"
+            disabled={blocked||already||!teamOnLine||assault.ap<15}
+            onClick={()=>commit(orderWarAssaultHoldV136(worldRef.current,id,rules))}>
+            {teamsById(id)} · tenir la ligne (15 AP){until>current.tick?" · position tenue":already?" · consommé":""}
+          </button>;
+        })}</div>
+        <p className={styles.explain}>Tenue V136 : une équipe présente près de sa base conserve sa position pendant trois tours, mais continue à riposter à portée. L&apos;ordre ne crée pas de renfort et n&apos;agit pas sur la campagne V85.</p>
+        <div className={styles.cards}>{current.teamIds.filter(id=>assault.launched.includes(id)).map(id=>{
+          const defender=assault.actors.find(actor=>actor.teamId===id&&actor.side==="ally"&&actor.hp>0);
+          const withdrawn=(assault.extractedIds??[]).includes(id);
+          return <button type="button" key={"withdraw-"+id}
+           disabled={blocked||withdrawn||!defender||defender.x>18||assault.ap<10}
+           onClick={()=>commit(withdrawWarAssaultSquadV137(worldRef.current,id,rules))}>
+           {teamsById(id)} · évacuer vivant (10 AP){withdrawn?" · extrait":""}
+          </button>;
+        })}</div>
+        <div className={styles.cards}>{current.teamIds.filter(id=>assault.launched.includes(id)).map(id=>{
+          const actor=assault.actors.find(a=>a.teamId===id&&a.side==="ally"&&a.hp>0);
+          const used=(assault.surgeIssuedIds??[]).includes(id);
+          const locked=(assault.heldUntil?.[id]??0)>current.tick;
+          return <button type="button" key={"surge-"+id}
+           disabled={blocked||!actor||used||locked||assault.ap<12||actor.x>=93}
+           onClick={()=>commit(commandWarAssaultSurgeV138(worldRef.current,id,rules))}>
+           {teamsById(id)} · percée sur la ligne (12 AP){used?" · utilisée":""}
+          </button>;
+        })}</div>
+        <p className={styles.explain}>V138 : accélération d&apos;une seule formation dans sa propre voie latérale. Elle ne peut ni traverser l&apos;ennemi ni sauter jusqu&apos;au bastion sans progression visible.</p>
+        <div className={styles.cards}>{current.teamIds.filter(id=>assault.launched.includes(id)).map(id=>{
+          const actor=assault.actors.find(a=>a.teamId===id&&a.side==="ally"&&a.hp>0);
+          const attempts=assault.fallbackCounts?.[id]??0;
+          const held=(assault.heldUntil?.[id]??0)>current.tick;
+          return <button type="button" key={"fallback-"+id}
+            disabled={blocked||!actor||actor.x<=5||attempts>=20||held||assault.ap<8}
+            onClick={()=>commit(fallbackWarAssaultV139(worldRef.current,id,rules))}>
+            {teamsById(id)} · repli contrôlé (8 AP) · {attempts}/20
+          </button>;
+        })}</div>
+        <p className={styles.explain}>V139 : retour progressif sur la même voie, sans traverser les adversaires. Une fois au bastion, l&apos;extraction vivante V137 reste possible pour 10 AP.</p>
+        <p className={styles.explain}>Un soldat déjà déployé doit revenir près du bastion pour être extrait. Son identité reste réservée et il ne peut pas être redéployé gratuitement pendant cette bataille.</p>
+        <p className={styles.explain}>Action coordonnée limitée à une fois par détachement survivant, uniquement si une cible adverse se trouve dans sa portée V6. Aucun nouveau projectile ou équipement n&apos;est créé.</p>
+        <p className={styles.explain}>Art temporaire schématique : aucun sprite de film ou de Predator: Hunting Grounds n&apos;est faussement déclaré intégré.</p>
+      </div>}
+
+      {stealth && <div>
+        <p>Rejoindre le relais (7,1), le désactiver, puis rejoindre l&apos;extraction (1,4). Alerte <strong>{stealth.alarm}/3</strong> · énergie de camouflage <strong>{stealth.energy}/5</strong> · relais <strong>{stealth.sabotaged?"neutralisé":"actif"}</strong> · diversion <strong>{stealth.decoyUsed?"épuisée": "disponible"}</strong> · leurre <strong>{stealth.decoyTurns??0} tour(s) à la position émise</strong> · couverts utilisés <strong>{(stealth.usedCoverIds??[]).length}/{missionTerrain?.cover.length??0}</strong> · écoutes <strong>{stealth.acousticUsed??0}/2</strong>.</p>
+        <p className={styles.explain}>Terrain régional : {missionTerrain?.title} · {missionTerrain?.ground} · obstacle : {missionTerrain?.wallLabel}.</p>
+        {stealth.reinforcementMode===undefined&&!stealth.supportGuard&&<p role="alert">Cette archive ne précise pas la règle de renfort. Choisissez le comportement pour reprendre l&apos;infiltration ; son état actuel sera conservé.</p>}
+        {!stealth.supportGuard?<label>Règle de renfort : <select value={stealth.reinforcementMode??""}
+          disabled={blocked||(stealth.reinforcementMode!==undefined&&(stealth.alarm>0||Boolean(stealth.decoyUsed)))}
+          onChange={event=>{if(event.target.value==="manual"||event.target.value==="decoy")
+            commit(setStealthReinforcementMode(worldRef.current,rules,event.target.value));}}>
+          <option value="" disabled>Choisir une règle</option>
+          <option value="manual">Renfort manuel après alerte</option>
+          <option value="decoy">Renfort automatique après diversion et alerte</option>
+        </select></label>:<p>Renfort déjà présent dans cette infiltration.</p>}
+        <fieldset disabled={blocked||(stealth.reinforcementMode===undefined&&!stealth.supportGuard)}>
+        <button type="button" disabled={blocked||stealth.reinforcementMode==="decoy"||stealth.alarm<1||
+           Boolean(stealth.reinforcementIssued)||Boolean(stealth.supportGuard)}
+          onClick={()=>commit(commandWarStealthAlertReinforcementV144(worldRef.current,rules))}>
+          Sécurité renforcée V144 · activer un second garde pour cette infiltration
+        </button>
+        {stealth.supportGuard&&<p className={styles.explain}>Deux gardes physiques patrouillent maintenant le secteur ;
+          la dissimulation, l&apos;écoute et le sabotage discret tiennent compte des deux gardes. Les patrouilles ne peuvent plus occuper la même case.</p>}
+        <div className={styles.stealthControls}>{(["up","left","down","right"] as const).map(dir=>{
+          const dx=dir==="right"?1:dir==="left"?-1:0;
+          const dy=dir==="down"?1:dir==="up"?-1:0;
+          const possible=missionTerrain&&[1,2].every(n=>
+            !warTerrainCellBlockedV116(missionTerrain,stealth.x+dx*n,stealth.y+dy*n));
+          return <button type="button" key={"dash-"+dir}
+            disabled={blocked||!possible||stealth.dashUsed||stealth.cloaked||stealth.energy<2}
+            onClick={()=>commit(commandWarStealthDashV143(worldRef.current,dir,rules))}>
+            Sprint {dir} · 2 cases / 2 tours / 2 énergie
+          </button>;
+        })}</div>
+        <p className={styles.explain}>Le sprint V143 traverse deux cases réelles avec une réaction de la patrouille après chaque case. Usage unique par infiltration, aucune téléportation ni camouflage gratuit.</p>
+        {guardVisible&&stealth.guardInvestigation&&<p className={styles.explain}>La patrouille visible recherche le dernier contact observé ; elle ne connaît pas une position devenue cachée.</p>}
+        <p className={styles.explain}>Patrouille : {guardVisible?"visible à portée réelle":
+          soundBearing?("bruit perçu vers "+soundBearing+" · position exacte inconnue"):
+          "hors du champ de perception ; aucune position exacte affichée"}.</p>
+        <button type="button" disabled={blocked||
+          !planWarStealthStepV142(world,stealth.sabotaged?"extraction":"relay",rules)}
+          onClick={()=>commit(commandWarStealthStepV142(worldRef.current,
+            stealth.sabotaged?"extraction":"relay",rules))}>
+          Avancer d&apos;une case sur le chemin sûr vers {stealth.sabotaged?"l'extraction":"le relais"}
+        </button>
+        <p className={styles.explain}>Aide à la navigation V142 : une case à la fois par une vraie entrée du terrain ; la patrouille réagit normalement et ses positions cachées ne sont pas utilisées pour calculer le chemin.</p>
+        <div className={styles.grid} style={{gridTemplateColumns:"repeat(9,minmax(0,1fr))"}} role="img" aria-label="Plan d'infiltration : X pisteur, G uniquement si visible, R relais, E extraction et obstacles">
+          {Array.from({length:54},(_,index)=>{
+            const x=index%9,y=Math.floor(index/9),wall=Boolean(missionTerrain?.walls.includes(x+","+y));
+            const mark=stealth.x===x&&stealth.y===y?"X":secondGuardVisible&&stealth.supportGuard?.x===x&&stealth.supportGuard?.y===y?"G₂":
+              guardVisible&&stealth.guardX===x&&y===(stealth.guardY??2)?"G":x===7&&y===1?"R":x===1&&y===4?"E":wall?"▥":stealth.decoyTurns&&stealth.decoyX===x&&
+              (stealth.decoyY??2)===y?"♪":
+              missionTerrain?.cover.includes(x+","+y)?"▤":"·";
+            return <span className={styles.cell} data-wall={wall} data-actor={mark==="X"?"ally":mark==="G"?"rival":""} key={index} title={"Case "+x+","+y}>{mark}</span>;
+          })}
+        </div>
+        <div className={styles.stealthControls}>{(["up","left","down","right","cloak","interact","quiet-sabotage","wait","decoy","hide","listen"] as const).map(action=>
+          <button type="button" key={action} disabled={blocked||(action==="decoy"&&(Boolean(stealth.decoyUsed)||stealth.cloaked||stealth.energy<2))||
+              (action==="quiet-sabotage"&&(stealth.sabotaged||stealth.cloaked||stealth.energy<2||
+                !missionTerrain||(Math.abs(stealth.x-missionTerrain.relay.x)+
+                  Math.abs(stealth.y-missionTerrain.relay.y))>1))||
+              (action==="listen"&&(!missionTerrain?.cover.includes(stealth.x+","+stealth.y)||
+                  stealth.cloaked||stealth.energy<1||(stealth.acousticUsed??0)>=2))||
+              (action==="hide"&&(!missionTerrain?.cover.includes(stealth.x+","+stealth.y)||
+                (stealth.usedCoverIds??[]).includes(stealth.x+","+stealth.y)||
+                (stealth.alarm===0&&stealth.energy===5)))} onClick={()=>commit(commandStealthV115(worldRef.current,action,rules))}>
+            {({up:"↑ Nord",left:"← Ouest",down:"↓ Sud",right:"→ Est",cloak:stealth.cloaked?"Désactiver camouflage":"Camouflage optique",interact:"Saboter le relais",wait:"Attendre / récupérer énergie",decoy:"Diversion sonore (2 énergie)",hide:"Se dissimuler dans le couvert",listen:"Écouter la patrouille (1 énergie)","quiet-sabotage":"Sabotage discret (2 énergie)"} as Record<string,string>)[action]}</button>)}</div>
+        <div className={styles.stealthControls}>
+         {(["cover-up","cover-left","cover-down","cover-right"] as const).map(action=>{
+          const direction=action.slice(6);
+          const x=stealth.x+(direction==="right"?1:direction==="left"?-1:0);
+          const y=stealth.y+(direction==="down"?1:direction==="up"?-1:0);
+          const validCover=Boolean(missionTerrain?.cover.includes(x+","+y));
+          return <button type="button" key={action}
+           disabled={blocked||!validCover||stealth.cloaked||stealth.energy<1||(stealth.silentStepsUsed??0)>=2}
+           onClick={()=>commit(commandStealthV115(worldRef.current,action,rules))}>
+           {({up:"↑",down:"↓",left:"←",right:"→"} as Record<string,string>)[direction]} Pas couvert · 1 énergie
+          </button>;
+         })}
+        </div>
+        <p className={styles.explain}>V137 : deux déplacements protégés possibles par infiltration, uniquement vers une case de couvert adjacente. Les gardes à proximité immédiate conservent leur ligne de vue. Pas de camouflage illimité.</p>
+        <p className={styles.explain}>La patrouille réagit à la position et au sabotage. Le camouflage protège à distance mais possède une réserve finie ; aucune exécution déshonorante n&apos;est requise.</p>
+        </fieldset>
+      </div>}
+
+      {rts && <div>
+        <p>{rts.scripted?
+          (rts.scripted.kind==="cargo-escort"?
+            "Mission W3-RTS01 : repérer le guet et escorter une charge portée jusqu'à la sortie (7,4).":
+            rts.scripted.kind==="guard-relief"?
+              "Mission W3-RTS02 : tenir le guet avec une équipe W3-U07 pendant trois tours complets de relève.":
+              rts.scripted.kind==="filter-repair"?
+                "Mission W3-RTS03 : livrer le régulateur avec W3-U19, puis faire travailler les artisans W3-U20 sur le filtre.":
+                rts.scripted.kind==="circuit-defense"?
+                  "Mission W3-RTS04 : conserver un circuit ouvert en protégeant le levier avec W3-U07 pendant quatre tours malgré les cycles de pression.":
+                  rts.scripted.kind==="beacon-intercept"?
+                    "Mission W3-RTS05 : identifier la véritable balise, distinguer le leurre, intercepter le porteur adverse et ramener l'objet jusqu'à la coque.":
+                    "Mission W3-RTS06 : faire reconnaître l'arête du retour par W3-U02 puis évacuer réellement les groupes survivants à bord avec W3-U17."):
+          "Escarmouche libre : sélectionnez un détachement et attaquez ou défendez la balise (7,3)."}
+          {" "}En temps réel, les équipes progressent selon vos ordres ; en alterné, elles agissent à tour de rôle.</p>
+        {rts.scripted?.kind==="cargo-escort"&&<p className={styles.scenarioStatus}>
+          Guet : <strong>{rts.scripted.scouted?"observé":"inconnu"}</strong> ·
+          Charge : <strong>{rts.scripted.cargo.carrierTeamId?
+            teamsById(rts.scripted.cargo.carrierTeamId):"déposée au sol"}</strong> ·
+          Position : <strong>{rts.scripted.cargo.x},{rts.scripted.cargo.y}</strong> ·
+          Sortie : <strong>{rts.scripted.exit.x},{rts.scripted.exit.y}</strong>
+        </p>}
+        {rts.scripted?.kind==="guard-relief"&&<p className={styles.scenarioStatus}>
+          Relève : <strong>{rts.scripted.reliefProgress}/{rts.scripted.requiredTurns} tours</strong> ·
+          Poste : <strong>7,3</strong> · Une victoire par élimination seule ne suffit pas.
+        </p>}
+        {rts.scripted?.kind==="circuit-defense"&&<p className={styles.scenarioStatus}>
+          Levier W3-MAP02 : <strong>{rts.scripted.heldTurns}/{rts.scripted.requiredTurns} tours</strong> ·
+          Intégrité du circuit : <strong>{rts.scripted.integrity}/{rts.scripted.maxIntegrity}</strong> ·
+          Vapeur : <strong>{["pression relâchée","montée de vapeur","vapeur visible"][rts.scripted.pressurePhase]}</strong>.
+          Une victoire par élimination seule ne suffit pas.
+        </p>}
+                {rts.scripted?.kind==="filter-repair"&&<p className={styles.scenarioStatus}>
+          Régulateur : <strong>{rts.scripted.delivered?"livré au filtre":"à transporter"}</strong> ·
+          Porteur : <strong>{rts.scripted.cargo.carrierTeamId?
+            teamsById(rts.scripted.cargo.carrierTeamId):"charge déposée"}</strong> ·
+          Travail du filtre : <strong>{rts.scripted.workProgress}/{rts.scripted.requiredTurns}</strong> ·
+          Emplacement : <strong>{rts.scripted.filterSite.x},{rts.scripted.filterSite.y}</strong>
+        </p>}
+        {rts.scripted?.kind==="beacon-intercept"&&<p className={styles.scenarioStatus}>
+          Balise réelle : <strong>{rts.scripted.observed?"identifiée":"non confirmée"}</strong> ·
+          Leurre : <strong>{rts.scripted.decoy.recognized?"examiné":"non vérifié"}</strong> ·
+          Objet : <strong>{rts.scripted.beacon.allyCarrierTeamId?
+            "récupéré par "+teamsById(rts.scripted.beacon.allyCarrierTeamId):
+            rts.scripted.beacon.enemyCarrierId?"encore aux mains adverses":"sur le terrain"}</strong> ·
+          Retour à la coque : <strong>{rts.scripted.extraction.x},{rts.scripted.extraction.y}</strong>
+        </p>}
+                {rts.scripted?.kind==="wind-extraction"&&<p className={styles.scenarioStatus}>
+          Arête de retour : <strong>{rts.scripted.ridgeConfirmed?"reconnue":"à reconnaître"}</strong> ·
+          Équipes évacuées : <strong>{rts.scripted.extractedTeamIds.length}/{rts.scripted.nominatedTeamIds.length}</strong> ·
+          Équipes perdues : <strong>{rts.scripted.lostTeamIds.length}</strong> ·
+          Vent : <strong>{["clair","rafales annoncées","rafales et visibilité réduite"][rts.scripted.windPhase]}</strong> ·
+          Coque : <strong>{rts.scripted.ship.x},{rts.scripted.ship.y}</strong>.
+          Les survivants doivent atteindre le retour ; éliminer les ennemis ne suffit pas.
+        </p>}
+                <p className={styles.explain}>Théâtre : {missionTerrain?.title} · {missionTerrain?.ground} · couverts : {missionTerrain?.coverLabel}. Les murs interrompent les trajets et les lignes de tir.</p>
+        <div className={styles.cards}><button type="button" disabled={blocked}
+          aria-pressed={Boolean(rts.realtime)} onClick={()=>commit(toggleWarRtsRealtimeV115(worldRef.current,!rts.realtime))}>
+          {rts.realtime?"Passer en ordres alternés":"Activer la bataille en temps réel"}
+        </button>
+        <span className={styles.explain}>Tenue <strong>{rts.hold}/{rts.realtime?3:2}</strong> · {rts.realtime?"Simulation active toutes les secondes":"Une réponse par commande"}</span></div>
+        <div className={styles.cards}>
+          {rts.actors.filter(unit=>unit.side==="ally").map(unit=><button type="button" key={unit.id}
+            aria-pressed={rtsSelectedId===unit.teamId} disabled={blocked}
+            onClick={()=>setRtsSelectedId(unit.teamId??"")}>{teamsById(unit.teamId??"")} · PV {unit.hp}</button>)}
+          {rts.realtime ? <button type="button" disabled={blocked||!rts.actors.some(unit=>unit.teamId===rtsSelectedId)}
+            onClick={()=>{const actor=rts.actors.find(unit=>unit.teamId===rtsSelectedId);if(actor)commit(issueWarRtsRealtimeOrderV115(worldRef.current,rtsSelectedId,actor.x,actor.y,"hold",rules));}}>
+            Tenir la position et utiliser le couvert</button> :
+            <button type="button" disabled={blocked||!rts.actors.some(unit=>unit.teamId===rtsSelectedId)}
+              onClick={()=>commit(holdWarRtsAlternatingV119(worldRef.current,rtsSelectedId,rules))}>
+              Défendre / laisser passer un tour tactique</button>}
+        </div>
+        <div className={styles.grid} style={{gridTemplateColumns:"repeat(9,minmax(0,1fr))"}} role="group" aria-label="Champ de bataille tactique 9 colonnes par 6 lignes">
+          {Array.from({length:54},(_,index)=>{
+            const x=index%9,y=Math.floor(index/9),actor=rts.actors.find(item=>item.x===x&&item.y===y);
+            const objective=x===7&&y===3,wall=Boolean(missionTerrain?.walls.includes(x+","+y)),
+              cover=Boolean(missionTerrain?.cover.includes(x+","+y)),
+              cargo=rts.scripted?.kind==="cargo-escort"||rts.scripted?.kind==="filter-repair"?rts.scripted.cargo:null,
+              carrying=Boolean(actor&&cargo&&cargo.carrierTeamId===actor.teamId),
+              cargoOnGround=Boolean(cargo&&!cargo.carrierTeamId&&cargo.x===x&&cargo.y===y),
+              isExit=rts.scripted?.kind==="cargo-escort"&&x===7&&y===4,
+              isFilter=rts.scripted?.kind==="filter-repair"&&x===7&&y===3,
+              isLever=rts.scripted?.kind==="circuit-defense"&&x===7&&y===3,
+              beacon=rts.scripted?.kind==="beacon-intercept"?rts.scripted.beacon:null,
+              beaconKnown=rts.scripted?.kind==="beacon-intercept"&&rts.scripted.observed,
+              beaconGround=Boolean(beaconKnown&&beacon&&!beacon.enemyCarrierId&&!beacon.allyCarrierTeamId&&beacon.x===x&&beacon.y===y),
+              beaconOnAlly=Boolean(beaconKnown&&actor?.side==="ally"&&beacon?.allyCarrierTeamId===actor?.teamId),
+              beaconOnEnemy=Boolean(beaconKnown&&actor?.side==="rival"&&beacon?.enemyCarrierId===actor?.id),
+              decoy=rts.scripted?.kind==="beacon-intercept"&&rts.scripted.decoy.x===x&&rts.scripted.decoy.y===y,
+              isShip=(rts.scripted?.kind==="beacon-intercept"||rts.scripted?.kind==="wind-extraction")&&x===1&&y===4,
+              isRidge=rts.scripted?.kind==="wind-extraction"&&x===7&&y===1,
+              mark=actor?(actor.side==="ally"?(carrying||beaconOnAlly?"Y◆":"Y"):(beaconOnEnemy?"R◆":"R")):
+                cargoOnGround||beaconGround?"◆":decoy?(rts.scripted?.kind==="beacon-intercept"&&rts.scripted.decoy.recognized?"×":"?"):
+                isShip?"⌂":isRidge?"▲":isExit?"⇥":isFilter?"✚":isLever?"⚙":objective?"◎":wall?"▥":cover?"▤":"·";
+            return <button key={index} type="button" disabled={blocked||!rtsSelectedId||wall}
+              className={styles.cell} data-wall={wall} data-actor={actor?.side??""} data-objective={objective} data-cover={cover}
+              title={"Position "+x+","+y+(actor?" · "+actor.unitId+" · PV "+actor.hp:"")}
+              aria-label={"Case "+x+","+y+" · "+(actor?.side==="ally"?(carrying?"porteur allié":"allié"):
+                actor?.side==="rival"?"adversaire":cargoOnGround||beaconGround?"objet réel au sol":decoy?"leurre":isShip?"coque de retour":isRidge?"arête à reconnaître":isExit?"sortie":isFilter?"filtre à réparer":isLever?"levier du circuit":objective?"objectif":"libre")}
+              onClick={()=>commit(rts.realtime?
+                issueWarRtsRealtimeOrderV115(worldRef.current,rtsSelectedId,x,y,actor?.side==="rival"?"attack":"advance",rules):
+                commandRtsV115(worldRef.current,rtsSelectedId,x,y,rules))}>{mark}</button>;
+          })}
+        </div>
+        <p className={styles.explain}>Y = allié, R = opposition d&apos;exercice, ◎ = balise, ▤ = couvert, ▥ = obstacle, ◆ = charge, ⇥ = sortie, ✚ = filtre, ⚙ = levier, ⌂ = coque, ▲ = arête à reconnaître, ? = signal suspect.
+          Ces objectifs W3 utilisent une adaptation tactique 9 × 6 : les décors narratifs et les cartes sources complètes W3-MAP01/02 restent à développer.</p>
+      </div>}
+    </section>}
+
+    <section className={styles.delegated}>
+      <h4>Outer Ops · opérations en attente ({world.outer.length}/3)</h4>
+      <p>Le délai utilise l&apos;heure de l&apos;appareil. Un rappel ne téléporte pas l&apos;équipe : son trajet de retour est décompté jusqu&apos;au rapport final.</p>
+      {world.outer.length?world.outer.map(order=>{
+        const transit=warOuterWeightedProgressV141(order,now,rules);
+        const travelLedger=warOuterTravelLedgerV145(order,now,rules);
+        const incident=warOuterIncidentV143(order,now,rules);
+        const routePc=order.teamIds.reduce((pc,id)=>pc+
+          (rules.units.find(u=>u.id===world.teams.find(t=>t.id===id)?.unitId)?.commandPoints??0),0);
+        const earlyOptions=warOuterRouteChoicesV142(world.baseId,order.targetId,routePc,rules)
+          .filter(path=>path.passageIds.join("|")!==order.routeIds.join("|"));
+        return <div className={styles.delegatedOrder} key={order.id}>
+        <strong>{order.id} · {focusLabels[order.focus]}</strong>
+        <span>{order.targetId} · {order.teamIds.map(teamsById).join(", ")}</span>
+        <span>{order.recall?"Retour au clan":"Rapport de mission"} dans {formatTime(warOuterSecondsRemainingV115(order,now))} · {order.routeIds.length} passage(s)</span>
+        <span>Progression simulée sur les passages V6 : <strong>{transit.phase==="returning"?"retour":
+          transit.phase==="outbound"?"aller":transit.phase==="arrived"?"arrivé":"en attente"}</strong> ·
+          {Math.floor(transit.legProgress*100)} % du trajet courant ·
+          <strong> {transit.currentPassageName??"aucun passage actuellement traversé"}</strong>
+          {transit.currentPassageId?" ("+transit.currentPassageId+")":""}.
+          {transit.currentMovementCost!==null&&<> Progression dans ce passage :
+           <strong> {Math.floor(transit.currentPassageProgress*100)} %</strong> · poids de déplacement V6 {transit.currentMovementCost}.</>}
+        </span>
+        {transit.sourceCondition&&<small className={styles.explain}>Condition publique du passage : {transit.sourceCondition}. Aucune position ennemie calculée.</small>}
+        {order.recall ? <small className={styles.explain}>Rappel transmis : équipe toujours engagée jusqu&apos;à l&apos;arrivée.</small> : <button type="button" disabled={blocked||now<order.startedAt||now>=order.dueAt} onClick={()=>commit(recallWarOuterMissionV116(worldRef.current,order.id,Date.now(),rules))}>Rappeler l&apos;équipe</button>}
+        {!order.recall&&!order.retask&&now>=order.startedAt&&2*(now-order.startedAt)<((order.reconHalt?.originalDueAt??order.routeIncident?.originalDueAt??order.dueAt)-order.startedAt)&&
+          <div className={styles.cards}>
+           {(Object.keys(focusLabels) as OuterFocusV115[]).filter(f=>f!==order.focus).map(f=>
+            <button type="button" key={f} disabled={blocked}
+             onClick={()=>commit(redirectWarOuterOpsV135(worldRef.current,order.id,f,Date.now(),rules))}>
+             Réorienter vers {focusLabels[f]}
+            </button>)}
+          </div>}
+        {order.retask&&<small className={styles.explain}>Consigne réorientée depuis {focusLabels[order.retask.oldFocus]}, sans nouvel entretien ni rapport anticipé.</small>}
+        {order.fieldSupport&&<small className={styles.explain}>Soutien de terrain V136 : {order.fieldSupport.paidRav} RAV engagés à {order.fieldSupport.allocatedAt} ; aucune victoire anticipée.</small>}
+        {order.reconHalt&&<small className={styles.explain}>Halte V137 : ancienne échéance {order.reconHalt.originalDueAt}, nouveau rapport après 15 secondes supplémentaires ; effectifs et route inchangés.</small>}
+        {order.departureContext&&<small className={styles.explain}>Briefing figé au départ : renseignements {order.departureContext.intel?"confirmés":"non confirmés"}, relais {order.departureContext.weakened?"affaibli":"non confirmé"}, pression {order.departureContext.pressure}. Les résultats ultérieurs des autres modes ne modifient pas ce mandat.</small>}
+        {!order.recall&&!order.forcedPace&&!order.routeDiversion&&!order.routeIncident&&!order.reconHalt&&
+          now>=order.startedAt&&now-order.startedAt<=Math.min(5000,
+            (order.dueAt-order.startedAt)*.15)&&
+          earlyOptions.length>0&&<div className={styles.cards}>
+           {earlyOptions.map(route=><button type="button" key={"reroute144-"+route.id}
+              disabled={blocked||world.rav<1}
+              onClick={()=>commit(commandWarOuterRerouteV144(worldRef.current,
+                order.id,route.passageIds,Date.now(),rules))}>
+              Réviser le trajet · {route.id} · {route.cost} coût V6 (1 RAV, +5 s)
+            </button>)}
+          </div>}
+        {travelLedger.pauseReasons.length>0&&<p className={styles.explain}>
+          Pause physique du convoi : <strong>{travelLedger.pauseReasons.join(", ")}</strong>.
+          Temps de manœuvre déjà comptabilisé : {Math.floor(travelLedger.pausedMs/1000)} s.
+          Le passage affiché ne progresse pas gratuitement pendant cette pause.</p>}
+                {order.routeDiversion&&<small className={styles.explain}>Route modifiée V144 :
+          un RAV engagé à {order.routeDiversion.changedAt}, échéance rallongée de cinq secondes,
+          mêmes membres et aucun gain anticipé.</small>}
+        {order.routeIncident&&<p className={styles.explain}>Incident V143 traité sur {order.routeIncident.passageId} :
+          <strong> {order.routeIncident.kind==="secure"?"sécurisation 2 RAV":"détour +10 secondes"}</strong>.
+          L&apos;échéance réelle et les personnes restent enregistrées.</p>}
+        {incident&&<div className={styles.cards}>
+          <p className={styles.explain}>Incident source sur {incident.passageName} ({incident.passageId}) :
+            {incident.incident}. Décision unique, sans renseignement ennemi caché.</p>
+          <button type="button" disabled={blocked||world.rav<2}
+            onClick={()=>commit(commandWarOuterIncidentV143(worldRef.current,order.id,"secure",Date.now(),rules))}>
+            Sécuriser le passage · 2 RAV
+          </button>
+          <button type="button" disabled={blocked}
+            onClick={()=>commit(commandWarOuterIncidentV143(worldRef.current,order.id,"detour",Date.now(),rules))}>
+            Contourner · +10 secondes
+          </button>
+        </div>}
+        {order.fieldSignal&&<p className={styles.explain}>Transmission V138 : <strong>{order.fieldSignal.assessment}</strong> · {order.fieldSignal.passages} passage(s) connus, {order.fieldSignal.fitMembers} membre(s) aptes. Ceci ne dévoile ni garnison cachée, ni résultat de combat.</p>}
+        {!order.recall&&!order.fieldSignal&&now>=order.startedAt+
+          Math.ceil(((order.reconHalt?.originalDueAt??order.routeIncident?.originalDueAt??order.dueAt)-order.startedAt)/2)&&
+          now<order.dueAt&&(!order.forcedPace||transit.legProgress>=.5)&&<button type="button" disabled={blocked}
+           onClick={()=>commit(requestWarOuterSignalV138(worldRef.current,order.id,Date.now(),rules))}>
+           Obtenir le bulletin de terrain · aucune résolution anticipée
+          </button>}
+        {!order.recall&&!order.forcedPace&&!order.reconHalt&&(order.focus==="recon"||order.focus==="escort")&&
+          now>=order.startedAt&&2*(now-order.startedAt)<order.dueAt-order.startedAt&&
+          <button type="button" disabled={blocked}
+           onClick={()=>commit(orderWarOuterReconHaltV137(worldRef.current,order.id,Date.now(),rules))}>
+           Halte de reconnaissance · +15 secondes, meilleure préparation
+          </button>}
+        {!order.recall&&!order.fieldSupport&&now>=order.startedAt&&
+          2*(now-order.startedAt)<(order.reconHalt?.originalDueAt??order.dueAt)-order.startedAt&&
+          <button type="button" disabled={blocked||world.rav<2}
+            onClick={()=>commit(supplyWarOuterMissionV136(worldRef.current,order.id,Date.now(),rules))}>
+            Envoyer des fournitures de terrain · 2 RAV
+          </button>}
+        {!order.recall&&!order.forcedPace&&!order.routeDiversion&&!order.routeIncident&&!order.reconHalt&&!order.fieldSignal&&
+          now>=order.startedAt&&4*(now-order.startedAt)<=order.dueAt-order.startedAt&&
+          <button type="button" disabled={blocked||world.rav<3}
+           onClick={()=>commit(commandWarOuterPaceV144(worldRef.current,order.id,Date.now(),rules))}>
+           Marche forcée · 3 RAV · retour avancé de 8 s · résistance +2
+          </button>}
+        {order.forcedPace&&<small className={styles.explain}>Marche forcée : 3 RAV engagés, aucun résultat anticipé.</small>}
+      </div>;}):<p>Aucune équipe actuellement déléguée.</p>}
+      <button type="button" disabled={blocked||!world.outer.some(order=>now>=order.dueAt)}
+        onClick={()=>commit(settleWarOuterOpsV115(worldRef.current,Date.now(),rules))}>Recevoir les rapports arrivés</button>
+    </section>
+    <section className={styles.reports}>
+      <h4>Chronique de guerre et conséquences enregistrées</h4>
+      <p>Renseignements : {world.intelIds.length} · relais sabotés : {world.weakenedIds.length} · itinéraires escortés : {world.escortedIds.length}. La pression n&apos;est pas une annexion : il faut encore les ordres de conquête et une garnison dans le moteur stratégique.</p>
+      <details className={styles.debriefDetails}>
+        <summary>Conseil des clans V146 — dossiers de fin de mission · {councilAudit.total}</summary>
+        <p>Ces dossiers sont des preuves d&apos;exercice et non des ordres d&apos;annexion V85.
+          Les quatre modes utilisent le même format de compte rendu, avec les lacunes explicitées.</p>
+        {councilAudit.issues.map((issue,i)=><p key={i} role="alert">{issue}</p>)}
+        <ol>{councilAudit.dossiers.slice(-24).reverse().map(d=><li key={d.id}>
+          <strong>{d.mode} · {d.outcome} · {d.operationId}</strong>
+          <p>{d.territoryName} · équipe(s) {d.teamIds.length} · blessé(s) {d.woundedCount}.
+            Référence source : {d.sourceType}. Aucune mutation V85.</p>
+          <details><summary>Preuves et éléments restant à produire</summary>
+            <p>Confirmé : {d.provenFacts.join(" · ")}</p>
+            <p>Non démontré : {d.missingEvidence.join(" · ")}</p>
+          </details>
+        </li>)}</ol>
+      </details>
+      <ol>{world.reports.slice(-16).reverse().map(report=><li key={report.id}>
+        <strong>{report.id} · {report.outcome==="victory"?"Succès":report.outcome==="retreat"?"Repli":"Échec"}</strong>
+        <span>{report.mode==="outer"?focusLabels[report.focus??"recon"]:modeLabels[report.mode]} · {report.targetId} · vacation {report.clock}</span>
+        <p>{report.summary}</p>
+        {report.engagementLog?.length ? <details className={styles.debriefDetails}><summary>Journal opérationnel · {report.engagementLog.length} phases</summary>
+          <ol>{report.engagementLog.map((item,index)=><li key={report.id+"-"+index}>{item}</li>)}</ol></details>:null}
+        <small>Équipes : {report.teamIds.join(", ")} · Blessés : {report.woundedIds.length?report.woundedIds.join(", "):"aucun déclaré"} · Source : {report.sourceIds.join(", ")}</small>
+      </li>)}</ol>
+      {!world.reports.length && <p>Aucun résultat pour cet exercice.</p>}
+    </section>
+  </section>;
+}
