@@ -1,0 +1,1475 @@
+{
+  "schemaVersion": 1,
+  "observedAtUtc": "2026-11-01T00:30:00Z",
+  "observation": "Read-only GitHub API snapshot. Some jobs were still executing. Refresh exact heads and checks before any merge.",
+  "mainCommit": "f1856f6670fd959ed012c38f84e6d90d6f86a361",
+  "openPullRequests": 33,
+  "mergedHistoricalPrs": [
+    {
+      "number": 23,
+      "mergedAt": "2026-10-28T12:42:31Z",
+      "mergeCommit": "3943522296dff8cdb2d183dd7f9b7132b2a912c6"
+    },
+    {
+      "number": 24,
+      "mergedAt": "2026-10-30T13:16:56Z",
+      "headCommit": "e0d68d40c2f32215b521a475a102903f02c2c24f",
+      "mergeCommit": "c7d25cde16e6876bbf840fa8064ae1a13fb7a304"
+    }
+  ],
+  "sourceCommands": [
+    "gh pr list --state open --limit 100 --json number,title,headRefName,headRefOid,baseRefName,isDraft,mergeStateStatus,mergeable,reviewDecision,url,statusCheckRollup",
+    "gh api repos/darknigthmare/yautja-la-longue-chasse/pulls?state=open&per_page=100"
+  ],
+  "pullRequests": [
+    {
+      "number": 27,
+      "title": "V113 — Ateliers chromatiques Yautja et textures PHG liées à la campagne",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/27",
+      "headBranch": "feat/v113-chromatic-hunter-phg-20261030",
+      "headCommit": "0bf37a88401f840e3902f9566b3a805e258ce533",
+      "baseBranch": "main",
+      "parentPr": null,
+      "draft": false,
+      "mergeableOnCurrentBase": "MERGEABLE",
+      "githubMergeState": "UNSTABLE",
+      "reviewDecision": null,
+      "checks": [
+        {
+          "name": "domain",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41255961431/job/124699051975"
+        },
+        {
+          "name": "V113 PNG integrity, registration and cosmetic surfaces",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41255961429/job/124699051752"
+        },
+        {
+          "name": "integrity",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41255961495/job/124699052317"
+        },
+        {
+          "name": "Preserve all 34 sources and reject invented UV evidence",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41255961440/job/124699051766"
+        },
+        {
+          "name": "V137 workbook hashes, structure and 389-ticket integrity",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41255961452/job/124699052225"
+        },
+        {
+          "name": "V139 preserve 1134 visual cases and verify 52 decal placements",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41255961470/job/124699052134"
+        },
+        {
+          "name": "gameplay-cloud",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41255961432/job/124699052001"
+        },
+        {
+          "name": "Targeted V94 regressions (not full game QA)",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41255961460/job/124699076239"
+        },
+        {
+          "name": "ship-training",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41255961459/job/124699052366"
+        },
+        {
+          "name": "persistence",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41255961430/job/124699292705"
+        },
+        {
+          "name": "Application compile, types, runtime lint and browser integration",
+          "status": "IN_PROGRESS",
+          "conclusion": null,
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41255961460/job/124699076072"
+        },
+        {
+          "name": "TypeScript and lint on the complete game source",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41255961495/job/124699052239"
+        },
+        {
+          "name": "Vercel",
+          "status": "FAILURE",
+          "conclusion": "FAILURE",
+          "url": "https://vercel.com/darknigthmares-projects?upgradeToPro=build-rate-limit"
+        },
+        {
+          "name": "CodeRabbit",
+          "status": "COMPLETED",
+          "conclusion": "SKIPPED",
+          "url": "https://coderabbit.ai?utm_source=cr_app&utm_medium=github"
+        }
+      ]
+    },
+    {
+      "number": 29,
+      "title": "V115–V123 — Guerres de clans : 4 modes, 6 RTS W3 scénarisés et rapports persistants",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/29",
+      "headBranch": "feat/v115-clan-mission-formats-20261030",
+      "headCommit": "d4d00129a7f09376cdce2f969ea2e00acc2ad75b",
+      "baseBranch": "main",
+      "parentPr": null,
+      "draft": true,
+      "mergeableOnCurrentBase": "MERGEABLE",
+      "githubMergeState": "UNSTABLE",
+      "reviewDecision": null,
+      "checks": [
+        {
+          "name": "gameplay-cloud",
+          "status": "COMPLETED",
+          "conclusion": "FAILURE",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41093774377/job/124194114011"
+        },
+        {
+          "name": "Four modes, reports, archive and UI lint",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41093774626/job/124194110865"
+        },
+        {
+          "name": "Targeted V94 regressions (not full game QA)",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41093774294/job/124194114610"
+        },
+        {
+          "name": "ship-training",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41093774385/job/124194484312"
+        },
+        {
+          "name": "persistence",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41093774379/job/124194112957"
+        },
+        {
+          "name": "Application compile, types, runtime lint and browser integration",
+          "status": "COMPLETED",
+          "conclusion": "CANCELLED",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41093774294/job/124194114423"
+        },
+        {
+          "name": "Vercel",
+          "status": "FAILURE",
+          "conclusion": "FAILURE",
+          "url": "https://vercel.com/darknigthmares-projects?upgradeToPro=build-rate-limit"
+        },
+        {
+          "name": "CodeRabbit",
+          "status": "COMPLETED",
+          "conclusion": "SKIPPED",
+          "url": "https://coderabbit.ai?utm_source=cr_app&utm_medium=github"
+        }
+      ]
+    },
+    {
+      "number": 31,
+      "title": "V122 — Compatibilité TypeScript V103/V115 du générateur de planètes",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/31",
+      "headBranch": "fix/v122-planet-v103-v115-types-20261030",
+      "headCommit": "67fa9fab2e580abb907fa5de0679cd73237c9407",
+      "baseBranch": "main",
+      "parentPr": null,
+      "draft": false,
+      "mergeableOnCurrentBase": "MERGEABLE",
+      "githubMergeState": "UNSTABLE",
+      "reviewDecision": null,
+      "checks": [
+        {
+          "name": "domain",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41085561493/job/124166171113"
+        },
+        {
+          "name": "World versions V103 and V115 both play",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41085561475/job/124165678817"
+        },
+        {
+          "name": "gameplay-cloud",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41085561503/job/124166062642"
+        },
+        {
+          "name": "Targeted V94 regressions (not full game QA)",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41085561514/job/124168009199"
+        },
+        {
+          "name": "ship-training",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41085561461/job/124166054937"
+        },
+        {
+          "name": "persistence",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41085561533/job/124166175571"
+        },
+        {
+          "name": "Application compile, types, runtime lint and browser integration",
+          "status": "COMPLETED",
+          "conclusion": "CANCELLED",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41085561514/job/124168009735"
+        },
+        {
+          "name": "Vercel",
+          "status": "FAILURE",
+          "conclusion": "FAILURE",
+          "url": "https://vercel.com/darknigthmares-projects?upgradeToPro=build-rate-limit"
+        },
+        {
+          "name": "CodeRabbit",
+          "status": "COMPLETED",
+          "conclusion": "SKIPPED",
+          "url": "https://coderabbit.ai?utm_source=cr_app&utm_medium=github"
+        }
+      ]
+    },
+    {
+      "number": 33,
+      "title": "V124–V125 — Masques modulaires, surface physique et 32 nouvelles matières planétaires",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/33",
+      "headBranch": "feat/planet-v124-modular-region-masks",
+      "headCommit": "63c345fc7eaf999225df8f35cab787b8152f0b2c",
+      "baseBranch": "fix/v122-planet-v103-v115-types-20261030",
+      "parentPr": 31,
+      "draft": false,
+      "mergeableOnCurrentBase": "MERGEABLE",
+      "githubMergeState": "UNSTABLE",
+      "reviewDecision": null,
+      "checks": [
+        {
+          "name": "domain",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41097854075/job/124208500635"
+        },
+        {
+          "name": "V124 live PNG and ZIP verification",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41097854075/job/124214472305"
+        },
+        {
+          "name": "Vercel",
+          "status": "FAILURE",
+          "conclusion": "FAILURE",
+          "url": "https://vercel.com/darknigthmares-projects?upgradeToPro=build-rate-limit"
+        },
+        {
+          "name": "CodeRabbit",
+          "status": "SUCCESS",
+          "conclusion": "SUCCESS",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "number": 34,
+      "title": "V120 — 1 200 variantes de guerres de clans : 4 gameplays × 3 contextes × 100",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/34",
+      "headBranch": "feat/v120-clan-war-1200-mission-variants-20261030",
+      "headCommit": "bfd3aba70ca2c7d95985182d7e8e6607ab86c86c",
+      "baseBranch": "feat/v115-clan-mission-formats-20261030",
+      "parentPr": 29,
+      "draft": true,
+      "mergeableOnCurrentBase": "MERGEABLE",
+      "githubMergeState": "UNSTABLE",
+      "reviewDecision": null,
+      "checks": [
+        {
+          "name": "Count, diversity, source scope, strict types, CSV",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41101793349/job/124220148439"
+        },
+        {
+          "name": "Vercel",
+          "status": "FAILURE",
+          "conclusion": "FAILURE",
+          "url": "https://vercel.com/darknigthmares-projects?upgradeToPro=build-rate-limit"
+        },
+        {
+          "name": "CodeRabbit",
+          "status": "SUCCESS",
+          "conclusion": "SUCCESS",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "number": 36,
+      "title": "V126 — Terre WGS84, cohérence des 1 200 lieux, 6 000 profils IA et protocole multijoueur",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/36",
+      "headBranch": "feat/v126-earth-geography-climate-ai-multiplayer",
+      "headCommit": "cb60036cd362363c2e066506916c4cd65bbe18e7",
+      "baseBranch": "feat/v120-clan-war-1200-mission-variants-20261030",
+      "parentPr": 34,
+      "draft": true,
+      "mergeableOnCurrentBase": "MERGEABLE",
+      "githubMergeState": "UNSTABLE",
+      "reviewDecision": null,
+      "checks": [
+        {
+          "name": "Check real Earth geography, climate, 6000 AI plans and MP protocol",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41108334738/job/124243919895"
+        },
+        {
+          "name": "Check real Earth geography, climate, 6000 AI plans and MP protocol",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41108326453/job/124243892001"
+        },
+        {
+          "name": "Vercel",
+          "status": "FAILURE",
+          "conclusion": "FAILURE",
+          "url": "https://vercel.com/darknigthmares-projects?upgradeToPro=build-rate-limit"
+        },
+        {
+          "name": "CodeRabbit",
+          "status": "COMPLETED",
+          "conclusion": "SKIPPED",
+          "url": "https://coderabbit.ai?utm_source=cr_app&utm_medium=github"
+        }
+      ]
+    },
+    {
+      "number": 37,
+      "title": "V127 — Terre WGS84 métrique et 6 000 plans IA à quatre phases",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/37",
+      "headBranch": "feat/v127-earth-meter-scale-encounter-director",
+      "headCommit": "2ce26d31dae0f339775d141cb486f8886b6a9dfe",
+      "baseBranch": "feat/v126-earth-geography-climate-ai-multiplayer",
+      "parentPr": 36,
+      "draft": true,
+      "mergeableOnCurrentBase": "MERGEABLE",
+      "githubMergeState": "UNSTABLE",
+      "reviewDecision": null,
+      "checks": [
+        {
+          "name": "Validate 1:1 physical coordinates and 6000 encounter design plans",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41110434300/job/124251132343"
+        },
+        {
+          "name": "Validate 1:1 physical coordinates and 6000 encounter design plans",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41110424887/job/124251102016"
+        },
+        {
+          "name": "Vercel",
+          "status": "FAILURE",
+          "conclusion": "FAILURE",
+          "url": "https://vercel.com/darknigthmares-projects?upgradeToPro=build-rate-limit"
+        },
+        {
+          "name": "CodeRabbit",
+          "status": "COMPLETED",
+          "conclusion": "SKIPPED",
+          "url": "https://coderabbit.ai?utm_source=cr_app&utm_medium=github"
+        }
+      ]
+    },
+    {
+      "number": 38,
+      "title": "V128 — 12 cartes W3 aux dimensions source, navigation et extraction réellement jouables",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/38",
+      "headBranch": "feat/v128-clan-source-map-runtime",
+      "headCommit": "77e8699ce838e08a68e40ece2d1811411287c022",
+      "baseBranch": "feat/v127-earth-meter-scale-encounter-director",
+      "parentPr": 37,
+      "draft": true,
+      "mergeableOnCurrentBase": "MERGEABLE",
+      "githubMergeState": "UNSTABLE",
+      "reviewDecision": null,
+      "checks": [
+        {
+          "name": "12 W3-MAP source-size tile plans, real traversal and QA",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41119084396/job/124280843439"
+        },
+        {
+          "name": "12 W3-MAP source-size tile plans, real traversal and QA",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41119077738/job/124280819580"
+        },
+        {
+          "name": "Vercel",
+          "status": "FAILURE",
+          "conclusion": "FAILURE",
+          "url": "https://vercel.com/darknigthmares-projects?upgradeToPro=build-rate-limit"
+        },
+        {
+          "name": "CodeRabbit",
+          "status": "COMPLETED",
+          "conclusion": "SKIPPED",
+          "url": "https://coderabbit.ai?utm_source=cr_app&utm_medium=github"
+        }
+      ]
+    },
+    {
+      "number": 39,
+      "title": "V128–V155 — Planètes : générateur, biomes PBR, relief, pentes et traversée jouable",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/39",
+      "headBranch": "feat/planet-v128-region-material-kits-20261030",
+      "headCommit": "f54dd68ce1a8708409d0075f0dcc7a76f2be647b",
+      "baseBranch": "feat/planet-v124-modular-region-masks",
+      "parentPr": 33,
+      "draft": false,
+      "mergeableOnCurrentBase": "MERGEABLE",
+      "githubMergeState": "UNSTABLE",
+      "reviewDecision": null,
+      "checks": [
+        {
+          "name": "domain",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41253623698/job/124692078895"
+        },
+        {
+          "name": "V124 live PNG and ZIP verification",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41253623698/job/124692573169"
+        },
+        {
+          "name": "Vercel",
+          "status": "FAILURE",
+          "conclusion": "FAILURE",
+          "url": "https://vercel.com/darknigthmares-projects?upgradeToPro=build-rate-limit"
+        },
+        {
+          "name": "CodeRabbit",
+          "status": "COMPLETED",
+          "conclusion": "SKIPPED",
+          "url": "https://coderabbit.ai?utm_source=cr_app&utm_medium=github"
+        }
+      ]
+    },
+    {
+      "number": 40,
+      "title": "V129 — 24 missions RTS W3 : 72 objectifs physiques, escortes et preuves de réussite",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/40",
+      "headBranch": "feat/v129-w3-rts24-source-objectives",
+      "headCommit": "769e1fe16e0e141b39d12d0fafab6a5341a60f8f",
+      "baseBranch": "feat/v128-clan-source-map-runtime",
+      "parentPr": 38,
+      "draft": true,
+      "mergeableOnCurrentBase": "MERGEABLE",
+      "githubMergeState": "UNSTABLE",
+      "reviewDecision": null,
+      "checks": [
+        {
+          "name": "24 true W3 source RTS objectives, 72 staged tasks, no teleport/reward",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41122522810/job/124292184065"
+        },
+        {
+          "name": "24 true W3 source RTS objectives, 72 staged tasks, no teleport/reward",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41122516222/job/124292156079"
+        },
+        {
+          "name": "Vercel",
+          "status": "FAILURE",
+          "conclusion": "FAILURE",
+          "url": "https://vercel.com/darknigthmares-projects?upgradeToPro=build-rate-limit"
+        },
+        {
+          "name": "CodeRabbit",
+          "status": "COMPLETED",
+          "conclusion": "SKIPPED",
+          "url": "https://coderabbit.ai?utm_source=cr_app&utm_medium=github"
+        }
+      ]
+    },
+    {
+      "number": 41,
+      "title": "V130 — Excel de production guerre des clans par game mode et QA fidélité 1:1",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/41",
+      "headBranch": "feat/v130-clan-war-production-excel-qa-20261030",
+      "headCommit": "c63e74d018533f8fa2d596d9203b1b9c93438698",
+      "baseBranch": "feat/v129-w3-rts24-source-objectives",
+      "parentPr": 40,
+      "draft": true,
+      "mergeableOnCurrentBase": "MERGEABLE",
+      "githubMergeState": "UNSTABLE",
+      "reviewDecision": null,
+      "checks": [
+        {
+          "name": "production-ledger",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41137161936/job/124342345686"
+        },
+        {
+          "name": "production-ledger",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41137153518/job/124342318294"
+        },
+        {
+          "name": "Vercel",
+          "status": "FAILURE",
+          "conclusion": "FAILURE",
+          "url": "https://vercel.com/darknigthmares-projects/yautja-la-longue-chasse/HkPxaMhvw6B5cX2NgoKiv1EQnX7x"
+        },
+        {
+          "name": "CodeRabbit",
+          "status": "COMPLETED",
+          "conclusion": "SKIPPED",
+          "url": "https://coderabbit.ai?utm_source=cr_app&utm_medium=github"
+        },
+        {
+          "name": "Vercel Preview Comments",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://vercel.com/github"
+        }
+      ]
+    },
+    {
+      "number": 42,
+      "title": "V131–V148 [draft] — 54 gauntlets, 30 planètes, 4 modes, garde-fous multionglets et Excel",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/42",
+      "headBranch": "feat/v131-gauntlet-hologram-dual-view-20261030",
+      "headCommit": "c722c4e67cdb064b2d607eb6eabbd98f769227c4",
+      "baseBranch": "feat/v129-w3-rts24-source-objectives",
+      "parentPr": 40,
+      "draft": true,
+      "mergeableOnCurrentBase": "MERGEABLE",
+      "githubMergeState": "UNSTABLE",
+      "reviewDecision": null,
+      "checks": [
+        {
+          "name": "Single live atlas, preference fallback and projector typecheck",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41255258205/job/124696955550"
+        },
+        {
+          "name": "Single live atlas, preference fallback and projector typecheck",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41255254450/job/124696944830"
+        },
+        {
+          "name": "Full repository typecheck and production frontend build",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41255258229/job/124696955647"
+        },
+        {
+          "name": "Full repository typecheck and production frontend build",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41255254364/job/124696944453"
+        },
+        {
+          "name": "Two real V115 panels, stale destructive reset blocked, safe reload",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41255254355/job/124696944516"
+        },
+        {
+          "name": "Vercel",
+          "status": "FAILURE",
+          "conclusion": "FAILURE",
+          "url": "https://vercel.com/darknigthmares-projects?upgradeToPro=build-rate-limit"
+        },
+        {
+          "name": "CodeRabbit",
+          "status": "COMPLETED",
+          "conclusion": "SKIPPED",
+          "url": "https://coderabbit.ai?utm_source=cr_app&utm_medium=github"
+        }
+      ]
+    },
+    {
+      "number": 43,
+      "title": "V133–V134 — RTS W3 multi-escouades, ordres synchronisés, escortes et Excel de production",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/43",
+      "headBranch": "feat/v133-w3-multi-squad-rts-20261031",
+      "headCommit": "d91363c465f7fc3aaa0dfd270bdce84921efcb3d",
+      "baseBranch": "feat/v130-clan-war-production-excel-qa-20261030",
+      "parentPr": 41,
+      "draft": true,
+      "mergeableOnCurrentBase": "MERGEABLE",
+      "githubMergeState": "UNSTABLE",
+      "reviewDecision": null,
+      "checks": [
+        {
+          "name": "tactical-source-pilot",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41180024892/job/124475356646"
+        },
+        {
+          "name": "tactical-source-pilot",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41180022142/job/124475347507"
+        },
+        {
+          "name": "Vercel",
+          "status": "FAILURE",
+          "conclusion": "FAILURE",
+          "url": "https://vercel.com/darknigthmares-projects/yautja-la-longue-chasse/2FSmRDX7jE22GZxB9dRxzvazisB2"
+        },
+        {
+          "name": "CodeRabbit",
+          "status": "COMPLETED",
+          "conclusion": "SKIPPED",
+          "url": "https://coderabbit.ai?utm_source=cr_app&utm_medium=github"
+        },
+        {
+          "name": "Vercel Preview Comments",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://vercel.com/github"
+        }
+      ]
+    },
+    {
+      "number": 44,
+      "title": "V135 — Guerres de clans : assaut, Outer Ops, infiltration et RTS développés en parallèle",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/44",
+      "headBranch": "feat/v135-clan-war-four-mode-parallel-20261031",
+      "headCommit": "1e5c835cfc72774a1c0a9c76684fffbd650144e5",
+      "baseBranch": "feat/v133-w3-multi-squad-rts-20261031",
+      "parentPr": 43,
+      "draft": true,
+      "mergeableOnCurrentBase": "MERGEABLE",
+      "githubMergeState": "UNSTABLE",
+      "reviewDecision": null,
+      "checks": [
+        {
+          "name": "Assault · Outer Ops · Stealth · RTS (single V6 contract)",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41181580839/job/124479902919"
+        },
+        {
+          "name": "Assault · Outer Ops · Stealth · RTS (single V6 contract)",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41181576993/job/124479891726"
+        },
+        {
+          "name": "Vercel",
+          "status": "FAILURE",
+          "conclusion": "FAILURE",
+          "url": "https://vercel.com/darknigthmares-projects?upgradeToPro=build-rate-limit"
+        },
+        {
+          "name": "CodeRabbit",
+          "status": "COMPLETED",
+          "conclusion": "SKIPPED",
+          "url": "https://coderabbit.ai?utm_source=cr_app&utm_medium=github"
+        }
+      ]
+    },
+    {
+      "number": 45,
+      "title": "V136 — 4 modes avancés : défense d’assaut, ravitaillement Outer Ops, couvert d’infiltration et veille RTS",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/45",
+      "headBranch": "feat/v136-clan-war-four-mode-depth-20261031",
+      "headCommit": "91e0f5bf2033c2e9123d34fbe4498c5565ecd6c7",
+      "baseBranch": "feat/v135-clan-war-four-mode-parallel-20261031",
+      "parentPr": 44,
+      "draft": true,
+      "mergeableOnCurrentBase": "MERGEABLE",
+      "githubMergeState": "UNSTABLE",
+      "reviewDecision": null,
+      "checks": [
+        {
+          "name": "Assault · Outer Ops · Stealth · RTS (single V6 contract)",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41188758462/job/124500992488"
+        },
+        {
+          "name": "Assault · Outer Ops · Stealth · RTS (single V6 contract)",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41188756095/job/124500985350"
+        },
+        {
+          "name": "Vercel",
+          "status": "FAILURE",
+          "conclusion": "FAILURE",
+          "url": "https://vercel.com/darknigthmares-projects?upgradeToPro=build-rate-limit"
+        },
+        {
+          "name": "CodeRabbit",
+          "status": "COMPLETED",
+          "conclusion": "SKIPPED",
+          "url": "https://coderabbit.ai?utm_source=cr_app&utm_medium=github"
+        }
+      ]
+    },
+    {
+      "number": 46,
+      "title": "V137 — Guerres des clans : quatre game modes poursuivis, 31 onglets Excel et QA source",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/46",
+      "headBranch": "feat/v137-clan-war-four-modes-20261031",
+      "headCommit": "504a4d63850802583bcdb68222f67c9536f2c7c7",
+      "baseBranch": "feat/v136-clan-war-four-mode-depth-20261031",
+      "parentPr": 45,
+      "draft": true,
+      "mergeableOnCurrentBase": "MERGEABLE",
+      "githubMergeState": "CLEAN",
+      "reviewDecision": null,
+      "checks": [
+        {
+          "name": "Assault · Outer Ops · Stealth · RTS (single V6 contract)",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41190666566/job/124506628962"
+        },
+        {
+          "name": "Assault · Outer Ops · Stealth · RTS (single V6 contract)",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41190663034/job/124506618802"
+        },
+        {
+          "name": "CodeRabbit",
+          "status": "COMPLETED",
+          "conclusion": "SKIPPED",
+          "url": "https://coderabbit.ai?utm_source=cr_app&utm_medium=github"
+        },
+        {
+          "name": "Vercel",
+          "status": "SUCCESS",
+          "conclusion": "SUCCESS",
+          "url": "https://vercel.com/darknigthmares-projects/yautja-la-longue-chasse/CwpsA3BWYhfunmq1Ehq9CutruDre"
+        },
+        {
+          "name": "Vercel Preview Comments",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://vercel.com/github"
+        }
+      ]
+    },
+    {
+      "number": 47,
+      "title": "V138 — Quatre game modes : percée, bulletins Outer Ops, écoute furtive et secouristes RTS",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/47",
+      "headBranch": "feat/v138-four-modes-tactics-intel-medics-20261031",
+      "headCommit": "fa5bd464b4a39fa8d34975ac02820ef34e513d37",
+      "baseBranch": "feat/v137-clan-war-four-modes-20261031",
+      "parentPr": 46,
+      "draft": true,
+      "mergeableOnCurrentBase": "MERGEABLE",
+      "githubMergeState": "UNSTABLE",
+      "reviewDecision": null,
+      "checks": [
+        {
+          "name": "Assault · Outer Ops · Stealth · RTS (single V6 contract)",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41196243039/job/124522877102"
+        },
+        {
+          "name": "Assault · Outer Ops · Stealth · RTS (single V6 contract)",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41196239541/job/124522866797"
+        },
+        {
+          "name": "Vercel",
+          "status": "FAILURE",
+          "conclusion": "FAILURE",
+          "url": "https://vercel.com/darknigthmares-projects?upgradeToPro=build-rate-limit"
+        },
+        {
+          "name": "CodeRabbit",
+          "status": "COMPLETED",
+          "conclusion": "SKIPPED",
+          "url": "https://coderabbit.ai?utm_source=cr_app&utm_medium=github"
+        }
+      ]
+    },
+    {
+      "number": 48,
+      "title": "V139 — 4 modes en parallèle : replis physiques, Outer Ops figées, sabotage discret et évacuations RTS",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/48",
+      "headBranch": "feat/v139-clan-war-four-modes-20261031",
+      "headCommit": "86bc081601975874d323e67f535bc1668b89ccc0",
+      "baseBranch": "feat/v138-four-modes-tactics-intel-medics-20261031",
+      "parentPr": 47,
+      "draft": true,
+      "mergeableOnCurrentBase": "MERGEABLE",
+      "githubMergeState": "UNSTABLE",
+      "reviewDecision": null,
+      "checks": [
+        {
+          "name": "Assault · Outer Ops · Stealth · RTS (single V6 contract)",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41200170674/job/124534247034"
+        },
+        {
+          "name": "Assault · Outer Ops · Stealth · RTS (single V6 contract)",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41200167253/job/124534237850"
+        },
+        {
+          "name": "Vercel",
+          "status": "FAILURE",
+          "conclusion": "FAILURE",
+          "url": "https://vercel.com/darknigthmares-projects?upgradeToPro=build-rate-limit"
+        },
+        {
+          "name": "CodeRabbit",
+          "status": "COMPLETED",
+          "conclusion": "SKIPPED",
+          "url": "https://coderabbit.ai?utm_source=cr_app&utm_medium=github"
+        }
+      ]
+    },
+    {
+      "number": 49,
+      "title": "V140 — 4 points ouverts du suivi Excel : garnisons PC, incidents Outer Ops, circuits infiltration et trafic RTS",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/49",
+      "headBranch": "feat/v140-clan-war-open-backlog-20261031",
+      "headCommit": "d567d657f0b9e316eb951a50132efc02e64f671f",
+      "baseBranch": "feat/v139-clan-war-four-modes-20261031",
+      "parentPr": 48,
+      "draft": true,
+      "mergeableOnCurrentBase": "MERGEABLE",
+      "githubMergeState": "UNSTABLE",
+      "reviewDecision": null,
+      "checks": [
+        {
+          "name": "Assault · Outer Ops · Stealth · RTS (single V6 contract)",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41204914339/job/124547929409"
+        },
+        {
+          "name": "Assault · Outer Ops · Stealth · RTS (single V6 contract)",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41204910511/job/124547918136"
+        },
+        {
+          "name": "Vercel",
+          "status": "FAILURE",
+          "conclusion": "FAILURE",
+          "url": "https://vercel.com/darknigthmares-projects?upgradeToPro=build-rate-limit"
+        },
+        {
+          "name": "CodeRabbit",
+          "status": "COMPLETED",
+          "conclusion": "SKIPPED",
+          "url": "https://coderabbit.ai?utm_source=cr_app&utm_medium=github"
+        }
+      ]
+    },
+    {
+      "number": 50,
+      "title": "V140 — Guerres de clans : 4 modes cohérents, patrouilles physiques, 108 tests et Excel 52 onglets",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/50",
+      "headBranch": "feat/v140-four-modes-coherent-waves-routes-patrol-hazards-20261031",
+      "headCommit": "0b64a5ffbbd3d58e10fbdfed6d55a9ce4613237d",
+      "baseBranch": "feat/v139-clan-war-four-modes-20261031",
+      "parentPr": 48,
+      "draft": true,
+      "mergeableOnCurrentBase": "MERGEABLE",
+      "githubMergeState": "UNSTABLE",
+      "reviewDecision": null,
+      "checks": [
+        {
+          "name": "Assault · Outer Ops · Stealth · RTS (single V6 contract)",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41210872421/job/124565372922"
+        },
+        {
+          "name": "Assault · Outer Ops · Stealth · RTS (single V6 contract)",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41210868284/job/124565360481"
+        },
+        {
+          "name": "Vercel",
+          "status": "FAILURE",
+          "conclusion": "FAILURE",
+          "url": "https://vercel.com/darknigthmares-projects?upgradeToPro=build-rate-limit"
+        },
+        {
+          "name": "CodeRabbit",
+          "status": "COMPLETED",
+          "conclusion": "SKIPPED",
+          "url": "https://coderabbit.ai?utm_source=cr_app&utm_medium=github"
+        }
+      ]
+    },
+    {
+      "number": 51,
+      "title": "V141 — 4 modes : tirs simultanés, Outer Ops pondérées, leurres 2D, IA RTS et Excel 59 feuilles",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/51",
+      "headBranch": "feat/v141-four-modes-combat-route-decoy-ai-20261031",
+      "headCommit": "fc4de092bd179d4cf0da1a6c203bd2001029702a",
+      "baseBranch": "feat/v140-four-modes-coherent-waves-routes-patrol-hazards-20261031",
+      "parentPr": 50,
+      "draft": true,
+      "mergeableOnCurrentBase": "MERGEABLE",
+      "githubMergeState": "UNSTABLE",
+      "reviewDecision": null,
+      "checks": [
+        {
+          "name": "Assault · Outer Ops · Stealth · RTS (single V6 contract)",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41214644297/job/124576515985"
+        },
+        {
+          "name": "Assault · Outer Ops · Stealth · RTS (single V6 contract)",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41214641156/job/124576506273"
+        },
+        {
+          "name": "Vercel",
+          "status": "FAILURE",
+          "conclusion": "FAILURE",
+          "url": "https://vercel.com/darknigthmares-projects?upgradeToPro=build-rate-limit"
+        },
+        {
+          "name": "CodeRabbit",
+          "status": "COMPLETED",
+          "conclusion": "SKIPPED",
+          "url": "https://coderabbit.ai?utm_source=cr_app&utm_medium=github"
+        }
+      ]
+    },
+    {
+      "number": 52,
+      "title": "V142 — 4 modes : ciblage, itinéraires réels, guidage physique et Excel 66 onglets (132 tests)",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/52",
+      "headBranch": "feat/v142-four-modes-focused-orders-routes-navigation-20261031",
+      "headCommit": "b70a0492566600d2a308ca95c3ee9f83dd6dfdc2",
+      "baseBranch": "feat/v141-four-modes-combat-route-decoy-ai-20261031",
+      "parentPr": 51,
+      "draft": true,
+      "mergeableOnCurrentBase": "MERGEABLE",
+      "githubMergeState": "CLEAN",
+      "reviewDecision": null,
+      "checks": [
+        {
+          "name": "Assault · Outer Ops · Stealth · RTS (single V6 contract)",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41218442712/job/124587786669"
+        },
+        {
+          "name": "Assault · Outer Ops · Stealth · RTS (single V6 contract)",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41218439615/job/124587776984"
+        },
+        {
+          "name": "CodeRabbit",
+          "status": "COMPLETED",
+          "conclusion": "SKIPPED",
+          "url": "https://coderabbit.ai?utm_source=cr_app&utm_medium=github"
+        }
+      ]
+    },
+    {
+      "number": 53,
+      "title": "V143 — 4 modes : assaut défensif, incidents Outer Ops, sprint furtif, marche RTS et Excel 73 onglets (145 tests)",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/53",
+      "headBranch": "feat/v143-clan-war-four-modes-20261031",
+      "headCommit": "37583f63ea5c68554b06868b577b96cadb7bcfd3",
+      "baseBranch": "feat/v142-four-modes-focused-orders-routes-navigation-20261031",
+      "parentPr": 52,
+      "draft": true,
+      "mergeableOnCurrentBase": "MERGEABLE",
+      "githubMergeState": "UNSTABLE",
+      "reviewDecision": null,
+      "checks": [
+        {
+          "name": "Assault · Outer Ops · Stealth · RTS (single V6 contract)",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41226526948/job/124611724845"
+        },
+        {
+          "name": "Assault · Outer Ops · Stealth · RTS (single V6 contract)",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41226522939/job/124611711641"
+        },
+        {
+          "name": "Vercel",
+          "status": "FAILURE",
+          "conclusion": "FAILURE",
+          "url": "https://vercel.com/darknigthmares-projects?upgradeToPro=build-rate-limit"
+        },
+        {
+          "name": "CodeRabbit",
+          "status": "COMPLETED",
+          "conclusion": "SKIPPED",
+          "url": "https://coderabbit.ai?utm_source=cr_app&utm_medium=github"
+        }
+      ]
+    },
+    {
+      "number": 54,
+      "title": "V144 — Bilans source-vérifiés des quatre modes, sécurité V6/V85 et suivi QA Excel",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/54",
+      "headBranch": "feat/v144-clan-war-unified-debrief-20261031",
+      "headCommit": "cadd1242926a3ecfc0c19682f524294ac9641e3c",
+      "baseBranch": "feat/v143-clan-war-four-modes-20261031",
+      "parentPr": 53,
+      "draft": true,
+      "mergeableOnCurrentBase": "MERGEABLE",
+      "githubMergeState": "UNSTABLE",
+      "reviewDecision": null,
+      "checks": [
+        {
+          "name": "Assault · Outer Ops · Stealth · RTS (single V6 contract)",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41248282553/job/124676227414"
+        },
+        {
+          "name": "Assault · Outer Ops · Stealth · RTS (single V6 contract)",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41248278456/job/124676213895"
+        },
+        {
+          "name": "Vercel",
+          "status": "FAILURE",
+          "conclusion": "FAILURE",
+          "url": "https://vercel.com/darknigthmares-projects?upgradeToPro=build-rate-limit"
+        },
+        {
+          "name": "CodeRabbit",
+          "status": "COMPLETED",
+          "conclusion": "SKIPPED",
+          "url": "https://coderabbit.ai?utm_source=cr_app&utm_medium=github"
+        }
+      ]
+    },
+    {
+      "number": 55,
+      "title": "V144 — 4 modes : regroupement, inspections, patrouilles et relève RTS (157 tests + Excel)",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/55",
+      "headBranch": "feat/v144-four-modes-regroup-checkpoint-investigation-relief-20261031",
+      "headCommit": "fa0322800d5c51e16a4dd56ef6d0fc80d8020394",
+      "baseBranch": "feat/v143-clan-war-four-modes-20261031",
+      "parentPr": 53,
+      "draft": true,
+      "mergeableOnCurrentBase": "MERGEABLE",
+      "githubMergeState": "UNSTABLE",
+      "reviewDecision": null,
+      "checks": [
+        {
+          "name": "Assault · Outer Ops · Stealth · RTS (single V6 contract)",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41248460812/job/124676764806"
+        },
+        {
+          "name": "Assault · Outer Ops · Stealth · RTS (single V6 contract)",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41248455602/job/124676750531"
+        },
+        {
+          "name": "Vercel",
+          "status": "FAILURE",
+          "conclusion": "FAILURE",
+          "url": "https://vercel.com/darknigthmares-projects?upgradeToPro=build-rate-limit"
+        },
+        {
+          "name": "CodeRabbit",
+          "status": "COMPLETED",
+          "conclusion": "SKIPPED",
+          "url": "https://coderabbit.ai?utm_source=cr_app&utm_medium=github"
+        }
+      ]
+    },
+    {
+      "number": 56,
+      "title": "V144 — Guerres des clans : 4 modes améliorés, 157 tests verts et Excel QA 8 onglets",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/56",
+      "headBranch": "feat/v144-clan-war-four-mode-progression-20261031",
+      "headCommit": "8452dc217e3b92469c156e54dc1be18280bbe141",
+      "baseBranch": "feat/v143-clan-war-four-modes-20261031",
+      "parentPr": 53,
+      "draft": true,
+      "mergeableOnCurrentBase": "MERGEABLE",
+      "githubMergeState": "UNSTABLE",
+      "reviewDecision": null,
+      "checks": [
+        {
+          "name": "Assault · Outer Ops · Stealth · RTS (single V6 contract)",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41249003232/job/124678366892"
+        },
+        {
+          "name": "Assault · Outer Ops · Stealth · RTS (single V6 contract)",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41248998163/job/124678350420"
+        },
+        {
+          "name": "Vercel",
+          "status": "FAILURE",
+          "conclusion": "FAILURE",
+          "url": "https://vercel.com/darknigthmares-projects?upgradeToPro=build-rate-limit"
+        },
+        {
+          "name": "CodeRabbit",
+          "status": "COMPLETED",
+          "conclusion": "SKIPPED",
+          "url": "https://coderabbit.ai?utm_source=cr_app&utm_medium=github"
+        }
+      ]
+    },
+    {
+      "number": 57,
+      "title": "V144 — Guerres des clans : quatre modes avancés, 157 tests et registre de production",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/57",
+      "headBranch": "feat/v144-clan-war-defense-outer-guards-rts-swap-20261031",
+      "headCommit": "f25cd7a33e04f789e7c6df231ccad9116a50b38c",
+      "baseBranch": "feat/v143-clan-war-four-modes-20261031",
+      "parentPr": 53,
+      "draft": true,
+      "mergeableOnCurrentBase": "MERGEABLE",
+      "githubMergeState": "UNSTABLE",
+      "reviewDecision": null,
+      "checks": [
+        {
+          "name": "Assault · Outer Ops · Stealth · RTS (single V6 contract)",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41248961368/job/124678235816"
+        },
+        {
+          "name": "Assault · Outer Ops · Stealth · RTS (single V6 contract)",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41248957134/job/124678222713"
+        },
+        {
+          "name": "Vercel",
+          "status": "FAILURE",
+          "conclusion": "FAILURE",
+          "url": "https://vercel.com/darknigthmares-projects?upgradeToPro=build-rate-limit"
+        },
+        {
+          "name": "CodeRabbit",
+          "status": "COMPLETED",
+          "conclusion": "SKIPPED",
+          "url": "https://coderabbit.ai?utm_source=cr_app&utm_medium=github"
+        }
+      ]
+    },
+    {
+      "number": 58,
+      "title": "V145 — 4 modes : preuves V115 archivables dans V85 sans conquête, Excel 19 onglets et 174 tests",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/58",
+      "headBranch": "feat/v145-clan-war-proof-ledger-20261101",
+      "headCommit": "a9a8dcebcd05774b73db1e371c04cbd6373c32da",
+      "baseBranch": "feat/v144-clan-war-unified-debrief-20261031",
+      "parentPr": 54,
+      "draft": true,
+      "mergeableOnCurrentBase": "MERGEABLE",
+      "githubMergeState": "UNSTABLE",
+      "reviewDecision": null,
+      "checks": [
+        {
+          "name": "Assault · Outer Ops · Stealth · RTS (single V6 contract)",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41253877574/job/124692820339"
+        },
+        {
+          "name": "Assault · Outer Ops · Stealth · RTS (single V6 contract)",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41253873847/job/124692808649"
+        },
+        {
+          "name": "Vercel",
+          "status": "FAILURE",
+          "conclusion": "FAILURE",
+          "url": "https://vercel.com/darknigthmares-projects?upgradeToPro=build-rate-limit"
+        },
+        {
+          "name": "CodeRabbit",
+          "status": "COMPLETED",
+          "conclusion": "SKIPPED",
+          "url": "https://coderabbit.ai?utm_source=cr_app&utm_medium=github"
+        }
+      ]
+    },
+    {
+      "number": 59,
+      "title": "V145 — 4 modes progressent, 171 tests verts et Excel de production 16 onglets",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/59",
+      "headBranch": "feat/v145-four-mode-physical-protection-20261101",
+      "headCommit": "985e036b5e4a3ef00077c515e102e9230b2b7bb4",
+      "baseBranch": "feat/v144-clan-war-four-mode-progression-20261031",
+      "parentPr": 56,
+      "draft": true,
+      "mergeableOnCurrentBase": "MERGEABLE",
+      "githubMergeState": "UNSTABLE",
+      "reviewDecision": null,
+      "checks": [
+        {
+          "name": "Assault · Outer Ops · Stealth · RTS (single V6 contract)",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41253748478/job/124692447061"
+        },
+        {
+          "name": "Assault · Outer Ops · Stealth · RTS (single V6 contract)",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41253744001/job/124692433917"
+        },
+        {
+          "name": "Vercel",
+          "status": "FAILURE",
+          "conclusion": "FAILURE",
+          "url": "https://vercel.com/darknigthmares-projects?upgradeToPro=build-rate-limit"
+        },
+        {
+          "name": "CodeRabbit",
+          "status": "COMPLETED",
+          "conclusion": "SKIPPED",
+          "url": "https://coderabbit.ai?utm_source=cr_app&utm_medium=github"
+        }
+      ]
+    },
+    {
+      "number": 60,
+      "title": "V146 — 4 modes : provenance W3-K/CON-T, rosters non appariés, 26 onglets Excel et QA",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/60",
+      "headBranch": "feat/v146-clan-war-provenance-audit-20261101",
+      "headCommit": "9e595ef585412f75958d22174ebacf50d188d2d8",
+      "baseBranch": "feat/v145-clan-war-proof-ledger-20261101",
+      "parentPr": 58,
+      "draft": true,
+      "mergeableOnCurrentBase": "MERGEABLE",
+      "githubMergeState": "UNSTABLE",
+      "reviewDecision": null,
+      "checks": [
+        {
+          "name": "Assault · Outer Ops · Stealth · RTS (single V6 contract)",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41255387278/job/124697348820"
+        },
+        {
+          "name": "Assault · Outer Ops · Stealth · RTS (single V6 contract)",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41255384178/job/124697339086"
+        },
+        {
+          "name": "Vercel",
+          "status": "FAILURE",
+          "conclusion": "FAILURE",
+          "url": "https://vercel.com/darknigthmares-projects?upgradeToPro=build-rate-limit"
+        },
+        {
+          "name": "CodeRabbit",
+          "status": "COMPLETED",
+          "conclusion": "SKIPPED",
+          "url": "https://coderabbit.ai?utm_source=cr_app&utm_medium=github"
+        }
+      ]
+    },
+    {
+      "number": 61,
+      "title": "V146 — Conseil des clans : 4 modes, dossiers source vérifiables et Excel 24 onglets (184 tests)",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/61",
+      "headBranch": "feat/v146-clan-war-evidence-20261101",
+      "headCommit": "dfa21d9d6a65d484e61792b201185fd5ea98f288",
+      "baseBranch": "feat/v145-four-mode-physical-protection-20261101",
+      "parentPr": 59,
+      "draft": true,
+      "mergeableOnCurrentBase": "MERGEABLE",
+      "githubMergeState": "UNSTABLE",
+      "reviewDecision": null,
+      "checks": [
+        {
+          "name": "Assault · Outer Ops · Stealth · RTS (single V6 contract)",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41255622429/job/124698047686"
+        },
+        {
+          "name": "Assault · Outer Ops · Stealth · RTS (single V6 contract)",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41255618363/job/124698036397"
+        },
+        {
+          "name": "Vercel",
+          "status": "FAILURE",
+          "conclusion": "FAILURE",
+          "url": "https://vercel.com/darknigthmares-projects?upgradeToPro=build-rate-limit"
+        },
+        {
+          "name": "CodeRabbit",
+          "status": "COMPLETED",
+          "conclusion": "SKIPPED",
+          "url": "https://coderabbit.ai?utm_source=cr_app&utm_medium=github"
+        }
+      ]
+    },
+    {
+      "number": 62,
+      "title": "Chasse V112 : clôturer les qualifications ouvertes du classeur",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/62",
+      "headBranch": "codex/v112-close-open-qualifications",
+      "headCommit": "c7a179ef2fa34bda7d0dfd8e99f63e7d39e6c6c9",
+      "baseBranch": "main",
+      "parentPr": null,
+      "draft": true,
+      "mergeableOnCurrentBase": "MERGEABLE",
+      "githubMergeState": "UNSTABLE",
+      "reviewDecision": null,
+      "checks": [
+        {
+          "name": "Native rules, browser paths and reproducible workbook",
+          "status": "IN_PROGRESS",
+          "conclusion": null,
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41256919335/job/124701955060"
+        },
+        {
+          "name": "gameplay-cloud",
+          "status": "IN_PROGRESS",
+          "conclusion": null,
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41256919231/job/124701985731"
+        },
+        {
+          "name": "ship-training",
+          "status": "IN_PROGRESS",
+          "conclusion": null,
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41256919253/job/124702191173"
+        },
+        {
+          "name": "persistence",
+          "status": "IN_PROGRESS",
+          "conclusion": null,
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41256919275/job/124701955283"
+        },
+        {
+          "name": "V113 PNG integrity, registration and cosmetic surfaces",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41256919456/job/124701934052"
+        },
+        {
+          "name": "Targeted V94 regressions (not full game QA)",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41256919178/job/124701945327"
+        },
+        {
+          "name": "Application compile, types, runtime lint and browser integration",
+          "status": "IN_PROGRESS",
+          "conclusion": null,
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41256919178/job/124701945504"
+        },
+        {
+          "name": "Vercel",
+          "status": "FAILURE",
+          "conclusion": "FAILURE",
+          "url": "https://vercel.com/darknigthmares-projects?upgradeToPro=build-rate-limit"
+        },
+        {
+          "name": "CodeRabbit",
+          "status": "COMPLETED",
+          "conclusion": "SKIPPED",
+          "url": "https://coderabbit.ai?utm_source=cr_app&utm_medium=github"
+        }
+      ]
+    },
+    {
+      "number": 63,
+      "title": "Corriger le type des scénarios RTS source",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/63",
+      "headBranch": "codex/fix-rts-scenario-type-20261101",
+      "headCommit": "8225a05181b166db80fbf8bbb61cb229db83b9a7",
+      "baseBranch": "feat/v115-clan-mission-formats-20261030",
+      "parentPr": 29,
+      "draft": true,
+      "mergeableOnCurrentBase": "MERGEABLE",
+      "githubMergeState": "UNSTABLE",
+      "reviewDecision": null,
+      "checks": [
+        {
+          "name": "Vercel",
+          "status": "PENDING",
+          "conclusion": "PENDING",
+          "url": "https://vercel.com/darknigthmares-projects/yautja-la-longue-chasse/ErinwvGGP6Fr782f3kuR6KUCEczm"
+        },
+        {
+          "name": "CodeRabbit",
+          "status": "COMPLETED",
+          "conclusion": "SKIPPED",
+          "url": "https://coderabbit.ai?utm_source=cr_app&utm_medium=github"
+        },
+        {
+          "name": "Vercel Preview Comments",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://vercel.com/github"
+        }
+      ]
+    }
+  ]
+}

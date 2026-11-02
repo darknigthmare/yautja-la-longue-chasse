@@ -1,0 +1,26 @@
+DIAGNOSTIC BROWSER log: DIAGNOSTIC WORKER URL http://127.0.0.1:44327/homeworldRouteWorkerV112.ts
+DIAGNOSTIC BROWSER log: DIAGNOSTIC WORKER ERROR {}
+FAIL Actual module Worker returns a cargo-aware route and the atlas draws confirmed independent lot polygons: locator.waitFor: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('[data-homeworld-route-guide-v109="walking"]') to be visible[22m
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected
+
++ [
++   {
++     status: 404,
++     url: 'http://127.0.0.1:44327/homeworldRouteWorkerV112.ts'
++   }
++ ]
+- []
+
+    at file:///tmp/pr27-review-r5/scripts/qa-atlas-diagnostic-only-r5.mjs:70:234 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: [Array],
+  expected: [],
+  operator: 'deepStrictEqual',
+  diff: 'simple'
+}
+Report: /tmp/pr27-review-r5-atlas-diagnostic/run-UCCEBt/result.json

@@ -1,0 +1,79 @@
+{
+  "phase": "PREFLIGHT_BEFORE_HOMEWORLD_PUBLICATION",
+  "runtimeCommit": "bda14a95aa8c9e6cf37039e2d67ea1544a8e8de1",
+  "primary": {
+    "path": "docs/YAUTJA_V112_SUIVI.xlsx",
+    "bytes": 9383908,
+    "sha256": "b29aa412000717cdfd81be1a60e2c2f9d8489c0b8b2ed5d29404668d04dd1d02"
+  },
+  "baseline": {
+    "path": "docs/YAUTJA_V111_SUIVI.xlsx",
+    "bytes": 8150642,
+    "sha256": "fa5ebf78a08c36b4a567246dfae41de535a8e36c7294ba33190e3e1e2ec9ad05"
+  },
+  "primaryWorksheets": 122,
+  "historicalWorksheetPartsByteIdentical": 113,
+  "sourceRegistry": {
+    "path": "docs/v112-homeworld-source.json",
+    "bytes": 74763,
+    "sha256": "dcbb756254bb6e2781c2970b34a7b0154c7f5ed5d44254d93a973254020826b9"
+  },
+  "staleDirectProofs": [
+    {
+      "expected": {
+        "path": "docs/v112-pit-validation.json",
+        "sha256": "6f357c742ee396fc94add6210116e163620df358e3cb3d18909fc38564710872",
+        "bytes": 931415
+      },
+      "actual": {
+        "path": "docs/v112-pit-validation.json",
+        "bytes": 1230898,
+        "sha256": "42bfd97315d3ebbc9f1a2416fd996fa204f62b4680871e2482c1893f4509ef60"
+      }
+    },
+    {
+      "expected": {
+        "path": "docs/qa/v112-spatial/audit.json",
+        "sha256": "228baa46b79e25e17a15a647941d2eb381bb08455679588319db509003b7c74d",
+        "bytes": 27632
+      },
+      "actual": {
+        "path": "docs/qa/v112-spatial/audit.json",
+        "bytes": 94335,
+        "sha256": "05f7503173375a599b71df60ebcba2548c60e06659b7cd5867d7c325a7a03aaa"
+      }
+    },
+    {
+      "expected": {
+        "path": "docs/v112-runtime-freeze.json",
+        "sha256": "988097f754c3cc8fa825190b6644e21926c0515557cbad72912bb003f7e44df6",
+        "bytes": 291082
+      },
+      "actual": {
+        "path": "docs/v112-runtime-freeze.json",
+        "bytes": 306338,
+        "sha256": "c35f8b454ec26d1b05852cabbe4f6ee111d71e7413aef80282582d3ca5ee6a3e"
+      }
+    },
+    {
+      "expected": {
+        "path": "docs/qa/v112-pit/entry.json",
+        "sha256": "6db9a5638967c997bfacf8a33a61af590014c5fc45a8e8c01ca7efba5c900ad4",
+        "bytes": 8701
+      },
+      "actual": {
+        "path": "docs/qa/v112-pit/entry.json",
+        "bytes": 8702,
+        "sha256": "2bfe9f5e752b2a4cee6391b304c49a577e73d3c14133ee8892bfb8b64ca10552"
+      }
+    }
+  ],
+  "globalSourceCompletion": false,
+  "closedSourceIds": [],
+  "sourceRequirementCount": 56,
+  "includedActionCount": 9,
+  "separateArtTargetCount": 354,
+  "limits": [
+    "Read-only preflight only; no new workbook generation and no Homeworld current certificate claimed."
+  ]
+}

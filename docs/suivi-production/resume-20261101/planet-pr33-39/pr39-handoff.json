@@ -1,0 +1,28 @@
+{
+  "readyForCoordinatorCommit": true,
+  "baseHeadSha": "f54dd68ce1a8708409d0075f0dcc7a76f2be647b",
+  "realSparseTypesPass": true,
+  "targetedTestsPass": 20,
+  "targetedTestsFail": 0,
+  "targetedLintErrors": 0,
+  "targetedLintWarnings": 0,
+  "candidateFilesCopiedAfterAllChecks": [
+    {
+      "path": "app/game/systems/clanWarPlanetTopologyAdvisorV139.ts",
+      "bytes": 2807,
+      "sha256": "e5e44b954aefe8a4385b725a608cd523c7445dc600fdab02c2fd971d9ad39af7"
+    },
+    {
+      "path": "app/game/PlanetReliefV150.tsx",
+      "bytes": 16490,
+      "sha256": "8baa830f7181ccbf076609c69195bf1d8112e745460dd6a8dd0b71e6c6de6e67"
+    },
+    {
+      "path": ".github/workflows/planet-v114.yml",
+      "bytes": 10778,
+      "sha256": "066fa31de23b535871bf8ab77820f3e78f977b1ab86be47d0102c874bdd813db"
+    }
+  ],
+  "workflowCopiedAfterSparseTypeValidation": true,
+  "gitMutationPerformedByReviewer": false
+}

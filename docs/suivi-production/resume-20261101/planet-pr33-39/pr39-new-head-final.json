@@ -1,0 +1,242 @@
+{
+  "observedAtUtc": "2026-11-01T01:19:45Z",
+  "headSha": "04d9d4dd306cc4e27d4c44c6a1eca01be9328b26",
+  "currentRun": {
+    "conclusion": "success",
+    "created_at": "2026-11-01T01:01:16Z",
+    "event": "pull_request",
+    "head_branch": "feat/planet-v128-region-material-kits-20261030",
+    "head_sha": "04d9d4dd306cc4e27d4c44c6a1eca01be9328b26",
+    "html_url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41259282388",
+    "id": 41259282388,
+    "name": "Planet V114 focused regressions",
+    "status": "completed",
+    "updated_at": "2026-11-01T01:19:01Z"
+  },
+  "jobs": {
+    "jobs": [
+      {
+        "completed_at": "2026-11-01T01:09:46Z",
+        "conclusion": "success",
+        "head_sha": "04d9d4dd306cc4e27d4c44c6a1eca01be9328b26",
+        "id": 124708978902,
+        "labels": [
+          "ubuntu-latest"
+        ],
+        "name": "domain",
+        "runner_name": "GitHub Actions 1000020064",
+        "started_at": "2026-11-01T01:07:30Z",
+        "status": "completed",
+        "steps": [
+          {
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Checkout only game source and focused tests",
+            "number": 2,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Node 22",
+            "number": 3,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Install exact dependencies",
+            "number": 4,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Run planet V114 and historical generator domain tests",
+            "number": 5,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Lint new planet modules",
+            "number": 6,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Post Node 22",
+            "number": 11,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Post Checkout only game source and focused tests",
+            "number": 12,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 13,
+            "status": "completed"
+          }
+        ]
+      },
+      {
+        "completed_at": "2026-11-01T01:14:15Z",
+        "conclusion": "success",
+        "head_sha": "04d9d4dd306cc4e27d4c44c6a1eca01be9328b26",
+        "id": 124708979085,
+        "labels": [
+          "ubuntu-latest"
+        ],
+        "name": "Full application TypeScript (planet PR)",
+        "runner_name": "GitHub Actions 1000020101",
+        "started_at": "2026-11-01T01:12:56Z",
+        "status": "completed",
+        "steps": [
+          {
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Checkout real application, configuration and manifests for full types",
+            "number": 2,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Node 22",
+            "number": 3,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Install exact locked dependencies without lifecycle scripts",
+            "number": 4,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Generate Next route and environment types",
+            "number": 5,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Check the complete application TypeScript",
+            "number": 6,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Post Node 22",
+            "number": 11,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Post Checkout real application, configuration and manifests for full types",
+            "number": 12,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 13,
+            "status": "completed"
+          }
+        ]
+      },
+      {
+        "completed_at": "2026-11-01T01:19:01Z",
+        "conclusion": "success",
+        "head_sha": "04d9d4dd306cc4e27d4c44c6a1eca01be9328b26",
+        "id": 124711789740,
+        "labels": [
+          "ubuntu-latest"
+        ],
+        "name": "V124 live PNG and ZIP verification",
+        "runner_name": "GitHub Actions 1000020110",
+        "started_at": "2026-11-01T01:14:23Z",
+        "status": "completed",
+        "steps": [
+          {
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Checkout actual game route and planetary textures",
+            "number": 2,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Node 22",
+            "number": 3,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Install exact dependencies",
+            "number": 4,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Verify live modular PNG pixels and ZIP in Chromium",
+            "number": 5,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Upload V124 browser PNG, ZIP, screenshots and report",
+            "number": 6,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Post Node 22",
+            "number": 11,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Post Checkout actual game route and planetary textures",
+            "number": 12,
+            "status": "completed"
+          },
+          {
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 13,
+            "status": "completed"
+          }
+        ]
+      }
+    ],
+    "total_count": 3
+  },
+  "finalRemoteHead": {
+    "baseBranch": "main",
+    "baseSha": "c5fc51dc42d8e04a4a8f0ca79273c44e4921f7e1",
+    "draft": false,
+    "headBranch": "feat/planet-v128-region-material-kits-20261030",
+    "headSha": "04d9d4dd306cc4e27d4c44c6a1eca01be9328b26",
+    "html_url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/39",
+    "number": 39,
+    "state": "open",
+    "updated_at": "2026-11-01T01:07:22Z"
+  },
+  "final": true,
+  "oldRunsReusedAsNewProof": false,
+  "scope": "Specialized planetary workflow on the pushed type fix: domain, full application TypeScript and Chromium export/region/environment/traversal recipes. No full-game or artistic certification is inferred."
+}

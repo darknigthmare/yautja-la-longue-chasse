@@ -1,0 +1,298 @@
+{
+  "observedAtUtc": "2026-11-01T01:28:53.921418+00:00",
+  "pullRequest": 27,
+  "headCommit": "9ad29df77e8a11ca36bf1b37f6b4c6f08db3d05d",
+  "scope": "Only workflow runs whose head_sha equals the reconciled PR27 commit; no earlier run is included.",
+  "runs": [
+    {
+      "id": 41260050557,
+      "name": "V113 native PHG-inspired materials and renderer wiring",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41260050557"
+    },
+    {
+      "id": 41260050554,
+      "name": "V139 PHG visual/geometry Excel parity gate",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41260050554"
+    },
+    {
+      "id": 41260050499,
+      "name": "V123 PHG YouTube and selected-screenshot evidence integrity",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41260050499"
+    },
+    {
+      "id": 41260050431,
+      "name": "V122 Planet V103 / V115 compatibility",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41260050431"
+    },
+    {
+      "id": 41260050485,
+      "name": "V114 Yautja PHG material integrity and channel contract",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41260050485"
+    },
+    {
+      "id": 41260050569,
+      "name": "V94 regression tests",
+      "status": "in_progress",
+      "conclusion": null,
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41260050569"
+    },
+    {
+      "id": 41260050482,
+      "name": "V138 PHG production Excel fidelity gate",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41260050482"
+    },
+    {
+      "id": 41260050501,
+      "name": "V94 campaign routes and bounded cloud transport",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41260050501"
+    },
+    {
+      "id": 41260050434,
+      "name": "V94 ship training persistence",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41260050434"
+    },
+    {
+      "id": 41260050462,
+      "name": "Planet V114 focused regressions",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41260050462"
+    },
+    {
+      "id": 41260050520,
+      "name": "V94 transactional exercises and trophy confirmation",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41260050520"
+    }
+  ],
+  "applicationJob": {
+    "id": 124711325508,
+    "status": "in_progress",
+    "conclusion": null,
+    "steps": [
+      {
+        "number": 1,
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "number": 2,
+        "name": "Checkout application source and real manifests without multi-gigabyte artwork",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "number": 3,
+        "name": "Node 22",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "number": 4,
+        "name": "Install exact locked dependencies without lifecycle scripts",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "number": 5,
+        "name": "Generate Next route and environment types",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "number": 6,
+        "name": "Check application TypeScript",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "number": 7,
+        "name": "Exercise current V112 hunting mechanics and invariants",
+        "status": "completed",
+        "conclusion": "failure"
+      },
+      {
+        "number": 8,
+        "name": "Verify deterministic V112 workbook and discovery resources",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "number": 9,
+        "name": "Exercise actual V112 controls, workshop, corpse rites and canopy in Chromium",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "number": 10,
+        "name": "Upload bounded V112 browser report and inspected-capture candidates",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "number": 11,
+        "name": "Verify V111 hunt compatibility guards and reproducible hunting workbook",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "number": 12,
+        "name": "Verify V6.14 native images, cumulative history and unchanged sprite defaults",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "number": 13,
+        "name": "Verify V6.15 infants, all 144 native PNGs and all 17 prior workbooks",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "number": 14,
+        "name": "Compile Next application source (not full release packaging)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "number": 15,
+        "name": "Smoke the compiled Next HTTP server and protected QA routes",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "number": 16,
+        "name": "Lint changed game runtime",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "number": 17,
+        "name": "Verify gamedev archive, asset, import and route regressions",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "number": 18,
+        "name": "Exercise current Homeworld route Worker and stale snapshots in Chromium",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "number": 19,
+        "name": "Preserve current Homeworld route Worker report",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "number": 20,
+        "name": "Exercise current Homeworld Atlas Worker cancellation in Chromium",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "number": 21,
+        "name": "Preserve current Homeworld Atlas Worker report",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "number": 22,
+        "name": "Exercise input resilience, fixed-step edges and original V74 metadata",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "number": 23,
+        "name": "Verify combat structural barriers and boss whiffs",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "number": 24,
+        "name": "Validate imported V6 dialogue archive references",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "number": 25,
+        "name": "Exercise menu control unit regressions",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "number": 26,
+        "name": "Exercise disabled controls with the real menu gamepad hook",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "number": 27,
+        "name": "Exercise historical persistence regressions (not the entire test suite)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "number": 28,
+        "name": "Exercise portable chroma processing and complete biome fixtures",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "number": 29,
+        "name": "Exercise native storage and cross-tab locks (seeded campaigns)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "number": 30,
+        "name": "Exercise React image lifecycle and native PNG decoding (1x1 fixtures)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "number": 31,
+        "name": "Exercise scene image deadlines and refresh with the native decoder",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "number": 32,
+        "name": "Exercise actual Mausoleum React component (placeholder art, emulated pad)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "number": 33,
+        "name": "Validate complete Yautja palette maps after extended customization",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "number": 34,
+        "name": "Exercise free clan-war durability, lifecycle and planetary atlas regressions",
+        "status": "in_progress",
+        "conclusion": null
+      }
+    ]
+  },
+  "globalQualification": "NOT_QUALIFIED_APPLICATION_V112_GROUP_HAS_FAILED",
+  "sourceScope": "Local41-test/types/lint evidence and the single reproduced guard rejection remain separate from remote whole-workflow outcomes."
+}

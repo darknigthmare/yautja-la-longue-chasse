@@ -1,0 +1,48 @@
+{
+  "commit": "9be8a3858e51990b033e854875005cae833309d5",
+  "sparsePatterns": 340,
+  "checks": [
+    {
+      "command": [
+        "node",
+        "scripts/build-homeworld-followup-v112.mjs",
+        "--check"
+      ],
+      "exitCode": 0,
+      "seconds": 4.929,
+      "log": "/tmp/homeworld-final-cold-validation-fixed-20261102/01.log"
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/build-resume-workbook-20261101.py",
+        "--check"
+      ],
+      "exitCode": 0,
+      "seconds": 0.396,
+      "log": "/tmp/homeworld-final-cold-validation-fixed-20261102/02.log"
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/verify-resume-workbook-20261101.py"
+      ],
+      "exitCode": 0,
+      "seconds": 0.38,
+      "log": "/tmp/homeworld-final-cold-validation-fixed-20261102/03.log"
+    },
+    {
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "--test",
+        "--test-concurrency=1",
+        "tests/homeworld-excel-followup-v112.test.mjs",
+        "tests/homeworld-excel-history-v112.test.mjs"
+      ],
+      "exitCode": 0,
+      "seconds": 39.453,
+      "log": "/tmp/homeworld-final-cold-validation-fixed-20261102/04.log"
+    }
+  ]
+}

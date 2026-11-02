@@ -51,10 +51,10 @@ async function ensureCommit(repository){
  const parents=[...git(repository,['cat-file','-p',HOMEWORLD_PUBLICATION_COMMIT_V112]).toString('utf8').matchAll(/^parent ([a-f0-9]{40})$/gm)].map(match=>match[1]);
  assert.deepEqual(parents,[HOMEWORLD_RUNTIME_COMMIT_V112],'Publication must retain its original compiled-runtime parent');
 }
-async function publishedMetadata(repository){
+async function publishedMetadata(repository,{pinned=false}={}){
  const result={};
  for(const row of METADATA){
-  const bytes=await fs.readFile(path.join(repository,row.path));
+  const bytes=pinned?git(repository,['show',HOMEWORLD_PUBLICATION_COMMIT_V112+':'+row.path]):await fs.readFile(path.join(repository,row.path));
   assert.equal(gitBlobHashV112(bytes),row.gitBlobSha,'Published V112 metadata changed: '+row.path);
   result[row.path]=JSON.parse(bytes);
  }
@@ -102,9 +102,10 @@ async function privateGit(repository,root){
 }
 export async function prepareHistoricalHomeworldPublicationV112(repository=ROOT){
  await ensureCommit(repository);
- const metadata=await publishedMetadata(repository);
+ const metadata=await publishedMetadata(repository,{pinned:true});
  const snapshot=metadata['docs/v112-homeworld-followup.json'],freeze=metadata['docs/v112-runtime-freeze.json'];
  const rows=inputUnion(snapshot,freeze);
+ const currentDocuments=await Promise.all([...METADATA,{path:WORKBOOK.path}].map(async row=>({path:row.path,sha256:sha(await fs.readFile(path.join(repository,row.path)))})));
  const root=await fs.mkdtemp(path.join(os.tmpdir(),'yautja-homeworld-publication-v112-'));
  try{
   for(const directory of ['app','scripts','tests','desktop','db','drizzle','build','worker']){
@@ -116,8 +117,20 @@ export async function prepareHistoricalHomeworldPublicationV112(repository=ROOT)
   }
   // Publication assets and documentary evidence are shared only as read inputs.
   // The original generator writes its test products into private temporary dirs.
-  for(const directory of ['art-source','docs','.openai','node_modules']){
+  for(const directory of ['art-source','.openai','node_modules']){
    await fs.symlink(path.join(repository,directory),path.join(root,directory),'dir');
+  }
+  // Later Homeworld publications own their current documents. The original
+  // commands must read private, byte-exact historical metadata and workbook,
+  // rather than requiring a newer publication to restore old document bytes.
+  const historicalDocuments=new Set([...METADATA.map(row=>row.path),WORKBOOK.path,
+   ...rows.filter(row=>row.path.startsWith('docs/')).map(row=>row.path),
+   'docs/v112-homeworld-validation.json','docs/v112-pit-validation.json','docs/v111-homeworld-validation.json']);
+  // A capsule only exposes documents in its original inventory. Every ancestor
+  // and file is private; no historical write can follow a current docs link.
+  for(const relative of historicalDocuments){
+   const target=path.join(root,relative);await fs.mkdir(path.dirname(target),{recursive:true});
+   await fs.writeFile(target,git(repository,['show',HOMEWORLD_PUBLICATION_COMMIT_V112+':'+relative]),{mode:0o444});
   }
   // Only the historical public inventory is visible to the old native-bank
   // walker: newer V112 hunting signals must not enter its former art manifest.
@@ -148,7 +161,7 @@ export async function prepareHistoricalHomeworldPublicationV112(repository=ROOT)
   assert.equal(originalTest.length,HOMEWORLD_PUBLICATION_TEST_V112.bytes);
   assert.equal(sha(originalTest),HOMEWORLD_PUBLICATION_TEST_V112.sha256);
   const gitContext=await privateGit(repository,root);
-  const context={root,repository,rows,freeze,restoredSources,gitContext,
+  const context={root,repository,rows,freeze,restoredSources,gitContext,currentDocuments,
    dispose:()=>fs.rm(root,{recursive:true,force:true})};
   await verifyHistoricalHomeworldPublicationV112(context);
   return context;
@@ -169,6 +182,7 @@ export async function verifyHistoricalHomeworldPublicationV112(context){
  assert.equal(sha(workbook),WORKBOOK.sha256,'Published V112 workbook SHA256 changed');
  const testBytes=await fs.readFile(path.join(context.root,HOMEWORLD_PUBLICATION_TEST_V112.path));
  assert.equal(gitBlobHashV112(testBytes),HOMEWORLD_PUBLICATION_TEST_V112.gitBlobSha,'Original V112 publication assertions changed');
+ for(const row of context.currentDocuments)assert.equal(sha(await fs.readFile(path.join(context.repository,row.path))),row.sha256,'Current publication document changed during historical verification: '+row.path);
  return {sourceCommit:HOMEWORLD_PUBLICATION_COMMIT_V112,gitTree:HOMEWORLD_PUBLICATION_TREE_V112,
   frozenInputs:context.freeze.files,publicationInputs:context.rows.length,currentRuntimeCovered:false};
 }

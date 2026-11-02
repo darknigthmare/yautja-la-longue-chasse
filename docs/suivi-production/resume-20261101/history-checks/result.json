@@ -1,0 +1,108 @@
+{
+  "scope": "Historical private sources only; current runtime not certified.",
+  "results": [
+    {
+      "script": "check-homeworld-history-v112.mjs",
+      "command": "node scripts/check-homeworld-history-v112.mjs --check --tests",
+      "exitCode": 0,
+      "elapsedSeconds": 284.06,
+      "log": "docs/suivi-production/resume-20261101/history-checks/check-homeworld-history-v112.log",
+      "bytes": 20814,
+      "sha256": "0f06f75ee36c8a8af4f0933c89b0dc292ff72b8b5bc8424f8bc3490ce4db18c2",
+      "reportedResult": {
+        "result": "PASS_HISTORICAL_HOMEWORLD_V111",
+        "sourceCommit": "a5a951e3f6dbb3fa399bd38f774a1f0b6ec58f5e",
+        "sha256": "fa5ebf78a08c36b4a567246dfae41de535a8e36c7294ba33190e3e1e2ec9ad05",
+        "bytes": 8150642,
+        "frozenInputsVerified": 1433,
+        "restoredSources": 54,
+        "originalTestFiles": 11,
+        "originalTestsExecuted": true,
+        "currentRuntimeCovered": false
+      }
+    },
+    {
+      "script": "check-excel-history-homeworld-v112.mjs",
+      "command": "node scripts/check-excel-history-homeworld-v112.mjs --check --tests",
+      "exitCode": 0,
+      "elapsedSeconds": 169.981,
+      "log": "docs/suivi-production/resume-20261101/history-checks/check-excel-history-homeworld-v112.log",
+      "bytes": 37568,
+      "sha256": "50a9de17f8e8201606416b508195b43eb8950d004aecd856272c49f18607b5f7",
+      "reportedResult": {
+        "result": "PASS_HISTORICAL_REGENERATION",
+        "sourceCommit": "def899ad07fea582053c5c204e4e578d8e0d7f9b",
+        "sourcesVerified": 3201,
+        "sharedVerified": 1219,
+        "evidenceCopiesVerified": 45,
+        "currentRuntimeCovered": false,
+        "privateGitObjectsVerified": 1608,
+        "gitTreeVerified": true,
+        "originalTestsExecuted": true,
+        "originalTestFiles": 17,
+        "originalAssertions": 132,
+        "originalGroups": [
+          {
+            "release": "V111",
+            "files": [
+              "tests/excel-history-preservation-v111.test.mjs",
+              "tests/field-tool-purchase-ui-v111.test.mjs",
+              "tests/field-tools-rites-v111.test.mjs",
+              "tests/homeworld-archive-continuation-v111.test.mjs",
+              "tests/homeworld-archivist-motion-v111.test.mjs",
+              "tests/homeworld-arrival-recovery-integration-v111.test.mjs",
+              "tests/homeworld-arrival-recovery-v111.test.mjs",
+              "tests/homeworld-art-inventory-v111.test.mjs",
+              "tests/homeworld-continuation-integration-v111.test.mjs",
+              "tests/homeworld-continuation-journal-v111.test.mjs",
+              "tests/homeworld-evidence-v111.test.mjs",
+              "tests/homeworld-excel-followup-v111.test.mjs",
+              "tests/homeworld-excel-history-v111.test.mjs",
+              "tests/homeworld-objectives-v111.test.mjs",
+              "tests/hunt-harvest-runtime-v111.test.mjs",
+              "tests/trophy-harvest-v111.test.mjs"
+            ],
+            "assertions": 125
+          },
+          {
+            "release": "V90-ECOTONES",
+            "files": [
+              "tests/homeworld-ecotones-v90.test.mjs"
+            ],
+            "assertions": 7
+          }
+        ],
+        "release": "V111",
+        "sha256": "fa5ebf78a08c36b4a567246dfae41de535a8e36c7294ba33190e3e1e2ec9ad05",
+        "bytes": 8150642,
+        "inputFingerprintsVerified": 1509
+      }
+    },
+    {
+      "script": "check-excel-history-compat-v112.mjs",
+      "command": "node scripts/check-excel-history-compat-v112.mjs --check --tests",
+      "exitCode": 0,
+      "elapsedSeconds": 65.212,
+      "log": "docs/suivi-production/resume-20261101/history-checks/check-excel-history-compat-v112.log",
+      "bytes": 16877,
+      "sha256": "4d4ecfe5c8f92850154c55c25baab53344bcee2993f996c8c8eb655f537688da",
+      "reportedResult": {
+        "result": "PASS_HISTORICAL_REGENERATION",
+        "release": "V110",
+        "sourceCommit": "dff1f6734284891b5a24238f890070616a8325cc",
+        "frozenInputsVerified": 1386,
+        "originalTestFiles": 8,
+        "originalTestsExecuted": true,
+        "sha256": "0b7d7890c8d235a9cda0f6d61c62001efe150f2c4022924c20d88196afcdbd7c",
+        "bytes": 6260095,
+        "currentRuntimeCovered": false,
+        "sourceBaseCommit": "def899ad07fea582053c5c204e4e578d8e0d7f9b",
+        "originalCheckerUnmodified": true
+      }
+    }
+  ],
+  "status": "PASS_ALL_THREE_HISTORICAL_CHECKS",
+  "checkerCapsuleWorkbookFingerprintsUnchanged": 11,
+  "nodeVersion": "v22.23.4",
+  "limit": "The 68 Homeworld assertions overlap the 132-assertion suite; do not sum as distinct game behaviors. None of these checks qualifies the current compiled application."
+}

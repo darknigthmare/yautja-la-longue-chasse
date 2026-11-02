@@ -1,0 +1,55 @@
+{
+  "baseCommit": "0bf37a88401f840e3902f9566b3a805e258ce533",
+  "scope": "Six-file correction proposal, no native asset changes; complete mixed V112 certificate qualifications remain outstanding.",
+  "files": [
+    {
+      "path": "app/game/PlanetGeneratorV103.tsx",
+      "beforeBytes": 39277,
+      "beforeSha256": "2994f52eb4cec95cbf048fe04a136629602b853e73943f17aa3ccdc0060989ae",
+      "afterBytes": 39175,
+      "afterSha256": "b577c11f826a0cac9005c44bb23e21f448f3c7ecaa7914bce459f433991d027d"
+    },
+    {
+      "path": "app/game/systems/clanWarPlanetGeneratorV115.ts",
+      "beforeBytes": 10104,
+      "beforeSha256": "3da7cd73b960d9634dbde3222cd4d3ddf8b32b862ccfec1c15656cfe7880c019",
+      "afterBytes": 10438,
+      "afterSha256": "840636091bb1d025a38f7db42ed87dcc3cf3621e49bdd271b0740ae884d12c7d"
+    },
+    {
+      "path": "app/game/systems/clanWarTextureLibraryV115.ts",
+      "beforeBytes": 8580,
+      "beforeSha256": "7bbae7b765d75f8c5bcd91836b64ef98600f8286ac11f41e54e72e7735d0ab0f",
+      "afterBytes": 8521,
+      "afterSha256": "72c86a1d87fb417db563f420df888192edf85d1fbbee6a98da4277191a1e3e6e"
+    },
+    {
+      "path": "scripts/qa-homeworld-atlas-browser-v109.mjs",
+      "beforeBytes": 17407,
+      "beforeSha256": "18355cc757501f6a2b5560b8334c38786ab597eb6800589adc8621ca3a39da86",
+      "afterBytes": 18307,
+      "afterSha256": "8d4518072bc69c88696f572b3df8d924c88c45bb0e104322bdd979d5123a69a3"
+    },
+    {
+      "path": "tests/hunter-palette-filters-v114.test.mjs",
+      "beforeBytes": 2924,
+      "beforeSha256": "e68820b6bd8ac6b205f4170fd6ec32f2ad9a0b0be58529b246d4f0c2628f5000",
+      "afterBytes": 4947,
+      "afterSha256": "f84338755d6dd8a4e54f67262f0fcb6acc52c546c172e621cc7941fc17839861"
+    },
+    {
+      "path": "tests/planet-v115-v103-compatibility-v122.test.mjs",
+      "beforeBytes": 1572,
+      "beforeSha256": "7c9c2d93dd53833bdcfc6d92c264e9dcc71bd2fafe5f220f080b05ccb2203c56",
+      "afterBytes": 1913,
+      "afterSha256": "eb22117cf5b12bdd9c94adf38768390b7d44035c2591aa72643a2f09b52ea026"
+    }
+  ],
+  "compatibilityAssertions": {
+    "path": "tests/planet-v115-v103-compatibility-v122.test.mjs",
+    "testBodyUnchanged": true,
+    "beforeSha256": "f089cecc651fb61df5c5d0b4685d8071e749f466106674080b8a870cd22a9fa4",
+    "afterSha256": "f089cecc651fb61df5c5d0b4685d8071e749f466106674080b8a870cd22a9fa4",
+    "loader": "Existing tests/helpers/homeworld-scene-ssr-v78.mjs, source module load only; no SSR render or CSS imports."
+  }
+}

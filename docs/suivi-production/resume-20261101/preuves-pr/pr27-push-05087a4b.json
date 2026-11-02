@@ -1,0 +1,54 @@
+{
+  "observedAtUtc": "2026-11-01T00:59:08.824615+00:00",
+  "pullRequest": 27,
+  "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/27",
+  "state": "OPEN",
+  "draft": false,
+  "branch": "feat/v113-chromatic-hunter-phg-20261030",
+  "baseBranch": "main",
+  "previousCommit": "0bf37a88401f840e3902f9566b3a805e258ce533",
+  "pushedCommit": "05087a4bc1673a1df10ebb4435e800824883a0df",
+  "restHeadMatches": true,
+  "lsRemoteHeadMatches": true,
+  "verifiedFastForward": true,
+  "committedPatchMatchesTestedSixFiles": true,
+  "changedFiles": [
+    "app/game/PlanetGeneratorV103.tsx",
+    "app/game/systems/clanWarPlanetGeneratorV115.ts",
+    "app/game/systems/clanWarTextureLibraryV115.ts",
+    "scripts/qa-homeworld-atlas-browser-v109.mjs",
+    "tests/hunter-palette-filters-v114.test.mjs",
+    "tests/planet-v115-v103-compatibility-v122.test.mjs"
+  ],
+  "localQualifiedScope": {
+    "targetedModelTestsPassed": 24,
+    "atlasFixtureChecksPassed": 15,
+    "atlasCapturesOpened": 2,
+    "fullCiLintArchiveInputs": 272,
+    "lintErrors": 0,
+    "lintWarnings": 0,
+    "allLintInputsByteEqualToDedicatedWorktree": true,
+    "compiledProductionOrFullMixedV112Qualified": false
+  },
+  "initialNewHeadChecks": {
+    "productActionsRegistered": 0,
+    "CodeRabbit": "SKIPPED",
+    "Vercel": "FAILURE_BUILD_RATE_LIMIT"
+  },
+  "historicalChecksExcluded": "Run41255961460 belongs to the preceding head and cannot qualify or fail the new05087a4b head.",
+  "subsequentObservation": {
+    "observedAtUtc": "2026-11-01T01:01:33.499774+00:00",
+    "mainCommit": "81fc1916fc285ca85d3c434737bc35b1e5f2fb7f",
+    "productWorkflowRunsAtPushedCommit": 0,
+    "mergeable": false,
+    "mergeState": "DIRTY",
+    "mergeBase": "f1856f6670fd959ed012c38f84e6d90d6f86a361",
+    "textConflictBlocks": 4,
+    "conflictingPaths": [
+      "app/game/PlanetGeneratorV103.tsx",
+      "app/game/systems/clanWarDeploymentV103.ts",
+      "app/game/systems/clanWarPlanetStrategyV114.ts"
+    ],
+    "interpretation": "The previously merged PR31 and PR27 contain competing versions of the same compatibility fix. Reconcile these three files before treating the absence of a new pull_request workflow as a queue delay."
+  }
+}

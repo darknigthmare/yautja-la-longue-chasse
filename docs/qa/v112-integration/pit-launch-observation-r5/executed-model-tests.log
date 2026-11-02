@@ -1,0 +1,17 @@
+✔ one actual held edge reaches real TH_B startup after non-progressing clock calls, then releases once (4.20402ms)
+✔ ignored input is refused by the effective-frame bound without a second press, with release and raw observations retained (1.784116ms)
+✔ a blocked simulation is refused by absence of progression and always releases the one input edge (0.399091ms)
+✔ the independent poll bound refuses a permanently stalled clock even when the stall allowance is larger (0.27874ms)
+✔ an actual normal attack cannot masquerade as the requested backward startup (0.50511ms)
+✔ a real TH_B startup on the other slot is refused immediately (0.290487ms)
+✔ a positive simulation frame that actually moves backward is rejected with its raw sample retained (0.432141ms)
+✔ reversed frames, skipped startup, unready state and changed health remain explicit failures (1.105334ms)
+✔ partially failed press still releases, and a failed release cannot be published as successful input observation (0.623269ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 383.950611

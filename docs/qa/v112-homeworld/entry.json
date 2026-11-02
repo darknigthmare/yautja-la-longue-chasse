@@ -1,44 +1,44 @@
 {
   "domain": "Homeworld",
   "status": "PASS_CIBLE",
-  "buildId": "WZwxZDYUZhpepqlaPWKpe",
-  "runtimeCommit": "aa891dfff9bc022d1b7363d4b7085aca19b4d1e3",
+  "buildId": "wVuSG_xIKNn3geLlIq7Cb",
+  "runtimeCommit": "bda14a95aa8c9e6cf37039e2d67ea1544a8e8de1",
   "driver": "scripts/qa-homeworld-public-spaces-v112.mjs",
   "command": "node scripts/qa-homeworld-public-spaces-v112.mjs",
   "sourceFreeze": {
     "path": "docs/v112-runtime-freeze.json",
-    "sha256": "988097f754c3cc8fa825190b6644e21926c0515557cbad72912bb003f7e44df6",
-    "bytes": 291082
+    "sha256": "c35f8b454ec26d1b05852cabbe4f6ee111d71e7413aef80282582d3ca5ee6a3e",
+    "bytes": 306338
   },
   "report": {
     "path": "docs/v112-homeworld-validation.json",
-    "sha256": "b9a0ba49b28dd042813861c2909cb913cd9eb2049c38979f819aeee6ebf8323e",
-    "bytes": 712807
+    "sha256": "431198b2e6bda28085f2758a66c1c84344712009e6f97b5c23a078eba0326124",
+    "bytes": 744079
   },
-  "browserChecksPassed": 248,
+  "browserChecksPassed": 249,
   "capturesInspected": 39,
   "portableFiles": [
     {
       "path": "docs/qa/v112-homeworld/browser-result.json.gz",
-      "sha256": "1c28d46115b5d939d19f0bc79e76284685cd3fbc397d14b1aa083cbec44a0706",
-      "bytes": 182484,
-      "decodedSha256": "d8287b6d24a17c5d24310370a02db4828f7ab2d14347a050c572fa9b0e57c5d9",
-      "decodedBytes": 844355
+      "sha256": "79734d5de6b7ab42ef28c15b7cef048e3df8f3ac383dbc2ed1bc98fe3eb9d250",
+      "bytes": 192166,
+      "decodedSha256": "b24790d84fb0cd0eb9c9699f2d819911b6c7902aa822bc091db1452c9f3d1080",
+      "decodedBytes": 882416
     },
     {
       "path": "docs/qa/v112-homeworld/foundation-trophy-mausoleum-supported-facade.png",
-      "sha256": "0ff8fcd9f0afaeaa44851d64e8d94a56fc308ec8b08e7ce5b5859b8de3122e82",
-      "bytes": 1838045
+      "sha256": "38ee458f4e4d6f9ddda52fd5b92447eff06e82a228d893674dd6d0db18b886ec",
+      "bytes": 1838035
     },
     {
       "path": "docs/qa/v112-homeworld/foundation-residence-forges-1-supported-facade.png",
-      "sha256": "e94903ab9da1f07aeac71a28c4c866dcde3d8d69162fd90663af746546b126d6",
-      "bytes": 2220336
+      "sha256": "d5bf0770266c648797dacbf7cbafd3b2490fedf3eaed6e8acca9644d702617fe",
+      "bytes": 2220448
     },
     {
       "path": "docs/qa/v112-homeworld/foundation-residence-esplanade-2-supported-facade.png",
-      "sha256": "b05dfca92dacf044d70b3dfa765ce3ed339b697b44ef9ceb9b2498b12f670f93",
-      "bytes": 2076808
+      "sha256": "183ffd8ceaf14a86dad8382d2eda76d4e42957201ec3e9e2e7f193c405fdd0a7",
+      "bytes": 2076803
     },
     {
       "path": "docs/qa/v112-homeworld/foundation-residence-clans-1-supported-facade.png",
@@ -47,18 +47,18 @@
     },
     {
       "path": "docs/qa/v112-homeworld/foundation-residence-arenas-1-supported-facade.png",
-      "sha256": "914ed1aeda5956e12867ac568f69e2824d83ea1489cb5c33586f78468b9fc3c1",
-      "bytes": 2196805
+      "sha256": "605b3cccb703c052d0abfcf7aeec0bceefaa0f9e80b869ba626ff9e56ca3cc73",
+      "bytes": 2196802
     },
     {
       "path": "docs/qa/v112-homeworld/foundation-residence-terraces-3-supported-facade.png",
-      "sha256": "a5151fa15c53b775507f1f63e871bf1025eec2927553073b57cfc975fc8e1814",
-      "bytes": 2058829
+      "sha256": "54a2fb889486b0483c3749313f92fb2ca78c74ac6eab0979c4bee7f8fd57fd54",
+      "bytes": 2058874
     },
     {
       "path": "docs/qa/v112-homeworld/natural-face-causeway-unmodified-connected-rock-faces.png",
-      "sha256": "7c8e8fd781995d6c147d5159ea53e76bd92ea578f47261a230737ea482de75bf",
-      "bytes": 1615057
+      "sha256": "0a62d1abb47b4ba1d1fd100e7d891e40aa971179679118032afd8fcc87e83aa4",
+      "bytes": 1616092
     },
     {
       "path": "docs/qa/v112-homeworld/place-traveler-marker-native-contact-and-clearance.png",
@@ -67,23 +67,23 @@
     },
     {
       "path": "docs/qa/v112-homeworld/place-delegation-planter-native-contact-and-clearance.png",
-      "sha256": "baf7830ccbaa60fe42717b5374a22260a1f41d08d1f89dd48de5799b7094576f",
-      "bytes": 1701188
+      "sha256": "5109c4fbcce2eb66f44cf790f30000e453e3a08a3b949e801f31146e457b682f",
+      "bytes": 1699863
     },
     {
       "path": "docs/qa/v112-homeworld/place-register-marker-native-contact-and-clearance.png",
-      "sha256": "110ecfbfc878fbc6dd25288fe52ef6f5dbb49d4fb636745a9934b02bfdfdd9b1",
-      "bytes": 1650117
+      "sha256": "67144aa3fcb8a49208d60792c9bffae68046e29c59208418ca13d4da0e68594f",
+      "bytes": 1648400
     },
     {
       "path": "docs/qa/v112-homeworld/place-arrival-marker-native-contact-and-clearance.png",
-      "sha256": "f7c7b985cd500d7b7facfe09e47fa9c9fa7f31f6b25f9cb6c29496650a90f568",
-      "bytes": 1782779
+      "sha256": "496891f1917cf677dc172e225cf2c79da9c0d6d842d5702fc60341668bfeaeda",
+      "bytes": 1786382
     },
     {
       "path": "docs/qa/v112-homeworld/place-arrival-planter-native-contact-and-clearance.png",
-      "sha256": "d95571a644baadfb2d077a34da0a2ae647f88cc92dbbf4d5df57bfa767ba7d77",
-      "bytes": 1767766
+      "sha256": "1ae672842ad81aca4720995ed45e2e7ccf6a98205dcd99c5776737891a26be59",
+      "bytes": 1772390
     },
     {
       "path": "docs/qa/v112-homeworld/place-maintenance-console-native-contact-and-clearance.png",
@@ -97,38 +97,38 @@
     },
     {
       "path": "docs/qa/v112-homeworld/life-causeway-maintenance-native-grounded.png",
-      "sha256": "f1a6bf54471fb733c81d3adf303a0a2f12d1575ca33264112b6d98cda2ca0682",
-      "bytes": 1561454
+      "sha256": "12dea64d15c9bd542cd1bc97897cf88c794eab9f9747e9e7b0490ec179f29189",
+      "bytes": 1559065
     },
     {
       "path": "docs/qa/v112-homeworld/life-causeway-relay-native-grounded.png",
-      "sha256": "48e2fb54af841f8590c35ceccd96b4dc84d4b5ea9c1b7ecdf35794fb87f8afe6",
-      "bytes": 1592728
+      "sha256": "5f1aadb833dc7ede507e64faec46dfd82c4cb8531a227f793fa64a4feb855a93",
+      "bytes": 1596197
     },
     {
       "path": "docs/qa/v112-homeworld/life-quay-approach-native-grounded.png",
-      "sha256": "f322fdc3d808a0c4bc4c601322c1b00b4861d43a324b802b1e05ed344f4e0378",
-      "bytes": 1913843
+      "sha256": "cb964824aff05125b9b1d81c885e312d015904c166513c41c146b14e0c7dc6c9",
+      "bytes": 1891927
     },
     {
       "path": "docs/qa/v112-homeworld/life-rampart-watch-native-grounded.png",
-      "sha256": "196a3da7980647902681ddcd8c080263430888527faedc8ab40e027e20b041d6",
-      "bytes": 1628719
+      "sha256": "d9652dadda398197d60105a647a7bc3790108fee4efa6c931be7c899d1c335f6",
+      "bytes": 1633173
     },
     {
       "path": "docs/qa/v112-homeworld/life-marsh-watch-native-grounded.png",
-      "sha256": "5ca77d03b669b17427cf99dc8aec0fda1215dec24a30ec88766a4ca00143beea",
-      "bytes": 1825788
+      "sha256": "bd452d17f50e3e6f31a6d5036b30dd1759e0f39c31d6859bd5adaa2d9dd4446b",
+      "bytes": 1838367
     },
     {
       "path": "docs/qa/v112-homeworld/life-reserve-viaduct-native-grounded.png",
-      "sha256": "9f04be3c3d4dde0f65249468dc3ef3172df8344bc1c651bc2d4d8f403363572b",
-      "bytes": 1943508
+      "sha256": "b11210197d86bbd0ac58b8be031a80a60cd548a039351887599697e06ff6ad96",
+      "bytes": 1924772
     },
     {
       "path": "docs/qa/v112-homeworld/mobility-officer-desktop-actual-service-dialog.png",
-      "sha256": "8d0e693bfb61a27245b02fff8510d1f9922d6654a4108d57e0714e9166bfe2d0",
-      "bytes": 396669
+      "sha256": "d890549798269da8c17bbf0cf2d96a0126778c1c1e1e120edef17636b83702f3",
+      "bytes": 396653
     },
     {
       "path": "docs/qa/v112-homeworld/mobility-mausoleum-desktop-actual-service-dialog.png",
@@ -137,17 +137,17 @@
     },
     {
       "path": "docs/qa/v112-homeworld/mobility-archive-arrival-actual-archive-post.png",
-      "sha256": "485b6bf75253d26503d5980cfb7673df2c03cb16b01b6d637b9e0458ae3a121f",
-      "bytes": 416619
+      "sha256": "830fc001ae73fbd633d4017b9e52734c5cd9f63dc68f71b245b2e06327bb4967",
+      "bytes": 416560
     },
     {
       "path": "docs/qa/v112-homeworld/mobility-officer-mobile-actual-service-dialog.png",
-      "sha256": "f53c3d1a70e1575355cf32a59ff8194e29f172c14c64021ed85ab8c135e25ed3",
-      "bytes": 188789
+      "sha256": "784e3267a0307da6ffba889e9495f32312a8ea60b28932f7d77c719a623c723f",
+      "bytes": 189085
     },
     {
       "path": "docs/qa/v112-homeworld/upgrade-checkpoint-explicit-migration-preview.png",
-      "sha256": "a785d01eb8632ed08fffc073036d2b47e5e448f967782d36b7a9c182d5720af2",
+      "sha256": "8517d332492d42bbcbfcc1cef7ba17f6c99b7a8215a6e728cb44c707eac3ae8a",
       "bytes": 1342561
     },
     {
@@ -162,22 +162,22 @@
     },
     {
       "path": "docs/qa/v112-homeworld/upgrade-remote-last-explicit-migration-preview.png",
-      "sha256": "90dd9577fe663f16cc655696e02b018c8d994653925f1992080388c115b9fcb9",
-      "bytes": 1076003
+      "sha256": "cc4dd7c693a10fd9a20d5cb58161d6edcbf1b62d55c09aa529bb55d7a9f06416",
+      "bytes": 1076314
     },
     {
       "path": "docs/qa/v112-homeworld/upgrade-remote-last-accepted-local-migration.png",
-      "sha256": "dee86b236c08f17f0abf7bf4a48ab34e1b012f540dea73f319221a81dc66014d",
-      "bytes": 1305828
+      "sha256": "b949e67eee6aa6dd40cd1f5ab90d8a96b6228999ceb857027f94b44de2a1e553",
+      "bytes": 1305899
     },
     {
       "path": "docs/qa/v112-homeworld/upgrade-remote-last-voluntary-study-reprise.png",
-      "sha256": "51313ce175a3244e8db39f10050d7ef5b970f4fb16b59eef98aa8212e7bc906b",
-      "bytes": 1049339
+      "sha256": "5cb8e89e2151c0f3d35aeb5cad003e5c74d9b59d51b91d677f28408b3c68680a",
+      "bytes": 1053158
     },
     {
       "path": "docs/qa/v112-homeworld/upgrade-ground-piece-explicit-migration-preview.png",
-      "sha256": "fc5921d95cfce78899dc809a951f1d5796b5371290b6cc3240c1d6d919d25304",
+      "sha256": "4d9b4f0276238b48525e15719a4f498ba5286c83c4f58cc68a15b41c3694afe8",
       "bytes": 1036813
     },
     {

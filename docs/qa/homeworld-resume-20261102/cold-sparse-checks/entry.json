@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "observedCommit": "9be8a3858e51990b033e854875005cae833309d5",
+  "cloneType": "Real network partial clone, shallow Git, exact detached HEAD",
+  "sparsePatterns": 340,
+  "node": "22.23.4",
+  "dependencies": "node_modules symlink to locked shared installation; no new npm ci in this replica",
+  "runtimeCommit": "bda14a95aa8c9e6cf37039e2d67ea1544a8e8de1",
+  "runtimeChanged": false,
+  "results": {
+    "sourceAudit": "PASS",
+    "nativeArtReproduction": "PASS",
+    "publicInputs": "PASS",
+    "runtimeFreeze1649": "PASS",
+    "primaryWorkbookReproduction": "PASS",
+    "coordinationReproduction": "PASS",
+    "coordinationCellsAndLinks": "4437 cells / 484 links PASS",
+    "followupAndHistory": "13 PASS",
+    "v90HistoricalWrapper": "1 PASS (14 top-level checks with previous line)",
+    "stage17BeforeCorrection": "55 PASS and one file failed during compilation; explicit React test double does not export useEffect imported by three newly mounted visual children",
+    "stage17CorrectedFile": "13 cases PASS in the original real JSX import-race test; three render-only children explicitly stubbed and global button label synchronized. All cases and assertions retained.",
+    "stage17OtherFiles": "The seven other files passed 55 checks before this isolated correction and are unchanged."
+  },
+  "correction": "Sparse proof paths corrected. The V103 controlled React harness now excludes three newly mounted visual children already outside its announced scope, and uses the current global button label. No synthetic useEffect implementation and no product source change.",
+  "limits": [
+    "No new build or complete gameplay replay in this check.",
+    "Proof logs remain exact, including the initial failures.",
+    "The original 375 model tests were not unnecessarily repeated locally. GitHub step7 subsequently passed on this same head.",
+    "Partial clone already held earlier known Git objects; no assertion of an empty object database."
+  ],
+  "files": [
+    {
+      "path": "docs/qa/homeworld-resume-20261102/cold-sparse-checks/initial-01.log",
+      "bytes": 450,
+      "sha256": "31e58777f34c0e12c2858a84f9439c94b9a70b527bba0135e434a415faca2d0d"
+    },
+    {
+      "path": "docs/qa/homeworld-resume-20261102/cold-sparse-checks/initial-02.log",
+      "bytes": 118,
+      "sha256": "1c79b29b58b18d4f6c40a98fcf68b4a4458a82fc13e2ec09f00084d1740c283b"
+    },
+    {
+      "path": "docs/qa/homeworld-resume-20261102/cold-sparse-checks/initial-03.log",
+      "bytes": 78,
+      "sha256": "a03cf36c38161e53ba51d0fafb540f887afca37bec67be263dcfd5b83e57adb7"
+    },
+    {
+      "path": "docs/qa/homeworld-resume-20261102/cold-sparse-checks/initial-04.log",
+      "bytes": 148,
+      "sha256": "927e0cc43aa9ab8d0604f1411c6938ad9ebceb6ec8df7cfc3a30143a476c3850"
+    },
+    {
+      "path": "docs/qa/homeworld-resume-20261102/cold-sparse-checks/initial-05.log",
+      "bytes": 997,
+      "sha256": "4cffd812f32a9c47497b86a738b5ec485b1f223fbb6398b3e4667909d634c6c2"
+    },
+    {
+      "path": "docs/qa/homeworld-resume-20261102/cold-sparse-checks/initial-result.json",
+      "bytes": 1315,
+      "sha256": "7e591a251f602f4b0606afdd62c038d2b2e8b092b7149f3a771b2566e74e349b"
+    },
+    {
+      "path": "docs/qa/homeworld-resume-20261102/cold-sparse-checks/corrected-01.log",
+      "bytes": 579,
+      "sha256": "66474b52c6106efaeaaf31325c110cb27049d1512df715e465c9ea0bf9d3a192"
+    },
+    {
+      "path": "docs/qa/homeworld-resume-20261102/cold-sparse-checks/corrected-02.log",
+      "bytes": 440,
+      "sha256": "bd9ec6b4f7a5c1a8da8707c0a27bf58af15d2a32f39e62d00e4a837ea16593e0"
+    },
+    {
+      "path": "docs/qa/homeworld-resume-20261102/cold-sparse-checks/corrected-03.log",
+      "bytes": 416,
+      "sha256": "8c581d1bece37ff9f42eb9641685c4b0b213e06dad794cb67388599488d6be63"
+    },
+    {
+      "path": "docs/qa/homeworld-resume-20261102/cold-sparse-checks/corrected-04.log",
+      "bytes": 3823,
+      "sha256": "32503833bf3cdb0d599d1e43aaf12a34ca9e5271a7f9bb3c4c73f41560e510c3"
+    },
+    {
+      "path": "docs/qa/homeworld-resume-20261102/cold-sparse-checks/corrected-05-v90-wrapper.log",
+      "bytes": 2770,
+      "sha256": "ae263cf9af5fbeb7c0db79ce2944268a28013ab838eb47b71877f6930fca8053"
+    },
+    {
+      "path": "docs/qa/homeworld-resume-20261102/cold-sparse-checks/corrected-06-stage17.log",
+      "bytes": 7834,
+      "sha256": "c5b345d7e8c026ba491d4ca33f42c50dbb4ccd4e31ce0d5ac801af733a11e92e"
+    },
+    {
+      "path": "docs/qa/homeworld-resume-20261102/cold-sparse-checks/corrected-result.json",
+      "bytes": 1205,
+      "sha256": "69146ddc89808adab9b488baad20c39f380dcada172230be01a875998e8a8711"
+    },
+    {
+      "path": "docs/qa/homeworld-resume-20261102/cold-sparse-checks/planet-import-race-v103-corrected.tap",
+      "bytes": 3084,
+      "sha256": "a707a0a5a553cb818a80605ff27a516ce66fd4fa0adce5a0f92b83a3397760dc"
+    }
+  ]
+}

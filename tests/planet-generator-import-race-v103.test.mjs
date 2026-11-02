@@ -55,7 +55,7 @@ const compiled = await build({
         contents: args.path === "react" ? hooks : `export const Fragment = 'fragment'; export function jsx(type, props) { return { type, props }; } export const jsxs = jsx;`,
         loader: "js",
       }));
-      build.onResolve({ filter: /^\.\/(ClanWarAtlasV95|PlanetMaterialCanvasV101|PlanetLayerExportV102)$/ }, args => ({ path: args.path, namespace: "render-only-child" }));
+      build.onResolve({ filter: /^\.\/(ClanWarAtlasV95|PlanetMaterialCanvasV101|PlanetLayerExportV102|PlanetEarthReferenceV147|PlanetEnvironmentalDossierV146|PlanetReliefV150)$/ }, args => ({ path: args.path, namespace: "render-only-child" }));
       build.onLoad({ filter: /.*/, namespace: "render-only-child" }, () => ({ contents: "export default function RenderOnlyChild() { return null; }", loader: "js" }));
       build.onLoad({ filter: /\.module\.css$/ }, () => ({ contents: "export default {};", loader: "js" }));
     },
