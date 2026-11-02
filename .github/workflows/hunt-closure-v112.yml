@@ -63,6 +63,46 @@ jobs:
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: '22'
+      - name: Materialize exact shared evidence for the historical Homeworld context
+        run: |
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import {createHash} from 'node:crypto';
+          import {execFileSync} from 'node:child_process';
+          import {lstatSync, readFileSync} from 'node:fs';
+          const bytes = readFileSync('tests/fixtures/excel-history-v111-homeworld-v112.json');
+          assert.equal(createHash('sha256').update(bytes).digest('hex'), 'd4bf56b2e785959bc2c0217bfd308d321707a9ecb5bc52b22dd70a1b6154572a');
+          const manifest = JSON.parse(bytes);
+          assert.equal(manifest.schemaVersion, 1);
+          assert.equal(manifest.sourceCommit, 'def899ad07fea582053c5c204e4e578d8e0d7f9b');
+          assert.ok(Array.isArray(manifest.shared));
+          const paths = [], seen = new Set();
+          let alreadyIncludedTests = 0;
+          for (const row of manifest.shared) {
+            assert.ok(typeof row.path === 'string' && /^(?:public|art-source|docs|tests)\/[A-Za-z0-9._/-]+$/.test(row.path), 'Unreviewed shared prefix or Git pattern metacharacter');
+            assert.ok(row.path.split('/').every(part => part && part !== '.' && part !== '..'), 'Nonlocal shared path');
+            assert.ok(!seen.has(row.path), 'Duplicate shared path');
+            seen.add(row.path);
+            if (row.path.startsWith('tests/')) {
+              // /tests/ is already included by checkout; do not broaden another prefix.
+              const info = lstatSync(row.path);
+              assert.ok(info.isFile() && !info.isSymbolicLink(), 'Missing checked-out test fixture');
+              alreadyIncludedTests++;
+            } else paths.push('/' + row.path);
+          }
+          assert.equal(paths.length, 1173);
+          assert.equal(alreadyIncludedTests, 46);
+          assert.ok(paths.includes('/art-source/v107/enforcer-poses/augmentes-assassin--enforcers-comics-10-first-attempt.png'));
+          assert.equal(execFileSync('git', ['config', '--bool', 'core.sparseCheckoutCone'], {encoding:'utf8'}).trim(), 'false');
+          execFileSync('git', ['sparse-checkout', 'add', '--stdin'], {
+            input: paths.sort().join('\n') + '\n', stdio: ['pipe', 'inherit', 'inherit'],
+          });
+          for (const file of paths) {
+            const info = lstatSync(file.slice(1));
+            assert.ok(info.isFile() && !info.isSymbolicLink(), 'Missing shared evidence after sparse checkout');
+          }
+          console.log(JSON.stringify({historicalSharedPaths:seen.size, addedExactPatterns:paths.length, alreadyIncludedTests}));
+          NODE
       - name: Install locked dependencies without lifecycle scripts
         id: dependencies
         run: npm ci --ignore-scripts --no-audit --no-fund
