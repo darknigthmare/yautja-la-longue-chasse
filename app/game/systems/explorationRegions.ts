@@ -1,3 +1,4 @@
+import { resolveHuntGeometryConflictsV157 } from "./huntLevelCoherenceV157";
 import { authorCanopyRoutesV112 } from "./canopyTraversalV112";
 import type { ExplorationProgress } from "../types";
 import type { WorldBlueprint, WorldRect } from "./worldBlueprints";
@@ -53,7 +54,7 @@ export function applyExplorationWorld(
   if (world === base) return authorCanopyRoutesV112(base);
   const features = [...world.platforms, ...world.climbables, ...world.hazards, ...world.covers];
   const ids = new Set(features.map((feature) => feature.id));
-  return authorCanopyRoutesV112({
+  return authorCanopyRoutesV112(resolveHuntGeometryConflictsV157({
     ...world,
     routes: world.routes.map((route) => ({
       ...route,
@@ -64,7 +65,7 @@ export function applyExplorationWorld(
           .map((feature) => feature.id),
       ])],
     })),
-  });
+  }));
 }
 
 export function discoverExplorationRooms(

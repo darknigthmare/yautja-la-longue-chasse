@@ -1,4 +1,5 @@
 import { authorCanopyRoutesV112 } from "./canopyTraversalV112";
+import { resolveHuntGeometryConflictsV157 } from "./huntLevelCoherenceV157";
 import type { BiomeId, MissionId } from "../types";
 import {
   WORLD_SCREEN_WORLD_WIDTH,
@@ -1091,7 +1092,7 @@ function buildPlayableWorld(base: WorldBlueprint): WorldBlueprint {
     hazardReplacements.set(hazard.id, replacement.id);
     return false;
   });
-  return authorCanopyRoutesV112({
+  return authorCanopyRoutesV112(resolveHuntGeometryConflictsV157({
     ...expanded,
     platforms: [...expanded.platforms, ...features.platforms],
     climbables: [...expanded.climbables, ...features.climbables],
@@ -1106,7 +1107,7 @@ function buildPlayableWorld(base: WorldBlueprint): WorldBlueprint {
         (waypointId) => hazardReplacements.get(waypointId) ?? waypointId,
       ),
     })),
-  });
+  }));
 }
 
 const JUNGLE_WORLD = buildPlayableWorld(JUNGLE_WORLD_BASE);
