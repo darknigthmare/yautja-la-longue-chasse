@@ -235,6 +235,8 @@ jobs:
           sparse-checkout: |
             /*
             !/*/
+            /.github/workflows/audit-v94.yml
+            /.github/workflows/hunt-closure-v112.yml
             /app/
             /desktop/
             /scripts/
