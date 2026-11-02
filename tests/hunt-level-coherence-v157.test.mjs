@@ -69,3 +69,41 @@ test("the coherence pass is idempotent and never adds, removes or renames geomet
     assert.equal(again, world, `${id} changes on a second pass`);
   }
 });
+
+// V157 authored layouts: the five expansion hunts no longer reuse the jungle,
+// ice or volcano templates. Generated V112 canopy routes and room-plan
+// features are shared systems and are excluded from the comparison.
+const authored = world => [...world.platforms, ...world.climbables, ...world.covers]
+  .filter(item => !item.id.startsWith("v112-canopy-") && !item.id.startsWith("feature-"));
+const key = item => [item.x, item.y, item.width, item.height].map(Math.round).join(",");
+
+test("no two hunting planets share authored geometry", () => {
+  const worlds = new Set(missionIds);
+  const sets = [...worlds].map(id => [id, new Set(authored(api.applyExplorationWorld(api.worldBlueprintFor(id), api.defaultExplorationProgress())).map(key))]);
+  for (let first = 0; first < sets.length; first++) for (let second = first + 1; second < sets.length; second++) {
+    const [a, left] = sets[first], [b, right] = sets[second];
+    const shared = [...left].filter(item => right.has(item));
+    assert.equal(shared.length, 0, `${a} and ${b} share ${shared.length} authored elements`);
+  }
+});
+
+test("every authored expansion ledge has a way up: a jump, a level crossing or a climb", () => {
+  const expansion = new Set(["swamp-hydra", "desert-sandmaw", "ocean-leviathan", "fungal-hivemind", "ruins-ancient-guardian"]);
+  for (const spec of specs.filter(item => expansion.has(item.missionId))) {
+    const world = api.applyExplorationWorld(api.worldBlueprintFor(spec.missionId), api.defaultExplorationProgress());
+    const ledges = world.platforms.filter(platform => /^(sw|fg|ds|rn|oc)-/.test(platform.id));
+    assert(ledges.length >= 10, `${spec.missionId} keeps an authored layout`);
+    const gap = (a, b) => Math.max(a.x, b.x) - Math.min(a.x + a.width, b.x + b.width);
+    const reached = new Set();
+    for (let pass = 0; pass < ledges.length; pass++) for (const ledge of ledges) {
+      if (reached.has(ledge.id)) continue;
+      const fromFloor = world.floorY - ledge.y <= 130;
+      const fromLedge = ledges.some(other => reached.has(other.id) && (
+        (other.y > ledge.y && other.y - ledge.y <= 130 && gap(other, ledge) <= 160) ||
+        (Math.abs(other.y - ledge.y) <= 10 && gap(other, ledge) <= 200)));
+      const fromClimb = world.climbables.some(climb => climb.y <= ledge.y + 24 && climb.y + climb.height >= world.floorY - 2 && gap(climb, ledge) <= 120);
+      if (fromFloor || fromLedge || fromClimb) reached.add(ledge.id);
+    }
+    assert.deepEqual([...ledges.filter(ledge => !reached.has(ledge.id)).map(ledge => ledge.id)], [], spec.missionId);
+  }
+});

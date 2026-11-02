@@ -158,7 +158,9 @@ export function authorCanopyRoutesV112(source: WorldBlueprint): WorldBlueprint {
   const platforms = [...world.platforms], climbables = [...world.climbables];
   const waypointIds: string[] = [];
   const material = world.biome === "jungle" || world.biome === "swamp" ? "root" :
-    world.biome === "fungal" ? "mycelium" : world.biome === "ice" ? "ice" : "stone";
+    world.biome === "fungal" ? "mycelium" : world.biome === "ice" ? "ice" :
+    // Acheron-Sigma's city has no natural stone: its endemic ledges are ruin.
+    world.biome === "ruins" ? "ruin" : "stone";
   const supportKind = world.biome === "jungle" || world.biome === "swamp" || world.biome === "fungal" ? "tree" : "rock-face";
   let lastEnd = -Infinity;
   for (const fraction of [0.12,0.32,0.52]) {
