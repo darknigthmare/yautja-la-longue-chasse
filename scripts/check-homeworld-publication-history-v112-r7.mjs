@@ -8,7 +8,7 @@ import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import {gunzipSync} from 'node:zlib';
 import {fileURLToPath,pathToFileURL} from 'node:url';
-import {attachHistoricalGitObjects,fetchHistoricalGitBlobs,historicalGitFailure} from './lib/historical-git.mjs';
+import {attachHistoricalGitObjects,fetchHistoricalGitBlobs,historicalGitFailure,assertNoExternalGitPathOverrides,historicalGitEnvironment as gitEnvironment} from './lib/historical-git.mjs';
 
 export const R7_PUBLICATION_COMMIT_V113='03cf51badd450338d748da55599a317a71debd28';
 export const R7_PUBLICATION_TREE_V113='8955aa3ae57f3c1c5151fc6e2980d083bbcd0aaa';
@@ -29,8 +29,8 @@ const objectSha=(type,bytes)=>createHash('sha1').update(type+' '+bytes.length+'\
 const local=file=>typeof file==='string'&&file.length>0&&!path.isAbsolute(file)&&!file.includes('\\')&&!file.includes('\0')&&
  file.split('/').every(part=>part&&part!=='.'&&part!=='..')&&!file.startsWith('.git/');
 const identity=row=>({path:row.path,bytes:row.bytes,sha256:row.sha256});
-const gitEnvironment=()=>({...process.env,GIT_TERMINAL_PROMPT:'0',GIT_OPTIONAL_LOCKS:'0',GIT_NO_LAZY_FETCH:'1'});
 function git(root,args,{timeout=45000,input,env=gitEnvironment()}={}){
+ assertNoExternalGitPathOverrides();
  try{return execFileSync('git',['-C',root,...args],{input,env,timeout,maxBuffer:192*1024*1024,stdio:['pipe','pipe','pipe']});}
  catch(error){throw historicalGitFailure(error,{operation:args[0],label:'R7',env});}
 }
@@ -110,30 +110,40 @@ async function initializeGit(state,objectRepository){
  }
  const head=path.join(state.root,'.git/HEAD');await fs.writeFile(head,R7_PUBLICATION_COMMIT_V113+'\n');await fs.chmod(head,0o444);
 }
+function prefetchPinnedBlobs(state){
+ // initializeGit already matched every manifest identity to the pinned tree.
+ // Matching current files need no Git transfer. Probe the remaining identities
+ // without lazy fetching, then request only absent blobs in one private fetch.
+ const required=[...new Set(state.manifest.entries.filter((row,index)=>
+  !matches(state.observedCurrent[index].current,row)).map(row=>row.gitBlobSha))].sort();
+ if(!required.length)return;
+ assert.ok(Date.now()<state.deadline,'R7 preparation time bound exceeded');
+ const result=fetchHistoricalGitBlobs({root:state.root,origin:ORIGIN,blobShas:required,env:fetchEnvironment(),timeout:45000,label:'R7'});
+ state.prefetchedPinnedGitBlobs=result.fetchedBlobs;
+ if(result.fetchedBlobs)state.blobFetchBatches++;
+}
 export async function prepareR7PublicationV113({repository=ROOT,objectRepository=repository}={}){
+ assertNoExternalGitPathOverrides();
  repository=await fs.realpath(repository);objectRepository=await fs.realpath(objectRepository);
  const root=await fs.mkdtemp(path.join(os.tmpdir(),'yautja-r7-publication-v113-'));
- const state={root,repository,manifest:await readR7PublicationManifestV113(),copiedCurrent:0,restoredGit:0,fetchedCommits:[],observedCurrent:[],deadline:Date.now()+480000};
+ const state={root,repository,manifest:await readR7PublicationManifestV113(),copiedCurrent:0,restoredGit:0,fetchedCommits:[],observedCurrent:[],prefetchedPinnedGitBlobs:0,blobFetchBatches:0,deadline:Date.now()+480000};
  try{
   await initializeGit(state,objectRepository);
-  const inputs=[];
   for(const row of state.manifest.entries){
    assert.ok(Date.now()<state.deadline,'R7 preparation time bound exceeded');
    const current=await regularPath(repository,row.path)?await fingerprint(repository,row.path):null;
    state.observedCurrent.push({path:row.path,current});
-   inputs.push({row,current});
   }
-  // The publication tree has already authenticated every requested blob. Fetch
-  // missing restoration inputs together before any cat-file operation can cause
-  // a separate network request for each small historical source file.
-  fetchHistoricalGitBlobs({root,origin:ORIGIN,blobShas:inputs.filter(({row,current})=>!matches(current,row)).map(({row})=>row.gitBlobSha),
-   env:fetchEnvironment(),timeout:Math.max(1,Math.min(45000,state.deadline-Date.now())),label:'R7'});
-  for(const {row,current} of inputs){
+  prefetchPinnedBlobs(state);
+  for(const [index,row]of state.manifest.entries.entries()){
    assert.ok(Date.now()<state.deadline,'R7 preparation time bound exceeded');
    const target=path.join(root,row.path);await fs.mkdir(path.dirname(target),{recursive:true});
+   const current=state.observedCurrent[index].current;
    if(current&&matches(current,row)){
     await fs.copyFile(path.join(repository,row.path),target,constants.COPYFILE_FICLONE);state.copiedCurrent++;
    }else{
+    // All required preimages are now local. Keep lazy fetch disabled so a
+    // missing object fails instead of restarting one network request per row.
     const bytes=git(root,['cat-file','blob',row.gitBlobSha]);
     assert.equal(bytes.length,row.bytes);assert.equal(sha(bytes),row.sha256);assert.equal(objectSha('blob',bytes),row.gitBlobSha);
     await fs.writeFile(target,bytes);state.restoredGit++;
@@ -195,7 +205,9 @@ export async function verifyR7PublicationV113(context){
  return{sourceCommit:R7_PUBLICATION_COMMIT_V113,sourceTree:R7_PUBLICATION_TREE_V113,runtimeCommit:R7_RUNTIME_COMMIT_V113,
   buildId:R7_BUILD_ID_V113,publicationInputs:1891,frozenInputs:1649,publicationRegularFiles:1894,
   originalTestFixtureFiles:1,privateRegularFiles:1895,
-  copiedMatchingCurrentFiles:state.copiedCurrent,restoredPinnedGitFiles:state.restoredGit,fetchedCanonicalCommits:[...state.fetchedCommits],currentRuntimeCovered:false};
+  copiedMatchingCurrentFiles:state.copiedCurrent,restoredPinnedGitFiles:state.restoredGit,
+  prefetchedPinnedGitBlobs:state.prefetchedPinnedGitBlobs,blobFetchBatches:state.blobFetchBatches,
+  fetchedCanonicalCommits:[...state.fetchedCommits],currentRuntimeCovered:false};
 }
 export async function verifyR7CurrentInputsUnchangedV113(context){
  const state=contextState(context);
@@ -206,12 +218,14 @@ export async function verifyR7CurrentInputsUnchangedV113(context){
  return{currentInputsUnchanged:state.observedCurrent.length};
 }
 function originalCommand(state,args){
+ assertNoExternalGitPathOverrides();
  const env={...process.env};delete env.NODE_TEST_CONTEXT;
  const timeout=Math.min(300000,state.deadline-Date.now());assert.ok(timeout>0,'R7 execution time bound exceeded');
  try{return execFileSync(process.execPath,args,{cwd:state.root,env,encoding:'utf8',timeout,maxBuffer:8*1024*1024,stdio:['ignore','pipe','pipe']});}
  catch(error){const failure=Error('Original R7 command failed: '+args.join(' '));failure.stdout=error.stdout;failure.stderr=error.stderr;throw failure;}
 }
 export async function runR7PublicationV113(context){
+ assertNoExternalGitPathOverrides();
  const state=contextState(context);await verifyR7PublicationV113(context);
  const output=originalCommand(state,['--experimental-strip-types','--test','--test-reporter=tap','--test-concurrency=1',ORIGINAL_TEST]);
  for(const [name,count]of [['tests',9],['pass',9],['fail',0],['skipped',0],['cancelled',0]])assert.match(output,new RegExp('^# '+name+' '+count+'(?:\\r?$)','m'));

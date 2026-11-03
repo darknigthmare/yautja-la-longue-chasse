@@ -1,0 +1,22 @@
+{
+  "commit": "8d87ae976afe88538e3a228718931db463e6715f",
+  "base": "0f3423266575a830057ace241ba62491774b397d",
+  "command": [
+    "node",
+    "--experimental-strip-types",
+    "--test",
+    "--test-reporter=spec",
+    "--test-concurrency=1",
+    "tests/historical-git.test.mjs",
+    "tests/r7-publication-history-v113.test.mjs",
+    "tests/homeworld-connector-detour-history-v113.test.mjs"
+  ],
+  "workingDirectory": "/workspace/scratch/0a68b97df0a6/reprise-postmerge/r7-prefetch-qa",
+  "nodeVersion": "v24.22.1",
+  "startedAtUTC": "2026-11-03T21:17:42.185029+00:00",
+  "trackedDiffBefore": "",
+  "exitCode": 0,
+  "durationSeconds": 140.38843536300556,
+  "finishedAtUTC": "2026-11-03T21:20:03.260633+00:00",
+  "trackedDiffAfter": ""
+}

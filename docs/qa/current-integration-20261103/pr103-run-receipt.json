@@ -1,0 +1,870 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-11-03T21:08:06.788Z",
+  "repository": "darknigthmare/yautja-la-longue-chasse",
+  "pullRequest": 103,
+  "run": {
+    "id": 41709313665,
+    "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41709313665",
+    "name": "V94 regression tests",
+    "status": "completed",
+    "conclusion": "failure",
+    "attempt": 1,
+    "head": "626cf355a1c11b1d6f2e3fdfc45d77450f1d2d3f",
+    "startedAt": "2026-11-03T20:05:27Z",
+    "updatedAt": "2026-11-03T21:02:49Z",
+    "mergeCheckout": "8da4169e3c617627b7cd7a073726ba251bea271a"
+  },
+  "jobs": [
+    {
+      "id": 126172898836,
+      "name": "Targeted V94 regressions (not full game QA)",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41709313665/job/126172898836",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-11-03T20:05:32Z",
+      "completedAt": "2026-11-03T20:06:11Z",
+      "failedSteps": [],
+      "successfulSteps": [
+        {
+          "number": 1,
+          "name": "Set up job",
+          "startedAt": "2026-11-03T20:05:33Z",
+          "completedAt": "2026-11-03T20:05:33Z"
+        },
+        {
+          "number": 2,
+          "name": "Checkout only source required by these tests",
+          "startedAt": "2026-11-03T20:05:33Z",
+          "completedAt": "2026-11-03T20:06:07Z"
+        },
+        {
+          "number": 3,
+          "name": "Node 22",
+          "startedAt": "2026-11-03T20:06:07Z",
+          "completedAt": "2026-11-03T20:06:08Z"
+        },
+        {
+          "number": 4,
+          "name": "Run targeted regression tests (no dependency install)",
+          "startedAt": "2026-11-03T20:06:08Z",
+          "completedAt": "2026-11-03T20:06:09Z"
+        },
+        {
+          "number": 7,
+          "name": "Post Node 22",
+          "startedAt": "2026-11-03T20:06:09Z",
+          "completedAt": "2026-11-03T20:06:09Z"
+        },
+        {
+          "number": 8,
+          "name": "Post Checkout only source required by these tests",
+          "startedAt": "2026-11-03T20:06:09Z",
+          "completedAt": "2026-11-03T20:06:09Z"
+        },
+        {
+          "number": 9,
+          "name": "Complete job",
+          "startedAt": "2026-11-03T20:06:09Z",
+          "completedAt": "2026-11-03T20:06:09Z"
+        }
+      ]
+    },
+    {
+      "id": 126172899240,
+      "name": "Application audit (application)",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41709313665/job/126172899240",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-11-03T20:05:31Z",
+      "completedAt": "2026-11-03T20:31:46Z",
+      "failedSteps": [],
+      "successfulSteps": [
+        {
+          "number": 1,
+          "name": "Set up job",
+          "startedAt": "2026-11-03T20:05:32Z",
+          "completedAt": "2026-11-03T20:05:33Z"
+        },
+        {
+          "number": 2,
+          "name": "Checkout application source and real manifests without multi-gigabyte artwork",
+          "startedAt": "2026-11-03T20:05:33Z",
+          "completedAt": "2026-11-03T20:14:49Z"
+        },
+        {
+          "number": 3,
+          "name": "Node 22",
+          "startedAt": "2026-11-03T20:14:49Z",
+          "completedAt": "2026-11-03T20:14:49Z"
+        },
+        {
+          "number": 4,
+          "name": "Install exact locked dependencies without lifecycle scripts",
+          "startedAt": "2026-11-03T20:14:49Z",
+          "completedAt": "2026-11-03T20:15:03Z"
+        },
+        {
+          "number": 5,
+          "name": "Generate Next route and environment types",
+          "startedAt": "2026-11-03T20:15:03Z",
+          "completedAt": "2026-11-03T20:15:03Z"
+        },
+        {
+          "number": 6,
+          "name": "Check application TypeScript",
+          "startedAt": "2026-11-03T20:15:03Z",
+          "completedAt": "2026-11-03T20:15:55Z"
+        },
+        {
+          "number": 7,
+          "name": "Check game release and deployed build identity",
+          "startedAt": "2026-11-03T20:15:55Z",
+          "completedAt": "2026-11-03T20:15:55Z"
+        },
+        {
+          "number": 10,
+          "name": "Exercise actual V112 controls, workshop, corpse rites and canopy in Chromium",
+          "startedAt": "2026-11-03T20:15:55Z",
+          "completedAt": "2026-11-03T20:16:04Z"
+        },
+        {
+          "number": 11,
+          "name": "Upload bounded V112 browser report and inspected-capture candidates",
+          "startedAt": "2026-11-03T20:16:04Z",
+          "completedAt": "2026-11-03T20:16:05Z"
+        },
+        {
+          "number": 15,
+          "name": "Compile Next application source (not full release packaging)",
+          "startedAt": "2026-11-03T20:16:05Z",
+          "completedAt": "2026-11-03T20:17:44Z"
+        },
+        {
+          "number": 16,
+          "name": "Smoke the compiled Next HTTP server and protected QA routes",
+          "startedAt": "2026-11-03T20:17:44Z",
+          "completedAt": "2026-11-03T20:17:48Z"
+        },
+        {
+          "number": 17,
+          "name": "Lint changed game runtime",
+          "startedAt": "2026-11-03T20:17:48Z",
+          "completedAt": "2026-11-03T20:18:37Z"
+        },
+        {
+          "number": 19,
+          "name": "Exercise current Homeworld route Worker and stale snapshots in Chromium",
+          "startedAt": "2026-11-03T20:18:37Z",
+          "completedAt": "2026-11-03T20:18:41Z"
+        },
+        {
+          "number": 20,
+          "name": "Preserve current Homeworld route Worker report",
+          "startedAt": "2026-11-03T20:18:41Z",
+          "completedAt": "2026-11-03T20:18:42Z"
+        },
+        {
+          "number": 21,
+          "name": "Exercise current Homeworld Atlas Worker cancellation in Chromium",
+          "startedAt": "2026-11-03T20:18:42Z",
+          "completedAt": "2026-11-03T20:19:08Z"
+        },
+        {
+          "number": 22,
+          "name": "Preserve current Homeworld Atlas Worker report",
+          "startedAt": "2026-11-03T20:19:08Z",
+          "completedAt": "2026-11-03T20:19:09Z"
+        },
+        {
+          "number": 27,
+          "name": "Exercise disabled controls with the real menu gamepad hook",
+          "startedAt": "2026-11-03T20:19:09Z",
+          "completedAt": "2026-11-03T20:19:12Z"
+        },
+        {
+          "number": 28,
+          "name": "Exercise current campaign submenu and session-return regressions",
+          "startedAt": "2026-11-03T20:19:12Z",
+          "completedAt": "2026-11-03T20:19:18Z"
+        },
+        {
+          "number": 29,
+          "name": "Exercise hierarchical campaign menu navigation in Chrome",
+          "startedAt": "2026-11-03T20:19:18Z",
+          "completedAt": "2026-11-03T20:19:25Z"
+        },
+        {
+          "number": 30,
+          "name": "Preserve current campaign menu captures and browser report",
+          "startedAt": "2026-11-03T20:19:25Z",
+          "completedAt": "2026-11-03T20:19:27Z"
+        },
+        {
+          "number": 33,
+          "name": "Exercise native storage and cross-tab locks (seeded campaigns)",
+          "startedAt": "2026-11-03T20:19:27Z",
+          "completedAt": "2026-11-03T20:19:31Z"
+        },
+        {
+          "number": 34,
+          "name": "Exercise React image lifecycle and native PNG decoding (1x1 fixtures)",
+          "startedAt": "2026-11-03T20:19:31Z",
+          "completedAt": "2026-11-03T20:19:35Z"
+        },
+        {
+          "number": 35,
+          "name": "Exercise scene image deadlines and refresh with the native decoder",
+          "startedAt": "2026-11-03T20:19:35Z",
+          "completedAt": "2026-11-03T20:19:36Z"
+        },
+        {
+          "number": 36,
+          "name": "Exercise actual Mausoleum React component (placeholder art, emulated pad)",
+          "startedAt": "2026-11-03T20:19:36Z",
+          "completedAt": "2026-11-03T20:20:13Z"
+        },
+        {
+          "number": 39,
+          "name": "Exercise generated planets, independent bitmap layers and real saved fronts",
+          "startedAt": "2026-11-03T20:20:13Z",
+          "completedAt": "2026-11-03T20:28:05Z"
+        },
+        {
+          "number": 40,
+          "name": "Preserve planet import ordering browser report",
+          "startedAt": "2026-11-03T20:28:05Z",
+          "completedAt": "2026-11-03T20:28:06Z"
+        },
+        {
+          "number": 41,
+          "name": "Compare historical WebGL pixels and verify modular V103 materials",
+          "startedAt": "2026-11-03T20:28:06Z",
+          "completedAt": "2026-11-03T20:29:42Z"
+        },
+        {
+          "number": 68,
+          "name": "Verify live Homeworld guidance in the real React atlas and native Worker",
+          "startedAt": "2026-11-03T20:29:42Z",
+          "completedAt": "2026-11-03T20:29:58Z"
+        },
+        {
+          "number": 70,
+          "name": "Exercise actual clan-war panel and native locked storage",
+          "startedAt": "2026-11-03T20:29:58Z",
+          "completedAt": "2026-11-03T20:30:36Z"
+        },
+        {
+          "number": 72,
+          "name": "Complete all four workshop sequences in the actual React panel",
+          "startedAt": "2026-11-03T20:30:36Z",
+          "completedAt": "2026-11-03T20:31:30Z"
+        },
+        {
+          "number": 74,
+          "name": "Play all five native training sequences and input interruption cases",
+          "startedAt": "2026-11-03T20:31:30Z",
+          "completedAt": "2026-11-03T20:31:43Z"
+        },
+        {
+          "number": 75,
+          "name": "Record successful completion of this application audit group",
+          "startedAt": "2026-11-03T20:31:43Z",
+          "completedAt": "2026-11-03T20:31:43Z"
+        },
+        {
+          "number": 76,
+          "name": "Upload this successful application audit group proof",
+          "startedAt": "2026-11-03T20:31:43Z",
+          "completedAt": "2026-11-03T20:31:44Z"
+        },
+        {
+          "number": 151,
+          "name": "Post Node 22",
+          "startedAt": "2026-11-03T20:31:44Z",
+          "completedAt": "2026-11-03T20:31:44Z"
+        },
+        {
+          "number": 152,
+          "name": "Post Checkout application source and real manifests without multi-gigabyte artwork",
+          "startedAt": "2026-11-03T20:31:44Z",
+          "completedAt": "2026-11-03T20:31:44Z"
+        },
+        {
+          "number": 153,
+          "name": "Complete job",
+          "startedAt": "2026-11-03T20:31:44Z",
+          "completedAt": "2026-11-03T20:31:44Z"
+        }
+      ]
+    },
+    {
+      "id": 126172899258,
+      "name": "Application audit (history)",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41709313665/job/126172899258",
+      "status": "completed",
+      "conclusion": "failure",
+      "startedAt": "2026-11-03T20:05:31Z",
+      "completedAt": "2026-11-03T21:02:40Z",
+      "failedSteps": [
+        {
+          "number": 61,
+          "name": "Preserve exact historical R7 once (nine original assertions and three CLI; currentRuntimeCovered=false)",
+          "conclusion": "failure",
+          "startedAt": "2026-11-03T20:52:47Z",
+          "completedAt": "2026-11-03T20:53:48Z"
+        },
+        {
+          "number": 67,
+          "name": "Preserve the additional original V112 Homeworld and Pit capsule",
+          "conclusion": "failure",
+          "startedAt": "2026-11-03T21:01:32Z",
+          "completedAt": "2026-11-03T21:01:33Z"
+        }
+      ],
+      "successfulSteps": [
+        {
+          "number": 1,
+          "name": "Set up job",
+          "startedAt": "2026-11-03T20:05:32Z",
+          "completedAt": "2026-11-03T20:05:33Z"
+        },
+        {
+          "number": 2,
+          "name": "Checkout application source and real manifests without multi-gigabyte artwork",
+          "startedAt": "2026-11-03T20:05:33Z",
+          "completedAt": "2026-11-03T20:23:29Z"
+        },
+        {
+          "number": 3,
+          "name": "Node 22",
+          "startedAt": "2026-11-03T20:23:29Z",
+          "completedAt": "2026-11-03T20:23:29Z"
+        },
+        {
+          "number": 4,
+          "name": "Install exact locked dependencies without lifecycle scripts",
+          "startedAt": "2026-11-03T20:23:29Z",
+          "completedAt": "2026-11-03T20:23:44Z"
+        },
+        {
+          "number": 5,
+          "name": "Generate Next route and environment types",
+          "startedAt": "2026-11-03T20:23:44Z",
+          "completedAt": "2026-11-03T20:23:45Z"
+        },
+        {
+          "number": 6,
+          "name": "Check application TypeScript",
+          "startedAt": "2026-11-03T20:23:45Z",
+          "completedAt": "2026-11-03T20:24:44Z"
+        },
+        {
+          "number": 9,
+          "name": "Verify deterministic V112 workbook and discovery resources",
+          "startedAt": "2026-11-03T20:24:44Z",
+          "completedAt": "2026-11-03T20:24:44Z"
+        },
+        {
+          "number": 13,
+          "name": "Verify V6.14 native images, cumulative history and unchanged sprite defaults",
+          "startedAt": "2026-11-03T20:24:44Z",
+          "completedAt": "2026-11-03T20:24:52Z"
+        },
+        {
+          "number": 14,
+          "name": "Verify V6.15 infants, all 144 native PNGs and all 17 prior workbooks",
+          "startedAt": "2026-11-03T20:24:52Z",
+          "completedAt": "2026-11-03T20:25:00Z"
+        },
+        {
+          "number": 25,
+          "name": "Validate imported V6 dialogue archive references",
+          "startedAt": "2026-11-03T20:25:00Z",
+          "completedAt": "2026-11-03T20:25:01Z"
+        },
+        {
+          "number": 37,
+          "name": "Validate complete Yautja palette maps after extended customization",
+          "startedAt": "2026-11-03T20:25:01Z",
+          "completedAt": "2026-11-03T20:25:01Z"
+        },
+        {
+          "number": 43,
+          "name": "Verify reproducible V100 follow-up while preserving the historical V99 workbook",
+          "startedAt": "2026-11-03T20:25:01Z",
+          "completedAt": "2026-11-03T20:25:16Z"
+        },
+        {
+          "number": 45,
+          "name": "Verify reproducible V104 follow-up and preserved historical workbook parts",
+          "startedAt": "2026-11-03T20:25:16Z",
+          "completedAt": "2026-11-03T20:25:20Z"
+        },
+        {
+          "number": 47,
+          "name": "Verify reproducible V105 follow-up and the 39 frozen historical sheets",
+          "startedAt": "2026-11-03T20:25:20Z",
+          "completedAt": "2026-11-03T20:25:24Z"
+        },
+        {
+          "number": 49,
+          "name": "Verify reproducible V106 follow-up and the 49 preserved historical sheets",
+          "startedAt": "2026-11-03T20:25:24Z",
+          "completedAt": "2026-11-03T20:25:28Z"
+        },
+        {
+          "number": 50,
+          "name": "Execute unchanged V107 assertions and regenerate its immutable published workbook",
+          "startedAt": "2026-11-03T20:25:28Z",
+          "completedAt": "2026-11-03T20:27:10Z"
+        },
+        {
+          "number": 51,
+          "name": "Execute unchanged V108 assertions and regenerate its immutable published workbook",
+          "startedAt": "2026-11-03T20:27:10Z",
+          "completedAt": "2026-11-03T20:27:52Z"
+        },
+        {
+          "number": 53,
+          "name": "Execute unchanged V109 assertions and regenerate its immutable certified workbook",
+          "startedAt": "2026-11-03T20:27:52Z",
+          "completedAt": "2026-11-03T20:29:37Z"
+        },
+        {
+          "number": 55,
+          "name": "Execute unchanged V110 Homeworld assertions and regenerate its immutable workbook",
+          "startedAt": "2026-11-03T20:29:37Z",
+          "completedAt": "2026-11-03T20:30:38Z"
+        },
+        {
+          "number": 57,
+          "name": "Execute unchanged V111 assertions and regenerate all 113 historical worksheets",
+          "startedAt": "2026-11-03T20:30:38Z",
+          "completedAt": "2026-11-03T20:32:15Z"
+        },
+        {
+          "number": 59,
+          "name": "Preserve parallel V112 Homeworld and hunt historical workbooks",
+          "startedAt": "2026-11-03T20:32:15Z",
+          "completedAt": "2026-11-03T20:41:55Z"
+        },
+        {
+          "number": 60,
+          "name": "Verify original immutable V112 publication in its private historical context",
+          "startedAt": "2026-11-03T20:41:55Z",
+          "completedAt": "2026-11-03T20:52:47Z"
+        },
+        {
+          "number": 62,
+          "name": "Verify current source backlog audit and unchanged native V112 Pit delivery",
+          "startedAt": "2026-11-03T20:53:48Z",
+          "completedAt": "2026-11-03T20:58:21Z"
+        },
+        {
+          "number": 63,
+          "name": "Fetch the exact historical runtime declared by both preserved V113 production publications",
+          "startedAt": "2026-11-03T20:58:21Z",
+          "completedAt": "2026-11-03T20:58:23Z"
+        },
+        {
+          "number": 64,
+          "name": "Preserve both V113 production certificates and their exact historical freeze",
+          "startedAt": "2026-11-03T20:58:23Z",
+          "completedAt": "2026-11-03T21:01:28Z"
+        },
+        {
+          "number": 66,
+          "name": "Verify the dated PR and open-workstream coordination workbook",
+          "startedAt": "2026-11-03T21:01:28Z",
+          "completedAt": "2026-11-03T21:01:32Z"
+        },
+        {
+          "number": 69,
+          "name": "Re-run unchanged V110 assertions and preserve its published workbook from pinned Git preimages",
+          "startedAt": "2026-11-03T21:01:33Z",
+          "completedAt": "2026-11-03T21:02:38Z"
+        },
+        {
+          "number": 152,
+          "name": "Post Checkout application source and real manifests without multi-gigabyte artwork",
+          "startedAt": "2026-11-03T21:02:38Z",
+          "completedAt": "2026-11-03T21:02:39Z"
+        },
+        {
+          "number": 153,
+          "name": "Complete job",
+          "startedAt": "2026-11-03T21:02:39Z",
+          "completedAt": "2026-11-03T21:02:39Z"
+        }
+      ]
+    },
+    {
+      "id": 126172899704,
+      "name": "Application audit (models)",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41709313665/job/126172899704",
+      "status": "completed",
+      "conclusion": "failure",
+      "startedAt": "2026-11-03T20:05:31Z",
+      "completedAt": "2026-11-03T20:33:51Z",
+      "failedSteps": [
+        {
+          "number": 65,
+          "name": "Verify the consolidated runtime inventory and every current V113 model",
+          "conclusion": "failure",
+          "startedAt": "2026-11-03T20:32:34Z",
+          "completedAt": "2026-11-03T20:33:46Z"
+        }
+      ],
+      "successfulSteps": [
+        {
+          "number": 1,
+          "name": "Set up job",
+          "startedAt": "2026-11-03T20:05:32Z",
+          "completedAt": "2026-11-03T20:05:33Z"
+        },
+        {
+          "number": 2,
+          "name": "Checkout application source and real manifests without multi-gigabyte artwork",
+          "startedAt": "2026-11-03T20:05:33Z",
+          "completedAt": "2026-11-03T20:14:59Z"
+        },
+        {
+          "number": 3,
+          "name": "Node 22",
+          "startedAt": "2026-11-03T20:14:59Z",
+          "completedAt": "2026-11-03T20:15:03Z"
+        },
+        {
+          "number": 4,
+          "name": "Install exact locked dependencies without lifecycle scripts",
+          "startedAt": "2026-11-03T20:15:03Z",
+          "completedAt": "2026-11-03T20:15:18Z"
+        },
+        {
+          "number": 5,
+          "name": "Generate Next route and environment types",
+          "startedAt": "2026-11-03T20:15:18Z",
+          "completedAt": "2026-11-03T20:15:19Z"
+        },
+        {
+          "number": 6,
+          "name": "Check application TypeScript",
+          "startedAt": "2026-11-03T20:15:19Z",
+          "completedAt": "2026-11-03T20:16:12Z"
+        },
+        {
+          "number": 8,
+          "name": "Exercise every current V112 model except its separately preserved historical publication",
+          "startedAt": "2026-11-03T20:16:12Z",
+          "completedAt": "2026-11-03T20:19:07Z"
+        },
+        {
+          "number": 12,
+          "name": "Verify V111 hunt compatibility guards and reproducible hunting workbook",
+          "startedAt": "2026-11-03T20:19:07Z",
+          "completedAt": "2026-11-03T20:19:10Z"
+        },
+        {
+          "number": 18,
+          "name": "Verify gamedev archive, asset, import and route regressions",
+          "startedAt": "2026-11-03T20:19:10Z",
+          "completedAt": "2026-11-03T20:19:46Z"
+        },
+        {
+          "number": 23,
+          "name": "Exercise input resilience, fixed-step edges and original V74 metadata",
+          "startedAt": "2026-11-03T20:19:46Z",
+          "completedAt": "2026-11-03T20:20:01Z"
+        },
+        {
+          "number": 24,
+          "name": "Verify combat structural barriers and boss whiffs",
+          "startedAt": "2026-11-03T20:20:01Z",
+          "completedAt": "2026-11-03T20:20:02Z"
+        },
+        {
+          "number": 26,
+          "name": "Exercise menu control unit regressions",
+          "startedAt": "2026-11-03T20:20:02Z",
+          "completedAt": "2026-11-03T20:20:03Z"
+        },
+        {
+          "number": 31,
+          "name": "Exercise historical persistence regressions (not the entire test suite)",
+          "startedAt": "2026-11-03T20:20:03Z",
+          "completedAt": "2026-11-03T20:20:36Z"
+        },
+        {
+          "number": 32,
+          "name": "Exercise portable chroma processing and complete biome fixtures",
+          "startedAt": "2026-11-03T20:20:36Z",
+          "completedAt": "2026-11-03T20:20:45Z"
+        },
+        {
+          "number": 38,
+          "name": "Exercise free clan-war durability, lifecycle and planetary atlas regressions",
+          "startedAt": "2026-11-03T20:20:45Z",
+          "completedAt": "2026-11-03T20:23:57Z"
+        },
+        {
+          "number": 42,
+          "name": "Exercise V100 native animation studies, local conversations and evacuation with V98-V99 regressions",
+          "startedAt": "2026-11-03T20:23:57Z",
+          "completedAt": "2026-11-03T20:27:04Z"
+        },
+        {
+          "number": 44,
+          "name": "Exercise V104 source normals, cartography, Preserve version boundaries and workbook preservation",
+          "startedAt": "2026-11-03T20:27:04Z",
+          "completedAt": "2026-11-03T20:27:22Z"
+        },
+        {
+          "number": 46,
+          "name": "Exercise V105 commands, presentations, high-point survey, convoys and workbook boundaries",
+          "startedAt": "2026-11-03T20:27:22Z",
+          "completedAt": "2026-11-03T20:27:52Z"
+        },
+        {
+          "number": 48,
+          "name": "Exercise V106 source specials, directional inputs, archival handling and assault planning",
+          "startedAt": "2026-11-03T20:27:52Z",
+          "completedAt": "2026-11-03T20:28:41Z"
+        },
+        {
+          "number": 52,
+          "name": "Exercise current V109 throws, supply routes, Preserve biomes, plaque and evidence boundaries",
+          "startedAt": "2026-11-03T20:28:41Z",
+          "completedAt": "2026-11-03T20:29:44Z"
+        },
+        {
+          "number": 54,
+          "name": "Exercise current V110 Homeworld gameplay and evidence regressions",
+          "startedAt": "2026-11-03T20:29:44Z",
+          "completedAt": "2026-11-03T20:30:20Z"
+        },
+        {
+          "number": 56,
+          "name": "Exercise current V111 regressions across the parallel workstreams",
+          "startedAt": "2026-11-03T20:30:20Z",
+          "completedAt": "2026-11-03T20:31:28Z"
+        },
+        {
+          "number": 58,
+          "name": "Exercise parallel V111 hunt compatibility suite",
+          "startedAt": "2026-11-03T20:31:28Z",
+          "completedAt": "2026-11-03T20:32:34Z"
+        },
+        {
+          "number": 71,
+          "name": "Exercise trophy workshop lifecycle and historical ritual rules",
+          "startedAt": "2026-11-03T20:33:46Z",
+          "completedAt": "2026-11-03T20:33:47Z"
+        },
+        {
+          "number": 73,
+          "name": "Exercise training lifecycle and all existing drill rules",
+          "startedAt": "2026-11-03T20:33:47Z",
+          "completedAt": "2026-11-03T20:33:48Z"
+        },
+        {
+          "number": 152,
+          "name": "Post Checkout application source and real manifests without multi-gigabyte artwork",
+          "startedAt": "2026-11-03T20:33:48Z",
+          "completedAt": "2026-11-03T20:33:48Z"
+        },
+        {
+          "number": 153,
+          "name": "Complete job",
+          "startedAt": "2026-11-03T20:33:48Z",
+          "completedAt": "2026-11-03T20:33:48Z"
+        }
+      ]
+    },
+    {
+      "id": 126203433957,
+      "name": "Application compile, types, runtime lint and browser integration",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41709313665/job/126203433957",
+      "status": "completed",
+      "conclusion": "failure",
+      "startedAt": "2026-11-03T21:02:43Z",
+      "completedAt": "2026-11-03T21:02:48Z",
+      "failedSteps": [
+        {
+          "number": 2,
+          "name": "Require every independent application audit group",
+          "conclusion": "failure",
+          "startedAt": "2026-11-03T21:02:46Z",
+          "completedAt": "2026-11-03T21:02:46Z"
+        }
+      ],
+      "successfulSteps": [
+        {
+          "number": 1,
+          "name": "Set up job",
+          "startedAt": "2026-11-03T21:02:44Z",
+          "completedAt": "2026-11-03T21:02:46Z"
+        },
+        {
+          "number": 7,
+          "name": "Complete job",
+          "startedAt": "2026-11-03T21:02:46Z",
+          "completedAt": "2026-11-03T21:02:46Z"
+        }
+      ]
+    }
+  ],
+  "groupProofs": {
+    "expectedGroups": [
+      "application",
+      "models",
+      "history"
+    ],
+    "presentGroups": [
+      "application"
+    ],
+    "missingGroups": [
+      "models",
+      "history"
+    ],
+    "application": {
+      "artifactId": 13270330038,
+      "artifactName": "application-audit-success-41709313665-1-8da4169e3c617627b7cd7a073726ba251bea271a-application",
+      "archiveSha256": "sha256:4ff590341fd4394db9a7a4b2faf3a1229c20797330bac28340055af3f5691c8b",
+      "expired": false,
+      "proof": {
+        "schemaVersion": 1,
+        "result": "success",
+        "group": "application",
+        "runId": "41709313665",
+        "runAttempt": "1",
+        "commit": "8da4169e3c617627b7cd7a073726ba251bea271a"
+      },
+      "verification": {
+        "archiveDigestMatches": true,
+        "archiveContainsOnlyProofJson": true,
+        "exactJsonIdentityMatches": true
+      }
+    },
+    "allThreeGroupsVerified": false
+  },
+  "otherHeadWorkflows": [
+    {
+      "id": 41709313825,
+      "name": "V113 native PHG-inspired materials and renderer wiring",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41709313825",
+      "head": "626cf355a1c11b1d6f2e3fdfc45d77450f1d2d3f",
+      "attempt": 1,
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 41709313684,
+      "name": "V131 Gauntlet hologram dual-view checks",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41709313684",
+      "head": "626cf355a1c11b1d6f2e3fdfc45d77450f1d2d3f",
+      "attempt": 1,
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 41709313626,
+      "name": "Clan field props — individual sprites and controls",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41709313626",
+      "head": "626cf355a1c11b1d6f2e3fdfc45d77450f1d2d3f",
+      "attempt": 1,
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 41709313814,
+      "name": "V114 Yautja PHG material integrity and channel contract",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41709313814",
+      "head": "626cf355a1c11b1d6f2e3fdfc45d77450f1d2d3f",
+      "attempt": 1,
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 41709313507,
+      "name": "V94 campaign routes and bounded cloud transport",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41709313507",
+      "head": "626cf355a1c11b1d6f2e3fdfc45d77450f1d2d3f",
+      "attempt": 1,
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 41709313515,
+      "name": "V136 Full Gauntlet Campaign and Build Integration",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41709313515",
+      "head": "626cf355a1c11b1d6f2e3fdfc45d77450f1d2d3f",
+      "attempt": 1,
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 41709313547,
+      "name": "V94 ship training persistence",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41709313547",
+      "head": "626cf355a1c11b1d6f2e3fdfc45d77450f1d2d3f",
+      "attempt": 1,
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 41709313646,
+      "name": "V94 transactional exercises and trophy confirmation",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41709313646",
+      "head": "626cf355a1c11b1d6f2e3fdfc45d77450f1d2d3f",
+      "attempt": 1,
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 41709313658,
+      "name": "Consolidated Homeworld saves and planetary layouts",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41709313658",
+      "head": "626cf355a1c11b1d6f2e3fdfc45d77450f1d2d3f",
+      "attempt": 1,
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 41709313838,
+      "name": "V112 hunt closure qualifications",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/41709313838",
+      "head": "626cf355a1c11b1d6f2e3fdfc45d77450f1d2d3f",
+      "attempt": 1,
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "errors": {
+    "models": {
+      "step": 65,
+      "test": "no dressing sprite is hidden by a building or closed facade painted after it",
+      "missingFile": "public/game/homeworld/v75/architecture/undercity-refuge.png",
+      "currentInventoryCheck": "PASS",
+      "tests": 75,
+      "pass": 74,
+      "fail": 1,
+      "log": "/workspace/scratch/0a68b97df0a6/reprise-postmerge/pr103-models-error.log"
+    },
+    "history": {
+      "steps": [
+        61,
+        67
+      ],
+      "r7": "Git fetch failed in prefetchPinnedBlobs: fatal: bad revision 'accf3ab3b6fac1d5ae8d0d4577cc471230e7c486'; did not send all necessary objects",
+      "r7ObjectType": "blob",
+      "v112Capsule": {
+        "path": "docs/YAUTJA_V112_SUIVI.xlsx",
+        "actualBytes": 9433700,
+        "expectedBytes": 9383908
+      },
+      "log": "/workspace/scratch/0a68b97df0a6/reprise-postmerge/pr103-history-errors.log"
+    }
+  },
+  "conclusion": "FAILURE. Application alone produced a valid proof; models and history failed. The required aggregate correctly refused success. This receipt does not certify any later head or deployment."
+}

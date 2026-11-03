@@ -149,3 +149,34 @@ réseau est bornée à 120 secondes.
 
 La CI exige désormais le test dédié `tests/historical-shared-inputs.test.mjs`
 avant d'exécuter les deux commandes historiques de la capsule.
+
+## Négociation des blobs promis : retour du run 41709313665
+
+Le run de la PR #103 a isolé un autre échec Git : le fetch groupé annonçait
+un commit emprunté à un clone filtré comme s'il en possédait déjà tous les blobs.
+Le serveur pouvait alors omettre les blobs demandés. Le diagnostic distant
+était `bad revision` sur une identité de blob, suivi de
+`did not send all necessary objects`.
+
+Une reproduction indépendante utilise trois blobs du même commit, un vrai clone
+shallow filtré et un dépôt privé avec alternates. Un blob est présent et deux
+manquent. Les anciens arguments échouent ; retirer seulement le filtre ne résout
+pas le problème. Le réglage ponctuel `fetch.negotiationAlgorithm=noop` récupère
+les deux blobs, en un seul fetch, sans modifier le dépôt prêteur. Le fetch exclut
+également les sous-modules. Cette séquence suit celle de `fetch_objects()` dans
+[le code de Git pour les objets promis](https://kernel.googlesource.com/pub/scm/git/git.git/+/2f952b81ed2c44ebce3496d659a93d82a1a2f662/promisor-remote.c).
+Les quatre variantes et leurs résultats exacts sont conservés dans
+[`r7-promised-blob-regression.json`](current-integration-20261103/r7-promised-blob-regression.json).
+
+Le helper commun conserve les refus complets de redirection Git, les identités
+de blobs contrôlées avant toute récupération, les erreurs expurgées et
+l'authentification temporaire du seul fetch canonique. Le test vérifie qu'une
+seconde demande ne déclenche aucun fetch et que HEAD, refs, FETCH_HEAD et objets
+du dépôt source restent inchangés. Les limites des assertions et commandes R7
+restent identiques.
+
+La restauration V112 reprend aussi ces protections communes. Ses tests vérifient
+séparément le classeur original privé, le classeur R7 courant intact, le refus
+d'une corruption privée et les refus d'overrides avant toute écriture. Le relevé
+de ce premier run en échec et les preuves de production sont conservés dans
+[`current-integration-20261103/README.md`](current-integration-20261103/README.md).

@@ -1,0 +1,167 @@
+PR #103 — exact failing history steps
+Repository: darknigthmare/yautja-la-longue-chasse
+Run: 41709313665; attempt: 1; job: 126172899258
+Head: 626cf355a1c11b1d6f2e3fdfc45d77450f1d2d3f
+Checkout: 8da4169e3c617627b7cd7a073726ba251bea271a
+Retrieved: 2026-11-03T21:04:13.886Z
+Lines longer than 3000 characters excluded from this text-only extract.
+
+2026-11-03T20:52:47.9512539Z ##[group]Run node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/historical-git.test.mjs tests/r7-publication-history-v113.test.mjs tests/homeworld-connector-detour-history-v113.test.mjs
+2026-11-03T20:52:47.9514602Z [36;1mnode --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/historical-git.test.mjs tests/r7-publication-history-v113.test.mjs tests/homeworld-connector-detour-history-v113.test.mjs[0m
+2026-11-03T20:52:47.9534721Z shell: /usr/bin/bash -e {0}
+2026-11-03T20:52:47.9534967Z env:
+2026-11-03T20:52:47.9535164Z   NEXT_TELEMETRY_DISABLED: 1
+2026-11-03T20:52:47.9535420Z   ELECTRON_SKIP_BINARY_DOWNLOAD: 1
+2026-11-03T20:52:47.9535704Z   NODE_OPTIONS: --max-old-space-size=6144
+2026-11-03T20:52:47.9535988Z   AUDIT_CHROME_CHANNEL: chrome
+2026-11-03T20:52:47.9538775Z   GH_TOKEN: ***
+2026-11-03T20:52:47.9538984Z ##[endgroup]
+2026-11-03T20:52:48.2672985Z ✔ a private filtered fetch preserves a shallow alternate boundary and never writes to its source (183.450639ms)
+2026-11-03T20:52:48.2678173Z ✔ historical Git diagnostics retain the transport cause and redact authentication (0.570666ms)
+2026-11-03T20:52:49.6173134Z ✔ R7, V112, V113 and their child entry points reject external Git overrides before any private or external write (1350.22244ms)
+2026-11-03T20:52:49.6375547Z ✔ explicit fetch authentication remains process-local after inherited Git configuration is refused (20.789116ms)
+2026-11-03T20:53:22.0294749Z ✖ historical03cf connector assertions retain1421 real steps without certifying the current route (32305.089072ms)
+2026-11-03T20:53:48.7088854Z ✖ R7 retains the nine assertions, 1894 publication files and the original V111 negative-test fixture (26591.348476ms)
+2026-11-03T20:53:48.7095060Z ✖ R7 executes its complete unchanged nine-assertion test and three original CLIs without certifying current code (0.90485ms)
+2026-11-03T20:53:48.7103135Z ✖ R7 rejects private input, metadata and HEAD tampering while original current files stay unchanged (0.079648ms)
+2026-11-03T20:53:48.7109780Z ✖ R7 refuses substituted current contexts, unpinned metadata labels and symlinked historical directories (0.06433ms)
+2026-11-03T20:53:48.7113815Z ✖ missing shallow-checkout objects are fetched from the named canonical commits only into private Git (0.065052ms)
+2026-11-03T20:53:48.7296260Z ℹ tests 10
+2026-11-03T20:53:48.7296522Z ℹ suites 0
+2026-11-03T20:53:48.7296732Z ℹ pass 4
+2026-11-03T20:53:48.7296931Z ℹ fail 6
+2026-11-03T20:53:48.7297137Z ℹ cancelled 0
+2026-11-03T20:53:48.7297358Z ℹ skipped 0
+2026-11-03T20:53:48.7297568Z ℹ todo 0
+2026-11-03T20:53:48.7297811Z ℹ duration_ms 60720.935547
+2026-11-03T20:53:48.7297969Z 
+2026-11-03T20:53:48.7298082Z ✖ failing tests:
+2026-11-03T20:53:48.7298209Z 
+2026-11-03T20:53:48.7298517Z test at tests/homeworld-connector-detour-history-v113.test.mjs:20:1
+2026-11-03T20:53:48.7299366Z ✖ historical03cf connector assertions retain1421 real steps without certifying the current route (32305.089072ms)
+2026-11-03T20:53:48.7300001Z   Error: R7 Git operation failed: fetch (exit 1)
+2026-11-03T20:53:48.7300434Z   fatal: bad revision 'accf3ab3b6fac1d5ae8d0d4577cc471230e7c486'
+2026-11-03T20:53:48.7301092Z   error: https://github.com/darknigthmare/yautja-la-longue-chasse.git did not send all necessary objects
+2026-11-03T20:53:48.7302025Z       at historicalGitFailure (file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/lib/historical-git.mjs:43:16)
+2026-11-03T20:53:48.7303155Z       at git (file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/check-homeworld-publication-history-v112-r7.mjs:35:21)
+2026-11-03T20:53:48.7304632Z       at prefetchPinnedBlobs (file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/check-homeworld-publication-history-v112-r7.mjs:130:2)
+2026-11-03T20:53:48.7306325Z       at prepareR7PublicationV113 (file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/check-homeworld-publication-history-v112-r7.mjs:149:3)
+2026-11-03T20:53:48.7307318Z       at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-11-03T20:53:48.7308362Z       at async TestContext.<anonymous> (file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/tests/homeworld-connector-detour-history-v113.test.mjs:28:13)
+2026-11-03T20:53:48.7309213Z       at async Test.run (node:internal/test_runner/test:1054:7)
+2026-11-03T20:53:48.7309732Z       at async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3) {
+2026-11-03T20:53:48.7310155Z     code: undefined
+2026-11-03T20:53:48.7310750Z   }
+2026-11-03T20:53:48.7310965Z 
+2026-11-03T20:53:48.7311360Z test at tests/r7-publication-history-v113.test.mjs:15:1
+2026-11-03T20:53:48.7312814Z ✖ R7 retains the nine assertions, 1894 publication files and the original V111 negative-test fixture (26591.348476ms)
+2026-11-03T20:53:48.7313798Z   Error: R7 Git operation failed: fetch (exit 1)
+2026-11-03T20:53:48.7314811Z   fatal: bad revision 'accf3ab3b6fac1d5ae8d0d4577cc471230e7c486'
+2026-11-03T20:53:48.7315997Z   error: https://github.com/darknigthmare/yautja-la-longue-chasse.git did not send all necessary objects
+2026-11-03T20:53:48.7318077Z       at historicalGitFailure (file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/lib/historical-git.mjs:43:16)
+2026-11-03T20:53:48.7319521Z       at git (file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/check-homeworld-publication-history-v112-r7.mjs:35:21)
+2026-11-03T20:53:48.7321003Z       at prefetchPinnedBlobs (file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/check-homeworld-publication-history-v112-r7.mjs:130:2)
+2026-11-03T20:53:48.7322324Z       at prepareR7PublicationV113 (file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/check-homeworld-publication-history-v112-r7.mjs:149:3)
+2026-11-03T20:53:48.7323333Z       at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-11-03T20:53:48.7324832Z       at async TestContext.<anonymous> (file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/tests/r7-publication-history-v113.test.mjs:12:31)
+2026-11-03T20:53:48.7325787Z       at async TestHook.run (node:internal/test_runner/test:1054:7) {
+2026-11-03T20:53:48.7326196Z     code: undefined
+2026-11-03T20:53:48.7326421Z   }
+2026-11-03T20:53:48.7326531Z 
+2026-11-03T20:53:48.7326778Z test at tests/r7-publication-history-v113.test.mjs:27:1
+2026-11-03T20:53:48.7327785Z ✖ R7 executes its complete unchanged nine-assertion test and three original CLIs without certifying current code (0.90485ms)
+2026-11-03T20:53:48.7328532Z   Error: R7 Git operation failed: fetch (exit 1)
+2026-11-03T20:53:48.7328997Z   fatal: bad revision 'accf3ab3b6fac1d5ae8d0d4577cc471230e7c486'
+2026-11-03T20:53:48.7329721Z   error: https://github.com/darknigthmare/yautja-la-longue-chasse.git did not send all necessary objects
+2026-11-03T20:53:48.7330765Z       at historicalGitFailure (file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/lib/historical-git.mjs:43:16)
+2026-11-03T20:53:48.7332018Z       at git (file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/check-homeworld-publication-history-v112-r7.mjs:35:21)
+2026-11-03T20:53:48.7333279Z       at prefetchPinnedBlobs (file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/check-homeworld-publication-history-v112-r7.mjs:130:2)
+2026-11-03T20:53:48.7335549Z       at prepareR7PublicationV113 (file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/check-homeworld-publication-history-v112-r7.mjs:149:3)
+2026-11-03T20:53:48.7337067Z       at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-11-03T20:53:48.7338029Z       at async TestContext.<anonymous> (file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/tests/r7-publication-history-v113.test.mjs:12:31)
+2026-11-03T20:53:48.7339342Z       at async TestHook.run (node:internal/test_runner/test:1054:7) {
+2026-11-03T20:53:48.7339845Z     code: undefined
+2026-11-03T20:53:48.7340061Z   }
+2026-11-03T20:53:48.7340167Z 
+2026-11-03T20:53:48.7340396Z test at tests/r7-publication-history-v113.test.mjs:41:1
+2026-11-03T20:53:48.7341226Z ✖ R7 rejects private input, metadata and HEAD tampering while original current files stay unchanged (0.079648ms)
+2026-11-03T20:53:48.7341806Z   Error: R7 Git operation failed: fetch (exit 1)
+2026-11-03T20:53:48.7342224Z   fatal: bad revision 'accf3ab3b6fac1d5ae8d0d4577cc471230e7c486'
+2026-11-03T20:53:48.7342864Z   error: https://github.com/darknigthmare/yautja-la-longue-chasse.git did not send all necessary objects
+2026-11-03T20:53:48.7343809Z       at historicalGitFailure (file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/lib/historical-git.mjs:43:16)
+2026-11-03T20:53:48.7345259Z       at git (file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/check-homeworld-publication-history-v112-r7.mjs:35:21)
+2026-11-03T20:53:48.7346468Z       at prefetchPinnedBlobs (file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/check-homeworld-publication-history-v112-r7.mjs:130:2)
+2026-11-03T20:53:48.7348379Z       at prepareR7PublicationV113 (file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/check-homeworld-publication-history-v112-r7.mjs:149:3)
+2026-11-03T20:53:48.7349407Z       at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-11-03T20:53:48.7350373Z       at async TestContext.<anonymous> (file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/tests/r7-publication-history-v113.test.mjs:12:31)
+2026-11-03T20:53:48.7351209Z       at async TestHook.run (node:internal/test_runner/test:1054:7) {
+2026-11-03T20:53:48.7351568Z     code: undefined
+2026-11-03T20:53:48.7351776Z   }
+2026-11-03T20:53:48.7351875Z 
+2026-11-03T20:53:48.7352099Z test at tests/r7-publication-history-v113.test.mjs:54:1
+2026-11-03T20:53:48.7352938Z ✖ R7 refuses substituted current contexts, unpinned metadata labels and symlinked historical directories (0.06433ms)
+2026-11-03T20:53:48.7353551Z   Error: R7 Git operation failed: fetch (exit 1)
+2026-11-03T20:53:48.7353963Z   fatal: bad revision 'accf3ab3b6fac1d5ae8d0d4577cc471230e7c486'
+2026-11-03T20:53:48.7354869Z   error: https://github.com/darknigthmare/yautja-la-longue-chasse.git did not send all necessary objects
+2026-11-03T20:53:48.7355808Z       at historicalGitFailure (file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/lib/historical-git.mjs:43:16)
+2026-11-03T20:53:48.7356928Z       at git (file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/check-homeworld-publication-history-v112-r7.mjs:35:21)
+2026-11-03T20:53:48.7358145Z       at prefetchPinnedBlobs (file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/check-homeworld-publication-history-v112-r7.mjs:130:2)
+2026-11-03T20:53:48.7359477Z       at prepareR7PublicationV113 (file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/check-homeworld-publication-history-v112-r7.mjs:149:3)
+2026-11-03T20:53:48.7360455Z       at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-11-03T20:53:48.7361390Z       at async TestContext.<anonymous> (file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/tests/r7-publication-history-v113.test.mjs:12:31)
+2026-11-03T20:53:48.7362238Z       at async TestHook.run (node:internal/test_runner/test:1054:7) {
+2026-11-03T20:53:48.7362585Z     code: undefined
+2026-11-03T20:53:48.7362801Z   }
+2026-11-03T20:53:48.7362913Z 
+2026-11-03T20:53:48.7363140Z test at tests/r7-publication-history-v113.test.mjs:68:1
+2026-11-03T20:53:48.7364298Z ✖ missing shallow-checkout objects are fetched from the named canonical commits only into private Git (0.065052ms)
+2026-11-03T20:53:48.7365038Z   Error: R7 Git operation failed: fetch (exit 1)
+2026-11-03T20:53:48.7365628Z   fatal: bad revision 'accf3ab3b6fac1d5ae8d0d4577cc471230e7c486'
+2026-11-03T20:53:48.7366284Z   error: https://github.com/darknigthmare/yautja-la-longue-chasse.git did not send all necessary objects
+2026-11-03T20:53:48.7367964Z       at historicalGitFailure (file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/lib/historical-git.mjs:43:16)
+2026-11-03T20:53:48.7369554Z       at git (file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/check-homeworld-publication-history-v112-r7.mjs:35:21)
+2026-11-03T20:53:48.7370762Z       at prefetchPinnedBlobs (file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/check-homeworld-publication-history-v112-r7.mjs:130:2)
+2026-11-03T20:53:48.7372047Z       at prepareR7PublicationV113 (file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/check-homeworld-publication-history-v112-r7.mjs:149:3)
+2026-11-03T20:53:48.7373006Z       at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-11-03T20:53:48.7373961Z       at async TestContext.<anonymous> (file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/tests/r7-publication-history-v113.test.mjs:12:31)
+2026-11-03T20:53:48.7375287Z       at async TestHook.run (node:internal/test_runner/test:1054:7) {
+2026-11-03T20:53:48.7375654Z     code: undefined
+2026-11-03T20:53:48.7375857Z   }
+2026-11-03T20:53:48.7388297Z ##[error]Process completed with exit code 1.
+
+2026-11-03T21:01:32.7077016Z ##[group]Run node scripts/check-excel-history-homeworld-v113.mjs --check
+2026-11-03T21:01:32.7077949Z [36;1mnode scripts/check-excel-history-homeworld-v113.mjs --check[0m
+2026-11-03T21:01:32.7079220Z [36;1mnode --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/homeworld-v112-history-v113.test.mjs[0m
+2026-11-03T21:01:32.7107497Z shell: /usr/bin/bash -e {0}
+2026-11-03T21:01:32.7107918Z env:
+2026-11-03T21:01:32.7108356Z   NEXT_TELEMETRY_DISABLED: 1
+2026-11-03T21:01:32.7108876Z   ELECTRON_SKIP_BINARY_DOWNLOAD: 1
+2026-11-03T21:01:32.7109373Z   NODE_OPTIONS: --max-old-space-size=6144
+2026-11-03T21:01:32.7109873Z   AUDIT_CHROME_CHANNEL: chrome
+2026-11-03T21:01:32.7115037Z   GH_TOKEN: ***
+2026-11-03T21:01:32.7115411Z ##[endgroup]
+2026-11-03T21:01:33.1380143Z node:internal/modules/run_main:123
+2026-11-03T21:01:33.1381057Z     triggerUncaughtException(
+2026-11-03T21:01:33.1381390Z     ^
+2026-11-03T21:01:33.1381508Z 
+2026-11-03T21:01:33.1381935Z AssertionError [ERR_ASSERTION]: Historical size changed: docs/YAUTJA_V112_SUIVI.xlsx
+2026-11-03T21:01:33.1382489Z + actual - expected
+2026-11-03T21:01:33.1382677Z 
+2026-11-03T21:01:33.1382937Z + 9433700
+2026-11-03T21:01:33.1383407Z - 9383908
+2026-11-03T21:01:33.1383597Z 
+2026-11-03T21:01:33.1384716Z     at verifyFiles (file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/lib/historical-excel-context.mjs:20:12)
+2026-11-03T21:01:33.1385955Z     at async prepare (file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/lib/historical-excel-context.mjs:45:5)
+2026-11-03T21:01:33.1387319Z     at async checkPublishedV112InCapsuleV113 (file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/check-excel-history-homeworld-v113.mjs:22:19)
+2026-11-03T21:01:33.1388659Z     at async file:///home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/scripts/check-excel-history-homeworld-v113.mjs:42:30 {
+2026-11-03T21:01:33.1389395Z   generatedMessage: false,
+2026-11-03T21:01:33.1389665Z   code: 'ERR_ASSERTION',
+2026-11-03T21:01:33.1389918Z   actual: 9433700,
+2026-11-03T21:01:33.1390147Z   expected: 9383908,
+2026-11-03T21:01:33.1390392Z   operator: 'strictEqual',
+2026-11-03T21:01:33.1390647Z   diff: 'simple'
+2026-11-03T21:01:33.1390869Z }
+2026-11-03T21:01:33.1390976Z 
+2026-11-03T21:01:33.1391073Z Node.js v22.23.4
+2026-11-03T21:01:33.1638606Z ##[error]Process completed with exit code 1.
+

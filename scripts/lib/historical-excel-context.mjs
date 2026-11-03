@@ -8,6 +8,7 @@ import {createHash} from 'node:crypto';
 import {gunzipSync} from 'node:zlib';
 import {execFileSync} from 'node:child_process';
 import {pathToFileURL} from 'node:url';
+import {assertNoExternalGitPathOverrides,historicalGitEnvironment} from './historical-git.mjs';
 import {reviewedSharedPreimages,restoreHistoricalSharedPreimages,verifyHistoricalSharedPreimages,verifyHistoricalSharedTree} from './historical-shared-inputs.mjs';
 
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
@@ -26,6 +27,7 @@ async function verifyFiles(root, rows) {
 export function createHistoricalExcelContext({repository, manifestPath, manifestSha256, archiveSha256, sourceCommit, release, hardLinkShared = false, sharedPreimages = [], writableSharedCopies = []}) {
   let pending;
   async function prepare() {
+    if (sharedPreimages.length || writableSharedCopies.length) assertNoExternalGitPathOverrides();
     const manifestBytes = await fsp.readFile(path.join(repository, local(manifestPath)));
     assert.equal(sha(manifestBytes), manifestSha256, 'Original ' + release + ' manifest changed');
     const manifest = JSON.parse(manifestBytes);
@@ -111,7 +113,8 @@ export function createHistoricalExcelContext({repository, manifestPath, manifest
     assert.ok(Array.isArray(files) && files.length && new Set(files).size === files.length);
     for (const file of files) assert.ok(context.manifest.historicalTests.includes(file), 'Unreviewed historical test');
     if (context.restoredPaths.size) await verify();
-    const env = {...process.env}; delete env.NODE_TEST_CONTEXT;
+    const env = context.restoredPaths.size || context.writableSharedPaths.size ? historicalGitEnvironment() : {...process.env};
+    delete env.NODE_TEST_CONTEXT;
     let output;
     try {output = execFileSync(process.execPath, ['--experimental-strip-types', '--test', '--test-reporter=tap', '--test-concurrency=1', ...files], {cwd: context.root, env, encoding: 'utf8', timeout: 300000, maxBuffer: 8 * 1024 * 1024});}
     catch (error) {throw new Error('Original ' + release + ' assertions failed:\n' + String(error.stdout ?? '') + String(error.stderr ?? ''), {cause: error});}

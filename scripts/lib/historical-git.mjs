@@ -4,7 +4,31 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import {execFileSync} from 'node:child_process';
 
-const gitEnvironment=()=>({...process.env,GIT_TERMINAL_PROMPT:'0',GIT_OPTIONAL_LOCKS:'0',GIT_NO_LAZY_FETCH:'1'});
+const externalGitPaths=new Set([
+ 'GIT_DIR','GIT_COMMON_DIR','GIT_WORK_TREE','GIT_INDEX_FILE','GIT_OBJECT_DIRECTORY',
+ 'GIT_ALTERNATE_OBJECT_DIRECTORIES','GIT_SHALLOW_FILE','GIT_GRAFT_FILE','GIT_QUARANTINE_PATH',
+ 'GIT_CONFIG','GIT_CONFIG_GLOBAL','GIT_CONFIG_SYSTEM','GIT_TEMPLATE_DIR',
+ 'GIT_CONFIG_PARAMETERS','GIT_CONFIG_COUNT',
+]);
+
+/** `git -C` does not override inherited Git paths. Reject these before creating
+ * a capsule or running a child, rather than letting init/config/fetch target
+ * the caller's repository. Inherited config pairs can set core.worktree or
+ * include an external config too. Report names only: values may hold secrets.
+ * Fetch authentication is added explicitly to a private env after this guard. */
+export function assertNoExternalGitPathOverrides(env=process.env){
+ const names=Object.keys(env).filter(name=>env[name]!==undefined&&
+  (externalGitPaths.has(name.toUpperCase())||/^GIT_CONFIG_(?:KEY|VALUE)_\d+$/i.test(name))).sort();
+ if(names.length){
+  const failure=Error('Historical Git isolation refuses external path overrides: '+names.join(', '));
+  failure.code='ERR_HISTORICAL_GIT_PATH_OVERRIDE';throw failure;
+ }
+}
+
+export function historicalGitEnvironment(){
+ assertNoExternalGitPathOverrides();
+ return{...process.env,GIT_TERMINAL_PROMPT:'0',GIT_OPTIONAL_LOCKS:'0',GIT_NO_LAZY_FETCH:'1'};
+}
 
 export function historicalGitFailure(error,{operation,label='Historical',env=process.env}={}){
  let diagnostic=String(error.stderr??'').trim();
@@ -22,12 +46,21 @@ export function historicalGitFailure(error,{operation,label='Historical',env=pro
  return failure;
 }
 
-export function fetchHistoricalGitBlobs({root,origin,blobShas,env=gitEnvironment(),timeout=45000,label='Historical'}){
+/** Retrieve only authenticated blob identities, without trusting the complete
+ * object closure implied by a filtered alternate's advertised commits. */
+export function fetchHistoricalGitBlobs({root,origin,blobShas,env=historicalGitEnvironment(),timeout=45000,label='Historical'}){
+ assertNoExternalGitPathOverrides();
+ // Callers may add only the existing process-local canonical fetch credential.
+ // An explicit environment must not reintroduce an external Git path/config.
+ const checkedEnvironment={...env},token=env.GH_TOKEN??env.GITHUB_TOKEN;
+ if(token&&env.GIT_CONFIG_COUNT==='1'&&env.GIT_CONFIG_KEY_0==='http.https://github.com/.extraheader'&&
+    env.GIT_CONFIG_VALUE_0==='AUTHORIZATION: basic '+Buffer.from('x-access-token:'+token).toString('base64')){
+  for(const key of ['GIT_CONFIG_COUNT','GIT_CONFIG_KEY_0','GIT_CONFIG_VALUE_0'])delete checkedEnvironment[key];
+ }
+ assertNoExternalGitPathOverrides(checkedEnvironment);
  const requested=[...new Set(blobShas)];
  for(const object of requested)assert.match(object,/^[a-f0-9]{40}$/,'Invalid historical blob identity');
  if(!requested.length)return{requestedBlobs:0,fetchedBlobs:0};
- // An object probe must never cause Git to fetch each promisor blob separately.
- // Keep authentication process-local and force all retrieval through this batch.
  const privateEnvironment={...env,GIT_NO_LAZY_FETCH:'1'};
  const git=(args,input)=>{
   try{return execFileSync('git',['-C',root,...args],{env:privateEnvironment,input,encoding:'utf8',
@@ -45,9 +78,8 @@ export function fetchHistoricalGitBlobs({root,origin,blobShas,env=gitEnvironment
  };
  const missing=missingObjects();
  if(missing.length){
-  // All names were checked against the pinned publication tree by the caller.
-  // No destination ref or FETCH_HEAD is written, and existing alternate objects
-  // are read only. One stdin request avoids a network round trip per small blob.
+  // Like Git's promisor-object fetch, do not announce commits whose filtered
+  // blobs may be absent. Otherwise the server can omit the requested blobs.
   git(['-c','fetch.negotiationAlgorithm=noop','fetch','--no-tags','--no-write-fetch-head',
    '--no-recurse-submodules','--filter=blob:none','--stdin',origin],missing.join('\n')+'\n');
   assert.deepEqual(missingObjects(),[],'Historical Git batch left requested blobs absent');
@@ -56,7 +88,7 @@ export function fetchHistoricalGitBlobs({root,origin,blobShas,env=gitEnvironment
 }
 
 export async function attachHistoricalGitObjects({root,objectRepository}){
- const env=gitEnvironment();
+ const env=historicalGitEnvironment();
  const gitPath=name=>execFileSync('git',['-C',objectRepository,'rev-parse','--path-format=absolute','--git-path',name],
   {env,encoding:'utf8',stdio:['ignore','pipe','pipe'],timeout:45000}).trim();
  let sourceObjects,sourceShallow;

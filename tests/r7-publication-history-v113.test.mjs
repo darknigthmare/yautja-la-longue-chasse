@@ -71,11 +71,17 @@ test('missing shallow-checkout objects are fetched from the named canonical comm
  try{
   execFileSync('git',['-C',empty,'init','--quiet'],{stdio:'ignore'});
   const before=await fs.readFile(path.join(empty,'.git/HEAD'));
+  const packsBefore=await fs.readdir(path.join(empty,'.git/objects/pack'));
   isolated=await prepareR7PublicationV113({objectRepository:empty});
   const integrity=await verifyR7PublicationV113(isolated);
   assert.deepEqual(integrity.fetchedCanonicalCommits,[R7_PUBLICATION_COMMIT_V113,R7_RUNTIME_COMMIT_V113]);
   assert.equal(integrity.currentRuntimeCovered,false);
+  assert.ok(integrity.blobFetchBatches<=1,'Absent preimages must be fetched together, not once per input');
+  assert.equal(integrity.prefetchedPinnedGitBlobs>0,integrity.blobFetchBatches===1);
+  assert.ok(integrity.prefetchedPinnedGitBlobs<=integrity.restoredPinnedGitFiles);
   assert.deepEqual(await fs.readFile(path.join(empty,'.git/HEAD')),before);
+  assert.deepEqual(await fs.readdir(path.join(empty,'.git/objects/pack')),packsBefore);
   const refs=execFileSync('git',['-C',empty,'for-each-ref'],{encoding:'utf8'});assert.equal(refs,'');
+  process.stdout.write(JSON.stringify({scenario:'R7 private empty-object bootstrap',prefetchedPinnedGitBlobs:integrity.prefetchedPinnedGitBlobs,blobFetchBatches:integrity.blobFetchBatches})+'\n');
  }finally{await isolated?.dispose();await fs.rm(empty,{recursive:true,force:true});}
 });

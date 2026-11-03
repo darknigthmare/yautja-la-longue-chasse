@@ -227,6 +227,25 @@ test('source-light delivery binds complete source proof, retained files, actual 
  }
  assert.equal((await run('git',['show',f.sourceCommit+':public/game/imports/v85/native space.png'],{cwd:f.root})).stdout,'preserved-native-bitmap');
 });
+test('source-light rejects an omitted generated HTML without changing retained sources or other outputs',async t=>{
+ const f=await sourceLightFixture(t),missing='review/index.html';
+ const omitted=path.join(f.root,'.next/output/static/game',missing);
+ await fs.unlink(omitted);
+ await assert.rejects(sourceLightOriginFixtureV89({fixtureRoot:f.root,sha:f.sha}),/retained native output is missing/);
+ await assert.rejects(fs.stat(omitted),error=>error.code==='ENOENT');
+ for(const [relative,bytes] of Object.entries(f.content)){
+  assert.equal(await fs.readFile(path.join(f.root,'public/game',relative),'utf8'),bytes);
+  if(relative!==missing)assert.equal(await fs.readFile(path.join(f.root,'.next/output/static/game',relative),'utf8'),bytes);
+ }
+});
+test('source-light rejects an absent generated game directory without recreating it or changing sources',async t=>{
+ const f=await sourceLightFixture(t),outputRoot=path.join(f.root,'.next/output/static/game');
+ await fs.rm(outputRoot,{recursive:true});
+ await assert.rejects(sourceLightOriginFixtureV89({fixtureRoot:f.root,sha:f.sha}),/Native source-light output directory required/);
+ await assert.rejects(fs.stat(outputRoot),error=>error.code==='ENOENT');
+ for(const [relative,bytes] of Object.entries(f.content))
+  assert.equal(await fs.readFile(path.join(f.root,'public/game',relative),'utf8'),bytes);
+});
 test('source-light proof rejects partial inventories, altered trees, owners, paths and encodings',async t=>{
  const {manifest}=await sourceLightFixture(t);
  const mutations=[

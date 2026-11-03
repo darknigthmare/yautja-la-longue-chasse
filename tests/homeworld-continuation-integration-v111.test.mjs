@@ -6,6 +6,7 @@ import ts from 'typescript';
 import {archiveContinuationRouteV111} from './helpers/archive-continuation-v111-route.mjs';
 import {homeworldSceneSsrV78} from './helpers/homeworld-scene-ssr-v78.mjs';
 import {getHistoricalHomeworldExcelContextV111} from '../scripts/historical-excel-context-homeworld-v111.mjs';
+import {getHistoricalHomeworldExcelContextV112} from '../scripts/historical-excel-context-homeworld-v112.mjs';
 
 const route=archiveContinuationRouteV111(),initial=structuredClone(route.state()),{qa,owner,b}=route;
 const saves=qa.load('app/game/save.ts');
@@ -45,8 +46,8 @@ function stateAt(phase='working'){
   }
   return structuredClone(prepared.get(phase));
 }
-function campaign(state){
-  const save=saves.defaultSave(owner);save.homeworld.visitedDistrictIds=['port'];
+function campaign(state,serializer=saves){
+  const save=serializer.defaultSave(owner);save.homeworld.visitedDistrictIds=['port'];
   save.homeworld.archivePlaqueV109=state.base;save.homeworld.archiveContinuationV111=state.ledger;
   save.homeworld.locationV77=api.createHomeworldCheckpointV77(owner,'0',state.actor,null,state.actor);
   return save;
@@ -202,9 +203,9 @@ test('V111 actual interact refuses an available doorway while A carries the frag
   assert.deepEqual([...state.values],durable);assert.equal(state.writes,0);
 });
 
-test('V111 Save11 to current preserves the genuine V110 campaign and B document while initializing additive hunting and appearance defaults',async()=>{
+test('V111 Save11 to13 preserves the genuine V110 campaign and B document while initializing additive hunting and appearance defaults',async()=>{
   const history=await getHistoricalHomeworldExcelContextV111(),old=homeworldSceneSsrV78(history.root).load('app/game/save.ts');
-  assert.equal(old.SAVE_VERSION,11);assert(saves.SAVE_VERSION>=12);
+  assert.equal(old.SAVE_VERSION,11);assert.equal(saves.SAVE_VERSION,13);
   const state=stateAt('working'),legacy=old.defaultSave(owner);
   legacy.profile.hunterName='Migration · constat B conservé';legacy.settings.masterVolume=.37;
   legacy.homeworld.visitedDistrictIds=['port'];legacy.homeworld.archivePlaqueV109=state.base;
@@ -212,7 +213,7 @@ test('V111 Save11 to current preserves the genuine V110 campaign and B document 
   legacy.homeworld.locationV77=oldLocation.createHomeworldCheckpointV77(owner,'0',state.actor,null,state.actor);
   const previous=old.parseSaveImport(JSON.stringify(legacy)).save;assert(previous);
   const migrated=saves.parseSaveImport(JSON.stringify(previous)).save;assert(migrated);
-  assert.deepEqual(migrated,{...previous,version:saves.SAVE_VERSION,
+  assert.deepEqual(migrated,{...previous,version:13,
     appearance:{...previous.appearance,chromaticsV113:{...DEFAULT_CHROMATICS_V113}},
     inventory:{...previous.inventory,fieldToolIds:[],harvestV112:emptyHarvestInventoryV112()},
     settings:{...previous.settings,huntAccessibility:normalizeHuntAccessibilityV112(undefined)},
@@ -223,32 +224,56 @@ test('V111 Save11 to current preserves the genuine V110 campaign and B document 
     assert.equal(Object.hasOwn(migrated.appearance,field),false,'legacy parallel material fields are not serialized');
   assert.equal(JSON.stringify(migrated.homeworld.archivePlaqueV109),JSON.stringify(previous.homeworld.archivePlaqueV109));
   assert.equal(migrated.homeworld.archiveContinuationV111,undefined,'migration does not create or auto-start an A continuation');
+  assert.equal(migrated.gauntletV134,undefined,'migration does not create a new gauntlet archive for a legacy campaign');
 });
 
-test('V111 actual V110 client refuses both Save12 and current campaigns without dropping continuation or overwriting bytes',async()=>{
-  const history=await getHistoricalHomeworldExcelContextV111(),old=homeworldSceneSsrV78(history.root).load('app/game/save.ts'),values=new Map(),key='v111-downgrade-protection';
-  const storage={getItem:name=>values.get(name)??null,setItem:(name,value)=>values.set(name,value),removeItem:name=>values.delete(name)};
-  const actual=campaign(stateAt('carried')),previous=structuredClone(actual);previous.version=11;delete previous.homeworld.archiveContinuationV111;
-  assert(old.writeSaveWithStatus(previous,storage,key).persisted);assert(saves.loadSaveWithStatus(storage,key).loaded);
-  assert.equal(actual.version,saves.SAVE_VERSION);assert(saves.writeSaveWithStatus(actual,storage,key).persisted);
-  const current=values.get(key);
-  // Also retain the original V12 boundary after current writers advance the
-  // schema: this declared envelope differs only in its version field.
-  for(const exact of new Set([JSON.stringify({...actual,version:12}),current])){
-    values.set(key,exact);assert.equal(old.parseSaveImport(exact).failure,'future-version');
+test('V111 genuine Save12 carried continuation migrates to13 without changing either document or inventing a gauntlet archive',async()=>{
+  const history=await getHistoricalHomeworldExcelContextV112(),old=homeworldSceneSsrV78(history.root).load('app/game/save.ts');
+  assert.equal(old.SAVE_VERSION,12);assert.equal(saves.SAVE_VERSION,13);
+  const legacy=campaign(stateAt('carried'),old);
+  legacy.profile.hunterName='Migration · fragment A porté';legacy.settings.masterVolume=.41;
+  const previous=old.parseSaveImport(JSON.stringify(legacy)).save;assert(previous);
+  const exact=JSON.stringify(previous),migrated=saves.parseSaveImport(exact);assert.equal(migrated.failure,null);
+  assert.deepEqual(migrated.save,{...previous,version:13,
+    appearance:{...previous.appearance,chromaticsV113:{...DEFAULT_CHROMATICS_V113}},
+    inventory:{...previous.inventory,fieldToolIds:[],harvestV112:emptyHarvestInventoryV112()},
+    settings:{...previous.settings,huntAccessibility:normalizeHuntAccessibilityV112(undefined)},
+  },'every V12 campaign field and carried continuation survives the additive migration');
+  assert.equal(JSON.stringify(previous),exact,'migration does not mutate its genuine V12 input');
+  for(const key of ['archivePlaqueV109','archiveContinuationV111','locationV77'])
+    assert.equal(JSON.stringify(migrated.save.homeworld[key]),JSON.stringify(previous.homeworld[key]));
+  assert.equal(migrated.save.gauntletV134,undefined);
+});
+
+test('V111 actual V110 client refuses genuine Save12 and current Save13 continuations without overwriting primary or backup',async()=>{
+  const history=await getHistoricalHomeworldExcelContextV111(),old=homeworldSceneSsrV78(history.root).load('app/game/save.ts');
+  const history12=await getHistoricalHomeworldExcelContextV112(),previousClient=homeworldSceneSsrV78(history12.root).load('app/game/save.ts');
+  assert.equal(old.SAVE_VERSION,11);assert.equal(previousClient.SAVE_VERSION,12);assert.equal(saves.SAVE_VERSION,13);
+  for(const writer of [previousClient,saves]){
+    const values=new Map(),key='v111-downgrade-protection-'+writer.SAVE_VERSION;
+    const storage={getItem:name=>values.get(name)??null,setItem:(name,value)=>values.set(name,value),removeItem:name=>values.delete(name)};
+    const state=stateAt('carried'),actual=campaign(state,writer),previous=campaign(state,old);
+    delete previous.homeworld.archiveContinuationV111;
+    assert.equal(previous.version,11);assert(old.writeSaveWithStatus(previous,storage,key).persisted);
+    assert(saves.loadSaveWithStatus(storage,key).loaded);
+    assert.equal(actual.version,writer.SAVE_VERSION);assert(writer.writeSaveWithStatus(actual,storage,key).persisted);
+    const durable=[...values],exact=values.get(key);
+    assert.equal(JSON.parse(exact).version,writer.SAVE_VERSION,'the newer writer emits its real schema, without relabeling a current save');
+    assert.equal(old.parseSaveImport(exact).failure,'future-version');
     const denied=old.loadSaveWithStatus(storage,key);assert.equal(denied.failure,'future-version');assert.equal(denied.loaded,false);
     assert.equal(old.writeSaveWithStatus(denied.save,storage,key).persisted,false);
-    assert.equal(old.writeSaveWithStatus(JSON.parse(exact),storage,key).persisted,false);
-    assert.equal(values.get(key),exact,'the older client cannot erase the continued study through its normal load/write APIs');
-    const loaded=saves.loadSaveWithStatus(storage,key);assert(loaded.loaded);
-    assert.equal(loaded.save.version,saves.SAVE_VERSION);
+    assert.equal(old.writeSaveWithStatus(actual,storage,key).persisted,false);
+    assert.deepEqual([...values],durable,'the older client cannot change either durable slot through its normal load/write APIs');
+    const loaded=saves.loadSaveWithStatus(storage,key);assert(loaded.loaded);assert.equal(loaded.save.version,13);
+    assert.equal(JSON.stringify(loaded.save.homeworld.archivePlaqueV109),JSON.stringify(actual.homeworld.archivePlaqueV109));
     assert.equal(JSON.stringify(loaded.save.homeworld.archiveContinuationV111),JSON.stringify(actual.homeworld.archiveContinuationV111));
   }
 });
 
-test('V111 integrated main keeps a real field-tool purchase through Save11 migration and a quota-refused B to A continuation write',()=>{
+test('V111 integrated main keeps a real field-tool purchase through Save11 migration and a quota-refused B to A continuation write',async()=>{
   const tools=qa.load('app/game/systems/fieldToolsV111.ts'),state=stateAt('working');
-  const legacy=campaign(state);legacy.version=11;delete legacy.homeworld.archiveContinuationV111;
+  const history=await getHistoricalHomeworldExcelContextV111(),old=homeworldSceneSsrV78(history.root).load('app/game/save.ts');
+  const legacy=campaign(state,old);delete legacy.homeworld.archiveContinuationV111;
   legacy.profile.clanMarks=240;
   // PR21 kept campaign schema11. Declare that pre-continuation shape before
   // buying through its unchanged production purchase function.
@@ -257,7 +282,8 @@ test('V111 integrated main keeps a real field-tool purchase through Save11 migra
   assert.equal(purchase.save.profile.clanMarks,120);assert.deepEqual(purchase.save.inventory.fieldToolIds,['flaying-tool']);
   assert.equal(purchase.save.homeworld.archiveContinuationV111,undefined);
   const migrated=saves.parseSaveImport(JSON.stringify(purchase.save));assert.equal(migrated.failure,null);
-  assert.equal(migrated.save.version,saves.SAVE_VERSION);assert.deepEqual(migrated.save.inventory.fieldToolIds,['flaying-tool']);
+  assert.equal(migrated.save.version,13);assert.deepEqual(migrated.save.inventory.fieldToolIds,['flaying-tool']);
+  assert.equal(migrated.save.gauntletV134,undefined);
   assert.equal(migrated.save.profile.clanMarks,120);assert.deepEqual(migrated.save.loadout,purchase.save.loadout);
   assert.equal(JSON.stringify(migrated.save.homeworld.archivePlaqueV109),JSON.stringify(state.base));
   assert.equal(migrated.save.homeworld.archiveContinuationV111,undefined,'migration does not invent a continuation alongside the purchased tool');

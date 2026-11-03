@@ -6,16 +6,12 @@ import path from 'node:path';
 import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import {performance} from 'node:perf_hooks';
-import {attachHistoricalGitObjects,fetchHistoricalGitBlobs,historicalGitFailure} from './historical-git.mjs';
+import {attachHistoricalGitObjects,fetchHistoricalGitBlobs,historicalGitEnvironment,historicalGitFailure} from './historical-git.mjs';
 
 const sha=bytes=>createHash('sha256').update(bytes).digest('hex');
 const local=file=>typeof file==='string'&&file.length&&!path.isAbsolute(file)&&!file.includes('\\')&&!file.includes('\0')&&
  file.split('/').every(part=>part&&part!=='.'&&part!=='..');
-const environment=()=>{
- for(const key of ['GIT_DIR','GIT_WORK_TREE','GIT_COMMON_DIR','GIT_OBJECT_DIRECTORY','GIT_ALTERNATE_OBJECT_DIRECTORIES'])
-  assert.ok(!process.env[key],'External Git environment refused for historical shared inputs');
- return {...process.env,GIT_TERMINAL_PROMPT:'0',GIT_OPTIONAL_LOCKS:'0',GIT_NO_LAZY_FETCH:'1'};
-};
+const environment=historicalGitEnvironment;
 function git(root,args,env){
  try{return execFileSync('git',['-C',root,...args],{env,timeout:45000,maxBuffer:16*1024*1024,stdio:['ignore','pipe','pipe']});}
  catch(error){throw historicalGitFailure(error,{operation:args[0],label:'Historical shared preimage',env});}

@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import {
   EXCEL_HOMEWORLD_HISTORY_COMMIT_V113, EXCEL_HOMEWORLD_HISTORY_MANIFEST_SHA256_V113, EXCEL_HOMEWORLD_HISTORY_ARCHIVE_SHA256_V113,
@@ -21,6 +22,11 @@ const V112_TESTS = [
 ];
 
 test('the V112 capsule keeps the published commit, its 22 original test files and a private real Git identity', async () => {
+  // The later R7 publication remains the current workbook. The earlier
+  // Homeworld/Pit capsule must recover its own original without rolling it back.
+  const workbookPath = 'docs/YAUTJA_V112_SUIVI.xlsx', currentWorkbook = await fs.readFile(workbookPath);
+  assert.equal(currentWorkbook.length, 9433700);
+  assert.equal(createHash('sha256').update(currentWorkbook).digest('hex'), '723cc894b643d55dcd076cab8b615866c6879ecc481c55616adcdd0508d2eccc');
   const context = await getHistoricalHomeworldExcelContextV113();
   assert.equal(context.manifest.sourceCommit, EXCEL_HOMEWORLD_HISTORY_COMMIT_V113);
   assert.equal(context.manifest.release, 'V112');
@@ -35,6 +41,14 @@ test('the V112 capsule keeps the published commit, its 22 original test files an
   const integrity = await verifyHistoricalHomeworldExcelContextV113();
   assert.equal(integrity.currentRuntimeCovered, false);
   assert.equal(integrity.sourcesVerified, 3279); assert.equal(integrity.sharedVerified, 1507);
+  assert.equal(integrity.restoredSharedVerified, 81);
+  const historicalWorkbook = await fs.readFile(path.join(context.root, workbookPath));
+  assert.equal(historicalWorkbook.length, 9383908);
+  assert.equal(createHash('sha256').update(historicalWorkbook).digest('hex'), 'b29aa412000717cdfd81be1a60e2c2f9d8489c0b8b2ed5d29404668d04dd1d02');
+  const privateStat = await fs.lstat(path.join(context.root, workbookPath)), currentStat = await fs.stat(workbookPath);
+  assert.equal(privateStat.isSymbolicLink(), false); assert.equal(privateStat.mode & 0o222, 0);
+  assert.ok(privateStat.ino !== currentStat.ino || privateStat.dev !== currentStat.dev);
+  assert.deepEqual(await fs.readFile(workbookPath), currentWorkbook);
   assert.match(EXCEL_HOMEWORLD_HISTORY_MANIFEST_SHA256_V113, /^[a-f0-9]{64}$/); assert.match(EXCEL_HOMEWORLD_HISTORY_ARCHIVE_SHA256_V113, /^[a-f0-9]{64}$/);
 });
 
@@ -46,6 +60,17 @@ test('tampering with private V112 source or its Git HEAD is rejected without cha
     finally {await fs.writeFile(file, original); await fs.chmod(file, 0o444);}
   }
   assert.deepEqual(await fs.readFile('app/game/HuntCanvas.tsx'), current); await verifyHistoricalHomeworldExcelContextV113();
+});
+
+test('the restored original V112 workbook remains immutable without changing the later R7 workbook', async () => {
+  const context = await getHistoricalHomeworldExcelContextV113(), relative = 'docs/YAUTJA_V112_SUIVI.xlsx';
+  const current = await fs.readFile(relative), file = path.join(context.root, relative), original = await fs.readFile(file);
+  try {
+    await fs.chmod(file, 0o644); await fs.appendFile(file, '\n'); await fs.chmod(file, 0o444);
+    await assert.rejects(verifyHistoricalHomeworldExcelContextV113(), /Historical shared preimage size changed/);
+  } finally {await fs.chmod(file, 0o644); await fs.writeFile(file, original); await fs.chmod(file, 0o444);}
+  assert.deepEqual(await fs.readFile(relative), current);
+  await verifyHistoricalHomeworldExcelContextV113();
 });
 
 test('the capsule refuses test files outside the reviewed V112 inventory', async () => {

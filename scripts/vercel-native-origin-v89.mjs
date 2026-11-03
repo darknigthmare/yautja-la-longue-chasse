@@ -184,7 +184,10 @@ async function verifySourceLight(root,sha){
  await inspect(originalRoot,originalRoot,false);
  if(originals.size!==retained.size)throw new Error('A retained native input is missing');
  const outputRoot=path.join(root,'.next','output','static','game'),beforeOutput=snapshots.length;
- if(await checked(root,outputRoot,true))await inspect(outputRoot,outputRoot,true);
+ // The adapter has already copied retained files; later compaction never adds missing output.
+ if(!(await checked(root,outputRoot,true))?.isDirectory())throw new Error('Native source-light output directory required');
+ await inspect(outputRoot,outputRoot,true);
+ if(snapshots.length-beforeOutput!==retained.size)throw new Error('A retained native output is missing');
  for(const snapshot of snapshots)if(!same(snapshot.stat,await checked(root,snapshot.path)))throw new Error('Retained native file changed after verification');
  if(!same(stat,await checked(root,file)))throw new Error('Source-light manifest changed after verification');
  return {status:'source-light-native-origin',sha,sourceCommit:source.sourceCommit,sourceGameTree:source.sourceGameTree,

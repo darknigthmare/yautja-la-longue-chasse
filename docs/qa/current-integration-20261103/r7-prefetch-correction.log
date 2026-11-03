@@ -1,0 +1,92 @@
+✔ a private filtered fetch preserves a shallow alternate boundary and never writes to its source (245.613283ms)
+✔ historical Git diagnostics retain the transport cause and redact authentication (0.720549ms)
+✔ R7, V112, V113 and their child entry points reject external Git overrides before any private or external write (1622.397121ms)
+✔ explicit fetch authentication remains process-local after inherited Git configuration is refused (28.241051ms)
+✔ promised blobs in a shallow alternate are fetched once without assuming its commits contain every blob (166.814177ms)
+✔ historical03cf connector assertions retain1421 real steps without certifying the current route (37010.139469ms)
+ℹ Exact03cf source fixture:6original assertions PASS,0skips;1421 and>7100 retained; currentRuntimeCovered=false.
+✔ R7 retains the nine assertions, 1894 publication files and the original V111 negative-test fixture (21955.935987ms)
+TAP version 13
+# Subtest: V112 retains every inherited requirement and keeps nine actions inside the 56 source rows
+ok 1 - V112 retains every inherited requirement and keeps nine actions inside the 56 source rows
+  ---
+  duration_ms: 4594.561635
+  type: 'test'
+  ...
+# Subtest: unrelated closures, partial closures, duplicate workstreams and unsupported browser promotions are refused
+ok 2 - unrelated closures, partial closures, duplicate workstreams and unsupported browser promotions are refused
+  ---
+  duration_ms: 17.308263
+  type: 'test'
+  ...
+# Traceback (most recent call last):
+#   File "/tmp/yautja-r7-publication-v113-AaMRBo/scripts/build-homeworld-followup-v112.py", line 35, in <module>
+#     raise ValueError('Historical workbook ZIP part changed: ' + name)
+# ValueError: Historical workbook ZIP part changed: xl/worksheets/v111-sheet-106.xml
+# Subtest: 122 worksheets retain all 113 historical parts and detect a cell-text-only mutation precisely
+ok 3 - 122 worksheets retain all 113 historical parts and detect a cell-text-only mutation precisely
+  ---
+  duration_ms: 5147.686252
+  type: 'test'
+  ...
+# Subtest: a historical V111 production report cannot certify V112
+ok 4 - a historical V111 production report cannot certify V112
+  ---
+  duration_ms: 9.765807
+  type: 'test'
+  ...
+# Subtest: failed or omitted network requests cannot receive a current production pass
+ok 5 - failed or omitted network requests cannot receive a current production pass
+  ---
+  duration_ms: 4.584313
+  type: 'test'
+  ...
+# Subtest: real raw file identities match frozen path identities without rewriting the executed evidence
+ok 6 - real raw file identities match frozen path identities without rewriting the executed evidence
+  ---
+  duration_ms: 0.609524
+  type: 'test'
+  ...
+# Subtest: conflicting path aliases, duplicate observations and changed frozen bytes cannot be hidden by normalization
+ok 7 - conflicting path aliases, duplicate observations and changed frozen bytes cannot be hidden by normalization
+  ---
+  duration_ms: 1.458755
+  type: 'test'
+  ...
+# Subtest: individually valid domain certificates cannot be mixed across runtime commits or compiled builds
+ok 8 - individually valid domain certificates cannot be mixed across runtime commits or compiled builds
+  ---
+  duration_ms: 0.437359
+  type: 'test'
+  ...
+# Subtest: V112 workbook and metadata reproduce exactly without executing historical gameplay or native Excel
+ok 9 - V112 workbook and metadata reproduce exactly without executing historical gameplay or native Excel
+  ---
+  duration_ms: 10737.85982
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 20923.390486
+{"status":"PASS","path":"docs/v112-runtime-freeze.json","bytes":306338,"sha256":"c35f8b454ec26d1b05852cabbe4f6ee111d71e7413aef80282582d3ca5ee6a3e"}
+{"status":"PASS","path":"docs/v112-runtime-public-inputs.json","bytes":14024}
+{"result":"PASS_STRUCTURE","sha256":"723cc894b643d55dcd076cab8b615866c6879ecc481c55616adcdd0508d2eccc","bytes":9433700,"inputs":1891,"facts":{"inheritedSourceRequirements":56,"sourceRequirementsOpen":56,"sourceActionsIncluded":9,"sourceActionsRemaining":9,"newlyClosedSourceRequirements":0,"boundedWorkstreams":6,"deferredWorkstreamsOpen":4,"artisticTargetsNotClosed":354,"sourceCompletion":false},"production":{"runtimeCommit":"bda14a95aa8c9e6cf37039e2d67ea1544a8e8de1","buildId":"wVuSG_xIKNn3geLlIq7Cb","browserChecks":249,"inspectedCaptures":39,"freezeEntriesVerified":1649}}
+✔ R7 executes its complete unchanged nine-assertion test and three original CLIs without certifying current code (40267.730015ms)
+✔ R7 rejects private input, metadata and HEAD tampering while original current files stay unchanged (6068.943323ms)
+✔ R7 refuses substituted current contexts, unpinned metadata labels and symlinked historical directories (4076.793133ms)
+{"scenario":"R7 private empty-object bootstrap","prefetchedPinnedGitBlobs":75,"blobFetchBatches":1}
+✔ missing shallow-checkout objects are fetched from the named canonical commits only into private Git (28523.053577ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 140314.621228

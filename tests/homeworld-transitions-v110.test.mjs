@@ -37,11 +37,15 @@ function travel(step, connector, reverse, cargo) {
   return result;
 }
 
-test('V110: real 1392-step cargo placement no longer traps a hunter descending the council stair', () => {
+test('V110: real cargo transport no longer traps a hunter descending the council stair', () => {
   const { ledger, ticks, distance } = parkedByActualWalking(), before = JSON.stringify(ledger);
-  // The current ground connections shorten the original V110 route. Keep an
-  // exact current-route check while retaining the played obstruction below.
-  assert.equal(ticks, 1392); assert(Math.abs(distance - 7035.362951817594) < 1e-6);
+  // The frozen V110 runtime retains its 1418-step, 7140-unit journey. The
+  // current full-body navigator takes a shorter route to the same stair;
+  // keep an exact current trace as well as the physical soft-lock assertions.
+  assert.equal(ticks, 1392);
+  assert(Math.abs(distance - 7035.362951817594) < 1e-6, 'current native route distance');
+  assert.equal(ledger.receipt.phase, 'interrupted');
+  assert.deepEqual({ x: ledger.receipt.lots[0].x, y: ledger.receipt.lots[0].y }, council.from.point);
   assert.equal(f.api.cargoCaseCollisionV108(ledger, council.from.point), 'cargo-lot-wide-v108');
   const old = travel((transit, actor, seconds) => f.world.stepHomeworldTransitV77(transit, actor, seconds), council, true);
   assert.equal(old.done, true, 'historical API reproduces the original completed arrival');
