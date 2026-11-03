@@ -844,6 +844,357 @@
       ],
       "complements": [],
       "referenceViewNote": "Vue historique trois-quarts demandée vers 32° dans les briefs sources, conservée pour ces états ; angle réel non mesuré, aucune conversion frontale 0°/35° revendiquée."
+    },
+    {
+      "id": "HWM162-S11",
+      "area": "market",
+      "label": "Comptoir marchand — stock retiré",
+      "kind": "État vide",
+      "targetIds": [
+        "target-v81-64-163"
+      ],
+      "purpose": "Fournir le comptoir avec sa console fixe et ses espaces de présentation dégagés.",
+      "placementNote": "Préserver l’accès du vendeur et les surfaces de prise ; placer les marchandises séparément. Réemploi secondaire envisageable pour la cible 159 dans la vue existante.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 4,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "public/game/homeworld/v83/merchant-counter-left.png"
+      ],
+      "complements": [
+        "HWM162-S10"
+      ],
+      "referenceViewNote": "Identité et vue de la référence conservées ; angle réel non mesuré. Aucune conversion générale à 0°/35° revendiquée.",
+      "expectedPath": "sprites/market/HWM162-S11-empty-merchant-counter.png",
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE"
+    },
+    {
+      "id": "HWM162-S12",
+      "area": "market",
+      "label": "Rack marchand — vide",
+      "kind": "État vide",
+      "targetIds": [
+        "target-v81-64-164"
+      ],
+      "purpose": "Composer librement le stock sur les deux niveaux du rack sans contenants fusionnés.",
+      "placementNote": "Conserver l’accès aux tablettes ; calibrer la taille des contenants et leur appui en scène.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 4,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "public/game/homeworld/v83/cargo-rack-right.png"
+      ],
+      "complements": [
+        "HWM162-S09"
+      ],
+      "referenceViewNote": "Identité et vue de la référence conservées ; angle réel non mesuré. Aucune conversion générale à 0°/35° revendiquée.",
+      "expectedPath": "sprites/market/HWM162-S12-empty-cargo-rack.png",
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE"
+    },
+    {
+      "id": "HWM162-S13",
+      "area": "market",
+      "label": "Rouleau de textile lié autonome",
+      "kind": "Composant de stock",
+      "targetIds": [
+        "target-v81-64-164",
+        "target-v81-64-170"
+      ],
+      "purpose": "Stocker et présenter séparément un paquet textile, en pouvant vider/remplir les racks sans fusion au mobilier.",
+      "placementNote": "Placer sur une tablette ou palette ; échelle et zones d’appui à vérifier en scène.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 4,
+      "expectedPath": "sprites/market/HWM162-S13-bound-cloth-roll.png",
+      "viewPolicy": "PROJECT_CAMERA_TARGET",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "public/game/homeworld/v76/interior/rack-lateral.png"
+      ],
+      "complements": [
+        "HWM162-S12",
+        "HWM162-S05"
+      ],
+      "referenceViewNote": "Nouvelle vue demandée orthographique yaw 0° / pitch 35° ; aucune mesure 3D ni dimensions canoniques.",
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE"
+    },
+    {
+      "id": "HWM162-S14",
+      "area": "market",
+      "label": "Volet plein de réserve autonome",
+      "kind": "Fermeture de bâtiment",
+      "targetIds": [
+        "target-v81-64-170"
+      ],
+      "purpose": "Proposer une fermeture pleine de la baie frontale du stock S05.",
+      "placementNote": "Dimensionnement, guidage, pivot, occlusion, débattement et raccord au linteau à vérifier dans la scène. Aucun bâtiment, sol ou cadre complet fusionné au PNG.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 4,
+      "expectedPath": "sprites/market/HWM162-S14-stock-shutter.png",
+      "viewPolicy": "PROJECT_CAMERA_TARGET",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "production/homeworld-sectors-20261103/sprites/market/HWM162-S05-stock-shelter.png"
+      ],
+      "complements": [
+        "HWM162-S05"
+      ],
+      "referenceViewNote": "Vue frontale cohérente avec S05 demandée orthographique yaw 0° / pitch 35° ; résultat non mesuré.",
+      "sourceAssetIds": [
+        "HWM162-S05"
+      ],
+      "mechanismStatus": "NEW_PROPOSED_COMPONENT_NOT_ATTESTED_IN_REFERENCE",
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE"
+    },
+    {
+      "id": "HWM162-M13",
+      "area": "mounts",
+      "label": "Longe d’attache à deux embouts",
+      "kind": "Accessoire de liaison",
+      "targetIds": [
+        "target-v81-72-281"
+      ],
+      "purpose": "Proposer une liaison autonome entre la borne d’attache et le harnais, avec un embout mécanique à chaque extrémité.",
+      "placementNote": "Aucune poignée de conduite ; positionner les deux embouts et laisser une courbe de mou. Compatibilité mécanique et longueur en scène à vérifier.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 4,
+      "viewPolicy": "PROJECT_CAMERA_TARGET",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M02-tether-station.png",
+        "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-283-mount-harness-native.png"
+      ],
+      "complements": [
+        "HWM162-M02"
+      ],
+      "referenceViewNote": "Nouvel objet ou nouvelle pose demandés suivant la cible Homeworld orthographique yaw 0° / pitch 35° ; caméra et géométrie réelles non mesurées.",
+      "sourceAssetIds": [
+        "HWM162-M02"
+      ],
+      "expectedPath": "sprites/mounts/HWM162-M13-double-ended-tether.png",
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE"
+    },
+    {
+      "id": "HWM162-M14",
+      "area": "mounts",
+      "label": "Harnais de monture — pose pendante",
+      "kind": "Pose indépendante",
+      "targetIds": [
+        "target-v81-72-283"
+      ],
+      "purpose": "Fournir le harnais seul dans une pose utilisable sur son support de rangement vide.",
+      "placementNote": "Ajuster l’accroche au support 282 ; aucune créature ni adaptation anatomique validée.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 4,
+      "viewPolicy": "PROJECT_CAMERA_TARGET",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-283-mount-harness-native.png",
+        "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-282-mount-harness-support-native.png"
+      ],
+      "complements": [],
+      "referenceViewNote": "Nouvelle pose pendante, orientation de l’objet adaptée à l’axe des deux crochets supérieurs du support 282. Cible de caméra demandée orthographique 0°/35° ; caméra réelle et raccord non mesurés.",
+      "expectedPath": "sprites/mounts/HWM162-M14-hanging-mount-harness-v2.png",
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE"
+    },
+    {
+      "id": "HWM162-M15",
+      "area": "mounts",
+      "label": "Berceau textile de soin",
+      "kind": "Accessoire de soin",
+      "targetIds": [
+        "target-v81-72-290"
+      ],
+      "purpose": "Compléter le support bas à quatre appuis par un berceau souple autonome pour la zone de soins.",
+      "placementNote": "Les appuis de 273 sont bas et rembourrés ; aucun portique de levage n’est présent. La pose, les liaisons et la capacité de charge sont des propositions non validées.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 4,
+      "viewPolicy": "PROJECT_CAMERA_TARGET",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "production/native-open-20261102/archives/fauna-energy/gear/target-v81-71-273-fauna-harness-support-native.png",
+        "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-283-mount-harness-native.png"
+      ],
+      "complements": [
+        "HWM162-M06"
+      ],
+      "referenceViewNote": "Orientation de l’objet adaptée aux longerons obliques du support bas 273. Cible de caméra demandée orthographique 0°/35° ; caméra réelle et positions d’appui non mesurées.",
+      "expectedPath": "sprites/mounts/HWM162-M15-soft-care-cradle-v2.png",
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE"
+    },
+    {
+      "id": "HWM162-K14",
+      "area": "kennels",
+      "label": "Abreuvoir alien — état vide",
+      "kind": "État vide",
+      "targetIds": [
+        "target-v81-71-271"
+      ],
+      "purpose": "Montrer le bassin sec lorsque l’abreuvoir est vidé ou en entretien.",
+      "placementNote": "Garder l’approche dégagée ; aligner cet état avec la source remplie avant toute transition en jeu.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 4,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-271-abreuvoir-alien-native-attempt02.png"
+      ],
+      "complements": [],
+      "referenceViewNote": "Identité et vue de la référence conservées ; angle réel non mesuré. Aucune conversion générale à 0°/35° revendiquée.",
+      "expectedPath": "sprites/kennels/HWM162-K14-empty-alien-drinker.png",
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE"
+    },
+    {
+      "id": "HWM162-K15",
+      "area": "kennels",
+      "label": "Nourrisseur à trémie — bac vide",
+      "kind": "État vide",
+      "targetIds": [
+        "target-v81-71-272"
+      ],
+      "purpose": "Montrer le bac et la goulotte sans aliments visibles, en conservant le nourrisseur complet.",
+      "placementNote": "Prévoir l’approche au bac et le remplissage ; contenu du réservoir fermé non observable. Aucun mécanisme de bac amovible déduit du dessin.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 4,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-272-nourrisseur-native.png"
+      ],
+      "complements": [],
+      "referenceViewNote": "Identité et vue de la référence conservées ; angle réel non mesuré. Aucune conversion générale à 0°/35° revendiquée.",
+      "expectedPath": "sprites/kennels/HWM162-K15-empty-hopper-feeder.png",
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE"
+    },
+    {
+      "id": "HWM162-K16",
+      "area": "kennels",
+      "label": "Râtelier de dressage — vide",
+      "kind": "État vide",
+      "targetIds": [
+        "target-v81-71-274"
+      ],
+      "purpose": "Permettre de disposer séparément les laisses, leurres et colliers sur les crochets du râtelier.",
+      "placementNote": "Conserver les cinq crochets libres et le passage devant le support ; vérifier chaque accroche en scène.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 4,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K03-training-rack.png"
+      ],
+      "complements": [
+        "HWM162-K03",
+        "HWM162-K07",
+        "HWM162-K08",
+        "HWM162-K09"
+      ],
+      "referenceViewNote": "Identité et vue de la référence conservées ; angle réel non mesuré. Aucune conversion générale à 0°/35° revendiquée.",
+      "expectedPath": "sprites/kennels/HWM162-K16-empty-training-rack.png",
+      "sourceAssetIds": [
+        "HWM162-K03"
+      ],
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE"
+    },
+    {
+      "id": "HWM162-K17",
+      "area": "kennels",
+      "label": "Balise de danger — éteinte",
+      "kind": "État désactivé",
+      "targetIds": [
+        "target-v81-71-280"
+      ],
+      "purpose": "Distinguer graphiquement la balise sans émission de son état d’alerte lumineux.",
+      "placementNote": "Le symbole et le corps restent identiques ; aucun sens canonique du glyphe ni comportement runtime n’est certifié.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 4,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-280-signal-danger-native.png"
+      ],
+      "complements": [],
+      "referenceViewNote": "Identité et vue de la référence conservées ; angle réel non mesuré. Aucune conversion générale à 0°/35° revendiquée.",
+      "expectedPath": "sprites/kennels/HWM162-K17-danger-beacon-off.png",
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE"
     }
   ],
   "inheritedTargets": [
@@ -7224,12 +7575,1662 @@
       "marginAlpha0": 30,
       "marginAlpha24": 263,
       "proposedWorldSize": {}
+    },
+    {
+      "id": "HWM162-S11",
+      "area": "market",
+      "label": "Comptoir marchand — stock retiré",
+      "kind": "État vide",
+      "targetIds": [
+        "target-v81-64-163"
+      ],
+      "purpose": "Fournir le comptoir avec sa console fixe et ses espaces de présentation dégagés.",
+      "placementNote": "Préserver l’accès du vendeur et les surfaces de prise ; placer les marchandises séparément. Réemploi secondaire envisageable pour la cible 159 dans la vue existante.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 4,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "public/game/homeworld/v83/merchant-counter-left.png"
+      ],
+      "complements": [
+        "HWM162-S10"
+      ],
+      "referenceViewNote": "Identité et vue de la référence conservées ; angle réel non mesuré. Aucune conversion générale à 0°/35° revendiquée.",
+      "expectedPath": "sprites/market/HWM162-S11-empty-merchant-counter.png",
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S11-empty-merchant-counter.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2205367,
+      "sha256": "5f3f3d7f3995bbe7e1b321ea7d8c5c11b1c351553f8bed700983e02388e5ec77",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 973056,
+      "transparentRatio": 0.61865234,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            31,
+            1496,
+            985
+          ],
+          "margins": [
+            0,
+            31,
+            40,
+            39
+          ],
+          "minMargin": 0,
+          "pixels": 599808
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            170,
+            34,
+            1396,
+            977
+          ],
+          "margins": [
+            170,
+            34,
+            140,
+            47
+          ],
+          "minMargin": 34,
+          "pixels": 584361
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            170,
+            34,
+            1396,
+            977
+          ],
+          "margins": [
+            170,
+            34,
+            140,
+            47
+          ],
+          "minMargin": 34,
+          "pixels": 583355
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            170,
+            34,
+            1395,
+            977
+          ],
+          "margins": [
+            170,
+            34,
+            141,
+            47
+          ],
+          "minMargin": 34,
+          "pixels": 580530
+        }
+      },
+      "edgeAlphaMax": 1,
+      "strictClearMargin": false,
+      "mainSilhouetteInsideCanvas": true,
+      "proposedMetres": {},
+      "dimensionsAuthority": "PROJECT_BRIEF_NOT_CANONICAL_MEASUREMENT",
+      "generationCameraRequest": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "reference": "public/game/homeworld/v83/merchant-counter-left.png",
+        "measured": false
+      },
+      "projectCameraConformance": "NOT_MEASURED",
+      "pivotDraftPixels": {
+        "x": 783,
+        "y": 977,
+        "status": "BOUNDING_BOX_ANCHOR_ONLY_NOT_MEASURED_GROUND_CONTACT"
+      },
+      "receipt": "production/homeworld-sectors-20261103/receipts/market.json",
+      "notes": [
+        "Préserver l’accès du vendeur et les surfaces de prise ; placer les marchandises séparément. Réemploi secondaire envisageable pour la cible 159 dans la vue existante.",
+        "Source PNG selected after generation; no scripted image cleanup, resizing or padding.",
+        "A few alpha 1 pixels can reach the canvas edges; alpha > 24 bounds describe the main silhouette only.",
+        "The Homeworld camera target is 0°/35°; state edits can explicitly inherit a historical reference view. Camera and metre dimensions are not measured 3D or canonical certifications.",
+        "Identité et vue de la référence conservées ; angle réel non mesuré. Aucune conversion générale à 0°/35° revendiquée.",
+        "Trois compartiments de vitrine vides et plan arrière libre ; console structurelle, pointe latérale, tiroirs, pieds et palette conservés. Vue diagonale de la source héritée. Silhouette entière, minimum34px au seuil24 ; traces alpha faibles au bord gauche conservées. Aucun inventaire ajouté. Alignement des états à contrôler en scène.",
+        "Visible margin is below the requested 80px on at least one side; the main silhouette remains inside the image."
+      ],
+      "canonicalOneToOneClaimed": false,
+      "cameraMeasured": false,
+      "scaleValidatedInGame": false,
+      "localPath": "sprites/market/HWM162-S11-empty-merchant-counter.png",
+      "exists": true,
+      "hasTransparency": true,
+      "minimumVisibleMargin": 0,
+      "marginAlpha0": 0,
+      "marginAlpha24": 34,
+      "proposedWorldSize": {}
+    },
+    {
+      "id": "HWM162-S12",
+      "area": "market",
+      "label": "Rack marchand — vide",
+      "kind": "État vide",
+      "targetIds": [
+        "target-v81-64-164"
+      ],
+      "purpose": "Composer librement le stock sur les deux niveaux du rack sans contenants fusionnés.",
+      "placementNote": "Conserver l’accès aux tablettes ; calibrer la taille des contenants et leur appui en scène.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 4,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "public/game/homeworld/v83/cargo-rack-right.png"
+      ],
+      "complements": [
+        "HWM162-S09"
+      ],
+      "referenceViewNote": "Identité et vue de la référence conservées ; angle réel non mesuré. Aucune conversion générale à 0°/35° revendiquée.",
+      "expectedPath": "sprites/market/HWM162-S12-empty-cargo-rack.png",
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S12-empty-cargo-rack.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "bytes": 1128125,
+      "sha256": "3be2caab5f363e4ca5a580457aa0ea11b1677a7386d4c2ca0c0f54f0b4c7bffb",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 1137326,
+      "transparentRatio": 0.72325242,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            23,
+            1228,
+            1254
+          ],
+          "margins": [
+            0,
+            23,
+            26,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 435190
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            147,
+            224,
+            1099,
+            1089
+          ],
+          "margins": [
+            147,
+            224,
+            155,
+            165
+          ],
+          "minMargin": 147,
+          "pixels": 412093
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            148,
+            224,
+            1099,
+            1089
+          ],
+          "margins": [
+            148,
+            224,
+            155,
+            165
+          ],
+          "minMargin": 148,
+          "pixels": 410332
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            148,
+            224,
+            1098,
+            1088
+          ],
+          "margins": [
+            148,
+            224,
+            156,
+            166
+          ],
+          "minMargin": 148,
+          "pixels": 405397
+        }
+      },
+      "edgeAlphaMax": 1,
+      "strictClearMargin": false,
+      "mainSilhouetteInsideCanvas": true,
+      "proposedMetres": {},
+      "dimensionsAuthority": "PROJECT_BRIEF_NOT_CANONICAL_MEASUREMENT",
+      "generationCameraRequest": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "reference": "public/game/homeworld/v83/cargo-rack-right.png",
+        "measured": false
+      },
+      "projectCameraConformance": "NOT_MEASURED",
+      "pivotDraftPixels": {
+        "x": 623.5,
+        "y": 1089,
+        "status": "BOUNDING_BOX_ANCHOR_ONLY_NOT_MEASURED_GROUND_CONTACT"
+      },
+      "receipt": "production/homeworld-sectors-20261103/receipts/market.json",
+      "notes": [
+        "Conserver l’accès aux tablettes ; calibrer la taille des contenants et leur appui en scène.",
+        "Source PNG selected after generation; no scripted image cleanup, resizing or padding.",
+        "A few alpha 1 pixels can reach the canvas edges; alpha > 24 bounds describe the main silhouette only.",
+        "The Homeworld camera target is 0°/35°; state edits can explicitly inherit a historical reference view. Camera and metre dimensions are not measured 3D or canonical certifications.",
+        "Identité et vue de la référence conservées ; angle réel non mesuré. Aucune conversion générale à 0°/35° revendiquée.",
+        "Rack autonome à deux niveaux, six contenants retirés ; tablettes et supports conservés, ouvertures libres, orientation historique inchangée visuellement. Une correction native de cadrage carré restaure le pied entier et une marge généreuse. Aucune retouche de pixels ni padding par script."
+      ],
+      "canonicalOneToOneClaimed": false,
+      "cameraMeasured": false,
+      "scaleValidatedInGame": false,
+      "localPath": "sprites/market/HWM162-S12-empty-cargo-rack.png",
+      "exists": true,
+      "hasTransparency": true,
+      "minimumVisibleMargin": 0,
+      "marginAlpha0": 0,
+      "marginAlpha24": 148,
+      "proposedWorldSize": {}
+    },
+    {
+      "id": "HWM162-S13",
+      "area": "market",
+      "label": "Rouleau de textile lié autonome",
+      "kind": "Composant de stock",
+      "targetIds": [
+        "target-v81-64-164",
+        "target-v81-64-170"
+      ],
+      "purpose": "Stocker et présenter séparément un paquet textile, en pouvant vider/remplir les racks sans fusion au mobilier.",
+      "placementNote": "Placer sur une tablette ou palette ; échelle et zones d’appui à vérifier en scène.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 4,
+      "expectedPath": "sprites/market/HWM162-S13-bound-cloth-roll.png",
+      "viewPolicy": "PROJECT_CAMERA_TARGET",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "public/game/homeworld/v76/interior/rack-lateral.png"
+      ],
+      "complements": [
+        "HWM162-S12",
+        "HWM162-S05"
+      ],
+      "referenceViewNote": "Nouvelle vue demandée orthographique yaw 0° / pitch 35° ; aucune mesure 3D ni dimensions canoniques.",
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S13-bound-cloth-roll.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2150111,
+      "sha256": "477c5a8f4e1d7d7a19bff6b8b3bbe70523d9dd4774fb2e0cac3b25bb757ec0d9",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 1026911,
+      "transparentRatio": 0.65289243,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            15,
+            1518,
+            1024
+          ],
+          "margins": [
+            0,
+            15,
+            18,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 545953
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            197,
+            132,
+            1309,
+            903
+          ],
+          "margins": [
+            197,
+            132,
+            227,
+            121
+          ],
+          "minMargin": 121,
+          "pixels": 527025
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            197,
+            134,
+            1309,
+            903
+          ],
+          "margins": [
+            197,
+            134,
+            227,
+            121
+          ],
+          "minMargin": 121,
+          "pixels": 526168
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            198,
+            134,
+            1309,
+            902
+          ],
+          "margins": [
+            198,
+            134,
+            227,
+            122
+          ],
+          "minMargin": 122,
+          "pixels": 524052
+        }
+      },
+      "edgeAlphaMax": 1,
+      "strictClearMargin": false,
+      "mainSilhouetteInsideCanvas": true,
+      "proposedMetres": {},
+      "dimensionsAuthority": "PROJECT_BRIEF_NOT_CANONICAL_MEASUREMENT",
+      "generationCameraRequest": {
+        "mode": "PROJECT_ORTHOGRAPHIC_TARGET",
+        "projection": "orthographic",
+        "yaw": 0,
+        "pitch": 35,
+        "measured": false
+      },
+      "projectCameraConformance": "NOT_MEASURED",
+      "pivotDraftPixels": {
+        "x": 753,
+        "y": 903,
+        "status": "BOUNDING_BOX_ANCHOR_ONLY_NOT_MEASURED_GROUND_CONTACT"
+      },
+      "receipt": "production/homeworld-sectors-20261103/receipts/market.json",
+      "notes": [
+        "Placer sur une tablette ou palette ; échelle et zones d’appui à vérifier en scène.",
+        "Source PNG selected after generation; no scripted image cleanup, resizing or padding.",
+        "A few alpha 1 pixels can reach the canvas edges; alpha > 24 bounds describe the main silhouette only.",
+        "The Homeworld camera target is 0°/35°; state edits can explicitly inherit a historical reference view. Camera and metre dimensions are not measured 3D or canonical certifications.",
+        "Nouvelle vue demandée orthographique yaw 0° / pitch 35° ; aucune mesure 3D ni dimensions canoniques.",
+        "Un seul rouleau compact rouge/brun à motifs géométriques charbon, deux sangles de cuir et boucles bronze ; spirale lisible, textile séparé de toute étagère. Silhouette entière. Ni origine de clan, ni espèce, ni dimension canonique attribuée."
+      ],
+      "canonicalOneToOneClaimed": false,
+      "cameraMeasured": false,
+      "scaleValidatedInGame": false,
+      "localPath": "sprites/market/HWM162-S13-bound-cloth-roll.png",
+      "exists": true,
+      "hasTransparency": true,
+      "minimumVisibleMargin": 0,
+      "marginAlpha0": 0,
+      "marginAlpha24": 121,
+      "proposedWorldSize": {}
+    },
+    {
+      "id": "HWM162-S14",
+      "area": "market",
+      "label": "Volet plein de réserve autonome",
+      "kind": "Fermeture de bâtiment",
+      "targetIds": [
+        "target-v81-64-170"
+      ],
+      "purpose": "Proposer une fermeture pleine de la baie frontale du stock S05.",
+      "placementNote": "Dimensionnement, guidage, pivot, occlusion, débattement et raccord au linteau à vérifier dans la scène. Aucun bâtiment, sol ou cadre complet fusionné au PNG.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 4,
+      "expectedPath": "sprites/market/HWM162-S14-stock-shutter.png",
+      "viewPolicy": "PROJECT_CAMERA_TARGET",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "production/homeworld-sectors-20261103/sprites/market/HWM162-S05-stock-shelter.png"
+      ],
+      "complements": [
+        "HWM162-S05"
+      ],
+      "referenceViewNote": "Vue frontale cohérente avec S05 demandée orthographique yaw 0° / pitch 35° ; résultat non mesuré.",
+      "sourceAssetIds": [
+        "HWM162-S05"
+      ],
+      "mechanismStatus": "NEW_PROPOSED_COMPONENT_NOT_ATTESTED_IN_REFERENCE",
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S14-stock-shutter.png",
+      "width": 1729,
+      "height": 910,
+      "mode": "RGBA",
+      "bytes": 2391851,
+      "sha256": "6cc6a0882277632aa08f4328d6e250770f954aa92b1667a842b5eb682dade7b0",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 518251,
+      "transparentRatio": 0.32938496,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            3,
+            1656,
+            910
+          ],
+          "margins": [
+            0,
+            3,
+            73,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 1055139
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            79,
+            132,
+            1651,
+            800
+          ],
+          "margins": [
+            79,
+            132,
+            78,
+            110
+          ],
+          "minMargin": 78,
+          "pixels": 1039372
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            80,
+            133,
+            1651,
+            800
+          ],
+          "margins": [
+            80,
+            133,
+            78,
+            110
+          ],
+          "minMargin": 78,
+          "pixels": 1036711
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            80,
+            135,
+            1650,
+            799
+          ],
+          "margins": [
+            80,
+            135,
+            79,
+            111
+          ],
+          "minMargin": 79,
+          "pixels": 1034505
+        }
+      },
+      "edgeAlphaMax": 1,
+      "strictClearMargin": false,
+      "mainSilhouetteInsideCanvas": true,
+      "proposedMetres": {},
+      "dimensionsAuthority": "PROJECT_BRIEF_NOT_CANONICAL_MEASUREMENT",
+      "generationCameraRequest": {
+        "mode": "PROJECT_ORTHOGRAPHIC_TARGET",
+        "projection": "orthographic",
+        "yaw": 0,
+        "pitch": 35,
+        "measured": false
+      },
+      "projectCameraConformance": "NOT_MEASURED",
+      "pivotDraftPixels": {
+        "x": 865.5,
+        "y": 800,
+        "status": "BOUNDING_BOX_ANCHOR_ONLY_NOT_MEASURED_GROUND_CONTACT"
+      },
+      "receipt": "production/homeworld-sectors-20261103/receipts/market.json",
+      "notes": [
+        "Dimensionnement, guidage, pivot, occlusion, débattement et raccord au linteau à vérifier dans la scène. Aucun bâtiment, sol ou cadre complet fusionné au PNG.",
+        "Source PNG selected after generation; no scripted image cleanup, resizing or padding.",
+        "A few alpha 1 pixels can reach the canvas edges; alpha > 24 bounds describe the main silhouette only.",
+        "The Homeworld camera target is 0°/35°; state edits can explicitly inherit a historical reference view. Camera and metre dimensions are not measured 3D or canonical certifications.",
+        "Vue frontale cohérente avec S05 demandée orthographique yaw 0° / pitch 35° ; résultat non mesuré.",
+        "Un volet plein large autonome, lames horizontales jointives et bordure bronze, deux prises encastrées, fermeture centrale simple. Aucun bâtiment, sol, pilier ni cadre de baie fusionné. Silhouette entière. Ce mécanisme est une proposition originale pour S05 ; aucun raccord ou mouvement testé en scène.",
+        "Visible margin is below the requested 80px on at least one side; the main silhouette remains inside the image."
+      ],
+      "canonicalOneToOneClaimed": false,
+      "cameraMeasured": false,
+      "scaleValidatedInGame": false,
+      "localPath": "sprites/market/HWM162-S14-stock-shutter.png",
+      "exists": true,
+      "hasTransparency": true,
+      "minimumVisibleMargin": 0,
+      "marginAlpha0": 0,
+      "marginAlpha24": 78,
+      "proposedWorldSize": {}
+    },
+    {
+      "id": "HWM162-M13",
+      "area": "mounts",
+      "label": "Longe d’attache à deux embouts",
+      "kind": "Accessoire de liaison",
+      "targetIds": [
+        "target-v81-72-281"
+      ],
+      "purpose": "Proposer une liaison autonome entre la borne d’attache et le harnais, avec un embout mécanique à chaque extrémité.",
+      "placementNote": "Aucune poignée de conduite ; positionner les deux embouts et laisser une courbe de mou. Compatibilité mécanique et longueur en scène à vérifier.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 4,
+      "viewPolicy": "PROJECT_CAMERA_TARGET",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M02-tether-station.png",
+        "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-283-mount-harness-native.png"
+      ],
+      "complements": [
+        "HWM162-M02"
+      ],
+      "referenceViewNote": "Nouvel objet ou nouvelle pose demandés suivant la cible Homeworld orthographique yaw 0° / pitch 35° ; caméra et géométrie réelles non mesurées.",
+      "sourceAssetIds": [
+        "HWM162-M02"
+      ],
+      "expectedPath": "sprites/mounts/HWM162-M13-double-ended-tether.png",
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M13-double-ended-tether.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 1600052,
+      "sha256": "f9636f0a0d7defd5885977758fafe54542bfb7d638bd4207d8004ea4a9c385cb",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 1242079,
+      "transparentRatio": 0.78969256,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            0,
+            1518,
+            1024
+          ],
+          "margins": [
+            0,
+            0,
+            18,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 330785
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            162,
+            193,
+            1371,
+            855
+          ],
+          "margins": [
+            162,
+            193,
+            165,
+            169
+          ],
+          "minMargin": 162,
+          "pixels": 298620
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            163,
+            193,
+            1371,
+            855
+          ],
+          "margins": [
+            163,
+            193,
+            165,
+            169
+          ],
+          "minMargin": 163,
+          "pixels": 296618
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            164,
+            194,
+            1370,
+            854
+          ],
+          "margins": [
+            164,
+            194,
+            166,
+            170
+          ],
+          "minMargin": 164,
+          "pixels": 291411
+        }
+      },
+      "edgeAlphaMax": 1,
+      "strictClearMargin": false,
+      "mainSilhouetteInsideCanvas": true,
+      "proposedMetres": {},
+      "dimensionsAuthority": "PROJECT_BRIEF_NOT_CANONICAL_MEASUREMENT",
+      "generationCameraRequest": {
+        "mode": "PROJECT_ORTHOGRAPHIC_REQUEST",
+        "yaw_degrees": 0,
+        "pitch_degrees": 35,
+        "projection": "orthographic"
+      },
+      "projectCameraConformance": "NOT_MEASURED",
+      "pivotDraftPixels": {
+        "x": 767,
+        "y": 855,
+        "status": "BOUNDING_BOX_ANCHOR_ONLY_NOT_MEASURED_GROUND_CONTACT"
+      },
+      "receipt": "production/homeworld-sectors-20261103/receipts/mounts.json",
+      "notes": [
+        "Aucune poignée de conduite ; positionner les deux embouts et laisser une courbe de mou. Compatibilité mécanique et longueur en scène à vérifier.",
+        "Source PNG selected after generation; no scripted image cleanup, resizing or padding.",
+        "A few alpha 1 pixels can reach the canvas edges; alpha > 24 bounds describe the main silhouette only.",
+        "The Homeworld camera target is 0°/35°; state edits can explicitly inherit a historical reference view. Camera and metre dimensions are not measured 3D or canonical certifications.",
+        "Nouvel objet ou nouvelle pose demandés suivant la cible Homeworld orthographique yaw 0° / pitch 35° ; caméra et géométrie réelles non mesurées.",
+        "One continuous chain with two complete bronze closed shackles and visible captive pins. Both terminal connectors, all links and their silhouette are inside the canvas. Open S-shaped pose, no hand loop and no support merged into the sprite. Distinct from K07 handler lead. Material family derives from M02 and harness283. The requested linking function is proposed only; scale, connector clearances, load capacity and species fit have not been validated. Native RGBA source copied unchanged."
+      ],
+      "canonicalOneToOneClaimed": false,
+      "cameraMeasured": false,
+      "scaleValidatedInGame": false,
+      "localPath": "sprites/mounts/HWM162-M13-double-ended-tether.png",
+      "exists": true,
+      "hasTransparency": true,
+      "minimumVisibleMargin": 0,
+      "marginAlpha0": 0,
+      "marginAlpha24": 163,
+      "proposedWorldSize": {}
+    },
+    {
+      "id": "HWM162-M14",
+      "area": "mounts",
+      "label": "Harnais de monture — pose pendante",
+      "kind": "Pose indépendante",
+      "targetIds": [
+        "target-v81-72-283"
+      ],
+      "purpose": "Fournir le harnais seul dans une pose utilisable sur son support de rangement vide.",
+      "placementNote": "Ajuster l’accroche au support 282 ; aucune créature ni adaptation anatomique validée.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 4,
+      "viewPolicy": "PROJECT_CAMERA_TARGET",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-283-mount-harness-native.png",
+        "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-282-mount-harness-support-native.png"
+      ],
+      "complements": [],
+      "referenceViewNote": "Nouvelle pose pendante, orientation de l’objet adaptée à l’axe des deux crochets supérieurs du support 282. Cible de caméra demandée orthographique 0°/35° ; caméra réelle et raccord non mesurés.",
+      "expectedPath": "sprites/mounts/HWM162-M14-hanging-mount-harness-v2.png",
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M14-hanging-mount-harness-v2.png",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "bytes": 2042441,
+      "sha256": "d07668ce8a54d48cd8d5e340a5f6fb3361fa20724c4a7b84dd770d7474c9fba9",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 1077764,
+      "transparentRatio": 0.6852239,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            65,
+            39,
+            1006,
+            1510
+          ],
+          "margins": [
+            65,
+            39,
+            18,
+            26
+          ],
+          "minMargin": 18,
+          "pixels": 495100
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            137,
+            119,
+            882,
+            1435
+          ],
+          "margins": [
+            137,
+            119,
+            142,
+            101
+          ],
+          "minMargin": 101,
+          "pixels": 465789
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            137,
+            120,
+            882,
+            1434
+          ],
+          "margins": [
+            137,
+            120,
+            142,
+            102
+          ],
+          "minMargin": 102,
+          "pixels": 463823
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            138,
+            120,
+            881,
+            1434
+          ],
+          "margins": [
+            138,
+            120,
+            143,
+            102
+          ],
+          "minMargin": 102,
+          "pixels": 458511
+        }
+      },
+      "edgeAlphaMax": 0,
+      "strictClearMargin": true,
+      "mainSilhouetteInsideCanvas": true,
+      "proposedMetres": {},
+      "dimensionsAuthority": "PROJECT_BRIEF_NOT_CANONICAL_MEASUREMENT",
+      "generationCameraRequest": {
+        "mode": "PROJECT_ORTHOGRAPHIC_REQUEST",
+        "yaw_degrees": 0,
+        "pitch_degrees": 35,
+        "projection": "orthographic",
+        "object_orientation": "left attachment loop higher/farther, right loop lower/nearer; three-quarter object orientation guided by support282"
+      },
+      "projectCameraConformance": "NOT_MEASURED",
+      "pivotDraftPixels": {
+        "x": 509.5,
+        "y": 1434,
+        "status": "BOUNDING_BOX_ANCHOR_ONLY_NOT_MEASURED_GROUND_CONTACT"
+      },
+      "receipt": "production/homeworld-sectors-20261103/receipts/mounts.json",
+      "notes": [
+        "Ajuster l’accroche au support 282 ; aucune créature ni adaptation anatomique validée.",
+        "Source PNG selected after generation; no scripted image cleanup, resizing or padding.",
+        "A few alpha 1 pixels can reach the canvas edges; alpha > 24 bounds describe the main silhouette only.",
+        "The Homeworld camera target is 0°/35°; state edits can explicitly inherit a historical reference view. Camera and metre dimensions are not measured 3D or canonical certifications.",
+        "Nouvelle pose pendante, orientation de l’objet adaptée à l’axe des deux crochets supérieurs du support 282. Cible de caméra demandée orthographique 0°/35° ; caméra réelle et raccord non mesurés.",
+        "Second native attempt corrects the frontal attachment axis of v1: the hanging article is now shown in three-quarter depth with its left upper loop higher in the image and the right loop lower, following the direction of the upper support282 cross-arm. Complete breast collar, straps, buckles, upper loops and lower girth remain present; no stand or creature is fused into the file. Native rerender, no pixel rotation or mirror. Exact projected slope, loop spacing, scale and hardware fit to282 remain unverified; no translation-only fit or measured camera is claimed. The original v1 is retained unchanged under attempts and is not an additional selected sprite."
+      ],
+      "canonicalOneToOneClaimed": false,
+      "cameraMeasured": false,
+      "scaleValidatedInGame": false,
+      "localPath": "sprites/mounts/HWM162-M14-hanging-mount-harness-v2.png",
+      "exists": true,
+      "hasTransparency": true,
+      "minimumVisibleMargin": 18,
+      "marginAlpha0": 18,
+      "marginAlpha24": 102,
+      "proposedWorldSize": {}
+    },
+    {
+      "id": "HWM162-M15",
+      "area": "mounts",
+      "label": "Berceau textile de soin",
+      "kind": "Accessoire de soin",
+      "targetIds": [
+        "target-v81-72-290"
+      ],
+      "purpose": "Compléter le support bas à quatre appuis par un berceau souple autonome pour la zone de soins.",
+      "placementNote": "Les appuis de 273 sont bas et rembourrés ; aucun portique de levage n’est présent. La pose, les liaisons et la capacité de charge sont des propositions non validées.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 4,
+      "viewPolicy": "PROJECT_CAMERA_TARGET",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "production/native-open-20261102/archives/fauna-energy/gear/target-v81-71-273-fauna-harness-support-native.png",
+        "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-283-mount-harness-native.png"
+      ],
+      "complements": [
+        "HWM162-M06"
+      ],
+      "referenceViewNote": "Orientation de l’objet adaptée aux longerons obliques du support bas 273. Cible de caméra demandée orthographique 0°/35° ; caméra réelle et positions d’appui non mesurées.",
+      "expectedPath": "sprites/mounts/HWM162-M15-soft-care-cradle-v2.png",
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M15-soft-care-cradle-v2.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 1691979,
+      "sha256": "50593708ea5f1a7f2cd19c3bf537cc0b5d4a86e62e89e53cf87620e6388615dc",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 1191010,
+      "transparentRatio": 0.75722377,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            25,
+            41,
+            1512,
+            1008
+          ],
+          "margins": [
+            25,
+            41,
+            24,
+            16
+          ],
+          "minMargin": 16,
+          "pixels": 381854
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            132,
+            170,
+            1423,
+            877
+          ],
+          "margins": [
+            132,
+            170,
+            113,
+            147
+          ],
+          "minMargin": 113,
+          "pixels": 372738
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            133,
+            171,
+            1423,
+            877
+          ],
+          "margins": [
+            133,
+            171,
+            113,
+            147
+          ],
+          "minMargin": 113,
+          "pixels": 372064
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            133,
+            171,
+            1422,
+            876
+          ],
+          "margins": [
+            133,
+            171,
+            114,
+            148
+          ],
+          "minMargin": 114,
+          "pixels": 370009
+        }
+      },
+      "edgeAlphaMax": 0,
+      "strictClearMargin": true,
+      "mainSilhouetteInsideCanvas": true,
+      "proposedMetres": {},
+      "dimensionsAuthority": "PROJECT_BRIEF_NOT_CANONICAL_MEASUREMENT",
+      "generationCameraRequest": {
+        "mode": "PROJECT_ORTHOGRAPHIC_REQUEST",
+        "yaw_degrees": 0,
+        "pitch_degrees": 35,
+        "projection": "orthographic",
+        "object_orientation": "both long padded edges rise toward the right, three-quarter ground-plane orientation guided by support273 longitudinal rails"
+      },
+      "projectCameraConformance": "NOT_MEASURED",
+      "pivotDraftPixels": {
+        "x": 778,
+        "y": 877,
+        "status": "BOUNDING_BOX_ANCHOR_ONLY_NOT_MEASURED_GROUND_CONTACT"
+      },
+      "receipt": "production/homeworld-sectors-20261103/receipts/mounts.json",
+      "notes": [
+        "Les appuis de 273 sont bas et rembourrés ; aucun portique de levage n’est présent. La pose, les liaisons et la capacité de charge sont des propositions non validées.",
+        "Source PNG selected after generation; no scripted image cleanup, resizing or padding.",
+        "A few alpha 1 pixels can reach the canvas edges; alpha > 24 bounds describe the main silhouette only.",
+        "The Homeworld camera target is 0°/35°; state edits can explicitly inherit a historical reference view. Camera and metre dimensions are not measured 3D or canonical certifications.",
+        "Orientation de l’objet adaptée aux longerons obliques du support bas 273. Cible de caméra demandée orthographique 0°/35° ; caméra réelle et positions d’appui non mesurées.",
+        "Second native attempt corrects the frontal long-edge axis of v1: both padded long edges now rise toward the right, following the direction of the low support273 longitudinal rails. Four complete padded contact extensions and four short buckle tabs remain visible around the empty shallow textile body. No rigid frame, legs, overhead straps, suspended load or creature. Source273 is a LOW support with four padded U-shaped cradles and longitudinal rails, without an overhead beam. The article is proposed to rest on those four low contacts. Exact projected slopes, four-point registration, scale, contact clearances, stability, load capacity and species fit remain unverified; translation-only fit is not claimed. Native rerender without pixel rotation, mirror, resize or padding; v1 is archived unchanged and is not an additional selected sprite."
+      ],
+      "canonicalOneToOneClaimed": false,
+      "cameraMeasured": false,
+      "scaleValidatedInGame": false,
+      "localPath": "sprites/mounts/HWM162-M15-soft-care-cradle-v2.png",
+      "exists": true,
+      "hasTransparency": true,
+      "minimumVisibleMargin": 16,
+      "marginAlpha0": 16,
+      "marginAlpha24": 113,
+      "proposedWorldSize": {}
+    },
+    {
+      "id": "HWM162-K14",
+      "area": "kennels",
+      "label": "Abreuvoir alien — état vide",
+      "kind": "État vide",
+      "targetIds": [
+        "target-v81-71-271"
+      ],
+      "purpose": "Montrer le bassin sec lorsque l’abreuvoir est vidé ou en entretien.",
+      "placementNote": "Garder l’approche dégagée ; aligner cet état avec la source remplie avant toute transition en jeu.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 4,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-271-abreuvoir-alien-native-attempt02.png"
+      ],
+      "complements": [],
+      "referenceViewNote": "Identité et vue de la référence conservées ; angle réel non mesuré. Aucune conversion générale à 0°/35° revendiquée.",
+      "expectedPath": "sprites/kennels/HWM162-K14-empty-alien-drinker.png",
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K14-empty-alien-drinker.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 1996130,
+      "sha256": "41ae672380f0ea8c9c3fa155739b0cda082f95cf63c70db4f1e45538d9c1de6a",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 1066833,
+      "transparentRatio": 0.67827415,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            23,
+            1506,
+            1024
+          ],
+          "margins": [
+            0,
+            23,
+            30,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 506031
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            235,
+            200,
+            1324,
+            851
+          ],
+          "margins": [
+            235,
+            200,
+            212,
+            173
+          ],
+          "minMargin": 173,
+          "pixels": 496549
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            235,
+            201,
+            1323,
+            851
+          ],
+          "margins": [
+            235,
+            201,
+            213,
+            173
+          ],
+          "minMargin": 173,
+          "pixels": 495882
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            236,
+            201,
+            1322,
+            850
+          ],
+          "margins": [
+            236,
+            201,
+            214,
+            174
+          ],
+          "minMargin": 174,
+          "pixels": 493981
+        }
+      },
+      "edgeAlphaMax": 1,
+      "strictClearMargin": false,
+      "mainSilhouetteInsideCanvas": true,
+      "proposedMetres": {},
+      "dimensionsAuthority": "PROJECT_BRIEF_NOT_CANONICAL_MEASUREMENT",
+      "generationCameraRequest": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "reference_repo_path": "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-271-abreuvoir-alien-native-attempt02.png",
+        "source_request_if_known": null,
+        "actual_reference_view_inherited_requested": true,
+        "camera_measured": false,
+        "new_front_0_35_conversion_claimed": false,
+        "source_angle_not_inferred": true
+      },
+      "projectCameraConformance": "NOT_MEASURED",
+      "pivotDraftPixels": {
+        "x": 779,
+        "y": 851,
+        "status": "BOUNDING_BOX_ANCHOR_ONLY_NOT_MEASURED_GROUND_CONTACT"
+      },
+      "receipt": "production/homeworld-sectors-20261103/receipts/kennels.json",
+      "notes": [
+        "Garder l’approche dégagée ; aligner cet état avec la source remplie avant toute transition en jeu.",
+        "Source PNG selected after generation; no scripted image cleanup, resizing or padding.",
+        "A few alpha 1 pixels can reach the canvas edges; alpha > 24 bounds describe the main silhouette only.",
+        "The Homeworld camera target is 0°/35°; state edits can explicitly inherit a historical reference view. Camera and metre dimensions are not measured 3D or canonical certifications.",
+        "Identité et vue de la référence conservées ; angle réel non mesuré. Aucune conversion générale à 0°/35° revendiquée.",
+        "Abreuvoir ovale vidé : les cerclages, renforts et pieds restent visuellement cohérents avec la tentative02 choisie. Fond basaltique sec visible, sans eau ni reflet aquatique. La source masquait le fond par de l’eau : le fond sec nouvellement visible est une reconstruction du projet, sans preuve canonique. Cadrage paysage1536×1024 au lieu de la référence1254² ; aucune interchangeabilité pixel par pixel certifiée. Silhouette entière et marges visibles supérieures à80px."
+      ],
+      "canonicalOneToOneClaimed": false,
+      "cameraMeasured": false,
+      "scaleValidatedInGame": false,
+      "localPath": "sprites/kennels/HWM162-K14-empty-alien-drinker.png",
+      "exists": true,
+      "hasTransparency": true,
+      "minimumVisibleMargin": 0,
+      "marginAlpha0": 0,
+      "marginAlpha24": 173,
+      "proposedWorldSize": {}
+    },
+    {
+      "id": "HWM162-K15",
+      "area": "kennels",
+      "label": "Nourrisseur à trémie — bac vide",
+      "kind": "État vide",
+      "targetIds": [
+        "target-v81-71-272"
+      ],
+      "purpose": "Montrer le bac et la goulotte sans aliments visibles, en conservant le nourrisseur complet.",
+      "placementNote": "Prévoir l’approche au bac et le remplissage ; contenu du réservoir fermé non observable. Aucun mécanisme de bac amovible déduit du dessin.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 4,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-272-nourrisseur-native.png"
+      ],
+      "complements": [],
+      "referenceViewNote": "Identité et vue de la référence conservées ; angle réel non mesuré. Aucune conversion générale à 0°/35° revendiquée.",
+      "expectedPath": "sprites/kennels/HWM162-K15-empty-hopper-feeder.png",
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K15-empty-hopper-feeder.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "bytes": 1378925,
+      "sha256": "322c098200679914802402ec9df40374792ce9899bf55e4fedbd9836add9761e",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 1059121,
+      "transparentRatio": 0.67352002,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            40,
+            1234,
+            1214
+          ],
+          "margins": [
+            0,
+            40,
+            20,
+            40
+          ],
+          "minMargin": 0,
+          "pixels": 513395
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            175,
+            80,
+            1095,
+            1171
+          ],
+          "margins": [
+            175,
+            80,
+            159,
+            83
+          ],
+          "minMargin": 80,
+          "pixels": 503666
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            175,
+            80,
+            1094,
+            1170
+          ],
+          "margins": [
+            175,
+            80,
+            160,
+            84
+          ],
+          "minMargin": 80,
+          "pixels": 502878
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            176,
+            81,
+            1094,
+            1170
+          ],
+          "margins": [
+            176,
+            81,
+            160,
+            84
+          ],
+          "minMargin": 81,
+          "pixels": 500520
+        }
+      },
+      "edgeAlphaMax": 1,
+      "strictClearMargin": false,
+      "mainSilhouetteInsideCanvas": true,
+      "proposedMetres": {},
+      "dimensionsAuthority": "PROJECT_BRIEF_NOT_CANONICAL_MEASUREMENT",
+      "generationCameraRequest": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "reference_repo_path": "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-272-nourrisseur-native.png",
+        "source_request_if_known": null,
+        "actual_reference_view_inherited_requested": true,
+        "camera_measured": false,
+        "new_front_0_35_conversion_claimed": false,
+        "source_angle_not_inferred": true
+      },
+      "projectCameraConformance": "NOT_MEASURED",
+      "pivotDraftPixels": {
+        "x": 634.5,
+        "y": 1170,
+        "status": "BOUNDING_BOX_ANCHOR_ONLY_NOT_MEASURED_GROUND_CONTACT"
+      },
+      "receipt": "production/homeworld-sectors-20261103/receipts/kennels.json",
+      "notes": [
+        "Prévoir l’approche au bac et le remplissage ; contenu du réservoir fermé non observable. Aucun mécanisme de bac amovible déduit du dessin.",
+        "Source PNG selected after generation; no scripted image cleanup, resizing or padding.",
+        "A few alpha 1 pixels can reach the canvas edges; alpha > 24 bounds describe the main silhouette only.",
+        "The Homeworld camera target is 0°/35°; state edits can explicitly inherit a historical reference view. Camera and metre dimensions are not measured 3D or canonical certifications.",
+        "Identité et vue de la référence conservées ; angle réel non mesuré. Aucune conversion générale à 0°/35° revendiquée.",
+        "Nourrisseur à trémie conservé, avec couvercle fermé, goulotte, bac, pieds et renforts. Tous les aliments visibles sont retirés ; fond basaltique du bac vide et sec, goulotte dégagée. Le niveau interne du réservoir fermé n’est pas observable et n’est pas certifié. Silhouette entière ; marges visibles175/80/160/84px. Pas de bac supposé amovible ou nouvelle construction."
+      ],
+      "canonicalOneToOneClaimed": false,
+      "cameraMeasured": false,
+      "scaleValidatedInGame": false,
+      "localPath": "sprites/kennels/HWM162-K15-empty-hopper-feeder.png",
+      "exists": true,
+      "hasTransparency": true,
+      "minimumVisibleMargin": 0,
+      "marginAlpha0": 0,
+      "marginAlpha24": 80,
+      "proposedWorldSize": {}
+    },
+    {
+      "id": "HWM162-K16",
+      "area": "kennels",
+      "label": "Râtelier de dressage — vide",
+      "kind": "État vide",
+      "targetIds": [
+        "target-v81-71-274"
+      ],
+      "purpose": "Permettre de disposer séparément les laisses, leurres et colliers sur les crochets du râtelier.",
+      "placementNote": "Conserver les cinq crochets libres et le passage devant le support ; vérifier chaque accroche en scène.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 4,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K03-training-rack.png"
+      ],
+      "complements": [
+        "HWM162-K03",
+        "HWM162-K07",
+        "HWM162-K08",
+        "HWM162-K09"
+      ],
+      "referenceViewNote": "Identité et vue de la référence conservées ; angle réel non mesuré. Aucune conversion générale à 0°/35° revendiquée.",
+      "expectedPath": "sprites/kennels/HWM162-K16-empty-training-rack.png",
+      "sourceAssetIds": [
+        "HWM162-K03"
+      ],
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K16-empty-training-rack.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 1720354,
+      "sha256": "a7c9909f84ec0c53cc5caee8ebdc53ca4f0c1cdbe6e71297fe940d6de7346d90",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 1200504,
+      "transparentRatio": 0.76325989,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            51,
+            41,
+            1480,
+            988
+          ],
+          "margins": [
+            51,
+            41,
+            56,
+            36
+          ],
+          "minMargin": 36,
+          "pixels": 372360
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            58,
+            111,
+            1478,
+            980
+          ],
+          "margins": [
+            58,
+            111,
+            58,
+            44
+          ],
+          "minMargin": 44,
+          "pixels": 354335
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            58,
+            111,
+            1478,
+            979
+          ],
+          "margins": [
+            58,
+            111,
+            58,
+            45
+          ],
+          "minMargin": 45,
+          "pixels": 352813
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            59,
+            112,
+            1478,
+            979
+          ],
+          "margins": [
+            59,
+            112,
+            58,
+            45
+          ],
+          "minMargin": 45,
+          "pixels": 349382
+        }
+      },
+      "edgeAlphaMax": 0,
+      "strictClearMargin": true,
+      "mainSilhouetteInsideCanvas": true,
+      "proposedMetres": {},
+      "dimensionsAuthority": "PROJECT_BRIEF_NOT_CANONICAL_MEASUREMENT",
+      "generationCameraRequest": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "reference_repo_path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K03-training-rack.png",
+        "source_request_if_known": {
+          "yaw_degrees": 0,
+          "pitch_degrees": 35,
+          "projection": "orthographic",
+          "authority": "Original K03 receipt request, not measured."
+        },
+        "actual_reference_view_inherited_requested": true,
+        "camera_measured": false,
+        "new_front_0_35_conversion_claimed": false,
+        "source_angle_not_inferred": true
+      },
+      "projectCameraConformance": "NOT_MEASURED",
+      "pivotDraftPixels": {
+        "x": 768,
+        "y": 979,
+        "status": "BOUNDING_BOX_ANCHOR_ONLY_NOT_MEASURED_GROUND_CONTACT"
+      },
+      "receipt": "production/homeworld-sectors-20261103/receipts/kennels.json",
+      "notes": [
+        "Conserver les cinq crochets libres et le passage devant le support ; vérifier chaque accroche en scène.",
+        "Source PNG selected after generation; no scripted image cleanup, resizing or padding.",
+        "A few alpha 1 pixels can reach the canvas edges; alpha > 24 bounds describe the main silhouette only.",
+        "The Homeworld camera target is 0°/35°; state edits can explicitly inherit a historical reference view. Camera and metre dimensions are not measured 3D or canonical certifications.",
+        "Identité et vue de la référence conservées ; angle réel non mesuré. Aucune conversion générale à 0°/35° revendiquée.",
+        "Même râtelier K03, deux montants inclinés, deux socles, traverse supérieure et cinq crochets conservés ; trois laisses et deux leurres retirés. Aucun accessoire détaché ajouté. Ouverture centrale libre, contrôle sur315000pixels :314979alpha0 et21alpha1, zéro alpha>8. Marge visible minimale45px. Vue héritée du K03 dont la demande originale était orthographique0/35, pas une vue historique32° déduite.",
+        "Visible margin is below the requested 80px on at least one side; the main silhouette remains inside the image."
+      ],
+      "canonicalOneToOneClaimed": false,
+      "cameraMeasured": false,
+      "scaleValidatedInGame": false,
+      "localPath": "sprites/kennels/HWM162-K16-empty-training-rack.png",
+      "exists": true,
+      "hasTransparency": true,
+      "minimumVisibleMargin": 36,
+      "marginAlpha0": 36,
+      "marginAlpha24": 45,
+      "proposedWorldSize": {}
+    },
+    {
+      "id": "HWM162-K17",
+      "area": "kennels",
+      "label": "Balise de danger — éteinte",
+      "kind": "État désactivé",
+      "targetIds": [
+        "target-v81-71-280"
+      ],
+      "purpose": "Distinguer graphiquement la balise sans émission de son état d’alerte lumineux.",
+      "placementNote": "Le symbole et le corps restent identiques ; aucun sens canonique du glyphe ni comportement runtime n’est certifié.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 4,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-280-signal-danger-native.png"
+      ],
+      "complements": [],
+      "referenceViewNote": "Identité et vue de la référence conservées ; angle réel non mesuré. Aucune conversion générale à 0°/35° revendiquée.",
+      "expectedPath": "sprites/kennels/HWM162-K17-danger-beacon-off.png",
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K17-danger-beacon-off.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "bytes": 1117033,
+      "sha256": "7439ac5ebb4da79ab0fadea5d0117a30f5b9110273d59ae4e9a3ae4b68d705de",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 1173574,
+      "transparentRatio": 0.74630338,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            35,
+            1136,
+            1223
+          ],
+          "margins": [
+            0,
+            35,
+            118,
+            31
+          ],
+          "minMargin": 0,
+          "pixels": 398942
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            298,
+            38,
+            962,
+            1221
+          ],
+          "margins": [
+            298,
+            38,
+            292,
+            33
+          ],
+          "minMargin": 33,
+          "pixels": 389174
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            298,
+            39,
+            962,
+            1221
+          ],
+          "margins": [
+            298,
+            39,
+            292,
+            33
+          ],
+          "minMargin": 33,
+          "pixels": 388495
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            299,
+            40,
+            961,
+            1221
+          ],
+          "margins": [
+            299,
+            40,
+            293,
+            33
+          ],
+          "minMargin": 33,
+          "pixels": 386262
+        }
+      },
+      "edgeAlphaMax": 1,
+      "strictClearMargin": false,
+      "mainSilhouetteInsideCanvas": true,
+      "proposedMetres": {},
+      "dimensionsAuthority": "PROJECT_BRIEF_NOT_CANONICAL_MEASUREMENT",
+      "generationCameraRequest": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "reference_repo_path": "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-280-signal-danger-native.png",
+        "source_request_if_known": null,
+        "actual_reference_view_inherited_requested": true,
+        "camera_measured": false,
+        "new_front_0_35_conversion_claimed": false,
+        "source_angle_not_inferred": true
+      },
+      "projectCameraConformance": "NOT_MEASURED",
+      "pivotDraftPixels": {
+        "x": 630,
+        "y": 1221,
+        "status": "BOUNDING_BOX_ANCHOR_ONLY_NOT_MEASURED_GROUND_CONTACT"
+      },
+      "receipt": "production/homeworld-sectors-20261103/receipts/kennels.json",
+      "notes": [
+        "Le symbole et le corps restent identiques ; aucun sens canonique du glyphe ni comportement runtime n’est certifié.",
+        "Source PNG selected after generation; no scripted image cleanup, resizing or padding.",
+        "A few alpha 1 pixels can reach the canvas edges; alpha > 24 bounds describe the main silhouette only.",
+        "The Homeworld camera target is 0°/35°; state edits can explicitly inherit a historical reference view. Camera and metre dimensions are not measured 3D or canonical certifications.",
+        "Identité et vue de la référence conservées ; angle réel non mesuré. Aucune conversion générale à 0°/35° revendiquée.",
+        "Balise et motif à trois griffures reconnaissables, socle et orientation conservés visuellement. Couronne, motifs, triangles latéraux et petites fentes sont sombres et non émissifs ; les reflets du bronze subsistent comme matière éclairée. L’intention d’édition porte uniquement sur l’émission, mais aucune égalité de pixels ou de géométrie exacte n’est certifiée. Silhouette entière ; marges haute/basse39/33px. Aucun sens canonique de signal ni comportement runtime déduit.",
+        "Visible margin is below the requested 80px on at least one side; the main silhouette remains inside the image."
+      ],
+      "canonicalOneToOneClaimed": false,
+      "cameraMeasured": false,
+      "scaleValidatedInGame": false,
+      "localPath": "sprites/kennels/HWM162-K17-danger-beacon-off.png",
+      "exists": true,
+      "hasTransparency": true,
+      "minimumVisibleMargin": 0,
+      "marginAlpha0": 0,
+      "marginAlpha24": 33,
+      "proposedWorldSize": {}
     }
   ],
   "deliveryCounts": {
-    "planned": 35,
-    "actualPng": 35,
-    "uniqueSha256": 35,
+    "planned": 46,
+    "actualPng": 46,
+    "uniqueSha256": 46,
     "inheritedTargets": 40,
     "newRuntimeAdmissions": 0,
     "humanValidated": 0,
@@ -7237,22 +9238,24 @@
     "byProductionPass": {
       "1": 17,
       "2": 8,
-      "3": 10
+      "3": 10,
+      "4": 11
     },
-    "inheritedReferenceView": 7,
-    "projectCameraTargetNotMeasured": 28
+    "inheritedReferenceView": 13,
+    "projectCameraTargetNotMeasured": 33
   },
   "title": "Marché, montures et chenils — 2026-11-03",
   "continuation": {
-    "pass": 3,
-    "baselineCommit": "454bbc558abc9bb06141b2b77642bff1894d8cf2",
-    "previousDeliveryCommit": "a6e16334589ee8c4724bcc04da539007e669c883",
-    "additionalPlannedPNGCount": 10,
-    "reason": "États ouverts/vides/désactivés et composants autonomes ou orientations utiles de modèles existants.",
-    "audit": "modularity-audit-round3.json",
-    "plan": "next-targets-round3.json",
-    "review": "review-round3.md",
-    "inheritedReferenceViewsPreserved": true
+    "pass": 4,
+    "baselineCommit": "c8d37c3c059021a96b071551bf9b19b09340536e",
+    "previousDeliveryCommit": "c8d37c3c059021a96b071551bf9b19b09340536e",
+    "additionalPlannedPNGCount": 11,
+    "reason": "Supports et contenants vidés, liaisons et accessoires de soin autonomes, états de fonctionnement manquants.",
+    "audit": "modularity-audit-round4.json",
+    "plan": "next-targets-round4.json",
+    "review": "review-round4.md",
+    "inheritedReferenceViewsPreserved": true,
+    "selectionStatus": "GENERATED_REVIEWED_SOURCE_ART_CANDIDATES"
   },
   "inheritedTargetCoverage": {
     "targetCount": 40,
@@ -7261,9 +9264,10 @@
     "baselineWithoutSpecificNowWithDelivery": 13,
     "uncoveredTargets": [],
     "sourceClosedChanged": false,
-    "evidence": "modularity-audit-round3.json",
+    "evidence": "modularity-audit-round4.json",
     "previousEvidence": [
-      "modularity-audit-round2.json"
+      "modularity-audit-round2.json",
+      "modularity-audit-round3.json"
     ]
   },
   "continuationHistory": [
@@ -7275,6 +9279,17 @@
       "audit": "modularity-audit-round2.json",
       "plan": "next-targets-round2.json",
       "review": "review-round2.md"
+    },
+    {
+      "pass": 3,
+      "baselineCommit": "454bbc558abc9bb06141b2b77642bff1894d8cf2",
+      "previousDeliveryCommit": "a6e16334589ee8c4724bcc04da539007e669c883",
+      "additionalPlannedPNGCount": 10,
+      "reason": "États ouverts/vides/désactivés et composants autonomes ou orientations utiles de modèles existants.",
+      "audit": "modularity-audit-round3.json",
+      "plan": "next-targets-round3.json",
+      "review": "review-round3.md",
+      "inheritedReferenceViewsPreserved": true
     }
   ]
 }

@@ -640,6 +640,749 @@
           "alpha": 0
         }
       ]
+    },
+    {
+      "id": "HWM162-S11",
+      "label": "Comptoir marchand — stock retiré",
+      "file": "HWM162-S11-empty-merchant-counter.png",
+      "targetIds": [
+        "target-v81-64-163"
+      ],
+      "secondaryReuseTargets": [
+        "target-v81-64-159"
+      ],
+      "role": "État sans marchandises du comptoir",
+      "reference": "public/game/homeworld/v83/merchant-counter-left.png",
+      "referenceLocal": "/workspace/scratch/2166fec07f86/round3-market-reference-inspection/public__game__homeworld__v83__merchant-counter-left.png",
+      "prompt": "Use case: precise-object-edit. Asset type: one independent transparent game sprite, HWM162-S11, empty-stock state of the supplied Yautja project merchant counter. Input image 1 is the exact EDIT TARGET, not a loose style suggestion. Change ONLY the removable stock: remove all three merchandise objects from the three recessed front display compartments, and remove the small closed rectangular merchandise case resting on the rear/right countertop. Reconstruct the previously covered counter surfaces so all three display compartments and the rear counter surface are visibly empty and usable. KEEP the integrated angled amber control console and its tall supporting rear structural arch: they are permanent parts of the furniture. Preserve the same left-diagonal view, all counter proportions, four supporting legs and feet as visible, front drawer panels, sharp asymmetrical left fin, bronze rails, panel seams, dark basalt surface, wear, amber embedded lights, original lighting from upper left, and every permanent structural detail. Do not turn the console into a detached object. Keep the historic camera of the reference exactly; this is INHERIT_REFERENCE_VIEW, not a new 0-degree/35-degree conversion. Single coherent complete counter only, centered and entirely inside the canvas, with clear transparent breathing room on every side (aim for at least 80 pixels at source resolution). Background must be genuine alpha transparency, including open spaces between legs. No floor, scene, ground shadow, opaque backdrop, fog, new merchandise, labels, watermark, readable text, extra objects or duplicate counter. Preserve the realistic hand-crafted basalt and weathered bronze game-art style. This is an original project adaptation; do not add unsupported canonical symbols or claims.",
+      "source": "/workspace/scratch/2166fec07f86/generated_images/exec-417cf944-a1c5-45b4-a656-d9dda6916a17.png",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S11-empty-merchant-counter.png",
+      "bytes": 2205367,
+      "sha256": "5f3f3d7f3995bbe7e1b321ea7d8c5c11b1c351553f8bed700983e02388e5ec77",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 973056,
+      "transparentRatio": 0.61865234375,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            31,
+            1496,
+            985
+          ],
+          "margins": [
+            0,
+            31,
+            40,
+            39
+          ],
+          "minMargin": 0,
+          "pixels": 599808
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            170,
+            34,
+            1396,
+            977
+          ],
+          "margins": [
+            170,
+            34,
+            140,
+            47
+          ],
+          "minMargin": 34,
+          "pixels": 584361
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            170,
+            34,
+            1396,
+            977
+          ],
+          "margins": [
+            170,
+            34,
+            140,
+            47
+          ],
+          "minMargin": 34,
+          "pixels": 583355
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            170,
+            34,
+            1395,
+            977
+          ],
+          "margins": [
+            170,
+            34,
+            141,
+            47
+          ],
+          "minMargin": 34,
+          "pixels": 580530
+        }
+      },
+      "edgeAlphaMax": 1,
+      "referenceSha256": "a0bf8a90c46ebd7ed1271a3a84d591856d3bed0d88b1abdde07c6fc76124f8da",
+      "referenceGitBlob": "4f82387da766a36a5b8ef107b9000f5b2dcffc50",
+      "copyByteIdentical": true,
+      "referenceMatchesHead": true,
+      "key": "HWM162-S11",
+      "area": "market",
+      "phase": "round4-empty-states-and-stock-components",
+      "generator": "image_gen.imagegen",
+      "generationMode": "edit",
+      "tool_call_count": 1,
+      "transparent_background": true,
+      "references": [
+        {
+          "role": "edit_target",
+          "repoPath": "public/game/homeworld/v83/merchant-counter-left.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round3-market-reference-inspection/public__game__homeworld__v83__merchant-counter-left.png",
+          "sha256": "a0bf8a90c46ebd7ed1271a3a84d591856d3bed0d88b1abdde07c6fc76124f8da",
+          "matchesAuditHead": true
+        }
+      ],
+      "camera_requested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "reference": "public/game/homeworld/v83/merchant-counter-left.png",
+        "measured": false
+      },
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "public/game/homeworld/v83/merchant-counter-left.png"
+      ],
+      "cameraMeasured": false,
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOneClaimed": false,
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "scaleValidatedInGame": false,
+      "dimensionsAuthority": "NO_METRIC_DIMENSIONS_CLAIMED",
+      "proposedMetres": {},
+      "nativePreservation": {
+        "copyByteIdentical": true,
+        "pixelsEdited": false,
+        "alphaEdited": false,
+        "mirrored": false,
+        "resized": false,
+        "padded": false,
+        "originalPreserved": true
+      },
+      "mainSilhouetteInsideCanvasAtAlpha24": true,
+      "strictClearMargin": false,
+      "visual_review": "Trois compartiments de vitrine vides et plan arrière libre ; console structurelle, pointe latérale, tiroirs, pieds et palette conservés. Vue diagonale de la source héritée. Silhouette entière, minimum34px au seuil24 ; traces alpha faibles au bord gauche conservées. Aucun inventaire ajouté. Alignement des états à contrôler en scène.",
+      "notes": [
+        "Une seule génération intégrée, sans reprise.",
+        "Les marges de cadrage demandées80px ne sont pas toutes atteintes (minimumvisible34px), mais la silhouette est entière.",
+        "Le reçu ne certifie pas un angle3D ni une adaptation canonique1:1."
+      ],
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE"
+    },
+    {
+      "id": "HWM162-S12",
+      "label": "Rack marchand — vide",
+      "file": "HWM162-S12-empty-cargo-rack.png",
+      "targetIds": [
+        "target-v81-64-164"
+      ],
+      "role": "État vide du rack de stockage marchand",
+      "reference": "public/game/homeworld/v83/cargo-rack-right.png",
+      "referenceLocal": "/workspace/scratch/2166fec07f86/round3-market-reference-inspection/public__game__homeworld__v83__cargo-rack-right.png",
+      "prompt": "Use case: precise-object-edit, framing correction only. Input image 1 is the exact EDIT TARGET: the already empty cargo rack. Keep this exact empty rack identity, historical diagonal camera, all three tall uprights, two shelf levels, fixed retaining brackets, amber indicators, feet, bronze/basalt textures, empty openings and upper-left lighting. Do not add cargo or change any structural or lighting details. Correct the concrete framing defect: the frontmost lower foot currently touches and clips the bottom edge. Recompose the ENTIRE same rack on a SQUARE transparent canvas, centered, so the topmost fin and every foot have generous clear alpha margins on every side. Make the whole rack occupy at most 80 percent of the square canvas height, with at least 10 percent fully transparent breathing room above and below. Preserve object proportions and the exact original view; only the framing/subject size within the canvas changes. No cropping, no new perspective, no duplicate rack, no merchandise, no floor, no opaque background, no atmospheric backdrop, no text or watermark. All empty spaces between the rack uprights and shelves remain true alpha0; solid shelves remain opaque. Deliver one complete native transparent PNG sprite.",
+      "source": "/workspace/scratch/2166fec07f86/generated_images/exec-607af8e3-c68a-4769-9684-b0d5a48918b4.png",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S12-empty-cargo-rack.png",
+      "bytes": 1128125,
+      "sha256": "3be2caab5f363e4ca5a580457aa0ea11b1677a7386d4c2ca0c0f54f0b4c7bffb",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 1137326,
+      "transparentRatio": 0.7232524184173643,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            23,
+            1228,
+            1254
+          ],
+          "margins": [
+            0,
+            23,
+            26,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 435190
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            147,
+            224,
+            1099,
+            1089
+          ],
+          "margins": [
+            147,
+            224,
+            155,
+            165
+          ],
+          "minMargin": 147,
+          "pixels": 412093
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            148,
+            224,
+            1099,
+            1089
+          ],
+          "margins": [
+            148,
+            224,
+            155,
+            165
+          ],
+          "minMargin": 148,
+          "pixels": 410332
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            148,
+            224,
+            1098,
+            1088
+          ],
+          "margins": [
+            148,
+            224,
+            156,
+            166
+          ],
+          "minMargin": 148,
+          "pixels": 405397
+        }
+      },
+      "edgeAlphaMax": 1,
+      "referenceSha256": "c6146c0577b832012a099e87b6008f5315771c72725932ce8eb850e4f9f43eb4",
+      "referenceGitBlob": "1ae9d1cd202cca41cda36b453dad0b3d5e18081a",
+      "copyByteIdentical": true,
+      "referenceMatchesHead": true,
+      "key": "HWM162-S12",
+      "area": "market",
+      "phase": "round4-empty-states-and-stock-components",
+      "generator": "image_gen.imagegen",
+      "generationMode": "edit",
+      "tool_call_count": 2,
+      "transparent_background": true,
+      "references": [
+        {
+          "role": "original_edit_target",
+          "repoPath": "public/game/homeworld/v83/cargo-rack-right.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round3-market-reference-inspection/public__game__homeworld__v83__cargo-rack-right.png",
+          "sha256": "c6146c0577b832012a099e87b6008f5315771c72725932ce8eb850e4f9f43eb4"
+        },
+        {
+          "role": "framing_correction_target",
+          "repoPath": "production/homeworld-sectors-20261103/attempts/market/HWM162-S12-empty-cargo-rack-v1.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/generated_images/exec-e8ac841c-e698-424f-8f91-28643c4f880f.png",
+          "sha256": "e22805c9acaa013e1e105ccc91cc6f99fb0772249ff6fb263e55ffd1f74d4488"
+        }
+      ],
+      "camera_requested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "reference": "public/game/homeworld/v83/cargo-rack-right.png",
+        "measured": false
+      },
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "public/game/homeworld/v83/cargo-rack-right.png"
+      ],
+      "cameraMeasured": false,
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOneClaimed": false,
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "scaleValidatedInGame": false,
+      "dimensionsAuthority": "NO_METRIC_DIMENSIONS_CLAIMED",
+      "proposedMetres": {},
+      "nativePreservation": {
+        "copyByteIdentical": true,
+        "pixelsEdited": false,
+        "alphaEdited": false,
+        "mirrored": false,
+        "resized": false,
+        "padded": false,
+        "originalPreserved": true
+      },
+      "mainSilhouetteInsideCanvasAtAlpha24": true,
+      "strictClearMargin": false,
+      "visual_review": "Rack autonome à deux niveaux, six contenants retirés ; tablettes et supports conservés, ouvertures libres, orientation historique inchangée visuellement. Une correction native de cadrage carré restaure le pied entier et une marge généreuse. Aucune retouche de pixels ni padding par script.",
+      "notes": [
+        "Deux appels ImageGen : état vide puis correction ciblée du pied au bord bas.",
+        "Première tentative archivée hors des sprites sélectionnés.",
+        "Les dimensions de canevas et le cadrage diffèrent de la source ; aucune superposition pixel par pixel des états n’est certifiée."
+      ],
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "originalPrompt": "Use case: precise-object-edit. Asset type: one independent transparent game sprite, HWM162-S12, empty state of the supplied Yautja project cargo rack. Input image 1 is the exact EDIT TARGET. Remove ONLY all six cargo containers/cases currently resting on the two shelves, including the tall slim container on the upper right. Reconstruct the surfaces hidden behind the containers so BOTH load-bearing shelves are visibly empty and usable from end to end. Preserve the permanent small retaining/cradle brackets fixed to the shelves, structural rails, all tall swept bronze uprights, original feet, support braces, open cutouts, dark basalt shelf decks, bronze border strips, panel seams, worn material texture and embedded amber indicator strips. Keep the exact historical right-diagonal orientation, camera, proportions and upper-left lighting of the reference; this is INHERIT_REFERENCE_VIEW, not a conversion to a new 0-degree/35-degree view. A single complete empty freestanding two-level cargo rack, not a flat wall panel and not a weapons rack. Empty space between the rails must be genuine alpha transparency; the solid shelf decks stay opaque and visibly load-bearing. Center the whole rack with all fin tips and feet intact, clear transparent breathing room on all four sides (aim for at least 80 pixels at source resolution). No loose containers, cargo, weapons, cloth, tools, hanging objects, floor, opaque backdrop, fog, ground-shadow patch, writing, watermark, extra rack or duplicate parts. Preserve the same realistic weathered basalt-and-bronze project art identity. No invented canonical claims.",
+      "selected_attempt": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": false,
+          "file": "production/homeworld-sectors-20261103/attempts/market/HWM162-S12-empty-cargo-rack-v1.png",
+          "source": "/workspace/scratch/2166fec07f86/generated_images/exec-e8ac841c-e698-424f-8f91-28643c4f880f.png",
+          "sha256": "e22805c9acaa013e1e105ccc91cc6f99fb0772249ff6fb263e55ffd1f74d4488",
+          "bytes": 2106778,
+          "prompt": "Use case: precise-object-edit. Asset type: one independent transparent game sprite, HWM162-S12, empty state of the supplied Yautja project cargo rack. Input image 1 is the exact EDIT TARGET. Remove ONLY all six cargo containers/cases currently resting on the two shelves, including the tall slim container on the upper right. Reconstruct the surfaces hidden behind the containers so BOTH load-bearing shelves are visibly empty and usable from end to end. Preserve the permanent small retaining/cradle brackets fixed to the shelves, structural rails, all tall swept bronze uprights, original feet, support braces, open cutouts, dark basalt shelf decks, bronze border strips, panel seams, worn material texture and embedded amber indicator strips. Keep the exact historical right-diagonal orientation, camera, proportions and upper-left lighting of the reference; this is INHERIT_REFERENCE_VIEW, not a conversion to a new 0-degree/35-degree view. A single complete empty freestanding two-level cargo rack, not a flat wall panel and not a weapons rack. Empty space between the rails must be genuine alpha transparency; the solid shelf decks stay opaque and visibly load-bearing. Center the whole rack with all fin tips and feet intact, clear transparent breathing room on all four sides (aim for at least 80 pixels at source resolution). No loose containers, cargo, weapons, cloth, tools, hanging objects, floor, opaque backdrop, fog, ground-shadow patch, writing, watermark, extra rack or duplicate parts. Preserve the same realistic weathered basalt-and-bronze project art identity. No invented canonical claims.",
+          "alphaBounds": {
+            "0": {
+              "comparison": "alpha > threshold",
+              "box": [
+                0,
+                32,
+                1466,
+                1024
+              ],
+              "margins": [
+                0,
+                32,
+                70,
+                0
+              ],
+              "minMargin": 0,
+              "pixels": 549740
+            },
+            "8": {
+              "comparison": "alpha > threshold",
+              "box": [
+                235,
+                36,
+                1306,
+                1024
+              ],
+              "margins": [
+                235,
+                36,
+                230,
+                0
+              ],
+              "minMargin": 0,
+              "pixels": 523661
+            },
+            "24": {
+              "comparison": "alpha > threshold",
+              "box": [
+                236,
+                36,
+                1305,
+                1024
+              ],
+              "margins": [
+                236,
+                36,
+                231,
+                0
+              ],
+              "minMargin": 0,
+              "pixels": 521597
+            },
+            "128": {
+              "comparison": "alpha > threshold",
+              "box": [
+                236,
+                37,
+                1305,
+                1023
+              ],
+              "margins": [
+                236,
+                37,
+                231,
+                1
+              ],
+              "minMargin": 1,
+              "pixels": 516084
+            }
+          },
+          "rejectionReason": "Pied avant en contact avec le bord bas : alpha>24 atteint y1024, marge0. Correction du cadrage requise."
+        },
+        {
+          "attempt": 2,
+          "selected": true,
+          "file": "production/homeworld-sectors-20261103/sprites/market/HWM162-S12-empty-cargo-rack.png",
+          "source": "/workspace/scratch/2166fec07f86/generated_images/exec-607af8e3-c68a-4769-9684-b0d5a48918b4.png",
+          "sha256": "3be2caab5f363e4ca5a580457aa0ea11b1677a7386d4c2ca0c0f54f0b4c7bffb",
+          "prompt": "Use case: precise-object-edit, framing correction only. Input image 1 is the exact EDIT TARGET: the already empty cargo rack. Keep this exact empty rack identity, historical diagonal camera, all three tall uprights, two shelf levels, fixed retaining brackets, amber indicators, feet, bronze/basalt textures, empty openings and upper-left lighting. Do not add cargo or change any structural or lighting details. Correct the concrete framing defect: the frontmost lower foot currently touches and clips the bottom edge. Recompose the ENTIRE same rack on a SQUARE transparent canvas, centered, so the topmost fin and every foot have generous clear alpha margins on every side. Make the whole rack occupy at most 80 percent of the square canvas height, with at least 10 percent fully transparent breathing room above and below. Preserve object proportions and the exact original view; only the framing/subject size within the canvas changes. No cropping, no new perspective, no duplicate rack, no merchandise, no floor, no opaque background, no atmospheric backdrop, no text or watermark. All empty spaces between the rack uprights and shelves remain true alpha0; solid shelves remain opaque. Deliver one complete native transparent PNG sprite."
+        }
+      ],
+      "correctionReferenceLocal": "/workspace/scratch/2166fec07f86/generated_images/exec-e8ac841c-e698-424f-8f91-28643c4f880f.png"
+    },
+    {
+      "id": "HWM162-S13",
+      "label": "Rouleau de textile lié autonome",
+      "file": "HWM162-S13-bound-cloth-roll.png",
+      "targetIds": [
+        "target-v81-64-164",
+        "target-v81-64-170"
+      ],
+      "role": "Marchandise textile indépendante pour racks et réserve",
+      "reference": "public/game/homeworld/v76/interior/rack-lateral.png",
+      "referenceLocal": "/workspace/scratch/2166fec07f86/round3-market-reference-inspection/public__game__homeworld__v76__interior__rack-lateral.png",
+      "prompt": "Use case: stylized-concept, reference-based game-asset generation. Asset type: one independent transparent inventory-and-world prop, HWM162-S13, a single bound merchant textile roll. Input image 1 is the exact design/material REFERENCE for the existing project textiles. Take the reddish-brown woven cloth roll at the front of the upper shelf as the material and pattern reference: worn rust-red fabric, faded dark charcoal geometric bands, thick layered rolled edges and a rough practical weave. Create ONE compact tightly rolled cloth bundle lying on its side, bound securely with two simple dark leather straps, completely separated from any shelf, furniture or other goods. Show one spiral rolled end clearly. Preserve the established weathered realistic game-art style, subdued red/charcoal cloth and small aged-bronze strap fastening details. New native view requested for the Homeworld: orthographic projection, global camera yaw0 degrees and pitch35 degrees, upper-left lighting, without perspective vanishing points. The roll itself may sit at a slight diagonal so its spiral end is readable. One coherent complete roll only, centered, all contours visible, with at least 12 percent clear transparent margin on each side. Background and all space outside the object must be actual alpha transparency. No rack, tabletop, jars, second pale cloth roll, loose extra straps, pedestal, ground plane, cast-shadow patch, scene, mist, writing, watermark or new heraldic symbol. This cloth is an original project adaptation of material already seen in the reference; do not assign it an official clan, species, currency, canonical size or film provenance.",
+      "source": "/workspace/scratch/2166fec07f86/generated_images/exec-f608da23-a208-44e5-be5e-8e0eabd1227f.png",
+      "key": "HWM162-S13",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S13-bound-cloth-roll.png",
+      "area": "market",
+      "phase": "round4-empty-states-and-stock-components",
+      "generator": "image_gen.imagegen",
+      "generationMode": "generate_from_reference",
+      "tool_call_count": 1,
+      "transparent_background": true,
+      "references": [
+        {
+          "role": "design_and_material_reference",
+          "repoPath": "public/game/homeworld/v76/interior/rack-lateral.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round3-market-reference-inspection/public__game__homeworld__v76__interior__rack-lateral.png",
+          "sha256": "441642d5ddacad9a03a45f068d0e95d588518ae18a5c02af897b2dd165436308",
+          "matchesAuditHead": true
+        }
+      ],
+      "referenceGitBlob": "fafac41cfef1ab748b610084a11235227e449584",
+      "referenceMatchesHead": true,
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "public/game/homeworld/v76/interior/rack-lateral.png"
+      ],
+      "camera_requested": {
+        "mode": "PROJECT_ORTHOGRAPHIC_TARGET",
+        "projection": "orthographic",
+        "yaw": 0,
+        "pitch": 35,
+        "measured": false
+      },
+      "cameraMeasured": false,
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOneClaimed": false,
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "scaleValidatedInGame": false,
+      "dimensionsAuthority": "NO_METRIC_DIMENSIONS_CLAIMED",
+      "proposedMetres": {},
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2150111,
+      "sha256": "477c5a8f4e1d7d7a19bff6b8b3bbe70523d9dd4774fb2e0cac3b25bb757ec0d9",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 1026911,
+      "transparentRatio": 0.6528924306233724,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            15,
+            1518,
+            1024
+          ],
+          "margins": [
+            0,
+            15,
+            18,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 545953
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            197,
+            132,
+            1309,
+            903
+          ],
+          "margins": [
+            197,
+            132,
+            227,
+            121
+          ],
+          "minMargin": 121,
+          "pixels": 527025
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            197,
+            134,
+            1309,
+            903
+          ],
+          "margins": [
+            197,
+            134,
+            227,
+            121
+          ],
+          "minMargin": 121,
+          "pixels": 526168
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            198,
+            134,
+            1309,
+            902
+          ],
+          "margins": [
+            198,
+            134,
+            227,
+            122
+          ],
+          "minMargin": 122,
+          "pixels": 524052
+        }
+      },
+      "edgeAlphaMax": 1,
+      "mainSilhouetteInsideCanvasAtAlpha24": true,
+      "strictClearMargin": false,
+      "nativePreservation": {
+        "copyByteIdentical": true,
+        "pixelsEdited": false,
+        "alphaEdited": false,
+        "mirrored": false,
+        "resized": false,
+        "padded": false,
+        "originalPreserved": true
+      },
+      "notes": [
+        "Une seule génération intégrée, sans reprise.",
+        "La cible orthographique0°/35° décrit le brief ; aucun angle mesuré ou dimension canonique n’est attribué au PNG.",
+        "Source native conservée octet pour octet ; aucun nettoyage alpha ni padding."
+      ],
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "visual_review": "Un seul rouleau compact rouge/brun à motifs géométriques charbon, deux sangles de cuir et boucles bronze ; spirale lisible, textile séparé de toute étagère. Silhouette entière. Ni origine de clan, ni espèce, ni dimension canonique attribuée."
+    },
+    {
+      "id": "HWM162-S14",
+      "label": "Volet plein de réserve autonome",
+      "file": "HWM162-S14-stock-shutter.png",
+      "targetIds": [
+        "target-v81-64-170"
+      ],
+      "role": "Composant de fermeture proposé pour la réserve S05",
+      "reference": "production/homeworld-sectors-20261103/sprites/market/HWM162-S05-stock-shelter.png",
+      "referenceLocal": "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/market/HWM162-S05-stock-shelter.png",
+      "sourceAssetIds": [
+        "HWM162-S05"
+      ],
+      "prompt": "Use case: stylized-concept, reference-based game-asset generation. Asset type: one independent transparent architectural prop, HWM162-S14, a proposed solid shutter leaf for the wide front opening of the supplied stock shelter. Input image 1 is a MATERIAL, SHAPE AND COMPATIBILITY REFERENCE for shelter S05, not an instruction to redraw the building. Generate ONLY one broad solid closed shutter leaf, approximately 1.9 times as wide as its visible height, matching the charcoal aged metal and basalt-colored panels, worn bronze edges, shallow angular grooves and restrained utility character of that shelter. The leaf is an original proposed closure component: a compact assembly of tightly adjoining horizontal armored slats inside a narrow bronze-edged rim, with discreet recessed lifting grips near the bottom and a small simple fastening point. No open mesh or bars: the whole face is continuous opaque material, with only shallow seam lines, so it can visually close the reserve. View the leaf frontally, native orthographic Homeworld camera yaw0 degrees, pitch35 degrees; a small top thickness edge may be visible. Lighting from upper left matches the shelter. Keep the leaf upright and centered, complete on all four sides, with generous clear alpha margins of at least12 percent. Background must be genuine transparency. DO NOT include any shelter, roof, floor, wall, pillars, doorway frame, external guide rails, ground shadow, machinery scene, second door, lettering, logos, icons, watermark or decorative skull. The screenshot source does not prove any existing shutter mechanism: this is a proposed game component whose installation and motion will later be checked in scene. Do not add cinematic/canonical claims, invented official dimensions or a complete new building.",
+      "source": "/workspace/scratch/2166fec07f86/generated_images/exec-234961a1-a6c2-40b4-ad26-ea902bf85c94.png",
+      "key": "HWM162-S14",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S14-stock-shutter.png",
+      "area": "market",
+      "phase": "round4-empty-states-and-stock-components",
+      "generator": "image_gen.imagegen",
+      "generationMode": "generate_from_reference",
+      "tool_call_count": 1,
+      "transparent_background": true,
+      "references": [
+        {
+          "role": "design_and_material_reference",
+          "repoPath": "production/homeworld-sectors-20261103/sprites/market/HWM162-S05-stock-shelter.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/market/HWM162-S05-stock-shelter.png",
+          "sha256": "a8f69759564a653a6b7488e8fc1a90706a1cdd573592feb2dcfe7a855c40a866",
+          "matchesAuditHead": true
+        }
+      ],
+      "referenceGitBlob": "bd53604eafbeebe5b1395c3bdcccf22e56a3e1ec",
+      "referenceMatchesHead": true,
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "production/homeworld-sectors-20261103/sprites/market/HWM162-S05-stock-shelter.png"
+      ],
+      "camera_requested": {
+        "mode": "PROJECT_ORTHOGRAPHIC_TARGET",
+        "projection": "orthographic",
+        "yaw": 0,
+        "pitch": 35,
+        "measured": false
+      },
+      "cameraMeasured": false,
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOneClaimed": false,
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "scaleValidatedInGame": false,
+      "dimensionsAuthority": "NO_METRIC_DIMENSIONS_CLAIMED",
+      "proposedMetres": {},
+      "width": 1729,
+      "height": 910,
+      "mode": "RGBA",
+      "bytes": 2391851,
+      "sha256": "6cc6a0882277632aa08f4328d6e250770f954aa92b1667a842b5eb682dade7b0",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 518251,
+      "transparentRatio": 0.32938495859259304,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            3,
+            1656,
+            910
+          ],
+          "margins": [
+            0,
+            3,
+            73,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 1055139
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            79,
+            132,
+            1651,
+            800
+          ],
+          "margins": [
+            79,
+            132,
+            78,
+            110
+          ],
+          "minMargin": 78,
+          "pixels": 1039372
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            80,
+            133,
+            1651,
+            800
+          ],
+          "margins": [
+            80,
+            133,
+            78,
+            110
+          ],
+          "minMargin": 78,
+          "pixels": 1036711
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            80,
+            135,
+            1650,
+            799
+          ],
+          "margins": [
+            80,
+            135,
+            79,
+            111
+          ],
+          "minMargin": 79,
+          "pixels": 1034505
+        }
+      },
+      "edgeAlphaMax": 1,
+      "mainSilhouetteInsideCanvasAtAlpha24": true,
+      "strictClearMargin": false,
+      "nativePreservation": {
+        "copyByteIdentical": true,
+        "pixelsEdited": false,
+        "alphaEdited": false,
+        "mirrored": false,
+        "resized": false,
+        "padded": false,
+        "originalPreserved": true
+      },
+      "notes": [
+        "Une seule génération intégrée, sans reprise.",
+        "La cible orthographique0°/35° décrit le brief ; aucun angle mesuré ou dimension canonique n’est attribué au PNG.",
+        "Source native conservée octet pour octet ; aucun nettoyage alpha ni padding.",
+        "La marge visible minimale est78px ; la respiration12% demandée n’est pas atteinte sur chaque côté, sans coupe de la silhouette."
+      ],
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "visual_review": "Un volet plein large autonome, lames horizontales jointives et bordure bronze, deux prises encastrées, fermeture centrale simple. Aucun bâtiment, sol, pilier ni cadre de baie fusionné. Silhouette entière. Ce mécanisme est une proposition originale pour S05 ; aucun raccord ou mouvement testé en scène.",
+      "mechanismStatus": "NEW_PROPOSED_COMPONENT_NOT_ATTESTED_IN_REFERENCE",
+      "pairingDraft": {
+        "sourceAssetId": "HWM162-S05",
+        "status": "PROPOSED_COMPONENT_NOT_FIT_TESTED",
+        "note": "Vérifier taille, guidage, pivot, débattement, occlusion et couverture de baie ; mécanisme non visible dans la référence."
+      },
+      "opaqueFaceSamples": [
+        {
+          "point": [
+            864,
+            303
+          ],
+          "alpha": 253
+        },
+        {
+          "point": [
+            864,
+            455
+          ],
+          "alpha": 253
+        },
+        {
+          "point": [
+            864,
+            606
+          ],
+          "alpha": 253
+        }
+      ]
     }
   ],
   "humanValidated": false,
@@ -663,5 +1406,26 @@
       "HWM162-S09"
     ],
     "visibleMarginCaveat": "S08 minimum 48 px ; S09 minimum 93 px ; S10 minimum 11 px. Toutes les silhouettes sont entières. Aucune correction alpha ni marge ajoutée par script."
+  },
+  "round4BaseCommit": "c8d37c3c059021a96b071551bf9b19b09340536e",
+  "round4Summary": {
+    "addedPNGCount": 4,
+    "totalMarketPNGCount": 14,
+    "addedBytes": 7875454,
+    "oldTenSha256Unchanged": true,
+    "generationCalls": 5,
+    "targetedCorrections": 1,
+    "sourceByteIdentityVerified": true,
+    "cameraInheritedIds": [
+      "HWM162-S11",
+      "HWM162-S12"
+    ],
+    "projectCameraTargetIds": [
+      "HWM162-S13",
+      "HWM162-S14"
+    ],
+    "archivedAttempts": [
+      "production/homeworld-sectors-20261103/attempts/market/HWM162-S12-empty-cargo-rack-v1.png"
+    ]
   }
 }

@@ -2,13 +2,13 @@
 
 Lot de production `MMK-20261103`. Les identifiants de génération `HWM162-*` sont conservés. Ce dossier est distinct du lot de terrains `homeworld-v162` ajouté en parallèle.
 
-Ce lot complète les sources de la PR [#99](https://github.com/darknigthmare/yautja-la-longue-chasse/pull/99) avec **35 PNG indépendants présents** pour 35 objets ou états planifiés. Chaque objet est un fichier séparé. Les anciennes sources restent à leur emplacement.
+Ce lot complète les sources de la PR [#99](https://github.com/darknigthmare/yautja-la-longue-chasse/pull/99) avec **46 PNG indépendants présents** pour 46 objets ou états planifiés. Chaque objet est un fichier séparé. Les anciennes sources restent à leur emplacement.
 
 | Secteur | Objets ou états du lot | PNG présents |
 | --- | ---: | ---: |
-| Marché | 10 | 10 |
-| Montures | 12 | 12 |
-| Chenils | 13 | 13 |
+| Marché | 14 | 14 |
+| Montures | 15 | 15 |
+| Chenils | 17 | 17 |
 
 ## Consulter les fichiers
 
@@ -54,6 +54,17 @@ Ce lot complète les sources de la PR [#99](https://github.com/darknigthmare/yau
 | HWM162-K11 | Cage moyenne — trappe latérale rétractée | target-v81-71-277 | [PNG](sprites/kennels/HWM162-K11-medium-cage-open.png) | 1254 × 1254 |
 | HWM162-K12 | Cage lourde — porte ouverte | target-v81-71-278 | [PNG](sprites/kennels/HWM162-K12-heavy-cage-open.png) | 1536 × 1024 |
 | HWM162-K13 | Barrière d’énergie — désactivée | target-v81-71-270 | [PNG](sprites/kennels/HWM162-K13-energy-barrier-off.png) | 1254 × 1254 |
+| HWM162-S11 | Comptoir marchand — stock retiré | target-v81-64-163 | [PNG](sprites/market/HWM162-S11-empty-merchant-counter.png) | 1536 × 1024 |
+| HWM162-S12 | Rack marchand — vide | target-v81-64-164 | [PNG](sprites/market/HWM162-S12-empty-cargo-rack.png) | 1254 × 1254 |
+| HWM162-S13 | Rouleau de textile lié autonome | target-v81-64-164 ; target-v81-64-170 | [PNG](sprites/market/HWM162-S13-bound-cloth-roll.png) | 1536 × 1024 |
+| HWM162-S14 | Volet plein de réserve autonome | target-v81-64-170 | [PNG](sprites/market/HWM162-S14-stock-shutter.png) | 1729 × 910 |
+| HWM162-M13 | Longe d’attache à deux embouts | target-v81-72-281 | [PNG](sprites/mounts/HWM162-M13-double-ended-tether.png) | 1536 × 1024 |
+| HWM162-M14 | Harnais de monture — pose pendante | target-v81-72-283 | [PNG](sprites/mounts/HWM162-M14-hanging-mount-harness-v2.png) | 1024 × 1536 |
+| HWM162-M15 | Berceau textile de soin | target-v81-72-290 | [PNG](sprites/mounts/HWM162-M15-soft-care-cradle-v2.png) | 1536 × 1024 |
+| HWM162-K14 | Abreuvoir alien — état vide | target-v81-71-271 | [PNG](sprites/kennels/HWM162-K14-empty-alien-drinker.png) | 1536 × 1024 |
+| HWM162-K15 | Nourrisseur à trémie — bac vide | target-v81-71-272 | [PNG](sprites/kennels/HWM162-K15-empty-hopper-feeder.png) | 1254 × 1254 |
+| HWM162-K16 | Râtelier de dressage — vide | target-v81-71-274 | [PNG](sprites/kennels/HWM162-K16-empty-training-rack.png) | 1536 × 1024 |
+| HWM162-K17 | Balise de danger — éteinte | target-v81-71-280 | [PNG](sprites/kennels/HWM162-K17-danger-beacon-off.png) | 1254 × 1254 |
 
 ## Deuxième passe : composants détachés et raccords
 
@@ -101,6 +112,34 @@ M11 utilise la deuxième sortie, après une correction ciblée des voyants et d�
 
 L’auvent S10 est libre de comptoir et de marchandises. Sa silhouette visible est entière, avec une marge minimale de 11 px au seuil alpha > 24 ; ce cadrage est plus serré que la marge demandée au générateur. Les pixels d’origine sont conservés, sans ajout de bordure ni retouche alpha.
 
+## Quatrième passe : états vides, liaisons et fermeture de réserve
+
+Cette passe ajoute 11 PNG aux 35 déjà livrés : 4 pour le marché, 3 pour les montures et 4 pour les chenils. L’audit part du commit `c8d37c3c059021a96b071551bf9b19b09340536e`. Le [plan de production](next-targets-round4.json), l’[audit des sources](modularity-audit-round4.json) et la [revue des ajouts](review-round4.md) précisent les décisions. Aucun bâtiment supplémentaire ni nouvelle cible V81 n’est créé.
+
+| ID | Objet ou état | Cible conservée | Vue demandée | Source visuelle reprise |
+| --- | --- | --- | --- | --- |
+| HWM162-S11 | Comptoir marchand — stock retiré | target-v81-64-163 | Vue de la référence conservée | [public/game/homeworld/v83/merchant-counter-left.png](../../public/game/homeworld/v83/merchant-counter-left.png) |
+| HWM162-S12 | Rack marchand — vide | target-v81-64-164 | Vue de la référence conservée | [public/game/homeworld/v83/cargo-rack-right.png](../../public/game/homeworld/v83/cargo-rack-right.png) |
+| HWM162-S13 | Rouleau de textile lié autonome | target-v81-64-164 ; target-v81-64-170 | Cible orthographique 0°/35° | [public/game/homeworld/v76/interior/rack-lateral.png](../../public/game/homeworld/v76/interior/rack-lateral.png) |
+| HWM162-S14 | Volet plein de réserve autonome | target-v81-64-170 | Cible orthographique 0°/35° | [production/homeworld-sectors-20261103/sprites/market/HWM162-S05-stock-shelter.png](sprites/market/HWM162-S05-stock-shelter.png) |
+| HWM162-M13 | Longe d’attache à deux embouts | target-v81-72-281 | Cible orthographique 0°/35° | [production/homeworld-sectors-20261103/sprites/mounts/HWM162-M02-tether-station.png](sprites/mounts/HWM162-M02-tether-station.png)<br>[production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-283-mount-harness-native.png](../native-open-20261102/archives/fauna-energy/gear/target-v81-72-283-mount-harness-native.png) |
+| HWM162-M14 | Harnais de monture — pose pendante | target-v81-72-283 | Cible orthographique 0°/35° | [production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-283-mount-harness-native.png](../native-open-20261102/archives/fauna-energy/gear/target-v81-72-283-mount-harness-native.png)<br>[production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-282-mount-harness-support-native.png](../native-open-20261102/archives/fauna-energy/gear/target-v81-72-282-mount-harness-support-native.png) |
+| HWM162-M15 | Berceau textile de soin | target-v81-72-290 | Cible orthographique 0°/35° | [production/native-open-20261102/archives/fauna-energy/gear/target-v81-71-273-fauna-harness-support-native.png](../native-open-20261102/archives/fauna-energy/gear/target-v81-71-273-fauna-harness-support-native.png)<br>[production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-283-mount-harness-native.png](../native-open-20261102/archives/fauna-energy/gear/target-v81-72-283-mount-harness-native.png) |
+| HWM162-K14 | Abreuvoir alien — état vide | target-v81-71-271 | Vue de la référence conservée | [docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-271-abreuvoir-alien-native-attempt02.png](../../docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-271-abreuvoir-alien-native-attempt02.png) |
+| HWM162-K15 | Nourrisseur à trémie — bac vide | target-v81-71-272 | Vue de la référence conservée | [docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-272-nourrisseur-native.png](../../docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-272-nourrisseur-native.png) |
+| HWM162-K16 | Râtelier de dressage — vide | target-v81-71-274 | Vue de la référence conservée | [production/homeworld-sectors-20261103/sprites/kennels/HWM162-K03-training-rack.png](sprites/kennels/HWM162-K03-training-rack.png) |
+| HWM162-K17 | Balise de danger — éteinte | target-v81-71-280 | Vue de la référence conservée | [docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-280-signal-danger-native.png](../../docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-280-signal-danger-native.png) |
+
+Le marché gagne le comptoir S11 sans stock mobile, dont la console structurelle est conservée, et le rack S12 sans les six contenants incorporés. S13 rend le textile plaçable séparément. S14 propose un volet plein pour la baie ouverte de S05. Le mécanisme de ce volet n’était pas présent dans l’image source ; sa taille, ses guides, son pivot et ses raccords restent à vérifier en scène. Le PNG ne contient ni bâtiment ni sol.
+
+Les montures disposent d’une longe à deux embouts, sans poignée de conduite, d’une pose pendante du harnais et d’un berceau textile de soin autonome. Les attaches de M13, l’alignement de M14 sur le support 282 et les appuis de M15 sur le support bas 273 restent des propositions. La présence de ces PNG ne prouve ni capacité de charge ni compatibilité anatomique.
+
+Les chenils gagnent un abreuvoir sec, un bac de nourrisseur sans aliments visibles, un râtelier de dressage vide et une balise éteinte. Le contenu du réservoir fermé du nourrisseur reste non observable. Aucun bac amovible ni sens canonique du glyphe de la balise n’est déduit des images.
+
+Les 6 éditions HWM162-S11, HWM162-S12, HWM162-K14, HWM162-K15, HWM162-K16, HWM162-K17 conservent la vue de leur source. Les autres ajouts de cette passe demandent la cible orthographique 0°/35°. Les angles réels ne sont pas mesurés. Une vue héritée n’implique pas une superposition des états pixel par pixel : les canevas et cadrages peuvent différer. S12 a notamment reçu une correction native du cadrage pour libérer son pied avant du bord ; la première tentative est archivée hors sélection.
+
+Les consoles autonomes, les lampes, les caisses, le chariot, les kiosques, les étals et l’auvent libre déjà présents restent réutilisables. La peau prismatique détachée existe également : elle conserve son identité de ressource spécifique et n’est pas assimilée au textile marchand lié. Les ajouts complètent des états ou composants précis ; ils ne supposent pas l’absence de toute une famille d’objets.
+
 ## Fidélité et portée des références
 
 Les bâtiments de marché, d’écurie et de chenil sont des **adaptations originales du projet**. Les références ci-dessous orientent leur cohérence visuelle et leur fonction. Elles ne fournissent pas les plans canoniques de ces bâtiments. Ce lot ne porte aucune certification de reproduction 1:1.
@@ -116,7 +155,7 @@ Le chien de Predators (2010) et celui de The Predator (2018) restent deux réfé
 
 ## Échelle et implantation
 
-La cible de caméra du Homeworld est une projection orthographique, yaw global 0°, inclinaison 35°, profondeur 0.573576436351046. 7 éditions de ce lot conservent toutefois la vue de leur référence, identifiée dans le catalogue, la galerie et le classeur. Cette vue héritée est distincte de la cible du projet ; aucun angle réel n’est certifié par le PNG. La convention du Homeworld est un adulte de 100 unités pour 2,3 m. La porte minimale du contrat mesure 80 × 128 unités ; sa cible est 96 × 140. Ces valeurs décrivent le jeu.
+La cible de caméra du Homeworld est une projection orthographique, yaw global 0°, inclinaison 35°, profondeur 0.573576436351046. 13 éditions de ce lot conservent toutefois la vue de leur référence, identifiée dans le catalogue, la galerie et le classeur. Cette vue héritée est distincte de la cible du projet ; aucun angle réel n’est certifié par le PNG. La convention du Homeworld est un adulte de 100 unités pour 2,3 m. La porte minimale du contrat mesure 80 × 128 unités ; sa cible est 96 × 140. Ces valeurs décrivent le jeu.
 
 Les dimensions en pixels sont lues dans les fichiers. Les dimensions physiques ou en unités du monde restent des **propositions de placement**, lorsqu’elles sont renseignées. Elles ne sont ni des mesures officielles du lore, ni une preuve d’échelle en jeu. Les objets doivent garder leurs proportions ; aucune rotation CSS, symétrie ou mise à l’échelle non uniforme ne compense une vue incorrecte.
 

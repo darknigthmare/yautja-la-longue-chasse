@@ -6,8 +6,8 @@
   "branch": "codex/homeworld-v158-urban-props-intake-20261102",
   "baseline_head": "0ab844cca5f2c9b5cae28624d2c1b97fca7d5ce9",
   "recorded_on": "2026-11-03",
-  "selected_asset_count": 13,
-  "generated_attempt_count": 14,
+  "selected_asset_count": 17,
+  "generated_attempt_count": 18,
   "failed_generation_count": 1,
   "assets": [
     {
@@ -1580,6 +1580,544 @@
         "reference_active_field_alpha_gt8_pixels": 12100,
         "method": "Read-only alpha sampling inside the former membrane, away from both posts and the bottom rail."
       }
+    },
+    {
+      "id": "HWM162-K14",
+      "name": "Abreuvoir alien vidé",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K14-empty-alien-drinker.png",
+      "filename": "HWM162-K14-empty-alien-drinker.png",
+      "target_ids": [
+        "target-v81-71-271"
+      ],
+      "state_of_source_path": "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-271-abreuvoir-alien-native-attempt02.png",
+      "source_reference_sha256": "644a9652da91d51ddd2e8576f786af3ba262ffc1413cabd2aa3abbd22b4e595a",
+      "state": "EMPTY",
+      "dimensions_m_proposed": {},
+      "scale_note": "Équipement original du projet ; aucune dimension canonique, taille réelle ou compatibilité anatomique avec une espèce certifiée.",
+      "visual_review": "Abreuvoir ovale vidé : les cerclages, renforts et pieds restent visuellement cohérents avec la tentative02 choisie. Fond basaltique sec visible, sans eau ni reflet aquatique. La source masquait le fond par de l’eau : le fond sec nouvellement visible est une reconstruction du projet, sans preuve canonique. Cadrage paysage1536×1024 au lieu de la référence1254² ; aucune interchangeabilité pixel par pixel certifiée. Silhouette entière et marges visibles supérieures à80px.",
+      "source_original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-d8f6e9b2-b14d-43b8-baa5-14499d15d614.png",
+      "size_bytes": 1996130,
+      "sha256": "41ae672380f0ea8c9c3fa155739b0cda082f95cf63c70db4f1e45538d9c1de6a",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alpha_min": 0,
+      "alpha_max": 254,
+      "fully_transparent_pixels": 1066833,
+      "fully_opaque_pixels": 0,
+      "alpha_bounds": {
+        "0": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            0,
+            23,
+            1506,
+            1024
+          ],
+          "margins_left_top_right_bottom": [
+            0,
+            23,
+            30,
+            0
+          ],
+          "pixels": 506031,
+          "canvas_edge_pixels": 8
+        },
+        "8": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            235,
+            200,
+            1324,
+            851
+          ],
+          "margins_left_top_right_bottom": [
+            235,
+            200,
+            212,
+            173
+          ],
+          "pixels": 496549,
+          "canvas_edge_pixels": 0
+        },
+        "24": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            235,
+            201,
+            1323,
+            851
+          ],
+          "margins_left_top_right_bottom": [
+            235,
+            201,
+            213,
+            173
+          ],
+          "pixels": 495882,
+          "canvas_edge_pixels": 0
+        },
+        "128": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            236,
+            201,
+            1322,
+            850
+          ],
+          "margins_left_top_right_bottom": [
+            236,
+            201,
+            214,
+            174
+          ],
+          "pixels": 493981,
+          "canvas_edge_pixels": 0
+        }
+      },
+      "generation_tool": "image_gen.imagegen",
+      "generation_mode": "built-in-reference-edit",
+      "source_original_bytes_copied_unchanged": true,
+      "image_manipulation": false,
+      "post_generation_pixel_editing": false,
+      "generated_independently_not_cropped": true,
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "reference_basis": "PROJECT_ORIGINAL_EXISTING_SPRITE",
+      "source_reference_ids": [
+        "HWM162-K14-state-source"
+      ],
+      "canon_certified": false,
+      "production_status": "GENERATED_ART_CANDIDATE",
+      "runtime_admitted": false,
+      "human_artistic_validation": "PENDING",
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "camera_requested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "reference_repo_path": "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-271-abreuvoir-alien-native-attempt02.png",
+        "source_request_if_known": null,
+        "actual_reference_view_inherited_requested": true,
+        "camera_measured": false,
+        "new_front_0_35_conversion_claimed": false,
+        "source_angle_not_inferred": true
+      },
+      "camera_measured": false,
+      "physical_scale_validated": false,
+      "transparent_background_requested": true,
+      "strict_alpha_margin_80px_pass": false,
+      "visible_silhouette_entire_at_alpha_gt24": true,
+      "visible_margin_80px_at_alpha_gt24_pass": true,
+      "continuation_after_published_commit": "c8d37c3c059021a96b071551bf9b19b09340536e",
+      "state_transition_runtime_verified": false,
+      "pixel_aligned_state_pair_verified": false
+    },
+    {
+      "id": "HWM162-K15",
+      "name": "Nourrisseur à trémie vidé",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K15-empty-hopper-feeder.png",
+      "filename": "HWM162-K15-empty-hopper-feeder.png",
+      "target_ids": [
+        "target-v81-71-272"
+      ],
+      "state_of_source_path": "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-272-nourrisseur-native.png",
+      "source_reference_sha256": "214e44126281c66f8d526e57f2cb90527c7c255c7380c516a991a0d3cc3be91b",
+      "state": "EMPTY",
+      "dimensions_m_proposed": {},
+      "scale_note": "Équipement original du projet ; aucune dimension canonique, taille réelle ou compatibilité anatomique avec une espèce certifiée.",
+      "visual_review": "Nourrisseur à trémie conservé, avec couvercle fermé, goulotte, bac, pieds et renforts. Tous les aliments visibles sont retirés ; fond basaltique du bac vide et sec, goulotte dégagée. Le niveau interne du réservoir fermé n’est pas observable et n’est pas certifié. Silhouette entière ; marges visibles175/80/160/84px. Pas de bac supposé amovible ou nouvelle construction.",
+      "source_original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-f5384a44-f4c8-4e29-ba00-0383935e719f.png",
+      "size_bytes": 1378925,
+      "sha256": "322c098200679914802402ec9df40374792ce9899bf55e4fedbd9836add9761e",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alpha_min": 0,
+      "alpha_max": 255,
+      "fully_transparent_pixels": 1059121,
+      "fully_opaque_pixels": 629,
+      "alpha_bounds": {
+        "0": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            0,
+            40,
+            1234,
+            1214
+          ],
+          "margins_left_top_right_bottom": [
+            0,
+            40,
+            20,
+            40
+          ],
+          "pixels": 513395,
+          "canvas_edge_pixels": 19
+        },
+        "8": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            175,
+            80,
+            1095,
+            1171
+          ],
+          "margins_left_top_right_bottom": [
+            175,
+            80,
+            159,
+            83
+          ],
+          "pixels": 503666,
+          "canvas_edge_pixels": 0
+        },
+        "24": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            175,
+            80,
+            1094,
+            1170
+          ],
+          "margins_left_top_right_bottom": [
+            175,
+            80,
+            160,
+            84
+          ],
+          "pixels": 502878,
+          "canvas_edge_pixels": 0
+        },
+        "128": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            176,
+            81,
+            1094,
+            1170
+          ],
+          "margins_left_top_right_bottom": [
+            176,
+            81,
+            160,
+            84
+          ],
+          "pixels": 500520,
+          "canvas_edge_pixels": 0
+        }
+      },
+      "generation_tool": "image_gen.imagegen",
+      "generation_mode": "built-in-reference-edit",
+      "source_original_bytes_copied_unchanged": true,
+      "image_manipulation": false,
+      "post_generation_pixel_editing": false,
+      "generated_independently_not_cropped": true,
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "reference_basis": "PROJECT_ORIGINAL_EXISTING_SPRITE",
+      "source_reference_ids": [
+        "HWM162-K15-state-source"
+      ],
+      "canon_certified": false,
+      "production_status": "GENERATED_ART_CANDIDATE",
+      "runtime_admitted": false,
+      "human_artistic_validation": "PENDING",
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "camera_requested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "reference_repo_path": "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-272-nourrisseur-native.png",
+        "source_request_if_known": null,
+        "actual_reference_view_inherited_requested": true,
+        "camera_measured": false,
+        "new_front_0_35_conversion_claimed": false,
+        "source_angle_not_inferred": true
+      },
+      "camera_measured": false,
+      "physical_scale_validated": false,
+      "transparent_background_requested": true,
+      "strict_alpha_margin_80px_pass": false,
+      "visible_silhouette_entire_at_alpha_gt24": true,
+      "visible_margin_80px_at_alpha_gt24_pass": true,
+      "continuation_after_published_commit": "c8d37c3c059021a96b071551bf9b19b09340536e",
+      "state_transition_runtime_verified": false,
+      "pixel_aligned_state_pair_verified": false
+    },
+    {
+      "id": "HWM162-K16",
+      "name": "Rack de dressage vide",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K16-empty-training-rack.png",
+      "filename": "HWM162-K16-empty-training-rack.png",
+      "target_ids": [
+        "target-v81-71-274"
+      ],
+      "state_of_source_path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K03-training-rack.png",
+      "source_reference_sha256": "95cef71793ec00c9a9d8ae8842e4e8beb3e83ac9eddf4be57820a2a965637797",
+      "state": "EMPTY",
+      "dimensions_m_proposed": {},
+      "scale_note": "Équipement original du projet ; aucune dimension canonique, taille réelle ou compatibilité anatomique avec une espèce certifiée.",
+      "visual_review": "Même râtelier K03, deux montants inclinés, deux socles, traverse supérieure et cinq crochets conservés ; trois laisses et deux leurres retirés. Aucun accessoire détaché ajouté. Ouverture centrale libre, contrôle sur315000pixels :314979alpha0 et21alpha1, zéro alpha>8. Marge visible minimale45px. Vue héritée du K03 dont la demande originale était orthographique0/35, pas une vue historique32° déduite.",
+      "source_original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-39ee282d-e03d-4af3-9796-af0996cd64c3.png",
+      "size_bytes": 1720354,
+      "sha256": "a7c9909f84ec0c53cc5caee8ebdc53ca4f0c1cdbe6e71297fe940d6de7346d90",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alpha_min": 0,
+      "alpha_max": 254,
+      "fully_transparent_pixels": 1200504,
+      "fully_opaque_pixels": 0,
+      "alpha_bounds": {
+        "0": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            51,
+            41,
+            1480,
+            988
+          ],
+          "margins_left_top_right_bottom": [
+            51,
+            41,
+            56,
+            36
+          ],
+          "pixels": 372360,
+          "canvas_edge_pixels": 0
+        },
+        "8": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            58,
+            111,
+            1478,
+            980
+          ],
+          "margins_left_top_right_bottom": [
+            58,
+            111,
+            58,
+            44
+          ],
+          "pixels": 354335,
+          "canvas_edge_pixels": 0
+        },
+        "24": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            58,
+            111,
+            1478,
+            979
+          ],
+          "margins_left_top_right_bottom": [
+            58,
+            111,
+            58,
+            45
+          ],
+          "pixels": 352813,
+          "canvas_edge_pixels": 0
+        },
+        "128": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            59,
+            112,
+            1478,
+            979
+          ],
+          "margins_left_top_right_bottom": [
+            59,
+            112,
+            58,
+            45
+          ],
+          "pixels": 349382,
+          "canvas_edge_pixels": 0
+        }
+      },
+      "generation_tool": "image_gen.imagegen",
+      "generation_mode": "built-in-reference-edit",
+      "source_original_bytes_copied_unchanged": true,
+      "image_manipulation": false,
+      "post_generation_pixel_editing": false,
+      "generated_independently_not_cropped": true,
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "reference_basis": "PROJECT_ORIGINAL_EXISTING_SPRITE",
+      "source_reference_ids": [
+        "HWM162-K16-state-source"
+      ],
+      "canon_certified": false,
+      "production_status": "GENERATED_ART_CANDIDATE",
+      "runtime_admitted": false,
+      "human_artistic_validation": "PENDING",
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "camera_requested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "reference_repo_path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K03-training-rack.png",
+        "source_request_if_known": {
+          "yaw_degrees": 0,
+          "pitch_degrees": 35,
+          "projection": "orthographic",
+          "authority": "Original K03 receipt request, not measured."
+        },
+        "actual_reference_view_inherited_requested": true,
+        "camera_measured": false,
+        "new_front_0_35_conversion_claimed": false,
+        "source_angle_not_inferred": true
+      },
+      "camera_measured": false,
+      "physical_scale_validated": false,
+      "transparent_background_requested": true,
+      "strict_alpha_margin_80px_pass": false,
+      "visible_silhouette_entire_at_alpha_gt24": true,
+      "visible_margin_80px_at_alpha_gt24_pass": false,
+      "continuation_after_published_commit": "c8d37c3c059021a96b071551bf9b19b09340536e",
+      "state_transition_runtime_verified": false,
+      "pixel_aligned_state_pair_verified": false,
+      "central_opening_alpha_check": {
+        "rectExclusive": [
+          400,
+          350,
+          1100,
+          800
+        ],
+        "pixels": 315000,
+        "alpha_min": 0,
+        "alpha_max": 1,
+        "alpha0_pixels": 314979,
+        "alpha_le8_pixels": 315000,
+        "alpha_gt8_pixels": 0,
+        "all_alpha_le8": true,
+        "all_alpha0": false,
+        "method": "Read-only sample in empty rack opening, below hooks and between uprights."
+      }
+    },
+    {
+      "id": "HWM162-K17",
+      "name": "Signal danger éteint",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K17-danger-beacon-off.png",
+      "filename": "HWM162-K17-danger-beacon-off.png",
+      "target_ids": [
+        "target-v81-71-280"
+      ],
+      "state_of_source_path": "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-280-signal-danger-native.png",
+      "source_reference_sha256": "ffb1626d43f1b4abff1ebaf568b6e01eff18827283a40afe2bdffe11d4fc14d3",
+      "state": "UNLIT",
+      "dimensions_m_proposed": {},
+      "scale_note": "Équipement original du projet ; aucune dimension canonique, taille réelle ou compatibilité anatomique avec une espèce certifiée.",
+      "visual_review": "Balise et motif à trois griffures reconnaissables, socle et orientation conservés visuellement. Couronne, motifs, triangles latéraux et petites fentes sont sombres et non émissifs ; les reflets du bronze subsistent comme matière éclairée. L’intention d’édition porte uniquement sur l’émission, mais aucune égalité de pixels ou de géométrie exacte n’est certifiée. Silhouette entière ; marges haute/basse39/33px. Aucun sens canonique de signal ni comportement runtime déduit.",
+      "source_original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-df910478-0341-4426-ae1e-fe6f4c539c74.png",
+      "size_bytes": 1117033,
+      "sha256": "7439ac5ebb4da79ab0fadea5d0117a30f5b9110273d59ae4e9a3ae4b68d705de",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alpha_min": 0,
+      "alpha_max": 255,
+      "fully_transparent_pixels": 1173574,
+      "fully_opaque_pixels": 560,
+      "alpha_bounds": {
+        "0": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            0,
+            35,
+            1136,
+            1223
+          ],
+          "margins_left_top_right_bottom": [
+            0,
+            35,
+            118,
+            31
+          ],
+          "pixels": 398942,
+          "canvas_edge_pixels": 7
+        },
+        "8": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            298,
+            38,
+            962,
+            1221
+          ],
+          "margins_left_top_right_bottom": [
+            298,
+            38,
+            292,
+            33
+          ],
+          "pixels": 389174,
+          "canvas_edge_pixels": 0
+        },
+        "24": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            298,
+            39,
+            962,
+            1221
+          ],
+          "margins_left_top_right_bottom": [
+            298,
+            39,
+            292,
+            33
+          ],
+          "pixels": 388495,
+          "canvas_edge_pixels": 0
+        },
+        "128": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            299,
+            40,
+            961,
+            1221
+          ],
+          "margins_left_top_right_bottom": [
+            299,
+            40,
+            293,
+            33
+          ],
+          "pixels": 386262,
+          "canvas_edge_pixels": 0
+        }
+      },
+      "generation_tool": "image_gen.imagegen",
+      "generation_mode": "built-in-reference-edit",
+      "source_original_bytes_copied_unchanged": true,
+      "image_manipulation": false,
+      "post_generation_pixel_editing": false,
+      "generated_independently_not_cropped": true,
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "reference_basis": "PROJECT_ORIGINAL_EXISTING_SPRITE",
+      "source_reference_ids": [
+        "HWM162-K17-state-source"
+      ],
+      "canon_certified": false,
+      "production_status": "GENERATED_ART_CANDIDATE",
+      "runtime_admitted": false,
+      "human_artistic_validation": "PENDING",
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "camera_requested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "reference_repo_path": "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-280-signal-danger-native.png",
+        "source_request_if_known": null,
+        "actual_reference_view_inherited_requested": true,
+        "camera_measured": false,
+        "new_front_0_35_conversion_claimed": false,
+        "source_angle_not_inferred": true
+      },
+      "camera_measured": false,
+      "physical_scale_validated": false,
+      "transparent_background_requested": true,
+      "strict_alpha_margin_80px_pass": false,
+      "visible_silhouette_entire_at_alpha_gt24": true,
+      "visible_margin_80px_at_alpha_gt24_pass": false,
+      "continuation_after_published_commit": "c8d37c3c059021a96b071551bf9b19b09340536e",
+      "state_transition_runtime_verified": false,
+      "pixel_aligned_state_pair_verified": false
     }
   ],
   "attempts": [
@@ -1787,6 +2325,90 @@
       "reference_sha256": "1dcc79dda8a24c76617b0d76fdbdfee4a5771f381a839fd52548e39c49a44cec",
       "transparent_background": true,
       "retry_decision": "Aucune reprise : état demandé lisible, silhouette entière, identité reconnaissable. Marges et alpha consignés sans correction."
+    },
+    {
+      "id": "HWM162-K14",
+      "attempt": 1,
+      "prompt": "Edit the supplied reference into ONE independent native game sprite showing the SAME OVAL ALIEN FAUNA DRINKING TROUGH, completely EMPTY AND DRY. This is a new state of the project-original object, not a redesigned basin.\n\nKeep the exact recognizable existing construction: low broad oval bowl of porous charcoal basalt, thick uneven worn stone rim, the same spaced angular bronze clamps and braces, the same squat flared feet and bronze edge bands. Preserve the relative proportions and all visible trim, view orientation, elevated orthographic reference perspective, upper-left lighting and framing as closely as possible. INHERIT THE REFERENCE VIEW; do not assume or impose a new camera angle, do not mirror or rotate the trough. Keep the whole rim and all feet.\n\nThe ONLY functional change is draining all the blue water. Replace the water surface with the clearly visible empty concave dry basalt interior and its continuous solid stone bottom. The floor is physical stone, not a transparent hole through the bowl. No liquid film, puddle, ripple, blue color cast, caustics, water reflection, wet gleam, food, animal or debris remains. Do not add a drain, pipe, hose, valve, faucet, handle, extra brace or accessory that is absent from the source. Reconstruct only the previously water-covered interior consistently with the original basin walls. Keep exterior identity unchanged.\n\nOne complete connected empty object on authentic transparent RGBA. Transparency outside its silhouette and between feet where no real surface exists; opaque physical stone inside the basin. No ground, backdrop, cast floor shadow, glow halo, fog, checkerboard, lettering, icon, label, watermark, scene, multiple view or filled-state inset. Center the complete object with generous empty transparent margins, aim at least80pixels on all sides and object at most seventypercent of canvas width/height. If more clear space is needed, compose with space rather than crop an edge. Keep native output; no compressed toy-like proportions. This is general project fauna equipment, with no film-canon or species-size assertion.",
+      "prompt_utf8_sha256": "b235b62ef3ca4b7398486e894c4fdda057100654fa873007537e29ff7d5e182d",
+      "status": "GENERATED_SELECTED",
+      "original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-d8f6e9b2-b14d-43b8-baa5-14499d15d614.png",
+      "sha256": "41ae672380f0ea8c9c3fa155739b0cda082f95cf63c70db4f1e45538d9c1de6a",
+      "output_hint": "Generated images are saved to /workspace/scratch/2166fec07f86/generated_images as /workspace/scratch/2166fec07f86/generated_images/exec-d8f6e9b2-b14d-43b8-baa5-14499d15d614.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "reference_images_inspected_before_generation": [
+        "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-271-abreuvoir-alien-native-attempt02.png"
+      ],
+      "reference_image_parameters_used": true,
+      "referenced_image_paths": [
+        "/workspace/scratch/2166fec07f86/round3-references/target-v81-71-271-abreuvoir-alien-native-attempt02.png"
+      ],
+      "reference_repo_path": "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-271-abreuvoir-alien-native-attempt02.png",
+      "reference_sha256": "644a9652da91d51ddd2e8576f786af3ba262ffc1413cabd2aa3abbd22b4e595a",
+      "transparent_background": true,
+      "retry_decision": "Aucune reprise : état demandé lisible, silhouette entière et identité reconnaissable. Écarts de marge/cadrage et alpha natif consignés sans retouche."
+    },
+    {
+      "id": "HWM162-K15",
+      "attempt": 1,
+      "prompt": "Edit the supplied reference into ONE independent native sprite: the SAME ALIEN FAUNA HOPPER FEEDER, with its receiving bowl completely EMPTY. This is the empty state of that exact project-original design, not a new feeder or a disassembled prop.\n\nINHERIT REFERENCE VIEW AND IDENTITY. Preserve the tall faceted basalt hopper at the back with its same closed lid, the angular bronze framing, the thick side braces, all feet, the short sloped delivery chute and its front control flap, and the low broad oval receiving bowl joined to the base. Preserve the characteristic pitted charcoal basalt, worn bronze edges, tiny details, relative dimensions, perspective, current view orientation, upper-left lighting and frame placement as closely as possible. No mirroring, camera rotation or imposed new front view. Do not change it into the separate low mount trough, small dish, animal shelter or medieval feeding bin.\n\nThe ONLY functional state change is removal of ALL contents from the receiving bowl and delivery chute. Remove every reddish-brown pellet, every porous pod, seed, lump, fragment and food residue. Reveal one empty, dry, continuous concave basalt bowl interior with a real solid floor. The hopper body and its lid remain intact and closed, all structural details and outlet mechanisms preserved. No added hose, faucet, instrument, labels, new plumbing or new component. Do not detach the bowl: the source does not establish a removable tray. No water, reflective wet film, food, animal, person, creature silhouette or loose equipment.\n\nOne whole connected object, centered, complete all around, on authentic transparent RGBA. Outer background and empty gaps between legs must be truly transparent. The physical bowl floor remains visible stone and is not a transparent cut-through. No scene, ground surface, cast floor shadow, black matte, checkerboard, haze, aura, lettering, watermark, multiple view, contact sheet or full-state inset. Keep generous transparent borders, aim at least80pixels clear of the visible complete silhouette, all feet and top inside the image. Keep about seventypercent canvas occupancy and usable proportions, not a compressed miniature. Preserve the recognizable original construction and source view. No assertion of film-canon equipment or size compatibility with a particular animal.",
+      "prompt_utf8_sha256": "a433d68242009c5c41181180362c9f70b79bfbdc26b28b4d470d970903abc5f8",
+      "status": "GENERATED_SELECTED",
+      "original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-f5384a44-f4c8-4e29-ba00-0383935e719f.png",
+      "sha256": "322c098200679914802402ec9df40374792ce9899bf55e4fedbd9836add9761e",
+      "output_hint": "Generated images are saved to /workspace/scratch/2166fec07f86/generated_images as /workspace/scratch/2166fec07f86/generated_images/exec-f5384a44-f4c8-4e29-ba00-0383935e719f.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "reference_images_inspected_before_generation": [
+        "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-272-nourrisseur-native.png"
+      ],
+      "reference_image_parameters_used": true,
+      "referenced_image_paths": [
+        "/workspace/scratch/2166fec07f86/round3-references/target-v81-71-272-nourrisseur-native.png"
+      ],
+      "reference_repo_path": "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-272-nourrisseur-native.png",
+      "reference_sha256": "214e44126281c66f8d526e57f2cb90527c7c255c7380c516a991a0d3cc3be91b",
+      "transparent_background": true,
+      "retry_decision": "Aucune reprise : état demandé lisible, silhouette entière et identité reconnaissable. Écarts de marge/cadrage et alpha natif consignés sans retouche."
+    },
+    {
+      "id": "HWM162-K16",
+      "attempt": 1,
+      "prompt": "Edit the supplied K03 training equipment rack into ONE independent native sprite of the SAME RACK completely EMPTY of its removable training accessories. Preserve the exact recognizable project-original structure; this is an alternate state, not a different rack.\n\nPRESERVE THE ACTUAL REFERENCE VIEW AND STRUCTURE. Keep the two tall sloping charcoal basalt/darkmetal uprights, their same angular aged-bronze edging and side fins, the two large faceted basalt feet, the full shaped top crossbeam and its central raised bronze detail. Preserve the exact arrangement of the FIVE simple bronze hanging hooks below the crossbeam. Keep their shapes, spacing and attachment points. The source is near-frontal elevated orthographic; match its actual orientation, lighting, proportions and frame placement as closely as possible. Do not impose a historical32degree camera, rotate, mirror, collapse depth or redesign the frame. The original K03 request was0/35 but no actual angle is certified; this edit inherits the visible source view.\n\nONLY REMOVE THE HANGING INVENTORY: remove ALL three coiled dark metal leads/chains with their brown loop handles and ALL two woven suspended training lures, including their ropes, knots, straps and associated accessory rings. Keep the five permanent rack hooks clearly exposed and empty. Absolutely no chain, leash, handle, rope, collar, lure, suspended object, second crossbeam, shelf or backing board remains in the opening. The broad region between the two uprights below the hooks must be genuinely transparent open air, not a dark pane, painted brown backdrop, haze or glow. Both feet and all hook tips must remain complete. No person, creature, floor, tools or detached pile of removed items.\n\nOUTPUT one complete connected physical rack on genuine transparent RGBA. Only actual rack surfaces remain visible; all space through the frame and outside it is alpha-transparent. Preserve source materials, restrained wear and upper-left light, without a ground shadow, aura, scene, floor tile, checkerboard, labels, text, watermark, collage, multiple views or loaded-state inset. Frame the entire rack with generous transparent margins, aim at least80pixels around the visible silhouette and no more than seventypercent canvas occupancy. Do not crop a foot, fin, beam or hook. Leave physical proportions usable. Native output only; no film-canon or runtime-assembly claim.",
+      "prompt_utf8_sha256": "8ead0bbfa308095fc9e0e71e82bd897db64698cffe16a3a0bb4dafdf58c1c725",
+      "status": "GENERATED_SELECTED",
+      "original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-39ee282d-e03d-4af3-9796-af0996cd64c3.png",
+      "sha256": "a7c9909f84ec0c53cc5caee8ebdc53ca4f0c1cdbe6e71297fe940d6de7346d90",
+      "output_hint": "Generated images are saved to /workspace/scratch/2166fec07f86/generated_images as /workspace/scratch/2166fec07f86/generated_images/exec-39ee282d-e03d-4af3-9796-af0996cd64c3.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "reference_images_inspected_before_generation": [
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K03-training-rack.png"
+      ],
+      "reference_image_parameters_used": true,
+      "referenced_image_paths": [
+        "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/kennels/HWM162-K03-training-rack.png"
+      ],
+      "reference_repo_path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K03-training-rack.png",
+      "reference_sha256": "95cef71793ec00c9a9d8ae8842e4e8beb3e83ac9eddf4be57820a2a965637797",
+      "transparent_background": true,
+      "retry_decision": "Aucune reprise : état demandé lisible, silhouette entière et identité reconnaissable. Écarts de marge/cadrage et alpha natif consignés sans retouche."
+    },
+    {
+      "id": "HWM162-K17",
+      "attempt": 1,
+      "prompt": "Edit the supplied reference into ONE independent native game sprite of the EXACT SAME ALIEN DANGER SIGNAL BEACON, now COMPLETELY UNLIT. This is the off/neutral light state of the existing project-original object. The sole intentional change is light emission; do not redesign the beacon.\n\nPRESERVE all physical identity: the tall faceted charcoal porous basalt pedestal and base feet, aged angular bronze armor bands, the shield-like main face, the three curved claw-shaped motifs on that face, its narrow lower slits, the side triangular lenses and the small top polygonal lens. Preserve the main symbol's geometry and orientation exactly as recognizably as possible. Keep all scratches, plate divisions, side protrusions, foot shapes, contours, proportions and attachment locations. Inherit the ACTUAL reference view, elevated three-quarter orientation and upper-left illumination. Keep the reference object placement and framing as stable as possible; no mirror, camera rotation, new frontal view, scale redesign, new glyph or extra accessory.\n\nONLY SWITCH OFF THE LIGHT: every currently glowing amber area must become a dark non-emissive recessed glass/ceramic/metal surface. This includes the three claw-shaped inlays in the center, all tiny side triangles, lower status slots, top cap lens and any small indicator strips. The original three-claw symbol MUST still be clearly legible as the same unlit dark inlaid geometry; do not erase, fill or replace the physical motif. Remove amber light spill, light halos and illuminated internal edges. Preserve the normal metallic bronze color and external light reflections on actual bronze surfaces. The result should unmistakably read as the same beacon with its lights off, not a broken, altered, covered or recolored sculpture. No electric effect, flame, active light or glowing particle anywhere. No creature, person, text, label or accompanying object.\n\nOutput ONE complete connected native RGBA sprite with genuine transparent background. Full top and all feet must fit, with comfortable empty transparent margins and no silhouette clipping; avoid zooming or changing the source composition. No solid background, black matte, haze, glowing aura, checkerboard, floor tile, ground plane, cast floor shadow, scene, contact sheet, multiple view, active-state inset, lettering or watermark. Preserve reference construction and view; only emission is intentionally changed. No certification of a canonical symbol meaning, actual camera parameters or in-game alert behavior.",
+      "prompt_utf8_sha256": "9edc553cb87b910f19b542861c616f9a05cfb003b042eb874f291831490d74ec",
+      "status": "GENERATED_SELECTED",
+      "original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-df910478-0341-4426-ae1e-fe6f4c539c74.png",
+      "sha256": "7439ac5ebb4da79ab0fadea5d0117a30f5b9110273d59ae4e9a3ae4b68d705de",
+      "output_hint": "Generated images are saved to /workspace/scratch/2166fec07f86/generated_images as /workspace/scratch/2166fec07f86/generated_images/exec-df910478-0341-4426-ae1e-fe6f4c539c74.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "reference_images_inspected_before_generation": [
+        "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-280-signal-danger-native.png"
+      ],
+      "reference_image_parameters_used": true,
+      "referenced_image_paths": [
+        "/workspace/scratch/2166fec07f86/round3-references/target-v81-71-280-signal-danger-native.png"
+      ],
+      "reference_repo_path": "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-280-signal-danger-native.png",
+      "reference_sha256": "ffb1626d43f1b4abff1ebaf568b6e01eff18827283a40afe2bdffe11d4fc14d3",
+      "transparent_background": true,
+      "retry_decision": "Aucune reprise : état demandé lisible, silhouette entière et identité reconnaissable. Écarts de marge/cadrage et alpha natif consignés sans retouche."
     }
   ],
   "references": [
@@ -1885,6 +2507,46 @@
       "usage": "Vue, géométrie, matières et construction conservées pour un nouvel état indépendant. Aucune preuve canonique externe.",
       "baseline_commit": "454bbc558abc9bb06141b2b77642bff1894d8cf2",
       "source_manifest": "production/native-open-20261102/source-manifest.json"
+    },
+    {
+      "id": "HWM162-K14-state-source",
+      "kind": "PROJECT_ORIGINAL_EXISTING_SPRITE",
+      "repo_path": "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-271-abreuvoir-alien-native-attempt02.png",
+      "workspace_path": "/workspace/scratch/2166fec07f86/round3-references/target-v81-71-271-abreuvoir-alien-native-attempt02.png",
+      "sha256": "644a9652da91d51ddd2e8576f786af3ba262ffc1413cabd2aa3abbd22b4e595a",
+      "visually_inspected": true,
+      "usage": "Référence directe d’identité, matériaux, construction et vue pour un nouvel état. Aucun statut canonique externe.",
+      "baseline_commit": "c8d37c3c059021a96b071551bf9b19b09340536e"
+    },
+    {
+      "id": "HWM162-K15-state-source",
+      "kind": "PROJECT_ORIGINAL_EXISTING_SPRITE",
+      "repo_path": "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-272-nourrisseur-native.png",
+      "workspace_path": "/workspace/scratch/2166fec07f86/round3-references/target-v81-71-272-nourrisseur-native.png",
+      "sha256": "214e44126281c66f8d526e57f2cb90527c7c255c7380c516a991a0d3cc3be91b",
+      "visually_inspected": true,
+      "usage": "Référence directe d’identité, matériaux, construction et vue pour un nouvel état. Aucun statut canonique externe.",
+      "baseline_commit": "c8d37c3c059021a96b071551bf9b19b09340536e"
+    },
+    {
+      "id": "HWM162-K16-state-source",
+      "kind": "PROJECT_ORIGINAL_EXISTING_SPRITE",
+      "repo_path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K03-training-rack.png",
+      "workspace_path": "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/kennels/HWM162-K03-training-rack.png",
+      "sha256": "95cef71793ec00c9a9d8ae8842e4e8beb3e83ac9eddf4be57820a2a965637797",
+      "visually_inspected": true,
+      "usage": "Référence directe d’identité, matériaux, construction et vue pour un nouvel état. Aucun statut canonique externe.",
+      "baseline_commit": "c8d37c3c059021a96b071551bf9b19b09340536e"
+    },
+    {
+      "id": "HWM162-K17-state-source",
+      "kind": "PROJECT_ORIGINAL_EXISTING_SPRITE",
+      "repo_path": "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-280-signal-danger-native.png",
+      "workspace_path": "/workspace/scratch/2166fec07f86/round3-references/target-v81-71-280-signal-danger-native.png",
+      "sha256": "ffb1626d43f1b4abff1ebaf568b6e01eff18827283a40afe2bdffe11d4fc14d3",
+      "visually_inspected": true,
+      "usage": "Référence directe d’identité, matériaux, construction et vue pour un nouvel état. Aucun statut canonique externe.",
+      "baseline_commit": "c8d37c3c059021a96b071551bf9b19b09340536e"
     }
   ],
   "quality_summary": {
@@ -1904,7 +2566,13 @@
       "K10/K11/K12 gardent une silhouette entière mais leur marge visible minimale est respectivement56/32/71px, inférieure à80px. K13 respecte80px à alpha>24. Aucune reprise ni padding pour le seul écart de marge.",
       "K10–K13 héritent des vues historiques dont le brief indiquait environ32° en trois-quarts ; leur caméra réelle n’est pas mesurée. Ils ne sont pas présentés comme convertis à yaw0/pitch35.",
       "Les états ouverts et éteint sont des sprites statiques indépendants, sans transition animée, pivot commun, alignement raster exact ni comportement en jeu validé.",
-      "La transparence du passage K13 a été mesurée sur12100pixels centraux tous alpha0 ; la présence de faibles alpha périphériques ailleurs reste consignée."
+      "La transparence du passage K13 a été mesurée sur12100pixels centraux tous alpha0 ; la présence de faibles alpha périphériques ailleurs reste consignée.",
+      "Passe4 : K14/K16 plafonnent à alpha254 ; K15/K17 contiennent des pixels alpha255. Tous restent des copies natives inchangées.",
+      "K14/K15 respectent80px de marge visible à alpha>24. K16/K17 ont une marge visible minimale45/33px, avec silhouette entière ; aucun padding ni nettoyage alpha.",
+      "K14 passe de la référence1254² à une sortie paysage1536×1024 ; la vue et l’identité sont héritées demandées, aucune correspondance de pivots ou interchangeabilité des pixels n’est certifiée.",
+      "K14/K15/K17 n’ont pas d’angle historique précis établi dans ce reçu. K16 hérite du K03, demandé à0/35 mais non mesuré ; aucun32° générique ne leur est attribué.",
+      "K16 : fenêtre de315000pixels sous les crochets,314979pixelsalpha0 et21pixelsalpha1. Le vide est attesté à alpha≤1 ; il n’est pas déclaré strictementalpha0 partout.",
+      "K15 : le bac et la goulotte visibles sont vides. Le couvercle du réservoir reste fermé ; son contenu interne n’est pas observable."
     ],
     "upstream_guide_reading": "AGENTS.md et docs/GAMEDEV_AGENT_GUIDE.md lus. L'accès web au create-game-assets/SKILL.md au commit épinglé a échoué avec DisabledError; la poursuite selon les consignes locales est prévue par ce guide.",
     "round3_summary": {
@@ -1918,6 +2586,19 @@
       "exact_camera_or_animation_alignment_certified": false,
       "k13_central_opening_alpha0_pixels": 12100,
       "k13_central_opening_checked_pixels": 12100
+    },
+    "round4_summary": {
+      "new_assets": 4,
+      "new_size_bytes": 6212442,
+      "all_previous_thirteen_sha256_preserved": true,
+      "all_new_original_copies_byte_identical": true,
+      "all_new_visible_silhouettes_entire": true,
+      "all_new_reference_views_inherited_requested": true,
+      "actual_camera_measured": false,
+      "exact_state_pair_alignment_certified": false,
+      "k16_central_opening_alpha0_pixels": 314979,
+      "k16_central_opening_alpha1_pixels": 21,
+      "k16_central_opening_checked_pixels": 315000
     }
   },
   "continuation_batches": [
@@ -2022,6 +2703,88 @@
         }
       ],
       "notes": "K10/K11/K12 ouvrent trois constructions historiques distinctes ; K13 désactive le modèle270. Vues héritées des originaux≈32°, pas de conversion frontale0/35. Quatre appels, quatre sorties retenues, aucune reprise ni retouche.",
+      "camera_mode": "INHERIT_REFERENCE_VIEW",
+      "runtime_integration": false,
+      "human_validation": false
+    },
+    {
+      "name": "kennel-feeding-equipment-empty-and-danger-unlit-states",
+      "baseline_published_commit": "c8d37c3c059021a96b071551bf9b19b09340536e",
+      "asset_ids": [
+        "HWM162-K14",
+        "HWM162-K15",
+        "HWM162-K16",
+        "HWM162-K17"
+      ],
+      "previous_asset_count": 13,
+      "previous_assets_sha256_preserved": [
+        {
+          "id": "HWM162-K01",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png",
+          "sha256": "fedb9677d90ae72cfe2ee53e9a1f5751361ea1d88da2d9169137a22d2cd9d9a5"
+        },
+        {
+          "id": "HWM162-K02",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K02-handling-gate.png",
+          "sha256": "7d7a726ff442a711bf4212a7161d042659542d1a384056f1a1853743fa77068c"
+        },
+        {
+          "id": "HWM162-K03",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K03-training-rack.png",
+          "sha256": "95cef71793ec00c9a9d8ae8842e4e8beb3e83ac9eddf4be57820a2a965637797"
+        },
+        {
+          "id": "HWM162-K04",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K04-keeper-platform.png",
+          "sha256": "fa7bcf72db0315a379f90e5872153e75e29d9d2e893adaaac02c110d611e4a73"
+        },
+        {
+          "id": "HWM162-K05",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K05-resting-basin.png",
+          "sha256": "df1d8e518af28797dac239a4db5988bba8bd10e6eb702893833850df1ffbdecf"
+        },
+        {
+          "id": "HWM162-K06",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K06-sliding-mesh-panel.png",
+          "sha256": "1591ab6c1a112e5373c8260c2c62d5111659212b9cb219ed79f44262f6d0dee4"
+        },
+        {
+          "id": "HWM162-K07",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K07-handler-lead.png",
+          "sha256": "7b47106c7b7d92b180eb62ce496ef50883e34d83b521b4b1b912d76e0bf062d9"
+        },
+        {
+          "id": "HWM162-K08",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K08-woven-training-lure.png",
+          "sha256": "2140079cfbe57a3077add91e44152c7e32890159cf54b2dbd24c1ddacb56d698"
+        },
+        {
+          "id": "HWM162-K09",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K09-adjustable-collar.png",
+          "sha256": "97eb1a2a1ce1122604e6709f4aa61df37d4e8b9186ccca56c2bfd1251b969cb2"
+        },
+        {
+          "id": "HWM162-K10",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K10-small-cage-open.png",
+          "sha256": "75eb31d88524b14d8d3a037ef22632423e2717b0649a22595366d56321037e44"
+        },
+        {
+          "id": "HWM162-K11",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K11-medium-cage-open.png",
+          "sha256": "bfbacfe01f9b9ef08ea4397e9038dde7f6980e0951165905d725baf711b04898"
+        },
+        {
+          "id": "HWM162-K12",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K12-heavy-cage-open.png",
+          "sha256": "6aa80bb9abdf9934d3eb4ed2859a066720fb9e7f2c9e2056b83adf1608f37650"
+        },
+        {
+          "id": "HWM162-K13",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K13-energy-barrier-off.png",
+          "sha256": "8e668b68e046bc3ff5d888138ead1a1c0c4df556ad28d64ceae0c929cbd5a33c"
+        }
+      ],
+      "notes": "K14 abreuvoir vide, K15 bac du nourrisseur vidé, K16 rack vide, K17 balise éteinte. Quatre appels, quatre sorties retenues, aucun essai supplémentaire ni pixel édité. K14 change de format natif ; tous héritent de la vue réellement choisie sans certification géométrique.",
       "camera_mode": "INHERIT_REFERENCE_VIEW",
       "runtime_integration": false,
       "human_validation": false

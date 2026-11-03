@@ -15,7 +15,7 @@ from PIL import Image
 
 PACK = Path(__file__).resolve().parents[1]
 REPO = PACK.parents[1]
-EXPECTED = [f'HWM162-{group}{i:02d}' for group, count in [('S', 10), ('M', 12), ('K', 13)] for i in range(1, count + 1)]
+CURRENT_PASS = 4
 
 
 def read_json(path):
@@ -51,6 +51,19 @@ def inspect(path):
 def aggregate():
     catalogue = read_json(PACK / 'catalogue.json')
     plans = {a['id']: a for a in catalogue['newAssetPlan']}
+    assert len(plans) == len(catalogue['newAssetPlan']), 'Duplicate planned asset ID'
+    current_plan = read_json(PACK / 'next-targets-round4.json')
+    preserved = read_json(PACK / 'modularity-audit-round4.json')['preservedSelectedAssets']
+    assert len(preserved) == 35, 'Unexpected previous delivery snapshot'
+    expected = [a['id'] for a in preserved] + [a['id'] for a in current_plan['newAssetPlan']]
+    assert len(expected) == len(set(expected)) == current_plan['targetTotalPNGCount'], 'Plan/snapshot count mismatch'
+    assert set(plans) == set(expected), 'Catalogue differs from the approved current plan and preserved delivery'
+    assert all(plans[a['id']].get('productionPass') == CURRENT_PASS for a in current_plan['newAssetPlan']), 'Current pass ID mismatch'
+    structural_fields = ['area', 'targetIds', 'sourceAssetFiles', 'sourceAssetIds', 'sourceRefs', 'expectedPath', 'viewPolicy', 'productionPass']
+    for approved in current_plan['newAssetPlan']:
+        for field in structural_fields:
+            assert plans[approved['id']].get(field) == approved.get(field), f'Plan/catalogue {field} mismatch: {approved["id"]}'
+    expected.sort(key=lambda asset_id: ({'S': 0, 'M': 1, 'K': 2}[asset_id.split('-')[1][0]], int(asset_id.split('-')[1][1:])))
     source_ids = {source['id'] for source in catalogue['sources']}
     receipt_assets = {}
     for area in ['market', 'mounts', 'kennels']:
@@ -58,9 +71,9 @@ def aggregate():
         for a in receipt['assets']:
             assert a['id'] not in receipt_assets, f'Duplicate receipt ID: {a["id"]}'
             receipt_assets[a['id']] = (area, a)
-    assert set(receipt_assets) == set(EXPECTED), 'Missing or unexpected generation IDs'
+    assert set(receipt_assets) == set(expected), 'Missing or unexpected generation IDs'
     assets = []
-    for asset_id in EXPECTED:
+    for asset_id in expected:
         area, receipt = receipt_assets[asset_id]
         plan = plans[asset_id]
         relative = receipt.get('path') or receipt.get('file')
@@ -120,8 +133,6 @@ def aggregate():
     selected_paths = {a['path'] for a in assets}
     disk_paths = {str(p.relative_to(REPO)) for p in (PACK / 'sprites').rglob('*.png')}
     assert disk_paths == selected_paths, 'Unexpected or missing PNG in selected sprite directories'
-    preserved = read_json(PACK / 'modularity-audit-round3.json')['preservedSelectedAssets']
-    assert len(preserved) == 25, 'Unexpected previous delivery snapshot'
     assets_by_id = {a['id']: a for a in assets}
     for previous in preserved:
         actual = assets_by_id[previous['id']]
@@ -137,8 +148,11 @@ def aggregate():
                 'areas': {g: sum(a['area'] == g for a in assets) for g in ['market', 'mounts', 'kennels']},
                 'firstDeliveryCommit': 'd4c43dce5286fbb64e41ae5fa22cb82854572a7e',
                 'secondDeliveryCommit': 'a6e16334589ee8c4724bcc04da539007e669c883',
-                'continuationBaseCommit': '454bbc558abc9bb06141b2b77642bff1894d8cf2',
-                'scope': '35 selected independent PNG sources: 17 in the first delivery, 8 in the second pass and 10 additional states, components or native orientations. Forty inherited target rows audited; two building targets belong to this delivery catalogue only.',
+                'thirdDeliveryCommit': 'c8d37c3c059021a96b071551bf9b19b09340536e',
+                'continuationBaseCommit': current_plan['baselineCommit'],
+                'currentProductionPass': CURRENT_PASS,
+                'productionPassCounts': {str(n): sum(a['productionPass'] == n for a in assets) for n in range(1, CURRENT_PASS + 1)},
+                'scope': f"{len(assets)} selected independent PNG sources: 17 in the first delivery, 8 in the second pass, 10 in the third pass and {len(current_plan['newAssetPlan'])} in the fourth pass. Forty inherited target rows audited; two building targets belong to this delivery catalogue only.",
                 'canonicalOneToOneClaimed': False, 'humanValidated': False, 'runtimeIntegrated': False}
     report = {'version': 'MMK-20261103', 'verifier': f'production/{PACK.name}/tools/verify-assets.py',
               'sourceIntegrity': 'PASS', 'selectedCount': len(assets), 'rgbaWithRealTransparency': len(assets),
@@ -148,6 +162,7 @@ def aggregate():
               'uniqueSha256Count': len({a['sha256'] for a in assets}), 'selectedBytes': manifest['selectedBytes'],
               'previousDeliveryPNGUnchanged': len(preserved),
               'thirdPassPNGCount': sum(a['productionPass'] == 3 for a in assets),
+              'fourthPassPNGCount': sum(a['productionPass'] == CURRENT_PASS for a in assets),
               'inheritedReferenceViewCount': sum(a['viewPolicy'] == 'INHERIT_REFERENCE_VIEW' for a in assets),
               'scriptModifiesPNG': False, 'runtimeAdmission': False, 'canonicalCertification': False,
               'limits': ['Low-alpha edge noise remains in the native sources.', 'No collision, portal, actor placement or animation validation is claimed.', 'Dimensions in metres are proposed design dimensions.', 'Historical view inheritance is recorded separately from the Homeworld 0°/35° target; no camera conversion is presumed.'],

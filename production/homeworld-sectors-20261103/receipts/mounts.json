@@ -1280,10 +1280,831 @@
       "edge_alpha_max": 1,
       "original_unchanged": true,
       "imagegen_calls_for_asset": 1
+    },
+    {
+      "id": "HWM162-M13",
+      "label": "Longe de liaison à deux attaches mécaniques",
+      "target_id": "target-v81-72-281",
+      "file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M13-double-ended-tether.png",
+      "source_original": "/workspace/scratch/2166fec07f86/generated_images/exec-c37ca056-d8db-4bb0-b800-ad29b365f2d8.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/2166fec07f86/generated_images as /workspace/scratch/2166fec07f86/generated_images/exec-c37ca056-d8db-4bb0-b800-ad29b365f2d8.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "prompt": "Create ONE new independent equipment sprite HWM162-M13, a DOUBLE-ENDED MECHANICAL TETHER for the Yautja The Long Hunt game.\nREFERENCE1 is the existing tether bollard M02. REFERENCE2 is the existing mount harness283. Use their worn metal family, angular captive hardware and bronze attachment rings as identity references. Output ONLY the detachable connecting tether, NOT either reference object.\nONE COMPLETE CONNECTED ARTICLE: a substantial dark gunmetal chain made of interlocking rounded oval links, gently laid in a loose open S-shaped curve. At EACH of its TWO ends there is ONE closed aged-bronze mechanical shackle with a visible captive cross-pin and rounded inner contact surface. Both end shackles are clearly visible and separated. The two ends can be visually imagined connecting the large M02 anchor ring to the bronze harness rings. The chain must read continuously from end to end; no detached links, no extra third connector, no hand grip or leather hand loop, no retracting box, no post, no harness merged into it. Functional blunt surfaces, no spikes or blades.\nOriginal game adaptation, not a claimed canonical prop. Do not invent a canonical animal or species fit. Practical restrained Yautja-derived angular bronze end hardware, worn dark gunmetal chain, realistic detailed hand-painted 2.5D game rendering. The metal has the same restrained wear and warm highlights as the references. No neon, no emissive glow, no readable text or strings of symbols.\nVIEW: orthographic camera requested yaw0 degrees and pitch35 degrees downward, whole article placed in a shallow horizontal plane so the thickness of the links and shackle bodies is visible. Native new render, not copied/pasted pixels. World light from upper left. Preserve clear material volume and visible transparent holes in the chain and the end shackles.\nFRAMING: wide landscape1536x1024 transparent canvas; center the complete single tether, around70 percent width and no more than65 percent height. Keep at least100px of clear transparent margin around every extremity. Entire silhouette, both shackles and every link inside the image. True native alpha transparency outside the article and through the open link holes. No background, floor, ground plane, cast ground shadow, gradient, halo, opaque backdrop, checkerboard painting, labels, title, contact sheet, multiple views, person or creature.",
+      "reference_image_files": [
+        "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M02-tether-station.png",
+        "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-283-mount-harness-native.png"
+      ],
+      "reference_input_paths": [
+        "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/mounts/HWM162-M02-tether-station.png",
+        "/workspace/scratch/2166fec07f86/round3-mounts-references/target-v81-72-283-mount-harness-native.png"
+      ],
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "variant_kind": "INDEPENDENT_DOUBLE_ENDED_TETHER_COMPONENT",
+      "review_note": "One continuous chain with two complete bronze closed shackles and visible captive pins. Both terminal connectors, all links and their silhouette are inside the canvas. Open S-shaped pose, no hand loop and no support merged into the sprite. Distinct from K07 handler lead. Material family derives from M02 and harness283. The requested linking function is proposed only; scale, connector clearances, load capacity and species fit have not been validated. Native RGBA source copied unchanged.",
+      "camera_requested": {
+        "mode": "PROJECT_ORTHOGRAPHIC_REQUEST",
+        "yaw_degrees": 0,
+        "pitch_degrees": 35,
+        "projection": "orthographic"
+      },
+      "camera_measured": false,
+      "assembly_pair_ids": [
+        "HWM162-M02",
+        "target-v81-72-283"
+      ],
+      "assembly_runtime_validated": false,
+      "production_pass": 4,
+      "runtime_integrated": false,
+      "human_art_validated": false,
+      "canon_1_to_1_claim": false,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "original_unchanged": true,
+      "imagegen_calls_for_asset": 1,
+      "reference_sha256": [
+        "e61634fd7c5ea92792c06586e6b7edb4ed23b570084931177cb32774c80865fa",
+        "1dd4cf02adcfc98d04529cf00d9c290016c7bac9678d7d1432bda6db583a6d45"
+      ],
+      "mode": "RGBA",
+      "dimensions_px": [
+        1536,
+        1024
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_zero_pixels": 1242079,
+      "alpha_bbox": [
+        0,
+        0,
+        1518,
+        1024
+      ],
+      "alpha_bbox_8": [
+        162,
+        193,
+        1371,
+        855
+      ],
+      "alpha_bbox_gt24": [
+        163,
+        193,
+        1371,
+        855
+      ],
+      "alpha_thresholds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            0,
+            1518,
+            1024
+          ],
+          "margins": [
+            0,
+            0,
+            18,
+            0
+          ],
+          "pixels": 330785
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            162,
+            193,
+            1371,
+            855
+          ],
+          "margins": [
+            162,
+            193,
+            165,
+            169
+          ],
+          "pixels": 298620
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            163,
+            193,
+            1371,
+            855
+          ],
+          "margins": [
+            163,
+            193,
+            165,
+            169
+          ],
+          "pixels": 296618
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            164,
+            194,
+            1370,
+            854
+          ],
+          "margins": [
+            164,
+            194,
+            166,
+            170
+          ],
+          "pixels": 291411
+        }
+      },
+      "sha256": "f9636f0a0d7defd5885977758fafe54542bfb7d638bd4207d8004ea4a9c385cb",
+      "bytes": 1600052,
+      "substantial_silhouette_margins_px": [
+        162,
+        193,
+        165,
+        169
+      ],
+      "silhouette_margins_gt24_px": [
+        163,
+        193,
+        165,
+        169
+      ],
+      "edge_alpha_max": 1,
+      "root_visual_review": {
+        "performed": true,
+        "decision": "ACCEPTED_INDEPENDENT_ART_CANDIDATE",
+        "reviewer": "root",
+        "date": "2026-11-03",
+        "note": "Revue racine effectuée et candidat retenu. Cette validation visuelle ne certifie ni canon1:1, caméra mesurée, raccord exact, charge, compatibilité d’espèce ni intégration runtime."
+      }
+    },
+    {
+      "id": "HWM162-M14",
+      "label": "Harnais de monture en pose pendante autonome",
+      "target_id": "target-v81-72-283",
+      "file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M14-hanging-mount-harness-v2.png",
+      "source_original": "/workspace/scratch/2166fec07f86/generated_images/exec-3753f907-fc49-4773-a5c8-aed09679aa57.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/2166fec07f86/generated_images as /workspace/scratch/2166fec07f86/generated_images/exec-3753f907-fc49-4773-a5c8-aed09679aa57.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "prompt": "TARGETED NATIVE ORIENTATION CORRECTION of sprite HWM162-M14. Output ONE hanging harness only.\nREFERENCE1 is the current complete hanging harness. PRESERVE its object identity, hanging pose, rust-red brown stitched leather straps, bronze buckles and loops, gunmetal reinforcement plates, distinctive faceted bronze-edged breast collar and single amber stud, full bottom girth loop. Do not redesign its parts.\nREFERENCE2 is the intended EMPTY support282. Its TWO UPPER HOOKS lie in an OBLIQUE ground-plane axis: the LEFT hook is HIGHER in the image and farther away, the RIGHT hook is LOWER in the image and nearer. This support determines the orientation of the hanging harness. REFERENCE3 is the original harness283 identity reference.\nTHE CONCRETE CORRECTION: natively turn the hanging HARNESS OBJECT around its vertical axis into the same three-quarter orientation as the upper cross-arm of support282. The harness's TWO TOP BRONZE ATTACHMENT LOOPS must follow that projected upper-hook axis: LEFT LOOP HIGHER/FARTHER, RIGHT LOOP LOWER/NEARER, a clear gently descending line from left to right. Do NOT keep their tops at the same screen height. Match the oblique depth direction of the support, approximately a100-pixel vertical difference across500 pixels of horizontal loop spacing on a1024-wide portrait composition; the visual reference is the guide, not exact numerical fit. Rotate the OBJECT in 3D, not the image pixels or canvas. Each hanging strap still follows VERTICAL GRAVITY in world space; do not just slant the whole front-facing image. Let the breast collar and girth naturally show the corresponding three-quarter depth. Retain the same world light from upper left; do not mirror the lighting.\nOnly the empty connected HARNESS article. It must contain all straps, buckles, both top loops and complete bottom girth, with transparent gaps inside loops. DO NOT INCLUDE the reference stand, pole, hooks, hangers, support arms, base, mannequin, creature, wall or any external attachment structure. No new accessory. Joining to support282 will be separate and remains a visual proposal.\nCAMERA: orthographic Homeworld camera requested yaw0 degrees and pitch35 degrees downward; object orientation adapted to support282. Realistic detailed hand-painted2.5D sprite, consistent restrained aged bronze/charcoal gunmetal/rust leather. No readable text, no diagram, no labels, no glyph strings, no neon.\nFRAMING:1024x1536 portrait transparent canvas. Center the entire article at about70 percent image height, retain at least90px transparent margins around both top rings, breast collar edges and the lowest strap. No cropped parts. Native real alpha outside the article and in all open strap loops. No backdrop, atmosphere, halo, floor, ground shadow, checkerboard painting, title, contact sheet, second view. Original game adaptation without canonical1:1 or mechanical-fit certification.",
+      "reference_image_files": [
+        "production/homeworld-sectors-20261103/attempts/mounts/HWM162-M14-hanging-mount-harness-v1.png",
+        "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-282-mount-harness-support-native.png",
+        "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-283-mount-harness-native.png"
+      ],
+      "reference_input_paths": [
+        "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/mounts/HWM162-M14-hanging-mount-harness.png",
+        "/workspace/scratch/2166fec07f86/round3-mounts-references/target-v81-72-282-mount-harness-support-native.png",
+        "/workspace/scratch/2166fec07f86/round3-mounts-references/target-v81-72-283-mount-harness-native.png"
+      ],
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "variant_kind": "NATIVE_HANGING_STORAGE_POSE_OF_EXISTING_HARNESS",
+      "review_note": "Second native attempt corrects the frontal attachment axis of v1: the hanging article is now shown in three-quarter depth with its left upper loop higher in the image and the right loop lower, following the direction of the upper support282 cross-arm. Complete breast collar, straps, buckles, upper loops and lower girth remain present; no stand or creature is fused into the file. Native rerender, no pixel rotation or mirror. Exact projected slope, loop spacing, scale and hardware fit to282 remain unverified; no translation-only fit or measured camera is claimed. The original v1 is retained unchanged under attempts and is not an additional selected sprite.",
+      "camera_requested": {
+        "mode": "PROJECT_ORTHOGRAPHIC_REQUEST",
+        "yaw_degrees": 0,
+        "pitch_degrees": 35,
+        "projection": "orthographic",
+        "object_orientation": "left attachment loop higher/farther, right loop lower/nearer; three-quarter object orientation guided by support282"
+      },
+      "camera_measured": false,
+      "assembly_pair_ids": [
+        "target-v81-72-282",
+        "target-v81-72-283"
+      ],
+      "assembly_runtime_validated": false,
+      "production_pass": 4,
+      "runtime_integrated": false,
+      "human_art_validated": false,
+      "canon_1_to_1_claim": false,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "original_unchanged": true,
+      "imagegen_calls_for_asset": 2,
+      "reference_sha256": [
+        "55ef920fbf2dfa4ad96684823ef36cbee4b0ebf5dd54a1e9aae8cc8c62ce1b5f",
+        "e32266329f168b89f0318b0ddb666a9044bc90ee9d2677cbd02f580857bc5acc",
+        "1dd4cf02adcfc98d04529cf00d9c290016c7bac9678d7d1432bda6db583a6d45"
+      ],
+      "mode": "RGBA",
+      "dimensions_px": [
+        1024,
+        1536
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_zero_pixels": 1077764,
+      "alpha_bbox": [
+        65,
+        39,
+        1006,
+        1510
+      ],
+      "alpha_bbox_8": [
+        137,
+        119,
+        882,
+        1435
+      ],
+      "alpha_bbox_gt24": [
+        137,
+        120,
+        882,
+        1434
+      ],
+      "alpha_thresholds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            65,
+            39,
+            1006,
+            1510
+          ],
+          "margins": [
+            65,
+            39,
+            18,
+            26
+          ],
+          "pixels": 495100
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            137,
+            119,
+            882,
+            1435
+          ],
+          "margins": [
+            137,
+            119,
+            142,
+            101
+          ],
+          "pixels": 465789
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            137,
+            120,
+            882,
+            1434
+          ],
+          "margins": [
+            137,
+            120,
+            142,
+            102
+          ],
+          "pixels": 463823
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            138,
+            120,
+            881,
+            1434
+          ],
+          "margins": [
+            138,
+            120,
+            143,
+            102
+          ],
+          "pixels": 458511
+        }
+      },
+      "sha256": "d07668ce8a54d48cd8d5e340a5f6fb3361fa20724c4a7b84dd770d7474c9fba9",
+      "bytes": 2042441,
+      "substantial_silhouette_margins_px": [
+        137,
+        119,
+        142,
+        101
+      ],
+      "silhouette_margins_gt24_px": [
+        137,
+        120,
+        142,
+        102
+      ],
+      "edge_alpha_max": 0,
+      "correction_reason": "Root visual review found that v1 upper loops were at the same screen height whereas support282 upper hooks define an oblique left-higher/right-lower axis.",
+      "reference_resolved_paths_after_archive": [
+        "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/attempts/mounts/HWM162-M14-hanging-mount-harness-v1.png",
+        "/workspace/scratch/2166fec07f86/round3-mounts-references/target-v81-72-282-mount-harness-support-native.png",
+        "/workspace/scratch/2166fec07f86/round3-mounts-references/target-v81-72-283-mount-harness-native.png"
+      ],
+      "selected_attempt": 2,
+      "attempts": [
+        {
+          "id": "HWM162-M14",
+          "label": "Harnais de monture en pose pendante autonome",
+          "target_id": "target-v81-72-283",
+          "file": "production/homeworld-sectors-20261103/attempts/mounts/HWM162-M14-hanging-mount-harness-v1.png",
+          "source_original": "/workspace/scratch/2166fec07f86/generated_images/exec-bb63e227-7793-4779-850f-b2cfeda12e23.png",
+          "output_hint": "Generated images are saved to /workspace/scratch/2166fec07f86/generated_images as /workspace/scratch/2166fec07f86/generated_images/exec-bb63e227-7793-4779-850f-b2cfeda12e23.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "prompt": "Create ONE native independent HANGING STORAGE POSE of the existing mount harness in REFERENCE1, sprite HWM162-M14 for Yautja The Long Hunt.\nREFERENCE1 IS THE IDENTITY TO PRESERVE: the same single large-animal harness with broad worn rust-red/brown leather straps, stitched edges, aged-bronze rectangular buckles and D-rings, narrow dark gunmetal reinforcement patches, and its distinctive angular charcoal-metal breast collar plate edged in worn bronze with a central downward faceted ridge, open dark angular vents, and ONE small amber rivet. Preserve this recognizable plate and strap construction. Do not replace it with a new saddle, human cuirass, backpack or generic leather bridle.\nCHANGE ITS POSE: the empty harness is hanging vertically in gravity from TWO separated upper attachment loops, prepared to be placed on a storage support. The flexible straps and lower girth loop drape downward naturally; the upper rings and buckles are clearly visible, the broad chest plate hangs lower on the front, and rear straps descend behind it. All pieces remain connected as ONE complete article, with open transparent empty space inside the hanging strap loops. Relaxed hanging pose, no invisible animal-shaped inflated volume, no body or mannequin holding the harness open.\nREFERENCE2 is the EMPTY harness support282 and is provided ONLY to clarify the potential resting/attachment context and matching material language. DO NOT render that stand, any of its hooks, any pole, base, support, external hanger, ceiling or suspension rope in the output. The harness alone must be independently placeable; joining it to the stand will be done separately and is not a verified mechanical fit.\nVIEW: native orthographic game render requested camera yaw0 degrees and pitch35 degrees downward, front-dominant with subtle depth visible. Keep the two top attachment loops and every lower strap inside the frame. Native new pose, no pixel rotation, mirroring or pasted crops. Upper-left world lighting consistent with the references. Realistic detailed hand-painted 2.5D game art, restrained worn bronze, charcoal gunmetal and rust-red leather, no shiny new chrome, no neon, no invented readable writing.\nFRAMING: portrait canvas1024x1536 with true transparent background. Center the entire harness small enough to leave at least100px transparent margins on all sides, around70 percent of image height. Entire silhouette including both upper rings and the lowest strap loop visible. Real native alpha through all open strap loops and around the silhouette. No backdrop, scene, floor, shadow plate, ground shadow, glow, halo, painted checkerboard, labels, diagram, contact sheet or multiple views. No animal or person. Original game adaptation, no canonical1:1 claim.",
+          "reference_image_files": [
+            "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-283-mount-harness-native.png",
+            "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-282-mount-harness-support-native.png"
+          ],
+          "reference_input_paths": [
+            "/workspace/scratch/2166fec07f86/round3-mounts-references/target-v81-72-283-mount-harness-native.png",
+            "/workspace/scratch/2166fec07f86/round3-mounts-references/target-v81-72-282-mount-harness-support-native.png"
+          ],
+          "lore_status": "ORIGINAL_GAME_ADAPTATION",
+          "variant_kind": "NATIVE_HANGING_STORAGE_POSE_OF_EXISTING_HARNESS",
+          "review_note": "One complete empty harness in a vertically elongated hanging pose: two upper bronze loops, descending connected rust-red leather straps, rectangular bronze buckles, faceted gunmetal breast collar with one amber stud, and complete lower girth loop. No stand, hook, mannequin or creature fused into the file. Identity follows harness283 while preserving its existing original. The storage support282 is an intended separate companion; placement, spacing of the upper loops and mechanical fit have not been tested in scene. Pose, camera and gravity are visually interpreted rather than measured. Native RGBA original copied unchanged.",
+          "camera_requested": {
+            "mode": "PROJECT_ORTHOGRAPHIC_REQUEST",
+            "yaw_degrees": 0,
+            "pitch_degrees": 35,
+            "projection": "orthographic"
+          },
+          "camera_measured": false,
+          "assembly_pair_ids": [
+            "target-v81-72-282",
+            "target-v81-72-283"
+          ],
+          "assembly_runtime_validated": false,
+          "production_pass": 4,
+          "runtime_integrated": false,
+          "human_art_validated": false,
+          "canon_1_to_1_claim": false,
+          "status": "ARCHIVED_SUPERSEDED_NATIVE_ATTEMPT",
+          "original_unchanged": true,
+          "imagegen_calls_for_asset": 1,
+          "reference_sha256": [
+            "1dd4cf02adcfc98d04529cf00d9c290016c7bac9678d7d1432bda6db583a6d45",
+            "e32266329f168b89f0318b0ddb666a9044bc90ee9d2677cbd02f580857bc5acc"
+          ],
+          "mode": "RGBA",
+          "dimensions_px": [
+            1024,
+            1536
+          ],
+          "alpha_extrema": [
+            0,
+            254
+          ],
+          "alpha_zero_pixels": 1065520,
+          "alpha_bbox": [
+            0,
+            21,
+            1023,
+            1536
+          ],
+          "alpha_bbox_8": [
+            148,
+            133,
+            881,
+            1436
+          ],
+          "alpha_bbox_gt24": [
+            148,
+            134,
+            881,
+            1436
+          ],
+          "alpha_thresholds": {
+            "0": {
+              "comparison": "alpha > threshold",
+              "box": [
+                0,
+                21,
+                1023,
+                1536
+              ],
+              "margins": [
+                0,
+                21,
+                1,
+                0
+              ],
+              "pixels": 507344
+            },
+            "8": {
+              "comparison": "alpha > threshold",
+              "box": [
+                148,
+                133,
+                881,
+                1436
+              ],
+              "margins": [
+                148,
+                133,
+                143,
+                100
+              ],
+              "pixels": 470876
+            },
+            "24": {
+              "comparison": "alpha > threshold",
+              "box": [
+                148,
+                134,
+                881,
+                1436
+              ],
+              "margins": [
+                148,
+                134,
+                143,
+                100
+              ],
+              "pixels": 468729
+            },
+            "128": {
+              "comparison": "alpha > threshold",
+              "box": [
+                149,
+                135,
+                880,
+                1435
+              ],
+              "margins": [
+                149,
+                135,
+                144,
+                101
+              ],
+              "pixels": 463114
+            }
+          },
+          "sha256": "55ef920fbf2dfa4ad96684823ef36cbee4b0ebf5dd54a1e9aae8cc8c62ce1b5f",
+          "bytes": 2073199,
+          "substantial_silhouette_margins_px": [
+            148,
+            133,
+            143,
+            100
+          ],
+          "silhouette_margins_gt24_px": [
+            148,
+            134,
+            143,
+            100
+          ],
+          "edge_alpha_max": 1,
+          "selected": false,
+          "selection_reason": "Root visual review found that v1 upper loops were at the same screen height whereas support282 upper hooks define an oblique left-higher/right-lower axis."
+        }
+      ],
+      "root_visual_review": {
+        "performed": true,
+        "decision": "ACCEPTED_INDEPENDENT_ART_CANDIDATE",
+        "reviewer": "root",
+        "date": "2026-11-03",
+        "note": "Revue racine effectuée et candidat retenu. Cette validation visuelle ne certifie ni canon1:1, caméra mesurée, raccord exact, charge, compatibilité d’espèce ni intégration runtime."
+      }
+    },
+    {
+      "id": "HWM162-M15",
+      "label": "Berceau textile de soin pour quatre appuis bas",
+      "target_id": "target-v81-72-290",
+      "file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M15-soft-care-cradle-v2.png",
+      "source_original": "/workspace/scratch/2166fec07f86/generated_images/exec-a3ed3b0c-10cb-4116-bccf-a197afad3a69.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/2166fec07f86/generated_images as /workspace/scratch/2166fec07f86/generated_images/exec-a3ed3b0c-10cb-4116-bccf-a197afad3a69.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "prompt": "TARGETED NATIVE ORIENTATION CORRECTION of HWM162-M15. Output only ONE complete soft cradle article.\nREFERENCE1 is the existing shallow textile cradle. PRESERVE its identity: rust-red coarse woven material, brown leather rolled long edges, three dark stitched reinforcement strips, exactly FOUR padded rounded corner contact extensions, each with a short attached bronze-buckled securing tab. The interior stays empty and shallow. Preserve the complete connected article and its restrained wear.\nREFERENCE2 is its intended support273: a LOW support with FOUR padded U-shaped contact cradles, two oblique lengthwise rails, four low feet and no overhead beam. Use reference2 to determine the cradle's OBJECT ORIENTATION as if its four padded corner contacts were RESTING on the four low support cradles. Do not render the support itself.\nCRUCIAL CORRECTION: the cradle's TWO LONG ROLLED EDGES must run diagonally UP TOWARD THE RIGHT in the picture, the SAME projected ground-plane direction as the two LONGITUDINAL RAILS of reference2. The near ends are toward LOWER LEFT, the far ends toward UPPER RIGHT. Do NOT leave the two long edges horizontal and front-facing. The short transverse edges run across the other ground-plane axis, creating a clear three-quarter parallelogram arrangement of all four corner pads. Use the rail axes visible in reference2 as the orientation guide. Preserve visible concavity and textile thickness in this native three-dimensional view.\nThis is a NEW NATIVE rendering after turning the OBJECT in world space, NOT a flat rotation of the previous image, NOT mirrored pixels and NOT a skewed 2D cutout. Gravity and upper-left world lighting remain coherent. Camera requested orthographic yaw0 degrees and pitch35 degrees downward; object orientation follows reference2. Exact corner registration, scale, load and species fit will remain a proposal, not a certified connection.\nONLY the soft textile article and its four attached short buckle tabs. NO stand, rail, foot, post, rigid support frame, leg, ground plate, animal, person or separate accessory. NO overhead strap, suspension cable, chain, hanging hook or lifting equipment. It rests conceptually on LOW pads, not on a nonexistent hoist. All four corner contact extensions must remain individually visible and connected to the central sheet.\nRealistic detailed hand-painted2.5D game sprite. Worn dark rust-red textile and brown leather, charcoal stitched reinforcements, small aged-bronze hardware only. No spikes, no glow or neon, no readable writing or glyph strings.\nFRAMING:1536x1024 landscape transparent canvas, article centered at no more than70 percent width and70 percent height, with at least100px empty transparent margin around all four corner extensions and tabs. Complete silhouette. Native real transparent alpha outside the article. No scene, background gradient, halo, floor, cast ground shadow, checkerboard painting, diagram, labels, title, contact sheet or second view. Original game adaptation, not a canonical1:1 claim.",
+      "reference_image_files": [
+        "production/homeworld-sectors-20261103/attempts/mounts/HWM162-M15-soft-care-cradle-v1.png",
+        "production/native-open-20261102/archives/fauna-energy/gear/target-v81-71-273-fauna-harness-support-native.png"
+      ],
+      "reference_input_paths": [
+        "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/mounts/HWM162-M15-soft-care-cradle.png",
+        "/workspace/scratch/2166fec07f86/round3-mounts-references/target-v81-71-273-fauna-harness-support-native.png"
+      ],
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "variant_kind": "INDEPENDENT_SOFT_CRADLE_FOR_LOW_FOUR_POINT_SUPPORT",
+      "review_note": "Second native attempt corrects the frontal long-edge axis of v1: both padded long edges now rise toward the right, following the direction of the low support273 longitudinal rails. Four complete padded contact extensions and four short buckle tabs remain visible around the empty shallow textile body. No rigid frame, legs, overhead straps, suspended load or creature. Source273 is a LOW support with four padded U-shaped cradles and longitudinal rails, without an overhead beam. The article is proposed to rest on those four low contacts. Exact projected slopes, four-point registration, scale, contact clearances, stability, load capacity and species fit remain unverified; translation-only fit is not claimed. Native rerender without pixel rotation, mirror, resize or padding; v1 is archived unchanged and is not an additional selected sprite.",
+      "camera_requested": {
+        "mode": "PROJECT_ORTHOGRAPHIC_REQUEST",
+        "yaw_degrees": 0,
+        "pitch_degrees": 35,
+        "projection": "orthographic",
+        "object_orientation": "both long padded edges rise toward the right, three-quarter ground-plane orientation guided by support273 longitudinal rails"
+      },
+      "camera_measured": false,
+      "assembly_pair_ids": [
+        "target-v81-71-273",
+        "HWM162-M06"
+      ],
+      "assembly_runtime_validated": false,
+      "assembly_contact_notes": {
+        "support_kind": "LOW_FOUR_PADDED_CRADLES_WITH_LONGITUDINAL_RAILS",
+        "overhead_beam": false,
+        "lifting_device": false,
+        "contact_fit_validated": false,
+        "translation_only_fit_claim": false
+      },
+      "production_pass": 4,
+      "runtime_integrated": false,
+      "human_art_validated": false,
+      "canon_1_to_1_claim": false,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "original_unchanged": true,
+      "imagegen_calls_for_asset": 2,
+      "reference_sha256": [
+        "3d7ddd8a125816441e057898f25371315a5d749f61461da62bb7459cde3348ee",
+        "92b2d4dfd704ab774f840d56c41132072fdbeb06e204e56ba1d9cf617456ee7a"
+      ],
+      "mode": "RGBA",
+      "dimensions_px": [
+        1536,
+        1024
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_zero_pixels": 1191010,
+      "alpha_bbox": [
+        25,
+        41,
+        1512,
+        1008
+      ],
+      "alpha_bbox_8": [
+        132,
+        170,
+        1423,
+        877
+      ],
+      "alpha_bbox_gt24": [
+        133,
+        171,
+        1423,
+        877
+      ],
+      "alpha_thresholds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            25,
+            41,
+            1512,
+            1008
+          ],
+          "margins": [
+            25,
+            41,
+            24,
+            16
+          ],
+          "pixels": 381854
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            132,
+            170,
+            1423,
+            877
+          ],
+          "margins": [
+            132,
+            170,
+            113,
+            147
+          ],
+          "pixels": 372738
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            133,
+            171,
+            1423,
+            877
+          ],
+          "margins": [
+            133,
+            171,
+            113,
+            147
+          ],
+          "pixels": 372064
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            133,
+            171,
+            1422,
+            876
+          ],
+          "margins": [
+            133,
+            171,
+            114,
+            148
+          ],
+          "pixels": 370009
+        }
+      },
+      "sha256": "50593708ea5f1a7f2cd19c3bf537cc0b5d4a86e62e89e53cf87620e6388615dc",
+      "bytes": 1691979,
+      "substantial_silhouette_margins_px": [
+        132,
+        170,
+        113,
+        147
+      ],
+      "silhouette_margins_gt24_px": [
+        133,
+        171,
+        113,
+        147
+      ],
+      "edge_alpha_max": 0,
+      "correction_reason": "Root visual review found that v1 long padded edges were frontal/horizontal whereas support273 has oblique rails rising toward the right.",
+      "reference_resolved_paths_after_archive": [
+        "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/attempts/mounts/HWM162-M15-soft-care-cradle-v1.png",
+        "/workspace/scratch/2166fec07f86/round3-mounts-references/target-v81-71-273-fauna-harness-support-native.png"
+      ],
+      "selected_attempt": 2,
+      "attempts": [
+        {
+          "id": "HWM162-M15",
+          "label": "Berceau textile de soin pour quatre appuis bas",
+          "target_id": "target-v81-72-290",
+          "file": "production/homeworld-sectors-20261103/attempts/mounts/HWM162-M15-soft-care-cradle-v1.png",
+          "source_original": "/workspace/scratch/2166fec07f86/generated_images/exec-34a2dd7d-b498-4888-a9da-a79ae8ccd2e9.png",
+          "output_hint": "Generated images are saved to /workspace/scratch/2166fec07f86/generated_images as /workspace/scratch/2166fec07f86/generated_images/exec-34a2dd7d-b498-4888-a9da-a79ae8ccd2e9.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "prompt": "Create ONE new standalone SOFT CARE CRADLE equipment sprite HWM162-M15 for the Yautja The Long Hunt game.\nREFERENCE1 is an existing LOW fauna support: four padded U-shaped contact cradles on four low feet, connected by two lengthwise rails. It has NO overhead beam and NO high attachment points. It is a fit/context reference ONLY: do not include any of its feet, posts, rails, brackets or frame in the output.\nREFERENCE2 is the mount harness and provides the rust-red leather, coarse woven reinforcement, stitched seams, dark gunmetal and worn bronze hardware identity.\nOUTPUT ONLY ONE COMPLETE CONNECTED SOFT ARTICLE: a broad, low, EMPTY concave padded textile cradle, like a heavy flexible underbody support sheet. Its roughly rectangular body is built from restrained dark rust-red heavy woven material backed with brown leather, a few broad stitched reinforcing straps beneath, and two softly rolled padded longitudinal edges. The middle hangs into a shallow trough, not a deep bag. At the FOUR corners are FOUR short, integral, rounded padded contact extensions aligned with the two rolled long edges; these are intended to REST ON the FOUR LOW U-shaped contact cradles of reference1. Each corner has a small attached short securing tab with one worn-bronze captive buckle. All tabs and padding belong to the same connected article. The entire cradle is empty and its construction is clearly visible.\nCRUCIAL FUNCTION: this is a removable soft article supported from BELOW at four low corners, not a hoist, suspended hammock, lifting sling, suspended load, crane or overhead restraint. NO long suspension straps, NO ropes rising above it, NO lifting chains, NO hanging rings, NO hooks in the air. NO independent metal support frame or rigid bars, NO legs or ground plate. No animal, creature, skeleton, humanoid or implied species-shaped body inside it. No medical procedure. This is an original practical game design; exact load, contact geometry and species fit are deliberately not certified.\nVIEW: new native orthographic sprite requested camera yaw0 degrees, pitch35 degrees downward. Use the shallow ground-plane direction and volume language of reference1 so both the concave textile interior and all four contact extensions can be read. The two long soft edges remain parallel in world space. Upper-left world lighting, realistic detailed hand-painted 2.5D game art, worn matte rust-red textile and brown leather, charcoal reinforcement, small aged-bronze buckle accents only. No ornamental spikes, no glowing electronics, no neon, no readable text or glyph strings.\nFRAMING:1536x1024 landscape canvas, complete single article centered with at least100px true transparent margin around all four extremities. About70 percent canvas width and at most70 percent height, do not zoom in. Entire silhouette, all four contact extensions and short buckle tabs visible inside the canvas. Native alpha transparency outside the article. No floor, shadows on ground, backdrop, halo, atmosphere, checkerboard painting, diagram, labels, title, contact sheet, second view or additional separate accessory. Do not output the reference support.",
+          "reference_image_files": [
+            "production/native-open-20261102/archives/fauna-energy/gear/target-v81-71-273-fauna-harness-support-native.png",
+            "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-283-mount-harness-native.png"
+          ],
+          "reference_input_paths": [
+            "/workspace/scratch/2166fec07f86/round3-mounts-references/target-v81-71-273-fauna-harness-support-native.png",
+            "/workspace/scratch/2166fec07f86/round3-mounts-references/target-v81-72-283-mount-harness-native.png"
+          ],
+          "lore_status": "ORIGINAL_GAME_ADAPTATION",
+          "variant_kind": "INDEPENDENT_SOFT_CRADLE_FOR_LOW_FOUR_POINT_SUPPORT",
+          "review_note": "One complete empty shallow textile cradle with two padded long edges, four rounded padded corner contacts and four integral short buckle tabs. No frame, legs, high cables, suspension hardware or creature merged into the sprite. The intended companion273 is a LOW support with four padded U-shaped cradles and longitudinal rails; it has no overhead beam. M15 is proposed to rest on those low contacts, not to act as a lifting device or suspended load. Its image presents the long edges mostly horizontally whereas273 has oblique projected rails; exact orientation, contact alignment, scale, stability, carrying load and species fit are not verified. A native assembly view or scene placement may be needed; translation-only fit is not claimed. This same independent soft component can be reused by kennels without another duplicate. Native RGBA source copied unchanged.",
+          "camera_requested": {
+            "mode": "PROJECT_ORTHOGRAPHIC_REQUEST",
+            "yaw_degrees": 0,
+            "pitch_degrees": 35,
+            "projection": "orthographic"
+          },
+          "camera_measured": false,
+          "assembly_pair_ids": [
+            "target-v81-71-273",
+            "HWM162-M06"
+          ],
+          "assembly_runtime_validated": false,
+          "assembly_contact_notes": {
+            "support_kind": "LOW_FOUR_PADDED_CRADLES_WITH_LONGITUDINAL_RAILS",
+            "overhead_beam": false,
+            "lifting_device": false,
+            "contact_fit_validated": false,
+            "translation_only_fit_claim": false
+          },
+          "production_pass": 4,
+          "runtime_integrated": false,
+          "human_art_validated": false,
+          "canon_1_to_1_claim": false,
+          "status": "ARCHIVED_SUPERSEDED_NATIVE_ATTEMPT",
+          "original_unchanged": true,
+          "imagegen_calls_for_asset": 1,
+          "reference_sha256": [
+            "92b2d4dfd704ab774f840d56c41132072fdbeb06e204e56ba1d9cf617456ee7a",
+            "1dd4cf02adcfc98d04529cf00d9c290016c7bac9678d7d1432bda6db583a6d45"
+          ],
+          "mode": "RGBA",
+          "dimensions_px": [
+            1536,
+            1024
+          ],
+          "alpha_extrema": [
+            0,
+            254
+          ],
+          "alpha_zero_pixels": 1025142,
+          "alpha_bbox": [
+            23,
+            79,
+            1535,
+            988
+          ],
+          "alpha_bbox_8": [
+            85,
+            227,
+            1449,
+            786
+          ],
+          "alpha_bbox_gt24": [
+            86,
+            227,
+            1449,
+            786
+          ],
+          "alpha_thresholds": {
+            "0": {
+              "comparison": "alpha > threshold",
+              "box": [
+                23,
+                79,
+                1535,
+                988
+              ],
+              "margins": [
+                23,
+                79,
+                1,
+                36
+              ],
+              "pixels": 547722
+            },
+            "8": {
+              "comparison": "alpha > threshold",
+              "box": [
+                85,
+                227,
+                1449,
+                786
+              ],
+              "margins": [
+                85,
+                227,
+                87,
+                238
+              ],
+              "pixels": 530207
+            },
+            "24": {
+              "comparison": "alpha > threshold",
+              "box": [
+                86,
+                227,
+                1449,
+                786
+              ],
+              "margins": [
+                86,
+                227,
+                87,
+                238
+              ],
+              "pixels": 529346
+            },
+            "128": {
+              "comparison": "alpha > threshold",
+              "box": [
+                86,
+                228,
+                1448,
+                785
+              ],
+              "margins": [
+                86,
+                228,
+                88,
+                239
+              ],
+              "pixels": 526935
+            }
+          },
+          "sha256": "3d7ddd8a125816441e057898f25371315a5d749f61461da62bb7459cde3348ee",
+          "bytes": 2000661,
+          "substantial_silhouette_margins_px": [
+            85,
+            227,
+            87,
+            238
+          ],
+          "silhouette_margins_gt24_px": [
+            86,
+            227,
+            87,
+            238
+          ],
+          "edge_alpha_max": 0,
+          "selected": false,
+          "selection_reason": "Root visual review found that v1 long padded edges were frontal/horizontal whereas support273 has oblique rails rising toward the right."
+        }
+      ],
+      "root_visual_review": {
+        "performed": true,
+        "decision": "ACCEPTED_INDEPENDENT_ART_CANDIDATE",
+        "reviewer": "root",
+        "date": "2026-11-03",
+        "note": "Revue racine effectuée et candidat retenu. Cette validation visuelle ne certifie ni canon1:1, caméra mesurée, raccord exact, charge, compatibilité d’espèce ni intégration runtime."
+      }
     }
   ],
   "generation_complete": true,
-  "asset_count": 12,
-  "production_note": "Twelve selected independent mount sprites. M11 attempt2 replaces the first diagonal-left candidate after targeted post-family correction; attempt1 is archived, not a thirteenth selected sprite. The other eleven selected PNGs are unchanged. No scripted pixel edits, runtime integration, human art validation, or canonical1:1 certification.",
-  "archived_mount_attempt_count": 1
+  "asset_count": 15,
+  "production_note": "Selected native sprites are unchanged copies of ImageGen originals; pass4 complete. Earlier selected sprites and archived attempts are preserved. No canonical1:1 or runtime assembly validation.",
+  "archived_mount_attempt_count": 3
 }
