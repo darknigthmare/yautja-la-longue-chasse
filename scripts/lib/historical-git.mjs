@@ -22,6 +22,39 @@ export function historicalGitFailure(error,{operation,label='Historical',env=pro
  return failure;
 }
 
+export function fetchHistoricalGitBlobs({root,origin,blobShas,env=gitEnvironment(),timeout=45000,label='Historical'}){
+ const requested=[...new Set(blobShas)];
+ for(const object of requested)assert.match(object,/^[a-f0-9]{40}$/,'Invalid historical blob identity');
+ if(!requested.length)return{requestedBlobs:0,fetchedBlobs:0};
+ // An object probe must never cause Git to fetch each promisor blob separately.
+ // Keep authentication process-local and force all retrieval through this batch.
+ const privateEnvironment={...env,GIT_NO_LAZY_FETCH:'1'};
+ const git=(args,input)=>{
+  try{return execFileSync('git',['-C',root,...args],{env:privateEnvironment,input,encoding:'utf8',
+   stdio:['pipe','pipe','pipe'],timeout,maxBuffer:16*1024*1024});}
+  catch(error){throw historicalGitFailure(error,{operation:args.includes('fetch')?'fetch':args[0],label,env:privateEnvironment});}
+ };
+ const missingObjects=()=>{
+  const lines=git(['cat-file','--batch-check=%(objectname) %(objecttype)'],requested.join('\n')+'\n').trimEnd().split('\n');
+  assert.equal(lines.length,requested.length,'Historical Git object inventory changed');
+  return requested.filter((object,index)=>{
+   if(lines[index]===object+' missing')return true;
+   assert.equal(lines[index],object+' blob','Historical identity does not name a blob: '+object);
+   return false;
+  });
+ };
+ const missing=missingObjects();
+ if(missing.length){
+  // All names were checked against the pinned publication tree by the caller.
+  // No destination ref or FETCH_HEAD is written, and existing alternate objects
+  // are read only. One stdin request avoids a network round trip per small blob.
+  git(['-c','fetch.negotiationAlgorithm=noop','fetch','--no-tags','--no-write-fetch-head',
+   '--no-recurse-submodules','--filter=blob:none','--stdin',origin],missing.join('\n')+'\n');
+  assert.deepEqual(missingObjects(),[],'Historical Git batch left requested blobs absent');
+ }
+ return{requestedBlobs:requested.length,fetchedBlobs:missing.length};
+}
+
 export async function attachHistoricalGitObjects({root,objectRepository}){
  const env=gitEnvironment();
  const gitPath=name=>execFileSync('git',['-C',objectRepository,'rev-parse','--path-format=absolute','--git-path',name],

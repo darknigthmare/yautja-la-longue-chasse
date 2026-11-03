@@ -8,7 +8,7 @@ import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import {gunzipSync} from 'node:zlib';
 import {fileURLToPath,pathToFileURL} from 'node:url';
-import {attachHistoricalGitObjects,historicalGitFailure} from './lib/historical-git.mjs';
+import {attachHistoricalGitObjects,fetchHistoricalGitBlobs,historicalGitFailure} from './lib/historical-git.mjs';
 
 export const R7_PUBLICATION_COMMIT_V113='03cf51badd450338d748da55599a317a71debd28';
 export const R7_PUBLICATION_TREE_V113='8955aa3ae57f3c1c5151fc6e2980d083bbcd0aaa';
@@ -116,18 +116,25 @@ export async function prepareR7PublicationV113({repository=ROOT,objectRepository
  const state={root,repository,manifest:await readR7PublicationManifestV113(),copiedCurrent:0,restoredGit:0,fetchedCommits:[],observedCurrent:[],deadline:Date.now()+480000};
  try{
   await initializeGit(state,objectRepository);
+  const inputs=[];
   for(const row of state.manifest.entries){
    assert.ok(Date.now()<state.deadline,'R7 preparation time bound exceeded');
-   const target=path.join(root,row.path);await fs.mkdir(path.dirname(target),{recursive:true});
    const current=await regularPath(repository,row.path)?await fingerprint(repository,row.path):null;
    state.observedCurrent.push({path:row.path,current});
+   inputs.push({row,current});
+  }
+  // The publication tree has already authenticated every requested blob. Fetch
+  // missing restoration inputs together before any cat-file operation can cause
+  // a separate network request for each small historical source file.
+  fetchHistoricalGitBlobs({root,origin:ORIGIN,blobShas:inputs.filter(({row,current})=>!matches(current,row)).map(({row})=>row.gitBlobSha),
+   env:fetchEnvironment(),timeout:Math.max(1,Math.min(45000,state.deadline-Date.now())),label:'R7'});
+  for(const {row,current} of inputs){
+   assert.ok(Date.now()<state.deadline,'R7 preparation time bound exceeded');
+   const target=path.join(root,row.path);await fs.mkdir(path.dirname(target),{recursive:true});
    if(current&&matches(current,row)){
     await fs.copyFile(path.join(repository,row.path),target,constants.COPYFILE_FICLONE);state.copiedCurrent++;
    }else{
-    // Any missing promisor blob is fetched only by this private Git from its
-    // canonical origin, after its identity was checked in the pinned tree.
-    const env=fetchEnvironment();delete env.GIT_NO_LAZY_FETCH;
-    const bytes=git(root,['-c','remote.origin.promisor=true','-c','remote.origin.partialclonefilter=blob:none','cat-file','blob',row.gitBlobSha],{env});
+    const bytes=git(root,['cat-file','blob',row.gitBlobSha]);
     assert.equal(bytes.length,row.bytes);assert.equal(sha(bytes),row.sha256);assert.equal(objectSha('blob',bytes),row.gitBlobSha);
     await fs.writeFile(target,bytes);state.restoredGit++;
    }

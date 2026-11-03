@@ -1549,6 +1549,9 @@ jobs:
       - name: Verify the dated PR and open-workstream coordination workbook
         if: ${{ matrix.audit_group == 'history' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: python3 scripts/check-resume-workbook-history-20261101.py
+      - name: Verify private restoration of exact historical shared inputs
+        if: ${{ matrix.audit_group == 'history' && (!cancelled() && steps.dependencies.outcome == 'success') }}
+        run: node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/historical-shared-inputs.test.mjs
       - name: Preserve the additional original V112 Homeworld and Pit capsule
         if: ${{ matrix.audit_group == 'history' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: |
