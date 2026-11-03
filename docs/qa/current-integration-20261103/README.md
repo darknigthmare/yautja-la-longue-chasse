@@ -97,15 +97,24 @@ observé sur le commit effectivement publié.
 
 ## Relevé et résultats locaux de cette intégration
 
-Le relevé courant `runtime-inputs.json` contient 2,123 entrées et
-1,091,638,676 octets d’entrées. Il a été régénéré puis vérifié après
+Le relevé courant `runtime-inputs.json` contient 2 123 entrées et
+1 091 644 798 octets d’entrées. Il a été régénéré puis vérifié après
 l’intégration du menu et de la version visible de la PR #102, dont le head est
-`7799c81b13e869ef7588014529f26ac0eff0a572`. Son SHA-256 est
-`77b52110875426e754d2eba27c9a930f4b41662c9e36d594277247ab6a2cb04f`. Il suit le périmètre déclaré par les recettes
+`7799c81b13e869ef7588014529f26ac0eff0a572`, puis du routage vers les images natives
+épinglées par un manifeste Git. Son SHA-256 est
+`b3f9456b0da69ba8631189ac197b758c3d1960726929a28192da5e1727c6c15b`. Il suit le périmètre déclaré par les recettes
 Homeworld/Pit et toutes les sources applicatives. Le contrôle `--current` couvre
 également les sources suivies de construction, dont le nouveau
-`scripts/game-build-identity.ts` ; le relevé Homeworld/Pit seul n’est pas présenté
+`scripts/game-build-identity.ts` et `scripts/native-asset-origin-v1.mjs` ; le relevé Homeworld/Pit seul n’est pas présenté
 comme un inventaire exhaustif du packaging de production.
+
+Le relevé intermédiaire après intégration du menu reste attaché au commit
+`626cf355a1c11b1d6f2e3fdfc45d77450f1d2d3f` : 2 123 entrées,
+1 091 638 676 octets et SHA-256
+`77b52110875426e754d2eba27c9a930f4b41662c9e36d594277247ab6a2cb04f`.
+Le nouveau relevé inclut les modifications de configuration Next et du contrôleur
+nécessaires au mode de livraison allégé ; il ne remplace aucun freeze V112/V113
+historique.
 
 Le premier relevé de 2 121 entrées reste disponible dans le checkpoint d’audit
 `9e8aed40ba8cebc1382bf67bafff2e29973b21da`, arbre
@@ -135,3 +144,38 @@ Ces groupes se recouvrent ; leurs nombres ne doivent pas être additionnés.
 Les journaux des scénarios R7 filtrés conservent les cas écartés par leur filtre ;
 la CI exécute la suite complète. Les résultats distants et la livraison sont
 identifiés séparément dans la PR et dans les reçus de déploiement.
+
+## Livraison réelle et derniers contrôles
+
+La livraison Vercel `453abb856c867d0c27428119007ca6d43f6c1fda` est observée
+`READY` sur l'URL canonique. Son code provient de
+`2b0c747652f145b5e0918438e591a034b1f75c2b` ; ses images sont épinglées sur
+`26ade5671f518f7befefb77b7d85d1a2a4915b3b`.
+
+Les reçus suivants conservent des portées distinctes :
+
+- `production-453abb85-provenance.json` compare la livraison, sa source et le
+  checkpoint local du garde renforcé. Les 1 171 fichiers applicatifs sont
+  identiques ; le garde d'exhaustivité supplémentaire n'est pas présenté comme
+  déployé. Le build réel satisfait toutefois sa condition, avec 378 sorties
+  vérifiées pour 378 fichiers conservés.
+- `production-453abb85-http.json` vérifie huit ressources représentatives :
+  HTTP 200, types MIME attendus et octets identiques à leurs blobs Git, dont
+  une image avec un espace encodé dans le chemin.
+- `production-browser-453abb85.json` et `production-menu-453abb85.jpg`
+  documentent le menu réellement publié, les quatre rubriques, les retours
+  clavier et de focus, l'avertissement de spoilers et les archives visuelles.
+  Les 19 éléments image inspectés décodent leurs 18 ressources natives distinctes.
+  Ce parcours ne certifie pas une partie complète, une manette physique ni
+  l'intégralité des 7 352 images.
+- `native-output-completeness-red.log` montre les deux régressions avant le
+  correctif d'exhaustivité ; `native-output-completeness-tests.log` conserve
+  les 49 tests réussis après correction. Le mode V89 reste également testé.
+- `dressing-assets-correction.log` conserve les huit tests réussis après
+  matérialisation des deux PNG requis par le test d'occlusion V113. Les assertions
+  restent identiques à celles du run distant qui avait détecté le fichier absent.
+
+La procédure de livraison et les identités Git sont détaillées dans
+[`deployment-native-assets-v1.md`](../../deployment-native-assets-v1.md).
+Les résultats distants de l'intégration finale doivent toujours être lus sur
+son propre SHA et sa propre tentative de workflow.

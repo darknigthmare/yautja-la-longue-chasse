@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "observedAtUtc": "2026-11-03T20:51:09.527746+00:00",
+  "scope": "Manual live-production menu, keyboard, warning and visual archive checks in CUA Chrome; no full gameplay, hardware-gamepad or mobile-production certification.",
+  "url": "https://yautja-la-longue-chasse.vercel.app/",
+  "title": "Yautja : La Longue Chasse · v1.1.0",
+  "release": "1.1.0",
+  "visibleBuild": "453abb85",
+  "deployedCommit": "453abb856c867d0c27428119007ca6d43f6c1fda",
+  "deploymentId": "dpl_FSK2UqFLbRpGgMwTjvC12HbWUEjf",
+  "checks": [
+    {
+      "name": "Published release and build identity",
+      "status": "PASS",
+      "observation": "Document title v1.1.0 and accessible version badge build 453abb85."
+    },
+    {
+      "name": "Four top-level sections",
+      "status": "PASS",
+      "observation": "Campagne, Modes de jeu, Archives & chroniques and Système each opened."
+    },
+    {
+      "name": "Campaign without an existing save",
+      "status": "PASS",
+      "observation": "Continuer and Charger une partie disabled; Nouvelle partie and JSON import available."
+    },
+    {
+      "name": "Keyboard navigation",
+      "status": "PASS",
+      "observation": "ArrowDown and Enter opened Modes de jeu from Campagne focus; Escape returned to the main menu with focus on its prior section."
+    },
+    {
+      "name": "Spoiler warning",
+      "status": "PASS",
+      "observation": "The Pit opened its warning; cancel returned to Modes de jeu with focus on The Pit."
+    },
+    {
+      "name": "Visual archive",
+      "status": "PASS",
+      "observation": "Archive opened, original native image rendered, and close returned to Archives & chroniques."
+    },
+    {
+      "name": "Native image decoding",
+      "status": "PASS",
+      "observedImageElements": 19,
+      "distinctImageUrls": 18,
+      "completeImageElements": 19,
+      "naturalDimensions": [
+        1024,
+        1536
+      ],
+      "pathPrefix": "/game/imports/v85/library/"
+    },
+    {
+      "name": "System section",
+      "status": "PASS",
+      "observation": "Account and saves, archive refresh and fullscreen entries visible."
+    }
+  ],
+  "console": {
+    "observedWarningOrErrorEntries": 36,
+    "applicationWarningOrErrorEntries": 0,
+    "excludedChromeExtensionEntries": 36,
+    "exclusionReason": "All observed entries originated from chrome-extension:// content-script.bundle.js, not the application."
+  },
+  "screenshot": {
+    "path": "production-menu-453abb85.jpg",
+    "bytes": 170535,
+    "sha256": "73a403062d2981ed6b03a36d21237971645339cffc7a28287a14d1f584b54a9d",
+    "scope": "Actual production main menu after interactions, build453abb85."
+  },
+  "separateEvidence": {
+    "ciMobileAndEmulatedGamepad": "The earlier 25-check menu artifact remains bound to GitHub merge 2264e370 and is not claimed to have run against production 453abb85."
+  }
+}

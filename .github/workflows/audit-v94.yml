@@ -319,6 +319,8 @@ on:
       - 'public/game/homeworld/v72/civilian-roles-atlas.png'
       - 'public/game/homeworld/v72/region-gateway-kit.png'
       - 'public/game/homeworld/v75/architecture/market-canopy.png'
+      - 'public/game/homeworld/v75/architecture/enforcer-bastion.png'
+      - 'public/game/homeworld/v75/architecture/undercity-refuge.png'
       - 'public/game/homeworld/v75/architecture/rampart-north-lodge.png'
       - 'public/game/homeworld/v75/architecture/rampart-south-lodge.png'
       - 'public/game/homeworld/v76/architecture/convoy-store.png'
@@ -439,6 +441,7 @@ jobs:
             /app/game/systems/*V94.ts
             /scripts/build-production-v94.mjs
             /scripts/game-build-identity.ts
+            /scripts/native-asset-origin-v1.mjs
             /tests/*-v94.test.mjs
             /tests/game-release-identity.test.mjs
       - name: Node 22
@@ -774,6 +777,8 @@ jobs:
             /public/game/homeworld/v72/civilian-roles-atlas.png
             /public/game/homeworld/v72/region-gateway-kit.png
             /public/game/homeworld/v75/architecture/market-canopy.png
+            /public/game/homeworld/v75/architecture/enforcer-bastion.png
+            /public/game/homeworld/v75/architecture/undercity-refuge.png
             /public/game/homeworld/v75/architecture/rampart-north-lodge.png
             /public/game/homeworld/v75/architecture/rampart-south-lodge.png
             /public/game/homeworld/v76/architecture/convoy-store.png
@@ -1108,6 +1113,11 @@ jobs:
       - name: Check game release and deployed build identity
         if: ${{ matrix.audit_group == 'application' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: node --experimental-strip-types --test --test-reporter=spec tests/game-release-identity.test.mjs
+      - name: Verify pinned native asset origins and both production packaging modes
+        if: ${{ matrix.audit_group == 'application' && (!cancelled() && steps.dependencies.outcome == 'success') }}
+        run: >-
+          node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1
+          tests/vercel-native-origin-v89.test.mjs tests/production-pipeline-v94.test.mjs
       - name: Exercise every current V112 model except its separately preserved historical publication
         if: ${{ matrix.audit_group == 'models' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: |
@@ -1175,6 +1185,8 @@ jobs:
           app/game/useMenuGamepad.ts
           app/game/CampaignMainMenu.tsx app/game/CampaignFrontEnd.tsx app/game/GameVersionBadge.tsx
           scripts/game-build-identity.ts scripts/qa-campaign-menu-navigation.mjs
+          scripts/native-asset-origin-v1.mjs scripts/vercel-native-origin-v89.mjs
+          tests/vercel-native-origin-v89.test.mjs tests/production-pipeline-v94.test.mjs
           tests/campaign-menu-navigation.test.mjs tests/game-release-identity.test.mjs
           tests/campaign-front-menu-v50.test.mjs tests/main-menu-modes-v81.test.mjs
           tests/campaign-text-import-ui-v90.test.mjs tests/browser/campaign-menu-navigation.fixture.tsx

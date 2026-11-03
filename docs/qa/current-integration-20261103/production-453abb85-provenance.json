@@ -1,0 +1,404 @@
+{
+  "schema": "yautja.production-source-comparison.v1",
+  "repository": "darknigthmare/yautja-la-longue-chasse",
+  "readOnlyInspection": true,
+  "commits": {
+    "delivery": {
+      "sha": "453abb856c867d0c27428119007ca6d43f6c1fda",
+      "tree": "9c702683d90206ae71f606e0b7fdcfc1af47ae6c",
+      "parents": [
+        "d86e9e3cb0443d98c01d964f3f718c9b3963025e"
+      ],
+      "trackedFiles": 4515
+    },
+    "runtimeSource": {
+      "sha": "2b0c747652f145b5e0918438e591a034b1f75c2b",
+      "tree": "d65781860d02794689943629e01dc9074d250d98",
+      "parents": [
+        "7799c81b13e869ef7588014529f26ac0eff0a572"
+      ],
+      "trackedFiles": 20879
+    },
+    "integration": {
+      "sha": "5cff16f3eca5bc6605a0712ef3529010b0bfc567",
+      "tree": "94ecf7be0baeeabd8d028a8ddc1fb238b4846148",
+      "parents": [
+        "a64246dd60c7826e17ba99097e44bc2218193080"
+      ],
+      "trackedFiles": 20891
+    },
+    "imageSource": {
+      "sha": "26ade5671f518f7befefb77b7d85d1a2a4915b3b",
+      "tree": "099b642ecaa6771d25a314d7db65b3669761e6a9",
+      "parents": [
+        "71d2eabbe9d700a019a67c05910b456dcdb11a4c"
+      ],
+      "trackedFiles": 20877
+    }
+  },
+  "application": {
+    "files": 1171,
+    "tree": "b5cfe562786137d5a90c5de22e07988ac21436df",
+    "exactPathsModesAndBlobsAcrossThree": true
+  },
+  "configsAndBuildHelpers": [
+    {
+      "path": "next.config.ts",
+      "deliveryBlob": "70cc16c9f95bddd1b5cddaa2de7d661a4c624712",
+      "runtimeSourceBlob": "70cc16c9f95bddd1b5cddaa2de7d661a4c624712",
+      "integrationBlob": "70cc16c9f95bddd1b5cddaa2de7d661a4c624712",
+      "mode": "100644",
+      "identicalAcrossAllThree": true
+    },
+    {
+      "path": "vercel.json",
+      "deliveryBlob": "9ab0877ff60df23dfb4dd0ef2f6fd8b2325c795f",
+      "runtimeSourceBlob": "9ab0877ff60df23dfb4dd0ef2f6fd8b2325c795f",
+      "integrationBlob": "9ab0877ff60df23dfb4dd0ef2f6fd8b2325c795f",
+      "mode": "100644",
+      "identicalAcrossAllThree": true
+    },
+    {
+      "path": "package.json",
+      "deliveryBlob": "4c0d7ec6ad0962686d0880572b262fbe8acb88a6",
+      "runtimeSourceBlob": "4c0d7ec6ad0962686d0880572b262fbe8acb88a6",
+      "integrationBlob": "4c0d7ec6ad0962686d0880572b262fbe8acb88a6",
+      "mode": "100644",
+      "identicalAcrossAllThree": true
+    },
+    {
+      "path": "package-lock.json",
+      "deliveryBlob": "6ea57ae12faa8b338ed3ada44ed32e0cd962f6d8",
+      "runtimeSourceBlob": "6ea57ae12faa8b338ed3ada44ed32e0cd962f6d8",
+      "integrationBlob": "6ea57ae12faa8b338ed3ada44ed32e0cd962f6d8",
+      "mode": "100644",
+      "identicalAcrossAllThree": true
+    },
+    {
+      "path": "tsconfig.json",
+      "deliveryBlob": "75e7ded78700e6669559418fc14c89f50410ac04",
+      "runtimeSourceBlob": "75e7ded78700e6669559418fc14c89f50410ac04",
+      "integrationBlob": "75e7ded78700e6669559418fc14c89f50410ac04",
+      "mode": "100644",
+      "identicalAcrossAllThree": true
+    },
+    {
+      "path": "postcss.config.mjs",
+      "deliveryBlob": "61e36849cf7cfa9f1f71b4a3964a4953e3e243d3",
+      "runtimeSourceBlob": "61e36849cf7cfa9f1f71b4a3964a4953e3e243d3",
+      "integrationBlob": "61e36849cf7cfa9f1f71b4a3964a4953e3e243d3",
+      "mode": "100644",
+      "identicalAcrossAllThree": true
+    },
+    {
+      "path": "scripts/build-production-v94.mjs",
+      "deliveryBlob": "cc8038d84b2507057b0fcdf74044ed4f7838583c",
+      "runtimeSourceBlob": "cc8038d84b2507057b0fcdf74044ed4f7838583c",
+      "integrationBlob": "cc8038d84b2507057b0fcdf74044ed4f7838583c",
+      "mode": "100644",
+      "identicalAcrossAllThree": true
+    },
+    {
+      "path": "scripts/build-audio-manifest.mjs",
+      "deliveryBlob": "7a40072107fe128be575d01f01b34ae96a79e21d",
+      "runtimeSourceBlob": "7a40072107fe128be575d01f01b34ae96a79e21d",
+      "integrationBlob": "7a40072107fe128be575d01f01b34ae96a79e21d",
+      "mode": "100644",
+      "identicalAcrossAllThree": true
+    },
+    {
+      "path": "scripts/verify-pit-built-css-v61.mjs",
+      "deliveryBlob": "7778fcccf96bac89040368428f66c851aef43a60",
+      "runtimeSourceBlob": "7778fcccf96bac89040368428f66c851aef43a60",
+      "integrationBlob": "7778fcccf96bac89040368428f66c851aef43a60",
+      "mode": "100644",
+      "identicalAcrossAllThree": true
+    },
+    {
+      "path": "scripts/vercel-native-origin-v89.mjs",
+      "deliveryBlob": "0d60bbe990a1ad2dcf4b9f6c430d3e498000c484",
+      "runtimeSourceBlob": "0d60bbe990a1ad2dcf4b9f6c430d3e498000c484",
+      "integrationBlob": "9424a7fb5b7de5584a8707fff8d92613f50dd840",
+      "mode": "100644",
+      "identicalAcrossAllThree": false
+    },
+    {
+      "path": "scripts/compact-vercel-static-v87.mjs",
+      "deliveryBlob": "328a411e112358b9df25b4fe906b4e3c3f61fe94",
+      "runtimeSourceBlob": "328a411e112358b9df25b4fe906b4e3c3f61fe94",
+      "integrationBlob": "328a411e112358b9df25b4fe906b4e3c3f61fe94",
+      "mode": "100644",
+      "identicalAcrossAllThree": true
+    },
+    {
+      "path": "scripts/game-build-identity.ts",
+      "deliveryBlob": "4fde7e4c555608bcf45d3b726df7874d61fd530a",
+      "runtimeSourceBlob": "4fde7e4c555608bcf45d3b726df7874d61fd530a",
+      "integrationBlob": "4fde7e4c555608bcf45d3b726df7874d61fd530a",
+      "mode": "100644",
+      "identicalAcrossAllThree": true
+    },
+    {
+      "path": "scripts/native-asset-origin-v1.mjs",
+      "deliveryBlob": "8f4f54f56c06dd953966800c696905e8f2761d4f",
+      "runtimeSourceBlob": "8f4f54f56c06dd953966800c696905e8f2761d4f",
+      "integrationBlob": "8f4f54f56c06dd953966800c696905e8f2761d4f",
+      "mode": "100644",
+      "identicalAcrossAllThree": true
+    }
+  ],
+  "completePublicSources": {
+    "runtimeSourceIntegrationAndImageSourceIdentical": true,
+    "publicTree": "4f1485eac6f3908ad9add9f1e39a75758355510c",
+    "gameTree": "52cbe1dbe6d9e56ab5d9913618363ba919508bb0",
+    "audioTree": "7f3d62e336e406d8f1b5db74ec4658916aea42a2",
+    "audioFiles": 65,
+    "audioUnchangedInDelivery": true
+  },
+  "deliveryPackaging": {
+    "allowedDifferences": {
+      "changedDeliveryIgnore": 1,
+      "omittedArtSource": 4475,
+      "omittedDocs": 4538,
+      "omittedGameBitmaps": 7352,
+      "addedProvenanceManifest": 1
+    },
+    "unexpectedDifferences": [],
+    "retainedGameFiles": 378,
+    "retainedGameTree": "6a61d7967f2b6231a660180ad97fe9297ceedcb2",
+    "retainedPathsModesAndBlobsExact": true,
+    "additionalIgnorePatterns": [
+      "/public/game/**/*.png",
+      "/public/game/**/*.webp",
+      "/public/game/**/*.jpg"
+    ]
+  },
+  "sourceManifest": {
+    "gitBlob": "772e3e6e456ad9bb20203d680dc3d782254da796",
+    "sha256": "533269f89692884961d29b0cb89b49876abed669b779b72a4388f032892e8146",
+    "bytes": 1378902,
+    "sourceCommit": "26ade5671f518f7befefb77b7d85d1a2a4915b3b",
+    "sourceTree": "099b642ecaa6771d25a314d7db65b3669761e6a9",
+    "sourcePublicTree": "4f1485eac6f3908ad9add9f1e39a75758355510c",
+    "sourceGameTree": "52cbe1dbe6d9e56ab5d9913618363ba919508bb0",
+    "retainedGameTree": "6a61d7967f2b6231a660180ad97fe9297ceedcb2",
+    "completeInventoryEntries": 7730,
+    "offlineValidatorPassed": true,
+    "validatorUsed": "scripts/native-asset-origin-v1.mjs, identical blob in all three revisions"
+  },
+  "integrationDelta": {
+    "buildPipelineDifferences": [
+      "scripts/vercel-native-origin-v89.mjs"
+    ],
+    "guardChange": "Require the generated game output directory and exactly one verified output file per retained inventory entry. No generated files or runtime app code are changed by this guard.",
+    "guardPresentInIntegration": true,
+    "guardPresentInDelivery": false,
+    "otherChangedPaths": [
+      ".gitattributes",
+      ".github/workflows/audit-v94.yml",
+      "docs/deployment-native-assets-v1.md",
+      "docs/qa/current-integration-20261103/README.md",
+      "docs/qa/current-integration-20261103/local-validation.json",
+      "docs/qa/current-integration-20261103/logs/current-qa-historical-v110.log",
+      "docs/qa/current-integration-20261103/logs/current-qa-step50.log",
+      "docs/qa/current-integration-20261103/logs/current-qa-steps52-54.log",
+      "docs/qa/current-integration-20261103/logs/current-v113-assets-after.log",
+      "docs/qa/current-integration-20261103/logs/history-git-final-guards.log",
+      "docs/qa/current-integration-20261103/logs/history-r7-batched-bootstrap.log",
+      "docs/qa/current-integration-20261103/logs/history-r7-batched-integrity.log",
+      "docs/qa/current-integration-20261103/logs/history-source-final-validation.log",
+      "docs/qa/current-integration-20261103/logs/persistence-step27-after.log",
+      "docs/qa/current-integration-20261103/logs/typecheck-after.log",
+      "docs/qa/current-integration-20261103/runtime-inputs.json",
+      "scripts/check-homeworld-publication-history-v112-r7.mjs",
+      "scripts/check-hunt-integration-source-history-v112.mjs",
+      "scripts/check-production-history-v113.mjs",
+      "scripts/lib/historical-git.mjs",
+      "tests/game-release-identity.test.mjs",
+      "tests/historical-git.test.mjs",
+      "tests/homeworld-continuation-integration-v111.test.mjs",
+      "tests/homeworld-transitions-v110.test.mjs",
+      "tests/r7-publication-history-v113.test.mjs",
+      "tests/vercel-native-origin-v89.test.mjs"
+    ],
+    "otherChangedPathsScope": "Audit CI, historical check tools, tests, evidence logs and documentation; not app/runtime build dependencies."
+  },
+  "environmentDependentBehavior": {
+    "deliveryBuildIdentity": "453abb85",
+    "sourceLightManifestSelects": "afterFiles /game/:path* -> raw.githubusercontent.com/darknigthmare/yautja-la-longue-chasse/26ade5671f518f7befefb77b7d85d1a2a4915b3b/public/game/:path*",
+    "retainedFilesKeepFilesystemPrecedence": true,
+    "commitAndWholeTreeIdentityClaimed": false
+  },
+  "httpVerification": {
+    "receipt": "production-453abb85-http-review/representative-resources.json",
+    "receiptSha256": "41b792f9ac658a4296e8c2c0dc53d41a110377173aa059b0567f4ef7c6f26de4",
+    "checkedAtUTC": "2026-11-03T20:49:10.467929+00:00",
+    "canonicalBaseUrl": "https://yautja-la-longue-chasse.vercel.app",
+    "sampleCount": 8,
+    "allHttp200AndBytesExact": true,
+    "samples": [
+      {
+        "label": "native-png",
+        "httpStatus": 200,
+        "contentType": "image/png",
+        "receivedBytes": 455344,
+        "bytesMatchGit": true
+      },
+      {
+        "label": "webp",
+        "httpStatus": 200,
+        "contentType": "image/webp",
+        "receivedBytes": 16432,
+        "bytesMatchGit": true
+      },
+      {
+        "label": "jpg",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "receivedBytes": 24715,
+        "bytesMatchGit": true
+      },
+      {
+        "label": "encoded-space",
+        "httpStatus": 200,
+        "contentType": "image/png",
+        "receivedBytes": 1763273,
+        "bytesMatchGit": true
+      },
+      {
+        "label": "local-json",
+        "httpStatus": 200,
+        "contentType": "application/json; charset=utf-8",
+        "receivedBytes": 1789,
+        "bytesMatchGit": true
+      },
+      {
+        "label": "local-svg",
+        "httpStatus": 200,
+        "contentType": "image/svg+xml",
+        "receivedBytes": 302,
+        "bytesMatchGit": true
+      },
+      {
+        "label": "local-html",
+        "httpStatus": 200,
+        "contentType": "text/html; charset=utf-8",
+        "receivedBytes": 4548,
+        "bytesMatchGit": true
+      },
+      {
+        "label": "local-javascript",
+        "httpStatus": 200,
+        "contentType": "application/javascript; charset=utf-8",
+        "receivedBytes": 6481,
+        "bytesMatchGit": true
+      }
+    ]
+  },
+  "priorReportsReviewed": [
+    {
+      "path": "/workspace/scratch/a159a49747c6/release-1.1.0-receipt.json",
+      "sha256": "08229d640a51fce2301da1f5a6488bae3a652b5bb27942890665ffefbe773df4",
+      "modifiedAtUTC": "2026-11-03T20:39:16.742810+00:00",
+      "scope": "Mixed historical packaging 99a9 and current deployment 453; the packaging root is not reused as current provenance."
+    },
+    {
+      "path": "/workspace/scratch/a159a49747c6/native-routing-review-report.json",
+      "sha256": "1298bd92261fc99903bc4cf30118df02eb87e65438a731e1b11896362009ea50",
+      "modifiedAtUTC": "2026-11-03T20:14:20.347929+00:00",
+      "scope": "Seven local Next routing checks with a simulated upstream, not live production."
+    },
+    {
+      "path": "/workspace/scratch/a159a49747c6/menu-ci-41703849013/report.json",
+      "sha256": "8f3623c719704295763f0f2d125f54eeeaeeb7b05ac99c09b66a26a0d9aeb69e",
+      "modifiedAtUTC": "2026-11-03T19:52:15.003411+00:00",
+      "scope": "25 menu checks on 2264e370 with declared session/callback fixtures and emulated gamepad; not a browser run on 453."
+    }
+  ],
+  "verificationScope": {
+    "performedHere": [
+      "Git tree/blob/mode comparison of fixed revisions",
+      "Offline cryptographic validation of actual delivery manifest",
+      "Vercel read-only deployment and build-log inspection",
+      "Eight canonical public HTTP resources matched byte-for-byte to their source Git blobs"
+    ],
+    "notPerformedHere": [
+      "No browser interaction; root owns that separate report",
+      "No exhaustive HTTP sweep of all 7352 image URLs",
+      "No new full build or full historical audit"
+    ],
+    "repositoryEdits": false,
+    "remoteMutations": false
+  },
+  "recordedAtUTC": "2026-11-03 20:51:40 UTC",
+  "productionObservation": {
+    "deploymentId": "dpl_FSK2UqFLbRpGgMwTjvC12HbWUEjf",
+    "state": "READY",
+    "target": "production",
+    "commit": "453abb856c867d0c27428119007ca6d43f6c1fda",
+    "branch": "codex/delivery-1-1-0-native-assets-20261103",
+    "url": "https://yautja-la-longue-chasse-pymhag39p-darknigthmares-projects.vercel.app",
+    "aliases": [
+      "yautja-la-longue-chasse.vercel.app",
+      "yautja-la-longue-chasse-darknigthmares-projects.vercel.app",
+      "yautja-la-longue-chasse-git-code-927ce5-darknigthmares-projects.vercel.app"
+    ],
+    "readyAtUTC": "2026-11-03T20:34:25.544Z",
+    "cloneLog": {
+      "atUTC": "2026-11-03T20:32:12.926Z",
+      "text": "Cloning completed: 2:08.931 (m:ss.mmm)"
+    },
+    "buildCompletedLog": {
+      "atUTC": "2026-11-03T20:34:18.146Z",
+      "text": "Build Completed in /vercel/output [2m]"
+    },
+    "nativeOriginResult": {
+      "status": "source-light-native-origin",
+      "sha": "453abb856c867d0c27428119007ca6d43f6c1fda",
+      "sourceCommit": "26ade5671f518f7befefb77b7d85d1a2a4915b3b",
+      "sourceGameTree": "52cbe1dbe6d9e56ab5d9913618363ba919508bb0",
+      "retainedGameTree": "6a61d7967f2b6231a660180ad97fe9297ceedcb2",
+      "externalBitmapFiles": 7352,
+      "retainedFiles": 378,
+      "verifiedOutputFiles": 378,
+      "generatedFilesRemoved": 0,
+      "originalSourcesPreserved": true
+    },
+    "compactionResult": {
+      "status": "compacted",
+      "outputFiles": 595,
+      "linkedFiles": 448,
+      "bytesSaved": 18149194,
+      "alreadyLinked": 0,
+      "unmatchedFiles": 147,
+      "sizeMismatches": 0,
+      "hashMismatches": 0,
+      "modeMismatches": 0,
+      "filesystemMismatches": 0,
+      "linkFailures": 0,
+      "sameVolume": false,
+      "freeBytesBefore": 58746380288,
+      "freeBytesAfterLinks": 58741829632,
+      "sourceFreeBytesAfter": 58741829632,
+      "finalVolumeRoot": "/vercel/output",
+      "finalVolumeFreeBytesBefore": 58746380288,
+      "finalVolumeFreeBytesAfter": 58741829632,
+      "reclamation": {
+        "sameVolume": false,
+        "freeBytesBefore": 58741829632,
+        "freeBytesAfterCache": 58741829632,
+        "freeBytesAfter": 58741829632,
+        "requiredCopyBytes": 44860858,
+        "reserveBytes": 536870912,
+        "cache": {
+          "files": 0,
+          "bytes": 0
+        },
+        "ephemeralClone": {
+          "files": 0,
+          "bytes": 0
+        }
+      }
+    }
+  }
+}
