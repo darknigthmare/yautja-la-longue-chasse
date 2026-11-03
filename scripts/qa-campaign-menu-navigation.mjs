@@ -45,19 +45,25 @@ const disk=page=>page.evaluate(()=>Object.fromEntries(Object.keys(localStorage).
 const view=(page,name)=>page.locator(`[data-campaign-menu="${name}"]`).waitFor();
 const focused=page=>page.evaluate(()=>({section:document.activeElement?.getAttribute('data-menu-section'),action:document.activeElement?.getAttribute('data-menu-action'),text:document.activeElement?.textContent}));
 const badge=async page=>{const node=page.locator('[data-campaign-menu] [data-game-version]');assert.equal(await node.getAttribute('data-game-version'),'1.1.0');assert.equal(await node.getAttribute('data-game-build'),buildId);assert(await node.isVisible());};
-const screenshot=async(page,name)=>{const file=path.join(output,name+'.png');await page.screenshot({path:file,fullPage:true});screenshots.push(name+'.png');};
+const screenshot=async(page,name)=>{const file=path.join(output,name+'.png');await page.screenshot({path:file,fullPage:true,animations:'disabled'});screenshots.push(name+'.png');};
 const frames=page=>page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))));
 async function pad(page,button){
- await page.evaluate(index=>{window.__campaignMenuQa.pad.buttons[index].pressed=true;},button);await frames(page);
- await page.evaluate(index=>{window.__campaignMenuQa.pad.buttons[index].pressed=false;},button);await frames(page);
+ // A newly entered menu deliberately ignores held input until it has sampled
+ // a neutral frame. Release before pressing so this is a new physical edge.
+ await page.bringToFront();
+ await page.waitForFunction(()=>document.hasFocus()&&!document.hidden);
+ await page.evaluate(()=>{window.__campaignMenuQa.pad.axes.fill(0);for(const key of window.__campaignMenuQa.pad.buttons){key.pressed=false;key.value=0;key.touched=false;}});
+ await frames(page);
+ await page.evaluate(index=>{Object.assign(window.__campaignMenuQa.pad.buttons[index],{pressed:true,value:1,touched:true});},button);await frames(page);
+ await page.evaluate(index=>{Object.assign(window.__campaignMenuQa.pad.buttons[index],{pressed:false,value:0,touched:false});},button);await frames(page);
 }
-let browser;
+let browser,page,failure=null;
 try{
  await new Promise((resolve,reject)=>{server.once('error',reject);server.listen(0,'127.0.0.1',resolve);});
  const origin=`http://127.0.0.1:${server.address().port}`;
  const executablePath=process.env.AUDIT_CHROME_EXECUTABLE??process.env.CHROMIUM_EXECUTABLE_PATH;
  browser=await chromium.launch({headless:true,...(executablePath?{executablePath}:{channel:process.env.AUDIT_CHROME_CHANNEL??'chrome'})});
- const page=await browser.newPage({viewport:{width:1440,height:900}});
+ page=await browser.newPage({viewport:{width:1440,height:900}});
  page.on('pageerror',error=>errors.push(error.message));
  await page.goto(origin);await page.bringToFront();await view(page,'main');await frames(page);
  check('Root exposes four sections and focuses Campaign',await page.locator('[data-menu-section]').count()===4&&(await focused(page)).section==='campaign');
@@ -122,7 +128,12 @@ try{
  await screenshot(page,'06-frontend-after-create');
  check('Browser emitted no uncaught errors',errors.length===0);
  console.log(JSON.stringify({revision,buildId,checks,screenshots,errors},null,2));
+}catch(error){
+ const state=await page?.evaluate(()=>({view:document.querySelector('[data-campaign-menu]')?.getAttribute('data-campaign-menu'),focused:document.hasFocus(),hidden:document.hidden,activeElement:document.activeElement?.outerHTML,dialogs:[...document.querySelectorAll('[role="dialog"],[role="alertdialog"]')].map(node=>node.textContent)})).catch(()=>null);
+ failure={message:error instanceof Error?error.message:String(error),state};
+ if(page)await screenshot(page,'failure').catch(()=>{});
+ throw error;
 }finally{
- await fs.writeFile(path.join(output,'report.json'),JSON.stringify({scope:'Production CampaignMainMenu and FrontEnd; gameplay session and outgoing action callbacks are declared fixtures. Gamepad input is emulated, not hardware.',revision,buildId,checks,screenshots,errors},null,2)+'\n');
+ await fs.writeFile(path.join(output,'report.json'),JSON.stringify({scope:'Production CampaignMainMenu and FrontEnd; gameplay session and outgoing action callbacks are declared fixtures. Gamepad input is emulated, not hardware.',revision,buildId,checks,screenshots,errors,failure},null,2)+'\n');
  await browser?.close();await new Promise(resolve=>server.close(resolve));
 }
