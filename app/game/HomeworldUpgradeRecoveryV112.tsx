@@ -13,13 +13,13 @@ export default function HomeworldUpgradeRecoveryV112({plan,message,writeRefused,
   return <section role="region" aria-label="Restauration après le nouvel aménagement" data-homeworld-upgrade-recovery-v112 className={styles.panel}>
     <header className={styles.heading}><small>La cité a été réaménagée</small><strong>Retrouver un point libre</strong></header>
     <div className={styles.body}>
-      <p>Du mobilier occupe un ancien point ou une pièce. La partie reste en pause. Un point libre est proposé à moins de {homeworldWayfindingMetresV75(96)} mètres de chaque emplacement obstrué.</p>
+      <p>Un nouvel aménagement occupe un ancien point ou une pièce. La partie reste en pause. La recherche reste sur le même étage, autour du mobilier ou du volume qui obstrue cet emplacement.</p>
       {plan&&<>
-        <p>{plan.movesActor?'Ton personnage rejoint le point libre proposé, à côté du mobilier.':'Ton personnage reste à sa position actuelle. Seuls les points de reprise ou pièces obstrués sont restaurés.'}</p>
+        <p>{plan.movesActor?'Ton personnage rejoint le point libre proposé, près de son emplacement conservé.':'Ton personnage reste à sa position actuelle. Seuls les points de reprise ou pièces obstrués sont restaurés.'}</p>
         <details className={styles.details}><summary>{plan.migrations.length} élément{plan.migrations.length>1?'s':''} à restaurer</summary>
           <ul>{plan.migrations.map((item,index)=><li key={index} data-upgrade-recovery-from-v112={`${item.from.x},${item.from.y}`} data-upgrade-recovery-to-v112={`${item.to.x},${item.to.y}`}>
             <strong>{item.kind==='checkpoint'?'Personnage':item.kind==='ground-object'?'Pièce au sol':'Point de reprise'}{item.ledgerKey?' · '+labels[item.ledgerKey]:''}</strong>
-            <span>À {homeworldWayfindingMetresV75(Math.hypot(item.to.x-item.from.x,item.to.y-item.from.y))} mètres, à côté du mobilier.</span>
+            <span>À {homeworldWayfindingMetresV75(Math.hypot(item.to.x-item.from.x,item.to.y-item.from.y))} mètres, sur le même étage{item.levelId?' ('+item.levelId+')':''}.</span>
           </li>)}</ul>
           <p>Les pièces portées liées à un point de reprise le suivent. Aucun autre objet n’est déplacé.</p>
         </details>

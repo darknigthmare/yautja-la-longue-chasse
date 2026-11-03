@@ -1,0 +1,160 @@
+{
+  "schema": 1,
+  "sourceCommit": "e4a6c64a1e77edad8865aa05ca7c2901d62bfa09",
+  "huntSourceSha256": "8bf504951e6d7d6af9df2bf1d125b99d25f06009723efc96b47636b53b5471c5",
+  "generatedAt": "2026-11-02T05:29:27.635Z",
+  "scope": "Second actual whole-GameClient hunt, Ice only, continued from the genuine completed jungle browser save; native armory purchases, sidecar roundtrip and durable settlement. Batch navigation failed after victory. No complete eight-hunt browser campaign, anatomical specimen, conservation workshop, human, physical-device or artwork qualification.",
+  "criterion": "REM112-06",
+  "closesCriterion": false,
+  "parentEvidence": {
+    "file": "../browser-jungle/browser-report.json",
+    "sha256": "b55ef7cb647fe918c54ea4a20796e07785b8e90b34a7678b4f3e66281b5adfc8"
+  },
+  "browser": {
+    "configuredExecutable": "/usr/bin/chromium",
+    "versionMissingFromOriginalReport": "Post-victory pilot exception prevented the original metadata finalization; no version is invented here."
+  },
+  "outcome": {
+    "status": "BROWSER_HUNT_AND_SETTLEMENT_SUCCESS",
+    "elapsedSeconds": 98.64999999999569,
+    "kills": 12,
+    "scans": 5,
+    "settlement": {
+      "confirmed": true,
+      "beforeProgress": {
+        "status": "available",
+        "attempts": 0,
+        "completions": 0,
+        "bestScore": 0,
+        "bestTimeSeconds": null,
+        "bestDifficultyId": null,
+        "completedObjectiveIds": [],
+        "lastPlayedAt": null
+      },
+      "afterProgress": {
+        "status": "completed",
+        "attempts": 1,
+        "completions": 1,
+        "bestScore": 99,
+        "bestTimeSeconds": 99,
+        "bestDifficultyId": "hunter",
+        "completedObjectiveIds": [
+          "scan-ice-traces",
+          "hunt-cryorunners",
+          "defeat-cryostalker",
+          "extract-ice-trophy"
+        ],
+        "lastPlayedAt": "2026-11-02T05:35:17.643Z"
+      }
+    },
+    "resumeBeforeElapsed": 21.600000000000055,
+    "resumeAfterElapsed": 21.600000000000055
+  },
+  "armoryTransactions": [
+    {
+      "kind": "purchase-field-tool",
+      "cost": 120,
+      "marksBefore": 378,
+      "marksAfter": 258
+    },
+    {
+      "kind": "purchase-hunter-upgrade",
+      "level": 1,
+      "marksBefore": 258,
+      "marksAfter": 8
+    }
+  ],
+  "batchFailure": "locator.click: Error: strict mode violation: getByRole('button', { name: 'Retour au vaisseau', exact: true }) resolved to 2 elements:\n    1) <button type=\"button\" aria-label=\"Retour au vaisseau\" class=\"brand-lockup ghost-button\">…</button> aka getByLabel('Retour au vaisseau')\n    2) <button type=\"button\" class=\"alien-button\">Retour au vaisseau</button> aka getByText('Retour au vaisseau')\n\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'Retour au vaisseau', exact: true })\u001b[22m\n\n    at /tmp/yautja-pr62-check/scripts/qa-hunt-campaign-browser-v112.mjs:303:75",
+  "consoleOrPageErrors": [],
+  "missingAssets": [],
+  "discoveryObservations": [
+    {
+      "missionId": "ice-cryostalker",
+      "elapsed": 4.699999999999989,
+      "reaction": {
+        "actorId": "ice-runners-3",
+        "corpseId": "ice-runners-0",
+        "channel": "visual",
+        "response": "investigate",
+        "startedAt": 4.616666666666656,
+        "until": 11.616666666666656
+      },
+      "receipts": [
+        {
+          "id": "[\"ice-runners-0\",\"ice-runners-3\",\"visual\"]",
+          "corpseId": "ice-runners-0",
+          "actorId": "ice-runners-3",
+          "channel": "visual",
+          "at": 4.616666666666656,
+          "fear": 4,
+          "sourceActorId": null
+        }
+      ],
+      "capture": "ice-cryostalker-body-discovery-visual-canvas.png"
+    },
+    {
+      "missionId": "ice-cryostalker",
+      "elapsed": 19.450000000000177,
+      "reaction": {
+        "actorId": "ice-salvagers-1",
+        "corpseId": "ice-runners-2",
+        "channel": "radio",
+        "response": "investigate",
+        "startedAt": 19.416666666666845,
+        "until": 26.416666666666845
+      },
+      "receipts": [
+        {
+          "id": "[\"ice-runners-2\",\"ice-salvagers-1\",\"radio\"]",
+          "corpseId": "ice-runners-2",
+          "actorId": "ice-salvagers-1",
+          "channel": "radio",
+          "at": 19.416666666666845,
+          "fear": 4,
+          "sourceActorId": "ice-brutes-0"
+        }
+      ],
+      "capture": "ice-cryostalker-body-discovery-radio-canvas.png"
+    }
+  ],
+  "inspectedImages": [
+    "01-legacy-default-deck.png",
+    "earned-flaying-tool.png",
+    "failure.png",
+    "ice-cryostalker-02-galaxy-map.png",
+    "ice-cryostalker-03-true-hunt-start.png",
+    "ice-cryostalker-04-attempt-terminal.png",
+    "ice-cryostalker-body-discovery-radio-canvas.png",
+    "ice-cryostalker-body-discovery-visual-canvas.png",
+    "ice-cryostalker-phase-extraction.png",
+    "ice-cryostalker-phase-finished.png",
+    "ice-cryostalker-phase-target.png",
+    "ice-cryostalker-phase-tracking.png",
+    "ice-cryostalker-phase-trophy.png",
+    "ice-cryostalker-suspended-to-deck.png"
+  ],
+  "independentInspection": "All 14 PNG opened by independent read-only review agent; loading and duplicate-debrief caveats preserved in README. No artistic or human understanding validation.",
+  "archiveNote": "Byte-identical duplicate files are represented by standard tar hard links, preserving every original filename and byte content.",
+  "artifacts": [
+    {
+      "file": "browser-raw.tar.gz",
+      "bytes": 14876995,
+      "sha256": "48660c6dcb097fb97fb8eb84cab17bc9506c5a0a696c9f250a6814bd128ec927"
+    },
+    {
+      "file": "browser-report.json",
+      "bytes": 1219506,
+      "sha256": "e27b0ad1c01ff6c850d671727875cfd49b5029945019ee835c91dcdc51a1cad1"
+    },
+    {
+      "file": "ice-cryostalker-04-attempt-terminal.png",
+      "bytes": 595482,
+      "sha256": "111639fdcd3967c23d32e0200dbe07558b5f056e0a3a52d2c0b2bb93cdfa5b3e"
+    },
+    {
+      "file": "ice-cryostalker-suspended-to-deck.png",
+      "bytes": 1430195,
+      "sha256": "16ca96aa717bf90e47d7094eb8e2a5ca96a9d6f97e28f8ba718b2da331d376e3"
+    }
+  ]
+}

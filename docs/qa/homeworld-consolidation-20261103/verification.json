@@ -1,0 +1,60 @@
+{
+  "scope": "Homeworld V113 dressing checkpoint recovery and bounded offline planner",
+  "baseCommit": "c62f09f6d5f5ff9a0613c0facd584b60de3af98a",
+  "geometry": {
+    "closedFacades": 9,
+    "floors": [
+      "0",
+      "+1",
+      "+2",
+      "-1A",
+      "-1B",
+      "-1C"
+    ],
+    "saveSchema": "Save12 unchanged",
+    "assetsModified": false,
+    "authoredPlacementModified": false
+  },
+  "checks": [
+    {
+      "command": "node --experimental-strip-types --test --test-concurrency=1 tests/homeworld-dressing-recovery-v113.test.mjs tests/homeworld-dressing-planner-v113.test.mjs tests/homeworld-geometry-recovery-v112.test.mjs tests/homeworld-geometry-recovery-integration-v112.test.mjs tests/homeworld-geometry-recovery-matrix-v112.test.mjs",
+      "result": "passed",
+      "passed": 40,
+      "failed": 0,
+      "log": "recovery-tests.log"
+    },
+    {
+      "command": "node node_modules/typescript/bin/tsc --noEmit",
+      "result": "passed"
+    },
+    {
+      "command": "eslint on seven changed source and test files",
+      "result": "passed",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "command": "node --experimental-strip-types --test --test-concurrency=1 tests/homeworld-dressing-v113.test.mjs",
+      "result": "blocked_missing_sparse_asset",
+      "passed": 7,
+      "failed": 1,
+      "missingFile": "public/game/homeworld/v81/industrial-residence-right.png",
+      "log": "dressing-tests-sparse-attempt.log",
+      "resolution": "All 21 building painter PNGs materialized from the same Git revision; the one blocked test passed on rerun."
+    },
+    {
+      "command": "node --experimental-strip-types --test --test-name-pattern='no dressing sprite' tests/homeworld-dressing-v113.test.mjs",
+      "result": "passed",
+      "passed": 1,
+      "failed": 0,
+      "log": "dressing-pixels-after-fetch.log"
+    }
+  ],
+  "limits": [
+    "No new browser or artistic validation claimed.",
+    "External pinned guides inaccessible through search; repository guidance and actual modules inspected.",
+    "Full planner not regenerated: existing authored JSON is preserved."
+  ],
+  "distinctTestsPassed": 48,
+  "unresolvedTestFailures": 0
+}

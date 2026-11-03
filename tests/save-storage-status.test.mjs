@@ -25,7 +25,7 @@ await build({
   },
 });
 
-const { defaultSave, loadSave, writeSave, writeSaveWithStatus } = await import(
+const { defaultSave, normalizeSave, loadSave, writeSave, writeSaveWithStatus } = await import(
   pathToFileURL(join(outputDirectory, "save.mjs")).href
 );
 
@@ -107,4 +107,46 @@ test("the game shell reports autosave failures instead of promising persistence"
   assert.match(client, /previousMasterVolumeRef\.current/);
   assert.doesNotMatch(client, /masterVolume: checked \? 0\.8 : 0/);
   assert.match(css, /\.save-warning\s*\{/);
+});
+
+test("PR25 texture-save format migrates to owned V113 chromatics and survives durable reload", () => {
+  const owner = "2026-10-30T11:00:00.000Z";
+  const prior = defaultSave(owner);
+  const legacy = {
+    ...prior,
+    appearance: {
+      ...prior.appearance,
+      chromaticsV113: undefined,
+      skinId: "moss-mottle",
+      dreadTintId: "blue-black",
+      armorTintId: "jade",
+      skinMaterialId: "skin_classe_viking_base_observee",
+      dreadMaterialId: "dread_anubis_gris_motif_ecaille",
+      outfitMaterialId: "armor_classe_wolf_tablier_gris_brun",
+    },
+  };
+  const converted = normalizeSave(legacy);
+  assert.equal(converted.createdAt, owner);
+  assert.equal(converted.appearance.presetId, "custom");
+  assert.equal(converted.appearance.chromaticsV113.skinHex, "#677b4b");
+  assert.equal(converted.appearance.chromaticsV113.dreadHex, "#343e53");
+  assert.equal(converted.appearance.chromaticsV113.armorHex, "#466f5b");
+  assert.equal(converted.appearance.chromaticsV113.skinMaterialId, "phg-skin_classe_viking_base_observee");
+  assert.equal(converted.appearance.chromaticsV113.dreadMaterialId, "phg-dread_anubis_gris_motif_ecaille");
+  assert.equal(converted.appearance.chromaticsV113.outfitMaterialId, "phg-armor_classe_wolf_tablier_gris_brun");
+  const items = new Map();
+  const storage = {
+    getItem: key => items.get(key) ?? null,
+    setItem(key, value) { items.set(key, value); },
+    removeItem: key => items.delete(key),
+  };
+  const written = writeSaveWithStatus(converted, storage, "migrated-chromatic");
+  assert.equal(written.persisted, true);
+  const onDisk = JSON.parse(items.get("migrated-chromatic"));
+  assert.equal("skinMaterialId" in onDisk.appearance, false);
+  assert.equal("dreadMaterialId" in onDisk.appearance, false);
+  assert.equal("outfitMaterialId" in onDisk.appearance, false);
+  const restored = loadSave(storage, "migrated-chromatic");
+  assert.deepEqual(restored.appearance.chromaticsV113, converted.appearance.chromaticsV113);
+  assert.equal(restored.createdAt, owner);
 });

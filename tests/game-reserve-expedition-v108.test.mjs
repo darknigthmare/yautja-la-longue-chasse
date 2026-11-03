@@ -35,7 +35,7 @@ test('the four high posts, eight different sectors and return require actual wal
  // No combat victory is claimed by this terrain test.
  let s=record(firstSite(),0);s=jumpHere(walk(s,4910),365);s=jumpTo(walk(s,5125),5250,295);s=jumpTo(walk(s,5500),5650,230);s=record(walk(s,5790),1);
  s=jumpHere(walk(s,8140),365);s=jumpTo(walk(s,8330),8470,290);s=jumpTo(walk(s,8735),8880,225);s=record(walk(s,9010),2);
- s=jumpHere(walk(s,12040),355);s=jumpTo(walk(s,12245),12370,280);s=record(walk(s,12480),3);assert.deepEqual(s.visited,[0,1,2,3,4,5,6,7]);
+ s=jumpHere(walk(s,11400),370);s=jumpTo(walk(s,11500),11620,300);s=jumpTo(walk(s,11870),11990,282);s=jumpTo(walk(s,12225),12370,280);s=record(walk(s,12480),3);assert.deepEqual(s.visited,[0,1,2,3,4,5,6,7]);
  const before=clone(s),notes=clone(s.routeV108);s=ticks(walk(s,115),60,{interact:true});assert.equal(s.status,'returned');assert.deepEqual(s.routeV108,notes);assert(api.canAdvanceGameReserveV66(before,s));assert.equal(api.stepGameReserveV66(s,{move:1}),s);assert.equal(api.gameReserveV66MaterialTotal(s),32);valid(s);
 });
 

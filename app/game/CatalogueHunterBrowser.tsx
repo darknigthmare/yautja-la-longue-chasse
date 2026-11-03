@@ -30,6 +30,7 @@ import {
   type CatalogueYautjaEntry,
 } from "./catalogueRoster";
 import { HUNTER_PRESET_BY_ID, type HunterLorePresetId } from "./hunterLore";
+import { getAlienBaseHunterIdentityV1 } from "./alienBaseYautjaBindingsV1";
 
 export interface CatalogueHunterBrowserProps {
   readonly entries?: readonly CatalogueYautjaEntry[];
@@ -296,6 +297,11 @@ export function CatalogueHunterBrowser({
           const titleId = `${idPrefix}-${entry.id}-title`;
           const referenceUrls = referenceUrlsForCatalogueEntry(entry);
           const visualResolution = resolveCatalogueVisual(entry);
+          const sharedIdentityIds = [...new Set(
+            entry.presetIds
+              .map((id) => getAlienBaseHunterIdentityV1(id))
+              .filter((id): id is string => id !== null),
+          )];
 
           return (
             <article
@@ -400,6 +406,16 @@ export function CatalogueHunterBrowser({
                   </span>
                 )}
               </nav>
+
+              {sharedIdentityIds.length > 0 ? (
+                <p
+                  data-alien-base-hunter-link={sharedIdentityIds.join(",")}
+                  role="note"
+                >
+                  Alien Base · identité documentaire commune : {sharedIdentityIds.join(", ")}
+                  {" · "}Cette correspondance ne certifie pas la fidélité du sprite ou de l&apos;équipement.
+                </p>
+              ) : null}
 
               {reconstructed ? (
                 <p className="catalogueHunterBrowser__warning" role="note">

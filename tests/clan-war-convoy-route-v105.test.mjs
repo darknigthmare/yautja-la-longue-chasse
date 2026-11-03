@@ -25,16 +25,27 @@ function planned(extra = {}) {
 }
 function accepted(result) { assert.equal(result.accepted, true, result.message); return result.state; }
 
-test("legacy fronts retain exact V104 initial and resolved bytes on all thirty historical worlds", () => {
-  const fixture = JSON.parse(fs.readFileSync("tests/fixtures/clan-war-front-legacy-v105.json", "utf8"));
+test("V156 fronts preserve all thirty V104 initial states and record the eight route-enabled opponent turns separately", () => {
+  const originalBytes = fs.readFileSync("tests/fixtures/clan-war-front-legacy-v105.json");
+  assert.equal(createHash("sha256").update(originalBytes).digest("hex"), "5ffd9d2be6f20ca8e4086db59a2ddcf2caca17372654a6bdad612fe3e55226e1", "the genuine V104 evidence must remain byte-identical for historical capsules");
+  const original = JSON.parse(originalBytes);
+  const fixture = JSON.parse(fs.readFileSync("tests/fixtures/clan-war-front-routes-v156.json", "utf8"));
+  assert.equal(fixture.historicalBaseline, original.baseline);
   assert.equal(fixture.snapshots.length, 30);
+  assert.equal(original.snapshots.length, 30);
+  assert.deepEqual(fixture.snapshots.map(row => row.planetId), original.snapshots.map(row => row.planetId));
+  const changedTurns = [];
   for (const expected of fixture.snapshots) {
+    const historical = original.snapshots.find(row => row.planetId === expected.planetId);
+    assert.equal(expected.initial, historical.initial, expected.planetId + ': initial deployment remains historical');
+    if (expected.turnTwo !== historical.turnTwo) changedTurns.push(expected.planetId);
     const state = api.createWarSimulationV85(undefined, expected.planetId);
     assert.equal(state.version, 1);
     assert.equal(Object.hasOwn(state, "convoyRouteV105"), false);
     assert.equal(digest(state), expected.initial, expected.planetId);
     assert.equal(digest(accepted(api.advanceWarTurnV85(state))), expected.turnTwo, expected.planetId);
   }
+  assert.deepEqual(changedTurns, ['nivalis', 'uranth', 'amethys', 'salarka', 'venefra', 'boralis', 'dunara', 'viridia']);
 });
 
 test("planning records a source-backed itinerary without moving, reserving or creating any resources", () => {

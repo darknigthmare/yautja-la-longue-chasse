@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import fs from 'node:fs';
 import {build} from 'esbuild';
-const built=await build({stdin:{contents:"export * from './app/game/systems/gameReserveV66';export * from './app/game/systems/gameReserveExpeditionV109';export * from './app/game/systems/gameReserveGrandHunt';export * from './app/game/systems/gameReserveTacticalV98';export {defaultSave,parseSaveImport} from './app/game/save';",resolveDir:process.cwd()},bundle:true,write:false,format:'esm',platform:'node',logLevel:'silent'});
+const built=await build({stdin:{contents:"export * from './app/game/systems/gameReserveV66';export * from './app/game/systems/gameReserveExpeditionV109';export * from './app/game/systems/gameReserveGrandHunt';export * from './app/game/systems/gameReserveTacticalV98';export * from './app/game/systems/gameReserveLegacyDecorData';export {defaultSave,parseSaveImport} from './app/game/save';",resolveDir:process.cwd()},bundle:true,write:false,format:'esm',platform:'node',logLevel:'silent'});
 const api=await import('data:text/javascript;base64,'+Buffer.from(built.outputFiles[0].text).toString('base64'));
 const valid=state=>assert.deepEqual(api.normalizeGameReserveV66(state),state);
 const step=(state,input={})=>api.stepGameReserveV66(state,input);
@@ -130,3 +130,13 @@ test('the tactical notebook names a nearby ground hazard and V6 objectives stay 
   assert.equal(api.gameReserveV109Objectives(quiet('khar-duun-grand-hunt')).cacheGoal,4);
 });
 
+test('V1–V5 decor is render-only native art: exact files, off ramps and depots, and no checkpoint field',()=>{
+  const terrains={v1:{version:1},v2:{version:2},v3:{version:3},v4:{version:4},'khar-duun-canyon-expedition':{version:5,reserveId:'khar-duun-canyon-expedition'},'iskhel-ice-expedition':{version:5,reserveId:'iskhel-ice-expedition'}};
+  for(const [key,terrain] of Object.entries(terrains)){const data=api.GAME_RESERVE_LEGACY_DECOR[key];assert(data.decor.length>0,key);
+    for(const entry of data.art)assert.deepEqual(webpSize('public'+entry.src),[...entry.size],entry.src);
+    const ships=api.gameReserveV66Ships(terrain),supplies=api.gameReserveV66Supplies(terrain),width=api.gameReserveV66World(terrain).width;
+    for(const item of data.decor){assert(item.art>=0&&item.art<data.art.length);assert(item.x>=0&&item.x+item.w<=width,key);
+      if(item.layer==='support')continue;
+      for(const ship of ships)assert(item.x>ship.x+200||item.x+item.w<ship.x-200,key+' ramp');for(const x of supplies)assert(item.x>x+30||item.x+item.w<x-30,key+' depot');}}
+  const fresh=api.createGameReserveV66(1);assert(!JSON.stringify(fresh).includes('decor'));
+});

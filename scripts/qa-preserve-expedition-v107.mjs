@@ -165,8 +165,10 @@ try {
   const played = await createPage({ clock: true }); await seed(played, "quiet"); await entry(played); await mounted(played);
   await played.clock.pauseAt(new Date(await played.evaluate(() => Date.now() + 100)));
   await played.getByRole("button", { name: "Commencer l’expédition", exact: true }).click({ force: true }); await played.clock.runFor(160);
-  await walk(played, 4620); await jump(played, 360);
-  await walk(played, 4830); await jump(played, 300, true);
+  await walk(played, 4000); await jump(played, 351);
+  await walk(played, 4140); await jump(played, 280, true);
+  await walk(played, 4520); await jump(played, 262, true);
+  await walk(played, 4810); await jump(played, 300, true);
   await walk(played, 5190); await jump(played, 345, true);
   await walk(played, 5550); await jump(played, 280, true);
   await walk(played, 5840);
@@ -195,7 +197,8 @@ try {
   await walk(played, 10735); await jump(played, 365, true);
   check("The quarry shelves form a distinct native jump route", (await view(played)).reserveSector === "echo-quarry" && Number((await view(played)).reserveY) === 365);
   await capture(played, "quarry-native-route.png");
-  await walk(played, 12030); await jump(played, 365);
+  await walk(played, 11700); await jump(played, 315);
+  await walk(played, 11875); await jump(played, 282, true);
   await walk(played, 12235); await jump(played, 290, true); await walk(played, 12420);
   await canvas(played).focus(); await played.keyboard.down("KeyE"); await played.clock.runFor(2200); await played.keyboard.up("KeyE"); await played.clock.runFor(64);
   check("The eastern quay completes four separate records after eight physically traversed sectors", (await view(played)).reserveRouteRecorded === "4" && Number((await view(played)).reserveY) === 290 && new Set(route.map(sample => sample.sector)).size === 8);

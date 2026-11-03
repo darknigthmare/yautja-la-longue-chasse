@@ -1,0 +1,5 @@
+﻿Référence source;Champ / contrôle;État réel;Preuve;Reste
+PR78 QA152-ASS-05;Volet V85 : instantané V115 après écriture distante;Partiel — Chromium local;scripts/qa-clan-provenance-v152-browser.mjs;Pas GameClient complet ni synchronisation interappareils
+PR78 SEC152-08;Aucun nouvel audit sans clic après invalidation;Partiel — Chromium local;scripts/qa-clan-provenance-v152-browser.mjs;Le volet Bible hydrate son propre exercice V115
+PR78 SEC152-04 / SEC152-05 / SEC152-06;V85 et campagne non modifiés par lecture audit;Partiel — Chromium local;scripts/qa-clan-provenance-v152-browser.mjs;Vrai serveur et campagne complète non couverts
+PR78 QA152-RTS-07 / QA152-ASS-06;Serveur et manette réelle;Ouvert;Non exécuté;Autorité serveur et appareil physique requis

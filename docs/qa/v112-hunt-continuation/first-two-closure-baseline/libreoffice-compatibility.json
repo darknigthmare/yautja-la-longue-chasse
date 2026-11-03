@@ -1,0 +1,312 @@
+{
+  "scope": "LIBREOFFICE_HEADLESS_COMPATIBILITY_ONLY",
+  "microsoftExcelNativeExecuted": false,
+  "executedAtUtc": "2026-11-02T06:08:53.129563+00:00",
+  "sourceGitHead": "e0347c7645667c6dd7fabc48527704d4b5f1ca32",
+  "sourceWorkbook": "docs/YAUTJA_V112_MECANIQUES_CHASSE.xlsx",
+  "sourceWorkbookSha256": "f13dd1a3548aebac25ba77e11ad5c5835757fc49da94491dbe69dbd291b59989",
+  "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "os": "Linux 6.18.57",
+  "commands": [
+    {
+      "conversion": "xlsx",
+      "exitCode": 0,
+      "stdout": "convert <temporary-directory>/input/YAUTJA_V112_MECANIQUES_CHASSE.xlsx as a Calc document -> <temporary-directory>/xlsx/YAUTJA_V112_MECANIQUES_CHASSE.xlsx using filter : Calc Office Open XML\n",
+      "stderr": ""
+    },
+    {
+      "conversion": "pdf",
+      "exitCode": 0,
+      "stdout": "convert <temporary-directory>/input/YAUTJA_V112_MECANIQUES_CHASSE.xlsx as a Calc document -> <temporary-directory>/pdf/YAUTJA_V112_MECANIQUES_CHASSE.pdf using filter : calc_pdf_Export\n",
+      "stderr": ""
+    }
+  ],
+  "sheetCountBefore": 22,
+  "sheetCountAfter": 22,
+  "sheets": [
+    {
+      "name": "Sources",
+      "sameName": true,
+      "nonemptyCellsBefore": 68,
+      "nonemptyCellsAfter": 68,
+      "cellDifferences": [],
+      "equivalentNumericSerializations": [],
+      "sameEffectiveFrozenPanes": true,
+      "sameFilterDefinition": true,
+      "hyperlinkCount": 10,
+      "sameHyperlinkCellsAndDestinations": true
+    },
+    {
+      "name": "Depecage",
+      "sameName": true,
+      "nonemptyCellsBefore": 104,
+      "nonemptyCellsAfter": 104,
+      "cellDifferences": [],
+      "equivalentNumericSerializations": [],
+      "sameEffectiveFrozenPanes": true,
+      "sameFilterDefinition": true,
+      "hyperlinkCount": 16,
+      "sameHyperlinkCellsAndDestinations": true
+    },
+    {
+      "name": "Trophees",
+      "sameName": true,
+      "nonemptyCellsBefore": 110,
+      "nonemptyCellsAfter": 110,
+      "cellDifferences": [],
+      "equivalentNumericSerializations": [],
+      "sameEffectiveFrozenPanes": true,
+      "sameFilterDefinition": true,
+      "hyperlinkCount": 17,
+      "sameHyperlinkCellsAndDestinations": true
+    },
+    {
+      "name": "Locomotion",
+      "sameName": true,
+      "nonemptyCellsBefore": 86,
+      "nonemptyCellsAfter": 86,
+      "cellDifferences": [],
+      "equivalentNumericSerializations": [],
+      "sameEffectiveFrozenPanes": true,
+      "sameFilterDefinition": true,
+      "hyperlinkCount": 13,
+      "sameHyperlinkCellsAndDestinations": true
+    },
+    {
+      "name": "Pendule",
+      "sameName": true,
+      "nonemptyCellsBefore": 80,
+      "nonemptyCellsAfter": 80,
+      "cellDifferences": [],
+      "equivalentNumericSerializations": [],
+      "sameEffectiveFrozenPanes": true,
+      "sameFilterDefinition": true,
+      "hyperlinkCount": 12,
+      "sameHyperlinkCellsAndDestinations": true
+    },
+    {
+      "name": "Routes",
+      "sameName": true,
+      "nonemptyCellsBefore": 50,
+      "nonemptyCellsAfter": 50,
+      "cellDifferences": [],
+      "equivalentNumericSerializations": [],
+      "sameEffectiveFrozenPanes": true,
+      "sameFilterDefinition": true,
+      "hyperlinkCount": 7,
+      "sameHyperlinkCellsAndDestinations": true
+    },
+    {
+      "name": "Suspension",
+      "sameName": true,
+      "nonemptyCellsBefore": 74,
+      "nonemptyCellsAfter": 74,
+      "cellDifferences": [],
+      "equivalentNumericSerializations": [],
+      "sameEffectiveFrozenPanes": true,
+      "sameFilterDefinition": true,
+      "hyperlinkCount": 11,
+      "sameHyperlinkCellsAndDestinations": true
+    },
+    {
+      "name": "Anatomie",
+      "sameName": true,
+      "nonemptyCellsBefore": 350,
+      "nonemptyCellsAfter": 350,
+      "cellDifferences": [],
+      "equivalentNumericSerializations": [],
+      "sameEffectiveFrozenPanes": true,
+      "sameFilterDefinition": true,
+      "hyperlinkCount": 57,
+      "sameHyperlinkCellsAndDestinations": true
+    },
+    {
+      "name": "Charge",
+      "sameName": true,
+      "nonemptyCellsBefore": 62,
+      "nonemptyCellsAfter": 62,
+      "cellDifferences": [],
+      "equivalentNumericSerializations": [],
+      "sameEffectiveFrozenPanes": true,
+      "sameFilterDefinition": true,
+      "hyperlinkCount": 9,
+      "sameHyperlinkCellsAndDestinations": true
+    },
+    {
+      "name": "Entretien",
+      "sameName": true,
+      "nonemptyCellsBefore": 56,
+      "nonemptyCellsAfter": 56,
+      "cellDifferences": [],
+      "equivalentNumericSerializations": [],
+      "sameEffectiveFrozenPanes": true,
+      "sameFilterDefinition": true,
+      "hyperlinkCount": 8,
+      "sameHyperlinkCellsAndDestinations": true
+    },
+    {
+      "name": "Conservation",
+      "sameName": true,
+      "nonemptyCellsBefore": 86,
+      "nonemptyCellsAfter": 86,
+      "cellDifferences": [],
+      "equivalentNumericSerializations": [],
+      "sameEffectiveFrozenPanes": true,
+      "sameFilterDefinition": true,
+      "hyperlinkCount": 13,
+      "sameHyperlinkCellsAndDestinations": true
+    },
+    {
+      "name": "Accessibilite",
+      "sameName": true,
+      "nonemptyCellsBefore": 80,
+      "nonemptyCellsAfter": 80,
+      "cellDifferences": [],
+      "equivalentNumericSerializations": [],
+      "sameEffectiveFrozenPanes": true,
+      "sameFilterDefinition": true,
+      "hyperlinkCount": 12,
+      "sameHyperlinkCellsAndDestinations": true
+    },
+    {
+      "name": "Ecosysteme",
+      "sameName": true,
+      "nonemptyCellsBefore": 98,
+      "nonemptyCellsAfter": 98,
+      "cellDifferences": [],
+      "equivalentNumericSerializations": [],
+      "sameEffectiveFrozenPanes": true,
+      "sameFilterDefinition": true,
+      "hyperlinkCount": 15,
+      "sameHyperlinkCellsAndDestinations": true
+    },
+    {
+      "name": "Apprentissage",
+      "sameName": true,
+      "nonemptyCellsBefore": 62,
+      "nonemptyCellsAfter": 62,
+      "cellDifferences": [],
+      "equivalentNumericSerializations": [],
+      "sameEffectiveFrozenPanes": true,
+      "sameFilterDefinition": true,
+      "hyperlinkCount": 9,
+      "sameHyperlinkCellsAndDestinations": true
+    },
+    {
+      "name": "Parametres",
+      "sameName": true,
+      "nonemptyCellsBefore": 408,
+      "nonemptyCellsAfter": 408,
+      "cellDifferences": [],
+      "equivalentNumericSerializations": [
+        {
+          "cell": "D36",
+          "before": "0.008333333333333333",
+          "after": "0.00833333333333333"
+        }
+      ],
+      "sameEffectiveFrozenPanes": true,
+      "sameFilterDefinition": true,
+      "hyperlinkCount": 57,
+      "sameHyperlinkCellsAndDestinations": true
+    },
+    {
+      "name": "Transitions",
+      "sameName": true,
+      "nonemptyCellsBefore": 268,
+      "nonemptyCellsAfter": 268,
+      "cellDifferences": [],
+      "equivalentNumericSerializations": [],
+      "sameEffectiveFrozenPanes": true,
+      "sameFilterDefinition": true,
+      "hyperlinkCount": 0,
+      "sameHyperlinkCellsAndDestinations": true
+    },
+    {
+      "name": "Qualification",
+      "sameName": true,
+      "nonemptyCellsBefore": 320,
+      "nonemptyCellsAfter": 320,
+      "cellDifferences": [],
+      "equivalentNumericSerializations": [],
+      "sameEffectiveFrozenPanes": true,
+      "sameFilterDefinition": true,
+      "hyperlinkCount": 52,
+      "sameHyperlinkCellsAndDestinations": true
+    },
+    {
+      "name": "FermetureFUT",
+      "sameName": true,
+      "nonemptyCellsBefore": 80,
+      "nonemptyCellsAfter": 80,
+      "cellDifferences": [],
+      "equivalentNumericSerializations": [],
+      "sameEffectiveFrozenPanes": true,
+      "sameFilterDefinition": true,
+      "hyperlinkCount": 12,
+      "sameHyperlinkCellsAndDestinations": true
+    },
+    {
+      "name": "Preuves",
+      "sameName": true,
+      "nonemptyCellsBefore": 92,
+      "nonemptyCellsAfter": 92,
+      "cellDifferences": [],
+      "equivalentNumericSerializations": [],
+      "sameEffectiveFrozenPanes": true,
+      "sameFilterDefinition": true,
+      "hyperlinkCount": 14,
+      "sameHyperlinkCellsAndDestinations": true
+    },
+    {
+      "name": "Cloture",
+      "sameName": true,
+      "nonemptyCellsBefore": 1982,
+      "nonemptyCellsAfter": 1982,
+      "cellDifferences": [],
+      "equivalentNumericSerializations": [],
+      "sameEffectiveFrozenPanes": true,
+      "sameFilterDefinition": true,
+      "hyperlinkCount": 219,
+      "sameHyperlinkCellsAndDestinations": true
+    },
+    {
+      "name": "Restant",
+      "sameName": true,
+      "nonemptyCellsBefore": 56,
+      "nonemptyCellsAfter": 56,
+      "cellDifferences": [],
+      "equivalentNumericSerializations": [],
+      "sameEffectiveFrozenPanes": true,
+      "sameFilterDefinition": true,
+      "hyperlinkCount": 8,
+      "sameHyperlinkCellsAndDestinations": true
+    },
+    {
+      "name": "Reprise",
+      "sameName": true,
+      "nonemptyCellsBefore": 30,
+      "nonemptyCellsAfter": 30,
+      "cellDifferences": [],
+      "equivalentNumericSerializations": [],
+      "sameEffectiveFrozenPanes": true,
+      "sameFilterDefinition": true,
+      "hyperlinkCount": 2,
+      "sameHyperlinkCellsAndDestinations": true
+    }
+  ],
+  "pdfExport": {
+    "created": true,
+    "bytes": 1686178,
+    "pages": 41,
+    "allPagesVisuallyReviewed": false,
+    "nativePrintDialogExercised": false
+  },
+  "limits": [
+    "No Microsoft Excel session or repair-dialog verification.",
+    "No human filter use, frozen-pane scrolling or hyperlink click.",
+    "OOXML metadata survival is distinct from interactive use.",
+    "LibreOffice may rewrite hyperlink tooltip/display attributes and numeric serialization.",
+    "No criterion in Restant is closed by this compatibility check."
+  ]
+}

@@ -11,6 +11,7 @@ const route=archiveContinuationRouteV111(),initial=structuredClone(route.state()
 const saves=qa.load('app/game/save.ts');
 const {emptyHarvestInventoryV112}=qa.load('app/game/systems/harvestInventoryV112.ts');
 const {normalizeHuntAccessibilityV112}=qa.load('app/game/systems/huntAccessibilityV112.ts');
+const {DEFAULT_CHROMATICS_V113}=qa.load('app/game/hunterChromaticsV113.ts');
 const api=Object.assign({},...[
   'homeworldWorldV77','homeworldLocationV77','homeworldCartographyLedgerV104','homeworldCartographyV104',
   'homeworldCartographyLedgerV105','homeworldCartographyV105','homeworldArchiveLedgerV106','homeworldArchiveV106',
@@ -212,12 +213,14 @@ test('V111 Save11 to12 preserves the genuine V110 campaign and B document while 
   const previous=old.parseSaveImport(JSON.stringify(legacy)).save;assert(previous);
   const migrated=saves.parseSaveImport(JSON.stringify(previous)).save;assert(migrated);
   assert.deepEqual(migrated,{...previous,version:12,
+    appearance:{...previous.appearance,chromaticsV113:{...DEFAULT_CHROMATICS_V113}},
     inventory:{...previous.inventory,fieldToolIds:[],harvestV112:emptyHarvestInventoryV112()},
     settings:{...previous.settings,huntAccessibility:normalizeHuntAccessibilityV112(undefined)},
-    // Main already adds optional V113 materials. An old campaign selects none;
-    // the private historical V111 assertion remains unchanged in its capsule.
-    appearance:{...previous.appearance,skinMaterialId:null,dreadMaterialId:null,outfitMaterialId:null},
-  },'every pre-existing campaign field survives; additive hunting and appearance fields use their production defaults');
+  },'every pre-existing campaign field survives; additive hunting, accessibility and material fields use their production defaults');
+  assert.deepEqual(migrated.appearance.chromaticsV113,DEFAULT_CHROMATICS_V113,
+    'V113 does not select a pigment, decal or material for a genuine V110 appearance');
+  for(const field of ['skinMaterialId','dreadMaterialId','outfitMaterialId'])
+    assert.equal(Object.hasOwn(migrated.appearance,field),false,'legacy parallel material fields are not serialized');
   assert.equal(JSON.stringify(migrated.homeworld.archivePlaqueV109),JSON.stringify(previous.homeworld.archivePlaqueV109));
   assert.equal(migrated.homeworld.archiveContinuationV111,undefined,'migration does not create or auto-start an A continuation');
 });

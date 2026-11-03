@@ -1,0 +1,11 @@
+# V131 — Atelier des biomasks et Ogre (Alpha PHG)
+
+**Source officielle :** le patch [2.19](https://forum.predator.illfonic.com/t/patch-notes-2-19/20975) liste huit teintes de biomask indépendantes des peintures d'armure : Requiem, Nova (Alpha et Samurai), Ogre, Instinct, Glypic, Tyrant, Warlord, Paroxysm (Alpha). Les sept autres variantes que Ogre ne possèdent pas de matière reconstituée suffisamment documentée : elles restent des entrées de référence et non des textures inventées.
+
+**Matière Ogre intégrée :** réemploi **sans duplication de pixels** de la case inférieure droite du WebP V129 (2×2 ; colonne 1, rangée 1). Cette matière est une **étude originale** à fidélité 1:1 non certifiée ; la texture officielle UV/PBR n'a pas été extraite. Elle existe dans le registre whitelist sous `phg-study-v131-alpha-ogre-biomask` et ne peut pas être sélectionnée comme peinture de peau ou d'armure.
+
+**Système jeu :** cinquième canal `biomask`, avec teinte libre de coque et choix Ogre sur Alpha. Les quatre précédents canaux restent inchangés. Les champs `maskHex`, `maskMaterialId` et `maskOriginId="alpha"` sont normalisés au chargement des sauvegardes et validés contre la liste de matières connues ; aucun chemin provenant de l'utilisateur n'est chargé. `maskOriginId` garde la classe Alpha d'origine après passage de la campagne en `presetId="custom"`. Si le biomask est remplacé par une autre géométrie, Ogre ne se projette pas sur le nouveau masque. Une remise à zéro à l'atelier n'efface ni la peau ni le rang, et le laboratoire dermique ne modifie pas les peintures de masque.
+
+**Intégration au rendu :** l'image RGBA de biomask reste l'autorité pour les pixels, z-index et placement. Un calque de pigmentation indépendant utilise cette même silhouette dans `HunterRigPreview`, `HomeworldModularHunter` et `HuntCanvas`. Le masque retiré n'affiche aucune peinture de coque. Les bras/torse/dreads ne sont pas des surfaces admises. Le clan utilise aujourd'hui le masque Feral comme **proxy artistique** de la classe Alpha : cette limite reste visible et non certifiée visuellement 1:1.
+
+**QA :** tests des huit noms, sept entrées encore absentes, migration, reset, sélection Alpha, non-contamination des canaux, choix de tuile de l'atlas, source-atop et présence réelle des trois intégrations DOM/Canvas.

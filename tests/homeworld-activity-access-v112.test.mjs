@@ -27,12 +27,12 @@ test('late admission protects all64 actual activity coordinates and30 functional
 
 test('the original V112 proposal reproduces the blocked fixed waypoint and both unsafe proposals now fail actual admission',()=>{
   const historical={...marker,...revision.before},unprotected={...mount.HOMEWORLD_PUBLIC_PLACE_INPUT_V112,
-    reserves:mount.HOMEWORLD_PUBLIC_PLACE_INPUT_V112.reserves.filter(row=>!row.id.startsWith('activity-access-v112:')&&!row.id.startsWith('activity-path-v112:'))};
+    reserves:mount.HOMEWORLD_PUBLIC_PLACE_INPUT_V112.reserves.filter(row=>!row.id.startsWith('activity-access-v112:')&&!row.id.startsWith('activity-path-v112:')&&!row.id.startsWith('native-cartography-approach:'))};
   const old=places.compileHomeworldPublicPlacesV112(unprotected,[historical]);assert.equal(old.accepted.length,1);
   for(const body of profiles)assert(overlap(places.homeworldPublicPlacePolygonV112(historical),bodyPolygon(local.waypoints[0],body)),'the old full native solid really occupied the saved activity approach');
   for(const candidate of [historical,...revision.rejectedAlternatives.map(row=>({...marker,x:row.x,y:row.y}))]){
     const result=places.compileHomeworldPublicPlacesV112(mount.HOMEWORLD_PUBLIC_PLACE_INPUT_V112,[candidate]);
-    assert.equal(result.accepted.length,0);assert(result.refusals[0].reason.startsWith('reserved:activity-'));
+    assert.equal(result.accepted.length,0);assert.match(result.refusals[0].reason,/^reserved:(?:activity-|native-cartography-approach:)/);
   }
   const current=places.compileHomeworldPublicPlacesV112(mount.HOMEWORLD_PUBLIC_PLACE_INPUT_V112);
   assert.equal(current.accepted.length,6);assert.equal(current.refusals.length,4);

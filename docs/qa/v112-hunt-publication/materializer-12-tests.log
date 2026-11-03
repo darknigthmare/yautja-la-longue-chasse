@@ -1,0 +1,20 @@
+✔ pinned GitHub URL and manifest refuse mutable sources, escaping paths and conflicting entries (7.186703ms)
+✔ streams original binary, Unicode and empty blobs exactly, then verifies and skips every existing file (47.099508ms)
+✔ same-size-corruption: refuse replacement and remove temporary files (11.371411ms)
+✔ truncated: refuse replacement and remove temporary files (9.598718ms)
+✔ oversize: refuse replacement and remove temporary files (12.211673ms)
+✔ http-failure: refuse replacement and remove temporary files (6.686578ms)
+✔ timeout: refuse replacement and remove temporary files (107.222783ms)
+✔ refuses linked roots, parent directories and destination files before requesting anything (3.102256ms)
+✔ a link introduced while fetching is rejected without writing through it (3.053363ms)
+✔ parallel transfers respect the configured bound and preserve every complete byte stream (80.906621ms)
+✔ one failed transfer aborts parallel streams and waits for every temporary file to be removed (31.667628ms)
+✔ CLI rejects URL overrides, repeated options and a missing immutable manifest without any download (111.789212ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 467.91187

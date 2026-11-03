@@ -22,6 +22,7 @@ const fresh=()=>{
 };
 const blankAssets={
  background:null,farLake:null,hunterBodyFull:null,hunterBodyParts:{},hunterNetParts:{},hunterDreads:null,hunterMask:null,
+ // V113 added this slot to HuntAssets; HuntCanvas initializes it the same way before any material loads.
  hunterMaterialsV113:{skin:null,dread:null,outfit:null},
  hunterArmor:{},hunterPlasma:{},hunterGauntlet:{},hunterWristblades:{},hunterWeapons:{},hunterGear:{},hunterTrophies:{},
  treeTrunk:null,vineLadder:null,platformRoot:null,platformStone:null,pilotModule:null,iceRegionTextures:{},expansionDeviceTextures:{},

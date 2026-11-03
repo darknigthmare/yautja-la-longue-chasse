@@ -1,4 +1,6 @@
 import { authorCanopyRoutesV112 } from "./canopyTraversalV112";
+import { resolveHuntGeometryConflictsV157 } from "./huntLevelCoherenceV157";
+import { DESERT_LAYOUT_V157, FUNGAL_LAYOUT_V157, OCEAN_LAYOUT_V157, RUINS_LAYOUT_V157, SWAMP_LAYOUT_V157 } from "./huntExpansionLayoutsV157";
 import type { BiomeId, MissionId } from "../types";
 import {
   WORLD_SCREEN_WORLD_WIDTH,
@@ -1091,7 +1093,7 @@ function buildPlayableWorld(base: WorldBlueprint): WorldBlueprint {
     hazardReplacements.set(hazard.id, replacement.id);
     return false;
   });
-  return authorCanopyRoutesV112({
+  return authorCanopyRoutesV112(resolveHuntGeometryConflictsV157({
     ...expanded,
     platforms: [...expanded.platforms, ...features.platforms],
     climbables: [...expanded.climbables, ...features.climbables],
@@ -1106,7 +1108,7 @@ function buildPlayableWorld(base: WorldBlueprint): WorldBlueprint {
         (waypointId) => hazardReplacements.get(waypointId) ?? waypointId,
       ),
     })),
-  });
+  }));
 }
 
 const JUNGLE_WORLD = buildPlayableWorld(JUNGLE_WORLD_BASE);
@@ -1141,13 +1143,14 @@ function expansionSurfaceMaterial(
     if (material === "mud" || material === "water") return material;
     return "soil";
   }
-  if (biome === "desert") return material === "basalt" ? "stone" : "sand";
-  if (biome === "ocean") return material === "ice" ? "water" : "coral";
+  // V157 authored layouts already use endemic materials; keep those as-is.
+  if (biome === "desert") return material === "basalt" || material === "stone" ? "stone" : "sand";
+  if (biome === "ocean") return material === "ice" || material === "water" ? "water" : "coral";
   if (biome === "fungal") {
     if (material === "mud" || material === "water") return material;
     return "mycelium";
   }
-  return material === "basalt" ? "ruin" : "obsidian";
+  return material === "basalt" || material === "ruin" ? "ruin" : "obsidian";
 }
 
 function expansionClimbableKind(
@@ -1212,7 +1215,7 @@ function expansionWorldBase(
 
 const SWAMP_WORLD = buildPlayableWorld(
   expansionWorldBase(
-    JUNGLE_WORLD_BASE,
+    SWAMP_LAYOUT_V157,
     "swamp-hydra",
     "swamp",
     0x5a4d09,
@@ -1221,7 +1224,7 @@ const SWAMP_WORLD = buildPlayableWorld(
 );
 const DESERT_WORLD = buildPlayableWorld(
   expansionWorldBase(
-    VOLCANO_WORLD_BASE,
+    DESERT_LAYOUT_V157,
     "desert-sandmaw",
     "desert",
     0xde5e47,
@@ -1230,7 +1233,7 @@ const DESERT_WORLD = buildPlayableWorld(
 );
 const OCEAN_WORLD = buildPlayableWorld(
   expansionWorldBase(
-    ICE_WORLD_BASE,
+    OCEAN_LAYOUT_V157,
     "ocean-leviathan",
     "ocean",
     0x0cea71,
@@ -1239,7 +1242,7 @@ const OCEAN_WORLD = buildPlayableWorld(
 );
 const FUNGAL_WORLD = buildPlayableWorld(
   expansionWorldBase(
-    JUNGLE_WORLD_BASE,
+    FUNGAL_LAYOUT_V157,
     "fungal-hivemind",
     "fungal",
     0xf09a17,
@@ -1248,7 +1251,7 @@ const FUNGAL_WORLD = buildPlayableWorld(
 );
 const RUINS_WORLD = buildPlayableWorld(
   expansionWorldBase(
-    VOLCANO_WORLD_BASE,
+    RUINS_LAYOUT_V157,
     "ruins-ancient-guardian",
     "ruins",
     0xac4e09,

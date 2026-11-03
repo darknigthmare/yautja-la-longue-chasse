@@ -1,0 +1,90 @@
+{
+  "scope": "DOCUMENTARY_WORKING_TREE_AFTER_COMPOSED_REVIEW",
+  "executedAtUtc": "2026-11-02T07:39:55.640282+00:00",
+  "gitHead": "6e5999aa2507e296f754f581e5b97caa566fb7f2",
+  "nodeVersion": "v24.19.0",
+  "pythonVersion": "3.12.14",
+  "result": "PASS",
+  "checks": [
+    {
+      "command": [
+        "node",
+        "scripts/build-hunt-mechanics-workbook-v112.mjs",
+        "--check"
+      ],
+      "exitCode": 0,
+      "stdout": "{\"result\":\"PASS_REPRODUCIBLE_BYTES\",\"sheets\":22,\"rows\":613,\"bytes\":740369,\"nativeExcelExecuted\":false,\"historicalClosureResults\":{\"DOCUMENTE\":9,\"NON_QUALIFIE\":2,\"VALIDE_AUTOMATISE\":201,\"PARTIELLEMENT_QUALIFIE\":7},\"effectiveClosureResults\":{\"DOCUMENTE\":9,\"NON_QUALIFIE\":2,\"VALIDE_AUTOMATISE\":205,\"PARTIELLEMENT_QUALIFIE\":3}}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/verify-hunt-mechanics-workbook-v112.py"
+      ],
+      "exitCode": 0,
+      "stdout": "{\"result\": \"PASS_STRUCTURE_AND_SOURCE_DATA\", \"sheets\": 22, \"rows\": 613, \"cellsChecked\": 4664, \"sourceLinksChecked\": 576, \"scenarioResults\": {\"A_EXECUTER\": 0, \"VALIDE_AUTOMATISE\": 52}, \"nativeExcelExecuted\": false, \"historicalClosureResults\": {\"DOCUMENTE\": 9, \"NON_QUALIFIE\": 2, \"VALIDE_AUTOMATISE\": 201, \"PARTIELLEMENT_QUALIFIE\": 7}, \"effectiveClosureResults\": {\"DOCUMENTE\": 9, \"NON_QUALIFIE\": 2, \"VALIDE_AUTOMATISE\": 205, \"PARTIELLEMENT_QUALIFIE\": 3}}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "--test",
+        "--test-isolation=none",
+        "--test-concurrency=1",
+        "tests/hunt-mechanics-workbook-v112.test.mjs",
+        "tests/hunt-review-cycle-v112.test.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "✔ V112 workbook reproduces its delivered bytes and keeps every future requirement individually visible (160.43128ms)\n✔ V112 OOXML package uses unique relationships, frozen headers and text rather than executable formulas (114.319628ms)\n✔ invalid workbook schema, duplicate identities, unknown cells and nonfinite numbers are refused (13.413882ms)\n✔ closure cannot discard an original item, invent evidence or hide an unresolved human check (116.545088ms)\n✔ all 362 original cell contracts and archived open criteria retain independent SHA256 identities (59.601315ms)\n✔ schema 2 compacts inline XML without losing edge or interior whitespace (110.369823ms)\n✔ schema 2 activates print scaling only by explicit option while retaining all 569 historical destinations (90.441508ms)\n✔ the frozen e4 source retains its exact 21-sheet bytes before and after opting into print scaling (108.436649ms)\n✔ JavaScript and Python preserve only repository source URLs pinned to a full SHA (634.052815ms)\n✔ schema 3 displays two current decisions while retaining exact historical review data (127.067326ms)\n✔ schema 3 rejects rewritten archives, promoted raw statuses and unsupported journal claims (710.610356ms)\n✔ a later closure preserves an earlier partial journal entry and requires the current remaining status (78.869873ms)\n✔ the independent Python resolver agrees with current decisions and refuses a forged proof commit (70.968862ms)\n✔ the approved geometric composition closes four criteria while retaining all eight original remaining actions (3.645936ms)\nℹ tests 14\nℹ suites 0\nℹ pass 14\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 2431.642495\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node_modules/.bin/eslint",
+        "scripts/build-hunt-mechanics-workbook-v112.mjs",
+        "scripts/build-hunt-printable-v112.mjs",
+        "tests/hunt-mechanics-workbook-v112.test.mjs",
+        "tests/hunt-review-cycle-v112.test.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--quiet",
+        "e4a6c64a1e77edad8865aa05ca7c2901d62bfa09",
+        "--",
+        "docs/qa/v112-hunt",
+        "docs/qa/v112-hunt-closure",
+        "docs/hunt-mechanics-v111.json",
+        "docs/hunt-mechanics-v111.md",
+        "docs/YAUTJA_V111_MECANIQUES_CHASSE.xlsx"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "firstTwoClosureArchiveFilesChecked": 18,
+  "firstTwoJournalEntriesUnchanged": true,
+  "originalRemainingSheetUnchanged": true,
+  "limits": [
+    "No gameplay was rerun for this documentary extension.",
+    "Checks refer to recorded working-tree bytes after the review commit, not retroactive execution on the original receipts.",
+    "No physical hardware, human session or Microsoft Excel session is qualified."
+  ]
+}

@@ -1,0 +1,37 @@
+﻿ID;Mode;Famille;Critère;Source;Statut;Preuve;Limite
+V151-001;Outer Ops;Échéance;Un mandat arrivé termine par un reçu et libère ses équipes;V115 / V6;Validé CI ciblée;tests/clan-war-due-events-v151.test.mjs;Aucune conquête V85
+V151-002;Renforts;Échéance;Un recrutement payé rejoint le camp une seule fois;V115 / V6;Validé CI ciblée;tests/clan-war-due-events-v151.test.mjs;Pas de personnel gratuit
+V151-003;Soins;Échéance;Un blessé léger traité par W3-U18 revient apte après le délai;V116 / V6;Validé CI ciblée;tests/clan-war-due-events-v151.test.mjs;45 secondes prototype
+V151-004;Soins;Échéance;Deux traitements distincts peuvent se clore au même instant;V116 / V6;Validé CI ciblée;tests/clan-war-due-events-v151.test.mjs;Pas de résurrection
+V151-005;Quatre modes;Sauvegarde;Un seul commit pour rapport, arrivée et soins simultanés;V151 / Web Locks;Validé CI ciblée;tests/clan-war-due-events-v151.test.mjs;Un navigateur
+V151-006;Quatre modes;Sauvegarde;Rejet d'un soin incompatible sans résolution partielle;V151 / V6;Validé CI ciblée;tests/clan-war-due-events-v151.test.mjs;Source modifiée refusée
+V151-007;Quatre modes;Sauvegarde;Relecture depuis V115 sans perte d'identité ni d'XP;V151 / V115;Validé CI ciblée;tests/clan-war-due-events-v151.test.mjs;Pas de cloud
+V151-008;Quatre modes;Sauvegarde;Aucun second paiement ni double reçu à nouvelle échéance;V151 / V115;Validé CI ciblée;tests/clan-war-due-events-v151.test.mjs;Idempotence locale
+V151-009;RTS;Concurrence;Web Lock bloque l'horloge RTS temps réel puis la relâche;PR #66 / #74;Validé CI Chromium;scripts/qa-clan-war-v115-multitab-v148.mjs;Deux onglets coopérants
+V151-010;Assaut;Concurrence;Horloge assaut ne progresse pas sous verrou concurrent;PR #66 / #74;Validé CI Chromium;scripts/qa-clan-war-v115-multitab-v148.mjs;Aucune certification PvP
+V151-011;Outer Ops;Déplacement;Marche forcée payée de 3 RAV et décalage 8 secondes;PR #70 / #74;Validé CI ciblée;tests/clan-war-outer-pace-reconcile.test.mjs;Règle originale
+V151-012;Infiltration;IA;Mémoire du dernier contact bornée sans transmission aux deux gardes;PR #72 / #74;Validé CI ciblée;tests/clan-war-stealth-last-contact.test.mjs;Pas de lore inventé
+V151-013;RTS W3;Source;Carte entière cohérente avec terrain/biomes W3 d'origine;PR #76 / #68;Validé sur autre PR;tests/clan-war-council-v146.test.mjs;Ne pas assimiler à #74
+V151-014;RTS W3;Économie;PC/attaque/défense/RAV source et identifiants confirmés;PR #76 / #68;Validé sur autre PR;tests/clan-war-council-v146.test.mjs;Pas de serveur
+V151-015;Assaut;Combat;Dégâts d'interposition conservés avec gardien au dernier PV;PR #76;Validé sur autre PR;tests/clan-war-source-consolidation-v147.test.mjs;Vérifier intégration future
+V151-016;Conseil;Provenance;W3-Kxx ne doit jamais être confondu avec CON-Txx;PR #75 / #60;Validé sur autre PR;app/game/systems/clanWarSourceAuditV146.ts;Pas d'annexion artificielle
+V151-017;Gauntlets;Fidélité 1:1;Jungle Hunter 1987 : glyphes, bras, charnière, échelle, patine;PR #42;Non certifié 1:1;Comparaison photogrammes face/profil/dessus;Étude SVG provisoire
+V151-018;Gauntlets;Fidélité 1:1;54 gauntlets : références distinctes et silhouette fidèle pour chacun;PR #42;Non certifié 1:1;54 dossiers artistiques à homologuer;0/54 certifié
+V151-019;Gauntlets;UX;Double vue classique/hologramme et une seule session V85;PR #42;Partiel;Parcours vrai GameClient complet;Branch gauntlet distincte
+V151-020;PHG;Fidélité 1:1;Peaux/dreads/tenues et biomasks comparés UV/captures officielles;PR #27;Non certifié 1:1;Matrice des 6 morphologies et images sources;Reconstitutions originales
+V151-021;Planètes;Géographie;Lieux Earth géoréférencés Terre au bon continent;PR #36 / #42;À vérifier;WGS84 vs sources film;Rues exactes non homologuées
+V151-022;Planètes;Géographie;Interdiction de placer Gunnison sur planète extraterrestre;PR #36 / #42;À vérifier;Audit des IDs lieux/planètes;Références cinéma séparées
+V151-023;Planètes;Biomes;Pas de zone glaciaire non justifiée sur désert;PR #42;À vérifier;QA seeds et aléas;Références climatiques
+V151-024;Planètes;Générateur;Surface adaptée à taille planète et 100+ formes d'îles/continents;PR #42;À vérifier;Couverture sprites/landmass seeds;Pas de certification visuelle
+V151-025;Planètes;Générateur;Aléatoire global/partiel sans écraser sections verrouillées;PR #42;À vérifier;Test UI 100 seeds et sauvegarde;Pas de benchmark
+V151-026;Quatre modes;Campagne V85;Dossier V115 ne doit pas conquérir territoire ni modifier l'XP V85;PR #61 / #75;Partiel;Bridge explicite à définir;Aucune mutation implicite
+V151-027;Quatre modes;Multijoueur;Synchronisation serveur autoritaire de résultats et troupes;Aucun serveur;À développer;Deux machines et latence;Web Locks insuffisants
+V151-028;Accessibilité;Manette;Contrôle assaut/outer/stealth/RTS avec manette physique;PR #74 / #76;À vérifier;QA DualSense;Pas attesté
+V151-029;Accessibilité;Mobile;Boutons combat/gauntlet et atlas lisibles en petit écran;PR #42;À vérifier;QA Android/iOS;Pas attesté
+V151-030;Livraison;Production;Build Vercel final vérifié dans navigateur;Vercel;À vérifier;Déploiement réel;Limite builds distincte CI
+V151-031;Fidélité 1:1;Architecture;Architecture Homeworld séparée en vrais sprites et bonnes proportions;Homeworld;Non certifié 1:1;Photogrammes AVP et concept arts;0 preuve 1:1
+V151-032;Fidélité 1:1;Armes;Masques/armes distincts par personnage et variante crédible;Films/comics/PHG;À développer;Références frontales et latérales;Création originale étiquetée
+V151-033;Fidélité 1:1;Audio;Signature bracelets comparée à chaque œuvre sourcée;PR #42;Non certifié 1:1;Références sources/copyright;Signatures synthétiques
+V151-034;PR;Intégration;Réconcilier #74, #76 et #75 sans écraser leurs modules;Branches parallèles;À développer;Diffs ciblés + CI fusion;Pas de merge automatique
+V151-035;PR;Intégration;Préserver chaîne gauntlet #42 et Web Locks #66 à jour;PR #42 / #66 / #74;Partiel;Branches empilées;Restent en draft
+V151-036;Game design;Gameplay principal;Conserver Dynasty-Warriors-like, 4 modes guerres secondaires;Conception projet;À vérifier;Tests GameClient et mode principal;Ne pas copier AVP Extinction

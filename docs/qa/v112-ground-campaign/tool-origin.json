@@ -1,0 +1,856 @@
+{
+  "schema": 1,
+  "sourceCommit": "e4a6c64a1e77edad8865aa05ca7c2901d62bfa09",
+  "sourceSha256": "8bf504951e6d7d6af9df2bf1d125b99d25f06009723efc96b47636b53b5471c5",
+  "generatedAt": "2026-11-02T04:51:56.507Z",
+  "node": "v24.19.0",
+  "simulation": {
+    "stepSeconds": 0.016666666666666666,
+    "budgetSeconds": 240,
+    "strategy": "mixed",
+    "rngSeed": 17958438
+  },
+  "admission": {
+    "kind": "unmodified defaultSave",
+    "saveSha256": "cf63f56951ee1948e49c69f5715ff67fd8239b7e0d3cab10a63de2849a0d7cdd",
+    "loadout": {
+      "armorId": "hunter",
+      "weaponIds": [
+        "combistick",
+        "plasma-caster"
+      ],
+      "gearIds": [
+        "motion-sensor",
+        "audio-decoy"
+      ]
+    },
+    "unlockedArmorIds": [
+      "hunter"
+    ],
+    "fieldToolIds": [],
+    "clanMarks": 0,
+    "difficulty": "hunter"
+  },
+  "rules": {
+    "huntMutation": "native inputs and stepGame only",
+    "enemyAdmission": false,
+    "teleport": false,
+    "healthOverride": false,
+    "invulnerabilityOverride": false,
+    "objectiveInjection": false,
+    "forcedResult": false
+  },
+  "purpose": "Two genuine complete native hunts retained as the source of clan marks for the native Flaying Tool purchase. This selection adds no marks, result, inventory or progression.",
+  "sourceReport": {
+    "path": "outputs/qa-hunt-campaign-canonical-v112/mixed-r3-report.json",
+    "sha256": "b45b0184718905341785633d756437ddc9030fb433b0f47424a3bcd32c2a930e"
+  },
+  "attempts": [
+    {
+      "missionId": "jungle-vey",
+      "status": "NATIVE_SIMULATION_SUCCESS",
+      "initial": {
+        "elapsed": 0,
+        "phase": "tracking",
+        "paused": false,
+        "player": {
+          "x": 225,
+          "y": 508,
+          "health": 160,
+          "maxHealth": 160,
+          "stamina": 100,
+          "energy": 100,
+          "medicomps": 3,
+          "grounded": true,
+          "climbing": false,
+          "velocityX": 0,
+          "velocityY": 0
+        },
+        "kills": 0,
+        "scans": 0,
+        "damageTaken": 0,
+        "completedObjectives": [],
+        "scanNodes": [
+          {
+            "id": "trace-1",
+            "x": 924,
+            "y": 588,
+            "scanned": false
+          },
+          {
+            "id": "trace-2",
+            "x": 2016,
+            "y": 395,
+            "scanned": false
+          },
+          {
+            "id": "trace-3",
+            "x": 3108,
+            "y": 588,
+            "scanned": false
+          }
+        ],
+        "recoveryNodes": [
+          {
+            "id": "technology-1",
+            "x": 4389.7505,
+            "y": 590,
+            "recovered": false
+          }
+        ],
+        "boss": {
+          "x": 6914.4,
+          "y": 470,
+          "health": 600,
+          "maxHealth": 600,
+          "active": false,
+          "alive": true
+        },
+        "livingEnemies": [
+          {
+            "id": "jungle-patrol-0",
+            "archetype": "oseris-iv--spore-bloom",
+            "x": 1448.999,
+            "y": 534,
+            "health": 54.45,
+            "active": true
+          },
+          {
+            "id": "jungle-patrol-1",
+            "archetype": "oseris-iv--corporate-juggernaut",
+            "x": 2449.723279174715,
+            "y": 527,
+            "health": 61.04999999999999,
+            "active": true
+          },
+          {
+            "id": "jungle-patrol-2",
+            "archetype": "oseris-iv--mist-pouncer",
+            "x": 3425.3150969749686,
+            "y": 535,
+            "health": 61.04999999999999,
+            "active": true
+          },
+          {
+            "id": "jungle-patrol-3",
+            "archetype": "common--wandering-xeno-drone",
+            "x": 2233.001,
+            "y": 528,
+            "health": 67.65,
+            "active": true
+          }
+        ],
+        "corpseCount": 0,
+        "specimenCount": 0,
+        "trophyCarried": false,
+        "ship": null,
+        "message": "La chasse commence. Localise les signatures."
+      },
+      "final": {
+        "elapsed": 61.049999999997816,
+        "phase": "finished",
+        "paused": true,
+        "player": {
+          "x": 7988.999999999992,
+          "y": 173,
+          "health": 143.75,
+          "maxHealth": 160,
+          "stamina": 100,
+          "energy": 100,
+          "medicomps": 3,
+          "grounded": false,
+          "climbing": false,
+          "velocityX": 0,
+          "velocityY": 0
+        },
+        "kills": 10,
+        "scans": 4,
+        "damageTaken": 16.250000000000004,
+        "completedObjectives": [
+          "scan-vanguard",
+          "recover-transponder",
+          "defeat-vey",
+          "extract-jungle-trophy"
+        ],
+        "scanNodes": [
+          {
+            "id": "trace-1",
+            "x": 924,
+            "y": 588,
+            "scanned": true
+          },
+          {
+            "id": "trace-2",
+            "x": 2016,
+            "y": 395,
+            "scanned": true
+          },
+          {
+            "id": "trace-3",
+            "x": 3108,
+            "y": 588,
+            "scanned": true
+          }
+        ],
+        "recoveryNodes": [
+          {
+            "id": "technology-1",
+            "x": 4389.7505,
+            "y": 590,
+            "recovered": true
+          }
+        ],
+        "boss": {
+          "x": 7574,
+          "y": 470,
+          "health": 0,
+          "maxHealth": 600,
+          "active": true,
+          "alive": false
+        },
+        "livingEnemies": [
+          {
+            "id": "extraction-jungle-vey-869-0",
+            "archetype": "oseris-iv--needle-frog",
+            "x": 7566.115333333335,
+            "y": 542,
+            "health": 148.5,
+            "active": true
+          },
+          {
+            "id": "extraction-jungle-vey-870-1",
+            "archetype": "oseris-iv--sentinel-orchid",
+            "x": 7673.666666666667,
+            "y": 534,
+            "health": 148.5,
+            "active": true
+          }
+        ],
+        "corpseCount": 9,
+        "specimenCount": 0,
+        "trophyCarried": true,
+        "ship": {
+          "phase": "complete",
+          "phaseElapsedSeconds": 0,
+          "totalElapsedSeconds": 8.750000000000014
+        },
+        "message": "Objectif accompli : Quitter la zone de chasse"
+      },
+      "maxX": 7988.999999999992,
+      "worldSha256AtAdmission": "d63ad933d4f64bbc77c4629d1d7df1c196e91acddca437b12d1b9f2c8309bb99",
+      "originalEnemyIds": [
+        "jungle-patrol-0",
+        "jungle-patrol-1",
+        "jungle-patrol-2",
+        "jungle-patrol-3"
+      ],
+      "nativeResults": [
+        {
+          "missionId": "jungle-vey",
+          "exploration": {
+            "abilityIds": [],
+            "openedGateIds": [],
+            "secretIds": [],
+            "discoveredRoomIds": [
+              "jungle-pilot-approach",
+              "jungle-pilot-underpass",
+              "jungle-pilot-module",
+              "jungle-pilot-ravine",
+              "jungle-pilot-river-caves",
+              "jungle-pilot-vey-camp",
+              "jungle-pilot-duel-extraction"
+            ]
+          },
+          "difficultyId": "hunter",
+          "outcome": "success",
+          "score": 98,
+          "elapsedSeconds": 61,
+          "completedObjectiveIds": [
+            "scan-vanguard",
+            "recover-transponder",
+            "defeat-vey",
+            "extract-jungle-trophy"
+          ],
+          "honorEvents": [
+            {
+              "id": "scan-trace-1",
+              "label": "Signature étudiée",
+              "value": 3,
+              "kind": "scan"
+            },
+            {
+              "id": "honor-rule:restrained-caster",
+              "label": "Code rompu : Puissance mesurée",
+              "value": -10,
+              "kind": "violation"
+            },
+            {
+              "id": "kill-jungle-patrol-0",
+              "label": "Proie neutralisée",
+              "value": 1,
+              "kind": "honorable-kill"
+            },
+            {
+              "id": "scan-trace-2",
+              "label": "Signature étudiée",
+              "value": 3,
+              "kind": "scan"
+            },
+            {
+              "id": "kill-jungle-patrol-3",
+              "label": "Proie neutralisée",
+              "value": 1,
+              "kind": "honorable-kill"
+            },
+            {
+              "id": "kill-jungle-patrol-1",
+              "label": "Proie neutralisée",
+              "value": 1,
+              "kind": "honorable-kill"
+            },
+            {
+              "id": "scan-trace-3",
+              "label": "Signature étudiée",
+              "value": 3,
+              "kind": "scan"
+            },
+            {
+              "id": "objective-scan-vanguard",
+              "label": "Étudier l'avant-garde",
+              "value": 15,
+              "kind": "objective"
+            },
+            {
+              "id": "kill-jungle-patrol-2",
+              "label": "Proie neutralisée",
+              "value": 1,
+              "kind": "honorable-kill"
+            },
+            {
+              "id": "kill-jungle-scouts-1",
+              "label": "Proie neutralisée",
+              "value": 1,
+              "kind": "honorable-kill"
+            },
+            {
+              "id": "recover-technology-1",
+              "label": "Technologie du clan sécurisée",
+              "value": 5,
+              "kind": "objective"
+            },
+            {
+              "id": "objective-recover-transponder",
+              "label": "Reprendre le transpondeur",
+              "value": 25,
+              "kind": "objective"
+            },
+            {
+              "id": "kill-vey-guard-0",
+              "label": "Mise à mort rapprochée",
+              "value": 3,
+              "kind": "honorable-kill"
+            },
+            {
+              "id": "kill-jungle-scouts-2",
+              "label": "Proie neutralisée",
+              "value": 1,
+              "kind": "honorable-kill"
+            },
+            {
+              "id": "kill-jungle-scouts-0",
+              "label": "Mise à mort rapprochée",
+              "value": 3,
+              "kind": "honorable-kill"
+            },
+            {
+              "id": "kill-vey-guard-1",
+              "label": "Mise à mort rapprochée",
+              "value": 3,
+              "kind": "honorable-kill"
+            },
+            {
+              "id": "honor-rule:study-vey",
+              "label": "Connaître sa proie",
+              "value": 15,
+              "kind": "scan"
+            },
+            {
+              "id": "objective-defeat-vey",
+              "label": "Affronter la commandante Vey",
+              "value": 40,
+              "kind": "objective"
+            },
+            {
+              "id": "boss-honorable-kill",
+              "label": "Victoire sur Commandante Vey",
+              "value": 18,
+              "kind": "duel"
+            },
+            {
+              "id": "trophy-claimed",
+              "label": "Insigne de Vey",
+              "value": 12,
+              "kind": "objective"
+            },
+            {
+              "id": "objective-extract-jungle-trophy",
+              "label": "Quitter la zone de chasse",
+              "value": 10,
+              "kind": "objective"
+            },
+            {
+              "id": "honor-rule:protect-tech",
+              "label": "Code respecté : Ne laisser aucune technologie",
+              "value": 20,
+              "kind": "objective"
+            }
+          ],
+          "trophyQuality": "flawless",
+          "trophyClaims": [
+            {
+              "id": "jungle-vey-apex-mvys83aa-o4-ozp8oyk1",
+              "definitionId": "trophy-vey",
+              "targetName": "Commandante Vey",
+              "targetKind": "human",
+              "partId": "insignia",
+              "quality": "flawless",
+              "condition": "pristine"
+            }
+          ],
+          "specimensV112": [],
+          "toolUseIdsV112": [],
+          "harvestEncounterRunV112": 0,
+          "kills": 10,
+          "scans": 4,
+          "discoveredEnemyIds": [
+            "boss-jungle-vey"
+          ],
+          "secondWindUsed": false,
+          "completedAt": "2026-11-02T04:51:59.788Z"
+        }
+      ],
+      "inputs": {
+        "file": "jungle-vey-mixed-inputs.json",
+        "count": 1447,
+        "sha256": "64539a39b21450e94df43bcc7fbea91b6646a686e7cc51978de4dddcd363045f"
+      },
+      "samples": {
+        "file": "jungle-vey-mixed-samples.json",
+        "count": 66,
+        "sha256": "f25203c3fc245463b6044beb4f04e709c6f190d5fa1ca6fc50b05e765aae84d8"
+      },
+      "completedSegments": {
+        "combat": true,
+        "allObjectives": true,
+        "apexDefeated": true,
+        "trophy": true,
+        "extraction": true,
+        "activeSidecarReload": false,
+        "workshop": false,
+        "browser": false
+      }
+    },
+    {
+      "missionId": "ice-cryostalker",
+      "status": "NATIVE_SIMULATION_SUCCESS",
+      "initial": {
+        "elapsed": 0,
+        "phase": "tracking",
+        "paused": false,
+        "player": {
+          "x": 225,
+          "y": 508,
+          "health": 160,
+          "maxHealth": 160,
+          "stamina": 100,
+          "energy": 100,
+          "medicomps": 3,
+          "grounded": true,
+          "climbing": false,
+          "velocityX": 0,
+          "velocityY": 0
+        },
+        "kills": 0,
+        "scans": 0,
+        "damageTaken": 0,
+        "completedObjectives": [],
+        "scanNodes": [
+          {
+            "id": "trace-1",
+            "x": 924,
+            "y": 588,
+            "scanned": false
+          },
+          {
+            "id": "trace-2",
+            "x": 2016,
+            "y": 395,
+            "scanned": false
+          },
+          {
+            "id": "trace-3",
+            "x": 3108,
+            "y": 588,
+            "scanned": false
+          }
+        ],
+        "recoveryNodes": [],
+        "boss": {
+          "x": 6911.4,
+          "y": 482,
+          "health": 720,
+          "maxHealth": 720,
+          "active": false,
+          "alive": true
+        },
+        "livingEnemies": [
+          {
+            "id": "ice-runners-0",
+            "archetype": "nivalis-k--snow-prowler",
+            "x": 1350.999,
+            "y": 535,
+            "health": 77.69999999999999,
+            "active": true
+          },
+          {
+            "id": "ice-runners-1",
+            "archetype": "nivalis-k--crystal-reed",
+            "x": 2377.5944063685088,
+            "y": 534,
+            "health": 69.3,
+            "active": false
+          },
+          {
+            "id": "ice-runners-2",
+            "archetype": "nivalis-k--ice-bore",
+            "x": 3401.079342514872,
+            "y": 535,
+            "health": 77.69999999999999,
+            "active": false
+          },
+          {
+            "id": "ice-runners-3",
+            "archetype": "common--weyland-security-synth",
+            "x": 1951.6214775265753,
+            "y": 517,
+            "health": 77.69999999999999,
+            "active": false
+          }
+        ],
+        "corpseCount": 0,
+        "specimenCount": 0,
+        "trophyCarried": false,
+        "ship": null,
+        "message": "La chasse commence. Localise les signatures."
+      },
+      "final": {
+        "elapsed": 55.54999999999813,
+        "phase": "finished",
+        "paused": true,
+        "player": {
+          "x": 7988.999999999996,
+          "y": 173,
+          "health": 124.94000000000003,
+          "maxHealth": 160,
+          "stamina": 100,
+          "energy": 100,
+          "medicomps": 3,
+          "grounded": false,
+          "climbing": false,
+          "velocityX": 0,
+          "velocityY": 0
+        },
+        "kills": 10,
+        "scans": 5,
+        "damageTaken": 35.06,
+        "completedObjectives": [
+          "scan-ice-traces",
+          "hunt-cryorunners",
+          "defeat-cryostalker",
+          "extract-ice-trophy"
+        ],
+        "scanNodes": [
+          {
+            "id": "trace-1",
+            "x": 924,
+            "y": 588,
+            "scanned": true
+          },
+          {
+            "id": "trace-2",
+            "x": 2016,
+            "y": 395,
+            "scanned": true
+          },
+          {
+            "id": "trace-3",
+            "x": 3108,
+            "y": 588,
+            "scanned": true
+          }
+        ],
+        "recoveryNodes": [],
+        "boss": {
+          "x": 6396.264132816158,
+          "y": 482,
+          "health": 0,
+          "maxHealth": 720,
+          "active": true,
+          "alive": false
+        },
+        "livingEnemies": [
+          {
+            "id": "extraction-ice-cryostalker-690-0",
+            "archetype": "nivalis-k--brine-crawler",
+            "x": 7935.921099999947,
+            "y": 542,
+            "health": 178.2,
+            "active": true
+          },
+          {
+            "id": "extraction-ice-cryostalker-691-1",
+            "archetype": "nivalis-k--frost-xeno",
+            "x": 7927.637093333384,
+            "y": 528,
+            "health": 221.4,
+            "active": true
+          },
+          {
+            "id": "extraction-ice-cryostalker-692-2",
+            "archetype": "common--interplanetary-scavenger",
+            "x": 7941.959266666639,
+            "y": 542,
+            "health": 178.2,
+            "active": true
+          }
+        ],
+        "corpseCount": 9,
+        "specimenCount": 0,
+        "trophyCarried": true,
+        "ship": {
+          "phase": "complete",
+          "phaseElapsedSeconds": 0,
+          "totalElapsedSeconds": 12.750000000000213
+        },
+        "message": "Objectif accompli : Extraire le trophée"
+      },
+      "maxX": 7988.999999999996,
+      "worldSha256AtAdmission": "d1b88de600568c3fa0fb757b2aa1c6816b6cc090552a3a9b93f4674cf92595f1",
+      "originalEnemyIds": [
+        "ice-runners-0",
+        "ice-runners-1",
+        "ice-runners-2",
+        "ice-runners-3"
+      ],
+      "nativeResults": [
+        {
+          "missionId": "ice-cryostalker",
+          "exploration": {
+            "abilityIds": [],
+            "openedGateIds": [],
+            "secretIds": [],
+            "discoveredRoomIds": [
+              "jungle-pilot-approach",
+              "jungle-pilot-underpass",
+              "jungle-pilot-module",
+              "jungle-pilot-ravine",
+              "jungle-pilot-river-caves",
+              "jungle-pilot-vey-camp",
+              "jungle-pilot-duel-extraction",
+              "ice-region-approach",
+              "ice-region-shaft",
+              "ice-region-return"
+            ]
+          },
+          "difficultyId": "hunter",
+          "outcome": "success",
+          "score": 96,
+          "elapsedSeconds": 56,
+          "completedObjectiveIds": [
+            "scan-ice-traces",
+            "hunt-cryorunners",
+            "defeat-cryostalker",
+            "extract-ice-trophy"
+          ],
+          "honorEvents": [
+            {
+              "id": "scan-trace-1",
+              "label": "Signature étudiée",
+              "value": 3,
+              "kind": "scan"
+            },
+            {
+              "id": "kill-ice-runners-0",
+              "label": "Proie neutralisée",
+              "value": 1,
+              "kind": "honorable-kill"
+            },
+            {
+              "id": "kill-ice-runners-3",
+              "label": "Proie neutralisée",
+              "value": 1,
+              "kind": "honorable-kill"
+            },
+            {
+              "id": "scan-trace-2",
+              "label": "Signature étudiée",
+              "value": 3,
+              "kind": "scan"
+            },
+            {
+              "id": "kill-ice-runners-1",
+              "label": "Mise à mort rapprochée",
+              "value": 3,
+              "kind": "honorable-kill"
+            },
+            {
+              "id": "scan-trace-3",
+              "label": "Signature étudiée",
+              "value": 3,
+              "kind": "scan"
+            },
+            {
+              "id": "objective-scan-ice-traces",
+              "label": "Lire les traces bioélectriques",
+              "value": 20,
+              "kind": "objective"
+            },
+            {
+              "id": "kill-ice-runners-2",
+              "label": "Mise à mort rapprochée",
+              "value": 3,
+              "kind": "honorable-kill"
+            },
+            {
+              "id": "objective-hunt-cryorunners",
+              "label": "Disperser la meute",
+              "value": 20,
+              "kind": "objective"
+            },
+            {
+              "id": "kill-ice-brutes-0",
+              "label": "Mise à mort rapprochée",
+              "value": 3,
+              "kind": "honorable-kill"
+            },
+            {
+              "id": "kill-ice-salvagers-1",
+              "label": "Mise à mort rapprochée",
+              "value": 3,
+              "kind": "honorable-kill"
+            },
+            {
+              "id": "kill-ice-salvagers-0",
+              "label": "Proie neutralisée",
+              "value": 1,
+              "kind": "honorable-kill"
+            },
+            {
+              "id": "kill-ice-salvagers-2",
+              "label": "Mise à mort rapprochée",
+              "value": 3,
+              "kind": "honorable-kill"
+            },
+            {
+              "id": "scan-primary-target",
+              "label": "Analyse de Cryostalker Alpha",
+              "value": 5,
+              "kind": "scan"
+            },
+            {
+              "id": "kill-ice-brutes-1",
+              "label": "Mise à mort rapprochée",
+              "value": 3,
+              "kind": "honorable-kill"
+            },
+            {
+              "id": "objective-defeat-cryostalker",
+              "label": "Abattre l'Alpha",
+              "value": 50,
+              "kind": "objective"
+            },
+            {
+              "id": "boss-honorable-kill",
+              "label": "Victoire sur Cryostalker Alpha",
+              "value": 18,
+              "kind": "duel"
+            },
+            {
+              "id": "trophy-claimed",
+              "label": "Crâne de Cryostalker",
+              "value": 12,
+              "kind": "objective"
+            },
+            {
+              "id": "objective-extract-ice-trophy",
+              "label": "Extraire le trophée",
+              "value": 10,
+              "kind": "objective"
+            },
+            {
+              "id": "honor-rule:study-alpha",
+              "label": "Code respecté : Comprendre l'Apex",
+              "value": 20,
+              "kind": "objective"
+            },
+            {
+              "id": "honor-rule:break-armor-cleanly",
+              "label": "Code rompu : Force contre instinct",
+              "value": -10,
+              "kind": "violation"
+            },
+            {
+              "id": "honor-rule:no-second-wind-ice",
+              "label": "Code respecté : Chasseur inébranlable",
+              "value": 15,
+              "kind": "objective"
+            }
+          ],
+          "trophyQuality": "flawless",
+          "trophyClaims": [
+            {
+              "id": "ice-cryostalker-apex-mvys851d-j5-qr7i1duq",
+              "definitionId": "trophy-cryostalker",
+              "targetName": "Cryostalker Alpha",
+              "targetKind": "beast",
+              "partId": "skull-and-spine",
+              "quality": "flawless",
+              "condition": "pristine"
+            }
+          ],
+          "specimensV112": [],
+          "toolUseIdsV112": [],
+          "harvestEncounterRunV112": 0,
+          "kills": 10,
+          "scans": 5,
+          "discoveredEnemyIds": [
+            "nivalis-k--cryo-prospector",
+            "boss-ice-cryostalker"
+          ],
+          "secondWindUsed": false,
+          "completedAt": "2026-11-02T04:52:02.214Z"
+        }
+      ],
+      "inputs": {
+        "file": "ice-cryostalker-mixed-inputs.json",
+        "count": 1757,
+        "sha256": "dea79bb22d639660affd20820ac5f563632cd363eccd756bb63b28581a54824c"
+      },
+      "samples": {
+        "file": "ice-cryostalker-mixed-samples.json",
+        "count": 60,
+        "sha256": "5932e9281e7b6b29c7a494b815f088608f50184f9d704cfb0d5ee2b4f9152dde"
+      },
+      "completedSegments": {
+        "combat": true,
+        "allObjectives": true,
+        "apexDefeated": true,
+        "trophy": true,
+        "extraction": true,
+        "activeSidecarReload": false,
+        "workshop": false,
+        "browser": false
+      }
+    }
+  ]
+}

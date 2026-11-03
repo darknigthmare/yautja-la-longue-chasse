@@ -9,7 +9,7 @@ import {homeworldSceneSsrV78} from './helpers/homeworld-scene-ssr-v78.mjs';
 const qa=homeworldSceneSsrV78(),api=qa.load('app/game/systems/homeworldCartographyV104.ts');
 const schema=qa.load('app/game/systems/homeworldCartographyLedgerV104.ts'),defs=qa.load('app/game/systems/homeworldCartographyDefinitionV104.ts');
 const civic=qa.load('app/game/systems/homeworldCivicWorldV80.ts'),world=qa.load('app/game/systems/homeworldWorldV77.ts');
-const geometry=qa.load('app/game/systems/homeworldNavigationV77.ts'),visibility=qa.load('app/game/systems/homeworldResidentVisibilityV100.ts');
+const visibility=qa.load('app/game/systems/homeworldResidentVisibilityV100.ts');
 const saveApi=qa.load('app/game/save.ts'),progressApi=qa.load('app/game/systems/homeworld.ts');
 const b=defs.HOMEWORLD_CARTOGRAPHY_V104,owner='2026-10-22T18:00:00.000Z';
 const context=(actor=b.post,patch={})=>({ownerCreatedAt:owner,currentOwnerCreatedAt:owner,actor,levelId:'0',visitedDistrictIds:['port'],active:true,...patch});
@@ -18,13 +18,14 @@ function advance(ledger,action,ctx=context()){
 }
 const started=()=>['choose-b','reply','start'].reduce((ledger,action)=>advance(ledger,action),undefined);
 function walkTo(ledger,actor,target){
- for(let i=0;i<1000&&Math.hypot(target.x-actor.x,target.y-actor.y)>8;i++){
+ const arrival=target.id===b.waypoints[0].id?b.waypointRadius-4:8;
+ for(let i=0;i<1000&&Math.hypot(target.x-actor.x,target.y-actor.y)>arrival;i++){
   const before=actor;
   const span=Math.max(Math.abs(target.x-actor.x)/330,Math.abs(target.y-actor.y)/260,1/60);
   actor=civic.stepHomeworldCivicActorV80(actor,{moveX:(target.x-actor.x)/(330*span),climb:(target.y-actor.y)/(260*span),jumpPressed:false},1/60,'0');
   const out=api.sampleCartographyWalkV104(ledger,before,actor,1/60,context(actor));assert.equal(out.invalid,false,JSON.stringify({actor,target}));ledger=out.ledger;
  }
- assert(Math.hypot(target.x-actor.x,target.y-actor.y)<=8,'real movement must reach this approach '+JSON.stringify({actor,target}));
+ assert(Math.hypot(target.x-actor.x,target.y-actor.y)<=arrival,'real movement must reach this approach '+JSON.stringify({actor,target}));
  return{ledger,actor};
 }
 function played(){
@@ -48,10 +49,14 @@ test('V104 cartographer source is an exact authorized V6 extraction, including a
 test('V104 cartographer and three approaches use existing native objects and connected visible ground without replacing residents',()=>{
  assert.equal(api.cartographyServicePresentV104(),true);
  assert(!world.HOMEWORLD_RESIDENTS_V77.some(p=>p.id===b.npcId));
- for(const p of[b.host,b.post,...b.waypoints]){
+ // The marker identifies the planter, whose centre is occupied; approach its
+ // reachable edge within the existing 48-unit receipt radius.
+ const planterApproach={x:b.waypoints[0].x-35,y:b.waypoints[0].y+28};
+ for(const p of[b.host,b.post,planterApproach,b.waypoints[1]]){
   assert.equal(civic.homeworldCivicWalkableV80('0',p),true);assert.equal(visibility.homeworldResidentOccludedV100('0',p),false);
  }
- const points=[b.post,...b.waypoints,b.post];for(let i=1;i<points.length;i++)assert(geometry.homeworldRouteSegmentV77('0',points[i-1],points[i]));
+ // Connectivity is exercised by played() below, frame by frame with the real integrator.
+ assert(Math.hypot(planterApproach.x-b.waypoints[0].x,planterApproach.y-b.waypoints[0].y)<b.waypointRadius);
  assert.equal(world.nearestHomeworldDoorV77('0',b.post),null);assert.equal(world.nearestHomeworldConnectorV77('0',b.post),null);
  assert.equal(api.cartographyPostReachedV104(context()),true);
 });

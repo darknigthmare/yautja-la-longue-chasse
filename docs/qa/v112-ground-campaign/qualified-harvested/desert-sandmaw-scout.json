@@ -1,0 +1,1320 @@
+{
+  "missionId": "desert-sandmaw",
+  "armorId": "scout",
+  "success": true,
+  "result": {
+    "missionId": "desert-sandmaw",
+    "exploration": {
+      "abilityIds": [],
+      "openedGateIds": [],
+      "secretIds": [],
+      "discoveredRoomIds": [
+        "jungle-pilot-approach",
+        "jungle-pilot-underpass",
+        "jungle-pilot-module",
+        "jungle-pilot-ravine",
+        "jungle-pilot-river-caves",
+        "jungle-pilot-vey-camp",
+        "jungle-pilot-duel-extraction",
+        "ice-region-approach",
+        "ice-region-shaft",
+        "ice-region-return",
+        "desert-crypt-approach",
+        "desert-crypt-return"
+      ]
+    },
+    "difficultyId": "hunter",
+    "outcome": "success",
+    "score": 91,
+    "elapsedSeconds": 85,
+    "completedObjectiveIds": [
+      "desert-sandmaw-scan",
+      "desert-sandmaw-hunt",
+      "desert-sandmaw-recover",
+      "desert-sandmaw-boss",
+      "desert-sandmaw-extract"
+    ],
+    "honorEvents": [
+      {
+        "id": "scan-trace-1",
+        "label": "Signature étudiée",
+        "value": 3,
+        "kind": "scan"
+      },
+      {
+        "id": "honor-rule:desert-sandmaw-restraint",
+        "label": "Code rompu : Force mesurée",
+        "value": -15,
+        "kind": "violation"
+      },
+      {
+        "id": "kill-desert-sandmaw-foragers-0",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "scan-trace-2",
+        "label": "Signature étudiée",
+        "value": 3,
+        "kind": "scan"
+      },
+      {
+        "id": "kill-desert-sandmaw-foragers-1",
+        "label": "Mise à mort rapprochée",
+        "value": 3,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "kill-desert-sandmaw-foragers-4",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "scan-trace-3",
+        "label": "Signature étudiée",
+        "value": 3,
+        "kind": "scan"
+      },
+      {
+        "id": "objective-desert-sandmaw-scan",
+        "label": "Calibrer le masque sismique",
+        "value": 20,
+        "kind": "objective"
+      },
+      {
+        "id": "kill-desert-sandmaw-foragers-2",
+        "label": "Mise à mort rapprochée",
+        "value": 3,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "kill-desert-sandmaw-foragers-3",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "recover-technology-1",
+        "label": "Technologie du clan sécurisée",
+        "value": 5,
+        "kind": "objective"
+      },
+      {
+        "id": "kill-desert-sandmaw-territorials-1",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "objective-desert-sandmaw-hunt",
+        "label": "Écarter les rôdeurs de silice",
+        "value": 25,
+        "kind": "objective"
+      },
+      {
+        "id": "kill-desert-sandmaw-territorials-2",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "recover-technology-2",
+        "label": "Technologie du clan sécurisée",
+        "value": 5,
+        "kind": "objective"
+      },
+      {
+        "id": "objective-desert-sandmaw-recover",
+        "label": "Récupérer les balises englouties",
+        "value": 25,
+        "kind": "objective"
+      },
+      {
+        "id": "objective-desert-sandmaw-boss",
+        "label": "Affronter Matriarche Sandmaw",
+        "value": 55,
+        "kind": "objective"
+      },
+      {
+        "id": "boss-honorable-kill",
+        "label": "Victoire sur Matriarche Sandmaw",
+        "value": 10,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "trophy-claimed",
+        "label": "Mandibules de Sandmaw",
+        "value": 12,
+        "kind": "objective"
+      },
+      {
+        "id": "objective-desert-sandmaw-extract",
+        "label": "Rejoindre le faisceau d'extraction",
+        "value": 15,
+        "kind": "objective"
+      },
+      {
+        "id": "honor-rule:desert-sandmaw-study",
+        "label": "Code respecté : Cartographier avant de frapper",
+        "value": 20,
+        "kind": "objective"
+      },
+      {
+        "id": "honor-rule:desert-sandmaw-survive",
+        "label": "Code respecté : Chasseur inébranlable",
+        "value": 20,
+        "kind": "objective"
+      }
+    ],
+    "trophyQuality": "elite",
+    "trophyClaims": [
+      {
+        "id": "desert-sandmaw-apex-mvyt0ifv-131-i6rq6bxq",
+        "definitionId": "trophy-desert-sandmaw",
+        "targetName": "Matriarche Sandmaw",
+        "targetKind": "beast",
+        "partId": "skull",
+        "quality": "elite",
+        "condition": "intact"
+      }
+    ],
+    "specimensV112": [
+      {
+        "id": "desert-sandmaw:0:desert-sandmaw-foragers-3:bone",
+        "sourceId": "desert-sandmaw:0:desert-sandmaw-foragers-3",
+        "speciesId": "common--wandering-xeno-drone",
+        "partId": "bone",
+        "label": "Segment caudal de xénomorphe",
+        "quality": 72,
+        "massKg": 1.2,
+        "volumeUnits": 2,
+        "stage": "raw"
+      },
+      {
+        "id": "desert-sandmaw:0:desert-sandmaw-foragers-4:hide",
+        "sourceId": "desert-sandmaw:0:desert-sandmaw-foragers-4",
+        "speciesId": "serekh-9--dust-jackal",
+        "partId": "hide",
+        "label": "Pelage filtrant",
+        "quality": 26,
+        "massKg": 1.8,
+        "volumeUnits": 3,
+        "stage": "raw"
+      },
+      {
+        "id": "desert-sandmaw:0:desert-sandmaw-foragers-4:bone",
+        "sourceId": "desert-sandmaw:0:desert-sandmaw-foragers-4",
+        "speciesId": "serekh-9--dust-jackal",
+        "partId": "bone",
+        "label": "Os nasal secondaire",
+        "quality": 54,
+        "massKg": 1.2,
+        "volumeUnits": 2,
+        "stage": "raw"
+      }
+    ],
+    "toolUseIdsV112": [
+      "desert-sandmaw:0:flay:desert-sandmaw-foragers-3",
+      "desert-sandmaw:0:harvest-bone:desert-sandmaw-foragers-3",
+      "desert-sandmaw:0:flay:desert-sandmaw-foragers-4",
+      "desert-sandmaw:0:harvest-hide:desert-sandmaw-foragers-4",
+      "desert-sandmaw:0:harvest-bone:desert-sandmaw-foragers-4"
+    ],
+    "harvestEncounterRunV112": 0,
+    "kills": 8,
+    "scans": 4,
+    "discoveredEnemyIds": [
+      "serekh-9--dune-raider"
+    ],
+    "secondWindUsed": false,
+    "completedAt": "2026-11-02T05:14:05.813Z"
+  },
+  "climbFrames": 0,
+  "swingFrames": 0,
+  "authoredCanopyContactFrames": 0,
+  "maxX": 7988.999999999991,
+  "terminal": {
+    "t": 85.35,
+    "phase": "finished",
+    "x": 7989,
+    "y": 173,
+    "vx": 0,
+    "vy": 0,
+    "health": 78.05,
+    "stamina": 115,
+    "energy": 110,
+    "kills": 7,
+    "boss": {
+      "active": true,
+      "alive": false,
+      "health": 0,
+      "x": 7338.6205173221
+    },
+    "scans": [
+      true,
+      true,
+      true
+    ],
+    "recoveries": [
+      true,
+      true
+    ],
+    "objectives": [
+      "desert-sandmaw-scan",
+      "desert-sandmaw-hunt",
+      "desert-sandmaw-recover",
+      "desert-sandmaw-boss",
+      "desert-sandmaw-extract"
+    ],
+    "message": "Objectif accompli : Rejoindre le faisceau d'extraction",
+    "grounded": false,
+    "climbing": false,
+    "load": {
+      "massKg": 4.2,
+      "volumeUnits": 7,
+      "capacityMassKg": 24,
+      "capacityVolumeUnits": 18,
+      "ratio": 0.3888888888888889,
+      "overloaded": false,
+      "movementMultiplier": 0.8755555555555555,
+      "jumpMultiplier": 0.9377777777777778,
+      "climbStaminaMultiplier": 1.2333333333333334,
+      "noiseMultiplier": 1.3111111111111111
+    },
+    "energyWeaponsLocked": false,
+    "weaponSlot": 1,
+    "threats": [
+      {
+        "id": "desert-sandmaw-territorials-0",
+        "x": 4971.0591157463205,
+        "y": 389.3451779271882,
+        "health": 70.01393199999998,
+        "width": 88,
+        "height": 107
+      },
+      {
+        "id": "desert-sandmaw-territorials-3",
+        "x": 5069.071120446231,
+        "y": 530,
+        "health": 45.981269000000026,
+        "width": 66,
+        "height": 94
+      },
+      {
+        "id": "desert-sandmaw-guardians-0",
+        "x": 5019.448480000002,
+        "y": 535,
+        "health": 45.345201,
+        "width": 106,
+        "height": 89
+      },
+      {
+        "id": "desert-sandmaw-guardians-1",
+        "x": 4568.999,
+        "y": 527,
+        "health": 227.54999999999998,
+        "width": 68,
+        "height": 97
+      },
+      {
+        "id": "desert-sandmaw-guardians-2",
+        "x": 4983.126975474237,
+        "y": 530,
+        "health": 202.95,
+        "width": 66,
+        "height": 94
+      },
+      {
+        "id": "extraction-desert-sandmaw-1406-0",
+        "x": 7858.2647599999345,
+        "y": 535,
+        "health": 227.54999999999998,
+        "width": 106,
+        "height": 89
+      },
+      {
+        "id": "extraction-desert-sandmaw-1407-1",
+        "x": 7862.187026666579,
+        "y": 542,
+        "health": 202.95,
+        "width": 98,
+        "height": 82
+      },
+      {
+        "id": "extraction-desert-sandmaw-1408-2",
+        "x": 7733.25,
+        "y": 524,
+        "health": 227.54999999999998,
+        "width": 108,
+        "height": 100
+      }
+    ]
+  },
+  "admission": {
+    "missionId": "desert-sandmaw",
+    "armorId": "scout",
+    "loadout": {
+      "armorId": "scout",
+      "weaponIds": [
+        "wristblades",
+        "plasma-caster"
+      ],
+      "gearIds": [
+        "motion-sensor",
+        "audio-decoy"
+      ]
+    },
+    "inventory": {
+      "fieldToolIds": [
+        "flaying-tool"
+      ],
+      "harvestV112": {
+        "version": 1,
+        "specimens": [],
+        "toolCondition": 100,
+        "toolUseIds": [],
+        "jobs": [],
+        "settledEncounterRuns": {
+          "jungle-vey": 0,
+          "ice-cryostalker": 0
+        },
+        "archive": []
+      },
+      "unlockedWeaponIds": [
+        "wristblades",
+        "combistick",
+        "plasma-caster",
+        "yautja-bow",
+        "smart-disc"
+      ],
+      "unlockedGearIds": [
+        "motion-sensor",
+        "audio-decoy",
+        "netgun",
+        "snare"
+      ],
+      "unlockedArmorIds": [
+        "hunter",
+        "scout",
+        "berserker"
+      ],
+      "weaponUpgrades": {
+        "wristblades": 0,
+        "combistick": 0,
+        "plasma-caster": 0,
+        "smart-disc": 0,
+        "yautja-bow": 0
+      },
+      "gearUpgrades": {
+        "netgun": 0,
+        "motion-sensor": 0,
+        "audio-decoy": 0,
+        "snare": 0
+      },
+      "armorUpgrades": {
+        "scout": 0,
+        "hunter": 0,
+        "berserker": 0
+      }
+    },
+    "toolOrigin": {
+      "path": "docs/qa/v112-ground-campaign/tool-origin.json",
+      "sha256": "0b489bc90df80e0643be22c971d0412ffbff434805812c75fc00f2690beef63b",
+      "missions": [
+        {
+          "missionId": "jungle-vey",
+          "outcome": "success",
+          "score": 98,
+          "elapsedSeconds": 61
+        },
+        {
+          "missionId": "ice-cryostalker",
+          "outcome": "success",
+          "score": 96,
+          "elapsedSeconds": 56
+        }
+      ],
+      "balanceBefore": 806,
+      "spentClanMarks": 120,
+      "balanceAfter": 686
+    },
+    "difficulty": "hunter",
+    "encounterRun": 0,
+    "random": {
+      "algorithm": "xorshift32",
+      "seed": 17965094
+    },
+    "spawn": {
+      "x": 225,
+      "y": 508
+    },
+    "initial": {
+      "t": 0,
+      "phase": "tracking",
+      "x": 225,
+      "y": 508,
+      "vx": 0,
+      "vy": 0,
+      "health": 125,
+      "stamina": 115,
+      "energy": 110,
+      "kills": 0,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 1000,
+        "x": 6895.2
+      },
+      "scans": [
+        false,
+        false,
+        false
+      ],
+      "recoveries": [
+        false,
+        false
+      ],
+      "objectives": [],
+      "message": "La chasse commence. Localise les signatures.",
+      "grounded": true,
+      "climbing": false,
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "desert-sandmaw-foragers-0",
+          "x": 1536.6595276650041,
+          "y": 534,
+          "health": 97.02,
+          "width": 98,
+          "height": 90
+        }
+      ]
+    },
+    "world": {
+      "width": 8400,
+      "bossArena": {
+        "x": 6060,
+        "y": 272,
+        "width": 1740,
+        "height": 352
+      },
+      "extraction": {
+        "x": 8025,
+        "y": 624
+      },
+      "platforms": [
+        {
+          "x": 770,
+          "y": 300,
+          "width": 350,
+          "height": 24,
+          "id": "desert-crypt-upper-floor",
+          "material": "stone",
+          "routeId": "desert-crypt-route",
+          "collision": "solid",
+          "noiseMultiplier": 1.18,
+          "trackPersistence": 0.12
+        },
+        {
+          "x": 1150,
+          "y": 390,
+          "width": 240,
+          "height": 24,
+          "id": "desert-crypt-vault-underfloor",
+          "material": "stone",
+          "routeId": "desert-crypt-route",
+          "collision": "solid",
+          "noiseMultiplier": 1.18,
+          "trackPersistence": 0.12
+        },
+        {
+          "x": 1390,
+          "y": 390,
+          "width": 170,
+          "height": 24,
+          "id": "desert-crypt-vault-floor",
+          "material": "stone",
+          "routeId": "desert-crypt-route",
+          "collision": "solid",
+          "noiseMultiplier": 1.18,
+          "trackPersistence": 0.12
+        },
+        {
+          "x": 1680,
+          "y": 0,
+          "width": 28,
+          "height": 414,
+          "id": "desert-crypt-outer-wall",
+          "material": "stone",
+          "routeId": "desert-crypt-route",
+          "collision": "solid",
+          "noiseMultiplier": 1.18,
+          "trackPersistence": 0.12
+        },
+        {
+          "x": 1120,
+          "y": 0,
+          "width": 30,
+          "height": 414,
+          "id": "desert-tether-gate",
+          "material": "stone",
+          "routeId": "desert-crypt-route",
+          "collision": "solid",
+          "noiseMultiplier": 1.18,
+          "trackPersistence": 0.12
+        },
+        {
+          "x": 1560,
+          "y": 390,
+          "width": 120,
+          "height": 24,
+          "id": "desert-flooded-well",
+          "material": "stone",
+          "routeId": "desert-crypt-route",
+          "collision": "solid",
+          "noiseMultiplier": 1.18,
+          "trackPersistence": 0.12
+        }
+      ],
+      "hazards": [
+        {
+          "id": "v-steam-center",
+          "x": 4035,
+          "y": 310,
+          "width": 495,
+          "height": 314,
+          "kind": "heat-burst",
+          "routeId": "vent-flank",
+          "damagePerSecond": 16,
+          "movementMultiplier": 0.82,
+          "noisePerSecond": 0.7,
+          "trackMultiplier": 0.12,
+          "revealsCloak": true,
+          "telegraphSeconds": 1,
+          "cycle": {
+            "periodSeconds": 7,
+            "activeSeconds": 1.6,
+            "phaseSeconds": 0.7
+          }
+        },
+        {
+          "id": "v-ash-east",
+          "x": 4980,
+          "y": 210,
+          "width": 1080,
+          "height": 414,
+          "kind": "glass-storm",
+          "routeId": "sanctum-floor",
+          "damagePerSecond": 4,
+          "movementMultiplier": 0.76,
+          "noisePerSecond": 0.38,
+          "trackMultiplier": 1.8,
+          "revealsCloak": true,
+          "telegraphSeconds": 1.8,
+          "cycle": {
+            "periodSeconds": 14,
+            "activeSeconds": 5,
+            "phaseSeconds": 3
+          }
+        },
+        {
+          "id": "v-arena-vents",
+          "x": 6450,
+          "y": 330,
+          "width": 1050,
+          "height": 294,
+          "kind": "sand-collapse",
+          "routeId": "sanctum-floor",
+          "damagePerSecond": 7,
+          "movementMultiplier": 0.43,
+          "noisePerSecond": 0.36,
+          "trackMultiplier": 2.2,
+          "revealsCloak": false,
+          "telegraphSeconds": 1.25,
+          "cycle": {
+            "periodSeconds": 10,
+            "activeSeconds": 2.4,
+            "phaseSeconds": 3
+          }
+        },
+        {
+          "id": "feature-desert-3-ecology",
+          "x": 2761.5,
+          "y": 590,
+          "width": 390,
+          "height": 34,
+          "kind": "sand-collapse",
+          "routeId": "sanctum-floor",
+          "damagePerSecond": 7,
+          "movementMultiplier": 0.43,
+          "noisePerSecond": 0.36,
+          "trackMultiplier": 2.2,
+          "revealsCloak": false,
+          "telegraphSeconds": 1.25,
+          "cycle": {
+            "periodSeconds": 10,
+            "activeSeconds": 2.4,
+            "phaseSeconds": 0
+          }
+        },
+        {
+          "x": 1100,
+          "y": 184,
+          "width": 310,
+          "height": 116,
+          "id": "desert-crypt-ability-hazard",
+          "kind": "sand-collapse",
+          "routeId": "desert-crypt-route",
+          "damagePerSecond": 12,
+          "movementMultiplier": 0.7,
+          "noisePerSecond": 0.66,
+          "trackMultiplier": 0.5,
+          "revealsCloak": false,
+          "telegraphSeconds": 1,
+          "cycle": {
+            "periodSeconds": 7.5,
+            "activeSeconds": 1.6,
+            "phaseSeconds": 0.5
+          }
+        }
+      ]
+    },
+    "scanNodes": [
+      {
+        "id": "trace-1",
+        "x": 924,
+        "y": 588,
+        "scanned": false
+      },
+      {
+        "id": "trace-2",
+        "x": 2016,
+        "y": 395,
+        "scanned": false
+      },
+      {
+        "id": "trace-3",
+        "x": 3108,
+        "y": 588,
+        "scanned": false
+      }
+    ],
+    "recoveryNodes": [
+      {
+        "id": "technology-1",
+        "x": 3922.999,
+        "y": 590,
+        "recovered": false
+      },
+      {
+        "id": "technology-2",
+        "x": 4717,
+        "y": 590,
+        "recovered": false
+      }
+    ]
+  },
+  "events": [
+    {
+      "t": 8.367,
+      "phase": "target",
+      "x": 2666.49,
+      "y": 508,
+      "vx": 145.18,
+      "vy": 0,
+      "health": 125,
+      "stamina": 111.37,
+      "energy": 28.13,
+      "kills": 3,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 1000,
+        "x": 6895.2
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        false,
+        false
+      ],
+      "objectives": [
+        "desert-sandmaw-scan"
+      ],
+      "message": "Matriarche Sandmaw peut désormais être pisté.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0,
+        "volumeUnits": 0,
+        "capacityMassKg": 24,
+        "capacityVolumeUnits": 18,
+        "ratio": 0,
+        "overloaded": false,
+        "movementMultiplier": 1,
+        "jumpMultiplier": 1,
+        "climbStaminaMultiplier": 1,
+        "noiseMultiplier": 1
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "desert-sandmaw-foragers-2",
+          "x": 3077.890679999987,
+          "y": 530,
+          "health": 97.02,
+          "width": 66,
+          "height": 94
+        },
+        {
+          "id": "desert-sandmaw-foragers-3",
+          "x": 3622.936350659777,
+          "y": 528,
+          "health": 120.53999999999999,
+          "width": 114,
+          "height": 96
+        },
+        {
+          "id": "desert-sandmaw-territorials-0",
+          "x": 4863.999,
+          "y": 411,
+          "health": 157.61999999999998,
+          "width": 88,
+          "height": 107
+        }
+      ]
+    },
+    {
+      "t": 70.517,
+      "phase": "trophy",
+      "x": 7211.84,
+      "y": 508,
+      "vx": 0,
+      "vy": 0,
+      "health": 79.1,
+      "stamina": 108.2,
+      "energy": 12.77,
+      "kills": 7,
+      "boss": {
+        "active": true,
+        "alive": false,
+        "health": 0,
+        "x": 7338.6205173221
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true,
+        true
+      ],
+      "objectives": [
+        "desert-sandmaw-scan",
+        "desert-sandmaw-hunt",
+        "desert-sandmaw-recover",
+        "desert-sandmaw-boss"
+      ],
+      "message": "Matriarche Sandmaw est vaincu. Intégrité du trophée 80 %. Réclame le trophée avec [E].",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 4.2,
+        "volumeUnits": 7,
+        "capacityMassKg": 24,
+        "capacityVolumeUnits": 18,
+        "ratio": 0.3888888888888889,
+        "overloaded": false,
+        "movementMultiplier": 0.8755555555555555,
+        "jumpMultiplier": 0.9377777777777778,
+        "climbStaminaMultiplier": 1.2333333333333334,
+        "noiseMultiplier": 1.3111111111111111
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "desert-sandmaw-territorials-0",
+          "x": 4936.908599999977,
+          "y": 390.8407438083211,
+          "health": 70.01393199999998,
+          "width": 88,
+          "height": 107
+        },
+        {
+          "id": "desert-sandmaw-territorials-3",
+          "x": 5515.999,
+          "y": 530,
+          "health": 45.981269000000026,
+          "width": 66,
+          "height": 94
+        },
+        {
+          "id": "desert-sandmaw-guardians-0",
+          "x": 5475.999,
+          "y": 535,
+          "health": 45.345201,
+          "width": 106,
+          "height": 89
+        },
+        {
+          "id": "desert-sandmaw-guardians-1",
+          "x": 4568.999,
+          "y": 527,
+          "health": 227.54999999999998,
+          "width": 68,
+          "height": 97
+        },
+        {
+          "id": "desert-sandmaw-guardians-2",
+          "x": 5465.72551333326,
+          "y": 530,
+          "health": 202.95,
+          "width": 66,
+          "height": 94
+        }
+      ]
+    },
+    {
+      "t": 76.35,
+      "phase": "extraction",
+      "x": 7385.02,
+      "y": 508,
+      "vx": 0,
+      "vy": 0,
+      "health": 79.1,
+      "stamina": 115,
+      "energy": 82.77,
+      "kills": 7,
+      "boss": {
+        "active": true,
+        "alive": false,
+        "health": 0,
+        "x": 7338.6205173221
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true,
+        true
+      ],
+      "objectives": [
+        "desert-sandmaw-scan",
+        "desert-sandmaw-hunt",
+        "desert-sandmaw-recover",
+        "desert-sandmaw-boss"
+      ],
+      "message": "Mandibules de Sandmaw : prise récupérée et scellée. Le chasseur célèbre sa victoire ; vaisseau en approche.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 4.2,
+        "volumeUnits": 7,
+        "capacityMassKg": 24,
+        "capacityVolumeUnits": 18,
+        "ratio": 0.3888888888888889,
+        "overloaded": false,
+        "movementMultiplier": 0.8755555555555555,
+        "jumpMultiplier": 0.9377777777777778,
+        "climbStaminaMultiplier": 1.2333333333333334,
+        "noiseMultiplier": 1.3111111111111111
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "desert-sandmaw-territorials-0",
+          "x": 4714.1399247764075,
+          "y": 400.90446144151247,
+          "health": 70.01393199999998,
+          "width": 88,
+          "height": 107
+        },
+        {
+          "id": "desert-sandmaw-territorials-3",
+          "x": 4859.157195586781,
+          "y": 530,
+          "health": 45.981269000000026,
+          "width": 66,
+          "height": 94
+        },
+        {
+          "id": "desert-sandmaw-guardians-0",
+          "x": 5475.999,
+          "y": 535,
+          "health": 45.345201,
+          "width": 106,
+          "height": 89
+        },
+        {
+          "id": "desert-sandmaw-guardians-1",
+          "x": 4568.999,
+          "y": 527,
+          "health": 227.54999999999998,
+          "width": 68,
+          "height": 97
+        },
+        {
+          "id": "desert-sandmaw-guardians-2",
+          "x": 4861.749866539654,
+          "y": 530,
+          "health": 202.95,
+          "width": 66,
+          "height": 94
+        },
+        {
+          "id": "extraction-desert-sandmaw-1406-0",
+          "x": 7528.87208,
+          "y": 535,
+          "health": 227.54999999999998,
+          "width": 106,
+          "height": 89
+        }
+      ]
+    },
+    {
+      "t": 85.35,
+      "phase": "finished",
+      "x": 7989,
+      "y": 173,
+      "vx": 0,
+      "vy": 0,
+      "health": 78.05,
+      "stamina": 115,
+      "energy": 110,
+      "kills": 7,
+      "boss": {
+        "active": true,
+        "alive": false,
+        "health": 0,
+        "x": 7338.6205173221
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true,
+        true
+      ],
+      "objectives": [
+        "desert-sandmaw-scan",
+        "desert-sandmaw-hunt",
+        "desert-sandmaw-recover",
+        "desert-sandmaw-boss",
+        "desert-sandmaw-extract"
+      ],
+      "message": "Objectif accompli : Rejoindre le faisceau d'extraction",
+      "grounded": false,
+      "climbing": false,
+      "load": {
+        "massKg": 4.2,
+        "volumeUnits": 7,
+        "capacityMassKg": 24,
+        "capacityVolumeUnits": 18,
+        "ratio": 0.3888888888888889,
+        "overloaded": false,
+        "movementMultiplier": 0.8755555555555555,
+        "jumpMultiplier": 0.9377777777777778,
+        "climbStaminaMultiplier": 1.2333333333333334,
+        "noiseMultiplier": 1.3111111111111111
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "desert-sandmaw-territorials-0",
+          "x": 4971.0591157463205,
+          "y": 389.3451779271882,
+          "health": 70.01393199999998,
+          "width": 88,
+          "height": 107
+        },
+        {
+          "id": "desert-sandmaw-territorials-3",
+          "x": 5069.071120446231,
+          "y": 530,
+          "health": 45.981269000000026,
+          "width": 66,
+          "height": 94
+        },
+        {
+          "id": "desert-sandmaw-guardians-0",
+          "x": 5019.448480000002,
+          "y": 535,
+          "health": 45.345201,
+          "width": 106,
+          "height": 89
+        },
+        {
+          "id": "desert-sandmaw-guardians-1",
+          "x": 4568.999,
+          "y": 527,
+          "health": 227.54999999999998,
+          "width": 68,
+          "height": 97
+        },
+        {
+          "id": "desert-sandmaw-guardians-2",
+          "x": 4983.126975474237,
+          "y": 530,
+          "health": 202.95,
+          "width": 66,
+          "height": 94
+        },
+        {
+          "id": "extraction-desert-sandmaw-1406-0",
+          "x": 7858.2647599999345,
+          "y": 535,
+          "health": 227.54999999999998,
+          "width": 106,
+          "height": 89
+        },
+        {
+          "id": "extraction-desert-sandmaw-1407-1",
+          "x": 7862.187026666579,
+          "y": 542,
+          "health": 202.95,
+          "width": 98,
+          "height": 82
+        },
+        {
+          "id": "extraction-desert-sandmaw-1408-2",
+          "x": 7733.25,
+          "y": 524,
+          "health": 227.54999999999998,
+          "width": 108,
+          "height": 100
+        }
+      ]
+    }
+  ],
+  "traceFrames": 434,
+  "ticksExecuted": 5121,
+  "harvestActions": [
+    {
+      "tick": 1050,
+      "t": 17.500000000000288,
+      "action": "open",
+      "corpseId": "desert-sandmaw-foragers-3",
+      "sourceEnemyId": "common--wandering-xeno-drone",
+      "operation": null
+    },
+    {
+      "tick": 1051,
+      "t": 17.516666666666953,
+      "action": "flay",
+      "corpseId": "desert-sandmaw-foragers-3",
+      "sourceEnemyId": "common--wandering-xeno-drone",
+      "operation": {
+        "corpseId": "desert-sandmaw-foragers-3",
+        "action": "flay",
+        "elapsed": 0,
+        "startHealth": 100.91666666666667,
+        "supportId": null,
+        "confirmedDishonor": false
+      }
+    },
+    {
+      "tick": 1243,
+      "t": 20.71666666666677,
+      "action": "harvest-bone",
+      "corpseId": "desert-sandmaw-foragers-3",
+      "sourceEnemyId": "common--wandering-xeno-drone",
+      "operation": {
+        "corpseId": "desert-sandmaw-foragers-3",
+        "action": "harvest-bone",
+        "elapsed": 0,
+        "startHealth": 100.91666666666667,
+        "supportId": null,
+        "confirmedDishonor": false
+      }
+    },
+    {
+      "tick": 1698,
+      "t": 28.299999999999674,
+      "action": "open",
+      "corpseId": "desert-sandmaw-foragers-4",
+      "sourceEnemyId": "serekh-9--dust-jackal",
+      "operation": null
+    },
+    {
+      "tick": 1699,
+      "t": 28.31666666666634,
+      "action": "flay",
+      "corpseId": "desert-sandmaw-foragers-4",
+      "sourceEnemyId": "serekh-9--dust-jackal",
+      "operation": {
+        "corpseId": "desert-sandmaw-foragers-4",
+        "action": "flay",
+        "elapsed": 0,
+        "startHealth": 100.91666666666667,
+        "supportId": null,
+        "confirmedDishonor": false
+      }
+    },
+    {
+      "tick": 1904,
+      "t": 31.733333333332812,
+      "action": "harvest-hide",
+      "corpseId": "desert-sandmaw-foragers-4",
+      "sourceEnemyId": "serekh-9--dust-jackal",
+      "operation": {
+        "corpseId": "desert-sandmaw-foragers-4",
+        "action": "harvest-hide",
+        "elapsed": 0,
+        "startHealth": 100.91666666666667,
+        "supportId": null,
+        "confirmedDishonor": false
+      }
+    },
+    {
+      "tick": 2155,
+      "t": 35.91666666666591,
+      "action": "harvest-bone",
+      "corpseId": "desert-sandmaw-foragers-4",
+      "sourceEnemyId": "serekh-9--dust-jackal",
+      "operation": {
+        "corpseId": "desert-sandmaw-foragers-4",
+        "action": "harvest-bone",
+        "elapsed": 0,
+        "startHealth": 100.91666666666667,
+        "supportId": null,
+        "confirmedDishonor": false
+      }
+    }
+  ],
+  "peakLoadRatio": 0.3888888888888889,
+  "peakSpecimens": [
+    {
+      "id": "desert-sandmaw:0:desert-sandmaw-foragers-3:bone",
+      "sourceId": "desert-sandmaw:0:desert-sandmaw-foragers-3",
+      "speciesId": "common--wandering-xeno-drone",
+      "partId": "bone",
+      "label": "Segment caudal de xénomorphe",
+      "quality": 72,
+      "massKg": 1.2,
+      "volumeUnits": 2,
+      "stage": "raw"
+    },
+    {
+      "id": "desert-sandmaw:0:desert-sandmaw-foragers-4:hide",
+      "sourceId": "desert-sandmaw:0:desert-sandmaw-foragers-4",
+      "speciesId": "serekh-9--dust-jackal",
+      "partId": "hide",
+      "label": "Pelage filtrant",
+      "quality": 26,
+      "massKg": 1.8,
+      "volumeUnits": 3,
+      "stage": "raw"
+    },
+    {
+      "id": "desert-sandmaw:0:desert-sandmaw-foragers-4:bone",
+      "sourceId": "desert-sandmaw:0:desert-sandmaw-foragers-4",
+      "speciesId": "serekh-9--dust-jackal",
+      "partId": "bone",
+      "label": "Os nasal secondaire",
+      "quality": 54,
+      "massKg": 1.2,
+      "volumeUnits": 2,
+      "stage": "raw"
+    }
+  ],
+  "firstLoadAt": {
+    "tick": 1454,
+    "t": 24.25,
+    "phase": "target",
+    "x": 3542.78,
+    "y": 508,
+    "vx": -62,
+    "vy": 0,
+    "health": 100.92,
+    "stamina": 115,
+    "energy": 110,
+    "kills": 6,
+    "boss": {
+      "active": false,
+      "alive": true,
+      "health": 1000,
+      "x": 6895.2
+    },
+    "scans": [
+      true,
+      true,
+      true
+    ],
+    "recoveries": [
+      true,
+      false
+    ],
+    "objectives": [
+      "desert-sandmaw-scan",
+      "desert-sandmaw-hunt"
+    ],
+    "message": "Geste inscrit dans la trace de cette chasse.",
+    "grounded": true,
+    "climbing": false,
+    "load": {
+      "massKg": 1.2,
+      "volumeUnits": 2,
+      "capacityMassKg": 24,
+      "capacityVolumeUnits": 18,
+      "ratio": 0.1111111111111111,
+      "overloaded": false,
+      "movementMultiplier": 0.9644444444444444,
+      "jumpMultiplier": 0.9822222222222222,
+      "climbStaminaMultiplier": 1.0666666666666667,
+      "noiseMultiplier": 1.0888888888888888
+    },
+    "energyWeaponsLocked": false,
+    "weaponSlot": 1,
+    "threats": [
+      {
+        "id": "desert-sandmaw-territorials-0",
+        "x": 4723.035799999972,
+        "y": 434.72200985122237,
+        "health": 157.61999999999998,
+        "width": 88,
+        "height": 107
+      },
+      {
+        "id": "desert-sandmaw-territorials-2",
+        "x": 4657.267885687628,
+        "y": 504,
+        "health": 174.66,
+        "width": 84,
+        "height": 120
+      },
+      {
+        "id": "desert-sandmaw-territorials-3",
+        "x": 4895.946000000002,
+        "y": 530,
+        "health": 140.58,
+        "width": 66,
+        "height": 94
+      }
+    ]
+  },
+  "replay": {
+    "verified": true,
+    "ticks": 5121,
+    "terminalSha256": "62a442ba59623c5622a5244d6e779cbd0b0d05fc245b903abb08b44a6646af00"
+  },
+  "rawData": {
+    "archive": "../native-runs-raw.tar.gz",
+    "member": "qualified-harvested/desert-sandmaw-scout.json",
+    "sha256": "be05a33399e8964526cf7498e59a702bc4825e8ba9a9727681abe572f206022b"
+  }
+}

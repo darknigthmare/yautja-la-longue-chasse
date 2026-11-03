@@ -1,0 +1,60 @@
+name: Outer Ops pace reconciliation
+on:
+  pull_request:
+    branches: [feat/v146-clan-war-evidence-20261101]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /package.json
+            /package-lock.json
+            /tsconfig*.json
+            /eslint.config.mjs
+            /app/game/
+            /tests/
+            /scripts/qa-outer-pace-browser.mjs
+            /types/
+            /docs/clan-war-v146/Yautja_OuterOps_Reconciliation_V144_V146.xlsx
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Test source behaviour, historical archives, existing modes
+        run: |
+          node --experimental-strip-types --test --test-concurrency=1 \
+            tests/clan-war-operations-v115.test.mjs \
+            tests/clan-war-parallel-modes-v135.test.mjs \
+            tests/clan-war-parallel-modes-v136.test.mjs \
+            tests/clan-war-four-modes-v{137,138,139,140,141,142,143,144,145}.test.mjs \
+            tests/clan-war-outer-pace-reconcile.test.mjs \
+            tests/clan-war-council-v146.test.mjs
+      - run: npx --no-install tsc --noEmit -p tsconfig.clan-war-v146.json
+      - name: Lint changed source
+        run: |
+          npx --no-install eslint app/game/ClanWarOperationsV115.tsx \
+            app/game/systems/clanWarOperationsV115.ts \
+            app/game/systems/clanWarOuterPaceV144.ts \
+            app/game/systems/clanWarOuterRouteProgressV140.ts \
+            app/game/systems/clanWarOuterRerouteV144.ts \
+            app/game/systems/clanWarOuterIncidentV143.ts \
+            app/game/systems/clanWarParallelModesV137.ts \
+            app/game/systems/clanWarParallelModesV138.ts \
+            tests/clan-war-outer-pace-reconcile.test.mjs scripts/qa-outer-pace-browser.mjs
+      - name: Install Chromium
+        run: npx --no-install playwright-core install --with-deps chromium
+      - name: Exercise paid order, reload and recall
+        run: |
+          export CHROMIUM_EXECUTABLE_PATH="$(node -e 'process.stdout.write(require("playwright-core").chromium.executablePath())')"
+          node scripts/qa-outer-pace-browser.mjs
+      - name: Check follow-up is a valid Excel file
+        run: |
+          python3 -c "import zipfile; p='docs/clan-war-v146/Yautja_OuterOps_Reconciliation_V144_V146.xlsx'; z=zipfile.ZipFile(p); assert z.testzip() is None and 'xl/workbook.xml' in z.namelist()"

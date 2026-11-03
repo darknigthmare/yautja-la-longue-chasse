@@ -1,0 +1,52 @@
+name: V130 Clan War Excel traceability & source guards
+on:
+  push:
+    branches: [feat/v130-clan-war-production-excel-qa-20261030]
+  pull_request:
+    branches: [feat/v129-w3-rts24-source-objectives]
+    paths:
+      - 'docs/clan-war-v130/**'
+      - 'tests/clan-war-production-v130.test.mjs'
+      - 'app/game/systems/clanWarRtsSourceMissionsV129.ts'
+      - '.github/workflows/clan-war-v130.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  production-ledger:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Sparse checkout production traceability and source
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /package.json
+            /package-lock.json
+            /eslint.config.mjs
+            /app/game/clanWarBibleV6Source.json
+            /app/game/clanWarV85Source.json
+            /app/game/systems/clanWarBibleV6.ts
+            /app/game/systems/clanWarV85Data.ts
+            /app/game/systems/clanWarSourceMapsV128.ts
+            /app/game/systems/clanWarRtsSourceMissionsV129.ts
+            /app/game/systems/clanWarVariantAtlasV120.ts
+            /app/game/data/clanWarOriginalPlacesV120.json
+            /app/game/data/clanWarLoreFramesV120.json
+            /app/game/data/clanWarHomageAssaultV120.json
+            /app/game/data/clanWarHomageOuterV120.json
+            /app/game/data/clanWarHomageStealthV120.json
+            /app/game/data/clanWarHomageRtsV120.json
+            /docs/clan-war-v130/
+            /tests/clan-war-production-v130.test.mjs
+      - name: Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with: {node-version: '22'}
+      - name: Install reproducible deps
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Check exact committed XLSX and 1200/24/125 source contracts
+        run: node --test --test-reporter=spec tests/clan-war-production-v130.test.mjs
+      - name: Lint source guard and workbook tests
+        run: npx --no-install eslint app/game/systems/clanWarRtsSourceMissionsV129.ts tests/clan-war-production-v130.test.mjs

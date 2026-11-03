@@ -6,6 +6,7 @@ import os from 'node:os';
 import {execFileSync} from 'node:child_process';
 import {validateExecutedResultV112, verifyExecutedSourcesV112, verifyRuntimeCommitV112} from '../scripts/publish-validation-v112.mjs';
 import {V112_RECIPES, V112_JOURNEYS, verifyNativeInputsV112, fingerprintV112} from '../scripts/snapshot-runtime-v112.mjs';
+import {V112_HUNT_NATIVE_ASSETS} from '../scripts/lib/v112-hunt-native-scope.mjs';
 
 const options = {domain: 'Homeworld', opened: ['played.png'], runtimeCommit: 'a'.repeat(40), buildId: 'compiled-v112'};
 const rawResult = () => ({
@@ -68,6 +69,16 @@ test('V112 native inventory rejects replaced artwork, missing provenance, undecl
   const asset = await fingerprintV112(root, assetFile), receipt = await fingerprintV112(root, receiptFile);
   const inventory = {schemaVersion: 1, release: 'V112', assets: [asset], provenance: [receipt], runtimeAssets: []};
   assert.equal((await verifyNativeInputsV112(root, [], inventory)).length, 2);
+  // These exact later hunting assets are outside Homeworld/Pit art admission.
+  for (const file of V112_HUNT_NATIVE_ASSETS) {
+    await fs.mkdir(path.dirname(path.join(root, file)), {recursive: true});
+    await fs.writeFile(path.join(root, file), 'separate hunting input');
+  }
+  assert.equal((await verifyNativeInputsV112(root, [], inventory)).length, 2);
+  const unknown = path.join(root, 'public/game/assets/v112/discovery/unregistered.svg');
+  await fs.writeFile(unknown, 'unknown');
+  await assert.rejects(verifyNativeInputsV112(root, [], inventory), /absent from inventory/);
+  await fs.unlink(unknown);
   await assert.rejects(verifyNativeInputsV112(root, [asset], inventory), /cannot replace/);
   await assert.rejects(verifyNativeInputsV112(root, [], {...inventory, provenance: []}), /original provenance/);
   await assert.rejects(verifyNativeInputsV112(root, [], {...inventory, assets: [], provenance: []}), /absent from inventory/);

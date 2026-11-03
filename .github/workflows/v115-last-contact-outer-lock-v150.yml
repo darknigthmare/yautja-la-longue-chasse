@@ -1,0 +1,110 @@
+name: V150 Last Contact + Outer Ops + V115 Lock Integration
+
+on:
+  push:
+    branches:
+      - codex/integrate-last-contact-outer-lock-20261101
+  pull_request:
+    branches:
+      - codex/integrate-outer-lock-stealth-20261101
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  engine:
+    name: Integrated stealth memory, migration, forced pace and lock
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /package.json
+            /package-lock.json
+            /tsconfig*.json
+            /eslint.config.mjs
+            /app/game/
+            /types/
+            /tests/
+            /scripts/
+            /docs/Yautja_ClanWar_V150_Reconciliation_Patrouilles.xlsx
+            /public/game/assets/v14/hunter-kit/manifest.json
+            /public/game/assets/v15/trophies/manifest.json
+            /public/game/assets/v16/franchise-trophies/manifest.json
+            /public/game/assets/v17/enemy-trophies/manifest.json
+            /public/game/assets/v18/enemy-trophy-gameplay/manifest.json
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Unit tests for both missions, legacy saves, memory and lock
+        run: |
+          node --experimental-strip-types --test --test-concurrency=1 \
+            tests/clan-war-stealth-last-contact.test.mjs \
+            tests/clan-war-integrated-last-contact-v150.test.mjs \
+            tests/clan-war-outer-pace-reconcile.test.mjs \
+            tests/clan-war-stealth-reconciliation.test.mjs \
+            tests/clan-war-v115-multitab-v148.test.mjs \
+            tests/clan-war-operations-v115.test.mjs \
+            tests/clan-war-due-events-v151.test.mjs
+      - name: Typecheck real V146 game types
+        run: npx --no-install tsc --noEmit -p tsconfig.clan-war-v146.json
+      - name: Lint integrated gameplay
+        run: npx --no-install eslint app/game/ClanWarOperationsV115.tsx app/game/systems/clanWarOperationsV115.ts tests/clan-war-due-events-v151.test.mjs tests/clan-war-stealth-last-contact.test.mjs tests/clan-war-integrated-last-contact-v150.test.mjs
+      - name: Validate integrated workbook format and sheet count
+        run: |
+          python3 -c "import zipfile; f='docs/Yautja_ClanWar_V150_Reconciliation_Patrouilles.xlsx'; z=zipfile.ZipFile(f); assert z.testzip() is None; assert len([n for n in z.namelist() if n.startswith('xl/worksheets/sheet') and n.endswith('.xml')])==5"
+
+  chromium:
+    name: PR55 genuine encounter, memory restored alongside PR71 code
+    runs-on: ubuntu-latest
+    timeout-minutes: 26
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /package.json
+            /package-lock.json
+            /app/game/
+            /types/
+            /tests/browser/
+            /scripts/qa-stealth-last-contact-browser.mjs
+            /scripts/qa-outer-pace-browser.mjs
+            /scripts/qa-clan-war-v115-multitab-v148.mjs
+            /public/game/assets/v14/hunter-kit/manifest.json
+            /public/game/assets/v15/trophies/manifest.json
+            /public/game/assets/v16/franchise-trophies/manifest.json
+            /public/game/assets/v17/enemy-trophies/manifest.json
+            /public/game/assets/v18/enemy-trophy-gameplay/manifest.json
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Fetch source-verified PR55 and PR57 archived engine data
+        run: |
+          git fetch --no-tags --depth=1 --filter=blob:none origin fa0322800d5c51e16a4dd56ef6d0fc80d8020394
+          git fetch --no-tags --depth=1 --filter=blob:none origin f25cd7a33e04f789e7c6df231ccad9116a50b38c
+      - name: Install headless Chromium
+        run: npx --no-install playwright-core install --with-deps chromium
+      - name: Real V115 UI + PR55 generated archive + cloak + reload
+        run: |
+          export CHROMIUM_EXECUTABLE_PATH="$(node -e 'process.stdout.write(require("playwright-core").chromium.executablePath())')"
+          node scripts/qa-stealth-last-contact-browser.mjs
+      - name: Real PR71 forced pace, recall and preserved route timing
+        run: |
+          export CHROMIUM_EXECUTABLE_PATH="$(node -e 'process.stdout.write(require("playwright-core").chromium.executablePath())')"
+          node scripts/qa-outer-pace-browser.mjs
+      - name: Real two-tab locked V115 write and non-destructive reload
+        run: |
+          export AUDIT_CHROME_EXECUTABLE="$(node -e 'process.stdout.write(require("playwright-core").chromium.executablePath())')"
+          node scripts/qa-clan-war-v115-multitab-v148.mjs

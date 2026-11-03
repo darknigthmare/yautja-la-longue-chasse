@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 2,
+  "sourceRef": "e4a6c64a1e77edad8865aa05ca7c2901d62bfa09",
+  "qualification": "OBSERVATION_PARTIAL",
+  "files": [
+    {
+      "path": "docs/qa/v112-discovery-observation/README.md",
+      "bytes": 5618,
+      "sha256": "a37d8b65b6e3c3caadc0e13b5f9b958e3e2e89742d47de3378716d3395909346"
+    },
+    {
+      "path": "docs/qa/v112-discovery-observation/browser-report-0.json.gz",
+      "bytes": 61218,
+      "sha256": "7db097186fe0f3f3e7169c37ee0b40de327d089fd6da3c1eadabd4caa5fd1451"
+    },
+    {
+      "path": "docs/qa/v112-discovery-observation/browser-report-1.json.gz",
+      "bytes": 95364,
+      "sha256": "6785342717223aab37b6465f05343c8252f1e1b10dc3d3ac9825168667dadce4"
+    },
+    {
+      "path": "docs/qa/v112-discovery-observation/browser-report-2.json.gz",
+      "bytes": 125589,
+      "sha256": "3ab440b59075b08a4f02e909f38c49c6a012c9ae5023021f7553a456e40cae17"
+    },
+    {
+      "path": "docs/qa/v112-discovery-observation/browser-samples-0.json.gz",
+      "bytes": 2143816,
+      "sha256": "23ed5ebfd5b72ac8becefa2155f7c61a998900c8f045490e87d30af5b85f91b1"
+    },
+    {
+      "path": "docs/qa/v112-discovery-observation/browser-samples-1.json.gz",
+      "bytes": 1964204,
+      "sha256": "768175fac92c49a2d30718f5d739eb7915d8ff887aad9ce153fdf553d645ff3d"
+    },
+    {
+      "path": "docs/qa/v112-discovery-observation/browser-samples-2.json.gz",
+      "bytes": 3020442,
+      "sha256": "7e86e5bbdb8725f1db484096050e17baf161019822989af5bd098ff80fbefeee"
+    },
+    {
+      "path": "docs/qa/v112-discovery-observation/initial-partial-evidence.tar.gz",
+      "bytes": 5542607,
+      "sha256": "1ef5879b3518afdc55077556a85e6926bf3a6a912d4666dcb1b01d9229ca8f39"
+    },
+    {
+      "path": "docs/qa/v112-discovery-observation/native-ice-animal-avoidance.png",
+      "bytes": 1441022,
+      "sha256": "099c242ed05f0dc50864d050d74916ede6cba05a58d331ac760b1e74cf8c23db"
+    },
+    {
+      "path": "docs/qa/v112-discovery-observation/observations.json",
+      "bytes": 117853,
+      "sha256": "af796ca8275516da9ec97ea56bbcef30c2dc5671b19dbe0b39982e775a8c8ef8"
+    },
+    {
+      "path": "docs/qa/v112-discovery-observation/run-2-ice-cryostalker-body-discovery-radio-canvas.png",
+      "bytes": 1370592,
+      "sha256": "7095242a9210656ff14a7a59c549d5fa066d71aa8d3c3c0e5e64dcbe2168d092"
+    },
+    {
+      "path": "docs/qa/v112-discovery-observation/run-2-ice-cryostalker-body-discovery-visual-canvas.png",
+      "bytes": 968086,
+      "sha256": "367356ca0bd63304e11784588d38141a37c251e7e696dcfd886d3b12fc2ad8c4"
+    },
+    {
+      "path": "scripts/qa-hunt-discovery-observations-v112.mjs",
+      "bytes": 9692,
+      "sha256": "20680ca180ad0d9b63a97ab2d47665bfc5c821b233785c3b9a728d78fa2b09d2"
+    }
+  ],
+  "summary": {
+    "runs": 3,
+    "samples": 229,
+    "visualReceipts": 21,
+    "radioReceipts": 1,
+    "radioReceiptObserved": true,
+    "nativeVisualCauseCaptureProvided": true,
+    "nativeRadioCauseCaptureProvided": true,
+    "humanUnderstandingQualified": false,
+    "strongLostContactSequences": 0
+  },
+  "scope": "Baseline before the HUD change; prior partial evidence preserved in capsule.",
+  "limits": [
+    "A pending radio is not a received radio or a visible radio badge",
+    "A geometry candidate is not a screenshot",
+    "An investigation order is not proof it overrode hunter pursuit",
+    "No human comprehension study",
+    "An AI search mode alone does not identify its trigger"
+  ]
+}

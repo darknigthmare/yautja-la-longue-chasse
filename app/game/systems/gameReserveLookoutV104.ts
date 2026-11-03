@@ -2,7 +2,7 @@
 export const GAME_RESERVE_LOOKOUT_V104_WORLD = { width: 6400, height: 540, ground: 438, returnX: 115 } as const;
 export const GAME_RESERVE_LOOKOUT_V104_SECTOR = { id: "beacon-ridge", name: "Crête des Balises", left: 4800, right: 6400 } as const;
 export const GAME_RESERVE_LOOKOUT_V104_PLATFORMS = [
-  { x: 4600, y: 360, w: 240 }, { x: 4920, y: 300, w: 280 }, { x: 5280, y: 345, w: 280 },
+  { x: 4590, y: 262, w: 230 }, { x: 4920, y: 300, w: 280 }, { x: 5280, y: 345, w: 280 },
   { x: 5640, y: 280, w: 320 }, { x: 6040, y: 340, w: 260 },
 ] as const;
 export const GAME_RESERVE_LOOKOUT_V104_COVER = [

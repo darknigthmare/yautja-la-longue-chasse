@@ -1,0 +1,20 @@
+{
+  "observedAt": "2026-11-02T06:47:08.111616+00:00",
+  "projectId": "appgprj_6a5bb3d132888191be6d5825bf1ff3f1",
+  "configuredSourceBranch": "main",
+  "sourceMainAtLastPreflight": "e85370a419ff212eec85f167e0e21ddd2fc48460",
+  "githubTransferTarget": "e0347c7645667c6dd7fabc48527704d4b5f1ca32",
+  "boundedBatchesUploaded": 162,
+  "uncompressedBlobBytesUploaded": 7944767304,
+  "temporaryBranch": "codex/source-transfer-v112-20261102",
+  "temporaryBranchCommit": "a457f7b397084d58efed95b61b969637d6cdab04",
+  "sourceMainFastForwardSucceeded": false,
+  "siteVersionSaveRequested": false,
+  "siteProductionDeploymentRequested": false,
+  "initialTransportError": "HTTP_413",
+  "finalTransportError": "artifacts_git_receive_pack_storage_limit",
+  "temporaryBranchCleanupAttempted": true,
+  "temporaryBranchCleanupResult": "REFUSED_WITH_THE_SAME_STORAGE_LIMIT",
+  "credentialsIncluded": false,
+  "scope": "The transfer branch was never saved or deployed as a Site version. The service rejected both further source upload and deletion of this task-owned temporary branch. This record is provided for authorized source storage cleanup; it is not a publication success."
+}

@@ -22,7 +22,7 @@ async function verifyFiles(root, rows) {
   }
 }
 
-export function createHistoricalExcelContext({repository, manifestPath, manifestSha256, archiveSha256, sourceCommit, release}) {
+export function createHistoricalExcelContext({repository, manifestPath, manifestSha256, archiveSha256, sourceCommit, release, hardLinkShared = false}) {
   let pending;
   async function prepare() {
     const manifestBytes = await fsp.readFile(path.join(repository, local(manifestPath)));
@@ -53,6 +53,13 @@ export function createHistoricalExcelContext({repository, manifestPath, manifest
       // as verified private, read-only copies; do not weaken the original guard.
       for (const row of manifest.shared) {const target = path.join(root, row.path); await fsp.mkdir(path.dirname(target), {recursive: true});
         if (copies.has(row.path)) {await fsp.copyFile(path.join(repository, row.path), target, fs.constants.COPYFILE_EXCL); await fsp.chmod(target, 0o444);}
+        else if (hardLinkShared) {
+          // Evidence guards that reject symlinks (verifyProof) need regular
+          // files. A hard link is one, costs no space, and its bytes are the
+          // verified repository bytes. Other filesystems fall back to a symlink.
+          try {await fsp.link(path.join(repository, row.path), target);}
+          catch (error) {if (!['EXDEV', 'EPERM', 'EMLINK'].includes(error.code)) throw error; await fsp.symlink(path.join(repository, row.path), target);}
+        }
         else await fsp.symlink(path.join(repository, row.path), target);
       }
       await fsp.symlink(path.join(repository, 'node_modules'), path.join(root, 'node_modules'), 'dir');
@@ -69,7 +76,12 @@ export function createHistoricalExcelContext({repository, manifestPath, manifest
     for (const row of context.manifest.shared) {
       const target = path.join(context.root, row.path);
       if (copies.has(row.path)) {const stat = await fsp.lstat(target); assert.equal(stat.isSymbolicLink(), false); assert.equal(stat.mode & 0o222, 0, 'Private historical evidence is writable: ' + row.path);}
-      else assert.equal(await fsp.readlink(target), path.join(repository, row.path));
+      else if ((await fsp.lstat(target)).isSymbolicLink()) assert.equal(await fsp.readlink(target), path.join(repository, row.path));
+      else {
+        assert.ok(hardLinkShared, 'Unexpected private file for shared evidence: ' + row.path);
+        const [linked, original] = await Promise.all([fsp.stat(target), fsp.stat(path.join(repository, row.path))]);
+        assert.ok(linked.ino === original.ino && linked.dev === original.dev, 'Shared evidence is not the repository file: ' + row.path);
+      }
     }
     return {sourceCommit, sourcesVerified: context.manifest.sources.length, sharedVerified: context.manifest.shared.length, evidenceCopiesVerified: copies.size, currentRuntimeCovered: false};
   }

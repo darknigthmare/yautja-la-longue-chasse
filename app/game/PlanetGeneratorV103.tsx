@@ -2,6 +2,7 @@
 
 import { useId, useMemo, useRef, useState, type ChangeEvent } from "react";
 import ClanWarAtlasV95 from "./ClanWarAtlasV95";
+import EarthPlanetMapV126 from "./EarthPlanetMapV126";
 import PlanetMaterialCanvasV101 from "./PlanetMaterialCanvasV101";
 import PlanetLayerExportV102 from "./PlanetLayerExportV102";
 import type { PlanetVisualProfileV134 } from "./systems/clanWarPlanetVisualProfileV134";
@@ -32,7 +33,7 @@ import {
 import { WAR_BIOME_LABELS_V96 } from "./systems/clanWarPlanetLabelsV102";
 import type { WarPlanetV96 } from "./systems/clanWarPlanetsV96";
 import {
-  DEFAULT_WAR_PLANET_RECIPE_V115, baseWarPlanetRecipeV103FromV115,
+  DEFAULT_WAR_PLANET_RECIPE_V115, projectWarPlanetRecipeV103FromV115,
 } from "./systems/clanWarPlanetGeneratorV115";
 import { PLANET_SIZE_LABELS_V115, WAR_SHAPE_TEMPLATES_V115, type PlanetSizeV115 } from "./systems/clanWarShapeAtlasV115";
 import { WAR_PLANET_LAND_TEXTURES_V115, WAR_PLANET_LIQUID_TEXTURES_V115 } from "./systems/clanWarTextureLibraryV115";
@@ -70,7 +71,7 @@ function worldForRecipe(recipe: WarPlanetRecipeAnyV103): GeneratedWarPlanetAnyV1
 function convertToV103Recipe(recipe: WarPlanetRecipeAnyV103): WarPlanetRecipeV103 {
   if (recipe.version === 102) return prepareWarPlanetVariantV103(recipe);
   if (recipe.version === 103) return { ...recipe };
-  return baseWarPlanetRecipeV103FromV115(recipe);
+  return projectWarPlanetRecipeV103FromV115(recipe);
 }
 
 function downloadJson(planet: GeneratedWarPlanetAnyV103) {
@@ -152,6 +153,7 @@ export default function PlanetGeneratorV103({ activePlanet, pending = false, onO
   const [planet, setPlanet] = useState(() => worldForRecipe(initialRecipe));
   const [mainVisualProfileV134, setMainVisualProfileV134] = useState<PlanetVisualProfileV134 | null>(null);
   const [editorEnabled, setEditorEnabled] = useState(initialRecipe.version !== 102);
+  const [showEarthAtlas,setShowEarthAtlas] = useState(false);
   const [locked, setLocked] = useState<WarPlanetRecipeFieldV103[]>([]);
   const [advancedLockedV144, setAdvancedLockedV144] = useState<PlanetAdvancedFieldV144[]>([]);
   const [selectedId, setSelectedId] = useState("CON-T02");
@@ -364,8 +366,14 @@ export default function PlanetGeneratorV103({ activePlanet, pending = false, onO
     setMemoryOpening(null);
   }
 
+  if(showEarthAtlas)return <section className={styles.generator} data-earth-fixed-v126="true">
+    <EarthPlanetMapV126 onClose={()=>setShowEarthAtlas(false)}/>
+  </section>;
   return <section className={styles.generator} aria-labelledby={`${unique}-title`} data-testid="planet-generator-v103" data-preview-planet-code={planet.id} data-draft-modified={changed} data-recipe-version={details.recipe.version}>
     <header className={styles.header}><div><p className={styles.eyebrow}>EXPLORATION / MONDES À COMPOSER</p><h3 id={`${unique}-title`}>Générateur de mondes</h3><p>Choisissez l’échelle de la guerre, dessinez ses terres et composez chaque matière. Une graine et ses réglages retrouvent exactement le même monde.</p></div><span className={styles.badge}>Aperçu : {planet.regions.length} régions · {planet.territories.length} territoires</span></header>
+    <p className={styles.hint}><button type="button" onClick={()=>setShowEarthAtlas(true)}>
+      Ouvrir la Terre réelle (WGS84 et lieux de films)
+    </button> La Terre est un globe de référence fixe, distinct de la base « terrestre » aléatoire. Sa vue géographique ne crée pas encore de guerre V85 ni de carte de rues 1:1.</p>
     <div className={styles.workspace}>
       <div className={styles.composer}>
         {!editorEnabled ? <div className={styles.legacy} data-testid="planet-legacy-recipe-v103"><p className={styles.eyebrow}>RECETTE D’ORIGINE · V102</p><h4>Ce monde conserve son histoire</h4><p>Son code retrouve sa géographie exacte, ses textures et son front existant. Vous pouvez l’explorer, exporter sa fiche ou reprendre la guerre.</p><p>Préparer une variante ouvre les nouveaux réglages. Sa génération créera une nouvelle planète avec un nouveau code et un front distinct.</p><button type="button" className={styles.primary} onClick={prepareVariant}>Préparer une variante</button></div> : <form className={styles.recipe} onSubmit={event => { event.preventDefault(); generate(); }}>

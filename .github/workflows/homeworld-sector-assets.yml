@@ -1,0 +1,36 @@
+name: Homeworld sectors and utility source integrity
+
+on:
+  pull_request:
+    paths:
+      - 'production/homeworld-sectors-20261103/**'
+      - 'production/homeworld-reconciled-20261103/**'
+      - '.github/workflows/homeworld-sector-assets.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-independent-sources:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          lfs: false
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /production/homeworld-sectors-20261103/
+            /production/homeworld-reconciled-20261103/
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install image inspection dependencies
+        run: python -m pip install --disable-pip-version-check 'Pillow==12.3.0' 'numpy==2.3.5'
+      - name: Verify selected sector PNGs, receipts, transparency and preserved sources
+        run: python production/homeworld-sectors-20261103/tools/verify-assets.py
+      - name: Verify imported utility PNGs and editable model sources
+        run: python production/homeworld-reconciled-20261103/tools/verify-utility-delivery.py

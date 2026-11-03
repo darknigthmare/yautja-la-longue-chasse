@@ -3,6 +3,21 @@ import { OptionalAudioFiles } from "./audioFiles.ts";
 
 export type GameMusicContext = "menu" | "ship" | "galaxy" | "exploration" | "combat" | "boss" | "homeworld";
 
+/** Original synth signatures for HUD variants; these are NOT film SFX recordings. */
+export type GameGauntletSoundProfileV133 = "classic" | "urban" | "elder" | "bronze" | "stealth" | "scar" | "wolf" | "brutal" | "feral" | "badlands";
+const GAUNTLET_SFX_SIGNATURES_V133: Readonly<Record<GameGauntletSoundProfileV133,{notes:readonly number[];gap:number;length:number;type:OscillatorType}>> = {
+  classic:{notes:[330,440,550],gap:.075,length:.075,type:"triangle"},
+  urban:{notes:[540,870],gap:.062,length:.052,type:"sine"},
+  elder:{notes:[185,247,320],gap:.125,length:.14,type:"sine"},
+  bronze:{notes:[290,360,290],gap:.07,length:.095,type:"triangle"},
+  stealth:{notes:[780,520],gap:.14,length:.045,type:"sine"},
+  scar:{notes:[420,520,640],gap:.085,length:.09,type:"triangle"},
+  wolf:{notes:[515,610,775],gap:.052,length:.065,type:"sine"},
+  brutal:{notes:[210,176,132],gap:.098,length:.11,type:"sawtooth"},
+  feral:{notes:[410,300,450],gap:.105,length:.07,type:"triangle"},
+  badlands:{notes:[610,820,710,930],gap:.068,length:.085,type:"sine"},
+};
+
 /**
  * Petit moteur sonore procédural pour le jeu.
  *
@@ -720,6 +735,24 @@ export class GameAudio {
       filterType: "lowpass",
       filterFrequency: 2_200,
       endFilterFrequency: 180,
+    });
+  }
+
+  /** Small non-canon identity jingle routed through existing SFX volume and mute.
+   * No new AudioContext, no copyrighted movie sample, and never a combat action. */
+  playGauntletSignalV133(profile: GameGauntletSoundProfileV133): void {
+    const signature = GAUNTLET_SFX_SIGNATURES_V133[profile];
+    const now = this.readyTime();
+    if (!signature || now === null) return;
+    signature.notes.forEach((frequency,index) => {
+      this.tone(frequency, {
+        at:now + index*signature.gap,
+        duration:signature.length,
+        endFrequency:frequency*1.11,
+        gain:.061,
+        type:signature.type,
+        filterFrequency:1_900 + (index*250),
+      });
     });
   }
 

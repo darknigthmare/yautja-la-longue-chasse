@@ -1,0 +1,29 @@
+name: V123 PHG YouTube and selected-screenshot evidence integrity
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "app/game/data/phgVisualReferenceResearchV123.json"
+      - "app/game/data/phgVisualFidelityQueueV122.json"
+      - "tests/phg-video-evidence-v123.test.mjs"
+      - ".github/workflows/phg-video-evidence-v123.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-integrity:
+    name: Preserve all 34 sources and reject invented UV evidence
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /app/game/data/phgVisualReferenceResearchV123.json
+            /app/game/data/phgVisualFidelityQueueV122.json
+            /tests/phg-video-evidence-v123.test.mjs
+      - name: Run zero-dependency source traceability tests
+        run: node --test tests/phg-video-evidence-v123.test.mjs
