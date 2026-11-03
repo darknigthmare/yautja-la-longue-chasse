@@ -32,7 +32,7 @@ import styles from "./ClanWarOperationsV115.module.css";`],
       if(!command)return;
       event.preventDefault();event.stopPropagation();
       commit(commandStealthV115(worldRef.current,command,rules));
-    }`],
+    }}`],
  ['{assault && <div>',`{assault && <div>
         <ClanWarFieldSprite id={assault.ownBase<40?"barrier-damaged":"barrier-intact"}
           label="Illustration originale du bastion : aucun nouvel obstacle de collision" size={72}/>`],
@@ -61,7 +61,7 @@ import styles from "./ClanWarRtsSquadsV133.module.css";`],
     event.preventDefault();event.stopPropagation();
     if(command==="wait"||command==="interact")action(command);
     else send({kind:"move",squadId:selected.id,direction:command});
-  }`],
+  }}`],
  ['    <div className={styles.mapScroll}>',`    <div className={styles.toolbar} aria-label="Zoom de la carte">
       <button type="button" disabled={mapZoom<=.75} onClick={()=>setMapZoom(z=>Math.max(.75,z-.25))} aria-label="Réduire la carte">−</button>
       <output aria-live="polite">{Math.round(mapZoom*100)} %</output>
