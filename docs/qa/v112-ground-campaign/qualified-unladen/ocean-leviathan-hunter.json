@@ -1,0 +1,948 @@
+{
+  "missionId": "ocean-leviathan",
+  "armorId": "hunter",
+  "success": true,
+  "result": {
+    "missionId": "ocean-leviathan",
+    "exploration": {
+      "abilityIds": [],
+      "openedGateIds": [],
+      "secretIds": [],
+      "discoveredRoomIds": [
+        "ocean-pressure-approach",
+        "ocean-pressure-return"
+      ]
+    },
+    "difficultyId": "hunter",
+    "outcome": "success",
+    "score": 92,
+    "elapsedSeconds": 124,
+    "completedObjectiveIds": [
+      "ocean-leviathan-scan",
+      "ocean-leviathan-hunt",
+      "ocean-leviathan-recover",
+      "ocean-leviathan-boss",
+      "ocean-leviathan-extract"
+    ],
+    "honorEvents": [
+      {
+        "id": "scan-trace-1",
+        "label": "Signature étudiée",
+        "value": 3,
+        "kind": "scan"
+      },
+      {
+        "id": "honor-rule:ocean-leviathan-restraint",
+        "label": "Code rompu : Force mesurée",
+        "value": -15,
+        "kind": "violation"
+      },
+      {
+        "id": "kill-ocean-leviathan-foragers-0",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "kill-ocean-leviathan-foragers-4",
+        "label": "Mise à mort rapprochée",
+        "value": 3,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "scan-trace-2",
+        "label": "Signature étudiée",
+        "value": 3,
+        "kind": "scan"
+      },
+      {
+        "id": "kill-ocean-leviathan-foragers-1",
+        "label": "Mise à mort rapprochée",
+        "value": 3,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "scan-trace-3",
+        "label": "Signature étudiée",
+        "value": 3,
+        "kind": "scan"
+      },
+      {
+        "id": "objective-ocean-leviathan-scan",
+        "label": "Échantillonner les chants abyssaux",
+        "value": 20,
+        "kind": "objective"
+      },
+      {
+        "id": "kill-ocean-leviathan-foragers-2",
+        "label": "Mise à mort rapprochée",
+        "value": 3,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "kill-ocean-leviathan-foragers-3",
+        "label": "Mise à mort rapprochée",
+        "value": 3,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "kill-ocean-leviathan-territorials-1",
+        "label": "Mise à mort rapprochée",
+        "value": 3,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "objective-ocean-leviathan-hunt",
+        "label": "Disperser les gardiens du récif",
+        "value": 25,
+        "kind": "objective"
+      },
+      {
+        "id": "kill-ocean-leviathan-territorials-2",
+        "label": "Mise à mort rapprochée",
+        "value": 3,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "recover-technology-1",
+        "label": "Technologie du clan sécurisée",
+        "value": 5,
+        "kind": "objective"
+      },
+      {
+        "id": "recover-technology-2",
+        "label": "Technologie du clan sécurisée",
+        "value": 5,
+        "kind": "objective"
+      },
+      {
+        "id": "objective-ocean-leviathan-recover",
+        "label": "Reprendre les harpons de clan",
+        "value": 25,
+        "kind": "objective"
+      },
+      {
+        "id": "kill-ocean-leviathan-guardians-1",
+        "label": "Mise à mort rapprochée",
+        "value": 3,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "kill-ocean-leviathan-guardians-2",
+        "label": "Mise à mort rapprochée",
+        "value": 3,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "scan-primary-target",
+        "label": "Analyse de Léviathan abyssal",
+        "value": 5,
+        "kind": "scan"
+      },
+      {
+        "id": "kill-ocean-leviathan-territorials-0",
+        "label": "Mise à mort rapprochée",
+        "value": 3,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "kill-ocean-leviathan-territorials-3",
+        "label": "Proie neutralisée",
+        "value": 1,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "objective-ocean-leviathan-boss",
+        "label": "Affronter Léviathan abyssal",
+        "value": 55,
+        "kind": "objective"
+      },
+      {
+        "id": "boss-honorable-kill",
+        "label": "Victoire sur Léviathan abyssal",
+        "value": 10,
+        "kind": "honorable-kill"
+      },
+      {
+        "id": "trophy-claimed",
+        "label": "Crête du Léviathan",
+        "value": 12,
+        "kind": "objective"
+      },
+      {
+        "id": "objective-ocean-leviathan-extract",
+        "label": "Rejoindre le faisceau d'extraction",
+        "value": 15,
+        "kind": "objective"
+      },
+      {
+        "id": "honor-rule:ocean-leviathan-study",
+        "label": "Code respecté : Cartographier avant de frapper",
+        "value": 20,
+        "kind": "objective"
+      },
+      {
+        "id": "honor-rule:ocean-leviathan-survive",
+        "label": "Code respecté : Chasseur inébranlable",
+        "value": 20,
+        "kind": "objective"
+      }
+    ],
+    "trophyQuality": "elite",
+    "trophyClaims": [
+      {
+        "id": "ocean-leviathan-apex-mvyt0tis-12r-oh8tvrew",
+        "definitionId": "trophy-ocean-leviathan",
+        "targetName": "Léviathan abyssal",
+        "targetKind": "beast",
+        "partId": "skull-and-spine",
+        "quality": "elite",
+        "condition": "intact"
+      }
+    ],
+    "specimensV112": [],
+    "toolUseIdsV112": [],
+    "harvestEncounterRunV112": 0,
+    "kills": 12,
+    "scans": 9,
+    "discoveredEnemyIds": [
+      "pelagos-m--storm-eel",
+      "pelagos-m--reef-stalker",
+      "pelagos-m--tide-octopus",
+      "pelagos-m--glass-sponge",
+      "pelagos-m--salvage-synth",
+      "pelagos-m--leviathan-spawn"
+    ],
+    "secondWindUsed": false,
+    "completedAt": "2026-11-02T05:14:20.299Z"
+  },
+  "climbFrames": 0,
+  "swingFrames": 0,
+  "authoredCanopyContactFrames": 0,
+  "maxX": 7988.999999999991,
+  "terminal": {
+    "t": 123.617,
+    "phase": "finished",
+    "x": 7989,
+    "y": 173,
+    "vx": 0,
+    "vy": 0,
+    "health": 108.72,
+    "stamina": 100,
+    "energy": 100,
+    "kills": 11,
+    "boss": {
+      "active": true,
+      "alive": false,
+      "health": 0,
+      "x": 6135
+    },
+    "scans": [
+      true,
+      true,
+      true
+    ],
+    "recoveries": [
+      true,
+      true
+    ],
+    "objectives": [
+      "ocean-leviathan-scan",
+      "ocean-leviathan-hunt",
+      "ocean-leviathan-recover",
+      "ocean-leviathan-boss",
+      "ocean-leviathan-extract"
+    ],
+    "message": "Objectif accompli : Rejoindre le faisceau d'extraction",
+    "grounded": false,
+    "climbing": false,
+    "load": {
+      "massKg": 0,
+      "volumeUnits": 0,
+      "capacityMassKg": 36,
+      "capacityVolumeUnits": 24,
+      "ratio": 0,
+      "overloaded": false,
+      "movementMultiplier": 1,
+      "jumpMultiplier": 1,
+      "climbStaminaMultiplier": 1,
+      "noiseMultiplier": 1
+    },
+    "energyWeaponsLocked": false,
+    "weaponSlot": 0,
+    "threats": [
+      {
+        "id": "ocean-leviathan-guardians-0",
+        "x": 5970.898151896076,
+        "y": 517,
+        "health": 2.5747329999999877,
+        "width": 88,
+        "height": 107
+      },
+      {
+        "id": "extraction-ocean-leviathan-1396-0",
+        "x": 7528.001,
+        "y": 524,
+        "health": 236.42999999999998,
+        "width": 108,
+        "height": 100
+      },
+      {
+        "id": "extraction-ocean-leviathan-1397-1",
+        "x": 7583,
+        "y": 524,
+        "health": 236.42999999999998,
+        "width": 108,
+        "height": 100
+      },
+      {
+        "id": "extraction-ocean-leviathan-1398-2",
+        "x": 7734,
+        "y": 534,
+        "health": 210.87,
+        "width": 98,
+        "height": 90
+      }
+    ]
+  },
+  "admission": {
+    "missionId": "ocean-leviathan",
+    "armorId": "hunter",
+    "loadout": {
+      "armorId": "hunter",
+      "weaponIds": [
+        "combistick",
+        "plasma-caster"
+      ],
+      "gearIds": [
+        "motion-sensor",
+        "audio-decoy"
+      ]
+    },
+    "inventory": {
+      "fieldToolIds": [],
+      "harvestV112": {
+        "version": 1,
+        "specimens": [],
+        "toolCondition": 100,
+        "toolUseIds": [],
+        "jobs": [],
+        "settledEncounterRuns": {},
+        "archive": []
+      },
+      "unlockedWeaponIds": [
+        "wristblades",
+        "combistick",
+        "plasma-caster"
+      ],
+      "unlockedGearIds": [
+        "motion-sensor",
+        "audio-decoy"
+      ],
+      "unlockedArmorIds": [
+        "hunter",
+        "scout",
+        "berserker"
+      ],
+      "weaponUpgrades": {
+        "wristblades": 0,
+        "combistick": 0,
+        "plasma-caster": 0,
+        "smart-disc": 0,
+        "yautja-bow": 0
+      },
+      "gearUpgrades": {
+        "netgun": 0,
+        "motion-sensor": 0,
+        "audio-decoy": 0,
+        "snare": 0
+      },
+      "armorUpgrades": {
+        "scout": 0,
+        "hunter": 0,
+        "berserker": 0
+      }
+    },
+    "toolOrigin": null,
+    "difficulty": "hunter",
+    "encounterRun": 0,
+    "random": {
+      "algorithm": "xorshift32",
+      "seed": 17965094
+    },
+    "spawn": {
+      "x": 225,
+      "y": 508
+    },
+    "initial": {
+      "t": 0,
+      "phase": "tracking",
+      "x": 225,
+      "y": 508,
+      "vx": 0,
+      "vy": 0,
+      "health": 160,
+      "stamina": 100,
+      "energy": 100,
+      "kills": 0,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 1080,
+        "x": 6911.4
+      },
+      "scans": [
+        false,
+        false,
+        false
+      ],
+      "recoveries": [
+        false,
+        false
+      ],
+      "objectives": [],
+      "message": "La chasse commence. Localise les signatures.",
+      "grounded": true,
+      "climbing": false,
+      "energyWeaponsLocked": false,
+      "weaponSlot": 1,
+      "threats": [
+        {
+          "id": "ocean-leviathan-foragers-0",
+          "x": 1536.6595276650041,
+          "y": 408,
+          "health": 125.46,
+          "width": 114,
+          "height": 96
+        }
+      ]
+    },
+    "world": {
+      "width": 8400,
+      "bossArena": {
+        "x": 6105,
+        "y": 286,
+        "width": 1680,
+        "height": 338
+      },
+      "extraction": {
+        "x": 8025,
+        "y": 624
+      },
+      "platforms": [
+        {
+          "x": 660,
+          "y": 320,
+          "width": 260,
+          "height": 24,
+          "id": "ocean-pressure-upper-floor",
+          "material": "coral",
+          "routeId": "ocean-pressure-route",
+          "collision": "solid",
+          "noiseMultiplier": 0.82,
+          "trackPersistence": 0.12
+        },
+        {
+          "x": 950,
+          "y": 470,
+          "width": 200,
+          "height": 24,
+          "id": "ocean-pressure-vault-underfloor",
+          "material": "coral",
+          "routeId": "ocean-pressure-route",
+          "collision": "solid",
+          "noiseMultiplier": 0.82,
+          "trackPersistence": 0.12
+        },
+        {
+          "x": 1150,
+          "y": 470,
+          "width": 210,
+          "height": 24,
+          "id": "ocean-pressure-vault-floor",
+          "material": "coral",
+          "routeId": "ocean-pressure-route",
+          "collision": "solid",
+          "noiseMultiplier": 0.82,
+          "trackPersistence": 0.12
+        },
+        {
+          "x": 1480,
+          "y": 0,
+          "width": 28,
+          "height": 494,
+          "id": "ocean-pressure-outer-wall",
+          "material": "coral",
+          "routeId": "ocean-pressure-route",
+          "collision": "solid",
+          "noiseMultiplier": 0.82,
+          "trackPersistence": 0.12
+        },
+        {
+          "x": 920,
+          "y": 0,
+          "width": 30,
+          "height": 494,
+          "id": "ocean-pressure-lock",
+          "material": "coral",
+          "routeId": "ocean-pressure-route",
+          "collision": "solid",
+          "noiseMultiplier": 0.82,
+          "trackPersistence": 0.12
+        },
+        {
+          "x": 1360,
+          "y": 470,
+          "width": 120,
+          "height": 24,
+          "id": "ocean-spore-vent",
+          "material": "coral",
+          "routeId": "ocean-pressure-route",
+          "collision": "solid",
+          "noiseMultiplier": 0.82,
+          "trackPersistence": 0.12
+        }
+      ],
+      "hazards": [
+        {
+          "id": "i-whiteout",
+          "x": 3975,
+          "y": 220,
+          "width": 1275,
+          "height": 404,
+          "kind": "electrical-surge",
+          "routeId": "ice-surface",
+          "damagePerSecond": 18,
+          "movementMultiplier": 0.84,
+          "noisePerSecond": 0.78,
+          "trackMultiplier": 0.2,
+          "revealsCloak": true,
+          "telegraphSeconds": 0.8,
+          "cycle": {
+            "periodSeconds": 8,
+            "activeSeconds": 1.2,
+            "phaseSeconds": 0.65
+          }
+        },
+        {
+          "id": "i-stalactites",
+          "x": 5145,
+          "y": 270,
+          "width": 630,
+          "height": 354,
+          "kind": "abyssal-vent",
+          "routeId": "glacial-caves",
+          "damagePerSecond": 14,
+          "movementMultiplier": 0.72,
+          "noisePerSecond": 0.68,
+          "trackMultiplier": 0.25,
+          "revealsCloak": true,
+          "telegraphSeconds": 1.1,
+          "cycle": {
+            "periodSeconds": 7,
+            "activeSeconds": 1.8,
+            "phaseSeconds": 1.8
+          }
+        },
+        {
+          "id": "i-arena-collapse",
+          "x": 6525,
+          "y": 250,
+          "width": 975,
+          "height": 374,
+          "kind": "rogue-wave",
+          "routeId": "ice-surface",
+          "damagePerSecond": 12,
+          "movementMultiplier": 0.48,
+          "noisePerSecond": 0.92,
+          "trackMultiplier": 0.1,
+          "revealsCloak": true,
+          "telegraphSeconds": 1.4,
+          "cycle": {
+            "periodSeconds": 11,
+            "activeSeconds": 2.6,
+            "phaseSeconds": 3.3000000000000003
+          }
+        },
+        {
+          "id": "feature-ocean-3-ecology",
+          "x": 2761.5,
+          "y": 560,
+          "width": 390,
+          "height": 64,
+          "kind": "rogue-wave",
+          "routeId": "ice-surface",
+          "damagePerSecond": 12,
+          "movementMultiplier": 0.48,
+          "noisePerSecond": 0.92,
+          "trackMultiplier": 0.1,
+          "revealsCloak": true,
+          "telegraphSeconds": 1.4,
+          "cycle": {
+            "periodSeconds": 11,
+            "activeSeconds": 2.6,
+            "phaseSeconds": 0
+          }
+        },
+        {
+          "x": 860,
+          "y": 204,
+          "width": 290,
+          "height": 116,
+          "id": "ocean-pressure-ability-hazard",
+          "kind": "abyssal-vent",
+          "routeId": "ocean-pressure-route",
+          "damagePerSecond": 12,
+          "movementMultiplier": 0.46,
+          "noisePerSecond": 0.66,
+          "trackMultiplier": 0.5,
+          "revealsCloak": true,
+          "telegraphSeconds": 1,
+          "cycle": {
+            "periodSeconds": 7.6,
+            "activeSeconds": 1.6,
+            "phaseSeconds": 0.5
+          }
+        }
+      ]
+    },
+    "scanNodes": [
+      {
+        "id": "trace-1",
+        "x": 924,
+        "y": 588,
+        "scanned": false
+      },
+      {
+        "id": "trace-2",
+        "x": 2016,
+        "y": 395,
+        "scanned": false
+      },
+      {
+        "id": "trace-3",
+        "x": 3108,
+        "y": 588,
+        "scanned": false
+      }
+    ],
+    "recoveryNodes": [
+      {
+        "id": "technology-1",
+        "x": 3776.9996666666666,
+        "y": 590,
+        "recovered": false
+      },
+      {
+        "id": "technology-2",
+        "x": 3857.999333333333,
+        "y": 590,
+        "recovered": false
+      }
+    ]
+  },
+  "events": [
+    {
+      "t": 14.883,
+      "phase": "target",
+      "x": 2824.96,
+      "y": 438.39,
+      "vx": 294.46,
+      "vy": -504.17,
+      "health": 160,
+      "stamina": 100,
+      "energy": 18.75,
+      "kills": 3,
+      "boss": {
+        "active": false,
+        "alive": true,
+        "health": 1080,
+        "x": 6911.4
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        false,
+        false
+      ],
+      "objectives": [
+        "ocean-leviathan-scan"
+      ],
+      "message": "Léviathan abyssal peut désormais être pisté.",
+      "grounded": false,
+      "climbing": false,
+      "load": {
+        "massKg": 0,
+        "volumeUnits": 0,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0,
+        "overloaded": false,
+        "movementMultiplier": 1,
+        "jumpMultiplier": 1,
+        "climbStaminaMultiplier": 1,
+        "noiseMultiplier": 1
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 0,
+      "threats": [
+        {
+          "id": "ocean-leviathan-foragers-2",
+          "x": 3007.3973199999796,
+          "y": 403.80499770810434,
+          "health": 33.932135999999986,
+          "width": 106,
+          "height": 89
+        },
+        {
+          "id": "ocean-leviathan-foragers-3",
+          "x": 3531.9374706597737,
+          "y": 504,
+          "health": 125.46,
+          "width": 84,
+          "height": 120
+        },
+        {
+          "id": "ocean-leviathan-territorials-0",
+          "x": 5803.001,
+          "y": 415,
+          "health": 164.27999999999997,
+          "width": 106,
+          "height": 89
+        }
+      ]
+    },
+    {
+      "t": 99.4,
+      "phase": "trophy",
+      "x": 6122.89,
+      "y": 314,
+      "vx": 0,
+      "vy": 0,
+      "health": 112.82,
+      "stamina": 100,
+      "energy": 11.9,
+      "kills": 11,
+      "boss": {
+        "active": true,
+        "alive": false,
+        "health": 0,
+        "x": 6135
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true,
+        true
+      ],
+      "objectives": [
+        "ocean-leviathan-scan",
+        "ocean-leviathan-hunt",
+        "ocean-leviathan-recover",
+        "ocean-leviathan-boss"
+      ],
+      "message": "Léviathan abyssal est vaincu. Intégrité du trophée 67 %. Réclame le trophée avec [E].",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0,
+        "volumeUnits": 0,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0,
+        "overloaded": false,
+        "movementMultiplier": 1,
+        "jumpMultiplier": 1,
+        "climbStaminaMultiplier": 1,
+        "noiseMultiplier": 1
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 0,
+      "threats": [
+        {
+          "id": "ocean-leviathan-guardians-0",
+          "x": 6893.001,
+          "y": 517,
+          "health": 2.5747329999999877,
+          "width": 88,
+          "height": 107
+        }
+      ]
+    },
+    {
+      "t": 109.25,
+      "phase": "extraction",
+      "x": 6089.27,
+      "y": 508,
+      "vx": 0,
+      "vy": 0,
+      "health": 112.82,
+      "stamina": 100,
+      "energy": 100,
+      "kills": 11,
+      "boss": {
+        "active": true,
+        "alive": false,
+        "health": 0,
+        "x": 6135
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true,
+        true
+      ],
+      "objectives": [
+        "ocean-leviathan-scan",
+        "ocean-leviathan-hunt",
+        "ocean-leviathan-recover",
+        "ocean-leviathan-boss"
+      ],
+      "message": "Crête du Léviathan : prise récupérée et scellée. Le chasseur célèbre sa victoire ; vaisseau en approche.",
+      "grounded": true,
+      "climbing": false,
+      "load": {
+        "massKg": 0,
+        "volumeUnits": 0,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0,
+        "overloaded": false,
+        "movementMultiplier": 1,
+        "jumpMultiplier": 1,
+        "climbStaminaMultiplier": 1,
+        "noiseMultiplier": 1
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 0,
+      "threats": [
+        {
+          "id": "ocean-leviathan-guardians-0",
+          "x": 6893.001,
+          "y": 517,
+          "health": 2.5747329999999877,
+          "width": 88,
+          "height": 107
+        },
+        {
+          "id": "extraction-ocean-leviathan-1396-0",
+          "x": 7528.001,
+          "y": 524,
+          "health": 236.42999999999998,
+          "width": 108,
+          "height": 100
+        }
+      ]
+    },
+    {
+      "t": 123.617,
+      "phase": "finished",
+      "x": 7989,
+      "y": 173,
+      "vx": 0,
+      "vy": 0,
+      "health": 108.72,
+      "stamina": 100,
+      "energy": 100,
+      "kills": 11,
+      "boss": {
+        "active": true,
+        "alive": false,
+        "health": 0,
+        "x": 6135
+      },
+      "scans": [
+        true,
+        true,
+        true
+      ],
+      "recoveries": [
+        true,
+        true
+      ],
+      "objectives": [
+        "ocean-leviathan-scan",
+        "ocean-leviathan-hunt",
+        "ocean-leviathan-recover",
+        "ocean-leviathan-boss",
+        "ocean-leviathan-extract"
+      ],
+      "message": "Objectif accompli : Rejoindre le faisceau d'extraction",
+      "grounded": false,
+      "climbing": false,
+      "load": {
+        "massKg": 0,
+        "volumeUnits": 0,
+        "capacityMassKg": 36,
+        "capacityVolumeUnits": 24,
+        "ratio": 0,
+        "overloaded": false,
+        "movementMultiplier": 1,
+        "jumpMultiplier": 1,
+        "climbStaminaMultiplier": 1,
+        "noiseMultiplier": 1
+      },
+      "energyWeaponsLocked": false,
+      "weaponSlot": 0,
+      "threats": [
+        {
+          "id": "ocean-leviathan-guardians-0",
+          "x": 5970.898151896076,
+          "y": 517,
+          "health": 2.5747329999999877,
+          "width": 88,
+          "height": 107
+        },
+        {
+          "id": "extraction-ocean-leviathan-1396-0",
+          "x": 7528.001,
+          "y": 524,
+          "health": 236.42999999999998,
+          "width": 108,
+          "height": 100
+        },
+        {
+          "id": "extraction-ocean-leviathan-1397-1",
+          "x": 7583,
+          "y": 524,
+          "health": 236.42999999999998,
+          "width": 108,
+          "height": 100
+        },
+        {
+          "id": "extraction-ocean-leviathan-1398-2",
+          "x": 7734,
+          "y": 534,
+          "health": 210.87,
+          "width": 98,
+          "height": 90
+        }
+      ]
+    }
+  ],
+  "traceFrames": 2544,
+  "ticksExecuted": 7417,
+  "harvestActions": [],
+  "peakLoadRatio": 0,
+  "peakSpecimens": [],
+  "firstLoadAt": null,
+  "replay": {
+    "verified": true,
+    "ticks": 7417,
+    "terminalSha256": "7c3ae69fd6b070b826dd9570715e7925341c88f759f47ac65e76e8e2ee435286"
+  },
+  "rawData": {
+    "archive": "../native-runs-raw.tar.gz",
+    "member": "qualified-unladen/ocean-leviathan-hunter.json",
+    "sha256": "6dbeeafec02c34fc99dee42d3c92d622f470eb83aaa3927091f39c33e5d41239"
+  }
+}

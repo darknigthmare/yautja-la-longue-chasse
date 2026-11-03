@@ -1,0 +1,40 @@
+Validate georeferencing and every mission’s AI plans
+✔ Earth WGS84 coastlines are real and expected Predator landmarks belong to Earth only (16.08618ms)
+✔ all 1200 source missions survive geography and climate migrations (11.977394ms)
+✔ Gunnison must be in Colorado, Bouvet is subantarctic, and no city is put on Badlands (0.49823ms)
+✔ Earth desert never gets polar blizzard; Antarctic polar desert is an exception, not an arid hot zone (0.525259ms)
+✔ 6000 AI plans: five source-compatible configurations per scene and bounded enemies by gameplay (457.989027ms)
+✔ multiplayer lobby keeps the same world, prevents duplicate unit ownership and never grants campaign resources (2.308466ms)
+✔ co-op squads, spectator rights, readiness and async clan are explicit and not fake networking (0.262169ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 976.538302
+
+
+TypeScript 126
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+
+Lint source and UI
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+/workspace/scratch/5ba9c138dac4/workflow-review-wjtecr3z/clan-war-geo-ai-v126-after/app/game/systems/clanWarEnemyProfilesV126.ts
+  25:15  warning  '_climate' is defined but never used  @typescript-eslint/no-unused-vars
+
+/workspace/scratch/5ba9c138dac4/workflow-review-wjtecr3z/clan-war-geo-ai-v126-after/app/game/systems/clanWarWorldClimateV126.ts
+  40:7  warning  'ALIEN_TERRITORIES' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+✖ 2 problems (0 errors, 2 warnings)
+
+
+
+Smoke-bundle client views and geographic geometry
+
+
+Build complete corrected CSV and JSON
+V126 exporter: 1200 world/climate corrections, 6000 AI profiles, real Earth globe and no fake coordinates

@@ -1,0 +1,99 @@
+Execute four-mode model and cross-mode tests
+✔ assault coordination increases AP regeneration, not V6 command or RAV budget (17.988653ms)
+✔ a concentrated attack needs an existing deployed warrior, 20 AP and V6 line-of-range (1.524913ms)
+✔ save validation blocks invented AP levels and duplicated tactical maneuver receipts (0.892445ms)
+✔ source W3-RTS05 references actual third-crater map, with two distinct source trackers (18.179841ms)
+✔ the real beacon moves only with its identified enemy carrier; a decoy never counts (2.340994ms)
+✔ observing an enemy, retrieving its fallen beacon and returning with a living tracker gives one real victory (4.782047ms)
+✔ if the tracker falls en route, the original beacon stays on its actual last tile (1.613645ms)
+✔ save import rejects a fabricated beacon, double carriers, forged scouts or swapped map (9.56859ms)
+✔ the seen enemy carrier flees along physical passable steps toward the less guarded crater exit (18.042727ms)
+✔ wounded exercise members cannot heal without a recruited source W3-U18 medic (5.250694ms)
+✔ care reserves the real patient team and paid medic; due date is not immediate (2.298281ms)
+✔ abort does not refund supplies or invent recovery, and never harms another team (0.647981ms)
+✔ corrupt care archives and forged early recovery dates preserve the archive (2.283499ms)
+✔ reconnaissance, sabotage, pressure and escorts visibly affect other V115 formats (13.277602ms)
+✔ V115 uses only V6 units, unique people and workbook RAV; it creates no V3/campaign front (3.055424ms)
+✔ all four operation formats are dispatchable on validated passages, with single upkeep debit (18.566203ms)
+✔ missing routes, duplicate people, over-command formations and own home remain blocked (0.459792ms)
+✔ assault cannot spawn an unreserved unit or spend AP twice; tick advances and produces one report (23.058751ms)
+✔ stealth is grid-based: no remote sabotage, no walking through solid walls, and patrols react (6.776346ms)
+✔ an actual stealth path reaches the relay, sabotages it and extracts with one unique V6 receipt (17.06764ms)
+✔ RTS movement and enemy response are simultaneous per order, with controlled occupancy (11.837758ms)
+✔ Outer Ops completes only at dueAt, reconciles missing UI time, and never awards twice (1.490292ms)
+✔ up to three independent Outer Ops can run; the fourth is rejected (1.405737ms)
+✔ manual retreat produces a unique report and frees the same identified members (0.958493ms)
+✔ archive roundtrip and source pinning reject corrupt or cross-context payloads (11.65085ms)
+✔ Outer Ops recalls require an authorized ongoing mission, not an instant team release (21.583592ms)
+✔ due recalls end exactly once as safe withdrawals without XP, wounds or territory rewards (1.998886ms)
+✔ forged recall deadlines, foreign rules and impossible timestamps preserve archive protection (10.250243ms)
+✔ voluntary immediate withdrawal does not wound or level a dormant combat team (1.968081ms)
+✔ the complete 30-unit V6 source is selectable and a paid medic is not created instantly (8.822352ms)
+✔ queue obeys both limited simultaneous arrivals and finite RAV, without duplicated identifiers (9.887732ms)
+✔ a pending recruit cannot deploy, and a future or corrupted arrival preserves existing archive (1.203626ms)
+✔ W3-RTS04 retains its proper original worksheet and requires real W3-U07 on W3-KR02 (10.55223ms)
+✔ guarded and uncontested circuit must survive four separate turns; periodic steam is reported (5.714701ms)
+✔ rivals at the circuit invalidate control, and three unguarded attacks destroy its integrity (1.121384ms)
+✔ eliminating every rival without holding the lever cannot score a scripted victory (7.556264ms)
+✔ archive refuses fabricated integrity, altered turn counters and unexpected map identities (5.842651ms)
+✔ announced vapor occludes the conduit for both sides without becoming a physical wall (1.23356ms)
+✔ scripted RTS victory retains the last phases with one source-bound combat receipt (9.303858ms)
+✔ manual retraction preserves already executed RTS phases without awarding a second report (6.72472ms)
+✔ ten prior tactical actions remain bounded and untrusted log injection cannot bypass import (18.084389ms)
+✔ six W3 RTS objective pilots preserve their authored maps; other 18 remain dossiers (10.478001ms)
+✔ a source scenario requires real source-defined unit types and territory region (15.149383ms)
+✔ W3-RTS01 has exactly one physically held cargo, persistent identities, and no instant victory (5.781691ms)
+✔ scout sight plus living porter at the real extraction wins without killing every rival (8.842733ms)
+✔ escort cargo falls with bearer and can be carried only by a remaining real porter (12.190712ms)
+✔ W3-RTS02 requires a present W3-U07 at the guard post for three uncontested ticks (0.9026ms)
+✔ malformed scenario, forged cargo, impossible marker, and wrong local region are refused on import (7.015722ms)
+✔ a lone W3-U07 can deliberately hold its real position for three alternating turns (3.155563ms)
+✔ W3-RTS03 keeps its original W3-MAP02 source and needs real logistics and artisan teams (1.707844ms)
+✔ W3-RTS03 delivery does not finish or work on the same tick; artisans must operate in a safe area (1.059152ms)
+✔ W3-RTS03 cannot finish by wiping enemies or by forging instant repair in local archives (4.09683ms)
+✔ W3 defenders prioritize visible objectives without selecting a hidden preferred target (0.555004ms)
+✔ W3-RTS03 switches defender priority from the regulator porter to repair artisans only after delivery (1.024009ms)
+✔ 108 source-authored scenes, 12 campaigns, 12 maps, 15 doctrines, 18 accords are read verbatim (1.523541ms)
+✔ every W3-N, W3-RTS and W5-LM source cell survives into a dossier without invented narratives (7.128519ms)
+✔ all twelve linked campaign chapters are present, references validated, with no roster fabrication (1.569179ms)
+✔ search respects accents, original mode, ID, title and class and never mutates source Bible (36.457116ms)
+✔ alternate validated private rules keep caller-owned copies, not a global singleton (2.088019ms)
+✔ all thirty-six W3 tactical sites allow reproducible routed enemy movement without wall crossing (140.182263ms)
+✔ occupied positions, blocked goal and already reached point do not generate illegal steps (1.116587ms)
+✔ turn-based rival routes around the K02 wall instead of colliding into it forever (3.191477ms)
+✔ realtime rival uses the same obstruction-aware step with no conflicting occupancy (1.7992ms)
+✔ Outer Ops has repeatable three-stage, source-visible exchanges; settling twice is impossible (13.11863ms)
+✔ realtime RTS starts from real identified teams and advances autonomous orders by simulation ticks (31.385439ms)
+✔ the ally can hold a position and enemies cannot teleport or create a second turn (1.370534ms)
+✔ archive checks reject impossible actors, cross-team orders, duplicate persons and forged phases (2.141098ms)
+✔ the thirty-six authored W3 territories produce deterministic, coherent tactical maps (45.182125ms)
+✔ solid barriers block action, sight and movement but never consume a rejected order (3.090747ms)
+✔ realtime RTS rejects wall targeting and treats all regional walls as occupied in simulation (20.916271ms)
+✔ turn-based RTS may not teleport across a solid regional barrier (0.813697ms)
+✔ W3-RTS06 source belongs to W3-MAP03 and requires source V6 guide plus real extraction crew (6.406959ms)
+✔ a team standing at the ship cannot be evacuated before an actual ridge survey (1.820712ms)
+✔ an explicit alternating ship arrival removes only that living team, not all battlefield actors (17.506551ms)
+✔ isolation or loss of the guide is not covered by invented extraction or teleportation (1.391986ms)
+✔ wind reduces ranged visibility during one known phase, not physical routes or shelter (1.192851ms)
+✔ reloaded W3-RTS06 excludes fabricated extractions, duplicate teams, impossible wind and changed source (6.254332ms)
+ℹ tests 77
+ℹ suites 0
+ℹ pass 77
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1919.357189
+
+
+Lint engine and mission UI
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+/workspace/scratch/5ba9c138dac4/workflow-review-wjtecr3z/clan-war-v115-after/app/game/ClanWarMissionDossiersV117.tsx
+  8:8  warning  'WarMissionSourceKindV117' is defined but never used  @typescript-eslint/no-unused-vars
+
+/workspace/scratch/5ba9c138dac4/workflow-review-wjtecr3z/clan-war-v115-after/app/game/systems/clanWarRtsScenariosV119.ts
+  402:16  warning  '_actor' is defined but never used  @typescript-eslint/no-unused-vars
+
+✖ 2 problems (0 errors, 2 warnings)
+

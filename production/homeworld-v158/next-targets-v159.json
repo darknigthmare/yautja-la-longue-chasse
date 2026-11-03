@@ -1,0 +1,87 @@
+{
+  "schema": "yautja.homeworld.v159.worklist",
+  "state": "DESIGN_INTENT_NOT_RENDERED",
+  "cameraReference": "app/game/systems/homeworldGeometryV64.ts",
+  "targets": [
+    {
+      "id": "HW1041",
+      "label": "Caniveau basaltique segment court",
+      "catalogueId": "target-v81-68-233",
+      "orientation": "top-front",
+      "district": "ruelles et marchés",
+      "acceptance": "raccord horizontal répétable, grille et socle contact mesuré"
+    },
+    {
+      "id": "HW1042",
+      "label": "Ventilation de sol à clapets",
+      "catalogueId": "target-v81-68-239",
+      "orientation": "front-right",
+      "district": "bas-quartiers",
+      "acceptance": "faible hauteur, pas de bord arrière flottant"
+    },
+    {
+      "id": "HW1043",
+      "label": "Conduit de chaleur de forge",
+      "catalogueId": "target-v81-63-151",
+      "orientation": "side-left",
+      "district": "forges",
+      "acceptance": "terminaisons articulées alignées sur parois natives"
+    },
+    {
+      "id": "HW1044",
+      "label": "Barrière de lave rétractable",
+      "catalogueId": "target-v81-57-70",
+      "orientation": "front-left",
+      "district": "ceinture volcanique",
+      "acceptance": "deux terminaux, traversée bloquée au niveau du sol"
+    },
+    {
+      "id": "HW1045",
+      "label": "Conduit d'énergie blindé",
+      "catalogueId": "target-v81-67-211",
+      "orientation": "side-right",
+      "district": "spatioport",
+      "acceptance": "modules connectables sans fuite alpha"
+    },
+    {
+      "id": "HW1046",
+      "label": "Échelle de maintenance du quai",
+      "catalogueId": "target-v81-67-215",
+      "orientation": "front-right",
+      "district": "spatioport",
+      "acceptance": "accroche haute et pied porteur réels"
+    },
+    {
+      "id": "HW1047",
+      "label": "Panneau de récupération renforcé des bas-quartiers",
+      "catalogueId": "target-v81-73-292",
+      "orientation": "front-left",
+      "district": "bas-quartiers",
+      "acceptance": "silhouette distincte de la pile scrap V114, rivets et points d'attache mesurés"
+    },
+    {
+      "id": "HW1048",
+      "label": "Signal de circulation de convoi",
+      "catalogueId": "target-v81-67-221",
+      "orientation": "side-left",
+      "district": "quais",
+      "acceptance": "interface originale diégétique non dupliquée du panneau V114"
+    },
+    {
+      "id": "HW1049",
+      "label": "Passerelle légère des bas-quartiers",
+      "catalogueId": "target-v81-73-309",
+      "orientation": "front-right",
+      "district": "bas-quartiers",
+      "acceptance": "module réduit distinct de HW1031 avec socles et tablier continus"
+    },
+    {
+      "id": "HW1050",
+      "label": "Garde-fou basalte pour angle de rue",
+      "catalogueId": "target-v81-57-61",
+      "orientation": "side-left",
+      "district": "quartiers civils",
+      "acceptance": "angle natif sans miroir CSS et points de raccord mesurés"
+    }
+  ]
+}

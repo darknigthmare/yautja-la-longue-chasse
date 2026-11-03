@@ -1,0 +1,31 @@
+✔ V113 dressing reuses existing sources only, with unique ids, a group and a stated use for every instance (1.989823ms)
+✔ every V92-art place is admitted by the unchanged V92 compiler, and recompiling is stable (151.817957ms)
+✔ every contact stands on supported ground, outside every reserve and older solid, without overlapping another (118.676558ms)
+✔ dressing is solid for the real motor on its own floor only, and a closed facade cannot be entered (6.53705ms)
+✔ door corridors, interaction points and connector ends keep their clearance (63.408383ms)
+✔ the public guide still reaches every door, region and connector from the port spawn (30337.862198ms)
+✖ no dressing sprite is hidden by a building or closed facade painted after it (8.59236ms)
+✔ the World scene paints every dressing instance and facade on its own floor (1429.932882ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 7
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 34500.953687
+
+✖ failing tests:
+
+test at tests/homeworld-dressing-v113.test.mjs:109:1
+✖ no dressing sprite is hidden by a building or closed facade painted after it (8.59236ms)
+  Error: Input file is missing: public/game/homeworld/v81/industrial-residence-right.png
+      at Sharp.toBuffer (file:///workspace/scratch/29bce469d3ef/yautja/node_modules/sharp/dist/output.mjs:159:17)
+      at alphaOf (file:///workspace/scratch/29bce469d3ef/homeworld-fixes/tests/homeworld-dressing-v113.test.mjs:110:124)
+      at TestContext.<anonymous> (file:///workspace/scratch/29bce469d3ef/homeworld-fixes/tests/homeworld-dressing-v113.test.mjs:119:162)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)

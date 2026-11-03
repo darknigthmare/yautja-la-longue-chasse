@@ -11,9 +11,10 @@ import {normalizeHomeworldArchivePlaqueV109} from './homeworldArchivePlaqueLedge
 import {normalizeHomeworldArchiveContinuationV111} from './homeworldArchiveContinuationLedgerV111';
 import {homeworldCivicWalkableV80} from './homeworldCivicWorldV80';
 import {homeworldPublicPlaceCollisionV112} from './homeworldPublicPlacesV112';
-import {homeworldCollisionBeforePublicPlacesV112,HOMEWORLD_GROUND_V77,HOMEWORLD_CONNECTOR_PADS_V82} from './homeworldWorldV77';
+import {homeworldDressingCollisionV113,homeworldDressingRecoveryRadiusV113} from './homeworldDressingV113';
+import {homeworldCollisionBeforePublicPlacesV112,HOMEWORLD_GROUND_V77,HOMEWORLD_CONNECTOR_PADS_V82,type HomeworldLevelV77} from './homeworldWorldV77';
 import {HOMEWORLD_URBAN_GROUND_V78} from './homeworldUrbanLayoutV78';
-import {HOMEWORLD_CITY_GENERATED_PROPS_V78,HOMEWORLD_URBAN_PROPS_V78} from './homeworldStreetModulesV78';
+import {HOMEWORLD_CITY_GENERATED_PROPS_V78,HOMEWORLD_URBAN_PROPS_V78,homeworldUrbanTerrainV78} from './homeworldStreetModulesV78';
 import {homeworldCityNativeTouchesV78} from './homeworldCityNativePlacementV78';
 import {homeworldCourtTouchesV80,HOMEWORLD_COURT_ART_V80} from './homeworldCourtArtV80';
 import {HOMEWORLD_GEOMETRY_V64} from './homeworldGeometryV64';
@@ -50,8 +51,8 @@ function documents(raw:unknown,owner:string):HomeworldGeometryRecoveryLedgersV11
   return structuredClone(raw) as HomeworldGeometryRecoveryLedgersV112;
 }
 const historicalGround=[...HOMEWORLD_GROUND_V77.filter(g=>!g.id.startsWith('foundation-v112:')&&!g.id.startsWith('ground-joint-v113:')),...HOMEWORLD_CONNECTOR_PADS_V82,...HOMEWORLD_URBAN_GROUND_V78].filter(g=>g.levelId==='0');
-/** Exact former floor union and all retained collision providers. Only the new
- * V112 public furniture is absent; dynamic old cargo still blocks this query. */
+/** Exact former floor union and all retained collision providers. V112 public
+ * furniture and later V113 dressing are absent; old dynamic cargo still blocks. */
 export function homeworldBeforePublicPlacesWalkableV112(p:Point,cargo?:Parameters<typeof cargoCaseCollisionV108>[0],body:HomeworldFootprint={halfWidth:24,halfDepth:14}):boolean {
   if(![p.x,p.y].every(Number.isFinite))return false;
   if(![[0,0],[-1,0],[1,0],[0,-1],[0,1],[-1,-1],[-1,1],[1,-1],[1,1]].every(([x,y])=>historicalGround.some(g=>pointInHomeworldPolygon({x:p.x+x*body.halfWidth,y:p.y+y*body.halfDepth},g.polygon))))return false;
@@ -63,12 +64,26 @@ export function homeworldBeforePublicPlacesWalkableV112(p:Point,cargo?:Parameter
     ||cargoCaseCollisionV108(cargo,p,body))return false;
   return true;
 }
+/** Exact previous providers for V113 dressing: keep V112 furniture, current
+ * paving and every older solid. Dynamic cargo exists only on the port floor. */
+export function homeworldBeforeDressingWalkableV113(level:HomeworldLevelV77,p:Point,cargo?:Parameters<typeof cargoCaseCollisionV108>[0],body:HomeworldFootprint={halfWidth:24,halfDepth:14}):boolean {
+  if(![p.x,p.y].every(Number.isFinite)||!homeworldUrbanTerrainV78(level,p,body))return false;
+  return !homeworldCollisionBeforePublicPlacesV112(level,p,body)&&!homeworldPublicPlaceCollisionV112(level,p,body)
+    &&!homeworldUrbanFacadeCollisionV78(level,p,body)
+    &&!HOMEWORLD_CITY_GENERATED_PROPS_V78.some(item=>item.levelId===level&&homeworldCityNativeTouchesV78(item,p,body))
+    &&!HOMEWORLD_URBAN_PROPS_V78.some(item=>item.levelId===level&&homeworldCourtTouchesV80(item,p,body))
+    &&!HOMEWORLD_CIVIC_PROPS_V80.some(item=>item.levelId===level&&homeworldCivicTouchesV80(item,p,body))
+    &&!homeworldArchiveCollisionV106(level,p,body)&&!homeworldArchiveComparisonCollisionV107(level,p,body)
+    &&!cargoFixedCollisionV108(level,p,body)&&!(level==='0'&&cargoCaseCollisionV108(cargo,p,body));
+}
 export interface HomeworldGeometryRecoveryContextV112 {
   ownerCreatedAt:string;currentOwnerCreatedAt:string;checkpoint:unknown;ledgers:HomeworldArrivalRecoveryLedgersV111;
   actor:Point;levelId:string;interiorId:string|null;active:boolean;inTransit?:boolean;
 }
 export interface HomeworldGeometryRecoveryMigrationV112 {
   kind:'checkpoint'|'operation-last'|'ground-object';ledgerKey?:HomeworldArrivalRecoveryLedgerKeyV111;
+  /** Absent in historical V112 backups; those migrations always used level 0. */
+  levelId?:HomeworldLevelV77;
   study?:boolean;objectField?:'cases'|'lots'|'objects'|'evidence';objectIndex?:number;objectId?:string;
   from:Point;to:Point;obstacleId:string;
 }
@@ -102,10 +117,15 @@ function cargoForAnchor(checked:HomeworldArrivalRecoveryLedgersV111,anchor?:Anch
 function anchors(checkpoint:unknown,checked:HomeworldArrivalRecoveryLedgersV111,owner:string):Anchor[]{
   const result:Anchor[]=[],saved=normalizeHomeworldCheckpointV77(checkpoint);
   const admit=(candidate:Omit<Anchor,'obstacleId'>)=>{
-    const hit=homeworldPublicPlaceCollisionV112('0',candidate.from,candidate.body);
+    const level=candidate.levelId??'0',hit=homeworldPublicPlaceCollisionV112(level,candidate.from,candidate.body);
     if(hit)result.push({...candidate,obstacleId:hit});
+    else {
+      const dressing=homeworldDressingCollisionV113(level,candidate.from,candidate.body);
+      if(dressing)result.push({...candidate,levelId:level,obstacleId:dressing.id});
+    }
   };
-  if(saved?.ownerCreatedAt===owner&&saved.levelId==='0'&&saved.interiorId===null)admit({kind:'checkpoint',from:{...saved.exterior},body:nativeBody});
+  if(saved?.ownerCreatedAt===owner&&saved.interiorId===null)admit({kind:'checkpoint',from:{...saved.exterior},body:nativeBody,
+    ...(saved.levelId==='0'?{}:{levelId:saved.levelId})});
   for(const key of HOMEWORLD_ARRIVAL_RECOVERY_LEDGER_KEYS_V111){
     const ledger=checked[key];if(!record(ledger)||!record(ledger.receipt))continue;
     const study=key==='archiveContinuationV111';
@@ -195,7 +215,7 @@ function migrateAnchor(raw:HomeworldArrivalRecoveryLedgersV111,anchor:Anchor,to:
 
 function preservesRecordedFeet(context:HomeworldGeometryRecoveryContextV112,ledgers:HomeworldArrivalRecoveryLedgersV111,checkpoint:HomeworldCheckpointV77|undefined,movesActor:boolean):boolean {
   const cargo=normalizeHomeworldCargoV108(ledgers.cargoV108)??undefined,feet:Point[]=[];
-  if(movesActor&&checkpoint)feet.push(checkpoint.exterior);
+  if(movesActor){if(checkpoint?.levelId==='0')feet.push(checkpoint.exterior);}
   else if(context.levelId==='0'&&!context.interiorId)feet.push(context.actor);
   if(checkpoint?.levelId==='0')feet.push(checkpoint.exterior);
   for(const key of HOMEWORLD_ARRIVAL_RECOVERY_LEDGER_KEYS_V111){
@@ -219,20 +239,22 @@ export function planHomeworldGeometryRecoveryV112(context:HomeworldGeometryRecov
   let next=checked,checkpoint=saved,movesActor=false;
   const migrations:HomeworldGeometryRecoveryMigrationV112[]=[],changed=new Set<HomeworldArrivalRecoveryLedgerKeyV111>();
   for(const anchor of affected){
-    const cargo=cargoForAnchor(next,anchor);
-    if(!homeworldBeforePublicPlacesWalkableV112(anchor.from,cargo,anchor.body))return refused('Un point occupé ne dispose pas de son ancienne géométrie libre. Aucun passage à travers un autre obstacle n’est supposé.');
+    const cargo=cargoForAnchor(next,anchor),level=anchor.levelId??'0',dressing=anchor.obstacleId.startsWith('dressing-v113:');
+    const oldFree=(p:Point)=>dressing?homeworldBeforeDressingWalkableV113(level,p,cargo,anchor.body):homeworldBeforePublicPlacesWalkableV112(p,cargo,anchor.body);
+    const radiusLimit=dressing?Math.max(HOMEWORLD_GEOMETRY_RECOVERY_RADIUS_V112,homeworldDressingRecoveryRadiusV113(anchor.obstacleId,anchor.from,anchor.body)):HOMEWORLD_GEOMETRY_RECOVERY_RADIUS_V112;
+    if(!oldFree(anchor.from))return refused('Un point occupé ne dispose pas de son ancienne géométrie libre. Aucun passage à travers un autre obstacle n’est supposé.');
     let selected=false;
-    for(let radius=8;radius<=HOMEWORLD_GEOMETRY_RECOVERY_RADIUS_V112&&!selected;radius+=8)for(let n=0;n<48;n++){
+    for(let radius=8;radius<=radiusLimit&&!selected;radius+=8)for(let n=0;n<48;n++){
       const angle=n*Math.PI/24,to={x:anchor.from.x+Math.cos(angle)*radius,y:anchor.from.y+Math.sin(angle)*radius};
       const clearance={halfWidth:Math.max(36,anchor.body.halfWidth),halfDepth:Math.max(26,anchor.body.halfDepth)};
-      if(!homeworldCivicWalkableV80('0',to,clearance)||cargoCaseCollisionV108(cargo,to,clearance))continue;
+      if(!homeworldCivicWalkableV80(level,to,clearance)||level==='0'&&cargoCaseCollisionV108(cargo,to,clearance))continue;
       const samples=Math.max(1,Math.ceil(radius/2));let clear=true;
-      for(let step=0;step<=samples;step++)if(!homeworldBeforePublicPlacesWalkableV112({x:anchor.from.x+(to.x-anchor.from.x)*step/samples,y:anchor.from.y+(to.y-anchor.from.y)*step/samples},cargo,anchor.body)){clear=false;break;}
+      for(let step=0;step<=samples;step++)if(!oldFree({x:anchor.from.x+(to.x-anchor.from.x)*step/samples,y:anchor.from.y+(to.y-anchor.from.y)*step/samples})){clear=false;break;}
       if(!clear)continue;
       const moved=migrateAnchor(next,anchor,to,context.ownerCreatedAt);if(!moved)continue;
       if(anchor.kind==='ground-object'){
         const stand=anchor.ledgerKey==='cargoV108'||anchor.ledgerKey==='archivePlaqueV109'||anchor.ledgerKey==='archiveContinuationV111'?{x:to.x,y:to.y+60}:to;
-        if(!homeworldCivicWalkableV80('0',stand)||cargoCaseCollisionV108(normalizeHomeworldCargoV108(moved.ledgers.cargoV108)??undefined,stand))continue;
+        if(!homeworldCivicWalkableV80(level,stand)||level==='0'&&cargoCaseCollisionV108(normalizeHomeworldCargoV108(moved.ledgers.cargoV108)??undefined,stand))continue;
       }
       if(!preservesRecordedFeet(context,moved.ledgers,checkpoint,movesActor))continue;
       next=moved.ledgers;for(const key of moved.changed)changed.add(key);
@@ -240,7 +262,7 @@ export function planHomeworldGeometryRecoveryV112(context:HomeworldGeometryRecov
       const {body:unused,...recorded}=anchor;void unused;
       migrations.push({...recorded,to});selected=true;break;
     }
-    if(!selected)return refused('Aucun point local libre avec le corps ou la pièce entière et les mêmes documents n’a été trouvé à moins de 96 unités. Les données restent conservées.');
+    if(!selected)return refused('Aucun point local libre sur le même étage avec le corps ou la pièce entière et les mêmes documents n’a été trouvé autour de cet obstacle. Les données restent conservées.');
   }
   const changedLedgerKeys=[...changed],backup:HomeworldGeometryRecoveryBackupV112={version:1,operationId:'homeworld-public-furniture-migration-v112',ownerCreatedAt:context.ownerCreatedAt,
     originalCheckpointPresent:context.checkpoint!==undefined,originalCheckpointJson:checkpointJson,originalLedgersJson:ledgersJson,

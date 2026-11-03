@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "scope": "Failed controller attempts retained; never counted as qualification passes",
+  "attempts": [
+    {
+      "file": "native-before-guardian-reposition.json.gz",
+      "scope": "7 native successes, then actual death after Guardian defeat; require-complete exited 1",
+      "uncompressedSha256": "d268298691beff5249b7c3710c888c4444a630705ec4eef2f67b16664065119b",
+      "sha256": "226010d39d0c0e3c459d87befd1e8dc2922347da7151f4c14f49ea838140822b",
+      "bytes": 28741
+    },
+    {
+      "file": "browser-first-cadence.json.gz",
+      "scope": "Actual suspension/reload/resume, incomplete hunt due pilot cadence; no completion awarded",
+      "uncompressedSha256": "b61645896cd36c8104848e54bfd1cc8937d6026a4f302ed52b4324be6496ec46",
+      "sha256": "75642957a09e85984956e16a8b3aad9c44f27517fd6dde148b47bb8ca7dcaf2f",
+      "bytes": 48680
+    },
+    {
+      "file": "browser-ice-before-dom-guard.json.gz",
+      "scope": "Actual Apex defeated then player died; two stale-menu waits in pilot, no hunt completion or specimen awarded",
+      "uncompressedSha256": "70a58283aceb54d7ee196a777087311ec583c39bfad297a0537c763d502ae08b",
+      "sha256": "be0db25948363fc46ef993295f444b756cad12050e1dc2997a86858aa78623bc",
+      "bytes": 91067
+    },
+    {
+      "file": "browser-volcano-budget-with-native-retries.json.gz",
+      "scope": "Actual Volcano attempt reached Apex defeat, then died; two real checkpoint retry buttons; budget expired, no completion awarded",
+      "uncompressedSha256": "d7b76313a2791f592e69c28c4d3949e9d98ea400a8a4a6fed444e865d90e9250",
+      "sha256": "1387450e33e1024fa318a3f1b5a1f16e2f687742326dcefc09b7e539f4be0779",
+      "bytes": 190179
+    },
+    {
+      "file": "browser-jungle-revisit-without-anatomy.json.gz",
+      "scope": "Genuine Jungle revisit won and settled; anatomical/atelier goal not achieved, never counted as another unique contract",
+      "uncompressedSha256": "3368568c02f83027ee943d92a5dc89c18b3ba106120c0f23319d5474a4d44901",
+      "sha256": "9974726ec3bd0f877af9c1b5072172c1531a6c87d97c07a487115d5ff221ae07",
+      "bytes": 99285
+    }
+  ]
+}

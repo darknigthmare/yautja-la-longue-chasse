@@ -23,10 +23,10 @@ export {MISSION_BY_ID} from "./data";
 `,resolveDir:fileURLToPath(new URL("../app/game/",import.meta.url)),loader:"tsx"},
   bundle:true,write:false,platform:"node",format:"cjs",jsx:"automatic",loader:{".module.css":"empty"},
   external:["react","react/jsx-runtime","react-dom"],logLevel:"silent"});
-const browser={focused:true,hidden:false,pads:[]},module={exports:{}};
-runInNewContext(built.outputFiles[0].text,{module,exports:module.exports,require:createRequire(import.meta.url),
+const browser={focused:true,hidden:false,pads:[]},testModule={exports:{}};
+runInNewContext(built.outputFiles[0].text,{module:testModule,exports:testModule.exports,require:createRequire(import.meta.url),
   document:{get hidden(){return browser.hidden},hasFocus:()=>browser.focused},navigator:{getGamepads:()=>browser.pads},TextEncoder,TextDecoder});
-const api=module.exports;
+const api=testModule.exports;
 const plain=value=>JSON.parse(JSON.stringify(value));
 const profile=patch=>({...api.normalizeHuntAccessibilityV112(undefined),...patch});
 function input(settings=profile()){

@@ -1,0 +1,200 @@
+{
+  "camera": {
+    "projection": "orthographic",
+    "pitchDegrees": 35,
+    "yawDegrees": 0
+  },
+  "locks": "Un objet indépendant par image. PNG RGBA transparent. Aucun texte, poster, planche, cadre, grille dessinée, logo, scène, personnage, fausse validation. Proportions réelles non condensées, détails fins. Aucun effet de lave ajouté aux éléments utilitaires. Palette basalte brun-noir, métal gunmetal usé, bronze ancien discret, peu de lumière rouge. Vue légèrement plongeante identique aux props natifs. Conserver des marges autour de toute la silhouette. Les dix objets sont des adaptations originales, jamais affirmés canoniques 1:1.",
+  "jobs": [
+    {
+      "id": "HWP163-01",
+      "targetId": "target-v81-63-151",
+      "label": "Conduit de chaleur de forge",
+      "district": "forge",
+      "brief": "Duct isolé allongé, quatre plaques courbes en métal sombre et joints fins, deux raccords ouverts. Aucun foyer, aucune forge entière, aucun mur.",
+      "proposedMetres": {
+        "length": 4,
+        "depth": 0.7,
+        "height": 0.9
+      },
+      "dimensionsAuthority": "GAME_DESIGN_ASSUMPTION_NOT_CANON",
+      "lore": "ORIGINAL_GAME_ADAPTATION",
+      "reference": "Brief Homeworld V81, volumes courbes AVPR REF01, matériaux des PNG natifs V78/V80",
+      "searchPattern": "heat[-_ ]?(duct|conduit)|conduit[-_ ]?chaleur",
+      "matchingIndependentFilenames": [],
+      "state": "A_PRODUIRE",
+      "singleIndependentObject": true
+    },
+    {
+      "id": "HWP163-02",
+      "targetId": "target-v81-67-211",
+      "label": "Conduit d’énergie du spatioport",
+      "district": "port",
+      "brief": "Long conduit blindé indépendant, attaches de raccord trapézoïdales, quelques témoins rouge sombre, pas de réacteur ni de quai.",
+      "proposedMetres": {
+        "length": 6,
+        "depth": 0.6,
+        "height": 0.5
+      },
+      "dimensionsAuthority": "GAME_DESIGN_ASSUMPTION_NOT_CANON",
+      "lore": "ORIGINAL_GAME_ADAPTATION",
+      "reference": "Brief Homeworld V81, volumes courbes AVPR REF01, matériaux des PNG natifs V78/V80",
+      "searchPattern": "(energy|fuel)[-_ ]?(duct|conduit)|conduit[-_ ]?energie",
+      "matchingIndependentFilenames": [],
+      "state": "A_PRODUIRE",
+      "singleIndependentObject": true
+    },
+    {
+      "id": "HWP163-03",
+      "targetId": "target-v81-67-212",
+      "label": "Câble d’énergie au sol",
+      "district": "port",
+      "brief": "Un seul câble sombre épais, courbe souple en S avec connecteur indépendant à chaque bout. Pas de plateforme ni de machines.",
+      "proposedMetres": {
+        "length": 5,
+        "depth": 0.2,
+        "height": 0.15
+      },
+      "dimensionsAuthority": "GAME_DESIGN_ASSUMPTION_NOT_CANON",
+      "lore": "ORIGINAL_GAME_ADAPTATION",
+      "reference": "Brief Homeworld V81, volumes courbes AVPR REF01, matériaux des PNG natifs V78/V80",
+      "searchPattern": "(power|energy)[-_ ]?cable|cable[-_ ]?energie",
+      "matchingIndependentFilenames": [],
+      "state": "A_PRODUIRE",
+      "singleIndependentObject": true
+    },
+    {
+      "id": "HWP163-04",
+      "targetId": "target-v81-67-215",
+      "label": "Échelle de maintenance",
+      "district": "port",
+      "brief": "Échelle verticale de six mètres indicatifs, barreaux nombreux fins, fixations supérieures visibles. Pas de portique entier ni socle de bâtiment.",
+      "proposedMetres": {
+        "length": 0.8,
+        "depth": 0.25,
+        "height": 6
+      },
+      "dimensionsAuthority": "GAME_DESIGN_ASSUMPTION_NOT_CANON",
+      "lore": "ORIGINAL_GAME_ADAPTATION",
+      "reference": "Brief Homeworld V81, volumes courbes AVPR REF01, matériaux des PNG natifs V78/V80",
+      "searchPattern": "maintenance[-_ ]?ladder|echelle[-_ ]?maintenance",
+      "matchingIndependentFilenames": [],
+      "state": "A_PRODUIRE",
+      "singleIndependentObject": true
+    },
+    {
+      "id": "HWP163-05",
+      "targetId": "target-v81-68-233",
+      "label": "Grille de drainage de rue",
+      "district": "rue",
+      "brief": "Une grille oblongue basse insérée dans un cadre pierre-métal patiné; ouvertures transparentes, sans trottoir, sans canal attaché.",
+      "proposedMetres": {
+        "length": 1.8,
+        "depth": 0.7,
+        "height": 0.12
+      },
+      "dimensionsAuthority": "GAME_DESIGN_ASSUMPTION_NOT_CANON",
+      "lore": "ORIGINAL_GAME_ADAPTATION",
+      "reference": "Brief Homeworld V81, volumes courbes AVPR REF01, matériaux des PNG natifs V78/V80",
+      "searchPattern": "drain(age)?[-_ ]?(grate|grille)|grille[-_ ]?drain",
+      "matchingIndependentFilenames": [],
+      "state": "A_PRODUIRE",
+      "singleIndependentObject": true
+    },
+    {
+      "id": "HWP163-06",
+      "targetId": "target-v81-68-235",
+      "label": "Caniveau de desserte",
+      "district": "rue",
+      "brief": "Un segment ouvert peu profond de caniveau en basalte noir, fins rebords, extrémités raccordables, aucune lave.",
+      "proposedMetres": {
+        "length": 4,
+        "depth": 0.6,
+        "height": 0.25
+      },
+      "dimensionsAuthority": "GAME_DESIGN_ASSUMPTION_NOT_CANON",
+      "lore": "ORIGINAL_GAME_ADAPTATION",
+      "reference": "Brief Homeworld V81, volumes courbes AVPR REF01, matériaux des PNG natifs V78/V80",
+      "searchPattern": "caniveau|gutter|drainage[-_ ]?channel",
+      "matchingIndependentFilenames": [],
+      "state": "A_PRODUIRE",
+      "singleIndependentObject": true
+    },
+    {
+      "id": "HWP163-07",
+      "targetId": "target-v81-68-239",
+      "label": "Ventilation de sol",
+      "district": "rue",
+      "brief": "Ventilation basse en métal sombre, lames inclinées, deux supports discrets, intérieur noir. Pas de fumée incorporée ni édifice.",
+      "proposedMetres": {
+        "length": 1.5,
+        "depth": 1.0,
+        "height": 0.3
+      },
+      "dimensionsAuthority": "GAME_DESIGN_ASSUMPTION_NOT_CANON",
+      "lore": "ORIGINAL_GAME_ADAPTATION",
+      "reference": "Brief Homeworld V81, volumes courbes AVPR REF01, matériaux des PNG natifs V78/V80",
+      "searchPattern": "ground[-_ ]?vent|floor[-_ ]?vent|ventilation[-_ ]?sol",
+      "matchingIndependentFilenames": [],
+      "state": "A_PRODUIRE",
+      "singleIndependentObject": true
+    },
+    {
+      "id": "HWP163-08",
+      "targetId": "target-v81-73-294",
+      "label": "Câble suspendu des bas-quartiers",
+      "district": "bas-quartiers",
+      "brief": "Une liaison suspendue en courbe de chaînette, attaches latérales seules et quelques colliers, aucun poteau ni maison.",
+      "proposedMetres": {
+        "length": 8,
+        "depth": 0.25,
+        "height": 1.3
+      },
+      "dimensionsAuthority": "GAME_DESIGN_ASSUMPTION_NOT_CANON",
+      "lore": "ORIGINAL_GAME_ADAPTATION",
+      "reference": "Brief Homeworld V81, volumes courbes AVPR REF01, matériaux des PNG natifs V78/V80",
+      "searchPattern": "hanging[-_ ]?cable|suspended[-_ ]?cable|cable[-_ ]?suspendu",
+      "matchingIndependentFilenames": [],
+      "state": "A_PRODUIRE",
+      "singleIndependentObject": true
+    },
+    {
+      "id": "HWP163-09",
+      "targetId": "target-v81-74-324",
+      "label": "Treuil de manutention",
+      "district": "industrie",
+      "brief": "Un treuil autonome bas, tambour mécanique caréné et câble enroulé, berceau massif sobre. Sans grue, pont roulant, personnages.",
+      "proposedMetres": {
+        "length": 2,
+        "depth": 1.2,
+        "height": 1.3
+      },
+      "dimensionsAuthority": "GAME_DESIGN_ASSUMPTION_NOT_CANON",
+      "lore": "ORIGINAL_GAME_ADAPTATION",
+      "reference": "Brief Homeworld V81, volumes courbes AVPR REF01, matériaux des PNG natifs V78/V80",
+      "searchPattern": "winch|treuil",
+      "matchingIndependentFilenames": [],
+      "state": "A_PRODUIRE",
+      "singleIndependentObject": true
+    },
+    {
+      "id": "HWP163-10",
+      "targetId": "target-v81-74-326",
+      "label": "Rail de manutention",
+      "district": "industrie",
+      "brief": "Une travée de guidage double de huit mètres indicatifs, fins supports transversaux, raccords mécaniques aux deux bouts, sans chariot.",
+      "proposedMetres": {
+        "length": 8,
+        "depth": 1.2,
+        "height": 0.25
+      },
+      "dimensionsAuthority": "GAME_DESIGN_ASSUMPTION_NOT_CANON",
+      "lore": "ORIGINAL_GAME_ADAPTATION",
+      "reference": "Brief Homeworld V81, volumes courbes AVPR REF01, matériaux des PNG natifs V78/V80",
+      "searchPattern": "cargo[-_ ]?rail|industrial[-_ ]?rail|rail[-_ ]?manutention",
+      "matchingIndependentFilenames": [],
+      "state": "A_PRODUIRE",
+      "singleIndependentObject": true
+    }
+  ]
+}

@@ -102,8 +102,11 @@ test('V112 preserves the V111 street plan and owner, geometry and stale-target r
 
 test('V112 recalculates from the exact real motor position where the pinned V111 market guide stopped', async () => {
   const target = inside.find(target => target.pointId === 'market-service'), origin = originFor(target);
+  const room = rooms.homeworldInteriorForBuildingV64(target.buildingId);
   const actor = {x: 198.4823632125863, y: 178.47060535431052};
   const plan = current.homeworldRoutePlanV112(save, {...origin, actor}, target.id);
+  const spawnPlan = old.homeworldRoutePlanV111(save, origin, target.id);
+  const before = JSON.stringify({save, plan, spawnPlan});
   assert.equal(plan.status, 'reachable');
   // Main subsequently repaired the V111 guide too. Reproduce the former stop
   // in its verified original application, rather than requiring live code to
@@ -124,6 +127,69 @@ test('V112 recalculates from the exact real motor position where the pinned V111
   assert.equal(guide.state, 'walking');
   assert(Math.hypot(guide.waypoint.x - actor.x, guide.waypoint.y - actor.y) > .000001);
   assert(rooms.isHomeworldInteriorWalkableV64(rooms.homeworldInteriorForBuildingV64(target.buildingId), guide.waypoint));
+
+  assert(rooms.isHomeworldInteriorWalkableV64(room, actor));
+  assert.notEqual(rooms.nearestHomeworldInteriorTargetV64(room, actor)?.pointId, target.pointId);
+  const live = old.homeworldRouteGuidanceV111(spawnPlan, {...origin, actor}, save);
+  // a185398b24ffe458c6a6f7e622e5d7283de3d701 deliberately added a
+  // <=5-unit corner continuation and a safe <=180-unit rejoin. V111 here is
+  // the live implementation, not the historical selector that stopped.
+  assert.equal(live.state, 'walking');
+  assert(live.waypoint);
+  let nearestDistance = Infinity, projection = actor;
+  for (let n = 0; n < live.stage.points.length - 1; n++) {
+    const a = live.stage.points[n], b = live.stage.points[n + 1], dx = b.x - a.x, dy = b.y - a.y;
+    const ratio = Math.max(0, Math.min(1, ((actor.x - a.x) * dx + (actor.y - a.y) * dy) / (dx * dx + dy * dy || 1)));
+    const point = {x: a.x + dx * ratio, y: a.y + dy * ratio}, distance = Math.hypot(actor.x - point.x, actor.y - point.y);
+    if (distance < nearestDistance) {nearestDistance = distance; projection = point;}
+  }
+  const advance = Math.hypot(live.waypoint.x - actor.x, live.waypoint.y - actor.y);
+  assert(advance > .001 && advance <= 180);
+  assert(advance <= 5 || Math.hypot(live.waypoint.x - projection.x, live.waypoint.y - projection.y) < .000001,
+    'the former halt is repaired by a real short corner or safe nearest projection');
+  const precise = qa.load('app/game/systems/homeworldInteriorNavigationV112.ts');
+  const first = current.homeworldRouteGuidanceV112(plan, {...origin, actor}, save);
+  assert.equal(first.state, 'walking');
+  assert(precise.homeworldInteriorSegmentV112(room, actor, first.waypoint));
+
+  let walking = {...motor.createHomeworldActor(), ...actor, vx: 0, vy: 0}, steps = 0;
+  const nativeStep = waypoint => {
+    const span = Math.max(Math.abs(waypoint.x - walking.x) / 330, Math.abs(waypoint.y - walking.y) / 260, 1 / 60);
+    const next = motor.stepHomeworldActorOnFloor(walking, {
+      moveX: (waypoint.x - walking.x) / (330 * span), climb: (waypoint.y - walking.y) / (260 * span), jumpPressed: false,
+    }, 1 / 60, point => rooms.isHomeworldInteriorWalkableV64(room, point),
+    () => { throw Error('Neither a rejoin nor the recalculated route may reset the actor'); });
+    assert(rooms.isHomeworldInteriorWalkableV64(room, next), 'each full native body remains outside the current furniture');
+    assert(Math.hypot(next.x - walking.x, next.y - walking.y) > .000001, 'each native step makes physical progress');
+    walking = next; steps++;
+  };
+  // Traverse the live V111 corrective leg with the actual motor; checking only
+  // its endpoint would miss an intervening furniture corner.
+  for (let n = 0; n < 1000 && Math.hypot(live.waypoint.x - walking.x, live.waypoint.y - walking.y) > .000001; n++)
+    nativeStep(live.waypoint);
+  assert(Math.hypot(live.waypoint.x - walking.x, live.waypoint.y - walking.y) <= .000001);
+  const recalculated = current.homeworldRoutePlanV112(save, {...origin, actor: walking}, target.id);
+  assert.equal(recalculated.status, 'reachable');
+  let arrived = false;
+  for (let n = 0; n < 2000; n++) {
+    const guide = current.homeworldRouteGuidanceV112(recalculated, {...origin, actor: walking}, save);
+    assert(guide && guide.state !== 'off-route', 'the actual rejoined position keeps a verified corridor');
+    if (guide.state === 'arrived') {
+      assert.equal(rooms.nearestHomeworldInteriorTargetV64(room, walking)?.pointId, target.pointId);
+      arrived = true; break;
+    }
+    assert(precise.homeworldInteriorSegmentV112(room, walking, guide.waypoint));
+    nativeStep(guide.waypoint);
+  }
+  assert(arrived && steps > 0, 'walking must finish at the actual market service, without teleportation');
+  const far = {...origin, actor: {x: actor.x + 10000, y: actor.y + 10000}};
+  assert(live.stage.points.every(point => Math.hypot(point.x - far.actor.x, point.y - far.actor.y) > 180));
+  for (const [guidance, ownPlan] of [[old.homeworldRouteGuidanceV111, spawnPlan], [current.homeworldRouteGuidanceV112, plan]]) {
+    assert.equal(guidance(ownPlan, far, save).state, 'off-route', 'local recovery cannot attract a distant actor');
+    assert.equal(guidance({...ownPlan, geometryKey: 'a-real-lot-moved'}, {...origin, actor}, save).state, 'off-route');
+    assert.equal(guidance({...ownPlan, destinationKey: 'the-requested-post-moved'}, {...origin, actor}, save).state, 'off-route');
+  }
+  assert.equal(JSON.stringify({save, plan, spawnPlan}), before, 'guidance and native walking cannot change campaign or plan bytes');
 });
 
 test('V112 rejects the native mausoleum corner missed between old four-unit samples and repairs its actual route', () => {

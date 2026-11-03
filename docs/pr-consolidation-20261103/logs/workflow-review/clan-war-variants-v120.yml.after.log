@@ -1,0 +1,32 @@
+Validate 1200 unique V120 mission briefs
+✔ the V120 mission atlas has EXACTLY 100 variants per mode and family, 1200 total (38.18992ms)
+✔ biomes, hazards, objectives, topology and climate are NOT recycled as renamed clones (2.941726ms)
+✔ 400 distinct real-world inspiration names appear in the homage quarter, never a fictional canon claim (0.587792ms)
+✔ all 400 original and 400 lore-context scenarios remain explicitly invented, continuity bounded (7.181617ms)
+✔ all 1200 are honest design specs with success, failure, extraction, hazard/power outage and no hidden annexation (7.597113ms)
+✔ normalized accent-friendly search and family filtering do not mutate the source (141.056304ms)
+✔ seeded V120 mission draw exhausts 100 proposals without repetition, independent of mode and context (15.549824ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 511.756286
+
+
+TypeScript narrow check for atlas and UI
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+
+Lint authored atlas, UI and export script
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+
+Export checked Excel-compatible mission register
+{"rows":1200,"columns":44,"csv":"outputs/clan-war-v120/Yautja_Guerres_de_clans_1200_variantes_V120.csv","json":"outputs/clan-war-v120/Yautja_Guerres_de_clans_1200_variantes_V120.json"}
+
+
+Verify both exports contain all 1,200 designs
+Validated 1,200 rows, 400 distinct named locations, 44-column source workbook

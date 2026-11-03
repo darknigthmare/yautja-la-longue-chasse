@@ -1,6 +1,11 @@
 import { GAME_RESERVE_EXPEDITION_V108_SECTORS, GAME_RESERVE_EXPEDITION_V108_SITES } from "./systems/gameReserveExpeditionV108";
 import {gameReserveV109Definition, GAME_RESERVE_V109_ART_DIMENSIONS, type GameReserveNativeArt} from './systems/gameReserveExpeditionV109';
 import {GAME_RESERVE_HAZARD_RULES} from './systems/gameReserveGrandHunt';
+import {GAME_RESERVE_LEGACY_DECOR} from './systems/gameReserveLegacyDecorData';
+/** Render-only native decor of the V1–V5 terrains, keyed like the generated data. */
+/** Public paths of the render-only decor a V1–V5 terrain may draw (empty for V6). */
+export const gameReserveLegacyDecorSources = (s: {version: number; reserveId?: string}): string[] => legacyDecor(s)?.art.map(entry => entry.src) ?? [];
+const legacyDecor = (s: {version: number; reserveId?: string}) => s.version === 6 ? null : GAME_RESERVE_LEGACY_DECOR[(s.version === 5 ? s.reserveId : 'v' + s.version) as keyof typeof GAME_RESERVE_LEGACY_DECOR] ?? null;
 import { drawActorContactShadow } from "./spriteContact";
 import { GAME_RESERVE_V99_RECOVERY_TICKS, gameReserveV66People, gameReserveV66Ships, gameReserveV66Supplies, gameReserveV66Interaction, gameReserveV66InteractionDuration, gameReserveV66LineClear, gameReserveV66Sector, gameReserveV66World, gameReserveV66Sectors, gameReserveV66Platforms, gameReserveV66Cover, type GameReserveV66State } from "./systems/gameReserveV66";
 import { GAME_RESERVE_LOOKOUT_V104_SURVEY } from "./systems/gameReserveLookoutV104";
@@ -30,7 +35,13 @@ export async function loadGameReserveV66Art(state?: GameReserveV66State | null):
   });
   const items = await Promise.all(Object.entries(sources).map(([key, src]) => load(key, src)));
   const bank = Object.fromEntries(items) as unknown as GameReserveV66Art;
-  const native = biome?.nativeArt;
+  const native = biome?.nativeArt, legacy = state ? legacyDecor(state) : null;
+  if (legacy) {
+    // Optional dressing: a missing or mismatched prop is skipped, never blocking an existing expedition.
+    const loaded = await Promise.all(legacy.art.map(entry => load(entry.src, entry.src).catch(() => null)));
+    bank.kit = Object.fromEntries(loaded.filter((item): item is [string, HTMLImageElement] => !!item &&
+      legacy.art.some(entry => entry.src === item[0] && entry.size[0] === item[1].naturalWidth && entry.size[1] === item[1].naturalHeight)));
+  }
   if (native) {
     // Every V6 kit image must be the recorded native file; a different size blocks the simulation like the base art.
     const kit: GameReserveNativeArt[] = [native.background, native.ledge, native.gantry, native.cover, ...native.platforms, ...native.covers, ...native.hazards, ...native.decor];
@@ -85,15 +96,20 @@ export function drawGameReserveV66(ctx: CanvasRenderingContext2D, s: GameReserve
       const atmosphere = ctx.createLinearGradient(0, 120, 0, 540); atmosphere.addColorStop(0, sector.atmosphere + "16"); atmosphere.addColorStop(1, sector.atmosphere + "66");
       ctx.fillStyle = atmosphere; ctx.fillRect(sector.left, 0, sector.right - sector.left, 540);
     }
-    ctx.drawImage(bank.machinery, 8560, 105, 570, 330);
-    ctx.drawImage(bank.machinery, 10020, 310, 220, 125);
-    ctx.drawImage(bank.machinery, 12310, 145, 310, 142);
+    if (s.version === 3) {
+      ctx.drawImage(bank.machinery, 8560, 105, 570, 330);
+      ctx.drawImage(bank.machinery, 10020, 310, 220, 125);
+      ctx.drawImage(bank.machinery, 12310, 145, 310, 142);
+    }
   }
   // Derelict machine walls stay behind the walkable strip. Native hulls never sit on the canopy route.
   if (biome) {
     for (const sector of biome.sectors) {const atmosphere = ctx.createLinearGradient(0,120,0,540);atmosphere.addColorStop(0,sector.atmosphere+'10');atmosphere.addColorStop(1,sector.atmosphere+'45');ctx.fillStyle=atmosphere;ctx.fillRect(sector.left,0,1600,540);}
     // V6 grand hunts dress their ramps with native kit props instead of the flat machinery panel.
     if (!biome.nativeArt) for (const ship of ships) ctx.drawImage(bank.machinery,ship.x-140,310,280,125);
+  } else if (s.version === 4) {
+    // Avar’Kesh has its own geography: its machinery follows its own transports, never Vharuun's wall positions.
+    for (const ship of ships) ctx.drawImage(bank.machinery, ship.x - 140, 310, 280, 125);
   } else {ctx.drawImage(bank.machinery, 1960, 200, 690, 233); ctx.drawImage(bank.machinery, 4310, 251, 380, 182);}
   if (s.version === 2) {
     // Existing native machinery marks the lookout; the survey icon is functional HUD, not a new prop asset.
@@ -114,6 +130,14 @@ export function drawGameReserveV66(ctx: CanvasRenderingContext2D, s: GameReserve
     label(ctx,recorded?site.name+' · CONSIGNÉ':site.name+' · RELEVÉ (2 s)',site.x,site.y-70,recorded?'#a1dac3':'#f0dba6');
   }
   const native = biome?.nativeArt, kit = bank.kit, viewLeft = camera - 320, viewRight = camera + viewportWidth + 320;
+  const legacy = legacyDecor(s);
+  if (legacy && kit) {
+    for (const layer of ['support', 'ground', 'back'] as const) for (const item of legacy.decor) {
+      if (item.layer !== layer || item.x > viewRight || item.x + item.w < viewLeft) continue;
+      ctx.globalAlpha = layer === 'support' ? .72 : .9;
+      const entry = (legacy.art as readonly {src: string}[])[item.art]; if (entry) trimmed(ctx, kit[entry.src], item.x, item.y, item.w, item.h);
+    } ctx.globalAlpha = 1;
+  }
   if (native && kit) {
     // Back layer: ground surfaces, standing props and the columns that read as supports of the upper routes.
     for (const layer of ['support', 'ground', 'back'] as const) for (const item of biome.decor ?? []) {
@@ -130,8 +154,8 @@ export function drawGameReserveV66(ctx: CanvasRenderingContext2D, s: GameReserve
       }
     }
   }
-  // New V6 routes draw hulls behind walkways; legacy worlds retain their original draw order.
-  if (s.version === 6) for (let n = 0; n < s.ships.length; n++) {
+  // Transport hulls sit behind the hunter's walkways in every reserve: a ledge crossing a hull stays readable and is never hidden by it.
+  for (let n = 0; n < s.ships.length; n++) {
     const ship = s.ships[n], definition = ships[n], elapsed = ship.departedAt === null ? 0 : s.tick - ship.departedAt;
     if (elapsed >= 150) continue;
     const lift = ship.departedAt !== null ? Math.min(600, elapsed * 3.5) : ship.launch !== null && !reducedMotion ? Math.sin(s.tick / 8) * 1.4 : 0;
@@ -161,14 +185,6 @@ export function drawGameReserveV66(ctx: CanvasRenderingContext2D, s: GameReserve
   });
   for (let n = 0; n < s.ships.length; n++) {
     const ship = s.ships[n], definition = ships[n];
-    if (s.version !== 6) {
-      const elapsed = ship.departedAt === null ? 0 : s.tick - ship.departedAt;
-      if (elapsed < 150) {
-        const lift = ship.departedAt !== null ? Math.min(600, elapsed * 3.5) : ship.launch !== null && !reducedMotion ? Math.sin(s.tick / 8) * 1.4 : 0;
-        // Measured native alpha rectangle; a 3/4 side cutout is retained without distorting its perspective.
-        ctx.drawImage(bank.ship, 152, 146, 1385, 525, definition.x - 195 + elapsed * 1.5, 435 - 149 - lift, 392, 149);
-      }
-    }
     const status = ship.departedAt !== null ? "Parti" : ship.launch !== null ? "Départ " + Math.max(0, 15 - Math.floor((s.tick - ship.launch) / 60)) + " s" : "Pièces " + Math.min(3, ship.parts) + "/3 · réparation " + Math.floor(ship.repair / 36) + " %";
     label(ctx, definition.name, definition.x, 242); label(ctx, status, definition.x, 266, ship.launch !== null ? "#ffc276" : "#b8d3c2");
     if (ship.departedAt === null) { ctx.strokeStyle = ship.launch !== null ? "#ffc276" : "#7cbcaf"; ctx.lineWidth = ship.launch !== null ? 3 : 1; ctx.strokeRect(definition.x - 25, 399, 50, 39); label(ctx, ship.launch !== null ? "RAMPE · SABOTAGE POSSIBLE" : "Accès", definition.x, 459, ship.launch !== null ? "#ffc276" : "#e9efd4"); }

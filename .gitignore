@@ -61,3 +61,14 @@ __pycache__/
 
 # Supabase CLI local cache, never application source.
 /supabase/.temp/
+
+# --- Claude Code Game Studios (CCGS) local files ---
+.claude/settings.local.json
+CLAUDE.local.md
+project.local.yaml
+production/session-logs/
+production/session-state/active.md
+.claude/agent-memory/
+.claude/worktrees/
+.scratch/
+docs/consistency-failures.md

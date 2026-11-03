@@ -433,6 +433,15 @@ export const V6_MASK_VISUAL_BY_ID = {
   "clan-filigrane-cuivre": "mask-scout-teal",
   "clan-patine-dunes": "mask-city-gunmetal",
   "clan-gardien-ivoire": "mask-stalker-obsidian",
+  // V133 concept masks render their own verified bitmap in the catalog/rig.
+  // V6 icon identities are intentional FALLBACKS, not a fidelity claim.
+  "concept-v133-requiem": "mask-ritual-bone",
+  "concept-v133-nova": "mask-scout-teal",
+  "concept-v133-instinct": "mask-stalker-obsidian",
+  "concept-v133-glypic": "mask-elder-runes",
+  "concept-v133-tyrant": "mask-elite-crown",
+  "concept-v133-warlord": "mask-city-gunmetal",
+  "concept-v133-paroxysm": "mask-scarred-bone",
 } as const satisfies Readonly<Record<BiomaskId, V6VisualId>>;
 
 export const V6_TROPHY_VISUAL_BY_PART_ID = {

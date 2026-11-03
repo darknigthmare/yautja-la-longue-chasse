@@ -1,0 +1,32 @@
+name: V138 PHG production Excel fidelity gate
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'docs/production/Yautja_PHG_*_V137.xlsx'
+      - 'docs/production/Yautja_PHG_V137_*'
+      - 'scripts/verify-phg-production-xlsx-v138.py'
+      - 'tests/test_phg_workbooks_v138.py'
+      - '.github/workflows/phg-production-excel-v138.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  production-contract:
+    name: V137 workbook hashes, structure and 389-ticket integrity
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /docs/production/
+            /scripts/verify-phg-production-xlsx-v138.py
+            /tests/test_phg_workbooks_v138.py
+      - name: Verify V137 production release without altering originals
+        run: |
+          python3 scripts/verify-phg-production-xlsx-v138.py
+          python3 -m unittest discover -s tests -p test_phg_workbooks_v138.py -v

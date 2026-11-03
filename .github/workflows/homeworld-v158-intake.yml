@@ -1,0 +1,37 @@
+name: Homeworld V158 candidate intake QA
+
+on:
+  pull_request:
+    paths:
+      - 'production/homeworld-v158/**'
+      - 'scripts/verify-homeworld-v158.mjs'
+      - 'tests/homeworld-v158-intake.test.mjs'
+      - '.github/workflows/homeworld-v158-intake.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-v158-metadata:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          lfs: false
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /production/homeworld-v158/
+            /scripts/verify-homeworld-v158.mjs
+            /tests/homeworld-v158-intake.test.mjs
+            /app/game/systems/homeworldGeometryV64.ts
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify native 35-degree camera contract and ten candidates
+        run: node scripts/verify-homeworld-v158.mjs
+      - name: Run V158 staging assertions (no artificial admission)
+        run: node --test tests/homeworld-v158-intake.test.mjs

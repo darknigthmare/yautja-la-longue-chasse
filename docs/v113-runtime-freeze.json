@@ -5,8 +5,8 @@
     "bytes": 264999,
     "sha256": "8eee8a5f5a043f2a67477bc6bcff97fffb1ee1666864bd7aed60c7a6c21ca138"
   },
-  "files": 1964,
-  "bytes": 1089650270,
+  "files": 1968,
+  "bytes": 1089943165,
   "entries": [
     {
       "path": ".openai/hosting.json",
@@ -2200,8 +2200,8 @@
     },
     {
       "path": "app/game/gameReserveV66Rendering.ts",
-      "bytes": 20627,
-      "sha256": "963e8d2d597da7f8bb8461d9bb35d2b698cd07c2e4dd4e374718e63aa8d2465e"
+      "bytes": 22031,
+      "sha256": "413ab88c560d1fe6011fd9c2e383ec9546605f3688c1ce6ab2a0e32b286ac001"
     },
     {
       "path": "app/game/homeworldRouteWorkerV109.ts",
@@ -3226,17 +3226,17 @@
     {
       "path": "app/game/systems/gameReserveExpeditionV107.ts",
       "bytes": 6360,
-      "sha256": "a7ed34b0c944c490d4e8bc28d1ad3c35901670069e0a116a7137790b9d861b73"
+      "sha256": "c8b91c6eee5d277e08e4df021643ba640e88c9a7314a35084561a159b1c81266"
     },
     {
       "path": "app/game/systems/gameReserveExpeditionV108.ts",
       "bytes": 9269,
-      "sha256": "39d81dde822ba02c32ebf7d120fea7996f6125282a5768fb9257f53b0fbdc5bd"
+      "sha256": "cfcd30874769d77a52e877daf09d3f9581a6610f5ecbe4c54356d4be17de333f"
     },
     {
       "path": "app/game/systems/gameReserveExpeditionV109.ts",
       "bytes": 14174,
-      "sha256": "9e58c8ae1b500b30479ef6440f622e233dd0468c1cd7024836b06f8f7ccc3ff4"
+      "sha256": "a1ee985c606ea416cd06324c413c071db46bb1f9d822a989b57c4cf2edb601ef"
     },
     {
       "path": "app/game/systems/gameReserveGrandHunt.ts",
@@ -3249,9 +3249,14 @@
       "sha256": "69e55ecc18ab5905a582080826e1db68f5d28b3f7a66b9449836080a467e9771"
     },
     {
+      "path": "app/game/systems/gameReserveLegacyDecorData.ts",
+      "bytes": 13928,
+      "sha256": "e79b702d625ae9207cd9a0ddad4cfda2b2b386c4fc34924e683bf7e05bf2fe6f"
+    },
+    {
       "path": "app/game/systems/gameReserveLookoutV104.ts",
       "bytes": 937,
-      "sha256": "ca7cff12aa8df630d3e3ea18f9c95d4dcf6aa81030b9ef1aa07f7e9fe6c4d32f"
+      "sha256": "2e6efc742c1f15011a52422b24898f48b6d70d9127b9c715c403bf8ff4c28234"
     },
     {
       "path": "app/game/systems/gameReserveTacticalV98.ts",
@@ -3261,7 +3266,7 @@
     {
       "path": "app/game/systems/gameReserveV66.ts",
       "bytes": 62884,
-      "sha256": "1c606bbb84a8b295a551dea28c892bd5c4dbdf8f2625ff1a82936964c42e09f5"
+      "sha256": "37f65e2034b61c21877ee1168c5468daf4d49e1ae2f39ae6580c55da81d36fa8"
     },
     {
       "path": "app/game/systems/glassDesert.ts",
@@ -8979,6 +8984,11 @@
       "sha256": "36118e3581824cd8822caa239770d444fe5f497f2b8d5dbb31949d14ad7a107c"
     },
     {
+      "path": "scripts/build-preserve-legacy-baseline.mjs",
+      "bytes": 2518,
+      "sha256": "2cca14a011f7fc6b6992999a11330ca5be3e18916e999274960f8b0f578c6003"
+    },
+    {
       "path": "scripts/build-production-v94.mjs",
       "bytes": 2236,
       "sha256": "b42d2a555db036b3c3eb3492a836a57525623e2d5dbe4d7d4e11bded4f8ee654"
@@ -9027,6 +9037,11 @@
       "path": "scripts/generate-preserve-grand-hunts.mjs",
       "bytes": 27005,
       "sha256": "8c5a32fcd6d803251e7a04fa8780c86e3616c030e2d26e03bfef87b4dfae72a1"
+    },
+    {
+      "path": "scripts/generate-preserve-legacy-decor.mjs",
+      "bytes": 5969,
+      "sha256": "d418c35f1e3f69c7e6409671fd3d972c74c685d79685b18e1173734e39c251ae"
     },
     {
       "path": "scripts/historical-excel-context-homeworld-v112.mjs",
@@ -9170,8 +9185,8 @@
     },
     {
       "path": "scripts/qa-preserve-biomes-v109.mjs",
-      "bytes": 21952,
-      "sha256": "9a6574e731c3c3bc7f992c65f10ff234f34cfef6a2880dd54940225053f252e6"
+      "bytes": 22043,
+      "sha256": "672a7d28eb5f4d8dd4ea604bb08aece0b34a4caffe4e5d3b7af8e94066827d4e"
     },
     {
       "path": "scripts/qa-preserve-grand-hunts-v6.mjs",
@@ -9185,8 +9200,8 @@
     },
     {
       "path": "scripts/runtime-v113-inputs.json",
-      "bytes": 5929,
-      "sha256": "cf753fd8e24876cb1c8795cf9eeead224fdae929a45cafb38507a98824fbf248"
+      "bytes": 6164,
+      "sha256": "c47dc8a98966ccf041a2d5f3e9f692071f8c2f75acc6765af7bb79d356b1f9ca"
     },
     {
       "path": "scripts/snapshot-runtime-v107.mjs",
@@ -9374,6 +9389,11 @@
       "sha256": "f489a4996cdb84420f474712f5a80608d405717cb86f8d54a2af51d6734fcf42"
     },
     {
+      "path": "tests/fixtures/preserve-v6-history-20261102/legacy-baseline-40bfeccd.json",
+      "bytes": 266206,
+      "sha256": "a3f8bc79d3e2d6e1150904abd1446ca8ac7b0d7dd5ddd394cdfabddb97c64eee"
+    },
+    {
       "path": "tests/fixtures/preserve-v6-history-20261102/manifest.json",
       "bytes": 30307,
       "sha256": "5b1284935b3b83f2675d2c919e2b55a7c3b28519e8165bf33077bd6c99f6e6b3"
@@ -9425,13 +9445,13 @@
     },
     {
       "path": "tests/game-reserve-grand-hunts.test.mjs",
-      "bytes": 12337,
-      "sha256": "3c4d460b7a405309839aaf146f00979e000028324acaff83977f522ecf7b2b01"
+      "bytes": 13561,
+      "sha256": "830f5e94417a8fe24c0849037fdb700c5193f0fe14b1ffdce1956d23d96e0b58"
     },
     {
       "path": "tests/game-reserve-legacy-parity-v6.test.mjs",
-      "bytes": 1398,
-      "sha256": "d91594579f1b72ada8bde1b28e3579fbf26f177b898acf2e88b8b5fb3dc46249"
+      "bytes": 2452,
+      "sha256": "c85791beb82a6a8347e9a39642b5a35bf614a3050a0082c76540eadd41b863e7"
     },
     {
       "path": "tests/game-reserve-lookout-persistence-v104.test.mjs",
@@ -9495,8 +9515,8 @@
     },
     {
       "path": "tests/helpers/preserve-legacy-snapshot-v6.mjs",
-      "bytes": 4293,
-      "sha256": "c359678d964b7625f0aaa20f4c5cd63d1fc7b3b5c30c0b21acb09a17084a2432"
+      "bytes": 4559,
+      "sha256": "24def611c47f38f270e07372f10fd4b6d04ea538e77fe69e4cb7e1446172761b"
     },
     {
       "path": "tests/helpers/solo-v66-played-route.mjs",

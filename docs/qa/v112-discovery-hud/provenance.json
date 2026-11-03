@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "baseCommit": "e0347c7645667c6dd7fabc48527704d4b5f1ca32",
+  "productionOverlay": {
+    "path": "app/game/discoverySignalsV112.ts",
+    "sha256": "eaac00b22e9976499f2a7ce1e0439ba33eba0d2fd5aa1f40faa9c9887d4b6349"
+  },
+  "huntCanvasSha256": "8bf504951e6d7d6af9df2bf1d125b99d25f06009723efc96b47636b53b5471c5",
+  "classification": "PLAYED_SIDECAR_RESUME_AND_HUD_ONLY",
+  "files": [
+    {
+      "path": "docs/qa/v112-discovery-hud/README.md",
+      "bytes": 5505,
+      "sha256": "a44b426a4c0e602bcf0c7ed19306b002fd8b23a42f68c17739dbb7431daa693c"
+    },
+    {
+      "path": "docs/qa/v112-discovery-hud/attempts-preserved.tar.gz",
+      "bytes": 26106444,
+      "sha256": "165422ddaa0cc7d8f6f8bd92b9b2af3b1458f0f4f0d955245439b8590bd647cb"
+    },
+    {
+      "path": "docs/qa/v112-discovery-hud/freeze.json",
+      "bytes": 343,
+      "sha256": "75c6c5c3f4509895b06ceb4cd7b56c4f7d6373cda6d1a88263e8b96fa98f7e07"
+    },
+    {
+      "path": "docs/qa/v112-discovery-hud/label-matrix-1280-dpr1.png",
+      "bytes": 18516,
+      "sha256": "ebdb86b24b69badbb277b0bd36a3b46df11089653eae633849dd2d0a01434937"
+    },
+    {
+      "path": "docs/qa/v112-discovery-hud/label-matrix-1280-dpr2.png",
+      "bytes": 75591,
+      "sha256": "e0164cd36743a532316446203bc4d22bff9453a6fba7c8783104c1d786b63c1f"
+    },
+    {
+      "path": "docs/qa/v112-discovery-hud/label-matrix-320-dpr1.png",
+      "bytes": 4379,
+      "sha256": "bd5181455a35745611b3e3c00ee11af6beab18b1adc53516a7516931f5176e9f"
+    },
+    {
+      "path": "docs/qa/v112-discovery-hud/label-matrix-320-dpr2.png",
+      "bytes": 13703,
+      "sha256": "de60ab419a348f3f180c5746c599877da02d9fd4bd1ddbba6d562301290c9d30"
+    },
+    {
+      "path": "docs/qa/v112-discovery-hud/label-matrix-768-dpr1.png",
+      "bytes": 12955,
+      "sha256": "51df6d5834c8cbbdd7b114e39469af1947a7ce578f85b7267656aaeeaf04a08c"
+    },
+    {
+      "path": "docs/qa/v112-discovery-hud/label-matrix-768-dpr2.png",
+      "bytes": 42373,
+      "sha256": "6da9809f60b05a154cf93df6b21e0eec7cf22540fafd3a1c12e3ee48bc5c874e"
+    },
+    {
+      "path": "docs/qa/v112-discovery-hud/layout.json",
+      "bytes": 46122,
+      "sha256": "2556b6995562108bcefbf364efc653614d4714ed8e0fb1120de4338b75b01b0e"
+    },
+    {
+      "path": "docs/qa/v112-discovery-hud/native-fresh-visual.png",
+      "bytes": 1216729,
+      "sha256": "1fee24e0c4a35278666fcbcfe81061a47bb0972395df83713c5939cbb2750359"
+    },
+    {
+      "path": "docs/qa/v112-discovery-hud/native-played-sidecar-resume.png",
+      "bytes": 1405392,
+      "sha256": "f8e97cfb3e8d9cb9cd1820b1b9eb7726c73b5f938a21a804ec2f704d43e4c1d1"
+    },
+    {
+      "path": "docs/qa/v112-discovery-hud/production-overlay-discoverySignalsV112.ts.txt",
+      "bytes": 2944,
+      "sha256": "eaac00b22e9976499f2a7ce1e0439ba33eba0d2fd5aa1f40faa9c9887d4b6349"
+    },
+    {
+      "path": "docs/qa/v112-discovery-hud/resume-report.json",
+      "bytes": 939717,
+      "sha256": "1ae10d693d3f4163b0a72263359e06959d339c51f480e2db55eab07305241c97"
+    },
+    {
+      "path": "docs/qa/v112-discovery-hud/validation.json",
+      "bytes": 1183,
+      "sha256": "9e6c8d04d415a8a7a19dc2c26199ed6a41524d9ece758efaae8d83fc2cd253c3"
+    },
+    {
+      "path": "app/game/discoverySignalsV112.ts",
+      "bytes": 2944,
+      "sha256": "eaac00b22e9976499f2a7ce1e0439ba33eba0d2fd5aa1f40faa9c9887d4b6349"
+    },
+    {
+      "path": "tests/discovery-signals-hud-v112.test.mjs",
+      "bytes": 5275,
+      "sha256": "9423d1a6bfb1fa6cb024415e4313697acb1a2c954dbd616f74e1db70d03732e8"
+    },
+    {
+      "path": "scripts/qa-discovery-hud-layout-v112.mjs",
+      "bytes": 4586,
+      "sha256": "4b196a486409dd59e939dfcab2791ebd051a4477f3ff67447793913f4807d614"
+    }
+  ],
+  "scope": "Native UI-earned configuration, whole genuine sidecar restored unchanged, newly bundled HUD. No new contract or human-comprehension qualification.",
+  "sourceContextCorrection": {
+    "baseCommit": "e0347c7645667c6dd7fabc48527704d4b5f1ca32",
+    "gitCommitIsBaseOnly": true,
+    "originalFlag": false,
+    "reason": "The raw runner checks HuntCanvas/GameClient but not the changed imported HUD module. Its complete bundle uses the explicitly hashed discoverySignalsV112 source overlay; the original report is retained unchanged."
+  }
+}

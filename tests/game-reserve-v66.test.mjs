@@ -113,5 +113,6 @@ test("native render assets exist and the screen refuses running through image/wr
   assert.equal(paths.length, 10); await Promise.all(paths.map(p => access("public" + p)));
   const ui = await readFile("app/game/GameReserveV66.tsx", "utf8");
   assert.match(ui, /!bank \|\| blockedKeys/); assert.match(ui, /if \(latest\.current\.onCheckpoint/); assert.match(ui, /window\.addEventListener\("blur"/);
-  assert.match(ui, /checkpoint\(\)\) return/); assert.match(ui, /100 fiches H001–H100/);
+  assert.match(ui, /checkpoint\(\)\) return/);
+  assert.match(ui, /onClick=\{resume\} disabled=\{!bank \|\| !!artError \|\| leaving\}/, "the start/resume control stays unavailable while native assets fail or the screen is leaving");
 });

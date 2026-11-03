@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "sourceCommit": "e4a6c64a1e77edad8865aa05ca7c2901d62bfa09",
+  "generatedAt": "2026-11-02T05:09:46.912Z",
+  "qualification": "EIGHT_NATIVE_SIMULATION_SUCCESSES_ONLY",
+  "openCriterion": "REM112-06",
+  "closesCriterion": false,
+  "command": "node scripts/qa-hunt-campaign-canonical-v112.mjs --limit-seconds 240 --require-complete --report outputs/qa-hunt-campaign-canonical-v112/final-native-r3/report.json",
+  "node": "v24.19.0",
+  "huntSourceSha256": "8bf504951e6d7d6af9df2bf1d125b99d25f06009723efc96b47636b53b5471c5",
+  "policySha256": "033be399d3a4a913a119dd78bf35818a54f9eef6f4363aea7639e12bc829f6c1",
+  "lockSha256": "763dcb2fdfef2e1a7ce196540cca3f4f5617eeb28a36b380d0dc6079410c1892",
+  "harnesses": [
+    {
+      "file": "scripts/qa-hunt-campaign-canonical-v112.mjs",
+      "sha256": "d3562e76b1b9b4be1f239627b5576fb4884b74f0a84f97b817f20fe66a701471",
+      "bytes": 11184
+    },
+    {
+      "file": "scripts/lib/qa-hunt-campaign-input-v112.mjs",
+      "sha256": "033be399d3a4a913a119dd78bf35818a54f9eef6f4363aea7639e12bc829f6c1",
+      "bytes": 5533
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "native-report.json",
+      "bytes": 314830,
+      "sha256": "5d02e213150425a81457031e313be96f1e471bc3b78e5659d161cfc91fa87858"
+    },
+    {
+      "file": "native-raw.tar.gz",
+      "bytes": 534119,
+      "sha256": "e28fc66f18f858998e9986605459582143e7310e50af7af93032c283f7b04df2"
+    }
+  ],
+  "browserStatus": "ongoing; no full browser campaign certified",
+  "limitations": [
+    "No mounted GameClient in native simulation proof",
+    "No real browser input in native simulation proof",
+    "No active-hunt sidecar storage reload in native simulation proof",
+    "No anatomical specimen or conservation workshop in native simulation proof",
+    "No art, human or physical-device qualification"
+  ]
+}

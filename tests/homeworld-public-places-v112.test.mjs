@@ -25,6 +25,25 @@ test('V112 admits six fixed places, retains four explicit refusals, and recompil
   assert.equal(load('homeworldStreetCompositionV92').HOMEWORLD_STREET_COMPOSITION_PROPS_V92.length,23);
 });
 
+test('the relocated register marker preserves the exact earlier cartographic route and refuses its old obstructing position',()=>{
+  const binding=load('homeworldCartographyDefinitionV104').HOMEWORLD_CARTOGRAPHY_V104;
+  const approach=binding.waypoints[0],id='public-place-v112:register-marker';
+  const candidate=places.HOMEWORLD_PUBLIC_PLACE_CANDIDATES_V112.find(item=>item.id===id);
+  assert(candidate);assert.equal(candidate.x,6270);assert.equal(candidate.y,4990);
+  assert(places.HOMEWORLD_PUBLIC_PLACES_V112.some(item=>item.id===id),'the reviewed new position remains admitted');
+  const oldPosition={...candidate,x:6140,y:5020};
+  const refused=places.compileHomeworldPublicPlacesV112(mount.HOMEWORLD_PUBLIC_PLACE_INPUT_V112,[oldPosition]);
+  assert.equal(refused.accepted.length,0);assert.equal(refused.refusals.length,1);
+  assert.match(refused.refusals[0].reason,/^reserved:/,'the retained physical approach prevents a regression to the old position');
+  assert(civic.homeworldCivicWalkableV80('0',approach));
+  assert.equal(places.homeworldPublicPlaceCollisionV112('0',approach),null);
+  const points=[binding.post,...binding.waypoints,binding.post];
+  for(let index=1;index<points.length;index++)assert(nav.homeworldRouteSegmentV77('0',points[index-1],points[index]));
+  assert(load('homeworldCartographyV104').cartographyServicePresentV104());
+  const html=qa.render('app/game/HomeworldPublicPlacesV112.tsx',{actor:binding.post,levelId:'0',paintedLevels:['0'],camera:{x:-2000,y:-2000,viewWidth:18000,viewHeight:18000}});
+  assert(html.includes('data-homeworld-prop-id="'+id+'"'),'the reviewed relocated native sprite is actually mounted');
+});
+
 test('every admitted contact is supported and solid on its own floor while the actual operator body and route stay free',()=>{
   const origin={levelId:'0',point:world.HOMEWORLD_SPACEPORT_V77.spawn};
   for (const item of places.HOMEWORLD_PUBLIC_PLACES_V112) {

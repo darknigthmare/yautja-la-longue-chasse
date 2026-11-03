@@ -1,0 +1,21 @@
+﻿ID;Mode;Famille;Exigence;Source;Validation;Statut;Réserve
+CW147-001;RTS W133;Budget;Plafond PC identique au contrat V6;mission.pcMaximum;Automatique;En attente CI;Aucune économie V85 transférée
+CW147-002;RTS W133;Budget;Somme des PC des formations égale au total engagé;rules.units.commandPoints;Automatique;En attente CI;Contrôle de composition locale
+CW147-003;RTS W133;Identité;Identifiant de groupe W133 rattaché au scénario et unique;mission.id + nextSquadNumber;Automatique;En attente CI;Aucune authentification de joueur
+CW147-004;RTS W133;Effectifs;Nombre de membres conforme au profil V6;rules.units.fullMembers;Automatique;En attente CI;Blessures physiques hors journal
+CW147-005;RTS W133;Combat;Attaque et défense identiques aux valeurs V6;rules.units.attack/defense;Automatique;En attente CI;Pas de validation d'animation
+CW147-006;RTS W133;Combat;Portée et mobilité dérivées des paramètres V6;rules.units.range/mobility;Automatique;En attente CI;Pas de vérification d'équilibrage réseau
+CW147-007;RTS W133;Vie;HP et plafond cohérents avec formule source;unit.fullMembers + defense;Automatique;En attente CI;Pas de preuve du déroulé des dégâts
+CW147-008;RTS W133;Ravitaillement;Entretien RAV et coût PC conformes à V6;rules.units.upkeepRav/commandPoints;Automatique;En attente CI;Pas de paiement en campagne
+CW147-009;RTS W133;Terrain;Tuiles de carte identiques à la géométrie reconstruite;createWarRtsMissionStateV129;Automatique;En attente CI;Pas de fidélité visuelle 1:1 certifiée
+CW147-010;RTS W133;Biomes;Zones de danger et éléments de carte source intacts;source.base.map;Automatique;En attente CI;QA climatique physique à effectuer
+CW147-011;RTS W133;Sauvegarde;Unités déployées sans statut de préparation résiduel;WarRtsSquadsStateV133;Automatique;En attente CI;Identité client non authentifiée
+CW147-012;RTS W133;Régression;Repli valide accepté sans mutation V85;tests/clan-war-council-v146.test.mjs;Automatique;En attente CI;Fixture de positionnement
+CW147-013;RTS W133;Régression;24 retraites et défaites restent compatibles;tests/clan-war-council-v146.test.mjs;Automatique;En attente CI;États ponctuellement fabriqués pour tests
+CW147-014;RTS W133;Régression;24 victoires isolées restent compatibles;tests/clan-war-council-v146-victories.test.mjs;Automatique;En attente CI;Ennemis neutralisés dans la fixture
+CW147-015;Assaut;Traçabilité;Chronologie spatiale des tirs et pertes réelles;V115 + Bible V6;Manuel;À développer;Ne pas déclarer 1:1
+CW147-016;Outer Ops;Traçabilité;Parcours complet réellement franchi et horodaté;V115 + registre de route;Manuel;À développer;Éviter la route reconstituée fictive
+CW147-017;Infiltration;Traçabilité;Gardes et sabotages vérifiables dans le temps;V115 + source W3;Manuel;À développer;Ne pas divulguer de patrouilles invisibles
+CW147-018;RTS W133;Fidélité;Validation terrain visuelle et multijoueur autoritaire;Sources films/jeux + serveur;Manuel;À développer;Aucun 1:1 ou PvP certifié
+CW147-019;Quatre modes;Campagne;Autorisation explicite avant mutation des sauvegardes V85;campaignMutation:false;Automatique;En attente CI;Pas de conquête silencieuse
+CW147-020;Quatre modes;UX/QA;Parcours navigateur clavier manette mobile;CI navigateur + testeurs;Manuel;À développer;QA utilisateur non réalisée

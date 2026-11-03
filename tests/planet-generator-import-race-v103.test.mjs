@@ -33,6 +33,9 @@ export function useMemo(calculate, dependencies) {
   }
   return slots[index].value;
 }
+// Render-only descendants import this hook, but JSX below does not mount them.
+// Fail if the tested parent ever starts depending on effect execution.
+export function useEffect() { throw new Error('unsupported effect in controlled import harness'); }
 export function useSyncExternalStore(_subscribe, _snapshot, serverSnapshot) { cursor++; return serverSnapshot(); }`;
 const compiled = await build({
   stdin: {
@@ -52,7 +55,9 @@ const compiled = await build({
         contents: args.path === "react" ? hooks : `export const Fragment = 'fragment'; export function jsx(type, props) { return { type, props }; } export const jsxs = jsx;`,
         loader: "js",
       }));
-      build.onResolve({ filter: /^\.\/(ClanWarAtlasV95|PlanetMaterialCanvasV101|PlanetLayerExportV102|PlanetEarthReferenceV147|PlanetEnvironmentalDossierV146|PlanetReliefV150)$/ }, args => ({ path: args.path, namespace: "render-only-child" }));
+      // V146-V150 panels joined the generator later; like the canvas children they
+      // are outside this import-race harness and render as inert placeholders.
+      build.onResolve({ filter: /^\.\/(ClanWarAtlasV95|PlanetMaterialCanvasV101|PlanetLayerExportV102|PlanetEnvironmentalDossierV146|PlanetEarthReferenceV147|PlanetPreflightV149|PlanetReliefV150)$/ }, args => ({ path: args.path, namespace: "render-only-child" }));
       build.onLoad({ filter: /.*/, namespace: "render-only-child" }, () => ({ contents: "export default function RenderOnlyChild() { return null; }", loader: "js" }));
       build.onLoad({ filter: /\.module\.css$/ }, () => ({ contents: "export default {};", loader: "js" }));
     },

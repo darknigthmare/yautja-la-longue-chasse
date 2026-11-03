@@ -53,10 +53,12 @@ import {HOMEWORLD_STREET_DECOR_ART_V84} from './systems/homeworldStreetDecorV84'
 import {HOMEWORLD_STREET_DECOR_PROPS_V84} from './systems/homeworldStreetDecorMountV84';
 import {HOMEWORLD_STREET_COMPOSITION_ART_V92,homeworldStreetCompositionOpacityV92,homeworldCityFurnitureOpacityV92} from './systems/homeworldStreetCompositionV92';
 import {HOMEWORLD_STREET_COMPOSITION_PROPS_V92} from './systems/homeworldStreetCompositionMountV92';
+import {HOMEWORLD_DRESSING_FACADES_BUILT_V113} from './systems/homeworldDressingMountV113';
+import {HOMEWORLD_DRESSING_FIXTURES_V113,HOMEWORLD_DRESSING_PLACES_V113} from './systems/homeworldDressingV113';
 import {homeworldNaturalRockFacesV112} from './systems/homeworldNaturalRockFacesV112';
 import {homeworldFoundationPaintV90} from './systems/homeworldFoundationPaintV90';
 type Camera={x:number;y:number;viewWidth:number;viewHeight:number};
-const paintedBuildings=[...HOMEWORLD_BUILDINGS_V77,...HOMEWORLD_URBAN_FACADES_V78];
+const paintedBuildings=[...HOMEWORLD_BUILDINGS_V77,...HOMEWORLD_URBAN_FACADES_V78,...HOMEWORLD_DRESSING_FACADES_BUILT_V113];
 const publicNaturalGround=HOMEWORLD_NATURAL_PUBLIC_GROUND_V112;
 const naturalRockFacesV112=new Map(HOMEWORLD_NATURAL_SUPPORT_TERRACES_V112.map(formation=>[
  formation.id,homeworldNaturalRockFacesV112(formation,publicNaturalGround,HOMEWORLD_GEOMETRY_V64.depthScale),
@@ -139,7 +141,8 @@ export default memo(function HomeworldWorldSceneV77({actor,levelId,camera,second
    return <div key={building.id} className={styles.buildingV64} data-building-id={building.id} data-world-level-v77={building.levelId}
     data-building-native-source={building.art.src} data-building-orientation-v76={building.art.groundFrame?.yawDegrees??0}
     data-native-facade-state-v83={'nativeStatus' in building?building.nativeStatus:undefined}
-    data-building-decoration-v78={'interactive' in building&&!building.interactive?'CLOSED_SCENERY_FACADE':undefined}
+    data-building-decoration-v78={'interactive' in building&&!building.interactive&&!('placementPurpose' in building&&building.nativeStatus==='EXISTING_NATIVE_VOLUME_REUSE_V113')?'CLOSED_SCENERY_FACADE':undefined}
+    data-building-decoration-v113={'nativeStatus' in building&&building.nativeStatus==='EXISTING_NATIVE_VOLUME_REUSE_V113'?'CLOSED_SCENERY_FACADE':undefined}
     data-occluded={building.levelId===levelId&&shouldFadeHomeworldBuilding(building,actor)}
     style={{...box,zIndex:depth(building.levelId,homeworldBuildingRenderDepthV76(building,actor))}}>
     {building.art.sourceRect?<span style={{display:'block',width:'100%',height:'100%',backgroundImage:`url('${building.art.src}')`,backgroundRepeat:'no-repeat',
@@ -164,6 +167,8 @@ export default memo(function HomeworldWorldSceneV77({actor,levelId,camera,second
   {HOMEWORLD_STREET_DECOR_PROPS_V84.filter(item=>painted(item.levelId)).map(item=>{const art=HOMEWORLD_STREET_DECOR_ART_V84[item.artId];return prop(item.id,'street-native-v84:'+item.artId,art,item,item.levelId,art.heightWorld*item.scale);})}
   {HOMEWORLD_STREET_COMPOSITION_PROPS_V92.filter(item=>painted(item.levelId)).map(item=>{const art=HOMEWORLD_STREET_COMPOSITION_ART_V92[item.artId];return prop(item.id,'street-composition-v92:'+item.artId,art,item,item.levelId,art.heightWorld*item.scale,homeworldStreetCompositionOpacityV92(item,actor,levelId));})}
   <HomeworldPublicPlacesV112 actor={actor} levelId={levelId} paintedLevels={paintedLevels} camera={camera}/>
+  {HOMEWORLD_DRESSING_FIXTURES_V113.filter(item=>painted(item.levelId)).map(item=>{const art=HOMEWORLD_COURT_ART_V80[item.artId];return prop(item.id,'dressing-v113:'+item.artId,art,item,item.levelId,art.heightWorld*item.scale);})}
+  {HOMEWORLD_DRESSING_PLACES_V113.filter(item=>painted(item.levelId)).map(item=>{const art=HOMEWORLD_STREET_COMPOSITION_ART_V92[item.artId];return prop(item.id,'dressing-v113:'+item.artId,art,item,item.levelId,art.heightWorld*item.scale,homeworldStreetCompositionOpacityV92(item,actor,levelId));})}
   {HOMEWORLD_CONNECTIONS_V77.filter(connection=>painted(connection.levelId)).map(connection=>{const art=HOMEWORLD_GATEWAY_ART_V72[connection.artId];return prop('gateway-v72:'+connection.regionId,connection.artId,art,connection.threshold,connection.levelId,art.heightWorld*homeworldGatewayScaleV72(connection));})}
   {painted('0')&&prop('clan-local-shuttle','clan-shuttle',HOMEWORLD_TRANSPORT_ART_V64['clan-shuttle'],HOMEWORLD_SPACEPORT_V77.shuttle,'0',HOMEWORLD_TRANSPORT_ART_V64['clan-shuttle'].heightWorld)}
   {HOMEWORLD_POINTS_V77.filter(p=>painted(p.levelId)&&!HOMEWORLD_INTERIOR_POINT_IDS_V64.has(p.id)).map(point=>{

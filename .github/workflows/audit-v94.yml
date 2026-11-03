@@ -463,6 +463,8 @@ jobs:
             /drizzle/
             /build/
             /.openai/hosting.json
+            /.github/workflows/audit-v94.yml
+            /.github/workflows/hunt-closure-v112.yml
             /public/**/manifest.json
             /public/game/homeworld/v74/
             /public/game/assets/v3/actors/yautja/hunter/body/classic/full.webp
@@ -1034,7 +1036,7 @@ jobs:
           import fs from 'node:fs';
           import {spawnSync} from 'node:child_process';
           const files = fs.readdirSync('tests').filter(file =>
-            file.endsWith('-v112.test.mjs') && file !== 'homeworld-excel-followup-v112.test.mjs'
+            file.endsWith('-v112.test.mjs') && !['homeworld-excel-followup-v112.test.mjs', 'homeworld-excel-publication-original-v112.test.mjs'].includes(file)
           ).sort().map(file => 'tests/' + file);
           if (!files.length) throw new Error('No current V112 model tests selected');
           console.log('Current V112 application tests:\n' + files.join('\n'));
@@ -1363,9 +1365,31 @@ jobs:
         run: node scripts/check-excel-history-homeworld-v111.mjs --check --tests
       - name: Exercise current V111 regressions across the parallel workstreams
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
-        run: >-
-          node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1
-          $(rg --files tests -g '*-v111.test.mjs' -g '!homeworld-excel-followup-v111.test.mjs' -g '!homeworld-art-inventory-v111.test.mjs' | sort)
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import path from 'node:path';
+          import {execFileSync, spawnSync} from 'node:child_process';
+
+          const excluded = new Set(['homeworld-excel-followup-v111.test.mjs', 'homeworld-art-inventory-v111.test.mjs']);
+          const tracked = execFileSync('git', ['ls-files', '-z', '--', 'tests'], {encoding: 'utf8'});
+          const files = tracked.split('\0').filter(file =>
+            file.endsWith('-v111.test.mjs') && !excluded.has(path.basename(file))
+          ).sort();
+          if (!files.length) throw new Error('No tracked V111 test files selected');
+          for (const file of files) {
+            if (!fs.statSync(file).isFile()) throw new Error('Selected V111 test is not a file: ' + file);
+          }
+          console.log('V111 selected files (' + files.length + '):\n' + files.join('\n'));
+          const result = spawnSync(process.execPath, [
+            '--experimental-strip-types', '--test', '--test-reporter=spec', '--test-concurrency=1', ...files,
+          ], {stdio: 'inherit'});
+          if (result.error) throw result.error;
+          if (!Number.isInteger(result.status) || result.status < 0) {
+            throw new Error('V111 test process did not return an exit status: ' + (result.signal ?? 'unknown'));
+          }
+          process.exitCode = result.status;
+          NODE
       - name: Execute unchanged V111 assertions and regenerate all 113 historical worksheets
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: node scripts/check-excel-history-homeworld-v112.mjs --check --tests
@@ -1377,6 +1401,9 @@ jobs:
         run: |
           node scripts/check-homeworld-history-v112.mjs --check --tests
           node scripts/check-excel-history-v112.mjs --check --tests
+      - name: Verify original immutable V112 publication in its private historical context
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/homeworld-excel-publication-original-v112.test.mjs
       - name: Preserve exact historical R7 once (nine original assertions and three CLI; currentRuntimeCovered=false)
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         # The five capsule tests also exercise tampering and real private Git bootstrap.
@@ -1388,6 +1415,7 @@ jobs:
         run: |
           python3 scripts/audit-open-workstreams-v112.py --check
           node scripts/build-pit-backward-art-v112.mjs --check
+          node scripts/check-hunt-integration-source-v112.mjs --check
       - name: Fetch the exact current runtime declared by both production publications
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: |
@@ -1441,6 +1469,12 @@ jobs:
         run: |
           python3 scripts/build-resume-workbook-20261101.py --check
           python3 scripts/verify-resume-workbook-20261101.py
+          python3 scripts/check-resume-workbook-history-20261101.py
+      - name: Preserve the additional original V112 Homeworld and Pit capsule
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: |
+          node scripts/check-excel-history-homeworld-v113.mjs --check
+          node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/homeworld-v112-history-v113.test.mjs
       - name: Verify live Homeworld guidance in the real React atlas and native Worker
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: node scripts/qa-homeworld-live-guidance-v112.mjs

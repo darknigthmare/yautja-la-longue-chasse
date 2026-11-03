@@ -7,8 +7,8 @@ const mission="jungle-vey";
 const save=()=>{const s=api.defaultSave("2026-10-28T00:00:00.000Z");s.profile.clanMarks=100;s.inventory.fieldToolIds=["flaying-tool"];return s;};
 const item=(partId="hide",run=0,corpse="prey")=>({id:mission+":"+run+":"+corpse+":"+partId,sourceId:mission+":"+run+":"+corpse,
   speciesId:"rifle-soldier",partId,label:"Peau préparée",quality:84,massKg:3,volumeUnits:2,stage:"raw"});
-const use=(run=0,corpse="prey")=>mission+":"+run+":flay:"+corpse;
-const deliver=(s,items=[item()],uses=[use()],success=true,run=0)=>api.deliverHarvestV112(s,items,uses,success,mission,run);
+const toolUseId=(run=0,corpse="prey")=>mission+":"+run+":flay:"+corpse;
+const deliver=(s,items=[item()],uses=[toolUseId()],success=true,run=0)=>api.deliverHarvestV112(s,items,uses,success,mission,run);
 const depot=s=>api.harvestInventoryForV112(s.inventory);
 test("old inventory migrates empty without granting a field tool",()=>{
   const s=save();delete s.inventory.harvestV112;delete s.inventory.fieldToolIds;
@@ -51,14 +51,14 @@ test("load changes movement jump climb effort and noise continuously; body mass 
   assert.ok(Math.abs(api.fieldLoadV112([],"hunter",72).movementMultiplier-.68)<1e-12);
 });
 test("a successful extraction deposits finite specimens and records actual tool wear atomically",()=>{
-  const s=save(),before=structuredClone(s),r=deliver(s,[item()],[use(),mission+":0:harvest-hide:prey"]);
+  const s=save(),before=structuredClone(s),r=deliver(s,[item()],[toolUseId(),mission+":0:harvest-hide:prey"]);
   assert.equal(r.ok,true);assert.deepEqual(s,before);
   assert.equal(r.inventory.harvestV112.specimens.length,1);assert.equal(r.inventory.harvestV112.toolCondition,90);
   assert.equal(r.inventory.harvestV112.settledEncounterRuns[mission],0);
 });
 test("failed and abandoned extraction only records completed work wear, without bringing specimens home",()=>{
   for(const success of [false]) {
-    const r=deliver(save(),[item()],[use()],success);
+    const r=deliver(save(),[item()],[toolUseId()],success);
     assert.equal(r.ok,true);assert.equal(r.inventory.harvestV112.specimens.length,0);
     assert.equal(r.inventory.harvestV112.toolCondition,95);
   }
@@ -71,17 +71,17 @@ test("same completed encounter cannot charge wear or restore a specimen after re
 });
 test("per-mission watermark compacts usage receipts safely across later encounters",()=>{
   let s=save();s.inventory=deliver(s).inventory;s.missionProgress[mission].attempts=1;
-  const next=deliver(s,[item("bone",1)],[use(1)],true,1);assert.equal(next.ok,true);
+  const next=deliver(s,[item("bone",1)],[toolUseId(1)],true,1);assert.equal(next.ok,true);
   const ledger=next.inventory.harvestV112;
   assert.equal(ledger.specimens.length,2);assert.equal(ledger.toolCondition,90);
-  assert.deepEqual(ledger.toolUseIds,[use(1)]);assert.equal(ledger.settledEncounterRuns[mission],1);
+  assert.deepEqual(ledger.toolUseIds,[toolUseId(1)]);assert.equal(ledger.settledEncounterRuns[mission],1);
   s.inventory=next.inventory;const old=deliver(s);assert.equal(old.inventory,s.inventory);
 });
 for(const [items,uses,run] of [
-  [[{...item(),sourceId:"other:0:prey"}],[use()],0],
+  [[{...item(),sourceId:"other:0:prey"}],[toolUseId()],0],
   [[item()],["other:0:flay:prey"],0],
-  [[item()],[use()],1],
-  [[item()],[use(),use()],0],
+  [[item()],[toolUseId()],1],
+  [[item()],[toolUseId(),toolUseId()],0],
   ["invalid",[],0],[[],{},0],[[{...item(),massKg:-1}],[],0],
   [[item(),item()],[],0],
 ])test("forged, duplicated, malformed or stale mission payload is refused: "+JSON.stringify([items,uses,run]),()=>{
@@ -157,7 +157,7 @@ function result(outcome="success"){
     completedObjectiveIds:m.objectives.filter(o=>o.required||o.kind==="extract").map(o=>o.id),
     honorEvents:[],trophyQuality:"blooded",trophyClaims:[{id:"apex:0",definitionId:m.trophy.id,targetName:m.targetName,targetKind:m.targetKind,
       partId:m.trophy.partId,condition:"intact",quality:"blooded"}],kills:1,scans:0,secondWindUsed:false,completedAt:"2026-10-28T01:00:00.000Z",
-    specimensV112:[item()],toolUseIdsV112:[use()],harvestEncounterRunV112:0};
+    specimensV112:[item()],toolUseIdsV112:[toolUseId()],harvestEncounterRunV112:0};
 }
 test("real campaign reducer keeps specimens and tool wear through content unlocks in one result",()=>{
   const s=save(),before=structuredClone(s),next=api.applyMissionResult(s,result());

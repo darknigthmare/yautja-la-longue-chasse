@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "observedAtUtc": "2026-11-02 08:25:05 UTC",
+  "service": "Vercel",
+  "projectId": "prj_BIXQYu9PfyNrwR53zzG1938KUgpP",
+  "teamId": "team_VrIjq2UWV6VaHZr7DdQFwvfu",
+  "deploymentId": "dpl_AaWREgA3tsyvVNrUmD7MS4TJQjzg",
+  "sourceCommit": "403e046a13ff4aa27f210de4da5b10aabfe66e91",
+  "target": "production",
+  "readyState": "READY",
+  "productionUrl": "https://yautja-la-longue-chasse.vercel.app",
+  "deploymentUrl": "https://yautja-la-longue-chasse-qom36w0yo-darknigthmares-projects.vercel.app",
+  "productionAliasConfirmed": true,
+  "accessConfigurationChanged": false,
+  "evidence": "Native Vercel get_deployment and list_deployment_aliases responses.",
+  "limits": [
+    "READY and canonical alias establish deployment, not a browser walkthrough.",
+    "Direct HTTP from this runner was refused by its network proxy: CONNECT tunnel failed, response 403.",
+    "No protection bypass, temporary share link or audience expansion was requested.",
+    "The separate ChatGPT Site remains unchanged because its source backend rejected transfers and cleanup with artifacts_git_receive_pack_storage_limit."
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "sourceRef": "e4a6c64a1e77edad8865aa05ca7c2901d62bfa09",
+  "qualification": "FUNCTIONAL_NATIVE_BROWSER_PASS",
+  "files": [
+    {
+      "path": "docs/qa/v112-canopy-choice/01-canonical-insertion-guide.png",
+      "bytes": 1172853,
+      "sha256": "76b7ff660a5d1411dee76df9205514adf3f87b7f88cdbaa21fde702ad3e4150c"
+    },
+    {
+      "path": "docs/qa/v112-canopy-choice/02-rest-choice-positive-stamina.png",
+      "bytes": 1045894,
+      "sha256": "7ef068214cffb643f7df66c242049b63bd744393c035e419b969760dce435bb6"
+    },
+    {
+      "path": "docs/qa/v112-canopy-choice/03-authored-branch-contact.png",
+      "bytes": 1059149,
+      "sha256": "a6040d7310d30a08bdf881edbf9432187fc21899bf2d1d59b7181be3c602b428"
+    },
+    {
+      "path": "docs/qa/v112-canopy-choice/04-rest-recovery-route-support-flexible-guide.png",
+      "bytes": 1236972,
+      "sha256": "35327f114d206fa28733d2e8f5d02aa557719459c48d417983df3605926495b0"
+    },
+    {
+      "path": "docs/qa/v112-canopy-choice/05-terminal-native-scene.png",
+      "bytes": 1236760,
+      "sha256": "4c2b4b12ceec87a0985d24fa28aee81133a88a4e78ed2172cd8904c447138329"
+    },
+    {
+      "path": "docs/qa/v112-canopy-choice/README.md",
+      "bytes": 5931,
+      "sha256": "28887bf3f70a8653ea1b193bf28ce243914aefb99edcd6d13531ba8e71f440fd"
+    },
+    {
+      "path": "docs/qa/v112-canopy-choice/report.json",
+      "bytes": 564654,
+      "sha256": "0d078ffdd07a673b4416943204d66110cc5181615083db8d8f1731e447b1458e"
+    },
+    {
+      "path": "scripts/qa-hunt-canopy-choice-browser-v112.mjs",
+      "bytes": 16860,
+      "sha256": "d66c970015bb024422a96af0623714b22c504790eed8eff69b0c8208810a63e3"
+    }
+  ],
+  "criteria": {
+    "canonicalInsertion": true,
+    "routeGuidanceVisible": true,
+    "supportGuidanceVisible": true,
+    "flexibleGuidanceVisible": true,
+    "chosenWhilePositiveStamina": true,
+    "authoredBranchContact": true,
+    "nativeRestRecovery": true,
+    "neverObservedExhausted": true
+  },
+  "unqualified": [
+    "No five-novice study",
+    "No human understanding claim",
+    "No physical controller or phone qualification",
+    "No performance claim"
+  ]
+}

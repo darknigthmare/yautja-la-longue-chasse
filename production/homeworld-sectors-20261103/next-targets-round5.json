@@ -1,0 +1,365 @@
+{
+  "version": "MMK-20261103-PASS5",
+  "date": "2026-11-03",
+  "baselineCommit": "7299b0fc2bd06dd53a45e3caab630bc75207d0ce",
+  "previousDeliveryCommit": "7299b0fc2bd06dd53a45e3caab630bc75207d0ce",
+  "status": "GENERATED_REVIEWED_SOURCE_ART_CANDIDATES",
+  "plannedAdditionalPNGCount": 10,
+  "targetTotalPNGCount": 56,
+  "newV81Targets": 0,
+  "newAssetPlan": [
+    {
+      "id": "HWM162-S15",
+      "area": "market",
+      "label": "Étal couvert diagonal droit — sans stock",
+      "kind": "État vide",
+      "targetIds": [
+        "target-v81-64-160"
+      ],
+      "purpose": "Dégager le comptoir, les rangements et les suspensions marchandes de l’étal couvert existant.",
+      "placementNote": "Conserver la structure et les éclairages fixes ; poser les marchandises séparément sans bloquer le passage vendeur.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 5,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "public/game/homeworld/v78/market-stall-right.png"
+      ],
+      "sourceAssetIds": [],
+      "complements": [
+        "HWM162-S13",
+        "HWM162-S17"
+      ],
+      "expectedPath": "sprites/market/HWM162-S15-empty-market-stall-right.png",
+      "referenceViewNote": "Vue de la référence héritée ; caméra réelle non mesurée, cadrage et assemblage exact non certifiés."
+    },
+    {
+      "id": "HWM162-S16",
+      "area": "market",
+      "label": "Kiosque marchand compact — sans stock",
+      "kind": "État vide",
+      "targetIds": [
+        "target-v81-64-157"
+      ],
+      "purpose": "Fournir le kiosque compact avec surface de vente et accroches libres.",
+      "placementNote": "Préserver défenses, toiture, emblème, lanternes et structure fixes ; retirer les articles mobiles. Échelle physique à régler en scène.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 5,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "production/homeworld-v160/originals/HWA160-023_kiosque-marchand-yautja-en-basalte-et-bronze.png"
+      ],
+      "sourceAssetIds": [],
+      "complements": [
+        "HWM162-S17"
+      ],
+      "expectedPath": "sprites/market/HWM162-S16-empty-compact-merchant-kiosk.png",
+      "referenceViewNote": "Vue de la référence héritée ; caméra réelle non mesurée, cadrage et assemblage exact non certifiés."
+    },
+    {
+      "id": "HWM162-S17",
+      "area": "market",
+      "label": "Petit pot de stockage fermé autonome",
+      "kind": "Contenant",
+      "targetIds": [
+        "target-v81-64-166",
+        "target-v81-64-164"
+      ],
+      "purpose": "Rendre indépendant le petit pot fermé visible dans le rack V76.",
+      "placementNote": "Objet plaçable sur comptoir ou étagère ; contenu, contenance et dimensions physiques non attestés.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 5,
+      "viewPolicy": "PROJECT_CAMERA_TARGET",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "public/game/homeworld/v76/interior/rack-lateral.png"
+      ],
+      "sourceAssetIds": [],
+      "complements": [
+        "HWM162-S12",
+        "HWM162-S15",
+        "HWM162-S16"
+      ],
+      "expectedPath": "sprites/market/HWM162-S17-small-sealed-storage-jar.png",
+      "referenceViewNote": "Nouvel objet autonome demandé selon la cible orthographique 0°/35° du projet ; caméra et échelle réelles non mesurées."
+    },
+    {
+      "id": "HWM162-M16",
+      "area": "mounts",
+      "label": "Montant gauche de l’obstacle d’entraînement",
+      "kind": "Composant d’obstacle",
+      "targetIds": [
+        "target-v81-72-289"
+      ],
+      "purpose": "Isoler le montant gauche et son récepteur intérieur, avec pied complet.",
+      "placementNote": "Récepteur orienté vers la droite ; conserver les logements visibles, aucune symétrie de pixels.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 5,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M05-training-hurdle.png"
+      ],
+      "sourceAssetIds": [
+        "HWM162-M05"
+      ],
+      "complements": [
+        "HWM162-M05",
+        "HWM162-M17",
+        "HWM162-M18"
+      ],
+      "expectedPath": "sprites/mounts/HWM162-M16-hurdle-left-upright-v2.png",
+      "referenceViewNote": "Caméra et orientation de M05 héritées ; dimensions de toile, position, points de contact et échelle commune restent à vérifier après génération."
+    },
+    {
+      "id": "HWM162-M17",
+      "area": "mounts",
+      "label": "Montant droit de l’obstacle d’entraînement",
+      "kind": "Composant d’obstacle",
+      "targetIds": [
+        "target-v81-72-289"
+      ],
+      "purpose": "Isoler le montant droit et son récepteur intérieur, avec pied complet.",
+      "placementNote": "Récepteur orienté vers la gauche ; les détails ne sont pas obtenus par miroir du montant gauche.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 5,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M05-training-hurdle.png"
+      ],
+      "sourceAssetIds": [
+        "HWM162-M05"
+      ],
+      "complements": [
+        "HWM162-M05",
+        "HWM162-M16",
+        "HWM162-M18"
+      ],
+      "expectedPath": "sprites/mounts/HWM162-M17-hurdle-right-upright.png",
+      "referenceViewNote": "Caméra et orientation de M05 héritées ; dimensions de toile, position, points de contact et échelle commune restent à vérifier après génération."
+    },
+    {
+      "id": "HWM162-M18",
+      "area": "mounts",
+      "label": "Barre rembourrée d’entraînement autonome",
+      "kind": "Composant d’obstacle",
+      "targetIds": [
+        "target-v81-72-289"
+      ],
+      "purpose": "Isoler la barre textile et ses deux embouts de l’obstacle M05.",
+      "placementNote": "Placer entre les récepteurs M16/M17 ; contact, charge et réglage de hauteur non validés.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 5,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M05-training-hurdle.png"
+      ],
+      "sourceAssetIds": [
+        "HWM162-M05"
+      ],
+      "complements": [
+        "HWM162-M05",
+        "HWM162-M16",
+        "HWM162-M17"
+      ],
+      "expectedPath": "sprites/mounts/HWM162-M18-padded-training-rail.png",
+      "referenceViewNote": "Caméra et orientation de M05 héritées ; dimensions de toile, position, points de contact et échelle commune restent à vérifier après génération."
+    },
+    {
+      "id": "HWM162-K18",
+      "area": "kennels",
+      "label": "Arc arrière de l’enclos octogonal",
+      "kind": "Composant d’enclos",
+      "targetIds": [
+        "target-v81-71-266"
+      ],
+      "purpose": "Fournir cinq travées arrière et latérales reliées avec six poteaux, sans les trois travées avant.",
+      "placementNote": "Couche arrière proposée ; poteau de charnière à gauche et poteau de raccord à droite inclus. Les animaux seraient placés devant cette couche.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 5,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "production/native-open-20261102/archives/fauna-energy/target-v81-71-266-enclosure-native.png"
+      ],
+      "sourceAssetIds": [],
+      "complements": [
+        "HWM162-K19",
+        "HWM162-K20",
+        "HWM162-K21"
+      ],
+      "expectedPath": "sprites/kennels/HWM162-K18-enclosure-rear-arc.png",
+      "referenceViewNote": "Vue de la référence héritée ; caméra réelle non mesurée, cadrage et assemblage exact non certifiés."
+    },
+    {
+      "id": "HWM162-K19",
+      "area": "kennels",
+      "label": "Arc avant fixe de l’enclos",
+      "kind": "Composant d’enclos",
+      "targetIds": [
+        "target-v81-71-266"
+      ],
+      "purpose": "Fournir les deux travées avant fixes et leurs deux poteaux propres, passage de portail libre.",
+      "placementNote": "Couche avant proposée ; récepteur de serrure inclus à gauche. Le poteau de raccord droit appartient à K18 et ne doit pas être dupliqué.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 5,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "production/native-open-20261102/archives/fauna-energy/target-v81-71-266-enclosure-native.png"
+      ],
+      "sourceAssetIds": [],
+      "complements": [
+        "HWM162-K18",
+        "HWM162-K20",
+        "HWM162-K21"
+      ],
+      "expectedPath": "sprites/kennels/HWM162-K19-enclosure-front-arc.png",
+      "referenceViewNote": "Vue de la référence héritée ; caméra réelle non mesurée, cadrage et assemblage exact non certifiés."
+    },
+    {
+      "id": "HWM162-K20",
+      "area": "kennels",
+      "label": "Battant d’enclos indépendant — pose fermée",
+      "kind": "Battant",
+      "targetIds": [
+        "target-v81-71-266"
+      ],
+      "purpose": "Séparer le battant à trois traverses dans sa pose fermée de la référence266.",
+      "placementNote": "Battant et pièces mobiles seuls ; poteau de pivot dans K18, récepteur fixe dans K19. Assemblage et collision non validés.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 5,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "production/native-open-20261102/archives/fauna-energy/target-v81-71-266-enclosure-native.png"
+      ],
+      "sourceAssetIds": [],
+      "complements": [
+        "HWM162-K18",
+        "HWM162-K19",
+        "HWM162-K21"
+      ],
+      "expectedPath": "sprites/kennels/HWM162-K20-enclosure-gate-leaf.png",
+      "referenceViewNote": "Vue de la référence héritée ; caméra réelle non mesurée, cadrage et assemblage exact non certifiés."
+    },
+    {
+      "id": "HWM162-K21",
+      "area": "kennels",
+      "label": "Battant d’enclos indépendant — pose ouverte",
+      "kind": "État ouvert",
+      "targetIds": [
+        "target-v81-71-266"
+      ],
+      "purpose": "Fournir le même battant représenté ouvert vers l’extérieur, distinct du corps de l’enclos.",
+      "placementNote": "Reprendre la charnière verticale existante ; face précédemment occultée reconstruite comme adaptation. Aucun angle réel, pivot exact ou dégagement d’animation certifié.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 5,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "production/native-open-20261102/archives/fauna-energy/target-v81-71-266-enclosure-native.png",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K20-enclosure-gate-leaf.png"
+      ],
+      "sourceAssetIds": [
+        "HWM162-K20"
+      ],
+      "complements": [
+        "HWM162-K18",
+        "HWM162-K19",
+        "HWM162-K20"
+      ],
+      "expectedPath": "sprites/kennels/HWM162-K21-enclosure-gate-leaf-open.png",
+      "referenceViewNote": "Caméra de266 héritée et objet tourné en pose ouverte ; aucun changement de caméra ni rotation de pixels. Angle de pivotement réel non mesuré."
+    }
+  ],
+  "cameraDecision": "Nine requests inherit source views, including the turned open gate with source camera preserved. S17 requests the project camera. No camera angle or assembly has been measured.",
+  "canonicalOneToOneClaimed": false,
+  "runtimeIntegrated": false,
+  "humanValidated": false,
+  "generatedAdditionalPNGCount": 10,
+  "review": "review-round5.json"
+}

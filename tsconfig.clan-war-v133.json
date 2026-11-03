@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "incremental": false,
+    "tsBuildInfoFile": null
+  },
+  "include": [
+    "types/clan-war-v120-css.d.ts",
+    "app/game/systems/clanWarSourceMapsV128.ts",
+    "app/game/systems/clanWarRtsSourceMissionsV129.ts",
+    "app/game/systems/clanWarRtsSquadsV133.ts",
+    "app/game/ClanWarRtsSquadsV133.tsx"
+  ],
+  "exclude": ["node_modules", "dist", ".next", "outputs"]
+}

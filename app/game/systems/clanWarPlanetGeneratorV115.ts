@@ -1,6 +1,6 @@
 import type { WarPlanetV96 } from "./clanWarPlanetsV96";
 import {
-  DEFAULT_WAR_PLANET_RECIPE_V103, describeWarPlanetV103, encodeWarPlanetV103, generateWarPlanetV103,
+  DEFAULT_WAR_PLANET_RECIPE_V103, WAR_PLANET_RECIPE_FIELDS_V103, describeWarPlanetV103, encodeWarPlanetV103, generateWarPlanetV103,
   parseWarPlanetV103, validateWarPlanetRecipeV103,
   type WarPlanetProceduralV103, type WarPlanetRecipeV103,
 } from "./clanWarPlanetGeneratorV103";
@@ -75,6 +75,17 @@ export function normalizeWarPlanetRecipeV115(value: Partial<WarPlanetRecipeV115>
   const result = validateWarPlanetRecipeV115({ ...DEFAULT_WAR_PLANET_RECIPE_V115, ...value });
   if (!result) throw new RangeError("Recette planétaire V115 invalide.");
   return result;
+}
+/** Explicit V103 projection for the legacy generator and editor. Keep all V115
+ * fields on the original recipe; copying only published V103 fields avoids
+ * leaking shape, physical-size or texture modules into its strict validator. */
+export function projectWarPlanetRecipeV103FromV115(recipe: WarPlanetRecipeV115): WarPlanetRecipeV103 {
+  const projected = validateWarPlanetRecipeV103({
+    version: 103,
+    ...Object.fromEntries(WAR_PLANET_RECIPE_FIELDS_V103.map(field => [field, recipe[field]])),
+  });
+  if (!projected) throw new RangeError("Base de recette V103 invalide.");
+  return projected;
 }
 export function encodeWarPlanetV115(value: WarPlanetRecipeV115): string {
   const recipe = validateWarPlanetRecipeV115(value);

@@ -29,6 +29,9 @@ function rendered(api, state, width) {
   const sources = definition ? {...api.GAME_RESERVE_V66_ART, background: definition.art.background,
     branch: definition.art.ledge, industrialPlatform: definition.art.gantry, ferns: definition.art.cover} : api.GAME_RESERVE_V66_ART;
   const bank = Object.fromEntries(Object.entries(sources).map(([key, src]) => [key, image(src)]));
+  // Builds that draw render-only V1–V5 decor expose its sources; historical builds without it are unchanged.
+  const decor = api.gameReserveLegacyDecorSources?.(state) ?? [];
+  if (decor.length) bank.kit = Object.fromEntries(decor.map(src => [src, image(src)]));
   const commands = [], target = {canvas: {width}}, gradients = new Map();
   const context = new Proxy(target, {
     set(object, key, value) { object[key] = value; commands.push(['set', key, gradients.get(value) ?? value]); return true; },

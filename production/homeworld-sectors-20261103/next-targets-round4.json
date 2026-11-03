@@ -1,0 +1,369 @@
+{
+  "version": "MMK-20261103-PASS4",
+  "date": "2026-11-03",
+  "baselineCommit": "c8d37c3c059021a96b071551bf9b19b09340536e",
+  "previousDeliveryCommit": "c8d37c3c059021a96b071551bf9b19b09340536e",
+  "status": "GENERATED_REVIEWED_SOURCE_ART_CANDIDATES",
+  "plannedAdditionalPNGCount": 11,
+  "targetTotalPNGCount": 46,
+  "newV81Targets": 0,
+  "newAssetPlan": [
+    {
+      "id": "HWM162-S11",
+      "area": "market",
+      "label": "Comptoir marchand — stock retiré",
+      "kind": "État vide",
+      "targetIds": [
+        "target-v81-64-163"
+      ],
+      "purpose": "Fournir le comptoir avec sa console fixe et ses espaces de présentation dégagés.",
+      "placementNote": "Préserver l’accès du vendeur et les surfaces de prise ; placer les marchandises séparément. Réemploi secondaire envisageable pour la cible 159 dans la vue existante.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 4,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "public/game/homeworld/v83/merchant-counter-left.png"
+      ],
+      "complements": [
+        "HWM162-S10"
+      ],
+      "referenceViewNote": "Identité et vue de la référence conservées ; angle réel non mesuré. Aucune conversion générale à 0°/35° revendiquée.",
+      "expectedPath": "sprites/market/HWM162-S11-empty-merchant-counter.png",
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE"
+    },
+    {
+      "id": "HWM162-S12",
+      "area": "market",
+      "label": "Rack marchand — vide",
+      "kind": "État vide",
+      "targetIds": [
+        "target-v81-64-164"
+      ],
+      "purpose": "Composer librement le stock sur les deux niveaux du rack sans contenants fusionnés.",
+      "placementNote": "Conserver l’accès aux tablettes ; calibrer la taille des contenants et leur appui en scène.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 4,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "public/game/homeworld/v83/cargo-rack-right.png"
+      ],
+      "complements": [
+        "HWM162-S09"
+      ],
+      "referenceViewNote": "Identité et vue de la référence conservées ; angle réel non mesuré. Aucune conversion générale à 0°/35° revendiquée.",
+      "expectedPath": "sprites/market/HWM162-S12-empty-cargo-rack.png",
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE"
+    },
+    {
+      "id": "HWM162-S13",
+      "area": "market",
+      "label": "Rouleau de textile lié autonome",
+      "kind": "Composant de stock",
+      "targetIds": [
+        "target-v81-64-164",
+        "target-v81-64-170"
+      ],
+      "purpose": "Stocker et présenter séparément un paquet textile, en pouvant vider/remplir les racks sans fusion au mobilier.",
+      "placementNote": "Placer sur une tablette ou palette ; échelle et zones d’appui à vérifier en scène.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 4,
+      "expectedPath": "sprites/market/HWM162-S13-bound-cloth-roll.png",
+      "viewPolicy": "PROJECT_CAMERA_TARGET",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "public/game/homeworld/v76/interior/rack-lateral.png"
+      ],
+      "complements": [
+        "HWM162-S12",
+        "HWM162-S05"
+      ],
+      "referenceViewNote": "Nouvelle vue demandée orthographique yaw 0° / pitch 35° ; aucune mesure 3D ni dimensions canoniques.",
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE"
+    },
+    {
+      "id": "HWM162-S14",
+      "area": "market",
+      "label": "Volet plein de réserve autonome",
+      "kind": "Fermeture de bâtiment",
+      "targetIds": [
+        "target-v81-64-170"
+      ],
+      "purpose": "Proposer une fermeture pleine de la baie frontale du stock S05.",
+      "placementNote": "Dimensionnement, guidage, pivot, occlusion, débattement et raccord au linteau à vérifier dans la scène. Aucun bâtiment, sol ou cadre complet fusionné au PNG.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 4,
+      "expectedPath": "sprites/market/HWM162-S14-stock-shutter.png",
+      "viewPolicy": "PROJECT_CAMERA_TARGET",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "production/homeworld-sectors-20261103/sprites/market/HWM162-S05-stock-shelter.png"
+      ],
+      "complements": [
+        "HWM162-S05"
+      ],
+      "referenceViewNote": "Vue frontale cohérente avec S05 demandée orthographique yaw 0° / pitch 35° ; résultat non mesuré.",
+      "sourceAssetIds": [
+        "HWM162-S05"
+      ],
+      "mechanismStatus": "NEW_PROPOSED_COMPONENT_NOT_ATTESTED_IN_REFERENCE",
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE"
+    },
+    {
+      "id": "HWM162-M13",
+      "area": "mounts",
+      "label": "Longe d’attache à deux embouts",
+      "kind": "Accessoire de liaison",
+      "targetIds": [
+        "target-v81-72-281"
+      ],
+      "purpose": "Proposer une liaison autonome entre la borne d’attache et le harnais, avec un embout mécanique à chaque extrémité.",
+      "placementNote": "Aucune poignée de conduite ; positionner les deux embouts et laisser une courbe de mou. Compatibilité mécanique et longueur en scène à vérifier.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 4,
+      "viewPolicy": "PROJECT_CAMERA_TARGET",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M02-tether-station.png",
+        "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-283-mount-harness-native.png"
+      ],
+      "complements": [
+        "HWM162-M02"
+      ],
+      "referenceViewNote": "Nouvel objet ou nouvelle pose demandés suivant la cible Homeworld orthographique yaw 0° / pitch 35° ; caméra et géométrie réelles non mesurées.",
+      "sourceAssetIds": [
+        "HWM162-M02"
+      ],
+      "expectedPath": "sprites/mounts/HWM162-M13-double-ended-tether.png",
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE"
+    },
+    {
+      "id": "HWM162-M14",
+      "area": "mounts",
+      "label": "Harnais de monture — pose pendante",
+      "kind": "Pose indépendante",
+      "targetIds": [
+        "target-v81-72-283"
+      ],
+      "purpose": "Fournir le harnais seul dans une pose utilisable sur son support de rangement vide.",
+      "placementNote": "Ajuster l’accroche au support 282 ; aucune créature ni adaptation anatomique validée.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 4,
+      "viewPolicy": "PROJECT_CAMERA_TARGET",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-283-mount-harness-native.png",
+        "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-282-mount-harness-support-native.png"
+      ],
+      "complements": [],
+      "referenceViewNote": "Nouvelle pose pendante, orientation de l’objet adaptée à l’axe des deux crochets supérieurs du support 282. Cible de caméra demandée orthographique 0°/35° ; caméra réelle et raccord non mesurés.",
+      "expectedPath": "sprites/mounts/HWM162-M14-hanging-mount-harness-v2.png",
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE"
+    },
+    {
+      "id": "HWM162-M15",
+      "area": "mounts",
+      "label": "Berceau textile de soin",
+      "kind": "Accessoire de soin",
+      "targetIds": [
+        "target-v81-72-290"
+      ],
+      "purpose": "Compléter le support bas à quatre appuis par un berceau souple autonome pour la zone de soins.",
+      "placementNote": "Les appuis de 273 sont bas et rembourrés ; aucun portique de levage n’est présent. La pose, les liaisons et la capacité de charge sont des propositions non validées.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 4,
+      "viewPolicy": "PROJECT_CAMERA_TARGET",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "production/native-open-20261102/archives/fauna-energy/gear/target-v81-71-273-fauna-harness-support-native.png",
+        "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-283-mount-harness-native.png"
+      ],
+      "complements": [
+        "HWM162-M06"
+      ],
+      "referenceViewNote": "Orientation de l’objet adaptée aux longerons obliques du support bas 273. Cible de caméra demandée orthographique 0°/35° ; caméra réelle et positions d’appui non mesurées.",
+      "expectedPath": "sprites/mounts/HWM162-M15-soft-care-cradle-v2.png",
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE"
+    },
+    {
+      "id": "HWM162-K14",
+      "area": "kennels",
+      "label": "Abreuvoir alien — état vide",
+      "kind": "État vide",
+      "targetIds": [
+        "target-v81-71-271"
+      ],
+      "purpose": "Montrer le bassin sec lorsque l’abreuvoir est vidé ou en entretien.",
+      "placementNote": "Garder l’approche dégagée ; aligner cet état avec la source remplie avant toute transition en jeu.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 4,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-271-abreuvoir-alien-native-attempt02.png"
+      ],
+      "complements": [],
+      "referenceViewNote": "Identité et vue de la référence conservées ; angle réel non mesuré. Aucune conversion générale à 0°/35° revendiquée.",
+      "expectedPath": "sprites/kennels/HWM162-K14-empty-alien-drinker.png",
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE"
+    },
+    {
+      "id": "HWM162-K15",
+      "area": "kennels",
+      "label": "Nourrisseur à trémie — bac vide",
+      "kind": "État vide",
+      "targetIds": [
+        "target-v81-71-272"
+      ],
+      "purpose": "Montrer le bac et la goulotte sans aliments visibles, en conservant le nourrisseur complet.",
+      "placementNote": "Prévoir l’approche au bac et le remplissage ; contenu du réservoir fermé non observable. Aucun mécanisme de bac amovible déduit du dessin.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 4,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-272-nourrisseur-native.png"
+      ],
+      "complements": [],
+      "referenceViewNote": "Identité et vue de la référence conservées ; angle réel non mesuré. Aucune conversion générale à 0°/35° revendiquée.",
+      "expectedPath": "sprites/kennels/HWM162-K15-empty-hopper-feeder.png",
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE"
+    },
+    {
+      "id": "HWM162-K16",
+      "area": "kennels",
+      "label": "Râtelier de dressage — vide",
+      "kind": "État vide",
+      "targetIds": [
+        "target-v81-71-274"
+      ],
+      "purpose": "Permettre de disposer séparément les laisses, leurres et colliers sur les crochets du râtelier.",
+      "placementNote": "Conserver les cinq crochets libres et le passage devant le support ; vérifier chaque accroche en scène.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 4,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K03-training-rack.png"
+      ],
+      "complements": [
+        "HWM162-K03",
+        "HWM162-K07",
+        "HWM162-K08",
+        "HWM162-K09"
+      ],
+      "referenceViewNote": "Identité et vue de la référence conservées ; angle réel non mesuré. Aucune conversion générale à 0°/35° revendiquée.",
+      "expectedPath": "sprites/kennels/HWM162-K16-empty-training-rack.png",
+      "sourceAssetIds": [
+        "HWM162-K03"
+      ],
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE"
+    },
+    {
+      "id": "HWM162-K17",
+      "area": "kennels",
+      "label": "Balise de danger — éteinte",
+      "kind": "État désactivé",
+      "targetIds": [
+        "target-v81-71-280"
+      ],
+      "purpose": "Distinguer graphiquement la balise sans émission de son état d’alerte lumineux.",
+      "placementNote": "Le symbole et le corps restent identiques ; aucun sens canonique du glyphe ni comportement runtime n’est certifié.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 4,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-280-signal-danger-native.png"
+      ],
+      "complements": [],
+      "referenceViewNote": "Identité et vue de la référence conservées ; angle réel non mesuré. Aucune conversion générale à 0°/35° revendiquée.",
+      "expectedPath": "sprites/kennels/HWM162-K17-danger-beacon-off.png",
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE"
+    }
+  ],
+  "canonicalOneToOneClaimed": false,
+  "runtimeIntegrated": false,
+  "humanValidated": false,
+  "cameraDecision": "Six state edits inherit the exact source-view request; five new objects/poses request the project camera, with M14/M15 object orientation adapted to their supports. No actual camera or assembly is certified.",
+  "generatedAdditionalPNGCount": 11,
+  "review": "review-round4.json"
+}

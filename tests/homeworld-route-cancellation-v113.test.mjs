@@ -51,9 +51,9 @@ function fixture(){
  const pad={connected:true,id:'controlled-atlas-pad',index:0,axes:[0,0],buttons:Array.from({length:16},()=>({pressed:false}))};
  const document={activeElement:null,focused:false,hasFocus(){return this.focused;}};
  const dialog={focus(){document.activeElement=this;},contains(node){return node===this;},querySelectorAll(){return[];}};
- const module={exports:{}};
+ const testModule={exports:{}};
  runInNewContext(compiled.outputFiles[0].text,{
-  module,exports:module.exports,require:name=>{
+  module:testModule,exports:testModule.exports,require:name=>{
    if(name==='react')return hooks;
    assert.equal(name,'react/jsx-runtime');
    return{Fragment:'fragment',jsx:(type,props)=>({type,props}),jsxs:(type,props)=>({type,props})};
@@ -61,7 +61,7 @@ function fixture(){
   requestAnimationFrame:callback=>{frames.set(++nextFrame,callback);return nextFrame;},cancelAnimationFrame:id=>frames.delete(id),
   window:{setInterval:()=>1,clearInterval(){}},document,navigator:{getGamepads:()=>[pad]},
  });
- const api=module.exports,save=api.defaultSave('2026-10-29T00:00:00.000Z');
+ const api=testModule.exports,save=api.defaultSave('2026-10-29T00:00:00.000Z');
  const officer=api.homeworldAtlasLandmarksV111(save).find(target=>target.id==='point:dock-officer-point');
  const room=api.homeworldInteriorForBuildingV64(officer.buildingId);
  assert.ok(room);

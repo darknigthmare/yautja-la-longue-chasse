@@ -1,0 +1,1887 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-01T00:45:56.502Z",
+  "qualification": "NATIVE_CPU_CI",
+  "status": "PASS",
+  "provenance": {
+    "revision": "3c9575809068ac6c9e4a97f57896c4a4cfc60479",
+    "githubRunId": "41257774503",
+    "githubJob": "native",
+    "sourceSha256": "8bf504951e6d7d6af9df2bf1d125b99d25f06009723efc96b47636b53b5471c5",
+    "bundle": "esbuild minified in-memory production source; React external, CSS empty; private native symbols exposed only in harness."
+  },
+  "environment": {
+    "node": "v22.23.4",
+    "platform": "linux",
+    "osRelease": "7.0.0-1017-azure",
+    "arch": "x64",
+    "cpuModel": "AMD EPYC 7763 64-Core Processor",
+    "logicalCpus": 4,
+    "totalMemoryBytes": 16764678144
+  },
+  "configuration": {
+    "fixedStepSeconds": 0.008333333333333333,
+    "warmupSteps": 240,
+    "measuredSteps": 1800,
+    "passes": 2,
+    "cpuRegressionGuard": {
+      "meanMs": 8.333334,
+      "p95Ms": 16.666667
+    }
+  },
+  "limits": {
+    "scanSeconds": 0.1,
+    "pairsPerScan": 32,
+    "maximumReceipts": 1024,
+    "maximumEvents": 128,
+    "maximumReactions": 64,
+    "maximumZones": 64,
+    "maximumPendingRadios": 16,
+    "radiosPerScan": 2,
+    "recipientsPerRadio": 4,
+    "sightRadius": 480,
+    "scentRadius": 140,
+    "radioRadius": 480,
+    "radioDelaySeconds": 0.8,
+    "reactionSeconds": 7,
+    "zoneSeconds": 30,
+    "zoneRadius": 260
+  },
+  "scope": {
+    "measured": "Native CPU stepGame and separately 10 Hz HUD snapshot. Eight actual mission worlds, both original and stress-scheduled authored enemies.",
+    "survivalFixture": "Native health/maxHealth retained; player invulnerability set to 1e6 seconds. Simulation, geometry, AI, collision and enemy damage/death stay enabled.",
+    "input": "Deterministic normalized keyboard InputHub commands; no physical input device, DOM, renderer, asset loading or audio.",
+    "stressSchedule": "All-waves scenario moves existing mission wave activation to t=0, kills up to three real actors through damageEnemy, retains other native enemies.",
+    "memory": "Before/after process heap samples are informational, not a leak qualification.",
+    "guard": "Generous CPU regression guard for this CI runner; not a whole-frame/FPS, GPU, phone or controller certification.",
+    "unqualified": [
+      "GPU and renderer frame times",
+      "target physical hardware and thermal behavior",
+      "complete interactive combat campaign",
+      "retained memory/leak profile"
+    ]
+  },
+  "cases": [
+    {
+      "missionId": "jungle-vey",
+      "kind": "start-roster",
+      "pass": 1,
+      "initial": {
+        "enemies": 4,
+        "alive": 4,
+        "corpses": 0,
+        "worldWidth": 8400,
+        "platforms": 35,
+        "climbables": 7,
+        "covers": 6
+      },
+      "peak": {
+        "enemies": 4,
+        "alive": 4,
+        "corpses": 0,
+        "receipts": 0,
+        "reactions": 0,
+        "zones": 0,
+        "pendingRadios": 0,
+        "projectiles": 0,
+        "noiseEvents": 9,
+        "tracks": 123,
+        "goreParticles": 2,
+        "stashes": 0
+      },
+      "simulatedSeconds": 16.999999999999677,
+      "measuredSimulatedSeconds": 15,
+      "timing": {
+        "samples": 1800,
+        "meanMs": 0.7919635249999992,
+        "p50Ms": 0.7195700000002034,
+        "p95Ms": 1.2378539999999703,
+        "p99Ms": 1.6878979999999046,
+        "maximumMs": 2.2352760000001126
+      },
+      "hud": {
+        "samples": 150,
+        "meanMs": 0.044460586666666586,
+        "p50Ms": 0.04081700000006094,
+        "p95Ms": 0.07148399999982757,
+        "p99Ms": 0.08867599999985032,
+        "maximumMs": 0.09485800000015843
+      },
+      "heap": {
+        "beforeBytes": 19680616,
+        "afterBytes": 20203824,
+        "interpretation": "Process heap snapshot without forced GC; not a retained-memory/leak measurement."
+      },
+      "finalDigest": "e0fde011fdc79905203b60181e5076117cd516391bbe11abffc47db2eea26ead",
+      "gate": {
+        "mean": true,
+        "p95": true
+      }
+    },
+    {
+      "missionId": "jungle-vey",
+      "kind": "start-roster",
+      "pass": 2,
+      "initial": {
+        "enemies": 4,
+        "alive": 4,
+        "corpses": 0,
+        "worldWidth": 8400,
+        "platforms": 35,
+        "climbables": 7,
+        "covers": 6
+      },
+      "peak": {
+        "enemies": 4,
+        "alive": 4,
+        "corpses": 0,
+        "receipts": 0,
+        "reactions": 0,
+        "zones": 0,
+        "pendingRadios": 0,
+        "projectiles": 0,
+        "noiseEvents": 9,
+        "tracks": 123,
+        "goreParticles": 2,
+        "stashes": 0
+      },
+      "simulatedSeconds": 16.999999999999677,
+      "measuredSimulatedSeconds": 15,
+      "timing": {
+        "samples": 1800,
+        "meanMs": 0.6815483205555514,
+        "p50Ms": 0.637637000000268,
+        "p95Ms": 0.9416270000001532,
+        "p99Ms": 1.33753999999999,
+        "maximumMs": 1.7012840000002143
+      },
+      "hud": {
+        "samples": 150,
+        "meanMs": 0.04036131333332984,
+        "p50Ms": 0.03803200000038487,
+        "p95Ms": 0.0615060000000085,
+        "p99Ms": 0.06446100000039223,
+        "maximumMs": 0.08806499999991502
+      },
+      "heap": {
+        "beforeBytes": 20551008,
+        "afterBytes": 25612816,
+        "interpretation": "Process heap snapshot without forced GC; not a retained-memory/leak measurement."
+      },
+      "finalDigest": "e0fde011fdc79905203b60181e5076117cd516391bbe11abffc47db2eea26ead",
+      "gate": {
+        "mean": true,
+        "p95": true
+      }
+    },
+    {
+      "missionId": "jungle-vey",
+      "kind": "authored-waves-with-corpses",
+      "pass": 1,
+      "initial": {
+        "enemies": 9,
+        "alive": 7,
+        "corpses": 2,
+        "worldWidth": 8400,
+        "platforms": 35,
+        "climbables": 7,
+        "covers": 6
+      },
+      "peak": {
+        "enemies": 9,
+        "alive": 7,
+        "corpses": 2,
+        "receipts": 1,
+        "reactions": 1,
+        "zones": 0,
+        "pendingRadios": 0,
+        "projectiles": 0,
+        "noiseEvents": 9,
+        "tracks": 241,
+        "goreParticles": 10,
+        "stashes": 0
+      },
+      "simulatedSeconds": 16.999999999999677,
+      "measuredSimulatedSeconds": 15,
+      "timing": {
+        "samples": 1800,
+        "meanMs": 1.3139771433333292,
+        "p50Ms": 1.276756999999634,
+        "p95Ms": 1.590715999999702,
+        "p99Ms": 2.323261999999886,
+        "maximumMs": 2.591034000000036
+      },
+      "hud": {
+        "samples": 150,
+        "meanMs": 0.04421514666668372,
+        "p50Ms": 0.04177900000013324,
+        "p95Ms": 0.06233700000029785,
+        "p99Ms": 0.0771150000000489,
+        "maximumMs": 0.0815229999998337
+      },
+      "heap": {
+        "beforeBytes": 26209224,
+        "afterBytes": 27653840,
+        "interpretation": "Process heap snapshot without forced GC; not a retained-memory/leak measurement."
+      },
+      "finalDigest": "4141ca136633acdea30e82eaaee0b81fbba202d3027e68bf3b17c11100bbb6d8",
+      "gate": {
+        "mean": true,
+        "p95": true
+      }
+    },
+    {
+      "missionId": "jungle-vey",
+      "kind": "authored-waves-with-corpses",
+      "pass": 2,
+      "initial": {
+        "enemies": 9,
+        "alive": 7,
+        "corpses": 2,
+        "worldWidth": 8400,
+        "platforms": 35,
+        "climbables": 7,
+        "covers": 6
+      },
+      "peak": {
+        "enemies": 9,
+        "alive": 7,
+        "corpses": 2,
+        "receipts": 1,
+        "reactions": 1,
+        "zones": 0,
+        "pendingRadios": 0,
+        "projectiles": 0,
+        "noiseEvents": 9,
+        "tracks": 241,
+        "goreParticles": 10,
+        "stashes": 0
+      },
+      "simulatedSeconds": 16.999999999999677,
+      "measuredSimulatedSeconds": 15,
+      "timing": {
+        "samples": 1800,
+        "meanMs": 1.2517636733333277,
+        "p50Ms": 1.2267830000000686,
+        "p95Ms": 1.5053969999999026,
+        "p99Ms": 1.763440000000628,
+        "maximumMs": 2.623344000000543
+      },
+      "hud": {
+        "samples": 150,
+        "meanMs": 0.043715999999985794,
+        "p50Ms": 0.041868999999678636,
+        "p95Ms": 0.06025300000055722,
+        "p99Ms": 0.07386899999983143,
+        "maximumMs": 0.08758399999987887
+      },
+      "heap": {
+        "beforeBytes": 28281280,
+        "afterBytes": 30794448,
+        "interpretation": "Process heap snapshot without forced GC; not a retained-memory/leak measurement."
+      },
+      "finalDigest": "4141ca136633acdea30e82eaaee0b81fbba202d3027e68bf3b17c11100bbb6d8",
+      "gate": {
+        "mean": true,
+        "p95": true
+      }
+    },
+    {
+      "missionId": "ice-cryostalker",
+      "kind": "start-roster",
+      "pass": 1,
+      "initial": {
+        "enemies": 4,
+        "alive": 4,
+        "corpses": 0,
+        "worldWidth": 8400,
+        "platforms": 36,
+        "climbables": 22,
+        "covers": 6
+      },
+      "peak": {
+        "enemies": 4,
+        "alive": 4,
+        "corpses": 0,
+        "receipts": 0,
+        "reactions": 0,
+        "zones": 0,
+        "pendingRadios": 0,
+        "projectiles": 0,
+        "noiseEvents": 9,
+        "tracks": 241,
+        "goreParticles": 2,
+        "stashes": 0
+      },
+      "simulatedSeconds": 16.999999999999677,
+      "measuredSimulatedSeconds": 15,
+      "timing": {
+        "samples": 1800,
+        "meanMs": 0.7824797244444521,
+        "p50Ms": 0.7510299999994459,
+        "p95Ms": 1.0687060000000201,
+        "p99Ms": 1.4669040000007953,
+        "maximumMs": 1.9740160000001197
+      },
+      "hud": {
+        "samples": 150,
+        "meanMs": 0.04301146666662438,
+        "p50Ms": 0.03914299999996729,
+        "p95Ms": 0.060913999999684165,
+        "p99Ms": 0.09308499999860942,
+        "maximumMs": 0.29284000000006927
+      },
+      "heap": {
+        "beforeBytes": 31291728,
+        "afterBytes": 30275064,
+        "interpretation": "Process heap snapshot without forced GC; not a retained-memory/leak measurement."
+      },
+      "finalDigest": "5dc04216ce6053a9495537ff67258af60a5313d742065bf3f44faf9a9670ef8e",
+      "gate": {
+        "mean": true,
+        "p95": true
+      }
+    },
+    {
+      "missionId": "ice-cryostalker",
+      "kind": "start-roster",
+      "pass": 2,
+      "initial": {
+        "enemies": 4,
+        "alive": 4,
+        "corpses": 0,
+        "worldWidth": 8400,
+        "platforms": 36,
+        "climbables": 22,
+        "covers": 6
+      },
+      "peak": {
+        "enemies": 4,
+        "alive": 4,
+        "corpses": 0,
+        "receipts": 0,
+        "reactions": 0,
+        "zones": 0,
+        "pendingRadios": 0,
+        "projectiles": 0,
+        "noiseEvents": 9,
+        "tracks": 241,
+        "goreParticles": 2,
+        "stashes": 0
+      },
+      "simulatedSeconds": 16.999999999999677,
+      "measuredSimulatedSeconds": 15,
+      "timing": {
+        "samples": 1800,
+        "meanMs": 0.73031335222225,
+        "p50Ms": 0.7151219999996101,
+        "p95Ms": 0.9475390000006882,
+        "p99Ms": 1.3888479999986885,
+        "maximumMs": 1.6692340000008699
+      },
+      "hud": {
+        "samples": 150,
+        "meanMs": 0.041198466666658835,
+        "p50Ms": 0.03735999999844353,
+        "p95Ms": 0.05810899999960384,
+        "p99Ms": 0.09234300000025542,
+        "maximumMs": 0.2837820000004285
+      },
+      "heap": {
+        "beforeBytes": 30728272,
+        "afterBytes": 28733096,
+        "interpretation": "Process heap snapshot without forced GC; not a retained-memory/leak measurement."
+      },
+      "finalDigest": "5dc04216ce6053a9495537ff67258af60a5313d742065bf3f44faf9a9670ef8e",
+      "gate": {
+        "mean": true,
+        "p95": true
+      }
+    },
+    {
+      "missionId": "ice-cryostalker",
+      "kind": "authored-waves-with-corpses",
+      "pass": 1,
+      "initial": {
+        "enemies": 9,
+        "alive": 7,
+        "corpses": 2,
+        "worldWidth": 8400,
+        "platforms": 36,
+        "climbables": 22,
+        "covers": 6
+      },
+      "peak": {
+        "enemies": 9,
+        "alive": 7,
+        "corpses": 2,
+        "receipts": 1,
+        "reactions": 1,
+        "zones": 1,
+        "pendingRadios": 1,
+        "projectiles": 0,
+        "noiseEvents": 9,
+        "tracks": 241,
+        "goreParticles": 10,
+        "stashes": 0
+      },
+      "simulatedSeconds": 16.999999999999677,
+      "measuredSimulatedSeconds": 15,
+      "timing": {
+        "samples": 1800,
+        "meanMs": 0.9687705883333314,
+        "p50Ms": 0.9191659999996773,
+        "p95Ms": 1.2492249999995693,
+        "p99Ms": 1.7675679999993008,
+        "maximumMs": 2.42575399999987
+      },
+      "hud": {
+        "samples": 150,
+        "meanMs": 0.041137406666712194,
+        "p50Ms": 0.039012999999613385,
+        "p95Ms": 0.05819899999914924,
+        "p99Ms": 0.06530299999940326,
+        "maximumMs": 0.07035200000063924
+      },
+      "heap": {
+        "beforeBytes": 29301344,
+        "afterBytes": 28590096,
+        "interpretation": "Process heap snapshot without forced GC; not a retained-memory/leak measurement."
+      },
+      "finalDigest": "a018aa0d074c51f1cfde3cc37a03e37b12543ca0d193593c1a2cbaeba0f00183",
+      "gate": {
+        "mean": true,
+        "p95": true
+      }
+    },
+    {
+      "missionId": "ice-cryostalker",
+      "kind": "authored-waves-with-corpses",
+      "pass": 2,
+      "initial": {
+        "enemies": 9,
+        "alive": 7,
+        "corpses": 2,
+        "worldWidth": 8400,
+        "platforms": 36,
+        "climbables": 22,
+        "covers": 6
+      },
+      "peak": {
+        "enemies": 9,
+        "alive": 7,
+        "corpses": 2,
+        "receipts": 1,
+        "reactions": 1,
+        "zones": 1,
+        "pendingRadios": 1,
+        "projectiles": 0,
+        "noiseEvents": 9,
+        "tracks": 241,
+        "goreParticles": 10,
+        "stashes": 0
+      },
+      "simulatedSeconds": 16.999999999999677,
+      "measuredSimulatedSeconds": 15,
+      "timing": {
+        "samples": 1800,
+        "meanMs": 0.9379839361111074,
+        "p50Ms": 0.9080940000003466,
+        "p95Ms": 1.1571320000002743,
+        "p99Ms": 1.5502710000000661,
+        "maximumMs": 1.8383119999998598
+      },
+      "hud": {
+        "samples": 150,
+        "meanMs": 0.04082979333329907,
+        "p50Ms": 0.03919300000052317,
+        "p95Ms": 0.06105399999978545,
+        "p99Ms": 0.0720049999999901,
+        "maximumMs": 0.08272499999839056
+      },
+      "heap": {
+        "beforeBytes": 29167840,
+        "afterBytes": 30717736,
+        "interpretation": "Process heap snapshot without forced GC; not a retained-memory/leak measurement."
+      },
+      "finalDigest": "a018aa0d074c51f1cfde3cc37a03e37b12543ca0d193593c1a2cbaeba0f00183",
+      "gate": {
+        "mean": true,
+        "p95": true
+      }
+    },
+    {
+      "missionId": "volcano-bad-blood",
+      "kind": "start-roster",
+      "pass": 1,
+      "initial": {
+        "enemies": 5,
+        "alive": 5,
+        "corpses": 0,
+        "worldWidth": 8400,
+        "platforms": 36,
+        "climbables": 22,
+        "covers": 6
+      },
+      "peak": {
+        "enemies": 5,
+        "alive": 5,
+        "corpses": 1,
+        "receipts": 3,
+        "reactions": 2,
+        "zones": 1,
+        "pendingRadios": 1,
+        "projectiles": 0,
+        "noiseEvents": 9,
+        "tracks": 169,
+        "goreParticles": 5,
+        "stashes": 0
+      },
+      "simulatedSeconds": 16.999999999999677,
+      "measuredSimulatedSeconds": 15,
+      "timing": {
+        "samples": 1800,
+        "meanMs": 0.7190018027777801,
+        "p50Ms": 0.6898650000002817,
+        "p95Ms": 0.8813449999997829,
+        "p99Ms": 1.2107529999993858,
+        "maximumMs": 1.8045099999981176
+      },
+      "hud": {
+        "samples": 150,
+        "meanMs": 0.0474044733333964,
+        "p50Ms": 0.04482400000051712,
+        "p95Ms": 0.07113399999980174,
+        "p99Ms": 0.09925400000065565,
+        "maximumMs": 0.10933599999953003
+      },
+      "heap": {
+        "beforeBytes": 31254096,
+        "afterBytes": 37287368,
+        "interpretation": "Process heap snapshot without forced GC; not a retained-memory/leak measurement."
+      },
+      "finalDigest": "96ad66d5bd8b7fbb005f19696bc191084e203fdba41006c3d9c5ee875915fdf3",
+      "gate": {
+        "mean": true,
+        "p95": true
+      }
+    },
+    {
+      "missionId": "volcano-bad-blood",
+      "kind": "start-roster",
+      "pass": 2,
+      "initial": {
+        "enemies": 5,
+        "alive": 5,
+        "corpses": 0,
+        "worldWidth": 8400,
+        "platforms": 36,
+        "climbables": 22,
+        "covers": 6
+      },
+      "peak": {
+        "enemies": 5,
+        "alive": 5,
+        "corpses": 1,
+        "receipts": 3,
+        "reactions": 2,
+        "zones": 1,
+        "pendingRadios": 1,
+        "projectiles": 0,
+        "noiseEvents": 9,
+        "tracks": 169,
+        "goreParticles": 5,
+        "stashes": 0
+      },
+      "simulatedSeconds": 16.999999999999677,
+      "measuredSimulatedSeconds": 15,
+      "timing": {
+        "samples": 1800,
+        "meanMs": 0.679649833333335,
+        "p50Ms": 0.6540679999998247,
+        "p95Ms": 0.8412800000005518,
+        "p99Ms": 1.158133999997517,
+        "maximumMs": 1.8950780000013765
+      },
+      "hud": {
+        "samples": 150,
+        "meanMs": 0.04553251333360095,
+        "p50Ms": 0.043933000000834,
+        "p95Ms": 0.06066400000054273,
+        "p99Ms": 0.08216299999912735,
+        "maximumMs": 0.08336699999927077
+      },
+      "heap": {
+        "beforeBytes": 37643496,
+        "afterBytes": 44294296,
+        "interpretation": "Process heap snapshot without forced GC; not a retained-memory/leak measurement."
+      },
+      "finalDigest": "96ad66d5bd8b7fbb005f19696bc191084e203fdba41006c3d9c5ee875915fdf3",
+      "gate": {
+        "mean": true,
+        "p95": true
+      }
+    },
+    {
+      "missionId": "volcano-bad-blood",
+      "kind": "authored-waves-with-corpses",
+      "pass": 1,
+      "initial": {
+        "enemies": 12,
+        "alive": 9,
+        "corpses": 3,
+        "worldWidth": 8400,
+        "platforms": 36,
+        "climbables": 22,
+        "covers": 6
+      },
+      "peak": {
+        "enemies": 12,
+        "alive": 9,
+        "corpses": 3,
+        "receipts": 3,
+        "reactions": 3,
+        "zones": 1,
+        "pendingRadios": 1,
+        "projectiles": 1,
+        "noiseEvents": 10,
+        "tracks": 241,
+        "goreParticles": 15,
+        "stashes": 0
+      },
+      "simulatedSeconds": 16.999999999999677,
+      "measuredSimulatedSeconds": 15,
+      "timing": {
+        "samples": 1800,
+        "meanMs": 1.2274204416666765,
+        "p50Ms": 1.1675619999987248,
+        "p95Ms": 1.551132000000507,
+        "p99Ms": 2.1973660000003292,
+        "maximumMs": 4.041778000002523
+      },
+      "hud": {
+        "samples": 150,
+        "meanMs": 0.049118420000183204,
+        "p50Ms": 0.046978000002127374,
+        "p95Ms": 0.06862900000123773,
+        "p99Ms": 0.07436999999845284,
+        "maximumMs": 0.07763600000180304
+      },
+      "heap": {
+        "beforeBytes": 44801856,
+        "afterBytes": 38715032,
+        "interpretation": "Process heap snapshot without forced GC; not a retained-memory/leak measurement."
+      },
+      "finalDigest": "40dd6cb1e27508552326b13e3891b4908cc5c77adce6720bb2d4cac8cfc6b2c8",
+      "gate": {
+        "mean": true,
+        "p95": true
+      }
+    },
+    {
+      "missionId": "volcano-bad-blood",
+      "kind": "authored-waves-with-corpses",
+      "pass": 2,
+      "initial": {
+        "enemies": 12,
+        "alive": 9,
+        "corpses": 3,
+        "worldWidth": 8400,
+        "platforms": 36,
+        "climbables": 22,
+        "covers": 6
+      },
+      "peak": {
+        "enemies": 12,
+        "alive": 9,
+        "corpses": 3,
+        "receipts": 3,
+        "reactions": 3,
+        "zones": 1,
+        "pendingRadios": 1,
+        "projectiles": 1,
+        "noiseEvents": 10,
+        "tracks": 241,
+        "goreParticles": 15,
+        "stashes": 0
+      },
+      "simulatedSeconds": 16.999999999999677,
+      "measuredSimulatedSeconds": 15,
+      "timing": {
+        "samples": 1800,
+        "meanMs": 1.1516882022222652,
+        "p50Ms": 1.1074889999981679,
+        "p95Ms": 1.4321989999989455,
+        "p99Ms": 2.0597770000022138,
+        "maximumMs": 2.6754130000008445
+      },
+      "hud": {
+        "samples": 150,
+        "meanMs": 0.047674200000158935,
+        "p50Ms": 0.04599600000074133,
+        "p95Ms": 0.056164999998145504,
+        "p99Ms": 0.0786179999995511,
+        "maximumMs": 0.09391600000162725
+      },
+      "heap": {
+        "beforeBytes": 39348640,
+        "afterBytes": 32865536,
+        "interpretation": "Process heap snapshot without forced GC; not a retained-memory/leak measurement."
+      },
+      "finalDigest": "40dd6cb1e27508552326b13e3891b4908cc5c77adce6720bb2d4cac8cfc6b2c8",
+      "gate": {
+        "mean": true,
+        "p95": true
+      }
+    },
+    {
+      "missionId": "swamp-hydra",
+      "kind": "start-roster",
+      "pass": 1,
+      "initial": {
+        "enemies": 5,
+        "alive": 5,
+        "corpses": 0,
+        "worldWidth": 8400,
+        "platforms": 36,
+        "climbables": 22,
+        "covers": 5
+      },
+      "peak": {
+        "enemies": 5,
+        "alive": 5,
+        "corpses": 0,
+        "receipts": 0,
+        "reactions": 0,
+        "zones": 0,
+        "pendingRadios": 0,
+        "projectiles": 0,
+        "noiseEvents": 9,
+        "tracks": 241,
+        "goreParticles": 2,
+        "stashes": 0
+      },
+      "simulatedSeconds": 16.999999999999677,
+      "measuredSimulatedSeconds": 15,
+      "timing": {
+        "samples": 1800,
+        "meanMs": 0.8939142016666584,
+        "p50Ms": 0.9038469999977679,
+        "p95Ms": 1.1318439999995462,
+        "p99Ms": 1.2501669999983278,
+        "maximumMs": 2.013522000001103
+      },
+      "hud": {
+        "samples": 150,
+        "meanMs": 0.04972889999987577,
+        "p50Ms": 0.04725799999869196,
+        "p95Ms": 0.06824800000322284,
+        "p99Ms": 0.07632400000147754,
+        "maximumMs": 0.10101900000154274
+      },
+      "heap": {
+        "beforeBytes": 33263440,
+        "afterBytes": 33089144,
+        "interpretation": "Process heap snapshot without forced GC; not a retained-memory/leak measurement."
+      },
+      "finalDigest": "e82dd691914d5cde8e36b81e88623574355ddce3e9ea9bfc918e40819d8d9b4c",
+      "gate": {
+        "mean": true,
+        "p95": true
+      }
+    },
+    {
+      "missionId": "swamp-hydra",
+      "kind": "start-roster",
+      "pass": 2,
+      "initial": {
+        "enemies": 5,
+        "alive": 5,
+        "corpses": 0,
+        "worldWidth": 8400,
+        "platforms": 36,
+        "climbables": 22,
+        "covers": 5
+      },
+      "peak": {
+        "enemies": 5,
+        "alive": 5,
+        "corpses": 0,
+        "receipts": 0,
+        "reactions": 0,
+        "zones": 0,
+        "pendingRadios": 0,
+        "projectiles": 0,
+        "noiseEvents": 9,
+        "tracks": 241,
+        "goreParticles": 2,
+        "stashes": 0
+      },
+      "simulatedSeconds": 16.999999999999677,
+      "measuredSimulatedSeconds": 15,
+      "timing": {
+        "samples": 1800,
+        "meanMs": 0.9018494422221819,
+        "p50Ms": 0.9071540000004461,
+        "p95Ms": 1.1341810000012629,
+        "p99Ms": 1.3684299999986251,
+        "maximumMs": 1.771497999998246
+      },
+      "hud": {
+        "samples": 150,
+        "meanMs": 0.05023895333331893,
+        "p50Ms": 0.04778000000078464,
+        "p95Ms": 0.06854899999962072,
+        "p99Ms": 0.09775399999853107,
+        "maximumMs": 0.1055290000003879
+      },
+      "heap": {
+        "beforeBytes": 33477440,
+        "afterBytes": 45938432,
+        "interpretation": "Process heap snapshot without forced GC; not a retained-memory/leak measurement."
+      },
+      "finalDigest": "e82dd691914d5cde8e36b81e88623574355ddce3e9ea9bfc918e40819d8d9b4c",
+      "gate": {
+        "mean": true,
+        "p95": true
+      }
+    },
+    {
+      "missionId": "swamp-hydra",
+      "kind": "authored-waves-with-corpses",
+      "pass": 1,
+      "initial": {
+        "enemies": 12,
+        "alive": 9,
+        "corpses": 3,
+        "worldWidth": 8400,
+        "platforms": 36,
+        "climbables": 22,
+        "covers": 5
+      },
+      "peak": {
+        "enemies": 12,
+        "alive": 9,
+        "corpses": 3,
+        "receipts": 2,
+        "reactions": 2,
+        "zones": 0,
+        "pendingRadios": 0,
+        "projectiles": 0,
+        "noiseEvents": 9,
+        "tracks": 241,
+        "goreParticles": 15,
+        "stashes": 0
+      },
+      "simulatedSeconds": 16.999999999999677,
+      "measuredSimulatedSeconds": 15,
+      "timing": {
+        "samples": 1800,
+        "meanMs": 1.4800603911110475,
+        "p50Ms": 1.4805909999995492,
+        "p95Ms": 1.7707350000018778,
+        "p99Ms": 1.874800999998115,
+        "maximumMs": 2.065017999997508
+      },
+      "hud": {
+        "samples": 150,
+        "meanMs": 0.05435640666675075,
+        "p50Ms": 0.0496530000018538,
+        "p95Ms": 0.06868900000335998,
+        "p99Ms": 0.08555999999953201,
+        "maximumMs": 0.5280920000004699
+      },
+      "heap": {
+        "beforeBytes": 46550192,
+        "afterBytes": 34339776,
+        "interpretation": "Process heap snapshot without forced GC; not a retained-memory/leak measurement."
+      },
+      "finalDigest": "0f1d2ea4b81010b1ef0ce8da7108ffc136ac6e5d33ef995c623b2ac7bbf1c867",
+      "gate": {
+        "mean": true,
+        "p95": true
+      }
+    },
+    {
+      "missionId": "swamp-hydra",
+      "kind": "authored-waves-with-corpses",
+      "pass": 2,
+      "initial": {
+        "enemies": 12,
+        "alive": 9,
+        "corpses": 3,
+        "worldWidth": 8400,
+        "platforms": 36,
+        "climbables": 22,
+        "covers": 5
+      },
+      "peak": {
+        "enemies": 12,
+        "alive": 9,
+        "corpses": 3,
+        "receipts": 2,
+        "reactions": 2,
+        "zones": 0,
+        "pendingRadios": 0,
+        "projectiles": 0,
+        "noiseEvents": 9,
+        "tracks": 241,
+        "goreParticles": 15,
+        "stashes": 0
+      },
+      "simulatedSeconds": 16.999999999999677,
+      "measuredSimulatedSeconds": 15,
+      "timing": {
+        "samples": 1800,
+        "meanMs": 1.4825522472222534,
+        "p50Ms": 1.4817110000003595,
+        "p95Ms": 1.7900599999993574,
+        "p99Ms": 1.9237919999977748,
+        "maximumMs": 2.7651910000022326
+      },
+      "hud": {
+        "samples": 150,
+        "meanMs": 0.05066402666651508,
+        "p50Ms": 0.04940300000089337,
+        "p95Ms": 0.06666499999846565,
+        "p99Ms": 0.07135399999970105,
+        "maximumMs": 0.08423799999945913
+      },
+      "heap": {
+        "beforeBytes": 35002656,
+        "afterBytes": 38390304,
+        "interpretation": "Process heap snapshot without forced GC; not a retained-memory/leak measurement."
+      },
+      "finalDigest": "0f1d2ea4b81010b1ef0ce8da7108ffc136ac6e5d33ef995c623b2ac7bbf1c867",
+      "gate": {
+        "mean": true,
+        "p95": true
+      }
+    },
+    {
+      "missionId": "desert-sandmaw",
+      "kind": "start-roster",
+      "pass": 1,
+      "initial": {
+        "enemies": 5,
+        "alive": 5,
+        "corpses": 0,
+        "worldWidth": 8400,
+        "platforms": 34,
+        "climbables": 22,
+        "covers": 5
+      },
+      "peak": {
+        "enemies": 5,
+        "alive": 5,
+        "corpses": 0,
+        "receipts": 0,
+        "reactions": 0,
+        "zones": 0,
+        "pendingRadios": 0,
+        "projectiles": 0,
+        "noiseEvents": 9,
+        "tracks": 240,
+        "goreParticles": 2,
+        "stashes": 0
+      },
+      "simulatedSeconds": 16.999999999999677,
+      "measuredSimulatedSeconds": 15,
+      "timing": {
+        "samples": 1800,
+        "meanMs": 0.8243693194443403,
+        "p50Ms": 0.8041890000022249,
+        "p95Ms": 0.992882999998983,
+        "p99Ms": 1.31818299999577,
+        "maximumMs": 1.906366999995953
+      },
+      "hud": {
+        "samples": 150,
+        "meanMs": 0.04326081999975334,
+        "p50Ms": 0.0415279999942868,
+        "p95Ms": 0.0540610000025481,
+        "p99Ms": 0.06925999999657506,
+        "maximumMs": 0.08161300000210758
+      },
+      "heap": {
+        "beforeBytes": 38800520,
+        "afterBytes": 34345912,
+        "interpretation": "Process heap snapshot without forced GC; not a retained-memory/leak measurement."
+      },
+      "finalDigest": "0bb7a071721a70cbac10f08165308f7a6d28d3ef6cba7637ddca6ec774a52bee",
+      "gate": {
+        "mean": true,
+        "p95": true
+      }
+    },
+    {
+      "missionId": "desert-sandmaw",
+      "kind": "start-roster",
+      "pass": 2,
+      "initial": {
+        "enemies": 5,
+        "alive": 5,
+        "corpses": 0,
+        "worldWidth": 8400,
+        "platforms": 34,
+        "climbables": 22,
+        "covers": 5
+      },
+      "peak": {
+        "enemies": 5,
+        "alive": 5,
+        "corpses": 0,
+        "receipts": 0,
+        "reactions": 0,
+        "zones": 0,
+        "pendingRadios": 0,
+        "projectiles": 0,
+        "noiseEvents": 9,
+        "tracks": 240,
+        "goreParticles": 2,
+        "stashes": 0
+      },
+      "simulatedSeconds": 16.999999999999677,
+      "measuredSimulatedSeconds": 15,
+      "timing": {
+        "samples": 1800,
+        "meanMs": 0.7835956588888601,
+        "p50Ms": 0.7657259999978123,
+        "p95Ms": 0.9670140000016545,
+        "p99Ms": 1.1463000000003376,
+        "maximumMs": 1.5830999999961932
+      },
+      "hud": {
+        "samples": 150,
+        "meanMs": 0.04577114666705408,
+        "p50Ms": 0.04050699999788776,
+        "p95Ms": 0.06002299999818206,
+        "p99Ms": 0.24011999999493128,
+        "maximumMs": 0.4106600000013714
+      },
+      "heap": {
+        "beforeBytes": 34742608,
+        "afterBytes": 38836784,
+        "interpretation": "Process heap snapshot without forced GC; not a retained-memory/leak measurement."
+      },
+      "finalDigest": "0bb7a071721a70cbac10f08165308f7a6d28d3ef6cba7637ddca6ec774a52bee",
+      "gate": {
+        "mean": true,
+        "p95": true
+      }
+    },
+    {
+      "missionId": "desert-sandmaw",
+      "kind": "authored-waves-with-corpses",
+      "pass": 1,
+      "initial": {
+        "enemies": 12,
+        "alive": 9,
+        "corpses": 3,
+        "worldWidth": 8400,
+        "platforms": 34,
+        "climbables": 22,
+        "covers": 5
+      },
+      "peak": {
+        "enemies": 12,
+        "alive": 9,
+        "corpses": 3,
+        "receipts": 2,
+        "reactions": 2,
+        "zones": 0,
+        "pendingRadios": 0,
+        "projectiles": 0,
+        "noiseEvents": 9,
+        "tracks": 241,
+        "goreParticles": 15,
+        "stashes": 0
+      },
+      "simulatedSeconds": 16.999999999999677,
+      "measuredSimulatedSeconds": 15,
+      "timing": {
+        "samples": 1800,
+        "meanMs": 1.316844945555616,
+        "p50Ms": 1.2928650000030757,
+        "p95Ms": 1.5968050000010408,
+        "p99Ms": 1.7272609999999986,
+        "maximumMs": 2.073819999997795
+      },
+      "hud": {
+        "samples": 150,
+        "meanMs": 0.03895424666654435,
+        "p50Ms": 0.037219999998342246,
+        "p95Ms": 0.05630599999858532,
+        "p99Ms": 0.06304800000361865,
+        "maximumMs": 0.0638699999981327
+      },
+      "heap": {
+        "beforeBytes": 39475160,
+        "afterBytes": 48673768,
+        "interpretation": "Process heap snapshot without forced GC; not a retained-memory/leak measurement."
+      },
+      "finalDigest": "6197ddbe862ad0b574f941a1f1ba7bc5d70834648571f68d9aa95afe3aeb67ff",
+      "gate": {
+        "mean": true,
+        "p95": true
+      }
+    },
+    {
+      "missionId": "desert-sandmaw",
+      "kind": "authored-waves-with-corpses",
+      "pass": 2,
+      "initial": {
+        "enemies": 12,
+        "alive": 9,
+        "corpses": 3,
+        "worldWidth": 8400,
+        "platforms": 34,
+        "climbables": 22,
+        "covers": 5
+      },
+      "peak": {
+        "enemies": 12,
+        "alive": 9,
+        "corpses": 3,
+        "receipts": 2,
+        "reactions": 2,
+        "zones": 0,
+        "pendingRadios": 0,
+        "projectiles": 0,
+        "noiseEvents": 9,
+        "tracks": 241,
+        "goreParticles": 15,
+        "stashes": 0
+      },
+      "simulatedSeconds": 16.999999999999677,
+      "measuredSimulatedSeconds": 15,
+      "timing": {
+        "samples": 1800,
+        "meanMs": 1.317952788888894,
+        "p50Ms": 1.3003909999970347,
+        "p95Ms": 1.5949449999970966,
+        "p99Ms": 1.732241999998223,
+        "maximumMs": 2.0363519999955315
+      },
+      "hud": {
+        "samples": 150,
+        "meanMs": 0.0384233266665736,
+        "p50Ms": 0.0366890000004787,
+        "p95Ms": 0.055603999993763864,
+        "p99Ms": 0.058981000001949724,
+        "maximumMs": 0.06294899999920744
+      },
+      "heap": {
+        "beforeBytes": 49309544,
+        "afterBytes": 41966016,
+        "interpretation": "Process heap snapshot without forced GC; not a retained-memory/leak measurement."
+      },
+      "finalDigest": "6197ddbe862ad0b574f941a1f1ba7bc5d70834648571f68d9aa95afe3aeb67ff",
+      "gate": {
+        "mean": true,
+        "p95": true
+      }
+    },
+    {
+      "missionId": "ocean-leviathan",
+      "kind": "start-roster",
+      "pass": 1,
+      "initial": {
+        "enemies": 5,
+        "alive": 5,
+        "corpses": 0,
+        "worldWidth": 8400,
+        "platforms": 30,
+        "climbables": 16,
+        "covers": 5
+      },
+      "peak": {
+        "enemies": 5,
+        "alive": 5,
+        "corpses": 0,
+        "receipts": 0,
+        "reactions": 0,
+        "zones": 0,
+        "pendingRadios": 0,
+        "projectiles": 1,
+        "noiseEvents": 10,
+        "tracks": 113,
+        "goreParticles": 2,
+        "stashes": 0
+      },
+      "simulatedSeconds": 16.999999999999677,
+      "measuredSimulatedSeconds": 15,
+      "timing": {
+        "samples": 1800,
+        "meanMs": 0.6260876311112104,
+        "p50Ms": 0.6374869999999646,
+        "p95Ms": 0.869963999997708,
+        "p99Ms": 1.0874320000002626,
+        "maximumMs": 1.6423240000003716
+      },
+      "hud": {
+        "samples": 150,
+        "meanMs": 0.03539952666658792,
+        "p50Ms": 0.03216000000247732,
+        "p95Ms": 0.05308899999363348,
+        "p99Ms": 0.07661400000506546,
+        "maximumMs": 0.18588900000031572
+      },
+      "heap": {
+        "beforeBytes": 42411288,
+        "afterBytes": 48043768,
+        "interpretation": "Process heap snapshot without forced GC; not a retained-memory/leak measurement."
+      },
+      "finalDigest": "ef0a2efb42abb93404c48051f99a44cf5c9835d8ff207b7e91196041ddedb561",
+      "gate": {
+        "mean": true,
+        "p95": true
+      }
+    },
+    {
+      "missionId": "ocean-leviathan",
+      "kind": "start-roster",
+      "pass": 2,
+      "initial": {
+        "enemies": 5,
+        "alive": 5,
+        "corpses": 0,
+        "worldWidth": 8400,
+        "platforms": 30,
+        "climbables": 16,
+        "covers": 5
+      },
+      "peak": {
+        "enemies": 5,
+        "alive": 5,
+        "corpses": 0,
+        "receipts": 0,
+        "reactions": 0,
+        "zones": 0,
+        "pendingRadios": 0,
+        "projectiles": 1,
+        "noiseEvents": 10,
+        "tracks": 113,
+        "goreParticles": 2,
+        "stashes": 0
+      },
+      "simulatedSeconds": 16.999999999999677,
+      "measuredSimulatedSeconds": 15,
+      "timing": {
+        "samples": 1800,
+        "meanMs": 0.5894606966666187,
+        "p50Ms": 0.6095639999984996,
+        "p95Ms": 0.8111829999979818,
+        "p99Ms": 0.9110109999965061,
+        "maximumMs": 1.2863149999975576
+      },
+      "hud": {
+        "samples": 150,
+        "meanMs": 0.03248783333338603,
+        "p50Ms": 0.03100800000538584,
+        "p95Ms": 0.0414980000059586,
+        "p99Ms": 0.05374099999608006,
+        "maximumMs": 0.054923000003327616
+      },
+      "heap": {
+        "beforeBytes": 48344136,
+        "afterBytes": 45719824,
+        "interpretation": "Process heap snapshot without forced GC; not a retained-memory/leak measurement."
+      },
+      "finalDigest": "ef0a2efb42abb93404c48051f99a44cf5c9835d8ff207b7e91196041ddedb561",
+      "gate": {
+        "mean": true,
+        "p95": true
+      }
+    },
+    {
+      "missionId": "ocean-leviathan",
+      "kind": "authored-waves-with-corpses",
+      "pass": 1,
+      "initial": {
+        "enemies": 12,
+        "alive": 9,
+        "corpses": 3,
+        "worldWidth": 8400,
+        "platforms": 30,
+        "climbables": 16,
+        "covers": 5
+      },
+      "peak": {
+        "enemies": 12,
+        "alive": 9,
+        "corpses": 3,
+        "receipts": 4,
+        "reactions": 2,
+        "zones": 3,
+        "pendingRadios": 1,
+        "projectiles": 1,
+        "noiseEvents": 10,
+        "tracks": 240,
+        "goreParticles": 15,
+        "stashes": 0
+      },
+      "simulatedSeconds": 16.999999999999677,
+      "measuredSimulatedSeconds": 15,
+      "timing": {
+        "samples": 1800,
+        "meanMs": 1.18059869222212,
+        "p50Ms": 1.1419850000020233,
+        "p95Ms": 1.4969619999974384,
+        "p99Ms": 1.8430909999951837,
+        "maximumMs": 2.6145900000046822
+      },
+      "hud": {
+        "samples": 150,
+        "meanMs": 0.0367408999997618,
+        "p50Ms": 0.0348260000027949,
+        "p95Ms": 0.05397100000118371,
+        "p99Ms": 0.06178599999839207,
+        "maximumMs": 0.07001199999649543
+      },
+      "heap": {
+        "beforeBytes": 46212832,
+        "afterBytes": 35795752,
+        "interpretation": "Process heap snapshot without forced GC; not a retained-memory/leak measurement."
+      },
+      "finalDigest": "dffdd6c4853b811b8325c1e0ea4a2236f497c1d41b18f9b7ba53001e4325b1b2",
+      "gate": {
+        "mean": true,
+        "p95": true
+      }
+    },
+    {
+      "missionId": "ocean-leviathan",
+      "kind": "authored-waves-with-corpses",
+      "pass": 2,
+      "initial": {
+        "enemies": 12,
+        "alive": 9,
+        "corpses": 3,
+        "worldWidth": 8400,
+        "platforms": 30,
+        "climbables": 16,
+        "covers": 5
+      },
+      "peak": {
+        "enemies": 12,
+        "alive": 9,
+        "corpses": 3,
+        "receipts": 4,
+        "reactions": 2,
+        "zones": 3,
+        "pendingRadios": 1,
+        "projectiles": 1,
+        "noiseEvents": 10,
+        "tracks": 240,
+        "goreParticles": 15,
+        "stashes": 0
+      },
+      "simulatedSeconds": 16.999999999999677,
+      "measuredSimulatedSeconds": 15,
+      "timing": {
+        "samples": 1800,
+        "meanMs": 1.1414171033331473,
+        "p50Ms": 1.1105850000021746,
+        "p95Ms": 1.4272600000040256,
+        "p99Ms": 1.8544519999995828,
+        "maximumMs": 2.4170089999970514
+      },
+      "hud": {
+        "samples": 150,
+        "meanMs": 0.035025873333458246,
+        "p50Ms": 0.033892999999807216,
+        "p95Ms": 0.04545499999949243,
+        "p99Ms": 0.05583399999886751,
+        "maximumMs": 0.05871000000479398
+      },
+      "heap": {
+        "beforeBytes": 36364080,
+        "afterBytes": 44915336,
+        "interpretation": "Process heap snapshot without forced GC; not a retained-memory/leak measurement."
+      },
+      "finalDigest": "dffdd6c4853b811b8325c1e0ea4a2236f497c1d41b18f9b7ba53001e4325b1b2",
+      "gate": {
+        "mean": true,
+        "p95": true
+      }
+    },
+    {
+      "missionId": "fungal-hivemind",
+      "kind": "start-roster",
+      "pass": 1,
+      "initial": {
+        "enemies": 5,
+        "alive": 5,
+        "corpses": 0,
+        "worldWidth": 8400,
+        "platforms": 36,
+        "climbables": 22,
+        "covers": 5
+      },
+      "peak": {
+        "enemies": 5,
+        "alive": 5,
+        "corpses": 0,
+        "receipts": 0,
+        "reactions": 0,
+        "zones": 0,
+        "pendingRadios": 0,
+        "projectiles": 0,
+        "noiseEvents": 8,
+        "tracks": 241,
+        "goreParticles": 2,
+        "stashes": 0
+      },
+      "simulatedSeconds": 16.999999999999677,
+      "measuredSimulatedSeconds": 15,
+      "timing": {
+        "samples": 1800,
+        "meanMs": 0.7939673627777383,
+        "p50Ms": 0.8011649999971269,
+        "p95Ms": 1.0299739999973099,
+        "p99Ms": 1.4105389999967883,
+        "maximumMs": 2.149645999998029
+      },
+      "hud": {
+        "samples": 150,
+        "meanMs": 0.03561241333338937,
+        "p50Ms": 0.0346949999948265,
+        "p95Ms": 0.045335000002523884,
+        "p99Ms": 0.057598999999754597,
+        "maximumMs": 0.06053399999655085
+      },
+      "heap": {
+        "beforeBytes": 45345040,
+        "afterBytes": 47823704,
+        "interpretation": "Process heap snapshot without forced GC; not a retained-memory/leak measurement."
+      },
+      "finalDigest": "d3cd43dc15d11627d4ae94772915e9befad8f6cc32ac4fb57119024f76f3aa10",
+      "gate": {
+        "mean": true,
+        "p95": true
+      }
+    },
+    {
+      "missionId": "fungal-hivemind",
+      "kind": "start-roster",
+      "pass": 2,
+      "initial": {
+        "enemies": 5,
+        "alive": 5,
+        "corpses": 0,
+        "worldWidth": 8400,
+        "platforms": 36,
+        "climbables": 22,
+        "covers": 5
+      },
+      "peak": {
+        "enemies": 5,
+        "alive": 5,
+        "corpses": 0,
+        "receipts": 0,
+        "reactions": 0,
+        "zones": 0,
+        "pendingRadios": 0,
+        "projectiles": 0,
+        "noiseEvents": 8,
+        "tracks": 241,
+        "goreParticles": 2,
+        "stashes": 0
+      },
+      "simulatedSeconds": 16.999999999999677,
+      "measuredSimulatedSeconds": 15,
+      "timing": {
+        "samples": 1800,
+        "meanMs": 0.7727295961111668,
+        "p50Ms": 0.7772989999939455,
+        "p95Ms": 0.9914710000011837,
+        "p99Ms": 1.1669110000002547,
+        "maximumMs": 1.8921730000001844
+      },
+      "hud": {
+        "samples": 150,
+        "meanMs": 0.03804613333336116,
+        "p50Ms": 0.03424399999494199,
+        "p95Ms": 0.05301000000326894,
+        "p99Ms": 0.09871600000042235,
+        "maximumMs": 0.35048799999640323
+      },
+      "heap": {
+        "beforeBytes": 48294760,
+        "afterBytes": 47000360,
+        "interpretation": "Process heap snapshot without forced GC; not a retained-memory/leak measurement."
+      },
+      "finalDigest": "d3cd43dc15d11627d4ae94772915e9befad8f6cc32ac4fb57119024f76f3aa10",
+      "gate": {
+        "mean": true,
+        "p95": true
+      }
+    },
+    {
+      "missionId": "fungal-hivemind",
+      "kind": "authored-waves-with-corpses",
+      "pass": 1,
+      "initial": {
+        "enemies": 12,
+        "alive": 9,
+        "corpses": 3,
+        "worldWidth": 8400,
+        "platforms": 36,
+        "climbables": 22,
+        "covers": 5
+      },
+      "peak": {
+        "enemies": 12,
+        "alive": 9,
+        "corpses": 3,
+        "receipts": 1,
+        "reactions": 1,
+        "zones": 0,
+        "pendingRadios": 0,
+        "projectiles": 0,
+        "noiseEvents": 8,
+        "tracks": 222,
+        "goreParticles": 15,
+        "stashes": 0
+      },
+      "simulatedSeconds": 16.999999999999677,
+      "measuredSimulatedSeconds": 15,
+      "timing": {
+        "samples": 1800,
+        "meanMs": 1.2936693416666822,
+        "p50Ms": 1.2800529999949504,
+        "p95Ms": 1.5903259999977308,
+        "p99Ms": 1.7406480000063311,
+        "maximumMs": 1.9981120000011288
+      },
+      "hud": {
+        "samples": 150,
+        "meanMs": 0.03893485333353359,
+        "p50Ms": 0.037510000001930166,
+        "p95Ms": 0.05698699999629753,
+        "p99Ms": 0.060323000005155336,
+        "maximumMs": 0.0665549999976065
+      },
+      "heap": {
+        "beforeBytes": 47585336,
+        "afterBytes": 45983160,
+        "interpretation": "Process heap snapshot without forced GC; not a retained-memory/leak measurement."
+      },
+      "finalDigest": "69b3062e572b20b1fcacfa670f55e8188a12abf70972dcaab7b0c10b3add2c64",
+      "gate": {
+        "mean": true,
+        "p95": true
+      }
+    },
+    {
+      "missionId": "fungal-hivemind",
+      "kind": "authored-waves-with-corpses",
+      "pass": 2,
+      "initial": {
+        "enemies": 12,
+        "alive": 9,
+        "corpses": 3,
+        "worldWidth": 8400,
+        "platforms": 36,
+        "climbables": 22,
+        "covers": 5
+      },
+      "peak": {
+        "enemies": 12,
+        "alive": 9,
+        "corpses": 3,
+        "receipts": 1,
+        "reactions": 1,
+        "zones": 0,
+        "pendingRadios": 0,
+        "projectiles": 0,
+        "noiseEvents": 8,
+        "tracks": 222,
+        "goreParticles": 15,
+        "stashes": 0
+      },
+      "simulatedSeconds": 16.999999999999677,
+      "measuredSimulatedSeconds": 15,
+      "timing": {
+        "samples": 1800,
+        "meanMs": 1.3034022177776892,
+        "p50Ms": 1.2834099999963655,
+        "p95Ms": 1.6236080000016955,
+        "p99Ms": 1.8050690000018221,
+        "maximumMs": 2.553605000000971
+      },
+      "hud": {
+        "samples": 150,
+        "meanMs": 0.03966334666693001,
+        "p50Ms": 0.03778099999908591,
+        "p95Ms": 0.05783800000062911,
+        "p99Ms": 0.059440999997605104,
+        "maximumMs": 0.06030300000566058
+      },
+      "heap": {
+        "beforeBytes": 46559120,
+        "afterBytes": 44773696,
+        "interpretation": "Process heap snapshot without forced GC; not a retained-memory/leak measurement."
+      },
+      "finalDigest": "69b3062e572b20b1fcacfa670f55e8188a12abf70972dcaab7b0c10b3add2c64",
+      "gate": {
+        "mean": true,
+        "p95": true
+      }
+    },
+    {
+      "missionId": "ruins-ancient-guardian",
+      "kind": "start-roster",
+      "pass": 1,
+      "initial": {
+        "enemies": 5,
+        "alive": 5,
+        "corpses": 0,
+        "worldWidth": 8400,
+        "platforms": 34,
+        "climbables": 22,
+        "covers": 5
+      },
+      "peak": {
+        "enemies": 5,
+        "alive": 5,
+        "corpses": 0,
+        "receipts": 0,
+        "reactions": 0,
+        "zones": 0,
+        "pendingRadios": 0,
+        "projectiles": 0,
+        "noiseEvents": 9,
+        "tracks": 95,
+        "goreParticles": 2,
+        "stashes": 0
+      },
+      "simulatedSeconds": 16.999999999999677,
+      "measuredSimulatedSeconds": 15,
+      "timing": {
+        "samples": 1800,
+        "meanMs": 0.5878331066665892,
+        "p50Ms": 0.5671319999964908,
+        "p95Ms": 0.7407909999965341,
+        "p99Ms": 0.8291079999980866,
+        "maximumMs": 1.1346259999991162
+      },
+      "hud": {
+        "samples": 150,
+        "meanMs": 0.03549245333362099,
+        "p50Ms": 0.03423399999883259,
+        "p95Ms": 0.05402199999662116,
+        "p99Ms": 0.06167699999787146,
+        "maximumMs": 0.0634490000011283
+      },
+      "heap": {
+        "beforeBytes": 45166064,
+        "afterBytes": 53022200,
+        "interpretation": "Process heap snapshot without forced GC; not a retained-memory/leak measurement."
+      },
+      "finalDigest": "97c1a45fe87b2d42edf8ecb64bc7a019c1ff86829d089327c92d2558b8cd1f3e",
+      "gate": {
+        "mean": true,
+        "p95": true
+      }
+    },
+    {
+      "missionId": "ruins-ancient-guardian",
+      "kind": "start-roster",
+      "pass": 2,
+      "initial": {
+        "enemies": 5,
+        "alive": 5,
+        "corpses": 0,
+        "worldWidth": 8400,
+        "platforms": 34,
+        "climbables": 22,
+        "covers": 5
+      },
+      "peak": {
+        "enemies": 5,
+        "alive": 5,
+        "corpses": 0,
+        "receipts": 0,
+        "reactions": 0,
+        "zones": 0,
+        "pendingRadios": 0,
+        "projectiles": 0,
+        "noiseEvents": 9,
+        "tracks": 95,
+        "goreParticles": 2,
+        "stashes": 0
+      },
+      "simulatedSeconds": 16.999999999999677,
+      "measuredSimulatedSeconds": 15,
+      "timing": {
+        "samples": 1800,
+        "meanMs": 0.591144064444557,
+        "p50Ms": 0.5702989999990677,
+        "p95Ms": 0.7453590000004624,
+        "p99Ms": 0.8458389999941573,
+        "maximumMs": 1.2796089999974356
+      },
+      "hud": {
+        "samples": 150,
+        "meanMs": 0.03482429333336768,
+        "p50Ms": 0.0341240000052494,
+        "p95Ms": 0.038052000003517605,
+        "p99Ms": 0.057267999996838626,
+        "maximumMs": 0.05923199999961071
+      },
+      "heap": {
+        "beforeBytes": 53289104,
+        "afterBytes": 44705424,
+        "interpretation": "Process heap snapshot without forced GC; not a retained-memory/leak measurement."
+      },
+      "finalDigest": "97c1a45fe87b2d42edf8ecb64bc7a019c1ff86829d089327c92d2558b8cd1f3e",
+      "gate": {
+        "mean": true,
+        "p95": true
+      }
+    },
+    {
+      "missionId": "ruins-ancient-guardian",
+      "kind": "authored-waves-with-corpses",
+      "pass": 1,
+      "initial": {
+        "enemies": 12,
+        "alive": 9,
+        "corpses": 3,
+        "worldWidth": 8400,
+        "platforms": 34,
+        "climbables": 22,
+        "covers": 5
+      },
+      "peak": {
+        "enemies": 12,
+        "alive": 9,
+        "corpses": 3,
+        "receipts": 2,
+        "reactions": 2,
+        "zones": 1,
+        "pendingRadios": 1,
+        "projectiles": 0,
+        "noiseEvents": 9,
+        "tracks": 218,
+        "goreParticles": 15,
+        "stashes": 0
+      },
+      "simulatedSeconds": 16.999999999999677,
+      "measuredSimulatedSeconds": 15,
+      "timing": {
+        "samples": 1800,
+        "meanMs": 1.1470339372222589,
+        "p50Ms": 1.0993229999949108,
+        "p95Ms": 1.3852010000045993,
+        "p99Ms": 1.528920000004291,
+        "maximumMs": 2.192905999996583
+      },
+      "hud": {
+        "samples": 150,
+        "meanMs": 0.038900593333140325,
+        "p50Ms": 0.037459999999555293,
+        "p95Ms": 0.050384999995003454,
+        "p99Ms": 0.06699600000138162,
+        "maximumMs": 0.07045300000027055
+      },
+      "heap": {
+        "beforeBytes": 45148272,
+        "afterBytes": 48416760,
+        "interpretation": "Process heap snapshot without forced GC; not a retained-memory/leak measurement."
+      },
+      "finalDigest": "dd344d281aeb7751dbf59e34bf59e522a9e4914b524473b2002b7547532fc7fd",
+      "gate": {
+        "mean": true,
+        "p95": true
+      }
+    },
+    {
+      "missionId": "ruins-ancient-guardian",
+      "kind": "authored-waves-with-corpses",
+      "pass": 2,
+      "initial": {
+        "enemies": 12,
+        "alive": 9,
+        "corpses": 3,
+        "worldWidth": 8400,
+        "platforms": 34,
+        "climbables": 22,
+        "covers": 5
+      },
+      "peak": {
+        "enemies": 12,
+        "alive": 9,
+        "corpses": 3,
+        "receipts": 2,
+        "reactions": 2,
+        "zones": 1,
+        "pendingRadios": 1,
+        "projectiles": 0,
+        "noiseEvents": 9,
+        "tracks": 218,
+        "goreParticles": 15,
+        "stashes": 0
+      },
+      "simulatedSeconds": 16.999999999999677,
+      "measuredSimulatedSeconds": 15,
+      "timing": {
+        "samples": 1800,
+        "meanMs": 1.1185813316666544,
+        "p50Ms": 1.0809100000042235,
+        "p95Ms": 1.3685790000017732,
+        "p99Ms": 1.496378999996523,
+        "maximumMs": 1.8088759999955073
+      },
+      "hud": {
+        "samples": 150,
+        "meanMs": 0.03858707333386216,
+        "p50Ms": 0.03734000000258675,
+        "p95Ms": 0.049031999995349906,
+        "p99Ms": 0.06421100000443403,
+        "maximumMs": 0.06957999999576714
+      },
+      "heap": {
+        "beforeBytes": 48931336,
+        "afterBytes": 47636720,
+        "interpretation": "Process heap snapshot without forced GC; not a retained-memory/leak measurement."
+      },
+      "finalDigest": "dd344d281aeb7751dbf59e34bf59e522a9e4914b524473b2002b7547532fc7fd",
+      "gate": {
+        "mean": true,
+        "p95": true
+      }
+    }
+  ],
+  "discoveryStress": {
+    "scope": "Synthetic isolated discovery stress, 128 actors × 128 corpses, always-visible callbacks; not a live mission.",
+    "actors": 128,
+    "corpses": 128,
+    "steps": 600,
+    "peak": {
+      "pairs": 32,
+      "sightQueries": 32,
+      "scentQueries": 0,
+      "radioRecipients": 0,
+      "receipts": 1024,
+      "pendingRadios": 16
+    },
+    "timing": {
+      "samples": 600,
+      "meanMs": 0.16851231333355826,
+      "p50Ms": 0.1447520000001532,
+      "p95Ms": 0.3921970000010333,
+      "p99Ms": 0.6299130000043078,
+      "maximumMs": 1.0136330000023008
+    }
+  },
+  "summary": {
+    "cases": 32,
+    "nativeStepCalls": 65280,
+    "measuredStepCalls": 57600,
+    "deterministicPairs": 16,
+    "failures": []
+  }
+}

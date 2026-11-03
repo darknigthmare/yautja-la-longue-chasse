@@ -1,0 +1,744 @@
+{
+  "version": "MMK-20261103-PASS2-AUDIT",
+  "date": "2026-11-03",
+  "baselineCommit": "d4c43dce5286fbb64e41ae5fa22cb82854572a7e",
+  "baselineTree": "555a9f052e8aaae8ffd3c1355c10d6fe719b2334",
+  "trackedPathCount": 18774,
+  "trackedPathListSha256": "d0d9c06d8b99a7203f0974006963a1e67f235257d99237b5af3730b3d14a46d4",
+  "method": [
+    "git ls-tree -r --name-only HEAD sur tout l’arbre suivi.",
+    "Recherche ciblée des noms de fichiers et des libellés JSON disponibles localement.",
+    "Lecture des registres V81, V160, V161 et des archives faune/énergie.",
+    "Inspection visuelle des PNG S03, S05, M04 et K03 déjà livrés."
+  ],
+  "searchedJSONFiles": [
+    "app/game/data/driveArchiveAuditSpritesV87.json",
+    "app/game/data/driveCompletionSpritesV87.json",
+    "app/game/data/driveLatestSpritesV85.json",
+    "app/game/data/driveNewDepositsSpritesV87.json",
+    "app/game/data/driveNewDepositsSpritesV88.json",
+    "app/game/data/driveNewDepositsSpritesV89.json",
+    "app/game/data/homeworldArchitectureArtV75.json",
+    "app/game/data/homeworldArchitectureArtV76.json",
+    "app/game/data/homeworldArchivePlaqueArtV109.json",
+    "app/game/data/homeworldAssetCatalogueTargetV81.json",
+    "app/game/data/homeworldBackdropArtV82.json",
+    "app/game/data/homeworldCityArtManifestV78.json",
+    "app/game/data/homeworldCityGenerationSpecsV78.json",
+    "app/game/data/homeworldConceptRefsV77.json",
+    "app/game/data/homeworldConnectorArtV77.json",
+    "app/game/data/homeworldConnectorArtV82.json",
+    "app/game/data/homeworldExteriorArtV76.json",
+    "app/game/data/homeworldExteriorDecorV76.json",
+    "app/game/data/homeworldFaunaArtV77.json",
+    "app/game/data/homeworldFaunaHabitatV77.json",
+    "app/game/data/homeworldFurnitureArtV72.json",
+    "app/game/data/homeworldGatewayArtV72.json",
+    "app/game/data/homeworldIdentityArtV72.json",
+    "app/game/data/homeworldInteriorDecorArtV76.json",
+    "app/game/data/homeworldInteriorDecorPlacementsV76.json",
+    "app/game/data/homeworldLavaArtV77.json",
+    "app/game/data/homeworldLiftCabinArtV82.json",
+    "app/game/data/homeworldNativeArchitectureV81.json",
+    "app/game/data/homeworldNativeDecorV80.json",
+    "app/game/data/homeworldRegionalWatchArtV86.json",
+    "app/game/data/homeworldStreetDecorPlacementV83.json",
+    "app/game/data/homeworldStreetDecorPlacementV84.json",
+    "app/game/data/homeworldStreetDecorSourcesV83.json",
+    "app/game/data/homeworldStreetDecorSourcesV84.json",
+    "app/game/data/homeworldYouthMotionArtV74.json",
+    "app/game/data/recentSpriteLibraryV85.json",
+    "production/homeworld-v158/manifest.json",
+    "production/homeworld-v158/next-targets-v159.json",
+    "production/homeworld-v160/catalogue.json",
+    "production/homeworld-v160/delivery-files.json",
+    "production/homeworld-v160/history/v158-intake-manifest.json",
+    "production/homeworld-v160/next-production.json",
+    "production/homeworld-v160/requirements-v81.json",
+    "production/homeworld-v160/verification-report.json",
+    "production/homeworld-v161/manifest.json",
+    "production/homeworld-v161/verification-report.json",
+    "production/homeworld-v162/delivery-files.json",
+    "production/homeworld-v162/manifest.json",
+    "production/homeworld-v162/rejected-outputs.json",
+    "production/homeworld-v162/verification-report.json",
+    "production/native-open-20261102/archives/fauna-energy/all-native-opened.json",
+    "production/native-open-20261102/archives/fauna-energy/cages/cages-artifact-inventory.json",
+    "production/native-open-20261102/archives/fauna-energy/cages/cages-production-manifest.json",
+    "production/native-open-20261102/archives/fauna-energy/cages/cages-reference-contract.json",
+    "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-276-cage-petite.inspection.json",
+    "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-276-cage-petite.tool-receipt.json",
+    "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-277-cage-moyenne.inspection.json",
+    "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-277-cage-moyenne.tool-receipt.json",
+    "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde.inspection.json",
+    "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde.tool-receipt.json",
+    "production/native-open-20261102/archives/fauna-energy/cages/target-v81-73-305-petite-cage-bas-quartiers.inspection.json",
+    "production/native-open-20261102/archives/fauna-energy/cages/target-v81-73-305-petite-cage-bas-quartiers.tool-receipt.json",
+    "production/native-open-20261102/archives/fauna-energy/energy-enclosure-opened.json",
+    "production/native-open-20261102/archives/fauna-energy/energy-enclosure-reference-receipt.json",
+    "production/native-open-20261102/archives/fauna-energy/fauna-energy-artifact-inventory.json",
+    "production/native-open-20261102/archives/fauna-energy/fauna-energy-production-manifest.json",
+    "production/native-open-20261102/archives/fauna-energy/gear/gear-index.json",
+    "production/native-open-20261102/archives/fauna-energy/gear/reference-receipt.json",
+    "production/native-open-20261102/archives/fauna-energy/gear/target-v81-71-273-fauna-harness-support-native.inspection.json",
+    "production/native-open-20261102/archives/fauna-energy/gear/target-v81-71-273-fauna-harness-support-native.receipt.json",
+    "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-282-mount-harness-support-native.inspection.json",
+    "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-282-mount-harness-support-native.receipt.json",
+    "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-283-mount-harness-native.inspection.json",
+    "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-283-mount-harness-native.receipt.json",
+    "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-284-mount-saddle-native.inspection.json",
+    "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-284-mount-saddle-native.receipt.json",
+    "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-285-saddle-rack-native.inspection.json",
+    "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-285-saddle-rack-native.receipt.json",
+    "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-288-adapted-mount-feeder-native.inspection.json",
+    "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-288-adapted-mount-feeder-native.receipt.json",
+    "production/native-open-20261102/archives/fauna-energy/generation-batch-02.json",
+    "production/native-open-20261102/archives/fauna-energy/generation-batch-03.json",
+    "production/native-open-20261102/archives/fauna-energy/generation-batch-04.json",
+    "production/native-open-20261102/archives/fauna-energy/generation-prompts.json",
+    "production/native-open-20261102/archives/fauna-energy/hero-native-inspection.json",
+    "production/native-open-20261102/archives/fauna-energy/native-technical-inspection.json",
+    "production/native-open-20261102/archives/forge/forge-active-preparation.json",
+    "production/native-open-20261102/archives/forge/forge-context-review-r6.json",
+    "production/native-open-20261102/archives/industrial-architecture/industrial-architecture-artifact-inventory.json",
+    "production/native-open-20261102/archives/industrial-architecture/industrial-architecture-production-manifest.json",
+    "production/native-open-20261102/archives/industrial-architecture/receipts/target-v81-55-26-attempt01.json",
+    "production/native-open-20261102/archives/industrial-architecture/receipts/target-v81-55-42-attempt01.json",
+    "production/native-open-20261102/archives/industrial-architecture/receipts/target-v81-55-43-attempt01.json",
+    "production/native-open-20261102/archives/industrial-architecture/receipts/target-v81-56-56-attempt01.json",
+    "production/native-open-20261102/archives/industrial-architecture/receipts/target-v81-59-105-attempt01.json",
+    "production/native-open-20261102/archives/industrial-architecture/receipts/target-v81-65-175-attempt01.json",
+    "production/native-open-20261102/archives/industrial-architecture/receipts/target-v81-66-192-attempt01.json",
+    "production/native-open-20261102/archives/industrial-architecture/receipts/target-v81-68-236-attempt01.json",
+    "production/native-open-20261102/archives/industrial-architecture/receipts/target-v81-73-295-attempt01.json",
+    "production/native-open-20261102/archives/industrial-architecture/receipts/target-v81-73-301-attempt01.json",
+    "production/native-open-20261102/archives/industrial-architecture/receipts/target-v81-73-308-attempt01.json",
+    "production/native-open-20261102/archives/industrial-architecture/receipts/target-v81-74-310-attempt01.json",
+    "production/native-open-20261102/archives/industrial-architecture/receipts/target-v81-74-311-attempt01.json",
+    "production/native-open-20261102/archives/industrial-architecture/receipts/target-v81-74-315-attempt01.json",
+    "production/native-open-20261102/archives/industrial-architecture/receipts/target-v81-74-316-attempt01.json",
+    "production/native-open-20261102/archives/industrial-architecture/receipts/target-v81-74-319-attempt01.json",
+    "production/native-open-20261102/archives/industrial-architecture/receipts/target-v81-76-354-attempt01.json",
+    "production/native-open-20261102/archives/industrial-architecture/sources/art-gap-manifest.json",
+    "production/native-open-20261102/archives/industrial-architecture/target-reference-map.json",
+    "production/native-open-20261102/archives/industrial-architecture/tunnel-delegated-production-review.json",
+    "production/native-open-20261102/archives/pit/generation-receipts.json",
+    "production/native-open-20261102/archives/pit/native-technical-inspection.json",
+    "production/native-open-20261102/archives/pit/pit-conclusion-source-and-candidates.json",
+    "production/native-open-20261102/archives/pit/right-native-inspection-initial.json",
+    "production/native-open-20261102/archives/reviews/fauna-energy-v114-portable-selection.json",
+    "production/native-open-20261102/archives/reviews/industrial-architecture-independent-review.json",
+    "production/native-open-20261102/archives/reviews/industrial-architecture-verification.json",
+    "production/native-open-20261102/source-manifest.json",
+    "production/native-open-20261102/workbook-qa.json"
+  ],
+  "filenameSearches": [
+    {
+      "name": "Présentation et manutention du marché",
+      "pattern": "(tray|plateau|handcart|trolley|sled|chariot|pallet|palette|sling|crochet|hook|hoist|crane|weigh|balance|cart)",
+      "exclude": "(cartograph|cartouche|carte-de|cartilagineux)",
+      "scope": "Noms de tous les chemins suivis ; résultats de production/ et public/game/homeworld/ ci-dessous.",
+      "matchingPaths": [
+        "production/native-open-20261102/archives/industrial-architecture/target-v81-66-192-crochet-trophees-native.png",
+        "public/game/homeworld/v78/port-cargo-sorting-cart.png"
+      ]
+    },
+    {
+      "name": "Assemblage des enclos",
+      "pattern": "(gate|gateway|corner|angle|barrier|fence|enclosure|enclos|corral)",
+      "exclude": null,
+      "scope": "Noms de tous les chemins suivis ; résultats de production/ et public/game/homeworld/ ci-dessous.",
+      "matchingPaths": [
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K02-handling-gate.png",
+        "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M04-corral-fence.png",
+        "production/homeworld-v160/originals/HWA160-030_module-d-angle-yautja-aux-flammes-volcaniques.png",
+        "production/homeworld-v161/originals/HWA160-N02_angle-garde-corps.png",
+        "production/native-open-20261102/archives/fauna-energy/energy-enclosure-opened.json",
+        "production/native-open-20261102/archives/fauna-energy/energy-enclosure-reference-receipt.json",
+        "production/native-open-20261102/archives/fauna-energy/target-v81-71-266-enclosure-native.png",
+        "production/native-open-20261102/archives/fauna-energy/target-v81-71-267-enclosure-post-native.png",
+        "production/native-open-20261102/archives/fauna-energy/target-v81-71-268-enclosure-barrier-native-attempt02.png",
+        "production/native-open-20261102/archives/fauna-energy/target-v81-71-268-enclosure-barrier-native.png",
+        "production/native-open-20261102/archives/fauna-energy/target-v81-71-270-fauna-energy-barrier-native.png",
+        "production/native-open-20261102/archives/industrial-architecture/tunnel-delegated-production-review.json",
+        "public/game/homeworld/v72/region-gateway-kit.png",
+        "public/game/homeworld/v75/architecture/pit-gate.png",
+        "public/game/homeworld/v80/corner-wall-left.png"
+      ]
+    },
+    {
+      "name": "Accessoires de conduite et dressage",
+      "pattern": "(leash|laisse|lure|leurre|muzzle|museli[eè]re|collar|collier)",
+      "exclude": null,
+      "scope": "Noms de tous les chemins suivis ; résultats de production/ et public/game/homeworld/ ci-dessous.",
+      "matchingPaths": []
+    }
+  ],
+  "limitations": [
+    "Une recherche de noms et de métadonnées ne prouve pas une absence absolue dans toutes les planches composites.",
+    "La conclusion porte sur des composants indépendants spécifiques non identifiés, pas sur l’absence des ensembles ou des familles.",
+    "Les nouvelles pièces restent des adaptations originales ; aucun contrôle runtime ni certificat canonique 1:1 n’est déduit de cet audit."
+  ],
+  "existingAssetsRetained": [
+    {
+      "path": "public/game/homeworld/v78/port-cargo-sorting-cart.png",
+      "reason": "Chariot de tri cargo déjà indépendant : aucun nouveau chariot marchand demandé."
+    },
+    {
+      "path": "production/native-open-20261102/archives/industrial-architecture/target-v81-66-192-crochet-trophees-native.png",
+      "reason": "Crochet indépendant existant : aucun doublon de crochet ajouté."
+    },
+    {
+      "path": "production/homeworld-v160/originals/HWA160-030_module-d-angle-yautja-aux-flammes-volcaniques.png",
+      "reason": "Angle d’infrastructure existant ; ne démontre pas un raccord lourd assorti aux trois traverses de M04."
+    },
+    {
+      "path": "production/homeworld-v161/originals/HWA160-N02_angle-garde-corps.png",
+      "reason": "Angle de garde-corps urbain existant ; non substitué par un simple agrandissement pour l’enclos des montures."
+    },
+    {
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S03-merchant-display.png",
+      "reason": "Présentoir complet avec trois plateaux structurels fusionnés ; S06 est un plateau amovible autonome."
+    },
+    {
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S05-stock-shelter.png",
+      "reason": "Abri et étagères fusionnés ; pas de palette détachée visible dans cette source."
+    },
+    {
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M04-corral-fence.png",
+      "reason": "Module droit avec piliers et trois traverses ; aucun angle ou état de passage ouvert autonome."
+    },
+    {
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K03-training-rack.png",
+      "reason": "Râtelier avec trois laisses et deux leurres fusionnés dans le même PNG ; versions détachées non identifiées."
+    }
+  ],
+  "decisions": [
+    {
+      "id": "HWM162-S06",
+      "targetIds": [
+        "target-v81-64-162"
+      ],
+      "classification": "MODULAR_COMPONENT_NOT_IDENTIFIED_AS_STANDALONE",
+      "complements": [
+        "HWM162-S03"
+      ],
+      "conclusion": "Aucune source indépendante spécifique identifiée dans la recherche ciblée ; les ensembles et sources apparentées restent conservés."
+    },
+    {
+      "id": "HWM162-S07",
+      "targetIds": [
+        "target-v81-64-170"
+      ],
+      "classification": "MODULAR_COMPONENT_NOT_IDENTIFIED_AS_STANDALONE",
+      "complements": [
+        "HWM162-S05"
+      ],
+      "conclusion": "Aucune source indépendante spécifique identifiée dans la recherche ciblée ; les ensembles et sources apparentées restent conservés."
+    },
+    {
+      "id": "HWM162-M07",
+      "targetIds": [
+        "target-v81-72-287"
+      ],
+      "classification": "MODULAR_COMPONENT_NOT_IDENTIFIED_AS_STANDALONE",
+      "complements": [
+        "HWM162-M04"
+      ],
+      "conclusion": "Aucune source indépendante spécifique identifiée dans la recherche ciblée ; les ensembles et sources apparentées restent conservés."
+    },
+    {
+      "id": "HWM162-M08",
+      "targetIds": [
+        "target-v81-72-287"
+      ],
+      "classification": "MODULAR_COMPONENT_NOT_IDENTIFIED_AS_STANDALONE",
+      "complements": [
+        "HWM162-M04",
+        "HWM162-M07"
+      ],
+      "conclusion": "Aucune source indépendante spécifique identifiée dans la recherche ciblée ; les ensembles et sources apparentées restent conservés."
+    },
+    {
+      "id": "HWM162-M09",
+      "targetIds": [
+        "target-v81-72-287"
+      ],
+      "classification": "MODULAR_COMPONENT_NOT_IDENTIFIED_AS_STANDALONE",
+      "complements": [
+        "HWM162-M08"
+      ],
+      "conclusion": "Aucune source indépendante spécifique identifiée dans la recherche ciblée ; les ensembles et sources apparentées restent conservés."
+    },
+    {
+      "id": "HWM162-K07",
+      "targetIds": [
+        "target-v81-71-274"
+      ],
+      "classification": "MODULAR_COMPONENT_NOT_IDENTIFIED_AS_STANDALONE",
+      "complements": [
+        "HWM162-K03"
+      ],
+      "conclusion": "Aucune source indépendante spécifique identifiée dans la recherche ciblée ; les ensembles et sources apparentées restent conservés."
+    },
+    {
+      "id": "HWM162-K08",
+      "targetIds": [
+        "target-v81-71-274"
+      ],
+      "classification": "MODULAR_COMPONENT_NOT_IDENTIFIED_AS_STANDALONE",
+      "complements": [
+        "HWM162-K03"
+      ],
+      "conclusion": "Aucune source indépendante spécifique identifiée dans la recherche ciblée ; les ensembles et sources apparentées restent conservés."
+    },
+    {
+      "id": "HWM162-K09",
+      "targetIds": [
+        "target-v81-71-274"
+      ],
+      "classification": "MODULAR_COMPONENT_NOT_IDENTIFIED_AS_STANDALONE",
+      "complements": [
+        "HWM162-K03",
+        "HWM162-K07"
+      ],
+      "conclusion": "Aucune source indépendante spécifique identifiée dans la recherche ciblée ; les ensembles et sources apparentées restent conservés."
+    }
+  ],
+  "newStandaloneComponentsPlanned": 8,
+  "newV81TargetsInvented": 0,
+  "newBuildingsPlanned": 0,
+  "canonicalOneToOneClaimed": false,
+  "inheritedTargetCoverageAfterDelivery": {
+    "scope": "40 cibles héritées ; présence des candidats distincte de l’admission et de la certification.",
+    "trackedBaseCommit": "d4c43dce5286fbb64e41ae5fa22cb82854572a7e",
+    "trackedPathCount": 18774,
+    "targetCount": 40,
+    "targetsWithCandidate": 40,
+    "baselineWithoutSpecificCount": 13,
+    "baselineWithoutSpecificNowWithDelivery": 13,
+    "uncoveredTargets": [],
+    "targets": [
+      {
+        "targetId": "target-v81-59-97",
+        "statusBefore": "CANOPY_BUILDING_EXISTS_OPAQUE_MARKET_SCENE_NOT_A_SPRITE",
+        "existingExactPaths": [],
+        "existingRelatedPaths": [
+          "public/game/homeworld/v75/architecture/market-canopy.png"
+        ],
+        "deliveredCandidateIds": [
+          "HWM162-S01"
+        ],
+        "hasCandidate": true
+      },
+      {
+        "targetId": "target-v81-64-157",
+        "statusBefore": "RELATED_INDEPENDENT_SOURCE_EXISTS_FIT_UNCERTIFIED",
+        "existingExactPaths": [],
+        "existingRelatedPaths": [
+          "public/game/homeworld/v78/market-stall-right.png",
+          "production/homeworld-v160/originals/HWA160-023_kiosque-marchand-yautja-en-basalte-et-bronze.png"
+        ],
+        "deliveredCandidateIds": [],
+        "hasCandidate": true
+      },
+      {
+        "targetId": "target-v81-64-158",
+        "statusBefore": "NO_SPECIFIC_INDEPENDENT_SOURCE_IDENTIFIED",
+        "existingExactPaths": [],
+        "existingRelatedPaths": [],
+        "deliveredCandidateIds": [
+          "HWM162-S02"
+        ],
+        "hasCandidate": true
+      },
+      {
+        "targetId": "target-v81-64-159",
+        "statusBefore": "RELATED_INDEPENDENT_SOURCE_EXISTS_FIT_UNCERTIFIED",
+        "existingExactPaths": [],
+        "existingRelatedPaths": [
+          "production/homeworld-v160/first-pack/HW1009_etale_marche_gauche.png",
+          "public/game/homeworld/v83/merchant-counter-left.png"
+        ],
+        "deliveredCandidateIds": [],
+        "hasCandidate": true
+      },
+      {
+        "targetId": "target-v81-64-160",
+        "statusBefore": "RELATED_INDEPENDENT_SOURCE_EXISTS_FIT_UNCERTIFIED",
+        "existingExactPaths": [],
+        "existingRelatedPaths": [
+          "public/game/homeworld/v78/market-stall-right.png"
+        ],
+        "deliveredCandidateIds": [],
+        "hasCandidate": true
+      },
+      {
+        "targetId": "target-v81-64-161",
+        "statusBefore": "RELATED_INDEPENDENT_SOURCE_EXISTS_FIT_UNCERTIFIED",
+        "existingExactPaths": [],
+        "existingRelatedPaths": [
+          "public/game/homeworld/v76/merchant-canopy-diagonal-native.png"
+        ],
+        "deliveredCandidateIds": [],
+        "hasCandidate": true
+      },
+      {
+        "targetId": "target-v81-64-162",
+        "statusBefore": "NO_SPECIFIC_INDEPENDENT_SOURCE_IDENTIFIED",
+        "existingExactPaths": [],
+        "existingRelatedPaths": [],
+        "deliveredCandidateIds": [
+          "HWM162-S03",
+          "HWM162-S06"
+        ],
+        "hasCandidate": true
+      },
+      {
+        "targetId": "target-v81-64-163",
+        "statusBefore": "RELATED_INDEPENDENT_SOURCE_EXISTS_FIT_UNCERTIFIED",
+        "existingExactPaths": [],
+        "existingRelatedPaths": [
+          "public/game/homeworld/v83/merchant-counter-left.png",
+          "public/game/homeworld/v76/interior/worktable-right.png"
+        ],
+        "deliveredCandidateIds": [],
+        "hasCandidate": true
+      },
+      {
+        "targetId": "target-v81-64-164",
+        "statusBefore": "RELATED_INDEPENDENT_SOURCE_EXISTS_FIT_UNCERTIFIED",
+        "existingExactPaths": [],
+        "existingRelatedPaths": [
+          "public/game/homeworld/v83/cargo-rack-right.png",
+          "public/game/homeworld/v76/interior/rack-lateral.png"
+        ],
+        "deliveredCandidateIds": [],
+        "hasCandidate": true
+      },
+      {
+        "targetId": "target-v81-64-165",
+        "statusBefore": "NO_SPECIFIC_INDEPENDENT_SOURCE_IDENTIFIED",
+        "existingExactPaths": [],
+        "existingRelatedPaths": [],
+        "deliveredCandidateIds": [
+          "HWM162-S04"
+        ],
+        "hasCandidate": true
+      },
+      {
+        "targetId": "target-v81-64-166",
+        "statusBefore": "RELATED_INDEPENDENT_SOURCE_EXISTS_FIT_UNCERTIFIED",
+        "existingExactPaths": [],
+        "existingRelatedPaths": [
+          "public/game/homeworld/v76/logistics-container-rack-native.png",
+          "public/game/homeworld/v80/sealed-cargo-case-left.png"
+        ],
+        "deliveredCandidateIds": [],
+        "hasCandidate": true
+      },
+      {
+        "targetId": "target-v81-64-167",
+        "statusBefore": "RELATED_INDEPENDENT_SOURCE_EXISTS_FIT_UNCERTIFIED",
+        "existingExactPaths": [],
+        "existingRelatedPaths": [
+          "public/game/homeworld/v80/sealed-cargo-case-left.png",
+          "public/game/homeworld/v76/interior/chest-diagonal.png"
+        ],
+        "deliveredCandidateIds": [],
+        "hasCandidate": true
+      },
+      {
+        "targetId": "target-v81-64-168",
+        "statusBefore": "RELATED_INDEPENDENT_SOURCE_EXISTS_FIT_UNCERTIFIED",
+        "existingExactPaths": [],
+        "existingRelatedPaths": [
+          "public/game/homeworld/v80/amber-lamp-post.png"
+        ],
+        "deliveredCandidateIds": [],
+        "hasCandidate": true
+      },
+      {
+        "targetId": "target-v81-64-169",
+        "statusBefore": "RELATED_INDEPENDENT_SOURCE_EXISTS_FIT_UNCERTIFIED",
+        "existingExactPaths": [],
+        "existingRelatedPaths": [
+          "public/game/homeworld/v80/clan-banner-standard.png"
+        ],
+        "deliveredCandidateIds": [],
+        "hasCandidate": true
+      },
+      {
+        "targetId": "target-v81-64-170",
+        "statusBefore": "NO_SPECIFIC_INDEPENDENT_SOURCE_IDENTIFIED",
+        "existingExactPaths": [],
+        "existingRelatedPaths": [],
+        "deliveredCandidateIds": [
+          "HWM162-S05",
+          "HWM162-S07"
+        ],
+        "hasCandidate": true
+      },
+      {
+        "targetId": "target-v81-71-266",
+        "statusBefore": "EXACT_TARGET_CANDIDATE_EXISTS_NOT_ADMITTED",
+        "existingExactPaths": [
+          "production/native-open-20261102/archives/fauna-energy/target-v81-71-266-enclosure-native.png"
+        ],
+        "existingRelatedPaths": [],
+        "deliveredCandidateIds": [],
+        "hasCandidate": true
+      },
+      {
+        "targetId": "target-v81-71-267",
+        "statusBefore": "EXACT_TARGET_CANDIDATE_EXISTS_NOT_ADMITTED",
+        "existingExactPaths": [
+          "production/native-open-20261102/archives/fauna-energy/target-v81-71-267-enclosure-post-native.png"
+        ],
+        "existingRelatedPaths": [],
+        "deliveredCandidateIds": [],
+        "hasCandidate": true
+      },
+      {
+        "targetId": "target-v81-71-268",
+        "statusBefore": "EXACT_TARGET_CANDIDATE_EXISTS_NOT_ADMITTED",
+        "existingExactPaths": [
+          "production/native-open-20261102/archives/fauna-energy/target-v81-71-268-enclosure-barrier-native-attempt02.png",
+          "production/native-open-20261102/archives/fauna-energy/target-v81-71-268-enclosure-barrier-native.png"
+        ],
+        "existingRelatedPaths": [],
+        "deliveredCandidateIds": [],
+        "hasCandidate": true
+      },
+      {
+        "targetId": "target-v81-71-269",
+        "statusBefore": "NO_EXACT_TARGET_FILENAME",
+        "existingExactPaths": [],
+        "existingRelatedPaths": [],
+        "deliveredCandidateIds": [
+          "HWM162-K02",
+          "HWM162-K06"
+        ],
+        "hasCandidate": true
+      },
+      {
+        "targetId": "target-v81-71-270",
+        "statusBefore": "EXACT_TARGET_CANDIDATE_EXISTS_NOT_ADMITTED",
+        "existingExactPaths": [
+          "production/native-open-20261102/archives/fauna-energy/target-v81-71-270-fauna-energy-barrier-native.png"
+        ],
+        "existingRelatedPaths": [],
+        "deliveredCandidateIds": [],
+        "hasCandidate": true
+      },
+      {
+        "targetId": "target-v81-71-271",
+        "statusBefore": "EXACT_TARGET_CANDIDATE_EXISTS_NOT_ADMITTED",
+        "existingExactPaths": [
+          "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-271-abreuvoir-alien-native-attempt02.png",
+          "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-271-abreuvoir-alien-native.png"
+        ],
+        "existingRelatedPaths": [],
+        "deliveredCandidateIds": [],
+        "hasCandidate": true
+      },
+      {
+        "targetId": "target-v81-71-272",
+        "statusBefore": "EXACT_TARGET_CANDIDATE_EXISTS_NOT_ADMITTED",
+        "existingExactPaths": [
+          "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-272-nourrisseur-native.png"
+        ],
+        "existingRelatedPaths": [],
+        "deliveredCandidateIds": [],
+        "hasCandidate": true
+      },
+      {
+        "targetId": "target-v81-71-273",
+        "statusBefore": "EXACT_TARGET_CANDIDATE_EXISTS_NOT_ADMITTED",
+        "existingExactPaths": [
+          "production/native-open-20261102/archives/fauna-energy/gear/target-v81-71-273-fauna-harness-support-native.png"
+        ],
+        "existingRelatedPaths": [],
+        "deliveredCandidateIds": [],
+        "hasCandidate": true
+      },
+      {
+        "targetId": "target-v81-71-274",
+        "statusBefore": "NO_EXACT_TARGET_FILENAME",
+        "existingExactPaths": [],
+        "existingRelatedPaths": [],
+        "deliveredCandidateIds": [
+          "HWM162-K03",
+          "HWM162-K07",
+          "HWM162-K08",
+          "HWM162-K09"
+        ],
+        "hasCandidate": true
+      },
+      {
+        "targetId": "target-v81-71-275",
+        "statusBefore": "NO_EXACT_TARGET_FILENAME",
+        "existingExactPaths": [],
+        "existingRelatedPaths": [],
+        "deliveredCandidateIds": [
+          "HWM162-K04"
+        ],
+        "hasCandidate": true
+      },
+      {
+        "targetId": "target-v81-71-276",
+        "statusBefore": "EXACT_TARGET_CANDIDATE_EXISTS_NOT_ADMITTED",
+        "existingExactPaths": [
+          "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-276-cage-petite-native.png"
+        ],
+        "existingRelatedPaths": [],
+        "deliveredCandidateIds": [],
+        "hasCandidate": true
+      },
+      {
+        "targetId": "target-v81-71-277",
+        "statusBefore": "EXACT_TARGET_CANDIDATE_EXISTS_NOT_ADMITTED",
+        "existingExactPaths": [
+          "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-277-cage-moyenne-native.png"
+        ],
+        "existingRelatedPaths": [],
+        "deliveredCandidateIds": [],
+        "hasCandidate": true
+      },
+      {
+        "targetId": "target-v81-71-278",
+        "statusBefore": "EXACT_TARGET_CANDIDATE_EXISTS_NOT_ADMITTED",
+        "existingExactPaths": [
+          "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png"
+        ],
+        "existingRelatedPaths": [],
+        "deliveredCandidateIds": [],
+        "hasCandidate": true
+      },
+      {
+        "targetId": "target-v81-71-279",
+        "statusBefore": "NO_EXACT_TARGET_FILENAME",
+        "existingExactPaths": [],
+        "existingRelatedPaths": [],
+        "deliveredCandidateIds": [
+          "HWM162-K05"
+        ],
+        "hasCandidate": true
+      },
+      {
+        "targetId": "target-v81-71-280",
+        "statusBefore": "EXACT_TARGET_CANDIDATE_EXISTS_NOT_ADMITTED",
+        "existingExactPaths": [
+          "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-280-signal-danger-native.png"
+        ],
+        "existingRelatedPaths": [],
+        "deliveredCandidateIds": [],
+        "hasCandidate": true
+      },
+      {
+        "targetId": "target-v81-72-281",
+        "statusBefore": "NO_EXACT_TARGET_FILENAME",
+        "existingExactPaths": [],
+        "existingRelatedPaths": [],
+        "deliveredCandidateIds": [
+          "HWM162-M02"
+        ],
+        "hasCandidate": true
+      },
+      {
+        "targetId": "target-v81-72-282",
+        "statusBefore": "EXACT_TARGET_CANDIDATE_EXISTS_NOT_ADMITTED",
+        "existingExactPaths": [
+          "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-282-mount-harness-support-native.png"
+        ],
+        "existingRelatedPaths": [],
+        "deliveredCandidateIds": [],
+        "hasCandidate": true
+      },
+      {
+        "targetId": "target-v81-72-283",
+        "statusBefore": "EXACT_TARGET_CANDIDATE_EXISTS_NOT_ADMITTED",
+        "existingExactPaths": [
+          "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-283-mount-harness-native.png"
+        ],
+        "existingRelatedPaths": [],
+        "deliveredCandidateIds": [],
+        "hasCandidate": true
+      },
+      {
+        "targetId": "target-v81-72-284",
+        "statusBefore": "EXACT_TARGET_CANDIDATE_EXISTS_NOT_ADMITTED",
+        "existingExactPaths": [
+          "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-284-mount-saddle-native.png"
+        ],
+        "existingRelatedPaths": [],
+        "deliveredCandidateIds": [],
+        "hasCandidate": true
+      },
+      {
+        "targetId": "target-v81-72-285",
+        "statusBefore": "EXACT_TARGET_CANDIDATE_EXISTS_NOT_ADMITTED",
+        "existingExactPaths": [
+          "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-285-saddle-rack-native.png"
+        ],
+        "existingRelatedPaths": [],
+        "deliveredCandidateIds": [],
+        "hasCandidate": true
+      },
+      {
+        "targetId": "target-v81-72-286",
+        "statusBefore": "NO_EXACT_TARGET_FILENAME",
+        "existingExactPaths": [],
+        "existingRelatedPaths": [],
+        "deliveredCandidateIds": [
+          "HWM162-M03"
+        ],
+        "hasCandidate": true
+      },
+      {
+        "targetId": "target-v81-72-287",
+        "statusBefore": "NO_EXACT_TARGET_FILENAME",
+        "existingExactPaths": [],
+        "existingRelatedPaths": [],
+        "deliveredCandidateIds": [
+          "HWM162-M04",
+          "HWM162-M07",
+          "HWM162-M08",
+          "HWM162-M09"
+        ],
+        "hasCandidate": true
+      },
+      {
+        "targetId": "target-v81-72-288",
+        "statusBefore": "EXACT_TARGET_CANDIDATE_EXISTS_NOT_ADMITTED",
+        "existingExactPaths": [
+          "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-288-adapted-mount-feeder-native.png"
+        ],
+        "existingRelatedPaths": [],
+        "deliveredCandidateIds": [],
+        "hasCandidate": true
+      },
+      {
+        "targetId": "target-v81-72-289",
+        "statusBefore": "NO_EXACT_TARGET_FILENAME",
+        "existingExactPaths": [],
+        "existingRelatedPaths": [],
+        "deliveredCandidateIds": [
+          "HWM162-M05"
+        ],
+        "hasCandidate": true
+      },
+      {
+        "targetId": "target-v81-72-290",
+        "statusBefore": "NO_EXACT_TARGET_FILENAME",
+        "existingExactPaths": [],
+        "existingRelatedPaths": [],
+        "deliveredCandidateIds": [
+          "HWM162-M06"
+        ],
+        "hasCandidate": true
+      }
+    ],
+    "sourceClosedChanged": false
+  }
+}

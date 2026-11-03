@@ -5,6 +5,12 @@ import nextTs from "eslint-config-next/typescript";
 const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
+  {
+    // Archived Node QA scripts use local CommonJS VM containers, not Next modules.
+    // Preserve their executed bytes and evidence hashes; retain all other rules.
+    files: ["docs/qa/**/*.mjs"],
+    rules: { "@next/next/no-assign-module-variable": "off" },
+  },
   // Override default ignores of eslint-config-next.
   globalIgnores([
     // Default ignores of eslint-config-next:

@@ -46,7 +46,9 @@ function normalizedShape(points) {
 test("V97 coastlines preserve all thirty existing travel graphs and initial archive bytes", () => {
   const planets = api.WAR_PLANETS_V96;
   assert.equal(planets.length, 30);
-  assert.equal(hash(planets.map(planet => planet.definitions.map(territory => [territory.id, territory.neighbors]))), "e3a0e1c46206d455f4ea1abb399e9385e1199567decd1f772345f354f75c5972");
+  // V156 adds a road on every drawn land border (was e3a0e1c4…). Every
+  // pre-V156 road is kept: see the superset check against the baseline fixture.
+  assert.equal(hash(planets.map(planet => planet.definitions.map(territory => [territory.id, territory.neighbors]))), "4a605a23e79feaddbc046d7323c39d0c8c2ea4b61e5ddb017887b41105b438dc");
   assert.equal(hash(planets.map(planet => ({ id: planet.id, stateHash: hash(api.createWarSimulationV85(undefined, planet.id)) }))), "5d342a693430c63f457742c420d96e7f8ce1ae403b97747bdb446a57ba4bac54");
 });
 

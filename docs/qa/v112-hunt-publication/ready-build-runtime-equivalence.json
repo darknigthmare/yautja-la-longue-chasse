@@ -1,0 +1,103 @@
+{
+  "classification": "BYTE_EXACT_GAME_RUNTIME_EQUIVALENCE_NOT_A_NEW_BUILD",
+  "observedAt": "2026-11-02T07:36:15.572536+00:00",
+  "readyBuildCommit": "f0b1bec1e717a89abe1420210ca602b68d50571c",
+  "reviewedCurrentCommit": "6e5999aa2507e296f754f581e5b97caa566fb7f2",
+  "paths": [
+    {
+      "path": "app",
+      "referenceGitObject": "8d3ea5831dcf962d14654daf4a6b510952ae6a33",
+      "currentGitObject": "8d3ea5831dcf962d14654daf4a6b510952ae6a33",
+      "equal": true
+    },
+    {
+      "path": "build",
+      "referenceGitObject": "e4caf579c58061db70eac981f9475c4b07b702f8",
+      "currentGitObject": "e4caf579c58061db70eac981f9475c4b07b702f8",
+      "equal": true
+    },
+    {
+      "path": "worker",
+      "referenceGitObject": "534262246ef7d02635110a3989accfbd8a3494c9",
+      "currentGitObject": "534262246ef7d02635110a3989accfbd8a3494c9",
+      "equal": true
+    },
+    {
+      "path": "next.config.ts",
+      "referenceGitObject": "43172caa76091acec4ae2799ba37bc52a90d5d7a",
+      "currentGitObject": "43172caa76091acec4ae2799ba37bc52a90d5d7a",
+      "equal": true
+    },
+    {
+      "path": "package.json",
+      "referenceGitObject": "9c43d7ff6dad8a8efa7fb06267a20cc9f766a90e",
+      "currentGitObject": "9c43d7ff6dad8a8efa7fb06267a20cc9f766a90e",
+      "equal": true
+    },
+    {
+      "path": "package-lock.json",
+      "referenceGitObject": "6ea57ae12faa8b338ed3ada44ed32e0cd962f6d8",
+      "currentGitObject": "6ea57ae12faa8b338ed3ada44ed32e0cd962f6d8",
+      "equal": true
+    },
+    {
+      "path": "vercel.json",
+      "referenceGitObject": "9ab0877ff60df23dfb4dd0ef2f6fd8b2325c795f",
+      "currentGitObject": "9ab0877ff60df23dfb4dd0ef2f6fd8b2325c795f",
+      "equal": true
+    },
+    {
+      "path": ".vercelignore",
+      "referenceGitObject": "9df19d25832956639e79f908727009e1527eb192",
+      "currentGitObject": "9df19d25832956639e79f908727009e1527eb192",
+      "equal": true
+    },
+    {
+      "path": "postcss.config.mjs",
+      "referenceGitObject": "61e36849cf7cfa9f1f71b4a3964a4953e3e243d3",
+      "currentGitObject": "61e36849cf7cfa9f1f71b4a3964a4953e3e243d3",
+      "equal": true
+    },
+    {
+      "path": "tsconfig.json",
+      "referenceGitObject": "75e7ded78700e6669559418fc14c89f50410ac04",
+      "currentGitObject": "75e7ded78700e6669559418fc14c89f50410ac04",
+      "equal": true
+    },
+    {
+      "path": "scripts/build-production-v94.mjs",
+      "referenceGitObject": "cc8038d84b2507057b0fcdf74044ed4f7838583c",
+      "currentGitObject": "cc8038d84b2507057b0fcdf74044ed4f7838583c",
+      "equal": true
+    },
+    {
+      "path": "scripts/build-audio-manifest.mjs",
+      "referenceGitObject": "7a40072107fe128be575d01f01b34ae96a79e21d",
+      "currentGitObject": "7a40072107fe128be575d01f01b34ae96a79e21d",
+      "equal": true
+    },
+    {
+      "path": "scripts/verify-pit-built-css-v61.mjs",
+      "referenceGitObject": "7778fcccf96bac89040368428f66c851aef43a60",
+      "currentGitObject": "7778fcccf96bac89040368428f66c851aef43a60",
+      "equal": true
+    },
+    {
+      "path": "scripts/compact-vercel-static-v87.mjs",
+      "referenceGitObject": "328a411e112358b9df25b4fe906b4e3c3f61fe94",
+      "currentGitObject": "328a411e112358b9df25b4fe906b4e3c3f61fe94",
+      "equal": true
+    },
+    {
+      "path": "scripts/vercel-native-origin-v89.mjs",
+      "referenceGitObject": "a687fc4373a0efecd694e1d5d9d57cf63ee4ac36",
+      "currentGitObject": "a687fc4373a0efecd694e1d5d9d57cf63ee4ac36",
+      "equal": true
+    }
+  ],
+  "publicFilesOutsideHelpDownloads": 7415,
+  "publicGitEntriesEqual": true,
+  "helpDownloadsExcluded": "public/aide/ contains a newer review journal and workbook; the latest copies are delivered in the PR.",
+  "repositoryContentChangedByCheck": false,
+  "scope": "Application, existing build inputs and original public game resources are identical to the ready Vercel build. This does not assert that later documentation, QA tools or help downloads are included in that older build."
+}
