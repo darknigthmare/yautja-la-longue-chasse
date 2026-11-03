@@ -8,6 +8,7 @@ import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import {gunzipSync} from 'node:zlib';
 import {fileURLToPath,pathToFileURL} from 'node:url';
+import {attachHistoricalGitObjects,historicalGitFailure} from './lib/historical-git.mjs';
 
 export const R7_PUBLICATION_COMMIT_V113='03cf51badd450338d748da55599a317a71debd28';
 export const R7_PUBLICATION_TREE_V113='8955aa3ae57f3c1c5151fc6e2980d083bbcd0aaa';
@@ -31,7 +32,7 @@ const identity=row=>({path:row.path,bytes:row.bytes,sha256:row.sha256});
 const gitEnvironment=()=>({...process.env,GIT_TERMINAL_PROMPT:'0',GIT_OPTIONAL_LOCKS:'0',GIT_NO_LAZY_FETCH:'1'});
 function git(root,args,{timeout=45000,input,env=gitEnvironment()}={}){
  try{return execFileSync('git',['-C',root,...args],{input,env,timeout,maxBuffer:192*1024*1024,stdio:['pipe','pipe','pipe']});}
- catch(error){const failure=Error('R7 Git operation failed: '+args[0]+' (exit '+(error.status??error.signal??'unavailable')+')');failure.code=error.code;throw failure;}
+ catch(error){throw historicalGitFailure(error,{operation:args[0],label:'R7',env});}
 }
 export async function readR7PublicationManifestV113(){
  const bytes=await fs.readFile(MANIFEST);
@@ -100,16 +101,7 @@ function ensureCommit(state,commit){
 async function initializeGit(state,objectRepository){
  git(state.root,['-c','init.defaultBranch=r7-history','init','--quiet']);
  git(state.root,['config','remote.origin.url',ORIGIN]);
- let objects;
- try{
-  const reported=git(objectRepository,['rev-parse','--git-path','objects']).toString().trim();
-  objects=await fs.realpath(path.resolve(objectRepository,reported));
- }catch{ /* Missing local Git objects are resolved from the canonical origin below. */ }
- if(objects){
-  const target=path.join(state.root,'.git/objects/info/alternates');
-  await fs.writeFile(target,objects+'\n',{mode:0o444});await fs.chmod(target,0o444);
-  state.alternate={path:target,bytes:objects+'\n'};
- }
+ Object.assign(state,await attachHistoricalGitObjects({root:state.root,objectRepository}));
  ensureCommit(state,R7_PUBLICATION_COMMIT_V113);ensureCommit(state,R7_RUNTIME_COMMIT_V113);
  assert.equal(git(state.root,['rev-parse',R7_PUBLICATION_COMMIT_V113+'^{tree}']).toString().trim(),R7_PUBLICATION_TREE_V113);
  const source=treeEntries(state.root,R7_PUBLICATION_COMMIT_V113);

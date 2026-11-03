@@ -2,7 +2,7 @@
 import {recoverAnyArchiveV71} from "./systems/archiveRecoveryV71";
 import {useCallback,useEffect,useRef,useState,lazy,Suspense,type ComponentType} from 'react';
 import {flushSync} from 'react-dom';
-import CampaignMainMenu from './CampaignMainMenu';
+import CampaignMainMenu,{type CampaignMenuEntry} from './CampaignMainMenu';
 import { defaultSave, loadSaveWithStatus } from './save';
 import type { SaveGame } from './types';
 import { mainMenuModeAccessV81, mainMenuBrowserShipContextV81, type MainMenuGameModeV81 } from './systems/mainMenuModesV81';
@@ -26,6 +26,7 @@ export default function CampaignFrontEnd({SessionComponent}:{SessionComponent:Co
  const [clanWarOpen,setClanWarOpen]=useState(false),[spritesOpen,setSpritesOpen]=useState(false);
  const [modeCampaign,setModeCampaign]=useState<SaveGame|null>(null),[bonusMode,setBonusMode]=useState<MainMenuGameModeV81|null>(null);
  const [modeContext,setModeContext]=useState<ChronicleAccessContext>({personalShipAvailable:false});
+ const [menuEntry,setMenuEntry]=useState<CampaignMenuEntry|undefined>(undefined);
  const alive=useRef(true),operation=useRef(false),generation=useRef(0);
  const refresh=useCallback(async()=>{
   if(operation.current)return;operation.current=true;setBusy(true);
@@ -72,18 +73,18 @@ export default function CampaignFrontEnd({SessionComponent}:{SessionComponent:Co
  if(mausoleumOpen)return <Suspense fallback={<p role="status">Ouverture des archives…</p>}><Mausoleum save={null} source="menu" onExit={()=>setMausoleumOpen(false)} /></Suspense>;
  if(entry)return <SessionComponent key={entry.token} entry={entry} onMainMenu={showMenu} />;
  const menuGeneration=generation.current;
- return <CampaignMainMenu catalog={catalog} busy={busy} message={message} onRefresh={refresh}
+ return <CampaignMainMenu catalog={catalog} busy={busy} message={message} onRefresh={refresh} initialEntry={menuEntry}
   onPrepareImport={(id,serialized)=>{if(!validId(id)||operation.current||!alive.current||generation.current!==menuGeneration)return{ok:false,failure:'save-conflict',message:'Cette session de menu a changé. Revenez au menu et relisez le fichier.',preview:null};return prepareCampaignSlotImport(id,serialized);}}
   onImport={preview=>{if(operation.current||!alive.current||generation.current!==menuGeneration)return;void run(()=>importCampaignSlot(preview),false);}}
-  modeAccess={mainMenuModeAccessV81(modeCampaign,modeContext)} onOpenGameMode={openGameMode}
-  onMausoleum={()=>setMausoleumOpen(true)}
-  onOpenClanWar={()=>setClanWarOpen(true)} onOpenSprites={()=>setSpritesOpen(true)}
-  onCreate={(id,name)=>{if(!validId(id))return;void run(async()=>{const created=await createCampaignSlot(id,name);if(!created.ok||!created.checkpoint)return created;const slot=created.catalog.slots.find(s=>s.id===id)!;return activateCampaignCheckpoint(id,created.checkpoint.id,{expectedRevision:slot.revision});},true);}}
-  onContinue={id=>{if(!validId(id))return;const slot=catalog?.slots.find(s=>s.id===id);if(!slot?.lastCheckpointId)return;void run(()=>catalog?.activeSlotId===id?continueCampaignSlot(id,{expectedRevision:slot.revision,location:slot.checkpoints.find(checkpoint=>checkpoint.id===slot.lastCheckpointId)?.resumeLocation}):activateCampaignCheckpoint(id,slot.lastCheckpointId!,{expectedRevision:slot.revision}),true);}}
-  onLoad={(id,checkpointId,expectedRevision)=>{if(!validId(id))return;void run(()=>activateCampaignCheckpoint(id,checkpointId as CampaignCheckpointId,{expectedRevision}),true);}}
+  modeAccess={mainMenuModeAccessV81(modeCampaign,modeContext)} onOpenGameMode={(mode,confirmed)=>{setMenuEntry({section:'modes',action:mode});openGameMode(mode,confirmed);}}
+  onMausoleum={()=>{setMenuEntry({section:'archives',action:'mausoleum'});setMausoleumOpen(true);}}
+  onOpenClanWar={()=>{setMenuEntry({section:'modes',action:'clan-war'});setClanWarOpen(true);}} onOpenSprites={()=>{setMenuEntry({section:'archives',action:'sprites'});setSpritesOpen(true);}}
+  onCreate={(id,name)=>{if(!validId(id))return;setMenuEntry({section:'campaign',action:'new'});void run(async()=>{const created=await createCampaignSlot(id,name);if(!created.ok||!created.checkpoint)return created;const slot=created.catalog.slots.find(s=>s.id===id)!;return activateCampaignCheckpoint(id,created.checkpoint.id,{expectedRevision:slot.revision});},true);}}
+  onContinue={id=>{if(!validId(id))return;const slot=catalog?.slots.find(s=>s.id===id);if(!slot?.lastCheckpointId)return;setMenuEntry({section:'campaign',action:'continue'});void run(()=>catalog?.activeSlotId===id?continueCampaignSlot(id,{expectedRevision:slot.revision,location:slot.checkpoints.find(checkpoint=>checkpoint.id===slot.lastCheckpointId)?.resumeLocation}):activateCampaignCheckpoint(id,slot.lastCheckpointId!,{expectedRevision:slot.revision}),true);}}
+  onLoad={(id,checkpointId,expectedRevision)=>{if(!validId(id))return;setMenuEntry({section:'campaign',action:'load'});void run(()=>activateCampaignCheckpoint(id,checkpointId as CampaignCheckpointId,{expectedRevision}),true);}}
   onRecover={id=>{if(validId(id))void run(()=>recoverCampaignSlot(id),false);}}
-  onReplace={(id,name,expectedRevision,expectedOwnerCreatedAt)=>{if(validId(id))void run(()=>replaceCampaignSlot(id,name,{expectedRevision,expectedOwnerCreatedAt}),true);}}
-  onWorkspaceRecover={(id,checkpointId,expectedRevision)=>{if(validId(id))void run(()=>recoverCampaignWorkspace(id,checkpointId as CampaignCheckpointId,{expectedRevision}),true);}}
-  onRecoverNew={(id,name)=>{if(validId(id))void run(()=>recoverAsNewCampaignSlot(id,name),true);}}
+  onReplace={(id,name,expectedRevision,expectedOwnerCreatedAt)=>{if(validId(id)){setMenuEntry({section:'campaign',action:'new'});void run(()=>replaceCampaignSlot(id,name,{expectedRevision,expectedOwnerCreatedAt}),true);}}}
+  onWorkspaceRecover={(id,checkpointId,expectedRevision)=>{if(validId(id)){setMenuEntry({section:'campaign',action:'load'});void run(()=>recoverCampaignWorkspace(id,checkpointId as CampaignCheckpointId,{expectedRevision}),true);}}}
+  onRecoverNew={(id,name)=>{if(validId(id)){setMenuEntry({section:'campaign',action:'new'});void run(()=>recoverAsNewCampaignSlot(id,name),true);}}}
  />;
 }

@@ -101,7 +101,7 @@ function menuHarness(unlocked = false) {
   const values = [], refs = [], calls = []; let stateIndex = 0, refIndex = 0;
   const exports = {}, jsx = (type, props) => ({ type, props });
   vm.runInNewContext(compiled, { exports, require(name) {
-    if (name === 'react') return { useState(initial) { const index = stateIndex++; if (!(index in values)) values[index] = initial; return [values[index], value => values[index] = typeof value === 'function' ? value(values[index]) : value]; }, useRef(initial) { return refs[refIndex++] ??= { current: initial }; }, useLayoutEffect() {}, useCallback: value => value };
+    if (name === 'react') return { useState(initial) { const index = stateIndex++; if (!(index in values)) values[index] = initial; return [values[index], value => values[index] = typeof value === 'function' ? value(values[index]) : value]; }, useRef(initial) { return refs[refIndex++] ??= { current: initial }; }, useLayoutEffect() {}, useSyncExternalStore:(_subscribe,_snapshot,serverSnapshot)=>serverSnapshot(),useCallback: value => value };
     if (name === 'react/jsx-runtime') return { jsx, jsxs: jsx };
     if (name.includes('useMenuGamepad')) return { useMenuGamepad() {} };
     if (name.includes('mainMenuModesV81')) return model;
@@ -109,6 +109,7 @@ function menuHarness(unlocked = false) {
   } });
   const props = { catalog: { activeSlotId: null, slots: [1, 2, 3, 4, 5].map(id => ({ id, status: 'empty', revision: 0, checkpoints: [], lastCheckpointId: null })) }, busy: false, message: null, modeAccess: { 'the-pit': unlocked, 'game-reserve': unlocked }, onOpenGameMode: (...args) => calls.push(args) };
   const render = () => { stateIndex = 0; refIndex = 0; return exports.default(props); };
+  walk(render()).find(node => node.props?.['data-menu-section'] === 'modes').props.onClick();
   // Mount the rendered main ref, not an assumed React hook index: the menu
   // also owns refs for asynchronous import reads and confirmation focus.
   return { props, calls, render, escape(tree) { tree.props.ref.current = {}; tree.props.onKeyDown({ key: 'Escape', repeat: false, defaultPrevented: false, preventDefault() {} }); }, find: (tree, attr, value = true) => walk(tree).find(node => node.props?.[attr] === value) };

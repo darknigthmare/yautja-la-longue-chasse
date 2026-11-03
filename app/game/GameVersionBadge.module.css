@@ -1,0 +1,28 @@
+.badge {
+  display: inline-flex;
+  flex: 0 0 auto;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0.5em;
+  width: fit-content;
+  padding: 0.35rem 0.55rem;
+  border: 1px solid rgba(213, 177, 115, 0.27);
+  border-radius: 3px;
+  background: rgba(7, 10, 9, 0.74);
+  color: #d1c4a6;
+  font: 500 0.7rem/1.2 ui-monospace, SFMono-Regular, Consolas, monospace;
+  letter-spacing: 0.015em;
+  white-space: nowrap;
+}
+
+.badge strong { color: #efd39e; font-weight: 700; }
+.badge code { font: inherit; color: #b0bab0; }
+.label { font-size: 0.9em; text-transform: uppercase; letter-spacing: 0.08em; }
+.separator { color: #967c53; }
+.compact { padding: 0.1rem 0.35rem; font-size: 0.62rem; }
+.compact .label { display: none; }
+
+@media (forced-colors: active) {
+  .badge { border-color: CanvasText; }
+  .badge strong, .badge code, .separator { color: CanvasText; }
+}

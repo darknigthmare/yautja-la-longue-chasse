@@ -51,7 +51,7 @@ function withDeploymentIgnore(inspect) {
 }
 test('Vercel packaging includes the shared orchestrator and every local build stage',()=>{
  withDeploymentIgnore(ignored=>{
-  const files=['scripts/build-production-v94.mjs',...productionBuildStepsV94(root,nextCli).filter(step=>step.id!=='next').map(step=>relative(root,step.args[0]).split('\\').join('/'))];
+  const files=['scripts/build-production-v94.mjs','scripts/game-build-identity.ts',...productionBuildStepsV94(root,nextCli).filter(step=>step.id!=='next').map(step=>relative(root,step.args[0]).split('\\').join('/'))];
   for(const file of files)assert.equal(ignored(file),false,`Required build entry excluded by .vercelignore: ${file}`);
  });
 });

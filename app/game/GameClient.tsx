@@ -55,6 +55,7 @@ import CampaignFrontEnd, { type CampaignSessionEntry } from "./CampaignFrontEnd"
 import { CampaignSavePanel } from "./CampaignMainMenu";
 import { loadCampaignSlots, saveCampaignCheckpoint, type CampaignSlotCatalog, type CampaignResumeLocation } from "./systems/campaignSlots";
 import { GAME_CONTENT_VERSION, GAME_CONTENT_LABEL } from "./buildInfo";
+import GameVersionBadge from "./GameVersionBadge";
 import { campaignWelcomeV69 } from "./systems/campaignWelcomeV69";
 import { useHomeworldReducedMotionV77 } from "./useHomeworldReducedMotionV77";
 import { campaignWorldResumeV70 } from "./systems/campaignWorldResumeV70";
@@ -3693,6 +3694,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 Yautja
                 <span>La Longue Chasse</span>
               </h1>
+              <GameVersionBadge />
               <p className="title-copy">
                 Parcourez la galaxie depuis votre vaisseau, étudiez des proies
                 dignes, choisissez l’arme juste et revenez avec un trophée — ou
@@ -5633,6 +5635,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             </section>
             <details className="game-credits">
               <summary>Crédits et statut du projet</summary>
+              <GameVersionBadge />
               <p>Version de contenu {GAME_CONTENT_VERSION} · {GAME_CONTENT_LABEL}</p>
               <p>La Longue Chasse : projet original de fan inspiré de Predator. Création et intégration des visuels avec OpenAI ; ambiances et effets sonores procéduraux.</p>
               <p>Projet non commercial, sans affiliation officielle revendiquée. Les références de franchise restent identifiées dans le codex. Une diffusion commerciale et une certification sur consoles ou Steam Deck ne sont pas acquises.</p>
@@ -5719,7 +5722,10 @@ function TopBar({
         <span className="brand-rune" aria-hidden="true">
           <span>Y</span>
         </span>
-        <span>La Longue Chasse</span>
+        <span className="brand-caption">
+          <span className="brand-name">La Longue Chasse</span>
+          <GameVersionBadge compact />
+        </span>
       </button>
       <div className="hunter-stats" aria-label="Progression">
         <span className="stat-chip">

@@ -1,5 +1,7 @@
 import type { NextConfig } from "next";
+import { gameBuildIdentity } from "./scripts/game-build-identity";
 const nextConfig: NextConfig = {
+  env: { NEXT_PUBLIC_YAUTJA_BUILD_ID: gameBuildIdentity() },
   // Independent local QA servers keep the compiled production build untouched.
   distDir: process.env.YAUTJA_NEXT_DIST_DIR || '.next',
   async rewrites() {

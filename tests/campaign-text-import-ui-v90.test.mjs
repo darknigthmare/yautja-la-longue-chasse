@@ -24,6 +24,7 @@ function menu(s=store()){
   require(name){if(name==='react')return{
    useState(initial){const index=cursor++;if(!(index in values))values[index]=initial;return[values[index],next=>{const value=typeof next==='function'?next(values[index]):next;if(!Object.is(value,values[index]))dirty=true;values[index]=value;}];},
    useRef(initial){const index=refCursor++;return refs[index]??={current:initial};},useCallback:callback=>callback,
+   useSyncExternalStore:(_subscribe,_snapshot,serverSnapshot)=>serverSnapshot(),
    useLayoutEffect(callback,deps){const index=effectCursor++,previous=effects[index];if(!previous||!deps||deps.some((value,n)=>!Object.is(value,previous.deps?.[n])))pending.push(()=>{previous?.cleanup?.();effects[index]={deps,cleanup:callback()};});},
   };if(name==='react/jsx-runtime')return{jsx,jsxs:jsx};if(name.includes('useMenuGamepad'))return{useMenuGamepad(){}};if(name.includes('campaignSlots'))return api;return{default:{}};}});
  const props={catalog:api.loadCampaignSlots(s),busy:false,message:null,onRefresh(){},onCreate(){},onContinue:id=>calls.push(['continue',id]),onLoad(){},onRecover(){},
@@ -35,6 +36,8 @@ function menu(s=store()){
  const button=starts=>walk(render()).find(node=>node.type==='button'&&label(node).startsWith(starts));
  const paste=text=>{const textarea=byId('campaign-import-text');assert(textarea&&!textarea.props.disabled);textarea.props.onChange({target:{value:text}});render();};
  const read=async(file)=>{const input=byId('campaign-import-file');assert(input&&!input.props.disabled);input.props.onChange({currentTarget:{files:[file],value:'path'}});render();await tick();render();};
+ // Enter through the production Campaign section; import still needs its own action.
+ walk(render()).find(node=>node.props?.['data-menu-section']==='campaign').props.onClick();
  return{props,calls,prepared,store:s,render,find,byId,click,button,paste,read,Textarea,keyboardScope:root=>{refs[2].current=root;},unmount:()=>effects.forEach(effect=>effect?.cleanup?.())};
 }
 
@@ -72,7 +75,7 @@ test('editing text invalidates both preview and confirmation; switching slots or
  ui.click('data-campaign-import-text-prepare');walk(ui.render()).find(node=>node.props?.['data-campaign-slot']===2).props.onClick();
  assert(!ui.find('data-campaign-import-preview'));assert(!ui.find('data-campaign-import-confirmation'));
  ui.click('data-campaign-import-text-prepare');assert.equal(ui.prepared.at(-1)[0],2);
- ui.button('Retour au menu').props.onClick();assert(!ui.find('data-campaign-import-preview'));ui.click('data-campaign-import-open');
+ ui.button('Retour à Campagne').props.onClick();assert(!ui.find('data-campaign-import-preview'));ui.click('data-campaign-import-open');
  assert.equal(ui.byId('campaign-import-text').props.value,'');assert.equal(ui.calls.length,0);assert.equal(ui.store.writes.length,0);
 });
 
@@ -91,7 +94,7 @@ test('a late file read is discarded after busy state, slot change, return or unm
   await ui.read({name:'pending.json',size:100,text:()=>new Promise(done=>{resolve=done;})});
   if(mode==='busy'){ui.props.busy=true;ui.render();}
   else if(mode==='slot'){walk(ui.render()).find(node=>node.props?.['data-campaign-slot']===2).props.onClick();ui.render();}
-  else if(mode==='return')ui.button('Retour au menu').props.onClick();else ui.unmount();
+  else if(mode==='return')ui.button('Retour à Campagne').props.onClick();else ui.unmount();
   resolve(raw());await tick();assert(!ui.find('data-campaign-import-preview'));assert.equal(ui.prepared.length,0);assert.equal(ui.calls.length,0);assert.equal(ui.store.writes.length,0);
  }
 });

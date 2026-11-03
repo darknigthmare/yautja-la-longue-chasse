@@ -20,7 +20,7 @@ function harness(catalog) {
     if (name === 'react') return {
       useState(initial) { const index = stateIndex++; if (!(index in values)) values[index] = initial; return [values[index], value => { values[index] = typeof value === 'function' ? value(values[index]) : value; }]; },
       useRef(initial) { const index = refIndex++; return refs[index] ??= { current: initial }; },
-      useLayoutEffect() {}, useCallback: callback => callback,
+      useLayoutEffect() {}, useSyncExternalStore: (_subscribe,_snapshot,serverSnapshot) => serverSnapshot(), useCallback: callback => callback,
     };
     if (name === 'react/jsx-runtime') return { jsx, jsxs: jsx };
     if (name.includes('useMenuGamepad')) return { useMenuGamepad() {} };
@@ -29,6 +29,8 @@ function harness(catalog) {
   const props = { catalog, busy: false, message: null, onRefresh() {}, onCreate: (...args) => calls.push(['create', ...args]), onContinue: (...args) => calls.push(['continue', ...args]), onLoad: (...args) => calls.push(['load', ...args]), onRecover: (...args) => calls.push(['recover', ...args]), onReplace: (...args) => calls.push(['replace', ...args]), onWorkspaceRecover: (...args) => calls.push(['recover-workspace', ...args]) };
   const render = () => { stateIndex = 0; refIndex = 0; return exports.default(props); };
   const button = (tree, starts) => walk(tree).find(node => node.type === 'button' && label(node).startsWith(starts));
+  // Exercise the current hierarchy before the existing campaign action contracts.
+  button(render(), 'Campagne').props.onClick();
   return { props, calls, render, button };
 }
 const catalog = slots => ({ slots, activeSlotId: null });

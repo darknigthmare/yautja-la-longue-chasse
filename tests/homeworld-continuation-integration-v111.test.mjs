@@ -202,9 +202,9 @@ test('V111 actual interact refuses an available doorway while A carries the frag
   assert.deepEqual([...state.values],durable);assert.equal(state.writes,0);
 });
 
-test('V111 Save11 to12 preserves the genuine V110 campaign and B document while initializing additive hunting and appearance defaults',async()=>{
+test('V111 Save11 to current preserves the genuine V110 campaign and B document while initializing additive hunting and appearance defaults',async()=>{
   const history=await getHistoricalHomeworldExcelContextV111(),old=homeworldSceneSsrV78(history.root).load('app/game/save.ts');
-  assert.equal(old.SAVE_VERSION,11);assert.equal(saves.SAVE_VERSION,12);
+  assert.equal(old.SAVE_VERSION,11);assert(saves.SAVE_VERSION>=12);
   const state=stateAt('working'),legacy=old.defaultSave(owner);
   legacy.profile.hunterName='Migration · constat B conservé';legacy.settings.masterVolume=.37;
   legacy.homeworld.visitedDistrictIds=['port'];legacy.homeworld.archivePlaqueV109=state.base;
@@ -212,7 +212,7 @@ test('V111 Save11 to12 preserves the genuine V110 campaign and B document while 
   legacy.homeworld.locationV77=oldLocation.createHomeworldCheckpointV77(owner,'0',state.actor,null,state.actor);
   const previous=old.parseSaveImport(JSON.stringify(legacy)).save;assert(previous);
   const migrated=saves.parseSaveImport(JSON.stringify(previous)).save;assert(migrated);
-  assert.deepEqual(migrated,{...previous,version:12,
+  assert.deepEqual(migrated,{...previous,version:saves.SAVE_VERSION,
     appearance:{...previous.appearance,chromaticsV113:{...DEFAULT_CHROMATICS_V113}},
     inventory:{...previous.inventory,fieldToolIds:[],harvestV112:emptyHarvestInventoryV112()},
     settings:{...previous.settings,huntAccessibility:normalizeHuntAccessibilityV112(undefined)},
@@ -225,18 +225,25 @@ test('V111 Save11 to12 preserves the genuine V110 campaign and B document while 
   assert.equal(migrated.homeworld.archiveContinuationV111,undefined,'migration does not create or auto-start an A continuation');
 });
 
-test('V111 actual V110 client treats a12 campaign as future and cannot drop its new continuation or overwrite its bytes',async()=>{
+test('V111 actual V110 client refuses both Save12 and current campaigns without dropping continuation or overwriting bytes',async()=>{
   const history=await getHistoricalHomeworldExcelContextV111(),old=homeworldSceneSsrV78(history.root).load('app/game/save.ts'),values=new Map(),key='v111-downgrade-protection';
   const storage={getItem:name=>values.get(name)??null,setItem:(name,value)=>values.set(name,value),removeItem:name=>values.delete(name)};
   const actual=campaign(stateAt('carried')),previous=structuredClone(actual);previous.version=11;delete previous.homeworld.archiveContinuationV111;
   assert(old.writeSaveWithStatus(previous,storage,key).persisted);assert(saves.loadSaveWithStatus(storage,key).loaded);
-  assert.equal(actual.version,12);assert(saves.writeSaveWithStatus(actual,storage,key).persisted);
-  const exact=values.get(key);assert.equal(old.parseSaveImport(exact).failure,'future-version');
-  const denied=old.loadSaveWithStatus(storage,key);assert.equal(denied.failure,'future-version');assert.equal(denied.loaded,false);
-  assert.equal(old.writeSaveWithStatus(denied.save,storage,key).persisted,false);
-  assert.equal(old.writeSaveWithStatus(actual,storage,key).persisted,false);
-  assert.equal(values.get(key),exact,'the older client cannot erase the continued study through its normal load/write APIs');
-  assert(saves.loadSaveWithStatus(storage,key).loaded);
+  assert.equal(actual.version,saves.SAVE_VERSION);assert(saves.writeSaveWithStatus(actual,storage,key).persisted);
+  const current=values.get(key);
+  // Also retain the original V12 boundary after current writers advance the
+  // schema: this declared envelope differs only in its version field.
+  for(const exact of new Set([JSON.stringify({...actual,version:12}),current])){
+    values.set(key,exact);assert.equal(old.parseSaveImport(exact).failure,'future-version');
+    const denied=old.loadSaveWithStatus(storage,key);assert.equal(denied.failure,'future-version');assert.equal(denied.loaded,false);
+    assert.equal(old.writeSaveWithStatus(denied.save,storage,key).persisted,false);
+    assert.equal(old.writeSaveWithStatus(JSON.parse(exact),storage,key).persisted,false);
+    assert.equal(values.get(key),exact,'the older client cannot erase the continued study through its normal load/write APIs');
+    const loaded=saves.loadSaveWithStatus(storage,key);assert(loaded.loaded);
+    assert.equal(loaded.save.version,saves.SAVE_VERSION);
+    assert.equal(JSON.stringify(loaded.save.homeworld.archiveContinuationV111),JSON.stringify(actual.homeworld.archiveContinuationV111));
+  }
 });
 
 test('V111 integrated main keeps a real field-tool purchase through Save11 migration and a quota-refused B to A continuation write',()=>{
@@ -250,7 +257,7 @@ test('V111 integrated main keeps a real field-tool purchase through Save11 migra
   assert.equal(purchase.save.profile.clanMarks,120);assert.deepEqual(purchase.save.inventory.fieldToolIds,['flaying-tool']);
   assert.equal(purchase.save.homeworld.archiveContinuationV111,undefined);
   const migrated=saves.parseSaveImport(JSON.stringify(purchase.save));assert.equal(migrated.failure,null);
-  assert.equal(migrated.save.version,12);assert.deepEqual(migrated.save.inventory.fieldToolIds,['flaying-tool']);
+  assert.equal(migrated.save.version,saves.SAVE_VERSION);assert.deepEqual(migrated.save.inventory.fieldToolIds,['flaying-tool']);
   assert.equal(migrated.save.profile.clanMarks,120);assert.deepEqual(migrated.save.loadout,purchase.save.loadout);
   assert.equal(JSON.stringify(migrated.save.homeworld.archivePlaqueV109),JSON.stringify(state.base));
   assert.equal(migrated.save.homeworld.archiveContinuationV111,undefined,'migration does not invent a continuation alongside the purchased tool');

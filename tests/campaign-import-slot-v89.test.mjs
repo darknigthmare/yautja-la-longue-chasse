@@ -99,6 +99,37 @@ test('future export/save, missing owner, malformed JSON and excessive UTF8 bytes
   [JSON.stringify(noOwner),'owner-conflict'],[JSON.stringify(badOwner),'owner-conflict'],['()=>evil()','invalid-archive'],['é'.repeat(api.CAMPAIGN_SLOT_IMPORT_MAX_BYTES),'too-large']];
  for(const [raw,failure]of cases){const s=store(),result=api.prepareCampaignSlotImport(1,raw,s);assert.equal(result.failure,failure,result.message);assert.equal(s.writes.length,0);}
 });
+test('raw and wrapped owner-bound campaigns retain the specific owner refusal without touching an existing campaign',async()=>{
+ for(const owner of [undefined,null,'invalid',42]){
+  const save=source();if(owner===undefined)delete save.createdAt;else save.createdAt=owner;
+  assert.equal(save.gauntletV134.ownerCreatedAt,sourceOwner);
+  const envelope={format:'yautja-long-hunt.save-export',exportVersion:1,save};
+  for(const raw of [JSON.stringify(save),'\uFEFF'+JSON.stringify(envelope)]){
+   const s=await working(),before=[...s.values],result=api.prepareCampaignSlotImport(2,raw,s);
+   assert.equal(result.ok,false);assert.equal(result.failure,'owner-conflict',result.message);assert.equal(result.preview,null);
+   assert.match(result.message,/identité de propriétaire/);assert.equal(s.writes.length,0);unchanged(before,s);
+  }
+ }
+});
+test('owner diagnostics preserve schema, JSON and foreign-gauntlet refusals without producing an import plan',async()=>{
+ const noOwner=source();delete noOwner.createdAt;
+ const foreign=source();foreign.gauntletV134.ownerCreatedAt=workingOwner;
+ const futureGauntlet=source();futureGauntlet.gauntletV134.version=2;delete futureGauntlet.createdAt;
+ const cases=[
+  [JSON.stringify({...noOwner,version:api.SAVE_VERSION+1}),'future-version'],
+  [JSON.stringify({format:'yautja-long-hunt.save-export',exportVersion:2,save:noOwner}),'future-version'],
+  [JSON.stringify(futureGauntlet),'future-version'],
+  [JSON.stringify(foreign),'invalid-archive'],
+  [JSON.stringify({format:'yautja-long-hunt.save-export',exportVersion:1,save:foreign}),'invalid-archive'],
+  [JSON.stringify({format:'yautja-long-hunt.save-export',exportVersion:1,save:null}),'invalid-archive'],
+  ['{}','invalid-archive'],['null','invalid-archive'],['{broken','invalid-archive'],
+ ];
+ for(const [raw,failure]of cases){
+  const s=await working(),before=[...s.values],result=api.prepareCampaignSlotImport(2,raw,s);
+  assert.equal(result.ok,false);assert.equal(result.failure,failure,result.message);assert.equal(result.preview,null);
+  assert.equal(s.writes.length,0);unchanged(before,s);
+ }
+});
 test('a changed target, workspace, source annex or sibling slot invalidates the pinned preview before any write',async()=>{
  for(const key of [api.campaignSlotStorageKey(1),api.campaignSlotStorageKey(2),api.SAVE_STORAGE_KEY,api.SHIP_PROGRESSION_STORAGE_KEY,api.pitSaveStorageKey(sourceOwner)]){
   const s=store(),preview=prepared(s);s.values.set(key,'newer session');const before=[...s.values];
@@ -145,7 +176,7 @@ function menu(s){
  const values=[],refs=[],effects=[],calls=[];let cursor=0,refCursor=0;
  const exports={},jsx=(type,props)=>({type,props});
  const compiled=ts.transpileModule(fs.readFileSync('app/game/CampaignMainMenu.tsx','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,jsx:ts.JsxEmit.ReactJSX}}).outputText;
- vm.runInNewContext(compiled,{exports,require(name){if(name==='react')return{useState(initial){const index=cursor++;if(!(index in values))values[index]=initial;return[values[index],next=>{values[index]=typeof next==='function'?next(values[index]):next;}];},useRef(initial){const index=refCursor++;return refs[index]??={current:initial};},useCallback:callback=>callback,useLayoutEffect(callback,deps){if(deps?.length===0&&effects.length===0)effects.push(callback());}};
+ vm.runInNewContext(compiled,{exports,require(name){if(name==='react')return{useState(initial){const index=cursor++;if(!(index in values))values[index]=initial;return[values[index],next=>{values[index]=typeof next==='function'?next(values[index]):next;}];},useRef(initial){const index=refCursor++;return refs[index]??={current:initial};},useSyncExternalStore:(_subscribe,_snapshot,serverSnapshot)=>serverSnapshot(),useCallback:callback=>callback,useLayoutEffect(callback,deps){if(deps?.length===0&&effects.length===0)effects.push(callback());}};
   if(name==='react/jsx-runtime')return{jsx,jsxs:jsx};if(name.includes('useMenuGamepad'))return{useMenuGamepad(){}};if(name.includes('campaignSlots'))return api;return{default:{}};}});
  const props={catalog:api.loadCampaignSlots(s),busy:false,message:null,onRefresh(){},onCreate(){},onContinue:id=>calls.push(['continue',id]),onLoad(){},onRecover(){},
   onPrepareImport:(id,raw)=>api.prepareCampaignSlotImport(id,raw,s),onImport:preview=>calls.push(['import',preview])};
@@ -154,6 +185,8 @@ function menu(s){
  const click=key=>{const button=find(render(),key);assert(button);assert(!button.props.disabled);button.props.onClick({currentTarget:{isConnected:false}});};
  const button=starts=>walk(render()).find(node=>node.type==='button'&&label(node).startsWith(starts));
  const read=async(file)=>{const input=walk(render()).find(node=>node.props?.id==='campaign-import-file');assert(input&&!input.props.disabled);input.props.onChange({currentTarget:{files:[file],value:'path'}});await tick();};
+ // Enter through the production Campaign section; import still needs its own action.
+ walk(render()).find(node=>node.props?.['data-menu-section']==='campaign').props.onClick();
  return{props,calls,render,find,click,button,read,unmount:()=>effects.forEach(cleanup=>cleanup?.())};
 }
 const file=raw=>({name:'campagne.json',size:Buffer.byteLength(raw),text:async()=>raw});
@@ -176,7 +209,7 @@ test('actual menu refuses oversized files before reading and invalidates preview
 test('actual menu ignores late file resolution after cancellation or unmount, with no storage write',async()=>{
  for(const mode of ['cancel','unmount']){const s=store(),ui=menu(s);ui.click('data-campaign-import-open');let resolve;
   await ui.read({name:'pending.json',size:40,text:()=>new Promise(done=>{resolve=done;})});
-  if(mode==='cancel')ui.button('Retour au menu').props.onClick();else ui.unmount();resolve(text());await tick();
+  if(mode==='cancel')ui.button('Retour à Campagne').props.onClick();else ui.unmount();resolve(text());await tick();
   assert(!ui.find(ui.render(),'data-campaign-import-preview'));assert.equal(ui.calls.length,0);assert.equal(s.writes.length,0);
  }
 });

@@ -39,6 +39,11 @@ try {
   assert.match(page.headers.get('content-type')??'',/text\/html/);
   const html=await page.text();
   assert.match(html,/Yautja/,'The compiled game shell must be served');
+  assert.match(html,/<title>Yautja : La Longue Chasse · v1\.1\.0<\/title>/,'The page title identifies this release');
+  assert.match(html,/data-game-version="1\.1\.0"/,'The main menu renders the release before hydration');
+  assert.match(html,/data-game-build="[a-f0-9]{8}"/,'A Git checkout compiles its actual build identifier');
+  for(const section of ['campaign','modes','archives','system'])
+    assert.ok(html.includes('data-menu-section="'+section+'"'),'The compiled main menu exposes '+section);
   const script=html.match(/<script[^>]+src="([^"#]+\.js(?:\?[^"#]*)?)"/);
   assert.ok(script,'A compiled client script must be present');
   const scriptUrl=new URL(script[1].replaceAll('&amp;','&'),origin);
@@ -54,7 +59,7 @@ try {
     assert.match(response.headers.get('x-robots-tag')??'',/noindex/);
     await response.text();
   }
-  console.log(JSON.stringify({scope:'Compiled Next server, homepage, client JS and five protected QA routes; no complete-game/asset qualification',buildId,checks:7,status:'PASS'}));
+  console.log(JSON.stringify({scope:'Compiled Next server, versioned main menu with four sections, client JS and five protected QA routes; no complete-game/asset qualification',buildId,checks:14,status:'PASS'}));
 } finally {
   if(!exited)child.kill('SIGTERM');
   await Promise.race([closed,delay(3_000)]);

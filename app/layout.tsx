@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { headers } from "next/headers";
+import { GAME_VERSION_LABEL } from "./game/buildInfo";
 import "./globals.css";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -11,7 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const socialImage = new URL("/og.png", origin).toString();
 
   return {
-    title: "Yautja : La Longue Chasse",
+    title: `Yautja : La Longue Chasse · ${GAME_VERSION_LABEL}`,
     description:
       "Un jeu de fan d’action 2D en développement : chasse interstellaire, honneur et trophées.",
     icons: {
