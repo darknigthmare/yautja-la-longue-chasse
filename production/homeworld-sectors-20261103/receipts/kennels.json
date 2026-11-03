@@ -6,8 +6,8 @@
   "branch": "codex/homeworld-v158-urban-props-intake-20261102",
   "baseline_head": "0ab844cca5f2c9b5cae28624d2c1b97fca7d5ce9",
   "recorded_on": "2026-11-03",
-  "selected_asset_count": 17,
-  "generated_attempt_count": 18,
+  "selected_asset_count": 21,
+  "generated_attempt_count": 23,
   "failed_generation_count": 1,
   "assets": [
     {
@@ -2118,6 +2118,718 @@
       "continuation_after_published_commit": "c8d37c3c059021a96b071551bf9b19b09340536e",
       "state_transition_runtime_verified": false,
       "pixel_aligned_state_pair_verified": false
+    },
+    {
+      "id": "HWM162-K18",
+      "name": "Arc arrière de l’enclos octogonal",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K18-enclosure-rear-arc.png",
+      "filename": "HWM162-K18-enclosure-rear-arc.png",
+      "target_ids": [
+        "target-v81-71-266"
+      ],
+      "state_of_source_path": "production/native-open-20261102/archives/fauna-energy/target-v81-71-266-enclosure-native.png",
+      "source_reference_sha256": "b1ccdfd1407964e21498d54c3f8b9984b78e4b448cc415fdd02577762c65cdcb",
+      "source_reference_sha256_by_path": {
+        "production/native-open-20261102/archives/fauna-energy/target-v81-71-266-enclosure-native.png": "b1ccdfd1407964e21498d54c3f8b9984b78e4b448cc415fdd02577762c65cdcb"
+      },
+      "state": "REAR_AND_SIDE_ARC",
+      "dimensions_m_proposed": {},
+      "scale_note": "Décomposition d’un équipement faune original du projet ; aucune dimension canonique, taille réelle ni compatibilité avec une espèce de Hound certifiée.",
+      "visual_review": "Arc arrière et retours reconnus : six poteaux, cinq travées, trois rails par travée ; façade avant, ses deux poteaux et battant absents. Charnière fixe conservée sur le poteau avant latéral gauche. Fenêtre centrale/avant de245000pixels alpha0..1. Silhouette entière, marge droite79px à alpha>24. Revue racine acceptée.",
+      "source_original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-1cc69989-0d20-41c7-b3c4-172619ee23fe.png",
+      "size_bytes": 608447,
+      "sha256": "6550a4e80f2fa0aaa332ff3942865ab49ce89abdf2a566592e3b01bc187349ea",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alpha_min": 0,
+      "alpha_max": 255,
+      "fully_transparent_pixels": 1340480,
+      "fully_opaque_pixels": 1530,
+      "alpha_bounds": {
+        "0": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            25,
+            33,
+            1234,
+            1230
+          ],
+          "margins_left_top_right_bottom": [
+            25,
+            33,
+            20,
+            24
+          ],
+          "pixels": 232036,
+          "canvas_edge_pixels": 0
+        },
+        "8": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            116,
+            296,
+            1175,
+            839
+          ],
+          "margins_left_top_right_bottom": [
+            116,
+            296,
+            79,
+            415
+          ],
+          "pixels": 209366,
+          "canvas_edge_pixels": 0
+        },
+        "24": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            116,
+            296,
+            1175,
+            839
+          ],
+          "margins_left_top_right_bottom": [
+            116,
+            296,
+            79,
+            415
+          ],
+          "pixels": 208086,
+          "canvas_edge_pixels": 0
+        },
+        "128": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            117,
+            297,
+            1174,
+            839
+          ],
+          "margins_left_top_right_bottom": [
+            117,
+            297,
+            80,
+            415
+          ],
+          "pixels": 203801,
+          "canvas_edge_pixels": 0
+        }
+      },
+      "generation_tool": "image_gen.imagegen",
+      "generation_mode": "built-in-reference-edit",
+      "source_original_bytes_copied_unchanged": true,
+      "image_manipulation": false,
+      "post_generation_pixel_editing": false,
+      "generated_independently_not_cropped": true,
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "reference_basis": "PROJECT_ORIGINAL_EXISTING_SPRITE",
+      "source_reference_ids": [
+        "HWM162-K18-K21-project-enclosure-source"
+      ],
+      "canon_certified": false,
+      "production_status": "GENERATED_ART_CANDIDATE",
+      "runtime_admitted": false,
+      "human_artistic_validation": "PENDING",
+      "camera_requested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "projection": "orthographic",
+        "source_brief_pitch_degrees": 32,
+        "source_brief_pitch_is_approximate": true,
+        "source_view": "three-quarter",
+        "reference_repo_path": "production/native-open-20261102/archives/fauna-energy/target-v81-71-266-enclosure-native.png",
+        "actual_reference_view_inherited_requested": true,
+        "camera_measured": false,
+        "new_front_0_35_conversion_claimed": false
+      },
+      "camera_measured": false,
+      "physical_scale_validated": false,
+      "transparent_background_requested": true,
+      "strict_alpha_margin_80px_pass": false,
+      "visible_silhouette_entire_at_alpha_gt24": true,
+      "visible_margin_80px_at_alpha_gt24_pass": false,
+      "continuation_after_published_commit": "7299b0fc2bd06dd53a45e3caab630bc75207d0ce",
+      "state_transition_runtime_verified": false,
+      "pixel_aligned_state_pair_verified": false,
+      "component_registration_verified": false,
+      "selected_generation_attempt": 1,
+      "root_visual_review": {
+        "status": "ACCEPTED_ART_CANDIDATE",
+        "reviewer": "root",
+        "review_type": "AI_SOURCE_COMPARISON",
+        "human_validation": false
+      },
+      "area": "kennels",
+      "targetIds": [
+        "target-v81-71-266"
+      ],
+      "sourceAssetFiles": [
+        "production/native-open-20261102/archives/fauna-energy/target-v81-71-266-enclosure-native.png"
+      ],
+      "sourceAssetIds": [],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "expectedPath": "sprites/kennels/HWM162-K18-enclosure-rear-arc.png",
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "productionPass": 5,
+      "transparency_windows": [
+        {
+          "box_xyxy_exclusive": [
+            300,
+            600,
+            1000,
+            950
+          ],
+          "pixels": 245000,
+          "alpha_min": 0,
+          "alpha_max": 1,
+          "pixels_alpha0": 244853,
+          "pixels_alpha1": 147,
+          "pixels_greater8": 0
+        }
+      ]
+    },
+    {
+      "id": "HWM162-K19",
+      "name": "Arc avant fixe de l’enclos",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K19-enclosure-front-arc.png",
+      "filename": "HWM162-K19-enclosure-front-arc.png",
+      "target_ids": [
+        "target-v81-71-266"
+      ],
+      "state_of_source_path": "production/native-open-20261102/archives/fauna-energy/target-v81-71-266-enclosure-native.png",
+      "source_reference_sha256": "b1ccdfd1407964e21498d54c3f8b9984b78e4b448cc415fdd02577762c65cdcb",
+      "source_reference_sha256_by_path": {
+        "production/native-open-20261102/archives/fauna-energy/target-v81-71-266-enclosure-native.png": "b1ccdfd1407964e21498d54c3f8b9984b78e4b448cc415fdd02577762c65cdcb"
+      },
+      "state": "FIXED_FOREGROUND_ARC",
+      "dimensions_m_proposed": {},
+      "scale_note": "Décomposition d’un équipement faune original du projet ; aucune dimension canonique, taille réelle ni compatibilité avec une espèce de Hound certifiée.",
+      "visual_review": "Deux travées avant fixes reliées et deux poteaux propres ; trois rails par travée. Réception de serrure fixe à gauche. Extrémités de raccord à droite sans troisième poteau : le poteau correspondant appartient à K18. Pièce agrandie et recentrée nativement par rapport à266 ; pas de superposition pixel commune certifiée. Silhouette entière, marge droite75px. Revue racine acceptée.",
+      "source_original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-8277f37d-5987-4f84-910b-4838856b5937.png",
+      "size_bytes": 729832,
+      "sha256": "e1157b98f951c2c62c71a4392ecb13b480c1bf5a7c7930510418ac879ccd225d",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alpha_min": 0,
+      "alpha_max": 255,
+      "fully_transparent_pixels": 1285568,
+      "fully_opaque_pixels": 726,
+      "alpha_bounds": {
+        "0": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            170,
+            65,
+            1234,
+            1214
+          ],
+          "margins_left_top_right_bottom": [
+            170,
+            65,
+            20,
+            40
+          ],
+          "pixels": 286948,
+          "canvas_edge_pixels": 0
+        },
+        "8": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            184,
+            428,
+            1179,
+            937
+          ],
+          "margins_left_top_right_bottom": [
+            184,
+            428,
+            75,
+            317
+          ],
+          "pixels": 263382,
+          "canvas_edge_pixels": 0
+        },
+        "24": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            184,
+            428,
+            1179,
+            937
+          ],
+          "margins_left_top_right_bottom": [
+            184,
+            428,
+            75,
+            317
+          ],
+          "pixels": 261956,
+          "canvas_edge_pixels": 0
+        },
+        "128": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            185,
+            429,
+            1179,
+            936
+          ],
+          "margins_left_top_right_bottom": [
+            185,
+            429,
+            75,
+            318
+          ],
+          "pixels": 257819,
+          "canvas_edge_pixels": 0
+        }
+      },
+      "generation_tool": "image_gen.imagegen",
+      "generation_mode": "built-in-reference-edit",
+      "source_original_bytes_copied_unchanged": true,
+      "image_manipulation": false,
+      "post_generation_pixel_editing": false,
+      "generated_independently_not_cropped": true,
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "reference_basis": "PROJECT_ORIGINAL_EXISTING_SPRITE",
+      "source_reference_ids": [
+        "HWM162-K18-K21-project-enclosure-source"
+      ],
+      "canon_certified": false,
+      "production_status": "GENERATED_ART_CANDIDATE",
+      "runtime_admitted": false,
+      "human_artistic_validation": "PENDING",
+      "camera_requested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "projection": "orthographic",
+        "source_brief_pitch_degrees": 32,
+        "source_brief_pitch_is_approximate": true,
+        "source_view": "three-quarter",
+        "reference_repo_path": "production/native-open-20261102/archives/fauna-energy/target-v81-71-266-enclosure-native.png",
+        "actual_reference_view_inherited_requested": true,
+        "camera_measured": false,
+        "new_front_0_35_conversion_claimed": false
+      },
+      "camera_measured": false,
+      "physical_scale_validated": false,
+      "transparent_background_requested": true,
+      "strict_alpha_margin_80px_pass": false,
+      "visible_silhouette_entire_at_alpha_gt24": true,
+      "visible_margin_80px_at_alpha_gt24_pass": false,
+      "continuation_after_published_commit": "7299b0fc2bd06dd53a45e3caab630bc75207d0ce",
+      "state_transition_runtime_verified": false,
+      "pixel_aligned_state_pair_verified": false,
+      "component_registration_verified": false,
+      "selected_generation_attempt": 1,
+      "root_visual_review": {
+        "status": "ACCEPTED_ART_CANDIDATE",
+        "reviewer": "root",
+        "review_type": "AI_SOURCE_COMPARISON",
+        "human_validation": false
+      },
+      "area": "kennels",
+      "targetIds": [
+        "target-v81-71-266"
+      ],
+      "sourceAssetFiles": [
+        "production/native-open-20261102/archives/fauna-energy/target-v81-71-266-enclosure-native.png"
+      ],
+      "sourceAssetIds": [],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "expectedPath": "sprites/kennels/HWM162-K19-enclosure-front-arc.png",
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "productionPass": 5
+    },
+    {
+      "id": "HWM162-K20",
+      "name": "Battant d’enclos indépendant — pose fermée",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K20-enclosure-gate-leaf.png",
+      "filename": "HWM162-K20-enclosure-gate-leaf.png",
+      "target_ids": [
+        "target-v81-71-266"
+      ],
+      "state_of_source_path": "production/native-open-20261102/archives/fauna-energy/target-v81-71-266-enclosure-native.png",
+      "source_reference_sha256": "b1ccdfd1407964e21498d54c3f8b9984b78e4b448cc415fdd02577762c65cdcb",
+      "source_reference_sha256_by_path": {
+        "production/native-open-20261102/archives/fauna-energy/target-v81-71-266-enclosure-native.png": "b1ccdfd1407964e21498d54c3f8b9984b78e4b448cc415fdd02577762c65cdcb"
+      },
+      "state": "INDEPENDENT_GATE_CLOSED_POSE",
+      "dimensions_m_proposed": {},
+      "scale_note": "Décomposition d’un équipement faune original du projet ; aucune dimension canonique, taille réelle ni compatibilité avec une espèce de Hound certifiée.",
+      "visual_review": "Battant seul dans le plan fermé diagonal descendant vers la droite ; trois traverses et deux vides, paumelles mobiles à gauche, loquet mobile à droite, aucun poteau. Seconde sortie retenue après suppression native de l’insert ambre copié à tort du poteau récepteur. Le loquet reste entièrement mécanique et non lumineux. Cadrage paysage et résolution propres ; raccord non certifié. Revue racine acceptée.",
+      "source_original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-4b3b200d-70ba-41b5-9efd-a9f679c7dde7.png",
+      "size_bytes": 1663506,
+      "sha256": "b121828ca30e8dc84249666783ccbc8a23a769d74e4586bbad160279c141a290",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alpha_min": 0,
+      "alpha_max": 254,
+      "fully_transparent_pixels": 1207473,
+      "fully_opaque_pixels": 0,
+      "alpha_bounds": {
+        "0": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            75,
+            91,
+            1522,
+            992
+          ],
+          "margins_left_top_right_bottom": [
+            75,
+            91,
+            14,
+            32
+          ],
+          "pixels": 365391,
+          "canvas_edge_pixels": 0
+        },
+        "8": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            355,
+            103,
+            1150,
+            929
+          ],
+          "margins_left_top_right_bottom": [
+            355,
+            103,
+            386,
+            95
+          ],
+          "pixels": 351514,
+          "canvas_edge_pixels": 0
+        },
+        "24": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            355,
+            103,
+            1149,
+            928
+          ],
+          "margins_left_top_right_bottom": [
+            355,
+            103,
+            387,
+            96
+          ],
+          "pixels": 350489,
+          "canvas_edge_pixels": 0
+        },
+        "128": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            356,
+            104,
+            1148,
+            928
+          ],
+          "margins_left_top_right_bottom": [
+            356,
+            104,
+            388,
+            96
+          ],
+          "pixels": 347783,
+          "canvas_edge_pixels": 0
+        }
+      },
+      "generation_tool": "image_gen.imagegen",
+      "generation_mode": "built-in-reference-edit",
+      "source_original_bytes_copied_unchanged": true,
+      "image_manipulation": false,
+      "post_generation_pixel_editing": false,
+      "generated_independently_not_cropped": true,
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "reference_basis": "PROJECT_ORIGINAL_EXISTING_SPRITE",
+      "source_reference_ids": [
+        "HWM162-K18-K21-project-enclosure-source",
+        "HWM162-K20-correction-input-v1"
+      ],
+      "canon_certified": false,
+      "production_status": "GENERATED_ART_CANDIDATE",
+      "runtime_admitted": false,
+      "human_artistic_validation": "PENDING",
+      "camera_requested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "projection": "orthographic",
+        "source_brief_pitch_degrees": 32,
+        "source_brief_pitch_is_approximate": true,
+        "source_view": "three-quarter",
+        "reference_repo_path": "production/native-open-20261102/archives/fauna-energy/target-v81-71-266-enclosure-native.png",
+        "actual_reference_view_inherited_requested": true,
+        "camera_measured": false,
+        "new_front_0_35_conversion_claimed": false
+      },
+      "camera_measured": false,
+      "physical_scale_validated": false,
+      "transparent_background_requested": true,
+      "strict_alpha_margin_80px_pass": false,
+      "visible_silhouette_entire_at_alpha_gt24": true,
+      "visible_margin_80px_at_alpha_gt24_pass": true,
+      "continuation_after_published_commit": "7299b0fc2bd06dd53a45e3caab630bc75207d0ce",
+      "state_transition_runtime_verified": false,
+      "pixel_aligned_state_pair_verified": false,
+      "component_registration_verified": false,
+      "selected_generation_attempt": 2,
+      "root_visual_review": {
+        "status": "ACCEPTED_ART_CANDIDATE",
+        "reviewer": "root",
+        "review_type": "AI_SOURCE_COMPARISON",
+        "human_validation": false
+      },
+      "area": "kennels",
+      "targetIds": [
+        "target-v81-71-266"
+      ],
+      "sourceAssetFiles": [
+        "production/native-open-20261102/archives/fauna-energy/target-v81-71-266-enclosure-native.png"
+      ],
+      "sourceAssetIds": [],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "expectedPath": "sprites/kennels/HWM162-K20-enclosure-gate-leaf.png",
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "productionPass": 5,
+      "transparency_windows": [
+        {
+          "box_xyxy_exclusive": [
+            640,
+            375,
+            680,
+            395
+          ],
+          "pixels": 800,
+          "alpha_min": 0,
+          "alpha_max": 0,
+          "pixels_alpha0": 800,
+          "pixels_alpha1": 0,
+          "pixels_greater8": 0
+        },
+        {
+          "box_xyxy_exclusive": [
+            640,
+            590,
+            680,
+            610
+          ],
+          "pixels": 800,
+          "alpha_min": 0,
+          "alpha_max": 0,
+          "pixels_alpha0": 800,
+          "pixels_alpha1": 0,
+          "pixels_greater8": 0
+        }
+      ],
+      "correction_note": "Suppression native de l’insert lumineux attribuable au poteau récepteur. Première sortie conservée séparément, non sélectionnée."
+    },
+    {
+      "id": "HWM162-K21",
+      "name": "Battant d’enclos indépendant — pose ouverte",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K21-enclosure-gate-leaf-open.png",
+      "filename": "HWM162-K21-enclosure-gate-leaf-open.png",
+      "target_ids": [
+        "target-v81-71-266"
+      ],
+      "state_of_source_path": "production/native-open-20261102/archives/fauna-energy/target-v81-71-266-enclosure-native.png",
+      "source_reference_sha256": "b1ccdfd1407964e21498d54c3f8b9984b78e4b448cc415fdd02577762c65cdcb",
+      "source_reference_sha256_by_path": {
+        "production/native-open-20261102/archives/fauna-energy/target-v81-71-266-enclosure-native.png": "b1ccdfd1407964e21498d54c3f8b9984b78e4b448cc415fdd02577762c65cdcb",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K20-enclosure-gate-leaf.png": "b121828ca30e8dc84249666783ccbc8a23a769d74e4586bbad160279c141a290"
+      },
+      "state": "INDEPENDENT_GATE_OUTWARD_OPEN_POSE",
+      "dimensions_m_proposed": {},
+      "scale_note": "Décomposition d’un équipement faune original du projet ; aucune dimension canonique, taille réelle ni compatibilité avec une espèce de Hound certifiée.",
+      "visual_review": "Même famille de battant, pose ouverte vers l’extérieur proposée : charnières hautes à droite et bord libre/loquet bas à gauche ; trois traverses, deux vides, aucun voyant ni poteau. Génération native à partir de266 et du K20 corrigé, sans miroir de pixels. Face nouvellement visible reconstruite comme adaptation ; angle de pivotement, position de charnière et raccord non mesurés. Silhouette entière, marges haute/basse41/42px. Revue racine acceptée.",
+      "source_original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-82a213e7-1de2-40f5-9e3b-dc91aa87501b.png",
+      "size_bytes": 1697716,
+      "sha256": "e3db8d71f15a449bbdacf717368015d3f1033dc40ca1f7eaaa632b478c4d3c3f",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alpha_min": 0,
+      "alpha_max": 254,
+      "fully_transparent_pixels": 1188067,
+      "fully_opaque_pixels": 0,
+      "alpha_bounds": {
+        "0": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            41,
+            38,
+            1518,
+            1008
+          ],
+          "margins_left_top_right_bottom": [
+            41,
+            38,
+            18,
+            16
+          ],
+          "pixels": 384797,
+          "canvas_edge_pixels": 0
+        },
+        "8": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            384,
+            41,
+            1154,
+            983
+          ],
+          "margins_left_top_right_bottom": [
+            384,
+            41,
+            382,
+            41
+          ],
+          "pixels": 368507,
+          "canvas_edge_pixels": 0
+        },
+        "24": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            384,
+            41,
+            1154,
+            982
+          ],
+          "margins_left_top_right_bottom": [
+            384,
+            41,
+            382,
+            42
+          ],
+          "pixels": 367617,
+          "canvas_edge_pixels": 0
+        },
+        "128": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            385,
+            41,
+            1153,
+            982
+          ],
+          "margins_left_top_right_bottom": [
+            385,
+            41,
+            383,
+            42
+          ],
+          "pixels": 365174,
+          "canvas_edge_pixels": 0
+        }
+      },
+      "generation_tool": "image_gen.imagegen",
+      "generation_mode": "built-in-reference-edit",
+      "source_original_bytes_copied_unchanged": true,
+      "image_manipulation": false,
+      "post_generation_pixel_editing": false,
+      "generated_independently_not_cropped": true,
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "reference_basis": "PROJECT_ORIGINAL_EXISTING_SPRITE",
+      "source_reference_ids": [
+        "HWM162-K18-K21-project-enclosure-source",
+        "HWM162-K21-selected-gate-source"
+      ],
+      "canon_certified": false,
+      "production_status": "GENERATED_ART_CANDIDATE",
+      "runtime_admitted": false,
+      "human_artistic_validation": "PENDING",
+      "camera_requested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "projection": "orthographic",
+        "source_brief_pitch_degrees": 32,
+        "source_brief_pitch_is_approximate": true,
+        "source_view": "three-quarter",
+        "reference_repo_path": "production/native-open-20261102/archives/fauna-energy/target-v81-71-266-enclosure-native.png",
+        "actual_reference_view_inherited_requested": true,
+        "camera_measured": false,
+        "new_front_0_35_conversion_claimed": false,
+        "object_pose_changed": true,
+        "opening_angle_requested_approximate_degrees": 90,
+        "opening_angle_measured": false,
+        "previously_hidden_face_reconstructed": true
+      },
+      "camera_measured": false,
+      "physical_scale_validated": false,
+      "transparent_background_requested": true,
+      "strict_alpha_margin_80px_pass": false,
+      "visible_silhouette_entire_at_alpha_gt24": true,
+      "visible_margin_80px_at_alpha_gt24_pass": false,
+      "continuation_after_published_commit": "7299b0fc2bd06dd53a45e3caab630bc75207d0ce",
+      "state_transition_runtime_verified": false,
+      "pixel_aligned_state_pair_verified": false,
+      "component_registration_verified": false,
+      "selected_generation_attempt": 1,
+      "root_visual_review": {
+        "status": "ACCEPTED_ART_CANDIDATE",
+        "reviewer": "root",
+        "review_type": "AI_SOURCE_COMPARISON",
+        "human_validation": false
+      },
+      "area": "kennels",
+      "targetIds": [
+        "target-v81-71-266"
+      ],
+      "sourceAssetFiles": [
+        "production/native-open-20261102/archives/fauna-energy/target-v81-71-266-enclosure-native.png",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K20-enclosure-gate-leaf.png"
+      ],
+      "sourceAssetIds": [
+        "HWM162-K20"
+      ],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "expectedPath": "sprites/kennels/HWM162-K21-enclosure-gate-leaf-open.png",
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "productionPass": 5,
+      "transparency_windows": [
+        {
+          "box_xyxy_exclusive": [
+            700,
+            420,
+            740,
+            440
+          ],
+          "pixels": 800,
+          "alpha_min": 0,
+          "alpha_max": 0,
+          "pixels_alpha0": 800,
+          "pixels_alpha1": 0,
+          "pixels_greater8": 0
+        },
+        {
+          "box_xyxy_exclusive": [
+            700,
+            635,
+            740,
+            655
+          ],
+          "pixels": 800,
+          "alpha_min": 0,
+          "alpha_max": 0,
+          "pixels_alpha0": 800,
+          "pixels_alpha1": 0,
+          "pixels_greater8": 0
+        }
+      ],
+      "pose_note": "Objet tourné en nouvelle pose native ; pas de rotation/mirroring de pixels. L’angle demandé est approximatif, aucune cinématique commune certifiée."
     }
   ],
   "attempts": [
@@ -2409,6 +3121,181 @@
       "reference_sha256": "ffb1626d43f1b4abff1ebaf568b6e01eff18827283a40afe2bdffe11d4fc14d3",
       "transparent_background": true,
       "retry_decision": "Aucune reprise : état demandé lisible, silhouette entière et identité reconnaissable. Écarts de marge/cadrage et alpha natif consignés sans retouche."
+    },
+    {
+      "id": "HWM162-K18",
+      "attempt": 1,
+      "productionPass": 5,
+      "prompt": "Use case: precise-object-edit.\nAsset type: one independent transparent PNG game sprite, HWM162-K18, an original-game-adaptation component of the supplied enclosure.\nInput image 1: exact visual and camera reference, the existing empty octagonal alien-fauna enclosure. Produce ONLY its BACK AND SIDE ARC, as a newly rendered native standalone component.\n\nKEEP the same orthographic three-quarter elevated view, pitted charcoal basalt posts with aged bronze caps and feet, three thick aged-bronze horizontal rails per span, tiny amber vertical indicators, light from upper left, realistic prerendered game-asset texture. Preserve the identity, proportions and projected directions of the original, not a redesigned fence. Keep the original square framing and the relative source positions as closely as possible; all surviving ends and feet fully visible, with comfortable transparent margins.\n\nPrecise topology: the reference has eight posts around an octagon. KEEP SIX posts: the two far-back posts, the two upper side posts, and the two lower side posts. KEEP exactly FIVE connected rail spans forming the far/back arc and the left/right returns: from the lower-left side post up along the left side, diagonally to the far-back left post, across the far-back edge, diagonally to the far-back right-side post, then down the right side to the lower-right side post. This is one connected open U-shaped polygonal rear arc, not a closed ring.\nREMOVE the TWO nearest/front-middle posts, the horizontal frontmost fixed span, the diagonal front-right fixed span, and the short front-left hinged gate leaf. Those foreground components must be completely absent. The entire near/front edge and the original gate opening must be open air.\nThe lower-left end post is the original hinge post: retain only the fixed hinge mounts attached to that post; no gate leaf, latch leaf or mobile door frame. The lower-right end post is the fixed joining post for a separate foreground component. Do not duplicate posts or add rails across the empty front.\n\nTrue transparent RGBA everywhere outside the object, through all rail gaps, and across the whole enclosure interior. No ground plane, floor, shadow disk, black/white backdrop, color haze, energy field, creature, person, feeding props, text, labels, diagram arrows, extra detached pieces or contact sheet. Show exactly one complete connected five-span/six-post component. Do not crop, mirror, rotate the camera or straighten its inherited diagonal directions.",
+      "prompt_utf8_sha256": "3ebcc5edac82065355116c0b432842f5c04a8d357b5533716532ec7b77d10985",
+      "status": "GENERATED_SELECTED",
+      "original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-1cc69989-0d20-41c7-b3c4-172619ee23fe.png",
+      "sha256": "6550a4e80f2fa0aaa332ff3942865ab49ce89abdf2a566592e3b01bc187349ea",
+      "size_bytes": 608447,
+      "output_hint": "Generated images are saved to /workspace/scratch/2166fec07f86/generated_images as /workspace/scratch/2166fec07f86/generated_images/exec-1cc69989-0d20-41c7-b3c4-172619ee23fe.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "reference_images_inspected_before_generation": [
+        "production/native-open-20261102/archives/fauna-energy/target-v81-71-266-enclosure-native.png"
+      ],
+      "reference_image_parameters_used": true,
+      "referenced_image_paths": [
+        "/workspace/scratch/2166fec07f86/round3-references/target-v81-71-266-enclosure-native.png"
+      ],
+      "reference_sha256s": [
+        {
+          "path": "/workspace/scratch/2166fec07f86/round3-references/target-v81-71-266-enclosure-native.png",
+          "sha256": "b1ccdfd1407964e21498d54c3f8b9984b78e4b448cc415fdd02577762c65cdcb"
+        }
+      ],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "transparent_background": true,
+      "source_original_bytes_copied_unchanged": true,
+      "post_generation_pixel_editing": false,
+      "retry_decision": "Sélection après comparaison visuelle racine ; silhouette entière, vue demandée et limites de raccord consignées."
+    },
+    {
+      "id": "HWM162-K19",
+      "attempt": 1,
+      "productionPass": 5,
+      "prompt": "Use case: precise-object-edit.\nAsset type: ONE independent transparent PNG game sprite, HWM162-K19, the fixed FOREGROUND ARC of the existing octagonal alien-fauna enclosure.\nInput image 1 is the exact original enclosure reference. Isolate by NEW NATIVE RENDERING only the two connected FIXED FRONT RAIL SPANS and their TWO NEAREST POSTS. All other enclosure parts are absent.\n\nPrecise geometry from the reference: KEEP the frontmost horizontal three-rail span between the two nearest/front-middle basalt posts, and KEEP the diagonal front-right three-rail span continuing upward-right from the nearest right post. Keep the TWO nearest/front-middle posts only. Thus the output has TWO posts, TWO rail spans, three bronze rails per span, one connected shallow angled foreground piece. At the extreme upper-right end, the three rails terminate with their existing connector ends but NO THIRD POST. The extreme right joining post belongs to another separate sprite and MUST NOT be repeated here.\nThe leftmost retained front-middle post is the original gate-latch receiver post. Preserve only the fixed receiving plate attached to this post. Remove the movable gate leaf and its moving bolt. The entire diagonal front-left gate span, its hinge post, all back and side arcs, and the other six posts must be completely absent. Do not bridge, fence or fill the open gate passage to the left of this component.\n\nINVARIANTS: Same inherited orthographic elevated three-quarter camera and projected orientation as the reference; the long frontmost span remains almost horizontal in screen space and the right span recedes diagonally upward-right. Same relative source size, square canvas framing and source positions as closely as possible, with whole feet/rail ends visible and generous transparent margins. Same pitted charcoal basalt, aged bronze caps, bronze horizontal rails, angular feet, small amber post indicators, warm upper-left light and prerendered game-asset detail. Do not redesign it as a generic new fence or a symmetric three-post corner.\n\nTrue transparent RGBA background, empty air between every rail and beyond the piece, no floor, ground plane, solid backdrop, checkerboard, haze, cast-shadow disk, animal, character, energy field, labels, text, arrows, watermark, inset, extra detached object or multiple view. Output ONLY this complete connected two-post/two-span foreground component. The open rail ends on the right are intentional; do not cap them with an invented post. No crop, mirror, reorientation, enlarged gate or new enclosure.",
+      "prompt_utf8_sha256": "3f107e519c42148e80e9c76463ec5c31f2cad1a2355dd41f3237e7760c2d37dc",
+      "status": "GENERATED_SELECTED",
+      "original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-8277f37d-5987-4f84-910b-4838856b5937.png",
+      "sha256": "e1157b98f951c2c62c71a4392ecb13b480c1bf5a7c7930510418ac879ccd225d",
+      "size_bytes": 729832,
+      "output_hint": "Generated images are saved to /workspace/scratch/2166fec07f86/generated_images as /workspace/scratch/2166fec07f86/generated_images/exec-8277f37d-5987-4f84-910b-4838856b5937.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "reference_images_inspected_before_generation": [
+        "production/native-open-20261102/archives/fauna-energy/target-v81-71-266-enclosure-native.png"
+      ],
+      "reference_image_parameters_used": true,
+      "referenced_image_paths": [
+        "/workspace/scratch/2166fec07f86/round3-references/target-v81-71-266-enclosure-native.png"
+      ],
+      "reference_sha256s": [
+        {
+          "path": "/workspace/scratch/2166fec07f86/round3-references/target-v81-71-266-enclosure-native.png",
+          "sha256": "b1ccdfd1407964e21498d54c3f8b9984b78e4b448cc415fdd02577762c65cdcb"
+        }
+      ],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "transparent_background": true,
+      "source_original_bytes_copied_unchanged": true,
+      "post_generation_pixel_editing": false,
+      "retry_decision": "Sélection après comparaison visuelle racine ; silhouette entière, vue demandée et limites de raccord consignées."
+    },
+    {
+      "id": "HWM162-K20",
+      "attempt": 1,
+      "productionPass": 5,
+      "prompt": "Use case: precise-object-edit.\nAsset type: ONE independent transparent PNG game sprite, HWM162-K20, the movable gate leaf of the supplied original-game octagonal enclosure.\nInput image 1: exact reference for construction, materials, camera, hinge placement and the CLOSED pose of the short gate in the FRONT-LEFT face.\n\nRender ONLY that short front-left GATE LEAF as one complete standalone connected object, removed from all the fence posts. Its pose must be the same CLOSED plane as in the reference: the left hinged edge is farther up-left in the image, and the free/latching edge is farther down-right. The three rail directions therefore run diagonally down-right in screen space. Preserve the inherited elevated orthographic three-quarter camera; do not turn it frontal, mirror it, lay it flat or rotate it into an open pose.\nThe leaf is aged bronze: two short vertical stiles connected by THREE thick horizontal bronze rails, with the same rectangular/angular mechanical character as the reference. The upper, middle and bottom rails form three substantial bars with two clear air gaps. Preserve the compact proportions and existing hinge/latch design. Include only the MOVING leaf-side hinge sleeves at its LEFT edge and the MOVABLE latch/bolt hardware at its RIGHT free edge. Do not include the fixed hinge post, a hinge-support plinth, the stationary latch receiver post or plate, any basalt enclosure pillar, neighboring rail span or freestanding doorframe. The gate must remain a single connected movable part, not several pieces.\n\nMatch the supplied reference's aged warm bronze, edge wear, pitted metal patina, discreet mechanical fasteners, tiny amber accent only where the source movable latch already supports one, upper-left light and realistic prerendered game-sprite finish. No new symbol, excessive ornament or new locking mechanism. Use a clear centered presentation at useful sprite resolution with broad transparent margins, entire hinge sleeves and latch visible. Keep the projection and rail directions recognizable even if the standalone sprite is naturally reframed.\n\nTrue transparent RGBA background and true empty air through both gaps between its rails. No white or black matte, checkerboard, haze, cast floor shadow, ground plane, floor, energy field, creature, person, text, label, arrows, diagram, watermark, contact sheet, second view or second object. One whole standalone CLOSED-POSE gate leaf, with all fixed supports absent. Original game adaptation, not a claim of a canonical mechanism or measured runtime fit.",
+      "prompt_utf8_sha256": "237821e27ee3688f8cfb4052f72063eb6d0d41d81b2c8cd5aa1fb84ab7acfdb8",
+      "status": "GENERATED_UNSELECTED_ARCHIVED",
+      "original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-e5d493d9-96a6-42f7-a128-9c9c980db12e.png",
+      "sha256": "b03b138646808b34cffa635b806ad56c7efef17d1bf516f1960851fa105599ad",
+      "size_bytes": 1695433,
+      "output_hint": "Generated images are saved to /workspace/scratch/2166fec07f86/generated_images as /workspace/scratch/2166fec07f86/generated_images/exec-e5d493d9-96a6-42f7-a128-9c9c980db12e.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "reference_images_inspected_before_generation": [
+        "production/native-open-20261102/archives/fauna-energy/target-v81-71-266-enclosure-native.png"
+      ],
+      "reference_image_parameters_used": true,
+      "referenced_image_paths": [
+        "/workspace/scratch/2166fec07f86/round3-references/target-v81-71-266-enclosure-native.png"
+      ],
+      "reference_sha256s": [
+        {
+          "path": "/workspace/scratch/2166fec07f86/round3-references/target-v81-71-266-enclosure-native.png",
+          "sha256": "b1ccdfd1407964e21498d54c3f8b9984b78e4b448cc415fdd02577762c65cdcb"
+        }
+      ],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "transparent_background": true,
+      "source_original_bytes_copied_unchanged": true,
+      "post_generation_pixel_editing": false,
+      "retry_decision": "Reprise native ciblée du voyant appartenant au poteau fixe ; aucun pixel nettoyé par script.",
+      "archive_path": "production/homeworld-sectors-20261103/attempts/kennels/HWM162-K20-enclosure-gate-leaf-v1.png",
+      "rejection_reason": "Amber light insert belongs to fixed receiver post in 266, not the movable leaf.",
+      "excluded_from_selected_asset_count": true
+    },
+    {
+      "id": "HWM162-K20",
+      "attempt": 2,
+      "productionPass": 5,
+      "prompt": "Use case: precise-object-edit.\nInput image: the exact edit target, an isolated aged-bronze gate leaf. Produce a corrected native transparent PNG of this SAME gate.\n\nChange ONLY the small bright AMBER VERTICAL LIGHT INSERT on the RIGHT stile below the sliding latch. That glowing insert was erroneously copied from a fixed enclosure receiver post. The movable gate leaf must have NO LIGHT, NO lens and NO illuminated insert. Replace that narrow insert area with plain continuous aged bronze consistent with the surrounding right stile, retaining ordinary external light reflections. Remove its amber light spill. Do not replace it with a dark lens or a new button.\n\nPRESERVE every other detail as closely as possible: the full silhouette, camera, diagonal closed pose, three thick horizontal rails, two transparent openings, both rectangular stiles, left cylindrical leaf-side hinge sleeves, the moving latch and its bolt, bolts/fasteners, edge wear, warm bronze patina, upper-left illumination, centered placement, apparent size, 1536-by-1024 landscape framing and generous transparent margins. Preserve the movable latch completely. Do not add any pillar, stationary lock receiver plate, support, neighbor fence or other object.\n\nOne complete independent connected gate leaf only. True transparent RGBA outside and through both rail openings; no scenery, floor, cast shadow, haze, backdrop, checkerboard, text, label, watermark or second view. No mirroring, camera rotation, reposing, redesign, crop, padding or contact sheet. The only intended correction is removing the erroneous light insert from the movable leaf.",
+      "prompt_utf8_sha256": "de33531fd2578da1908ee9b62c8858e1b6d535fd801769ddd1459c596a6c22d6",
+      "status": "GENERATED_SELECTED",
+      "original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-4b3b200d-70ba-41b5-9efd-a9f679c7dde7.png",
+      "sha256": "b121828ca30e8dc84249666783ccbc8a23a769d74e4586bbad160279c141a290",
+      "size_bytes": 1663506,
+      "output_hint": "Generated images are saved to /workspace/scratch/2166fec07f86/generated_images as /workspace/scratch/2166fec07f86/generated_images/exec-4b3b200d-70ba-41b5-9efd-a9f679c7dde7.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "reference_images_inspected_before_generation": [
+        "production/homeworld-sectors-20261103/attempts/kennels/HWM162-K20-enclosure-gate-leaf-v1.png"
+      ],
+      "reference_image_parameters_used": true,
+      "referenced_image_paths": [
+        "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/attempts/kennels/HWM162-K20-enclosure-gate-leaf-v1.png"
+      ],
+      "reference_sha256s": [
+        {
+          "path": "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/attempts/kennels/HWM162-K20-enclosure-gate-leaf-v1.png",
+          "sha256": "b03b138646808b34cffa635b806ad56c7efef17d1bf516f1960851fa105599ad"
+        }
+      ],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "transparent_background": true,
+      "source_original_bytes_copied_unchanged": true,
+      "post_generation_pixel_editing": false,
+      "retry_decision": "Sélection après comparaison visuelle racine ; silhouette entière, vue demandée et limites de raccord consignées.",
+      "correction_of_attempt": 1
+    },
+    {
+      "id": "HWM162-K21",
+      "attempt": 1,
+      "productionPass": 5,
+      "prompt": "Use case: precise-object-edit.\nAsset type: ONE independent transparent PNG game sprite, HWM162-K21, the OPEN pose of the existing standalone gate leaf.\nInput image 1 is a supporting reference: the original octagonal fauna enclosure, establishing the fixed elevated orthographic camera, the front-left doorway and its vertical hinge.\nInput image 2 is the EDIT TARGET and primary object-identity reference: the corrected standalone closed gate leaf HWM162-K20, whose movable latch is entirely unlit. Render exactly this same gate leaf after swinging it OUTWARD away from the enclosure, while the camera and upper-left light stay fixed.\n\nONLY CHANGE THE PHYSICAL POSE of the movable gate. Swing it around its existing vertical hinge by a clear roughly quarter-turn outward so the front-left enclosure passage would be completely clear. In the resulting projection the hinged stile is at the UPPER-RIGHT side of the isolated object and the free/latching stile extends toward the LOWER-LEFT, outside the original octagon. The three rail axes should now descend to the LEFT from their hinge, visibly different from the closed down-right plane. Show a plausible reverse/side view produced by that physical swing. This is a newly rendered open pose, NOT a horizontal pixel mirror, a new camera view, a frontal closed gate or a second copy.\n\nPreserve the K20 object's precise recognizable design: THREE thick weathered aged-bronze rails, two rectangular stiles, two clear open air gaps, the same three leaf-side cylindrical hinge sleeves, compact UNLIT mechanical latch and plain bronze stile, with NO amber insert, NO light and NO lens anywhere on this movable part, metal thickness, bolt placement character and worn patina. Retain warm upper-left lighting consistent with the stationary enclosure; do not mirror the highlights. Hinge hardware stays on the SAME physical hinge edge, and the movable latch stays on the SAME free edge. Newly visible reverse-face surfaces should be plain plausible continuations of that construction, without invented ornament, extra locks, spikes or mechanisms. Do not add any fixed hinge pillar, fixed receiving post or stationary strike plate, neighboring fence, supports, plinth, ground or animals.\n\nUse a complete centered isolated presentation with broad genuine transparent margins, at useful sprite resolution similar to K20. Whole hinges, bolt and all corners must fit without clipping. Transparent RGBA outside the object and in both rail openings. No solid black/white backdrop, checkerboard, haze, ground shadow, energy effect, scene, floor, creature, person, typography, labels, arrows, watermark, inset, comparison sheet or multiple objects. Show ONLY one complete standalone movable gate in the OUTWARD-OPEN pose. The opening angle and fit are a proposed game-art adaptation, not a measured or canonical claim.",
+      "prompt_utf8_sha256": "936ec004b8c5fff14cad00e2210780886e0973e8462e313d0287b47211a66a2f",
+      "status": "GENERATED_SELECTED",
+      "original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-82a213e7-1de2-40f5-9e3b-dc91aa87501b.png",
+      "sha256": "e3db8d71f15a449bbdacf717368015d3f1033dc40ca1f7eaaa632b478c4d3c3f",
+      "size_bytes": 1697716,
+      "output_hint": "Generated images are saved to /workspace/scratch/2166fec07f86/generated_images as /workspace/scratch/2166fec07f86/generated_images/exec-82a213e7-1de2-40f5-9e3b-dc91aa87501b.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "reference_images_inspected_before_generation": [
+        "production/native-open-20261102/archives/fauna-energy/target-v81-71-266-enclosure-native.png",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K20-enclosure-gate-leaf.png"
+      ],
+      "reference_image_parameters_used": true,
+      "referenced_image_paths": [
+        "/workspace/scratch/2166fec07f86/round3-references/target-v81-71-266-enclosure-native.png",
+        "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/kennels/HWM162-K20-enclosure-gate-leaf.png"
+      ],
+      "reference_sha256s": [
+        {
+          "path": "/workspace/scratch/2166fec07f86/round3-references/target-v81-71-266-enclosure-native.png",
+          "sha256": "b1ccdfd1407964e21498d54c3f8b9984b78e4b448cc415fdd02577762c65cdcb"
+        },
+        {
+          "path": "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/kennels/HWM162-K20-enclosure-gate-leaf.png",
+          "sha256": "b121828ca30e8dc84249666783ccbc8a23a769d74e4586bbad160279c141a290"
+        }
+      ],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "transparent_background": true,
+      "source_original_bytes_copied_unchanged": true,
+      "post_generation_pixel_editing": false,
+      "retry_decision": "Sélection après comparaison visuelle racine ; silhouette entière, vue demandée et limites de raccord consignées."
     }
   ],
   "references": [
@@ -2547,6 +3434,33 @@
       "visually_inspected": true,
       "usage": "Référence directe d’identité, matériaux, construction et vue pour un nouvel état. Aucun statut canonique externe.",
       "baseline_commit": "c8d37c3c059021a96b071551bf9b19b09340536e"
+    },
+    {
+      "id": "HWM162-K18-K21-project-enclosure-source",
+      "kind": "PROJECT_ORIGINAL_EXISTING_SPRITE",
+      "repo_path": "production/native-open-20261102/archives/fauna-energy/target-v81-71-266-enclosure-native.png",
+      "workspace_path": "/workspace/scratch/2166fec07f86/round3-references/target-v81-71-266-enclosure-native.png",
+      "sha256": "b1ccdfd1407964e21498d54c3f8b9984b78e4b448cc415fdd02577762c65cdcb",
+      "visually_inspected": true,
+      "usage": "Référence de décomposition avant/arrière et de charnière ; source originale du projet, non preuve canonique externe.",
+      "baseline_commit": "7299b0fc2bd06dd53a45e3caab630bc75207d0ce"
+    },
+    {
+      "id": "HWM162-K20-correction-input-v1",
+      "kind": "ARCHIVED_UNSELECTED_NATIVE_GENERATION",
+      "repo_path": "production/homeworld-sectors-20261103/attempts/kennels/HWM162-K20-enclosure-gate-leaf-v1.png",
+      "sha256": "b03b138646808b34cffa635b806ad56c7efef17d1bf516f1960851fa105599ad",
+      "visually_inspected": true,
+      "usage": "Entrée de la correction native du voyant indûment copié du récepteur fixe.",
+      "selected": false
+    },
+    {
+      "id": "HWM162-K21-selected-gate-source",
+      "kind": "SELECTED_NATIVE_SPRITE",
+      "repo_path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K20-enclosure-gate-leaf.png",
+      "sha256": "b121828ca30e8dc84249666783ccbc8a23a769d74e4586bbad160279c141a290",
+      "visually_inspected": true,
+      "usage": "Identité du battant corrigé, utilisée avec266 pour produire la pose ouverte."
     }
   ],
   "quality_summary": {
@@ -2572,7 +3486,11 @@
       "K14 passe de la référence1254² à une sortie paysage1536×1024 ; la vue et l’identité sont héritées demandées, aucune correspondance de pivots ou interchangeabilité des pixels n’est certifiée.",
       "K14/K15/K17 n’ont pas d’angle historique précis établi dans ce reçu. K16 hérite du K03, demandé à0/35 mais non mesuré ; aucun32° générique ne leur est attribué.",
       "K16 : fenêtre de315000pixels sous les crochets,314979pixelsalpha0 et21pixelsalpha1. Le vide est attesté à alpha≤1 ; il n’est pas déclaré strictementalpha0 partout.",
-      "K15 : le bac et la goulotte visibles sont vides. Le couvercle du réservoir reste fermé ; son contenu interne n’est pas observable."
+      "K15 : le bac et la goulotte visibles sont vides. Le couvercle du réservoir reste fermé ; son contenu interne n’est pas observable.",
+      "Passe5 : K18/K19 contiennent des pixels alpha255 ; K20/K21 plafonnent à254. Marges visibles minimales79/75/96/41px respectivement, silhouettes entières ; originaux inchangés.",
+      "K18–K21 : vue de266 héritée demandée, brief historique environ32° ; caméra réelle non mesurée. K19 et les battants ont leur propre cadrage/échelle natifs. Les coordonnées, pivots et raccords ne sont pas certifiés communs.",
+      "K21 est une pose ouverte native avec reconstruction de la face précédemment occultée ; aucun angle réel, interpolation, animation ou dégagement en jeu certifié.",
+      "K20 a été corrigé par une seconde génération pour retirer le voyant copié du poteau fixe. L’essai précédent reste archivé et ne compte pas comme sélection."
     ],
     "upstream_guide_reading": "AGENTS.md et docs/GAMEDEV_AGENT_GUIDE.md lus. L'accès web au create-game-assets/SKILL.md au commit épinglé a échoué avec DisabledError; la poursuite selon les consignes locales est prévue par ce guide.",
     "round3_summary": {
@@ -2599,6 +3517,35 @@
       "k16_central_opening_alpha0_pixels": 314979,
       "k16_central_opening_alpha1_pixels": 21,
       "k16_central_opening_checked_pixels": 315000
+    },
+    "round5_summary": {
+      "new_assets": 4,
+      "new_size_bytes": 4699501,
+      "generation_calls": 5,
+      "archived_unselected_pngs": 1,
+      "archived_size_bytes": 1695433,
+      "all_previous_seventeen_sha256_preserved": true,
+      "all_previous_seventeen_asset_records_preserved": true,
+      "all_new_original_copies_byte_identical": true,
+      "all_new_visible_silhouettes_entire": true,
+      "all_new_reference_views_inherited_requested": true,
+      "actual_camera_measured": false,
+      "component_registration_verified": false,
+      "all_new_root_visual_reviews_accepted": true,
+      "k18_central_opening_window": {
+        "box_xyxy_exclusive": [
+          300,
+          600,
+          1000,
+          950
+        ],
+        "pixels": 245000,
+        "alpha_min": 0,
+        "alpha_max": 1,
+        "pixels_alpha0": 244853,
+        "pixels_alpha1": 147,
+        "pixels_greater8": 0
+      }
     }
   },
   "continuation_batches": [
@@ -2785,6 +3732,120 @@
         }
       ],
       "notes": "K14 abreuvoir vide, K15 bac du nourrisseur vidé, K16 rack vide, K17 balise éteinte. Quatre appels, quatre sorties retenues, aucun essai supplémentaire ni pixel édité. K14 change de format natif ; tous héritent de la vue réellement choisie sans certification géométrique.",
+      "camera_mode": "INHERIT_REFERENCE_VIEW",
+      "runtime_integration": false,
+      "human_validation": false
+    },
+    {
+      "name": "octagonal-enclosure-native-layer-components-and-gate-poses",
+      "productionPass": 5,
+      "baseline_published_commit": "7299b0fc2bd06dd53a45e3caab630bc75207d0ce",
+      "asset_ids": [
+        "HWM162-K18",
+        "HWM162-K19",
+        "HWM162-K20",
+        "HWM162-K21"
+      ],
+      "previous_asset_count": 17,
+      "previous_assets_sha256_preserved": [
+        {
+          "id": "HWM162-K01",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png",
+          "sha256": "fedb9677d90ae72cfe2ee53e9a1f5751361ea1d88da2d9169137a22d2cd9d9a5"
+        },
+        {
+          "id": "HWM162-K02",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K02-handling-gate.png",
+          "sha256": "7d7a726ff442a711bf4212a7161d042659542d1a384056f1a1853743fa77068c"
+        },
+        {
+          "id": "HWM162-K03",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K03-training-rack.png",
+          "sha256": "95cef71793ec00c9a9d8ae8842e4e8beb3e83ac9eddf4be57820a2a965637797"
+        },
+        {
+          "id": "HWM162-K04",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K04-keeper-platform.png",
+          "sha256": "fa7bcf72db0315a379f90e5872153e75e29d9d2e893adaaac02c110d611e4a73"
+        },
+        {
+          "id": "HWM162-K05",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K05-resting-basin.png",
+          "sha256": "df1d8e518af28797dac239a4db5988bba8bd10e6eb702893833850df1ffbdecf"
+        },
+        {
+          "id": "HWM162-K06",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K06-sliding-mesh-panel.png",
+          "sha256": "1591ab6c1a112e5373c8260c2c62d5111659212b9cb219ed79f44262f6d0dee4"
+        },
+        {
+          "id": "HWM162-K07",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K07-handler-lead.png",
+          "sha256": "7b47106c7b7d92b180eb62ce496ef50883e34d83b521b4b1b912d76e0bf062d9"
+        },
+        {
+          "id": "HWM162-K08",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K08-woven-training-lure.png",
+          "sha256": "2140079cfbe57a3077add91e44152c7e32890159cf54b2dbd24c1ddacb56d698"
+        },
+        {
+          "id": "HWM162-K09",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K09-adjustable-collar.png",
+          "sha256": "97eb1a2a1ce1122604e6709f4aa61df37d4e8b9186ccca56c2bfd1251b969cb2"
+        },
+        {
+          "id": "HWM162-K10",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K10-small-cage-open.png",
+          "sha256": "75eb31d88524b14d8d3a037ef22632423e2717b0649a22595366d56321037e44"
+        },
+        {
+          "id": "HWM162-K11",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K11-medium-cage-open.png",
+          "sha256": "bfbacfe01f9b9ef08ea4397e9038dde7f6980e0951165905d725baf711b04898"
+        },
+        {
+          "id": "HWM162-K12",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K12-heavy-cage-open.png",
+          "sha256": "6aa80bb9abdf9934d3eb4ed2859a066720fb9e7f2c9e2056b83adf1608f37650"
+        },
+        {
+          "id": "HWM162-K13",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K13-energy-barrier-off.png",
+          "sha256": "8e668b68e046bc3ff5d888138ead1a1c0c4df556ad28d64ceae0c929cbd5a33c"
+        },
+        {
+          "id": "HWM162-K14",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K14-empty-alien-drinker.png",
+          "sha256": "41ae672380f0ea8c9c3fa155739b0cda082f95cf63c70db4f1e45538d9c1de6a"
+        },
+        {
+          "id": "HWM162-K15",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K15-empty-hopper-feeder.png",
+          "sha256": "322c098200679914802402ec9df40374792ce9899bf55e4fedbd9836add9761e"
+        },
+        {
+          "id": "HWM162-K16",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K16-empty-training-rack.png",
+          "sha256": "a7c9909f84ec0c53cc5caee8ebdc53ca4f0c1cdbe6e71297fe940d6de7346d90"
+        },
+        {
+          "id": "HWM162-K17",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K17-danger-beacon-off.png",
+          "sha256": "7439ac5ebb4da79ab0fadea5d0117a30f5b9110273d59ae4e9a3ae4b68d705de"
+        }
+      ],
+      "generated_attempts": 5,
+      "selected_native_pngs": 4,
+      "archived_unselected_attempts": [
+        {
+          "id": "HWM162-K20",
+          "attempt": 1,
+          "path": "production/homeworld-sectors-20261103/attempts/kennels/HWM162-K20-enclosure-gate-leaf-v1.png",
+          "sha256": "b03b138646808b34cffa635b806ad56c7efef17d1bf516f1960851fa105599ad",
+          "bytes": 1695433
+        }
+      ],
+      "notes": "K18 arc arrière/six poteaux, K19 arc avant fixe/deux poteaux, K20 battant fermé sans voyant, K21 battant ouvert sans voyant. Cinq appels natifs, quatre sélections après revue racine. Aucun pixel retouché. Échelle et cadrage propres des composants, sans assemblage runtime ni raccord métrique certifié.",
       "camera_mode": "INHERIT_REFERENCE_VIEW",
       "runtime_integration": false,
       "human_validation": false

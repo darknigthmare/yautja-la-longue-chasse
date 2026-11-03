@@ -2,17 +2,18 @@
   "version": "MMK-20261103",
   "verifier": "production/homeworld-sectors-20261103/tools/verify-assets.py",
   "sourceIntegrity": "PASS",
-  "selectedCount": 46,
-  "rgbaWithRealTransparency": 46,
-  "mainSilhouettesInsideCanvasAtAlpha24": 46,
-  "strictClearMarginCount": 6,
-  "visibleMarginAtLeast80Count": 25,
-  "uniqueSha256Count": 46,
-  "selectedBytes": 81613076,
-  "previousDeliveryPNGUnchanged": 35,
+  "selectedCount": 56,
+  "rgbaWithRealTransparency": 56,
+  "mainSilhouettesInsideCanvasAtAlpha24": 56,
+  "strictClearMarginCount": 12,
+  "visibleMarginAtLeast80Count": 30,
+  "uniqueSha256Count": 56,
+  "selectedBytes": 93931261,
+  "previousDeliveryPNGUnchanged": 46,
   "thirdPassPNGCount": 10,
   "fourthPassPNGCount": 11,
-  "inheritedReferenceViewCount": 13,
+  "fifthPassPNGCount": 10,
+  "inheritedReferenceViewCount": 22,
   "scriptModifiesPNG": false,
   "runtimeAdmission": false,
   "canonicalCertification": false,
@@ -1181,6 +1182,255 @@
           ],
           "minMargin": 79,
           "pixels": 1034505
+        }
+      },
+      "edgeAlphaMax": 1
+    },
+    {
+      "id": "HWM162-S15",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S15-empty-market-stall-right.png",
+      "sha256": "1789194a68cc85780818da0a20fc66937fdbcdc1c8697805c97e2f2850f45800",
+      "bytes": 2541204,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 876633,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            0,
+            1522,
+            1024
+          ],
+          "margins": [
+            0,
+            0,
+            14,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 696231
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            44,
+            4,
+            1520,
+            968
+          ],
+          "margins": [
+            44,
+            4,
+            16,
+            56
+          ],
+          "minMargin": 4,
+          "pixels": 644383
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            44,
+            4,
+            1520,
+            967
+          ],
+          "margins": [
+            44,
+            4,
+            16,
+            57
+          ],
+          "minMargin": 4,
+          "pixels": 640611
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            45,
+            5,
+            1519,
+            967
+          ],
+          "margins": [
+            45,
+            5,
+            17,
+            57
+          ],
+          "minMargin": 5,
+          "pixels": 631791
+        }
+      },
+      "edgeAlphaMax": 2
+    },
+    {
+      "id": "HWM162-S16",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S16-empty-compact-merchant-kiosk.png",
+      "sha256": "37499344d5fe0990548ef5f8ebab64878b4b0642a133ed219a4dbd3e405715a4",
+      "bytes": 1544839,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 964911,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            50,
+            1224,
+            1162
+          ],
+          "margins": [
+            0,
+            50,
+            30,
+            92
+          ],
+          "minMargin": 0,
+          "pixels": 607605
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            198,
+            65,
+            1076,
+            1160
+          ],
+          "margins": [
+            198,
+            65,
+            178,
+            94
+          ],
+          "minMargin": 65,
+          "pixels": 581329
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            198,
+            66,
+            1076,
+            1160
+          ],
+          "margins": [
+            198,
+            66,
+            178,
+            94
+          ],
+          "minMargin": 66,
+          "pixels": 579654
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            199,
+            66,
+            1075,
+            1159
+          ],
+          "margins": [
+            199,
+            66,
+            179,
+            95
+          ],
+          "minMargin": 66,
+          "pixels": 574380
+        }
+      },
+      "edgeAlphaMax": 1
+    },
+    {
+      "id": "HWM162-S17",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S17-small-sealed-storage-jar.png",
+      "sha256": "015f42e293889ff50f5d69de30a5208b3ea60ca9727c3ea79c26d9e5d8248b27",
+      "bytes": 913432,
+      "width": 1312,
+      "height": 1199,
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 1208885,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            0,
+            1282,
+            1177
+          ],
+          "margins": [
+            0,
+            0,
+            30,
+            22
+          ],
+          "minMargin": 0,
+          "pixels": 364203
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            376,
+            188,
+            935,
+            981
+          ],
+          "margins": [
+            376,
+            188,
+            377,
+            218
+          ],
+          "minMargin": 188,
+          "pixels": 355593
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            377,
+            188,
+            935,
+            981
+          ],
+          "margins": [
+            377,
+            188,
+            377,
+            218
+          ],
+          "minMargin": 188,
+          "pixels": 355119
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            377,
+            189,
+            934,
+            980
+          ],
+          "margins": [
+            377,
+            189,
+            378,
+            219
+          ],
+          "minMargin": 189,
+          "pixels": 353591
         }
       },
       "edgeAlphaMax": 1
@@ -2426,6 +2676,255 @@
           ],
           "minMargin": 114,
           "pixels": 370009
+        }
+      },
+      "edgeAlphaMax": 0
+    },
+    {
+      "id": "HWM162-M16",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M16-hurdle-left-upright-v2.png",
+      "sha256": "344a740252dd99119e9f48a6f9fcb1c6211786667619206a218bf889007dfebd",
+      "bytes": 1089482,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 1483129,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            53,
+            1506,
+            996
+          ],
+          "margins": [
+            0,
+            53,
+            30,
+            28
+          ],
+          "minMargin": 0,
+          "pixels": 89735
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            166,
+            306,
+            470,
+            742
+          ],
+          "margins": [
+            166,
+            306,
+            1066,
+            282
+          ],
+          "minMargin": 166,
+          "pixels": 84982
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            166,
+            307,
+            470,
+            742
+          ],
+          "margins": [
+            166,
+            307,
+            1066,
+            282
+          ],
+          "minMargin": 166,
+          "pixels": 84746
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            167,
+            307,
+            469,
+            741
+          ],
+          "margins": [
+            167,
+            307,
+            1067,
+            283
+          ],
+          "minMargin": 167,
+          "pixels": 83935
+        }
+      },
+      "edgeAlphaMax": 1
+    },
+    {
+      "id": "HWM162-M17",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M17-hurdle-right-upright.png",
+      "sha256": "0a230a9593d54ab7f1e636c02e2dd77bb4af685eaa88618f410bd76d8a5e113f",
+      "bytes": 812690,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 1489026,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            31,
+            23,
+            1506,
+            957
+          ],
+          "margins": [
+            31,
+            23,
+            30,
+            67
+          ],
+          "minMargin": 23,
+          "pixels": 83838
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            1073,
+            302,
+            1368,
+            739
+          ],
+          "margins": [
+            1073,
+            302,
+            168,
+            285
+          ],
+          "minMargin": 168,
+          "pixels": 80861
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            1073,
+            303,
+            1367,
+            739
+          ],
+          "margins": [
+            1073,
+            303,
+            169,
+            285
+          ],
+          "minMargin": 169,
+          "pixels": 80649
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            1073,
+            303,
+            1367,
+            738
+          ],
+          "margins": [
+            1073,
+            303,
+            169,
+            286
+          ],
+          "minMargin": 169,
+          "pixels": 79881
+        }
+      },
+      "edgeAlphaMax": 0
+    },
+    {
+      "id": "HWM162-M18",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M18-padded-training-rail.png",
+      "sha256": "b06df21e7ff05796094c29fa790429335dc4026aeb7a9fd279af7aacdc4d81ce",
+      "bytes": 717037,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 1518517,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            219,
+            23,
+            1508,
+            892
+          ],
+          "margins": [
+            219,
+            23,
+            28,
+            132
+          ],
+          "minMargin": 23,
+          "pixels": 54347
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            347,
+            479,
+            1185,
+            543
+          ],
+          "margins": [
+            347,
+            479,
+            351,
+            481
+          ],
+          "minMargin": 347,
+          "pixels": 51853
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            348,
+            479,
+            1185,
+            543
+          ],
+          "margins": [
+            348,
+            479,
+            351,
+            481
+          ],
+          "minMargin": 348,
+          "pixels": 51677
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            348,
+            480,
+            1184,
+            543
+          ],
+          "margins": [
+            348,
+            480,
+            352,
+            481
+          ],
+          "minMargin": 348,
+          "pixels": 50287
         }
       },
       "edgeAlphaMax": 0
@@ -3840,6 +4339,338 @@
         }
       },
       "edgeAlphaMax": 1
+    },
+    {
+      "id": "HWM162-K18",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K18-enclosure-rear-arc.png",
+      "sha256": "6550a4e80f2fa0aaa332ff3942865ab49ce89abdf2a566592e3b01bc187349ea",
+      "bytes": 608447,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 1340480,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            25,
+            33,
+            1234,
+            1230
+          ],
+          "margins": [
+            25,
+            33,
+            20,
+            24
+          ],
+          "minMargin": 20,
+          "pixels": 232036
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            116,
+            296,
+            1175,
+            839
+          ],
+          "margins": [
+            116,
+            296,
+            79,
+            415
+          ],
+          "minMargin": 79,
+          "pixels": 209366
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            116,
+            296,
+            1175,
+            839
+          ],
+          "margins": [
+            116,
+            296,
+            79,
+            415
+          ],
+          "minMargin": 79,
+          "pixels": 208086
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            117,
+            297,
+            1174,
+            839
+          ],
+          "margins": [
+            117,
+            297,
+            80,
+            415
+          ],
+          "minMargin": 80,
+          "pixels": 203801
+        }
+      },
+      "edgeAlphaMax": 0
+    },
+    {
+      "id": "HWM162-K19",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K19-enclosure-front-arc.png",
+      "sha256": "e1157b98f951c2c62c71a4392ecb13b480c1bf5a7c7930510418ac879ccd225d",
+      "bytes": 729832,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 1285568,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            170,
+            65,
+            1234,
+            1214
+          ],
+          "margins": [
+            170,
+            65,
+            20,
+            40
+          ],
+          "minMargin": 20,
+          "pixels": 286948
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            184,
+            428,
+            1179,
+            937
+          ],
+          "margins": [
+            184,
+            428,
+            75,
+            317
+          ],
+          "minMargin": 75,
+          "pixels": 263382
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            184,
+            428,
+            1179,
+            937
+          ],
+          "margins": [
+            184,
+            428,
+            75,
+            317
+          ],
+          "minMargin": 75,
+          "pixels": 261956
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            185,
+            429,
+            1179,
+            936
+          ],
+          "margins": [
+            185,
+            429,
+            75,
+            318
+          ],
+          "minMargin": 75,
+          "pixels": 257819
+        }
+      },
+      "edgeAlphaMax": 0
+    },
+    {
+      "id": "HWM162-K20",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K20-enclosure-gate-leaf.png",
+      "sha256": "b121828ca30e8dc84249666783ccbc8a23a769d74e4586bbad160279c141a290",
+      "bytes": 1663506,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 1207473,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            75,
+            91,
+            1522,
+            992
+          ],
+          "margins": [
+            75,
+            91,
+            14,
+            32
+          ],
+          "minMargin": 14,
+          "pixels": 365391
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            355,
+            103,
+            1150,
+            929
+          ],
+          "margins": [
+            355,
+            103,
+            386,
+            95
+          ],
+          "minMargin": 95,
+          "pixels": 351514
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            355,
+            103,
+            1149,
+            928
+          ],
+          "margins": [
+            355,
+            103,
+            387,
+            96
+          ],
+          "minMargin": 96,
+          "pixels": 350489
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            356,
+            104,
+            1148,
+            928
+          ],
+          "margins": [
+            356,
+            104,
+            388,
+            96
+          ],
+          "minMargin": 96,
+          "pixels": 347783
+        }
+      },
+      "edgeAlphaMax": 0
+    },
+    {
+      "id": "HWM162-K21",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K21-enclosure-gate-leaf-open.png",
+      "sha256": "e3db8d71f15a449bbdacf717368015d3f1033dc40ca1f7eaaa632b478c4d3c3f",
+      "bytes": 1697716,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 1188067,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            41,
+            38,
+            1518,
+            1008
+          ],
+          "margins": [
+            41,
+            38,
+            18,
+            16
+          ],
+          "minMargin": 16,
+          "pixels": 384797
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            384,
+            41,
+            1154,
+            983
+          ],
+          "margins": [
+            384,
+            41,
+            382,
+            41
+          ],
+          "minMargin": 41,
+          "pixels": 368507
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            384,
+            41,
+            1154,
+            982
+          ],
+          "margins": [
+            384,
+            41,
+            382,
+            42
+          ],
+          "minMargin": 41,
+          "pixels": 367617
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            385,
+            41,
+            1153,
+            982
+          ],
+          "margins": [
+            385,
+            41,
+            383,
+            42
+          ],
+          "minMargin": 41,
+          "pixels": 365174
+        }
+      },
+      "edgeAlphaMax": 0
     }
   ]
 }

@@ -1,15 +1,16 @@
 {
-  "actualFiles": 46,
-  "expectedFiles": 46,
-  "uniqueIds": 46,
-  "uniqueHashes": 46,
+  "actualFiles": 56,
+  "expectedFiles": 56,
+  "uniqueIds": 56,
+  "uniqueHashes": 56,
   "targets": 42,
   "sourceCount": 6,
   "productionPassCounts": {
     "1": 17,
     "2": 8,
     "3": 10,
-    "4": 11
+    "4": 11,
+    "5": 10
   },
   "inheritedReferenceViewIds": [
     "HWM162-S08",
@@ -24,11 +25,20 @@
     "HWM162-K14",
     "HWM162-K15",
     "HWM162-K16",
-    "HWM162-K17"
+    "HWM162-K17",
+    "HWM162-S15",
+    "HWM162-S16",
+    "HWM162-M16",
+    "HWM162-M17",
+    "HWM162-M18",
+    "HWM162-K18",
+    "HWM162-K19",
+    "HWM162-K20",
+    "HWM162-K21"
   ],
   "cameraAnglesMeasured": false,
   "inspections": [
-    "{\"kind\":\"table\",\"sheet\":\"Livraison\",\"address\":\"A6:E9\",\"rows\":4,\"cols\":5,\"values\":[[\"Objets ou états du lot\",46,null,\"Lore : adaptations originales\",null],[\"PNG présents\",46,null,\"Aucune certification visuelle 1:1\",null],[\"Revue humaine validée\",0,null,\"Les 40 cibles héritées sont conservées\",null],[\"Admission runtime\",0,null,\"Pixels mesurés ; échelle physique proposée\",null]]}",
+    "{\"kind\":\"table\",\"sheet\":\"Livraison\",\"address\":\"A6:E9\",\"rows\":4,\"cols\":5,\"values\":[[\"Objets ou états du lot\",56,null,\"Lore : adaptations originales\",null],[\"PNG présents\",56,null,\"Aucune certification visuelle 1:1\",null],[\"Revue humaine validée\",0,null,\"Les 40 cibles héritées sont conservées\",null],[\"Admission runtime\",0,null,\"Pixels mesurés ; échelle physique proposée\",null]]}",
     "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}"
   ],
   "nativeExcelInteractiveVerification": false,
@@ -45,43 +55,50 @@
       "Catalogue!A1:E11",
       "Implantation!A1:F12",
       "Références!A1:E10",
-      "Livraison!A49:K59",
-      "Livraison!Q49:R59",
-      "Implantation!A42:F52",
+      "Livraison!A60:K69",
+      "Livraison!Q60:R69",
+      "Implantation!A53:F62",
       "Catalogue!A14:E16",
-      "Catalogue!A20:E22",
-      "Catalogue!A29:E31"
+      "Catalogue!A44:E46",
+      "Catalogue!A21:E23"
     ],
-    "scope": "Four sheet previews plus all eleven new delivery rows, camera/source columns, placement dimensions and catalogue targets 164, 170 and 274. No native Excel interactive review claimed."
+    "previewCount": 10,
+    "method": "Inspection visuelle directe des dix rendus artifact-tool après export de la passe 5.",
+    "scope": "Vérification des rendus indiqués ; aucune session interactive Excel ni certification de rendu dans tous les lecteurs."
   },
   "scopePreservation": {
-    "baselineCommit": "c8d37c3c059021a96b071551bf9b19b09340536e",
-    "previous35DeliveryRowsFirst16ColumnsUnchanged": true,
-    "previous35DeliveryRowsAll18ColumnsUnchanged": true,
-    "cellValuesAndFormulasCompared": "Livraison!A14:R48",
+    "baselineCommit": "7299b0fc2bd06dd53a45e3caab630bc75207d0ce",
+    "previous46DeliveryRowsFirst16ColumnsUnchanged": true,
+    "previous46DeliveryRowsAll18ColumnsUnchanged": true,
+    "cellValuesAndFormulasCompared": "Livraison!A14:R59",
     "deliveryCellDifferenceCount": 0,
     "referenceSheetCellsUnchanged": true,
     "nativeTableCount": 4,
     "inheritedTargetCountUnchanged": 40,
-    "targetRowsIncludingTwoBuildings": 42
+    "targetRowsIncludingTwoBuildings": 42,
+    "method": "Lecture ZIP/XML du classeur exporté et du classeur de la tête Git de référence ; comparaison des valeurs et formules des cellules."
   },
   "documentChecks": {
-    "galleryCards": 46,
+    "galleryCards": 56,
     "sourceCatalogueMatchesManifest": true,
-    "pass4PlansGenerated": 11,
-    "round2HistoryRetained": true,
-    "round3HistoryRetained": true,
-    "round3BaselineCommitRetained": "454bbc558abc9bb06141b2b77642bff1894d8cf2",
-    "round4ReviewLinkTargetExists": true,
+    "pass5PlansGenerated": 10,
+    "historicalSectionsExactlyUnchanged": {
+      "Deuxième passe": true,
+      "Troisième passe": true,
+      "Quatrième passe": true
+    },
+    "round5SectionPresent": true,
+    "round5ReviewLinkTargetExists": true,
     "hound2010PrimarySource": "https://www.hottoys.jp/item/view/100001667",
-    "relativeLinksChecked": 257,
-    "uniqueRelativeLinkTargets": 78,
+    "relativeLinksChecked": 322,
+    "uniqueRelativeLinkTargets": 94,
     "invalidRelativeLinks": [],
-    "linkValidationMethod": "Resolved relative to batch directory; accepted existing files or exact tracked repository paths from git ls-files for sparse sources.",
+    "linkValidationMethod": "Cible présente sur disque ou chemin exact suivi par git ls-files pour les sources historiques absentes du checkout sparse ; vérification des liens Markdown du README et href/src de la galerie.",
     "sparseSourceTargetsVerified": [
       "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-271-abreuvoir-alien-native-attempt02.png",
       "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-272-nourrisseur-native.png",
       "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-280-signal-danger-native.png",
+      "production/homeworld-v160/originals/HWA160-023_kiosque-marchand-yautja-en-basalte-et-bronze.png",
       "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-276-cage-petite-native.png",
       "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-277-cage-moyenne-native.png",
       "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png",
@@ -89,26 +106,30 @@
       "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-282-mount-harness-support-native.png",
       "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-283-mount-harness-native.png",
       "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-288-adapted-mount-feeder-native.png",
+      "production/native-open-20261102/archives/fauna-energy/target-v81-71-266-enclosure-native.png",
       "production/native-open-20261102/archives/fauna-energy/target-v81-71-270-fauna-energy-barrier-native.png",
       "public/game/homeworld/v76/interior/rack-lateral.png",
       "public/game/homeworld/v76/logistics-container-rack-native.png",
       "public/game/homeworld/v76/merchant-canopy-diagonal-native.png",
+      "public/game/homeworld/v78/market-stall-right.png",
       "public/game/homeworld/v80/sealed-cargo-case-left.png",
       "public/game/homeworld/v83/cargo-rack-right.png",
       "public/game/homeworld/v83/merchant-counter-left.png"
     ],
-    "allInheritedTargetsHaveCandidate": true,
-    "sourceClosedChanged": false
+    "inheritedTargetsWithCandidate": 40,
+    "uncoveredInheritedTargets": [],
+    "sourceClosedChanged": false,
+    "inheritedReferenceViewCount": 22
   },
   "workbookExport": {
     "filename": "YAUTJA_MARCHE_MONTURES_CHENILS_20261103.xlsx",
-    "bytes": 32155,
-    "sha256": "2e550609c861d694430d22f3e8098b640cf73c805d45425229f989fd3f9addbc",
+    "bytes": 35104,
+    "sha256": "915df33848c0de28184f2f677531c5ce19ac3e06a4bc5aaf48b055d23248b601",
     "cachedCounts": {
-      "B6": "46",
-      "B7": "46",
-      "B8": "0",
-      "B9": "0"
+      "B6": 56,
+      "B7": 56,
+      "B8": 0,
+      "B9": 0
     },
     "formulaErrorCount": 0
   }

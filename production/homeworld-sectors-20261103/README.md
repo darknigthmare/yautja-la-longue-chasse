@@ -2,13 +2,13 @@
 
 Lot de production `MMK-20261103`. Les identifiants de génération `HWM162-*` sont conservés. Ce dossier est distinct du lot de terrains `homeworld-v162` ajouté en parallèle.
 
-Ce lot complète les sources de la PR [#99](https://github.com/darknigthmare/yautja-la-longue-chasse/pull/99) avec **46 PNG indépendants présents** pour 46 objets ou états planifiés. Chaque objet est un fichier séparé. Les anciennes sources restent à leur emplacement.
+Ce lot complète les sources de la PR [#99](https://github.com/darknigthmare/yautja-la-longue-chasse/pull/99) avec **56 PNG indépendants présents** pour 56 objets ou états planifiés. Chaque objet est un fichier séparé. Les anciennes sources restent à leur emplacement.
 
 | Secteur | Objets ou états du lot | PNG présents |
 | --- | ---: | ---: |
-| Marché | 14 | 14 |
-| Montures | 15 | 15 |
-| Chenils | 17 | 17 |
+| Marché | 17 | 17 |
+| Montures | 18 | 18 |
+| Chenils | 21 | 21 |
 
 ## Consulter les fichiers
 
@@ -65,6 +65,16 @@ Ce lot complète les sources de la PR [#99](https://github.com/darknigthmare/yau
 | HWM162-K15 | Nourrisseur à trémie — bac vide | target-v81-71-272 | [PNG](sprites/kennels/HWM162-K15-empty-hopper-feeder.png) | 1254 × 1254 |
 | HWM162-K16 | Râtelier de dressage — vide | target-v81-71-274 | [PNG](sprites/kennels/HWM162-K16-empty-training-rack.png) | 1536 × 1024 |
 | HWM162-K17 | Balise de danger — éteinte | target-v81-71-280 | [PNG](sprites/kennels/HWM162-K17-danger-beacon-off.png) | 1254 × 1254 |
+| HWM162-S15 | Étal couvert diagonal droit — sans stock | target-v81-64-160 | [PNG](sprites/market/HWM162-S15-empty-market-stall-right.png) | 1536 × 1024 |
+| HWM162-S16 | Kiosque marchand compact — sans stock | target-v81-64-157 | [PNG](sprites/market/HWM162-S16-empty-compact-merchant-kiosk.png) | 1254 × 1254 |
+| HWM162-S17 | Petit pot de stockage fermé autonome | target-v81-64-166 ; target-v81-64-164 | [PNG](sprites/market/HWM162-S17-small-sealed-storage-jar.png) | 1312 × 1199 |
+| HWM162-M16 | Montant gauche de l’obstacle d’entraînement | target-v81-72-289 | [PNG](sprites/mounts/HWM162-M16-hurdle-left-upright-v2.png) | 1536 × 1024 |
+| HWM162-M17 | Montant droit de l’obstacle d’entraînement | target-v81-72-289 | [PNG](sprites/mounts/HWM162-M17-hurdle-right-upright.png) | 1536 × 1024 |
+| HWM162-M18 | Barre rembourrée d’entraînement autonome | target-v81-72-289 | [PNG](sprites/mounts/HWM162-M18-padded-training-rail.png) | 1536 × 1024 |
+| HWM162-K18 | Arc arrière de l’enclos octogonal | target-v81-71-266 | [PNG](sprites/kennels/HWM162-K18-enclosure-rear-arc.png) | 1254 × 1254 |
+| HWM162-K19 | Arc avant fixe de l’enclos | target-v81-71-266 | [PNG](sprites/kennels/HWM162-K19-enclosure-front-arc.png) | 1254 × 1254 |
+| HWM162-K20 | Battant d’enclos indépendant — pose fermée | target-v81-71-266 | [PNG](sprites/kennels/HWM162-K20-enclosure-gate-leaf.png) | 1536 × 1024 |
+| HWM162-K21 | Battant d’enclos indépendant — pose ouverte | target-v81-71-266 | [PNG](sprites/kennels/HWM162-K21-enclosure-gate-leaf-open.png) | 1536 × 1024 |
 
 ## Deuxième passe : composants détachés et raccords
 
@@ -140,6 +150,37 @@ Les 6 éditions HWM162-S11, HWM162-S12, HWM162-K14, HWM162-K15, HWM162-K16, HWM1
 
 Les consoles autonomes, les lampes, les caisses, le chariot, les kiosques, les étals et l’auvent libre déjà présents restent réutilisables. La peau prismatique détachée existe également : elle conserve son identité de ressource spécifique et n’est pas assimilée au textile marchand lié. Les ajouts complètent des états ou composants précis ; ils ne supposent pas l’absence de toute une famille d’objets.
 
+## Cinquième passe : étals sans stock, obstacle et enclos séparés
+
+Cette passe ajoute 10 PNG aux 46 déjà livrés : 3 pour le marché, 3 pour les montures et 4 pour les chenils. L’audit part du commit `7299b0fc2bd06dd53a45e3caab630bc75207d0ce`. Le [plan de production](next-targets-round5.json), l’[audit ciblé](modularity-audit-round5.json) et la [revue des ajouts](review-round5.md) décrivent les références conservées et les composants retenus. Les 40 cibles héritées et les deux bâtiments du lot restent inchangés.
+
+| ID | Objet ou état | Cible conservée | Vue demandée | Source visuelle reprise |
+| --- | --- | --- | --- | --- |
+| HWM162-S15 | Étal couvert diagonal droit — sans stock | target-v81-64-160 | Vue de la référence conservée | [public/game/homeworld/v78/market-stall-right.png](../../public/game/homeworld/v78/market-stall-right.png) |
+| HWM162-S16 | Kiosque marchand compact — sans stock | target-v81-64-157 | Vue de la référence conservée | [production/homeworld-v160/originals/HWA160-023_kiosque-marchand-yautja-en-basalte-et-bronze.png](../homeworld-v160/originals/HWA160-023_kiosque-marchand-yautja-en-basalte-et-bronze.png) |
+| HWM162-S17 | Petit pot de stockage fermé autonome | target-v81-64-166 ; target-v81-64-164 | Cible orthographique 0°/35° | [public/game/homeworld/v76/interior/rack-lateral.png](../../public/game/homeworld/v76/interior/rack-lateral.png) |
+| HWM162-M16 | Montant gauche de l’obstacle d’entraînement | target-v81-72-289 | Vue de la référence conservée | [production/homeworld-sectors-20261103/sprites/mounts/HWM162-M05-training-hurdle.png](sprites/mounts/HWM162-M05-training-hurdle.png) |
+| HWM162-M17 | Montant droit de l’obstacle d’entraînement | target-v81-72-289 | Vue de la référence conservée | [production/homeworld-sectors-20261103/sprites/mounts/HWM162-M05-training-hurdle.png](sprites/mounts/HWM162-M05-training-hurdle.png) |
+| HWM162-M18 | Barre rembourrée d’entraînement autonome | target-v81-72-289 | Vue de la référence conservée | [production/homeworld-sectors-20261103/sprites/mounts/HWM162-M05-training-hurdle.png](sprites/mounts/HWM162-M05-training-hurdle.png) |
+| HWM162-K18 | Arc arrière de l’enclos octogonal | target-v81-71-266 | Vue de la référence conservée | [production/native-open-20261102/archives/fauna-energy/target-v81-71-266-enclosure-native.png](../native-open-20261102/archives/fauna-energy/target-v81-71-266-enclosure-native.png) |
+| HWM162-K19 | Arc avant fixe de l’enclos | target-v81-71-266 | Vue de la référence conservée | [production/native-open-20261102/archives/fauna-energy/target-v81-71-266-enclosure-native.png](../native-open-20261102/archives/fauna-energy/target-v81-71-266-enclosure-native.png) |
+| HWM162-K20 | Battant d’enclos indépendant — pose fermée | target-v81-71-266 | Vue de la référence conservée | [production/native-open-20261102/archives/fauna-energy/target-v81-71-266-enclosure-native.png](../native-open-20261102/archives/fauna-energy/target-v81-71-266-enclosure-native.png) |
+| HWM162-K21 | Battant d’enclos indépendant — pose ouverte | target-v81-71-266 | Vue de la référence conservée | [production/native-open-20261102/archives/fauna-energy/target-v81-71-266-enclosure-native.png](../native-open-20261102/archives/fauna-energy/target-v81-71-266-enclosure-native.png)<br>[production/homeworld-sectors-20261103/sprites/kennels/HWM162-K20-enclosure-gate-leaf.png](sprites/kennels/HWM162-K20-enclosure-gate-leaf.png) |
+
+S15 fournit l’étal couvert diagonal droit sans son stock mobile. S16 libère le comptoir et les accroches du kiosque compact, tout en conservant sa toiture, ses grandes défenses et ses lanternes fixes. Les deux sources chargées restent disponibles. S17 détache un petit pot fermé du rack V76 ; son contenu, sa contenance et ses dimensions physiques ne sont pas établis. Les présentoirs S03, la plateforme S04 et l’étal long S02 étaient déjà vides : aucun doublon de ces supports n’est ajouté.
+
+M16 et M17 séparent les montants gauche et droit de l’obstacle M05 ; M18 fournit sa barre rembourrée. Chaque pièce est produite nativement, sans miroir de pixels. Leurs récepteurs et embouts permettent de proposer une composition, mais les points de contact, le réglage de hauteur, les dimensions communes et la capacité de charge restent à vérifier en scène.
+
+M16 utilise la deuxième sortie après une correction native du gabarit : sa silhouette visible mesure 435 px de hauteur au seuil alpha > 24, contre 436 px pour M17. Cette proximité en pixels ne certifie pas l’assemblage mécanique. Aucun redimensionnement de l’image n’a servi à obtenir ce résultat.
+
+K18 et K19 séparent l’arc arrière et l’arc avant fixe de l’enclos octogonal 266. K20 et K21 fournissent son battant seul dans les poses fermée et ouverte. Cette séparation permet de proposer des couches devant et derrière les animaux. L’état ouvert conserve la caméra de référence et représente une nouvelle orientation du battant ; les parties auparavant occultées sont reconstruites. Le partage des poteaux, les jonctions, le pivot, le débattement et les collisions ne sont pas certifiés par ces PNG.
+
+K20 utilise la deuxième sortie après suppression native d’un insert ambre : ce voyant appartient au poteau fixe inclus dans K19, pas au battant mobile. Les premières tentatives de M16 et K20 restent archivées hors du dossier des sprites et ne sont pas comptées parmi les sources sélectionnées.
+
+Les 9 demandes HWM162-S15, HWM162-S16, HWM162-M16, HWM162-M17, HWM162-M18, HWM162-K18, HWM162-K19, HWM162-K20, HWM162-K21 héritent de la vue de leur source. S17 demande la cible orthographique 0°/35° du projet. Aucun angle réel n’est mesuré. Les cadrages des éditions peuvent différer : l’alignement pixel par pixel des états et l’assemblage des composants restent à contrôler.
+
+Les vitrines vides V33, le piédestal V56, le rack vide S12, le stand gauche HW1009, les lampes, le chariot et les autres contenants existants restent des sources réutilisables. Les statuts de revue humaine et d’admission au runtime restent distincts de cette livraison de sources graphiques.
+
 ## Fidélité et portée des références
 
 Les bâtiments de marché, d’écurie et de chenil sont des **adaptations originales du projet**. Les références ci-dessous orientent leur cohérence visuelle et leur fonction. Elles ne fournissent pas les plans canoniques de ces bâtiments. Ce lot ne porte aucune certification de reproduction 1:1.
@@ -155,7 +196,7 @@ Le chien de Predators (2010) et celui de The Predator (2018) restent deux réfé
 
 ## Échelle et implantation
 
-La cible de caméra du Homeworld est une projection orthographique, yaw global 0°, inclinaison 35°, profondeur 0.573576436351046. 13 éditions de ce lot conservent toutefois la vue de leur référence, identifiée dans le catalogue, la galerie et le classeur. Cette vue héritée est distincte de la cible du projet ; aucun angle réel n’est certifié par le PNG. La convention du Homeworld est un adulte de 100 unités pour 2,3 m. La porte minimale du contrat mesure 80 × 128 unités ; sa cible est 96 × 140. Ces valeurs décrivent le jeu.
+La cible de caméra du Homeworld est une projection orthographique, yaw global 0°, inclinaison 35°, profondeur 0.573576436351046. 22 éditions de ce lot conservent toutefois la vue de leur référence, identifiée dans le catalogue, la galerie et le classeur. Cette vue héritée est distincte de la cible du projet ; aucun angle réel n’est certifié par le PNG. La convention du Homeworld est un adulte de 100 unités pour 2,3 m. La porte minimale du contrat mesure 80 × 128 unités ; sa cible est 96 × 140. Ces valeurs décrivent le jeu.
 
 Les dimensions en pixels sont lues dans les fichiers. Les dimensions physiques ou en unités du monde restent des **propositions de placement**, lorsqu’elles sont renseignées. Elles ne sont ni des mesures officielles du lore, ni une preuve d’échelle en jeu. Les objets doivent garder leurs proportions ; aucune rotation CSS, symétrie ou mise à l’échelle non uniforme ne compense une vue incorrecte.
 

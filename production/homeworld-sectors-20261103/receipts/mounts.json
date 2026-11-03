@@ -2101,10 +2101,688 @@
         "date": "2026-11-03",
         "note": "Revue racine effectuée et candidat retenu. Cette validation visuelle ne certifie ni canon1:1, caméra mesurée, raccord exact, charge, compatibilité d’espèce ni intégration runtime."
       }
+    },
+    {
+      "id": "HWM162-M16",
+      "label": "Montant gauche indépendant de l’obstacle d’entraînement",
+      "target_id": "target-v81-72-289",
+      "file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M16-hurdle-left-upright-v2.png",
+      "source_original": "/workspace/scratch/2166fec07f86/generated_images/exec-e8d1b6f0-546f-4487-b706-23dc136b95eb.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/2166fec07f86/generated_images as /workspace/scratch/2166fec07f86/generated_images/exec-e8d1b6f0-546f-4487-b706-23dc136b95eb.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "prompt": "ONE TARGETED NATIVE PROPORTION CORRECTION of HWM162-M16, the LEFT independent hurdle upright.\nREFERENCE1 is the current left upright to correct. REFERENCE2 is the original complete M05 hurdle. REFERENCE3 is the separately generated RIGHT upright M17, whose size and placement are the scale guide.\nTHE CONCRETE ISSUE: reference1 left upright is about9 percent too tall and its foot is slightly too broad compared with both the original M05 left upright and the accepted right upright M17 on the SAME1536x1024 canvas. Natively redraw the LEFT upright closer to the ORIGINAL M05 LEFT POST'S size and proportions. Keep only this one left article, at its original left-side position.\nTARGET COMPOSITION on the unchanged1536x1024 transparent canvas: complete left-post silhouette approximately top y304, bottom y740, left x170, right x465. The whole article should be about436 pixels high, similar to M17. Its foot should fit the left footprint of M05. This is an approximate visual guide, not printed content. Do not make it a centered enlarged object. Do not change the canvas, crop, pad, rotate, mirror or resample the existing pixels. Render the correction natively from the references.\nPRESERVE IDENTITY AND ORIENTATION: the dark basalt/gunmetal upright body, blunt cap, weighted stone foot with worn bronze corner guards, small amber indicator, inward RIGHT-facing EMPTY U-shaped receiver and the original genuinely visible height recesses. Keep all parts connected. The receiver stays attached to the post and remains empty. Preserve the actual left-post camera/view, three-quarter faces, patina and upper-left illumination. Use the right upright ONLY as a proportion guide, never mirror its pixels. Do not change to the right-hand orientation or move the receiver to the wrong side. Do not add hidden adjustment levels or claim six numbered settings.\nOutput ONLY the whole left support. No rail, terminal rail cap, red textile, rod stump, right post, detached part, creature, person or separate accessory. The source M05 camera was requested orthographic yaw0/pitch35; this edit inherits the actual visible reference view, no camera conversion.\nStyle: same detailed hand-painted2.5D game sprite and restrained dark basalt/gunmetal/aged bronze. True native alpha outside the one object and through open gaps. Preserve full cap, receiver and complete foot with ample transparent clearance. No ground plane, cast floor shadow, background, glow/halo, gradient, checkerboard painting, text, coordinates, rulers, labels, contact sheet or multiple views. Original game adaptation. No measured physical scale, mechanically certified connection, playable height adjustment or canonical1:1 claim.",
+      "reference_image_files": [
+        "production/homeworld-sectors-20261103/attempts/mounts/HWM162-M16-hurdle-left-upright-v1.png",
+        "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M05-training-hurdle.png",
+        "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M17-hurdle-right-upright.png"
+      ],
+      "reference_input_paths": [
+        "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/mounts/HWM162-M16-hurdle-left-upright.png",
+        "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/mounts/HWM162-M05-training-hurdle.png",
+        "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/mounts/HWM162-M17-hurdle-right-upright.png"
+      ],
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "variant_kind": "INDEPENDENT_LEFT_UPRIGHT_FROM_EXISTING_HURDLE",
+      "component_of": "HWM162-M05",
+      "review_note": "Second native attempt brings the complete left upright close to the M05/M17 apparent size on the same1536x1024 canvas. Full foot, blunt cap, right-facing empty receiver, visible recesses, amber indicator and source view remain present. The correction is generated natively, with no pixel resizing, mirror, rotation, crop or padding. Approximate common scale is improved; exact receiver/rail contacts, physical scale, number of usable height settings, load, animation and runtime assembly remain unverified. Previously hidden receiver areas are a limited native interpretation. V1 is preserved unchanged under attempts and does not count as an additional selected sprite.",
+      "camera_requested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "reference_repo_path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M05-training-hurdle.png",
+        "source_request_if_known": {
+          "projection": "orthographic",
+          "yaw_degrees": 0,
+          "pitch_degrees": 35,
+          "authority": "Original M05 prompt request, not measured."
+        },
+        "actual_reference_view_inherited_requested": true,
+        "camera_measured": false,
+        "new_front_0_35_conversion_claimed": false
+      },
+      "camera_measured": false,
+      "assembly_pair_ids": [
+        "HWM162-M05",
+        "HWM162-M17",
+        "HWM162-M18"
+      ],
+      "assembly_runtime_validated": false,
+      "production_pass": 5,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtime_integrated": false,
+      "human_art_validated": false,
+      "canon_1_to_1_claim": false,
+      "original_unchanged": true,
+      "imagegen_calls_for_asset": 2,
+      "reference_sha256": [
+        "daa4d1e54bcfce7ef90d85e5908729d4850f06025ccd4aa07baec4189a7f91e8",
+        "3c5525569fdffe27192b92297476d23692f32e959c9404a91e8f64a75e9e81a2",
+        "0a230a9593d54ab7f1e636c02e2dd77bb4af685eaa88618f410bd76d8a5e113f"
+      ],
+      "mode": "RGBA",
+      "dimensions_px": [
+        1536,
+        1024
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_zero_pixels": 1483129,
+      "alpha_bbox": [
+        0,
+        53,
+        1506,
+        996
+      ],
+      "alpha_bbox_8": [
+        166,
+        306,
+        470,
+        742
+      ],
+      "alpha_bbox_gt24": [
+        166,
+        307,
+        470,
+        742
+      ],
+      "alpha_thresholds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            53,
+            1506,
+            996
+          ],
+          "margins": [
+            0,
+            53,
+            30,
+            28
+          ],
+          "pixels": 89735
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            166,
+            306,
+            470,
+            742
+          ],
+          "margins": [
+            166,
+            306,
+            1066,
+            282
+          ],
+          "pixels": 84982
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            166,
+            307,
+            470,
+            742
+          ],
+          "margins": [
+            166,
+            307,
+            1066,
+            282
+          ],
+          "pixels": 84746
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            167,
+            307,
+            469,
+            741
+          ],
+          "margins": [
+            167,
+            307,
+            1067,
+            283
+          ],
+          "pixels": 83935
+        }
+      },
+      "sha256": "344a740252dd99119e9f48a6f9fcb1c6211786667619206a218bf889007dfebd",
+      "bytes": 1089482,
+      "substantial_silhouette_margins_px": [
+        166,
+        306,
+        1066,
+        282
+      ],
+      "silhouette_margins_gt24_px": [
+        166,
+        307,
+        1066,
+        282
+      ],
+      "edge_alpha_max": 1,
+      "correction_reason": "Root compared common-canvas heights: M16-v1 main silhouette474px high versus M17 436px, approximately8.7percent taller. One native proportion correction requested, with original M05 and M17 as guides.",
+      "reference_resolved_paths_after_archive": [
+        "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/attempts/mounts/HWM162-M16-hurdle-left-upright-v1.png",
+        "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/mounts/HWM162-M05-training-hurdle.png",
+        "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/mounts/HWM162-M17-hurdle-right-upright.png"
+      ],
+      "selected_attempt": 2,
+      "attempts": [
+        {
+          "id": "HWM162-M16",
+          "label": "Montant gauche indépendant de l’obstacle d’entraînement",
+          "target_id": "target-v81-72-289",
+          "file": "production/homeworld-sectors-20261103/attempts/mounts/HWM162-M16-hurdle-left-upright-v1.png",
+          "source_original": "/workspace/scratch/2166fec07f86/generated_images/exec-d8ebb6f5-54ba-4fc2-9563-2615e356c369.png",
+          "output_hint": "Generated images are saved to /workspace/scratch/2166fec07f86/generated_images as /workspace/scratch/2166fec07f86/generated_images/exec-d8ebb6f5-54ba-4fc2-9563-2615e356c369.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "prompt": "NATIVE COMPONENT ISOLATION EDIT for sprite HWM162-M16. The reference is the existing M05 training hurdle for Yautja The Long Hunt.\nOUTPUT ONLY THE LEFT UPRIGHT of this exact reference, as ONE complete independent connected article.\nKEEP the LEFT post's entire heavy dark basalt/gunmetal body, its blunt rounded/faceted cap, full broad weighted foot, aged-bronze corner guards, small vertical recessed amber indicator, and the attached U-shaped EMPTY RAIL RECEIVER projecting inward toward the RIGHT. Keep the height adjustment recesses on the inward-facing RIGHT side exactly as genuinely visible in the reference: same visible count, same shapes and spacing. Do not invent six levels or extra hidden notches. The receiver belongs to this post and must stay attached. The small region formerly occluded by the rail may be naturally completed, without adding new mechanisms.\nREMOVE the ENTIRE rust-red horizontal rail and BOTH its terminal caps from this upright image. The receiver must be visibly empty, with no red textile, no rod stump and no loose cap left in it. REMOVE the entire right post, its receiver and its foot. No second object and no separate loose accessory.\nPRESERVE the actual reference camera/view, upright orientation, shape proportions, source lighting from upper left, material identity and patina. This is the LEFT article seen with its receiver on its RIGHT inner face. Do not produce the right article, mirror pixels, rotate pixels or change into a new frontal angle. The reference was originally requested as orthographic yaw0/pitch35, but inherit its actual visible source view rather than imposing a camera conversion.\nCOMPOSITION FOR A MODULAR KIT: retain the original1536x1024 landscape transparent canvas. Keep the LEFT upright at approximately its ORIGINAL SCALE and ORIGINAL LEFT-SIDE POSITION in that canvas, including its original complete foot and cap; the large former rail/right-post area becomes empty transparent space. Do not zoom in to fill the canvas, do not center or enlarge it. This native placement is only a composition proposal, not a mechanically verified fit. Keep the whole silhouette comfortably inside the canvas; do not crop any part.\nRealistic detailed hand-painted2.5D game art, weathered charcoal basalt and gunmetal, narrow worn bronze accents, the same tiny amber indicator. One entire coherent left support component. True native alpha transparency outside this single component and through genuinely open receiver/recess spaces. No scenery, ground plane, floor shadow, background gradient, halo, checkerboard painting, frame, text, numbers, legible glyph strings, labels, contact sheet or multiple views. No people, animals, invented species, saddle or tool pile. Original game adaptation, no canonical1:1, load or adjustable-height certification.",
+          "reference_image_files": [
+            "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M05-training-hurdle.png"
+          ],
+          "reference_input_paths": [
+            "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/mounts/HWM162-M05-training-hurdle.png"
+          ],
+          "lore_status": "ORIGINAL_GAME_ADAPTATION",
+          "variant_kind": "INDEPENDENT_LEFT_UPRIGHT_FROM_EXISTING_HURDLE",
+          "component_of": "HWM162-M05",
+          "review_note": "One complete left support: full weighted foot and blunt cap, inward right-facing empty U receiver fixed to the post, visible height recesses and small amber indicator. The red rail, rail end caps and right post are absent. Source view and approximate left-side canvas placement retained; receiver interior previously occluded by the rail is a native interpretation. No six-level specification, physical height, load, exact pixel registration or runtime adjustment is certified. Original M05 and all previous sprites retained unchanged; no crop, pixel mirror, rotation, resizing or padding used.",
+          "camera_requested": {
+            "mode": "INHERIT_REFERENCE_VIEW",
+            "reference_repo_path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M05-training-hurdle.png",
+            "source_request_if_known": {
+              "projection": "orthographic",
+              "yaw_degrees": 0,
+              "pitch_degrees": 35,
+              "authority": "Original M05 prompt request, not measured."
+            },
+            "actual_reference_view_inherited_requested": true,
+            "camera_measured": false,
+            "new_front_0_35_conversion_claimed": false
+          },
+          "camera_measured": false,
+          "assembly_pair_ids": [
+            "HWM162-M05",
+            "HWM162-M17",
+            "HWM162-M18"
+          ],
+          "assembly_runtime_validated": false,
+          "production_pass": 5,
+          "status": "ARCHIVED_SUPERSEDED_NATIVE_ATTEMPT",
+          "runtime_integrated": false,
+          "human_art_validated": false,
+          "canon_1_to_1_claim": false,
+          "original_unchanged": true,
+          "imagegen_calls_for_asset": 1,
+          "reference_sha256": [
+            "3c5525569fdffe27192b92297476d23692f32e959c9404a91e8f64a75e9e81a2"
+          ],
+          "mode": "RGBA",
+          "dimensions_px": [
+            1536,
+            1024
+          ],
+          "alpha_extrema": [
+            0,
+            254
+          ],
+          "alpha_zero_pixels": 1464666,
+          "alpha_bbox": [
+            0,
+            0,
+            1516,
+            1000
+          ],
+          "alpha_bbox_8": [
+            148,
+            292,
+            484,
+            768
+          ],
+          "alpha_bbox_gt24": [
+            148,
+            293,
+            484,
+            767
+          ],
+          "alpha_thresholds": {
+            "0": {
+              "comparison": "alpha > threshold",
+              "box": [
+                0,
+                0,
+                1516,
+                1000
+              ],
+              "margins": [
+                0,
+                0,
+                20,
+                24
+              ],
+              "pixels": 108198
+            },
+            "8": {
+              "comparison": "alpha > threshold",
+              "box": [
+                148,
+                292,
+                484,
+                768
+              ],
+              "margins": [
+                148,
+                292,
+                1052,
+                256
+              ],
+              "pixels": 98221
+            },
+            "24": {
+              "comparison": "alpha > threshold",
+              "box": [
+                148,
+                293,
+                484,
+                767
+              ],
+              "margins": [
+                148,
+                293,
+                1052,
+                257
+              ],
+              "pixels": 97826
+            },
+            "128": {
+              "comparison": "alpha > threshold",
+              "box": [
+                148,
+                293,
+                483,
+                767
+              ],
+              "margins": [
+                148,
+                293,
+                1053,
+                257
+              ],
+              "pixels": 97056
+            }
+          },
+          "sha256": "daa4d1e54bcfce7ef90d85e5908729d4850f06025ccd4aa07baec4189a7f91e8",
+          "bytes": 1226732,
+          "substantial_silhouette_margins_px": [
+            148,
+            292,
+            1052,
+            256
+          ],
+          "silhouette_margins_gt24_px": [
+            148,
+            293,
+            1052,
+            257
+          ],
+          "edge_alpha_max": 1,
+          "selected": false,
+          "selection_reason": "Root compared common-canvas heights: M16-v1 main silhouette474px high versus M17 436px, approximately8.7percent taller. One native proportion correction requested, with original M05 and M17 as guides."
+        }
+      ],
+      "proportion_review": {
+        "basis": "alpha>24 bounding-box heights on same native1536x1024 canvas; not physical scale measurement",
+        "v1_height_px": 474,
+        "selected_height_px": 435,
+        "M17_height_px": 436,
+        "selected_relative_height_difference": -0.002293577981651418,
+        "pixel_perfect_fit_claim": false
+      },
+      "root_visual_review": {
+        "performed": true,
+        "decision": "ACCEPTED_INDEPENDENT_ART_CANDIDATE",
+        "reviewer": "root",
+        "date": "2026-11-03",
+        "note": "Revue racine effectuée des trois composants retenus. L’acceptation visuelle conserve les limites : pas de caméra mesurée, dimensions physiques, contact mécanique, hauteur réglable jouable, charge, canon1:1 ni intégration runtime certifiés."
+      }
+    },
+    {
+      "id": "HWM162-M17",
+      "label": "Montant droit indépendant de l’obstacle d’entraînement",
+      "target_id": "target-v81-72-289",
+      "file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M17-hurdle-right-upright.png",
+      "source_original": "/workspace/scratch/2166fec07f86/generated_images/exec-25e39161-e719-4888-9de4-57e3a4af9969.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/2166fec07f86/generated_images as /workspace/scratch/2166fec07f86/generated_images/exec-25e39161-e719-4888-9de4-57e3a4af9969.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "prompt": "NATIVE COMPONENT ISOLATION EDIT for sprite HWM162-M17. The reference is the existing M05 training hurdle for Yautja The Long Hunt.\nOUTPUT ONLY THE RIGHT UPRIGHT of this exact reference, as ONE complete independent connected article.\nKEEP the RIGHT post's entire heavy dark basalt/gunmetal body, blunt rounded/faceted cap, full broad weighted foot, aged-bronze corner guards, small vertical recessed amber indicator, and its attached U-shaped EMPTY RAIL RECEIVER projecting inward toward the LEFT. Keep the height adjustment recesses on this RIGHT post's inward-facing LEFT side as genuinely visible in the reference, with their original visible count, shapes and spacing. Do not invent six levels or extra hidden notches. The receiver belongs to this post and stays attached. The small region previously covered by the rail may be completed naturally without adding new mechanisms.\nREMOVE the ENTIRE rust-red horizontal rail including BOTH its terminal caps. The receiver is visibly empty with no red textile, no rod stump and no loose cap left in it. REMOVE the entire left post, its receiver and its foot. No second object and no separate accessory.\nPRESERVE the actual reference camera/view, right post orientation, source shape proportions, upper-left world lighting, material identity and patina. This is the RIGHT article with the receiver on its LEFT inward-facing side. It is a new native edit of the reference RIGHT article, NOT a mirror of the left post image and NOT a rotation of pixels. Preserve the asymmetric visible faces and source light direction. The reference's original requested camera was orthographic yaw0/pitch35, but inherit its actual visible source view rather than impose a camera conversion.\nCOMPOSITION FOR A MODULAR KIT: keep the original1536x1024 landscape transparent canvas. Retain the RIGHT post at approximately its ORIGINAL SCALE and ORIGINAL RIGHT-SIDE POSITION, including its entire foot and cap; the former rail and left-post area becomes empty transparent space. Do not center or enlarge it, do not zoom in to fill the image. Native placement is a composition proposal only, not a verified mechanical fit. Every part of the one right support must remain comfortably inside the canvas.\nRealistic detailed hand-painted2.5D game art, worn charcoal basalt/gunmetal and narrow aged-bronze accents, tiny amber indicator only. One complete right support article. True native alpha outside it and through genuinely open receiver/recess spaces. No ground, floor shadow, scene, background gradient, halo, checkerboard painting, frame, text, numbers, readable glyph strings, diagram, labels, contact sheet or multiple views. No people, animals, saddle or tool pile. Original game adaptation, no canonical1:1, physical load or adjustable-height certification.",
+      "reference_image_files": [
+        "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M05-training-hurdle.png"
+      ],
+      "reference_input_paths": [
+        "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/mounts/HWM162-M05-training-hurdle.png"
+      ],
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "variant_kind": "INDEPENDENT_RIGHT_UPRIGHT_FROM_EXISTING_HURDLE",
+      "component_of": "HWM162-M05",
+      "review_note": "One complete right support: full weighted foot, blunt cap, inward left-facing empty U receiver fixed to the post, visible height recesses and small amber indicator. No red rail, rail end cap, left post or loose extra part. Independently generated from the original right-hand M05 article rather than mirrored from M16. Source view and approximate right-side canvas placement retained; formerly occluded receiver interior is a native interpretation. The two newly generated posts have small differences in apparent bounding size/placement, so common scale and physical contact require scene adjustment. No six-level specification, physical height, load, exact pixel registration or functional adjustment is certified. Native original copied unchanged.",
+      "camera_requested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "reference_repo_path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M05-training-hurdle.png",
+        "source_request_if_known": {
+          "projection": "orthographic",
+          "yaw_degrees": 0,
+          "pitch_degrees": 35,
+          "authority": "Original M05 prompt request, not measured."
+        },
+        "actual_reference_view_inherited_requested": true,
+        "camera_measured": false,
+        "new_front_0_35_conversion_claimed": false
+      },
+      "camera_measured": false,
+      "assembly_pair_ids": [
+        "HWM162-M05",
+        "HWM162-M16",
+        "HWM162-M18"
+      ],
+      "assembly_runtime_validated": false,
+      "production_pass": 5,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtime_integrated": false,
+      "human_art_validated": false,
+      "canon_1_to_1_claim": false,
+      "original_unchanged": true,
+      "imagegen_calls_for_asset": 1,
+      "reference_sha256": [
+        "3c5525569fdffe27192b92297476d23692f32e959c9404a91e8f64a75e9e81a2"
+      ],
+      "mode": "RGBA",
+      "dimensions_px": [
+        1536,
+        1024
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_zero_pixels": 1489026,
+      "alpha_bbox": [
+        31,
+        23,
+        1506,
+        957
+      ],
+      "alpha_bbox_8": [
+        1073,
+        302,
+        1368,
+        739
+      ],
+      "alpha_bbox_gt24": [
+        1073,
+        303,
+        1367,
+        739
+      ],
+      "alpha_thresholds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            31,
+            23,
+            1506,
+            957
+          ],
+          "margins": [
+            31,
+            23,
+            30,
+            67
+          ],
+          "pixels": 83838
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            1073,
+            302,
+            1368,
+            739
+          ],
+          "margins": [
+            1073,
+            302,
+            168,
+            285
+          ],
+          "pixels": 80861
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            1073,
+            303,
+            1367,
+            739
+          ],
+          "margins": [
+            1073,
+            303,
+            169,
+            285
+          ],
+          "pixels": 80649
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            1073,
+            303,
+            1367,
+            738
+          ],
+          "margins": [
+            1073,
+            303,
+            169,
+            286
+          ],
+          "pixels": 79881
+        }
+      },
+      "sha256": "0a230a9593d54ab7f1e636c02e2dd77bb4af685eaa88618f410bd76d8a5e113f",
+      "bytes": 812690,
+      "substantial_silhouette_margins_px": [
+        1073,
+        302,
+        168,
+        285
+      ],
+      "silhouette_margins_gt24_px": [
+        1073,
+        303,
+        169,
+        285
+      ],
+      "edge_alpha_max": 0,
+      "root_visual_review": {
+        "performed": true,
+        "decision": "ACCEPTED_INDEPENDENT_ART_CANDIDATE",
+        "reviewer": "root",
+        "date": "2026-11-03",
+        "note": "Revue racine effectuée des trois composants retenus. L’acceptation visuelle conserve les limites : pas de caméra mesurée, dimensions physiques, contact mécanique, hauteur réglable jouable, charge, canon1:1 ni intégration runtime certifiés."
+      }
+    },
+    {
+      "id": "HWM162-M18",
+      "label": "Barre rembourrée indépendante de l’obstacle d’entraînement",
+      "target_id": "target-v81-72-289",
+      "file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M18-padded-training-rail.png",
+      "source_original": "/workspace/scratch/2166fec07f86/generated_images/exec-f969e9e6-427a-4ab5-ab19-e0f512ab11f6.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/2166fec07f86/generated_images as /workspace/scratch/2166fec07f86/generated_images/exec-f969e9e6-427a-4ab5-ab19-e0f512ab11f6.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "prompt": "NATIVE COMPONENT ISOLATION EDIT for sprite HWM162-M18. The reference is the existing M05 training hurdle for Yautja The Long Hunt.\nOUTPUT ONLY its ONE REMOVABLE PADDED HORIZONTAL TRAINING RAIL, as one complete connected independent article.\nPRESERVE the long rounded cylindrical dark core, the worn muted rust-red textile protective wrapping, its visible wrapping seams and metal retaining bands, and TWO complete blunt dark gunmetal TERMINAL END CAPS. Keep the same overall proportions, restrained wear and segmented textile appearance as the reference rail. Preserve the actual visible number and placement of its bands; do not invent new decoration. The terminal areas originally partly hidden by the post receivers should be naturally completed as short blunt cylindrical end caps belonging to the rail. No pointed ends, spikes, blades, weapon grip or carrying handle.\nREMOVE BOTH entire posts and their stone feet, indicators and metal inner receivers. The U-shaped receivers remain parts of M16/M17 and MUST NOT appear attached to this rail. There are exactly TWO terminal rail end caps and NO bronze cradles, brackets, hook arms, post fragments, supports or loose extra parts. The result is a single whole textile-wrapped rail with two blunt ends.\nPRESERVE the actual camera/view of the M05 source rail: horizontal screen axis, cylindrical thickness visible from the same slightly elevated source view, soft upper-left world illumination. Do not rotate, mirror, crop or paste pixels and do not create a new dramatic diagonal pose. The original M05 camera was requested as orthographic yaw0/pitch35, but inherit the actual source view rather than imposing a different conversion.\nCOMPOSITION FOR THE MODULAR KIT: retain the original1536x1024 landscape transparent canvas. Keep the rail at approximately its ORIGINAL SCALE and ORIGINAL CENTRAL POSITION at the original rail height in the canvas. Do not enlarge or zoom to fill the width: it should remain roughly the span between the original two support receivers, around the middle half of this wide canvas. Leave generous empty alpha space where the posts and feet used to be, and above/below the slim rail. Both complete ends must be clearly visible within the canvas. This native layout is a proposed composition only, with no pixel-perfect contact or mechanical fit claim.\nRealistic detailed hand-painted2.5D game rendering. Rust-red textured wrapping, charcoal gunmetal core and end caps, restrained worn metal bands, same materials as M05. True native transparent alpha outside the rail. No floor, ground shadow, background, glow, halo, checkerboard painting, frame, labels, words, numbers, legible glyph strings, diagram, contact sheet or multiple views. No second rail, post, person, animal, equipment pile or scenery. Original game adaptation, no canonical1:1, real-world load or functional adjustable-height certification.",
+      "reference_image_files": [
+        "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M05-training-hurdle.png"
+      ],
+      "reference_input_paths": [
+        "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/mounts/HWM162-M05-training-hurdle.png"
+      ],
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "variant_kind": "INDEPENDENT_PADDED_RAIL_FROM_EXISTING_HURDLE",
+      "component_of": "HWM162-M05",
+      "review_note": "One complete slim horizontal training rail with rust-red woven wrapping, retaining bands and two blunt terminal caps. Both posts, their bases and their U receivers are absent. The caps belong to the rail; formerly occluded terminal areas are a limited native interpretation. Source view and approximate central placement/scale retained on the1536x1024 canvas. Exact length, terminal contact, common component scale, physical load and functioning height adjustment remain unverified. Native original copied unchanged; no pixel crop, rotation, mirror, resizing, padding or alpha cleanup.",
+      "camera_requested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "reference_repo_path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M05-training-hurdle.png",
+        "source_request_if_known": {
+          "projection": "orthographic",
+          "yaw_degrees": 0,
+          "pitch_degrees": 35,
+          "authority": "Original M05 prompt request, not measured."
+        },
+        "actual_reference_view_inherited_requested": true,
+        "camera_measured": false,
+        "new_front_0_35_conversion_claimed": false
+      },
+      "camera_measured": false,
+      "assembly_pair_ids": [
+        "HWM162-M05",
+        "HWM162-M16",
+        "HWM162-M17"
+      ],
+      "assembly_runtime_validated": false,
+      "production_pass": 5,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtime_integrated": false,
+      "human_art_validated": false,
+      "canon_1_to_1_claim": false,
+      "original_unchanged": true,
+      "imagegen_calls_for_asset": 1,
+      "reference_sha256": [
+        "3c5525569fdffe27192b92297476d23692f32e959c9404a91e8f64a75e9e81a2"
+      ],
+      "mode": "RGBA",
+      "dimensions_px": [
+        1536,
+        1024
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_zero_pixels": 1518517,
+      "alpha_bbox": [
+        219,
+        23,
+        1508,
+        892
+      ],
+      "alpha_bbox_8": [
+        347,
+        479,
+        1185,
+        543
+      ],
+      "alpha_bbox_gt24": [
+        348,
+        479,
+        1185,
+        543
+      ],
+      "alpha_thresholds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            219,
+            23,
+            1508,
+            892
+          ],
+          "margins": [
+            219,
+            23,
+            28,
+            132
+          ],
+          "pixels": 54347
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            347,
+            479,
+            1185,
+            543
+          ],
+          "margins": [
+            347,
+            479,
+            351,
+            481
+          ],
+          "pixels": 51853
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            348,
+            479,
+            1185,
+            543
+          ],
+          "margins": [
+            348,
+            479,
+            351,
+            481
+          ],
+          "pixels": 51677
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            348,
+            480,
+            1184,
+            543
+          ],
+          "margins": [
+            348,
+            480,
+            352,
+            481
+          ],
+          "pixels": 50287
+        }
+      },
+      "sha256": "b06df21e7ff05796094c29fa790429335dc4026aeb7a9fd279af7aacdc4d81ce",
+      "bytes": 717037,
+      "substantial_silhouette_margins_px": [
+        347,
+        479,
+        351,
+        481
+      ],
+      "silhouette_margins_gt24_px": [
+        348,
+        479,
+        351,
+        481
+      ],
+      "edge_alpha_max": 0,
+      "root_visual_review": {
+        "performed": true,
+        "decision": "ACCEPTED_INDEPENDENT_ART_CANDIDATE",
+        "reviewer": "root",
+        "date": "2026-11-03",
+        "note": "Revue racine effectuée des trois composants retenus. L’acceptation visuelle conserve les limites : pas de caméra mesurée, dimensions physiques, contact mécanique, hauteur réglable jouable, charge, canon1:1 ni intégration runtime certifiés."
+      }
     }
   ],
   "generation_complete": true,
-  "asset_count": 15,
-  "production_note": "Selected native sprites are unchanged copies of ImageGen originals; pass4 complete. Earlier selected sprites and archived attempts are preserved. No canonical1:1 or runtime assembly validation.",
-  "archived_mount_attempt_count": 3
+  "asset_count": 18,
+  "production_note": "Selected native sprites are unchanged copies of ImageGen originals; pass5 component isolation complete and root-reviewed as source-art candidates. Earlier selected sprites and archived attempts are preserved. No canonical1:1 or runtime assembly validation.",
+  "archived_mount_attempt_count": 4
 }

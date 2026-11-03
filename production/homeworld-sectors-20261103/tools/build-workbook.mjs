@@ -135,8 +135,10 @@ const thirdPassAssets = assets.filter(a => a.productionPass === 3);
 const thirdPassMeta = continuationFor(3);
 const fourthPassAssets = assets.filter(a => a.productionPass === 4);
 const fourthPassMeta = continuationFor(4);
+const fifthPassAssets = assets.filter(a => a.productionPass === 5);
+const fifthPassMeta = continuationFor(5);
 const currentPassAssets = assets.filter(a => (a.productionPass ?? 1) === currentPass);
-const passNames = {2:'deuxième',3:'troisième',4:'quatrième'};
+const passNames = {2:'deuxième',3:'troisième',4:'quatrième',5:'cinquième'};
 const inheritedViewAssets = assets.filter(inheritsView);
 const sourceFileLinks = a => referenceFiles(a).map(file => `[${file}](${toRepoPath(file).local})`).join('<br>');
 const thirdPassRows = thirdPassAssets.map(a => `| ${a.id} | ${a.label} | ${join(a.targetIds)} | ${viewLabel(a)} | ${sourceFileLinks(a)} |`).join('\n');
@@ -160,6 +162,18 @@ const fourthPassSection = fourthPassAssets.length ?
   `Les chenils gagnent un abreuvoir sec, un bac de nourrisseur sans aliments visibles, un râtelier de dressage vide et une balise éteinte. Le contenu du réservoir fermé du nourrisseur reste non observable. Aucun bac amovible ni sens canonique du glyphe de la balise n’est déduit des images.\n\n` +
   `Les ${fourthPassAssets.filter(inheritsView).length} éditions ${fourthPassAssets.filter(inheritsView).map(a => a.id).join(', ')} conservent la vue de leur source. Les autres ajouts de cette passe demandent la cible orthographique 0°/35°. Les angles réels ne sont pas mesurés. Une vue héritée n’implique pas une superposition des états pixel par pixel : les canevas et cadrages peuvent différer. S12 a notamment reçu une correction native du cadrage pour libérer son pied avant du bord ; la première tentative est archivée hors sélection.\n\n` +
   `Les consoles autonomes, les lampes, les caisses, le chariot, les kiosques, les étals et l’auvent libre déjà présents restent réutilisables. La peau prismatique détachée existe également : elle conserve son identité de ressource spécifique et n’est pas assimilée au textile marchand lié. Les ajouts complètent des états ou composants précis ; ils ne supposent pas l’absence de toute une famille d’objets.\n\n` : '';
+const fifthPassRows = fifthPassAssets.map(a => `| ${a.id} | ${a.label} | ${join(a.targetIds)} | ${viewLabel(a)} | ${sourceFileLinks(a)} |`).join('\n');
+const fifthPassSection = fifthPassAssets.length ?
+  `## Cinquième passe : étals sans stock, obstacle et enclos séparés\n\n` +
+  `Cette passe ajoute ${fifthPassAssets.length} PNG aux ${assets.filter(a => (a.productionPass ?? 1) < 5).length} déjà livrés : ${fifthPassAssets.filter(a => a.area === 'market').length} pour le marché, ${fifthPassAssets.filter(a => a.area === 'mounts').length} pour les montures et ${fifthPassAssets.filter(a => a.area === 'kennels').length} pour les chenils. L’audit part du commit \`${fifthPassMeta.baselineCommit}\`. Le [plan de production](next-targets-round5.json), l’[audit ciblé](modularity-audit-round5.json) et la [revue des ajouts](review-round5.md) décrivent les références conservées et les composants retenus. Les 40 cibles héritées et les deux bâtiments du lot restent inchangés.\n\n` +
+  `| ID | Objet ou état | Cible conservée | Vue demandée | Source visuelle reprise |\n| --- | --- | --- | --- | --- |\n${fifthPassRows}\n\n` +
+  `S15 fournit l’étal couvert diagonal droit sans son stock mobile. S16 libère le comptoir et les accroches du kiosque compact, tout en conservant sa toiture, ses grandes défenses et ses lanternes fixes. Les deux sources chargées restent disponibles. S17 détache un petit pot fermé du rack V76 ; son contenu, sa contenance et ses dimensions physiques ne sont pas établis. Les présentoirs S03, la plateforme S04 et l’étal long S02 étaient déjà vides : aucun doublon de ces supports n’est ajouté.\n\n` +
+  `M16 et M17 séparent les montants gauche et droit de l’obstacle M05 ; M18 fournit sa barre rembourrée. Chaque pièce est produite nativement, sans miroir de pixels. Leurs récepteurs et embouts permettent de proposer une composition, mais les points de contact, le réglage de hauteur, les dimensions communes et la capacité de charge restent à vérifier en scène.\n\n` +
+  `M16 utilise la deuxième sortie après une correction native du gabarit : sa silhouette visible mesure 435 px de hauteur au seuil alpha > 24, contre 436 px pour M17. Cette proximité en pixels ne certifie pas l’assemblage mécanique. Aucun redimensionnement de l’image n’a servi à obtenir ce résultat.\n\n` +
+  `K18 et K19 séparent l’arc arrière et l’arc avant fixe de l’enclos octogonal 266. K20 et K21 fournissent son battant seul dans les poses fermée et ouverte. Cette séparation permet de proposer des couches devant et derrière les animaux. L’état ouvert conserve la caméra de référence et représente une nouvelle orientation du battant ; les parties auparavant occultées sont reconstruites. Le partage des poteaux, les jonctions, le pivot, le débattement et les collisions ne sont pas certifiés par ces PNG.\n\n` +
+  `K20 utilise la deuxième sortie après suppression native d’un insert ambre : ce voyant appartient au poteau fixe inclus dans K19, pas au battant mobile. Les premières tentatives de M16 et K20 restent archivées hors du dossier des sprites et ne sont pas comptées parmi les sources sélectionnées.\n\n` +
+  `Les ${fifthPassAssets.filter(inheritsView).length} demandes ${fifthPassAssets.filter(inheritsView).map(a => a.id).join(', ')} héritent de la vue de leur source. S17 demande la cible orthographique 0°/35° du projet. Aucun angle réel n’est mesuré. Les cadrages des éditions peuvent différer : l’alignement pixel par pixel des états et l’assemblage des composants restent à contrôler.\n\n` +
+  `Les vitrines vides V33, le piédestal V56, le rack vide S12, le stand gauche HW1009, les lampes, le chariot et les autres contenants existants restent des sources réutilisables. Les statuts de revue humaine et d’admission au runtime restent distincts de cette livraison de sources graphiques.\n\n` : '';
 const readme = `# Marché, montures et chenils — 2026-11-03\n\n` +
   `Lot de production \`MMK-20261103\`. Les identifiants de génération \`HWM162-*\` sont conservés. Ce dossier est distinct du lot de terrains \`homeworld-v162\` ajouté en parallèle.\n\n` +
   `Ce lot complète les sources de la PR [#99](https://github.com/${catalogue.repository}/pull/99) avec **${present.length} PNG indépendants présents** pour ${assets.length} objets ou états planifiés. Chaque objet est un fichier séparé. Les anciennes sources restent à leur emplacement.\n\n` +
@@ -170,7 +184,7 @@ const readme = `# Marché, montures et chenils — 2026-11-03\n\n` +
   `- [Catalogue](catalogue.json) : liste des objets, fonctions, sources antérieures et données mesurées.\n` +
   `- [Manifeste des générations](manifest.json) et [contrôles techniques](technical-report.json).\n\n` +
   `| ID | Objet | Cible du projet | Fichier | Pixels réels |\n| --- | --- | --- | --- | --- |\n${fileRows}\n\n` +
-  continuationSection + thirdPassSection + fourthPassSection +
+  continuationSection + thirdPassSection + fourthPassSection + fifthPassSection +
   `## Fidélité et portée des références\n\n` +
   `Les bâtiments de marché, d’écurie et de chenil sont des **adaptations originales du projet**. Les références ci-dessous orientent leur cohérence visuelle et leur fonction. Elles ne fournissent pas les plans canoniques de ces bâtiments. Ce lot ne porte aucune certification de reproduction 1:1.\n\n` +
   `${sourceLinks}\n\n` +
@@ -315,10 +329,10 @@ if (currentPass >= 3 && currentPassAssets.length) {
     ['Livraison', `A${14+firstNew}:K${14+lastNew}`, `preview-Livraison-round${currentPass}.png`],
     ['Livraison', `Q${14+firstNew}:R${14+lastNew}`, `preview-Livraison-round${currentPass}-camera.png`],
     ['Implantation', `A${7+firstNew}:F${7+lastNew}`, `preview-Implantation-round${currentPass}.png`],
-    ...(currentPass === 4 ? ['target-v81-64-164','target-v81-64-170','target-v81-71-274'].map(id => {
+    ...({4:['target-v81-64-164','target-v81-64-170','target-v81-71-274'],5:['target-v81-64-164','target-v81-72-289','target-v81-71-266']}[currentPass] ?? []).map(id => {
       const row=7+targets.findIndex(t=>t.id===id);
-      return ['Catalogue',`A${row-1}:E${row+1}`,`preview-Catalogue-round4-${id}.png`];
-    }) : []),
+      return ['Catalogue',`A${row-1}:E${row+1}`,`preview-Catalogue-round${currentPass}-${id}.png`];
+    }),
   ];
   for (const [sheetName,range,filename] of views) {
     const preview=await workbook.render({sheetName,range,scale:1.3,format:'png'});

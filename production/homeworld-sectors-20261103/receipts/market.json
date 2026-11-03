@@ -1383,6 +1383,518 @@
           "alpha": 253
         }
       ]
+    },
+    {
+      "id": "HWM162-S15",
+      "label": "Étal couvert diagonal droit — sans stock",
+      "file": "HWM162-S15-empty-market-stall-right.png",
+      "targetIds": [
+        "target-v81-64-160"
+      ],
+      "role": "Dégager le comptoir, les rangements et les suspensions marchandes de l’étal couvert existant.",
+      "reference": "public/game/homeworld/v78/market-stall-right.png",
+      "referenceLocal": "/workspace/scratch/2166fec07f86/round3-market-reference-inspection/public__game__homeworld__v78__market-stall-right.png",
+      "prompt": "Use case: precise-object-edit. Asset type: one independent transparent game sprite, HWM162-S15, the EMPTY-STOCK STATE of the supplied right-diagonal market stall. Input image 1 is the exact EDIT TARGET. Change only the loose merchandise, preserving the same construction, identity, proportions and exact existing three-quarter camera view. Keep the complete broad red-brown canopy with its poles and ropes, all stone/bronze countertop supports and feet, the stone countertop itself, fixed amber hanging lamps, and the fixed decorative rear textiles. Remove every pot, jar, bowl, crystal or mineral lot, shallow merchandise tray, roll of cloth, animal pelt and loose throw-cloth placed on the countertop; remove both cargo chests beneath the table; remove the small net bags hanging at the far right. Reconstruct the newly exposed countertop surface and open space under the table coherently from the adjacent structural surfaces. The top surface must be visibly empty, with no stock, tiny leftover fragments or new objects, and the space between table legs must remain empty and transparent. Preserve the original red-brown woven canopy, dark basalt surfaces, worn bronze trim, carved details, lamps and all architectural ornaments. Do not strip construction or turn this into an unrelated stand. INHERIT THE REFERENCE VIEW; do not rotate, mirror or convert it to a frontal camera. Show the entire stall, including both upper finials, all canopy edges and all feet, with generous clear transparent margins on every side. Genuine transparent background, no scenery, no opaque fill, no colored halo, no separate floor, no ground shadow, no people, no text, no labels, no watermark. One object and one view only. This is an original project asset, not a claim of a film-canonical market.",
+      "source": "/workspace/scratch/2166fec07f86/generated_images/exec-128e4d72-58c6-495a-9992-4ac8ec544da9.png",
+      "key": "HWM162-S15",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S15-empty-market-stall-right.png",
+      "area": "market",
+      "productionPass": 5,
+      "phase": "round5-market-empty-states-and-loose-container",
+      "generator": "image_gen.imagegen",
+      "generationMode": "edit",
+      "tool_call_count": 1,
+      "transparent_background": true,
+      "references": [
+        {
+          "role": "edit_target",
+          "repoPath": "public/game/homeworld/v78/market-stall-right.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round3-market-reference-inspection/public__game__homeworld__v78__market-stall-right.png",
+          "sha256": "c98a90d777cf85e921681feb36c738216d8a99a945669e670234c65b65897796",
+          "matchesAuditHead": true
+        }
+      ],
+      "referenceGitBlob": "51ac4a639f41840d8e9bcd704119bff2a37b164f",
+      "referenceMatchesHead": true,
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "public/game/homeworld/v78/market-stall-right.png"
+      ],
+      "camera_requested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "reference": "public/game/homeworld/v78/market-stall-right.png",
+        "measured": false
+      },
+      "cameraMeasured": false,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOneClaimed": false,
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "scaleValidatedInGame": false,
+      "dimensionsAuthority": "NO_METRIC_DIMENSIONS_CLAIMED",
+      "proposedMetres": {},
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2541204,
+      "sha256": "1789194a68cc85780818da0a20fc66937fdbcdc1c8697805c97e2f2850f45800",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 876633,
+      "transparentRatio": 0.5573482513427734,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            0,
+            1522,
+            1024
+          ],
+          "margins": [
+            0,
+            0,
+            14,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 696231
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            44,
+            4,
+            1520,
+            968
+          ],
+          "margins": [
+            44,
+            4,
+            16,
+            56
+          ],
+          "minMargin": 4,
+          "pixels": 644383
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            44,
+            4,
+            1520,
+            967
+          ],
+          "margins": [
+            44,
+            4,
+            16,
+            57
+          ],
+          "minMargin": 4,
+          "pixels": 640611
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            45,
+            5,
+            1519,
+            967
+          ],
+          "margins": [
+            45,
+            5,
+            17,
+            57
+          ],
+          "minMargin": 5,
+          "pixels": 631791
+        }
+      },
+      "edgeAlphaMax": 2,
+      "mainSilhouetteInsideCanvasAtAlpha24": true,
+      "strictClearMargin": false,
+      "transparentOpeningSamples": [
+        {
+          "point": [
+            700,
+            450
+          ],
+          "alpha": 0
+        },
+        {
+          "point": [
+            600,
+            800
+          ],
+          "alpha": 0
+        },
+        {
+          "point": [
+            1100,
+            800
+          ],
+          "alpha": 0
+        }
+      ],
+      "nativePreservation": {
+        "copyByteIdentical": true,
+        "pixelsEdited": false,
+        "alphaEdited": false,
+        "mirrored": false,
+        "resized": false,
+        "padded": false,
+        "originalPreserved": true
+      },
+      "notes": [
+        "Un appel ImageGen intégré, première sortie retenue pour revue croisée.",
+        "Source native copiée octet pour octet ; aucun recadrage, miroir, redimensionnement, padding ou nettoyage alpha.",
+        "Aucun contenu canonique, mesure physique officielle ou admission runtime attribué au PNG.",
+        "La vue existante est héritée ; aucune conversion à0°/35° ni superposition pixel par pixel certifiée.",
+        "Marge visible minimale4px, plus serrée que la respiration demandée ; silhouette entière. Le cadre antérieur était déjà serré (6px au seuil alpha>24)."
+      ],
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "visual_review": "État vidé du V78 : comptoir libre, deux coffres et lots retirés, sacs suspendus retirés ; auvent rouge, lampes, poteaux et textiles fixes conservés. Parties cachées par le stock reconstruites. La silhouette entière tient dans la toile avec4px de marge au seuil alpha>24. Les trois échantillons du vide sous auvent et sous comptoir ont alpha0. Vue de la référence conservée visuellement ; superposition pixel par pixel non certifiée."
+    },
+    {
+      "id": "HWM162-S16",
+      "label": "Kiosque marchand compact — sans stock",
+      "file": "HWM162-S16-empty-compact-merchant-kiosk.png",
+      "targetIds": [
+        "target-v81-64-157"
+      ],
+      "role": "Fournir le kiosque compact avec surface de vente et accroches libres.",
+      "reference": "production/homeworld-v160/originals/HWA160-023_kiosque-marchand-yautja-en-basalte-et-bronze.png",
+      "referenceLocal": "/workspace/scratch/2166fec07f86/round3-market-reference-inspection/production__homeworld-v160__originals__HWA160-023_kiosque-marchand-yautja-en-basalte-et-bronze.png",
+      "prompt": "Use case: precise-object-edit. Asset type: one independent transparent game sprite, HWM162-S16, the EMPTY-STOCK STATE of the supplied compact merchant kiosk HWA160-023. Input image 1 is the exact EDIT TARGET. Change only mobile merchandise and hanging trophies, keeping the compact kiosk structure, exact existing oblique camera view, materials, scale relationships and recognizable identity. KEEP the complete hide canopy with its original emblem and scalloped edge, the two large ivory-colored curved ROOF TUSKS tied as architectural ornaments, upper beam, structural pillars, stone counter, bronze trim, fixed engraved symbols, stepped stone base and all fixed amber lanterns/lights. REMOVE only the three mobile hanging displays below the roof crossbar: the central skull, the vertebral trophy and the small cluster of claws; leave their original small suspension hooks or rings visibly empty. Remove the closed box, both small pots, all knives and the loose draped cloth lying across the countertop and its front edge. Restore a coherent empty stone countertop from the surrounding stone, with no merchandise, bone fragments or dangling stock. Preserve the roof tusks and all structural decorations; these are not the hanging trophies to remove. Do not alter the roof silhouette or redesign the stand. INHERIT THE REFERENCE VIEW; no mirroring, rotation or claimed camera conversion. Center the entire intact kiosk, including finials, roof tusks, all hanging lanterns and all base corners, within generous clear transparent margins. Genuine transparent background, no scene, floor, people, labels, added writing, logos, watermark, new props or extra view. One object only. This is an original project adaptation, with no canonical meaning assigned to its symbols.",
+      "source": "/workspace/scratch/2166fec07f86/generated_images/exec-62db5ad7-8d3e-4824-bd88-240848c5c3f7.png",
+      "key": "HWM162-S16",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S16-empty-compact-merchant-kiosk.png",
+      "area": "market",
+      "productionPass": 5,
+      "phase": "round5-market-empty-states-and-loose-container",
+      "generator": "image_gen.imagegen",
+      "generationMode": "edit",
+      "tool_call_count": 1,
+      "transparent_background": true,
+      "references": [
+        {
+          "role": "edit_target",
+          "repoPath": "production/homeworld-v160/originals/HWA160-023_kiosque-marchand-yautja-en-basalte-et-bronze.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round3-market-reference-inspection/production__homeworld-v160__originals__HWA160-023_kiosque-marchand-yautja-en-basalte-et-bronze.png",
+          "sha256": "cff21dfa18b8d2bcaa74f8690b7a7ff1d4fc83f902f38af21c7ebc00b1dec3b3",
+          "matchesAuditHead": true
+        }
+      ],
+      "referenceGitBlob": "b20a7ebe4e3417cd113641696609a16fa5958429",
+      "referenceMatchesHead": true,
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "production/homeworld-v160/originals/HWA160-023_kiosque-marchand-yautja-en-basalte-et-bronze.png"
+      ],
+      "camera_requested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "reference": "production/homeworld-v160/originals/HWA160-023_kiosque-marchand-yautja-en-basalte-et-bronze.png",
+        "measured": false
+      },
+      "cameraMeasured": false,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOneClaimed": false,
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "scaleValidatedInGame": false,
+      "dimensionsAuthority": "NO_METRIC_DIMENSIONS_CLAIMED",
+      "proposedMetres": {},
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "bytes": 1544839,
+      "sha256": "37499344d5fe0990548ef5f8ebab64878b4b0642a133ed219a4dbd3e405715a4",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 964911,
+      "transparentRatio": 0.6136096548461192,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            50,
+            1224,
+            1162
+          ],
+          "margins": [
+            0,
+            50,
+            30,
+            92
+          ],
+          "minMargin": 0,
+          "pixels": 607605
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            198,
+            65,
+            1076,
+            1160
+          ],
+          "margins": [
+            198,
+            65,
+            178,
+            94
+          ],
+          "minMargin": 65,
+          "pixels": 581329
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            198,
+            66,
+            1076,
+            1160
+          ],
+          "margins": [
+            198,
+            66,
+            178,
+            94
+          ],
+          "minMargin": 66,
+          "pixels": 579654
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            199,
+            66,
+            1075,
+            1159
+          ],
+          "margins": [
+            199,
+            66,
+            179,
+            95
+          ],
+          "minMargin": 66,
+          "pixels": 574380
+        }
+      },
+      "edgeAlphaMax": 1,
+      "mainSilhouetteInsideCanvasAtAlpha24": true,
+      "strictClearMargin": false,
+      "transparentOpeningSamples": [
+        {
+          "point": [
+            600,
+            650
+          ],
+          "alpha": 0
+        },
+        {
+          "point": [
+            800,
+            650
+          ],
+          "alpha": 0
+        }
+      ],
+      "nativePreservation": {
+        "copyByteIdentical": true,
+        "pixelsEdited": false,
+        "alphaEdited": false,
+        "mirrored": false,
+        "resized": false,
+        "padded": false,
+        "originalPreserved": true
+      },
+      "notes": [
+        "Un appel ImageGen intégré, première sortie retenue pour revue croisée.",
+        "Source native copiée octet pour octet ; aucun recadrage, miroir, redimensionnement, padding ou nettoyage alpha.",
+        "Aucun contenu canonique, mesure physique officielle ou admission runtime attribué au PNG.",
+        "La vue existante est héritée ; aucune conversion à0°/35° ni superposition pixel par pixel certifiée.",
+        "Marge visible minimale66px ; silhouette entière. Le grand dégagement de toile demandé n’est pas atteint sur tous les côtés."
+      ],
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "visual_review": "Kiosque compact vidé : comptoir entièrement libre et trois anneaux de suspension nus. Les deux grandes défenses du toit, la peau de couverture et son emblème, les lanternes, les piliers, les gravures et le socle restent présents. Aucun couteau, trophée, pot, coffret ou nappe mobile ne subsiste. Silhouette entière, intérieur ouvert réellement transparent. Vue de la référence conservée visuellement ; alignement des états à vérifier."
+    },
+    {
+      "id": "HWM162-S17",
+      "label": "Petit pot de stockage fermé autonome",
+      "file": "HWM162-S17-small-sealed-storage-jar.png",
+      "targetIds": [
+        "target-v81-64-166",
+        "target-v81-64-164"
+      ],
+      "role": "Rendre indépendant le petit pot fermé visible dans le rack V76.",
+      "reference": "public/game/homeworld/v76/interior/rack-lateral.png",
+      "referenceLocal": "/workspace/scratch/2166fec07f86/round5-market-reference-inspection/public__game__homeworld__v76__interior__rack-lateral.png",
+      "prompt": "Use case: stylized-concept, reference-based game-asset generation. Asset type: one independent transparent stock prop, HWM162-S17. Input image 1 is a DESIGN AND MATERIAL REFERENCE, not an instruction to reproduce the rack. Isolate and redraw as its own complete object ONE small sealed storage jar matching the small pot at the FRONT RIGHT of the MIDDLE SHELF in the reference rack: short rounded dark charcoal body, modest shoulders, short neck, flat circular bronze-edged closed lid and bronze base rim, with the same restrained angular bronze inlay motif on the front. Keep the original dark stone-like/aged metal surface and worn warm bronze finish, with subtle wear and no added technological hardware. The jar is compact and gently rounded, not a tall straight logistics cylinder. Show only this one closed jar, upright, centered and fully visible. Native orthographic Homeworld camera requested: yaw0 degrees, pitch35 degrees, front-facing so the lid thickness and top are slightly visible. Lighting from upper left. Actual camera angle is not asserted as measured. Preserve enough space around the object: at least12percent clear margin on all sides. Genuine transparent background. No rack, shelf, cloth, handle, spout, second vessel, detached lid, floor, background scene, cast ground shadow, text, labels, glyph meaning, watermark or extra accessories. The lid remains closed and contents are unspecified: do not depict liquid, food, medicine, organs or any canonical use. This is a detached original game adaptation of a visibly incorporated project object, not an official artifact with a claimed canonical scale.",
+      "source": "/workspace/scratch/2166fec07f86/generated_images/exec-ff1e3795-a1c6-4ddd-aef8-d65efa19cc75.png",
+      "key": "HWM162-S17",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S17-small-sealed-storage-jar.png",
+      "area": "market",
+      "productionPass": 5,
+      "phase": "round5-market-empty-states-and-loose-container",
+      "generator": "image_gen.imagegen",
+      "generationMode": "generate_from_reference",
+      "tool_call_count": 1,
+      "transparent_background": true,
+      "references": [
+        {
+          "role": "design_and_material_reference",
+          "repoPath": "public/game/homeworld/v76/interior/rack-lateral.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round5-market-reference-inspection/public__game__homeworld__v76__interior__rack-lateral.png",
+          "sha256": "441642d5ddacad9a03a45f068d0e95d588518ae18a5c02af897b2dd165436308",
+          "matchesAuditHead": true
+        }
+      ],
+      "referenceGitBlob": "fafac41cfef1ab748b610084a11235227e449584",
+      "referenceMatchesHead": true,
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetFiles": [
+        "public/game/homeworld/v76/interior/rack-lateral.png"
+      ],
+      "camera_requested": {
+        "mode": "PROJECT_ORTHOGRAPHIC_TARGET",
+        "projection": "orthographic",
+        "yaw": 0,
+        "pitch": 35,
+        "measured": false
+      },
+      "cameraMeasured": false,
+      "viewPolicy": "PROJECT_CAMERA_TARGET",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOneClaimed": false,
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "scaleValidatedInGame": false,
+      "dimensionsAuthority": "NO_METRIC_DIMENSIONS_CLAIMED",
+      "proposedMetres": {},
+      "width": 1312,
+      "height": 1199,
+      "mode": "RGBA",
+      "bytes": 913432,
+      "sha256": "015f42e293889ff50f5d69de30a5208b3ea60ca9727c3ea79c26d9e5d8248b27",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 1208885,
+      "transparentRatio": 0.7684789407839867,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            0,
+            1282,
+            1177
+          ],
+          "margins": [
+            0,
+            0,
+            30,
+            22
+          ],
+          "minMargin": 0,
+          "pixels": 364203
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            376,
+            188,
+            935,
+            981
+          ],
+          "margins": [
+            376,
+            188,
+            377,
+            218
+          ],
+          "minMargin": 188,
+          "pixels": 355593
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            377,
+            188,
+            935,
+            981
+          ],
+          "margins": [
+            377,
+            188,
+            377,
+            218
+          ],
+          "minMargin": 188,
+          "pixels": 355119
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            377,
+            189,
+            934,
+            980
+          ],
+          "margins": [
+            377,
+            189,
+            378,
+            219
+          ],
+          "minMargin": 189,
+          "pixels": 353591
+        }
+      },
+      "edgeAlphaMax": 1,
+      "mainSilhouetteInsideCanvasAtAlpha24": true,
+      "strictClearMargin": false,
+      "transparentOpeningSamples": [
+        {
+          "point": [
+            25,
+            25
+          ],
+          "alpha": 0
+        }
+      ],
+      "nativePreservation": {
+        "copyByteIdentical": true,
+        "pixelsEdited": false,
+        "alphaEdited": false,
+        "mirrored": false,
+        "resized": false,
+        "padded": false,
+        "originalPreserved": true
+      },
+      "notes": [
+        "Un appel ImageGen intégré, première sortie retenue pour revue croisée.",
+        "Source native copiée octet pour octet ; aucun recadrage, miroir, redimensionnement, padding ou nettoyage alpha.",
+        "Aucun contenu canonique, mesure physique officielle ou admission runtime attribué au PNG.",
+        "La cible orthographique0°/35° décrit le brief ; angle réel non mesuré."
+      ],
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "visual_review": "Un seul petit pot fermé, ventru à épaules courtes, couvercle cerclé de bronze, bordure basse et motif bronze repris du rack V76. Aucun meuble, objet supplémentaire ni contenu visible. Silhouette entière avec espace autour. Nouvelle vue frontale demandée selon la cible du projet ; caméra réelle non mesurée."
     }
   ],
   "humanValidated": false,
@@ -1427,5 +1939,22 @@
     "archivedAttempts": [
       "production/homeworld-sectors-20261103/attempts/market/HWM162-S12-empty-cargo-rack-v1.png"
     ]
+  },
+  "round5BaseCommit": "7299b0fc2bd06dd53a45e3caab630bc75207d0ce",
+  "round5Summary": {
+    "additionalSelected": 3,
+    "selectedIds": [
+      "HWM162-S15",
+      "HWM162-S16",
+      "HWM162-S17"
+    ],
+    "previous14EntriesUnchanged": true,
+    "previous14PngUnchanged": true,
+    "nativeToolCalls": 3,
+    "correctionAttempts": 0,
+    "inheritedReferenceViewRequests": 2,
+    "projectCameraTargetRequests": 1,
+    "cameraAnglesMeasured": false,
+    "transparentPixelSamplesRecorded": true
   }
 }
