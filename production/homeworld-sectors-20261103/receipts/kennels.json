@@ -1,0 +1,859 @@
+{
+  "schema_version": 1,
+  "pack": "homeworld-sectors-20261103",
+  "category": "kennels",
+  "repository": "darknigthmare/yautja-la-longue-chasse",
+  "branch": "codex/homeworld-v158-urban-props-intake-20261102",
+  "baseline_head": "0ab844cca5f2c9b5cae28624d2c1b97fca7d5ce9",
+  "recorded_on": "2026-11-03",
+  "selected_asset_count": 6,
+  "generated_attempt_count": 7,
+  "failed_generation_count": 1,
+  "assets": [
+    {
+      "id": "HWM162-K01",
+      "name": "Bâtiment principal des chenils",
+      "target_ids": [],
+      "dimensions_m_proposed": {
+        "width": 10,
+        "depth": 8,
+        "height": 5
+      },
+      "visual_review": "Trois baies larges et ombragées; toiture, soubassements et seuils entiers; aucune créature fusionnée. Vue frontale cohérente. Les dimensions et angles exacts ne sont pas certifiés.",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png",
+      "filename": "HWM162-K01-kennel-building.png",
+      "size_bytes": 2118034,
+      "sha256": "fedb9677d90ae72cfe2ee53e9a1f5751361ea1d88da2d9169137a22d2cd9d9a5",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alpha_min": 0,
+      "alpha_max": 254,
+      "fully_transparent_pixels": 785961,
+      "fully_opaque_pixels": 0,
+      "alpha_bounds": {
+        "0": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            0,
+            0,
+            1494,
+            1024
+          ],
+          "margins_left_top_right_bottom": [
+            0,
+            0,
+            42,
+            0
+          ],
+          "pixels": 786903
+        },
+        "8": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            76,
+            154,
+            1460,
+            848
+          ],
+          "margins_left_top_right_bottom": [
+            76,
+            154,
+            76,
+            176
+          ],
+          "pixels": 765516
+        },
+        "24": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            76,
+            154,
+            1460,
+            848
+          ],
+          "margins_left_top_right_bottom": [
+            76,
+            154,
+            76,
+            176
+          ],
+          "pixels": 764619
+        },
+        "128": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            76,
+            155,
+            1460,
+            847
+          ],
+          "margins_left_top_right_bottom": [
+            76,
+            155,
+            76,
+            177
+          ],
+          "pixels": 762124
+        }
+      },
+      "generation_tool": "image_gen.imagegen",
+      "generation_mode": "built-in",
+      "source_original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-1ff774b7-2b73-48cc-80e1-b3b116d7987c.png",
+      "source_original_bytes_copied_unchanged": true,
+      "image_manipulation": false,
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "production_status": "GENERATED_ART_CANDIDATE",
+      "runtime_admitted": false,
+      "human_artistic_validation": "PENDING",
+      "camera_requested": {
+        "projection": "orthographic",
+        "yaw_degrees": 0,
+        "pitch_degrees": 35
+      },
+      "camera_measured": false,
+      "physical_scale_validated": false,
+      "transparent_background_requested": true,
+      "strict_alpha_margin_80px_pass": false,
+      "visible_silhouette_entire_at_alpha_gt24": true,
+      "visible_margin_80px_at_alpha_gt24_pass": false
+    },
+    {
+      "id": "HWM162-K02",
+      "name": "Porte de transfert des chenils",
+      "target_ids": [
+        "target-v81-71-269"
+      ],
+      "dimensions_m_proposed": {
+        "clear_entrance_width": 5,
+        "overall_width": 7,
+        "depth": 3
+      },
+      "visual_review": "Portail indépendant ouvert, piliers renforcés, seuil bas et sections latérales. Silhouette entière; marges visibles latérales étroites de 12 px. Le sas à deux portes et son fonctionnement restent à définir dans le jeu.",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K02-handling-gate.png",
+      "filename": "HWM162-K02-handling-gate.png",
+      "size_bytes": 2028210,
+      "sha256": "7d7a726ff442a711bf4212a7161d042659542d1a384056f1a1853743fa77068c",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alpha_min": 0,
+      "alpha_max": 254,
+      "fully_transparent_pixels": 992703,
+      "fully_opaque_pixels": 0,
+      "alpha_bounds": {
+        "0": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            0,
+            0,
+            1536,
+            1024
+          ],
+          "margins_left_top_right_bottom": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pixels": 580161
+        },
+        "8": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            12,
+            137,
+            1524,
+            892
+          ],
+          "margins_left_top_right_bottom": [
+            12,
+            137,
+            12,
+            132
+          ],
+          "pixels": 522448
+        },
+        "24": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            12,
+            138,
+            1524,
+            891
+          ],
+          "margins_left_top_right_bottom": [
+            12,
+            138,
+            12,
+            133
+          ],
+          "pixels": 520726
+        },
+        "128": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            13,
+            138,
+            1523,
+            891
+          ],
+          "margins_left_top_right_bottom": [
+            13,
+            138,
+            13,
+            133
+          ],
+          "pixels": 517056
+        }
+      },
+      "generation_tool": "image_gen.imagegen",
+      "generation_mode": "built-in",
+      "source_original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-de1afe89-3ceb-4106-8fbd-f55baed8d2bf.png",
+      "source_original_bytes_copied_unchanged": true,
+      "image_manipulation": false,
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "production_status": "GENERATED_ART_CANDIDATE",
+      "runtime_admitted": false,
+      "human_artistic_validation": "PENDING",
+      "camera_requested": {
+        "projection": "orthographic",
+        "yaw_degrees": 0,
+        "pitch_degrees": 35
+      },
+      "camera_measured": false,
+      "physical_scale_validated": false,
+      "transparent_background_requested": true,
+      "strict_alpha_margin_80px_pass": false,
+      "visible_silhouette_entire_at_alpha_gt24": true,
+      "visible_margin_80px_at_alpha_gt24_pass": false
+    },
+    {
+      "id": "HWM162-K03",
+      "name": "Râtelier de dressage des chiens",
+      "target_ids": [
+        "target-v81-71-274"
+      ],
+      "dimensions_m_proposed": {
+        "width": 3,
+        "depth": 0.9,
+        "height": 2.5
+      },
+      "visual_review": "Un râtelier assemblé, trois laisses enroulées et deux leurres souples tressés attachés. Pieds entiers. Pas d'animal. La combinaison sangle brune/chaîne est une adaptation de l'accessoire Hot Toys; ce râtelier n'est pas un objet canonique attesté.",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K03-training-rack.png",
+      "filename": "HWM162-K03-training-rack.png",
+      "size_bytes": 2124242,
+      "sha256": "95cef71793ec00c9a9d8ae8842e4e8beb3e83ac9eddf4be57820a2a965637797",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alpha_min": 0,
+      "alpha_max": 254,
+      "fully_transparent_pixels": 966017,
+      "fully_opaque_pixels": 0,
+      "alpha_bounds": {
+        "0": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            0,
+            9,
+            1520,
+            1024
+          ],
+          "margins_left_top_right_bottom": [
+            0,
+            9,
+            16,
+            0
+          ],
+          "pixels": 606847
+        },
+        "8": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            61,
+            111,
+            1475,
+            979
+          ],
+          "margins_left_top_right_bottom": [
+            61,
+            111,
+            61,
+            45
+          ],
+          "pixels": 528122
+        },
+        "24": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            61,
+            111,
+            1475,
+            978
+          ],
+          "margins_left_top_right_bottom": [
+            61,
+            111,
+            61,
+            46
+          ],
+          "pixels": 522914
+        },
+        "128": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            62,
+            112,
+            1474,
+            978
+          ],
+          "margins_left_top_right_bottom": [
+            62,
+            112,
+            62,
+            46
+          ],
+          "pixels": 513426
+        }
+      },
+      "generation_tool": "image_gen.imagegen",
+      "generation_mode": "built-in",
+      "source_original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-93aa78b8-b14a-4887-ab3b-8b7a57b3044e.png",
+      "source_original_bytes_copied_unchanged": true,
+      "image_manipulation": false,
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "production_status": "GENERATED_ART_CANDIDATE",
+      "runtime_admitted": false,
+      "human_artistic_validation": "PENDING",
+      "camera_requested": {
+        "projection": "orthographic",
+        "yaw_degrees": 0,
+        "pitch_degrees": 35
+      },
+      "camera_measured": false,
+      "physical_scale_validated": false,
+      "transparent_background_requested": true,
+      "strict_alpha_margin_80px_pass": false,
+      "visible_silhouette_entire_at_alpha_gt24": true,
+      "visible_margin_80px_at_alpha_gt24_pass": false
+    },
+    {
+      "id": "HWM162-K04",
+      "name": "Plateforme d'observation des chenils",
+      "target_ids": [
+        "target-v81-71-275"
+      ],
+      "dimensions_m_proposed": {
+        "width": 5,
+        "depth_including_stairs": 7,
+        "total_height": 3.5,
+        "deck_height": 2.2,
+        "railing_height": 1.3
+      },
+      "visual_review": "Escalier continu avec marches distinctes et mains courantes; palier ouvert sans garde-corps bloquant son entrée. Tous les pieds sont visibles. Nombre exact de marches/échelle non certifiés.",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K04-keeper-platform.png",
+      "filename": "HWM162-K04-keeper-platform.png",
+      "size_bytes": 1949477,
+      "sha256": "fa7bcf72db0315a379f90e5872153e75e29d9d2e893adaaac02c110d611e4a73",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alpha_min": 0,
+      "alpha_max": 254,
+      "fully_transparent_pixels": 1021869,
+      "fully_opaque_pixels": 0,
+      "alpha_bounds": {
+        "0": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            0,
+            9,
+            1530,
+            1024
+          ],
+          "margins_left_top_right_bottom": [
+            0,
+            9,
+            6,
+            0
+          ],
+          "pixels": 550995
+        },
+        "8": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            185,
+            172,
+            1354,
+            864
+          ],
+          "margins_left_top_right_bottom": [
+            185,
+            172,
+            182,
+            160
+          ],
+          "pixels": 501517
+        },
+        "24": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            185,
+            172,
+            1354,
+            864
+          ],
+          "margins_left_top_right_bottom": [
+            185,
+            172,
+            182,
+            160
+          ],
+          "pixels": 497810
+        },
+        "128": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            186,
+            173,
+            1353,
+            863
+          ],
+          "margins_left_top_right_bottom": [
+            186,
+            173,
+            183,
+            161
+          ],
+          "pixels": 491213
+        }
+      },
+      "generation_tool": "image_gen.imagegen",
+      "generation_mode": "built-in",
+      "source_original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-e33981e7-c608-4b95-8c4d-65c3925c883b.png",
+      "source_original_bytes_copied_unchanged": true,
+      "image_manipulation": false,
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "production_status": "GENERATED_ART_CANDIDATE",
+      "runtime_admitted": false,
+      "human_artistic_validation": "PENDING",
+      "camera_requested": {
+        "projection": "orthographic",
+        "yaw_degrees": 0,
+        "pitch_degrees": 35
+      },
+      "camera_measured": false,
+      "physical_scale_validated": false,
+      "transparent_background_requested": true,
+      "strict_alpha_margin_80px_pass": false,
+      "visible_silhouette_entire_at_alpha_gt24": true,
+      "visible_margin_80px_at_alpha_gt24_pass": true
+    },
+    {
+      "id": "HWM162-K05",
+      "name": "Fosse de repos drainée",
+      "target_ids": [
+        "target-v81-71-279"
+      ],
+      "dimensions_m_proposed": {
+        "width": 7,
+        "depth": 5,
+        "recess_depth": 0.65
+      },
+      "visual_review": "Bordure complète, intérieur sec visible, entrée basse large et drainage latéral. Aucun animal, aucun décor extérieur fusionné. La profondeur réelle et le raccord terrain restent à régler à l'intégration.",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K05-resting-basin.png",
+      "filename": "HWM162-K05-resting-basin.png",
+      "size_bytes": 2271437,
+      "sha256": "df1d8e518af28797dac239a4db5988bba8bd10e6eb702893833850df1ffbdecf",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alpha_min": 0,
+      "alpha_max": 254,
+      "fully_transparent_pixels": 823584,
+      "fully_opaque_pixels": 0,
+      "alpha_bounds": {
+        "0": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            0,
+            0,
+            1520,
+            1024
+          ],
+          "margins_left_top_right_bottom": [
+            0,
+            0,
+            16,
+            0
+          ],
+          "pixels": 749280
+        },
+        "8": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            103,
+            218,
+            1435,
+            826
+          ],
+          "margins_left_top_right_bottom": [
+            103,
+            218,
+            101,
+            198
+          ],
+          "pixels": 733193
+        },
+        "24": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            103,
+            219,
+            1434,
+            826
+          ],
+          "margins_left_top_right_bottom": [
+            103,
+            219,
+            102,
+            198
+          ],
+          "pixels": 731785
+        },
+        "128": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            104,
+            219,
+            1434,
+            825
+          ],
+          "margins_left_top_right_bottom": [
+            104,
+            219,
+            102,
+            199
+          ],
+          "pixels": 730243
+        }
+      },
+      "generation_tool": "image_gen.imagegen",
+      "generation_mode": "built-in",
+      "source_original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-59797de5-d19d-4223-9017-3aee89e40a30.png",
+      "source_original_bytes_copied_unchanged": true,
+      "image_manipulation": false,
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "production_status": "GENERATED_ART_CANDIDATE",
+      "runtime_admitted": false,
+      "human_artistic_validation": "PENDING",
+      "camera_requested": {
+        "projection": "orthographic",
+        "yaw_degrees": 0,
+        "pitch_degrees": 35
+      },
+      "camera_measured": false,
+      "physical_scale_validated": false,
+      "transparent_background_requested": true,
+      "strict_alpha_margin_80px_pass": false,
+      "visible_silhouette_entire_at_alpha_gt24": true,
+      "visible_margin_80px_at_alpha_gt24_pass": true
+    },
+    {
+      "id": "HWM162-K06",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K06-sliding-mesh-panel.png",
+      "filename": "HWM162-K06-sliding-mesh-panel.png",
+      "source_original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-421c35bb-622c-43a4-9bc7-3942736426ee.png",
+      "size_bytes": 1479154,
+      "sha256": "1591ab6c1a112e5373c8260c2c62d5111659212b9cb219ed79f44262f6d0dee4",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alpha_min": 0,
+      "alpha_max": 254,
+      "fully_transparent_pixels": 1252401,
+      "fully_opaque_pixels": 0,
+      "alpha_bounds": {
+        "0": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            39,
+            19,
+            1520,
+            1008
+          ],
+          "margins_left_top_right_bottom": [
+            39,
+            19,
+            16,
+            16
+          ],
+          "pixels": 320463
+        },
+        "8": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            401,
+            338,
+            1135,
+            814
+          ],
+          "margins_left_top_right_bottom": [
+            401,
+            338,
+            401,
+            210
+          ],
+          "pixels": 239069
+        },
+        "24": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            401,
+            338,
+            1135,
+            814
+          ],
+          "margins_left_top_right_bottom": [
+            401,
+            338,
+            401,
+            210
+          ],
+          "pixels": 233508
+        },
+        "128": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            402,
+            340,
+            1134,
+            813
+          ],
+          "margins_left_top_right_bottom": [
+            402,
+            340,
+            402,
+            211
+          ],
+          "pixels": 221031
+        }
+      },
+      "interior_mesh_inspection": {
+        "area_xyxy_exclusive": [
+          435,
+          385,
+          1100,
+          780
+        ],
+        "pixel_count": 262675,
+        "alpha_zero": 37402,
+        "alpha_gt24": 149653,
+        "alpha_le8": 108740
+      },
+      "name": "Battant grillagé coulissant des chenils",
+      "target_ids": [
+        "target-v81-71-269"
+      ],
+      "dimensions_m_proposed": {
+        "width": 5,
+        "height": 3.5,
+        "thickness": 0.2
+      },
+      "visual_review": "Un battant indépendant avec cadre fin, maillage en losanges, deux renforts verticaux et témoin ambre; aucun portique, pylône ou seuil fusionné. Silhouette entière. Transparence réelle entre certaines mailles, dont les mesures sont conservées; nettoyage intégral de chaque maille non certifié.",
+      "generation_tool": "image_gen.imagegen",
+      "generation_mode": "built-in-edit",
+      "source_original_bytes_copied_unchanged": true,
+      "image_manipulation": false,
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "production_status": "GENERATED_ART_CANDIDATE",
+      "runtime_admitted": false,
+      "human_artistic_validation": "PENDING",
+      "camera_requested": {
+        "projection": "orthographic",
+        "yaw_degrees": 0,
+        "pitch_degrees": 35
+      },
+      "camera_measured": false,
+      "physical_scale_validated": false,
+      "transparent_background_requested": true,
+      "strict_alpha_margin_80px_pass": false,
+      "visible_silhouette_entire_at_alpha_gt24": true,
+      "visible_margin_80px_at_alpha_gt24_pass": true,
+      "pairing": {
+        "frame_id": "HWM162-K02",
+        "reference_path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K02-handling-gate.png",
+        "reference_sha256": "7d7a726ff442a711bf4212a7161d042659542d1a384056f1a1853743fa77068c",
+        "same_canvas_dimensions": true,
+        "frame_opening_approx_xyxy": [
+          403,
+          350,
+          1132,
+          817
+        ],
+        "panel_visible_bounds_alpha_gt24": [
+          401,
+          338,
+          1135,
+          814
+        ],
+        "suggested_translation_pixels": {
+          "x": 0,
+          "y": 4
+        },
+        "suggested_rotation_degrees": 0,
+        "suggested_scale": 1,
+        "registration_status": "PROPOSED_FROM_RASTER_BOUNDS_NOT_SCENE_VERIFIED",
+        "moving_animation_provided": false,
+        "notes": "Même toile1536x1024 et orientation frontale. Une translationY+4px place la bordure sous le linteau et sur le seuil; la superposition finale, les occultations et le coulissement doivent être vérifiés au placement. Aucun fonctionnement de porte n'est revendiqué."
+      }
+    }
+  ],
+  "attempts": [
+    {
+      "id": "HWM162-K01",
+      "prompt": "Use case: stylized-concept. Asset type: one independent high-detail transparent game environment sprite for Yautja The Long Hunt, HWM162-K01. Generate ONE complete Yautja hunting-kennel building, not a scene or asset sheet. This is original game architecture compatible with the Predator Homeworld, not a claimed canonical film building. Large full-sized usable rectangular structure, proportions corresponding to about 10 m frontage, 8 m depth and 5 m maximum height. Three broad shaded animal bays with tall trapezoidal mouths, deep shelters, wide clearances for large spiky hunting beasts; no animals inside. Reinforced basalt foundations, weathered dark gunmetal walls and aged bronze edge plates, layered alien trapezoidal buttresses and subtle Predator-like industrial craft, tiny amber status lights. Match the material feel of the displayed dark stone/bronze market-stall and Homeworld references, but do not copy their composition or add market goods. Keep the building sober and functional; no medieval cottage, doghouse, European roof, cute toy scale, human signage or generic gothic skull decoration. Camera: fixed orthographic projection, global yaw exactly 0 degrees, pitched down 35 degrees. Front facade parallel to screen horizontal, parallel verticals, roof depth visible without rotating the building into a diamond/isometric view. Composition: whole roof, all exterior walls, thresholds and foundations fully visible. Center the complete object within only 70-75 percent of the canvas width and height, with at least 80 pixels of COMPLETELY transparent margin on ALL FOUR SIDES. Real RGBA transparency everywhere outside the building, no background, no checkerboard painted in, no horizon, no ground plane or scenic slab, no floor shadow beyond the silhouette. Preserve realistic elongated bays, thin wall panels and full-height door clearances, not a compressed maquette. High-resolution detailed painterly 3D sprite, neutral soft light from upper left, restrained warm highlights. Absolutely no people, dogs, text, labels, dimension arrows, watermark, border, collage, extra detached objects or comparison views.",
+      "attempt": 1,
+      "status": "GENERATED_SELECTED",
+      "original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-1ff774b7-2b73-48cc-80e1-b3b116d7987c.png"
+    },
+    {
+      "id": "HWM162-K01",
+      "attempt": 2,
+      "prompt": "Use case: background-extraction. Edit ONLY the supplied kennel sprite's framing and exterior background. Preserve the exact three-bay building, every roof detail, material, front-facing camera, proportions and colors. Produce ONE centered complete isolated building on a genuinely empty transparent RGBA canvas. REMOVE ALL of the brown/black vignette, haze, glow, lighting aura, surrounding shadow and background pixels. Absolutely every pixel outside the hard building silhouette and its antialiased edge must have alpha=0. There must be no dark semitransparent cloud anywhere. Fit the entire unchanged building into the central 70 percent of the canvas width and no more than 70 percent of its height, with a continuous entirely transparent border at least 150 pixels wide on each of the four sides. Its roof and foundations must remain completely visible. Do not crop, redesign, add ground, add label, add a floor shadow or add another object. Transparent background, no painted checkerboard. Keep the subject's own interior shadows only. High-quality original full-resolution building sprite.",
+      "status": "GENERATED_NOT_SELECTED",
+      "original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-a25059c8-127d-4f4b-954e-828566e79a76.png",
+      "sha256": "9ed7032b8e2f41e58f6c4642d73df0e71eca5dceb7e8a956d60cc0b2671691bb",
+      "size_bytes": 2226766,
+      "selection_reason": "L'essai 1 conserve une marge visible légèrement supérieure; le nouvel essai ne résout pas les pixels alpha faibles périphériques.",
+      "margins_alpha_gt0": [
+        31,
+        18,
+        3,
+        0
+      ],
+      "margins_alpha_gt24": [
+        75,
+        155,
+        74,
+        176
+      ],
+      "retained_in_selected_sprite_folder": false
+    },
+    {
+      "id": "HWM162-K02",
+      "prompt": "Use case: stylized-concept. Asset type: HWM162-K02, single independent transparent environment sprite. ONE completely isolated Yautja kennel transfer-gate/handling-sas module, original game adaptation. The entire free-standing gate is about 7 m overall width with an unobstructed 5 m clear passage, tall enough for the wide radial bone spikes of the Predators 2010 hunting hounds. Two massively reinforced sloped basalt/dark gunmetal pylons connected by a trapezoidal bronze-edged lintel, clearly visible sliding gate plates housed completely inside side pylons so the central opening is OPEN. Short integral side guard sections define a compact 3 m transfer depth; no complete enclosure, no other buildings. Ground-level threshold is almost flush so large quadrupeds can walk through. All functional proportions full size, no compressed toy or miniature. Aged bronze edge armor, dark charcoal volcanic stone, subtle layered Predator-like technology, sparse tiny amber inlaid indicators, no strings of decorative lights. Camera strict ORTHOGRAPHIC, global yaw 0 degrees and downward pitch35 degrees; broad front exactly horizontal, vertical pillars parallel, depth foreshortened without an isometric diamond angle. Full asset centered in central70 percent of a generous canvas. At least150 pixels of FULLY EMPTY alpha-zero transparent space on every edge. Background must be 100 percent transparent, NO vignette, NO haze, NO outer glow, NO cast shadow, NO ground plane, NO floor slab, NO fog, NO backdrop. Maintain hard clean antialiased cutout boundary. High detail painterly 3D game sprite, neutral soft upper-left illumination on the object only. No animal, no humanoid, no props beside gate, no text/glyph lettering, no watermark, no labels, no panels, no collage. One object and one view only.",
+      "attempt": 1,
+      "status": "GENERATED_SELECTED",
+      "original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-de1afe89-3ceb-4106-8fbd-f55baed8d2bf.png"
+    },
+    {
+      "id": "HWM162-K03",
+      "prompt": "Use case: stylized-concept. Asset type: HWM162-K03, ONE independent Yautja kennel training-equipment rack sprite. One free-standing rack with two angled dark basalt/black metal feet, aged bronze trapezoidal upright supports and one horizontal hanging bar. Attached to that rack are neatly stored three dark metal-chain leads with brown leather-like loop handles, and two blunt nonweapon training lures made of tough woven brown fiber. Everything hangs attached to this ONE rack, no detached scatter or secondary objects. The lead's combination of a brown strap handle and dark metallic chain follows the licensed Hot Toys Tracker Predator with Hound accessory; the rack itself is an original game adaptation, not a canonical film prop. About3 m width,2.5 m height,0.9 m depth, built for a full-size alien keeper, not a domestic pet store. Tough utilitarian layered Predator-inspired craftsmanship; no medieval armory, human dog-toy bone shapes, display masks, skulls, swords, guns or torture devices. Palette charcoal stone, old dark gunmetal, muted aged bronze, dark brown straps, only one tiny amber indicator embedded in a post. Strict orthographic game projection: yaw0 degrees, downward pitch35 degrees, main hanging bar horizontal and all verticals parallel, no dramatic camera. Show entire rack and its feet fully, with clear depth. Object centered and modestly sized, taking about70 percent of the canvas, generous empty margins at least100 pixels on all sides. Genuinely transparent RGBA background with alpha zero outside the silhouette, no floor slab, no scenic ground, no vignette, no fog, no glow or cast shadow. Crisp detailed painterly 3D environment sprite, diffuse light from upper left. Absolutely no text, labels, UI, logos, watermark, characters, dogs, scenery, border, contact sheet or extra view. ONE isolated object only.",
+      "attempt": 1,
+      "status": "GENERATION_REJECTED_NO_FILE",
+      "error": {
+        "type": "moderation_blocked",
+        "stage": "output",
+        "category": "violence",
+        "request_id": "be09fca2-0d0f-480c-ba76-8b209e2cc4d1"
+      },
+      "safer_followup": "Version de rangement paisible de laisses et jouets tressés, sans vocabulaire ambigu lié aux armes ou contraintes."
+    },
+    {
+      "id": "HWM162-K03",
+      "attempt": 2,
+      "prompt": "Use case: stylized-concept. Generate a single independent transparent game sprite of an alien animal-care storage rack, HWM162-K03. This is a peaceful utility object for the kennel keepers in Yautja The Long Hunt. One free-standing rack, about3 m wide and2.5 m tall, with two solid dark basalt feet, angled bronze-edged black metal uprights and a horizontal support bar. Three rolled dark-metal pet leads with brown loop handles hang neatly from pegs; two soft brown woven training toys hang beside them. All accessories remain attached to the rack and form one cohesive usable prop. The brown handle plus metal lead combination is based on the Hot Toys Tracker-with-Hound accessory; the storage structure is an original game design. Materials: weathered charcoal basalt, dark gunmetal, aged bronze, leather-like brown straps, practical layered trapezoid geometry matching the displayed Homeworld architecture. Accurate full-size proportions for an adult alien caretaker. Calm neutral lighting, finely detailed painterly3D game art. Camera is orthographic, global yaw0 degrees, pitch down35 degrees; horizontal front beam, parallel vertical posts, no perspective convergence. Entire rack and feet centered within the middle70 percent of a wide canvas, leaving broad empty transparent borders all around. True transparent RGBA background; only the object is visible. Keep outside space perfectly empty, without shadow, haze, vignette, ground, glow or decorative background. No lettering or labels. One complete object, one view, no surrounding objects, no people or animals.",
+      "status": "GENERATED_SELECTED",
+      "original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-93aa78b8-b14a-4887-ab3b-8b7a57b3044e.png"
+    },
+    {
+      "id": "HWM162-K04",
+      "prompt": "Use case: stylized-concept. Asset type: HWM162-K04, ONE independent transparent game sprite of a Yautja kennel keeper's observation platform, original game adaptation. A fully constructed standing observation deck with four strong splayed basalt and dark-metal supports, aged bronze layered trapezoidal edge plating, and OPEN protective railings. Real full-size structure about5 m wide,7 m long including stairs and3.5 m maximum height including the railing; the deck itself is2.2 m above the ground with1.3 m guardrails. One complete usable staircase connects ground to deck: eleven even shallow risers, deep treads, a clear landing and continuous handrails. The stair entrance into the deck has an actual opening in the railing, never a rail blocking the last step. The staircase descends naturally alongside the platform with full practical run and generous width for a tall Yautja keeper; do not compress the stairs into a ladder or miniature steep incline. All stair feet, posts, railings, landing and deck must fit fully in the frame. No roof, no animal pen attached, no NPC, no furniture or unrelated props. Restrained industrial alien design consistent with the shown Homeworld basalt/old bronze materials, small amber inset indicator on the platform edge. Camera exact orthographic at global yaw0 degrees and downward pitch35 degrees; front deck edge parallel to screen horizontal and all verticals parallel; show the floor surface and actual depth. Render the whole structure centered at modest size, only70 percent of available canvas, with at least100 pixels of empty transparent margin on every side. Genuine RGBA transparency outside the object, empty backdrop, no ground plane or base terrain slab, no cast shadow, no vignette, fog or halo. Detailed realistic painterly3D sprite, diffuse upper-left light. One object, one view only. No labels, text, numbers, UI, watermark or contact sheet.",
+      "attempt": 1,
+      "status": "GENERATED_SELECTED",
+      "original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-e33981e7-c608-4b95-8c4d-65c3925c883b.png"
+    },
+    {
+      "id": "HWM162-K05",
+      "prompt": "Use case: stylized-concept. Asset type: HWM162-K05, ONE independent transparent game environment sprite. One complete shallow recessed resting-and-drainage basin module for a Yautja kennel courtyard, original game adaptation. Broad low rectangular depression about7 m wide and5 m deep, only0.65 m recessed. Entire continuous low bevelled basalt rim visible on all four sides, with weathered dark bronze reinforcement at corners and a wide gently sloped integral entry on the front edge so an animal can walk in. Interior visible: slightly lower dry compacted dark earthen resting bed, a narrow inset metal drainage grate along one side and a small corner sump; no liquid, no animal, no bones, no occupant, no cage. This is a functional shallow earthwork module, not a raised bathtub, monumental pit or miniature decorative fountain. The only ground material shown is structurally inside the module and its narrow rim, with no surrounding terrain patch. Coherent practical Homeworld material language: charcoal volcanic basalt, aged bronze edge plates, dark metal grates, angular trapezoidal joinery. Minimal tiny amber inset on the drain service cover. Camera strict orthographic, global yaw0 degrees, pitch35 degrees down; near rim horizontal, sides parallel in projection, enough downward view to read the recessed interior. Center entire basin modestly in the middle70 percent of the canvas width and height, keep every rim corner and entry fully visible, leave at least100 pixels of empty space on all sides. True transparent RGBA around the full silhouette. No ground plane, backdrop, vignette, glow, haze, shadows outside the object or painted checkerboard. High-detail painterly3D sprite with neutral soft upper-left light. One object, one view, no scene or sheet. No texts, labels, diagrams, people, creatures, ornaments or detached objects.",
+      "attempt": 1,
+      "status": "GENERATED_SELECTED",
+      "original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-59797de5-d19d-4223-9017-3aee89e40a30.png"
+    },
+    {
+      "id": "HWM162-K06",
+      "attempt": 1,
+      "prompt": "Use case: precise-object-edit. Edit the supplied open alien gate reference into ONLY its separate sliding mesh DOOR LEAF asset, HWM162-K06. The reference image is1536x1024. Maintain that exact canvas and orthographic camera registration. Remove ALL existing support architecture: remove both basalt pylons, the overhead lintel, the side walls, the lower threshold and all background. The sole remaining object must be a newly constructed single rectangular metal lattice door leaf that fits the central opening of the reference. Place this panel at approximately x394..1142 and y337..821 on the same1536x1024 canvas, so it can sit behind the reference's opening without any rotation; do not enlarge it to fill the canvas. This leaves broad transparent margins. Keep the same front-horizontal yaw0 view with35degree downward pitch; panel is a flat vertical rectangle about5m proposed width,3.5m proposed height and0.2m thickness. Match exactly the existing weathered dark gunmetal and restrained aged-bronze edging. A thin reinforced rectangular outer rim surrounds a heavy open diamond metal lattice, with two slim vertical reinforcement strips. All holes through the lattice must be genuinely see-through transparent alpha0, never a dark flat backing. One small amber status inset on its own rim. Show the narrow top and side thickness consistently with the reference, no dramatic perspective. This is one movable sliding panel ONLY, no housing, no new gateway, no columns, no ground or environment. Calm diffuse object lighting. Entire panel visible and uncut. True RGBA transparent background with no shadow, vignette, fog or halo. No text, labels, logo, decoration, animals, people or second view. Preserve the design language of the reference while delivering only the independent closed door leaf, not the whole gate.",
+      "status": "GENERATED_SELECTED",
+      "original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-421c35bb-622c-43a4-9bc7-3942736426ee.png",
+      "reference_image_paths": [
+        "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/kennels/HWM162-K02-handling-gate.png"
+      ],
+      "sha256": "1591ab6c1a112e5373c8260c2c62d5111659212b9cb219ed79f44262f6d0dee4"
+    }
+  ],
+  "references": [
+    {
+      "id": "project-market-materials",
+      "kind": "existing_project_style",
+      "workspace_path": "/workspace/scratch/2166fec07f86/references/market-stall-right.png",
+      "visually_inspected": true,
+      "usage": "Matériaux seulement : basalte, métal sombre et bronze vieilli. Pas une preuve de lore."
+    },
+    {
+      "id": "project-homeworld-layout",
+      "kind": "existing_project_style",
+      "workspace_path": "/workspace/scratch/2166fec07f86/references/homeworld-macro-layout-latest.png",
+      "visually_inspected": true,
+      "usage": "Cohérence générale d'architecture et échelle ambitieuse. Création du projet, pas une référence canonique certifiée."
+    },
+    {
+      "id": "licensed-tracker-hound",
+      "kind": "licensed_product",
+      "url": "https://www.hottoys.jp/item/view/100001667",
+      "image_url": "https://www.hottoys.jp/catalog/swfdata/ht3225/image/trackerpredator-03.png",
+      "visually_inspected": true,
+      "usage": "Matériaux sangle/chaîne pour K03; enveloppe des piques du Hound2010 pour l'intention de dégagement de K01/K02. Aucun chenil canonique montré."
+    },
+    {
+      "id": "licensed-hound-2018",
+      "kind": "licensed_product",
+      "url": "https://www.prime1studio.com/tpr-predator-hound/PMTPR-03.html",
+      "image_url": "https://www.prime1studio.com/on/demandware.static/-/Sites-p1s-master-catalog/default/dw33f80efa/images/PMTPR-03/catalog/pmtpr-03_b07.jpg",
+      "visually_inspected": true,
+      "usage": "Garder séparées les morphologies2010/2018. Le socle est une création de figurine inspirée d'un vaisseau, pas une preuve de chenil."
+    },
+    {
+      "id": "hybride-hounds",
+      "kind": "production_studio_press_release_republished",
+      "url": "https://www.awn.com/news/hybride-delivers-470-vfx-predators",
+      "usage": "Usage des chiens2010 pour rabattre les proies; ne documente ni bâtiment ni soins."
+    },
+    {
+      "id": "K02-raster-registration",
+      "kind": "generated_project_asset",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K02-handling-gate.png",
+      "sha256": "7d7a726ff442a711bf4212a7161d042659542d1a384056f1a1853743fa77068c",
+      "visually_inspected": true,
+      "usage": "Référence d'édition du battant K06, matériaux et positionnement dans l'ouverture du portique. Original du jeu; aucune preuve de canon."
+    }
+  ],
+  "quality_summary": {
+    "method": "Copie octet pour octet, SHA-256, décodage Pillow, histogramme alpha et bounding boxes de contrôle aux seuils strictement supérieurs à 0/8/24/128. Inspection visuelle de chaque sortie générée. Aucun pixel modifié.",
+    "true_transparency_all": true,
+    "all_have_visible_pixels": true,
+    "all_visible_silhouettes_entire_at_alpha_gt24": true,
+    "strict_alpha_80px_margin_all": false,
+    "limitations": [
+      "Des pixels de faible alpha touchent certains bords; les fichiers originaux restent inchangés.",
+      "Les six sorties plafonnent à alpha254; aucun pixel alpha255, ce qui est consigné sans correction.",
+      "K01/K02/K03 n'atteignent pas la marge visible80px sur tous les côtés; ils gardent une silhouette entière.",
+      "Les dimensions physiques, la caméra exacte, les pivots, collisions, raccords et comportement ne sont pas validés par ces contrôles.",
+      "Tous les bâtiments et accessoires sont des adaptations originales; zéro certification canonique1:1, zéro admission runtime, zéro validation humaine présumée.",
+      "K06 fournit le battant séparé du portique K02. Le placement par translation est une proposition mesurée sur les rasters; le fonctionnement en jeu et l'animation ne sont pas fournis."
+    ],
+    "upstream_guide_reading": "AGENTS.md et docs/GAMEDEV_AGENT_GUIDE.md lus. L'accès web au create-game-assets/SKILL.md au commit épinglé a échoué avec DisabledError; la poursuite selon les consignes locales est prévue par ce guide."
+  }
+}

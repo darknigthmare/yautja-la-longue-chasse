@@ -1,0 +1,357 @@
+{
+  "schema_version": 1,
+  "batch": "homeworld-v162",
+  "domain": "mounts",
+  "generator": "built-in image_gen",
+  "upstream_asset_guide_status": "Web open disabled; local GAMEDEV_AGENT_GUIDE read",
+  "lore_status": "ORIGINAL_GAME_ADAPTATION",
+  "style_references": [
+    "/workspace/scratch/2166fec07f86/references/market-stall-right.png",
+    "/workspace/scratch/2166fec07f86/references/homeworld-macro-layout-latest.png"
+  ],
+  "lore_reference_urls": [
+    "https://www.avpgalaxy.net/website/interviews/dan-trachtenberg-2/",
+    "https://alexnice.artstation.com/projects/Bk859k"
+  ],
+  "assets": [
+    {
+      "id": "HWM162-M01",
+      "label": "Écurie ouverte pour grandes montures",
+      "file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M01-open-stable.png",
+      "source_original": "/workspace/scratch/2166fec07f86/generated_images/exec-9d3303f1-eef8-4706-ba2c-8d9308f04658.png",
+      "prompt": "Use case: stylized-concept. Asset type: ONE independent transparent-background PNG game sprite, HWM162-M01, open Yautja mount stable building for Yautja The Long Hunt. This is an ORIGINAL GAME ADAPTATION of Yautja clan architecture, not a claimed canonical film building.\nSubject: one complete full-size practical alien stable, 14 metres wide, 10 metres deep, 7 metres tall. A large open front with three spacious bays, the central entrance 4m wide by 5m high, deep interior visible, strong segmented trapezoidal structural columns, broad low-pitched segmented roof, thick functional stone foundation and flush accessible threshold. Do not compress it into a tiny tabletop building: realistic inhabited architectural proportions, large clearances for giant quadruped mounts. Empty bays and clear circulation. All features are integral to the building.\nCamera: orthographic, yaw 0 degrees, pitch 35 degrees looking down toward the open front; straight vertical columns and parallel horizontal edges; NOT 45-degree isometric, NOT perspective vanishing points. Natural top-left soft lighting, restrained warm amber light only inside tiny structural insets, clean crisp silhouette.\nMaterials: weathered dark basalt, aged bronze edge plates, gunmetal joints, subtle rust-red fabric ventilation screens within side openings. Predator/Yautja visual language: angular segmented alien technology integrated into ancient stone, sparse abstract clan marks, utilitarian surfaces. Highly detailed believable game concept render with hand-painted finish; dark desaturated earth palette matching a volcanic alien homeworld.\nComposition: entire building INCLUDING roof, all foundations, all feet centered and uncropped. The complete object occupies ONLY 70–75 percent of the canvas; a generous empty TRANSPARENT margin of at least 80px on EVERY side, including beneath foundation. Transparent background with real alpha, no opaque backdrop or checkerboard drawing, no ground plane or landscape, no cast shadow outside the object. No people, no animals, no harnesses, no furniture, no standalone attached props, no decorative terrain.\nText: none. Avoid readable glyphs, labels, diagrams, collage, contact sheet, multiple variations, medieval wooden barn, hay stacks, Gothic spikes, excessive spikes, fluorescent neon, miniature diorama scale, pedestal base. Only one separate building sprite.",
+      "requested_dimensions_m": {
+        "width": 14,
+        "depth": 10,
+        "height": 7
+      },
+      "mode": "RGBA",
+      "dimensions_px": [
+        1536,
+        1024
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_zero_pixels": 792528,
+      "alpha_bbox": [
+        0,
+        0,
+        1504,
+        1024
+      ],
+      "sha256": "b2f958ccd6a992c269b94cf32900ccfc2a5b8c2063a231891c445c8396ec6518",
+      "status": "GENERATED_ORIGINAL_PENDING_FINAL_REVIEW",
+      "review_note": "Full building silhouette observed with visible margins. Low alpha background pixels reach canvas edges; actual alpha bounds require final review. No resizing/padding or background edit performed.",
+      "runtime_integrated": false,
+      "human_art_validated": false,
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "canon_1_to_1_claim": false,
+      "bytes": 2196037,
+      "alpha_bbox_8": [
+        97,
+        159,
+        1439,
+        850
+      ],
+      "substantial_silhouette_margins_px": [
+        97,
+        159,
+        97,
+        174
+      ],
+      "edge_alpha_max": 1,
+      "original_unchanged": true,
+      "imagegen_calls_for_asset": 1,
+      "camera_requested": {
+        "yaw_degrees": 0,
+        "pitch_degrees": 35,
+        "projection": "orthographic"
+      }
+    },
+    {
+      "id": "HWM162-M02",
+      "label": "Borne d’attache pour grandes montures",
+      "target_id": "target-v81-72-281",
+      "file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M02-tether-station.png",
+      "source_original": "/workspace/scratch/2166fec07f86/generated_images/exec-73b65df9-badb-45f9-b6d5-f4091786f386.png",
+      "prompt": "Use case: stylized-concept. Asset type: ONE independent transparent PNG sprite HWM162-M02 for Yautja The Long Hunt, a large mount tether station. Original game adaptation, practical Yautja alien equipment.\nSubject: a single heavy-duty anchoring bollard for a very large quadruped mount, approximately 2.4m high, with a broad structurally reinforced basalt foot, tapered angular gunmetal body, segmented aged-bronze plates, a massive captive rotating attachment ring at chest height and a SHORT captive metal tether chain secured back into a built-in recess. All parts physically connected as ONE usable object, no separate loose accessories. Tiny recessed amber indicator, sparse nonlinguistic clan scar marks. Mechanical strength and believable wear, no weapons or blades.\nView: orthographic camera yaw0 pitch35 downward toward front, no vanishing-point perspective, parallel edges. Soft neutral light from upper left. Highly detailed hand-painted realistic game concept rendering, weathered dark basalt and gunmetal with aged bronze edges. Match utilitarian Predator/Yautja homeworld equipment; not fantasy medieval scenery.\nFrame: entire object including foot and ring fully inside canvas. Occupy about 65–70% of height only, centered with at least 100px completely empty transparent margin on every side. Background must be genuinely TRANSPARENT with alpha EXACTLY ZERO outside the solid object; no halo, fog, ambient vignette, backlight, painted checkerboard, opaque gradient or floor shadow. Fine crisp antialiased outer edges only.\nOne isolated tether station only; no creature, no person, no stable, no enclosure, no rope sprawling across ground, no landscape, no floor plane, no plinth display base except structural foot, no text, no labels, no diagrams, no contact sheet, no extra variations, no neon, no extravagant spikes.",
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "mode": "RGBA",
+      "dimensions_px": [
+        1182,
+        1330
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "alpha_zero_pixels": 1051690,
+      "alpha_bbox": [
+        0,
+        0,
+        1164,
+        1330
+      ],
+      "alpha_bbox_8": [
+        245,
+        50,
+        937,
+        1250
+      ],
+      "sha256": "e61634fd7c5ea92792c06586e6b7edb4ed23b570084931177cb32774c80865fa",
+      "status": "GENERATED_ORIGINAL_PENDING_FINAL_REVIEW",
+      "review_note": "One tether station; full silhouette visually observed, margins smaller than requested near top; no resizing, padding or alpha changes.",
+      "runtime_integrated": false,
+      "human_art_validated": false,
+      "canon_1_to_1_claim": false,
+      "bytes": 1248514,
+      "substantial_silhouette_margins_px": [
+        245,
+        50,
+        245,
+        80
+      ],
+      "edge_alpha_max": 1,
+      "original_unchanged": true,
+      "imagegen_calls_for_asset": 1,
+      "camera_requested": {
+        "yaw_degrees": 0,
+        "pitch_degrees": 35,
+        "projection": "orthographic"
+      }
+    },
+    {
+      "id": "HWM162-M03",
+      "label": "Plateforme de monte à longue rampe",
+      "target_id": "target-v81-72-286",
+      "file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M03-mounting-platform.png",
+      "source_original": "/workspace/scratch/2166fec07f86/generated_images/exec-8584d164-1617-4842-8bcd-a301743aece0.png",
+      "prompt": "Use case: stylized-concept. Asset type: ONE independent transparent-background game sprite HWM162-M03 for Yautja The Long Hunt. An original game adaptation: usable mounting platform for a giant Yautja riding beast.\nSubject: one self-contained large architectural mounting platform with a LONG gently sloped approach ramp, approximately 10m ramp run rising only 1.8m, ramp 2m wide, platform 3m by 3m. The ramp and platform are a continuous connected object with a genuinely walkable uninterrupted surface, low shallow anti-slip ribs, subtle beveled side curb. At the upper landing the animal-facing right edge stays open for the rider to step onto a mount. On the opposite edge only, a practical waist-high metal handrail is integrated. The elevated platform has trapezoidal braced support piers and full visible feet. Nothing floating. No stairs substituted for the long ramp.\nMaterial and design: worn dark basalt panels, aged bronze edge strips, strong gunmetal segmented joints, sparse abstract clan marks and a few tiny recessed amber edge indicators. Alien Yautja craftsmanship and heavy mechanical construction, practical and restrained; no gothic decoration, no wood.\nCamera: orthographic scene camera yaw0 pitch35, showing a front and slight side face; object oriented with ramp extending from lower left to the elevated landing at upper right so the usable ramp length is legible. Parallel perspective, no vanishing points, high detailed realistic hand-painted game rendering, soft upper-left light, consistent volcanic Homeworld palette.\nComposition: landscape canvas, requested 1536x1024. Zoomed out: entire connected platform and full ramp occupy only60–65% of canvas width and height; leave at least140px completely empty TRANSPARENT border on ALL FOUR SIDES. Full silhouette uncropped. Real alpha background, exactlyzero alpha outside object edges, no faint vignette, halo, fog, outer glow, checkerboard painting, scene floor, surrounding terrain or cast shadow outside object.\nOne isolated complete mounting-platform object only. No humans, no Yautja, no animals, no stable, no standalone accessories, no environment, no text, no legible writing, no labels, no contact sheet or multiple variations. The function must read as a full-size platform, not miniature diorama or an altar.",
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "requested_dimensions_m": {
+        "ramp_length": 10,
+        "ramp_width": 2,
+        "platform_width": 3,
+        "platform_depth": 3,
+        "platform_height": 1.8
+      },
+      "mode": "RGBA",
+      "dimensions_px": [
+        1536,
+        1024
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_zero_pixels": 1264839,
+      "alpha_bbox": [
+        0,
+        0,
+        1524,
+        1024
+      ],
+      "alpha_bbox_8": [
+        66,
+        204,
+        1465,
+        846
+      ],
+      "sha256": "c2997f12d43ba912223b9e339dca9ec5799a37d62397ee21aeef88f80f2277c7",
+      "status": "GENERATED_ORIGINAL_PENDING_FINAL_REVIEW",
+      "review_note": "One connected long ramp and mounting landing; unobstructed mount-facing edge. Whole object visible, with rendered margins smaller than requested. No resizing, padding or alpha changes.",
+      "runtime_integrated": false,
+      "human_art_validated": false,
+      "canon_1_to_1_claim": false,
+      "bytes": 1479050,
+      "substantial_silhouette_margins_px": [
+        66,
+        204,
+        71,
+        178
+      ],
+      "edge_alpha_max": 1,
+      "original_unchanged": true,
+      "imagegen_calls_for_asset": 1,
+      "camera_requested": {
+        "yaw_degrees": 0,
+        "pitch_degrees": 35,
+        "projection": "orthographic"
+      }
+    },
+    {
+      "id": "HWM162-M04",
+      "label": "Clôture renforcée pour grandes montures",
+      "target_id": "target-v81-72-287",
+      "file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M04-corral-fence.png",
+      "source_original": "/workspace/scratch/2166fec07f86/generated_images/exec-99bad4ef-c6f5-4fdc-ad57-60100b093917.png",
+      "prompt": "Use case: stylized-concept. Asset type: ONE standalone transparent PNG game sprite, HWM162-M04, heavy large-animal corral fence segment for Yautja The Long Hunt. Original game adaptation.\nA SINGLE modular open fence section, approximately5m wide and3m high, with TWO substantial tapered basalt-and-gunmetal end posts, three thick horizontal rounded rectangular metal rails connecting them, rigid diagonal brace integrated low on the rear, mechanically convincing captive joints at each rail end. Large open gaps, clearly an outdoor fence NOT a cage, not a building or full enclosure. Flared deeply anchored structural feet, full visible feet, no giant floor plinth. Smooth blunt post tops and rounded safe inner faces, no spikes. Dark aged bronze covers on corners, weathered dark gunmetal rails, dark basalt post cores. Sparse abstract clan claw-scar pattern, a tiny amber status inset per post.\nRender as a realistic detailed hand-painted game asset with controlled high-contrast silhouette and subtle wear. Orthographic camera yaw0 pitch35, front view from above seeing top edges and feet, parallel horizontal rails, no converging perspective. Soft diffuse light upper left, no atmospheric effect, no shadow outside the silhouette.\nIMPORTANT FRAMING: wide1536x1024 transparent canvas. Make the fence SMALL in the center: the entire object must occupy no more than60% of the canvas WIDTH and60% of HEIGHT. Broad wholly transparent border of minimum150px on all sides. Do not fill frame. Full segment, both posts and all feet completely visible. Transparent background using actual alpha; exactlyzero background alpha with no halo, fog, vignette, haze or gradient. Edge antialiasing limited to the immediate object contour.\nNo animals, no people, no plant, no surrounding ground, no rope, no disconnected props, no complete corral, no roof, no mesh cage, no medieval wood, no sci-fi neon bars, no display plaque, no writing, no labels, no title, no contact sheet. One independent connected fence sprite only.",
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "requested_dimensions_m": {
+        "width": 5,
+        "height": 3
+      },
+      "mode": "RGBA",
+      "dimensions_px": [
+        1536,
+        1024
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_zero_pixels": 1110357,
+      "alpha_bbox": [
+        0,
+        19,
+        1522,
+        1024
+      ],
+      "alpha_bbox_8": [
+        158,
+        238,
+        1379,
+        840
+      ],
+      "sha256": "4045b9d71693b66341d14b45dde68930d3664a56784d4bf1ce69c097e247a525",
+      "status": "GENERATED_ORIGINAL_PENDING_FINAL_REVIEW",
+      "review_note": "One open connected reinforced fence segment, both full feet visible; no enclosure or cage. Weak alpha noise outside silhouette requires final review; no resizing/padding/alpha change.",
+      "runtime_integrated": false,
+      "human_art_validated": false,
+      "canon_1_to_1_claim": false,
+      "bytes": 1675317,
+      "substantial_silhouette_margins_px": [
+        158,
+        238,
+        157,
+        184
+      ],
+      "edge_alpha_max": 1,
+      "original_unchanged": true,
+      "imagegen_calls_for_asset": 1,
+      "camera_requested": {
+        "yaw_degrees": 0,
+        "pitch_degrees": 35,
+        "projection": "orthographic"
+      }
+    },
+    {
+      "id": "HWM162-M05",
+      "label": "Obstacle réglable d’entraînement des montures",
+      "target_id": "target-v81-72-289",
+      "file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M05-training-hurdle.png",
+      "source_original": "/workspace/scratch/2166fec07f86/generated_images/exec-f34a490f-42cb-43df-bc8c-8b02a84e08eb.png",
+      "prompt": "Use case: stylized-concept. Asset type: ONE separate transparent PNG sprite HWM162-M05, a modular riding-beast training obstacle for Yautja The Long Hunt. Original game adaptation.\nSubject: ONE low adjustable hurdle for training very large alien mounts, 4.5m clear span and1.3m high, two broad sturdy gunmetal-and-basalt uprights connected by ONE thick rounded breakaway training rail. The rail has a hard dark segmented core covered with tough worn muted rust-red woven protective wrapping. Rail held in visibly shallow removable cradles; multiple adjustment recesses on inward post faces but only one rail installed. Each upright has a full broad low-profile weighted stone foot and aged bronze corner guards. Safe blunt forms, no sharpened edge, no spike, no trap. Tiny amber recessed indicator on each upright. This is a single training obstacle module, not a gate, fence panel or whole training course.\nStyle: believable detailed painterly-realistic game prop, restrained ancient alien Yautja mechanical shapes, weathered charcoal basalt, aged bronze, dark gunmetal, rust-red wrap. Match a volcanic Predator homeworld. Orthographic camera yaw0 pitch35 downward toward front; parallel lines and visible tops, soft upper-left diffuse light. No theatrical spotlight.\nFraming:1536x1024 landscape composition. Full object SMALL and centered, entire obstacle no more than60% canvas width and55% canvas height; generous minimum150px empty transparent border on every side. Both complete feet and rail fully visible, nothing clipped. Real transparent alpha background exactlyzero outside tight antialiased silhouette. No opaque gradient, fog, bloom, halo, floor shadow, ground plane, scenic backdrop.\nOnly one connected obstacle. No people, no animals, no extra hurdles, no arena, no vegetation, no saddle, no equipment pile, no text or legible alien writing, no labels, no contact sheet, no multiple viewpoints, no pedestal.",
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "requested_dimensions_m": {
+        "clear_span": 4.5,
+        "height": 1.3
+      },
+      "mode": "RGBA",
+      "dimensions_px": [
+        1536,
+        1024
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_zero_pixels": 1349695,
+      "alpha_bbox": [
+        19,
+        9,
+        1526,
+        1024
+      ],
+      "alpha_bbox_8": [
+        169,
+        303,
+        1367,
+        738
+      ],
+      "sha256": "3c5525569fdffe27192b92297476d23692f32e959c9404a91e8f64a75e9e81a2",
+      "status": "GENERATED_ORIGINAL_PENDING_FINAL_REVIEW",
+      "review_note": "One adjustable hurdle, covered removable rail and broad feet. Full silhouette visible. Weak alpha noise outside silhouette requires final review; no resizing/padding/alpha change.",
+      "runtime_integrated": false,
+      "human_art_validated": false,
+      "canon_1_to_1_claim": false,
+      "bytes": 1318052,
+      "substantial_silhouette_margins_px": [
+        169,
+        303,
+        169,
+        286
+      ],
+      "edge_alpha_max": 1,
+      "original_unchanged": true,
+      "imagegen_calls_for_asset": 1,
+      "camera_requested": {
+        "yaw_degrees": 0,
+        "pitch_degrees": 35,
+        "projection": "orthographic"
+      }
+    },
+    {
+      "id": "HWM162-M06",
+      "label": "Poste de soins de la faune",
+      "target_id": "target-v81-72-290",
+      "file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M06-fauna-care-workstation.png",
+      "source_original": "/workspace/scratch/2166fec07f86/generated_images/exec-262f5651-2d0e-417b-a87f-b28014037c22.png",
+      "prompt": "Use case: stylized-concept. Asset type: ONE separate transparent PNG sprite HWM162-M06, large-fauna care workstation for Yautja The Long Hunt. Original game adaptation, not claimed film canon.\nSubject: one complete practical Yautja veterinary service workstation, approximately3m wide by1.4m deep and2m tall overall. A heavy waist-high angular gunmetal cabinet on four flared basalt feet, with bronze corner plating, integrated recessed cleaning basin, a built-in padded rust-red examination support surface for small body parts such as a paw, recessed instrument storage drawers, covered sterilization compartment, one compact articulated diagnostic lamp/probe arm folded above the work surface. All functional components physically attached to the ONE cabinet. Small nonlinguistic amber display marks recessed into a compact control panel. Tools remain stowed; no loose bottles or independent props. No animal and no body part actually present.\nAlien materials and shape language: weathered dark basalt feet, aged bronze braces, dark charcoal gunmetal segmented trapezoid panels, clean utilitarian contact surfaces contrasting worn outer shell, restrained rust-red protective padding. Detailed believable painterly-realistic game asset consistent with Predator/Yautja volcanic homeworld; advanced alien mechanics integrated with stone, sparse decorative clan marks only. No human red cross, no human labels, no modern human hospital furniture.\nView: orthographic camera yaw0 pitch35 looking toward front, slight right side thickness visible, no perspective vanishing points. Soft upper-left diffuse light; no bloom or atmospheric glow.\nFrame: wide1536x1024 canvas, fully visible complete cabinet and all four feet. SMALL centered object occupying no more than60% width and60% height, at least150px fully transparent empty margin on all four sides. Real transparent alpha background exactlyzero outside tightly antialiased silhouette. No halo, haze, cast shadow outside silhouette, gradient, vignette or checkerboard painting.\nNo people, no Yautja, no animals, no anatomy, no cage, no building, no floor plane, no ground texture, no landscape, no unattached props, no trolley beside it, no text, no watermark, no title or labels, no multiple variations or contact sheet. One independent workstation only.",
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "requested_dimensions_m": {
+        "width": 3,
+        "depth": 1.4,
+        "height": 2
+      },
+      "mode": "RGBA",
+      "dimensions_px": [
+        1536,
+        1024
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_zero_pixels": 1188972,
+      "alpha_bbox": [
+        0,
+        11,
+        1518,
+        1000
+      ],
+      "alpha_bbox_8": [
+        293,
+        245,
+        1213,
+        816
+      ],
+      "sha256": "a1dd1b7cb81a1b80ffd929381ec26f99d3e581ff5e1db98ac3514c72bfdd67da",
+      "status": "GENERATED_ORIGINAL_PENDING_FINAL_REVIEW",
+      "review_note": "One self-contained care workstation with basin, padded support and attached diagnostic arm. No animals/people. Whole silhouette visible. Weak alpha noise outside silhouette requires final review; no resizing/padding/alpha change.",
+      "runtime_integrated": false,
+      "human_art_validated": false,
+      "canon_1_to_1_claim": false,
+      "bytes": 1421732,
+      "substantial_silhouette_margins_px": [
+        293,
+        245,
+        323,
+        208
+      ],
+      "edge_alpha_max": 1,
+      "original_unchanged": true,
+      "imagegen_calls_for_asset": 1,
+      "camera_requested": {
+        "yaw_degrees": 0,
+        "pitch_degrees": 35,
+        "projection": "orthographic"
+      }
+    }
+  ],
+  "generation_complete": true,
+  "asset_count": 6,
+  "production_note": "Six independent generated originals, no alpha cleanup/padding/resizing, no runtime integration or human art validation."
+}

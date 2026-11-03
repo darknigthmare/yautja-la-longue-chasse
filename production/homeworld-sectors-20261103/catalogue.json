@@ -1,0 +1,3803 @@
+{
+  "schemaVersion": 1,
+  "version": "MMK-20261103",
+  "date": "2026-11-03",
+  "repository": "darknigthmare/yautja-la-longue-chasse",
+  "pullRequest": 99,
+  "baseline": {
+    "head": "0ab844cca5f2c9b5cae28624d2c1b97fca7d5ce9",
+    "main": "f322e0cb42f2b1b7e06c3be1dcfbb23cb24f02c8",
+    "relevantMainAndPrSourcesEqual": true
+  },
+  "newAssetPlan": [
+    {
+      "id": "HWM162-S01",
+      "area": "market",
+      "label": "Halle d’échanges du clan",
+      "kind": "Bâtiment",
+      "targetIds": [
+        "target-v81-59-97"
+      ],
+      "purpose": "Abriter les échanges et les ateliers de passage dans une halle à pleine échelle.",
+      "placementNote": "Entrée et sortie dégagées. Les comptoirs restent indépendants du bâtiment.",
+      "loreStatus": "ADAPTATION_ORIGINALE_COMPATIBLE",
+      "canonicalOneToOne": false,
+      "generationStatus": "PLANIFIE",
+      "runtimeIntegrated": false,
+      "humanValidated": false
+    },
+    {
+      "id": "HWM162-S02",
+      "area": "market",
+      "label": "Étal marchand long",
+      "kind": "Mobilier",
+      "targetIds": [
+        "target-v81-64-158"
+      ],
+      "purpose": "Fournir un comptoir long pour présenter du matériel et des fournitures.",
+      "placementNote": "Face de prise accessible sur toute la longueur. Réserve séparée derrière.",
+      "loreStatus": "ADAPTATION_ORIGINALE_COMPATIBLE",
+      "canonicalOneToOne": false,
+      "generationStatus": "PLANIFIE",
+      "runtimeIntegrated": false,
+      "humanValidated": false
+    },
+    {
+      "id": "HWM162-S03",
+      "area": "market",
+      "label": "Présentoir d’équipements",
+      "kind": "Mobilier",
+      "targetIds": [
+        "target-v81-64-162"
+      ],
+      "purpose": "Présenter des équipements sans les fusionner au décor de la halle.",
+      "placementNote": "Laisser un espace client devant le présentoir et un accès latéral à l’artisan chargé du matériel.",
+      "loreStatus": "ADAPTATION_ORIGINALE_COMPATIBLE",
+      "canonicalOneToOne": false,
+      "generationStatus": "PLANIFIE",
+      "runtimeIntegrated": false,
+      "humanValidated": false
+    },
+    {
+      "id": "HWM162-S04",
+      "area": "market",
+      "label": "Plateforme d’exposition de trophées",
+      "kind": "Mobilier",
+      "targetIds": [
+        "target-v81-64-165"
+      ],
+      "purpose": "Exposer des prises et des pièces cérémonielles.",
+      "placementNote": "La fonction d’exposition ne crée pas une règle canonique de vente des trophées.",
+      "loreStatus": "ADAPTATION_ORIGINALE_COMPATIBLE",
+      "canonicalOneToOne": false,
+      "generationStatus": "PLANIFIE",
+      "runtimeIntegrated": false,
+      "humanValidated": false
+    },
+    {
+      "id": "HWM162-S05",
+      "area": "market",
+      "label": "Abri de stockage marchand",
+      "kind": "Bâtiment",
+      "targetIds": [
+        "target-v81-64-170"
+      ],
+      "purpose": "Séparer la réserve des emplacements d’échange.",
+      "placementNote": "Prévoir accès de manutention et fermeture. Aucun inventaire interactif ajouté par cette image.",
+      "loreStatus": "ADAPTATION_ORIGINALE_COMPATIBLE",
+      "canonicalOneToOne": false,
+      "generationStatus": "PLANIFIE",
+      "runtimeIntegrated": false,
+      "humanValidated": false
+    },
+    {
+      "id": "HWM162-M01",
+      "area": "mounts",
+      "label": "Abri des montures",
+      "kind": "Bâtiment",
+      "targetIds": [
+        "hw-sector-mount-stable-building"
+      ],
+      "purpose": "Accueillir les grands animaux du bestiaire du projet.",
+      "placementNote": "Dimensionner les seuils sur l’animal choisi. Le bâtiment est une adaptation originale.",
+      "loreStatus": "ADAPTATION_ORIGINALE_COMPATIBLE",
+      "canonicalOneToOne": false,
+      "generationStatus": "PLANIFIE",
+      "runtimeIntegrated": false,
+      "humanValidated": false
+    },
+    {
+      "id": "HWM162-M02",
+      "area": "mounts",
+      "label": "Zone d’attache des montures",
+      "kind": "Équipement",
+      "targetIds": [
+        "target-v81-72-281"
+      ],
+      "purpose": "Assurer une zone de préparation et d’attache avant le départ.",
+      "placementNote": "Conserver l’accès du soigneur et la place de rotation de la monture.",
+      "loreStatus": "ADAPTATION_ORIGINALE_COMPATIBLE",
+      "canonicalOneToOne": false,
+      "generationStatus": "PLANIFIE",
+      "runtimeIntegrated": false,
+      "humanValidated": false
+    },
+    {
+      "id": "HWM162-M03",
+      "area": "mounts",
+      "label": "Plateforme de monte",
+      "kind": "Équipement",
+      "targetIds": [
+        "target-v81-72-286"
+      ],
+      "purpose": "Offrir une plateforme de préparation à hauteur adaptée.",
+      "placementNote": "Adapter la hauteur à la selle et réserver la zone d’approche de l’animal.",
+      "loreStatus": "ADAPTATION_ORIGINALE_COMPATIBLE",
+      "canonicalOneToOne": false,
+      "generationStatus": "PLANIFIE",
+      "runtimeIntegrated": false,
+      "humanValidated": false
+    },
+    {
+      "id": "HWM162-M04",
+      "area": "mounts",
+      "label": "Barrière pour grands animaux",
+      "kind": "Module",
+      "targetIds": [
+        "target-v81-72-287"
+      ],
+      "purpose": "Former un enclos robuste à l’échelle des montures.",
+      "placementNote": "Les raccords et la collision doivent être mesurés avant répétition en jeu.",
+      "loreStatus": "ADAPTATION_ORIGINALE_COMPATIBLE",
+      "canonicalOneToOne": false,
+      "generationStatus": "PLANIFIE",
+      "runtimeIntegrated": false,
+      "humanValidated": false
+    },
+    {
+      "id": "HWM162-M05",
+      "area": "mounts",
+      "label": "Module d’entraînement des montures",
+      "kind": "Équipement",
+      "targetIds": [
+        "target-v81-72-289"
+      ],
+      "purpose": "Compléter l’aire d’entraînement avec un obstacle dédié.",
+      "placementNote": "L’aire complète se compose avec du sol libre. Une image ne prouve pas le dressage jouable.",
+      "loreStatus": "ADAPTATION_ORIGINALE_COMPATIBLE",
+      "canonicalOneToOne": false,
+      "generationStatus": "PLANIFIE",
+      "runtimeIntegrated": false,
+      "humanValidated": false
+    },
+    {
+      "id": "HWM162-M06",
+      "area": "mounts",
+      "label": "Poste de soin des montures",
+      "kind": "Équipement",
+      "targetIds": [
+        "target-v81-72-290"
+      ],
+      "purpose": "Préparer le soin et l’entretien des grands animaux.",
+      "placementNote": "Conserver deux côtés de travail et une issue pour l’animal.",
+      "loreStatus": "ADAPTATION_ORIGINALE_COMPATIBLE",
+      "canonicalOneToOne": false,
+      "generationStatus": "PLANIFIE",
+      "runtimeIntegrated": false,
+      "humanValidated": false
+    },
+    {
+      "id": "HWM162-K01",
+      "area": "kennels",
+      "label": "Bâtiment des chenils",
+      "kind": "Bâtiment",
+      "targetIds": [
+        "hw-sector-hound-kennel-building"
+      ],
+      "purpose": "Abriter séparément les meutes de chasse.",
+      "placementNote": "Séparer les types de chiens et réserver un couloir de service du maître de meute.",
+      "loreStatus": "ADAPTATION_ORIGINALE_COMPATIBLE",
+      "canonicalOneToOne": false,
+      "generationStatus": "PLANIFIE",
+      "runtimeIntegrated": false,
+      "humanValidated": false
+    },
+    {
+      "id": "HWM162-K02",
+      "area": "kennels",
+      "label": "Portique de transfert ouvert des chenils",
+      "kind": "Module",
+      "targetIds": [
+        "target-v81-71-269"
+      ],
+      "purpose": "Former le passage entre l’aire de repos et l’enclos extérieur.",
+      "placementNote": "Portique ouvert sans battant. Le battant séparé HWM162-K06 complète le passage ; alignement, échelle et collision à vérifier dans la scène.",
+      "loreStatus": "ADAPTATION_ORIGINALE_COMPATIBLE",
+      "canonicalOneToOne": false,
+      "generationStatus": "PLANIFIE",
+      "runtimeIntegrated": false,
+      "humanValidated": false
+    },
+    {
+      "id": "HWM162-K03",
+      "area": "kennels",
+      "label": "Râtelier de dressage des chiens",
+      "kind": "Équipement",
+      "targetIds": [
+        "target-v81-71-274"
+      ],
+      "purpose": "Ranger l’équipement de conduite et les accessoires de dressage.",
+      "placementNote": "Positionner côté soigneur et hors de la course de la meute.",
+      "loreStatus": "ADAPTATION_ORIGINALE_COMPATIBLE",
+      "canonicalOneToOne": false,
+      "generationStatus": "PLANIFIE",
+      "runtimeIntegrated": false,
+      "humanValidated": false
+    },
+    {
+      "id": "HWM162-K04",
+      "area": "kennels",
+      "label": "Plateforme d’observation des chenils",
+      "kind": "Équipement",
+      "targetIds": [
+        "target-v81-71-275"
+      ],
+      "purpose": "Observer l’enclos depuis une plateforme protégée.",
+      "placementNote": "Accès indépendant du passage animal. Garde-corps et vue sur l’enclos à vérifier en scène.",
+      "loreStatus": "ADAPTATION_ORIGINALE_COMPATIBLE",
+      "canonicalOneToOne": false,
+      "generationStatus": "PLANIFIE",
+      "runtimeIntegrated": false,
+      "humanValidated": false
+    },
+    {
+      "id": "HWM162-K05",
+      "area": "kennels",
+      "label": "Fosse de repos drainée",
+      "kind": "Module",
+      "targetIds": [
+        "target-v81-71-279"
+      ],
+      "purpose": "Fournir une zone basse de repos pour les chiens.",
+      "placementNote": "Adapter à la morphologie choisie. La fosse et son drainage sont des créations du projet.",
+      "loreStatus": "ADAPTATION_ORIGINALE_COMPATIBLE",
+      "canonicalOneToOne": false,
+      "generationStatus": "PLANIFIE",
+      "runtimeIntegrated": false,
+      "humanValidated": false
+    },
+    {
+      "id": "HWM162-K06",
+      "area": "kennels",
+      "label": "Battant coulissant des chenils",
+      "kind": "Prop — état fermé",
+      "targetIds": [
+        "target-v81-71-269"
+      ],
+      "purpose": "Compléter le portique ouvert HWM162-K02 par un battant indépendant.",
+      "placementNote": "À superposer au portique HWM162-K02. Placement, pivot, échelle, raccords et état de collision restent à vérifier en scène.",
+      "loreStatus": "ADAPTATION_ORIGINALE_COMPATIBLE",
+      "canonicalOneToOne": false,
+      "generationStatus": "PLANIFIE",
+      "runtimeIntegrated": false,
+      "humanValidated": false
+    }
+  ],
+  "inheritedTargets": [
+    {
+      "id": "target-v81-59-97",
+      "section": 59,
+      "family": "BÂTIMENTS CIVIQUES",
+      "label": "marché",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "exactTargetPngPaths": [],
+      "inheritedInventoryStatus": "EXISTING_NEEDS_VARIANT",
+      "familyOnlyCandidatesHistorical": [
+        "/game/homeworld/v72/civic-identity-atlas.png",
+        "/game/homeworld/v64/pavement.png",
+        "/game/homeworld/v72/civic-furniture-kit.png",
+        "/game/homeworld/v75/landscape-ground-materials-native.png",
+        "/game/homeworld/v71/outskirts-kit.png",
+        "/game/homeworld/v72/region-gateway-kit.png",
+        "/game/homeworld/v64/props-atlas.png",
+        "/game/homeworld/v80/amber-lamp-post.png"
+      ],
+      "currentSourceStatus": "CANOPY_BUILDING_EXISTS_OPAQUE_MARKET_SCENE_NOT_A_SPRITE",
+      "suggestedAction": "GENERATE_COMPLEMENTARY_MARKET_HALL_IF_REQUIRED",
+      "existingIndependentRelatedCandidates": [
+        "public/game/homeworld/v75/architecture/market-canopy.png"
+      ],
+      "opaqueSceneArchive": "production/homeworld-v160/originals/HWA160-029_marche-yautja-aux-lueurs-incandescentes.png",
+      "runtimeAdmissionClaimed": false,
+      "canonicalOneToOneClaimed": false,
+      "sourceClosed": false
+    },
+    {
+      "id": "target-v81-64-157",
+      "section": 64,
+      "family": "MARCHÉ",
+      "label": "Stall court",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "exactTargetPngPaths": [],
+      "inheritedInventoryStatus": "EXISTING_NEEDS_VARIANT",
+      "familyOnlyCandidatesHistorical": [
+        "/game/homeworld/v72/civic-identity-atlas.png",
+        "/game/homeworld/v75/architecture/market-canopy.png",
+        "/game/homeworld/v64/props-atlas.png",
+        "/game/homeworld/v64/pavement.png",
+        "/game/homeworld/v72/civic-furniture-kit.png",
+        "/game/homeworld/v83/merchant-counter-left.png",
+        "/game/homeworld/v83/cargo-rack-right.png",
+        "/game/homeworld/v76/interior/worktable-right.png"
+      ],
+      "currentSourceStatus": "RELATED_INDEPENDENT_SOURCE_EXISTS_FIT_UNCERTIFIED",
+      "suggestedAction": "RETAIN_EXISTING_AND_GENERATE_ONLY_NEEDED_VARIANT",
+      "existingIndependentRelatedCandidates": [
+        "public/game/homeworld/v78/market-stall-right.png",
+        "production/homeworld-v160/originals/HWA160-023_kiosque-marchand-yautja-en-basalte-et-bronze.png"
+      ],
+      "runtimeAdmissionClaimed": false,
+      "canonicalOneToOneClaimed": false,
+      "sourceClosed": false
+    },
+    {
+      "id": "target-v81-64-158",
+      "section": 64,
+      "family": "MARCHÉ",
+      "label": "stall long",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "exactTargetPngPaths": [],
+      "inheritedInventoryStatus": "EXISTING_NEEDS_VARIANT",
+      "familyOnlyCandidatesHistorical": [
+        "/game/homeworld/v72/civic-identity-atlas.png",
+        "/game/homeworld/v75/architecture/market-canopy.png",
+        "/game/homeworld/v64/props-atlas.png",
+        "/game/homeworld/v64/pavement.png",
+        "/game/homeworld/v72/civic-furniture-kit.png",
+        "/game/homeworld/v83/merchant-counter-left.png",
+        "/game/homeworld/v83/cargo-rack-right.png",
+        "/game/homeworld/v76/interior/worktable-right.png"
+      ],
+      "currentSourceStatus": "NO_SPECIFIC_INDEPENDENT_SOURCE_IDENTIFIED",
+      "suggestedAction": "GENERATE_SPECIFIC_INDEPENDENT_SPRITE",
+      "existingIndependentRelatedCandidates": [],
+      "runtimeAdmissionClaimed": false,
+      "canonicalOneToOneClaimed": false,
+      "sourceClosed": false
+    },
+    {
+      "id": "target-v81-64-159",
+      "section": 64,
+      "family": "MARCHÉ",
+      "label": "stand diagonal gauche",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "exactTargetPngPaths": [],
+      "inheritedInventoryStatus": "EXISTING_NEEDS_VARIANT",
+      "familyOnlyCandidatesHistorical": [
+        "/game/homeworld/v72/civic-identity-atlas.png",
+        "/game/homeworld/v75/architecture/market-canopy.png",
+        "/game/homeworld/v64/props-atlas.png",
+        "/game/homeworld/v64/pavement.png",
+        "/game/homeworld/v72/civic-furniture-kit.png",
+        "/game/homeworld/v83/merchant-counter-left.png",
+        "/game/homeworld/v83/cargo-rack-right.png",
+        "/game/homeworld/v76/interior/worktable-right.png"
+      ],
+      "currentSourceStatus": "RELATED_INDEPENDENT_SOURCE_EXISTS_FIT_UNCERTIFIED",
+      "suggestedAction": "RETAIN_EXISTING_AND_GENERATE_ONLY_NEEDED_VARIANT",
+      "existingIndependentRelatedCandidates": [
+        "production/homeworld-v160/first-pack/HW1009_etale_marche_gauche.png",
+        "public/game/homeworld/v83/merchant-counter-left.png"
+      ],
+      "runtimeAdmissionClaimed": false,
+      "canonicalOneToOneClaimed": false,
+      "sourceClosed": false
+    },
+    {
+      "id": "target-v81-64-160",
+      "section": 64,
+      "family": "MARCHÉ",
+      "label": "stand diagonal droite",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "exactTargetPngPaths": [],
+      "inheritedInventoryStatus": "EXISTING_NEEDS_VARIANT",
+      "familyOnlyCandidatesHistorical": [
+        "/game/homeworld/v72/civic-identity-atlas.png",
+        "/game/homeworld/v75/architecture/market-canopy.png",
+        "/game/homeworld/v64/props-atlas.png",
+        "/game/homeworld/v64/pavement.png",
+        "/game/homeworld/v72/civic-furniture-kit.png",
+        "/game/homeworld/v83/merchant-counter-left.png",
+        "/game/homeworld/v83/cargo-rack-right.png",
+        "/game/homeworld/v76/interior/worktable-right.png"
+      ],
+      "currentSourceStatus": "RELATED_INDEPENDENT_SOURCE_EXISTS_FIT_UNCERTIFIED",
+      "suggestedAction": "RETAIN_EXISTING_AND_GENERATE_ONLY_NEEDED_VARIANT",
+      "existingIndependentRelatedCandidates": [
+        "public/game/homeworld/v78/market-stall-right.png"
+      ],
+      "runtimeAdmissionClaimed": false,
+      "canonicalOneToOneClaimed": false,
+      "sourceClosed": false
+    },
+    {
+      "id": "target-v81-64-161",
+      "section": 64,
+      "family": "MARCHÉ",
+      "label": "auvent",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "exactTargetPngPaths": [],
+      "inheritedInventoryStatus": "EXISTING_NEEDS_VARIANT",
+      "familyOnlyCandidatesHistorical": [
+        "/game/homeworld/v72/civic-furniture-kit.png",
+        "/game/homeworld/v76/merchant-canopy-diagonal-native.png"
+      ],
+      "currentSourceStatus": "RELATED_INDEPENDENT_SOURCE_EXISTS_FIT_UNCERTIFIED",
+      "suggestedAction": "RETAIN_EXISTING_AND_GENERATE_ONLY_NEEDED_VARIANT",
+      "existingIndependentRelatedCandidates": [
+        "public/game/homeworld/v76/merchant-canopy-diagonal-native.png"
+      ],
+      "runtimeAdmissionClaimed": false,
+      "canonicalOneToOneClaimed": false,
+      "sourceClosed": false
+    },
+    {
+      "id": "target-v81-64-162",
+      "section": 64,
+      "family": "MARCHÉ",
+      "label": "présentoir",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "exactTargetPngPaths": [],
+      "inheritedInventoryStatus": "EXISTING_NEEDS_VARIANT",
+      "familyOnlyCandidatesHistorical": [
+        "/game/homeworld/v72/civic-identity-atlas.png",
+        "/game/homeworld/v75/architecture/market-canopy.png",
+        "/game/homeworld/v64/props-atlas.png",
+        "/game/homeworld/v64/pavement.png",
+        "/game/homeworld/v72/civic-furniture-kit.png",
+        "/game/homeworld/v83/merchant-counter-left.png",
+        "/game/homeworld/v83/cargo-rack-right.png",
+        "/game/homeworld/v76/interior/worktable-right.png"
+      ],
+      "currentSourceStatus": "NO_SPECIFIC_INDEPENDENT_SOURCE_IDENTIFIED",
+      "suggestedAction": "GENERATE_SPECIFIC_INDEPENDENT_SPRITE",
+      "existingIndependentRelatedCandidates": [],
+      "runtimeAdmissionClaimed": false,
+      "canonicalOneToOneClaimed": false,
+      "sourceClosed": false
+    },
+    {
+      "id": "target-v81-64-163",
+      "section": 64,
+      "family": "MARCHÉ",
+      "label": "table marchand",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "exactTargetPngPaths": [],
+      "inheritedInventoryStatus": "EXISTING_NEEDS_VARIANT",
+      "familyOnlyCandidatesHistorical": [
+        "/game/homeworld/v64/pavement.png",
+        "/game/homeworld/v72/civic-furniture-kit.png",
+        "/game/homeworld/v83/forge-bench-right.png",
+        "/game/homeworld/v76/interior/worktable-right.png",
+        "/game/homeworld/v80/clan-lectern-right.png",
+        "/game/homeworld/v78/market-stall-right.png",
+        "/game/homeworld/v78/clan-common-table-left.png"
+      ],
+      "currentSourceStatus": "RELATED_INDEPENDENT_SOURCE_EXISTS_FIT_UNCERTIFIED",
+      "suggestedAction": "RETAIN_EXISTING_AND_GENERATE_ONLY_NEEDED_VARIANT",
+      "existingIndependentRelatedCandidates": [
+        "public/game/homeworld/v83/merchant-counter-left.png",
+        "public/game/homeworld/v76/interior/worktable-right.png"
+      ],
+      "runtimeAdmissionClaimed": false,
+      "canonicalOneToOneClaimed": false,
+      "sourceClosed": false
+    },
+    {
+      "id": "target-v81-64-164",
+      "section": 64,
+      "family": "MARCHÉ",
+      "label": "rack marchand",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "exactTargetPngPaths": [],
+      "inheritedInventoryStatus": "EXISTING_NEEDS_VARIANT",
+      "familyOnlyCandidatesHistorical": [
+        "/game/homeworld/v64/pavement.png",
+        "/game/homeworld/v72/civic-identity-atlas.png",
+        "/game/homeworld/v76/architecture/convoy-workshop.png",
+        "/game/homeworld/v81/industrial-residence-right.png",
+        "/game/homeworld/v64/props-atlas.png",
+        "/game/homeworld/v72/civic-furniture-kit.png",
+        "/game/homeworld/v76/interior/chest-diagonal.png",
+        "/game/homeworld/v76/interior/rack-lateral.png"
+      ],
+      "currentSourceStatus": "RELATED_INDEPENDENT_SOURCE_EXISTS_FIT_UNCERTIFIED",
+      "suggestedAction": "RETAIN_EXISTING_AND_GENERATE_ONLY_NEEDED_VARIANT",
+      "existingIndependentRelatedCandidates": [
+        "public/game/homeworld/v83/cargo-rack-right.png",
+        "public/game/homeworld/v76/interior/rack-lateral.png"
+      ],
+      "runtimeAdmissionClaimed": false,
+      "canonicalOneToOneClaimed": false,
+      "sourceClosed": false
+    },
+    {
+      "id": "target-v81-64-165",
+      "section": 64,
+      "family": "MARCHÉ",
+      "label": "plateforme trophées",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "exactTargetPngPaths": [],
+      "inheritedInventoryStatus": "EXISTING_NEEDS_VARIANT",
+      "familyOnlyCandidatesHistorical": [
+        "/game/homeworld/v64/pavement.png",
+        "/game/homeworld/v75/architecture/rampart-north-lodge.png",
+        "/game/homeworld/v76/architecture/rampart-watch.png",
+        "/game/homeworld/v75/architecture/rampart-south-lodge.png",
+        "/game/homeworld/v81/clan-residence-left.png",
+        "/game/homeworld/v64/house-c-ribbed.png",
+        "/game/homeworld/v64/house-a-basalt.png",
+        "/game/homeworld/v64/house-b-basalt.png"
+      ],
+      "currentSourceStatus": "NO_SPECIFIC_INDEPENDENT_SOURCE_IDENTIFIED",
+      "suggestedAction": "GENERATE_SPECIFIC_INDEPENDENT_SPRITE",
+      "existingIndependentRelatedCandidates": [],
+      "runtimeAdmissionClaimed": false,
+      "canonicalOneToOneClaimed": false,
+      "sourceClosed": false
+    },
+    {
+      "id": "target-v81-64-166",
+      "section": 64,
+      "family": "MARCHÉ",
+      "label": "conteneur",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "exactTargetPngPaths": [],
+      "inheritedInventoryStatus": "EXISTING_NEEDS_VARIANT",
+      "familyOnlyCandidatesHistorical": [
+        "/game/homeworld/v64/pavement.png",
+        "/game/homeworld/v72/civic-identity-atlas.png",
+        "/game/homeworld/v76/architecture/convoy-workshop.png",
+        "/game/homeworld/v81/industrial-residence-right.png",
+        "/game/homeworld/v64/props-atlas.png",
+        "/game/homeworld/v72/civic-furniture-kit.png",
+        "/game/homeworld/v76/interior/chest-diagonal.png",
+        "/game/homeworld/v76/interior/rack-lateral.png"
+      ],
+      "currentSourceStatus": "RELATED_INDEPENDENT_SOURCE_EXISTS_FIT_UNCERTIFIED",
+      "suggestedAction": "RETAIN_EXISTING_AND_GENERATE_ONLY_NEEDED_VARIANT",
+      "existingIndependentRelatedCandidates": [
+        "public/game/homeworld/v76/logistics-container-rack-native.png",
+        "public/game/homeworld/v80/sealed-cargo-case-left.png"
+      ],
+      "runtimeAdmissionClaimed": false,
+      "canonicalOneToOneClaimed": false,
+      "sourceClosed": false
+    },
+    {
+      "id": "target-v81-64-167",
+      "section": 64,
+      "family": "MARCHÉ",
+      "label": "caisse marchand",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "exactTargetPngPaths": [],
+      "inheritedInventoryStatus": "EXISTING_NEEDS_VARIANT",
+      "familyOnlyCandidatesHistorical": [
+        "/game/homeworld/v64/pavement.png",
+        "/game/homeworld/v72/civic-identity-atlas.png",
+        "/game/homeworld/v76/architecture/convoy-workshop.png",
+        "/game/homeworld/v81/industrial-residence-right.png",
+        "/game/homeworld/v64/props-atlas.png",
+        "/game/homeworld/v72/civic-furniture-kit.png",
+        "/game/homeworld/v76/interior/chest-diagonal.png",
+        "/game/homeworld/v76/interior/rack-lateral.png"
+      ],
+      "currentSourceStatus": "RELATED_INDEPENDENT_SOURCE_EXISTS_FIT_UNCERTIFIED",
+      "suggestedAction": "RETAIN_EXISTING_AND_GENERATE_ONLY_NEEDED_VARIANT",
+      "existingIndependentRelatedCandidates": [
+        "public/game/homeworld/v80/sealed-cargo-case-left.png",
+        "public/game/homeworld/v76/interior/chest-diagonal.png"
+      ],
+      "runtimeAdmissionClaimed": false,
+      "canonicalOneToOneClaimed": false,
+      "sourceClosed": false
+    },
+    {
+      "id": "target-v81-64-168",
+      "section": 64,
+      "family": "MARCHÉ",
+      "label": "éclairage marchand",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "exactTargetPngPaths": [],
+      "inheritedInventoryStatus": "EXISTING_NEEDS_VARIANT",
+      "familyOnlyCandidatesHistorical": [
+        "/game/homeworld/v72/civic-identity-atlas.png",
+        "/game/homeworld/v75/architecture/market-canopy.png",
+        "/game/homeworld/v64/props-atlas.png",
+        "/game/homeworld/v64/pavement.png",
+        "/game/homeworld/v72/civic-furniture-kit.png",
+        "/game/homeworld/v83/merchant-counter-left.png",
+        "/game/homeworld/v83/cargo-rack-right.png",
+        "/game/homeworld/v76/interior/worktable-right.png"
+      ],
+      "currentSourceStatus": "RELATED_INDEPENDENT_SOURCE_EXISTS_FIT_UNCERTIFIED",
+      "suggestedAction": "RETAIN_EXISTING_AND_GENERATE_ONLY_NEEDED_VARIANT",
+      "existingIndependentRelatedCandidates": [
+        "public/game/homeworld/v80/amber-lamp-post.png"
+      ],
+      "runtimeAdmissionClaimed": false,
+      "canonicalOneToOneClaimed": false,
+      "sourceClosed": false
+    },
+    {
+      "id": "target-v81-64-169",
+      "section": 64,
+      "family": "MARCHÉ",
+      "label": "bannière marchand",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "exactTargetPngPaths": [],
+      "inheritedInventoryStatus": "EXISTING_NEEDS_VARIANT",
+      "familyOnlyCandidatesHistorical": [
+        "/game/homeworld/v72/civic-identity-atlas.png",
+        "/game/homeworld/v75/architecture/market-canopy.png",
+        "/game/homeworld/v64/props-atlas.png",
+        "/game/homeworld/v64/pavement.png",
+        "/game/homeworld/v72/civic-furniture-kit.png",
+        "/game/homeworld/v83/merchant-counter-left.png",
+        "/game/homeworld/v83/cargo-rack-right.png",
+        "/game/homeworld/v76/interior/worktable-right.png"
+      ],
+      "currentSourceStatus": "RELATED_INDEPENDENT_SOURCE_EXISTS_FIT_UNCERTIFIED",
+      "suggestedAction": "RETAIN_EXISTING_AND_GENERATE_ONLY_NEEDED_VARIANT",
+      "existingIndependentRelatedCandidates": [
+        "public/game/homeworld/v80/clan-banner-standard.png"
+      ],
+      "runtimeAdmissionClaimed": false,
+      "canonicalOneToOneClaimed": false,
+      "sourceClosed": false
+    },
+    {
+      "id": "target-v81-64-170",
+      "section": 64,
+      "family": "MARCHÉ",
+      "label": "zone de stock",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "exactTargetPngPaths": [],
+      "inheritedInventoryStatus": "EXISTING_NEEDS_VARIANT",
+      "familyOnlyCandidatesHistorical": [
+        "/game/homeworld/v64/pavement.png",
+        "/game/homeworld/v72/civic-identity-atlas.png",
+        "/game/homeworld/v76/architecture/convoy-workshop.png",
+        "/game/homeworld/v81/industrial-residence-right.png",
+        "/game/homeworld/v64/props-atlas.png",
+        "/game/homeworld/v72/civic-furniture-kit.png",
+        "/game/homeworld/v76/interior/chest-diagonal.png",
+        "/game/homeworld/v76/interior/rack-lateral.png"
+      ],
+      "currentSourceStatus": "NO_SPECIFIC_INDEPENDENT_SOURCE_IDENTIFIED",
+      "suggestedAction": "GENERATE_SPECIFIC_INDEPENDENT_SPRITE",
+      "existingIndependentRelatedCandidates": [],
+      "runtimeAdmissionClaimed": false,
+      "canonicalOneToOneClaimed": false,
+      "sourceClosed": false
+    },
+    {
+      "id": "target-v81-71-266",
+      "section": 71,
+      "family": "FAUNE",
+      "label": "Enclos",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "exactTargetPngPaths": [
+        "production/native-open-20261102/archives/fauna-energy/target-v81-71-266-enclosure-native.png"
+      ],
+      "inheritedInventoryStatus": "MISSING",
+      "familyOnlyCandidatesHistorical": [],
+      "currentSourceStatus": "EXACT_TARGET_CANDIDATE_EXISTS_NOT_ADMITTED",
+      "suggestedAction": "REVIEW_EXISTING_SOURCE",
+      "existingIndependentRelatedCandidates": [],
+      "selectedSourcePath": "production/native-open-20261102/archives/fauna-energy/target-v81-71-266-enclosure-native.png",
+      "inheritedQa": {
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "sha256": "b1ccdfd1407964e21498d54c3f8b9984b78e4b448cc415fdd02577762c65cdcb",
+        "strictAlphaGreater0MarginContractMet": false,
+        "humanValidated": false,
+        "runtimeIntegrated": false,
+        "description": "One connected empty polygon enclosure with a shut hinged front gate; transparent ground and bar gaps. Foreground/back occlusion and entry/collision would need native runtime layering design; no pixel split made."
+      },
+      "runtimeAdmissionClaimed": false,
+      "canonicalOneToOneClaimed": false,
+      "sourceClosed": false
+    },
+    {
+      "id": "target-v81-71-267",
+      "section": 71,
+      "family": "FAUNE",
+      "label": "poteau enclos",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "exactTargetPngPaths": [
+        "production/native-open-20261102/archives/fauna-energy/target-v81-71-267-enclosure-post-native.png"
+      ],
+      "inheritedInventoryStatus": "MISSING",
+      "familyOnlyCandidatesHistorical": [],
+      "currentSourceStatus": "EXACT_TARGET_CANDIDATE_EXISTS_NOT_ADMITTED",
+      "suggestedAction": "REVIEW_EXISTING_SOURCE",
+      "existingIndependentRelatedCandidates": [],
+      "selectedSourcePath": "production/native-open-20261102/archives/fauna-energy/target-v81-71-267-enclosure-post-native.png",
+      "inheritedQa": {
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "sha256": "cd67258d8e3931edc4ba42401dcdfaea41f78de3e1995b46873aebdaf0efe9b0",
+        "strictAlphaGreater0MarginContractMet": false,
+        "humanValidated": false,
+        "runtimeIntegrated": false,
+        "description": "Whole compact stanchion with two right-hand sockets and a capped opposing socket; one amber lock indicator. Rail socket alignment and load-bearing footprint are not runtime qualified."
+      },
+      "runtimeAdmissionClaimed": false,
+      "canonicalOneToOneClaimed": false,
+      "sourceClosed": false
+    },
+    {
+      "id": "target-v81-71-268",
+      "section": 71,
+      "family": "FAUNE",
+      "label": "barrière enclos",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "exactTargetPngPaths": [
+        "production/native-open-20261102/archives/fauna-energy/target-v81-71-268-enclosure-barrier-native-attempt02.png",
+        "production/native-open-20261102/archives/fauna-energy/target-v81-71-268-enclosure-barrier-native.png"
+      ],
+      "inheritedInventoryStatus": "MISSING",
+      "familyOnlyCandidatesHistorical": [],
+      "currentSourceStatus": "EXACT_TARGET_CANDIDATE_EXISTS_NOT_ADMITTED",
+      "suggestedAction": "REVIEW_EXISTING_SOURCE",
+      "existingIndependentRelatedCandidates": [],
+      "selectedSourcePath": "production/native-open-20261102/archives/fauna-energy/target-v81-71-268-enclosure-barrier-native-attempt02.png",
+      "inheritedQa": {
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "sha256": "522bec7b485f7d7742f835ca8a2f609970998f906247d6258b8a5e71aff927cf",
+        "strictAlphaGreater0MarginContractMet": false,
+        "humanValidated": false,
+        "runtimeIntegrated": false,
+        "description": "One short connected three-rail module with two whole footed posts and transparent air gaps. Preferred second native generation has broad margins; independent assets do not yet prove modular join alignment."
+      },
+      "runtimeAdmissionClaimed": false,
+      "canonicalOneToOneClaimed": false,
+      "sourceClosed": false
+    },
+    {
+      "id": "target-v81-71-269",
+      "section": 71,
+      "family": "FAUNE",
+      "label": "porte",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "exactTargetPngPaths": [],
+      "inheritedInventoryStatus": "EXISTING_NEEDS_VARIANT",
+      "familyOnlyCandidatesHistorical": [
+        "/game/homeworld/v75/architecture/pit-gate.png",
+        "/game/homeworld/v64/pavement.png"
+      ],
+      "currentSourceStatus": "NO_EXACT_TARGET_FILENAME",
+      "suggestedAction": "GENERATE_SPECIFIC_INDEPENDENT_SPRITE",
+      "existingIndependentRelatedCandidates": [],
+      "runtimeAdmissionClaimed": false,
+      "canonicalOneToOneClaimed": false,
+      "sourceClosed": false
+    },
+    {
+      "id": "target-v81-71-270",
+      "section": 71,
+      "family": "FAUNE",
+      "label": "barrière énergie",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "exactTargetPngPaths": [
+        "production/native-open-20261102/archives/fauna-energy/target-v81-71-270-fauna-energy-barrier-native.png"
+      ],
+      "inheritedInventoryStatus": "MISSING",
+      "familyOnlyCandidatesHistorical": [],
+      "currentSourceStatus": "EXACT_TARGET_CANDIDATE_EXISTS_NOT_ADMITTED",
+      "suggestedAction": "REVIEW_EXISTING_SOURCE",
+      "existingIndependentRelatedCandidates": [],
+      "selectedSourcePath": "production/native-open-20261102/archives/fauna-energy/target-v81-71-270-fauna-energy-barrier-native.png",
+      "inheritedQa": {
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "sha256": "1dcc79dda8a24c76617b0d76fdbdfee4a5771f381a839fd52548e39c49a44cec",
+        "strictAlphaGreater0MarginContractMet": false,
+        "humanValidated": false,
+        "runtimeIntegrated": false,
+        "description": "One low connected two-post energy barrier with base rail and translucent membrane, visibly distinct from the tall pedestrian door. No live containment, collision or animated state proven."
+      },
+      "runtimeAdmissionClaimed": false,
+      "canonicalOneToOneClaimed": false,
+      "sourceClosed": false
+    },
+    {
+      "id": "target-v81-71-271",
+      "section": 71,
+      "family": "FAUNE",
+      "label": "abreuvoir alien",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "exactTargetPngPaths": [
+        "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-271-abreuvoir-alien-native-attempt02.png",
+        "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-271-abreuvoir-alien-native.png"
+      ],
+      "inheritedInventoryStatus": "MISSING",
+      "familyOnlyCandidatesHistorical": [],
+      "currentSourceStatus": "EXACT_TARGET_CANDIDATE_EXISTS_NOT_ADMITTED",
+      "suggestedAction": "REVIEW_EXISTING_SOURCE",
+      "existingIndependentRelatedCandidates": [],
+      "runtimeAdmissionClaimed": false,
+      "canonicalOneToOneClaimed": false,
+      "sourceClosed": false
+    },
+    {
+      "id": "target-v81-71-272",
+      "section": 71,
+      "family": "FAUNE",
+      "label": "nourrisseur",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "exactTargetPngPaths": [
+        "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-272-nourrisseur-native.png"
+      ],
+      "inheritedInventoryStatus": "MISSING",
+      "familyOnlyCandidatesHistorical": [],
+      "currentSourceStatus": "EXACT_TARGET_CANDIDATE_EXISTS_NOT_ADMITTED",
+      "suggestedAction": "REVIEW_EXISTING_SOURCE",
+      "existingIndependentRelatedCandidates": [],
+      "runtimeAdmissionClaimed": false,
+      "canonicalOneToOneClaimed": false,
+      "sourceClosed": false
+    },
+    {
+      "id": "target-v81-71-273",
+      "section": 71,
+      "family": "FAUNE",
+      "label": "support harnais",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "exactTargetPngPaths": [
+        "production/native-open-20261102/archives/fauna-energy/gear/target-v81-71-273-fauna-harness-support-native.png"
+      ],
+      "inheritedInventoryStatus": "MISSING",
+      "familyOnlyCandidatesHistorical": [],
+      "currentSourceStatus": "EXACT_TARGET_CANDIDATE_EXISTS_NOT_ADMITTED",
+      "suggestedAction": "REVIEW_EXISTING_SOURCE",
+      "existingIndependentRelatedCandidates": [],
+      "selectedSourcePath": "production/native-open-20261102/archives/fauna-energy/gear/target-v81-71-273-fauna-harness-support-native.png",
+      "inheritedQa": {
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "sha256": "92b2d4dfd704ab774f840d56c41132072fdbeb06e204e56ba1d9cf617456ee7a",
+        "strictAlphaGreater0MarginContractMet": false,
+        "humanValidated": false,
+        "runtimeIntegrated": false,
+        "description": "Whole independent equipment construction; no animal/rider or anatomical fit proven. See gear/gear-index.md and gear/gear-index.json for contextual interpretation."
+      },
+      "runtimeAdmissionClaimed": false,
+      "canonicalOneToOneClaimed": false,
+      "sourceClosed": false
+    },
+    {
+      "id": "target-v81-71-274",
+      "section": 71,
+      "family": "FAUNE",
+      "label": "rack dressage",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "exactTargetPngPaths": [],
+      "inheritedInventoryStatus": "EXISTING_NEEDS_VARIANT",
+      "familyOnlyCandidatesHistorical": [
+        "/game/homeworld/v64/pavement.png",
+        "/game/homeworld/v72/civic-identity-atlas.png",
+        "/game/homeworld/v76/architecture/convoy-workshop.png",
+        "/game/homeworld/v81/industrial-residence-right.png",
+        "/game/homeworld/v64/props-atlas.png",
+        "/game/homeworld/v72/civic-furniture-kit.png",
+        "/game/homeworld/v76/interior/chest-diagonal.png",
+        "/game/homeworld/v76/interior/rack-lateral.png"
+      ],
+      "currentSourceStatus": "NO_EXACT_TARGET_FILENAME",
+      "suggestedAction": "GENERATE_SPECIFIC_INDEPENDENT_SPRITE",
+      "existingIndependentRelatedCandidates": [],
+      "runtimeAdmissionClaimed": false,
+      "canonicalOneToOneClaimed": false,
+      "sourceClosed": false
+    },
+    {
+      "id": "target-v81-71-275",
+      "section": 71,
+      "family": "FAUNE",
+      "label": "plateforme observation",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "exactTargetPngPaths": [],
+      "inheritedInventoryStatus": "EXISTING_NEEDS_VARIANT",
+      "familyOnlyCandidatesHistorical": [
+        "/game/homeworld/v64/pavement.png",
+        "/game/homeworld/v75/architecture/rampart-north-lodge.png",
+        "/game/homeworld/v76/architecture/rampart-watch.png",
+        "/game/homeworld/v75/architecture/rampart-south-lodge.png",
+        "/game/homeworld/v81/clan-residence-left.png",
+        "/game/homeworld/v64/house-c-ribbed.png",
+        "/game/homeworld/v64/house-a-basalt.png",
+        "/game/homeworld/v64/house-b-basalt.png"
+      ],
+      "currentSourceStatus": "NO_EXACT_TARGET_FILENAME",
+      "suggestedAction": "GENERATE_SPECIFIC_INDEPENDENT_SPRITE",
+      "existingIndependentRelatedCandidates": [],
+      "runtimeAdmissionClaimed": false,
+      "canonicalOneToOneClaimed": false,
+      "sourceClosed": false
+    },
+    {
+      "id": "target-v81-71-276",
+      "section": 71,
+      "family": "FAUNE",
+      "label": "cage petite",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "exactTargetPngPaths": [
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-276-cage-petite-native.png"
+      ],
+      "inheritedInventoryStatus": "MISSING",
+      "familyOnlyCandidatesHistorical": [],
+      "currentSourceStatus": "EXACT_TARGET_CANDIDATE_EXISTS_NOT_ADMITTED",
+      "suggestedAction": "REVIEW_EXISTING_SOURCE",
+      "existingIndependentRelatedCandidates": [],
+      "selectedSourcePath": "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-276-cage-petite-native.png",
+      "inheritedQa": {
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "sha256": "b5e4da0ccb43732e03abde69a0eacee6a8a73c8282918aaf3bdead116c8c1073",
+        "strictAlphaGreater0MarginContractMet": false,
+        "humanValidated": false,
+        "runtimeIntegrated": false,
+        "description": "Compact faceted cage, open geometric barred roof, shut near-facing latch door, six corner reinforcements and pitted basalt floor/base."
+      },
+      "runtimeAdmissionClaimed": false,
+      "canonicalOneToOneClaimed": false,
+      "sourceClosed": false
+    },
+    {
+      "id": "target-v81-71-277",
+      "section": 71,
+      "family": "FAUNE",
+      "label": "cage moyenne",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "exactTargetPngPaths": [
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-277-cage-moyenne-native.png"
+      ],
+      "inheritedInventoryStatus": "MISSING",
+      "familyOnlyCandidatesHistorical": [],
+      "currentSourceStatus": "EXACT_TARGET_CANDIDATE_EXISTS_NOT_ADMITTED",
+      "suggestedAction": "REVIEW_EXISTING_SOURCE",
+      "existingIndependentRelatedCandidates": [],
+      "selectedSourcePath": "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-277-cage-moyenne-native.png",
+      "inheritedQa": {
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "sha256": "fc5e1a1a2123476f8cbb59b653e1757c5699b93d2a73b00a46ccdc74521bc8ca",
+        "strictAlphaGreater0MarginContractMet": false,
+        "humanValidated": false,
+        "runtimeIntegrated": false,
+        "description": "Low elongated cage with reinforced chamfered basalt corners, long open bronze roof rails and closed long-side barred hatch."
+      },
+      "runtimeAdmissionClaimed": false,
+      "canonicalOneToOneClaimed": false,
+      "sourceClosed": false
+    },
+    {
+      "id": "target-v81-71-278",
+      "section": 71,
+      "family": "FAUNE",
+      "label": "cage lourde",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "exactTargetPngPaths": [
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png"
+      ],
+      "inheritedInventoryStatus": "MISSING",
+      "familyOnlyCandidatesHistorical": [],
+      "currentSourceStatus": "EXACT_TARGET_CANDIDATE_EXISTS_NOT_ADMITTED",
+      "suggestedAction": "REVIEW_EXISTING_SOURCE",
+      "existingIndependentRelatedCandidates": [],
+      "selectedSourcePath": "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png",
+      "inheritedQa": {
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "sha256": "36ea82cb4cc0c9ed08d04e4264d4ae55ca34fd85729ed0bfeea9987f5a2f4fc0",
+        "strictAlphaGreater0MarginContractMet": false,
+        "humanValidated": false,
+        "runtimeIntegrated": false,
+        "description": "Heavy cage with three massive transverse arches, double-height side bars, reinforced end door and two thick support runners."
+      },
+      "runtimeAdmissionClaimed": false,
+      "canonicalOneToOneClaimed": false,
+      "sourceClosed": false
+    },
+    {
+      "id": "target-v81-71-279",
+      "section": 71,
+      "family": "FAUNE",
+      "label": "fosse",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "exactTargetPngPaths": [],
+      "inheritedInventoryStatus": "EXISTING_NEEDS_VARIANT",
+      "familyOnlyCandidatesHistorical": [
+        "/game/homeworld/v75/architecture/pit-gate.png",
+        "/game/homeworld/v64/pavement.png"
+      ],
+      "currentSourceStatus": "NO_EXACT_TARGET_FILENAME",
+      "suggestedAction": "GENERATE_SPECIFIC_INDEPENDENT_SPRITE",
+      "existingIndependentRelatedCandidates": [],
+      "runtimeAdmissionClaimed": false,
+      "canonicalOneToOneClaimed": false,
+      "sourceClosed": false
+    },
+    {
+      "id": "target-v81-71-280",
+      "section": 71,
+      "family": "FAUNE",
+      "label": "signal danger",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "exactTargetPngPaths": [
+        "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-280-signal-danger-native.png"
+      ],
+      "inheritedInventoryStatus": "MISSING",
+      "familyOnlyCandidatesHistorical": [],
+      "currentSourceStatus": "EXACT_TARGET_CANDIDATE_EXISTS_NOT_ADMITTED",
+      "suggestedAction": "REVIEW_EXISTING_SOURCE",
+      "existingIndependentRelatedCandidates": [],
+      "runtimeAdmissionClaimed": false,
+      "canonicalOneToOneClaimed": false,
+      "sourceClosed": false
+    },
+    {
+      "id": "target-v81-72-281",
+      "section": 72,
+      "family": "MONTURES",
+      "label": "Zone d'attache",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "exactTargetPngPaths": [],
+      "inheritedInventoryStatus": "EXISTING_NEEDS_VARIANT",
+      "familyOnlyCandidatesHistorical": [
+        "/game/homeworld/v72/civic-identity-atlas.png",
+        "/game/homeworld/v64/props-atlas.png",
+        "/game/homeworld/v64/pavement.png",
+        "/game/homeworld/v72/civic-furniture-kit.png",
+        "/game/homeworld/v76/interior/chest-diagonal.png",
+        "/game/homeworld/v76/interior/rack-lateral.png",
+        "/game/homeworld/v77/fauna-habitat-native.png",
+        "/game/homeworld/v77/fauna/armored-rhinoceros-titan.png"
+      ],
+      "currentSourceStatus": "NO_EXACT_TARGET_FILENAME",
+      "suggestedAction": "GENERATE_SPECIFIC_INDEPENDENT_SPRITE",
+      "existingIndependentRelatedCandidates": [],
+      "runtimeAdmissionClaimed": false,
+      "canonicalOneToOneClaimed": false,
+      "sourceClosed": false
+    },
+    {
+      "id": "target-v81-72-282",
+      "section": 72,
+      "family": "MONTURES",
+      "label": "support harnais",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "exactTargetPngPaths": [
+        "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-282-mount-harness-support-native.png"
+      ],
+      "inheritedInventoryStatus": "MISSING",
+      "familyOnlyCandidatesHistorical": [],
+      "currentSourceStatus": "EXACT_TARGET_CANDIDATE_EXISTS_NOT_ADMITTED",
+      "suggestedAction": "REVIEW_EXISTING_SOURCE",
+      "existingIndependentRelatedCandidates": [],
+      "selectedSourcePath": "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-282-mount-harness-support-native.png",
+      "inheritedQa": {
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "sha256": "e32266329f168b89f0318b0ddb666a9044bc90ee9d2677cbd02f580857bc5acc",
+        "strictAlphaGreater0MarginContractMet": false,
+        "humanValidated": false,
+        "runtimeIntegrated": false,
+        "description": "Whole independent equipment construction; no animal/rider or anatomical fit proven. See gear/gear-index.md and gear/gear-index.json for contextual interpretation."
+      },
+      "runtimeAdmissionClaimed": false,
+      "canonicalOneToOneClaimed": false,
+      "sourceClosed": false
+    },
+    {
+      "id": "target-v81-72-283",
+      "section": 72,
+      "family": "MONTURES",
+      "label": "harnais",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "exactTargetPngPaths": [
+        "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-283-mount-harness-native.png"
+      ],
+      "inheritedInventoryStatus": "MISSING",
+      "familyOnlyCandidatesHistorical": [],
+      "currentSourceStatus": "EXACT_TARGET_CANDIDATE_EXISTS_NOT_ADMITTED",
+      "suggestedAction": "REVIEW_EXISTING_SOURCE",
+      "existingIndependentRelatedCandidates": [],
+      "selectedSourcePath": "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-283-mount-harness-native.png",
+      "inheritedQa": {
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "sha256": "1dd4cf02adcfc98d04529cf00d9c290016c7bac9678d7d1432bda6db583a6d45",
+        "strictAlphaGreater0MarginContractMet": false,
+        "humanValidated": false,
+        "runtimeIntegrated": false,
+        "description": "Whole independent equipment construction; no animal/rider or anatomical fit proven. See gear/gear-index.md and gear/gear-index.json for contextual interpretation."
+      },
+      "runtimeAdmissionClaimed": false,
+      "canonicalOneToOneClaimed": false,
+      "sourceClosed": false
+    },
+    {
+      "id": "target-v81-72-284",
+      "section": 72,
+      "family": "MONTURES",
+      "label": "selle",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "exactTargetPngPaths": [
+        "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-284-mount-saddle-native.png"
+      ],
+      "inheritedInventoryStatus": "MISSING",
+      "familyOnlyCandidatesHistorical": [],
+      "currentSourceStatus": "EXACT_TARGET_CANDIDATE_EXISTS_NOT_ADMITTED",
+      "suggestedAction": "REVIEW_EXISTING_SOURCE",
+      "existingIndependentRelatedCandidates": [],
+      "selectedSourcePath": "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-284-mount-saddle-native.png",
+      "inheritedQa": {
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "sha256": "01569e77489c2296a019269eb863e7a3f48c16002991ad220b0a67b1719b4615",
+        "strictAlphaGreater0MarginContractMet": false,
+        "humanValidated": false,
+        "runtimeIntegrated": false,
+        "description": "Whole independent equipment construction; no animal/rider or anatomical fit proven. See gear/gear-index.md and gear/gear-index.json for contextual interpretation."
+      },
+      "runtimeAdmissionClaimed": false,
+      "canonicalOneToOneClaimed": false,
+      "sourceClosed": false
+    },
+    {
+      "id": "target-v81-72-285",
+      "section": 72,
+      "family": "MONTURES",
+      "label": "rack selle",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "exactTargetPngPaths": [
+        "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-285-saddle-rack-native.png"
+      ],
+      "inheritedInventoryStatus": "MISSING",
+      "familyOnlyCandidatesHistorical": [],
+      "currentSourceStatus": "EXACT_TARGET_CANDIDATE_EXISTS_NOT_ADMITTED",
+      "suggestedAction": "REVIEW_EXISTING_SOURCE",
+      "existingIndependentRelatedCandidates": [],
+      "selectedSourcePath": "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-285-saddle-rack-native.png",
+      "inheritedQa": {
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "sha256": "ea4496e16d3e74bd5beb121445a3b72451b3712ac717277112ab55c615ee834c",
+        "strictAlphaGreater0MarginContractMet": false,
+        "humanValidated": false,
+        "runtimeIntegrated": false,
+        "description": "Whole independent equipment construction; no animal/rider or anatomical fit proven. See gear/gear-index.md and gear/gear-index.json for contextual interpretation."
+      },
+      "runtimeAdmissionClaimed": false,
+      "canonicalOneToOneClaimed": false,
+      "sourceClosed": false
+    },
+    {
+      "id": "target-v81-72-286",
+      "section": 72,
+      "family": "MONTURES",
+      "label": "plateforme monte",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "exactTargetPngPaths": [],
+      "inheritedInventoryStatus": "EXISTING_NEEDS_VARIANT",
+      "familyOnlyCandidatesHistorical": [
+        "/game/homeworld/v64/pavement.png",
+        "/game/homeworld/v75/architecture/rampart-north-lodge.png",
+        "/game/homeworld/v76/architecture/rampart-watch.png",
+        "/game/homeworld/v75/architecture/rampart-south-lodge.png",
+        "/game/homeworld/v81/clan-residence-left.png",
+        "/game/homeworld/v64/house-c-ribbed.png",
+        "/game/homeworld/v64/house-a-basalt.png",
+        "/game/homeworld/v64/house-b-basalt.png"
+      ],
+      "currentSourceStatus": "NO_EXACT_TARGET_FILENAME",
+      "suggestedAction": "GENERATE_SPECIFIC_INDEPENDENT_SPRITE",
+      "existingIndependentRelatedCandidates": [],
+      "runtimeAdmissionClaimed": false,
+      "canonicalOneToOneClaimed": false,
+      "sourceClosed": false
+    },
+    {
+      "id": "target-v81-72-287",
+      "section": 72,
+      "family": "MONTURES",
+      "label": "barrière",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "exactTargetPngPaths": [],
+      "inheritedInventoryStatus": "EXISTING_NEEDS_VARIANT",
+      "familyOnlyCandidatesHistorical": [
+        "/game/homeworld/v72/civic-identity-atlas.png",
+        "/game/homeworld/v64/props-atlas.png",
+        "/game/homeworld/v64/pavement.png",
+        "/game/homeworld/v71/outskirts-kit.png",
+        "/game/homeworld/v77/council-stair-native.png",
+        "/game/homeworld/v77/lava-warrior-left.png",
+        "/game/homeworld/v77/lava-warrior-right.png",
+        "/game/homeworld/v77/lava-transit-skiff.png"
+      ],
+      "currentSourceStatus": "NO_EXACT_TARGET_FILENAME",
+      "suggestedAction": "GENERATE_SPECIFIC_INDEPENDENT_SPRITE",
+      "existingIndependentRelatedCandidates": [],
+      "runtimeAdmissionClaimed": false,
+      "canonicalOneToOneClaimed": false,
+      "sourceClosed": false
+    },
+    {
+      "id": "target-v81-72-288",
+      "section": 72,
+      "family": "MONTURES",
+      "label": "mangeoire adaptée",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "exactTargetPngPaths": [
+        "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-288-adapted-mount-feeder-native.png"
+      ],
+      "inheritedInventoryStatus": "MISSING",
+      "familyOnlyCandidatesHistorical": [],
+      "currentSourceStatus": "EXACT_TARGET_CANDIDATE_EXISTS_NOT_ADMITTED",
+      "suggestedAction": "REVIEW_EXISTING_SOURCE",
+      "existingIndependentRelatedCandidates": [],
+      "selectedSourcePath": "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-288-adapted-mount-feeder-native.png",
+      "inheritedQa": {
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "sha256": "22f2344dc1fb0c67a2ef1c28fa01a4a8998bdac18a7d5c8509c16785f89dd953",
+        "strictAlphaGreater0MarginContractMet": false,
+        "humanValidated": false,
+        "runtimeIntegrated": false,
+        "description": "Whole independent equipment construction; no animal/rider or anatomical fit proven. See gear/gear-index.md and gear/gear-index.json for contextual interpretation."
+      },
+      "runtimeAdmissionClaimed": false,
+      "canonicalOneToOneClaimed": false,
+      "sourceClosed": false
+    },
+    {
+      "id": "target-v81-72-289",
+      "section": 72,
+      "family": "MONTURES",
+      "label": "petite zone d'entraînement",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "exactTargetPngPaths": [],
+      "inheritedInventoryStatus": "EXISTING_NEEDS_VARIANT",
+      "familyOnlyCandidatesHistorical": [
+        "/game/homeworld/v64/pavement.png",
+        "/game/homeworld/v76/architecture/dock-control.png",
+        "/game/homeworld/v72/civic-identity-atlas.png",
+        "/game/homeworld/v75/architecture/market-canopy.png",
+        "/game/homeworld/v76/architecture/trophy-mausoleum.png",
+        "/game/homeworld/v75/architecture/enforcer-bastion.png",
+        "/game/homeworld/v75/architecture/pit-gate.png",
+        "/game/homeworld/v81/council-hall-left.png"
+      ],
+      "currentSourceStatus": "NO_EXACT_TARGET_FILENAME",
+      "suggestedAction": "GENERATE_SPECIFIC_INDEPENDENT_SPRITE",
+      "existingIndependentRelatedCandidates": [],
+      "runtimeAdmissionClaimed": false,
+      "canonicalOneToOneClaimed": false,
+      "sourceClosed": false
+    },
+    {
+      "id": "target-v81-72-290",
+      "section": 72,
+      "family": "MONTURES",
+      "label": "poste de soin",
+      "lore": "LORE_COMPATIBLE_ORIGINAL",
+      "exactTargetPngPaths": [],
+      "inheritedInventoryStatus": "EXISTING_NEEDS_VARIANT",
+      "familyOnlyCandidatesHistorical": [
+        "/game/homeworld/v72/civic-identity-atlas.png",
+        "/game/homeworld/v64/props-atlas.png",
+        "/game/homeworld/v64/pavement.png",
+        "/game/homeworld/v72/civic-furniture-kit.png",
+        "/game/homeworld/v76/interior/chest-diagonal.png",
+        "/game/homeworld/v76/interior/rack-lateral.png",
+        "/game/homeworld/v77/fauna-habitat-native.png",
+        "/game/homeworld/v77/fauna/armored-rhinoceros-titan.png"
+      ],
+      "currentSourceStatus": "NO_EXACT_TARGET_FILENAME",
+      "suggestedAction": "GENERATE_SPECIFIC_INDEPENDENT_SPRITE",
+      "existingIndependentRelatedCandidates": [],
+      "runtimeAdmissionClaimed": false,
+      "canonicalOneToOneClaimed": false,
+      "sourceClosed": false
+    }
+  ],
+  "sources": [
+    {
+      "id": "SRC-DAN-2026",
+      "title": "Entretien Dan Trachtenberg, 27 janvier 2026",
+      "url": "https://www.avpgalaxy.net/website/interviews/dan-trachtenberg-2/",
+      "nature": "Entretien du réalisateur",
+      "scope": "Il évoque des lieux de rassemblement, tavernes et corrals. Il distingue des concepts de montures abandonnés du film final.",
+      "limit": "Ce propos ne fournit aucun plan officiel de marché, d’écurie ou de chenil."
+    },
+    {
+      "id": "SRC-ALEX-HOMESTEAD",
+      "title": "Alex Nice — Yautja Prime Homestead",
+      "url": "https://alexnice.artstation.com/projects/Bk859k",
+      "nature": "Portfolio du concept artist",
+      "scope": "Référence visuelle de constructions de clan pour Predator: Badlands.",
+      "limit": "Les bâtiments de ce lot ne sont pas des reproductions certifiées de plans du film."
+    },
+    {
+      "id": "SRC-HOUND-2010",
+      "title": "Hot Toys / Sideshow — Tracker, Predators (2010)",
+      "url": "https://www.sideshow.com/collectibles/predator-tracker-hot-toys-901303",
+      "nature": "Produit officiel sous licence",
+      "scope": "Référence du Tracker et du chien de Predators fourni avec la figurine.",
+      "limit": "La figurine ne prouve ni un chenil Homeworld ni les dimensions réelles du bâtiment."
+    },
+    {
+      "id": "SRC-HOUND-2018",
+      "title": "Prime 1 Studio — Predator Hound, The Predator (2018)",
+      "url": "https://www.prime1studio.com/tpr-predator-hound/PMTPR-03.html",
+      "nature": "Produit officiel sous licence",
+      "scope": "Référence distincte du chien associé au film de 2018.",
+      "limit": "Le socle est indiqué comme inspiré d’un intérieur de vaisseau. Il ne constitue pas un chenil canonique."
+    },
+    {
+      "id": "SRC-V81",
+      "title": "Registre cible V81, main contrôlé le 3 novembre 2026",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/f322e0cb42f2b1b7e06c3be1dcfbb23cb24f02c8/app/game/data/homeworldAssetCatalogueTargetV81.json",
+      "nature": "Source du projet",
+      "scope": "Identités et libellés des 40 cibles examinées. Toutes portent LORE_COMPATIBLE_ORIGINAL.",
+      "limit": "Un statut ouvert ne signifie pas automatiquement qu’aucune image de la famille n’existe."
+    },
+    {
+      "id": "SRC-CAMERA",
+      "title": "Contrat caméra et échelle du Homeworld V78",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/f322e0cb42f2b1b7e06c3be1dcfbb23cb24f02c8/app/game/data/homeworldCityArtManifestV78.json",
+      "nature": "Convention technique du projet",
+      "scope": "Orthographique yaw 0°, pitch 35°. Adulte de 100 unités pour 2,3 m dans le projet.",
+      "limit": "Ces dimensions sont des conventions de jeu, pas des mesures officielles du lore."
+    }
+  ],
+  "camera": {
+    "projection": "orthographic",
+    "yawDegrees": 0,
+    "pitchDegrees": 35,
+    "depthScale": 0.573576436351046
+  },
+  "units": {
+    "adultHeightWorld": 100,
+    "adultMetresProjectConvention": 2.3,
+    "actorFootprintWorld": {
+      "width": 48,
+      "depth": 28
+    },
+    "minimumDoorWorld": {
+      "width": 80,
+      "height": 128
+    },
+    "targetDoorWorld": {
+      "width": 96,
+      "height": 140
+    },
+    "doorApproachWorld": 70,
+    "minimumPrimaryStreetWorld": 160,
+    "targetLocalPassageWorld": 96
+  },
+  "scopeNote": "Complément de sprites pour trois lieux. Les chemins historiques restent conservés. Le contenu canonique, les adaptations originales et les états de production sont distincts.",
+  "canonicalOneToOneClaimed": false,
+  "runtimeIntegrated": false,
+  "humanValidated": false,
+  "deliveredAssets": [
+    {
+      "id": "HWM162-S01",
+      "area": "market",
+      "label": "Halle d’échanges du clan",
+      "kind": "Bâtiment",
+      "targetIds": [
+        "target-v81-59-97"
+      ],
+      "purpose": "Abriter les échanges et les ateliers de passage dans une halle à pleine échelle.",
+      "placementNote": "Entrée et sortie dégagées. Les comptoirs restent indépendants du bâtiment.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "PLANIFIE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S01-market-hall-v2.png",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGBA",
+      "bytes": 1585597,
+      "sha256": "494e77092642dc46ff0ebc79e2a54040e450b1fbc1c41e434caa8498ee01ca69",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 886866,
+      "transparentRatio": 0.5636127,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            9,
+            1655,
+            869
+          ],
+          "margins": [
+            0,
+            9,
+            119,
+            18
+          ],
+          "minMargin": 0,
+          "pixels": 686672
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            200,
+            120,
+            1574,
+            800
+          ],
+          "margins": [
+            200,
+            120,
+            200,
+            87
+          ],
+          "minMargin": 87,
+          "pixels": 661552
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            201,
+            120,
+            1574,
+            798
+          ],
+          "margins": [
+            201,
+            120,
+            200,
+            89
+          ],
+          "minMargin": 89,
+          "pixels": 659613
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            201,
+            121,
+            1573,
+            797
+          ],
+          "margins": [
+            201,
+            121,
+            201,
+            90
+          ],
+          "minMargin": 90,
+          "pixels": 655628
+        }
+      },
+      "edgeAlphaMax": 1,
+      "strictClearMargin": false,
+      "mainSilhouetteInsideCanvas": true,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "sourceRefs": [
+        "SRC-CAMERA",
+        "SRC-DAN-2026",
+        "SRC-ALEX-HOMESTEAD"
+      ],
+      "proposedMetres": {
+        "width": 18,
+        "depth": 10,
+        "height": 8
+      },
+      "dimensionsAuthority": "PROJECT_BRIEF_NOT_CANONICAL_MEASUREMENT",
+      "pivotDraftPixels": {
+        "x": 887.5,
+        "y": 798,
+        "status": "BOUNDING_BOX_ANCHOR_ONLY_NOT_MEASURED_GROUND_CONTACT"
+      },
+      "receipt": "production/homeworld-sectors-20261103/receipts/market.json",
+      "notes": [
+        "Entrée et sortie dégagées. Les comptoirs restent indépendants du bâtiment.",
+        "Source PNG selected after generation; no scripted image cleanup, resizing or padding.",
+        "A few alpha 1 pixels can reach the canvas edges; alpha > 24 bounds describe the main silhouette only.",
+        "Camera 0°/35° and metre dimensions are the brief, not a measured 3D or canonical certification.",
+        "The first generation was reframed with image_gen; the selected v2 remains byte-identical to that generator output. First attempt retained separately."
+      ],
+      "canonicalOneToOneClaimed": false,
+      "cameraMeasured": false,
+      "scaleValidatedInGame": false,
+      "proposedWorldSize": {
+        "width": 782.609,
+        "depth": 434.783,
+        "height": 347.826
+      },
+      "localPath": "sprites/market/HWM162-S01-market-hall-v2.png",
+      "exists": true,
+      "hasTransparency": true,
+      "minimumVisibleMargin": 0,
+      "marginAlpha0": 0,
+      "marginAlpha24": 89
+    },
+    {
+      "id": "HWM162-S02",
+      "area": "market",
+      "label": "Étal marchand long",
+      "kind": "Mobilier",
+      "targetIds": [
+        "target-v81-64-158"
+      ],
+      "purpose": "Fournir un comptoir long pour présenter du matériel et des fournitures.",
+      "placementNote": "Face de prise accessible sur toute la longueur. Réserve séparée derrière.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "PLANIFIE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S02-long-market-stall.png",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGBA",
+      "bytes": 1404783,
+      "sha256": "c1e353660c697180604ca6cf805ad13eb14c2009e6213f3e83233acae518b00e",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 983252,
+      "transparentRatio": 0.62486702,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            0,
+            1756,
+            887
+          ],
+          "margins": [
+            0,
+            0,
+            18,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 590286
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            160,
+            147,
+            1614,
+            740
+          ],
+          "margins": [
+            160,
+            147,
+            160,
+            147
+          ],
+          "minMargin": 147,
+          "pixels": 544664
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            161,
+            148,
+            1614,
+            739
+          ],
+          "margins": [
+            161,
+            148,
+            160,
+            148
+          ],
+          "minMargin": 148,
+          "pixels": 542326
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            161,
+            149,
+            1613,
+            739
+          ],
+          "margins": [
+            161,
+            149,
+            161,
+            148
+          ],
+          "minMargin": 148,
+          "pixels": 536673
+        }
+      },
+      "edgeAlphaMax": 1,
+      "strictClearMargin": false,
+      "mainSilhouetteInsideCanvas": true,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "sourceRefs": [
+        "SRC-CAMERA",
+        "SRC-DAN-2026",
+        "SRC-ALEX-HOMESTEAD"
+      ],
+      "proposedMetres": {
+        "width": 8,
+        "depth": 2.5,
+        "height": 4
+      },
+      "dimensionsAuthority": "PROJECT_BRIEF_NOT_CANONICAL_MEASUREMENT",
+      "pivotDraftPixels": {
+        "x": 887.5,
+        "y": 739,
+        "status": "BOUNDING_BOX_ANCHOR_ONLY_NOT_MEASURED_GROUND_CONTACT"
+      },
+      "receipt": "production/homeworld-sectors-20261103/receipts/market.json",
+      "notes": [
+        "Face de prise accessible sur toute la longueur. Réserve séparée derrière.",
+        "Source PNG selected after generation; no scripted image cleanup, resizing or padding.",
+        "A few alpha 1 pixels can reach the canvas edges; alpha > 24 bounds describe the main silhouette only.",
+        "Camera 0°/35° and metre dimensions are the brief, not a measured 3D or canonical certification."
+      ],
+      "canonicalOneToOneClaimed": false,
+      "cameraMeasured": false,
+      "scaleValidatedInGame": false,
+      "proposedWorldSize": {
+        "width": 347.826,
+        "depth": 108.696,
+        "height": 173.913
+      },
+      "localPath": "sprites/market/HWM162-S02-long-market-stall.png",
+      "exists": true,
+      "hasTransparency": true,
+      "minimumVisibleMargin": 0,
+      "marginAlpha0": 0,
+      "marginAlpha24": 148
+    },
+    {
+      "id": "HWM162-S03",
+      "area": "market",
+      "label": "Présentoir d’équipements",
+      "kind": "Mobilier",
+      "targetIds": [
+        "target-v81-64-162"
+      ],
+      "purpose": "Présenter des équipements sans les fusionner au décor de la halle.",
+      "placementNote": "Laisser un espace client devant le présentoir et un accès latéral à l’artisan chargé du matériel.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "PLANIFIE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S03-merchant-display.png",
+      "width": 1312,
+      "height": 1199,
+      "mode": "RGBA",
+      "bytes": 2373548,
+      "sha256": "9d9e720b4dc541e82fb0e3fffe73338c591fc9c39baa1fff6929617a9b3957ab",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 544298,
+      "transparentRatio": 0.34600607,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            17,
+            1311,
+            1199
+          ],
+          "margins": [
+            0,
+            17,
+            1,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 1028790
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            42,
+            81,
+            1269,
+            1119
+          ],
+          "margins": [
+            42,
+            81,
+            43,
+            80
+          ],
+          "minMargin": 42,
+          "pixels": 1009839
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            42,
+            81,
+            1269,
+            1119
+          ],
+          "margins": [
+            42,
+            81,
+            43,
+            80
+          ],
+          "minMargin": 42,
+          "pixels": 1009020
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            42,
+            82,
+            1269,
+            1118
+          ],
+          "margins": [
+            42,
+            82,
+            43,
+            81
+          ],
+          "minMargin": 42,
+          "pixels": 1005962
+        }
+      },
+      "edgeAlphaMax": 1,
+      "strictClearMargin": false,
+      "mainSilhouetteInsideCanvas": true,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "sourceRefs": [
+        "SRC-CAMERA",
+        "SRC-DAN-2026",
+        "SRC-ALEX-HOMESTEAD"
+      ],
+      "proposedMetres": {
+        "width": 2.8,
+        "depth": 1.2,
+        "height": 2.2
+      },
+      "dimensionsAuthority": "PROJECT_BRIEF_NOT_CANONICAL_MEASUREMENT",
+      "pivotDraftPixels": {
+        "x": 655.5,
+        "y": 1119,
+        "status": "BOUNDING_BOX_ANCHOR_ONLY_NOT_MEASURED_GROUND_CONTACT"
+      },
+      "receipt": "production/homeworld-sectors-20261103/receipts/market.json",
+      "notes": [
+        "Laisser un espace client devant le présentoir et un accès latéral à l’artisan chargé du matériel.",
+        "Source PNG selected after generation; no scripted image cleanup, resizing or padding.",
+        "A few alpha 1 pixels can reach the canvas edges; alpha > 24 bounds describe the main silhouette only.",
+        "Camera 0°/35° and metre dimensions are the brief, not a measured 3D or canonical certification.",
+        "Visible margin is below the requested 80px on at least one side; the main silhouette remains inside the image."
+      ],
+      "canonicalOneToOneClaimed": false,
+      "cameraMeasured": false,
+      "scaleValidatedInGame": false,
+      "proposedWorldSize": {
+        "width": 121.739,
+        "depth": 52.174,
+        "height": 95.652
+      },
+      "localPath": "sprites/market/HWM162-S03-merchant-display.png",
+      "exists": true,
+      "hasTransparency": true,
+      "minimumVisibleMargin": 0,
+      "marginAlpha0": 0,
+      "marginAlpha24": 42
+    },
+    {
+      "id": "HWM162-S04",
+      "area": "market",
+      "label": "Plateforme d’exposition de trophées",
+      "kind": "Mobilier",
+      "targetIds": [
+        "target-v81-64-165"
+      ],
+      "purpose": "Exposer des prises et des pièces cérémonielles.",
+      "placementNote": "La fonction d’exposition ne crée pas une règle canonique de vente des trophées.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "PLANIFIE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S04-trophy-platform.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2722757,
+      "sha256": "897a4024cd04edb42b557a08f8b40ee29d80c219e2de3061106265b69208a5d4",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 512225,
+      "transparentRatio": 0.32566388,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            4,
+            1520,
+            1024
+          ],
+          "margins": [
+            0,
+            4,
+            16,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 1060639
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            42,
+            40,
+            1497,
+            947
+          ],
+          "margins": [
+            42,
+            40,
+            39,
+            77
+          ],
+          "minMargin": 39,
+          "pixels": 1032590
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            42,
+            40,
+            1497,
+            946
+          ],
+          "margins": [
+            42,
+            40,
+            39,
+            78
+          ],
+          "minMargin": 39,
+          "pixels": 1031884
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            43,
+            41,
+            1496,
+            946
+          ],
+          "margins": [
+            43,
+            41,
+            40,
+            78
+          ],
+          "minMargin": 40,
+          "pixels": 1028847
+        }
+      },
+      "edgeAlphaMax": 1,
+      "strictClearMargin": false,
+      "mainSilhouetteInsideCanvas": true,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "sourceRefs": [
+        "SRC-CAMERA",
+        "SRC-DAN-2026",
+        "SRC-ALEX-HOMESTEAD"
+      ],
+      "proposedMetres": {
+        "width": 5,
+        "depth": 3,
+        "height": 3.6
+      },
+      "dimensionsAuthority": "PROJECT_BRIEF_NOT_CANONICAL_MEASUREMENT",
+      "pivotDraftPixels": {
+        "x": 769.5,
+        "y": 946,
+        "status": "BOUNDING_BOX_ANCHOR_ONLY_NOT_MEASURED_GROUND_CONTACT"
+      },
+      "receipt": "production/homeworld-sectors-20261103/receipts/market.json",
+      "notes": [
+        "La fonction d’exposition ne crée pas une règle canonique de vente des trophées.",
+        "Source PNG selected after generation; no scripted image cleanup, resizing or padding.",
+        "A few alpha 1 pixels can reach the canvas edges; alpha > 24 bounds describe the main silhouette only.",
+        "Camera 0°/35° and metre dimensions are the brief, not a measured 3D or canonical certification.",
+        "Visible margin is below the requested 80px on at least one side; the main silhouette remains inside the image."
+      ],
+      "canonicalOneToOneClaimed": false,
+      "cameraMeasured": false,
+      "scaleValidatedInGame": false,
+      "proposedWorldSize": {
+        "width": 217.391,
+        "depth": 130.435,
+        "height": 156.522
+      },
+      "localPath": "sprites/market/HWM162-S04-trophy-platform.png",
+      "exists": true,
+      "hasTransparency": true,
+      "minimumVisibleMargin": 0,
+      "marginAlpha0": 0,
+      "marginAlpha24": 39
+    },
+    {
+      "id": "HWM162-S05",
+      "area": "market",
+      "label": "Abri de stockage marchand",
+      "kind": "Bâtiment",
+      "targetIds": [
+        "target-v81-64-170"
+      ],
+      "purpose": "Séparer la réserve des emplacements d’échange.",
+      "placementNote": "Prévoir accès de manutention et fermeture. Aucun inventaire interactif ajouté par cette image.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "PLANIFIE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S05-stock-shelter.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2903672,
+      "sha256": "a8f69759564a653a6b7488e8fc1a90706a1cdd573592feb2dcfe7a855c40a866",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 452601,
+      "transparentRatio": 0.28775597,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            7,
+            1532,
+            1024
+          ],
+          "margins": [
+            0,
+            7,
+            4,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 1120263
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            36,
+            77,
+            1500,
+            937
+          ],
+          "margins": [
+            36,
+            77,
+            36,
+            87
+          ],
+          "minMargin": 36,
+          "pixels": 1100618
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            36,
+            77,
+            1500,
+            936
+          ],
+          "margins": [
+            36,
+            77,
+            36,
+            88
+          ],
+          "minMargin": 36,
+          "pixels": 1099291
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            36,
+            77,
+            1499,
+            936
+          ],
+          "margins": [
+            36,
+            77,
+            37,
+            88
+          ],
+          "minMargin": 36,
+          "pixels": 1097226
+        }
+      },
+      "edgeAlphaMax": 1,
+      "strictClearMargin": false,
+      "mainSilhouetteInsideCanvas": true,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "sourceRefs": [
+        "SRC-CAMERA",
+        "SRC-DAN-2026",
+        "SRC-ALEX-HOMESTEAD"
+      ],
+      "proposedMetres": {
+        "width": 6,
+        "depth": 4,
+        "height": 4.6
+      },
+      "dimensionsAuthority": "PROJECT_BRIEF_NOT_CANONICAL_MEASUREMENT",
+      "pivotDraftPixels": {
+        "x": 768,
+        "y": 936,
+        "status": "BOUNDING_BOX_ANCHOR_ONLY_NOT_MEASURED_GROUND_CONTACT"
+      },
+      "receipt": "production/homeworld-sectors-20261103/receipts/market.json",
+      "notes": [
+        "Prévoir accès de manutention et fermeture. Aucun inventaire interactif ajouté par cette image.",
+        "Source PNG selected after generation; no scripted image cleanup, resizing or padding.",
+        "A few alpha 1 pixels can reach the canvas edges; alpha > 24 bounds describe the main silhouette only.",
+        "Camera 0°/35° and metre dimensions are the brief, not a measured 3D or canonical certification.",
+        "Visible margin is below the requested 80px on at least one side; the main silhouette remains inside the image."
+      ],
+      "canonicalOneToOneClaimed": false,
+      "cameraMeasured": false,
+      "scaleValidatedInGame": false,
+      "proposedWorldSize": {
+        "width": 260.87,
+        "depth": 173.913,
+        "height": 200
+      },
+      "localPath": "sprites/market/HWM162-S05-stock-shelter.png",
+      "exists": true,
+      "hasTransparency": true,
+      "minimumVisibleMargin": 0,
+      "marginAlpha0": 0,
+      "marginAlpha24": 36
+    },
+    {
+      "id": "HWM162-M01",
+      "area": "mounts",
+      "label": "Abri des montures",
+      "kind": "Bâtiment",
+      "targetIds": [
+        "hw-sector-mount-stable-building"
+      ],
+      "purpose": "Accueillir les grands animaux du bestiaire du projet.",
+      "placementNote": "Dimensionner les seuils sur l’animal choisi. Le bâtiment est une adaptation originale.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "PLANIFIE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M01-open-stable.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2196037,
+      "sha256": "b2f958ccd6a992c269b94cf32900ccfc2a5b8c2063a231891c445c8396ec6518",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 792528,
+      "transparentRatio": 0.50387573,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            0,
+            1504,
+            1024
+          ],
+          "margins": [
+            0,
+            0,
+            32,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 780336
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            97,
+            159,
+            1439,
+            850
+          ],
+          "margins": [
+            97,
+            159,
+            97,
+            174
+          ],
+          "minMargin": 97,
+          "pixels": 760906
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            97,
+            159,
+            1439,
+            849
+          ],
+          "margins": [
+            97,
+            159,
+            97,
+            175
+          ],
+          "minMargin": 97,
+          "pixels": 759600
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            98,
+            160,
+            1439,
+            849
+          ],
+          "margins": [
+            98,
+            160,
+            97,
+            175
+          ],
+          "minMargin": 97,
+          "pixels": 757869
+        }
+      },
+      "edgeAlphaMax": 1,
+      "strictClearMargin": false,
+      "mainSilhouetteInsideCanvas": true,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "sourceRefs": [
+        "SRC-CAMERA",
+        "SRC-DAN-2026",
+        "SRC-ALEX-HOMESTEAD"
+      ],
+      "proposedMetres": {
+        "width": 14,
+        "depth": 10,
+        "height": 7
+      },
+      "dimensionsAuthority": "PROJECT_BRIEF_NOT_CANONICAL_MEASUREMENT",
+      "pivotDraftPixels": {
+        "x": 768,
+        "y": 849,
+        "status": "BOUNDING_BOX_ANCHOR_ONLY_NOT_MEASURED_GROUND_CONTACT"
+      },
+      "receipt": "production/homeworld-sectors-20261103/receipts/mounts.json",
+      "notes": [
+        "Dimensionner les seuils sur l’animal choisi. Le bâtiment est une adaptation originale.",
+        "Source PNG selected after generation; no scripted image cleanup, resizing or padding.",
+        "A few alpha 1 pixels can reach the canvas edges; alpha > 24 bounds describe the main silhouette only.",
+        "Camera 0°/35° and metre dimensions are the brief, not a measured 3D or canonical certification.",
+        "Full building silhouette observed with visible margins. Low alpha background pixels reach canvas edges; actual alpha bounds require final review. No resizing/padding or background edit performed."
+      ],
+      "canonicalOneToOneClaimed": false,
+      "cameraMeasured": false,
+      "scaleValidatedInGame": false,
+      "proposedWorldSize": {
+        "width": 608.696,
+        "depth": 434.783,
+        "height": 304.348
+      },
+      "localPath": "sprites/mounts/HWM162-M01-open-stable.png",
+      "exists": true,
+      "hasTransparency": true,
+      "minimumVisibleMargin": 0,
+      "marginAlpha0": 0,
+      "marginAlpha24": 97
+    },
+    {
+      "id": "HWM162-M02",
+      "area": "mounts",
+      "label": "Zone d’attache des montures",
+      "kind": "Équipement",
+      "targetIds": [
+        "target-v81-72-281"
+      ],
+      "purpose": "Assurer une zone de préparation et d’attache avant le départ.",
+      "placementNote": "Conserver l’accès du soigneur et la place de rotation de la monture.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "PLANIFIE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M02-tether-station.png",
+      "width": 1182,
+      "height": 1330,
+      "mode": "RGBA",
+      "bytes": 1248514,
+      "sha256": "e61634fd7c5ea92792c06586e6b7edb4ed23b570084931177cb32774c80865fa",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 1051690,
+      "transparentRatio": 0.66898846,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            0,
+            1164,
+            1330
+          ],
+          "margins": [
+            0,
+            0,
+            18,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 520370
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            245,
+            50,
+            937,
+            1250
+          ],
+          "margins": [
+            245,
+            50,
+            245,
+            80
+          ],
+          "minMargin": 50,
+          "pixels": 506124
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            246,
+            51,
+            937,
+            1250
+          ],
+          "margins": [
+            246,
+            51,
+            245,
+            80
+          ],
+          "minMargin": 51,
+          "pixels": 505258
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            247,
+            52,
+            936,
+            1249
+          ],
+          "margins": [
+            247,
+            52,
+            246,
+            81
+          ],
+          "minMargin": 52,
+          "pixels": 502833
+        }
+      },
+      "edgeAlphaMax": 1,
+      "strictClearMargin": false,
+      "mainSilhouetteInsideCanvas": true,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "sourceRefs": [
+        "SRC-CAMERA",
+        "SRC-DAN-2026",
+        "SRC-ALEX-HOMESTEAD"
+      ],
+      "proposedMetres": {},
+      "dimensionsAuthority": "PROJECT_BRIEF_NOT_CANONICAL_MEASUREMENT",
+      "pivotDraftPixels": {
+        "x": 591.5,
+        "y": 1250,
+        "status": "BOUNDING_BOX_ANCHOR_ONLY_NOT_MEASURED_GROUND_CONTACT"
+      },
+      "receipt": "production/homeworld-sectors-20261103/receipts/mounts.json",
+      "notes": [
+        "Conserver l’accès du soigneur et la place de rotation de la monture.",
+        "Source PNG selected after generation; no scripted image cleanup, resizing or padding.",
+        "A few alpha 1 pixels can reach the canvas edges; alpha > 24 bounds describe the main silhouette only.",
+        "Camera 0°/35° and metre dimensions are the brief, not a measured 3D or canonical certification.",
+        "One tether station; full silhouette visually observed, margins smaller than requested near top; no resizing, padding or alpha changes.",
+        "Visible margin is below the requested 80px on at least one side; the main silhouette remains inside the image."
+      ],
+      "canonicalOneToOneClaimed": false,
+      "cameraMeasured": false,
+      "scaleValidatedInGame": false,
+      "localPath": "sprites/mounts/HWM162-M02-tether-station.png",
+      "exists": true,
+      "hasTransparency": true,
+      "minimumVisibleMargin": 0,
+      "marginAlpha0": 0,
+      "marginAlpha24": 51,
+      "proposedWorldSize": {}
+    },
+    {
+      "id": "HWM162-M03",
+      "area": "mounts",
+      "label": "Plateforme de monte",
+      "kind": "Équipement",
+      "targetIds": [
+        "target-v81-72-286"
+      ],
+      "purpose": "Offrir une plateforme de préparation à hauteur adaptée.",
+      "placementNote": "Adapter la hauteur à la selle et réserver la zone d’approche de l’animal.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "PLANIFIE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M03-mounting-platform.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 1479050,
+      "sha256": "c2997f12d43ba912223b9e339dca9ec5799a37d62397ee21aeef88f80f2277c7",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 1264839,
+      "transparentRatio": 0.80416298,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            0,
+            1524,
+            1024
+          ],
+          "margins": [
+            0,
+            0,
+            12,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 308025
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            66,
+            204,
+            1465,
+            846
+          ],
+          "margins": [
+            66,
+            204,
+            71,
+            178
+          ],
+          "minMargin": 66,
+          "pixels": 291073
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            66,
+            204,
+            1465,
+            845
+          ],
+          "margins": [
+            66,
+            204,
+            71,
+            179
+          ],
+          "minMargin": 66,
+          "pixels": 289959
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            67,
+            205,
+            1464,
+            844
+          ],
+          "margins": [
+            67,
+            205,
+            72,
+            180
+          ],
+          "minMargin": 67,
+          "pixels": 286812
+        }
+      },
+      "edgeAlphaMax": 1,
+      "strictClearMargin": false,
+      "mainSilhouetteInsideCanvas": true,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "sourceRefs": [
+        "SRC-CAMERA",
+        "SRC-DAN-2026",
+        "SRC-ALEX-HOMESTEAD"
+      ],
+      "proposedMetres": {
+        "ramp_length": 10,
+        "ramp_width": 2,
+        "platform_width": 3,
+        "platform_depth": 3,
+        "platform_height": 1.8
+      },
+      "dimensionsAuthority": "PROJECT_BRIEF_NOT_CANONICAL_MEASUREMENT",
+      "pivotDraftPixels": {
+        "x": 765.5,
+        "y": 845,
+        "status": "BOUNDING_BOX_ANCHOR_ONLY_NOT_MEASURED_GROUND_CONTACT"
+      },
+      "receipt": "production/homeworld-sectors-20261103/receipts/mounts.json",
+      "notes": [
+        "Adapter la hauteur à la selle et réserver la zone d’approche de l’animal.",
+        "Source PNG selected after generation; no scripted image cleanup, resizing or padding.",
+        "A few alpha 1 pixels can reach the canvas edges; alpha > 24 bounds describe the main silhouette only.",
+        "Camera 0°/35° and metre dimensions are the brief, not a measured 3D or canonical certification.",
+        "One connected long ramp and mounting landing; unobstructed mount-facing edge. Whole object visible, with rendered margins smaller than requested. No resizing, padding or alpha changes.",
+        "Visible margin is below the requested 80px on at least one side; the main silhouette remains inside the image."
+      ],
+      "canonicalOneToOneClaimed": false,
+      "cameraMeasured": false,
+      "scaleValidatedInGame": false,
+      "localPath": "sprites/mounts/HWM162-M03-mounting-platform.png",
+      "exists": true,
+      "hasTransparency": true,
+      "minimumVisibleMargin": 0,
+      "marginAlpha0": 0,
+      "marginAlpha24": 66,
+      "proposedWorldSize": {}
+    },
+    {
+      "id": "HWM162-M04",
+      "area": "mounts",
+      "label": "Barrière pour grands animaux",
+      "kind": "Module",
+      "targetIds": [
+        "target-v81-72-287"
+      ],
+      "purpose": "Former un enclos robuste à l’échelle des montures.",
+      "placementNote": "Les raccords et la collision doivent être mesurés avant répétition en jeu.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "PLANIFIE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M04-corral-fence.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 1675317,
+      "sha256": "4045b9d71693b66341d14b45dde68930d3664a56784d4bf1ce69c097e247a525",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 1110357,
+      "transparentRatio": 0.70594597,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            19,
+            1522,
+            1024
+          ],
+          "margins": [
+            0,
+            19,
+            14,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 462507
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            158,
+            238,
+            1379,
+            840
+          ],
+          "margins": [
+            158,
+            238,
+            157,
+            184
+          ],
+          "minMargin": 157,
+          "pixels": 384159
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            158,
+            238,
+            1379,
+            840
+          ],
+          "margins": [
+            158,
+            238,
+            157,
+            184
+          ],
+          "minMargin": 157,
+          "pixels": 381377
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            158,
+            238,
+            1379,
+            839
+          ],
+          "margins": [
+            158,
+            238,
+            157,
+            185
+          ],
+          "minMargin": 157,
+          "pixels": 374896
+        }
+      },
+      "edgeAlphaMax": 1,
+      "strictClearMargin": false,
+      "mainSilhouetteInsideCanvas": true,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "sourceRefs": [
+        "SRC-CAMERA",
+        "SRC-DAN-2026",
+        "SRC-ALEX-HOMESTEAD"
+      ],
+      "proposedMetres": {
+        "width": 5,
+        "height": 3
+      },
+      "dimensionsAuthority": "PROJECT_BRIEF_NOT_CANONICAL_MEASUREMENT",
+      "pivotDraftPixels": {
+        "x": 768.5,
+        "y": 840,
+        "status": "BOUNDING_BOX_ANCHOR_ONLY_NOT_MEASURED_GROUND_CONTACT"
+      },
+      "receipt": "production/homeworld-sectors-20261103/receipts/mounts.json",
+      "notes": [
+        "Les raccords et la collision doivent être mesurés avant répétition en jeu.",
+        "Source PNG selected after generation; no scripted image cleanup, resizing or padding.",
+        "A few alpha 1 pixels can reach the canvas edges; alpha > 24 bounds describe the main silhouette only.",
+        "Camera 0°/35° and metre dimensions are the brief, not a measured 3D or canonical certification.",
+        "One open connected reinforced fence segment, both full feet visible; no enclosure or cage. Weak alpha noise outside silhouette requires final review; no resizing/padding/alpha change."
+      ],
+      "canonicalOneToOneClaimed": false,
+      "cameraMeasured": false,
+      "scaleValidatedInGame": false,
+      "localPath": "sprites/mounts/HWM162-M04-corral-fence.png",
+      "exists": true,
+      "hasTransparency": true,
+      "minimumVisibleMargin": 0,
+      "marginAlpha0": 0,
+      "marginAlpha24": 157,
+      "proposedWorldSize": {}
+    },
+    {
+      "id": "HWM162-M05",
+      "area": "mounts",
+      "label": "Module d’entraînement des montures",
+      "kind": "Équipement",
+      "targetIds": [
+        "target-v81-72-289"
+      ],
+      "purpose": "Compléter l’aire d’entraînement avec un obstacle dédié.",
+      "placementNote": "L’aire complète se compose avec du sol libre. Une image ne prouve pas le dressage jouable.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "PLANIFIE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M05-training-hurdle.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 1318052,
+      "sha256": "3c5525569fdffe27192b92297476d23692f32e959c9404a91e8f64a75e9e81a2",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 1349695,
+      "transparentRatio": 0.85811297,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            19,
+            9,
+            1526,
+            1024
+          ],
+          "margins": [
+            19,
+            9,
+            10,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 223169
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            169,
+            303,
+            1367,
+            738
+          ],
+          "margins": [
+            169,
+            303,
+            169,
+            286
+          ],
+          "minMargin": 169,
+          "pixels": 204777
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            169,
+            303,
+            1367,
+            738
+          ],
+          "margins": [
+            169,
+            303,
+            169,
+            286
+          ],
+          "minMargin": 169,
+          "pixels": 203868
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            169,
+            303,
+            1367,
+            738
+          ],
+          "margins": [
+            169,
+            303,
+            169,
+            286
+          ],
+          "minMargin": 169,
+          "pixels": 201443
+        }
+      },
+      "edgeAlphaMax": 1,
+      "strictClearMargin": false,
+      "mainSilhouetteInsideCanvas": true,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "sourceRefs": [
+        "SRC-CAMERA",
+        "SRC-DAN-2026",
+        "SRC-ALEX-HOMESTEAD"
+      ],
+      "proposedMetres": {
+        "clear_span": 4.5,
+        "height": 1.3
+      },
+      "dimensionsAuthority": "PROJECT_BRIEF_NOT_CANONICAL_MEASUREMENT",
+      "pivotDraftPixels": {
+        "x": 768,
+        "y": 738,
+        "status": "BOUNDING_BOX_ANCHOR_ONLY_NOT_MEASURED_GROUND_CONTACT"
+      },
+      "receipt": "production/homeworld-sectors-20261103/receipts/mounts.json",
+      "notes": [
+        "L’aire complète se compose avec du sol libre. Une image ne prouve pas le dressage jouable.",
+        "Source PNG selected after generation; no scripted image cleanup, resizing or padding.",
+        "A few alpha 1 pixels can reach the canvas edges; alpha > 24 bounds describe the main silhouette only.",
+        "Camera 0°/35° and metre dimensions are the brief, not a measured 3D or canonical certification.",
+        "One adjustable hurdle, covered removable rail and broad feet. Full silhouette visible. Weak alpha noise outside silhouette requires final review; no resizing/padding/alpha change."
+      ],
+      "canonicalOneToOneClaimed": false,
+      "cameraMeasured": false,
+      "scaleValidatedInGame": false,
+      "localPath": "sprites/mounts/HWM162-M05-training-hurdle.png",
+      "exists": true,
+      "hasTransparency": true,
+      "minimumVisibleMargin": 0,
+      "marginAlpha0": 0,
+      "marginAlpha24": 169,
+      "proposedWorldSize": {}
+    },
+    {
+      "id": "HWM162-M06",
+      "area": "mounts",
+      "label": "Poste de soin des montures",
+      "kind": "Équipement",
+      "targetIds": [
+        "target-v81-72-290"
+      ],
+      "purpose": "Préparer le soin et l’entretien des grands animaux.",
+      "placementNote": "Conserver deux côtés de travail et une issue pour l’animal.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "PLANIFIE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M06-fauna-care-workstation.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 1421732,
+      "sha256": "a1dd1b7cb81a1b80ffd929381ec26f99d3e581ff5e1db98ac3514c72bfdd67da",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 1188972,
+      "transparentRatio": 0.75592804,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            11,
+            1518,
+            1000
+          ],
+          "margins": [
+            0,
+            11,
+            18,
+            24
+          ],
+          "minMargin": 0,
+          "pixels": 383892
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            293,
+            245,
+            1212,
+            816
+          ],
+          "margins": [
+            293,
+            245,
+            324,
+            208
+          ],
+          "minMargin": 208,
+          "pixels": 366746
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            293,
+            245,
+            1212,
+            815
+          ],
+          "margins": [
+            293,
+            245,
+            324,
+            209
+          ],
+          "minMargin": 209,
+          "pixels": 365543
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            294,
+            245,
+            1212,
+            815
+          ],
+          "margins": [
+            294,
+            245,
+            324,
+            209
+          ],
+          "minMargin": 209,
+          "pixels": 363369
+        }
+      },
+      "edgeAlphaMax": 1,
+      "strictClearMargin": false,
+      "mainSilhouetteInsideCanvas": true,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "sourceRefs": [
+        "SRC-CAMERA",
+        "SRC-DAN-2026",
+        "SRC-ALEX-HOMESTEAD"
+      ],
+      "proposedMetres": {
+        "width": 3,
+        "depth": 1.4,
+        "height": 2
+      },
+      "dimensionsAuthority": "PROJECT_BRIEF_NOT_CANONICAL_MEASUREMENT",
+      "pivotDraftPixels": {
+        "x": 752.5,
+        "y": 815,
+        "status": "BOUNDING_BOX_ANCHOR_ONLY_NOT_MEASURED_GROUND_CONTACT"
+      },
+      "receipt": "production/homeworld-sectors-20261103/receipts/mounts.json",
+      "notes": [
+        "Conserver deux côtés de travail et une issue pour l’animal.",
+        "Source PNG selected after generation; no scripted image cleanup, resizing or padding.",
+        "A few alpha 1 pixels can reach the canvas edges; alpha > 24 bounds describe the main silhouette only.",
+        "Camera 0°/35° and metre dimensions are the brief, not a measured 3D or canonical certification.",
+        "One self-contained care workstation with basin, padded support and attached diagnostic arm. No animals/people. Whole silhouette visible. Weak alpha noise outside silhouette requires final review; no resizing/padding/alpha change."
+      ],
+      "canonicalOneToOneClaimed": false,
+      "cameraMeasured": false,
+      "scaleValidatedInGame": false,
+      "proposedWorldSize": {
+        "width": 130.435,
+        "depth": 60.87,
+        "height": 86.957
+      },
+      "localPath": "sprites/mounts/HWM162-M06-fauna-care-workstation.png",
+      "exists": true,
+      "hasTransparency": true,
+      "minimumVisibleMargin": 0,
+      "marginAlpha0": 0,
+      "marginAlpha24": 209
+    },
+    {
+      "id": "HWM162-K01",
+      "area": "kennels",
+      "label": "Bâtiment des chenils",
+      "kind": "Bâtiment",
+      "targetIds": [
+        "hw-sector-hound-kennel-building"
+      ],
+      "purpose": "Abriter séparément les meutes de chasse.",
+      "placementNote": "Séparer les types de chiens et réserver un couloir de service du maître de meute.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "PLANIFIE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2118034,
+      "sha256": "fedb9677d90ae72cfe2ee53e9a1f5751361ea1d88da2d9169137a22d2cd9d9a5",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 785961,
+      "transparentRatio": 0.49970055,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            0,
+            1494,
+            1024
+          ],
+          "margins": [
+            0,
+            0,
+            42,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 786903
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            76,
+            154,
+            1460,
+            848
+          ],
+          "margins": [
+            76,
+            154,
+            76,
+            176
+          ],
+          "minMargin": 76,
+          "pixels": 765516
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            76,
+            154,
+            1460,
+            848
+          ],
+          "margins": [
+            76,
+            154,
+            76,
+            176
+          ],
+          "minMargin": 76,
+          "pixels": 764619
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            76,
+            155,
+            1460,
+            847
+          ],
+          "margins": [
+            76,
+            155,
+            76,
+            177
+          ],
+          "minMargin": 76,
+          "pixels": 762124
+        }
+      },
+      "edgeAlphaMax": 1,
+      "strictClearMargin": false,
+      "mainSilhouetteInsideCanvas": true,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "sourceRefs": [
+        "SRC-CAMERA",
+        "SRC-DAN-2026",
+        "SRC-ALEX-HOMESTEAD",
+        "SRC-HOUND-2010",
+        "SRC-HOUND-2018"
+      ],
+      "proposedMetres": {
+        "width": 10,
+        "depth": 8,
+        "height": 5
+      },
+      "dimensionsAuthority": "PROJECT_BRIEF_NOT_CANONICAL_MEASUREMENT",
+      "pivotDraftPixels": {
+        "x": 768,
+        "y": 848,
+        "status": "BOUNDING_BOX_ANCHOR_ONLY_NOT_MEASURED_GROUND_CONTACT"
+      },
+      "receipt": "production/homeworld-sectors-20261103/receipts/kennels.json",
+      "notes": [
+        "Séparer les types de chiens et réserver un couloir de service du maître de meute.",
+        "Source PNG selected after generation; no scripted image cleanup, resizing or padding.",
+        "A few alpha 1 pixels can reach the canvas edges; alpha > 24 bounds describe the main silhouette only.",
+        "Camera 0°/35° and metre dimensions are the brief, not a measured 3D or canonical certification.",
+        "Trois baies larges et ombragées; toiture, soubassements et seuils entiers; aucune créature fusionnée. Vue frontale cohérente. Les dimensions et angles exacts ne sont pas certifiés.",
+        "Visible margin is below the requested 80px on at least one side; the main silhouette remains inside the image."
+      ],
+      "canonicalOneToOneClaimed": false,
+      "cameraMeasured": false,
+      "scaleValidatedInGame": false,
+      "proposedWorldSize": {
+        "width": 434.783,
+        "depth": 347.826,
+        "height": 217.391
+      },
+      "localPath": "sprites/kennels/HWM162-K01-kennel-building.png",
+      "exists": true,
+      "hasTransparency": true,
+      "minimumVisibleMargin": 0,
+      "marginAlpha0": 0,
+      "marginAlpha24": 76
+    },
+    {
+      "id": "HWM162-K02",
+      "area": "kennels",
+      "label": "Portique de transfert ouvert des chenils",
+      "kind": "Module",
+      "targetIds": [
+        "target-v81-71-269"
+      ],
+      "purpose": "Former le passage entre l’aire de repos et l’enclos extérieur.",
+      "placementNote": "Portique ouvert sans battant. Le battant séparé HWM162-K06 complète le passage ; alignement, échelle et collision à vérifier dans la scène.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "PLANIFIE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K02-handling-gate.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2028210,
+      "sha256": "7d7a726ff442a711bf4212a7161d042659542d1a384056f1a1853743fa77068c",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 992703,
+      "transparentRatio": 0.63114357,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            0,
+            1536,
+            1024
+          ],
+          "margins": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 580161
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            12,
+            137,
+            1524,
+            892
+          ],
+          "margins": [
+            12,
+            137,
+            12,
+            132
+          ],
+          "minMargin": 12,
+          "pixels": 522448
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            12,
+            138,
+            1524,
+            891
+          ],
+          "margins": [
+            12,
+            138,
+            12,
+            133
+          ],
+          "minMargin": 12,
+          "pixels": 520726
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            13,
+            138,
+            1523,
+            891
+          ],
+          "margins": [
+            13,
+            138,
+            13,
+            133
+          ],
+          "minMargin": 13,
+          "pixels": 517056
+        }
+      },
+      "edgeAlphaMax": 1,
+      "strictClearMargin": false,
+      "mainSilhouetteInsideCanvas": true,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "sourceRefs": [
+        "SRC-CAMERA",
+        "SRC-DAN-2026",
+        "SRC-ALEX-HOMESTEAD",
+        "SRC-HOUND-2010",
+        "SRC-HOUND-2018"
+      ],
+      "proposedMetres": {
+        "clear_entrance_width": 5,
+        "overall_width": 7,
+        "depth": 3
+      },
+      "dimensionsAuthority": "PROJECT_BRIEF_NOT_CANONICAL_MEASUREMENT",
+      "pivotDraftPixels": {
+        "x": 768,
+        "y": 891,
+        "status": "BOUNDING_BOX_ANCHOR_ONLY_NOT_MEASURED_GROUND_CONTACT"
+      },
+      "receipt": "production/homeworld-sectors-20261103/receipts/kennels.json",
+      "notes": [
+        "Portique ouvert sans battant. Le battant séparé HWM162-K06 complète le passage ; alignement, échelle et collision à vérifier dans la scène.",
+        "Source PNG selected after generation; no scripted image cleanup, resizing or padding.",
+        "A few alpha 1 pixels can reach the canvas edges; alpha > 24 bounds describe the main silhouette only.",
+        "Camera 0°/35° and metre dimensions are the brief, not a measured 3D or canonical certification.",
+        "Portail indépendant ouvert, piliers renforcés, seuil bas et sections latérales. Silhouette entière; marges visibles latérales étroites de 12 px. Le sas à deux portes et son fonctionnement restent à définir dans le jeu.",
+        "Visible margin is below the requested 80px on at least one side; the main silhouette remains inside the image."
+      ],
+      "canonicalOneToOneClaimed": false,
+      "cameraMeasured": false,
+      "scaleValidatedInGame": false,
+      "localPath": "sprites/kennels/HWM162-K02-handling-gate.png",
+      "exists": true,
+      "hasTransparency": true,
+      "minimumVisibleMargin": 0,
+      "marginAlpha0": 0,
+      "marginAlpha24": 12,
+      "proposedWorldSize": {}
+    },
+    {
+      "id": "HWM162-K03",
+      "area": "kennels",
+      "label": "Râtelier de dressage des chiens",
+      "kind": "Équipement",
+      "targetIds": [
+        "target-v81-71-274"
+      ],
+      "purpose": "Ranger l’équipement de conduite et les accessoires de dressage.",
+      "placementNote": "Positionner côté soigneur et hors de la course de la meute.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "PLANIFIE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K03-training-rack.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2124242,
+      "sha256": "95cef71793ec00c9a9d8ae8842e4e8beb3e83ac9eddf4be57820a2a965637797",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 966017,
+      "transparentRatio": 0.61417707,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            9,
+            1520,
+            1024
+          ],
+          "margins": [
+            0,
+            9,
+            16,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 606847
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            61,
+            111,
+            1475,
+            979
+          ],
+          "margins": [
+            61,
+            111,
+            61,
+            45
+          ],
+          "minMargin": 45,
+          "pixels": 528122
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            61,
+            111,
+            1475,
+            978
+          ],
+          "margins": [
+            61,
+            111,
+            61,
+            46
+          ],
+          "minMargin": 46,
+          "pixels": 522914
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            62,
+            112,
+            1474,
+            978
+          ],
+          "margins": [
+            62,
+            112,
+            62,
+            46
+          ],
+          "minMargin": 46,
+          "pixels": 513426
+        }
+      },
+      "edgeAlphaMax": 1,
+      "strictClearMargin": false,
+      "mainSilhouetteInsideCanvas": true,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "sourceRefs": [
+        "SRC-CAMERA",
+        "SRC-DAN-2026",
+        "SRC-ALEX-HOMESTEAD",
+        "SRC-HOUND-2010",
+        "SRC-HOUND-2018"
+      ],
+      "proposedMetres": {
+        "width": 3,
+        "depth": 0.9,
+        "height": 2.5
+      },
+      "dimensionsAuthority": "PROJECT_BRIEF_NOT_CANONICAL_MEASUREMENT",
+      "pivotDraftPixels": {
+        "x": 768,
+        "y": 978,
+        "status": "BOUNDING_BOX_ANCHOR_ONLY_NOT_MEASURED_GROUND_CONTACT"
+      },
+      "receipt": "production/homeworld-sectors-20261103/receipts/kennels.json",
+      "notes": [
+        "Positionner côté soigneur et hors de la course de la meute.",
+        "Source PNG selected after generation; no scripted image cleanup, resizing or padding.",
+        "A few alpha 1 pixels can reach the canvas edges; alpha > 24 bounds describe the main silhouette only.",
+        "Camera 0°/35° and metre dimensions are the brief, not a measured 3D or canonical certification.",
+        "Un râtelier assemblé, trois laisses enroulées et deux leurres souples tressés attachés. Pieds entiers. Pas d'animal. La combinaison sangle brune/chaîne est une adaptation de l'accessoire Hot Toys; ce râtelier n'est pas un objet canonique attesté.",
+        "Visible margin is below the requested 80px on at least one side; the main silhouette remains inside the image."
+      ],
+      "canonicalOneToOneClaimed": false,
+      "cameraMeasured": false,
+      "scaleValidatedInGame": false,
+      "proposedWorldSize": {
+        "width": 130.435,
+        "depth": 39.13,
+        "height": 108.696
+      },
+      "localPath": "sprites/kennels/HWM162-K03-training-rack.png",
+      "exists": true,
+      "hasTransparency": true,
+      "minimumVisibleMargin": 0,
+      "marginAlpha0": 0,
+      "marginAlpha24": 46
+    },
+    {
+      "id": "HWM162-K04",
+      "area": "kennels",
+      "label": "Plateforme d’observation des chenils",
+      "kind": "Équipement",
+      "targetIds": [
+        "target-v81-71-275"
+      ],
+      "purpose": "Observer l’enclos depuis une plateforme protégée.",
+      "placementNote": "Accès indépendant du passage animal. Garde-corps et vue sur l’enclos à vérifier en scène.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "PLANIFIE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K04-keeper-platform.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 1949477,
+      "sha256": "fa7bcf72db0315a379f90e5872153e75e29d9d2e893adaaac02c110d611e4a73",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 1021869,
+      "transparentRatio": 0.64968681,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            9,
+            1530,
+            1024
+          ],
+          "margins": [
+            0,
+            9,
+            6,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 550995
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            185,
+            172,
+            1354,
+            864
+          ],
+          "margins": [
+            185,
+            172,
+            182,
+            160
+          ],
+          "minMargin": 160,
+          "pixels": 501517
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            185,
+            172,
+            1354,
+            864
+          ],
+          "margins": [
+            185,
+            172,
+            182,
+            160
+          ],
+          "minMargin": 160,
+          "pixels": 497810
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            186,
+            173,
+            1353,
+            863
+          ],
+          "margins": [
+            186,
+            173,
+            183,
+            161
+          ],
+          "minMargin": 161,
+          "pixels": 491213
+        }
+      },
+      "edgeAlphaMax": 1,
+      "strictClearMargin": false,
+      "mainSilhouetteInsideCanvas": true,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "sourceRefs": [
+        "SRC-CAMERA",
+        "SRC-DAN-2026",
+        "SRC-ALEX-HOMESTEAD",
+        "SRC-HOUND-2010",
+        "SRC-HOUND-2018"
+      ],
+      "proposedMetres": {
+        "width": 5,
+        "depth_including_stairs": 7,
+        "total_height": 3.5,
+        "deck_height": 2.2,
+        "railing_height": 1.3
+      },
+      "dimensionsAuthority": "PROJECT_BRIEF_NOT_CANONICAL_MEASUREMENT",
+      "pivotDraftPixels": {
+        "x": 769.5,
+        "y": 864,
+        "status": "BOUNDING_BOX_ANCHOR_ONLY_NOT_MEASURED_GROUND_CONTACT"
+      },
+      "receipt": "production/homeworld-sectors-20261103/receipts/kennels.json",
+      "notes": [
+        "Accès indépendant du passage animal. Garde-corps et vue sur l’enclos à vérifier en scène.",
+        "Source PNG selected after generation; no scripted image cleanup, resizing or padding.",
+        "A few alpha 1 pixels can reach the canvas edges; alpha > 24 bounds describe the main silhouette only.",
+        "Camera 0°/35° and metre dimensions are the brief, not a measured 3D or canonical certification.",
+        "Escalier continu avec marches distinctes et mains courantes; palier ouvert sans garde-corps bloquant son entrée. Tous les pieds sont visibles. Nombre exact de marches/échelle non certifiés."
+      ],
+      "canonicalOneToOneClaimed": false,
+      "cameraMeasured": false,
+      "scaleValidatedInGame": false,
+      "localPath": "sprites/kennels/HWM162-K04-keeper-platform.png",
+      "exists": true,
+      "hasTransparency": true,
+      "minimumVisibleMargin": 0,
+      "marginAlpha0": 0,
+      "marginAlpha24": 160,
+      "proposedWorldSize": {}
+    },
+    {
+      "id": "HWM162-K05",
+      "area": "kennels",
+      "label": "Fosse de repos drainée",
+      "kind": "Module",
+      "targetIds": [
+        "target-v81-71-279"
+      ],
+      "purpose": "Fournir une zone basse de repos pour les chiens.",
+      "placementNote": "Adapter à la morphologie choisie. La fosse et son drainage sont des créations du projet.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "PLANIFIE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K05-resting-basin.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2271437,
+      "sha256": "df1d8e518af28797dac239a4db5988bba8bd10e6eb702893833850df1ffbdecf",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 823584,
+      "transparentRatio": 0.52362061,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            0,
+            1520,
+            1024
+          ],
+          "margins": [
+            0,
+            0,
+            16,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 749280
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            103,
+            218,
+            1435,
+            826
+          ],
+          "margins": [
+            103,
+            218,
+            101,
+            198
+          ],
+          "minMargin": 101,
+          "pixels": 733193
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            103,
+            219,
+            1434,
+            826
+          ],
+          "margins": [
+            103,
+            219,
+            102,
+            198
+          ],
+          "minMargin": 102,
+          "pixels": 731785
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            104,
+            219,
+            1434,
+            825
+          ],
+          "margins": [
+            104,
+            219,
+            102,
+            199
+          ],
+          "minMargin": 102,
+          "pixels": 730243
+        }
+      },
+      "edgeAlphaMax": 1,
+      "strictClearMargin": false,
+      "mainSilhouetteInsideCanvas": true,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "sourceRefs": [
+        "SRC-CAMERA",
+        "SRC-DAN-2026",
+        "SRC-ALEX-HOMESTEAD",
+        "SRC-HOUND-2010",
+        "SRC-HOUND-2018"
+      ],
+      "proposedMetres": {
+        "width": 7,
+        "depth": 5,
+        "recess_depth": 0.65
+      },
+      "dimensionsAuthority": "PROJECT_BRIEF_NOT_CANONICAL_MEASUREMENT",
+      "pivotDraftPixels": {
+        "x": 768.5,
+        "y": 826,
+        "status": "BOUNDING_BOX_ANCHOR_ONLY_NOT_MEASURED_GROUND_CONTACT"
+      },
+      "receipt": "production/homeworld-sectors-20261103/receipts/kennels.json",
+      "notes": [
+        "Adapter à la morphologie choisie. La fosse et son drainage sont des créations du projet.",
+        "Source PNG selected after generation; no scripted image cleanup, resizing or padding.",
+        "A few alpha 1 pixels can reach the canvas edges; alpha > 24 bounds describe the main silhouette only.",
+        "Camera 0°/35° and metre dimensions are the brief, not a measured 3D or canonical certification.",
+        "Bordure complète, intérieur sec visible, entrée basse large et drainage latéral. Aucun animal, aucun décor extérieur fusionné. La profondeur réelle et le raccord terrain restent à régler à l'intégration."
+      ],
+      "canonicalOneToOneClaimed": false,
+      "cameraMeasured": false,
+      "scaleValidatedInGame": false,
+      "localPath": "sprites/kennels/HWM162-K05-resting-basin.png",
+      "exists": true,
+      "hasTransparency": true,
+      "minimumVisibleMargin": 0,
+      "marginAlpha0": 0,
+      "marginAlpha24": 102,
+      "proposedWorldSize": {}
+    },
+    {
+      "id": "HWM162-K06",
+      "area": "kennels",
+      "label": "Battant coulissant des chenils",
+      "kind": "Prop — état fermé",
+      "targetIds": [
+        "target-v81-71-269"
+      ],
+      "purpose": "Compléter le portique ouvert HWM162-K02 par un battant indépendant.",
+      "placementNote": "À superposer au portique HWM162-K02. Placement, pivot, échelle, raccords et état de collision restent à vérifier en scène.",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "PLANIFIE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K06-sliding-mesh-panel.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 1479154,
+      "sha256": "1591ab6c1a112e5373c8260c2c62d5111659212b9cb219ed79f44262f6d0dee4",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 1252401,
+      "transparentRatio": 0.79625511,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            39,
+            19,
+            1520,
+            1008
+          ],
+          "margins": [
+            39,
+            19,
+            16,
+            16
+          ],
+          "minMargin": 16,
+          "pixels": 320463
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            401,
+            338,
+            1135,
+            814
+          ],
+          "margins": [
+            401,
+            338,
+            401,
+            210
+          ],
+          "minMargin": 210,
+          "pixels": 239069
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            401,
+            338,
+            1135,
+            814
+          ],
+          "margins": [
+            401,
+            338,
+            401,
+            210
+          ],
+          "minMargin": 210,
+          "pixels": 233508
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            402,
+            340,
+            1134,
+            813
+          ],
+          "margins": [
+            402,
+            340,
+            402,
+            211
+          ],
+          "minMargin": 211,
+          "pixels": 221031
+        }
+      },
+      "edgeAlphaMax": 0,
+      "strictClearMargin": true,
+      "mainSilhouetteInsideCanvas": true,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "sourceRefs": [
+        "SRC-CAMERA",
+        "SRC-DAN-2026",
+        "SRC-ALEX-HOMESTEAD",
+        "SRC-HOUND-2010",
+        "SRC-HOUND-2018"
+      ],
+      "proposedMetres": {
+        "width": 5,
+        "height": 3.5,
+        "thickness": 0.2
+      },
+      "dimensionsAuthority": "PROJECT_BRIEF_NOT_CANONICAL_MEASUREMENT",
+      "pivotDraftPixels": {
+        "x": 768,
+        "y": 814,
+        "status": "BOUNDING_BOX_ANCHOR_ONLY_NOT_MEASURED_GROUND_CONTACT"
+      },
+      "receipt": "production/homeworld-sectors-20261103/receipts/kennels.json",
+      "notes": [
+        "À superposer au portique HWM162-K02. Placement, pivot, échelle, raccords et état de collision restent à vérifier en scène.",
+        "Source PNG selected after generation; no scripted image cleanup, resizing or padding.",
+        "A few alpha 1 pixels can reach the canvas edges; alpha > 24 bounds describe the main silhouette only.",
+        "Camera 0°/35° and metre dimensions are the brief, not a measured 3D or canonical certification.",
+        "Un battant indépendant avec cadre fin, maillage en losanges, deux renforts verticaux et témoin ambre; aucun portique, pylône ou seuil fusionné. Silhouette entière. Transparence réelle entre certaines mailles, dont les mesures sont conservées; nettoyage intégral de chaque maille non certifié."
+      ],
+      "canonicalOneToOneClaimed": false,
+      "cameraMeasured": false,
+      "scaleValidatedInGame": false,
+      "pairingDraft": {
+        "frame_id": "HWM162-K02",
+        "reference_path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K02-handling-gate.png",
+        "reference_sha256": "7d7a726ff442a711bf4212a7161d042659542d1a384056f1a1853743fa77068c",
+        "same_canvas_dimensions": true,
+        "frame_opening_approx_xyxy": [
+          403,
+          350,
+          1132,
+          817
+        ],
+        "panel_visible_bounds_alpha_gt24": [
+          401,
+          338,
+          1135,
+          814
+        ],
+        "suggested_translation_pixels": {
+          "x": 0,
+          "y": 4
+        },
+        "suggested_rotation_degrees": 0,
+        "suggested_scale": 1,
+        "registration_status": "PROPOSED_FROM_RASTER_BOUNDS_NOT_SCENE_VERIFIED",
+        "moving_animation_provided": false,
+        "notes": "Même toile1536x1024 et orientation frontale. Une translationY+4px place la bordure sous le linteau et sur le seuil; la superposition finale, les occultations et le coulissement doivent être vérifiés au placement. Aucun fonctionnement de porte n'est revendiqué."
+      },
+      "localPath": "sprites/kennels/HWM162-K06-sliding-mesh-panel.png",
+      "exists": true,
+      "hasTransparency": true,
+      "minimumVisibleMargin": 16,
+      "marginAlpha0": 16,
+      "marginAlpha24": 210,
+      "proposedWorldSize": {}
+    }
+  ],
+  "deliveryCounts": {
+    "planned": 17,
+    "actualPng": 17,
+    "uniqueSha256": 17,
+    "inheritedTargets": 40,
+    "newRuntimeAdmissions": 0,
+    "humanValidated": 0,
+    "canonicalCertifications": 0
+  },
+  "title": "Marché, montures et chenils — 2026-11-03"
+}

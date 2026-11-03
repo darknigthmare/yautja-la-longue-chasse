@@ -1,0 +1,126 @@
+{
+  "version": "V162",
+  "generator": "built-in image_gen",
+  "assets": [
+    {
+      "id": "HWM162-S01",
+      "label": "Halle ouverte du marché",
+      "file": "HWM162-S01-market-hall-v2.png",
+      "source": "/workspace/scratch/2166fec07f86/generated_images/exec-555043c6-c2f3-4d77-b124-1651b106333b.png",
+      "prompt": "Use case: stylized-concept. Asset type: one independent transparent PNG building sprite for a detailed 2.5D Yautja Homeworld game.\nCreate exactly ONE full-size open CLAN MARKET HALL, EMPTY of loose merchandise, inhabitants and stalls. A complete long building, 18 metres wide, 10 metres deep, 8 metres tall; widely spaced substantial pillars, three tall open passage bays at front, entrances 3.2 metres high minimum. Long ribbed bronze canopy roof supported on monumental dark basalt piers, elevated fine roof fins, trapezoidal technology joints and restrained warm amber lamps inset in pillars. Practical hunting-clan architecture from the Predator universe: black volcanic stone, worn gunmetal, dull aged bronze, tiny worn rust-red canopy fabric accents. Heavy, ancient, alien engineering, restrained skull-free angular ornament. This is a new game adaptation, not a reproduction of a claimed movie building.\nVIEW: locked orthographic projection, camera looking down 35 degrees, camera azimuth/yaw 0 degrees, front facade horizontal and upright, roof depth visible. No perspective convergence, no 45-degree isometric rotation. Full realistic architectural proportions, slender full-height doorways, no condensed cute miniature proportions.\nLIGHTING: soft neutral light from upper left, readable dark materials, no fog.\nCOMPOSITION: wide landscape canvas. Entire single building including roof tips and all foundations centered within the middle 70 percent of the image; at least 12 percent EMPTY TRANSPARENT margin on ALL FOUR sides. Nothing may approach the border. No ground plane, no landscape or scene, no cast shadow outside foundation, no background glow.\nOutput genuinely transparent alpha background, crisp clean silhouette. NO lettering, NO labels, NO diagram, NO contact sheet, NO border, NO fake checkerboard, NO characters, NO animals, NO separate objects.",
+      "targetIds": [
+        "target-v81-59-97"
+      ],
+      "proposedMetres": {
+        "width": 18,
+        "depth": 10,
+        "height": 8
+      },
+      "attempts": [
+        {
+          "source": "/workspace/scratch/2166fec07f86/generated_images/exec-f6339664-4d65-4ac9-b4fb-d254bee3d981.png",
+          "file": "HWM162-S01-market-hall.png",
+          "prompt": "Use case: stylized-concept. Asset type: one independent transparent PNG building sprite for a detailed 2.5D Yautja Homeworld game.\nCreate exactly ONE full-size open CLAN MARKET HALL, EMPTY of loose merchandise, inhabitants and stalls. A complete long building, 18 metres wide, 10 metres deep, 8 metres tall; widely spaced substantial pillars, three tall open passage bays at front, entrances 3.2 metres high minimum. Long ribbed bronze canopy roof supported on monumental dark basalt piers, elevated fine roof fins, trapezoidal technology joints and restrained warm amber lamps inset in pillars. Practical hunting-clan architecture from the Predator universe: black volcanic stone, worn gunmetal, dull aged bronze, tiny worn rust-red canopy fabric accents. Heavy, ancient, alien engineering, restrained skull-free angular ornament. This is a new game adaptation, not a reproduction of a claimed movie building.\nVIEW: locked orthographic projection, camera looking down 35 degrees, camera azimuth/yaw 0 degrees, front facade horizontal and upright, roof depth visible. No perspective convergence, no 45-degree isometric rotation. Full realistic architectural proportions, slender full-height doorways, no condensed cute miniature proportions.\nLIGHTING: soft neutral light from upper left, readable dark materials, no fog.\nCOMPOSITION: wide landscape canvas. Entire single building including roof tips and all foundations centered within the middle 70 percent of the image; at least 12 percent EMPTY TRANSPARENT margin on ALL FOUR sides. Nothing may approach the border. No ground plane, no landscape or scene, no cast shadow outside foundation, no background glow.\nOutput genuinely transparent alpha background, crisp clean silhouette. NO lettering, NO labels, NO diagram, NO contact sheet, NO border, NO fake checkerboard, NO characters, NO animals, NO separate objects.",
+          "decision": "REPLACED_BY_GENERATOR_REFRAME",
+          "reason": "Marge silhouette alpha>24 de 24px en haut ; reprise du cadrage par générateur."
+        }
+      ],
+      "editPrompt": "Edit this EXACT market hall image only to improve the isolated sprite framing and alpha transparency. Preserve the building silhouette, geometry, perspective, every architectural detail, materials, three bays, steps, and proportions. Make the whole existing building slightly smaller within a larger blank transparent landscape canvas so there are at least100 pixels of genuinely empty transparent air above all four roof fins, below every foundation and at both sides. Do not crop any part. Eliminate every background haze/glow and all faint stray background pixels outside the solid building; outside the structure must be fully transparent alpha0. Keep the hall itself solid, crisp and unchanged. ONE complete building only, no labels, no extra decorative props or scenes.",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S01-market-hall-v2.png",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "area": "market",
+      "sha256": "494e77092642dc46ff0ebc79e2a54040e450b1fbc1c41e434caa8498ee01ca69",
+      "width": 1774,
+      "height": 887
+    },
+    {
+      "id": "HWM162-S02",
+      "label": "Étal long de marché",
+      "file": "HWM162-S02-long-market-stall.png",
+      "source": "/workspace/scratch/2166fec07f86/generated_images/exec-9c744324-fa0b-4d32-b179-0b53c2aba0b4.png",
+      "prompt": "Use case: stylized-concept. Create ONE independent game sprite of a LONG YAUTJA MARKET STALL, an empty functional service structure for a Predator clan settlement, matching detailed dark-basalt and aged-bronze Homeworld architecture.\nSubject: a single continuous eight-metre-long counter built from three joined trapezoidal stonework bays with worn bronze edging, under one long dark rust-red hide-textile canopy stretched between four slim alien gunmetal supports. Tall full-size roof supports 4 metres high, counter 1.35 metres high, stall 2.5 metres deep. Empty service counter, empty space behind it for merchants. All elements are structurally joined as ONE stall. Angular ribbed technology, understated amber inset lights at two support bases, rough black volcanic stone, dull bronze, dark red cloth; no separate wares, no money, no skull trophies, no human wooden furniture.\nView: precise orthographic front view, camera looking down 35 degrees, camera yaw0; visible upper counter and canopy surfaces, verticals remain vertical. Detailed realistic rendered sprite, upper-left neutral illumination, crisp silhouette. Full practical dimensions rather than a compressed tabletop toy.\nComposition: wide landscape canvas with the entire object occupying only the central 65% of the canvas, at least 100 pixels of fully TRANSPARENT AIR on ALL FOUR EDGES including underneath feet and above poles. All extremities fully visible. No scene, no ground plane or cast-shadow carpet, no glowing backdrop, no vignette.\nOutput PNG with genuine alpha transparency. Only this ONE object. No humans or creatures, no labels, no text, no contact sheet, no watermark, no frame, no duplicate angles.",
+      "targetIds": [
+        "target-v81-64-158"
+      ],
+      "proposedMetres": {
+        "width": 8,
+        "depth": 2.5,
+        "height": 4
+      },
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S02-long-market-stall.png",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "area": "market",
+      "sha256": "c1e353660c697180604ca6cf805ad13eb14c2009e6213f3e83233acae518b00e",
+      "width": 1774,
+      "height": 887
+    },
+    {
+      "id": "HWM162-S03",
+      "key": "market-s03",
+      "label": "Présentoir à gradins du marchand",
+      "file": "HWM162-S03-merchant-display.png",
+      "targetIds": [
+        "target-v81-64-162"
+      ],
+      "proposedMetres": {
+        "width": 2.8,
+        "depth": 1.2,
+        "height": 2.2
+      },
+      "source": "/workspace/scratch/2166fec07f86/generated_images/exec-e583c477-1e91-4036-9cee-edf713ed05ec.png",
+      "prompt": "Use case: stylized-concept. Exactly ONE freestanding YAUTJA MERCHANT DISPLAY STAND, independent detailed 2.5D game sprite on genuine TRANSPARENT alpha background.\nA 2.8m wide,1.2m deep,2.2m tall EMPTY stepped display cabinet: three broad shallow ascending trays carved in black volcanic basalt, angular aged-bronze retaining rims, a high ribbed gunmetal back spine with empty hooked mounts for separate trade objects, two thick trapezoid feet. No products included: the trays and attachment brackets are empty and visibly usable. Alien hunter-clan craftsmanship, dark worn bronze and charcoal stone, restrained tiny amber inset lamp, no human lettering, no fantasy crystals, no wooden medieval shop.\nOrthographic front view, camera yaw0 and looking downward35degrees. Entire volume readable, coherent true physical proportions. Detailed realistic shaded material, upper-left soft neutral light. Single joined object only. Center within middle65% of square canvas, at least100px EMPTY TRANSPARENT AIR on every side, fully visible feet/top. No ground plane, no background shadow/glow/fog. No props beside it, no people, no creatures, no text, no labels, no border, no collage or contact sheet. New lore-compatible game adaptation of a clan market fixture.",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S03-merchant-display.png",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "area": "market",
+      "sha256": "9d9e720b4dc541e82fb0e3fffe73338c591fc9c39baa1fff6929617a9b3957ab",
+      "width": 1312,
+      "height": 1199
+    },
+    {
+      "id": "HWM162-S04",
+      "key": "market-s04",
+      "label": "Plateforme de trophées du clan",
+      "file": "HWM162-S04-trophy-platform.png",
+      "targetIds": [
+        "target-v81-64-165"
+      ],
+      "proposedMetres": {
+        "width": 5,
+        "depth": 3,
+        "height": 3.6
+      },
+      "source": "/workspace/scratch/2166fec07f86/generated_images/exec-c050d9ae-bb0c-49a1-86d5-4202fd1bceb8.png",
+      "prompt": "Use case: stylized-concept. Exactly ONE independent YAUTJA CLAN TROPHY DISPLAY PLATFORM, EMPTY, for a detailed Predator Homeworld game. Genuine transparent background.\nA low 5m wide,3m deep,1.2m tall basalt dais with a full-width sequence of four broad shallow steps at its front. Behind the platform rises a 3.6m tall dark bronze and gunmetal ribbed display backing with three EMPTY mechanical trophy mounting brackets. Heavy triangular-clamp bases and trapezoid fittings, angular worn metal and black volcanic stone, tiny recessed amber indicators, subtle rust-red fabric inset at lower rear. No skulls, no animals, no humanoid sculptures and no trophies included; honors are not sold. This is a communal display fixture, original game adaptation inspired by Predator ship trophy mounts, not a literal movie prop.\nLocked orthographic front view, camera yaw0, elevation35degrees looking down, no perspective convergence. Full-scale practical broad steps and ample standing platform. Refined realistic render with readable grey-black and dull bronze texture, neutral upper-left light.\nOne structurally joined platform including backboard only. Entire object centered in middle65% of landscape canvas; at least100px completely transparent margin on every edge. No floor plane or separate background, no exterior shadows/glow/fog, no labels,text,scale figures,diagrams,frames,contact sheet or duplicated angles.",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S04-trophy-platform.png",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "area": "market",
+      "sha256": "897a4024cd04edb42b557a08f8b40ee29d80c219e2de3061106265b69208a5d4",
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "id": "HWM162-S05",
+      "label": "Abri de stockage du marché",
+      "file": "HWM162-S05-stock-shelter.png",
+      "source": "/workspace/scratch/2166fec07f86/generated_images/exec-b249e649-e806-4a9e-84ab-e8de3a5595f1.png",
+      "prompt": "Use case: stylized-concept. ONE complete independent YAUTJA MARKET STORAGE SHELTER, a small open-front stock building on genuine transparent background, matching black volcanic basalt and worn bronze Predator clan architecture.\nSix metres wide, four metres deep,4.6 metres tall. An oblong roof of ribbed dark gunmetal supported by heavy faceted basalt side piers, bronze edge bands. Open front with large3.2m-tall clear central aisle. Built-in EMPTY shelves attached to the interior rear and side walls, two empty loading bays and low flush threshold. No crates merged into the image; crates and goods will be independent sprites. A sparse maroon fabric strip under an eave, two tiny amber inset service lights. Angular trapezoid openings, alien practical engineering, NO human barn shape, no crystalline fantasy palace.\nLOCKED VIEW: orthographic front, camera yaw0 and35degree downward inclination, verticals upright, depth visible without perspective convergence. Functional full height and depth, not squashed into a miniature. Neutral light from upper left, realistic high-detail material, coherent weathering.\nEntire single building centered at65% of a wide landscape canvas, surrounded on all sides by generous truly CLEAR TRANSPARENT margin at least100px. Preserve full roof ends and foundations. No ground plane, no scenic floor outside structure, no cast-shadow carpet, no glow/vignette/opaque background. No loose props, creatures,people,text,labels,border,montage or contact sheet.",
+      "targetIds": [
+        "target-v81-64-170"
+      ],
+      "proposedMetres": {
+        "width": 6,
+        "depth": 4,
+        "height": 4.6
+      },
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S05-stock-shelter.png",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "area": "market",
+      "sha256": "a8f69759564a653a6b7488e8fc1a90706a1cdd573592feb2dcfe7a855c40a866",
+      "width": 1536,
+      "height": 1024
+    }
+  ],
+  "humanValidated": false,
+  "runtimeIntegrated": false,
+  "canon1to1Claim": false
+}

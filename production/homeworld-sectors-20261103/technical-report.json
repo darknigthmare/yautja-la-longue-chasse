@@ -1,0 +1,1433 @@
+{
+  "version": "MMK-20261103",
+  "verifier": "production/homeworld-sectors-20261103/tools/verify-assets.py",
+  "sourceIntegrity": "PASS",
+  "selectedCount": 17,
+  "rgbaWithRealTransparency": 17,
+  "mainSilhouettesInsideCanvasAtAlpha24": 17,
+  "strictClearMarginCount": 1,
+  "visibleMarginAtLeast80Count": 9,
+  "uniqueSha256Count": 17,
+  "selectedBytes": 32299613,
+  "scriptModifiesPNG": false,
+  "runtimeAdmission": false,
+  "canonicalCertification": false,
+  "limits": [
+    "Low-alpha edge noise remains in the native sources.",
+    "No collision, portal, actor placement or animation validation is claimed.",
+    "Dimensions in metres are proposed design dimensions."
+  ],
+  "files": [
+    {
+      "id": "HWM162-S01",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S01-market-hall-v2.png",
+      "sha256": "494e77092642dc46ff0ebc79e2a54040e450b1fbc1c41e434caa8498ee01ca69",
+      "bytes": 1585597,
+      "width": 1774,
+      "height": 887,
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 886866,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            9,
+            1655,
+            869
+          ],
+          "margins": [
+            0,
+            9,
+            119,
+            18
+          ],
+          "minMargin": 0,
+          "pixels": 686672
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            200,
+            120,
+            1574,
+            800
+          ],
+          "margins": [
+            200,
+            120,
+            200,
+            87
+          ],
+          "minMargin": 87,
+          "pixels": 661552
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            201,
+            120,
+            1574,
+            798
+          ],
+          "margins": [
+            201,
+            120,
+            200,
+            89
+          ],
+          "minMargin": 89,
+          "pixels": 659613
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            201,
+            121,
+            1573,
+            797
+          ],
+          "margins": [
+            201,
+            121,
+            201,
+            90
+          ],
+          "minMargin": 90,
+          "pixels": 655628
+        }
+      },
+      "edgeAlphaMax": 1
+    },
+    {
+      "id": "HWM162-S02",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S02-long-market-stall.png",
+      "sha256": "c1e353660c697180604ca6cf805ad13eb14c2009e6213f3e83233acae518b00e",
+      "bytes": 1404783,
+      "width": 1774,
+      "height": 887,
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 983252,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            0,
+            1756,
+            887
+          ],
+          "margins": [
+            0,
+            0,
+            18,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 590286
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            160,
+            147,
+            1614,
+            740
+          ],
+          "margins": [
+            160,
+            147,
+            160,
+            147
+          ],
+          "minMargin": 147,
+          "pixels": 544664
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            161,
+            148,
+            1614,
+            739
+          ],
+          "margins": [
+            161,
+            148,
+            160,
+            148
+          ],
+          "minMargin": 148,
+          "pixels": 542326
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            161,
+            149,
+            1613,
+            739
+          ],
+          "margins": [
+            161,
+            149,
+            161,
+            148
+          ],
+          "minMargin": 148,
+          "pixels": 536673
+        }
+      },
+      "edgeAlphaMax": 1
+    },
+    {
+      "id": "HWM162-S03",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S03-merchant-display.png",
+      "sha256": "9d9e720b4dc541e82fb0e3fffe73338c591fc9c39baa1fff6929617a9b3957ab",
+      "bytes": 2373548,
+      "width": 1312,
+      "height": 1199,
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 544298,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            17,
+            1311,
+            1199
+          ],
+          "margins": [
+            0,
+            17,
+            1,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 1028790
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            42,
+            81,
+            1269,
+            1119
+          ],
+          "margins": [
+            42,
+            81,
+            43,
+            80
+          ],
+          "minMargin": 42,
+          "pixels": 1009839
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            42,
+            81,
+            1269,
+            1119
+          ],
+          "margins": [
+            42,
+            81,
+            43,
+            80
+          ],
+          "minMargin": 42,
+          "pixels": 1009020
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            42,
+            82,
+            1269,
+            1118
+          ],
+          "margins": [
+            42,
+            82,
+            43,
+            81
+          ],
+          "minMargin": 42,
+          "pixels": 1005962
+        }
+      },
+      "edgeAlphaMax": 1
+    },
+    {
+      "id": "HWM162-S04",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S04-trophy-platform.png",
+      "sha256": "897a4024cd04edb42b557a08f8b40ee29d80c219e2de3061106265b69208a5d4",
+      "bytes": 2722757,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 512225,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            4,
+            1520,
+            1024
+          ],
+          "margins": [
+            0,
+            4,
+            16,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 1060639
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            42,
+            40,
+            1497,
+            947
+          ],
+          "margins": [
+            42,
+            40,
+            39,
+            77
+          ],
+          "minMargin": 39,
+          "pixels": 1032590
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            42,
+            40,
+            1497,
+            946
+          ],
+          "margins": [
+            42,
+            40,
+            39,
+            78
+          ],
+          "minMargin": 39,
+          "pixels": 1031884
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            43,
+            41,
+            1496,
+            946
+          ],
+          "margins": [
+            43,
+            41,
+            40,
+            78
+          ],
+          "minMargin": 40,
+          "pixels": 1028847
+        }
+      },
+      "edgeAlphaMax": 1
+    },
+    {
+      "id": "HWM162-S05",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S05-stock-shelter.png",
+      "sha256": "a8f69759564a653a6b7488e8fc1a90706a1cdd573592feb2dcfe7a855c40a866",
+      "bytes": 2903672,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 452601,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            7,
+            1532,
+            1024
+          ],
+          "margins": [
+            0,
+            7,
+            4,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 1120263
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            36,
+            77,
+            1500,
+            937
+          ],
+          "margins": [
+            36,
+            77,
+            36,
+            87
+          ],
+          "minMargin": 36,
+          "pixels": 1100618
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            36,
+            77,
+            1500,
+            936
+          ],
+          "margins": [
+            36,
+            77,
+            36,
+            88
+          ],
+          "minMargin": 36,
+          "pixels": 1099291
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            36,
+            77,
+            1499,
+            936
+          ],
+          "margins": [
+            36,
+            77,
+            37,
+            88
+          ],
+          "minMargin": 36,
+          "pixels": 1097226
+        }
+      },
+      "edgeAlphaMax": 1
+    },
+    {
+      "id": "HWM162-M01",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M01-open-stable.png",
+      "sha256": "b2f958ccd6a992c269b94cf32900ccfc2a5b8c2063a231891c445c8396ec6518",
+      "bytes": 2196037,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 792528,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            0,
+            1504,
+            1024
+          ],
+          "margins": [
+            0,
+            0,
+            32,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 780336
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            97,
+            159,
+            1439,
+            850
+          ],
+          "margins": [
+            97,
+            159,
+            97,
+            174
+          ],
+          "minMargin": 97,
+          "pixels": 760906
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            97,
+            159,
+            1439,
+            849
+          ],
+          "margins": [
+            97,
+            159,
+            97,
+            175
+          ],
+          "minMargin": 97,
+          "pixels": 759600
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            98,
+            160,
+            1439,
+            849
+          ],
+          "margins": [
+            98,
+            160,
+            97,
+            175
+          ],
+          "minMargin": 97,
+          "pixels": 757869
+        }
+      },
+      "edgeAlphaMax": 1
+    },
+    {
+      "id": "HWM162-M02",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M02-tether-station.png",
+      "sha256": "e61634fd7c5ea92792c06586e6b7edb4ed23b570084931177cb32774c80865fa",
+      "bytes": 1248514,
+      "width": 1182,
+      "height": 1330,
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 1051690,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            0,
+            1164,
+            1330
+          ],
+          "margins": [
+            0,
+            0,
+            18,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 520370
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            245,
+            50,
+            937,
+            1250
+          ],
+          "margins": [
+            245,
+            50,
+            245,
+            80
+          ],
+          "minMargin": 50,
+          "pixels": 506124
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            246,
+            51,
+            937,
+            1250
+          ],
+          "margins": [
+            246,
+            51,
+            245,
+            80
+          ],
+          "minMargin": 51,
+          "pixels": 505258
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            247,
+            52,
+            936,
+            1249
+          ],
+          "margins": [
+            247,
+            52,
+            246,
+            81
+          ],
+          "minMargin": 52,
+          "pixels": 502833
+        }
+      },
+      "edgeAlphaMax": 1
+    },
+    {
+      "id": "HWM162-M03",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M03-mounting-platform.png",
+      "sha256": "c2997f12d43ba912223b9e339dca9ec5799a37d62397ee21aeef88f80f2277c7",
+      "bytes": 1479050,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 1264839,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            0,
+            1524,
+            1024
+          ],
+          "margins": [
+            0,
+            0,
+            12,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 308025
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            66,
+            204,
+            1465,
+            846
+          ],
+          "margins": [
+            66,
+            204,
+            71,
+            178
+          ],
+          "minMargin": 66,
+          "pixels": 291073
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            66,
+            204,
+            1465,
+            845
+          ],
+          "margins": [
+            66,
+            204,
+            71,
+            179
+          ],
+          "minMargin": 66,
+          "pixels": 289959
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            67,
+            205,
+            1464,
+            844
+          ],
+          "margins": [
+            67,
+            205,
+            72,
+            180
+          ],
+          "minMargin": 67,
+          "pixels": 286812
+        }
+      },
+      "edgeAlphaMax": 1
+    },
+    {
+      "id": "HWM162-M04",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M04-corral-fence.png",
+      "sha256": "4045b9d71693b66341d14b45dde68930d3664a56784d4bf1ce69c097e247a525",
+      "bytes": 1675317,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 1110357,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            19,
+            1522,
+            1024
+          ],
+          "margins": [
+            0,
+            19,
+            14,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 462507
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            158,
+            238,
+            1379,
+            840
+          ],
+          "margins": [
+            158,
+            238,
+            157,
+            184
+          ],
+          "minMargin": 157,
+          "pixels": 384159
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            158,
+            238,
+            1379,
+            840
+          ],
+          "margins": [
+            158,
+            238,
+            157,
+            184
+          ],
+          "minMargin": 157,
+          "pixels": 381377
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            158,
+            238,
+            1379,
+            839
+          ],
+          "margins": [
+            158,
+            238,
+            157,
+            185
+          ],
+          "minMargin": 157,
+          "pixels": 374896
+        }
+      },
+      "edgeAlphaMax": 1
+    },
+    {
+      "id": "HWM162-M05",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M05-training-hurdle.png",
+      "sha256": "3c5525569fdffe27192b92297476d23692f32e959c9404a91e8f64a75e9e81a2",
+      "bytes": 1318052,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 1349695,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            19,
+            9,
+            1526,
+            1024
+          ],
+          "margins": [
+            19,
+            9,
+            10,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 223169
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            169,
+            303,
+            1367,
+            738
+          ],
+          "margins": [
+            169,
+            303,
+            169,
+            286
+          ],
+          "minMargin": 169,
+          "pixels": 204777
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            169,
+            303,
+            1367,
+            738
+          ],
+          "margins": [
+            169,
+            303,
+            169,
+            286
+          ],
+          "minMargin": 169,
+          "pixels": 203868
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            169,
+            303,
+            1367,
+            738
+          ],
+          "margins": [
+            169,
+            303,
+            169,
+            286
+          ],
+          "minMargin": 169,
+          "pixels": 201443
+        }
+      },
+      "edgeAlphaMax": 1
+    },
+    {
+      "id": "HWM162-M06",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M06-fauna-care-workstation.png",
+      "sha256": "a1dd1b7cb81a1b80ffd929381ec26f99d3e581ff5e1db98ac3514c72bfdd67da",
+      "bytes": 1421732,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 1188972,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            11,
+            1518,
+            1000
+          ],
+          "margins": [
+            0,
+            11,
+            18,
+            24
+          ],
+          "minMargin": 0,
+          "pixels": 383892
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            293,
+            245,
+            1212,
+            816
+          ],
+          "margins": [
+            293,
+            245,
+            324,
+            208
+          ],
+          "minMargin": 208,
+          "pixels": 366746
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            293,
+            245,
+            1212,
+            815
+          ],
+          "margins": [
+            293,
+            245,
+            324,
+            209
+          ],
+          "minMargin": 209,
+          "pixels": 365543
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            294,
+            245,
+            1212,
+            815
+          ],
+          "margins": [
+            294,
+            245,
+            324,
+            209
+          ],
+          "minMargin": 209,
+          "pixels": 363369
+        }
+      },
+      "edgeAlphaMax": 1
+    },
+    {
+      "id": "HWM162-K01",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png",
+      "sha256": "fedb9677d90ae72cfe2ee53e9a1f5751361ea1d88da2d9169137a22d2cd9d9a5",
+      "bytes": 2118034,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 785961,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            0,
+            1494,
+            1024
+          ],
+          "margins": [
+            0,
+            0,
+            42,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 786903
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            76,
+            154,
+            1460,
+            848
+          ],
+          "margins": [
+            76,
+            154,
+            76,
+            176
+          ],
+          "minMargin": 76,
+          "pixels": 765516
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            76,
+            154,
+            1460,
+            848
+          ],
+          "margins": [
+            76,
+            154,
+            76,
+            176
+          ],
+          "minMargin": 76,
+          "pixels": 764619
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            76,
+            155,
+            1460,
+            847
+          ],
+          "margins": [
+            76,
+            155,
+            76,
+            177
+          ],
+          "minMargin": 76,
+          "pixels": 762124
+        }
+      },
+      "edgeAlphaMax": 1
+    },
+    {
+      "id": "HWM162-K02",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K02-handling-gate.png",
+      "sha256": "7d7a726ff442a711bf4212a7161d042659542d1a384056f1a1853743fa77068c",
+      "bytes": 2028210,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 992703,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            0,
+            1536,
+            1024
+          ],
+          "margins": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 580161
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            12,
+            137,
+            1524,
+            892
+          ],
+          "margins": [
+            12,
+            137,
+            12,
+            132
+          ],
+          "minMargin": 12,
+          "pixels": 522448
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            12,
+            138,
+            1524,
+            891
+          ],
+          "margins": [
+            12,
+            138,
+            12,
+            133
+          ],
+          "minMargin": 12,
+          "pixels": 520726
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            13,
+            138,
+            1523,
+            891
+          ],
+          "margins": [
+            13,
+            138,
+            13,
+            133
+          ],
+          "minMargin": 13,
+          "pixels": 517056
+        }
+      },
+      "edgeAlphaMax": 1
+    },
+    {
+      "id": "HWM162-K03",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K03-training-rack.png",
+      "sha256": "95cef71793ec00c9a9d8ae8842e4e8beb3e83ac9eddf4be57820a2a965637797",
+      "bytes": 2124242,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 966017,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            9,
+            1520,
+            1024
+          ],
+          "margins": [
+            0,
+            9,
+            16,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 606847
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            61,
+            111,
+            1475,
+            979
+          ],
+          "margins": [
+            61,
+            111,
+            61,
+            45
+          ],
+          "minMargin": 45,
+          "pixels": 528122
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            61,
+            111,
+            1475,
+            978
+          ],
+          "margins": [
+            61,
+            111,
+            61,
+            46
+          ],
+          "minMargin": 46,
+          "pixels": 522914
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            62,
+            112,
+            1474,
+            978
+          ],
+          "margins": [
+            62,
+            112,
+            62,
+            46
+          ],
+          "minMargin": 46,
+          "pixels": 513426
+        }
+      },
+      "edgeAlphaMax": 1
+    },
+    {
+      "id": "HWM162-K04",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K04-keeper-platform.png",
+      "sha256": "fa7bcf72db0315a379f90e5872153e75e29d9d2e893adaaac02c110d611e4a73",
+      "bytes": 1949477,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 1021869,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            9,
+            1530,
+            1024
+          ],
+          "margins": [
+            0,
+            9,
+            6,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 550995
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            185,
+            172,
+            1354,
+            864
+          ],
+          "margins": [
+            185,
+            172,
+            182,
+            160
+          ],
+          "minMargin": 160,
+          "pixels": 501517
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            185,
+            172,
+            1354,
+            864
+          ],
+          "margins": [
+            185,
+            172,
+            182,
+            160
+          ],
+          "minMargin": 160,
+          "pixels": 497810
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            186,
+            173,
+            1353,
+            863
+          ],
+          "margins": [
+            186,
+            173,
+            183,
+            161
+          ],
+          "minMargin": 161,
+          "pixels": 491213
+        }
+      },
+      "edgeAlphaMax": 1
+    },
+    {
+      "id": "HWM162-K05",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K05-resting-basin.png",
+      "sha256": "df1d8e518af28797dac239a4db5988bba8bd10e6eb702893833850df1ffbdecf",
+      "bytes": 2271437,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 823584,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            0,
+            1520,
+            1024
+          ],
+          "margins": [
+            0,
+            0,
+            16,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 749280
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            103,
+            218,
+            1435,
+            826
+          ],
+          "margins": [
+            103,
+            218,
+            101,
+            198
+          ],
+          "minMargin": 101,
+          "pixels": 733193
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            103,
+            219,
+            1434,
+            826
+          ],
+          "margins": [
+            103,
+            219,
+            102,
+            198
+          ],
+          "minMargin": 102,
+          "pixels": 731785
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            104,
+            219,
+            1434,
+            825
+          ],
+          "margins": [
+            104,
+            219,
+            102,
+            199
+          ],
+          "minMargin": 102,
+          "pixels": 730243
+        }
+      },
+      "edgeAlphaMax": 1
+    },
+    {
+      "id": "HWM162-K06",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K06-sliding-mesh-panel.png",
+      "sha256": "1591ab6c1a112e5373c8260c2c62d5111659212b9cb219ed79f44262f6d0dee4",
+      "bytes": 1479154,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 1252401,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            39,
+            19,
+            1520,
+            1008
+          ],
+          "margins": [
+            39,
+            19,
+            16,
+            16
+          ],
+          "minMargin": 16,
+          "pixels": 320463
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            401,
+            338,
+            1135,
+            814
+          ],
+          "margins": [
+            401,
+            338,
+            401,
+            210
+          ],
+          "minMargin": 210,
+          "pixels": 239069
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            401,
+            338,
+            1135,
+            814
+          ],
+          "margins": [
+            401,
+            338,
+            401,
+            210
+          ],
+          "minMargin": 210,
+          "pixels": 233508
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            402,
+            340,
+            1134,
+            813
+          ],
+          "margins": [
+            402,
+            340,
+            402,
+            211
+          ],
+          "minMargin": 211,
+          "pixels": 221031
+        }
+      },
+      "edgeAlphaMax": 0
+    }
+  ]
+}
