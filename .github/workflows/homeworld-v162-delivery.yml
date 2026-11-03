@@ -21,60 +21,41 @@ jobs:
           sparse-checkout-cone-mode: false
           sparse-checkout: |
             /production/homeworld-v162/
+            /production/homeworld-v161/YAUTJA_HOMEWORLD_PROPS_ECHELLE_TRIBUS_V161.xlsx
             /.gitattributes
             /.gitignore
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
       - run: python -m pip install --disable-pip-version-check 'Pillow==12.0.0'
-      - name: Import pinned native PNGs and editable meshes
+      - name: Import pinned workbook and QA metadata only
         run: |
           python - <<'PY'
           from urllib.request import urlopen
           from pathlib import Path,PurePosixPath
-          import io,hashlib,zipfile,stat,json
-          from PIL import Image
-          url='https://d2ol7oe51mr4n9.cloudfront.net/user_3JHwJlNzgmcxQy32tjF7NiVZPuH/d5778936-da00-4042-ad66-9563dafefff7.zip'
-          with urlopen(url,timeout=90) as response: data=response.read(11519898)
-          assert len(data)==11519897
-          assert hashlib.sha256(data).hexdigest()=='303b61c36be6f4dba67ab4050127e0cc35b2e3b2c2b5c906f5d749218b1ce5d0'
-          root=Path.cwd();seen=set()
-          with zipfile.ZipFile(io.BytesIO(data)) as z:
-            assert len(z.infolist())==18
-            assert sum(i.file_size for i in z.infolist())<80*1024*1024
+          import io,hashlib,zipfile,stat
+          u='https://d2ol7oe51mr4n9.cloudfront.net/user_3JHwJlNzgmcxQy32tjF7NiVZPuH/59b156c1-4069-41a0-8267-8ea07de7d33f.zip'
+          with urlopen(u,timeout=60) as r:b=r.read(67123)
+          assert len(b)==67122
+          assert hashlib.sha256(b).hexdigest()=='b72577885c7e06cd6ffac8ceb0f4b1e3c7389796e7352eed7f90245320f57f8b'
+          allowed={'production/homeworld-v162/'+s for s in ('rejected-outputs.json','verification-report.json','index.html','YAUTJA_HOMEWORLD_PROPS_ECHELLE_TRIBUS_V162.xlsx','tools/verify.py')}
+          root=Path.cwd()
+          with zipfile.ZipFile(io.BytesIO(b)) as z:
+            assert len(z.infolist())==5 and set(z.namelist())==allowed
+            assert sum(i.file_size for i in z.infolist())<1024*1024
             for i in z.infolist():
               p=PurePosixPath(i.filename)
               assert not p.is_absolute() and '..' not in p.parts and '\\' not in i.filename
-              assert i.filename.startswith('production/homeworld-v162/') and i.filename not in seen
               assert not stat.S_ISLNK(i.external_attr>>16)
-              dst=root/i.filename;assert dst.resolve().is_relative_to(root)
-              dst.parent.mkdir(parents=True,exist_ok=True);dst.write_bytes(z.read(i));seen.add(i.filename)
-          p=root/'production/homeworld-v162'
-          pins=json.loads((p/'delivery-files.json').read_text())
-          for a in pins['files']:
-            assert a['path'] in seen
-            b=(root/a['path']).read_bytes()
-            assert len(b)==a['bytes'] and hashlib.sha256(b).hexdigest()==a['sha256'],a['path']
-          m=json.loads((p/'manifest.json').read_text());assert len(m['assets'])==7
-          assert [a['id'] for a in m['assets']]==['HWA160-N'+str(i).zfill(2) for i in range(4,11)]
-          for a in m['assets']:
-            b=(root/a['path']).read_bytes();assert len(b)==a['bytes'] and hashlib.sha256(b).hexdigest()==a['sha256']
-            im=Image.open(io.BytesIO(b));assert im.mode=='RGBA' and im.size==(a['width'],a['height'])
-            alpha=im.getchannel('A');bb=alpha.getbbox();assert bb
-            assert alpha.getextrema()[0]==0 and min(bb[0],bb[1],im.width-bb[2],im.height-bb[3])>0
-            assert not a['canonicalCertification'] and not a['humanValidated'] and not a['runtimeIntegrated']
-            assert a['cameraPitchDegrees']==35 and a['cameraYawDegrees']==0
-            assert (root/a['sourceBlend']).is_file()
-          report={'newPNGFiles':7,'editableBlendSources':7,'newWorkbookDelivered':False,'combinedPNGCount':117,'allNativeRGBAEdgesClear':True,'canonicalAdmissions':0,'runtimeAdmissions':0,'scope':'Native procedural metric prototypes; not film replicas; no gameplay changes.'}
-          (p/'verification-report.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report,indent=2))
+              d=root/i.filename;assert d.resolve().is_relative_to(root)
+              d.parent.mkdir(parents=True,exist_ok=True);d.write_bytes(z.read(i))
           PY
-      - name: Preserve a downloadable artifact of the verified sources
-        uses: actions/upload-artifact@v4
-        with:
-          name: yautja-homeworld-v162-native-prototypes
-          path: production/homeworld-v162/
-          retention-days: 14
-      - name: Commit the seven prototypes to the existing PR branch
+      - name: Verify seven native PNGs, workbook and preserved 354 targets
+        shell: bash
+        run: |
+          set -euo pipefail
+          python production/homeworld-v162/tools/verify.py | tee production/homeworld-v162/verification-report.json
+      - name: Commit tracking only to the existing PR branch
         env:
           EXPECTED_HEAD: ${{ github.sha }}
         run: |
@@ -85,5 +66,5 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -- production/homeworld-v162
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m 'art(homeworld): seven separate native metric renders and editable Blender sources'
+          git commit -m 'docs(homeworld): V162 workbook with seven native prototypes and unchanged source requirements'
           git push origin "HEAD:refs/heads/$BRANCH"
