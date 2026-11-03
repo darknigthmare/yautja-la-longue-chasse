@@ -3,8 +3,8 @@
   "release": "V158",
   "repository": "darknigthmare/yautja-la-longue-chasse",
   "sourcePackage": "YAUTJA_HOMEWORLD_LOT_URBAIN_10_V158.zip",
-  "sourceAvailability": "COMPANION_DOWNLOAD_ONLY_NOT_COMMITTED_IN_THIS_PR",
-  "status": "METADATA_AND_VERIFICATION_ONLY_ART_CANDIDATES_NOT_ADMITTED",
+  "sourceAvailability": "COMMITTED_IN_PR_BRANCH",
+  "status": "PNG_BYTES_DELIVERED_ART_CANDIDATES_NOT_ADMITTED",
   "camera": {
     "reference": "app/game/systems/homeworldGeometryV64.ts",
     "projection": "orthographic",
@@ -44,11 +44,12 @@
         "target-v81-55-34"
       ],
       "artState": "CANDIDATE_NOT_ADMITTED",
-      "sourceInGit": false,
+      "sourceInGit": true,
       "pngCornersAlphaObserved": "transparent_in_local_package",
       "nativeGroundPivot": null,
       "footprintWorld": null,
-      "doorway": null
+      "doorway": null,
+      "repositoryPath": "production/homeworld-v158/assets/sprites_png/HW1031_passerelle_basalte_3q_droite.png"
     },
     {
       "id": "HW1032",
@@ -65,11 +66,12 @@
       },
       "existingTargetFamilyHints": [],
       "artState": "CANDIDATE_NOT_ADMITTED",
-      "sourceInGit": false,
+      "sourceInGit": true,
       "pngCornersAlphaObserved": "transparent_in_local_package",
       "nativeGroundPivot": null,
       "footprintWorld": null,
-      "doorway": null
+      "doorway": null,
+      "repositoryPath": "production/homeworld-v158/assets/sprites_png/HW1032_aire_atterrissage_laterale.png"
     },
     {
       "id": "HW1033",
@@ -86,11 +88,12 @@
       },
       "existingTargetFamilyHints": [],
       "artState": "CANDIDATE_NOT_ADMITTED",
-      "sourceInGit": false,
+      "sourceInGit": true,
       "pngCornersAlphaObserved": "transparent_in_local_package",
       "nativeGroundPivot": null,
       "footprintWorld": null,
-      "doorway": null
+      "doorway": null,
+      "repositoryPath": "production/homeworld-v158/assets/sprites_png/HW1033_cuisine_collective_auvent.png"
     },
     {
       "id": "HW1034",
@@ -107,11 +110,12 @@
       },
       "existingTargetFamilyHints": [],
       "artState": "CANDIDATE_NOT_ADMITTED",
-      "sourceInGit": false,
+      "sourceInGit": true,
       "pngCornersAlphaObserved": "transparent_in_local_package",
       "nativeGroundPivot": null,
       "footprintWorld": null,
-      "doorway": null
+      "doorway": null,
+      "repositoryPath": "production/homeworld-v158/assets/sprites_png/HW1034_sechoir_trophes_peaux.png"
     },
     {
       "id": "HW1035",
@@ -128,11 +132,12 @@
       },
       "existingTargetFamilyHints": [],
       "artState": "CANDIDATE_NOT_ADMITTED",
-      "sourceInGit": false,
+      "sourceInGit": true,
       "pngCornersAlphaObserved": "transparent_in_local_package",
       "nativeGroundPivot": null,
       "footprintWorld": null,
-      "doorway": null
+      "doorway": null,
+      "repositoryPath": "production/homeworld-v158/assets/sprites_png/HW1035_poste_soins_faune.png"
     },
     {
       "id": "HW1036",
@@ -149,11 +154,12 @@
       },
       "existingTargetFamilyHints": [],
       "artState": "CANDIDATE_NOT_ADMITTED",
-      "sourceInGit": false,
+      "sourceInGit": true,
       "pngCornersAlphaObserved": "transparent_in_local_package",
       "nativeGroundPivot": null,
       "footprintWorld": null,
-      "doorway": null
+      "doorway": null,
+      "repositoryPath": "production/homeworld-v158/assets/sprites_png/HW1036_portique_quartier_service.png"
     },
     {
       "id": "HW1037",
@@ -170,11 +176,12 @@
       },
       "existingTargetFamilyHints": [],
       "artState": "CANDIDATE_NOT_ADMITTED",
-      "sourceInGit": false,
+      "sourceInGit": true,
       "pngCornersAlphaObserved": "transparent_in_local_package",
       "nativeGroundPivot": null,
       "footprintWorld": null,
-      "doorway": null
+      "doorway": null,
+      "repositoryPath": "production/homeworld-v158/assets/sprites_png/HW1037_garde_corps_lumineux.png"
     },
     {
       "id": "HW1038",
@@ -193,11 +200,12 @@
         "target-v81-55-11"
       ],
       "artState": "CANDIDATE_NOT_ADMITTED",
-      "sourceInGit": false,
+      "sourceInGit": true,
       "pngCornersAlphaObserved": "transparent_in_local_package",
       "nativeGroundPivot": null,
       "footprintWorld": null,
-      "doorway": null
+      "doorway": null,
+      "repositoryPath": "production/homeworld-v158/assets/sprites_png/HW1038_panneau_soutenement.png"
     },
     {
       "id": "HW1039",
@@ -214,11 +222,12 @@
       },
       "existingTargetFamilyHints": [],
       "artState": "CANDIDATE_NOT_ADMITTED",
-      "sourceInGit": false,
+      "sourceInGit": true,
       "pngCornersAlphaObserved": "transparent_in_local_package",
       "nativeGroundPivot": null,
       "footprintWorld": null,
-      "doorway": null
+      "doorway": null,
+      "repositoryPath": "production/homeworld-v158/assets/sprites_png/HW1039_bac_flore_aliene_vert.png"
     },
     {
       "id": "HW1040",
@@ -227,7 +236,7 @@
       "orientation": "front-right",
       "sourceType": "sprite-sheet-crop",
       "originalArchivePath": "sprites_png/HW1040_circuit_refroidissement.png",
-      "sha256": "4bf71a74546ae7c9abc2152060dd60a7a934c56c93c079fce83e8bb38f4ac6",
+      "sha256": "4bf71a74546aeae7c9abc2152060dd60a7a934c56c93c079fce83e8bb38f4ac6",
       "bytes": 36331,
       "dimensionsPx": {
         "width": 173,
@@ -235,11 +244,23 @@
       },
       "existingTargetFamilyHints": [],
       "artState": "CANDIDATE_NOT_ADMITTED",
-      "sourceInGit": false,
+      "sourceInGit": true,
       "pngCornersAlphaObserved": "transparent_in_local_package",
       "nativeGroundPivot": null,
       "footprintWorld": null,
-      "doorway": null
+      "doorway": null,
+      "metadataCorrection": {
+        "previousSha256": "4bf71a74546ae7c9abc2152060dd60a7a934c56c93c079fce83e8bb38f4ac6",
+        "reason": "Two characters omitted in historical transcription; original PNG bytes unchanged.",
+        "sourceArchiveSha256": "4c757ac6c2a16eaa744a89f6f37801c2a87bc1ec361276baec6c61606acb3b14"
+      },
+      "repositoryPath": "production/homeworld-v158/assets/sprites_png/HW1040_circuit_refroidissement.png"
     }
-  ]
+  ],
+  "delivery": {
+    "release": "V160",
+    "pngCount": 10,
+    "originalBytesPreserved": true,
+    "runtimeIntegrated": false
+  }
 }
