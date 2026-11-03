@@ -118,9 +118,58 @@
       "sha256": "a8f69759564a653a6b7488e8fc1a90706a1cdd573592feb2dcfe7a855c40a866",
       "width": 1536,
       "height": 1024
+    },
+    {
+      "key": "market-s06",
+      "id": "HWM162-S06",
+      "label": "Plateau d’exposition amovible",
+      "file": "HWM162-S06-removable-display-tray.png",
+      "targetIds": [
+        "target-v81-64-162"
+      ],
+      "proposedMetres": {
+        "width": 1.15,
+        "depth": 0.35,
+        "height": 0.12
+      },
+      "prompt": "Use case: stylized-concept. Exactly ONE removable display tray for a Yautja clan market, an independent small prop sprite, EMPTY. A broad shallow trapezoidal bronze-and-gunmetal tray with a charcoal inset base, subtly raised angular rim and two small integrated recessed grip handles. 1.15m wide,0.35m deep,0.12m tall proposed size; believable low shallow proportions. Worn aged bronze edges, dark metallic underside ribs, restrained alien segmented detail, no readable symbols. Fits on the stepped shelves of a basalt-and-bronze Homeworld market display. No stand, no shelf, no goods, no skulls or attached separate objects. Original game fixture, not a claimed canonical film prop. Orthographic front view looking down35degrees, yaw0, verticals straight, full top surface visible, no vanishing-point perspective. High-detail realistic rendered game sprite, neutral soft light upperleft. The entire single tray centered within middle65% of a wide canvas with generous empty transparent air on every side. Genuine alpha transparency. No ground or cast-shadow carpet, no background glow, no scene, no figures, no labels, no frame, no contact sheet or duplicated views.",
+      "source": "/workspace/scratch/2166fec07f86/generated_images/exec-e074824b-90fb-4056-98ae-52d988909bcf.png",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "area": "market",
+      "phase": "round2-modularity",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S06-removable-display-tray.png",
+      "sha256": "8e18a6f05375ac0179c606eb6631dc5cdab60b7d47723cf5e84088da1a7f2070",
+      "bytes": 1387042,
+      "width": 2172,
+      "height": 724
+    },
+    {
+      "key": "market-s07",
+      "id": "HWM162-S07",
+      "label": "Palette de manutention marchande",
+      "file": "HWM162-S07-market-cargo-pallet.png",
+      "targetIds": [
+        "target-v81-64-170"
+      ],
+      "proposedMetres": {
+        "width": 1.8,
+        "depth": 1.2,
+        "height": 0.28
+      },
+      "prompt": "Use case: stylized-concept. Exactly ONE EMPTY YAUTJA MARKET CARGO PALLET as a complete independent 2.5D game prop sprite. It is a practical lightweight load platform,1.8m wide,1.2m deep,0.28m tall. Low dark gunmetal open-truss base with two continuous runners, recessed lifting channels, ribbed top panels, worn aged-bronze reinforced trapezoid corners and four small flush tie-down loops integrated into its sides. Entire frame low and broad, useful carrying shape. Alien hunter-clan industrial craftsmanship matching black-and-bronze Homeworld architecture, restrained geometric engraving and realistically rubbed edges. No stone block weight, no wooden slats, no forks, no cart, no crates or merchandise, no energy hovering effect. New original game adaptation. Camera locked orthographic front view, yaw0, looking down35degrees; top panels and full base supports visible; no perspective convergence. Soft upper-left neutral illumination, realistic detailed dark metal textures. Entire pallet in central65% of wide image, at least100px fully empty transparent margins on ALL sides, no contact with border. Genuine transparent alpha background, no scene floor or exterior shadows/glow. No text, labels, people, animals, collage, frame or multiple views. Only this ONE joined pallet.",
+      "source": "/workspace/scratch/2166fec07f86/generated_images/exec-bf622281-fdda-4a10-88b1-545545f2e3f1.png",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "area": "market",
+      "phase": "round2-modularity",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S07-market-cargo-pallet.png",
+      "sha256": "f196df3b9f6729887e467ed5035487fd5f4c8aac303dfe14c9901f482045a5ff",
+      "bytes": 1734429,
+      "width": 1774,
+      "height": 887
     }
   ],
   "humanValidated": false,
   "runtimeIntegrated": false,
-  "canon1to1Claim": false
+  "canon1to1Claim": false,
+  "round2BaseCommit": "d4c43dce5286fbb64e41ae5fa22cb82854572a7e"
 }

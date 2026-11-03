@@ -349,9 +349,285 @@
         "pitch_degrees": 35,
         "projection": "orthographic"
       }
+    },
+    {
+      "id": "HWM162-M07",
+      "label": "Angle à 90 degrés de clôture pour grandes montures",
+      "file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M07-corral-corner.png",
+      "source_original": "/workspace/scratch/2166fec07f86/generated_images/exec-c8d92a39-229f-4023-86b1-97a3214bfc3a.png",
+      "prompt": "Use case: stylized-concept. Produce ONE new independent transparent PNG sprite HWM162-M07 for Yautja The Long Hunt: a practical large-animal corral CORNER fence. Original game adaptation, not a claimed canonical movie structure.\nGEOMETRY: one physically connected L-shaped fence module forming a precise 90-degree RIGHT ANGLE in ground plan. Exactly THREE heavy posts: one shared CORNER post and two terminal posts. Two equal straight arms, each approximately3 metres from corner to end, height2.6 metres. Each arm contains three thick horizontal blunt rectangular gunmetal rails, captive bolted rail sockets, and a narrow bottom reinforcement with a low diagonal brace. The two arms are PERPENDICULAR, not a single straight panel, not a bent flat panel, not a V-shaped barricade in ground plan. Show the shared corner post nearer to the viewer, the two terminal posts receding back-left and back-right, so the two orthogonal planes read clearly. No third fence side between the end posts; not a cage, not a complete corral.\nMATCH THE EXISTING FENCE SYSTEM: charcoal basalt tapered polygonal post cores; broad flared low bolted structural feet; smooth blunt rounded polygon caps; aged bronze narrow vertical front strips and corner guards; sparse three-claw incised marks; one tiny recessed amber indicator on each post. The rails are dark weathered gunmetal with broad rounded rectangular cross-sections. Restrained ancient alien Yautja engineering, strong safe inner surfaces for large quadrupeds, no projecting spikes or blades. No wooden rails. All three complete feet visible; no shared floor slab or display plinth.\nCamera: orthographic parallel projection, downward pitch35 degrees, same natural top-left soft lighting as a front-facing modular fence sprite. Only the OBJECT is turned so both arms are visible. No vanishing-point perspective, vertical posts stay vertical. Highly detailed believable hand-painted realistic game asset, desaturated basalt gray, worn bronze and dark metal.\nFRAMING: wide1536x1024 canvas. Complete L-shaped structure centered and SMALL, occupying no more than70 percent of width and65 percent of height. Leave generous minimum120px empty transparent margin on every side, including under all feet. Entire silhouette uncropped. REAL native transparent background with alpha zero outside the object, tightly antialiased edges, no ambient fog, no gradient, no opaque backdrop, no painted checkerboard, no floor shadow or ground plane.\nOne assembled structure only. No people, animals, scenery, building, mounted equipment, standalone extras, human writing, legible glyph text, label, title, diagram, multi-view sheet or collage. No neon and no excessive ornament. Function: a usable 90-degree corner for modular large-animal paddock fencing.",
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "requested_dimensions_m": {
+        "arm_length": 3,
+        "height": 2.6
+      },
+      "review_note": "One connected corner structure with two arms, shared corner post and two terminal posts. All three feet and rail ends visible. The 90-degree ground-plan angle and 35-degree camera are requested design values, not calibrated geometric measurements. No resizing, padding or alpha cleanup.",
+      "camera_requested": {
+        "yaw_degrees": 0,
+        "pitch_degrees": 35,
+        "projection": "orthographic",
+        "object_orientation": "corner toward viewer; two perpendicular arms recede left/right"
+      },
+      "mode": "RGBA",
+      "dimensions_px": [
+        1536,
+        1024
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_zero_pixels": 1160800,
+      "alpha_bbox": [
+        0,
+        0,
+        1518,
+        1024
+      ],
+      "alpha_bbox_8": [
+        154,
+        228,
+        1382,
+        889
+      ],
+      "alpha_bbox_gt24": [
+        154,
+        230,
+        1382,
+        888
+      ],
+      "sha256": "dded60e7e63162ccc49821c124e11d501d317aa04f643663df7b553a3887dd0f",
+      "status": "GENERATED_ORIGINAL_PENDING_FINAL_REVIEW",
+      "runtime_integrated": false,
+      "human_art_validated": false,
+      "canon_1_to_1_claim": false,
+      "bytes": 1690323,
+      "substantial_silhouette_margins_px": [
+        154,
+        228,
+        154,
+        135
+      ],
+      "silhouette_margins_gt24_px": [
+        154,
+        230,
+        154,
+        136
+      ],
+      "edge_alpha_max": 1,
+      "original_unchanged": true,
+      "imagegen_calls_for_asset": 1,
+      "design_reference_file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M04-corral-fence.png"
+    },
+    {
+      "id": "HWM162-M08",
+      "label": "Cadre ouvert de portail pour grandes montures",
+      "file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M08-open-gateway.png",
+      "source_original": "/workspace/scratch/2166fec07f86/generated_images/exec-e48ec299-5bc9-4ad8-bd25-15fa99f3e05c.png",
+      "prompt": "Use case: stylized-concept. Generate ONE new isolated transparent PNG sprite HWM162-M08 for Yautja The Long Hunt: an OPEN gateway FRAME for a large-animal paddock. Original game adaptation, not certified canonical architecture.\nONE CONNECTED STRUCTURE: two robust upright pylons and one overhead lintel connecting them, all integral. Proposed clear animal passage5 metres wide by4 metres tall; overall frame approximately7.2m wide by5.2m high. Keep the empty doorway generously broad and TALL for a giant quadruped. The inner side faces are smooth, near-vertical, with an essentially RECTANGULAR open aperture; no pointed arch. Under the overhead lintel is a shallow recessed horizontal sliding-gate track. Tiny compact drive housing is built into the upper RIGHT end of the lintel. DO NOT include any door or gate leaf: the whole passage is empty and genuinely transparent from lintel underside to ground. No crossbar across the threshold, no step, no raised floor, no fence section extending sideways.\nMATCH A PRACTICAL ALIEN CORRAL SYSTEM: tapered dark charcoal basalt pylon cores with blunt polygonal caps, narrow aged-bronze vertical facing strips, weathered dark gunmetal captive joints, broad flared bolted structural feet, sparse incised three-claw clan scars, one tiny amber indicator on each pylon. Heavy gunmetal segmented rectangular lintel with bronze edge guards. Blunt safe inner faces with no spikes, hooks, blades or protrusions in the animal passage. The feet anchor just the two pylons; no shared base slab and no display pedestal.\nCamera: front orthographic projection, camera yaw0 degrees and downward pitch35 degrees, parallel horizontal lintel and vertical uprights, a little pylon top surface visible. No converging perspective. Symmetrical front alignment allows a separate rectangular sliding panel to overlay the aperture later. Soft light from upper left. Detailed hand-painted realistic game asset, desaturated worn basalt, bronze and dark gunmetal; no bright neon.\nCOMPOSITION: exactly1536x1024 landscape canvas. Entire complete frame, both caps and both full feet, centered with generous empty transparent margins. The complete frame should be no more than72 percent of canvas width and70 percent of height, aboutx215..1320 andy145..875. Aperture stays centered. Zoom out, do not crop any foot or beam. Real native alpha transparency, with alpha zero throughout the empty aperture and outside the solid structure. Tight edge antialiasing only; no fog, vignette, halo, gradient background, ground shadow or ground plane.\nOne OPEN gateway frame only. No gate panel, no second frame, no complete enclosure, no animals, people, equipment pile, landscape, text, readable glyph strings, labels, multi-view sheet, arrows or diagrams. No medieval wooden barn design and no theatrical spiked arch. Usable physical gateway whose separate sliding leaf will be another PNG.",
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "requested_dimensions_m": {
+        "clear_passage_width": 5,
+        "clear_passage_height": 4,
+        "overall_width": 7.2,
+        "overall_height": 5.2
+      },
+      "review_note": "One open connected gateway frame with two full pylons and overhead slide track. No gate leaf or crossbar blocks the aperture. Clear center sampled at alpha0 or1. All feet visible; horizontal margins about69px are less than requested but no solid-object crop. Dimensions and 35-degree camera are proposed, not calibrated. Separate M09 leaf alignment remains a composition proposal until runtime testing.",
+      "camera_requested": {
+        "yaw_degrees": 0,
+        "pitch_degrees": 35,
+        "projection": "orthographic"
+      },
+      "aperture_measurements_px": {
+        "threshold": "alpha <=24",
+        "top_open_row_approx": 320,
+        "center_run_y330": [
+          358,
+          1180
+        ],
+        "center_run_y500": [
+          359,
+          1177
+        ],
+        "center_run_y800": [
+          368,
+          1168
+        ],
+        "center_run_y860": [
+          399,
+          1136
+        ],
+        "ground_row_approx": 919,
+        "clear_sample_rect": [
+          400,
+          350,
+          1135,
+          800
+        ],
+        "clear_sample_pixels": 330750,
+        "clear_sample_alpha0_pixels": 327469,
+        "clear_sample_alpha_max": 1
+      },
+      "assembly_pair_id": "HWM162-M09",
+      "assembly_runtime_validated": false,
+      "mode": "RGBA",
+      "dimensions_px": [
+        1536,
+        1024
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_zero_pixels": 1098472,
+      "alpha_bbox": [
+        0,
+        0,
+        1506,
+        1024
+      ],
+      "alpha_bbox_8": [
+        68,
+        126,
+        1468,
+        921
+      ],
+      "alpha_bbox_gt24": [
+        69,
+        127,
+        1468,
+        920
+      ],
+      "sha256": "cd982603d1d7c51a2a88ad476fa59bfd58336f23cc30cc7ebb517917b81b212d",
+      "status": "GENERATED_ORIGINAL_PENDING_FINAL_REVIEW",
+      "runtime_integrated": false,
+      "human_art_validated": false,
+      "canon_1_to_1_claim": false,
+      "bytes": 1816504,
+      "substantial_silhouette_margins_px": [
+        68,
+        126,
+        68,
+        103
+      ],
+      "silhouette_margins_gt24_px": [
+        69,
+        127,
+        68,
+        104
+      ],
+      "edge_alpha_max": 1,
+      "original_unchanged": true,
+      "imagegen_calls_for_asset": 1,
+      "design_reference_file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M04-corral-fence.png"
+    },
+    {
+      "id": "HWM162-M09",
+      "label": "Battant coulissant indépendant pour grandes montures",
+      "file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M09-sliding-gate-leaf.png",
+      "source_original": "/workspace/scratch/2166fec07f86/generated_images/exec-4fe80ea5-6977-410f-9373-23fb8c43a1e5.png",
+      "prompt": "Derive a NEW complementary component sprite from the supplied open gateway reference. Output HWM162-M09: ONLY ONE MOVING SLIDING GATE LEAF for the large-animal paddock. This is an original game adaptation for Yautja The Long Hunt.\nREFERENCE USE: preserve the exact1536x1024 transparent canvas, front orthographic view, approximately35-degree downward camera, upper-left light, dark weathered gunmetal with aged-bronze edging. The reference OPEN FRAME is only a camera/material/alignment reference. REMOVE the entire reference frame from the output: NO basalt pylons, NO gateway lintel, NO stone posts, NO feet, NO motor housing, NO freestanding support. Nothing from the original frame remains visible. The new PNG contains ONLY the thin sliding leaf which later goes BEHIND that frame.\nPIXEL PLACEMENT IS CRITICAL: the reference clear opening starts aroundx358..1180 at y330, reaches ground aroundy919. Keep the new leaf centered atx768 with its full outside bounds approximatelyx347..1189 andy300..919. Do not zoom or enlarge it. The main leaf rectangle spansx350..1186,y322..916; two small captive slide rollers at its top reach into the reference track aroundy303. Keep the entire rest of the canvas genuinely transparent. Do not draw the frame to indicate placement. The leaf should cover the opening when layered behind the reference at the SAME pixel scale, with its outer edges hidden slightly behind the pylons.\nLEAF CONSTRUCTION: one strongly welded blunt rectangular perimeter of dark weathered gunmetal, narrow aged-bronze reinforced corner plates, three robust horizontal rectangular infill rails, two narrower vertical stiffeners, short low diagonal braces. All attached to the SAME thin movable panel; no loose objects. Large open gaps between bars must be real transparent alpha holes. A practical large-animal gate, not a mesh cage, not a door made of stone, not a solid opaque wall. The visible widths of rails match the reference gateway's substantial utilitarian engineering. Proposed physical size5.1 metres wide and4 metres high, excluding small top rollers. Flat vertical panel with just enough depth visible on top edges to match the reference camera. Blunt smooth hardware, safe for a huge quadruped, no spikes, blades or protruding hooks. One small integrated metal latch recess at the right edge, no readable text.\nNative transparent PNG, entire leaf fully visible with broad transparent margins. Alpha zero outside immediate antialiased solid parts and within gaps. No black background painted, no checkerboard painting, no haze, ground shadow, glow, floor or landscape. No decorative scene or unrelated accessories. No people, animals, extra panels, fixed frame, labels, title, human writing or legible glyph strings. The leaf and its two attached rollers are ONE independent assembled object. This is a separate sprite, not a closed-gateway composite.",
+      "reference_image_file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M08-open-gateway.png",
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "requested_dimensions_m": {
+        "width": 5.1,
+        "height": 4,
+        "excludes": "top rollers"
+      },
+      "review_note": "One independent thin barred sliding leaf with two attached top rollers, perimeter and internal braces; no gateway pylons, lintel or feet. The openings have real native alpha. Same 1536x1024 canvas as M08; all leaf parts visible. Body starts around y330 and ends y876; M08 aperture begins y320 and proposed ground is y919. Native overlay therefore leaves about 43px ground clearance and a small top clearance. Width overlaps each pylon by about 27px. This is a proposed modular pairing, not verified pixel-perfect closure or tested in-game motion. No resizing, padding or alpha cleanup.",
+      "camera_requested": {
+        "yaw_degrees": 0,
+        "pitch_degrees": 35,
+        "projection": "orthographic"
+      },
+      "assembly_pair_id": "HWM162-M08",
+      "assembly_runtime_validated": false,
+      "assembly_proposal": {
+        "layer_order_back_to_front": [
+          "HWM162-M09",
+          "HWM162-M08"
+        ],
+        "translation_px": [
+          0,
+          0
+        ],
+        "scale": 1,
+        "leaf_body_y_approx": [
+          330,
+          876
+        ],
+        "frame_opening_top_y_approx": 320,
+        "frame_ground_y_approx": 919,
+        "ground_clearance_px_approx": 43,
+        "top_clearance_px_approx": 10,
+        "pixel_perfect_fit_verified": false,
+        "requires": "Art/runtime review of clearances, depth ordering and sliding travel before integration."
+      },
+      "alpha_hole_sample": {
+        "rect": [
+          650,
+          400,
+          880,
+          470
+        ],
+        "pixels": 16100,
+        "alpha_zero_pixels": 14961,
+        "alpha_le8_pixels": 16100,
+        "alpha_max": 1
+      },
+      "mode": "RGBA",
+      "dimensions_px": [
+        1536,
+        1024
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_zero_pixels": 1263491,
+      "alpha_bbox": [
+        33,
+        10,
+        1496,
+        1024
+      ],
+      "alpha_bbox_8": [
+        329,
+        280,
+        1205,
+        876
+      ],
+      "alpha_bbox_gt24": [
+        331,
+        281,
+        1205,
+        876
+      ],
+      "sha256": "455a9907fe96b5a73497923ae4b213fc9206aefae333638e6b420493985171f9",
+      "status": "GENERATED_ORIGINAL_PENDING_FINAL_REVIEW",
+      "runtime_integrated": false,
+      "human_art_validated": false,
+      "canon_1_to_1_claim": false,
+      "bytes": 1490374,
+      "substantial_silhouette_margins_px": [
+        329,
+        280,
+        331,
+        148
+      ],
+      "silhouette_margins_gt24_px": [
+        331,
+        281,
+        331,
+        148
+      ],
+      "edge_alpha_max": 1,
+      "original_unchanged": true,
+      "imagegen_calls_for_asset": 1,
+      "design_reference_file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M04-corral-fence.png"
     }
   ],
   "generation_complete": true,
-  "asset_count": 6,
-  "production_note": "Six independent generated originals, no alpha cleanup/padding/resizing, no runtime integration or human art validation."
+  "asset_count": 9,
+  "production_note": "Nine independent generated originals, including one 90-degree corner, one open gateway and a separate sliding leaf. Original files unmodified. M08/M09 composition and movement remain proposed, with native clearances documented. No runtime integration, human art validation, or canon 1:1 certification."
 }

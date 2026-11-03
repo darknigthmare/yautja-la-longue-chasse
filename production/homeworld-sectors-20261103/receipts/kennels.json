@@ -6,8 +6,8 @@
   "branch": "codex/homeworld-v158-urban-props-intake-20261102",
   "baseline_head": "0ab844cca5f2c9b5cae28624d2c1b97fca7d5ce9",
   "recorded_on": "2026-11-03",
-  "selected_asset_count": 6,
-  "generated_attempt_count": 7,
+  "selected_asset_count": 9,
+  "generated_attempt_count": 10,
   "failed_generation_count": 1,
   "assets": [
     {
@@ -708,6 +708,346 @@
         "moving_animation_provided": false,
         "notes": "Même toile1536x1024 et orientation frontale. Une translationY+4px place la bordure sous le linteau et sur le seuil; la superposition finale, les occultations et le coulissement doivent être vérifiés au placement. Aucun fonctionnement de porte n'est revendiqué."
       }
+    },
+    {
+      "id": "HWM162-K07",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K07-handler-lead.png",
+      "filename": "HWM162-K07-handler-lead.png",
+      "source_original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-5a20cdf3-f9c7-417d-a2eb-a10221f91815.png",
+      "size_bytes": 1898963,
+      "sha256": "7b47106c7b7d92b180eb62ce496ef50883e34d83b521b4b1b912d76e0bf062d9",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alpha_min": 0,
+      "alpha_max": 254,
+      "fully_transparent_pixels": 1097266,
+      "fully_opaque_pixels": 0,
+      "alpha_bounds": {
+        "0": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            0,
+            13,
+            1522,
+            1024
+          ],
+          "margins_left_top_right_bottom": [
+            0,
+            13,
+            14,
+            0
+          ],
+          "pixels": 475598
+        },
+        "8": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            110,
+            158,
+            1415,
+            913
+          ],
+          "margins_left_top_right_bottom": [
+            110,
+            158,
+            121,
+            111
+          ],
+          "pixels": 422301
+        },
+        "24": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            111,
+            158,
+            1415,
+            913
+          ],
+          "margins_left_top_right_bottom": [
+            111,
+            158,
+            121,
+            111
+          ],
+          "pixels": 418899
+        },
+        "128": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            111,
+            158,
+            1414,
+            912
+          ],
+          "margins_left_top_right_bottom": [
+            111,
+            158,
+            122,
+            112
+          ],
+          "pixels": 410346
+        }
+      },
+      "name": "Laisse et chaîne de conducteur indépendantes",
+      "target_ids": [],
+      "extends_existing_asset": "HWM162-K03",
+      "dimensions_m_proposed": {},
+      "scale_note": "Accessoire autonome à calibrer relativement au râtelier et aux acteurs. Aucune dimension canonique ou mesure métrique officielle établie.",
+      "visual_review": "Une laisse complète posée seule : boucle brune cousue, chaîne sombre continue et mousqueton terminal. Silhouette et raccords visibles. La poignée/sangle brune et la chaîne sont référencées au produit Hot Toys Tracker2010 ; les dimensions, la fermeture et les détails générés ne sont pas certifiés identiques au produit ou au film.",
+      "generation_tool": "image_gen.imagegen",
+      "generation_mode": "built-in-generate",
+      "source_original_bytes_copied_unchanged": true,
+      "image_manipulation": false,
+      "generated_independently_not_cropped": true,
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "reference_basis": "LICENSED_PRODUCT_REFERENCE_ADAPTATION",
+      "source_reference_ids": [
+        "licensed-tracker-hound",
+        "K03-accessory-materials"
+      ],
+      "canon_certified": false,
+      "production_status": "GENERATED_ART_CANDIDATE",
+      "runtime_admitted": false,
+      "human_artistic_validation": "PENDING",
+      "camera_requested": {
+        "projection": "orthographic",
+        "yaw_degrees": 0,
+        "pitch_degrees": 35
+      },
+      "camera_measured": false,
+      "physical_scale_validated": false,
+      "transparent_background_requested": true,
+      "strict_alpha_margin_80px_pass": false,
+      "visible_silhouette_entire_at_alpha_gt24": true,
+      "visible_margin_80px_at_alpha_gt24_pass": true,
+      "continuation_after_published_commit": "d4c43dce5286fbb64e41ae5fa22cb82854572a7e"
+    },
+    {
+      "id": "HWM162-K08",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K08-woven-training-lure.png",
+      "filename": "HWM162-K08-woven-training-lure.png",
+      "source_original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-86639871-ddba-4b86-92cc-4a470d63fc92.png",
+      "size_bytes": 1389256,
+      "sha256": "2140079cfbe57a3077add91e44152c7e32890159cf54b2dbd24c1ddacb56d698",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "alpha_min": 0,
+      "alpha_max": 254,
+      "fully_transparent_pixels": 1314827,
+      "fully_opaque_pixels": 0,
+      "alpha_bounds": {
+        "0": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            65,
+            7,
+            954,
+            1496
+          ],
+          "margins_left_top_right_bottom": [
+            65,
+            7,
+            70,
+            40
+          ],
+          "pixels": 258037
+        },
+        "8": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            369,
+            188,
+            654,
+            1406
+          ],
+          "margins_left_top_right_bottom": [
+            369,
+            188,
+            370,
+            130
+          ],
+          "pixels": 248589
+        },
+        "24": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            369,
+            188,
+            654,
+            1406
+          ],
+          "margins_left_top_right_bottom": [
+            369,
+            188,
+            370,
+            130
+          ],
+          "pixels": 247841
+        },
+        "128": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            370,
+            188,
+            653,
+            1406
+          ],
+          "margins_left_top_right_bottom": [
+            370,
+            188,
+            371,
+            130
+          ],
+          "pixels": 245761
+        }
+      },
+      "name": "Leurre cylindrique tressé indépendant",
+      "target_ids": [],
+      "extends_existing_asset": "HWM162-K03",
+      "dimensions_m_proposed": {},
+      "scale_note": "Accessoire autonome à calibrer relativement au râtelier et aux acteurs. Aucune dimension canonique ou mesure métrique officielle établie.",
+      "visual_review": "Un leurre cylindrique unique avec tressage brun, laçage frontal, deux bandes bronze, boucle de suspension et anneau. Aucun râtelier fusionné ; aucun découpage de K03. Silhouette entière et correspondance de matières au leurre cylindrique du râtelier.",
+      "generation_tool": "image_gen.imagegen",
+      "generation_mode": "built-in-generate",
+      "source_original_bytes_copied_unchanged": true,
+      "image_manipulation": false,
+      "generated_independently_not_cropped": true,
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "reference_basis": "EXISTING_PROJECT_DESIGN_ADAPTATION",
+      "source_reference_ids": [
+        "K03-accessory-materials"
+      ],
+      "canon_certified": false,
+      "production_status": "GENERATED_ART_CANDIDATE",
+      "runtime_admitted": false,
+      "human_artistic_validation": "PENDING",
+      "camera_requested": {
+        "projection": "orthographic",
+        "yaw_degrees": 0,
+        "pitch_degrees": 35
+      },
+      "camera_measured": false,
+      "physical_scale_validated": false,
+      "transparent_background_requested": true,
+      "strict_alpha_margin_80px_pass": false,
+      "visible_silhouette_entire_at_alpha_gt24": true,
+      "visible_margin_80px_at_alpha_gt24_pass": true,
+      "continuation_after_published_commit": "d4c43dce5286fbb64e41ae5fa22cb82854572a7e"
+    },
+    {
+      "id": "HWM162-K09",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K09-adjustable-collar.png",
+      "filename": "HWM162-K09-adjustable-collar.png",
+      "source_original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-3337c926-3696-440e-a908-1ec97fb03ba7.png",
+      "size_bytes": 2100105,
+      "sha256": "97eb1a2a1ce1122604e6709f4aa61df37d4e8b9186ccca56c2bfd1251b969cb2",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alpha_min": 0,
+      "alpha_max": 254,
+      "fully_transparent_pixels": 950649,
+      "fully_opaque_pixels": 0,
+      "alpha_bounds": {
+        "0": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            0,
+            9,
+            1528,
+            1024
+          ],
+          "margins_left_top_right_bottom": [
+            0,
+            9,
+            8,
+            0
+          ],
+          "pixels": 622215
+        },
+        "8": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            124,
+            115,
+            1410,
+            958
+          ],
+          "margins_left_top_right_bottom": [
+            124,
+            115,
+            126,
+            66
+          ],
+          "pixels": 578399
+        },
+        "24": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            124,
+            116,
+            1410,
+            957
+          ],
+          "margins_left_top_right_bottom": [
+            124,
+            116,
+            126,
+            67
+          ],
+          "pixels": 576778
+        },
+        "128": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            125,
+            117,
+            1409,
+            957
+          ],
+          "margins_left_top_right_bottom": [
+            125,
+            117,
+            127,
+            67
+          ],
+          "pixels": 572300
+        }
+      },
+      "name": "Collier de conduite ajustable indépendant",
+      "target_ids": [],
+      "extends_existing_asset": "HWM162-K03",
+      "dimensions_m_proposed": {},
+      "scale_note": "Accessoire autonome à calibrer relativement au râtelier et aux acteurs. Aucune dimension canonique ou mesure métrique officielle établie.",
+      "visual_review": "Un collier ouvert unique en forme de C, garnissage sombre visible, lamelles de cuir brun et plaques bronze articulées, extrémités ajustables et anneau. Aucune laisse ni créature fusionnée. Marge basse visible67px. Aucune source ne prouve ce collier précis comme objet canonique ; la source Hot Toys de la laisse n'est pas une preuve de collier de film.",
+      "generation_tool": "image_gen.imagegen",
+      "generation_mode": "built-in-generate",
+      "source_original_bytes_copied_unchanged": true,
+      "image_manipulation": false,
+      "generated_independently_not_cropped": true,
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "reference_basis": "ORIGINAL_GAME_ADAPTATION",
+      "source_reference_ids": [
+        "K03-accessory-materials"
+      ],
+      "canon_certified": false,
+      "production_status": "GENERATED_ART_CANDIDATE",
+      "runtime_admitted": false,
+      "human_artistic_validation": "PENDING",
+      "camera_requested": {
+        "projection": "orthographic",
+        "yaw_degrees": 0,
+        "pitch_degrees": 35
+      },
+      "camera_measured": false,
+      "physical_scale_validated": false,
+      "transparent_background_requested": true,
+      "strict_alpha_margin_80px_pass": false,
+      "visible_silhouette_entire_at_alpha_gt24": true,
+      "visible_margin_80px_at_alpha_gt24_pass": false,
+      "continuation_after_published_commit": "d4c43dce5286fbb64e41ae5fa22cb82854572a7e"
     }
   ],
   "attempts": [
@@ -792,6 +1132,45 @@
         "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/kennels/HWM162-K02-handling-gate.png"
       ],
       "sha256": "1591ab6c1a112e5373c8260c2c62d5111659212b9cb219ed79f44262f6d0dee4"
+    },
+    {
+      "id": "HWM162-K07",
+      "attempt": 1,
+      "prompt": "Use case: stylized-concept. Asset type: HWM162-K07, one new independent transparent game prop sprite. Render ONE complete animal-handler lead, resting loosely in a neat open coil on an invisible horizontal ground plane. It is a single continuous object: a wide worn dark-brown leather-like loop handle, a small aged-bronze connector, a length of dark gunmetal linked chain, and one small end clasp. Match the material and segment style of the three coiled leads visible on the previously shown HWM162-K03 storage rack. The brown handle plus dark chain combination references the official Hot Toys Tracker Predator with Hound2010 accessory; this image is an original game adaptation, not a metric reproduction. Keep the handle, every chain link and the end clasp visibly connected. Place the brown loop toward the lower-left foreground and the relaxed metal coil behind it; no second leash or extra loose parts. Strong practical alien craftsmanship, charcoal metal, subtle aged bronze fittings, visibly stitched brown leather, no decorative symbols or lights. High detail painterly3D game sprite. Camera consistent with the Homeworld: orthographic, yaw0 degrees, pitch35degrees down, parallel projection without dramatic perspective. The entire single object centered in the middle65 percent of a wide canvas with generous wholly transparent margins on all four sides. Real RGBA transparency outside the object and inside all open loops. No ground patch, backdrop, vignette, glow, fog, shadow outside the silhouette, human, animal, hand, rack, display stand, text, label, logo, border or additional view. Generate the complete object anew, not a crop from any image or a contact sheet.",
+      "status": "GENERATED_SELECTED",
+      "original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-5a20cdf3-f9c7-417d-a2eb-a10221f91815.png",
+      "sha256": "7b47106c7b7d92b180eb62ce496ef50883e34d83b521b4b1b912d76e0bf062d9",
+      "reference_images_inspected_before_generation": [
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K03-training-rack.png",
+        "https://www.hottoys.jp/catalog/swfdata/ht3225/image/trackerpredator-03.png"
+      ],
+      "reference_image_parameters_used": false
+    },
+    {
+      "id": "HWM162-K08",
+      "attempt": 1,
+      "prompt": "Use case: stylized-concept. Asset type: HWM162-K08, one new independent transparent game prop sprite. Render ONE cylindrical woven animal-training lure suspended from its own small aged-bronze attachment ring, with no support or rack shown. Match the rightmost cylindrical woven lure on the previously displayed HWM162-K03 animal-care rack: a short rounded dark-brown braided-fiber body, visibly cross-laced dark leather down its front, two narrow worn bronze reinforcing bands and rounded woven end caps. One short doubled braided brown hanging loop joins its upper end to a single bronze ring. The ring, cord and lure form one continuous complete object. This is a functional original prop for the Yautja Homeworld animal keepers, not a claimed film artifact. Keep the materials practical and worn, with the same brown fibers, leather and muted bronze as K03; no glowing parts, symbols, embellishments or attached extra toys. High-resolution detailed painterly3D game sprite. Orthographic camera with global yaw0 and downward pitch35degrees, revealing a little top surface, no perspective convergence. Show the entire ring, cord, body and bottom end uncropped. Center the object within only65 percent of canvas height, with broad transparent margins on every side. Genuinely transparent RGBA background and transparent space inside the ring. No background, shadow outside silhouette, vignette, glow, haze, ground, people, creatures, hand, stand, rack, text, label, watermark, border, detached props or second view. Generate this one object anew in its own image; do not crop or extract a part of the reference picture.",
+      "status": "GENERATED_SELECTED",
+      "original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-86639871-ddba-4b86-92cc-4a470d63fc92.png",
+      "sha256": "2140079cfbe57a3077add91e44152c7e32890159cf54b2dbd24c1ddacb56d698",
+      "reference_images_inspected_before_generation": [
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K03-training-rack.png",
+        "https://www.hottoys.jp/catalog/swfdata/ht3225/image/trackerpredator-03.png"
+      ],
+      "reference_image_parameters_used": false
+    },
+    {
+      "id": "HWM162-K09",
+      "attempt": 1,
+      "prompt": "Use case: stylized-concept. Asset type: HWM162-K09, one new independent transparent game prop sprite. ONE complete adjustable animal-handling collar for the Yautja Homeworld keeper equipment, resting in a shallow open C-shape on an invisible horizontal plane. Original game adaptation; no claim that this exact collar appeared in a film. The collar is made of overlapping dark-brown leather-like lamellae with a soft visibly padded dark inner lining, reinforced on the outside by a few articulated, bevelled trapezoidal aged-bronze plates joined by small dark metal pivots. Its two ends are open and connected to the same continuous collar band: one short adjustment tongue with discreet slots and one recessed sliding clasp. A single sturdy worn-bronze attachment ring is secured to the front outer plate, ready to receive the separate lead. No leash is attached. Match the brown leather, muted old bronze and dark gunmetal of the previously shown K03 rack accessories and K07 lead. Make the structure practical for a large alien animal and a gloved caretaker, not a modern brightly colored pet-store collar. No spikes, lettering, glowing parts, symbols or extra accessories. The construction, padding, hinge joints, adjustment ends and attachment ring should all be readable in one complete object. High-detail painterly3D game sprite, soft upper-left illumination. Orthographic camera, yaw0 degrees and pitch35degrees down, preserving the Homeworld prop perspective; show the upper rim and the inner padded surface without perspective convergence. Center the entire collar in the middle65 percent of a wide canvas with at least100px clear margin everywhere. Genuine transparent RGBA outside the silhouette and inside its central opening and attachment ring. No background, ground patch, scene, cast shadow outside object, vignette, aura, fog, person, creature, hand, stand, rack, text, watermark, panel, collage or second view.",
+      "status": "GENERATED_SELECTED",
+      "original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-3337c926-3696-440e-a908-1ec97fb03ba7.png",
+      "sha256": "97eb1a2a1ce1122604e6709f4aa61df37d4e8b9186ccca56c2bfd1251b969cb2",
+      "reference_images_inspected_before_generation": [
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K03-training-rack.png",
+        "https://www.hottoys.jp/catalog/swfdata/ht3225/image/trackerpredator-03.png"
+      ],
+      "reference_image_parameters_used": false
     }
   ],
   "references": [
@@ -838,6 +1217,14 @@
       "sha256": "7d7a726ff442a711bf4212a7161d042659542d1a384056f1a1853743fa77068c",
       "visually_inspected": true,
       "usage": "Référence d'édition du battant K06, matériaux et positionnement dans l'ouverture du portique. Original du jeu; aucune preuve de canon."
+    },
+    {
+      "id": "K03-accessory-materials",
+      "kind": "generated_project_asset",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K03-training-rack.png",
+      "sha256": "95cef71793ec00c9a9d8ae8842e4e8beb3e83ac9eddf4be57820a2a965637797",
+      "visually_inspected": true,
+      "usage": "Correspondance de matières des accessoires indépendants K07/K08 et cohérence de K09. Nouveaux appels imagegen par objet ; aucune extraction de pixels du râtelier. Le râtelier est une création du jeu, pas une preuve de canon."
     }
   ],
   "quality_summary": {
@@ -848,12 +1235,58 @@
     "strict_alpha_80px_margin_all": false,
     "limitations": [
       "Des pixels de faible alpha touchent certains bords; les fichiers originaux restent inchangés.",
-      "Les six sorties plafonnent à alpha254; aucun pixel alpha255, ce qui est consigné sans correction.",
+      "Les neuf sorties plafonnent à alpha254; aucun pixel alpha255, ce qui est consigné sans correction.",
       "K01/K02/K03 n'atteignent pas la marge visible80px sur tous les côtés; ils gardent une silhouette entière.",
       "Les dimensions physiques, la caméra exacte, les pivots, collisions, raccords et comportement ne sont pas validés par ces contrôles.",
       "Tous les bâtiments et accessoires sont des adaptations originales; zéro certification canonique1:1, zéro admission runtime, zéro validation humaine présumée.",
-      "K06 fournit le battant séparé du portique K02. Le placement par translation est une proposition mesurée sur les rasters; le fonctionnement en jeu et l'animation ne sont pas fournis."
+      "K06 fournit le battant séparé du portique K02. Le placement par translation est une proposition mesurée sur les rasters; le fonctionnement en jeu et l'animation ne sont pas fournis.",
+      "K07-K09 sont des sprites indépendants nouvellement générés. K09 conserve67px de marge basse visible; les pixels alpha faibles périphériques ne sont pas effacés. Les échelles métriques et la compatibilité avec une anatomie précise ne sont pas validées."
     ],
     "upstream_guide_reading": "AGENTS.md et docs/GAMEDEV_AGENT_GUIDE.md lus. L'accès web au create-game-assets/SKILL.md au commit épinglé a échoué avec DisabledError; la poursuite selon les consignes locales est prévue par ce guide."
-  }
+  },
+  "continuation_batches": [
+    {
+      "name": "independent-kennel-accessories",
+      "baseline_published_commit": "d4c43dce5286fbb64e41ae5fa22cb82854572a7e",
+      "asset_ids": [
+        "HWM162-K07",
+        "HWM162-K08",
+        "HWM162-K09"
+      ],
+      "previous_asset_count": 6,
+      "previous_assets_sha256_preserved": [
+        {
+          "id": "HWM162-K01",
+          "sha256": "fedb9677d90ae72cfe2ee53e9a1f5751361ea1d88da2d9169137a22d2cd9d9a5",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png"
+        },
+        {
+          "id": "HWM162-K02",
+          "sha256": "7d7a726ff442a711bf4212a7161d042659542d1a384056f1a1853743fa77068c",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K02-handling-gate.png"
+        },
+        {
+          "id": "HWM162-K03",
+          "sha256": "95cef71793ec00c9a9d8ae8842e4e8beb3e83ac9eddf4be57820a2a965637797",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K03-training-rack.png"
+        },
+        {
+          "id": "HWM162-K04",
+          "sha256": "fa7bcf72db0315a379f90e5872153e75e29d9d2e893adaaac02c110d611e4a73",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K04-keeper-platform.png"
+        },
+        {
+          "id": "HWM162-K05",
+          "sha256": "df1d8e518af28797dac239a4db5988bba8bd10e6eb702893833850df1ffbdecf",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K05-resting-basin.png"
+        },
+        {
+          "id": "HWM162-K06",
+          "sha256": "1591ab6c1a112e5373c8260c2c62d5111659212b9cb219ed79f44262f6d0dee4",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K06-sliding-mesh-panel.png"
+        }
+      ],
+      "notes": "K07 et K08 autonomisent les accessoires portés par le râtelier. K09 ajoute un point d'attache ajustable séparé, explicitement original."
+    }
+  ]
 }

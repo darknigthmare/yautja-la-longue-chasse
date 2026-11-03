@@ -15,7 +15,7 @@ from PIL import Image
 
 PACK = Path(__file__).resolve().parents[1]
 REPO = PACK.parents[1]
-EXPECTED = [f'HWM162-{group}{i:02d}' for group, count in [('S', 5), ('M', 6), ('K', 6)] for i in range(1, count + 1)]
+EXPECTED = [f'HWM162-{group}{i:02d}' for group, count in [('S', 7), ('M', 9), ('K', 9)] for i in range(1, count + 1)]
 
 
 def read_json(path):
@@ -51,6 +51,7 @@ def inspect(path):
 def aggregate():
     catalogue = read_json(PACK / 'catalogue.json')
     plans = {a['id']: a for a in catalogue['newAssetPlan']}
+    source_ids = {source['id'] for source in catalogue['sources']}
     receipt_assets = {}
     for area in ['market', 'mounts', 'kennels']:
         receipt = read_json(PACK / 'receipts' / f'{area}.json')
@@ -65,6 +66,8 @@ def aggregate():
         relative = receipt.get('path') or receipt.get('file')
         path = REPO / relative
         assert path.resolve().is_relative_to(PACK / 'sprites'), f'Invalid selected path: {relative}'
+        if plan.get('expectedPath'):
+            assert path == PACK / plan['expectedPath'], f'Plan/receipt path mismatch: {asset_id}'
         metrics = inspect(path)
         assert metrics['sha256'] == receipt['sha256'], f'Receipt hash mismatch: {asset_id}'
         proposed = receipt.get('proposedMetres') or receipt.get('requested_dimensions_m') or receipt.get('dimensions_m_proposed') or {}
@@ -81,9 +84,11 @@ def aggregate():
         if asset_id == 'HWM162-S01':
             notes.append('The first generation was reframed with image_gen; the selected v2 remains byte-identical to that generator output. First attempt retained separately.')
         box = metrics['alphaBounds']['24']['box']
+        source_refs = plan.get('sourceRefs') or ['SRC-CAMERA', 'SRC-DAN-2026', 'SRC-ALEX-HOMESTEAD'] + (['SRC-HOUND-2010', 'SRC-HOUND-2018'] if area == 'kennels' else [])
+        assert set(source_refs) <= source_ids, f'Unknown source reference: {asset_id}'
         asset = {'id': asset_id, 'label': plan['label'], 'area': area, 'kind': plan['kind'], 'targetIds': plan['targetIds'],
                  'path': relative, **metrics, 'status': 'GENERATED_INDEPENDENT_ART_CANDIDATE',
-                 'loreStatus': 'ORIGINAL_GAME_ADAPTATION', 'sourceRefs': ['SRC-CAMERA', 'SRC-DAN-2026', 'SRC-ALEX-HOMESTEAD'] + (['SRC-HOUND-2010', 'SRC-HOUND-2018'] if area == 'kennels' else []),
+                 'loreStatus': 'ORIGINAL_GAME_ADAPTATION', 'sourceRefs': source_refs,
                  'proposedMetres': proposed, 'dimensionsAuthority': 'PROJECT_BRIEF_NOT_CANONICAL_MEASUREMENT',
                  'purpose': plan['purpose'], 'placementNote': plan['placementNote'],
                  'pivotDraftPixels': {'x': round((box[0] + box[2]) / 2, 2), 'y': box[3], 'status': 'BOUNDING_BOX_ANCHOR_ONLY_NOT_MEASURED_GROUND_CONTACT'},
@@ -94,6 +99,10 @@ def aggregate():
             asset['proposedWorldSize'] = {k: round(proposed[k] * 100 / 2.3, 3) for k in ['width', 'depth', 'height']}
         if receipt.get('pairing'):
             asset['pairingDraft'] = receipt['pairing']
+        elif receipt.get('assembly_proposal'):
+            asset['pairingDraft'] = {'withAsset': receipt['assembly_pair_id'], **receipt['assembly_proposal']}
+        if plan.get('sourceAssetIds'):
+            asset['sourceAssetIds'] = plan['sourceAssetIds']
         assets.append(asset)
     assert len({a['sha256'] for a in assets}) == len(assets), 'Duplicate selected image bytes'
     selected_paths = {a['path'] for a in assets}
@@ -107,7 +116,8 @@ def aggregate():
                 'cameraMeasured': False, 'assets': assets, 'sources': catalogue['sources'],
                 'selectedPNGCount': len(assets), 'selectedBytes': sum(a['bytes'] for a in assets),
                 'areas': {g: sum(a['area'] == g for a in assets) for g in ['market', 'mounts', 'kennels']},
-                'scope': '17 selected independent new PNG sources. Forty inherited target rows audited; two building targets added to this delivery catalogue only.',
+                'firstDeliveryCommit': 'd4c43dce5286fbb64e41ae5fa22cb82854572a7e',
+                'scope': '25 selected independent PNG sources: 17 in the first delivery plus 8 modular components. Forty inherited target rows audited; two building targets added to this delivery catalogue only.',
                 'canonicalOneToOneClaimed': False, 'humanValidated': False, 'runtimeIntegrated': False}
     report = {'version': 'MMK-20261103', 'verifier': f'production/{PACK.name}/tools/verify-assets.py',
               'sourceIntegrity': 'PASS', 'selectedCount': len(assets), 'rgbaWithRealTransparency': len(assets),

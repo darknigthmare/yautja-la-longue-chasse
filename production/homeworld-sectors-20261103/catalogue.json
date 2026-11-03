@@ -281,6 +281,270 @@
       "generationStatus": "PLANIFIE",
       "runtimeIntegrated": false,
       "humanValidated": false
+    },
+    {
+      "loreStatus": "ADAPTATION_ORIGINALE_COMPATIBLE",
+      "canonicalOneToOne": false,
+      "generationStatus": "PLANIFIE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 2,
+      "gapClassification": "MODULAR_COMPONENT_NOT_IDENTIFIED_AS_STANDALONE",
+      "standaloneSourceClaim": "Aucune source indépendante spécifique identifiée dans la recherche ciblée ; les ensembles et sources apparentées restent conservés.",
+      "id": "HWM162-S06",
+      "area": "market",
+      "label": "Plateau d’exposition amovible",
+      "kind": "Prop — composant de présentation",
+      "targetIds": [
+        "target-v81-64-162"
+      ],
+      "complements": [
+        "HWM162-S03"
+      ],
+      "purpose": "Présenter et déplacer un petit assortiment indépendamment du grand présentoir.",
+      "placementNote": "Plateau vide indépendant à poser sur le présentoir ou un comptoir. Son appui, son échelle et l’absence de chevauchement sont à vérifier dans la scène.",
+      "expectedPath": "sprites/market/HWM162-S06-removable-display-tray.png",
+      "sourceRefs": [
+        "SRC-ALEX-HOMESTEAD",
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "visualReview": {
+        "reviewer": "inventory_integration — revue par agent",
+        "reviewedSourceSha256": "8e18a6f05375ac0179c606eb6631dc5cdab60b7d47723cf5e84088da1a7f2070",
+        "scope": "Inspection visuelle du PNG généré complet ; aucune composition en scène.",
+        "cutoffObserved": false,
+        "multipleIndependentObjectsObserved": false,
+        "readableTextObserved": false,
+        "functionMismatchObserved": false,
+        "issues": [],
+        "humanValidated": false,
+        "runtimeValidated": false,
+        "observations": "Un seul plateau vide autonome, fond continu, rebord complet et deux poignées percées solidaires. Silhouette entière, sans pied, comptoir, marchandises ou autre objet fusionné. Aucun texte lisible. La fonction de présentation et de transport manuel est lisible.",
+        "placementLimit": "L’appui sur S03 et l’échelle en scène restent à vérifier."
+      }
+    },
+    {
+      "loreStatus": "ADAPTATION_ORIGINALE_COMPATIBLE",
+      "canonicalOneToOne": false,
+      "generationStatus": "PLANIFIE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 2,
+      "gapClassification": "MODULAR_COMPONENT_NOT_IDENTIFIED_AS_STANDALONE",
+      "standaloneSourceClaim": "Aucune source indépendante spécifique identifiée dans la recherche ciblée ; les ensembles et sources apparentées restent conservés.",
+      "id": "HWM162-S07",
+      "area": "market",
+      "label": "Palette de manutention marchande",
+      "kind": "Prop — composant de stockage",
+      "targetIds": [
+        "target-v81-64-170"
+      ],
+      "complements": [
+        "HWM162-S05"
+      ],
+      "purpose": "Regrouper et déplacer un chargement entre la réserve marchande et les moyens de manutention existants.",
+      "placementNote": "Palette vide basse et autonome, sans caisse, chariot ni sol fusionné. Le gabarit du chariot V78 existant et les accès du stock doivent être contrôlés avant utilisation en scène.",
+      "expectedPath": "sprites/market/HWM162-S07-market-cargo-pallet.png",
+      "sourceRefs": [
+        "SRC-ALEX-HOMESTEAD",
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "visualReview": {
+        "reviewer": "inventory_integration — revue par agent",
+        "reviewedSourceSha256": "f196df3b9f6729887e467ed5035487fd5f4c8aac303dfe14c9901f482045a5ff",
+        "scope": "Inspection visuelle du PNG généré complet ; aucune composition en scène.",
+        "cutoffObserved": false,
+        "multipleIndependentObjectsObserved": false,
+        "readableTextObserved": false,
+        "functionMismatchObserved": false,
+        "issues": [],
+        "humanValidated": false,
+        "runtimeValidated": false,
+        "observations": "Une seule palette basse vide, plateau supérieur rigide, structure ajourée de manutention et deux anneaux solidaires. Silhouette entière, sans caisse, chariot ou sol fusionné. Aucun texte lisible. La fonction de support de chargement indépendant est lisible.",
+        "placementLimit": "Les dimensions et le raccord avec le chariot V78 existant et la réserve S05 restent à vérifier en scène."
+      }
+    },
+    {
+      "loreStatus": "ADAPTATION_ORIGINALE_COMPATIBLE",
+      "canonicalOneToOne": false,
+      "generationStatus": "PLANIFIE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 2,
+      "gapClassification": "MODULAR_COMPONENT_NOT_IDENTIFIED_AS_STANDALONE",
+      "standaloneSourceClaim": "Aucune source indépendante spécifique identifiée dans la recherche ciblée ; les ensembles et sources apparentées restent conservés.",
+      "id": "HWM162-M07",
+      "area": "mounts",
+      "label": "Angle renforcé de grand enclos",
+      "kind": "Module — raccord d’angle",
+      "targetIds": [
+        "target-v81-72-287"
+      ],
+      "complements": [
+        "HWM162-M04"
+      ],
+      "purpose": "Former un retour d’enclos cohérent avec la barrière pour grands animaux.",
+      "placementNote": "Module d’angle lourd destiné à prolonger M04. Géométrie, hauteur des traverses, recouvrement des poteaux et collisions restent à vérifier en scène ; les angles urbains existants ne sont pas remplacés.",
+      "expectedPath": "sprites/mounts/HWM162-M07-corral-corner.png",
+      "sourceRefs": [
+        "SRC-DAN-2026",
+        "SRC-ALEX-HOMESTEAD",
+        "SRC-V81",
+        "SRC-CAMERA"
+      ]
+    },
+    {
+      "loreStatus": "ADAPTATION_ORIGINALE_COMPATIBLE",
+      "canonicalOneToOne": false,
+      "generationStatus": "PLANIFIE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 2,
+      "gapClassification": "MODULAR_COMPONENT_NOT_IDENTIFIED_AS_STANDALONE",
+      "standaloneSourceClaim": "Aucune source indépendante spécifique identifiée dans la recherche ciblée ; les ensembles et sources apparentées restent conservés.",
+      "id": "HWM162-M08",
+      "area": "mounts",
+      "label": "Cadre ouvert de portail des montures",
+      "kind": "Module — passage ouvert",
+      "targetIds": [
+        "target-v81-72-287"
+      ],
+      "complements": [
+        "HWM162-M04",
+        "HWM162-M07"
+      ],
+      "purpose": "Réserver un passage large dans le grand enclos sans fusionner le battant à la structure.",
+      "placementNote": "Cadre indépendant ouvert, assorti à M04. Associer le battant M09 pour proposer une fermeture. Le passage de l’animal choisi, le raccord aux barrières et les collisions ne sont pas testés en scène.",
+      "expectedPath": "sprites/mounts/HWM162-M08-open-gateway.png",
+      "sourceRefs": [
+        "SRC-DAN-2026",
+        "SRC-ALEX-HOMESTEAD",
+        "SRC-V81",
+        "SRC-CAMERA"
+      ]
+    },
+    {
+      "loreStatus": "ADAPTATION_ORIGINALE_COMPATIBLE",
+      "canonicalOneToOne": false,
+      "generationStatus": "PLANIFIE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 2,
+      "gapClassification": "MODULAR_COMPONENT_NOT_IDENTIFIED_AS_STANDALONE",
+      "standaloneSourceClaim": "Aucune source indépendante spécifique identifiée dans la recherche ciblée ; les ensembles et sources apparentées restent conservés.",
+      "id": "HWM162-M09",
+      "area": "mounts",
+      "label": "Battant indépendant de portail des montures",
+      "kind": "Prop — état fermé",
+      "targetIds": [
+        "target-v81-72-287"
+      ],
+      "complements": [
+        "HWM162-M08"
+      ],
+      "purpose": "Compléter le cadre ouvert M08 par un panneau mobile indépendant.",
+      "placementNote": "Battant sans piliers à superposer au cadre M08. Alignement, échelle, pivot et collisions restent à vérifier en scène. Ce fichier ne fournit pas à lui seul une porte animée fonctionnelle.",
+      "expectedPath": "sprites/mounts/HWM162-M09-sliding-gate-leaf.png",
+      "sourceRefs": [
+        "SRC-DAN-2026",
+        "SRC-ALEX-HOMESTEAD",
+        "SRC-V81",
+        "SRC-CAMERA"
+      ]
+    },
+    {
+      "loreStatus": "ADAPTATION_ORIGINALE_COMPATIBLE",
+      "canonicalOneToOne": false,
+      "generationStatus": "PLANIFIE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 2,
+      "gapClassification": "MODULAR_COMPONENT_NOT_IDENTIFIED_AS_STANDALONE",
+      "standaloneSourceClaim": "Aucune source indépendante spécifique identifiée dans la recherche ciblée ; les ensembles et sources apparentées restent conservés.",
+      "id": "HWM162-K07",
+      "area": "kennels",
+      "label": "Laisse de conduite indépendante",
+      "kind": "Prop — accessoire de dressage",
+      "targetIds": [
+        "target-v81-71-274"
+      ],
+      "complements": [
+        "HWM162-K03"
+      ],
+      "purpose": "Rendre la laisse disponible comme objet autonome de préparation et de conduite.",
+      "placementNote": "Une seule laisse, sans râtelier ni animal fusionné. Les positions rangée, portée ou reliée à un animal demandent des ancrages distincts à vérifier en scène.",
+      "expectedPath": "sprites/kennels/HWM162-K07-handler-lead.png",
+      "sourceRefs": [
+        "SRC-HOUND-2010",
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetIds": [
+        "HWM162-K03"
+      ]
+    },
+    {
+      "loreStatus": "ADAPTATION_ORIGINALE_COMPATIBLE",
+      "canonicalOneToOne": false,
+      "generationStatus": "PLANIFIE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 2,
+      "gapClassification": "MODULAR_COMPONENT_NOT_IDENTIFIED_AS_STANDALONE",
+      "standaloneSourceClaim": "Aucune source indépendante spécifique identifiée dans la recherche ciblée ; les ensembles et sources apparentées restent conservés.",
+      "id": "HWM162-K08",
+      "area": "kennels",
+      "label": "Leurre de dressage indépendant",
+      "kind": "Prop — accessoire de dressage",
+      "targetIds": [
+        "target-v81-71-274"
+      ],
+      "complements": [
+        "HWM162-K03"
+      ],
+      "purpose": "Placer et déplacer un leurre d’exercice indépendamment du râtelier.",
+      "placementNote": "Un seul leurre tressé ou gainé, avec sa prise solidaire, sans rack, animal ni décor fusionné. Aucun comportement de dressage jouable n’est créé par le sprite.",
+      "expectedPath": "sprites/kennels/HWM162-K08-woven-training-lure.png",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetIds": [
+        "HWM162-K03"
+      ]
+    },
+    {
+      "loreStatus": "ADAPTATION_ORIGINALE_COMPATIBLE",
+      "canonicalOneToOne": false,
+      "generationStatus": "PLANIFIE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 2,
+      "gapClassification": "MODULAR_COMPONENT_NOT_IDENTIFIED_AS_STANDALONE",
+      "standaloneSourceClaim": "Aucune source indépendante spécifique identifiée dans la recherche ciblée ; les ensembles et sources apparentées restent conservés.",
+      "id": "HWM162-K09",
+      "area": "kennels",
+      "label": "Collier de conduite ajustable",
+      "kind": "Prop — accessoire de conduite",
+      "targetIds": [
+        "target-v81-71-274"
+      ],
+      "complements": [
+        "HWM162-K03",
+        "HWM162-K07"
+      ],
+      "purpose": "Compléter le matériel de conduite par un collier séparé ajustable au chien choisi.",
+      "placementNote": "Collier vide indépendant, adaptation originale du projet. Aucun modèle de collier canonique ni compatibilité universelle avec les chiens de 2010 et de 2018 ne sont affirmés ; morphologie et ancrage de la laisse à vérifier.",
+      "expectedPath": "sprites/kennels/HWM162-K09-adjustable-collar.png",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetIds": [
+        "HWM162-K03"
+      ]
     }
   ],
   "inheritedTargets": [
@@ -1373,11 +1637,11 @@
     },
     {
       "id": "SRC-HOUND-2010",
-      "title": "Hot Toys / Sideshow — Tracker, Predators (2010)",
-      "url": "https://www.sideshow.com/collectibles/predator-tracker-hot-toys-901303",
-      "nature": "Produit officiel sous licence",
-      "scope": "Référence du Tracker et du chien de Predators fourni avec la figurine.",
-      "limit": "La figurine ne prouve ni un chenil Homeworld ni les dimensions réelles du bâtiment."
+      "title": "Hot Toys Japan — Tracker Predator avec Hound, Predators (2010)",
+      "url": "https://www.hottoys.jp/item/view/100001667",
+      "nature": "Fiche officielle du fabricant, produit sous licence",
+      "scope": "La fiche du Tracker avec son chien mentionne explicitement une chaîne parmi les accessoires. L’ensemble de conduite chaîne/poignée sert de référence à K07.",
+      "limit": "La fiche ne prouve ni un chenil Homeworld ni un modèle canonique de collier. Les détails, dimensions et attaches de K07 restent une adaptation du projet, sans certification 1:1."
     },
     {
       "id": "SRC-HOUND-2018",
@@ -1446,7 +1710,7 @@
       "placementNote": "Entrée et sortie dégagées. Les comptoirs restent indépendants du bâtiment.",
       "loreStatus": "ORIGINAL_GAME_ADAPTATION",
       "canonicalOneToOne": false,
-      "generationStatus": "PLANIFIE",
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
       "runtimeIntegrated": false,
       "humanValidated": false,
       "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S01-market-hall-v2.png",
@@ -1584,7 +1848,7 @@
       "placementNote": "Face de prise accessible sur toute la longueur. Réserve séparée derrière.",
       "loreStatus": "ORIGINAL_GAME_ADAPTATION",
       "canonicalOneToOne": false,
-      "generationStatus": "PLANIFIE",
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
       "runtimeIntegrated": false,
       "humanValidated": false,
       "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S02-long-market-stall.png",
@@ -1721,7 +1985,7 @@
       "placementNote": "Laisser un espace client devant le présentoir et un accès latéral à l’artisan chargé du matériel.",
       "loreStatus": "ORIGINAL_GAME_ADAPTATION",
       "canonicalOneToOne": false,
-      "generationStatus": "PLANIFIE",
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
       "runtimeIntegrated": false,
       "humanValidated": false,
       "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S03-merchant-display.png",
@@ -1859,7 +2123,7 @@
       "placementNote": "La fonction d’exposition ne crée pas une règle canonique de vente des trophées.",
       "loreStatus": "ORIGINAL_GAME_ADAPTATION",
       "canonicalOneToOne": false,
-      "generationStatus": "PLANIFIE",
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
       "runtimeIntegrated": false,
       "humanValidated": false,
       "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S04-trophy-platform.png",
@@ -1997,7 +2261,7 @@
       "placementNote": "Prévoir accès de manutention et fermeture. Aucun inventaire interactif ajouté par cette image.",
       "loreStatus": "ORIGINAL_GAME_ADAPTATION",
       "canonicalOneToOne": false,
-      "generationStatus": "PLANIFIE",
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
       "runtimeIntegrated": false,
       "humanValidated": false,
       "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S05-stock-shelter.png",
@@ -2135,7 +2399,7 @@
       "placementNote": "Dimensionner les seuils sur l’animal choisi. Le bâtiment est une adaptation originale.",
       "loreStatus": "ORIGINAL_GAME_ADAPTATION",
       "canonicalOneToOne": false,
-      "generationStatus": "PLANIFIE",
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
       "runtimeIntegrated": false,
       "humanValidated": false,
       "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M01-open-stable.png",
@@ -2273,7 +2537,7 @@
       "placementNote": "Conserver l’accès du soigneur et la place de rotation de la monture.",
       "loreStatus": "ORIGINAL_GAME_ADAPTATION",
       "canonicalOneToOne": false,
-      "generationStatus": "PLANIFIE",
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
       "runtimeIntegrated": false,
       "humanValidated": false,
       "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M02-tether-station.png",
@@ -2404,7 +2668,7 @@
       "placementNote": "Adapter la hauteur à la selle et réserver la zone d’approche de l’animal.",
       "loreStatus": "ORIGINAL_GAME_ADAPTATION",
       "canonicalOneToOne": false,
-      "generationStatus": "PLANIFIE",
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
       "runtimeIntegrated": false,
       "humanValidated": false,
       "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M03-mounting-platform.png",
@@ -2541,7 +2805,7 @@
       "placementNote": "Les raccords et la collision doivent être mesurés avant répétition en jeu.",
       "loreStatus": "ORIGINAL_GAME_ADAPTATION",
       "canonicalOneToOne": false,
-      "generationStatus": "PLANIFIE",
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
       "runtimeIntegrated": false,
       "humanValidated": false,
       "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M04-corral-fence.png",
@@ -2674,7 +2938,7 @@
       "placementNote": "L’aire complète se compose avec du sol libre. Une image ne prouve pas le dressage jouable.",
       "loreStatus": "ORIGINAL_GAME_ADAPTATION",
       "canonicalOneToOne": false,
-      "generationStatus": "PLANIFIE",
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
       "runtimeIntegrated": false,
       "humanValidated": false,
       "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M05-training-hurdle.png",
@@ -2807,7 +3071,7 @@
       "placementNote": "Conserver deux côtés de travail et une issue pour l’animal.",
       "loreStatus": "ORIGINAL_GAME_ADAPTATION",
       "canonicalOneToOne": false,
-      "generationStatus": "PLANIFIE",
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
       "runtimeIntegrated": false,
       "humanValidated": false,
       "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M06-fauna-care-workstation.png",
@@ -2945,7 +3209,7 @@
       "placementNote": "Séparer les types de chiens et réserver un couloir de service du maître de meute.",
       "loreStatus": "ORIGINAL_GAME_ADAPTATION",
       "canonicalOneToOne": false,
-      "generationStatus": "PLANIFIE",
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
       "runtimeIntegrated": false,
       "humanValidated": false,
       "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png",
@@ -3086,7 +3350,7 @@
       "placementNote": "Portique ouvert sans battant. Le battant séparé HWM162-K06 complète le passage ; alignement, échelle et collision à vérifier dans la scène.",
       "loreStatus": "ORIGINAL_GAME_ADAPTATION",
       "canonicalOneToOne": false,
-      "generationStatus": "PLANIFIE",
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
       "runtimeIntegrated": false,
       "humanValidated": false,
       "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K02-handling-gate.png",
@@ -3223,7 +3487,7 @@
       "placementNote": "Positionner côté soigneur et hors de la course de la meute.",
       "loreStatus": "ORIGINAL_GAME_ADAPTATION",
       "canonicalOneToOne": false,
-      "generationStatus": "PLANIFIE",
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
       "runtimeIntegrated": false,
       "humanValidated": false,
       "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K03-training-rack.png",
@@ -3364,7 +3628,7 @@
       "placementNote": "Accès indépendant du passage animal. Garde-corps et vue sur l’enclos à vérifier en scène.",
       "loreStatus": "ORIGINAL_GAME_ADAPTATION",
       "canonicalOneToOne": false,
-      "generationStatus": "PLANIFIE",
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
       "runtimeIntegrated": false,
       "humanValidated": false,
       "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K04-keeper-platform.png",
@@ -3502,7 +3766,7 @@
       "placementNote": "Adapter à la morphologie choisie. La fosse et son drainage sont des créations du projet.",
       "loreStatus": "ORIGINAL_GAME_ADAPTATION",
       "canonicalOneToOne": false,
-      "generationStatus": "PLANIFIE",
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
       "runtimeIntegrated": false,
       "humanValidated": false,
       "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K05-resting-basin.png",
@@ -3638,7 +3902,7 @@
       "placementNote": "À superposer au portique HWM162-K02. Placement, pivot, échelle, raccords et état de collision restent à vérifier en scène.",
       "loreStatus": "ORIGINAL_GAME_ADAPTATION",
       "canonicalOneToOne": false,
-      "generationStatus": "PLANIFIE",
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
       "runtimeIntegrated": false,
       "humanValidated": false,
       "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K06-sliding-mesh-panel.png",
@@ -3788,16 +4052,1220 @@
       "marginAlpha0": 16,
       "marginAlpha24": 210,
       "proposedWorldSize": {}
+    },
+    {
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 2,
+      "gapClassification": "MODULAR_COMPONENT_NOT_IDENTIFIED_AS_STANDALONE",
+      "standaloneSourceClaim": "Aucune source indépendante spécifique identifiée dans la recherche ciblée ; les ensembles et sources apparentées restent conservés.",
+      "id": "HWM162-S06",
+      "area": "market",
+      "label": "Plateau d’exposition amovible",
+      "kind": "Prop — composant de présentation",
+      "targetIds": [
+        "target-v81-64-162"
+      ],
+      "complements": [
+        "HWM162-S03"
+      ],
+      "purpose": "Présenter et déplacer un petit assortiment indépendamment du grand présentoir.",
+      "placementNote": "Plateau vide indépendant à poser sur le présentoir ou un comptoir. Son appui, son échelle et l’absence de chevauchement sont à vérifier dans la scène.",
+      "expectedPath": "sprites/market/HWM162-S06-removable-display-tray.png",
+      "sourceRefs": [
+        "SRC-ALEX-HOMESTEAD",
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "visualReview": {
+        "reviewer": "inventory_integration — revue par agent",
+        "reviewedSourceSha256": "8e18a6f05375ac0179c606eb6631dc5cdab60b7d47723cf5e84088da1a7f2070",
+        "scope": "Inspection visuelle du PNG généré complet ; aucune composition en scène.",
+        "cutoffObserved": false,
+        "multipleIndependentObjectsObserved": false,
+        "readableTextObserved": false,
+        "functionMismatchObserved": false,
+        "issues": [],
+        "humanValidated": false,
+        "runtimeValidated": false,
+        "observations": "Un seul plateau vide autonome, fond continu, rebord complet et deux poignées percées solidaires. Silhouette entière, sans pied, comptoir, marchandises ou autre objet fusionné. Aucun texte lisible. La fonction de présentation et de transport manuel est lisible.",
+        "placementLimit": "L’appui sur S03 et l’échelle en scène restent à vérifier."
+      },
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S06-removable-display-tray.png",
+      "width": 2172,
+      "height": 724,
+      "mode": "RGBA",
+      "bytes": 1387042,
+      "sha256": "8e18a6f05375ac0179c606eb6631dc5cdab60b7d47723cf5e84088da1a7f2070",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 926911,
+      "transparentRatio": 0.58944006,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            30,
+            2102,
+            724
+          ],
+          "margins": [
+            0,
+            30,
+            70,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 645617
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            227,
+            161,
+            1945,
+            584
+          ],
+          "margins": [
+            227,
+            161,
+            227,
+            140
+          ],
+          "minMargin": 140,
+          "pixels": 631984
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            228,
+            161,
+            1945,
+            583
+          ],
+          "margins": [
+            228,
+            161,
+            227,
+            141
+          ],
+          "minMargin": 141,
+          "pixels": 631171
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            228,
+            162,
+            1945,
+            583
+          ],
+          "margins": [
+            228,
+            162,
+            227,
+            141
+          ],
+          "minMargin": 141,
+          "pixels": 627912
+        }
+      },
+      "edgeAlphaMax": 1,
+      "strictClearMargin": false,
+      "mainSilhouetteInsideCanvas": true,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "proposedMetres": {
+        "width": 1.15,
+        "depth": 0.35,
+        "height": 0.12
+      },
+      "dimensionsAuthority": "PROJECT_BRIEF_NOT_CANONICAL_MEASUREMENT",
+      "pivotDraftPixels": {
+        "x": 1086.5,
+        "y": 583,
+        "status": "BOUNDING_BOX_ANCHOR_ONLY_NOT_MEASURED_GROUND_CONTACT"
+      },
+      "receipt": "production/homeworld-sectors-20261103/receipts/market.json",
+      "notes": [
+        "Plateau vide indépendant à poser sur le présentoir ou un comptoir. Son appui, son échelle et l’absence de chevauchement sont à vérifier dans la scène.",
+        "Source PNG selected after generation; no scripted image cleanup, resizing or padding.",
+        "A few alpha 1 pixels can reach the canvas edges; alpha > 24 bounds describe the main silhouette only.",
+        "Camera 0°/35° and metre dimensions are the brief, not a measured 3D or canonical certification."
+      ],
+      "canonicalOneToOneClaimed": false,
+      "cameraMeasured": false,
+      "scaleValidatedInGame": false,
+      "proposedWorldSize": {
+        "width": 50,
+        "depth": 15.217,
+        "height": 5.217
+      },
+      "localPath": "sprites/market/HWM162-S06-removable-display-tray.png",
+      "exists": true,
+      "hasTransparency": true,
+      "minimumVisibleMargin": 0,
+      "marginAlpha0": 0,
+      "marginAlpha24": 141
+    },
+    {
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 2,
+      "gapClassification": "MODULAR_COMPONENT_NOT_IDENTIFIED_AS_STANDALONE",
+      "standaloneSourceClaim": "Aucune source indépendante spécifique identifiée dans la recherche ciblée ; les ensembles et sources apparentées restent conservés.",
+      "id": "HWM162-S07",
+      "area": "market",
+      "label": "Palette de manutention marchande",
+      "kind": "Prop — composant de stockage",
+      "targetIds": [
+        "target-v81-64-170"
+      ],
+      "complements": [
+        "HWM162-S05"
+      ],
+      "purpose": "Regrouper et déplacer un chargement entre la réserve marchande et les moyens de manutention existants.",
+      "placementNote": "Palette vide basse et autonome, sans caisse, chariot ni sol fusionné. Le gabarit du chariot V78 existant et les accès du stock doivent être contrôlés avant utilisation en scène.",
+      "expectedPath": "sprites/market/HWM162-S07-market-cargo-pallet.png",
+      "sourceRefs": [
+        "SRC-ALEX-HOMESTEAD",
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "visualReview": {
+        "reviewer": "inventory_integration — revue par agent",
+        "reviewedSourceSha256": "f196df3b9f6729887e467ed5035487fd5f4c8aac303dfe14c9901f482045a5ff",
+        "scope": "Inspection visuelle du PNG généré complet ; aucune composition en scène.",
+        "cutoffObserved": false,
+        "multipleIndependentObjectsObserved": false,
+        "readableTextObserved": false,
+        "functionMismatchObserved": false,
+        "issues": [],
+        "humanValidated": false,
+        "runtimeValidated": false,
+        "observations": "Une seule palette basse vide, plateau supérieur rigide, structure ajourée de manutention et deux anneaux solidaires. Silhouette entière, sans caisse, chariot ou sol fusionné. Aucun texte lisible. La fonction de support de chargement indépendant est lisible.",
+        "placementLimit": "Les dimensions et le raccord avec le chariot V78 existant et la réserve S05 restent à vérifier en scène."
+      },
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S07-market-cargo-pallet.png",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGBA",
+      "bytes": 1734429,
+      "sha256": "f196df3b9f6729887e467ed5035487fd5f4c8aac303dfe14c9901f482045a5ff",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 790440,
+      "transparentRatio": 0.50233296,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            0,
+            1760,
+            887
+          ],
+          "margins": [
+            0,
+            0,
+            14,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 783098
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            112,
+            161,
+            1662,
+            728
+          ],
+          "margins": [
+            112,
+            161,
+            112,
+            159
+          ],
+          "minMargin": 112,
+          "pixels": 749403
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            113,
+            161,
+            1662,
+            728
+          ],
+          "margins": [
+            113,
+            161,
+            112,
+            159
+          ],
+          "minMargin": 112,
+          "pixels": 747400
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            113,
+            162,
+            1661,
+            727
+          ],
+          "margins": [
+            113,
+            162,
+            113,
+            160
+          ],
+          "minMargin": 113,
+          "pixels": 744110
+        }
+      },
+      "edgeAlphaMax": 1,
+      "strictClearMargin": false,
+      "mainSilhouetteInsideCanvas": true,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "proposedMetres": {
+        "width": 1.8,
+        "depth": 1.2,
+        "height": 0.28
+      },
+      "dimensionsAuthority": "PROJECT_BRIEF_NOT_CANONICAL_MEASUREMENT",
+      "pivotDraftPixels": {
+        "x": 887.5,
+        "y": 728,
+        "status": "BOUNDING_BOX_ANCHOR_ONLY_NOT_MEASURED_GROUND_CONTACT"
+      },
+      "receipt": "production/homeworld-sectors-20261103/receipts/market.json",
+      "notes": [
+        "Palette vide basse et autonome, sans caisse, chariot ni sol fusionné. Le gabarit du chariot V78 existant et les accès du stock doivent être contrôlés avant utilisation en scène.",
+        "Source PNG selected after generation; no scripted image cleanup, resizing or padding.",
+        "A few alpha 1 pixels can reach the canvas edges; alpha > 24 bounds describe the main silhouette only.",
+        "Camera 0°/35° and metre dimensions are the brief, not a measured 3D or canonical certification."
+      ],
+      "canonicalOneToOneClaimed": false,
+      "cameraMeasured": false,
+      "scaleValidatedInGame": false,
+      "proposedWorldSize": {
+        "width": 78.261,
+        "depth": 52.174,
+        "height": 12.174
+      },
+      "localPath": "sprites/market/HWM162-S07-market-cargo-pallet.png",
+      "exists": true,
+      "hasTransparency": true,
+      "minimumVisibleMargin": 0,
+      "marginAlpha0": 0,
+      "marginAlpha24": 112
+    },
+    {
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 2,
+      "gapClassification": "MODULAR_COMPONENT_NOT_IDENTIFIED_AS_STANDALONE",
+      "standaloneSourceClaim": "Aucune source indépendante spécifique identifiée dans la recherche ciblée ; les ensembles et sources apparentées restent conservés.",
+      "id": "HWM162-M07",
+      "area": "mounts",
+      "label": "Angle renforcé de grand enclos",
+      "kind": "Module — raccord d’angle",
+      "targetIds": [
+        "target-v81-72-287"
+      ],
+      "complements": [
+        "HWM162-M04"
+      ],
+      "purpose": "Former un retour d’enclos cohérent avec la barrière pour grands animaux.",
+      "placementNote": "Module d’angle lourd destiné à prolonger M04. Géométrie, hauteur des traverses, recouvrement des poteaux et collisions restent à vérifier en scène ; les angles urbains existants ne sont pas remplacés.",
+      "expectedPath": "sprites/mounts/HWM162-M07-corral-corner.png",
+      "sourceRefs": [
+        "SRC-DAN-2026",
+        "SRC-ALEX-HOMESTEAD",
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M07-corral-corner.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 1690323,
+      "sha256": "dded60e7e63162ccc49821c124e11d501d317aa04f643663df7b553a3887dd0f",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 1160800,
+      "transparentRatio": 0.73801676,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            0,
+            1518,
+            1024
+          ],
+          "margins": [
+            0,
+            0,
+            18,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 412064
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            154,
+            228,
+            1382,
+            889
+          ],
+          "margins": [
+            154,
+            228,
+            154,
+            135
+          ],
+          "minMargin": 135,
+          "pixels": 376912
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            154,
+            230,
+            1382,
+            888
+          ],
+          "margins": [
+            154,
+            230,
+            154,
+            136
+          ],
+          "minMargin": 136,
+          "pixels": 374876
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            155,
+            231,
+            1382,
+            888
+          ],
+          "margins": [
+            155,
+            231,
+            154,
+            136
+          ],
+          "minMargin": 136,
+          "pixels": 369223
+        }
+      },
+      "edgeAlphaMax": 1,
+      "strictClearMargin": false,
+      "mainSilhouetteInsideCanvas": true,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "proposedMetres": {
+        "arm_length": 3,
+        "height": 2.6
+      },
+      "dimensionsAuthority": "PROJECT_BRIEF_NOT_CANONICAL_MEASUREMENT",
+      "pivotDraftPixels": {
+        "x": 768,
+        "y": 888,
+        "status": "BOUNDING_BOX_ANCHOR_ONLY_NOT_MEASURED_GROUND_CONTACT"
+      },
+      "receipt": "production/homeworld-sectors-20261103/receipts/mounts.json",
+      "notes": [
+        "Module d’angle lourd destiné à prolonger M04. Géométrie, hauteur des traverses, recouvrement des poteaux et collisions restent à vérifier en scène ; les angles urbains existants ne sont pas remplacés.",
+        "Source PNG selected after generation; no scripted image cleanup, resizing or padding.",
+        "A few alpha 1 pixels can reach the canvas edges; alpha > 24 bounds describe the main silhouette only.",
+        "Camera 0°/35° and metre dimensions are the brief, not a measured 3D or canonical certification.",
+        "One connected corner structure with two arms, shared corner post and two terminal posts. All three feet and rail ends visible. The 90-degree ground-plan angle and 35-degree camera are requested design values, not calibrated geometric measurements. No resizing, padding or alpha cleanup."
+      ],
+      "canonicalOneToOneClaimed": false,
+      "cameraMeasured": false,
+      "scaleValidatedInGame": false,
+      "localPath": "sprites/mounts/HWM162-M07-corral-corner.png",
+      "exists": true,
+      "hasTransparency": true,
+      "minimumVisibleMargin": 0,
+      "marginAlpha0": 0,
+      "marginAlpha24": 136,
+      "proposedWorldSize": {}
+    },
+    {
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 2,
+      "gapClassification": "MODULAR_COMPONENT_NOT_IDENTIFIED_AS_STANDALONE",
+      "standaloneSourceClaim": "Aucune source indépendante spécifique identifiée dans la recherche ciblée ; les ensembles et sources apparentées restent conservés.",
+      "id": "HWM162-M08",
+      "area": "mounts",
+      "label": "Cadre ouvert de portail des montures",
+      "kind": "Module — passage ouvert",
+      "targetIds": [
+        "target-v81-72-287"
+      ],
+      "complements": [
+        "HWM162-M04",
+        "HWM162-M07"
+      ],
+      "purpose": "Réserver un passage large dans le grand enclos sans fusionner le battant à la structure.",
+      "placementNote": "Cadre indépendant ouvert, assorti à M04. Associer le battant M09 pour proposer une fermeture. Le passage de l’animal choisi, le raccord aux barrières et les collisions ne sont pas testés en scène.",
+      "expectedPath": "sprites/mounts/HWM162-M08-open-gateway.png",
+      "sourceRefs": [
+        "SRC-DAN-2026",
+        "SRC-ALEX-HOMESTEAD",
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M08-open-gateway.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 1816504,
+      "sha256": "cd982603d1d7c51a2a88ad476fa59bfd58336f23cc30cc7ebb517917b81b212d",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 1098472,
+      "transparentRatio": 0.69838969,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            0,
+            1506,
+            1024
+          ],
+          "margins": [
+            0,
+            0,
+            30,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 474392
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            68,
+            127,
+            1468,
+            921
+          ],
+          "margins": [
+            68,
+            127,
+            68,
+            103
+          ],
+          "minMargin": 68,
+          "pixels": 448796
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            69,
+            127,
+            1468,
+            920
+          ],
+          "margins": [
+            69,
+            127,
+            68,
+            104
+          ],
+          "minMargin": 68,
+          "pixels": 447611
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            69,
+            127,
+            1467,
+            920
+          ],
+          "margins": [
+            69,
+            127,
+            69,
+            104
+          ],
+          "minMargin": 69,
+          "pixels": 444884
+        }
+      },
+      "edgeAlphaMax": 1,
+      "strictClearMargin": false,
+      "mainSilhouetteInsideCanvas": true,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "proposedMetres": {
+        "clear_passage_width": 5,
+        "clear_passage_height": 4,
+        "overall_width": 7.2,
+        "overall_height": 5.2
+      },
+      "dimensionsAuthority": "PROJECT_BRIEF_NOT_CANONICAL_MEASUREMENT",
+      "pivotDraftPixels": {
+        "x": 768.5,
+        "y": 920,
+        "status": "BOUNDING_BOX_ANCHOR_ONLY_NOT_MEASURED_GROUND_CONTACT"
+      },
+      "receipt": "production/homeworld-sectors-20261103/receipts/mounts.json",
+      "notes": [
+        "Cadre indépendant ouvert, assorti à M04. Associer le battant M09 pour proposer une fermeture. Le passage de l’animal choisi, le raccord aux barrières et les collisions ne sont pas testés en scène.",
+        "Source PNG selected after generation; no scripted image cleanup, resizing or padding.",
+        "A few alpha 1 pixels can reach the canvas edges; alpha > 24 bounds describe the main silhouette only.",
+        "Camera 0°/35° and metre dimensions are the brief, not a measured 3D or canonical certification.",
+        "One open connected gateway frame with two full pylons and overhead slide track. No gate leaf or crossbar blocks the aperture. Clear center sampled at alpha0 or1. All feet visible; horizontal margins about69px are less than requested but no solid-object crop. Dimensions and 35-degree camera are proposed, not calibrated. Separate M09 leaf alignment remains a composition proposal until runtime testing.",
+        "Visible margin is below the requested 80px on at least one side; the main silhouette remains inside the image."
+      ],
+      "canonicalOneToOneClaimed": false,
+      "cameraMeasured": false,
+      "scaleValidatedInGame": false,
+      "localPath": "sprites/mounts/HWM162-M08-open-gateway.png",
+      "exists": true,
+      "hasTransparency": true,
+      "minimumVisibleMargin": 0,
+      "marginAlpha0": 0,
+      "marginAlpha24": 68,
+      "proposedWorldSize": {}
+    },
+    {
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 2,
+      "gapClassification": "MODULAR_COMPONENT_NOT_IDENTIFIED_AS_STANDALONE",
+      "standaloneSourceClaim": "Aucune source indépendante spécifique identifiée dans la recherche ciblée ; les ensembles et sources apparentées restent conservés.",
+      "id": "HWM162-M09",
+      "area": "mounts",
+      "label": "Battant indépendant de portail des montures",
+      "kind": "Prop — état fermé",
+      "targetIds": [
+        "target-v81-72-287"
+      ],
+      "complements": [
+        "HWM162-M08"
+      ],
+      "purpose": "Compléter le cadre ouvert M08 par un panneau mobile indépendant.",
+      "placementNote": "Battant sans piliers à superposer au cadre M08. Alignement, échelle, pivot et collisions restent à vérifier en scène. Ce fichier ne fournit pas à lui seul une porte animée fonctionnelle.",
+      "expectedPath": "sprites/mounts/HWM162-M09-sliding-gate-leaf.png",
+      "sourceRefs": [
+        "SRC-DAN-2026",
+        "SRC-ALEX-HOMESTEAD",
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M09-sliding-gate-leaf.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 1490374,
+      "sha256": "455a9907fe96b5a73497923ae4b213fc9206aefae333638e6b420493985171f9",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 1263491,
+      "transparentRatio": 0.80330594,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            33,
+            10,
+            1496,
+            1024
+          ],
+          "margins": [
+            33,
+            10,
+            40,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 309373
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            330,
+            281,
+            1205,
+            876
+          ],
+          "margins": [
+            330,
+            281,
+            331,
+            148
+          ],
+          "minMargin": 148,
+          "pixels": 258574
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            331,
+            281,
+            1205,
+            876
+          ],
+          "margins": [
+            331,
+            281,
+            331,
+            148
+          ],
+          "minMargin": 148,
+          "pixels": 255829
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            331,
+            281,
+            1204,
+            875
+          ],
+          "margins": [
+            331,
+            281,
+            332,
+            149
+          ],
+          "minMargin": 149,
+          "pixels": 249621
+        }
+      },
+      "edgeAlphaMax": 1,
+      "strictClearMargin": false,
+      "mainSilhouetteInsideCanvas": true,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "proposedMetres": {
+        "width": 5.1,
+        "height": 4,
+        "excludes": "top rollers"
+      },
+      "dimensionsAuthority": "PROJECT_BRIEF_NOT_CANONICAL_MEASUREMENT",
+      "pivotDraftPixels": {
+        "x": 768,
+        "y": 876,
+        "status": "BOUNDING_BOX_ANCHOR_ONLY_NOT_MEASURED_GROUND_CONTACT"
+      },
+      "receipt": "production/homeworld-sectors-20261103/receipts/mounts.json",
+      "notes": [
+        "Battant sans piliers à superposer au cadre M08. Alignement, échelle, pivot et collisions restent à vérifier en scène. Ce fichier ne fournit pas à lui seul une porte animée fonctionnelle.",
+        "Source PNG selected after generation; no scripted image cleanup, resizing or padding.",
+        "A few alpha 1 pixels can reach the canvas edges; alpha > 24 bounds describe the main silhouette only.",
+        "Camera 0°/35° and metre dimensions are the brief, not a measured 3D or canonical certification.",
+        "One independent thin barred sliding leaf with two attached top rollers, perimeter and internal braces; no gateway pylons, lintel or feet. The openings have real native alpha. Same 1536x1024 canvas as M08; all leaf parts visible. Body starts around y330 and ends y876; M08 aperture begins y320 and proposed ground is y919. Native overlay therefore leaves about 43px ground clearance and a small top clearance. Width overlaps each pylon by about 27px. This is a proposed modular pairing, not verified pixel-perfect closure or tested in-game motion. No resizing, padding or alpha cleanup."
+      ],
+      "canonicalOneToOneClaimed": false,
+      "cameraMeasured": false,
+      "scaleValidatedInGame": false,
+      "pairingDraft": {
+        "withAsset": "HWM162-M08",
+        "layer_order_back_to_front": [
+          "HWM162-M09",
+          "HWM162-M08"
+        ],
+        "translation_px": [
+          0,
+          0
+        ],
+        "scale": 1,
+        "leaf_body_y_approx": [
+          330,
+          876
+        ],
+        "frame_opening_top_y_approx": 320,
+        "frame_ground_y_approx": 919,
+        "ground_clearance_px_approx": 43,
+        "top_clearance_px_approx": 10,
+        "pixel_perfect_fit_verified": false,
+        "requires": "Art/runtime review of clearances, depth ordering and sliding travel before integration."
+      },
+      "localPath": "sprites/mounts/HWM162-M09-sliding-gate-leaf.png",
+      "exists": true,
+      "hasTransparency": true,
+      "minimumVisibleMargin": 0,
+      "marginAlpha0": 0,
+      "marginAlpha24": 148,
+      "proposedWorldSize": {}
+    },
+    {
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 2,
+      "gapClassification": "MODULAR_COMPONENT_NOT_IDENTIFIED_AS_STANDALONE",
+      "standaloneSourceClaim": "Aucune source indépendante spécifique identifiée dans la recherche ciblée ; les ensembles et sources apparentées restent conservés.",
+      "id": "HWM162-K07",
+      "area": "kennels",
+      "label": "Laisse de conduite indépendante",
+      "kind": "Prop — accessoire de dressage",
+      "targetIds": [
+        "target-v81-71-274"
+      ],
+      "complements": [
+        "HWM162-K03"
+      ],
+      "purpose": "Rendre la laisse disponible comme objet autonome de préparation et de conduite.",
+      "placementNote": "Une seule laisse, sans râtelier ni animal fusionné. Les positions rangée, portée ou reliée à un animal demandent des ancrages distincts à vérifier en scène.",
+      "expectedPath": "sprites/kennels/HWM162-K07-handler-lead.png",
+      "sourceRefs": [
+        "SRC-HOUND-2010",
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetIds": [
+        "HWM162-K03"
+      ],
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K07-handler-lead.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 1898963,
+      "sha256": "7b47106c7b7d92b180eb62ce496ef50883e34d83b521b4b1b912d76e0bf062d9",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 1097266,
+      "transparentRatio": 0.69762293,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            13,
+            1522,
+            1024
+          ],
+          "margins": [
+            0,
+            13,
+            14,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 475598
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            110,
+            158,
+            1415,
+            913
+          ],
+          "margins": [
+            110,
+            158,
+            121,
+            111
+          ],
+          "minMargin": 110,
+          "pixels": 422301
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            111,
+            158,
+            1415,
+            913
+          ],
+          "margins": [
+            111,
+            158,
+            121,
+            111
+          ],
+          "minMargin": 111,
+          "pixels": 418899
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            111,
+            158,
+            1414,
+            912
+          ],
+          "margins": [
+            111,
+            158,
+            122,
+            112
+          ],
+          "minMargin": 111,
+          "pixels": 410346
+        }
+      },
+      "edgeAlphaMax": 1,
+      "strictClearMargin": false,
+      "mainSilhouetteInsideCanvas": true,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "proposedMetres": {},
+      "dimensionsAuthority": "PROJECT_BRIEF_NOT_CANONICAL_MEASUREMENT",
+      "pivotDraftPixels": {
+        "x": 763,
+        "y": 913,
+        "status": "BOUNDING_BOX_ANCHOR_ONLY_NOT_MEASURED_GROUND_CONTACT"
+      },
+      "receipt": "production/homeworld-sectors-20261103/receipts/kennels.json",
+      "notes": [
+        "Une seule laisse, sans râtelier ni animal fusionné. Les positions rangée, portée ou reliée à un animal demandent des ancrages distincts à vérifier en scène.",
+        "Source PNG selected after generation; no scripted image cleanup, resizing or padding.",
+        "A few alpha 1 pixels can reach the canvas edges; alpha > 24 bounds describe the main silhouette only.",
+        "Camera 0°/35° and metre dimensions are the brief, not a measured 3D or canonical certification.",
+        "Une laisse complète posée seule : boucle brune cousue, chaîne sombre continue et mousqueton terminal. Silhouette et raccords visibles. La poignée/sangle brune et la chaîne sont référencées au produit Hot Toys Tracker2010 ; les dimensions, la fermeture et les détails générés ne sont pas certifiés identiques au produit ou au film."
+      ],
+      "canonicalOneToOneClaimed": false,
+      "cameraMeasured": false,
+      "scaleValidatedInGame": false,
+      "localPath": "sprites/kennels/HWM162-K07-handler-lead.png",
+      "exists": true,
+      "hasTransparency": true,
+      "minimumVisibleMargin": 0,
+      "marginAlpha0": 0,
+      "marginAlpha24": 111,
+      "proposedWorldSize": {}
+    },
+    {
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 2,
+      "gapClassification": "MODULAR_COMPONENT_NOT_IDENTIFIED_AS_STANDALONE",
+      "standaloneSourceClaim": "Aucune source indépendante spécifique identifiée dans la recherche ciblée ; les ensembles et sources apparentées restent conservés.",
+      "id": "HWM162-K08",
+      "area": "kennels",
+      "label": "Leurre de dressage indépendant",
+      "kind": "Prop — accessoire de dressage",
+      "targetIds": [
+        "target-v81-71-274"
+      ],
+      "complements": [
+        "HWM162-K03"
+      ],
+      "purpose": "Placer et déplacer un leurre d’exercice indépendamment du râtelier.",
+      "placementNote": "Un seul leurre tressé ou gainé, avec sa prise solidaire, sans rack, animal ni décor fusionné. Aucun comportement de dressage jouable n’est créé par le sprite.",
+      "expectedPath": "sprites/kennels/HWM162-K08-woven-training-lure.png",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetIds": [
+        "HWM162-K03"
+      ],
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K08-woven-training-lure.png",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "bytes": 1389256,
+      "sha256": "2140079cfbe57a3077add91e44152c7e32890159cf54b2dbd24c1ddacb56d698",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 1314827,
+      "transparentRatio": 0.83594449,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            65,
+            7,
+            954,
+            1496
+          ],
+          "margins": [
+            65,
+            7,
+            70,
+            40
+          ],
+          "minMargin": 7,
+          "pixels": 258037
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            369,
+            188,
+            654,
+            1406
+          ],
+          "margins": [
+            369,
+            188,
+            370,
+            130
+          ],
+          "minMargin": 130,
+          "pixels": 248589
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            369,
+            188,
+            654,
+            1406
+          ],
+          "margins": [
+            369,
+            188,
+            370,
+            130
+          ],
+          "minMargin": 130,
+          "pixels": 247841
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            370,
+            188,
+            653,
+            1406
+          ],
+          "margins": [
+            370,
+            188,
+            371,
+            130
+          ],
+          "minMargin": 130,
+          "pixels": 245761
+        }
+      },
+      "edgeAlphaMax": 0,
+      "strictClearMargin": true,
+      "mainSilhouetteInsideCanvas": true,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "proposedMetres": {},
+      "dimensionsAuthority": "PROJECT_BRIEF_NOT_CANONICAL_MEASUREMENT",
+      "pivotDraftPixels": {
+        "x": 511.5,
+        "y": 1406,
+        "status": "BOUNDING_BOX_ANCHOR_ONLY_NOT_MEASURED_GROUND_CONTACT"
+      },
+      "receipt": "production/homeworld-sectors-20261103/receipts/kennels.json",
+      "notes": [
+        "Un seul leurre tressé ou gainé, avec sa prise solidaire, sans rack, animal ni décor fusionné. Aucun comportement de dressage jouable n’est créé par le sprite.",
+        "Source PNG selected after generation; no scripted image cleanup, resizing or padding.",
+        "A few alpha 1 pixels can reach the canvas edges; alpha > 24 bounds describe the main silhouette only.",
+        "Camera 0°/35° and metre dimensions are the brief, not a measured 3D or canonical certification.",
+        "Un leurre cylindrique unique avec tressage brun, laçage frontal, deux bandes bronze, boucle de suspension et anneau. Aucun râtelier fusionné ; aucun découpage de K03. Silhouette entière et correspondance de matières au leurre cylindrique du râtelier."
+      ],
+      "canonicalOneToOneClaimed": false,
+      "cameraMeasured": false,
+      "scaleValidatedInGame": false,
+      "localPath": "sprites/kennels/HWM162-K08-woven-training-lure.png",
+      "exists": true,
+      "hasTransparency": true,
+      "minimumVisibleMargin": 7,
+      "marginAlpha0": 7,
+      "marginAlpha24": 130,
+      "proposedWorldSize": {}
+    },
+    {
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOne": false,
+      "generationStatus": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 2,
+      "gapClassification": "MODULAR_COMPONENT_NOT_IDENTIFIED_AS_STANDALONE",
+      "standaloneSourceClaim": "Aucune source indépendante spécifique identifiée dans la recherche ciblée ; les ensembles et sources apparentées restent conservés.",
+      "id": "HWM162-K09",
+      "area": "kennels",
+      "label": "Collier de conduite ajustable",
+      "kind": "Prop — accessoire de conduite",
+      "targetIds": [
+        "target-v81-71-274"
+      ],
+      "complements": [
+        "HWM162-K03",
+        "HWM162-K07"
+      ],
+      "purpose": "Compléter le matériel de conduite par un collier séparé ajustable au chien choisi.",
+      "placementNote": "Collier vide indépendant, adaptation originale du projet. Aucun modèle de collier canonique ni compatibilité universelle avec les chiens de 2010 et de 2018 ne sont affirmés ; morphologie et ancrage de la laisse à vérifier.",
+      "expectedPath": "sprites/kennels/HWM162-K09-adjustable-collar.png",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetIds": [
+        "HWM162-K03"
+      ],
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K09-adjustable-collar.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2100105,
+      "sha256": "97eb1a2a1ce1122604e6709f4aa61df37d4e8b9186ccca56c2bfd1251b969cb2",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 950649,
+      "transparentRatio": 0.60440636,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            9,
+            1528,
+            1024
+          ],
+          "margins": [
+            0,
+            9,
+            8,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 622215
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            124,
+            115,
+            1410,
+            958
+          ],
+          "margins": [
+            124,
+            115,
+            126,
+            66
+          ],
+          "minMargin": 66,
+          "pixels": 578399
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            124,
+            116,
+            1410,
+            957
+          ],
+          "margins": [
+            124,
+            116,
+            126,
+            67
+          ],
+          "minMargin": 67,
+          "pixels": 576778
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            125,
+            117,
+            1409,
+            957
+          ],
+          "margins": [
+            125,
+            117,
+            127,
+            67
+          ],
+          "minMargin": 67,
+          "pixels": 572300
+        }
+      },
+      "edgeAlphaMax": 1,
+      "strictClearMargin": false,
+      "mainSilhouetteInsideCanvas": true,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "proposedMetres": {},
+      "dimensionsAuthority": "PROJECT_BRIEF_NOT_CANONICAL_MEASUREMENT",
+      "pivotDraftPixels": {
+        "x": 767,
+        "y": 957,
+        "status": "BOUNDING_BOX_ANCHOR_ONLY_NOT_MEASURED_GROUND_CONTACT"
+      },
+      "receipt": "production/homeworld-sectors-20261103/receipts/kennels.json",
+      "notes": [
+        "Collier vide indépendant, adaptation originale du projet. Aucun modèle de collier canonique ni compatibilité universelle avec les chiens de 2010 et de 2018 ne sont affirmés ; morphologie et ancrage de la laisse à vérifier.",
+        "Source PNG selected after generation; no scripted image cleanup, resizing or padding.",
+        "A few alpha 1 pixels can reach the canvas edges; alpha > 24 bounds describe the main silhouette only.",
+        "Camera 0°/35° and metre dimensions are the brief, not a measured 3D or canonical certification.",
+        "Un collier ouvert unique en forme de C, garnissage sombre visible, lamelles de cuir brun et plaques bronze articulées, extrémités ajustables et anneau. Aucune laisse ni créature fusionnée. Marge basse visible67px. Aucune source ne prouve ce collier précis comme objet canonique ; la source Hot Toys de la laisse n'est pas une preuve de collier de film.",
+        "Visible margin is below the requested 80px on at least one side; the main silhouette remains inside the image."
+      ],
+      "canonicalOneToOneClaimed": false,
+      "cameraMeasured": false,
+      "scaleValidatedInGame": false,
+      "localPath": "sprites/kennels/HWM162-K09-adjustable-collar.png",
+      "exists": true,
+      "hasTransparency": true,
+      "minimumVisibleMargin": 0,
+      "marginAlpha0": 0,
+      "marginAlpha24": 67,
+      "proposedWorldSize": {}
     }
   ],
   "deliveryCounts": {
-    "planned": 17,
-    "actualPng": 17,
-    "uniqueSha256": 17,
+    "planned": 25,
+    "actualPng": 25,
+    "uniqueSha256": 25,
     "inheritedTargets": 40,
     "newRuntimeAdmissions": 0,
     "humanValidated": 0,
     "canonicalCertifications": 0
   },
-  "title": "Marché, montures et chenils — 2026-11-03"
+  "title": "Marché, montures et chenils — 2026-11-03",
+  "continuation": {
+    "pass": 2,
+    "baselineCommit": "d4c43dce5286fbb64e41ae5fa22cb82854572a7e",
+    "additionalPlannedPNGCount": 8,
+    "reason": "Accessoires détachés et raccords modulaires des ensembles déjà livrés.",
+    "audit": "modularity-audit-round2.json",
+    "plan": "next-targets-round2.json",
+    "review": "review-round2.md"
+  },
+  "inheritedTargetCoverage": {
+    "targetCount": 40,
+    "targetsWithCandidate": 40,
+    "baselineWithoutSpecificCount": 13,
+    "baselineWithoutSpecificNowWithDelivery": 13,
+    "uncoveredTargets": [],
+    "sourceClosedChanged": false,
+    "evidence": "modularity-audit-round2.json"
+  }
 }

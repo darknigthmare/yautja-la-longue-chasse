@@ -1,0 +1,280 @@
+{
+  "version": "MMK-20261103-PASS2",
+  "date": "2026-11-03",
+  "baselineCommit": "d4c43dce5286fbb64e41ae5fa22cb82854572a7e",
+  "purpose": "Compléments modulaires aux 17 PNG déjà livrés, sans nouveaux bâtiments ni duplication des cibles héritées.",
+  "previousSelectedPNGCount": 17,
+  "plannedAdditionalPNGCount": 8,
+  "expectedCombinedPNGCount": 25,
+  "targetPolicy": "Rattachement aux cibles existantes : les composants ne sont pas comptés comme de nouvelles cibles V81 absentes.",
+  "audit": "modularity-audit-round2.json",
+  "assets": [
+    {
+      "loreStatus": "ADAPTATION_ORIGINALE_COMPATIBLE",
+      "canonicalOneToOne": false,
+      "generationStatus": "PLANIFIE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 2,
+      "gapClassification": "MODULAR_COMPONENT_NOT_IDENTIFIED_AS_STANDALONE",
+      "standaloneSourceClaim": "Aucune source indépendante spécifique identifiée dans la recherche ciblée ; les ensembles et sources apparentées restent conservés.",
+      "id": "HWM162-S06",
+      "area": "market",
+      "label": "Plateau d’exposition amovible",
+      "kind": "Prop — composant de présentation",
+      "targetIds": [
+        "target-v81-64-162"
+      ],
+      "complements": [
+        "HWM162-S03"
+      ],
+      "purpose": "Présenter et déplacer un petit assortiment indépendamment du grand présentoir.",
+      "placementNote": "Plateau vide indépendant à poser sur le présentoir ou un comptoir. Son appui, son échelle et l’absence de chevauchement sont à vérifier dans la scène.",
+      "expectedPath": "sprites/market/HWM162-S06-removable-display-tray.png",
+      "sourceRefs": [
+        "SRC-ALEX-HOMESTEAD",
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "visualReview": {
+        "reviewer": "inventory_integration — revue par agent",
+        "reviewedSourceSha256": "8e18a6f05375ac0179c606eb6631dc5cdab60b7d47723cf5e84088da1a7f2070",
+        "scope": "Inspection visuelle du PNG généré complet ; aucune composition en scène.",
+        "cutoffObserved": false,
+        "multipleIndependentObjectsObserved": false,
+        "readableTextObserved": false,
+        "functionMismatchObserved": false,
+        "issues": [],
+        "humanValidated": false,
+        "runtimeValidated": false,
+        "observations": "Un seul plateau vide autonome, fond continu, rebord complet et deux poignées percées solidaires. Silhouette entière, sans pied, comptoir, marchandises ou autre objet fusionné. Aucun texte lisible. La fonction de présentation et de transport manuel est lisible.",
+        "placementLimit": "L’appui sur S03 et l’échelle en scène restent à vérifier."
+      }
+    },
+    {
+      "loreStatus": "ADAPTATION_ORIGINALE_COMPATIBLE",
+      "canonicalOneToOne": false,
+      "generationStatus": "PLANIFIE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 2,
+      "gapClassification": "MODULAR_COMPONENT_NOT_IDENTIFIED_AS_STANDALONE",
+      "standaloneSourceClaim": "Aucune source indépendante spécifique identifiée dans la recherche ciblée ; les ensembles et sources apparentées restent conservés.",
+      "id": "HWM162-S07",
+      "area": "market",
+      "label": "Palette de manutention marchande",
+      "kind": "Prop — composant de stockage",
+      "targetIds": [
+        "target-v81-64-170"
+      ],
+      "complements": [
+        "HWM162-S05"
+      ],
+      "purpose": "Regrouper et déplacer un chargement entre la réserve marchande et les moyens de manutention existants.",
+      "placementNote": "Palette vide basse et autonome, sans caisse, chariot ni sol fusionné. Le gabarit du chariot V78 existant et les accès du stock doivent être contrôlés avant utilisation en scène.",
+      "expectedPath": "sprites/market/HWM162-S07-market-cargo-pallet.png",
+      "sourceRefs": [
+        "SRC-ALEX-HOMESTEAD",
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "visualReview": {
+        "reviewer": "inventory_integration — revue par agent",
+        "reviewedSourceSha256": "f196df3b9f6729887e467ed5035487fd5f4c8aac303dfe14c9901f482045a5ff",
+        "scope": "Inspection visuelle du PNG généré complet ; aucune composition en scène.",
+        "cutoffObserved": false,
+        "multipleIndependentObjectsObserved": false,
+        "readableTextObserved": false,
+        "functionMismatchObserved": false,
+        "issues": [],
+        "humanValidated": false,
+        "runtimeValidated": false,
+        "observations": "Une seule palette basse vide, plateau supérieur rigide, structure ajourée de manutention et deux anneaux solidaires. Silhouette entière, sans caisse, chariot ou sol fusionné. Aucun texte lisible. La fonction de support de chargement indépendant est lisible.",
+        "placementLimit": "Les dimensions et le raccord avec le chariot V78 existant et la réserve S05 restent à vérifier en scène."
+      }
+    },
+    {
+      "loreStatus": "ADAPTATION_ORIGINALE_COMPATIBLE",
+      "canonicalOneToOne": false,
+      "generationStatus": "PLANIFIE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 2,
+      "gapClassification": "MODULAR_COMPONENT_NOT_IDENTIFIED_AS_STANDALONE",
+      "standaloneSourceClaim": "Aucune source indépendante spécifique identifiée dans la recherche ciblée ; les ensembles et sources apparentées restent conservés.",
+      "id": "HWM162-M07",
+      "area": "mounts",
+      "label": "Angle renforcé de grand enclos",
+      "kind": "Module — raccord d’angle",
+      "targetIds": [
+        "target-v81-72-287"
+      ],
+      "complements": [
+        "HWM162-M04"
+      ],
+      "purpose": "Former un retour d’enclos cohérent avec la barrière pour grands animaux.",
+      "placementNote": "Module d’angle lourd destiné à prolonger M04. Géométrie, hauteur des traverses, recouvrement des poteaux et collisions restent à vérifier en scène ; les angles urbains existants ne sont pas remplacés.",
+      "expectedPath": "sprites/mounts/HWM162-M07-corral-corner.png",
+      "sourceRefs": [
+        "SRC-DAN-2026",
+        "SRC-ALEX-HOMESTEAD",
+        "SRC-V81",
+        "SRC-CAMERA"
+      ]
+    },
+    {
+      "loreStatus": "ADAPTATION_ORIGINALE_COMPATIBLE",
+      "canonicalOneToOne": false,
+      "generationStatus": "PLANIFIE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 2,
+      "gapClassification": "MODULAR_COMPONENT_NOT_IDENTIFIED_AS_STANDALONE",
+      "standaloneSourceClaim": "Aucune source indépendante spécifique identifiée dans la recherche ciblée ; les ensembles et sources apparentées restent conservés.",
+      "id": "HWM162-M08",
+      "area": "mounts",
+      "label": "Cadre ouvert de portail des montures",
+      "kind": "Module — passage ouvert",
+      "targetIds": [
+        "target-v81-72-287"
+      ],
+      "complements": [
+        "HWM162-M04",
+        "HWM162-M07"
+      ],
+      "purpose": "Réserver un passage large dans le grand enclos sans fusionner le battant à la structure.",
+      "placementNote": "Cadre indépendant ouvert, assorti à M04. Associer le battant M09 pour proposer une fermeture. Le passage de l’animal choisi, le raccord aux barrières et les collisions ne sont pas testés en scène.",
+      "expectedPath": "sprites/mounts/HWM162-M08-open-gateway.png",
+      "sourceRefs": [
+        "SRC-DAN-2026",
+        "SRC-ALEX-HOMESTEAD",
+        "SRC-V81",
+        "SRC-CAMERA"
+      ]
+    },
+    {
+      "loreStatus": "ADAPTATION_ORIGINALE_COMPATIBLE",
+      "canonicalOneToOne": false,
+      "generationStatus": "PLANIFIE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 2,
+      "gapClassification": "MODULAR_COMPONENT_NOT_IDENTIFIED_AS_STANDALONE",
+      "standaloneSourceClaim": "Aucune source indépendante spécifique identifiée dans la recherche ciblée ; les ensembles et sources apparentées restent conservés.",
+      "id": "HWM162-M09",
+      "area": "mounts",
+      "label": "Battant indépendant de portail des montures",
+      "kind": "Prop — état fermé",
+      "targetIds": [
+        "target-v81-72-287"
+      ],
+      "complements": [
+        "HWM162-M08"
+      ],
+      "purpose": "Compléter le cadre ouvert M08 par un panneau mobile indépendant.",
+      "placementNote": "Battant sans piliers à superposer au cadre M08. Alignement, échelle, pivot et collisions restent à vérifier en scène. Ce fichier ne fournit pas à lui seul une porte animée fonctionnelle.",
+      "expectedPath": "sprites/mounts/HWM162-M09-sliding-gate-leaf.png",
+      "sourceRefs": [
+        "SRC-DAN-2026",
+        "SRC-ALEX-HOMESTEAD",
+        "SRC-V81",
+        "SRC-CAMERA"
+      ]
+    },
+    {
+      "loreStatus": "ADAPTATION_ORIGINALE_COMPATIBLE",
+      "canonicalOneToOne": false,
+      "generationStatus": "PLANIFIE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 2,
+      "gapClassification": "MODULAR_COMPONENT_NOT_IDENTIFIED_AS_STANDALONE",
+      "standaloneSourceClaim": "Aucune source indépendante spécifique identifiée dans la recherche ciblée ; les ensembles et sources apparentées restent conservés.",
+      "id": "HWM162-K07",
+      "area": "kennels",
+      "label": "Laisse de conduite indépendante",
+      "kind": "Prop — accessoire de dressage",
+      "targetIds": [
+        "target-v81-71-274"
+      ],
+      "complements": [
+        "HWM162-K03"
+      ],
+      "purpose": "Rendre la laisse disponible comme objet autonome de préparation et de conduite.",
+      "placementNote": "Une seule laisse, sans râtelier ni animal fusionné. Les positions rangée, portée ou reliée à un animal demandent des ancrages distincts à vérifier en scène.",
+      "expectedPath": "sprites/kennels/HWM162-K07-handler-lead.png",
+      "sourceRefs": [
+        "SRC-HOUND-2010",
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetIds": [
+        "HWM162-K03"
+      ]
+    },
+    {
+      "loreStatus": "ADAPTATION_ORIGINALE_COMPATIBLE",
+      "canonicalOneToOne": false,
+      "generationStatus": "PLANIFIE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 2,
+      "gapClassification": "MODULAR_COMPONENT_NOT_IDENTIFIED_AS_STANDALONE",
+      "standaloneSourceClaim": "Aucune source indépendante spécifique identifiée dans la recherche ciblée ; les ensembles et sources apparentées restent conservés.",
+      "id": "HWM162-K08",
+      "area": "kennels",
+      "label": "Leurre de dressage indépendant",
+      "kind": "Prop — accessoire de dressage",
+      "targetIds": [
+        "target-v81-71-274"
+      ],
+      "complements": [
+        "HWM162-K03"
+      ],
+      "purpose": "Placer et déplacer un leurre d’exercice indépendamment du râtelier.",
+      "placementNote": "Un seul leurre tressé ou gainé, avec sa prise solidaire, sans rack, animal ni décor fusionné. Aucun comportement de dressage jouable n’est créé par le sprite.",
+      "expectedPath": "sprites/kennels/HWM162-K08-woven-training-lure.png",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetIds": [
+        "HWM162-K03"
+      ]
+    },
+    {
+      "loreStatus": "ADAPTATION_ORIGINALE_COMPATIBLE",
+      "canonicalOneToOne": false,
+      "generationStatus": "PLANIFIE",
+      "runtimeIntegrated": false,
+      "humanValidated": false,
+      "productionPass": 2,
+      "gapClassification": "MODULAR_COMPONENT_NOT_IDENTIFIED_AS_STANDALONE",
+      "standaloneSourceClaim": "Aucune source indépendante spécifique identifiée dans la recherche ciblée ; les ensembles et sources apparentées restent conservés.",
+      "id": "HWM162-K09",
+      "area": "kennels",
+      "label": "Collier de conduite ajustable",
+      "kind": "Prop — accessoire de conduite",
+      "targetIds": [
+        "target-v81-71-274"
+      ],
+      "complements": [
+        "HWM162-K03",
+        "HWM162-K07"
+      ],
+      "purpose": "Compléter le matériel de conduite par un collier séparé ajustable au chien choisi.",
+      "placementNote": "Collier vide indépendant, adaptation originale du projet. Aucun modèle de collier canonique ni compatibilité universelle avec les chiens de 2010 et de 2018 ne sont affirmés ; morphologie et ancrage de la laisse à vérifier.",
+      "expectedPath": "sprites/kennels/HWM162-K09-adjustable-collar.png",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetIds": [
+        "HWM162-K03"
+      ]
+    }
+  ],
+  "canonicalOneToOneClaimed": false,
+  "runtimeIntegrated": false,
+  "humanValidated": false
+}

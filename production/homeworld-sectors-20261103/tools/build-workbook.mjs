@@ -74,6 +74,7 @@ for (const plan of plans) {
     hasTransparency, minimumVisibleMargin: margin0, marginAlpha0: margin0, marginAlpha24: margin24, alphaBounds, proposedWorldSize: proposed, proposedMetres,
     humanValidated: raw.humanValidated === true, runtimeIntegrated: raw.runtimeIntegrated === true,
     loreStatus: raw.loreStatus ?? 'ADAPTATION_ORIGINALE_COMPATIBLE', canonicalOneToOne: false,
+    generationStatus: exists ? 'GENERATED_INDEPENDENT_ART_CANDIDATE' : plan.generationStatus ?? 'PLANIFIE',
     status: exists ? raw.status ?? 'GENERE_A_REVOIR' : 'A_GENERER', notes });
 }
 const present = assets.filter(x => x.exists);
@@ -81,6 +82,23 @@ if (!docsOnly && present.length !== assets.length) throw new Error(`Cannot expor
 const deliveredByTarget = new Map();
 for (const a of assets) for (const t of a.targetIds) deliveredByTarget.set(t, [...deliveredByTarget.get(t) ?? [], a]);
 const targets = catalogue.inheritedTargets.map(t => ({ ...t, additions: deliveredByTarget.get(t.id) ?? [] }));
+const coverageRows = targets.map(t => ({
+  id: t.id,
+  noSpecificSourceAtBaseline: ['NO_SPECIFIC_INDEPENDENT_SOURCE_IDENTIFIED','NO_EXACT_TARGET_FILENAME'].includes(t.currentSourceStatus),
+  deliveredCandidateIds: t.additions.filter(a => a.exists).map(a => a.id),
+  existingExactCandidateCount: (t.exactTargetPngPaths ?? []).length,
+  existingRelatedCandidateCount: (t.existingIndependentRelatedCandidates ?? []).length,
+}));
+catalogue.inheritedTargetCoverage = {
+  targetCount: coverageRows.length,
+  targetsWithCandidate: coverageRows.filter(t => t.deliveredCandidateIds.length || t.existingExactCandidateCount || t.existingRelatedCandidateCount).length,
+  baselineWithoutSpecificCount: coverageRows.filter(t => t.noSpecificSourceAtBaseline).length,
+  baselineWithoutSpecificNowWithDelivery: coverageRows.filter(t => t.noSpecificSourceAtBaseline && t.deliveredCandidateIds.length).length,
+  uncoveredTargets: coverageRows.filter(t => !t.deliveredCandidateIds.length && !t.existingExactCandidateCount && !t.existingRelatedCandidateCount).map(t => t.id),
+  sourceClosedChanged: false,
+  evidence: 'modularity-audit-round2.json',
+};
+if (!docsOnly && catalogue.inheritedTargetCoverage.uncoveredTargets.length) throw new Error('Inherited target without an identified candidate');
 for (const a of assets) for (const id of a.targetIds) if (!targets.some(t => t.id === id)) targets.push({ id, family: areaNames[a.area], label: a.label,
   currentSourceStatus: 'NOUVEAU_BATIMENT', exactTargetPngPaths: [], existingIndependentRelatedCandidates: [],
   sourceClosed: false, canonicalOneToOneClaimed: false, additions: deliveredByTarget.get(id) ?? [] });
@@ -93,6 +111,14 @@ await fs.writeFile(path.join(base, 'catalogue.json'), JSON.stringify(catalogue, 
 const sourceLinks = catalogue.sources.map(s => `- **${s.title}** : [source](${s.url}). ${s.scope} ${s.limit}`).join('\n');
 const sectorRows = Object.keys(areaNames).map(k => `| ${areaNames[k]} | ${assets.filter(a => a.area === k).length} | ${present.filter(a => a.area === k).length} |`).join('\n');
 const fileRows = assets.map(a => `| ${a.id} | ${a.label} | ${join(a.targetIds)} | ${a.exists ? `[PNG](${a.localPath})` : 'À produire'} | ${a.exists ? `${a.width} × ${a.height}` : '—'} |`).join('\n');
+const continuationAssets = assets.filter(a => a.productionPass === 2);
+const continuationRows = continuationAssets.map(a => `| ${a.id} | ${a.label} | ${join(a.complements)} | ${join(a.targetIds)} |`).join('\n');
+const continuationSection = continuationAssets.length ?
+  `## Deuxième passe : composants détachés et raccords\n\n` +
+  `La seconde passe ajoute ${continuationAssets.length} composants aux 17 sources déjà livrées. Elle complète la modularité des ensembles : les cibles V81 restent les mêmes. Le [plan de production](next-targets-round2.json), l’[audit ciblé](modularity-audit-round2.json) et la [revue complémentaire](review-round2.md) conservent les décisions, les sources apparentées et les limites observées.\n\n` +
+  `| ID | Composant | Complète | Cible conservée |\n| --- | --- | --- | --- |\n${continuationRows}\n\n` +
+  `Le chariot cargo V78 et le crochet de trophées V114 existaient déjà et restent réutilisables. Les angles de garde-corps urbains ne sont pas assimilés à des raccords validés pour la barrière lourde M04. Les laisses et leurres de K03 étaient incorporés au râtelier ; K07 et K08 fournissent des objets autonomes. K09 est un collier original du projet, sans attribution à un modèle canonique.\n\n` +
+  `Le cadre M08 et le battant M09 proposent les éléments séparés d’un portail de grand enclos. Leurs raccords, dimensions, pivots et collisions demandent une vérification dans la scène, comme ceux du couple K02/K06. Aucun état animé fonctionnel n’est déduit de la présence de ces PNG.\n\n` : '';
 const readme = `# Marché, montures et chenils — 2026-11-03\n\n` +
   `Lot de production \`MMK-20261103\`. Les identifiants de génération \`HWM162-*\` sont conservés. Ce dossier est distinct du lot de terrains \`homeworld-v162\` ajouté en parallèle.\n\n` +
   `Ce lot complète les sources de la PR [#99](https://github.com/${catalogue.repository}/pull/99) avec **${present.length} PNG indépendants présents** pour ${assets.length} objets ou états planifiés. Chaque objet est un fichier séparé. Les anciennes sources restent à leur emplacement.\n\n` +
@@ -103,6 +129,7 @@ const readme = `# Marché, montures et chenils — 2026-11-03\n\n` +
   `- [Catalogue](catalogue.json) : liste des objets, fonctions, sources antérieures et données mesurées.\n` +
   `- [Manifeste des générations](manifest.json) et [contrôles techniques](technical-report.json).\n\n` +
   `| ID | Objet | Cible du projet | Fichier | Pixels réels |\n| --- | --- | --- | --- | --- |\n${fileRows}\n\n` +
+  continuationSection +
   `## Fidélité et portée des références\n\n` +
   `Les bâtiments de marché, d’écurie et de chenil sont des **adaptations originales du projet**. Les références ci-dessous orientent leur cohérence visuelle et leur fonction. Elles ne fournissent pas les plans canoniques de ces bâtiments. Ce lot ne porte aucune certification de reproduction 1:1.\n\n` +
   `${sourceLinks}\n\n` +
@@ -114,6 +141,7 @@ const readme = `# Marché, montures et chenils — 2026-11-03\n\n` +
   `Le portique ouvert HWM162-K02 et le battant coulissant indépendant HWM162-K06 correspondent à une seule cible héritée, target-v81-71-269. Leur superposition est proposée ; le raccord, le pivot, l’échelle et les collisions ne sont pas testés en scène. Ces deux fichiers ne constituent pas encore une porte animée fonctionnelle.\n\n` +
   `## Sources existantes conservées\n\n` +
   `L’audit porte sur 14 cibles de marché, 1 bâtiment de marché, 15 cibles de faune et 10 de montures. Les 5 sources de harnachement/mangeoire des montures et les 11 cibles de faune possédant des PNG nommés sont conservées. Le kiosque HWA160-023, les étals, auvents, caisses, lampes et autres objets connexes gardent leurs identités. Le grand marché HWA160-029 est une archive RGB opaque ; il n’est pas compté comme sprite transparent.\n\n` +
+  `${catalogue.inheritedTargetCoverage.targetsWithCandidate} des ${catalogue.inheritedTargetCoverage.targetCount} cibles héritées disposent d’au moins un candidat identifié : un PNG spécifique, une source apparentée conservée ou une création de ce lot. Les ${catalogue.inheritedTargetCoverage.baselineWithoutSpecificCount} cibles dont la source indépendante spécifique n’était pas identifiée avant le lot possèdent désormais ${catalogue.inheritedTargetCoverage.baselineWithoutSpecificNowWithDelivery === catalogue.inheritedTargetCoverage.baselineWithoutSpecificCount ? 'chacune' : 'pour certaines'} un candidat livré. Cette couverture décrit les sources disponibles ; leur adéquation visuelle et leur admission restent à vérifier.\n\n` +
   `Un candidat ancien reste un candidat. Le registre des cibles V81 et les classeurs historiques ne sont pas clôturés par la présence d’une image. Les liens du catalogue pointent vers les sources originales plutôt que vers des copies comptées comme nouveaux objets.\n\n` +
   `## Vérification et état de livraison\n\n` +
   `Le générateur de ce dossier relit les signatures PNG, tailles, dimensions et SHA-256 avant l’export du classeur. Le rapport technique sépare les contrôles d’alpha et de cadrage de la revue visuelle. Les marges aux seuils alpha > 0 et alpha > 24 sont indiquées séparément : le premier inclut les traces d’opacité très faible, le second aide à examiner la silhouette visible. Aucune retouche du canal alpha n’est appliquée par ces documents. Les pivots, accès, collisions, raccords et occlusions demandent une vérification dans la scène avant admission au runtime. Le statut de revue humaine conserve son sens dans le projet.\n\n` +
@@ -125,7 +153,7 @@ await fs.writeFile(path.join(base, 'README.md'), readme);
 const cards = assets.map(a => `<article class="asset" data-area="${esc(a.area)}" data-search="${esc([a.id,a.label,...a.targetIds].join(' ').toLowerCase())}">
   <a class="preview" ${a.exists ? `href="${esc(a.localPath)}" target="_blank"` : ''}>${a.exists ? `<img src="${esc(a.localPath)}" alt="${esc(a.label)}" loading="lazy">` : '<span>Image à produire</span>'}</a>
   <div class="card-body"><p class="eyebrow">${esc(a.id)} · ${esc(areaNames[a.area] ?? a.area)}</p><h2>${esc(a.label)}</h2>
-  <p class="purpose">${esc(a.purpose)}</p><dl><div><dt>Source</dt><dd>${a.exists ? `${a.width} × ${a.height} px` : 'En attente'}</dd></div><div><dt>Lore</dt><dd>Adaptation originale</dd></div><div><dt>Cible</dt><dd>${esc(join(a.targetIds))}</dd></div></dl>
+  <p class="purpose">${esc(a.purpose)}</p><dl><div><dt>Source</dt><dd>${a.exists ? `${a.width} × ${a.height} px` : 'En attente'}</dd></div><div><dt>Lore</dt><dd>Adaptation originale</dd></div><div><dt>Cible</dt><dd>${esc(join(a.targetIds))}</dd></div>${a.complements?.length ? `<div><dt>Complète</dt><dd>${esc(join(a.complements))}</dd></div>` : ''}</dl>
   <p class="note">${esc(a.placementNote)}</p>${a.exists ? `<a class="download" href="${esc(a.localPath)}" download>Télécharger ce PNG</a>` : ''}</div></article>`).join('\n');
 const html = `<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Marché, montures et chenils — 2026-11-03</title><style>
 *{box-sizing:border-box}body{margin:0;background:#141719;color:#e5e8e8;font:15px/1.55 system-ui,sans-serif}a{color:#e5ba76}header,main,footer{max-width:1380px;margin:auto;padding:30px}header{padding-top:56px}h1{font-size:clamp(28px,4vw,48px);line-height:1.1;max-width:850px;margin:12px 0 20px}p{margin:8px 0}.lead{max-width:860px;color:#b9c2c5;font-size:17px}.kicker,.eyebrow{text-transform:uppercase;letter-spacing:.07em;font-size:11px;color:#d6aa65}.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;position:sticky;top:0;background:#141719f2;border-bottom:1px solid #364045;padding:14px 30px;z-index:3;max-width:1380px;margin:auto}.toolbar button,.toolbar input,.toolbar select{font:inherit;border:1px solid #566066;background:#252b2f;color:#edf1f2;border-radius:6px;padding:9px 13px}.toolbar button[aria-pressed=true]{background:#9d733b;color:#fff;border-color:#c79d5d}.toolbar input{flex:1;min-width:220px}.count{color:#b3bec3;font-size:13px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:24px}.asset{border:1px solid #394248;background:#20262a;border-radius:10px;overflow:hidden}.preview{height:300px;display:flex;justify-content:center;align-items:center;background-color:#30383d;background-image:linear-gradient(45deg,#4b555b 25%,transparent 25%),linear-gradient(-45deg,#4b555b 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#4b555b 75%),linear-gradient(-45deg,transparent 75%,#4b555b 75%);background-size:24px 24px;background-position:0 0,0 12px,12px -12px,-12px 0}.preview img{width:100%;height:100%;object-fit:contain;padding:12px}.card-body{padding:20px}h2{font-size:19px;line-height:1.3;margin:7px 0 12px}.purpose{color:#d1d8dc;min-height:48px}.note{font-size:13px;color:#aebcc1;margin-top:14px}.download{display:inline-block;margin-top:16px}dl{margin:20px 0 0;border-top:1px solid #39454c;padding-top:10px}dl div{display:flex;gap:15px;font-size:12px;margin:5px 0}dt{color:#9dadb5;min-width:50px}dd{margin:0;overflow-wrap:anywhere}footer{color:#aebbc1;font-size:13px}footer p{max-width:1050px}[hidden]{display:none!important}body[data-background=white] .preview{background:#fff}body[data-background=dark] .preview{background:#101315}@media(max-width:600px){header,main,footer{padding:22px}.toolbar{padding:14px 22px}.preview{height:270px}}
@@ -168,6 +196,7 @@ sheets.Livraison.getRange('A6:A9').format.font={bold:true};sheets.Livraison.getR
 sheets.Livraison.getRange('D6').values=[['Lore : adaptations originales']];sheets.Livraison.getRange('D7').values=[['Aucune certification visuelle 1:1']];
 sheets.Livraison.getRange('D8').values=[['Les 40 cibles héritées sont conservées']];sheets.Livraison.getRange('D9').values=[['Pixels mesurés ; échelle physique proposée']];
 sheets.Livraison.getRange('D10').values=[['Marges alpha > 0 et > 24 ; aucune correction alpha par script']];
+if (continuationAssets.length) sheets.Livraison.getRange('D11').values=[[`${continuationAssets.length} composants ajoutés en deuxième passe ; cibles V81 conservées`]];
 sheets.Livraison.getRange(`F14:H${last}`).setNumberFormat('#,##0');sheets.Livraison.getRange(`J14:K${last}`).setNumberFormat('#,##0');
 sheets.Livraison.getRange(`E14:E${last}`).conditionalFormats.add('containsText',{text:'À produire',format:{fill:'#FDE9E6',font:{color:'#963826',bold:true}}});
 sheets.Livraison.tabColor='#34474F';
@@ -176,17 +205,19 @@ const humanStatus={EXACT_TARGET_CANDIDATE_EXISTS_NOT_ADMITTED:'Candidat spécifi
 const targetRows=targets.map(t=>[t.id,t.family,t.label,humanStatus[t.currentSourceStatus]??t.currentSourceStatus,
   t.additions.map(a=>a.id).join('\n'),(t.exactTargetPngPaths??[]).join('\n'),(t.existingIndependentRelatedCandidates??[]).join('\n'),
   t.sourceClosed?'Clôturée':'Ouverte','Adaptation originale',t.additions.length?'Vérifier nouvelle source, accès, échelle et collision.':'Conserver la source et vérifier son adaptation au lieu.']);
-setup(sheets.Catalogue,'Catalogue des cibles','40 cibles héritées et bâtiments ajoutés ; présence distincte de la validation',[31,24,31,36,27,82,82,14,25,58],targets.length+7,6,
+setup(sheets.Catalogue,'Catalogue des cibles','40 cibles héritées et bâtiments ajoutés ; composants rattachés à leurs cibles',[31,24,31,36,27,82,82,14,25,58],targets.length+7,6,
   ['Cible','Famille','Objet','État de la source avant le lot','Ajout du lot','PNG spécifiques conservés','Sources apparentées conservées','État du suivi','Lore','Prochaine vérification'],targetRows,'CatalogueMMK20261103');
 sheets.Catalogue.getRange(`F7:G${targets.length+6}`).format.font={size:10,color:'#50646D'};
 
-const dimensionLabels={ramp_length:'Longueur de rampe',ramp_width:'Largeur de rampe',platform_width:'Largeur de plateforme',platform_depth:'Profondeur de plateforme',platform_height:'Hauteur de plateforme',clear_span:'Portée libre',door_height:'Hauteur de porte',door_width:'Largeur de porte'};
+const dimensionLabels={ramp_length:'Longueur de rampe',ramp_width:'Largeur de rampe',platform_width:'Largeur de plateforme',platform_depth:'Profondeur de plateforme',platform_height:'Hauteur de plateforme',clear_span:'Portée libre',door_height:'Hauteur de porte',door_width:'Largeur de porte',arm_length:'Longueur des branches',clear_passage_width:'Largeur libre du passage',clear_passage_height:'Hauteur libre du passage',overall_width:'Largeur totale',overall_height:'Hauteur totale',excludes:'Hors mesure'};
+const dimensionDetail=(key,value)=>`${dimensionLabels[key]??key.replaceAll('_',' ')} : ${typeof value==='object'?JSON.stringify(value):value==='top rollers'?'galets supérieurs':value}${typeof value==='number'?' m':''}`;
 const implantRows=assets.map(a=>[a.id,a.label,a.proposedMetres.width??null,a.proposedMetres.depth??null,a.proposedMetres.height??null,
-  Object.entries(a.proposedMetres).filter(([k])=>!['width','depth','height'].includes(k)).map(([k,v])=>`${dimensionLabels[k]??k.replaceAll('_',' ')} : ${typeof v==='object'?JSON.stringify(v):v} m`).join('\n'),
+  Object.entries(a.proposedMetres).filter(([k])=>!['width','depth','height'].includes(k)).map(([k,v])=>dimensionDetail(k,v)).join('\n'),
   Object.keys(a.proposedMetres).length?'Dimensions proposées au générateur':'Dimensions à définir',a.purpose,a.placementNote]);
 setup(sheets.Implantation,'Échelle et implantation','Les dimensions proposées sont des conventions du jeu. Elles ne sont pas des mesures canoniques.',[23,38,17,18,17,52,40,66,86],assets.length+29,6,
   ['ID','Objet','Largeur (m)','Profondeur (m)','Hauteur (m)','Dimensions partielles proposées','Origine des dimensions','Fonction du lieu','Accès et contrôle en scène'],implantRows,'ImplantationMMK20261103');
 sheets.Implantation.getRange(`C7:E${assets.length+6}`).setNumberFormat('#,##0.0');
+for (const [i,asset] of assets.entries()) if (asset.productionPass === 2) sheets.Implantation.getRange(`C${7+i}:E${7+i}`).setNumberFormat('#,##0.00');
 const cr=assets.length+10;
 sheets.Implantation.getRange(`A${cr}:C${cr+7}`).values=[['Convention du projet','Valeur','Unité'],['Hauteur de l’acteur',100,'unités'],['Équivalent adopté',2.3,'mètres'],['Yaw global',0,'degrés'],['Inclinaison',35,'degrés'],['Compression de profondeur',catalogue.camera.depthScale,'coefficient'],['Porte minimale, largeur',80,'unités'],['Porte minimale, hauteur',128,'unités']];
 sheets.Implantation.getRange(`A${cr}:C${cr}`).format={fill:colors.head,font:{bold:true,color:'#FFFFFF'}};
@@ -208,6 +239,21 @@ await fs.writeFile(path.join(outputDir,'workbook-inspection.json'),JSON.stringif
 for(const [name,range] of [['Livraison','A1:J18'],['Catalogue','A1:E11'],['Implantation','A1:F12'],['Références','A1:E10']]){
   const preview=await workbook.render({sheetName:name,range,scale:1.3,format:'png'});
   await fs.writeFile(path.join(outputDir,`preview-${name.normalize('NFD').replace(/[\u0300-\u036f]/g,'')}.png`),new Uint8Array(await preview.arrayBuffer()));
+}
+if (continuationAssets.length) {
+  const firstNew = assets.findIndex(a => a.productionPass === 2);
+  const views = [
+    ['Livraison', `A${14 + firstNew}:K${last}`, 'preview-Livraison-complements.png'],
+    ['Implantation', `A${7 + firstNew}:F${6 + assets.length}`, 'preview-Implantation-complements.png'],
+    ...['target-v81-71-274','target-v81-72-287'].map(id => {
+      const row = 7 + targets.findIndex(t => t.id === id);
+      return ['Catalogue', `A${row - 1}:E${row + 1}`, `preview-Catalogue-${id}.png`];
+    })
+  ];
+  for (const [sheetName, range, filename] of views) {
+    const preview = await workbook.render({sheetName, range, scale:1.3, format:'png'});
+    await fs.writeFile(path.join(outputDir,filename),new Uint8Array(await preview.arrayBuffer()));
+  }
 }
 const exported=await SpreadsheetFile.exportXlsx(workbook);
 const filename='YAUTJA_MARCHE_MONTURES_CHENILS_20261103.xlsx';
