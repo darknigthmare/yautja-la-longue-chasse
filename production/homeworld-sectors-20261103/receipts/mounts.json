@@ -625,9 +625,665 @@
       "original_unchanged": true,
       "imagegen_calls_for_asset": 1,
       "design_reference_file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M04-corral-fence.png"
+    },
+    {
+      "id": "HWM162-M10",
+      "label": "Mangeoire adaptée — état vide",
+      "target_id": "target-v81-72-288",
+      "file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M10-empty-mount-feeder.png",
+      "source_original": "/workspace/scratch/2166fec07f86/generated_images/exec-8f349cca-882b-4eff-937e-2f658ebb9188.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/2166fec07f86/generated_images as /workspace/scratch/2166fec07f86/generated_images/exec-8f349cca-882b-4eff-937e-2f658ebb9188.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "prompt": "Edit the supplied reference PNG into ONE new independent game sprite, HWM162-M10, the EMPTY STATE of the SAME raised alien mount feeding trough for Yautja The Long Hunt.\nMake only this functional change: REMOVE EVERY reddish-brown dry ration nugget from inside the trough. Reveal the clean, empty dark matte-metal floor of the same basin beneath them, with subtle existing wear. There must be no food, crumbs, heap, liquid, water, hay, plants, body part or added prop anywhere. The basin is visibly EMPTY, with its bottom and inner walls clearly readable.\nPRESERVE THE REFERENCE OBJECT: exactly the same elongated polygonal basin, scooped low front lip, red-brown protective lip padding, two splayed charcoal porous-basalt piers, bronze side braces, broad flared feet, metal joints, patina and worn bevels. All original structural parts stay attached as one object. Do not redesign, simplify, add or remove any structural part.\nPRESERVE THE VIEW AND FRAMING: inherit the exact reference camera, orientation, projected geometry, object position, apparent scale, canvas aspect ratio and top-left lighting. The reference is1254x1254; retain this square composition and the whole uncropped silhouette with all feet and transparent margins. Do not turn the trough, mirror it, zoom in, rotate the camera or change the foreshortening. This is a matching empty-state counterpart, not a different feeder.\nKeep the original realistic detailed hand-painted game style, dark porous basalt, aged bronze, gunmetal and small red-brown padding. Keep native transparent alpha outside the object and through the open gaps beneath the basin. No background, floor plane, ground shadow, fog, vignette, gradient, checkerboard painting, new glow, labels, readable text, diagrams, animals, people or additional objects.\nOnly one whole EMPTY feeding trough PNG. This is an original game adaptation; no canonical1:1 assertion.",
+      "reference_image_files": [
+        "production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-288-adapted-mount-feeder-native.png"
+      ],
+      "reference_input_paths": [
+        "/workspace/scratch/2166fec07f86/round3-mounts-references/target-v81-72-288-adapted-mount-feeder-native.png"
+      ],
+      "reference_sha256": [
+        "22f2344dc1fb0c67a2ef1c28fa01a4a8998bdac18a7d5c8509c16785f89dd953"
+      ],
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "variant_kind": "EMPTY_STATE_OF_EXISTING_FEEDER",
+      "review_note": "One whole elevated feeder, empty basin with visible bottom, no ration pellets or added objects. Camera and geometry inherited from the filled reference; all feet and support braces remain. Native empty/full state matching is proposed, not runtime validated. No scripted pixel edits, resizing or padding.",
+      "camera_requested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "projection": "orthographic three-quarter reference, not measured",
+        "reference_prompt_pitch_degrees": 32
+      },
+      "assembly_runtime_validated": false,
+      "production_pass": 3,
+      "mode": "RGBA",
+      "dimensions_px": [
+        1254,
+        1254
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "alpha_zero_pixels": 1106168,
+      "alpha_bbox": [
+        0,
+        17,
+        1238,
+        1254
+      ],
+      "alpha_bbox_8": [
+        134,
+        233,
+        1178,
+        1101
+      ],
+      "alpha_bbox_gt24": [
+        134,
+        234,
+        1178,
+        1101
+      ],
+      "alpha_thresholds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            17,
+            1238,
+            1254
+          ],
+          "margins": [
+            0,
+            17,
+            16,
+            0
+          ],
+          "pixels": 466348
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            134,
+            233,
+            1178,
+            1101
+          ],
+          "margins": [
+            134,
+            233,
+            76,
+            153
+          ],
+          "pixels": 449723
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            134,
+            234,
+            1178,
+            1101
+          ],
+          "margins": [
+            134,
+            234,
+            76,
+            153
+          ],
+          "pixels": 448597
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            135,
+            234,
+            1178,
+            1100
+          ],
+          "margins": [
+            135,
+            234,
+            76,
+            154
+          ],
+          "pixels": 445489
+        }
+      },
+      "sha256": "72d4f988cf024145df29ffe3f9b415437711387f9eb18ef5557e2c61fd80034e",
+      "status": "GENERATED_ORIGINAL_PENDING_FINAL_REVIEW",
+      "runtime_integrated": false,
+      "human_art_validated": false,
+      "canon_1_to_1_claim": false,
+      "bytes": 1096714,
+      "substantial_silhouette_margins_px": [
+        134,
+        233,
+        76,
+        153
+      ],
+      "silhouette_margins_gt24_px": [
+        134,
+        234,
+        76,
+        153
+      ],
+      "edge_alpha_max": 1,
+      "original_unchanged": true,
+      "imagegen_calls_for_asset": 1,
+      "reference_state_comparison": {
+        "same_canvas_dimensions": true,
+        "reference_dimensions_px": [
+          1254,
+          1254
+        ],
+        "reference_alpha_gt24_bbox": [
+          134,
+          235,
+          1178,
+          1101
+        ],
+        "new_alpha_gt24_bbox": [
+          134,
+          234,
+          1178,
+          1101
+        ],
+        "pixel_perfect_state_swap_verified": false,
+        "note": "Visual pose preserved; bounds comparison only, no in-game swap tested."
+      }
+    },
+    {
+      "id": "HWM162-M11",
+      "label": "Clôture diagonale prolongeant le bras gauche de M07",
+      "target_id": "target-v81-72-287",
+      "file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M11-corral-diagonal-left-v2.png",
+      "source_original": "/workspace/scratch/2166fec07f86/generated_images/exec-2ae8e511-63b6-43f2-aed6-e3780dfc5a53.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/2166fec07f86/generated_images as /workspace/scratch/2166fec07f86/generated_images/exec-2ae8e511-63b6-43f2-aed6-e3780dfc5a53.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "prompt": "TARGETED FAMILY-CONSISTENCY CORRECTION of HWM162-M11.\nREFERENCE1 is the LEFT-diagonal straight fence to edit. REFERENCE2 is M12 and REFERENCE3 is M07: these two define the CORRECT POST DESIGN and INDICATOR IDENTITY.\nKeep reference1's entire composition and orientation: FAR post at UPPER LEFT, NEAR post at LOWER RIGHT, rail axis sloping DOWN to the RIGHT, both posts vertical. Preserve its THREE main rails, bottom reinforcement rail, two diagonal low braces, rail lengths, socket attachment heights, complete feet positions,1536x1024 canvas, object placement, apparent scale, transparency and upper-left world lighting. The silhouette is already complete; do not crop or zoom/reframe it.\nCORRECT ONLY THE POST FAMILY DETAILS using references2 and3:\n- Both post bodies are the same blunt FACETED tapered basalt/gunmetal polygonal pillars as M12/M07, with matching FLAT FACETED polygonal caps and angular bevels, not smooth cylindrical caps.\n- Restore the same NARROW straight aged-bronze vertical strips bordering the dark stone faces, the same restrained bronze edge guards and segmented bolted flared foot detailing. Remove the broad irregular bronze facing shape from reference1 that belongs to a different post family.\n- On EACH post replace the vertical multi-dot indicator with ONE small HORIZONTAL rounded-rectangle AMBER window, visibly wider than tall, exactly like M12/M07. One continuous tiny amber lens per post: NO stacked amber dots, NO vertical light slot, NO rows of lamps.\n- Keep the sparse incised three-claw marks on the front dark face, matching the subtle marks and scale of M12/M07, not readable text.\nThe newly styled posts must connect naturally to reference1's unchanged rail ends and socket heights. Do not import a second arm, corner junction, third post or other object from M07. Do not change the rail orientation into M12's opposite direction. Re-render the local correction with coherent top-left highlights and self-shadowing; no pixel mirroring or rotation.\nKeep the same realistic detailed hand-painted game appearance, weathered charcoal basalt, dark gunmetal, restrained aged bronze and tiny amber lights. Output ONE complete independent transparent PNG sprite only. Preserve true alpha outside the structure and through every rail opening. No environment, ground plane, ground shadow, fog, gradient backdrop, painted checkerboard, people, animals, text, label, diagram, collage or contact sheet.\nThis is an original game adaptation and a corrected candidate; no canonical1:1 or runtime-fit claim.",
+      "reference_image_files": [
+        "production/homeworld-sectors-20261103/attempts/mounts/HWM162-M11-corral-diagonal-left-v1.png",
+        "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M12-corral-diagonal-right.png",
+        "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M07-corral-corner.png"
+      ],
+      "reference_sha256": [
+        "e4d5ed338c745dd36b73597cafed281a2f70b1887c57dadd64b63945d5189a3a",
+        "8b24047d241df0b1849a9ef7bf98b834e29db2891ceb097d2decfceb76bd6bcd",
+        "dded60e7e63162ccc49821c124e11d501d317aa04f643663df7b553a3887dd0f"
+      ],
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "variant_kind": "NATIVE_DIAGONAL_ORIENTATION_OF_EXISTING_FENCE_SYSTEM",
+      "extends_arm_of_M07": "left",
+      "requested_dimensions_m": {
+        "length": 3,
+        "height": 2.6
+      },
+      "review_note": "Targeted second generation corrects the post family: one horizontal amber window per post, faceted polygon caps, narrow straight bronze strips and segmented bolted feet. Upper-left to lower-right axis, three main rails, low reinforcement and braces remain visually preserved. Complete silhouette, native unmodified PNG. Exact modular joins, camera and scale remain unvalidated in scene. First attempt retained separately; not an additional selected sprite.",
+      "camera_requested": {
+        "mode": "PROJECT_ORTHOGRAPHIC_REQUEST",
+        "yaw_degrees": 0,
+        "pitch_degrees": 35,
+        "projection": "orthographic",
+        "object_orientation": "far end upper-left, near end lower-right"
+      },
+      "camera_measured": false,
+      "assembly_pair_ids": [
+        "HWM162-M07",
+        "HWM162-M04"
+      ],
+      "assembly_runtime_validated": false,
+      "production_pass": 3,
+      "mode": "RGBA",
+      "dimensions_px": [
+        1536,
+        1024
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_zero_pixels": 1022826,
+      "alpha_bbox": [
+        0,
+        9,
+        1518,
+        1024
+      ],
+      "alpha_bbox_8": [
+        201,
+        48,
+        1318,
+        972
+      ],
+      "alpha_bbox_gt24": [
+        201,
+        48,
+        1318,
+        972
+      ],
+      "alpha_thresholds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            9,
+            1518,
+            1024
+          ],
+          "margins": [
+            0,
+            9,
+            18,
+            0
+          ],
+          "pixels": 550038
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            201,
+            48,
+            1318,
+            972
+          ],
+          "margins": [
+            201,
+            48,
+            218,
+            52
+          ],
+          "pixels": 418710
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            201,
+            48,
+            1318,
+            972
+          ],
+          "margins": [
+            201,
+            48,
+            218,
+            52
+          ],
+          "pixels": 416963
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            201,
+            49,
+            1317,
+            971
+          ],
+          "margins": [
+            201,
+            49,
+            219,
+            53
+          ],
+          "pixels": 412284
+        }
+      },
+      "sha256": "928ffc75d39105cc31b6562487d91212300d3d0649cb0b4849f36012f8b92ea7",
+      "status": "GENERATED_ORIGINAL_PENDING_FINAL_REVIEW",
+      "runtime_integrated": false,
+      "human_art_validated": false,
+      "canon_1_to_1_claim": false,
+      "bytes": 1997987,
+      "substantial_silhouette_margins_px": [
+        201,
+        48,
+        218,
+        52
+      ],
+      "silhouette_margins_gt24_px": [
+        201,
+        48,
+        218,
+        52
+      ],
+      "edge_alpha_max": 1,
+      "original_unchanged": true,
+      "imagegen_calls_for_asset": 2,
+      "reference_input_paths_at_generation": [
+        "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/mounts/HWM162-M11-corral-diagonal-left.png",
+        "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/mounts/HWM162-M12-corral-diagonal-right.png",
+        "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/mounts/HWM162-M07-corral-corner.png"
+      ],
+      "reference_current_local_paths": [
+        "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/attempts/mounts/HWM162-M11-corral-diagonal-left-v1.png",
+        "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/mounts/HWM162-M12-corral-diagonal-right.png",
+        "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/mounts/HWM162-M07-corral-corner.png"
+      ],
+      "selected_attempt": 2,
+      "attempts": [
+        {
+          "id": "HWM162-M11",
+          "label": "Clôture diagonale prolongeant le bras gauche de M07",
+          "target_id": "target-v81-72-287",
+          "file": "production/homeworld-sectors-20261103/attempts/mounts/HWM162-M11-corral-diagonal-left-v1.png",
+          "source_original": "/workspace/scratch/2166fec07f86/generated_images/exec-d788267d-5159-4c47-bb5b-67ace9acec01.png",
+          "output_hint": "Generated images are saved to /workspace/scratch/2166fec07f86/generated_images as /workspace/scratch/2166fec07f86/generated_images/exec-d788267d-5159-4c47-bb5b-67ace9acec01.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "prompt": "Create ONE new native independent orientation sprite HWM162-M11 for the existing Yautja The Long Hunt corral-fence system.\nREFERENCE1 is the L-shaped corner M07. REFERENCE2 is its front-facing straight fence M04. Use these exact reference designs, materials and engineering. Output ONLY ONE STRAIGHT FENCE SECTION whose axis matches the LEFT ARM of reference1: its farther end is at UPPER LEFT and its nearer end at LOWER RIGHT. It is a straight section seen diagonally, not a corner and not an L. This extends the left-hand run of the corner. No other arm or corner junction appears.\nConstruction: exactly TWO heavy blunt tapered charcoal-basalt-and-gunmetal posts, THREE strong rectangular horizontal-in-world rails between them, one narrow low reinforcement with short diagonal braces. Captive bolted sockets match M04/M07. Broad flared bolted feet, smooth blunt polygonal caps, aged-bronze narrow facing strips/corner guards, sparse three-claw scars and tiny recessed amber indicators. The posts remain VERTICAL in the image; the rail axis slopes DOWN toward the RIGHT to match the projected left arm of M07. Both posts have the same real height and the rails remain parallel. No extra post, no extra bar across the ground, no floor slab, no spikes. Proposed section dimensions3 metres long by2.6 metres tall, with robust large-quadruped-safe inner surfaces.\nNative rendering requirements: re-render the straight object in this new orientation, preserving the reference family. Do not simply rotate a flat frontal sprite or mirror a drawing. Keep the world lighting from UPPER LEFT, with worn bronze highlights and coherent self-shadowing on the newly visible side. Requested project camera orthographic yaw0/pitch35 degrees downward; the object's orientation changes in the ground plane. Match the left-arm projection of M07 as closely as possible, with parallel rails and no camera convergence. Detailed believable painterly-realistic game asset, restrained dark charcoal basalt, aged bronze and gunmetal palette, tiny amber only.\nCOMPOSITION: one complete standalone connected section, on a wide1536x1024 transparent canvas. Entire object including both complete feet, caps, all sockets and rail ends centered with broad transparent safety margins at least100px on every side. Zoom out enough for the complete diagonal silhouette, no crop. Native true alpha outside the object and through all rail gaps. No opaque background, atmospheric haze, vignette, gradient, ground shadow or checkerboard painting.\nNo animals, people, scene, building, whole enclosure, second variant, loose accessory, contact sheet, text, label, readable glyph strings or watermark. Only the new straight fence view for the LEFT branch. Original game adaptation; no canonical1:1 claim.",
+          "reference_image_files": [
+            "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M07-corral-corner.png",
+            "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M04-corral-fence.png"
+          ],
+          "reference_input_paths": [
+            "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/mounts/HWM162-M07-corral-corner.png",
+            "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/mounts/HWM162-M04-corral-fence.png"
+          ],
+          "reference_sha256": [
+            "dded60e7e63162ccc49821c124e11d501d317aa04f643663df7b553a3887dd0f",
+            "4045b9d71693b66341d14b45dde68930d3664a56784d4bf1ce69c097e247a525"
+          ],
+          "lore_status": "ORIGINAL_GAME_ADAPTATION",
+          "variant_kind": "NATIVE_DIAGONAL_ORIENTATION_OF_EXISTING_FENCE_SYSTEM",
+          "extends_arm_of_M07": "left",
+          "requested_dimensions_m": {
+            "length": 3,
+            "height": 2.6
+          },
+          "review_note": "One complete straight fence module, two vertical posts, three rails and low bracing, in the upper-left to lower-right orientation. Native generated view, no pixel rotation or mirroring. Entire feet and caps visible; top/bottom safety margins are smaller than requested. Geometry, projected rail heights, post overlap and exact join with M07 remain unverified in scene. No scripted edits, resizing or padding.",
+          "camera_requested": {
+            "mode": "PROJECT_ORTHOGRAPHIC_REQUEST",
+            "yaw_degrees": 0,
+            "pitch_degrees": 35,
+            "projection": "orthographic",
+            "object_orientation": "far end upper-left, near end lower-right"
+          },
+          "camera_measured": false,
+          "assembly_pair_ids": [
+            "HWM162-M07",
+            "HWM162-M04"
+          ],
+          "assembly_runtime_validated": false,
+          "production_pass": 3,
+          "mode": "RGBA",
+          "dimensions_px": [
+            1536,
+            1024
+          ],
+          "alpha_extrema": [
+            0,
+            254
+          ],
+          "alpha_zero_pixels": 1132816,
+          "alpha_bbox": [
+            0,
+            10,
+            1536,
+            1024
+          ],
+          "alpha_bbox_8": [
+            210,
+            51,
+            1318,
+            978
+          ],
+          "alpha_bbox_gt24": [
+            210,
+            51,
+            1318,
+            978
+          ],
+          "alpha_thresholds": {
+            "0": {
+              "comparison": "alpha > threshold",
+              "box": [
+                0,
+                10,
+                1536,
+                1024
+              ],
+              "margins": [
+                0,
+                10,
+                0,
+                0
+              ],
+              "pixels": 440048
+            },
+            "8": {
+              "comparison": "alpha > threshold",
+              "box": [
+                210,
+                51,
+                1318,
+                978
+              ],
+              "margins": [
+                210,
+                51,
+                218,
+                46
+              ],
+              "pixels": 406758
+            },
+            "24": {
+              "comparison": "alpha > threshold",
+              "box": [
+                210,
+                51,
+                1318,
+                978
+              ],
+              "margins": [
+                210,
+                51,
+                218,
+                46
+              ],
+              "pixels": 405088
+            },
+            "128": {
+              "comparison": "alpha > threshold",
+              "box": [
+                211,
+                52,
+                1318,
+                977
+              ],
+              "margins": [
+                211,
+                52,
+                218,
+                47
+              ],
+              "pixels": 400327
+            }
+          },
+          "sha256": "e4d5ed338c745dd36b73597cafed281a2f70b1887c57dadd64b63945d5189a3a",
+          "status": "SUPERSEDED_POST_FAMILY_DETAILS",
+          "runtime_integrated": false,
+          "human_art_validated": false,
+          "canon_1_to_1_claim": false,
+          "bytes": 1871690,
+          "substantial_silhouette_margins_px": [
+            210,
+            51,
+            218,
+            46
+          ],
+          "silhouette_margins_gt24_px": [
+            210,
+            51,
+            218,
+            46
+          ],
+          "edge_alpha_max": 1,
+          "original_unchanged": true,
+          "imagegen_calls_for_asset": 1,
+          "original_selected_file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M11-corral-diagonal-left.png",
+          "attempt": 1,
+          "selected": false,
+          "rejection_reason": "Vertical multi-point indicators, cap shape and wide irregular bronze facing drifted from the M07/M12 post family. Silhouette margins were not the reason for correction."
+        }
+      ],
+      "correction_reason": "Parent visual review identified a concrete post-family drift in attempt1; one targeted imagegen correction requested."
+    },
+    {
+      "id": "HWM162-M12",
+      "label": "Clôture diagonale prolongeant le bras droit de M07",
+      "target_id": "target-v81-72-287",
+      "file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M12-corral-diagonal-right.png",
+      "source_original": "/workspace/scratch/2166fec07f86/generated_images/exec-def95db3-600f-4afd-b66d-eec5971c8b6e.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/2166fec07f86/generated_images as /workspace/scratch/2166fec07f86/generated_images/exec-def95db3-600f-4afd-b66d-eec5971c8b6e.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "prompt": "Create ONE new native independent orientation sprite HWM162-M12 for the existing Yautja The Long Hunt corral-fence system.\nREFERENCE1 is the L-shaped corner M07. REFERENCE2 is its frontal straight fence M04. Output ONLY ONE STRAIGHT FENCE SECTION matching the RIGHT ARM of reference1: nearer end at LOWER LEFT, farther end at UPPER RIGHT. The rails RISE toward the RIGHT in the image. It is one straight section seen diagonally, NOT a corner or an L. It extends the right-hand run of M07. Do not include the other branch, corner post or any extra section.\nEXACT FAMILY CONSTRUCTION: TWO robust blunt tapered charcoal-basalt-and-gunmetal end posts; THREE thick rectangular horizontal-in-world rails connected by captive bolted sockets; a narrow LOW reinforcement rail with two short diagonal braces. Broad flared bolted post feet; smooth blunt polygonal caps; narrow worn aged-bronze facing strips and corner guards; sparse three-claw marks; tiny recessed amber indicators. Match the reference shapes and mechanical rail levels. Both posts remain VERTICAL on the page and have equal real height. Safe blunt inner faces, no spikes, blades, cage mesh or ground slab. Proposed3-metre segment length,2.6-metre height. All components connected as one object.\nORIENTATION AND LIGHT: a separately rendered native right-branch view, not a mirrored image and not a rotation of the frontal pixels. Camera requested orthographic yaw0/pitch35 degrees downward; rotate the OBJECT on the ground, not the canvas. Match the visible projected right-arm slope of M07 while retaining parallel rails and vertical posts. Preserve the same WORLD LIGHT FROM UPPER LEFT, so the newly visible faces receive physically coherent light and shadow; do not reverse the lighting. Realistic detailed hand-painted game rendering, worn charcoal basalt, aged bronze and dark gunmetal, restrained patina and small amber only.\nFRAMING IS CRITICAL:1536x1024 landscape transparent canvas. Intentionally make the entire diagonal section SMALL in the center, no more than60 percent of canvas width AND60 percent of height. Leave at least150px empty transparent margin on all four sides. Both full feet, both full caps and every brace must be comfortably inside the canvas. Do not zoom to fill the frame. Preserve a complete isolated silhouette. Native real transparent alpha outside the solid object and through rail gaps. No atmosphere, background gradient, halo, vignette, ground plane, ground shadow, checkerboard painting or opaque backdrop.\nOnly one whole standalone fence module. No animals, people, scenery, building, full enclosure, loose accessories, second view, text, legible glyph strings, diagram, title, label or contact sheet. Original game adaptation without canonical1:1 certification.",
+      "reference_image_files": [
+        "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M07-corral-corner.png",
+        "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M04-corral-fence.png"
+      ],
+      "reference_input_paths": [
+        "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/mounts/HWM162-M07-corral-corner.png",
+        "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/mounts/HWM162-M04-corral-fence.png"
+      ],
+      "reference_sha256": [
+        "dded60e7e63162ccc49821c124e11d501d317aa04f643663df7b553a3887dd0f",
+        "4045b9d71693b66341d14b45dde68930d3664a56784d4bf1ce69c097e247a525"
+      ],
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "variant_kind": "NATIVE_DIAGONAL_ORIENTATION_OF_EXISTING_FENCE_SYSTEM",
+      "extends_arm_of_M07": "right",
+      "requested_dimensions_m": {
+        "length": 3,
+        "height": 2.6
+      },
+      "review_note": "One complete straight fence module, two vertical posts, three rails and low bracing, in the lower-left to upper-right orientation. Independently generated native view using M04/M07 references; no pixel mirroring or rotation of M11. All caps, feet and braces visible with substantial margins. Exact projected rail slopes, post overlaps, scale and joins with M07/M11 are not validated in scene. No scripted edits, resizing or padding.",
+      "camera_requested": {
+        "mode": "PROJECT_ORTHOGRAPHIC_REQUEST",
+        "yaw_degrees": 0,
+        "pitch_degrees": 35,
+        "projection": "orthographic",
+        "object_orientation": "near end lower-left, far end upper-right"
+      },
+      "camera_measured": false,
+      "assembly_pair_ids": [
+        "HWM162-M07",
+        "HWM162-M04",
+        "HWM162-M11"
+      ],
+      "assembly_runtime_validated": false,
+      "production_pass": 3,
+      "mode": "RGBA",
+      "dimensions_px": [
+        1536,
+        1024
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_zero_pixels": 1294710,
+      "alpha_bbox": [
+        0,
+        17,
+        1510,
+        1024
+      ],
+      "alpha_bbox_8": [
+        306,
+        219,
+        1230,
+        861
+      ],
+      "alpha_bbox_gt24": [
+        307,
+        219,
+        1229,
+        860
+      ],
+      "alpha_thresholds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            17,
+            1510,
+            1024
+          ],
+          "margins": [
+            0,
+            17,
+            26,
+            0
+          ],
+          "pixels": 278154
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            306,
+            219,
+            1230,
+            861
+          ],
+          "margins": [
+            306,
+            219,
+            306,
+            163
+          ],
+          "pixels": 250309
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            307,
+            219,
+            1229,
+            860
+          ],
+          "margins": [
+            307,
+            219,
+            307,
+            164
+          ],
+          "pixels": 248699
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            307,
+            219,
+            1228,
+            859
+          ],
+          "margins": [
+            307,
+            219,
+            308,
+            165
+          ],
+          "pixels": 244588
+        }
+      },
+      "sha256": "8b24047d241df0b1849a9ef7bf98b834e29db2891ceb097d2decfceb76bd6bcd",
+      "status": "GENERATED_ORIGINAL_PENDING_FINAL_REVIEW",
+      "runtime_integrated": false,
+      "human_art_validated": false,
+      "canon_1_to_1_claim": false,
+      "bytes": 1427860,
+      "substantial_silhouette_margins_px": [
+        306,
+        219,
+        306,
+        163
+      ],
+      "silhouette_margins_gt24_px": [
+        307,
+        219,
+        307,
+        164
+      ],
+      "edge_alpha_max": 1,
+      "original_unchanged": true,
+      "imagegen_calls_for_asset": 1
     }
   ],
   "generation_complete": true,
-  "asset_count": 9,
-  "production_note": "Nine independent generated originals, including one 90-degree corner, one open gateway and a separate sliding leaf. Original files unmodified. M08/M09 composition and movement remain proposed, with native clearances documented. No runtime integration, human art validation, or canon 1:1 certification."
+  "asset_count": 12,
+  "production_note": "Twelve selected independent mount sprites. M11 attempt2 replaces the first diagonal-left candidate after targeted post-family correction; attempt1 is archived, not a thirteenth selected sprite. The other eleven selected PNGs are unchanged. No scripted pixel edits, runtime integration, human art validation, or canonical1:1 certification.",
+  "archived_mount_attempt_count": 1
 }

@@ -2,13 +2,13 @@
 
 Lot de production `MMK-20261103`. Les identifiants de génération `HWM162-*` sont conservés. Ce dossier est distinct du lot de terrains `homeworld-v162` ajouté en parallèle.
 
-Ce lot complète les sources de la PR [#99](https://github.com/darknigthmare/yautja-la-longue-chasse/pull/99) avec **25 PNG indépendants présents** pour 25 objets ou états planifiés. Chaque objet est un fichier séparé. Les anciennes sources restent à leur emplacement.
+Ce lot complète les sources de la PR [#99](https://github.com/darknigthmare/yautja-la-longue-chasse/pull/99) avec **35 PNG indépendants présents** pour 35 objets ou états planifiés. Chaque objet est un fichier séparé. Les anciennes sources restent à leur emplacement.
 
 | Secteur | Objets ou états du lot | PNG présents |
 | --- | ---: | ---: |
-| Marché | 7 | 7 |
-| Montures | 9 | 9 |
-| Chenils | 9 | 9 |
+| Marché | 10 | 10 |
+| Montures | 12 | 12 |
+| Chenils | 13 | 13 |
 
 ## Consulter les fichiers
 
@@ -44,6 +44,16 @@ Ce lot complète les sources de la PR [#99](https://github.com/darknigthmare/yau
 | HWM162-K07 | Laisse de conduite indépendante | target-v81-71-274 | [PNG](sprites/kennels/HWM162-K07-handler-lead.png) | 1536 × 1024 |
 | HWM162-K08 | Leurre de dressage indépendant | target-v81-71-274 | [PNG](sprites/kennels/HWM162-K08-woven-training-lure.png) | 1024 × 1536 |
 | HWM162-K09 | Collier de conduite ajustable | target-v81-71-274 | [PNG](sprites/kennels/HWM162-K09-adjustable-collar.png) | 1536 × 1024 |
+| HWM162-S08 | Caisse marchande — état ouvert | target-v81-64-167 | [PNG](sprites/market/HWM162-S08-open-merchant-crate.png) | 1254 × 1254 |
+| HWM162-S09 | Conteneur cylindrique marchand autonome | target-v81-64-166 | [PNG](sprites/market/HWM162-S09-detached-storage-cylinder.png) | 1086 × 1448 |
+| HWM162-S10 | Auvent marchand libre de mobilier | target-v81-64-161 | [PNG](sprites/market/HWM162-S10-free-market-canopy.png) | 1536 × 1024 |
+| HWM162-M10 | Mangeoire adaptée — état vide | target-v81-72-288 | [PNG](sprites/mounts/HWM162-M10-empty-mount-feeder.png) | 1254 × 1254 |
+| HWM162-M11 | Clôture — prolongement du bras gauche : haut-gauche vers bas-droite | target-v81-72-287 | [PNG](sprites/mounts/HWM162-M11-corral-diagonal-left-v2.png) | 1536 × 1024 |
+| HWM162-M12 | Clôture — prolongement du bras droit : bas-gauche vers haut-droite | target-v81-72-287 | [PNG](sprites/mounts/HWM162-M12-corral-diagonal-right.png) | 1536 × 1024 |
+| HWM162-K10 | Cage petite — porte ouverte | target-v81-71-276 | [PNG](sprites/kennels/HWM162-K10-small-cage-open.png) | 1254 × 1254 |
+| HWM162-K11 | Cage moyenne — trappe latérale rétractée | target-v81-71-277 | [PNG](sprites/kennels/HWM162-K11-medium-cage-open.png) | 1254 × 1254 |
+| HWM162-K12 | Cage lourde — porte ouverte | target-v81-71-278 | [PNG](sprites/kennels/HWM162-K12-heavy-cage-open.png) | 1536 × 1024 |
+| HWM162-K13 | Barrière d’énergie — désactivée | target-v81-71-270 | [PNG](sprites/kennels/HWM162-K13-energy-barrier-off.png) | 1254 × 1254 |
 
 ## Deuxième passe : composants détachés et raccords
 
@@ -64,6 +74,33 @@ Le chariot cargo V78 et le crochet de trophées V114 existaient déjà et resten
 
 Le cadre M08 et le battant M09 proposent les éléments séparés d’un portail de grand enclos. Leurs raccords, dimensions, pivots et collisions demandent une vérification dans la scène, comme ceux du couple K02/K06. Aucun état animé fonctionnel n’est déduit de la présence de ces PNG.
 
+## Troisième passe : états et composants de fonctionnement
+
+Cette passe ajoute 10 PNG aux 25 déjà livrés. Elle fournit une caisse ouverte, un cylindre détaché de son rack, un auvent libre, une mangeoire vide, deux orientations natives de clôture, trois cages ouvertes et une barrière d’énergie désactivée. Les 40 cibles héritées et les deux bâtiments ajoutés restent les mêmes. Le [plan de cette passe](next-targets-round3.json), l’[audit des équivalents](modularity-audit-round3.json) et la [revue des dix ajouts](review-round3.md) décrivent les sources et les contrôles.
+
+L’audit de cette passe utilise la tête de PR `454bbc558abc9bb06141b2b77642bff1894d8cf2`, après la livraison des 25 premiers PNG au commit `a6e16334589ee8c4724bcc04da539007e669c883`.
+
+| ID | Objet ou état | Cible conservée | Vue demandée | Source visuelle reprise |
+| --- | --- | --- | --- | --- |
+| HWM162-S08 | Caisse marchande — état ouvert | target-v81-64-167 | Vue de la référence conservée | [public/game/homeworld/v80/sealed-cargo-case-left.png](../../public/game/homeworld/v80/sealed-cargo-case-left.png) |
+| HWM162-S09 | Conteneur cylindrique marchand autonome | target-v81-64-166 | Cible orthographique 0°/35° | [public/game/homeworld/v76/logistics-container-rack-native.png](../../public/game/homeworld/v76/logistics-container-rack-native.png) |
+| HWM162-S10 | Auvent marchand libre de mobilier | target-v81-64-161 | Vue de la référence conservée | [public/game/homeworld/v76/merchant-canopy-diagonal-native.png](../../public/game/homeworld/v76/merchant-canopy-diagonal-native.png) |
+| HWM162-M10 | Mangeoire adaptée — état vide | target-v81-72-288 | Vue de la référence conservée | [production/native-open-20261102/archives/fauna-energy/gear/target-v81-72-288-adapted-mount-feeder-native.png](../native-open-20261102/archives/fauna-energy/gear/target-v81-72-288-adapted-mount-feeder-native.png) |
+| HWM162-M11 | Clôture — prolongement du bras gauche : haut-gauche vers bas-droite | target-v81-72-287 | Cible orthographique 0°/35° | [production/homeworld-sectors-20261103/sprites/mounts/HWM162-M04-corral-fence.png](sprites/mounts/HWM162-M04-corral-fence.png)<br>[production/homeworld-sectors-20261103/sprites/mounts/HWM162-M07-corral-corner.png](sprites/mounts/HWM162-M07-corral-corner.png) |
+| HWM162-M12 | Clôture — prolongement du bras droit : bas-gauche vers haut-droite | target-v81-72-287 | Cible orthographique 0°/35° | [production/homeworld-sectors-20261103/sprites/mounts/HWM162-M04-corral-fence.png](sprites/mounts/HWM162-M04-corral-fence.png)<br>[production/homeworld-sectors-20261103/sprites/mounts/HWM162-M07-corral-corner.png](sprites/mounts/HWM162-M07-corral-corner.png) |
+| HWM162-K10 | Cage petite — porte ouverte | target-v81-71-276 | Vue de la référence conservée | [production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-276-cage-petite-native.png](../native-open-20261102/archives/fauna-energy/cages/target-v81-71-276-cage-petite-native.png) |
+| HWM162-K11 | Cage moyenne — trappe latérale rétractée | target-v81-71-277 | Vue de la référence conservée | [production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-277-cage-moyenne-native.png](../native-open-20261102/archives/fauna-energy/cages/target-v81-71-277-cage-moyenne-native.png) |
+| HWM162-K12 | Cage lourde — porte ouverte | target-v81-71-278 | Vue de la référence conservée | [production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png](../native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png) |
+| HWM162-K13 | Barrière d’énergie — désactivée | target-v81-71-270 | Vue de la référence conservée | [production/native-open-20261102/archives/fauna-energy/target-v81-71-270-fauna-energy-barrier-native.png](../native-open-20261102/archives/fauna-energy/target-v81-71-270-fauna-energy-barrier-native.png) |
+
+Les éditions HWM162-S08, HWM162-S10, HWM162-M10, HWM162-K10, HWM162-K11, HWM162-K12, HWM162-K13 conservent la vue de leur référence. Les cages et la barrière d’énergie reprennent notamment des vues historiques trois-quarts. Aucune conversion générale de ces fichiers vers une vue frontale 0°/35° n’est revendiquée. Les trois nouvelles vues de S09, M11 et M12 demandent la cible du Homeworld ; leur angle réel n’est pas mesuré à partir du PNG.
+
+Les lampes suspendues V33 gauche et droite existaient déjà et restent des sources réutilisables. Aucun doublon de lampe n’est ajouté. Les états ouverts, vides ou désactivés conservent leurs sources de départ ; les pivots et l’alignement des paires doivent être contrôlés en scène. Les clôtures M11/M12 sont des générations natives, sans symétrie de pixels, dont le raccord avec M07 reste à tester.
+
+M11 utilise la deuxième sortie, après une correction ciblée des voyants et détails de poteaux. La première tentative reste archivée hors du dossier des sprites ; elle n’augmente pas le nombre de PNG sélectionnés. Le reçu montures conserve le motif et les deux empreintes.
+
+L’auvent S10 est libre de comptoir et de marchandises. Sa silhouette visible est entière, avec une marge minimale de 11 px au seuil alpha > 24 ; ce cadrage est plus serré que la marge demandée au générateur. Les pixels d’origine sont conservés, sans ajout de bordure ni retouche alpha.
+
 ## Fidélité et portée des références
 
 Les bâtiments de marché, d’écurie et de chenil sont des **adaptations originales du projet**. Les références ci-dessous orientent leur cohérence visuelle et leur fonction. Elles ne fournissent pas les plans canoniques de ces bâtiments. Ce lot ne porte aucune certification de reproduction 1:1.
@@ -79,7 +116,7 @@ Le chien de Predators (2010) et celui de The Predator (2018) restent deux réfé
 
 ## Échelle et implantation
 
-Caméra demandée : projection orthographique, yaw global 0°, inclinaison 35°, profondeur 0.573576436351046. La convention du Homeworld est un adulte de 100 unités pour 2,3 m. La porte minimale du contrat mesure 80 × 128 unités ; sa cible est 96 × 140. Ces valeurs décrivent le jeu.
+La cible de caméra du Homeworld est une projection orthographique, yaw global 0°, inclinaison 35°, profondeur 0.573576436351046. 7 éditions de ce lot conservent toutefois la vue de leur référence, identifiée dans le catalogue, la galerie et le classeur. Cette vue héritée est distincte de la cible du projet ; aucun angle réel n’est certifié par le PNG. La convention du Homeworld est un adulte de 100 unités pour 2,3 m. La porte minimale du contrat mesure 80 × 128 unités ; sa cible est 96 × 140. Ces valeurs décrivent le jeu.
 
 Les dimensions en pixels sont lues dans les fichiers. Les dimensions physiques ou en unités du monde restent des **propositions de placement**, lorsqu’elles sont renseignées. Elles ne sont ni des mesures officielles du lore, ni une preuve d’échelle en jeu. Les objets doivent garder leurs proportions ; aucune rotation CSS, symétrie ou mise à l’échelle non uniforme ne compense une vue incorrecte.
 

@@ -1,13 +1,59 @@
 {
-  "actualFiles": 25,
-  "expectedFiles": 25,
-  "uniqueIds": 25,
-  "uniqueHashes": 25,
+  "actualFiles": 35,
+  "expectedFiles": 35,
+  "uniqueIds": 35,
+  "uniqueHashes": 35,
   "targets": 42,
   "sourceCount": 6,
+  "productionPassCounts": {
+    "1": 17,
+    "2": 8,
+    "3": 10
+  },
+  "inheritedReferenceViewIds": [
+    "HWM162-S08",
+    "HWM162-S10",
+    "HWM162-M10",
+    "HWM162-K10",
+    "HWM162-K11",
+    "HWM162-K12",
+    "HWM162-K13"
+  ],
+  "cameraAnglesMeasured": false,
   "inspections": [
-    "{\"kind\":\"table\",\"sheet\":\"Livraison\",\"address\":\"A6:E9\",\"rows\":4,\"cols\":5,\"values\":[[\"Objets ou états du lot\",25,null,\"Lore : adaptations originales\",null],[\"PNG présents\",25,null,\"Aucune certification visuelle 1:1\",null],[\"Revue humaine validée\",0,null,\"Les 40 cibles héritées sont conservées\",null],[\"Admission runtime\",0,null,\"Pixels mesurés ; échelle physique proposée\",null]]}",
+    "{\"kind\":\"table\",\"sheet\":\"Livraison\",\"address\":\"A6:E9\",\"rows\":4,\"cols\":5,\"values\":[[\"Objets ou états du lot\",35,null,\"Lore : adaptations originales\",null],[\"PNG présents\",35,null,\"Aucune certification visuelle 1:1\",null],[\"Revue humaine validée\",0,null,\"Les 40 cibles héritées sont conservées\",null],[\"Admission runtime\",0,null,\"Pixels mesurés ; échelle physique proposée\",null]]}",
     "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}"
   ],
-  "nativeExcelInteractiveVerification": false
+  "nativeExcelInteractiveVerification": false,
+  "visualReview": {
+    "status": "REVIEWED_NO_VISIBLE_CLIPPING_IN_INSPECTED_RANGES",
+    "sheets": [
+      "Livraison",
+      "Catalogue",
+      "Implantation",
+      "Références"
+    ],
+    "additionalViews": [
+      "Livraison third-pass rows A39:K48",
+      "Livraison reference views Q39:R48",
+      "Implantation third-pass rows A32:F41",
+      "Catalogue fence additions A42:E44"
+    ],
+    "scope": "Rendered ranges inspected; unchanged source-sheet values compared to prior committed workbook."
+  },
+  "scopePreservation": {
+    "previous25DeliveryRowsFirst16ColumnsUnchanged": true,
+    "referenceSheetCellsUnchanged": true,
+    "nativeTableCount": 4,
+    "inheritedTargetCountUnchanged": 40,
+    "targetRowsIncludingTwoBuildings": 42
+  },
+  "documentChecks": {
+    "galleryCards": 35,
+    "sourceCatalogueMatchesManifest": true,
+    "pass3PlansGenerated": 10,
+    "round2HistoryRetained": true,
+    "round3ReviewLinkTargetExists": true,
+    "hound2010PrimarySource": "https://www.hottoys.jp/item/view/100001667"
+  }
 }

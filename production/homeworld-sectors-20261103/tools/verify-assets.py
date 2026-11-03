@@ -15,7 +15,7 @@ from PIL import Image
 
 PACK = Path(__file__).resolve().parents[1]
 REPO = PACK.parents[1]
-EXPECTED = [f'HWM162-{group}{i:02d}' for group, count in [('S', 7), ('M', 9), ('K', 9)] for i in range(1, count + 1)]
+EXPECTED = [f'HWM162-{group}{i:02d}' for group, count in [('S', 10), ('M', 12), ('K', 13)] for i in range(1, count + 1)]
 
 
 def read_json(path):
@@ -72,11 +72,18 @@ def aggregate():
         assert metrics['sha256'] == receipt['sha256'], f'Receipt hash mismatch: {asset_id}'
         proposed = receipt.get('proposedMetres') or receipt.get('requested_dimensions_m') or receipt.get('dimensions_m_proposed') or {}
         visual_note = receipt.get('visual_review') or receipt.get('review_note') or ''
+        view_policy = plan.get('viewPolicy', 'PROJECT_CAMERA_TARGET')
+        camera_request = receipt.get('camera_requested') or receipt.get('cameraRequested') or {
+            'projection': 'orthographic', 'yaw_degrees': 0, 'pitch_degrees': 35}
+        if view_policy == 'INHERIT_REFERENCE_VIEW':
+            assert camera_request.get('mode') == view_policy, f'Reference-view request missing: {asset_id}'
         notes = [
             'Source PNG selected after generation; no scripted image cleanup, resizing or padding.',
             'A few alpha 1 pixels can reach the canvas edges; alpha > 24 bounds describe the main silhouette only.',
-            'Camera 0°/35° and metre dimensions are the brief, not a measured 3D or canonical certification.',
+            'The Homeworld camera target is 0°/35°; state edits can explicitly inherit a historical reference view. Camera and metre dimensions are not measured 3D or canonical certifications.',
         ]
+        if plan.get('referenceViewNote'):
+            notes.append(plan['referenceViewNote'])
         if visual_note:
             notes.append(visual_note)
         if metrics['alphaBounds']['24']['minMargin'] < 80:
@@ -91,6 +98,8 @@ def aggregate():
                  'loreStatus': 'ORIGINAL_GAME_ADAPTATION', 'sourceRefs': source_refs,
                  'proposedMetres': proposed, 'dimensionsAuthority': 'PROJECT_BRIEF_NOT_CANONICAL_MEASUREMENT',
                  'purpose': plan['purpose'], 'placementNote': plan['placementNote'],
+                 'productionPass': plan.get('productionPass', 1), 'viewPolicy': view_policy,
+                 'generationCameraRequest': camera_request, 'projectCameraConformance': 'NOT_MEASURED',
                  'pivotDraftPixels': {'x': round((box[0] + box[2]) / 2, 2), 'y': box[3], 'status': 'BOUNDING_BOX_ANCHOR_ONLY_NOT_MEASURED_GROUND_CONTACT'},
                  'receipt': f'production/{PACK.name}/receipts/{area}.json', 'notes': notes,
                  'canonicalOneToOneClaimed': False, 'humanValidated': False, 'runtimeIntegrated': False,
@@ -102,22 +111,34 @@ def aggregate():
         elif receipt.get('assembly_proposal'):
             asset['pairingDraft'] = {'withAsset': receipt['assembly_pair_id'], **receipt['assembly_proposal']}
         if plan.get('sourceAssetIds'):
+            assert set(plan['sourceAssetIds']) <= set(plans), f'Unknown source asset ID: {asset_id}'
             asset['sourceAssetIds'] = plan['sourceAssetIds']
+        if plan.get('sourceAssetFiles'):
+            asset['sourceAssetFiles'] = plan['sourceAssetFiles']
         assets.append(asset)
     assert len({a['sha256'] for a in assets}) == len(assets), 'Duplicate selected image bytes'
     selected_paths = {a['path'] for a in assets}
     disk_paths = {str(p.relative_to(REPO)) for p in (PACK / 'sprites').rglob('*.png')}
     assert disk_paths == selected_paths, 'Unexpected or missing PNG in selected sprite directories'
+    preserved = read_json(PACK / 'modularity-audit-round3.json')['preservedSelectedAssets']
+    assert len(preserved) == 25, 'Unexpected previous delivery snapshot'
+    assets_by_id = {a['id']: a for a in assets}
+    for previous in preserved:
+        actual = assets_by_id[previous['id']]
+        assert actual['path'] == previous['path'] and actual['sha256'] == previous['sha256'], f'Previous PNG changed: {previous["id"]}'
     manifest = {'schemaVersion': 1, 'version': 'MMK-20261103', 'date': '2026-11-03', 'repository': 'darknigthmare/yautja-la-longue-chasse', 'pullRequest': 99,
                 'sourceCommit': '0ab844cca5f2c9b5cae28624d2c1b97fca7d5ce9', 'mainCommit': 'f322e0cb42f2b1b7e06c3be1dcfbb23cb24f02c8',
                 'rebasedOnHead': '3950dbcccc36f4de7166faf5767277c0d9d55412',
                 'preservedConcurrentDelivery': 'production/homeworld-v162',
                 'generator': 'image_gen.imagegen (built-in)', 'cameraRequested': {'projection': 'orthographic', 'yawDegrees': 0, 'pitchDegrees': 35, 'depthScale': 0.573576436351046},
                 'cameraMeasured': False, 'assets': assets, 'sources': catalogue['sources'],
+                'cameraPolicyNote': 'The global camera is the project target. Assets marked INHERIT_REFERENCE_VIEW preserve a historical source view instead of claiming a new frontal 0°/35° view.',
                 'selectedPNGCount': len(assets), 'selectedBytes': sum(a['bytes'] for a in assets),
                 'areas': {g: sum(a['area'] == g for a in assets) for g in ['market', 'mounts', 'kennels']},
                 'firstDeliveryCommit': 'd4c43dce5286fbb64e41ae5fa22cb82854572a7e',
-                'scope': '25 selected independent PNG sources: 17 in the first delivery plus 8 modular components. Forty inherited target rows audited; two building targets added to this delivery catalogue only.',
+                'secondDeliveryCommit': 'a6e16334589ee8c4724bcc04da539007e669c883',
+                'continuationBaseCommit': '454bbc558abc9bb06141b2b77642bff1894d8cf2',
+                'scope': '35 selected independent PNG sources: 17 in the first delivery, 8 in the second pass and 10 additional states, components or native orientations. Forty inherited target rows audited; two building targets belong to this delivery catalogue only.',
                 'canonicalOneToOneClaimed': False, 'humanValidated': False, 'runtimeIntegrated': False}
     report = {'version': 'MMK-20261103', 'verifier': f'production/{PACK.name}/tools/verify-assets.py',
               'sourceIntegrity': 'PASS', 'selectedCount': len(assets), 'rgbaWithRealTransparency': len(assets),
@@ -125,8 +146,11 @@ def aggregate():
               'strictClearMarginCount': sum(a['strictClearMargin'] for a in assets),
               'visibleMarginAtLeast80Count': sum(a['alphaBounds']['24']['minMargin'] >= 80 for a in assets),
               'uniqueSha256Count': len({a['sha256'] for a in assets}), 'selectedBytes': manifest['selectedBytes'],
+              'previousDeliveryPNGUnchanged': len(preserved),
+              'thirdPassPNGCount': sum(a['productionPass'] == 3 for a in assets),
+              'inheritedReferenceViewCount': sum(a['viewPolicy'] == 'INHERIT_REFERENCE_VIEW' for a in assets),
               'scriptModifiesPNG': False, 'runtimeAdmission': False, 'canonicalCertification': False,
-              'limits': ['Low-alpha edge noise remains in the native sources.', 'No collision, portal, actor placement or animation validation is claimed.', 'Dimensions in metres are proposed design dimensions.'],
+              'limits': ['Low-alpha edge noise remains in the native sources.', 'No collision, portal, actor placement or animation validation is claimed.', 'Dimensions in metres are proposed design dimensions.', 'Historical view inheritance is recorded separately from the Homeworld 0°/35° target; no camera conversion is presumed.'],
               'files': [{k: a[k] for k in ['id', 'path', 'sha256', 'bytes', 'width', 'height', 'mode', 'alphaMin', 'alphaMax', 'transparentPixels', 'alphaBounds', 'edgeAlphaMax']} for a in assets]}
     return manifest, report
 

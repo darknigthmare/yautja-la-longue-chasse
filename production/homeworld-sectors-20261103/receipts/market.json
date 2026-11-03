@@ -166,10 +166,502 @@
       "bytes": 1734429,
       "width": 1774,
       "height": 887
+    },
+    {
+      "key": "market-s08",
+      "id": "HWM162-S08",
+      "label": "Caisse marchande — état ouvert",
+      "file": "HWM162-S08-open-merchant-crate.png",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S08-open-merchant-crate.png",
+      "area": "market",
+      "phase": "round3-states-and-components",
+      "targetIds": [
+        "target-v81-64-167"
+      ],
+      "role": "État ouvert complémentaire de la caisse marchande existante.",
+      "generator": "image_gen.imagegen",
+      "tool_call_count": 1,
+      "generationMode": "edit",
+      "prompt": "Use case: precise-object-edit. Asset type: one independent transparent PNG game prop, HWM162-S08, open merchant cargo crate for Yautja: The Long Hunt. This is an original game adaptation, not a certified film prop.\nINPUT IMAGE 1 IS THE EDIT TARGET: the existing closed dark metal cargo crate. Change only its open/closed state. Preserve the same identity: the charcoal metal body, weathered aged-bronze angular corner caps and rails, broad engraved front panel, recessed side carrying handle, trapezoid feet, and paired black securing straps and bronze catches. Preserve the reference's exact three-quarter viewing direction, camera projection, object proportions and upper-left lighting. Do NOT turn the crate front-on, mirror it, replace its design, recolor it or reinterpret its ornament.\nRaise the ONE lid on rear hinges, around 105 degrees from its closed position, so the empty dark metal interior is clearly visible. The lid stays physically attached to the rear edge. Release the two front securing catches and straps so they do not impossibly continue across the open gap; they can remain attached at their original mounting points. Keep the body, all four feet and the side handle in the same design. The inside is one usable empty compartment, with no cargo, tray, cloth, weapons or small loose objects. No detached second lid, no second box and no separate before/after state.\nReframe only as needed so the COMPLETE open crate including raised lid, feet and every fitting is centered and entirely inside the canvas, with roughly 12 percent genuinely empty transparent space on every side. Keep the whole source body silhouette; no cuts or border contact. Preserve the realistic detailed painted game-art surface quality and original bronze/charcoal palette. Output true transparent alpha, including the open surrounding space, with no background color, checkerboard, landscape, floor slab or atmosphere. No cast shadow outside the object. No text, labels, numbers, watermark, diagram or collage. Exactly ONE complete open crate sprite.",
+      "transparent_background": true,
+      "source": "/workspace/scratch/2166fec07f86/generated_images/exec-620e2a1c-ac8d-4f40-b311-09ef6e2350e9.png",
+      "references": [
+        {
+          "role": "edit_target",
+          "repoPath": "public/game/homeworld/v80/sealed-cargo-case-left.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round3-market-reference-inspection/public__game__homeworld__v80__sealed-cargo-case-left.png",
+          "sha256": "0d27b2eec19ddbd8d1ea65a8071971b34e24d93abb0052c98e7bd32058d98012"
+        }
+      ],
+      "camera_requested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "reference": "public/game/homeworld/v80/sealed-cargo-case-left.png",
+        "measured": false
+      },
+      "cameraMeasured": false,
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetPaths": [
+        "public/game/homeworld/v80/sealed-cargo-case-left.png"
+      ],
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOneClaimed": false,
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "scaleValidatedInGame": false,
+      "dimensionsAuthority": "NO_METRIC_DIMENSIONS_CLAIMED",
+      "proposedMetres": {},
+      "bytes": 2161796,
+      "sha256": "594f6e1e3918bfaf93990ab0a7b04948558c17c5c5a4d870181a02bc9b3800a4",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 650460,
+      "transparentRatio": 0.4136428500568516,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > 0",
+          "box": [
+            0,
+            0,
+            1240,
+            1254
+          ],
+          "margins": [
+            0,
+            0,
+            14,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 922056
+        },
+        "8": {
+          "comparison": "alpha > 8",
+          "box": [
+            67,
+            58,
+            1207,
+            1174
+          ],
+          "margins": [
+            67,
+            58,
+            47,
+            80
+          ],
+          "minMargin": 47,
+          "pixels": 907523
+        },
+        "24": {
+          "comparison": "alpha > 24",
+          "box": [
+            67,
+            59,
+            1206,
+            1174
+          ],
+          "margins": [
+            67,
+            59,
+            48,
+            80
+          ],
+          "minMargin": 48,
+          "pixels": 905853
+        },
+        "128": {
+          "comparison": "alpha > 128",
+          "box": [
+            68,
+            59,
+            1206,
+            1173
+          ],
+          "margins": [
+            68,
+            59,
+            48,
+            81
+          ],
+          "minMargin": 48,
+          "pixels": 902067
+        }
+      },
+      "edgeAlphaMax": 1,
+      "mainSilhouetteInsideCanvasAtAlpha24": true,
+      "strictClearMargin": false,
+      "nativePreservation": {
+        "copyByteIdentical": true,
+        "pixelsEdited": false,
+        "alphaEdited": false,
+        "mirrored": false,
+        "resized": false,
+        "padded": false,
+        "originalPreserved": true
+      },
+      "visual_review": "Une seule caisse ouverte, couvercle attaché par deux charnières, compartiment vide visible, deux fermoirs frontaux libérés, poignée latérale et pieds conservés. Identité bronze/charbon, motifs et vue diagonale de la référence reconnaissables. Aucun second objet, texte lisible ou coupe de silhouette observé. La géométrie de l’état ouvert n’est pas certifiée identique au pixel près à l’état fermé ; pivot et raccord à vérifier en scène.",
+      "notes": [
+        "Un appel ImageGen dédié pour ce sprite.",
+        "Pixels périphériques d’alpha 1 conservés sans nettoyage.",
+        "La présence du PNG ne valide ni une animation, ni des collisions, ni une fidélité canonique 1:1."
+      ],
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE"
+    },
+    {
+      "key": "market-s09",
+      "id": "HWM162-S09",
+      "label": "Conteneur cylindrique marchand autonome",
+      "file": "HWM162-S09-detached-storage-cylinder.png",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S09-detached-storage-cylinder.png",
+      "area": "market",
+      "phase": "round3-states-and-components",
+      "targetIds": [
+        "target-v81-64-166"
+      ],
+      "role": "Composant cylindrique portable détaché du rack logistique.",
+      "generator": "image_gen.imagegen",
+      "tool_call_count": 1,
+      "generationMode": "generate_from_reference",
+      "prompt": "Use case: stylized-concept. Asset type: one independent transparent PNG game prop, HWM162-S09, a detached sealed storage cylinder for the Yautja: The Long Hunt market. Original game adaptation.\nINPUT IMAGE 1 IS A DESIGN AND MATERIAL REFERENCE, NOT A REQUEST TO REPRODUCE ITS WHOLE RACK. Use the MEDIUM cylinder in the UPPER MIDDLE of the reference as the design basis. Generate only ONE such complete freestanding closed cylinder. Its compact charcoal metal cylindrical body, rounded shoulder, thick worn bronze upper and lower rim, long angular bronze vertical reinforcing strip with restrained triangular geometric markings, and broad dark strap around its middle should clearly belong to that same family. One closed circular lid with a small integral low-profile grip. Every strap or fitting must connect to this one cylinder; finish the previously occluded sides and base coherently. The object must stand on its own integral flat base, with no pedestal.\nThe useful role is a movable empty sealed cargo container that can be placed separately on a shelf or pallet. Do not identify its contents as canonical food, fuel or medicine. No transparent cutaway or contents.\nCamera target for this new standalone orientation: orthographic front view, global yaw 0 degrees, looking down 35 degrees, enough top surface visible to read the lid. No strong perspective convergence, no tilted horizon, no isometric turn. Realistic detailed hand-painted 2.5D game-art finish, dark charcoal metal and weathered aged bronze, upper-left neutral lighting, no neon lighting. Keep one full silhouette centered in the central 70 percent of the canvas with at least 12 percent genuinely empty transparent margins on all sides. True transparent alpha; no scenery, floor tile, environmental shadow or colored background. NO rack, shelving, table, frame, second cylinder, box, cloth, tool or detached accessory. No people, animals, text, labels, numbers, watermark, contact sheet or multiple views. Exactly one freestanding sealed storage cylinder.",
+      "transparent_background": true,
+      "source": "/workspace/scratch/2166fec07f86/generated_images/exec-3a31812a-1b24-48d8-9579-d19aa008959b.png",
+      "references": [
+        {
+          "role": "design_and_material_reference",
+          "repoPath": "public/game/homeworld/v76/logistics-container-rack-native.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round3-market-reference-inspection/public__game__homeworld__v76__logistics-container-rack-native.png",
+          "sha256": "e7e3097c0e665ad8a3a4c1d5dacd3f4dcffa8b01275b124895be4525d6345d90"
+        }
+      ],
+      "camera_requested": {
+        "mode": "PROJECT_ORTHOGRAPHIC_TARGET",
+        "projection": "orthographic",
+        "yaw": 0,
+        "pitch": 35,
+        "measured": false
+      },
+      "cameraMeasured": false,
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetPaths": [
+        "public/game/homeworld/v76/logistics-container-rack-native.png"
+      ],
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOneClaimed": false,
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "scaleValidatedInGame": false,
+      "dimensionsAuthority": "NO_METRIC_DIMENSIONS_CLAIMED",
+      "proposedMetres": {},
+      "bytes": 1805155,
+      "sha256": "256a92587ab41c0aa7a2d3f62151005df766defe5185640a556c6fa89675433b",
+      "width": 1086,
+      "height": 1448,
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 812944,
+      "transparentRatio": 0.5169663115696509,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > 0",
+          "box": [
+            0,
+            8,
+            1072,
+            1433
+          ],
+          "margins": [
+            0,
+            8,
+            14,
+            15
+          ],
+          "minMargin": 0,
+          "pixels": 759584
+        },
+        "8": {
+          "comparison": "alpha > 8",
+          "box": [
+            199,
+            105,
+            884,
+            1355
+          ],
+          "margins": [
+            199,
+            105,
+            202,
+            93
+          ],
+          "minMargin": 93,
+          "pixels": 748336
+        },
+        "24": {
+          "comparison": "alpha > 24",
+          "box": [
+            201,
+            106,
+            884,
+            1355
+          ],
+          "margins": [
+            201,
+            106,
+            202,
+            93
+          ],
+          "minMargin": 93,
+          "pixels": 747533
+        },
+        "128": {
+          "comparison": "alpha > 128",
+          "box": [
+            202,
+            106,
+            883,
+            1354
+          ],
+          "margins": [
+            202,
+            106,
+            203,
+            94
+          ],
+          "minMargin": 94,
+          "pixels": 745184
+        }
+      },
+      "edgeAlphaMax": 1,
+      "mainSilhouetteInsideCanvasAtAlpha24": true,
+      "strictClearMargin": false,
+      "nativePreservation": {
+        "copyByteIdentical": true,
+        "pixelsEdited": false,
+        "alphaEdited": false,
+        "mirrored": false,
+        "resized": false,
+        "padded": false,
+        "originalPreserved": true
+      },
+      "visual_review": "Un seul cylindre fermé autonome, couvercle complet avec prise intégrée, corps charbon, renfort frontal bronze, cerclages et sangle solidaire. Aucun rack, second contenant ou accessoire détaché. Silhouette entière et fonction de conteneur lisible. La caméra frontale orthographique 0°/35° est demandée, pas mesurée.",
+      "notes": [
+        "Un appel ImageGen dédié pour ce sprite.",
+        "Pixels périphériques d’alpha 1 conservés sans nettoyage.",
+        "La présence du PNG ne valide ni une animation, ni des collisions, ni une fidélité canonique 1:1."
+      ],
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE"
+    },
+    {
+      "key": "market-s10",
+      "id": "HWM162-S10",
+      "label": "Auvent marchand libre de mobilier",
+      "file": "HWM162-S10-free-market-canopy.png",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S10-free-market-canopy.png",
+      "area": "market",
+      "phase": "round3-states-and-components",
+      "targetIds": [
+        "target-v81-64-161"
+      ],
+      "role": "Structure d’auvent libre permettant de placer séparément le mobilier.",
+      "generator": "image_gen.imagegen",
+      "tool_call_count": 1,
+      "generationMode": "edit",
+      "prompt": "Use case: precise-object-edit. Asset type: one independent transparent PNG modular merchant canopy, HWM162-S10, for Yautja: The Long Hunt. Original game adaptation.\nINPUT IMAGE 1 IS THE EDIT TARGET. Keep the existing canopy structure and its identity, and REMOVE ONLY all furniture and merchandise under it. Remove the complete long stone merchant counter, its legs and front textile, all three lidded jars, all folded fabrics and rolled goods. Leave the entire area under the canopy empty and transparent.\nPreserve the same muted dark-red woven roof cloth, its dark abstract geometric pattern and edge stitching, the four bronze-and-bone-tipped support posts, the four dark angular stone footings, upper beams, lashings and clasps. Preserve the reference's viewing direction, camera projection, relative positions, apparent perspective and upper-left lighting. Do not mirror, rotate, recolor or redesign the surviving structure. Where the removed counter previously hid a lower section of a post, complete that same post continuously down to its own matching footing. There must be exactly FOUR coherent support posts and FOUR complete feet, each attached to the canopy; no floating spare post or additional pedestal.\nThe final object is one complete freestanding light canopy that can be placed over independently chosen props. It has no walls, building facade, platform, floor, countertop, chair, merchandise or hanging object. The canopy remains a single joined structural sprite; do not make a diagram or a parts sheet.\nReframe only enough to keep the ENTIRE roof, every finial, all four posts and feet within the image with roughly 12 percent empty transparent margin on every side. Preserve the same object proportions and historical camera view, without claiming a measured camera angle. Output genuinely transparent alpha around and THROUGH the empty space under the canopy. No solid or checkerboard background, no landscape, atmosphere, ground texture, drop shadow or text. Realistic detailed painted 2.5D game-art materials, original cloth, bronze and charcoal palette. Exactly ONE canopy without furniture.",
+      "transparent_background": true,
+      "source": "/workspace/scratch/2166fec07f86/generated_images/exec-a7b8e45e-1b43-459d-b61f-3af589b36339.png",
+      "references": [
+        {
+          "role": "edit_target",
+          "repoPath": "public/game/homeworld/v76/merchant-canopy-diagonal-native.png",
+          "inspectionPath": "/workspace/scratch/2166fec07f86/round3-market-reference-inspection/public__game__homeworld__v76__merchant-canopy-diagonal-native.png",
+          "sha256": "05a92ec51800422f1fbbe396555cee2de7025d1b18f2af0a8c57cde2a9e7e60b"
+        }
+      ],
+      "camera_requested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "reference": "public/game/homeworld/v76/merchant-canopy-diagonal-native.png",
+        "measured": false
+      },
+      "cameraMeasured": false,
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "sourceAssetPaths": [
+        "public/game/homeworld/v76/merchant-canopy-diagonal-native.png"
+      ],
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "canonicalOneToOneClaimed": false,
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "scaleValidatedInGame": false,
+      "dimensionsAuthority": "NO_METRIC_DIMENSIONS_CLAIMED",
+      "proposedMetres": {},
+      "bytes": 1863854,
+      "sha256": "78347f7a7a79df9a265a38d7f2df24905626f783df371ad53ec554a05a104e93",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 1178893,
+      "transparentRatio": 0.7495199839274088,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > 0",
+          "box": [
+            0,
+            0,
+            1484,
+            1004
+          ],
+          "margins": [
+            0,
+            0,
+            52,
+            20
+          ],
+          "minMargin": 0,
+          "pixels": 393971
+        },
+        "8": {
+          "comparison": "alpha > 8",
+          "box": [
+            191,
+            11,
+            1412,
+            993
+          ],
+          "margins": [
+            191,
+            11,
+            124,
+            31
+          ],
+          "minMargin": 11,
+          "pixels": 365195
+        },
+        "24": {
+          "comparison": "alpha > 24",
+          "box": [
+            191,
+            11,
+            1411,
+            993
+          ],
+          "margins": [
+            191,
+            11,
+            125,
+            31
+          ],
+          "minMargin": 11,
+          "pixels": 363523
+        },
+        "128": {
+          "comparison": "alpha > 128",
+          "box": [
+            192,
+            12,
+            1411,
+            993
+          ],
+          "margins": [
+            192,
+            12,
+            125,
+            31
+          ],
+          "minMargin": 12,
+          "pixels": 359733
+        }
+      },
+      "edgeAlphaMax": 1,
+      "mainSilhouetteInsideCanvasAtAlpha24": true,
+      "strictClearMargin": false,
+      "nativePreservation": {
+        "copyByteIdentical": true,
+        "pixelsEdited": false,
+        "alphaEdited": false,
+        "mirrored": false,
+        "resized": false,
+        "padded": false,
+        "originalPreserved": true
+      },
+      "visual_review": "Auvent seul : toile rouge et motifs conservés, quatre poteaux continus et quatre pieds complets ; comptoir, pots, textiles et marchandises retirés. La vue diagonale historique est conservée. Espace libre sous la toile avec pixels alpha 0 contrôlés. Aucune coupe observée, mais marge visible minimale haute de 11 px et basse de 31 px : les 12 % demandés dans le prompt ne sont pas atteints. Aucune retouche ni extension de canevas appliquée. Les occlusions avant/arrière et les appuis restent à vérifier en scène.",
+      "notes": [
+        "Un appel ImageGen dédié pour ce sprite.",
+        "Pixels périphériques d’alpha 1 conservés sans nettoyage.",
+        "La présence du PNG ne valide ni une animation, ni des collisions, ni une fidélité canonique 1:1."
+      ],
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "emptySpaceAlphaSamples": [
+        {
+          "xy": [
+            500,
+            600
+          ],
+          "alpha": 0
+        },
+        {
+          "xy": [
+            800,
+            700
+          ],
+          "alpha": 0
+        },
+        {
+          "xy": [
+            900,
+            600
+          ],
+          "alpha": 0
+        },
+        {
+          "xy": [
+            100,
+            100
+          ],
+          "alpha": 0
+        },
+        {
+          "xy": [
+            750,
+            900
+          ],
+          "alpha": 0
+        }
+      ]
     }
   ],
   "humanValidated": false,
   "runtimeIntegrated": false,
   "canon1to1Claim": false,
-  "round2BaseCommit": "d4c43dce5286fbb64e41ae5fa22cb82854572a7e"
+  "round2BaseCommit": "d4c43dce5286fbb64e41ae5fa22cb82854572a7e",
+  "round3BaseCommit": "454bbc558abc9bb06141b2b77642bff1894d8cf2",
+  "round3Summary": {
+    "addedPNGCount": 3,
+    "totalMarketPNGCount": 10,
+    "addedBytes": 5830805,
+    "oldSevenSha256Unchanged": true,
+    "generationCalls": 3,
+    "retries": 0,
+    "sourceByteIdentityVerified": true,
+    "cameraInheritedIds": [
+      "HWM162-S08",
+      "HWM162-S10"
+    ],
+    "projectCameraTargetIds": [
+      "HWM162-S09"
+    ],
+    "visibleMarginCaveat": "S08 minimum 48 px ; S09 minimum 93 px ; S10 minimum 11 px. Toutes les silhouettes sont entières. Aucune correction alpha ni marge ajoutée par script."
+  }
 }
