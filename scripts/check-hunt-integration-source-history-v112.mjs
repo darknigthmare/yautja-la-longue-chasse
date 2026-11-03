@@ -7,7 +7,7 @@ import os from 'node:os';
 import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import {fileURLToPath,pathToFileURL} from 'node:url';
-import {attachHistoricalGitObjects,historicalGitFailure} from './lib/historical-git.mjs';
+import {attachHistoricalGitObjects,historicalGitFailure,assertNoExternalGitPathOverrides,historicalGitEnvironment as environment} from './lib/historical-git.mjs';
 
 export const HUNT_SOURCE_PUBLICATION_V112='ebcb970df10c07a5d2f309411e2f968b13c9aef8';
 export const HUNT_SOURCE_TREE_V112='37f21a3f155fbbfaa1e41327c05eafe2ecb348fe';
@@ -22,10 +22,10 @@ const MANIFEST_BLOB='57a54937f4ccf66cd09d2fcfcc680fee51e90fc2';
 const contexts=new WeakMap();
 const sha=bytes=>createHash('sha256').update(bytes).digest('hex');
 const objectSha=(type,bytes)=>createHash('sha1').update(type+' '+bytes.length+'\0').update(bytes).digest('hex');
-const environment=()=>({...process.env,GIT_TERMINAL_PROMPT:'0',GIT_OPTIONAL_LOCKS:'0',GIT_NO_LAZY_FETCH:'1'});
 const local=file=>typeof file==='string'&&file.length>0&&!path.isAbsolute(file)&&!file.includes('\\')&&!file.includes('\0')&&
  file.split('/').every(part=>part&&part!=='.'&&part!=='..')&&!file.startsWith('.git/');
 function git(root,args,{env=environment(),timeout=45000}={}){
+ assertNoExternalGitPathOverrides();
  try{return execFileSync('git',['-C',root,...args],{env,timeout,maxBuffer:192*1024*1024,stdio:['ignore','pipe','pipe']});}
  catch(error){throw historicalGitFailure(error,{operation:args[0],label:'V112 source history',env});}
 }
@@ -73,6 +73,7 @@ async function initialize(state,objectRepository){
  state.indexSha=sha(await fs.readFile(path.join(root,'.git/index')));
 }
 export async function prepareHuntSourceHistoryV112({repository=ROOT,objectRepository=repository}={}){
+ assertNoExternalGitPathOverrides();
  repository=await fs.realpath(repository);objectRepository=await fs.realpath(objectRepository);
  const root=await fs.mkdtemp(path.join(os.tmpdir(),'yautja-hunt-source-v112-'));
  const state={root,repository,observedCurrent:[],copiedCurrent:0,restoredGit:0,fetchedCommits:[]};
@@ -130,7 +131,9 @@ export async function verifyHuntSourceHistoryV112(context){
   fetchedCanonicalCommits:[...state.fetchedCommits],currentRuntimeCovered:false};
 }
 export async function runHuntSourceHistoryV112(context){
+ assertNoExternalGitPathOverrides();
  const state=contextState(context);await verifyHuntSourceHistoryV112(context);
+ assertNoExternalGitPathOverrides();
  const env={...process.env};delete env.NODE_TEST_CONTEXT;
  let stdout;
  try{stdout=execFileSync(process.execPath,[ORIGINAL,'--check'],{cwd:state.root,env,encoding:'utf8',timeout:60000,maxBuffer:8*1024*1024,stdio:['ignore','pipe','pipe']});}

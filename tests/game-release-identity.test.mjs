@@ -30,4 +30,3 @@ test('browser fixtures without process and compiled releases both load the same 
   assert.equal(published.exports.GAME_BUILD_ID,'abcd1234');
   assert.equal(published.exports.GAME_RELEASE_VERSION,local.exports.GAME_RELEASE_VERSION);
 });
-

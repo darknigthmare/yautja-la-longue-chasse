@@ -4,7 +4,31 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import {execFileSync} from 'node:child_process';
 
-const gitEnvironment=()=>({...process.env,GIT_TERMINAL_PROMPT:'0',GIT_OPTIONAL_LOCKS:'0',GIT_NO_LAZY_FETCH:'1'});
+const externalGitPaths=new Set([
+ 'GIT_DIR','GIT_COMMON_DIR','GIT_WORK_TREE','GIT_INDEX_FILE','GIT_OBJECT_DIRECTORY',
+ 'GIT_ALTERNATE_OBJECT_DIRECTORIES','GIT_SHALLOW_FILE','GIT_GRAFT_FILE','GIT_QUARANTINE_PATH',
+ 'GIT_CONFIG','GIT_CONFIG_GLOBAL','GIT_CONFIG_SYSTEM','GIT_TEMPLATE_DIR',
+ 'GIT_CONFIG_PARAMETERS','GIT_CONFIG_COUNT',
+]);
+
+/** `git -C` does not override inherited Git paths. Reject these before creating
+ * a capsule or running a child, rather than letting init/config/fetch target
+ * the caller's repository. Inherited config pairs can set core.worktree or
+ * include an external config too. Report names only: values may hold secrets.
+ * Fetch authentication is added explicitly to a private env after this guard. */
+export function assertNoExternalGitPathOverrides(env=process.env){
+ const names=Object.keys(env).filter(name=>env[name]!==undefined&&
+  (externalGitPaths.has(name.toUpperCase())||/^GIT_CONFIG_(?:KEY|VALUE)_\d+$/i.test(name))).sort();
+ if(names.length){
+  const failure=Error('Historical Git isolation refuses external path overrides: '+names.join(', '));
+  failure.code='ERR_HISTORICAL_GIT_PATH_OVERRIDE';throw failure;
+ }
+}
+
+export function historicalGitEnvironment(){
+ assertNoExternalGitPathOverrides();
+ return{...process.env,GIT_TERMINAL_PROMPT:'0',GIT_OPTIONAL_LOCKS:'0',GIT_NO_LAZY_FETCH:'1'};
+}
 
 export function historicalGitFailure(error,{operation,label='Historical',env=process.env}={}){
  let diagnostic=String(error.stderr??'').trim();
@@ -23,7 +47,7 @@ export function historicalGitFailure(error,{operation,label='Historical',env=pro
 }
 
 export async function attachHistoricalGitObjects({root,objectRepository}){
- const env=gitEnvironment();
+ const env=historicalGitEnvironment();
  const gitPath=name=>execFileSync('git',['-C',objectRepository,'rev-parse','--path-format=absolute','--git-path',name],
   {env,encoding:'utf8',stdio:['ignore','pipe','pipe'],timeout:45000}).trim();
  let sourceObjects,sourceShallow;

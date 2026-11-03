@@ -4,6 +4,9 @@ docs/specifications/homeworld-v81/*.txt -text
 # Keep this archived image-generation prompt byte-identical, including its final space.
 art-source/v100/pit/scar/specials-presentations/intake/scar-special-s3-attempt-11-left.prompt.txt -text -whitespace
 
+# Keep the captured post-consolidation audit logs byte-exact.
+docs/qa/current-integration-20261103/logs/*.log -text -whitespace
+
 # --- Claude Code Game Studios (CCGS) workflow ---
 *.sh text eol=lf
 *.awk text eol=lf

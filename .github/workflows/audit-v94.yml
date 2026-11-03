@@ -10,6 +10,17 @@ on:
       - 'desktop/**'
       - 'build/**'
       - 'public/**/manifest.json'
+      - 'public/game/prologue/v47/village.png'
+      - 'public/game/prologue/v47/arena.png'
+      - 'docs/qa/current-integration-20261103/**'
+      - 'public/game/assets/v113/phg/**'
+      - 'public/game/imports/v85/drive-latest/*.png'
+      - 'public/game/assets/v125/phg-studies/atlas.webp'
+      - 'public/game/assets/v126/phg-recent/atlas.webp'
+      - 'public/game/assets/v127/phg-historical/atlas.webp'
+      - 'public/game/assets/v128/phg-platform/atlas.webp'
+      - 'public/game/assets/v129/phg-patches/atlas.webp'
+      - 'public/game/assets/v132/phg-biomask/atlas.webp'
       - 'public/game/homeworld/v74/**'
       - 'public/game/assets/v3/actors/yautja/hunter/body/classic/full.webp'
       - 'public/game/assets/v3/actors/yautja/hunter/body/classic/net/full.webp'
@@ -452,6 +463,7 @@ jobs:
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NODE_OPTIONS: --max-old-space-size=6144
       AUDIT_CHROME_CHANNEL: chrome
+      GH_TOKEN: ${{ github.token }}
     steps:
       - name: Checkout application source and real manifests without multi-gigabyte artwork
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
@@ -476,7 +488,6 @@ jobs:
             /public/**/manifest.json
             /public/game/prologue/v47/village.png
             /public/game/prologue/v47/arena.png
-            # Exact native material inputs used by the current V113 models.
             /public/game/assets/v113/phg/armor_classe_samurai_laque_rouge_volutes.png
             /public/game/assets/v113/phg/armor_filet_fin_noir_losanges.png
             /public/game/assets/v113/phg/skin_shatter_demon_provisoire.png
@@ -599,6 +610,7 @@ jobs:
             /docs/YAUTJA_V112_SUIVI.xlsx
             /docs/*v112*
             /docs/qa/v112*/
+            /docs/qa/current-integration-20261103/
             /docs/suivi-production/v112*/
             /docs/v113-*
             /docs/qa/v113-*/
@@ -1103,7 +1115,10 @@ jobs:
           import fs from 'node:fs';
           import {spawnSync} from 'node:child_process';
           const files = fs.readdirSync('tests').filter(file =>
-            file.endsWith('-v112.test.mjs') && !['homeworld-excel-followup-v112.test.mjs', 'homeworld-excel-publication-original-v112.test.mjs'].includes(file)
+            file.endsWith('-v112.test.mjs') && ![
+              'homeworld-excel-followup-v112.test.mjs', 'homeworld-excel-publication-original-v112.test.mjs',
+              'hunt-integration-source-history-v112.test.mjs',
+            ].includes(file)
           ).sort().map(file => 'tests/' + file);
           if (!files.length) throw new Error('No current V112 model tests selected');
           console.log('Current V112 application tests:\n' + files.join('\n'));
@@ -1158,6 +1173,11 @@ jobs:
           app/game/useNativeImageAssetsV94.ts app/game/useTrophyWorkshopRuntimeV94.ts
           app/game/TrainingDrill.tsx app/game/useTrainingDrillRuntimeV94.ts
           app/game/useMenuGamepad.ts
+          app/game/CampaignMainMenu.tsx app/game/CampaignFrontEnd.tsx app/game/GameVersionBadge.tsx
+          scripts/game-build-identity.ts scripts/qa-campaign-menu-navigation.mjs
+          tests/campaign-menu-navigation.test.mjs tests/game-release-identity.test.mjs
+          tests/campaign-front-menu-v50.test.mjs tests/main-menu-modes-v81.test.mjs
+          tests/campaign-text-import-ui-v90.test.mjs tests/browser/campaign-menu-navigation.fixture.tsx
           app/game/systems/campaignWorldResumeV70.ts
           app/game/systems/campaignResumePriorityV94.ts
           app/game/systems/heldDirectionV94.ts
@@ -1498,38 +1518,64 @@ jobs:
         run: >-
           node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1
           tests/historical-git.test.mjs tests/r7-publication-history-v113.test.mjs
-      - name: Verify current backlog, dated V112 sources and unchanged native Pit delivery
+          tests/homeworld-connector-detour-history-v113.test.mjs
+      - name: Verify current source backlog audit and unchanged native V112 Pit delivery
         if: ${{ matrix.audit_group == 'history' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: |
           python3 scripts/audit-open-workstreams-v112.py --check
           node scripts/build-pit-backward-art-v112.mjs --check
-          node scripts/check-hunt-integration-source-history-v112.mjs --check
+          node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/hunt-integration-source-history-v112.test.mjs
           node scripts/check-hunt-integration-source-v112.mjs --current
-      - name: Preserve both complete V113 certificates and their exact historical runtime
+      - name: Fetch the exact historical runtime declared by both preserved V113 production publications
         if: ${{ matrix.audit_group == 'history' && (!cancelled() && steps.dependencies.outcome == 'success') }}
-        # The capsule fetches only pinned commits into private Git, checks the
-        # original freeze and reruns the complete original production assertion.
+        run: |
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import fs from 'node:fs';
+          import {execFileSync, spawnSync} from 'node:child_process';
+          const headBefore = execFileSync('git', ['rev-parse', 'HEAD'], {encoding: 'utf8'});
+          const commits = ['homeworld', 'pit'].map(domain =>
+            JSON.parse(fs.readFileSync('docs/v113-' + domain + '-validation.json', 'utf8')).production.runtimeCommit
+          );
+          for (const commit of commits) assert.match(commit, /^[a-f0-9]{40}$/);
+          assert.equal(commits[0], commits[1], 'Both preserved publications must name the same certified runtime');
+          const runtimeCommit = commits[0];
+          const probe = spawnSync('git', ['cat-file', '-t', runtimeCommit], {
+            encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'],
+            env: {...process.env, GIT_NO_LAZY_FETCH: '1'},
+          });
+          if (probe.status !== 0 || probe.stdout.trim() !== 'commit') {
+            execFileSync('git', ['fetch', '--no-tags', '--filter=blob:none', '--depth=1',
+              'https://github.com/darknigthmare/yautja-la-longue-chasse.git', runtimeCommit], {stdio: 'inherit'});
+          }
+          assert.equal(execFileSync('git', ['cat-file', '-t', runtimeCommit], {
+            encoding: 'utf8', env: {...process.env, GIT_NO_LAZY_FETCH: '1'},
+          }).trim(), 'commit');
+          assert.equal(execFileSync('git', ['rev-parse', 'HEAD'], {encoding: 'utf8'}), headBefore,
+            'Fetching evidence history must not change the application checkout');
+          console.log('Preserved V113 runtime object available: ' + runtimeCommit);
+          NODE
+      - name: Preserve both V113 production certificates and their exact historical freeze
+        if: ${{ matrix.audit_group == 'history' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/v113-production-history.test.mjs
-      - name: Preserve the original connector detour assertions in the R7 context
-        if: ${{ matrix.audit_group == 'history' && (!cancelled() && steps.dependencies.outcome == 'success') }}
-        run: node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/homeworld-connector-detour-history-v113.test.mjs
-      - name: Exercise current V113 models independently of historical publications
+      - name: Verify the consolidated runtime inventory and every current V113 model
         if: ${{ matrix.audit_group == 'models' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: |
+          node scripts/snapshot-runtime-v113.mjs --check docs/qa/current-integration-20261103/runtime-inputs.json
           node --input-type=module <<'NODE'
           import fs from 'node:fs';
           import {spawnSync} from 'node:child_process';
           const historical = new Set([
-            'r7-publication-history-v113.test.mjs',
-            'homeworld-v112-history-v113.test.mjs',
-            'homeworld-connector-detour-history-v113.test.mjs',
-            'homeworld-current-production-v113.test.mjs',
+            'r7-publication-history-v113.test.mjs', 'homeworld-current-production-v113.test.mjs',
+            'homeworld-connector-detour-history-v113.test.mjs', 'homeworld-v112-history-v113.test.mjs',
           ]);
           const files = fs.readdirSync('tests').filter(file =>
             file.endsWith('-v113.test.mjs') && !historical.has(file)
           ).sort().map(file => 'tests/' + file);
           if (!files.length) throw new Error('No current V113 model tests selected');
-          console.log('Current V113 model tests:\n' + files.join('\n'));
+          for (const file of historical) if (!fs.statSync('tests/' + file).isFile()) throw new Error('Historical V113 test must remain available: ' + file);
+          if (!fs.statSync('tests/v113-production-history.test.mjs').isFile()) throw new Error('The complete original V113 production assertion must be preserved');
+          console.log('Current V113 application model tests:\n' + files.join('\n'));
           const result = spawnSync(process.execPath, [
             '--experimental-strip-types', '--test', '--test-reporter=spec', '--test-concurrency=1', ...files,
           ], {stdio: 'inherit'});
@@ -1539,6 +1585,7 @@ jobs:
           NODE
       - name: Verify the dated PR and open-workstream coordination workbook
         if: ${{ matrix.audit_group == 'history' && (!cancelled() && steps.dependencies.outcome == 'success') }}
+        # The unchanged writer and reader run inside their pinned dated context.
         run: python3 scripts/check-resume-workbook-history-20261101.py
       - name: Preserve the additional original V112 Homeworld and Pit capsule
         if: ${{ matrix.audit_group == 'history' && (!cancelled() && steps.dependencies.outcome == 'success') }}
@@ -1573,6 +1620,38 @@ jobs:
         if: ${{ matrix.audit_group == 'application' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: node scripts/qa-training-browser-v94.mjs
 
+      - name: Record successful completion of this application audit group
+        if: ${{ success() }}
+        env:
+          AUDIT_GROUP: ${{ matrix.audit_group }}
+        run: |
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import {execFileSync} from 'node:child_process';
+          import {mkdirSync, writeFileSync} from 'node:fs';
+          import {join} from 'node:path';
+          const group = process.env.AUDIT_GROUP;
+          assert.ok(['application', 'models', 'history'].includes(group));
+          const {GITHUB_RUN_ID: runId, GITHUB_RUN_ATTEMPT: runAttempt, GITHUB_SHA: commit, RUNNER_TEMP: temp} = process.env;
+          assert.match(runId ?? '', /^[1-9]\d*$/);
+          assert.match(runAttempt ?? '', /^[1-9]\d*$/);
+          assert.match(commit ?? '', /^[a-f0-9]{40}$/);
+          assert.equal(execFileSync('git', ['rev-parse', 'HEAD'], {encoding: 'utf8'}).trim(), commit);
+          const directory = join(temp, 'application-audit-proof');
+          mkdirSync(directory, {recursive: true});
+          writeFileSync(join(directory, 'proof.json'), JSON.stringify({
+            schemaVersion: 1, result: 'success', group, runId, runAttempt, commit,
+          }) + '\n', {flag: 'wx'});
+          NODE
+      - name: Upload this successful application audit group proof
+        if: ${{ success() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: application-audit-success-${{ github.run_id }}-${{ github.run_attempt }}-${{ github.sha }}-${{ matrix.audit_group }}
+          path: ${{ runner.temp }}/application-audit-proof/proof.json
+          retention-days: 7
+          if-no-files-found: error
+
   application-result:
     name: Application compile, types, runtime lint and browser integration
     if: ${{ always() }}
@@ -1588,3 +1667,41 @@ jobs:
             echo "At least one application audit group failed, was cancelled, or did not run."
             exit 1
           fi
+      # Every proof must come from this exact attempt; rerun all groups together.
+      - name: Download the application group completion proof
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: application-audit-success-${{ github.run_id }}-${{ github.run_attempt }}-${{ github.sha }}-application
+          path: ${{ runner.temp }}/application-audit-proofs/application
+      - name: Download the models group completion proof
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: application-audit-success-${{ github.run_id }}-${{ github.run_attempt }}-${{ github.sha }}-models
+          path: ${{ runner.temp }}/application-audit-proofs/models
+      - name: Download the history group completion proof
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: application-audit-success-${{ github.run_id }}-${{ github.run_attempt }}-${{ github.sha }}-history
+          path: ${{ runner.temp }}/application-audit-proofs/history
+      - name: Require exactly three current successful group proofs
+        run: |
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import {readdirSync, readFileSync} from 'node:fs';
+          import {join} from 'node:path';
+          const groups = ['application', 'history', 'models'];
+          const root = join(process.env.RUNNER_TEMP, 'application-audit-proofs');
+          assert.deepEqual(readdirSync(root).sort(), groups, 'All three audit groups must produce a completion proof');
+          for (const group of groups) {
+            const directory = join(root, group);
+            assert.deepEqual(readdirSync(directory), ['proof.json'], 'Each group must produce exactly one proof');
+            const proof = JSON.parse(readFileSync(join(directory, 'proof.json'), 'utf8'));
+            assert.deepEqual(proof, {
+              schemaVersion: 1, result: 'success', group,
+              runId: process.env.GITHUB_RUN_ID,
+              runAttempt: process.env.GITHUB_RUN_ATTEMPT,
+              commit: process.env.GITHUB_SHA,
+            }, 'Invalid, stale or duplicate completion proof for ' + group);
+          }
+          console.log('All three application audit groups succeeded for this run, attempt and commit.');
+          NODE

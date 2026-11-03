@@ -10,7 +10,7 @@ import os from 'node:os';
 import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import {fileURLToPath, pathToFileURL} from 'node:url';
-import {attachHistoricalGitObjects, historicalGitFailure} from './lib/historical-git.mjs';
+import {attachHistoricalGitObjects, historicalGitFailure, assertNoExternalGitPathOverrides, historicalGitEnvironment as gitEnvironment} from './lib/historical-git.mjs';
 
 export const V113_PRODUCTION_PUBLICATION_COMMIT = '837684333b42ee1a5e3a0be9ce1967e2486a2fd3';
 export const V113_PRODUCTION_PUBLICATION_TREE = 'f33b92e0127713179fadab73576e37062df0398f';
@@ -30,8 +30,8 @@ const sha = bytes => createHash('sha256').update(bytes).digest('hex');
 const objectSha = (type, bytes) => createHash('sha1').update(type + ' ' + bytes.length + '\0').update(bytes).digest('hex');
 const local = file => typeof file === 'string' && file.length > 0 && !path.isAbsolute(file) &&
   !file.includes('\\') && !file.includes('\0') && file.split('/').every(part => part && part !== '.' && part !== '..') && !file.startsWith('.git/');
-const gitEnvironment = () => ({...process.env, GIT_TERMINAL_PROMPT: '0', GIT_OPTIONAL_LOCKS: '0', GIT_NO_LAZY_FETCH: '1'});
 function git(root, args, {env = gitEnvironment()} = {}) {
+  assertNoExternalGitPathOverrides();
   try {return execFileSync('git', ['-C', root, ...args], {env, timeout: 60000, maxBuffer: 192 * 1024 * 1024, stdio: ['ignore', 'pipe', 'pipe']});}
   catch (error) {throw historicalGitFailure(error, {operation: args[0], label: 'V113 historical', env});}
 }
@@ -145,6 +145,7 @@ async function initialize(state, objectRepository) {
   await fs.chmod(path.join(state.root, '.git/HEAD'), 0o444);
 }
 export async function prepareProductionHistoryV113({repository = ROOT, objectRepository = repository} = {}) {
+  assertNoExternalGitPathOverrides();
   repository = await fs.realpath(repository); objectRepository = await fs.realpath(objectRepository);
   const root = await fs.mkdtemp(path.join(os.tmpdir(), 'yautja-production-history-v113-'));
   const state = {root, repository, copiedCurrent: 0, restoredGit: 0, fetchedCommits: [], observedCurrent: [], deadline: Date.now() + 600000};
@@ -213,7 +214,9 @@ export async function verifyProductionCurrentInputsUnchangedV113(context) {
   return {currentInputsUnchanged: state.observedCurrent.length};
 }
 export async function runProductionHistoryV113(context) {
+  assertNoExternalGitPathOverrides();
   const state = contextState(context); await verifyProductionHistoryV113(context);
+  assertNoExternalGitPathOverrides();
   const env = {...process.env}; delete env.NODE_TEST_CONTEXT;
   const commands = [
     ['scripts/snapshot-runtime-v113.mjs', '--check', FREEZE],

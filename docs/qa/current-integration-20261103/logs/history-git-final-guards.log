@@ -1,0 +1,12 @@
+✔ a private filtered fetch preserves a shallow alternate boundary and never writes to its source (207.47935ms)
+✔ historical Git diagnostics retain the transport cause and redact authentication (0.807348ms)
+✔ R7, V112, V113 and their child entry points reject external Git overrides before any private or external write (1961.474243ms)
+✔ explicit fetch authentication remains process-local after inherited Git configuration is refused (47.554794ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2325.672372
