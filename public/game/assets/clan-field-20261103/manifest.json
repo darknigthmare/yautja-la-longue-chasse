@@ -1,0 +1,454 @@
+{
+  "version": 1,
+  "pack": "clan-field-20261103",
+  "method": "original-procedural-vector",
+  "canonFidelity": "NOT-CERTIFIED",
+  "camera": "orthographic-three-quarter",
+  "collisionChanges": false,
+  "entries": [
+    {
+      "id": "relay-active",
+      "label": "Relais actif",
+      "kind": "relay",
+      "state": "active",
+      "sourceSize": [
+        512,
+        512
+      ],
+      "runtimeSize": [
+        256,
+        256
+      ],
+      "anchor": [
+        0.5,
+        0.8
+      ],
+      "files": {
+        "svg": {
+          "path": "/game/assets/clan-field-20261103/relay-active.svg",
+          "sha256": "38d755191306441377679a7dd4ba0de91288d4b194052ccf6944d2a795440e2b"
+        },
+        "png": {
+          "path": "/game/assets/clan-field-20261103/relay-active.png",
+          "sha256": "e5f0640c75eaa7cd5ee93bf778f962d02df069e0c26e571fd24838bb03048e43",
+          "bytes": 33817
+        },
+        "webp": {
+          "path": "/game/assets/clan-field-20261103/relay-active.webp",
+          "sha256": "c0d362f52f69840fe334a608601017128f390c2ecce5d869e2ed6c440eb4ea68",
+          "bytes": 4622
+        }
+      },
+      "fidelity": "original-not-canon-certified",
+      "nativeSingleObject": true,
+      "animationFrames": 1
+    },
+    {
+      "id": "relay-disabled",
+      "label": "Relais coupe",
+      "kind": "relay",
+      "state": "disabled",
+      "sourceSize": [
+        512,
+        512
+      ],
+      "runtimeSize": [
+        256,
+        256
+      ],
+      "anchor": [
+        0.5,
+        0.8
+      ],
+      "files": {
+        "svg": {
+          "path": "/game/assets/clan-field-20261103/relay-disabled.svg",
+          "sha256": "a90ff43f27b9de94c9a7e20293e763ba11f34c16111d5fbb3cd8ce52e4ae5957"
+        },
+        "png": {
+          "path": "/game/assets/clan-field-20261103/relay-disabled.png",
+          "sha256": "1bb7d6213c27bcd8acb8835bc8ee75eb29c11e5b7e0c577cd9b7ccd86236e529",
+          "bytes": 33719
+        },
+        "webp": {
+          "path": "/game/assets/clan-field-20261103/relay-disabled.webp",
+          "sha256": "f900d24eed268be0adafd698bc3d0f285793fdc58fa116413dee2ad83f46ebc5",
+          "bytes": 4488
+        }
+      },
+      "fidelity": "original-not-canon-certified",
+      "nativeSingleObject": true,
+      "animationFrames": 1
+    },
+    {
+      "id": "beacon-active",
+      "label": "Balise active",
+      "kind": "beacon",
+      "state": "active",
+      "sourceSize": [
+        512,
+        512
+      ],
+      "runtimeSize": [
+        256,
+        256
+      ],
+      "anchor": [
+        0.5,
+        0.8
+      ],
+      "files": {
+        "svg": {
+          "path": "/game/assets/clan-field-20261103/beacon-active.svg",
+          "sha256": "27ea798092414179cb29e0e9ea9708bb84f748be09cf78291a9a6797ac259115"
+        },
+        "png": {
+          "path": "/game/assets/clan-field-20261103/beacon-active.png",
+          "sha256": "e693f5272c6132243d8762aeeb6f00bdf40e84904c4d8f5b2d59a4dbd60052f4",
+          "bytes": 28053
+        },
+        "webp": {
+          "path": "/game/assets/clan-field-20261103/beacon-active.webp",
+          "sha256": "e67cbffe907532cd8b36533a2b337be760e8174709cc8162057abcc1a74a4cf1",
+          "bytes": 4570
+        }
+      },
+      "fidelity": "original-not-canon-certified",
+      "nativeSingleObject": true,
+      "animationFrames": 1
+    },
+    {
+      "id": "beacon-disabled",
+      "label": "Balise eteinte",
+      "kind": "beacon",
+      "state": "disabled",
+      "sourceSize": [
+        512,
+        512
+      ],
+      "runtimeSize": [
+        256,
+        256
+      ],
+      "anchor": [
+        0.5,
+        0.8
+      ],
+      "files": {
+        "svg": {
+          "path": "/game/assets/clan-field-20261103/beacon-disabled.svg",
+          "sha256": "1cab62bad374aa46785d68172d339acaba6b7b2578e774347e41d6f448926471"
+        },
+        "png": {
+          "path": "/game/assets/clan-field-20261103/beacon-disabled.png",
+          "sha256": "2353bbdb37627802053f9c5b96b04bebdf4c696f90f18dd08e6507c09f348c29",
+          "bytes": 26711
+        },
+        "webp": {
+          "path": "/game/assets/clan-field-20261103/beacon-disabled.webp",
+          "sha256": "e2b0756682584b691c8a28dd9f2440b86917eb15ebffbe507f9da96b990bc2b0",
+          "bytes": 4174
+        }
+      },
+      "fidelity": "original-not-canon-certified",
+      "nativeSingleObject": true,
+      "animationFrames": 1
+    },
+    {
+      "id": "supply-sealed",
+      "label": "Caisse fermee",
+      "kind": "supply",
+      "state": "sealed",
+      "sourceSize": [
+        512,
+        512
+      ],
+      "runtimeSize": [
+        256,
+        256
+      ],
+      "anchor": [
+        0.5,
+        0.8
+      ],
+      "files": {
+        "svg": {
+          "path": "/game/assets/clan-field-20261103/supply-sealed.svg",
+          "sha256": "84e5b291cbf319e6723d33925f960de7e96ec0eb1a2d071822a6f4ddc6896093"
+        },
+        "png": {
+          "path": "/game/assets/clan-field-20261103/supply-sealed.png",
+          "sha256": "e975c13d584eafa823ccc1757236fe01681cbef33a7652bf694cd8e29a86b5c1",
+          "bytes": 24888
+        },
+        "webp": {
+          "path": "/game/assets/clan-field-20261103/supply-sealed.webp",
+          "sha256": "482848e831130dc9735f6c1fc839fd6bcfc79e75f007bac29c12a50c804778be",
+          "bytes": 4134
+        }
+      },
+      "fidelity": "original-not-canon-certified",
+      "nativeSingleObject": true,
+      "animationFrames": 1
+    },
+    {
+      "id": "supply-open",
+      "label": "Caisse ouverte",
+      "kind": "supply",
+      "state": "open",
+      "sourceSize": [
+        512,
+        512
+      ],
+      "runtimeSize": [
+        256,
+        256
+      ],
+      "anchor": [
+        0.5,
+        0.8
+      ],
+      "files": {
+        "svg": {
+          "path": "/game/assets/clan-field-20261103/supply-open.svg",
+          "sha256": "24131a1f3eac377179e5522ed1312ec94289519378d50ff884ab0e380b98f4a9"
+        },
+        "png": {
+          "path": "/game/assets/clan-field-20261103/supply-open.png",
+          "sha256": "f8e69504e7eca8f7a5d6faaf40b37a023295fb3a29ea4c595e939becf291e9e5",
+          "bytes": 32673
+        },
+        "webp": {
+          "path": "/game/assets/clan-field-20261103/supply-open.webp",
+          "sha256": "8e9534b2bd1467bd0cf6bd808f6dd5e99fbc014b5c3bd88fcfb2c403b7e49e6f",
+          "bytes": 5062
+        }
+      },
+      "fidelity": "original-not-canon-certified",
+      "nativeSingleObject": true,
+      "animationFrames": 1
+    },
+    {
+      "id": "barrier-intact",
+      "label": "Barricade intacte",
+      "kind": "barrier",
+      "state": "intact",
+      "sourceSize": [
+        512,
+        512
+      ],
+      "runtimeSize": [
+        256,
+        256
+      ],
+      "anchor": [
+        0.5,
+        0.8
+      ],
+      "files": {
+        "svg": {
+          "path": "/game/assets/clan-field-20261103/barrier-intact.svg",
+          "sha256": "fe02b6a4f962eb4508865d42aad37160e2acab9edfae5eda9243e814691f4025"
+        },
+        "png": {
+          "path": "/game/assets/clan-field-20261103/barrier-intact.png",
+          "sha256": "22245581678d5ea0e550d74d25d78bccbcf27ed8ed7cc929c0e27d3554d3c303",
+          "bytes": 37989
+        },
+        "webp": {
+          "path": "/game/assets/clan-field-20261103/barrier-intact.webp",
+          "sha256": "ed122a03dcbb0f648860e21429a7d95ad63bd71eab3ca9ebec0cea49af443ca4",
+          "bytes": 4764
+        }
+      },
+      "fidelity": "original-not-canon-certified",
+      "nativeSingleObject": true,
+      "animationFrames": 1
+    },
+    {
+      "id": "barrier-damaged",
+      "label": "Barricade endommagee",
+      "kind": "barrier",
+      "state": "damaged",
+      "sourceSize": [
+        512,
+        512
+      ],
+      "runtimeSize": [
+        256,
+        256
+      ],
+      "anchor": [
+        0.5,
+        0.8
+      ],
+      "files": {
+        "svg": {
+          "path": "/game/assets/clan-field-20261103/barrier-damaged.svg",
+          "sha256": "b7657ca0fd0842227892f2f5048f3eef11d487f5b8a5c99e0bc5ae8f4d49de10"
+        },
+        "png": {
+          "path": "/game/assets/clan-field-20261103/barrier-damaged.png",
+          "sha256": "39c3d108e57408a32ef586ce4354a7abc2cf0d30323fa664215e4006f3031272",
+          "bytes": 40541
+        },
+        "webp": {
+          "path": "/game/assets/clan-field-20261103/barrier-damaged.webp",
+          "sha256": "4e400f2fab3423184c55ef4873a09da1335fba6cdeb8483c4b672b41a66d18b6",
+          "bytes": 5032
+        }
+      },
+      "fidelity": "original-not-canon-certified",
+      "nativeSingleObject": true,
+      "animationFrames": 1
+    },
+    {
+      "id": "core-active",
+      "label": "Generateur actif",
+      "kind": "core",
+      "state": "active",
+      "sourceSize": [
+        512,
+        512
+      ],
+      "runtimeSize": [
+        256,
+        256
+      ],
+      "anchor": [
+        0.5,
+        0.8
+      ],
+      "files": {
+        "svg": {
+          "path": "/game/assets/clan-field-20261103/core-active.svg",
+          "sha256": "ad81276569d4fe94568c82e404843529e3761ef8b07146d283e1b617cd0fcdb4"
+        },
+        "png": {
+          "path": "/game/assets/clan-field-20261103/core-active.png",
+          "sha256": "5bca40f17e67472d7b30dad4dedf5593a6b0f7c94cd0ebd02457f3cc97b87a56",
+          "bytes": 33559
+        },
+        "webp": {
+          "path": "/game/assets/clan-field-20261103/core-active.webp",
+          "sha256": "03d6c97fa068896728faab530ca2989ffedfc63c70c1f5d7c8b5fadd10df9c30",
+          "bytes": 4078
+        }
+      },
+      "fidelity": "original-not-canon-certified",
+      "nativeSingleObject": true,
+      "animationFrames": 1
+    },
+    {
+      "id": "core-disabled",
+      "label": "Generateur eteint",
+      "kind": "core",
+      "state": "disabled",
+      "sourceSize": [
+        512,
+        512
+      ],
+      "runtimeSize": [
+        256,
+        256
+      ],
+      "anchor": [
+        0.5,
+        0.8
+      ],
+      "files": {
+        "svg": {
+          "path": "/game/assets/clan-field-20261103/core-disabled.svg",
+          "sha256": "8b089ab710125e99693c72d1e59358acfdf0897d2b31b432e48cd37cb29e72b4"
+        },
+        "png": {
+          "path": "/game/assets/clan-field-20261103/core-disabled.png",
+          "sha256": "353ca93b0e573d4b4ebd885ff2bf4279e7d2025fc4036cf072c0aa4e1f3ce878",
+          "bytes": 25625
+        },
+        "webp": {
+          "path": "/game/assets/clan-field-20261103/core-disabled.webp",
+          "sha256": "16465e9323e121bf9969f0b7080a5df8aa50b9061395a30b1c21a8b938058cbc",
+          "bytes": 3136
+        }
+      },
+      "fidelity": "original-not-canon-certified",
+      "nativeSingleObject": true,
+      "animationFrames": 1
+    },
+    {
+      "id": "medical-stocked",
+      "label": "Mallette garnie",
+      "kind": "medical",
+      "state": "stocked",
+      "sourceSize": [
+        512,
+        512
+      ],
+      "runtimeSize": [
+        256,
+        256
+      ],
+      "anchor": [
+        0.5,
+        0.8
+      ],
+      "files": {
+        "svg": {
+          "path": "/game/assets/clan-field-20261103/medical-stocked.svg",
+          "sha256": "557502a8b4de359da6a049265859d14c412a5b4f0a87f4a587cad9dcf3dbdd70"
+        },
+        "png": {
+          "path": "/game/assets/clan-field-20261103/medical-stocked.png",
+          "sha256": "d4ac5b75b525ecc1b9354d68c796817a6f1d4ee1a90daf94993a47edd13d1231",
+          "bytes": 24294
+        },
+        "webp": {
+          "path": "/game/assets/clan-field-20261103/medical-stocked.webp",
+          "sha256": "8593bec5869873d52a5ecb4069875ede45fadfb9f1e6636bdc85636ba1b779cd",
+          "bytes": 4080
+        }
+      },
+      "fidelity": "original-not-canon-certified",
+      "nativeSingleObject": true,
+      "animationFrames": 1
+    },
+    {
+      "id": "medical-empty",
+      "label": "Mallette vide",
+      "kind": "medical",
+      "state": "empty",
+      "sourceSize": [
+        512,
+        512
+      ],
+      "runtimeSize": [
+        256,
+        256
+      ],
+      "anchor": [
+        0.5,
+        0.8
+      ],
+      "files": {
+        "svg": {
+          "path": "/game/assets/clan-field-20261103/medical-empty.svg",
+          "sha256": "b5d7c9335bb1852a9c21b72217d5b3efa1e61cdd259df13436c56ba302173947"
+        },
+        "png": {
+          "path": "/game/assets/clan-field-20261103/medical-empty.png",
+          "sha256": "afa15e8fbdb78b4fc3d6ee4e18f2d26d59785b104a6b2b7b6d069e87a79529ea",
+          "bytes": 23442
+        },
+        "webp": {
+          "path": "/game/assets/clan-field-20261103/medical-empty.webp",
+          "sha256": "0e85a6cb7cd912e145c72216f232c192e53118a27e9ac0e73aabc1b761b25a30",
+          "bytes": 3790
+        }
+      },
+      "fidelity": "original-not-canon-certified",
+      "nativeSingleObject": true,
+      "animationFrames": 1
+    }
+  ]
+}

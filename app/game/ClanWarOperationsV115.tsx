@@ -1,4 +1,5 @@
 "use client";
+// FIELD_PROPS_20261103
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { planWarRouteV6, type WarRulesV6 } from "./systems/clanWarBibleV6";
@@ -41,6 +42,8 @@ import {commandWarStealthAlertReinforcementV144,setStealthReinforcementMode} fro
 import {commandWarStealthDashV143} from "./systems/clanWarStealthDashV143";
 import {commandWarOuterIncidentV143,warOuterIncidentV143} from "./systems/clanWarOuterIncidentV143";
 import {planWarStealthStepV142,commandWarStealthStepV142} from "./systems/clanWarStealthPathV142";
+import ClanWarFieldSprite from "./ClanWarFieldSprite";
+import {fieldKeyboardAction,fieldKeyboardTargetBlocked} from "./systems/clanWarFieldControls";
 import styles from "./ClanWarOperationsV115.module.css";
 
 const modeLabels: Record<WarMissionModeV115, string> = {
@@ -334,7 +337,20 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
   }
 
   if(!hydrated) return <section className={styles.root} role="status">Lecture des mandats V115 et de leur archive…</section>;
-  return <section className={styles.root} data-testid="clan-operations-v115" data-war-campaign-write="none" aria-label="Opérations de clan, exercice V115">
+  return <section className={styles.root} data-testid="clan-operations-v115" data-war-campaign-write="none" tabIndex={0}
+    onKeyDown={event=>{
+      const actor=worldRef.current.active?.stealth;
+      const command=fieldKeyboardAction({key:event.key,repeat:event.repeat,
+        ctrlKey:event.ctrlKey,metaKey:event.metaKey,altKey:event.altKey,
+        isComposing:event.nativeEvent.isComposing,
+        editing:fieldKeyboardTargetBlocked(event.target),
+        mode:worldRef.current.active?.mode==="stealth"?"stealth":"other",
+        blocked:blocked||!active||!actor||
+          (actor.reinforcementMode===undefined&&!actor.supportGuard)});
+      if(!command)return;
+      event.preventDefault();event.stopPropagation();
+      commit(commandStealthV115(worldRef.current,command,rules));
+    }} aria-label="Opérations de clan, exercice V115">
     <div className={styles.intro}>
       <div><span className={styles.overline}>CONSEIL DES MANDATS · EXERCICE V115</span><h3>Quatre façons de mener la guerre</h3>
       <p>Une même équipe identifiable peut être envoyée en assaut latéral, en opération déléguée, en infiltration ou en bataille tactique. Les blessures, l&apos;expérience, les renseignements et les rapports suivent la même archive d&apos;exercice.</p></div>
@@ -450,6 +466,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
 
     <section className={styles.medicalPanel} aria-label="Relève et récupération des blessés V6">
       <h4>Triage du clan · récupération des blessures légères</h4>
+      <ClanWarFieldSprite id={(world.pendingTreatments??[]).length?"medical-stocked":"medical-empty"} label="Illustration du poste médical ; aucun soin automatique" size={56}/>
       <p>Les participants blessés restent identifiés, avec leur expérience antérieure. Leur retour exige une équipe de soigneur de terrain W3-U18 réellement recrutée, disponible, des RAV et 45 secondes de traitement. Ce délai est propre à l&apos;exercice ; aucune blessure majeure ne guérit automatiquement.</p>
       <div className={styles.medicalControls}>
         <label>Personne blessée à relever
@@ -485,6 +502,8 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
         <button type="button" disabled={blocked} onClick={()=>commit(leaveWarOperationV115(worldRef.current,rules))}>Ordonner le repli</button></div>
 
       {assault && <div>
+        <ClanWarFieldSprite id={assault.ownBase<40?"barrier-damaged":"barrier-intact"}
+          label="Illustration originale du bastion : aucun nouvel obstacle de collision" size={72}/>
         <p>Vagues régionales : <strong>{assault.wavesIssued??0} / {warAssaultWaveProfileV140(world.active?.targetId??world.baseId,rules).maximumWaves}</strong> · profils d&apos;unités de la Bible V6 : {(assault.rivalRosterIds??[]).join(", ")||"archive V115 à initialiser"}.</p>
         <p className={styles.explain}>V141 : échanges de tirs simulés simultanément au cours du même tour. Aucun combattant ne peut passer à travers un front ennemi ou se déplacer en dehors de la voie.</p>
         <div className={styles.cards}>
@@ -633,6 +652,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
       </div>}
 
       {stealth && <div>
+        <p>Clavier lorsque le panneau a le focus : flèches, ZQSD ou WASD ; E : interagir ; Espace : attendre. Une pression = un ordre ; aucun maintien automatique.</p>
         <p>Rejoindre le relais (7,1), le désactiver, puis rejoindre l&apos;extraction (1,4). Alerte <strong>{stealth.alarm}/3</strong> · énergie de camouflage <strong>{stealth.energy}/5</strong> · relais <strong>{stealth.sabotaged?"neutralisé":"actif"}</strong> · diversion <strong>{stealth.decoyUsed?"épuisée": "disponible"}</strong> · leurre <strong>{stealth.decoyTurns??0} tour(s) à la position émise</strong> · couverts utilisés <strong>{(stealth.usedCoverIds??[]).length}/{missionTerrain?.cover.length??0}</strong> · écoutes <strong>{stealth.acousticUsed??0}/2</strong>.</p>
         <p className={styles.explain}>Terrain régional : {missionTerrain?.title} · {missionTerrain?.ground} · obstacle : {missionTerrain?.wallLabel}.</p>
         {stealth.reinforcementMode===undefined&&!stealth.supportGuard&&<p role="alert">Cette archive ne précise pas la règle de renfort. Choisissez le comportement pour reprendre l&apos;infiltration ; son état actuel sera conservé.</p>}
@@ -682,7 +702,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
               guardVisible&&stealth.guardX===x&&y===(stealth.guardY??2)?"G":x===7&&y===1?"R":x===1&&y===4?"E":wall?"▥":stealth.decoyTurns&&stealth.decoyX===x&&
               (stealth.decoyY??2)===y?"♪":
               missionTerrain?.cover.includes(x+","+y)?"▤":"·";
-            return <span className={styles.cell} data-wall={wall} data-actor={mark==="X"?"ally":mark==="G"?"rival":""} key={index} title={"Case "+x+","+y}>{mark}</span>;
+            return <span className={styles.cell} data-wall={wall} data-actor={mark==="X"?"ally":mark==="G"?"rival":""} key={index} title={"Case "+x+","+y}>{mark==="R"?<ClanWarFieldSprite id={stealth.sabotaged?"relay-disabled":"relay-active"} label={stealth.sabotaged?"Relais neutralisé":"Relais actif"} size={40}/>:mark==="E"?<ClanWarFieldSprite id="beacon-active" label="Extraction" size={40}/>:mark}</span>;
           })}
         </div>
         <div className={styles.stealthControls}>{(["up","left","down","right","cloak","interact","quiet-sabotage","wait","decoy","hide","listen"] as const).map(action=>
@@ -835,6 +855,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
         const earlyOptions=warOuterRouteChoicesV142(world.baseId,order.targetId,routePc,rules)
           .filter(path=>path.passageIds.join("|")!==order.routeIds.join("|"));
         return <div className={styles.delegatedOrder} key={order.id}>
+        <ClanWarFieldSprite id="supply-sealed" label="Illustration logistique originale ; pas de cargaison supplémentaire" size={56}/>
         <strong>{order.id} · {focusLabels[order.focus]}</strong>
         <span>{order.targetId} · {order.teamIds.map(teamsById).join(", ")}</span>
         <span>{order.recall?"Retour au clan":"Rapport de mission"} dans {formatTime(warOuterSecondsRemainingV115(order,now))} · {order.routeIds.length} passage(s)</span>

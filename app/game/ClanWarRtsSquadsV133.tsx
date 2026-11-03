@@ -1,4 +1,5 @@
 "use client";
+// FIELD_PROPS_20261103
 import {useMemo,useState} from "react";
 import type {WarRulesV6} from "./systems/clanWarBibleV6";
 import {
@@ -12,6 +13,8 @@ import {warMapLineOfSightV128} from "./systems/clanWarSourceMapsV128";
 import {planWarRtsWaypointV142,commandWarRtsWaypointV142,type WarRtsWaypointV142} from "./systems/clanWarRtsWaypointV142";
 import {commandWarRtsMarchV143} from "./systems/clanWarRtsMarchV143";
 import {buildWarCouncilAuditV146} from "./systems/clanWarCouncilAuditV146";
+import ClanWarFieldSprite,{fieldSpriteUrl} from "./ClanWarFieldSprite";
+import {fieldKeyboardAction,fieldKeyboardTargetBlocked} from "./systems/clanWarFieldControls";
 import styles from "./ClanWarRtsSquadsV133.module.css";
 
 const d=(a:{x:number;y:number},b:{x:number;y:number})=>Math.abs(a.x-b.x)+Math.abs(a.y-b.y);
@@ -54,8 +57,20 @@ export default function ClanWarRtsSquadsV133({rules}:{rules:WarRulesV6}){
   if(kind==="move"||kind==="attack")return;
   send({kind,squadId:selected.id});
  }
- const cell=18;
- return <section className={styles.root} data-testid="war-rts-squads-v133"
+ const [mapZoom,setMapZoom]=useState(1);
+ const cell=18*mapZoom;
+ return <section className={styles.root} data-testid="war-rts-squads-v133" tabIndex={0}
+  onKeyDown={event=>{
+    const command=fieldKeyboardAction({key:event.key,repeat:event.repeat,
+      ctrlKey:event.ctrlKey,metaKey:event.metaKey,altKey:event.altKey,
+      isComposing:event.nativeEvent.isComposing,
+      editing:fieldKeyboardTargetBlocked(event.target),mode:"rts",
+      blocked:state.phase!=="active"||!selected||selected.status!=="active"});
+    if(!command||!selected)return;
+    event.preventDefault();event.stopPropagation();
+    if(command==="wait"||command==="interact")action(command);
+    else send({kind:"move",squadId:selected.id,direction:command});
+  }}
   aria-label="Prototype de bataille RTS à plusieurs escouades Yautja">
   <header className={styles.header}>
    <span className={styles.eyebrow}>GUERRE DES CLANS · 4 ESCOUADES MAX · BIBLE V6</span>
@@ -105,29 +120,36 @@ export default function ClanWarRtsSquadsV133({rules}:{rules:WarRulesV6}){
   <div className={styles.columns}>
    <div className={styles.mapBlock}>
     <h4>Carte W3 · {map.width} × {map.height} cases</h4>
+    <div className={styles.toolbar} aria-label="Zoom de la carte">
+      <button type="button" disabled={mapZoom<=.75} onClick={()=>setMapZoom(z=>Math.max(.75,z-.25))} aria-label="Réduire la carte">−</button>
+      <output aria-live="polite">{Math.round(mapZoom*100)} %</output>
+      <button type="button" disabled={mapZoom>=3} onClick={()=>setMapZoom(z=>Math.min(3,z+.25))} aria-label="Agrandir la carte">+</button>
+      <button type="button" onClick={()=>setMapZoom(1)}>100 %</button>
+    </div>
+    <p>Clavier sur ce panneau : flèches/ZQSD/WASD, E pour interagir, Espace pour attendre. Les zones de saisie et boutons gardent leurs commandes habituelles.</p>
     <div className={styles.mapScroll}>
-     <svg viewBox={`0 0 ${map.width*cell} ${map.height*cell}`} role="img"
+     <svg width={map.width*cell} height={map.height*cell} style={{maxWidth:"none",display:"block"}} viewBox={`0 0 ${map.width*cell} ${map.height*cell}`} role="img"
       aria-label="Topologie tactique, détachements alliés, adversaires en ligne de vue et repères W3">
       {map.tiles.map(t=><rect key={`${t.x}-${t.y}`} className={styles.tile} data-kind={t.kind}
        x={t.x*cell} y={t.y*cell} width={cell} height={cell} stroke="#172b26" strokeWidth=".5"/>)}
       <g aria-hidden="true">
-       <text x={map.observation.x*cell+9} y={map.observation.y*cell+13} textAnchor="middle" fill="#f0df94" fontSize="12">◈</text>
-       <text x={map.extraction.x*cell+9} y={map.extraction.y*cell+13} textAnchor="middle" fill="#e9e1a8" fontSize="13">↥</text>
+       <image href={fieldSpriteUrl("relay-active")} x={map.observation.x*cell} y={map.observation.y*cell} width={cell} height={cell}/>
+       <image href={fieldSpriteUrl("beacon-active")} x={map.extraction.x*cell} y={map.extraction.y*cell} width={cell} height={cell}/>
        {(state.observed?mission.tasks:mission.tasks.slice(0,0)).map((t,i)=><g key={t.id}>
         <rect x={t.location.x*cell} y={t.location.y*cell} width={cell} height={cell}
          stroke={state.completedTaskIds.includes(t.id)?"#7edcb1":i===state.completedTaskIds.length?"#f1df93":"#95969e"}
          strokeWidth="2" fill="transparent"/>
-        <text x={t.location.x*cell+9} y={t.location.y*cell+13} fontSize="11" textAnchor="middle" fill="#f2f6e4">{i+1}</text>
+        <text x={t.location.x*cell+cell/2} y={t.location.y*cell+cell*13/18} fontSize={cell*11/18} textAnchor="middle" fill="#f2f6e4">{i+1}</text>
        </g>)}
-       {follower&&<circle cx={follower.x*cell+9} cy={follower.y*cell+9} r="6.5"
+       {follower&&<circle cx={follower.x*cell+cell/2} cy={follower.y*cell+cell/2} r={cell*6.5/18}
         fill={follower.isNeutral?"#d4c890":"#98cadd"} stroke="#f8f1df" strokeWidth="1.5"/>}
        {enemies.map(e=><g key={e.id}>
-        <path d={`M ${e.x*cell+9} ${e.y*cell+2} l 7 13 h -14 Z`} fill="#ee8c81" stroke="#ffd6c7" strokeWidth="1"/>
+        <path d={`M ${e.x*cell+cell/2} ${e.y*cell+cell/9} l ${cell*7/18} ${cell*13/18} h ${-cell*14/18} Z`} fill="#ee8c81" stroke="#ffd6c7" strokeWidth="1"/>
        </g>)}
        {state.squads.filter(u=>u.status!=="ready"&&u.status!=="evacuated").map(u=><g key={u.id}>
-        <circle cx={u.x*cell+9} cy={u.y*cell+9} r="7.3" fill={colorFor(u.status)}
+        <circle cx={u.x*cell+cell/2} cy={u.y*cell+cell/2} r={cell*7.3/18} fill={colorFor(u.status)}
          stroke={selected?.id===u.id?"#fff1ac":"#1c302a"} strokeWidth={selected?.id===u.id?2.5:1.2}/>
-        <text x={u.x*cell+9} y={u.y*cell+12} fontSize="9" fill="#10251d" fontWeight="700" textAnchor="middle">
+        <text x={u.x*cell+cell/2} y={u.y*cell+cell*2/3} fontSize={cell/2} fill="#10251d" fontWeight="700" textAnchor="middle">
          {state.squads.indexOf(u)+1}
         </text>
        </g>)}
@@ -136,7 +158,7 @@ export default function ClanWarRtsSquadsV133({rules}:{rules:WarRulesV6}){
     </div>
     <p className={styles.hint}>Vert : escouades, rouge : adversaires actuellement visibles, or : extraction/reconnaissance. Les positions inconnues restent masquées. Les repères d&apos;objectifs sont révélés après reconnaissance.</p>
     <div className={styles.legend}>
-     <span>Électricité : <strong>{state.power?"alimentée":"coupée"}</strong></span>
+     <span><ClanWarFieldSprite id={state.power?"core-active":"core-disabled"} label={state.power?"Générateur alimenté":"Générateur coupé"} size={44}/> Électricité : <strong>{state.power?"alimentée":"coupée"}</strong></span>
      <span>Pression : <strong>{state.airlockStable?"stable":"instable"}</strong></span>
      <span>Adversaires vus : <strong>{state.intel.length}</strong></span>
      <span>Phase : <strong>{state.phase}</strong></span>
