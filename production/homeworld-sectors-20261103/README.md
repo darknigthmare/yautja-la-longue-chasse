@@ -2,13 +2,13 @@
 
 Lot de production `MMK-20261103`. Les identifiants de génération `HWM162-*` sont conservés. Ce dossier est distinct du lot de terrains `homeworld-v162` ajouté en parallèle.
 
-Ce lot complète les sources de la PR [#99](https://github.com/darknigthmare/yautja-la-longue-chasse/pull/99) avec **56 PNG indépendants présents** pour 56 objets ou états planifiés. Chaque objet est un fichier séparé. Les anciennes sources restent à leur emplacement.
+Ce lot complète les sources de la PR [#99](https://github.com/darknigthmare/yautja-la-longue-chasse/pull/99) avec **70 PNG indépendants présents** pour 70 objets ou états planifiés. Chaque objet est un fichier séparé. Les anciennes sources restent à leur emplacement.
 
 | Secteur | Objets ou états du lot | PNG présents |
 | --- | ---: | ---: |
-| Marché | 17 | 17 |
-| Montures | 18 | 18 |
-| Chenils | 21 | 21 |
+| Marché | 21 | 21 |
+| Montures | 23 | 23 |
+| Chenils | 26 | 26 |
 
 ## Consulter les fichiers
 
@@ -75,6 +75,20 @@ Ce lot complète les sources de la PR [#99](https://github.com/darknigthmare/yau
 | HWM162-K19 | Arc avant fixe de l’enclos | target-v81-71-266 | [PNG](sprites/kennels/HWM162-K19-enclosure-front-arc.png) | 1254 × 1254 |
 | HWM162-K20 | Battant d’enclos indépendant — pose fermée | target-v81-71-266 | [PNG](sprites/kennels/HWM162-K20-enclosure-gate-leaf.png) | 1536 × 1024 |
 | HWM162-K21 | Battant d’enclos indépendant — pose ouverte | target-v81-71-266 | [PNG](sprites/kennels/HWM162-K21-enclosure-gate-leaf-open.png) | 1536 × 1024 |
+| HWM162-S18 | Chariot de manutention — sans chargement | target-v81-64-170 | [PNG](sprites/market/HWM162-S18-empty-cargo-sorting-cart.png) | 1536 × 1024 |
+| HWM162-S19 | Sac marchand suspendu en filet autonome | target-v81-64-164 ; target-v81-64-160 | [PNG](sprites/market/HWM162-S19-hanging-net-bag.png) | 1024 × 1536 |
+| HWM162-S20 | Halle — sol et structure arrière | target-v81-59-97 | [PNG](sprites/market/HWM162-S20-market-hall-rear-interior.png) | 1774 × 887 |
+| HWM162-S21 | Halle — façade et toiture au premier plan | target-v81-59-97 | [PNG](sprites/market/HWM162-S21-market-hall-front-roof.png) | 1774 × 887 |
+| HWM162-M19 | Meuble du poste de soin dégagé | target-v81-72-290 | [PNG](sprites/mounts/HWM162-M19-cleared-care-workstation.png) | 1536 × 1024 |
+| HWM162-M20 | Coussin segmenté du poste de soin | target-v81-72-290 | [PNG](sprites/mounts/HWM162-M20-care-support-cushion.png) | 1536 × 1024 |
+| HWM162-M21 | Module d’éclairage et de commande du poste de soin | target-v81-72-290 | [PNG](sprites/mounts/HWM162-M21-care-light-control-module.png) | 1536 × 1024 |
+| HWM162-M22 | Abri des montures — sol et structure arrière | hw-sector-mount-stable-building | [PNG](sprites/mounts/HWM162-M22-stable-floor-rear-structure.png) | 1536 × 1024 |
+| HWM162-M23 | Abri des montures — façade et toiture | hw-sector-mount-stable-building | [PNG](sprites/mounts/HWM162-M23-stable-front-roof-structure.png) | 1536 × 1024 |
+| HWM162-K22 | Intérieur des loges du chenil | hw-sector-hound-kennel-building | [PNG](sprites/kennels/HWM162-K22-kennel-interior.png) | 1536 × 1024 |
+| HWM162-K23 | Façade et toiture des chenils | hw-sector-hound-kennel-building | [PNG](sprites/kennels/HWM162-K23-kennel-facade-roof.png) | 1536 × 1024 |
+| HWM162-K24 | Grille autonome de loge | hw-sector-hound-kennel-building | [PNG](sprites/kennels/HWM162-K24-kennel-bay-grille.png) | 1536 × 1024 |
+| HWM162-K25 | Corps de cage moyenne sans trappe mobile | target-v81-71-277 | [PNG](sprites/kennels/HWM162-K25-medium-cage-body.png) | 1536 × 1024 |
+| HWM162-K26 | Trappe coulissante de cage moyenne autonome | target-v81-71-277 | [PNG](sprites/kennels/HWM162-K26-medium-cage-sliding-panel.png) | 1536 × 1024 |
 
 ## Deuxième passe : composants détachés et raccords
 
@@ -181,6 +195,45 @@ Les 9 demandes HWM162-S15, HWM162-S16, HWM162-M16, HWM162-M17, HWM162-M18, HWM16
 
 Les vitrines vides V33, le piédestal V56, le rack vide S12, le stand gauche HW1009, les lampes, le chariot et les autres contenants existants restent des sources réutilisables. Les statuts de revue humaine et d’admission au runtime restent distincts de cette livraison de sources graphiques.
 
+## Sixième passe : manutention, postes de soin et sections de bâtiments
+
+Cette passe ajoute 14 PNG aux 56 déjà livrés : 4 pour le marché, 5 pour les montures et 5 pour les chenils. L’audit part du commit `1223042c249fab900e7fba9f49d7c78d105bd645`. Le [plan de production](next-targets-round6.json), l’[audit ciblé](modularity-audit-round6.json) et la [revue des ajouts](review-round6.md) décrivent les sources, les partitions et les contrôles. Les 40 cibles héritées, les deux cibles de bâtiments ajoutées au lot et les 56 PNG précédents sont conservés.
+
+| ID | Objet ou état | Cible conservée | Vue demandée | Source visuelle reprise |
+| --- | --- | --- | --- | --- |
+| HWM162-S18 | Chariot de manutention — sans chargement | target-v81-64-170 | Vue de la référence conservée | [public/game/homeworld/v78/port-cargo-sorting-cart.png](../../public/game/homeworld/v78/port-cargo-sorting-cart.png) |
+| HWM162-S19 | Sac marchand suspendu en filet autonome | target-v81-64-164 ; target-v81-64-160 | Vue de la référence conservée | [public/game/homeworld/v78/market-stall-right.png](../../public/game/homeworld/v78/market-stall-right.png) |
+| HWM162-S20 | Halle — sol et structure arrière | target-v81-59-97 | Vue de la référence conservée | [production/homeworld-sectors-20261103/sprites/market/HWM162-S01-market-hall-v2.png](sprites/market/HWM162-S01-market-hall-v2.png) |
+| HWM162-S21 | Halle — façade et toiture au premier plan | target-v81-59-97 | Vue de la référence conservée | [production/homeworld-sectors-20261103/sprites/market/HWM162-S01-market-hall-v2.png](sprites/market/HWM162-S01-market-hall-v2.png) |
+| HWM162-M19 | Meuble du poste de soin dégagé | target-v81-72-290 | Vue de la référence conservée | [production/homeworld-sectors-20261103/sprites/mounts/HWM162-M06-fauna-care-workstation.png](sprites/mounts/HWM162-M06-fauna-care-workstation.png) |
+| HWM162-M20 | Coussin segmenté du poste de soin | target-v81-72-290 | Vue de la référence conservée | [production/homeworld-sectors-20261103/sprites/mounts/HWM162-M06-fauna-care-workstation.png](sprites/mounts/HWM162-M06-fauna-care-workstation.png) |
+| HWM162-M21 | Module d’éclairage et de commande du poste de soin | target-v81-72-290 | Vue de la référence conservée | [production/homeworld-sectors-20261103/sprites/mounts/HWM162-M06-fauna-care-workstation.png](sprites/mounts/HWM162-M06-fauna-care-workstation.png) |
+| HWM162-M22 | Abri des montures — sol et structure arrière | hw-sector-mount-stable-building | Vue de la référence conservée | [production/homeworld-sectors-20261103/sprites/mounts/HWM162-M01-open-stable.png](sprites/mounts/HWM162-M01-open-stable.png) |
+| HWM162-M23 | Abri des montures — façade et toiture | hw-sector-mount-stable-building | Vue de la référence conservée | [production/homeworld-sectors-20261103/sprites/mounts/HWM162-M01-open-stable.png](sprites/mounts/HWM162-M01-open-stable.png) |
+| HWM162-K22 | Intérieur des loges du chenil | hw-sector-hound-kennel-building | Vue de la référence conservée | [production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png](sprites/kennels/HWM162-K01-kennel-building.png) |
+| HWM162-K23 | Façade et toiture des chenils | hw-sector-hound-kennel-building | Vue de la référence conservée | [production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png](sprites/kennels/HWM162-K01-kennel-building.png) |
+| HWM162-K24 | Grille autonome de loge | hw-sector-hound-kennel-building | Vue de la référence conservée | [production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png](sprites/kennels/HWM162-K01-kennel-building.png)<br>[production/homeworld-sectors-20261103/sprites/kennels/HWM162-K23-kennel-facade-roof.png](sprites/kennels/HWM162-K23-kennel-facade-roof.png) |
+| HWM162-K25 | Corps de cage moyenne sans trappe mobile | target-v81-71-277 | Vue de la référence conservée | [production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-277-cage-moyenne-native.png](../native-open-20261102/archives/fauna-energy/cages/target-v81-71-277-cage-moyenne-native.png)<br>[production/homeworld-sectors-20261103/sprites/kennels/HWM162-K11-medium-cage-open.png](sprites/kennels/HWM162-K11-medium-cage-open.png) |
+| HWM162-K26 | Trappe coulissante de cage moyenne autonome | target-v81-71-277 | Vue de la référence conservée | [production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-277-cage-moyenne-native.png](../native-open-20261102/archives/fauna-energy/cages/target-v81-71-277-cage-moyenne-native.png)<br>[production/homeworld-sectors-20261103/sprites/kennels/HWM162-K11-medium-cage-open.png](sprites/kennels/HWM162-K11-medium-cage-open.png) |
+
+S18 fournit un état du chariot V78 sans ses coffres, contenants verticaux et paquet textile : le plateau et le cadre de retenue sont libres, tandis que les roues, la poignée, le treuil, son câble et le taquet restent solidaires du chariot. La source chargée est conservée. S19 rend indépendant un sac en filet suspendu du stand V78, avec sa boucle complète et son contenu dissimulé. Son cadrage autonome est plus grand que le détail dans le stand ; aucune échelle de pixels identique n’est revendiquée. Le réemploi éventuel du chariot pour la cible de spatioport 207 reste une mention de fonction, sans ajouter ni clore cette cible dans le lot.
+
+Les trois bâtiments existants reçoivent chacun deux sections complémentaires. La séparation est définie au plan des piliers de façade : les sols et maçonneries arrière appartiennent à la section arrière, la toiture et les supports du premier rang à la section avant. Les personnages et le mobilier pourront être proposés entre ces couches après réglage dans la scène.
+
+| Bâtiment complet conservé | Sol et structure arrière | Façade et toiture |
+| --- | --- | --- |
+| Halle S01 | S20 | S21 |
+| Abri des montures M01 | M22 | M23 |
+| Chenil K01 | K22 | K23 |
+
+S20 conserve le dallage des trois travées, leurs seuils et les maçonneries arrière de la halle. S21 regroupe le toit, les quatre piliers frontaux avec leurs socles, leurs arches, draperies et lumières ; ses trois baies sont transparentes. Les paires M22/M23 et K22/K23 suivent la même répartition de leurs propres sources. Ces sections ne créent pas trois nouveaux bâtiments. Les parties auparavant masquées sont interprétées ; le recollage pixel par pixel, le partage exact des appuis, l’échelle commune et l’occlusion en moteur ne sont pas certifiés.
+
+M19 dégage le poste de soin M06 tout en conservant son bassin, ses rangements fermés et les rails de l’appui central. M20 fournit le coussin segmenté seul ; M21 réunit l’embase, la commande, le bras, le câble et la lampe du module latéral. Leur séparation permet de proposer la composition du même poste, sans attribuer un acte médical canonique ni certifier le branchement, l’articulation ou la charge admissible. M21 utilise la sortie corrigée nativement pour retirer une portion de plateau de table restée fusionnée au module dans la première tentative.
+
+K24 propose une grille autonome pour une loge du chenil. Cette fermeture n’est pas observée dans K01 : son dessin est une création du projet fondée sur le profil de la baie, sans mécanisme ni fixation attestés. K25 sépare le corps de la cage moyenne 277 de sa trappe mobile ; K26 fournit cette trappe avec son loquet. Les parties fixes, les guides et la demi-façade conservée restent au corps de cage. Translation, raccord, échelle et animation demandent une vérification en scène. Le profil de K24 a reçu une correction native en utilisant K23 comme référence auxiliaire : la grille reste à une échelle de cadrage propre. Des traces d’alpha de 2 à 8 subsistent dans certaines fenêtres ; elles ne sont pas décrites comme intégralement transparentes. Les premières tentatives de M21 et K24 restent archivées hors sélection.
+
+Les 14 demandes de cette passe héritent de la vue de leur référence. Pour K24, cette référence définit le profil de la baie, pas une grille préexistante. Aucun angle de caméra réel n’est mesuré et aucune conversion générale vers la cible 0°/35° n’est revendiquée. Les silhouettes et les valeurs d’alpha des ouvertures sont vérifiées séparément des raccords et du fonctionnement ; la présence des PNG ne constitue ni une validation humaine ni une admission au runtime.
+
 ## Fidélité et portée des références
 
 Les bâtiments de marché, d’écurie et de chenil sont des **adaptations originales du projet**. Les références ci-dessous orientent leur cohérence visuelle et leur fonction. Elles ne fournissent pas les plans canoniques de ces bâtiments. Ce lot ne porte aucune certification de reproduction 1:1.
@@ -196,7 +249,7 @@ Le chien de Predators (2010) et celui de The Predator (2018) restent deux réfé
 
 ## Échelle et implantation
 
-La cible de caméra du Homeworld est une projection orthographique, yaw global 0°, inclinaison 35°, profondeur 0.573576436351046. 22 éditions de ce lot conservent toutefois la vue de leur référence, identifiée dans le catalogue, la galerie et le classeur. Cette vue héritée est distincte de la cible du projet ; aucun angle réel n’est certifié par le PNG. La convention du Homeworld est un adulte de 100 unités pour 2,3 m. La porte minimale du contrat mesure 80 × 128 unités ; sa cible est 96 × 140. Ces valeurs décrivent le jeu.
+La cible de caméra du Homeworld est une projection orthographique, yaw global 0°, inclinaison 35°, profondeur 0.573576436351046. 36 éditions de ce lot conservent toutefois la vue de leur référence, identifiée dans le catalogue, la galerie et le classeur. Cette vue héritée est distincte de la cible du projet ; aucun angle réel n’est certifié par le PNG. La convention du Homeworld est un adulte de 100 unités pour 2,3 m. La porte minimale du contrat mesure 80 × 128 unités ; sa cible est 96 × 140. Ces valeurs décrivent le jeu.
 
 Les dimensions en pixels sont lues dans les fichiers. Les dimensions physiques ou en unités du monde restent des **propositions de placement**, lorsqu’elles sont renseignées. Elles ne sont ni des mesures officielles du lore, ni une preuve d’échelle en jeu. Les objets doivent garder leurs proportions ; aucune rotation CSS, symétrie ou mise à l’échelle non uniforme ne compense une vue incorrecte.
 

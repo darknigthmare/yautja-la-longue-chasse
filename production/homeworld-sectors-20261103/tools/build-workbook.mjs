@@ -137,8 +137,10 @@ const fourthPassAssets = assets.filter(a => a.productionPass === 4);
 const fourthPassMeta = continuationFor(4);
 const fifthPassAssets = assets.filter(a => a.productionPass === 5);
 const fifthPassMeta = continuationFor(5);
+const sixthPassAssets = assets.filter(a => a.productionPass === 6);
+const sixthPassMeta = continuationFor(6);
 const currentPassAssets = assets.filter(a => (a.productionPass ?? 1) === currentPass);
-const passNames = {2:'deuxième',3:'troisième',4:'quatrième',5:'cinquième'};
+const passNames = {2:'deuxième',3:'troisième',4:'quatrième',5:'cinquième',6:'sixième'};
 const inheritedViewAssets = assets.filter(inheritsView);
 const sourceFileLinks = a => referenceFiles(a).map(file => `[${file}](${toRepoPath(file).local})`).join('<br>');
 const thirdPassRows = thirdPassAssets.map(a => `| ${a.id} | ${a.label} | ${join(a.targetIds)} | ${viewLabel(a)} | ${sourceFileLinks(a)} |`).join('\n');
@@ -174,6 +176,18 @@ const fifthPassSection = fifthPassAssets.length ?
   `K20 utilise la deuxième sortie après suppression native d’un insert ambre : ce voyant appartient au poteau fixe inclus dans K19, pas au battant mobile. Les premières tentatives de M16 et K20 restent archivées hors du dossier des sprites et ne sont pas comptées parmi les sources sélectionnées.\n\n` +
   `Les ${fifthPassAssets.filter(inheritsView).length} demandes ${fifthPassAssets.filter(inheritsView).map(a => a.id).join(', ')} héritent de la vue de leur source. S17 demande la cible orthographique 0°/35° du projet. Aucun angle réel n’est mesuré. Les cadrages des éditions peuvent différer : l’alignement pixel par pixel des états et l’assemblage des composants restent à contrôler.\n\n` +
   `Les vitrines vides V33, le piédestal V56, le rack vide S12, le stand gauche HW1009, les lampes, le chariot et les autres contenants existants restent des sources réutilisables. Les statuts de revue humaine et d’admission au runtime restent distincts de cette livraison de sources graphiques.\n\n` : '';
+const sixthPassRows = sixthPassAssets.map(a => `| ${a.id} | ${a.label} | ${join(a.targetIds)} | ${viewLabel(a)} | ${sourceFileLinks(a)} |`).join('\n');
+const sixthPassSection = sixthPassAssets.length ?
+  `## Sixième passe : manutention, postes de soin et sections de bâtiments\n\n` +
+  `Cette passe ajoute ${sixthPassAssets.length} PNG aux ${assets.filter(a => (a.productionPass ?? 1) < 6).length} déjà livrés : ${sixthPassAssets.filter(a => a.area === 'market').length} pour le marché, ${sixthPassAssets.filter(a => a.area === 'mounts').length} pour les montures et ${sixthPassAssets.filter(a => a.area === 'kennels').length} pour les chenils. L’audit part du commit \`${sixthPassMeta.baselineCommit}\`. Le [plan de production](next-targets-round6.json), l’[audit ciblé](modularity-audit-round6.json) et la [revue des ajouts](review-round6.md) décrivent les sources, les partitions et les contrôles. Les 40 cibles héritées, les deux cibles de bâtiments ajoutées au lot et les 56 PNG précédents sont conservés.\n\n` +
+  `| ID | Objet ou état | Cible conservée | Vue demandée | Source visuelle reprise |\n| --- | --- | --- | --- | --- |\n${sixthPassRows}\n\n` +
+  `S18 fournit un état du chariot V78 sans ses coffres, contenants verticaux et paquet textile : le plateau et le cadre de retenue sont libres, tandis que les roues, la poignée, le treuil, son câble et le taquet restent solidaires du chariot. La source chargée est conservée. S19 rend indépendant un sac en filet suspendu du stand V78, avec sa boucle complète et son contenu dissimulé. Son cadrage autonome est plus grand que le détail dans le stand ; aucune échelle de pixels identique n’est revendiquée. Le réemploi éventuel du chariot pour la cible de spatioport 207 reste une mention de fonction, sans ajouter ni clore cette cible dans le lot.\n\n` +
+  `Les trois bâtiments existants reçoivent chacun deux sections complémentaires. La séparation est définie au plan des piliers de façade : les sols et maçonneries arrière appartiennent à la section arrière, la toiture et les supports du premier rang à la section avant. Les personnages et le mobilier pourront être proposés entre ces couches après réglage dans la scène.\n\n` +
+  `| Bâtiment complet conservé | Sol et structure arrière | Façade et toiture |\n| --- | --- | --- |\n| Halle S01 | S20 | S21 |\n| Abri des montures M01 | M22 | M23 |\n| Chenil K01 | K22 | K23 |\n\n` +
+  `S20 conserve le dallage des trois travées, leurs seuils et les maçonneries arrière de la halle. S21 regroupe le toit, les quatre piliers frontaux avec leurs socles, leurs arches, draperies et lumières ; ses trois baies sont transparentes. Les paires M22/M23 et K22/K23 suivent la même répartition de leurs propres sources. Ces sections ne créent pas trois nouveaux bâtiments. Les parties auparavant masquées sont interprétées ; le recollage pixel par pixel, le partage exact des appuis, l’échelle commune et l’occlusion en moteur ne sont pas certifiés.\n\n` +
+  `M19 dégage le poste de soin M06 tout en conservant son bassin, ses rangements fermés et les rails de l’appui central. M20 fournit le coussin segmenté seul ; M21 réunit l’embase, la commande, le bras, le câble et la lampe du module latéral. Leur séparation permet de proposer la composition du même poste, sans attribuer un acte médical canonique ni certifier le branchement, l’articulation ou la charge admissible. M21 utilise la sortie corrigée nativement pour retirer une portion de plateau de table restée fusionnée au module dans la première tentative.\n\n` +
+  `K24 propose une grille autonome pour une loge du chenil. Cette fermeture n’est pas observée dans K01 : son dessin est une création du projet fondée sur le profil de la baie, sans mécanisme ni fixation attestés. K25 sépare le corps de la cage moyenne 277 de sa trappe mobile ; K26 fournit cette trappe avec son loquet. Les parties fixes, les guides et la demi-façade conservée restent au corps de cage. Translation, raccord, échelle et animation demandent une vérification en scène. Le profil de K24 a reçu une correction native en utilisant K23 comme référence auxiliaire : la grille reste à une échelle de cadrage propre. Des traces d’alpha de 2 à 8 subsistent dans certaines fenêtres ; elles ne sont pas décrites comme intégralement transparentes. Les premières tentatives de M21 et K24 restent archivées hors sélection.\n\n` +
+  `Les ${sixthPassAssets.filter(inheritsView).length} demandes de cette passe héritent de la vue de leur référence. Pour K24, cette référence définit le profil de la baie, pas une grille préexistante. Aucun angle de caméra réel n’est mesuré et aucune conversion générale vers la cible 0°/35° n’est revendiquée. Les silhouettes et les valeurs d’alpha des ouvertures sont vérifiées séparément des raccords et du fonctionnement ; la présence des PNG ne constitue ni une validation humaine ni une admission au runtime.\n\n` : '';
 const readme = `# Marché, montures et chenils — 2026-11-03\n\n` +
   `Lot de production \`MMK-20261103\`. Les identifiants de génération \`HWM162-*\` sont conservés. Ce dossier est distinct du lot de terrains \`homeworld-v162\` ajouté en parallèle.\n\n` +
   `Ce lot complète les sources de la PR [#99](https://github.com/${catalogue.repository}/pull/99) avec **${present.length} PNG indépendants présents** pour ${assets.length} objets ou états planifiés. Chaque objet est un fichier séparé. Les anciennes sources restent à leur emplacement.\n\n` +
@@ -184,7 +198,7 @@ const readme = `# Marché, montures et chenils — 2026-11-03\n\n` +
   `- [Catalogue](catalogue.json) : liste des objets, fonctions, sources antérieures et données mesurées.\n` +
   `- [Manifeste des générations](manifest.json) et [contrôles techniques](technical-report.json).\n\n` +
   `| ID | Objet | Cible du projet | Fichier | Pixels réels |\n| --- | --- | --- | --- | --- |\n${fileRows}\n\n` +
-  continuationSection + thirdPassSection + fourthPassSection + fifthPassSection +
+  continuationSection + thirdPassSection + fourthPassSection + fifthPassSection + sixthPassSection +
   `## Fidélité et portée des références\n\n` +
   `Les bâtiments de marché, d’écurie et de chenil sont des **adaptations originales du projet**. Les références ci-dessous orientent leur cohérence visuelle et leur fonction. Elles ne fournissent pas les plans canoniques de ces bâtiments. Ce lot ne porte aucune certification de reproduction 1:1.\n\n` +
   `${sourceLinks}\n\n` +
@@ -329,7 +343,7 @@ if (currentPass >= 3 && currentPassAssets.length) {
     ['Livraison', `A${14+firstNew}:K${14+lastNew}`, `preview-Livraison-round${currentPass}.png`],
     ['Livraison', `Q${14+firstNew}:R${14+lastNew}`, `preview-Livraison-round${currentPass}-camera.png`],
     ['Implantation', `A${7+firstNew}:F${7+lastNew}`, `preview-Implantation-round${currentPass}.png`],
-    ...({4:['target-v81-64-164','target-v81-64-170','target-v81-71-274'],5:['target-v81-64-164','target-v81-72-289','target-v81-71-266']}[currentPass] ?? []).map(id => {
+    ...({4:['target-v81-64-164','target-v81-64-170','target-v81-71-274'],5:['target-v81-64-164','target-v81-72-289','target-v81-71-266'],6:['target-v81-59-97','target-v81-72-290','hw-sector-hound-kennel-building']}[currentPass] ?? []).map(id => {
       const row=7+targets.findIndex(t=>t.id===id);
       return ['Catalogue',`A${row-1}:E${row+1}`,`preview-Catalogue-round${currentPass}-${id}.png`];
     }),

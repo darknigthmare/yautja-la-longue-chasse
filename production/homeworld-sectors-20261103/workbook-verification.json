@@ -1,8 +1,8 @@
 {
-  "actualFiles": 56,
-  "expectedFiles": 56,
-  "uniqueIds": 56,
-  "uniqueHashes": 56,
+  "actualFiles": 70,
+  "expectedFiles": 70,
+  "uniqueIds": 70,
+  "uniqueHashes": 70,
   "targets": 42,
   "sourceCount": 6,
   "productionPassCounts": {
@@ -10,7 +10,8 @@
     "2": 8,
     "3": 10,
     "4": 11,
-    "5": 10
+    "5": 10,
+    "6": 14
   },
   "inheritedReferenceViewIds": [
     "HWM162-S08",
@@ -34,11 +35,25 @@
     "HWM162-K18",
     "HWM162-K19",
     "HWM162-K20",
-    "HWM162-K21"
+    "HWM162-K21",
+    "HWM162-S18",
+    "HWM162-S19",
+    "HWM162-S20",
+    "HWM162-S21",
+    "HWM162-M19",
+    "HWM162-M20",
+    "HWM162-M21",
+    "HWM162-M22",
+    "HWM162-M23",
+    "HWM162-K22",
+    "HWM162-K23",
+    "HWM162-K24",
+    "HWM162-K25",
+    "HWM162-K26"
   ],
   "cameraAnglesMeasured": false,
   "inspections": [
-    "{\"kind\":\"table\",\"sheet\":\"Livraison\",\"address\":\"A6:E9\",\"rows\":4,\"cols\":5,\"values\":[[\"Objets ou états du lot\",56,null,\"Lore : adaptations originales\",null],[\"PNG présents\",56,null,\"Aucune certification visuelle 1:1\",null],[\"Revue humaine validée\",0,null,\"Les 40 cibles héritées sont conservées\",null],[\"Admission runtime\",0,null,\"Pixels mesurés ; échelle physique proposée\",null]]}",
+    "{\"kind\":\"table\",\"sheet\":\"Livraison\",\"address\":\"A6:E9\",\"rows\":4,\"cols\":5,\"values\":[[\"Objets ou états du lot\",70,null,\"Lore : adaptations originales\",null],[\"PNG présents\",70,null,\"Aucune certification visuelle 1:1\",null],[\"Revue humaine validée\",0,null,\"Les 40 cibles héritées sont conservées\",null],[\"Admission runtime\",0,null,\"Pixels mesurés ; échelle physique proposée\",null]]}",
     "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}"
   ],
   "nativeExcelInteractiveVerification": false,
@@ -55,45 +70,50 @@
       "Catalogue!A1:E11",
       "Implantation!A1:F12",
       "Références!A1:E10",
-      "Livraison!A60:K69",
-      "Livraison!Q60:R69",
-      "Implantation!A53:F62",
-      "Catalogue!A14:E16",
-      "Catalogue!A44:E46",
-      "Catalogue!A21:E23"
+      "Livraison!A70:K83",
+      "Livraison!Q70:R83",
+      "Implantation!A63:F76",
+      "Catalogue!A6:E8",
+      "Catalogue!A45:E47",
+      "Catalogue!A47:E49"
     ],
     "previewCount": 10,
-    "method": "Inspection visuelle directe des dix rendus artifact-tool après export de la passe 5.",
-    "scope": "Vérification des rendus indiqués ; aucune session interactive Excel ni certification de rendu dans tous les lecteurs."
+    "method": "Inspection directe des rendus artifact-tool de chacune des quatre feuilles et des six plages ciblées de la passe 6.",
+    "scope": "Mise en page des plages indiquées seulement ; aucune vérification interactive dans Excel natif revendiquée.",
+    "notes": [
+      "Les nouvelles lignes n’ajoutent pas de dimensions métriques canoniques : les cellules sans mesure restent vides.",
+      "La référence auxiliaire K23 de K24 apparaît dans Livraison!R81."
+    ]
   },
   "scopePreservation": {
-    "baselineCommit": "7299b0fc2bd06dd53a45e3caab630bc75207d0ce",
-    "previous46DeliveryRowsFirst16ColumnsUnchanged": true,
-    "previous46DeliveryRowsAll18ColumnsUnchanged": true,
-    "cellValuesAndFormulasCompared": "Livraison!A14:R59",
+    "baselineCommit": "1223042c249fab900e7fba9f49d7c78d105bd645",
+    "previous56DeliveryRowsFirst16ColumnsUnchanged": true,
+    "previous56DeliveryRowsAll18ColumnsUnchanged": true,
+    "cellValuesAndFormulasCompared": "Livraison!A14:R69",
     "deliveryCellDifferenceCount": 0,
     "referenceSheetCellsUnchanged": true,
     "nativeTableCount": 4,
     "inheritedTargetCountUnchanged": 40,
     "targetRowsIncludingTwoBuildings": 42,
-    "method": "Lecture ZIP/XML du classeur exporté et du classeur de la tête Git de référence ; comparaison des valeurs et formules des cellules."
+    "method": "Comparaison en lecture seule des valeurs et formules des XML internes du XLSX publié à la base et du nouvel export ; aucune réécriture par cette vérification."
   },
   "documentChecks": {
-    "galleryCards": 56,
+    "galleryCards": 70,
     "sourceCatalogueMatchesManifest": true,
-    "pass5PlansGenerated": 10,
+    "pass6PlansGenerated": 14,
     "historicalSectionsExactlyUnchanged": {
       "Deuxième passe": true,
       "Troisième passe": true,
-      "Quatrième passe": true
+      "Quatrième passe": true,
+      "Cinquième passe": true
     },
-    "round5SectionPresent": true,
-    "round5ReviewLinkTargetExists": true,
+    "round6SectionPresent": true,
+    "round6ReviewLinkTargetExists": true,
     "hound2010PrimarySource": "https://www.hottoys.jp/item/view/100001667",
-    "relativeLinksChecked": 322,
-    "uniqueRelativeLinkTargets": 94,
+    "relativeLinksChecked": 415,
+    "uniqueRelativeLinkTargets": 112,
     "invalidRelativeLinks": [],
-    "linkValidationMethod": "Cible présente sur disque ou chemin exact suivi par git ls-files pour les sources historiques absentes du checkout sparse ; vérification des liens Markdown du README et href/src de la galerie.",
+    "linkValidationMethod": "Présence sur disque ou chemin exact suivi par git ls-files pour les références historiques absentes du checkout sparse.",
     "sparseSourceTargetsVerified": [
       "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-271-abreuvoir-alien-native-attempt02.png",
       "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-272-nourrisseur-native.png",
@@ -112,6 +132,7 @@
       "public/game/homeworld/v76/logistics-container-rack-native.png",
       "public/game/homeworld/v76/merchant-canopy-diagonal-native.png",
       "public/game/homeworld/v78/market-stall-right.png",
+      "public/game/homeworld/v78/port-cargo-sorting-cart.png",
       "public/game/homeworld/v80/sealed-cargo-case-left.png",
       "public/game/homeworld/v83/cargo-rack-right.png",
       "public/game/homeworld/v83/merchant-counter-left.png"
@@ -119,17 +140,29 @@
     "inheritedTargetsWithCandidate": 40,
     "uncoveredInheritedTargets": [],
     "sourceClosedChanged": false,
-    "inheritedReferenceViewCount": 22
+    "inheritedReferenceViewCount": 36
   },
   "workbookExport": {
-    "filename": "YAUTJA_MARCHE_MONTURES_CHENILS_20261103.xlsx",
-    "bytes": 35104,
-    "sha256": "915df33848c0de28184f2f677531c5ce19ac3e06a4bc5aaf48b055d23248b601",
+    "file": "YAUTJA_MARCHE_MONTURES_CHENILS_20261103.xlsx",
+    "bytes": 39649,
+    "sha256": "0eb52878e2a4d9ef4d8747a4b4848e8cb30bb0527ef76814f835965547ecec3b",
     "cachedCounts": {
-      "B6": 56,
-      "B7": 56,
-      "B8": 0,
-      "B9": 0
+      "B6": {
+        "value": "70",
+        "formula": "COUNTA(A14:A83)"
+      },
+      "B7": {
+        "value": "70",
+        "formula": "COUNTIFS(E14:E83,\"PNG présent\")"
+      },
+      "B8": {
+        "value": "0",
+        "formula": "COUNTIFS(N14:N83,\"Validé\")"
+      },
+      "B9": {
+        "value": "0",
+        "formula": "COUNTIFS(O14:O83,\"Intégré\")"
+      }
     },
     "formulaErrorCount": 0
   }

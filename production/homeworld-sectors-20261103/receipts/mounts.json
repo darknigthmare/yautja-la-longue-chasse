@@ -2779,10 +2779,1088 @@
         "date": "2026-11-03",
         "note": "Revue racine effectuée des trois composants retenus. L’acceptation visuelle conserve les limites : pas de caméra mesurée, dimensions physiques, contact mécanique, hauteur réglable jouable, charge, canon1:1 ni intégration runtime certifiés."
       }
+    },
+    {
+      "id": "HWM162-M19",
+      "label": "Meuble du poste de soin dégagé",
+      "target_id": "target-v81-72-290",
+      "file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M19-cleared-care-workstation.png",
+      "source_original": "/workspace/scratch/2166fec07f86/generated_images/exec-2d95e7d3-b195-4ac6-aaaa-da3c2a15eb9c.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/2166fec07f86/generated_images as /workspace/scratch/2166fec07f86/generated_images/exec-2d95e7d3-b195-4ac6-aaaa-da3c2a15eb9c.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "prompt": "Use case: precise-object-edit.\nAsset type: ONE independent transparent PNG game sprite HWM162-M19, the cleared cabinet from M06.\nInput image 1 is the exact edit target: the complete dark basalt/bronze care workstation. Preserve its actual view, lighting, style, proportions, location and native framing.\nChange ONLY these two attached surface articles: remove the entire red segmented cushion from its central recess; remove the entire raised control base at the right together with every connected arm, cable and lamp above it.\nKeep the original cabinet whole: recessed empty basin on the left, bronze countertop edging, the metal retaining rails around the empty central cushion seat, four closed drawer fronts, closed central hinged lower door, right lower cabinet panel, and every visible complete foot. Reconstruct only the small worktop areas previously hidden by the cushion and raised control base. The right work surface is now clear; do not leave a control wedge, arm stump, cable or lamp. Do not open drawers or the lower door.\nOne connected empty furniture article only. This is a source-art component of the original game design, no medical or diagnostic function is certified.\nCamera and layout: inherit the reference camera and object orientation exactly; no new angle. Keep the wide 1536x1024 canvas and original cabinet footprint at approximately the same pixel position and scale. Keep all cabinet edges and feet fully inside the image with the original generous surrounding space. Do not zoom in or recenter the shorter remaining object.\nKeep dark gunmetal and basalt, worn narrow bronze trims and the reference soft upper-left lighting. Preserve original nonlinguistic clan marks without adding text.\nBackground: genuine transparent alpha, empty around the cabinet. No scene, room, floor plane, cast-shadow plate, haze, halo, vignette, opaque background or painted checkerboard. No animals, people, anatomy, loose tools, containers, added props, labels, watermark, collage or alternate state. One independent cleared cabinet, with no detached items shown beside it.",
+      "reference_image_files": [
+        "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M06-fauna-care-workstation.png"
+      ],
+      "reference_input_paths": [
+        "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/mounts/HWM162-M06-fauna-care-workstation.png"
+      ],
+      "reference_sha256": [
+        "a1dd1b7cb81a1b80ffd929381ec26f99d3e581ff5e1db98ac3514c72bfdd67da"
+      ],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "variant_kind": "CLEARED_WORKSTATION_COMPONENT_STATE",
+      "component_of": "HWM162-M06",
+      "review_note": "The entire cabinet remains with the left basin, four closed drawers, central lower door, retaining rails and complete visible feet. The red cushion and raised control/arm/lamp assembly are absent. The newly exposed central and right work surfaces are native reconstructions. Source framing and view are visually retained; no pixel-perfect contact, docking, scale, anatomical, clinical or runtime validation. Unchanged native output; no crop, mirror, rotation, resize, padding or alpha cleanup. Native faint peripheral alpha and halo are preserved.",
+      "camera_requested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "reference_repo_path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M06-fauna-care-workstation.png",
+        "actual_reference_view_inherited_requested": true,
+        "reference_original_brief": {
+          "projection": "orthographic",
+          "yaw_degrees": 0,
+          "pitch_degrees": 35
+        },
+        "camera_measured": false,
+        "new_front_0_35_conversion_claimed": false
+      },
+      "camera_measured": false,
+      "assembly_pair_ids": [
+        "HWM162-M06",
+        "HWM162-M19",
+        "HWM162-M20",
+        "HWM162-M21"
+      ],
+      "assembly_runtime_validated": false,
+      "production_pass": 6,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtime_integrated": false,
+      "human_art_validated": false,
+      "canon_1_to_1_claim": false,
+      "original_unchanged": true,
+      "imagegen_calls_for_asset": 1,
+      "mode": "RGBA",
+      "dimensions_px": [
+        1536,
+        1024
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_zero_pixels": 1218974,
+      "alpha_bbox": [
+        57,
+        99,
+        1458,
+        968
+      ],
+      "alpha_bbox_8": [
+        293,
+        363,
+        1213,
+        817
+      ],
+      "alpha_bbox_gt24": [
+        293,
+        363,
+        1213,
+        817
+      ],
+      "alpha_thresholds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            57,
+            99,
+            1458,
+            968
+          ],
+          "margins": [
+            57,
+            99,
+            78,
+            56
+          ],
+          "pixels": 353890
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            293,
+            363,
+            1213,
+            817
+          ],
+          "margins": [
+            293,
+            363,
+            323,
+            207
+          ],
+          "pixels": 342599
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            293,
+            363,
+            1213,
+            817
+          ],
+          "margins": [
+            293,
+            363,
+            323,
+            207
+          ],
+          "pixels": 341693
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            293,
+            364,
+            1213,
+            816
+          ],
+          "margins": [
+            293,
+            364,
+            323,
+            208
+          ],
+          "pixels": 340619
+        }
+      },
+      "sha256": "ee14f72f993218dc05b8ff63dd3910633331f9a477d2bedb2b2af4bac5d3c380",
+      "bytes": 1335206,
+      "substantial_silhouette_margins_px": [
+        293,
+        363,
+        323,
+        207
+      ],
+      "silhouette_margins_gt24_px": [
+        293,
+        363,
+        323,
+        207
+      ],
+      "edge_alpha_max": 0,
+      "root_visual_review": {
+        "performed": true,
+        "decision": "ACCEPTED_INDEPENDENT_ART_CANDIDATE",
+        "reviewer": "root",
+        "date": "2026-11-03",
+        "note": "Root directly displayed and accepted the whole cleared cabinet; source view coherent, basin, closed drawers/door, feet and retaining rails preserved. Native peripheral halo documented, no cleanup requested. Assembly/runtime/canonical/clinical claims remain absent."
+      }
+    },
+    {
+      "id": "HWM162-M20",
+      "label": "Coussin segmenté du poste de soin",
+      "target_id": "target-v81-72-290",
+      "file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M20-care-support-cushion.png",
+      "source_original": "/workspace/scratch/2166fec07f86/generated_images/exec-c7b992bf-e43c-41ac-999e-b3e5283908b4.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/2166fec07f86/generated_images as /workspace/scratch/2166fec07f86/generated_images/exec-c7b992bf-e43c-41ac-999e-b3e5283908b4.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "prompt": "Use case: precise-object-edit.\nAsset type: ONE independent transparent PNG game sprite HWM162-M20, the small central support cushion from workstation M06.\nInput image 1 is the exact source/edit target. Show ONLY the ONE connected red segmented padded article seated in the middle of that workstation.\nPreserve that cushion's original low rectangular shape, rounded padded edges, visible stitched divisions, muted rust-red worn covering, thickness, surface texture, and exact source orientation. Its joined sections form one complete cushion, not several separate pillows. Complete only the narrow side and underside that were hidden by the retaining rails, using the same restrained textile construction.\nRemove the entire workstation, its basin, drawers, doors, feet, bronze retaining rails and all metal countertop edges. Remove the right control module, arm, cable and lamp. The bronze retaining rails belong to the furniture and must NOT be attached to this cushion. No rigid frame, loose parts, straps, carrying handles or new decoration. This compact support cushion is distinct from a large four-point animal cradle or an elongated training rail.\nComposition: inherit the actual source camera, view and soft upper-left illumination. Retain the original 1536x1024 wide canvas. Keep the cushion at approximately its original central position and original scale in M06, around the central worktop area; do not zoom it to fill the canvas and do not recenter it vertically. Leave generous transparent space where the furniture used to be. The complete small cushion must fit inside with all edges visible. Native rendering of one article only, not a cropped/pasted extraction.\nBackground: real transparent alpha outside the cushion. No cabinet fragment, metal rails, floor, shadows on a plane, haze, halo, vignette, checkerboard, people, animals, anatomy, clinical instruments, text, labels, diagram, collage or alternate version.\nOriginal project adaptation; no canonical device, clinical effect, mechanical fit, anatomical fit or load certification. Preserve the actual source view rather than inventing another camera angle.",
+      "reference_image_files": [
+        "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M06-fauna-care-workstation.png"
+      ],
+      "reference_input_paths": [
+        "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/mounts/HWM162-M06-fauna-care-workstation.png"
+      ],
+      "reference_sha256": [
+        "a1dd1b7cb81a1b80ffd929381ec26f99d3e581ff5e1db98ac3514c72bfdd67da"
+      ],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "variant_kind": "INDEPENDENT_COMPACT_CARE_CUSHION",
+      "component_of": "HWM162-M06",
+      "review_note": "One whole low rectangular red segmented cushion, its sections joined by one base. Bronze retaining rails and all furniture are absent. Complete seams and perimeter visible. The formerly hidden side/underside is a native reconstruction. It retains the source view and approximate central worktop location/scale on a1536x1024 canvas. This is not M15, which rests on four low support273 contacts. Exact seat fit, cushion fixing, physical scale, clinical effect and species fit remain unverified. Native faint peripheral alpha preserved; no pixel modifications.",
+      "camera_requested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "reference_repo_path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M06-fauna-care-workstation.png",
+        "actual_reference_view_inherited_requested": true,
+        "reference_original_brief": {
+          "projection": "orthographic",
+          "yaw_degrees": 0,
+          "pitch_degrees": 35
+        },
+        "camera_measured": false,
+        "new_front_0_35_conversion_claimed": false
+      },
+      "camera_measured": false,
+      "assembly_pair_ids": [
+        "HWM162-M06",
+        "HWM162-M19",
+        "HWM162-M20",
+        "HWM162-M21"
+      ],
+      "assembly_runtime_validated": false,
+      "production_pass": 6,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtime_integrated": false,
+      "human_art_validated": false,
+      "canon_1_to_1_claim": false,
+      "original_unchanged": true,
+      "imagegen_calls_for_asset": 1,
+      "mode": "RGBA",
+      "dimensions_px": [
+        1536,
+        1024
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_zero_pixels": 1538507,
+      "alpha_bbox": [
+        75,
+        58,
+        1522,
+        952
+      ],
+      "alpha_bbox_8": [
+        656,
+        402,
+        961,
+        516
+      ],
+      "alpha_bbox_gt24": [
+        656,
+        403,
+        961,
+        516
+      ],
+      "alpha_thresholds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            75,
+            58,
+            1522,
+            952
+          ],
+          "margins": [
+            75,
+            58,
+            14,
+            72
+          ],
+          "pixels": 34357
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            656,
+            402,
+            961,
+            516
+          ],
+          "margins": [
+            656,
+            402,
+            575,
+            508
+          ],
+          "pixels": 32236
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            656,
+            403,
+            961,
+            516
+          ],
+          "margins": [
+            656,
+            403,
+            575,
+            508
+          ],
+          "pixels": 31923
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            657,
+            404,
+            960,
+            515
+          ],
+          "margins": [
+            657,
+            404,
+            576,
+            509
+          ],
+          "pixels": 31551
+        }
+      },
+      "sha256": "187cbd9058b9d2365570e8900a2c06d3a1436bcc4e0b24dba107086c664d5a4a",
+      "bytes": 660687,
+      "substantial_silhouette_margins_px": [
+        656,
+        402,
+        575,
+        508
+      ],
+      "silhouette_margins_gt24_px": [
+        656,
+        403,
+        575,
+        508
+      ],
+      "edge_alpha_max": 0,
+      "root_visual_review": {
+        "performed": true,
+        "decision": "ACCEPTED_INDEPENDENT_ART_CANDIDATE",
+        "reviewer": "root",
+        "date": "2026-11-03",
+        "note": "Root directly displayed and accepted one complete compact segmented cushion without furniture or metal rails; native canvas preserved. Exact contact or seat fit with M19 not claimed."
+      }
+    },
+    {
+      "id": "HWM162-M21",
+      "label": "Module d’éclairage et de commande du poste de soin",
+      "target_id": "target-v81-72-290",
+      "file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M21-care-light-control-module.png",
+      "source_original": "/workspace/scratch/2166fec07f86/generated_images/exec-7dc145c6-fbbd-41b2-a79a-8c87bc4045aa.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/2166fec07f86/generated_images as /workspace/scratch/2166fec07f86/generated_images/exec-7dc145c6-fbbd-41b2-a79a-8c87bc4045aa.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "prompt": "Use case: precise-object-edit.\nAsset type: targeted native correction to ONE independent transparent PNG sprite HWM162-M21.\nInput image1 is the EDIT TARGET: the isolated care lighting/control module first attempt. Input image2 is the original M06 workstation, for ownership of the table surface. Input image3 is the cleared M19 cabinet, which already retains that table surface.\nCORRECT ONLY THE DUPLICATED TABLE FRAGMENT at the BOTTOM of image1. Remove the entire broad horizontal projecting apron/plate bearing THREE gold claw-like marks beneath the illuminated control panel, together with that plate's large curved bronze countertop rim and corner bumpers. This marked plate is part of the CABINET TABLETOP in images2/3, and must not be present in this independent module.\nPreserve the raised sloping CONTROL HOUSING itself and its illuminated marks and small buttons. Under that housing add only a narrow, plain, low dark mounting base that naturally completes its previously hidden underside. The module must end just beneath its own control housing: no wide platform, projecting work surface, cabinet countertop, three-mark plate, thick countertop rim or floor pedestal.\nKeep everything above the housing unchanged: the same complete jointed arm, joint discs, cable, original arm bend, lamp head extending left and the original tiny amber light details. Keep the actual pose, materials, texture, source lighting, canvas size and upper-right position/scale of image1. Do not change the lamp, arm articulation, cable, control markings, camera or framing.\nExactly ONE connected small tabletop assembly. True transparent background, complete silhouette and generous original empty space. Keep the1536x1024 landscape canvas. No recentering or zoom, no floor, ground shadow plate, halo, opaque background, new medical tool, scan display, anatomy, people, animals, text, labels, collage or additional object. This is a lighting/control module only. Native redraw, no pixel extraction, rotation, mirror, crop or scripted retouch.",
+      "reference_image_files": [
+        "production/homeworld-sectors-20261103/attempts/mounts/HWM162-M21-care-light-control-module-v1.png",
+        "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M06-fauna-care-workstation.png",
+        "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M19-cleared-care-workstation.png"
+      ],
+      "reference_input_paths": [
+        "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/attempts/mounts/HWM162-M21-care-light-control-module-v1.png",
+        "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/mounts/HWM162-M06-fauna-care-workstation.png",
+        "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/mounts/HWM162-M19-cleared-care-workstation.png"
+      ],
+      "reference_sha256": [
+        "241cce85dc76107b4a5adf07670cbdb029e69fb3b72c9ab43a99444e188ca546",
+        "a1dd1b7cb81a1b80ffd929381ec26f99d3e581ff5e1db98ac3514c72bfdd67da",
+        "ee14f72f993218dc05b8ff63dd3910633331f9a477d2bedb2b2af4bac5d3c380"
+      ],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "variant_kind": "INDEPENDENT_LIGHTING_CONTROL_MODULE",
+      "component_of": "HWM162-M06",
+      "review_note": "The targeted native correction removes the forward three-mark countertop plate and large bronze worktop rim. The control housing, complete articulated arm, cable and lamp remain as one connected article on a narrow plain base. Source view, pose and approximate upper-right scale/location are retained. Hidden underside reconstructed modestly; exact docking, shared scale, arm movement, electricity, clinical effect and runtime use remain unverified. No diagnostic or scan claim. Native faint peripheral alpha preserved without editing.",
+      "camera_requested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "reference_repo_path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M06-fauna-care-workstation.png",
+        "actual_reference_view_inherited_requested": true,
+        "reference_original_brief": {
+          "projection": "orthographic",
+          "yaw_degrees": 0,
+          "pitch_degrees": 35
+        },
+        "camera_measured": false,
+        "new_front_0_35_conversion_claimed": false
+      },
+      "camera_measured": false,
+      "assembly_pair_ids": [
+        "HWM162-M06",
+        "HWM162-M19",
+        "HWM162-M20",
+        "HWM162-M21"
+      ],
+      "assembly_runtime_validated": false,
+      "production_pass": 6,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtime_integrated": false,
+      "human_art_validated": false,
+      "canon_1_to_1_claim": false,
+      "original_unchanged": true,
+      "imagegen_calls_for_asset": 2,
+      "mode": "RGBA",
+      "dimensions_px": [
+        1536,
+        1024
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_zero_pixels": 1511447,
+      "alpha_bbox": [
+        47,
+        45,
+        1516,
+        984
+      ],
+      "alpha_bbox_8": [
+        746,
+        242,
+        1188,
+        511
+      ],
+      "alpha_bbox_gt24": [
+        746,
+        242,
+        1187,
+        511
+      ],
+      "alpha_thresholds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            47,
+            45,
+            1516,
+            984
+          ],
+          "margins": [
+            47,
+            45,
+            20,
+            40
+          ],
+          "pixels": 61417
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            746,
+            242,
+            1188,
+            511
+          ],
+          "margins": [
+            746,
+            242,
+            348,
+            513
+          ],
+          "pixels": 56401
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            746,
+            242,
+            1187,
+            511
+          ],
+          "margins": [
+            746,
+            242,
+            349,
+            513
+          ],
+          "pixels": 55992
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            747,
+            242,
+            1187,
+            510
+          ],
+          "margins": [
+            747,
+            242,
+            349,
+            514
+          ],
+          "pixels": 55013
+        }
+      },
+      "sha256": "92b22307ea34aeadc1ba92c0cf1c9f8b8fbb3fcd6e81ee6a28a88d956bf19079",
+      "bytes": 738561,
+      "substantial_silhouette_margins_px": [
+        746,
+        242,
+        348,
+        513
+      ],
+      "silhouette_margins_gt24_px": [
+        746,
+        242,
+        349,
+        513
+      ],
+      "edge_alpha_max": 0,
+      "root_visual_review": {
+        "performed": true,
+        "decision": "ACCEPTED_INDEPENDENT_ART_CANDIDATE",
+        "reviewer": "root",
+        "date": "2026-11-03",
+        "note": "Root directly displayed v2 and accepted it: the duplicated horizontal three-mark plate and wide countertop rim were removed; console, arm, cable and lamp remain on the narrow module base. V1 archived unchanged; no exact mechanical or runtime claim."
+      },
+      "design_source_image_files": [
+        "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M06-fauna-care-workstation.png"
+      ],
+      "correction_reason": "Root confirmed the forward plate with three gold marks and broad bronze countertop rim belongs to M19 and was duplicated in M21-v1. One targeted native correction removed only that plate/rim and completed a narrow module base.",
+      "selected_attempt": 2,
+      "attempts": [
+        {
+          "id": "HWM162-M21",
+          "label": "Module d’éclairage et de commande du poste de soin",
+          "target_id": "target-v81-72-290",
+          "file": "production/homeworld-sectors-20261103/attempts/mounts/HWM162-M21-care-light-control-module-v1.png",
+          "source_original": "/workspace/scratch/2166fec07f86/generated_images/exec-ef397f4e-5c15-4080-b5b1-0ba3ed15d8f8.png",
+          "output_hint": "Generated images are saved to /workspace/scratch/2166fec07f86/generated_images as /workspace/scratch/2166fec07f86/generated_images/exec-ef397f4e-5c15-4080-b5b1-0ba3ed15d8f8.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "prompt": "Use case: precise-object-edit.\nAsset type: ONE independent transparent PNG game sprite HWM162-M21, the lighting and control module of workstation M06.\nInput image 1 is the exact source/edit target. Retain ONLY the complete connected raised module on the RIGHT of the care workstation: its low wedge-shaped dark control housing and mounting base, its amber display marks and side buttons, the articulated arm rooted on top of that housing, the original joints and attached cable, and the lamp head extending LEFT above the work surface.\nAll those linked parts must stay ONE whole article. Preserve the source mechanical structure, joint count, proportions, lamp shape, worn bronze rims, charcoal gunmetal, small amber marks, existing arm bend and upper-left world lighting. Complete only the small hidden underside of the module's base with restrained flat mounting geometry.\nRemove the entire cabinet body and countertop outside the module's own base, every drawer, lower door, floor foot, basin and red cushion. No floor pedestal or new support: this remains a small tabletop unit. Do not add probes, needles, scanner glass, medicine, medical text or diagnostic imagery. It is only an original lighting/control assembly; no scan or treatment capability is specified.\nCamera and composition: inherit the actual camera and pose of the source M06. Retain the 1536x1024 landscape canvas and the assembly's ORIGINAL upper-right worktop position and approximate ORIGINAL scale. The lamp reaches toward the left from the housing exactly as in the reference. Do not enlarge the assembly to fill the canvas, rotate it, mirror it, center it differently or change the arm pose. Leave empty transparent space where the large cabinet used to be. Every part, especially the lamp tip, cable, joints and base, must remain complete and well inside the canvas.\nDetailed painterly-realistic2.5D game rendering consistent with the source, without new ornamental features.\nTrue native transparent alpha outside the ONE connected module. No floor, cast shadow plane, background, haze, halo, vignette, painted checkerboard, extra unattached part, second object, human, animal, anatomy, words, labels, watermark, diagram or contact sheet. No pixel transformations. Original game adaptation, no canon1:1 or validated assembly claim.",
+          "reference_image_files": [
+            "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M06-fauna-care-workstation.png"
+          ],
+          "reference_input_paths": [
+            "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/mounts/HWM162-M06-fauna-care-workstation.png"
+          ],
+          "reference_sha256": [
+            "a1dd1b7cb81a1b80ffd929381ec26f99d3e581ff5e1db98ac3514c72bfdd67da"
+          ],
+          "sourceRefs": [
+            "SRC-V81",
+            "SRC-CAMERA"
+          ],
+          "lore_status": "ORIGINAL_GAME_ADAPTATION",
+          "variant_kind": "INDEPENDENT_LIGHTING_CONTROL_MODULE",
+          "component_of": "HWM162-M06",
+          "review_note": "One connected assembly with control housing, articulated links, cable and complete lamp. No cabinet body, drawers, basin or cushion. Source arm pose and upper-right location are retained. The generated base extends forward with bronze edging and a three-mark surface also visible on the source countertop: ownership of this extension needs root review because M19 retains the right work surface. No diagnostic, scanning, treatment, docking or motion capability is certified. Native output copied unchanged; faint peripheral alpha preserved.",
+          "camera_requested": {
+            "mode": "INHERIT_REFERENCE_VIEW",
+            "reference_repo_path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M06-fauna-care-workstation.png",
+            "actual_reference_view_inherited_requested": true,
+            "reference_original_brief": {
+              "projection": "orthographic",
+              "yaw_degrees": 0,
+              "pitch_degrees": 35
+            },
+            "camera_measured": false,
+            "new_front_0_35_conversion_claimed": false
+          },
+          "camera_measured": false,
+          "assembly_pair_ids": [
+            "HWM162-M06",
+            "HWM162-M19",
+            "HWM162-M20",
+            "HWM162-M21"
+          ],
+          "assembly_runtime_validated": false,
+          "production_pass": 6,
+          "status": "ARCHIVED_REJECTED_NATIVE_ATTEMPT",
+          "runtime_integrated": false,
+          "human_art_validated": false,
+          "canon_1_to_1_claim": false,
+          "original_unchanged": true,
+          "imagegen_calls_for_asset": 1,
+          "mode": "RGBA",
+          "dimensions_px": [
+            1536,
+            1024
+          ],
+          "alpha_extrema": [
+            0,
+            254
+          ],
+          "alpha_zero_pixels": 1497120,
+          "alpha_bbox": [
+            81,
+            36,
+            1476,
+            936
+          ],
+          "alpha_bbox_8": [
+            746,
+            241,
+            1199,
+            573
+          ],
+          "alpha_bbox_gt24": [
+            747,
+            241,
+            1199,
+            573
+          ],
+          "alpha_thresholds": {
+            "0": {
+              "comparison": "alpha > threshold",
+              "box": [
+                81,
+                36,
+                1476,
+                936
+              ],
+              "margins": [
+                81,
+                36,
+                60,
+                88
+              ],
+              "pixels": 75744
+            },
+            "8": {
+              "comparison": "alpha > threshold",
+              "box": [
+                746,
+                241,
+                1199,
+                573
+              ],
+              "margins": [
+                746,
+                241,
+                337,
+                451
+              ],
+              "pixels": 71225
+            },
+            "24": {
+              "comparison": "alpha > threshold",
+              "box": [
+                747,
+                241,
+                1199,
+                573
+              ],
+              "margins": [
+                747,
+                241,
+                337,
+                451
+              ],
+              "pixels": 70875
+            },
+            "128": {
+              "comparison": "alpha > threshold",
+              "box": [
+                747,
+                242,
+                1198,
+                572
+              ],
+              "margins": [
+                747,
+                242,
+                338,
+                452
+              ],
+              "pixels": 69864
+            }
+          },
+          "sha256": "241cce85dc76107b4a5adf07670cbdb029e69fb3b72c9ab43a99444e188ca546",
+          "bytes": 738534,
+          "substantial_silhouette_margins_px": [
+            746,
+            241,
+            337,
+            451
+          ],
+          "silhouette_margins_gt24_px": [
+            747,
+            241,
+            337,
+            451
+          ],
+          "edge_alpha_max": 0,
+          "root_visual_review": {
+            "performed": true,
+            "decision": "REJECT_DUPLICATED_WORKTOP",
+            "reviewer": "root",
+            "date": "2026-11-03",
+            "note": "Root confirmed the forward plate with three gold marks and broad bronze countertop rim belongs to M19 and was duplicated in M21-v1. One targeted native correction removed only that plate/rim and completed a narrow module base."
+          },
+          "attempt": 1,
+          "rejection_reason": "Root confirmed the forward plate with three gold marks and broad bronze countertop rim belongs to M19 and was duplicated in M21-v1. One targeted native correction removed only that plate/rim and completed a narrow module base."
+        }
+      ],
+      "reference_sha256_by_path": {
+        "production/homeworld-sectors-20261103/attempts/mounts/HWM162-M21-care-light-control-module-v1.png": "241cce85dc76107b4a5adf07670cbdb029e69fb3b72c9ab43a99444e188ca546",
+        "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M06-fauna-care-workstation.png": "a1dd1b7cb81a1b80ffd929381ec26f99d3e581ff5e1db98ac3514c72bfdd67da",
+        "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M19-cleared-care-workstation.png": "ee14f72f993218dc05b8ff63dd3910633331f9a477d2bedb2b2af4bac5d3c380"
+      }
+    },
+    {
+      "id": "HWM162-M22",
+      "label": "Abri des montures — sol et structure arrière",
+      "target_id": "hw-sector-mount-stable-building",
+      "file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M22-stable-floor-rear-structure.png",
+      "source_original": "/workspace/scratch/2166fec07f86/generated_images/exec-f5836bfa-731a-4c1c-aaf3-b1f3f7e580be.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/2166fec07f86/generated_images as /workspace/scratch/2166fec07f86/generated_images/exec-f5836bfa-731a-4c1c-aaf3-b1f3f7e580be.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "prompt": "Use case: precise-object-edit.\nAsset type: ONE independent transparent PNG game building component HWM162-M22, REAR/FLOOR layer of the existing three-bay stable M01.\nInput image 1 is the exact stable edit target. It is a full-size three-bay original Yautja game building, not a miniature or a new architectural design.\nKeep ONLY its ONE connected lower/rear structure: the complete original continuous stone floor and foundation slab with all three front threshold strips; the original rear wall and left/right side walls; and the wall ribs/uprights belonging to those rear and side walls.\nRemove the ENTIRE roof and all frontal roof-edge arches/lintels. Remove ALL FOUR large front support pillars, including all FOUR of their flared feet. Those four front pillars and the roof belong exclusively to the complementary M23 layer and must not occur in this image. The view from the front into all three floor bays must now be unobstructed by those pillars.\nPreserve the slab footprint and three-bay layout, the original rear central wall panel, the wall material, sparse bronze braces, muted red wall inserts and small existing amber fixtures. Complete only the floor/wall portions previously hidden behind the removed roof/front pillars. Do not extend the building, invent a new roofline, add a gate, replace the geometry with a new stable, or introduce extra columns. Keep the front floor/threshold edge complete, continuous and attached to the rest of this one structure, without isolated pillar bases.\nCamera and framing: inherit the actual source camera and architectural orientation, preserve the original1536x1024 wide canvas, original floor position, overall width and approximate scale. Removing the roof makes the subject shorter but DO NOT enlarge or recenter the remaining body. Keep every foundation and sidewall end inside the original frame with transparent margin. Soft upper-left world light and worn basalt/dark gunmetal/narrow bronze trim remain coherent with M01.\nThis is a proposed source-art layer: floor/back walls render behind future scene occupants; their four front pillars and roof will be a different PNG. No animals or equipment in this image. All newly revealed surfaces are modest original-game reconstructions, not canonical construction plans.\nGenuine transparent alpha OUTSIDE the building structure. The connected floor inside remains opaque stone. No outside ground, new floor platform, background, scenery, atmospheric halo, cast shadow plate, vignette or painted checkerboard. No people, animals, tools, feeding bowls, furniture, new door, label, text, watermark, diagram, contact sheet or multiple views. One independent connected rear/floor article. No cropping, pixel rotation, mirroring, scripted extraction or reshaping.",
+      "reference_image_files": [
+        "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M01-open-stable.png"
+      ],
+      "reference_input_paths": [
+        "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/mounts/HWM162-M01-open-stable.png"
+      ],
+      "reference_sha256": [
+        "b2f958ccd6a992c269b94cf32900ccfc2a5b8c2063a231891c445c8396ec6518"
+      ],
+      "sourceRefs": [
+        "SRC-DAN-2026",
+        "SRC-ALEX-HOMESTEAD",
+        "SRC-CAMERA"
+      ],
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "variant_kind": "STABLE_FLOOR_AND_REAR_LAYER",
+      "component_of": "HWM162-M01",
+      "review_note": "One connected floor/foundation and rear/side wall structure, with the three front threshold strips. The roof and four large front support pillars are absent; only ribs/end returns structurally belonging to the retained walls remain. Previously hidden floor, wall tops and junctions are reconstructed in the same material family. Complete footprint and source view retained visually; no new building identity, exact layer registration, occlusion, navigation or structural validation claimed. Native peripheral alpha preserved without edits.",
+      "camera_requested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "reference_repo_path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M01-open-stable.png",
+        "actual_reference_view_inherited_requested": true,
+        "reference_original_brief": {
+          "projection": "orthographic",
+          "yaw_degrees": 0,
+          "pitch_degrees": 35
+        },
+        "camera_measured": false,
+        "new_front_0_35_conversion_claimed": false
+      },
+      "camera_measured": false,
+      "assembly_pair_ids": [
+        "HWM162-M01",
+        "HWM162-M22",
+        "HWM162-M23"
+      ],
+      "assembly_runtime_validated": false,
+      "production_pass": 6,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtime_integrated": false,
+      "human_art_validated": false,
+      "canon_1_to_1_claim": false,
+      "original_unchanged": true,
+      "imagegen_calls_for_asset": 1,
+      "mode": "RGBA",
+      "dimensions_px": [
+        1536,
+        1024
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_zero_pixels": 1013512,
+      "alpha_bbox": [
+        0,
+        199,
+        1474,
+        1024
+      ],
+      "alpha_bbox_8": [
+        87,
+        392,
+        1449,
+        841
+      ],
+      "alpha_bbox_gt24": [
+        88,
+        392,
+        1448,
+        841
+      ],
+      "alpha_thresholds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            199,
+            1474,
+            1024
+          ],
+          "margins": [
+            0,
+            199,
+            62,
+            0
+          ],
+          "pixels": 559352
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            87,
+            392,
+            1449,
+            841
+          ],
+          "margins": [
+            87,
+            392,
+            87,
+            183
+          ],
+          "pixels": 539040
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            88,
+            392,
+            1448,
+            841
+          ],
+          "margins": [
+            88,
+            392,
+            88,
+            183
+          ],
+          "pixels": 538247
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            89,
+            393,
+            1448,
+            840
+          ],
+          "margins": [
+            89,
+            393,
+            88,
+            184
+          ],
+          "pixels": 535968
+        }
+      },
+      "sha256": "58a5d3581825510ed15508cf338df96565c6d8bfdce89e3a8ddf0214ce60e6b3",
+      "bytes": 1620045,
+      "substantial_silhouette_margins_px": [
+        87,
+        392,
+        87,
+        183
+      ],
+      "silhouette_margins_gt24_px": [
+        88,
+        392,
+        88,
+        183
+      ],
+      "edge_alpha_max": 1,
+      "root_visual_review": {
+        "performed": true,
+        "decision": "ACCEPTED_INDEPENDENT_ART_CANDIDATE",
+        "reviewer": "root",
+        "date": "2026-11-03",
+        "note": "Root directly displayed and accepted complete floor/threshold/rear-side-wall layer. Roof and four front support pillars absent, rear ribs preserved. M01 identity remains; occluded surfaces reconstructed, no exact registration or runtime claim."
+      }
+    },
+    {
+      "id": "HWM162-M23",
+      "label": "Abri des montures — façade et toiture",
+      "target_id": "hw-sector-mount-stable-building",
+      "file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M23-stable-front-roof-structure.png",
+      "source_original": "/workspace/scratch/2166fec07f86/generated_images/exec-4421a3c6-ae52-432e-8a44-6cfdf2b2ac13.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/2166fec07f86/generated_images as /workspace/scratch/2166fec07f86/generated_images/exec-4421a3c6-ae52-432e-8a44-6cfdf2b2ac13.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "prompt": "Use case: precise-object-edit.\nAsset type: ONE independent transparent PNG game building component HWM162-M23, FRONT/ROOF layer of existing three-bay stable M01.\nInput image1 is the exact stable edit target. Keep ONLY the full original roof, its connected front arches/lintels, and EXACTLY FOUR original large FRONT SUPPORT PILLARS with all four complete flared feet. These four pillars and the roof are one connected architectural article. Preserve the complete roof silhouette, segmented basalt panels, narrow bronze ribs, original red roof vent inserts, original central roof marks, and the bronze/amber details of those four front pillars.\nREMOVE the ENTIRE stone floor, foundation slab and all three horizontal threshold strips. REMOVE ALL rear walls, the central rear diamond wall panel, left/right side walls, red side-wall panels, and ALL rear/side wall ribs/uprights. Those components belong exclusively to M22 and must not be duplicated in this image.\nThe THREE BAY OPENINGS between the four front pillars must be genuinely TRANSPARENT all the way through. Beneath each retained front arch, there is empty alpha space rather than any rear wall, floor, central panel, side wall, dark backdrop or painted interior. Empty space between the four pillar FEET is also transparent: no connecting floor strips or threshold. Retain only genuine overhead underside/structure that belongs to the roof itself, without adding a panel that closes a bay.\nPreserve the exact source architectural view, proportions, source orientation, upper-left lighting and original1536x1024 canvas framing. Keep the roof and four front supports at their original approximate positions and scale; do not zoom, rotate, mirror, crop or reframe. Every roof edge and pillar foot remains fully visible inside the original transparent margins.\nThis is a component of the same full-size building, not a new building, dollhouse, gate frame or temporary scaffold. Draw only the native source roof/front silhouette; no invented braces across the openings, new posts, gate leaves, supports, closure mechanism or new decoration.\nNative transparent alpha outside and THROUGH all three open bays. No floor plane, ground, opaque background, haze, halo, cast-shadow plate, vignette, checkerboard painting, scenery, people, animals, equipment, text, labels, watermark, diagram, contact sheet or multiple views.\nDetailed painterly-realistic game rendering, original adaptation. This proposed foreground layer can be composited after future scene occupants; no actual scene integration, exact pixel registration, collision, navigation or canonical1:1 certification is implied.",
+      "reference_image_files": [
+        "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M01-open-stable.png"
+      ],
+      "reference_input_paths": [
+        "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/mounts/HWM162-M01-open-stable.png"
+      ],
+      "reference_sha256": [
+        "b2f958ccd6a992c269b94cf32900ccfc2a5b8c2063a231891c445c8396ec6518"
+      ],
+      "sourceRefs": [
+        "SRC-DAN-2026",
+        "SRC-ALEX-HOMESTEAD",
+        "SRC-CAMERA"
+      ],
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "variant_kind": "STABLE_ROOF_AND_FRONT_LAYER",
+      "component_of": "HWM162-M01",
+      "review_note": "One connected full roof/front-arch structure with exactly four complete large front pillars and their flared feet. Floor slab, horizontal thresholds, rear central panel, side walls and rear uprights are absent. Three bay openings and gaps between the feet are visibly clear; native alpha samples are recorded separately. The source silhouette, camera and approximate original placement are retained visually. Exact shared registration with M22, occlusion in a scene, structural load, navigation and runtime use remain unverified. Native faint peripheral alpha preserved without edits.",
+      "camera_requested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "reference_repo_path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M01-open-stable.png",
+        "actual_reference_view_inherited_requested": true,
+        "reference_original_brief": {
+          "projection": "orthographic",
+          "yaw_degrees": 0,
+          "pitch_degrees": 35
+        },
+        "camera_measured": false,
+        "new_front_0_35_conversion_claimed": false
+      },
+      "camera_measured": false,
+      "assembly_pair_ids": [
+        "HWM162-M01",
+        "HWM162-M22",
+        "HWM162-M23"
+      ],
+      "assembly_runtime_validated": false,
+      "production_pass": 6,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtime_integrated": false,
+      "human_art_validated": false,
+      "canon_1_to_1_claim": false,
+      "original_unchanged": true,
+      "imagegen_calls_for_asset": 1,
+      "mode": "RGBA",
+      "dimensions_px": [
+        1536,
+        1024
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_zero_pixels": 1081429,
+      "alpha_bbox": [
+        0,
+        9,
+        1536,
+        1024
+      ],
+      "alpha_bbox_8": [
+        97,
+        157,
+        1439,
+        851
+      ],
+      "alpha_bbox_gt24": [
+        97,
+        158,
+        1439,
+        851
+      ],
+      "alpha_thresholds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            9,
+            1536,
+            1024
+          ],
+          "margins": [
+            0,
+            9,
+            0,
+            0
+          ],
+          "pixels": 491435
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            97,
+            157,
+            1439,
+            851
+          ],
+          "margins": [
+            97,
+            157,
+            97,
+            173
+          ],
+          "pixels": 460897
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            97,
+            158,
+            1439,
+            851
+          ],
+          "margins": [
+            97,
+            158,
+            97,
+            173
+          ],
+          "pixels": 459673
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            98,
+            158,
+            1439,
+            851
+          ],
+          "margins": [
+            98,
+            158,
+            97,
+            173
+          ],
+          "pixels": 456189
+        }
+      },
+      "sha256": "a04d905551ca9dfe4e318ff6928bf9fb24386a49c93b1b8a54d91e68f27f917e",
+      "bytes": 1953313,
+      "substantial_silhouette_margins_px": [
+        97,
+        157,
+        97,
+        173
+      ],
+      "silhouette_margins_gt24_px": [
+        97,
+        158,
+        97,
+        173
+      ],
+      "edge_alpha_max": 1,
+      "root_visual_review": {
+        "performed": true,
+        "decision": "ACCEPTED_INDEPENDENT_ART_CANDIDATE",
+        "reviewer": "root",
+        "date": "2026-11-03",
+        "note": "Root directly displayed and accepted the complete roof, four front pillars and three cleared bays, without floor, thresholds or rear walls. Sampled openings contain alpha0/1; no claim of strict zero across all bays. Source-art layer only; alignment, physical proportions and runtime occlusion unverified."
+      },
+      "opening_transparency_samples": [
+        {
+          "opening": "left",
+          "box": [
+            280,
+            560,
+            470,
+            760
+          ],
+          "total_pixels": 38000,
+          "alpha_zero_pixels": 37981,
+          "alpha_le8_pixels": 38000,
+          "alpha_gt24_pixels": 0,
+          "alpha_max": 1
+        },
+        {
+          "opening": "middle",
+          "box": [
+            660,
+            520,
+            900,
+            780
+          ],
+          "total_pixels": 62400,
+          "alpha_zero_pixels": 62252,
+          "alpha_le8_pixels": 62400,
+          "alpha_gt24_pixels": 0,
+          "alpha_max": 1
+        },
+        {
+          "opening": "right",
+          "box": [
+            1080,
+            560,
+            1260,
+            760
+          ],
+          "total_pixels": 36000,
+          "alpha_zero_pixels": 35971,
+          "alpha_le8_pixels": 36000,
+          "alpha_gt24_pixels": 0,
+          "alpha_max": 1
+        }
+      ]
     }
   ],
   "generation_complete": true,
-  "asset_count": 18,
-  "production_note": "Selected native sprites are unchanged copies of ImageGen originals; pass5 component isolation complete and root-reviewed as source-art candidates. Earlier selected sprites and archived attempts are preserved. No canonical1:1 or runtime assembly validation.",
-  "archived_mount_attempt_count": 4
+  "asset_count": 23,
+  "production_note": "Pass6 complete: five native components/states of M06 and M01 selected after producer and root visual review. Six native calls, one first M21 attempt archived unchanged. Prior eighteen mount entries and all fifty-six previously selected PNGs preserved. No pixel edits, canonical1:1, measured camera, clinical capability, physical scale, assembly or runtime validation.",
+  "archived_mount_attempt_count": 5
 }

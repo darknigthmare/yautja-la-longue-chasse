@@ -6,8 +6,8 @@
   "branch": "codex/homeworld-v158-urban-props-intake-20261102",
   "baseline_head": "0ab844cca5f2c9b5cae28624d2c1b97fca7d5ce9",
   "recorded_on": "2026-11-03",
-  "selected_asset_count": 21,
-  "generated_attempt_count": 23,
+  "selected_asset_count": 26,
+  "generated_attempt_count": 29,
   "failed_generation_count": 1,
   "assets": [
     {
@@ -2830,6 +2830,978 @@
         }
       ],
       "pose_note": "Objet tourné en nouvelle pose native ; pas de rotation/mirroring de pixels. L’angle demandé est approximatif, aucune cinématique commune certifiée."
+    },
+    {
+      "id": "HWM162-K22",
+      "name": "Intérieur des loges du chenil",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K22-kennel-interior.png",
+      "filename": "HWM162-K22-kennel-interior.png",
+      "target_ids": [
+        "hw-sector-hound-kennel-building"
+      ],
+      "state_of_source_path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png",
+      "source_reference_sha256": "fedb9677d90ae72cfe2ee53e9a1f5751361ea1d88da2d9169137a22d2cd9d9a5",
+      "source_reference_sha256_by_path": {
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png": "fedb9677d90ae72cfe2ee53e9a1f5751361ea1d88da2d9169137a22d2cd9d9a5"
+      },
+      "source_reference_commits_by_path": {
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png": "1223042c249fab900e7fba9f49d7c78d105bd645"
+      },
+      "state": "KENNEL_REAR_INTERIOR_LAYER",
+      "dimensions_m_proposed": {},
+      "scale_note": "Composants graphiques du projet ; taille, pivot, registration, dégagements et compatibilité anatomique Hounds2010/chiens2018 non certifiés. Réglage de taille et de placement à prévoir.",
+      "visual_review": "Trois loges distinctes : sols carrelés et drains avant, parois arrière et quatre murs longitudinaux ; toiture et quatre piliers épais de façade retirés. Les fins chants de mur ne sont pas une seconde série de piliers. Surfaces auparavant masquées reconstruites comme adaptation. Cadrage propre du module intérieur ; aucune registration avec K23 certifiée. Silhouette entière, marges visibles minimales155px. Revue racine acceptée.",
+      "source_original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-08e123d4-b177-4578-8d82-d274e7d12453.png",
+      "size_bytes": 1598997,
+      "sha256": "f8eba50ccd25e3898deba896f2e2a282938489a2c4ebb3e56825b3d00175f85b",
+      "git_blob_sha": "87d3a436011e73d9d420989bdbe52067bba51b4a",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alpha_min": 0,
+      "alpha_max": 254,
+      "fully_transparent_pixels": 1006682,
+      "fully_opaque_pixels": 0,
+      "alpha_bounds": {
+        "0": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            0,
+            69,
+            1474,
+            1024
+          ],
+          "margins_left_top_right_bottom": [
+            0,
+            69,
+            62,
+            0
+          ],
+          "pixels": 566182,
+          "canvas_edge_pixels": 255
+        },
+        "8": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            159,
+            370,
+            1381,
+            847
+          ],
+          "margins_left_top_right_bottom": [
+            159,
+            370,
+            155,
+            177
+          ],
+          "pixels": 555313,
+          "canvas_edge_pixels": 0
+        },
+        "24": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            159,
+            370,
+            1381,
+            847
+          ],
+          "margins_left_top_right_bottom": [
+            159,
+            370,
+            155,
+            177
+          ],
+          "pixels": 553292,
+          "canvas_edge_pixels": 0
+        },
+        "128": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            160,
+            371,
+            1380,
+            846
+          ],
+          "margins_left_top_right_bottom": [
+            160,
+            371,
+            156,
+            178
+          ],
+          "pixels": 551283,
+          "canvas_edge_pixels": 0
+        }
+      },
+      "generation_tool": "image_gen.imagegen",
+      "generation_mode": "built-in-reference-edit",
+      "source_original_bytes_copied_unchanged": true,
+      "image_manipulation": false,
+      "post_generation_pixel_editing": false,
+      "generated_independently_not_cropped": true,
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "reference_basis": "PROJECT_ORIGINAL_EXISTING_SPRITE",
+      "source_reference_ids": [
+        "HWM162-round6-kennel-building-source"
+      ],
+      "canon_certified": false,
+      "canonicalOneToOneClaimed": false,
+      "production_status": "GENERATED_ART_CANDIDATE",
+      "runtime_admitted": false,
+      "runtimeIntegrated": false,
+      "human_artistic_validation": "PENDING",
+      "camera_requested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "projection": "orthographic",
+        "reference_repo_path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png",
+        "actual_reference_view_inherited_requested": true,
+        "camera_measured": false,
+        "new_front_0_35_conversion_claimed": false,
+        "source_view": "frontal_elevated",
+        "source_original_camera_request": {
+          "projection": "orthographic",
+          "yaw_degrees": 0,
+          "pitch_degrees": 35
+        },
+        "source_original_camera_measured": false
+      },
+      "camera_measured": false,
+      "physical_scale_validated": false,
+      "transparent_background_requested": true,
+      "strict_alpha_margin_80px_pass": false,
+      "visible_silhouette_entire_at_alpha_gt24": true,
+      "visible_margin_80px_at_alpha_gt24_pass": true,
+      "continuation_after_published_commit": "1223042c249fab900e7fba9f49d7c78d105bd645",
+      "state_transition_runtime_verified": false,
+      "pixel_aligned_state_pair_verified": false,
+      "component_registration_verified": false,
+      "selected_generation_attempt": 1,
+      "root_visual_review": {
+        "status": "ACCEPTED_ART_CANDIDATE",
+        "reviewer": "root",
+        "review_type": "AI_SOURCE_COMPARISON",
+        "human_validation": false
+      },
+      "area": "kennels",
+      "targetIds": [
+        "hw-sector-hound-kennel-building"
+      ],
+      "sourceAssetFiles": [
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png"
+      ],
+      "sourceAssetIds": [
+        "HWM162-K01"
+      ],
+      "sourceRefs": [
+        "SRC-CAMERA",
+        "SRC-DAN-2026",
+        "SRC-ALEX-HOMESTEAD"
+      ],
+      "expectedPath": "sprites/kennels/HWM162-K22-kennel-interior.png",
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "productionPass": 6,
+      "previously_hidden_interior_surfaces_reconstructed": true
+    },
+    {
+      "id": "HWM162-K23",
+      "name": "Façade et toiture des chenils",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K23-kennel-facade-roof.png",
+      "filename": "HWM162-K23-kennel-facade-roof.png",
+      "target_ids": [
+        "hw-sector-hound-kennel-building"
+      ],
+      "state_of_source_path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png",
+      "source_reference_sha256": "fedb9677d90ae72cfe2ee53e9a1f5751361ea1d88da2d9169137a22d2cd9d9a5",
+      "source_reference_sha256_by_path": {
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png": "fedb9677d90ae72cfe2ee53e9a1f5751361ea1d88da2d9169137a22d2cd9d9a5"
+      },
+      "source_reference_commits_by_path": {
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png": "1223042c249fab900e7fba9f49d7c78d105bd645"
+      },
+      "state": "KENNEL_FRONT_FACADE_ROOF_LAYER",
+      "dimensions_m_proposed": {},
+      "scale_note": "Composants graphiques du projet ; taille, pivot, registration, dégagements et compatibilité anatomique Hounds2010/chiens2018 non certifiés. Réglage de taille et de placement à prévoir.",
+      "visual_review": "Façade et toiture connectées de K01, quatre piliers et trois baies dégagées, sans sols, drains ni fonds de loge. Trois fenêtres de39100/48300/36800pixels : alpha0..1, aucun pixel>8 ; elles ne sont pas déclarées strictementalpha0 partout. Cadrage propre, marges visibles latérales70/69px ; silhouette entière. Aucune registration avec K22 certifiée. Revue racine acceptée.",
+      "source_original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-674d47fa-8edf-46e3-bf23-5bc4a2b0d2f7.png",
+      "size_bytes": 1943134,
+      "sha256": "193e14f23bb198efe33ecb814d80e6adbe0d1932a010342d0fb853c106450c60",
+      "git_blob_sha": "7a0fc0469a264296a16a4107d77dc00ecb88d17a",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alpha_min": 0,
+      "alpha_max": 254,
+      "fully_transparent_pixels": 1043625,
+      "fully_opaque_pixels": 0,
+      "alpha_bounds": {
+        "0": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            65,
+            0,
+            1504,
+            1024
+          ],
+          "margins_left_top_right_bottom": [
+            65,
+            0,
+            32,
+            0
+          ],
+          "pixels": 529239,
+          "canvas_edge_pixels": 54
+        },
+        "8": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            69,
+            154,
+            1467,
+            849
+          ],
+          "margins_left_top_right_bottom": [
+            69,
+            154,
+            69,
+            175
+          ],
+          "pixels": 506963,
+          "canvas_edge_pixels": 0
+        },
+        "24": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            70,
+            155,
+            1467,
+            849
+          ],
+          "margins_left_top_right_bottom": [
+            70,
+            155,
+            69,
+            175
+          ],
+          "pixels": 505150,
+          "canvas_edge_pixels": 0
+        },
+        "128": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            70,
+            155,
+            1466,
+            848
+          ],
+          "margins_left_top_right_bottom": [
+            70,
+            155,
+            70,
+            176
+          ],
+          "pixels": 501923,
+          "canvas_edge_pixels": 0
+        }
+      },
+      "generation_tool": "image_gen.imagegen",
+      "generation_mode": "built-in-reference-edit",
+      "source_original_bytes_copied_unchanged": true,
+      "image_manipulation": false,
+      "post_generation_pixel_editing": false,
+      "generated_independently_not_cropped": true,
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "reference_basis": "PROJECT_ORIGINAL_EXISTING_SPRITE",
+      "source_reference_ids": [
+        "HWM162-round6-kennel-building-source"
+      ],
+      "canon_certified": false,
+      "canonicalOneToOneClaimed": false,
+      "production_status": "GENERATED_ART_CANDIDATE",
+      "runtime_admitted": false,
+      "runtimeIntegrated": false,
+      "human_artistic_validation": "PENDING",
+      "camera_requested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "projection": "orthographic",
+        "reference_repo_path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png",
+        "actual_reference_view_inherited_requested": true,
+        "camera_measured": false,
+        "new_front_0_35_conversion_claimed": false,
+        "source_view": "frontal_elevated",
+        "source_original_camera_request": {
+          "projection": "orthographic",
+          "yaw_degrees": 0,
+          "pitch_degrees": 35
+        },
+        "source_original_camera_measured": false
+      },
+      "camera_measured": false,
+      "physical_scale_validated": false,
+      "transparent_background_requested": true,
+      "strict_alpha_margin_80px_pass": false,
+      "visible_silhouette_entire_at_alpha_gt24": true,
+      "visible_margin_80px_at_alpha_gt24_pass": false,
+      "continuation_after_published_commit": "1223042c249fab900e7fba9f49d7c78d105bd645",
+      "state_transition_runtime_verified": false,
+      "pixel_aligned_state_pair_verified": false,
+      "component_registration_verified": false,
+      "selected_generation_attempt": 1,
+      "root_visual_review": {
+        "status": "ACCEPTED_ART_CANDIDATE",
+        "reviewer": "root",
+        "review_type": "AI_SOURCE_COMPARISON",
+        "human_validation": false
+      },
+      "area": "kennels",
+      "targetIds": [
+        "hw-sector-hound-kennel-building"
+      ],
+      "sourceAssetFiles": [
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png"
+      ],
+      "sourceAssetIds": [
+        "HWM162-K01"
+      ],
+      "sourceRefs": [
+        "SRC-CAMERA",
+        "SRC-DAN-2026",
+        "SRC-ALEX-HOMESTEAD"
+      ],
+      "expectedPath": "sprites/kennels/HWM162-K23-kennel-facade-roof.png",
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "productionPass": 6,
+      "transparency_windows": [
+        {
+          "name": "left",
+          "box_xyxy_exclusive": [
+            300,
+            550,
+            470,
+            780
+          ],
+          "pixels": 39100,
+          "alpha_min": 0,
+          "alpha_max": 1,
+          "pixels_alpha0": 39081,
+          "pixels_alpha_le8": 39100,
+          "pixels_greater8": 0,
+          "pixels_greater24": 0
+        },
+        {
+          "name": "center",
+          "box_xyxy_exclusive": [
+            670,
+            550,
+            880,
+            780
+          ],
+          "pixels": 48300,
+          "alpha_min": 0,
+          "alpha_max": 1,
+          "pixels_alpha0": 47963,
+          "pixels_alpha_le8": 48300,
+          "pixels_greater8": 0,
+          "pixels_greater24": 0
+        },
+        {
+          "name": "right",
+          "box_xyxy_exclusive": [
+            1080,
+            550,
+            1240,
+            780
+          ],
+          "pixels": 36800,
+          "alpha_min": 0,
+          "alpha_max": 1,
+          "pixels_alpha0": 36797,
+          "pixels_alpha_le8": 36800,
+          "pixels_greater8": 0,
+          "pixels_greater24": 0
+        }
+      ]
+    },
+    {
+      "id": "HWM162-K24",
+      "name": "Grille autonome de loge",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K24-kennel-bay-grille.png",
+      "filename": "HWM162-K24-kennel-bay-grille.png",
+      "target_ids": [
+        "hw-sector-hound-kennel-building"
+      ],
+      "state_of_source_path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png",
+      "source_reference_sha256": "fedb9677d90ae72cfe2ee53e9a1f5751361ea1d88da2d9169137a22d2cd9d9a5",
+      "source_reference_sha256_by_path": {
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png": "fedb9677d90ae72cfe2ee53e9a1f5751361ea1d88da2d9169137a22d2cd9d9a5",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K23-kennel-facade-roof.png": "193e14f23bb198efe33ecb814d80e6adbe0d1932a010342d0fb853c106450c60"
+      },
+      "source_reference_commits_by_path": {
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png": "1223042c249fab900e7fba9f49d7c78d105bd645",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K23-kennel-facade-roof.png": null
+      },
+      "state": "PROPOSED_INDEPENDENT_BAY_GRILLE",
+      "dimensions_m_proposed": {},
+      "scale_note": "Composants graphiques du projet ; taille, pivot, registration, dégagements et compatibilité anatomique Hounds2010/chiens2018 non certifiés. Réglage de taille et de placement à prévoir.",
+      "visual_review": "Grille de projet non observée dans K01 : forme et matières inspirées de sa baie centrale, aucun mécanisme d’ouverture revendiqué. Version2 native moins évasée et plus proche des proportions de la baie, un seul panneau avec barreaux et deux traverses. Cadrage de petit composant sur1536×1024 ; bounds>24=[552,531,984,880], réglage de taille et placement nécessaire, pas de raccord1:1. Deux fenêtres contiennent des traces alpha2..6 et3..8, aucune membrane visible mais alpha non nul. Version1 trop large/évasée archivée. Revue racine acceptée.",
+      "source_original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-c6a5033e-7d34-461c-8c91-f3b738713471.png",
+      "size_bytes": 853383,
+      "sha256": "3e5eac4f7a3f16f9666de8bfdc4a0b258ab7d0eb20252f95ceba9f1805b3fd3a",
+      "git_blob_sha": "d80f4d997fe3b6961e107c8a4beb521cf90b9453",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alpha_min": 0,
+      "alpha_max": 254,
+      "fully_transparent_pixels": 1439862,
+      "fully_opaque_pixels": 0,
+      "alpha_bounds": {
+        "0": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            97,
+            165,
+            1304,
+            1024
+          ],
+          "margins_left_top_right_bottom": [
+            97,
+            165,
+            232,
+            0
+          ],
+          "pixels": 133002,
+          "canvas_edge_pixels": 2
+        },
+        "8": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            551,
+            531,
+            985,
+            880
+          ],
+          "margins_left_top_right_bottom": [
+            551,
+            531,
+            551,
+            144
+          ],
+          "pixels": 84760,
+          "canvas_edge_pixels": 0
+        },
+        "24": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            552,
+            531,
+            984,
+            880
+          ],
+          "margins_left_top_right_bottom": [
+            552,
+            531,
+            552,
+            144
+          ],
+          "pixels": 81182,
+          "canvas_edge_pixels": 0
+        },
+        "128": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            552,
+            532,
+            984,
+            880
+          ],
+          "margins_left_top_right_bottom": [
+            552,
+            532,
+            552,
+            144
+          ],
+          "pixels": 76015,
+          "canvas_edge_pixels": 0
+        }
+      },
+      "generation_tool": "image_gen.imagegen",
+      "generation_mode": "built-in-reference-guided-generation-and-native-correction",
+      "source_original_bytes_copied_unchanged": true,
+      "image_manipulation": false,
+      "post_generation_pixel_editing": false,
+      "generated_independently_not_cropped": true,
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "reference_basis": "PROJECT_ORIGINAL_EXISTING_SPRITE",
+      "source_reference_ids": [
+        "HWM162-round6-kennel-building-source",
+        "HWM162-round6-current-facade-source",
+        "HWM162-round6-rejected-grille-edit-target"
+      ],
+      "canon_certified": false,
+      "canonicalOneToOneClaimed": false,
+      "production_status": "GENERATED_ART_CANDIDATE",
+      "runtime_admitted": false,
+      "runtimeIntegrated": false,
+      "human_artistic_validation": "PENDING",
+      "camera_requested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "projection": "orthographic",
+        "reference_repo_path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png",
+        "actual_reference_view_inherited_requested": true,
+        "camera_measured": false,
+        "new_front_0_35_conversion_claimed": false,
+        "source_view": "frontal_elevated",
+        "source_original_camera_request": {
+          "projection": "orthographic",
+          "yaw_degrees": 0,
+          "pitch_degrees": 35
+        },
+        "source_original_camera_measured": false
+      },
+      "camera_measured": false,
+      "physical_scale_validated": false,
+      "transparent_background_requested": true,
+      "strict_alpha_margin_80px_pass": false,
+      "visible_silhouette_entire_at_alpha_gt24": true,
+      "visible_margin_80px_at_alpha_gt24_pass": true,
+      "continuation_after_published_commit": "1223042c249fab900e7fba9f49d7c78d105bd645",
+      "state_transition_runtime_verified": false,
+      "pixel_aligned_state_pair_verified": false,
+      "component_registration_verified": false,
+      "selected_generation_attempt": 2,
+      "root_visual_review": {
+        "status": "ACCEPTED_ART_CANDIDATE",
+        "reviewer": "root",
+        "review_type": "AI_SOURCE_COMPARISON",
+        "human_validation": false
+      },
+      "area": "kennels",
+      "targetIds": [
+        "hw-sector-hound-kennel-building"
+      ],
+      "sourceAssetFiles": [
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K23-kennel-facade-roof.png"
+      ],
+      "sourceAssetIds": [
+        "HWM162-K01",
+        "HWM162-K23"
+      ],
+      "sourceRefs": [
+        "SRC-CAMERA",
+        "SRC-DAN-2026",
+        "SRC-ALEX-HOMESTEAD"
+      ],
+      "expectedPath": "sprites/kennels/HWM162-K24-kennel-bay-grille.png",
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "productionPass": 6,
+      "transparency_windows": [
+        {
+          "name": "upper_gap",
+          "box_xyxy_exclusive": [
+            748,
+            565,
+            756,
+            610
+          ],
+          "pixels": 360,
+          "alpha_min": 2,
+          "alpha_max": 6,
+          "pixels_alpha0": 0,
+          "pixels_alpha_le8": 360,
+          "pixels_greater8": 0,
+          "pixels_greater24": 0
+        },
+        {
+          "name": "middle_gap",
+          "box_xyxy_exclusive": [
+            748,
+            670,
+            756,
+            740
+          ],
+          "pixels": 560,
+          "alpha_min": 3,
+          "alpha_max": 8,
+          "pixels_alpha0": 0,
+          "pixels_alpha_le8": 560,
+          "pixels_greater8": 0,
+          "pixels_greater24": 0
+        }
+      ],
+      "design_status": "PROJECT_PROPOSAL_NOT_OBSERVED_IN_SOURCE",
+      "opening_mechanism_attested": false,
+      "opening_mechanism_depicted": false,
+      "rejected_attempt_archive": "production/homeworld-sectors-20261103/attempts/kennels/HWM162-K24-kennel-bay-grille-v1.png"
+    },
+    {
+      "id": "HWM162-K25",
+      "name": "Corps de cage moyenne sans trappe mobile",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K25-medium-cage-body.png",
+      "filename": "HWM162-K25-medium-cage-body.png",
+      "target_ids": [
+        "target-v81-71-277"
+      ],
+      "state_of_source_path": "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-277-cage-moyenne-native.png",
+      "source_reference_sha256": "fc5e1a1a2123476f8cbb59b653e1757c5699b93d2a73b00a46ccdc74521bc8ca",
+      "source_reference_sha256_by_path": {
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-277-cage-moyenne-native.png": "fc5e1a1a2123476f8cbb59b653e1757c5699b93d2a73b00a46ccdc74521bc8ca",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K11-medium-cage-open.png": "bfbacfe01f9b9ef08ea4397e9038dde7f6980e0951165905d725baf711b04898"
+      },
+      "source_reference_commits_by_path": {
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-277-cage-moyenne-native.png": "1223042c249fab900e7fba9f49d7c78d105bd645",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K11-medium-cage-open.png": "1223042c249fab900e7fba9f49d7c78d105bd645"
+      },
+      "state": "MEDIUM_CAGE_BODY_WITHOUT_MOVABLE_PANEL",
+      "dimensions_m_proposed": {},
+      "scale_note": "Composants graphiques du projet ; taille, pivot, registration, dégagements et compatibilité anatomique Hounds2010/chiens2018 non certifiés. Réglage de taille et de placement à prévoir.",
+      "visual_review": "Corps entier de cage moyenne, accès gauche dégagé, demi-façade droite fixe, guides, toit, parois arrière et plancher conservés ; aucun panneau mobile ni loquet ambre. Bord vertical boulonné de la demi-façade droite traité comme reconstruction de raccord, pas comme pièce distincte certifiée du plan original. Vue héritée demandée ; nouveau canevas1536×1024, propre échelle, marge basse32px avec silhouette entière. Pas de dimensionnement pour un Hound certifié. Revue racine acceptée.",
+      "source_original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-c3e1b255-e764-4f0c-91fd-412b678530f6.png",
+      "size_bytes": 2483688,
+      "sha256": "6c67ef40e5cca6a84515a5c33cb0a4007fd53bd697cff4d791baed02c8e1cc68",
+      "git_blob_sha": "bf542585cd1fec92f7f4fe09eaffaedeb6af4664",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alpha_min": 0,
+      "alpha_max": 254,
+      "fully_transparent_pixels": 770888,
+      "fully_opaque_pixels": 0,
+      "alpha_bounds": {
+        "0": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            0,
+            0,
+            1496,
+            1024
+          ],
+          "margins_left_top_right_bottom": [
+            0,
+            0,
+            40,
+            0
+          ],
+          "pixels": 801976,
+          "canvas_edge_pixels": 49
+        },
+        "8": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            107,
+            71,
+            1422,
+            992
+          ],
+          "margins_left_top_right_bottom": [
+            107,
+            71,
+            114,
+            32
+          ],
+          "pixels": 724889,
+          "canvas_edge_pixels": 0
+        },
+        "24": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            108,
+            72,
+            1421,
+            992
+          ],
+          "margins_left_top_right_bottom": [
+            108,
+            72,
+            115,
+            32
+          ],
+          "pixels": 718932,
+          "canvas_edge_pixels": 0
+        },
+        "128": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            109,
+            72,
+            1421,
+            991
+          ],
+          "margins_left_top_right_bottom": [
+            109,
+            72,
+            115,
+            33
+          ],
+          "pixels": 704524,
+          "canvas_edge_pixels": 0
+        }
+      },
+      "generation_tool": "image_gen.imagegen",
+      "generation_mode": "built-in-reference-edit",
+      "source_original_bytes_copied_unchanged": true,
+      "image_manipulation": false,
+      "post_generation_pixel_editing": false,
+      "generated_independently_not_cropped": true,
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "reference_basis": "PROJECT_ORIGINAL_EXISTING_SPRITE",
+      "source_reference_ids": [
+        "HWM162-round6-medium-cage-source",
+        "HWM162-round6-open-medium-cage-source"
+      ],
+      "canon_certified": false,
+      "canonicalOneToOneClaimed": false,
+      "production_status": "GENERATED_ART_CANDIDATE",
+      "runtime_admitted": false,
+      "runtimeIntegrated": false,
+      "human_artistic_validation": "PENDING",
+      "camera_requested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "projection": "orthographic",
+        "reference_repo_path": "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-277-cage-moyenne-native.png",
+        "actual_reference_view_inherited_requested": true,
+        "camera_measured": false,
+        "new_front_0_35_conversion_claimed": false,
+        "source_view": "three-quarter",
+        "source_brief_pitch_degrees": 32,
+        "source_brief_pitch_is_approximate": true
+      },
+      "camera_measured": false,
+      "physical_scale_validated": false,
+      "transparent_background_requested": true,
+      "strict_alpha_margin_80px_pass": false,
+      "visible_silhouette_entire_at_alpha_gt24": true,
+      "visible_margin_80px_at_alpha_gt24_pass": false,
+      "continuation_after_published_commit": "1223042c249fab900e7fba9f49d7c78d105bd645",
+      "state_transition_runtime_verified": false,
+      "pixel_aligned_state_pair_verified": false,
+      "component_registration_verified": false,
+      "selected_generation_attempt": 1,
+      "root_visual_review": {
+        "status": "ACCEPTED_ART_CANDIDATE",
+        "reviewer": "root",
+        "review_type": "AI_SOURCE_COMPARISON",
+        "human_validation": false
+      },
+      "area": "kennels",
+      "targetIds": [
+        "target-v81-71-277"
+      ],
+      "sourceAssetFiles": [
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-277-cage-moyenne-native.png",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K11-medium-cage-open.png"
+      ],
+      "sourceAssetIds": [
+        "HWM162-K11"
+      ],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "expectedPath": "sprites/kennels/HWM162-K25-medium-cage-body.png",
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "productionPass": 6
+    },
+    {
+      "id": "HWM162-K26",
+      "name": "Trappe coulissante de cage moyenne autonome",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K26-medium-cage-sliding-panel.png",
+      "filename": "HWM162-K26-medium-cage-sliding-panel.png",
+      "target_ids": [
+        "target-v81-71-277"
+      ],
+      "state_of_source_path": "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-277-cage-moyenne-native.png",
+      "source_reference_sha256": "fc5e1a1a2123476f8cbb59b653e1757c5699b93d2a73b00a46ccdc74521bc8ca",
+      "source_reference_sha256_by_path": {
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-277-cage-moyenne-native.png": "fc5e1a1a2123476f8cbb59b653e1757c5699b93d2a73b00a46ccdc74521bc8ca",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K11-medium-cage-open.png": "bfbacfe01f9b9ef08ea4397e9038dde7f6980e0951165905d725baf711b04898"
+      },
+      "source_reference_commits_by_path": {
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-277-cage-moyenne-native.png": "1223042c249fab900e7fba9f49d7c78d105bd645",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K11-medium-cage-open.png": "1223042c249fab900e7fba9f49d7c78d105bd645"
+      },
+      "state": "INDEPENDENT_MEDIUM_CAGE_SLIDING_PANEL",
+      "dimensions_m_proposed": {},
+      "scale_note": "Composants graphiques du projet ; taille, pivot, registration, dégagements et compatibilité anatomique Hounds2010/chiens2018 non certifiés. Réglage de taille et de placement à prévoir.",
+      "visual_review": "Panneau mobile unique en vue diagonale héritée : quatre coins boulonnés, barreaux, traverse médiane et loquet ambre à gauche. Les états277/K11 confirment que le loquet suit le panneau ; il est absent deK25. Aucun corps, rail fixe ou pilier. Fenêtre haute1750pixels strictementalpha0 ; basse3000pixels alpha0..1. Cadrage et échelle propres, aucun raccord ou mouvement en jeu certifié. Revue racine acceptée.",
+      "source_original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-53bf7b4f-5b12-4caa-a1e0-00b2822311ed.png",
+      "size_bytes": 1807830,
+      "sha256": "cbab78e4e8df0ed7e89f3692399f6f93d54254277238649da96f7d3d86afeeea",
+      "git_blob_sha": "fb529b541e6b5aa9735f9bbb656560c36f23adc2",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alpha_min": 0,
+      "alpha_max": 254,
+      "fully_transparent_pixels": 1125669,
+      "fully_opaque_pixels": 0,
+      "alpha_bounds": {
+        "0": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            41,
+            8,
+            1464,
+            1008
+          ],
+          "margins_left_top_right_bottom": [
+            41,
+            8,
+            72,
+            16
+          ],
+          "pixels": 447195,
+          "canvas_edge_pixels": 0
+        },
+        "8": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            326,
+            102,
+            1205,
+            936
+          ],
+          "margins_left_top_right_bottom": [
+            326,
+            102,
+            331,
+            88
+          ],
+          "pixels": 406868,
+          "canvas_edge_pixels": 0
+        },
+        "24": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            327,
+            102,
+            1205,
+            936
+          ],
+          "margins_left_top_right_bottom": [
+            327,
+            102,
+            331,
+            88
+          ],
+          "pixels": 404550,
+          "canvas_edge_pixels": 0
+        },
+        "128": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            328,
+            102,
+            1204,
+            935
+          ],
+          "margins_left_top_right_bottom": [
+            328,
+            102,
+            332,
+            89
+          ],
+          "pixels": 398085,
+          "canvas_edge_pixels": 0
+        }
+      },
+      "generation_tool": "image_gen.imagegen",
+      "generation_mode": "built-in-reference-edit",
+      "source_original_bytes_copied_unchanged": true,
+      "image_manipulation": false,
+      "post_generation_pixel_editing": false,
+      "generated_independently_not_cropped": true,
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "reference_basis": "PROJECT_ORIGINAL_EXISTING_SPRITE",
+      "source_reference_ids": [
+        "HWM162-round6-medium-cage-source",
+        "HWM162-round6-open-medium-cage-source"
+      ],
+      "canon_certified": false,
+      "canonicalOneToOneClaimed": false,
+      "production_status": "GENERATED_ART_CANDIDATE",
+      "runtime_admitted": false,
+      "runtimeIntegrated": false,
+      "human_artistic_validation": "PENDING",
+      "camera_requested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "projection": "orthographic",
+        "reference_repo_path": "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-277-cage-moyenne-native.png",
+        "actual_reference_view_inherited_requested": true,
+        "camera_measured": false,
+        "new_front_0_35_conversion_claimed": false,
+        "source_view": "three-quarter",
+        "source_brief_pitch_degrees": 32,
+        "source_brief_pitch_is_approximate": true
+      },
+      "camera_measured": false,
+      "physical_scale_validated": false,
+      "transparent_background_requested": true,
+      "strict_alpha_margin_80px_pass": false,
+      "visible_silhouette_entire_at_alpha_gt24": true,
+      "visible_margin_80px_at_alpha_gt24_pass": true,
+      "continuation_after_published_commit": "1223042c249fab900e7fba9f49d7c78d105bd645",
+      "state_transition_runtime_verified": false,
+      "pixel_aligned_state_pair_verified": false,
+      "component_registration_verified": false,
+      "selected_generation_attempt": 1,
+      "root_visual_review": {
+        "status": "ACCEPTED_ART_CANDIDATE",
+        "reviewer": "root",
+        "review_type": "AI_SOURCE_COMPARISON",
+        "human_validation": false
+      },
+      "area": "kennels",
+      "targetIds": [
+        "target-v81-71-277"
+      ],
+      "sourceAssetFiles": [
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-277-cage-moyenne-native.png",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K11-medium-cage-open.png"
+      ],
+      "sourceAssetIds": [
+        "HWM162-K11"
+      ],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "expectedPath": "sprites/kennels/HWM162-K26-medium-cage-sliding-panel.png",
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "productionPass": 6,
+      "transparency_windows": [
+        {
+          "name": "upper_bar_gap",
+          "box_xyxy_exclusive": [
+            665,
+            370,
+            690,
+            440
+          ],
+          "pixels": 1750,
+          "alpha_min": 0,
+          "alpha_max": 0,
+          "pixels_alpha0": 1750,
+          "pixels_alpha_le8": 1750,
+          "pixels_greater8": 0,
+          "pixels_greater24": 0
+        },
+        {
+          "name": "lower_bar_gap",
+          "box_xyxy_exclusive": [
+            665,
+            630,
+            690,
+            750
+          ],
+          "pixels": 3000,
+          "alpha_min": 0,
+          "alpha_max": 1,
+          "pixels_alpha0": 2664,
+          "pixels_alpha_le8": 3000,
+          "pixels_greater8": 0,
+          "pixels_greater24": 0
+        }
+      ]
     }
   ],
   "attempts": [
@@ -3296,6 +4268,320 @@
       "source_original_bytes_copied_unchanged": true,
       "post_generation_pixel_editing": false,
       "retry_decision": "Sélection après comparaison visuelle racine ; silhouette entière, vue demandée et limites de raccord consignées."
+    },
+    {
+      "id": "HWM162-K22",
+      "attempt": 1,
+      "productionPass": 6,
+      "prompt": "Use case: precise-object-edit.\nAsset: HWM162-K22, one independent transparent game sprite, the INTERIOR/REAR LAYER of the three-bay kennel in reference image 1. This is an original project adaptation, not a claim of film-canonical architecture.\n\nReference image 1 is the exact existing K01 kennel building to partition. Preserve its front-facing elevated orthographic view, left-right orientation, three equally spaced chambers, footprint, charcoal basalt/aged bronze materials, restrained amber wall lights and realistic worn surface detail. Do not redesign it or change the viewing angle.\n\nGenerate ONLY the connected interior module: the three stone-tiled chamber floors with their front drainage grates and shallow thresholds, the plain rear walls, the inner side walls and the two internal dividing walls. The three room interiors must remain visibly separate and empty. Remove the ENTIRE roof, all roof panels/roof vents/roof fins, the front decorative lintels, all four massive front facade piers and their external buttresses, and the outer decorative facade trim. Those are a separate foreground sprite and MUST NOT appear here. Reconstruct the previously concealed interior wall and floor surfaces naturally, consistent with this building. No new furnishings, doors or props. Keep ordinary structural walls and floors connected as one building-interior object, not three detached cubicles.\n\nThis is a rear compositing layer: each room is open at the front; do not place any bars, grille, fence, front wall, pillars or roof across its entrance. Preserve a broad usable floor area. Do not include exterior terrain, paving apron or a ground slab beyond the building footprint.\n\nComposition: landscape 1536x1024 if possible, entire module centered, comfortably inside the canvas with generous clear margins of at least 80 pixels. Inherit the apparent scale and framing of reference image 1 as closely as possible; no exploded diagram, no cutaway annotations, no zoomed-in floor texture. The camera must remain the same elevated frontal view, not top-down. Upper-left light, shading only on physical surfaces. Genuine transparent alpha outside the physical module, no backdrop, halo, fog, cast floor shadow, painted checkerboard or colored matte.\n\nExactly ONE connected independent sprite, complete silhouette, no creature, person, labels, lettering, arrows, grid, second view, duplicate object, atlas or contact sheet. Produce the native transparent image; no textual explanation in the image.",
+      "prompt_utf8_sha256": "d66c3e16d44d6d99615025e8273d3ca79375678377c1ff21965ad598c5bbf3ed",
+      "status": "GENERATED_SELECTED",
+      "original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-08e123d4-b177-4578-8d82-d274e7d12453.png",
+      "sha256": "f8eba50ccd25e3898deba896f2e2a282938489a2c4ebb3e56825b3d00175f85b",
+      "size_bytes": 1598997,
+      "output_hint": "Generated images are saved to /workspace/scratch/2166fec07f86/generated_images as /workspace/scratch/2166fec07f86/generated_images/exec-08e123d4-b177-4578-8d82-d274e7d12453.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "reference_images_inspected_before_generation": [
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png"
+      ],
+      "reference_image_parameters_used": true,
+      "referenced_image_paths": [
+        "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png"
+      ],
+      "reference_sha256s": [
+        {
+          "path": "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png",
+          "repo_path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png",
+          "sha256": "fedb9677d90ae72cfe2ee53e9a1f5751361ea1d88da2d9169137a22d2cd9d9a5",
+          "sourceCommit": "1223042c249fab900e7fba9f49d7c78d105bd645"
+        }
+      ],
+      "sourceRefs": [
+        "SRC-CAMERA",
+        "SRC-DAN-2026",
+        "SRC-ALEX-HOMESTEAD"
+      ],
+      "transparent_background": true,
+      "source_original_bytes_copied_unchanged": true,
+      "post_generation_pixel_editing": false,
+      "retry_decision": "Sélection après comparaison visuelle racine ; silhouette entière et limites de caméra/échelle/registration consignées."
+    },
+    {
+      "id": "HWM162-K23",
+      "attempt": 1,
+      "productionPass": 6,
+      "prompt": "Use case: precise-object-edit.\nAsset: HWM162-K23, one independent transparent game sprite, the FACADE-AND-ROOF FOREGROUND LAYER of the existing three-bay kennel in reference image 1. Original project adaptation, not a claim of film-canonical architecture.\n\nUse reference image 1 as the exact edit target. Preserve the whole existing roof, roof panels, vents, three groups of bronze roof fins, the front bronze lintels and their tiny amber lights, all four massive sloped front piers, facade claw motifs, outer buttresses and post feet. Keep the same three-bay silhouette, same proportions, same elevated frontal orthographic viewpoint, same left-right orientation, basalt/aged-bronze detail and upper-left light. Do not redesign this building.\n\nREMOVE ALL INTERIOR CONTENT behind the three entrances: no rear room walls, inner side walls, dividing walls, tiled room floors, drainage grates, shallow floor thresholds or room shadows. Those belong to another rear-layer sprite. All THREE large trapezoidal entrances must become REAL TRANSPARENT ALPHA WINDOWS, showing absolutely nothing through them. Transparency must extend from below each lintel down to the open bottom between the post feet. No opaque black or gray fill, no painted dark room, no ground, no floor panel across an entrance, no mesh or bars, no hidden back wall. Keep the structural facade piers and their own feet intact. The remaining roof and facade form ONE physically connected shell.\n\nThis is a foreground occlusion layer, not a complete room: empty alpha behind each doorway is the most important requirement. Do not fill the windows with atmosphere, a dark backdrop, reflections or a checkerboard texture. No props, animals, people or door panels.\n\nComposition: landscape 1536x1024 if possible, retain reference image 1 framing, apparent scale and alignment as closely as possible. Entire silhouette centered and comfortably inside the canvas with at least80px transparent margin where feasible. No crop, no new camera, no mirror, no overhead view, no exploded layers or duplicate buildings. True transparent alpha outside the building AND throughout all three open doorways. No cast floor shadow, haze, halo, scenery, text, labels, numbers, arrows, contact sheet or atlas. Render exactly one complete independent native sprite.",
+      "prompt_utf8_sha256": "987e37571793374d36966364233cda2bde1ab968387ef2bde76af183872a4d64",
+      "status": "GENERATED_SELECTED",
+      "original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-674d47fa-8edf-46e3-bf23-5bc4a2b0d2f7.png",
+      "sha256": "193e14f23bb198efe33ecb814d80e6adbe0d1932a010342d0fb853c106450c60",
+      "size_bytes": 1943134,
+      "output_hint": "Generated images are saved to /workspace/scratch/2166fec07f86/generated_images as /workspace/scratch/2166fec07f86/generated_images/exec-674d47fa-8edf-46e3-bf23-5bc4a2b0d2f7.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "reference_images_inspected_before_generation": [
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png"
+      ],
+      "reference_image_parameters_used": true,
+      "referenced_image_paths": [
+        "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png"
+      ],
+      "reference_sha256s": [
+        {
+          "path": "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png",
+          "repo_path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png",
+          "sha256": "fedb9677d90ae72cfe2ee53e9a1f5751361ea1d88da2d9169137a22d2cd9d9a5",
+          "sourceCommit": "1223042c249fab900e7fba9f49d7c78d105bd645"
+        }
+      ],
+      "sourceRefs": [
+        "SRC-CAMERA",
+        "SRC-DAN-2026",
+        "SRC-ALEX-HOMESTEAD"
+      ],
+      "transparent_background": true,
+      "source_original_bytes_copied_unchanged": true,
+      "post_generation_pixel_editing": false,
+      "retry_decision": "Sélection après comparaison visuelle racine ; silhouette entière et limites de caméra/échelle/registration consignées."
+    },
+    {
+      "id": "HWM162-K24",
+      "attempt": 1,
+      "productionPass": 6,
+      "prompt": "Use case: stylized-concept, reference-guided independent game prop.\nAsset: HWM162-K24, ONE separate grille panel proposed for one kennel bay. This is an ORIGINAL PROJECT DESIGN, not a recovered or film-canonical door. Reference image 1 supplies only the shape of the central kennel opening, its worn dark-metal/aged-bronze material family, lighting and camera.\n\nGenerate exactly ONE bare grille panel in a frontal CLOSED-POSITION orientation, with a trapezoidal outline closely following the central opening in reference image 1: a narrow horizontal top, sloping sides widening toward the bottom, and a wider horizontal bottom. Its overall apparent height should be close to its bottom width, as in that bay. No rectangular corral gate and no rounded doghouse arch. A practical thin angular aged-bronze perimeter, dark-metal vertical bars, two restrained horizontal reinforcing rails; simple engineered construction with subtle worn joints. Openings between the bars must be genuine transparent alpha. This panel has no solid sheet backing. Keep the design within the sober basalt/bronze architectural language of the reference, without stone pillars attached to the grille.\n\nShow only this one freestanding closure PANEL. Do not reproduce the building or even one of its bays. No roof, lintel, floor, threshold, wall, jamb, post, outer door frame, hinge pillar, guide rail, motor, hanging mechanism or other support. No hinges, rollers, detailed opening mechanism, latch housing or status lights: the reference does not establish a fastening or opening system. No invented ornaments, spikes, chains or extra props.\n\nInherit the frontal elevated orthographic view and upper-left lighting of reference image 1, showing only modest physical panel thickness. No camera orbit, oblique side-facing pose, perspective convergence or mirror. Place the complete single panel centered with generous transparent margin on all sides, approximately70–75percent canvas occupancy, at least80px clear space; landscape1536x1024 or square native output is acceptable, never crop any edge. It is a separate sprite candidate, not a scene or an installed composite.\n\nTrue transparent alpha everywhere outside the physical grille and in every visible space between bars; no gray/black backdrop, haze, glow, floor shadow, painted checkerboard or opaque membrane. No creature, person, weapon, typography, label, arrows, watermark, grid, atlas, duplicate view or contact sheet.",
+      "prompt_utf8_sha256": "9a9b50f1a8013913273c37d0bed5552130ebd84afa9f35818ac2e40b36d3a564",
+      "status": "GENERATED_REJECTED_ARCHIVED",
+      "original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-4e20e9ab-2f3b-4cb7-b336-2e0582f76c62.png",
+      "sha256": "046b1582fe1757bc57954da7028ef72bd43d6634ffd0cfc32fa70f67ef03e026",
+      "size_bytes": 2078272,
+      "output_hint": "Generated images are saved to /workspace/scratch/2166fec07f86/generated_images as /workspace/scratch/2166fec07f86/generated_images/exec-4e20e9ab-2f3b-4cb7-b336-2e0582f76c62.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "reference_images_inspected_before_generation": [
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png"
+      ],
+      "reference_image_parameters_used": true,
+      "referenced_image_paths": [
+        "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png"
+      ],
+      "reference_sha256s": [
+        {
+          "path": "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png",
+          "repo_path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png",
+          "sha256": "fedb9677d90ae72cfe2ee53e9a1f5751361ea1d88da2d9169137a22d2cd9d9a5",
+          "sourceCommit": "1223042c249fab900e7fba9f49d7c78d105bd645"
+        }
+      ],
+      "sourceRefs": [
+        "SRC-CAMERA",
+        "SRC-DAN-2026",
+        "SRC-ALEX-HOMESTEAD"
+      ],
+      "transparent_background": true,
+      "source_original_bytes_copied_unchanged": true,
+      "post_generation_pixel_editing": false,
+      "retry_decision": "Profil trop évasé et trop large pour la baieK01 ; correction native de proportions et cadrage approuvée par root, version1 archivée.",
+      "archive_path": "production/homeworld-sectors-20261103/attempts/kennels/HWM162-K24-kennel-bay-grille-v1.png",
+      "selected": false,
+      "alpha_bounds": {
+        "0": {
+          "bboxExclusive": [
+            0,
+            19,
+            1533,
+            1024
+          ],
+          "marginsLTRB": [
+            0,
+            19,
+            3,
+            0
+          ],
+          "occupiedPixels": 598128,
+          "canvasEdgePixels": 141
+        },
+        "8": {
+          "bboxExclusive": [
+            165,
+            106,
+            1370,
+            949
+          ],
+          "marginsLTRB": [
+            165,
+            106,
+            166,
+            75
+          ],
+          "occupiedPixels": 449532,
+          "canvasEdgePixels": 0
+        },
+        "24": {
+          "bboxExclusive": [
+            165,
+            107,
+            1370,
+            949
+          ],
+          "marginsLTRB": [
+            165,
+            107,
+            166,
+            75
+          ],
+          "occupiedPixels": 443941,
+          "canvasEdgePixels": 0
+        },
+        "128": {
+          "bboxExclusive": [
+            166,
+            107,
+            1369,
+            948
+          ],
+          "marginsLTRB": [
+            166,
+            107,
+            167,
+            76
+          ],
+          "occupiedPixels": 431448,
+          "canvasEdgePixels": 0
+        }
+      }
+    },
+    {
+      "id": "HWM162-K25",
+      "attempt": 1,
+      "productionPass": 6,
+      "prompt": "Use case: precise-object-edit.\nAsset: HWM162-K25, one independent EMPTY MEDIUM FAUNA CAGE BODY with its movable service panel completely absent. Original project art, not a canonical creature-sized kennel.\n\nImage 1 is the original medium cage with its sliding panel closed at the left of the near long side. It is the identity/view reference.\nImage 2 is the same project cage with the panel retracted to the right. It confirms that the full rectangular framed panel AND its amber latch move together; it also reveals the open left entry. This image is supporting evidence, not a request to leave the panel retracted.\n\nCreate a native version of the CAGE BODY ONLY. Preserve the complete original elongated low body: solid porous basalt floor, four chamfered basalt corner shoulders with aged bronze clamps, low feet/skids, near-side fixed structural top/bottom guides, closely spaced bars on the end walls and rear long wall, long parallel open roof bars, and the FIXED RIGHT-HAND HALF of the near long-side wall exactly as visible in image 1. Keep the inherited elevated three-quarter view, orientation, construction, proportions, patina and upper-left light.\n\nREMOVE ONLY the entire movable rectangular framed hatch, its four corner fasteners, its own vertical bars and central brace, and its attached latch/amber slit. Do not leave this panel parked to the right, folded out, lying on the floor or floating nearby. No movable hatch or amber latch may appear anywhere in this sprite.\n\nThe near-side LEFT entry must therefore remain clear, as exposed in image 2, while the RIGHT half remains the original FIXED barred wall from image 1. Preserve genuine rear bars and floor visible THROUGH the open left access; do not mistake the far wall for a new door. Do not close that entrance with a replacement grille, opaque plate or vertical foreground bars. Keep all body posts and fixed guide rails; no extra door, no new openings in the other walls.\n\nOne complete connected body, empty of animals and props. All bar gaps should have genuine alpha wherever there is no real floor or other cage surface behind them. No black matte or painted transparent pattern. Match the camera of the reference; do not force a new front view, mirror it, change roof shape, add wheels or redesign it as a medieval prison.\n\nCenter the entire cage on a genuinely transparent canvas with generous margins (at least80px requested) and complete feet, roof and end frames. Preserve source framing as closely as possible while avoiding cropping. No scenery, floor shadow, haze, labels, text, logos, anatomy, creature, person, bones, food, atlas, duplicate view or second object.",
+      "prompt_utf8_sha256": "0bb81bd3cf9160487dc0d82accfa360bc57240ecf4cf14d29c8c8d1b3c7e5ab8",
+      "status": "GENERATED_SELECTED",
+      "original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-c3e1b255-e764-4f0c-91fd-412b678530f6.png",
+      "sha256": "6c67ef40e5cca6a84515a5c33cb0a4007fd53bd697cff4d791baed02c8e1cc68",
+      "size_bytes": 2483688,
+      "output_hint": "Generated images are saved to /workspace/scratch/2166fec07f86/generated_images as /workspace/scratch/2166fec07f86/generated_images/exec-c3e1b255-e764-4f0c-91fd-412b678530f6.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "reference_images_inspected_before_generation": [
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-277-cage-moyenne-native.png",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K11-medium-cage-open.png"
+      ],
+      "reference_image_parameters_used": true,
+      "referenced_image_paths": [
+        "/workspace/scratch/2166fec07f86/round3-references/target-v81-71-277-cage-moyenne-native.png",
+        "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/kennels/HWM162-K11-medium-cage-open.png"
+      ],
+      "reference_sha256s": [
+        {
+          "path": "/workspace/scratch/2166fec07f86/round3-references/target-v81-71-277-cage-moyenne-native.png",
+          "repo_path": "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-277-cage-moyenne-native.png",
+          "sha256": "fc5e1a1a2123476f8cbb59b653e1757c5699b93d2a73b00a46ccdc74521bc8ca",
+          "sourceCommit": "1223042c249fab900e7fba9f49d7c78d105bd645"
+        },
+        {
+          "path": "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/kennels/HWM162-K11-medium-cage-open.png",
+          "repo_path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K11-medium-cage-open.png",
+          "sha256": "bfbacfe01f9b9ef08ea4397e9038dde7f6980e0951165905d725baf711b04898",
+          "sourceCommit": "1223042c249fab900e7fba9f49d7c78d105bd645"
+        }
+      ],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "transparent_background": true,
+      "source_original_bytes_copied_unchanged": true,
+      "post_generation_pixel_editing": false,
+      "retry_decision": "Sélection après comparaison visuelle racine ; silhouette entière et limites de caméra/échelle/registration consignées."
+    },
+    {
+      "id": "HWM162-K24",
+      "attempt": 2,
+      "productionPass": 6,
+      "prompt": "Use case: precise-object-edit.\nNative correction of ONE independent grille sprite, HWM162-K24. This is a proposed project component, not a canonical mechanism.\n\nInput image 1 is the current grille to correct. Keep its aged bronze/dark-metal construction, vertical bars, two horizontal braces and simple perimeter. Change its outline proportions and its canvas framing ONLY.\nInput image 2 is the existing K01 kennel building, used for the central doorway proportions and the elevated frontal view.\nInput image 3 is K23, the same facade with transparent doorways, used ONLY as an auxiliary silhouette/placement reference. Do not include either building in the output.\n\nThe current grille is much too wide at the bottom and too strongly splayed. Correct it into the profile of the CENTRAL doorway: the TOP is about THREE QUARTERS of the BOTTOM width; the full HEIGHT is close to the BOTTOM width. Keep sides only moderately sloping, not a very wide triangular trapezoid. Keep one horizontal top, one horizontal bottom, a practical thin perimeter and the existing bars and two cross braces. No hinges, rails, latch, support frame, posts, motors, lights or new opening mechanism. This is just one bare closure panel.\n\nRequest a1536x1024 transparent landscape canvas matching image2/image3. On this otherwise completely blank canvas, draw only the SMALL grille component at the central bay location. Approximate desired raster extent: center x768; top at y500 about250px wide; bottom at y805 about330px wide. Thus the grille occupies roughly x600–935 and y500–805. These are composition guides, not engineering measurements. DO NOT enlarge the grille to fill the canvas. Keep this small component positioning so it can later be considered alongside the building layers. All the large space around it must remain true alpha transparency. Keep the whole panel visible even where the facade feet would later overlap it; do not include those feet now.\n\nPreserve the inherited frontal elevated orthographic orientation and upper-left light. No perspective orbit, mirror, rotated pose, zoom, new texture style or redesign. True transparent holes between ALL bars, no backing sheet, no gray or black matte, haze, glow or cast floor shadow. Nothing else: no building, room, animal, person, label, text, arrows, grid, duplicate view, sheet or decorative prop. One entire independent native transparent grille sprite only.",
+      "prompt_utf8_sha256": "9e9d0a8be2fc178a7de04a236454f63565a116639ceeac1d5daee904734ec73b",
+      "status": "GENERATED_SELECTED",
+      "original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-c6a5033e-7d34-461c-8c91-f3b738713471.png",
+      "sha256": "3e5eac4f7a3f16f9666de8bfdc4a0b258ab7d0eb20252f95ceba9f1805b3fd3a",
+      "size_bytes": 853383,
+      "output_hint": "Generated images are saved to /workspace/scratch/2166fec07f86/generated_images as /workspace/scratch/2166fec07f86/generated_images/exec-c6a5033e-7d34-461c-8c91-f3b738713471.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "reference_images_inspected_before_generation": [
+        "production/homeworld-sectors-20261103/attempts/kennels/HWM162-K24-kennel-bay-grille-v1.png",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K23-kennel-facade-roof.png"
+      ],
+      "reference_image_parameters_used": true,
+      "referenced_image_paths": [
+        "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/attempts/kennels/HWM162-K24-kennel-bay-grille-v1.png",
+        "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png",
+        "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/kennels/HWM162-K23-kennel-facade-roof.png"
+      ],
+      "reference_sha256s": [
+        {
+          "path": "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/attempts/kennels/HWM162-K24-kennel-bay-grille-v1.png",
+          "repo_path": "production/homeworld-sectors-20261103/attempts/kennels/HWM162-K24-kennel-bay-grille-v1.png",
+          "sha256": "046b1582fe1757bc57954da7028ef72bd43d6634ffd0cfc32fa70f67ef03e026",
+          "sourceCommit": null
+        },
+        {
+          "path": "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png",
+          "repo_path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png",
+          "sha256": "fedb9677d90ae72cfe2ee53e9a1f5751361ea1d88da2d9169137a22d2cd9d9a5",
+          "sourceCommit": "1223042c249fab900e7fba9f49d7c78d105bd645"
+        },
+        {
+          "path": "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/kennels/HWM162-K23-kennel-facade-roof.png",
+          "repo_path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K23-kennel-facade-roof.png",
+          "sha256": "193e14f23bb198efe33ecb814d80e6adbe0d1932a010342d0fb853c106450c60",
+          "sourceCommit": null
+        }
+      ],
+      "sourceRefs": [
+        "SRC-CAMERA",
+        "SRC-DAN-2026",
+        "SRC-ALEX-HOMESTEAD"
+      ],
+      "transparent_background": true,
+      "source_original_bytes_copied_unchanged": true,
+      "post_generation_pixel_editing": false,
+      "retry_decision": "Sélection après comparaison visuelle racine ; silhouette entière et limites de caméra/échelle/registration consignées."
+    },
+    {
+      "id": "HWM162-K26",
+      "attempt": 1,
+      "productionPass": 6,
+      "prompt": "Use case: precise-object-edit.\nAsset: HWM162-K26, ONE independent movable SLIDING HATCH PANEL from the reference medium fauna cage. An original project prop adaptation, not a canonical device.\n\nImage1 is the medium cage with the hatch closed on the LEFT half of the nearest long side; use that exact panel and its current viewing angle.\nImage2 shows the hatch slid to the right, confirming which pieces move together. The amber latch stays on the LEFT edge of the movable panel in both references.\n\nGenerate ONLY this rectangular framed bronze HATCH, detached from the cage but held in its same CLOSED-POSITION orientation and same inherited elevated three-quarter viewpoint. Preserve its four square bolted corner plates, thick rectangular perimeter, closely spaced vertical bronze bars, one horizontal middle reinforcing brace, and the practical protruding latch on the LEFT vertical edge at about mid-height, with its single small amber slit. The latch and the four corner fasteners belong to this panel and MUST remain. Keep the asymmetric latch on the left; do not mirror it.\n\nThe actual panel is rectangular in3D but projects as the same slanted quadrilateral seen in image1: top and bottom edges climb gently from lower-left toward upper-right, vertical sides stay approximately upright. Do NOT rotate it into a front-on rectangle and do NOT invent another camera angle. Preserve bronze patina, thickness and upper-left lighting.\n\nREMOVE ALL CAGE BODY: no basalt corner pillars, posts, floor, feet, roof bars, fixed half-wall, fixed guide rails, rear bars, socket supports, outer door surround or other object. Do not leave any part of the cage visible through the grille. Every space between the panel's own bars must be true transparent alpha. One connected mobile panel only, no mounting hardware that belongs to the fixed body, no second panel and no additional latch.\n\nComposition: center the entire independent panel on a native transparent canvas, leave generous clear margins on all four sides of at least80px, complete silhouette with no cropped latch or corners. Keep apparent proportions of the original panel; do not stretch it into a broad corral gate. No scenery, solid backing, floor shadow, haze, glow halo, dark matte, painted checkerboard, creatures, people, labels, text, arrows, grid, contact sheet or duplicate views. Output the single native transparent sprite.",
+      "prompt_utf8_sha256": "e2d1fd7362850e5e2b8408ceabc0a2e78b36c97b85d8e3f8f23debdd5b97fdb1",
+      "status": "GENERATED_SELECTED",
+      "original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-53bf7b4f-5b12-4caa-a1e0-00b2822311ed.png",
+      "sha256": "cbab78e4e8df0ed7e89f3692399f6f93d54254277238649da96f7d3d86afeeea",
+      "size_bytes": 1807830,
+      "output_hint": "Generated images are saved to /workspace/scratch/2166fec07f86/generated_images as /workspace/scratch/2166fec07f86/generated_images/exec-53bf7b4f-5b12-4caa-a1e0-00b2822311ed.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "reference_images_inspected_before_generation": [
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-277-cage-moyenne-native.png",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K11-medium-cage-open.png"
+      ],
+      "reference_image_parameters_used": true,
+      "referenced_image_paths": [
+        "/workspace/scratch/2166fec07f86/round3-references/target-v81-71-277-cage-moyenne-native.png",
+        "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/kennels/HWM162-K11-medium-cage-open.png"
+      ],
+      "reference_sha256s": [
+        {
+          "path": "/workspace/scratch/2166fec07f86/round3-references/target-v81-71-277-cage-moyenne-native.png",
+          "repo_path": "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-277-cage-moyenne-native.png",
+          "sha256": "fc5e1a1a2123476f8cbb59b653e1757c5699b93d2a73b00a46ccdc74521bc8ca",
+          "sourceCommit": "1223042c249fab900e7fba9f49d7c78d105bd645"
+        },
+        {
+          "path": "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/kennels/HWM162-K11-medium-cage-open.png",
+          "repo_path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K11-medium-cage-open.png",
+          "sha256": "bfbacfe01f9b9ef08ea4397e9038dde7f6980e0951165905d725baf711b04898",
+          "sourceCommit": "1223042c249fab900e7fba9f49d7c78d105bd645"
+        }
+      ],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "transparent_background": true,
+      "source_original_bytes_copied_unchanged": true,
+      "post_generation_pixel_editing": false,
+      "retry_decision": "Sélection après comparaison visuelle racine ; silhouette entière et limites de caméra/échelle/registration consignées."
     }
   ],
   "references": [
@@ -3461,6 +4747,51 @@
       "sha256": "b121828ca30e8dc84249666783ccbc8a23a769d74e4586bbad160279c141a290",
       "visually_inspected": true,
       "usage": "Identité du battant corrigé, utilisée avec266 pour produire la pose ouverte."
+    },
+    {
+      "id": "HWM162-round6-kennel-building-source",
+      "kind": "SELECTED_NATIVE_SPRITE",
+      "repo_path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png",
+      "sha256": "fedb9677d90ae72cfe2ee53e9a1f5751361ea1d88da2d9169137a22d2cd9d9a5",
+      "sourceCommit": "1223042c249fab900e7fba9f49d7c78d105bd645",
+      "visually_inspected": true,
+      "usage": "Architecture des trois loges, matières et vue pourK22/K23 et propositionK24 ; la source ne montre aucune grille ni mécanisme de fermeture."
+    },
+    {
+      "id": "HWM162-round6-current-facade-source",
+      "kind": "CURRENT_PASS_SELECTED_NATIVE_SPRITE",
+      "repo_path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K23-kennel-facade-roof.png",
+      "sha256": "193e14f23bb198efe33ecb814d80e6adbe0d1932a010342d0fb853c106450c60",
+      "sourceCommit": null,
+      "visually_inspected": true,
+      "usage": "Référence auxiliaire de contour des baies pour la correction nativeK24v2 ; créée dans cette passe, non présente au commitbaseline."
+    },
+    {
+      "id": "HWM162-round6-rejected-grille-edit-target",
+      "kind": "CURRENT_PASS_REJECTED_NATIVE_ATTEMPT",
+      "repo_path": "production/homeworld-sectors-20261103/attempts/kennels/HWM162-K24-kennel-bay-grille-v1.png",
+      "sha256": "046b1582fe1757bc57954da7028ef72bd43d6634ffd0cfc32fa70f67ef03e026",
+      "sourceCommit": null,
+      "visually_inspected": true,
+      "usage": "Cible de la correction native de forme/cadrageK24v2. Version1 trop évasée conservée sans compter comme asset sélectionné."
+    },
+    {
+      "id": "HWM162-round6-medium-cage-source",
+      "kind": "PROJECT_ORIGINAL_NATIVE_SPRITE",
+      "repo_path": "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-277-cage-moyenne-native.png",
+      "sha256": "fc5e1a1a2123476f8cbb59b653e1757c5699b93d2a73b00a46ccdc74521bc8ca",
+      "sourceCommit": "1223042c249fab900e7fba9f49d7c78d105bd645",
+      "visually_inspected": true,
+      "usage": "Modèle277 fermé : corps et trappe encore fusionnés ; identité pour la décompositionK25/K26."
+    },
+    {
+      "id": "HWM162-round6-open-medium-cage-source",
+      "kind": "SELECTED_NATIVE_SPRITE",
+      "repo_path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K11-medium-cage-open.png",
+      "sha256": "bfbacfe01f9b9ef08ea4397e9038dde7f6980e0951165905d725baf711b04898",
+      "sourceCommit": "1223042c249fab900e7fba9f49d7c78d105bd645",
+      "visually_inspected": true,
+      "usage": "Trappe rétractée à droite : accès gauche visible et loquet ambre confirmé comme élément mobile ; source déjà publiée."
     }
   ],
   "quality_summary": {
@@ -3490,7 +4821,12 @@
       "Passe5 : K18/K19 contiennent des pixels alpha255 ; K20/K21 plafonnent à254. Marges visibles minimales79/75/96/41px respectivement, silhouettes entières ; originaux inchangés.",
       "K18–K21 : vue de266 héritée demandée, brief historique environ32° ; caméra réelle non mesurée. K19 et les battants ont leur propre cadrage/échelle natifs. Les coordonnées, pivots et raccords ne sont pas certifiés communs.",
       "K21 est une pose ouverte native avec reconstruction de la face précédemment occultée ; aucun angle réel, interpolation, animation ou dégagement en jeu certifié.",
-      "K20 a été corrigé par une seconde génération pour retirer le voyant copié du poteau fixe. L’essai précédent reste archivé et ne compte pas comme sélection."
+      "K20 a été corrigé par une seconde génération pour retirer le voyant copié du poteau fixe. L’essai précédent reste archivé et ne compte pas comme sélection.",
+      "Passe6 : cinq sélectionsK22–K26, six générations natives dontK24v1 archivée. Tous plafonnent àalpha254 ; aucun pixel retouché. Silhouettes entières, marge visible minimale155/69/144/32/88px respectivement.",
+      "K22/K23/K24 héritent de la vue demandée pourK01 (source0/35, non mesurée) ; K25/K26 héritent de277/K11 (brief historique≈32°, non mesuré). Aucun angle effectif ni raccord commun certifié.",
+      "K22 reconstruit des surfaces intérieures précédemment masquées ; K23 fournit les trois ouvertures alpha0..1. La partition est une proposition de couches graphiques, pas un assemblage runtime validé.",
+      "K24 est une nouvelle grille proposée à partir de la forme/matière deK01, aucun mécanisme observé ou inventé en détail. La version2 corrige un profil trop évasé ; cadrage propre et recalage de taille/placement nécessaires. Les fenêtres mesurées contiennent des traces alpha2–8 et ne sont pas strictementalpha0.",
+      "K25 conserve un bord fixe reconstitué à la demi-façade droite ; aucune pièce sous la trappe n’est déclarée certifiée. K26 garde exclusivement le loquet mobile ambre. Les cages de faune ne certifient pas une taille adaptée à un Hound2010 ou un chien2018."
     ],
     "upstream_guide_reading": "AGENTS.md et docs/GAMEDEV_AGENT_GUIDE.md lus. L'accès web au create-game-assets/SKILL.md au commit épinglé a échoué avec DisabledError; la poursuite selon les consignes locales est prévue par ce guide.",
     "round3_summary": {
@@ -3546,6 +4882,27 @@
         "pixels_alpha1": 147,
         "pixels_greater8": 0
       }
+    },
+    "round6_summary": {
+      "new_assets": 5,
+      "new_size_bytes": 8687032,
+      "generation_calls": 6,
+      "archived_unselected_pngs": 1,
+      "archived_size_bytes": 2078272,
+      "all_previous_twenty_one_sha256_preserved": true,
+      "all_previous_twenty_one_asset_records_preserved": true,
+      "all_previous_fifty_six_selected_png_sha256_preserved": true,
+      "all_new_original_copies_byte_identical": true,
+      "all_new_visible_silhouettes_entire": true,
+      "all_new_reference_views_inherited_requested": true,
+      "actual_camera_measured": false,
+      "component_registration_verified": false,
+      "all_new_root_visual_reviews_accepted": true,
+      "k23_three_bay_windows_alpha_max": 1,
+      "k24_native_bar_gap_windows_alpha_range": [
+        2,
+        8
+      ]
     }
   },
   "continuation_batches": [
@@ -3846,6 +5203,142 @@
         }
       ],
       "notes": "K18 arc arrière/six poteaux, K19 arc avant fixe/deux poteaux, K20 battant fermé sans voyant, K21 battant ouvert sans voyant. Cinq appels natifs, quatre sélections après revue racine. Aucun pixel retouché. Échelle et cadrage propres des composants, sans assemblage runtime ni raccord métrique certifié.",
+      "camera_mode": "INHERIT_REFERENCE_VIEW",
+      "runtime_integration": false,
+      "human_validation": false
+    },
+    {
+      "name": "kennel-building-layers-bay-grille-and-medium-cage-components",
+      "productionPass": 6,
+      "baseline_published_commit": "1223042c249fab900e7fba9f49d7c78d105bd645",
+      "asset_ids": [
+        "HWM162-K22",
+        "HWM162-K23",
+        "HWM162-K24",
+        "HWM162-K25",
+        "HWM162-K26"
+      ],
+      "previous_asset_count": 21,
+      "previous_assets_sha256_preserved": [
+        {
+          "id": "HWM162-K01",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png",
+          "sha256": "fedb9677d90ae72cfe2ee53e9a1f5751361ea1d88da2d9169137a22d2cd9d9a5"
+        },
+        {
+          "id": "HWM162-K02",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K02-handling-gate.png",
+          "sha256": "7d7a726ff442a711bf4212a7161d042659542d1a384056f1a1853743fa77068c"
+        },
+        {
+          "id": "HWM162-K03",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K03-training-rack.png",
+          "sha256": "95cef71793ec00c9a9d8ae8842e4e8beb3e83ac9eddf4be57820a2a965637797"
+        },
+        {
+          "id": "HWM162-K04",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K04-keeper-platform.png",
+          "sha256": "fa7bcf72db0315a379f90e5872153e75e29d9d2e893adaaac02c110d611e4a73"
+        },
+        {
+          "id": "HWM162-K05",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K05-resting-basin.png",
+          "sha256": "df1d8e518af28797dac239a4db5988bba8bd10e6eb702893833850df1ffbdecf"
+        },
+        {
+          "id": "HWM162-K06",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K06-sliding-mesh-panel.png",
+          "sha256": "1591ab6c1a112e5373c8260c2c62d5111659212b9cb219ed79f44262f6d0dee4"
+        },
+        {
+          "id": "HWM162-K07",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K07-handler-lead.png",
+          "sha256": "7b47106c7b7d92b180eb62ce496ef50883e34d83b521b4b1b912d76e0bf062d9"
+        },
+        {
+          "id": "HWM162-K08",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K08-woven-training-lure.png",
+          "sha256": "2140079cfbe57a3077add91e44152c7e32890159cf54b2dbd24c1ddacb56d698"
+        },
+        {
+          "id": "HWM162-K09",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K09-adjustable-collar.png",
+          "sha256": "97eb1a2a1ce1122604e6709f4aa61df37d4e8b9186ccca56c2bfd1251b969cb2"
+        },
+        {
+          "id": "HWM162-K10",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K10-small-cage-open.png",
+          "sha256": "75eb31d88524b14d8d3a037ef22632423e2717b0649a22595366d56321037e44"
+        },
+        {
+          "id": "HWM162-K11",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K11-medium-cage-open.png",
+          "sha256": "bfbacfe01f9b9ef08ea4397e9038dde7f6980e0951165905d725baf711b04898"
+        },
+        {
+          "id": "HWM162-K12",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K12-heavy-cage-open.png",
+          "sha256": "6aa80bb9abdf9934d3eb4ed2859a066720fb9e7f2c9e2056b83adf1608f37650"
+        },
+        {
+          "id": "HWM162-K13",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K13-energy-barrier-off.png",
+          "sha256": "8e668b68e046bc3ff5d888138ead1a1c0c4df556ad28d64ceae0c929cbd5a33c"
+        },
+        {
+          "id": "HWM162-K14",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K14-empty-alien-drinker.png",
+          "sha256": "41ae672380f0ea8c9c3fa155739b0cda082f95cf63c70db4f1e45538d9c1de6a"
+        },
+        {
+          "id": "HWM162-K15",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K15-empty-hopper-feeder.png",
+          "sha256": "322c098200679914802402ec9df40374792ce9899bf55e4fedbd9836add9761e"
+        },
+        {
+          "id": "HWM162-K16",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K16-empty-training-rack.png",
+          "sha256": "a7c9909f84ec0c53cc5caee8ebdc53ca4f0c1cdbe6e71297fe940d6de7346d90"
+        },
+        {
+          "id": "HWM162-K17",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K17-danger-beacon-off.png",
+          "sha256": "7439ac5ebb4da79ab0fadea5d0117a30f5b9110273d59ae4e9a3ae4b68d705de"
+        },
+        {
+          "id": "HWM162-K18",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K18-enclosure-rear-arc.png",
+          "sha256": "6550a4e80f2fa0aaa332ff3942865ab49ce89abdf2a566592e3b01bc187349ea"
+        },
+        {
+          "id": "HWM162-K19",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K19-enclosure-front-arc.png",
+          "sha256": "e1157b98f951c2c62c71a4392ecb13b480c1bf5a7c7930510418ac879ccd225d"
+        },
+        {
+          "id": "HWM162-K20",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K20-enclosure-gate-leaf.png",
+          "sha256": "b121828ca30e8dc84249666783ccbc8a23a769d74e4586bbad160279c141a290"
+        },
+        {
+          "id": "HWM162-K21",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K21-enclosure-gate-leaf-open.png",
+          "sha256": "e3db8d71f15a449bbdacf717368015d3f1033dc40ca1f7eaaa632b478c4d3c3f"
+        }
+      ],
+      "all_baseline_56_selected_png_sha256_preserved": true,
+      "generated_attempts": 6,
+      "selected_native_pngs": 5,
+      "archived_unselected_attempts": [
+        {
+          "id": "HWM162-K24",
+          "attempt": 1,
+          "path": "production/homeworld-sectors-20261103/attempts/kennels/HWM162-K24-kennel-bay-grille-v1.png",
+          "sha256": "046b1582fe1757bc57954da7028ef72bd43d6634ffd0cfc32fa70f67ef03e026",
+          "bytes": 2078272
+        }
+      ],
+      "notes": "Cinq composants retenus par root après revue des sources ; K24v1 corrigée pour silhouette et archivée. Originaux natifs intacts. K23 référence de la passecourante pourK24 ; aucun rattachement fictif au commitbaseline. Pas de canon1:1, métrique, registration ou runtime certifiés.",
       "camera_mode": "INHERIT_REFERENCE_VIEW",
       "runtime_integration": false,
       "human_validation": false

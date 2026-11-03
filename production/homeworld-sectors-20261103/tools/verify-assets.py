@@ -15,7 +15,7 @@ from PIL import Image
 
 PACK = Path(__file__).resolve().parents[1]
 REPO = PACK.parents[1]
-CURRENT_PASS = 5
+CURRENT_PASS = 6
 
 
 def read_json(path):
@@ -54,7 +54,7 @@ def aggregate():
     assert len(plans) == len(catalogue['newAssetPlan']), 'Duplicate planned asset ID'
     current_plan = read_json(PACK / f'next-targets-round{CURRENT_PASS}.json')
     preserved = read_json(PACK / f'modularity-audit-round{CURRENT_PASS}.json')['preservedSelectedAssets']
-    assert len(preserved) == 46, 'Unexpected previous delivery snapshot'
+    assert len(preserved) == current_plan['previousSelectedPNGCount'], 'Unexpected previous delivery snapshot'
     expected = [a['id'] for a in preserved] + [a['id'] for a in current_plan['newAssetPlan']]
     assert len(expected) == len(set(expected)) == current_plan['targetTotalPNGCount'], 'Plan/snapshot count mismatch'
     assert set(plans) == set(expected), 'Catalogue differs from the approved current plan and preserved delivery'
@@ -150,6 +150,7 @@ def aggregate():
                 'secondDeliveryCommit': 'a6e16334589ee8c4724bcc04da539007e669c883',
                 'thirdDeliveryCommit': 'c8d37c3c059021a96b071551bf9b19b09340536e',
                 'fourthDeliveryCommit': '7299b0fc2bd06dd53a45e3caab630bc75207d0ce',
+                'fifthDeliveryCommit': '1223042c249fab900e7fba9f49d7c78d105bd645',
                 'continuationBaseCommit': current_plan['baselineCommit'],
                 'currentProductionPass': CURRENT_PASS,
                 'productionPassCounts': {str(n): sum(a['productionPass'] == n for a in assets) for n in range(1, CURRENT_PASS + 1)},
@@ -164,7 +165,8 @@ def aggregate():
               'previousDeliveryPNGUnchanged': len(preserved),
               'thirdPassPNGCount': sum(a['productionPass'] == 3 for a in assets),
               'fourthPassPNGCount': sum(a['productionPass'] == 4 for a in assets),
-              'fifthPassPNGCount': sum(a['productionPass'] == CURRENT_PASS for a in assets),
+              'fifthPassPNGCount': sum(a['productionPass'] == 5 for a in assets),
+              'sixthPassPNGCount': sum(a['productionPass'] == CURRENT_PASS for a in assets),
               'inheritedReferenceViewCount': sum(a['viewPolicy'] == 'INHERIT_REFERENCE_VIEW' for a in assets),
               'scriptModifiesPNG': False, 'runtimeAdmission': False, 'canonicalCertification': False,
               'limits': ['Low-alpha edge noise remains in the native sources.', 'No collision, portal, actor placement or animation validation is claimed.', 'Dimensions in metres are proposed design dimensions.', 'Historical view inheritance is recorded separately from the Homeworld 0°/35° target; no camera conversion is presumed.'],
