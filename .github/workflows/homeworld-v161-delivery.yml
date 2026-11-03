@@ -1,71 +1,29 @@
-name: Homeworld V161 three-module delivery
+name: Homeworld V161 native module integrity
+# Import completed at 46a7ec54b2821f254c7e4292bb23c4a4460d8ed2.
+# Read-only validation; no package download, commit or push.
 on:
-  push:
-    branches: ['codex/homeworld-v158-urban-props-intake-20261102']
-    paths: ['.github/workflows/homeworld-v161-delivery.yml']
+  pull_request:
+    paths:
+      - 'production/homeworld-v161/**'
+      - '.github/workflows/homeworld-v161-delivery.yml'
+  workflow_dispatch:
 permissions:
-  contents: write
-concurrency:
-  group: homeworld-pr99-v161-delivery
-  cancel-in-progress: false
+  contents: read
 jobs:
-  deliver:
-    if: github.repository == 'darknigthmare/yautja-la-longue-chasse' && github.ref == 'refs/heads/codex/homeworld-v158-urban-props-intake-20261102'
+  verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 6
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.sha }}
           fetch-depth: 1
+          persist-credentials: false
           sparse-checkout-cone-mode: false
           sparse-checkout: |
             /production/homeworld-v161/
-            /.gitattributes
-            /.gitignore
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
       - run: python -m pip install --disable-pip-version-check 'Pillow==12.0.0'
-      - name: Import pinned three-PNG payload with strict path guard
-        run: |
-          python - <<'PY'
-          from urllib.request import urlopen
-          from pathlib import Path, PurePosixPath
-          import hashlib,zipfile,io,stat
-          u='https://d2ol7oe51mr4n9.cloudfront.net/user_3JHwJlNzgmcxQy32tjF7NiVZPuH/18a0accb-99a2-435b-a89c-f4fc71aa6315.zip'
-          with urlopen(u,timeout=60) as r:b=r.read(3712775)
-          assert len(b)==3712774
-          assert hashlib.sha256(b).hexdigest()=='5ca6be7f5f10a0977835f67f30f35c9acd3dfb00bfbded8469edd2f537eb3d4d'
-          root=Path.cwd()
-          with zipfile.ZipFile(io.BytesIO(b)) as z:
-            assert len(z.infolist())==7
-            assert sum(i.file_size for i in z.infolist())<10*1024*1024
-            for i in z.infolist():
-              p=PurePosixPath(i.filename)
-              assert not p.is_absolute() and '..' not in p.parts and '\\' not in i.filename
-              assert i.filename.startswith('production/homeworld-v161/')
-              assert not stat.S_ISLNK(i.external_attr>>16)
-              d=root/i.filename;assert d.resolve().is_relative_to(root.resolve())
-              d.parent.mkdir(parents=True,exist_ok=True);d.write_bytes(z.read(i))
-          PY
-      - name: Verify sources, rejected-output tracking and workbook
-        shell: bash
-        run: |
-          set -euo pipefail
-          python production/homeworld-v161/tools/verify.py | tee production/homeworld-v161/verification-report.json
-      - name: Commit only the V161 production directory
-        env:
-          EXPECTED_HEAD: ${{ github.sha }}
-        shell: bash
-        run: |
-          set -euo pipefail
-          BRANCH='codex/homeworld-v158-urban-props-intake-20261102'
-          test "$(git ls-remote origin "refs/heads/$BRANCH" | cut -f1)" = "$EXPECTED_HEAD"
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -- production/homeworld-v161
-          if git diff --cached --quiet; then exit 0; fi
-          git commit -m 'art(homeworld): add three separate native modules and 110-file V161 workbook'
-          git push origin "HEAD:refs/heads/$BRANCH"
-          echo "V161 delivered at $(git rev-parse HEAD); 3 new PNGs, 4 catalogue outputs rejected, no runtime admission." >> "$GITHUB_STEP_SUMMARY"
+      - name: Verify three native PNGs, rejected-output record and workbook
+        run: python production/homeworld-v161/tools/verify.py
