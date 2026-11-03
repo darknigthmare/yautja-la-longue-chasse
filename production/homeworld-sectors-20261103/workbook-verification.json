@@ -1,8 +1,8 @@
 {
-  "actualFiles": 70,
-  "expectedFiles": 70,
-  "uniqueIds": 70,
-  "uniqueHashes": 70,
+  "actualFiles": 83,
+  "expectedFiles": 83,
+  "uniqueIds": 83,
+  "uniqueHashes": 83,
   "targets": 42,
   "sourceCount": 6,
   "productionPassCounts": {
@@ -11,7 +11,8 @@
     "3": 10,
     "4": 11,
     "5": 10,
-    "6": 14
+    "6": 14,
+    "7": 13
   },
   "inheritedReferenceViewIds": [
     "HWM162-S08",
@@ -49,11 +50,24 @@
     "HWM162-K23",
     "HWM162-K24",
     "HWM162-K25",
-    "HWM162-K26"
+    "HWM162-K26",
+    "HWM162-S22",
+    "HWM162-S23",
+    "HWM162-S24",
+    "HWM162-S25",
+    "HWM162-M24",
+    "HWM162-M25",
+    "HWM162-M26",
+    "HWM162-K27",
+    "HWM162-K28",
+    "HWM162-K29",
+    "HWM162-K30",
+    "HWM162-K31",
+    "HWM162-K32"
   ],
   "cameraAnglesMeasured": false,
   "inspections": [
-    "{\"kind\":\"table\",\"sheet\":\"Livraison\",\"address\":\"A6:E9\",\"rows\":4,\"cols\":5,\"values\":[[\"Objets ou états du lot\",70,null,\"Lore : adaptations originales\",null],[\"PNG présents\",70,null,\"Aucune certification visuelle 1:1\",null],[\"Revue humaine validée\",0,null,\"Les 40 cibles héritées sont conservées\",null],[\"Admission runtime\",0,null,\"Pixels mesurés ; échelle physique proposée\",null]]}",
+    "{\"kind\":\"table\",\"sheet\":\"Livraison\",\"address\":\"A6:E9\",\"rows\":4,\"cols\":5,\"values\":[[\"Objets ou états du lot\",83,null,\"Lore : adaptations originales\",null],[\"PNG présents\",83,null,\"Aucune certification visuelle 1:1\",null],[\"Revue humaine validée\",0,null,\"Les 40 cibles héritées sont conservées\",null],[\"Admission runtime\",0,null,\"Pixels mesurés ; échelle physique proposée\",null]]}",
     "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}"
   ],
   "nativeExcelInteractiveVerification": false,
@@ -65,55 +79,91 @@
       "Implantation",
       "Références"
     ],
-    "ranges": [
-      "Livraison!A1:J18",
-      "Catalogue!A1:E11",
-      "Implantation!A1:F12",
-      "Références!A1:E10",
-      "Livraison!A70:K83",
-      "Livraison!Q70:R83",
-      "Implantation!A63:F76",
-      "Catalogue!A6:E8",
-      "Catalogue!A45:E47",
-      "Catalogue!A47:E49"
+    "previewCount": 11,
+    "previews": [
+      {
+        "file": "preview-Livraison.png",
+        "range": "Livraison!A1:J18"
+      },
+      {
+        "file": "preview-Catalogue.png",
+        "range": "Catalogue!A1:E11"
+      },
+      {
+        "file": "preview-Implantation.png",
+        "range": "Implantation!A1:F12"
+      },
+      {
+        "file": "preview-References.png",
+        "range": "Références!A1:E10"
+      },
+      {
+        "file": "preview-Livraison-round7.png",
+        "range": "Livraison!A84:K96"
+      },
+      {
+        "file": "preview-Livraison-round7-camera.png",
+        "range": "Livraison!Q84:R96"
+      },
+      {
+        "file": "preview-Implantation-round7.png",
+        "range": "Implantation!A77:F89"
+      },
+      {
+        "file": "preview-Catalogue-round7-target-v81-64-170.png",
+        "range": "Catalogue!A20:E22"
+      },
+      {
+        "file": "preview-Catalogue-round7-target-v81-72-281.png",
+        "range": "Catalogue!A36:E38"
+      },
+      {
+        "file": "preview-Catalogue-round7-target-v81-71-276.png",
+        "range": "Catalogue!A31:E33"
+      },
+      {
+        "file": "preview-Catalogue-round7-target-v81-71-278.png",
+        "range": "Catalogue!A33:E35"
+      }
     ],
-    "previewCount": 10,
-    "method": "Inspection directe des rendus artifact-tool de chacune des quatre feuilles et des six plages ciblées de la passe 6.",
-    "scope": "Mise en page des plages indiquées seulement ; aucune vérification interactive dans Excel natif revendiquée.",
+    "method": "Direct visual inspection of artifact-tool PNG renders, including the 13 new delivery rows, their inherited-camera/source columns, proposed placement rows and four expanded target rows.",
+    "scope": "Rendered ranges only; no native Excel interactive verification.",
     "notes": [
-      "Les nouvelles lignes n’ajoutent pas de dimensions métriques canoniques : les cellules sans mesure restent vides.",
-      "La référence auxiliaire K23 de K24 apparaît dans Livraison!R81."
+      "New proposed physical-dimension cells intentionally remain blank where no metric proposal is supplied; no canonical dimensions are inferred.",
+      "Inherited reference views are stated explicitly; the project camera request is not presented as a measured conversion.",
+      "The four catalogue targets with new component lists remain legible without visible clipping."
     ]
   },
   "scopePreservation": {
-    "baselineCommit": "1223042c249fab900e7fba9f49d7c78d105bd645",
-    "previous56DeliveryRowsFirst16ColumnsUnchanged": true,
-    "previous56DeliveryRowsAll18ColumnsUnchanged": true,
-    "cellValuesAndFormulasCompared": "Livraison!A14:R69",
+    "baselineCommit": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94",
+    "previous70DeliveryRowsFirst16ColumnsUnchanged": true,
+    "previous70DeliveryRowsAll18ColumnsUnchanged": true,
+    "cellValuesAndFormulasCompared": "Livraison!A14:R83",
     "deliveryCellDifferenceCount": 0,
     "referenceSheetCellsUnchanged": true,
     "nativeTableCount": 4,
     "inheritedTargetCountUnchanged": 40,
     "targetRowsIncludingTwoBuildings": 42,
-    "method": "Comparaison en lecture seule des valeurs et formules des XML internes du XLSX publié à la base et du nouvel export ; aucune réécriture par cette vérification."
+    "method": "Read-only ZIP/XML comparison of exported XLSX cell values and formulas against the baseline commit; no formatting-identity claim."
   },
   "documentChecks": {
-    "galleryCards": 70,
+    "galleryCards": 83,
     "sourceCatalogueMatchesManifest": true,
-    "pass6PlansGenerated": 14,
+    "pass7PlansGenerated": 13,
     "historicalSectionsExactlyUnchanged": {
       "Deuxième passe": true,
       "Troisième passe": true,
       "Quatrième passe": true,
-      "Cinquième passe": true
+      "Cinquième passe": true,
+      "Sixième passe": true
     },
-    "round6SectionPresent": true,
-    "round6ReviewLinkTargetExists": true,
+    "round7SectionPresent": true,
+    "round7ReviewLinkTargetExists": true,
     "hound2010PrimarySource": "https://www.hottoys.jp/item/view/100001667",
-    "relativeLinksChecked": 415,
-    "uniqueRelativeLinkTargets": 112,
+    "relativeLinksChecked": 508,
+    "uniqueRelativeLinkTargets": 128,
     "invalidRelativeLinks": [],
-    "linkValidationMethod": "Présence sur disque ou chemin exact suivi par git ls-files pour les références historiques absentes du checkout sparse.",
+    "linkValidationMethod": "Local existence or an exact tracked Git path for sparse historical source files; README, gallery and workbook catalogue source links.",
     "sparseSourceTargetsVerified": [
       "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-271-abreuvoir-alien-native-attempt02.png",
       "docs/suivi-production/v113-open-production-20261102/native-candidates/target-v81-71-272-nourrisseur-native.png",
@@ -140,28 +190,35 @@
     "inheritedTargetsWithCandidate": 40,
     "uncoveredInheritedTargets": [],
     "sourceClosedChanged": false,
-    "inheritedReferenceViewCount": 36
+    "inheritedReferenceViewCount": 49,
+    "nativeCorrectionSummary": {
+      "selectedNew": 13,
+      "nativeCalls": 18,
+      "archivedAttempts": 5,
+      "evidence": "review-round7.json",
+      "details": "K28-v1, K30-v1, K31-v1, K32-v1 and K32-v2 are archived. K32-v3 follows removal of a duplicated fixed rail and a targeted native correction of the alpha veil."
+    }
   },
   "workbookExport": {
-    "file": "YAUTJA_MARCHE_MONTURES_CHENILS_20261103.xlsx",
-    "bytes": 39649,
-    "sha256": "0eb52878e2a4d9ef4d8747a4b4848e8cb30bb0527ef76814f835965547ecec3b",
+    "filename": "YAUTJA_MARCHE_MONTURES_CHENILS_20261103.xlsx",
+    "bytes": 44020,
+    "sha256": "7ab7d73aec3b7beb94ac930843a3aa125c617a18f785788007830d5e5ab768fb",
     "cachedCounts": {
       "B6": {
-        "value": "70",
-        "formula": "COUNTA(A14:A83)"
+        "value": "83",
+        "formula": "COUNTA(A14:A96)"
       },
       "B7": {
-        "value": "70",
-        "formula": "COUNTIFS(E14:E83,\"PNG présent\")"
+        "value": "83",
+        "formula": "COUNTIFS(E14:E96,\"PNG présent\")"
       },
       "B8": {
         "value": "0",
-        "formula": "COUNTIFS(N14:N83,\"Validé\")"
+        "formula": "COUNTIFS(N14:N96,\"Validé\")"
       },
       "B9": {
         "value": "0",
-        "formula": "COUNTIFS(O14:O83,\"Intégré\")"
+        "formula": "COUNTIFS(O14:O96,\"Intégré\")"
       }
     },
     "formulaErrorCount": 0

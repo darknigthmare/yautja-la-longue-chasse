@@ -15,7 +15,7 @@ from PIL import Image
 
 PACK = Path(__file__).resolve().parents[1]
 REPO = PACK.parents[1]
-CURRENT_PASS = 6
+CURRENT_PASS = 7
 
 
 def read_json(path):
@@ -151,6 +151,7 @@ def aggregate():
                 'thirdDeliveryCommit': 'c8d37c3c059021a96b071551bf9b19b09340536e',
                 'fourthDeliveryCommit': '7299b0fc2bd06dd53a45e3caab630bc75207d0ce',
                 'fifthDeliveryCommit': '1223042c249fab900e7fba9f49d7c78d105bd645',
+                'sixthDeliveryCommit': '02253bb99a17eebfdfd3b39ecc18adf749bbfc94',
                 'continuationBaseCommit': current_plan['baselineCommit'],
                 'currentProductionPass': CURRENT_PASS,
                 'productionPassCounts': {str(n): sum(a['productionPass'] == n for a in assets) for n in range(1, CURRENT_PASS + 1)},
@@ -166,7 +167,8 @@ def aggregate():
               'thirdPassPNGCount': sum(a['productionPass'] == 3 for a in assets),
               'fourthPassPNGCount': sum(a['productionPass'] == 4 for a in assets),
               'fifthPassPNGCount': sum(a['productionPass'] == 5 for a in assets),
-              'sixthPassPNGCount': sum(a['productionPass'] == CURRENT_PASS for a in assets),
+              'sixthPassPNGCount': sum(a['productionPass'] == 6 for a in assets),
+              'seventhPassPNGCount': sum(a['productionPass'] == CURRENT_PASS for a in assets),
               'inheritedReferenceViewCount': sum(a['viewPolicy'] == 'INHERIT_REFERENCE_VIEW' for a in assets),
               'scriptModifiesPNG': False, 'runtimeAdmission': False, 'canonicalCertification': False,
               'limits': ['Low-alpha edge noise remains in the native sources.', 'No collision, portal, actor placement or animation validation is claimed.', 'Dimensions in metres are proposed design dimensions.', 'Historical view inheritance is recorded separately from the Homeworld 0°/35° target; no camera conversion is presumed.'],

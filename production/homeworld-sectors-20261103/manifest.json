@@ -2840,6 +2840,543 @@
       ]
     },
     {
+      "id": "HWM162-S22",
+      "label": "Contenant vertical du chariot autonome",
+      "area": "market",
+      "kind": "Composant de chargement",
+      "targetIds": [
+        "target-v81-64-166",
+        "target-v81-64-170"
+      ],
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S22-upright-cart-container.png",
+      "width": 1199,
+      "height": 1312,
+      "mode": "RGBA",
+      "bytes": 1319613,
+      "sha256": "8efa779dfd4ebcd4c4b07ed774c1cf9977b2f8be0cb3a2f355d1d128b2e5024e",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 1012731,
+      "transparentRatio": 0.64378534,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            37,
+            1125,
+            1312
+          ],
+          "margins": [
+            0,
+            37,
+            74,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 560357
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            292,
+            111,
+            889,
+            1180
+          ],
+          "margins": [
+            292,
+            111,
+            310,
+            132
+          ],
+          "minMargin": 111,
+          "pixels": 548064
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            292,
+            112,
+            888,
+            1180
+          ],
+          "margins": [
+            292,
+            112,
+            311,
+            132
+          ],
+          "minMargin": 112,
+          "pixels": 547166
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            293,
+            112,
+            887,
+            1179
+          ],
+          "margins": [
+            293,
+            112,
+            312,
+            133
+          ],
+          "minMargin": 112,
+          "pixels": 545011
+        }
+      },
+      "edgeAlphaMax": 1,
+      "strictClearMargin": false,
+      "mainSilhouetteInsideCanvas": true,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "proposedMetres": {},
+      "dimensionsAuthority": "PROJECT_BRIEF_NOT_CANONICAL_MEASUREMENT",
+      "purpose": "Garnir séparément un des trois logements verticaux du chariot S18 avec le contenant rectangulaire visible dans sa source chargée.",
+      "placementNote": "Régler la largeur et la hauteur dans le logement ; la traversée des barres fixes de S18, le pivot et les occlusions restent à vérifier en scène. Le fond masqué par le cadre dans la source sera interprété sobrement ; aucun contenu ou volume canonique attribué.",
+      "productionPass": 7,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "generationCameraRequest": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "reference": "public/game/homeworld/v78/port-cargo-sorting-cart.png",
+        "measured": false,
+        "note": "Vue de la référence héritée ; aucune conversion ou mesure de la cible orthographique 0°/35° revendiquée."
+      },
+      "projectCameraConformance": "NOT_MEASURED",
+      "pivotDraftPixels": {
+        "x": 590.0,
+        "y": 1180,
+        "status": "BOUNDING_BOX_ANCHOR_ONLY_NOT_MEASURED_GROUND_CONTACT"
+      },
+      "receipt": "production/homeworld-sectors-20261103/receipts/market.json",
+      "notes": [
+        "Source PNG selected after generation; no scripted image cleanup, resizing or padding.",
+        "A few alpha 1 pixels can reach the canvas edges; alpha > 24 bounds describe the main silhouette only.",
+        "The Homeworld camera target is 0°/35°; state edits can explicitly inherit a historical reference view. Camera and metre dimensions are not measured 3D or canonical certifications.",
+        "Conserver la vue exacte de la référence ; ni conversion à 0°/35°, ni angle réel mesuré, ni échelle de pixels commune ou raccord parfait revendiqués. Aucun miroir, recadrage, padding ou redimensionnement des sorties.",
+        "Un contenant rectangulaire autonome entier, couvercle, voyant ambre et motif de façade cohérents avec le modèle du chariot. Aucun cadre de retenue ou autre charge. Base auparavant masquée reconstruite sobrement ; cadrage autonome plus grand que le détail de la source. Pas de contenu, capacité ou échelle de pixels identique revendiqués."
+      ],
+      "canonicalOneToOneClaimed": false,
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "cameraMeasured": false,
+      "scaleValidatedInGame": false,
+      "sourceAssetFiles": [
+        "public/game/homeworld/v78/port-cargo-sorting-cart.png"
+      ]
+    },
+    {
+      "id": "HWM162-S23",
+      "label": "Coffre empilable du chariot autonome",
+      "area": "market",
+      "kind": "Composant de chargement",
+      "targetIds": [
+        "target-v81-64-167",
+        "target-v81-64-170"
+      ],
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S23-stackable-cart-chest.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2208724,
+      "sha256": "35e85552143ca0c6cdd3a446dfed1086a5e2f9e1c5a27fa26b222ac91c2f0d60",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 927530,
+      "transparentRatio": 0.58970769,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            9,
+            1500,
+            1024
+          ],
+          "margins": [
+            0,
+            9,
+            36,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 645334
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            164,
+            168,
+            1383,
+            867
+          ],
+          "margins": [
+            164,
+            168,
+            153,
+            157
+          ],
+          "minMargin": 153,
+          "pixels": 631206
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            165,
+            168,
+            1382,
+            867
+          ],
+          "margins": [
+            165,
+            168,
+            154,
+            157
+          ],
+          "minMargin": 154,
+          "pixels": 630505
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            166,
+            169,
+            1382,
+            867
+          ],
+          "margins": [
+            166,
+            169,
+            154,
+            157
+          ],
+          "minMargin": 154,
+          "pixels": 628524
+        }
+      },
+      "edgeAlphaMax": 1,
+      "strictClearMargin": false,
+      "mainSilhouetteInsideCanvas": true,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "proposedMetres": {},
+      "dimensionsAuthority": "PROJECT_BRIEF_NOT_CANONICAL_MEASUREMENT",
+      "purpose": "Recomposer le chargement du chariot S18 en conservant l’identité du coffre plat empilé dans l’image d’origine, puis placer le même objet dans la réserve.",
+      "placementNote": "Un seul coffre par PNG ; les éventuelles instances empilées, leur contact, leur échelle et leur ordre d’occlusion devront être réglés en scène. Cette pièce complète une identité précise, sans déclarer absent le rôle générique déjà couvert par les coffres V76/V80.",
+      "productionPass": 7,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "generationCameraRequest": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "reference": "public/game/homeworld/v78/port-cargo-sorting-cart.png",
+        "measured": false,
+        "note": "Vue de la référence héritée ; aucune conversion ou mesure de la cible orthographique 0°/35° revendiquée."
+      },
+      "projectCameraConformance": "NOT_MEASURED",
+      "pivotDraftPixels": {
+        "x": 773.5,
+        "y": 867,
+        "status": "BOUNDING_BOX_ANCHOR_ONLY_NOT_MEASURED_GROUND_CONTACT"
+      },
+      "receipt": "production/homeworld-sectors-20261103/receipts/market.json",
+      "notes": [
+        "Source PNG selected after generation; no scripted image cleanup, resizing or padding.",
+        "A few alpha 1 pixels can reach the canvas edges; alpha > 24 bounds describe the main silhouette only.",
+        "The Homeworld camera target is 0°/35°; state edits can explicitly inherit a historical reference view. Camera and metre dimensions are not measured 3D or canonical certifications.",
+        "Conserver la vue exacte de la référence ; ni conversion à 0°/35°, ni angle réel mesuré, ni échelle de pixels commune ou raccord parfait revendiqués. Aucun miroir, recadrage, padding ou redimensionnement des sorties.",
+        "Un coffre fermé entier, deux sangles rouge-brun, boucles simples et garnitures correspondant au coffre supérieur du chariot. Fond plat sans les pieds saillants des coffres V76/V80. Aucun second coffre, cadre, sol ou chariot. Source utile à la recomposition du chargement de S18 ; pas une nouvelle catégorie de contenant ni un raccord garanti."
+      ],
+      "canonicalOneToOneClaimed": false,
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "cameraMeasured": false,
+      "scaleValidatedInGame": false,
+      "sourceAssetFiles": [
+        "public/game/homeworld/v78/port-cargo-sorting-cart.png"
+      ]
+    },
+    {
+      "id": "HWM162-S24",
+      "label": "Réserve — sol, parois et étagères arrière",
+      "area": "market",
+      "kind": "Section de bâtiment",
+      "targetIds": [
+        "target-v81-64-170"
+      ],
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S24-stock-shelter-rear-interior.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2107934,
+      "sha256": "9b4f227e8c65c6ae40d6ff08d654ba27161aeee94aa433c6e8d18be60a46c7ac",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 782828,
+      "transparentRatio": 0.49770864,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            103,
+            1517,
+            992
+          ],
+          "margins": [
+            0,
+            103,
+            19,
+            32
+          ],
+          "minMargin": 0,
+          "pixels": 790036
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            172,
+            264,
+            1366,
+            925
+          ],
+          "margins": [
+            172,
+            264,
+            170,
+            99
+          ],
+          "minMargin": 99,
+          "pixels": 773310
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            172,
+            265,
+            1366,
+            924
+          ],
+          "margins": [
+            172,
+            265,
+            170,
+            100
+          ],
+          "minMargin": 100,
+          "pixels": 771493
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            173,
+            266,
+            1365,
+            923
+          ],
+          "margins": [
+            173,
+            266,
+            171,
+            101
+          ],
+          "minMargin": 101,
+          "pixels": 770070
+        }
+      },
+      "edgeAlphaMax": 1,
+      "strictClearMargin": false,
+      "mainSilhouetteInsideCanvas": true,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "proposedMetres": {},
+      "dimensionsAuthority": "PROJECT_BRIEF_NOT_CANONICAL_MEASUREMENT",
+      "purpose": "Placer des marchandises et occupants sur le sol et les étagères de S05 avant de dessiner séparément sa façade et sa toiture au premier plan.",
+      "placementNote": "Couche arrière proposée. Le seuil transversal appartient à cette couche ; les deux gros piliers avant et leurs bases appartiennent seulement à S25. Prolongements cachés interprétés ; raccord, échelle, pivot et accessibilité non certifiés.",
+      "productionPass": 7,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "generationCameraRequest": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "reference": "production/homeworld-sectors-20261103/sprites/market/HWM162-S05-stock-shelter.png",
+        "measured": false,
+        "note": "Vue de la référence héritée ; aucune conversion ou mesure de la cible orthographique 0°/35° revendiquée."
+      },
+      "projectCameraConformance": "NOT_MEASURED",
+      "pivotDraftPixels": {
+        "x": 769.0,
+        "y": 924,
+        "status": "BOUNDING_BOX_ANCHOR_ONLY_NOT_MEASURED_GROUND_CONTACT"
+      },
+      "receipt": "production/homeworld-sectors-20261103/receipts/market.json",
+      "notes": [
+        "Source PNG selected after generation; no scripted image cleanup, resizing or padding.",
+        "A few alpha 1 pixels can reach the canvas edges; alpha > 24 bounds describe the main silhouette only.",
+        "The Homeworld camera target is 0°/35°; state edits can explicitly inherit a historical reference view. Camera and metre dimensions are not measured 3D or canonical certifications.",
+        "Conserver la vue exacte de la référence ; ni conversion à 0°/35°, ni angle réel mesuré, ni échelle de pixels commune ou raccord parfait revendiqués. Aucun miroir, recadrage, padding ou redimensionnement des sorties.",
+        "Section arrière entière : sol et seuil transversal, paroi arrière et deux parois latérales avec les étagères fixes vides. Les gros piliers/contreforts de façade, toit, draperie et lumières avant sont absents. Les fins bords des parois latérales appartiennent à cette section et ne sont pas les deux gros piliers de S25. Le raccord et l’échelle commune restent à régler en scène."
+      ],
+      "canonicalOneToOneClaimed": false,
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "cameraMeasured": false,
+      "scaleValidatedInGame": false,
+      "sourceAssetIds": [
+        "HWM162-S05"
+      ],
+      "sourceAssetFiles": [
+        "production/homeworld-sectors-20261103/sprites/market/HWM162-S05-stock-shelter.png"
+      ]
+    },
+    {
+      "id": "HWM162-S25",
+      "label": "Réserve — façade et toiture au premier plan",
+      "area": "market",
+      "kind": "Section de bâtiment",
+      "targetIds": [
+        "target-v81-64-170"
+      ],
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S25-stock-shelter-front-roof.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2176957,
+      "sha256": "a47e5de3babc3f729d568d4699c462117e3d9be50508c0771458282c13a0c1de",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 942909,
+      "transparentRatio": 0.5994854,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            32,
+            33,
+            1506,
+            1007
+          ],
+          "margins": [
+            32,
+            33,
+            30,
+            17
+          ],
+          "minMargin": 17,
+          "pixels": 629955
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            34,
+            77,
+            1502,
+            937
+          ],
+          "margins": [
+            34,
+            77,
+            34,
+            87
+          ],
+          "minMargin": 34,
+          "pixels": 607913
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            35,
+            77,
+            1502,
+            937
+          ],
+          "margins": [
+            35,
+            77,
+            34,
+            87
+          ],
+          "minMargin": 34,
+          "pixels": 606320
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            35,
+            78,
+            1501,
+            936
+          ],
+          "margins": [
+            35,
+            78,
+            35,
+            88
+          ],
+          "minMargin": 35,
+          "pixels": 602743
+        }
+      },
+      "edgeAlphaMax": 0,
+      "strictClearMargin": true,
+      "mainSilhouetteInsideCanvas": true,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "proposedMetres": {},
+      "dimensionsAuthority": "PROJECT_BRIEF_NOT_CANONICAL_MEASUREMENT",
+      "purpose": "Faire passer le toit, le linteau et les piliers de la réserve devant le stock sans masquer celui-ci par une image unique contenant aussi le sol.",
+      "placementNote": "Couche avant proposée, baie unique réellement transparente. S14 reste un volet indépendant ; ordre suggéré arrière→stock/occupants ou volet→façade, à valider en scène. Aucun assemblage pixel à pixel ni mécanisme canonique revendiqué.",
+      "productionPass": 7,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "generationCameraRequest": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "reference": "production/homeworld-sectors-20261103/sprites/market/HWM162-S05-stock-shelter.png",
+        "measured": false,
+        "note": "Vue de la référence héritée ; aucune conversion ou mesure de la cible orthographique 0°/35° revendiquée."
+      },
+      "projectCameraConformance": "NOT_MEASURED",
+      "pivotDraftPixels": {
+        "x": 768.5,
+        "y": 937,
+        "status": "BOUNDING_BOX_ANCHOR_ONLY_NOT_MEASURED_GROUND_CONTACT"
+      },
+      "receipt": "production/homeworld-sectors-20261103/receipts/market.json",
+      "notes": [
+        "Source PNG selected after generation; no scripted image cleanup, resizing or padding.",
+        "A few alpha 1 pixels can reach the canvas edges; alpha > 24 bounds describe the main silhouette only.",
+        "The Homeworld camera target is 0°/35°; state edits can explicitly inherit a historical reference view. Camera and metre dimensions are not measured 3D or canonical certifications.",
+        "Conserver la vue exacte de la référence ; ni conversion à 0°/35°, ni angle réel mesuré, ni échelle de pixels commune ou raccord parfait revendiqués. Aucun miroir, recadrage, padding ou redimensionnement des sorties.",
+        "Section avant entière : toiture nervurée, emblème, linteau et draperie, deux gros piliers/contreforts complets avec leurs bases, lampes et équerres. Baie unique vide ; aucun sol, seuil transversal, mur arrière ou étagère. Quatre échantillons de la baie, dont près du sol, ont alpha0. La paire S24/S25 n’est pas présentée comme un assemblage pixel à pixel certifié.",
+        "Visible margin is below the requested 80px on at least one side; the main silhouette remains inside the image."
+      ],
+      "canonicalOneToOneClaimed": false,
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "cameraMeasured": false,
+      "scaleValidatedInGame": false,
+      "sourceAssetIds": [
+        "HWM162-S05"
+      ],
+      "sourceAssetFiles": [
+        "production/homeworld-sectors-20261103/sprites/market/HWM162-S05-stock-shelter.png"
+      ]
+    },
+    {
       "id": "HWM162-M01",
       "label": "Abri des montures",
       "area": "mounts",
@@ -6012,6 +6549,437 @@
       ],
       "sourceAssetFiles": [
         "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M01-open-stable.png"
+      ]
+    },
+    {
+      "id": "HWM162-M24",
+      "label": "Corps de borne d’attache dégagé",
+      "area": "mounts",
+      "kind": "Borne",
+      "targetIds": [
+        "target-v81-72-281"
+      ],
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M24-tether-bollard-body.png",
+      "width": 1100,
+      "height": 1429,
+      "mode": "RGBA",
+      "bytes": 1446089,
+      "sha256": "a34ca19d0cdd67baf3cd47a799533c41c748384143d2388cbebb4666e602abd3",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 931208,
+      "transparentRatio": 0.59240919,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            156,
+            45,
+            1052,
+            1379
+          ],
+          "margins": [
+            156,
+            45,
+            48,
+            50
+          ],
+          "minMargin": 45,
+          "pixels": 640692
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            158,
+            48,
+            944,
+            1370
+          ],
+          "margins": [
+            158,
+            48,
+            156,
+            59
+          ],
+          "minMargin": 48,
+          "pixels": 630385
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            159,
+            48,
+            943,
+            1370
+          ],
+          "margins": [
+            159,
+            48,
+            157,
+            59
+          ],
+          "minMargin": 48,
+          "pixels": 629558
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            159,
+            48,
+            943,
+            1369
+          ],
+          "margins": [
+            159,
+            48,
+            157,
+            60
+          ],
+          "minMargin": 48,
+          "pixels": 626994
+        }
+      },
+      "edgeAlphaMax": 0,
+      "strictClearMargin": true,
+      "mainSilhouetteInsideCanvas": true,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "proposedMetres": {},
+      "dimensionsAuthority": "PROJECT_BRIEF_NOT_CANONICAL_MEASUREMENT",
+      "purpose": "Séparer le corps et les supports fixes pour composer l’attache indépendamment de l’anneau et de sa courte chaîne.",
+      "placementNote": "Axe horizontal et joues de support supérieures restent fixes sur la borne ; petit récepteur bas également. M25 porte le manchon mobile, l’anneau et la courte chaîne. Articulation et raccords à régler en scène.",
+      "productionPass": 7,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "generationCameraRequest": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "reference_repo_path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M02-tether-station.png",
+        "actual_reference_view_inherited_requested": true,
+        "source_request_if_known": {
+          "projection": "orthographic",
+          "yaw_degrees": 0,
+          "pitch_degrees": 35,
+          "authority": "Original source prompt request, not measured."
+        },
+        "camera_measured": false,
+        "new_front_0_35_conversion_claimed": false,
+        "object_pose_changed": false
+      },
+      "projectCameraConformance": "NOT_MEASURED",
+      "pivotDraftPixels": {
+        "x": 551.0,
+        "y": 1370,
+        "status": "BOUNDING_BOX_ANCHOR_ONLY_NOT_MEASURED_GROUND_CONTACT"
+      },
+      "receipt": "production/homeworld-sectors-20261103/receipts/mounts.json",
+      "notes": [
+        "Source PNG selected after generation; no scripted image cleanup, resizing or padding.",
+        "A few alpha 1 pixels can reach the canvas edges; alpha > 24 bounds describe the main silhouette only.",
+        "The Homeworld camera target is 0°/35°; state edits can explicitly inherit a historical reference view. Camera and metre dimensions are not measured 3D or canonical certifications.",
+        "Vue de la source héritée demandée ; caméra réelle et raccords non mesurés. Cadrage et échelle source conservés dans la demande, sans garantie de superposition pixel par pixel.",
+        "Complete fixed station body, original reinforced foot, two upper bearing cheeks and their exposed horizontal axle, lower empty receiver, lamp and scar motif. The large mobile ring, sleeve and chain are absent. Previously concealed surfaces are reconstructed interpretations. Native output is1100x1429 instead of source1182x1330 and its framing/proportions differ; exact registration is not claimed. No mechanical operation, load, physical scale or runtime use is validated.",
+        "Visible margin is below the requested 80px on at least one side; the main silhouette remains inside the image."
+      ],
+      "canonicalOneToOneClaimed": false,
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "cameraMeasured": false,
+      "scaleValidatedInGame": false,
+      "sourceAssetIds": [
+        "HWM162-M02"
+      ],
+      "sourceAssetFiles": [
+        "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M02-tether-station.png"
+      ]
+    },
+    {
+      "id": "HWM162-M25",
+      "label": "Anneau et courte chaîne de la borne",
+      "area": "mounts",
+      "kind": "Attache",
+      "targetIds": [
+        "target-v81-72-281"
+      ],
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M25-tether-ring-chain.png",
+      "width": 1100,
+      "height": 1429,
+      "mode": "RGBA",
+      "bytes": 411781,
+      "sha256": "e1c3726a267f0ee02f09b378d592e034b4f0f57378ec3170b7eaff32a0ddb7eb",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 1423504,
+      "transparentRatio": 0.9055945,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            46,
+            1060,
+            1383
+          ],
+          "margins": [
+            0,
+            46,
+            40,
+            46
+          ],
+          "minMargin": 0,
+          "pixels": 148396
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            323,
+            327,
+            774,
+            1184
+          ],
+          "margins": [
+            323,
+            327,
+            326,
+            245
+          ],
+          "minMargin": 245,
+          "pixels": 139294
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            323,
+            329,
+            774,
+            1184
+          ],
+          "margins": [
+            323,
+            329,
+            326,
+            245
+          ],
+          "minMargin": 245,
+          "pixels": 138487
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            324,
+            330,
+            773,
+            1183
+          ],
+          "margins": [
+            324,
+            330,
+            327,
+            246
+          ],
+          "minMargin": 246,
+          "pixels": 135989
+        }
+      },
+      "edgeAlphaMax": 1,
+      "strictClearMargin": false,
+      "mainSilhouetteInsideCanvas": true,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "proposedMetres": {},
+      "dimensionsAuthority": "PROJECT_BRIEF_NOT_CANONICAL_MEASUREMENT",
+      "purpose": "Fournir l’ensemble mobile relié en un article autonome pour la composition et l’entretien de la même borne.",
+      "placementNote": "Le manchon central mobile reste avec le gros anneau et la courte chaîne. Aucun axe horizontal, support fixe ou récepteur bas n’est inclus. Préserver la pose verticale de M02 ; contacts proposés, non validés.",
+      "productionPass": 7,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "generationCameraRequest": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "reference_repo_path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M02-tether-station.png",
+        "actual_reference_view_inherited_requested": true,
+        "source_request_if_known": {
+          "projection": "orthographic",
+          "yaw_degrees": 0,
+          "pitch_degrees": 35,
+          "authority": "Original source prompt request, not measured."
+        },
+        "camera_measured": false,
+        "new_front_0_35_conversion_claimed": false,
+        "object_pose_changed": false
+      },
+      "projectCameraConformance": "NOT_MEASURED",
+      "pivotDraftPixels": {
+        "x": 548.5,
+        "y": 1184,
+        "status": "BOUNDING_BOX_ANCHOR_ONLY_NOT_MEASURED_GROUND_CONTACT"
+      },
+      "receipt": "production/homeworld-sectors-20261103/receipts/mounts.json",
+      "notes": [
+        "Source PNG selected after generation; no scripted image cleanup, resizing or padding.",
+        "A few alpha 1 pixels can reach the canvas edges; alpha > 24 bounds describe the main silhouette only.",
+        "The Homeworld camera target is 0°/35°; state edits can explicitly inherit a historical reference view. Camera and metre dimensions are not measured 3D or canonical certifications.",
+        "Vue de la source héritée demandée ; caméra réelle et raccords non mesurés. Cadrage et échelle source conservés dans la demande, sans garantie de superposition pixel par pixel.",
+        "One connected complete bronze ring, central mobile sleeve and short dark chain with a complete free terminal link. Fixed post, axle, bearing cheeks and lower receiver are absent. Ring interior is visibly clear with native alpha samples recorded. Sleeve bore and formerly hidden terminal surfaces are interpreted. Native1100x1429 output differs from source1182x1330; the article is enlarged/repositioned relative to M02 and does not promise a direct translation-only fit with M24. Native faint alpha is preserved. No functioning pivot, connector fit, exact registration or load certification."
+      ],
+      "canonicalOneToOneClaimed": false,
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "cameraMeasured": false,
+      "scaleValidatedInGame": false,
+      "sourceAssetIds": [
+        "HWM162-M02"
+      ],
+      "sourceAssetFiles": [
+        "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M02-tether-station.png"
+      ]
+    },
+    {
+      "id": "HWM162-M26",
+      "label": "Longe à deux embouts — pose suspendue",
+      "area": "mounts",
+      "kind": "Pose indépendante",
+      "targetIds": [
+        "target-v81-72-281"
+      ],
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M26-suspended-double-ended-tether.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 1582859,
+      "sha256": "a27e4559127a6f6abe1c7f4dba016b872a39783065ea476bea59c00a020f8cc8",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 1286089,
+      "transparentRatio": 0.81767337,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            23,
+            23,
+            1512,
+            1024
+          ],
+          "margins": [
+            23,
+            23,
+            24,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 286775
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            128,
+            74,
+            1363,
+            895
+          ],
+          "margins": [
+            128,
+            74,
+            173,
+            129
+          ],
+          "minMargin": 74,
+          "pixels": 264776
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            128,
+            75,
+            1363,
+            895
+          ],
+          "margins": [
+            128,
+            75,
+            173,
+            129
+          ],
+          "minMargin": 75,
+          "pixels": 263509
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            129,
+            75,
+            1362,
+            894
+          ],
+          "margins": [
+            129,
+            75,
+            174,
+            130
+          ],
+          "minMargin": 75,
+          "pixels": 259685
+        }
+      },
+      "edgeAlphaMax": 1,
+      "strictClearMargin": false,
+      "mainSilhouetteInsideCanvas": true,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "proposedMetres": {},
+      "dimensionsAuthority": "PROJECT_BRIEF_NOT_CANONICAL_MEASUREMENT",
+      "purpose": "Proposer la longe existante suspendue entre deux points d’attache élevés, au lieu de sa pose en S à plat.",
+      "placementNote": "Conserver les deux mêmes ferrures bronze fermées et la chaîne sombre continue ; extrémités élevées, ventre en U. Aucun support, sol, borne, harnais ou animal fusionné. Hauteur, longueur utile et ancrages à régler en scène.",
+      "productionPass": 7,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "generationCameraRequest": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "reference_repo_path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M13-double-ended-tether.png",
+        "actual_reference_view_inherited_requested": true,
+        "source_request_if_known": {
+          "projection": "orthographic",
+          "yaw_degrees": 0,
+          "pitch_degrees": 35,
+          "authority": "Original source prompt request, not measured."
+        },
+        "camera_measured": false,
+        "new_front_0_35_conversion_claimed": false,
+        "object_pose_changed": true
+      },
+      "projectCameraConformance": "NOT_MEASURED",
+      "pivotDraftPixels": {
+        "x": 745.5,
+        "y": 895,
+        "status": "BOUNDING_BOX_ANCHOR_ONLY_NOT_MEASURED_GROUND_CONTACT"
+      },
+      "receipt": "production/homeworld-sectors-20261103/receipts/mounts.json",
+      "notes": [
+        "Source PNG selected after generation; no scripted image cleanup, resizing or padding.",
+        "A few alpha 1 pixels can reach the canvas edges; alpha > 24 bounds describe the main silhouette only.",
+        "The Homeworld camera target is 0°/35°; state edits can explicitly inherit a historical reference view. Camera and metre dimensions are not measured 3D or canonical certifications.",
+        "Vue de la source héritée demandée ; caméra réelle et raccords non mesurés. Nouvelle pose suspendue de l’objet interprétée, sans rotation ni miroir de pixels.",
+        "One continuous dark chain in a broad hanging U, with the same two complete angular bronze closed pin shackles raised at its ends. No supports, ground, hand loop or additional articles. Identity is inherited from M13, while the suspended curve and link/ferrule orientations are newly interpreted natively. The output keeps source1536x1024 canvas; minimum substantial margin is75px rather than requested100px, with complete silhouette. Faint peripheral alpha is preserved. No measured catenary, deployed length, species fit, mechanical attachment, animation or runtime validation.",
+        "Visible margin is below the requested 80px on at least one side; the main silhouette remains inside the image."
+      ],
+      "canonicalOneToOneClaimed": false,
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "cameraMeasured": false,
+      "scaleValidatedInGame": false,
+      "sourceAssetIds": [
+        "HWM162-M13"
+      ],
+      "sourceAssetFiles": [
+        "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M13-double-ended-tether.png"
       ]
     },
     {
@@ -9624,6 +10592,861 @@
         "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-277-cage-moyenne-native.png",
         "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K11-medium-cage-open.png"
       ]
+    },
+    {
+      "id": "HWM162-K27",
+      "label": "Corps de petite cage sans battant",
+      "area": "kennels",
+      "kind": "Corps de cage",
+      "targetIds": [
+        "target-v81-71-276"
+      ],
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K27-small-cage-body.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "bytes": 2001588,
+      "sha256": "7a2911053209d28b6ddae419412d7375db3b1dfb9ca5face89d7c90e86c800e9",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 735815,
+      "transparentRatio": 0.46792211,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            63,
+            32,
+            1214,
+            1254
+          ],
+          "margins": [
+            63,
+            32,
+            40,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 836701
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            96,
+            121,
+            1181,
+            1175
+          ],
+          "margins": [
+            96,
+            121,
+            73,
+            79
+          ],
+          "minMargin": 73,
+          "pixels": 798867
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            96,
+            121,
+            1181,
+            1175
+          ],
+          "margins": [
+            96,
+            121,
+            73,
+            79
+          ],
+          "minMargin": 73,
+          "pixels": 794223
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            96,
+            122,
+            1180,
+            1174
+          ],
+          "margins": [
+            96,
+            122,
+            74,
+            80
+          ],
+          "minMargin": 74,
+          "pixels": 785608
+        }
+      },
+      "edgeAlphaMax": 1,
+      "strictClearMargin": false,
+      "mainSilhouetteInsideCanvas": true,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "proposedMetres": {},
+      "dimensionsAuthority": "PROJECT_BRIEF_NOT_CANONICAL_MEASUREMENT",
+      "purpose": "Séparer le corps de la petite cage pour recevoir un battant indépendant fermé ou ouvert.",
+      "placementNote": "Garder la base, le plancher, tous les côtés fixes et le toit ajouré, la poignée haute, le cadre fixe chanfreiné de l’ouverture, les deux parties fixes de charnière à gauche et le récepteur ambre à droite. Retirer entièrement le battant mobile et sa poignée, même en position ouverte ; ne pas supprimer les barres arrière visibles au travers de l’accès. Vue et échelle natives propres ; taille, pivots, axe de charnière, registration et animation non certifiés. Aucune compatibilité Hounds 2010/chiens 2018 déduite.",
+      "productionPass": 7,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "generationCameraRequest": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "projection": "orthographic",
+        "source_view": "three-quarter",
+        "source_brief_pitch_degrees": 32,
+        "source_brief_pitch_is_approximate": true,
+        "reference_repo_path": "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-276-cage-petite-native.png",
+        "actual_reference_view_inherited_requested": true,
+        "camera_measured": false,
+        "new_front_0_35_conversion_claimed": false,
+        "opening_angle_measured": false
+      },
+      "projectCameraConformance": "NOT_MEASURED",
+      "pivotDraftPixels": {
+        "x": 638.5,
+        "y": 1175,
+        "status": "BOUNDING_BOX_ANCHOR_ONLY_NOT_MEASURED_GROUND_CONTACT"
+      },
+      "receipt": "production/homeworld-sectors-20261103/receipts/kennels.json",
+      "notes": [
+        "Source PNG selected after generation; no scripted image cleanup, resizing or padding.",
+        "A few alpha 1 pixels can reach the canvas edges; alpha > 24 bounds describe the main silhouette only.",
+        "The Homeworld camera target is 0°/35°; state edits can explicitly inherit a historical reference view. Camera and metre dimensions are not measured 3D or canonical certifications.",
+        "Vue héritée demandée des références historiques de la cage (brief orthographique en trois-quarts, environ32°) ; angle réel et alignement des composants non mesurés.",
+        "Corps compact seul : poignée haute, base/plancher, toit et parois fixes conservés ; cadre chanfreiné ouvert, deux cylindres fixes sur le montant gauche et récepteur ambre sur le montant droit. Aucun battant mobile. Silhouette entière ; marges droite/basse 73/79 px. Petits résidus RGB natifs consignés séparément, sans nettoyage. Revue racine acceptée.",
+        "Visible margin is below the requested 80px on at least one side; the main silhouette remains inside the image."
+      ],
+      "canonicalOneToOneClaimed": false,
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "cameraMeasured": false,
+      "scaleValidatedInGame": false,
+      "sourceAssetIds": [
+        "HWM162-K10"
+      ],
+      "sourceAssetFiles": [
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-276-cage-petite-native.png",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K10-small-cage-open.png"
+      ]
+    },
+    {
+      "id": "HWM162-K28",
+      "label": "Battant de petite cage — pose fermée",
+      "area": "kennels",
+      "kind": "Battant",
+      "targetIds": [
+        "target-v81-71-276"
+      ],
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K28-small-cage-door-leaf.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "bytes": 918758,
+      "sha256": "1ad0ae33a20d77151262eddc1be2ba7b88a71d24203384ac9f5cae22f1bd809a",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 1152324,
+      "transparentRatio": 0.73279,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            61,
+            33,
+            1218,
+            1254
+          ],
+          "margins": [
+            61,
+            33,
+            36,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 420192
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            269,
+            167,
+            979,
+            1068
+          ],
+          "margins": [
+            269,
+            167,
+            275,
+            186
+          ],
+          "minMargin": 167,
+          "pixels": 367982
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            269,
+            167,
+            979,
+            1068
+          ],
+          "margins": [
+            269,
+            167,
+            275,
+            186
+          ],
+          "minMargin": 167,
+          "pixels": 366147
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            270,
+            168,
+            979,
+            1067
+          ],
+          "margins": [
+            270,
+            168,
+            275,
+            187
+          ],
+          "minMargin": 168,
+          "pixels": 359106
+        }
+      },
+      "edgeAlphaMax": 1,
+      "strictClearMargin": false,
+      "mainSilhouetteInsideCanvas": true,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "proposedMetres": {},
+      "dimensionsAuthority": "PROJECT_BRIEF_NOT_CANONICAL_MEASUREMENT",
+      "purpose": "Fournir le battant de petite cage seul dans la pose fermée du modèle 276.",
+      "placementNote": "Cadre mobile chanfreiné, ses barreaux et prise ajourée au bord libre à droite ; seulement les attaches mobiles côté charnière gauche. Aucun voyant ambre, récepteur fixe, cylindre de pivot fixe, montant basaltique, sol, toit ou cage. Les parties fixes restent dans K27. Vue et échelle natives propres ; taille, pivots, axe de charnière, registration et animation non certifiés. Aucune compatibilité Hounds 2010/chiens 2018 déduite.",
+      "productionPass": 7,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "generationCameraRequest": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "projection": "orthographic",
+        "source_view": "three-quarter",
+        "source_brief_pitch_degrees": 32,
+        "source_brief_pitch_is_approximate": true,
+        "reference_repo_path": "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-276-cage-petite-native.png",
+        "actual_reference_view_inherited_requested": true,
+        "camera_measured": false,
+        "new_front_0_35_conversion_claimed": false,
+        "opening_angle_measured": false
+      },
+      "projectCameraConformance": "NOT_MEASURED",
+      "pivotDraftPixels": {
+        "x": 624.0,
+        "y": 1068,
+        "status": "BOUNDING_BOX_ANCHOR_ONLY_NOT_MEASURED_GROUND_CONTACT"
+      },
+      "receipt": "production/homeworld-sectors-20261103/receipts/kennels.json",
+      "notes": [
+        "Source PNG selected after generation; no scripted image cleanup, resizing or padding.",
+        "A few alpha 1 pixels can reach the canvas edges; alpha > 24 bounds describe the main silhouette only.",
+        "The Homeworld camera target is 0°/35°; state edits can explicitly inherit a historical reference view. Camera and metre dimensions are not measured 3D or canonical certifications.",
+        "Vue héritée demandée des références historiques de la cage (brief orthographique en trois-quarts, environ32°) ; angle réel et alignement des composants non mesurés.",
+        "Battant fermé seul, cadre chanfreiné, quatre barreaux verticaux, prise ajourée à droite et aucune émission ambre. Version 2 : deux gros pivots supprimés, petites pattes plates percées conservées à gauche. Ces pattes sont une interprétation graphique ; mécanisme et pivot non validés. Fenêtre de 13 500 pixels alpha 0–1, aucun >8. Revue racine acceptée."
+      ],
+      "canonicalOneToOneClaimed": false,
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "cameraMeasured": false,
+      "scaleValidatedInGame": false,
+      "sourceAssetIds": [
+        "HWM162-K10"
+      ],
+      "sourceAssetFiles": [
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-276-cage-petite-native.png",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K10-small-cage-open.png"
+      ]
+    },
+    {
+      "id": "HWM162-K29",
+      "label": "Corps de cage lourde sans battant",
+      "area": "kennels",
+      "kind": "Corps de cage",
+      "targetIds": [
+        "target-v81-71-278"
+      ],
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K29-heavy-cage-body.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "bytes": 2168078,
+      "sha256": "f6e3b2256c02402ebc8f48522d399f3e2f209826b500fe6f475fdb6c8f9437d9",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 721871,
+      "transparentRatio": 0.45905479,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            29,
+            31,
+            1227,
+            1230
+          ],
+          "margins": [
+            29,
+            31,
+            27,
+            24
+          ],
+          "minMargin": 24,
+          "pixels": 850645
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            31,
+            104,
+            1225,
+            1157
+          ],
+          "margins": [
+            31,
+            104,
+            29,
+            97
+          ],
+          "minMargin": 29,
+          "pixels": 820716
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            31,
+            104,
+            1225,
+            1157
+          ],
+          "margins": [
+            31,
+            104,
+            29,
+            97
+          ],
+          "minMargin": 29,
+          "pixels": 817605
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            32,
+            105,
+            1224,
+            1156
+          ],
+          "margins": [
+            32,
+            105,
+            30,
+            98
+          ],
+          "minMargin": 30,
+          "pixels": 810487
+        }
+      },
+      "edgeAlphaMax": 0,
+      "strictClearMargin": true,
+      "mainSilhouetteInsideCanvas": true,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "proposedMetres": {},
+      "dimensionsAuthority": "PROJECT_BRIEF_NOT_CANONICAL_MEASUREMENT",
+      "purpose": "Séparer le corps de cage lourde pour les deux poses indépendantes de son battant.",
+      "placementNote": "Conserver les trois arceaux, les patins et le plancher, les côtés et le toit à barreaux, le portique d’extrémité et les trois parties fixes de charnière. Retirer entièrement le battant mobile, ses attaches mobiles et son boîtier ambre ; aucun panneau replié ou posé à côté. Vue et échelle natives propres ; taille, pivots, axe de charnière, registration et animation non certifiés. Aucune compatibilité Hounds 2010/chiens 2018 déduite.",
+      "productionPass": 7,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "generationCameraRequest": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "projection": "orthographic",
+        "source_view": "three-quarter",
+        "source_brief_pitch_degrees": 32,
+        "source_brief_pitch_is_approximate": true,
+        "reference_repo_path": "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png",
+        "actual_reference_view_inherited_requested": true,
+        "camera_measured": false,
+        "new_front_0_35_conversion_claimed": false,
+        "opening_angle_measured": false
+      },
+      "projectCameraConformance": "NOT_MEASURED",
+      "pivotDraftPixels": {
+        "x": 628.0,
+        "y": 1157,
+        "status": "BOUNDING_BOX_ANCHOR_ONLY_NOT_MEASURED_GROUND_CONTACT"
+      },
+      "receipt": "production/homeworld-sectors-20261103/receipts/kennels.json",
+      "notes": [
+        "Source PNG selected after generation; no scripted image cleanup, resizing or padding.",
+        "A few alpha 1 pixels can reach the canvas edges; alpha > 24 bounds describe the main silhouette only.",
+        "The Homeworld camera target is 0°/35°; state edits can explicitly inherit a historical reference view. Camera and metre dimensions are not measured 3D or canonical certifications.",
+        "Vue héritée demandée des références historiques de la cage (brief orthographique en trois-quarts, environ32°) ; angle réel et alignement des composants non mesurés.",
+        "Corps lourd entier sans battant ni boîtier ambre : trois arceaux, patins, plancher, côtés/toit, portique et trois fixations de jambage conservés. Les barreaux visibles au travers de l’accès appartiennent aux parois plus lointaines, pas à une porte fermée. Marges latérales 31/29 px mais silhouette complète. Revue racine acceptée.",
+        "Visible margin is below the requested 80px on at least one side; the main silhouette remains inside the image."
+      ],
+      "canonicalOneToOneClaimed": false,
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "cameraMeasured": false,
+      "scaleValidatedInGame": false,
+      "sourceAssetIds": [
+        "HWM162-K12"
+      ],
+      "sourceAssetFiles": [
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K12-heavy-cage-open.png"
+      ]
+    },
+    {
+      "id": "HWM162-K30",
+      "label": "Battant de cage lourde — pose fermée",
+      "area": "kennels",
+      "kind": "Battant",
+      "targetIds": [
+        "target-v81-71-278"
+      ],
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K30-heavy-cage-door-leaf.png",
+      "width": 1199,
+      "height": 1312,
+      "mode": "RGBA",
+      "bytes": 1251588,
+      "sha256": "3d80af3caeab9628536bb967e0161e5b50dea38204266176202bf0c119264b69",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 1010188,
+      "transparentRatio": 0.64216878,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            35,
+            1132,
+            1312
+          ],
+          "margins": [
+            0,
+            35,
+            67,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 562900
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            223,
+            131,
+            993,
+            1200
+          ],
+          "margins": [
+            223,
+            131,
+            206,
+            112
+          ],
+          "minMargin": 112,
+          "pixels": 520161
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            223,
+            132,
+            992,
+            1200
+          ],
+          "margins": [
+            223,
+            132,
+            207,
+            112
+          ],
+          "minMargin": 112,
+          "pixels": 516811
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            224,
+            132,
+            992,
+            1199
+          ],
+          "margins": [
+            224,
+            132,
+            207,
+            113
+          ],
+          "minMargin": 113,
+          "pixels": 508630
+        }
+      },
+      "edgeAlphaMax": 1,
+      "strictClearMargin": false,
+      "mainSilhouetteInsideCanvas": true,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "proposedMetres": {},
+      "dimensionsAuthority": "PROJECT_BRIEF_NOT_CANONICAL_MEASUREMENT",
+      "purpose": "Fournir le battant lourd seul dans la pose fermée du modèle 278.",
+      "placementNote": "Cadre mobile bronze/métal sombre, barreaux verticaux, traverse médiane et boîtier ambre au bord libre à droite ; seulement les attaches mobiles côté charnière gauche. Aucune partie fixe de charnière, aucun montant basaltique, patin, sol, toit ni corps de cage. Vue et échelle natives propres ; taille, pivots, axe de charnière, registration et animation non certifiés. Aucune compatibilité Hounds 2010/chiens 2018 déduite.",
+      "productionPass": 7,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "generationCameraRequest": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "projection": "orthographic",
+        "source_view": "three-quarter",
+        "source_brief_pitch_degrees": 32,
+        "source_brief_pitch_is_approximate": true,
+        "reference_repo_path": "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png",
+        "actual_reference_view_inherited_requested": true,
+        "camera_measured": false,
+        "new_front_0_35_conversion_claimed": false,
+        "opening_angle_measured": false
+      },
+      "projectCameraConformance": "NOT_MEASURED",
+      "pivotDraftPixels": {
+        "x": 607.5,
+        "y": 1200,
+        "status": "BOUNDING_BOX_ANCHOR_ONLY_NOT_MEASURED_GROUND_CONTACT"
+      },
+      "receipt": "production/homeworld-sectors-20261103/receipts/kennels.json",
+      "notes": [
+        "Source PNG selected after generation; no scripted image cleanup, resizing or padding.",
+        "A few alpha 1 pixels can reach the canvas edges; alpha > 24 bounds describe the main silhouette only.",
+        "The Homeworld camera target is 0°/35°; state edits can explicitly inherit a historical reference view. Camera and metre dimensions are not measured 3D or canonical certifications.",
+        "Vue héritée demandée des références historiques de la cage (brief orthographique en trois-quarts, environ32°) ; angle réel et alignement des composants non mesurés.",
+        "Battant lourd fermé indépendant, traverse médiane et boîtier ambre à droite. Version 2 rétablit cinq barreaux continus, alignés au-dessus et au-dessous de la traverse, au lieu des quatre de la première tentative. Aucun corps ou portique ajouté. Deux fenêtres de 3 000 pixels ont alpha 0–1. Revue racine acceptée."
+      ],
+      "canonicalOneToOneClaimed": false,
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "cameraMeasured": false,
+      "scaleValidatedInGame": false,
+      "sourceAssetIds": [
+        "HWM162-K12"
+      ],
+      "sourceAssetFiles": [
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K12-heavy-cage-open.png"
+      ]
+    },
+    {
+      "id": "HWM162-K31",
+      "label": "Battant de petite cage — pose ouverte",
+      "area": "kennels",
+      "kind": "Battant",
+      "targetIds": [
+        "target-v81-71-276"
+      ],
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K31-small-cage-door-leaf-open.png",
+      "width": 1263,
+      "height": 1246,
+      "mode": "RGBA",
+      "bytes": 657841,
+      "sha256": "180662b2843e3ae9a93eb236edd7263c9c8fa10eae596d4516be05993eab8d95",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 1279371,
+      "transparentRatio": 0.8129711,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            41,
+            113,
+            1184,
+            1157
+          ],
+          "margins": [
+            41,
+            113,
+            79,
+            89
+          ],
+          "minMargin": 41,
+          "pixels": 294327
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            314,
+            189,
+            976,
+            1028
+          ],
+          "margins": [
+            314,
+            189,
+            287,
+            218
+          ],
+          "minMargin": 189,
+          "pixels": 267891
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            314,
+            189,
+            976,
+            1028
+          ],
+          "margins": [
+            314,
+            189,
+            287,
+            218
+          ],
+          "minMargin": 189,
+          "pixels": 265995
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            315,
+            190,
+            975,
+            1028
+          ],
+          "margins": [
+            315,
+            190,
+            288,
+            218
+          ],
+          "minMargin": 190,
+          "pixels": 260013
+        }
+      },
+      "edgeAlphaMax": 0,
+      "strictClearMargin": true,
+      "mainSilhouetteInsideCanvas": true,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "proposedMetres": {},
+      "dimensionsAuthority": "PROJECT_BRIEF_NOT_CANONICAL_MEASUREMENT",
+      "purpose": "Garder visible le battant de petite cage quand son entrée est ouverte, sans dépendre du PNG complet K10.",
+      "placementNote": "Reprendre la pose ouverte de K10 : bord libre et prise ajourée à gauche, bord articulé à droite. Conserver uniquement le battant mobile et ses attaches ; aucun voyant, récepteur fixe, pivot fixe, montant basaltique ou corps. La forme du battant reste celle de 276/K10, sans miroir de pixels. Vue et échelle natives propres ; taille, pivots, axe de charnière, registration et animation non certifiés. Aucune compatibilité Hounds 2010/chiens 2018 déduite.",
+      "productionPass": 7,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "generationCameraRequest": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "projection": "orthographic",
+        "source_view": "three-quarter",
+        "source_brief_pitch_degrees": 32,
+        "source_brief_pitch_is_approximate": true,
+        "reference_repo_path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K10-small-cage-open.png",
+        "actual_reference_view_inherited_requested": true,
+        "camera_measured": false,
+        "new_front_0_35_conversion_claimed": false,
+        "opening_angle_measured": false
+      },
+      "projectCameraConformance": "NOT_MEASURED",
+      "pivotDraftPixels": {
+        "x": 645.0,
+        "y": 1028,
+        "status": "BOUNDING_BOX_ANCHOR_ONLY_NOT_MEASURED_GROUND_CONTACT"
+      },
+      "receipt": "production/homeworld-sectors-20261103/receipts/kennels.json",
+      "notes": [
+        "Source PNG selected after generation; no scripted image cleanup, resizing or padding.",
+        "A few alpha 1 pixels can reach the canvas edges; alpha > 24 bounds describe the main silhouette only.",
+        "The Homeworld camera target is 0°/35°; state edits can explicitly inherit a historical reference view. Camera and metre dimensions are not measured 3D or canonical certifications.",
+        "Vue héritée demandée des références historiques de la cage (brief orthographique en trois-quarts, environ32°) ; angle réel et alignement des composants non mesurés. La pose ouverte est reprise du sprite ouvert existant, pas produite par un miroir ou une rotation de pixels.",
+        "Battant petit ouvert indépendant : quatre barreaux, prise libre à gauche, bord articulé à droite, sans ambre. Version 2 retire les cylindres fixes complets et conserve seulement deux petites pattes mobiles plates percées. Pose héritée de K10, aucune rotation ou symétrie de pixels. Fenêtre de 9 460 pixels strictement alpha0 ; les rougeurs RGB mesurées par root sont toutes alpha1–5. Revue racine acceptée."
+      ],
+      "canonicalOneToOneClaimed": false,
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "cameraMeasured": false,
+      "scaleValidatedInGame": false,
+      "sourceAssetIds": [
+        "HWM162-K10"
+      ],
+      "sourceAssetFiles": [
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K10-small-cage-open.png",
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-276-cage-petite-native.png"
+      ]
+    },
+    {
+      "id": "HWM162-K32",
+      "label": "Battant de cage lourde — pose ouverte",
+      "area": "kennels",
+      "kind": "Battant",
+      "targetIds": [
+        "target-v81-71-278"
+      ],
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K32-heavy-cage-door-leaf-open.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 1662701,
+      "sha256": "bd760af652b6349e584fdd7f96bc8c8aaea22cf1c9c6f7a2248eae694503ae58",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 1168221,
+      "transparentRatio": 0.74273491,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            33,
+            71,
+            1510,
+            998
+          ],
+          "margins": [
+            33,
+            71,
+            26,
+            26
+          ],
+          "minMargin": 26,
+          "pixels": 404643
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            367,
+            77,
+            1170,
+            965
+          ],
+          "margins": [
+            367,
+            77,
+            366,
+            59
+          ],
+          "minMargin": 59,
+          "pixels": 377876
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            368,
+            77,
+            1169,
+            965
+          ],
+          "margins": [
+            368,
+            77,
+            367,
+            59
+          ],
+          "minMargin": 59,
+          "pixels": 375716
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            368,
+            77,
+            1169,
+            964
+          ],
+          "margins": [
+            368,
+            77,
+            367,
+            60
+          ],
+          "minMargin": 60,
+          "pixels": 370463
+        }
+      },
+      "edgeAlphaMax": 0,
+      "strictClearMargin": true,
+      "mainSilhouetteInsideCanvas": true,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "loreStatus": "ORIGINAL_GAME_ADAPTATION",
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "proposedMetres": {},
+      "dimensionsAuthority": "PROJECT_BRIEF_NOT_CANONICAL_MEASUREMENT",
+      "purpose": "Garder visible le battant lourd dans sa pose ouverte indépendante, sans dépendre du PNG complet K12.",
+      "placementNote": "Reprendre la pose ouverte de K12 : bord libre et boîtier ambre à gauche, bord articulé à droite. Garder cadre, barreaux, traverse médiane, boîtier mobile et attaches mobiles, sans éléments de corps, charnières fixes, piliers basaltique, patins, sol ou toit. Aucun miroir de pixels. Vue et échelle natives propres ; taille, pivots, axe de charnière, registration et animation non certifiés. Aucune compatibilité Hounds 2010/chiens 2018 déduite.",
+      "productionPass": 7,
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "generationCameraRequest": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "projection": "orthographic",
+        "source_view": "three-quarter",
+        "source_brief_pitch_degrees": 32,
+        "source_brief_pitch_is_approximate": true,
+        "reference_repo_path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K12-heavy-cage-open.png",
+        "actual_reference_view_inherited_requested": true,
+        "camera_measured": false,
+        "new_front_0_35_conversion_claimed": false,
+        "opening_angle_measured": false
+      },
+      "projectCameraConformance": "NOT_MEASURED",
+      "pivotDraftPixels": {
+        "x": 768.5,
+        "y": 965,
+        "status": "BOUNDING_BOX_ANCHOR_ONLY_NOT_MEASURED_GROUND_CONTACT"
+      },
+      "receipt": "production/homeworld-sectors-20261103/receipts/kennels.json",
+      "notes": [
+        "Source PNG selected after generation; no scripted image cleanup, resizing or padding.",
+        "A few alpha 1 pixels can reach the canvas edges; alpha > 24 bounds describe the main silhouette only.",
+        "The Homeworld camera target is 0°/35°; state edits can explicitly inherit a historical reference view. Camera and metre dimensions are not measured 3D or canonical certifications.",
+        "Vue héritée demandée des références historiques de la cage (brief orthographique en trois-quarts, environ32°) ; angle réel et alignement des composants non mesurés. La pose ouverte est reprise du sprite ouvert existant, pas produite par un miroir ou une rotation de pixels.",
+        "Battant lourd ouvert : cadre mobile bronze simple, cinq barreaux, traverse médiane, boîtier ambre à gauche et trois œillets mobiles à droite. La version 2 retire un rail sombre supérieur et une enveloppe de portique dupliqués dans la référence composite K12, en s’appuyant sur 278 fermé ; les attaches mobiles sont reconstruites sobrement. Les sources K12/278 restent inchangées. La version 3 retire uniquement le voile des ajours : fenêtres de 2 250 et 3 500 pixels maintenant strictement alpha0, contre alpha28–40 et7–23 en v2. Pose et composants conservés, marge basse59 px. Revue racine acceptée.",
+        "Visible margin is below the requested 80px on at least one side; the main silhouette remains inside the image."
+      ],
+      "canonicalOneToOneClaimed": false,
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "cameraMeasured": false,
+      "scaleValidatedInGame": false,
+      "sourceAssetIds": [
+        "HWM162-K12"
+      ],
+      "sourceAssetFiles": [
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K12-heavy-cage-open.png",
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png"
+      ]
     }
   ],
   "sources": [
@@ -9677,29 +11500,31 @@
     }
   ],
   "cameraPolicyNote": "The global camera is the project target. Assets marked INHERIT_REFERENCE_VIEW preserve a historical source view instead of claiming a new frontal 0°/35° view.",
-  "selectedPNGCount": 70,
-  "selectedBytes": 115142232,
+  "selectedPNGCount": 83,
+  "selectedBytes": 135056743,
   "areas": {
-    "market": 21,
-    "mounts": 23,
-    "kennels": 26
+    "market": 25,
+    "mounts": 26,
+    "kennels": 32
   },
   "firstDeliveryCommit": "d4c43dce5286fbb64e41ae5fa22cb82854572a7e",
   "secondDeliveryCommit": "a6e16334589ee8c4724bcc04da539007e669c883",
   "thirdDeliveryCommit": "c8d37c3c059021a96b071551bf9b19b09340536e",
   "fourthDeliveryCommit": "7299b0fc2bd06dd53a45e3caab630bc75207d0ce",
   "fifthDeliveryCommit": "1223042c249fab900e7fba9f49d7c78d105bd645",
-  "continuationBaseCommit": "1223042c249fab900e7fba9f49d7c78d105bd645",
-  "currentProductionPass": 6,
+  "sixthDeliveryCommit": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94",
+  "continuationBaseCommit": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94",
+  "currentProductionPass": 7,
   "productionPassCounts": {
     "1": 17,
     "2": 8,
     "3": 10,
     "4": 11,
     "5": 10,
-    "6": 14
+    "6": 14,
+    "7": 13
   },
-  "scope": "70 selected independent PNG sources across 6 production passes, including 14 additions in the current pass. Forty inherited target rows audited; two building targets belong to this delivery catalogue only.",
+  "scope": "83 selected independent PNG sources across 7 production passes, including 13 additions in the current pass. Forty inherited target rows audited; two building targets belong to this delivery catalogue only.",
   "canonicalOneToOneClaimed": false,
   "humanValidated": false,
   "runtimeIntegrated": false

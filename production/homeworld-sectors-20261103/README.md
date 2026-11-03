@@ -2,13 +2,13 @@
 
 Lot de production `MMK-20261103`. Les identifiants de génération `HWM162-*` sont conservés. Ce dossier est distinct du lot de terrains `homeworld-v162` ajouté en parallèle.
 
-Ce lot complète les sources de la PR [#99](https://github.com/darknigthmare/yautja-la-longue-chasse/pull/99) avec **70 PNG indépendants présents** pour 70 objets ou états planifiés. Chaque objet est un fichier séparé. Les anciennes sources restent à leur emplacement.
+Ce lot complète les sources de la PR [#99](https://github.com/darknigthmare/yautja-la-longue-chasse/pull/99) avec **83 PNG indépendants présents** pour 83 objets ou états planifiés. Chaque objet est un fichier séparé. Les anciennes sources restent à leur emplacement.
 
 | Secteur | Objets ou états du lot | PNG présents |
 | --- | ---: | ---: |
-| Marché | 21 | 21 |
-| Montures | 23 | 23 |
-| Chenils | 26 | 26 |
+| Marché | 25 | 25 |
+| Montures | 26 | 26 |
+| Chenils | 32 | 32 |
 
 ## Consulter les fichiers
 
@@ -89,6 +89,19 @@ Ce lot complète les sources de la PR [#99](https://github.com/darknigthmare/yau
 | HWM162-K24 | Grille autonome de loge | hw-sector-hound-kennel-building | [PNG](sprites/kennels/HWM162-K24-kennel-bay-grille.png) | 1536 × 1024 |
 | HWM162-K25 | Corps de cage moyenne sans trappe mobile | target-v81-71-277 | [PNG](sprites/kennels/HWM162-K25-medium-cage-body.png) | 1536 × 1024 |
 | HWM162-K26 | Trappe coulissante de cage moyenne autonome | target-v81-71-277 | [PNG](sprites/kennels/HWM162-K26-medium-cage-sliding-panel.png) | 1536 × 1024 |
+| HWM162-S22 | Contenant vertical du chariot autonome | target-v81-64-166 ; target-v81-64-170 | [PNG](sprites/market/HWM162-S22-upright-cart-container.png) | 1199 × 1312 |
+| HWM162-S23 | Coffre empilable du chariot autonome | target-v81-64-167 ; target-v81-64-170 | [PNG](sprites/market/HWM162-S23-stackable-cart-chest.png) | 1536 × 1024 |
+| HWM162-S24 | Réserve — sol, parois et étagères arrière | target-v81-64-170 | [PNG](sprites/market/HWM162-S24-stock-shelter-rear-interior.png) | 1536 × 1024 |
+| HWM162-S25 | Réserve — façade et toiture au premier plan | target-v81-64-170 | [PNG](sprites/market/HWM162-S25-stock-shelter-front-roof.png) | 1536 × 1024 |
+| HWM162-M24 | Corps de borne d’attache dégagé | target-v81-72-281 | [PNG](sprites/mounts/HWM162-M24-tether-bollard-body.png) | 1100 × 1429 |
+| HWM162-M25 | Anneau et courte chaîne de la borne | target-v81-72-281 | [PNG](sprites/mounts/HWM162-M25-tether-ring-chain.png) | 1100 × 1429 |
+| HWM162-M26 | Longe à deux embouts — pose suspendue | target-v81-72-281 | [PNG](sprites/mounts/HWM162-M26-suspended-double-ended-tether.png) | 1536 × 1024 |
+| HWM162-K27 | Corps de petite cage sans battant | target-v81-71-276 | [PNG](sprites/kennels/HWM162-K27-small-cage-body.png) | 1254 × 1254 |
+| HWM162-K28 | Battant de petite cage — pose fermée | target-v81-71-276 | [PNG](sprites/kennels/HWM162-K28-small-cage-door-leaf.png) | 1254 × 1254 |
+| HWM162-K29 | Corps de cage lourde sans battant | target-v81-71-278 | [PNG](sprites/kennels/HWM162-K29-heavy-cage-body.png) | 1254 × 1254 |
+| HWM162-K30 | Battant de cage lourde — pose fermée | target-v81-71-278 | [PNG](sprites/kennels/HWM162-K30-heavy-cage-door-leaf.png) | 1199 × 1312 |
+| HWM162-K31 | Battant de petite cage — pose ouverte | target-v81-71-276 | [PNG](sprites/kennels/HWM162-K31-small-cage-door-leaf-open.png) | 1263 × 1246 |
+| HWM162-K32 | Battant de cage lourde — pose ouverte | target-v81-71-278 | [PNG](sprites/kennels/HWM162-K32-heavy-cage-door-leaf-open.png) | 1536 × 1024 |
 
 ## Deuxième passe : composants détachés et raccords
 
@@ -234,6 +247,57 @@ K24 propose une grille autonome pour une loge du chenil. Cette fermeture n’est
 
 Les 14 demandes de cette passe héritent de la vue de leur référence. Pour K24, cette référence définit le profil de la baie, pas une grille préexistante. Aucun angle de caméra réel n’est mesuré et aucune conversion générale vers la cible 0°/35° n’est revendiquée. Les silhouettes et les valeurs d’alpha des ouvertures sont vérifiées séparément des raccords et du fonctionnement ; la présence des PNG ne constitue ni une validation humaine ni une admission au runtime.
 
+## Septième passe : chargement, réserve et kits d’attache et de cages
+
+Cette passe ajoute 13 PNG aux 70 déjà livrés : 4 pour le marché, 3 pour les montures et 6 pour les chenils. L’audit part du commit `02253bb99a17eebfdfd3b39ecc18adf749bbfc94`. Le [plan de production](next-targets-round7.json), l’[audit ciblé](modularity-audit-round7.json) et la [revue des ajouts](review-round7.md) conservent les preuves, les réemplois et les limites. Les 40 cibles héritées, les deux cibles de bâtiments ajoutées au lot et les 70 PNG précédents restent conservés.
+
+| ID | Objet ou état | Cible conservée | Vue demandée | Source visuelle reprise |
+| --- | --- | --- | --- | --- |
+| HWM162-S22 | Contenant vertical du chariot autonome | target-v81-64-166 ; target-v81-64-170 | Vue de la référence conservée | [public/game/homeworld/v78/port-cargo-sorting-cart.png](../../public/game/homeworld/v78/port-cargo-sorting-cart.png) |
+| HWM162-S23 | Coffre empilable du chariot autonome | target-v81-64-167 ; target-v81-64-170 | Vue de la référence conservée | [public/game/homeworld/v78/port-cargo-sorting-cart.png](../../public/game/homeworld/v78/port-cargo-sorting-cart.png) |
+| HWM162-S24 | Réserve — sol, parois et étagères arrière | target-v81-64-170 | Vue de la référence conservée | [production/homeworld-sectors-20261103/sprites/market/HWM162-S05-stock-shelter.png](sprites/market/HWM162-S05-stock-shelter.png) |
+| HWM162-S25 | Réserve — façade et toiture au premier plan | target-v81-64-170 | Vue de la référence conservée | [production/homeworld-sectors-20261103/sprites/market/HWM162-S05-stock-shelter.png](sprites/market/HWM162-S05-stock-shelter.png) |
+| HWM162-M24 | Corps de borne d’attache dégagé | target-v81-72-281 | Vue de la référence conservée | [production/homeworld-sectors-20261103/sprites/mounts/HWM162-M02-tether-station.png](sprites/mounts/HWM162-M02-tether-station.png) |
+| HWM162-M25 | Anneau et courte chaîne de la borne | target-v81-72-281 | Vue de la référence conservée | [production/homeworld-sectors-20261103/sprites/mounts/HWM162-M02-tether-station.png](sprites/mounts/HWM162-M02-tether-station.png) |
+| HWM162-M26 | Longe à deux embouts — pose suspendue | target-v81-72-281 | Vue de la référence conservée | [production/homeworld-sectors-20261103/sprites/mounts/HWM162-M13-double-ended-tether.png](sprites/mounts/HWM162-M13-double-ended-tether.png) |
+| HWM162-K27 | Corps de petite cage sans battant | target-v81-71-276 | Vue de la référence conservée | [production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-276-cage-petite-native.png](../native-open-20261102/archives/fauna-energy/cages/target-v81-71-276-cage-petite-native.png)<br>[production/homeworld-sectors-20261103/sprites/kennels/HWM162-K10-small-cage-open.png](sprites/kennels/HWM162-K10-small-cage-open.png) |
+| HWM162-K28 | Battant de petite cage — pose fermée | target-v81-71-276 | Vue de la référence conservée | [production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-276-cage-petite-native.png](../native-open-20261102/archives/fauna-energy/cages/target-v81-71-276-cage-petite-native.png)<br>[production/homeworld-sectors-20261103/sprites/kennels/HWM162-K10-small-cage-open.png](sprites/kennels/HWM162-K10-small-cage-open.png) |
+| HWM162-K29 | Corps de cage lourde sans battant | target-v81-71-278 | Vue de la référence conservée | [production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png](../native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png)<br>[production/homeworld-sectors-20261103/sprites/kennels/HWM162-K12-heavy-cage-open.png](sprites/kennels/HWM162-K12-heavy-cage-open.png) |
+| HWM162-K30 | Battant de cage lourde — pose fermée | target-v81-71-278 | Vue de la référence conservée | [production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png](../native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png)<br>[production/homeworld-sectors-20261103/sprites/kennels/HWM162-K12-heavy-cage-open.png](sprites/kennels/HWM162-K12-heavy-cage-open.png) |
+| HWM162-K31 | Battant de petite cage — pose ouverte | target-v81-71-276 | Vue de la référence conservée | [production/homeworld-sectors-20261103/sprites/kennels/HWM162-K10-small-cage-open.png](sprites/kennels/HWM162-K10-small-cage-open.png)<br>[production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-276-cage-petite-native.png](../native-open-20261102/archives/fauna-energy/cages/target-v81-71-276-cage-petite-native.png) |
+| HWM162-K32 | Battant de cage lourde — pose ouverte | target-v81-71-278 | Vue de la référence conservée | [production/homeworld-sectors-20261103/sprites/kennels/HWM162-K12-heavy-cage-open.png](sprites/kennels/HWM162-K12-heavy-cage-open.png)<br>[production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png](../native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png) |
+
+S22 détache l’un des contenants rectangulaires verticaux du chariot V78, avec son couvercle, son voyant et ses garnitures. Il complète les logements laissés libres dans S18 ; la base auparavant masquée par le cadre est interprétée. S23 détache le coffre supérieur du même chariot : deux sangles rouge-brun, garnitures et fond plat sans pieds ajoutés. Il sert à recomposer l’identité du chargement de S18 et ne crée pas une nouvelle catégorie de coffre. Les coffres autonomes V76/V80 restent des sources réutilisables. Les cadres de maintien, le treuil et les autres pièces fixes restent au chariot ; l’échelle et les occlusions entre les charges et les barres demandent un réglage en scène.
+
+S24 et S25 séparent la réserve S05 existante en deux couches. S24 conserve exclusivement le sol, le seuil transversal, les parois arrière et latérales intérieures, les étagères fixes vides et leurs supports. S25 conserve exclusivement la toiture, le linteau et sa draperie, les deux gros piliers de façade avec leurs bases, leurs lampes et leurs équerres. Le stock peut être proposé entre ces couches. S14 reste le volet indépendant déjà livré. Aucune nouvelle réserve n’est créée ; les surfaces cachées sont interprétées et le raccord pixel par pixel, le pivot et l’ordre d’occlusion ne sont pas certifiés.
+
+La silhouette de S25 est entière, avec une marge minimale de 34 px au seuil alpha > 24. Les rectangles examinés dans sa baie contiennent des valeurs d’alpha de 0 à 1, sans pixel supérieur à 8. Les échantillons ponctuels à alpha0 ne prouvent donc pas une ouverture strictement transparente en tout point. Aucune retouche alpha ni ajout de bordure n’est appliqué.
+
+M24 sépare le corps de la borne d’attache M02 de son ensemble mobile. L’axe horizontal, ses supports fixes et le récepteur bas restent à la borne ; le manchon mobile, le gros anneau et la courte chaîne appartiennent à M25. M26 reprend la longe M13 avec ses deux ferrures fermées dans une pose suspendue en U, sans support ni animal fusionné. Ces composants conservent les identités existantes ; les contacts, la longueur utile, l’articulation et la capacité de charge restent à vérifier en scène.
+
+Les petites cages et les cages lourdes reçoivent chacune un corps sans battant, un battant indépendant fermé et un battant indépendant ouvert. Les sources complètes et les anciens états ouverts K10/K12 restent disponibles. Les poses ouvertes sont produites nativement ; aucun miroir de pixels ne les remplace.
+
+| Cage conservée | Corps fixe | Battant fermé | Battant ouvert |
+| --- | --- | --- | --- |
+| Petite cage 276 / K10 | K27 | K28 | K31 |
+| Cage lourde 278 / K12 | K29 | K30 | K32 |
+
+Pour la petite cage, le récepteur ambre et les parties fixes de charnière restent dans K27 ; les battants gardent leurs attaches mobiles et leur prise. Pour la cage lourde, le boîtier ambre appartient au battant et reste dans les deux poses K30/K32. Les planchers, toits, parois et portiques fixes restent aux corps. Ces répartitions décrivent les composants graphiques ; elles ne certifient ni axes communs, ni échelle identique, ni animation, ni compatibilité avec une espèce précise.
+
+Cette passe utilise 18 appels natifs pour 13 sélections et 5 essais archivés. Les corrections restent des générations natives : aucun nettoyage de pixels par script n’a été appliqué. Les essais sont conservés hors du dossier des sprites et ne sont pas comptés dans les 83 sélections.
+
+| Sélection corrigée | Correction ciblée | Essai conservé hors sélection |
+| --- | --- | --- |
+| K28, version 2 | Suppression des deux gros pivots fixes déjà présents dans K27 ; petites pattes mobiles conservées. | K28-v1 |
+| K30, version 2 | Restitution des cinq barreaux continus du battant lourd, au lieu des quatre de la première sortie. | K30-v1 |
+| K31, version 2 | Retrait des cylindres fixes de la pose ouverte ; seules les deux petites pattes mobiles restent au battant. | K31-v1 |
+| K32, version 2 | Retrait du rail sombre supérieur et de l’enveloppe extérieure appartenant au portique fixe ; K12 les dupliquait sur sa porte ouverte. | K32-v1 |
+| K32, version 3 | Suppression native du voile gris dans les ajours, sans changement demandé de la pose ni des composants. | K32-v2 |
+
+Les deux zones reprises sur K32-v3, soit 5 750 pixels, ont toutes un alpha de 0 ; douze fenêtres supplémentaires dans les six ajours ont aussi un alpha de 0. Ces mesures ciblées ne certifient pas chaque pixel de l’image. K12 et les autres sources antérieures restent inchangés malgré l’ambiguïté de leur partage des pièces fixes. Les cinq entrées de correction sont des images produites pendant cette passe, pas des fichiers du commit de base. Les résidus chromatiques natifs observés sur K27 et K31 sont consignés dans la revue, sans retouche par script.
+
+Les 13 demandes de cette passe héritent de leur vue de référence. Les cadrages natifs peuvent différer, notamment lorsque l’objet était un détail du chariot. Aucun angle réel n’est mesuré, aucune conversion générale à 0°/35° n’est revendiquée et les dimensions métriques absentes ne sont pas inventées. La livraison de ces composants reste distincte de leur validation humaine et de leur admission au runtime.
+
 ## Fidélité et portée des références
 
 Les bâtiments de marché, d’écurie et de chenil sont des **adaptations originales du projet**. Les références ci-dessous orientent leur cohérence visuelle et leur fonction. Elles ne fournissent pas les plans canoniques de ces bâtiments. Ce lot ne porte aucune certification de reproduction 1:1.
@@ -249,7 +313,7 @@ Le chien de Predators (2010) et celui de The Predator (2018) restent deux réfé
 
 ## Échelle et implantation
 
-La cible de caméra du Homeworld est une projection orthographique, yaw global 0°, inclinaison 35°, profondeur 0.573576436351046. 36 éditions de ce lot conservent toutefois la vue de leur référence, identifiée dans le catalogue, la galerie et le classeur. Cette vue héritée est distincte de la cible du projet ; aucun angle réel n’est certifié par le PNG. La convention du Homeworld est un adulte de 100 unités pour 2,3 m. La porte minimale du contrat mesure 80 × 128 unités ; sa cible est 96 × 140. Ces valeurs décrivent le jeu.
+La cible de caméra du Homeworld est une projection orthographique, yaw global 0°, inclinaison 35°, profondeur 0.573576436351046. 49 éditions de ce lot conservent toutefois la vue de leur référence, identifiée dans le catalogue, la galerie et le classeur. Cette vue héritée est distincte de la cible du projet ; aucun angle réel n’est certifié par le PNG. La convention du Homeworld est un adulte de 100 unités pour 2,3 m. La porte minimale du contrat mesure 80 × 128 unités ; sa cible est 96 × 140. Ces valeurs décrivent le jeu.
 
 Les dimensions en pixels sont lues dans les fichiers. Les dimensions physiques ou en unités du monde restent des **propositions de placement**, lorsqu’elles sont renseignées. Elles ne sont ni des mesures officielles du lore, ni une preuve d’échelle en jeu. Les objets doivent garder leurs proportions ; aucune rotation CSS, symétrie ou mise à l’échelle non uniforme ne compense une vue incorrecte.
 

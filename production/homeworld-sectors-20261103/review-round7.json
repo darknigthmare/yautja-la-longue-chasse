@@ -1,0 +1,2335 @@
+{
+  "version": "MMK-20261103-PASS7-REVIEW",
+  "date": "2026-11-03",
+  "baselineCommit": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94",
+  "previousDeliveryCommit": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94",
+  "status": "GENERATED_REVIEWED_SOURCE_ART_CANDIDATES",
+  "scope": "Thirteen independent native source-art components and states extending seventy previously selected PNGs.",
+  "reviewer": "Root coordinating assistant; every selected output and every archived rejected attempt was directly displayed against the reference images.",
+  "humanArtReview": false,
+  "method": "Separate source/output visual inspection, byte hashes and read-only alpha measurements. An independent assistant cross-checked the plan and the heavy-cage fixed/mobile ambiguity. No human-art approval or in-game validation.",
+  "selectedCount": 13,
+  "totalPackSelectedCount": 83,
+  "newInheritedReferenceViewCount": 13,
+  "totalInheritedReferenceViewCount": 49,
+  "assets": [
+    {
+      "id": "HWM162-S22",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S22-upright-cart-container.png",
+      "width": 1199,
+      "height": 1312,
+      "mode": "RGBA",
+      "bytes": 1319613,
+      "sha256": "8efa779dfd4ebcd4c4b07ed774c1cf9977b2f8be0cb3a2f355d1d128b2e5024e",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 1012731,
+      "transparentRatio": 0.64378534,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            37,
+            1125,
+            1312
+          ],
+          "margins": [
+            0,
+            37,
+            74,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 560357
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            292,
+            111,
+            889,
+            1180
+          ],
+          "margins": [
+            292,
+            111,
+            310,
+            132
+          ],
+          "minMargin": 111,
+          "pixels": 548064
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            292,
+            112,
+            888,
+            1180
+          ],
+          "margins": [
+            292,
+            112,
+            311,
+            132
+          ],
+          "minMargin": 112,
+          "pixels": 547166
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            293,
+            112,
+            887,
+            1179
+          ],
+          "margins": [
+            293,
+            112,
+            312,
+            133
+          ],
+          "minMargin": 112,
+          "pixels": 545011
+        }
+      },
+      "edgeAlphaMax": 1,
+      "strictClearMargin": false,
+      "mainSilhouetteInsideCanvas": true,
+      "findings": "Un seul contenant vertical, couvercle anguleux, voyant ambre et motif de façade conservés ; aucun cadre de retenue, traverse ou autre charge. Base auparavant cachée complétée sobrement ; cadrage propre agrandi, taille à régler dans S18.",
+      "label": "Contenant vertical du chariot autonome",
+      "area": "market",
+      "productionPass": 7,
+      "selectedAttempt": 1,
+      "sourceAssetFiles": [
+        "public/game/homeworld/v78/port-cargo-sorting-cart.png"
+      ],
+      "sourceAssetIds": [],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "reviewStatus": "ACCEPTED_AS_SOURCE_ART_CANDIDATE"
+    },
+    {
+      "id": "HWM162-S23",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S23-stackable-cart-chest.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2208724,
+      "sha256": "35e85552143ca0c6cdd3a446dfed1086a5e2f9e1c5a27fa26b222ac91c2f0d60",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 927530,
+      "transparentRatio": 0.58970769,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            9,
+            1500,
+            1024
+          ],
+          "margins": [
+            0,
+            9,
+            36,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 645334
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            164,
+            168,
+            1383,
+            867
+          ],
+          "margins": [
+            164,
+            168,
+            153,
+            157
+          ],
+          "minMargin": 153,
+          "pixels": 631206
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            165,
+            168,
+            1382,
+            867
+          ],
+          "margins": [
+            165,
+            168,
+            154,
+            157
+          ],
+          "minMargin": 154,
+          "pixels": 630505
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            166,
+            169,
+            1382,
+            867
+          ],
+          "margins": [
+            166,
+            169,
+            154,
+            157
+          ],
+          "minMargin": 154,
+          "pixels": 628524
+        }
+      },
+      "edgeAlphaMax": 1,
+      "strictClearMargin": false,
+      "mainSilhouetteInsideCanvas": true,
+      "findings": "Un seul coffre fermé à fond plat, sans pieds ajoutés ; deux sangles rouge-brun, boucles et garnitures bronze conservées. Ni second coffre ni chariot ni accessoires. Identité du chargement conservée avec un cadrage propre ; empilement et occlusion à régler.",
+      "label": "Coffre empilable du chariot autonome",
+      "area": "market",
+      "productionPass": 7,
+      "selectedAttempt": 1,
+      "sourceAssetFiles": [
+        "public/game/homeworld/v78/port-cargo-sorting-cart.png"
+      ],
+      "sourceAssetIds": [],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "reviewStatus": "ACCEPTED_AS_SOURCE_ART_CANDIDATE"
+    },
+    {
+      "id": "HWM162-S24",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S24-stock-shelter-rear-interior.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2107934,
+      "sha256": "9b4f227e8c65c6ae40d6ff08d654ba27161aeee94aa433c6e8d18be60a46c7ac",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 782828,
+      "transparentRatio": 0.49770864,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            103,
+            1517,
+            992
+          ],
+          "margins": [
+            0,
+            103,
+            19,
+            32
+          ],
+          "minMargin": 0,
+          "pixels": 790036
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            172,
+            264,
+            1366,
+            925
+          ],
+          "margins": [
+            172,
+            264,
+            170,
+            99
+          ],
+          "minMargin": 99,
+          "pixels": 773310
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            172,
+            265,
+            1366,
+            924
+          ],
+          "margins": [
+            172,
+            265,
+            170,
+            100
+          ],
+          "minMargin": 100,
+          "pixels": 771493
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            173,
+            266,
+            1365,
+            923
+          ],
+          "margins": [
+            173,
+            266,
+            171,
+            101
+          ],
+          "minMargin": 101,
+          "pixels": 770070
+        }
+      },
+      "edgeAlphaMax": 1,
+      "strictClearMargin": false,
+      "mainSilhouetteInsideCanvas": true,
+      "findings": "Sol, seuil transversal, parois et étagères vides conservés ; la toiture, les tissus du linteau et les deux contreforts massifs de façade sont retirés. Supports fins de parois et rayonnages maintenus. Les zones cachées sont reconstruites, avec un cadrage propre.",
+      "label": "Réserve — sol, parois et étagères arrière",
+      "area": "market",
+      "productionPass": 7,
+      "selectedAttempt": 1,
+      "sourceAssetFiles": [
+        "production/homeworld-sectors-20261103/sprites/market/HWM162-S05-stock-shelter.png"
+      ],
+      "sourceAssetIds": [
+        "HWM162-S05"
+      ],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "reviewStatus": "ACCEPTED_AS_SOURCE_ART_CANDIDATE"
+    },
+    {
+      "id": "HWM162-S25",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S25-stock-shelter-front-roof.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2176957,
+      "sha256": "a47e5de3babc3f729d568d4699c462117e3d9be50508c0771458282c13a0c1de",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 942909,
+      "transparentRatio": 0.5994854,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            32,
+            33,
+            1506,
+            1007
+          ],
+          "margins": [
+            32,
+            33,
+            30,
+            17
+          ],
+          "minMargin": 17,
+          "pixels": 629955
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            34,
+            77,
+            1502,
+            937
+          ],
+          "margins": [
+            34,
+            77,
+            34,
+            87
+          ],
+          "minMargin": 34,
+          "pixels": 607913
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            35,
+            77,
+            1502,
+            937
+          ],
+          "margins": [
+            35,
+            77,
+            34,
+            87
+          ],
+          "minMargin": 34,
+          "pixels": 606320
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            35,
+            78,
+            1501,
+            936
+          ],
+          "margins": [
+            35,
+            78,
+            35,
+            88
+          ],
+          "minMargin": 35,
+          "pixels": 602743
+        }
+      },
+      "edgeAlphaMax": 0,
+      "strictClearMargin": true,
+      "mainSilhouetteInsideCanvas": true,
+      "findings": "Toiture nervurée et emblème, draperie, deux contreforts frontaux et leurs pieds, lampes et équerres conservés ; aucun sol, seuil transversal, mur arrière ou rayonnage. La baie est transparente dans les deux zones mesurées. Marges visibles réduites mais silhouette entière.",
+      "label": "Réserve — façade et toiture au premier plan",
+      "area": "market",
+      "productionPass": 7,
+      "selectedAttempt": 1,
+      "sourceAssetFiles": [
+        "production/homeworld-sectors-20261103/sprites/market/HWM162-S05-stock-shelter.png"
+      ],
+      "sourceAssetIds": [
+        "HWM162-S05"
+      ],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "reviewStatus": "ACCEPTED_AS_SOURCE_ART_CANDIDATE"
+    },
+    {
+      "id": "HWM162-M24",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M24-tether-bollard-body.png",
+      "width": 1100,
+      "height": 1429,
+      "mode": "RGBA",
+      "bytes": 1446089,
+      "sha256": "a34ca19d0cdd67baf3cd47a799533c41c748384143d2388cbebb4666e602abd3",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 931208,
+      "transparentRatio": 0.59240919,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            156,
+            45,
+            1052,
+            1379
+          ],
+          "margins": [
+            156,
+            45,
+            48,
+            50
+          ],
+          "minMargin": 45,
+          "pixels": 640692
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            158,
+            48,
+            944,
+            1370
+          ],
+          "margins": [
+            158,
+            48,
+            156,
+            59
+          ],
+          "minMargin": 48,
+          "pixels": 630385
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            159,
+            48,
+            943,
+            1370
+          ],
+          "margins": [
+            159,
+            48,
+            157,
+            59
+          ],
+          "minMargin": 48,
+          "pixels": 629558
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            159,
+            48,
+            943,
+            1369
+          ],
+          "margins": [
+            159,
+            48,
+            157,
+            60
+          ],
+          "minMargin": 48,
+          "pixels": 626994
+        }
+      },
+      "edgeAlphaMax": 0,
+      "strictClearMargin": true,
+      "mainSilhouetteInsideCanvas": true,
+      "findings": "Borne, pied renforcé, marque, voyant, axe horizontal avec ses deux supports fixes et récepteur bas conservés. Gros anneau, manchon mobile et chaîne retirés ; surfaces auparavant cachées reconstruites. Cadrage natif 1100×1429 différent de M02 ; mise à l’échelle et pivot nécessaires à l’assemblage.",
+      "label": "Corps de borne d’attache dégagé",
+      "area": "mounts",
+      "productionPass": 7,
+      "selectedAttempt": 1,
+      "sourceAssetFiles": [
+        "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M02-tether-station.png"
+      ],
+      "sourceAssetIds": [
+        "HWM162-M02"
+      ],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "reviewStatus": "ACCEPTED_AS_SOURCE_ART_CANDIDATE"
+    },
+    {
+      "id": "HWM162-M25",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M25-tether-ring-chain.png",
+      "width": 1100,
+      "height": 1429,
+      "mode": "RGBA",
+      "bytes": 411781,
+      "sha256": "e1c3726a267f0ee02f09b378d592e034b4f0f57378ec3170b7eaff32a0ddb7eb",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 1423504,
+      "transparentRatio": 0.9055945,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            46,
+            1060,
+            1383
+          ],
+          "margins": [
+            0,
+            46,
+            40,
+            46
+          ],
+          "minMargin": 0,
+          "pixels": 148396
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            323,
+            327,
+            774,
+            1184
+          ],
+          "margins": [
+            323,
+            327,
+            326,
+            245
+          ],
+          "minMargin": 245,
+          "pixels": 139294
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            323,
+            329,
+            774,
+            1184
+          ],
+          "margins": [
+            323,
+            329,
+            326,
+            245
+          ],
+          "minMargin": 245,
+          "pixels": 138487
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            324,
+            330,
+            773,
+            1183
+          ],
+          "margins": [
+            324,
+            330,
+            327,
+            246
+          ],
+          "minMargin": 246,
+          "pixels": 135989
+        }
+      },
+      "edgeAlphaMax": 1,
+      "strictClearMargin": false,
+      "mainSilhouetteInsideCanvas": true,
+      "findings": "Un seul ensemble mobile relié : anneau bronze, manchon central, courte chaîne et maillon terminal complet. Aucun axe fixe, joue de borne, récepteur bas ni pierre. Trou central transparent. Cadrage propre agrandi/repositionné ; une simple translation sur M24 ne suffit pas à établir le raccord.",
+      "label": "Anneau et courte chaîne de la borne",
+      "area": "mounts",
+      "productionPass": 7,
+      "selectedAttempt": 1,
+      "sourceAssetFiles": [
+        "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M02-tether-station.png"
+      ],
+      "sourceAssetIds": [
+        "HWM162-M02"
+      ],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "reviewStatus": "ACCEPTED_AS_SOURCE_ART_CANDIDATE"
+    },
+    {
+      "id": "HWM162-M26",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M26-suspended-double-ended-tether.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 1582859,
+      "sha256": "a27e4559127a6f6abe1c7f4dba016b872a39783065ea476bea59c00a020f8cc8",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 1286089,
+      "transparentRatio": 0.81767337,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            23,
+            23,
+            1512,
+            1024
+          ],
+          "margins": [
+            23,
+            23,
+            24,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 286775
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            128,
+            74,
+            1363,
+            895
+          ],
+          "margins": [
+            128,
+            74,
+            173,
+            129
+          ],
+          "minMargin": 74,
+          "pixels": 264776
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            128,
+            75,
+            1363,
+            895
+          ],
+          "margins": [
+            128,
+            75,
+            173,
+            129
+          ],
+          "minMargin": 75,
+          "pixels": 263509
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            129,
+            75,
+            1362,
+            894
+          ],
+          "margins": [
+            129,
+            75,
+            174,
+            130
+          ],
+          "minMargin": 75,
+          "pixels": 259685
+        }
+      },
+      "edgeAlphaMax": 1,
+      "strictClearMargin": false,
+      "mainSilhouetteInsideCanvas": true,
+      "findings": "Chaîne continue et deux ferrures bronze fermées conservées, avec une pose suspendue en U et les deux extrémités élevées. Aucun support ni sol fusionné. Courbe et orientations des maillons réinterprétées, sans certification de longueur déployée, d’animation ou d’attache physique.",
+      "label": "Longe à deux embouts — pose suspendue",
+      "area": "mounts",
+      "productionPass": 7,
+      "selectedAttempt": 1,
+      "sourceAssetFiles": [
+        "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M13-double-ended-tether.png"
+      ],
+      "sourceAssetIds": [
+        "HWM162-M13"
+      ],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "reviewStatus": "ACCEPTED_AS_SOURCE_ART_CANDIDATE"
+    },
+    {
+      "id": "HWM162-K27",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K27-small-cage-body.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "bytes": 2001588,
+      "sha256": "7a2911053209d28b6ddae419412d7375db3b1dfb9ca5face89d7c90e86c800e9",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 735815,
+      "transparentRatio": 0.46792211,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            63,
+            32,
+            1214,
+            1254
+          ],
+          "margins": [
+            63,
+            32,
+            40,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 836701
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            96,
+            121,
+            1181,
+            1175
+          ],
+          "margins": [
+            96,
+            121,
+            73,
+            79
+          ],
+          "minMargin": 73,
+          "pixels": 798867
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            96,
+            121,
+            1181,
+            1175
+          ],
+          "margins": [
+            96,
+            121,
+            73,
+            79
+          ],
+          "minMargin": 73,
+          "pixels": 794223
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            96,
+            122,
+            1180,
+            1174
+          ],
+          "margins": [
+            96,
+            122,
+            74,
+            80
+          ],
+          "minMargin": 74,
+          "pixels": 785608
+        }
+      },
+      "edgeAlphaMax": 1,
+      "strictClearMargin": false,
+      "mainSilhouetteInsideCanvas": true,
+      "findings": "Corps complet de petite cage, poignée de toit, toit et côtés ajourés, plancher et cadre fixe conservés. Aucun battant ni poignée mobile ; deux cylindres fixes à gauche et récepteur ambre à droite demeurent sur la cage. Le sol anciennement masqué et les contacts de charnière sont reconstruits. Les barres du fond restent visibles.",
+      "label": "Corps de petite cage sans battant",
+      "area": "kennels",
+      "productionPass": 7,
+      "selectedAttempt": 1,
+      "sourceAssetFiles": [
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-276-cage-petite-native.png",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K10-small-cage-open.png"
+      ],
+      "sourceAssetIds": [
+        "HWM162-K10"
+      ],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "reviewStatus": "ACCEPTED_AS_SOURCE_ART_CANDIDATE"
+    },
+    {
+      "id": "HWM162-K28",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K28-small-cage-door-leaf.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "bytes": 918758,
+      "sha256": "1ad0ae33a20d77151262eddc1be2ba7b88a71d24203384ac9f5cae22f1bd809a",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 1152324,
+      "transparentRatio": 0.73279,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            61,
+            33,
+            1218,
+            1254
+          ],
+          "margins": [
+            61,
+            33,
+            36,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 420192
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            269,
+            167,
+            979,
+            1068
+          ],
+          "margins": [
+            269,
+            167,
+            275,
+            186
+          ],
+          "minMargin": 167,
+          "pixels": 367982
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            269,
+            167,
+            979,
+            1068
+          ],
+          "margins": [
+            269,
+            167,
+            275,
+            186
+          ],
+          "minMargin": 167,
+          "pixels": 366147
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            270,
+            168,
+            979,
+            1067
+          ],
+          "margins": [
+            270,
+            168,
+            275,
+            187
+          ],
+          "minMargin": 168,
+          "pixels": 359106
+        }
+      },
+      "edgeAlphaMax": 1,
+      "strictClearMargin": false,
+      "mainSilhouetteInsideCanvas": true,
+      "findings": "Version 2 : cadre mobile chanfreiné, quatre barreaux et prise ajourée droite conservés. Les deux gros pivots de v1 sont supprimés et remplacés par de petites pattes plates percées sur le bord gauche ; aucun récepteur ou voyant ambre. Espace entre barreaux transparent. Attaches et raccords sont une interprétation graphique, non une mécanique validée.",
+      "selectedAttempt": 2,
+      "label": "Battant de petite cage — pose fermée",
+      "area": "kennels",
+      "productionPass": 7,
+      "sourceAssetFiles": [
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-276-cage-petite-native.png",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K10-small-cage-open.png"
+      ],
+      "sourceAssetIds": [
+        "HWM162-K10"
+      ],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "reviewStatus": "ACCEPTED_AS_SOURCE_ART_CANDIDATE"
+    },
+    {
+      "id": "HWM162-K29",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K29-heavy-cage-body.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "bytes": 2168078,
+      "sha256": "f6e3b2256c02402ebc8f48522d399f3e2f209826b500fe6f475fdb6c8f9437d9",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 721871,
+      "transparentRatio": 0.45905479,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            29,
+            31,
+            1227,
+            1230
+          ],
+          "margins": [
+            29,
+            31,
+            27,
+            24
+          ],
+          "minMargin": 24,
+          "pixels": 850645
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            31,
+            104,
+            1225,
+            1157
+          ],
+          "margins": [
+            31,
+            104,
+            29,
+            97
+          ],
+          "minMargin": 29,
+          "pixels": 820716
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            31,
+            104,
+            1225,
+            1157
+          ],
+          "margins": [
+            31,
+            104,
+            29,
+            97
+          ],
+          "minMargin": 29,
+          "pixels": 817605
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            32,
+            105,
+            1224,
+            1156
+          ],
+          "margins": [
+            32,
+            105,
+            30,
+            98
+          ],
+          "minMargin": 30,
+          "pixels": 810487
+        }
+      },
+      "edgeAlphaMax": 0,
+      "strictClearMargin": true,
+      "mainSilhouetteInsideCanvas": true,
+      "findings": "Corps allongé de cage lourde conservant ses trois arceaux, côtés et toit ajourés, patins, plancher, portique frontal et trois fixations de charnière. Aucun battant ni boîtier ambre ; les barreaux du flanc arrière restent visibles à travers l’entrée. Intérieur auparavant masqué reconstruit.",
+      "label": "Corps de cage lourde sans battant",
+      "area": "kennels",
+      "productionPass": 7,
+      "selectedAttempt": 1,
+      "sourceAssetFiles": [
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K12-heavy-cage-open.png"
+      ],
+      "sourceAssetIds": [
+        "HWM162-K12"
+      ],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "reviewStatus": "ACCEPTED_AS_SOURCE_ART_CANDIDATE"
+    },
+    {
+      "id": "HWM162-K30",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K30-heavy-cage-door-leaf.png",
+      "width": 1199,
+      "height": 1312,
+      "mode": "RGBA",
+      "bytes": 1251588,
+      "sha256": "3d80af3caeab9628536bb967e0161e5b50dea38204266176202bf0c119264b69",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 1010188,
+      "transparentRatio": 0.64216878,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            35,
+            1132,
+            1312
+          ],
+          "margins": [
+            0,
+            35,
+            67,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 562900
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            223,
+            131,
+            993,
+            1200
+          ],
+          "margins": [
+            223,
+            131,
+            206,
+            112
+          ],
+          "minMargin": 112,
+          "pixels": 520161
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            223,
+            132,
+            992,
+            1200
+          ],
+          "margins": [
+            223,
+            132,
+            207,
+            112
+          ],
+          "minMargin": 112,
+          "pixels": 516811
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            224,
+            132,
+            992,
+            1199
+          ],
+          "margins": [
+            224,
+            132,
+            207,
+            113
+          ],
+          "minMargin": 113,
+          "pixels": 508630
+        }
+      },
+      "edgeAlphaMax": 1,
+      "strictClearMargin": false,
+      "mainSilhouetteInsideCanvas": true,
+      "findings": "Version 2 : cinq barreaux verticaux continus présents au-dessus et au-dessous de la traverse médiane, au lieu des quatre de v1. Cadre bronze simple, trois attaches sur le bord articulé gauche et boîtier ambre au bord libre droit conservés. Aucun portique fixe, sol ou cage. Les deux zones mesurées entre barreaux sont transparentes.",
+      "selectedAttempt": 2,
+      "label": "Battant de cage lourde — pose fermée",
+      "area": "kennels",
+      "productionPass": 7,
+      "sourceAssetFiles": [
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K12-heavy-cage-open.png"
+      ],
+      "sourceAssetIds": [
+        "HWM162-K12"
+      ],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "reviewStatus": "ACCEPTED_AS_SOURCE_ART_CANDIDATE"
+    },
+    {
+      "id": "HWM162-K31",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K31-small-cage-door-leaf-open.png",
+      "width": 1263,
+      "height": 1246,
+      "mode": "RGBA",
+      "bytes": 657841,
+      "sha256": "180662b2843e3ae9a93eb236edd7263c9c8fa10eae596d4516be05993eab8d95",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 1279371,
+      "transparentRatio": 0.8129711,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            41,
+            113,
+            1184,
+            1157
+          ],
+          "margins": [
+            41,
+            113,
+            79,
+            89
+          ],
+          "minMargin": 41,
+          "pixels": 294327
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            314,
+            189,
+            976,
+            1028
+          ],
+          "margins": [
+            314,
+            189,
+            287,
+            218
+          ],
+          "minMargin": 189,
+          "pixels": 267891
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            314,
+            189,
+            976,
+            1028
+          ],
+          "margins": [
+            314,
+            189,
+            287,
+            218
+          ],
+          "minMargin": 189,
+          "pixels": 265995
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            315,
+            190,
+            975,
+            1028
+          ],
+          "margins": [
+            315,
+            190,
+            288,
+            218
+          ],
+          "minMargin": 190,
+          "pixels": 260013
+        }
+      },
+      "edgeAlphaMax": 0,
+      "strictClearMargin": true,
+      "mainSilhouetteInsideCanvas": true,
+      "findings": "Version 2 : pose ouverte héritée de K10, quatre barreaux, prise ajourée à gauche et deux petites pattes plates percées à droite. Les cylindres fixes de v1 sont retirés ; aucun voyant ambre, cage, sol ni montant fixe. Les attaches sont réinterprétées graphiquement ; des résidus chromatiques natifs périphériques demeurent.",
+      "selectedAttempt": 2,
+      "label": "Battant de petite cage — pose ouverte",
+      "area": "kennels",
+      "productionPass": 7,
+      "sourceAssetFiles": [
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K10-small-cage-open.png",
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-276-cage-petite-native.png"
+      ],
+      "sourceAssetIds": [
+        "HWM162-K10"
+      ],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "reviewStatus": "ACCEPTED_AS_SOURCE_ART_CANDIDATE"
+    },
+    {
+      "id": "HWM162-K32",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K32-heavy-cage-door-leaf-open.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 1662701,
+      "sha256": "bd760af652b6349e584fdd7f96bc8c8aaea22cf1c9c6f7a2248eae694503ae58",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 1168221,
+      "transparentRatio": 0.74273491,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            33,
+            71,
+            1510,
+            998
+          ],
+          "margins": [
+            33,
+            71,
+            26,
+            26
+          ],
+          "minMargin": 26,
+          "pixels": 404643
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            367,
+            77,
+            1170,
+            965
+          ],
+          "margins": [
+            367,
+            77,
+            366,
+            59
+          ],
+          "minMargin": 59,
+          "pixels": 377876
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            368,
+            77,
+            1169,
+            965
+          ],
+          "margins": [
+            368,
+            77,
+            367,
+            59
+          ],
+          "minMargin": 59,
+          "pixels": 375716
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            368,
+            77,
+            1169,
+            964
+          ],
+          "margins": [
+            368,
+            77,
+            367,
+            60
+          ],
+          "minMargin": 60,
+          "pixels": 370463
+        }
+      },
+      "edgeAlphaMax": 0,
+      "strictClearMargin": true,
+      "mainSilhouetteInsideCanvas": true,
+      "findings": "Version 3 : cadre bronze simple à cinq barreaux, traverse médiane, boîtier ambre au bord libre gauche et trois œillets mobiles à droite. Rail sombre supérieur et enveloppe extérieure supplémentaires retirés, à la suite de l’ambiguïté de K12 ; les anciens PNG restent inchangés. Le voile alpha de v2 a disparu des deux zones reprises, toutes alpha0. Pose ouverte conservée ; rattachement des œillets interprété graphiquement.",
+      "selectedAttempt": 3,
+      "label": "Battant de cage lourde — pose ouverte",
+      "area": "kennels",
+      "productionPass": 7,
+      "sourceAssetFiles": [
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K12-heavy-cage-open.png",
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png"
+      ],
+      "sourceAssetIds": [
+        "HWM162-K12"
+      ],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "reviewStatus": "ACCEPTED_AS_SOURCE_ART_CANDIDATE"
+    }
+  ],
+  "correctedAttempts": [
+    {
+      "id": "HWM162-K28",
+      "path": "production/homeworld-sectors-20261103/attempts/kennels/HWM162-K28-small-cage-door-leaf-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "bytes": 975350,
+      "sha256": "ba6734e541b1b601e1fd171fa29ca172a2d7fbe005f7092773d8df7c650ff012",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 1157671,
+      "transparentRatio": 0.73619028,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            47,
+            9,
+            1214,
+            1254
+          ],
+          "margins": [
+            47,
+            9,
+            40,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 414845
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            237,
+            169,
+            979,
+            1066
+          ],
+          "margins": [
+            237,
+            169,
+            275,
+            188
+          ],
+          "minMargin": 169,
+          "pixels": 368014
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            238,
+            169,
+            978,
+            1066
+          ],
+          "margins": [
+            238,
+            169,
+            276,
+            188
+          ],
+          "minMargin": 169,
+          "pixels": 365519
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            238,
+            170,
+            978,
+            1066
+          ],
+          "margins": [
+            238,
+            170,
+            276,
+            188
+          ],
+          "minMargin": 170,
+          "pixels": 358672
+        }
+      },
+      "edgeAlphaMax": 1,
+      "strictClearMargin": false,
+      "mainSilhouetteInsideCanvas": true,
+      "attempt": 1,
+      "reason": "Deux gros ensembles de charnière à gauche dupliquent les cylindres fixes conservés sur K27. Retirer ces volumes de pivot et conserver les petites attaches mobiles du battant."
+    },
+    {
+      "id": "HWM162-K30",
+      "path": "production/homeworld-sectors-20261103/attempts/kennels/HWM162-K30-heavy-cage-door-leaf-v1.png",
+      "width": 1199,
+      "height": 1312,
+      "mode": "RGBA",
+      "bytes": 1310333,
+      "sha256": "b35bf1755b0b9ebcd3bda038d8e1f195fb6bcf3217e0d9946e2c770ddaade67f",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 1035170,
+      "transparentRatio": 0.65804965,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            8,
+            1175,
+            1312
+          ],
+          "margins": [
+            0,
+            8,
+            24,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 537918
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            221,
+            131,
+            977,
+            1184
+          ],
+          "margins": [
+            221,
+            131,
+            222,
+            128
+          ],
+          "minMargin": 128,
+          "pixels": 480971
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            222,
+            131,
+            977,
+            1184
+          ],
+          "margins": [
+            222,
+            131,
+            222,
+            128
+          ],
+          "minMargin": 128,
+          "pixels": 479034
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            222,
+            132,
+            976,
+            1183
+          ],
+          "margins": [
+            222,
+            132,
+            223,
+            129
+          ],
+          "minMargin": 129,
+          "pixels": 472098
+        }
+      },
+      "edgeAlphaMax": 1,
+      "strictClearMargin": false,
+      "mainSilhouetteInsideCanvas": true,
+      "attempt": 1,
+      "reason": "Quatre barreaux verticaux au lieu des cinq de la source 278 et de la porte ouverte K12/K32. Restaurer cinq barreaux continus sans changer la pose, la traverse ni le boîtier ambre."
+    },
+    {
+      "id": "HWM162-K31",
+      "path": "production/homeworld-sectors-20261103/attempts/kennels/HWM162-K31-small-cage-door-leaf-open-v1.png",
+      "width": 1263,
+      "height": 1245,
+      "mode": "RGBA",
+      "bytes": 703839,
+      "sha256": "125ba18a72711dce51c93b4e380d095bec4fd6a148609296e0afc5dfb8fc667d",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 1276793,
+      "transparentRatio": 0.8119846,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            41,
+            47,
+            1215,
+            1214
+          ],
+          "margins": [
+            41,
+            47,
+            48,
+            31
+          ],
+          "minMargin": 31,
+          "pixels": 295642
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            315,
+            191,
+            968,
+            1027
+          ],
+          "margins": [
+            315,
+            191,
+            295,
+            218
+          ],
+          "minMargin": 191,
+          "pixels": 268700
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            316,
+            191,
+            968,
+            1027
+          ],
+          "margins": [
+            316,
+            191,
+            295,
+            218
+          ],
+          "minMargin": 191,
+          "pixels": 266559
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            317,
+            192,
+            968,
+            1027
+          ],
+          "margins": [
+            317,
+            192,
+            295,
+            218
+          ],
+          "minMargin": 192,
+          "pixels": 260171
+        }
+      },
+      "edgeAlphaMax": 0,
+      "strictClearMargin": true,
+      "mainSilhouetteInsideCanvas": true,
+      "attempt": 1,
+      "reason": "Deux cylindres fixes complets à droite dupliquent ceux conservés sur K27. Retirer les pivots complets, garder les seules pattes mobiles du battant ouvert."
+    },
+    {
+      "id": "HWM162-K32",
+      "path": "production/homeworld-sectors-20261103/attempts/kennels/HWM162-K32-heavy-cage-door-leaf-open-v1.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 1754638,
+      "sha256": "0dbe829cdc9cebde39393022e2822e470c1f8cefcb7cb34755622c53f6003936",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 1122468,
+      "transparentRatio": 0.71364594,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            63,
+            13,
+            1522,
+            994
+          ],
+          "margins": [
+            63,
+            13,
+            14,
+            30
+          ],
+          "minMargin": 13,
+          "pixels": 450396
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            399,
+            51,
+            1162,
+            972
+          ],
+          "margins": [
+            399,
+            51,
+            374,
+            52
+          ],
+          "minMargin": 51,
+          "pixels": 415085
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            400,
+            51,
+            1161,
+            972
+          ],
+          "margins": [
+            400,
+            51,
+            375,
+            52
+          ],
+          "minMargin": 51,
+          "pixels": 412354
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            400,
+            52,
+            1161,
+            971
+          ],
+          "margins": [
+            400,
+            52,
+            375,
+            53
+          ],
+          "minMargin": 52,
+          "pixels": 406713
+        }
+      },
+      "edgeAlphaMax": 0,
+      "strictClearMargin": true,
+      "mainSilhouetteInsideCanvas": true,
+      "attempt": 1,
+      "reason": "Le rail sombre supérieur et l’enveloppe extérieure supplémentaire sont dupliqués depuis l’ancien K12 ; le même rail est conservé sur le portique fixe K29. Retirer la double structure pour que le battant ouvert garde le même cadre mobile simple que le battant fermé, avec cinq barreaux, traverse, boîtier ambre et trois attaches mobiles."
+    },
+    {
+      "id": "HWM162-K32",
+      "path": "production/homeworld-sectors-20261103/attempts/kennels/HWM162-K32-heavy-cage-door-leaf-open-v2.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 1821659,
+      "sha256": "be956fd160ba52e74fe59b674a8831577146d350d80fd849cdf3246f1a05e958",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 925494,
+      "transparentRatio": 0.58841324,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            33,
+            0,
+            1504,
+            992
+          ],
+          "margins": [
+            33,
+            0,
+            32,
+            32
+          ],
+          "minMargin": 0,
+          "pixels": 647370
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            367,
+            68,
+            1169,
+            965
+          ],
+          "margins": [
+            367,
+            68,
+            367,
+            59
+          ],
+          "minMargin": 59,
+          "pixels": 501791
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            367,
+            82,
+            1169,
+            965
+          ],
+          "margins": [
+            367,
+            82,
+            367,
+            59
+          ],
+          "minMargin": 59,
+          "pixels": 441089
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            368,
+            82,
+            1169,
+            964
+          ],
+          "margins": [
+            368,
+            82,
+            367,
+            60
+          ],
+          "minMargin": 60,
+          "pixels": 366483
+        }
+      },
+      "edgeAlphaMax": 2,
+      "strictClearMargin": false,
+      "mainSilhouetteInsideCanvas": true,
+      "attempt": 2,
+      "reason": "La géométrie a été corrigée (cadre simple, cinq barreaux et trois œillets), mais un voile gris subsiste dans les ajours : fenêtre supérieure alpha 28–40, fenêtre inférieure alpha 7–23. Correction native ciblée de la transparence demandée sans modifier la géométrie."
+    }
+  ],
+  "spotChecks": {
+    "stockShelterBay": [
+      {
+        "box": [
+          400,
+          450,
+          1100,
+          850
+        ],
+        "pixels": 280000,
+        "alphaMin": 0,
+        "alphaMax": 1,
+        "pixelsAbove8": 0
+      },
+      {
+        "box": [
+          350,
+          500,
+          1200,
+          800
+        ],
+        "pixels": 255000,
+        "alphaMin": 0,
+        "alphaMax": 1,
+        "pixelsAbove8": 0
+      }
+    ],
+    "smallCageBrightRedRGBAlpha": {
+      "pixels": 792,
+      "alphaMin": 1,
+      "alphaMax": 253,
+      "pixelsAbove8": 14
+    },
+    "tetherRingHole": {
+      "box": [
+        480,
+        560,
+        620,
+        680
+      ],
+      "pixels": 16800,
+      "alphaMin": 0,
+      "alphaMax": 0,
+      "pixelsAbove8": 0
+    },
+    "openHeavyGateGapsV1": [
+      {
+        "box": [
+          655,
+          330,
+          680,
+          500
+        ],
+        "pixels": 4250,
+        "alphaMin": 0,
+        "alphaMax": 0,
+        "pixelsAbove8": 0
+      },
+      {
+        "box": [
+          745,
+          310,
+          770,
+          470
+        ],
+        "pixels": 4000,
+        "alphaMin": 0,
+        "alphaMax": 1,
+        "pixelsAbove8": 0
+      },
+      {
+        "box": [
+          650,
+          680,
+          675,
+          800
+        ],
+        "pixels": 3000,
+        "alphaMin": 0,
+        "alphaMax": 1,
+        "pixelsAbove8": 0
+      }
+    ],
+    "smallClosedLeafGap": {
+      "box": [
+        490,
+        400,
+        520,
+        850
+      ],
+      "pixels": 13500,
+      "alphaMin": 0,
+      "alphaMax": 1,
+      "pixelsAbove8": 0
+    },
+    "correctedDoorGaps": {
+      "HWM162-K30": [
+        {
+          "box": [
+            440,
+            350,
+            460,
+            500
+          ],
+          "pixels": 3000,
+          "alphaMin": 0,
+          "alphaMax": 1,
+          "pixelsAbove8": 0
+        },
+        {
+          "box": [
+            440,
+            750,
+            460,
+            900
+          ],
+          "pixels": 3000,
+          "alphaMin": 0,
+          "alphaMax": 1,
+          "pixelsAbove8": 0
+        }
+      ],
+      "HWM162-K31": [
+        {
+          "box": [
+            588,
+            420,
+            610,
+            850
+          ],
+          "pixels": 9460,
+          "alphaMin": 0,
+          "alphaMax": 0,
+          "pixelsAbove8": 0
+        }
+      ]
+    },
+    "smallOpenLeafRedRGBAlpha": {
+      "pixels": 1184,
+      "alphaMin": 1,
+      "alphaMax": 5,
+      "pixelsAbove8": 0
+    },
+    "openHeavyGateGapsV2": [
+      {
+        "box": [
+          710,
+          360,
+          735,
+          450
+        ],
+        "pixels": 2250,
+        "alphaMin": 28,
+        "alphaMax": 40,
+        "pixelsAbove8": 2250,
+        "pixelsAbove24": 2250
+      },
+      {
+        "box": [
+          710,
+          650,
+          735,
+          790
+        ],
+        "pixels": 3500,
+        "alphaMin": 7,
+        "alphaMax": 23,
+        "pixelsAbove8": 3223,
+        "pixelsAbove24": 0
+      }
+    ],
+    "openHeavyGateGapsV3": [
+      {
+        "box": [
+          710,
+          360,
+          735,
+          450
+        ],
+        "pixels": 2250,
+        "alphaMin": 0,
+        "alphaMax": 0,
+        "pixelsAbove8": 0,
+        "pixelsAbove24": 0
+      },
+      {
+        "box": [
+          710,
+          650,
+          735,
+          790
+        ],
+        "pixels": 3500,
+        "alphaMin": 0,
+        "alphaMax": 0,
+        "pixelsAbove8": 0,
+        "pixelsAbove24": 0
+      }
+    ],
+    "openHeavyGateRowChecks": [
+      {
+        "row": 400,
+        "interiorTransparentRunCount": 6,
+        "samples": [
+          {
+            "runAtRow": [
+              529,
+              556
+            ],
+            "box": [
+              539,
+              390,
+              545,
+              410
+            ],
+            "alphaMin": 0,
+            "alphaMax": 0,
+            "pixelsAbove8": 0
+          },
+          {
+            "runAtRow": [
+              604,
+              652
+            ],
+            "box": [
+              625,
+              390,
+              631,
+              410
+            ],
+            "alphaMin": 0,
+            "alphaMax": 0,
+            "pixelsAbove8": 0
+          },
+          {
+            "runAtRow": [
+              701,
+              750
+            ],
+            "box": [
+              722,
+              390,
+              728,
+              410
+            ],
+            "alphaMin": 0,
+            "alphaMax": 0,
+            "pixelsAbove8": 0
+          },
+          {
+            "runAtRow": [
+              799,
+              847
+            ],
+            "box": [
+              820,
+              390,
+              826,
+              410
+            ],
+            "alphaMin": 0,
+            "alphaMax": 0,
+            "pixelsAbove8": 0
+          },
+          {
+            "runAtRow": [
+              896,
+              944
+            ],
+            "box": [
+              917,
+              390,
+              923,
+              410
+            ],
+            "alphaMin": 0,
+            "alphaMax": 0,
+            "pixelsAbove8": 0
+          },
+          {
+            "runAtRow": [
+              993,
+              1023
+            ],
+            "box": [
+              1005,
+              390,
+              1011,
+              410
+            ],
+            "alphaMin": 0,
+            "alphaMax": 0,
+            "pixelsAbove8": 0
+          }
+        ]
+      },
+      {
+        "row": 700,
+        "interiorTransparentRunCount": 6,
+        "samples": [
+          {
+            "runAtRow": [
+              529,
+              557
+            ],
+            "box": [
+              540,
+              690,
+              546,
+              710
+            ],
+            "alphaMin": 0,
+            "alphaMax": 0,
+            "pixelsAbove8": 0
+          },
+          {
+            "runAtRow": [
+              606,
+              652
+            ],
+            "box": [
+              626,
+              690,
+              632,
+              710
+            ],
+            "alphaMin": 0,
+            "alphaMax": 0,
+            "pixelsAbove8": 0
+          },
+          {
+            "runAtRow": [
+              702,
+              750
+            ],
+            "box": [
+              723,
+              690,
+              729,
+              710
+            ],
+            "alphaMin": 0,
+            "alphaMax": 0,
+            "pixelsAbove8": 0
+          },
+          {
+            "runAtRow": [
+              799,
+              847
+            ],
+            "box": [
+              820,
+              690,
+              826,
+              710
+            ],
+            "alphaMin": 0,
+            "alphaMax": 0,
+            "pixelsAbove8": 0
+          },
+          {
+            "runAtRow": [
+              896,
+              944
+            ],
+            "box": [
+              917,
+              690,
+              923,
+              710
+            ],
+            "alphaMin": 0,
+            "alphaMax": 0,
+            "pixelsAbove8": 0
+          },
+          {
+            "runAtRow": [
+              994,
+              1023
+            ],
+            "box": [
+              1005,
+              690,
+              1011,
+              710
+            ],
+            "alphaMin": 0,
+            "alphaMax": 0,
+            "pixelsAbove8": 0
+          }
+        ]
+      }
+    ]
+  },
+  "limits": [
+    "All selected files preserve their native generator bytes; no scripted cleanup, crop, resize, padding or mirror.",
+    "Reference viewpoints are requested, not measured camera angles. Output canvases and object scale can differ from their references; no pixel-exact assembly or simple translation alignment is certified.",
+    "Hidden surfaces and connections are natively reconstructed. M26 is a newly interpreted suspended pose; K32 corrects a duplicated fixed structure inherited from K12, without altering K12.",
+    "Low-alpha RGB halos and chromatic edge remnants can remain in native sources. Measured windows do not prove a completely noise-free alpha channel; the isolated K27 red-pixel finding is recorded.",
+    "Source-art acceptance is not human art validation, canonical 1:1 certification, measured metre scale, species fit, collision, portal, hinge, animation or runtime admission.",
+    "Forty inherited V81 targets and two catalogue building identities remain the existing scope. This pass adds no target or building identity and does not certify global completion of every possible modular variant."
+  ],
+  "canonicalOneToOneClaimed": false,
+  "runtimeIntegrated": false,
+  "previousSelectedPNGPreserved": 70,
+  "generationCallCountForPass": 18,
+  "archivedRejectedAttemptCountForPass": 5,
+  "archivedRejectedAttemptBytes": 6565819,
+  "selectedAdditionalBytes": 19914511,
+  "selectedPackBytes": 135056743,
+  "referenceFileCount": 13,
+  "baselineReferenceFileCount": 8,
+  "currentPassReferenceFileCount": 5,
+  "referenceCountDefinition": "Eight baseline design reference files plus five archived native correction-input files. The latter are generated inputs, never attributed to the baseline commit.",
+  "baselineDesignReferences": [
+    {
+      "path": "public/game/homeworld/v78/port-cargo-sorting-cart.png",
+      "sha256": "0354f5848f6a921fe8f8f16f9bcf68f73f81b3c85d665d1122cf2597a0c84e7f",
+      "bytes": 2572525,
+      "sourceCommit": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94",
+      "directlyInspectedByRoot": true
+    },
+    {
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S05-stock-shelter.png",
+      "sha256": "a8f69759564a653a6b7488e8fc1a90706a1cdd573592feb2dcfe7a855c40a866",
+      "bytes": 2903672,
+      "sourceCommit": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94",
+      "directlyInspectedByRoot": true
+    },
+    {
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M02-tether-station.png",
+      "sha256": "e61634fd7c5ea92792c06586e6b7edb4ed23b570084931177cb32774c80865fa",
+      "bytes": 1248514,
+      "sourceCommit": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94",
+      "directlyInspectedByRoot": true
+    },
+    {
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M13-double-ended-tether.png",
+      "sha256": "f9636f0a0d7defd5885977758fafe54542bfb7d638bd4207d8004ea4a9c385cb",
+      "bytes": 1600052,
+      "sourceCommit": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94",
+      "directlyInspectedByRoot": true
+    },
+    {
+      "path": "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-276-cage-petite-native.png",
+      "sha256": "b5e4da0ccb43732e03abde69a0eacee6a8a73c8282918aaf3bdead116c8c1073",
+      "bytes": 2077790,
+      "sourceCommit": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94",
+      "directlyInspectedByRoot": true
+    },
+    {
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K10-small-cage-open.png",
+      "sha256": "75eb31d88524b14d8d3a037ef22632423e2717b0649a22595366d56321037e44",
+      "bytes": 1773286,
+      "sourceCommit": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94",
+      "directlyInspectedByRoot": true
+    },
+    {
+      "path": "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png",
+      "sha256": "36ea82cb4cc0c9ed08d04e4264d4ae55ca34fd85729ed0bfeea9987f5a2f4fc0",
+      "bytes": 2244917,
+      "sourceCommit": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94",
+      "directlyInspectedByRoot": true
+    },
+    {
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K12-heavy-cage-open.png",
+      "sha256": "6aa80bb9abdf9934d3eb4ed2859a066720fb9e7f2c9e2056b83adf1608f37650",
+      "bytes": 2303040,
+      "sourceCommit": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94",
+      "directlyInspectedByRoot": true
+    }
+  ],
+  "correctionInputReferences": [
+    {
+      "id": "HWM162-K28",
+      "attempt": 1,
+      "path": "production/homeworld-sectors-20261103/attempts/kennels/HWM162-K28-small-cage-door-leaf-v1.png",
+      "sha256": "ba6734e541b1b601e1fd171fa29ca172a2d7fbe005f7092773d8df7c650ff012",
+      "bytes": 975350,
+      "sourceCommit": null,
+      "provenance": "CURRENT_PASS_GENERATED_INPUT"
+    },
+    {
+      "id": "HWM162-K30",
+      "attempt": 1,
+      "path": "production/homeworld-sectors-20261103/attempts/kennels/HWM162-K30-heavy-cage-door-leaf-v1.png",
+      "sha256": "b35bf1755b0b9ebcd3bda038d8e1f195fb6bcf3217e0d9946e2c770ddaade67f",
+      "bytes": 1310333,
+      "sourceCommit": null,
+      "provenance": "CURRENT_PASS_GENERATED_INPUT"
+    },
+    {
+      "id": "HWM162-K31",
+      "attempt": 1,
+      "path": "production/homeworld-sectors-20261103/attempts/kennels/HWM162-K31-small-cage-door-leaf-open-v1.png",
+      "sha256": "125ba18a72711dce51c93b4e380d095bec4fd6a148609296e0afc5dfb8fc667d",
+      "bytes": 703839,
+      "sourceCommit": null,
+      "provenance": "CURRENT_PASS_GENERATED_INPUT"
+    },
+    {
+      "id": "HWM162-K32",
+      "attempt": 1,
+      "path": "production/homeworld-sectors-20261103/attempts/kennels/HWM162-K32-heavy-cage-door-leaf-open-v1.png",
+      "sha256": "0dbe829cdc9cebde39393022e2822e470c1f8cefcb7cb34755622c53f6003936",
+      "bytes": 1754638,
+      "sourceCommit": null,
+      "provenance": "CURRENT_PASS_GENERATED_INPUT"
+    },
+    {
+      "id": "HWM162-K32",
+      "attempt": 2,
+      "path": "production/homeworld-sectors-20261103/attempts/kennels/HWM162-K32-heavy-cage-door-leaf-open-v2.png",
+      "sha256": "be956fd160ba52e74fe59b674a8831577146d350d80fd849cdf3246f1a05e958",
+      "bytes": 1821659,
+      "sourceCommit": null,
+      "provenance": "CURRENT_PASS_GENERATED_INPUT"
+    }
+  ],
+  "independentReview": {
+    "plan": "No blocking contradiction found in the 13-item plan, source hashes, preserved entries or 83-item sector totals.",
+    "heavyDoor": "The dark upper rail remains fixed on 278/K29. K12 duplicated it on the opened leaf; K32-v1 inherited that duplication. K32-v2 removed the extra structure, and v3 corrected the resulting interior alpha veil."
+  },
+  "technicalReport": "technical-report.json",
+  "technicalSummary": {
+    "sourceIntegrity": "PASS",
+    "selectedCount": 83,
+    "rgbaWithRealTransparency": 83,
+    "mainSilhouettesInsideCanvasAtAlpha24": 83,
+    "uniqueSha256Count": 83,
+    "previousDeliveryPNGUnchanged": 70,
+    "strictClearMarginCount": 22,
+    "visibleMarginAtLeast80Count": 47,
+    "inheritedReferenceViewCount": 49
+  }
+}

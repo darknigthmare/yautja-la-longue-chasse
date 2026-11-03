@@ -2,19 +2,20 @@
   "version": "MMK-20261103",
   "verifier": "production/homeworld-sectors-20261103/tools/verify-assets.py",
   "sourceIntegrity": "PASS",
-  "selectedCount": 70,
-  "rgbaWithRealTransparency": 70,
-  "mainSilhouettesInsideCanvasAtAlpha24": 70,
-  "strictClearMarginCount": 17,
-  "visibleMarginAtLeast80Count": 40,
-  "uniqueSha256Count": 70,
-  "selectedBytes": 115142232,
-  "previousDeliveryPNGUnchanged": 56,
+  "selectedCount": 83,
+  "rgbaWithRealTransparency": 83,
+  "mainSilhouettesInsideCanvasAtAlpha24": 83,
+  "strictClearMarginCount": 22,
+  "visibleMarginAtLeast80Count": 47,
+  "uniqueSha256Count": 83,
+  "selectedBytes": 135056743,
+  "previousDeliveryPNGUnchanged": 70,
   "thirdPassPNGCount": 10,
   "fourthPassPNGCount": 11,
   "fifthPassPNGCount": 10,
   "sixthPassPNGCount": 14,
-  "inheritedReferenceViewCount": 36,
+  "seventhPassPNGCount": 13,
+  "inheritedReferenceViewCount": 49,
   "scriptModifiesPNG": false,
   "runtimeAdmission": false,
   "canonicalCertification": false,
@@ -1764,6 +1765,338 @@
           ],
           "minMargin": 84,
           "pixels": 491705
+        }
+      },
+      "edgeAlphaMax": 0
+    },
+    {
+      "id": "HWM162-S22",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S22-upright-cart-container.png",
+      "sha256": "8efa779dfd4ebcd4c4b07ed774c1cf9977b2f8be0cb3a2f355d1d128b2e5024e",
+      "bytes": 1319613,
+      "width": 1199,
+      "height": 1312,
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 1012731,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            37,
+            1125,
+            1312
+          ],
+          "margins": [
+            0,
+            37,
+            74,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 560357
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            292,
+            111,
+            889,
+            1180
+          ],
+          "margins": [
+            292,
+            111,
+            310,
+            132
+          ],
+          "minMargin": 111,
+          "pixels": 548064
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            292,
+            112,
+            888,
+            1180
+          ],
+          "margins": [
+            292,
+            112,
+            311,
+            132
+          ],
+          "minMargin": 112,
+          "pixels": 547166
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            293,
+            112,
+            887,
+            1179
+          ],
+          "margins": [
+            293,
+            112,
+            312,
+            133
+          ],
+          "minMargin": 112,
+          "pixels": 545011
+        }
+      },
+      "edgeAlphaMax": 1
+    },
+    {
+      "id": "HWM162-S23",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S23-stackable-cart-chest.png",
+      "sha256": "35e85552143ca0c6cdd3a446dfed1086a5e2f9e1c5a27fa26b222ac91c2f0d60",
+      "bytes": 2208724,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 927530,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            9,
+            1500,
+            1024
+          ],
+          "margins": [
+            0,
+            9,
+            36,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 645334
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            164,
+            168,
+            1383,
+            867
+          ],
+          "margins": [
+            164,
+            168,
+            153,
+            157
+          ],
+          "minMargin": 153,
+          "pixels": 631206
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            165,
+            168,
+            1382,
+            867
+          ],
+          "margins": [
+            165,
+            168,
+            154,
+            157
+          ],
+          "minMargin": 154,
+          "pixels": 630505
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            166,
+            169,
+            1382,
+            867
+          ],
+          "margins": [
+            166,
+            169,
+            154,
+            157
+          ],
+          "minMargin": 154,
+          "pixels": 628524
+        }
+      },
+      "edgeAlphaMax": 1
+    },
+    {
+      "id": "HWM162-S24",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S24-stock-shelter-rear-interior.png",
+      "sha256": "9b4f227e8c65c6ae40d6ff08d654ba27161aeee94aa433c6e8d18be60a46c7ac",
+      "bytes": 2107934,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 782828,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            103,
+            1517,
+            992
+          ],
+          "margins": [
+            0,
+            103,
+            19,
+            32
+          ],
+          "minMargin": 0,
+          "pixels": 790036
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            172,
+            264,
+            1366,
+            925
+          ],
+          "margins": [
+            172,
+            264,
+            170,
+            99
+          ],
+          "minMargin": 99,
+          "pixels": 773310
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            172,
+            265,
+            1366,
+            924
+          ],
+          "margins": [
+            172,
+            265,
+            170,
+            100
+          ],
+          "minMargin": 100,
+          "pixels": 771493
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            173,
+            266,
+            1365,
+            923
+          ],
+          "margins": [
+            173,
+            266,
+            171,
+            101
+          ],
+          "minMargin": 101,
+          "pixels": 770070
+        }
+      },
+      "edgeAlphaMax": 1
+    },
+    {
+      "id": "HWM162-S25",
+      "path": "production/homeworld-sectors-20261103/sprites/market/HWM162-S25-stock-shelter-front-roof.png",
+      "sha256": "a47e5de3babc3f729d568d4699c462117e3d9be50508c0771458282c13a0c1de",
+      "bytes": 2176957,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 942909,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            32,
+            33,
+            1506,
+            1007
+          ],
+          "margins": [
+            32,
+            33,
+            30,
+            17
+          ],
+          "minMargin": 17,
+          "pixels": 629955
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            34,
+            77,
+            1502,
+            937
+          ],
+          "margins": [
+            34,
+            77,
+            34,
+            87
+          ],
+          "minMargin": 34,
+          "pixels": 607913
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            35,
+            77,
+            1502,
+            937
+          ],
+          "margins": [
+            35,
+            77,
+            34,
+            87
+          ],
+          "minMargin": 34,
+          "pixels": 606320
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            35,
+            78,
+            1501,
+            936
+          ],
+          "margins": [
+            35,
+            78,
+            35,
+            88
+          ],
+          "minMargin": 35,
+          "pixels": 602743
         }
       },
       "edgeAlphaMax": 0
@@ -3673,6 +4006,255 @@
           ],
           "minMargin": 97,
           "pixels": 456189
+        }
+      },
+      "edgeAlphaMax": 1
+    },
+    {
+      "id": "HWM162-M24",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M24-tether-bollard-body.png",
+      "sha256": "a34ca19d0cdd67baf3cd47a799533c41c748384143d2388cbebb4666e602abd3",
+      "bytes": 1446089,
+      "width": 1100,
+      "height": 1429,
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 931208,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            156,
+            45,
+            1052,
+            1379
+          ],
+          "margins": [
+            156,
+            45,
+            48,
+            50
+          ],
+          "minMargin": 45,
+          "pixels": 640692
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            158,
+            48,
+            944,
+            1370
+          ],
+          "margins": [
+            158,
+            48,
+            156,
+            59
+          ],
+          "minMargin": 48,
+          "pixels": 630385
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            159,
+            48,
+            943,
+            1370
+          ],
+          "margins": [
+            159,
+            48,
+            157,
+            59
+          ],
+          "minMargin": 48,
+          "pixels": 629558
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            159,
+            48,
+            943,
+            1369
+          ],
+          "margins": [
+            159,
+            48,
+            157,
+            60
+          ],
+          "minMargin": 48,
+          "pixels": 626994
+        }
+      },
+      "edgeAlphaMax": 0
+    },
+    {
+      "id": "HWM162-M25",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M25-tether-ring-chain.png",
+      "sha256": "e1c3726a267f0ee02f09b378d592e034b4f0f57378ec3170b7eaff32a0ddb7eb",
+      "bytes": 411781,
+      "width": 1100,
+      "height": 1429,
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 1423504,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            46,
+            1060,
+            1383
+          ],
+          "margins": [
+            0,
+            46,
+            40,
+            46
+          ],
+          "minMargin": 0,
+          "pixels": 148396
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            323,
+            327,
+            774,
+            1184
+          ],
+          "margins": [
+            323,
+            327,
+            326,
+            245
+          ],
+          "minMargin": 245,
+          "pixels": 139294
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            323,
+            329,
+            774,
+            1184
+          ],
+          "margins": [
+            323,
+            329,
+            326,
+            245
+          ],
+          "minMargin": 245,
+          "pixels": 138487
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            324,
+            330,
+            773,
+            1183
+          ],
+          "margins": [
+            324,
+            330,
+            327,
+            246
+          ],
+          "minMargin": 246,
+          "pixels": 135989
+        }
+      },
+      "edgeAlphaMax": 1
+    },
+    {
+      "id": "HWM162-M26",
+      "path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M26-suspended-double-ended-tether.png",
+      "sha256": "a27e4559127a6f6abe1c7f4dba016b872a39783065ea476bea59c00a020f8cc8",
+      "bytes": 1582859,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 1286089,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            23,
+            23,
+            1512,
+            1024
+          ],
+          "margins": [
+            23,
+            23,
+            24,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 286775
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            128,
+            74,
+            1363,
+            895
+          ],
+          "margins": [
+            128,
+            74,
+            173,
+            129
+          ],
+          "minMargin": 74,
+          "pixels": 264776
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            128,
+            75,
+            1363,
+            895
+          ],
+          "margins": [
+            128,
+            75,
+            173,
+            129
+          ],
+          "minMargin": 75,
+          "pixels": 263509
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            129,
+            75,
+            1362,
+            894
+          ],
+          "margins": [
+            129,
+            75,
+            174,
+            130
+          ],
+          "minMargin": 75,
+          "pixels": 259685
         }
       },
       "edgeAlphaMax": 1
@@ -5831,6 +6413,504 @@
           ],
           "minMargin": 89,
           "pixels": 398085
+        }
+      },
+      "edgeAlphaMax": 0
+    },
+    {
+      "id": "HWM162-K27",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K27-small-cage-body.png",
+      "sha256": "7a2911053209d28b6ddae419412d7375db3b1dfb9ca5face89d7c90e86c800e9",
+      "bytes": 2001588,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 735815,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            63,
+            32,
+            1214,
+            1254
+          ],
+          "margins": [
+            63,
+            32,
+            40,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 836701
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            96,
+            121,
+            1181,
+            1175
+          ],
+          "margins": [
+            96,
+            121,
+            73,
+            79
+          ],
+          "minMargin": 73,
+          "pixels": 798867
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            96,
+            121,
+            1181,
+            1175
+          ],
+          "margins": [
+            96,
+            121,
+            73,
+            79
+          ],
+          "minMargin": 73,
+          "pixels": 794223
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            96,
+            122,
+            1180,
+            1174
+          ],
+          "margins": [
+            96,
+            122,
+            74,
+            80
+          ],
+          "minMargin": 74,
+          "pixels": 785608
+        }
+      },
+      "edgeAlphaMax": 1
+    },
+    {
+      "id": "HWM162-K28",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K28-small-cage-door-leaf.png",
+      "sha256": "1ad0ae33a20d77151262eddc1be2ba7b88a71d24203384ac9f5cae22f1bd809a",
+      "bytes": 918758,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 1152324,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            61,
+            33,
+            1218,
+            1254
+          ],
+          "margins": [
+            61,
+            33,
+            36,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 420192
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            269,
+            167,
+            979,
+            1068
+          ],
+          "margins": [
+            269,
+            167,
+            275,
+            186
+          ],
+          "minMargin": 167,
+          "pixels": 367982
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            269,
+            167,
+            979,
+            1068
+          ],
+          "margins": [
+            269,
+            167,
+            275,
+            186
+          ],
+          "minMargin": 167,
+          "pixels": 366147
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            270,
+            168,
+            979,
+            1067
+          ],
+          "margins": [
+            270,
+            168,
+            275,
+            187
+          ],
+          "minMargin": 168,
+          "pixels": 359106
+        }
+      },
+      "edgeAlphaMax": 1
+    },
+    {
+      "id": "HWM162-K29",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K29-heavy-cage-body.png",
+      "sha256": "f6e3b2256c02402ebc8f48522d399f3e2f209826b500fe6f475fdb6c8f9437d9",
+      "bytes": 2168078,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 721871,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            29,
+            31,
+            1227,
+            1230
+          ],
+          "margins": [
+            29,
+            31,
+            27,
+            24
+          ],
+          "minMargin": 24,
+          "pixels": 850645
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            31,
+            104,
+            1225,
+            1157
+          ],
+          "margins": [
+            31,
+            104,
+            29,
+            97
+          ],
+          "minMargin": 29,
+          "pixels": 820716
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            31,
+            104,
+            1225,
+            1157
+          ],
+          "margins": [
+            31,
+            104,
+            29,
+            97
+          ],
+          "minMargin": 29,
+          "pixels": 817605
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            32,
+            105,
+            1224,
+            1156
+          ],
+          "margins": [
+            32,
+            105,
+            30,
+            98
+          ],
+          "minMargin": 30,
+          "pixels": 810487
+        }
+      },
+      "edgeAlphaMax": 0
+    },
+    {
+      "id": "HWM162-K30",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K30-heavy-cage-door-leaf.png",
+      "sha256": "3d80af3caeab9628536bb967e0161e5b50dea38204266176202bf0c119264b69",
+      "bytes": 1251588,
+      "width": 1199,
+      "height": 1312,
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 1010188,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            35,
+            1132,
+            1312
+          ],
+          "margins": [
+            0,
+            35,
+            67,
+            0
+          ],
+          "minMargin": 0,
+          "pixels": 562900
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            223,
+            131,
+            993,
+            1200
+          ],
+          "margins": [
+            223,
+            131,
+            206,
+            112
+          ],
+          "minMargin": 112,
+          "pixels": 520161
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            223,
+            132,
+            992,
+            1200
+          ],
+          "margins": [
+            223,
+            132,
+            207,
+            112
+          ],
+          "minMargin": 112,
+          "pixels": 516811
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            224,
+            132,
+            992,
+            1199
+          ],
+          "margins": [
+            224,
+            132,
+            207,
+            113
+          ],
+          "minMargin": 113,
+          "pixels": 508630
+        }
+      },
+      "edgeAlphaMax": 1
+    },
+    {
+      "id": "HWM162-K31",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K31-small-cage-door-leaf-open.png",
+      "sha256": "180662b2843e3ae9a93eb236edd7263c9c8fa10eae596d4516be05993eab8d95",
+      "bytes": 657841,
+      "width": 1263,
+      "height": 1246,
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 1279371,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            41,
+            113,
+            1184,
+            1157
+          ],
+          "margins": [
+            41,
+            113,
+            79,
+            89
+          ],
+          "minMargin": 41,
+          "pixels": 294327
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            314,
+            189,
+            976,
+            1028
+          ],
+          "margins": [
+            314,
+            189,
+            287,
+            218
+          ],
+          "minMargin": 189,
+          "pixels": 267891
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            314,
+            189,
+            976,
+            1028
+          ],
+          "margins": [
+            314,
+            189,
+            287,
+            218
+          ],
+          "minMargin": 189,
+          "pixels": 265995
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            315,
+            190,
+            975,
+            1028
+          ],
+          "margins": [
+            315,
+            190,
+            288,
+            218
+          ],
+          "minMargin": 190,
+          "pixels": 260013
+        }
+      },
+      "edgeAlphaMax": 0
+    },
+    {
+      "id": "HWM162-K32",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K32-heavy-cage-door-leaf-open.png",
+      "sha256": "bd760af652b6349e584fdd7f96bc8c8aaea22cf1c9c6f7a2248eae694503ae58",
+      "bytes": 1662701,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 1168221,
+      "alphaBounds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            33,
+            71,
+            1510,
+            998
+          ],
+          "margins": [
+            33,
+            71,
+            26,
+            26
+          ],
+          "minMargin": 26,
+          "pixels": 404643
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            367,
+            77,
+            1170,
+            965
+          ],
+          "margins": [
+            367,
+            77,
+            366,
+            59
+          ],
+          "minMargin": 59,
+          "pixels": 377876
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            368,
+            77,
+            1169,
+            965
+          ],
+          "margins": [
+            368,
+            77,
+            367,
+            59
+          ],
+          "minMargin": 59,
+          "pixels": 375716
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            368,
+            77,
+            1169,
+            964
+          ],
+          "margins": [
+            368,
+            77,
+            367,
+            60
+          ],
+          "minMargin": 60,
+          "pixels": 370463
         }
       },
       "edgeAlphaMax": 0

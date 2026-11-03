@@ -3857,10 +3857,578 @@
           "alpha_max": 1
         }
       ]
+    },
+    {
+      "id": "HWM162-M24",
+      "file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M24-tether-bollard-body.png",
+      "source_original": "/workspace/scratch/2166fec07f86/generated_images/exec-9bb3008b-10ff-40b4-abcd-b492ce16e423.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/2166fec07f86/generated_images as /workspace/scratch/2166fec07f86/generated_images/exec-9bb3008b-10ff-40b4-abcd-b492ce16e423.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "prompt": "Use case: precise object edit and native game-sprite component separation.\nOutput ONE independent PNG: HWM162-M24, the FIXED BODY of the exact tether station in image1. This is a state/component of that same station, not a new design.\n\nKeep the entire original tapered basalt/gunmetal bollard and its complete broad reinforced foot. Preserve all source geometry, bronze edge armor, patina, scar motif, top horizontal ribs and the small amber indicator. Keep BOTH original upper FIXED bronze bearing cheeks on the left and right, and keep their HORIZONTAL dark metal AXLE, now clearly exposed between them. Keep the original small LOWER fixed U-shaped bronze receiver/cleat, EMPTY. Keep the source foundation and complete silhouette.\n\nREMOVE the entire large bronze ring. REMOVE the thick central MOBILE bronze sleeve/collar currently wrapping the axle and supporting the ring; it belongs to the separate ring component, not to this output. REMOVE the whole short captive chain, all its moving links and its moving terminal link from the lower receiver. Leave no dangling links, ring fragments or mobile sleeve. Do not remove the fixed horizontal axle or the two bearing cheeks. Restore only the modest surfaces of the dark station face and axle formerly concealed behind the removed ring, sleeve and chain. Restore the EMPTY inside of the lower fixed receiver without adding a new part.\n\nUse the ACTUAL SOURCE VIEW and approximate original framing, original proportions, upper-left lighting and object orientation. The input native canvas is 1182 by1330 pixels; retain that same portrait framing if possible, with the entire foot and top edge comfortably inside the image. This is an inherited source view, not a new angle. Do not rotate, mirror, zoom in, truncate, add floor, re-design the post or spread its components apart. Show ONLY the single complete fixed body, with its fixed fittings attached.\n\nTrue native transparent alpha outside the object, including any genuine empty openings. No ground plane, backdrop, scene, gradient, opaque black fill, painted checkerboard, haze, artificial halo, contact-sheet, additional view, tools, animals, people, lettering, labels, watermark or decorative new glyphs. Keep only the functional original foundation integral to the bollard.\nPainterly-realistic detailed game rendering, aged bronze and dark basalt/gunmetal identity exactly as the reference. This is an original project adaptation and a proposed graphical partition; no canonical or functioning mechanical assembly is implied.",
+      "reference_input_paths": [
+        "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/mounts/HWM162-M02-tether-station.png"
+      ],
+      "mode": "RGBA",
+      "dimensions_px": [
+        1100,
+        1429
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "alpha_zero_pixels": 931208,
+      "alpha_thresholds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            156,
+            45,
+            1052,
+            1379
+          ],
+          "margins": [
+            156,
+            45,
+            48,
+            50
+          ],
+          "pixels": 640692
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            158,
+            48,
+            944,
+            1370
+          ],
+          "margins": [
+            158,
+            48,
+            156,
+            59
+          ],
+          "pixels": 630385
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            159,
+            48,
+            943,
+            1370
+          ],
+          "margins": [
+            159,
+            48,
+            157,
+            59
+          ],
+          "pixels": 629558
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            159,
+            48,
+            943,
+            1369
+          ],
+          "margins": [
+            159,
+            48,
+            157,
+            60
+          ],
+          "pixels": 626994
+        }
+      },
+      "sha256": "a34ca19d0cdd67baf3cd47a799533c41c748384143d2388cbebb4666e602abd3",
+      "bytes": 1446089,
+      "edge_alpha_max": 0,
+      "label": "Corps de borne d’attache dégagé",
+      "target_id": "target-v81-72-281",
+      "reference_image_files": [
+        "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M02-tether-station.png"
+      ],
+      "reference_sha256": [
+        "e61634fd7c5ea92792c06586e6b7edb4ed23b570084931177cb32774c80865fa"
+      ],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "variant_kind": "FIXED_TETHER_STATION_BODY",
+      "component_of": "HWM162-M02",
+      "review_note": "Complete fixed station body, original reinforced foot, two upper bearing cheeks and their exposed horizontal axle, lower empty receiver, lamp and scar motif. The large mobile ring, sleeve and chain are absent. Previously concealed surfaces are reconstructed interpretations. Native output is1100x1429 instead of source1182x1330 and its framing/proportions differ; exact registration is not claimed. No mechanical operation, load, physical scale or runtime use is validated.",
+      "camera_requested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "reference_repo_path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M02-tether-station.png",
+        "actual_reference_view_inherited_requested": true,
+        "source_request_if_known": {
+          "projection": "orthographic",
+          "yaw_degrees": 0,
+          "pitch_degrees": 35,
+          "authority": "Original source prompt request, not measured."
+        },
+        "camera_measured": false,
+        "new_front_0_35_conversion_claimed": false,
+        "object_pose_changed": false
+      },
+      "camera_measured": false,
+      "assembly_pair_ids": [
+        "HWM162-M02",
+        "HWM162-M24",
+        "HWM162-M25"
+      ],
+      "assembly_runtime_validated": false,
+      "production_pass": 7,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtime_integrated": false,
+      "human_art_validated": false,
+      "canon_1_to_1_claim": false,
+      "original_unchanged": true,
+      "imagegen_calls_for_asset": 1,
+      "alpha_bbox": [
+        156,
+        45,
+        1052,
+        1379
+      ],
+      "alpha_bbox_8": [
+        158,
+        48,
+        944,
+        1370
+      ],
+      "alpha_bbox_gt24": [
+        159,
+        48,
+        943,
+        1370
+      ],
+      "substantial_silhouette_margins_px": [
+        158,
+        48,
+        156,
+        59
+      ],
+      "silhouette_margins_gt24_px": [
+        159,
+        48,
+        157,
+        59
+      ],
+      "root_visual_review": {
+        "performed": true,
+        "decision": "ACCEPTED_INDEPENDENT_ART_CANDIDATE",
+        "reviewer": "root",
+        "date": "2026-11-03",
+        "note": "Root displayed and accepted the entire fixed bollard with horizontal axle, two fixed bearing cheeks and empty lower receiver; ring, moving sleeve and short chain absent. Native canvas and scale differences retained; no direct registration or functioning assembly certified."
+      },
+      "framing_note": {
+        "requested_source_canvas_px": [
+          1182,
+          1330
+        ],
+        "actual_native_canvas_px": [
+          1100,
+          1429
+        ],
+        "native_dimensions_changed": true,
+        "pixel_transform_applied": false,
+        "registration_validated": false,
+        "note": "Native output dimensions and framing retained unchanged; relative scale and placement need scene adjustment."
+      }
+    },
+    {
+      "id": "HWM162-M25",
+      "file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M25-tether-ring-chain.png",
+      "source_original": "/workspace/scratch/2166fec07f86/generated_images/exec-b742b8d6-5b52-408b-860a-8ae55195e3e8.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/2166fec07f86/generated_images as /workspace/scratch/2166fec07f86/generated_images/exec-b742b8d6-5b52-408b-860a-8ae55195e3e8.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "prompt": "Use case: precise object edit and native game-sprite component separation.\nOutput ONE connected independent transparent PNG article HWM162-M25: ONLY the original large bronze ring, its central MOBILE pivot sleeve, and its short captive dark chain from image1.\n\nThe reference is the exact tether station. Remove the entire fixed basalt/gunmetal bollard, its reinforced foot, all fixed bronze armor, amber lamp, clan marks, both upper fixed bearing cheeks, the horizontal FIXED dark axle through those cheeks, and the LOWER fixed U-shaped receiver. Those fixed parts belong to the separately retained station body, not to this image.\n\nRetain the WHOLE large aged-bronze ring in its source vertical pose, including its existing faceted round cross section, seam details and three small bands at its lower edge. Keep the thick CENTRAL MOBILE bronze sleeve/collar that connects to the top of the ring. It is the moving central piece that originally wraps the fixed horizontal axle. Preserve that sleeve as part of this connected ring assembly, but DO NOT include the dark fixed axle or its side brackets. Complete only the sleeve's previously occluded inside/end surfaces with a simple hollow axle bore consistent with the reference, without inventing another mechanism.\nKeep the exact same SHORT connected chain hanging from the ring's bottom, with its visible alternating rounded links. Complete the last moving link where the original fixed lower receiver concealed it. The chain ends freely after that final closed link; no receiver, mounting plate, base, extra shackle, handle or longer extension. This must remain ONE connected ring-and-short-chain article, not an exploded view or collection of unconnected pieces.\n\nMake the hole INSIDE the large ring genuinely transparent: the original post behind it must be absent. All spaces around the chain and any visible link openings must be native transparent alpha rather than painted black or stone. No residual portion of the station face, axle, lower receiver or foot.\n\nInherit the ACTUAL source camera, lighting, patina and object pose. Request the same original1182x1330 portrait canvas and the ring/chain at approximately their original position and source scale: ring near the middle, chain descending below it. Do not enlarge to fill the frame, rotate, mirror, zoom, crop or reinterpret the ring as a handheld tool. Every piece must be complete with empty transparent margin on all sides.\n\nOnly this one connected metal article. No scene, ground, floor plate, backdrop, shadow plane, haze, opaque fill, checkerboard painting, label, text, watermark, creature or person. Painterly-realistic game rendering with exact source dark metal and aged bronze identity. Original project adaptation, no claim of real mechanical operation, canonical accuracy or exact pixel registration.",
+      "reference_input_paths": [
+        "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/mounts/HWM162-M02-tether-station.png"
+      ],
+      "mode": "RGBA",
+      "dimensions_px": [
+        1100,
+        1429
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "alpha_zero_pixels": 1423504,
+      "alpha_thresholds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            0,
+            46,
+            1060,
+            1383
+          ],
+          "margins": [
+            0,
+            46,
+            40,
+            46
+          ],
+          "pixels": 148396
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            323,
+            327,
+            774,
+            1184
+          ],
+          "margins": [
+            323,
+            327,
+            326,
+            245
+          ],
+          "pixels": 139294
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            323,
+            329,
+            774,
+            1184
+          ],
+          "margins": [
+            323,
+            329,
+            326,
+            245
+          ],
+          "pixels": 138487
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            324,
+            330,
+            773,
+            1183
+          ],
+          "margins": [
+            324,
+            330,
+            327,
+            246
+          ],
+          "pixels": 135989
+        }
+      },
+      "sha256": "e1c3726a267f0ee02f09b378d592e034b4f0f57378ec3170b7eaff32a0ddb7eb",
+      "bytes": 411781,
+      "edge_alpha_max": 1,
+      "label": "Anneau et courte chaîne de la borne",
+      "target_id": "target-v81-72-281",
+      "reference_image_files": [
+        "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M02-tether-station.png"
+      ],
+      "reference_sha256": [
+        "e61634fd7c5ea92792c06586e6b7edb4ed23b570084931177cb32774c80865fa"
+      ],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "variant_kind": "MOBILE_RING_AND_SHORT_CHAIN_COMPONENT",
+      "component_of": "HWM162-M02",
+      "review_note": "One connected complete bronze ring, central mobile sleeve and short dark chain with a complete free terminal link. Fixed post, axle, bearing cheeks and lower receiver are absent. Ring interior is visibly clear with native alpha samples recorded. Sleeve bore and formerly hidden terminal surfaces are interpreted. Native1100x1429 output differs from source1182x1330; the article is enlarged/repositioned relative to M02 and does not promise a direct translation-only fit with M24. Native faint alpha is preserved. No functioning pivot, connector fit, exact registration or load certification.",
+      "camera_requested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "reference_repo_path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M02-tether-station.png",
+        "actual_reference_view_inherited_requested": true,
+        "source_request_if_known": {
+          "projection": "orthographic",
+          "yaw_degrees": 0,
+          "pitch_degrees": 35,
+          "authority": "Original source prompt request, not measured."
+        },
+        "camera_measured": false,
+        "new_front_0_35_conversion_claimed": false,
+        "object_pose_changed": false
+      },
+      "camera_measured": false,
+      "assembly_pair_ids": [
+        "HWM162-M02",
+        "HWM162-M24",
+        "HWM162-M25"
+      ],
+      "assembly_runtime_validated": false,
+      "production_pass": 7,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtime_integrated": false,
+      "human_art_validated": false,
+      "canon_1_to_1_claim": false,
+      "original_unchanged": true,
+      "imagegen_calls_for_asset": 1,
+      "alpha_bbox": [
+        0,
+        46,
+        1060,
+        1383
+      ],
+      "alpha_bbox_8": [
+        323,
+        327,
+        774,
+        1184
+      ],
+      "alpha_bbox_gt24": [
+        323,
+        329,
+        774,
+        1184
+      ],
+      "substantial_silhouette_margins_px": [
+        323,
+        327,
+        326,
+        245
+      ],
+      "silhouette_margins_gt24_px": [
+        323,
+        329,
+        326,
+        245
+      ],
+      "root_visual_review": {
+        "performed": true,
+        "decision": "ACCEPTED_INDEPENDENT_ART_CANDIDATE",
+        "reviewer": "root",
+        "date": "2026-11-03",
+        "note": "Root displayed and accepted one connected ring, moving sleeve and short chain, without fixed body, axle or receiver. Central window [480,560,620,680] contains16800 alpha0 pixels. Native canvas, position and scale differences documented; no direct translation-only fit or mechanism certified."
+      },
+      "framing_note": {
+        "requested_source_canvas_px": [
+          1182,
+          1330
+        ],
+        "actual_native_canvas_px": [
+          1100,
+          1429
+        ],
+        "native_dimensions_changed": true,
+        "pixel_transform_applied": false,
+        "registration_validated": false,
+        "note": "Native output dimensions and framing retained unchanged; relative scale and placement need scene adjustment."
+      },
+      "opening_transparency_samples": [
+        {
+          "opening": "central ring hole sample",
+          "box": [
+            450,
+            550,
+            640,
+            680
+          ],
+          "total_pixels": 24700,
+          "alpha_zero_pixels": 24694,
+          "alpha_le8_pixels": 24700,
+          "alpha_gt24_pixels": 0,
+          "alpha_max": 1
+        },
+        {
+          "opening": "central ring hole root review sample",
+          "box": [
+            480,
+            560,
+            620,
+            680
+          ],
+          "total_pixels": 16800,
+          "alpha_zero_pixels": 16800,
+          "alpha_le8_pixels": 16800,
+          "alpha_gt24_pixels": 0,
+          "alpha_max": 0,
+          "reviewer": "root"
+        }
+      ]
+    },
+    {
+      "id": "HWM162-M26",
+      "file": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M26-suspended-double-ended-tether.png",
+      "source_original": "/workspace/scratch/2166fec07f86/generated_images/exec-610674df-a426-4d73-9e0c-d5b9c4567628.png",
+      "output_hint": "Generated images are saved to /workspace/scratch/2166fec07f86/generated_images as /workspace/scratch/2166fec07f86/generated_images/exec-610674df-a426-4d73-9e0c-d5b9c4567628.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "prompt": "Use case: native object re-pose from the exact existing game prop reference.\nOutput ONE independent transparent PNG article HWM162-M26: the SAME double-ended tether from image1, now HANGING in a broad U curve between two elevated ends instead of lying flat in the source's loose S.\n\nKeep this exact prop identity: one continuous chain of thick rounded dark gunmetal OVAL links, and exactly TWO complete aged-bronze angular closed pin shackles, one at each end. Preserve the reference shackles' trapezoidal angular bodies, beveled bronze frame, short ridges across the outer back, paired rounded pin cheeks and visible closed dark cross-pins. No new latch, hook, carabiner, hand loop, third connector, padlock or disconnected item. Both original ferrules must remain entirely visible and CLOSED, attached to the same continuous chain. Keep comparable visual link thickness and the same metal wear and upper-left highlights.\n\nChange ONLY the physical pose of the article through a fresh native drawing. Place the two bronze end shackles high at upper left and upper right, with a useful horizontal gap between them. Let the chain descend naturally from them into a single open broad U-shaped belly below. It hangs freely in a vertical plane in the scene; it must NOT look like an S laid on the floor, a closed loop, a necklace, a doubled bundle, a straight bar or a chain held by a character. Preserve the approximate source total chain amount without introducing a long extra length. The individual link orientations and shackle rotations should be re-rendered coherently for the new hanging pose, never a mirrored or rotated copy of the source pixels.\n\nInherit the original visual camera: orthographic-style view looking slightly down at the objects, same source rendering style and upper-left lighting, with readable upper and side surfaces of the shackles. This is an inherited source view request, with the OBJECT'S pose changed. Use the original1536x1024 landscape canvas, centered complete article occupying approximately75% of its width, with at least100px generous transparent margins around the whole U and both connectors. Both raised ends and the lowest link must be intact.\n\nThe supporting anchors are NOT drawn: no bollard, post, wall, bracket, hand, creature, harness, floor or environment. Only one complete connected tether floating on native transparent alpha. Open spaces between links and inside shackles should be transparent where visible. No ground shadow plate, backdrop, haze, painted checkerboard, text, diagram, watermark or second view.\nDetailed painterly-realistic aged bronze and gunmetal game asset. This is a newly interpreted suspended pose of an original project prop, not a measured catenary, mechanical fit, load rating, animation frame or canonical design certification.",
+      "reference_input_paths": [
+        "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/mounts/HWM162-M13-double-ended-tether.png"
+      ],
+      "mode": "RGBA",
+      "dimensions_px": [
+        1536,
+        1024
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "alpha_zero_pixels": 1286089,
+      "alpha_thresholds": {
+        "0": {
+          "comparison": "alpha > threshold",
+          "box": [
+            23,
+            23,
+            1512,
+            1024
+          ],
+          "margins": [
+            23,
+            23,
+            24,
+            0
+          ],
+          "pixels": 286775
+        },
+        "8": {
+          "comparison": "alpha > threshold",
+          "box": [
+            128,
+            74,
+            1363,
+            895
+          ],
+          "margins": [
+            128,
+            74,
+            173,
+            129
+          ],
+          "pixels": 264776
+        },
+        "24": {
+          "comparison": "alpha > threshold",
+          "box": [
+            128,
+            75,
+            1363,
+            895
+          ],
+          "margins": [
+            128,
+            75,
+            173,
+            129
+          ],
+          "pixels": 263509
+        },
+        "128": {
+          "comparison": "alpha > threshold",
+          "box": [
+            129,
+            75,
+            1362,
+            894
+          ],
+          "margins": [
+            129,
+            75,
+            174,
+            130
+          ],
+          "pixels": 259685
+        }
+      },
+      "sha256": "a27e4559127a6f6abe1c7f4dba016b872a39783065ea476bea59c00a020f8cc8",
+      "bytes": 1582859,
+      "edge_alpha_max": 1,
+      "label": "Longe à deux embouts — pose suspendue",
+      "target_id": "target-v81-72-281",
+      "reference_image_files": [
+        "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M13-double-ended-tether.png"
+      ],
+      "reference_sha256": [
+        "f9636f0a0d7defd5885977758fafe54542bfb7d638bd4207d8004ea4a9c385cb"
+      ],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "variant_kind": "SUSPENDED_U_POSE_OF_EXISTING_TETHER",
+      "component_of": "HWM162-M13",
+      "review_note": "One continuous dark chain in a broad hanging U, with the same two complete angular bronze closed pin shackles raised at its ends. No supports, ground, hand loop or additional articles. Identity is inherited from M13, while the suspended curve and link/ferrule orientations are newly interpreted natively. The output keeps source1536x1024 canvas; minimum substantial margin is75px rather than requested100px, with complete silhouette. Faint peripheral alpha is preserved. No measured catenary, deployed length, species fit, mechanical attachment, animation or runtime validation.",
+      "camera_requested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "reference_repo_path": "production/homeworld-sectors-20261103/sprites/mounts/HWM162-M13-double-ended-tether.png",
+        "actual_reference_view_inherited_requested": true,
+        "source_request_if_known": {
+          "projection": "orthographic",
+          "yaw_degrees": 0,
+          "pitch_degrees": 35,
+          "authority": "Original source prompt request, not measured."
+        },
+        "camera_measured": false,
+        "new_front_0_35_conversion_claimed": false,
+        "object_pose_changed": true
+      },
+      "camera_measured": false,
+      "assembly_pair_ids": [
+        "HWM162-M13",
+        "HWM162-M26"
+      ],
+      "assembly_runtime_validated": false,
+      "production_pass": 7,
+      "status": "GENERATED_INDEPENDENT_ART_CANDIDATE",
+      "runtime_integrated": false,
+      "human_art_validated": false,
+      "canon_1_to_1_claim": false,
+      "original_unchanged": true,
+      "imagegen_calls_for_asset": 1,
+      "alpha_bbox": [
+        23,
+        23,
+        1512,
+        1024
+      ],
+      "alpha_bbox_8": [
+        128,
+        74,
+        1363,
+        895
+      ],
+      "alpha_bbox_gt24": [
+        128,
+        75,
+        1363,
+        895
+      ],
+      "substantial_silhouette_margins_px": [
+        128,
+        74,
+        173,
+        129
+      ],
+      "silhouette_margins_gt24_px": [
+        128,
+        75,
+        173,
+        129
+      ],
+      "root_visual_review": {
+        "performed": true,
+        "decision": "ACCEPTED_INDEPENDENT_ART_CANDIDATE",
+        "reviewer": "root",
+        "date": "2026-11-03",
+        "note": "Root displayed and accepted a continuous hanging U with two complete closed bronze pin shackles. Source identity retained; suspended geometry interpreted. No support, ground or additional article. No exact anchor, physical catenary, length, load or runtime fit certified."
+      }
     }
   ],
   "generation_complete": true,
-  "asset_count": 23,
-  "production_note": "Pass6 complete: five native components/states of M06 and M01 selected after producer and root visual review. Six native calls, one first M21 attempt archived unchanged. Prior eighteen mount entries and all fifty-six previously selected PNGs preserved. No pixel edits, canonical1:1, measured camera, clinical capability, physical scale, assembly or runtime validation.",
+  "asset_count": 26,
+  "production_note": "Pass7 complete: three native components/poses of M02 and M13 accepted after producer and root visual review. Three calls, no new archive. Prior23 mount entries and all70 previously selected PNGs preserved byte for byte. Native1100x1429 canvas and framing differences on M24/M25 documented; relative scale and placement require scene adjustment. M26 suspended pose interpreted. No pixel edits, canonical1:1, measured camera, functioning mechanism, physical scale or runtime validation.",
   "archived_mount_attempt_count": 5
 }

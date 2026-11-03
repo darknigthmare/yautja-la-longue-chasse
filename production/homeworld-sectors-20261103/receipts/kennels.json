@@ -6,8 +6,8 @@
   "branch": "codex/homeworld-v158-urban-props-intake-20261102",
   "baseline_head": "0ab844cca5f2c9b5cae28624d2c1b97fca7d5ce9",
   "recorded_on": "2026-11-03",
-  "selected_asset_count": 26,
-  "generated_attempt_count": 29,
+  "selected_asset_count": 32,
+  "generated_attempt_count": 40,
   "failed_generation_count": 1,
   "assets": [
     {
@@ -3802,6 +3802,1156 @@
           "pixels_greater24": 0
         }
       ]
+    },
+    {
+      "id": "HWM162-K27",
+      "name": "Corps de petite cage sans battant",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K27-small-cage-body.png",
+      "filename": "HWM162-K27-small-cage-body.png",
+      "target_ids": [
+        "target-v81-71-276"
+      ],
+      "state_of_source_path": "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-276-cage-petite-native.png",
+      "source_reference_sha256": "b5e4da0ccb43732e03abde69a0eacee6a8a73c8282918aaf3bdead116c8c1073",
+      "source_reference_sha256_by_path": {
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-276-cage-petite-native.png": "b5e4da0ccb43732e03abde69a0eacee6a8a73c8282918aaf3bdead116c8c1073",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K10-small-cage-open.png": "75eb31d88524b14d8d3a037ef22632423e2717b0649a22595366d56321037e44"
+      },
+      "source_reference_commits_by_path": {
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-276-cage-petite-native.png": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K10-small-cage-open.png": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94"
+      },
+      "state": "BODY_WITHOUT_DOOR",
+      "dimensions_m_proposed": {},
+      "scale_note": "Vue et échelle natives propres ; dimensions réelles, raccord, axe de charnière, collision et compatibilité Hounds2010/chiens2018 non certifiés.",
+      "visual_review": "Corps compact seul : poignée haute, base/plancher, toit et parois fixes conservés ; cadre chanfreiné ouvert, deux cylindres fixes sur le montant gauche et récepteur ambre sur le montant droit. Aucun battant mobile. Silhouette entière ; marges droite/basse 73/79 px. Petits résidus RGB natifs consignés séparément, sans nettoyage. Revue racine acceptée.",
+      "source_original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-35730c4f-00ce-4aaf-85cd-77096af94b48.png",
+      "size_bytes": 2001588,
+      "sha256": "7a2911053209d28b6ddae419412d7375db3b1dfb9ca5face89d7c90e86c800e9",
+      "git_blob_sha": "ebee62099741aee8c6a05bdb9b962bb7b2a8e6c0",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alpha_min": 0,
+      "alpha_max": 255,
+      "fully_transparent_pixels": 735815,
+      "fully_opaque_pixels": 1433,
+      "alpha_bounds": {
+        "0": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            63,
+            32,
+            1214,
+            1254
+          ],
+          "margins_left_top_right_bottom": [
+            63,
+            32,
+            40,
+            0
+          ],
+          "pixels": 836701,
+          "canvas_edge_pixels": 29
+        },
+        "8": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            96,
+            121,
+            1181,
+            1175
+          ],
+          "margins_left_top_right_bottom": [
+            96,
+            121,
+            73,
+            79
+          ],
+          "pixels": 798867,
+          "canvas_edge_pixels": 0
+        },
+        "24": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            96,
+            121,
+            1181,
+            1175
+          ],
+          "margins_left_top_right_bottom": [
+            96,
+            121,
+            73,
+            79
+          ],
+          "pixels": 794223,
+          "canvas_edge_pixels": 0
+        },
+        "128": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            96,
+            122,
+            1180,
+            1174
+          ],
+          "margins_left_top_right_bottom": [
+            96,
+            122,
+            74,
+            80
+          ],
+          "pixels": 785608,
+          "canvas_edge_pixels": 0
+        }
+      },
+      "generation_tool": "image_gen.imagegen",
+      "generation_mode": "built-in-reference-edit",
+      "source_original_bytes_copied_unchanged": true,
+      "image_manipulation": false,
+      "post_generation_pixel_editing": false,
+      "generated_independently_not_cropped": true,
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "reference_basis": "PROJECT_ORIGINAL_EXISTING_SPRITE",
+      "source_reference_ids": [
+        "R7-kennels-target-v81-71-276-cage-petite-native",
+        "R7-kennels-HWM162-K10-small-cage-open"
+      ],
+      "canon_certified": false,
+      "canonicalOneToOneClaimed": false,
+      "production_status": "GENERATED_ART_CANDIDATE",
+      "runtime_admitted": false,
+      "runtimeIntegrated": false,
+      "human_artistic_validation": "PENDING",
+      "camera_requested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "projection": "orthographic",
+        "source_view": "three-quarter",
+        "source_brief_pitch_degrees": 32,
+        "source_brief_pitch_is_approximate": true,
+        "reference_repo_path": "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-276-cage-petite-native.png",
+        "actual_reference_view_inherited_requested": true,
+        "camera_measured": false,
+        "new_front_0_35_conversion_claimed": false,
+        "opening_angle_measured": false
+      },
+      "camera_measured": false,
+      "physical_scale_validated": false,
+      "transparent_background_requested": true,
+      "strict_alpha_margin_80px_pass": false,
+      "visible_silhouette_entire_at_alpha_gt24": true,
+      "visible_margin_80px_at_alpha_gt24_pass": false,
+      "continuation_after_published_commit": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94",
+      "state_transition_runtime_verified": false,
+      "pixel_aligned_state_pair_verified": false,
+      "component_registration_verified": false,
+      "hinge_mechanism_verified": false,
+      "selected_generation_attempt": 1,
+      "root_visual_review": {
+        "status": "ACCEPTED_ART_CANDIDATE",
+        "reviewer": "root",
+        "review_type": "AI_SOURCE_COMPARISON",
+        "human_validation": false
+      },
+      "fixed_mobile_partition": "Garder la base, le plancher, tous les côtés fixes et le toit ajouré, la poignée haute, le cadre fixe chanfreiné de l’ouverture, les deux parties fixes de charnière à gauche et le récepteur ambre à droite. Retirer entièrement le battant mobile et sa poignée, même en position ouverte ; ne pas supprimer les barres arrière visibles au travers de l’accès.",
+      "area": "kennels",
+      "targetIds": [
+        "target-v81-71-276"
+      ],
+      "sourceAssetFiles": [
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-276-cage-petite-native.png",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K10-small-cage-open.png"
+      ],
+      "sourceAssetIds": [
+        "HWM162-K10"
+      ],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "expectedPath": "sprites/kennels/HWM162-K27-small-cage-body.png",
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "productionPass": 7,
+      "root_reported_color_residue_check": {
+        "predicate": "R>180 and G<60 and B<60",
+        "matching_pixels": 792,
+        "matching_pixels_alpha_gt8": 14,
+        "matching_alpha_max": 253,
+        "decision": "Native isolated residues retained; no claim of artifact-free image."
+      }
+    },
+    {
+      "id": "HWM162-K28",
+      "name": "Battant de petite cage — pose fermée",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K28-small-cage-door-leaf.png",
+      "filename": "HWM162-K28-small-cage-door-leaf.png",
+      "target_ids": [
+        "target-v81-71-276"
+      ],
+      "state_of_source_path": "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-276-cage-petite-native.png",
+      "source_reference_sha256": "b5e4da0ccb43732e03abde69a0eacee6a8a73c8282918aaf3bdead116c8c1073",
+      "source_reference_sha256_by_path": {
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-276-cage-petite-native.png": "b5e4da0ccb43732e03abde69a0eacee6a8a73c8282918aaf3bdead116c8c1073",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K10-small-cage-open.png": "75eb31d88524b14d8d3a037ef22632423e2717b0649a22595366d56321037e44"
+      },
+      "source_reference_commits_by_path": {
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-276-cage-petite-native.png": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K10-small-cage-open.png": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94"
+      },
+      "state": "CLOSED_POSE",
+      "dimensions_m_proposed": {},
+      "scale_note": "Vue et échelle natives propres ; dimensions réelles, raccord, axe de charnière, collision et compatibilité Hounds2010/chiens2018 non certifiés.",
+      "visual_review": "Battant fermé seul, cadre chanfreiné, quatre barreaux verticaux, prise ajourée à droite et aucune émission ambre. Version 2 : deux gros pivots supprimés, petites pattes plates percées conservées à gauche. Ces pattes sont une interprétation graphique ; mécanisme et pivot non validés. Fenêtre de 13 500 pixels alpha 0–1, aucun >8. Revue racine acceptée.",
+      "source_original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-0b785e9b-8928-4650-ac3d-9746650b6c66.png",
+      "size_bytes": 918758,
+      "sha256": "1ad0ae33a20d77151262eddc1be2ba7b88a71d24203384ac9f5cae22f1bd809a",
+      "git_blob_sha": "bdb43476470802fed0de7d0c6e87d70fb2b12ac1",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alpha_min": 0,
+      "alpha_max": 255,
+      "fully_transparent_pixels": 1152324,
+      "fully_opaque_pixels": 694,
+      "alpha_bounds": {
+        "0": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            61,
+            33,
+            1218,
+            1254
+          ],
+          "margins_left_top_right_bottom": [
+            61,
+            33,
+            36,
+            0
+          ],
+          "pixels": 420192,
+          "canvas_edge_pixels": 20
+        },
+        "8": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            269,
+            167,
+            979,
+            1068
+          ],
+          "margins_left_top_right_bottom": [
+            269,
+            167,
+            275,
+            186
+          ],
+          "pixels": 367982,
+          "canvas_edge_pixels": 0
+        },
+        "24": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            269,
+            167,
+            979,
+            1068
+          ],
+          "margins_left_top_right_bottom": [
+            269,
+            167,
+            275,
+            186
+          ],
+          "pixels": 366147,
+          "canvas_edge_pixels": 0
+        },
+        "128": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            270,
+            168,
+            979,
+            1067
+          ],
+          "margins_left_top_right_bottom": [
+            270,
+            168,
+            275,
+            187
+          ],
+          "pixels": 359106,
+          "canvas_edge_pixels": 0
+        }
+      },
+      "generation_tool": "image_gen.imagegen",
+      "generation_mode": "built-in-reference-edit",
+      "source_original_bytes_copied_unchanged": true,
+      "image_manipulation": false,
+      "post_generation_pixel_editing": false,
+      "generated_independently_not_cropped": true,
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "reference_basis": "PROJECT_ORIGINAL_EXISTING_SPRITE",
+      "source_reference_ids": [
+        "R7-kennels-target-v81-71-276-cage-petite-native",
+        "R7-kennels-HWM162-K10-small-cage-open",
+        "R7-kennels-HWM162-K28-small-cage-door-leaf-v1"
+      ],
+      "canon_certified": false,
+      "canonicalOneToOneClaimed": false,
+      "production_status": "GENERATED_ART_CANDIDATE",
+      "runtime_admitted": false,
+      "runtimeIntegrated": false,
+      "human_artistic_validation": "PENDING",
+      "camera_requested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "projection": "orthographic",
+        "source_view": "three-quarter",
+        "source_brief_pitch_degrees": 32,
+        "source_brief_pitch_is_approximate": true,
+        "reference_repo_path": "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-276-cage-petite-native.png",
+        "actual_reference_view_inherited_requested": true,
+        "camera_measured": false,
+        "new_front_0_35_conversion_claimed": false,
+        "opening_angle_measured": false
+      },
+      "camera_measured": false,
+      "physical_scale_validated": false,
+      "transparent_background_requested": true,
+      "strict_alpha_margin_80px_pass": false,
+      "visible_silhouette_entire_at_alpha_gt24": true,
+      "visible_margin_80px_at_alpha_gt24_pass": true,
+      "continuation_after_published_commit": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94",
+      "state_transition_runtime_verified": false,
+      "pixel_aligned_state_pair_verified": false,
+      "component_registration_verified": false,
+      "hinge_mechanism_verified": false,
+      "selected_generation_attempt": 2,
+      "root_visual_review": {
+        "status": "ACCEPTED_ART_CANDIDATE",
+        "reviewer": "root",
+        "review_type": "AI_SOURCE_COMPARISON",
+        "human_validation": false
+      },
+      "fixed_mobile_partition": "Cadre mobile chanfreiné, ses barreaux et prise ajourée au bord libre à droite ; seulement les attaches mobiles côté charnière gauche. Aucun voyant ambre, récepteur fixe, cylindre de pivot fixe, montant basaltique, sol, toit ou cage. Les parties fixes restent dansK27.",
+      "area": "kennels",
+      "targetIds": [
+        "target-v81-71-276"
+      ],
+      "sourceAssetFiles": [
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-276-cage-petite-native.png",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K10-small-cage-open.png"
+      ],
+      "sourceAssetIds": [
+        "HWM162-K10"
+      ],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "expectedPath": "sprites/kennels/HWM162-K28-small-cage-door-leaf.png",
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "productionPass": 7,
+      "transparency_windows": [
+        {
+          "name": "bar_gap",
+          "box_xyxy_exclusive": [
+            490,
+            400,
+            520,
+            850
+          ],
+          "pixels": 13500,
+          "alpha_min": 0,
+          "alpha_max": 1,
+          "pixels_alpha0": 13476,
+          "pixels_alpha_le8": 13500,
+          "pixels_greater8": 0,
+          "pixels_greater24": 0
+        }
+      ]
+    },
+    {
+      "id": "HWM162-K29",
+      "name": "Corps de cage lourde sans battant",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K29-heavy-cage-body.png",
+      "filename": "HWM162-K29-heavy-cage-body.png",
+      "target_ids": [
+        "target-v81-71-278"
+      ],
+      "state_of_source_path": "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png",
+      "source_reference_sha256": "36ea82cb4cc0c9ed08d04e4264d4ae55ca34fd85729ed0bfeea9987f5a2f4fc0",
+      "source_reference_sha256_by_path": {
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png": "36ea82cb4cc0c9ed08d04e4264d4ae55ca34fd85729ed0bfeea9987f5a2f4fc0",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K12-heavy-cage-open.png": "6aa80bb9abdf9934d3eb4ed2859a066720fb9e7f2c9e2056b83adf1608f37650"
+      },
+      "source_reference_commits_by_path": {
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K12-heavy-cage-open.png": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94"
+      },
+      "state": "BODY_WITHOUT_DOOR",
+      "dimensions_m_proposed": {},
+      "scale_note": "Vue et échelle natives propres ; dimensions réelles, raccord, axe de charnière, collision et compatibilité Hounds2010/chiens2018 non certifiés.",
+      "visual_review": "Corps lourd entier sans battant ni boîtier ambre : trois arceaux, patins, plancher, côtés/toit, portique et trois fixations de jambage conservés. Les barreaux visibles au travers de l’accès appartiennent aux parois plus lointaines, pas à une porte fermée. Marges latérales 31/29 px mais silhouette complète. Revue racine acceptée.",
+      "source_original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-a93b684f-b0df-43c2-ab3f-4eef7239908b.png",
+      "size_bytes": 2168078,
+      "sha256": "f6e3b2256c02402ebc8f48522d399f3e2f209826b500fe6f475fdb6c8f9437d9",
+      "git_blob_sha": "e34a0c05e219b67732d2e4be50f09edde1af3754",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alpha_min": 0,
+      "alpha_max": 255,
+      "fully_transparent_pixels": 721871,
+      "fully_opaque_pixels": 1614,
+      "alpha_bounds": {
+        "0": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            29,
+            31,
+            1227,
+            1230
+          ],
+          "margins_left_top_right_bottom": [
+            29,
+            31,
+            27,
+            24
+          ],
+          "pixels": 850645,
+          "canvas_edge_pixels": 0
+        },
+        "8": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            31,
+            104,
+            1225,
+            1157
+          ],
+          "margins_left_top_right_bottom": [
+            31,
+            104,
+            29,
+            97
+          ],
+          "pixels": 820716,
+          "canvas_edge_pixels": 0
+        },
+        "24": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            31,
+            104,
+            1225,
+            1157
+          ],
+          "margins_left_top_right_bottom": [
+            31,
+            104,
+            29,
+            97
+          ],
+          "pixels": 817605,
+          "canvas_edge_pixels": 0
+        },
+        "128": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            32,
+            105,
+            1224,
+            1156
+          ],
+          "margins_left_top_right_bottom": [
+            32,
+            105,
+            30,
+            98
+          ],
+          "pixels": 810487,
+          "canvas_edge_pixels": 0
+        }
+      },
+      "generation_tool": "image_gen.imagegen",
+      "generation_mode": "built-in-reference-edit",
+      "source_original_bytes_copied_unchanged": true,
+      "image_manipulation": false,
+      "post_generation_pixel_editing": false,
+      "generated_independently_not_cropped": true,
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "reference_basis": "PROJECT_ORIGINAL_EXISTING_SPRITE",
+      "source_reference_ids": [
+        "R7-kennels-target-v81-71-278-cage-lourde-native",
+        "R7-kennels-HWM162-K12-heavy-cage-open"
+      ],
+      "canon_certified": false,
+      "canonicalOneToOneClaimed": false,
+      "production_status": "GENERATED_ART_CANDIDATE",
+      "runtime_admitted": false,
+      "runtimeIntegrated": false,
+      "human_artistic_validation": "PENDING",
+      "camera_requested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "projection": "orthographic",
+        "source_view": "three-quarter",
+        "source_brief_pitch_degrees": 32,
+        "source_brief_pitch_is_approximate": true,
+        "reference_repo_path": "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png",
+        "actual_reference_view_inherited_requested": true,
+        "camera_measured": false,
+        "new_front_0_35_conversion_claimed": false,
+        "opening_angle_measured": false
+      },
+      "camera_measured": false,
+      "physical_scale_validated": false,
+      "transparent_background_requested": true,
+      "strict_alpha_margin_80px_pass": false,
+      "visible_silhouette_entire_at_alpha_gt24": true,
+      "visible_margin_80px_at_alpha_gt24_pass": false,
+      "continuation_after_published_commit": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94",
+      "state_transition_runtime_verified": false,
+      "pixel_aligned_state_pair_verified": false,
+      "component_registration_verified": false,
+      "hinge_mechanism_verified": false,
+      "selected_generation_attempt": 1,
+      "root_visual_review": {
+        "status": "ACCEPTED_ART_CANDIDATE",
+        "reviewer": "root",
+        "review_type": "AI_SOURCE_COMPARISON",
+        "human_validation": false
+      },
+      "fixed_mobile_partition": "Conserver les trois arceaux, les patins et le plancher, les côtés et le toit à barreaux, le portique d’extrémité et les trois parties fixes de charnière. Retirer entièrement le battant mobile, ses attaches mobiles et son boîtier ambre ; aucun panneau replié ou posé à côté.",
+      "area": "kennels",
+      "targetIds": [
+        "target-v81-71-278"
+      ],
+      "sourceAssetFiles": [
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K12-heavy-cage-open.png"
+      ],
+      "sourceAssetIds": [
+        "HWM162-K12"
+      ],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "expectedPath": "sprites/kennels/HWM162-K29-heavy-cage-body.png",
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "productionPass": 7
+    },
+    {
+      "id": "HWM162-K30",
+      "name": "Battant de cage lourde — pose fermée",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K30-heavy-cage-door-leaf.png",
+      "filename": "HWM162-K30-heavy-cage-door-leaf.png",
+      "target_ids": [
+        "target-v81-71-278"
+      ],
+      "state_of_source_path": "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png",
+      "source_reference_sha256": "36ea82cb4cc0c9ed08d04e4264d4ae55ca34fd85729ed0bfeea9987f5a2f4fc0",
+      "source_reference_sha256_by_path": {
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png": "36ea82cb4cc0c9ed08d04e4264d4ae55ca34fd85729ed0bfeea9987f5a2f4fc0",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K12-heavy-cage-open.png": "6aa80bb9abdf9934d3eb4ed2859a066720fb9e7f2c9e2056b83adf1608f37650"
+      },
+      "source_reference_commits_by_path": {
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K12-heavy-cage-open.png": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94"
+      },
+      "state": "CLOSED_POSE",
+      "dimensions_m_proposed": {},
+      "scale_note": "Vue et échelle natives propres ; dimensions réelles, raccord, axe de charnière, collision et compatibilité Hounds2010/chiens2018 non certifiés.",
+      "visual_review": "Battant lourd fermé indépendant, traverse médiane et boîtier ambre à droite. Version 2 rétablit cinq barreaux continus, alignés au-dessus et au-dessous de la traverse, au lieu des quatre de la première tentative. Aucun corps ou portique ajouté. Deux fenêtres de 3 000 pixels ont alpha 0–1. Revue racine acceptée.",
+      "source_original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-34b9b582-24bc-4435-9aff-723f97eb52f9.png",
+      "size_bytes": 1251588,
+      "sha256": "3d80af3caeab9628536bb967e0161e5b50dea38204266176202bf0c119264b69",
+      "git_blob_sha": "b6660d58f3cae2518d92f7be874bd1e7a3afb806",
+      "width": 1199,
+      "height": 1312,
+      "mode": "RGBA",
+      "alpha_min": 0,
+      "alpha_max": 255,
+      "fully_transparent_pixels": 1010188,
+      "fully_opaque_pixels": 1337,
+      "alpha_bounds": {
+        "0": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            0,
+            35,
+            1132,
+            1312
+          ],
+          "margins_left_top_right_bottom": [
+            0,
+            35,
+            67,
+            0
+          ],
+          "pixels": 562900,
+          "canvas_edge_pixels": 77
+        },
+        "8": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            223,
+            131,
+            993,
+            1200
+          ],
+          "margins_left_top_right_bottom": [
+            223,
+            131,
+            206,
+            112
+          ],
+          "pixels": 520161,
+          "canvas_edge_pixels": 0
+        },
+        "24": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            223,
+            132,
+            992,
+            1200
+          ],
+          "margins_left_top_right_bottom": [
+            223,
+            132,
+            207,
+            112
+          ],
+          "pixels": 516811,
+          "canvas_edge_pixels": 0
+        },
+        "128": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            224,
+            132,
+            992,
+            1199
+          ],
+          "margins_left_top_right_bottom": [
+            224,
+            132,
+            207,
+            113
+          ],
+          "pixels": 508630,
+          "canvas_edge_pixels": 0
+        }
+      },
+      "generation_tool": "image_gen.imagegen",
+      "generation_mode": "built-in-reference-edit",
+      "source_original_bytes_copied_unchanged": true,
+      "image_manipulation": false,
+      "post_generation_pixel_editing": false,
+      "generated_independently_not_cropped": true,
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "reference_basis": "PROJECT_ORIGINAL_EXISTING_SPRITE",
+      "source_reference_ids": [
+        "R7-kennels-target-v81-71-278-cage-lourde-native",
+        "R7-kennels-HWM162-K12-heavy-cage-open",
+        "R7-kennels-HWM162-K30-heavy-cage-door-leaf-v1"
+      ],
+      "canon_certified": false,
+      "canonicalOneToOneClaimed": false,
+      "production_status": "GENERATED_ART_CANDIDATE",
+      "runtime_admitted": false,
+      "runtimeIntegrated": false,
+      "human_artistic_validation": "PENDING",
+      "camera_requested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "projection": "orthographic",
+        "source_view": "three-quarter",
+        "source_brief_pitch_degrees": 32,
+        "source_brief_pitch_is_approximate": true,
+        "reference_repo_path": "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png",
+        "actual_reference_view_inherited_requested": true,
+        "camera_measured": false,
+        "new_front_0_35_conversion_claimed": false,
+        "opening_angle_measured": false
+      },
+      "camera_measured": false,
+      "physical_scale_validated": false,
+      "transparent_background_requested": true,
+      "strict_alpha_margin_80px_pass": false,
+      "visible_silhouette_entire_at_alpha_gt24": true,
+      "visible_margin_80px_at_alpha_gt24_pass": true,
+      "continuation_after_published_commit": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94",
+      "state_transition_runtime_verified": false,
+      "pixel_aligned_state_pair_verified": false,
+      "component_registration_verified": false,
+      "hinge_mechanism_verified": false,
+      "selected_generation_attempt": 2,
+      "root_visual_review": {
+        "status": "ACCEPTED_ART_CANDIDATE",
+        "reviewer": "root",
+        "review_type": "AI_SOURCE_COMPARISON",
+        "human_validation": false
+      },
+      "fixed_mobile_partition": "Cadre mobile bronze/métal sombre, barreaux verticaux, traverse médiane et boîtier ambre au bord libre à droite ; seulement les attaches mobiles côté charnière gauche. Aucune partie fixe de charnière, aucun montant basaltique, patin, sol, toit ni corps de cage.",
+      "area": "kennels",
+      "targetIds": [
+        "target-v81-71-278"
+      ],
+      "sourceAssetFiles": [
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K12-heavy-cage-open.png"
+      ],
+      "sourceAssetIds": [
+        "HWM162-K12"
+      ],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "expectedPath": "sprites/kennels/HWM162-K30-heavy-cage-door-leaf.png",
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "productionPass": 7,
+      "transparency_windows": [
+        {
+          "name": "upper_bar_gap",
+          "box_xyxy_exclusive": [
+            440,
+            350,
+            460,
+            500
+          ],
+          "pixels": 3000,
+          "alpha_min": 0,
+          "alpha_max": 1,
+          "pixels_alpha0": 2906,
+          "pixels_alpha_le8": 3000,
+          "pixels_greater8": 0,
+          "pixels_greater24": 0
+        },
+        {
+          "name": "lower_bar_gap",
+          "box_xyxy_exclusive": [
+            440,
+            750,
+            460,
+            900
+          ],
+          "pixels": 3000,
+          "alpha_min": 0,
+          "alpha_max": 1,
+          "pixels_alpha0": 2600,
+          "pixels_alpha_le8": 3000,
+          "pixels_greater8": 0,
+          "pixels_greater24": 0
+        }
+      ]
+    },
+    {
+      "id": "HWM162-K31",
+      "name": "Battant de petite cage — pose ouverte",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K31-small-cage-door-leaf-open.png",
+      "filename": "HWM162-K31-small-cage-door-leaf-open.png",
+      "target_ids": [
+        "target-v81-71-276"
+      ],
+      "state_of_source_path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K10-small-cage-open.png",
+      "source_reference_sha256": "75eb31d88524b14d8d3a037ef22632423e2717b0649a22595366d56321037e44",
+      "source_reference_sha256_by_path": {
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K10-small-cage-open.png": "75eb31d88524b14d8d3a037ef22632423e2717b0649a22595366d56321037e44",
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-276-cage-petite-native.png": "b5e4da0ccb43732e03abde69a0eacee6a8a73c8282918aaf3bdead116c8c1073"
+      },
+      "source_reference_commits_by_path": {
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K10-small-cage-open.png": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94",
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-276-cage-petite-native.png": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94"
+      },
+      "state": "OPEN_POSE",
+      "dimensions_m_proposed": {},
+      "scale_note": "Vue et échelle natives propres ; dimensions réelles, raccord, axe de charnière, collision et compatibilité Hounds2010/chiens2018 non certifiés.",
+      "visual_review": "Battant petit ouvert indépendant : quatre barreaux, prise libre à gauche, bord articulé à droite, sans ambre. Version 2 retire les cylindres fixes complets et conserve seulement deux petites pattes mobiles plates percées. Pose héritée de K10, aucune rotation ou symétrie de pixels. Fenêtre de 9 460 pixels strictement alpha0 ; les rougeurs RGB mesurées par root sont toutes alpha1–5. Revue racine acceptée.",
+      "source_original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-96ae9a2d-dbbe-4a46-bbc6-9c8605c3ce83.png",
+      "size_bytes": 657841,
+      "sha256": "180662b2843e3ae9a93eb236edd7263c9c8fa10eae596d4516be05993eab8d95",
+      "git_blob_sha": "c96419dae916c813f8b4b97b0bcdebc48b4f032a",
+      "width": 1263,
+      "height": 1246,
+      "mode": "RGBA",
+      "alpha_min": 0,
+      "alpha_max": 255,
+      "fully_transparent_pixels": 1279371,
+      "fully_opaque_pixels": 1556,
+      "alpha_bounds": {
+        "0": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            41,
+            113,
+            1184,
+            1157
+          ],
+          "margins_left_top_right_bottom": [
+            41,
+            113,
+            79,
+            89
+          ],
+          "pixels": 294327,
+          "canvas_edge_pixels": 0
+        },
+        "8": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            314,
+            189,
+            976,
+            1028
+          ],
+          "margins_left_top_right_bottom": [
+            314,
+            189,
+            287,
+            218
+          ],
+          "pixels": 267891,
+          "canvas_edge_pixels": 0
+        },
+        "24": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            314,
+            189,
+            976,
+            1028
+          ],
+          "margins_left_top_right_bottom": [
+            314,
+            189,
+            287,
+            218
+          ],
+          "pixels": 265995,
+          "canvas_edge_pixels": 0
+        },
+        "128": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            315,
+            190,
+            975,
+            1028
+          ],
+          "margins_left_top_right_bottom": [
+            315,
+            190,
+            288,
+            218
+          ],
+          "pixels": 260013,
+          "canvas_edge_pixels": 0
+        }
+      },
+      "generation_tool": "image_gen.imagegen",
+      "generation_mode": "built-in-reference-edit",
+      "source_original_bytes_copied_unchanged": true,
+      "image_manipulation": false,
+      "post_generation_pixel_editing": false,
+      "generated_independently_not_cropped": true,
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "reference_basis": "PROJECT_ORIGINAL_EXISTING_SPRITE",
+      "source_reference_ids": [
+        "R7-kennels-HWM162-K10-small-cage-open",
+        "R7-kennels-target-v81-71-276-cage-petite-native",
+        "R7-kennels-HWM162-K31-small-cage-door-leaf-open-v1"
+      ],
+      "canon_certified": false,
+      "canonicalOneToOneClaimed": false,
+      "production_status": "GENERATED_ART_CANDIDATE",
+      "runtime_admitted": false,
+      "runtimeIntegrated": false,
+      "human_artistic_validation": "PENDING",
+      "camera_requested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "projection": "orthographic",
+        "source_view": "three-quarter",
+        "source_brief_pitch_degrees": 32,
+        "source_brief_pitch_is_approximate": true,
+        "reference_repo_path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K10-small-cage-open.png",
+        "actual_reference_view_inherited_requested": true,
+        "camera_measured": false,
+        "new_front_0_35_conversion_claimed": false,
+        "opening_angle_measured": false
+      },
+      "camera_measured": false,
+      "physical_scale_validated": false,
+      "transparent_background_requested": true,
+      "strict_alpha_margin_80px_pass": false,
+      "visible_silhouette_entire_at_alpha_gt24": true,
+      "visible_margin_80px_at_alpha_gt24_pass": true,
+      "continuation_after_published_commit": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94",
+      "state_transition_runtime_verified": false,
+      "pixel_aligned_state_pair_verified": false,
+      "component_registration_verified": false,
+      "hinge_mechanism_verified": false,
+      "selected_generation_attempt": 2,
+      "root_visual_review": {
+        "status": "ACCEPTED_ART_CANDIDATE",
+        "reviewer": "root",
+        "review_type": "AI_SOURCE_COMPARISON",
+        "human_validation": false
+      },
+      "fixed_mobile_partition": "Reprendre la pose ouverte deK10 : bord libre et prise ajourée à gauche, bord articulé à droite. Conserver uniquement le battant mobile et ses attaches ; aucun voyant, récepteur fixe, pivot fixe, montant basaltique ou corps. La forme du battant reste celle de276/K10, sans miroir de pixels.",
+      "area": "kennels",
+      "targetIds": [
+        "target-v81-71-276"
+      ],
+      "sourceAssetFiles": [
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K10-small-cage-open.png",
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-276-cage-petite-native.png"
+      ],
+      "sourceAssetIds": [
+        "HWM162-K10"
+      ],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "expectedPath": "sprites/kennels/HWM162-K31-small-cage-door-leaf-open.png",
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "productionPass": 7,
+      "transparency_windows": [
+        {
+          "name": "bar_gap",
+          "box_xyxy_exclusive": [
+            588,
+            420,
+            610,
+            850
+          ],
+          "pixels": 9460,
+          "alpha_min": 0,
+          "alpha_max": 0,
+          "pixels_alpha0": 9460,
+          "pixels_alpha_le8": 9460,
+          "pixels_greater8": 0,
+          "pixels_greater24": 0
+        }
+      ],
+      "root_reported_color_residue_check": {
+        "predicate": "R>180 and G<60 and B<60",
+        "matching_pixels": 1184,
+        "matching_pixels_alpha_gt8": 0,
+        "matching_alpha_min": 1,
+        "matching_alpha_max": 5,
+        "decision": "Low-alpha native color residues retained."
+      }
+    },
+    {
+      "id": "HWM162-K32",
+      "name": "Battant de cage lourde — pose ouverte",
+      "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K32-heavy-cage-door-leaf-open.png",
+      "filename": "HWM162-K32-heavy-cage-door-leaf-open.png",
+      "target_ids": [
+        "target-v81-71-278"
+      ],
+      "state_of_source_path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K12-heavy-cage-open.png",
+      "source_reference_sha256": "6aa80bb9abdf9934d3eb4ed2859a066720fb9e7f2c9e2056b83adf1608f37650",
+      "source_reference_sha256_by_path": {
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K12-heavy-cage-open.png": "6aa80bb9abdf9934d3eb4ed2859a066720fb9e7f2c9e2056b83adf1608f37650",
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png": "36ea82cb4cc0c9ed08d04e4264d4ae55ca34fd85729ed0bfeea9987f5a2f4fc0"
+      },
+      "source_reference_commits_by_path": {
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K12-heavy-cage-open.png": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94",
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94"
+      },
+      "state": "OPEN_POSE",
+      "dimensions_m_proposed": {},
+      "scale_note": "Vue et échelle natives propres ; dimensions réelles, raccord, axe de charnière, collision et compatibilité Hounds2010/chiens2018 non certifiés.",
+      "visual_review": "Battant lourd ouvert : cadre mobile bronze simple, cinq barreaux, traverse médiane, boîtier ambre à gauche et trois œillets mobiles à droite. La version 2 retire un rail sombre supérieur et une enveloppe de portique dupliqués dans la référence composite K12, en s’appuyant sur 278 fermé ; les attaches mobiles sont reconstruites sobrement. Les sources K12/278 restent inchangées. La version 3 retire uniquement le voile des ajours : fenêtres de 2 250 et 3 500 pixels maintenant strictement alpha0, contre alpha28–40 et7–23 en v2. Pose et composants conservés, marge basse59 px. Revue racine acceptée.",
+      "source_original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-1029851a-7c6a-41ea-9471-92343b8bf463.png",
+      "size_bytes": 1662701,
+      "sha256": "bd760af652b6349e584fdd7f96bc8c8aaea22cf1c9c6f7a2248eae694503ae58",
+      "git_blob_sha": "723efcad3b5c078e19b6e77f06524f97953f342c",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alpha_min": 0,
+      "alpha_max": 254,
+      "fully_transparent_pixels": 1168221,
+      "fully_opaque_pixels": 0,
+      "alpha_bounds": {
+        "0": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            33,
+            71,
+            1510,
+            998
+          ],
+          "margins_left_top_right_bottom": [
+            33,
+            71,
+            26,
+            26
+          ],
+          "pixels": 404643,
+          "canvas_edge_pixels": 0
+        },
+        "8": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            367,
+            77,
+            1170,
+            965
+          ],
+          "margins_left_top_right_bottom": [
+            367,
+            77,
+            366,
+            59
+          ],
+          "pixels": 377876,
+          "canvas_edge_pixels": 0
+        },
+        "24": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            368,
+            77,
+            1169,
+            965
+          ],
+          "margins_left_top_right_bottom": [
+            368,
+            77,
+            367,
+            59
+          ],
+          "pixels": 375716,
+          "canvas_edge_pixels": 0
+        },
+        "128": {
+          "alpha_comparison": "greater_than",
+          "bbox_xyxy_exclusive": [
+            368,
+            77,
+            1169,
+            964
+          ],
+          "margins_left_top_right_bottom": [
+            368,
+            77,
+            367,
+            60
+          ],
+          "pixels": 370463,
+          "canvas_edge_pixels": 0
+        }
+      },
+      "generation_tool": "image_gen.imagegen",
+      "generation_mode": "built-in-reference-edit",
+      "source_original_bytes_copied_unchanged": true,
+      "image_manipulation": false,
+      "post_generation_pixel_editing": false,
+      "generated_independently_not_cropped": true,
+      "lore_status": "ORIGINAL_GAME_ADAPTATION",
+      "reference_basis": "PROJECT_ORIGINAL_EXISTING_SPRITE",
+      "source_reference_ids": [
+        "R7-kennels-HWM162-K12-heavy-cage-open",
+        "R7-kennels-target-v81-71-278-cage-lourde-native",
+        "R7-kennels-HWM162-K32-heavy-cage-door-leaf-open-v1",
+        "R7-kennels-HWM162-K32-heavy-cage-door-leaf-open-v2"
+      ],
+      "canon_certified": false,
+      "canonicalOneToOneClaimed": false,
+      "production_status": "GENERATED_ART_CANDIDATE",
+      "runtime_admitted": false,
+      "runtimeIntegrated": false,
+      "human_artistic_validation": "PENDING",
+      "camera_requested": {
+        "mode": "INHERIT_REFERENCE_VIEW",
+        "projection": "orthographic",
+        "source_view": "three-quarter",
+        "source_brief_pitch_degrees": 32,
+        "source_brief_pitch_is_approximate": true,
+        "reference_repo_path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K12-heavy-cage-open.png",
+        "actual_reference_view_inherited_requested": true,
+        "camera_measured": false,
+        "new_front_0_35_conversion_claimed": false,
+        "opening_angle_measured": false
+      },
+      "camera_measured": false,
+      "physical_scale_validated": false,
+      "transparent_background_requested": true,
+      "strict_alpha_margin_80px_pass": false,
+      "visible_silhouette_entire_at_alpha_gt24": true,
+      "visible_margin_80px_at_alpha_gt24_pass": false,
+      "continuation_after_published_commit": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94",
+      "state_transition_runtime_verified": false,
+      "pixel_aligned_state_pair_verified": false,
+      "component_registration_verified": false,
+      "hinge_mechanism_verified": false,
+      "selected_generation_attempt": 3,
+      "root_visual_review": {
+        "status": "ACCEPTED_ART_CANDIDATE",
+        "reviewer": "root",
+        "review_type": "AI_SOURCE_COMPARISON",
+        "human_validation": false
+      },
+      "fixed_mobile_partition": "Reprendre la pose ouverte deK12 : bord libre et boîtier ambre à gauche, bord articulé à droite. Garder cadre, barreaux, traverse médiane, boîtier mobile et attaches mobiles, sans éléments de corps, charnières fixes, piliers basaltique, patins, sol ou toit. Aucun miroir de pixels.",
+      "area": "kennels",
+      "targetIds": [
+        "target-v81-71-278"
+      ],
+      "sourceAssetFiles": [
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K12-heavy-cage-open.png",
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png"
+      ],
+      "sourceAssetIds": [
+        "HWM162-K12"
+      ],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "expectedPath": "sprites/kennels/HWM162-K32-heavy-cage-door-leaf-open.png",
+      "viewPolicy": "INHERIT_REFERENCE_VIEW",
+      "productionPass": 7,
+      "transparency_windows": [
+        {
+          "name": "upper_bar_gap",
+          "box_xyxy_exclusive": [
+            710,
+            360,
+            735,
+            450
+          ],
+          "pixels": 2250,
+          "alpha_min": 0,
+          "alpha_max": 0,
+          "pixels_alpha0": 2250,
+          "pixels_alpha_le8": 2250,
+          "pixels_greater8": 0,
+          "pixels_greater24": 0
+        },
+        {
+          "name": "lower_bar_gap",
+          "box_xyxy_exclusive": [
+            710,
+            650,
+            735,
+            790
+          ],
+          "pixels": 3500,
+          "alpha_min": 0,
+          "alpha_max": 0,
+          "pixels_alpha0": 3500,
+          "pixels_alpha_le8": 3500,
+          "pixels_greater8": 0,
+          "pixels_greater24": 0
+        }
+      ]
     }
   ],
   "attempts": [
@@ -4582,6 +5732,837 @@
       "source_original_bytes_copied_unchanged": true,
       "post_generation_pixel_editing": false,
       "retry_decision": "Sélection après comparaison visuelle racine ; silhouette entière et limites de caméra/échelle/registration consignées."
+    },
+    {
+      "id": "HWM162-K27",
+      "attempt": 1,
+      "productionPass": 7,
+      "prompt": "Use case: precise-object-edit.\nAsset HWM162-K27: ONE independent EMPTY SMALL CAGE BODY, with the movable hinged door completely removed. Original game art adaptation, not a claim about a film-canonical kennel or an animal's measured size.\n\nImage1 is the original closed compact faceted cage276: identity, materials, elevated three-quarter camera and construction.\nImage2 is the same project cage with the front door swung left (K10): it reveals the open entrance and proves that the AMBER RECEIVER STAYS ON THE FIXED RIGHT JAMB, while the plain rectangular loop handle moves with the door.\n\nKeep the entire small cage BODY unchanged in design: compact faceted/hexagonal footprint, porous charcoal basalt base and floor, corner feet and basalt shoulders with worn bronze clamps, fixed side/rear vertical bars, polygonal open bar roof, and the single angular carrying handle at the back of the roof. Keep the fixed chamfered bronze doorway surround and its open center. Preserve the TWO stationary hinge barrels/pins on the LEFT jamb and the amber receiver box on the RIGHT jamb.\n\nREMOVE the WHOLE movable door: its chamfered mobile perimeter, its vertical bars, loop handle and door-side hinge lugs. It must not remain swung to the left, folded against a wall, laid on the floor or floating nearby. Only the stationary halves of the two hinges remain on the body; do not duplicate hinge parts. The doorway stays fully open and clear, exposing the real floor and far bars, as in image2. Do not erase legitimate rear bars seen through the entry and do not add replacement foreground bars across the opening.\n\nInherit the original elevated three-quarter orthographic view and upper-left light, preserve the orientation, proportions and basalt/aged-bronze textures. Do not redesign the body as a rectangular cage or remove its roof carrying handle. No creature, person, loose prop, food, chain or extra object.\n\nRender one complete connected body centered on genuine transparent alpha, with comfortable clear margins of at least80px and the full roof handle, base and feet visible. Source framing and apparent scale should be kept as closely as feasible; do not crop or zoom into the doorway. Transparent air gaps wherever no actual structure/floor stands behind them. No environment, ground tile, floor shadow, opaque backdrop, halo, haze, painted checkerboard, text, label, arrows, diagram, atlas, contact sheet or second view. Native sprite only.",
+      "prompt_utf8_sha256": "c6684aee7b2f21c5825e66c7f60c87bf0b91a5791f07ffaaa0fbd5b8af84dceb",
+      "status": "GENERATED_SELECTED",
+      "original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-35730c4f-00ce-4aaf-85cd-77096af94b48.png",
+      "sha256": "7a2911053209d28b6ddae419412d7375db3b1dfb9ca5face89d7c90e86c800e9",
+      "size_bytes": 2001588,
+      "output_hint": "Generated images are saved to /workspace/scratch/2166fec07f86/generated_images as /workspace/scratch/2166fec07f86/generated_images/exec-35730c4f-00ce-4aaf-85cd-77096af94b48.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "reference_images_inspected_before_generation": [
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-276-cage-petite-native.png",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K10-small-cage-open.png"
+      ],
+      "reference_image_parameters_used": true,
+      "referenced_image_paths": [
+        "/workspace/scratch/2166fec07f86/round3-references/target-v81-71-276-cage-petite-native.png",
+        "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/kennels/HWM162-K10-small-cage-open.png"
+      ],
+      "reference_sha256s": [
+        {
+          "path": "/workspace/scratch/2166fec07f86/round3-references/target-v81-71-276-cage-petite-native.png",
+          "repo_path": "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-276-cage-petite-native.png",
+          "sha256": "b5e4da0ccb43732e03abde69a0eacee6a8a73c8282918aaf3bdead116c8c1073",
+          "kind": "BASELINE_NATIVE_SPRITE",
+          "sourceCommit": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94"
+        },
+        {
+          "path": "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/kennels/HWM162-K10-small-cage-open.png",
+          "repo_path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K10-small-cage-open.png",
+          "sha256": "75eb31d88524b14d8d3a037ef22632423e2717b0649a22595366d56321037e44",
+          "kind": "BASELINE_NATIVE_SPRITE",
+          "sourceCommit": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94"
+        }
+      ],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "transparent_background": true,
+      "source_original_bytes_copied_unchanged": true,
+      "post_generation_pixel_editing": false,
+      "retry_decision": "Sélection après revue racine, avec silhouette entière et limites explicites de caméra/échelle/registration."
+    },
+    {
+      "id": "HWM162-K28",
+      "attempt": 1,
+      "productionPass": 7,
+      "prompt": "Use case: precise-object-edit. HWM162-K28: ONLY the movable SMALL CAGE DOOR LEAF in its CLOSED pose.\nImage1 shows compact cage276 closed; use its exact closed mobile door as the identity and pose reference. Image2 shows K10 opened, clarifying that the AMBER RECEIVER stays on the fixed body, while the plain rectangular loop handle moves with the leaf.\nRender the mobile leaf ALONE, detached from the cage but kept in the same projected closed orientation as image1. Preserve the chamfered/octagonal angular bronze perimeter, FOUR slender vertical interior bars, and plain rectangular open loop handle on the RIGHT free edge. No horizontal middle rail: this small door has vertical bars and a free-edge handle. Keep only the small hinge lugs belonging to the mobile leaf along its LEFT edge. The two large stationary hinge barrels/pins remain on the cage body and must not be duplicated on this leaf.\nThe leaf has NO amber light, lens, fixed receiver, electronics or lockbox. Do not copy the amber box from the right jamb. No fixed doorway surround, basalt jambs, pillars, roof, carrying handle, floor, feet, rear cage bars or cage body. Every space between the FOUR bars and through the loop handle must be true alpha transparency. This is a small specific chamfered cage door, not a broad corral gate or a human modern door. Keep its closed projected plane: top/bottom edges lean gently down toward the right as in image1; do not mirror it.\nKeep the inherited elevated three-quarter orthographic camera, source proportions and upper-left lighting; no camera orbit, front-view rectification, pixel mirror or changed construction. The image is an original project adaptation, not a canonical or measured animal enclosure. One complete independent native RGBA sprite, centered with generous genuinely transparent margins of at least80px requested, no cropped corners or fittings. True transparent air gaps wherever no actual physical surface is present. No opaque backdrop, scene, ground tile, floor shadow, haze, halo, painted checkerboard, labels, lettering, arrows, grid, duplicate view, contact sheet, creature, person or loose prop. No second object.",
+      "prompt_utf8_sha256": "5bd2ccc97a867702bde3dbf3563bdc0e872d4858295962e8dfdcf4bae24c35ed",
+      "status": "GENERATED_REJECTED_ARCHIVED",
+      "original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-08350771-5254-47c5-bc0f-8a42c91e60eb.png",
+      "sha256": "ba6734e541b1b601e1fd171fa29ca172a2d7fbe005f7092773d8df7c650ff012",
+      "size_bytes": 975350,
+      "output_hint": "Generated images are saved to /workspace/scratch/2166fec07f86/generated_images as /workspace/scratch/2166fec07f86/generated_images/exec-08350771-5254-47c5-bc0f-8a42c91e60eb.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "reference_images_inspected_before_generation": [
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-276-cage-petite-native.png",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K10-small-cage-open.png"
+      ],
+      "reference_image_parameters_used": true,
+      "referenced_image_paths": [
+        "/workspace/scratch/2166fec07f86/round3-references/target-v81-71-276-cage-petite-native.png",
+        "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/kennels/HWM162-K10-small-cage-open.png"
+      ],
+      "reference_sha256s": [
+        {
+          "path": "/workspace/scratch/2166fec07f86/round3-references/target-v81-71-276-cage-petite-native.png",
+          "repo_path": "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-276-cage-petite-native.png",
+          "sha256": "b5e4da0ccb43732e03abde69a0eacee6a8a73c8282918aaf3bdead116c8c1073",
+          "kind": "BASELINE_NATIVE_SPRITE",
+          "sourceCommit": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94"
+        },
+        {
+          "path": "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/kennels/HWM162-K10-small-cage-open.png",
+          "repo_path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K10-small-cage-open.png",
+          "sha256": "75eb31d88524b14d8d3a037ef22632423e2717b0649a22595366d56321037e44",
+          "kind": "BASELINE_NATIVE_SPRITE",
+          "sourceCommit": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94"
+        }
+      ],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "transparent_background": true,
+      "source_original_bytes_copied_unchanged": true,
+      "post_generation_pixel_editing": false,
+      "retry_decision": "Deux gros pivots complets sur le battant font doublon avec les cylindres fixes deK27 ; correction native des seuls volumes de pivot en petites pattes mobiles plates, approuvée par root.",
+      "archive_path": "production/homeworld-sectors-20261103/attempts/kennels/HWM162-K28-small-cage-door-leaf-v1.png",
+      "selected": false,
+      "alpha_bounds": {
+        "0": {
+          "bboxExclusive": [
+            47,
+            9,
+            1214,
+            1254
+          ],
+          "marginsLTRB": [
+            47,
+            9,
+            40,
+            0
+          ],
+          "occupiedPixels": 414845,
+          "canvasEdgePixels": 13
+        },
+        "8": {
+          "bboxExclusive": [
+            237,
+            169,
+            979,
+            1066
+          ],
+          "marginsLTRB": [
+            237,
+            169,
+            275,
+            188
+          ],
+          "occupiedPixels": 368014,
+          "canvasEdgePixels": 0
+        },
+        "24": {
+          "bboxExclusive": [
+            238,
+            169,
+            978,
+            1066
+          ],
+          "marginsLTRB": [
+            238,
+            169,
+            276,
+            188
+          ],
+          "occupiedPixels": 365519,
+          "canvasEdgePixels": 0
+        },
+        "128": {
+          "bboxExclusive": [
+            238,
+            170,
+            978,
+            1066
+          ],
+          "marginsLTRB": [
+            238,
+            170,
+            276,
+            188
+          ],
+          "occupiedPixels": 358672,
+          "canvasEdgePixels": 0
+        }
+      }
+    },
+    {
+      "id": "HWM162-K30",
+      "attempt": 1,
+      "productionPass": 7,
+      "prompt": "Use case: precise-object-edit. HWM162-K30: ONLY the movable HEAVY CAGE DOOR LEAF in its CLOSED pose.\nImage1 shows heavy cage278 closed and establishes the leaf identity and closed projected plane. Image2 shows the same model opened as K12 and proves that the AMBER LOCKBOX follows the door.\nRender the movable leaf alone, detached but held in the same CLOSED orientation as image1. Preserve its substantial angular aged-bronze/dark-metal perimeter, FIVE heavy vertical bars, single thick horizontal middle brace, and attached compact AMBER LOCKBOX on the RIGHT free edge at about middle height. Keep the leaf-side hinge lugs along its LEFT edge, but do not include the three large stationary hinge blocks/pins or their fixed jamb. The amber lockbox belongs exclusively to this mobile leaf; retain it clearly.\nRemove ALL cage body: no basalt pillars or large basalt blocks, no fixed doorway portal, runners, floor, roof bars, rear bars, other walls, fixed hinge mountings or extra hardware. The door perimeter itself has metal thickness and chamfered corners, without a large stone jamb attached. The spaces between its FIVE vertical bars are genuine transparent holes with no background cage visible.\nPreserve the closed projected plane of image1: upper/lower rails lean gently down toward the right, hinge edge left and free/latch edge right. Do not turn it into a frontal rectangular poster or an opened pose, and do not mirror the latch side.\nKeep the inherited elevated three-quarter orthographic camera, source proportions and upper-left lighting; no camera orbit, front-view rectification, pixel mirror or changed construction. The image is an original project adaptation, not a canonical or measured animal enclosure. One complete independent native RGBA sprite, centered with generous genuinely transparent margins of at least80px requested, no cropped corners or fittings. True transparent air gaps wherever no actual physical surface is present. No opaque backdrop, scene, ground tile, floor shadow, haze, halo, painted checkerboard, labels, lettering, arrows, grid, duplicate view, contact sheet, creature, person or loose prop. No second object.",
+      "prompt_utf8_sha256": "b7f604dd3e5ffead727fe631d24c6816315f20b510668e1e2c1c2c8f89a4d9d2",
+      "status": "GENERATED_REJECTED_ARCHIVED",
+      "original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-d04cfc8c-dced-4496-b8a5-16324449a50c.png",
+      "sha256": "b35bf1755b0b9ebcd3bda038d8e1f195fb6bcf3217e0d9946e2c770ddaade67f",
+      "size_bytes": 1310333,
+      "output_hint": "Generated images are saved to /workspace/scratch/2166fec07f86/generated_images as /workspace/scratch/2166fec07f86/generated_images/exec-d04cfc8c-dced-4496-b8a5-16324449a50c.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "reference_images_inspected_before_generation": [
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K12-heavy-cage-open.png"
+      ],
+      "reference_image_parameters_used": true,
+      "referenced_image_paths": [
+        "/workspace/scratch/2166fec07f86/round3-references/target-v81-71-278-cage-lourde-native.png",
+        "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/kennels/HWM162-K12-heavy-cage-open.png"
+      ],
+      "reference_sha256s": [
+        {
+          "path": "/workspace/scratch/2166fec07f86/round3-references/target-v81-71-278-cage-lourde-native.png",
+          "repo_path": "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png",
+          "sha256": "36ea82cb4cc0c9ed08d04e4264d4ae55ca34fd85729ed0bfeea9987f5a2f4fc0",
+          "kind": "BASELINE_NATIVE_SPRITE",
+          "sourceCommit": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94"
+        },
+        {
+          "path": "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/kennels/HWM162-K12-heavy-cage-open.png",
+          "repo_path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K12-heavy-cage-open.png",
+          "sha256": "6aa80bb9abdf9934d3eb4ed2859a066720fb9e7f2c9e2056b83adf1608f37650",
+          "kind": "BASELINE_NATIVE_SPRITE",
+          "sourceCommit": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94"
+        }
+      ],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "transparent_background": true,
+      "source_original_bytes_copied_unchanged": true,
+      "post_generation_pixel_editing": false,
+      "retry_decision": "Porte fermée à quatre barreaux : ajouter le cinquième barreau continu, garder traverse et boîtier ambre à droite.",
+      "archive_path": "production/homeworld-sectors-20261103/attempts/kennels/HWM162-K30-heavy-cage-door-leaf-v1.png",
+      "selected": false,
+      "alpha_bounds": {
+        "0": {
+          "bboxExclusive": [
+            0,
+            8,
+            1175,
+            1312
+          ],
+          "marginsLTRB": [
+            0,
+            8,
+            24,
+            0
+          ],
+          "occupiedPixels": 537918,
+          "canvasEdgePixels": 207
+        },
+        "8": {
+          "bboxExclusive": [
+            221,
+            131,
+            977,
+            1184
+          ],
+          "marginsLTRB": [
+            221,
+            131,
+            222,
+            128
+          ],
+          "occupiedPixels": 480971,
+          "canvasEdgePixels": 0
+        },
+        "24": {
+          "bboxExclusive": [
+            222,
+            131,
+            977,
+            1184
+          ],
+          "marginsLTRB": [
+            222,
+            131,
+            222,
+            128
+          ],
+          "occupiedPixels": 479034,
+          "canvasEdgePixels": 0
+        },
+        "128": {
+          "bboxExclusive": [
+            222,
+            132,
+            976,
+            1183
+          ],
+          "marginsLTRB": [
+            222,
+            132,
+            223,
+            129
+          ],
+          "occupiedPixels": 472098,
+          "canvasEdgePixels": 0
+        }
+      }
+    },
+    {
+      "id": "HWM162-K29",
+      "attempt": 1,
+      "productionPass": 7,
+      "prompt": "Use case: precise-object-edit. HWM162-K29: ONE EMPTY HEAVY CAGE BODY with its movable end door completely absent.\nImage1 is the original heavy cage278 closed, the exact identity reference. Image2 is its opened state K12, revealing the entry and demonstrating that the amber lockbox MOVES WITH THE DOOR.\nPreserve the complete heavy elongated BODY: THREE massive transverse basalt/aged-bronze reinforcing arches, the two long low supporting runners with sloped ends, full solid pitted floor, thick side/rear vertical bars, horizontal side braces, heavy open roof bars, and the fixed end portal. Preserve the THREE stationary hinge fittings on the LEFT entrance jamb. Keep the original materials, proportion and camera.\nREMOVE the entire movable end door, all its bars, its own perimeter and middle brace, its mobile hinge lugs, AND its amber lockbox. There must be NO AMBER LOCKBOX left anywhere on this body. Do not keep the panel swung outward, folded against the side, on the floor or nearby. Keep only the stationary hinge halves on the body; the movable halves belong to the separate leaf.\nLeave a broad completely unobstructed end opening, exposing the real floor and far/side bars as in image2. Do not remove legitimate rear bars seen through the entrance and do not place new foreground bars or a plate across it. No animal, extra panel, new door or additional equipment. All three arches and both runners fit fully inside the canvas.\nKeep the inherited elevated three-quarter orthographic camera, source proportions and upper-left lighting; no camera orbit, front-view rectification, pixel mirror or changed construction. The image is an original project adaptation, not a canonical or measured animal enclosure. One complete independent native RGBA sprite, centered with generous genuinely transparent margins of at least80px requested, no cropped corners or fittings. True transparent air gaps wherever no actual physical surface is present. No opaque backdrop, scene, ground tile, floor shadow, haze, halo, painted checkerboard, labels, lettering, arrows, grid, duplicate view, contact sheet, creature, person or loose prop. No second object.",
+      "prompt_utf8_sha256": "03ebd87f38ebecc83b5fa11c6e3bac078ef161308eee2bca5fdada04163b3cf7",
+      "status": "GENERATED_SELECTED",
+      "original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-a93b684f-b0df-43c2-ab3f-4eef7239908b.png",
+      "sha256": "f6e3b2256c02402ebc8f48522d399f3e2f209826b500fe6f475fdb6c8f9437d9",
+      "size_bytes": 2168078,
+      "output_hint": "Generated images are saved to /workspace/scratch/2166fec07f86/generated_images as /workspace/scratch/2166fec07f86/generated_images/exec-a93b684f-b0df-43c2-ab3f-4eef7239908b.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "reference_images_inspected_before_generation": [
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png",
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K12-heavy-cage-open.png"
+      ],
+      "reference_image_parameters_used": true,
+      "referenced_image_paths": [
+        "/workspace/scratch/2166fec07f86/round3-references/target-v81-71-278-cage-lourde-native.png",
+        "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/kennels/HWM162-K12-heavy-cage-open.png"
+      ],
+      "reference_sha256s": [
+        {
+          "path": "/workspace/scratch/2166fec07f86/round3-references/target-v81-71-278-cage-lourde-native.png",
+          "repo_path": "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png",
+          "sha256": "36ea82cb4cc0c9ed08d04e4264d4ae55ca34fd85729ed0bfeea9987f5a2f4fc0",
+          "kind": "BASELINE_NATIVE_SPRITE",
+          "sourceCommit": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94"
+        },
+        {
+          "path": "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/kennels/HWM162-K12-heavy-cage-open.png",
+          "repo_path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K12-heavy-cage-open.png",
+          "sha256": "6aa80bb9abdf9934d3eb4ed2859a066720fb9e7f2c9e2056b83adf1608f37650",
+          "kind": "BASELINE_NATIVE_SPRITE",
+          "sourceCommit": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94"
+        }
+      ],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "transparent_background": true,
+      "source_original_bytes_copied_unchanged": true,
+      "post_generation_pixel_editing": false,
+      "retry_decision": "Sélection après revue racine, avec silhouette entière et limites explicites de caméra/échelle/registration."
+    },
+    {
+      "id": "HWM162-K31",
+      "attempt": 1,
+      "productionPass": 7,
+      "prompt": "Use case: precise-object-edit. HWM162-K31: ONLY the movable SMALL CAGE DOOR LEAF in the OPEN pose already depicted in image1.\nImage1 is K10, the small cage with its leaf swung outward to the left. Use the existing OPEN leaf's exact orientation and visible face as the pose reference. Image2 is the original closed cage276, supporting its identity and hardware ownership.\nRender just that open movable leaf, separated from the cage. Preserve its chamfered/octagonal bronze perimeter, FOUR slender vertical bars, and plain rectangular open loop handle. In this OPEN projection the FREE HANDLE EDGE is on the LEFT and the HINGED EDGE is on the RIGHT. The top/bottom rails climb toward the hinge on the right as in image1. Do not invent another swing direction or mirror a closed door's pixels; render this source pose natively with the original upper-left lighting.\nThe AMBER RECEIVER stays on the fixed cage body, so this leaf has NO amber lens, light, receiver box or electronics. Keep only its small mobile hinge lugs along the RIGHT edge. Remove the large stationary cylindrical hinge barrels/pins and all fixed frame material. No horizontal middle brace: keep the small door's four vertical bars and open loop handle.\nNo cage body, fixed chamfered portal, basalt jamb, stone block, roof, carrying handle, floor, feet or bars from another wall. All air gaps between the four bars and inside the loop handle are true alpha, with no residual cage behind them. One whole independent open door only. The swing angle and functional hinge registration are not certified.\nKeep the inherited elevated three-quarter orthographic camera, source proportions and upper-left lighting; no camera orbit, front-view rectification, pixel mirror or changed construction. The image is an original project adaptation, not a canonical or measured animal enclosure. One complete independent native RGBA sprite, centered with generous genuinely transparent margins of at least80px requested, no cropped corners or fittings. True transparent air gaps wherever no actual physical surface is present. No opaque backdrop, scene, ground tile, floor shadow, haze, halo, painted checkerboard, labels, lettering, arrows, grid, duplicate view, contact sheet, creature, person or loose prop. No second object.",
+      "prompt_utf8_sha256": "a61e8fb012e2024da52287334723ea9961006c2b25fe67d2fd529e857ca18c6c",
+      "status": "GENERATED_REJECTED_ARCHIVED",
+      "original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-de2b8874-a3b3-457c-b295-765c2cc5345c.png",
+      "sha256": "125ba18a72711dce51c93b4e380d095bec4fd6a148609296e0afc5dfb8fc667d",
+      "size_bytes": 703839,
+      "output_hint": "Generated images are saved to /workspace/scratch/2166fec07f86/generated_images as /workspace/scratch/2166fec07f86/generated_images/exec-de2b8874-a3b3-457c-b295-765c2cc5345c.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "reference_images_inspected_before_generation": [
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K10-small-cage-open.png",
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-276-cage-petite-native.png"
+      ],
+      "reference_image_parameters_used": true,
+      "referenced_image_paths": [
+        "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/kennels/HWM162-K10-small-cage-open.png",
+        "/workspace/scratch/2166fec07f86/round3-references/target-v81-71-276-cage-petite-native.png"
+      ],
+      "reference_sha256s": [
+        {
+          "path": "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/kennels/HWM162-K10-small-cage-open.png",
+          "repo_path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K10-small-cage-open.png",
+          "sha256": "75eb31d88524b14d8d3a037ef22632423e2717b0649a22595366d56321037e44",
+          "kind": "BASELINE_NATIVE_SPRITE",
+          "sourceCommit": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94"
+        },
+        {
+          "path": "/workspace/scratch/2166fec07f86/round3-references/target-v81-71-276-cage-petite-native.png",
+          "repo_path": "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-276-cage-petite-native.png",
+          "sha256": "b5e4da0ccb43732e03abde69a0eacee6a8a73c8282918aaf3bdead116c8c1073",
+          "kind": "BASELINE_NATIVE_SPRITE",
+          "sourceCommit": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94"
+        }
+      ],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "transparent_background": true,
+      "source_original_bytes_copied_unchanged": true,
+      "post_generation_pixel_editing": false,
+      "retry_decision": "Deux cylindres de charnière complets à droite dupliquent les fixations deK27 : les retirer et garder seulement de petites pattes mobiles plates.",
+      "archive_path": "production/homeworld-sectors-20261103/attempts/kennels/HWM162-K31-small-cage-door-leaf-open-v1.png",
+      "selected": false,
+      "alpha_bounds": {
+        "0": {
+          "bboxExclusive": [
+            41,
+            47,
+            1215,
+            1214
+          ],
+          "marginsLTRB": [
+            41,
+            47,
+            48,
+            31
+          ],
+          "occupiedPixels": 295642,
+          "canvasEdgePixels": 0
+        },
+        "8": {
+          "bboxExclusive": [
+            315,
+            191,
+            968,
+            1027
+          ],
+          "marginsLTRB": [
+            315,
+            191,
+            295,
+            218
+          ],
+          "occupiedPixels": 268700,
+          "canvasEdgePixels": 0
+        },
+        "24": {
+          "bboxExclusive": [
+            316,
+            191,
+            968,
+            1027
+          ],
+          "marginsLTRB": [
+            316,
+            191,
+            295,
+            218
+          ],
+          "occupiedPixels": 266559,
+          "canvasEdgePixels": 0
+        },
+        "128": {
+          "bboxExclusive": [
+            317,
+            192,
+            968,
+            1027
+          ],
+          "marginsLTRB": [
+            317,
+            192,
+            295,
+            218
+          ],
+          "occupiedPixels": 260171,
+          "canvasEdgePixels": 0
+        }
+      }
+    },
+    {
+      "id": "HWM162-K32",
+      "attempt": 1,
+      "productionPass": 7,
+      "prompt": "Use case: precise-object-edit. HWM162-K32: ONLY the movable HEAVY CAGE DOOR LEAF in the OPEN pose already shown in image1.\nImage1 is K12, the heavy cage with its end door swung outward to the left. Use that existing open leaf's exact visible orientation and face as the pose reference. Image2 is original closed cage278, supporting the same leaf identity and ownership of its amber lockbox.\nRender just the OPEN mobile leaf, detached from the body. Keep the substantial angular aged-bronze/dark-metal perimeter, FIVE heavy vertical bars, a single thick horizontal middle brace, and the attached AMBER LOCKBOX on the FREE EDGE. In this open projection the free/latch edge and amber box are on the LEFT, while the hinged edge is on the RIGHT, exactly as image1. The top/bottom rails climb toward the right hinge edge. Do not render the closed pose, a front-facing rectangle, another swing direction, or a mirrored pixel copy.\nKeep only the leaf-side movable hinge lugs on its RIGHT edge. The three large stationary hinge blocks/pins and the basalt jamb stay with the body and MUST NOT appear on this independent leaf. No fixed portal, basalt pillar or stone blocks, roof bars, runners, floor, rear bars, cage side or other object. All spaces between the FIVE bars must be transparent alpha with no cage remaining behind them.\nThe amber lockbox really belongs to this mobile leaf and stays attached; do not delete it or leave a second lockbox floating. One entire door, one latch. Preserve source material thickness and upper-left highlights; the swing angle and future hinge registration are not certified.\nKeep the inherited elevated three-quarter orthographic camera, source proportions and upper-left lighting; no camera orbit, front-view rectification, pixel mirror or changed construction. The image is an original project adaptation, not a canonical or measured animal enclosure. One complete independent native RGBA sprite, centered with generous genuinely transparent margins of at least80px requested, no cropped corners or fittings. True transparent air gaps wherever no actual physical surface is present. No opaque backdrop, scene, ground tile, floor shadow, haze, halo, painted checkerboard, labels, lettering, arrows, grid, duplicate view, contact sheet, creature, person or loose prop. No second object.",
+      "prompt_utf8_sha256": "8119f84da99d740e4314398eaae39eb89101fdb11c2bda45c27ce85a399d0289",
+      "status": "GENERATED_REJECTED_ARCHIVED",
+      "original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-af787899-28ce-4797-894e-01abc0782dfd.png",
+      "sha256": "0dbe829cdc9cebde39393022e2822e470c1f8cefcb7cb34755622c53f6003936",
+      "size_bytes": 1754638,
+      "output_hint": "Generated images are saved to /workspace/scratch/2166fec07f86/generated_images as /workspace/scratch/2166fec07f86/generated_images/exec-af787899-28ce-4797-894e-01abc0782dfd.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "reference_images_inspected_before_generation": [
+        "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K12-heavy-cage-open.png",
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png"
+      ],
+      "reference_image_parameters_used": true,
+      "referenced_image_paths": [
+        "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/kennels/HWM162-K12-heavy-cage-open.png",
+        "/workspace/scratch/2166fec07f86/round3-references/target-v81-71-278-cage-lourde-native.png"
+      ],
+      "reference_sha256s": [
+        {
+          "path": "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/sprites/kennels/HWM162-K12-heavy-cage-open.png",
+          "repo_path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K12-heavy-cage-open.png",
+          "sha256": "6aa80bb9abdf9934d3eb4ed2859a066720fb9e7f2c9e2056b83adf1608f37650",
+          "kind": "BASELINE_NATIVE_SPRITE",
+          "sourceCommit": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94"
+        },
+        {
+          "path": "/workspace/scratch/2166fec07f86/round3-references/target-v81-71-278-cage-lourde-native.png",
+          "repo_path": "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png",
+          "sha256": "36ea82cb4cc0c9ed08d04e4264d4ae55ca34fd85729ed0bfeea9987f5a2f4fc0",
+          "kind": "BASELINE_NATIVE_SPRITE",
+          "sourceCommit": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94"
+        }
+      ],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "transparent_background": true,
+      "source_original_bytes_copied_unchanged": true,
+      "post_generation_pixel_editing": false,
+      "retry_decision": "K12 contient une ambiguïté de partition : grand rail sombre supérieur et enveloppe extérieure dupliqués autour du battant ouvert. Le rail appartient au portique fixe de278/K29. Retirer ces parties deK32 et conserver le cadre mobile bronze, cinq barreaux, traverse, ambre et attaches mobiles reconstituées. Ne pas modifier les sources historiques.",
+      "archive_path": "production/homeworld-sectors-20261103/attempts/kennels/HWM162-K32-heavy-cage-door-leaf-open-v1.png",
+      "selected": false,
+      "alpha_bounds": {
+        "0": {
+          "bboxExclusive": [
+            63,
+            13,
+            1522,
+            994
+          ],
+          "marginsLTRB": [
+            63,
+            13,
+            14,
+            30
+          ],
+          "occupiedPixels": 450396,
+          "canvasEdgePixels": 0
+        },
+        "8": {
+          "bboxExclusive": [
+            399,
+            51,
+            1162,
+            972
+          ],
+          "marginsLTRB": [
+            399,
+            51,
+            374,
+            52
+          ],
+          "occupiedPixels": 415085,
+          "canvasEdgePixels": 0
+        },
+        "24": {
+          "bboxExclusive": [
+            400,
+            51,
+            1161,
+            972
+          ],
+          "marginsLTRB": [
+            400,
+            51,
+            375,
+            52
+          ],
+          "occupiedPixels": 412354,
+          "canvasEdgePixels": 0
+        },
+        "128": {
+          "bboxExclusive": [
+            400,
+            52,
+            1161,
+            971
+          ],
+          "marginsLTRB": [
+            400,
+            52,
+            375,
+            53
+          ],
+          "occupiedPixels": 406713,
+          "canvasEdgePixels": 0
+        }
+      }
+    },
+    {
+      "id": "HWM162-K28",
+      "attempt": 2,
+      "productionPass": 7,
+      "prompt": "Use case: precise-object-edit. A single narrowly targeted native correction to HWM162-K28, the standalone closed small cage door.\nImage1 is the EDIT TARGET. Keep this exact door, same chamfered bronze perimeter, FOUR vertical bars, rectangular open loop handle on the RIGHT, view, proportions, lighting, patina, canvas framing and transparency. Change ONLY the hinge attachments along the LEFT edge.\n\nRemove the TWO LARGE COMPLETE HINGE/PIVOT VOLUMES protruding on the left: the long bulky vertical cylinders/blocks are stationary hardware already present in a different body sprite and must not be duplicated here. Replace each with just a small thin FLAT MOBILE MOUNTING TAB attached to the leaf edge. These two low-profile bronze tabs are the only leaf-side connection pieces: no rounded barrel, pin, spindle, cylindrical sleeve, thick upright block or fixed-jamb assembly. Keep them flat and modest, clearly much smaller than the removed volumes.\n\nDo not remove or reshape the leaf's actual perimeter, do not change its four bars or loop handle, do not change the door pose or camera. Do not add an amber light, electronics, lockbox, fixed receiver, stone/basalt, frame surround, cage, floor or other object. This is an original project component, and hinge operation or registration is not being certified.\n\nOne complete independent native PNG with genuine transparent alpha around the object and through all bar gaps and the handle. Preserve the broad original margins and full silhouette. No scene, backdrop, shadow, haze, labels, lettering, arrows, diagram, duplicate view, atlas or contact sheet.",
+      "prompt_utf8_sha256": "b4346a730c4405b2fbeba2be70575e2c1e0ac459c8c34bee57720bb05b2c72de",
+      "status": "GENERATED_SELECTED",
+      "original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-0b785e9b-8928-4650-ac3d-9746650b6c66.png",
+      "sha256": "1ad0ae33a20d77151262eddc1be2ba7b88a71d24203384ac9f5cae22f1bd809a",
+      "size_bytes": 918758,
+      "output_hint": "Generated images are saved to /workspace/scratch/2166fec07f86/generated_images as /workspace/scratch/2166fec07f86/generated_images/exec-0b785e9b-8928-4650-ac3d-9746650b6c66.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "reference_images_inspected_before_generation": [
+        "production/homeworld-sectors-20261103/attempts/kennels/HWM162-K28-small-cage-door-leaf-v1.png"
+      ],
+      "reference_image_parameters_used": true,
+      "referenced_image_paths": [
+        "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/attempts/kennels/HWM162-K28-small-cage-door-leaf-v1.png"
+      ],
+      "reference_sha256s": [
+        {
+          "path": "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/attempts/kennels/HWM162-K28-small-cage-door-leaf-v1.png",
+          "repo_path": "production/homeworld-sectors-20261103/attempts/kennels/HWM162-K28-small-cage-door-leaf-v1.png",
+          "sha256": "ba6734e541b1b601e1fd171fa29ca172a2d7fbe005f7092773d8df7c650ff012",
+          "kind": "CURRENT_PASS_GENERATED_INPUT",
+          "sourceCommit": null
+        }
+      ],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "transparent_background": true,
+      "source_original_bytes_copied_unchanged": true,
+      "post_generation_pixel_editing": false,
+      "retry_decision": "Sélection après revue racine, avec silhouette entière et limites explicites de caméra/échelle/registration."
+    },
+    {
+      "id": "HWM162-K31",
+      "attempt": 2,
+      "productionPass": 7,
+      "prompt": "Use case: precise-object-edit. One narrowly targeted native correction to HWM162-K31, the isolated OPEN small cage door in image1.\nPreserve this exact open pose: FREE LOOP-HANDLE EDGE on the LEFT and HINGE EDGE on the RIGHT; keep the chamfered bronze perimeter, FOUR vertical bars, rectangular open loop handle, materials, upper-left lighting, framing and proportions.\nChange ONLY the two protruding hinge attachments on the RIGHT edge. REMOVE both LARGE COMPLETE CYLINDRICAL PIVOT BARRELS, because those stationary cylinders are already present on the separate cage body. Replace each with only a small thin FLAT MOBILE MOUNTING TAB joined to the leaf edge. Two modest low-profile flat bronze tabs, no rounded barrel, cylindrical sleeve, thick vertical block, axle, pin or fixed-jamb assembly. Do not duplicate stationary hinge volumes.\nKeep the mobile door's actual perimeter intact. No change to bar count or handle. No amber light, lens, electronics, receiver or lockbox: the small-cage amber receiver belongs to the body. No cage, basalt, fixed frame surround, floor, roof, feet or other object.\nOne entire independent open leaf with genuine transparent alpha around it, between all four bars and inside its loop handle. Preserve the original camera and complete silhouette; do not mirror pixels or change the swing pose. No scene, backdrop, shadow, haze, labels, lettering, arrows, diagram, duplicate view, atlas or contact sheet. Original project art; future hinge registration remains unverified.",
+      "prompt_utf8_sha256": "40e1814b4d44bbc902e5f019c31aefb59ab60852349e5a4f808ad06992c5e8ba",
+      "status": "GENERATED_SELECTED",
+      "original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-96ae9a2d-dbbe-4a46-bbc6-9c8605c3ce83.png",
+      "sha256": "180662b2843e3ae9a93eb236edd7263c9c8fa10eae596d4516be05993eab8d95",
+      "size_bytes": 657841,
+      "output_hint": "Generated images are saved to /workspace/scratch/2166fec07f86/generated_images as /workspace/scratch/2166fec07f86/generated_images/exec-96ae9a2d-dbbe-4a46-bbc6-9c8605c3ce83.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "reference_images_inspected_before_generation": [
+        "production/homeworld-sectors-20261103/attempts/kennels/HWM162-K31-small-cage-door-leaf-open-v1.png"
+      ],
+      "reference_image_parameters_used": true,
+      "referenced_image_paths": [
+        "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/attempts/kennels/HWM162-K31-small-cage-door-leaf-open-v1.png"
+      ],
+      "reference_sha256s": [
+        {
+          "path": "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/attempts/kennels/HWM162-K31-small-cage-door-leaf-open-v1.png",
+          "repo_path": "production/homeworld-sectors-20261103/attempts/kennels/HWM162-K31-small-cage-door-leaf-open-v1.png",
+          "sha256": "125ba18a72711dce51c93b4e380d095bec4fd6a148609296e0afc5dfb8fc667d",
+          "kind": "CURRENT_PASS_GENERATED_INPUT",
+          "sourceCommit": null
+        }
+      ],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "transparent_background": true,
+      "source_original_bytes_copied_unchanged": true,
+      "post_generation_pixel_editing": false,
+      "retry_decision": "Sélection après revue racine, avec silhouette entière et limites explicites de caméra/échelle/registration."
+    },
+    {
+      "id": "HWM162-K30",
+      "attempt": 2,
+      "productionPass": 7,
+      "prompt": "Use case: precise-object-edit. One targeted correction to HWM162-K30, the isolated CLOSED heavy cage door in image1.\nKeep its exact outer perimeter, chamfered corners, horizontal center brace, three small leaf-side fittings on the LEFT, AMBER LOCKBOX on the RIGHT, closed projected plane, materials, upper-left lighting, framing and proportions.\nChange ONLY the interior bar count: there must be EXACTLY FIVE equally spaced thick dark-metal VERTICAL BARS, not four. Five complete vertical rods run from the top rail to the bottom rail, continuing behind the unchanged center horizontal brace. Make FIVE visibly distinct bars in the upper half and the same FIVE aligned bars in the lower half. Adjust only their spacing/thickness as needed inside the existing frame; do not widen the door or add another frame. Count the bars carefully.\nEvery space between these five bars stays truly transparent. No sixth bar, backing plate, cage wall or extra horizontal rail. Keep the right amber lockbox and all other door details unchanged. Do not add basalt pillars, fixed portal parts, a large dark rail above the door, fixed hinges, floor, roof, cage body or any other object.\nOne complete native transparent PNG with the same view and broad margins. No scene, backdrop, shadow, haze, labels, lettering, arrows, grid, contact sheet or duplicate view. Original project art; no mechanical registration or canonical certification.",
+      "prompt_utf8_sha256": "5a478b6edb2660b340a54f2165edb338a8f9559d95b50c96c094be2232ab2970",
+      "status": "GENERATED_SELECTED",
+      "original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-34b9b582-24bc-4435-9aff-723f97eb52f9.png",
+      "sha256": "3d80af3caeab9628536bb967e0161e5b50dea38204266176202bf0c119264b69",
+      "size_bytes": 1251588,
+      "output_hint": "Generated images are saved to /workspace/scratch/2166fec07f86/generated_images as /workspace/scratch/2166fec07f86/generated_images/exec-34b9b582-24bc-4435-9aff-723f97eb52f9.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "reference_images_inspected_before_generation": [
+        "production/homeworld-sectors-20261103/attempts/kennels/HWM162-K30-heavy-cage-door-leaf-v1.png"
+      ],
+      "reference_image_parameters_used": true,
+      "referenced_image_paths": [
+        "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/attempts/kennels/HWM162-K30-heavy-cage-door-leaf-v1.png"
+      ],
+      "reference_sha256s": [
+        {
+          "path": "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/attempts/kennels/HWM162-K30-heavy-cage-door-leaf-v1.png",
+          "repo_path": "production/homeworld-sectors-20261103/attempts/kennels/HWM162-K30-heavy-cage-door-leaf-v1.png",
+          "sha256": "b35bf1755b0b9ebcd3bda038d8e1f195fb6bcf3217e0d9946e2c770ddaade67f",
+          "kind": "CURRENT_PASS_GENERATED_INPUT",
+          "sourceCommit": null
+        }
+      ],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "transparent_background": true,
+      "source_original_bytes_copied_unchanged": true,
+      "post_generation_pixel_editing": false,
+      "retry_decision": "Sélection après revue racine, avec silhouette entière et limites explicites de caméra/échelle/registration."
+    },
+    {
+      "id": "HWM162-K32",
+      "attempt": 2,
+      "productionPass": 7,
+      "prompt": "Use case: precise-object-edit. Targeted structural correction of ONE independent OPEN heavy cage door, HWM162-K32.\nImage1 is the EDIT TARGET: current isolated open door. Its pose, FIVE dark vertical bars, single middle brace and amber box are correct, but it erroneously carries an extra piece of the fixed cage portal.\nImage2 is the historical CLOSED heavy cage278, used ONLY to distinguish the fixed portal from the mobile bronze-framed door. The dark heavy rail above the closed door and the external massive portal belong to the cage BODY, not the movable leaf. Do not reproduce those fixed parts.\n\nCORRECT IMAGE1 ONLY:\nRemove the entire LARGE DARK HORIZONTAL RAIL ABOVE THE DOOR, its extra outer corner blocks, and the EXTRA OUTERMOST THICK PERIMETER/ENVELOPE around the mobile leaf. These are duplicated fixed portal pieces inherited from the composite reference and must be absent from this independent door.\nRetain ONLY the SIMPLE CHAMFERED BRONZE MOBILE FRAME immediately surrounding the FIVE vertical bars, with its one horizontal middle brace. Keep the same open orientation: free/latching edge on the LEFT, hinged edge on the RIGHT; top/bottom edges rise toward the right. Do not rotate the door into the closed pose or mirror any pixels.\nKeep the AMBER LOCKBOX on the LEFT, attached cleanly to the retained mobile bronze stile rather than to a removed outer column. Preserve its recognizable compact design. Keep exactly THREE SMALL MOBILE EYELET ATTACHMENTS on the RIGHT, reconnected modestly to the retained bronze stile. No fixed hinge blocks, pins, jamb or extra pillar. This reconnection is a proposed project adaptation, not a certified mechanism.\nPreserve FIVE continuous vertical bars and the middle brace, source patina, thickness and upper-left light. The corrected leaf should look like the actual mobile door from image2, seen in image1's open pose, without any outer portal above or around it. It is ONE door, not two nested independent frames.\n\nGenuine transparent alpha surrounds the leaf and fills every bar gap; no cage remains behind it. Center the complete standalone object with comfortable clear margins, no cropping. No basalt body, feet, runners, floor, roof, props, creature, person, scene, opaque background, ground shadow, haze, labels, arrows, text, sheet or duplicate view. Native transparent sprite only. Leave the historical source images unchanged.",
+      "prompt_utf8_sha256": "3fa16752df80fe251cc00e61247e803619cab4eea9f1a6a055fce09a94e8c7fe",
+      "status": "GENERATED_REJECTED_ARCHIVED",
+      "original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-7a01b6f4-5af8-4ab1-8457-ecf34cd99441.png",
+      "sha256": "be956fd160ba52e74fe59b674a8831577146d350d80fd849cdf3246f1a05e958",
+      "size_bytes": 1821659,
+      "output_hint": "Generated images are saved to /workspace/scratch/2166fec07f86/generated_images as /workspace/scratch/2166fec07f86/generated_images/exec-7a01b6f4-5af8-4ab1-8457-ecf34cd99441.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "reference_images_inspected_before_generation": [
+        "production/homeworld-sectors-20261103/attempts/kennels/HWM162-K32-heavy-cage-door-leaf-open-v1.png",
+        "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png"
+      ],
+      "reference_image_parameters_used": true,
+      "referenced_image_paths": [
+        "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/attempts/kennels/HWM162-K32-heavy-cage-door-leaf-open-v1.png",
+        "/workspace/scratch/2166fec07f86/round3-references/target-v81-71-278-cage-lourde-native.png"
+      ],
+      "reference_sha256s": [
+        {
+          "path": "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/attempts/kennels/HWM162-K32-heavy-cage-door-leaf-open-v1.png",
+          "repo_path": "production/homeworld-sectors-20261103/attempts/kennels/HWM162-K32-heavy-cage-door-leaf-open-v1.png",
+          "sha256": "0dbe829cdc9cebde39393022e2822e470c1f8cefcb7cb34755622c53f6003936",
+          "kind": "CURRENT_PASS_GENERATED_INPUT",
+          "sourceCommit": null
+        },
+        {
+          "path": "/workspace/scratch/2166fec07f86/round3-references/target-v81-71-278-cage-lourde-native.png",
+          "repo_path": "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png",
+          "sha256": "36ea82cb4cc0c9ed08d04e4264d4ae55ca34fd85729ed0bfeea9987f5a2f4fc0",
+          "kind": "BASELINE_NATIVE_SPRITE",
+          "sourceCommit": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94"
+        }
+      ],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "transparent_background": true,
+      "source_original_bytes_copied_unchanged": true,
+      "post_generation_pixel_editing": false,
+      "retry_decision": "Géométrie corrigée acceptée, mais voile dans les ajours : fenêtre2250pixels alpha28–40 et fenêtre3500pixels alpha7–23. Correction native de transparence uniquement approuvée, conserver la géométrie de v2.",
+      "archive_path": "production/homeworld-sectors-20261103/attempts/kennels/HWM162-K32-heavy-cage-door-leaf-open-v2.png",
+      "selected": false,
+      "alpha_bounds": {
+        "0": {
+          "bboxExclusive": [
+            33,
+            0,
+            1504,
+            992
+          ],
+          "marginsLTRB": [
+            33,
+            0,
+            32,
+            32
+          ],
+          "occupiedPixels": 647370,
+          "canvasEdgePixels": 281
+        },
+        "8": {
+          "bboxExclusive": [
+            367,
+            68,
+            1169,
+            965
+          ],
+          "marginsLTRB": [
+            367,
+            68,
+            367,
+            59
+          ],
+          "occupiedPixels": 501791,
+          "canvasEdgePixels": 0
+        },
+        "24": {
+          "bboxExclusive": [
+            367,
+            82,
+            1169,
+            965
+          ],
+          "marginsLTRB": [
+            367,
+            82,
+            367,
+            59
+          ],
+          "occupiedPixels": 441089,
+          "canvasEdgePixels": 0
+        },
+        "128": {
+          "bboxExclusive": [
+            368,
+            82,
+            1169,
+            964
+          ],
+          "marginsLTRB": [
+            368,
+            82,
+            367,
+            60
+          ],
+          "occupiedPixels": 366483,
+          "canvasEdgePixels": 0
+        }
+      },
+      "transparency_windows_before_correction": [
+        {
+          "name": "upper_bar_gap",
+          "box": [
+            710,
+            360,
+            735,
+            450
+          ],
+          "pixels": 2250,
+          "alpha_min": 28,
+          "alpha_max": 40,
+          "alpha0": 0,
+          "alpha_le8": 0,
+          "alpha_gt24": 2250
+        },
+        {
+          "name": "lower_bar_gap",
+          "box": [
+            710,
+            650,
+            735,
+            790
+          ],
+          "pixels": 3500,
+          "alpha_min": 7,
+          "alpha_max": 23,
+          "alpha0": 0,
+          "alpha_le8": 277,
+          "alpha_gt24": 0
+        }
+      ]
+    },
+    {
+      "id": "HWM162-K32",
+      "attempt": 3,
+      "productionPass": 7,
+      "prompt": "Use case: background-extraction / precise-object-edit. TRANSPARENCY-ONLY native correction of the standalone OPEN heavy cage door in image1.\n\nThe object's geometry is already approved and MUST remain unchanged: simple chamfered bronze mobile perimeter, FIVE dark vertical bars, single middle brace, amber lockbox on the LEFT, THREE small mobile eyelets on the RIGHT, open projected pose, metal patina, highlights and lighting. Preserve exact shape, proportions, placement and canvas framing. Do not add or remove any physical door component and do not restore the former outer portal or dark top rail.\n\nREMOVE THE TRANSLUCENT GRAY/BROWN VEIL IN THE AIR SPACES. The visible gray sheet/fog between the bars is unwanted background residue, not part of this door. Every clear air space BETWEEN the five bars, above and below the middle brace, and every opening around the frame must be genuinely transparent alpha, preferably alpha0, showing absolutely no panel, fog, mist, glow sheet, painted backdrop or membrane. Keep the solid metal and its actual surface shading unchanged. Also remove background haze outside the object. This is a clean cutout with transparent empty space, not a door behind a translucent panel.\n\nDo not replace the veil with black, white or checkerboard pixels; output real PNG alpha transparency. No environment, floor shadow or glow backdrop. The amber light remains confined to its physical lockbox/lens. Keep all five bars and the simple frame intact. Do not alter the pose, mirror, recolor, rescale, crop or redesign the object. One whole independent native transparent sprite only; no text, labels, duplicate view, grid or sheet.",
+      "prompt_utf8_sha256": "ca512ed167a6627644422fefd875e06ea87ea65c20af90cf7f6d6c88b3e58aef",
+      "status": "GENERATED_SELECTED",
+      "original_path": "/workspace/scratch/2166fec07f86/generated_images/exec-1029851a-7c6a-41ea-9471-92343b8bf463.png",
+      "sha256": "bd760af652b6349e584fdd7f96bc8c8aaea22cf1c9c6f7a2248eae694503ae58",
+      "size_bytes": 1662701,
+      "output_hint": "Generated images are saved to /workspace/scratch/2166fec07f86/generated_images as /workspace/scratch/2166fec07f86/generated_images/exec-1029851a-7c6a-41ea-9471-92343b8bf463.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "reference_images_inspected_before_generation": [
+        "production/homeworld-sectors-20261103/attempts/kennels/HWM162-K32-heavy-cage-door-leaf-open-v2.png"
+      ],
+      "reference_image_parameters_used": true,
+      "referenced_image_paths": [
+        "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/attempts/kennels/HWM162-K32-heavy-cage-door-leaf-open-v2.png"
+      ],
+      "reference_sha256s": [
+        {
+          "path": "/workspace/scratch/2166fec07f86/yautja-la-longue-chasse/production/homeworld-sectors-20261103/attempts/kennels/HWM162-K32-heavy-cage-door-leaf-open-v2.png",
+          "repo_path": "production/homeworld-sectors-20261103/attempts/kennels/HWM162-K32-heavy-cage-door-leaf-open-v2.png",
+          "sha256": "be956fd160ba52e74fe59b674a8831577146d350d80fd849cdf3246f1a05e958",
+          "kind": "CURRENT_PASS_GENERATED_INPUT",
+          "sourceCommit": null
+        }
+      ],
+      "sourceRefs": [
+        "SRC-V81",
+        "SRC-CAMERA"
+      ],
+      "transparent_background": true,
+      "source_original_bytes_copied_unchanged": true,
+      "post_generation_pixel_editing": false,
+      "retry_decision": "Sélection après revue racine, avec silhouette entière et limites explicites de caméra/échelle/registration."
     }
   ],
   "references": [
@@ -4792,6 +6773,87 @@
       "sourceCommit": "1223042c249fab900e7fba9f49d7c78d105bd645",
       "visually_inspected": true,
       "usage": "Trappe rétractée à droite : accès gauche visible et loquet ambre confirmé comme élément mobile ; source déjà publiée."
+    },
+    {
+      "id": "R7-kennels-target-v81-71-276-cage-petite-native",
+      "kind": "BASELINE_NATIVE_SPRITE",
+      "repo_path": "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-276-cage-petite-native.png",
+      "sha256": "b5e4da0ccb43732e03abde69a0eacee6a8a73c8282918aaf3bdead116c8c1073",
+      "sourceCommit": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94",
+      "visually_inspected": true,
+      "usage": "Identité et pose du modèle de cage du projet ; aucune preuve de canon ou de dimensionnement animal."
+    },
+    {
+      "id": "R7-kennels-HWM162-K10-small-cage-open",
+      "kind": "BASELINE_NATIVE_SPRITE",
+      "repo_path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K10-small-cage-open.png",
+      "sha256": "75eb31d88524b14d8d3a037ef22632423e2717b0649a22595366d56321037e44",
+      "sourceCommit": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94",
+      "visually_inspected": true,
+      "usage": "Identité et pose du modèle de cage du projet ; aucune preuve de canon ou de dimensionnement animal."
+    },
+    {
+      "id": "R7-kennels-target-v81-71-278-cage-lourde-native",
+      "kind": "BASELINE_NATIVE_SPRITE",
+      "repo_path": "production/native-open-20261102/archives/fauna-energy/cages/target-v81-71-278-cage-lourde-native.png",
+      "sha256": "36ea82cb4cc0c9ed08d04e4264d4ae55ca34fd85729ed0bfeea9987f5a2f4fc0",
+      "sourceCommit": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94",
+      "visually_inspected": true,
+      "usage": "Identité et pose du modèle de cage du projet ; aucune preuve de canon ou de dimensionnement animal."
+    },
+    {
+      "id": "R7-kennels-HWM162-K12-heavy-cage-open",
+      "kind": "BASELINE_NATIVE_SPRITE",
+      "repo_path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K12-heavy-cage-open.png",
+      "sha256": "6aa80bb9abdf9934d3eb4ed2859a066720fb9e7f2c9e2056b83adf1608f37650",
+      "sourceCommit": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94",
+      "visually_inspected": true,
+      "usage": "Identité et pose du modèle de cage du projet ; aucune preuve de canon ou de dimensionnement animal."
+    },
+    {
+      "id": "R7-kennels-HWM162-K28-small-cage-door-leaf-v1",
+      "kind": "CURRENT_PASS_GENERATED_INPUT",
+      "repo_path": "production/homeworld-sectors-20261103/attempts/kennels/HWM162-K28-small-cage-door-leaf-v1.png",
+      "sha256": "ba6734e541b1b601e1fd171fa29ca172a2d7fbe005f7092773d8df7c650ff012",
+      "sourceCommit": null,
+      "visually_inspected": true,
+      "usage": "Cible de correction native archivée ; ne compte pas comme sélection et ne figure pas au commit de base."
+    },
+    {
+      "id": "R7-kennels-HWM162-K31-small-cage-door-leaf-open-v1",
+      "kind": "CURRENT_PASS_GENERATED_INPUT",
+      "repo_path": "production/homeworld-sectors-20261103/attempts/kennels/HWM162-K31-small-cage-door-leaf-open-v1.png",
+      "sha256": "125ba18a72711dce51c93b4e380d095bec4fd6a148609296e0afc5dfb8fc667d",
+      "sourceCommit": null,
+      "visually_inspected": true,
+      "usage": "Cible de correction native archivée ; ne compte pas comme sélection et ne figure pas au commit de base."
+    },
+    {
+      "id": "R7-kennels-HWM162-K30-heavy-cage-door-leaf-v1",
+      "kind": "CURRENT_PASS_GENERATED_INPUT",
+      "repo_path": "production/homeworld-sectors-20261103/attempts/kennels/HWM162-K30-heavy-cage-door-leaf-v1.png",
+      "sha256": "b35bf1755b0b9ebcd3bda038d8e1f195fb6bcf3217e0d9946e2c770ddaade67f",
+      "sourceCommit": null,
+      "visually_inspected": true,
+      "usage": "Cible de correction native archivée ; ne compte pas comme sélection et ne figure pas au commit de base."
+    },
+    {
+      "id": "R7-kennels-HWM162-K32-heavy-cage-door-leaf-open-v1",
+      "kind": "CURRENT_PASS_GENERATED_INPUT",
+      "repo_path": "production/homeworld-sectors-20261103/attempts/kennels/HWM162-K32-heavy-cage-door-leaf-open-v1.png",
+      "sha256": "0dbe829cdc9cebde39393022e2822e470c1f8cefcb7cb34755622c53f6003936",
+      "sourceCommit": null,
+      "visually_inspected": true,
+      "usage": "Cible de correction native archivée ; ne compte pas comme sélection et ne figure pas au commit de base."
+    },
+    {
+      "id": "R7-kennels-HWM162-K32-heavy-cage-door-leaf-open-v2",
+      "kind": "CURRENT_PASS_GENERATED_INPUT",
+      "repo_path": "production/homeworld-sectors-20261103/attempts/kennels/HWM162-K32-heavy-cage-door-leaf-open-v2.png",
+      "sha256": "be956fd160ba52e74fe59b674a8831577146d350d80fd849cdf3246f1a05e958",
+      "sourceCommit": null,
+      "visually_inspected": true,
+      "usage": "Cible de correction native archivée ; ne compte pas comme sélection et ne figure pas au commit de base."
     }
   ],
   "quality_summary": {
@@ -4826,7 +6888,13 @@
       "K22/K23/K24 héritent de la vue demandée pourK01 (source0/35, non mesurée) ; K25/K26 héritent de277/K11 (brief historique≈32°, non mesuré). Aucun angle effectif ni raccord commun certifié.",
       "K22 reconstruit des surfaces intérieures précédemment masquées ; K23 fournit les trois ouvertures alpha0..1. La partition est une proposition de couches graphiques, pas un assemblage runtime validé.",
       "K24 est une nouvelle grille proposée à partir de la forme/matière deK01, aucun mécanisme observé ou inventé en détail. La version2 corrige un profil trop évasé ; cadrage propre et recalage de taille/placement nécessaires. Les fenêtres mesurées contiennent des traces alpha2–8 et ne sont pas strictementalpha0.",
-      "K25 conserve un bord fixe reconstitué à la demi-façade droite ; aucune pièce sous la trappe n’est déclarée certifiée. K26 garde exclusivement le loquet mobile ambre. Les cages de faune ne certifient pas une taille adaptée à un Hound2010 ou un chien2018."
+      "K25 conserve un bord fixe reconstitué à la demi-façade droite ; aucune pièce sous la trappe n’est déclarée certifiée. K26 garde exclusivement le loquet mobile ambre. Les cages de faune ne certifient pas une taille adaptée à un Hound2010 ou un chien2018.",
+      "Passe7 : six sélections K27–K32, onze générations natives, cinq tentatives archivées hors du compte sélectionné. Les 26 anciennes entrées et 70 anciens PNG sont préservés.",
+      "Tous les nouveaux composants demandent la vue héritée des sources276/K10 ou278/K12 (brief historique≈32°, angle réel non mesuré). Les canevas et cadrages varient ; pivots, axes, raccord, charnières et animation non certifiés.",
+      "Partition petite cage : récepteur ambre et cylindres fixes sur K27 ; quatre barreaux et prise sans ambre sur K28/K31. Les pattes mobiles plates sont une interprétation graphique. Partition lourde : corps K29 sans boîtier ambre ; cinq barreaux, traverse et ambre portés par K30/K32.",
+      "K32 corrige une ambiguïté de portique dupliqué dans le composite ouvert K12 en comparaison de278 fermé. K12 et278 ne sont pas retouchés. Une troisième sortie native retire le voile alpha28–40 détecté en v2 ; les5750pixels des deux fenêtres finales sont alpha0.",
+      "Les petits résidus natifs restent consignés : notamment14pixels rouges avec alpha>8 mesurés par root surK27 ; les1184rougeurs mesurées deK31v2 sont alpha1–5. Aucun nettoyage par script ni déclaration générale d’image sans artefacts.",
+      "Les silhouettes sont entières ; les marges visibles minimales sont73/167/29/112/189/59px pourK27–K32. K27–K31 contiennent des pixelsalpha255 ; K32 plafonne à254. Les marges strictes àalpha>0 ne sont pas confondues avec la silhouette visible."
     ],
     "upstream_guide_reading": "AGENTS.md et docs/GAMEDEV_AGENT_GUIDE.md lus. L'accès web au create-game-assets/SKILL.md au commit épinglé a échoué avec DisabledError; la poursuite selon les consignes locales est prévue par ce guide.",
     "round3_summary": {
@@ -4903,6 +6971,24 @@
         2,
         8
       ]
+    },
+    "round7_summary": {
+      "new_assets": 6,
+      "new_size_bytes": 8660554,
+      "generation_calls": 11,
+      "archived_unselected_pngs": 5,
+      "archived_size_bytes": 6565819,
+      "all_previous_twenty_six_sha256_preserved": true,
+      "all_previous_twenty_six_asset_records_preserved": true,
+      "all_previous_seventy_selected_png_sha256_preserved": true,
+      "all_new_original_copies_byte_identical": true,
+      "all_new_visible_silhouettes_entire": true,
+      "all_new_reference_views_inherited_requested": true,
+      "actual_camera_measured": false,
+      "component_registration_verified": false,
+      "hinge_mechanism_verified": false,
+      "all_new_root_visual_reviews_accepted": true,
+      "k32_final_checked_alpha0_pixels": 5750
     }
   },
   "continuation_batches": [
@@ -5339,6 +7425,201 @@
         }
       ],
       "notes": "Cinq composants retenus par root après revue des sources ; K24v1 corrigée pour silhouette et archivée. Originaux natifs intacts. K23 référence de la passecourante pourK24 ; aucun rattachement fictif au commitbaseline. Pas de canon1:1, métrique, registration ou runtime certifiés.",
+      "camera_mode": "INHERIT_REFERENCE_VIEW",
+      "runtime_integration": false,
+      "human_validation": false
+    },
+    {
+      "name": "small-and-heavy-cage-bodies-and-independent-closed-open-leaves",
+      "productionPass": 7,
+      "baseline_published_commit": "02253bb99a17eebfdfd3b39ecc18adf749bbfc94",
+      "asset_ids": [
+        "HWM162-K27",
+        "HWM162-K28",
+        "HWM162-K29",
+        "HWM162-K30",
+        "HWM162-K31",
+        "HWM162-K32"
+      ],
+      "previous_asset_count": 26,
+      "previous_assets_sha256_preserved": [
+        {
+          "id": "HWM162-K01",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K01-kennel-building.png",
+          "sha256": "fedb9677d90ae72cfe2ee53e9a1f5751361ea1d88da2d9169137a22d2cd9d9a5"
+        },
+        {
+          "id": "HWM162-K02",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K02-handling-gate.png",
+          "sha256": "7d7a726ff442a711bf4212a7161d042659542d1a384056f1a1853743fa77068c"
+        },
+        {
+          "id": "HWM162-K03",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K03-training-rack.png",
+          "sha256": "95cef71793ec00c9a9d8ae8842e4e8beb3e83ac9eddf4be57820a2a965637797"
+        },
+        {
+          "id": "HWM162-K04",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K04-keeper-platform.png",
+          "sha256": "fa7bcf72db0315a379f90e5872153e75e29d9d2e893adaaac02c110d611e4a73"
+        },
+        {
+          "id": "HWM162-K05",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K05-resting-basin.png",
+          "sha256": "df1d8e518af28797dac239a4db5988bba8bd10e6eb702893833850df1ffbdecf"
+        },
+        {
+          "id": "HWM162-K06",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K06-sliding-mesh-panel.png",
+          "sha256": "1591ab6c1a112e5373c8260c2c62d5111659212b9cb219ed79f44262f6d0dee4"
+        },
+        {
+          "id": "HWM162-K07",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K07-handler-lead.png",
+          "sha256": "7b47106c7b7d92b180eb62ce496ef50883e34d83b521b4b1b912d76e0bf062d9"
+        },
+        {
+          "id": "HWM162-K08",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K08-woven-training-lure.png",
+          "sha256": "2140079cfbe57a3077add91e44152c7e32890159cf54b2dbd24c1ddacb56d698"
+        },
+        {
+          "id": "HWM162-K09",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K09-adjustable-collar.png",
+          "sha256": "97eb1a2a1ce1122604e6709f4aa61df37d4e8b9186ccca56c2bfd1251b969cb2"
+        },
+        {
+          "id": "HWM162-K10",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K10-small-cage-open.png",
+          "sha256": "75eb31d88524b14d8d3a037ef22632423e2717b0649a22595366d56321037e44"
+        },
+        {
+          "id": "HWM162-K11",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K11-medium-cage-open.png",
+          "sha256": "bfbacfe01f9b9ef08ea4397e9038dde7f6980e0951165905d725baf711b04898"
+        },
+        {
+          "id": "HWM162-K12",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K12-heavy-cage-open.png",
+          "sha256": "6aa80bb9abdf9934d3eb4ed2859a066720fb9e7f2c9e2056b83adf1608f37650"
+        },
+        {
+          "id": "HWM162-K13",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K13-energy-barrier-off.png",
+          "sha256": "8e668b68e046bc3ff5d888138ead1a1c0c4df556ad28d64ceae0c929cbd5a33c"
+        },
+        {
+          "id": "HWM162-K14",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K14-empty-alien-drinker.png",
+          "sha256": "41ae672380f0ea8c9c3fa155739b0cda082f95cf63c70db4f1e45538d9c1de6a"
+        },
+        {
+          "id": "HWM162-K15",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K15-empty-hopper-feeder.png",
+          "sha256": "322c098200679914802402ec9df40374792ce9899bf55e4fedbd9836add9761e"
+        },
+        {
+          "id": "HWM162-K16",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K16-empty-training-rack.png",
+          "sha256": "a7c9909f84ec0c53cc5caee8ebdc53ca4f0c1cdbe6e71297fe940d6de7346d90"
+        },
+        {
+          "id": "HWM162-K17",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K17-danger-beacon-off.png",
+          "sha256": "7439ac5ebb4da79ab0fadea5d0117a30f5b9110273d59ae4e9a3ae4b68d705de"
+        },
+        {
+          "id": "HWM162-K18",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K18-enclosure-rear-arc.png",
+          "sha256": "6550a4e80f2fa0aaa332ff3942865ab49ce89abdf2a566592e3b01bc187349ea"
+        },
+        {
+          "id": "HWM162-K19",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K19-enclosure-front-arc.png",
+          "sha256": "e1157b98f951c2c62c71a4392ecb13b480c1bf5a7c7930510418ac879ccd225d"
+        },
+        {
+          "id": "HWM162-K20",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K20-enclosure-gate-leaf.png",
+          "sha256": "b121828ca30e8dc84249666783ccbc8a23a769d74e4586bbad160279c141a290"
+        },
+        {
+          "id": "HWM162-K21",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K21-enclosure-gate-leaf-open.png",
+          "sha256": "e3db8d71f15a449bbdacf717368015d3f1033dc40ca1f7eaaa632b478c4d3c3f"
+        },
+        {
+          "id": "HWM162-K22",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K22-kennel-interior.png",
+          "sha256": "f8eba50ccd25e3898deba896f2e2a282938489a2c4ebb3e56825b3d00175f85b"
+        },
+        {
+          "id": "HWM162-K23",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K23-kennel-facade-roof.png",
+          "sha256": "193e14f23bb198efe33ecb814d80e6adbe0d1932a010342d0fb853c106450c60"
+        },
+        {
+          "id": "HWM162-K24",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K24-kennel-bay-grille.png",
+          "sha256": "3e5eac4f7a3f16f9666de8bfdc4a0b258ab7d0eb20252f95ceba9f1805b3fd3a"
+        },
+        {
+          "id": "HWM162-K25",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K25-medium-cage-body.png",
+          "sha256": "6c67ef40e5cca6a84515a5c33cb0a4007fd53bd697cff4d791baed02c8e1cc68"
+        },
+        {
+          "id": "HWM162-K26",
+          "path": "production/homeworld-sectors-20261103/sprites/kennels/HWM162-K26-medium-cage-sliding-panel.png",
+          "sha256": "cbab78e4e8df0ed7e89f3692399f6f93d54254277238649da96f7d3d86afeeea"
+        }
+      ],
+      "all_baseline_70_selected_png_sha256_preserved": true,
+      "generated_attempts": 11,
+      "selected_native_pngs": 6,
+      "archived_unselected_attempts": [
+        {
+          "id": "HWM162-K28",
+          "attempt": 1,
+          "path": "production/homeworld-sectors-20261103/attempts/kennels/HWM162-K28-small-cage-door-leaf-v1.png",
+          "sha256": "ba6734e541b1b601e1fd171fa29ca172a2d7fbe005f7092773d8df7c650ff012",
+          "bytes": 975350,
+          "reason": "Deux gros pivots complets sur le battant font doublon avec les cylindres fixes deK27 ; correction native des seuls volumes de pivot en petites pattes mobiles plates, approuvée par root."
+        },
+        {
+          "id": "HWM162-K30",
+          "attempt": 1,
+          "path": "production/homeworld-sectors-20261103/attempts/kennels/HWM162-K30-heavy-cage-door-leaf-v1.png",
+          "sha256": "b35bf1755b0b9ebcd3bda038d8e1f195fb6bcf3217e0d9946e2c770ddaade67f",
+          "bytes": 1310333,
+          "reason": "Porte fermée à quatre barreaux : ajouter le cinquième barreau continu, garder traverse et boîtier ambre à droite."
+        },
+        {
+          "id": "HWM162-K31",
+          "attempt": 1,
+          "path": "production/homeworld-sectors-20261103/attempts/kennels/HWM162-K31-small-cage-door-leaf-open-v1.png",
+          "sha256": "125ba18a72711dce51c93b4e380d095bec4fd6a148609296e0afc5dfb8fc667d",
+          "bytes": 703839,
+          "reason": "Deux cylindres de charnière complets à droite dupliquent les fixations deK27 : les retirer et garder seulement de petites pattes mobiles plates."
+        },
+        {
+          "id": "HWM162-K32",
+          "attempt": 1,
+          "path": "production/homeworld-sectors-20261103/attempts/kennels/HWM162-K32-heavy-cage-door-leaf-open-v1.png",
+          "sha256": "0dbe829cdc9cebde39393022e2822e470c1f8cefcb7cb34755622c53f6003936",
+          "bytes": 1754638,
+          "reason": "K12 contient une ambiguïté de partition : grand rail sombre supérieur et enveloppe extérieure dupliqués autour du battant ouvert. Le rail appartient au portique fixe de278/K29. Retirer ces parties deK32 et conserver le cadre mobile bronze, cinq barreaux, traverse, ambre et attaches mobiles reconstituées. Ne pas modifier les sources historiques."
+        },
+        {
+          "id": "HWM162-K32",
+          "attempt": 2,
+          "path": "production/homeworld-sectors-20261103/attempts/kennels/HWM162-K32-heavy-cage-door-leaf-open-v2.png",
+          "sha256": "be956fd160ba52e74fe59b674a8831577146d350d80fd849cdf3246f1a05e958",
+          "bytes": 1821659,
+          "reason": "Géométrie corrigée acceptée, mais voile dans les ajours : fenêtre2250pixels alpha28–40 et fenêtre3500pixels alpha7–23. Correction native de transparence uniquement approuvée, conserver la géométrie de v2."
+        }
+      ],
+      "notes": "Six composants retenus après revue root ; corps et parties fixes séparés des portes fermées/ouvertes. Cinq essais rejetés archivés, dont deux pourK32. Chaque input de correction est déclaré CURRENT_PASS_GENERATED_INPUT avec sourceCommitnull ; aucune retouche de pixels.",
       "camera_mode": "INHERIT_REFERENCE_VIEW",
       "runtime_integration": false,
       "human_validation": false
