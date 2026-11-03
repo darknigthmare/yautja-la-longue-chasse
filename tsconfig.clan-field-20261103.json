@@ -1,0 +1,5 @@
+{
+ "extends":"./tsconfig.clan-war-v152.json",
+ "compilerOptions":{"incremental":false,"tsBuildInfoFile":null},
+ "include":["types/clan-war-v120-css.d.ts","app/game/ClanWarOperationsV115.tsx","app/game/ClanWarRtsSquadsV133.tsx","app/game/ClanWarFieldSprite.tsx","app/game/systems/clanWarFieldControls.ts"]
+}
