@@ -10,6 +10,15 @@ on:
       - 'desktop/**'
       - 'build/**'
       - 'public/**/manifest.json'
+      - 'docs/qa/current-integration-20261103/**'
+      - 'public/game/assets/v113/phg/**'
+      - 'public/game/imports/v85/drive-latest/*.png'
+      - 'public/game/assets/v125/phg-studies/atlas.webp'
+      - 'public/game/assets/v126/phg-recent/atlas.webp'
+      - 'public/game/assets/v127/phg-historical/atlas.webp'
+      - 'public/game/assets/v128/phg-platform/atlas.webp'
+      - 'public/game/assets/v129/phg-patches/atlas.webp'
+      - 'public/game/assets/v132/phg-biomask/atlas.webp'
       - 'public/game/homeworld/v74/**'
       - 'public/game/assets/v3/actors/yautja/hunter/body/classic/full.webp'
       - 'public/game/assets/v3/actors/yautja/hunter/body/classic/net/full.webp'
@@ -434,16 +443,21 @@ jobs:
         run: npm run test:audit:v94
 
   application:
-    name: Application compile, types, runtime lint and browser integration
+    name: Application audit (${{ matrix.audit_group }})
     runs-on: ubuntu-24.04
-    # Keep every historical assertion and the V112 browser checks on the
-    # hosted runner; the preserved-source suites exceed one hour together.
+    # Preserve every assertion while keeping independent suites on separate runners.
+    # Failure in one group must not cancel verification of the other groups.
+    strategy:
+      fail-fast: false
+      matrix:
+        audit_group: [application, models, history]
     timeout-minutes: 120
     env:
       NEXT_TELEMETRY_DISABLED: '1'
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NODE_OPTIONS: --max-old-space-size=6144
       AUDIT_CHROME_CHANNEL: chrome
+      GH_TOKEN: ${{ github.token }}
     steps:
       - name: Checkout application source and real manifests without multi-gigabyte artwork
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
@@ -466,6 +480,59 @@ jobs:
             /.github/workflows/audit-v94.yml
             /.github/workflows/hunt-closure-v112.yml
             /public/**/manifest.json
+            /public/game/assets/v113/phg/armor_classe_samurai_laque_rouge_volutes.png
+            /public/game/assets/v113/phg/armor_filet_fin_noir_losanges.png
+            /public/game/assets/v113/phg/skin_shatter_demon_provisoire.png
+            /public/game/assets/v125/phg-studies/atlas.webp
+            /public/game/assets/v126/phg-recent/atlas.webp
+            /public/game/assets/v127/phg-historical/atlas.webp
+            /public/game/assets/v128/phg-platform/atlas.webp
+            /public/game/assets/v129/phg-patches/atlas.webp
+            /public/game/assets/v132/phg-biomask/atlas.webp
+            /public/game/imports/v85/drive-latest/anneau_ligature_fil_rouge_observe_2022.png
+            /public/game/imports/v85/drive-latest/armor_classe_alpha_ceinture_ivoire_cannelee.png
+            /public/game/imports/v85/drive-latest/armor_classe_alpha_fibres_brun_noir.png
+            /public/game/imports/v85/drive-latest/armor_classe_anubis_etoffe_claire.png
+            /public/game/imports/v85/drive-latest/armor_classe_avp_cuir_noir.png
+            /public/game/imports/v85/drive-latest/armor_classe_bionic_etoffe_gris.png
+            /public/game/imports/v85/drive-latest/armor_classe_cleopatra_etoffe_ivoire_ocre.png
+            /public/game/imports/v85/drive-latest/armor_classe_emissary_toile_brune.png
+            /public/game/imports/v85/drive-latest/armor_classe_exiled_fibres_brun_sombre.png
+            /public/game/imports/v85/drive-latest/armor_classe_father_etoffe_bleu_ardoise.png
+            /public/game/imports/v85/drive-latest/armor_classe_father_masque_beige_strie.png
+            /public/game/imports/v85/drive-latest/armor_classe_father_tissu_gris_prune.png
+            /public/game/imports/v85/drive-latest/armor_classe_gladiator_cuir_grave.png
+            /public/game/imports/v85/drive-latest/armor_classe_gladiator_etoffe_bordeaux.png
+            /public/game/imports/v85/drive-latest/armor_classe_jotun_sangle_brun_grave.png
+            /public/game/imports/v85/drive-latest/armor_classe_oni_tissu_anthracite.png
+            /public/game/imports/v85/drive-latest/armor_classe_pirate_cuir_brun_sombre.png
+            /public/game/imports/v85/drive-latest/armor_classe_pirate_etoffe_vert_sauge.png
+            /public/game/imports/v85/drive-latest/armor_classe_samurai_laque_rouge_volutes.png
+            /public/game/imports/v85/drive-latest/armor_classe_samurai_tressage_brun.png
+            /public/game/imports/v85/drive-latest/armor_classe_valkyrie_entrelacs_cuivres.png
+            /public/game/imports/v85/drive-latest/armor_classe_viking_fourrure_gris_taupe.png
+            /public/game/imports/v85/drive-latest/armor_classe_witch_etoffe_taupe_usee.png
+            /public/game/imports/v85/drive-latest/armor_classe_wolf_cuir_brun_sangles.png
+            /public/game/imports/v85/drive-latest/armor_classe_wolf_tablier_gris_brun.png
+            /public/game/imports/v85/drive-latest/armor_epic_promo_2020.png
+            /public/game/imports/v85/drive-latest/armor_filet_epais_brun_losanges.png
+            /public/game/imports/v85/drive-latest/armor_filet_fin_noir_losanges.png
+            /public/game/imports/v85/drive-latest/armor_playstation_promo_2019.png
+            /public/game/imports/v85/drive-latest/dread_anubis_gris_motif_ecaille.png
+            /public/game/imports/v85/drive-latest/dread_exalted_noir_annele_fin.png
+            /public/game/imports/v85/drive-latest/skin_classe_captured_base_observee.png
+            /public/game/imports/v85/drive-latest/skin_classe_cityhunter97_sector_provisoire.png
+            /public/game/imports/v85/drive-latest/skin_classe_cityhunter97_tract_provisoire.png
+            /public/game/imports/v85/drive-latest/skin_classe_cityhunter97_ward_provisoire.png
+            /public/game/imports/v85/drive-latest/skin_classe_cleopatra_base_observee.png
+            /public/game/imports/v85/drive-latest/skin_classe_exiled_base_observee.png
+            /public/game/imports/v85/drive-latest/skin_classe_samurai_base_observee.png
+            /public/game/imports/v85/drive-latest/skin_classe_valkyrie_base_observee.png
+            /public/game/imports/v85/drive-latest/skin_classe_viking_base_observee.png
+            /public/game/imports/v85/drive-latest/skin_default_epic_exclusive.png
+            /public/game/imports/v85/drive-latest/skin_default_ps_exclusive.png
+            /public/game/imports/v85/drive-latest/skin_shatter_demon_provisoire.png
+            /public/game/imports/v85/drive-latest/skin_shatter_demon_revision_mrblack.png
             /public/game/homeworld/v74/
             /public/game/assets/v3/actors/yautja/hunter/body/classic/full.webp
             /public/game/assets/v3/actors/yautja/hunter/body/classic/net/full.webp
@@ -535,6 +602,7 @@ jobs:
             /docs/YAUTJA_V112_SUIVI.xlsx
             /docs/*v112*
             /docs/qa/v112*/
+            /docs/qa/current-integration-20261103/
             /docs/suivi-production/v112*/
             /docs/v113-*
             /docs/qa/v113-*/
@@ -1030,13 +1098,16 @@ jobs:
       - name: Check application TypeScript
         run: npm run typecheck
       - name: Exercise every current V112 model except its separately preserved historical publication
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'models' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: |
           node --input-type=module <<'NODE'
           import fs from 'node:fs';
           import {spawnSync} from 'node:child_process';
           const files = fs.readdirSync('tests').filter(file =>
-            file.endsWith('-v112.test.mjs') && !['homeworld-excel-followup-v112.test.mjs', 'homeworld-excel-publication-original-v112.test.mjs'].includes(file)
+            file.endsWith('-v112.test.mjs') && ![
+              'homeworld-excel-followup-v112.test.mjs', 'homeworld-excel-publication-original-v112.test.mjs',
+              'hunt-integration-source-history-v112.test.mjs',
+            ].includes(file)
           ).sort().map(file => 'tests/' + file);
           if (!files.length) throw new Error('No current V112 model tests selected');
           console.log('Current V112 application tests:\n' + files.join('\n'));
@@ -1048,16 +1119,16 @@ jobs:
           process.exitCode = result.status;
           NODE
       - name: Verify deterministic V112 workbook and discovery resources
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'history' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: |
           node scripts/build-hunt-mechanics-workbook-v112.mjs --check
           python3 scripts/verify-hunt-mechanics-workbook-v112.py
           node scripts/build-discovery-signals-v112.mjs --check
       - name: Exercise actual V112 controls, workshop, corpse rites and canopy in Chromium
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'application' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: node scripts/qa-hunt-mechanics-browser-v112.mjs
       - name: Upload bounded V112 browser report and inspected-capture candidates
-        if: ${{ always() }}
+        if: ${{ matrix.audit_group == 'application' && (always()) }}
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: hunt-v112-browser-${{ github.run_id }}
@@ -1065,26 +1136,26 @@ jobs:
           retention-days: 7
           if-no-files-found: ignore
       - name: Verify V111 hunt compatibility guards and reproducible hunting workbook
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'models' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: |
           node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/hunt-jump-assist-runtime.test.mjs tests/jump-assist.test.mjs tests/enemy-trophy-runtime-v18.test.mjs tests/hunt-rites-v77.test.mjs tests/trophy-ritual.test.mjs
           node scripts/build-hunt-mechanics-workbook.mjs --check
           python3 scripts/verify-hunt-mechanics-workbook-v111.py
       - name: Verify V6.14 native images, cumulative history and unchanged sprite defaults
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'history' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: node --experimental-strip-types --test tests/enforcer-production-v614.test.mjs
       - name: Verify V6.15 infants, all 144 native PNGs and all 17 prior workbooks
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'history' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: node --experimental-strip-types --test tests/npc-production-v615.test.mjs
       - name: Compile Next application source (not full release packaging)
         id: compile
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'application' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: node node_modules/next/dist/bin/next build --webpack
       - name: Smoke the compiled Next HTTP server and protected QA routes
-        if: ${{ !cancelled() && steps.compile.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'application' && (!cancelled() && steps.compile.outcome == 'success') }}
         run: npm run qa:next-production
       - name: Lint changed game runtime
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'application' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: >-
           node node_modules/eslint/bin/eslint.js --max-warnings=0
           app/game/Mausoleum.tsx app/game/useHomeworldMotionAssetsV74.ts
@@ -1173,7 +1244,7 @@ jobs:
           app/game/systems/huntRitesRuntimeV77.ts
           app/game/PitExperienceV79.tsx app/game/ClanWarBibleV6Panel.tsx
       - name: Verify gamedev archive, asset, import and route regressions
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'models' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: >-
           node --test --test-reporter=spec --test-concurrency=1
           tests/planet-archive-validation-v103.test.mjs
@@ -1185,10 +1256,10 @@ jobs:
           tests/homeworld-collision-cost-v113.test.mjs
           tests/homeworld-route-cancellation-v113.test.mjs
       - name: Exercise current Homeworld route Worker and stale snapshots in Chromium
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'application' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: node scripts/qa-homeworld-route-worker-v113.mjs
       - name: Preserve current Homeworld route Worker report
-        if: ${{ always() }}
+        if: ${{ matrix.audit_group == 'application' && (always()) }}
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: homeworld-route-worker-v113-${{ github.run_id }}
@@ -1196,10 +1267,10 @@ jobs:
           retention-days: 7
           if-no-files-found: ignore
       - name: Exercise current Homeworld Atlas Worker cancellation in Chromium
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'application' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: node scripts/qa-homeworld-atlas-browser-v109.mjs
       - name: Preserve current Homeworld Atlas Worker report
-        if: ${{ always() }}
+        if: ${{ matrix.audit_group == 'application' && (always()) }}
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: homeworld-atlas-integration-${{ github.run_id }}
@@ -1207,7 +1278,7 @@ jobs:
           retention-days: 7
           if-no-files-found: ignore
       - name: Exercise input resilience, fixed-step edges and original V74 metadata
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'models' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: >-
           node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1
           tests/homeworld-input-runtime.test.mjs tests/ship-hub-input-runtime.test.mjs
@@ -1216,7 +1287,7 @@ jobs:
           tests/pit-gamepad-assignments.test.mjs
           tests/regional-lifecycle-v94.test.mjs tests/scene-image-loader-v94.test.mjs
       - name: Verify combat structural barriers and boss whiffs
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'models' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: >-
           node --experimental-strip-types --test --test-reporter=spec
           tests/hunt-structural-gates-v94.test.mjs
@@ -1224,16 +1295,16 @@ jobs:
           tests/hunt-projectile-runtime.test.mjs
           tests/platform-collision.test.mjs
       - name: Validate imported V6 dialogue archive references
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'history' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: node --test tests/dialogues-v6-import.test.mjs
       - name: Exercise menu control unit regressions
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'models' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: npm run test:menu-controls:v94
       - name: Exercise disabled controls with the real menu gamepad hook
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'application' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: node scripts/qa-menu-controls-browser-v94.mjs
       - name: Exercise historical persistence regressions (not the entire test suite)
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'models' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: >-
           node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1
           tests/campaign-slots.test.mjs
@@ -1250,25 +1321,25 @@ jobs:
           tests/homeworld-region-return-v68.test.mjs
           tests/save-social-reconciliation.test.mjs
       - name: Exercise portable chroma processing and complete biome fixtures
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'models' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: node --experimental-strip-types --test tests/biome-chroma-v19.test.mjs tests/biome-decor-v19-pipeline.test.mjs
       - name: Exercise native storage and cross-tab locks (seeded campaigns)
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'application' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: node scripts/qa-campaign-storage-browser-v94.mjs
       - name: Exercise React image lifecycle and native PNG decoding (1x1 fixtures)
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'application' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: node scripts/qa-native-assets-browser-v94.mjs
       - name: Exercise scene image deadlines and refresh with the native decoder
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'application' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: node scripts/qa-scene-images-browser-v94.mjs
       - name: Exercise actual Mausoleum React component (placeholder art, emulated pad)
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'application' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: node scripts/qa-mausoleum-browser-v94.mjs
       - name: Validate complete Yautja palette maps after extended customization
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'history' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: node --experimental-strip-types --test --test-reporter=spec tests/hunter-palette-filters-v114.test.mjs
       - name: Exercise free clan-war durability, lifecycle and planetary atlas regressions
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'models' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: >-
           node --test --test-reporter=spec --test-concurrency=1
           tests/clan-war-session-v85.test.mjs tests/clan-war-durability-v94.test.mjs
@@ -1284,7 +1355,7 @@ jobs:
           tests/planet-generator-draft-v103.test.mjs tests/planet-material-profiles-v103.test.mjs
           tests/planet-strategy-v114.test.mjs tests/planet-export-zip-v114.test.mjs tests/planet-generator-v115.test.mjs
       - name: Exercise generated planets, independent bitmap layers and real saved fronts
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'application' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: |
           node node_modules/next/dist/bin/next dev --hostname 127.0.0.1 --port 3101 > /tmp/yautja-planet-generator-next.log 2>&1 &
           PLANET_QA_SERVER_PID=$!
@@ -1299,7 +1370,7 @@ jobs:
           node scripts/qa-planet-generator-v102.mjs
           node scripts/qa-planet-generator-v103.mjs
       - name: Preserve planet import ordering browser report
-        if: ${{ always() }}
+        if: ${{ matrix.audit_group == 'application' && (always()) }}
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: planet-import-order-v103-${{ github.run_id }}
@@ -1307,40 +1378,40 @@ jobs:
           retention-days: 7
           if-no-files-found: ignore
       - name: Compare historical WebGL pixels and verify modular V103 materials
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'application' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: node scripts/qa-planet-materials-v103.mjs
       - name: Exercise V100 native animation studies, local conversations and evacuation with V98-V99 regressions
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'models' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: npm run test:worlds:v100
       - name: Verify reproducible V100 follow-up while preserving the historical V99 workbook
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'history' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: node scripts/check-excel-history-v105.mjs --release V100 --check
       - name: Exercise V104 source normals, cartography, Preserve version boundaries and workbook preservation
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'models' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v104.test.mjs
       - name: Verify reproducible V104 follow-up and preserved historical workbook parts
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'history' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: node scripts/check-excel-history-v105.mjs --release V104 --check
       - name: Exercise V105 commands, presentations, high-point survey, convoys and workbook boundaries
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'models' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v105.test.mjs
       - name: Verify reproducible V105 follow-up and the 39 frozen historical sheets
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'history' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: node scripts/check-excel-history-v106.mjs --check
       - name: Exercise V106 source specials, directional inputs, archival handling and assault planning
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'models' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/*-v106.test.mjs
       - name: Verify reproducible V106 follow-up and the 49 preserved historical sheets
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'history' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: node scripts/check-excel-history-v107.mjs --release V106 --check
       - name: Execute unchanged V107 assertions and regenerate its immutable published workbook
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'history' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: node scripts/check-excel-history-v108.mjs --check --tests
       - name: Execute unchanged V108 assertions and regenerate its immutable published workbook
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'history' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: node scripts/check-excel-history-v109.mjs --check --tests
       - name: Exercise current V109 throws, supply routes, Preserve biomes, plaque and evidence boundaries
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'models' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: >-
           node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1
           tests/clan-supply-route-v109.test.mjs tests/excel-history-v109.test.mjs
@@ -1350,10 +1421,10 @@ jobs:
           tests/pit-forward-throw-art-v109.test.mjs tests/pit-forward-throws-v109.test.mjs
           tests/production-publication-v109.test.mjs
       - name: Execute unchanged V109 assertions and regenerate its immutable certified workbook
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'history' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: node scripts/check-excel-history-v110.mjs --check --tests
       - name: Exercise current V110 Homeworld gameplay and evidence regressions
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'models' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: >-
           node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1
           tests/excel-history-v110.test.mjs tests/homeworld-archive-record-v110.test.mjs
@@ -1361,10 +1432,10 @@ jobs:
           tests/homeworld-objectives-v110.test.mjs tests/homeworld-resident-contacts-v110.test.mjs
           tests/homeworld-transitions-v110.test.mjs
       - name: Execute unchanged V110 Homeworld assertions and regenerate its immutable workbook
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'history' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: node scripts/check-excel-history-homeworld-v111.mjs --check --tests
       - name: Exercise current V111 regressions across the parallel workstreams
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'models' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: |
           node --input-type=module <<'NODE'
           import fs from 'node:fs';
@@ -1391,33 +1462,37 @@ jobs:
           process.exitCode = result.status;
           NODE
       - name: Execute unchanged V111 assertions and regenerate all 113 historical worksheets
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'history' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: node scripts/check-excel-history-homeworld-v112.mjs --check --tests
       - name: Exercise parallel V111 hunt compatibility suite
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'models' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: node scripts/test-current-v111-v112.mjs
       - name: Preserve parallel V112 Homeworld and hunt historical workbooks
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'history' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: |
           node scripts/check-homeworld-history-v112.mjs --check --tests
           node scripts/check-excel-history-v112.mjs --check --tests
       - name: Verify original immutable V112 publication in its private historical context
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'history' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/homeworld-excel-publication-original-v112.test.mjs
       - name: Preserve exact historical R7 once (nine original assertions and three CLI; currentRuntimeCovered=false)
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'history' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         # The five capsule tests also exercise tampering and real private Git bootstrap.
         # The standalone --check --tests CLI and V112 adapter are manual entrypoints;
         # neither is repeated here, since this suite executes all nine assertions and three CLI.
-        run: node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/r7-publication-history-v113.test.mjs
+        run: >-
+          node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1
+          tests/historical-git.test.mjs tests/r7-publication-history-v113.test.mjs
+          tests/homeworld-connector-detour-history-v113.test.mjs
       - name: Verify current source backlog audit and unchanged native V112 Pit delivery
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'history' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: |
           python3 scripts/audit-open-workstreams-v112.py --check
           node scripts/build-pit-backward-art-v112.mjs --check
-          node scripts/check-hunt-integration-source-v112.mjs --check
-      - name: Fetch the exact current runtime declared by both production publications
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+          node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/hunt-integration-source-history-v112.test.mjs
+          node scripts/check-hunt-integration-source-v112.mjs --current
+      - name: Fetch the exact historical runtime declared by both preserved V113 production publications
+        if: ${{ matrix.audit_group == 'history' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: |
           node --input-type=module <<'NODE'
           import assert from 'node:assert/strict';
@@ -1428,7 +1503,7 @@ jobs:
             JSON.parse(fs.readFileSync('docs/v113-' + domain + '-validation.json', 'utf8')).production.runtimeCommit
           );
           for (const commit of commits) assert.match(commit, /^[a-f0-9]{40}$/);
-          assert.equal(commits[0], commits[1], 'Both publications must name the same current runtime');
+          assert.equal(commits[0], commits[1], 'Both preserved publications must name the same certified runtime');
           const runtimeCommit = commits[0];
           const probe = spawnSync('git', ['cat-file', '-t', runtimeCommit], {
             encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'],
@@ -1443,20 +1518,29 @@ jobs:
           }).trim(), 'commit');
           assert.equal(execFileSync('git', ['rev-parse', 'HEAD'], {encoding: 'utf8'}), headBefore,
             'Fetching evidence history must not change the application checkout');
-          console.log('Current runtime object available: ' + runtimeCommit);
+          console.log('Preserved V113 runtime object available: ' + runtimeCommit);
           NODE
-      - name: Verify current V113 freeze, current models and both complete current production certificates
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+      - name: Preserve both V113 production certificates and their exact historical freeze
+        if: ${{ matrix.audit_group == 'history' && (!cancelled() && steps.dependencies.outcome == 'success') }}
+        run: node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/v113-production-history.test.mjs
+      - name: Verify the consolidated runtime inventory and every current V113 model
+        if: ${{ matrix.audit_group == 'models' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: |
-          node scripts/snapshot-runtime-v113.mjs --check docs/v113-runtime-freeze.json
+          node scripts/snapshot-runtime-v113.mjs --check docs/qa/current-integration-20261103/runtime-inputs.json
           node --input-type=module <<'NODE'
           import fs from 'node:fs';
           import {spawnSync} from 'node:child_process';
+          const historical = new Set([
+            'r7-publication-history-v113.test.mjs', 'homeworld-current-production-v113.test.mjs',
+            'homeworld-connector-detour-history-v113.test.mjs', 'homeworld-v112-history-v113.test.mjs',
+          ]);
           const files = fs.readdirSync('tests').filter(file =>
-            file.endsWith('-v113.test.mjs') && file !== 'r7-publication-history-v113.test.mjs'
+            file.endsWith('-v113.test.mjs') && !historical.has(file)
           ).sort().map(file => 'tests/' + file);
-          if (!files.includes('tests/homeworld-current-production-v113.test.mjs')) throw new Error('Current V113 production certificates must be verified');
-          console.log('Current V113 application and production tests:\n' + files.join('\n'));
+          if (!files.length) throw new Error('No current V113 model tests selected');
+          for (const file of historical) if (!fs.statSync('tests/' + file).isFile()) throw new Error('Historical V113 test must remain available: ' + file);
+          if (!fs.statSync('tests/v113-production-history.test.mjs').isFile()) throw new Error('The complete original V113 production assertion must be preserved');
+          console.log('Current V113 application model tests:\n' + files.join('\n'));
           const result = spawnSync(process.execPath, [
             '--experimental-strip-types', '--test', '--test-reporter=spec', '--test-concurrency=1', ...files,
           ], {stdio: 'inherit'});
@@ -1465,40 +1549,126 @@ jobs:
           process.exitCode = result.status;
           NODE
       - name: Verify the dated PR and open-workstream coordination workbook
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'history' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: |
           python3 scripts/build-resume-workbook-20261101.py --check
           python3 scripts/verify-resume-workbook-20261101.py
           python3 scripts/check-resume-workbook-history-20261101.py
       - name: Preserve the additional original V112 Homeworld and Pit capsule
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'history' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: |
           node scripts/check-excel-history-homeworld-v113.mjs --check
           node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/homeworld-v112-history-v113.test.mjs
       - name: Verify live Homeworld guidance in the real React atlas and native Worker
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'application' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: node scripts/qa-homeworld-live-guidance-v112.mjs
       - name: Re-run unchanged V110 assertions and preserve its published workbook from pinned Git preimages
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'history' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: node scripts/check-excel-history-compat-v112.mjs --check --tests
       - name: Exercise actual clan-war panel and native locked storage
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'application' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         env:
           AUDIT_CHROME_HEADED: '1'
         run: xvfb-run -a node scripts/qa-clan-war-browser-v94.mjs
       - name: Exercise trophy workshop lifecycle and historical ritual rules
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'models' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: >-
           node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1
           tests/trophy-workshop-lifecycle-v94.test.mjs tests/trophy-workshop.test.mjs tests/trophy-ritual.test.mjs
       - name: Complete all four workshop sequences in the actual React panel
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'application' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: node scripts/qa-trophy-workshop-browser-v94.mjs
       - name: Exercise training lifecycle and all existing drill rules
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'models' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: >-
           node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1
           tests/training-lifecycle-v94.test.mjs tests/training-drill.test.mjs
       - name: Play all five native training sequences and input interruption cases
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        if: ${{ matrix.audit_group == 'application' && (!cancelled() && steps.dependencies.outcome == 'success') }}
         run: node scripts/qa-training-browser-v94.mjs
+
+      - name: Record successful completion of this application audit group
+        if: ${{ success() }}
+        env:
+          AUDIT_GROUP: ${{ matrix.audit_group }}
+        run: |
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import {execFileSync} from 'node:child_process';
+          import {mkdirSync, writeFileSync} from 'node:fs';
+          import {join} from 'node:path';
+          const group = process.env.AUDIT_GROUP;
+          assert.ok(['application', 'models', 'history'].includes(group));
+          const {GITHUB_RUN_ID: runId, GITHUB_RUN_ATTEMPT: runAttempt, GITHUB_SHA: commit, RUNNER_TEMP: temp} = process.env;
+          assert.match(runId ?? '', /^[1-9]\d*$/);
+          assert.match(runAttempt ?? '', /^[1-9]\d*$/);
+          assert.match(commit ?? '', /^[a-f0-9]{40}$/);
+          assert.equal(execFileSync('git', ['rev-parse', 'HEAD'], {encoding: 'utf8'}).trim(), commit);
+          const directory = join(temp, 'application-audit-proof');
+          mkdirSync(directory, {recursive: true});
+          writeFileSync(join(directory, 'proof.json'), JSON.stringify({
+            schemaVersion: 1, result: 'success', group, runId, runAttempt, commit,
+          }) + '\n', {flag: 'wx'});
+          NODE
+      - name: Upload this successful application audit group proof
+        if: ${{ success() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: application-audit-success-${{ github.run_id }}-${{ github.run_attempt }}-${{ github.sha }}-${{ matrix.audit_group }}
+          path: ${{ runner.temp }}/application-audit-proof/proof.json
+          retention-days: 7
+          if-no-files-found: error
+
+  application-result:
+    name: Application compile, types, runtime lint and browser integration
+    if: ${{ always() }}
+    needs: [application]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 2
+    steps:
+      - name: Require every independent application audit group
+        env:
+          APPLICATION_RESULT: ${{ needs.application.result }}
+        run: |
+          if [ "$APPLICATION_RESULT" != "success" ]; then
+            echo "At least one application audit group failed, was cancelled, or did not run."
+            exit 1
+          fi
+      # Every proof must come from this exact attempt; rerun all groups together.
+      - name: Download the application group completion proof
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: application-audit-success-${{ github.run_id }}-${{ github.run_attempt }}-${{ github.sha }}-application
+          path: ${{ runner.temp }}/application-audit-proofs/application
+      - name: Download the models group completion proof
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: application-audit-success-${{ github.run_id }}-${{ github.run_attempt }}-${{ github.sha }}-models
+          path: ${{ runner.temp }}/application-audit-proofs/models
+      - name: Download the history group completion proof
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: application-audit-success-${{ github.run_id }}-${{ github.run_attempt }}-${{ github.sha }}-history
+          path: ${{ runner.temp }}/application-audit-proofs/history
+      - name: Require exactly three current successful group proofs
+        run: |
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import {readdirSync, readFileSync} from 'node:fs';
+          import {join} from 'node:path';
+          const groups = ['application', 'history', 'models'];
+          const root = join(process.env.RUNNER_TEMP, 'application-audit-proofs');
+          assert.deepEqual(readdirSync(root).sort(), groups, 'All three audit groups must produce a completion proof');
+          for (const group of groups) {
+            const directory = join(root, group);
+            assert.deepEqual(readdirSync(directory), ['proof.json'], 'Each group must produce exactly one proof');
+            const proof = JSON.parse(readFileSync(join(directory, 'proof.json'), 'utf8'));
+            assert.deepEqual(proof, {
+              schemaVersion: 1, result: 'success', group,
+              runId: process.env.GITHUB_RUN_ID,
+              runAttempt: process.env.GITHUB_RUN_ATTEMPT,
+              commit: process.env.GITHUB_SHA,
+            }, 'Invalid, stale or duplicate completion proof for ' + group);
+          }
+          console.log('All three application audit groups succeeded for this run, attempt and commit.');
+          NODE

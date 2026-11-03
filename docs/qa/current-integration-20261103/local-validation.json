@@ -1,0 +1,191 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUtc": "2026-11-03T19:29:41.584442+00:00",
+  "baseMain": "71d2eabbe9d700a019a67c05910b456dcdb11a4c",
+  "localCodeCommitBeforeEvidence": "084e6bdb328dc9b99835fdfe9fe0d45adbe31a8a",
+  "node": "v24.22.1",
+  "scope": "Local results from targeted runs at their recorded checkpoints. Counts overlap and must not be added. Filtered R7 runs preserve their skipped-case metrics; the full remote workflow executes all cases. This record is not a deployed gameplay or artistic certificate.",
+  "runtimeInventory": {
+    "path": "runtime-inputs.json",
+    "files": 2121,
+    "inputBytes": 1091627345,
+    "documentBytes": 395046,
+    "sha256": "73156a62b5dd820b653605cacaf1033b6e88b2c4f8c4729d9984fda09d375a9e"
+  },
+  "checks": [
+    {
+      "id": "persistence",
+      "result": "PASS",
+      "scope": "Étape27 complète de persistance",
+      "passedAssertionsReported": 174,
+      "commandDescription": "node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 [13 fichiers de l’étape27]",
+      "log": "logs/persistence-step27-after.log",
+      "bytes": 19351,
+      "sha256": "c06e6bd2b8dceadc4ba20eefc0e7cf0d6d49bf88e00b14e7fe4c8bae548177ec",
+      "reportedRunnerMetrics": {
+        "tests": 174,
+        "pass": 174,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    },
+    {
+      "id": "homeworld_v110",
+      "result": "PASS",
+      "scope": "Étape50 complète de Homeworld V110",
+      "passedAssertionsReported": 51,
+      "commandDescription": "node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 [7 fichiers de l’étape50]",
+      "log": "logs/current-qa-step50.log",
+      "bytes": 6420,
+      "sha256": "f3c8d724223073375a4bed83f7e5ab67ea1f44cb7797feb3e11ccc79fa36b06f",
+      "reportedRunnerMetrics": {
+        "tests": 51,
+        "pass": 51,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    },
+    {
+      "id": "v111_compatibility",
+      "result": "PASS",
+      "scope": "Sélection commune des étapes52/54",
+      "passedAssertionsReported": 117,
+      "commandDescription": "node scripts/test-current-v111-v112.mjs",
+      "log": "logs/current-qa-steps52-54.log",
+      "bytes": 14435,
+      "sha256": "bc77788ca4081896d3c66793fdcbfc6f5f718c1b037c9c9f8e169863eefa675f",
+      "reportedRunnerMetrics": {
+        "tests": 117,
+        "pass": 117,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    },
+    {
+      "id": "v110_history",
+      "result": "PASS",
+      "scope": "Neuf assertions V110 originales dans la capsule59bcc329",
+      "passedAssertionsReported": 9,
+      "commandDescription": "runHistoricalHomeworldTestsV111([tests/homeworld-transitions-v110.test.mjs])",
+      "log": "logs/current-qa-historical-v110.log",
+      "bytes": 2560,
+      "sha256": "468d06ea3234030b75ad7418723b0213a44b57f0d61dbbd60c5372be5850ec81",
+      "reportedRunnerMetrics": {
+        "tests": 9,
+        "pass": 9,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    },
+    {
+      "id": "r7_bootstrap",
+      "result": "PASS",
+      "scope": "Scénario R7 ciblé sans objets locaux, après fetch groupé",
+      "passedAssertionsReported": 1,
+      "commandDescription": "node --test --test-reporter=spec --test-name-pattern=\"missing shallow-checkout objects\" tests/r7-publication-history-v113.test.mjs",
+      "log": "logs/history-r7-batched-bootstrap.log",
+      "bytes": 338,
+      "sha256": "bf959d6f41d484c958ca3d63ce36002065d7e3ca2ea39a00781919ca37ed92fb",
+      "reportedRunnerMetrics": {
+        "tests": 1,
+        "pass": 1,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    },
+    {
+      "id": "r7_integrity",
+      "result": "PASS",
+      "scope": "Trois contrôles ciblés d’intégrité R7",
+      "passedAssertionsReported": 3,
+      "commandDescription": "node --test [filtre inventaire, altérations et contexte] tests/r7-publication-history-v113.test.mjs",
+      "log": "logs/history-r7-batched-integrity.log",
+      "bytes": 476,
+      "sha256": "f8cd0ec550954089622cbd0daa443677b332628e183485f9bc32b010736c8af5",
+      "reportedRunnerMetrics": {
+        "tests": 3,
+        "pass": 3,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    },
+    {
+      "id": "git_guards",
+      "result": "PASS",
+      "scope": "Gardes Git, transport shallow et diagnostics",
+      "passedAssertionsReported": 4,
+      "commandDescription": "node --test tests/historical-git.test.mjs",
+      "log": "logs/history-git-final-guards.log",
+      "bytes": 572,
+      "sha256": "674df2ea495b8a57a38805e301070972f5c6b534e82d7d98dee6a5315d498be2",
+      "reportedRunnerMetrics": {
+        "tests": 4,
+        "pass": 4,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    },
+    {
+      "id": "v112_source_history",
+      "result": "PASS",
+      "scope": "Provenance originale V112 et contrôle courant",
+      "passedAssertionsReported": 3,
+      "commandDescription": "node --test tests/hunt-integration-source-history-v112.test.mjs",
+      "log": "logs/history-source-final-validation.log",
+      "bytes": 548,
+      "sha256": "42c5ac045625a43d1f642a4e93ceea576143911072a2a14fff55f63df1bf2e74",
+      "reportedRunnerMetrics": {
+        "tests": 3,
+        "pass": 3,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    },
+    {
+      "id": "v113_assets",
+      "result": "PASS",
+      "scope": "Trois suites d’assets V113 après matérialisation des 53 chemins manquants",
+      "passedAssertionsReported": 15,
+      "commandDescription": "node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/homeworld-forge-fire-v113.test.mjs tests/hunter-chromatics-v113.test.mjs tests/hunter-materials-v113.test.mjs",
+      "log": "logs/current-v113-assets-after.log",
+      "bytes": 1548,
+      "sha256": "d14902538cc435471e14a13eedfe0212f4a39c6d0c7e59b51380a04420b68cda",
+      "reportedRunnerMetrics": {
+        "tests": 15,
+        "pass": 15,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    },
+    {
+      "id": "typecheck",
+      "result": "PASS",
+      "scope": "Vérification TypeScript",
+      "passedAssertionsReported": null,
+      "commandDescription": "npm run typecheck",
+      "log": "logs/typecheck-after.log",
+      "bytes": 158,
+      "sha256": "47d3893bcae7bf8c9cc220e4e4e3e92979a3f8f596cddaee97fba7409251a69b",
+      "reportedRunnerMetrics": {}
+    }
+  ],
+  "remoteValidation": "Recorded independently by GitHub Actions on the published commit and by the deployment receipt; not asserted by this local report."
+}

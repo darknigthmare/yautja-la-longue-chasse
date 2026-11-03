@@ -202,7 +202,7 @@ async function journey(kind){
       if(!write.ok)throw Error(write.message);
       return{journey:kind,origin,level,owner:save.createdAt,profile:save.profile,inventory:save.inventory,trophies:save.trophies,initialCargo:cargo??null,seededSlotCatalog:api.loadCampaignSlots()};
     },{source,origin,level,kind,cargo:played?.ledger??null});
-    fixtures.push({...fixture,description:kind==='BlockedArrival'?'Precondition: real cargo-model consent, pickup, 1418 native motor steps and park place the wide lot at the lower council landing. The campaign actor starts at the upper landing by declared checkpoint fixture; climbing there is not claimed as a browser action.':kind==='Doorway'?'Precondition: real cargo-model consent, wide-load placement in its compatible rack, narrow-load pickup, native walking, park and safe side approach use603 additional motor steps. The saved campaign starts at the resulting actual free point31.5u from residence-port-2 doorway. These exterior cargo steps are model fixture preparation, not browser play.':'Initial known port campaign checkpoint only. No K-17 action, conversation, carried object, delivered evidence or outcome is seeded.',...(played?{modelSteps:played.ticks,modelDistance:played.distance,modelParkedActor:played.actor}:{} )});
+    fixtures.push({...fixture,description:kind==='BlockedArrival'?'Precondition: real cargo-model consent, pickup, 1392 native motor steps through the current ground connections and park place the wide lot at the lower council landing. The campaign actor starts at the upper landing by declared checkpoint fixture; climbing there is not claimed as a browser action.':kind==='Doorway'?'Precondition: real cargo-model consent, wide-load placement in its compatible rack, narrow-load pickup, native walking, park and safe side approach use603 additional motor steps. The saved campaign starts at the resulting actual free point31.5u from residence-port-2 doorway. These exterior cargo steps are model fixture preparation, not browser play.':'Initial known port campaign checkpoint only. No K-17 action, conversation, carried object, delivered evidence or outcome is seeded.',...(played?{modelSteps:played.ticks,modelDistance:played.distance,modelParkedActor:played.actor}:{} )});
     await enter();
 
     if(kind==='K17'){
@@ -293,7 +293,7 @@ async function journey(kind){
       await capture('04-out-of-reach-no-old-speaker',page.locator('[data-homeworld-viewport]'));
     }else if(kind==='BlockedArrival'){
       const before=await disk(),savedCargo=JSON.stringify(before.homeworld.cargoV108),start=await actor();
-      check('Arrival precondition is the genuine model-played parked load and upper checkpoint',played.ticks===1418&&played.distance>7100&&start.level===played.council.to.levelId&&Math.hypot(start.x-played.council.to.point.x,start.y-played.council.to.point.y)<=1.5);
+      check('Arrival precondition is the genuine model-played parked load and upper checkpoint',played.ticks===1392&&Math.abs(played.distance-7035.362951817594)<1e-6&&start.level===played.council.to.levelId&&Math.hypot(start.x-played.council.to.point.x,start.y-played.council.to.point.y)<=1.5);
       await interact();
       check('Arrival actual interaction begins the authored council stair descent',await page.locator('[data-homeworld-hub][data-homeworld-transit-v77="council-stair"]').count()===1);
       await tick(3900);await capture('01-actual-descent',page.locator('[data-homeworld-viewport]'));
